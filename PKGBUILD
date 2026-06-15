@@ -4,7 +4,7 @@ _pkgauthor=hedhyw
 _pkgname=json-log-viewer
 _pkgexec=jlv
 pkgname=${_pkgname}-bin
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Interactive viewer for JSON logs.'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -20,9 +20,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_pkgexec}_linux_${_barch[0]}.tar.gz")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_pkgexec}_linux_${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_pkgexec}_linux_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('35c1273615581d508ac7ef326a8c02abfb24c6e3f439f4d50b09771a98d7fed5')
-sha256sums_i686=('d0764537640ceb8e4263636f55a2cafac78baac59d0a5ad04e044b8610a4d391')
-sha256sums_aarch64=('a30d0ef050911bdca9d4c0d6afa224bc339daae3ad7a6782a66a33678506160b')
+sha256sums_x86_64=('902ae20bc3b75f7f506f4f04c99428cbef8fedbb5ca451e21d90d2b30f699bb2')
+sha256sums_i686=('ee995ceb6211812031b2781f33c45a77578cec98630b353caf1aa67f4f9d6c3e')
+sha256sums_aarch64=('651395ee2dbd16e125fdc8ebc67d2bf2188466507d1eeeaaa15dc4a7d6fcda47')
 
 package() {
   cd "${srcdir}/" || exit
