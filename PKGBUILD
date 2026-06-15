@@ -1,7 +1,7 @@
 # Maintainer: Panda <satodu>
 _pkgname=kde-webapp-manager
 pkgname=${_pkgname}-git
-pkgver=r9.ge0f97a9
+pkgver=r10.g672b075
 pkgrel=1
 pkgdesc="A native Qt6 utility to easily generate and manage custom browser webapps on KDE Plasma"
 arch=('any')
@@ -24,6 +24,11 @@ package() {
   
   # Install the executable script
   install -Dm755 main.py "${pkgdir}/usr/bin/${_pkgname}"
+  
+  # Install Python modules package and assets
+  install -d "${pkgdir}/usr/share/${_pkgname}/webapp_manager"
+  install -Dm644 webapp_manager/*.py "${pkgdir}/usr/share/${_pkgname}/webapp_manager/"
+  install -Dm644 webapp_manager/*.png "${pkgdir}/usr/share/${_pkgname}/webapp_manager/"
   
   # Install custom logo icon to pixmaps (standard for standalone icons)
   install -Dm644 images/kde-webapp-gen-icon-logo.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
