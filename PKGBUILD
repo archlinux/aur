@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="Graphical console greeter for greetd with ASCII art and themes"
 arch=('x86_64' 'aarch64')
@@ -10,9 +10,9 @@ depends=('greetd' 'kitty' 'niri' 'gslapper')
 optdepends=(
     'swww: Legacy wallpaper support (fallback)'
 )
-makedepends=('go>=1.21')
+makedepends=('go>=1.25')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('605aeac47a8804a8e9476f4f0dd96509a4d7c2f5f32d3e31513aa840ce95507b')
+sha256sums=('b0a6391845b76d7a20ab12ae4cb70c328d3c8b4649567ac4560f6a3c2959cce8')
 # NOTE: config.toml intentionally NOT in backup - must be replaced when switching compositor variants
 backup=('etc/greetd/niri-greeter-config.kdl' 'etc/polkit-1/rules.d/85-greeter.rules')
 install=${pkgname}.install
@@ -25,7 +25,7 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-    go build -buildvcs=false -o sysc-greet ./cmd/sysc-greet/
+    go build -buildvcs=false -ldflags "-X main.Version=v${pkgver}" -o sysc-greet ./cmd/sysc-greet/
 }
 
 package() {
@@ -45,10 +45,10 @@ package() {
     # Install kitty config
     install -Dm644 config/kitty-greeter.conf "${pkgdir}/etc/greetd/kitty.conf"
 
-    # Install Assets if present
-    if [ -d "Assets" ]; then
+    # Install assets if present
+    if [ -d "assets" ]; then
         install -dm755 "${pkgdir}/usr/share/sysc-greet/Assets"
-        cp -r Assets/* "${pkgdir}/usr/share/sysc-greet/Assets/" 2>/dev/null || true
+        cp -r assets/* "${pkgdir}/usr/share/sysc-greet/Assets/" 2>/dev/null || true
     fi
 
     # Install wallpapers
@@ -58,62 +58,7 @@ package() {
     fi
 
     # Install greetd configs
-    install -Dm644 /dev/stdin "${pkgdir}/etc/greetd/niri-greeter-config.kdl" <<'EOF'
-// SYSC-Greet Niri config for greetd greeter session
-// Monitors auto-detected by niri at runtime
-
-hotkey-overlay {
-    skip-at-startup
-}
-
-input {
-    keyboard {
-        xkb {
-            layout "us"
-        }
-        repeat-delay 400
-        repeat-rate 40
-    }
-
-    touchpad {
-        tap;
-    }
-}
-
-layer-rule {
-    match namespace="^wallpaper$"
-    place-within-backdrop true
-}
-
-layout {
-    gaps 0
-    center-focused-column "never"
-
-    focus-ring {
-        off
-    }
-
-    border {
-        off
-    }
-}
-
-animations {
-    off
-}
-
-window-rule {
-    match app-id="kitty"
-    opacity 0.90
-}
-
-spawn-at-startup "gslapper" "-f" "-I" "/tmp/sysc-greet-wallpaper.sock" "*" "/usr/share/sysc-greet/wallpapers/sysc-greet-default.png"
-
-spawn-sh-at-startup "XDG_CACHE_HOME=/tmp/greeter-cache HOME=/var/lib/greeter kitty --start-as=fullscreen --config=/etc/greetd/kitty.conf /usr/local/bin/sysc-greet; niri msg action quit --skip-confirmation"
-
-binds {
-}
-EOF
+    install -Dm644 config/niri-greeter-config.kdl "${pkgdir}/etc/greetd/niri-greeter-config.kdl"
 
     # Install polkit rule to allow greeter user to shutdown/reboot
     install -Dm644 /dev/stdin "${pkgdir}/etc/polkit-1/rules.d/85-greeter.rules" <<'EOF'
