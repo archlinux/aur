@@ -2,7 +2,7 @@
 
 pkgname=comchan-ratty
 _pkgname=ComChan
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=5
 pkgdesc="A blazingly fast minimal serial monitor with plotter TUI and more (With 3D support)"
 arch=(
@@ -15,7 +15,7 @@ license=('MIT')
 depends=('gcc-libs' 'libudev.so' 'fontconfig')
 makedepends=('cargo')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('92619f7d0b4ddd198c0e16b671243b55e1dc7643013c7241cf5980940e2f213c')
+sha256sums=('e5acea79990fde1058866120a740725b9597a2adc3d3b20059410af6ab3f60de')
 
 prepare() {
   cd "$_pkgname-$pkgver"
