@@ -6,8 +6,8 @@
 
 pkgname=libfprint-2-tod1-broadcom-cv3plus
 _pkgdirname=libfprint-2-tod1-broadcom-cv3plus
-_fw_ver=6.4.334
-pkgver=6.4.054.0
+_fw_ver=6.4.372
+pkgver=6.4.062.0
 pkgrel=1
 pkgdesc="Proprietary driver for the Dell ControlVault3 Plus (0a5c:586*) fingerprint reader"
 arch=(x86_64)

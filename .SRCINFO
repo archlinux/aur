@@ -1,6 +1,6 @@
 pkgbase = libfprint-2-tod1-broadcom-cv3plus
 	pkgdesc = Proprietary driver for the Dell ControlVault3 Plus (0a5c:586*) fingerprint reader
-	pkgver = 6.4.054.0
+	pkgver = 6.4.062.0
 	pkgrel = 1
 	url = https://packages.broadcom.com/artifactory/dell-controlvault-drivers/
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = libfprint-2-tod1-broadcom-cv3plus
 	license = custom
 	makedepends = git
 	depends = libfprint-tod
-	provides = libfprint-2-tod1-broadcom-cv3plus=6.4.054.0
+	provides = libfprint-2-tod1-broadcom-cv3plus=6.4.062.0
 	conflicts = libfprint-2-tod1-broadcom-cv3plus
 	options = !strip
-	source = https://packages.broadcom.com/artifactory/dell-controlvault-drivers/brcm_linux_fp_6.4.334_6.4.054.0.tgz
+	source = https://packages.broadcom.com/artifactory/dell-controlvault-drivers/brcm_linux_fp_6.4.372_6.4.062.0.tgz
 	sha256sums = SKIP
 
 pkgname = libfprint-2-tod1-broadcom-cv3plus
