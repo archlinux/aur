@@ -2,7 +2,7 @@
 
 _plug=nlm-hip
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.0.g0735204
+pkgver=1.1.g82ce77a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -40,7 +40,6 @@ build() {
 }
 
 package() {
-    _plugindir=$(python3 -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")
-    install -Dm755 "build/libvsnlm_hip.so" "${pkgdir}${_plugindir}/libvsnlm_hip.so"
+    DESTDIR="${pkgdir}" cmake --install build
     install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
