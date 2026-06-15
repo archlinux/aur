@@ -1,0 +1,9 @@
+# Build artifacts
+pkg/
+src/
+*.pkg.tar.*
+*.tar.gz
+kara/
+
+# Temporary files
+*.swp

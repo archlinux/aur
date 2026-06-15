@@ -1,0 +1,23 @@
+pkgbase = plasma6-applets-kara
+	pkgdesc = KDE Plasma Pager Applet
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dhruv8sh/kara
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = base-devel
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	makedepends = kwin
+	makedepends = libplasma
+	makedepends = plasma-activities
+	makedepends = plasma-workspace
+	provides = plasma6-applets-kara
+	conflicts = plasma6-applets-kara-git
+	source = git+https://github.com/dhruv8sh/kara.git
+	sha256sums = SKIP
+
+pkgname = plasma6-applets-kara
