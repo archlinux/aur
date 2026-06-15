@@ -1,7 +1,7 @@
 pkgbase = openlogi-bin
 	pkgdesc = A native, local-first alternative to Logitech Options+
 	pkgver = v0.6.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AprilNEA/OpenLogi
 	arch = x86_64
 	license = MIT
