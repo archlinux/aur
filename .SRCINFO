@@ -1,7 +1,7 @@
 pkgbase = aurelia
 	pkgdesc = A fast, lightweight, command-line Steam launcher and library manager written in Rust
 	pkgver = 0.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Drackrath/Aurelia
 	arch = x86_64
 	arch = aarch64
@@ -16,6 +16,6 @@ pkgbase = aurelia
 	provides = aurelia
 	options = !strip
 	source = aurelia-0.1.8.tgz::https://github.com/Drackrath/Aurelia/archive/refs/tags/v0.1.8.tar.gz
-	sha256sums = 570eccb03abb623d1760fef1c158bffc11b8dae3b7dcdf539cc70bb53b85275d
+	sha256sums = e935d0239a498ba5b150aaa7e1f1165149ef34216e8a1ff05c07a0f2d93dcc69
 
 pkgname = aurelia
