@@ -2,13 +2,12 @@
 
 pkgbase=sherpa-onnx
 pkgname=("${pkgbase}" "python-${pkgbase}")
-pkgver=1.13.2
+pkgver=1.13.3
 pkgrel=1
 pkgdesc="Speech-to-text, text-to-speech, speaker diarization, speech enhancement, source separation, and VAD using next-gen Kaldi with onnxruntime without Internet connection."
 arch=("x86_64" "aarch64" "arm" "riscv64")
 url="https://github.com/k2-fsa/${pkgbase}"
 license=("Apache-2.0")
-depends=("jack" "onnxruntime" "protobuf")
 makedepends=("cargs" "cmake" "ninja" "pybind11" "python-build" "python-installer" "python-setuptools" "python-wheel")
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "asio-asio-1-24-0.tar.gz::https://github.com/chriskohlhoff/asio/archive/refs/tags/asio-1-24-0.tar.gz"
@@ -23,7 +22,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "pa_stable_v190700_20210406.tgz::http://files.portaudio.com/archives/pa_stable_v190700_20210406.tgz"
         "simple-sentencepiece-0.7.tar.gz::https://github.com/pkufool/simple-sentencepiece/archive/refs/tags/v0.7.tar.gz"
         "websocketpp-b9aeec6eaf3d5610503439b4fae3581d9aff08e8.zip::https://github.com/zaphoyd/websocketpp/archive/b9aeec6eaf3d5610503439b4fae3581d9aff08e8.zip")
-sha256sums=('9f64f8ee121d751af26fe04863333b22458d2de870e98bb7d3eedf7491ac52e4'
+sha256sums=('01db47e87078d5f8fd0e163f9168436ad1e2ad783d61af51da44f117cae3e554'
             'cbcaaba0f66722787b1a7c33afe1befb3a012b5af3ad7da7ff0f6b8c9b7a8a5b'
             'e9c326dc8c05cd1e044c71f30f1b2e34a6161a3b6ecf445d56b53ff1669e3dec'
             '70cbf4050e7a014aae19140b05e57249da4720f56128459fbe3a93beaf971ae6'
@@ -55,8 +54,8 @@ build() {
         -DCMAKE_BUILD_TYPE=Release
         -DSHERPA_ONNX_USE_PRE_INSTALLED_ONNXRUNTIME_IF_AVAILABLE=ON
     )
-    export CFLAGS="${CFLAGS} -Wno-error=format-security"
-    export CXXFLAGS="${CXXFLAGS} -Wno-error=format-security"
+    export CFLAGS+=" -Wno-error=format-security"
+    export CXXFLAGS+=" -Wno-error=format-security"
 
     cd "${pkgbase}-${pkgver}"
     cmake "${base_args[@]}" \
@@ -71,6 +70,7 @@ build() {
 }
 
 package_sherpa-onnx() {
+    depends=("jack" "onnxruntime" "protobuf")
     provides=("${pkgname}=${pkgver}")
 
     cd "${pkgbase}-${pkgver}"
