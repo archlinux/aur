@@ -1,0 +1,9 @@
+# makepkg build artifacts
+/pkg/
+/src/
+/openbubbles-app/
+/rustpush/
+/telephony_plus/
+*.pkg.tar.*
+*.tar.xz
+flutter-*/

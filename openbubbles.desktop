@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=OpenBubbles
+GenericName=Messaging
+Comment=iMessage client for Linux
+Exec=openbubbles %U
+Icon=openbubbles
+Terminal=false
+Categories=Network;InstantMessaging;
+Keywords=imessage;message;bluebubbles;openbubbles;chat;
+StartupWMClass=bluebubbles
+StartupNotify=true
