@@ -2,8 +2,8 @@
 # Contributor: ZenQy <zenqy.qin@gmail.com>
 
 pkgname=athens
-pkgver=0.17.1
-pkgrel=2
+pkgver=0.18.0
+pkgrel=1
 _commit=5a7e150
 pkgdesc="A proxy server for the Go Modules download API"
 arch=(x86_64 aarch64)
