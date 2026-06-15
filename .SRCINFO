@@ -1,9 +1,8 @@
 pkgbase = python-google-cloud-bigquery-storage
 	pkgdesc = BigQuery Storage API client library
 	pkgver = 2.39.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googleapis/google-cloud-python/tree/google-cloud-bigquery-storage-v2.39.0/packages/google-cloud-bigquery-storage
-	changelog = CHANGELOG.md
 	arch = any
 	license = Apache-2.0
 	makedepends = python-build
