@@ -1,7 +1,7 @@
 pkgbase = simavr
 	pkgdesc = A lean, mean and hackable AVR simulator
-	pkgver = 1.7
-	pkgrel = 3
+	pkgver = 1.8
+	pkgrel = 1
 	url = https://github.com/buserror-uk/simavr
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = simavr
 	depends = elfutils
 	depends = glu
 	options = !strip
-	source = simavr::git+https://github.com/buserror-uk/simavr.git#commit=1d227277b3d0039f9faef9ea62880ca3051b14f8
+	source = simavr::git+https://github.com/buserror-uk/simavr.git#commit=f44723e8c42431136d5b4de81f789ded56d7e8fa
 	source = local://make_fix.patch
 	md5sums = SKIP
 	md5sums = 885fa2f78b7f59ad8058115562c32441
