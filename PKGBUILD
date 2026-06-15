@@ -1,6 +1,6 @@
 pkgname=fetch-git
 _pkgname=fetch
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="An animated 3D fetch tool for your terminal"
 arch=(x86_64 aarch64)
