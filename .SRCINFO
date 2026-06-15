@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-pt-br
 	pkgdesc = Portuguese (Brazilian) language pack for Firefox Nightly
-	pkgver = 153.0a1.20260614.201851
+	pkgver = 153.0a1.20260615.093007
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-pt-br
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-pt-BR-153.0a1.20260614.201851.xpi
-	source = firefox-nightly-i18n-pt-BR-153.0a1.20260614.201851.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-153.0a1.pt-BR.langpack.xpi
-	sha256sums = b750428fa1f342853b477ae2890a4bba039330b8026fc02e58f0487194444b65
+	noextract = firefox-nightly-i18n-pt-BR-153.0a1.20260615.093007.xpi
+	source = firefox-nightly-i18n-pt-BR-153.0a1.20260615.093007.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-153.0a1.pt-BR.langpack.xpi
+	sha256sums = 0af368fd315194f03f0c55960317524e43f71ae3d751cfb285bcbaad7257a8f3
 
 pkgname = firefox-nightly-i18n-pt-br
