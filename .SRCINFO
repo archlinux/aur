@@ -1,0 +1,16 @@
+pkgbase = gimji
+	pkgdesc = Minimal local-first notes for projects, tasks, boards, calendars, and markdown
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/skorotkiewicz/gimji
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	options = !strip
+	source_x86_64 = gimji-0.1.0-x86_64.tar.gz::https://github.com/skorotkiewicz/gimji/releases/download/v0.1.0/gimji-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 69258f657a5c6acf67c0559acd4d9eb3193568a7756faa2706ef99d5a89ddbab
+	source_aarch64 = gimji-0.1.0-aarch64.tar.gz::https://github.com/skorotkiewicz/gimji/releases/download/v0.1.0/gimji-v0.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b67cdaffaf961302b4712c80be7e605851ae069bb617118a08eb414c83cb9134
+
+pkgname = gimji
