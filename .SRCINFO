@@ -1,0 +1,13 @@
+pkgbase = stroke
+	pkgdesc = Cross-database desktop studio built with Tauri
+	pkgver = 0.4.7
+	pkgrel = 1
+	url = https://github.com/broisnischal/stroke
+	arch = x86_64
+	license = custom
+	depends = fuse2
+	options = !strip
+	source = stroke-0.4.7.AppImage::https://github.com/broisnischal/stroke/releases/download/v0.4.7/Stroke_0.4.7_amd64.AppImage
+	sha256sums = 0afe45214f7a8bfba026cb2b5783adb8f5b2feadea1d5b1ce818dc8a483edfc7
+
+pkgname = stroke
