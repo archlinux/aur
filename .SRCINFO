@@ -1,7 +1,7 @@
 pkgbase = shorin-contrib-git
 	pkgdesc = Shorin's personal Arch Linux toolbox and system utilities (Subcommand version)
 	pkgver = r68.7602feb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SHORiN-KiWATA/shorin-contrib
 	install = shorin-contrib.install
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = shorin-contrib-git
 	makedepends = git
 	depends = bash
 	depends = fzf
+	depends = pacman-contrib
 	optdepends = snapper: for quicksave/quickload btrfs snapshot support
 	optdepends = btrfs-assistant: for advanced btrfs restoration backend
 	optdepends = fuzzel: for GUI menus in Wayland
