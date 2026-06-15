@@ -1,4 +1,4 @@
-# Maintainer: tippfehlr <tippfehlr@tippfehlr.dev>
+# Maintainer: Jonathan Grotelüschen <tippfehlr@archlinux.org>
 
 pkgname=aurutils-extra-git
 _pkgname=${pkgname%-git}
