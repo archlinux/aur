@@ -1,16 +1,19 @@
 # stockings.install — pacman hook for the 'stockings' joke package.
 #
-# What this does on install:
-#   1. Detects the user who ran `pacman` (via SUDO_USER / PKEXEC_UID).
-#   2. As that user, runs `xdg-open` on a single Google search URL:
-#        https://www.google.com/search?q=buy+stockings
-#   3. Exits. Nothing is started in the background, nothing is scheduled,
-#      no files are written outside what pacman itself installed.
+# This file runs under root during `pacman -U` / `pacman -S`. All it does:
+#   1. Find the user who actually invoked pacman (SUDO_USER / PKEXEC_UID).
+#   2. Read their live graphical-session env (DISPLAY, WAYLAND_DISPLAY,
+#      DBUS_SESSION_BUS_ADDRESS, XDG_RUNTIME_DIR) from /proc, because pacman
+#      strips these when it's run via sudo.
+#   3. Run `xdg-open https://www.google.com/search?q=buy+stockings` as that
+#      user, detached via `setsid -f` so it survives pacman finishing.
 #
-# That's it. There is no daemon, no autostart entry, no network call other
-# than the browser tab you'll see. Removing the package does nothing extra.
+# That's the whole hook. There is no daemon, no autostart entry, no scheduled
+# task, no network call from this script other than the browser tab you'll
+# see. It runs once, on install/upgrade, and then it's done. Removing the
+# package does nothing. Read the source — it's ~40 lines. This is NOT a virus.
 
-_open_url() {
+_stockings_open() {
     local url="https://www.google.com/search?q=buy+stockings"
     local user="" uid=""
 
@@ -22,30 +25,42 @@ _open_url() {
     fi
 
     if [ -z "$user" ]; then
-        cat <<EOF
-==> stockings: could not detect a desktop user (running as plain root?).
-    No browser will be opened. If you want, visit this link manually:
-      $url
-EOF
+        printf '==> stockings: no desktop user detected. open this when convenient:\n    %s\n' "$url"
+        return 0
+    fi
+    [ -z "$uid" ] && uid="$(id -u "$user")"
+
+    # Pull DISPLAY / WAYLAND_DISPLAY / DBUS_SESSION_BUS_ADDRESS out of any
+    # living process belonging to this user. Without this the browser cannot
+    # reach the user's session bus and xdg-open silently fails.
+    local display="" wayland="" dbus="" xrd="/run/user/$uid"
+    local pid env
+    for pid in $(pgrep -u "$user" 2>/dev/null); do
+        [ -r "/proc/$pid/environ" ] || continue
+        env="$(tr '\0' '\n' < "/proc/$pid/environ" 2>/dev/null)" || continue
+        [ -z "$display" ] && display="$(printf '%s\n' "$env" | sed -n 's/^DISPLAY=//p' | head -n1)"
+        [ -z "$wayland" ] && wayland="$(printf '%s\n' "$env" | sed -n 's/^WAYLAND_DISPLAY=//p' | head -n1)"
+        [ -z "$dbus" ]    && dbus="$(printf '%s\n' "$env" | sed -n 's/^DBUS_SESSION_BUS_ADDRESS=//p' | head -n1)"
+        [ -n "$display" ] && [ -n "$dbus" ] && break
+    done
+
+    if [ -z "$display" ] && [ -z "$wayland" ]; then
+        printf '==> stockings: no graphical session for %s. open this when convenient:\n    %s\n' "$user" "$url"
         return 0
     fi
 
-    [ -z "$uid" ] && uid="$(id -u "$user")"
+    printf "==> stockings: opening %s in %s's default browser...\n" "$url" "$user"
 
-    echo "==> stockings: opening $url in ${user}'s default browser..."
-    su - "$user" -c \
-        "DISPLAY=\${DISPLAY:-:0} XDG_RUNTIME_DIR=/run/user/$uid xdg-open '$url'" \
-        >/dev/null 2>&1 || true
+    # setsid -f detaches from pacman so the browser keeps living after the
+    # transaction ends. runuser drops privileges cleanly without needing PAM.
+    setsid -f runuser -u "$user" -- env \
+        DISPLAY="$display" \
+        WAYLAND_DISPLAY="$wayland" \
+        DBUS_SESSION_BUS_ADDRESS="$dbus" \
+        XDG_RUNTIME_DIR="$xrd" \
+        xdg-open "$url" >/dev/null 2>&1 || true
 }
 
-post_install() {
-    _open_url
-}
-
-post_upgrade() {
-    _open_url
-}
-
-post_remove() {
-    echo "==> stockings: uninstalled. Hope you found a nice pair."
-}
+post_install() { _stockings_open; }
+post_upgrade() { _stockings_open; }
+post_remove()  { echo "==> stockings: uninstalled. hope you found a nice pair, femboy."; }
