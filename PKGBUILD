@@ -3,6 +3,7 @@
 
 pkgname=yabsnap
 pkgver=2.4.1
+# Note: pkgrel will be bumped when major Python version changes, to recompile bytecode.
 pkgrel=1
 pkgdesc="Btrfs automated snapshot manager."
 arch=('any')
@@ -44,10 +45,9 @@ package() {
   install -Dm 644 "$pkgname".1.gz                          -t "$pkgdir"/usr/share/man/man1/
   cd ../src
   install -Dm 755 "$pkgname".sh -t "$DEST"/
-  # Note: The -O compiles to .opt-1.pyc. Starting with v2.2.10, we use -O, and
-  # we own the files.
-  # See point 2 in https://aur.archlinux.org/packages/yabsnap#comment-1034857
-  # Note: Starting with 2.4.1, we dropped the -O.
+  # Goal: Own the byte codes since non-root execution cannot create them.
+  # Note (2025-08-03, v2.2.0): Added -O -m to compile to .opt-1.pyc.
+  # Note (2026-06-15, v2.4.1): Dropped the -O. Will compile to .pyc.
   python -m compileall -d /usr/share/"$pkgname" "$DEST"
   install -d "$pkgdir"/usr/bin
   ln -s /usr/share/"$pkgname"/"$pkgname".sh "$pkgdir"/usr/bin/"$pkgname"
