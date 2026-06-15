@@ -1,7 +1,7 @@
 # Maintainer: Kyler Clay <kylerclay@proton.me>
 
 pkgname=shed-sh
-pkgver=0.29.0
+pkgver=0.29.1
 pkgrel=1
 pkgdesc="A Linux shell with a powerful line editor and IPC socket extensibility"
 arch=('x86_64')
@@ -32,7 +32,7 @@ package()
 {
   cd "shed-$pkgver"
   install -Dm755 "target/release/shed" "$pkgdir/usr/bin/shed"
-  install -Dm644 doc/*.txt -t "$pkgdir/usr/share/shed/doc/"
+  install -Dm644 include/help/*.txt -t "$pkgdir/usr/share/shed/doc/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 

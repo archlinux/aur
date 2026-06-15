@@ -1,3 +1,5 @@
 *.pkg.tar*
 src/
 pkg/
+shed-sh-*
+test-build*
