@@ -1,0 +1,4 @@
+[python-qcore]
+source = "git"
+git = "https://github.com/quora/qcore.git"
+prefix = "v"

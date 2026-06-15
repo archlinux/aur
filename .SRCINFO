@@ -1,0 +1,18 @@
+pkgbase = python-qcore
+	pkgdesc = a library of common utility functions used at Quora
+	pkgver = 1.11.1
+	pkgrel = 1
+	url = https://github.com/quora/qcore
+	arch = x86_64
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = glibc
+	depends = python
+	source = qcore-1.11.1.tar.gz::https://github.com/quora/qcore/archive/refs/tags/v1.11.1.tar.gz
+	b2sums = cdd963659c8d3426d04f5c74ace34f0015e8e0527bc962373361f2be53067376bf7355249dc96bbfd29aed6e5a901a003b6dc7dceb45b11e5517903321c7fdce
+
+pkgname = python-qcore
