@@ -2,7 +2,7 @@
 
 pkgname=autofilm-git
 pkgver=1.5.1.r141.gef93942
-pkgrel=1
+pkgrel=3
 pkgdesc="A small project to provide Strm direct-link playback for Emby and Jellyfin servers, recommended for use with MediaWarp."
 arch=($CARCH)
 url="https://github.com/Akimio521/AutoFilm"
@@ -19,10 +19,11 @@ makedepends=(
     rust
 )
 optdepends=(
-    'alist: File list program that supports multiple storage'
+    'openlist: A new AList Fork to Anti Trust Crisis'
     'mediawarp: EmbyServer API Optimization: Optimize playback of Strm files, customize the front-end style, customize the allowed access to the client, embedded scripts, work with Alist to realize Emby playback of web resources, recommended to use with AutoFilm.'
     'emby-server: Bring together your videos, music, photos, and live television'
-    'jellyfin-server: Jellyfin server backend')
+    'jellyfin-server: Jellyfin server backend'
+)
 backup=(etc/${pkgname%-git}/config.yaml)
 options=('!strip' '!debug' '!lto')
 # install=${pkgname}.install
@@ -50,7 +51,10 @@ prepare() {
     git submodule init
     git config submodule.alist-client-rs.url "$srcdir/alist-client-rs"
     git -c protocol.file.allow=always submodule update
-  
+    sed -i -e 's|/fonts/ch.ttf|/usr/share/fonts/TTF/FZFengYaSongS-GB.ttf|g' \
+        -e 's|/fonts/en.otf|/usr/share/fonts/OTF/Melete-UltraLight.otf|g' \
+        config/config.example.yaml
+
     cargo fetch --locked --target host-tuple
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
@@ -69,8 +73,8 @@ package() {
    
     install -vDm755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin/"
     install -vDm644 "config/config.example.yaml" "${pkgdir}/etc/${pkgname%-git}/config.yaml"
-    install -vDm644 fonts/ch.ttf -t ${pkgdir}/usr/share/fonts/TTF/
-    install -vDm644 fonts/en.otf -t ${pkgdir}/usr/share/fonts/OTF/
+    install -vDm644 fonts/ch.ttf ${pkgdir}/usr/share/fonts/TTF/FZFengYaSongS-GB.ttf
+    install -vDm644 fonts/en.otf ${pkgdir}/usr/share/fonts/OTF/Melete-UltraLight.otf
     install -vDm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -vDm644 "${srcdir}/${pkgname%-git}.service" -t "${pkgdir}/usr/lib/systemd/system/"
 }
