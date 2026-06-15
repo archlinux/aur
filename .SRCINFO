@@ -1,0 +1,18 @@
+pkgbase = txt2regex
+	pkgdesc = Regex wizard for the terminal, written in Bash
+	pkgver = 0.10b
+	pkgrel = 1
+	url = https://github.com/aureliojargas/txt2regex
+	arch = any
+	license = Unlicense
+	makedepends = make
+	makedepends = gettext
+	makedepends = shfmt
+	makedepends = shellcheck
+	depends = bash
+	provides = txt2regex
+	options = !strip
+	source = git+https://github.com/aureliojargas/txt2regex#commit=0f4199127225f021ef3825f3c43ab450748f32dc
+	sha256sums = 58d86ad1a06e56da604866b3d82aac6bf369c220e5113c73a6dd8b31938e2912
+
+pkgname = txt2regex

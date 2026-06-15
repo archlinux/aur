@@ -1,0 +1,4 @@
+[txt2regex]
+source = "regex"
+url = "https://raw.githubusercontent.com/aureliojargas/txt2regex/refs/heads/main/txt2regex.sh"
+regex = "VERSION=(.*)"
