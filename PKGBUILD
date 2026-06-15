@@ -2,7 +2,7 @@
 
 pkgname=shorin-contrib-git
 _pkgname=shorin-contrib
-pkgver=r59.6ff18ab
+pkgver=r64.0507341
 pkgrel=1
 pkgdesc="Shorin's personal Arch Linux toolbox and system utilities (Subcommand version)"
 arch=('any')
@@ -20,6 +20,7 @@ optdepends=(
     'libnotify: for desktop notifications'
     'ffmpeg: for video2gif utility'
     'timg: for lsi image preview'
+    'opencode: for AI-assisted AUR PKGBUILD review in pac'
 )
 
 provides=("${_pkgname}")
@@ -40,9 +41,16 @@ package() {
     install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
 
     # 2. 拍平复制所有脚本
-    find . -mindepth 2 -type f -not -path "*/\.git/*" -exec install -Dm755 {} "${pkgdir}/usr/lib/${_pkgname}/" \;
+    find . -mindepth 2 -type f \
+        -not -path "*/\.git/*" \
+        -not -path "./share/*" \
+        -exec install -Dm755 {} "${pkgdir}/usr/lib/${_pkgname}/" \;
 
-    # 3. 配置全局命令
+    # 3. 安装共享数据文件
+    install -Dm644 "share/prompts/aur-review.md" \
+        "${pkgdir}/usr/share/${_pkgname}/prompts/aur-review.md"
+
+    # 4. 配置全局命令
     install -dm755 "${pkgdir}/usr/bin"
     
     # 系统级（需 root 或全局可用）的命令，直接在打包阶段链接到 /usr/bin
@@ -179,7 +187,7 @@ EOF
 
     chmod +x "${pkgdir}/usr/bin/shorin"
 
-    # 4. Fish 补全 (保持不变)
+    # 5. Fish 补全 (保持不变)
     install -dm755 "${pkgdir}/usr/share/fish/vendor_completions.d"
     cat << 'EOF' > "${pkgdir}/usr/share/fish/vendor_completions.d/shorin.fish"
 complete -c shorin -f
