@@ -1,0 +1,11 @@
+--- a/wasmCompile.mjs	2026-01-24 13:25:58.145122244 -0800
++++ b/wasmCompile.mjs	2026-01-24 13:26:37.945547701 -0800
+@@ -8,7 +8,7 @@
+ import { exec } from "child_process";
+ import fs from "fs";
+ 
+-const EMSCRIPTEN_VERSION = "4.0.12";
++const EMSCRIPTEN_VERSION = "";
+ 
+ try {
+   await new Promise(async (resolve, reject) => {
