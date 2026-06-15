@@ -1,7 +1,7 @@
 pkgbase = disk-test
 	pkgdesc = Block device read-write test utility written in bash
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eomanis.dedyn.io/permshare/disk-test/
 	arch = any
 	license = GPL-3.0-only
@@ -14,6 +14,9 @@ pkgbase = disk-test
 	depends = sed
 	depends = util-linux
 	source = https://www.eomanis.dedyn.io/permshare/disk-test/disk-test-0.4.1.tar.gz
+	source = https://www.eomanis.dedyn.io/permshare/disk-test/disk-test-0.4.1.tar.gz.asc
+	validpgpkeys = F57637E9E5C28F91EE64277B603EEF8FE0A99498
 	sha384sums = 6d63707c3aa1ceaa8c318c27af268e4af0acd30c64bdc632732d83b16d9a893b18e601d3aa3ae05a7b283f6f3aba0094
+	sha384sums = SKIP
 
 pkgname = disk-test

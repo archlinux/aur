@@ -6,14 +6,17 @@
 pkgname='disk-test'
 _pkgverUpstream="0.4.1"
 pkgver="${_pkgverUpstream//-/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Block device read-write test utility written in bash"
 arch=('any')
 url='https://www.eomanis.dedyn.io/permshare/disk-test/'
 license=('GPL-3.0-only')
 depends=('bash' 'coreutils' 'diffutils' 'grep' 'openssl' 'pv' 'sed' 'util-linux')
-source=("https://www.eomanis.dedyn.io/permshare/disk-test/disk-test-${_pkgverUpstream}.tar.gz")
-sha384sums=('6d63707c3aa1ceaa8c318c27af268e4af0acd30c64bdc632732d83b16d9a893b18e601d3aa3ae05a7b283f6f3aba0094')
+source=("https://www.eomanis.dedyn.io/permshare/disk-test/disk-test-${_pkgverUpstream}.tar.gz"
+        "https://www.eomanis.dedyn.io/permshare/disk-test/disk-test-${_pkgverUpstream}.tar.gz.asc")
+sha384sums=('6d63707c3aa1ceaa8c318c27af268e4af0acd30c64bdc632732d83b16d9a893b18e601d3aa3ae05a7b283f6f3aba0094'
+            'SKIP')
+validpgpkeys=('F57637E9E5C28F91EE64277B603EEF8FE0A99498') # eomanis <eomanis at web dot de>
 
 package() {
 	local srcRootDir="${srcdir}/${pkgname}-${_pkgverUpstream}"
