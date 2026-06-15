@@ -1,7 +1,7 @@
 pkgbase = zed-sdk-bin
 	pkgdesc = Stereolabs advanced scalable and customizable AI Vision framework
 	pkgver = 5.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.stereolabs.com/developers/release
 	install = zed-sdk-bin.install
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = zed-sdk-bin
 	depends = libusb
 	depends = libx11
 	depends = patchelf
+	depends = qt5-svg
 	depends = qt6-base
 	depends = zlib
 	optdepends = python: Python API support

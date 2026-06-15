@@ -1,6 +1,6 @@
 pkgname=zed-sdk-bin
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Stereolabs advanced scalable and customizable AI Vision framework"
 arch=('x86_64')
 url="https://www.stereolabs.com/developers/release"
@@ -18,6 +18,7 @@ depends=(
     'libusb'
     'libx11'
     'patchelf'
+    'qt5-svg' # Needed by ZED_Explorer
     'qt6-base'
     'zlib'
 )
