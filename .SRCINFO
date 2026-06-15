@@ -1,15 +1,23 @@
 pkgbase = paho-mqtt-c
 	pkgdesc = Eclipse Paho C Client Library for the MQTT Protocol
-	pkgver = 1.3.14
-	pkgrel = 2
-	url = https://www.eclipse.org/paho/
-	arch = x86_64
+	pkgver = 1.3.16
+	pkgrel = 1
+	url = https://eclipse.dev/paho/
 	arch = aarch64
 	arch = armv7h
+	arch = x86_64
 	license = EPL-2.0
-	makedepends = cmake
+	makedepends = cmake>=3.12
+	makedepends = git
+	depends = glibc
 	depends = openssl
-	source = paho-mqtt-c-1.3.14.tar.gz::https://github.com/eclipse/paho.mqtt.c/archive/refs/tags/v1.3.14.tar.gz
-	sha256sums = 7af7d906e60a696a80f1b7c2bd7d6eb164aaad908ff4c40c3332ac2006d07346
+	depends = util-linux-libs
+	provides = libpaho-mqtt3a.so
+	provides = libpaho-mqtt3as.so
+	provides = libpaho-mqtt3c.so
+	provides = libpaho-mqtt3cs.so
+	source = paho.mqtt.c::git+https://github.com/eclipse/paho.mqtt.c.git#tag=v1.3.16?signed
+	validpgpkeys = 0C3CFB4764727BB13196B0ABA7AE1A8F2CCAB186
+	sha256sums = 4274c5ed75e3891973723232173d9f8d96aad551623a1b6dbaa8a9ccfc518252
 
 pkgname = paho-mqtt-c

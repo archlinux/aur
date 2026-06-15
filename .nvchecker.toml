@@ -1,0 +1,4 @@
+[paho-mqtt-c]
+source = "git"
+git = "https://github.com/eclipse/paho.mqtt.c.git"
+prefix = "v"
