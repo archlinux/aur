@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Drolet <jonathan.drolet@gmail.com>
 pkgname=slang-server-bin
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="A SystemVerilog language server based on the Slang library"
 arch=('x86_64')
@@ -9,9 +9,9 @@ license=('MIT')
 keywords=('systemverilog' 'verilog' 'hdl' 'language-server' 'lsp')
 provides=('slang-server')
 conflicts=('slang-server')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hudson-trading/slang-server/releases/download/v${pkgver}/slang-server-linux-x64-gcc.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hudson-trading/slang-server/releases/download/v${pkgver}/slang-server-linux-x64.tar.gz"
   "LICENSE::https://raw.githubusercontent.com/hudson-trading/slang-server/v${pkgver}/LICENSE")
-sha256sums=('ed807fb6c9fd974a402f7ea04ab15e9a8c9d204303c9b6428af51c06f1ea0b04'
+sha256sums=('6cab5e285bcf85791a0eee874d752c4fe7b743632465083a48f6dae5c2ed326b'
   'SKIP')
 
 package() {

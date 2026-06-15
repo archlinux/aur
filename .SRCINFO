@@ -1,15 +1,15 @@
 pkgbase = slang-server-bin
 	pkgdesc = A SystemVerilog language server based on the Slang library
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/hudson-trading/slang-server
 	arch = x86_64
 	license = MIT
 	provides = slang-server
 	conflicts = slang-server
-	source = slang-server-bin-0.2.6.tar.gz::https://github.com/hudson-trading/slang-server/releases/download/v0.2.6/slang-server-linux-x64-gcc.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/hudson-trading/slang-server/v0.2.5/LICENSE
-	sha256sums = ed807fb6c9fd974a402f7ea04ab15e9a8c9d204303c9b6428af51c06f1ea0b04
+	source = slang-server-bin-0.2.7.tar.gz::https://github.com/hudson-trading/slang-server/releases/download/v0.2.7/slang-server-linux-x64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/hudson-trading/slang-server/v0.2.7/LICENSE
+	sha256sums = 6cab5e285bcf85791a0eee874d752c4fe7b743632465083a48f6dae5c2ed326b
 	sha256sums = SKIP
 
 pkgname = slang-server-bin
