@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bilibili
-_pkgver=1.17.6
-_subver=2
+_pkgver=1.17.9
+_subver=1
 pkgver="${_pkgver}_${_subver}"
 _electronversion=28
 _nodeversion=22
@@ -20,7 +20,7 @@ conflicts=(
 depends=(
     "electron${_electronversion}"
     'ffmpeg'
-    'libappindicator-gtk3'
+    'libappindicator'
 )
 makedepends=(
     'wget'
@@ -39,7 +39,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${_pkgver}-${_subver}"
     "${pkgname}.sh"
 )
-sha256sums=('8c82d96452b964b6c3d5b29937dd498210c65767cac4227510afd16ec667d8cc'
+sha256sums=('49380020a91a56fa64030a44eacda3c5a08ecdfb4e07f5d7edf8e6d9228c75f4'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
