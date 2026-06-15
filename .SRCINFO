@@ -1,6 +1,6 @@
 pkgbase = pdf4qt-bin
 	pkgdesc = Open source PDF editor(Prebuilt version)
-	pkgver = 1.5.3.1
+	pkgver = 1.6.0.0
 	pkgrel = 1
 	url = https://jakubmelka.github.io/
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = pdf4qt-bin
 	optdepends = flite: Text-To-Speech using flite synthesizer,
 	optdepends = libspeechd: Text-To-Speech using speechd synthesizer
 	provides = pdf4qt
-	conflicts = pdf4qt=1.5.3.1
-	source = pdf4qt-1.5.3.1-x86_64.AppImage::https://github.com/JakubMelka/PDF4QT/releases/download/v1.5.3.1/PDF4QT-1.5.3.1-x86_64.AppImage
-	sha256sums = 88af2eacf4f663b2eba872fd8efe2332e2797261d1bd2c2dab42e0201b10aaa5
+	conflicts = pdf4qt=1.6.0.0
+	source = pdf4qt-1.6.0.0-x86_64.AppImage::https://github.com/JakubMelka/PDF4QT/releases/download/v1.6.0.0/PDF4QT-1.6.0.0-x86_64.AppImage
+	sha256sums = a9d170d540137701c34e6ea38db7eecd4e033de0e099d4cb93fa1747432294f2
 
 pkgname = pdf4qt-bin

@@ -3,7 +3,7 @@ pkgname=pdf4qt-bin
 _pkgname=PDF4QT
 _appname=Pdf4qt
 _runname=Pdf4Qt
-pkgver=1.5.3.1
+pkgver=1.6.0.0
 pkgrel=1
 pkgdesc="Open source PDF editor(Prebuilt version)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ optdepends=(
 	'libspeechd: Text-To-Speech using speechd synthesizer'
 )
 source=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${CARCH}.AppImage")
-sha256sums=('88af2eacf4f663b2eba872fd8efe2332e2797261d1bd2c2dab42e0201b10aaa5')
+sha256sums=('a9d170d540137701c34e6ea38db7eecd4e033de0e099d4cb93fa1747432294f2')
 prepare() {
 	if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
