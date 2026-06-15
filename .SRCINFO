@@ -10,6 +10,7 @@ pkgbase = openssl-1.1
 	depends = glibc
 	provides = libcrypto.so
 	provides = libssl.so
+	noextract = CVE-2026-28389.tar
 	source = https://www.openssl.org/source/openssl-1.1.1w.tar.gz
 	source = https://www.openssl.org/source/openssl-1.1.1w.tar.gz.asc
 	source = ca-dir.patch

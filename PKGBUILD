@@ -96,6 +96,9 @@ validpgpkeys=(
 	'A21FAB74B0088AA361152586B8EF1A6BA9DA2D5C'
 	'EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5'
 )
+noextract=(
+	CVE-2026-28389.tar
+)
 
 prepare() {
 	: "${srcdir:?}"
@@ -151,7 +154,13 @@ prepare() {
 		patch -p1 -i "${srcdir}/${patch}.patch"
 	done
 
-	cp -RTv ../test test
+	local tarball
+	# shellcheck disable=SC2043
+	for tarball in \
+		CVE-2026-28389 \
+		; do
+		tar xvf "${srcdir}/${tarball}.tar"
+	done
 }
 
 build() {
@@ -206,6 +215,7 @@ package() {
 : "${depends[@]}"
 : "${license[@]}"
 : "${makedepends[@]}"
+: "${noextract[@]}"
 : "${pkgdesc}"
 : "${pkgrel}"
 : "${pkgver}"
