@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=3x-ui-bin
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
@@ -26,16 +26,16 @@ source_x86_64=( $url/releases/download/v$pkgver/${pkgname:1:4}-linux-amd64.tar.g
 source=(${pkgname:1:4}-updategeo.{service,timer})
 sha256sums=('c42b96797b2e4236fed727f7e75e3768c76cbfeef6aba3716fe0bfc519fc7034'
             '79ad2215d3eecc452577ce98fbaf8e8968f3e95df8b32da657c9decc5534fdfb')
-sha256sums_aarch64=('090a78d4ff58411ba9c61163ead315a663f70282775a8fcd9177a56608eba04b')
-sha256sums_armv7h=('65cbba872c757fcf56e63af271d0fce62078a9bed8fc565f4bdbd700bc470baa')
-sha256sums_i686=('bd43b9dcc5cb39d9ea3fa215029c6788ee7c748503fbc1011510583edf88b954')
-sha256sums_x86_64=('a3890689d7a025cf79acd18420dc1a06202ed6314409441000fff40f00a6b3b9')
+sha256sums_aarch64=('0f7907b56554eba624c51c6aed2a9ba4af1378c8134b30afa5cee622e3100209')
+sha256sums_armv7h=('33933957ae73dd6bc05de0184131a192f9e9dfe696257cd22ea956ba8dd0e15e')
+sha256sums_i686=('1758d08f8d483bb8a64cf4e024ddd156155a4cc197e78068c78ed8557946cc8b')
+sha256sums_x86_64=('06adfff2b27af6d59225338a8112caca882d32d11136d962649826d42c24d12e')
 b2sums=('a6f4eba028beba4f94d78ce40080e531939f98c9fa265c7a27d6ea17777cb549cd65be0193e390850fc418457e204f478c36f87b66844cb0abc69c893192e970'
         'da9c55306c37438f79adfb550d1d0003f14c4d597b170e4424428fc07040391fd904d63f738c46ac92ba13d8c8577b3e4a74bfe119d0f7b914d3e7839c4a0336')
-b2sums_aarch64=('d7b3ea27996b1f67acf77dc02de531c3e142436ca38169a84e80dc2678f55ca2c59d7c761743ee6d55e2f4307f74466bd97247bdd720060642c34294c3a16a87')
-b2sums_armv7h=('02318dc428e364155e76660a0405c37f29a4c03a719e0d307378750249c40a142f93aa868c98cfc8bf9ceb5ff8493e1372eacc4b243731ca9bdea91d22f5c9d7')
-b2sums_i686=('2d55db8888a343cdf290d179e1dd219fdca63f388cb7e8d818bbe9b6f4eb9f0d354146ea6d0401ed77ce812d2642616790e80a0aa756e57654e91dae34f46183')
-b2sums_x86_64=('4b2ae45b8100ec40600982ef0ddd73347991e4b36c5683a483bd3953f843680de8788d9ed4701c4f48264bba57f007c924feecb417fb32dae718cb0d83cd5f00')
+b2sums_aarch64=('41d43943ae6e7efbba44961bd0b0de5be001d778dd46f1c6ecf9b74fbf91b4154431ff8d5779ba58ccd5d00292fb9bccd421580c5fa810f811be3bb7f96b81b0')
+b2sums_armv7h=('d12852ab813a73128d24043d1e69702cd881f38ec1a1d236aa5f1df0168d493f2cb9d27a940365d98c232e20a6d6517b399e3eb7d9859eafb455c5279961f690')
+b2sums_i686=('951b059774ce467b2191c80b9a058ad72afd7c26315a57fc6eac9bc5f7fdc18050ea5d44493fcd3e4f5de0432f8d6f9e1797912b89d311c194c8dcdf6efdd69e')
+b2sums_x86_64=('186529d1369fcfd884afe7b128b971ad1a2e18ba38f2c14377eab32393eae42c6fd0571fe3ae9d13489180a8bfc18f142fbc45867b163f54fcaa97318142e611')
 
 prepare() {
   cd ${pkgname:1:4}
@@ -53,6 +53,7 @@ package() {
   install -vDm 755 ${pkgname:1:4}.sh                              "$pkgdir"/usr/bin/${pkgname:1:4}
   install -vDm 755 ${pkgname:1:4}                              -t "$pkgdir"/usr/lib/${pkgname:1:4}/
   install -vDm 755 bin/xray-linux-*                            -t "$pkgdir"/usr/lib/${pkgname:1:4}/bin/
+  install -vDm 755 bin/mtg-linux-*                             -t "$pkgdir"/usr/lib/${pkgname:1:4}/bin/
   install -vDm 644 bin/geo{ip,site}{,_IR,_RU}.dat              -t "$pkgdir"/usr/lib/${pkgname:1:4}/bin/
   install -vDm 644 ${pkgname:1:4}.service.arch                    "$pkgdir"/usr/lib/systemd/system/${pkgname:1:4}.service
   install -vDm 644 ../${pkgname:1:4}-updategeo.{service,timer} -t "$pkgdir"/usr/lib/systemd/system/
