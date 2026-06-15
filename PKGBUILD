@@ -1,6 +1,6 @@
 # Maintainer: Cavernosa <cvrns at proton dot me>
 pkgname=akrasia
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="CLI task manager inspired by Greek philosophy on self-control"
 arch=('any')
@@ -9,8 +9,8 @@ license=('MIT')
 depends=('sqlite')
 makedepends=('git' 'go')
 checkdepends=()
-source=("git+$url.git#tag=v$pkgver")
-sha256sums=('42c1347719d74dbacd0b81f7436a7b3a13ffab840c06ee0f142272b79bacb4fc')
+source=("git+$url.git#tag=v.$pkgver")
+sha256sums=('a65284063f93fbd08834967238688b644fe62ddfe5e488a06958c42b96d5a948')
 validpgpkeys=()
 
 prepare() {
