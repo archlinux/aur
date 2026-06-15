@@ -1,6 +1,6 @@
 pkgbase = bbm-bin
 	pkgdesc = Backblaze B2 manager: focused CLI for the bu encrypted-bundle workflow (S3-compatible)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/j4y-w4lk3r/bbm
 	license = MIT
@@ -12,13 +12,13 @@ pkgbase = bbm-bin
 	conflicts = bbm-git
 	provides = bbm
 	arch = aarch64
-	source_aarch64 = https://github.com/j4y-w4lk3r/bbm/releases/download/v0.1.1/bbm_0.1.1_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 24c8836278c482c0bdff294d38f5befbd4ae39dc590b59f17c49f98071b16d48
+	source_aarch64 = https://github.com/j4y-w4lk3r/bbm/releases/download/v0.1.2/bbm_0.1.2_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 00b15f5816c949ec319b5eabd00ea0b03ddf98fae78973d2a1e229080afcb014
 	arch = armv7h
-	source_armv7h = https://github.com/j4y-w4lk3r/bbm/releases/download/v0.1.1/bbm_0.1.1_Linux_armv7.tar.gz
-	sha256sums_armv7h = 507c1f797490b83bf8714fb86e251954ef0feee35138351a97725622c0d9c9d3
+	source_armv7h = https://github.com/j4y-w4lk3r/bbm/releases/download/v0.1.2/bbm_0.1.2_Linux_armv7.tar.gz
+	sha256sums_armv7h = a4949a787be53fc367bce3fa3f3f5047166d93c7f0855bf5a0aa20da922af49b
 	arch = x86_64
-	source_x86_64 = https://github.com/j4y-w4lk3r/bbm/releases/download/v0.1.1/bbm_0.1.1_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = a40d10c0964f8dde095c5c9e9c4a9dea73c41051369b02b2fdb6c3d843f9490a
+	source_x86_64 = https://github.com/j4y-w4lk3r/bbm/releases/download/v0.1.2/bbm_0.1.2_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = b49ecafdf375796e81fd8e3ad3e77a501be6cfbe15bc3d1ce86cbc84de7ede52
 	
 pkgname = bbm-bin
