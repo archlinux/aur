@@ -1,0 +1,12 @@
+# makepkg build artifacts
+/pkg/
+/src/
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+# downloaded release sources
+*.tar.gz
+*.gz
+LICENSE-*
+README-*.md
+*.desktop
+*.service
