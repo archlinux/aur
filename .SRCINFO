@@ -1,0 +1,21 @@
+pkgbase = qwc-bin
+	pkgdesc = A utility to count things. Quickly.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/KroqueJa/qwc
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = qwc
+	conflicts = qwc
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/KroqueJa/qwc/v0.1.0/README.md
+	source = LICENSE
+	sha256sums = ff77b03e60c8791f2578bce86116b856f5cfe9f3411ad64eabc595dcc2e581f1
+	sha256sums = 9c86affc128ff5a2fd9437bae5688ef015a948eb3c41cfea36c259e05ab77665
+	source_x86_64 = qwc-x86_64-0.1.0.tgz::https://github.com/KroqueJa/qwc/releases/download/v0.1.0/qwc-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 36fed59d7466250cb9d2b027cf611f1e25b5a4466e80a7785020243542be4026
+
+pkgname = qwc-bin

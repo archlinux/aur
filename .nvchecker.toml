@@ -1,0 +1,5 @@
+[qwc-bin]
+source = "github"
+github = "KroqueJa/qwc"
+use_latest_release = true
+prefix = "v"
