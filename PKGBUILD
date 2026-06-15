@@ -1,12 +1,12 @@
 # Maintainer: SHORiN-KiWATA <fcl709@outlook.com>
 pkgname=shorin-proton-wrapper-git
-pkgver=r3.627dd2f
+pkgver=r8.fec4f34
 pkgrel=1
 pkgdesc="Simple Proton wrapper for running Windows executables"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/proton-wrapper"
 license=('MIT')
-depends=('bash' 'python' 'zenity')
+depends=('bash' 'python' 'python-gobject' 'gtk4')
 optdepends=(
   'steam: Steam runtime support'
   'lutris: Lutris runner support'
@@ -26,7 +26,6 @@ pkgver() {
 
 package() {
   cd "$srcdir/proton-wrapper"
-
   install -Dm755 shorin-proton-wrapper "$pkgdir/usr/bin/shorin-proton-wrapper"
   install -Dm755 shorin-proton-wrapper-select "$pkgdir/usr/bin/shorin-proton-wrapper-select"
   install -Dm644 shorin-proton-wrapper-run-windows-program.desktop "$pkgdir/usr/share/applications/shorin-proton-wrapper-run-windows-program.desktop"

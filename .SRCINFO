@@ -1,6 +1,6 @@
 pkgbase = shorin-proton-wrapper-git
 	pkgdesc = Simple Proton wrapper for running Windows executables
-	pkgver = r3.627dd2f
+	pkgver = r8.fec4f34
 	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/proton-wrapper
 	arch = any
@@ -8,7 +8,8 @@ pkgbase = shorin-proton-wrapper-git
 	makedepends = git
 	depends = bash
 	depends = python
-	depends = zenity
+	depends = python-gobject
+	depends = gtk4
 	optdepends = steam: Steam runtime support
 	optdepends = lutris: Lutris runner support
 	optdepends = curl: download runners
