@@ -1,5 +1,5 @@
 pkgname=dcr
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Cargo-like utility to manage C/C++ projects"
 arch=('x86_64' 'aarch64')
@@ -12,18 +12,18 @@ optdepends=(
   'gcc: build C/C++ projects with GCC'
   'clang: build C/C++ projects with Clang'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/dexoron/dcr/archive/refs/tags/v0.7.2.tar.gz")
-sha256sums=('19d3f1b06fb6c844d19e25c147fe7f5787c90f39f9c8fdc14d28b39d52e6584d')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dexoron/dcr/archive/refs/tags/v0.7.3.tar.gz")
+sha256sums=('518e08af424364a93b5e4775f5ec1c8e7f6b6e69290b94e414196a23206e8ea1')
 
 build() {
-  cd "$srcdir/$pkgname-0.7.2"
+  cd "$srcdir/$pkgname-0.7.3"
   unset CFLAGS CXXFLAGS LDFLAGS
   export RUSTFLAGS="-C linker=cc"
   cargo build --release --locked
 }
 
 package() {
-  cd "$srcdir/$pkgname-0.7.2"
+  cd "$srcdir/$pkgname-0.7.3"
   install -Dm755 "target/release/dcr" "$pkgdir/usr/bin/dcr"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   for manpage in man/man1/*.1; do
