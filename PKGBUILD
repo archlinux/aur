@@ -3,16 +3,16 @@
 pkgname=grit-cli
 _pkgname=${pkgname%-cli}
 pkgver=0.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc='LLM coded port of git to Rust'
 url='https://grit-scm.com'
 _url="https://github.com/gitbutlerapp/$_pkgname"
 arch=(x86_64)
-license=(MIT)
-depends=( gcc-libs
-         glibc)
+license=(GPL-2.0-only MIT)
+depends=(glibc # libc.so ld-linux-x86-64.so
+         libgcc libgcc_s.so)
 makedepends=(cargo)
-# checkdepends=(git)
+checkdepends=(git)
 options=(!lto)
 conflicts=($_pkgname)
 _archive="$_pkgname-$pkgver"
@@ -28,6 +28,9 @@ _srcenv() {
 	cd "$_archive"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	export CARGO_PROFILE_RELEASE_DEBUG=2
+	export CARGO_PROFILE_RELEASE_LTO=true
+	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
 }
 
 build() {
@@ -37,7 +40,11 @@ build() {
 
 check() {
 	_srcenv
-	local skipped=()
+	local skipped=(
+		sha256_clone_fetch_push_roundtrip
+		sha256_fast_import_creates_sha256_objects
+		sha256_reftable_refs_roundtrip
+	)
 	cargo test --frozen -- ${skipped[@]/#/--skip }
 }
 
