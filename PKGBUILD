@@ -10,11 +10,11 @@ depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator' 'librsvg' 'libsecret'
 optdepends=('xterm: for terminal emulation')
 conflicts=('rssh')
 provides=('rssh')
-install="$pkgname.install"
 source=("$pkgname-$pkgver.deb::https://github.com/shihuili1218/rssh/releases/download/v$pkgver/rssh-$pkgver-linux-x86_64.deb"
         "$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/shihuili1218/rssh/main/LICENSE")
 sha256sums=('ae989b35e29d6c99aed9afd1d89842686b49c98ff2109aa311ba87dc9325867d'
             '5ddb2b27c0605dc4c5b71c0766ed702c8a083dacd4868f329f6a9d2a4a1eeec8')
+options=('!debug')
 
 package() {
   # Extract deb package
@@ -34,7 +34,7 @@ Comment=SSH connection manager with desktop GUI, terminal, SFTP, and port forwar
 Exec=rssh %U
 Icon=rssh
 Type=Application
-Categories=Network;System;Utility;
+Categories=Network;
 Terminal=false
 StartupWMClass=rssh
 Keywords=ssh;terminal;sftp;connection;remote;
