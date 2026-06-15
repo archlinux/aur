@@ -1,5 +1,5 @@
 pkgname=cefdetector-bin
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Check how many CEFs are on your Linux."
 arch=('x86_64')
@@ -8,8 +8,8 @@ license=('MIT')
 depends=('webkit2gtk-4.1')
 provides=('cefdetector')
 conflicts=('cefdetector')
-source=("CefDetector_0.1.8_amd64.deb::https://github.com/Tobiichi-Origuchi/CefDetectorLinux/releases/download/v0.1.8/CefDetector_0.1.8_amd64.deb")
-sha256sums=('a679031864b6813d51825d7ef566f001d9e830ad475c8c870b1176aaef3ba5d5')
+source=("CefDetector_0.1.9_amd64.deb::https://github.com/Tobiichi-Origuchi/CefDetectorLinux/releases/download/v0.1.9/CefDetector_0.1.9_amd64.deb")
+sha256sums=('02160dd3e60c10c5072aac9ba25ef3cc8434455a33fc7974ef8fa758b655bd2c')
 
 package() {
     bsdtar -xf data.tar.gz -C "$pkgdir/"
