@@ -1,7 +1,7 @@
 # Maintainer: CagedBird <cagedbird043@gmail.com>
 pkgname=dingtalk-wayland-screenshare-rust-git
 _pkgname=dingtalk-wayland-screenshare
-pkgver=0.1.0
+pkgver=r1.d8c5770
 pkgrel=1
 pkgdesc="Pure Rust rewrite of Wayland screensharing hook for DingTalk, zero-dependency drop-in replacement"
 arch=('x86_64')
@@ -16,8 +16,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-\)g/r\1/;s/-/./g' || \
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  if git describe --long --tags >/dev/null 2>&1; then
+    git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+  else
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  fi
 }
 
 prepare() {
