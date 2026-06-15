@@ -1,0 +1,20 @@
+pkgbase = dingtalk-wayland-screenshare-rust-git
+	pkgdesc = Pure Rust rewrite of Wayland screensharing hook for DingTalk, zero-dependency drop-in replacement
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cagedbird043/dingtalk-wayland-screenshare
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = dingtalk-bin
+	depends = pipewire
+	depends = xdg-desktop-portal
+	provides = dingtalk-wayland-screenshare
+	conflicts = dingtalk-wayland-screenshare
+	conflicts = dingtalk-wayland-screenshare-git
+	source = git+https://github.com/cagedbird043/dingtalk-wayland-screenshare.git
+	sha256sums = SKIP
+
+pkgname = dingtalk-wayland-screenshare-rust-git
