@@ -2,7 +2,7 @@
 
 _plug=nlm-hip
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.1.g82ce77a
+pkgver=2.0.g922cc61
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -41,5 +41,6 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" cmake --install build
+    rm -r "${pkgdir}/usr/local" # Remove stray manifest.vs file
     install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
