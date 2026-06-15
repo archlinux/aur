@@ -1,5 +1,5 @@
 pkgname=kloak-whonix
-pkgver=0.8.5.1
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Kloak is a privacy tool (input device anonymization tool) that hides your typing and mouse movement patterns, which can be used to identify you online."
 arch=('x86_64')
