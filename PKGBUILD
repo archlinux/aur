@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mudlet-bin
 _pkgname=Mudlet
-pkgver=4.20.1
+pkgver=4.21.0
 pkgrel=1
 pkgdesc="⚔️ A cross-platform, open source, and super fast MUD client with scripting in Lua.(Prebuilt version)"
 arch=('x86_64')
@@ -36,10 +36,10 @@ options=(
     '!strip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.tar::${url}/wp-content/files/${_pkgname}-${pkgver}-linux-x64.AppImage.tar"
+    "${pkgname%-bin}-${pkgver}.tar::${_ghurl}/releases/download/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}-linux-x64.AppImage.tar"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7c07ed62def0bb545b6508e3a62594e21f017005bcb5a410c98cc28aabcb3948'
+sha256sums=('a9a2125576db73a247d4f94dd92a38226921b0d186f0cf65630d7e157e228e60'
             'e002b010a25f31d5659799cbcbcecfc25a23e8b16dedf184726d3a7aa812bd79')
 prepare() {
     sed -i -e "
@@ -48,6 +48,9 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${_pkgname}.AppImage" ]; then
         chmod +x "${srcdir}/${_pkgname}.AppImage"
+    fi
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
     fi
     "${srcdir}/${_pkgname%-bin}.AppImage" --appimage-extract > /dev/null
 }
