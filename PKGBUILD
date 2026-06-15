@@ -1,8 +1,8 @@
 # Maintainer: Oystein Sture <oysstu at gmail.com>
 
 pkgname=ros2-lyrical-base
-pkgver=2026.04.30
-pkgrel=2
+pkgver=2026.05.22
+pkgrel=1
 _rosdist="Lyrical Luth"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -40,11 +40,11 @@ conflicts=(
   "ros2-${_rosdist_short}"
 )
 source=(
-    "https://github.com/ros2/ros2/archive/release-${_rosdist_short}-beta-${pkgver//.}.tar.gz"
+    "https://github.com/ros2/ros2/archive/release-${_rosdist_short}-${pkgver//.}.tar.gz"
     "ros2-variants-0.13.0.tar.gz::https://github.com/ros2/variants/archive/0.13.0.tar.gz"
     "colcon.meta"
 )
-sha256sums=('61f9e6a3fc954c6bfeea7fd264349653e6c473118930f21909fb607947e5fd5d'
+sha256sums=('bb126100ed069a41239f4b40df8ca29d63814dd58422d57f2322118bd51f492a'
             'd14cc0ec092511b26cb2be60200eaeb59ee1b1d21750b7d63fe98f476e6db89f'
             'b9de02644cd80ffee220401ca4b2c00290f4329d655fa06491e0f218700f61ad')
 
@@ -54,7 +54,7 @@ prepare() {
     # Clone the repos
     printf "Cloning ros2 repositories\n"
     mkdir -p "$srcdir/ros2/src"
-    vcs import "$srcdir/ros2/src" < $srcdir/ros2-release-${_rosdist_short}-beta-${pkgver//.}/ros2.repos
+    vcs import "$srcdir/ros2/src" < $srcdir/ros2-release-${_rosdist_short}-${pkgver//.}/ros2.repos
 }
 
 build() {
