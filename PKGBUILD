@@ -1,17 +1,17 @@
-	# Maintainer: Keegan Boldt <keeganboldt@gmail.com>
+# Maintainer: Keegan Boldt <keeganboldt@gmail.com>
 # Contributor: Jerome Leclanche <jerome@leclan.ch>
 
 _pkgname=ktools
 pkgname=$_pkgname-git
 pkgver=r224.3933241
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Tools for modding of the game Don't Starve, by Klei Entertainment"
 arch=("i686" "x86_64")
 url="https://github.com/dstmodders/ktools.git"
 license=("GPL-2.0-or-later")
 depends=("imagemagick")
-makedepends=("git" "cmake" "pugixml" "boost" "tclap")
+makedepends=("git" "cmake" "pugixml" "boost" "tclap" "libsquish")
 optdepends=("libzip: for zip support")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
