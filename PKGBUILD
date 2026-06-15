@@ -2,12 +2,12 @@
 pkgname=python-httpx-ntlm
 _pkgname=httpx-ntlm
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='NTLM authentication support for HTTPX.'
 arch=('any')
 url='https://github.com/ulodciv/httpx-ntlm'
 license=('ISC')
-depends=('python')
+depends=('python' 'python-httpx' 'python-pyspnego')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
 sha512sums=('32d6705588de4142e7f357214733da6d4a3a5ba1dff83aec93bd584a12745308d11d15268e36361d6a9d3f1d8114acffa5f7cf44c27d91dcf03911ae03871b59')
