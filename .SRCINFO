@@ -1,7 +1,7 @@
 pkgbase = vim-jsx-pretty
 	pkgdesc = Vim syntax highlighting for React JSX and TSX
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MaxMEllon/vim-jsx-pretty
 	arch = any
 	license = MIT
