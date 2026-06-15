@@ -10,7 +10,7 @@ depends=('electron' 'libusb')
 makedepends=('bun')
 options=('!strip')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8bf0b88294e2c9e084c242873c679fbed3be40c14264d8cb0d36228910b1d3bf')
+sha256sums=('70e141b28426c6b74a210a708396ed55742b286c7c967920ed9787c73051267f')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
