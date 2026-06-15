@@ -3,11 +3,12 @@
 pkgbase=sherpa-onnx
 pkgname=("${pkgbase}" "python-${pkgbase}")
 pkgver=1.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Speech-to-text, text-to-speech, speaker diarization, speech enhancement, source separation, and VAD using next-gen Kaldi with onnxruntime without Internet connection."
 arch=("x86_64" "aarch64" "arm" "riscv64")
 url="https://github.com/k2-fsa/${pkgbase}"
 license=("Apache-2.0")
+depends=("jack" "onnxruntime" "protobuf")
 makedepends=("cargs" "cmake" "ninja" "pybind11" "python-build" "python-installer" "python-setuptools" "python-wheel")
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "asio-asio-1-24-0.tar.gz::https://github.com/chriskohlhoff/asio/archive/refs/tags/asio-1-24-0.tar.gz"
@@ -70,7 +71,6 @@ build() {
 }
 
 package_sherpa-onnx() {
-    depends=("jack" "onnxruntime" "protobuf")
     provides=("${pkgname}=${pkgver}")
 
     cd "${pkgbase}-${pkgver}"
