@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onekey-wallet-bin
 _pkgname=OneKey-Wallet
-pkgver=6.3.0
+pkgver=6.4.0
 _electronversion=39
-pkgrel=2
+pkgrel=1
 pkgdesc="Secure, open source and community driven crypto wallet runs on all platforms and trusted by millions.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -16,6 +16,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
+    'nodejs'
 )
 makedepends=(
     'asar'
@@ -30,8 +31,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('57f258f0036c561196835924e75b9274d0c7622b73b25aebef0bd2e1d70dace1')
-sha256sums_x86_64=('d313f6f26b818abf92597f0a12c0bb15369497ca67ec5e3f75f9ae074350539f')
+sha256sums_aarch64=('a7f455059a343ea0ee463fccc9cc9fccf7bdc9613f464f5665c6c339e6108989')
+sha256sums_x86_64=('6cae83492632f0baef55a54a95e310dd3a4717afb996c0de9ab15ec8f3322f8d')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
