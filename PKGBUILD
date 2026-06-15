@@ -69,11 +69,11 @@ build() {
   export HOME="$srcdir/.home"
   export PUB_CACHE="$srcdir/.pub-cache"
   export CARGO_HOME="$srcdir/.cargo"
+  export GIT_CONFIG_GLOBAL="$srcdir/.gitconfig"
   export PATH="$srcdir/flutter/bin:$srcdir/flutter/bin/cache/dart-sdk/bin:$PATH"
   mkdir -p "$HOME"
 
-  git config --global --add safe.directory "$srcdir/flutter"
-  git config --global --add safe.directory "$srcdir/$_gitname"
+  git config --global --add safe.directory '*'
 
   flutter config --no-analytics --enable-linux-desktop >/dev/null
   flutter --version
