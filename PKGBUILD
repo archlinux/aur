@@ -11,7 +11,7 @@ _appexe="${_pkgname}"
 pkgname="${_pkgname}-beta"
 _appid=uk.co.powdertoy.tpt
 _appvendor=powdertoy
-pkgver=99.0.376
+pkgver=100.0.398
 pkgrel=1
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat! - Beta branch"
 arch=(x86_64 i686)
@@ -23,7 +23,7 @@ url="https://powdertoy.co.uk/"
 license=('GPL3')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/The-Powder-Toy/The-Powder-Toy/archive/refs/tags/v${pkgver}b.tar.gz")
-sha256sums=('c7d8ec36f5319e09929e78ee0c359aa3c84007439ea920c26c17b23e3a74496a')
+sha256sums=('6f567328c9dfdb8313f5eb98d5aaf78cbec2080916fac1f86b553b2272bcc183')
 
 build() {
   cd "The-Powder-Toy-${pkgver}b"
@@ -73,7 +73,7 @@ package() {
   install -Dm755 "build/${_appexe}" "${pkgdir}/usr/bin/${_appexe}"
   install -Dm644 "build/resources/powder.desktop" "${pkgdir}/usr/share/applications/${_appid}.desktop"
   install -Dm644 "build/resources/appdata.xml" "${pkgdir}/usr/share/metainfo/${_appid}.appdata.xml"
-  install -Dm644 "resources/save.xml" "${pkgdir}/usr/share/mime/packages/${_appvendor}-save.xml"
+  install -Dm644 "build/resources/save.xml" "${pkgdir}/usr/share/mime/packages/${_appvendor}-save.xml"
   install -Dm644 "resources/powder.man" "${pkgdir}/usr/share/man/man6/${_appexe}.6"
 
   local theme_dir="${pkgdir}/usr/share/icons/hicolor" mimetype="application-vnd.powdertoy.save"
