@@ -8,7 +8,7 @@ pkgbase = cppfetch
 	makedepends = glibc
 	makedepends = make
 	source = cppfetch-0.1.3.tar.gz::https://github.com/oxodx/cppfetch/archive/0.1.3.tar.gz
-	source = https://raw.githubusercontent.com/oxodx/cppfetch/master/LICENSE.md
+	source = https://raw.githubusercontent.com/oxodx/cppfetch/main/LICENSE.md
 	sha1sums = SKIP
 	sha1sums = SKIP
 

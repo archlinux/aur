@@ -4,7 +4,7 @@
 
 pkgname=cppfetch
 pkgver=0.1.3
-source=(cppfetch-0.1.3.tar.gz::https://github.com/oxodx/cppfetch/archive/0.1.3.tar.gz https://raw.githubusercontent.com/oxodx/cppfetch/master/LICENSE.md)
+source=(cppfetch-0.1.3.tar.gz::https://github.com/oxodx/cppfetch/archive/0.1.3.tar.gz https://raw.githubusercontent.com/oxodx/cppfetch/main/LICENSE.md)
 sha1sums=(SKIP SKIP)
 # This PKGBUILD is not a full PKGBUILD
 # pkgname, pkgver, source, and sha1sums are to be generated
