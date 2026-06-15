@@ -1,13 +1,13 @@
 pkgbase = gccli-bin
 	pkgdesc = A command-line interface for Garmin Connect — activities, health, courses, workouts, devices, and more
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/bpauli/gccli
 	arch = x86_64
 	license = MIT
 	provides = gccli
 	conflicts = gccli
-	source = https://github.com/bpauli/gccli/releases/download/v1.8.0/gccli_1.8.0_linux_amd64.tar.gz
-	sha256sums = 4d8317ab91c3fda3adc83a771bb473f16bbf36ecb2639feb3b323a352257d42a
+	source = https://github.com/bpauli/gccli/releases/download/v1.9.0/gccli_1.9.0_linux_amd64.tar.gz
+	sha256sums = 6dbd081e3b89a58bd3e2cb217fd1dd71eb41040c9abd032f3795fdc62278ac66
 
 pkgname = gccli-bin
