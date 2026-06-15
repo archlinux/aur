@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Aburady <accounts@aburady.com>
 pkgname=plezy
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="A modern Plex and Jellyfin client"
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ makedepends=(
   'unzip'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/edde746/plezy/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ad0b50f4858e21997fd8fe4631ed2512fdb05beb67416f1940f385a5dff6c8d6')
+sha256sums=('a28feb6c72eed2805294dbb017ea4b768b278c32bb030bac75edf9f2b480eed3')
 
 prepare() {
   cd "$pkgname-$pkgver"
