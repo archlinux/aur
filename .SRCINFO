@@ -1,6 +1,6 @@
 pkgbase = rustledger
 	pkgdesc = Fast, pure Rust implementation of Beancount double-entry accounting
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/rustledger/rustledger
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = rustledger
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
-	source = rustledger-0.15.0.tar.gz::https://github.com/rustledger/rustledger/archive/refs/tags/v0.15.0.tar.gz
-	sha256sums = b9e1289a32aa4f21064a54f8d2fbbc2011b93dc32e5dda5c91f5ffbdf1e00e7b
+	source = rustledger-0.16.0.tar.gz::https://github.com/rustledger/rustledger/archive/refs/tags/v0.16.0.tar.gz
+	sha256sums = 28d6a19aba7d4ed0933bae54b74ae99a7acd16b650deba1dbe1d694cfffe56c4
 
 pkgname = rustledger
 	pkgdesc = Fast, pure Rust implementation of Beancount double-entry accounting
