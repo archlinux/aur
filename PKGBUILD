@@ -1,6 +1,6 @@
 pkgname=stroke
 pkgver=0.4.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-database desktop studio built with Tauri"
 arch=('x86_64')
 url="https://github.com/broisnischal/stroke"
@@ -22,9 +22,8 @@ package() {
 
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/stroke" <<'WRAPPER'
 #!/usr/bin/env sh
+export EGL_PLATFORM=x11
 export WEBKIT_DISABLE_DMABUF_RENDERER=1
-export WEBKIT_FORCE_SANDBOX=0
-export WEBKIT_DISABLE_COMPOSITING_MODE=1
 export GDK_BACKEND=x11
 export GSK_RENDERER=cairo
 exec /opt/stroke/stroke.AppImage "$@"

@@ -1,7 +1,7 @@
 pkgbase = stroke
 	pkgdesc = Cross-database desktop studio built with Tauri
 	pkgver = 0.4.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/broisnischal/stroke
 	arch = x86_64
 	license = custom
