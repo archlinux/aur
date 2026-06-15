@@ -1,6 +1,6 @@
 pkgbase = pam_pinlock
 	pkgdesc = Secure, feature-rich PIN-based PAM module for Linux
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/saltnpepper97/pam_pinlock
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = pam_pinlock
 	depends = argon2
 	options = !debug
 	backup = etc/pinlock.conf
-	source = pam_pinlock-1.2.0.tar.gz::https://github.com/saltnpepper97/pam_pinlock/archive/refs/tags/v1.2.0.tar.gz
-	sha256sums = 802c810892d011b7eef7e6393687b2e4ea9356a20d5a728667324bc1aa495dab
+	source = pam_pinlock-1.2.1.tar.gz::https://github.com/saltnpepper97/pam_pinlock/archive/refs/tags/v1.2.1.tar.gz
+	sha256sums = 9f0635f4024b0234182b632c7ff897017092fe835e5eb92ff3070f78a6b7cfa8
 
 pkgname = pam_pinlock
