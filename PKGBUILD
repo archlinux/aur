@@ -1,14 +1,14 @@
 # Maintainer: Lukas Grossar <lukas.grossar@gmail.com>
 
 pkgname=azwi-bin
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="CLI that helps manage Entra ID Workload Identity"
 arch=('x86_64')
 url="https://github.com/Azure/azure-workload-identity"
 license=('MIT')
 source=("https://github.com/Azure/azure-workload-identity/releases/download/v${pkgver}/azwi-v${pkgver}-linux-amd64.tar.gz")
-sha256sums=('d816d24c865d86ca101219197b493e399d3f669e8e20e0aaffc5a09f0f4c0aaf')
+sha256sums=('d478f877bea2882666f0ddda3c42276140c86167a938d801df484d109890d5c0')
 
 package() {
   install -Dm 755 "$srcdir/azwi" -t "$pkgdir/usr/bin"
