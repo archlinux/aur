@@ -1,6 +1,6 @@
 pkgbase = oxideterm-bin
 	pkgdesc = All-in-one terminal workspace — local shells, SSH, SFTP, remote IDE, AI agent, and file manager in a single native binary. Built with Tauri 2 and pure Rust SSH (no OpenSSL). Smart reconnect, MCP, RAG, plugins, 30+ themes, 11 languages.(Prebuilt version)
-	pkgver = 1.6.2
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://oxideterm.app/
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = oxideterm-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = oxideterm=1.6.2
+	provides = oxideterm=1.6.5
 	conflicts = oxideterm
-	source_aarch64 = oxideterm-1.6.2-aarch64.rpm::https://github.com/AnalyseDeCircuit/oxideterm/releases/download/v1.6.2/OxideTerm-1.6.2-1.aarch64.rpm
-	sha256sums_aarch64 = 8e1ed44dea717cb2e09c6cbce841388d3de5deafbd73ea4dde8f25c9fcf761e3
-	source_x86_64 = oxideterm-1.6.2-x86_64.rpm::https://github.com/AnalyseDeCircuit/oxideterm/releases/download/v1.6.2/OxideTerm-1.6.2-1.x86_64.rpm
-	sha256sums_x86_64 = 53ce553a380dd8b8359e322ae9c68325ee7fcb121582971269730fc3b0cd701e
+	source_aarch64 = oxideterm-1.6.5-aarch64.rpm::https://github.com/AnalyseDeCircuit/oxideterm/releases/download/v1.6.5/OxideTerm_1.6.5_linux_arm64.rpm
+	sha256sums_aarch64 = c67017ba1dc8d48c1a676779329adf9d79d07935efa4196d7ac5db6a34f11d3f
+	source_x86_64 = oxideterm-1.6.5-x86_64.rpm::https://github.com/AnalyseDeCircuit/oxideterm/releases/download/v1.6.5/OxideTerm_1.6.5_linux_x64.rpm
+	sha256sums_x86_64 = 17ffc6684862b57c106eb26b03e65fefd4e2efb336cb5d15a6059c063320d431
 
 pkgname = oxideterm-bin
