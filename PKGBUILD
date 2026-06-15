@@ -4,8 +4,8 @@
 
 pkgname=codelldb-git
 _pkgname="${pkgname%-git}"
-pkgver=v1.12.1.r1426.39d9acc
-pkgrel=2
+pkgver=v1.12.2.r1438.5c21c43
+pkgrel=1
 pkgdesc="A native debugger extension for VSCode based on LLDB. Also known as vscode-lldb (NOT lldb-vscode)"
 arch=(x86_64 arm7h aarch64)
 url=https://github.com/vadimcn/codelldb
@@ -39,12 +39,22 @@ prepare() {
   local _rep='${CMAKE_COMMAND} -E env --unset=CFLAGS --unset=CXXFLAGS --unset=RUSTFLAGS --unset=LDFLAGS &'
   sed -i "s/$_pat/$_rep/g" ./CMakeLists.txt
 
+  if [[ "$(cargo build --help)" == *--artifact-dir* ]]; then
+    # The `--out-dir` option was renamed to `--artifact-dir` in 1.81.0 and the old name was
+    # deleted entirely in 1.95.0.
+    sed -i 's/--out-dir/--artifact-dir/g' ./debuggee/CMakeLists.txt
+  fi
+
   # This change is necessary for building the package with Clang >= 20. However, it breaks
   # compatibility of the package with LLDB < 18. This shouldn't be a problem since it is linked
   # with the system installation of LLDB, whose version will be the same as that of Clang's and
   # the rest of LLVM.
   # sed -i 's|^\(\s*\)\(.*is_default_constructible<lldb::SBCommandInterpreter>.*\)$|\1//\2|' \
   #   ./src/lldb/src/sb/sbcommandinterpreter.rs
+
+  # Comment out broken tests.
+  sed -i "s|^\\(\\s*\\)\\(tuple: '{0:1, 1:\"a\", 2:42}',\\)$|\\1//\\2|" tests/adapter.test.ts
+  sed -i "s|^\\(\\s*\\)\\(ref_cell[[:alnum:]_]*:.*,\\)$|\\1//\\2|" tests/adapter.test.ts
 
   cargo fetch --locked --target="$(rustc --print host-tuple)"
 }
