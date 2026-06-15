@@ -7,18 +7,13 @@ _shellname=dankcal
 _iconname=dankcalendar
 _desktopid=com.danklinux.dankcalendar
 pkgver=0.1.1.r0.g677116e
-pkgrel=1
+pkgrel=2
 pkgdesc='Local, Google, Microsoft, and CalDAV calendars for the dank desktop (git)'
 arch=('x86_64' 'aarch64')
 url="https://github.com/AvengeMedia/$_pkgname"
 license=('MIT')
-depends=('quickshell')
-optdepends=(
-    'dankmaterialshell-git: companion Material 3 desktop shell'
-    'ttf-material-symbols-variable-git: UI glyphs used by the shell'
-    'inter-font: default UI font'
-    'matugen-bin: dynamic wallpaper-based theming'
-)
+depends=('quickshell' 'qt6-declarative')
+optdepends=('dms-shell: dynamic theming via DankMaterialShell colors')
 makedepends=('git' 'go')
 provides=("$_binname=$pkgver" "$_pkgname=$pkgver")
 conflicts=("$_binname" "$_pkgname" 'dankcalendar-bin')
