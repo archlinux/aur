@@ -1,0 +1,26 @@
+pkgbase = xodus-git
+	pkgdesc = The great gaming migration to Linuxc
+	pkgver = r65.11dd5a0
+	pkgrel = 1
+	url = https://github.com/xodus-gaming/xodus
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = openssl
+	depends = gdk-pixbuf2
+	depends = glibc
+	depends = dbus
+	depends = webkit2gtk-4.1
+	depends = glib2
+	depends = gtk3
+	depends = libgcc
+	depends = libsoup3
+	depends = cairo
+	provides = xodus
+	conflicts = xodus
+	options = !lto
+	source = git+https://github.com/xodus-gaming/xodus.git
+	sha256sums = SKIP
+
+pkgname = xodus-git
