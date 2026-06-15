@@ -8,8 +8,8 @@
 # Contributor: wxt1221 <3264117476@qq.com>
 # 感谢 Peternal 对 SVG图标 的授权
 pkgname=bilibili-bin
-_pkgver=1.17.6
-_subver=2
+_pkgver=1.17.9
+_subver=1
 pkgver="${_pkgver}_${_subver}"
 _electronversion=28
 epoch=5
@@ -26,7 +26,7 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'ffmpeg'
     "electron${_electronversion}"
-    'libappindicator-gtk3'
+    'libappindicator'
     'libinput'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${_pkgver}-${_subver}/${pkgname%-bin}-${_pkgver}.aarch64.rpm")
@@ -37,8 +37,8 @@ source=(
 )
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('e2f5df6b1a8b164a481a1ec5caa940894993cf1a91186736a12618074a9d1b58')
-sha256sums_x86_64=('281973d9d9e21c041e274166159cd5330db65e1ac7edd8bc0ee6c522918e5405')
+sha256sums_aarch64=('d11cdba5d14f282e96eb203def8081b5e229795bbab1b316e98fd054c1e7f3e4')
+sha256sums_x86_64=('741a86d38f28875c79ece6a6391c28e3edc1f4573d41f04599375d9df46bce10')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
