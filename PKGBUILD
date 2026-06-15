@@ -108,8 +108,17 @@ prepare() {
 	# Files created by the patches
 	rm -f \
 		include/internal/unicode.h \
+		test/certs/cve-2026-28388-ca.pem \
+		test/certs/cve-2026-28388-ca.pem \
+		test/certs/cve-2026-28388-crls.pem \
+		test/certs/cve-2026-28388-leaf.pem \
 		test/recipes/70-test_npn.t \
+		test/recipes/80-test_cms_data/dh-cert.pem \
+		test/recipes/80-test_cms_data/dh-key.pem \
+		test/recipes/80-test_cms_data/ecdh-cert.pem \
+		test/recipes/80-test_cms_data/ecdh-key.pem \
 		test/recipes/80-test_pkcs12_data/bad{1,2,3}.p12 \
+		test/smime-certs/smrsa3-cert.pem \
 		util/perl/TLSProxy/NextProto.pm \
 		;
 
