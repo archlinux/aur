@@ -1,6 +1,54 @@
 
         ChangeLog file for safeclib
 
+Changes in 3.9.2
+	- Fix vsnprintf_s two buffer sizes by 1 (Bernd Kuhls, Khem Raj)
+        - Fixes for !HAVE_VSNWPRINTF_S
+	- Fixes for mingw64 dropping MINGW_HAS_SECURE_API
+	- Fixed logic for --disable-float-exp
+	- Fixed kernel compilation, no __attribute__((noreturn))
+	  without slabort
+	- Update Unicode to 17
+	- Update Dockerfiles and CI
+	- Add ENOMEM errors when malloc fails
+	  in wcsicmp_s.c, wcsnatcmp_s, wcsnorm_s.c,
+          vsnprintf_s, snwprintf_s, swprintf_s, vsnwprintf_s
+	- Added portable_isinf fallback also for newlib
+	- Added cmake support
+
+Changes in 3.9.1
+        - Forgot to bump SO_VERSION and API_VERSION to 3.9
+
+Changes in 3.9
+	- Add long double support to vsnprintf_s. GH #103
+	  With fixes for %a, %g, %G, %#g.
+	- Added *printf_s configure flags --disable-float, --disable-float-exp,
+          --disable-long-long, --disable-long-double, --disable-printf-ptrdiff
+	- Fixed %lc, %ls bug in vsnprintf_s.
+	- Fixed 5 wrong case-mappings with Unicode 15: GH #145.
+	  2 GEORGIAN, 3 VITHKUQI characters.
+	- Fixes for non-POSIX systems missing fileno and ftruncate. GH #136
+	  (ecospro compiler)
+
+Changes in 3.8.2
+	- Fixed vsnprintf_s safec_etoa div-by-zero exceptions. GH #144
+	- Fixed C90 compliance, decl-after-stmt. Matthias Schulz.
+	- Use portable inttypes format specifiers. Matthias Schulz.
+	- Fixed unused variable warning. Matthias Schulz.
+        - Add aarch64 CI to github. drone.io became unresponsive.
+
+Changes in 3.8.1
+        - Forgot to bump SO_VERSION and API_VERSION to 3.8
+
+Changes in 3.8
+        - Fixed wrong *printf_s \0 termination. Broken since 3.7. GH #124.
+        - Fixed getenv_s to not handle_error for non-existent env var. GH #119
+        - Added a single include/safec.h for all 3 public headers. GH #114
+        - Changed wording of Null termination to Zero termination. GH #130
+        - Improve arm/aarch64 MEMORY_BARRIER, GH #116
+        - strpbrk_s: check for slen overflow or early exit,
+        - Update to Unicode 15.0
+
 Changes in 3.7.1
         - Fixed powerpc compilation of the perf tests. GH #113
 
