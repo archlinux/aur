@@ -3,7 +3,7 @@
 _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname='Nuclear Player'
-pkgver=1.39.1
+pkgver=1.40.2
 _nodeversion=24
 pkgrel=1
 pkgdesc="Streaming music player that finds free music for you."
@@ -15,6 +15,8 @@ depends=(
     'webkit2gtk-4.1'
     'libsoup3'
     'gtk3'
+    'wavpack'
+    'gst-plugins-good'
 )
 makedepends=(
     'pnpm'
@@ -28,7 +30,7 @@ optdepends=(
     'gst-libav: FFmpeg-based codec support'
 )
 source=("${pkgname}-${pkgver}::git+${_ghurl}#tag=player@${pkgver}")
-sha256sums=('3ab782504d6d74ac2439033e5487bf0975a3b0e89173ff1d2f96009d00bafc7d')
+sha256sums=('5d0570e26201b62e3012bae6424050b36bb05387a9f0708c8fd2aae6808fde73')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
