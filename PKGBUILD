@@ -5,7 +5,7 @@
 # Modified for a proper AUR release
 
 pkgname=grexa-bin
-pkgver=1.4.1
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Fast Linux file content search with tabs, replace, and AI assistance"
 arch=('x86_64')
