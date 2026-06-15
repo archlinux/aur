@@ -2,7 +2,7 @@
 pkgname=jumpapp-ng
 pkgver=1.2.1
 pkgrel=1
-pkgdesc="A run-or-raise application switcher for any X11 desktop (maintained fork)"
+pkgdesc="A run-or-raise application switcher for any X11 desktop"
 arch=('any')
 url="https://github.com/musqz/jumpapp"
 license=('MIT')

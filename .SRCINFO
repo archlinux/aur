@@ -1,5 +1,5 @@
 pkgbase = jumpapp-ng
-	pkgdesc = A run-or-raise application switcher for any X11 desktop (maintained fork)
+	pkgdesc = A run-or-raise application switcher for any X11 desktop
 	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/musqz/jumpapp
