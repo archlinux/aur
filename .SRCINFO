@@ -1,6 +1,6 @@
 pkgbase = python-memor
 	pkgdesc = Reproducible Structured Memory for LLMs
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/openscilab/memor
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-memor
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	source = https://github.com/openscilab/memor/archive/v1.1.tar.gz
-	sha256sums = cb2fe71f1764ddb667019962779d04bad5921aad6f197077b4ebd8c3e557d7c8
+	source = https://github.com/openscilab/memor/archive/v1.2.tar.gz
+	sha256sums = 16b363716b8b1a4e1b7362ab1511a4ce0639be69917c41c65d14b940ad268370
 
 pkgname = python-memor
