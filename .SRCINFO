@@ -1,6 +1,6 @@
 pkgbase = yozefu
 	pkgdesc = A TUI for exploring data in Kafka clusters
-	pkgver = 0.0.29
+	pkgver = 0.0.30
 	pkgrel = 1
 	url = https://github.com/MAIF/yozefu
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = yozefu
 	depends = gcc-libs
 	depends = openssl
 	options = !lto
-	source = yozefu-0.0.29.tar.gz::https://github.com/MAIF/yozefu/archive/v0.0.29.tar.gz
-	sha512sums = 8147d5754c178530fbeef2060e94f8dd13202a414870a7afa25b10a7906168e516082643331e58ca33f03b288f36e86ed9d73662045e85f16aad4c0577d2b620
+	source = yozefu-0.0.30.tar.gz::https://github.com/MAIF/yozefu/archive/v0.0.30.tar.gz
+	sha512sums = 433a68c3c7a64c045de667519e07b7e2f6bceea51da43d3fa5053bdda81a36bb40467eca602d7bdd5d56eec992fdc724ee84c5a50b86f5d7d0ccc7a872d14d15
 
 pkgname = yozefu
