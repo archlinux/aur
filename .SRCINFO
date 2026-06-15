@@ -1,0 +1,20 @@
+pkgbase = 3x-ui-mtg-core
+	pkgdesc = Highly opinionated MTPROTO proxy for Telegram (for *x-ui)
+	pkgver = 2.2.8
+	pkgrel = 1
+	url = https://github.com/9seconds/mtg
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	provides = x-ui-mtg-core
+	conflicts = x-ui-mtg-core
+	options = !debug
+	source = https://github.com/9seconds/mtg/archive/v2.2.8/3x-ui-mtg-core-2.2.8.tar.gz
+	sha256sums = 7808d81f91c44fed8e40ffbfd63dabc5461e551bd9783f0cd6af3f923ee1aee2
+	b2sums = 13760e35336a56cb5fb1b1524adc3c741419a247804476db79c482b4fcd5501336f7a107d012c6d45e917ac9465d9eb75a162532a8f296a9fc571ad01606c622
+
+pkgname = 3x-ui-mtg-core
