@@ -2,7 +2,7 @@
 pkgname=python-ten-git
 _pkgname=ten
 pkgver=r156.bf4098b
-pkgrel=1
+pkgrel=2
 pkgdesc='A (small) web exploit framework for Python.'
 arch=('any')
 url='https://github.com/cfreal/ten'

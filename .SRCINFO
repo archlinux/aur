@@ -1,7 +1,7 @@
 pkgbase = python-ten-git
 	pkgdesc = A (small) web exploit framework for Python.
 	pkgver = r156.bf4098b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cfreal/ten
 	arch = any
 	license = custom
