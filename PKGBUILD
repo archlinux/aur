@@ -1,25 +1,36 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgname=sse-bin
-pkgver=15.0.8_1
+# PKGBUILD
+pkgname=majestic-linux-runner-git
+pkgver=r38.3613cfd
 pkgrel=1
-pkgdesc="Paranoia Secret Space Encryptor File and Text desktop utilities from Paranoiaworks"
-arch=('x86_64')
-url="https://paranoiaworks.mobi"
-license=('custom')
-source=(
-    "$url/download/files/pfte_${pkgver//_/-}_amd64.deb"
-    "license.txt"
-)
-sha256sums=(
-    '31b3fae30d3e26804f5ed77bbd66920e824042a239c94720023dded78c571e3c'
-    'f23431d1e94d187fe3e0254b8a530a875d8615bbe451e9d3f564627835e7d527'
-)
+pkgdesc="Python orchestration runner for Majestic RP on Linux via Proton"
+arch=('any')
+url="https://github.com/j0kertrup/majestic-rp-linux"
+license=('MIT')
+depends=('python' 'asar')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'git')
+provides=('majestic-linux-runner')
+conflicts=('majestic-linux-runner')
+source=("git+https://github.com/j0kertrup/majestic-rp-linux.git"
+        "majestic-linux.desktop"
+        "majestic-linux.png")
+sha256sums=('SKIP'
+            'f0b970bc44b34bd04f1a994b8f45901e0ee118491423895eab4d624a330cf1a7'
+            '446abf0e2e7c856f55ae95c1794fa3746832567531fc5a6f678038b618b438a2')
 
-options=('!strip')
+pkgver() {
+    cd majestic-rp-linux
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd majestic-rp-linux
+    python -m build --wheel --no-isolation
+}
 
 package() {
-    bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
-    echo "Installing license and desktop file..."
-    install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
-    install -Dm644 "${pkgdir}/opt/pfte/lib/pfte-Paranoia_File_and_Text_Encryption.desktop" "${pkgdir}/usr/share/applications/pfte-Paranoia_File_and_Text_Encryption.desktop"
+    cd majestic-rp-linux
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    
+    install -Dm644 ../majestic-linux.desktop "$pkgdir/usr/share/applications/majestic-linux.desktop"
+    install -Dm644 ../majestic-linux.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/majestic-linux.png"
 }

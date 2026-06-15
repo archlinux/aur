@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Majestic RP
+Comment=Launcher for Majestic RP on Linux
+Exec=majestic-linux
+Icon=majestic-linux
+Terminal=false
+Type=Application
+Categories=Game;
