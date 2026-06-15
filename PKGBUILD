@@ -2,7 +2,7 @@
 # Contributor: Noah Heller <softwareenginer@pm.me>
 _emsdk=4.0.12
 pkgname=advantagescope-git
-pkgver=26.0.2.r60.gc550d0de
+pkgver=26.0.2.r66.g93cbdb70
 pkgrel=1
 epoch=
 pkgdesc="robot diagnostics, log review/analysis, and data visualization application tool"
@@ -43,7 +43,7 @@ build() {
   jq '. + { homepage: "https://github.com/Mechanical-Advantage/AdvantageScope", version: "'"${pkgver/.r/+r}"'" }' package.json >temp.json && mv temp.json package.json
   npm run build -- --linux --config.linux.target=pacman
   cd dist
-  tar xvf advantagescope-${pkgver/.r/+r}.pacman
+  tar xvf advantagescope-${pkgver%.r*}.pacman
 }
 
 package() {
