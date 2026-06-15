@@ -1,15 +1,15 @@
 pkgbase = hello-http-bin
 	pkgdesc = HTTP client for testing REST APIs, WebSocket, GraphQL and gRPC endpoints
-	pkgver = 1.7.1
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://sunny-chung.github.io/hello-http/
-	arch = any
+	arch = x86_64
 	license = Apache-2.0
-	makedepends = inkscape
-	source = https://github.com/sunny-chung/hello-http/releases/download/v1.7.1/HelloHTTP-v1.7.1-linux-X64.tar.gz
+	makedepends = svgo
+	source = https://github.com/sunny-chung/hello-http/releases/download/v1.9.0/HelloHTTP-v1.9.0-linux-X64.tar.gz
 	source = https://raw.githubusercontent.com/sunny-chung/hello-http/refs/heads/main/appicon/appicon.svg
 	source = hello-http.desktop
-	sha256sums = SKIP
+	sha256sums = ada2fa9213567dd23278c04cb2f4b28cb204448d3d88ec73f56d98c8fa4d2fa3
 	sha256sums = fa5814b3663bc17b8ac410e0ffbd7b40e3605fb0ec14c8daa268667001982d81
 	sha256sums = 0dfb61352dcaa0eb8343c64c64062fc8935cb0de9857e3ff71d1e95001dd341c
 
