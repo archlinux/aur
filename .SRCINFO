@@ -1,7 +1,7 @@
 pkgbase = cortex-bin
 	pkgdesc = Local-first, open-source NotebookLM alternative — a desktop study OS
-	pkgver = 1.0.6
-	pkgrel = 2
+	pkgver = 1.0.7
+	pkgrel = 1
 	url = https://github.com/PndaMan/cortex
 	arch = x86_64
 	license = Apache-2.0
@@ -18,7 +18,7 @@ pkgbase = cortex-bin
 	optdepends = age: backup encryption
 	provides = cortex
 	conflicts = cortex
-	source = https://github.com/PndaMan/cortex/releases/download/v1.0.6/Cortex_1.0.6_amd64.deb
-	sha256sums = 520c5628804dd91c93b9a960bd14a6e055e4e189917bd9876bdc01277a129424
+	source = https://github.com/PndaMan/cortex/releases/download/v1.0.7/Cortex_1.0.7_amd64.deb
+	sha256sums = d0bcb16552c9b684ac332bce8b8f2c4acd78eb2d56ec216b6a19fb8e39191a75
 
 pkgname = cortex-bin
