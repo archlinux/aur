@@ -1,5 +1,5 @@
 pkgname=cppfetch
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A cmd fetch tool made in cpp"
 arch=('x86_64')
