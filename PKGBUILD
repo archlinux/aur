@@ -1,52 +1,50 @@
 # Maintainer: Amro Emad <korialo001 at gmail dot com>
 
-# Note: added `skip-dependecy-check` as a work-around setuptool being limited to < 81 by upstream
-# Also less important check tests are mainly coverage we do not want that anyway.
-
 pkgname=python-spotifyscraper
 _pkgname=spotifyscraper
-pkgver=v2.1.5
-pkgrel=2
-pkgdesc="Spotify Scraper to extract all the information from spotify, download mp3 with cover of the song"
+pkgver=v3.2.0
+pkgrel=1
+pkgdesc="Extract public Spotify data — tracks, albums, artists, playlists, podcasts & lyrics — without the official API. Sync + async, typed models, one dependency."
 arch=('any')
 url="https://spotifyscraper.readthedocs.io"
 depends=(
-  'python-requests'
-  'python-beautifulsoup4'
-  'python-yaml'
-  'python-eyed3'
-  'python-urllib3'
-  'python-click'
-  'python-rich'
-  'python-toml'
+  'python>=3.10'
+  'python-httpx>=0.27'
 )
-optdepends=('python-selenium: for JavaScript content'
-	    'python-webdriver-manager: automatically downloads and manages browser drivers for Selenium')
+optdepends=(
+  'python-mutagen: for spotifyscraper media'
+  'python-playwright: for spotifyscraper browser'
+  'python-typer: for spotifyscraper cli'
+)
 makedepends=(
   'git'
   'python-build'
   'python-installer'
   'python-wheel'
-  'python-setuptools'
-  'python-lxml'
-  'python-cssselect'
-  'python-soupsieve'
-  'python-filetype'
-  'python-fake-useragent'
-  'python-packaging'
-  'python-tqdm'
-  'python-pyparsing'
-  'python-deprecation'
-  'python-certifi'
+  'python-hatchling'
+)
+checkdepends=(
+  'python-pytest'
+  'python-respx'
+  'python-pytest-asyncio'
+  'python-mutagen'
+  'python-playwright'
+  'python-typer'
+  'python-pytest-timeout'
 )
 
 source=("git+https://github.com/AliAkhtari78/${_pkgname}#tag=${pkgver}")
 license=('MIT')
-sha256sums=('a946a388f28e140640ae6c4975364befc9ef47ff9b2beef5a184687790f3fce2')
+sha256sums=('ef58c2a24e8042c77a28404f0057ac33eb8a139b9d20b005d9d8642ba6338c24')
 
 build() {
   cd "$_pkgname"
-  python -m build --wheel --no-isolation --skip-dependency-check
+  python -m build --wheel --no-isolation
+}
+
+check(){
+  cd "$_pkgname"
+  pytest
 }
 
 package() {
