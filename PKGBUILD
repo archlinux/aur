@@ -1,6 +1,6 @@
 # Maintainer: indyfive11 <203553604+indyfive11@users.noreply.github.com>
 pkgname=vm-curator-gtk
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="GTK4/libadwaita graphical frontend for the vm-curator QEMU/KVM manager"
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
     'qemu-base: minimal QEMU without GUI tools'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/indyfive11/vm-curator-gtk/archive/v$pkgver.tar.gz")
-sha256sums=('64a7192eeac1806327b0a50d62c39555eca1003a05f080a399a27c521086fecd')
+sha256sums=('7adf4eb4fe4e6d66504238ef5315843f2df61126f57b1f782a12cca474d7f353')
 
 prepare() {
     cd "$pkgname-$pkgver"
