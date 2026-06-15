@@ -1,7 +1,7 @@
 pkgbase = epub-tools
 	pkgdesc = Command line utilities for working with epub files
 	pkgver = 4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/dinofp/epub-tools
 	arch = x86_64
 	license = ISC

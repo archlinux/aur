@@ -2,7 +2,7 @@
 
 pkgname=epub-tools
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line utilities for working with epub files"
 arch=('x86_64')
 url="https://codeberg.org/dinofp/${pkgname}"
@@ -15,6 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/dinofp/${pkgname}/arc
 sha256sums=('210791e8837287f889ff7eaf6426925760aeac17c02459810001441f0ff5e845')
 build() {
   cd "${srcdir}/${pkgname}"
+  LDFLAGS="${LDFLAGS//-Wl,-z,pack-relative-relocs /}"
   PREFIX="../dist" ./util/install.sh
 }
 package() {
