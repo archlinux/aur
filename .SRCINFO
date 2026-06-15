@@ -1,6 +1,6 @@
 pkgbase = dealers-choice
 	pkgdesc = Online Multiplayer Stud and Draw Poker, Texas Hold'em and Omaha
-	pkgver = 0.0.14
+	pkgver = 0.0.15
 	pkgrel = 1
 	url = https://github.com/Dealer-s-Choice/dealers-choice
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = dealers-choice
 	depends = sdl2
 	depends = sdl2_image
 	depends = sdl2_ttf
-	source = https://github.com/Dealer-s-Choice/dealers-choice/releases/download/v0.0.14/dealers-choice-0.0.14.tar.xz
-	sha256sums = c7589d3aa2e201919c26e1f8d21daaee626f55c8beb8b8b36a6aed4f6d1b01b8
+	source = https://github.com/Dealer-s-Choice/dealers-choice/releases/download/v0.0.15/dealers-choice-0.0.15.tar.xz
+	sha256sums = c8c7030d281c0e8f14faf7473478f366ad2f22391f05f9f7deaa33066df39b89
 
 pkgname = dealers-choice
