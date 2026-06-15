@@ -39,6 +39,8 @@ pkgbase = deal-ii
 	options = !debug
 	options = !strip
 	source = https://github.com/dealii/dealii/releases/download/v9.7.1/dealii-9.7.1.tar.gz
+	source = kokkos5.patch
 	sha256sums = 0f2096ef83db54fdcebe9f3d148fa713f63f1c3f567941b53bcb4a1a8ea7de43
+	sha256sums = 393b92468034cb6c28d721621ba012426d88ef5f08119d0b203f9f94ba8208b6
 
 pkgname = deal-ii
