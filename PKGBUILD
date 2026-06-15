@@ -25,6 +25,7 @@ depends=(
   'zstd'
 )
 makedepends=(
+  'clang'
   'cmake'
   'ed'
   'git'
@@ -50,7 +51,11 @@ prepare() {
 }
 
 build() {
+  # GooseStation is built with clang (matches the builder toolchain); the
+  # fastjmp file-scope asm does not link under gcc.
   cmake -S "${_duckstation_srcdir}" -B build \
+    -DCMAKE_C_COMPILER=clang \
+    -DCMAKE_CXX_COMPILER=clang++ \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=OFF \
     -DCMAKE_DISABLE_PRECOMPILE_HEADERS=OFF \
