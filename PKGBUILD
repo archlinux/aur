@@ -1,6 +1,6 @@
 # Maintainer: Rodrigo Brito <rodrigo@w3ti.com.br>
 pkgname=prosa
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc="Editor de texto moderno, open source e em modo escuro — suíte Rodrigo Brito"
 arch=('x86_64')
@@ -21,14 +21,25 @@ package() {
 
   # Symlink em /usr/bin (o after-install do .deb não roda na AUR).
   install -dm755 "${pkgdir}/usr/bin"
-  ln -sf /opt/Prosa/prosa "${pkgdir}/usr/bin/prosa"
+  
+  # Tenta encontrar o executável (geralmente 'prosa' ou 'Prosa')
+  if [ -f "${pkgdir}/opt/Prosa/prosa" ]; then
+    ln -sf /opt/Prosa/prosa "${pkgdir}/usr/bin/prosa"
+  elif [ -f "${pkgdir}/opt/Prosa/Prosa" ]; then
+    ln -sf /opt/Prosa/Prosa "${pkgdir}/usr/bin/prosa"
+  fi
 
-  # O .deb já instala os ícones hicolor 16→1024; acrescentamos só o fallback
-  # legado em /usr/share/pixmaps, que alguns ambientes ainda consultam.
-  if [ -f "${pkgdir}/usr/share/icons/hicolor/256x256/apps/prosa.png" ]; then
-    install -Dm644 \
-      "${pkgdir}/usr/share/icons/hicolor/256x256/apps/prosa.png" \
-      "${pkgdir}/usr/share/pixmaps/prosa.png"
+  # O .deb já instala os ícones hicolor; acrescentamos o fallback em /usr/share/pixmaps.
+  # Procuramos por prosa.png ou Prosa.png em qualquer tamanho.
+  local icon_src=$(find "${pkgdir}/usr/share/icons/hicolor" -name "prosa.png" -o -name "Prosa.png" | head -n 1)
+  if [ -n "$icon_src" ]; then
+    install -Dm644 "$icon_src" "${pkgdir}/usr/share/pixmaps/prosa.png"
+  fi
+
+  # Forçar o uso do caminho absoluto no desktop file para garantir compatibilidade.
+  local desktop_file=$(find "${pkgdir}/usr/share/applications" -name "*.desktop" | head -n 1)
+  if [ -n "$desktop_file" ]; then
+    sed -i 's|^Icon=.*|Icon=/usr/share/pixmaps/prosa.png|' "$desktop_file"
   fi
 
   # O chrome-sandbox precisa de setuid root.
