@@ -1,7 +1,7 @@
 pkgbase = amiberry
 	pkgdesc = Optimized Amiga emulator
-	pkgver = 8.2.0
-	pkgrel = 3
+	pkgver = 8.2.1
+	pkgrel = 1
 	url = https://github.com/BlitterStudio/amiberry
 	arch = x86_64
 	license = GPL-3.0-only
@@ -26,10 +26,10 @@ pkgbase = amiberry
 	depends = zlib
 	depends = libpng
 	depends = libglvnd
-	provides = amiberry=8.2.0
+	provides = amiberry=8.2.1
 	conflicts = amiberry-git
 	conflicts = amiberry-lite
-	source = amiberry::git+https://github.com/BlitterStudio/amiberry.git#tag=v8.2.0
-	sha256sums = 4c00512b7b5ec7ab7f91fd089f7076729ad17e0744750d348708ea559a6668c8
+	source = amiberry::git+https://github.com/BlitterStudio/amiberry.git#tag=v8.2.1
+	sha256sums = 3deb6f6a379410bf0e787d2d4e582eab9233b12fdcf1361c95287e051b151d3a
 
 pkgname = amiberry
