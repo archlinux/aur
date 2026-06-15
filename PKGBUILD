@@ -113,38 +113,43 @@ prepare() {
 	# set ca dir to /etc/ssl by default
 	patch -p0 -i "$srcdir/ca-dir.patch"
 
-	patch -p1 -i "${srcdir}/CVE-2023-5678.patch"
-	patch -p1 -i "${srcdir}/CVE-2024-0727-1.patch"
-	patch -p1 -i "${srcdir}/CVE-2024-0727-2.patch"
-	patch -p1 -i "${srcdir}/CVE-2024-2511.patch"
-	patch -p1 -i "${srcdir}/CVE-2024-4741.patch"
-	patch -p1 -i "${srcdir}/CVE-2024-5535-1.patch"
-	patch -p1 -i "${srcdir}/CVE-2024-5535-2.patch"
-	patch -p1 -i "${srcdir}/CVE-2024-5535-3.patch"
-	patch -p1 -i "${srcdir}/CVE-2024-5535-4.patch"
-	patch -p1 -i "${srcdir}/CVE-2024-5535-5.patch"
-	patch -p1 -i "${srcdir}/CVE-2024-5535-6.patch"
-	patch -p1 -i "${srcdir}/CVE-2024-5535-7.patch"
-	patch -p1 -i "${srcdir}/CVE-2024-5535-8.patch"
-	patch -p1 -i "${srcdir}/CVE-2024-9143.patch"
-	patch -p1 -i "${srcdir}/CVE-2024-13176.patch"
-	patch -p1 -i "${srcdir}/CVE-2025-9230.patch"
-	patch -p1 -i "${srcdir}/CVE-2025-68160.patch"
-	patch -p1 -i "${srcdir}/CVE-2025-69418.patch"
-	patch -p1 -i "${srcdir}/CVE-2025-69419-1.patch"
-	patch -p1 -i "${srcdir}/CVE-2025-69419-2.patch"
-	patch -p1 -i "${srcdir}/CVE-2025-69420.patch"
-	patch -p1 -i "${srcdir}/CVE-2025-69421.patch"
-	patch -p1 -i "${srcdir}/CVE-2026-22795_CVE-2026-22796.patch"
-	patch -p1 -i "${srcdir}/CVE-2026-28387.patch"
-	patch -p1 -i "${srcdir}/CVE-2026-28388-1.patch"
-	patch -p1 -i "${srcdir}/CVE-2026-28388-2.patch"
-	patch -p1 -i "${srcdir}/CVE-2026-28389-1.patch"
-	patch -p1 -i "${srcdir}/CVE-2026-28389-2.patch"
-	patch -p1 -i "${srcdir}/CVE-2026-28390-1.patch"
-	patch -p1 -i "${srcdir}/CVE-2026-28390-2.patch"
-	patch -p1 -i "${srcdir}/CVE-2026-28390-3.patch"
-	patch -p1 -i "${srcdir}/CVE-2026-28390-4.patch"
+	local patch
+	for patch in \
+		CVE-2023-5678 \
+		CVE-2024-0727-1 \
+		CVE-2024-0727-2 \
+		CVE-2024-2511 \
+		CVE-2024-4741 \
+		CVE-2024-5535-1 \
+		CVE-2024-5535-2 \
+		CVE-2024-5535-3 \
+		CVE-2024-5535-4 \
+		CVE-2024-5535-5 \
+		CVE-2024-5535-6 \
+		CVE-2024-5535-7 \
+		CVE-2024-5535-8 \
+		CVE-2024-9143 \
+		CVE-2024-13176 \
+		CVE-2025-9230 \
+		CVE-2025-68160 \
+		CVE-2025-69418 \
+		CVE-2025-69419-1 \
+		CVE-2025-69419-2 \
+		CVE-2025-69420 \
+		CVE-2025-69421 \
+		CVE-2026-22795_CVE-2026-22796 \
+		CVE-2026-28387 \
+		CVE-2026-28388-1 \
+		CVE-2026-28388-2 \
+		CVE-2026-28389-1 \
+		CVE-2026-28389-2 \
+		CVE-2026-28390-1 \
+		CVE-2026-28390-2 \
+		CVE-2026-28390-3 \
+		CVE-2026-28390-4 \
+		; do
+		patch -p1 -i "${srcdir}/${patch}.patch"
+	done
 
 	cp -RTv ../test test
 }
