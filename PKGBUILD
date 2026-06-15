@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=python-ouroboros-ai
 _name=${pkgname#python-}
-pkgver=0.41.0
+pkgver=0.42.0
 pkgrel=1
 pkgdesc="Specification-first workflow engine for AI coding agents"
 arch=('any')
@@ -36,17 +36,8 @@ optdepends=(
   'python-textual: TUI support'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('ee40f78c7f232065c54db177cc9f22b7cb50c1cac1cfbe92e48900ce5c4b4344')
+sha256sums=('6287686ef3711959d8c424fbc8b8b5d608582f27b59f502fa5efd5b3b5d55d2c')
 install=${pkgname}.install
-
-prepare() {
-  # Upstream pins typer<0.26.0 defensively (#1300), but Arch's python-typer is
-  # already 0.26.x. The pin would force the wheel metadata to advertise an
-  # incompatibility that does not exist in practice; relax it so installing the
-  # wheel produced here against system python-typer makes consistent metadata.
-  cd "${_name//-/_}-${pkgver}"
-  sed -i 's|"typer>=0.12.0,<0.26.0"|"typer>=0.12.0,<1.0.0"|' pyproject.toml
-}
 
 build() {
   cd "${_name//-/_}-${pkgver}"
