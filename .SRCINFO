@@ -14,6 +14,8 @@ pkgbase = dingtalk-wayland-screenshare-rust-git
 	provides = dingtalk-wayland-screenshare
 	conflicts = dingtalk-wayland-screenshare
 	conflicts = dingtalk-wayland-screenshare-git
+	options = !lto
+	options = !debug
 	source = git+https://github.com/cagedbird043/dingtalk-wayland-screenshare.git
 	sha256sums = SKIP
 

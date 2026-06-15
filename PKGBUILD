@@ -1,7 +1,7 @@
 # Maintainer: CagedBird <cagedbird043@gmail.com>
 pkgname=dingtalk-wayland-screenshare-rust-git
 _pkgname=dingtalk-wayland-screenshare
-pkgver=r1.d8c5770
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Pure Rust rewrite of Wayland screensharing hook for DingTalk, zero-dependency drop-in replacement"
 arch=('x86_64')
@@ -13,6 +13,7 @@ provides=('dingtalk-wayland-screenshare')
 conflicts=('dingtalk-wayland-screenshare' 'dingtalk-wayland-screenshare-git')
 source=("git+${url}.git")
 sha256sums=('SKIP')
+options=('!lto' '!debug')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
