@@ -32,7 +32,7 @@ sha256sums_aarch64=('3cb932c162478dfa622456b90fdf577fa300802871573679ad787039ba1
 package() {
 	cd "${srcdir}/" || exit
 
-	install -Dm755 "${_pkgname}_debian_${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 "${_pkgname}_${_arch_prefix}_${CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
 
 	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
