@@ -85,7 +85,7 @@ This project is licensed under the GNU General Public License v3.0 (GPLv3).
 
 ---
 
-## Important NOTE (a.k.a. Troubleshooting a.k.a. I don't know how to fix... YET):
+## Important NOTE (a.k.a. Troubleshooting a.k.a. I don't know how to fix😅... YET😎):
 
 When building the 1.7 version of rclone-wiz, I noticed that aggressive file managers can easily cause FUSE mounts to hang. Because the mount often appears to the system as a standard local drive, your file manager might try to fetch the first few megabytes of every media file simultaneously just to generate preview thumbnails. This will quickly exhaust your RAM or trigger temporary API rate-limiting bans from your cloud provider.
 
