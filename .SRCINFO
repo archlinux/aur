@@ -1,0 +1,17 @@
+pkgbase = libretro-potator-git
+	pkgdesc = Watara Supervision core
+	pkgver = r98.227c5f6
+	pkgrel = 1
+	url = https://github.com/libretro/potator
+	arch = x86_64
+	groups = libretro
+	license = Unlicense
+	makedepends = git
+	makedepends = make
+	depends = libretro-core-info
+	options = !debug
+	options = !lto
+	source = libretro-potator::git+https://github.com/libretro/potator.git
+	sha256sums = SKIP
+
+pkgname = libretro-potator-git
