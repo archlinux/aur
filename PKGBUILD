@@ -2,7 +2,7 @@
 
 pkgname=mangowm-git
 pkgver=r1351.94380a3
-pkgrel=1.2
+pkgrel=1.3
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/mangowm/mango"
 arch=("x86_64")
@@ -14,6 +14,7 @@ depends=(
   pixman
   libxkbcommon
   pcre2
+  pango
   cjson
   libxcb
   xorg-xwayland
