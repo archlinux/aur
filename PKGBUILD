@@ -13,10 +13,10 @@ url='https://jxself.org/firmware'
 license=('LicenseRef-WHENCE')
 makedepends=(
   arm-none-eabi-gcc
+  avr-gcc
   avr-libc
   cmake
   dfu-util
-  gcc-avr
   gperf
   wget
 )
