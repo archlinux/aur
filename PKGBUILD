@@ -1,7 +1,7 @@
 # Maintainer: kekmacska <kekmacska2@proton.me>
 pkgname=linwood-butterfly-git
 pkgbase=linwood-butterfly-git
-pkgver=2.4.0_beta.3_144_git2cba4ce410
+pkgver=2.6.0_beta.0_186_gite8731c0278
 pkgrel=1
 pkgdesc="Development build of Linwood Butterfly, a Flutter-based endless canvas note-taking app"
 arch=('x86_64')
@@ -21,9 +21,7 @@ depends=(
 makedepends=(
   git
   flutter
-  nodejs
   svgo
-  minify
 )
 
 source=('git+https://github.com/LinwoodDev/Butterfly.git')
@@ -38,19 +36,15 @@ pkgver() {
   version="${version//-/_}"
   version="${version//+/_}"
 
-  echo "${version}_git$(git rev-parse --short HEAD)"
+  printf "${version}_git$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd "$srcdir/Butterfly"
 
-  # Optimize SVGs
+  # Optimize images
   svgo . -r --multipass
-
-  # Minify web assets
-  find . -type f \( -iname '*.js' -o -iname '*.css' \
-    -o -iname '*.html' -o -iname '*.json' -o -iname '*.xml' \) \
-    -exec minify -o '{}' '{}' \;
+  oxipng -o max -r -p -s -v -t 4 --timeout 150 ./app/{images,lib,linux,templates,test}
 
   # Build Flutter release
   cd app
@@ -65,7 +59,7 @@ package() {
   local _bindir="/usr/bin"
 
   # Strip debug symbols
-  strip "${_bundle}/butterfly"
+  strip "${_bundle}/butterfly" || true
   strip "${_bundle}/lib/"* || true
 
   # Create target directories
@@ -83,9 +77,7 @@ package() {
     "${_src}/app/build/flutter_assets/images/logo.svg" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/butterfly.svg"
 
-  # Install .desktop file
-  install -Dm644 /dev/stdin \
-    "${pkgdir}/usr/share/applications/butterfly.desktop" <<EOF
+install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/butterfly.desktop" <<'EOF'
 [Desktop Entry]
 Type=Application
 Name=Butterfly
@@ -95,4 +87,6 @@ Icon=butterfly
 Categories=Utility;
 StartupNotify=true
 EOF
+
+chmod 644 "${pkgdir}/usr/share/applications/butterfly.desktop"
 }
