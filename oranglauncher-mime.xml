@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-mrpack">
+    <comment>Modrinth Modpack</comment>
+    <comment xml:lang="lt">Modrinth modpaketas</comment>
+    <icon name="oranglauncher"/>
+    <glob pattern="*.mrpack"/>
+  </mime-type>
+</mime-info>
