@@ -1,6 +1,6 @@
-# Maintainer: BrunoPT <bruno.fl.jesus at gmail dot com>
+# Maintainer: BrunoJesus <bruno.fl.jesus at gmail dot com>
 pkgname=megit
-pkgver=0.9.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A Git GUI repository manager based on EGit Eclipse plugin"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!strip')
 source=("https://github.com/eclipsesource/megit/releases/download/v$pkgver/megit-$pkgver-linux.gtk.x86_64.tar.gz"
         "megit.desktop"
         "egit.png")
-sha256sums=('7b5f3e9f620e7129f8a819da895cf1584cbb2228bad1cb25eea88ab6dcc4c420'
+sha256sums=('6f8d1c519b318046100071e13e66e9dbeff1fc53a2b0065ed3c8c95c4aeddffb'
             '2bd9fb226f4085f9c1b5c8e4d7b64a23f651539947d4239f8a7e29ea599c58be'
             '9f9ff6c58c752e2115057fdd7a25f7a085128dc3f8b8c2ac95adeb6e8c421b75')
 

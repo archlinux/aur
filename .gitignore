@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# Except the files this package needs to track
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!megit.desktop
+!egit.png
