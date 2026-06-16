@@ -1,7 +1,7 @@
 # Maintainer: PiterDeVries <https://aur.archlinux.org/account/PiterDeVries>
 
 pkgname=saugns
-pkgver=0.5.7b
+pkgver=0.5.7c
 pkgrel=1
 pkgdesc="Curses-based SAU parser, player, WAV file writer and signal generator"
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('ncurses' 'alsa-lib')
 conflicts=('saugns')
 provides=('saugns')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/sau/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('6f9117e0d1b31f57f3c4e68e3dc0f921c08d553157e6a35cea15aad96e5b034c')
+sha256sums=('df32eaef0b3b4f94667771de7601bb923b78cf4430e58c4a0894ae92c22daca0')
 
 
 build() {
