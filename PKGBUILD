@@ -2,7 +2,7 @@
 pkgname=wp-desktop-bin
 _appname=WordPress.com
 _pkgname=wpcom
-pkgver=8.2.0
+pkgver=8.2.1
 _electronversion=39
 pkgrel=1
 pkgdesc="WordPress.com for Desktop.(Prebuilt version.Use system-wide electron)"
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_downurl}/releases/download/v${pkgver}/wordpress.com-linux-deb-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('960fa2fff9fa890aa302af08226bded9d79add650eb79fcd6a30b711b39e5798'
+sha256sums=('f417de79c1881da006b497c21d8227783a8a7804d0cc3c268c5145cd2f657a21'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
     echo "Verifying Electron version..."
