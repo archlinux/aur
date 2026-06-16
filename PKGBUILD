@@ -2,7 +2,7 @@
 
 pkgname=epiq
 pkgdesc="CLI based issue tracker TUI - distributed and backed by git"
-pkgver=0.6.20
+pkgver=0.7.1
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/ljtn/epiq"
@@ -21,7 +21,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('921fd71c68a626dc8c629021c31b7176de7e7897bc81e92c489f1f6855862089c383eea7b2a3ef337bd16697a2057f3371bf6b6a59b8916f8ca6e07c17c5c804')
+b2sums=('98706f30a808082a89fcb2f7f775c1ed0804e665deb408d4f62230b1975c4782ae96747e370970c3123fa030c37b5f619feef6e50da3f8d9931bdd99df0f67a6')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
