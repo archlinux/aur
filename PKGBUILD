@@ -3,7 +3,7 @@
 
 pkgname=heroic-games-launcher-electron-git
 _pkgname=HeroicGamesLauncher
-pkgver=2.21.0.r8.g7dfea533a
+pkgver=2.22.0.r6.g471bc6afe
 pkgrel=1
 _electron=electron
 pkgdesc="Native GOG, Epic Games and Amazon games launcher. Development version (Git) using system Electron."
@@ -16,44 +16,7 @@ depends=(
   'zlib'
   'libgcc'
   'hicolor-icon-theme'
-  'qt6-base'
-  'nss'
-  'nspr'
-  'alsa-lib'
-  'libdrm'
-  'libx11'
-  'libxcomposite'
-  'libxdamage'
-  'libxext'
-  'libxfixes'
-  'libxrandr'
-  'libxkbcommon'
-  'libxcb'
-  'gtk3'
-  'pango'
-  'cairo'
-  'glib2'
-  'at-spi2-core'
-  'libcups'
-  'mesa'
-  'systemd-libs'
-  'libxml2'
-  'libxslt'
-  'flac'
-  'c-ares'
-  'libpulse'
-  'minizip'
-  'opus'
-  'libstdc++'
-  'brotli'
-  'fontconfig'
-  'harfbuzz'
-  'libffi'
-  'freetype2'
-  'expat'
-  'libjpeg-turbo'
-  'dbus'
-  'libnghttp2'
+  'bash'
 )
 makedepends=("$_electron" 'git' 'pnpm')
 provides=('heroic-games-launcher')
@@ -61,7 +24,7 @@ conflicts=('heroic-games-launcher')
 source=("git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git"
         "fix-exec-heroic.patch")
 sha256sums=('SKIP'
-            '9d5363c79dea4e3dd341e182497fb673ca23475dd8e0799f16c5d6136051c5a0')
+            '4950bb0cf71901f684cc0ef829ac51e887978ca1c3343c5d1ec1aed54d8478ec')
 
 optdepends=(
   'gamemode: Optimise Linux system performance on demand'
@@ -104,9 +67,13 @@ package() {
   install -d "$pkgdir/opt/heroic"
   install -d "$pkgdir/usr/bin"
 
-  # Use the compiled binary
-  cp -R dist/linux-unpacked/. "${pkgdir}/opt/heroic/"
-  ln -sf "/opt/heroic/heroic" "${pkgdir}/usr/bin/heroic"
+  # Install resources to /opt to avoid container path reservation conflicts
+  install -Dm644 dist/linux-unpacked/resources/app.asar -t "$pkgdir/opt/heroic/"
+  cp -r dist/linux-unpacked/resources/app.asar.unpacked "$pkgdir/opt/heroic/"
+  
+  # Wrapper script
+  echo -e "#!/bin/bash\nexec $_electron /opt/heroic/app.asar \"\$@\"" > "$pkgdir/usr/bin/heroic"
+  chmod +x "$pkgdir/usr/bin/heroic"
 
   # System integration files
   install -Dm644 "flatpak/com.heroicgameslauncher.hgl.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/com.heroicgameslauncher.hgl.png"
