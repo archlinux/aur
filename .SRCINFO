@@ -1,7 +1,7 @@
 pkgbase = vsview-cli
 	pkgdesc = Internal Rust-based CLI module for VSView.
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://pypi.org/project/vsview-cli
 	arch = x86_64
 	license = Unlicense
@@ -13,7 +13,7 @@ pkgbase = vsview-cli
 	makedepends = python-wheel
 	makedepends = python-maturin
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/v/vsview_cli/vsview_cli-1.0.0.tar.gz
-	sha256sums = 1f1111fbc1a87dfba395b65053014a3d71a90232df96f279afcec46acd86c901
+	source = https://files.pythonhosted.org/packages/source/v/vsview_cli/vsview_cli-1.1.0.tar.gz
+	sha256sums = b119bdb559f64bd340afa8f6d0ab63d20cb2a01dc34e8e343391d8862558752b
 
 pkgname = vsview-cli

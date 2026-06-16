@@ -2,8 +2,8 @@
 
 pkgname=vsview-cli
 _origpkgname=vsview_cli
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Internal Rust-based CLI module for VSView.'
 arch=('x86_64')
 url='https://pypi.org/project/vsview-cli'
@@ -21,7 +21,7 @@ makedepends=(
     'python-maturin'
 )
 source=("https://files.pythonhosted.org/packages/source/v/${_origpkgname}/${_origpkgname}-${pkgver}.tar.gz")
-sha256sums=('1f1111fbc1a87dfba395b65053014a3d71a90232df96f279afcec46acd86c901')
+sha256sums=('b119bdb559f64bd340afa8f6d0ab63d20cb2a01dc34e8e343391d8862558752b')
 
 package() {
     cd "${_origpkgname}-${pkgver}" || exit
