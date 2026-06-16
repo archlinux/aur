@@ -1,10 +1,11 @@
-# Maintainer: cilgin <cilgincc@outlook.com>
+# Maintainer: torculus <20175597+torculus@users.noreply.github.com>
+# Contributor: cilgin <cilgincc@outlook.com>
 
 # shellcheck disable=SC2034
 # shellcheck disable=SC2154
 pkgbase=surge-cli
 pkgname=surge
-pkgver=0.8.7
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Surge is a blazing fast, open-source terminal (TUI) download manager built in Go"
 arch=("x86_64")
@@ -13,7 +14,8 @@ license=("MIT")
 depends=("glibc")
 makedepends=("go")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('f7891e8b1052ccab9569bd61b8535d3c4840588f1966d25fcca840c1aa8a934d042daa7984382204073ef60f6f2711b172266125f3af217eb275a27609ec0807')
+sha512sums=('041444e0690c2b42e966681f05eb1d4ec808e38f807d5fc9f02e32e7378c7e882b7a61e5f4b394f827dd1f240c6400abda2ed77d652de6d287c5e2d585335629')
+
 provides=("surge")
 conflicts=("surge")
 
@@ -36,6 +38,7 @@ build() {
 package() {
   cd "Surge-$pkgver" || exit
   install -Dm755 ${pkgname} -t "$pkgdir/usr/bin"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   ./${pkgname} completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/${pkgname}"
   ./${pkgname} completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_${pkgname}"

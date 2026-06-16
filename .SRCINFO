@@ -1,6 +1,6 @@
 pkgbase = surge-cli
 	pkgdesc = Surge is a blazing fast, open-source terminal (TUI) download manager built in Go
-	pkgver = 0.8.7
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/surge-downloader/surge
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = surge-cli
 	depends = glibc
 	provides = surge
 	conflicts = surge
-	source = surge-0.8.7.tar.gz::https://github.com/surge-downloader/surge/archive/v0.8.7.tar.gz
-	sha512sums = f7891e8b1052ccab9569bd61b8535d3c4840588f1966d25fcca840c1aa8a934d042daa7984382204073ef60f6f2711b172266125f3af217eb275a27609ec0807
+	source = surge-0.9.0.tar.gz::https://github.com/surge-downloader/surge/archive/v0.9.0.tar.gz
+	sha512sums = 041444e0690c2b42e966681f05eb1d4ec808e38f807d5fc9f02e32e7378c7e882b7a61e5f4b394f827dd1f240c6400abda2ed77d652de6d287c5e2d585335629
 
 pkgname = surge
