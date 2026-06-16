@@ -8,7 +8,6 @@ pkgbase = oranglauncher
 	makedepends = python
 	makedepends = python-pip
 	makedepends = gcc
-	makedepends = patchelf
 	makedepends = gobject-introspection
 	makedepends = gtk3
 	makedepends = webkit2gtk-4.1

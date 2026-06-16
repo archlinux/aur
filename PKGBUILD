@@ -6,7 +6,7 @@ arch=(x86_64)
 url="https://oranges.lt"
 license=('MIT')
 depends=(glibc tk webkit2gtk-4.1 gtk3 gobject-introspection-runtime)
-makedepends=(python python-pip gcc patchelf
+makedepends=(python python-pip gcc
              gobject-introspection gtk3 webkit2gtk-4.1 cairo pkgconf
              python-setuptools python-wheel)
 conflicts=(oranglauncher-bin)
