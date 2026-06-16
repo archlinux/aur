@@ -16,6 +16,6 @@ pkgbase = squawk-cli
 
 pkgname = squawk-cli
 	depends = glibc
-	depends = libcrypto.so
 	depends = libgcc_s.so
+	depends = libcrypto.so
 	depends = libssl.so

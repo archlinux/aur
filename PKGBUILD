@@ -15,9 +15,6 @@ license=(
 )
 makedepends=(
 	cargo
-	glibc
-	libgcc
-	openssl
 )
 options=(
 )
@@ -35,11 +32,19 @@ sha256sums=('b3e13bd2f6e2cde6e6c97d73f5d86b72a158ad4621546e3c3b52090342e8f707'
 : "${arch[@]}"
 : "${url}"
 : "${license[@]}"
-: "${depends[@]}"
 : "${makedepends[@]}"
 : "${options[@]}"
 : "${source[@]}"
 : "${sha256sums[@]}"
+
+declare -gA _depends=(
+	[glibc]="glibc"
+	[libgcc]="libgcc_s.so"
+	[openssl]="libcrypto.so libssl.so"
+)
+makedepends+=(
+	"${!_depends[@]}"
+)
 
 _list_packages_for_removal() {
 	cargo tree \
@@ -109,11 +114,9 @@ check() {
 }
 
 package() {
+	# shellcheck disable=SC2206
 	depends=(
-		glibc
-		libcrypto.so
-		libgcc_s.so
-		libssl.so
+		${_depends[@]}
 	)
 
 	: "${depends[@]}"
