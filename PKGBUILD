@@ -2,7 +2,7 @@
 pkgname=stuart-bin
 pkgver=0.1.2
 pkgrel=1
-pkgdesc="A serial terminal TUI"
+pkgdesc="A serial terminal TUI - precompiled package"
 arch=('x86_64')
 url="https://github.com/mroetsc/stuart"
 license=('AGPL-3.0-only')
