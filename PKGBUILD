@@ -18,7 +18,7 @@ options=(!lto)
 install="renderide.install"
 source=("$pkgname::git+https://github.com/DoubleStyx/Renderide" "Identifier.patch" "renderide.desktop")
 sha256sums=('SKIP'
-            '37e00b83d4e653ca35dfb31b1b1b899696b37a5193f156430ce1ca7374c91f43'
+            'ca4bc19d7ebba9dea3150f3db90b9193de98d7caf23b2c34a4505c538f23fbc9'
             'ac378d546ceed8ec698601684ae58f92cb131a42aa5186316aa6b99f0e86c907')
 
 pkgver() {
