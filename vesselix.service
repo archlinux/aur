@@ -1,0 +1,16 @@
+[Unit]
+Description=Vesselix Docker dashboard
+Documentation=https://github.com/mavxa/Vesselix
+After=docker.service network-online.target
+Wants=docker.service
+
+[Service]
+Type=simple
+Environment=RUST_LOG=info
+ExecStart=/usr/bin/vesselix --host 127.0.0.1 --port 4747
+Restart=on-failure
+RestartSec=2s
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

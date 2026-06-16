@@ -1,0 +1,22 @@
+pkgbase = vesselix-git
+	pkgdesc = Lightweight local-first Docker dashboard
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/mavxa/Vesselix
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = bun
+	makedepends = git
+	makedepends = rust
+	depends = docker
+	provides = vesselix
+	conflicts = vesselix
+	conflicts = vesselix-bin
+	source = git+https://github.com/mavxa/Vesselix.git
+	source = vesselix.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vesselix-git
