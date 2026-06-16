@@ -6,8 +6,8 @@ diff --git src/Makefile.autotools.am src/Makefile.autotools.am
  
 +__vgmstream_includedir = $(includedir)/vgmstream
 +__vgmstream_include_HEADERS = vgmstream.h streamfile.h util.h streamtypes.h vgmstream_types.h libvgmstream.h libvgmstream_streamfile.h
-+__coding_includedir = $(includedir)/vgmstream/coding
-+__coding_include_HEADERS = coding/g72x_state.h
++__coding_includedir = $(includedir)/vgmstream/coding/libs
++__coding_include_HEADERS = coding/libs/g72x_vgmstream.h
 +__util_includedir = $(includedir)/vgmstream/util
 +__util_include_HEADERS = util/log.h util/reader_get.h util/reader_put.h util/vgmstream_limits.h
 +__base_includedir = $(includedir)/vgmstream/base
