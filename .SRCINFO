@@ -1,0 +1,13 @@
+pkgbase = intgemm
+	pkgdesc = Integer Matrix Multiplication library (kroketio fork, dependency of marian-lite)
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/kroketio/intgemm
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	source = https://github.com/kroketio/intgemm/archive/refs/tags/0.0.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = intgemm
