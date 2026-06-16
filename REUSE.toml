@@ -23,3 +23,11 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "CHANGELOG.md"
+]
+SPDX-FileCopyrightText = "runa contributors"
+SPDX-License-Identifier = "Apache-2.0 OR MIT"
+
