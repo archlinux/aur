@@ -37,13 +37,15 @@ package() {
     install -Dm755 "openfortivpn-gui" "${pkgdir}/usr/bin/openfortivpn-gui"
     install -Dm755 "openfortivpn-gui-helper" "${pkgdir}/usr/bin/openfortivpn-gui-helper"
     install -Dm644 "openfortivpn-gui-helper.service" "${pkgdir}/usr/lib/systemd/system/openfortivpn-gui-helper.service"
-    sed -i 's/^Icon=.*/Icon=com.github.shini4i.openfortivpn-gui/' "com.github.shini4i.openfortivpn-gui.desktop"
     echo "StartupWMClass=com.github.shini4i.openfortivpn-gui" >> "com.github.shini4i.openfortivpn-gui.desktop"
     install -Dm644 "com.github.shini4i.openfortivpn-gui.desktop" "${pkgdir}/usr/share/applications/com.github.shini4i.openfortivpn-gui.desktop"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    mkdir -p "${pkgdir}/usr/share/icons/hicolor"
     for size in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512; do
         if [ -f "hicolor/${size}/apps/openfortivpn-gui.png" ]; then
             install -Dm644 "hicolor/${size}/apps/openfortivpn-gui.png" \
+                "${pkgdir}/usr/share/icons/hicolor/${size}/apps/openfortivpn-gui.png"
+            ln -s "openfortivpn-gui.png" \
                 "${pkgdir}/usr/share/icons/hicolor/${size}/apps/com.github.shini4i.openfortivpn-gui.png"
         fi
     done
