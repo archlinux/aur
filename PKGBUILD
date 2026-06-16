@@ -1,7 +1,7 @@
 # Maintainer: zhzy0077 <zhzy0077@hotmail.com>
 pkgname=intuneme
-pkgver=0.16.0
-pkgrel=2
+pkgver=0.19.0
+pkgrel=1
 pkgdesc="Run Microsoft Intune on an immutable Linux host (systemd-nspawn container)"
 arch=('x86_64')
 url="https://github.com/frostyard/intuneme"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('systemd' 'polkit' 'dbus')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/frostyard/intuneme/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('99e3d02f52f22202c1b289ff40364c64b2dae0c76f8d9e6fe9567ca79812bac6')
+sha256sums=('eb9fc9928adb31c9b275db70a401bf964f03a236dca89534cf42ab6400995da8')
 
 prepare() {
   cd "$pkgname-$pkgver"
