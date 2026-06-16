@@ -1,26 +1,44 @@
 _appid=com.kagi.OrionGtk
 _bundle=/usr/lib/orion-browser/orion.flatpak
+_flathub=https://dl.flathub.org/repo/flathub.flatpakrepo
+
+_recover_msg() {
+  cat >&2 <<EOF
+
+>> Orion's Flatpak install did NOT complete. The bundle is at:
+>>     $_bundle
+>> Finish it any time once you are online:
+>>     sudo flatpak remote-add --system --if-not-exists flathub $_flathub
+>>     sudo flatpak install --system -y $_bundle
+>> Then launch with:  flatpak run $_appid
+
+EOF
+}
 
 _install_bundle() {
-  echo ":: Installing Orion Flatpak bundle (pulls org.gnome.Platform//49, needs network)..."
-  flatpak remote-add --system --if-not-exists flathub \
-    https://dl.flathub.org/repo/flathub.flatpakrepo
-  if flatpak info --system "$_appid" >/dev/null 2>&1; then
-    flatpak install --system -y --reinstall "$_bundle"
-  else
-    flatpak install --system -y "$_bundle"
+  if ! command -v flatpak >/dev/null 2>&1; then
+    echo ">> flatpak is required but not found." >&2
+    _recover_msg
+    return
   fi
-  echo ":: Done. Launch with: flatpak run $_appid"
+
+  if ! flatpak remote-add --system --if-not-exists flathub "$_flathub" 2>/dev/null; then
+    echo ">> Could not reach flathub (no network during install?)." >&2
+    _recover_msg
+    return
+  fi
+
+  local args=(--system -y)
+  flatpak info --system "$_appid" >/dev/null 2>&1 && args+=(--reinstall)
+
+  echo ">> Installing Orion + org.gnome.Platform//49 via flatpak..."
+  if flatpak install "${args[@]}" "$_bundle"; then
+    echo ">> Orion installed. Launch with:  flatpak run $_appid"
+  else
+    _recover_msg
+  fi
 }
 
-post_install() {
-  _install_bundle
-}
-
-post_upgrade() {
-  _install_bundle
-}
-
-pre_remove() {
-  flatpak uninstall --system -y "$_appid" || true
-}
+post_install() { _install_bundle; }
+post_upgrade() { _install_bundle; }
+pre_remove()   { flatpak uninstall --system -y "$_appid" 2>/dev/null || true; }

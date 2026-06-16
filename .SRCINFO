@@ -1,7 +1,7 @@
 pkgbase = orion-browser
 	pkgdesc = Orion, a fast WebKit browser by Kagi (Linux beta). Ships and installs the official Flatpak bundle.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://orionbrowser.com/platforms/linux
 	install = orion-browser.install
 	arch = x86_64

@@ -1,14 +1,13 @@
 # Maintainer: Federico Torrielli <evilscript@protonmail.com>
 pkgname=orion-browser
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Orion, a fast WebKit browser by Kagi (Linux beta). Ships and installs the official Flatpak bundle."
 arch=('x86_64' 'aarch64')
 url="https://orionbrowser.com/platforms/linux"
 license=('LicenseRef-proprietary')
 depends=('flatpak')
 install="$pkgname.install"
-# Bundle is built against org.gnome.Platform//49; flatpak pulls it at install time.
 options=('!strip' '!debug')
 
 source_x86_64=("oriongtk-$pkgver-x86_64.flatpak::https://orionbrowser.com/download/oriongtk.$pkgver.flatpak")
