@@ -1,7 +1,7 @@
 # Maintainer: Daniel Liland <celsiuss@await.sh>
 
 pkgname=preflight
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A modern slicer built for precision and performance. "
 arch=('x86_64')
@@ -16,11 +16,9 @@ makedepends=('cmake' 'glu' 'ninja' 'git' 'boost' 'catch2'
   'cereal' 'cgal' 'eigen' 'nlohmann-json' 'glad' 'pybind11')
 options=('!makeflags')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/oozebot/preFlight/archive/refs/tags/v${pkgver}.tar.gz"
-  0001-fix-building-for-arch.patch
-  0002-occt-wrapper-patch.patch)
-sha256sums=('d2e8f000620504fa50e1a433460a83103eff5a6d6621632fffde015c1955e588'
-  '3d867fddf126429d466024e2294365707e1eeb228ad285a63425ba930b8efc54'
-  'c1a10ea0f55202c113fecbc8cb0134c6f4e96abc9265ae3a899a0801b497748b')
+  0001-fix-building-for-arch.patch)
+sha256sums=('a7657c845052709e488223bcdfa756654d5a7b5c93770d9e30f7cad8ff53a6ca'
+            '00950c192a500014c7f090d3b394bb21271ad9b9b3b8da0a1594293083de1c9c')
 
 _dir="preFlight-$pkgver"
 
@@ -36,7 +34,6 @@ prepare() {
     src/occt_wrapper/CMakeLists.txt
 
   patch -Np1 -i "${srcdir}/0001-fix-building-for-arch.patch"
-  patch -Np1 -i "${srcdir}/0002-occt-wrapper-patch.patch"
 }
 
 build() {
