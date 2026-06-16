@@ -1,5 +1,5 @@
-# Maintainer: tarball <bootctl@gmail.com>
-# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: tarball <bootctl@gmail.com>
 #
 # From version 0.4.1 onwards, package updates will be delayed by a couple of
 # days. This is due to upstream's tendency to push untested releases and
@@ -9,27 +9,26 @@
 
 pkgname=invidtui
 pkgver=0.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="TUI-based Invidious client"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/darkhz/invidtui"
 license=('MIT')
-depends=('mpv' 'ffmpeg' 'yt-dlp' 'glibc')
+depends=('mpv' 'ffmpeg')
 makedepends=('go')
 optdepends=(
   'mpv-mpris: MPRIS support'
-  'screen: Efficiently resume and suspend instances'
-  'youtube-dl: Alternative to yt-dlp'
+  'yt-dlp: YouTube downloader backend'
+  'youtube-dl: YouTube downloader backend'
 )
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('e74bc9e0cebb56094b45454bab2ae34762b116f6618b02bc7c711d94fbac8d0b')
 
 prepare() {
   cd "$pkgname-$pkgver"
   mkdir -p build
-  go mod download
+  export GOPATH="$srcdir"
+  go mod download -modcacherw
 }
 
 build() {

@@ -1,0 +1,4 @@
+[invidtui]
+source = "git"
+git = "https://github.com/darkhz/invidtui.git"
+prefix = "v"
