@@ -1,6 +1,6 @@
 # Maintainer: Marley <warburtonmarley@proton.me>
 pkgname=fetch-gtk
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A modern, polished GTK4/Libadwaita graphical interface similar to fastfetch."
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python>=3.11' 'python-gobject' 'gtk4' 'libadwaita')
 conflicts=('gtkfetch')
 replaces=('gtkfetch')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/marleylinux/fetch-gtk/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('797628e9ec1ed2771f221b6dee2440759a606be6aa04630a484f536bb29a8ba9')
+sha256sums=('afd781362897f84d17f80c576a7894436dc132d7247a12d151ee9d2c53fd6343')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -27,9 +27,9 @@ package() {
   find "$pkgdir/usr/share/fetch-gtk/assets" -type f -exec chmod 644 {} +
 
   # set up the system launcher icons
-  for size in 256 512; do
+  for size in 16 24 32 48 64 128 256 512; do
     install -d "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps"
-    install -m644 "src/assets/com.marley.fetch-gtk.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/com.marley.fetch-gtk.png"
+    install -m644 "src/assets/icons/${size}x${size}/com.marley.fetch-gtk.png" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/com.marley.fetch-gtk.png"
   done
 
   # install the menu desktop launcher
