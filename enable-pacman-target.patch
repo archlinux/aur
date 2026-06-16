@@ -1,0 +1,19 @@
+Add 'pacman' to electron-builder's Linux target list.
+
+Upstream only configures AppImage/deb/rpm. AUR ships .pkg.tar.zst, so we
+ask electron-builder to additionally produce a .pacman archive that
+package() can extract to harvest the .desktop launcher and the full
+hicolor icon set with their canonical electron-builder names. Built-in
+electron-builder target — no extra dependency.
+
+--- a/packages/desktop/electron-builder.config.ts
++++ b/packages/desktop/electron-builder.config.ts
+@@ -102,7 +102,7 @@ const getBase = (appId: string): Configuration => ({
+         StartupWMClass: appId,
+       },
+     },
+-    target: ["AppImage", "deb", "rpm"],
++    target: ["AppImage", "deb", "rpm", "pacman"],
+   },
+ })
+ 

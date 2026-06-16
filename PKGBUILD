@@ -2,7 +2,7 @@
 
 pkgname=opencode-desktop
 pkgver=1.17.7
-pkgrel=3
+pkgrel=4
 pkgdesc='OpenCode desktop app (built from source, runs on system electron42)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/anomalyco/opencode'
@@ -40,17 +40,20 @@ source=(
   "$pkgname.sh"
   'relax-bun-version.patch'
   'set-desktop-name.patch'
+  'enable-pacman-target.patch'
 )
 sha256sums=('SKIP'
             '84924177801958340d9d06c4f433e8818f1a7119babcfa56384133c7ce59e65f'
             '82b5dcd7c56955af41982d8df7828b11907e58ef0199bb9d2e1edac0a9fbbe21'
-            '32640e478f139cf1658f6948627b14b3e386acf5c589e116a5745ef7c1f0b986')
+            '32640e478f139cf1658f6948627b14b3e386acf5c589e116a5745ef7c1f0b986'
+            'c3a544a2b7ffc252a55da303c2327de4ee075e0b72bf4167d7691fba1cb92ed6')
 
 prepare() {
   cd "$srcdir/$pkgname"
 
   patch -Np1 -i "$srcdir/relax-bun-version.patch"
   patch -Np1 -i "$srcdir/set-desktop-name.patch"
+  patch -Np1 -i "$srcdir/enable-pacman-target.patch"
 }
 
 build() {
@@ -109,36 +112,26 @@ package() {
 
   install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 
-  # Install the .desktop entry from upstream's pre-canned legacy file
-  # (packages/desktop/resources/linux/opencode-desktop.desktop). Upstream
-  # targets only AppImage/deb/rpm in electron-builder, so we no longer
-  # extract a .pacman archive. Rewrite the launcher paths to our wrapper
-  # basename, which is also the Wayland app_id Electron sets via
-  # desktopName (set-desktop-name.patch). Strip NoDisplay so the entry
-  # shows up in app menus.
-  local _src="$srcdir/$pkgname/packages/desktop"
+  # Pull the .desktop entry and full hicolor icon set out of the .pacman
+  # archive electron-builder produced (enable-pacman-target.patch makes
+  # eb include "pacman" in its linux target list). Rewrite the launcher
+  # paths to our wrapper basename, which is also the Wayland app_id
+  # Electron sets via desktopName (set-desktop-name.patch).
+  local _eb="$srcdir/.eb-pacman"
+  rm -rf "$_eb" && mkdir -p "$_eb"
+  bsdtar -xf "$_bld"/dist/*.pacman -C "$_eb"
+
+  local _ebname='ai.opencode.desktop'
   sed -e "s|^Exec=.*|Exec=$pkgname %U|" \
       -e "s|^Icon=.*|Icon=$pkgname|" \
       -e "s|^StartupWMClass=.*|StartupWMClass=$pkgname|" \
-      -e '/^NoDisplay=/d' \
-      "$_src/resources/linux/opencode-desktop.desktop" |
+      "$_eb/usr/share/applications/$_ebname.desktop" |
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-  # Install hicolor icons from icons/prod/. Pick up any <N>x<N>.png and
-  # <N>x<N>@<M>x.png — the latter goes into the (N*M)x(N*M) hicolor bucket.
-  # Skip Square*Logo (Windows tiles) and android/ (mipmap) variants.
-  local icon size mult dest
-  for icon in "$_src"/icons/prod/[0-9]*x[0-9]*.png; do
-    [[ -f "$icon" ]] || continue
-    local base
-    base=$(basename "$icon" .png)
-    if [[ "$base" =~ ^([0-9]+)x[0-9]+(@([0-9]+)x)?$ ]]; then
-      size=${BASH_REMATCH[1]}
-      mult=${BASH_REMATCH[3]:-1}
-      dest=$(( size * mult ))
-      install -Dm644 "$icon" \
-        "$pkgdir/usr/share/icons/hicolor/${dest}x${dest}/apps/$pkgname.png"
-    fi
+  local png size
+  for png in "$_eb"/usr/share/icons/hicolor/*/apps/"$_ebname.png"; do
+    size=$(basename "$(dirname "$(dirname "$png")")")
+    install -Dm644 "$png" "$pkgdir/usr/share/icons/hicolor/$size/apps/$pkgname.png"
   done
 
   install -Dm644 "$srcdir/$pkgname/LICENSE" \
