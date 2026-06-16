@@ -6,7 +6,7 @@ _pkgname='pat-aur'
 pkgbase=${_pkgname}-git
 pkgname=(${_pkgname}-client-git ${_pkgname}-client-firmware-git ${_pkgname}-netns-exec-git ${_pkgname}-host-git)
 pkgver=r596.c86beaa
-pkgrel=2
+pkgrel=3
 pkgdesc='AUR helper and tool to build Arch Linux packages in clean containers.'
 url="https://gitlab.com/patlefort/${_pkgname}"
 license=('GPL-3.0-only' 'MIT')
@@ -15,10 +15,13 @@ makedepends=('git' 'libxslt' 'docbook-xsl' 'cmake' 'ninja')
 arch=('x86_64')
 source=(
 	"git+${url}.git"
-	'https://github.com/zzamboni/elvish-themes.git'
-	'https://github.com/zzamboni/elvish-modules.git'
-	'https://github.com/href/elvish-gitstatus.git')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+	'git+https://github.com/zzamboni/elvish-themes.git'
+	'git+https://github.com/zzamboni/elvish-modules.git'
+	'git+https://github.com/href/elvish-gitstatus.git')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 if ((_enable_flatpak)); then
 	pkgname+=(${_pkgname}-client-flatpak-git)
@@ -39,9 +42,9 @@ prepare() {
 	cd "${_srcdir}"
 
 	git submodule init
-	git config 'submodule.deps/modules/third_party/github.com/href/elvish-gitstatus.url' "$srcdir/elvish-gitstatus"
-	git config 'submodule.deps/modules/third_party/github.com/zzamboni/elvish-themes.url' "$srcdir/elvish-themes"
-	git config 'submodule.deps/modules/third_party/github.com/zzamboni/elvish-modules.url' "$srcdir/elvish-modules"
+	git config 'submodule.modules/third_party/github.com/href/elvish-gitstatus.url' "$srcdir/elvish-gitstatus"
+	git config 'submodule.modules/third_party/github.com/zzamboni/elvish-themes.url' "$srcdir/elvish-themes"
+	git config 'submodule.modules/third_party/github.com/zzamboni/elvish-modules.url' "$srcdir/elvish-modules"
 	git -c 'protocol.file.allow=always' submodule update
 }
 
