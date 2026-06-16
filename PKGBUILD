@@ -7,7 +7,7 @@ pkgdesc="a mouse gesture plug-in for wayfire. port of easystroke"
 arch=('x86_64')
 url="https://github.com/dkondor/wstroke"
 license=('ISC')
-depends=('wayfire>=0.10.0' 'cairo' 'glib2' 'gtk3' 'gtkmm3' 'boost-libs')
+depends=('wayfire<0.11.0' 'wlroots0.19' 'cairo' 'glib2' 'gtk3' 'gtkmm3' 'boost-libs')
 makedepends=('git' 'meson' 'ninja' 'vala')
 optdepends=('wcm' 'libinput>=1.17')
 conflicts=("${pkgname}-git")
