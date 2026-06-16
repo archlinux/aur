@@ -3,18 +3,19 @@
 # compile). Bump pkgver + sha256sums on each release, regenerate .SRCINFO
 # (`makepkg --printsrcinfo > .SRCINFO`), and push to the AUR git remote.
 pkgname=cortex-bin
-pkgver=1.0.15
+pkgver=1.0.16
 pkgrel=1
 pkgdesc="Local-first, open-source NotebookLM alternative — a desktop study OS"
 arch=('x86_64')
 url="https://github.com/PndaMan/cortex"
 license=('Apache-2.0')
-depends=('webkit2gtk-4.1' 'gtk3' 'libsoup3')
+# poppler (pdftotext/pdftoppm) + ffmpeg are VITAL to core ingestion (PDF text/page
+# images, audio), so they're hard deps — the app must not launch without them.
+depends=('webkit2gtk-4.1' 'gtk3' 'libsoup3' 'poppler' 'ffmpeg')
 optdepends=(
   'mpv: background study music'
-  'ffmpeg: audio processing for recordings'
   'libreoffice-fresh: rendered PPTX/DOCX slide previews (text ingest works without it)'
-  'poppler: faster, cleaner PDF text extraction'
+  'tesseract: OCR for scanned PDFs / images'
   'ollama: local, keyless LLM + embeddings'
   'yt-dlp: YouTube / web audio + video ingest'
   'rclone: encrypted cloud backup'
@@ -23,7 +24,7 @@ optdepends=(
 provides=('cortex')
 conflicts=('cortex')
 source=("https://github.com/PndaMan/cortex/releases/download/v${pkgver}/Cortex_${pkgver}_amd64.deb")
-sha256sums=('62d790022cdf03905b81375961d4261b949b04fcdc309d347c00e8fcd65cc1a4')
+sha256sums=('93960321039084d8743654bdbc3d756c2c152db9af33295df3e868a41cf5abe8')
 
 package() {
   # A .deb is an `ar` archive containing data.tar.* with the install tree.
