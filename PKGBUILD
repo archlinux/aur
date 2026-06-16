@@ -2,7 +2,7 @@
 
 _name=livekit-protocol
 pkgname=python-$_name
-pkgver=1.1.16
+pkgver=1.1.17
 pkgrel=1
 pkgdesc='Python protocol stubs for LiveKit.'
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('python' 'python-protobuf')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('e985b3b27741104876eaa4ef87619d55bd71b7391db00b316970f861364f401e')
+sha256sums=('d3e4b3f52996bda39b2ba2458d53b838c5e8ed68f6e371bd6256610a8a39f2fb')
 
 build() {
   cd "$srcdir"/${_name//-/_}-$pkgver
