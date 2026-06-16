@@ -1,0 +1,4 @@
+[neovim-zenbones]
+source = "git"
+git = "https://github.com/mcchrish/zenbones.nvim.git"
+prefix = "v"

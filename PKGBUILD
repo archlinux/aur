@@ -2,7 +2,7 @@
 
 pkgbase=neovim-zenbones
 pkgname=('neovim-zenbones' 'vim-zenbones' 'neovim-zenbones-extras')
-pkgver=4.11.0
+pkgver=4.12.0
 pkgrel=1
 _commit=22b7fb7
 pkgdesc="Contrast-focused Neovim colorscheme"
