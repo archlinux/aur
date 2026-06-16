@@ -5,8 +5,8 @@
 pkgname=mipsel-linux-gnu-gcc
 _pkgname=gcc
 _target="mipsel-linux-gnu"
-pkgver=15.1.0
-pkgrel=3
+pkgver=16.1.0
+pkgrel=1
 pkgdesc="The GNU Compiler Collection for the MIPS architecture"
 url="https://www.gnu.org/software/gcc/"
 arch=('x86_64')
@@ -14,10 +14,10 @@ license=('GPL' 'LGPL' 'FDL')
 depends=('libmpc' 'xz' "${_target}-binutils")
 makedepends=('gmp' 'mpfr')
 options=('!ccache' '!distcc' '!emptydirs' '!libtool' '!strip')
-source=(ftp://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.xz{,.sig})
+source=(https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.xz{,.sig})
 sha256sums=(
-  'e2b09ec21660f01fecffb715e0120265216943f038d0e48a9868713e54f06cea'
-  '981a495a35fdc11e8f9762c2ebe93d250bbd6996618e8fe3d4ebb1f463df8ca9'
+  '50efb4d94c3397aff3b0d61a5abd748b4dd31d9d3f2ab7be05b171d36a510f79' # gcc-16.1.0.tar.xz
+  '33a851c045ea2ef6f580d82b2abfb1dc75d8b270727800028ca5f40c3b4a4246' # gcc-16.1.0.tar.xz.sig
 )
 validpgpkeys=(
   F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
