@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ProxyPin
+GenericName=Network Proxy Tool
+Comment=Cross-platform HTTP/HTTPS proxy tool for capturing and manipulating network traffic
+Exec=/usr/bin/proxypin
+Icon=proxypin
+Terminal=false
+Type=Application
+Categories=Development;Network;
+Keywords=proxy;http;https;network;debug;

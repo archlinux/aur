@@ -1,0 +1,27 @@
+pkgbase = proxypin
+	pkgdesc = A cross-platform HTTP/HTTPS proxy tool for capturing and manipulating network traffic
+	pkgver = 1.2.9
+	pkgrel = 1
+	url = https://github.com/crowforkotlin/proxypin
+	install = proxypin.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = gtk3
+	depends = libepoxy
+	depends = alsa-lib
+	depends = xdg-utils
+	makedepends = flutter
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = xz
+	makedepends = git
+	optdepends = libnotify: for desktop notifications
+	source = proxypin-1.2.9.tar.gz::https://github.com/crowforkotlin/proxypin/archive/refs/tags/v1.2.9.tar.gz
+	source = proxypin.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = proxypin
