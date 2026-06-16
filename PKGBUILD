@@ -3,7 +3,7 @@
 pkgname=python-damiao-motor
 _name=${pkgname#python-}
 pkgver=1.0.7b2
-pkgrel=1
+pkgrel=3
 pkgdesc="Python driver for DaMiao (达妙) brushless motors over CAN with a unified CLI, web GUI, and library API"
 provides=(${pkgname})
 conflicts=(${pkgname})
@@ -13,7 +13,11 @@ _pydeps=(
     can
     flask
     setuptools-scm
+    pyusb
     waitress
+# AUR
+    flask-sock
+    gs-usb
 )
 depends=('python'
     "${_pydeps[@]/#/python-}")
