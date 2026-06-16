@@ -7,8 +7,8 @@ _iconname=dankcalendar
 _desktopid=com.danklinux.dankcalendar
 
 pkgname=dankcalendar-bin
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="Local, Google, Microsoft, and CalDAV calendars for the dank desktop (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 _barch=('amd64' 'arm64')
@@ -36,10 +36,10 @@ sha256sums=('a5b49222ed7b2e61fc82bc0d834be0729d9c4d4ed55798ff563c6ad0474178ad'
             'cdec02547433ab1b6d18a7e23f233b27908fa865da95201375f2d3951395063d'
             '327063946d64461b0a9f511423c63cde09d420deed1b3000c718f37483dbd27d'
             '24586ef0584046c0217f52a20d397f5ea4952f3d8ef0d110f9479e2284606aeb'
-            'a7420ec3235649b856c3e10baa91bd14fa37784de1123b35d7c8b17d3308bf1d'
-            '2f828431b26c6e40db4da41440637e30d9be6d32165a8f4da90aa0e68c8cec40')
-sha256sums_x86_64=('44b55dbe30b5d195b35a178ce88fc0fb779f3d7599cb1a789c479c3ff1c757df')
-sha256sums_aarch64=('6e0fef20079788065d4b1cf03d3c5118b987f2e76883d591999248a09b5ff334')
+            '556a83d09c16d90dc69d63e4767aed7fea0749639ddd6aa7cb09a82d40d5f1aa'
+            'c68d85285100a155fab36c0bd19bd26135c1753addded7b263a9744db61c8a0c')
+sha256sums_x86_64=('153e2aed0d7d01c54024bc897ddb74f95d23fd5686967179b94ae73250d825c0')
+sha256sums_aarch64=('93a4f74664f852635a044aa0ba42b1a9eb3cce9dc2abb0bec34436e84dbd1534')
 
 package() {
   cd "${srcdir}" || exit 1
