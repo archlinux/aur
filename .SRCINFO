@@ -1,7 +1,7 @@
 pkgbase = python-google-cloud-core
 	pkgdesc = Google Cloud API client core library
 	pkgver = 2.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/googleapis/google-cloud-python/tree/google-cloud-core-v2.6.0/packages/google-cloud-core
 	arch = any
 	license = Apache-2.0

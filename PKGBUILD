@@ -2,7 +2,7 @@
 
 pkgname=python-google-cloud-core
 pkgver=2.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Google Cloud API client core library'
 _pkgname=${pkgname#python-}
 _reponame=google-cloud-python
@@ -56,9 +56,6 @@ package() {
   install -d "${pkgdir}"/usr/share/licenses/${pkgname}
   ln -sr -t "${pkgdir}"/usr/share/licenses/${pkgname} \
     "${pkgdir}"${_site_packages}/${_pkgname//-/_}-${pkgver}.dist-info/licenses/LICENSE
-
-  install -Dm644 -t "${pkgdir}"/usr/share/licenses/${pkgname} \
-    LICENSE
 }
 
 # vim: ts=2 sw=2 et:
