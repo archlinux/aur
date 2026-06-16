@@ -2,7 +2,7 @@
 
 _plugin=audio-convert
 pkgname=vsview-${_plugin}
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A vsview plugin for converting audio sample types and resampling audio clips."
 arch=("x86_64")
