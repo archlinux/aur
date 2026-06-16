@@ -1,7 +1,7 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=home-assistant-tui-git
-pkgver=0.1.0.r47.g0c3ab6a
+pkgver=0.1.0.r48.ga5cc431
 pkgrel=1
 pkgdesc="Terminal UI for Home Assistant (git version)"
 arch=('x86_64' 'aarch64')
@@ -18,10 +18,16 @@ build() {
   cd "$pkgname"
   bun install --frozen-lockfile
   bun build src/index.ts --compile --outfile home-assistant-tui
+  ./home-assistant-tui completions bash > home-assistant-tui.bash
+  ./home-assistant-tui completions fish > home-assistant-tui.fish
+  ./home-assistant-tui completions zsh > _home-assistant-tui
 }
 
 package() {
   cd "$srcdir/$pkgname"
   install -Dm755 home-assistant-tui "$pkgdir/usr/bin/home-assistant-tui"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 home-assistant-tui.bash "$pkgdir/usr/share/bash-completion/completions/home-assistant-tui"
+  install -Dm644 home-assistant-tui.fish "$pkgdir/usr/share/fish/vendor_completions.d/home-assistant-tui.fish"
+  install -Dm644 _home-assistant-tui "$pkgdir/usr/share/zsh/site-functions/_home-assistant-tui"
 }
