@@ -14,7 +14,7 @@
 # (why is it not called haproxy-pp though)
 pkgname=haproxy-awslc
 _pkgname=haproxy
-pkgver=3.3.10
+pkgver=3.4.0
 pkgrel=1
 
 pkgdesc='Reliable, high performance TCP/HTTP load balancer. Built with aws-lc'
@@ -61,7 +61,7 @@ source=("git+https://git.haproxy.org/git/haproxy-${pkgver%.*}.git#tag=v${pkgver}
 # implies some sort of integrity check.
 #
 # However, I've already setup this repo to run updpkgsums easily...
-sha256sums=('e3a5169ebcb2cf3b9e44642ce40efa4c8fb06911d1afd8c44cc0e76dab0ce92b'
+sha256sums=('a5a58466556f87f34a4e29ea267a5eef37dc58efca3cf1f91ba01f64fbf0666f'
             'bd6ebf57fa417d42fe48340664e3620f08d4b40312d4be41dba51ef34bc0223c'
             'c6e716ea59272a8e871af53703726dd2a75b56c82dacf097d4bf08ac5e841a0d'
             'a1e3a1c2923465081383eb431bae55ff9841d89909469311cdba4b394ec4a998')
@@ -124,6 +124,7 @@ package() {
   done
 
   install -D -m0644 ../haproxy.sysusers "$pkgdir"/usr/lib/sysusers.d/haproxy.conf
+  install -d -m0755 "$pkgdir"/etc/haproxy/conf.d
   install -D -m0644 ../haproxy.cfg "$pkgdir"/etc/haproxy/haproxy.cfg
   install -D -m0644 admin/systemd/haproxy.service \
     "$pkgdir"/usr/lib/systemd/system/haproxy.service
