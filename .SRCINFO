@@ -1,13 +1,13 @@
 pkgbase = violetumleditor
 	pkgdesc = Java UML diagram editor
-	pkgver = 2.2.2_20250531
+	pkgver = 2.3.2_20260418
 	pkgrel = 1
 	epoch = 1
 	url = http://sourceforge.net/projects/violet
 	arch = any
-	license = GPL
-	depends = java-runtime
-	source = violetumleditor-2.2.2_20250531.deb::https://sourceforge.net/projects/violet/files/violetumleditor/2.2.2-SNAPSHOT/violetumleditor-2.2.2-SNAPSHOT.deb/download
-	sha256sums = 3920a780a48bcb8f594b29e9cffa19b867cc900d0569f43c7a1b2860c1b743a1
+	license = GPL2
+	depends = java-runtime>=17
+	source = violetumleditor-2.3.2_20260418.deb::https://sourceforge.net/projects/violet/files/violetumleditor/2.3.2-SNAPSHOT/violetumleditor-2.3.2-SNAPSHOT.deb/download
+	sha256sums = 994c0bc290d9d7427137b60fb289a55a738ff492f274a4850b163d1ea28316f2
 
 pkgname = violetumleditor

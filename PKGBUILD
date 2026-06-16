@@ -2,22 +2,21 @@
 
 pkgname=violetumleditor
 epoch=1
-_pkgver=2.2.2
-_snapshot=20250531
+_pkgver=2.3.2
+_snapshot=20260418
 pkgver=${_pkgver}_${_snapshot}
 pkgrel=1
 pkgdesc="Java UML diagram editor"
 arch=('any')
 url="http://sourceforge.net/projects/violet"
-license=('GPL')
-depends=('java-runtime')
+license=('GPL2')
+depends=('java-runtime>=17')
 source=("${pkgname}-${pkgver}.deb::https://sourceforge.net/projects/violet/files/violetumleditor/${_pkgver}-SNAPSHOT/${pkgname}-${_pkgver}-SNAPSHOT.deb/download")
-sha256sums=('3920a780a48bcb8f594b29e9cffa19b867cc900d0569f43c7a1b2860c1b743a1')
+sha256sums=('994c0bc290d9d7427137b60fb289a55a738ff492f274a4850b163d1ea28316f2')
 
 package() {
-  cd ${srcdir}
-  bsdtar -x -f data.tar.gz -C ${pkgdir}
-  mkdir -p ${pkgdir}/usr/bin/
-  chmod a+x ${pkgdir}/usr/share/${pkgname}/${pkgname}.sh
-  ln -s /usr/share/${pkgname}/${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
+  bsdtar -x -f data.tar.gz -C "${pkgdir}"
+  mkdir -p "${pkgdir}"/usr/bin/
+  chmod a+x "${pkgdir}"/usr/share/${pkgname}/${pkgname}.sh
+  ln -s /usr/share/${pkgname}/${pkgname}.sh "${pkgdir}"/usr/bin/${pkgname}
 }
