@@ -3,13 +3,13 @@
 pkgname=codecontext-ai
 
 
-pkgver=1.25.3
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='AI-powered codebase analyzer — scans project structure, builds dependency graphs, generates LLM-optimized prompts with minification, skeleton mode, and JSON patching'
 arch=('any')
 url='https://github.com/NIKIRIKI7/CodeContext'
 license=('MIT')
-depends=('python' 'python-pyside6' 'python-tiktoken' 'python-fpdf2' 'python-pyperclip' 'python-pathspec' 'python-jinja')
+depends=('python' 'python-pyside6' 'python-tiktoken' 'python-pyperclip' 'python-pathspec' 'python-jinja')
 makedepends=('git')
 install=codecontext.install
 optdepends=('python-pytest: run test suite'
