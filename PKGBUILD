@@ -53,8 +53,8 @@ build() {
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_INSTALL_PREFIX="$PROTO" \
         -D BUILD_SHARED_LIBS=OFF \
-        -D protobuf_BUILD_TESTS=OFF \
-        cmake --build build-proto -j"$(nproc)"
+        -D protobuf_BUILD_TESTS=OFF
+    cmake --build build-proto -j"$(nproc)"
     cmake --install build-proto
 
     msg2 "Building SentencePiece ${_spm_ver}..."
