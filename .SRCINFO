@@ -1,16 +1,16 @@
 pkgbase = arjun
 	pkgdesc = HTTP parameter discovery suite.
 	pkgver = 2.2.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/s0md3v/Arjun
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
 	depends = python-requests
 	depends = python-dicttoxml
 	depends = python-ratelimit
-	source = arjun-2.2.7.tar.gz::https://github.com/s0md3v/Arjun/archive/2.2.7.tar.gz
-	b2sums = SKIP
+	source = arjun-2.2.7.zip::https://github.com/s0md3v/Arjun/archive/2.2.7.zip
+	sha256sums = 507848e023f6e970d2e7f636b6a9ad6a4d6f8010019d978738f830f5a7ef966f
 
 pkgname = arjun
