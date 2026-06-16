@@ -1,0 +1,12 @@
+diff --git a/src/meson.build b/src/meson.build
+index 5b7a248f0..23753b8ac 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -75,6 +75,7 @@ gnome_shell_deps = [
+   libsystemd_dep,
+   libpipewire_dep,
+   pango_dep,
++  libpng_dep,
+   wayland_server_dep,
+ ]
+ 
