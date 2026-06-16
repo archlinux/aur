@@ -1,6 +1,6 @@
-# Maintainer: UPdullah895 <your-email@example.com>
+# Maintainer: UPdullah895 <abdullahbomozh@gmail.com>
 pkgname=opengg-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Open-source Linux gaming hub — OpenGG"
 arch=('x86_64')
@@ -16,4 +16,9 @@ sha256sums=('SKIP')
 
 package() {
   tar -xzf "${srcdir}/opengg-v${pkgver}-linux-x86_64.tar.gz" -C "${pkgdir}" --strip-components=1
+
+  install -Dm644 "${srcdir}/packaging/opengg.desktop" \
+    "$pkgdir/usr/share/applications/opengg.desktop"
+  install -Dm644 "${srcdir}/frontend/src-tauri/icons/256x256.png" \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/opengg.png"
 }
