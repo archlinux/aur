@@ -2,7 +2,7 @@
 
 pkgname=fcitx5-vinput-git
 _pkgname=fcitx5-vinput
-pkgver=0.1.0.r124.9870b71
+pkgver=0.1.0.r127.888d88d
 pkgrel=1
 pkgdesc="Voice input addon for fcitx5: push-to-talk ASR via CapsLock"
 arch=('x86_64')
@@ -16,6 +16,14 @@ install=PKGBUILD.install
 # Primary: Gitee (fast in China). Fallback: change to github.com/xander-lin/vinput
 source=("$_pkgname::git+https://gitee.com/xander-lin/vinput.git")
 sha256sums=('SKIP')
+backup=(
+    'etc/vinput/advanced.json'
+    'etc/vinput/audio.json'
+    'etc/vinput/doubao.json'
+    'etc/vinput/output.json'
+    'etc/vinput/qwen.json'
+    'etc/vinput/vinput.json'
+)
 
 pkgver() {
     cd "$_pkgname"
@@ -24,7 +32,7 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
-    meson setup build --prefix=/usr --buildtype=plain
+    meson setup build --prefix=/usr --buildtype=plain -Dcpp_args='-O2 -march=native'
     meson compile -C build
 }
 
@@ -33,7 +41,10 @@ package() {
     DESTDIR="$pkgdir" meson install -C build
     install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-    for f in config/*.json; do
+    for f in config/*.json.example; do
+        name=${f##*/}
+        name=${name%.example}
+        install -Dm644 "$f" "$pkgdir/etc/vinput/$name"
         install -Dm644 "$f" "$pkgdir/usr/share/doc/$_pkgname/$f"
     done
 }

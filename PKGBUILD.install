@@ -1,5 +1,8 @@
 post_install() {
-    echo "==> Vinput: Local ASR models (zipformer/fire-red) must be downloaded separately."
+    echo "==> Vinput: default configuration files are installed under /etc/vinput/."
+    echo "==> Pacman will preserve edited /etc/vinput/*.json files on upgrade and may create .pacnew files."
+    echo "==> Missing per-user config files are created from /etc/vinput/ at runtime under ~/.config/vinput/."
+    printf '\033[1;31m==> Vinput: Local ASR models (zipformer/fire-red) must be downloaded separately.\033[0m\n'
     echo "==> See setup instructions: https://github.com/xander-lin/vinput#local-models-optional"
     echo "==> Cloud providers (doubao/qwen) only need API keys configured."
 }
