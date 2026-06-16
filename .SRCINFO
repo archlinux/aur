@@ -1,6 +1,6 @@
 pkgbase = hawser
 	pkgdesc = The agent for Dockhand
-	pkgver = 0.2.44
+	pkgver = 0.2.45
 	pkgrel = 1
 	url = https://dockhand.pro/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = hawser
 	makedepends = go
 	makedepends = git
 	conflicts = hawser-git
-	source = git+https://github.com/Finsys/hawser.git#tag=v0.2.44
+	source = git+https://github.com/Finsys/hawser.git#tag=v0.2.45
 	sha256sums = SKIP
 
 pkgname = hawser
