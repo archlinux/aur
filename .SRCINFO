@@ -1,0 +1,17 @@
+pkgbase = gisp
+	pkgdesc = Industrial-grade file encryption utility using XChaCha20-Poly1305 and Argon2id
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/b0lbas/gisp
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL3
+	makedepends = gcc
+	makedepends = make
+	depends = libsodium
+	source = gisp-1.0.tar.gz::https://github.com/b0lbas/gisp/archive/refs/tags/v1.0.tar.gz
+	sha256sums = ce0f8d76fe11d8f18417e5591b40eeeae56e196b8b20193fe435fb14ec9bed65
+
+pkgname = gisp
