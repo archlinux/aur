@@ -2,7 +2,7 @@
 pkgname=apifox-bin
 _pkgname=Apifox
 # 从以下网址确定版本 https://docs.apifox.com/changelog
-pkgver=2.8.32
+pkgver=2.8.34
 _electronversion=37
 pkgrel=1
 pkgdesc="Apifox=Postman+Swagger+Mock+JMeter(Prebuilt version.Use system-wide electron).API 文档、API 调试、API Mock、API 自动化测试"
@@ -31,8 +31,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::https://file-assets.apifox.com/download/${_pkgname}-linux-arm64-latest.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::https://file-assets.apifox.com/download/${_pkgname}-linux-latest.zip")
 sha256sums=('3884df6451dd5aaadc867c2b6882a7feabccb10c7e1df98e48e9fe2414c9fe19')
-sha256sums_aarch64=('86fe1b8cf68bfaf3c44e211f4d9580f7551baa8644f06c718a1c23850688eecf')
-sha256sums_x86_64=('c0db5573b65d1fbcbe52365afac20945a8b18d2c405156f3930ee1c230059ca3')
+sha256sums_aarch64=('146734ab63e1be06fd75d61b7c6962950062cf4248cb9dfec284998ed86b95a0')
+sha256sums_x86_64=('af5586937dbca398b4c22d1bcd71f24184c261d70060290f1160553c1c3657fa')
 pkgver() {
     cd "${srcdir}/squashfs-root"
     grep "X-AppImage-Version" "${pkgname%-bin}.desktop" | sed "s/X-AppImage-Version=//g"
@@ -63,7 +63,6 @@ prepare() {
     #    s/@appname@/${pkgname%-bin}/g
     #    s/@runname@/app.asar/g
     #    s/@cfgdirname@/${pkgname%-bin}/g
-    #    s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     #" "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${_pkgname}"*.AppImage ];then
         chmod +x "${srcdir}/${_pkgname}"*.AppImage
@@ -88,7 +87,7 @@ package() {
     #install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     #cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
-    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -a "${srcdir}/squashfs-root/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
