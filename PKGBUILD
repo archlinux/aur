@@ -23,7 +23,7 @@ depends=(
 install=openfortivpn-gui.install
 
 source=("https://github.com/shini4i/openfortivpn-gui/releases/download/v${pkgver}/openfortivpn-gui_${pkgver}_linux_amd64.tar.gz"
-        "com.github.shini4i.openfortivpn-gui.desktop::https://raw.githubusercontent.com/XCroatoanX/openfortivpn-gui/main/data/com.github.shini4i.openfortivpn-gui.desktop"
+        "com.github.shini4i.openfortivpn-gui-${pkgver}.desktop::https://raw.githubusercontent.com/XCroatoanX/openfortivpn-gui/main/data/com.github.shini4i.openfortivpn-gui.desktop"
         "openfortivpn-gui-helper.service::https://raw.githubusercontent.com/shini4i/openfortivpn-gui/v${pkgver}/data/openfortivpn-gui-helper.service"
         "hicolor.tar.xz")
 
@@ -38,7 +38,7 @@ package() {
     install -Dm755 "openfortivpn-gui-helper" "${pkgdir}/usr/bin/openfortivpn-gui-helper"
     install -Dm644 "openfortivpn-gui-helper.service" "${pkgdir}/usr/lib/systemd/system/openfortivpn-gui-helper.service"
     echo "StartupWMClass=com.github.shini4i.openfortivpn-gui" >> "com.github.shini4i.openfortivpn-gui.desktop"
-    install -Dm644 "com.github.shini4i.openfortivpn-gui.desktop" "${pkgdir}/usr/share/applications/com.github.shini4i.openfortivpn-gui.desktop"
+    install -Dm644 "com.github.shini4i.openfortivpn-gui-${pkgver}.desktop" "${pkgdir}/usr/share/applications/com.github.shini4i.openfortivpn-gui.desktop"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     mkdir -p "${pkgdir}/usr/share/icons/hicolor"
     cp -r "${srcdir}/hicolor/"* "${pkgdir}/usr/share/icons/hicolor/"
