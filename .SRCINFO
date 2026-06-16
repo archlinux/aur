@@ -1,0 +1,25 @@
+pkgbase = openfortivpn-gui-bin
+	pkgdesc = A modern GTK4/libadwaita GUI client for Fortinet SSL VPN on Linux, wrapping the openfortivpn CLI tool.
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/shini4i/openfortivpn-gui
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = openfortivpn
+	depends = glibc
+	depends = glib2
+	depends = gtk4
+	depends = libadwaita
+	depends = gdk-pixbuf2
+	depends = pango
+	depends = cairo
+	depends = graphene
+	depends = hicolor-icon-theme
+	source = https://github.com/shini4i/openfortivpn-gui/releases/download/v0.3.3/openfortivpn-gui_0.3.3_linux_amd64.tar.gz
+	source = openfortivpn-gui.desktop
+	source = hicolor.tar.xz
+	sha256sums = 578a35d704cef62814c71a8003e385d68af5b1190bcbe989ace54ee1a5fc1094
+	sha256sums = bddd854827231fd6ac9a9f7b6ae6e607881af830bbd2687182ac23f577742c77
+	sha256sums = 61d2d0454a3d96355b202bcdfee0a59b1c38cc838c23b560cdf2e4edae2cef32
+
+pkgname = openfortivpn-gui-bin
