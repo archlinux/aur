@@ -1,8 +1,8 @@
 # Maintainer: Filippo Falezza <filippo dot falezza at outlook dot it>
 
 pkgname='geant4-full'
-pkgver=11.4.0
-pkgrel=2
+pkgver=11.4.1
+pkgrel=3
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
   'cmake>=3.16'
@@ -50,7 +50,7 @@ source=(
   'geant4-full.install'
 )
 sha256sums=(
-  'ad64c96b8b3d7125e746bb97f5f55779ed594681a6a5d63c27025e7c9cef58fa'
+  '1c6df298ec3984594380ffe3449e3c23cd23299b17e10673e6923b8e6b8d2017'
   '5fde7b80dcfa960407b1ecb2b2a2aa817250948cc32490d8ece48a5e5b4035c1'
 )
 install="geant4-full.install"
@@ -100,7 +100,7 @@ setenv G4URRPTDATA /opt/Geant4/Libraries/G4URRPT1.1" > Geant4.csh
   cmake \
     -DCMAKE_POLICY_VERSION_MINIMUM=4.0 \
     -DCMAKE_INSTALL_PREFIX=/opt/Geant4/Geant4-v${pkgver} \
-    -DCMAKE_BUILD_TYPE=RelWithDebug \
+    -DCMAKE_BUILD_TYPE=Release \
     -DGEANT4_BUILD_MULTITHREADED=ON \
     -DGEANT4_INSTALL_DATA=ON \
     -DGEANT4_INSTALL_DATASETS_TENDL=ON \
