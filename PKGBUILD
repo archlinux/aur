@@ -11,7 +11,7 @@ depends=('qt6-base' 'qt6-declarative' 'qt6-grpc' 'qt6-shadertools'
          'kcoreaddons' 'kdbusaddons' 'ki18n' 'kirigami' 'prison' 'kirigami-addons'
          'rlottie' 'sqlite' 'glibc'
          'desktop-file-utils' 'shared-mime-info' 'xdg-utils')
-makedepends=('git' 'go' 'gcc' 'cmake' 'ninja' 'extra-cmake-modules' 'vulkan-headers')
+makedepends=('git' 'go' 'gcc' 'just' 'cmake' 'ninja' 'extra-cmake-modules' 'vulkan-headers')
 provides=('whatevr' 'whatevrd' 'whatkevr')
 conflicts=('whatevr' 'whatevr-bin')
 install="$_pkgname.install"
@@ -28,12 +28,13 @@ pkgver() {
 }
 
 build() {
-	# PREFIX/DESTDIR-aware build via the project's single Makefile entry point.
-	make -C "$srcdir/$_pkgname" build PREFIX=/usr
+	cd "$srcdir/$_pkgname"
+	just build-release
 }
 
 package() {
-	make -C "$srcdir/$_pkgname" install PREFIX=/usr DESTDIR="$pkgdir"
+	cd "$srcdir/$_pkgname"
+	just install /usr "$pkgdir"
 	install -Dm644 "$srcdir/$_pkgname/LICENSE" \
 		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

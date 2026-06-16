@@ -10,6 +10,7 @@ pkgbase = whatevr-git
 	makedepends = git
 	makedepends = go
 	makedepends = gcc
+	makedepends = just
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = extra-cmake-modules
