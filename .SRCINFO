@@ -1,11 +1,11 @@
 pkgbase = vcutil
 	pkgdesc = Misc. simple utilities to aid version control and host maintenance.
-	pkgver = 1.59
+	pkgver = 1.62
 	pkgrel = 1
 	url = https://github.com/ossobv/vcutil
 	arch = any
-	source = vcutil-1.59.tar.gz::https://github.com/ossobv/vcutil/archive/refs/tags/v1.59.tar.gz
-	sha512sums = 64f336ba08d3899085b97c400443dfac04313d33610dfaf9ab5ad9a04ce745b12c15a7ff730b10cbe9943b7b15589287267fb0abce63957fd1189f43c701ac75
+	source = vcutil-1.62.tar.gz::https://github.com/ossobv/vcutil/archive/refs/tags/v1.62.tar.gz
+	sha512sums = 6f0e6d96c68523101868b9fc8eb07831052e17633ef3db18ff660ddbbff7c3f8627b51fdaa57b475e7672f7376fa659baf73e3017e2a9bf7bd71bbcb45cfb93b
 
 pkgname = ipmikvm
 	pkgdesc = A wrapper to call the SuperMicro iKVM console bypassing Java browser plugins.
