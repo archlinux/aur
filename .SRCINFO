@@ -1,0 +1,21 @@
+pkgbase = prism-rs-bin
+	pkgdesc = TUI RGB color picker written in Rust
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/isene/prism
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	depends = glibc
+	depends = libgcc
+	provides = prism
+	conflicts = prism-rs
+	options = !strip
+	source = README-0.1.2.md::https://raw.githubusercontent.com/isene/prism/v0.1.2/README.md
+	sha256sums = 5d0cbd24a613ab5106266eb1e24ca2e271b7d9c2d181b23336105f1f88e4585f
+	source_x86_64 = prism-x86_64-0.1.2::https://github.com/isene/prism/releases/download/v0.1.2/prism-linux-x86_64
+	sha256sums_x86_64 = bc282a235c162878724c37631c27a5ff17ab403d107270516a5c654a3694092a
+	source_aarch64 = prism-aarch64-0.1.2::https://github.com/isene/prism/releases/download/v0.1.2/prism-linux-aarch64
+	sha256sums_aarch64 = 1e18da0d9e292b1487067ae35596af12d4f5c242c129d4512d863291b3239c5c
+
+pkgname = prism-rs-bin

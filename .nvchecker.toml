@@ -1,0 +1,5 @@
+[prism-rs-bin]
+source = "github"
+github = "isene/prism"
+use_latest_release = true
+prefix = "v"
