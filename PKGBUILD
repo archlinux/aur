@@ -2,7 +2,7 @@
 _pkgname=strumpack
 pkgname="${_pkgname}-git"
 pkgver=8.0.0.r26.geb0d41c
-pkgrel=1
+pkgrel=2
 pkgdesc="Library providing linear algebra routines and linear system solvers for spare and for dense rank-structured linear systems."
 arch=('x86_64')
 url="https://github.com/pghysels/STRUMPACK"
@@ -34,7 +34,7 @@ optdepends=(
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
-    "${pkgname}::git+${url}"
+    "${_pkgname}::git+${url}"
     "0001-link-butterflypack.patch"
     "0002-fix-rpath.patch"
 )
@@ -44,7 +44,7 @@ b2sums=('SKIP'
 options=()
 
 pkgver() {
-    cd "$pkgname"
+    cd "${_pkgname}"
     (
         set -o pipefail
         git describe --long --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
@@ -53,7 +53,7 @@ pkgver() {
 }
 
 prepare() {
-    cd "${pkgname}"
+    cd "${_pkgname}"
 
     # The headers haven't been updated in HODLR
     sed -i 's/\(.\)C_BPACK_wrapper\.h/\1BPACK_wrapper.h/g' src/HODLR/HODLRWrapper.cpp
@@ -82,15 +82,13 @@ prepare() {
 build() {
     local cmake_options=(
         -B build
-        -S ${pkgname}
+        -S ${_pkgname}
         -W no-dev
         -D CMAKE_BUILD_TYPE=None
         -D BUILD_SHARED_LIBS=ON
         -D CMAKE_PREFIX_PATH=/usr
         -D CMAKE_INSTALL_PREFIX=/usr
-        -D CMAKE_INSTALL_INCLUDEDIR="include/${pkgname}"
-        -D CMAKE_SKIP_INSTALL_RPATH=ON
-        -D CMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE
+        -D CMAKE_INSTALL_INCLUDEDIR="include/${_pkgname}"
     )
 
     local strumpack_opts=(
@@ -138,7 +136,7 @@ build() {
 
 package() {
     DESTDIR="$pkgdir/" cmake --install build
-    install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
 # vim: set ts=4 sw=4 et:

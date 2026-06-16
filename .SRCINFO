@@ -1,7 +1,7 @@
 pkgbase = strumpack-git
 	pkgdesc = Library providing linear algebra routines and linear system solvers for spare and for dense rank-structured linear systems.
 	pkgver = 8.0.0.r26.geb0d41c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pghysels/STRUMPACK
 	arch = x86_64
 	license = LicenseRef-Custom
@@ -24,7 +24,7 @@ pkgbase = strumpack-git
 	optdepends = python-scikit-base: For Python API usage
 	provides = strumpack
 	conflicts = strumpack
-	source = strumpack-git::git+https://github.com/pghysels/STRUMPACK
+	source = strumpack::git+https://github.com/pghysels/STRUMPACK
 	source = 0001-link-butterflypack.patch
 	source = 0002-fix-rpath.patch
 	b2sums = SKIP
