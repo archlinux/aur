@@ -3,16 +3,15 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin-x11
-pkgver=6.6.5
+pkgver=6.7.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2
+pkgrel=1
 pkgdesc='An easy to use, but flexible, X Window Manager'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL-2.0-or-later)
 depends=(aurorae
          breeze
-         gcc-libs
          glibc
          plasma-activities
          kauth
@@ -45,7 +44,9 @@ depends=(aurorae
          libdisplay-info
          libdrm
          libepoxy
+         libgcc
          libqaccessibilityclient-qt6
+         libstdc++
          libx11
          libxcb
          libxi
@@ -71,7 +72,7 @@ makedepends=(extra-cmake-modules
              wayland-protocols)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('d5172772d5b9dd6ef0f3230cb5f8a78df9148dd07019d8f282a0931cad946b24'
+sha256sums=('9ac0b85b59016dfb91587f8c1970fbd5c6f215d12c9a419acd0bf7d0f0493606'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
