@@ -1,0 +1,8 @@
+post_install() {
+    # Grant CAP_SYS_PTRACE so auto-splitters can read game process memory, as per upstream README
+    setcap CAP_SYS_PTRACE=+eip usr/bin/livesplit-one-druid
+}
+
+post_upgrade() {
+    post_install
+}

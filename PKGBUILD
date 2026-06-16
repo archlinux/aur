@@ -1,13 +1,14 @@
 # Maintainer: Jakob Hellermann <jakob.hellermann@protonmail.com>
 pkgname=livesplit-one-druid
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A native LiveSplit One frontend built with druid (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/AlexKnauth/livesplit-one-druid"
 license=('LicenseRef-unknown')
 depends=('gtk3')
 makedepends=('imagemagick')
+install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AlexKnauth/livesplit-one-druid/releases/download/$pkgver/livesplit-one-$pkgver-x86_64-unknown-linux-gnu.tar.gz"
     "Icon.ico::https://raw.githubusercontent.com/AlexKnauth/livesplit-one-druid/master/Icon.ico"
     "$pkgname.desktop")

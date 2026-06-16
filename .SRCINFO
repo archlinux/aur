@@ -1,8 +1,9 @@
 pkgbase = livesplit-one-druid
 	pkgdesc = A native LiveSplit One frontend built with druid (prebuilt binary)
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AlexKnauth/livesplit-one-druid
+	install = livesplit-one-druid.install
 	arch = x86_64
 	license = LicenseRef-unknown
 	makedepends = imagemagick
