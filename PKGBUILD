@@ -1,6 +1,6 @@
 # Maintainer: ZauJulio <zaujulio.dev@gmail.com>
 pkgname=cpu-thermal-guard
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Sustain-gated NBFC fan pulser: acts only on sustained CPU overheat"
 arch=('any')
