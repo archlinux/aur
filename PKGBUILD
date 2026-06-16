@@ -1,6 +1,6 @@
 # Maintainer: Haseeb Khalid <haseebkhalid1507@gmail.com>
 pkgname=synaps
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="Terminal-native AI agent runtime built in Rust"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('cargo' 'oniguruma')
 # ring-dependent Rust packages.
 options=(!lto)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('536f04ca5c173cf02c8f662983ed478405c523df1fc9cc66f29f8fa91faa751b')
+sha256sums=('bd82028571213f4cb0458b5e7a97fc8cb043e73c4eca56a30bc2b2883d9aba2d')
 
 prepare() {
   cd "SynapsCLI-$pkgver"
