@@ -7,7 +7,6 @@ pkgbase = oranglauncher
 	license = MIT
 	makedepends = python
 	makedepends = python-pip
-	makedepends = python-nuitka
 	makedepends = gcc
 	makedepends = patchelf
 	makedepends = gobject-introspection

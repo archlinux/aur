@@ -6,7 +6,7 @@ arch=(x86_64)
 url="https://oranges.lt"
 license=('MIT')
 depends=(glibc tk webkit2gtk-4.1 gtk3 gobject-introspection-runtime)
-makedepends=(python python-pip python-nuitka gcc patchelf
+makedepends=(python python-pip gcc patchelf
              gobject-introspection gtk3 webkit2gtk-4.1 cairo pkgconf
              python-setuptools python-wheel)
 conflicts=(oranglauncher-bin)
@@ -28,7 +28,7 @@ options=(!debug !strip)
 build() {
     cd "$srcdir/OrangLaunch-${pkgver}"
     python -m venv --system-site-packages build-venv
-    build-venv/bin/pip install --upgrade pip wheel
+    build-venv/bin/pip install --upgrade pip wheel nuitka
     build-venv/bin/pip install -r requirements.txt
 
     build-venv/bin/python -m nuitka \
