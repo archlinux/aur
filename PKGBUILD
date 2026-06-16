@@ -2,7 +2,7 @@
 # Maintainer: Obedience Corp <contact@obediencecorp.com>
 
 pkgname='festival-bin'
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc='Festival Methodology CLI suite (fest + camp) - AI-native project planning'
 url='https://fest.build'
@@ -12,10 +12,10 @@ provides=('fest' 'camp')
 conflicts=('fest' 'camp')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Obedience-Corp/festival/releases/download/v${pkgver}/festival-${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('414c1fcfe79e0ef256fff65d1bea817c526d3a89df83647db11dfc9c22d68798')
+sha256sums_aarch64=('f540d9a911e75fc05377cf6e6058b570a9bb717e82668cfb516a9c458f9f47a8')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Obedience-Corp/festival/releases/download/v${pkgver}/festival-${pkgver}-linux-x86_64.tar.gz")
-sha256sums_x86_64=('eed8d5232a332267c4a84ab84e02822075294bd81339db8d78de3c8916f871bd')
+sha256sums_x86_64=('72b14943c269f842c820cdb9ace7fcc15c362e60a70b4a8ddde9778e7fede4bc')
 
 package() {
   install -Dm755 "./fest" "${pkgdir}/usr/bin/fest"
@@ -24,4 +24,10 @@ package() {
   install -Dm644 "./completions/fest.bash" "${pkgdir}/usr/share/bash-completion/completions/fest"
   install -Dm644 "./completions/_fest" "${pkgdir}/usr/share/zsh/site-functions/_fest"
   install -Dm644 "./completions/fest.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/fest.fish"
+  install -Dm644 "./completions/camp.bash" "${pkgdir}/usr/share/bash-completion/completions/camp"
+  install -Dm644 "./completions/_camp" "${pkgdir}/usr/share/zsh/site-functions/_camp"
+  install -Dm644 "./completions/camp.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/camp.fish"
+  install -Dm644 "./shell/festival.bash" "${pkgdir}/usr/share/festival/shell/festival.bash"
+  install -Dm644 "./shell/festival.zsh" "${pkgdir}/usr/share/festival/shell/festival.zsh"
+  install -Dm644 "./shell/festival.fish" "${pkgdir}/usr/share/festival/shell/festival.fish"
 }
