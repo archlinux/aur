@@ -1,6 +1,6 @@
 pkgbase = workman
 	pkgdesc = GNOME Wayland session manager — save and restore open windows
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/lumaseg/workman
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = workman
 	depends = python
 	depends = python-pyxdg
 	optdepends = gnome-shell: required at runtime (workman supports GNOME Wayland only; KDE/XFCE/wlroots planned)
-	source = workman-0.1.2.tar.gz::https://github.com/lumaseg/workman/archive/v0.1.2.tar.gz
-	sha256sums = 3a84c7317c26bf09f1d9955b868fb3c01421fb249914799444cb399f5aed2df7
+	source = workman-0.1.3.tar.gz::https://github.com/lumaseg/workman/archive/v0.1.3.tar.gz
+	sha256sums = 9f201b474e9f48730ee436ee34bf14e9d968611c316366c1e7bf8e49806188e8
 
 pkgname = workman
