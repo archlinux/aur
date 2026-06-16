@@ -3,7 +3,7 @@
 
 pkgname=kopia
 pkgdesc='A cross-platform backup-tool with encryption, deduplication, compression and cloud support.'
-pkgver=0.22.3
+pkgver=0.23.1
 pkgrel=1
 arch=('x86_64')
 url='https://kopia.io'
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go')
 checkdepends=('openssh' 'inetutils')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kopia/kopia/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7eca72d996fcd9e3b1402fd0b6c11d568dcf9dfd6cb10022e5748eb5f55d0c0d')
+sha256sums=('0009ca0b2249a7042f779e722e87f8d8c12262117b308db522f7c8d46720a22e')
 
 build() {
     cd $pkgname-$pkgver
