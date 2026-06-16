@@ -2,7 +2,7 @@
 
 pkgname=python-google-cloud-bigquery-storage
 pkgver=2.39.0
-pkgrel=2
+pkgrel=3
 pkgdesc='BigQuery Storage API client library'
 arch=(any)
 _pkgname=${pkgname#python-}
@@ -30,9 +30,11 @@ optdepends=(
   'python-pandas: pandas support'
 )
 #checkdepends=(
+#  ipython
 #  python-freezegun
 #  python-google-cloud-bigquery
 #  python-google-cloud-testutils
+#  python-pandas
 #  python-pytest
 #)
 source=(${pkgname}-${pkgver}.tar.gz::${url%/tree*}/archive/${_pkgname}-v${pkgver}.tar.gz)
@@ -45,9 +47,7 @@ build() {
     --wheel \
     --no-isolation
 
-  cd docs
-
-  PYTHONPATH=../ sphinx-build -b man ./ _build
+  PYTHONPATH=${PWD} sphinx-build -b man docs/ _build
 }
 
 ## FIXME: test plugins conflict
@@ -71,7 +71,7 @@ package() {
     {CHANGELOG.md,README.rst}
 
   install -Dm644 -t "${pkgdir}"/usr/share/man/man1 \
-    docs/_build/${_pkgname}.1
+    _build/${_pkgname}.1
 
   local _site_packages
   _site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
