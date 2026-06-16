@@ -6,7 +6,7 @@
 pkgname=mixxx-beta
 _mixxxver=2.6
 pkgver="${_mixxxver}.beta"
-pkgrel=5
+pkgrel=6
 pkgdesc="Digital DJ mixing software (beta branch)."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://mixxx.org/"
@@ -80,6 +80,7 @@ sha256sums=('3683cf0570e2f9dbeb1d76a5d617f8c2bf2acb6d15fe9d2337b8f49a20887a38')
 build() {
   local cmake_options=(
     -B build
+    -D CMAKE_LINKER_TYPE=BFD
     -D CMAKE_BUILD_TYPE=Release
     -D CMAKE_INSTALL_PREFIX=/usr
     -D OPTIMIZE=native
