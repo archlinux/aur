@@ -20,6 +20,6 @@ pkgbase = clash-verge-rev-autobuild-bin
 	conflicts = clash-verge-rev-bin
 	options = !strip
 	source_x86_64 = Clash.Verge_2.5.2+autobuild.0616.aa0d5f6_amd64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/autobuild/Clash.Verge_2.5.2+autobuild.0616.aa0d5f6_amd64.deb
-	sha256sums_x86_64 = d20129d1b26c4a88b71f53b70b3c0a900278c6f241cdda9a368bffb673d79555
+	sha256sums_x86_64 = fe56afea04c2bde5d0fe8b612c5fc4ce7bf042e91c226777219ddde0f3d6a7ef
 
 pkgname = clash-verge-rev-autobuild-bin
