@@ -1,6 +1,6 @@
 pkgbase = python-damiao-motor
 	pkgdesc = Python driver for DaMiao (达妙) brushless motors over CAN with a unified CLI, web GUI, and library API
-	pkgver = 1.0.7b1
+	pkgver = 1.0.7b2
 	pkgrel = 1
 	url = https://github.com/jia-xie/python-damiao-driver
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-damiao-motor
 	depends = python-waitress
 	provides = python-damiao-motor
 	conflicts = python-damiao-motor
-	source = damiao-motor::git+https://github.com/jia-xie/python-damiao-driver.git#tag=v1.0.7b1
-	sha256sums = dfb8a634ec0d82d87566f20fb0a55e0c4626bf8018534e8a0f24d20c73d687f7
+	source = damiao-motor::git+https://github.com/jia-xie/python-damiao-driver.git#tag=v1.0.7b2
+	sha256sums = 061ae671c0d5b03ea8d6dd4bb2307bd4e0d5b824130cbfd1f65dfce5459dc562
 
 pkgname = python-damiao-motor

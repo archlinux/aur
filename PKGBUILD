@@ -2,7 +2,7 @@
 
 pkgname=python-damiao-motor
 _name=${pkgname#python-}
-pkgver=1.0.7b1
+pkgver=1.0.7b2
 pkgrel=1
 pkgdesc="Python driver for DaMiao (达妙) brushless motors over CAN with a unified CLI, web GUI, and library API"
 provides=(${pkgname})
@@ -26,7 +26,7 @@ makedepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('dfb8a634ec0d82d87566f20fb0a55e0c4626bf8018534e8a0f24d20c73d687f7')
+sha256sums=('061ae671c0d5b03ea8d6dd4bb2307bd4e0d5b824130cbfd1f65dfce5459dc562')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
