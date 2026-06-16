@@ -4,7 +4,7 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx-git
-pkgver=r9771
+pkgver=r9781
 pkgrel=1
 pkgdesc="Digital DJ mixing software (latest development branch)."
 arch=('i686' 'x86_64' 'aarch64')
@@ -71,13 +71,14 @@ source=("${pkgname%-*}::git+https://github.com/mixxxdj/mixxx.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-*}"
-    echo "r$(git log --pretty=oneline --first-parent | wc -l)"
+	cd "$srcdir/${pkgname%-*}"
+	echo "r$(git log --pretty=oneline --first-parent | wc -l)"
 }
 
 build() {
 	local cmake_options=(
 		-B build
+		-D CMAKE_LINKER_TYPE=BFD
 		-D CMAKE_BUILD_TYPE=RelWithDebInfo
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D OPTIMIZE=native
