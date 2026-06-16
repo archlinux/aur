@@ -1,6 +1,6 @@
-# Maintainer: Tu Nombre <tuemail@ejemplo.com>
+# Maintainer: Paolo Mezzano Barahona <pmezzano@gmail.com>
 pkgname=jisocreator-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Herramienta para crear archivos ISO (versión binaria)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('jisocreator')
 conflicts=('jisocreator')
 source=("https://github.com/Cavallinux/jisocreator/releases/download/v${pkgver}/jisocreator-${pkgver}-gtk.linux.x86_64.zip"
         "jisocreator.desktop")
-sha256sums=('cc1e2af923446c24d8c806f91978d857f9241aa055eb42f4553a5646d9cd4364'
+sha256sums=('aec1c2e0b097e476ca077aee30b7e4748e1c86195b3b92b8ad4d79e4efd406af'
             '90777606d96171becf2a35fee41e86a39b8a8b45fb8f50e2e0614b1769b29138')
 
 package() {
