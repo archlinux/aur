@@ -1,6 +1,6 @@
 pkgbase = home-assistant-tui-git
 	pkgdesc = Terminal UI for Home Assistant (git version)
-	pkgver = 0.1.0.r45.g863dcf2
+	pkgver = 0.1.0.r46.g4d14283
 	pkgrel = 1
 	url = https://github.com/timmo001/home-assistant-tui
 	arch = x86_64
