@@ -11,7 +11,7 @@ pkgname=(
   mutter-hdr-update-docs
 )
 pkgver=50.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Window manager and compositor for GNOME (with patches)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -93,10 +93,12 @@ source=(
   "mutter-hdr.patch::https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/5068.patch"
   "0001-window-actor-Add-format-aware-paint_to_content-varia.patch::https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/5077.patch"
   "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/5067.patch"
+  "mutter-ssd.patch::https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/5120.patch"
 )
 b2sums=('2987b5e207f0a12e94b035d5b913b8a76bc291be41a71669e977ead0f93cfbb3219c97aeb2475a97906e989353eb309abb2b80f683cc41074a042b81467e3a8c'
         'f989bc2ceb52aad3c6a23c439df3bbc672bc11d561a247d19971d30cc85ed5d42295de40f8e55b13404ed32aa44f12307c9f5b470f2e288d1c9c8329255c43bf'
         '57ff8454c7e33249a54cbc257b62cf9b2ddd49309c9616e815d4b7310cac2b0ca1a8a6c0dd191b36766c1cad2831848ea7e9880879010b9427138b8800fc506b'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP')
@@ -115,6 +117,9 @@ prepare() {
 
   # Color pipeline
   git apply -3 ../5067.patch
+
+  # Hook for JS / Wayland interfaces
+  git apply -3 ../mutter-ssd.patch
 }
 
 build() {
