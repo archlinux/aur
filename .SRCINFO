@@ -1,6 +1,6 @@
 pkgbase = r-rcmdrmisc
 	pkgdesc = R Commander Miscellaneous Functions
-	pkgver = 2.10.1
+	pkgver = 2.10.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RcmdrMisc
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-rcmdrmisc
 	optdepends = r-boot
 	optdepends = r-cardata
 	optdepends = r-datasets
-	source = https://cran.r-project.org/src/contrib/RcmdrMisc_2.10.1.tar.gz
-	sha256sums = a83b5055f0cc1591dbe7a6b95f2ef827585a0d31032b808a5a28cc2c079c4b7f
+	source = https://cran.r-project.org/src/contrib/RcmdrMisc_2.10.2.tar.gz
+	sha256sums = c4dd1f37c657c2ba706a57712aa22a652baa5aca4cc2c8221880b99ef31a351d
 
 pkgname = r-rcmdrmisc
