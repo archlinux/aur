@@ -2,8 +2,8 @@
 
 pkgname=grit-cli
 _pkgname=${pkgname%-cli}
-pkgver=0.4.7
-pkgrel=3
+pkgver=0.4.9
+pkgrel=1
 pkgdesc='LLM coded port of git to Rust'
 url='https://grit-scm.com'
 _url="https://github.com/gitbutlerapp/$_pkgname"
@@ -17,7 +17,7 @@ options=(!lto)
 conflicts=($_pkgname)
 _archive="$_pkgname-$pkgver"
 source=("$_archive.tar.gz::$_url/archive/v$pkgver.tar.gz")
-sha256sums=('2064ce95e3e824f632ac210dc8f4dfc0315eeadf99f8e77134515b30c31c868f')
+sha256sums=('01290722b5a1536ac02430f53bb7c83ec7f577bc7aabdb51fe46551f127e235d')
 
 prepare() {
 	cd "$_archive"
