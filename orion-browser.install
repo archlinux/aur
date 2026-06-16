@@ -1,0 +1,26 @@
+_appid=com.kagi.OrionGtk
+_bundle=/usr/lib/orion-browser/orion.flatpak
+
+_install_bundle() {
+  echo ":: Installing Orion Flatpak bundle (pulls org.gnome.Platform//49, needs network)..."
+  flatpak remote-add --system --if-not-exists flathub \
+    https://dl.flathub.org/repo/flathub.flatpakrepo
+  if flatpak info --system "$_appid" >/dev/null 2>&1; then
+    flatpak install --system -y --reinstall "$_bundle"
+  else
+    flatpak install --system -y "$_bundle"
+  fi
+  echo ":: Done. Launch with: flatpak run $_appid"
+}
+
+post_install() {
+  _install_bundle
+}
+
+post_upgrade() {
+  _install_bundle
+}
+
+pre_remove() {
+  flatpak uninstall --system -y "$_appid" || true
+}
