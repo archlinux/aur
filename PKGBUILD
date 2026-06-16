@@ -1,7 +1,7 @@
 # Maintainer: Michal Walenciak <kicer86@gmail.com>
 pkgname=wacki
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Faithful SDL2 port of Wacki: Kosmiczna rozgrywka'
 arch=('x86_64')
 url='https://github.com/mszula/wacki'
@@ -21,7 +21,7 @@ source=(
     'wacki-data-notice.txt'
 )
 noextract=("${_data_archive}")
-sha256sums=('915b3e827de74e5bec1a8e0edcc4156969521241faff52640d860c96ce1eb1ea'
+sha256sums=('512846081f80bc44c37769d5732ab05d691b9651cb2851fb6ce50b42954b455a'
             'SKIP'
             '1af86f9ae352bcb84359a412d95d30bb8da28ad207e6bfcdd20e164bfe8e07bb'
             '8a1afc87fa6d0aea08178c31dc416d04ed6f3baa02cbfd3f060685b002cd7485'
@@ -77,7 +77,7 @@ package() {
         install -Dm644 "$dta" "$pkgdir/usr/share/wacki/data/D${base#d}"
     done
 
-    install -Dm644 website/assets/icon-512.png \
+    install -Dm644 website/static/assets/icon-512.png \
         "$pkgdir/usr/share/icons/hicolor/512x512/apps/wacki.png"
     install -Dm644 "$srcdir/wacki.desktop" \
         "$pkgdir/usr/share/applications/wacki.desktop"
