@@ -18,32 +18,18 @@ pkgdesc="The networking stack of Chromium put into a library"
 arch=('x86_64')
 url="https://chromium.googlesource.com/chromium/src/+/refs/heads/main/components/cronet"
 license=('BSD-3-Clause')
-_depends=(
-  glibc
-  libgcc_s.so
-  libgio-2.0.so
-  libglib-2.0.so
-  libgobject-2.0.so
-  nspr
-  nss
-)
 makedepends=(
   at-spi2-core
   clang
   compiler-rt
   gn
-  glib2
-  glibc
   gtk3
   libcups
   libffi
-  libgcc
   libva
   libxkbcommon
   lld
   ninja
-  nspr
-  nss
   pango
   python
   rust
@@ -76,16 +62,34 @@ if (( _manual_clone )); then
   makedepends+=('git' 'python-httplib2' 'python-pyparsing' 'python-six')
 fi
 
+declare -gA _depends=(
+  [glib2]="libgio-2.0.so libglib-2.0.so libgobject-2.0.so"
+  [glibc]="glibc"
+  [libgcc]="libgcc_s.so"
+  [nspr]="nspr"
+  [nss]="nss"
+)
+
+_ABSEIL_PKG="abseil-cpp>=20240722.0"
+declare -gA _MAKE_TO_RUNTIME_DEPENDS=(
+  ["${_ABSEIL_PKG}"]="${_ABSEIL_PKG}"
+  [brotli]="libbrotlidec.so"
+  [double-conversion]="double-conversion"
+  [icu]="libicui18n.so libicuuc.so"
+  [re2]="libre2.so"
+  [zlib]="libz.so"
+  [zstd]="libzstd.so"
+)
+
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
-  [brotli]=libbrotlidec.so
+  [brotli]=brotli
   [double-conversion]=double-conversion
-  [icu]="libicui18n.so libicuuc.so"
-  [zlib]=libz.so
-  [zstd]=libzstd.so
+  [icu]=icu
+  [zlib]=zlib
+  [zstd]=zstd
 )
-makedepends+=("${!_system_libs[@]}")
 declare -gA _system_make_libs=(
   [jsoncpp]=jsoncpp
 )
@@ -140,7 +144,7 @@ if (( _system_abseil )); then
   # shellcheck disable=SC2192
   _system_libs+=(
     [absl_algorithm]=
-    [absl_base]="abseil-cpp>=20240722.0"
+    [absl_base]="${_ABSEIL_PKG}"
     [absl_cleanup]=
     [absl_container]=
     [absl_crc]=
@@ -160,9 +164,6 @@ if (( _system_abseil )); then
     [absl_time]=
     [absl_types]=
     [absl_utility]=
-  )
-  makedepends+=(
-    "${_system_libs[absl_base]}"
   )
   _unwanted_bundled_libs+=(
     third_party/abseil-cpp/absl/algorithm
@@ -200,22 +201,15 @@ case "${_system_stdlib}" in
   ;;&
 libc++)
   _depends+=(
-    libc++
-  )
-  makedepends+=(
-    libc++
+    [libc++]="libc++"
   )
   ;;
 libstdc++)
   _depends+=(
-    libstdc++.so
+    [libstdc++]="libstdc++.so"
   )
   _system_libs+=(
-    [re2]=libre2.so
-  )
-  makedepends+=(
-    libstdc++
-    re2
+    [re2]=re2
   )
   _unwanted_bundled_libs+=(
     third_party/re2
@@ -223,9 +217,14 @@ libstdc++)
   ;;
 esac
 
-# shellcheck disable=SC2206
-_depends+=(${_system_libs[@]})
-makedepends+=("${_system_make_libs[@]}")
+# shellcheck disable=SC2068
+for _lib in ${_system_libs[@]}; do
+  _depends["${_lib}"]="${_MAKE_TO_RUNTIME_DEPENDS["${_lib}"]}"
+done
+makedepends+=(
+  "${!_depends[@]}"
+  "${_system_make_libs[@]}"
+)
 
 prepare() {
   if (( _manual_clone )); then
@@ -425,8 +424,9 @@ check() {
 }
 
 package() {
+  # shellcheck disable=SC2206
   depends=(
-    "${_depends[@]}"
+    ${_depends[@]}
   )
 
   : "${pkgdir:?}"
