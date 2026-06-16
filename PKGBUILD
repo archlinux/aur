@@ -1,7 +1,7 @@
 # Maintainer: Artem Stasyuk <stasyukartem2@gmail.com>
 pkgname=openfortivpn-gui-bin
 pkgver=0.3.3
-pkgrel=2
+pkgrel=1
 pkgdesc="A modern GTK4/libadwaita GUI client for Fortinet SSL VPN on Linux, wrapping the openfortivpn CLI tool."
 arch=('x86_64')
 url="https://github.com/shini4i/openfortivpn-gui"
@@ -41,12 +41,5 @@ package() {
     install -Dm644 "com.github.shini4i.openfortivpn-gui.desktop" "${pkgdir}/usr/share/applications/com.github.shini4i.openfortivpn-gui.desktop"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     mkdir -p "${pkgdir}/usr/share/icons/hicolor"
-    for size in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512; do
-        if [ -f "hicolor/${size}/apps/openfortivpn-gui.png" ]; then
-            install -Dm644 "hicolor/${size}/apps/openfortivpn-gui.png" \
-                "${pkgdir}/usr/share/icons/hicolor/${size}/apps/openfortivpn-gui.png"
-            ln -s "openfortivpn-gui.png" \
-                "${pkgdir}/usr/share/icons/hicolor/${size}/apps/com.github.shini4i.openfortivpn-gui.png"
-        fi
-    done
+    cp -r "${srcdir}/hicolor/"* "${pkgdir}/usr/share/icons/hicolor/"
 }
