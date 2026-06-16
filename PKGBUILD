@@ -4,8 +4,8 @@
 # Based on [extra]'s thunderbird
 
 pkgname=(thunderbird-nightly-bin thunderbird-nightly-bin-noupdate)
-pkgver=153.0a1.20260519
-_version=153.0a1
+pkgver=154.0a1.20260616
+_version=154.0a1
 pkgrel=1
 arch=('x86_64')
 url="https://www.mozilla.org/thunderbird"
@@ -19,8 +19,8 @@ source=("${FX_SRC_URI}.txt"
         vendor.js
         policies.json)
 
-b2sums=('SKIP'
-        'SKIP'
+b2sums=('31959f2d7631603ba6f9dcece26996a2b0976db79d2c752d54bdd643f4e9bd10c3e6c3752ff9f9f862184aca0ce538af174da6627e373cd52a691d848ec70f97'
+        '7220d9a6dafcfb334afa0a65d674aa1163912b2a1370008c0bc5219698696064ba88c1d9fc1c9f98bb97840047cbe1c2339f1f8f633c48e0ff0986ea147f353e'
         '48e3b5827f5dd2e09a7c3e1ad6721d2c5fdb5962700b5e97df61d032445f7b2a9546ed057e6eb5d9676bb1d110b3b1c5e615edc4d821af63ceac9485e4c1c86c'
         '674d1ee883e675c37b0af0ac97c339a8c0f2b53cb06e64db64aaa3f22f83d7179b6fa3e122344f3413ccb9956776288db9bc608b5cedef640cbd223838be7476'
         'f8df63721191d84d8f1ceec263f63c44fd5dadeae0939baf9a4a6b1852516722b2a3d94b8d403cc7b6c6b525d5236f357ab65a72d716aab1f5bef47800b5a18c')
