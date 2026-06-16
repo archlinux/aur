@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=ZCode
+Comment=ZCode desktop app
+Exec=zcode %U
+Icon=zcode
+Terminal=false
+Type=Application
+Categories=Development;IDE;
+MimeType=x-scheme-handler/zcode;
+StartupNotify=true
+StartupWMClass=ZCode
