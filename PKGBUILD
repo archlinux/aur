@@ -3,7 +3,7 @@
 
 # Maintainer: nyrda <nyrda@keymasq.tools>
 pkgname=keymasq
-pkgver=0.17.1
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Keyboard and mouse remapper with GUI configuration, per-window profiles, and macros"
 arch=(
@@ -23,6 +23,7 @@ depends=(
     'python-uvloop'
     'python-xlib>=0.33'
     'python-gobject>=3.42.0'
+    'python-cairo'
     'gtk4'
     'libadwaita'
     'polkit'
@@ -35,8 +36,8 @@ makedepends=(
     'python-installer'
 )
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz::https://repo.keymasq.tools/releases/keymasq-0.17.1.tar.gz")
-sha256sums=('5517c401fd59cd8f8d4aca6ca5c617ef53e8e5ddf86409f3c41c38c48a3638ca')
+source=("$pkgname-$pkgver.tar.gz::https://repo.keymasq.tools/releases/keymasq-0.18.0.tar.gz")
+sha256sums=('78ea1d713836a1d37a0970358dcecbbb9cc565159d222dc0d6add7382d2545c0')
 
 
 build() {
@@ -81,8 +82,11 @@ package() {
     install -Dm644 "tmpfiles.d/keymasq.conf" \
         "$pkgdir/usr/lib/tmpfiles.d/keymasq.conf"
 
-    install -Dm644 "udev/91-keymasq-acl.rules" \
-        "$pkgdir/usr/lib/udev/rules.d/91-keymasq-acl.rules"
+    for rule in \
+        91-keymasq-acl.rules \
+        99-keymasq-hide-grabbed.rules; do
+        install -Dm644 "udev/$rule" "$pkgdir/usr/lib/udev/rules.d/$rule"
+    done
 
     install -Dm644 "polkit/com.keymasq.record-macro.policy" \
         "$pkgdir/usr/share/polkit-1/actions/com.keymasq.record-macro.policy"

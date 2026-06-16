@@ -1,6 +1,6 @@
 pkgbase = keymasq
 	pkgdesc = Keyboard and mouse remapper with GUI configuration, per-window profiles, and macros
-	pkgver = 0.17.1
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://keymasq.tools
 	arch = any
@@ -18,12 +18,13 @@ pkgbase = keymasq
 	depends = python-uvloop
 	depends = python-xlib>=0.33
 	depends = python-gobject>=3.42.0
+	depends = python-cairo
 	depends = gtk4
 	depends = libadwaita
 	depends = polkit
 	depends = systemd
-	source = keymasq-0.17.1.tar.gz::https://repo.keymasq.tools/releases/keymasq-0.17.1.tar.gz
-	sha256sums = 5517c401fd59cd8f8d4aca6ca5c617ef53e8e5ddf86409f3c41c38c48a3638ca
+	source = keymasq-0.18.0.tar.gz::https://repo.keymasq.tools/releases/keymasq-0.18.0.tar.gz
+	sha256sums = 78ea1d713836a1d37a0970358dcecbbb9cc565159d222dc0d6add7382d2545c0
 	install = keymasq.install
 
 pkgname = keymasq
