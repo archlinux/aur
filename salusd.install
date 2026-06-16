@@ -1,0 +1,55 @@
+# salusd is a per-user systemd service (installed to /usr/lib/systemd/user/).
+# pacman runs these hooks as root, which cannot start, restart, or reload a
+# per-user instance, so they only print guidance. Restarting salusd clears its
+# in-memory key, so the user must unlock again after any (re)start.
+
+post_install() {
+    echo ""
+    echo "  ── salus post-install notes ─────────────────────────────────────────────"
+    echo ""
+    echo "  Enable and start the daemon as a per-user service (no sudo):"
+    echo ""
+    echo "    systemctl --user enable --now salusd"
+    echo ""
+    echo "  Then initialise and unlock the store:"
+    echo ""
+    echo "    salusc shares          # first-time init — records the shares ONCE"
+    echo "    salusc unlock          # reconstruct the key in the daemon's memory"
+    echo ""
+    echo "  Optional: run the salus-agent for convenient unlocks (enroll a set,"
+    echo "  then 'salusc unlock' needs only a passphrase):"
+    echo ""
+    echo "    salusc enroll                           # store threshold-1 + 1 passphrase"
+    echo "    systemctl --user enable --now salus-agent"
+    echo ""
+    echo "  Annotated example configs are at:"
+    echo "    /usr/share/doc/salus/examples/salusd.toml.example"
+    echo "    /usr/share/doc/salus/examples/salus-agent.toml.example"
+    echo ""
+    echo "  ─────────────────────────────────────────────────────────────────────────"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "  ── salus upgrade notes ──────────────────────────────────────────────────"
+    echo ""
+    echo "  salusd is a per-user service, so pacman cannot restart it for you."
+    echo "  To pick up the new binary, each user running salusd should run:"
+    echo ""
+    echo "    systemctl --user daemon-reload"
+    echo "    systemctl --user restart salusd"
+    echo "    salusc unlock          # the in-memory key clears on restart"
+    echo ""
+    echo "  ─────────────────────────────────────────────────────────────────────────"
+    echo ""
+}
+
+pre_remove() {
+    echo ""
+    echo "  salusd is a per-user service; pacman cannot stop it for you. If it is"
+    echo "  running, stop and disable it per user first:"
+    echo ""
+    echo "    systemctl --user disable --now salusd"
+    echo ""
+}
