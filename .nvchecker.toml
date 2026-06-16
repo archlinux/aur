@@ -1,0 +1,4 @@
+[litmusctl]
+source = "git"
+git = "https://github.com/litmuschaos/litmusctl.git"
+prefix = "v"

@@ -2,20 +2,20 @@
 # Contributor: Ray Del Rosario <michael@raydelrosario.com>
 
 pkgname=litmusctl
-pkgver=1.25.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc="CLI tool to manage litmuschaos's agent plane"
-url='https://github.com/litmuschaos/litmusctl'
-arch=('x86_64' 'aarch64')
-license=('Apache-2.0')
-makedepends=('go')
+url=https://github.com/litmuschaos/litmusctl
+arch=(x86_64 aarch64)
+license=(Apache-2.0)
+makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('b96cb0e191bb92d6ab92761e959fa39de0af0fc3e33de4b2bedd2b4c9606cfe1')
+sha256sums=('6f38b7d186dbf2553bef95756fc70a994ed7b30c5a844c71ddea7124402234c3')
 
 prepare() {
+    export GOPATH="$srcdir"
     cd "$pkgname-$pkgver"
     mkdir -p build
-    export GOPATH="$srcdir"
     go mod download -modcacherw
 }
 
@@ -35,7 +35,7 @@ check() {
 }
 
 package() {
-    depends=('kubectl')
+    depends=(kubectl)
     cd "$pkgname-$pkgver"
     install -D "build/$pkgname" -t "$pkgdir/usr/bin/"
     install -Dm644 Usage_0.23.0.md "$pkgdir/usr/share/doc/$pkgname/USAGE.md"
