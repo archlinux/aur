@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=container-desktop-bin
 _pkgname='Container Desktop'
-pkgver=5.2.16
+pkgver=5.3.0
 _electronversion=42
 pkgrel=1
 pkgdesc="Podman desktop companion.A familiar desktop graphical interface to the free and open container manager, podman!(Prebuilt version.Use system-wide electron)"
@@ -27,8 +27,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${_ghurl}/releases/do
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-linux-x64-${pkgver}.pacman")
 sha256sums=('fd5805079cad1ee5ebcfd2a2a58e16553314c51700ce5f4e32dba06d9ce49283'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('be20f0d5e9f9b3be4353e728be8f49fb8962f9931283bddd7f4c3ad8df7aa32f')
-sha256sums_x86_64=('7f8244a1b4f2a505e9414f5102fa4f7ac88a5f12d97a013969fc89c900b2eb1e')
+sha256sums_aarch64=('793e0be8ef4e3c93dec26ff3cb79f8a27c0e3f0233326cf993305b544a0a622c')
+sha256sums_x86_64=('45da1d690050ff7f8781a75f5465ba4b08e3780e37bd63b9d1d66ec188ba67ae')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
