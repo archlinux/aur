@@ -1,5 +1,5 @@
 pkgbase = livesplit-one-druid-bin
-	pkgdesc = A native LiveSplit One frontend built with druid (prebuilt binary)
+	pkgdesc = A native LiveSplit One frontend built with druid
 	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/AlexKnauth/livesplit-one-druid
