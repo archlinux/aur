@@ -1,7 +1,7 @@
 pkgbase = mcloud-electron
 	pkgdesc = 中国移动云盘
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://yun.139.com/
 	install = mcloud.install
 	arch = x86_64

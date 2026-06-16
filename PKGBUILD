@@ -2,7 +2,7 @@
 pkgname=mcloud-electron
 pkgver=1.1.1
 kylinv=111
-pkgrel=1
+pkgrel=2
 pkgdesc="中国移动云盘"
 arch=('x86_64')
 url="https://yun.139.com/"
