@@ -1,0 +1,14 @@
+[Unit]
+Description=Lazycat Microserver CLI Daemon
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Environment="HCLIENT_CLI_CFG=%h/.config/hportal-client"
+ExecStart=/usr/bin/hclient-cli daemon
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

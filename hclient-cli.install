@@ -1,0 +1,7 @@
+post_install() {
+    cat <<'MSG'
+==> hclient-cli is only for testing. Restart to load the new
+==> version; the running session can freeze until you do:
+==>   systemctl --user restart hclient-cli.service
+MSG
+}
