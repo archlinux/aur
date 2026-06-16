@@ -1,6 +1,6 @@
 pkgbase=waywallen-display
 pkgname=(waywallen-display plasma-wallpaper-waywallen gnome-shell-extension-waywallen)
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 arch=(x86_64)
 url=https://github.com/waywallen/waywallen-display
@@ -11,7 +11,7 @@ makedepends=(cmake vulkan-headers vulkan-icd-loader libglvnd qt6-base qt6-declar
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/waywallen/waywallen-display/archive/refs/tags/v$pkgver.tar.gz"
         "0001-install-kde-wallpaper-to-correct-path.diff"
         "0002-install-gnome-extension-to-correct-path.diff")
-sha256sums=('56928f63c818cb28fff473433f67687dbbb99ac799e5c7d219286b6d0faa45dc'
+sha256sums=('d2089183f4325a67df29dd28910b15b8e0dddf623303fe28a45f6c11e61f872f'
             'bb766cd888b1f004c98127b6b74715958ac38a059c3a8c0c5827dc1fd4965e43'
             '785c3e354f8922e12fbb15b655b0a7e3f8c834a1fbba0e18f19e4643329796fd')
 
@@ -55,7 +55,7 @@ package_plasma-wallpaper-waywallen() {
 package_gnome-shell-extension-waywallen() {
     pkgdesc="GNOME extension for waywallen."
     arch=(any)
-    depends=(waywallen-diwplay gtk4 graphene dconf gnome-shell)
+    depends=(waywallen-display gtk4 graphene dconf gnome-shell)
     DESTDIR="$pkgdir" cmake --install build --component gnome_extension_packaging
     install -Dm644 "$pkgbase-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
