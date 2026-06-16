@@ -9,7 +9,6 @@ pkgbase = kdash
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = python
 	makedepends = rust
 	depends = gcc-libs
 	depends = libxcb

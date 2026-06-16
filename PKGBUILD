@@ -8,7 +8,7 @@ arch=('armv7h' 'aarch64' 'i686' 'x86_64')
 url='https://kdash.cli.rs/'
 license=('MIT')
 depends=('gcc-libs' 'libxcb')
-makedepends=('git' 'python' 'rust')
+makedepends=('git' 'rust')
 options=('!lto')
 source=("${pkgname}::git+https://github.com/kdash-rs/${pkgname}.git#tag=v${pkgver}")
 b2sums=('26d4c66d71294204c406e069fc44a169d1f1b8302eae34494e155c88d9d4d2113c6e432af95b5b524fc52cbe60a262e9685fa1b82231818ffcefc46c335d5cb5')
