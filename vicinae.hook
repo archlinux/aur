@@ -1,7 +1,7 @@
 [Trigger]
 Operation = Upgrade
 Type = Package
-Target = vicinae-bin
+Target = vicinae
 
 [Action]
 Description = Restarting vicinae.service as a user unit if enabled/active...
