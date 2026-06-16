@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=LiveSplit One (druid)
+Comment=A native LiveSplit One frontend built with druid
+Exec=livesplit-one-druid
+Icon=livesplit-one-druid
+Terminal=false
+Categories=Utility;
