@@ -1,5 +1,5 @@
 pkgbase = dotnet-core-9.0
-	pkgver = 9.0.16.sdk117
+	pkgver = 9.0.17.sdk118
 	pkgrel = 1
 	url = https://dotnet.microsoft.com
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = dotnet-core-9.0
 	optdepends = bash-completion: Bash completion support
 	options = !lto
 	options = staticlibs
-	source = git+https://github.com/dotnet/dotnet.git#tag=14d5ddefede18b29eb0f2ea918c79861a5211177
-	b2sums = 006cddcd256da821c58d056a9d6716a02f830ac90105d2241b51e02da048dca1d4b0140d222a11250b305ee9ca23816e0a7498944264d4024692f8089d187704
+	source = git+https://github.com/dotnet/dotnet.git#tag=v9.0.118
+	b2sums = bdd6a0470cf6d36f398f947f15bb5a9eea434453b06a95c425c093537be6151d0d83a7f381132562f400a69bd640f97952b76ce44699faa412891c8134b38619
 
 pkgname = dotnet-runtime-9.0
 	pkgdesc = The .NET Core runtime
