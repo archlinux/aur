@@ -2,7 +2,7 @@
 
 pkgname='geant4-full-debug'
 pkgver=11.4.1
-pkgrel=2
+pkgrel=1
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
   'cmake>=3.16'
