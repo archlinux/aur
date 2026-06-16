@@ -4,10 +4,6 @@ Arch Linux package for [ComfyUI](https://github.com/Comfy-Org/ComfyUI), a powerf
 
 ## Installation
 
-```bash
-sudo pacman -S comfyui
-```
-
 The install script automatically detects your GPU via `lspci` and installs the appropriate PyTorch variant:
 
 | GPU          | PyTorch variant |
@@ -21,7 +17,7 @@ The install script automatically detects your GPU via `lspci` and installs the a
 To force a specific GPU backend, set `COMFYUI_GPU` before installing:
 
 ```bash
-sudo COMFYUI_GPU=cuda pacman -S comfyui
+COMFYUI_GPU=cuda makepkg -sf comfyui
 ```
 
 Valid values: `rocm`, `cuda`, `cpu`.
