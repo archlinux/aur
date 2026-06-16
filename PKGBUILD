@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ente-auth
 pkgver=4.4.23
-pkgrel=1
+pkgrel=2
 _flutter_ver=3.38.10
 pkgdesc="Open source 2FA authenticator, with end-to-end encrypted backups"
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,6 @@ makedepends=(
   'ninja'
   'unzip'
 )
-optdepends=('zenity: Required for importing files')
 source=("git+https://github.com/ente-io/ente.git#tag=auth-v$pkgver"
         'git+https://github.com/simple-icons/simple-icons.git'
         'enteauth.desktop')
