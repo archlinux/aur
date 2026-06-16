@@ -1,49 +1,53 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 
-pkgname=mingw-w64-double-conversion
 _pkgname=double-conversion
-pkgver=3.3.0
+pkgname=mingw-w64-${_pkgname}
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Binary-decimal and decimal-binary routines for IEEE doubles (mingw-w64)"
 arch=(any)
 url='https://github.com/google/double-conversion'
-license=(BSD)
+license=('BSD-3-Clause')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("double-conversion-${pkgver}.tar.gz::https://github.com/google/double-conversion/archive/v${pkgver}.tar.gz")
-sha256sums=('04ec44461850abbf33824da84978043b22554896b552c5fd11a9c5ae4b4d296e')
+sha256sums=('42fd4d980ea86426e457b24bdfa835a6f5ad9517ddb01cdb42b99ab9c8dd5dc9')
 
+_srcdir="${_pkgname}-${pkgver}"
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' )
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  for _arch in ${_architectures}; do
-    # shared
-    mkdir -p build-${_arch}-shared && pushd build-${_arch}-shared
-    ${_arch}-cmake ..
-    make
-    popd
-    
-    # static
-    mkdir -p build-${_arch}-static && pushd build-${_arch}-static
-    ${_arch}-cmake \
-      -DBUILD_SHARED_LIBS=OFF \
-      ..
-    make
-    popd
-  done
+	for _arch in ${_architectures}; do
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" \
+			-DBUILD_SHARED_LIBS=OFF \
+			-DBUILD_TESTING=OFF \
+			-DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
+		cmake --build "build-${_arch}-static"
+
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" \
+			-DBUILD_TESTING=OFF
+		cmake --build "build-${_arch}"
+	done
+}
+
+check() {
+	for _arch in ${_architectures}; do
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" \
+			-DBUILD_TESTING=ON
+		cmake --build "build-${_arch}"
+		cmake --build "build-${_arch}" --target test
+	done
 }
 
 package() {
-  for _arch in ${_architectures}; do
-    # shared
-    cd "${srcdir}/${_pkgname}-${pkgver}/build-${_arch}-shared"
-    make DESTDIR="${pkgdir}" install
-    # static
-    cd "${srcdir}/${_pkgname}-${pkgver}/build-${_arch}-static"
-    make DESTDIR="${pkgdir}" install
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
-    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
-  done
+	for _arch in ${_architectures}; do
+		DESTDIR="${pkgdir}" cmake --install "build-${_arch}-static"
+		${_arch}-strip -g "$pkgdir"/usr/${_arch}/static/lib/*.a
+
+		DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
+		${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+	done
 }
