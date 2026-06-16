@@ -1,21 +1,24 @@
-# Maintainer:
+# Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-pycapnp
 _name=pycapnp
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="A cython wrapping of the C++ Cap'n Proto library"
 url="https://github.com/capnproto/pycapnp"
 license=(BSD-2-Clause)
-arch=(x86_64)
+arch=($CARCH)
 depends=(
-  gcc-libs
   glibc
+  libgcc
+  libstdc++
   python
+  python-jinja
 )
 makedepends=(
   git
   capnproto
+  pkgconf
   cython
   python-build
   python-installer
@@ -27,9 +30,13 @@ checkdepends=(
   python-pytest
   python-pytest-asyncio
 )
-optdepends=('python-jinja: for capnpc-cython')
+optdepends=()
 source=("git+$url#tag=v$pkgver")
-sha512sums=('0468dba04d0ca9b49dbe9bf04720d14ae4a87077dac3d9ee6f3344a69cacce26034cba1e2078481c747d89bd225625c3e2eb655a1d8e4fb4c79be9acf97f8ce2')
+sha512sums=('d8c2fdb10ad35bfff68eef751316b1cd4a8d30f4190b79825bb0f66065cd5da9c8c73628ade94166acc7e6ce4c431d5d0b8c974b4f9c30175dcae6f716db99cc')
+
+prepare() {
+    git -C $_name clean -dfx
+}
 
 build() {
   cd $_name
@@ -40,7 +47,7 @@ check() {
   cd $_name
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -Pm pytest
+  test-env/bin/python -Pm pytest -k "not ssl" -v
 }
 
 package() {

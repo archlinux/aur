@@ -1,6 +1,6 @@
 pkgbase = python-pycapnp
 	pkgdesc = A cython wrapping of the C++ Cap'n Proto library
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/capnproto/pycapnp
 	arch = x86_64
@@ -9,23 +9,27 @@ pkgbase = python-pycapnp
 	checkdepends = python-pytest-asyncio
 	makedepends = git
 	makedepends = capnproto
+	makedepends = pkgconf
 	makedepends = cython
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-pkgconfig
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = python
-	optdepends = python-jinja: for capnpc-cython
-	source = git+https://github.com/capnproto/pycapnp#tag=v2.2.1
-	sha512sums = 0468dba04d0ca9b49dbe9bf04720d14ae4a87077dac3d9ee6f3344a69cacce26034cba1e2078481c747d89bd225625c3e2eb655a1d8e4fb4c79be9acf97f8ce2
+	depends = python-jinja
+	source = git+https://github.com/capnproto/pycapnp#tag=v2.2.2
+	sha512sums = d8c2fdb10ad35bfff68eef751316b1cd4a8d30f4190b79825bb0f66065cd5da9c8c73628ade94166acc7e6ce4c431d5d0b8c974b4f9c30175dcae6f716db99cc
 
 pkgname = python-pycapnp
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = python
+	depends = python-jinja
 	depends = capnproto
 	depends = libkj.so
 	depends = libkj-async.so
