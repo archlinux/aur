@@ -2,7 +2,7 @@
 _pkgname=butterflypack
 pkgname=${_pkgname}-git
 pkgver=4.1.0.r32.ga6a83e9
-pkgrel=1
+pkgrel=2
 pkgdesc="Large-Scale dense linear systems solver"
 arch=('x86_64')
 url="https://github.com/liuyangzhuan/ButterflyPACK"
@@ -43,6 +43,7 @@ prepare() {
   sed -i '/add_subdirectory(EXAMPLE)/d' CMakeLists.txt
 
   # We want the installed headers to respect CMAKE_INSTALL_INCLUDEDIR
+  sed -i 's/$<INSTALL_INTERFACE:include>/$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>/g' CMakeLists.txt
   sed -i 's/$<INSTALL_INTERFACE:include>/$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>/g' SRC/CMakeLists.txt
 
   # ZFP include is not needed (and incorrect), remove it
@@ -58,7 +59,7 @@ build() {
     -D CMAKE_POLICY_VERSION_MINIMUM=3.5
     -D BUILD_SHARED_LIBS=ON
     -D CMAKE_INSTALL_PREFIX=/usr
-    -D CMAKE_INSTALL_INCLUDEDIR=include/${pkgname}/
+    -D CMAKE_INSTALL_INCLUDEDIR=include/${_pkgname}/
     -D BLA_VENDOR="OpenBLAS"
     # -D CMAKE_Fortran_COMPILER=mpif90
     # -D CMAKE_CXX_COMPILER=mpicxx

@@ -1,7 +1,7 @@
 pkgbase = butterflypack-git
 	pkgdesc = Large-Scale dense linear systems solver
 	pkgver = 4.1.0.r32.ga6a83e9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/liuyangzhuan/ButterflyPACK
 	arch = x86_64
 	license = LicenseRef-Custom
