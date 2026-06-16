@@ -1,7 +1,7 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoa@t1c.dev>
 _pkgname="dune-cli"
 pkgname="${_pkgname}-bin"
-pkgver=0.1.15
+pkgver=0.1.17
 pkgrel=1
 pkgdesc="Dune Analytics CLI"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ conflicts=(
 source_x86_64=("${_pkgname}_${pkgver}_linux_amd64.tar.gz::https://github.com/duneanalytics/cli/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${_pkgname}_${pkgver}_linux_arm64.tar.gz::https://github.com/duneanalytics/cli/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('447f3ea2c9eea8b42bfdfcae8d216804b82c0c845c2b75c9295c0074cc067340')
-sha256sums_aarch64=('40cf24915492221882c26a47b8ce0677f1f59c674861ecfa7c58aaac64c0ba6e')
+sha256sums_x86_64=('bcd79da7717b4ba793dd3e9044ff3ad99ca713bce2de1b6eace8eb88e687377e')
+sha256sums_aarch64=('0388aee019b6385edd23a49a21cbd65f60f730c5876a16e7b1a77763d7b324bc')
 
 package() {
     install -Dm755 "dune" "${pkgdir}/usr/bin/dune"
