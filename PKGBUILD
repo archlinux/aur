@@ -23,7 +23,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname}"
-	cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DTIMEPAD_NOVENDORED=ON -DDISTRIBUTION_MODE=ON
+	cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DDISTRIBUTION_MODE=ON
 	cmake --build build -- -j
 }
 
