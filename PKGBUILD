@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=motrix-next-bin
-pkgver=3.9.4
+pkgver=3.9.5
 pkgrel=1
 pkgdesc="A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ depends=(
 )
 source=("LICENSE-MIT")
 sha256sums=('82e71190970399412c9e40fc3f4e2dc1cb070d56433ee7f25af7a4e67f401f0e')
-sha256sums_x86_64=('11ff316152fa3e79b7bfa7d1bfebbbacac1420d6829fcbd4bc9794c3a8166c29')
-sha256sums_aarch64=('afc5e18db15a779e3a061443bf1a5caf444b4f81ffe5fd63f5ce8d2a24cf38d4')
+sha256sums_x86_64=('1a15672eaacdc7fae1aace288648f0222517b884332b3b9d5bbd6060f3a17d85')
+sha256sums_aarch64=('8fbcc7dda7d7a3ed25e533e50961b3d52e750d5a5160e31e2f4f76baf06517fe')
 source_x86_64=("$pkgname-$pkgver-x86_64.deb::$url/releases/download/v$pkgver/MotrixNext_${pkgver}_amd64.deb")
 source_aarch64=("$pkgname-$pkgver-aarch64.deb::$url/releases/download/v$pkgver/MotrixNext_${pkgver}_arm64.deb")
 
