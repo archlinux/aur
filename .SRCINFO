@@ -7,6 +7,7 @@ pkgbase = sing-geosite-rule-set-git
 	license = GPL-3.0-or-later
 	makedepends = git
 	provides = sing-geosite-rule-set=20260414013320
+	conflicts = sing-geosite-rule-set
 	source = sing-geosite-rule-set-git::git+https://github.com/SagerNet/sing-geosite
 	sha256sums = SKIP
 

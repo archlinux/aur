@@ -3,14 +3,14 @@
 
 pkgname=sing-geosite-rule-set-git
 pkgver=20260414013320
-provides=("sing-geosite-rule-set=${pkgver}")
+provides=(${pkgname%-git}=${pkgver})
+conflicts=(${pkgname%-git})
 pkgrel=1
 pkgdesc="Geosite Rule Sets for sing-box"
 arch=(any)
 url="https://github.com/SagerNet/sing-geosite"
 license=(GPL-3.0-or-later)
 makedepends=('git')
-
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
@@ -20,8 +20,8 @@ pkgver() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  git switch rule-set
+    cd "${srcdir}/${pkgname}"
+    git switch rule-set
 
-  install -Dm644 *.srs -t "${pkgdir}/usr/share/sing-box/rule-set"
+    install -Dm644 *.srs -t "${pkgdir}/usr/share/sing-box/rule-set"
 }
