@@ -12,7 +12,7 @@ source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/marleylinux/FastFlo
 sha256sums=('ff1a55951bd68c7e6d649976f9e2a4e4e14514178b36be574f36c40834d47e32')
 
 package() {
-  cd "$srcdir/FastFlowLM-"*
+  cd "$srcdir/FastFlowLM-gtk-$pkgver"
 
   # Install Python files
   install -d "$pkgdir/usr/share/fastflowlm-gtk"
