@@ -1,6 +1,6 @@
 # Maintainer: 0-don <https://github.com/0-don>
 pkgname=clippy-rs-bin
-pkgver=1.6.20
+pkgver=1.6.22
 pkgrel=1
 pkgdesc="Clipboard Manager built with Rust {{DESCRIPTION}} Typescript"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('libappindicator-gtk3' 'webkit2gtk-4.1' 'gtk3')
 provides=('clippy-rs')
 conflicts=('clippy-rs')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/clippy_${pkgver}_amd64.deb")
-sha256sums=('634d73968865b51c2abc53229254fc460199ba8e5612e8d1a658a8fc3fc80616')
+sha256sums=('734e6819f45b7d70fdd4787aae4bdf8b2a9d7ce0e8f9f673a206a900580b87e6')
 
 package() {
     bsdtar -xf data.tar.* -C "${pkgdir}/"
