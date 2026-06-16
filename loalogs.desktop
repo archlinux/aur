@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=LoaLogs
+Comment=Lost Ark Meter
+Exec=/opt/loalogs/start_logs.sh
+Icon=/opt/loalogs/icon.png
+Terminal=false
+Type=Application
+Categories=Utility;

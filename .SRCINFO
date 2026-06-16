@@ -1,0 +1,24 @@
+pkgbase = loalogs
+	pkgdesc = Lost Ark DPS meter
+	pkgver = 1.45.1
+	pkgrel = 1
+	url = https://github.com/snoww/loa-logs
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = bash
+	depends = glibc
+	options = !strip
+	source = LOA.Logs_1.45.1_amd64.AppImage::https://github.com/snoww/loa-logs/releases/download/v1.45.1/LOA.Logs_1.45.1_amd64.AppImage
+	source = nineveh::https://github.com/snoww/loa-logs/releases/download/v1.45.0/nineveh
+	source = start_logs.sh
+	source = nineveh_wrapper.sh
+	source = icon.png
+	source = loalogs.desktop
+	sha256sums = 878c541cdfed3274793670c210876a80767e08ed2bae6896f276e04a567cb678
+	sha256sums = 3f3bc1b1a06889b8a017817cc5310be8f00911ca8724ea5eb5215ac8f9c75555
+	sha256sums = c0de9112d19404661b189da41facf6bdc6d6a3f41347091fa70605d9d2133106
+	sha256sums = 92602a2a729e16097db2add01947aefa413d021cf0b2520a50aa1f4288ee22d9
+	sha256sums = e7ff8fce866d741c5ad78cd46f8b1c2686eb6ffa622bc46c1cf7709b4ca2f974
+	sha256sums = 3485f4a5378544bb63d95fa845a9d477ade7f3d626f8ad2f79d96a15bfc57f08
+
+pkgname = loalogs
