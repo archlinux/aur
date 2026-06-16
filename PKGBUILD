@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=input-remapper-bin
 pkgver=2.2.1
-pkgrel=2
+pkgrel=3
 _pythonver=3.14
 pkgdesc="A tool to change and program the mapping of your input device buttons.(Prebuilt version)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ depends=(
     'python-cairo'
     'python-packaging'
     'python-psutil'
-    'python-dbus'
+    'python-dasbus'
 )
 optdepends=(
     'xorg-xmodmap: symbol names matching the keyboard layout'
