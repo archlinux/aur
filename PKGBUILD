@@ -1,4 +1,5 @@
 # shellcheck disable=SC2034,SC2154,SC2164,SC2128
+# Maintainer: Energetix/Dark Nebula <https://github.com/Jobanny-Friki>
 
 pkgbase=kotki
 pkgname=('kotki' 'python-kotki')
