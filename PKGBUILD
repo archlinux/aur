@@ -10,7 +10,12 @@ _pkgname=vendi
 #   26w25a: real output-scale rendering + wp_fractional_scale_v1, layer
 #           re-arrange + wallpaper fix on live scale change, vendi display CLI,
 #           both bars tint with the theme
-pkgver=26w25a
+#   26w25b: video screensaver + linux-dmabuf client GPU accel, on/off blur that
+#           keeps window content sharp, touch pointer-emulation + gestures
+#           (3-finger workspace, edge-swipe dashboard/control center), control
+#           center inline Wi-Fi/Bluetooth/notifications panels, battery-shaped
+#           badge + dynamic-island charge/low-battery notch
+pkgver=26w25b
 pkgrel=1
 pkgdesc="vendiOS preview snapshot — compositor, bar, lock, installer, CLI (pre-v0.1.1)"
 arch=('x86_64')
