@@ -1,0 +1,10 @@
+pkgbase = librewolf-autoconfig-prefs
+	pkgdesc = Enables privileged autoconfig context for librewolf.overrides.cfg (required for uc.js loaders)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/MrOtherGuy/fx-autoconfig
+	arch = any
+	license = Unlicense
+	depends = librewolf
+
+pkgname = librewolf-autoconfig-prefs
