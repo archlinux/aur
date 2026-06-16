@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 
 
+## [1.7] - 2026-06-16
+### Minor
+- **Update mount script** parameters for improved performance and stability (I know, again).
+- **Update to readme file** for troubleshooting steps wiht hangs and hicups. Main culprit is the thumbnail generation.
+
 ## [1.6.1] - 2026-06-15
 ### Minor
 - **Update mount script** parameters for improved performance and stability

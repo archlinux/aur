@@ -908,7 +908,7 @@ class RcloneKdeApp(QMainWindow):
         
         about_html = """
         <div style="font-family: sans-serif;">
-            <h2 style="color: #3daee9;">Rclone-WIZ 1.6.1</h2>
+            <h2 style="color: #3daee9;">Rclone-WIZ 1.7</h2>
             <p>A simple and easy-to-use tool to configure, script, and mount cloud drives using rclone.</p>
             <hr>
             <p><b>Created by:</b> Miran Kljun<br>
@@ -1075,19 +1075,22 @@ class RcloneKdeApp(QMainWindow):
                 "echo \"Mounting $REMOTE to $MOUNT_PATH...\"\n"
                 "# Execute rclone mount with optimized VFS caching and dynamic chunking\n"
                 "rclone mount \"$REMOTE\" \"$MOUNT_PATH\" \\\n"
-                "  --vfs-cache-mode full \\\n"
-                "  --vfs-cache-max-size 50G \\\n"        # Cap the disk usage to 50GB (adjust to your disk)
-                "  --vfs-cache-max-age 24h \\\n"         # Remove cache files older than 24 hours
-                "  --dir-cache-time 1000h \\\n"          # Cache directory metadata longer to avoid API hangs
-                "  --buffer-size 32M \\\n"               # Reduced slightly to save RAM across multiple files
-                "  --vfs-read-chunk-size 32M \\\n"       # Starts downloading in small chunks for instant open times
-                "  --vfs-read-chunk-size-limit off \\\n" # No limit for smoother sustained reads and best flow
-                "  --vfs-read-ahead 256M \\\n"           # Pre-fetch more data for smooth streaming
-                "  --vfs-fast-fingerprint \\\n"          # Faster change detection, prevents hangs on large files
-                "  --timeout 1h \\\n"                    # Prevents stale connections from hanging the mount
-                "  --attr-timeout 1h \\\n"
-                "  --poll-interval 15s \\\n"             # Faster polling to keep dir-cache updated
-                "  --daemon"                             # Run in background
+                "--vfs-cache-mode full \\\n"
+                "--vfs-cache-max-size 50G \\\n"
+                "--vfs-cache-max-age 24h \\\n"
+                "--dir-cache-time 1000h \\\n"
+                "--poll-interval 15s \\\n"
+                "--buffer-size 32M \\\n"
+                "--vfs-read-chunk-size 32M \\\n"
+                "--vfs-read-chunk-size-limit off \\\n"
+                "--vfs-read-ahead 128M \\\n"
+                "--vfs-fast-fingerprint \\\n"
+                "--timeout 1h \\\n"
+                "--attr-timeout 1h \\\n"
+                "--allow-other \\\n"
+                "--tpslimit 10 \\\n"
+                "--tpslimit-burst 10 \\\n"
+                "--daemon"
             )
             self.text_script.setPlainText(script_content)
             
