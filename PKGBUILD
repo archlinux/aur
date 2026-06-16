@@ -20,11 +20,16 @@ pkgver() {
 }
 
 build() {
+  export CARGO_TARGET_DIR="$srcdir/target"
+  rm -rf "$CARGO_TARGET_DIR"
   cd "$srcdir/rmcl"
   cargo build --release --locked
 }
 
 check() {
+  export CARGO_TARGET_DIR="$srcdir/target"
+  export XDG_CONFIG_HOME="$srcdir/xdg-config"
+  mkdir -p "$XDG_CONFIG_HOME"
   cd "$srcdir/rmcl"
   cargo test --release --locked
 }
