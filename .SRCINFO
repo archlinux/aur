@@ -1,0 +1,16 @@
+pkgbase = mtban
+	pkgdesc = MikroTik address-list manager via RouterOS REST API
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/hb9hil/mtban
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	conflicts = mtban-bin
+	backup = etc/mtban/mtban.conf
+	source = mtban-1.1.2.tar.gz::https://github.com/hb9hil/mtban/archive/refs/tags/v1.1.2.tar.gz
+	sha256sums = 05fa220ae7505f8d1db96df530d3fc865cdbfdfb15ee10f6325e53f437b0687d
+
+pkgname = mtban
