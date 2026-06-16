@@ -35,8 +35,8 @@ makedepends=(
 
 source=(
   "duckstation-${_upstream_commit}.tar.gz::https://github.com/stenzek/duckstation/archive/${_upstream_commit}.tar.gz"
-  "goosify.sh::${_builder_raw}/goosify.sh"
-  "goosestation_libretro.info::${_builder_raw}/goosestation_libretro.info"
+  "goosify-${_builder_tag}.sh::${_builder_raw}/goosify.sh"
+  "goosestation_libretro-${_builder_tag}.info::${_builder_raw}/goosestation_libretro.info"
 )
 sha256sums=('6c2c242c7b3d0d85c7cebd0118b1e1ac4e989ade116f41b102ea42429e563fe8'
             'cad14c80b019ab6632b69ef00c5905d1e735229c66a52ceaf6367a1c53a7dfd7'
@@ -45,8 +45,8 @@ sha256sums=('6c2c242c7b3d0d85c7cebd0118b1e1ac4e989ade116f41b102ea42429e563fe8'
 prepare() {
   cd "duckstation-${_upstream_commit}"
 
-  local goosify="${srcdir}/goosify.sh"
-  install -m755 "${goosify}" .
+  local goosify="${srcdir}/goosify-${_builder_tag}.sh"
+  install -m755 "${goosify}" ./goosify.sh
   bash ./goosify.sh
 }
 
@@ -72,6 +72,6 @@ package() {
   install -Dm755 build/src/goosestation-libretro/goosestation_libretro.so \
     "${pkgdir}/usr/lib/libretro/goosestation_libretro.so"
 
-  install -Dm644 "${srcdir}/goosestation_libretro.info" \
+  install -Dm644 "${srcdir}/goosestation_libretro-${_builder_tag}.info" \
     "${pkgdir}/usr/share/libretro/info/goosestation_libretro.info"
 }
