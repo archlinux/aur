@@ -18,6 +18,7 @@ pkgbase = xdg-desktop-portal-termfilechooser-boydaihungst-git
 	optdepends = vifm: wrapper included
 	optdepends = yazi: wrapper included
 	provides = xdg-desktop-portal-impl
+	conflicts = xdg-desktop-portal-termfilechooser
 	conflicts = xdg-desktop-portal-termfilechooser-git
 	conflicts = xdg-desktop-portal-termfilechooser-hunkyburrito-git
 	conflicts = xdg-desktop-portal-termfilechooser-nosystemd-git
