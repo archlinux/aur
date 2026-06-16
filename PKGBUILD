@@ -6,7 +6,7 @@
 pkgname=mixxx-alpha
 _mixxxver=2.7
 pkgver="2.7.alpha"
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital DJ mixing software (alpha version)."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://mixxx.org/"
@@ -80,6 +80,7 @@ sha256sums=('aff5f9b1cb20ceff65ab4aee78dd27d859027865d62b781e1a0113fcb197a250')
 build() {
   local cmake_options=(
     -B build
+    -D CMAKE_LINKER_TYPE=BFD
     -D CMAKE_BUILD_TYPE=Release
     -D CMAKE_INSTALL_PREFIX=/usr
     -D OPTIMIZE=native
