@@ -9,8 +9,8 @@ url="https://github.com/b0lbas/gisp"
 license=('GPL3')
 depends=('libsodium')
 makedepends=('gcc' 'make')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/b0lbas/gisp/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ce0f8d76fe11d8f18417e5591b40eeeae56e196b8b20193fe435fb14ec9bed65')
+source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/artich0ke/gisp/archive/v${pkgver}.tar.gz")
+sha256sums=('ff8347bfa2ce4c4a580bdf5b81a0c9669c2e839ded17e07407291f9fee3bf487')
 
 build() {
   cd "$pkgname-$pkgver"
