@@ -3,7 +3,7 @@
 _pkgname=goosestation-libretro
 _upstream_commit=7d1996827022cc557cc26539c071dd3a54e1809b
 _duckstation_srcdir="duckstation-${_upstream_commit}"
-_builder_tag=v0.6.3+7d19968
+_builder_tag=v0.6.3.11443
 _builder_raw="https://codeberg.org/hueponik/goosestation-builder/raw/tag/${_builder_tag}"
 pkgname=${_pkgname}
 pkgver=${_builder_tag#v}
