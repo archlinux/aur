@@ -3,7 +3,7 @@
 
 _name=fints
 pkgname=python-${_name}
-pkgver=4.2.4
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Minimal pure-python FinTS (formerly known as HBCI) implementation"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('python' 'python-mt-940' 'python-bleach' 'python-sepaxml' 'python-reque
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-mock')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/raphaelm/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=(d5e981450d419ce3ceefb7a24d4d0b2966987ab488d1cda7640fa3c4520e2f8fbfc7b4f32d4b825d2482a39ad8e586db404dd7210105aa348265cb077b618fe0)
+sha512sums=(a8a9a025158e8afee67d7f973fdb66712e056328279e1f375a0739c49c3d482e011d1915da45f390cdd09fa372d47253f8f746c000d1072a18dea9f6876e184b)
 
 build() {
   cd "${pkgname}-${pkgver}"
