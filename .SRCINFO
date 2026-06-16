@@ -1,6 +1,6 @@
 pkgbase = hanako-bin
 	pkgdesc = HanaAgent - a personal AI agent with memory and soul
-	pkgver = 0.323.0
+	pkgver = 0.324.0
 	pkgrel = 1
 	url = https://github.com/liliMozi/openhanako
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = hanako-bin
 	provides = hanako
 	conflicts = hanako
 	options = !strip
-	source = https://github.com/liliMozi/openhanako/releases/download/v0.323.0/HanaAgent-0.323.0-Linux-amd64.deb
-	sha512sums = 4ae5351146310bc245d416657b44e67583788f75cad28c9324ee2c3332c33d1fc6cf956046ca92c7514a5e72c8ebc5a69015776fdfe7f0c8a9486663d01c3153
+	source = https://github.com/liliMozi/openhanako/releases/download/v0.324.0/HanaAgent-0.324.0-Linux-amd64.deb
+	sha512sums = 872fb139e1591951ba71111e3fb8302e3dae38a7dc4cd213a02b8a448a10cc7185229455e71352790e79231db8e29c452b33ed8ab36da1b25af3bf08e2c2693b
 
 pkgname = hanako-bin
