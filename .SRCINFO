@@ -1,6 +1,6 @@
 pkgbase = emutastic-bin
 	pkgdesc = Beautiful retro game library and emulation frontend (libretro)
-	pkgver = 0.8.6
+	pkgver = 0.8.7
 	pkgrel = 1
 	url = https://github.com/codingncaffeine/Emutastic-For-Linux
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = emutastic-bin
 	provides = emutastic
 	conflicts = emutastic
 	options = !strip
-	source = https://github.com/codingncaffeine/Emutastic-For-Linux/releases/download/v0.8.6/Emutastic-0.8.6-linux-x64.tar.gz
-	source = https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v0.8.6/LICENSE
-	source = emutastic-logo.png::https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v0.8.6/src/Emutastic/Assets/banners%20and%20icons/emutastic-logo.png
-	sha256sums = ff0a551980de8cd6dac4dd0a8959ba2fa5e422bf9560ebc8280b297073cee64a
+	source = https://github.com/codingncaffeine/Emutastic-For-Linux/releases/download/v0.8.7/Emutastic-0.8.7-linux-x64.tar.gz
+	source = https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v0.8.7/LICENSE
+	source = emutastic-logo.png::https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v0.8.7/src/Emutastic/Assets/banners%20and%20icons/emutastic-logo.png
+	sha256sums = 961e934f91d410f81c922e005ed772f5489a1de826de78d35c734fed14d96889
 	sha256sums = SKIP
 	sha256sums = SKIP
 
