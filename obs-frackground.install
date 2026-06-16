@@ -1,0 +1,7 @@
+post_install() {
+  printf '%s\n' 'obs-frackground installed. Restart OBS Studio, then add the "Frackground Background Removal" filter to a video source.'
+}
+
+post_upgrade() {
+  post_install
+}
