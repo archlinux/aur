@@ -3,48 +3,45 @@
 _gitname=openbubbles-app
 pkgname=openbubbles-app-git
 pkgver=1.15.0.227
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenBubbles messaging app (iMessage client, built from git)"
 arch=('x86_64')
 url="https://github.com/OpenBubbles/openbubbles-app"
 license=('Apache-2.0')
 depends=(
   'gtk3'
-  'libsecret'
-  'libnotify'
-  'libayatana-appindicator'
-  'webkit2gtk-4.1'
-  'mpv'
   'hicolor-icon-theme'
+  'libayatana-appindicator'
+  'libnotify'
+  'libsecret'
+  'mpv'
+  'webkit2gtk-4.1'
 )
 makedepends=(
-  'git'
-  'rust'
   'clang'
   'cmake'
+  'curl'
+  'git'
   'ninja'
   'pkgconf'
   'protobuf'
+  'rust'
   'unzip'
-  'curl'
 )
 provides=('openbubbles-app')
 conflicts=('openbubbles-app' 'openbubbles-app-bin')
-options=('!strip' '!debug')
+# !lto: rustpush links vendored openssl/ring, whose CPUID symbols live in asm that LTO drops
+options=('!strip' '!debug' '!lto')
 
 _flutterver=3.24.0
 _fluttersum=d52a5d12f17d8bcf868d1ccc01fe0f7ffb05b53d9628aa21b07a18f9d33621f2
 
 source=(
   "$_gitname::git+https://github.com/OpenBubbles/openbubbles-app.git#branch=rustpush"
-  "rustpush::git+https://github.com/OpenBubbles/rustpush.git"
-  "telephony_plus::git+https://github.com/OpenBubbles/telephony_plus.git"
   "flutter-${_flutterver}.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_flutterver}-stable.tar.xz"
   "openbubbles.desktop"
 )
 sha256sums=(
-  'SKIP'
-  'SKIP'
   'SKIP'
   "$_fluttersum"
   '57b3eec669f620ec6259a3e98669b80bd82f8a7a7b1cbf8f53301e0c2f4d457b'
@@ -59,13 +56,24 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_gitname"
-  git submodule init
-  git config submodule.rustpush.url "$srcdir/rustpush"
-  git config submodule.telephony_plus.url "$srcdir/telephony_plus"
-  git -c protocol.file.allow=always submodule update --recursive
+  export GIT_CONFIG_GLOBAL="$srcdir/.gitconfig"
+  git config --global url."https://github.com/".insteadOf "git@github.com:"
+  git submodule update --init --recursive
+
+  # upstream CI copies the legacy fairplay cert to each numbered key id the source embeds
+  install -d rustpush/certs/fairplay
+  grep -oP 'include_cert!\("\K[^"]+' rustpush/src/activation.rs | while read -r _n; do
+    cp rustpush/certs/legacy-fairplay/fairplay.crt "rustpush/certs/fairplay/$_n.crt"
+    cp rustpush/certs/legacy-fairplay/fairplay.pem "rustpush/certs/fairplay/$_n.pem"
+  done
+
+  # relax the flutter template's -Werror; newer system libs (libayatana-appindicator)
+  # emit deprecation warnings that would otherwise abort the plugin builds
+  sed -i 's/-Wall -Werror/-Wall/' linux/CMakeLists.txt
 }
 
 build() {
+  export RUSTUP_HOME="${RUSTUP_HOME:-$HOME/.rustup}"
   export HOME="$srcdir/.home"
   export PUB_CACHE="$srcdir/.pub-cache"
   export CARGO_HOME="$srcdir/.cargo"
