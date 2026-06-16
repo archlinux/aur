@@ -5,7 +5,7 @@ _pkgname=tirith
 pkgname=${_pkgname}-bin
 pkgdesc='Terminal security - catches homograph attacks, pipe-to-shell, ANSI injection'
 
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -34,16 +34,16 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"powershell-${pkgver}.hook::${_urlraw}/shell/lib/powershell-hook.ps1")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
-sha256sums=('f3a5eda1916f0d34ebd19f408da20a04a2f3242b566d0fb8ecb47e0d6145ef16'
+sha256sums=('e789b8fbb02b477f80482fbacad4893368e193f740395d9a6aca0a730d639ab7'
             '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
             'eec9e040f3f4c9bc0f842afcef593696d4ec2ea21d9d35346fb9866688959105'
-            '3051940f1dc61a8ba14daed8c1ae83a90429fd74ad887233545e354c599f63eb'
-            '512c9d45659de01d36c0af48d2ad1da911ea574ab5c3cdd51293576121dbcc46'
-            '239606c2444b7cb9335ad42a5a6f3dd872e4c5746af889916e130ddf99bf1219'
-            'c2309c73c4f26ef5338b8e734c565e75c9e7020e3c03e3df00ce920f5b9a6aae'
-            'd9aabd5c5bc9139f91398cca8fcee0a59fefc971e0eba22ca3b65d823cd0ebcd')
-sha256sums_x86_64=('571e6a300e4c444293476537a322666069e561c7f05283d6650f5b8ef83db3ac')
-sha256sums_aarch64=('0462fe5083b4c72c45a8de918d5413e21d17aa8077aa7dbe53c0876b112847bb')
+            'f78546ff57190602239232d90c5ede40add3d9157afbcca735eaa5b79397526a'
+            '4db3009c8c4b3a8ac7616baa266d079998cef96f379c06197adfdd88f533c644'
+            'd78722c04b908019798f69bcd102bcb45205d7e1431432d24f62dd151050a772'
+            '4c3b8d02ba861e2a5738ecb8b3c8af94bce0c281980ddefc0273814d46e40d63'
+            '4f1f372b8a8486d205affa52d4f49db9a645d3342a822397a65fb50d9a31053a')
+sha256sums_x86_64=('6c49707097abfffb3b92da9d03182549add9db70a4421242ece1d330871b9365')
+sha256sums_aarch64=('cf95efe4ae5f499dc7decfdb15d296425979afc845af3cdd87fe29c3f4dea20d')
 
 
 package() {
