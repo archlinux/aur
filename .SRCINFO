@@ -1,13 +1,14 @@
 pkgbase = vapoursynth-plugin-zsmooth
 	pkgdesc = Plugin for VapourSynth: zsmooth
-	pkgver = 0.15.3
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/adworacz/zsmooth
 	arch = x86_64
 	license = MIT
-	makedepends = zig0.15-bin
+	makedepends = zig>=0.16
+	makedepends = zig<0.17
 	depends = vapoursynth
-	source = https://github.com/adworacz/zsmooth/archive/refs/tags/0.15.3.tar.gz
-	sha256sums = 414da028b471442d39b6da735a21ebeae152dce460662c44746f35b69107afcd
+	source = https://github.com/adworacz/zsmooth/archive/refs/tags/0.16.0.tar.gz
+	sha256sums = 3381c1d948724aab04d51f94ab19cb668a40ccc4fa77ae3d30afaf8529c7450b
 
 pkgname = vapoursynth-plugin-zsmooth
