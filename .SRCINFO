@@ -1,6 +1,6 @@
 pkgbase = python-homeassistant-cli
 	pkgdesc = Command-line tool for Home Assistant
-	pkgver = 0.9.6
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/home-assistant-ecosystem/home-assistant-cli
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-homeassistant-cli
 	depends = python-aiohttp
 	depends = python-setuptools
 	conflicts = home-assistant-cli
-	source = https://files.pythonhosted.org/packages/source/h/homeassistant-cli/homeassistant-cli-0.9.6.tar.gz
-	sha256sums = 9b9b705eaf6ee40dc6a732f3458c78ba37b62b7330bc17b132e6fee385ec8606
+	source = https://files.pythonhosted.org/packages/source/h/homeassistant-cli/homeassistant_cli-1.0.0.tar.gz
+	sha256sums = de7cc54de6f2a8bdbde3bfea75913f35ee82faa17fe272e840a2da0c93b1a7df
 
 pkgname = python-homeassistant-cli
