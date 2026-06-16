@@ -2,7 +2,7 @@
 
 pkgname=spacestation14-launcher-bin
 pkgver=0.38.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Space Station 14 launcher"
 url="https://spacestation14.io/"
 license=('MIT')
@@ -17,7 +17,7 @@ source=(
     "spacestation14.svg::https://spacestation14.io/images/main/icon.svg"
     "SS14.desktop")
 
-sha256sums=('cb8c75b5a48ddadc4bed02fd989f6b5891015632c6e7643249a56ed2dd53c748'
+sha256sums=('cf844cad44b7147db89ffc48b600e311e3e5cfcaf9bcd2c1fc3077a8bbd4821c'
             'ba123bf55027694ffbf3528f58ba7554d072a023de3282187dd692f365ee9ce5'
             '7645b08e7ca3ac6460ceea8862793c63bc088c04b52b535bce07e5fd4327d4be')
 
