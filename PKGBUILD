@@ -7,6 +7,7 @@ pkgdesc="AI Coding agent for the terminal — hash-anchored edits, optimized too
 arch=('x86_64')
 url="https://github.com/can1357/oh-my-pi"
 license=('MIT')
+depends=('glibc')
 provides=("oh-my-pi")
 conflicts=("oh-my-pi")
 options=('!strip')

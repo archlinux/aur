@@ -5,6 +5,7 @@ pkgbase = oh-my-pi-bin
 	url = https://github.com/can1357/oh-my-pi
 	arch = x86_64
 	license = MIT
+	depends = glibc
 	provides = oh-my-pi
 	conflicts = oh-my-pi
 	options = !strip
