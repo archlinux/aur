@@ -1,6 +1,6 @@
 # Maintainer: SHORiN-KiWATA <fcl709@outlook.com>
 pkgname=shorin-proton-wrapper-git
-pkgver=r13.a64df1c
+pkgver=r14.a47bc9f
 pkgrel=1
 pkgdesc="Simple Proton wrapper for running Windows executables"
 arch=('any')
@@ -10,6 +10,7 @@ depends=('bash' 'python' 'python-gobject' 'gtk4' 'gamescope')
 optdepends=(
   'steam: Steam runtime support'
   'lutris: Lutris runner support'
+  'mangohud: performance overlay support'
   'curl: download runners'
   'wget: alternative downloader'
 )
@@ -27,8 +28,8 @@ pkgver() {
 package() {
   cd "$srcdir/proton-wrapper"
   install -Dm755 shorin-proton-wrapper "$pkgdir/usr/bin/shorin-proton-wrapper"
-  install -Dm755 shorin-proton-wrapper-select "$pkgdir/usr/bin/shorin-proton-wrapper-select"
+  install -Dm755 shorin-proton-wrapper-configure "$pkgdir/usr/bin/shorin-proton-wrapper-configure"
   install -Dm644 shorin-proton-wrapper-run-windows-program.desktop "$pkgdir/usr/share/applications/shorin-proton-wrapper-run-windows-program.desktop"
-  install -Dm644 shorin-proton-wrapper-run-windows-program-select.desktop "$pkgdir/usr/share/applications/shorin-proton-wrapper-run-windows-program-select.desktop"
+  install -Dm644 shorin-proton-wrapper-run-windows-program-configure.desktop "$pkgdir/usr/share/applications/shorin-proton-wrapper-run-windows-program-configure.desktop"
   install -Dm644 icons/shorin-proton.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/shorin-proton.svg"
 }
