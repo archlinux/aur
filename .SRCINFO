@@ -1,0 +1,26 @@
+pkgbase = butterflypack-git
+	pkgdesc = Large-Scale dense linear systems solver
+	pkgver = 4.1.0.r32.ga6a83e9
+	pkgrel = 1
+	url = https://github.com/liuyangzhuan/ButterflyPACK
+	arch = x86_64
+	license = LicenseRef-Custom
+	makedepends = cmake
+	makedepends = git
+	depends = glibc
+	depends = libgomp
+	depends = libgfortran
+	depends = libstdc++
+	depends = libgcc
+	depends = lapack
+	depends = scalapack
+	depends = blas
+	depends = openmpi
+	depends = zfp
+	depends = arpack
+	provides = butterflypack
+	conflicts = butterflypack
+	source = butterflypack::git+https://github.com/liuyangzhuan/ButterflyPACK
+	b2sums = SKIP
+
+pkgname = butterflypack-git
