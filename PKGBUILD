@@ -38,6 +38,7 @@ package() {
     install -Dm755 "openfortivpn-gui-helper" "${pkgdir}/usr/bin/openfortivpn-gui-helper"
     install -Dm644 "openfortivpn-gui-helper.service" "${pkgdir}/usr/lib/systemd/system/openfortivpn-gui-helper.service"
     install -Dm644 "com.github.shini4i.openfortivpn-gui.desktop" "${pkgdir}/usr/share/applications/com.github.shini4i.openfortivpn-gui.desktop"
+    ln -s "com.github.shini4i.openfortivpn-gui.desktop" "${pkgdir}/usr/share/applications/openfortivpn-gui.desktop"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     mkdir -p "${pkgdir}/usr/share/icons/hicolor"
     cp -r "${srcdir}/hicolor/"* "${pkgdir}/usr/share/icons/hicolor/"
