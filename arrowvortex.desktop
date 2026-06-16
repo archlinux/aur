@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ArrowVortex
+Comment=Stepmania .sm/.ssc simfile editor
+Exec=arrowvortex
+Icon=arrowvortex
+Terminal=false
+Type=Application
+Categories=Game;

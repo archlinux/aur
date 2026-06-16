@@ -1,0 +1,13 @@
+diff --git a/meson.build b/meson.build
+index 1111111..2222222 100644
+--- a/meson.build
++++ b/meson.build
+@@ -379,7 +379,7 @@
+         '-Werror=missing-declarations',
+         '-Werror=missing-prototypes',
+         '-Werror=overflow',
+-        '-Werror=override-init',
++        '-Wno-error=override-init',
+         '-Werror=return-type',
+         '-Werror=shift-count-overflow',
+         '-Werror=shift-overflow=2',
