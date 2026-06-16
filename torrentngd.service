@@ -1,0 +1,33 @@
+[Unit]
+Description=TorrentNG native BitTorrent daemon
+Documentation=https://github.com/torrentng/torrentng
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=torrentngd
+Group=torrentngd
+Environment=TORRENTNGD_CONFIG=/etc/torrentngd/config.toml
+Environment=TNG_STATIC_DIR=/usr/share/torrentng/webui
+Environment=RUST_LOG=info
+ExecStart=/usr/bin/torrentngd
+Restart=on-failure
+RestartSec=5s
+StateDirectory=torrentngd
+ConfigurationDirectory=torrentngd
+ReadWritePaths=/var/lib/torrentngd /data
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+
+[Install]
+WantedBy=multi-user.target

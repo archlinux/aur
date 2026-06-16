@@ -1,0 +1,2 @@
+d /var/lib/torrentngd 0750 torrentngd torrentngd -
+d /data 0750 torrentngd torrentngd -

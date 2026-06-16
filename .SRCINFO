@@ -1,0 +1,23 @@
+pkgbase = torrentngd-git
+	pkgdesc = TorrentNG native Rust BitTorrent daemon
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/snapetech/TorrentNG
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = npm
+	depends = gcc-libs
+	depends = sqlite
+	backup = etc/torrentngd/config.toml
+	source = git+https://github.com/snapetech/TorrentNG.git
+	source = torrentngd.service
+	source = torrentngd.sysusers
+	source = torrentngd.tmpfiles
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = torrentngd-git
