@@ -1,7 +1,7 @@
 # Maintainer: padctl maintainers
 # pkgver/pkgrel/sha256sums: sed-overwritten by .github/workflows/release.yml — local edits have no effect.
 pkgname=padctl-bin
-pkgver=0.1.16
+pkgver=0.1.17
 pkgrel=1
 pkgdesc="HID gamepad daemon — declarative TOML device config, uinput output (prebuilt musl binary)"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ _baseurl="${url}/releases/download/v${pkgver}"
 
 source_x86_64=("padctl-v${pkgver}-x86_64-linux-musl.tar.gz::${_baseurl}/padctl-v${pkgver}-x86_64-linux-musl.tar.gz")
 source_aarch64=("padctl-v${pkgver}-aarch64-linux-musl.tar.gz::${_baseurl}/padctl-v${pkgver}-aarch64-linux-musl.tar.gz")
-sha256sums_x86_64=('c5d7a47846f0ea55e9811cdf876159b9ff39b457f9c3b7e46371e91f013f9f0d')
-sha256sums_aarch64=('7f4259cf31f817689f947493d2d251539ebf652ddcc3e22c624aac07577b487a')
+sha256sums_x86_64=('1e516cdadbc8a1c70ae0441a8a381c7a3b74fbc8b8d98da7e4e1ac098fdf509c')
+sha256sums_aarch64=('7bf605001dab57bd0495ff56b92eff512c94f07b33dfa784e3107dce236761f4')
 
 package() {
     local _arch
@@ -48,6 +48,11 @@ package() {
         "${pkgdir}/usr/lib/udev/rules.d/60-padctl.rules"
     [[ -f install/61-padctl-driver-block.rules ]] && install -Dm644 install/61-padctl-driver-block.rules \
         "${pkgdir}/usr/lib/udev/rules.d/61-padctl-driver-block.rules"
+    install -Dm644 install/90-padctl.rules \
+        "${pkgdir}/usr/lib/udev/rules.d/90-padctl.rules"
+
+    install -Dm644 install/padctl.conf \
+        "${pkgdir}/usr/lib/modules-load.d/padctl.conf"
 
     while IFS= read -r -d '' toml; do
         install -Dm644 "${toml}" "${pkgdir}/usr/share/padctl/${toml}"
