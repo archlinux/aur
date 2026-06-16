@@ -1,0 +1,13 @@
+pkgbase = ksrc-bin
+	pkgdesc = One-liner search and read for Gradle third-party dependency sources
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/respawn-llc/ksrc
+	arch = x86_64
+	license = Apache-2.0
+	provides = ksrc=0.6.3
+	conflicts = ksrc
+	source = ksrc-bin-0.6.3-x86_64.tar.gz::https://github.com/respawn-llc/ksrc/releases/download/v0.6.3/ksrc_0.6.3_linux_amd64.tar.gz
+	sha256sums = 86a35c5f5f221729626a1d6cb79cc575dae6960db43f06337dc013975c89f6c3
+
+pkgname = ksrc-bin
