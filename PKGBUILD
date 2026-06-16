@@ -1,6 +1,6 @@
 # Maintainer: KannarFr <kannarfr@gmail.com>
 pkgname=friendly
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Spotlight-style overlay that rewrites a dictated/typed message in a chosen tone via Claude Code (claude -p), then copies it to the clipboard"
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Refreshed by CI on each release (updpkgsums); placeholder for manual builds.
-sha256sums=('de2643efffff0165f0211ed71d79a9f1aed46eeefb9d666ce9c91581c4cc735a')
+sha256sums=('66bcca450915152320634d0b732fc8e14261f127283dff04d6295e2a43f09839')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"

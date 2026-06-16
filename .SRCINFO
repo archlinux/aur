@@ -1,6 +1,6 @@
 pkgbase = friendly
 	pkgdesc = Spotlight-style overlay that rewrites a dictated/typed message in a chosen tone via Claude Code (claude -p), then copies it to the clipboard
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/KannarFr/friendly
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = friendly
 	optdepends = libnotify: desktop notifications (result + progress)
 	optdepends = rofi: fallback launcher if wofi is missing
 	optdepends = zenity: last-resort fallback dialogs
-	source = friendly-0.1.0.tar.gz::https://github.com/KannarFr/friendly/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = de2643efffff0165f0211ed71d79a9f1aed46eeefb9d666ce9c91581c4cc735a
+	source = friendly-0.1.1.tar.gz::https://github.com/KannarFr/friendly/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 66bcca450915152320634d0b732fc8e14261f127283dff04d6295e2a43f09839
 
 pkgname = friendly
