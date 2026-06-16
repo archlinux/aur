@@ -1,0 +1,19 @@
+pkgbase = hypr-audio-hud
+	pkgdesc = Interactive, cyberpunk terminal audio recording HUD for Hyprland 0.55+ utilizing Ghostty, PipeWire, and CAVA
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/darkstardevx/hypr-audio-hud.git
+	arch = any
+	license = MIT
+	depends = ghostty
+	depends = cava
+	depends = fzf
+	depends = pipewire-utils
+	depends = wireplumber
+	depends = ncurses
+	source = audio_record_hud.sh
+	source = hyprland-hud-rules.lua
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = hypr-audio-hud
