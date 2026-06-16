@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=redisinsight-git
 _pkgname='Redis Insight'
-pkgver=3.0.2.r9.gc399f1c
-_electronversion=39
-_nodeversion=22
+pkgver=3.4.1.r222.g80527c5
+_electronversion=40
+_nodeversion=24
 pkgrel=1
 pkgdesc="Desktop manager that provides an intuitive and efficient GUI for Redis, allowing you to interact with your databases, monitor, and manage your data."
 arch=('any')
@@ -59,28 +59,27 @@ prepare() {
         --name="${_pkgname}" \
         --exec="${pkgname%-git} --no-sandbox %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
-    mkdir -p "${srcdir}/.electron-gyp"
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            echo -e '\n'
-            echo 'registry "https://registry.npmmirror.com"'
-            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
-            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
-            echo "cacheFolder "${srcdir}"/.yarn/cache"
-            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
-            echo "globalFolder "${srcdir}"/.yarn/global"
-            echo 'useHardlinks true'
-            #echo 'buildFromSource true'
-            echo 'linkWorkspacePackages true'
-            echo 'fetchRetries 3'
-            echo 'fetchRetryTimeout 10000'
-            echo 'networkConcurrency 10'
-        } >> .yarnrc
-        echo "${pkgname%-git}"/{./,api,desktop,ui} | xargs -n 1 cp .yarnrc
-        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
-    fi
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+	local HOME="${srcdir}/.electron-gyp"
+	mkdir -p "${srcdir}/.electron-gyp"
+	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+		{
+			export YARN_REGISTRY="https://registry.npmmirror.com"
+			export ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+			export ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+			export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+			export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
+			export YARN_PLUGINS_FOLDER="${srcdir}/.yarn/plugins"
+			export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/global"
+			export YARN_USE_HARDLINKS=true
+			# export YARN_BUILD_FROM_SOURCE=true
+			export YARN_LINK_WORKSPACE_PACKAGES=true
+			export YARN_FETCH_RETRIES=3
+			export YARN_FETCH_RETRY_TIMEOUT=10000
+			export YARN_NETWORK_CONCURRENCY=32
+		}
+		find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
+	fi
     _ensure_local_nvm
     #find "${pkgname%-git}" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" -i package.json
@@ -101,7 +100,7 @@ build() {
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-git}"}
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/release/linux-"*/* "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -a "${srcdir}/${pkgname//-/.}/release/linux-"*/* "${pkgdir}/usr/lib/${pkgname%-git}"
     ln -sf "/usr/lib/${pkgname%-git}/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
