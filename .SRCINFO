@@ -1,0 +1,26 @@
+pkgbase = friendly-git
+	pkgdesc = Spotlight-style overlay that rewrites a dictated/typed message in a chosen tone via Claude Code (claude -p), then copies it to the clipboard
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/KannarFr/friendly
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = gtk-layer-shell
+	depends = wl-clipboard
+	depends = hicolor-icon-theme
+	optdepends = claude-code: LLM backend — friendly calls `claude -p` (REQUIRED at runtime; AUR, or `npm i -g @anthropic-ai/claude-code`)
+	optdepends = wofi: Spotlight-style menu/launcher (recommended; falls back to rofi/zenity)
+	optdepends = libnotify: desktop notifications (result + progress)
+	optdepends = rofi: fallback launcher if wofi is missing
+	optdepends = zenity: last-resort fallback dialogs
+	provides = friendly
+	conflicts = friendly
+	source = friendly-git::git+https://github.com/KannarFr/friendly.git
+	sha256sums = SKIP
+
+pkgname = friendly-git
