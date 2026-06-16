@@ -1,6 +1,6 @@
 # Maintainer: René Wagner <rwa at clttr dot info>
 pkgname=art-rawconverter
-pkgver=1.26.5
+pkgver=1.26.6
 pkgrel=1
 pkgdesc="raw image converter ART (forked from RawTherapee with ease of use in mind)"
 arch=('i686' 'x86_64' 'aarch64')
@@ -35,4 +35,4 @@ package() {
 	cd "$srcdir/${pkgname}_build"
 	make DESTDIR="$pkgdir/" install
 }
-sha256sums=('744dab93128983b20519283b58a2d12f369585398d0f6354f5676a4eb6b38fb9')
+sha256sums=('4e9b62867b45fec752f055a11a0b91cfbd10b03f3b5203420ae2f840099c2a54')
