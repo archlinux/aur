@@ -1,0 +1,12 @@
+pkgbase = ulid-c
+	pkgdesc = Tool to generate Unique Lexicographically-sortable Identifiers (ULIDs)
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://codeberg.org/aperezdc/ulid-c
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = https://codeberg.org/aperezdc/ulid-c/releases/download/v0.1.3/ulid-c-0.1.3.tar.lz
+	sha256sums = d6103b531b5a15a4cdc52a69ae8dd1bc27e06d18b9f16ff4125f02763ec623ac
+
+pkgname = ulid-c
