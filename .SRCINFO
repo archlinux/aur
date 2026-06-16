@@ -1,7 +1,7 @@
 pkgbase = visual-studio-code-insiders-bin
 	pkgdesc = Visual Studio Code Insiders (vscode): Editor for building and debugging modern web and cloud applications (official binary version)
 	pkgver = 1781568225
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.visualstudio.com/
 	install = visual-studio-code-insiders-bin.install
 	arch = x86_64

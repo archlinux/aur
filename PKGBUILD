@@ -3,7 +3,7 @@
 pkgname=visual-studio-code-insiders-bin
 _pkgname=visual-studio-code-insiders
 pkgver=1781568225
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual Studio Code Insiders (vscode): Editor for building and debugging modern web and cloud applications (official binary version)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://code.visualstudio.com/"
