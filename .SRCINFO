@@ -1,6 +1,6 @@
 pkgbase = lindora
 	pkgdesc = An unofficial site-specific browser wrapper for the Pandora web service.
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 0
 	url = https://github.com/Logawinner/Lindora
 	arch = x86_64
