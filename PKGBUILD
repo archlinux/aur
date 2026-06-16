@@ -1,7 +1,7 @@
 # Maintainer: Ben Davison <nimijneb.bd@gmail.com>
 pkgname=imx471-dkms-git
 _pkgbase=imx471
-pkgver=r10.2dcdd1e
+pkgver=r15.2df9d7c
 pkgrel=1
 pkgdesc="IMX471 sensor driver via DKMS"
 arch=('x86_64')
@@ -9,6 +9,7 @@ url="https://github.com/BenBJD/imx471-dkms"
 license=('GPL2')
 depends=('dkms')
 makedepends=('git')
+optdepends=('libcamera: required to utilize the camera tuning file')
 provides=('imx471')
 source=("git+${url}.git")
 sha256sums=('SKIP')
@@ -28,4 +29,7 @@ package() {
 
   sed -i "s/^PACKAGE_VERSION=.*/PACKAGE_VERSION=\"$pkgver\"/" "$install_dir/dkms.conf"
   sed -i "s/^PACKAGE_NAME=.*/PACKAGE_NAME=\"$_pkgbase\"/" "$install_dir/dkms.conf"
+  
+  # Tuning file for libcamera
+  install -Dm644 "imx471.yaml" "$pkgdir/usr/share/libcamera/ipa/simple/imx471.yaml"
 }
