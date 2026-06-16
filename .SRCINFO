@@ -19,10 +19,12 @@ pkgbase = openfortivpn-gui-bin
 	source = https://github.com/shini4i/openfortivpn-gui/releases/download/v0.3.3/openfortivpn-gui_0.3.3_linux_amd64.tar.gz
 	source = openfortivpn-gui.desktop
 	source = openfortivpn-gui-helper.service
+	source = openfortivpn-gui.rules
 	source = hicolor.tar.xz
 	sha256sums = 578a35d704cef62814c71a8003e385d68af5b1190bcbe989ace54ee1a5fc1094
 	sha256sums = 2676c4f93aed03fdc4b9a11fd31501c16f2930bb3a3853f2fc36ed5127e0c0b9
 	sha256sums = bc71e5006b6151faa511c991d3b7a84f080530d6fdda21a7800ac943ef2e1d03
+	sha256sums = 5eb95a353a22d429a91fd34e91030ab28070a97acd5d3c316662f0b1433e23ff
 	sha256sums = 61d2d0454a3d96355b202bcdfee0a59b1c38cc838c23b560cdf2e4edae2cef32
 
 pkgname = openfortivpn-gui-bin
