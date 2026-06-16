@@ -9,7 +9,7 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-gdb
-pkgver=16.3
+pkgver=17.2
 pkgrel=1
 pkgdesc="The GNU Project Debugger (${_target})"
 arch=('i686' 'x86_64')
