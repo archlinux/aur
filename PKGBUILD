@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=notion-electron-bin
 _pkgname='Notion Electron'
-pkgver=2.1.0
+pkgver=2.2.1
 _electronversion=42
 pkgrel=1
 pkgdesc="An unofficial desktop application for Notion, built using Electron.(Prebuilt version.Use system-wide electron)"
@@ -27,8 +27,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_pkgname// /_}-${pkgver}-x86_64.rpm")
 sha256sums=('f23174e84307154014c3a935f893cf26adf50bfa78be53de5917129a864b08a7'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('dc95487445785b16dc61eb86a709508bb073171a18779b4e4f3e0d45819b1ad8')
-sha256sums_x86_64=('73441240c6bcf143f2d58b53a2fdf39c1a02b706eb68a8b5753358b0b2115732')
+sha256sums_aarch64=('d4ffdecc29580150456c58b1d3692c7831b8a0fc8d06fd88dc80f9e541b1b47d')
+sha256sums_x86_64=('54c267ebea327319b758da767686e5c7ff1f29677e108096adae02777fdb6fd3')
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
