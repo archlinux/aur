@@ -1,7 +1,7 @@
 pkgbase = opencode-desktop
 	pkgdesc = OpenCode desktop app (built from source, runs on system electron42)
 	pkgver = 1.17.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/anomalyco/opencode
 	arch = x86_64
 	arch = aarch64

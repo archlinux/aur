@@ -2,7 +2,7 @@
 
 pkgname=opencode-desktop
 pkgver=1.17.7
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenCode desktop app (built from source, runs on system electron42)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/anomalyco/opencode'
@@ -124,16 +124,22 @@ package() {
       "$_src/resources/linux/opencode-desktop.desktop" |
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-  # Install hicolor icons from icons/prod/. Skip Square/android variants
-  # (Windows tiles / Android mipmaps), keep only the four standard sizes.
-  install -Dm644 "$_src/icons/prod/32x32.png" \
-    "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
-  install -Dm644 "$_src/icons/prod/64x64.png" \
-    "$pkgdir/usr/share/icons/hicolor/64x64/apps/$pkgname.png"
-  install -Dm644 "$_src/icons/prod/128x128.png" \
-    "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
-  install -Dm644 "$_src/icons/prod/128x128@2x.png" \
-    "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+  # Install hicolor icons from icons/prod/. Pick up any <N>x<N>.png and
+  # <N>x<N>@<M>x.png — the latter goes into the (N*M)x(N*M) hicolor bucket.
+  # Skip Square*Logo (Windows tiles) and android/ (mipmap) variants.
+  local icon size mult dest
+  for icon in "$_src"/icons/prod/[0-9]*x[0-9]*.png; do
+    [[ -f "$icon" ]] || continue
+    local base
+    base=$(basename "$icon" .png)
+    if [[ "$base" =~ ^([0-9]+)x[0-9]+(@([0-9]+)x)?$ ]]; then
+      size=${BASH_REMATCH[1]}
+      mult=${BASH_REMATCH[3]:-1}
+      dest=$(( size * mult ))
+      install -Dm644 "$icon" \
+        "$pkgdir/usr/share/icons/hicolor/${dest}x${dest}/apps/$pkgname.png"
+    fi
+  done
 
   install -Dm644 "$srcdir/$pkgname/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
