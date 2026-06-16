@@ -1,6 +1,6 @@
 pkgbase = python-azure-core
 	pkgdesc = Microsoft Azure Core Shared Client Library for Python
-	pkgver = 1.39.0
+	pkgver = 1.41.0
 	pkgrel = 1
 	url = https://github.com/Azure/azure-sdk-for-python
 	arch = any
@@ -9,12 +9,12 @@ pkgbase = python-azure-core
 	makedepends = python-setuptools
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python>=3.9.0
+	depends = python>=3.10.0
 	depends = python-requests>=2.21.0
 	depends = python-typing_extensions>=4.6.0
 	optdepends = python-aiohttp: aiohttp transport
 	optdepends = python-opentelemetry-api: OpenTelemetry tracing support
-	source = python-azure-core-1.39.0.tar.gz::https://github.com/Azure/azure-sdk-for-python/archive/refs/tags/azure-core_1.39.0.tar.gz
-	b2sums = ad997caa6f5996858d0cfbb2eff46dc4a419c9f4e023e12d69bc8d23deb4342d3fe5eddd2046fd19cd9f112bce0beef08468fc4e5a9f99523d74170641965252
+	source = python-azure-core-1.41.0.tar.gz::https://github.com/Azure/azure-sdk-for-python/archive/refs/tags/azure-core_1.41.0.tar.gz
+	b2sums = 962a42ab5fdeab204f8fa34a3089a5658d76c190beb897524259d3d6338256ce61d7b458aa7422ec3b96c02ec9c6b74d2f4737e5befc20e8445263fbd676dffc
 
 pkgname = python-azure-core
