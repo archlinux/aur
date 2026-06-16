@@ -1,7 +1,7 @@
 # Maintainer: Vincent Bernardoff <vb@luminar.eu.org>
 
 pkgname=qarnot-cli-bin
-pkgver=1.4.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='CLI to use Qarnot computing service'
 arch=('x86_64')

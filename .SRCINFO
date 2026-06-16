@@ -1,6 +1,6 @@
 pkgbase = qarnot-cli-bin
 	pkgdesc = CLI to use Qarnot computing service
-	pkgver = 1.4.0
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://github.com/qarnot/qarnot-cli
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = qarnot-cli-bin
 	provides = qarnot-cli
 	conflicts = qarnot-cli
 	options = !strip
-	source = https://github.com/qarnot/qarnot-cli/releases/download/v1.4.0/qarnot-linux-x64
+	source = https://github.com/qarnot/qarnot-cli/releases/download/v5.2.0/qarnot-linux-x64
 	md5sums = 44fb062b7dd2c10052125e50e3a22f0c
 
 pkgname = qarnot-cli-bin
