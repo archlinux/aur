@@ -1,0 +1,16 @@
+pkgbase = linux-broadcast-cuda
+	pkgdesc = NVIDIA CUDA GPU-acceleration add-on for LinuxBroadcast (ONNX Runtime CUDA provider libraries)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Pedrojok01/linux-broadcast
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = linux-broadcast
+	optdepends = cuda: NVIDIA CUDA 13 runtime libraries (required for GPU acceleration)
+	optdepends = cudnn: cuDNN 9 for CUDA 13 (required for GPU acceleration)
+	provides = linux-broadcast-cuda=0.2.0
+	options = !strip
+	source = linux-broadcast-cuda-0.2.0.deb::https://github.com/Pedrojok01/linux-broadcast/releases/download/v0.2.0/linux-broadcast-cuda_0.2.0-1_amd64.deb
+	sha256sums = b9f89e9f7451d7d955e9a0a2a2800363e5278e8ff220eae9989e0016ab6bfbac
+
+pkgname = linux-broadcast-cuda
