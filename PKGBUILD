@@ -3,7 +3,7 @@
 _pkgname=simavr
 pkgbase=$_pkgname-git
 pkgname=($pkgbase $pkgbase-examples)
-pkgver=1.7.x
+pkgver=1.8.x
 pkgrel=1
 pkgdesc='A lean, mean and hackable AVR simulator'
 arch=('x86_64')
@@ -18,7 +18,7 @@ pkgver()
 {
 	cd $srcdir/$pkgbase
 
-	xtag=$(git log -1 --tags --simplify-by-decoration --pretty="format:%d"|sed 's/[\(\) ]//g; s/.*tag:v//')
+	xtag=$(git log -1 --tags --simplify-by-decoration --pretty="format:%d"|sed -E 's/\s+//g; s/.*tag:v([^,]+)(,.+)?/\1/')
 
 	echo $xtag.0.$(git rev-list v${xtag}.. --count )
 }

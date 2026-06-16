@@ -1,6 +1,6 @@
 pkgbase = simavr-git
 	pkgdesc = A lean, mean and hackable AVR simulator
-	pkgver = 1.7.x
+	pkgver = 1.8.x
 	pkgrel = 1
 	url = https://github.com/buserror/simavr
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgname = simavr-git
 	conflicts = simavr
 
 pkgname = simavr-git-examples
-	depends = simavr-git=1.7.x
+	depends = simavr-git=1.8.x
 	depends = freeglut
 	depends = glu
 	provides = simavr-examples
