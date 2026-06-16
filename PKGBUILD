@@ -38,8 +38,8 @@ build() {
 	# build embedded console assets
 	cd console-${_console_ver}
 
-	pnpm i --dangerously-allow-all-builds
-	pnpm build
+	pnpm --pm-on-fail=ignore i --dangerously-allow-all-builds
+	pnpm --pm-on-fail=ignore build
 	cp -r out/* ${srcdir}/${pkgname}-${pkgver//_/-}/rustfs/static/
 
 	# build rustfs
