@@ -1,16 +1,16 @@
 pkgbase = pomotroid-bin
 	pkgdesc = Simple and visually-pleasing Pomodoro timer
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/Splode/pomotroid
 	arch = x86_64
 	license = MIT
-	source = https://raw.githubusercontent.com/Splode/pomotroid/v1.7.0/LICENSE
-	source = https://raw.githubusercontent.com/Splode/pomotroid/v1.7.0/README.md
-	sha256sums = 26c9bfaefad8fafa79e3f2c403bf75438f099f1847da304f43fda117b5ca6658
+	source = https://raw.githubusercontent.com/Splode/pomotroid/v1.7.1/LICENSE
+	source = https://raw.githubusercontent.com/Splode/pomotroid/v1.7.1/README.md
+	sha256sums = 7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3
 	sha256sums = faa651e36f833b00d57578345589a2bddd99930ed7a929a2e56f2daabd7e23fc
-	source_x86_64 = pomotroid-bin-1.7.0.deb::https://github.com/Splode/pomotroid/releases/download/v1.7.0/Pomotroid_1.7.0_amd64.deb
-	sha256sums_x86_64 = 3f230118d3d816cda603b8647c5cc41bdb3bd3e38f907577cf852360d5f5a5d5
+	source_x86_64 = pomotroid-bin-1.7.1.deb::https://github.com/Splode/pomotroid/releases/download/v1.7.1/Pomotroid_1.7.1_amd64.deb
+	sha256sums_x86_64 = a1b55b33b3ba1857398d30b246c6bc0ef2634ac9d697e151948b22ce887d24d4
 
 pkgname = pomotroid-bin
 	depends = libwebkit2gtk-4.1.so

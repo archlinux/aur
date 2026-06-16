@@ -1,0 +1,4 @@
+[pomotroid-bin]
+source = "git"
+git = "https://github.com/Splode/pomotroid.git"
+prefix = "v"
