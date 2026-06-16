@@ -2,7 +2,7 @@
 
 pkgname=opencode-desktop
 pkgver=1.17.7
-pkgrel=4
+pkgrel=5
 pkgdesc='OpenCode desktop app (built from source, runs on system electron42)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/anomalyco/opencode'
@@ -39,20 +39,17 @@ source=(
   "$pkgname::git+https://github.com/anomalyco/opencode.git#tag=v$pkgver"
   "$pkgname.sh"
   'relax-bun-version.patch'
-  'set-desktop-name.patch'
   'enable-pacman-target.patch'
 )
 sha256sums=('SKIP'
-            '84924177801958340d9d06c4f433e8818f1a7119babcfa56384133c7ce59e65f'
+            '9d4ea3c1ce242edef248cae1cfaca971ef05c7225e52b49f8dd851395d0bbbbe'
             '82b5dcd7c56955af41982d8df7828b11907e58ef0199bb9d2e1edac0a9fbbe21'
-            '32640e478f139cf1658f6948627b14b3e386acf5c589e116a5745ef7c1f0b986'
             'c3a544a2b7ffc252a55da303c2327de4ee075e0b72bf4167d7691fba1cb92ed6')
 
 prepare() {
   cd "$srcdir/$pkgname"
 
   patch -Np1 -i "$srcdir/relax-bun-version.patch"
-  patch -Np1 -i "$srcdir/set-desktop-name.patch"
   patch -Np1 -i "$srcdir/enable-pacman-target.patch"
 }
 
@@ -103,6 +100,26 @@ package() {
   install -d "$pkgdir/usr/lib/$pkgname"
   cp -a "$_bld/dist/linux-unpacked/resources/app/." "$pkgdir/usr/lib/$pkgname/"
 
+  # Pin the Wayland app_id to our wrapper basename. electron-builder injects
+  # "desktopName": "<appId>.desktop" (currently "ai.opencode.desktop.desktop")
+  # into the unpacked app's package.json based on its linux config; Electron's
+  # ozone-wayland (since electron/electron#51426) reads that key and uses it
+  # (with the .desktop suffix stripped) as the Wayland app_id. Without this
+  # override the running window's app_id is "ai.opencode.desktop" while our
+  # .desktop launcher is "$pkgname.desktop" (StartupWMClass=$pkgname), so KDE
+  # Plasma can't match the window to its launcher and falls back to a generic
+  # icon. Insert the key if upstream/electron-builder ever stops emitting it.
+  local _pj="$pkgdir/usr/lib/$pkgname/package.json"
+  if grep -q '"desktopName"' "$_pj"; then
+    sed -i "s|\"desktopName\":[[:space:]]*\"[^\"]*\"|\"desktopName\": \"$pkgname\"|" "$_pj"
+  else
+    sed -i "/\"name\":/a\\  \"desktopName\": \"$pkgname\"," "$_pj"
+  fi
+  grep -q "\"desktopName\": \"$pkgname\"" "$_pj" || {
+    echo "ERROR: failed to set desktopName in $_pj" >&2
+    return 1
+  }
+
   # Drop musl prebuilds (Arch is glibc): both file-level (*.musl.node, e.g.
   # @msgpackr-extract) and directory-level (e.g. @parcel/watcher-linux-x64-musl).
   # Strip world-writable bits that some npm packages ship with mode 777.
@@ -115,8 +132,8 @@ package() {
   # Pull the .desktop entry and full hicolor icon set out of the .pacman
   # archive electron-builder produced (enable-pacman-target.patch makes
   # eb include "pacman" in its linux target list). Rewrite the launcher
-  # paths to our wrapper basename, which is also the Wayland app_id
-  # Electron sets via desktopName (set-desktop-name.patch).
+  # paths to our wrapper basename, which is also the Wayland app_id we
+  # pinned via desktopName in the package.json override above.
   local _eb="$srcdir/.eb-pacman"
   rm -rf "$_eb" && mkdir -p "$_eb"
   bsdtar -xf "$_bld"/dist/*.pacman -C "$_eb"

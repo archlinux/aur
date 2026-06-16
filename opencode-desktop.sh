@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/bin/electron41 /usr/lib/opencode-desktop/ "$@"
+exec /usr/bin/electron42 /usr/lib/opencode-desktop/ "$@"
