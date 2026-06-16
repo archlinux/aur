@@ -1,8 +1,8 @@
 # Maintainer: Oystein Sture <oysstu at gmail.com>
 
 pkgname=ros2-jazzy-base
-pkgver=2025.04.30
-pkgrel=2
+pkgver=2026.01.28
+pkgrel=1
 _rosdist="Jazzy Jalisco"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -31,7 +31,7 @@ depends=(
 )
 makedepends=(
   'python-rosinstall_generator'
-  'python-vcstool'
+  'python-vcs2l'
 )
 conflicts=(
   "ros2-${_rosdist_short}"
@@ -39,17 +39,11 @@ conflicts=(
 source=(
     "https://github.com/ros2/ros2/archive/release-${_rosdist_short}-${pkgver//.}.tar.gz"
     "ros2-variants-0.11.0.tar.gz::https://github.com/ros2/variants/archive/0.11.0.tar.gz"
-    "fastdds.patch"
-    "urdfdom_cstdint.patch"
     "mcap_vendor_cstdint.patch"
-    "rosidl_cstdint.patch::https://github.com/ros2/rosidl/pull/864.patch"
 )
-sha256sums=('ca1006255e53552e7ba06e3b5ae943e54bbf32d8654944345d7f583e51426ec5'
+sha256sums=('0b6a0cd4a1071a3f293b14c5c703a6d1d8ab244a8221ca0e5f52c6cab3966558'
             'e04bf7430ebdc670b4b0ee4722db2966fb1e53d8881e9cb66df6aa381f2448d9'
-            'c3362474bb6965fdb72746cbb9aa50e9e6b0788def4818aa4756164e881257fd'
-            '4f453203b46ab40b5b9611eceb1b006af2a9b0b8d11a402a05fe225c5da1a8f3'
-            'f2ac0967f508f6a4f1fd4f278800e64052127859ee3e21cdf1b467b3ffe7563f'
-            '23718705092c81860e50182341c006e0addcbec61c6b87c7f744e9185740b21c')
+            'f2ac0967f508f6a4f1fd4f278800e64052127859ee3e21cdf1b467b3ffe7563f')
 
 prepare() {
     # Clone the repos
@@ -62,23 +56,13 @@ prepare() {
     # https://github.com/ros/urdfdom/pull/205
     git -C "$srcdir/ros2/src/ros/urdfdom" checkout .
     git -C "$srcdir/ros2/src/ros/urdfdom" cherry-pick -n 483ff92a7e631283117ca3d421d58e146c8b6d21
-    git -C "$srcdir/ros2/src/ros/urdfdom" apply "$srcdir/urdfdom_cstdint.patch"
 
     # https://github.com/ros2/orocos_kdl_vendor/pull/39
     git -C "$srcdir/ros2/src/ros2/orocos_kdl_vendor" cherry-pick -n 76ee1ce6c49a28a42c433a9b6fd20053605ccaf7
 
-    # https://github.com/eProsima/Fast-DDS/issues/5790
-    # https://github.com/eProsima/Fast-DDS/issues/5792
-    git -C "$srcdir/ros2/src/eProsima/Fast-DDS" checkout .
-    git -C "$srcdir/ros2/src/eProsima/Fast-DDS" apply "$srcdir/fastdds.patch"
-
     # https://github.com/foxglove/mcap/pull/1371
     git -C "$srcdir/ros2/src/ros2/rosbag2" checkout "mcap_vendor/src/main.cpp"
     git -C "$srcdir/ros2/src/ros2/rosbag2" apply "$srcdir/mcap_vendor_cstdint.patch"
-
-    # https://github.com/ros2/rosidl/pull/864
-    git -C "$srcdir/ros2/src/ros2/rosidl" checkout .
-    git -C "$srcdir/ros2/src/ros2/rosidl" apply "$srcdir/rosidl_cstdint.patch"
 }
 
 build() {
