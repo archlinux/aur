@@ -1,0 +1,26 @@
+From 9cee266bb59e9d3598347b3e2001a0e08a632692 Mon Sep 17 00:00:00 2001
+From: "David P." <megver83@parabola.nu>
+Date: Sat, 13 Jun 2026 22:39:03 -0400
+Subject: [PATCH 2/2] ath9k_htc: bump CMAKE_MINIMUM_REQUIRED to version 3.5 as
+ required by modern cmake
+
+---
+ ath9k_htc/target_firmware/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ath9k_htc/target_firmware/CMakeLists.txt b/ath9k_htc/target_firmware/CMakeLists.txt
+index 73cb930..8d70884 100644
+--- a/ath9k_htc/target_firmware/CMakeLists.txt
++++ b/ath9k_htc/target_firmware/CMakeLists.txt
+@@ -36,7 +36,7 @@
+ 
+ SET(CMAKE_C_COMPILER_WORKS 1)
+ 
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
+ PROJECT(ath9k_firmware NONE)
+ ENABLE_LANGUAGE(C)
+ 
+-- 
+2.54.0
+

@@ -1,0 +1,31 @@
+From f351fbea29855f657578151d3e61820a33b478db Mon Sep 17 00:00:00 2001
+From: "David P." <megver83@parabola.nu>
+Date: Sat, 13 Jun 2026 22:32:16 -0400
+Subject: [PATCH 1/2] av7110: Build Boot.S with arm-linux-gnueabi-as instead of
+ GCC
+
+---
+ av7110/Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/av7110/Makefile b/av7110/Makefile
+index 2f284cb..eb63ff0 100644
+--- a/av7110/Makefile
++++ b/av7110/Makefile
+@@ -1,11 +1,11 @@
+-CC = arm-linux-gnueabi-gcc
++AS = arm-linux-gnueabi-as
+ LD = arm-linux-gnueabi-ld
+ OBJCOPY = arm-linux-gnueabi-objcopy
+ prefix=/lib/firmware/av7110
+ install_program=install
+ 
+ bootcode.bin: Boot.S
+-	$(CC) -mbig-endian -c Boot.S
++	$(AS) -EB -march=armv5t -meabi=5 -o Boot.o Boot.S
+ 	$(LD) -Ttext 0x2c000000 -EB -o Boot Boot.o
+ 	$(OBJCOPY) -Obinary Boot bootcode.bin
+ 
+-- 
+2.54.0
+
