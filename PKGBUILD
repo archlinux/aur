@@ -2,8 +2,8 @@
 # Contributor: fatalis <fatalis@fatalis.pw>
 
 pkgname=lzbench
-pkgver=2.2
-pkgrel=3
+pkgver=2.3
+pkgrel=1
 pkgdesc='An in-memory benchmark of open-source compressors'
 arch=(aarch64 armv7h riscv64 x86_64)
 url='https://github.com/inikep/lzbench'
@@ -12,28 +12,35 @@ license=(
     'Apache-2.0'                                    # glza, kanzi-cpp, libbsc, tamp, yappy
     'BSD-2-Clause'                                  # lizard, lz4, lzlib, lzsse
     'BSD-2-Clause OR GPL-2.0-or-later'              # lzf
-    'BSD-3-Clause'                                  # gipfeli, lzfse, snappy, zling
+    'BSD-3-Clause'                                  # gipfeli, lzfse, snappy, zling, zxc
     'BSD-3-Clause OR GPL-2.0-only'                  # fast-lzma2, zstd
     'bzip2-1.0.6'                                   # bzip2
     'CC0-1.0'                                       # wflz
     'CDDL-1.0'                                      # lzjb
     'GPL-1.0-only OR GPL-2.0-only OR GPL-3.0-only'  # quicklz
-    'GPL-2.0-only'                                  # ucl
     'GPL-2.0-only OR GPL-3.0-only'                  # lzbench
-    'GPL-2.0-or-later'                              # lzmat, lzo
+    'GPL-2.0-or-later'                              # lzmat, lzo, ucl
     'GPL-3.0-or-later'                              # tornado
     'LGPL-3.0-or-later'                             # bzip3
-    'LicenseRef-Public-Domain'                      # 7-zip, crush, lzrw, lzham
-    'MIT'                                           # brotli, fastlz, libdeflate, lzav, slz
+    'LicenseRef-Public-Domain'                      # 7-zip, crush, lzham, lzrw, ppmd8, yalz77
+    'MIT'                                           # aceapex, brotli, fastlz, libdeflate, lzav, memlz, rapidhash (bundled in zxc), skim, slz
     'MIT OR Apache-2.0'                             # density
     'MIT AND Unlicense'                             # zpaq
-    'Unlicense'                                     # csc, yalz77
+    'Unlicense'                                     # csc
     'Zlib'                                          # brieflz, liblzg, zlib, zlib-ng
 )
 depends=(glibc libgcc libgomp libstdc++)
-makedepends=(cargo chrpath gcc)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('69389958cb2016a1dbbd462fff603057339d772902b055b8299f6759f1f9a8cbadf31489254bb93f967ca6863e2db32e8da8bfe429cf5dfc4a4b61280164f4e5')
+makedepends=(cargo chrpath gcc zig)
+source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz
+        $pkgname-$pkgver-fastlz-LICENSE::https://raw.githubusercontent.com/ariya/FastLZ/0.5.0/LICENSE.MIT
+        $pkgname-$pkgver-liblzg-LICENSE::https://gitlab.com/mbitsnbites/liblzg/-/raw/182b56cb36843720f38eff2ec30db1deac4e85bd/LICENSE.txt
+        $pkgname-$pkgver-lzham-LICENSE::https://raw.githubusercontent.com/richgel999/lzham_codec/b33fd27f12a8b414ac83743b9430022054f0b291/LICENSE
+        $pkgname-$pkgver-zxc-LICENSE::https://raw.githubusercontent.com/hellobertrand/zxc/v0.11.0/LICENSE)
+b2sums=('a24d8a6112ff84e945ad7bc3683ecf30eddb1b1ac64ced25808b478ede2e5d7e8e54d169b443183c6326d2054a0452e57d7016e701210395345e1f24241de228'
+        '4aef9b1eaff06cb7af4afe4be4815014f90bf8658441c37b21f9216673f54a356e7f4924e79f84cf76bd696536bee564fe1e9548e8336cca1e9d5c51cb43d2db'
+        'b5c06bea9633a9e84116d64e21a3ee93e9294a6174a3917acf570a1ddbde6ce89229e61663189a0ba8e31bc8293a9050189d645d229a55533392dff8bbcb27a5'
+        '1f039eee5271567cd8d9d23000f9fb08e882869adb2465ae5376e06eeb0c40d2aaf2506fd9f1124c6052f94c1212c298ec7ef41fee9233fc8f28e6fb69f86873'
+        '64d6a86c8ac43bd1da62fce95c05a396cf281398ba887c6ca9a03365f32b3b8aa75d4eafe131f6fe1d9c075f7db26edfed6649bce3c0c63105785c11233f82a5')
 
 build() {
     cd $pkgname-$pkgver
@@ -70,12 +77,18 @@ package() {
     install -Dm644 lz/zlib-ng/LICENSE.md        "$license_dir/zlib-ng-LICENSE.md"
     install -Dm644 lz/zstd/LICENSE              "$license_dir/zstd-LICENSE"
     install -Dm644 misc/density/src/LICENSE-MIT "$license_dir/density-LICENSE"
+    install -Dm644 misc/skim/LICENSE            "$license_dir/skim-LICENSE"
     install -Dm644 misc/zpaq/COPYING            "$license_dir/zpaq-COPYING"
 
-    # Compressors without dedicated LICENSE files
-    cat > "$license_dir/fastlz-LICENSE" <<'EOF'
-FastLZ - Byte-aligned LZ77 compression library
-Copyright (C) 2005-2020 Ariya Hidayat <ariya.hidayat@gmail.com>
+    # Licenses absent in the lzbench tarball
+    install -Dm644 "$srcdir/$pkgname-$pkgver-fastlz-LICENSE" "$license_dir/fastlz-LICENSE"
+    install -Dm644 "$srcdir/$pkgname-$pkgver-liblzg-LICENSE" "$license_dir/liblzg-LICENSE"
+    install -Dm644 "$srcdir/$pkgname-$pkgver-lzham-LICENSE"  "$license_dir/lzham-LICENSE"
+    install -Dm644 "$srcdir/$pkgname-$pkgver-zxc-LICENSE"    "$license_dir/zxc-LICENSE"
+
+    # License files not provided or only in source code
+    cat > "$license_dir/aceapex-LICENSE" <<'EOF'
+Copyright (c) 2026 yasha1971-coder
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -84,44 +97,19 @@ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-EOF
-
-    cat > "$license_dir/liblzg-LICENSE" <<'EOF'
-liblzg
-Copyright (c) 2010-2013 Marcus Geelnard
-
-This software is provided 'as-is', without any express or implied
-warranty. In no event will the authors be held liable for any damages
-arising from the use of this software.
-
-Permission is granted to anyone to use this software for any purpose,
-including commercial applications, and to alter it and redistribute it
-freely, subject to the following restrictions:
-
-1. The origin of this software must not be misrepresented; you must not
-   claim that you wrote the original software. If you use this software
-   in a product, an acknowledgment in the product documentation would
-   be appreciated but is not required.
-
-2. Altered source versions must be plainly marked as such, and must not
-   be misrepresented as being the original software.
-
-3. This notice may not be removed or altered from any source
-   distribution.
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 EOF
 
     cat > "$license_dir/libzling-LICENSE" <<'EOF'
-libzling - light-weight lossless data compression utility
 Copyright (C) 2012-2013 by Zhang Li <zhangli10 at baidu.com>
 All rights reserved.
 
@@ -151,7 +139,6 @@ SUCH DAMAGE.
 EOF
 
     cat > "$license_dir/lzf-LICENSE" <<'EOF'
-liblzf
 Copyright (c) 2000-2010 Marc Alexander Lehmann <schmorp@schmorp.de>
 
 Redistribution and use in source and binary forms, with or without modifica-
@@ -185,5 +172,27 @@ by deleting the provisions above and replace them with the notice
 and other provisions required by the GPL. If you do not delete the
 provisions above, a recipient may use your version of this file under
 either the BSD or the GPL.
+EOF
+
+    cat > "$license_dir/memlz-LICENSE" <<'EOF'
+Copyright (c) 2025 Lasse Mikkel Reinhold
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 EOF
 }
