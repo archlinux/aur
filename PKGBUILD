@@ -1,7 +1,7 @@
 # Maintainer: brookerslyn <brookerslyn at REPLACE-WITH-YOUR-EMAIL-DOMAIN dot com>
 pkgname=klyppd-bin
 _pkgname=klyppd
-pkgver=0.3.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Performance-first Linux clipping app with instant replay, trimming, and cloud uploads."
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
 )
 source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 noextract=("${_pkgname}-${pkgver}.deb")
-sha256sums=('SKIP')   # refresh with: updpkgsums
+sha256sums=('2ac2b402fb35dbbe2d18b8dcf6840cc3504cdea7b67953a771ca637824625667')
 
 package() {
     cd "$srcdir"
