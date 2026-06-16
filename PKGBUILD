@@ -2,9 +2,9 @@
 pkgname=yubico-authenticator
 _app_id=com.yubico.yubioath
 pkgdesc="Yubico Authenticator for Desktop"
-pkgver=7.3.3
+pkgver=7.4.0
 pkgrel=1
-_flutter_ver=3.41.6  ## Check .github/workflows/env for version
+_flutter_ver=3.44.1  ## Check .github/workflows/env for version
 arch=('x86_64' 'aarch64')
 url="https://github.com/Yubico/yubioath-flutter"
 license=('Apache-2.0')
@@ -21,14 +21,15 @@ depends=(
   'python-pyscard'
   'python-zxing-cpp'
   'yubikey-manager'
-  'zenity'
 )
 makedepends=(
   'chrpath'
   'clang'
   'cmake'
+  'desktop-file-utils'
   'fvm'
   'git'
+  'imagemagick'
   'ninja'
   'python-build'
   'python-installer'
@@ -36,7 +37,7 @@ makedepends=(
   'python-wheel'
 )
 source=("git+https://github.com/Yubico/yubioath-flutter.git#tag=$pkgver?signed")
-sha256sums=('9aa06c52ce65db05bb9b4752a09fd6b38346888bf0aa946ee3c5dc01c6da3216')
+sha256sums=('47d18a75253664fd8828337c350da6bf4f09f0a060293085db135f79c5d5387f')
 validpgpkeys=('20EE325B86A81BCBD3E56798F04367096FBA95E8'   # Dain Nilsson <dain@yubico.com>
               'C28ED3753F01B4B097A1B306948B29C5F1E063ED')  # Elias Bonnici <elias.bonnici@yubico.com>
 
@@ -54,7 +55,7 @@ prepare() {
   desktop-file-edit --set-key=Exec --set-value="$pkgname" --set-icon="${_app_id}" \
     "resources/linux/linux_support/${_app_id}.desktop"
 
-  # Don't copy the Helper since we're not using Pyinstaller
+  # Don't copy the Helper since we're not using PyInstaller
   sed -i '/build\/linux\/helper/d' linux/CMakeLists.txt
 }
 
@@ -67,6 +68,12 @@ build() {
 
   export FVM_CACHE_PATH="$srcdir/fvm"
   fvm flutter build linux
+
+  # Generate icons
+    for i in 16 32 48 64 128 256 512; do
+      magick "resources/icons/${_app_id}-1000x1000.png" -resize "${i}x${i}" \
+        "resources/icons/${_app_id}_${i}x${i}.png"
+    done
 }
 
 check() {
@@ -98,12 +105,11 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/authenticator" "$pkgdir/usr/bin/$pkgname"
 
-  install -Dm644 "resources/icons/${_app_id}.png" -t \
-    "$pkgdir/usr/share/icons/hicolor/128x128/apps/"
-  install -Dm644 "resources/icons/${_app_id}-32x32.png" \
-    "$pkgdir/usr/share/icons/hicolor/32x32/apps/${_app_id}.png"
-  install -Dm644 "resources/icons/${_app_id}-1000x1000.png" \
-    "$pkgdir/usr/share/icons/hicolor/1000x1000/apps/${_app_id}.png"
+  for i in 16 32 48 64 128 256 512; do
+    install -Dm644 "resources/icons/${_app_id}_${i}x${i}.png" \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${_app_id}.png"
+  done
+
   install -Dm644 "resources/linux/linux_support/${_app_id}.desktop" -t \
     "$pkgdir/usr/share/applications/"
 
