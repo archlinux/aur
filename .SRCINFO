@@ -1,6 +1,6 @@
 pkgbase = klyppd-git
 	pkgdesc = Performance-first Linux clipping app with instant replay, trimming, and cloud uploads.
-	pkgver = 0.1.0.r2.g6a75aef
+	pkgver = 0.3.2.r18.ge4b171b0
 	pkgrel = 1
 	url = https://github.com/brookerslyn/klyppd
 	arch = x86_64

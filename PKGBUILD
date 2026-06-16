@@ -1,7 +1,7 @@
 # Maintainer: brookerslyn <brookerslyn at REPLACE-WITH-YOUR-EMAIL-DOMAIN dot com>
 pkgname=klyppd-git
 _pkgname=klyppd
-pkgver=0.1.0.r2.g6a75aef
+pkgver=0.3.2.r18.ge4b171b0
 pkgrel=1
 pkgdesc="Performance-first Linux clipping app with instant replay, trimming, and cloud uploads."
 arch=('x86_64')
@@ -35,7 +35,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    printf "0.1.0.r%s.g%s" \
+    printf "0.3.2.r%s.g%s" \
         "$(git rev-list --count HEAD)" \
         "$(git rev-parse --short HEAD)"
 }
