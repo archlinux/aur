@@ -1,0 +1,5 @@
+[marina-tui-bin]
+source = "github"
+github = "danfry1/marina"
+use_latest_release = true
+prefix = "v"

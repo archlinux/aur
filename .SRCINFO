@@ -1,0 +1,20 @@
+pkgbase = marina-tui-bin
+	pkgdesc = Developer-process cockpit — a TUI + CLI for the local dev servers and processes you care about, resolved into names you recognize.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/danfry1/marina
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = marina
+	conflicts = marina
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/danfry1/marina/v0.1.0/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/danfry1/marina/v0.1.0/LICENSE
+	sha256sums = 1490c2f64fa0e03bb9f7105ba395115cbce13456bbd834040a46f189e58be9dd
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = marina-x86_64-0.1.0.tgz::https://github.com/danfry1/marina/releases/download/v0.1.0/marina-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = fc67ec858a37e84139917cd4780d254ac176dec81a2906ed3addde57c16d7b15
+
+pkgname = marina-tui-bin
