@@ -1,13 +1,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=dusklight
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusklight"
 license=('CC0-1.0')
 depends=('glibc' 'libgcc' 'abseil-cpp' 'libstdc++' 'sdl3' 'libjpeg-turbo' 'freetype2'
-	 'zlib' 'libpng')
+	 'zlib' 'libpng' 'fmt' 'sqlite')
 makedepends=('cmake' 'ninja' 'clang' 'lld' 'vulkan-headers' 'patchelf' 'git')
 provides=('tp-dusk')
 conflicts=('tp-dusk')
@@ -15,7 +15,7 @@ replaces=('tp-dusk')
 source=("git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/encounter/aurora.git"
 	)
-sha256sums=('a9c375c57836c5a0eadf3f06d27691001a70906440dd89d7a7b46256e0f7ee81'
+sha256sums=('c0c15cd5ad1c9ff91fc558f579af5dc0d13c297574ed0af16279a54f1c856627'
             'SKIP')
 
 prepare() {
@@ -43,6 +43,8 @@ build() {
 package() {
 	cd "$srcdir"
 	install -Dm755 build/${pkgname} "${pkgdir}/usr/lib/${pkgname}/${pkgname}"
+	install -Dm755 build/libs/freeverb/libfreeverb.so -t "${pkgdir}/usr/lib/${pkgname}"
+	install -Dm755 build/librmlui.so -t "${pkgdir}/usr/lib/${pkgname}"
 	install -dm755 "${pkgdir}/usr/bin"
 	install -dm755 "${pkgdir}/usr/share/${pkgname}"
 	cp -a build/res "${pkgdir}/usr/share/${pkgname}/res"
@@ -55,4 +57,5 @@ package() {
 	sed -i 's/Icon=dusklight/Icon=dev.twilitrealm.dusk/g' "${pkgdir}/usr/share/applications/dev.twilitrealm.dusk.desktop"
 
 	patchelf --remove-rpath "${pkgdir}/usr/lib/${pkgname}/${pkgname}"
+	patchelf --set-rpath "/usr/lib/${pkgname}" "${pkgdir}/usr/lib/${pkgname}/${pkgname}" #needed for rmlui & freeverb :)
 }
