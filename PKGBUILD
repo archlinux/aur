@@ -11,7 +11,8 @@ makedepends=('cargo')
 provides=('are')
 conflicts=('are')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/anoraktrend/are/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c0872252898698a3e48db9978641097ea37df4d741566c83db61317a06db9373')
+sha256sums=('af3468d41ea3a4294d1026a197acdd7a44d134514ff568d09dd98dc114af2b8a')
+options=('!lto')
 
 build() {
     cd "${pkgname}-${pkgver}"
