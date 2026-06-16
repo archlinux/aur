@@ -1,5 +1,5 @@
 [surge-bin]
 source = "github"
-github = "surge-downloader/surge"
+github = "SurgeDM/surge"
 use_latest_release = true
 prefix = "v"
