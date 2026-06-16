@@ -1,6 +1,6 @@
 pkgbase = whph-bin
 	pkgdesc = A comprehensive productivity app designed to help you manage tasks, develop new habits, and optimize your time.
-	pkgver = 0.23.0
+	pkgver = 0.23.1
 	pkgrel = 1
 	url = https://github.com/ahmet-cetinkaya/whph
 	install = whph.install
@@ -20,7 +20,7 @@ pkgbase = whph-bin
 	depends = jq
 	provides = whph
 	conflicts = whph
-	source = https://github.com/ahmet-cetinkaya/whph/releases/download/v0.23.0/whph-v0.23.0-linux.tar.gz
-	sha256sums = 0410f59c0e4c3c4444ca376f3f9b8e099dc70107431414b0c4f6be17b4e0430b
+	source = https://github.com/ahmet-cetinkaya/whph/releases/download/v0.23.1/whph-v0.23.1-linux.tar.gz
+	sha256sums = 18eed02fa0ba7161d02ee64505efa9361be8eda0ff793418c0e5769f82c7aea4
 
 pkgname = whph-bin
