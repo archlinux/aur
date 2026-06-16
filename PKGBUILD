@@ -8,7 +8,7 @@ pkgname=(
   mssqldef-bin
   psqldef-bin
 )
-pkgver=3.11.4
+pkgver=3.11.6
 pkgrel=1
 pkgdesc='Idempotent schema management for MySQL, PostgreSQL, SQLite, and SQL Server'
 arch=(x86_64 aarch64)
@@ -35,14 +35,14 @@ source_x86_64=(
 )
 
 sha256sums=('c31299e97dde871d8a3c717f73fbb812a5cc25f4a089e4abc4bcc490eb13cfb1')
-sha256sums_x86_64=('bb7d4180704b4cd185e2906c888bbbefe4a51110fba9a46deeeccf32ffd95068'
-                   '7ba03517c29892beb19c14c2009d692ff328636f659b30d105e4f3b78933085d'
-                   '2537ddc95b4b66187ba70830f512dd56fc04a4b0c834815b31f8ce5240f28756'
-                   '9e2b153f1529113fae59d8de08ad0863f801b07f8b7f9c6dce2de2a7bba22d1e')
-sha256sums_aarch64=('fc31f39570be87d5edaaaf2ddf6a6591a38471ad6be4aa78f1f48b099facd109'
-                    '0ff8379d1d3f9d7c11105e728fc3310619ace87128e8e162fe5d0af40a06828c'
-                    '7c5ce0a1ccdfef9c54758fdbcf348fc650356882bf9f56ea39535261184f0135'
-                    '6e75f8e69a5005e9063cee0fa765fd14038b7b9e9a6404c8f15717a4826d9a7d')
+sha256sums_x86_64=('6c8b0b78cf184e6090ecaca2227acd5f6c986b13b53db5d3cada02086c8bfff5'
+                   '36358a98af70de8296002076741b26bc2d91cdc739247d5fa3090d032f3ea224'
+                   '5eadf8559b9e184d01d47d3a4fe62f3b7694bc782ef0ab64aa6ada9ce3d41a07'
+                   '6d11a8e9c9e8f5b9e865dbc1211c2dbb2f389b895e8980b354d5b1daee107742')
+sha256sums_aarch64=('02875f6d9fadac152d73e1fe5b187be23b5ccd3c5463610658b866358cc839f2'
+                    'eb5f5f45d5b9b9f58b0dded9f2527659afc8d294aaea43bd38046600b9f6ea36'
+                    'b52f2bf6bbb48f9abbb4713adc0c6b281611e5c52c29188498b5f2f2ddbf818e'
+                    'db18aa06801ecc8dc3ed32c72ec32c5ebe8805a98ca01c02f094883da306e8b8')
 
 package_mysqldef-bin() {
   provides=("${pkgname%-bin}")
