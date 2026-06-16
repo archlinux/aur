@@ -1,0 +1,13 @@
+pkgbase = kent-bin
+	pkgdesc = Agentic Coding platform for Professional SWE work focusing on output quality
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/respawn-llc/kent
+	arch = x86_64
+	license = AGPL-3.0-only
+	provides = kent=2.0.0
+	conflicts = kent
+	source = kent-bin-2.0.0-x86_64.tar.gz::https://github.com/respawn-llc/kent/releases/download/v2.0.0/kent_2.0.0_linux_amd64.tar.gz
+	sha256sums = 62889955fab41915d1824dbcfed59f56bd9b05403cafb489a1efece4a7ff2a3d
+
+pkgname = kent-bin
