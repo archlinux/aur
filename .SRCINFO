@@ -1,6 +1,6 @@
 pkgbase = cpupower-gtk
 	pkgdesc = A modern, polished GTK4/Libadwaita graphical interface for cpupower CPU power management.
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/marleylinux/cpupower-gtk
 	install = cpupower-gtk.install
@@ -11,7 +11,7 @@ pkgbase = cpupower-gtk
 	depends = gtk4
 	depends = libadwaita
 	depends = cpupower
-	source = cpupower-gtk-1.0.5-1.tar.gz::https://github.com/marleylinux/cpupower-gtk/archive/refs/tags/v1.0.5-1.tar.gz
-	sha256sums = c33099e8ac13d0a529a877f9afc3852f8387be21e66deb6d9a71aba932b2becd
+	source = cpupower-gtk-1.0.6-1.tar.gz::https://github.com/marleylinux/cpupower-gtk/archive/refs/tags/v1.0.6-1.tar.gz
+	sha256sums = 778c58bbb581a421666398792f5c07383e0cb1f2eb81923e9bed222c63d66c7a
 
 pkgname = cpupower-gtk
