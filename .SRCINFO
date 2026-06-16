@@ -1,0 +1,23 @@
+pkgbase = vesselix-bin
+	pkgdesc = Lightweight local-first Docker dashboard
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mavxa/Vesselix
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	depends = docker
+	provides = vesselix
+	conflicts = vesselix
+	conflicts = vesselix-git
+	source = vesselix.service
+	sha256sums = 26b1ff5ece3a4b0c0b679ab03abaf4080882e91d987ab5b2cb313b62fd745704
+	source_x86_64 = vesselix-0.1.0-linux-x86_64.tar.gz::https://github.com/mavxa/Vesselix/releases/download/v0.1.0/vesselix-v0.1.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 932236797a7664404286b331a21c3d1512968623ec734f200ebb6709f80ec9e3
+	source_aarch64 = vesselix-0.1.0-linux-aarch64.tar.gz::https://github.com/mavxa/Vesselix/releases/download/v0.1.0/vesselix-v0.1.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 5fbab4dbca7e4167706aa18c2dddd79070f9b6e3b28f1ee65f9151a74ef1b951
+	source_armv7h = vesselix-0.1.0-linux-armv7h.tar.gz::https://github.com/mavxa/Vesselix/releases/download/v0.1.0/vesselix-v0.1.0-linux-armv7h.tar.gz
+	sha256sums_armv7h = 69a5bba012a148180bfca4420763392aae1f6988722f207c5cbdb16e3964eba5
+
+pkgname = vesselix-bin
