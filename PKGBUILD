@@ -1,24 +1,22 @@
 # Maintainer: Amro Emad <korialo001 at gmail dot com>
 
 pkgbase=python-spotifyscraper
-pkgname=( 
+pkgname=(
   'python-spotifyscraper'
   'python-spotifyscraper-docs'
 )
 _pkgname=spotifyscraper
-pkgver=v3.5.0
+pkgver=v3.7.0
 pkgrel=1
 pkgdesc="Extract public Spotify data — tracks, albums, artists, playlists, podcasts & lyrics — without the official API. Sync + async, typed models, one dependency."
 arch=('any')
 url="https://spotifyscraper.readthedocs.io"
-depends=(
-  'python>=3.10'
-  'python-httpx>=0.27'
-)
 optdepends=(
   'python-mutagen: for spotifyscraper media'
   'python-playwright: for spotifyscraper browser'
   'python-typer: for spotifyscraper cli'
+  'python-mcp: for mcp sever'
+  'uvicorn: for mcp sever'
 )
 makedepends=(
   'git'
@@ -43,12 +41,12 @@ checkdepends=(
 
 source=("git+https://github.com/AliAkhtari78/${_pkgname}#tag=${pkgver}")
 license=('MIT')
-sha256sums=('f25c1eb777486bcdd109cb1a3b6299563b80d1eb07f553e3c5975c1908b563a8')
+sha256sums=('7b9e05da144b25557d87fec7c5121206410345319439c9f54b7294404748c06e')
 
 build() {
   cd "$_pkgname"
   python -m build --wheel --no-isolation
-  #Note: mkdocs looks for the modules in predefined paths, this a work-around for modules not installed yet (i.e. not in $PATH, also PYTHONPATH is last, and local for our use).
+  #Note: mkdocs looks for modules in predefined paths, this a work-around for modules not installed yet (i.e. not in sys.path, also PYTHONPATH is last, and local for our use).
   PYTHONPATH="$PWD/src" mkdocs build --strict --site-dir ./html
 }
 
@@ -59,6 +57,11 @@ check(){
 
 package_python-spotifyscraper() {
   cd "$_pkgname"
+  depends=(
+    'python>=3.10'
+    'python-httpx>=0.27'
+  )
+
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
   install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
