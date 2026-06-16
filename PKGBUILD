@@ -3,8 +3,8 @@
 
 _pkgname=fvm
 pkgname=${_pkgname}-sourcebuild
-pkgver=4.1.0
-pkgrel=2
+pkgver=4.1.1
+pkgrel=1
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 pkgdesc="Flutter Version Management: A simple CLI to manage Flutter SDK versions. (Build engine from sources)"
@@ -17,7 +17,7 @@ options=('!strip')
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/leoafarias/fvm/archive/refs/tags/v$pkgver.tar.gz"
 	"${pkgname}-wrapper")
-sha256sums=('44f24d6bef61f78fef509415bc8974fcd60c5ffe937f9a4d9b17fe26c55670a2'
+sha256sums=('59a76d6d6da2fb174e063de2cafb424984b26b481f6106a0cece416bcbca3f04'
             '84323c125aa268adaeaeb16d343b0a8fd3d662d067619b31f4921f26631d6cd3')
 
 prepare() {
