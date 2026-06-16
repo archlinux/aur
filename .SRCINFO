@@ -1,0 +1,17 @@
+pkgbase = tb-nema-git
+	pkgdesc = TUI network manager with vim controls
+	pkgver = r4.73d57ca
+	pkgrel = 1
+	url = https://github.com/nicitel3333/tb-nema
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-textual
+	depends = networkmanager
+	provides = tb-nema
+	conflicts = tb-nema
+	source = git+https://github.com/nicitel3333/tb-nema.git
+	sha256sums = SKIP
+
+pkgname = tb-nema-git
