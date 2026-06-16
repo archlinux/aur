@@ -1,0 +1,17 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bd573c9b..9c172223 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -673,11 +673,7 @@ if(SZ3_FOUND)
+ endif()
+ 
+ if(ButterflyPACK_FOUND)
+-  target_link_libraries(strumpack PUBLIC
+-    ButterflyPACK::sbutterflypack
+-    ButterflyPACK::dbutterflypack
+-    ButterflyPACK::cbutterflypack
+-    ButterflyPACK::zbutterflypack)
++  target_link_libraries(strumpack PUBLIC ButterflyPACK::butterflypack)
+ endif()
+ 
+ if(slate_FOUND)
