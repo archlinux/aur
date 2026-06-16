@@ -37,7 +37,7 @@ depends=(
     'libxcb'
     'libxkbcommon'
     'at-spi2-atk'
-    'gtk3'
+    'gtk2'
     'level-zero-loader'
 )
 makedepends=()
