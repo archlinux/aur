@@ -28,7 +28,7 @@
 # simply not run `mshell`; the helper binaries are still useful.
 
 pkgname=margo-git
-pkgver=r1599.59a66bdf
+pkgver=r1777.2e43f38a
 pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)"
 url="https://github.com/kenanpelit/margo"
@@ -290,14 +290,20 @@ package() {
   # Display managers (gdm, sddm, ly, greetd-tuigreet) pick these up
   # from the canonical wayland-sessions location.
   #
-  # We ship two: the plain entry (Exec=margo, no supervisor) as a
-  # bare fallback, and the uwsm-managed entry — the recommended way
-  # to run margo. The uwsm entry runs the compositor inside a
-  # transient systemd scope (clean teardown at logout, proper
-  # graphical-session.target wiring) and degrades to a direct exec
-  # when uwsm is not on PATH.
+  # Only ONE entry is offered at the login chooser: the uwsm-managed
+  # session (installed just below). uwsm is a hard dependency, so it is
+  # always present; the entry runs the compositor inside a transient
+  # systemd scope (clean teardown at logout, proper
+  # graphical-session.target wiring — and it is that target activating
+  # which starts mshell + the rest of the user session).
+  #
+  # The plain `Exec=margo` entry is deliberately NOT installed as a
+  # session: picked from the DM it brings up a bare compositor with no
+  # shell (nothing activates graphical-session.target, so mshell.service
+  # is never pulled in), which reads to users as "margo is broken". It
+  # is kept under doc/ for manual / no-systemd launching only.
   install -Dm644 "margo.desktop" \
-    "$pkgdir/usr/share/wayland-sessions/margo.desktop"
+    "$pkgdir/usr/share/doc/$pkgname/sessions/margo-bare.desktop"
 
   # uwsm session entry + the two wrapper scripts it chains through:
   #   margo-uwsm-session  → uwsm start … -- margo-session
