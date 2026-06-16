@@ -3,7 +3,7 @@
 _pkgname=codebase-memory-mcp
 pkgbase=$_pkgname-bin
 pkgname=($_pkgname-bin $_pkgname-ui-bin)
-pkgver=0.6.1 # renovate: datasource=github-releases depName=DeusData/codebase-memory-mcp
+pkgver=0.8.1 # renovate: datasource=github-releases depName=DeusData/codebase-memory-mcp
 pkgrel=1
 pkgdesc="High-performance code intelligence MCP server with persistent knowledge graph"
 url="https://github.com/DeusData/$_pkgname"
@@ -17,10 +17,10 @@ source_aarch64=(
     "$_pkgname-aarch64.tar.gz::$url/releases/download/v${pkgver}/$_pkgname-linux-arm64.tar.gz"
     "$_pkgname-ui-aarch64.tar.gz::$url/releases/download/v${pkgver}/$_pkgname-ui-linux-arm64.tar.gz"
 )
-sha512sums_x86_64=('67cfc269ae2332e2ed30a6084fe1bdc4c8da3ae23ddf91a927049f9945b61b713dabde06a3895afd8b279f75894600231c83a291de2f5adca2971280e3ad4bcf'
-                   '99b8660732a27b25537a05d27ec5f6b1611a975410fdce6e9819ced3494af9c856cf2e88c2e6c8897ba9bb58edd7f9568edd5471f238cbb8b8e7705206598cde')
-sha512sums_aarch64=('25f1c6bcff895123819d81fd3d3cc8cd0bc8feeeba7909a247d3af651036e4ff24871f3798074886f39b76c890066cd797a155b4149f2d19a662615e9b82423c'
-                    '4f1c0d483aaa4dcd51f071a11d04077a5054b6f73a260a805630f26a0ddd816d788610d3aebd0f2a351109ed41c30e1eedf7e0220314b0ea9bf1bb071b7fec13')
+sha512sums_x86_64=('c88aa4cb082d39e7e9b488f7e1493ddda7d6a5ea128f1455f1a388f25225c8ce71481a435e9400af1426d8e3430ff72d5f444a10b79a7d4d572d3fee78d7c419'
+                   'f8ad87760455fe82c49b482f232ec64250d94cdf7c8dd48ba66096111b86f19fe7e58771f4e9f7ad69e31994c152a0f4884aa6f0ce08326fc26a02b67fe9b2d3')
+sha512sums_aarch64=('80d2332a693239fc264c2c3519c195603e421b306d82b71fe9519e5570ffedf2e6fe8da5704915560eab4edacfa9f1d2249c7523aad580a726228322dc0f413e'
+                    'e77d056adde852a428731d9ae7ab1d137149acc776b32898494d717f239e58307a86520ba6e5f332d2cb321b4915babeae9bca78756e3ff174559f03b589662c')
 noextract=(
     "$_pkgname-ui-x86_64.tar.gz"
     "$_pkgname-ui-aarch64.tar.gz"
