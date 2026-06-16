@@ -18,7 +18,7 @@ _commit="7eac81ab4"
 _appimage="citron_nightly-7eac81ab4-linux-x86_64.AppImage"
 
 source=("${_appimage}::https://github.com/citron-neo/CI/releases/download/nightly-linux/${_appimage}")
-sha256sums=('ddf4823d009a82ae4390f88cf9275ab05e2bb986b77c7f2c59edcac7883d0632')
+sha256sums=('6a8965469dd0093958d767e695ea73fda3c0aa6727eb6ac384f1001257ed3cad')
 
 prepare() {
     chmod +x "${_appimage}"
