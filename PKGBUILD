@@ -1,7 +1,7 @@
 # Maintainer: Pedrojok01 <pedrojok@pm.me>
 pkgname=linux-broadcast-bin
 _pkgname=linux-broadcast
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 # Debian revision baked into the upstream .deb filename by cargo-deb.
 # Unrelated to AUR's pkgrel — bump only if [package.metadata.deb].revision
@@ -29,7 +29,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 install="$_pkgname.install"
 source=("$_pkgname-$pkgver.deb::$url/releases/download/v$pkgver/${_pkgname}_${pkgver}-${_debrev}_amd64.deb")
-sha256sums=('b79d0ceef7c09b9c209dae655e2a4dc52c797e269dc8c329f6d5c536e5b0829c')
+sha256sums=('74f3815c7180433c8e082189299f34fef67d95181c29c07cc5c9c53cb5aee5a7')
 options=('!strip')
 
 package() {
