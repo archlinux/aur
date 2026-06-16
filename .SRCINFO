@@ -1,5 +1,5 @@
 pkgbase = gisp
-	pkgdesc = Industrial-grade file encryption utility using XChaCha20-Poly1305 and Argon2id
+	pkgdesc = File encryption utility using XChaCha20-Poly1305 and Argon2id
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/b0lbas/gisp

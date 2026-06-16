@@ -3,7 +3,7 @@
 pkgname=gisp
 pkgver=1.0
 pkgrel=1
-pkgdesc="Industrial-grade file encryption utility using XChaCha20-Poly1305 and Argon2id"
+pkgdesc="File encryption utility using XChaCha20-Poly1305 and Argon2id"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/b0lbas/gisp"
 license=('GPL3')
