@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=codewhale-bin
-pkgver=0.8.60
+pkgver=0.8.61
 pkgrel=1
 # Upstream renamed DeepSeek-TUI → CodeWhale on 2026-05-24 and removed the
 # legacy `deepseek`/`deepseek-tui` stub binaries in v0.8.54.
@@ -22,10 +22,10 @@ _relurl="https://github.com/Hmbown/CodeWhale/releases/download/v${pkgver}"
 
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/Hmbown/CodeWhale/v${pkgver}/LICENSE")
 sha256sums=('91873e17f073f4dcddc63799a0a6fdeb44a281440b6c5e0b9d8ea2aa7f7ffd95')
-sha256sums_x86_64=('26a941c84947a0b711d8c9709b1e507337e3f84a00a7e8a074b09dfd050eb17e'
-                   '2d37faf35716547f42bb74d0ac578c94950d5551be4d6c4eda823a5572bee330')
-sha256sums_aarch64=('c634f08814275c9c3ec29790c0d0f75f34b56bd8d33ae1b471abd22913b94e2d'
-                    'faf982c8306187c68139d3e7f12caa46916e526b84a5e664f2c696428d2cc059')
+sha256sums_x86_64=('de4d0afc8fcdc581eb36cce09e24277164eef0746ab11dd14a0f982ee07e2246'
+                   '6158ca0cefc9367b001f0cc27f88adac4c3ca6c2b28bd6db15a2c92c5bccc802')
+sha256sums_aarch64=('085b201eb76cbaa7ace7f209abec4110a366b3b7d694899166aeb3a1f8ded9c7'
+                    'e78feae276e4672d67773e7fc207dbc2df8403a6926bafb35b5e958824cc96fc')
 
 source_x86_64=(
     "codewhale-${pkgver}-x86_64::${_relurl}/codewhale-linux-x64"
