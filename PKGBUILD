@@ -1,4 +1,4 @@
-# Maintainer: itlxrd <ilyakm@icloud.com>
+# Maintainer: itlxrd
 pkgname=psysonic-bin-rc
 pkgver=1.48.0.rc.2
 pkgrel=2
