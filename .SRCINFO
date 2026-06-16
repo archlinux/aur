@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-openxlsx
 	pkgdesc = A C++ library for reading, writing, creating and modifying Microsoft Excel (.xlsx) files (mingw-w64)
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/troldal/OpenXLSX
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = mingw-w64-openxlsx
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = https://github.com/troldal/OpenXLSX/archive/v0.5.0.tar.gz
-	sha256sums = 3867a84b24c672f09a2698c1381c711fd41702cd6e65e2e3661ae56e01d89e44
+	source = https://github.com/troldal/OpenXLSX/archive/v0.5.1.tar.gz
+	sha256sums = ad31b3774772c163472ec016020df66743879cbe3eaac770be3e198d950286b9
 
 pkgname = mingw-w64-openxlsx
