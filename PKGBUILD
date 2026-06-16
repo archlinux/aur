@@ -3,7 +3,7 @@
 
 _pkgname="whisper.cpp"
 pkgname="$_pkgname"
-pkgver="1.8.6"
+pkgver="1.8.7"
 pkgrel=1
 pkgdesc="Port of OpenAI's Whisper model in C/C++"
 url="https://github.com/ggml-org/whisper.cpp"
@@ -24,7 +24,7 @@ provides=('libwhisper.so')
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('f8e632016ceae556f3132a16c7f704be1e7715595041f474fa81a2b64c1abf7c')
+sha256sums=('0b988ba5053cfa720f6d399f3f21885b01c4222178be435ca2272d6872717554')
 
 build() (
   local _cmake_options=(
