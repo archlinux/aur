@@ -1,6 +1,6 @@
 pkgbase = vboot-utils
 	pkgdesc = Chromium OS verified boot utilities
-	pkgver = 148.16640
+	pkgver = 149.16667
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromiumos/platform/vboot_reference
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = vboot-utils
 	depends = libzip
 	depends = chromeos-flashrom-git
 	depends = cbfstool
-	source = git+https://chromium.googlesource.com/chromiumos/platform/vboot_reference#branch=release-R148-16640.B
+	source = git+https://chromium.googlesource.com/chromiumos/platform/vboot_reference#branch=release-R149-16667.B
 	sha256sums = SKIP
 
 pkgname = vboot-utils

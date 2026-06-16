@@ -2,14 +2,14 @@
 # Originally maintained by Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributions by Thomas Sowell <tom@fancydriving.org>
 pkgname=vboot-utils
-pkgver=148.16640
+pkgver=149.16667
 _tag=release-R${pkgver/\./-}.B
 pkgrel=1
 pkgdesc='Chromium OS verified boot utilities'
 arch=(i686 x86_64)
 url='https://chromium.googlesource.com/chromiumos/platform/vboot_reference'
 license=('BSD')
-depends=(libutil-linux openssl libzip chromeos-flashrom-git cbfstool)
+depends=(acpica cbfstool chromeos-flashrom-git libutil-linux libzip openssl)
 makedepends=(git libyaml trousers)
 source=(git+https://chromium.googlesource.com/chromiumos/platform/vboot_reference#branch=${_tag})
 sha256sums=('SKIP')
