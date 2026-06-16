@@ -2,7 +2,7 @@
 
 pkgname=opencode-desktop
 pkgver=1.17.7
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenCode desktop app (built from source, runs on system electron42)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/anomalyco/opencode'
@@ -109,26 +109,31 @@ package() {
 
   install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 
-  # Pull the .desktop entry and full hicolor icon set out of the .pacman
-  # archive electron-builder produced. Rewrite it to our pkgname and
-  # repoint Exec/Icon/StartupWMClass to our wrapper basename, which is also
-  # the Wayland app_id Electron sets via desktopName (set-desktop-name.patch).
-  local _eb="$srcdir/.eb-pacman"
-  rm -rf "$_eb" && mkdir -p "$_eb"
-  bsdtar -xf "$_bld"/dist/*.pacman -C "$_eb"
-
-  local _ebname='@opencode-aidesktop'
+  # Install the .desktop entry from upstream's pre-canned legacy file
+  # (packages/desktop/resources/linux/opencode-desktop.desktop). Upstream
+  # targets only AppImage/deb/rpm in electron-builder, so we no longer
+  # extract a .pacman archive. Rewrite the launcher paths to our wrapper
+  # basename, which is also the Wayland app_id Electron sets via
+  # desktopName (set-desktop-name.patch). Strip NoDisplay so the entry
+  # shows up in app menus.
+  local _src="$srcdir/$pkgname/packages/desktop"
   sed -e "s|^Exec=.*|Exec=$pkgname %U|" \
       -e "s|^Icon=.*|Icon=$pkgname|" \
       -e "s|^StartupWMClass=.*|StartupWMClass=$pkgname|" \
-      "$_eb/usr/share/applications/$_ebname.desktop" |
+      -e '/^NoDisplay=/d' \
+      "$_src/resources/linux/opencode-desktop.desktop" |
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-  local png size
-  for png in "$_eb"/usr/share/icons/hicolor/*/apps/"$_ebname.png"; do
-    size=$(basename "$(dirname "$(dirname "$png")")")
-    install -Dm644 "$png" "$pkgdir/usr/share/icons/hicolor/$size/apps/$pkgname.png"
-  done
+  # Install hicolor icons from icons/prod/. Skip Square/android variants
+  # (Windows tiles / Android mipmaps), keep only the four standard sizes.
+  install -Dm644 "$_src/icons/prod/32x32.png" \
+    "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
+  install -Dm644 "$_src/icons/prod/64x64.png" \
+    "$pkgdir/usr/share/icons/hicolor/64x64/apps/$pkgname.png"
+  install -Dm644 "$_src/icons/prod/128x128.png" \
+    "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
+  install -Dm644 "$_src/icons/prod/128x128@2x.png" \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
 
   install -Dm644 "$srcdir/$pkgname/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
