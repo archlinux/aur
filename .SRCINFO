@@ -1,6 +1,6 @@
 pkgbase = paradox-launcher
 	pkgdesc = Paradox Interactive Game Launcher v2
-	pkgver = 2025.14
+	pkgver = 2026.6
 	pkgrel = 1
 	epoch = 1
 	url = https://play.paradoxplaza.com/
@@ -11,7 +11,7 @@ pkgbase = paradox-launcher
 	depends = nss
 	depends = alsa-lib
 	depends = libxss
-	source = paradox-launcher-2025.14.deb::https://launcher.paradoxinteractive.com/v2/paradox-launcher-installer-2025_14.deb
-	sha256sums = 6d085bc65ea535ce610797e2300bc5e916578458c19cf49277bf51c3948cf614
+	source = paradox-launcher-2026.6.deb::https://launcher.paradoxinteractive.com/v2/paradox-launcher-installer-2026_6.deb
+	sha256sums = fa84ff21104ad890c70a13aab30ba349eb145d4a6dcdd38b7ea42e7743a00db6
 
 pkgname = paradox-launcher
