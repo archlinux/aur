@@ -1,0 +1,26 @@
+pkgbase = i686-linux-musl-cross
+	pkgdesc = Static musl-based cross-compilation toolchain via musl-cross-make
+	pkgver = 16.1.0
+	pkgrel = 1
+	url = https://github.com/richfelker/musl-cross-make
+	arch = x86_64
+	license = MIT
+	makedepends = gcc-fortran
+	makedepends = curl
+	makedepends = git
+	makedepends = rsync
+	provides = i686-linux-musl-gcc
+	provides = i686-linux-musl-binutils
+	provides = i686-linux-musl-g++
+	conflicts = i686-linux-musl-cross-bin
+	conflicts = i686-linux-musl-gcc
+	conflicts = i686-linux-musl-binutils
+	conflicts = i686-linux-musl-g++
+	options = !strip
+	options = staticlibs
+	source = git+https://github.com/userdocs/musl-cross-make#commit=33aa77d69d36b72e1b4e3f5fa76e53e86037637f
+	source = file://config.mak
+	b2sums = SKIP
+	b2sums = 9f023d7b1976c79e247ba33b65e482f924b7c6505b1431d660c6b8346579f2b7c17aa170bec9974c57fdb7e7a2000fa5a10da970e8efcd6cea5ce5c3351e3c74
+
+pkgname = i686-linux-musl-cross
