@@ -1,0 +1,19 @@
+pkgbase = netmuxd-bin
+	pkgdesc = A replacement/addition to usbmuxd, enabling iOS wireless device syncing on Linux
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/jkcoxson/netmuxd
+	arch = x86_64
+	arch = aarch64
+	license = LGPL2.1
+	depends = glibc
+	provides = netmuxd
+	conflicts = netmuxd
+	source = LICENSE-0.3.2::https://raw.githubusercontent.com/jkcoxson/netmuxd/v0.3.2/LICENSE
+	sha256sums = 596c3c0e8bea14135aa214d23b81d39d0417ec435cf76f3d8f6849dda50db307
+	source_x86_64 = netmuxd-v0.3.2-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jkcoxson/netmuxd/releases/download/v0.3.2/netmuxd-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1a85e69a258349d2e130aa8475f9d18f212331db3ab46843c0b8b05020f556bb
+	source_aarch64 = netmuxd-v0.3.2-aarch64-unknown-linux-gnu.tar.gz::https://github.com/jkcoxson/netmuxd/releases/download/v0.3.2/netmuxd-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 3431e8c2a393a64e49a465c5887125eba293b7b143328ce8ec099b504e242ca4
+
+pkgname = netmuxd-bin
