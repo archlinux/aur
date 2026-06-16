@@ -1,13 +1,14 @@
 pkgbase=waywallen-display
 pkgname=(waywallen-display plasma-wallpaper-waywallen gnome-shell-extension-waywallen)
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url=https://github.com/waywallen/waywallen-display
 license=(MIT)
 depends=(libgcc libstdc++ glibc)
 makedepends=(cmake vulkan-headers vulkan-icd-loader libglvnd qt6-base qt6-declarative glib2 gobject-introspection
-             gtk4)
+             gtk4 cargo)
+options=(!lto)
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/waywallen/waywallen-display/archive/refs/tags/v$pkgver.tar.gz"
         "0001-install-kde-wallpaper-to-correct-path.diff"
         "0002-install-gnome-extension-to-correct-path.diff")
@@ -19,6 +20,8 @@ prepare() {
     cd "$pkgbase-$pkgver"
     patch -Np1 -i ../0001-install-kde-wallpaper-to-correct-path.diff
     patch -Np1 -i ../0002-install-gnome-extension-to-correct-path.diff
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -29,6 +32,12 @@ build() {
         -DWAYWALLEN_DISPLAY_PLUGIN_GOBJECT=ON \
         -DWAYWALLEN_DISPLAY_PLUGIN_GNOME=ON
     cmake --build build
+    cd "$pkgbase-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features \
+        --package waywallen-display \
+        --bin waywallen-layer-shell
 }
 
 package_waywallen-display() {
@@ -40,6 +49,9 @@ package_waywallen-display() {
                 'gtk4: The gobject plugin'
                 'graphene: The gobject plugin')
     DESTDIR="$pkgdir" cmake --install build
+    find "$pkgbase-$pkgver/target/release" -type f -executable -maxdepth 1 \
+        -printf "Installing %p...\n" \
+        -exec install -Dm0755 -t "$pkgdir/usr/bin" {} +
     install -Dm0644 "$pkgbase-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
