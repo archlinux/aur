@@ -1,0 +1,17 @@
+pkgbase = waxon-bin
+	pkgdesc = A vim-modal Spotify client for the terminal
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/danfry1/waxon
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	provides = waxon
+	conflicts = waxon
+	options = !strip
+	source_x86_64 = waxon-x86_64-1.5.0.tgz::https://github.com/danfry1/waxon/releases/download/v1.5.0/waxon_1.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 06805085521a10c6e574c48ceb29aa393d853b3644cfbc597cfb030fd3084bad
+	source_aarch64 = waxon-aarch64-1.5.0.tgz::https://github.com/danfry1/waxon/releases/download/v1.5.0/waxon_1.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = d552dab376cf597ae90c96eaa3dbe2a0a83728924c74e75b2b970354ed410c94
+
+pkgname = waxon-bin

@@ -1,0 +1,5 @@
+[waxon-bin]
+source = "github"
+github = "danfry1/waxon"
+use_latest_release = true
+prefix = "v"
