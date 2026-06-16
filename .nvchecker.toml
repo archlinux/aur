@@ -1,0 +1,5 @@
+[dnstrace-bin]
+source = "github"
+github = "dkorunic/dnstrace"
+use_latest_release = true
+prefix = "v"

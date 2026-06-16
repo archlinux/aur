@@ -1,0 +1,17 @@
+pkgbase = dnstrace-bin
+	pkgdesc = DNS query tracing and analysis tool
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/dkorunic/dnstrace
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = dnstrace
+	conflicts = dnstrace
+	options = !strip
+	source_x86_64 = dnstrace-x86_64-0.4.0.tgz::https://github.com/dkorunic/dnstrace/releases/download/v0.4.0/dnstrace_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 33e18d809b15e254112551f8c5f20954f9796b948bc9027997898566095da2cc
+	source_aarch64 = dnstrace-aarch64-0.4.0.tgz::https://github.com/dkorunic/dnstrace/releases/download/v0.4.0/dnstrace_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 098388960a46ca18a0930dff5df6646a48dee13b8aa31c35ccd7e2291d46e922
+
+pkgname = dnstrace-bin
