@@ -3,7 +3,7 @@
 _plug=nlm-hip
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=2.0.g922cc61
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/TheFeelTrain/vs-nlm-hip'
@@ -31,10 +31,11 @@ pkgver() {
 }
 
 build() {
-    CMAKE_PREFIX_PATH=/opt/rocm \
-    CXX=/opt/rocm/llvm/bin/clang++ \
     cmake -S "${_plug}" -B build \
-    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_BUILD_TYPE=Release \
+    -D CMAKE_CXX_COMPILER="/opt/rocm/bin/hipcc" \
+    -D CMAKE_CXX_FLAGS="-Wall -ffast-math -munsafe-fp-atomics -Rpass-analysis=kernel-resource-usage -DNDEBUG" \
+    -D GPU_TARGETS="gfx906;gfx1010;gfx1011;gfx1012;gfx1030;gfx1031;gfx1032;gfx1033;gfx1034;gfx1035;gfx1036;gfx1100;gfx1101;gfx1102;gfx1103;gfx1150;gfx1151;gfx1152;gfx1200;gfx1201"
 
     cmake --build build
 }
