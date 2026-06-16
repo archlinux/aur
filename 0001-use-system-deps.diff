@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 386a3bf..e0b6ba1 100644
+index cdf602a..5b4a1b0 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -33,7 +33,7 @@ option(WAYWALLEN_CARGO_OFFLINE "Pass --frozen to cargo (offline + locked, for fl
@@ -11,11 +11,19 @@ index 386a3bf..e0b6ba1 100644
      # FROZEN = --locked --offline; requires a committed/staged Cargo.lock
      # and a vendored CARGO_HOME (set by the flatpak manifest).
      set(_waywallen_corrosion_extra "")
+@@ -53,6 +53,7 @@ if(WAYWALLEN_BUILD_DAEMON)
+ endif()
+ 
+ if(WAYWALLEN_BUILD_PLUGINS)
++    find_package(nlohmann_json 3.12.0 REQUIRED)
+     add_subdirectory(plugins)
+ endif()
+ 
 diff --git a/deps.json b/deps.json
-index 22a50d4..5217445 100644
+index e92de58..707a40c 100644
 --- a/deps.json
 +++ b/deps.json
-@@ -1,42 +1,4 @@
+@@ -1,52 +1,4 @@
  [
 -  {
 -    "commit": "1499b14e4906a2890f5cee1547c8848db261753d",
@@ -53,6 +61,16 @@ index 22a50d4..5217445 100644
 -      "name": "pegtl",
 -      "exclude_from_all": true,
 -      "find_package_args": "GLOBAL"
+-    }
+-  },
+-  {
+-    "dest": "build/_flatpak_deps/nlohmann_json-src",
+-    "type": "archive",
+-    "url": "https://github.com/nlohmann/json/archive/refs/tags/v3.12.0.tar.gz",
+-    "sha256": "4b92eb0c06d10683f7447ce9406cb97cd4b453be18d7279320f7b2f025c10187",
+-    "x-cmake": {
+-      "name": "nlohmann_json",
+-      "exclude_from_all": true
 -    }
 -  },
    {
