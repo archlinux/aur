@@ -1,7 +1,9 @@
-# Maintainer: Aleksana QwQ <me@aleksana.moe>
+# Maintainer: cilgin <cilgincc@outlook.com>
+
+# shellcheck disable=SC2034,SC2154,SC2128,SC2164
 
 pkgname=nautilus-open-any-terminal-git
-pkgver=0.3.0.r10.g7cdc4d0
+pkgver=0.8.1.r60.g32135a4
 pkgrel=1
 pkgdesc="context-menu entry for opening other terminal in nautilus, git version"
 arch=(any)
@@ -11,9 +13,9 @@ depends=(python-nautilus)
 makedepends=(git python-setuptools)
 provides=('nautilus-open-any-terminal')
 conflicts=('nautilus-open-any-terminal')
-_commit=4c15e8bd0d84550b61ead50b0d78a75f831df010
 source=("$pkgname::git+$url")
 sha512sums=("SKIP")
+install=nautilus-open-any-terminal.install
 
 pkgver() {
   cd "$pkgname"
@@ -21,12 +23,11 @@ pkgver() {
 }
 
 build() {
-  cd $pkgname
-  python3 setup.py build
+  cd "$pkgname"
+  make build
 }
 
 package() {
-  cd $pkgname
-  python3 setup.py install --root="$pkgdir" --optimize=1
+  cd "$pkgname"
+  make DESTDIR="${pkgdir}" PREFIX="/usr" install
 }
-

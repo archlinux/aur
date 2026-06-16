@@ -1,0 +1,4 @@
+post_install() {
+  echo -e "\e[1;32m==>\e[0m First time install? Set your preferred terminal using gsettings, e.g.:"
+  echo -e "    \e[1;33mgsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal alacritty\e[0m"
+}
