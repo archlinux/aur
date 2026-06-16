@@ -1,7 +1,7 @@
 pkgbase = gascity-latest-bin
 	pkgdesc = Gas City CLI (gc) — prebuilt release binary
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gastownhall/gascity
 	arch = x86_64
 	arch = aarch64
