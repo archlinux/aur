@@ -4,7 +4,7 @@
 
 _pkgname="aqua"
 pkgname="${_pkgname}-bin"
-pkgver=2.60.0
+pkgver=2.60.1
 pkgrel=1
 pkgdesc="Declarative CLI version manager"
 arch=('x86_64' 'aarch64')
@@ -27,26 +27,25 @@ conflicts=(
   "${_pkgname}"
 )
 install="${_pkgname}.install"
+
 _pkgsrc="${_pkgname}-${pkgver}"
+
 source=("${_pkgsrc}-checksums.txt::${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_checksums.txt"
-        "${_pkgsrc}-checksums.txt.pem::${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_checksums.txt.pem"
-        "${_pkgsrc}-checksums.txt.cosig::${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_checksums.txt.sig" # rename to not confuse OpenPGP
+        "${_pkgsrc}-checksums.bundle::${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_checksums.txt.sigstore.json"
         "${_pkgsrc}-multiple.intoto.jsonl::${_url}/releases/download/v${pkgver}/multiple.intoto.jsonl")
 source_x86_64=("${_pkgsrc}-${arch[0]}.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgsrc}-${arch[1]}.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgname}_linux_${_barch[1]}.tar.gz")
-sha256sums=('a46bd53695dcb5c72f6680d3834dea951d61f369844934a3d5e7f03df73b73a3'
-            '75b9b5c9441bb80067b67c75dda363a3f1e37fbe5670fe3ba5dfcf28d858585b'
-            'a2f1c870e674323307a14cc5c0e4661cb79229babb7fcf259278c9fc60bb44db'
-            '51fad8ee0125a1d890ad932f3ed82a72e78c7729b43335bb6e5539b1c9619351')
-sha256sums_x86_64=('7616788062355157671e983d68aa7f4c4b2691fbb765280512f245a64523e3ea')
-sha256sums_aarch64=('695e04849161feced95cda06f37f8032287168b19b6eebf2c75c8fe0069e23d1')
+sha256sums=('3d70bdf17fac6248ccfbc412bac8a6e61b757c93cf4c4ac92785727757832f61'
+            '0107217d0c0dadf7016cce650f330cae0e46de6dd69aaa6d34e40ca8706034bf'
+            '0909c0a884ea71b24bb5f91568dadf4b1c5fe852129ec452edade95bb2ac8136')
+sha256sums_x86_64=('d6f920201c71fb42881af51f8f63c3f06da778b38399248b2c777a288ebe3884')
+sha256sums_aarch64=('c203124300502abc7f338a0d460810cee769049d44348c8fadb5eee90119ecdd')
 
 verify() {
   export COSIGN_EXPERIMENTAL=true
   
   cosign verify-blob \
-    --certificate "${_pkgsrc}-checksums.txt.pem" \
-    --signature "${_pkgsrc}-checksums.txt.cosig" \
+    --bundle "${_pkgsrc}-checksums.bundle" \
     --certificate-identity-regexp "https://github.com/suzuki-shunsuke/go-release-workflow/.github/workflows/release.yaml@.*" \
     --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
     "${_pkgsrc}-checksums.txt"
