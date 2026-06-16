@@ -6,6 +6,7 @@ pkgdesc="A modern GTK4/libadwaita GUI client for Fortinet SSL VPN on Linux, wrap
 arch=('x86_64')
 url="https://github.com/shini4i/openfortivpn-gui"
 license=('GPL-3.0-only')
+
 depends=(
     'openfortivpn'
     'glibc'
@@ -18,9 +19,13 @@ depends=(
     'graphene'
     'hicolor-icon-theme'
 )
+
+install=openfortivpn-gui.install
+
 source=("https://github.com/shini4i/openfortivpn-gui/releases/download/v${pkgver}/openfortivpn-gui_${pkgver}_linux_amd64.tar.gz"
         "openfortivpn-gui.desktop"
         "hicolor.tar.xz")
+
 sha256sums=('578a35d704cef62814c71a8003e385d68af5b1190bcbe989ace54ee1a5fc1094'
             '2676c4f93aed03fdc4b9a11fd31501c16f2930bb3a3853f2fc36ed5127e0c0b9'
             '61d2d0454a3d96355b202bcdfee0a59b1c38cc838c23b560cdf2e4edae2cef32')
@@ -33,26 +38,4 @@ package() {
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     mkdir -p "${pkgdir}/usr/share/icons/hicolor"
     cp -r "${srcdir}/hicolor/"* "${pkgdir}/usr/share/icons/hicolor/"
-}
-post_install() {
-    if ! getent group openfortivpn-gui >/dev/null; then
-        groupadd openfortivpn-gui
-    fi
-
-    echo ":: Enabling and starting openfortivpn-gui-helper service..."
-    systemctl enable --now openfortivpn-gui-helper.service
-
-    echo "========================================================================"
-    echo " To enable passwordless VPN operations, add your user to the group:"
-    echo "   sudo usermod -aG openfortivpn-gui \$USER"
-    echo " Then, log out and log back in for the changes to take effect."
-    echo "========================================================================"
-}
-
-post_remove() {
-    systemctl disable --now openfortivpn-gui-helper.service
-    
-    if getent group openfortivpn-gui >/dev/null; then
-        groupdel openfortivpn-gui
-    fi
 }
