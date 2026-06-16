@@ -4,12 +4,12 @@
 # Contributor: David Manouchehri <d@32t.ca>
 
 pkgname=dropbox
-pkgver=250.4.3245
+pkgver=256.4.3790
 pkgrel=1
 pkgdesc="A free service that lets you bring your photos, docs, and videos anywhere and share them easily."
 arch=("x86_64")
 url="https://www.dropbox.com"
-license=(custom)
+license=(custom:Dropbox)
 depends=("libsm" "libxslt" "libxmu" "libxdamage" "libxrender" "libxxf86vm" "libxcomposite" "fontconfig" "dbus")
 makedepends=("gendesk")
 optdepends=(
@@ -28,10 +28,10 @@ source=("DropboxGlyph_Blue.svg"
         "https://edge.dropboxstatic.com/dbx-releng/client/dropbox-lnx.x86_64-$pkgver.tar.gz"{,.asc})
 
 sha256sums=('9ba76205ec5838db85d822f23cfd7e2112fd2757e8031d8374709f102143c548'
-            '46364021c9d63e228de58584a09eaf5bd47a5d2080586eae98935357faebfc5f'
+            '1610ff57e8b20ee7a37682c3cc505da4ddc9cec2bd7234c90c0f2073657521d2'
             '6c67a9c8c95c08fafafd2f1d828074b13e3347b05d2e4f4bf4e62746115d7477'
             '98581e65a91ae1f19ed42edcdaaa52e102298b5da0d71b50089393d364474d3d'
-            'd5edeb5d3a38401282f95d84728a112caca2b88a0b510caf3f1627fabfc7bac1'
+            'd40b2c6d65e5d67853b67d4e3c6c24709763032e03f35b973e007d8a86cea408'
             'SKIP')
 # The PGP key fingerprint should match the one on https://www.dropbox.com/help/desktop-web/linux-commands
 validpgpkeys=(
