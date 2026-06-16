@@ -1,4 +1,0 @@
-[python-pycapnp]
-source = "git"
-git = "https://github.com/capnproto/pycapnp.git"
-prefix = "v"
