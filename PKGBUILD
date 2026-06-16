@@ -32,10 +32,10 @@ source=(
   "${pkgname}::git+$url.git"
 )
 sha512sums=('SKIP')
-conflicts=(xdg-desktop-portal-termfilechooser-git xdg-desktop-portal-termfilechooser-hunkyburrito-git xdg-desktop-portal-termfilechooser-nosystemd-git)
+conflicts=(xdg-desktop-portal-termfilechooser xdg-desktop-portal-termfilechooser-git xdg-desktop-portal-termfilechooser-hunkyburrito-git xdg-desktop-portal-termfilechooser-nosystemd-git)
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
   (
     set -o pipefail
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -43,13 +43,13 @@ pkgver() {
 }
 
 build() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
   arch-meson -Dsd-bus-provider=libsystemd build
   ninja -C build
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
   DESTDIR="${pkgdir}" ninja -C build install
   install -Dm644 -t "$pkgdir/usr/share/licenses/${pkgname}" LICENSE
 }
