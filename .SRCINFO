@@ -1,0 +1,26 @@
+pkgbase = mtban-bin
+	pkgdesc = MikroTik address-list manager via RouterOS REST API (pre-built binary)
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/hb9hil/mtban
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	provides = mtban
+	conflicts = mtban
+	backup = etc/mtban/mtban.conf
+	source = mtban.1::https://raw.githubusercontent.com/hb9hil/mtban/v1.1.2/mtban.1
+	source = mtban.conf.example::https://raw.githubusercontent.com/hb9hil/mtban/v1.1.2/mtban.conf.example
+	source = LICENSE::https://raw.githubusercontent.com/hb9hil/mtban/v1.1.2/LICENSE
+	sha256sums = 978ccd0f4eb5e1b5d9406546c37865baf98197437828c97141a7edd71613d1ea
+	sha256sums = 9cd1bbf814dfada7f83a7eda2982f0ada42c7e228e42b28b2171ca7a07fd95fb
+	sha256sums = 25193699bd9cffa17d645b6b6a5242d36b3205b812e882145785142a931bee3f
+	source_x86_64 = mtban::https://github.com/hb9hil/mtban/releases/download/v1.1.2/mtban-amd64
+	sha256sums_x86_64 = b7b4469e10a02f80dafad9a77027e520c91e015859b022a7b5dafceb3b80dbe0
+	source_aarch64 = mtban::https://github.com/hb9hil/mtban/releases/download/v1.1.2/mtban-arm64
+	sha256sums_aarch64 = b7b4469e10a02f80dafad9a77027e520c91e015859b022a7b5dafceb3b80dbe0
+	source_armv7h = mtban::https://github.com/hb9hil/mtban/releases/download/v1.1.2/mtban-armhf
+	sha256sums_armv7h = b7b4469e10a02f80dafad9a77027e520c91e015859b022a7b5dafceb3b80dbe0
+
+pkgname = mtban-bin
