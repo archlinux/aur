@@ -1,17 +1,21 @@
 pkgbase = livesplit-one-druid
-	pkgdesc = A native LiveSplit One frontend built with druid (prebuilt binary)
+	pkgdesc = A native LiveSplit One frontend built with druid
 	pkgver = 0.7.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/AlexKnauth/livesplit-one-druid
 	install = livesplit-one-druid.install
 	arch = x86_64
 	license = LicenseRef-unknown
+	makedepends = rust
+	makedepends = git
 	makedepends = imagemagick
 	depends = gtk3
-	source = livesplit-one-druid-0.7.2.tar.gz::https://github.com/AlexKnauth/livesplit-one-druid/releases/download/0.7.2/livesplit-one-0.7.2-x86_64-unknown-linux-gnu.tar.gz
+	conflicts = livesplit-one-druid-bin
+	options = !lto
+	source = livesplit-one-druid-0.7.2.tar.gz::https://github.com/AlexKnauth/livesplit-one-druid/archive/refs/tags/0.7.2.tar.gz
 	source = Icon.ico::https://raw.githubusercontent.com/AlexKnauth/livesplit-one-druid/master/Icon.ico
 	source = livesplit-one-druid.desktop
-	sha256sums = 00ef459a90d2073151220fa17ae61e1809918a610a9c370321ae5aef4941ca10
+	sha256sums = 6e3b6a56d064893a8938a092c32acfcb89e6483d8dcb39d4e91f2114d38dd9b2
 	sha256sums = 4e4b8302ed9ba8380d519078d23ebafd7a983ccb6bb0d4c3703ff546baec19f8
 	sha256sums = SKIP
 
