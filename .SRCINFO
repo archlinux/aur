@@ -1,10 +1,11 @@
 pkgbase = beeper-bin
 	pkgdesc = The ultimate messaging app
-	pkgver = 4.2.927
-	pkgrel = 3
+	pkgver = 4.2.931
+	pkgrel = 4
 	url = https://www.beeper.com/beta
 	arch = x86_64
 	license = LicenseRef-beeper
+	makedepends = asar
 	depends = libappindicator
 	depends = libnotify
 	depends = libsecret
@@ -14,7 +15,7 @@ pkgbase = beeper-bin
 	conflicts = beeper-v4-bin
 	options = !strip
 	options = !debug
-	source = Beeper-4.2.927-x86_64.AppImage::https://beeper-desktop.download.beeper.com/builds/Beeper-Nightly-4.2.927-x86_64.AppImage
-	sha256sums = 8cc8d00c258f49000d037c9dda0aff05016eaa9f9c07b7f8354d909b6f8905fa
+	source = Beeper-4.2.931-x86_64.AppImage::https://beeper-desktop.download.beeper.com/builds/Beeper-Nightly-4.2.931-x86_64.AppImage
+	sha256sums = a057afab3006d142455ac52524034a1afd79438b0b65fa8cd591a8d213bb1735
 
 pkgname = beeper-bin

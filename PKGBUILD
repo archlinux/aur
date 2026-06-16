@@ -5,10 +5,11 @@ _pkgname='beeper'
 _install_path='opt'
 
 pkgname='beeper-bin'
-pkgver=4.2.927
-pkgrel=3
+pkgver=4.2.931
+pkgrel=4
 pkgdesc='The ultimate messaging app'
 depends=('libappindicator' 'libnotify' 'libsecret' 'hicolor-icon-theme')
+makedepends=('asar')
 url='https://www.beeper.com/beta'
 license=('LicenseRef-beeper')
 arch=('x86_64')
@@ -16,8 +17,8 @@ options=('!strip' '!debug')
 conflicts=('beeper' 'beeper-v4-bin')
 provides=('beeper')
 
-source=('Beeper-4.2.927-x86_64.AppImage::https://beeper-desktop.download.beeper.com/builds/Beeper-Nightly-4.2.927-x86_64.AppImage')
-sha256sums=('8cc8d00c258f49000d037c9dda0aff05016eaa9f9c07b7f8354d909b6f8905fa')
+source=('Beeper-4.2.931-x86_64.AppImage::https://beeper-desktop.download.beeper.com/builds/Beeper-Nightly-4.2.931-x86_64.AppImage')
+sha256sums=('a057afab3006d142455ac52524034a1afd79438b0b65fa8cd591a8d213bb1735')
 
 build() {
   local _filename="Beeper-${pkgver}-x86_64.AppImage"
@@ -36,16 +37,23 @@ _package_beeper() {
 
   rm -f "$pkgdir/$_install_path/beeper/beepertexts.desktop"
 
-  local _app_dir="$pkgdir/$_install_path/beeper/resources/app"
+  local _resources_dir="$pkgdir/$_install_path/beeper/resources"
+  local _app_dir="$_resources_dir/app"
+  local _asar_path="$_resources_dir/app.asar"
   local _main_dir="$_app_dir/build/main"
   local _linux_config_file
   local _main_mjs_files
   local _oldnull
 
+  if [ ! -d "$_app_dir" ] && [ -f "$_asar_path" ]; then
+    asar extract "$_asar_path" "$_app_dir" || return 1
+    rm -f "$_asar_path"
+  fi
+
   _linux_config_file=""
 
   if [ -d "$_main_dir" ]; then
-    _oldnull=$(shopt -p nullglob)
+    _oldnull=$(shopt -p nullglob || true)
     shopt -s nullglob
     _main_mjs_files=("$_main_dir"/*.mjs)
     eval "$_oldnull"
@@ -60,8 +68,8 @@ _package_beeper() {
   fi
 
   if [ -z "$_linux_config_file" ]; then
-    echo "warning: could not find file exporting registerLinuxConfig in $_app_dir; skipping patch" >&2
-    return 0
+    echo "error: could not find file exporting registerLinuxConfig in $_app_dir" >&2
+    return 1
   fi
 
   sed -i 's/export{[a-zA-Z0-9_]* as registerLinuxConfig};/const noopFunc=function(){};export{noopFunc as registerLinuxConfig};/' "$_linux_config_file"
