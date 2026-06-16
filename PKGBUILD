@@ -1,7 +1,7 @@
 # Maintainer: Jake Leahy <jake (at) leahy (dot) dev
 
 pkgname=pdfio
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="Simple C library for reading and writing PDF files"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/michaelrsweet/pdfio"
 license=('Apache')
 depends=('zlib')
 source=("pdfio-$pkgver.tar.gz::https://github.com/michaelrsweet/pdfio/releases/download/v$pkgver/pdfio-$pkgver.tar.gz")
-md5sums=('ed2cb1c6780126c365f8fd94f488b7a8')
+md5sums=('21d128da7e16b8035e5eab0676c7496d')
 
 build() {
   cd pdfio-$pkgver
