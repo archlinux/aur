@@ -3,7 +3,7 @@
 
 _pkgname=renderide
 pkgname=$_pkgname-git
-pkgver=r3012.61d1c30
+pkgver=r3058.b5ea3a4
 pkgrel=1
 epoch=0
 pkgdesc="A modern Rust + wgpu renderer for Resonite"
