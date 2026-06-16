@@ -2,7 +2,7 @@
 pkgname=cornelsen-offline-lernen-bin
 pkgver=37.10.2
 # App version 2026.8.1 from 2026-05-07
-pkgrel=5
+pkgrel=6
 pkgdesc="Cornelsen Offline Lernen Electron App"
 arch=('x86_64')
 url="https://www.cornelsen.de"
@@ -101,8 +101,11 @@ const patches = [
         from: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?os.getSyncApiBaseUrl():os.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(ip(y=>r0(()=>y)),Jl(y=>this.mapOfflinePdfIds(y)))}',
         fromAlt: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?ls.getSyncApiBaseUrl():ls.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(nc(y=>this.mapOfflinePdfIds(y)))}',
         toAlt: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?ls.getSyncApiBaseUrl():ls.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(op(y=>s&&y.status===404?fs({}):r0(()=>y)),nc(y=>this.mapOfflinePdfIds(y)))}',
+        fromAlt2: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?cs.getSyncApiBaseUrl():cs.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(nc(y=>this.mapOfflinePdfIds(y)))}',
+        toAlt2: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?cs.getSyncApiBaseUrl():cs.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(op(y=>s&&y.status===404?Es({}):r0(()=>y)),nc(y=>this.mapOfflinePdfIds(y)))}',
         to: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?os.getSyncApiBaseUrl():os.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(ip(y=>s&&y.status===404?hs({}):r0(()=>y)),Jl(y=>this.mapOfflinePdfIds(y)))}',
         alreadyMarker: 's&&y.status===404?hs({}):r0(()=>y)',
+        alreadyMarker2: 's&&y.status===404?Es({}):r0(()=>y)',
         required: false
     },
     {
@@ -110,8 +113,11 @@ const patches = [
         from: 'isCompatibleWithOnline$(){return this.http.get(`${os.getSyncApiBaseUrl()}/compatibility/offlineClients/${GE}`).pipe(sa(r=>r.isCompatible))}',
         fromAlt: 'isCompatibleWithOnline$(){return this.http.get(`${ls.getSyncApiBaseUrl()}/compatibility/offlineClients/${qE}`).pipe(sa(r=>r.isCompatible))}',
         toAlt: 'isCompatibleWithOnline$(){return this.http.get(`${ls.getSyncApiBaseUrl()}/compatibility/offlineClients/${qE}`).pipe(sa(r=>r.isCompatible),op(r=>r.status===401?fs(!0):r0(()=>r)))}',
+        fromAlt2: 'isCompatibleWithOnline$(){return this.http.get(`${cs.getSyncApiBaseUrl()}/compatibility/offlineClients/${ZE}`).pipe(sa(r=>r.isCompatible))}',
+        toAlt2: 'isCompatibleWithOnline$(){return this.http.get(`${cs.getSyncApiBaseUrl()}/compatibility/offlineClients/${ZE}`).pipe(sa(r=>r.isCompatible),op(r=>r.status===401?Es(!0):r0(()=>r)))}',
         to: 'isCompatibleWithOnline$(){return this.http.get(`${os.getSyncApiBaseUrl()}/compatibility/offlineClients/${GE}`).pipe(sa(r=>r.isCompatible),ip(r=>r.status===401?hs(!0):r0(()=>r)))}',
         alreadyMarker: 'r.status===401?hs(!0):r0(()=>r)',
+        alreadyMarker2: 'r.status===401?Es(!0):r0(()=>r)',
         required: false
     }
 ];
@@ -122,7 +128,7 @@ for (const p of patches) {
     for (const filePath of jsFiles) {
         let txt = fs.readFileSync(filePath, 'utf8');
 
-        if (txt.includes(p.to) || (p.toAlt && txt.includes(p.toAlt)) || txt.includes(p.alreadyMarker)) {
+        if (txt.includes(p.to) || (p.toAlt && txt.includes(p.toAlt)) || (p.toAlt2 && txt.includes(p.toAlt2)) || txt.includes(p.alreadyMarker) || (p.alreadyMarker2 && txt.includes(p.alreadyMarker2))) {
             patched = true;
             break;
         }
@@ -143,6 +149,13 @@ for (const p of patches) {
 
         if (p.fromAlt && p.toAlt && txt.includes(p.fromAlt)) {
             txt = txt.replace(p.fromAlt, p.toAlt);
+            fs.writeFileSync(filePath, txt);
+            patched = true;
+            break;
+        }
+
+        if (p.fromAlt2 && p.toAlt2 && txt.includes(p.fromAlt2)) {
+            txt = txt.replace(p.fromAlt2, p.toAlt2);
             fs.writeFileSync(filePath, txt);
             patched = true;
             break;
