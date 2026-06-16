@@ -5,7 +5,7 @@
 
 pkgname=charles
 _name=charles-proxy5
-pkgver=5.1
+pkgver=5.2
 pkgrel=1
 pkgdesc="Web debugging proxy application"
 arch=(x86_64)
@@ -15,7 +15,7 @@ depends=('java-runtime>=8' 'hicolor-icon-theme')
 provides=('charles')
 conflicts=('charles-bin')
 source=(http://www.charlesproxy.com/assets/release/${pkgver}/charles-proxy-${pkgver}_$arch.tar.gz)
-md5sums=('cbdd7dfdcaaf25a560ccb867f455fe56')
+md5sums=('6887ce78ba5b1574ed67c7b09720627a')
 
 build() {
   cd "$srcdir/$pkgname"

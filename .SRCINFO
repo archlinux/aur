@@ -1,6 +1,6 @@
 pkgbase = charles
 	pkgdesc = Web debugging proxy application
-	pkgver = 5.1
+	pkgver = 5.2
 	pkgrel = 1
 	url = http://www.charlesproxy.com
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = charles
 	depends = hicolor-icon-theme
 	provides = charles
 	conflicts = charles-bin
-	source = http://www.charlesproxy.com/assets/release/5.1/charles-proxy-5.1_x86_64.tar.gz
-	md5sums = cbdd7dfdcaaf25a560ccb867f455fe56
+	source = http://www.charlesproxy.com/assets/release/5.2/charles-proxy-5.2_x86_64.tar.gz
+	md5sums = 6887ce78ba5b1574ed67c7b09720627a
 
 pkgname = charles
