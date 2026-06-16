@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index b717301..c318dec 100644
+index 561c1ae..a9d9202 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -30,6 +30,11 @@ endif()
+@@ -33,6 +33,11 @@ endif()
  find_package(PkgConfig REQUIRED)
  find_package(Threads REQUIRED)
  
@@ -14,7 +14,7 @@ index b717301..c318dec 100644
  if(CMAKE_USE_PTHREADS_INIT)
      # Clang records pthread support in C++ module BMIs; keep all module targets compatible.
      add_compile_options("$<$<COMPILE_LANG_AND_ID:CXX,Clang,GNU>:-pthread>")
-@@ -46,7 +51,7 @@ option(OWE_WAYWALLEN_PLUGIN_BUNDLE_LAYOUT
+@@ -49,7 +54,7 @@ option(OWE_WAYWALLEN_PLUGIN_BUNDLE_LAYOUT
      OFF)
  
  if(BUILD_WEWEB)
@@ -227,8 +227,8 @@ index 1777116..7e807cb 100644
          CXX_SCAN_FOR_MODULES ON
 -        BUILD_RPATH   "\$ORIGIN"
 -        INSTALL_RPATH "\$ORIGIN"
-+        BUILD_RPATH   "\$ORIGIN:\$ORIGIN/../lib/cef"
-+        INSTALL_RPATH "\$ORIGIN:\$ORIGIN/../lib/cef"
++        BUILD_RPATH   "\$ORIGIN:\$ORIGIN/../lib:\$ORIGIN/../lib/cef"
++        INSTALL_RPATH "\$ORIGIN:\$ORIGIN/../lib:\$ORIGIN/../lib/cef"
          BUILD_WITH_INSTALL_RPATH ON)
 -    weweb_stage_cef_runtime(WebViewer)
  endif()
@@ -248,10 +248,10 @@ index 0a778c1..853790a 100644
          opts.enable_remote_debugging = true;
          opts.remote_debugging_port   = port;
 diff --git a/waywallen/CMakeLists.txt b/waywallen/CMakeLists.txt
-index 58b36dc..1f544d3 100644
+index e413171..a23a978 100644
 --- a/waywallen/CMakeLists.txt
 +++ b/waywallen/CMakeLists.txt
-@@ -12,13 +12,13 @@ if(OWE_WAYWALLEN_PLUGIN_BUNDLE_LAYOUT)
+@@ -12,11 +12,11 @@ if(OWE_WAYWALLEN_PLUGIN_BUNDLE_LAYOUT)
  else()
      set(_OWE_PLUGIN_DIR share/waywallen/plugins/${OWE_WAYWALLEN_PLUGIN_ID})
      set(OWE_WESCENE_BIN ../../../../bin/waywallen-wescene-renderer)
@@ -262,15 +262,19 @@ index 58b36dc..1f544d3 100644
  endif()
  set(_OWE_WESCENE_INSTALL_DIR bin)
 -set(_OWE_WEWEB_INSTALL_DIR bin/weweb)
--set(_OWE_WESCENE_INSTALL_RPATH "$ORIGIN;$ORIGIN/../lib")
--set(_OWE_WEWEB_INSTALL_RPATH "$ORIGIN;$ORIGIN/../../lib")
-+set(_OWE_WEWEB_INSTALL_DIR ${CMAKE_INSTALL_BINDIR})
-+set(_OWE_WESCENE_INSTALL_RPATH "$ORIGIN;$ORIGIN/../lib/cef")
-+set(_OWE_WEWEB_INSTALL_RPATH "$ORIGIN;$ORIGIN/../lib/cef")
++set(_OWE_WEWEB_INSTALL_DIR bin)
  set(_OWE_STRIP_FILES ${OWE_WESCENE_BIN})
  
  add_library(waywallen-bridge-producer STATIC)
-@@ -142,44 +142,11 @@ if(BUILD_WEWEB)
+@@ -109,6 +109,7 @@ if(BUILD_WEWEB)
+     target_compile_features(waywallen-weweb-renderer PRIVATE cxx_std_20)
+     set_target_properties(waywallen-weweb-renderer PROPERTIES
+         CXX_SCAN_FOR_MODULES ON
++        INSTALL_RPATH "\$ORIGIN:\$ORIGIN/../lib:\$ORIGIN/../lib/cef"
+     )
+     target_include_directories(waywallen-weweb-renderer
+         PRIVATE
+@@ -136,44 +137,11 @@ if(BUILD_WEWEB)
      target_compile_options(waywallen-weweb-renderer PRIVATE
          -Wall -Wextra -Wpedantic
      )
@@ -315,7 +319,7 @@ index 58b36dc..1f544d3 100644
  endif()
  
  # --- Generate the plugin manifest -----------------------------------------
-@@ -216,21 +183,6 @@ set(_OWE_FILES
+@@ -210,21 +178,6 @@ set(_OWE_FILES
  )
  if(BUILD_WEWEB)
      list(APPEND _OWE_FILES ${OWE_WEWEB_BIN})
