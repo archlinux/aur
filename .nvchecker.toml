@@ -1,0 +1,4 @@
+[miru-go]
+source = "git"
+git = "https://github.com/ka2n/miru.git"
+prefix = "v"
