@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=OrangLauncher
+Exec=/usr/bin/oranglauncher %f
+Icon=oranglauncher
+Terminal=false
+Categories=Game;
+MimeType=application/x-mrpack;application/zip;
+Name[en_US]=OrangLauncher
+Version=2.0
+GenericName[lt]=OrangLauncher
+GenericName[en]=OrangLauncher
+GenericName=OrangLauncher
