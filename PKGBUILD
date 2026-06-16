@@ -3,7 +3,7 @@
 
 _pkgbase=rtw89
 pkgname=rtw89-dkms-git
-pkgver=r1766.f93ba28
+pkgver=r1868.17cef5d
 pkgrel=1
 pkgdesc="Drivers for Realtek Wi-Fi 6/6E and Wi-Fi 7 adapters"
 arch=('any')
