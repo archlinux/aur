@@ -1,6 +1,6 @@
 pkgbase = mtl-power-ctl
 	pkgdesc = Power profile manager for Intel Meteor Lake laptops (TLP + LPMD + SMT + P-core parking)
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/oaklight/meteorlake-power-ctl
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mtl-power-ctl
 	optdepends = intel-lpmd: Low Power Mode Daemon for LP E-core scheduling
 	optdepends = niri: display refresh rate switching via IPC
 	backup = etc/tlp.d/90-mtl-power-ctl.conf
-	source = mtl-power-ctl-0.3.0.tar.gz::https://github.com/oaklight/meteorlake-power-ctl/archive/v0.3.0.tar.gz
-	sha256sums = 8b8144bf58555fe746ec40864fbedf312bf4152e0dcd39426e54d3746f2495cb
+	source = mtl-power-ctl-0.4.0.tar.gz::https://github.com/oaklight/meteorlake-power-ctl/archive/v0.4.0.tar.gz
+	sha256sums = b7612ab600b793ad3e4d06e85a8daa8b06549fad37a00cd533567048f9fb73c2
 
 pkgname = mtl-power-ctl
