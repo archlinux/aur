@@ -1,6 +1,6 @@
 # Maintainer: Hannes Spitz <h.spitz@outlook.de>
 pkgname=sidemark-git
-pkgver=r173.a920636
+pkgver=0.2.1.r0.g62eefc7
 pkgrel=1
 pkgdesc="PDF viewer and annotator with a live markdown notes sidebar"
 arch=('any')
@@ -27,7 +27,11 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/sidemark"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    # Anchor to the latest release tag: <lasttag>.r<commits-since-tag>.g<hash>
+    # (e.g. 0.2.1.r4.gabc1234). Falls back to the plain commit form if the
+    # clone has no tags.
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
+        || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
