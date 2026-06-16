@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=OpenFortiVPN GUI
+Name=OpenFortiVPN
 Comment=A GUI front-end for openfortivpn
 Exec=openfortivpn-gui
 Icon=openfortivpn-gui
