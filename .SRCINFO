@@ -1,6 +1,6 @@
 pkgbase = bastionfw
 	pkgdesc = Modular, layered Linux firewall framework with an operator CLI, optional AI analysis layer, and an intelligent setup wizard
-	pkgver = 1.0.8
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/indyfive11/bastion
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = bastionfw
 	optdepends = zerotier-one: ZeroTier VPN (L5)
 	optdepends = crowdsec: behavioral threat detection (L2; AUR)
 	optdepends = conntrack-tools: LAN-client relay verification (L6)
-	source = bastionfw-1.0.8.tar.gz::https://github.com/indyfive11/bastion/archive/refs/tags/v1.0.8.tar.gz
-	sha256sums = ba3156eac9119a2f80e074dc269fd968288e6f30a51b66ae50ee3be3a0bd845b
+	source = bastionfw-1.1.0.tar.gz::https://github.com/indyfive11/bastion/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 8fa2e100d97b0b7cc18fa0783be0e79a020812b3d4f7d498550ea2898375fd73
 
 pkgname = bastionfw
