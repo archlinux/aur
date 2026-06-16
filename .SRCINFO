@@ -1,0 +1,12 @@
+pkgbase = pathie-cpp
+	pkgdesc = Cross-platform pathname/filename manipulation library (kroketio fork, dependency of marian-lite)
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/kroketio/pathie-cpp
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	source = https://github.com/kroketio/pathie-cpp/archive/refs/tags/0.1.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = pathie-cpp
