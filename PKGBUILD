@@ -1,6 +1,6 @@
 # Maintainer: SHORiN-KiWATA <fcl709@outlook.com>
 pkgname=shorin-proton-wrapper-git
-pkgver=r24.24aaeda
+pkgver=r26.09e27ba
 pkgrel=2
 pkgdesc="Simple Proton wrapper for running Windows executables"
 arch=('any')
