@@ -1,7 +1,7 @@
 pkgbase = niri-shorin-fork-git
 	pkgdesc = Shorin's fork of Niri. New features such as shake cursor to enlarge and magnifier
-	pkgver = 26.04.r18.g69215eb
-	pkgrel = 2
+	pkgver = 26.04.r87.gad55ebb
+	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/niri
 	arch = x86_64
 	arch = aarch64
@@ -29,8 +29,8 @@ pkgbase = niri-shorin-fork-git
 	optdepends = xdg-desktop-portal-gnome: screencasting support
 	optdepends = gnome-keyring: implements the secret portal, for certain apps to work
 	optdepends = polkit-gnome: when apps need to ask for root permissions
-	provides = niri=26.04.r18.g69215eb
-	provides = niri-git=26.04.r18.g69215eb
+	provides = niri=26.04.r87.gad55ebb
+	provides = niri-git=26.04.r87.gad55ebb
 	conflicts = niri
 	conflicts = niri-git
 	conflicts = niri-bin
