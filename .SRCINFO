@@ -1,6 +1,6 @@
 pkgbase = bigtube-bin
 	pkgdesc = Universal Multimedia Downloader (GTK4/libadwaita + GStreamer)
-	pkgver = 2.1.25
+	pkgver = 2.1.28
 	pkgrel = 1
 	url = https://github.com/eltonfabricio10/python-bigtube
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = bigtube-bin
 	provides = bigtube
 	conflicts = bigtube
 	conflicts = bigtube-rs
-	source = bigtube-2.1.25-x86_64.tar.gz::https://github.com/eltonfabricio10/python-bigtube/releases/download/v2.1.25/bigtube-2.1.25-x86_64.tar.gz
-	sha256sums = 82e28d6d426fa87fb06f1c27833354a60a81385eb165fac02a361a404d0b2824
+	source = bigtube-2.1.28-x86_64.tar.gz::https://github.com/eltonfabricio10/python-bigtube/releases/download/v2.1.28/bigtube-2.1.28-x86_64.tar.gz
+	sha256sums = 5799db23041c38b297684565e73845a83397ab0dd547b8f54417872e047245a5
 
 pkgname = bigtube-bin
