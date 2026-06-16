@@ -1,6 +1,6 @@
 # Maintainer: Harsh Sharma <harsh@codelif.in>
 pkgname=whatevr
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Native WhatsApp client for Linux (whatevrd daemon + whatkevr Qt/Kirigami frontend)"
 arch=('x86_64' 'aarch64')
@@ -10,19 +10,21 @@ depends=('qt6-base' 'qt6-declarative' 'qt6-grpc' 'qt6-shadertools'
          'kcoreaddons' 'kdbusaddons' 'ki18n' 'kirigami' 'prison' 'kirigami-addons'
          'rlottie' 'sqlite' 'glibc'
          'desktop-file-utils' 'shared-mime-info' 'xdg-utils')
-makedepends=('go' 'gcc' 'cmake' 'ninja' 'extra-cmake-modules' 'vulkan-headers')
+makedepends=('go' 'gcc' 'just' 'cmake' 'ninja' 'extra-cmake-modules' 'vulkan-headers')
 provides=('whatevrd' 'whatkevr')
 conflicts=('whatevr-git' 'whatevr-bin')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('532b230c9d6aee674ff9d8d5191c32908fa520a68aa25ebd21c6707b9b772f4f')
+sha256sums=('04115c04909d3e33b259377656570d7af76e7284dbccbe9ea32c757a92755195')
 
 build() {
-	make -C "$srcdir/$pkgname-$pkgver" build PREFIX=/usr
+	cd "$srcdir/$pkgname-$pkgver"
+	just build-release
 }
 
 package() {
-	make -C "$srcdir/$pkgname-$pkgver" install PREFIX=/usr DESTDIR="$pkgdir"
+	cd "$srcdir/$pkgname-$pkgver"
+	just install /usr "$pkgdir"
 	install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" \
 		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
