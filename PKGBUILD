@@ -34,11 +34,15 @@ sha256sums=('578a35d704cef62814c71a8003e385d68af5b1190bcbe989ace54ee1a5fc1094'
 
 package() {
     cd "${srcdir}"
+    
+    # Binaries
     install -Dm755 "openfortivpn-gui" "${pkgdir}/usr/bin/openfortivpn-gui"
     install -Dm755 "openfortivpn-gui-helper" "${pkgdir}/usr/bin/openfortivpn-gui-helper"
     install -Dm644 "openfortivpn-gui-helper.service" "${pkgdir}/usr/lib/systemd/system/openfortivpn-gui-helper.service"
     echo "StartupWMClass=com.github.shini4i.openfortivpn-gui" >> "com.github.shini4i.openfortivpn-gui.desktop"
     install -Dm644 "com.github.shini4i.openfortivpn-gui.desktop" "${pkgdir}/usr/share/applications/com.github.shini4i.openfortivpn-gui.desktop"
+    ln -s "com.github.shini4i.openfortivpn-gui.desktop" "${pkgdir}/usr/share/applications/openfortivpn-gui.desktop"
+    ln -s "com.github.shini4i.openfortivpn-gui.desktop" "${pkgdir}/usr/share/applications/openfortivpn.desktop"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     mkdir -p "${pkgdir}/usr/share/icons/hicolor"
     cp -r "${srcdir}/hicolor/"* "${pkgdir}/usr/share/icons/hicolor/"
