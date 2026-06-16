@@ -1,6 +1,6 @@
 pkgbase = iso-commander
 	pkgdesc = The Fastest ISO Manager on the Planet, written in C++
-	pkgver = 7.3.8
+	pkgver = 7.4.0
 	pkgrel = 1
 	url = https://github.com/siyia2/iso-commander
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = iso-commander
 	optdepends = dosfstools: FAT32 formatting for Windows live USB creation
 	optdepends = parted: GPT partition layout for Windows live USB creation
 	conflicts = iso-commander-bin
-	source = iso-commander-7.3.8.tar.gz::https://github.com/siyia2/iso-commander/archive/v7.3.8.tar.gz
-	md5sums = f0870d338de93c5bfb04655141e16c29
+	source = iso-commander-7.4.0.tar.gz::https://github.com/siyia2/iso-commander/archive/v7.4.0.tar.gz
+	md5sums = ce48b6355f220254aef8e11a160539d0
 
 pkgname = iso-commander
