@@ -1,7 +1,7 @@
 pkgbase = xdg-desktop-portal-termfilechooser-hunkyburrito-git
 	pkgdesc = xdg-desktop-portal backend for your favorite terminal file chooser (hunkyburrito fork)
 	pkgver = v1.4.3.r0.gcb8cec0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hunkyburrito/xdg-desktop-portal-termfilechooser
 	arch = x86_64
 	license = MIT
@@ -14,12 +14,14 @@ pkgbase = xdg-desktop-portal-termfilechooser-hunkyburrito-git
 	optdepends = lf: wrapper included
 	optdepends = nnn: wrapper included
 	optdepends = ranger: wrapper included
+	optdepends = superfile: wrapper included
 	optdepends = vifm: wrapper included
 	optdepends = yazi: wrapper included
 	provides = xdg-desktop-portal-impl
+	provides = xdg-desktop-portal-termfilechooser
+	conflicts = xdg-desktop-portal-termfilechooser
 	conflicts = xdg-desktop-portal-termfilechooser-git
 	conflicts = xdg-desktop-portal-termfilechooser-boydaihungst-git
-	conflicts = xdg-desktop-portal-termfilechooser-nosystemd-git
 	source = xdg-desktop-portal-termfilechooser-hunkyburrito-git::git+https://github.com/hunkyburrito/xdg-desktop-portal-termfilechooser.git
 	sha512sums = SKIP
 
