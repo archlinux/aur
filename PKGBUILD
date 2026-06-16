@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps-test-git
-pkgver=1.9.13_6.r0.7990a12
+pkgver=1.12.5+3.r0.d3eb77b
 pkgrel=1
 pkgdesc='Next-Gen Universal Package Manager for Linux (linglong)'
 arch=($CARCH)
@@ -21,15 +21,17 @@ depends=(
   sh
   curl
   fmt
-  gcc-libs
   glib2
   glibc
   hicolor-icon-theme
   libcap
   libelf
+  libgcc
+  libstdc++
   linyaps-box
   ${_qt}-base
   systemd-libs
+  util-linux-libs
   ostree
   yaml-cpp
 )
@@ -62,7 +64,7 @@ source=(
 )
 sha256sums=('SKIP'
             'SKIP'
-            '4520bd1f10204220dea4141c970436deef01e9556727772ab76e408b7de69e54')
+            'be85b22fb2103bed4cf0f9086fabeb1e6edbb77ec935a2429fcdb64875f6b0d3')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -73,7 +75,7 @@ pkgver() {
     commit_count=$(git rev-list --count "${latest_tag}..HEAD")
     commit_hash=$(git rev-parse --short=7 HEAD)
 
-    printf "%s.r%s.%s" "${latest_tag//-/_}" "${commit_count}" "${commit_hash}" ||
+    printf "%s.r%s.%s" "${latest_tag//-/+}" "${commit_count}" "${commit_hash}" ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
@@ -93,7 +95,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DCPM_LOCAL_PACKAGES_ONLY=ON \
-    -DLINGLONG_VERSION="$pkgver" \
+    -DENABLE_LINGLONG_INSTALLER=ON \
+    -DLINGLONG_EXPORT_PATH=apps/share \
     -Wno-dev \
     -B build \
     -G Ninja
@@ -101,10 +104,10 @@ build() {
   ninja -C build
 }
 
-# check() {
-#   cd "${srcdir}"/${pkgname}/
-#   ctest --test-dir build --output-on-failure
-# }
+check() {
+  cd "${srcdir}"/${pkgname}/
+  ninja -C build test
+}
 
 package() {
   DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}/build install

@@ -6,11 +6,14 @@ _info() {
 }
 
 _en_ll() {
-    systemctl enable --now org.deepin.linglong.PackageManager.service 
+    systemctl daemon-reload
+    systemctl enable org.deepin.linglong.PackageManager.service 2>/dev/null || true
+    systemctl start org.deepin.linglong.PackageManager.service 2>/dev/null || true
 }
 
 _dis_ll() {
-    systemctl disable --now org.deepin.linglong.PackageManager.service 
+    systemctl stop org.deepin.linglong.PackageManager.service 2>/dev/null || true
+    systemctl disable org.deepin.linglong.PackageManager.service 2>/dev/null || true
 }
 
 post_install() {
