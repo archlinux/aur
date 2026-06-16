@@ -3,23 +3,25 @@
 # Contributor: lukpod
 
 pkgname=amule-git
-pkgver=3.0.0.r1.dfcb3f048
+pkgver=3.0.0.r92.b5d8d40d0
 pkgrel=1
 pkgdesc="Client for the eD2k and Kad networks"
 arch=(x86_64)
-url="https://github.com/amule-project/amule"
+url="https://github.com/amule-org/amule"
 license=(GPL-2.0-or-later)
 depends=(
     binutils
     crypto++
+    curl
     gd
-    geoip
+    #geoip
     glib2
     glibc
     gtk3
     hicolor-icon-theme
     libayatana-appindicator
     libgcc
+    libmaxminddb # IP2COUNTRY
     libpng
     libstdc++
     libupnp
@@ -28,18 +30,18 @@ depends=(
     wxwidgets-gtk3
     zlib
     zstd
-  )
+    )
 makedepends=(
     boost
     cmake
     git
+    po4a # manpage translation
     )
 provides=(amule amule-daemon)
 conflicts=(amule)
 options=(!lto)
 source=(
-    "git+https://github.com/amule-project/amule.git"
-    #git+https://repo.or.cz/amule.git
+    "git+https://github.com/amule-org/amule.git"
     amuled.systemd
     amuleweb.systemd
     amule.sysusers
@@ -58,17 +60,18 @@ pkgver() {
 
 build() {
   local _flags=(
-    -DENABLE_UPNP=ON
-    -DBUILD_ALC=ON
     -DBUILD_ALCC=ON
+    -DBUILD_ALC=ON
     -DBUILD_AMULECMD=ON
     -DBUILD_CAS=ON
     -DBUILD_DAEMON=ON
+    -DBUILD_FILEVIEW=ON
     -DBUILD_REMOTEGUI=ON
     -DBUILD_WEBSERVER=ON
     -DBUILD_WXCAS=ON
-    -DBUILD_FILEVIEW=ON
+    -DENABLE_IP2COUNTRY=ON
     -DENABLE_NLS=ON
+    -DENABLE_UPNP=ON
   )
 
   cmake -B build -S amule -Wno-dev \
