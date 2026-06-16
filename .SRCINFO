@@ -1,6 +1,6 @@
 pkgbase = lowfat-bin
 	pkgdesc = Lightweight CLI that filters verbose command output to cut AI agent token costs
-	pkgver = 0.6.10
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/zdk/lowfat
 	arch = x86_64
@@ -8,14 +8,14 @@ pkgbase = lowfat-bin
 	license = Apache-2.0
 	depends = glibc
 	depends = gcc-libs
-	provides = lowfat=0.6.10
+	provides = lowfat=0.7.2
 	conflicts = lowfat
 	options = !debug
-	source = LICENSE-0.6.10::https://raw.githubusercontent.com/zdk/lowfat/v0.6.10/LICENSE
-	sha256sums = b727674547d95907efffa3e2ca07531331e23cd6fb1cc5f9f8112ab1e129f1a1
-	source_x86_64 = lowfat-0.6.10-x86_64.tar.gz::https://github.com/zdk/lowfat/releases/download/v0.6.10/lowfat-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = a4bab110f270af9b91249e1b30db9c339c4ddfbfcbff9a6c5bf4f6dc3b64b1b7
-	source_aarch64 = lowfat-0.6.10-aarch64.tar.gz::https://github.com/zdk/lowfat/releases/download/v0.6.10/lowfat-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 4a933eaa80421a51308f5d975f02d28d767a313476de2e681e2593ec90cd3cdb
+	source = LICENSE-0.7.2::https://raw.githubusercontent.com/zdk/lowfat/v0.7.2/LICENSE
+	sha256sums = SKIP
+	source_x86_64 = lowfat-0.7.2-x86_64.tar.gz::https://github.com/zdk/lowfat/releases/download/v0.7.2/lowfat-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7fe8c823399963dc98ec7a7288fda8fcb6a9a91111f75a738311c192dbfe7485
+	source_aarch64 = lowfat-0.7.2-aarch64.tar.gz::https://github.com/zdk/lowfat/releases/download/v0.7.2/lowfat-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a1dd9f888a26f20562de130fe16c8582a0819a67519b9f472fb8edacc1d0092a
 
 pkgname = lowfat-bin
