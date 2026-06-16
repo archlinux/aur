@@ -12,7 +12,7 @@ pkgbase = opennn-git
 	depends = openmp
 	optdepends = cuda: CUDA acceleration support
 	optdepends = cudnn: cuDNN acceleration support
-	source = git+https://github.com/arkadesOrg/opennn.git#branch=aur-pkgbuild
+	source = git+https://github.com/arkadesOrg/opennn.git
 	sha256sums = SKIP
 
 pkgname = opennn-git

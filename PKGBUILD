@@ -16,8 +16,6 @@ makedepends=(
     'git'
     'cmake'
     'ninja'
-    # 'cuda'
-    # 'cudnn'
 )
 optdepends=(
     'cuda: CUDA acceleration support'
@@ -25,7 +23,7 @@ optdepends=(
 )
 
 source=(
-    "git+https://github.com/arkadesOrg/opennn.git#branch=aur-pkgbuild"
+    "git+https://github.com/arkadesOrg/opennn.git"
 )
 
 sha256sums=('SKIP')
