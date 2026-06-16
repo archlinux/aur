@@ -1,6 +1,6 @@
 pkgbase = llamastash
 	pkgdesc = Zero-overhead, terminal-native local-LLM launcher
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/llamastash/llamastash
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = llamastash
 	conflicts = llamastash-bin
 	conflicts = llamastash-git
 	options = !lto
-	source = llamastash-0.0.3.tar.gz::https://github.com/llamastash/llamastash/archive/refs/tags/v0.0.3.tar.gz
-	sha256sums = 8b304293b6d5db97375821deac824dbfd9444076a4599a7293b9e7546eaeabed
+	source = llamastash-0.0.4.tar.gz::https://github.com/llamastash/llamastash/archive/refs/tags/v0.0.4.tar.gz
+	sha256sums = bde4e5cf079a5b1732d319f9caf8ccbb4adb9128a22f205adbe63e5afd6e781d
 
 pkgname = llamastash

@@ -5,7 +5,7 @@
 # Do not edit aur-llamastash/PKGBUILD by hand -- it is overwritten on
 # every stable tag.
 pkgname=llamastash
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='Zero-overhead, terminal-native local-LLM launcher'
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ conflicts=('llamastash-bin' 'llamastash-git')
 # RUSTFLAGS=-Clto=on injection so we don't double-link.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8b304293b6d5db97375821deac824dbfd9444076a4599a7293b9e7546eaeabed')
+sha256sums=('bde4e5cf079a5b1732d319f9caf8ccbb4adb9128a22f205adbe63e5afd6e781d')
 
 prepare() {
   cd "$pkgname-$pkgver"
