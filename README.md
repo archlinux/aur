@@ -91,7 +91,7 @@ When building the 1.7 version of rclone-wiz, I noticed that aggressive file mana
 
 To keep the mount running smoothly, you need to restrict thumbnail generation. 
 
-Here is how I handle it across different desktop environments:
+Here is how to handle it across different desktop environments:
 #
 ### 1. Standalone Window Managers (Hyprland, Sway, i3)
 
