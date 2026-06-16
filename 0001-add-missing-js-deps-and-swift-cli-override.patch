@@ -1,14 +1,13 @@
 diff --git a/package.json b/package.json
-index a698bad..95dd838 100644
 --- a/package.json
 +++ b/package.json
-@@ -148,6 +148,9 @@
+@@ -196,6 +196,9 @@
      "vite-plus": "^0.1.11"
    },
    "overrides": {
 +    "tree-sitter-swift": {
 +      "tree-sitter-cli": "0.23.2"
 +    },
+     "next": "15.5.19",
      "vite": "npm:@voidzero-dev/vite-plus-core@0.1.11",
      "vitest": "npm:@voidzero-dev/vite-plus-test@0.1.11"
-   },
