@@ -1,13 +1,14 @@
 pkgbase = archbrew
 	pkgdesc = Homebrew-like standalone CLI package manager for Arch
 	pkgver = 1.1.0
-	pkgrel = 1
-	url = https://github.com/Marmarek-here/ArchBrew
+	pkgrel = 2
+	url = https://github.com/Comma-off/ArchBrew
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = glibc
 	depends = pacman
-	source = https://github.com/Marmarek-here/ArchBrew/archive/refs/tags/v1.0.1.tar.gz
+	source = https://github.com/Comma-off/ArchBrew/archive/refs/tags/v1.1.0.tar.gz
 	sha256sums = b078e04409fdb090ffa5c7697f98b203ea2251fbc16c37dd4f336aed3be5d8e9
+
 pkgname = archbrew
