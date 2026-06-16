@@ -2,7 +2,7 @@
 
 pkgname=i-ching-diviner
 _pkgname=IChingDiviner
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='I Ching oracle with AI interpretations of hexagrams.'
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 depends=('qt6-base' 'qt6-multimedia' 'qt6-svg')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('428ed9a3267e4781409b151a5a1a517ede77bc44c51c9066ec885e1d1a5612d7')
+sha256sums=('446effd6d0ac20f8ba5c7b682217405ad985e3f5ea7b2f4b88edbaca97ab9dc0')
 
 
 build(){
