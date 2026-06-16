@@ -5,7 +5,7 @@
 
 pkgname=firefox-vaapi
 _pkgname=firefox
-pkgver=151.0.3
+pkgver=152.0
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (with VA-API patches for Nvidia hardware acceleration)"
 url="https://www.mozilla.org/firefox/"
@@ -88,29 +88,26 @@ source=(
   org.mozilla.$_pkgname.metainfo.xml
   0000-remove-nvidia-blocklist.patch
   0001-Install-under-remoting-name.patch
-  0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
   # https://blog.mozilla.org/security/2025/04/01/updated-gpg-key-for-signing-firefox-releases-2/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('7820284ed489057a3750715ccaa22d87e1965fd54f6525d3565f1e70743bfe66'
+sha256sums=('5e5f9acb550d065a43934e0fcd11ed3ec22f7266fc9ad63df757406b432a5127'
             'SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             '5985c41a64dde6df3d31769ac57ddb59b94b1626aadb309fb488cdf6f3aa7015'
             '58d78ce57b3ee936bc966458d6b20ab142d02a897bbe924b3f26717af0c5bee1'
             '06e30b49678a48f4b6d5eb74de91f743734c7d21efd442777c77aee8cf5dad85'
-            '547426473bba5ac36b2dc532cffd8485a1edae45e4a070a5a1cf0a9adf8abdc6'
-            'afd931f1faf3564ca99c022bc0003733d6096e9edfffa534cd800041f0a608e0')
-b2sums=('48000217630b1eeef424f4a82c3839d49d531728959a4356739cee42f14580521b8b3313b8fd0783b14fb64e2ce020912460982be77f8dca9311ab9fd3194c3d'
+            '547426473bba5ac36b2dc532cffd8485a1edae45e4a070a5a1cf0a9adf8abdc6')
+b2sums=('526bb2b2b83bc20561de86f200e3e4922d7ffc5e25ed6a342350399c390bfddf39db5421d843d3803ebbc7c4abd981ae55aa67c82e9158beb6510c091a111319'
         'SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         'c993d2c86c3ae7d63721f2df3cad64485e53cfc6b3f45cbd53e96765e4dab4bfaa9581cf4e8e458d61e749ba3adce6e11487cfb18227bfe7d193c4dd911e63c3'
         '2ce33432f8a73a4f1a412b7a065d3c124e1ca9f6bdf3fad0407e897efc0840f8ef43eeeb1b9bef4a102d9fac0b2c4a2ef205726b817f83fe9c3742d076778b14'
         'a59a736b1176ce523ec61357bc918b5792e7e35db0239e6776179d1e5942fd69640735ebf19e0824b71ddbdb3bd96a836e89cd2dced498a32374ebd7308db778'
-        '4f2bfeb5f48b9d88567933b8202504f7699ab81d349a02a13355bdfabea5be12f0028e31a0ce186c86aedc03bff43a9c43100cdaec980e2a8aff13ea604d4fd7'
-        'acbee1c22b921749d465bcd68056014e4a0d346ae1183ad4d31c0d1b2b8bda87008df72afa5ae2e0fea1faf693baefdf02bad9eac39998961a85612dd12250db')
+        '4f2bfeb5f48b9d88567933b8202504f7699ab81d349a02a13355bdfabea5be12f0028e31a0ce186c86aedc03bff43a9c43100cdaec980e2a8aff13ea604d4fd7')
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -127,10 +124,6 @@ prepare() {
 
   # Make different channels installable in parallel
   patch -Np1 -i ../0001-Install-under-remoting-name.patch
-
-  # Fix build with glibc 2.43
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
-  patch -Np1 -i ../0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
 
   echo -n "$_google_api_key" >google-api-key
 
