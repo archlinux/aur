@@ -1,6 +1,6 @@
 # Maintainer: Ceaser Larry <ceaser.larry@gmail.com>
 pkgname=redmine-cli-bin
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Command-line interface for Redmine"
 arch=('x86_64' 'aarch64')
@@ -18,10 +18,10 @@ source=("upstream-LICENSE::https://raw.githubusercontent.com/aarondpn/redmine-cl
 sha256sums=('c36401440220a687e7586f5b9af730a964ced9f672e004dea4d74013fa04f760')
 
 source_x86_64=("redmine-cli-${pkgver}-linux-amd64.tar.gz::https://github.com/aarondpn/redmine-cli/releases/download/v${pkgver}/redmine-cli-linux-amd64.tar.gz")
-sha256sums_x86_64=('08b39ef88bb421824b475a64c7e1d1d86dca1b521ee3550a059842bdb03b783b')
+sha256sums_x86_64=('f8ce73a29a983d8882316e69e37116dab6003a9971b1e20ddbe042e056fc95ce')
 
 source_aarch64=("redmine-cli-${pkgver}-linux-arm64.tar.gz::https://github.com/aarondpn/redmine-cli/releases/download/v${pkgver}/redmine-cli-linux-arm64.tar.gz")
-sha256sums_aarch64=('74077cb9c616407c1b46f4d7791293d55d987dfdd4c0b5b06c95aba054a587df')
+sha256sums_aarch64=('23b7e7a6d6c1003de5f648b2608066e21f95938c329c1c52b2be5db66a45ff54')
 
 package() {
     cd "${srcdir}"
