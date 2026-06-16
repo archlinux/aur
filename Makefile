@@ -22,7 +22,7 @@ PKGBUILD: version
 
 .SRCINFO: PKGBUILD
 	updpkgsums
-	mksrcinfo
+	makepkg --printsrcinfo > $@
 
 %: %.in
 	m4 $< > $*

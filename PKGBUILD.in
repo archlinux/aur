@@ -14,11 +14,8 @@ sha512sums=('054113ec720d31c504ab74e5c19d2a3d064f0f7e6df6d4542bc8b27061d938f7f7d
 b2sums=('580c31aeca783040fb7cee1418867d3ba667ca7f9eec91d21ee041a922501ea8f07cfdb5d0490ae758d5d777c495d135ab5697282c35afb976ee0426d5046c95')
 
 package() {
-  local hacs_path="$pkgdir/var/lib/private/hass/custom_components/hacs"
+  local hacs_path="$pkgdir/var/lib/hass/custom_components/hacs"
 
-  # ensure private has 0700 perms
-  install -vdm700 "$pkgdir/var/lib/private"
   install -vd "$hacs_path"
-
   bsdtar --extract --file "$pkgname-$pkgver.zip" --directory "$hacs_path"
 }
