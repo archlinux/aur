@@ -1,0 +1,20 @@
+pkgbase = kdash-git
+	pkgdesc = A fast and simple dashboard for Kubernetes (git main)
+	pkgver = 0.0.1.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/kdash-rs/kdash
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	optdepends = libxcb: copy-to-clipboard support
+	provides = kdash
+	conflicts = kdash
+	conflicts = kdash-bin
+	options = !lto
+	source = kdash::git+https://github.com/kdash-rs/kdash.git#branch=main
+	sha256sums = SKIP
+
+pkgname = kdash-git
