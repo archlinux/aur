@@ -2,7 +2,7 @@
 
 pkgname=linyaps-git
 pkgver=1.12.3.r50.528dfab
-pkgrel=1
+pkgrel=3
 pkgdesc='Next-Gen Universal Package Manager for Linux (linglong)'
 arch=($CARCH)
 url='https://github.com/OpenAtom-Linyaps/linyaps'
@@ -20,6 +20,8 @@ _qt=qt6
 depends=(
   sh
   curl
+  erofs-utils
+  erofsfuse
   fmt
   glib2
   glibc
@@ -27,6 +29,7 @@ depends=(
   libcap
   libelf
   libgcc
+  libseccomp
   libstdc++
   linyaps-box
   ${_qt}-base
@@ -40,13 +43,13 @@ makedepends=(
   cmake
   git
   gtest
-  libseccomp
   ${_qt}-tools
   ninja
   nlohmann-json
   openssl
   pkgconf
   tl-expected
+  util-linux
   vulkan-headers
 )
 optdepends=(
@@ -94,17 +97,18 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DCPM_LOCAL_PACKAGES_ONLY=ON \
-    -DLINGLONG_VERSION="$pkgver" \
+    -DENABLE_LINGLONG_INSTALLER=ON \
+    -DLINGLONG_EXPORT_PATH=apps/share \
     -Wno-dev \
     -B build \
     -G Ninja
-
+    # -DLINGLONG_VERSION="${pkgver%%.r}" \
   ninja -C build
 }
 
 # check() {
 #   cd "${srcdir}"/${pkgname}/
-#   ctest --test-dir build --output-on-failure
+#   ninja -C build test
 # }
 
 package() {
