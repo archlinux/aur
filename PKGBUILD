@@ -9,9 +9,9 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-gcc
-pkgver=15.2.0
+pkgver=16.1.0
 _mpfrver=4.2.2
-_mpcver=1.3.1
+_mpcver=1.4.1
 _gmpver=6.3.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection (${_target})"
@@ -29,8 +29,8 @@ source=("https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
         "https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz.sig"
         "https://ftp.gnu.org/gnu/mpfr/mpfr-${_mpfrver}.tar.xz"
         "https://ftp.gnu.org/gnu/mpfr/mpfr-${_mpfrver}.tar.xz.sig"
-        "https://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz"
-        "https://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz.sig"
+        "https://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.xz"
+        "https://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.xz.sig"
         "https://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz"
         "https://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz.sig")
 
