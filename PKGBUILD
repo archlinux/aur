@@ -2,7 +2,7 @@
 
 pkgname=zcode-desktop-bin
 _pkgname=zcode
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc='ZCode desktop app repackaged from the official macOS release'
 arch=('x86_64')
@@ -37,11 +37,11 @@ noextract=(
   'node-pty.tgz'
 )
 sha256sums=(
-  '4f39d012aba88a8153a1d76a728d6a128ff84064399afeaeb632215e333e6cf6'
+  '197a9f25854ead4dcb7ec9d54d83e4f386371c7ff11a2fdeb7c1c3996ba965a5'
   '3a4a003b52841ae44b2f52ee3934db4a6817c81ade7712b3d7ebd1342f8cfec1'
   'c6e3e82a1bdd4d32e93169d7ea1cff5b8774bf90cebfae9de68768b882494d1c'
   '93bb4962e64681acff5ae798b0025154a80160f147347747b397b31aba603ddc'
-  '8bdafe6ed7fc0669095342118e1a49defc87ffa570f1b7c63db2635cf68a68a0'
+  '52f10f294164910749eb3a84b00215dd643ebe019c9a8515b5d53a2ca9f70839'
   'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
 )
 
