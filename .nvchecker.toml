@@ -1,0 +1,4 @@
+[linux-libre-firmware]
+source = "regex"
+url = "https://jxself.org/firmware"
+regex = 'linux-libre-firmware-([\d.]+)\.tar\.lz'
