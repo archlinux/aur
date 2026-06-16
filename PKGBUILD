@@ -1,7 +1,7 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-pybv
 _name=${pkgname#python-}
-pkgver=0.7.6
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A lightweight I/O utility for the BrainVision data format"
 arch=('any')
@@ -20,7 +20,7 @@ install=
 changelog=
 source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz)
 noextract=()
-sha1sums=('174b94f89afd2333199cd87fa097eedc233636be')
+sha256sums=('31cd29612d8d35eda752b992e79da1db9d81bdf9e703743cd863ab2eeb446f22')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
