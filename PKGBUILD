@@ -1,28 +1,24 @@
 # Maintainer: Atharv Gokule <gokuleatharv06@gmail.com>
 pkgname='timepad'
-pkgver=0.1.0alpha
+pkgver=0.1.0
 pkgrel=1
-pkgdesc="A minimal timer app for linux that mimicks the builtin windows clock app"
+pkgdesc="A minimal Timer App for Linux that has a picture-in-picture mode"
 arch=('x86_64')
 url="https://github.com/agokule/timepad"
 license=('MIT')
 depends=('glibc' 'libgcc' 'libstdc++' 'sdl3')
 makedepends=('git' 'cmake' 'base-devel')
+options=('!debug')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 install=
 source=(
-	'timepad::git+https://github.com/agokule/timepad.git#commit=5f48963d85d4ace05d57ab0c25122c1646b172f3'
-	'git+https://github.com/ocornut/imgui.git'
+	'timepad::git+https://github.com/agokule/timepad.git#commit=62377d67d63975d6e64b975f19af7f6c16fdcc67'
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP')
 
 prepare() {
 	cd "$srcdir/${pkgname}"
-
-	git submodule init
-	git config submodule.dependencies/imgui.url "$srcdir/imgui"
-	git -c protocol.file.allow=always submodule update
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = timepad
-	pkgdesc = A minimal timer app for linux that mimicks the builtin windows clock app
-	pkgver = 0.1.0alpha
+	pkgdesc = A minimal Timer App for Linux that has a picture-in-picture mode
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/agokule/timepad
 	arch = x86_64
@@ -14,9 +14,8 @@ pkgbase = timepad
 	depends = sdl3
 	provides = timepad
 	conflicts = timepad-git
-	source = timepad::git+https://github.com/agokule/timepad.git#commit=5f48963d85d4ace05d57ab0c25122c1646b172f3
-	source = git+https://github.com/ocornut/imgui.git
-	sha256sums = SKIP
+	options = !debug
+	source = timepad::git+https://github.com/agokule/timepad.git#commit=62377d67d63975d6e64b975f19af7f6c16fdcc67
 	sha256sums = SKIP
 
 pkgname = timepad
