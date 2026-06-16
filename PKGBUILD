@@ -34,22 +34,17 @@ sha256sums=('578a35d704cef62814c71a8003e385d68af5b1190bcbe989ace54ee1a5fc1094'
 
 package() {
     cd "${srcdir}"
-    
-    # Binaries
     install -Dm755 "openfortivpn-gui" "${pkgdir}/usr/bin/openfortivpn-gui"
     install -Dm755 "openfortivpn-gui-helper" "${pkgdir}/usr/bin/openfortivpn-gui-helper"
-    
-    # Systemd Service verbatim
     install -Dm644 "openfortivpn-gui-helper.service" "${pkgdir}/usr/lib/systemd/system/openfortivpn-gui-helper.service"
-
-    # Fix window tracking right inside the official desktop layout
+    sed -i 's/^Icon=.*/Icon=com.github.shini4i.openfortivpn-gui/' "com.github.shini4i.openfortivpn-gui.desktop"
     echo "StartupWMClass=com.github.shini4i.openfortivpn-gui" >> "com.github.shini4i.openfortivpn-gui.desktop"
-
-    # Install the standalone official reverse-DNS launcher asset
     install -Dm644 "com.github.shini4i.openfortivpn-gui.desktop" "${pkgdir}/usr/share/applications/com.github.shini4i.openfortivpn-gui.desktop"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    
-    # Install standard layout icons matching Icon=openfortivpn-gui
-    mkdir -p "${pkgdir}/usr/share/icons/hicolor"
-    cp -r "${srcdir}/hicolor/"* "${pkgdir}/usr/share/icons/hicolor/"
+    for size in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512; do
+        if [ -f "hicolor/${size}/apps/openfortivpn-gui.png" ]; then
+            install -Dm644 "hicolor/${size}/apps/openfortivpn-gui.png" \
+                "${pkgdir}/usr/share/icons/hicolor/${size}/apps/com.github.shini4i.openfortivpn-gui.png"
+        fi
+    done
 }
