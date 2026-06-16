@@ -1,6 +1,6 @@
 # Maintainer: ZauJulio <zaujulio.dev@gmail.com>
 pkgname=cpu-thermal-guard
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Sustain-gated NBFC fan pulser: acts only on sustained CPU overheat"
 arch=('any')
@@ -10,6 +10,7 @@ depends=('python')
 optdepends=('nbfc-linux: fan control backend invoked by the guard'
             'lm_sensors: for manual temperature inspection')
 backup=('etc/cpu-thermal-guard.conf')
+install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
