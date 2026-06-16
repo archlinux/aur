@@ -1,11 +1,11 @@
 # Maintainer: timofei302 <timofei302 at proton dot me>
 
 pkgname=hypersomnia-appimage
-pkgver=1.2.9167
+pkgver=2.0.0-pre3
 pkgrel=1
 pkgdesc="Online shooter with relentless dynamics."
 arch=('x86_64')
-url="https://hypersomnia.xyz"
+url="https://hypersomnia.io"
 license=('AGPL3')
 conflicts=('hypersomnia-git')
 depends=('fuse2')
