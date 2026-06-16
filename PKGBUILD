@@ -9,7 +9,7 @@
 _target=m68k-elf
 _target_cpu=m68000
 pkgname=${_target}-binutils
-pkgver=2.45
+pkgver=2.46.1
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ source=(https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz
         https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz.sig)
 sha256sums=(SKIP
             SKIP)
-validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)
+validpgpkeys=(5EF3A41171BB77E6110ED2D01F3D03348DB1A3E2)
 prepare() {
   cd binutils-${pkgver}
 
