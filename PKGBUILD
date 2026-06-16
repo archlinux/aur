@@ -7,17 +7,10 @@ pkgname=(
 )
 _pkgname=spotifyscraper
 pkgver=v3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extract public Spotify data — tracks, albums, artists, playlists, podcasts & lyrics — without the official API. Sync + async, typed models, one dependency."
 arch=('any')
 url="https://spotifyscraper.readthedocs.io"
-optdepends=(
-  'python-mutagen: for spotifyscraper media'
-  'python-playwright: for spotifyscraper browser'
-  'python-typer: for spotifyscraper cli'
-  'python-mcp: for mcp sever'
-  'uvicorn: for mcp sever'
-)
 makedepends=(
   'git'
   'python-build'
@@ -61,6 +54,14 @@ package_python-spotifyscraper() {
     'python>=3.10'
     'python-httpx>=0.27'
   )
+  optdepends=(
+  'python-mutagen: for spotifyscraper media'
+  'python-playwright: for spotifyscraper browser'
+  'python-typer: for spotifyscraper cli'
+  'python-keyring: for spotifyscraper keyring'
+  'python-mcp: for spotifyscraper mcp'
+  'uvicorn: for spotifyscraper mcp'
+)
 
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
