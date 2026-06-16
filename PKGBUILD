@@ -1,7 +1,7 @@
 # Maintainer: SHORiN-KiWATA <fcl709@outlook.com>
 pkgname=shorin-proton-wrapper-git
-pkgver=r20.e0643c3
-pkgrel=1
+pkgver=r21.1bced1d
+pkgrel=2
 pkgdesc="Simple Proton wrapper for running Windows executables"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/proton-wrapper"
@@ -33,5 +33,5 @@ package() {
   install -Dm644 shorin-proton-wrapper-run-windows-program.desktop "$pkgdir/usr/share/applications/shorin-proton-wrapper-run-windows-program.desktop"
   install -Dm644 shorin-proton-wrapper-run-windows-program-configure.desktop "$pkgdir/usr/share/applications/shorin-proton-wrapper-run-windows-program-configure.desktop"
   install -Dm644 shorin-proton-wrapper-manager.desktop "$pkgdir/usr/share/applications/shorin-proton-wrapper-manager.desktop"
-  install -Dm644 icons/shorin-proton.png "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/shorin-proton.png"
+  install -Dm644 icons/shorin-proton.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/shorin-proton.png"
 }

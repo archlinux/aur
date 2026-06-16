@@ -1,7 +1,7 @@
 pkgbase = shorin-proton-wrapper-git
 	pkgdesc = Simple Proton wrapper for running Windows executables
-	pkgver = r20.e0643c3
-	pkgrel = 1
+	pkgver = r21.1bced1d
+	pkgrel = 2
 	url = https://github.com/SHORiN-KiWATA/proton-wrapper
 	arch = any
 	license = MIT
