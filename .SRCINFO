@@ -1,0 +1,16 @@
+pkgbase = python-jupyter-mimetypes
+	pkgdesc = Enhanced Jupyter representation capabilities through proxy objects
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/datalayer/jupyter-mimetypes
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-installer
+	depends = python
+	depends = python-pyarrow
+	depends = python-typing_extensions
+	optdepends = ipython: display integration in IPython/Jupyter sessions
+	source = jupyter_mimetypes-0.2.0-py3-none-any.whl::https://files.pythonhosted.org/packages/72/45/cb4671e13fed39f721066ad1a00714d4b607982b8d3e97a25f836198d1df/jupyter_mimetypes-0.2.0-py3-none-any.whl
+	sha256sums = e6dcd989258e3fc944365b656d9173191517e0e393bd878e97ce500e5b388527
+
+pkgname = python-jupyter-mimetypes

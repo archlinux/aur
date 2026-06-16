@@ -1,0 +1,14 @@
+# Build artifacts
+/*.pkg.tar.zst
+/*.tar.zst
+/pkg/
+/src/
+
+# Downloaded sources
+/*.tar.gz
+/*.whl
+
+# Temporary files
+*.log
+install
+fix-imports.bash
