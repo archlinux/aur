@@ -1,6 +1,6 @@
 pkgbase = openai-codex-reasoning-bin
 	pkgdesc = Prebuilt OpenAI Codex CLI with raw reasoning traces enabled by default
-	pkgver = 0.139.0
+	pkgver = 0.140.0
 	pkgrel = 1
 	url = https://github.com/OneNoted/openai-codex-reasoning-bin
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = openai-codex-reasoning-bin
 	conflicts = openai-codex-bin
 	conflicts = openai-codex-reasoning
 	replaces = openai-codex-reasoning
-	source = openai-codex-reasoning-bin-0.139.0-1-x86_64.tar.zst::https://github.com/OneNoted/openai-codex-reasoning-bin/releases/download/v0.139.0-1/openai-codex-reasoning-bin-0.139.0-1-x86_64.tar.zst
-	sha256sums = 682634c30cdb04c373936880c6bb1215cf4d5d82dadd8b2afcc890adc6214738
+	source = openai-codex-reasoning-bin-0.140.0-1-x86_64.tar.zst::https://github.com/OneNoted/openai-codex-reasoning-bin/releases/download/v0.140.0-1/openai-codex-reasoning-bin-0.140.0-1-x86_64.tar.zst
+	sha256sums = 6ba54d98eb69050ab0134065ce65f1426bd748e9551591eca5858944e6bc85b0
 
 pkgname = openai-codex-reasoning-bin
