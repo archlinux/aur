@@ -1,4 +1,7 @@
 post_install() {
+    usr/bin/gtk-update-icon-cache -qtf usr/share/icons/hicolor
+    usr/bin/update-desktop-database -q
+
     if ! getent group openfortivpn-gui >/dev/null; then
         groupadd openfortivpn-gui
     fi
@@ -11,6 +14,10 @@ post_install() {
     echo "    sudo usermod -aG openfortivpn-gui \$USER"
     echo " Then, log out and log back in for the changes to take effect."
     echo "========================================================================"
+}
+
+post_upgrade() {
+    post_install
 }
 
 post_remove() {
