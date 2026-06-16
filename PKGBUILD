@@ -3,7 +3,7 @@
 
 pkgname=plasma-meta
 pkgver=6.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package to install KDE Plasma'
 arch=(any)
 license=(None)
@@ -63,7 +63,6 @@ depends=(aurorae
          print-manager
          spectacle
          systemsettings
-         union
          xdg-desktop-portal-kde
 )
 optdepends=('breeze-grub: Breeze theme for GRUB'
@@ -75,4 +74,5 @@ optdepends=('breeze-grub: Breeze theme for GRUB'
             'plymouth-kcm: Configure Plymouth from systemsettings'
             'plasma-sdk: Development tools'
             'sddm-kcm: SDDM configuration module'
+            'union: Next generation QtQuick/QtWidgets style engine'
             'wacomtablet: Drawing tablet settings on X')
