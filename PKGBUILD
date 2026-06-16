@@ -3,13 +3,13 @@
 
 pkgname='frr'
 pkgver='10.6.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='FRRouting (quagga fork) supports BGP, OSPF, ISIS, RIP, PIM, LDP, BFD, VRRP, NHRP and EIGRP'
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://frrouting.org"
 license=('GPL2')
 depends=('libcap' 'libnl' 'readline' 'ncurses' 'perl' 'pam' 'json-c' 'net-snmp'
-	 'rtrlib' 'libyang>=2.1.128' 'libunwind' 'c-ares' 'protobuf-c' 'pcre2'
+	 'rtrlib' 'libyang>=2.1.128' 'libyang<=4.2.2' 'libunwind' 'c-ares' 'protobuf-c' 'pcre2'
 	 'lua' 'sqlite')
 makedepends=('gcc' 'bison' 'perl-xml-libxml' 'python-sphinx')
 checkdepends=('python-pytest')
