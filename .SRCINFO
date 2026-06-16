@@ -1,7 +1,7 @@
 pkgbase = mangowm-wlonly-git
 	pkgdesc = mangowm without scenefx
 	pkgver = r1293.794e96d
-	pkgrel = 1.1
+	pkgrel = 1.2
 	url = https://github.com/mangowm/mango/tree/wl-only
 	arch = x86_64
 	license = GPL-3.0
@@ -16,6 +16,7 @@ pkgbase = mangowm-wlonly-git
 	depends = pixman
 	depends = libxkbcommon
 	depends = pcre2
+	depends = pango
 	depends = cjson
 	depends = libxcb
 	depends = xorg-xwayland
