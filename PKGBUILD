@@ -1,4 +1,5 @@
 # shellcheck disable=SC2034,SC2154,SC2164
+# Maintainer: Energetix/Dark Nebula <https://github.com/Jobanny-Friki>
 
 pkgbase=marian-lite
 pkgname=('sentencepiece-browsermt' 'marian-lite')
