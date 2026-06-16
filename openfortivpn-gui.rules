@@ -1,7 +1,0 @@
-polkit.addRule(function(action, subject) {
-    if (action.id == "org.freedesktop.policykit.exec" &&
-        action.lookup("program") == "/usr/bin/kill" &&
-        subject.isInGroup("openfortivpn-gui")) {
-        return polkit.Result.YES;
-    }
-});

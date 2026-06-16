@@ -25,13 +25,11 @@ install=openfortivpn-gui.install
 source=("https://github.com/shini4i/openfortivpn-gui/releases/download/v${pkgver}/openfortivpn-gui_${pkgver}_linux_amd64.tar.gz"
         "openfortivpn-gui.desktop"
         "openfortivpn-gui-helper.service"
-        "openfortivpn-gui.rules"
         "hicolor.tar.xz")
 
 sha256sums=('578a35d704cef62814c71a8003e385d68af5b1190bcbe989ace54ee1a5fc1094'
             '2676c4f93aed03fdc4b9a11fd31501c16f2930bb3a3853f2fc36ed5127e0c0b9'
             'bc71e5006b6151faa511c991d3b7a84f080530d6fdda21a7800ac943ef2e1d03'
-            '5eb95a353a22d429a91fd34e91030ab28070a97acd5d3c316662f0b1433e23ff'
             '61d2d0454a3d96355b202bcdfee0a59b1c38cc838c23b560cdf2e4edae2cef32')
 
 package() {
