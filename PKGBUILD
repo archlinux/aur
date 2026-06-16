@@ -10,8 +10,8 @@ license=('Unlicense')
 depends=('gtk3' 'glib2' 'gcc-libs' 'glibc')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("${pkgname}-${pkgver}.deb::https://github.com/toazd/selah/releases/download/v0.7.9-build.123/selah_0.7.9_amd64.deb")
-sha256sums=('46f1e9bc6439e05cbb8c2d337ecd7fd8bc51f213c1f84d304830c94550792c18')
+source=("${pkgname}-${pkgver}.deb::https://github.com/toazd/selah/releases/download/v0.7.9-build.124/selah_0.7.9_amd64.deb")
+sha256sums=('71eefd94ba22ca084bf9cb4e2f72ba83a1b8a57d027b80d68336229065e7baf7')
 
 package() {
     cd "$pkgdir"
