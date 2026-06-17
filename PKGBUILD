@@ -7,12 +7,12 @@
 _pkgname=fetchdeeznutz
 makedepends=('qt6-base' 'libgit2')
 pkgname=${_pkgname}-git
-provides=(fetchdeeznuts)
-conflicts=(fetchdeeznuts)
+provides=(fetchdeeznutz)
+conflicts=(fetchdeeznutz)
 pkgver=55
 pkgrel=1
 arch=('any')
-url='https://github.com/sirspudd/fetchdeeznuts'
+url='https://github.com/sirspudd/fetchdeeznutz'
 license=('MIT')
 source=("git+https://github.com/sirspudd/${_pkgname}")
 sha256sums=('SKIP')

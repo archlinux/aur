@@ -1,13 +1,13 @@
 pkgbase = fetchdeeznutz-git
 	pkgver = 55
 	pkgrel = 1
-	url = https://github.com/sirspudd/fetchdeeznuts
+	url = https://github.com/sirspudd/fetchdeeznutz
 	arch = any
 	license = MIT
 	makedepends = qt6-base
 	makedepends = libgit2
-	provides = fetchdeeznuts
-	conflicts = fetchdeeznuts
+	provides = fetchdeeznutz
+	conflicts = fetchdeeznutz
 	options = !strip
 	source = git+https://github.com/sirspudd/fetchdeeznutz
 	sha256sums = SKIP
