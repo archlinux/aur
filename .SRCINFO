@@ -1,7 +1,7 @@
 pkgbase = python-pysbd
 	pkgdesc = pysbd (Python Sentence Boundary Disambiguation) is a rule-based sentence boundary detection that works out-of-the-box across many languages.
 	pkgver = 0.3.4
-	pkgrel = 00
+	pkgrel = 1
 	url = http://nipunsadvilkar.github.io/
 	arch = any
 	license = MIT

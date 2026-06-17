@@ -1,4 +1,5 @@
-# Maintainer: Danny Waser (Waser Technologies) <waser@waser.tech>
+# Maintainer: Evert Vorster <superchief@evertvorster.com>
+# Contributor: Danny Waser (Waser Technologies) <waser@waser.tech>
 
 export PIP_CONFIG_FILE=/dev/null
 export PIP_DISABLE_PIP_VERSION_CHECK=true
@@ -6,7 +7,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 pkgname=python-pysbd
 epoch=
 pkgver=0.3.4
-pkgrel=00
+pkgrel=1
 pkgdesc='pysbd (Python Sentence Boundary Disambiguation) is a rule-based sentence boundary detection that works out-of-the-box across many languages.'
 arch=(any)
 url=http://nipunsadvilkar.github.io/
