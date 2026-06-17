@@ -16,7 +16,7 @@ source=("OrangLaunch-${pkgver}.tar.gz::https://github.com/Orang-Studio/OrangLaun
         "orange.png"
         "LICENSE"
         "oranglauncher-mime.xml")
-sha256sums=('2497679fda67a228451e0b7d7ef2cedcd2c2d414c9338594aeb89958439dc0b3'
+sha256sums=('e7f9b7d9e17bd4cede8b42a66f25f2b5b77ec5c5e2f469dabf39164e0eacc5a1'
             'f9aca31c4c3e1e789c7047fed380019744cf13a1e03d7857ac0f7b488d8cc607'
             '23d8bec255eee86f4843603b5e46d1dada47ce30b05efb79fa1dd0ec4e781df0'
             'ddbe0ca155b67fcfc1fecdba1cbc6a3aac5a2011316bbb4a222e1f48f8987968'
