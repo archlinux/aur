@@ -29,29 +29,38 @@ post_upgrade() {
 	echo "### Mastodon Upgrade Instructions ###"
 	echo "#####################################"
 	echo
-	echo "### No matter which version you're coming from, First go into the mastodon directory and set the ownership (all commands as root)###"
-	echo "cd /var/lib/mastodon; find -path ./public/system -prune -o -exec chown -h mastodon:mastodon {} +"
+	echo "### IMPORTANT: before upgrading to Mastodon 4.6.0, make sure you have a PostgreSQL backup ###"
+	echo "### Example, adapt the path if needed: ###"
+	echo "sudo -u postgres pg_dump -Fc mastodon_production > /root/mastodon_production_before_upgrade.dump"
 	echo
-	echo "#########################################"
-	echo "### For people who are already at 4.5 ###"
-	echo "#########################################"
+	echo "### Go into the Mastodon directory ###"
+	echo "cd /var/lib/mastodon"
+	echo
+	echo "### Stop Mastodon before maintenance ###"
+	echo "sudo systemctl stop mastodon-web mastodon-sidekiq mastodon-streaming"
+	echo
+	echo "### Check that the services are stopped. Expected result: inactive ###"
+	echo "systemctl is-active mastodon-web mastodon-sidekiq mastodon-streaming || true"
+	echo
+	echo "### Fix ownership, but do not touch uploaded media in ./public/system ###"
+	echo "sudo find -path ./public/system -prune -o -exec chown -h mastodon:mastodon {} +"
 	echo
 	echo "### Precompile the assets ###"
 	echo "sudo -u mastodon RAILS_ENV=production bundle exec rails assets:precompile"
 	echo
-	echo "### And restart all services ###"
-	echo "systemctl daemon-reload; systemctl restart mastodon-web mastodon-sidekiq mastodon-streaming"
+	echo "### Mastodon 4.6.0: run the pre-deployment database migration before restarting services ###"
+	echo "sudo -u mastodon SKIP_POST_DEPLOYMENT_MIGRATIONS=true RAILS_ENV=production bundle exec rails db:migrate"
 	echo
-	echo "#####################################"
-	echo "### For people upgrading from 4.4 ###"
-	echo "#####################################"
+	echo "### Reload systemd and start Mastodon services ###"
+	echo "sudo systemctl daemon-reload"
+	echo "sudo systemctl start mastodon-web mastodon-sidekiq mastodon-streaming"
 	echo
-	echo "### Precompile the assets ###"
-	echo "sudo -u mastodon RAILS_ENV=production bundle exec rails assets:precompile"
+	echo "### Check that the services are running. Expected result: active ###"
+	echo "systemctl is-active mastodon-web mastodon-sidekiq mastodon-streaming"
 	echo
-	echo "### Migrate the Database ###"
+	echo "### Mastodon 4.6.0: run the post-deployment database migration after services are running ###"
 	echo "sudo -u mastodon RAILS_ENV=production bundle exec rails db:migrate"
 	echo
-	echo "### Now restart the mastodon services ###"
-	echo "systemctl daemon-reload; systemctl restart mastodon-web mastodon-sidekiq mastodon-streaming"
+	echo "### Optional: check the full status if something looks wrong ###"
+	echo "sudo systemctl status mastodon-web mastodon-sidekiq mastodon-streaming"
 }
