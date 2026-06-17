@@ -1,0 +1,473 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Axure RP launcher running the Windows build through a dedicated Wine prefix.
+# Axure RP 10 is a self-contained .NET desktop application packaged as a WiX
+# Burn bootstrapper. The launcher installs it into a private prefix on first
+# run, imports optional Windows UI fonts for better glyph rendering, applies
+# high-DPI settings, and then starts AxureRP10.exe.
+
+pkgname="${AXURE_RP_10_WINE_PACKAGE_NAME:-axure-rp-10-wine}"
+pkgver="${AXURE_RP_10_WINE_VERSION:-10.0.0.3929}"
+installer_name="${AXURE_RP_10_WINE_INSTALLER_NAME:-AxureRP-Setup-3929.exe}"
+installer_url="${AXURE_RP_10_WINE_INSTALLER_URL:-https://axure.cachefly.net/versions/10-0/AxureRP-Setup-3929.exe}"
+installer_sha256="${AXURE_RP_10_WINE_INSTALLER_SHA256:-}"
+
+prefix="${AXURE_RP_10_WINEPREFIX:-${HOME}/.wine-axure-rp-10}"
+app=""
+ui_font="${AXURE_RP_10_WINE_UI_FONT:-Noto Sans CJK SC}"
+lang="${AXURE_RP_10_WINE_LANG:-zh_CN.UTF-8}"
+desktop_exec="${AXURE_RP_10_WINE_DESKTOP_EXEC:-axure-rp-10-wine}"
+refresh_mode="${AXURE_RP_10_WINE_REFRESH_MODE:-wm}"
+wine_bin="${AXURE_RP_10_WINE_BIN:-wine}"
+wineserver_bin="${AXURE_RP_10_WINESERVER_BIN:-}"
+winepath_bin="${AXURE_RP_10_WINEPATH_BIN:-}"
+
+package_installer="/usr/share/${pkgname}/${installer_name}"
+cache_dir="${XDG_CACHE_HOME:-${HOME}/.cache}/${pkgname}"
+cache_installer="${cache_dir}/${installer_name}"
+
+require_command() {
+  if [[ "$1" == */* ]]; then
+    if [[ -x "$1" ]]; then
+      return 0
+    fi
+  elif command -v "$1" >/dev/null 2>&1; then
+    return 0
+  fi
+
+    printf 'missing dependency: %s\n' "$1" >&2
+    exit 1
+}
+
+bin_sibling_or_path() {
+  local base="$1"
+  local fallback="$2"
+  local sibling
+
+  if [[ "$base" == */* ]]; then
+    sibling="$(dirname -- "$base")/${fallback}"
+    if [[ -x "${sibling}" ]]; then
+      printf '%s\n' "${sibling}"
+      return
+    fi
+  fi
+
+  printf '%s\n' "${fallback}"
+}
+
+wine() {
+  command "${wine_bin}" "$@"
+}
+
+wineserver() {
+  command "${wineserver_bin}" "$@"
+}
+
+winepath() {
+  command "${winepath_bin}" "$@"
+}
+
+validate_options() {
+  case "${refresh_mode}" in
+    default | wm | focus | desktop) ;;
+    *)
+      printf 'invalid AXURE_RP_10_WINE_REFRESH_MODE: %s\n' "${refresh_mode}" >&2
+      printf 'expected one of: default, wm, focus, desktop\n' >&2
+      exit 1
+      ;;
+  esac
+}
+
+download_file() {
+  local url="$1"
+  local output="$2"
+
+  if command -v curl >/dev/null 2>&1; then
+    curl -fL --retry 3 --output "${output}" "${url}"
+  elif command -v wget >/dev/null 2>&1; then
+    wget -O "${output}" "${url}"
+  else
+    printf 'missing dependency: curl or wget\n' >&2
+    return 1
+  fi
+}
+
+verify_installer() {
+  local file="$1"
+
+  [[ -n "${installer_sha256}" ]] || return 0
+
+  local actual
+  actual="$(sha256sum "${file}" | awk '{print $1}')"
+  [[ "${actual}" == "${installer_sha256}" ]]
+}
+
+resolve_installer() {
+  local candidate tmp
+
+  for candidate in "${AXURE_RP_10_WINE_INSTALLER:-}" "${package_installer}" "${cache_installer}"; do
+    [[ -n "${candidate}" && -f "${candidate}" ]] || continue
+    if verify_installer "${candidate}"; then
+      printf '%s\n' "${candidate}"
+      return
+    fi
+    printf 'ignoring installer with unexpected checksum: %s\n' "${candidate}" >&2
+  done
+
+  # The Axure CloudFront asset is versioned and its sha256 changes on every
+  # rebuild, so a hard checksum failure does not always mean corruption. Fall
+  # back to a fresh download when no pinned copy is available.
+  mkdir -p "$(dirname -- "${cache_installer}")"
+  tmp="${cache_installer}.part"
+  rm -f "${tmp}"
+  download_file "${installer_url}" "${tmp}"
+  mv -f "${tmp}" "${cache_installer}"
+
+  if ! verify_installer "${cache_installer}"; then
+    if [[ -n "${installer_sha256}" ]]; then
+      printf 'warning: downloaded installer checksum does not match the pinned value\n' >&2
+      printf '         (Axure re-publishes the asset without a new file name)\n' >&2
+    fi
+  fi
+
+  printf '%s\n' "${cache_installer}"
+}
+
+pick_dpi() {
+  if [[ -n "${AXURE_RP_10_WINE_DPI:-}" ]]; then
+    printf '%s\n' "${AXURE_RP_10_WINE_DPI}"
+    return
+  fi
+
+  local xft dpi
+  if command -v xrdb >/dev/null 2>&1; then
+    xft="$(xrdb -query 2>/dev/null | awk '$1 == "Xft.dpi:" {print int($2 + 0.5); exit}' || true)"
+  else
+    xft=""
+  fi
+
+  dpi="${xft:-96}"
+  if [[ "${dpi}" -ge 220 ]]; then
+    dpi=240
+  elif [[ "${dpi}" -ge 170 ]]; then
+    dpi=192
+  elif [[ "${dpi}" -ge 130 ]]; then
+    dpi=168
+  else
+    dpi=120
+  fi
+
+  printf '%s\n' "${dpi}"
+}
+
+pick_desktop_size() {
+  if [[ -n "${AXURE_RP_10_WINE_DESKTOP_SIZE:-}" ]]; then
+    printf '%s\n' "${AXURE_RP_10_WINE_DESKTOP_SIZE}"
+    return
+  fi
+
+  local line size
+  if command -v xrandr >/dev/null 2>&1; then
+    line="$(xrandr --listmonitors 2>/dev/null | awk 'NR == 2 {print $0}' || true)"
+  else
+    line=""
+  fi
+
+  size="$(printf '%s\n' "${line}" | sed -n 's/.* \([0-9][0-9]*\)\/[0-9][0-9]*x\([0-9][0-9]*\)\/[0-9][0-9]*.*/\1x\2/p')"
+  if [[ "${size}" =~ ^[0-9]+x[0-9]+$ ]]; then
+    printf '%s\n' "${size}"
+  else
+    printf '1600x1000\n'
+  fi
+}
+
+hex_utf16le() {
+  printf '%s' "$1" | iconv -f UTF-8 -t UTF-16LE | od -An -tx1 -v | tr -d ' \n'
+}
+
+zero_hex() {
+  local bytes="$1"
+  local out=""
+  while ((bytes > 0)); do
+    out="${out}00"
+    bytes=$((bytes - 1))
+  done
+  printf '%s' "${out}"
+}
+
+set_logfont() {
+  local value="$1"
+  local height="$2"
+  local facehex padchars padhex common fonthex
+
+  facehex="$(hex_utf16le "${ui_font}")"
+  padchars=$((32 - ${#ui_font}))
+  if ((padchars < 0)); then
+    padchars=0
+  fi
+  padhex="$(zero_hex $((padchars * 2)))"
+  common="000000000000000000000000900100000000008600000000${facehex}${padhex}"
+  fonthex="${height}${common}"
+  wine reg add 'HKCU\Control Panel\Desktop\WindowMetrics' /v "${value}" /t REG_BINARY /d "${fonthex}" /f >/dev/null
+}
+
+configure_graphics_overrides() {
+  local dll
+
+  if [[ "${AXURE_RP_10_WINE_DISABLE_WPF_HW:-0}" == "1" ]]; then
+    wine reg add 'HKCU\Software\Microsoft\Avalon.Graphics' /v DisableHWAcceleration /t REG_DWORD /d 1 /f >/dev/null
+    wine reg add 'HKCU\Software\Microsoft\Avalon.Graphics' /v MaxMultisampleType /t REG_DWORD /d 0 /f >/dev/null
+  else
+    wine reg delete 'HKCU\Software\Microsoft\Avalon.Graphics' /v DisableHWAcceleration /f >/dev/null 2>&1 || true
+    wine reg delete 'HKCU\Software\Microsoft\Avalon.Graphics' /v MaxMultisampleType /f >/dev/null 2>&1 || true
+  fi
+
+  [[ "${AXURE_RP_10_WINE_KEEP_D3D_OVERRIDES:-0}" == "1" ]] && return
+
+  for dll in d3d8 d3d9 d3d10core d3d11 dxgi; do
+    wine reg delete 'HKCU\Software\Wine\DllOverrides' /v "*${dll}" /f >/dev/null 2>&1 || true
+  done
+}
+
+configure_prefix() {
+  local dpi="$1"
+
+  wine reg add 'HKCU\Software\Wine\X11 Driver' /v Managed /t REG_SZ /d Y /f >/dev/null
+  if [[ "${refresh_mode}" == "wm" || "${refresh_mode}" == "focus" ]]; then
+    wine reg add 'HKCU\Software\Wine\X11 Driver' /v Decorated /t REG_SZ /d Y /f >/dev/null
+  else
+    wine reg add 'HKCU\Software\Wine\X11 Driver' /v Decorated /t REG_SZ /d N /f >/dev/null
+  fi
+  if [[ "${refresh_mode}" == "focus" ]]; then
+    wine reg add 'HKCU\Software\Wine\X11 Driver' /v UseTakeFocus /t REG_SZ /d N /f >/dev/null
+  else
+    wine reg delete 'HKCU\Software\Wine\X11 Driver' /v UseTakeFocus /f >/dev/null 2>&1 || true
+  fi
+  wine reg add 'HKCU\Control Panel\Desktop' /v LogPixels /t REG_DWORD /d "${dpi}" /f >/dev/null
+  wine reg add 'HKCU\Control Panel\Desktop' /v AppliedDPI /t REG_DWORD /d "${dpi}" /f >/dev/null
+  wine reg add 'HKCU\Control Panel\Desktop' /v Win8DpiScaling /t REG_DWORD /d 1 /f >/dev/null
+  configure_graphics_overrides
+  wine reg add 'HKLM\Software\Microsoft\Windows NT\CurrentVersion\FontSubstitutes' /v 'MS Shell Dlg' /t REG_SZ /d "${ui_font}" /f >/dev/null
+  wine reg add 'HKLM\Software\Microsoft\Windows NT\CurrentVersion\FontSubstitutes' /v 'MS Shell Dlg 2' /t REG_SZ /d "${ui_font}" /f >/dev/null
+
+  set_logfont MenuFont 08000000
+  set_logfont MessageFont 08000000
+  set_logfont StatusFont 08000000
+  set_logfont IconFont 08000000
+  set_logfont SmCaptionFont 08000000
+  set_logfont CaptionFont 0a000000
+}
+
+install_dotnet() {
+  # Some Axure installer bundles still try to run legacy .NET Framework helper
+  # packages. The installed Axure RP 10 application itself ships its .NET 8
+  # runtime, so this remains a best-effort installer compatibility step.
+  if [[ -f "${prefix}/drive_c/windows/Microsoft.NET/Framework/v4.0.30319/mscorlib.dll" ]]; then
+    return 0
+  fi
+
+  if command -v winetricks >/dev/null 2>&1; then
+    printf 'installing .NET Framework 4.8 into the prefix (this can take a while)...\n' >&2
+    winetricks --unattended dotnet48 || {
+      printf 'warning: dotnet48 installation via winetricks failed\n' >&2
+      printf '         Axure may fail to start without a working .NET Framework\n' >&2
+    }
+  else
+    printf 'warning: winetricks not found; cannot install .NET Framework\n' >&2
+    printf '         install winetricks and run: AXURE_RP_10_WINEPREFIX=%s winetricks dotnet48\n' "${prefix}" >&2
+  fi
+}
+
+install_axure() {
+  local installer
+  installer="$(resolve_installer)"
+  mkdir -p "${prefix}"
+
+  install_dotnet
+
+  # The installer is a WiX Burn bootstrapper. Burn accepts the standard quiet
+  # switches; -norestart suppresses any reboot handling inside the prefix.
+  printf 'installing Axure RP into %s (this can take several minutes)...\n' "${prefix}" >&2
+  wine "${installer}" -q -norestart
+  wineserver -w || true
+  wineserver -k || true
+}
+
+resolve_app() {
+  local candidate
+
+  for candidate in \
+    "${prefix}/drive_c/Program Files (x86)/Axure/Axure RP 10/AxureRP10.exe" \
+    "${prefix}/drive_c/Program Files/Axure/Axure RP 10/AxureRP10.exe" \
+    "${prefix}/drive_c/Program Files (x86)/Axure/Axure RP 10/AxureRP.exe" \
+    "${prefix}/drive_c/Program Files/Axure/Axure RP 10/AxureRP.exe"; do
+    [[ -f "${candidate}" ]] && {
+      printf '%s\n' "${candidate}"
+      return 0
+    }
+  done
+
+  return 1
+}
+
+font_file_sources() {
+  if [[ -n "${AXURE_RP_10_WINE_FONTS_DIR:-}" ]]; then
+    tr ':' '\n' <<<"${AXURE_RP_10_WINE_FONTS_DIR}"
+  fi
+
+  printf '%s\n' \
+    "${HOME}/.wine-axure-rp-10-fonts" \
+    "${HOME}/.wine/drive_c/windows/Fonts" \
+    "${HOME}/.local/share/fonts" \
+    "/usr/share/fonts"
+}
+
+copy_optional_font() {
+  local filename="$1"
+  local source found
+
+  while IFS= read -r source; do
+    [[ -d "${source}" ]] || continue
+    found="$(find "${source}" -iname "${filename}" -type f -print -quit 2>/dev/null || true)"
+    if [[ -n "${found}" ]]; then
+      install -Dm644 "${found}" "${prefix}/drive_c/windows/Fonts/${filename}"
+      return 0
+    fi
+  done < <(font_file_sources)
+
+  return 1
+}
+
+register_font_if_present() {
+  local filename="$1"
+  local name="$2"
+
+  if [[ -f "${prefix}/drive_c/windows/Fonts/${filename}" ]]; then
+    wine reg add 'HKLM\Software\Microsoft\Windows NT\CurrentVersion\Fonts' \
+      /v "${name}" /t REG_SZ /d "${filename}" /f >/dev/null
+  fi
+}
+
+import_optional_fonts() {
+  local font
+
+  mkdir -p "${prefix}/drive_c/windows/Fonts"
+
+  for font in \
+    segoeui.ttf \
+    segoeuib.ttf \
+    segoeuii.ttf \
+    segoeuil.ttf \
+    segoeuisl.ttf \
+    segoeuiz.ttf \
+    seguiemj.ttf \
+    seguisym.ttf \
+    msyh.ttc \
+    msyhbd.ttc \
+    msyhl.ttc; do
+    [[ -f "${prefix}/drive_c/windows/Fonts/${font}" ]] || copy_optional_font "${font}" || true
+  done
+
+  register_font_if_present segoeui.ttf 'Segoe UI (TrueType)'
+  register_font_if_present segoeuib.ttf 'Segoe UI Bold (TrueType)'
+  register_font_if_present segoeuii.ttf 'Segoe UI Italic (TrueType)'
+  register_font_if_present segoeuil.ttf 'Segoe UI Light (TrueType)'
+  register_font_if_present segoeuisl.ttf 'Segoe UI Semilight (TrueType)'
+  register_font_if_present segoeuiz.ttf 'Segoe UI Bold Italic (TrueType)'
+  register_font_if_present seguiemj.ttf 'Segoe UI Emoji (TrueType)'
+  register_font_if_present seguisym.ttf 'Segoe UI Symbol (TrueType)'
+  register_font_if_present msyh.ttc 'Microsoft YaHei UI (TrueType)'
+  register_font_if_present msyhbd.ttc 'Microsoft YaHei UI Bold (TrueType)'
+  register_font_if_present msyhl.ttc 'Microsoft YaHei UI Light (TrueType)'
+
+  if [[ -z "${AXURE_RP_10_WINE_UI_FONT:-}" && -f "${prefix}/drive_c/windows/Fonts/msyh.ttc" ]]; then
+    ui_font="Microsoft YaHei UI"
+  fi
+}
+
+remove_wine_desktop_entries() {
+  local data_home applications_dir wine_programs wine_desktop entry removed
+  local wine_user
+
+  data_home="${XDG_DATA_HOME:-${HOME}/.local/share}"
+  applications_dir="${data_home}/applications"
+  wine_programs="${applications_dir}/wine/Programs"
+  wine_user="${USER:-$(id -un)}"
+  wine_desktop="${prefix}/drive_c/users/${wine_user}/Desktop"
+  removed=0
+
+  for entry in "${wine_programs}" "${wine_desktop}"; do
+    [[ -d "${entry}" ]] || continue
+
+    while IFS= read -r -d '' entry; do
+      if grep -Eiq '^(Name(\[[^]]+\])?=Axure RP( 10)?|Exec=.*(AxureRP10\.exe|AxureRP\.exe|axure-rp-10-wine)|StartupWMClass=(AxureRP\.exe|axurerp10\.exe))' "${entry}"; then
+        rm -f -- "${entry}" && removed=1
+      fi
+    done < <(find "${entry}" -type f -name '*.desktop' -print0 2>/dev/null)
+  done
+
+  if ((removed)); then
+    find "${wine_programs}" "${wine_desktop}" -mindepth 1 -depth -type d -empty -delete 2>/dev/null || true
+
+    if command -v update-desktop-database >/dev/null 2>&1; then
+      update-desktop-database "${applications_dir}" >/dev/null 2>&1 || true
+    fi
+  fi
+}
+
+run_axure() {
+  local status=0
+
+  if [[ "${refresh_mode}" == "desktop" ]]; then
+    wine explorer "/desktop=AxureRP,$(pick_desktop_size)" "$(winepath -w "${app}")" "${args[@]}" || status=$?
+  else
+    wine "${app}" "${args[@]}" || status=$?
+  fi
+
+  return "${status}"
+}
+
+wineserver_bin="${wineserver_bin:-$(bin_sibling_or_path "${wine_bin}" wineserver)}"
+winepath_bin="${winepath_bin:-$(bin_sibling_or_path "${wine_bin}" winepath)}"
+
+require_command sha256sum
+require_command "${wine_bin}"
+require_command "${wineserver_bin}"
+require_command "${winepath_bin}"
+
+validate_options
+export WINEPREFIX="${prefix}"
+export LANG="${lang}"
+export LC_ALL="${lang}"
+export LANGUAGE="${AXURE_RP_10_WINE_LANGUAGE:-zh_CN:en_US}"
+
+remove_wine_desktop_entries
+import_optional_fonts
+
+dpi="$(pick_dpi)"
+configure_prefix "${dpi}"
+app="$(resolve_app || true)"
+
+if [[ -z "${app}" ]]; then
+  install_axure
+  configure_prefix "${dpi}"
+  remove_wine_desktop_entries
+  app="$(resolve_app || true)"
+fi
+
+if [[ -z "${app}" ]]; then
+  printf 'error: unable to locate Axure RP 10 executable in the Wine prefix\n' >&2
+  exit 1
+fi
+
+args=()
+for arg in "$@"; do
+  if [[ -e "${arg}" ]]; then
+    args+=("$(winepath -w "${arg}")")
+  else
+    args+=("${arg}")
+  fi
+done
+
+run_axure

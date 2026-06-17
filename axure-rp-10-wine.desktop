@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Axure RP
+GenericName=Prototyping Tool
+Comment=Prototyping, specification, and developer handoff tool running through Wine
+Exec=axure-rp-10-wine %F
+Type=Application
+StartupNotify=true
+Icon=axure-rp-10-wine
+StartupWMClass=axurerp10.exe
+Categories=Graphics;2DGraphics;RasterGraphics;GTK;
+MimeType=application/x-axure-rp;
