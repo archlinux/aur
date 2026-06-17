@@ -1,7 +1,7 @@
 # Maintainer: CxOrg <clx.org@cloud-org.uk>
 pkgname=simplesinewavegenerator-git
-pkgver=d8b7efe
-pkgrel=3
+pkgver=0.0
+pkgrel=4
 pkgdesc="Simple sine wave generator with GTK3 GUI and logarithmic frequency sweep"
 arch=('x86_64')
 url="https://github.com/ixnewton/simpleSineWaveGenerator"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gtk3')
 makedepends=('gcc' 'pkg-config' 'git' 'libpulse')
 optdepends=('pulseaudio: PulseAudio backend (or pipewire-pulse)')
-source=("git+https://github.com/ixnewton/simpleSineWaveGenerator.git#branch=master")
+source=("git+https://github.com/ixnewton/simpleSineWaveGenerator.git#branch=Sweep-Generator-aur")
 sha256sums=('SKIP')
 
 pkgver() {
