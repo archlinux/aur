@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=git-guitar-bin
 _pkgname=guitar
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='A terminal based git client with fast topological & chronological graph rendering - Pre-Build binary'
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=('guitar')
 conflicts=('git-guitar' 'git-guitar-git')
 replaces=('guitar-tui-bin')
 sha256sums=(
-    '61c8ed5202d869fe2b0a6e06e6c061c53a372cf25b010fab550a1e3f57eefde7'
+    '6f689ed3cfda36060dfe4ec355d170b2bc4ee5aebfa93d5fc43b786bd098f4c0'
     '36874402d076b70d59c8a9db16bf8c9ca55a5b5b3cfc3906cd9fd390a679a608'
     'c346ac0892e58a3f2928bcc7fb7a7e50c30b3b093b415ca2d828bbe1b582ccac'
 )
