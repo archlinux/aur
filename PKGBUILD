@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov
 
 pkgname=booster-git
-pkgver=0.12.r47.g360e99a
+pkgver=0.13.r2.g677117d
 pkgrel=1
 pkgdesc='Fast and secure initramfs generator'
 arch=(x86_64)
@@ -66,7 +66,7 @@ package() {
   install -Dp -m755 init/fido2plugin.so "$pkgdir/usr/lib/booster/fido2plugin.so"
   install -Dp -m755 packaging/arch/regenerate_images "$pkgdir/usr/lib/booster/regenerate_images"
   install -Dp -m755 packaging/arch/regenerate_uki "$pkgdir/usr/lib/booster/regenerate_uki"
-  install -Dp -m755 packaging/common/50-booster.install "$pkgdir/usr/lib/kernel/install.d/50-booster.install"
+  install -Dp -m755 packaging/common/60-booster.install "$pkgdir/usr/lib/kernel/install.d/60-booster.install"
 
   install -Dp -m644 packaging/arch/90-booster-install.hook "$pkgdir/usr/share/libalpm/hooks/90-booster-install.hook"
   install -Dp -m755 packaging/arch/booster-install "$pkgdir/usr/share/libalpm/scripts/booster-install"
