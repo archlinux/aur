@@ -1,8 +1,9 @@
-# Maintainer: katt <magunasu.b97@gmail.com>
+# Maintainer: Evert Vorster <superchief@evertvorster.com>
+# Contributor: katt <magunasu.b97@gmail.com>
 
 pkgname=obs-pipewire-audio-capture-git
 pkgver=1.1.5.r17.gb4ca0a8
-pkgrel=1
+pkgrel=2
 pkgdesc='PipeWire audio capturing for OBS Studio (git)'
 arch=(x86_64)
 url=https://github.com/dimtpap/obs-pipewire-audio-capture
