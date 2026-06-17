@@ -6,7 +6,7 @@ pkgver=r9445.d307dc56d
 pkgrel=1
 pkgdesc="OpenNN neural network library with attention and deep learning support"
 arch=('x86_64')
-url="https://github.com/Artelnics/opennn"
+url="https://www.opennn.net/"
 license=('GPL')
 depends=(
     'gcc-libs'
