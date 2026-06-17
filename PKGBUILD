@@ -12,7 +12,7 @@ pkgrel=1
 pkgdesc="桌面伴侣普瑞赛斯 (Priestess) — 基于 Claude Code / Codex CLI 后端的 Electron 托盘应用"
 arch=('x86_64')
 url="https://github.com/aklnaaw/claude-code-but-priestess"
-license=('custom:UNLICENSED')
+license=('PolyForm-Noncommercial-1.0.0')
 depends=(
   'cairo'
   'dbus'
@@ -139,7 +139,20 @@ APPDATA
   # License
   install -d "${pkgdir}/usr/share/licenses/priestess"
   cat > "${pkgdir}/usr/share/licenses/priestess/LICENSE" << 'LICENSE'
-This project is UNLICENSED. All rights reserved.
-Source: https://github.com/SVAH-X/claude-code-but-priestess
+PolyForm Noncommercial License 1.0.0
+
+https://polyformproject.org/licenses/noncommercial/1.0.0
+
+Required Notice: Copyright SVAH-X (https://github.com/SVAH-X/claude-code-but-priestess)
+
+CHARACTER & ART ASSETS NOTICE
+
+The character 普瑞赛斯 (Priestess / PRTS), all associated artwork, voice, and lore
+are intellectual property of Hypergryph Co., Ltd. / 鹰角网络. This project is an
+unofficial fan work and is not affiliated with, endorsed by, or sponsored by
+Hypergryph. The character assets included in this repository are used under
+fan-use fair-use principles and may not be redistributed for commercial purposes.
+
+Full license text: https://polyformproject.org/licenses/noncommercial/1.0.0
 LICENSE
 }
