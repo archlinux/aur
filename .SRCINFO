@@ -1,6 +1,6 @@
 pkgbase = rofi-tools-bin
 	pkgdesc = Rofi extensions
-	pkgver = 0.3.0
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/szaffarano/rofi-tools
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = rofi-tools-bin
 	depends = wl-clipboard
 	depends = cliphist
 	provides = rofi-tools
-	source_x86_64 = https://github.com/szaffarano/rofi-tools/releases/download/v0.3.0/rofi-tools.zip
-	source_x86_64 = https://github.com/szaffarano/rofi-tools/archive/refs/tags/v0.3.0.zip
-	sha256sums_x86_64 = 41ce032fa9446a823dc1a835898985355066a37048f72675f6a8a78f7bd0c8ee
-	sha256sums_x86_64 = d8daa69f8a4603f7ed548bcefd4d2943a4cd96ce9312d0eedb19ad8fd8da2ab3
+	source_x86_64 = https://github.com/szaffarano/rofi-tools/releases/download/v0.4.3/rofi-tools.zip
+	source_x86_64 = https://github.com/szaffarano/rofi-tools/archive/refs/tags/v0.4.3.zip
+	sha256sums_x86_64 = 29764b2ef857f895355590aa5133252048ac3dd9892d73053dda697504f397fa
+	sha256sums_x86_64 = c3b64cfec144e1498251521525a2e257ab3c176a6f1c0491db513965a6df535f
 
 pkgname = rofi-tools-bin

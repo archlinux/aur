@@ -1,7 +1,7 @@
 _reponame=rofi-tools
 _pkgname=${_reponame,,}
 pkgname=${_pkgname}-bin
-pkgver=0.3.0
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Rofi extensions"
 url='https://github.com/szaffarano/rofi-tools'
@@ -15,8 +15,8 @@ source_x86_64=(
     "https://github.com/szaffarano/${_reponame}/archive/refs/tags/v${pkgver}.zip"
 )
 sha256sums_x86_64=(
-    "41ce032fa9446a823dc1a835898985355066a37048f72675f6a8a78f7bd0c8ee"
-    "d8daa69f8a4603f7ed548bcefd4d2943a4cd96ce9312d0eedb19ad8fd8da2ab3"
+    "29764b2ef857f895355590aa5133252048ac3dd9892d73053dda697504f397fa"
+    "c3b64cfec144e1498251521525a2e257ab3c176a6f1c0491db513965a6df535f"
 )
 
 prepare() {
