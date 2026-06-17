@@ -1,7 +1,7 @@
 # Maintainer: Xavier de Gaye <xdegaye@gmail.com>
 
 pkgname=python-alpm-conf
-pkgver=0.5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='ArchLinux tool to manage /etc configuration files using git'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('git' 'util-linux' 'alpm-mtree' 'python>=3.12' 'pyalpm'
 makedepends=('python-build' 'python-installer' 'python-sphinx' 'gzip')
 checkdepends=()
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
-sha256sums=('46a3825ee18ff17a5e05fe93812746ed4ee9e34524678d381f690ddc314cba2e')
+sha256sums=('68d93815ffa21d727c362eee344be65df2225279a849a220da9c274bde4867cc')
 
 build() {
   cd "${srcdir}/${pkgname}"
