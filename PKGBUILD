@@ -7,7 +7,7 @@ pkgver=2026.10.0
 # upstream version
 _pkgver=2026.10.0
 _release_tag=nym-vpn-core-v2026.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='NymVPN daemon as a systemd service'
 arch=('x86_64')
 url='https://github.com/nymtech/nym-vpn-client'
@@ -25,8 +25,8 @@ sha256sums=(
 
 package() {
   install -Dm755 "nym-vpn-core-v${_pkgver}_linux_x86_64/nym-vpnd" "$pkgdir/usr/bin/nym-vpnd"
-  install -Dm755 "nym-vpn-core-v${_pkgver}_linux_x86_64/nym-exclude" "$pkgdir/usr/bin/nym-exclude"
-  chmod u+s "$pkgdir/usr/bin/nym-exclude"
+  #install -Dm755 "nym-vpn-core-v${_pkgver}_linux_x86_64/nym-exclude" "$pkgdir/usr/bin/nym-exclude"
+  #chmod u+s "$pkgdir/usr/bin/nym-exclude"
   install -Dm755 "nym-vpn-core-v${_pkgver}_linux_x86_64/nym-socks5-proxy" "$pkgdir/usr/bin/nym-socks5-proxy"
   install -Dm644 nym-vpnd.service "$pkgdir/usr/lib/systemd/system/nym-vpnd.service"
 }
