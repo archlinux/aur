@@ -1,0 +1,21 @@
+pkgbase = gazette-rs-bin
+	pkgdesc = Terminal reader for your personal daily news digest written in Rust
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/isene/gazette
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	depends = glibc
+	depends = libgcc
+	provides = gazette
+	conflicts = gazette-rs
+	options = !strip
+	source = README-0.1.2.md::https://raw.githubusercontent.com/isene/gazette/v0.1.2/README.md
+	sha256sums = 7b2b730856cbc25a06e8e1ac358ad23c3bd36f2b23585c17892b14ad675004fd
+	source_x86_64 = gazette-x86_64-0.1.2::https://github.com/isene/gazette/releases/download/v0.1.2/gazette-linux-x86_64
+	sha256sums_x86_64 = f364aeb45be885fe0fc09a98bc8474113b45f06a2fab4d4b6f0ff66549fb6c4f
+	source_aarch64 = gazette-aarch64-0.1.2::https://github.com/isene/gazette/releases/download/v0.1.2/gazette-linux-aarch64
+	sha256sums_aarch64 = 7410078c6f66da3c655efa7002539c1a772c56bee5597862adcdab49294cc045
+
+pkgname = gazette-rs-bin
