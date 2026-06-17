@@ -11,6 +11,6 @@ pkgbase = upyay
 	depends = dunst
 	provides = upyay
 	source = upyay-3.1.1.tar.gz::https://github.com/gralito/upyay/archive/v3.1.1.tar.gz
-	sha256sums = 3ad76c84be66693cac8e6ac25a4857775528037e7ff57531106fe6bbb469641d
+	sha256sums = b5f050078fcdc459b3fd40e5f323561f67dd5a5ca1a3aeb1e1077c68dd0a1783
 
 pkgname = upyay
