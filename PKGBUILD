@@ -2,7 +2,7 @@
 # Contributor: ston <2424284164@qq.com>
 
 pkgname=auto-editor
-pkgver=30.5.0
+pkgver=31.0.0
 pkgrel=1
 pkgdesc="A command line application for automatically editing video and audio."
 url="https://auto-editor.com/"
@@ -16,7 +16,7 @@ optdepends=(
   'xdg-utils: automatically open completed files with xdg-open')
 makedepends=("nim" "git") # git is required to bring in the required Nim version (>=2.2.2)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/WyattBlue/auto-editor/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('f197fc184b4c5284d0d8283911d3e356fea47d9be1551080652e1400c630672d')
+sha256sums=('c182eb7e634e7b1b1e016b4ab82431f74b19a3af9c91d1216067bdaaa4a7c429')
 
 prepare() {
   cd ${pkgname}-${pkgver}
