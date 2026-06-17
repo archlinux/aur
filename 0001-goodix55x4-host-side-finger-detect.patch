@@ -1,0 +1,95 @@
+diff --git a/libfprint/drivers/goodixtls/goodix55x4.c b/libfprint/drivers/goodixtls/goodix55x4.c
+index 20db582..a40a97b 100644
+--- a/libfprint/drivers/goodixtls/goodix55x4.c
++++ b/libfprint/drivers/goodixtls/goodix55x4.c
+@@ -53,6 +53,18 @@
+   (GOODIX55X4_HEIGHT * GOODIX55X4_SCAN_WIDTH) / 4 * 6
+ #define GOODIX55X4_CAP_FRAMES 1 // Number of frames we capture per swipe
+ 
++// The MCU's FDT down reply doesn't actually block until a real touch on
++// this firmware - it's an instantaneous check regardless of the
++// configured threshold. Touch detection is done here instead, by
++// polling captured frames and diffing them against the calibration
++// background (empty_img) until real content appears.
++#define GOODIX55X4_FINGER_DETECT_MAX_ATTEMPTS 100
++#define GOODIX55X4_FINGER_DETECT_POLL_DELAY_MS 100
++// Average per-pixel absolute difference (12-bit pixels, 0-4095) needed
++// to call a frame a real touch. Validated against real 55b4 hardware:
++// background noise sits around 4-5, a real touch around 750+.
++#define GOODIX55X4_FINGER_DETECT_DIFF_THRESHOLD 100
++
+ typedef unsigned short Goodix55X4Pix;
+ 
+ struct _FpiDeviceGoodixTls55X4 {
+@@ -61,6 +73,7 @@ struct _FpiDeviceGoodixTls55X4 {
+   guint8 *otp;
+ 
+   GSList *frames;
++  guint poll_attempts;
+ 
+   Goodix55X4Pix empty_img[GOODIX55X4_FRAME_SIZE];
+ };
+@@ -480,6 +493,16 @@ postprocess_frame(Goodix55X4Pix frame[GOODIX55X4_FRAME_SIZE],
+   return sum != 0;
+ }
+ 
++static double
++frame_diff_score(Goodix55X4Pix frame[GOODIX55X4_FRAME_SIZE],
++                 Goodix55X4Pix background[GOODIX55X4_FRAME_SIZE]) {
++  guint64 sum = 0;
++  for (int i = 0; i != GOODIX55X4_FRAME_SIZE; ++i) {
++    sum += ABS((int)frame[i] - (int)background[i]);
++  }
++  return (double)sum / GOODIX55X4_FRAME_SIZE;
++}
++
+ typedef struct _frame_processing_info {
+   FpiDeviceGoodixTls55X4 *dev;
+   GSList **frames;
+@@ -502,6 +525,11 @@ static void save_frame(FpiDeviceGoodixTls55X4 *self, guint8 *raw) {
+   self->frames = g_slist_append(self->frames, frame);
+ }
+ 
++static void retry_finger_poll(FpDevice *dev, gpointer user_data) {
++  FpiSsm *ssm = user_data;
++  fpi_ssm_jump_to_state(ssm, SCAN_STAGE_SWITCH_TO_FDT_MODE);
++}
++
+ static void scan_on_read_img(FpDevice *dev, guint8 *data, guint16 len,
+                              gpointer ssm, GError *err) {
+   g_print("SCAN_ON_READ_IMG\n");
+@@ -511,6 +539,26 @@ static void scan_on_read_img(FpDevice *dev, guint8 *data, guint16 len,
+   }
+ 
+   FpiDeviceGoodixTls55X4 *self = FPI_DEVICE_GOODIXTLS55X4(dev);
++
++  Goodix55X4Pix candidate[GOODIX55X4_FRAME_SIZE];
++  decode_frame(candidate, data);
++
++  double diff = frame_diff_score(candidate, self->empty_img);
++  g_print("Finger-detect poll: diff vs background = %.1f\n", diff);
++
++  if (diff < GOODIX55X4_FINGER_DETECT_DIFF_THRESHOLD) {
++    if (++self->poll_attempts >= GOODIX55X4_FINGER_DETECT_MAX_ATTEMPTS) {
++      fpi_ssm_mark_failed(ssm,
++                         fpi_device_retry_new(FP_DEVICE_RETRY_GENERAL));
++      return;
++    }
++
++    fpi_device_add_timeout(dev, GOODIX55X4_FINGER_DETECT_POLL_DELAY_MS,
++                           retry_finger_poll, ssm, NULL);
++    return;
++  }
++
++  self->poll_attempts = 0;
+   save_frame(self, data);
+   if (g_slist_length(self->frames) <= GOODIX55X4_CAP_FRAMES) {
+     fpi_ssm_jump_to_state(ssm, SCAN_STAGE_SWITCH_TO_FDT_MODE);
+@@ -772,6 +820,7 @@ static void sleep_complete(FpiSsm *ssm, FpDevice *dev, GError *error) {
+ }
+ 
+ static void scan_start(FpiDeviceGoodixTls55X4 *dev) {
++  dev->poll_attempts = 0;
+   fpi_ssm_start(fpi_ssm_new(FP_DEVICE(dev), scan_run_state, SCAN_STAGE_NUM),
+                 scan_complete);
+ }

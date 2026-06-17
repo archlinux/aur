@@ -1,0 +1,31 @@
+pkgbase = libfprint-goodixtls-55x4-fixed
+	pkgdesc = libfprint fork for goodixtls 55x4 devices with host-side finger detection fix (MCU FDT-down reply doesn't block on this firmware)
+	pkgver = r1804.d1ca62a
+	pkgrel = 1
+	arch = x86_64
+	license = LGPL2
+	makedepends = git
+	makedepends = meson
+	makedepends = pkgconf
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = doctest
+	makedepends = glib2-devel
+	depends = libgusb
+	depends = openssl
+	depends = pixman
+	depends = nss
+	depends = libgudev
+	depends = opencv
+	optdepends = fprintd: D-Bus daemon for managing readers
+	provides = libfprint
+	provides = libfprint-2.so=2-64
+	provides = libfprint-goodixtls-55x4
+	conflicts = libfprint
+	conflicts = libfprint-goodixtls-55x4
+	source = libfprint-goodixtls-55x4::git+https://github.com/TheWeirdDev/libfprint.git
+	source = 0001-goodix55x4-host-side-finger-detect.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = libfprint-goodixtls-55x4-fixed
