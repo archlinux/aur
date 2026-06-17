@@ -1,6 +1,6 @@
 pkgbase = deepseek-reasonix-desktop
 	pkgdesc = Reasonix desktop — a Wails shell around the DeepSeek-native AI coding agent
-	pkgver = 1.8.1
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/esengine/DeepSeek-Reasonix
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = deepseek-reasonix-desktop
 	depends = webkit2gtk-4.1
 	provides = reasonix-desktop
 	conflicts = reasonix-desktop
-	source = deepseek-reasonix-desktop-1.8.1.tar.gz::https://github.com/esengine/DeepSeek-Reasonix/archive/refs/tags/desktop-v1.8.1.tar.gz
-	sha256sums = 68d15a3ed18a688157fd19e581e384bb9eacc107099322a132e6c74039d01b76
+	source = deepseek-reasonix-desktop-1.9.0.tar.gz::https://github.com/esengine/DeepSeek-Reasonix/archive/refs/tags/desktop-v1.9.0.tar.gz
+	sha256sums = ca002e1b7199254255ddf917a51cc666870a381d728e1ed7eeb39c1590f481ba
 
 pkgname = deepseek-reasonix-desktop
