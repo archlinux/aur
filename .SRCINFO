@@ -1,6 +1,6 @@
 pkgbase = sylvakru
 	pkgdesc = A cross-platform music player for local and self-hosted libraries, built with Flutter
-	pkgver = 3.1.2
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/AfalpHy/sylvakru
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = sylvakru
 	depends = libgcc
 	options = !debug
 	options = strip
-	source = git+https://github.com/AfalpHy/sylvakru.git#commit=ed5cb6e79b926edbc9ba95eb26173a00eb3275a7
+	source = git+https://github.com/AfalpHy/sylvakru.git#commit=81c167ef6c373bd4cf243a2c1c2346b3946fc2e2
 	sha256sums = SKIP
 
 pkgname = sylvakru
