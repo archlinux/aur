@@ -2,7 +2,7 @@
 
 pkgname=whylian
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Lian Li device control for Linux — HydroShift II AdvanceMode fork of lian-li-linux"
 arch=('x86_64')
 url="https://github.com/byrdltd/whylian"
@@ -39,14 +39,26 @@ sha256sums=('SKIP')
 install=whylian.install
 options=('!debug' '!lto' 'strip')
 
+_use_distro_rust() {
+  # rust-toolchain.toml pins a rustup channel; AUR must use pacman rust/cargo.
+  if [[ -f rust-toolchain.toml ]]; then
+    mv rust-toolchain.toml rust-toolchain.toml.aur-skip
+  fi
+  export PATH="/usr/bin:${PATH}"
+  export RUSTC=/usr/bin/rustc
+  export CARGO=/usr/bin/cargo
+}
+
 prepare() {
   cd whylian
+  _use_distro_rust
   git submodule update --init --recursive
   /usr/bin/cargo fetch --locked --target "$(/usr/bin/rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd whylian
+  _use_distro_rust
   export CARGO_PROFILE_RELEASE_STRIP=symbols
   export SLINT_NO_QT=1
   export RUSTFLAGS='-D warnings'
