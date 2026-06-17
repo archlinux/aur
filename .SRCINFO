@@ -1,0 +1,17 @@
+pkgbase = baoctx-bin
+	pkgdesc = SSH client for the Bastion
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/adfinis/baoctx
+	license = Apache-2.0
+	depends = openssh
+	conflicts = baoctx
+	provides = baoctx
+	arch = aarch64
+	source_aarch64 = https://github.com/adfinis/baoctx/releases/download/v1.0.0/baoctx-v1.0.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 2399ea2c4b1c9cacca1b4346628485922af73056e307c59908a07d373e8e0733
+	arch = x86_64
+	source_x86_64 = https://github.com/adfinis/baoctx/releases/download/v1.0.0/baoctx-v1.0.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 516175ffad67b24feab7035b36ee429a5ace982a41dead190965844e31dd790b
+	
+pkgname = baoctx-bin
