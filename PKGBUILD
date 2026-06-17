@@ -1,20 +1,20 @@
 # Maintainer: Kief Studio <packages@kief.studio>
 #
 # RELEASE CANDIDATE channel. This builds the GPG-signed pre-release tag
-# (v1.1.0-rc3) so testers can opt into the next release before it is promoted to
+# (v1.2.0-rc1) so testers can opt into the next release before it is promoted to
 # stable. It installs the same binaries as `aur-scanner` and therefore conflicts
 # with it -- do NOT run both. For production systems prefer the stable
 # `aur-scanner` / `ks-aur-scanner` packages.
 #
-# NOTE: the RC fails *closed* -- the paru/yay wrapper and the pacman hook now
-# deny on scan/fetch error, timeout, or a non-interactive (no-TTY) prompt
-# instead of proceeding. Review the 1.1.0-rc3 CHANGELOG before driving it from
-# scripts/CI.
+# NEW in 1.2.0-rc1: opt-in threat intelligence (VirusTotal + URLhaus) and an
+# active verdict cache. It is OFF by default -- a scan stays fully offline and
+# static unless you set `enable_threat_intel` and supply your own API key. Review
+# the 1.2.0-rc1 CHANGELOG before enabling it or driving the tool from scripts/CI.
 pkgname=aur-scanner-rc
-# AUR pkgver may not contain a hyphen, so the semver pre-release '1.1.0-rc2'
-# becomes '1.1.0rc2' here; the upstream git tag keeps the canonical hyphen.
-pkgver=1.1.0rc3
-_tag=v1.1.0-rc3
+# AUR pkgver may not contain a hyphen, so the semver pre-release '1.2.0-rc1'
+# becomes '1.2.0rc1' here; the upstream git tag keeps the canonical hyphen.
+pkgver=1.2.0rc1
+_tag=v1.2.0-rc1
 pkgrel=1
 pkgdesc="Security scanner for Arch Linux AUR packages (release candidate) - detect malicious PKGBUILDs before installation"
 arch=('x86_64' 'aarch64')
