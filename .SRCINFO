@@ -1,6 +1,6 @@
 pkgbase = webclaw-bin
 	pkgdesc = Fast, local-first web content extraction for LLMs
-	pkgver = 0.6.11
+	pkgver = 0.6.13
 	pkgrel = 1
 	url = https://github.com/0xMassi/webclaw
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = webclaw-bin
 	provides = webclaw-mcp
 	conflicts = webclaw
 	options = !strip
-	source_x86_64 = webclaw-x86_64-0.6.11.tgz::https://github.com/0xMassi/webclaw/releases/download/v0.6.11/webclaw-v0.6.11-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 6246e6eeb586d96678aeb079ebbfa408f89759cf06443b0242543bbf5e45b197
-	source_aarch64 = webclaw-aarch64-0.6.11.tgz::https://github.com/0xMassi/webclaw/releases/download/v0.6.11/webclaw-v0.6.11-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = b82cf8f6a234dd4758d098085b797e813806fc4c082603ce2f6c0def03f965d5
+	source_x86_64 = webclaw-x86_64-0.6.13.tgz::https://github.com/0xMassi/webclaw/releases/download/v0.6.13/webclaw-v0.6.13-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = c35f21a6cb165abf4b9a8bcf23489721465b025b52bdf6afb5a06193fd898da9
+	source_aarch64 = webclaw-aarch64-0.6.13.tgz::https://github.com/0xMassi/webclaw/releases/download/v0.6.13/webclaw-v0.6.13-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ce40c1cf4af1bd01528f7cb627e4bdc4d0e2b3dbd73debfa13e450d677912b62
 
 pkgname = webclaw-bin
