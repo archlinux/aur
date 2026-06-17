@@ -8,7 +8,7 @@ license=("MIT")
 makedepends=("go")
 options=("!debug")
 source=("${pkgname}_${pkgver}_source.tar.gz::https://github.com/kristyancarvalho/aurview/releases/download/v${pkgver}/${pkgname}_${pkgver}_source.tar.gz")
-sha256sums=("SKIP")
+sha256sums=("c651d42fa5e05eaf3b8d3e18c1b81c96535a290c8c80d6634cab26bc6dd89aca")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
