@@ -1,7 +1,7 @@
 pkgbase = smart-updater
-	pkgdesc = A lightweight, intelligent, and beautiful GUI update tool for CachyOS
+	pkgdesc = A native PyQt6 based system maintenance and update GUI for Arch Linux
 	pkgver = 1.4.1_alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/UniqueSpirit/smart-updater
 	arch = any
 	license = GPL
