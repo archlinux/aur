@@ -1,16 +1,11 @@
 pkgbase = xorg-rgb
 	pkgdesc = X colorname to RGB mapping database
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://xorg.freedesktop.org/
-	arch = i686
 	arch = x86_64
-	groups = xorg-apps
-	groups = xorg
-	license = custom
-	makedepends = xorg-util-macros
-	depends = glibc
-	source = https://xorg.freedesktop.org/archive/individual/app/rgb-1.1.0.tar.gz
-	sha256sums = 77142e3d6f06cfbfbe440e29596765259988a22db40b1e706e14b8ba4c962aa5
+	license = MIT-open-group
+	source = https://www.x.org/releases/individual/app/rgb-1.1.1.tar.xz
+	sha256sums = c80ff280a02f56c30fadc2dfa210fc6979c4ab968afa315278cb97768b64ecab
 
 pkgname = xorg-rgb
