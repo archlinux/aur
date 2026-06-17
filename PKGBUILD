@@ -1,6 +1,6 @@
 # Maintainer: Jonas Ohland <jonas.ohland@gmail.com>
 pkgname=mxl-git
-pkgver=1.1.0_96dfde6
+pkgver=1.2.0_751a8c5
 pkgrel=1
 pkgdesc="Dynamic Media Facility: Media Exchange Layer"
 arch=("x86_64" "aarch64")
@@ -9,6 +9,7 @@ makedepends=("picojson-git" "stduuid" "pcapplusplus" "cli11")
 checkdepends=("catch2")
 license=("Apache-2.0")
 url="https://github.com/dmf-mxl/mxl"
+provides=("mxl")
 
 _pkgsrc="$pkgname"
 
