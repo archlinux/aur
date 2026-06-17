@@ -2,7 +2,7 @@
 # Maintainer: bethropolis <bethropolis at gmail dot com>
 
 pkgname='kcd-bin'
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc='Lightweight, headless implementation of the KDE Connect protocol (v8) written in Go
 '
@@ -16,13 +16,13 @@ depends=('glibc')
 optdepends=('libnotify: for desktop notifications' 'wl-clipboard: for Wayland clipboard sync' 'xclip: for X11 clipboard sync' 'sshfs: for SFTP mounting support' 'ydotool: for Wayland mousepad support' 'xdotool: for X11 mousepad support' 'wtype: for Wayland keyboard emulation' 'python-nautilus: for Nautilus file manager integration')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bethropolis/kcd/releases/download/v${pkgver}/kcd_${pkgver}_linux_aarch64.tar.gz")
-sha256sums_aarch64=('15dc9ce8fee7ad7cf007804d99f0446d679875bee3e695b0ee1eac27f0f977f6')
+sha256sums_aarch64=('abc207d09a0d747b743813636067f40cddb40a272454af7c356f10cb985db561')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/bethropolis/kcd/releases/download/v${pkgver}/kcd_${pkgver}_linux_armv7.tar.gz")
-sha256sums_armv7h=('20b61886d4f17d3c448fa121db6eb4c1e6752b29ecdac7bc9f7cb152be0cce56')
+sha256sums_armv7h=('38db05d0d375ad6e8c124c20da06b4c7ef77069125d7b8c343d9d601f099804f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bethropolis/kcd/releases/download/v${pkgver}/kcd_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('3b66a77c1e79414e1514dcbb3053d474af27061156e9dac751ee27442b3c6548')
+sha256sums_x86_64=('c06463181f03d48f4d73f6ac9be1ea928df2093d8a387ec2f0557a70c85a2d3b')
 
 package() {
   install -Dm755 "./kcd" "${pkgdir}/usr/bin/kcd"
