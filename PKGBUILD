@@ -28,7 +28,7 @@ pkgname=cardmirror-bin
 # Bump this and reset `pkgrel=1` when cutting a new release.
 # Increment `pkgrel` (not `_origver`) for AUR-only changes
 # (PKGBUILD fixes, dependency tweaks).
-_origver=0.1.0-alpha.13
+_origver=0.1.0-alpha.14
 # Arch packaging convention: pkgver can't contain `-`, so we
 # convert hyphens to underscores (`0.1.0-alpha.8` → `0.1.0_alpha.8`).
 pkgver=${_origver//-/_}
