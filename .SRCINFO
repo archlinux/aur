@@ -1,18 +1,18 @@
 pkgbase = pi-coding-agent
 	pkgdesc = A terminal-based coding agent with multi-model support, mid-session model switching, and a simple CLI for headless coding tasks
-	pkgver = 0.79.5
+	pkgver = 0.79.6
 	pkgrel = 1
 	url = https://pi.dev/
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = tar
-	noextract = pi-linux-0.79.5.tar.gz
+	noextract = pi-linux-0.79.6.tar.gz
 	options = !debug
 	options = !strip
-	source_x86_64 = pi-linux-0.79.5.tar.gz::https://github.com/earendil-works/pi/releases/download/v0.79.5/pi-linux-x64.tar.gz
-	sha256sums_x86_64 = 1877c0224f48141034523d6432456ec49c31aabb3a6a0d49fe0006ba4658a29e
-	source_aarch64 = pi-linux-0.79.5.tar.gz::https://github.com/earendil-works/pi/releases/download/v0.79.5/pi-linux-arm64.tar.gz
-	sha256sums_aarch64 = 89a401da95648c2c66dd95c522b7300c76825f0c0e97c233bb3c1ff54347666d
+	source_x86_64 = pi-linux-0.79.6.tar.gz::https://github.com/earendil-works/pi/releases/download/v0.79.6/pi-linux-x64.tar.gz
+	sha256sums_x86_64 = 05000ec8f5b2a8a2df8e2f505aab89eb80552dcf6dc11680fa0f3285839bb4cf
+	source_aarch64 = pi-linux-0.79.6.tar.gz::https://github.com/earendil-works/pi/releases/download/v0.79.6/pi-linux-arm64.tar.gz
+	sha256sums_aarch64 = c4c6f3984e7b556a4f447c0b6a458a20d1d53bb646565cadb7a0ca080ce690d8
 
 pkgname = pi-coding-agent
