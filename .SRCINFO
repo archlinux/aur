@@ -1,10 +1,16 @@
 pkgbase = ednition-catapult
 	pkgdesc = Catapult CLI — deploy and manage containerized apps on AWS (prebuilt binary)
-	pkgver = 0.0.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://ednition.com
 	arch = x86_64
 	arch = aarch64
 	license = custom
+	provides = catapult
+	conflicts = catapult
+	source_x86_64 = https://dl.catapult.ednition.com/cli/v0.9.0/catapult_0.9.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 24974204b27a02b06f9c9ae37b2b629760de73e44e84b4550ee6c465cfb91ae3
+	source_aarch64 = https://dl.catapult.ednition.com/cli/v0.9.0/catapult_0.9.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 31eb8d67bbe7ef1e18b85b49aa9a6b70f9e4f61c9d5859ee22b63a71e331ffde
 
 pkgname = ednition-catapult
