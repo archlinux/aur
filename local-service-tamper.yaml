@@ -1,0 +1,94 @@
+# Custom rule: detect running systemd services that rewrite
+# their own .service unit file, and detect the runtime creation
+# of brand-new .service files by anything other than the usual
+# suspects.
+#
+# Threat model: a rootkit or attacker that has root in a
+# running service (nginx, sshd, httpd, etc.) wants to persist
+# across reboots. The cheapest persistence path is to overwrite
+# the unit definition itself so that on next daemon-reload +
+# restart, the attacker-controlled code runs again. This
+# pattern is unusual in legitimate operation.
+#
+# Edit `redirect_unit_files:` below to silence alerts for
+# specific unit paths that are expected to be modified at
+# runtime (e.g. test rigs, hand-crafted units in dev).
+
+- list: redirect_unit_files
+  items: []
+
+- rule: Service Self Modification Detected
+  desc: >
+    A running systemd service has modified its own .service unit
+    file. This is a strong indicator of rootkit persistence, an
+    in-process privilege escalation, or an attacker re-arming
+    their foothold. Even when running as root, a service should
+    not need to rewrite its own unit definition.
+  condition: >
+    and evt.type in (open, openat, openat2, creat, rename, renameat, renameat2)
+    and evt.is_open_write=true
+    and fd.name endswith .service
+    and (fd.name startswith /etc/systemd/system/
+         or fd.name startswith /run/systemd/system/
+         or fd.name startswith /usr/lib/systemd/system/
+         or fd.name startswith /usr/local/lib/systemd/system/)
+    and proc.name != systemd
+    and proc.name != systemctl
+    and proc.name != pacman
+    and proc.name != dpkg
+    and proc.name != rpm
+    and proc.name != falco
+    and proc.name != falcoctl
+    and not (fd.name in (redirect_unit_files))
+  output: >
+    Service self-modification (proc=%proc.name exe=%proc.exe
+    cmdline=%proc.cmdline unit=%fd.name user=%user.name
+    uid=%user.uid container=%container.info)
+  priority: CRITICAL
+  tags: [rootkit, persistence, mitre_persistence_T1543, mitre_T1543.002]
+
+- rule: Service Unit File Created In Runtime Path
+  desc: >
+    A new .service file was created under /etc/systemd/system or
+    /run/systemd/system by anything other than systemd,
+    systemctl, package managers, or falco itself. Runtime-path
+    creations during normal operation are extremely rare; this
+    is the typical pattern for an attacker dropping a transient
+    unit.
+  condition: >
+    and evt.type in (creat, open, openat, openat2, rename, renameat)
+    and evt.is_open_write=true
+    and (fd.name startswith /etc/systemd/system/
+         or fd.name startswith /run/systemd/system/)
+    and fd.name endswith .service
+    and proc.name not in (systemd, systemctl, pacman, dpkg, rpm,
+                          falco, falcoctl)
+  output: >
+    New service unit file created (proc=%proc.name exe=%proc.exe
+    cmdline=%proc.cmdline unit=%fd.name user=%user.name)
+  priority: CRITICAL
+  tags: [rootkit, persistence, mitre_persistence_T1543]
+
+- rule: Existing Service Unit File Overwritten
+  desc: >
+    An existing .service file under /etc/systemd/system or
+    /usr/lib/systemd/system was truncated or replaced (rename
+    onto a target) by an unprivileged or non-package-manager
+    process. The `creat` syscall returning an existing file is
+    the most common footprint of a rootkit substituting its
+    own unit definition.
+  condition: >
+    and evt.type in (rename, renameat, renameat2)
+    and fd.name endswith .service
+    and (fd.name startswith /etc/systemd/system/
+         or fd.name startswith /usr/lib/systemd/system/
+         or fd.name startswith /usr/local/lib/systemd/system/)
+    and proc.name not in (systemd, systemctl, pacman, dpkg, rpm,
+                          falco, falcoctl)
+    and not (fd.name in (redirect_unit_files))
+  output: >
+    Service unit file overwritten (proc=%proc.name exe=%proc.exe
+    cmdline=%proc.cmdline unit=%fd.name user=%user.name
+    container=%container.info)
+  priority: CRITICAL
+  tags: [rootkit, persistence, mitre_persistence_T1543]

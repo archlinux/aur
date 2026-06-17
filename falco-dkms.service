@@ -1,0 +1,19 @@
+[Unit]
+Description=Falco: build and load the kernel module via DKMS
+Documentation=https://falco.org/docs/
+DefaultDependencies=no
+After=local-fs.target
+ConditionPathExists=/usr/src/falco-${_driver}/dkms.conf
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/dkms add -m falco -v ${_driver}
+ExecStart=/usr/bin/dkms autoinstall -m falco
+ExecStart=/usr/bin/dkms install -m falco -v ${_driver} --force
+ExecStart=/sbin/modprobe falco
+ExecStop=/sbin/modprobe -r falco
+TimeoutSec=600
+
+[Install]
+RequiredBy=falco.service

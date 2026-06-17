@@ -1,0 +1,47 @@
+[Unit]
+Description=Falco: Cloud Native Runtime Security (kernel module driver)
+Documentation=https://falco.org/docs/
+After=network.target falco-dkms.service
+Wants=falco-dkms.service
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/falco --config=/etc/falco/falco.yaml
+ExecReload=kill -1 $MAINPID
+Restart=on-failure
+RestartSec=15s
+TimeoutStopSec=30s
+UMask=0077
+NoNewPrivileges=yes
+ProtectHome=read-only
+ProtectSystem=full
+ProtectKernelTunables=true
+ProtectKernelModules=true
+RestrictRealtime=true
+RestrictAddressFamilies=~AF_PACKET AF_UNIX AF_INET AF_INET6
+ReadWritePaths=/var/log/falco /var/lib/falco /etc/falco
+CapabilityBoundingSet=
+    CAP_SYS_ADMIN CAP_SYS_PTRACE CAP_SYS_RESOURCE
+    CAP_NET_ADMIN CAP_NET_RAW CAP_SYSLOG CAP_AUDIT_READ CAP_DAC_READ_SEARCH
+AmbientCapabilities=CAP_SYS_PTRACE CAP_NET_ADMIN CAP_NET_RAW CAP_SYSLOG CAP_DAC_READ_SEARCH
+LockPersonality=true
+RestrictNamespaces=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service @mount
+SystemCallErrorNumber=EPERM
+SystemCallLogNamespace=off
+PrivateTmp=true
+PrivateDevices=false
+ProtectControlGroups=true
+MemoryDenyWriteExecute=false
+LimitNOFILE=65536
+LimitNPROC=65536
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=falco
+
+[Install]
+WantedBy=multi-user.target
+Alias=falco-kmod.service

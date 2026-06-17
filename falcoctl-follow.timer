@@ -1,0 +1,12 @@
+[Unit]
+Description=Falco: refresh rulesets daily
+
+[Timer]
+OnCalendar=daily
+OnBootSec=15min
+AccuracySec=15min
+Persistent=true
+Unit=falcoctl-follow.service
+
+[Install]
+WantedBy=timers.target

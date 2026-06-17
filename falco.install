@@ -1,0 +1,104 @@
+# Maintainer: Bennie <bennie@local>
+# Install script for the falco AUR package.
+# Invoked by makepkg / pacman at install, upgrade, and remove time.
+
+# Locally cached state from package(): the driver version is
+# read once at install time. If the user runs pacman -U again
+# with a different pkgver, this changes.
+_FALCO_DRIVER=""
+
+_get_falco_driver() {
+  # Read PACKAGE_VERSION from /usr/src/falco-*/dkms.conf, the
+  # canonical driver version for the currently installed build.
+  if [[ -z "${_FALCO_DRIVER}" ]]; then
+    _FALCO_DRIVER=$(grep -hE '^PACKAGE_VERSION=' \
+                     /usr/src/falco-*/dkms.conf 2>/dev/null \
+                     | head -1 | cut -d'"' -f2)
+  fi
+  echo "${_FALCO_DRIVER}"
+}
+
+post_install() {
+  local drv
+  drv=$(_get_falco_driver)
+  if [[ -z "${drv}" ]]; then
+    echo ":: falco: ERROR could not determine driver version" >&2
+    return 1
+  fi
+
+  # 1. Build and install the kmod for the currently running kernel.
+  dkms add        -m falco -v "${drv}" 2>/dev/null || true
+  dkms autoinstall -m falco             2>/dev/null || true
+  dkms install    -m falco -v "${drv}" --force 2>/dev/null || true
+  modprobe falco 2>/dev/null || true
+
+  # 2. Best-effort online refresh of the full ruleset. If offline
+  #    (and the build-time pre-staged rules are already in place),
+  #    silently skip; the systemd timer will catch up.
+  if [[ -x /usr/bin/falcoctl ]]; then
+    /usr/bin/falcoctl artifact install \
+        --config=/etc/falcoctl/falcoctl.yaml \
+        2>/dev/null || true
+  fi
+
+  # 3. Systemd state.
+  systemctl preset falco.service 2>/dev/null || true
+  systemctl preset falco-dkms.service 2>/dev/null || true
+  systemctl preset falcoctl-follow.timer 2>/dev/null || true
+
+  cat <<'EOF'
+:: falco: installed. To start the engine:
+::   systemctl enable --now falco.service
+::
+:: The kmod is built and loaded automatically by falco-dkms.service
+:: on every boot, including after a kernel upgrade.
+::
+:: The full ruleset (stable + incubating + sandbox) is pre-staged
+:: under /etc/falco/rules.d/full/. A daily timer (falcoctl-follow)
+:: refreshes it from the upstream OCI registry.
+::
+:: Custom rule: /etc/falco/rules.d/local-service-tamper.yaml
+:: Populate `redirect_unit_files:` to silence specific unit paths.
+EOF
+}
+
+pre_upgrade() {
+  local old_drv
+  old_drv=$(grep -hE '^PACKAGE_VERSION=' \
+             /usr/src/falco-*/dkms.conf 2>/dev/null \
+             | head -1 | cut -d'"' -f2)
+  if [[ -n "${old_drv}" ]]; then
+    dkms remove -m falco -v "${old_drv}" --all 2>/dev/null || true
+  fi
+}
+
+post_upgrade() {
+  local drv
+  drv=$(_get_falco_driver)
+  if [[ -z "${drv}" ]]; then
+    echo ":: falco: WARNING driver version not found" >&2
+    return 0
+  fi
+
+  # Build the new kmod, install it, attempt to load it.
+  dkms add        -m falco -v "${drv}" 2>/dev/null || true
+  dkms build      -m falco -v "${drv}" 2>/dev/null || true
+  dkms install    -m falco -v "${drv}" --force 2>/dev/null || true
+  modprobe falco 2>/dev/null || true
+
+  # Reload the running engine so it picks up the new binaries.
+  systemctl try-restart falco.service 2>/dev/null || true
+
+  # Re-enable the timer if it was disabled.
+  systemctl preset falcoctl-follow.timer 2>/dev/null || true
+}
+
+pre_remove() {
+  local drv
+  drv=$(_get_falco_driver)
+  if [[ -n "${drv}" ]]; then
+    dkms remove -m falco -v "${drv}" --all 2>/dev/null || true
+  fi
+  systemctl disable --now falcoctl-follow.timer 2>/dev/null || true
+  systemctl disable --now falco.service falco-dkms.service 2>/dev/null || true
+}

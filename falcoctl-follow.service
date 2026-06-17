@@ -1,0 +1,21 @@
+[Unit]
+Description=Falco: refresh rulesets from upstream via falcoctl
+After=network-online.target
+Wants=network-online.target
+ConditionACPower=true
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/usr/bin/falcoctl artifact follow \
+    --config=/etc/falcoctl/falcoctl.yaml \
+    --output-directory=/var/lib/falco/rules-cache
+ExecStart=/bin/sh -c 'test -d /var/lib/falco/rules-cache && cp -f /var/lib/falco/rules-cache/*.yaml /etc/falco/rules.d/full/ || true'
+ExecStart=/usr/bin/systemctl kill -s HUP falco.service
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=read-only
+ReadWritePaths=/var/lib/falco /etc/falco/rules.d
