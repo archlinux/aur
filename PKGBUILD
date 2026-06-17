@@ -3,7 +3,7 @@
 # Contributor: Boudhayan Gupta <bgupta@kde.org>
 
 _npmname=netlify-cli
-_npmver=26.0.2
+_npmver=26.1.0
 
 pkgname=netlify
 pkgver=${_npmver}
@@ -17,16 +17,21 @@ license=('MIT')
 options=('!strip')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
 noextract=("${_npmname}-${_npmver}.tgz")
-sha256sums=('7fe3be841434f1a82c546349ab775c8698815a5e20301d9cbdbefb989ae03fb9')
+sha256sums=('ce8d2c284b20e2bd1f054ad3652fd9e098d32911c90da48c2b695eadfced39ff')
 
 package() {
     cd ${srcdir}
     local _npmdir="${pkgdir}/usr/lib/node_modules/"
     mkdir -p ${_npmdir}
     cd ${_npmdir}
+    npm install -g --prefix "${pkgdir}/usr" node-gyp node-addon-api ${_npmname}@${_npmver}
     npm install -g --prefix "${pkgdir}/usr" ${_npmname}@${_npmver}
 
     # Fix file ownership and permissions
     chown -R 0:0 "${pkgdir}/usr"
     find "${pkgdir}/usr" -perm -o+w,g+w -exec chmod o-w,g-w {} +
+
+    rm -rf "${pkgdir}/usr/bin/node-gyp"
+    rm -rf "${pkgdir}/usr/lib/node_modules/node-gyp"
+    rm -rf "${pkgdir}/usr/lib/node_modules/node-addon-api"
 }
