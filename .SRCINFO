@@ -1,15 +1,15 @@
 pkgbase = payetools-rti
 	pkgdesc = UK HMRC Basic PAYE Tools for Linux
-	pkgver = 26.0.26069.145147
+	pkgver = 26.1.26134.173934
 	pkgrel = 1
 	url = https://www.gov.uk/basic-paye-tools
 	arch = x86_64
 	license = custom
 	makedepends = unzip
-	noextract = payetools-rti-26.0.26069.145147-linux.zip
+	noextract = payetools-rti-26.1.26134.173934-linux.zip
 	options = !strip
 	options = !debug
-	source = https://www.gov.uk/government/uploads/uploaded/hmrc/payetools-rti-26.0.26069.145147-linux.zip
-	sha256sums = 1bf8e0895af560a86236a1fe3cf11210517a9b099a4afca143e246ea4e185b47
+	source = https://www.gov.uk/government/uploads/uploaded/hmrc/payetools-rti-26.1.26134.173934-linux.zip
+	sha256sums = 78948b59c305f9bf8dca2541480beb37ae35ca0edecfa371681670ae5f92de85
 
 pkgname = payetools-rti
