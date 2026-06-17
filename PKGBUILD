@@ -3,7 +3,7 @@
 _appname=code
 _pkgname="visual-studio-${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.124.2
+pkgver=1.125.0
 _electronversion=42
 pkgrel=1
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications.(Prebuilt and System-wide Electron edition)"
@@ -41,6 +41,9 @@ optdepends=(
     'gvfs: For move to trash functionality'
     'libdbusmenu-glib: For KDE global menu'
 )
+options=(
+    '!strip'
+)
 source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
@@ -50,9 +53,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://code.visualstudio.
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64")
 sha256sums=('68a94e4a9d746da48f5bb990d48b434363e476dfde006394a3ced94b4a54b4a7'
             '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
-sha256sums_aarch64=('bb938aa1ee963820e08cea9a84f4b42cbc60408359d62c5b3a46fb00e3f443b2')
-sha256sums_armv7h=('c61685439532d0ecce9a766259c51bb9ba4984c9d43a337a6b65ddf65f287ef4')
-sha256sums_x86_64=('38d140664ce5945f7cfa4921d2f5e11b3e5c326b5480d551a76231a39bb2c39d')
+sha256sums_aarch64=('7240aa61d71f094a7ae3a73adf8c2ee12dc17e373ec70daa7fd00e5f9617b7cc')
+sha256sums_armv7h=('b5b7dced98f2630a605a55593e7e3834a9d3cf7c9257fb630120db413b714073')
+sha256sums_x86_64=('05599b6d5e6b2ffe07f8a8f4f587246e6aff992914f3da729eda7f4798c2f9a2')
 pkgver() {
     cd "${srcdir}/usr/share/${_appname}/resources/app"
     grep '"version": ' package.json | awk '{print $2}' | tr -d '"' | tr -d ','
@@ -75,7 +78,9 @@ prepare() {
         s/\/usr\/share\/${_appname}\/${_appname}/${pkgname%-bin}/g
         s/Icon=vs${_appname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/"{"${_appname}-url-handler.desktop","${_appname}.desktop"}
-    rm -rf "${srcdir}/usr/share/${_appname}/resources/app/node_modules/@microsoft/mxc-sdk/bin/arm64"
+    rm -rf \
+        "${srcdir}/usr/share/${_appname}/resources/app/node_modules/@microsoft/mxc-sdk/bin/arm64" \
+        "${srcdir}/usr/share/${_appname}/resources/app/extensions/ms-vscode.js-debug/src/win32-app-container-tokens."*".node"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
