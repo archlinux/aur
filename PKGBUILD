@@ -23,7 +23,10 @@ optdepends=(
 )
 
 provides=('orbitopl-toolbox')
-conflicts=('orbitopl-toolbox')
+conflicts=(
+  'orbitopl-toolbox'
+  'orbitopl-toolbox-git'
+)
 
 source=(
   "${pkgname}-${pkgver}.zip::https://github.com/Luden02/OrbitOPL-Toolbox/releases/download/v${pkgver}/orbitopl-toolbox-${pkgver}_linux.zip"
