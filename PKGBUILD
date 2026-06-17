@@ -11,7 +11,7 @@ _tag='v1.522'
 _asset='lxgw-wenkai-nerd-mono-1.522.zip'
 source=("ttf-lxgw-wenkai-mono-nerd-1.522.zip::https://github.com/Yikai-Liao/LxgwWenKaiNerdFont/releases/download/${_tag}/${_asset}" \
         "OFL.txt::https://raw.githubusercontent.com/Yikai-Liao/LxgwWenKaiNerdFont/${_tag}/OFL.txt")
-sha256sums=('df588b8c8cad637d285493745aa018145d52df05720975224ba75e5d08f33e21'
+sha256sums=('43d5224d420935ab0ffad15f24517a0d898180bd6d0da7a7be6df15d41a05631'
             'ef535bf1a3c546928f8e97570f2c72603185f88fa4d82a6df6708348ad4c7614')
 
 package() {
