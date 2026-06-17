@@ -3,7 +3,7 @@
 _pkgauthor=fcsonline
 _pkgname=drill
 pkgname=${_pkgname}-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="HTTP load testing application written in Rust inspired by Ansible syntax"
 arch=('x86_64')
@@ -20,9 +20,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "SYNTAX-${pkgver}.md::${_urlraw}/SYNTAX.md")
 source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_${arch[0]}-unknown-linux-musl.tar.gz")
 sha256sums=('589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2'
-            '74bf75b98e4709133bee00f4075daad23ac1d3f5ad181ac9279b6450ea5561a8'
-            '846fea0a18d39c25f5d5d2feed3d37224eb6a81672081c27d4596a6ea5fc74ac')
-sha256sums_x86_64=('0ad776c531d4f8a4e650549e7b20c7e20a938871bb29afd6c2fd1b0f0ae46eb1')
+            '5d796a7eac589a829e9ba49d3665f57581c1cbc274a52303e815d741e26da2a1'
+            '29ce2c427351bda2cead36e1624f9ee5e63411ecb81e51d01cb968130e2a00b0')
+sha256sums_x86_64=('3e7ba8074098d20ade4ec10adac9a070665eb2100a9365024aad9fe6f796b134')
 
 
 
