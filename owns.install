@@ -1,0 +1,8 @@
+post_install() {
+  echo ":: Edit /etc/owns/forward.yaml and /etc/owns/hosts.txt to match your network"
+  echo ":: Then enable the service: sudo systemctl enable --now owns"
+}
+
+post_upgrade() {
+  echo ":: Check /etc/owns/forward.yaml and /etc/owns/hosts.txt for new .pacnew files"
+}

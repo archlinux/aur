@@ -1,0 +1,15 @@
+[Unit]
+Description=Owns
+After=network.target
+StartLimitIntervalSec=500
+StartLimitBurst=5
+
+
+[Service]
+User=root
+ExecStart=owns -bindAddr 127.0.0.1
+Restart=on-failure
+RestartSec=1s
+
+[Install]
+WantedBy=multi-user.target
