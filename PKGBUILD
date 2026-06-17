@@ -1,7 +1,7 @@
 # Contributor: Andrej Radović <r.andrej@gmail.com>
 pkgname=python-ffsubsync
 _name=${pkgname#python-}
-pkgver=0.4.32
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Language-agnostic automatic synchronization of subtitles with video."
 url="https://github.com/smacke/ffsubsync"
@@ -28,13 +28,17 @@ makedepends=(
     'python-versioneer'
     'python-wheel'
 )
+optdepends=(
+    'python-pytorch: for the `--vad=fused` option'
+    'mkvtoolnix-cli: for faster Matroska files subtitles extraction'
+)
 license=('GPL3')
 arch=('any')
 source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
     "requirements-$pkgver.txt::https://raw.githubusercontent.com/smacke/ffsubsync/$pkgver/requirements.txt"
 )
-sha256sums=('1748f896c62c4a22f388aa81b5ded111cd46cd485347207c739a9217133d617d'
+sha256sums=('d23d56bca31e5529693bb0bcbd036da16702114fed44ee349a48b685361538e4'
             'de4d3323f6109fe108656e9feba8e0d031685ab30b2fa2a494187ce857b1c04d')
 
 build() {
