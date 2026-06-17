@@ -22,8 +22,5 @@ changelog=CHANGELOG.md
 
 package() {
     install -Dm644 "${srcdir}/${_jarname}" "${pkgdir}/usr/share/java/lemminx/${_jarname}"
-    for file in ${srcdir}/license/*; do
-        install -Dm644 "${srcdir}/license/${file##*/}" "${pkgdir}/usr/share/licenses/${pkgname}/${file##*/}"
-    done
     install -Dm755 "${srcdir}/launcher.sh" "${pkgdir}/usr/bin/lemminx"
 }
