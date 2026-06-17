@@ -1,6 +1,6 @@
 # Maintainer: Jakob Munch Overgaard <jmo@tvipper.com>
 pkgname=remotepower-agent
-pkgver=4.7.0
+pkgver=4.8.0
 pkgrel=1
 pkgdesc='RemotePower fleet-management agent: reports host telemetry to a RemotePower server and runs authorized admin tasks'
 arch=('any')
@@ -20,7 +20,7 @@ source=(
   "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/remotepower-$pkgver.tar.gz.asc"
 )
 sha256sums=(
-  '63b7e724894235812d2be3e4b8a71016e67d422d21fe88b2fd7ed61f3772319a'
+  '48e9abb183be15aa7cd3de5947db24c0a3db53c0d9acd4dff285de1c2521cd49'
   'SKIP'
 )
 validpgpkeys=('E7B5AD456728B8462A8B54BFD488AF115D2CCDBF')  # Jakob Munch Overgaard <jmo@tvipper.com>
