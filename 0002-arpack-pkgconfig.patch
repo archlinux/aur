@@ -1,0 +1,31 @@
+diff --git a/palace/CMakeLists.txt b/palace/CMakeLists.txt
+index 2a3ffa391..e47510258 100644
+--- a/palace/CMakeLists.txt
++++ b/palace/CMakeLists.txt
+@@ -267,11 +267,9 @@ endif()
+ 
+ # Find ARPACK
+ if(PALACE_WITH_ARPACK)
+-  if(NOT "${ARPACK_DIR}" STREQUAL "")
+-    set(arpackng_ROOT ${ARPACK_DIR})
+-  endif()
+-  find_package(arpackng REQUIRED CONFIG)
+-  message(STATUS "Found ARPACK: ${arpackng_VERSION} in ${arpackng_DIR}")
++  find_package(PkgConfig REQUIRED)
++  pkg_check_modules(ARPACK REQUIRED arpack parpack)
++  message(STATUS "Found ARPACK: ${ARPACK_VERSION} from ${ARPACK_PREFIX}")
+ elseif(NOT PALACE_WITH_SLEPC)
+   message(FATAL_ERROR "Build requires at least one of ARPACK or SLEPc dependencies")
+ endif()
+@@ -403,8 +401,10 @@ if(PALACE_WITH_SLEPC)
+ endif()
+ if(PALACE_WITH_ARPACK)
+   target_link_libraries(${LIB_TARGET_NAME}
+-    PUBLIC PARPACK::PARPACK ARPACK::ARPACK ${MPI_Fortran_LIBRARIES}
++    PUBLIC ${ARPACK_LIBRARIES} ${MPI_Fortran_LIBRARIES}
+   )
++  target_include_directories(${LIB_TARGET_NAME}
++    PUBLIC ${ARPACK_INCLUDE_DIRS})
+   target_compile_definitions(${LIB_TARGET_NAME}
+     PUBLIC PALACE_WITH_ARPACK
+   )

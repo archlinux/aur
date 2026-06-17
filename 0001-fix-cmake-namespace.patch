@@ -1,0 +1,27 @@
+diff --git a/palace/CMakeLists.txt b/palace/CMakeLists.txt
+index 2a3ffa391..dfe69c9e6 100644
+--- a/palace/CMakeLists.txt
++++ b/palace/CMakeLists.txt
+@@ -551,9 +551,9 @@ endif()
+ # Link STRUMPACK
+ if(PALACE_WITH_STRUMPACK)
+   find_package(strumpack QUIET)
+-  if(TARGET strumpack::strumpack)
++  if(TARGET STRUMPACK::strumpack)
+     message(STATUS "Found STRUMPACK: ${strumpack_VERSION}")
+-    target_link_libraries(${LIB_TARGET_NAME} PUBLIC strumpack::strumpack)
++    target_link_libraries(${LIB_TARGET_NAME} PUBLIC STRUMPACK::strumpack)
+   else()
+     find_library(STRUMPACK_LIBRARY NAMES strumpack HINTS ${strumpack_ROOT}/lib REQUIRED)
+     find_path(STRUMPACK_INCLUDE_DIR NAMES StrumpackSparseSolverMPIDist.hpp HINTS ${strumpack_ROOT}/include REQUIRED)
+@@ -568,9 +568,7 @@ if(PALACE_WITH_STRUMPACK)
+   find_package(ButterflyPACK QUIET)
+   if(ButterflyPACK_FOUND)
+     message(STATUS "Found ButterflyPACK")
+-    target_link_libraries(${LIB_TARGET_NAME} PUBLIC
+-      ButterflyPACK::dbutterflypack ButterflyPACK::zbutterflypack
+-      ButterflyPACK::sbutterflypack ButterflyPACK::cbutterflypack)
++    target_link_libraries(${LIB_TARGET_NAME} PUBLIC ButterflyPACK::butterflypack)
+   endif()
+ 
+   foreach(pkg zfp slate lapackpp blaspp ptscotch)
