@@ -1,6 +1,6 @@
 # Maintainer: unicxrn
 pkgname=xerahs-git
-pkgver=r3172.2c007ee4
+pkgver=r3700.4d0d746b
 pkgrel=1
 pkgdesc="Cross-platform screen capture and file sharing tool (ShareX port) built with Avalonia UI"
 arch=('x86_64')
@@ -60,7 +60,7 @@ prepare() {
     # XerahS.UI.csproj references ImageEditor with GlobalPropertiesToRemove="OS", which
     # strips the MSBuild OS property during restore. NuGet then writes assets to the
     # non-OS-specific obj/project.assets.json, but the build's runtime OS detection reads
-    # from obj/os-Unix/project.assets.json — a consistent mismatch on Linux. Removing
+    # from obj/os-Unix/project.assets.json, a consistent mismatch on Linux. Removing
     # GlobalPropertiesToRemove="OS" from the ImageEditor reference lets both restore and
     # build use obj/os-Unix/project.assets.json consistently.
     sed -i 's| GlobalPropertiesToRemove="OS"||g' \
@@ -89,18 +89,22 @@ build() {
     # dotnet publish -r linux-x64 evaluates ImageEditor twice internally:
     # once in a "host framework" context (MSBuildProjectExtensionsPath=obj/os-Unix/host-net10.0/)
     # and once in the publish context (…/rid-linux-x64/).  The embedded restore only writes
-    # project.assets.json into those subdirs — it does NOT write the .g.props/.g.targets
+    # project.assets.json into those subdirs, but it does NOT write the .g.props/.g.targets
     # files that import NuGet package targets (including the Avalonia source generator that
-    # generates InitializeComponent).  Pre-populate host-net10.0/ from the plain-restore
-    # output so package targets are available during the build phase.
+    # generates InitializeComponent).  Pre-populate both the host-net10.0/ and the
+    # rid-linux-x64/ contexts from the plain-restore output so package targets are
+    # available during the build phase.
     local _img_obj="$srcdir/xerahs/ShareX.ImageEditor/src/ShareX.ImageEditor/obj/os-Unix"
-    mkdir -p "$_img_obj/host-net10.0"
-    cp "$_img_obj/project.assets.json" \
-       "$_img_obj/project.nuget.cache" \
-       "$_img_obj/ShareX.ImageEditor.csproj.nuget.dgspec.json" \
-       "$_img_obj/ShareX.ImageEditor.csproj.nuget.g.props" \
-       "$_img_obj/ShareX.ImageEditor.csproj.nuget.g.targets" \
-       "$_img_obj/host-net10.0/"
+    local _ctx
+    for _ctx in host-net10.0 rid-linux-x64; do
+        mkdir -p "$_img_obj/$_ctx"
+        cp "$_img_obj/project.assets.json" \
+           "$_img_obj/project.nuget.cache" \
+           "$_img_obj/ShareX.ImageEditor.csproj.nuget.dgspec.json" \
+           "$_img_obj/ShareX.ImageEditor.csproj.nuget.g.props" \
+           "$_img_obj/ShareX.ImageEditor.csproj.nuget.g.targets" \
+           "$_img_obj/$_ctx/"
+    done
 
     dotnet publish src/desktop/app/XerahS.App/XerahS.App.csproj \
         -c Release \

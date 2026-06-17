@@ -1,0 +1,14 @@
+# makepkg build outputs
+/src/
+/pkg/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.log
+
+# VCS source clones created by makepkg
+/xerahs/
+/xerahs-editor/
+/xerahs-videoeditor/
+
+# tooling
+/.serena/
