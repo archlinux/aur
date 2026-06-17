@@ -22,6 +22,6 @@ pkgbase = spek-x-git
 	source = spek-x-git::git+https://github.com/MikeWang000000/spek-X
 	source = fix_autogen.patch
 	md5sums = SKIP
-	md5sums = e1d11fef1161d6eac6a08d2442b1e406
+	md5sums = 3ffa85d8f4534a67fd160687ece07014
 
 pkgname = spek-x-git

@@ -16,7 +16,7 @@ provides=('spek')
 source=('spek-x-git::git+https://github.com/MikeWang000000/spek-X'
         'fix_autogen.patch')
 md5sums=('SKIP'
-         'e1d11fef1161d6eac6a08d2442b1e406')
+         '3ffa85d8f4534a67fd160687ece07014')
 
 pkgver() {
     cd $pkgname
