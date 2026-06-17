@@ -18,7 +18,7 @@ source=(
     "git+https://github.com/HailToDodongo/tiny3d.git"
     "pyrite64.desktop"
 )
-sha512sums=('cd360d251c61aa6e98c75035d8fbd925ced3aa24f57cc2436ae1178411814ba9970be8e8c5e8a63abdb69226bacfb6111c4bf6f8ea502b4d2e65d251652e397d'
+sha512sums=('97f51a8eb590569740d88876d1e1442b80781448e132ad5fa02e5fa5c3a04d96b25a5ba703d40dbb3cfa42812e8c26957bd3a04f08f2a91400d2938e7c850c52'
             'SKIP'
             '93ad15d8490fd331b400788bf8485d3f03f3c3b8c78b25df24e3f806ef632a6fb2545dc6333476184a13a19a7dd3c20e4ae999ddf577cb4110a068c7e91673e0'
             'SKIP'
@@ -96,6 +96,7 @@ build() {
         make clean
         
         make -j$(nproc)
+        make install
         
         # Build gltf_importer (host tool)
         msg2 "Building gltf_importer..."
@@ -126,20 +127,14 @@ package() {
     chmod 755 "${pkgdir}/etc/profile.d/libdragon.sh"
     
     msg2 "Installing Tiny3D..."
-    
-    export N64_INST="${pkgdir}/opt/libdragon"
-    
-    cd "$srcdir/tiny3d"
-    make install
-    
-    local gltf_bin="tools/gltf_importer/gltf_to_t3d"
+
+    local gltf_bin="${srcdir}/tiny3d/tools/gltf_importer/gltf_to_t3d"
     if [ -f "$gltf_bin" ]; then
         install -d "${pkgdir}/opt/libdragon/bin"
         install -m755 "$gltf_bin" "${pkgdir}/opt/libdragon/bin/"
     else
         warning "gltf_to_t3d binary not found."
     fi
-    cd "$srcdir"
 
     msg2 "Installing Pyrite64..."
     
