@@ -1,6 +1,6 @@
 # Maintainer: Zack Bartel <zack@bartel.com>
 pkgname=yoro-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A yazi-inspired terminal UI for local calendars and contacts"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('yoro')
 conflicts=('yoro')
 source=("https://github.com/zackb/yoro/releases/download/v$pkgver/yoro-$pkgver-linux-amd64.tar.gz")
 # Updated by the release script when artifacts are published.
-sha256sums=('1b945b7278220ea1a51bcff189322295fe3fd4f75d1d30c7a52ede7557b378b7')
+sha256sums=('4b219b0a6ceefb627889c030dffe9ae32b01919295d762b4c5a2b7a74541656a')
 
 package() {
 	install -Dm755 yoro "$pkgdir/usr/bin/yoro"
