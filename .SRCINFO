@@ -1,11 +1,12 @@
 pkgbase = vrrtest
 	pkgdesc = A very small utility to test variable refresh rate.
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nixola/VRRTest
 	arch = any
 	license = Zlib
 	depends = love
+	noextract = vrrTest_v2.1.1.love
 	source = https://github.com/Nixola/VRRTest/releases/download/v2.1.1/vrrTest_v2.1.1.love
 	source = vrrtest
 	source = vrrtest.desktop
