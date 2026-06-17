@@ -1,0 +1,4 @@
+[aube-bin]
+source = "git"
+git = "https://github.com/jdx/aube.git"
+prefix = "v"

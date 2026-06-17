@@ -1,0 +1,24 @@
+pkgbase = aube-bin
+	pkgdesc = A fast Node.js package manager
+	pkgver = 1.21.0
+	pkgrel = 1
+	url = https://github.com/jdx/aube
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = aube
+	provides = aubr
+	provides = aubx
+	conflicts = aube
+	source = LICENSE-1.21.0::https://raw.githubusercontent.com/jdx/aube/v1.21.0/LICENSE
+	source = README-1.21.0.md::https://raw.githubusercontent.com/jdx/aube/v1.21.0/README.md
+	sha256sums = d12ab62ad9f4de7596b77e508910e6bcbb320f9550d665b581ce5b2e4a203e5a
+	sha256sums = 8915e1b3c2ea41a40c15cffbdd8f43100f2e100f903daacfafed7a17fcffeef3
+	source_x86_64 = aube-x86_64-1.21.0.tar.gz::https://github.com/jdx/aube/releases/download/v1.21.0/aube-v1.21.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f56cb4db3b47e47b51ca8f05677dad7ddef25079e5a81f0ec6afaa0d54201bbe
+	source_aarch64 = aube-aarch64-1.21.0.tar.gz::https://github.com/jdx/aube/releases/download/v1.21.0/aube-v1.21.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 15f6f4c402f0d3da0c15c09f9d5237515ec1b903001a15e9bbf523352a8e2328
+
+pkgname = aube-bin
