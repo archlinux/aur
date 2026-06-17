@@ -1,29 +1,31 @@
 # Maintainer: Hmgle <dustgle@gmail.com>
 
 pkgname=graftcp
-pkgver=0.7.4
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A flexible tool for redirecting a given program's TCP traffic to SOCKS5 or HTTP proxy."
 arch=('x86_64')
 url="https://github.com/hmgle/graftcp"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('go' 'gcc' 'make' 'pkgconf')
-backup=('etc/graftcp-local/graftcp-local.conf')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/hmgle/${pkgname}/archive/v${pkgver}.tar.gz"
-	"graftcp-local.service")
-sha256sums=('6bf20734a81b38b4c0658a4b8fe0e6da239a5f5528f54c9458544ab225302f83'
-            '756bd3f9bf7202b599d77a09bd08fdd3c7a44ef20e055744d1dc20d16ef1920c')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/hmgle/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('f554c8c7724a1e3576c57628daac631a030418b41f4a3e922b9cc0641d4e9917')
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"
-        make
+        make VERSION="v${pkgver}"
 }
 
 package() {
         cd "$srcdir/$pkgname-$pkgver"
-        make DESTDIR="$pkgdir/" PREFIX=/usr install
+        make VERSION="v${pkgver}" DESTDIR="$pkgdir/" PREFIX=/usr install
         install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-        install -Dm644 local/example-graftcp-local.conf "$pkgdir/etc/graftcp-local/graftcp-local.conf"
-        install -Dm644 "$srcdir/graftcp-local.service" "$pkgdir/usr/lib/systemd/system/graftcp-local.service"
+        install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+        install -Dm644 README.zh-CN.md "$pkgdir/usr/share/doc/$pkgname/README.zh-CN.md"
+        install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+        install -Dm644 example-graftcp.conf "$pkgdir/usr/share/doc/$pkgname/examples/graftcp.conf"
+        install -Dm644 example-mgraftcp.conf "$pkgdir/usr/share/doc/$pkgname/examples/mgraftcp.conf"
+        install -Dm644 example-blacklist-ip.txt "$pkgdir/usr/share/doc/$pkgname/examples/blacklist-ip.txt"
+        install -Dm644 example-whitelist-ip.txt "$pkgdir/usr/share/doc/$pkgname/examples/whitelist-ip.txt"
 }
