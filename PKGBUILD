@@ -2,7 +2,7 @@
 
 pkgname=waywallen-bin
 _pkgver=0.2.1
-_commit=03d522b
+_commit=8eecc7c
 pkgver=${_pkgver}.${_commit}
 pkgrel=1
 pkgdesc="Wallpaper manager for Wayland (prebuilt AppImage)"

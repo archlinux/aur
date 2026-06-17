@@ -1,6 +1,6 @@
 pkgbase = waywallen-bin
 	pkgdesc = Wallpaper manager for Wayland (prebuilt AppImage)
-	pkgver = 0.2.1.03d522b
+	pkgver = 0.2.1.8eecc7c
 	pkgrel = 1
 	url = https://github.com/waywallen/waywallen
 	arch = x86_64
