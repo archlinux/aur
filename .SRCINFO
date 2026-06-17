@@ -1,5 +1,5 @@
 pkgbase = fetchdeeznutz-git
-	pkgver = 53
+	pkgver = 55
 	pkgrel = 1
 	url = https://github.com/sirspudd/fetchdeeznuts
 	arch = any
