@@ -16,8 +16,6 @@ sha512sums=('f72f185086bf238f85a91ad996a160f125b199ba39baeb7a4e202f3093c16ba8a05
 
 prepare() {
   patch -p1 -d "$pkgname-$pkgver" < 001-no-setup.py-contrib-install.patch
-  # cd "$pkgname-$pkgver"
-  # sed -i -e '18,32d' -e '42,44d' setup.py
 }
 
 build() {
