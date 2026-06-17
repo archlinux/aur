@@ -54,7 +54,7 @@ build() {
     -D MOLD_USE_MOLD=ON
   )
 
-  cmake ${_cmake_options[@]}
+  cmake "${_cmake_options[@]}"
 
   cmake --build build
 }
