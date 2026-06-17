@@ -1,6 +1,5 @@
 # Generated from PKGBUILD
 pkgbase = tritium-launcher-bin
-pkgname = tritium-launcher-bin
 pkgver = 0.1.6
 pkgrel = 1
 pkgdesc = Minecraft Launcher IDE for Modpack Developers
@@ -22,3 +21,4 @@ sha256sums = ab11ef7e2c04ba0472e5cfab98ca09aa0c9a5168bc2b44b48fb52c78f2a1644e
 sha256sums = SKIP
 sha256sums = SKIP
 sha256sums = SKIP
+pkgname = tritium-launcher-bin
