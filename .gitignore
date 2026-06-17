@@ -1,0 +1,12 @@
+# git repo
+hydownloader-systray-git
+
+# makepkg directories
+pkg
+src
+
+# built packages
+*-*.pkg.tar*
+
+# build scripts
+*.sh
