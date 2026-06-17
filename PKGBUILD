@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=dusklight
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
@@ -15,7 +15,7 @@ replaces=('tp-dusk')
 source=("git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/encounter/aurora.git"
 	)
-sha256sums=('c0c15cd5ad1c9ff91fc558f579af5dc0d13c297574ed0af16279a54f1c856627'
+sha256sums=('90920dafb86c6453c883d7e103814cb139f6368909eee1cedf3de9258269b5da'
             'SKIP')
 
 prepare() {
@@ -31,6 +31,7 @@ build() {
 	-DCMAKE_BUILD_TYPE=None \
 	-DCMAKE_C_COMPILER=clang \
 	-DCMAKE_CXX_COMPILER=clang++ \
+	-DCMAKE_SKIP_RPATH=ON \
 	-DCMAKE_C_FLAGS="${CFLAGS} -flto=thin -DNDEBUG" \
 	-DCMAKE_CXX_FLAGS="${CXXFLAGS} -flto=thin -DNDEBUG" \
 	-DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS} -fuse-ld=lld" \
@@ -56,6 +57,5 @@ package() {
 	install -Dm644 ${pkgname}/res/icon.png "${pkgdir}/usr/share/pixmaps/dev.twilitrealm.dusk.png"
 	sed -i 's/Icon=dusklight/Icon=dev.twilitrealm.dusk/g' "${pkgdir}/usr/share/applications/dev.twilitrealm.dusk.desktop"
 
-	patchelf --remove-rpath "${pkgdir}/usr/lib/${pkgname}/${pkgname}"
 	patchelf --set-rpath "/usr/lib/${pkgname}" "${pkgdir}/usr/lib/${pkgname}/${pkgname}" #needed for rmlui & freeverb :)
 }
