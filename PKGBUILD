@@ -4,11 +4,11 @@ pkgname=quake-par
 pkgver=0.03.01
 pkgrel=2
 pkgdesc="Quake PAK archiving utility."
-url="http://ftp.vim.org/ibiblio/games/quake/"
-license=('GPL')
+url="https://ibiblio.org/pub/linux/games/quake/!INDEX.html"
+license=('GPL-2.0-only')
 arch=('i686' 'x86_64')
 depends=('glibc')
-source=("http://ftp.vim.org/ibiblio/games/quake/par-${pkgver}.tar.gz")
+source=("https://ibiblio.org/pub/linux/games/quake/par-0.03.01.tar.gz")
 sha256sums=('e68a3b78586cd762b29f5d5edca8ea9f263fa100423f4d4fee36c7e0a5061122')
 
 build() {
