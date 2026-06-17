@@ -9,12 +9,12 @@ pkgname=cef-vaapi
 # To update this package, update the _cef_commit and _chromium_ver variables.
 # For the CEF versioning scheme, see
 # https://chromiumembedded.github.io/cef/branches_and_building#version-number-format
-pkgver=148.0.10
+pkgver=149.0.3
 # See https://github.com/chromiumembedded/cef/tree/<release branch>
 # Also see https://chromiumembedded.github.io/cef/branches_and_building
-_cef_commit=7ee53f518427a047f3c385446e3f92797e6b8cae
+_cef_commit=d84bb73097a206d4ad05744ec0e3bd556d2d91c6
 # the chromium version must match CHROMIUM_BUILD_COMPATIBILITY.txt in the CEF repo
-_chromium_ver=148.0.7778.218
+_chromium_ver=149.0.7827.115
 _system_clang=1
 pkgrel=1
 pkgdesc="Chromium Embedded Framework (CEF), simple framework for embedding Chromium-based browsers in other applications (VAAPI-enabled variant)"
@@ -72,12 +72,12 @@ source=("chromium-$_chromium_ver-lite.tar.xz::https://commondatastorage.googleap
         "cef::git+https://github.com/chromiumembedded/cef.git#commit=${_cef_commit}"
         chromium-138-nodejs-version-check.patch
         chromium-145-fix-SYS_SECCOMP.patch
-        chromium-146-drop-unknown-clang-flag.patch
-        chromium-146-build-with-wasm-rollup.patch
         chromium-147-revert-clang-no-lifetime-dse-flag.patch
         chromium-147-rust-1.95-bytemuck.patch
-        chromium-148-revert-clang-fsanitize-return-flag-1.patch
-        chromium-148-revert-clang-fsanitize-return-flag-2.patch
+        chromium-149-drop-unknown-clang-flag.patch
+        chromium-149-unbundle-minizip-undo-unicode.patch
+        chromium-149-use-of-undeclared-identifier-ERROR.patch
+        chromium-149-build-with-wasm-rollup.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         glibc-2.42-baud-rate-fix.patch
@@ -86,16 +86,16 @@ source=("chromium-$_chromium_ver-lite.tar.xz::https://commondatastorage.googleap
         chromium-disable-font-tests.patch
         FindCEF.cmake
 )
-sha256sums=('9ef5529ee99461ec74fca7582fbd9db81e88d702ff6c3d19d0db12944c0c0b35'
-            '1380e4202251657030fa630b284097eab1bbc190168f148085dd80b9acb5c613'
+sha256sums=('718ef72fc0a94af8a6f910bf2a3c80c175bcc2863e62c27acff6a507d37c15a9'
+            '9f02544aeb0e06df833ffeb4f86c56ecd5de8a7794321266d65eaef7096868f6'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e'
-            '24535c314c7e70c52bcf409aaf604728bfc5b5c97e60087e630e1f7233b9e12d'
-            '45fa20cc27ef0aa00d654d0bac84bfaa8d8090b5f8aec49cc2e8d7249d3cd7ba'
             'c382830318c5b37826ecf44f3ba9def6be8affdad1bce819ecb83f3222ff4b3a'
             'b9e6339221efe03540ffb360c161d93604a1fc93a5a1c53e5e9849066f987d05'
-            '2c0d0407ff7d4d607cf4f4b56aef4913df1bcbacb630d85c06a4a125fd0dceab'
-            '7836f666b78b85ac4a05cc9403df74c80d17f18a7f2a29d489848c76db919128'
+            '5ade4cdba7afebfcc09fa969f15bf27404579beac5b7bafb59a0214d407e4ad2'
+            'c22338d13f12772cdbcb5cfc1ace94438b9f9c72353cdb165a3ff3ef3d677c78'
+            '951514535be65f0e2f84e82305d96292be1da353c1427ba1048ea24be70003c4'
+            'c4df27d25d298ac95d85e6f06b558b73bb67de5110a19a0228cb7f8519291ea5'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             '1c1898f263eaacbc069a8e1a3e732852350350d1dad4cb1a6bba430e3b796cd0'
@@ -253,7 +253,7 @@ prepare() {
   # calls that require the UBSan runtime, which is not linked in a trap-mode
   # build. Drop the entire sanitize_c_array_bounds cflags block.
   # Can be dropped when arch has LLVM 23.
-  patch -Np1 -i ../chromium-146-drop-unknown-clang-flag.patch
+  patch -Np1 -i ../chromium-149-drop-unknown-clang-flag.patch
 
   # Causes a build failure with our clang version
   patch -Np1 -i ../chromium-147-revert-clang-no-lifetime-dse-flag.patch
@@ -261,7 +261,7 @@ prepare() {
   # https://crbug.com/456218403
   patch -Np1 -i ../chromium-145-fix-SYS_SECCOMP.patch
 
-  patch -Np1 -i ../chromium-146-build-with-wasm-rollup.patch
+  patch -Np1 -i ../chromium-149-build-with-wasm-rollup.patch
 
   patch -Np1 -i ../chromium-147-rust-1.95-bytemuck.patch
 
@@ -270,9 +270,10 @@ prepare() {
   # https://crbug.com/456677057
   patch -Np1 -i ../glibc-2.42-baud-rate-fix.patch
 
-  # Causes a build failure with our clang version
-  patch -Np1 -i ../chromium-148-revert-clang-fsanitize-return-flag-1.patch
-  patch -Np1 -i ../chromium-148-revert-clang-fsanitize-return-flag-2.patch
+  # Chromium bundles a patched minizip with extra features
+  patch -Np1 -i ../chromium-149-unbundle-minizip-undo-unicode.patch
+
+  patch -Np1 -i ../chromium-149-use-of-undeclared-identifier-ERROR.patch
 
   # CEF: Remove sysroot requirement for non-x64 builds
   patch -Np1 -i ../cef-no-sysroot.patch
@@ -285,8 +286,8 @@ prepare() {
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin \
-           third_party/rust-toolchain/bin \
-           third_party/jdk/current/bin
+           third_party/jdk/current/bin \
+           third_party/rust-toolchain/bin
 
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
   ln -s /usr/bin/java third_party/jdk/current/bin/
