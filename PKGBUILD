@@ -1,5 +1,5 @@
 # Maintainer: Luiz Silva <luizsv.dev@gmail.com>
-pkgname=devin-desktop
+pkgname=devin-desktop-bin
 pkgver=3.2.16
 pkgrel=1
 pkgdesc="A team of agents for every engineer — Devin Desktop (binary pre-built version)"
@@ -31,10 +31,9 @@ optdepends=(
     'gvfs: Trash functionality'
 )
 options=('!strip')
-conflicts=('windsurf-bin' 'windsurf')
+conflicts=('devin-desktop' 'windsurf-bin' 'windsurf')
 provides=('devin-desktop')
-replaces=('windsurf-bin')
-install=devin-desktop.install
+install=devin-desktop-bin.install
 
 # Download URL from Devin/Windsurf API
 # To update: curl -s https://windsurf-stable.codeium.com/api/update/linux-x64/stable/latest | jq -r '.url'
