@@ -1,0 +1,24 @@
+pkgbase = zelda3reborn-beta-git
+	pkgdesc = A reverse engineered port of Zelda 3 - A Link to the Past with modern enhancements
+	pkgver = r14.519e3ae
+	pkgrel = 1
+	url = https://github.com/xander-haj/Z3R-Beta
+	install = zelda3reborn-beta-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = clang
+	makedepends = git
+	depends = python
+	depends = python-pillow
+	depends = python-yaml
+	depends = sdl2
+	source = git+https://github.com/xander-haj/Z3R-Beta.git
+	source = local://zelda3.sfc
+	source = zelda3reborn-beta.desktop
+	source = zelda3reborn-beta.png
+	sha256sums = SKIP
+	sha256sums = 66871d66be19ad2c34c927d6b14cd8eb6fc3181965b6e517cb361f7316009cfb
+	sha256sums = fb144fde0e7f831f106cb9c186f476922fd0f0b6116652ecb680ebccba63a05f
+	sha256sums = bbc396aaee7cb9e4bc508863679929638b42cf0a1b1edb0bacb5c64224ddf148
+
+pkgname = zelda3reborn-beta-git
