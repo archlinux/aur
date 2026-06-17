@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=salus-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Local secret store guarded by Shamir secret shares and AES-256-GCM encryption (daemon + client + login agent, pre-compiled MUSL static binaries)"
 arch=('x86_64' 'aarch64')
@@ -22,9 +22,9 @@ source_x86_64=("salusd-x86_64::${_base}/salusd-x86_64-unknown-linux-musl"
 source_aarch64=("salusd-aarch64::${_base}/salusd-aarch64-unknown-linux-musl"
                 "salusc-aarch64::${_base}/salusc-aarch64-unknown-linux-musl"
                 "salus-agent-aarch64::${_base}/salus-agent-aarch64-unknown-linux-musl")
-sha256sums=('cc0e1beaa989ddd362a6801765c0f1673c7758c5162daa9e66ba831827660274')
-sha256sums_x86_64=('17c55fccbdacd7b320b6b64b1e3ee7700a55e500ee40199bc2a0e7f88f2e7ec3' 'c4f5ff2ff6ec3b2baa771d387bc5257b0c1197e4012c39166fb95b525d8e8440' 'bea87a985c0e45f08e342e6b7e1907aeda70d96011577b38f2b2ee88186c876a')
-sha256sums_aarch64=('9c23e53db227ff6f06cc7a21f38b8c354aa8ee882b2f76b5a89d0dfdd06208f3' '83e7bffa6f6542df314b460b07894ca85e56f6854c345432815c1d3fd61edac6' 'c20b3d7bcb9602a6c40dfb7811502725367774d449825e9085f2949b74fda5c8')
+sha256sums=('db96d86b3e38eac965d5460a8461f45cdd2542c0b65d551166e79946e2c8cda8')
+sha256sums_x86_64=('e25138b176887adcd13af0ab76d4cb0b27bbcc6d5c8361f84214f617d6973b93' 'a58c7762e7f1a7e675372b4f4e15faec80fdd3440ca6a57bd061c1604fca8362' 'f4a714e9b59eb21b3b38e7dcea55f32922b574bfd672a15d3834351b5350fa80')
+sha256sums_aarch64=('af9269bb665c64dbb071d0601bb8e41831b4684b1350b5fa36c678fd5ba7bc0e' 'd3ba3aa81452013b8639a4be7efcb0662a86136ea7829d27e5bbb29fa743fd30' '41fc3bb48c55bf79849e87366c94ea75e047ede6107b9a90fc67dece9b4705e8')
 
 package() {
     # Binaries (per-arch static MUSL)
