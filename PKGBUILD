@@ -1,7 +1,7 @@
 # Maintainer: Yurin <liyulin.china@gmail.com>
 
 pkgname=waywallen-bin
-_pkgver=0.1.6
+_pkgver=0.2.1
 _commit=03d522b
 pkgver=${_pkgver}.${_commit}
 pkgrel=1
@@ -18,7 +18,7 @@ _appimage="waywallen-${_pkgver}-x86_64.AppImage"
 _tag="v${_pkgver}"
 source=("${_appimage}::https://github.com/waywallen/waywallen/releases/download/${_tag}/${_appimage}")
 noextract=("${_appimage}")
-sha256sums=('a725fee74fb68e806e5cabbc5cbbd3a6c6e44df0ec91ffbb7588cc9f9df8ff29')
+sha256sums=('941f4ce95d6b3fa42fe6525041d47a7cbf4926f680ffe9b1817161009d9c5967')
 
 prepare() {
   chmod +x "${_appimage}"
