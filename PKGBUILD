@@ -1,7 +1,7 @@
 # Maintainer: byrdltd <byrdltd@users.noreply.github.com>
 
 pkgname=whylian
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Lian Li device control for Linux — HydroShift II AdvanceMode fork of lian-li-linux"
 arch=('x86_64')
@@ -78,4 +78,5 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 DISCLAIMER.md "${pkgdir}/usr/share/doc/${pkgname}/DISCLAIMER.md"
 }

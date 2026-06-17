@@ -1,3 +1,24 @@
+pre_install() {
+  cat <<'MSG'
+
+================================================================================
+whylian — DISCLAIMER (summary)
+================================================================================
+This software controls fans, pumps, and cooling hardware via reverse-engineered
+protocols. It is NOT official Lian Li software.
+
+YOU assume ALL risk of overheating, hardware damage, or data loss.
+Authors, maintainers, and packagers accept NO liability.
+
+Full text after install: /usr/share/doc/whylian/DISCLAIMER.md
+Online: https://github.com/byrdltd/whylian/blob/main/DISCLAIMER.md
+
+Installing this package constitutes acceptance of the disclaimer.
+================================================================================
+
+MSG
+}
+
 post_install() {
   _reload_udev
   _enable_user_service
@@ -59,6 +80,9 @@ _restart_for_active_users() {
 _post_msg() {
   cat <<MSG
 whylian: lianli-daemon.service has been enabled globally for all users.
+
+DISCLAIMER (you accepted by installing): /usr/share/doc/whylian/DISCLAIMER.md
+Operator assumes all hardware/cooling risk — no warranty.
 
 Config: ~/.config/lianli/config.json (created on first run).
 
