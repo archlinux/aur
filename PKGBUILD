@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=kiro-cli
-pkgver=2.7.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='Prompt to code to deployment in your terminal'
 arch=(aarch64 x86_64)
@@ -19,11 +19,11 @@ source=(Kiro-LICENSE.txt)
 source_x86_64=($pkgname-$pkgver-x86_64.tar.zst::https://prod.download.cli.kiro.dev/stable/$pkgver/kirocli-x86_64-linux.tar.zst)
 source_aarch64=($pkgname-$pkgver-aarch64.tar.zst::https://prod.download.cli.kiro.dev/stable/$pkgver/kirocli-aarch64-linux.tar.zst)
 sha256sums=('1840298f83a857294aa3f5adfc85835127499df54c557d8c3df76f04a56acf55')
-sha256sums_aarch64=('fc913a91d98268b913b01af10dd48c07da351bfad1eb53bad6e0ea0e0463bcf7')
-sha256sums_x86_64=('a7dcd01723963643ec964c76e16a2b3c1001c7f6c7dcf767e039960e78e23aec')
+sha256sums_aarch64=('872ea512376c76b6dba9e7da015fe421d77ea1bea53db8c73f6a6e92ac1d8361')
+sha256sums_x86_64=('69fbce7c8b9387ed92065e88cca98323fc5945bc200eca17431b2473c123d928')
 b2sums=('67ddcca288e9f92ee33d5f1e56dd66164542f4f85421a0c6004f55ff94b961b8db6908b249dea65c68c048925acf11c82d0f6c24f7da3948249ecf2aa4ce3880')
-b2sums_aarch64=('8562e8d0a52fda0a89d53f54402ae626be5b944e8c05474c94ca7db45d431be117bf8e03e2fee503ad50f14ccb14db041983f569a5d007baef767ce5936ab836')
-b2sums_x86_64=('b1082a65edd747a7a87d04d8216f78744e2fcfa220bb55aa71d214927a9f8d4475e035814bde62d506135737704ee92dff46adc3c2c7413eaf4adc71a9707b6c')
+b2sums_aarch64=('850f6173f92c1916196130e2585a9d1d2021d38360edbba36277a9e05b099fd70ae535570001adb8c96fb29427eb7d87d3a6b9b7bda44a9aa4693d8e3206977a')
+b2sums_x86_64=('7b5cb85417fb79dffacf3bcdfe1c98da0a30bb02673d7c920bef684fb3fe870d8445959b6c3af25f7ffbb7c2f4331972bcbb8b7cb588a86a718fadfd4c0d7d98')
 
 prepare() {
     cd kirocli/bin
