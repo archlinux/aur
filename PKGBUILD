@@ -1,6 +1,6 @@
 pkgname=oranglauncher
 pkgver=6.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Orange Launcher for Arch Linux (built from source with Nuitka)"
 arch=(x86_64)
 url="https://oranges.lt"
@@ -23,7 +23,7 @@ sha256sums=('8adec803e6d2e5469a10244d35dc38aa82ca70ebebedcfe08f3371ec08ca14ba'
             '3c8133c78d2e468f22643e465f8abcf4404742dc1b80c5eb64742039d70c5afa'
             '2d0cdbad857e3b7fe79c41f981a89ad1c595d54e43884b3fd5d89892ec0bf07c')
 
-options=(!debug !strip)
+options=(!debug !strip !lto)
 
 build() {
     cd "$srcdir/OrangLaunch-${pkgver}"
