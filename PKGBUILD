@@ -1,5 +1,5 @@
 pkgname=rstudio-desktop-bin
-pkgver=2026.05.0.218
+pkgver=2026.05.1.225
 _pkgver=`echo $pkgver | sed 's/\(.*\)\./\1-/'`
 pkgrel=1
 pkgdesc="An integrated development environment (IDE) for R (binary from RStudio official repository)"
@@ -14,9 +14,9 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-preview-bin'
 provides=("rstudio-desktop=${pkgver}")
 options=(!strip)
 
-sha256sums_x86_64=('5959099f5957d2d752e78b7cad34059646173cfad594e6536e73a2e5f750b8c1')
+sha256sums_x86_64=('dd4dca49a8d980c28ab61b125d4aa5037a101d664252779f63a381e2367c95fe')
 
-source_x86_64=("https://download1.rstudio.org/electron/jammy/amd64/rstudio-2026.05.0-218-amd64.deb")
+source_x86_64=("https://download1.rstudio.org/electron/jammy/amd64/rstudio-2026.05.1-225-amd64.deb")
 
 package() {
 
