@@ -1,0 +1,38 @@
+diff --git a/setup.py b/setup.py
+index 71b8f10..0e6023c 100644
+--- a/setup.py
++++ b/setup.py
+@@ -15,22 +15,6 @@ ADD_DATA = []
+ with open("README.md", "r") as fh:
+     long_description = fh.read()
+ 
+-for dadi, destpath_prefix in [('contrib', 'rmtoo')]:
+-    for (path, dirs, files) in os.walk(dadi):
+-        if path.endswith("__pycache__"):
+-            continue
+-        if path.startswith("doc/man"):
+-            # Handled separately
+-            continue
+-        l = []
+-        for filename in files:
+-            if filename.endswith(".pyc"):
+-                continue
+-            l.append(os.path.join(path, filename))
+-        dpath = os.path.join(destpath_prefix, path) \
+-                if destpath_prefix is not None else path
+-        ADD_DATA.append((dpath, l))
+-
+ # pylint: disable=deprecated-lambda,cell-var-from-loop
+ for man_name in os.listdir("share/man"):
+     man_dir = "share/man/%s" % man_name
+@@ -39,10 +23,6 @@ for man_name in os.listdir("share/man"):
+          list(map(lambda x: os.path.join(man_dir, x),
+                   os.listdir(man_dir)))))
+ 
+-ADD_DATA.append(
+-    ("rmtoo/doc/readme",
+-     ["README.md"]))
+-
+ def adjust(input_filename, output):
+     """Function to adjust the version number
+ 

@@ -1,11 +1,20 @@
 pkgbase = rmtoo
 	pkgdesc = Free and Open Source Requirements Management Tool
 	pkgver = 26.0.2
-	pkgrel = 1
-	url = http://www.rmtoo.florath.net
+	pkgrel = 2
+	url = https://github.com/florath/rmtoo
 	arch = any
-	license = GPL3
-	depends = python
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	source = rmtoo-26.0.2.tar.gz::https://github.com/florath/rmtoo/archive/v26.0.2.tar.gz
+	source = 001-no-setup.py-contrib-install.patch
+	sha512sums = f72f185086bf238f85a91ad996a160f125b199ba39baeb7a4e202f3093c16ba8a05f4e2988affc021f541dee1abb01308b2ecfc37e163887f9be5f62a2676b1f
+	sha512sums = 8dfd55f5ca0182218f389d1fce2445e2c75a41e1c1a8dcd9badf5504e2906bcaa97043dc194f4e96d60deb525d4cb8bf509a05cbe3e9ca26e696f2db296d38f7
+
+pkgname = rmtoo
 	depends = texlive-core
 	depends = graphviz
 	depends = python-scipy
@@ -16,9 +25,3 @@ pkgbase = rmtoo
 	depends = python-gitpython
 	depends = python-jinja
 	depends = python-setuptools
-	provides = rmtoo
-	conflicts = rmtoo
-	source = https://github.com/florath/rmtoo/archive/v26.0.2.tar.gz
-	sha512sums = f72f185086bf238f85a91ad996a160f125b199ba39baeb7a4e202f3093c16ba8a05f4e2988affc021f541dee1abb01308b2ecfc37e163887f9be5f62a2676b1f
-
-pkgname = rmtoo

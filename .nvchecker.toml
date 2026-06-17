@@ -1,0 +1,4 @@
+[rmtoo]
+source = "git"
+git = "https://github.com/florath/rmtoo.git"
+prefix = "v"
