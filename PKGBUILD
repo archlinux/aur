@@ -2,7 +2,7 @@
 
 pkgname=ariga-atlas
 pkgdesc="Declarative schema migrations with schema-as-code workflows"
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 _binary=atlas
 arch=("x86_64")
@@ -16,7 +16,7 @@ source=(
   "${_binary}-${pkgver}.tar.gz::https://github.com/ariga/${_binary}/archive/v${pkgver}.tar.gz"
 )
 
-sha256sums=('0968b685458da1f414d3a8d09fe7ee9a3359906fade36fe787369c40d757f2fe')
+sha256sums=('2710bda0aaf95df0ae896bf9124e97f407ee5f3bda22855999fbb367748b87fc')
 
 prepare() {
   cd "${srcdir}/${_binary}-${pkgver}"
