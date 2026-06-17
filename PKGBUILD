@@ -1,6 +1,6 @@
 # Maintainer: Robin <NurRobin@users.noreply.github.com>
 pkgname=nursearch
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Small local GTK4 app launcher with a plugin platform'
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
   'wl-clipboard: clipboard history plugin'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('34e32bfe45182277592072268ca39628080750187f3480c44c5ec8518d4758bd')
+sha256sums=('0b7429d6f1d5c758b83bd866c7c524e9e36b6ce2a79cbf65b47f499f5fbc1040')
 
 prepare() {
   cd "$pkgname-$pkgver"
