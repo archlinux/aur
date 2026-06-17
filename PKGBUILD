@@ -1,4 +1,5 @@
 # shellcheck disable=SC2034,SC2154,SC2164
+# Maintainer: Energetix/Dark Nebula <https://github.com/Jobanny-Friki>
 
 pkgbase=marian-lite
 pkgname=('sentencepiece-browsermt' 'marian-lite')
@@ -45,7 +46,7 @@ build() {
     export CFLAGS="$CFLAGS -fPIC"
     export CXXFLAGS="$CXXFLAGS -fPIC"
 
-    local PROTO="$srcdir/protobuf-static"
+    local STAGE="$srcdir/staging"
 
     msg2 "Building Protobuf ${_proto_ver}..."
     cmake -B build-proto -S "protobuf-${_proto_ver}" \
@@ -55,24 +56,24 @@ build() {
         -D protobuf_BUILD_TESTS=OFF
     cmake --build build-proto -j"$(nproc)"
 
-    DESTDIR="$PROTO" cmake --install build-proto
+    DESTDIR="$STAGE" cmake --install build-proto
 
     msg2 "Building SentencePiece ${_spm_ver}..."
     cmake -B build-spm -S "sentencepiece-browsermt-${_spm_ver}" \
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_INSTALL_PREFIX=/usr \
-        -D CMAKE_PREFIX_PATH="$PROTO/usr" \
+        -D CMAKE_PREFIX_PATH="$STAGE/usr" \
         -D BUILD_SHARED_LIBS=OFF \
         -D SPM_BUILD_LIBRARY_ONLY=ON
     cmake --build build-spm -j"$(nproc)"
 
-    DESTDIR="$PROTO" cmake --install build-spm
+    DESTDIR="$STAGE" cmake --install build-spm
 
     msg2 "Building Marian Lite ${pkgver}..."
     cmake -B build-marian -S "marian-lite-${_marian_ver}" \
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_INSTALL_PREFIX=/usr \
-        -D CMAKE_PREFIX_PATH="$PROTO/usr" \
+        -D CMAKE_PREFIX_PATH="$STAGE/usr" \
         -D STATIC=OFF -D SHARED=ON \
         -W no-dev
     cmake --build build-marian -j"$(nproc)"
