@@ -8,6 +8,7 @@ pkgdesc="OpenNN neural network library with attention and deep learning support 
 arch=('x86_64')
 url="https://www.opennn.net/"
 license=('GPL')
+conflicts=('opennn')
 depends=(
     'gcc-libs'
     'openmp'
