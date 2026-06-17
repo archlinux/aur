@@ -9,47 +9,53 @@ _binname=gram-editor
 _appid=gram
 _pkgname='gram'
 pkgname="${_pkgname}-git"
-pkgver=.r0.geb4318f
+pkgver=2.2.0.r27.g41c44b0a77
 pkgrel=1
 pkgdesc='A code editor for humanoid apes and grumpy toads'
 arch=(x86_64)
 url='https://gram.liten.app/'
 _url='https://codeberg.org/GramEditor/gram'
 license=(GPL-3.0-or-later AGPL-3.0-or-later Apache-2.0)
-depends=(alsa-lib libasound.so
-         curl libcurl.so
-         fontconfig
-         gcc-libs # libgcc_s.so libstdc++.so
-         glibc # libc.so libm.so
-         # libgit2 libgit2.so
-         # libxau libXau.so
-         libxcb # libxcb.so libxcb-xkb.so
-         # libxdmcp libXdmcp.so
-         libxkbcommon # libxkbcommon.so
-         libxkbcommon-x11 # libxkbcommon-x11.so
-         netcat
-         'nodejs>=18'
-         npm
-         openssl libcrypto.so libssl.so
-         sqlite
-         vulkan-driver
-         vulkan-icd-loader
-         vulkan-tools
-         wayland
-         zlib libz.so
-         zstd libzstd.so)
-makedepends=(cargo
-             cargo-about
-             clang
-             cmake
-             git
-             protobuf
-             vulkan-headers
-             vulkan-validation-layers)
-optdepends=('clang: improved C/C++ language support'
-            'eslint: improved Javascript language support'
-            'pyright: improved Python language support'
-            'rust-analyzer: improved Rust language support')
+depends=(
+    alsa-lib libasound.so
+    curl libcurl.so
+    fontconfig
+    gcc-libs # libgcc_s.so libstdc++.so
+    glibc # libc.so libm.so
+    # libgit2 libgit2.so
+    # libxau libXau.so
+    libxcb # libxcb.so libxcb-xkb.so
+    # libxdmcp libXdmcp.so
+    libxkbcommon # libxkbcommon.so
+    libxkbcommon-x11 # libxkbcommon-x11.so
+    netcat
+    'nodejs>=18'
+    npm
+    openssl libcrypto.so libssl.so
+    sqlite
+    vulkan-driver
+    vulkan-icd-loader
+    vulkan-tools
+    wayland
+    zlib libz.so
+    zstd libzstd.so
+)
+makedepends=(
+    cargo
+    cargo-about
+    clang
+    cmake
+    git
+    protobuf
+    vulkan-headers
+    vulkan-validation-layers
+)
+optdepends=(
+    'clang: improved C/C++ language support'
+    'eslint: improved Javascript language support'
+    'pyright: improved Python language support'
+    'rust-analyzer: improved Rust language support'
+)
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+${_url}.git")
@@ -70,15 +76,12 @@ prepare() {
 
 pkgver() {
     cd                  "${srcdir}/${_pkgname}"
-    local               lasttag="$(git tag --sort=-v:refname | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+-pre$' | head -1)"
-    echo -n             "$(sed 's/^v//;s/-pre$//' <<< "$lasttag")"
-    echo -n             ".r$(git rev-list "$(git merge-base HEAD "$lasttag")..HEAD" --count)"
-    echo -n             ".g$(git log --pretty=format:'%h' --abbrev=7 -n1 HEAD)"
+    git                 describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+
 }
 
 _srcenv() {
     cd                  "${srcdir}/${_pkgname}"
-    export              RUSTUP_TOOLCHAIN=stable
     export              CARGO_TARGET_DIR=target
     CFLAGS+=' -ffat-lto-objects'
     CXXFLAGS+=' -ffat-lto-objects'

@@ -1,6 +1,6 @@
 pkgbase = gram-git
 	pkgdesc = A code editor for humanoid apes and grumpy toads
-	pkgver = .r0.geb4318f
+	pkgver = 2.2.0.r27.g41c44b0a77
 	pkgrel = 1
 	url = https://gram.liten.app/
 	arch = x86_64
@@ -44,7 +44,7 @@ pkgbase = gram-git
 	optdepends = eslint: improved Javascript language support
 	optdepends = pyright: improved Python language support
 	optdepends = rust-analyzer: improved Rust language support
-	provides = gram=.r0.geb4318f
+	provides = gram=2.2.0.r27.g41c44b0a77
 	conflicts = gram
 	source = gram::git+https://codeberg.org/GramEditor/gram.git
 	sha256sums = SKIP
