@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname="perl-audio-scan"
-pkgver="1.01"
-pkgrel='7'
+pkgver="1.13"
+pkgrel='1'
 pkgdesc="Fast C metadata and tag reader for all common audio file formats"
 arch=("i686" "x86_64" "arm")
 license=("GPL-2.0-or-later")
@@ -9,10 +9,8 @@ options=("!emptydirs")
 depends=("zlib")
 makedepends=("perl-test-warn")
 url="https://metacpan.org/dist/Audio-Scan"
-source=("https://cpan.metacpan.org/authors/id/A/AG/AGRUNDMA/Audio-Scan-${pkgver}.tar.gz"
-        'fix-type-of-self-parameter.diff')
-sha512sums=('07e97bd1bb2c469d07c27e20bf2f3067967e21658493de012fcc4c083a0a0c42e36d6d8d5ae8d6f80d8b447d11fdea1c024ee7f4c3f857e565335328238e2853'
-            '25a3b230dd52e2804d216be3e075b1a3d567d19ab311a8b48403717e05306fd548f65ff78d8ce3c5e15d1d6458c35ea2f08d900d36e35b46db8f4901ee2a8fb4')
+source=("https://cpan.metacpan.org/authors/id/E/EL/ELBRUS/Audio-Scan-${pkgver}.tar.gz")
+sha512sums=('0c30cccce83b57d3c0cd64cfd3c905c70a385180ec4eb91ca78ac094ee9e01fb21a6a648e263952ceffbec1cff5bb416f44b4d9f9111c4765952fdf0f0a9796e')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -26,7 +24,6 @@ prepare_environment() {
 build() {
   prepare_environment
   /usr/bin/perl Makefile.PL
-  patch -p1 < "${srcdir}/fix-type-of-self-parameter.diff"
   make
 }
 
