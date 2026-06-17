@@ -1,0 +1,21 @@
+pkgbase = viewer-rs-bin
+	pkgdesc = Universal TUI file viewer written in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/isene/viewer
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	depends = glibc
+	depends = libgcc
+	provides = viewer
+	conflicts = viewer-rs
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/isene/viewer/v0.1.0/README.md
+	sha256sums = 621a2196acde26347787c60aef6587bd7dc5acfae90904ed3ee6565fe1151a4b
+	source_x86_64 = viewer-x86_64-0.1.0::https://github.com/isene/viewer/releases/download/v0.1.0/viewer-linux-x86_64
+	sha256sums_x86_64 = b64f75ef29892b184ba7ef26d7f0cfbc7bf49c4474ecf02ab4c0885120aea2d7
+	source_aarch64 = viewer-aarch64-0.1.0::https://github.com/isene/viewer/releases/download/v0.1.0/viewer-linux-aarch64
+	sha256sums_aarch64 = ac855f11b0b63c9e3e43a56ea0b96eb94317bdc4168980609028aab9ce4bf5ed
+
+pkgname = viewer-rs-bin

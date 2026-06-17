@@ -1,0 +1,5 @@
+[viewer-rs-bin]
+source = "github"
+github = "isene/viewer"
+use_latest_release = true
+prefix = "v"
