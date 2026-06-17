@@ -7,10 +7,10 @@ _projectname=electron
 _major=42
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_subver='4.0'
+_subver='4.1'
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt"
 arch=(
     'aarch64'
@@ -58,12 +58,12 @@ source_x86_64=(
     "${_pkgname}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-x64.zip"
 )
 sha256sums=('ac1e26684ffbfc7ac0993c55b9299003f6b9efea25b755b1d260bea4db440157')
-sha256sums_aarch64=('22fc9f5566d3a701965ae2cc77b0625644e827d67a80dfa86fbfd8076354a447'
-                    'd3bf612de0b651302fb46e50ed3282b609ea9d4d99bb296f7c9bb8ffd92fd69b')
-sha256sums_armv7h=('b1ec1b8aec371b3b13303074739ddcd006a08060150f10a6c7a364c4b1bfd40c'
-                   '83f9017f9a77bfdc8628b05237336c319da45f75974c37c68c82687a18106a92')
-sha256sums_x86_64=('09b69da1569f2d0bbf2015a976a314cefa212243cbfcfb32dcb82ef263c52942'
-                   '9a8194635548490a56099cc4c2b116738ae56834dee4472506d5a8b262bcbda4')
+sha256sums_aarch64=('e457918a253673ccc7c3c40410d4a947186eaa9a519cefd7fefcdd2b7d5aca6c'
+                    '2bd56329fe01c2f17e080d07d1ffe403ce94c470c940504a5207a04fd16bafa9')
+sha256sums_armv7h=('ddcf9236029e15a52da18180a76176a4df83fc1fb30f4e6bfcea0c9d10baacaf'
+                   '629b4d5298f6110f9689efbbd22cdfcdc78ad24e0b8426349f6412236f716b0e')
+sha256sums_x86_64=('8520d40578aa93e2010570655e6809f7d3ab69c0a6bf8879df359b3d5ddeba48'
+                   '1ac0306029b2c95dc5424afff4ab061e9154d8a9ea3bb5a35a7d7166b9245b29')
 prepare() {
     sed -i "s/@ELECTRON@/${_pkgname}/g" "${srcdir}/${pkgname%-bin}.sh"
     install -Dm755 -d "${srcdir}/${_pkgname}"
