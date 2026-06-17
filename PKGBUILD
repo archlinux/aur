@@ -6,7 +6,7 @@ pkgname=${_pkgname}
 pkgdesc="Fault-tolerant viewer for CSV files"
 
 pkgver=1.00
-pkgrel=1
+pkgrel=2
 _pkgvername=main
 
 arch=('x86_64' 'aarch64')
@@ -20,9 +20,9 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=('perl' 'perl-text-csv' 'perl-text-csv-xs')
 
-source=("${_pkgname}-${pkgver}.tgz::${url}/archive/refs/heads/${_pkgvername}.zip")
+source=("${_pkgname}-${pkgver}.tgz::${url}/archive/${_pkgvername}.zip")
 # source=("${_pkgname}-${pkgver}.tgz::${url}/archive/${_pkgvername}.tar.gz")
-sha256sums=('b5ccb153f9a3f1cd194c72b7190306433a03d0e37cc3a9708e52c59006c49fbf')
+sha256sums=('0e3ceefadd31c4db078face53b5f914b0fbb8a77c3de73ee40313b4ac0cdd015')
 
 
 package() {
