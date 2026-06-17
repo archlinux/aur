@@ -2,7 +2,7 @@
 _pkgname=DepotDownloader
 pkgname=steamdepotdownloader
 pkgver=3.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Steam depot downloader utilizing the SteamKit2 library."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/SteamRE/DepotDownloader"
@@ -27,6 +27,7 @@ build() {
 		dotnet publish -r linux-arm64 -p:PublishSingleFile=true --no-self-contained
 		;;
 	esac
+	(timeout -f -k 45 30 dotnet build-server shutdown) > /dev/null 2>&1 &
 }
 
 package() {
