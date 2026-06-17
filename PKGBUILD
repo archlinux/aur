@@ -1,11 +1,11 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 # Contributor: Michele Balistreri <michele at bitgamma dot com>
 
-# Release notes https://github.com/lemonade-sdk/lemonade/releases/tag/v10.7.0
+# Release notes https://github.com/lemonade-sdk/lemonade/releases/tag/v10.8.0
 pkgname=lemonade-server
 pkgdesc="Lemonade: Local LLM Serving with GPU and NPU acceleration (Server)"
-pkgver=10.7.0
-pkgrel=3
+pkgver=10.8.0
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/lemonade-sdk/lemonade/'
 license=('Apache-2.0')
@@ -23,7 +23,7 @@ tmpfiles.conf
 )
 
 sha256sums=(  
-'7102a7dbcfede2a406df12490624a234a18f89576d6b2ca5a84de120a2c4c787'
+'117f4eaeb4ba4a215577df612360421c63cd98b8dde3cc1e07ac52b0bc62ffb1'
 'f6676dd6539c1d05978aa8ecfae86d71e73c46f48c7766a04b991aa545c2f065'
 '757132b8ebf0847798765b911a4226100e102ac32531cdcf91dbc9436e52a011'
 )
@@ -55,6 +55,7 @@ package() {
   
   install -dm0755 "${pkgdir}"/var/lib/lemonade
   install -dm0755 "${pkgdir}"/etc/lemonade
+  sed -i 's/^StateDirectoryMode=0750$/StateDirectoryMode=0755/' "${pkgdir}"/usr/lib/systemd/system/lemond.service
   sed -i 's/^u/u!/' "${pkgdir}"/usr/lib/sysusers.d/lemonade.conf
   install -vDm644 "${srcdir}/tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
