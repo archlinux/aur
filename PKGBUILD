@@ -44,7 +44,7 @@ provides=(
 )
 conflicts=(
   "${_pkgname}"
-  "${_pkgname}-git"  # This is here for now since package 'chameleonultragui-git' does _not_ have 'chameleonultragui' in it's provides nor conflicts array, as of 2026-06-17.
+  "${_pkgname}-git"  # This is here for now since package 'chameleonultragui-git' does _not_ have 'chameleonultragui' in it's provides nor conflicts array, as of 2026-06-17. See https://aur.archlinux.org/packages/chameleonultragui-git#comment-1075717.
   "${_pkgname}-docs"
 )
 replaces=()
