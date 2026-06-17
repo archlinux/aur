@@ -2,7 +2,7 @@
 
 pkgname=whylian
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Lian Li device control for Linux — HydroShift II AdvanceMode fork of lian-li-linux"
 arch=('x86_64')
 url="https://github.com/byrdltd/whylian"

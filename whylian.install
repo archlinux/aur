@@ -1,4 +1,11 @@
 pre_install() {
+  # ./install.sh copies templates here without pacman ownership — remove so the
+  # package can install them (same paths, no duplicate trees).
+  if [[ -d /usr/share/whylian/templates ]] && ! pacman -Qo /usr/share/whylian/templates &>/dev/null; then
+    echo "whylian: removing templates from a prior ./install.sh (replaced by package files)"
+    rm -rf /usr/share/whylian/templates
+  fi
+
   cat <<'MSG'
 
 ================================================================================
