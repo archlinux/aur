@@ -202,8 +202,8 @@ case "${_system_stdlib}" in
   )
   ;;&
 libc++)
-  _depends+=(
-    [libc++]="libc++"
+  depends+=(
+    libc++
   )
   ;;
 libstdc++)
