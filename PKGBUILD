@@ -39,7 +39,7 @@ prepare() {
 
 	echo 'Adjusting...'
 
-	sed -i -e 's/Celestia (Qt5)/Celestia/g' -e 's/Space Simulator (AppImage-1.7.0~git)/Space Simulator/g' $_squashfs_root/space.celestiaproject.$_pkgname.desktop
+	sed -i -e 's/Celestia \(.*\)/Celestia/g' -e 's/Space Simulator \(.*\)/Space Simulator/g' $_squashfs_root/space.celestiaproject.$_pkgname.desktop
 
 	echo 'Done'
 }
