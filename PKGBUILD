@@ -13,6 +13,9 @@ url=https://squawkhq.com/
 license=(
 	"Apache-2.0 OR MIT"
 )
+depends=(
+	glibc
+)
 makedepends=(
 	cargo
 )
@@ -38,7 +41,6 @@ sha256sums=('b3e13bd2f6e2cde6e6c97d73f5d86b72a158ad4621546e3c3b52090342e8f707'
 : "${sha256sums[@]}"
 
 declare -gA _depends=(
-	[glibc]="glibc"
 	[libgcc]="libgcc_s.so"
 	[openssl]="libcrypto.so libssl.so"
 )
@@ -115,11 +117,10 @@ check() {
 
 package() {
 	# shellcheck disable=SC2206
-	depends=(
+	depends+=(
 		${_depends[@]}
 	)
 
-	: "${depends[@]}"
 	: "${pkgdir:?}"
 
 	cd "${_pkgname}-${pkgver}"
