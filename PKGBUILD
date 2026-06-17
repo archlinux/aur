@@ -4,7 +4,7 @@ _rstd_commit=629bda81eb98856ca023f0f87f57dde8d22b4823
 _wavsen_commit=c714a4fc59a689a80b3b537ee8ef501c363a841f
 
 pkgname=open-wallpaper-engine
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Open source scene renderer, mostly for linux."
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=("git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v$pkgver
         "git+https://github.com/hypengw/rstd.git#commit=$_rstd_commit"
         "git+https://github.com/hypengw/wavsen.git#commit=$_wavsen_commit"
         "0001-use-system-deps.diff")
-sha256sums=('add78a3d2d29b6a2a6f5970391a879a710f15f3a4a097d90719dcdc851c09fa9'
+sha256sums=('af35e8993d35645cab4e75f73fe160c48958dbdca9a5d6d4dd202329960e70cc'
             '287e451ba68eb156cf9dc6c33825e9d58fc506ea58718725c8c0f772a40a83ca'
             '80036965e852d207379f91bae11a9baf957a3751f6194a1d5c047bdbb451dc9d'
             '3d870289ca988228812f3e9d61e92ca3fe47b6b4e4a24183cef617f0c2977074'
