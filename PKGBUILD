@@ -2,12 +2,13 @@
 
 pkgname=lte-cell-scanner-git
 pkgver=r26.e7f71cb
-pkgrel=2
+pkgrel=3
 pkgdesc="An OpenCL accelerated TDD/FDD LTE Scanner"
 arch=('i686' 'x86_64')
 url="https://github.com/JiaoXianjun/LTE-Cell-Scanner"
 license=('GPL')
-makedepends=('git' 'cmake' 'hackrf' 'fftw' 'itpp' 'boost' 'boost-libs' 'bladerf')
+depends=('boost-libs' 'itpp')
+makedepends=('git' 'cmake' 'hackrf' 'fftw' 'boost' 'bladerf' 'rtl-sdr' 'blas')
 source=("${pkgname}::git+https://github.com/JiaoXianjun/LTE-Cell-Scanner")
 sha256sums=('SKIP')
 
@@ -32,6 +33,7 @@ build() {
 		-DCMAKE_VERBOSE_MAKEFILE=ON
 		-DUSE_HACKRF=1
 		-DUSE_BLADERF=1
+		-DUSE_RTLSDR=1
 		-DCMAKE_POLICY_VERSION_MINIMUM=3.5
 		-DUSE_OPENCL=0 # opencl segfaults in some cases
 	)
