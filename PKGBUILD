@@ -1,6 +1,6 @@
 # Maintainer: Vaishakh G K <vaishakh@vaishakhgk.com>
-pkgname='ash-git'
-pkgver=r12.7418f82
+pkgname='a-shell-git'
+pkgver=r14.b8bb300
 pkgrel=1
 pkgdesc="A Shell - Simple shell made in c"
 arch=('x86_64')

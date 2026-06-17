@@ -1,6 +1,6 @@
-pkgbase = ash-git
+pkgbase = a-shell-git
 	pkgdesc = A Shell - Simple shell made in c
-	pkgver = r12.7418f82
+	pkgver = r14.b8bb300
 	pkgrel = 1
 	url = https://codeberg.org/VAISHAKH-GK/ash
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ash-git
 	makedepends = make
 	makedepends = gcc
 	depends = glibc
-	source = ash-git::git+https://codeberg.org/VAISHAKH-GK/ash.git
+	source = a-shell-git::git+https://codeberg.org/VAISHAKH-GK/ash.git
 	sha256sums = SKIP
 
-pkgname = ash-git
+pkgname = a-shell-git
