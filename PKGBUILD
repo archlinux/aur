@@ -4,8 +4,8 @@ pkgname=bar-lobby-git
 ### ↓↓↓ This needs to be set manually, the correct version will be displayed during build, update manually if needed!
 _electronver=37
 ### ↑↑↑ This sadly cant be done automatically
-pkgver=0.15.2.r13.g89d05fd1
-pkgrel=2
+pkgver=VERSION
+pkgrel=3
 pkgdesc="The new - stil Work_In_Progres lobby, for the RTS game Beyond All Reason (Github version)."
 arch=('x86_64')
 url="https://beyond-all-reason.github.io/bar-lobby/"
@@ -145,7 +145,7 @@ package() {
     
     ## Fix up the .desktop
     sed -i -e "
-        s/^Name=.*/Name=BAR-Lobby-git/g
+        s/^Name=.*/Name=BAR Lobby (git-latest)/g
         s/^Comment=.*/Comment=${pkgdesc}/g
         s/bar-lobby/${pkgname}/g
         s/BeyondAllReason/${pkgname}/g
