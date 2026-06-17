@@ -1,6 +1,6 @@
 # Maintainer: egoroff <egoroff@gmail.com>
 pkgname=solv-bin
-pkgver=0.21.1
+pkgver=0.21.2
 pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc="SOLution Validation tool that analyzes Microsoft Visual Studio solutions (binary release)"
@@ -8,8 +8,8 @@ url="https://github.com/aegoroff/solv"
 license=('MIT')
 source_x86_64=("https://github.com/aegoroff/solv/releases/download/${pkgver}/solv-${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("https://github.com/aegoroff/solv/releases/download/${pkgver}/solv-${pkgver}-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('6f334e767eacd1b0dc0a54f2ec1627e717c05a99b5f47080df4b07573af79eab')
-sha256sums_aarch64=('22f4554d714b650f55c4fa99bb8cf533e5f56dc183c35e6747c851fe8174284b')
+sha256sums_x86_64=('a112468ef38d105e4a87596b77d2714a2968484931f78f58083df8420909bc85')
+sha256sums_aarch64=('3eb53d6e4a75d0c150b85b29a686cca70cec8b9e564febee95252a249f157d9f')
 
 build() {
   return 0
