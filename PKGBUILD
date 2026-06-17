@@ -3,7 +3,7 @@
 
 _basename=koharu
 pkgname=${_basename}-bin
-pkgver=0.61.1
+pkgver=0.61.2
 pkgrel=1
 pkgdesc="Manga translation tools"
 arch=("x86_64")
@@ -22,7 +22,7 @@ source=(
   "koharu.png"
 )
 
-sha256sums=('2119a10a893946d65637fc7c397fee6f569c50137fc17d70e4023785acb13625'
+sha256sums=('3cc82727a584eed122fadff61e6d7244991b5ffcaa004ab3a4ff606e934dd944'
             'cf0fde21f3a870444960834d8f321bc785e7848e3852c2d844f3c70d66f6b54b'
             '31a76300030d9ae3e855180165966f76f710a9282cbb38796b5869881712eef0')
 
