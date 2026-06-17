@@ -1,52 +1,29 @@
-# Gaia Sky 3.7.3
+# Gaia Sky 3.7.4
 
-Gaia Sky 3.7.3 focuses on quality-of-life improvements, like the new 'load dataset' workflow, and includes many important bugfixes.
+Gaia Sky 3.7.4 brings a major overhaul of the atmospheric scattering model with ozone absorption, Bruneton's density scale, a unified ground/sky integrator, and a physically-grounded parametrization. It also includes important bugfixes for the keyframe system, and build system updates.
 
 ## Features
+
 - Rendering
-	- Add a new line shading method that uses screen-space derivatives instead of a power function for higher quality line rendering.
-	- Add limb fade to the cloud layer based on screen-space pixel counts. This prevents clouds from appearing overly flat at the edges of planets.
-	- Add PBR support in wavefront `.mtl` material files via common extensions.
-	- Add intrinsic opacity to materials, and use it in the default model sorter for proper transparency ordering.
-- File picker:
-	- Add a proper history stack to the file picker.
-	- Refactor the file picker to extract it as a reusable component outside of the default generic dialog.
-- Datasets:
-	- Redesign the "Load dataset" action. The new dialog has two tabs: in the first, `Load installed dataset`, the user can hot-load any installed dataset. In the second, `Load file (.vot, .csv, etc.)`, the user can select any supported file and load it as a catalog.
-	- Improve the layout of the datasets component and add a shortcut to load datasets.
-	- Add dataset type icons to the datasets component.
-	- Improve the handling of dataset cards.
-	- Mission datasets can now be 'selected', which sets the time to the start of the mission and the spacecraft as the focus. Part of [#908](https://codeberg.org/gaiasky/gaiasky/issues/908).
-	- Add support for server dataset images in the dataset manager. Part of [#908](https://codeberg.org/gaiasky/gaiasky/issues/908).
-- Japanese translation now fully complete: proofread and edited by Hiromasa Yauchi.
-- Add an updater helper to dispatch update events.
-- Fix double index initialization issue in star and particle groups loaded on the fly. Add update callbacks to star and particle loaders.
-- Add a Wavefront extension to handle packed PBR textures (occlusion, roughness, metallic) as `map_PBR`.
-- Add support for camelCase names in dataset description properties (e.g., `nObjects`, `numObjects`, `sizeBytes`, `releaseNotes`).
+  - Overhaul the atmospheric scattering model. The previous O'Neil-based implementation used separate, divergent code paths for the ground and sky (atmosphere dome) shaders, leading to unstable behavior when parameters changed and visible banding artifacts at low sample counts. The new implementation consolidates both into a single unified `integrateAtmosphere()` function shared by the ground and sky shaders. It adopts Bruneton's 4th-order polynomial approximation of the Chapman function for the density scale, which eliminates artifacts at grazing angles. The scattering color is correctly blended using glow and transmittance, and the tone mapping exposure is unified across both paths.
+  - Consider elevation displacement in scattering calculations. The vertex shader now correctly accounts for the terrain height offset when computing the vertex position for atmospheric scattering.
+  - Add ozone (O₃) absorption to atmospheric scattering. Ozone is modeled as a Gaussian density profile centered in the stratosphere (default peak at 25 km altitude, \~20 km width). The absorption coefficients match the Chappuis band shape (peaking at \~600 nm in the red, with significant absorption in green and minimal in blue). Parametrization adopts O₃ optical depth, the vertical optical depth of ozone at red (\~600 nm, Chappuis peak). The Earth reference value us \~0.025.
+  - Expose ozone optical depth in the procedural planet dialog. Adds new slider to the procedural planet generation window.
 
 ## Bug Fixes
-- Shader positioning bugs in model-based particle sets (e.g. star clusters).
-- Fix expanding/collapsing dataset widgets to resize the scroll pane and component pane correctly.
-- Add a scroll pane to the datasets component, which can grow beyond screen bounds.
-- Consolidate the parser used in the color picker to avoid inconsistent accepted formats that led to a crash. Fixes [#910](https://codeberg.org/gaiasky/gaiasky/issues/910).
-- Clarify information about the shader cache in translation files.
-- Enable separate activation of gravitational waves and relativistic aberration effects.
-- Ensure the bookmarks manager has an up-to-date bookmark list before reloading the component view.
-- Fix crash caused by asterisks in Windows paths when the shader cache is enabled. Fixes [#907](https://codeberg.org/gaiasky/gaiasky/issues/907).
-- Fix uninitialized star textures in the main post-processor reload caused by a settings bookmark.
-- Include activation check boxes in the fade in/out validators for datasets.
 
-## Performance Improvements
-- Improved performance when loading object name translations (I18n and I18NBundle).
+- Fix regression in which the keyframe visual representation was not visible ([#916](https://codeberg.org/gaiasky/gaiasky/issues/916)).
+- Fix locale initialization sequence by passing the settings object. At startup, the `GaiaSky` instance has not been initialized, so i18n always defaulted to the system locale regardless of the settings ([#915](https://codeberg.org/gaiasky/gaiasky/issues/915)).
+- Check for SSBO extension additionally to the compute shader one in `isComputeShaderSupported()`. Avoids a crash when the driver supports compute shaders but not OpenGL 4.3 nor SSBO ([#914](https://codeberg.org/gaiasky/gaiasky/issues/914)).
+- Fix dependency on Java >=26 in AUR package. Required for compact object headers support without `UnlockExperimentalVMOptions`.
+- Fix directory selection in file picker. The file picker dialog now correctly selects directories instead of files when a directory path is provided.
 
-## Code Refactoring
-- Extensively refactor settings handling. Remove all static references to the settings and settings manager objects, keeping a single regular reference in the main `GaiaSky` class. Settings manager objects are now created on the fly whenever needed, with negligible creation cost. Given the all-encompassing nature of this refactor, new bugs may have been introduced, so please report if found.
-- Extensively refactor star/particle groups and internal initialization state.
-- Extensively refactor dataset metadata and related utilities. Add `provides` attribute to datasets.
+## Localization
+
+- Update translation files with missing keys, bringing all locale files to 100% completion.
+- Update screenshot URLs in metainfo file to point to the current hosting locations.
 
 ## Build System
-- Complete migration of Gradle build scripts to Kotlin DSL, including the settings script.
-- Update to Libgdx 1.14.1.
 
-## Documentation
-- Add class-level Javadoc comments to `gaiasky.gui.components` classes.
+- Update to libGDX 1.14.2. This major version bump brings improvements to the underlying graphics framework.
+- Update Gradle wrapper to 9.5.1.
