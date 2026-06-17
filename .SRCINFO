@@ -1,6 +1,6 @@
 pkgbase = nursearch
 	pkgdesc = Small local GTK4 app launcher with a plugin platform
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/NurRobin/nursearch
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = nursearch
 	optdepends = fd: faster file search plugin backend
 	optdepends = kdotool: KDE Plasma Wayland window switcher plugin
 	optdepends = wl-clipboard: clipboard history plugin
-	source = nursearch-0.2.0.tar.gz::https://github.com/NurRobin/nursearch/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = b262d3f5dd84a7a83ae124d5c2819d793767aa29fb7c469693ac520be25551a6
+	source = nursearch-0.2.1.tar.gz::https://github.com/NurRobin/nursearch/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 8b0a414c8e23ef4d357fc6fa58944fd891807de922c4899c44deb9d4dcbf641e
 
 pkgname = nursearch
