@@ -2,7 +2,7 @@
 
 _pkgname='usque'
 pkgname="${_pkgname}-bin"
-pkgver=3.0.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Open-source reimplementation of the Cloudflare WARP client's MASQUE protocol"
 arch=('x86_64' 'aarch64' 'armv7h' 'mips64' 'mips64el')
@@ -16,11 +16,11 @@ source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux
 source_armv7h=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv7.zip")
 source_mips64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_mips64.zip")
 source_mips64el=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_mips64le.zip")
-sha256sums_x86_64=('a4666c1901d81be76c7b03d15f8736b12b5c96906f28c3ce15f482da1cf2b429')
-sha256sums_aarch64=('7ded36a31868697995ca91d5c8e31405f03a1164583363daeacd64d34f0dfe4c')
-sha256sums_armv7h=('075abb62e35f440950ffb42f8ace9ee9e63dec6e558017b484b7b0709d4c05dd')
-sha256sums_mips64=('888c328a172a57fe2bdc6851d3f3d41d1c3b8b05cad2235c2731969632a9ee7c')
-sha256sums_mips64el=('1f7dd29fa6d3538c2904e34e96dbace3766d57ac37bde2da094df019e2c74740')
+sha256sums_x86_64=('77e4512e4980b4e1f4c33aa68cb739eee49cdd0621369a35da0a5d4bf0ef495d')
+sha256sums_aarch64=('698009731163045694bad8a03a13f21a88ca3d96fdd6471f5c394741ec1dbccd')
+sha256sums_armv7h=('df19fe4b0d3f5c43ba81ebdfa533caffaa67c0b2038d289413f0e8225af2c63b')
+sha256sums_mips64=('c4ff2ce8d7a0c2721317af4eafe66d527aaba5b0db808cb7648e0fdf3de07489')
+sha256sums_mips64el=('896cf6c7563eb20c61a7a6855065432e5bf46f157907fb431b9322459a745aa5')
 
 
 package() {
