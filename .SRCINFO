@@ -1,0 +1,9 @@
+pkgbase = riscv64-unknown-elf-symlink
+	pkgdesc = Symlinks to provide riscv64-unknown-elf alias to riscv64-elf toolchain from official repos
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	depends = riscv64-elf-gcc
+
+pkgname = riscv64-unknown-elf-symlink
