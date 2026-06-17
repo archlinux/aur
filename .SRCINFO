@@ -6,6 +6,7 @@ pkgbase = aurelia-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	license = GPL-3.0
 	depends = glibc
 	depends = libgcc
 	depends = xz
