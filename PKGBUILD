@@ -2,8 +2,8 @@
 
 pkgname=fungen-bin
 _pkgname=fungen
-pkgver=2.2.3beta
-_upstream_ver=2.2.3-beta
+pkgver=2.2.4beta
+_upstream_ver=2.2.4-beta
 pkgrel=1
 pkgdesc="AI-powered funscript generator"
 arch=('x86_64' 'aarch64')
@@ -92,5 +92,5 @@ EOF
     install -Dm644 "${icon}" "${pkgdir}/usr/share/pixmaps/fungen.png"
   fi
 }
-sha256sums_x86_64=('51c81952715eade9e11132a1e3d8ac411eab99f2852e9d05684cabcb8ee3f2f2')
-sha256sums_aarch64=('63a661c1752f164ae3e699035eb3f5af0630a83f538a9f74c017c5269802bc0a')
+sha256sums_x86_64=('12ff658b591a0cba2ca58d40c3aaa6a4490691734a4687e91ea60237120b6e73')
+sha256sums_aarch64=('bb8da247ccf1aca0e1d50ef7d27d67df5bd00bf5b645ff34b7ea177f516fcb86')
