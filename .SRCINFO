@@ -1,11 +1,14 @@
 pkgbase = python-i3-quickterm
 	pkgdesc = A small drop-down terminal for i3wm and sway
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/i3-quickterm/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-i3ipc
 	optdepends = i3-wm
