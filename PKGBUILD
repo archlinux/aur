@@ -11,21 +11,27 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-uv-build')
 license=('custom:MIT License')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/d3/82/4e08ee4f5db77c96dc53c892d254509bf8b62cd0b9f5aabc1a390b61b708/marklas-0.8.0.tar.gz")
-sha256sums=('d2f75d1077be269156fe970795a77e8420b9738bc1bf24fd0e3c416057abc784')
+source=(
+  'https://files.pythonhosted.org/packages/d3/82/4e08ee4f5db77c96dc53c892d254509bf8b62cd0b9f5aabc1a390b61b708/marklas-0.8.0.tar.gz'
+  '0001-remove-uv-build-upper-bound.patch'
+)
+sha256sums=(
+  'd2f75d1077be269156fe970795a77e8420b9738bc1bf24fd0e3c416057abc784'
+  'd999e224145fe97029dc3d06e13ebe728b3384489886914bfd353b084cf34688'
+)
 
 prepare() {
-    cd "${srcdir}/${_src_folder}"
-    patch pyproject.toml < ../../0001-remove-uv-build-upper-bound.patch
+  cd "${srcdir}/${_src_folder}"
+  patch pyproject.toml <"${srcdir}/0001-remove-uv-build-upper-bound.patch"
 }
 
 build() {
-    cd "${srcdir}/${_src_folder}"
-    python -m build --wheel --no-isolation
+  cd "${srcdir}/${_src_folder}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
 
-    cd "${srcdir}/${_src_folder}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+  cd "${srcdir}/${_src_folder}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
