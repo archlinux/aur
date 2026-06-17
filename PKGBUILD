@@ -1,7 +1,7 @@
 # Maintainer: galak9 <alterk@qq.com>
 pkgname=qoder-cli-cn-bin
-pkgver=1.0.11
-pkgrel=2
+pkgver=1.0.23
+pkgrel=1
 pkgdesc="Qoder CLI (CN version) - An agentic AI coding tool built for command-line developers"
 arch=('x86_64' 'aarch64')
 url="https://qoder.com.cn"
