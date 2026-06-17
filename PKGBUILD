@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A terminal UI for reviewing AI-generated Git worktree changes"
 
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('e71ea3801f94e4d64d3648dce171ec61fc15c09b3630313971f87c9bc7912935')
-sha256sums_aarch64=('3fa566260de942591059a5964e13b2f62d16e298a0f8ab0652ea8e3627c185c0')
+sha256sums_x86_64=('4602ad29ec5815e2f95d68c4a31a51e964a5a868feb7c5f2712f707f3d18b673')
+sha256sums_aarch64=('96323bb5eeeca6b318fe5529eb9497732e809fcd6bd09719571e91f87665e115')
 
 
 package() {
