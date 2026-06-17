@@ -1,7 +1,7 @@
 pkgbase = python-foamlib
 	pkgdesc = A Python interface for interacting with OpenFOAM
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gerlero/foamlib
 	arch = any
 	license = GPL-3.0-or-later
@@ -14,7 +14,13 @@ pkgbase = python-foamlib
 	depends = python-numpy
 	depends = python-pyparsing
 	depends = python-rich
-	depends = openfoam-com
+	optdepends = openfoam-com: required to run simulations (openfoam.com distribution)
+	optdepends = openfoam-org: required to run simulations (openfoam.org distribution)
+	optdepends = python-pandas: preprocessing, postprocessing, and examples
+	optdepends = python-pydantic: preprocessing and examples
+	optdepends = python-defusedxml: postprocessing and examples
+	optdepends = python-plotly: examples
+	optdepends = python-scipy: examples
 	source = foamlib-1.6.0.tar.gz::https://github.com/gerlero/foamlib/archive/v1.6.0.tar.gz
 	sha512sums = b4709f5070a8e9c7bcd8ce9c584195a5643bef98b46fe77ff910c09e65076fedfb0d69edf21a29b469fbf906228092b79f87617ba80d39a7d80e1b2092306a33
 
