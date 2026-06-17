@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgbase=xjtutoolbox
 pkgname=xjtutoolbox
-pkgver=1.2.5
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="仙交百宝箱：西安交通大学一站式校园服务工具（混合依赖模式：Official + AUR + Venv）"
 arch=('any')
@@ -44,7 +44,7 @@ makedepends=('git' 'python-pip')
 provides=("${pkgbase}")
 conflicts=("${pkgbase}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/yan-xiaoo/XJTUToolBox/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP') # 实际由 GitHub Actions 里的 updpkgsums 自动计算覆盖
+sha256sums=('a15dda40dfff0b314fe1b1398bc100e842fdeaebc58dd2b24e67e5f602619129')
 
 package() {
   cd "XJTUToolBox-${pkgver}"
