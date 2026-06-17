@@ -7,10 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.20.2] - 2026-06-17
+
+### Added
+- Unit Creation Wizard: Add Standard Output and Error on Service
+- Unit Creation Wizard: Add CPUQuota and MemoryHigh on Service
+
 ## [2.20.2] - 2026-06-13
 
 ### Added
-- Unit Creation Wizard time validators [Issue 44](https://github.com/plrigaux/sysd-manager/issues/44)
+- Unit Creation Wizard: Add time validators [Issue 44](https://github.com/plrigaux/sysd-manager/issues/44)
           
 ## [2.20.1] - 2026-06-11
 
