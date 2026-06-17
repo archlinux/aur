@@ -2,7 +2,7 @@
 
 pkgname=libria
 pkgver=1.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for professional book creation and typesetting — book editor and layout tool with real-time preview, EPUB/DOCX/PDF export, and spell checking"
 arch=('x86_64')
 url="https://github.com/Gargadon/libria"
@@ -38,7 +38,7 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   cat > "${pkgdir}/usr/bin/libria" << 'SCRIPT'
 #!/bin/bash
-exec /usr/bin/electron /opt/libria/main.js "$@"
+exec /usr/bin/electron --ozone-platform=x11 /opt/libria/main.js "$@"
 SCRIPT
   chmod 755 "${pkgdir}/usr/bin/libria"
 
