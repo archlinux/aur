@@ -1,8 +1,11 @@
 # Maintainer: ShinKouyo <i@0x0f.dev>
 
+# shellcheck shell=bash
+# shellcheck disable=SC2034,SC2154
+
 pkgname=mkinitcpio-archiso-ventoy
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='mkinitcpio hook to detect Ventoy boot metadata for archiso'
 arch=('any')
 url='https://codeberg.org/shkouyo/sk-archiso/src/commit/f044b721932ebc774c02ccf2e9ee124a32e00055/airootfs/usr/lib/initcpio'
@@ -12,12 +15,14 @@ source=(
   'archiso_ventoy_hook'
   'archiso_ventoy_install'
 )
-sha256sums=(
-  'SKIP'
-  'SKIP'
+b2sums=(
+  'ae95cf680754fb1bb416192a4d77a40f63bcfb98da5bba8d1d8fb21f0cf3641c9bb860133dcab1eb2661382d3a5ffe2d1c6613915c9110c71fc608f6e4127d8f'
+  '56dc6a77467cb12238d1fd21910a39439dac13798be48f98abd812803f69711f73271bf9940f3d28e2cdd450a82811f3bba5d7bbcba6837f0fc9999076c826f6'
 )
 
 package() {
   install -Dm644 "${srcdir}/archiso_ventoy_hook" "${pkgdir}/usr/lib/initcpio/hooks/archiso_ventoy"
   install -Dm644 "${srcdir}/archiso_ventoy_install" "${pkgdir}/usr/lib/initcpio/install/archiso_ventoy"
 }
+
+# vim:set sw=2 sts=-1 et:
