@@ -1,15 +1,15 @@
 # Maintainer: tobocop <tobias.perelstein@gmail.com>
 pkgname=lilbee
-pkgver=0.6.66b498
+pkgver=0.6.66b499
 pkgrel=1
-pkgdesc="Local search engine and personal encyclopedia for your notes, code, and PDFs"
+pkgdesc="Run and manage local AI models and search your files, code, and crawled web pages, with cited answers"
 arch=('x86_64')
 url="https://github.com/tobocop2/lilbee"
 license=('custom:Elastic-2.0')
 replaces=('lilbee-bin')
 options=('!strip' '!debug')
 source_x86_64=("lilbee-${pkgver}::${url}/releases/download/v${pkgver}/lilbee-linux-${CARCH}")
-sha256sums_x86_64=('95aa306a3d88bab9f52d98c74d8b8213ec819aa658a20a55a9a02e5d5827b9cf')
+sha256sums_x86_64=('8e531c2c8a201e9ef6f470e9b28ab5ffb77c419febf0d2d8d17e43f8418cb518')
 source=("lilbee.service::${url}/raw/v${pkgver}/packaging/systemd/lilbee.service")
 sha256sums=('8987137080f5b5353ca4a5bc82aa56c92c450c158e8558fa48fa8bff2cb1c69d')
 
