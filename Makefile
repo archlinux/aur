@@ -2,6 +2,7 @@ remote := aur
 
 upstream := https://github.com/home-assistant/core.git
 update_check = git ls-remote --tags --refs $(upstream) | grep -Po '.*refs/tags/\K\d{4}\.\d+\.\d+$$' | sort -V | tail -n1
+VERSION = $(shell cat .version 2>/dev/null)
 
 .PHONY: upload commit update_version
 
@@ -10,7 +11,6 @@ default: update_version .SRCINFO
 upload: commit
 	git push $(remote)
 
-commit: VERSION = $(shell cat .version)
 commit: .SRCINFO
 	git commit -am "$(VERSION)"
 
@@ -22,7 +22,7 @@ PKGBUILD: PKGBUILD.in .version
 	updpkgsums $@
 
 update_version: NEW_VERSION = $(shell $(update_check))
-update_version: CURRENT_VERSION = $(shell cat .version 2>/dev/null)
+update_version: CURRENT_VERSION = $(VERSION)
 update_version:
 	@if [ "$(NEW_VERSION)" != "$(CURRENT_VERSION)" ]; then \
 	  echo "$(NEW_VERSION)" > .version; \
