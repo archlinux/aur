@@ -3,7 +3,7 @@
 
 pkgname=whitesur-gtk-theme-git
 pkgver=2025.07.24.r50.ga83f467e
-pkgrel=1
+pkgrel=2
 pkgdesc="MacOS Big Sur like theme for GNOME desktops"
 arch=('any')
 url="https://github.com/vinceliuice/WhiteSur-gtk-theme"
