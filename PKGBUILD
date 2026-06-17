@@ -2,26 +2,28 @@
 _base=py-pde
 pkgname=python-${_base}
 pkgdesc="Python package for solving partial differential equations"
-pkgver=0.56.1
+pkgver=0.57.0
 pkgrel=1
 arch=(any)
 url="https://github.com/zwicker-group/${_base}"
 license=(MIT)
-depends=(python-matplotlib python-numba python-scipy python-sympy python-tqdm)
-makedepends=(python-build python-installer python-setuptools-scm python-wheel)
-checkdepends=(python-pytest-cov python-h5py-openmpi python-pandas
-  jupyter-notebook) # python-numba-mpi python-ffmpeg-python
+depends=(python-matplotlib python-numba python-scipy python-sympy python-tqdm python-typing_extensions)
+makedepends=(python-build python-installer python-setuptools-scm)
+checkdepends=(python-pytest-cov python-h5py-openmpi python-pandas jupyter-notebook python-numba-mpi)
 optdepends=('python-h5py: storing data in the hierarchical file format'
+  'python-pandas: handling tabular data'
+  'napari: displaying images interactively'
+  'python-ffmpeg-python: creating movies from matplotlib figures'
   'python-ipywidgets: jupyter notebook support'
   'python-mpi4py: parallel processing using MPI'
-  'napari: displaying images interactively'
   'python-numba-mpi: parallel processing using MPI+numba'
-  'python-pandas: handling tabular data'
   'python-pyfftw: Faster Fourier transforms'
   'python-rocket-fft: Numba-compiled fast Fourier transforms'
-  'python-ffmpeg-python: creating movies from matplotlib figures')
+  'python-py-modelrunner: running simulations and handling I/O'
+  'python-jax: using jax as a backend'
+  'python-pytorch: Using torch as a backend')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('cd4d7d42b082de29f88dc1f8c6bfcc48f71ac1a45f86f8ad4d070a6af5d349ab9943c5dfc4a33f03de13b8d942d59769cc3f0588b81d6fc99101df01208fd3ad')
+sha512sums=('0938f1b1891907b193a85e03bbc42e17fcbbdbcf97797397c87b81b3a798140ad445c908edaba98a46c801e3ac4d3890cf42603c15c9ff0babe9f73ebfcd654d')
 
 build() {
   cd ${_base}-${pkgver}
@@ -33,7 +35,7 @@ check() {
   cd ${_base}-${pkgver}/scripts
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer ../dist/*.whl
-  MPLBACKEND=Agg NUMBA_WARNINGS=1 test-env/bin/python run_tests.py --unit #--use_mpi
+  MPLBACKEND=Agg NUMBA_WARNINGS=1 test-env/bin/python run_tests.py --unit --use_mpi
 }
 
 package() {
