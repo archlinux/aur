@@ -1,13 +1,13 @@
 pkgbase = r-irr
 	pkgdesc = Various Coefficients of Interrater Reliability and Agreement
-	pkgver = 0.84.1
-	pkgrel = 7
+	pkgver = 0.85
+	pkgrel = 1
 	url = https://cran.r-project.org/package=irr
 	arch = any
 	license = GPL-2.0-or-later
 	depends = r-lpsolve
-	source = https://cran.r-project.org/src/contrib/irr_0.84.1.tar.gz
-	md5sums = 802ae19d1fc45cede1afafb5012cfdf0
-	b2sums = 41f6e4046a498394cb53a1c4599a7ac6ec66b9301272f7bb523740887bd8c8ed3b23a74c48e5eb177042c36a9f968fb7e47b55426ea1318a71183c01e4c537fa
+	source = https://cran.r-project.org/src/contrib/irr_0.85.tar.gz
+	md5sums = 40a7aef3e9ba6ca8648d8a16d128926b
+	b2sums = 84d2dad10177500b46b5104f4961263158c81825eb46abcb32006b40d4173609d865017173d1f7ba5701154ff0f1ee708c37436c7d7ba43d19ea9d7147f38bd4
 
 pkgname = r-irr
