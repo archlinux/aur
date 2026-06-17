@@ -1,6 +1,6 @@
 pkgname='vrrtest'
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A very small utility to test variable refresh rate.'
 arch=(any)
 url='https://github.com/Nixola/VRRTest'
@@ -18,11 +18,10 @@ sha256sums=(
   'e4535c94934b81c55ee0667b554909c1d489fe0693d7db73615c5916c32f9bc0'
   '89afa45b2fc870c55ccd750eee371bfcfe7837ccd3b45ef636c2f445efc2c046'
 )
+noextract=('vrrTest_v2.1.1.love')
 
 package() {
-  mkdir -p "$pkgdir/usr/share/vrrtest"
-  cp -r "$srcdir/vrrTest_v2.1.1.love" "$pkgdir/usr/share/vrrtest/vrrtest.love"
-
+  install -Dm644 "$srcdir/vrrTest_v2.1.1.love" "$pkgdir/usr/share/vrrtest/vrrtest.love"
   install -Dm755 -t "$pkgdir/usr/bin" vrrtest
 
   install -D -m644 "$srcdir/vrrtest.desktop" "$pkgdir/usr/share/applications/vrrtest.desktop"
