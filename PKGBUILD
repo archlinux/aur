@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-rs-bin
 pkgdesc="Universal TUI file viewer written in Rust"
 
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('1540702356d962af791e1b7efd7546b126884293f6b0f2fba259e22695e167ff')
-sha256sums_x86_64=('030f51c43f1b43bfa38bd7b6bd39a22955a6411ac71bc7f679bd847a5aaafd08')
-sha256sums_aarch64=('4357224c8bac652417f76b766fd258b0f7a3f6256e731d7407a86264b496c5af')
+sha256sums=('a54070233573144fa42b22f398fbb4126a2d1802ae8d685a9f2d5a8be0176f2c')
+sha256sums_x86_64=('38e570b452501d77b97d1924a2c33c841c82a5e085460fc8bd7179c33616111c')
+sha256sums_aarch64=('97fdd3cfeb58e4b82145d925d4cab04f2cd4c9a308b2dd1a69cdf552d7c2fa06')
 
 
 package() {
