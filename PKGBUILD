@@ -1,6 +1,6 @@
 # Maintainer: Fabian Berg <fabian.berg@hb9hil.org>
 pkgname=mtban-bin
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc='MikroTik address-list manager via RouterOS REST API (pre-built binary)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -15,12 +15,12 @@ source=("mtban.1::https://raw.githubusercontent.com/hb9hil/mtban/v${pkgver}/mtba
 source_x86_64=("mtban::https://github.com/hb9hil/mtban/releases/download/v${pkgver}/mtban-amd64")
 source_aarch64=("mtban::https://github.com/hb9hil/mtban/releases/download/v${pkgver}/mtban-arm64")
 source_armv7h=("mtban::https://github.com/hb9hil/mtban/releases/download/v${pkgver}/mtban-armhf")
-sha256sums=('978ccd0f4eb5e1b5d9406546c37865baf98197437828c97141a7edd71613d1ea'
+sha256sums=('bbee95aa528829d7afbc74744c265fe32cc01aa94037d5caacd5a41612aa7b04'
             '9cd1bbf814dfada7f83a7eda2982f0ada42c7e228e42b28b2171ca7a07fd95fb'
             '25193699bd9cffa17d645b6b6a5242d36b3205b812e882145785142a931bee3f')
-sha256sums_x86_64=('b28ee716a4a221cc68a673c30e5b79ab43a8bd5af3a3c68f4a177917b248d91b')
-sha256sums_aarch64=('b28ee716a4a221cc68a673c30e5b79ab43a8bd5af3a3c68f4a177917b248d91b')
-sha256sums_armv7h=('b28ee716a4a221cc68a673c30e5b79ab43a8bd5af3a3c68f4a177917b248d91b')
+sha256sums_x86_64=('a7dbad63a1636e97853f30e941c0c7ccda1cf0959cc6772a20f773f528d20e23')
+sha256sums_aarch64=('a7dbad63a1636e97853f30e941c0c7ccda1cf0959cc6772a20f773f528d20e23')
+sha256sums_armv7h=('a7dbad63a1636e97853f30e941c0c7ccda1cf0959cc6772a20f773f528d20e23')
 
 package() {
     install -Dm755 mtban                  "${pkgdir}/usr/bin/mtban"
