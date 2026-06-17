@@ -1,7 +1,7 @@
 # Maintainer: 2bc4 <affett0@proton.me>
 
 pkgname=twitch-hls-client
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Minimal CLI client for watching Twitch streams'
 url='https://github.com/2bc4/twitch-hls-client'
@@ -10,7 +10,7 @@ makedepends=('cargo' 'clang')
 depends=()
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/2bc4/twitch-hls-client/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('36ff51aa9d983aa8765d6d0eb8a4898ce92efecbd66d37e140dcf485e43bdcf2')
+sha256sums=('df93b68f361a38615eddcf7bd43b057e7eb5f92ec382fd4b63352686d2930cd4')
 
 prepare() {
     cd "$pkgname-$pkgver"
