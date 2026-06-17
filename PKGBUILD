@@ -3,7 +3,7 @@
 # Contributor: Patrick Griffis <tingping@tingping.se>
 
 pkgname=xdg-desktop-portal
-pkgver=1.22.0
+pkgver=1.22.1
 pkgrel=1
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://flatpak.github.io/xdg-desktop-portal/"
@@ -61,7 +61,7 @@ source=(
   "git+https://gitlab.gnome.org/GNOME/gvdb.git#commit=c6f2359cc1d00f16e0a0e2527fa0bc1882b8b5ab"
   "git+https://gitlab.gnome.org/GNOME/libglnx.git#commit=ff64d52116ae74f0d25e24f089db28921ea171ff"
 )
-b2sums=('efb8eb0a08f6d47d08b794ce17be434f9271364d67765f431e84de2bd1839a12b641ed0b4f3c5174ccfa3b4f34250230ded6bfc258fd223f12044893fb6b3619'
+b2sums=('1eb3457bcf2d6db190bd2e9086cec6bbe7e383136f2f5d6fe9b2d637f81143f0361d67fae752f2a1a9a14049fc3ce29b948803513f3d98619a41182dab56bf3d'
         'd8637ce7c2887fbf34b1d0788d04c9afefbbaa03252360639ee097fc075356876e0800ba9c5eb26c85f9265dcf05d0281aaedce70a953a38530203b7bcc09a9c'
         '9d4bcd5c69a82fe19fef70d467d07e03daa97d640e1f1fd5bcaef28cb7f3d476b4bb0fdc4b4b7d584c4408082e110dc977cc40a046b1d1ce8e93c34eddd5795c')
 validpgpkeys=(
