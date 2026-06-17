@@ -1,8 +1,8 @@
 # Maintainer: Ignacio Perez <ignacio@feuer.me>
 
 pkgname=dbflux
-pkgver=0.4.7
-pkgrel=3
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="A fast, keyboard-first database client"
 arch=('x86_64' 'aarch64')
 url="https://github.com/0xErwin1/dbflux"
@@ -33,11 +33,15 @@ depends=(
     'hicolor-icon-theme'
 )
 
-source_x86_64=("${url}/releases/download/v${pkgver}/dbflux-linux-amd64.tar.gz")
-source_aarch64=("${url}/releases/download/v${pkgver}/dbflux-linux-arm64.tar.gz")
+source_x86_64=("${url}/releases/download/v${pkgver}/dbflux-linux-amd64.tar.gz"{,.asc})
+source_aarch64=("${url}/releases/download/v${pkgver}/dbflux-linux-arm64.tar.gz"{,.asc})
 
-sha256sums_x86_64=('ef8cd737d5c3783b43281fed94689b24237f3cc2cd1c2d1d06fc5dfe3da487f5')
-sha256sums_aarch64=('de8dde2c23edda17f1f3897b6cf0b56e476740f11134ab8e1ab02e309e6893b2')
+sha256sums_x86_64=('41bc8a2236c83dbb9d6fc2304bce9470ddb963b2dc1e08b6723c0ffc1cc277f0'
+                   'SKIP')
+sha256sums_aarch64=('135145b9dbbe91d6325473da8f14eebe70cfeb7fc985e98388c91ac46adcd554'
+                    'SKIP')
+
+validpgpkeys=('B39EB98E8860DAFB05670073A614B7D25134987A')
 
 package() {
     install -Dm755 dbflux "${pkgdir}/usr/bin/dbflux"
