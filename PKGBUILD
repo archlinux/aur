@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="pipelex"
-pkgver=0.33.0
+pkgver=0.34.0
 pkgrel=1
 pkgdesc="Open-source language for AI Agents to create and run repeatable AI workflows"
 
@@ -17,7 +17,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 depends=('python' 'python-shortuuid' 'python-pydantic-core' 'python-posthog' 'python-strenum' 'python-anthropic' 'python-pydantic' 'python-fal-client' 'python-yaml' 'python-httpx' 'python-google-auth' 'python-rich' 'python-instructor' 'python-tomli' 'python-kajson' 'python-markdown' 'python-typing_extensions' 'python-dotenv' 'python-aiobotocore' 'python-aioboto3' 'python-filetype' 'python-typer' 'python-yattag' 'python-pillow' 'python-tomlkit' 'python-openai' 'python-json2html' 'python-click' 'python-google-genai' 'python-polyfactory' 'python-boto3' 'python-aiofiles' 'python-pytest' 'python-jinja' 'python-pypdfium2' 'python-mistralai' 'python-networkx')
 
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f85801e406ae3c15a0c8c7934285549b08199d1b5149b36d6111b371d6b4a9b7')
+sha256sums=('195ba7e0ab46eb234fb8b7a81bf328d6cf7b7c084675c2fca880802ca8ed488f')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
