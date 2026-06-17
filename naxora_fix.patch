@@ -1,0 +1,37 @@
+diff '--color=auto' -Naur pkg2zip-2.6-old/pkg2zip_out.c pkg2zip-2.6/pkg2zip_out.c
+--- pkg2zip-2.6-old/pkg2zip_out.c	2026-06-17 14:26:48.504611662 -0400
++++ pkg2zip-2.6/pkg2zip_out.c	2026-06-17 14:29:15.434829031 -0400
+@@ -40,7 +40,7 @@
+ void out_add_parent(const char* path)
+ {
+     char parent[1024];
+-    char* lastslash = strrchr(path, '/');
++    const char* lastslash = strrchr(path, '/');
+     if (lastslash != NULL)
+     {
+         snprintf(parent, strlen(path)-strlen(lastslash)+1, "%s", path);
+diff '--color=auto' -Naur pkg2zip-2.6-old/pkg2zip_sys.c pkg2zip-2.6/pkg2zip_sys.c
+--- pkg2zip-2.6-old/pkg2zip_sys.c	2026-06-17 14:26:48.504760288 -0400
++++ pkg2zip-2.6/pkg2zip_sys.c	2026-06-17 14:31:42.262139061 -0400
+@@ -271,14 +271,18 @@
+ 
+ void sys_mkdir(const char* path)
+ {
+-    char* last = strrchr(path, '/');
++    char path_copy[2048];
++    strncpy(path_copy, path, sizeof(path_copy) - 1);
++    path_copy[sizeof(path_copy) - 1] = 0;
++
++    char* last = strrchr(path_copy, '/');
+     if (last)
+     {
+         *last = 0;
+-        sys_mkdir(path);
++        sys_mkdir(path_copy);
+         *last = '/';
+     }
+-    sys_mkdir_real(path);
++    sys_mkdir_real(path_copy);
+ }
+ 
+ void* sys_realloc(void* ptr, size_t size)
