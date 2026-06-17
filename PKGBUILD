@@ -11,7 +11,7 @@ options=('!buildflags' '!strip' 'staticlibs')
 source=("https://mumps-solver.org/MUMPS_${pkgver}.tar.gz")
 sha256sums=('02c6efdb91749ec0f82351d40f3f860547272a1eb1d899126a4265b4d6bcc4ca')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare () {
   cd "${srcdir}/MUMPS_${pkgver}"
