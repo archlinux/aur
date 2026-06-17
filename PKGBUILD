@@ -4,8 +4,8 @@
 #https://comate-ide.bj.bcebos.com/updates/stable/linux/x64/latest.json
 pkgname=comate-bin
 _pkgname=Comate
-pkgver=2.1.2
-_version=abff953ef9fd72cfae07b2d96e0e66c91de5e5a6-256366291
+pkgver=2.1.4
+_version=abff953ef9fd72cfae07b2d96e0e66c91de5e5a6-256928360
 _electronversion=39
 pkgrel=1
 pkgdesc="Code as you like, one step ahead, and understand your intelligent code assistant better.(Prebuilt version)"
@@ -18,6 +18,7 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
+    'nodejs'
     'python'
     'python-fonttools'
     'perl'
@@ -25,8 +26,6 @@ depends=(
     'libsecret'
     'webkit2gtk-4.1'
     'python-yaml'
-    'python-pillow'
-    'python-requests'
 )
 optdepends=(
     'bash'
@@ -44,15 +43,18 @@ source=(
     "${pkgname%-bin}.sh"
 )
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::https://comate-ide.cdn.bcebos.com/download/stable/${_version}/${_pkgname}-linux-x64.tar.gz")
-sha256sums=('23cf0afd7454b922cb91f58d68e1406eb85ac5d8c685f6ad9b025f3d063c9dcf'
+sha256sums=('a8bc5fd3f812e99060966d24f38295a1b07874e82bb5f28bfa8633b0f173af39'
             'df2535dcf1679b8681a27f35a445c08300d34b0336af0dea07f0fbcd5ef5e946'
             '0c8fee636da036e57fcde0385bdc698126c4b179de663ad315e8299d483abc9d'
             '787bf0078b80c66fa5b8191991700afd6e32e9f285cdb32f69791b8894c86fd5'
             '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
-sha256sums_x86_64=('23ce722ef823b33a5a648b4c74ef568d53d8ebb173189bf858588da9c5fc8a58')
+sha256sums_x86_64=('e830e88bd6f5afc5e9943e58f3e1d187a0b6c3fc19d6a742fdd84d6d78ec50f6')
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
 _check_electron_version() {
     echo "Verifying Electron version..."
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _app_dir=$(_get_app_dir)
     local _main_exe=""
     if [[ -n "${_app_dir}" ]]; then
         _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
@@ -79,11 +81,18 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
     sed -i "s/@ELECTRON@/electron${_electronversion}/g" "${srcdir}/${pkgname%-bin}.js"
+    # 删除其他平台的预编译 .node 文件
+    local _app_dir=$(_get_app_dir)
+    find "${_app_dir}/resources/app" -path "*/prebuilds/*" \
+        ! -path "*/linux-x64/*" -name "*.node" -delete
+    rm -rf "${_app_dir}/resources/app/extensions/baiducomate.comate/dist/comate-engine/node_modules/tree-sitter-bash/prebuilds/"{win32-x64,win32-arm64,darwin-x64,darwin-arm64}
+    find "${_app_dir}/resources/app" -name "win32-*" -name "*.node" -delete
+    rm -rf "${_app_dir}/resources/app/extensions/preview-dev-tools"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/app/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/${_pkgname}-linux-x64/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}"*.desktop -t "${pkgdir}/usr/share/applications"
