@@ -6,5 +6,5 @@ Exec=ARC-Client %u
 Terminal=false
 Icon=arc-client
 StartupWMClass=ARC-Client
-Comment=The transparent, feature-rich desktop bridge for VRChat remote control
+Comment=A Tool that allows you to remotely control your VRChat avatar parameters through a web interface
 Categories=Network;Game;

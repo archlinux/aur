@@ -3,7 +3,7 @@
 
 pkgname='arc-client'
 _pkgname='ARC-Client'
-pkgdesc='The transparent, feature-rich desktop bridge for VRChat remote control'
+pkgdesc='A Tool that allows you to remotely control your VRChat avatar parameters through a web interface'
 pkgver='0.93.1'
 pkgrel='1'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("ARC-Client-v$pkgver.tar.gz::https://codeload.github.com/ComfyChloe/$_pk
 	'arc-client.png')
 sha256sums=('e1b5e577e0d60edf5b6b8c8af2b941213910862594468227bddbea876df2c6b0'
             '993b283cd87f95728a825dffc97f7f72908903eda2fd7e6660f0983aff2f971a'
-            '365440dc1c22876306b9d832e5d0adaa76b74a67ba0eaf4dafee9804a03b381d'
+            '24ce6b59cf8b0498d77d1601512e49624367578595fb03f4f1396c38d28a8421'
             'a315bea3d9ec1771340662c8e8cd9249d5fb69f4b3a0557bbe24c43a68560716')
 build() {
     cd "$_pkgname-$pkgver"
