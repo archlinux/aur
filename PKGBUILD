@@ -1,5 +1,5 @@
 pkgname=qml-niri
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='QML plugin for interacting with niri via IPC'
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('qt6-base' 'qt6-declarative')
 optdepends=('niri: Wayland compositor backend used by this plugin')
 makedepends=('cmake' 'patchelf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0c536883ffe7a449500faf1aa66aada867aadd404ba748a4de6f33591ab2319c')
+sha256sums=('f8ed442aa4850c35fa9c95a8904b7a3317d2335a72bcc2dbb6f5ea7866c47d06')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
@@ -24,7 +24,8 @@ package() {
   module_dir="$pkgdir/$qml_import_path/Niri"
 
   install -d "$pkgdir/$qml_import_path"
-  cp -a "$srcdir/build/Niri" "$pkgdir/$qml_import_path/"
+  cp -r "$srcdir/build/Niri" "$pkgdir/$qml_import_path/"
+  rm -f "$module_dir/Niri_qml_module_dir_map.qrc"
   patchelf --set-rpath '$ORIGIN' "$module_dir/libNiriplugin.so"
 
   install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" \
