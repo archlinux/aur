@@ -28,7 +28,6 @@ pkgver() {
 
 prepare() {
   cd "${_pkgname}"
-  sed -i "s/cc.find_library('ogdf'/cc.find_library('OGDF'/g" meson.build
   patch -p1 < ../0001-fix-build-for-poppler-26.06.patch
 }
 
