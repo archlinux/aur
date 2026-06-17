@@ -1,7 +1,7 @@
 pkgbase = python-svix
 	pkgdesc = Svix webhooks API client and webhook verification library
 	pkgver = 1.95.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/svix/svix-webhooks/tree/main/python
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = python-svix
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = python
 	depends = python-deprecated
 	depends = python-pydantic

@@ -9,7 +9,7 @@
 _name=svix
 pkgname=python-${_name}
 pkgver=1.95.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Svix webhooks API client and webhook verification library"
 url="https://github.com/svix/svix-webhooks/tree/main/python"
 license=('MIT')
@@ -27,6 +27,7 @@ makedepends=(
 	'python-installer'
 	'python-setuptools'
 	'python-wheel'
+    'python-hatchling'
 )
 
 source=(
@@ -38,12 +39,12 @@ sha256sums=('8b3ef2a0ce27056fd4467addfccce8c642d71cb4e3cbd9be9164f82a0dc3acbe'
 
 build() {
     cd $_name-$pkgver
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd $_name-$pkgver
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
     cd ..
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
