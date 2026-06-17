@@ -1,4 +1,4 @@
-# Maintainer: Jerome Kerdreux <Jerome.Kerdreux@Finix.eu.org>
+# Maintainer: Jerome Kerdreux <Jerome.Kerdreux at Finix.eu.org>
 pkgname=owns
 pkgver=0.11.1
 pkgrel=1
