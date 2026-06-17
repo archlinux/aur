@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=ARC-Client
+Version=@PACKAGE_VERSION@
+Exec=ARC-Client %u
+Terminal=false
+Icon=arc-client
+StartupWMClass=ARC-Client
+Comment=The transparent, feature-rich desktop bridge for VRChat remote control
+Categories=Network;Game;

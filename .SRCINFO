@@ -1,0 +1,21 @@
+pkgbase = arc-client
+	pkgdesc = The transparent, feature-rich desktop bridge for VRChat remote control
+	pkgver = 0.93.1
+	pkgrel = 1
+	url = https://arcosc.app/
+	arch = x86_64
+	license = Comfy Chloe Non-Commercial Copyleft License 1.2
+	makedepends = node-gyp
+	makedepends = npm
+	makedepends = asar
+	depends = electron39
+	source = ARC-Client-v0.93.1.tar.gz::https://codeload.github.com/ComfyChloe/ARC-Client/tar.gz/refs/tags/v0.93.1
+	source = ARC-Client
+	source = ARC-Client.desktop
+	source = arc-client.png
+	sha256sums = e1b5e577e0d60edf5b6b8c8af2b941213910862594468227bddbea876df2c6b0
+	sha256sums = 993b283cd87f95728a825dffc97f7f72908903eda2fd7e6660f0983aff2f971a
+	sha256sums = 365440dc1c22876306b9d832e5d0adaa76b74a67ba0eaf4dafee9804a03b381d
+	sha256sums = a315bea3d9ec1771340662c8e8cd9249d5fb69f4b3a0557bbe24c43a68560716
+
+pkgname = arc-client

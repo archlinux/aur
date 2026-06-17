@@ -1,0 +1,18 @@
+#!/bin/sh
+#Store pwd in case launched in shell
+CurDir=$PWD
+
+#If config dir does not exist, make it
+if [ ! -d "$HOME/.config/ARC-Client" ];
+then
+        mkdir -p $HOME/.config/ARC-Client
+fi
+
+#Change dir to ensue userdata goes to .config
+cd $HOME/.config/ARC-Client
+
+#Launch application
+exec /usr/bin/electron /usr/lib/ARC-Client --no-sandbox --ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime=true "$@"
+
+#Return to starting dir
+cd $CurDir

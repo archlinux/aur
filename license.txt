@@ -1,0 +1,108 @@
+ComfyChloe Non-Commercial Copyleft License 1.2
+
+Copyright (c) 2016-2026 ComfyChloe
+
+This License applies to the source code and related project files in this repository, except for any file that states different license terms.
+
+By exercising any right granted under this License, you accept and agree to be bound by its terms. Any use, copying, modification, or Distribution of the Software that does not comply with this License is unauthorized.
+
+The Software is licensed, not sold. The copyright holder retains all right, title, and interest in and to the Software, except for the limited rights expressly granted under this License.
+
+1. Definitions
+
+"Commercial Use" means any use of the Software, or any exercise of rights granted under this License, for commercial advantage, private monetary compensation, revenue generation, business operations, or in connection with any product, service, offering, contract, subscription, donation campaign, advertising activity, paid hosting, paid access, sale, resale, licensing for a fee, consulting engagement, or other monetized activity. Commercial Use includes internal use by or for a business or other organization in furtherance of commercial activity.
+
+"Derivative Work" means any work based upon, derived from, adapted from, modified from, or incorporating all or any part of the Software, to the extent permission from the copyright holder would be required under applicable copyright law. A Derivative Work includes modified versions, forks, ports, translated versions, and larger works that contain or incorporate the Software. Mere aggregation of the Software with separate and independent works on the same storage medium does not by itself create a Derivative Work.
+
+"Distribution" means to provide, publish, communicate, transmit, transfer, sublicense, make available, or otherwise convey the Software or a Derivative Work to any third party, whether in Source Code form, Object Code form, executable form, over a network, by download, by physical media, or by any other means.
+
+"Object Code" means any non-source form of the Software, including compiled, assembled, minified, obfuscated, generated, packaged, or executable form.
+
+"Software" means the copyrighted work made available under this License, including all source code and related project files to which this License is applied.
+
+"Source Code" means the preferred form of the Software for making modifications. Source Code includes interface definition files, build files, installation scripts, configuration files, and other files reasonably necessary to generate, install, run, and modify the Software. Source Code does not include general-purpose tools or third-party components that are separately licensed and commonly available.
+
+2. License Grant
+
+Subject to full and ongoing compliance with this License, the copyright holder grants you a limited, non-exclusive, worldwide, royalty-free license to:
+
+- use the Software for personal, educational, research, and community purposes that are not Commercial Use
+- copy the Software
+- modify the Software
+- create Derivative Works
+- Distribute the Software and Derivative Works only as expressly permitted by this License
+
+No rights are granted by implication, estoppel, or otherwise. All rights not expressly granted are reserved.
+
+3. Conditions of Distribution
+
+You may Distribute the Software or a Derivative Work only if all of the following conditions are satisfied:
+
+- you include a complete copy of this License with the Distribution
+- you preserve all existing copyright, attribution, and legal notices
+- you clearly state that you changed the Software, if you made changes
+- you make the complete corresponding Source Code for the exact distributed version available under this same License at no charge, either in the same Distribution or through a durable public source repository or download location
+- any Derivative Work, and any larger work that contains or incorporates the Software, in whole or in part, must be licensed in its entirety under this same License
+- you do not impose any additional legal, technical, or contractual restriction that limits any recipient's rights under this License
+
+4. Non-Commercial Restriction
+
+You may not engage in Commercial Use of the Software or any Derivative Work without the prior express written permission of the copyright holder.
+
+Without limiting the previous sentence, you may not, without prior express written permission:
+
+- sell or resell the Software or any Derivative Work
+- charge a fee for access to, download of, use of, or support for the Software or any Derivative Work
+- bundle the Software or any Derivative Work with any paid product, paid service, paid subscription, or paid support offering
+- host or make the Software available as part of a commercial or revenue-generating service
+- use the Software or any Derivative Work in connection with advertising, sponsorship, fundraising, donations tied to access, or any other monetized distribution model
+
+Separate commercial licenses may be obtained directly from the copyright holder by express written agreement.
+
+5. No Closed-Source Redistribution
+
+You may not Distribute the Software or any Derivative Work in Object Code form, executable form, or any other form unless the complete corresponding Source Code is made available under this same License in compliance with Section 3.
+
+You may not Distribute the Software or any Derivative Work under a private, proprietary, confidential, closed-source, source-available-only-to-selected-persons, or otherwise incompatible license.
+
+6. Attribution, Name, and Branding
+
+You must preserve reasonable attribution to the original copyright holder in source distributions and in any notices customarily provided with Object Code distributions.
+
+This License does not grant any right to use any name, handle, logo, trademark, trade dress, or brand of the copyright holder, except as reasonably necessary to provide factual attribution and to identify the origin of the Software.
+
+You may not state or imply that the copyright holder endorses you, your Derivative Work, or your Distribution.
+
+7. Contributions
+
+Unless the parties agree otherwise in writing, any contribution intentionally submitted for inclusion in the Software is licensed to the copyright holder and to all recipients under this same License.
+
+8. Termination and Infringement
+
+This License, and all rights granted under it, terminate automatically and immediately upon any violation of its terms.
+
+Upon termination, you must immediately cease all use, copying, modification, and Distribution of the Software and any Derivative Work, except to the extent separate written permission is granted by the copyright holder.
+
+Any use, copying, modification, public display, public performance, or Distribution of the Software or any Derivative Work that is not expressly permitted by this License, whether before or after termination, is outside the scope of this License, unlicensed, unauthorized, and constitutes copyright infringement to the maximum extent permitted by applicable law.
+
+The copyright holder may enforce this License through copyright enforcement mechanisms, including takedown demands, copyright infringement notices, and any other remedy available under applicable law.
+
+9. No Waiver
+
+Failure by the copyright holder to enforce any provision of this License does not waive the right to enforce that provision or any other provision later.
+
+10. Governing Law and Jurisdiction
+
+This License and any dispute, claim, or controversy arising out of or in connection with this License, the Software, or any use of the Software shall be governed by and construed in accordance with the laws of England and Wales, excluding its conflict of laws rules.
+
+Subject to any mandatory law to the contrary, the courts of England and Wales shall have exclusive jurisdiction over any dispute, claim, or controversy arising out of or in connection with this License, the Software, or any use of the Software.
+
+11. No Warranty
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OF OR OTHER DEALINGS IN THE SOFTWARE.
+
+12. Summary of Intent
+
+This License is intended to permit sharing, modification, and open Distribution of the Software while requiring strong copyleft, prohibiting Commercial Use without permission, prohibiting sale and monetized Distribution without permission, and prohibiting closed-source redistribution.
