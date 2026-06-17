@@ -1,0 +1,11 @@
+post_install() {
+  echo "--------------------------------------------------------------------------------"
+  echo " If you want to call the bare toolchain directly (e.g. mips64-elf-gcc or 'make'"
+  echo " on a libdragon project) remember to set the N64_INST environment variable:"
+  echo "    export N64_INST=/opt/libdragon"
+  echo "--------------------------------------------------------------------------------"
+}
+
+post_upgrade() {
+  post_install $1
+}

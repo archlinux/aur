@@ -1,7 +1,7 @@
 # Maintainer: Tomas Runz Jensen <tomasrj@outlook.dk>
 
 pkgname=pyrite64-bin
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="N64 Game-Engine and Editor using libdragon & tiny3d"
 arch=('x86_64')
@@ -11,18 +11,18 @@ depends=('libpng' 'libusb' 'zlib' 'libmpc' 'mpfr' 'gmp')
 makedepends=('git' 'make')
 provides=('pyrite64' 'libdragon' 'libdragon-toolchain' 'mips64-elf-gcc' 'tiny3d')
 conflicts=('libdragon' 'libdragon-git' 'libdragon-tools-git' 'mips64-elf-gcc' 'tiny3d' 'tiny3d-git')
+install=pyrite64-bin.install
 source=(
     "https://github.com/DragonMinded/libdragon/releases/download/toolchain-continuous-prerelease/gcc-toolchain-mips64-x86_64.deb"
     "git+https://github.com/DragonMinded/libdragon.git#branch=preview"
-    "https://github.com/HailToDodongo/pyrite64/releases/download/v${pkgver}/pyrite64-linux-${pkgver//./_}.zip"
+    "https://github.com/HailToDodongo/pyrite64/releases/download/v${pkgver}/pyrite64-linux-${pkgver//./_}.AppImage"
     "git+https://github.com/HailToDodongo/tiny3d.git"
-    "pyrite64.desktop"
 )
+noextract=("pyrite64-linux-${pkgver//./_}.AppImage")
 sha512sums=('97f51a8eb590569740d88876d1e1442b80781448e132ad5fa02e5fa5c3a04d96b25a5ba703d40dbb3cfa42812e8c26957bd3a04f08f2a91400d2938e7c850c52'
             'SKIP'
-            '93ad15d8490fd331b400788bf8485d3f03f3c3b8c78b25df24e3f806ef632a6fb2545dc6333476184a13a19a7dd3c20e4ae999ddf577cb4110a068c7e91673e0'
-            'SKIP'
-            '7fa6cf338fe0c7d18122239a5dda749a3b08a18e64b76d6e042b005a89f01656641639d0d0584f91554d2a8c6c0614294dc7d6c013652f37b9efb1c70e37ce47')
+            'd714caffc163853b257c8a5fcfd853524af881e6b44502acda08bead440911475d87b5a0dd3b2e9536e128e227b2815d5a5f9b7567f5d9cab014d5b8e0d68734'
+            'SKIP')
 options=('!strip')
 
 prepare() {
@@ -47,6 +47,17 @@ prepare() {
             return 1
         fi
         cd ..
+    fi
+
+    msg2 "Extracting Pyrite64 AppImage..."
+    rm -rf squashfs-root
+    local appimage="pyrite64-linux-${pkgver//./_}.AppImage"
+    if [ -f "$appimage" ]; then
+        chmod +x "$appimage"
+        "./$appimage" --appimage-extract >/dev/null
+    else
+        error "Pyrite64 AppImage not found: $appimage"
+        return 1
     fi
 }
 
@@ -122,10 +133,6 @@ package() {
         return 1
     fi
     
-    install -d "${pkgdir}/etc/profile.d"
-    echo 'export N64_INST=/opt/libdragon' > "${pkgdir}/etc/profile.d/libdragon.sh"
-    chmod 755 "${pkgdir}/etc/profile.d/libdragon.sh"
-    
     msg2 "Installing Tiny3D..."
 
     local gltf_bin="${srcdir}/tiny3d/tools/gltf_importer/gltf_to_t3d"
@@ -137,24 +144,29 @@ package() {
     fi
 
     msg2 "Installing Pyrite64..."
-    
+
+    local appdir="${srcdir}/squashfs-root/usr"
+
     install -d "${pkgdir}/opt/pyrite64"
 
-    if [ -f "pyrite64" ]; then
-        install -m755 "pyrite64" "${pkgdir}/opt/pyrite64/"
+    if [ -f "${appdir}/bin/pyrite64" ]; then
+        install -m755 "${appdir}/bin/pyrite64" "${pkgdir}/opt/pyrite64/"
+    else
+        error "pyrite64 binary not found in extracted AppImage."
+        return 1
     fi
-    
-    # Install directories found in zip (n64, data)
+
+    # Install runtime assets shipped alongside the binary (n64, data)
     for dir in n64 data; do
-         if [ -d "$dir" ]; then
-             cp -r "$dir" "${pkgdir}/opt/pyrite64/"
+         if [ -d "${appdir}/bin/$dir" ]; then
+             cp -r "${appdir}/bin/$dir" "${pkgdir}/opt/pyrite64/"
          fi
     done
 
     install -d "${pkgdir}/usr/bin"
 
-    # Use wrapper scripts instead of symlinks so N64_INST is always set,
-    # even for GUI launches (desktop entry) where profile.d is not sourced.
+    # Use wrapper scripts instead of symlinks so N64_INST is always set for the
+    # editor and importer, regardless of how they are launched (terminal or GUI).
     install -dm755 "${pkgdir}/usr/bin"
     cat > "${pkgdir}/usr/bin/pyrite64" << 'EOF'
 #!/bin/sh
@@ -177,9 +189,14 @@ EOF
     # Ensure permissions for toolchain binaries
     chmod +x "${pkgdir}/opt/libdragon/bin/"* 2>/dev/null || true
 
-    if [ -f "LICENSE" ]; then
-        install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    if [ -f "${appdir}/bin/LICENSE" ]; then
+        install -D -m644 "${appdir}/bin/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
 
-    install -Dm644 "${srcdir}/pyrite64.desktop" "${pkgdir}/usr/share/applications/pyrite64.desktop"
+    # Desktop entry and icon shipped inside the AppImage (Icon=pyrite64 resolves
+    # to the hicolor PNG below).
+    install -Dm644 "${appdir}/share/applications/pyrite64.desktop" \
+        "${pkgdir}/usr/share/applications/pyrite64.desktop"
+    install -Dm644 "${appdir}/share/icons/hicolor/256x256/apps/pyrite64.png" \
+        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/pyrite64.png"
 }
