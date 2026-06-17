@@ -2,7 +2,7 @@
 
 pkgname=aaronia-mcs
 pkgver=2.1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Aaronia AG - MCS Spectrum Analyzer Software."
 url=http://www.aaronia.de
 arch=(x86_64)
@@ -13,7 +13,6 @@ provides=(aaronia-mcs)
 conflicts=(aaronia-mcs)
 
 source=()
-
 sha512sums=()
 
 prepare() {
@@ -41,8 +40,9 @@ prepare() {
 
 
 package() {
-  tar -xf data.tar.?z -C "$pkgdir" ./opt
+  tar -xf data.tar.xz -C "$pkgdir" ./opt
   rm -rf $pkgdir/opt/aaronia
 	chmod 755 $pkgdir/opt
+  mkdir -p $pkgdir/usr/share/applications
+  mv $pkgdir/opt/Aaronia/MCS/share/applications/aaronia*.desktop $pkgdir/usr/share/applications/
 }
-

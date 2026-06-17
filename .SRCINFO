@@ -1,7 +1,7 @@
 pkgbase = aaronia-mcs
 	pkgdesc = Aaronia AG - MCS Spectrum Analyzer Software.
 	pkgver = 2.1.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.aaronia.de
 	arch = x86_64
 	license = GPL
