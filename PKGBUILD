@@ -1,7 +1,7 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.0-rc.16
+_pkgver=13.0.0-rc.17
 _branding=catppuccin
 
 __pkgname=$_pkgname-catppuccin
@@ -87,23 +87,15 @@ options=(
 source=(
   $_pkgname-v$_pkgver.source.tar.xz::$url/-/releases/v$_pkgver/downloads/$_pkgname.source.tar.xz
   fix-wasm32-wasi-target.patch
-  0023-bgo-969412-glibc-2.43.patch
-  fix-webrender-cbindgen.patch
 )
-sha256sums=('959314f51b7a64f2d34ce6e4ac2e50029034a3b8e1c3ba3f6f2d916db0b99264'
-            'f7ba345f2b82ce4eab315f15f388e907bed86e00a3011ccd79e732f4e8762124'
-            '25e8f2e706aa837f5b6e3c003a6c7f42b07f0a7366d10f9e0d5ad38053767aae'
-            '9a8caaa44784ee7e487cb3dc2d5cc53c0ee49958d27c22baf93c509d9209c18d')
+sha256sums=('113570941575cd72270536614b1b7abbeea479b5f53a790ebfe32c9e5e5cba20'
+            'f7ba345f2b82ce4eab315f15f388e907bed86e00a3011ccd79e732f4e8762124')
 
 prepare() {
   mkdir -p mozbuild
   cd $_pkgname-v$_pkgver
 
   patch -Nsp1 -i "$srcdir"/fix-wasm32-wasi-target.patch
-  patch -Nsp1 -i "$srcdir"/0023-bgo-969412-glibc-2.43.patch
-  patch -Nsp1 -i "$srcdir"/fix-webrender-cbindgen.patch
-
-  sed -i -e 's/\("files":{\)[^}]*/\1/' third_party/rust/glslopt/.cargo-checksum.json
 
   cd browser/$_pkgname
   pnpm install --frozen-lockfile
