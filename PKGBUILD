@@ -3,7 +3,7 @@
 
 pkgname=zelda3reborn-beta-git
 pkgver=r14.519e3ae
-pkgrel=1
+pkgrel=2
 pkgdesc='A reverse engineered port of Zelda 3 - A Link to the Past with modern enhancements'
 url='https://github.com/xander-haj/Z3R-Beta'
 arch=("x86_64")
