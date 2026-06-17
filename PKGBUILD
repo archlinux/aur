@@ -1,9 +1,9 @@
 # Maintainer: trb.exe <trb.exe@mail.ru>
 pkgname=zurvivalremastered-bin
-pkgver=2.0.5
-pkgrel=2
-_tag="v2.0.5-Demo-prerelease01" # github release tag in address bar
-_name="zurvivalremastered_prerelease_288_linux.zip" # zip file name
+pkgver=2.0.329
+pkgrel=3
+_tag="v2.0.5-Demo-prerelease02" # github release tag in address bar
+_name="zurvivalremastered_prerelease_329_linux.zip" # zip file name
 pkgdesc="Zurvival Remastered - Game about a survival in a zombie apocalypse."
 arch=('x86_64')
 url="https://github.com/klodskateam/zurvival-remastered"
@@ -16,7 +16,7 @@ source=("https://github.com/klodskateam/zurvival-remastered/releases/download/${
         "zurvivalremastered.desktop"
         "zurvivalremastered.png")
 
-sha256sums=('b3797dda400a5a95839634909c440f562603c96914d6659f5d3830bcf15df261'
+sha256sums=('3039abdd1c0c2d67bede11e760a949155b072852a9aa1068eb180cf382e37f0b'
             'cabe3f7c08ef672c69856e61fb62da7233c17972ca27d5d86974820ee854008f'
             'dc9a8132dcab5eadb525c3597e8eba10761d7cc0c3474dab7ffe6359e55158ed')
 
