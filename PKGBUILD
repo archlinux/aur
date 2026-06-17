@@ -3,7 +3,7 @@
 # Contributor: R1D3R175
 
 pkgname=spek-x-git
-pkgver=v0.9.0.r47.gb3b8978
+pkgver=0.9.4.r0.gb3b8978
 pkgrel=1
 pkgdesc='Acoustic spectrum analyser forked from spek.'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -19,8 +19,8 @@ md5sums=('SKIP'
          '3ffa85d8f4534a67fd160687ece07014')
 
 pkgver() {
-    cd $pkgname
-    git describe --long 2>/dev/null | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    cd "$srcdir/$pkgname"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//'
 }
 
 prepare() {
