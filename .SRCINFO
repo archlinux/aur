@@ -1,7 +1,7 @@
 pkgbase = orca-slicer-bin
 	pkgdesc = G-code generator for 3D printers
 	pkgver = 2.3.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/SoftFever/OrcaSlicer
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -9,6 +9,7 @@ pkgbase = orca-slicer-bin
 	depends = cairo
 	depends = gtk3
 	depends = gstreamer
+	depends = gst-plugins-good
 	depends = wayland
 	depends = webkit2gtk-4.1
 	depends = mesa-utils

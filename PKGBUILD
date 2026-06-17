@@ -2,12 +2,14 @@
 
 pkgname=orca-slicer-bin
 pkgver=2.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="G-code generator for 3D printers"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
 license=('AGPL-3.0-only')
-depends=('glu' 'cairo' 'gtk3' 'gstreamer' 'wayland' 'webkit2gtk-4.1' 'mesa-utils' 'libmspack' 'libice' 'libsm')
+depends=('glu' 'cairo' 'gtk3' 'gstreamer' 'gst-plugins-good'
+         'wayland' 'webkit2gtk-4.1' 'mesa-utils' 'libmspack'
+         'libice' 'libsm')
 provides=("orca-slicer")
 conflicts=("orca-slicer")
 options=(!strip !zipman !debug)
