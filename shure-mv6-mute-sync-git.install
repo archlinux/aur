@@ -8,7 +8,7 @@ _dkms_ver() {
 post_install() {
     local _ver
     _ver=$(_dkms_ver)
-    dkms install --no-depmod "${_dkms_name}/${_ver}" --all
+    dkms install --no-depmod "${_dkms_name}/${_ver}"
     depmod -A
     modprobe hid_shure_mv6 && echo ">>> hid_shure_mv6 loaded." \
         || echo ">>> Warning: modprobe failed; reboot or run: modprobe hid_shure_mv6"
@@ -21,7 +21,7 @@ post_upgrade() {
     dkms status "${_dkms_name}" | awk -F'[,/]' '{print $2}' \
         | grep -v "^[[:space:]]*${_ver}$" \
         | xargs -rI{} dkms remove "${_dkms_name}/{}" --all 2>/dev/null || true
-    dkms install --no-depmod "${_dkms_name}/${_ver}" --all
+    dkms install --no-depmod "${_dkms_name}/${_ver}"
     depmod -A
     modprobe hid_shure_mv6 2>/dev/null || true
 }
