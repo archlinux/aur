@@ -1,3 +1,27 @@
+Mullvad Browser 15.0.16 - June 16 2026
+ * All Platforms
+   * Updated Firefox to 140.12.0esr
+   * Updated NoScript to 13.6.24.1984
+   * Updated uBlock Origin to 1.71.0
+   * Bug 553: Rebase Mullvad Browser stable onto 140.12.0esr [mullvad-browser]
+   * Bug 45044: NS 13.6.19.902 DocStartInjection regressed [tor-browser]
+   * Bug 45054: Backport Security Fixes from Firefox 152 [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 41802: Remove the tor daemon requirement for signing [tor-browser-build]
+
+Mullvad Browser 15.0.16 - June 15 2026
+ * All Platforms
+   * Updated Firefox to 140.12.0esr
+   * Updated NoScript to 13.6.23.1984
+   * Updated uBlock Origin to 1.71.0
+   * Bug 553: Rebase Mullvad Browser stable onto 140.12.0esr [mullvad-browser]
+   * Bug 45044: NS 13.6.19.902 DocStartInjection regressed [tor-browser]
+   * Bug 45054: Backport Security Fixes from Firefox 152 [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 41802: Remove the tor daemon requirement for signing [tor-browser-build]
+
 Mullvad Browser 15.0.14 - May 19 2026
  * All Platforms
    * Updated Firefox to 140.11.0esr
