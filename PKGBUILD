@@ -6,8 +6,8 @@
 pkgbase=weewx
 pkgname=("weewx" "weewx-docs")
 _MAJOR=5
-_MINOR=3
-_PATCH=1
+_MINOR=4
+_PATCH=0
 pkgver=$_MAJOR.$_MINOR.$_PATCH
 
 function _dl_url {
@@ -30,7 +30,7 @@ makedepends=("mkdocs"
 source=("$pkgbase-$pkgver.tar.xz::$(_dl_url $_MAJOR $_MINOR $_PATCH)"
         "weewx.sysusers"
         "weewx.tmpfiles")
-sha512sums=('f1ed27e7c2a886e5fc6691e08e45a590457aa803ebd311cf7e25e3a24168d4d9ed7cb1d6da27f5bf91e524aeabe1105d48d67c30754a03577690c7cda3f49c1e'
+sha512sums=('ac3d8f6f98a5004c7a3d2c269be4bc55a0a17ec717ae2d072cd75c2c7cb67022d8efe4901894bbcc90958f580edfb58e8bd027c8c3b5fd9a8dc34fadb789e0d5'
             '6015b870143f6b8ae094b3f94ad53323be8a083f11c177dc508315fb3bbc20dd318124e6ccd41ba9d0388828e18c4b4ae6ce7c4a35ac0cab442eca9e8bbbca2d'
             'e97b287acf53c55d30f4e1a4d533fe5c649fac44080095fa1052f6f1cc9a55b6b0592d63c63a4a241e7007894e882648d5c4c4a221da69666e284637c5a3e15e')
 _watch="http://www.weewx.com/downloads/"
