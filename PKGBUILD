@@ -1,4 +1,4 @@
-# Maintainer: Bennie <bennie@local>
+# Maintainer: Bennie Kahler-Venter <bkahlerventer@gmail.com>
 # Self-contained Falco runtime security package for Arch Linux.
 #
 # One package, not the upstream AUR split. Ships the falco engine,
@@ -64,7 +64,7 @@ install=falco.install
 # key. Replace this with the actual fingerprint once bootstrap
 # has been run; until then, AUR's "unknown maintainer key" warning
 # will fire if anyone tries to verify the package against PGP.
-validpgpkeys=('87BBF9F94FF921015FE2A406B7F9CF6BE5FDE6C2')
+validpgpkeys=('2F47D68A6CE111C2D290C9847CACB8A429CB03EE')
 
 # ---- Source: always-latest -------------------------------------------
 # The fat tarball from upstream contains falco, falcoctl,
