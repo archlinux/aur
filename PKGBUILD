@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 _pkgname=xjtutoolbox
 pkgname=xjtutoolbox-git
-pkgver=1.2.5
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="仙交百宝箱：西安交通大学一站式校园服务工具（Git 最新源码版）"
 arch=('any')

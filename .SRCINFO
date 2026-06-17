@@ -1,6 +1,6 @@
 pkgbase = xjtutoolbox-git
 	pkgdesc = 仙交百宝箱：西安交通大学一站式校园服务工具（Git 最新源码版）
-	pkgver = 1.2.5
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/yan-xiaoo/XJTUToolBox
 	arch = any
