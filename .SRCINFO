@@ -1,0 +1,22 @@
+pkgbase = python-py-modelrunner
+	pkgdesc = Python classes for organizing (HPC) simulations
+	pkgver = 0.20.0
+	pkgrel = 1
+	url = https://github.com/zwicker-group/py-modelrunner
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	depends = python-jinja
+	depends = python-numpy
+	depends = python-tqdm
+	depends = python-numcodecs
+	optdepends = python-h5py: storing data in the hierarchical file format
+	optdepends = python-pandas: creating pandas dataframe summarizing the data
+	optdepends = python-yaml: for stores data in a YAML
+	optdepends = python-zarr: for stores data in a Zarr
+	source = py-modelrunner-0.20.0.tar.gz::https://github.com/zwicker-group/py-modelrunner/archive/0.20.0.tar.gz
+	sha512sums = 196c5f0f39343e87cf70134c107d5367cc8b8fdf1934f05d1e17318fdc2ac622d6e8232861351e641a1f15f5a2c54d7d458aeb9fefa76e5b7e6861c63344a7a1
+
+pkgname = python-py-modelrunner

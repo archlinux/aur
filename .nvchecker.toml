@@ -1,0 +1,4 @@
+[python-py-modelrunner]
+source = "github"
+github = "zwicker-group/py-modelrunner"
+use_latest_release = "true"
