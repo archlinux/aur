@@ -1,7 +1,7 @@
 pkgbase = amarok-libgpod
 	pkgdesc = Powerful music player that lets you rediscover your music. Built with iPod support.
-	pkgver = 3.3.2
-	pkgrel = 2
+	pkgver = 3.3.3
+	pkgrel = 1
 	url = https://apps.kde.org/amarok/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -56,7 +56,7 @@ pkgbase = amarok-libgpod
 	depends = libgpod
 	provides = amarok
 	conflicts = amarok
-	source = https://download.kde.org/stable/amarok/3.3.2/amarok-3.3.2.tar.xz
-	sha256sums = aa436b09d3991be48cf37e6f0b71f58aebd5bffaba0fdce7ffd3c2b485d3660b
+	source = https://download.kde.org/stable/amarok/3.3.3/amarok-3.3.3.tar.xz
+	sha256sums = 68e9e83d7d8c0cbdd470958e768815f573d61f3ce32be7bc1b87fb56d622436e
 
 pkgname = amarok-libgpod
