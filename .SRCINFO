@@ -1,0 +1,19 @@
+pkgbase = hyprland-minimizer-git
+	pkgdesc = Minimize Hyprland windows to the system tray, with real icon resolution and rofi tray helpers
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Justice-Reaper/hyprland-minimizer
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	makedepends = git
+	makedepends = cargo
+	depends = hyprland
+	depends = gcc-libs
+	optdepends = waybar: StatusNotifier tray host for the icons
+	provides = hyprland-minimizer
+	conflicts = hyprland-minimizer
+	source = hyprland-minimizer-git::git+https://github.com/Justice-Reaper/hyprland-minimizer.git
+	sha256sums = SKIP
+
+pkgname = hyprland-minimizer-git
