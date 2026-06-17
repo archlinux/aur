@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 
 pkgname=min-bin
-pkgver=1.35.2
+pkgver=1.35.5
 pkgrel=1
 pkgdesc="Min is a fast, minimal browser that protects your privacy."
 arch=(
