@@ -7,7 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.20.2] - 2026-06-17
+
+
+
+## [2.20.4] - 2026-06-17
+
+### Fixed
+- PARTIAL FIX Follow does not auto-scroll to new journal entries when Descending is enabled [Issue 67](https://github.com/plrigaux/sysd-manager/issues/67)
+
+## [2.20.3] - 2026-06-17
 
 ### Added
 - Unit Creation Wizard: Add Standard Output and Error on Service
