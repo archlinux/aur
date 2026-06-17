@@ -1,6 +1,6 @@
 pkgbase = jiratui-git
 	pkgdesc = A Textual User Interface for interacting with Atlassian Jira from your shell
-	pkgver = 1.6.2.r0.gfc97e1d
+	pkgver = 1.8.1.r11.g06b2ac1
 	pkgrel = 1
 	url = https://github.com/whyisdifficult/jiratui
 	arch = any
@@ -9,7 +9,6 @@ pkgbase = jiratui-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-uv-build>=0.9.2
-	makedepends = python-uv-build<0.10.0
 	depends = python>=3.10
 	depends = python-click>=8.2.1
 	depends = python-gitpython>=3.1.45
@@ -21,7 +20,8 @@ pkgbase = jiratui-git
 	depends = python-textual>=6.4.0
 	depends = python-textual-image>=0.8.2
 	depends = python-xdg-base-dirs>=6.0.2
-	provides = jiratui=1.6.2
+	depends = python-marklas>=0.7.0
+	provides = jiratui=1.8.1
 	conflicts = jiratui
 	source = jiratui::git+https://github.com/whyisdifficult/jiratui.git
 	sha256sums = SKIP
