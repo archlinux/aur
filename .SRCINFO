@@ -1,6 +1,6 @@
 pkgbase = waywallen-display
-	pkgver = 0.2.5
-	pkgrel = 2
+	pkgver = 0.2.6
+	pkgrel = 1
 	url = https://github.com/waywallen/waywallen-display
 	arch = x86_64
 	license = MIT
@@ -18,10 +18,10 @@ pkgbase = waywallen-display
 	depends = libstdc++
 	depends = glibc
 	options = !lto
-	source = waywallen-display-0.2.5.tar.gz::https://github.com/waywallen/waywallen-display/archive/refs/tags/v0.2.5.tar.gz
+	source = waywallen-display-0.2.6.tar.gz::https://github.com/waywallen/waywallen-display/archive/refs/tags/v0.2.6.tar.gz
 	source = 0001-install-kde-wallpaper-to-correct-path.diff
 	source = 0002-install-gnome-extension-to-correct-path.diff
-	sha256sums = d2089183f4325a67df29dd28910b15b8e0dddf623303fe28a45f6c11e61f872f
+	sha256sums = ffc00bda2aa3a3badfe098f9d1a8042e2b7caaf6c2c0b1cef54c6e09ffd8ef73
 	sha256sums = bb766cd888b1f004c98127b6b74715958ac38a059c3a8c0c5827dc1fd4965e43
 	sha256sums = 785c3e354f8922e12fbb15b655b0a7e3f8c834a1fbba0e18f19e4643329796fd
 
