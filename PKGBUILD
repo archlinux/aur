@@ -2,7 +2,7 @@
 
 _pkgname=vidmerger
 pkgname="${_pkgname}-git"
-pkgver=r292.b02f60b
+pkgver=r408.044173a
 pkgrel=1
 pkgdesc="Merge video and audio files via CLI."
 arch=('x86_64')
@@ -29,7 +29,6 @@ build() {
 
 package() {
     cd "${srcdir}"
-
     install -Dm755 ${_pkgname}/target/release/${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
