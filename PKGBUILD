@@ -1,7 +1,7 @@
 # Maintainer: Silvan Gümüsdere <silvan@trollbox.org>
 
 pkgname=meshtastic-sniffer-git
-pkgver=r224.733a528
+pkgver=r262.5c0ae65
 pkgrel=1
 pkgdesc="Wideband Meshtastic LoRa receiver with multi-station fusion and offline PSK recovery"
 arch=(
@@ -12,11 +12,12 @@ arch=(
 url="https://github.com/alphafox02/meshtastic-sniffer"
 license=('GPL-3.0-or-later')
 depends=(
-    'glibc'
     'fftw'
+    'glibc'
+    'libgcc'
+    'libgomp'
     'openssl'
     'zlib'
-    'libgomp'
 )
 makedepends=(
     'cmake'
@@ -53,25 +54,34 @@ pkgver() {
 }
 
 build() {
+    local cmake_options=(
+        -B build
+        -S "$pkgname"
+        -W no-dev
+        -D CMAKE_BUILD_TYPE=None
+        -D CMAKE_INSTALL_PREFIX=/usr
+    )
+    cmake "${cmake_options[@]}"
+    cmake --build build
+
     cd "$pkgname"
-    export GOPATH="${srcdir}"
+    export GOPATH="${srcdir}/gopath"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    cmake .
-    make
-    cd "fusion"
-    go build
-    cd "../wardrive"
-    go build
+    
+    cd fusion
+    go build -v -o meshtastic-fusion .
+    cd ../wardrive
+    go build -v -o meshtastic-wardrive .
 }
 
 package() {
+    DESTDIR="$pkgdir" cmake --install build
+
     cd "$pkgname"
-    install -Dm755 "meshtastic-sniffer" "$pkgdir/usr/bin/meshtastic-sniffer"
-    install -Dm755 "meshtastic-recover" "$pkgdir/usr/bin/meshtastic-recover"
     install -Dm755 "fusion/meshtastic-fusion" "$pkgdir/usr/bin/meshtastic-fusion"
     install -Dm755 "wardrive/meshtastic-wardrive" "$pkgdir/usr/bin/meshtastic-wardrive"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
