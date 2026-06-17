@@ -1,6 +1,6 @@
 pkgbase = sui
 	pkgdesc = Sui, a next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model powered by the Move programming language.
-	pkgver = 1.72.5
+	pkgver = 1.73.2
 	pkgrel = 1
 	url = https://sui.io
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = sui
 	depends = libgcc
 	depends = libstdc++
 	options = !lto
-	source = git+https://github.com/MystenLabs/sui#tag=mainnet-v1.72.5
-	sha512sums = 767becf6949a4752d5b8e52cd7df3b4518de4d13a7b83f181029b629162e0bc38761ac9362009ba62d6aafb4b4ea2d047faba4439b205dc83930fcedec7eed0c
+	source = git+https://github.com/MystenLabs/sui#tag=mainnet-v1.73.2
+	sha512sums = 1dc6978681c1eb62d3ab5e450ae1780e12bf4cab35bf285530122d8d1758bc6278e323e4127e66e446c1d917530df25372921034788f43adff87cbc3f5f6eb4d
 
 pkgname = sui
