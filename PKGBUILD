@@ -77,7 +77,7 @@ optdepends=(
 provides=('python-vllm')
 
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}" "0001-Fix-LTO-build-for-ROCm-when-default-compiler-is-GCC.patch")
-sha256sums=('b450cfefaf8e4c3e4905c7a15ec7a9bed914f1e76ca1be690192a10482b11cf7'
+sha256sums=('72a1c160ed8b366576256c753b352c9b741270fd880893dfa9b02ea9a5e6fcc9'
             'b218671c925b0f081b6caa8246c27b05dea98c14d3389504f68e73486d513b58')
 
 _jobs=$(($(nproc) / 2))
