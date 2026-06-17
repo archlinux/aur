@@ -1,5 +1,5 @@
 pkgname=dogma-bin
-pkgver=0.3.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Bridges secrets from vault backends and infrastructure outputs into sops-encrypted files deployed to NixOS machines (binary package)"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('dogma')
 source_x86_64=("dogma-x86_64-$pkgver.tar.gz::https://github.com/x71c9/dogma/releases/download/v$pkgver/dogma-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("dogma-aarch64-$pkgver.tar.gz::https://github.com/x71c9/dogma/releases/download/v$pkgver/dogma-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=("11db67c41fe5e8ff9676950c0d84a5f8e0083dfc299c0bc029ba046cd7ca2249")
-sha256sums_aarch64=("ad5bb6f0f6b01ca18a9a082e5a935868c3e4fe3bccbdc38cfa613204e45675dc")
+sha256sums_x86_64=("43e97912b60eb08087c58c042ca5401797d9fe1eef8917eb66858184bff13237")
+sha256sums_aarch64=("8de44aa46efa75fc23cd4b74975cfa4830e3787aef76568cd8434c6ae8fe1621")
 
 package() {
   if [[ $CARCH == "x86_64" ]]; then
