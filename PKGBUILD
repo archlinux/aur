@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('libsodium')
 makedepends=('gcc' 'make')
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/artich0ke/gisp/archive/v${pkgver}.tar.gz")
-sha256sums=('ff8347bfa2ce4c4a580bdf5b81a0c9669c2e839ded17e07407291f9fee3bf487')
+sha256sums=('2b92d40c76271ea3e0698da959e0dce3dbe432989a87967274c32f97ecb2cbb7')
 
 build() {
   cd "gisp"
