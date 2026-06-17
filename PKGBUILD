@@ -19,7 +19,10 @@ source=(
     "git+https://github.com/HailToDodongo/tiny3d.git"
 )
 noextract=("pyrite64-linux-${pkgver//./_}.AppImage")
-sha512sums=('97f51a8eb590569740d88876d1e1442b80781448e132ad5fa02e5fa5c3a04d96b25a5ba703d40dbb3cfa42812e8c26957bd3a04f08f2a91400d2938e7c850c52'
+# The gcc-toolchain .deb is a continuous-prerelease asset: upstream CI rebuilds
+# it and overwrites it in place at a fixed URL/tag, so any pinned checksum goes
+# stale and breaks the build. SKIP it like the moving git sources.
+sha512sums=('SKIP'
             'SKIP'
             'd714caffc163853b257c8a5fcfd853524af881e6b44502acda08bead440911475d87b5a0dd3b2e9536e128e227b2815d5a5f9b7567f5d9cab014d5b8e0d68734'
             'SKIP')

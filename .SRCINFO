@@ -31,7 +31,7 @@ pkgbase = pyrite64-bin
 	source = git+https://github.com/DragonMinded/libdragon.git#branch=preview
 	source = https://github.com/HailToDodongo/pyrite64/releases/download/v0.7.0/pyrite64-linux-0_7_0.AppImage
 	source = git+https://github.com/HailToDodongo/tiny3d.git
-	sha512sums = 97f51a8eb590569740d88876d1e1442b80781448e132ad5fa02e5fa5c3a04d96b25a5ba703d40dbb3cfa42812e8c26957bd3a04f08f2a91400d2938e7c850c52
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = d714caffc163853b257c8a5fcfd853524af881e6b44502acda08bead440911475d87b5a0dd3b2e9536e128e227b2815d5a5f9b7567f5d9cab014d5b8e0d68734
 	sha512sums = SKIP
