@@ -2,13 +2,13 @@
 
 _pkgname=dusklight
 pkgname=${_pkgname}-git
-pkgver=1.3.1.r78.gcacb768
+pkgver=1.4.1.r0.gf5642f3
 pkgrel=1
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusklight"
 license=('CC0-1.0')
-depends=(libpng zlib libjpeg-turbo glibc libgcc sdl3 abseil-cpp freetype2 libstdc++)
+depends=(libpng zlib libjpeg-turbo glibc libgcc sdl3 abseil-cpp freetype2 libstdc++ fmt sqlite)
 makedepends=(git cmake ninja llvm vulkan-headers python python-markupsafe clang lld alsa-lib libpulse libxrandr)
 replaces=(tp-dusk-git)
 conflicts=(dusklight dusklight-bin)
