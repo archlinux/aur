@@ -1,7 +1,6 @@
 [continuwuity-bin]
-source = "gitea"
-gitea = "continuwuation/continuwuity"
-host = "forgejo.ellis.link"
-use_latest_release = "true"
-from_pattern = "(?:Continuwuity )?v?(\\d+\\.\\d+\\.\\d+.*)"
+source = "jq"
+url = "https://forgejo.ellis.link/api/v1/repos/continuwuation/continuwuity/releases"
+filter = ".[] | select(.prerelease == false and .draft == false and (.assets | length > 0)) | .tag_name"
+from_pattern = "v?(\\d+\\.\\d+\\.\\d+.*)"
 to_pattern = "\\1"
