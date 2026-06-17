@@ -29,10 +29,10 @@ options=(!strip)
 
 source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE"
         "README-${pkgver}.md::${_ghurlraw}/README.md")
-source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-rs-${pkgver}-${_barch[0]}.tar.gz")
+source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-rs-$(echo "${pkgver}" | awk -F. '{$NF++; print}' OFS=.)-${_barch[0]}.tar.gz")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '26a5f10047204671ede536d81504fe90994880dfc6586962e912650b1881cc3e')
-sha256sums_x86_64=('7454a01b10329cee65e702d4adc0a2c5a5812f34098b5a9e7bcce4798ef523cf')
+sha256sums_x86_64=('a44cafd97bd041bffa175568bff244496ef7837704d48cb012bccd3011930aa5')
 
 
 package() {
