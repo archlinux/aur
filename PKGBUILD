@@ -1,9 +1,10 @@
-# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Maintainer: Evert Vorster <superchief@evertvorster.com>
+# Contributor: Aseem Athale <athaleaseem@gmail.com>
 # Contributor: Danny Waser (Waser Technologies) <waser@waser.tech>
 
 pkgname=python-crfsuite
 pkgver=0.9.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python binding for crfsuite"
 arch=('x86_64')
 url="https://github.com/scrapinghub/${pkgname}"
