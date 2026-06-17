@@ -1,0 +1,4 @@
+[tsukimi]
+source = "git"
+git = "https://github.com/tsukinaha/tsukimi.git"
+prefix = "v"
