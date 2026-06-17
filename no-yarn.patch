@@ -1,0 +1,10 @@
+diff -ura anki.orig/package.json anki.new/package.json
+--- anki.orig/package.json	2026-06-16 20:16:53.680930945 +0200
++++ anki.new/package.json	2026-06-16 20:17:09.318766126 +0200
+@@ -100,5 +100,4 @@
+         "iOS 14.5"
+     ],
+-    "type": "module",
+-    "packageManager": "yarn@4.11.0"
++    "type": "module"
+ }

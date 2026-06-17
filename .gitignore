@@ -2,17 +2,18 @@
 *
 
 # But not these files...
-!PKGBUILD
 !.SRCINFO
+!PKGBUILD
+
+!anki-sync-server.env
 !anki-sync-server.service
 !anki-sync-server.tmpfiles
-!sysusers-anki-sync-server.conf
-!anki-sync-server.env
-!no-corepack.patch
 !no-update.patch
+!no-yarn.patch
 !reproducible-sveltekit.patch
 !strip-formatter-deps.patch
 !strip-python-pip-system-certs.patch
 !strip-type-checking-deps.patch
+!sysusers-anki-sync-server.conf
 
 !.gitignore

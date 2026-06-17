@@ -3,7 +3,7 @@
 
 pkgname=anki-sync-server
 _name="anki"
-pkgver="25.09.4"
+pkgver="26.05"
 pkgrel=1
 pkgdesc='Sync server for anki (official version)'
 url="https://github.com/ankitects/anki"
@@ -38,22 +38,21 @@ arch=('x86_64')
 license=('AGPL-3.0-or-later')
 backup=("etc/default/${pkgname}")
 source=(
-    "git+https://github.com/ankitects/anki.git#tag=$pkgver"
-    "git+https://github.com/ankitects/anki-desktop-ftl.git"
-    "git+https://github.com/ankitects/anki-core-i18n.git"
-    "anki-sync-server.env"
-    "anki-sync-server.service"
-    "anki-sync-server.tmpfiles"
-    "sysusers-anki-sync-server.conf"
-    "no-update.patch"
-    "strip-formatter-deps.patch"
-    "strip-type-checking-deps.patch"
-    "strip-python-pip-system-certs.patch"
-    "no-corepack.patch"
-    "reproducible-sveltekit.patch"
+  "git+https://github.com/ankitects/anki.git#tag=$pkgver"
+  "git+https://github.com/ankitects/anki-core-i18n.git"
+  "git+https://github.com/ankitects/anki-desktop-ftl.git"
+  "anki-sync-server.env"
+  "anki-sync-server.service"
+  "anki-sync-server.tmpfiles"
+  "sysusers-anki-sync-server.conf"
+  "no-update.patch"
+  "no-yarn.patch"
+  "strip-formatter-deps.patch"
+  "strip-type-checking-deps.patch"
+  "reproducible-sveltekit.patch"
 )
 
-b2sums=('60f857bb212d15f3b8b24d848f69b9a7cbdf27b1b3b216b9a5d8515e8387f48e447bd3244a70fec73b8b64ca0c79458907e4939d149abc05b3c71fd4b8e8d060'
+b2sums=('eb3845c02014d408823a76e4316ff7c7bc6251f8b6f111e4dce2a850c0f2752b2a1370588545a7a6c0c4033cdd71007bd644bac7c1f67931cf97cb9d3624499e'
         'SKIP'
         'SKIP'
         'cff074619cd64cbccc74ed1c523213a3c591d14cd8d61b208576cfeee768e8b9b027bbb3d427751e6a25b234e7cd0552cf3eae256159e8cd8acec4152ac6689b'
@@ -61,10 +60,9 @@ b2sums=('60f857bb212d15f3b8b24d848f69b9a7cbdf27b1b3b216b9a5d8515e8387f48e447bd32
         '0923ed3d7adafea49c45145bc6439f46c0805d09de029765d518cb6ca7736f378307346542e1c668699534388ada03979eed5c5764225329a188c2e4052ab587'
         '782ede696092ecfbe4ec9af82401682d3da2d64d84b3ecbabdcbceb67eb0690baf00e4827e66e379064578c1fe2589f8a7370f4637db11e0fd428bf6e3a94fda'
         '0f3ce855e9eaea67ef461668c296ae08cad0d31a7a2bf9ea7006220b44c2cb2e132dfb656140828141fbf21dde2b686a4a3248b92bb3fa46217f1a987425ffa3'
+        '33f1169c6f8549f10b689bf2329b084c35b639b250b507a117049d7c775ce4e6aeeb93b71f13dde39060702c1629a10896782f0a2e462e17391d8f08e2e3d171'
         '18a8fefd5995ba83ebdb3e0c7d9a5c821a19b51616f6eebd7980e30bab4ab3c12573f5a8e59d7db03492a9df22245275da74a4594c2b652d772fbbb17984ff96'
         '4ea648cec8b784b7586605ddc97633b9471ab8e1f75b5f38c0459f839625cdc3e28419cf34f8d8e453283707a17a090a48287140573c96599d83baa56d114a4a'
-        '903e22a623f058215d50cb2574ac0beeea784c7b7d07aaa207ebcfcd5a0795be70341845bc4fd20bf296e6c389e98d481a6e0a0b3ad550e88adf5aeb0d401fc6'
-        'e1a05314e4d4118cd1f23de1da6c6561db6cc322a0fd1507f4fd72bdf16352cbab4e7150da5788a52a988e923d339555e4923079459c4fa55dff9c695c4117bb'
         '1dede904fbc5c0b499251d3d11a39ad2f467d644ad742d6d162dc4cd60a120f445e0b5f0fb9758ace1d95372ad48a86bbd6cad3200d97f19f4c62bb0620dc8c4')
 
 prepare() {
@@ -72,8 +70,7 @@ prepare() {
   patch -Np1 < ../no-update.patch
   patch -Np1 < ../strip-formatter-deps.patch
   patch -Np1 < ../strip-type-checking-deps.patch
-  patch -Np1 < ../strip-python-pip-system-certs.patch
-  patch -Np1 < ../no-corepack.patch
+  patch -Np1 < ../no-yarn.patch
   patch -Np1 < ../reproducible-sveltekit.patch
 
   git submodule init
