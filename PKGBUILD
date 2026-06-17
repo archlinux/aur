@@ -1,5 +1,5 @@
 pkgname=dogma
-pkgver=0.3.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Bridges secrets from vault backends and infrastructure outputs into sops-encrypted files deployed to NixOS machines"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ depends=('glibc')
 makedepends=('rust')
 
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/x71c9/$pkgname/tar.gz/refs/tags/v$pkgver")
-sha256sums=("98e5865322dbe7d654d8338765eb4414774470ce0ec9a7763fa1543d75cc4afd")
+sha256sums=("8d1699390158ea036e14316084122e88386cf3520535b75b6cf30793fb72de38")
 
 prepare() {
   cd "$pkgname-$pkgver"
