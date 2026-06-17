@@ -1,9 +1,38 @@
-## Changelog
-* 3715b1a4d334c8e9f14623a2c8e839e3894ed9c8 Add release notes for v2.0.2 (#5127) (#5128)
-* 189eaceb765b525eda7925cbef4dbfdf29b58d7a Security bumps and fixes for v2.0.3 (#5231)
-* 4415924a04f816767b70136de6c666c99297af6d ci(release/v2.0): align CI pipeline to main (GATB + GAR) (#5234)
-* a62c208abb299ee91d5d16f99c0b7cc7e59c6cf1 docs: add v2.0.3 release notes (#5235) (#5236)
-* 3b2704f7043faa4f43fe6edd5c94eb685e8a8c6b docs: fix broken Grafana Cloud Profiles link in SDK guides (#5132) (#5133)
+## Features and enhancements
+* Added readiness checks for the distributor ([#5142](https://github.com/grafana/pyroscope/pull/5142)).
+* Added debug information list and delete APIs, including `profilecli` support ([#5217](https://github.com/grafana/pyroscope/pull/5217)).
+* Added dataset index generation in segment writer segments ([#5112](https://github.com/grafana/pyroscope/pull/5112)).
+* Added metastore cache hit/miss metrics ([#5156](https://github.com/grafana/pyroscope/pull/5156)).
+* Added distributor ingest parse duration histograms and per-tenant query bytes-fetched metrics ([#5107](https://github.com/grafana/pyroscope/pull/5107), [#5180](https://github.com/grafana/pyroscope/pull/5180)).
+* Added query frontend estimation accuracy metrics and log ratio output ([#5252](https://github.com/grafana/pyroscope/pull/5252)).
+* Added per-tenant limits for the number of recording rules ([#5247](https://github.com/grafana/pyroscope/pull/5247)).
+* Updated the Helm chart to default to the v2 storage architecture and added support for deploying extra Kubernetes manifests with `extraObjects` ([#5160](https://github.com/grafana/pyroscope/pull/5160), [#5097](https://github.com/grafana/pyroscope/pull/5097)).
+* Migrated monitoring dashboards to native histograms ([#5048](https://github.com/grafana/pyroscope/pull/5048)).
+
+## Bug fixes
+* Fixed an out-of-bounds panic in `clearAddresses` ([#5250](https://github.com/grafana/pyroscope/pull/5250)).
+* Fixed nil matcher handling for recording rule upserts ([#5134](https://github.com/grafana/pyroscope/pull/5134)).
+* Fixed tenant ID validation in store-gateway ([#5194](https://github.com/grafana/pyroscope/pull/5194)).
+* Fixed archive extraction issues, including zip-slip/tar-slip cleanup and file closure handling ([#5195](https://github.com/grafana/pyroscope/pull/5195), [#5206](https://github.com/grafana/pyroscope/pull/5206)).
+* Fixed label value cloning to avoid buffer reuse-after-free issues ([#5116](https://github.com/grafana/pyroscope/pull/5116)).
+* Fixed query read path edge cases, including unknown `QueryNode` panics, sub-millisecond step parameters, and range-series bucketing ([#5196](https://github.com/grafana/pyroscope/pull/5196), [#5137](https://github.com/grafana/pyroscope/pull/5137), [#5161](https://github.com/grafana/pyroscope/pull/5161)).
+* Fixed store-gateway ring route registration ([#5130](https://github.com/grafana/pyroscope/pull/5130)).
+* Fixed speedscope handling for unknown unit values by returning an error instead of panicking ([#5143](https://github.com/grafana/pyroscope/pull/5143)).
+* Fixed metastore shard cache reads and compaction worker histogram buckets ([#5189](https://github.com/grafana/pyroscope/pull/5189), [#5164](https://github.com/grafana/pyroscope/pull/5164)).
+* Fixed Helm chart rendering for `volumeClaimTemplates` by adding `apiVersion` and `kind` ([#5203](https://github.com/grafana/pyroscope/pull/5203)).
+
+## Security updates
+* Updated UI dependencies for security fixes, including Vite, `tar`, `js-yaml`, `@babel/core`, `uuid`, and other transitive dependencies ([#5260](https://github.com/grafana/pyroscope/pull/5260), [#5263](https://github.com/grafana/pyroscope/pull/5263), [#5123](https://github.com/grafana/pyroscope/pull/5123), [#5181](https://github.com/grafana/pyroscope/pull/5181)).
+* Updated Go dependencies for security fixes, including `golang.org/x/net`, `golang.org/x/crypto`, `golang.org/x/image`, and `github.com/prometheus/prometheus` ([#5131](https://github.com/grafana/pyroscope/pull/5131), [#5197](https://github.com/grafana/pyroscope/pull/5197), [#5216](https://github.com/grafana/pyroscope/pull/5216), [#5113](https://github.com/grafana/pyroscope/pull/5113)).
+* Updated the Go toolchain directive for security coverage ([#5228](https://github.com/grafana/pyroscope/pull/5228)).
+* Hardened archive extraction paths and cleanup behavior ([#5195](https://github.com/grafana/pyroscope/pull/5195), [#5206](https://github.com/grafana/pyroscope/pull/5206)).
+
+## Documentation updates
+* Added generated YAML examples and documentation for v2 configuration blocks ([#5151](https://github.com/grafana/pyroscope/pull/5151)).
+* Removed the public preview note from `pyroscope.receive_http` documentation ([#5176](https://github.com/grafana/pyroscope/pull/5176)).
+* Updated supported .NET versions to 8, 9, and 10 ([#5096](https://github.com/grafana/pyroscope/pull/5096)).
+* Refreshed README content and agent guides for the v2 layout, Go version, and tracing updates ([#5246](https://github.com/grafana/pyroscope/pull/5246), [#5183](https://github.com/grafana/pyroscope/pull/5183)).
+* Fixed a broken Grafana Cloud Profiles link in SDK guides ([#5132](https://github.com/grafana/pyroscope/pull/5132)).
 
 As always, feedback is more than welcome, feel free to open issues/discussions.
 You can reach out to the team using:
@@ -18,7 +47,5 @@ You can reach out to the team using:
 - [grafana/pyroscope](https://hub.docker.com/r/grafana/pyroscope/tags)
 
 ```bash
-  docker pull grafana/pyroscope:2.0.3
+  docker pull grafana/pyroscope:2.1.0
 ```
-
-
