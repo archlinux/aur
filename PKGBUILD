@@ -2,7 +2,7 @@
 
 pkgname=inmarsat-sniffer-git
 pkgver=r128.2827b3a
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone Inmarsat L-band decoder — STD-C EGC + Aero ACARS/ADS-C/CPDLC"
 arch=(
     'x86_64'
@@ -11,6 +11,11 @@ arch=(
 )
 url="https://github.com/alphafox02/inmarsat-sniffer"
 license=('GPL-3.0-only')
+depends=(
+    'glibc'
+    'libgcc'
+    'libstdc++'
+)
 makedepends=(
     'cmake'
     'git'
@@ -40,14 +45,21 @@ pkgver() {
 }
 
 build() {
-    cd "$pkgname"
-    cmake .
-    make
+    local cmake_options=(
+      -B build
+      -S "$pkgname"
+      -W no-dev
+      -D CMAKE_BUILD_TYPE=None
+      -D CMAKE_INSTALL_PREFIX=/usr
+    )
+    cmake "${cmake_options[@]}"
+    cmake --build build
 }
 
 package() {
+    DESTDIR="$pkgdir" cmake --install build
+
     cd "$pkgname"
-    install -Dm755 "inmarsat-sniffer" "$pkgdir/usr/bin/inmarsat-sniffer"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
