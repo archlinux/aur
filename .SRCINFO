@@ -1,5 +1,5 @@
 pkgbase = wizread-bin
-	pkgdesc = A next-generation e-book reader for passionate readers. It combines a powerful reading app with an exciting community, letting you organize, track and share your entire reading journey in one seamless experience. (Prebuilt version.Use system-wide electron)
+	pkgdesc = A next-generation e-book reader for passionate readers. (Prebuilt version.Use system-wide electron)
 	pkgver = 1.0.0_beta.10
 	pkgrel = 1
 	url = https://wizread.io/
