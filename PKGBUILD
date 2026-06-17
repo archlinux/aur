@@ -1,11 +1,11 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=xjtutoolbox-bin
-pkgver=1.2.5
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="XJTUToolBox - A powerful utility tool (Pre-compiled)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/yan-xiaoo/XJTUToolBox"
-license=('MIT')
+license=('GPL3')
 provides=('xjtutoolbox')
 conflicts=('xjtutoolbox')
 
@@ -13,8 +13,8 @@ conflicts=('xjtutoolbox')
 source_x86_64=("https://github.com/yan-xiaoo/XJTUToolBox/releases/download/v${pkgver}/XJTUToolbox-linux-x86_64.pkg.tar.zst")
 source_aarch64=("https://github.com/yan-xiaoo/XJTUToolBox/releases/download/v${pkgver}/XJTUToolbox-linux-arm64.pkg.tar.zst")
 
-sha256sums_x86_64=('SKIP')
-sha256sums_aarch64=('SKIP')
+sha256sums_x86_64=('a82d5f831e4128c90026f12b69d7a111f221ebf49534edcee9f5a940e1cf33a1')
+sha256sums_aarch64=('fc79160a8e8b91e2a128aacb5f9bbc3b1bf9e20dd5cfb2c354fae82f72671365')
 
 package() {
     # pacman 包本质上也是 tar 压缩包，bsdtar 会自动将它解压到 srcdir
