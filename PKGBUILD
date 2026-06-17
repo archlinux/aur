@@ -42,5 +42,5 @@ package() {
    cp -r "$srcdir/usr/share/${pkgname::-4}/data" "$pkgdir/usr/lib/${pkgname::-4}/"
    install -dm755 "$pkgdir/usr/bin" && \
    ln -sf /usr/lib/${pkgname::-4}/${pkgname::-4} "$pkgdir/usr/bin/${pkgname::-4}"
-   install -Dm644 "$srcdir/${pkgname::-4}-${pkgver}/LICENSE" "$pkgdir/usr/share/licneses/${pkgname}/LicenseRef-PolyForm-Strict-1.0.0"
+   install -Dm644 "$srcdir/${pkgname::-4}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LicenseRef-PolyForm-Strict-1.0.0"
 }
