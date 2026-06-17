@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 : '
 Copyright (C) 2016-2017 Korcan Karaokçu <korcankaraokcu@gmail.com>
 
@@ -16,18 +16,27 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '
 
-if [ "$(id -u)" = "0" ]; then
-	echo "Please do not run this script as root!"
-	exit 1
+PYTHON="/usr/bin/python3"
+PINCE_PY="/usr/lib/pince/PINCE.py"
+
+if [ -n "$1" ]; then
+    PCT_DIR=$(cd -P -- "$(dirname -- "$1")" && pwd -P) || exit 1
+    PCT_FILE="$PCT_DIR/$(basename -- "$1")"
 fi
 
-# Preserve env vars to keep settings like theme preferences.
-# Pkexec does not support passing all of env via a flag like `-E` so we need to
-# rebuild the env and then pass it through.
-ENV=()
-while IFS= read -r line
-do
-    ENV+=("$line")
-done < <(printenv)
+if [ "$(id -u)" = "0" ]; then
+    "$PYTHON" "$PINCE_PY" "$PCT_FILE"
+else
+    # Preserve env vars to keep settings like theme preferences.
+    # Pkexec does not support passing all of env via a flag like `-E` so we need to
+    # rebuild the env and then pass it through.
+    set --
+    while IFS= read -r line
+    do
+        set -- "$@" "$line"
+    done <<EOF
+$(printenv)
+EOF
 
-pkexec env "${ENV[@]}" /usr/lib/pince/PINCE.py
+    pkexec env "$@" "$PYTHON" "$PINCE_PY" "$PCT_FILE"
+fi
