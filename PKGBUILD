@@ -2,7 +2,7 @@
 # Auto-updated by GitHub Actions
 
 pkgname=windsurf-next
-pkgver=3.1.1005_next.296eca6010
+pkgver=3.2.1016_next.4723f912b3
 pkgrel=1
 pkgdesc="Devin Desktop (next channel) - formerly Windsurf Editor"
 arch=('x86_64')
@@ -38,7 +38,7 @@ source=(
 )
 
 sha256sums=(
-    '4e59d748d5a93f2ba83604cf9c004a3bf611b2e2bc5fa5a946e456c496109874'
+    '8a67a0c4407d9bcee7033301c80448d08e8be9f40a2a97d5848a79bb1cba7b1f'
     'f15127ef9ff42b2eddf5e0b476a27a0f65e3813de911c9154a577746b47e8188'
     'c2845c4efacb3eb7f0c5756ec9b2f68f3b24af11cc2db6965a4e5f4e744cf539'
 
