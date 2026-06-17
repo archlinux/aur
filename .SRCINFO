@@ -1,7 +1,7 @@
 pkgbase = vrchat-photo-manager
 	pkgdesc = A photo manager for VRChat
-	pkgver = 0.2.7.1
-	pkgrel = 5
+	pkgver = 0.2.7.2
+	pkgrel = 6
 	url = https://github.com/phaze-the-dumb/VRChat-Photo-Manager
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = vrchat-photo-manager
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/phaze-the-dumb/VRChat-Photo-Manager/releases/download/0.2.7-hot1/vrcpm-0.2.7-hot1.AppImage
-	b2sums_x86_64 = 4a80d0cf04bc35fdd41a1cdd38019ec7905100321b196eb8ee87f765f2f2af466bb664424d58cba00e922446bb7ad2b1caabe257cdd7173096bd5492991c5b55
+	source_x86_64 = https://github.com/phaze-the-dumb/VRChat-Photo-Manager/releases/download/0.2.7-hot2/vrcpm-0.2.7-hot2.AppImage
+	b2sums_x86_64 = 1276d82826b8ec1e9c3d96176d8963a780a17b73c0275924d122859c1f5c39515648fed10da844cd9c83fc5a75dad9b6d08a2cabc4d48441f45b8de41ddbb2ce
 
 pkgname = vrchat-photo-manager
