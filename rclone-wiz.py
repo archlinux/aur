@@ -908,7 +908,7 @@ class RcloneKdeApp(QMainWindow):
         
         about_html = """
         <div style="font-family: sans-serif;">
-            <h2 style="color: #3daee9;">Rclone-WIZ 1.7</h2>
+            <h2 style="color: #3daee9;">Rclone-WIZ 1.7.1</h2>
             <p>A simple and easy-to-use tool to configure, script, and mount cloud drives using rclone.</p>
             <hr>
             <p><b>Created by:</b> Miran Kljun<br>
@@ -1087,7 +1087,6 @@ class RcloneKdeApp(QMainWindow):
                 "--vfs-fast-fingerprint \\\n"
                 "--timeout 1h \\\n"
                 "--attr-timeout 1h \\\n"
-                "--allow-other \\\n"
                 "--tpslimit 10 \\\n"
                 "--tpslimit-burst 10 \\\n"
                 "--daemon"
