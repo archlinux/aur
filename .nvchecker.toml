@@ -1,0 +1,5 @@
+[oyui-bin]
+source = "github"
+github = "emilien-jegou/oyui"
+use_latest_release = true
+prefix = "v"
