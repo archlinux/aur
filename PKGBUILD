@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=nmem-cli
-pkgver=0.9.14
+pkgver=0.9.15
 pkgrel=1
 pkgdesc="CLI and TUI for Nowledge Mem - AI memory management"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-installer')
 _wheelname="nmem_cli-${pkgver}-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/n/nmem-cli/${_wheelname}")
 noextract=("${_wheelname}")
-sha256sums=('b3821a0b2d882bfacb2ea049697a61fa1947db1aef91857c921f029fa72bd344')
+sha256sums=('c2a62cec25cb50b91d30654094162b2e33b3345c5950bce685e05cf3a325e07c')
 
 package() {
     python -m installer --destdir="$pkgdir" "${srcdir}/${_wheelname}"
