@@ -99,5 +99,8 @@ automatically when the daemon discovers your devices.
 For headless machines (fan control without desktop login):
   sudo loginctl enable-linger \$USER
 
+Install tip: use yay -S whylian (or paru) so evdi-dkms from AUR is resolved.
+Bare pacman -U on a built .pkg.tar.zst skips AUR dependencies.
+
 MSG
 }
