@@ -3,7 +3,7 @@
 pkgname=whylian-git
 _pkgname=whylian
 pkgver=1.0.1.r353.gdab72af
-pkgrel=1
+pkgrel=2
 pkgdesc="Lian Li device control for Linux — HydroShift II AdvanceMode fork of lian-li-linux (git)"
 arch=('x86_64')
 url="https://github.com/byrdltd/whylian"
@@ -34,7 +34,7 @@ optdepends=(
   'systemd: user daemon unit (enabled globally on install)'
 )
 provides=('whylian' 'lianli-linux' 'lianli-linux-git')
-conflicts=('lianli-linux' 'lianli-linux-git')
+conflicts=('whylian' 'lianli-linux' 'lianli-linux-git')
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 install=whylian.install
