@@ -1,7 +1,7 @@
 # Maintainer: FooterManDev footermandev@protonmail.com
 
 pkgname=tritium-launcher-bin
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='Minecraft Launcher IDE for Modpack Developers'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
 )
 
 sha256sums=(
-  '2f2e76cc3bd13e63bdc6d1ada6004ea4d5581e0083e0b5e64b794fe9c66f40bc'
+  'ab11ef7e2c04ba0472e5cfab98ca09aa0c9a5168bc2b44b48fb52c78f2a1644e'
   'SKIP'
   'SKIP'
   'SKIP'
