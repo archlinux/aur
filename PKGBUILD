@@ -5,7 +5,7 @@
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 
 pkgname=powershell
-pkgver=7.6.2
+pkgver=7.6.3
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
 optdepends=('openssh: PowerShell Remoting over ssh')
 makedepends=(
   dotnet-sdk-10.0
-  aspnet-targeting-pack
+  aspnet-targeting-pack-10.0
   git
   unzip
   jq
@@ -41,7 +41,7 @@ source=(
   'nuget-source.patch'
 )
 noextract=("pester.${_pesterversion}.nupkg")
-sha256sums=('ef52fb4858206c9ad300155cb87420b112ebc3a296c942937d6a14f98552ae7f'
+sha256sums=('4432e2669efc11bb538043b61b5a77bf0ac91969e1035c6b1fda664269517b5b'
             '0c81200e5211a2f63bc8d9941432cbf98b5988249f0ceeb1f118a14adddbaa8e'
             '6c996dc4dc8bef068cefb1680292154f45577c66fb0600dd0fb50939bbf8a3a3'
             '84d34a09759271aa7aa614b97ff62642c773b2f81a712ac18d99985cf7a3c3ea')
