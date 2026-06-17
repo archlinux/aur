@@ -11,7 +11,7 @@ _tag='v1.522'
 _asset='lxgw-wenkai-nerd-proportional-1.522.zip'
 source=("ttf-lxgw-wenkai-nerd-1.522.zip::https://github.com/Yikai-Liao/LxgwWenKaiNerdFont/releases/download/${_tag}/${_asset}" \
         "OFL.txt::https://raw.githubusercontent.com/Yikai-Liao/LxgwWenKaiNerdFont/${_tag}/OFL.txt")
-sha256sums=('869ff25053761f63d0cb36ebcdc87e7dcbfc888a9e9c8c89a7ccf2bdfede9126'
+sha256sums=('cabd30abdbafdff7034fce4e4f9de5ed165d8fb8e851f892b0b3f56517d05f41'
             'ef535bf1a3c546928f8e97570f2c72603185f88fa4d82a6df6708348ad4c7614')
 
 package() {
