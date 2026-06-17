@@ -8,11 +8,11 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/Microck/kagi-cli"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 provides=('kagi')
 conflicts=('kagi')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d3893bd7423b2b99100b2fbbf1503cb775cd0df75399d44dee7da46c52d1d884')
+source=("$pkgname-$pkgver::git+$url.git#commit=40df97e71ae1f8cc15efe4cc97499d74fc16bfde")
+sha256sums=('SKIP')
 
 _set_arch_lto_compatible_cflags() {
   # Arch makepkg can add -flto through CFLAGS. ring's C/assembly static objects

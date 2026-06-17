@@ -7,10 +7,11 @@ pkgbase = kagi-cli
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
+	makedepends = git
 	depends = gcc-libs
 	provides = kagi
 	conflicts = kagi
-	source = kagi-cli-0.9.5.tar.gz::https://github.com/Microck/kagi-cli/archive/refs/tags/v0.9.5.tar.gz
-	sha256sums = d3893bd7423b2b99100b2fbbf1503cb775cd0df75399d44dee7da46c52d1d884
+	source = kagi-cli-0.9.5::git+https://github.com/Microck/kagi-cli.git#commit=40df97e71ae1f8cc15efe4cc97499d74fc16bfde
+	sha256sums = SKIP
 
 pkgname = kagi-cli
