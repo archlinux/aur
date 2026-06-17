@@ -9,10 +9,11 @@
 # Contributor: Maxim Mikityanskiy <maxtram95@gmail.com>
 
 pkgname=mathematica
-pkgver=14.3.0
-_pkgver=${pkgver%.[0-9]}
+pkgver=15
+IFS=. read -r _major _minor _patch <<< "${pkgver}"
+_pkgver=${_major}.${_minor:-0}
 pkgrel=1
-pkgdesc='Computational software for mathematics, science, and engineering, with offline documentation included.'
+pkgdesc='Computational software for mathematics, science, and engineering, with offline documentation bundled.'
 arch=('x86_64')
 url='http://www.wolfram.com/mathematica/'
 license=('LicenseRef-Wolfram-Mathematica-License-Agreement') # https://www.wolfram.com/legal/agreements/wolfram-mathematica/
@@ -54,7 +55,7 @@ _source_url="$(
 )"
 source=("Wolfram_${pkgver}_LIN_Bndl.sh::${_source_url}"
         'wolfram-remove-xdg-scripts.patch')
-sha256sums=('16f7175e28c639cb91035505c95bcf23247561a2bfaab90ca4bc5ffa6cfe03f7'
+sha256sums=('e46ba53f714cee9fd104a26c915cf2c0f189312f7418d013a5ccdc71e2a650aa'
             '1ea85d8df27e875e8073832ff3a25c7594eeacc7d83add6b8fa8c4462e38a5fe')
 ## Symbol searching and stripping takes a long time, so they are disabled by default.
 ## Also, `debug` won't be of too much help here, since this is a binary distribution.
@@ -90,7 +91,7 @@ options=(!strip !debug)
 _installdir='/opt/Mathematica'
 
 prepare() {
-  warning "Mathematica takes around 26GiB of space with 'makepkg'."
+  warning "Mathematica takes around 29 GiB of space with 'makepkg'."
   warning 'Building in a tmpfs (e.g. /tmp when mounted into RAM) may not work.'
 
   # shellcheck disable=SC2312 # echo won't trigger errors
@@ -178,8 +179,6 @@ _fix_desktop_file() {
   sed -E -i '/^\s*Version\s*=.*$/d' "$1"
   # encoding is outdated
   sed -E -i '/^\s*Encoding\s*=.*$/d' "$1"
-  # invalid MIME type: "x-scheme-handler/wolfram\+cloudobject"
-  sed -E -i '/^\s*MimeType\s*=/ s/\\\+/\+/g' "$1"
   # executable path contains BUILDDIR
   sed -E -i 's|^\s*TryExec\s*=.*$|TryExec=/usr/bin/WolframNB|g' "$1"
   sed -E -i "s|^\s*Exec\s*=.*$|Exec=/usr/bin/WolframNB --name com.wolfram.Wolfram.${_pkgver} %F|g" "$1"
