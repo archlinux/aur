@@ -3,13 +3,14 @@
 pkgname=djictl-git
 _pkgname=${pkgname%-git}
 pkgver=r17.ddeced5
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI to manage your DJI Osmo device via BLE and without DJI MIMO'
 arch=(x86_64)
 url="https://github.com/xaionaro-go/$_pkgname"
 license=(CC0-1.0)
 depends=(glibc)
 makedepends=(git go)
+provides=("$_pkgname=$pkgver")
 source=("git+$url.git")
 sha256sums=('SKIP')
 
