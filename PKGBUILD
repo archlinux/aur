@@ -1,16 +1,16 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=proton-pass-cli
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc='A command-line interface for Proton Pass'
 arch=(aarch64 x86_64)
 url='https://protonpass.github.io/pass-cli/'
 license=(GPL-3.0-or-later)
-depends=(glibc libgcc)
+depends=(glibc libgcc openssl)
 makedepends=(cargo)
 source=(https://github.com/protonpass/pass-cli/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('0c54f1d67e4a03b7215bc3cb2b23fcaab99ebed1cbb69da7b5faea22f4c0d2fcf375e9e39da81a51c0f64ddd570aec44a8886b43c90bc5195c7791a7ec42efc9')
+b2sums=('eab79e540ae542e93a64a93f3c480ba615899678dc20ac152f7f9f6cc1bc0abbe17dc1992408e9b57b4b0a7009e04b11c3149b6a17cd311b0a0197b2ab6659a1')
 
 prepare() {
     cd pass-cli-$pkgver
@@ -24,6 +24,8 @@ build() {
     # Fix LTO incompatibility
     export CFLAGS="${CFLAGS} -ffat-lto-objects"
     export CXXFLAGS="${CXXFLAGS} -ffat-lto-objects"
+    # Link to system OpenSSL
+    export OPENSSL_NO_VENDOR=1
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
