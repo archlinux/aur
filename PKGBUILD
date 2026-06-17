@@ -33,7 +33,10 @@ package() {
 
   # See for more customization options:
   # https://github.com/vinceliuice/WhiteSur-gtk-theme#theres-so-many-customizations-you-can-do
-  ./install.sh --theme all --alt all --dest "$pkgdir/usr/share/themes"
+  # Upstream sets SHELL_VERSION only when gnome-shell is installed (lib-core.sh),
+  # but GNOME_VERSION still defaults to 48-0 — force a matching SHELL_VERSION so
+  # the gnome-shell SCSS doesn't compile to "$GNOME_SHELL: ;".
+  SHELL_VERSION=48 ./install.sh --theme all --alt all --dest "$pkgdir/usr/share/themes"
 
   # Plank theme
   install -Dm644 other/plank/theme-Dark/* -t \
