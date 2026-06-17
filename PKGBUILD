@@ -1,7 +1,7 @@
 # Maintainer: Umut Dag <me@umtdg.com>
 
 pkgname=quark-quick-access-bin
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc='Quick access application for Proton Pass using pass-cli'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
     'glib2'
     'gtk3'
     'hicolor-icon-theme'
-    'libsoup'
+    'libsoup3'
     'pango'
     'webkit2gtk-4.1'
     'proton-pass-cli-bin'
@@ -24,7 +24,7 @@ depends=(
 options=('!strip' '!emptydirs')
 
 source=("${url}/releases/download/v${pkgver}/Quark_${pkgver}_amd64.deb")
-sha256sums=('fbf8f493f5f5d7bb0dc1b7e92659fec8315971b898cde2b492a24c94e54e5226')
+sha256sums=('809784e92c64d394090da62cdcef7652acbaa4fa8730870d5d2ae2b503f25b46')
 
 package() {
     tar -xvf data.tar.gz -C "${pkgdir}"
