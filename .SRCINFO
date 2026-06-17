@@ -1,7 +1,7 @@
 pkgbase = python-flask-httpauth
 	pkgdesc = Basic and Digest HTTP authentication for Flask routes
-	pkgver = 4.8.0
-	pkgrel = 2
+	pkgver = 4.8.1
+	pkgrel = 1
 	url = https://github.com/miguelgrinberg/Flask-HTTPAuth
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = python-flask-httpauth
 	makedepends = python-installer
 	depends = python
 	depends = python-flask
-	source = python-flask-httpauth-4.8.0.tar.gz::https://github.com/miguelgrinberg/Flask-HTTPAuth/archive/v4.8.0.tar.gz
-	sha256sums = 1984f9ef025482d06a19f6d4ad6852095fe7602e97c59511070f9c4e4652cb9e
+	source = python-flask-httpauth-4.8.1.tar.gz::https://github.com/miguelgrinberg/Flask-HTTPAuth/archive/v4.8.1.tar.gz
+	sha256sums = ed90212959030a99f64543b08b58db3a3089bc3f6a098e01f4a70186ca1f580a
 
 pkgname = python-flask-httpauth
