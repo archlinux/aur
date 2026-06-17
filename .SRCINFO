@@ -9,6 +9,7 @@ pkgbase = scalpel-poe-git
 	makedepends = nodejs-lts-jod
 	makedepends = npm
 	makedepends = python
+	makedepends = python-setuptools
 	depends = fuse2
 	provides = scalpel-poe
 	conflicts = scalpel-poe

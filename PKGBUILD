@@ -17,6 +17,7 @@ makedepends=(
     "nodejs-lts-jod"
     "npm"
     "python"
+    "python-setuptools"
 )
 provides=("scalpel-poe")
 conflicts=("scalpel-poe" "scalpel-poe-bin")
