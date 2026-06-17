@@ -1,0 +1,42 @@
+pkgbase = chameleonultragui-bin-latest
+	pkgdesc = Flutter GUI for the Chameleon Ultra RFID card cloning and emulation device. Automatic upstream binary build from latest upstream git commit.
+	pkgver = r569.20260616.c5b19fc
+	pkgrel = 1
+	url = https://chameleon.run/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	license = BSD-3-Clause
+	license = MIT
+	license = LGPL-3.0-or-later
+	makedepends = git
+	depends = glibc
+	depends = gtk3
+	depends = libatk-1.0.so
+	depends = libcairo.so
+	depends = libcairo-gobject.so
+	depends = libepoxy.so
+	depends = libfontconfig.so
+	depends = libgcc_s.so
+	depends = libgdk_pixbuf-2.0.so
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
+	depends = libgio-2.0.so
+	depends = libpango-1.0.so
+	depends = libpangocairo-1.0.so
+	depends = libharfbuzz.so
+	depends = libstdc++.so
+	depends = libz.so
+	depends = zenity
+	provides = chameleonultragui
+	provides = chameleonultragui-git=r569.20260616.c5b19fc
+	provides = chameleonultragui-docs
+	provides = chameleonultragui-docs-git=r569.20260616.c5b19fc
+	conflicts = chameleonultragui
+	conflicts = chameleonultragui-git
+	conflicts = chameleonultragui-docs
+	source = chameleonultragui-linux.zip::https://github.com/GameTec-live/ChameleonUltraGUI/releases/download/dev/linux.zip
+	source = chameleonultragui::git+https://github.com/GameTec-live/ChameleonUltraGUI.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = chameleonultragui-bin-latest
