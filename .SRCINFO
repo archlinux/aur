@@ -1,7 +1,7 @@
 pkgbase = iridium-sniffer-git
 	pkgdesc = Standalone Iridium satellite burst detector and demodulator in C
-	pkgver = r149.eb2f8d7
-	pkgrel = 1
+	pkgver = r150.2120cd6
+	pkgrel = 2
 	url = https://github.com/alphafox02/iridium-sniffer
 	arch = x86_64
 	arch = armv7h
@@ -10,6 +10,7 @@ pkgbase = iridium-sniffer-git
 	makedepends = cmake
 	makedepends = git
 	depends = fftw
+	depends = glibc
 	optdepends = bladerf
 	optdepends = hackrf
 	optdepends = libacars
