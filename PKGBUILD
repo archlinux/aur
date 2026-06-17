@@ -64,7 +64,7 @@ install=falco.install
 # key. Replace this with the actual fingerprint once bootstrap
 # has been run; until then, AUR's "unknown maintainer key" warning
 # will fire if anyone tries to verify the package against PGP.
-validpgpkeys=('0000000000000000000000000000000000000000')
+validpgpkeys=('87BBF9F94FF921015FE2A406B7F9CF6BE5FDE6C2')
 
 # ---- Source: always-latest -------------------------------------------
 # The fat tarball from upstream contains falco, falcoctl,
