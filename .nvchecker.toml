@@ -1,0 +1,5 @@
+[gistui]
+source = "github"
+github = "akunzai/gistui"
+use_latest_release = true
+prefix = "v"
