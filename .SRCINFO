@@ -1,0 +1,24 @@
+pkgbase = orbitopl-toolbox-git
+	pkgdesc = OrbitOPL Toolbox - PS2 OPL game management GUI (Electron + Angular, git version)
+	pkgver = 0.0.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/Luden02/OrbitOPL-Toolbox
+	arch = x86_64
+	license = custom:unknown
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	depends = glibc
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = alsa-lib
+	depends = libnotify
+	depends = dbus
+	provides = orbitopl-toolbox
+	conflicts = orbitopl-toolbox
+	conflicts = orbitopl-toolbox-bin
+	source = git+https://github.com/Luden02/OrbitOPL-Toolbox.git
+	sha256sums = SKIP
+
+pkgname = orbitopl-toolbox-git
