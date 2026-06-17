@@ -1,7 +1,7 @@
 pkgbase = jiratui-git
 	pkgdesc = A Textual User Interface for interacting with Atlassian Jira from your shell
 	pkgver = 1.8.1.r11.g06b2ac1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/whyisdifficult/jiratui
 	arch = any
 	license = MIT
@@ -24,6 +24,8 @@ pkgbase = jiratui-git
 	provides = jiratui=1.8.1
 	conflicts = jiratui
 	source = jiratui::git+https://github.com/whyisdifficult/jiratui.git
+	source = 0001-remove-uv-build-upper-bound.patch
 	sha256sums = SKIP
+	sha256sums = 74b6d14bf1af5ec39c24a5d119856c6aa2a7d5516a271349ca0da0bb2a20c93a
 
 pkgname = jiratui-git

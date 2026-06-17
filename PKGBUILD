@@ -4,7 +4,7 @@
 _pkgname="jiratui"
 pkgname="${_pkgname}-git"
 pkgver=1.8.1.r11.g06b2ac1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Textual User Interface for interacting with Atlassian Jira from your shell"
 arch=('any')
 url="https://github.com/whyisdifficult/${_pkgname}"
@@ -32,18 +32,24 @@ depends=(
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}"
-source=("${_pkgsrc}::git+${url}.git")
-sha256sums=('SKIP')
+source=(
+  "${_pkgsrc}::git+${url}.git"
+  "0001-remove-uv-build-upper-bound.patch"
+)
+sha256sums=(
+  'SKIP'
+  '74b6d14bf1af5ec39c24a5d119856c6aa2a7d5516a271349ca0da0bb2a20c93a'
+)
 
 pkgver() {
-  cd "${_pkgsrc}" || exit
+  cd "${_pkgsrc}" || return 1
   git describe --long --tags --abbrev=7 | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgsrc}" || exit
+  cd "${srcdir}/${_pkgsrc}" || return 1
   git clean -dfx
-  git apply ../../0001-remove-uv-build-upper-bound.patch
+  git apply "${srcdir}/0001-remove-uv-build-upper-bound.patch"
 }
 
 build() {
