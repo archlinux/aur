@@ -1,12 +1,15 @@
 pkgbase = aaronia-mcs
 	pkgdesc = Aaronia AG - MCS Spectrum Analyzer Software.
 	pkgver = 2.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.aaronia.de
 	arch = x86_64
 	license = GPL
-	depends = qt5-base
-	depends = qt5-multimedia
+	makedepends = curl
+	makedepends = binutils
+	makedepends = coreutils
+	depends = qt6-base
+	depends = qt6-multimedia
 	provides = aaronia-mcs
 	conflicts = aaronia-mcs
 
