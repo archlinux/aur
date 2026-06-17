@@ -1,8 +1,8 @@
 # Maintainer: Thors Snorresson <archlinux.jmve3 at passmail dot net>
 pkgname=ascendara-bin
 _pkgname=ascendara
-pkgver=10.3.0
-pkgrel=2
+pkgver=10.6.8
+pkgrel=1
 pkgdesc="Game launcher that downloads, installs, and manages games automatically"
 arch=('x86_64')
 url="https://github.com/Ascendara/ascendara"
@@ -16,7 +16,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Ascendara/ascendara/${pkgver}/LICENSE"
 )
 sha256sums=(
-    'ae93e6628bf480a3acfe174f695ac2480c4abd3a823b103fa3252b442b3cefde'
+    '9c9561e12d5d1a17a4a720680a34859a4bec1b8e988a9f7c1e74cca57ccb8f91'
     'd77e5497eec76e92aa08602f8540d2259a59406cb8a42db90519a67cd6a6c5d7'
 )
 noextract=("${_pkgname}-${pkgver}.AppImage")
