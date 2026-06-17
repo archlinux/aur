@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=salus
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Local secret store: a key/value store guarded by Shamir secret shares and AES-256-GCM encryption (daemon + client + login agent)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'cmake' 'clang')
 install=salusd.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/salus/archive/v$pkgver.tar.gz")
-sha256sums=('f91982b01d61f8d109f483cdf9c83abdaa33c0744b1ba62330f9010d9f7be20d')
+sha256sums=('6d77b1ccedb2e55bf90c8f864e2c00b2f00e7f7de04d58906d632818757a28e3')
 
 prepare() {
     cd "salus-$pkgver"
