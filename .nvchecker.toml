@@ -1,0 +1,5 @@
+[tui-worktree-bin]
+source = "github"
+github = "overthinker1127/tui-worktree"
+use_latest_release = true
+prefix = "v"
