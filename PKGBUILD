@@ -1,12 +1,12 @@
 # Maintainer: MapleProjects <eportillo898v2@gmail.com>
 pkgname=animaple-git
-pkgver=r28.883db61
-pkgrel=1
+pkgver=0.2.0
+pkgrel=2
 pkgdesc="Anime streaming app — Axum backend + web frontend"
 arch=('x86_64')
 url="https://github.com/MapleProjects/animaple"
 license=('MIT')
-depends=('gcc-libs')
+depends=('gcc-libs' 'xdg-utils')
 makedepends=('git' 'rust' 'cargo')
 provides=('animaple')
 conflicts=('animaple')
@@ -38,11 +38,35 @@ package() {
   install -dm755 "$pkgdir/usr/share/animaple"
   cp -r static/* "$pkgdir/usr/share/animaple/"
 
-  # Wrapper script
+  # Wrapper script — starts server then opens browser
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/animaple" << 'WRAP'
 #!/bin/sh
+PORT=3939
+URL="http://127.0.0.1:$PORT"
+
+# Kill any existing instance
+pkill -f "/usr/lib/animaple/animaple" 2>/dev/null
+sleep 0.3
+
+# Start server in background
 cd /usr/share/animaple
-exec /usr/lib/animaple/animaple "$@"
+/usr/lib/animaple/animaple &
+PID=$!
+
+# Wait for server to be ready
+for i in $(seq 1 20); do
+  curl -sf "$URL/api/recent" >/dev/null 2>&1 && break
+  sleep 0.3
+done
+
+# Open browser
+xdg-open "$URL" 2>/dev/null
+
+echo "AniMaple running at $URL (PID $PID)"
+echo "Press Ctrl+C to stop"
+
+# Wait for server process
+wait $PID
 WRAP
 
   # Desktop entry
@@ -52,7 +76,7 @@ Name=AniMaple
 Comment=Anime streaming app
 Exec=animaple
 Icon=video
-Terminal=true
+Terminal=false
 Type=Application
 Categories=AudioVideo;Video;TV;
 DESKTOP

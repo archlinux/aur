@@ -1,7 +1,7 @@
 pkgbase = animaple-git
 	pkgdesc = Anime streaming app — Axum backend + web frontend
-	pkgver = r28.883db61
-	pkgrel = 1
+	pkgver = 0.2.0
+	pkgrel = 2
 	url = https://github.com/MapleProjects/animaple
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = animaple-git
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
+	depends = xdg-utils
 	provides = animaple
 	conflicts = animaple
 	source = git+https://github.com/MapleProjects/animaple.git
