@@ -8,6 +8,9 @@ depends=('gtk3' 'zenity')
 makedepends=('flutter' 'clang' 'cmake' 'ninja' 'pkgconf' 'xz')
 source=("git+https://github.com/GameTec-live/ChameleonUltraGUI.git#branch=main")
 sha256sums=('SKIP')
+provides=("chameleonultragui")
+conflicts=("chameleonultragui")
+license=('GPL-3.0')
 
 pkgver() {
     cd "ChameleonUltraGUI"
