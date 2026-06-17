@@ -3,7 +3,7 @@
 pkgname=graftcp
 pkgver=0.8.1
 pkgrel=1
-pkgdesc="A flexible tool for redirecting a given program's TCP traffic to SOCKS5 or HTTP proxy."
+pkgdesc="A flexible tool for redirecting a program's TCP, UDP, and DNS traffic to SOCKS5 or HTTP proxies."
 arch=('x86_64')
 url="https://github.com/hmgle/graftcp"
 license=('GPL-3.0-or-later')
