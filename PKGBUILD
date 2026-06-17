@@ -1,6 +1,6 @@
 # Maintainer: Benny <zuiden@ilorentz.org>
 pkgname=foxguard
-pkgver=0.6.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Security scanner as fast as a linter. 170+ built-in rules, 10 languages, sub-second scans'
 arch=('x86_64')
@@ -14,7 +14,6 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    git fetch --tags --quiet origin
     local latest
     latest=$(git tag --list 'v[0-9]*' --sort=-v:refname | head -n1)
     printf '%s' "${latest#v}"
@@ -22,7 +21,6 @@ pkgver() {
 
 prepare() {
     cd "$pkgname"
-    git fetch --tags --quiet origin
     local latest
     latest=$(git tag --list 'v[0-9]*' --sort=-v:refname | head -n1)
     git checkout --quiet --detach "$latest"
