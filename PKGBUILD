@@ -28,6 +28,8 @@ package() {
   # Install the wrapper binary
   install -Dm755 bin/lchad "$pkgdir/usr/bin/lchad"
   install -Dm755 bin/lazychad-deps "$pkgdir/usr/bin/lazychad-deps"
+  install -Dm755 bin/lazychad-nvim "$pkgdir/usr/bin/lazychad-nvim"
+  install -Dm755 bin/lazychad-uninstall "$pkgdir/usr/bin/lazychad-uninstall"
 
   # Install the Neovim configuration files
   install -dm755 "$pkgdir/usr/share/lazychad"
