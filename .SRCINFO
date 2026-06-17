@@ -1,6 +1,6 @@
 pkgbase = python-type-enforced
 	pkgdesc = Check if type annotations correspond the reality at runtime
-	pkgver = 2.3.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/connor-makowski/type_enforced
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-type-enforced
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = python-type-enforced-2.3.0.tar.gz::https://github.com/connor-makowski/type_enforced/archive/refs/tags/2.3.0.tar.gz
-	sha256sums = 751a5181803decdbc7b6b1d3206e8cc7151fb8981fdd4e9761bfcf2fe966b26d
+	source = python-type-enforced-2.6.0.tar.gz::https://github.com/connor-makowski/type_enforced/archive/refs/tags/2.6.0.tar.gz
+	sha256sums = 7a1e83fc7d1161af4ce405206f1d58471b2150f8366a4911a9de835431c2c61b
 
 pkgname = python-type-enforced
