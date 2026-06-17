@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.16.0.r36.gb5b7cb5
+pkgver=0.16.0.r54.g462cd07
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (CLI)"
 arch=('aarch64' 'x86_64')
@@ -39,7 +39,7 @@ makedepends=(
 	'systemd-libs'
 	'toml11>=4.2'
 	'util-linux-libs'
-	'vulkan-headers>=1:1.4.329'
+	'vulkan-headers>=1:1.4.330'
 	'vulkan-memory-allocator>=3.1'
 	'xbyak>=7.07'
 	'xxhash>=0.8.2'
@@ -90,7 +90,7 @@ prepare() {
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
 	git config submodule.externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
-	# remove hardcoded flag
+	# use makepkg.conf flags
 	sed -i '/-march=/d' CMakeLists.txt
 	# use system glslang
 	sed -i '/find_package/s/glslang 15/glslang/' CMakeLists.txt
@@ -106,6 +106,7 @@ build() {
 		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D CMAKE_SKIP_INSTALL_RPATH=ON
+		-D ENABLE_SYSTEM_LIBRARIES=ON
 		-D ENABLE_UPDATER=OFF
 		-D SIRIT_USE_SYSTEM_SPIRV_HEADERS=ON
 		-W no-dev
