@@ -1,16 +1,30 @@
 pkgbase = mxl
-	pkgdesc = Delete sensitive files in panic situations
-	pkgver = 1.0.5
-	pkgrel = 2
-	url = https://codeberg.org/twann/mxl
-	arch = any
-	license = MIT
-	depends = python>=3
-	depends = python-setuptools
-	depends = python-colorama
-	provides = mxl
-	source = mxl-1.0.5.tar.gz::https://codeberg.org/twann/mxl/archive/1.0.5.tar.gz
-	sha512sums = de89f7be8a2cee3558b5487d1a73acf23ff7ebc4fa3964627303e1760d7719413df59944472e0f8f161f86a97b0072eb3217ed90b49d014c85a4ea55180f4b8d
+	pkgdesc = Dynamic Media Facility: Media Exchange Layer
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/dmf-mxl/mxl
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	checkdepends = catch2
+	makedepends = picojson-git
+	makedepends = stduuid
+	makedepends = pcapplusplus
+	makedepends = cli11
+	depends = util-linux-libs
+	depends = spdlog
+	depends = fmt
+	depends = gstreamer
+	depends = gst-plugins-base
+	source = https://github.com/dmf-mxl/mxl/archive/refs/tags/v1.0.1.tar.gz
+	source = picojson-include-path.patch
+	source = use-std-span.patch
+	source = remove-linker-test.patch
+	source = missing-algo-include.patch
+	sha256sums = 4f9a43a4731ef7ab58d0e6dd796659f0a693176abc8e5dd3709753230504241b
+	sha256sums = 361ccfec49df6e5fc6ad2de313c01e6e86dfd2e12e7e674d5180e7e9b295a2d0
+	sha256sums = 3a9dc2d15ce92457a2b2204ebc211e7725b9810222a5a871bc452815d4861ab4
+	sha256sums = 0e54c360553b2145f842764bd05abfacd8d4aeb9d18dbec3db183c315476e2cf
+	sha256sums = 32ef38db1954b949f673c2e32c0cc19503403ebc36489026306a76e03931a48b
 
 pkgname = mxl
-

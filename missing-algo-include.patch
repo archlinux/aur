@@ -1,0 +1,12 @@
+diff --git a/lib/internal/tests/test_domainwatcher.cpp b/lib/internal/tests/test_domainwatcher.cpp
+index 9c9e724..00a0250 100644
+--- a/lib/internal/tests/test_domainwatcher.cpp
++++ b/lib/internal/tests/test_domainwatcher.cpp
+@@ -4,6 +4,7 @@
+ #include <condition_variable>
+ #include <cstdio>
+ #include <cstdlib>
++#include <algorithm>
+ #include <filesystem>
+ #include <fstream>
+ #include <list>
