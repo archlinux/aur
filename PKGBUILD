@@ -22,6 +22,8 @@ license=('MIT')
 provides=("${_appname}")
 conflicts=("${_appname}")
 
+optdepends=('git: Source Control Features' 'ripgrep: Workspace Search')
+
 options=(!strip)
 
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
