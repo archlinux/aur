@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lynmusic-bin
 _pkgname=LynMusic
-pkgver=1.0.4
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="A cross-platform local music player,built with Kotlin Multiplatform. (Prebuilt version)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ea610fb46563f39d57adfa94ef86ea8f297a1dbd710a611b8c28419718f063c9'
+sha256sums=('986455a27be7a283b8934ecf7704ea97b588b9096d0c7f4993d44e213e22a389'
             '81266c37f90d6eef62471250c3c906d0dec1f1c3041f22b7b45f7a3be612f9c1')
 prepare() {
     sed -i -e "
