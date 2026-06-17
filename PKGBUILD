@@ -1,7 +1,7 @@
 # Maintainer: chocolateimage <chocolateimage@protonmail.com>
 _pkgname=fontviewer
 pkgname=choco-fontviewer
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="View and install fonts with Google Fonts support"
 url="https://github.com/chocolateimage/fontviewer"
@@ -22,7 +22,7 @@ makedepends=(
 	'gettext'
 )
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/chocolateimage/fontviewer/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fa156708982ff1beb39a8437501f6c2f9f8cc8f999ec4bac9fe9c2a3af0c5c90')
+sha256sums=('699f5156fb0319cb48dc2f23160f1f7c1be00ed3df580923219a919910528b00')
 
 build() {
 	cd "$_pkgname-$pkgver"
