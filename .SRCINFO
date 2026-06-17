@@ -1,6 +1,6 @@
 pkgbase = krillinai-bin
 	pkgdesc = A video translation and dubbing tool powered by LLMs, offering professional-grade translations and one-click full-process deployment.It can generate content optimized for platforms like YouTube，TikTok, and Shorts.(Prebuilt version)
-	pkgver = 2.0.3
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/krillinai/KrillinAI
 	arch = aarch64
@@ -9,19 +9,19 @@ pkgbase = krillinai-bin
 	license = GPL-3.0-only
 	makedepends = gendesk
 	optdepends = ollama: Use you local LLMs
-	provides = krillinai=2.0.3
+	provides = krillinai=2.1.0
 	conflicts = krillinai
-	source = krillinai-2.0.3.jpg::https://raw.githubusercontent.com/krillinai/KrillinAI/v2.0.3/docs/images/logo.jpg
-	source = krillinai-2.0.3.toml::https://raw.githubusercontent.com/krillinai/KrillinAI/v2.0.3/config/config-example.toml
-	source = README-2.0.3.md::https://raw.githubusercontent.com/krillinai/KrillinAI/v2.0.3/README.md
+	source = krillinai-2.1.0.jpg::https://raw.githubusercontent.com/krillinai/KrillinAI/v2.1.0/docs/images/logo.jpg
+	source = krillinai-2.1.0.toml::https://raw.githubusercontent.com/krillinai/KrillinAI/v2.1.0/config/config-example.toml
+	source = README-2.1.0.md::https://raw.githubusercontent.com/krillinai/KrillinAI/v2.1.0/README.md
 	sha256sums = a009d0178d1fe67ff2c79a71076c21aff1c172bd3657e205d54bdb41f8ffdde1
 	sha256sums = 0c955a4ed93dcdeda32ea966ea4ac5bbcb05165cc16a142484008f3df539b93f
 	sha256sums = 9745b24ee9f2c96dfe586226ca1b7f10506032b866367748506b97342f5822e7
-	source_aarch64 = krillinai-2.0.3-aarch64::https://github.com/krillinai/KrillinAI/releases/download/v2.0.3/KrillinAI_2.0.3_Linux_arm64
-	sha256sums_aarch64 = a68ba32b6679bae5404770316bd9c123ac0b718965d0c15e9d4081c46f35dbad
-	source_i686 = krillinai-2.0.3-i686::https://github.com/krillinai/KrillinAI/releases/download/v2.0.3/KrillinAI_2.0.3_Linux_i386
-	sha256sums_i686 = 77a3d68340be07de1b13b745eb27c918005c969b509cd3b1d11b3497923aee3f
-	source_x86_64 = krillinai-2.0.3-x86_64::https://github.com/krillinai/KrillinAI/releases/download/v2.0.3/KrillinAI_2.0.3_Linux_x86_64
-	sha256sums_x86_64 = 369b894b635fcc6705c4aa1b6af2b21eede1e824b8ad6fbb9f3e551ee58155b8
+	source_aarch64 = krillinai-2.1.0-aarch64::https://github.com/krillinai/KrillinAI/releases/download/v2.1.0/KrillinAI_2.1.0_Linux_arm64
+	sha256sums_aarch64 = 6be879562ce47f68dd98705859b2fd9c2fe2ccb7ab7611b2622ba8b8edc9de25
+	source_i686 = krillinai-2.1.0-i686::https://github.com/krillinai/KrillinAI/releases/download/v2.1.0/KrillinAI_2.1.0_Linux_i386
+	sha256sums_i686 = f4f6a28b3fc1b7f5bc15513c7856c3d2fcdf5a7a2fd58c60533b8cda0cca81ac
+	source_x86_64 = krillinai-2.1.0-x86_64::https://github.com/krillinai/KrillinAI/releases/download/v2.1.0/KrillinAI_2.1.0_Linux_x86_64
+	sha256sums_x86_64 = a289d48833870fac6fceec9c2fcf193b2e5370b483e00257b6b4acfdda5c1369
 
 pkgname = krillinai-bin
