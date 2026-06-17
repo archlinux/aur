@@ -2,7 +2,7 @@
 
 pkgname=reasonix-desktop-deb
 _pkgname=reasonix-desktop
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc='Terminal-native AI coding agent with DeepSeek API (desktop GUI, repackaged from .deb)'
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('reasonix-desktop')
 conflicts=('reasonix-desktop' 'deepseek-reasonix-desktop' 'deepseek-reasonix-desktop-bin')
 options=('!strip')
 source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/esengine/DeepSeek-Reasonix/releases/download/desktop-v${pkgver}/Reasonix-linux-amd64.deb")
-sha256sums=('f8ec36b1d507b3c9e8eb3df7b88b71f21edfd6f2f4d01966491d39d1c7e60252')
+sha256sums=('7a28229c4efa45a74522fcbbcdf15a8145a922f8b0d8ac5f24c99b23c8efa6e9')
 
 package() {
   local _extractdir
