@@ -1,6 +1,6 @@
 # Maintainer: Fabian Berg <fabian.berg@hb9hil.org>
 pkgname=mtban
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc='MikroTik address-list manager via RouterOS REST API'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -10,7 +10,7 @@ makedepends=('go')
 conflicts=('mtban-bin')
 backup=('etc/mtban/mtban.conf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hb9hil/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('249b48d0d3e5f9132f4d7c77ab82a970944d1e93c34c5b9e016c80c51aed04d0')
+sha256sums=('736fbac697ad117dab48b4983f7710a85b55b54ea4f9db765dbec5c78adf436e')
 
 build() {
     cd "${pkgname}-${pkgver}"
