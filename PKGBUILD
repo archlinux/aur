@@ -25,9 +25,9 @@
 : ${_build_limit_cores:=true} # detect usable cores for parallelism, limited by RAM
 
 ## update
-_icver="140.11.0-2"
-_commit="056d96e6f753cee6320873a57c18e0b31a7ce57a"
-_ffsum="1b034d2117356fda24807a151055132315c6ba58ad2bdf7ec71ee707fac5e028"
+_icver="140.12.0-1"
+_commit="7cf09cb6107e888c93d85a7e575b4e7c8a2dc917"
+_ffsum="85dfb9f6021152b4302b8968ef485d958c8c471cb02415a19853daaad5acce62"
 
 ## package
 _pkgname="icecat"
@@ -149,6 +149,9 @@ source=(
   0003-Use-wasm32-wasip1-target.patch
   0004-update-rust-bindgen-to-fix-clang22-build.patch.xz
   0005-skia-m142-update.patch.xz
+
+  # Fix for cbindgen 0.29.4
+  0006-cbindgen-0_29_4.patch
 )
 sha256sums=(
   'SKIP'
@@ -164,6 +167,7 @@ sha256sums=(
   '28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89'
   '8f9b7458760b37766a73d4d2c0e93dc810e59d3844495b9d52b3b61dde59c05d'
   'e11aba9839824096f07ca5dc17c9fd5bfa09209f8261ab09f7e473f350a82760'
+  '198a797558d58d8cb68870fc1ff30dead271f5f1a3be0bce9a627d728a37da9f'
 )
 
 _make_icecat() (
