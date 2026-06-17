@@ -1,0 +1,20 @@
+pkgbase = opennn
+	pkgdesc = OpenNN neural network library with attention and deep learning support
+	pkgver = 8.0.0
+	pkgrel = 1
+	url = https://www.opennn.net/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = gcc-libs
+	depends = openmp
+	optdepends = cuda: CUDA acceleration support
+	optdepends = cudnn: cuDNN acceleration support
+	source = https://github.com/Artelnics/opennn/archive/refs/tags/v8.0.0.tar.gz
+	source = cuda-definition.patch
+	sha256sums = 3f2326b4a85cc2c388baf00107a340ee91104ef5b8d7fa83b6add555e7d9ea90
+	sha256sums = c2c7766d227e7510cef1eb2b250c03819553410c1920c60fd65752fe20539941
+
+pkgname = opennn

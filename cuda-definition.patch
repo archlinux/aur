@@ -1,0 +1,78 @@
+diff -ruN opennn-8.0.0/examples/emotion_analysis/CMakeLists.txt opennn-8.0.0-patch/examples/emotion_analysis/CMakeLists.txt
+--- opennn-8.0.0/examples/emotion_analysis/CMakeLists.txt	2026-04-07 12:13:07.000000000 +0200
++++ opennn-8.0.0-patch/examples/emotion_analysis/CMakeLists.txt	2026-06-17 09:02:54.243130904 +0200
+@@ -21,3 +21,7 @@
+ )
+ 
+ target_link_libraries(emotion_analysis PUBLIC opennn)
++
++if(OPENNN_WITH_CUDA)
++    target_compile_definitions(emotion_analysis PUBLIC OPENNN_CUDA)
++endif()
+diff -ruN opennn-8.0.0/examples/melanoma_cancer/CMakeLists.txt opennn-8.0.0-patch/examples/melanoma_cancer/CMakeLists.txt
+--- opennn-8.0.0/examples/melanoma_cancer/CMakeLists.txt	2026-04-07 12:13:07.000000000 +0200
++++ opennn-8.0.0-patch/examples/melanoma_cancer/CMakeLists.txt	2026-06-17 09:03:51.132920254 +0200
+@@ -20,4 +20,8 @@
+     "${CMAKE_BINARY_DIR}/data"
+ )
+ 
+-target_link_libraries(melanoma_cancer PUBLIC opennn)
+\ No newline at end of file
++target_link_libraries(melanoma_cancer PUBLIC opennn)
++
++if(OPENNN_WITH_CUDA)
++    target_compile_definitions(melanoma_cancer PUBLIC OPENNN_CUDA)
++endif()
+diff -ruN opennn-8.0.0/examples/mnist/CMakeLists.txt opennn-8.0.0-patch/examples/mnist/CMakeLists.txt
+--- opennn-8.0.0/examples/mnist/CMakeLists.txt	2026-04-07 12:13:07.000000000 +0200
++++ opennn-8.0.0-patch/examples/mnist/CMakeLists.txt	2026-06-17 09:04:46.407359719 +0200
+@@ -20,4 +20,7 @@
+     "${CMAKE_BINARY_DIR}/data"
+ )
+ 
+-target_link_libraries(mnist PUBLIC opennn)
+\ No newline at end of file
++target_link_libraries(mnist PUBLIC opennn)
++if(OPENNN_WITH_CUDA)
++    target_compile_definitions(mnist PUBLIC OPENNN_CUDA)
++endif()
+diff -ruN opennn-8.0.0/examples/translation/CMakeLists.txt opennn-8.0.0-patch/examples/translation/CMakeLists.txt
+--- opennn-8.0.0/examples/translation/CMakeLists.txt	2026-04-07 12:13:07.000000000 +0200
++++ opennn-8.0.0-patch/examples/translation/CMakeLists.txt	2026-06-17 09:05:35.576140594 +0200
+@@ -21,3 +21,6 @@
+ )
+ 
+ target_link_libraries(translation PUBLIC opennn)
++if(OPENNN_WITH_CUDA)
++    target_compile_definitions(translation PUBLIC OPENNN_CUDA)
++endif()
+diff -ruN opennn-8.0.0/opennn/CMakeLists.txt opennn-8.0.0-patch/opennn/CMakeLists.txt
+--- opennn-8.0.0/opennn/CMakeLists.txt	2026-04-07 12:13:07.000000000 +0200
++++ opennn-8.0.0-patch/opennn/CMakeLists.txt	2026-06-17 09:02:22.214665047 +0200
+@@ -42,6 +42,7 @@
+     file(GLOB_RECURSE CUDA_SOURCES CONFIGURE_DEPENDS "*.cu" "*.cuh")
+     target_sources(opennn PRIVATE ${CUDA_SOURCES})
+     target_link_libraries(opennn PUBLIC CUDA::cudart CUDA::cublas)
++    target_compile_definitions(opennn PUBLIC OPENNN_CUDA)
+     target_compile_options(opennn PRIVATE $<$<COMPILE_LANGUAGE:CUDA>:--expt-relaxed-constexpr>)
+     if(HAVE_CUDNN)
+         target_link_libraries(opennn PUBLIC ${CUDNN_LIBRARY})
+@@ -52,4 +53,4 @@
+ target_compile_options(opennn PRIVATE
+     $<$<CONFIG:DEBUG>:-O0 -g>
+     $<$<NOT:$<CONFIG:DEBUG>>:-O2>
+-)
+\ No newline at end of file
++)
+diff -ruN opennn-8.0.0/opennn/pch.h opennn-8.0.0-patch/opennn/pch.h
+--- opennn-8.0.0/opennn/pch.h	2026-04-07 12:13:07.000000000 +0200
++++ opennn-8.0.0-patch/opennn/pch.h	2026-06-17 09:00:00.644832438 +0200
+@@ -55,8 +55,6 @@
+ #include "../eigen/unsupported/Eigen/CXX11/Tensor"
+ #include "../eigen/Eigen/src/Core/util/DisableStupidWarnings.h"
+ 
+-#define OPENNN_CUDA // Comment this line to disable cuda files
+-
+ #ifdef OPENNN_CUDA
+ 
+ #include "../opennn/kernel.cuh"
