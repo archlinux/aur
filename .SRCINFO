@@ -1,6 +1,6 @@
 pkgbase = upyay
 	pkgdesc = A yay wrapper written in pure bash.
-	pkgver = 3.0.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/gralito/upyay
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = upyay
 	depends = moreutils
 	depends = dunst
 	provides = upyay
-	source = upyay-3.0.0.tar.gz::https://github.com/gralito/upyay/archive/v3.0.0.tar.gz
-	sha256sums = 6bec2eb918b00261b77627e02ce0ff65ee4f439471010429da9754ae4b0bfc37
+	source = upyay-3.1.1.tar.gz::https://github.com/gralito/upyay/archive/v3.1.1.tar.gz
+	sha256sums = 3ad76c84be66693cac8e6ac25a4857775528037e7ff57531106fe6bbb469641d
 
 pkgname = upyay
