@@ -2,10 +2,10 @@
 # https://github.com/AshBuk/dabri
 
 pkgname=dabri
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Offline speech-to-text desktop application using Whisper"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/AshBuk/dabri"
 license=('MIT')
 depends=(
@@ -46,7 +46,7 @@ source=(
     "whisper-cpp-${_whisper_version}.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v${_whisper_version}.tar.gz"
 )
 sha256sums=(
-    '1dec94085ca1620af698dc30ab4d1ead635a79908d2e8b04eb98eab841ef76ba'
+    'c2daa0eae4a2e4f477aa508e3a92b8b97c6cbb5e2fb03be545c490aee38fd06e'
     'f8e632016ceae556f3132a16c7f704be1e7715595041f474fa81a2b64c1abf7c'
 )
 
@@ -65,6 +65,12 @@ prepare() {
 build() {
     cd "${pkgname}-${pkgver}"
 
+    # x86-only ISA extensions; on aarch64 whisper.cpp auto-detects NEON/dotprod
+    local ggml_arch_flags=()
+    if [[ "$CARCH" == "x86_64" ]]; then
+        ggml_arch_flags=(-DGGML_AVX=ON -DGGML_AVX2=ON -DGGML_FMA=ON -DGGML_F16C=ON)
+    fi
+
     # Build whisper.cpp libraries
     pushd build/whisper.cpp
     cmake -B build \
@@ -73,10 +79,7 @@ build() {
         -DCMAKE_INSTALL_RPATH="/usr/lib/${pkgname}" \
         -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
         -DGGML_NATIVE=OFF \
-        -DGGML_AVX=ON \
-        -DGGML_AVX2=ON \
-        -DGGML_FMA=ON \
-        -DGGML_F16C=ON \
+        "${ggml_arch_flags[@]}" \
         -DGGML_VULKAN=ON
     cmake --build build --parallel
     popd
