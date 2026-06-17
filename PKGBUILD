@@ -2,8 +2,8 @@
 
 pkgname=whylian-git
 _pkgname=whylian
-pkgver=1.0.1.r353.gdab72af
-pkgrel=3
+pkgver=1.0.2.r359.g49e4cf3
+pkgrel=1
 pkgdesc="Lian Li device control for Linux — HydroShift II AdvanceMode fork of lian-li-linux (git)"
 arch=('x86_64')
 url="https://github.com/byrdltd/whylian"
@@ -50,14 +50,25 @@ pkgver() {
     "$(git rev-parse --short HEAD)"
 }
 
+_use_distro_rust() {
+  if [[ -f rust-toolchain.toml ]]; then
+    mv rust-toolchain.toml rust-toolchain.toml.aur-skip
+  fi
+  export PATH="/usr/bin:${PATH}"
+  export RUSTC=/usr/bin/rustc
+  export CARGO=/usr/bin/cargo
+}
+
 prepare() {
   cd "${_pkgname}"
+  _use_distro_rust
   git submodule update --init --recursive
   /usr/bin/cargo fetch --locked --target "$(/usr/bin/rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "${_pkgname}"
+  _use_distro_rust
   export CARGO_PROFILE_RELEASE_STRIP=symbols
   export SLINT_NO_QT=1
   export RUSTFLAGS='-D warnings'
