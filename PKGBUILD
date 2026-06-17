@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Ausset <guillaume+arch@ausset.me>
 
 pkgname=colgrep-bin
-pkgver=1.5.5
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="Semantic code search powered by ColBERT (prebuilt binary)"
 arch=('x86_64')
@@ -14,8 +14,8 @@ _source_archive="colgrep-${pkgver}-x86_64-unknown-linux-gnu.tar.xz"
 _upstream_archive="colgrep-x86_64-unknown-linux-gnu.tar.xz"
 source=("${_source_archive}::https://github.com/lightonai/next-plaid/releases/download/v${pkgver}/${_upstream_archive}"
         "${_source_archive}.sha256::https://github.com/lightonai/next-plaid/releases/download/v${pkgver}/${_upstream_archive}.sha256")
-sha256sums=('53b120a7e21c2a5eed1884275d0f99c0d3573aac0ad2019d07b2892b5f3b6759'
-            '4d16dc4d0553ebbde737b7284abd6a7063d513b22439b642c7f1b36d7b143a7b')
+sha256sums=('d9d6263cfba5673b2272877de2b70d474c70cae28d3d5e6fd03bd3d331e23510'
+            '53fb277a914db2a66cb262d59ab70887c183400290c5468d503edb00ea0c91a1')
 
 prepare() {
 	cd "${srcdir}"
