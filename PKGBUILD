@@ -1,8 +1,8 @@
 # Maintainer: byrdltd <byrdltd@users.noreply.github.com>
 
 pkgname=whylian
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Lian Li device control for Linux — HydroShift II AdvanceMode fork of lian-li-linux"
 arch=('x86_64')
 url="https://github.com/byrdltd/whylian"
@@ -31,6 +31,7 @@ makedepends=(
 )
 optdepends=(
   'systemd: user daemon unit (enabled globally on install)'
+  'linux-headers: build evdi-dkms against your running kernel when DKMS rebuild is needed'
 )
 provides=('lianli-linux' 'lianli-linux-git')
 conflicts=('whylian-git' 'lianli-linux' 'lianli-linux-git')
