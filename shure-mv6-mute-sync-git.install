@@ -1,14 +1,32 @@
+_dkms_name=hid-shure-mv6
+
+_dkms_ver() {
+    find /usr/src -maxdepth 1 -name "${_dkms_name}-*" -type d \
+        | sort -V | tail -1 | sed "s|.*/\${_dkms_name}-||"
+}
+
 post_install() {
-    depmod -a
-    modprobe hid_shure_mv6 && echo ">>> hid_shure_mv6 loaded." || echo ">>> Warning: modprobe failed; reboot or run: modprobe hid_shure_mv6"
-    echo ">>> Module will also load automatically at boot via /etc/modules-load.d/hid-shure-mv6.conf"
+    local _ver
+    _ver=$(_dkms_ver)
+    dkms install --no-depmod "${_dkms_name}/${_ver}" --all
+    depmod -A
+    modprobe hid_shure_mv6 && echo ">>> hid_shure_mv6 loaded." \
+        || echo ">>> Warning: modprobe failed; reboot or run: modprobe hid_shure_mv6"
 }
 
 post_upgrade() {
-    depmod -a
+    local _ver
+    _ver=$(_dkms_ver)
+    # Remove any stale older versions first
+    dkms status "${_dkms_name}" | awk -F'[,/]' '{print $2}' \
+        | grep -v "^[[:space:]]*${_ver}$" \
+        | xargs -rI{} dkms remove "${_dkms_name}/{}" --all 2>/dev/null || true
+    dkms install --no-depmod "${_dkms_name}/${_ver}" --all
+    depmod -A
     modprobe hid_shure_mv6 2>/dev/null || true
 }
 
 post_remove() {
-    depmod -a
+    dkms remove "${_dkms_name}" --all 2>/dev/null || true
+    depmod -A
 }
