@@ -1,5 +1,5 @@
 pkgname=orbitopl-toolbox-git
-pkgver=0.0.0.r0.g0000000
+pkgver=1.0.0.r1.gc94d38a
 pkgrel=1
 pkgdesc="OrbitOPL Toolbox - PS2 OPL game management GUI (Electron + Angular, git version)"
 arch=('x86_64')
@@ -50,11 +50,10 @@ build() {
   # Angular frontend build
   cd angular
   npm install
-  npm run build
   cd ..
 
-  # Electron packaging (your working command)
-  npm run package:linux
+  # Electron packaging
+  npm run package:linux -- --linux zip
 }
 
 package() {
