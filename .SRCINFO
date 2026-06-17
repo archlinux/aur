@@ -1,6 +1,6 @@
 pkgbase = viewer-rs-bin
 	pkgdesc = Universal TUI file viewer written in Rust
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/isene/viewer
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = viewer-rs-bin
 	provides = viewer
 	conflicts = viewer-rs
 	options = !strip
-	source = README-0.1.0.md::https://raw.githubusercontent.com/isene/viewer/v0.1.0/README.md
-	sha256sums = 621a2196acde26347787c60aef6587bd7dc5acfae90904ed3ee6565fe1151a4b
-	source_x86_64 = viewer-x86_64-0.1.0::https://github.com/isene/viewer/releases/download/v0.1.0/viewer-linux-x86_64
-	sha256sums_x86_64 = b64f75ef29892b184ba7ef26d7f0cfbc7bf49c4474ecf02ab4c0885120aea2d7
-	source_aarch64 = viewer-aarch64-0.1.0::https://github.com/isene/viewer/releases/download/v0.1.0/viewer-linux-aarch64
-	sha256sums_aarch64 = ac855f11b0b63c9e3e43a56ea0b96eb94317bdc4168980609028aab9ce4bf5ed
+	source = README-0.1.1.md::https://raw.githubusercontent.com/isene/viewer/v0.1.1/README.md
+	sha256sums = 1540702356d962af791e1b7efd7546b126884293f6b0f2fba259e22695e167ff
+	source_x86_64 = viewer-x86_64-0.1.1::https://github.com/isene/viewer/releases/download/v0.1.1/viewer-linux-x86_64
+	sha256sums_x86_64 = 030f51c43f1b43bfa38bd7b6bd39a22955a6411ac71bc7f679bd847a5aaafd08
+	source_aarch64 = viewer-aarch64-0.1.1::https://github.com/isene/viewer/releases/download/v0.1.1/viewer-linux-aarch64
+	sha256sums_aarch64 = 4357224c8bac652417f76b766fd258b0f7a3f6256e731d7407a86264b496c5af
 
 pkgname = viewer-rs-bin
