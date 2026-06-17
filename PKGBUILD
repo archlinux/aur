@@ -2,12 +2,13 @@
 
 pkgname=telescope
 pkgver=0.11
-pkgrel=3
+pkgrel=4
 pkgdesc='w3m-like browser for Gemini'
 arch=('x86_64')
 url='https://www.telescope-browser.org/'
 license=('ISC')
-depends=('imsg-compat' 'libbsd' 'libgrapheme' 'libretls' 'ncurses')
+depends=('libbsd' 'libgrapheme' 'libretls' 'ncurses')
+makedepends=('imsg-compat')
 source=("https://github.com/$pkgname-browser/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('0b56fc56958d4b4c2ecc7dc971d4f7c156ca827d5bd97b70dcb541cf9e423927')
 
