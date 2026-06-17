@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname="python-dtschema-git"
-pkgver=2024.02.r14.64b72b0
+pkgver=2026.06.r1.2203c17
 pkgrel=1
 pkgdesc="Tools and schema data for Devicetree schema validation using the json-schema vocabulary"
 arch=(any)
@@ -11,11 +11,11 @@ depends=(
   'python-jsonschema'
   'python-rfc3987'
   'python-ruamel-yaml'
-  'python-tqdm'
 )
 makedepends=(
   'git'
   'python-build'
+  'python-packaging'
   'python-installer'
   'python-setuptools'
   'python-setuptools-scm'
@@ -36,7 +36,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
-  python -m build --wheel --no-isolation
+  python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
