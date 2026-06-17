@@ -77,10 +77,5 @@ package() {
   # Symlink launcher (adjust if binary name differs)
   install -dm755 "$pkgdir/usr/bin"
 
-  # Try to locate binary
-  _bin=$(find "$pkgdir/opt/orbitopl-toolbox/orbitopl-toolbox" -executable | head -n 1)
-
-  if [[ -n "$_bin" ]]; then
-    ln -sf "$_bin" "$pkgdir/usr/bin/orbitopl-toolbox"
-  fi
+  ln -sf "/opt/orbitopl-toolbox/orbitopl-toolbox" "$pkgdir/usr/bin/orbitopl-toolbox"
 }
