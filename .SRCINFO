@@ -1,0 +1,18 @@
+pkgbase = wizread-bin
+	pkgdesc = A next-generation e-book reader for passionate readers. It combines a powerful reading app with an exciting community, letting you organize, track and share your entire reading journey in one seamless experience. (Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.0_beta.10
+	pkgrel = 1
+	url = https://wizread.io/
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = electron33
+	provides = wizread=1.0.0_beta.10
+	conflicts = wizread
+	options = !emptydirs
+	options = !strip
+	source = wizread-1.0.0_beta.10.deb::https://github.com/wizread/wizread-releases//releases/download/v1.0.0-beta.10/wizread_1.0.0-beta.10_amd64.deb
+	source = wizread.sh
+	sha256sums = 3ca24608a47d1c74ce6859423ae99dfa44ba17d51964a69e68a16975eb3666f9
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+
+pkgname = wizread-bin
