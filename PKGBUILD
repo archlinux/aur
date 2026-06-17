@@ -2,7 +2,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-cachyos
-_srctag=11.0-20260601
+_srctag=11.0-20260602
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
@@ -36,6 +36,7 @@ depends=(
   cabextract
   desktop-file-utils
   fontconfig      lib32-fontconfig
+  flac            lib32-flac
   freetype2       lib32-freetype2
   libgcc          lib32-gcc-libs
   gettext         lib32-gettext
@@ -43,19 +44,24 @@ depends=(
   glibc           lib32-glibc
 #  lapack          lib32-lapack
   libgudev        lib32-libgudev
+  libnsl          lib32-libnsl
   libpcap         lib32-libpcap
   libunwind       lib32-libunwind
   libvpx          lib32-libvpx
+  libwebp         lib32-libwebp
   libx11          lib32-libx11
   libxcursor      lib32-libxcursor
   libxext         lib32-libxext
   libxkbcommon    lib32-libxkbcommon
+  libxml2         lib32-libxml2
   libxi           lib32-libxi
   libxrandr       lib32-libxrandr
   lzo             lib32-lzo
+  pipewire        lib32-pipewire
   python
   python-six
   speex           lib32-speex
+  speexdsp        lib32-speexdsp
 # Start of old steam-native-runtime
   atk             lib32-atk
   cairo           lib32-cairo
@@ -94,6 +100,7 @@ depends=(
 # End of old steam-native-runtime
   unzip
   wayland         lib32-wayland
+  xz              lib32-xz
 )
 makedepends=(
   afdko
@@ -113,7 +120,6 @@ makedepends=(
   libva                 lib32-libva
   libxcomposite         lib32-libxcomposite
   libxinerama           lib32-libxinerama
-  libxml2               lib32-libxml2
   libxxf86vm            lib32-libxxf86vm
   lld
   mesa                  lib32-mesa
@@ -216,13 +222,16 @@ prepare() {
     mv "$srcdir"/xalia-${_xaliaver}-net48-mono.zip contrib/
 
     _submodules=(
-        d7vk
+        OpenXR-SDK
+        SPIRV-Headers
+        Vulkan-Headers
         dav1d
-        discord-rpc-bridge
         dxvk
-        dxvk-llasync
         dxvk-nvapi
-        dxvk-sarek
+        extras/d7vk
+        extras/discord-rpc-bridge
+        extras/dxvk-llasync
+        extras/dxvk-sarek
         ffmpeg
         fonts/liberation-fonts
         glslang
@@ -231,10 +240,7 @@ prepare() {
         gst-plugins-rs
         gstreamer
         libsoup
-        libwebp
-        libxml2
         meson
-        nghttp2
         nvidia-libs/dxvk-nvapi
         nvidia-libs/nvcuda
         nvidia-libs/nvcuda32
@@ -243,16 +249,13 @@ prepare() {
         nvidia-libs/wine-nvml
         nvidia-libs/wine-nvoptix
         openvr
-        OpenXR-SDK
         protonfixes
-        SPIRV-Headers
         vkd3d
         vkd3d-proton
+        vklayers/Vulkan-Utility-Libraries
         vklayers/low_latency_layer
         vklayers/pyroveil
         vklayers/vkbasalt
-        Vulkan-Headers
-        Vulkan-Utility-Libraries
         wine
     )
 
@@ -296,8 +299,7 @@ build() {
         --container-engine="none" \
         --proton-sdk-image="" \
         --build-name="${pkgname}" \
-        --without-wayland-libs \
-        --without-libpcap \
+        --without-steamrt-depends \
         --without-tts
 
     SUBJOBS=$([[ "$MAKEFLAGS" =~ -j\ *([1-9][0-9]*) ]] && echo "${BASH_REMATCH[1]}" || echo "$(nproc)") \
@@ -347,7 +349,7 @@ package() {
         $(find "${_monodir}" -iname "*x86_64.dll" -or -iname "*x86_64.exe")
 }
 
-b2sums=('43636d5629b7c638050009335a9d1b771aff0b1cf2d34616fe918c37cf09e04d9bdf1086835ceb966c799b0e8b87dc39ae3d31d9f432cf900f99f1fb7cff07a2'
+b2sums=('b64fe635743ea83876ae85545004696dbc2956c13b8d77a382412ab073a9c1ca4c65df189b0b413fe174cd222d053278f24aada6841317ae49b83ccd2cb742a0'
         '2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9'
         '62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0'
         '76bdc625c6c14a6c3e3892649c1fbb7ed127d8ce90079a3f8d317c8e6fd567c763d71dd838f8422c921ed315e9d2735849b223a94a9517ad73d0734d313c1a6f'
