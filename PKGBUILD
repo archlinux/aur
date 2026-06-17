@@ -3,7 +3,7 @@
 #149.0.7827.155-445420
 pkgname=trivalent-bin
 pkgver=149.0.7827.155
-pkgrel=2
+pkgrel=3
 pkgdesc="A hardened chromium for desktop Linux inspired by Vanadium."
 arch=('x86_64')
 url="https://github.com/secureblue/Trivalent"
