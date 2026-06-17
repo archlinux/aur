@@ -1,7 +1,7 @@
 # Maintainer  : Balazs Vinarz <vinibali1@gmail.com
 
 pkgname='domoticz-bin'
-pkgver=2025.1
+pkgver=2026.2
 pkgrel=1
 pkgdesc="Web based home automation"
 arch=('armv7h' 'aarch64' 'x86_64')
