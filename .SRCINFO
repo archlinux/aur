@@ -1,13 +1,12 @@
 pkgbase = atrust-bin
 	pkgdesc = Sangfor ssl sdp client.(Prebuilt version.Use system-wide electron)
 	pkgver = 2.5.16.30
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.sangfor.com/
 	arch = x86_64
 	license = LicenseRef-unknown
 	depends = libxss
 	depends = qt5-base
-	depends = openssl-1.1
 	depends = java-runtime
 	depends = gtk3
 	depends = libxrandr
@@ -16,6 +15,7 @@ pkgbase = atrust-bin
 	depends = at-spi2-core
 	depends = alsa-lib
 	depends = libxtst
+	depends = nodejs
 	provides = atrust=2.5.16.30
 	conflicts = atrust
 	options = !strip
