@@ -1,0 +1,198 @@
+#!/usr/bin/env bash
+# franki.install -- Post-install hooks para FRANKI OS (Arch / makepkg)
+# Crea el venv Python en /usr/lib/franki/backend/venv_311
+# y persiste las dependencias de requirements-core.txt.
+
+VENV="/usr/lib/franki/backend/venv_311"
+REQ="/usr/lib/franki/backend/requirements-core.txt"
+VOICES_DIR="/usr/lib/franki/backend/sentidos/voces"
+VOICE_MODEL="es_MX-ald-medium"
+VOICE_BASE_URL="https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/es/es_MX/ald/medium"
+
+_descargar_voces() {
+    echo " >> [FRANKI] Verificando modelos de voz (Piper TTS)..."
+    mkdir -p "$VOICES_DIR"
+    if [ ! -f "$VOICES_DIR/${VOICE_MODEL}.onnx" ]; then
+        echo " >> [FRANKI] Descargando ${VOICE_MODEL}.onnx (~60MB)..."
+        curl -L --silent --show-error \
+            "${VOICE_BASE_URL}/${VOICE_MODEL}.onnx" \
+            -o "$VOICES_DIR/${VOICE_MODEL}.onnx" || {
+            echo " >> [WARN] Fallo la descarga del modelo de voz. Ejecuta manualmente:"
+            echo "    curl -L ${VOICE_BASE_URL}/${VOICE_MODEL}.onnx -o ${VOICES_DIR}/${VOICE_MODEL}.onnx"
+            return 1
+        }
+        curl -L --silent --show-error \
+            "${VOICE_BASE_URL}/${VOICE_MODEL}.onnx.json" \
+            -o "$VOICES_DIR/${VOICE_MODEL}.onnx.json" || true
+        echo " >> [FRANKI] Modelo de voz instalado."
+    else
+        echo " >> [FRANKI] Modelo de voz ya presente, omitiendo descarga."
+    fi
+    # Normalizar phoneme_type: HuggingFace entrega "PhonemeType.ESPEAK", piper espera "espeak"
+    if [ -f "$VOICES_DIR/${VOICE_MODEL}.onnx.json" ]; then
+        sed -i 's/"PhonemeType\.ESPEAK"/"espeak"/g' "$VOICES_DIR/${VOICE_MODEL}.onnx.json" 2>/dev/null || true
+    fi
+}
+
+_crear_venv() {
+    echo " >> [FRANKI] Creando entorno Python 3.11 en $VENV (via uv)..."
+    # Eliminar venv previo para garantizar recreacion limpia en cada upgrade
+    rm -rf "$VENV"
+    # UV_PYTHON_INSTALL_DIR: instala Python en ruta de sistema accesible por todos.
+    # Sin esto uv usa /root/.local/ (hook corre como root) que el servicio no puede leer.
+    export UV_PYTHON_INSTALL_DIR="/usr/lib/franki/python"
+    # UV_PYTHON_DOWNLOADS=auto: permite a uv descargar Python 3.11 si no esta instalado
+    # en el sistema. Garantiza que la instalacion no falle por ausencia del interprete.
+    export UV_PYTHON_DOWNLOADS=auto
+    # --seed incluye pip en el venv (uv venv por defecto NO instala pip)
+    uv venv --python 3.11 --seed "$VENV" || {
+        echo " >> [ERROR] uv venv --python 3.11 fallo incluso con descarga automatica."
+        echo "    Verifica conexion a internet o instala Python 3.11 manualmente:"
+        echo "    pacman -S python311  (o equivalente en tu distro)"
+        return 1
+    }
+    echo " >> [FRANKI] Instalando dependencias Python..."
+    "$VENV/bin/pip" install --quiet -r "$REQ"
+    local _exit=$?
+    if [ $_exit -ne 0 ]; then
+        echo " >> [ERROR] pip install fallo (exit $_exit). Algunos modulos pueden estar ausentes."
+        echo " >> Ejecuta manualmente: sudo $VENV/bin/pip install -r $REQ"
+    fi
+    # --- EXTRAS OPERACIONALES (ligeros, sin deps de sistema — no-blocking) ---
+    # Estos se auto-instalan porque son necesarios para funciones nucleares
+    # del servicio en produccion (Telegram, WhatsApp, Cinema Engine).
+    echo " >> [FRANKI] Instalando extras operacionales (yt-dlp, neonize, aiogram)..."
+    "$VENV/bin/pip" install --quiet 'yt-dlp' 2>/dev/null || \
+        echo " >> [WARN] yt-dlp fallo — instala manualmente: sudo $VENV/bin/pip install yt-dlp"
+    "$VENV/bin/pip" install --quiet 'neonize>=0.3.17' 'protobuf>=6.32.1,<7' 2>/dev/null || \
+        echo " >> [WARN] neonize fallo — WhatsApp no disponible."
+    "$VENV/bin/pip" install --quiet 'aiogram>=3.0' 2>/dev/null || \
+        echo " >> [WARN] aiogram fallo — bot Telegram no disponible."
+
+    # --- EXTRAS OPCIONALES PESADOS (requieren deps de sistema — NO se auto-instalan) ---
+    # Instala solo los grupos que necesites con:
+    #   sudo /usr/lib/franki/backend/venv_311/bin/pip install <paquete>
+    # Requisitos de sistema previos indicados entre parentesis.
+    echo " >> [FRANKI] Extras opcionales disponibles (instalar manualmente segun necesidad):"
+    echo "    [GEO]      networkx geopandas earthengine-api  (GEE requiere: earthengine authenticate)"
+    echo "    [IPS]      rpy2 pyvista  (requiere: pacman -S r)"
+    echo "    [SOCIAL]   tweepy Mastodon.py atproto instagrapi"
+    echo "    [IMAGEN]   replicate  (requiere: REPLICATE_API_TOKEN en vault)"
+    echo "    [3D-IA]    torch transformers airllm  (requiere: cuda o rocm)"
+    echo "    [CAD]      ezdxf"
+    echo "    [VIZ]      matplotlib  (graficos y diagramas)"
+    echo "    [INPUT]    evdev  (solo Linux — Arch: pacman -S python-evdev | otros: pip install evdev)"
+    echo "    [BROWSER]  playwright-chromium: RETIRADO — sustituido por TauriBrowserSession soberana"
+
+    echo "    (Ver lista completa en: $VENV/../requirements-extras.txt)"
+
+    echo " >> [FRANKI] Venv listo. Paquetes instalados: $("$VENV/bin/pip" list 2>/dev/null | wc -l)"
+}
+
+_verificar_ollama() {
+    echo " >> [FRANKI] Verificando modelos Ollama..."
+    if ! command -v ollama &>/dev/null; then
+        echo " >> [WARN] ollama no encontrado en PATH. Instala ollama y ejecuta:"
+        echo "     ollama pull nomic-embed-text:latest"
+        echo "     ollama pull qwen2.5:3b"
+        echo "     ollama pull moondream:1.8b"
+        return 1
+    fi
+    # Comprobar si el daemon responde (sin arrancarlo si no esta corriendo)
+    if ! ollama list &>/dev/null 2>&1; then
+        echo " >> [WARN] ollama instalado pero daemon no responde."
+        echo "     Inicia ollama y luego ejecuta los pulls manuales (ver abajo)."
+        return 1
+    fi
+    local _modelos_instalados; _modelos_instalados="$(ollama list 2>/dev/null)"
+    for modelo in "nomic-embed-text" "qwen2.5:3b" "moondream"; do
+        if echo "$_modelos_instalados" | grep -q "$modelo"; then
+            echo " >> [OK] Modelo $modelo ya presente."
+        else
+            echo " >> [FRANKI] Descargando $modelo (puede tardar segun conexion)..."
+            ollama pull "$modelo" || echo " >> [WARN] Fallo pull $modelo — hazlo manualmente."
+        fi
+    done
+}
+
+_enable_user_services() {
+    # Habilita y arranca los servicios FRANKI en la sesion del usuario real.
+    # Los hooks de pacman corren como root; usamos SUDO_USER para identificar
+    # al usuario y ejecutar los comandos en su sesion via XDG_RUNTIME_DIR.
+    local _user="${SUDO_USER:-}"
+    if [ -z "$_user" ]; then
+        echo " >> [WARN] No se pudo detectar usuario (SUDO_USER vacio)."
+        echo "     Ejecuta manualmente: systemctl --user enable --now franki_cerebelo.service"
+        return 1
+    fi
+    local _uid; _uid=$(id -u "$_user" 2>/dev/null) || return 1
+    local _xdg="/run/user/$_uid"
+
+    # Comandos que necesitan correr en el contexto del usuario
+    runuser -l "$_user" -c "
+        export XDG_RUNTIME_DIR=$_xdg
+        export DBUS_SESSION_BUS_ADDRESS=unix:path=$_xdg/bus
+        systemctl --user daemon-reload 2>/dev/null || true
+        systemctl --user disable franki_os.service 2>/dev/null || true
+        systemctl --user disable franki_os.socket 2>/dev/null || true
+        systemctl --user disable franki_cerebelo.service 2>/dev/null || true
+        systemctl --user disable franki_cerebelo.socket 2>/dev/null || true
+    " 2>/dev/null && echo " >> [FRANKI] Auto-arranque deshabilitado. Activa desde Ajustes > Sistema si lo deseas." || \
+        echo " >> [WARN] No se pudo configurar systemd."
+}
+
+post_install() {
+    _crear_venv
+    _descargar_voces
+    _verificar_ollama
+    _enable_user_services
+    echo ""
+    echo " =============================================="
+    echo "  FRANKI OS instalado. Inicia con: franki"
+    echo "  Logs unificados:  franki-log"
+    echo "  (El backend iniciará automáticamente al abrir la app)"
+    echo " =============================================="
+}
+
+post_upgrade() {
+    echo " >> [FRANKI] Actualizando dependencias Python..."
+    _crear_venv
+    _descargar_voces
+    _enable_user_services
+}
+
+pre_remove() {
+    local _user="${SUDO_USER:-}"
+    if [ -z "$_user" ]; then
+        echo " >> [WARN] SUDO_USER vacio -- detener servicios manualmente:"
+        echo "     systemctl --user stop franki_os.service franki_cerebelo.service"
+        return 0
+    fi
+    local _uid; _uid=$(id -u "$_user" 2>/dev/null) || return 0
+    local _xdg="/run/user/$_uid"
+    runuser -l "$_user" -c "
+        export XDG_RUNTIME_DIR=$_xdg
+        export DBUS_SESSION_BUS_ADDRESS=unix:path=$_xdg/bus
+        systemctl --user stop franki_cerebelo.service 2>/dev/null || true
+        systemctl --user disable franki_cerebelo.service 2>/dev/null || true
+        systemctl --user stop franki_os.service 2>/dev/null || true
+        systemctl --user disable franki_os.service 2>/dev/null || true
+    " 2>/dev/null || echo " >> [WARN] No se pudieron detener los servicios de usuario."
+}
+
+post_remove() {
+    echo " >> [FRANKI] Purgando archivos no rastreados por pacman..."
+    if [ -d "/usr/lib/franki/backend/venv_311" ]; then
+        rm -rf "/usr/lib/franki/backend/venv_311"
+        echo " >> [FRANKI] Entorno virtual Python (venv_311) purgado."
+    fi
+    if [ -d "/usr/lib/franki/python" ]; then
+        rm -rf "/usr/lib/franki/python"
+        echo " >> [FRANKI] Python instalado por uv purgado."
+    fi
+    if [ -d "/usr/lib/franki/backend/sentidos/voces" ]; then
+        rm -rf "/usr/lib/franki/backend/sentidos/voces"
+        echo " >> [FRANKI] Modelos de voz TTS purgados."
+    fi
+    echo " >> [FRANKI] Limpieza completa."
+}

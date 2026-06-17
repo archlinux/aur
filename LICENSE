@@ -1,0 +1,238 @@
+# FRANKI OS -- Business Source License 1.1 (Waterfall Edition)
+
+```
+Copyright (c) 2026, Samuel Bernabe Paredes Godoy. All rights reserved.
+Licensor       : Samuel Bernabe Paredes Godoy / Umbra HS
+Corporate      : humbra_hs@ik.me
+```
+
+---
+
+## License at a Glance
+
+| Who                                          | Read & audit | Run locally  | Deploy commercially      |
+|----------------------------------------------|:------------:|:------------:|:------------------------:|
+| Anyone (personal / research)                 | ✓            | ✓            | ✗                        |
+| Security researcher                          | ✓            | ✓            | ✗                        |
+| Licensed commercial partner                  | ✓            | ✓            | ✓ (per agreement)        |
+| After 2032-02-15 — current BUSL version      | ✓            | ✓            | ✓ (AGPLv3 terms apply)   |
+| Post-2032 — premium versions (BUSL 1.1)      | ✓            | ✓            | ✗ (new agreement needed) |
+
+---
+
+## Waterfall Schedule
+
+FRANKI OS transitions through two structural phases, followed by a
+continuous iterative release cycle from 2032 onwards.
+
+```
+PHASE 1: BUSL 1.1    -- Present        →  2032-02-14   (single version)
+PHASE 2: ITERATIVE   -- 2032-02-15     →  onwards      (see Versioning Policy)
+```
+
+**Phase 1 — Single version under BUSL 1.1:**
+The current version of FRANKI OS is governed exclusively by BUSL 1.1 until
+2032-02-14. The Change Date is **2032-02-15**, at which point Phase 2 begins.
+
+**Phase 2 — Iterative dual-track from 2032:**
+Starting 2032-02-15, FRANKI OS operates on a rolling release model:
+
+- The version current at 2032-02-15 converts automatically to **AGPLv3**
+  and remains free and open source permanently.
+- Each subsequent major version is released under **BUSL 1.1** with its
+  own Change Date (see Versioning Policy below).
+- Every major version eventually converts to AGPLv3, no later than
+  36 months after the release of the following major version.
+
+This means there will always be at least one fully open AGPLv3 version
+available, and the latest capabilities will be available under BUSL 1.1.
+
+---
+
+## Versioning Policy (from 2032-02-15)
+
+This section is a public commitment by Umbra HS, enforceable as part of
+this license by any user or licensee.
+
+### Release Cycle
+
+Major versions of FRANKI OS will be released on cycles of **24 to 36 months**.
+The Licensor commits to the following:
+
+1. **Maximum conversion window:** Each major version (vN) will convert to
+   AGPLv3 no later than **36 months** after the public release date of the
+   following major version (vN+1). The exact conversion date will be
+   declared in the release notes of vN+1 and added to the version's
+   `LICENSE.md` at that time.
+
+2. **Minimum premium window:** Each major version will remain under BUSL 1.1
+   for a minimum of **24 months** from its release date before any voluntary
+   early conversion to AGPLv3.
+
+3. **Overlap guarantee:** At any point after 2032-02-15, at least one
+   version of FRANKI OS will be available under AGPLv3. There will never
+   be a period where all versions are simultaneously under BUSL 1.1.
+
+4. **Annual roadmap:** Umbra HS will publish and maintain a public version
+   roadmap updated at least once per calendar year, indicating the expected
+   release window for the next major version and the scheduled AGPLv3
+   conversion date for the current version.
+
+### Example Timeline (illustrative)
+
+```
+2032-02-15  v10.x  →  converts to AGPLv3  (Phase 1 Change Date)
+2032-Q3     v11.0  →  released under BUSL 1.1
+              |         Change Date: no later than 2035-Q3  (36 months)
+2034-Q3     v12.0  →  released under BUSL 1.1
+              |         v11.x Change Date triggered: no later than 2037-Q3
+2036-Q3     v13.0  →  released under BUSL 1.1
+              ...
+```
+
+At any point in this timeline, the immediately preceding major version
+is either already AGPLv3 or within its 36-month conversion window.
+
+### Version Identification
+
+Each major release will include:
+
+- A `VERSION` file at the repository root declaring the major version number
+  and release date.
+- An updated `LICENSE.md` with the specific Change Date for that version.
+- A `CHANGELOG.md` entry marking the AGPLv3 conversion of the previous
+  major version.
+
+---
+
+## Business Source License 1.1 (Phase 1)
+
+### Parameters
+
+```
+Licensor             : Samuel Bernabe Paredes Godoy / Umbra HS
+Licensed Work        : FRANKI OS, all components and files in this repository
+Additional Use Grant : Personal and non-commercial use as defined below
+Change Date          : 2032-02-15
+Change License       : GNU Affero General Public License v3.0
+```
+
+### Grant of Rights
+
+Subject to the terms of this License, the Licensor grants you a
+non-exclusive, worldwide, non-transferable, non-sublicensable license to:
+
+1. **Read and study** the source code for any purpose, including security
+   research, academic study, and personal learning.
+2. **Run** the Licensed Work locally on your own hardware for personal,
+   non-commercial evaluation (single user; no third-party access to the
+   running instance).
+3. **Modify** the Licensed Work for personal use, provided modifications
+   are not distributed.
+
+### Additional Use Grant
+
+The following uses are permitted without a commercial license agreement:
+
+- Security audit and vulnerability research, provided findings are
+  reported privately to `humbra_hs@ik.me` before any public disclosure
+  (90-day responsible disclosure window).
+- Academic research and publication, provided the Licensed Work is not
+  redistributed and any publication credits FRANKI OS and Umbra HS.
+- Organizational evaluation for the purpose of assessing a potential
+  commercial license purchase (maximum 90-day evaluation period per
+  organization).
+
+### Commercial Use Restriction
+
+You may not use the Licensed Work for a **Commercial Purpose** without a
+signed license agreement from the Licensor.
+
+**Commercial Purpose** means any of the following:
+
+- Deploying the Licensed Work to serve third parties, whether for payment
+  or free of charge.
+- Offering the Licensed Work as a hosted or managed service (SaaS).
+- Pre-installing the Licensed Work on hardware or software products for
+  distribution.
+- Using the Licensed Work within an organization beyond a single personal
+  instance (organizational use).
+- Incorporating the Licensed Work or any derivative into a commercial
+  product or service.
+
+To obtain a commercial license, contact `humbra_hs@ik.me` with a
+description of the intended use. The Licensor will respond within
+10 business days.
+
+### Redistribution
+
+You may not copy, redistribute, sublicense, or publish the Licensed Work
+or any derivative in any form, except:
+
+- Forking this repository on a public platform solely to submit a pull
+  request or security report to the Licensor.
+- Reproducing limited excerpts for the purpose of academic citation.
+
+### Attribution
+
+Any permitted use must retain:
+
+- This license file in full.
+- The copyright notice at the top of this file.
+- A visible credit to **FRANKI OS / Umbra HS** in any publication,
+  presentation, or product that references or builds upon the Licensed Work.
+
+---
+
+## Golem Store -- Libre Market (Creator-defined)
+
+Artifacts distributed via the Golem Store (`.shem` files) are explicitly
+excluded from this license. Each artifact carries its own creator-defined
+license declared in its `manifest.json`.
+See [LICENSE-GOLEM.md](LICENSE-GOLEM.md) for the platform framework.
+
+The Golem Store platform code itself (if included in this repository)
+is subject to this license.
+
+---
+
+## Legal Firewall
+
+The backend and frontend of FRANKI OS are architecturally separated via
+the **Protocolo Esperanto** (JSON over HTTP/HTTPS). No frontend code is
+linked into or compiled with the backend.
+
+```
+Calling the Protocolo Esperanto API does not make your application a
+derivative work of FRANKI OS. You may build client applications that
+interface with a licensed FRANKI OS instance without those applications
+being subject to this license, provided they do not incorporate source
+code from this repository.
+```
+
+This separation is intentional and constitutes the architectural boundary
+of the Licensed Work.
+
+---
+
+## Disclaimer of Warranties
+
+THE LICENSED WORK IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+IN NO EVENT SHALL THE LICENSOR BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
+LIABILITY ARISING FROM THE USE OF THE LICENSED WORK.
+
+---
+
+## Governing Law
+
+This License is governed by the laws of the Republic of Chile, without
+regard to its conflict of law provisions. Any disputes arising under this
+License shall be resolved in the courts of Santiago, Chile.
+
+---
+
+*BUSL 1.1 was created by MariaDB Corporation. The original license text is
+available at https://mariadb.com/bsl11/. FRANKI OS uses BUSL 1.1 as
+permitted by its terms, with parameters defined above.*
