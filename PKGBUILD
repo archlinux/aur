@@ -7,7 +7,7 @@
 pkgname=librewolf
 _pkgname=LibreWolf
 epoch=1
-pkgver=151.0.4_1
+pkgver=152.0.0_1
 _fixedfirefoxver="${pkgver%_*}" # Version of Firefox this LibreWolf version is based on, but the Firefox patch number is always included
 _librewolfver="${pkgver#*_}"
 _firefoxver="${_fixedfirefoxver%.0}" # Removes ".0" from the end. For "136.0.0" this will result in "136.0" but for "136.0.1" won't do anything.
@@ -107,14 +107,12 @@ options=(
 install='librewolf.install'
 source=(
   https://codeberg.org/api/packages/librewolf/generic/librewolf-source/$_firefoxver-$_librewolfver/librewolf-$_firefoxver-$_librewolfver.source.tar.gz{,.sig}
-  0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/bf1f16abe7b20cecaedc71c6fa44bb7069f06880/0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
   $pkgname.desktop
   "default192x192.png"
 )
 
-sha256sums=('c270c1ab946c71e458f41b9eb8db88b76f30b98c4b87cbd9c23cce8d91925b92'
+sha256sums=('3a0aec18870f19e960d665f7beae2168a20748ad43ab77692d69ef411df649ce'
             'SKIP'
-            'c7d6572fe1ac76f6adbfb10102f284fd55690396ac0a275a5cfea9a2efa22b58'
             '3d6ac59ae9d5ba4c9fe15f95c1338fa68214dec6119f8432336403e3be50f8ae'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1')
 
@@ -196,9 +194,6 @@ fi
 
   # upstream Arch fixes
 
-  # Fix build with glibc 2.43
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
-  patch -Np1 -i ../0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
 }
 
 
