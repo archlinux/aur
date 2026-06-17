@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 pkgname=aquacontrol
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Suite di controllo per Aquaero 6 LT"
 arch=('any')
@@ -28,7 +28,7 @@ conflicts=('openaquaero')
 replaces=('openaquaero')
 install="aquacontrol.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/raffaele-90/aquacontrol/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aa6971ecb3dc6c0615f542905813c6490c5774dbfdbd97421e7d52d5e19ad489')
+sha256sums=('SKIP')
 
 package() {
     cd "$pkgname-$pkgver"
@@ -69,19 +69,9 @@ package() {
     echo 'ACTION=="add", SUBSYSTEM=="hwmon", ATTRS{name}=="aquaero", RUN+="/bin/sh -c '\''chmod a+w /sys$devpath/pwm*'\''"' >> "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
     chmod 644 "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
 
-    # Regola Polkit
-    install -dm755 "$pkgdir/etc/polkit-1/rules.d"
-    cat << 'EOF' > "$pkgdir/etc/polkit-1/rules.d/99-aquacontrol-shutdown.rules"
-/* Consente agli utenti del gruppo wheel di forzare lo spegnimento ignorando gli inhibitor */
-polkit.addRule(function(action, subject) {
-    if (action.id == "org.freedesktop.login1.power-off" ||
-        action.id == "org.freedesktop.login1.power-off-multiple-sessions" ||
-        action.id == "org.freedesktop.login1.power-off-ignore-inhibit") {
-        if (subject.isInGroup("wheel")) {
-            return polkit.Result.YES;
-        }
-    }
-});
-EOF
-    chmod 644 "$pkgdir/etc/polkit-1/rules.d/99-aquacontrol-shutdown.rules"
+    # Regola Sudoers per lo spegnimento forzato
+    install -dm755 "$pkgdir/etc/sudoers.d"
+    echo '# AquaControl - Spegnimento di emergenza' > "$pkgdir/etc/sudoers.d/99-aquacontrol-shutdown"
+    echo '%wheel ALL=(ALL) NOPASSWD: /usr/bin/systemctl poweroff --force --force' >> "$pkgdir/etc/sudoers.d/99-aquacontrol-shutdown"
+    chmod 440 "$pkgdir/etc/sudoers.d/99-aquacontrol-shutdown"
 }
