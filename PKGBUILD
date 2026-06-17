@@ -78,7 +78,7 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
 
   # Try to locate binary
-  _bin=$(find "$pkgdir/opt/orbitopl-toolbox" -maxdepth 2 -type f -executable | grep -i orbitopl | head -n 1)
+  _bin=$(find "$pkgdir/opt/orbitopl-toolbox/orbitopl-toolbox" -executable | head -n 1)
 
   if [[ -n "$_bin" ]]; then
     ln -sf "$_bin" "$pkgdir/usr/bin/orbitopl-toolbox"
