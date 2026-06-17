@@ -18,6 +18,11 @@ pkgdesc="The networking stack of Chromium put into a library"
 arch=('x86_64')
 url="https://chromium.googlesource.com/chromium/src/+/refs/heads/main/components/cronet"
 license=('BSD-3-Clause')
+depends=(
+  glibc
+  nspr
+  nss
+)
 makedepends=(
   at-spi2-core
   clang
@@ -64,10 +69,7 @@ fi
 
 declare -gA _depends=(
   [glib2]="libgio-2.0.so libglib-2.0.so libgobject-2.0.so"
-  [glibc]="glibc"
   [libgcc]="libgcc_s.so"
-  [nspr]="nspr"
-  [nss]="nss"
 )
 
 _ABSEIL_PKG="abseil-cpp>=20240722.0"
@@ -218,9 +220,16 @@ libstdc++)
 esac
 
 # shellcheck disable=SC2068
-for _lib in ${_system_libs[@]}; do
-  _depends["${_lib}"]="${_MAKE_TO_RUNTIME_DEPENDS["${_lib}"]}"
+for _make_pkg in ${_system_libs[@]}; do
+  _runtime_pkg="${_MAKE_TO_RUNTIME_DEPENDS["${_make_pkg}"]}"
+
+  if [[ "${_make_pkg}" = "${_runtime_pkg}" ]]; then
+    depends+=("${_runtime_pkg}")
+  else
+    _depends["${_make_pkg}"]="${_runtime_pkg}"
+  fi
 done
+
 makedepends+=(
   "${!_depends[@]}"
   "${_system_make_libs[@]}"
@@ -425,7 +434,7 @@ check() {
 
 package() {
   # shellcheck disable=SC2206
-  depends=(
+  depends+=(
     ${_depends[@]}
   )
 
