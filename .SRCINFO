@@ -1,0 +1,14 @@
+pkgbase = ariga-atlas
+	pkgdesc = Declarative schema migrations with schema-as-code workflows
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/ariga/atlas
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	provides = atlas
+	conflicts = atlas
+	source = atlas-1.2.0.tar.gz::https://github.com/ariga/atlas/archive/v1.2.0.tar.gz
+	sha256sums = 0968b685458da1f414d3a8d09fe7ee9a3359906fade36fe787369c40d757f2fe
+
+pkgname = ariga-atlas
