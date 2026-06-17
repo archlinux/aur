@@ -1,0 +1,22 @@
+allow any setuptools version to be used
+
+also fix FTBFS due to requiring a later version of setuptools
+
+
+
+
+
+
+
+---
+diff --git a/pyproject.toml b/pyproject.toml
+index 602f8c6b..e3c1df5b 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["setuptools==78.1.1"]
++requires = ["setuptools"]
+ build-backend = "setuptools.build_meta"
+ 
+ [project]

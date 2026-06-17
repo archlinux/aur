@@ -36,30 +36,36 @@ makedepends=(
 install=$pkgname.install
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/home-assistant/core/archive/${pkgver}.tar.gz"
-  'remove-setuptools-constraint.patch'
   'home-assistant.service'
   'home-assistant.sysusers'
   'home-assistant.tmpfiles'
+  '01-remove-setuptools.patch'
+
 )
 sha512sums=('f5c843853980b3c243d39bad8904544360ffbf08b5cd44cece00c9363ccbbd9ae9b26a619512fa9d6afc9235b46b85e960808fcc575275a83e2f3653d08fbcd8'
-            '1157121d245b6c7471048144e04325b5e1fc422e5ea5b45dc63c3d5d7efd2757a6930514fb35d4e0b8650b7541ef0fadf8f0eba12586d380d931c502e3acfeb4'
             '0a421907c1f53426fa42245bd90823e7d0d2ccbd11cc479a87f9d7cfd5d96bf3de37d10865c00233ef175e6274d4b2bf31cf7915870eb29b279a575235373647'
             'ec05b47011adea19ee71a7793968c20a95648f45e581dab1462faec85ff31d968acd5eac35729e52c46a7eeb046a2961093283160167622d4da9773562ec8273'
-            '8babcf544c97ec5ad785014f0b0d5dca556a2f5157dadcbe83d49d4669b74f6349e274810ec9a028fcec208c6c8fbbe6b3899d2933b56163b9e506570879a3ad')
+            '8babcf544c97ec5ad785014f0b0d5dca556a2f5157dadcbe83d49d4669b74f6349e274810ec9a028fcec208c6c8fbbe6b3899d2933b56163b9e506570879a3ad'
+            '85f2bf95de1b7ea8488672151ef0642fb8fe7e34016416f84fad4012b3c0234f3a0e9c93aace6f11b7a4efb80797a47a7cac40a7e2bc9cf6912a2029092f7c90')
 b2sums=('5ae8ba0078bcc08c01c70229abab602052de757dae330432f37e9d1537de11f878fe1dd4b710f9c38950d56e843a0462409cc9ae23d3177361ee470724c09686'
-        '913c766df2ed4a4f5984c3ea75746e380f370ba9b3d6009d329b2089d1f00a538a18608f037593d43bbbc3f9a2c88d2290dfdef3a15094575c28b5a55e8ec1a9'
         '20b1847203eb236c58ce29b6d502fbad2804479dc31edc8f6a5da0a5a0bfaa22519f7262afe503d06c6c2efd26ee7819a549efb0096b661ed6eb277b441533f9'
         '8a023a2215712044fb5115d1b81e55fad2c74f2e836cfe7f3f1e7c3778e4903c25ba7e429aedfd74b566be542aa50ea0d486b616c6d5b0315d993a9599e454f8'
-        'ffb45bcc9cc396282f417a066c01f1137f25cc8ccd55f484b442d136ca3eb8569949a88e99f5cc3f4af4ee0ed60392711c5cda772e364b3959ba6e64e6bbfea5')
+        'ffb45bcc9cc396282f417a066c01f1137f25cc8ccd55f484b442d136ca3eb8569949a88e99f5cc3f4af4ee0ed60392711c5cda772e364b3959ba6e64e6bbfea5'
+        '052874ed2130cc8a56c6fd7c3f161ab2d203346fea3aaaa604ac922d2defc0bc4dd1bf94781e3edc925943c618251fa8d4aa1ca867cc74681cff49e8736beb43')
 
 prepare() {
   # update version in service file
   sed "s/@VERSION@/${pkgver}/" -i home-assistant.service
 
-  # allow any setuptools version to be used
-  # also fix FTBFS due to requiring a later version of setuptools
   cd "core-${pkgver}"
-  patch -p1 -i "$srcdir/remove-setuptools-constraint.patch"
+  # Apply all patches in order
+  local patch
+  for patch in "$srcdir"/*.patch; do
+    if [ -f "$patch" ]; then
+      msg2 "Applying patch: $(basename "$patch")"
+      patch -p1 -i "$patch"
+    fi
+  done
 }
 
 build() {

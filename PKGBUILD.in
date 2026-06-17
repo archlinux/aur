@@ -36,10 +36,10 @@ makedepends=(
 install=$pkgname.install
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/home-assistant/core/archive/${pkgver}.tar.gz"
-  'remove-setuptools-constraint.patch'
   'home-assistant.service'
   'home-assistant.sysusers'
   'home-assistant.tmpfiles'
+esyscmd(ls -1 *.patch 2>/dev/null | sed "s/^/  '/;s/$/'/")
 )
 sha512sums=('x')
 b2sums=('x')
@@ -48,10 +48,15 @@ prepare() {
   # update version in service file
   sed "s/@VERSION@/${pkgver}/" -i home-assistant.service
 
-  # allow any setuptools version to be used
-  # also fix FTBFS due to requiring a later version of setuptools
   cd "core-${pkgver}"
-  patch -p1 -i "$srcdir/remove-setuptools-constraint.patch"
+  # Apply all patches in order
+  local patch
+  for patch in "$srcdir"/*.patch; do
+    if [ -f "$patch" ]; then
+      msg2 "Applying patch: $(basename "$patch")"
+      patch -p1 -i "$patch"
+    fi
+  done
 }
 
 build() {
