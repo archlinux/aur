@@ -2,9 +2,9 @@
 # Maintainer: jonahz <jonah.zuercher@adfinis.com>
 
 pkgname='baoctx-bin'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc='SSH client for the Bastion'
+pkgdesc='A CLI tool to manage context profiles for OpenBao'
 url='https://github.com/adfinis/baoctx'
 arch=('aarch64' 'x86_64')
 license=('Apache-2.0')
@@ -13,13 +13,13 @@ conflicts=('baoctx')
 depends=('openssh')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/adfinis/baoctx/releases/download/v${pkgver}/baoctx-v${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('2399ea2c4b1c9cacca1b4346628485922af73056e307c59908a07d373e8e0733')
+sha256sums_aarch64=('8f64e764b103364da163b74d60aa50c90fffee1def12106b0732707ed4151c47')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/adfinis/baoctx/releases/download/v${pkgver}/baoctx-v${pkgver}-linux-amd64.tar.gz")
-sha256sums_x86_64=('516175ffad67b24feab7035b36ee429a5ace982a41dead190965844e31dd790b')
+sha256sums_x86_64=('4da53dda08f0b68d0c7916bcf5407dacad1cc24a9789f4e38da48f3cd4df1c18')
 
 package() {
-  cd ./baoctx-v1.0.0-linux-amd64
+  cd ./baoctx-v1.0.1-linux-amd64
   # bin
   install -Dm755 "./baoctx" "${pkgdir}/usr/bin/baoctx"
   # license
