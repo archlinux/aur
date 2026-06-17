@@ -1,7 +1,7 @@
 pkgbase = upyay
 	pkgdesc = A yay wrapper written in pure bash.
 	pkgver = 3.1.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/gralito/upyay
 	arch = any
 	license = MIT
