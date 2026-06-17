@@ -5,19 +5,20 @@
 
 _name=click-extra
 pkgname=python-${_name}
-pkgver=7.18.0
+pkgver=7.20.0
 pkgrel=1
 pkgdesc='Drop-in replacement for Click to make user-friendly and colorful CLI.'
 
-url='https://github.com/kdeldycke/click-extra'
+url="https://github.com/kdeldycke/${_name}"
 license=('GPL-2.0-or-later')
 arch=('any')
 
 makedepends=('uv' 'python-pip')
-depends=('python' 'python-boltons' 'python-pygments' 'python-click>=8.3.1' 'python-json5' 'python-hjson' 'python-tomli' 'python-tomlkit' 'python-yaml' 'python-cloup' 'python-deepmerge' 'python-extra-platforms' 'python-requests' 'python-tabulate' 'python-xmltodict' 'python-wcmatch' 'python-wcwidth' 'python-docutils' 'python-sphinx')
+checkdepends=('uv' 'python-pytest')
+depends=('python' 'python-click>=8.4.1' 'python-boltons' 'python-pygments' 'python-json5' 'python-hjson' 'python-tomli' 'python-tomlkit' 'python-yaml' 'python-cloup' 'python-deepmerge' 'python-extra-platforms' 'python-requests' 'python-tabulate' 'python-xmltodict' 'python-wcmatch' 'python-wcwidth' 'python-docutils' 'python-sphinx' 'python-myst-parser' 'python-pymdown-extensions' 'mkdocs')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kdeldycke/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('73210f852306ccd2028e94bb0e5bb927b2ace9a8bcf7f59a0244d7bdd4e87af37b13684e7f2896adaed73e5bf4a3a837cd414805135242b1ec4787de3542bca0')
+sha512sums=('59a35eb136f5ef2bb73cdd2f755acfefe968d1cab67bddd580793280a415b46a88e17cf9b2e10d75c5401cf062ad471ae1077df82a99f307f42b1446e4724e79')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
@@ -33,7 +34,7 @@ check() {
     uv --no-progress sync --frozen --all-extras --group test
 
     # Run local CLI
-    uv run -- click-extra --version
+    uv run -- ${_name} --version
 
     # Unittests
     uv --no-progress run --frozen -- pytest -m once --cov --cov-report=term
@@ -45,6 +46,8 @@ package() {
     uv pip install --system --link-mode=copy --no-deps --prefix="${pkgdir}/usr" dist/*.whl
 
     rm "$pkgdir/usr/.lock"
+
+    install -Dm0644 readme.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
     install -Dm0644 license "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
