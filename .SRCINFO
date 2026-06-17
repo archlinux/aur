@@ -1,0 +1,24 @@
+pkgbase = autolock-git
+	pkgdesc = A minimal X11 idle-watcher
+	pkgver = 0.1.r0.g0a24d70
+	pkgrel = 1
+	url = https://codeberg.org/ayari/autolock
+	arch = x86_64
+	arch = aarch64
+	license = CC0-1.0
+	makedepends = gcc
+	makedepends = make
+	makedepends = patch
+	makedepends = git
+	depends = libx11
+	depends = libxss
+	depends = systemd-libs
+	provides = autolock
+	conflicts = autolock
+	options = !debug
+	source = autolock-main::git+https://codeberg.org/ayari/autolock.git
+	source = systemd-libs.patch
+	sha256sums = SKIP
+	sha256sums = a9ff995a37a5c84df46025df3ae96d2ab8b19b96968c8f1170ac7d7201210693
+
+pkgname = autolock-git
