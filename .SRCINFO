@@ -1,0 +1,14 @@
+pkgbase = qst
+	pkgdesc = A Community Driven CLI Quick Script Tool
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/GitanElyon/qst
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = qst
+	conflicts = qst
+	source = qst-0.10.0.tar.gz::https://static.crates.io/crates/qst/qst-0.10.0.crate
+	sha256sums = 2cb30e0ff442e9e90994487bd5db6de5fb1b05fe233dd4dd8ca3d4505f82bf3f
+
+pkgname = qst
