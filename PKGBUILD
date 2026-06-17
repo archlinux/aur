@@ -11,7 +11,7 @@ options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/mixmod/mixmod/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('e95414decf5b2c2c5eebd7fca10e0100f2d753cbfca0694f4ac75da3b39b005e')
 
-_architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare() {
   cd "$srcdir"/mixmod-${pkgver}
@@ -21,7 +21,7 @@ prepare() {
 
 build () {
   cd "$srcdir"/mixmod-${pkgver}
-  for _arch in $_architecture; do
+  for _arch in ${_architectures}; do
     ${_arch}-cmake -B build-${_arch} -DCMAKE_UNITY_BUILD=ON .
     cmake --build build-${_arch}
   done
@@ -29,7 +29,7 @@ build () {
 
 package () {
   cd "$srcdir"/mixmod-${pkgver}
-  for _arch in $_architecture; do
+  for _arch in ${_architectures}; do
     DESTDIR="$pkgdir" cmake --install build-${_arch}
     rm -r "$pkgdir"/usr/${_arch}/share 
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
