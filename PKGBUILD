@@ -3,27 +3,28 @@
 # Contributor: Comfy Chloe <https://github.com/ComfyChloe>
 
 pkgname='arcosc-client'
+_sourcename='ARC-Client'
 pkgdesc='The transparent, feature-rich desktop bridge for VRChat remote control'
 pkgver='0.90.2'
-pkgrel='2'
+pkgrel='4'
 arch=('x86_64')
 url='https://arcosc.app/'
+install=arcosc-client.install
 license=('CC-BY-NC-SA-4.0')
 _electron_ver=39
 _electron_full_ver=$(cat /usr/lib/electron${_electron_ver}/version | sed 's/^v//')
 depends=("electron$_electron_ver")
 makedepends=('node-gyp' 'npm' 'asar')
-source=("ARCOSC-Client-v$pkgver.tar.gz::https://codeload.github.com/ComfyChloe/$pkgname/tar.gz/refs/tags/v$pkgver"
+source=("ARCOSC-Client-v$pkgver.tar.gz::https://codeload.github.com/ComfyChloe/$_sourcename/tar.gz/refs/tags/v$pkgver"
         'ARCOSC-Client'
         'ARCOSC-Client.desktop'
 	'arcosc.png')
-sha256sums=('9100d77867aa1a80a0494fd2a273391c8ea2ec0bfd51d9309ac4a614b2e3f74e'
-            '7fa83c96a56f59e95f7491d3d05e7564b2b25d6aa545d568857fee2054746fee'
+sha256sums=('7ae65876b590a694882a4dba49b7a54d62dba6cddcfd4a82e69b4f1799cd23bb'
+            '6c648362b81f8b6a571ec92d121efb82d8de6d0be5842d515f04200cdcd277c3'
             '5dae1186e7a6ba1785455c294f4542880275dc5a4a8bca47fa5dedb01ed7c446'
             'a315bea3d9ec1771340662c8e8cd9249d5fb69f4b3a0557bbe24c43a68560716')
-
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$_sourcename-$pkgver"
     #sed -i "s/electronVersion:\ ../electronVersion:\ $pkgver/" package.json
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export XDG_CACHE_HOME="$srcdir"
@@ -57,7 +58,7 @@ build() {
 }
 
 package() {
-    cd "ARCOSC-Client-$pkgver"
+    cd "$_sourcename-$pkgver"
 
     install -d -Dm755 "$pkgdir/usr"
     install -d -Dm755 "$pkgdir/usr/lib"
@@ -75,4 +76,15 @@ package() {
     install -Dm644 ../ARCOSC-Client.desktop -t "$pkgdir/usr/share/applications"
     install -d -Dm755 "$pkgdir/usr/share/licenses"
     install -d -Dm755 "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+}
+post_install() {
+	echo "This is an older version"
+	echo "It will stay this version"
+	echo "A new one under a new license"
+	echo "avaliable at"
+	echo "https://aur.archlinux.org/packages/arc-client"
+}
+post_upgrade () {
+	post_install
 }

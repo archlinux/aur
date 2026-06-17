@@ -1,0 +1,10 @@
+post_install() {
+        echo "This is an older version"
+        echo "It will stay this version"
+        echo "A new one under a new license"
+        echo "avaliable at"
+        echo "https://aur.archlinux.org/packages/arc-client"
+}
+post_upgrade () {
+        post_install
+}
