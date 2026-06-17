@@ -1,7 +1,7 @@
 pkgbase = wgsl-analyzer
 	pkgdesc = A language server for the WGSL shading language
 	pkgver = 20260426
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wgsl-analyzer/wgsl-analyzer
 	arch = x86_64
 	arch = aarch64

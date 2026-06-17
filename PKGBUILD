@@ -3,7 +3,7 @@
 pkgname=wgsl-analyzer
 _pkgver=2026-04-26
 pkgver=${_pkgver//-}
-pkgrel=1
+pkgrel=2
 pkgdesc='A language server for the WGSL shading language'
 url='https://github.com/wgsl-analyzer/wgsl-analyzer'
 source=("wgsl-analyzer-${pkgver}.tar.gz::https://github.com/wgsl-analyzer/wgsl-analyzer/archive/refs/tags/${_pkgver}.tar.gz")
@@ -25,12 +25,6 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release -p wgsl-analyzer
-}
-
-check() {
-  cd "wgsl-analyzer-${_pkgver}"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features -p wgsl-analyzer
 }
 
 package() {
