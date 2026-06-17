@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ULTRAKILL
+GenericName=ULTRAKILL
+Exec=/usr/bin/ultrakill
+Terminal=false
+Icon=ultrakill
+Type=Application
+Categories=Game;
+StartupNotify=true
+Comment=A fast-paced ultraviolent retro FPS
