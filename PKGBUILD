@@ -1,6 +1,6 @@
 pkgname=oranglauncher
 pkgver=6.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Orange Launcher for Arch Linux (built from source with Nuitka)"
 arch=(x86_64)
 url="https://oranges.lt"
@@ -30,6 +30,11 @@ build() {
     python -m venv --system-site-packages build-venv
     build-venv/bin/pip install --upgrade pip wheel nuitka
     build-venv/bin/pip install -r requirements.txt
+
+    # Arch ships patchelf 0.18.0, which Nuitka refuses (known buggy release).
+    # pull a known-good patchelf into the venv and put it ahead of the system one.
+    build-venv/bin/pip install "patchelf==0.17.2.4"
+    export PATH="$srcdir/OrangLaunch-${pkgver}/build-venv/bin:$PATH"
 
     build-venv/bin/python -m nuitka \
         --standalone \

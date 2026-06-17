@@ -1,7 +1,7 @@
 pkgbase = oranglauncher
 	pkgdesc = Orange Launcher for Arch Linux (built from source with Nuitka)
 	pkgver = 6.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://oranges.lt
 	arch = x86_64
 	license = MIT
