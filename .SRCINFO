@@ -1,0 +1,21 @@
+pkgbase = ttt-bin
+	pkgdesc = A terminal text editor IDE
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/eugenioenko/ttt
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ttt
+	conflicts = ttt
+	options = !strip
+	source = README-0.3.0.md::https://raw.githubusercontent.com/eugenioenko/ttt/v0.3.0/README.md
+	source = LICENSE-0.3.0::https://raw.githubusercontent.com/eugenioenko/ttt/v0.3.0/LICENSE
+	sha256sums = b0814fae7b07c654ec8488006a32d554d2cfdc2850ec537276371622b94e7c49
+	sha256sums = c707616518e3fce85635504ec18ab7d12e204686a56f0b683601e300e6429aa2
+	source_x86_64 = ttt-x86_64-0.3.0::https://github.com/eugenioenko/ttt/releases/download/v0.3.0/ttt-linux-amd64
+	sha256sums_x86_64 = 3242dfdc045d014e58c9e1db2e0ffc6cba377311a900661526232da114bfc392
+	source_aarch64 = ttt-aarch64-0.3.0::https://github.com/eugenioenko/ttt/releases/download/v0.3.0/ttt-linux-arm64
+	sha256sums_aarch64 = ebca92bb3fa307e8a900da4fe52b6716f5184069d4ceb53e7dd46fe776b8f784
+
+pkgname = ttt-bin

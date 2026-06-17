@@ -1,0 +1,5 @@
+[ttt-bin]
+source = "github"
+github = "eugenioenko/ttt"
+use_latest_release = true
+prefix = "v"
