@@ -1,6 +1,6 @@
 pkgbase = orbitopl-toolbox-git
 	pkgdesc = OrbitOPL Toolbox - PS2 OPL game management GUI (Electron + Angular, git version)
-	pkgver = 0.0.0.r0.g0000000
+	pkgver = 1.0.0.r1.gc94d38a
 	pkgrel = 1
 	url = https://github.com/Luden02/OrbitOPL-Toolbox
 	arch = x86_64
