@@ -4,8 +4,8 @@ pkgname=bar-lobby-git
 ### ↓↓↓ This needs to be set manually, the correct version will be displayed during build, update manually if needed!
 _electronver=37
 ### ↑↑↑ This sadly cant be done automatically
-pkgver=VERSION
-pkgrel=4
+pkgver=0.15.2.r13.g89d05fd1
+pkgrel=2
 pkgdesc="The new - stil Work_In_Progres lobby, for the RTS game Beyond All Reason (Github version)."
 arch=('x86_64')
 url="https://beyond-all-reason.github.io/bar-lobby/"
@@ -108,7 +108,7 @@ package() {
         " "${srcdir}/${pkgname%-git}.sh"
 
 
-        sed -i "s/AppRun --no-sandbox/${pkgname%-git}/g" "squashfs-root/${pkgname%-git}.desktop"
+        sed -i "s/AppRun --no-sandbox/${pkgname%-git}/g" "squashfs-root/${pkgname%-git}.desktop" #should probably be unifyed with sed block at the bottom.
 
         find "squashfs-root/resources" -type d -perm 700 -exec chmod 755 {} +
 
@@ -143,11 +143,13 @@ package() {
 
     _install
     
-     sed -i -e "
-            s/bar-lobby/${pkgname}/g
-            s/BeyondAllReason/${pkgname}/g
-            s/Comment=Lobby client for the RTS game Beyond All Reason/Comment=${pkgdesc}/g
-        " "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    ## Fix up the .desktop
+    sed -i -e "
+        s/^Name=.*/Name=BAR-Lobby-git/g
+        s/^Comment=.*/Comment=${pkgdesc}/g
+        s/bar-lobby/${pkgname}/g
+        s/BeyondAllReason/${pkgname}/g
+    " "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
 }
 
