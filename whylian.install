@@ -1,0 +1,72 @@
+post_install() {
+  _reload_udev
+  _enable_user_service
+  _restart_for_active_users
+  _post_msg
+}
+
+post_upgrade() {
+  if systemctl list-unit-files 'lianli-daemon@*.service' 2>/dev/null | grep -q '\.service'; then
+    cat <<MSG
+NOTE: The templated system service lianli-daemon@USER.service has been removed.
+Disabling any enabled instances:
+
+MSG
+    for inst in $(systemctl list-units --all --no-legend 'lianli-daemon@*.service' 2>/dev/null | awk '{print $1}'); do
+      systemctl disable --now "$inst" 2>/dev/null || true
+    done
+    systemctl disable --now lianli-evdi-setup.service 2>/dev/null || true
+  fi
+  _reload_udev
+  _enable_user_service
+  _restart_for_active_users
+  _post_msg
+}
+
+post_remove() {
+  systemctl --global disable lianli-daemon.service 2>/dev/null || true
+}
+
+_reload_udev() {
+  if command -v udevadm &>/dev/null; then
+    udevadm control --reload-rules 2>/dev/null || true
+    udevadm trigger 2>/dev/null || true
+    [ -e /sys/module/evdi ] && udevadm trigger --action=add /sys/module/evdi 2>/dev/null || true
+  fi
+}
+
+_enable_user_service() {
+  systemctl --global enable lianli-daemon.service 2>/dev/null || true
+}
+
+_restart_for_active_users() {
+  [ -d /run/user ] || return 0
+  local dir uid user
+  for dir in /run/user/*; do
+    [ -d "$dir" ] || continue
+    uid="${dir##*/}"
+    [ -S "$dir/bus" ] || continue
+    user="$(id -nu "$uid" 2>/dev/null)" || continue
+    runuser -u "$user" -- \
+      env XDG_RUNTIME_DIR="$dir" DBUS_SESSION_BUS_ADDRESS="unix:path=$dir/bus" \
+      systemctl --user daemon-reload 2>/dev/null || true
+    runuser -u "$user" -- \
+      env XDG_RUNTIME_DIR="$dir" DBUS_SESSION_BUS_ADDRESS="unix:path=$dir/bus" \
+      systemctl --user restart lianli-daemon.service 2>/dev/null || true
+  done
+}
+
+_post_msg() {
+  cat <<MSG
+whylian: lianli-daemon.service has been enabled globally for all users.
+
+Config: ~/.config/lianli/config.json (created on first run).
+
+HydroShift II AdvanceMode: radiator PWM is routed to the TLV2 cluster
+automatically when the daemon discovers your devices.
+
+For headless machines (fan control without desktop login):
+  sudo loginctl enable-linger \$USER
+
+MSG
+}
