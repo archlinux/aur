@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=Super Metroid Rewrite
+GenericName=Super Metroid Rewrite
+Comment=Native Port of Super Metroid with modern Enhancements
+Icon=/opt/sm_rewrite-git/sm_rewrite.png
+Exec=sm_rewrite
+Terminal=false
+Categories=Game;
