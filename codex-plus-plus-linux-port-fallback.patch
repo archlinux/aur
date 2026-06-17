@@ -30,7 +30,7 @@
  
 --- a/crates/codex-plus-core/tests/launcher.rs
 +++ b/crates/codex-plus-core/tests/launcher.rs
-@@ -320,14 +320,14 @@
+@@ -352,7 +352,7 @@
  }
  
  #[test]
@@ -39,6 +39,7 @@
      let selected = select_platform_loopback_port_with(9229, true, |_| false, || 43001);
  
      assert_eq!(selected, 43001);
+@@ -366,7 +366,7 @@
  }
  
  #[test]

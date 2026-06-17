@@ -7,17 +7,18 @@ APP_ASAR="${APPDIR}/resources/app.asar"
 WEBVIEW_DIR="${APPDIR}/content/webview"
 PLUGIN_AUTH_UNLOCK_FILE="${CODEXPP_PLUGIN_AUTH_UNLOCK_FILE:-/usr/lib/codex-plus-plus/webview/plugin-auth-unlocked.js}"
 HTTP_PYTHON_BIN="${CODEXPP_OPENAI_CODEX_PYTHON:-/usr/bin/python}"
-RENDERER_PORT="${CODEXPP_RENDERER_PORT:-}"
+RENDERER_PORT="${CODEXPP_RENDERER_PORT:-5175}"
 PATCHED_WEBVIEW_DIR=""
 RUNTIME_WEBVIEW_DIR=""
 HTTP_PID=""
 ELECTRON_PID=""
+USER_FLAGS=()
 
 find_electron_bin() {
   local candidate
 
-  if [[ -x /usr/lib/electron39/electron ]]; then
-    printf '%s\n' /usr/lib/electron39/electron
+  if [[ -x "${APPDIR}/codex" ]]; then
+    printf '%s\n' "${APPDIR}/codex"
     return
   fi
 
@@ -27,42 +28,9 @@ find_electron_bin() {
   done | sort -V | tail -n1
 }
 
-find_free_port() {
-  "${HTTP_PYTHON_BIN}" - <<'PY'
-import socket
-
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-    sock.bind(("127.0.0.1", 0))
-    print(sock.getsockname()[1])
-PY
-}
-
-wait_for_port() {
-  local port="$1"
-
-  for _ in $(seq 1 50); do
-    if "${HTTP_PYTHON_BIN}" - "${port}" <<'PY'
-import socket
-import sys
-
-port = int(sys.argv[1])
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-    sock.settimeout(0.2)
-    raise SystemExit(0 if sock.connect_ex(("127.0.0.1", port)) == 0 else 1)
-PY
-    then
-      return 0
-    fi
-    sleep 0.1
-  done
-
-  return 1
-}
-
 create_patched_webview_dir() {
   local entry
   local name
-  local target_dir
 
   if [[ ! -f "${PLUGIN_AUTH_UNLOCK_FILE}" ]]; then
     echo "Codex++ plugin auth unlock file not found: ${PLUGIN_AUTH_UNLOCK_FILE}" >&2
@@ -93,16 +61,10 @@ create_patched_webview_dir() {
 }
 
 cleanup() {
-  if [[ -n "${ELECTRON_PID}" ]]; then
-    wait "${ELECTRON_PID}" 2>/dev/null || true
-  fi
-  if [[ -n "${HTTP_PID}" ]]; then
-    kill "${HTTP_PID}" 2>/dev/null || true
-    wait "${HTTP_PID}" 2>/dev/null || true
-  fi
-  if [[ -n "${PATCHED_WEBVIEW_DIR}" ]]; then
-    rm -rf "${PATCHED_WEBVIEW_DIR}"
-  fi
+  [[ -n "${ELECTRON_PID}" ]] && wait "${ELECTRON_PID}" 2>/dev/null || true
+  [[ -n "${HTTP_PID}" ]] && kill "${HTTP_PID}" 2>/dev/null || true
+  [[ -n "${HTTP_PID}" ]] && wait "${HTTP_PID}" 2>/dev/null || true
+  [[ -n "${PATCHED_WEBVIEW_DIR}" ]] && rm -rf "${PATCHED_WEBVIEW_DIR}"
 }
 
 forward_signal() {
@@ -110,7 +72,10 @@ forward_signal() {
 
   if [[ -n "${ELECTRON_PID}" ]] && kill -0 "${ELECTRON_PID}" 2>/dev/null; then
     kill -"${sig}" "${ELECTRON_PID}" 2>/dev/null || true
+    wait "${ELECTRON_PID}" 2>/dev/null || true
   fi
+
+  exit 0
 }
 
 trap cleanup EXIT
@@ -139,29 +104,85 @@ if [[ -z "${ELECTRON_BIN}" || ! -x "${ELECTRON_BIN}" ]]; then
   exit 1
 fi
 
-if [[ -z "${RENDERER_PORT}" ]]; then
-  RENDERER_PORT="$(find_free_port)"
+CONFIG_HOME="${XDG_CONFIG_HOME:-}"
+if [[ -z "${CONFIG_HOME}" && -n "${HOME:-}" ]]; then
+  CONFIG_HOME="${HOME}/.config"
+fi
+
+if [[ -n "${CONFIG_HOME}" && -f "${CONFIG_HOME}/codex-flags.conf" ]]; then
+  while IFS= read -r flag_line || [[ -n "${flag_line}" ]]; do
+    flag_line="${flag_line%%#*}"
+    read -r -a flag_parts <<<"${flag_line}"
+    USER_FLAGS+=("${flag_parts[@]}")
+  done <"${CONFIG_HOME}/codex-flags.conf"
 fi
 
 export CODEX_CLI_PATH="${CODEX_CLI_PATH:-$(command -v codex || true)}"
 export BUILD_FLAVOR="${BUILD_FLAVOR:-prod}"
 export NODE_ENV="${NODE_ENV:-production}"
-export ELECTRON_RENDERER_URL="http://127.0.0.1:${RENDERER_PORT}/"
+export ELECTRON_RENDERER_URL="${ELECTRON_RENDERER_URL:-http://localhost:${RENDERER_PORT}/}"
 
 create_patched_webview_dir
 
-"${HTTP_PYTHON_BIN}" -m http.server "${RENDERER_PORT}" --bind 127.0.0.1 --directory "${RUNTIME_WEBVIEW_DIR}" >/dev/null 2>&1 &
+READY_FILE="${PATCHED_WEBVIEW_DIR}/.ready"
+FAIL_FILE="${PATCHED_WEBVIEW_DIR}/.fail"
+
+"${HTTP_PYTHON_BIN}" - "${RENDERER_PORT}" "${RUNTIME_WEBVIEW_DIR}" "${READY_FILE}" "${FAIL_FILE}" >/dev/null 2>&1 <<'PY' &
+import http.server
+import os
+import socketserver
+import sys
+
+port = int(sys.argv[1])
+root = sys.argv[2]
+ready_file = sys.argv[3]
+fail_file = sys.argv[4]
+
+os.chdir(root)
+
+class Handler(http.server.SimpleHTTPRequestHandler):
+    def log_message(self, fmt, *args):
+        pass
+
+class TCPServer(socketserver.TCPServer):
+    allow_reuse_address = True
+
+try:
+    with TCPServer(("127.0.0.1", port), Handler) as httpd:
+        with open(ready_file, "w") as f:
+            f.write("ok")
+        httpd.serve_forever()
+except Exception as e:
+    with open(fail_file, "w") as f:
+        f.write(str(e))
+    raise
+PY
 HTTP_PID="$!"
 
-if ! wait_for_port "${RENDERER_PORT}"; then
-  echo "Failed to start local webview server on 127.0.0.1:${RENDERER_PORT}" >&2
+for _ in {1..50}; do
+  [[ -f "${READY_FILE}" ]] && break
+  if [[ -f "${FAIL_FILE}" ]]; then
+    echo "Failed to start local webview server on 127.0.0.1:${RENDERER_PORT}" >&2
+    cat "${FAIL_FILE}" >&2
+    exit 1
+  fi
+  kill -0 "${HTTP_PID}" 2>/dev/null || {
+    echo "Local webview server exited before becoming ready" >&2
+    exit 1
+  }
+  sleep 0.1
+done
+
+[[ -f "${READY_FILE}" ]] || {
+  echo "Timed out waiting for local webview server on 127.0.0.1:${RENDERER_PORT}" >&2
   exit 1
-fi
+}
 
 "${ELECTRON_BIN}" \
   --enable-sandbox \
   --ozone-platform-hint=auto \
   --class=Codex \
+  "${USER_FLAGS[@]}" \
   "${APP_ASAR}" \
   "$@" &
 ELECTRON_PID="$!"

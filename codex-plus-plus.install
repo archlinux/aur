@@ -4,7 +4,8 @@ post_install() {
 }
 
 post_upgrade() {
-  /usr/bin/codex-plus-plus hook-reapply
+  echo "Applying Codex++ injection for openai-codex-desktop..."
+  /usr/bin/codex-plus-plus apply
 }
 
 pre_remove() {
