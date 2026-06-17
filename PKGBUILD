@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=angular-electron-bin
 _pkgname='Angular Electron'
-pkgver=4.26.0
+pkgver=4.27.0
 _pkgver=12.0.0
 _electronversion=23
 pkgrel=1
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/malacration/sap-front/v${pkgver}/src/assets/icons/favicon.512x512.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('595e972fba8094160e0787400f853ac45686c807412581ee2e26f86ca59d761c'
+sha256sums=('a88e0be20919ae1404a6ca823643b5f1bc8826adc8bf941ddc10782d37520ad2'
             'e88e5f0dc9ca423464c686e2100c7ff48e88474401f099086151a3b13be52c4b'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _check_electron_version() {
