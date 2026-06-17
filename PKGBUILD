@@ -2,7 +2,7 @@
 
 pkgname=codex-lb
 _pkgname=codex_lb
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Load balancer and proxy for ChatGPT accounts with usage dashboard and OpenAI-compatible API'
 arch=('any')
@@ -12,12 +12,14 @@ depends=(
   'python'
   'python-aiohttp'
   'python-aiohttp-retry'
+  'python-aiohttp-socks'
   'python-aiosqlite'
   'python-alembic'
   'python-anyio'
   'python-asyncpg'
   'python-bcrypt'
   'python-brotli'
+  'python-certifi'
   'python-cryptography'
   'python-dotenv'
   'python-fastapi'
@@ -30,6 +32,7 @@ depends=(
   'python-pygments'
   'python-pyotp'
   'python-python-multipart'
+  'python-python-socks'
   'python-segno'
   'python-sqlalchemy'
   'python-starlette'
@@ -43,6 +46,11 @@ makedepends=(
   'python-installer'
   'python-hatchling'
   'python-wheel'
+  # The v1.20.0 release workflow on Soju06/codex-lb failed to upload an sdist
+  # (which historically shipped a pre-built React dashboard under app/static/).
+  # We fall back to the git archive tarball and build the frontend ourselves;
+  # upstream's frontend/package.json pins packageManager to bun@1.3.14.
+  'bun'
 )
 optdepends=(
   'python-prometheus_client: Prometheus /metrics endpoint (metrics extra)'
@@ -55,8 +63,13 @@ optdepends=(
 )
 backup=('etc/codex-lb/codex-lb.env')
 install=codex-lb.install
+# Git archive instead of release asset: upstream's v1.20.0 release workflow
+# failed to upload sdist/wheel artifacts. The archive contains everything we
+# need except the pre-built dashboard under app/static/, which build() now
+# regenerates by running the frontend Vite build.
+_srcdir="${pkgname}-${pkgver}"
 source=(
-  "${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+  "${_srcdir}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   'codex-lb.service'
   'codex-lb.sysusers'
   'codex-lb.tmpfiles'
@@ -64,7 +77,7 @@ source=(
   'codex-lb.install'
 )
 sha256sums=(
-  'cf20cf22a3e28e411c5307d0e2195d1b972718270c3b5f4836593560779b1421'
+  'f70c08b71a5f66d8d4326f479cc9e41534e7938817dc30355fb53a5b972bbf9e'
   '0c63ea72ce0f73dab98653feb8e38b4a6f8fc8cbb0902f8472b08de31e602aeb'
   '31df28070b4619b52a31823b236ec0a6777e00f6f4017bc6b2349539e605727c'
   'f4b5f162049f22a71e63c15dc8012e102479191fdca065ecc9f23e3557c30611'
@@ -73,16 +86,20 @@ sha256sums=(
 )
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${_srcdir}"
+  # Build the dashboard with the bun version upstream pins in
+  # frontend/package.json. The Vite config sets outDir to "../app/static",
+  # so the build writes the bundle directly where hatchling's
+  # "app/static/**" artifacts rule picks it up for the wheel.
+  ( cd frontend && bun install --frozen-lockfile && bun run build )
+
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "${_pkgname}-${pkgver}"
-  # Mirror the upstream release-time invariant: the built wheel must ship the
-  # pre-built dashboard assets under app/static/*. The sdist already contains
-  # them (no frontend toolchain is invoked at PKGBUILD build time), so this
-  # check fails early if hatchling ever stops shipping them.
+  cd "${_srcdir}"
+  # Same invariant the upstream release CI enforced via the sdist: the wheel
+  # must ship app/static/index.html and at least one app/static/assets/* chunk.
   local wheel
   wheel=$(printf '%s\n' dist/*.whl | head -n1)
   python -c "
@@ -96,7 +113,7 @@ print(f'check: wheel ships {len(static)} static files')
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
+  cd "${_srcdir}"
   # --prefix=/usr forces sysconfig to use the system layout regardless of which
   # python the build host runs under (system python or a venv used to stage
   # makedepends). Without it, building inside a venv leaks the venv path into
