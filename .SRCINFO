@@ -1,0 +1,16 @@
+pkgbase = lazystash-bin
+	pkgdesc = TUI for managing Git stashes
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/lasagnapizza/lazystash
+	license = MIT
+	conflicts = lazystash
+	provides = lazystash
+	arch = aarch64
+	source_aarch64 = https://github.com/lasagnapizza/lazystash/releases/download/v0.2.0/lazystash_linux_arm64.tar.gz
+	sha256sums_aarch64 = 132b6baf3821e51eefcfd37c0b00ce0246f2fc4d09d818f73f7339102dc58006
+	arch = x86_64
+	source_x86_64 = https://github.com/lasagnapizza/lazystash/releases/download/v0.2.0/lazystash_linux_amd64.tar.gz
+	sha256sums_x86_64 = 168c5ab6e7a06e2f9f592c96ff40eb5a13f12f43eb643992c741c6f1fdb0f45f
+	
+pkgname = lazystash-bin
