@@ -2,7 +2,7 @@
 
 pkgname=ubaa
 _reponame=UBAA
-pkgver=1.7.4
+pkgver=1.7.6
 pkgrel=1
 _javaversion=21
 pkgdesc="Cross-platform Compose Multiplatform client for Beihang University campus services"
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BUAASubnet/${_reponame}
         "${pkgname}.desktop"
         "${pkgname}.sh"
         "0001-build-composeApp-enable-ProGuard.patch")
-sha256sums=('4c2aba70c4e030df6bd01bcae185b9f93309afb485d027835daf2171c3bee50d'
+sha256sums=('707983a5425f641efc9640b4266db37b910c52d5fbfa47df2250a19abfd1fb83'
             '79ce57a57321f1844d3f43c1f779d14e6ce95c60d6eb5adbffd0df3703f400e9'
             '6f9e5fb5a184b2ca77382cc00c65fd0ca1e38cf71b72dd419aa88d4efdbf4eaa'
             'e51dff75d4452219ef8fa93bcf478f9bea29a8dc2ca05bac7ea0ec6d15b5378c')
