@@ -107,12 +107,16 @@ source=(
   "$_pkgname.desktop"
   '0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch'
   '0002-Fix-sandbox-to-build-with-glibc-2.43.patch'
+  '0003-cbindgen-0_29_4.patch'
 )
-sha256sums=('137de83d466e4c3c13c71a7035f17d0f4db10a935e910106451a6a674ef6fa4f'
-            'e3f532fb33a31233a9c24e6f649cfaf77c2d1a0d0d916960c7c1f3a6418db8b7'
-            '9345cdf0e1a537d8ff23b5db0eadaaec5868f7588de86a260da27f5015c2d286'
-            '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852'
-            '404e780b1488625989c6dd8e2234e50ed01401b7cb1e99e79dee87f4f4f584f8')
+sha256sums=(
+  '137de83d466e4c3c13c71a7035f17d0f4db10a935e910106451a6a674ef6fa4f'
+  'e3f532fb33a31233a9c24e6f649cfaf77c2d1a0d0d916960c7c1f3a6418db8b7'
+  '9345cdf0e1a537d8ff23b5db0eadaaec5868f7588de86a260da27f5015c2d286'
+  '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852'
+  '404e780b1488625989c6dd8e2234e50ed01401b7cb1e99e79dee87f4f4f584f8'
+  '198a797558d58d8cb68870fc1ff30dead271f5f1a3be0bce9a627d728a37da9f'
+)
 
 prepare() {
   mkdir -p mozbuild
