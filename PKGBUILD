@@ -18,7 +18,6 @@ optdepends=('python-google-auth: gcp' 'python-requests: gcp'
             'python-azure-storage-blob: workflow_payload_offloading_azure' 'python-azure-identity: workflow_payload_offloading_azure' 'python-aiohttp: workflow_payload_offloading_azure'
             'python-gcloud-aio-storage: workflow_payload_offloading_gcs'
             'python-aioboto3: workflow_payload_offloading_s3'
-            'python-azure-storage-blob: workflow_payload_offloading' 'python-azure-identity: workflow_payload_offloading' 'python-aiohttp: workflow_payload_offloading' 'python-gcloud-aio-storage: workflow_payload_offloading' 'python-aioboto3: workflow_payload_offloading'
             'python-cryptography: workflow_payload_encryption'
             'python-msgpack: workflow_payload_compression' 'python-zstandard: workflow_payload_compression')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
