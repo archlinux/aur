@@ -1,7 +1,7 @@
 # Maintainer: OpenLyst <https://openlyst.ink>
 # Version and download URL from Openlyst API: https://openlyst.ink/docs/api
 pkgname=finar-bin
-pkgver=3.0.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Jellyfin frontend client"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=()
 provides=('finar')
 conflicts=('finar')
 options=('!strip')
-source=("finar-bin-${pkgver}.zip::https://gitlab.com/api/v4/projects/79691113/packages/generic/github-mirror/build-14/finar-1.1.0-2026-02-24-linux-x64.zip")
+source=("finar-bin-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-94/finar-4.1.1-2026-05-07-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
