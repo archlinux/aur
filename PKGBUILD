@@ -19,7 +19,7 @@ _urlbin="https://zmx.sh/a"
 license=('MIT')
 
 provides=("${_pkgname}")
-conflicts=("${_pkgname}"{-bin,-git})
+conflicts=("${_pkgname}"{,-git})
 
 options=(!strip)
 
