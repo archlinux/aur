@@ -1,0 +1,24 @@
+From c6964308f1a7e2e61f96fe37f007ba24764cbf9e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Torleif=20Sk=C3=A5r?= <torleif.skaar@gmail.com>
+Date: Sun, 22 Mar 2026 00:56:55 +0100
+Subject: [PATCH] enable MPI_C interface
+
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c0eaf258cc..08ef6121ae 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -87,6 +87,7 @@ endif()
+ if (MFEM_USE_STRUMPACK OR MFEM_USE_MUMPS)
+   # Just needed to find the MPI_Fortran libraries to link with
+   set(XSDK_ENABLE_Fortran ON)
++  set(XSDK_ENABLE_C ON)
+ endif()
+ # Ginkgo requires C++17:
+ if ((MFEM_USE_GINKGO) AND ("${CMAKE_CXX_STANDARD}" LESS "17"))
+-- 
+2.53.0
+
