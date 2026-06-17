@@ -41,7 +41,7 @@ index e195e02f..406e604a 100644
  		wlr_log(WLR_ERROR, "unable to create the XDG deco manager");
  		exit(EXIT_FAILURE);
 diff --git a/src/server.c b/src/server.c
-index d0c8c04c..444fc5ed 100644
+index d0c8c04c..cab06334 100644
 --- a/src/server.c
 +++ b/src/server.c
 @@ -424,7 +424,7 @@ handle_toplevel_capture_source_destroy(struct wl_listener *listener, void *data)
@@ -53,16 +53,17 @@ index d0c8c04c..444fc5ed 100644
  	struct view *view = request->toplevel_handle->data;
  	assert(view);
  	wlr_log(WLR_INFO, "Capturing toplevel %s", view->app_id);
-@@ -627,6 +627,8 @@ server_init(void)
+@@ -627,6 +627,9 @@ server_init(void)
  				.features = {
  					.parametric = true,
  					.set_mastering_display_primaries = true,
 +					.extended_target_volume = true,
-+					.windows_scrgb = true
++					.windows_scrgb = true,
++					.windows_bt2100 = true
  				},
  				.render_intents = render_intents,
  				.render_intents_len = ARRAY_SIZE(render_intents),
-@@ -728,12 +730,12 @@ server_init(void)
+@@ -728,12 +731,12 @@ server_init(void)
  		wlr_ext_foreign_toplevel_image_capture_source_manager_v1_create(
  			server.wl_display, 1);
  	if (server.toplevel_capture.manager) {
@@ -79,7 +80,7 @@ index d0c8c04c..444fc5ed 100644
  	}
  
  	wlr_data_control_manager_v1_create(server.wl_display);
-@@ -870,7 +872,7 @@ server_finish(void)
+@@ -870,7 +873,7 @@ server_finish(void)
  		server.drm_lease_request.notify = NULL;
  	}
  
