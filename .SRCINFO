@@ -16,6 +16,7 @@ pkgbase = mxl
 	depends = fmt
 	depends = gstreamer
 	depends = gst-plugins-base
+	provides = mxl=1.0.1
 	source = https://github.com/dmf-mxl/mxl/archive/refs/tags/v1.0.1.tar.gz
 	source = picojson-include-path.patch
 	source = use-std-span.patch

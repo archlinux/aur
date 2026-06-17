@@ -9,6 +9,7 @@ makedepends=("picojson-git" "stduuid" "pcapplusplus" "cli11")
 checkdepends=("catch2")
 license=("Apache-2.0")
 url="https://github.com/dmf-mxl/mxl"
+provides=("mxl=1.0.1")
 
 _pkgsrc="${pkgname}-${pkgver}"
 
