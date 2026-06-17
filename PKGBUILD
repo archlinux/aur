@@ -15,13 +15,13 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
 
 	# create .logs directory
-	mkdir -p "$pkgdir/home/$USER/.logs/upyay/"
+	mkdir -p "/home/$USER/.logs/upyay/"
 	#create .lock file in this folder
-	touch "$pkgdir/home/$USER/.logs/upyay/upyay.lock"
+	touch "/home/$USER/.logs/upyay/upyay.lock"
 
 	# install files
-	install -Dm755 upyay.sh "$pkgdir/usr/local/bin/upyay"
-	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-	install -Dm644 upyay.conf "$pkgdir/home/$USER/.config/$pkgname/upyay.conf"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm755 upyay.sh "/usr/local/bin/upyay"
+	install -Dm644 README.md "/usr/share/doc/$pkgname/README.md"
+	install -Dm644 upyay.conf "/home/$USER/.config/$pkgname/upyay.conf"
+	install -Dm644 LICENSE "/usr/share/licenses/$pkgname/LICENSE"
 }
