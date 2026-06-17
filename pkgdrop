@@ -442,6 +442,7 @@ Options:
   -i, --info          Show package info
   -o, --owns <file>   Show which package owns a file
   -c, --clean         Remove broken symlinks
+  -a, --audit         Audit registry vs filesystem consistency
   -f, --force         Force install (skip confirmations)
   -S, --system        Install system-wide (requires root)
   -n, --dry-run       Preview installation without changes
@@ -458,6 +459,8 @@ Examples:
   pkgdrop -U app.AppImage   # Upgrade package if newer version
   pkgdrop -i app            # Show info about installed package
   pkgdrop -o /usr/bin/foo   # Show which package owns /usr/bin/foo
+  pkgdrop -a                # Audit registry vs filesystem
+  pkgdrop -a --prune        # Audit and remove orphans
   pkgdrop -f app.tar.xz     # Force install (skip prompts)
 
 Environment Variables:
@@ -657,6 +660,9 @@ uninstall_package() {
     local name="$1"
     local force_flag="${2:-}"
     local removed=0
+    local fs_failed=0
+
+    run_hook "pre-remove" "$name" "$(registry_get_version "$name")" 2>/dev/null || true
 
     if [[ -d "$INSTALL_DIR/$name" ]]; then
         if [[ "$force_flag" != "--force" ]]; then
@@ -666,17 +672,23 @@ uninstall_package() {
         fi
         [[ "$DRY_RUN" == "1" ]] && { info "[DRY RUN] Would remove $INSTALL_DIR/$name"; return 0; }
 
-        run_hook "pre-remove" "$name" "$(registry_get_version "$name")" 2>/dev/null || true
-
-        rm -rf "${INSTALL_DIR:?}/$name"
-        info "Removed $INSTALL_DIR/$name"
-        removed=1
+        if rm -rf "${INSTALL_DIR:?}/$name" 2>/dev/null; then
+            info "Removed $INSTALL_DIR/$name"
+            removed=1
+        else
+            warn "Failed to remove $INSTALL_DIR/$name"
+            fs_failed=1
+        fi
     fi
 
     if [[ -L "$HOME/.local/bin/$name" ]]; then
-        rm -f "$HOME/.local/bin/$name"
-        info "Removed symlink $HOME/.local/bin/$name"
-        removed=1
+        if rm -f "$HOME/.local/bin/$name" 2>/dev/null; then
+            info "Removed symlink $HOME/.local/bin/$name"
+            removed=1
+        else
+            warn "Failed to remove $HOME/.local/bin/$name"
+            fs_failed=1
+        fi
     fi
 
     if [[ -f "$HOME/.local/bin/$name" ]]; then
@@ -686,9 +698,13 @@ uninstall_package() {
             fi
         fi
         [[ "$DRY_RUN" == "1" ]] && { info "[DRY RUN] Would remove $HOME/.local/bin/$name"; return 0; }
-        rm -f "$HOME/.local/bin/$name"
-        info "Removed $HOME/.local/bin/$name"
-        removed=1
+        if rm -f "$HOME/.local/bin/$name" 2>/dev/null; then
+            info "Removed $HOME/.local/bin/$name"
+            removed=1
+        else
+            warn "Failed to remove $HOME/.local/bin/$name"
+            fs_failed=1
+        fi
     fi
 
     cleanup_desktop "$name"
@@ -697,9 +713,15 @@ uninstall_package() {
     refresh_desktop
     verb "Cleaned up desktop entry for $name"
 
-    registry_remove "$name"
+    if [[ "$fs_failed" -eq 1 ]]; then
+        warn "Some filesystem operations failed for $name — keeping registry entry for consistency"
+        warn "Run 'pkgdrop --audit' to check state, or use 'sudo pkgdrop --uninstall $name'"
+    else
+        registry_remove "$name"
+        verb "Cleaned up registry entry for $name"
+    fi
+
     run_hook "post-remove" "$name" 2>/dev/null || true
-    verb "Cleaned up registry entry for $name"
 
     [[ "$removed" -eq 0 ]] && warn "Package not found: $name"
     return 0
@@ -730,6 +752,154 @@ clean_broken() {
         done
     fi
     echo "$count items found."
+    return 0
+}
+
+audit_system() {
+    local prune="${1:-}"
+    local issues=0
+    local -a ghost_pkgs=()
+    local -a orphan_dirs=()
+    local -a orphan_bin=()
+    local -a orphan_desktop=()
+
+    if ! command -v jq &>/dev/null; then
+        fail "jq is required for audit. Install jq to continue."
+    fi
+
+    echo "=== pkgdrop audit ==="
+    echo ""
+
+    echo "--- Registry vs Filesystem ---"
+    local reg_names
+    reg_names=$(jq -r 'keys[]' "$REGISTRY_FILE" 2>/dev/null || true)
+    for name in $reg_names; do
+        local has_dir=0 has_bin=0 missing=()
+        [[ -d "$INSTALL_DIR/$name" ]] && has_dir=1
+        [[ -L "$HOME/.local/bin/$name" ]] || [[ -f "$HOME/.local/bin/$name" ]] && has_bin=1
+        if [[ "$has_dir" -eq 0 ]] && [[ "$has_bin" -eq 0 ]]; then
+            missing+=("install dir" "bin symlink")
+        elif [[ "$has_dir" -eq 0 ]]; then
+            missing+=("install dir")
+        elif [[ "$has_bin" -eq 0 ]]; then
+            missing+=("bin symlink")
+        fi
+        if [[ "${#missing[@]}" -gt 0 ]]; then
+            echo "  GHOST: $name (missing: ${missing[*]})"
+            ghost_pkgs+=("$name")
+            issues=$((issues + 1))
+        fi
+    done
+
+    echo ""
+    echo "--- Filesystem vs Registry ---"
+    if [[ -d "$INSTALL_DIR" ]]; then
+        for dir in "$INSTALL_DIR"/*/; do
+            [[ -d "$dir" ]] || continue
+            local fname="${dir%/}"
+            fname="${fname##*/}"
+            local in_reg
+            in_reg=$(jq -r --arg n "$fname" 'has($n)' "$REGISTRY_FILE" 2>/dev/null || echo "false")
+            if [[ "$in_reg" == "false" ]]; then
+                echo "  ORPHAN DIR: $dir (not in registry)"
+                orphan_dirs+=("$fname")
+                issues=$((issues + 1))
+            fi
+        done
+    fi
+
+    if [[ -d "$HOME/.local/bin" ]]; then
+        for entry in "$HOME/.local/bin"/*; do
+            [[ -L "$entry" ]] || [[ -f "$entry" ]] || continue
+            local bname="${entry##*/}"
+            local in_reg
+            in_reg=$(jq -r --arg n "$bname" 'has($n)' "$REGISTRY_FILE" 2>/dev/null || echo "false")
+            if [[ "$in_reg" == "false" ]]; then
+                echo "  ORPHAN BIN: $entry (not in registry)"
+                orphan_bin+=("$bname")
+                issues=$((issues + 1))
+            fi
+        done
+    fi
+
+    echo ""
+    echo "--- Desktop Entries vs Registry ---"
+    local apps_dir="$HOME/.local/share/applications"
+    if [[ -d "$apps_dir" ]]; then
+        for desktop in "$apps_dir"/*.desktop; do
+            [[ -f "$desktop" ]] || continue
+            local dname="${desktop##*/}"
+            local pkg_ref=""
+
+            if [[ "$dname" == pkgdrop-* ]]; then
+                pkg_ref="${dname#pkgdrop-}"
+                pkg_ref="${pkg_ref%.desktop}"
+            else
+                local wmclass
+                wmclass=$(grep -E '^StartupWMClass=' "$desktop" 2>/dev/null | head -1 | cut -d= -f2-)
+                if [[ -n "$wmclass" ]]; then
+                    pkg_ref="$wmclass"
+                fi
+            fi
+
+            if [[ -n "$pkg_ref" ]]; then
+                local in_reg
+                in_reg=$(jq -r --arg n "$pkg_ref" 'has($n)' "$REGISTRY_FILE" 2>/dev/null || echo "false")
+                if [[ "$in_reg" == "false" ]]; then
+                    local has_dir=0
+                    [[ -d "$INSTALL_DIR/$pkg_ref" ]] && has_dir=1
+                    if [[ "$has_dir" -eq 0 ]]; then
+                        echo "  ORPHAN DESKTOP: $desktop (package '$pkg_ref' not in registry)"
+                        orphan_desktop+=("$desktop")
+                        issues=$((issues + 1))
+                    fi
+                fi
+            fi
+        done
+    fi
+
+    echo ""
+    echo "--- Summary ---"
+    echo "  Ghost registry entries: ${#ghost_pkgs[@]}"
+    echo "  Orphaned directories:   ${#orphan_dirs[@]}"
+    echo "  Orphaned binaries:      ${#orphan_bin[@]}"
+    echo "  Orphaned desktop files: ${#orphan_desktop[@]}"
+    echo "  Total issues: $issues"
+
+    if [[ "$prune" == "--prune" ]] && [[ "$issues" -gt 0 ]]; then
+        echo ""
+        echo "Pruning orphans..."
+        for name in "${ghost_pkgs[@]}"; do
+            if confirm "Remove ghost registry entry: $name?"; then
+                registry_remove "$name"
+                info "Pruned registry entry: $name"
+            fi
+        done
+        for desktop in "${orphan_desktop[@]}"; do
+            if confirm "Remove orphan desktop: $desktop?"; then
+                rm -f "$desktop"
+                info "Pruned desktop: $desktop"
+            fi
+        done
+        for bname in "${orphan_bin[@]}"; do
+            if confirm "Remove orphan binary: $HOME/.local/bin/$bname?"; then
+                rm -f "$HOME/.local/bin/$bname"
+                info "Pruned binary: $bname"
+            fi
+        done
+        for fname in "${orphan_dirs[@]}"; do
+            if confirm "Remove orphan directory: $INSTALL_DIR/$fname?"; then
+                rm -rf "$INSTALL_DIR/$fname"
+                info "Pruned directory: $fname"
+            fi
+        done
+        refresh_desktop
+        echo "Prune complete."
+    elif [[ "$issues" -gt 0 ]]; then
+        echo ""
+        echo "Run 'pkgdrop --audit --prune' to remove orphans."
+    fi
+
     return 0
 }
 
@@ -1045,20 +1215,96 @@ refresh_desktop() {
     kbuildsycoca5 2>/dev/null || true
 }
 
+_find_desktop_by_wmclass() {
+    local name="$1"
+    local apps_dir="$HOME/.local/share/applications"
+    [[ -d "$apps_dir" ]] || return 1
+    local desktop
+    for desktop in "$apps_dir"/*.desktop; do
+        [[ -f "$desktop" ]] || continue
+        local wmclass
+        wmclass=$(grep -E '^StartupWMClass=' "$desktop" 2>/dev/null | head -1 | cut -d= -f2-)
+        if [[ "$wmclass" == "$name" ]]; then
+            echo "$desktop"
+            return 0
+        fi
+    done
+    return 1
+}
+
+_find_desktop_by_exec() {
+    local name="$1"
+    local apps_dir="$HOME/.local/share/applications"
+    [[ -d "$apps_dir" ]] || return 1
+    local desktop
+    for desktop in "$apps_dir"/*.desktop; do
+        [[ -f "$desktop" ]] || continue
+        local exec_val
+        exec_val=$(grep -E '^Exec=' "$desktop" 2>/dev/null | head -1 | cut -d= -f2-)
+        if [[ "$exec_val" == *"/$name"* ]] || [[ "$exec_val" == "$name"* ]]; then
+            echo "$desktop"
+            return 0
+        fi
+    done
+    return 1
+}
+
 cleanup_desktop() {
     local name="$1"
+    local desktop_file=""
+    local icon_name=""
+
+    desktop_file="$HOME/.local/share/applications/pkgdrop-${name}.desktop"
+    if [[ ! -f "$desktop_file" ]]; then
+        local found
+        found=$(_find_desktop_by_wmclass "$name") || true
+        [[ -n "$found" ]] && desktop_file="$found"
+    fi
+    if [[ ! -f "$desktop_file" ]]; then
+        local found
+        found=$(_find_desktop_by_exec "$name") || true
+        [[ -n "$found" ]] && desktop_file="$found"
+    fi
+
+    if [[ -f "$desktop_file" ]]; then
+        icon_name=$(grep -E '^Icon=' "$desktop_file" 2>/dev/null | head -1 | cut -d= -f2-)
+        [[ "$DRY_RUN" == "1" ]] && { info "[DRY RUN] Would remove $desktop_file"; return 0; }
+        rm -f "$desktop_file"
+        verb "Removed desktop entry: $desktop_file"
+    fi
+
     rm -f "$HOME/.local/share/applications/pkgdrop-${name}.desktop"
-    rm -f "$HOME/.local/share/icons/hicolor/128x128/apps/pkgdrop-${name}.png"
-    rm -f "$HOME/.local/share/icons/hicolor/128x128/apps/pkgdrop-${name}.svg"
-    rm -f "$HOME/.local/share/icons/hicolor/scalable/apps/pkgdrop-${name}.svg"
-    rm -f "$HOME/.local/share/pkgdrop/icons/${name}.png"
-    rm -f "$HOME/.local/share/pkgdrop/icons/${name}.svg"
+
+    local -a icon_candidates=()
+    icon_candidates+=("pkgdrop-${name}")
+    icon_candidates+=("$name")
+    if [[ -n "$icon_name" ]]; then
+        icon_candidates+=("$icon_name")
+        local icon_base="${icon_name##*/}"
+        icon_candidates+=("$icon_base")
+    fi
     local safe_name="${name// /-}"
     if [[ "$safe_name" != "$name" ]]; then
-        rm -f "$HOME/.local/share/icons/hicolor/128x128/apps/pkgdrop-${safe_name}.png"
-        rm -f "$HOME/.local/share/icons/hicolor/128x128/apps/pkgdrop-${safe_name}.svg"
-        rm -f "$HOME/.local/share/icons/hicolor/scalable/apps/pkgdrop-${safe_name}.svg"
+        icon_candidates+=("pkgdrop-${safe_name}")
+        icon_candidates+=("$safe_name")
     fi
+
+    local -a unique_candidates=()
+    declare -A seen
+    for cand in "${icon_candidates[@]}"; do
+        [[ -z "${seen[$cand]:-}" ]] || continue
+        seen[$cand]=1
+        [[ -n "$cand" ]] || continue
+        unique_candidates+=("$cand")
+    done
+
+    for cand in "${unique_candidates[@]}"; do
+        rm -f "$HOME/.local/share/icons/hicolor/128x128/apps/${cand}.png"
+        rm -f "$HOME/.local/share/icons/hicolor/128x128/apps/${cand}.svg"
+        rm -f "$HOME/.local/share/icons/hicolor/scalable/apps/${cand}.svg"
+        rm -f "$HOME/.local/share/pkgdrop/icons/${cand}.png"
+        rm -f "$HOME/.local/share/pkgdrop/icons/${cand}.svg"
+    done
 }
 
 # --- Atomic Install Helpers ---
@@ -1608,6 +1854,11 @@ main() {
 
     if [[ "$file" == "-c" ]] || [[ "$file" == "--clean" ]]; then
         clean_broken
+        exit 0
+    fi
+
+    if [[ "$file" == "-a" ]] || [[ "$file" == "--audit" ]]; then
+        audit_system "${2:-}"
         exit 0
     fi
 
