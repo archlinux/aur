@@ -2,7 +2,7 @@
 
 pkgname=graftcp
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A flexible tool for redirecting a program's TCP, UDP, and DNS traffic to SOCKS5 or HTTP proxies."
 arch=('x86_64')
 url="https://github.com/hmgle/graftcp"
@@ -14,6 +14,7 @@ sha256sums=('f554c8c7724a1e3576c57628daac631a030418b41f4a3e922b9cc0641d4e9917')
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"
+        export GOFLAGS="${GOFLAGS:+$GOFLAGS }-modcacherw"
         make VERSION="v${pkgver}"
 }
 
