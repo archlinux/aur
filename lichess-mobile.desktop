@@ -1,0 +1,10 @@
+Version=1.0
+Name=Lichess
+GenericName=Chess
+Comment=The one open-source chess plattform (Desktop build)
+Exec=/usr/bin/lichess-mobile %U
+Icon=lichess-mobile
+Terminal=false
+Type=Application
+Categories=Game;BoardGame;
+X-MultipleArgs=false
