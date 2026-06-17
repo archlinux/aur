@@ -2,14 +2,14 @@
 
 pkgname=telescope-git
 _pkgname=${pkgname%-*}
-pkgver=0.11.r1.g243d642
+pkgver=0.11.r8.gc499490
 pkgrel=1
 pkgdesc='w3m-like browser for Gemini'
 arch=('x86_64')
 url='https://www.telescope-browser.org/'
 license=('ISC')
-depends=('libbsd' 'libgrapheme' 'libretls' 'ncurses') #'imsg-compat'
-makedepends=('git')
+depends=('libbsd' 'libgrapheme' 'libretls' 'ncurses')
+makedepends=('git' 'imsg-compat')
 provides=('telescope')
 conflicts=('telescope')
 source=("git+https://github.com/$_pkgname-browser/$_pkgname")
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
 	cd "$_pkgname"
-	./configure --prefix='/usr' --with-libbsd #--with-libimsg
+	./configure --prefix='/usr' --with-libbsd --with-libimsg
 	make
 }
 
