@@ -1,0 +1,18 @@
+pkgbase = lazystash
+	pkgdesc = TUI for managing Git stashes
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/lasagnapizza/lazystash
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = openssh
+	depends = glibc
+	source = lazystash::git+https://github.com/lasagnapizza/lazystash#commit=48cb21b
+	source = kinduff.keys
+	sha256sums = 0c7c42f4fea11c012e8e942dd6b9dbd1bafab2d27d40131f4bf01e03ef73e12a
+	sha256sums = 2fba504bd2fd07dec34961493fdb8452826f9c1146fe90aaa6aeab938958d841
+
+pkgname = lazystash

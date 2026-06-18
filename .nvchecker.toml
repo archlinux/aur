@@ -1,0 +1,4 @@
+[lazystash]
+source = "git"
+git = "https://github.com/lasagnapizza/lazystash.git"
+prefix = "v"
