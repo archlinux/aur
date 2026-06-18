@@ -1,6 +1,6 @@
 pkgbase = sysinfo-bin
 	pkgdesc = Simple neofetch-based system info wrapper
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	arch = any
 	license = MIT

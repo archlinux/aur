@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Variables & Things!
-export sysinfo_ver='1.1'
+export sysinfo_ver='1.2'
 export sysinfo_build='1000'
 
 # Check if Neofetch Exists
@@ -34,12 +34,17 @@ if [ -z "$1" ]; then
 fi
 
 if [ "$1" = "--fullinfo" ]; then
-	neofetch --ascii_distro title underline os host kernel uptime packages shell resolution de wm wm_theme theme icons term term_font cpu gpu memory gpu_driver cpu_usage disk battery font song local_ip public_ip users locale
+	neofetch --ascii_distro title underline os host kernel uptime packages shell resolution de wm wm_theme theme icons term term_font cpu gpu memory gpu_driver cpu_usage disk battery font song local_ip public_ip users locale underline
 	exit 0
+fi
+
+if [ "$1" = "--ipinfo"]; then
+	neofetch --ascii_distro title underline local_ip public_ip underline
 fi
 
 if [ "$1" = "--help" ]; then
     echo "[Usage:]"
+    echo "--ipinfo    Shows IP Information"
     echo "--ubuntu    Shows Ubuntu Logo"
     echo "--kde-neon  Shows KDE Neon Logo"
     echo "--help      Shows this dialog"
