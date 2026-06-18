@@ -1,7 +1,7 @@
 # Maintainer: Pierre Chapuis <arch@catwell.info>
 
 pkgname="minijinja-cli-bin"
-pkgver=2.20.0
+pkgver=2.21.0
 pkgrel=1
 pkgdesc="Command-line utility for the MiniJinja template engine"
 arch=(x86_64 aarch64 armv7h)
@@ -12,13 +12,13 @@ provides=(minijinja-cli)
 conflicts=(minijinja-cli)
 
 source_x86_64=("$pkgname-$pkgver.src.tar.xz::$url/releases/download/$pkgver/minijinja-cli-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=("60f229d37c106cd3818a1d21a3eb92cd38768da3b2f16ee6fd72927ee15625ff")
+sha256sums_x86_64=("0e75820f2e833aa35af22365fc8fbadc3e65e62fd3af2d074b79a977afe22354")
 
 source_aarch64=("$pkgname-$pkgver.src.tar.xz::$url/releases/download/$pkgver/minijinja-cli-aarch64-unknown-linux-gnu.tar.xz")
-sha256sums_aarch64=("b65aa27b9c818e965af6dfd151a62f294720a2b28f0bba3344f99e146343d3b1")
+sha256sums_aarch64=("60c7d2aef34c311ce9598c483ab277e6185c555a7497b18bd5ff436eafb0f2f0")
 
 source_armv7h=("$pkgname-$pkgver.src.tar.xz::$url/releases/download/$pkgver/minijinja-cli-armv7-unknown-linux-gnueabihf.tar.xz")
-sha256sums_armv7h=("11ca30342bc607b5da062e111577770d49158e32e9e7ff4027495da923f40447")
+sha256sums_armv7h=("b7b1a6b5279230699b4f37df47d83cdf466f157f08c2eaeef63cdaccf1d5ea18")
 
 package () {
     cd "minijinja-cli-$CARCH-unknown-linux-gnu"
