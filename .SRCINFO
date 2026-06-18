@@ -1,0 +1,16 @@
+pkgbase = python-pgapy
+	pkgdesc = Python wrapper for PGAPack, the parallel genetic algorithm library
+	pkgver = 2.9
+	pkgrel = 1
+	url = https://github.com/schlatterbeck/pgapy
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pgapy/pgapy-2.9.tar.gz
+	sha256sums = f3f9a2ec444d50d4b0b48f8089fcb0d1cb25f0cfa5518275ab69bc774d91db95
+
+pkgname = python-pgapy
