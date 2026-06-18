@@ -13,6 +13,9 @@ depends=(
   'devtools'
   'base-devel'
 )
+makedepends=(
+  'git'
+)
 provides=('preaur')
 conflicts=('preaur')
 source=(
@@ -21,16 +24,24 @@ source=(
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_repo"
-    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
+  cd "$srcdir/$_repo"
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/$_repo"
-    bun install
-    bun run build
+  cd "$srcdir/$_repo"
+  bun install --frozen-lockfile
+  bun run build
+  bun run gen-schema
 }
 
 package() {
-    install -Dm755 "$srcdir/$_repo/dist/index.js" "$pkgdir/usr/bin/preaur"
+  local repo_dir="$srcdir/$_repo"
+
+  install -Dm755 "$repo_dir/dist/index.js" "$pkgdir/usr/bin/preaur"
+  install -Dm644 "$repo_dir/preaur.schema.json" "$pkgdir/usr/share/preaur/preaur.schema.json"
+  install -Dm644 "$repo_dir/docs/config-reference.md" "$pkgdir/usr/share/doc/$pkgname/config-reference.md"
+  install -Dm644 "$repo_dir/docs/man/preaur.1" "$pkgdir/usr/share/man/man1/preaur.1"
+  install -Dm644 "$repo_dir/docs/man/preaur-config.5" "$pkgdir/usr/share/man/man5/preaur-config.5"
+  install -Dm644 "$repo_dir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

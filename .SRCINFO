@@ -5,6 +5,7 @@ pkgbase = preaur-git
 	url = https://github.com/kobe-koto/PreAUR
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = bun
 	depends = git
 	depends = devtools
