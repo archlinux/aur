@@ -1,0 +1,5 @@
+[shadowenv-bin]
+source = "github"
+github = "Shopify/shadowenv"
+use_latest_release = true
+prefix = ""

@@ -3,7 +3,7 @@
 _pkgauthor=Shopify
 _pkgname=shadowenv
 pkgname=${_pkgname}-bin
-pkgver=3.4.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Reversible directory-local environment variable manipulations"
 arch=('x86_64' 'aarch64')
@@ -20,10 +20,10 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}-${arch[0]}-unknown-linux-gnu")
 source_aarch64=("${url}/releases/download/${pkgver}/${_pkgname}-${arch[1]}-unknown-linux-gnu")
 sha256sums=('9b8aa2b6cfd0524eb03656d2fee8957d2a9a53f4be22f4fc00cd377349479007'
-            'd9753222751c42c713cc768d26d07dc2135b91f895f1bd16d01a43e56ca50024'
+            '0499aa540e54c74cc0e598cd2d4c28711f3f96e1c61da41dd925014bfcc0f4d7'
             '00d6c0fdfa9ce946849943a4ad9c4d6f2c5caee3124f6fe116f4c699d28af601')
-sha256sums_x86_64=('60e5dabd632cfd088876bdaf1dcd64d2a7f49a4464825f9cd5a7f1f79165501f')
-sha256sums_aarch64=('129e5441b3a1228e4108aca930ec97bd0584b582c26cd48ad3c3c1a7836d2c3a')
+sha256sums_x86_64=('612e10af532b2469715a32d706fd65b03bcc59d6f69724a45a1d292e27df04b8')
+sha256sums_aarch64=('6d9bbb999a65776741d963bf91f4b94293992fd205224e8da9c3d9f82ec1b6a0')
 
 
 package() {
