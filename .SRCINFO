@@ -1,0 +1,17 @@
+pkgbase = iptop-bin
+	pkgdesc = htop for your network — a beautiful real-time IP traffic monitor for the terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/franlol/iptop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = iptop
+	conflicts = iptop
+	options = !strip
+	source_x86_64 = iptop-0.1.0-x86_64.tar.gz::https://github.com/franlol/iptop/releases/download/v0.1.0/iptop-v0.1.0-linux-x64.tar.gz
+	sha256sums_x86_64 = d3b6cb94c541831bebdd98c49333752c3c8fa0291099792fcce11b319d196ecf
+	source_aarch64 = iptop-0.1.0-aarch64.tar.gz::https://github.com/franlol/iptop/releases/download/v0.1.0/iptop-v0.1.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = f37e2c8d505a130b449a08ec3166167a8386439aa6a967f89a797a3fa9a4ea1d
+
+pkgname = iptop-bin
