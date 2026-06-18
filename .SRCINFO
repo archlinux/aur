@@ -1,13 +1,13 @@
 pkgbase = lunela
 	pkgdesc = Print ephemeris of the moon and more in a terminal without internet connection.
-	pkgver = 2.3
+	pkgver = 2.3.1
 	pkgrel = 3
 	url = https://gitlab.com/brunoy/lunela.git
 	arch = any
 	license = WTFPL
 	makedepends = git
 	depends = python>=3.6
-	source = lunela-2.3.tar.gz::https://gitlab.com/brunoy/lunela/-/archive/master/lunela-master.tar.gz
+	source = lunela-2.3.1.tar.gz::https://gitlab.com/brunoy/lunela/-/archive/master/lunela-master.tar.gz
 	md5sums = SKIP
 
 pkgname = lunela

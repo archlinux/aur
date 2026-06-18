@@ -3,7 +3,7 @@
 
 _realname=lunela-master
 pkgname=lunela
-pkgver=2.3
+pkgver=2.3.1
 pkgrel=3
 pkgdesc="Print ephemeris of the moon and more in a terminal without internet connection."
 arch=('any')
