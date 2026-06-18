@@ -1,0 +1,26 @@
+[Unit]
+Description=Lore version control server
+Documentation=https://epicgames.github.io/lore/
+After=network.target
+
+[Service]
+Type=simple
+User=loreserver
+Group=loreserver
+ExecStart=/usr/bin/loreserver
+Restart=on-failure
+RestartSec=5
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/lore
+StateDirectory=lore
+
+# Default ports (can be overridden via EnvironmentFile)
+# gRPC/QUIC: 41337, HTTP: 41339
+Environment=RUST_LOG=info
+
+[Install]
+WantedBy=multi-user.target
