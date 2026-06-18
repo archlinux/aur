@@ -14,6 +14,7 @@ source_aarch64=("ASF-arm64-${pkgver}.zip::https://github.com/JustArchiNET/ArchiS
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 noextract=("ASF-x64-${pkgver}.zip" "ASF-arm64-${pkgver}.zip")
+options=("!strip" "!debug")
 
 package() {
     install -dm755 "$pkgdir/opt/asf"
