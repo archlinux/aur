@@ -8,7 +8,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=11.0.0
 _xaliaver=0.4.9
-pkgrel=1
+pkgrel=2
 epoch=1
 
 source=(
@@ -56,7 +56,6 @@ depends=(
   libxml2         lib32-libxml2
   libxi           lib32-libxi
   libxrandr       lib32-libxrandr
-  lzo             lib32-lzo
   pipewire        lib32-pipewire
   python
   python-six
