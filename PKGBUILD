@@ -9,7 +9,7 @@ pkgname=(
     "${pkgbase}-unused-libs"
 )
 pkgver=5.3
-pkgrel=6
+pkgrel=7
 pkgdesc="Slovak eID Client - uses system-provided libraries, supports Wayland, …"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
