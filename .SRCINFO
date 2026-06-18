@@ -1,6 +1,6 @@
 pkgbase = portable-unstable
 	pkgdesc = Fast, private, efficient sandbox for Linux desktop. Unstable beta versions.
-	pkgver = 17.0.alpha.7
+	pkgver = 17.0.alpha.9
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Kraftland/portable
@@ -11,6 +11,7 @@ pkgbase = portable-unstable
 	makedepends = libarchive
 	makedepends = git
 	makedepends = go
+	depends = libseccomp
 	depends = libnotify
 	depends = pipewire
 	depends = coreutils
@@ -30,8 +31,7 @@ pkgbase = portable-unstable
 	optdepends = netsock: Per-app firewall
 	optdepends = stashpak: Install Portable packages with ease
 	provides = portable
-	options = !debug
-	source = portable::git+https://github.com/Kraftland/portable.git#tag=17.0.alpha.7
-	md5sums = c293754abfb9a5de08ac45068fa437f1
+	source = portable::git+https://github.com/Kraftland/portable.git#tag=17.0.alpha.9
+	md5sums = ee2ed7ac71a3229eae328c355bed31c3
 
 pkgname = portable-unstable
