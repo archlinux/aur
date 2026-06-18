@@ -1,0 +1,16 @@
+pkgbase = python-rsclib
+	pkgdesc = Miscellaneous basic utilities used by RSC tools
+	pkgver = 0.68
+	pkgrel = 1
+	url = https://github.com/schlatterbeck/rsclib
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/r/rsclib/rsclib-0.68.tar.gz
+	sha256sums = 23a5a44900fcaade622ad66ea8b057ff2e520d1f281710f388b2ba5f89cdef8e
+
+pkgname = python-rsclib
