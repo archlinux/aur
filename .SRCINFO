@@ -11,6 +11,7 @@ pkgbase = opengg-bin
 	depends = ffmpeg
 	depends = gstreamer
 	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
 	optdepends = polkit: for privileged device setup
 	provides = opengg
 	conflicts = opengg
