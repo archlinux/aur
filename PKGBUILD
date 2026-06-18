@@ -50,7 +50,7 @@ optdepends=(
     'sentrux: architectural quality sensor (Huso Neuromuscular + Area de Broca — install: curl -fsSL https://raw.githubusercontent.com/sentrux/sentrux/main/install.sh | sh)'
 )
 options=('!debug' '!strip' '!buildflags')
-source=('franki::git+ssh://git@github.com/antupillan/FRANKI.git')
+source=('franki::git+https://gitlab.com/Umbra_HS/franki_os.git')
 md5sums=('SKIP')
 
 pkgver() {

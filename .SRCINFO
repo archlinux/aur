@@ -54,7 +54,7 @@ pkgbase = franki-os-git
 	options = !debug
 	options = !strip
 	options = !buildflags
-	source = franki::git+ssh://git@github.com/antupillan/FRANKI.git
+	source = franki::git+https://gitlab.com/Umbra_HS/franki_os.git
 	md5sums = SKIP
 
 pkgname = franki-os-git
