@@ -21,20 +21,15 @@ pkgver() {
 	git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
-prepare() {
-	cd $pkgname
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-}
-
 build() {
 	cd $pkgname
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release --all-features
+	cargo build --release --all-features
 }
 
 check() {
 	cd $pkgname
-	cargo test --frozen
+	cargo test --release
 }
 
 package() {
