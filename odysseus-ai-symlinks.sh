@@ -35,6 +35,9 @@ force_symlink() {
 # tree, so we create it first (a real dir; the children are symlinks).
 mkdir -p "$STATE/services" "$STATE/services/cache"
 chown odysseus:odysseus "$STATE/services"
+# The upstream tree may not ship services/cache/. Create the parent so
+# ln -sfn can place symlinks inside it.
+mkdir -p "$APP/services/cache"
 force_symlink "$STATE/services/cache/search"  "$APP/services/cache/search"
 force_symlink "$STATE/services/cache/content" "$APP/services/cache/content"
 

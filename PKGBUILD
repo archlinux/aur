@@ -10,7 +10,7 @@
 # `uv pip compile requirements.txt -o requirements.lock`). This gives us
 # deterministic, byte-identical rebuilds without an AUR-side wheel cache.
 #
-# JS deps (currently @anthropic-ai/sdk ^0.98.0) are installed via
+# JS deps (currently @anthropic-ai/sdk ^0.104.1) are installed via
 # `npm ci --omit=dev` against the upstream package-lock.json. The JS deps
 # are runtime deps, not devDeps, so we do NOT pass --omit=dev... wait, we
 # do, because @antithesishq/bombadil is the only devDep and we don't ship
@@ -24,7 +24,7 @@
 pkgname=odysseus-ai-git
 _pkgname=odysseus
 pkgver=r856.73673258
-pkgrel=15
+pkgrel=16
 pkgdesc="Self-hosted AI workspace with prebuilt Python 3.12 venv, tracking upstream main"
 arch=('x86_64')
 url='https://github.com/pewdiepie-archdaemon/odysseus'
@@ -67,7 +67,6 @@ source=(
   "odysseus-ai.tmpfiles"
   "odysseus-ai.logrotate"
   "odysseus-ai-git.svg"
-  "rag_singleton.py.patch"
   "setup.py.patch"
   "odysseus-ai"
   "odysseus-ai-install-extra"
@@ -78,17 +77,16 @@ source=(
 )
 sha256sums=('SKIP'
             'ceb52bebe3cf25c77087b0529d64d480184f452f3cdbe2a1a920b2c2581ffbe2'
-            '977a9230896cd23b78c712f16857ad605879b74c3076793d95827aaa702c14b9'
+            '372b1117a50731f718bb271af5cff61caf7d666afc95f81a423129e8ec8c4353'
             '83fd58a89da27b1211d7727f0d83f9d6f3633d15e117c6df1097445af6fb542d'
             '8fee9c720af5531a42dff4a96ea07983e861b1d61df9ed70d2749ea4cb718d86'
             '089ff2f58c09c17e7254749e022cad62710a6b6968a808cbbe9861384a087425'
             'c1464cb1073ea2f8b298f282e16eab71b9474e9d65a2963bfc543df4be2164f9'
             'c8f0c2378fa72d90aa710765895be4ff47ee4160615a5066b9bc5311af6ea71f'
-            '7adc77d6aef90a3fd86f9e31795881d48ee7f9d635714982356229cf7e007187'
-            '0627cc6cd18e1307740907442272cb26fa4615f5183ad08e946438a88de10f9d'
+            'e6ed70e346300313dfa3e9cb2be8fb04789b8afcafc0c66f62fc9b0887ba6245'
             'd43eb701dd137d95bca167c0c86f18692faea573fe7333840248297587f43cbe'
             '295f647c0e114eea7a56c3d77e173c0a245c55c612df268b34521b907acfb58e'
-            '67c3cae7d473062978a70fd4d86ee683c9659b843fb178c9dfa4a9d953200220'
+            '67ad7ffae29ad3a2bf7a480091edbb7629d8fd296efff3e9d98ee42df79f10ae'
             '2e2872c6cfc42b2e543255846ae0d07fd157f13aba1cb5cee3a95dcffe3e0314'
             '11933a234233ea483e306ef3f6401737d51ef3107c47fbe94741f2c97626c65a'
             '4674cc172af2a0de35fc4f0fea59da77a204264e8008f0452b71aa90faf77bb2')
@@ -109,16 +107,14 @@ prepare() {
     error "uv >= 0.4 required (got: $(uv --version))"
   fi
 
-  # ---- Patch the CWD-relative rag_singleton.py bug (drill 1) ----
-  patch -p1 -i "$srcdir/rag_singleton.py.patch"
   # ---- Patch setup.py to use CWD-relative paths (WorkingDirectory=) ----
   patch -p1 -i "$srcdir/setup.py.patch"
-  # ---- Patch core/constants.py and src/constants.py so BASE_DIR is CWD ----
-  # Both files contain `BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/"`
+  # ---- Patch src/constants.py so BASE_DIR is CWD ----
+  # src/constants.py contains `BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/"`
   # which resolves to /usr/lib/odysseus-ai/app/. The app then tries to
   # os.makedirs(STATIC_DIR) and write JSON files into that read-only path.
   # Make BASE_DIR resolve to os.getcwd() (== WorkingDirectory=) instead.
-  for cf in core/constants.py src/constants.py; do
+  for cf in src/constants.py; do
     sed -i 's|^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/"$|BASE_DIR = os.getcwd() + "/"|' "$cf"
   done
 

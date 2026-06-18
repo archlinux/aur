@@ -1,28 +1,17 @@
 --- a/setup.py
 +++ b/setup.py
-@@ -10,7 +10,11 @@
- import sys
-
- BASE_DIR = os.path.dirname(os.path.abspath(__file__))
--DATA_DIR = os.path.join(BASE_DIR, "data")
-+# AUR package: data and logs are CWD-relative so the package is
-+# read-only and state lives in /var/lib/odysseus-ai (the systemd
-+# unit's WorkingDirectory).
-+DATA_DIR = "data"
-+LOGS_DIR = "logs"
-
- DIRS = [
-     DATA_DIR,
-@@ -23,7 +27,7 @@ DIRS = [
-     os.path.join(DATA_DIR, "chroma"),
-     os.path.join(DATA_DIR, "rag"),
-     os.path.join(DATA_DIR, "memory_vectors"),
+@@ -33,7 +33,9 @@
+     CHROMA_DIR,
+     RAG_DIR,
+     MEMORY_VECTORS_DIR,
 -    os.path.join(BASE_DIR, "logs"),
-+    LOGS_DIR,
++    # AUR package: logs are CWD-relative so the package is
++    # read-only and state lives in /var/lib/odysseus-ai
++    "logs",
  ]
-
-
-@@ -126,5 +130,9 @@ def create_default_admin():
+ 
+ 
+@@ -141,6 +143,10 @@
  def create_env():
      """Copy .env.example to .env if it doesn't exist."""
 +    # AUR package: env vars come from /etc/odysseus-ai/odysseus-ai.env
