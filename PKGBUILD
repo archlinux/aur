@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="C++ 98/11/14/17/20 manual pages for Linux, with source from cplusplus.com and cppreference.com."
 arch=('any')
 url='https://github.com/aitjcize/cppman'
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('bash' 'python' 'python-beautifulsoup4' 'python-html5lib')
 optdepends=(
   "vim: for using vim as a pager"
