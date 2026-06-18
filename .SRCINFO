@@ -1,0 +1,23 @@
+pkgbase = spcasm
+	pkgdesc = Modern SPC700 toolchain
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://codeberg.org/annaaurora/kittehlist
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = BSD-2-Clause
+	makedepends = rustup
+	makedepends = clang
+	depends = libgcc
+	depends = glibc
+	provides = sapemu
+	provides = brr
+	conflicts = spcasm-git
+	conflicts = spcasm-bin
+	options = !debug
+	options = !lto
+	source = spcasm::https://codeberg.org/filmroellchen/spcasm/archive/v2.0.0.tar.gz
+	b2sums = fcb797608681b5890e62e3fcb9c6cb0c36639dd43a30096866b43a94820419bf8021cf92d45171f4be19f5b8c17635fb31feb1fb31b1c25864ebe2368b933375
+
+pkgname = spcasm
