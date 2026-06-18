@@ -9,8 +9,8 @@
 # release tag pinned to a reviewed version. Prefer the tagged packages on
 # production systems.
 pkgname=aur-scanner-git
-pkgver=1.0.3.r0.g7aae5c0
-pkgrel=2
+pkgver=2.0.0.r0.g07893f5
+pkgrel=1
 pkgdesc="Security scanner for Arch Linux AUR packages - detect malicious PKGBUILDs before installation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/KiefStudioMA/ks-aur-scanner"
@@ -76,6 +76,7 @@ package() {
     install -Dm644 "install/integration.bash" "$pkgdir/usr/share/aur-scan/integration.bash"
     install -Dm644 "install/integration.zsh" "$pkgdir/usr/share/aur-scan/integration.zsh"
     install -Dm644 "install/integration.fish" "$pkgdir/usr/share/aur-scan/integration.fish"
+    install -Dm644 "install/integration.nu" "$pkgdir/usr/share/aur-scan/integration.nu"
 
     # Community rules example
     install -Dm644 "install/rules.d/example.toml" "$pkgdir/usr/share/aur-scanner/rules.d/example.toml"
