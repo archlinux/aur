@@ -1,6 +1,6 @@
 pkgbase = kak-tree-sitter
 	pkgdesc = tree-sitter meets Kakoune
-	pkgver = 3.2.1
+	pkgver = 3.2.2
 	pkgrel = 1
 	url = https://git.sr.ht/~hadronized/kak-tree-sitter
 	install = kak-tree-sitter.install
@@ -10,9 +10,9 @@ pkgbase = kak-tree-sitter
 	depends = kakoune
 	options = !debug
 	options = !lto
-	source = kak-tree-sitter-3.2.1.tar.gz::https://static.crates.io/crates/kak-tree-sitter/kak-tree-sitter-3.2.1.crate
-	source = ktsctl-3.1.2.tar.gz::https://static.crates.io/crates/ktsctl/ktsctl-3.1.2.crate
-	sha256sums = 203bd8a9a2088c6b19887945ee4b184e0e45a10f0b6ee8115caba8b57edd2313
-	sha256sums = 4515d62d02b411ffd83ce1c8c095bdd7be904a00c301822b84db16660650ee7e
+	source = kak-tree-sitter-3.2.2.tar.gz::https://static.crates.io/crates/kak-tree-sitter/kak-tree-sitter-3.2.2.crate
+	source = ktsctl-3.1.3.tar.gz::https://static.crates.io/crates/ktsctl/ktsctl-3.1.3.crate
+	sha256sums = 4fd03b16309a759558974ac88ddafb764ab314154349c4891eea27a70823c052
+	sha256sums = 7ba676379a79cfba050f34dc5eee09b6be24e44007185465c0f708dfa53f7fff
 
 pkgname = kak-tree-sitter

@@ -3,9 +3,9 @@
 # Contributor: Davide Poderini <davide at poder dot in>
 
 pkgname=kak-tree-sitter
-pkgver=3.2.1
+pkgver=3.2.2
 _ctlname=ktsctl
-_ctlver=3.1.2
+_ctlver=3.1.3
 pkgrel=1
 pkgdesc='tree-sitter meets Kakoune '
 arch=('x86_64')
@@ -17,11 +17,11 @@ options=(!debug !lto)
 install=$pkgname.install
 source=($pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate    
     $_ctlname-$_ctlver.tar.gz::https://static.crates.io/crates/$_ctlname/$_ctlname-$_ctlver.crate)
-sha256sums=('203bd8a9a2088c6b19887945ee4b184e0e45a10f0b6ee8115caba8b57edd2313'
-            '4515d62d02b411ffd83ce1c8c095bdd7be904a00c301822b84db16660650ee7e')
+sha256sums=('4fd03b16309a759558974ac88ddafb764ab314154349c4891eea27a70823c052'
+            '7ba676379a79cfba050f34dc5eee09b6be24e44007185465c0f708dfa53f7fff')
 
 prepare() {
-    export RUSTUP_TOOLCHAIN=1.86.0
+    export RUSTUP_TOOLCHAIN=1.88.0
     
     cd "$srcdir/$pkgname-$pkgver"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
