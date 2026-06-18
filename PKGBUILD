@@ -1,6 +1,6 @@
 # Maintainer: RiverOnVenus <aur@zhui.dev>
 pkgname=agentsight
-pkgver=0.2.16
+pkgver=0.2.28
 pkgrel=1
 pkgdesc="eBPF-based observability for AI agent sessions, prompts, process trees, files, network activity, and token usage"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc' 'zstd' 'sqlite3')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eunomia-bpf/agentsight/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8550dd25486aebcc6d5e717fc7d9334f24b9aaafb5118875e9484fcbb63713ff')
+sha256sums=('1e5bf8079c4d50a01f8605c9e63383b3186927fe962ec53b5a86a9e021ac059b')
 
 prepare() {
     cd "${pkgname}-${pkgver}/collector"
