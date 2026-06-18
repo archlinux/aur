@@ -19,6 +19,7 @@ _ghurl="https://github.com/beyond-all-reason/RecoilEngine"
 #_tag="#tag=2025.04.11"
 #_tag="#tag=2025.06.06"
 
+options=(debug !strip)
 
 license=('GPL-2.0-or-later')
 #conflicts=("${pkgname%-git}") ### Not needed, multiple versions of the engine can be installed besides each other
@@ -134,6 +135,14 @@ build() {
 ##  pip install compdb
 
                               ###-G Ninja | -G "Unix Makefiles"
+    ## For deeper debugin switch to:
+    # -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-O2 -g -fno-omit-frame-pointer -DNDEBUG -fdiagnostics-color=always" \
+    # -DCMAKE_C_FLAGS_RELWITHDEBINFO="-O2 -g -fno-omit-frame-pointer -DNDEBUG -fdiagnostics-color=always" \
+
+    #Defaults are
+    #-DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
+    #-DCMAKE_C_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
+
     cmake3 -S "${srcdir}/${pkgname%-git}"  -G Ninja \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
