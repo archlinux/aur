@@ -1,7 +1,7 @@
 pkgbase = omniglyph
 	pkgdesc = Emoji and Unicode symbol picker
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pshycodr/omniglyph
 	arch = x86_64
 	license = GPL-3.0-only
@@ -14,7 +14,7 @@ pkgbase = omniglyph
 	source = omniglyph::https://github.com/pshycodr/omniglyph/releases/download/v1.1.0/omniglyph.bin
 	source = dev.anishroy.omniglyph.desktop
 	source = omniglyph.png
-	sha256sums = 3fd77b92385b87115e53670a7ee87b6e89eb45a82d88b57c349556eceb1b0b03
+	sha256sums = 13f493590ce5e02b77be5f8a59d838b1cfb2e32308a8e1863acdd09f10e6e136
 	sha256sums = 3e6895c1da0ea0c1816aee75202a3a8e8467db334dddd3274b54dc4e5ea593f9
 	sha256sums = 13acc509f7dbe1f80885c0f260d2b3f87da2706a9437d68335d44cd27bdcaa18
 
