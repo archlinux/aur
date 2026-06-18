@@ -23,7 +23,7 @@
 
 pkgname=odysseus-ai-git
 _pkgname=odysseus
-pkgver=r856.73673258
+pkgver=r1497.d9ebdd6
 pkgrel=16
 pkgdesc="Self-hosted AI workspace with prebuilt Python 3.12 venv, tracking upstream main"
 arch=('x86_64')
