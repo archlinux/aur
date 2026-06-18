@@ -22,6 +22,7 @@ pkgbase = atlas-pm-git
 	depends = pacman
 	optdepends = flatpak: manage Flatpak applications
 	optdepends = git: build packages from the AUR
+	optdepends = pacman-contrib: accurate repo update detection without root (checkupdates)
 	optdepends = timeshift: system snapshot before applying changes
 	provides = atlas-pm
 	conflicts = atlas-pm

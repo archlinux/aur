@@ -22,6 +22,7 @@ depends=(
 optdepends=(
     'flatpak: manage Flatpak applications'
     'git: build packages from the AUR'
+    'pacman-contrib: accurate repo update detection without root (checkupdates)'
     'timeshift: system snapshot before applying changes'
 )
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
