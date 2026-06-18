@@ -7,7 +7,7 @@ pkgver=2026.10.0
 # upstream version
 _pkgver=2026.10.0
 _release_tag=nym-vpn-core-v2026.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='NymVPN daemon as a systemd service'
 arch=('x86_64')
 url='https://github.com/nymtech/nym-vpn-client'
@@ -42,21 +42,17 @@ build() {
   ./build-wireguard-go.sh
   popd
 
-  # build nym-vpnd
-  pushd nym-vpn-core/crates/nym-vpnd/
-
-  # sqlx does not support LTO build flag, which is enabled by default in Arch
+  pushd nym-vpn-core
+  # 1. sqlx does not support LTO build flag, which is enabled by default in Arch
   # set the C flag -ffat-lto-objects to solve the issue
   # see https://github.com/launchbadge/sqlx/issues/3149
+  #
+  # 2. aws-lc-sys v0.38: build issues related to optimizations (fixed in newer versions)
+  # see: https://github.com/aws/aws-lc-rs/pull/1064
   CFLAGS+=" -ffat-lto-objects" cargo build --release --locked
   popd
 
-  pushd nym-vpn-core/crates/nym-exclude
-  cargo build --release --locked
-  popd
-  pushd nym-vpn-core/crates/nym-socks5-proxy
-  CFLAGS+=" -ffat-lto-objects" cargo build --release --locked
-  popd
+  popd # _srcdir
 }
 
 package() {
