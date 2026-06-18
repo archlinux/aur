@@ -1,6 +1,6 @@
 pkgbase = moshpit-agent-ssh-agent-piggyback-unstable-bin
 	pkgdesc = Moshpit agent daemon — SSH agent piggyback unlock with post-quantum ML-DSA support (pre-compiled MUSL static binary)
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/rustyhorde/moshpit
 	arch = x86_64
@@ -19,11 +19,11 @@ pkgbase = moshpit-agent-ssh-agent-piggyback-unstable-bin
 	conflicts = moshpit-agent-fido2-unstable-bin
 	conflicts = moshpit-agent-systemd-creds-unstable-bin
 	conflicts = moshpit-agent-full-unstable-bin
-	source = https://github.com/rustyhorde/moshpit/releases/download/v0.9.0/dist-mpa.tar.gz
-	sha256sums = 21c3945452d2bf1a5a08176cf286621a8f8feb87a0beb636429c0196ddc012a1
-	source_x86_64 = mpa-ssh-agent-piggyback-unstable-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.9.0/mpa-ssh-agent-piggyback-unstable-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 6ac570488bbfc9317b25a1f304bb46b6453d734d775dabb4960a05aaeb8a2d8b
-	source_aarch64 = mpa-ssh-agent-piggyback-unstable-aarch64::https://github.com/rustyhorde/moshpit/releases/download/v0.9.0/mpa-ssh-agent-piggyback-unstable-aarch64-unknown-linux-musl
-	sha256sums_aarch64 = 8b10902b46555d04073a17fae31b4c92e6b03bc2f9fa32ca2b884e84ff088128
+	source = https://github.com/rustyhorde/moshpit/releases/download/v0.9.1/dist-mpa.tar.gz
+	sha256sums = dd21b66fbb5926de40eecab01d818b842bc396a8467803a31f0a1287b2bc58e7
+	source_x86_64 = mpa-ssh-agent-piggyback-unstable-x86_64::https://github.com/rustyhorde/moshpit/releases/download/v0.9.1/mpa-ssh-agent-piggyback-unstable-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 1383c7e61cbc49857cc7d9058211fc40c50e223db9103da9e76fd44dd3ff8ad1
+	source_aarch64 = mpa-ssh-agent-piggyback-unstable-aarch64::https://github.com/rustyhorde/moshpit/releases/download/v0.9.1/mpa-ssh-agent-piggyback-unstable-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = abb220f6e7bcafb232bf6ae979332681ccc39dc632693695446b2c61b4a1c7c0
 
 pkgname = moshpit-agent-ssh-agent-piggyback-unstable-bin
