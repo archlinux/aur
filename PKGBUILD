@@ -19,7 +19,7 @@ pkgname=(
 )
 pkgver=1.10.3
 _realver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc='A identity management service and clients.'
 url='https://github.com/kanidm/kanidm'
 source=(
@@ -72,7 +72,7 @@ package_kanidm-clients () {
 
   install -Dm644 target/release/build/completions/kanidm.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm"
 
-  install -Dm644 target/release/build/completions/kanidm.fish "${pkgdir}/usr/share/fish/completions/kanidm.fish"
+  install -Dm644 target/release/build/completions/kanidm.fish "${pkgdir}/usr/share/fish/vendor_completions.d/kanidm.fish"
 }
 
 package_kanidm-server () {
@@ -94,7 +94,7 @@ package_kanidm-server () {
 
   install -Dm644 target/release/build/completions/kanidmd.bash "${pkgdir}/usr/share/bash-completion/completions/kanidmd"
 
-  install -Dm644 target/release/build/completions/kanidmd.fish "${pkgdir}/usr/share/fish/completions/kanidmd.fish"
+  install -Dm644 target/release/build/completions/kanidmd.fish "${pkgdir}/usr/share/fish/vendor_completions.d/kanidmd.fish"
 
 
   # add web-ui files
@@ -132,7 +132,7 @@ package_kanidm-unixd-clients () {
   install -Dm644 target/release/build/completions/kanidm_ssh_authorizedkeys.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_ssh_authorizedkeys"
   install -Dm644 target/release/build/completions/kanidm_unix.bash "${pkgdir}/usr/share/bash-completion/completions/kanidm_unix"
 
-  install -Dm644 target/release/build/completions/kanidm_ssh_authorizedkeys_direct.fish "${pkgdir}/usr/share/fish/completions/kanidm_ssh_authorizedkeys_direct.fish"
-  install -Dm644 target/release/build/completions/kanidm_ssh_authorizedkeys.fish "${pkgdir}/usr/share/fish/completions/kanidm_ssh_authorizedkeys.fish"
-  install -Dm644 target/release/build/completions/kanidm_unix.fish "${pkgdir}/usr/share/fish/completions/kanidm_unix.fish"
+  install -Dm644 target/release/build/completions/kanidm_ssh_authorizedkeys_direct.fish "${pkgdir}/usr/share/fish/vendor_completions.d/kanidm_ssh_authorizedkeys_direct.fish"
+  install -Dm644 target/release/build/completions/kanidm_ssh_authorizedkeys.fish "${pkgdir}/usr/share/fish/vendor_completions.d/kanidm_ssh_authorizedkeys.fish"
+  install -Dm644 target/release/build/completions/kanidm_unix.fish "${pkgdir}/usr/share/fish/vendor_completions.d/kanidm_unix.fish"
 }
