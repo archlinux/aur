@@ -1,7 +1,7 @@
 pkgbase = openlierox
 	pkgdesc = An extremely addictive realtime worms shoot-em-up backed by an active gamers community
 	pkgver = 0.58_rc5
-	pkgrel = 5
+	pkgrel = 6
 	url = http://openlierox.sourceforge.net/
 	arch = i686
 	arch = x86_64
