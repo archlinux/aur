@@ -4,7 +4,7 @@
 
 _pkgname=krunner-steam
 pkgname=$_pkgname-git
-pkgver=r22.f56d5e5
+pkgver=r23.debe0f8
 pkgrel=1
 pkgdesc="Launch Steam games from Krunner"
 arch=("any")
@@ -36,7 +36,7 @@ package() {
     install -Dm644 LICENSE -t       "$pkgdir/usr/share/licenses/$_pkgname/"
 
     # Install the KRunner plugin metadata
-    install -Dm644 krunnersteam.desktop "$pkgdir/usr/share/krunner/dbusplugins/krunnersteam.desktop"
+    install -Dm644 krunner-steam.desktop "$pkgdir/usr/share/krunner/dbusplugins/krunnersteam.desktop"
 
     # Install and create the D-Bus service file
     install -d "$pkgdir/usr/share/dbus-1/services"
