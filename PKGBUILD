@@ -36,7 +36,8 @@ build() {
     --self-contained false \
     --output "$srcdir/publish" \
     /p:DebugType=embedded \
-    /p:DebugSymbols=false
+    /p:DebugSymbols=false \
+    /p:NoWarn=NETSDK1215
 }
 
 check() {
