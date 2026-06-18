@@ -1,15 +1,17 @@
 # Maintainer: Vaishakh G K <vaishakh@vaishakhgk.com>
 pkgname='a-shell-git'
-pkgver=r14.b8bb300
+pkgver=r18.8de0d26
 pkgrel=1
 pkgdesc="A Shell - Simple shell made in c"
 arch=('x86_64')
 url="https://codeberg.org/VAISHAKH-GK/ash"
 license=('GPL-3.0-or-later')
 depends=('glibc')
-makedepends=('make' 'gcc')
+makedepends=('git' 'make' 'gcc')
 source=("$pkgname::git+https://codeberg.org/VAISHAKH-GK/ash.git")
 sha256sums=('SKIP')
+provides=("ash=${pkgver}")
+conflicts=('ash-git' 'ash-shell-git')
 
 pkgver() {
   cd "$pkgname"
@@ -24,5 +26,5 @@ build() {
 package() {
 	cd "$pkgname"
     install -Dm755 "./ash" "$pkgdir/usr/bin/ash"
-    install -Dm644 "./README.org" "$pkgdir/usr/share/doc/$pkgname"
+    install -Dm644 "./README.org" "$pkgdir/usr/share/doc/$pkgname/README.org"
 }
