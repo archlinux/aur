@@ -1,0 +1,21 @@
+pkgbase = python-antenna-optimizer
+	pkgdesc = Optimize antennas using NEC and a genetic algorithm
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/schlatterbeck/antenna-optimizer
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-pgapy
+	depends = python-pynec
+	depends = python-rsclib
+	depends = python-scipy
+	source = https://files.pythonhosted.org/packages/source/a/antenna-optimizer/antenna-optimizer-0.3.tar.gz
+	sha256sums = e9c116a7aed196e9bb08b95536745bc673ced4c06853ed58f79e473e88e128bd
+
+pkgname = python-antenna-optimizer
