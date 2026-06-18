@@ -7,7 +7,7 @@ arch=('any')
 depends=('neofetch')
 license=('MIT')
 
-install=sysinfopostinst.install
+install=sysinfo-bin.install
 
 source=('sysinfo')
 sha256sums=('SKIP')
