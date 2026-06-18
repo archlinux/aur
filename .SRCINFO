@@ -1,6 +1,6 @@
 pkgbase = salus
 	pkgdesc = Local secret store: a key/value store guarded by Shamir secret shares and AES-256-GCM encryption (daemon + client + login agent)
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/rustyhorde/salus
 	install = salusd.install
@@ -11,7 +11,7 @@ pkgbase = salus
 	makedepends = cmake
 	makedepends = clang
 	depends = gcc-libs
-	source = salus-0.2.1.tar.gz::https://github.com/rustyhorde/salus/archive/v0.2.1.tar.gz
-	sha256sums = 641f1a393a01a52764d1ef4c829f7d20a5271421d812d86659b905f8d70bd4f3
+	source = salus-0.3.0.tar.gz::https://github.com/rustyhorde/salus/archive/v0.3.0.tar.gz
+	sha256sums = 55d267a272e0a1af7ca0fab5b4340a8e4e03380f276e5c9f5e3e918e189919b0
 
 pkgname = salus
