@@ -1,38 +1,25 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep
-pkgver=2.6.4
-pkgrel=3.314
-pkgdesc='A DjVu to PDF converter with a focus on small output size and the ability to preserve document outlines and text layers'
+pkgver=2.7.0
+pkgrel=1.314
+pkgdesc='A DjVu to PDF converter'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
 license=('GPL-3.0-only')
 checkdepends=(python-pytest)
-makedepends=(coreutils grep git python-uv-build python-build python-installer python-wheel python-click-man)
+makedepends=(coreutils python-uv-build python-build python-installer python-wheel python-click-man)
 depends=(python python-djvulibre-python
-         python-click python-loguru python-pillow
+         python-click python-rich python-pillow
          python-fpdf2 python-pdfrw)
 optdepends=(
   'ocrmypdf: Optional OCR and advanced PDF optimization'
   'jbig2enc: Advanced compression of bitonal images'
 )
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b68afedce707104980a42ddaad20fb150b5f7c77e81ff1c832aa83a2ffc9e758')
+sha256sums=('38e85a06842ca2af9d99ff93307381c1cf51c5fc78be769baf2e1e9c23ba58f2')
 
 _fullsrcdir() {
     echo "$srcdir/$pkgname-$pkgver"
-}
-
-# The project contains a GNU make job for docs/dpsprep.1, however it doesn't work without a virtual environment
-prepare() {
-    cd "$(_fullsrcdir)"
-
-    version=$(grep --only-matching --perl-regexp '(?<=version = ").*(?=")' pyproject.toml)
-    echo \
-"from click_man.core import write_man_pages
-from dpsprep.cli import dpsprep
-
-write_man_pages('dpsprep', dpsprep, target_dir='docs', version='$version')
-" > generate_man_page.py
 }
 
 check() {
@@ -43,10 +30,7 @@ check() {
 build() {
     cd "$(_fullsrcdir)"
     python -m build --wheel --no-isolation
-
-    release_date=$(grep --only-matching --perl-regexp "(?<=$version - ).*" CHANGELOG.md)
-    SOURCE_DATE_EPOCH=$(date --date $release_date +'%s') PYTHONPATH=src python -m generate_man_page
-    cat docs/examples.man >> docs/dpsprep.1
+    PYTHONPATH=src python -c 'from helpers.docs import build_man_page; build_man_page()'
 }
 
 package() {
