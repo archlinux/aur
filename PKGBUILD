@@ -9,13 +9,12 @@ arch=(x86_64)
 url="https://github.com/antirez/ds4"
 license=('MIT')
 groups=()
-depends=('curl')
-makedepends=('curl'
-             'git'
-             'hip'
+depends=('curl'
+         'hip'
+         'hipblas'
+         'hipblaslt')
+makedepends=('git'
              'hipcub'
-             'hipblas'
-             'hipblaslt'
              'rocm-llvm'
              'rocminfo'
              'rocwmma')
