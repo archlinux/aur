@@ -1,6 +1,13 @@
 Changelog
 =========
 
+## v4.9.1 (2026-06-18)
+
+### Enhancements
+
+* Add support for `level` parameter in `BugsnagHandler` constructor and `Client.log_handler()` method.
+  [#416](https://github.com/bugsnag/bugsnag-python/pull/416)
+
 ## v4.9.0 (2026-04-21)
 
 ### Enhancements

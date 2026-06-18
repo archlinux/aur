@@ -1,0 +1,4 @@
+[python-bugsnag]
+source = "git"
+git = "https://github.com/bugsnag/bugsnag-python.git"
+prefix = "v"
