@@ -6,7 +6,7 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 pkgname="dprint-plugin-json"
-pkgver="0.21.3"
+pkgver="0.22.0"
 pkgrel="1"
 pkgdesc="JSON code formatting plugin for dprint."
 arch=("any")
@@ -15,7 +15,7 @@ license=("MIT")
 depends=("dprint")
 makedepends=("rust" "rust-wasm")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=("b3f84d03ee5879abb11368d2e6447c22fefc5ca908fd4c64e82c817905ee2009e73fa508145f06fd1e99ade05a056aa60250e93d3e2d227cd88d9a0d4ab4ec7e")
+sha512sums=("1d6ed740f045006dd0ae872dba50bf77cb78631a1f7211810c572d61cf9d80dec65dd40ef2b62a196e37fadd20a8a55296c2f6b479e9a84d309a580bc9e26bc5")
 
 prepare()
 {
