@@ -17,7 +17,7 @@ _base="https://github.com/rustyhorde/moshpit/releases/download/v${pkgver}"
 source=("${_base}/dist-mp.tar.gz")
 source_x86_64=("mp-x86_64::${_base}/mp-x86_64-unknown-linux-musl")
 source_aarch64=("mp-aarch64::${_base}/mp-aarch64-unknown-linux-musl")
-sha256sums=('f48772364f8d6d8fb7258ce074ca6da66dc0e92e8cffce8ca2c9e128cf693b4c')
+sha256sums=('d0c1ab1f27c4e67468f4bb04fe63e0137bb24c71f5e2c0d2caf2e3d0b3580af3')
 sha256sums_x86_64=('b6953634d757e386f1c920dfeec9d2afa77efa046b52a06d71df7202499f7d63')
 sha256sums_aarch64=('7d1011fc3233ea0f6e9f30e7ae062bad747c7a84a01dc9530a3ee2f6305c0b47')
 
