@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Federated Recursive Artificial Neural Knowledge Interface - Neural OS"
 arch=('x86_64')
 url="https://github.com/antupillan/FRANKI"
-license=('custom:FRANKI-Waterfall-EULA' 'AGPL-3.0-only')
+license=('custom:BUSL-1.1')
 install=franki.install
 depends=(
     'python'          # runtime Python 3.11+
