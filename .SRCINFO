@@ -1,0 +1,15 @@
+pkgbase = ntpdiag
+	pkgdesc = NTP diagnostic utility — query a server or inspect the local clock
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/Plague_Doctor/ntpdiag
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	options = !debug
+	source = ntpdiag-1.0.0.tar.gz::https://gitlab.com/Plague_Doctor/ntpdiag/-/archive/1.0.0/ntpdiag-1.0.0.tar.gz
+	sha256sums = 85af1a0ca94704c035e71b881e99a0117cd76d6713a224af0784e6c0d6a622b0
+
+pkgname = ntpdiag
