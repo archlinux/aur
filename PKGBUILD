@@ -1,6 +1,6 @@
 # Maintainer: Artem Stasyuk <stasyukartem2@gmail.com>
 pkgname=openfortivpn-gui-bin
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="A modern GTK4/libadwaita GUI client for Fortinet SSL VPN on Linux, wrapping the openfortivpn CLI tool."
 arch=('x86_64')
