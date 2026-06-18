@@ -1,6 +1,6 @@
 pkgbase = mailio
 	pkgdesc = A cross platform C++ library for MIME format and SMTP, POP3 and IMAP protocols.
-	pkgver = 0.25.3
+	pkgver = 0.26.0
 	pkgrel = 1
 	url = https://github.com/karastojko/mailio
 	arch = x86_64

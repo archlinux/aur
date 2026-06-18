@@ -9,7 +9,7 @@
 declare -r _tag="af86594321fe8faef98396e84d5fc3d74b473d7e"
 
 pkgname="mailio"
-pkgver="0.25.3"
+pkgver="0.26.0"
 pkgrel="1"
 pkgdesc="A cross platform C++ library for MIME format and SMTP, POP3 and IMAP protocols."
 arch=("x86_64")
