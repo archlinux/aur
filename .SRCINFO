@@ -1,0 +1,21 @@
+pkgbase = oxygen-gtk3
+	pkgdesc = Port of the Oxygen widget theme to GTK
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://invent.kde.org/plasma/oxygen-gtk
+	arch = x86_64
+	license = LGPL-2.0-or-later
+	makedepends = cmake
+	depends = libgcc
+	depends = libx11
+	depends = gdk-pixbuf2
+	depends = glibc
+	depends = libstdc++
+	depends = cairo
+	depends = glib2
+	depends = gtk3
+	depends = pango
+	source = oxygen-gtk-vgtk3-1.4.1.tar.gz::https://invent.kde.org/plasma/oxygen-gtk/-/archive/vgtk3-1.4.1/oxygen-gtk-vgtk3-1.4.1.tar.gz?ref_type=tags
+	sha256sums = 3e261b92563e13f09420da5ab7fc0270d50cf50f8a7c1f0162f361e10162a43c
+
+pkgname = oxygen-gtk3
