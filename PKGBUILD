@@ -2,7 +2,7 @@
 pkgname=portable
 epoch=1
 pkgver=16.0.2
-pkgrel=1
+pkgrel=3
 epoch=1
 pkgdesc="Fast, private, efficient sandbox for Linux desktop."
 arch=('x86_64' 'aarch64' 'loongarch64')
@@ -10,9 +10,10 @@ url="https://github.com/Kraftland/portable"
 license=(GPL-3.0-or-later)
 provides=(portable)
 groups=()
-options=(!debug)
+options=()
 
 depends=(
+	libseccomp
 	"libnotify"
 	pipewire
 	"coreutils"
