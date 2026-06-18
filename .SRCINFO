@@ -1,6 +1,6 @@
 pkgbase = colout-git
 	pkgdesc = Reads text on stdin and produces colorized and stylized output
-	pkgver = 1.1.r9.gd20d094
+	pkgver = 1.1.r11.g7970b98
 	pkgrel = 1
 	url = https://github.com/nojhan/colout
 	arch = any
