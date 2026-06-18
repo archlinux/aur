@@ -1,6 +1,6 @@
 pkgbase = nmem-cli
 	pkgdesc = CLI and TUI for Nowledge Mem - AI memory management
-	pkgver = 0.9.15
+	pkgver = 0.9.16
 	pkgrel = 1
 	url = https://mem.nowledge.co/docs/cli
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = nmem-cli
 	depends = python-pyperclip
 	depends = python-qrcode
 	depends = python-textual
-	noextract = nmem_cli-0.9.15-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/n/nmem-cli/nmem_cli-0.9.15-py3-none-any.whl
-	sha256sums = c2a62cec25cb50b91d30654094162b2e33b3345c5950bce685e05cf3a325e07c
+	noextract = nmem_cli-0.9.16-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/n/nmem-cli/nmem_cli-0.9.16-py3-none-any.whl
+	sha256sums = 9487ae080bc820afd784e574a969ef3d307b7c6b5b33a214ecea63f60c9b239c
 
 pkgname = nmem-cli
