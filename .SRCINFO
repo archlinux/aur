@@ -1,0 +1,17 @@
+pkgbase = extism-js-bin
+	pkgdesc = Extism JavaScript PDK Plugin Compiler
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/extism/js-pdk
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	depends = binaryen
+	provides = extism-js
+	conflicts = extism-js
+	source_x86_64 = extism-js-1.6.0-x86_64.gz::https://github.com/extism/js-pdk/releases/download/v1.6.0/extism-js-x86_64-linux-v1.6.0.gz
+	sha256sums_x86_64 = 4ded271ccf465031ccd0dc35e7a140e134d7f30721671cc4a8e1ff805d4aad68
+	source_aarch64 = extism-js-1.6.0-aarch64.gz::https://github.com/extism/js-pdk/releases/download/v1.6.0/extism-js-aarch64-linux-v1.6.0.gz
+	sha256sums_aarch64 = 15a186250e68d6bff4ec839fff275d45a90e383a69209dcc1239eb9e3aee6e1b
+
+pkgname = extism-js-bin
