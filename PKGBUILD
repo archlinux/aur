@@ -16,26 +16,21 @@ source=("$pkgname::git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
-cd "$pkgname"
-export RUSTUP_TOOLCHAIN=stable
-
-# Ensure dependencies are downloaded without forcing lock strictness
-cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+    cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch
 }
 
 build() {
-cd "$pkgname"
-export RUSTUP_TOOLCHAIN=stable
-# Use normal build (avoids Cargo.lock issues in AUR builds)
-cargo build --release
-
+    cd "$pkgname"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --release
 }
 
 check() {
-cd "$pkgname"
-export RUSTUP_TOOLCHAIN=stable
-
-cargo test --release || true
+    cd "$pkgname"
+    cargo test || true
 }
 
 package() {
