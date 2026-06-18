@@ -1,6 +1,6 @@
 pkgbase = skwd-daemon-bin
 	pkgdesc = Daemon for Skwd Shell, a collection of Quickshell programs and widgets precompiled
-	pkgver = r80.d9a9e85
+	pkgver = r82.bc0b076
 	pkgrel = 1
 	url = https://github.com/liixini/skwd-daemon
 	install = skwd-daemon.install
@@ -16,12 +16,12 @@ pkgbase = skwd-daemon-bin
 	optdepends = ollama: local LLM for automated wallpaper tagging
 	optdepends = steamcmd: Steam Workshop Wallpaper Engine downloads when the Steam client is not running
 	optdepends = linux-wallpaperengine: Wallpaper Engine scene rendering
-	provides = skwd-daemon=r80.d9a9e85
+	provides = skwd-daemon=r82.bc0b076
 	conflicts = skwd-daemon
 	conflicts = skwd-daemon-debug
 	options = !debug
 	options = !strip
-	source = skwd-daemon-r80.d9a9e85.tar.gz::https://github.com/liixini/skwd-daemon/releases/download/r80.d9a9e85/skwd-daemon-r80.d9a9e85-x86_64.tar.gz
-	sha256sums = 165eb87af2afa71bc748ef22c5b7d04e915634045396882ff2d156047ac305a2
+	source = skwd-daemon-r82.bc0b076.tar.gz::https://github.com/liixini/skwd-daemon/releases/download/r82.bc0b076/skwd-daemon-r82.bc0b076-x86_64.tar.gz
+	sha256sums = 191401a218d563459f679d7cbe844240f5b2ebc4fc458fdb5e9b470e83d6e2d7
 
 pkgname = skwd-daemon-bin
