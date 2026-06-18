@@ -1,6 +1,6 @@
 # Maintainer: bnema <b at bnema dot dev>
 pkgname=dumber-browser-git
-pkgver=0.29.0.r86.g6a62fb18
+pkgver=0.29.0.r89.ga450a83c
 pkgrel=1
 pkgdesc="A minimal keyboard-driven browser for tiling WMs (git version)"
 arch=('x86_64')
