@@ -1,0 +1,5 @@
+src/
+pkg/
+aur-sleuth/
+*.pkg.tar.zst
+*.log

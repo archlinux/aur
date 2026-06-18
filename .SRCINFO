@@ -1,0 +1,21 @@
+pkgbase = aur-sleuth-git
+	pkgdesc = LLM-powered security auditor for AUR packages
+	pkgver = r100.c7037a2
+	pkgrel = 1
+	url = https://github.com/mgalgs/aur-sleuth
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = uv
+	depends = git
+	depends = pacman
+	optdepends = cabextract: support for packages that use cabinet archives
+	provides = aur-sleuth
+	conflicts = aur-sleuth
+	backup = etc/aur-sleuth.conf
+	source = git+https://github.com/mgalgs/aur-sleuth.git
+	source = aur-sleuth.conf
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = aur-sleuth-git
