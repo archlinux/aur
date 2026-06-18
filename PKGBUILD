@@ -22,7 +22,7 @@ source_aarch64=(
   "loreserver-$pkgver-$pkgrel-aarch64.tar.gz::$url/releases/download/v$pkgver/loreserver-v$pkgver-aarch64-unknown-linux-gnu-neoverse-512tvb.tar.gz"
 )
 
-sha256sums=('85dc035cb5308f28b60fe84ba9814a037a88116855699893ba3b0cea475669de'
+sha256sums=('1e719ba96030560ebb8f23fa7f18d15c9e94b230d5cd451e9c0edc027113499c'
             'd6899f04359ee944316aaa6336cbede36824364724c4b987e5dec744a3c8e398'
             'da618618c97a72f4b21bff3e836b64e05f3ec3b77f53378f636086f3ffa95850')
 sha256sums_x86_64=('55eb9e6d334c3c8d099e281931d4594a13dbda401e4cd202fa9f3114c512b299'

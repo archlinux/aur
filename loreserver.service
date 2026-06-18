@@ -22,5 +22,10 @@ StateDirectory=lore
 # gRPC/QUIC: 41337, HTTP: 41339
 Environment=RUST_LOG=info
 
+# ProtectSystem=strict makes everything but ReadWritePaths read-only, but the
+# server writes its zero-config stores AND ephemeral TLS cert under
+# std::env::temp_dir() (/tmp). Redirect temp into the writable StateDirectory.
+Environment=TMPDIR=/var/lib/lore
+
 [Install]
 WantedBy=multi-user.target
