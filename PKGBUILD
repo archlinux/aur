@@ -2,7 +2,7 @@
 # Contributor: Bruce Zhang <zttt183525594<at>gmail.com>
 pkgname=inputactions-kwin
 pkgver=0.9.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bind keyboard, mouse, touchpad and touchscreen actions to system actions"
 arch=('x86_64')
 url="https://inputactions.org"
@@ -11,12 +11,16 @@ install=$pkgname.install
 backup=("etc/$pkgname/reminder.conf")
 depends=(
   'yaml-cpp'
+  'libyaml-cpp.so'
   'bash'
   'libgcc'
+  'libgcc_s.so'
   'libstdc++'
+  'libstdc++.so'
   'qt6-base'
   'glibc'
   'libevdev'
+  'libevdev.so'
   'kwin'
   'kcmutils'
   'kcoreaddons'
@@ -25,7 +29,7 @@ depends=(
 )
 optdepends=('libnotify: to send a reminder when this package needs to be rebuild')
 checkdepends=('gtest' 'cmake')
-makedepends=('cmake' 'pkgconf' 'extra-cmake-modules')
+makedepends=('cmake' 'pkgconf' 'extra-cmake-modules' 'vulkan-headers')
 provides=('inputactions')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/InputActions/kwin/releases/download/v$pkgver/source.tar.gz"
