@@ -6,6 +6,7 @@ pkgbase = pkg.sh-git
 	arch = any
 	license = MIT
 	makedepends = git
+	depends = bash
 	provides = pkg.sh
 	conflicts = pkg.sh
 	source = pkg.sh-git::git+https://github.com/tidwall/pkg.sh
