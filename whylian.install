@@ -99,8 +99,11 @@ automatically when the daemon discovers your devices.
 For headless machines (fan control without desktop login):
   sudo loginctl enable-linger \$USER
 
-Install tip: use yay -S whylian (or paru) so evdi-dkms from AUR is resolved.
-Bare pacman -U on a built .pkg.tar.zst skips AUR dependencies.
+evdi / desktop mode: read /usr/share/doc/whylian/EVDI-ARCHITECTURE.md
+  Default package build does not require evdi-dkms.
+  Rebuild with WHYLIAN_DESKTOP_DISPLAY=1 for virtual-monitor support.
+
+Install tip: use yay -S whylian (or paru).
 
 MSG
 }

@@ -1,7 +1,7 @@
 # Maintainer: byrdltd <byrdltd@users.noreply.github.com>
 
 pkgname=whylian
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Lian Li device control for Linux — HydroShift II AdvanceMode fork of lian-li-linux"
 arch=('x86_64')
@@ -18,7 +18,6 @@ depends=(
   'libinput'
   'libdrm'
   'libjpeg-turbo'
-  'evdi-dkms'
 )
 makedepends=(
   'git'
@@ -31,6 +30,7 @@ makedepends=(
 )
 optdepends=(
   'systemd: user daemon unit (enabled globally on install)'
+  'evdi-dkms: rebuild with WHYLIAN_DESKTOP_DISPLAY=1 for virtual-monitor desktop mode; see docs/EVDI-ARCHITECTURE.md'
   'linux-headers: build evdi-dkms against your running kernel when DKMS rebuild is needed'
 )
 provides=('lianli-linux' 'lianli-linux-git')
@@ -41,7 +41,6 @@ install=whylian.install
 options=('!debug' '!lto' 'strip')
 
 _use_distro_rust() {
-  # rust-toolchain.toml pins a rustup channel; AUR must use pacman rust/cargo.
   if [[ -f rust-toolchain.toml ]]; then
     mv rust-toolchain.toml rust-toolchain.toml.aur-skip
   fi
@@ -63,7 +62,11 @@ build() {
   export CARGO_PROFILE_RELEASE_STRIP=symbols
   export SLINT_NO_QT=1
   export RUSTFLAGS='-D warnings'
-  /usr/bin/cargo build --frozen --release -p lianli-daemon -p lianli-gui
+  local -a features=()
+  if [[ "${WHYLIAN_DESKTOP_DISPLAY:-0}" == "1" ]]; then
+    features=(--features desktop-display)
+  fi
+  /usr/bin/cargo build --frozen --release -p lianli-daemon -p lianli-gui "${features[@]}"
 }
 
 package() {
@@ -74,8 +77,7 @@ package() {
   install -Dm644 packaging/udev/99-lianli.rules "${pkgdir}/usr/lib/udev/rules.d/99-lianli.rules"
   install -Dm644 packaging/systemd/lianli-daemon.service \
     "${pkgdir}/usr/lib/systemd/user/lianli-daemon.service"
-  install -Dm644 packaging/modules-load.d/lianli-evdi.conf \
-    "${pkgdir}/usr/lib/modules-load.d/lianli-evdi.conf"
+  install -Dm644 docs/EVDI-ARCHITECTURE.md "${pkgdir}/usr/share/doc/${pkgname}/EVDI-ARCHITECTURE.md"
   install -Dm644 packaging/desktop/com.sgtaziz.lianlilinux.desktop \
     "${pkgdir}/usr/share/applications/com.sgtaziz.lianlilinux.desktop"
   install -Dm644 assets/icons/32x32.png \
