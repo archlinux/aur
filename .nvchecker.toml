@@ -1,0 +1,5 @@
+[reqsh-bin]
+source = "github"
+github = "hars-21/reqsh"
+use_latest_release = true
+prefix = "v"
