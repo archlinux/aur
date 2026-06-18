@@ -3,7 +3,7 @@
 
 _reponame=godot
 pkgname=${_reponame}32
-pkgver=4.6.3
+pkgver=4.7
 pkgrel=1
 pkgdesc='Advanced cross-platform 2D and 3D game engine (32-bit)'
 url='https://godotengine.org/'
@@ -39,7 +39,7 @@ optdepends=(
     'pulse-native-provider: for audio support'
 )
 source=("${_reponame}-${pkgver}.tar.xz::https://github.com/godotengine/${_reponame}/releases/download/${pkgver}-stable/${_reponame}-${pkgver}-stable.tar.xz")
-b2sums=('9d4b0fdf4b75db3062e229b2cf43746620e51da83f9859bf06e691d36249bd5394ca8f6086dbc943a7eb4e44f55a28b32fb615fcb94b511bf41ad82dfc718ed9')
+b2sums=('6055f1203d5d4f865bee419b7c01eb7603c1cd16895476fd259734c54f68697787ed746d05157bf4f7d4ac9574eb69ce6fc3de3a12aeee38c40084c6e5fada22')
 
 prepare() {
     cd "$_reponame-$pkgver-stable"
