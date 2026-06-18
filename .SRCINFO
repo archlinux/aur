@@ -11,7 +11,7 @@ pkgbase = litedbstudio
 	depends = gtk3
 	depends = hicolor-icon-theme
 	options = !lto
-	source = litedbstudio::https://github.com/AscendLiu/LiteDBStudio.git#tag=v1.0.0
+	source = litedbstudio::git+https://github.com/AscendLiu/LiteDBStudio.git#tag=v1.0.0
 	b2sums = SKIP
 
 pkgname = litedbstudio

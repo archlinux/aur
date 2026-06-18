@@ -19,7 +19,7 @@ makedepends=(
 options=('!lto')
 
 # Git source with submodule
-source=("${pkgname}::https://github.com/AscendLiu/LiteDBStudio.git#tag=v${pkgver}")
+source=("${pkgname}::git+https://github.com/AscendLiu/LiteDBStudio.git#tag=v${pkgver}")
 b2sums=('SKIP')
 
 prepare() {
