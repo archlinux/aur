@@ -20,7 +20,7 @@ source=("ARCOSC-Client-v$pkgver.tar.gz::https://codeload.github.com/ComfyChloe/$
         'ARCOSC-Client.desktop'
 	'arcosc.png')
 sha256sums=('7ae65876b590a694882a4dba49b7a54d62dba6cddcfd4a82e69b4f1799cd23bb'
-            '7fa83c96a56f59e95f7491d3d05e7564b2b25d6aa545d568857fee2054746fee'
+            '5e16516855ae19498dc158e459681fe76fa2f2184d740a9beff5aff095b8967f'
             '5dae1186e7a6ba1785455c294f4542880275dc5a4a8bca47fa5dedb01ed7c446'
             'a315bea3d9ec1771340662c8e8cd9249d5fb69f4b3a0557bbe24c43a68560716')
 build() {

@@ -1,2 +1,20 @@
 #!/bin/sh
+#!/bin/sh
+#Store pwd in case launched in shell
+CurDir=$PWD
+
+#If config dir does not exist, make it
+if [ ! -d "$HOME/.config/ARCOSC-Client" ];
+then
+        mkdir -p $HOME/.config/ARCOSC-Client
+fi
+
+#Change dir to ensue userdata goes to .config
+cd $HOME/.config/ARCOSC-Client
+
+#Launch application
 exec /usr/bin/electron /usr/lib/ARCOSC-Client --no-sandbox --ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime=true "$@"
+
+#Return to starting dir
+cd $CurDir
+
