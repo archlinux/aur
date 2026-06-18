@@ -1,20 +1,21 @@
 # Maintainer: RiverOnVenus <aur@zhui.dev>
 pkgname=neco-git
-pkgver=0.2.0.r0.ge7a1b30
+pkgver=0.3.2.r12.g84ed4c4
 pkgrel=1
 pkgdesc="Concurrency library for C (coroutines)"
 arch=('x86_64')
 url="https://github.com/tidwall/neco"
 license=('MIT')
-provides=('libneco.so')
+provides=('neco')
+conflicts=('neco')
 depends=('glibc' 'gcc-libs')
-makedepends=('git')
+makedepends=('git' 'gcc')
 source=("$pkgname"::"git+${url}")
 sha256sums=('SKIP')
 
 build() {
   cd "$pkgname"
-  gcc $CFLAGS $LDFLAGS -shared -fPIC neco.c -o libneco.so
+  gcc ${CFLAGS} ${LDFLAGS} -shared -fPIC neco.c -o libneco.so
 }
 
 pkgver() {

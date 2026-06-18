@@ -6,9 +6,11 @@ pkgbase = neco-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = gcc
 	depends = glibc
 	depends = gcc-libs
-	provides = libneco.so
+	provides = neco
+	conflicts = neco
 	source = neco-git::git+https://github.com/tidwall/neco
 	sha256sums = SKIP
 
