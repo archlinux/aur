@@ -1,4 +1,5 @@
-# Maintainer: Jose Riha <jose 1711 gmail com>
+# Maintainer: BoBeR182 <aur AT nullvoid DOT me>
+# Contributor: Jose Riha <jose 1711 gmail com>
 # Contributor: Dominika Solarz <dominikasolarz@gmail.com>
 # Contributor: J!PRA
 
@@ -21,6 +22,18 @@ md5sums=('9899f4c7e11eb02abe5bebfbdef80dcb'
 prepare() {
   cd $srcdir/OpenLieroX
   gendesk -f -n --pkgname OpenLieroX --pkgdesc "${pkgdesc}" --exec "openlierox" --categories "Game;Shooter;ActionGame"
+  # CMake >= 3.31 no longer allows policies set to OLD
+  sed -i 's/cmake_policy(SET CMP0005 OLD)/cmake_policy(SET CMP0005 NEW)/' CMakeOlxCommon.cmake
+  sed -i 's/cmake_policy(SET CMP0003 OLD)/cmake_policy(SET CMP0003 NEW)/' CMakeOlxCommon.cmake
+  sed -i 's/cmake_policy(SET CMP0011 OLD)/cmake_policy(SET CMP0011 NEW)/' CMakeOlxCommon.cmake
+  # Bump minimum CMake version to silence deprecation warnings
+  sed -i 's/cmake_minimum_required(VERSION 2\.4)/cmake_minimum_required(VERSION 3.5)/' CMakeOlxCommon.cmake
+  # Fix missing libxml2 include for xmlNodePtr
+  sed -i '/#include <libxml\/xmlmemory.h>/a #include <libxml/tree.h>' include/XMLutils.h
+  # Fix libxml2 const-correctness for structured error handler
+  sed -i 's/static void xmlErrorHandlerDummy(void \*, xmlErrorPtr)/static void xmlErrorHandlerDummy(void *, const xmlError *)/' src/common/StringUtils.cpp
+  # Fix missing <cstdint> include for uint32_t
+  sed -i '/#include <cmath>/a #include <cstdint>' include/MathLib.h
 }
 
 build() {
@@ -33,6 +46,7 @@ build() {
   mkdir bd && cd bd
   cmake -DSYSTEM_DATA_DIR=/usr/share \
         -DDEBUG=OFF  \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         ..
   make
 }
