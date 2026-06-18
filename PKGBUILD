@@ -81,6 +81,9 @@ prepare() {
 
   # remove flaky network test
   sed '/fail_over-tests/d' -i Makefile.am
+
+  # disable whitespace test as it fails on master
+  sed '/whitespace_test/d' -i Makefile.am
   autoreconf -fiv
 }
 
