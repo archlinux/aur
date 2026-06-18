@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 
 pkgname=rmux
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Universal Rust multiplexer with a typed SDK'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=(cargo)
 conflicts=("$pkgname-bin")
 
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('00d04e7b38ced02bb5cc3800b95980b0122db9676296e4776d6611e4a9ab2981')
+sha256sums=('45ef9e32cfd62e49f11aa276b678f738a7e9e558e9092a90406f252a93a1b1f6')
 
 prepare() {
   cd $pkgname-$pkgver
