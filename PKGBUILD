@@ -2,12 +2,12 @@
 # SPDX-FileCopyrightText: 2026 fuddlesworth
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
-# Requires Plasma 6.6+ (KF6 6.6, Qt 6.6, KWin 6.6).
+# Requires Plasma 6.7+ (KF6 6.26, Qt 6.10, KWin 6.7).
 
 pkgname=plasmazones
 # pkgver/pkgrel are placeholders; CI rewrites them against the release tag
 # before publishing. See packaging/arch/update-aur.sh.
-pkgver=3.0.15
+pkgver=3.0.16
 pkgrel=1
 pkgdesc='Window tiling and autotiling for KDE Plasma'
 arch=('x86_64')
@@ -16,9 +16,9 @@ license=('GPL-3.0-or-later' 'LGPL-2.1-or-later')
 
 # Exact KWin upstream pin. The kwin-effect plugin's IID embeds KWin's exact
 # upstream version string; KWin refuses to load effects whose IID doesn't
-# match its own version, including across patch bumps (e.g. 6.6.4 -> 6.6.5).
+# match its own version, including across patch bumps (e.g. 6.7.0 -> 6.7.1).
 # kwin is in makedepends below, so it is installed before makepkg evaluates
-# depends. cut strips Arch's pkgrel so we pin to upstream (e.g. "6.6.5").
+# depends. cut strips Arch's pkgrel so we pin to upstream (e.g. "6.7.0").
 _kwin_ver=$(pacman -Q kwin 2>/dev/null | awk '{print $2}' | cut -d- -f1)
 
 depends=(
@@ -52,7 +52,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # 'SKIP' so local `makepkg -p PKGBUILD` doesn't fail integrity-check
 # on the placeholder pkgver. release.yml templates a real sha256 when
 # publishing to AUR (see the awk rewrite in the publish-aur job).
-sha256sums=('0a525ff314f19af9ad2a4004c517c6bc8d1f5acd61cff674c61a55c41810ac43')
+sha256sums=('5a80c67dca430d17c4afeaab666bdb78226bdae934051010b6aa604bbef7e8e9')
 install=plasmazones.install
 
 build() {
