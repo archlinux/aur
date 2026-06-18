@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=gcopy
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="A clipboard synchronization service for different devices that can synchronize text, screenshots, and files"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -15,7 +15,7 @@ replaces=("${pkgname}-web")
 makedepends=("go" "npm")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.service")
-sha256sums=('3b186a535cca5fe9a8e5ce8b5cb9ab089ae1d3a54a81d9f6930a880a9fb46e53'
+sha256sums=('c6ca169e5f3f1ca5babe487d0665905b02c52ef33ab56d3b3247fa6e07c776e7'
             '03d17f7cf39eaf04d36ab8defb1f14effb33eb061b52c4ab64f401d3ce2b8934')
 
 build() {
@@ -91,12 +91,15 @@ build() {
 
             print "## " desc
 
-            if (defval == "") {
-                print "#" envname "=\"\""
+            if (defval != "") {
+                value = defval
+            } else if (type == "") {
+                value = "false"
             } else {
-                print "#" envname "=\"" defval "\""
+                value = ""
             }
-
+            
+            print "#" envname "=\"" value "\""
             print ""
         }
 
