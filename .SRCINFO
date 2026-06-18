@@ -1,6 +1,6 @@
 pkgbase = odysseus-ai-git
 	pkgdesc = Self-hosted AI workspace with prebuilt Python 3.12 venv, tracking upstream main
-	pkgver = r856.73673258
+	pkgver = r1497.d9ebdd6
 	pkgrel = 16
 	url = https://github.com/pewdiepie-archdaemon/odysseus
 	install = odysseus-ai-git.install
