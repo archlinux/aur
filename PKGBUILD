@@ -2,7 +2,7 @@
 
 pkgname=whichllm
 _pkgname=whichllm
-pkgver=0.5.8
+pkgver=0.5.12
 pkgrel=1
 pkgdesc="Auto-detect your hardware and rank local LLMs by what actually fits and performs best"
 arch=('any')
@@ -28,7 +28,7 @@ makedepends=(
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}-git")
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d419f8a0fcfbc2ecd20563cbd7ff26f90a634df8132002bd75542a353efe86c0')
+sha256sums=('0cf8bcb2d66f73ddbe116b0214bf03293ad4403e1ed289b9195be963a0c7d0ef')
 
 build() {
     cd "${_pkgname}-${pkgver}"
