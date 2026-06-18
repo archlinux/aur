@@ -5,9 +5,9 @@
 pkgname=kwin-osd-bottom
 provides=(kwin)
 conflicts=(kwin)
-pkgver=6.6.5
+pkgver=6.7.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=4
+pkgrel=1
 pkgdesc='An easy to use, but flexible, Wayland compositor'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -82,7 +82,7 @@ makedepends=(extra-cmake-modules
 optdepends=('plasma-keyboard: virtual keyboard')
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/kwin-$pkgver.tar.xz{,.sig})
-sha256sums=('6c187ce7a5506090b438ef900103836fa0537674dde8b31e5b497ef321643cb4'
+sha256sums=('d20b798094a9f58e57de55eca3d58b1cdcb7db2939eb8bf73918c4fab6d9aec5'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
