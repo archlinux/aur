@@ -6,7 +6,7 @@ _repo_name="${_collection_namespace}.${_collection_name}"
 _github_url="https://github.com/ansible-collections/${_repo_name}"
 
 pkgname="ansible-collection-${_collection_namespace}-${_collection_name}"
-pkgver=13.0.1
+pkgver=13.1.0
 pkgrel=1
 pkgdesc="Ansible Galaxy Community General Collection"
 arch=("any")
@@ -14,7 +14,7 @@ url="https://github.com/ansible-collections/${_collection_namespace}.${_collecti
 license=("GPL3")
 depends=("ansible-core")
 source=("${_github_url}/archive/${pkgver}/${_repo_name}-${pkgver}.tar.gz")
-sha256sums=('1dddc94bd53c4e684bd56e3da6b5bf956616cf63c27b4b4524a157198b210ba2')
+sha256sums=('b96cc81852df8c5cce4b0998a18b501d46c98abb011563b663c22dea3382371d')
 
 build() {
     cd "${_repo_name}-${pkgver}"
