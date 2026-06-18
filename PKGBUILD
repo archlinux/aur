@@ -1,5 +1,5 @@
+# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 # Maintainer: NourEddineX
-# Contributor: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 # Contributor: yidaduizuoye <yidaduizuoye at outlook dot com>
 
 pkgname=v2rayn
