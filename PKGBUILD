@@ -97,7 +97,7 @@ build() {
     # value at runtime, so window managers attach the right .desktop.
     CODEBUDDY_INSTALL_DIR="${out_dir}" \
     CODEBUDDY_APP_ID="${pkgname}" \
-    CODEBUDDY_APP_DISPLAY_NAME='CodeBuddy IDE CN' \
+    CODEBUDDY_APP_DISPLAY_NAME='CodeBuddy CN' \
     CODEBUDDY_ELECTRON_CACHE_DIR="${srcdir}/electron-cache" \
     ELECTRON_VERSION="${_electron_version}" \
         bash "${helper_dir}/install.sh" --fresh "${dmg_path}"
@@ -152,7 +152,7 @@ EOF
     install -d "${pkgdir}/usr/share/applications"
     cat > "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<EOF
 [Desktop Entry]
-Name=CodeBuddy IDE CN
+Name=CodeBuddy CN
 Comment=${pkgdesc}
 Exec=/usr/bin/${pkgname} %F
 Icon=${pkgname}
