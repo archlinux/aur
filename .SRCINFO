@@ -1,7 +1,7 @@
 pkgbase = proton-cachyos-slr
 	pkgdesc = A compatibility tool for Steam Play based on Wine and additional components, experimental branch with extra CachyOS flavour (Steam Linux Runtime build)
 	pkgver = 11.0.20260602
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/CachyOS/proton-cachyos
 	install = proton-cachyos-slr.install
@@ -44,6 +44,7 @@ pkgbase = proton-cachyos-slr
 	optdepends = NTSYNC-MODULE
 	provides = proton-cachyos
 	provides = proton
+	replaces = proton-cachyos
 	options = !strip
 	options = emptydirs
 	backup = usr/share/steam/compatibilitytools.d/proton-cachyos-slr/user_settings.py

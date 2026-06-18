@@ -4,7 +4,7 @@
 pkgname=proton-cachyos-slr
 _srctag=11.0-20260602
 pkgver=${_srctag//-/.}
-pkgrel=1
+pkgrel=2
 epoch=1
 
 _package_name="proton-cachyos-${_srctag}-slr-x86_64"
@@ -77,6 +77,7 @@ optdepends+=(
   NTSYNC-MODULE
 )
 provides=('proton-cachyos' 'proton')
+replaces=('proton-cachyos')
 backup=(
   "usr/share/steam/compatibilitytools.d/${pkgname}/user_settings.py"
 )
