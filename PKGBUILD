@@ -1,7 +1,7 @@
 # Maintainer: TheBill2001 <tuantran1632001 at gmail dot com>
 
 pkgname=qtcreator-qodeassist-plugin
-pkgver=0.9.20
+pkgver=0.9.21
 pkgrel=1
 pkgdesc="QodeAssist is an AI-powered coding assistant plugin for Qt Creator"
 groups=('qt')
@@ -15,7 +15,7 @@ makedepends=('cmake' "qtcreator-devel>=18.0.2")
 _llmqore_commit='48e6dfb30db49162f5ebbdbedaa9049f5cfd077c'
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz"
         "llmqore-$_llmqore_commit.tar.gz::https://github.com/Palm1r/llmqore/archive/$_llmqore_commit.tar.gz")
-sha256sums=('048d136108d0cbc0f7d4f6433e1537000a807e9913cf05b470dc7b74b1c1c0bd'
+sha256sums=('281e4376882f42520129eff14d54bc0a43fb394e3a742aa01106bd6e4f35884e'
             'a8f519455cbdcb778006695834377d8469a9e11ae0caa4585c7d85761230b3fa')
 
 prepare() {
