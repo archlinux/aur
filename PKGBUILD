@@ -1,6 +1,6 @@
 # Maintainer: Mitchel Humpherys <mitch.special@gmail.com>
 pkgname=aur-sleuth-git
-pkgver=r100.c7037a2
+pkgver=r109.4766156
 pkgrel=1
 pkgdesc='LLM-powered security auditor for AUR packages'
 arch=('any')
@@ -12,8 +12,10 @@ makedepends=('git')
 provides=('aur-sleuth')
 conflicts=('aur-sleuth')
 source=('git+https://github.com/mgalgs/aur-sleuth.git'
-        'aur-sleuth.conf')
+        'aur-sleuth.conf'
+        'LICENSE')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 backup=('etc/aur-sleuth.conf')
 
@@ -25,4 +27,5 @@ pkgver() {
 package() {
     install -Dm755 aur-sleuth/aur-sleuth "$pkgdir/usr/bin/aur-sleuth"
     install -Dm644 aur-sleuth.conf "$pkgdir/etc/aur-sleuth.conf"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
