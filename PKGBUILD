@@ -1,7 +1,7 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-git
-pkgver=2.3.3.4.r2.g51f84f00
+pkgver=2.3.3.4.r110.gfebaf883
 pkgrel=1
 pkgdesc="Shelly: A Modern Arch Package Manager (git version)"
 arch=('x86_64')
@@ -44,7 +44,7 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname}"
 
-  dotnet publish Shelly-CLI/Shelly-CLI.csproj -c Release -o out-cli --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
+  dotnet publish Shelly.Cli/Shelly.Cli.csproj -c Release -o out-cli --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
   dotnet publish Shelly.Gtk/Shelly.Gtk.csproj -c Release -r linux-x64 -o out --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
   dotnet publish Shelly-Notifications/Shelly-Notifications.csproj -c Release -r linux-x64 -o out-notify --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
   dotnet publish Shelly.Keys/Shelly.Keys.csproj -c Release -r linux-x64 -o out-keys --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
@@ -75,7 +75,7 @@ package() {
   # Install Shelly-Notifications binary
   install -Dm755 out-notify/Shelly-Notifications "$pkgdir/usr/bin/shelly-notifications"
 
-  # Install Shelly-CLI binary
+  # Install Shelly.Cli binary
   install -Dm755 out-cli/shelly "$pkgdir/usr/bin/shelly"
 
   # Install Shelly.Keys binary
