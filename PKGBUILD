@@ -1,6 +1,6 @@
 # Maintainer: Yast <yastcher@gmail.com>
 pkgname=tapeback-llm
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="LLM summarization support for tapeback (Anthropic, OpenAI, Gemini, etc.)"
 arch=('any')

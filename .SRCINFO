@@ -1,6 +1,6 @@
 pkgbase = tapeback-llm
 	pkgdesc = LLM summarization support for tapeback (Anthropic, OpenAI, Gemini, etc.)
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://github.com/yastcher/tapeback
 	install = tapeback-llm.install
