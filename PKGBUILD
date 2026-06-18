@@ -1,8 +1,8 @@
 # Maintainer: EliasofWaffle <eliascontato@protonmail.com>
 
 pkgname=libspatialaudio-git
-pkgver=0.4.0.r317.7946d98
-pkgrel=1
+pkgver=0.4.0.r328.17e904b
+pkgrel=2
 pkgdesc="Spatial audio encoding / decoding and binauralization library"
 license=('LGPLv2' 'Proprietary')
 arch=('x86_64')
@@ -37,7 +37,8 @@ prepare(){
 
 build(){
 
-	arch-meson libspatialaudio build 
+	arch-meson libspatialaudio build \
+	-Dmit_hrtf=enabled 
 	
 	meson compile -C build
 
