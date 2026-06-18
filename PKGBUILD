@@ -2,7 +2,7 @@
 # Contributor: Raansu
 # Contributor: Lance G. <Gero3977@gmail.com>
 pkgname=postybirb-plus
-pkgver=3.1.70
+pkgver=3.1.71
 _electronversion=19
 _nodeversion=18
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('b2e2223b24c9b621a86397355b8b78998f372c774a0cb3c72a274c684b9071b7'
+sha256sums=('9609e30ea6b4f0224bd0ef033886bc9074757c7adfcf6899a1fa7ff6f5fb9065'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
