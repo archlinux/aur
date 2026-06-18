@@ -1,6 +1,6 @@
 pkgbase = dogma
 	pkgdesc = Bridges secrets from vault backends and infrastructure outputs into sops-encrypted files deployed to NixOS machines
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/x71c9/dogma
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = dogma
 	license = MIT
 	makedepends = rust
 	depends = glibc
-	source = dogma-1.0.0.tar.gz::https://codeload.github.com/x71c9/dogma/tar.gz/refs/tags/v1.0.0
-	sha256sums = 8d1699390158ea036e14316084122e88386cf3520535b75b6cf30793fb72de38
+	source = dogma-1.1.0.tar.gz::https://codeload.github.com/x71c9/dogma/tar.gz/refs/tags/v1.1.0
+	sha256sums = 0901a184f155b1b8c4ec6a830932f649520eb12f5dbcb7f03dbd87d0f5ed4678
 
 pkgname = dogma
