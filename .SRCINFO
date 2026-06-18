@@ -1,7 +1,7 @@
 pkgbase = python-conda-libmamba-solver
 	pkgdesc = The libmamba based solver for conda.
-	pkgver = 25.11.0
-	pkgrel = 2
+	pkgver = 26.4.2
+	pkgrel = 1
 	url = https://github.com/conda/conda-libmamba-solver
 	arch = any
 	license = BSD-3-Clause
@@ -14,7 +14,7 @@ pkgbase = python-conda-libmamba-solver
 	depends = python-msgpack
 	depends = python-requests
 	depends = python-zstandard
-	source = python-conda-libmamba-solver-25.11.0.tar.gz::https://github.com/conda/conda-libmamba-solver/archive/refs/tags/25.11.0.tar.gz
-	sha256sums = a187016471bc561405ea66266f26c0f81637f6e85b4d8663a6724717dc715f50
+	source = python-conda-libmamba-solver-26.4.2.tar.gz::https://github.com/conda/conda-libmamba-solver/archive/refs/tags/26.4.2.tar.gz
+	sha256sums = d69a45db04785a1a48d29d98ee4ce6c19147be4703866a23c6b0da1de12b5378
 
 pkgname = python-conda-libmamba-solver
