@@ -1,0 +1,15 @@
+pkgbase = lazyage
+	pkgdesc = LLM coded TUI wrapper for age encyption
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Spondycode/lazyage
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
+	source = lazyage-0.1.0.tar.gz::https://github.com/Spondycode/lazyage/archive/v0.1.0.tar.gz
+	sha256sums = a6f402025e0938f6c49f2259ba8f3c9c7332c4e399c5a5ba39737f0ac01ae90f
+
+pkgname = lazyage

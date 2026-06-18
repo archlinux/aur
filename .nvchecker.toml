@@ -1,0 +1,4 @@
+[lazyage]
+source = "git"
+git = "https://github.com/Spondycode/lazyage.git"
+prefix = "v"
