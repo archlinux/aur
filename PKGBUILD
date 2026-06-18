@@ -12,7 +12,7 @@ pkgver=7.1
 pkgrel=2
 pkgdesc='Linux-libre kernel with BORE scheduler, BBRv3, acpi-call, and cjktty'
 arch=(x86_64)
-url='https://linux-libre.fsfla.org/'
+url='https://aur.archlinux.org/pkgbase/linux-sk'
 license=('GPL-2.0-only')
 makedepends=(
   bc
@@ -103,7 +103,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The $pkgbase kernel and modules"
+  pkgdesc="$pkgdesc"
   depends=(
     coreutils
     initramfs

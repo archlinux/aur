@@ -2,7 +2,7 @@ pkgbase = linux-sk
 	pkgdesc = Linux-libre kernel with BORE scheduler, BBRv3, acpi-call, and cjktty
 	pkgver = 7.1
 	pkgrel = 2
-	url = https://linux-libre.fsfla.org/
+	url = https://aur.archlinux.org/pkgbase/linux-sk
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = bc
@@ -45,7 +45,7 @@ pkgbase = linux-sk
 	b2sums = b8121572bf2f8805ecf5e26164b80159f4ab811b43702d60ceda1bbaf8d32c2c348a97df119f9af24b211d7a85a5012962c09efe3c8fadbb5c91947589f557fb
 
 pkgname = linux-sk
-	pkgdesc = The linux-sk kernel and modules
+	pkgdesc = Linux-libre kernel with BORE scheduler, BBRv3, acpi-call, and cjktty
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
