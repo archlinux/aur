@@ -82,7 +82,6 @@ prepare() {
     mv squashfs-root/Licenses .
     mkdir -p {squashfs-root,unused-libs}/Licenses
     for _license in \
-        Botan_License.txt \
         eID-klient-licencne-podmienky.rtf \
         eID_Klient_License.rtf \
         nlohmann_json_License.txt \
@@ -90,6 +89,7 @@ prepare() {
         mv {.,squashfs-root}/Licenses/"${_license}"
     done
     for _license in \
+        Botan_License.txt \
         OpenJPEG_License.txt \
         OpenSSL_License.txt \
         Qt_License.txt \
@@ -103,7 +103,6 @@ prepare() {
     for _lib in \
         VirtualKeyboard \
         libCardAPI.so \
-        libbotan-2.so.18 \
         libpkcs11_x64.so \
         ; do
         mv {unused-libs,squashfs-root}/lib/"${_lib}"
@@ -114,6 +113,7 @@ package_eidklient-native() {
     depends=(
         bash
         binutils
+        "botan2>=2.19.5-5"
         glibc
         hicolor-icon-theme
         libcrypto.so
@@ -177,12 +177,20 @@ package_eidklient-native() {
     install -dm755 "${pkgdir}/usr/lib/eID_klient"
     ln -s /usr/bin/eID_Client "${pkgdir}/usr/lib/eID_klient/VirtualKeyboard"
 
-    for lib in squashfs-root/lib/lib{CardAPI,botan,pkcs11_}*; do
+    local lib
+
+    for lib in squashfs-root/lib/lib{CardAPI,pkcs11_}*; do
         ln -s "/opt/${_pkgbase}/lib/${lib##*/}" "${pkgdir}/usr/lib/eID_klient/"
     done
 
     for lib in unused-libs/lib/lib{crypto,ssl}*; do
         ln -s "/usr/lib/${lib##*/}" "${pkgdir}/usr/lib/eID_klient/"
+    done
+
+    for lib in unused-libs/lib/libbotan-2.so.*; do
+        lib="${lib##*/}"
+
+        ln -s "/usr/lib/${lib%.*}" "${pkgdir}/usr/lib/eID_klient/${lib}"
     done
 
     # Icons + desktop file
