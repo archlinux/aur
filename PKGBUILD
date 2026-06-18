@@ -40,8 +40,8 @@ build() {
 }
 
 check() {
-  # Smoke test: verify the binary runs and exits cleanly
-  "$srcdir/publish/LiteDBStudio" --help 2>&1 || true
+  # Smoke test: verify the binary exists and is executable
+  [[ -x "$srcdir/publish/LiteDBStudio" ]]
 }
 
 package() {
