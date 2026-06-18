@@ -1,7 +1,7 @@
 pkgbase = codex-lb
 	pkgdesc = Load balancer and proxy for ChatGPT accounts with usage dashboard and OpenAI-compatible API
 	pkgver = 1.20.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Soju06/codex-lb
 	install = codex-lb.install
 	arch = any
@@ -49,7 +49,7 @@ pkgbase = codex-lb
 	optdepends = python-opentelemetry-instrumentation-aiohttp-client: aiohttp tracing (AUR; tracing extra)
 	optdepends = python-opentelemetry-instrumentation-sqlalchemy: SQLAlchemy tracing (AUR; tracing extra)
 	backup = etc/codex-lb/codex-lb.env
-	source = codex_lb-1.20.1.tar.gz::https://github.com/Soju06/codex-lb/releases/download/v1.20.1/codex_lb-1.20.1.tar.gz
+	source = codex_lb-1.20.1.tar.gz::https://files.pythonhosted.org/packages/source/c/codex-lb/codex_lb-1.20.1.tar.gz
 	source = codex-lb.service
 	source = codex-lb.sysusers
 	source = codex-lb.tmpfiles
