@@ -1,7 +1,7 @@
 # Maintainer: Darren Ng <`base64 -d <<<aGMwbWV1QG5hdmVyLmNvbQo=`>
 
 pkgver=r380.7f76539
-pkgrel=1
+pkgrel=2
 arch=(any)
 
 pkgname=apkeditor-git
@@ -40,19 +40,20 @@ build() {
 	# build lib
 	cd "$srcdir"/ARSCLib
 	./gradlew jar
-	# automatically calculate relative path
-	ln -s "$(realpath --relative-to="$_L" build/libs/ARSCLib-*.jar)" "$_L"/ARSCLib.jar
+	# automatically calculate relative path with realpath
+	#ln -s "$(realpath --relative-to="$_L" build/libs/ARSCLib-*.jar)" "$_L"/ARSCLib.jar
+	ln -sr build/libs/ARSCLib-*.jar "$_L"/ARSCLib.jar
 
 	# build lib
 	cd "$srcdir"/JCommand
 	./gradlew jar
-	ln -s "$(realpath --relative-to="$_L" build/libs/JCommand-*.jar)" "$_L"/JCommand.jar
+	ln -sr build/libs/JCommand-*.jar "$_L"/JCommand.jar
 
 	# build lib
 	cd "$srcdir"/smali
 	./gradlew jar
 	./gradlew :smali:fatjar
-	ln -s "$(realpath --relative-to="$_L" smali/build/libs/smali-*-fat.jar)" "$_L"/smali.jar
+	ln -sr smali/build/libs/smali-*-fat.jar "$_L"/smali.jar
 
 	# build apkeditor
 	cd "$srcdir"/APKEditor
