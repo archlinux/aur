@@ -1,6 +1,6 @@
 # Maintainer: Yast <yastcher@gmail.com>
 pkgname=tapeback-tray
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="System tray icon for tapeback (start/stop recording from tray)"
 arch=('any')
