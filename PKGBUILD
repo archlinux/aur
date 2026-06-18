@@ -1,7 +1,7 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep-git
 _pkgbasename="${pkgname%-git}"
-pkgver=2.6.4.r220.02fe6c8
+pkgver=2.7.0.r241.5c1155e
 pkgrel=1.314
 pkgdesc='A DjVu to PDF converter'
 url='https://github.com/kcroker/dpsprep'
@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 provides=("$_pkgbasename")
 conflicts=("$_pkgbasename")
 checkdepends=(python-pytest)
-makedepends=(coreutils grep git python-uv-build python-build python-installer python-wheel python-click-man)
+makedepends=(coreutils git python-uv-build python-build python-installer python-wheel python-click-man)
 depends=(python python-djvulibre-python
          python-click python-rich python-pillow
          python-fpdf2 python-pdfrw)
@@ -20,6 +20,22 @@ optdepends=(
 )
 source=("git+https://github.com/kcroker/dpsprep.git")
 md5sums=('SKIP')
+
+# Based on https://aur.archlinux.org/packages/dpsprep-git#comment-1031722
+pkgver() {
+    cd "$(_fullsrcdir)"
+
+    _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
+    _rev="$(git rev-list --count HEAD)"
+    _hash="$(git rev-parse --short HEAD)"
+
+    if [ -z "${_ver}" ]; then
+        error "Version could not be determined."
+        return 1
+    else
+        printf '%s' "${_ver}.r${_rev}.${_hash}"
+    fi
+}
 
 _fullsrcdir() {
     echo "$srcdir/$_pkgbasename"
@@ -33,7 +49,7 @@ check() {
 build() {
     cd "$(_fullsrcdir)"
     python -m build --wheel --no-isolation
-    PYTHONPATH=src python -c 'import helpers.docs as docs; docs.build_man_page(); docs.build_man_md()'
+    PYTHONPATH=src python -c 'from helpers.docs import build_man_page; build_man_page()'
 }
 
 package() {
