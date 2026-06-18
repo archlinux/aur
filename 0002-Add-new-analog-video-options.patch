@@ -1,4 +1,4 @@
-From cf16bbba68882243d6c4b9e707a18f786c519066 Mon Sep 17 00:00:00 2001
+From 4d1d369a39a0023af25ea637cf97cafcda374370 Mon Sep 17 00:00:00 2001
 From: Hans-Kristian Arntzen <post@arntzen-software.no>
 Date: Sat, 2 May 2026 15:34:15 +0200
 Subject: [PATCH] Add new analog video options.
@@ -8,10 +8,10 @@ Subject: [PATCH] Add new analog video options.
  pcsx2-qt/Settings/GraphicsSettingsWidget.cpp  |  77 +++
  pcsx2/CMakeLists.txt                          |   2 +-
  pcsx2/Config.h                                |  16 +
- .../Renderers/parallel-gs/GSRendererPGS.cpp   | 541 +++++++++++++---
+ .../Renderers/parallel-gs/GSRendererPGS.cpp   | 555 +++++++++++++---
  .../GS/Renderers/parallel-gs/GSRendererPGS.h  |   4 +
  pcsx2/Pcsx2Config.cpp                         |  34 +-
- 7 files changed, 1109 insertions(+), 167 deletions(-)
+ 7 files changed, 1123 insertions(+), 167 deletions(-)
 
 diff --git a/pcsx2-qt/Settings/GraphicsPGSRenderingSettingsTab.ui b/pcsx2-qt/Settings/GraphicsPGSRenderingSettingsTab.ui
 index 3b8499cb1..c1b4b1443 100644
@@ -663,10 +663,10 @@ index 3b8499cb1..c1b4b1443 100644
 + <connections/>
  </ui>
 diff --git a/pcsx2-qt/Settings/GraphicsSettingsWidget.cpp b/pcsx2-qt/Settings/GraphicsSettingsWidget.cpp
-index ef2c32715..89d89f604 100644
+index f9b544a58..47eb2cca5 100644
 --- a/pcsx2-qt/Settings/GraphicsSettingsWidget.cpp
 +++ b/pcsx2-qt/Settings/GraphicsSettingsWidget.cpp
-@@ -256,6 +256,21 @@ GraphicsSettingsWidget::GraphicsSettingsWidget(SettingsWindow* settings_dialog,
+@@ -259,6 +259,21 @@ GraphicsSettingsWidget::GraphicsSettingsWidget(SettingsWindow* settings_dialog,
  	SettingWidgetBinder::BindWidgetToIntSetting(sif, m_pgs.pgsDisableReadbackSync, "EmuCore/GS", "pgsDisableReadbackSync", 0);
  	SettingWidgetBinder::BindWidgetToIntSetting(sif, m_pgs.pgsSharpBackbuffer, "EmuCore/GS", "pgsSharpBackbuffer", 0);
  	SettingWidgetBinder::BindWidgetToIntSetting(sif, m_pgs.pgsBlendDemotion, "EmuCore/GS", "pgsBlendDemotion", 0);
@@ -688,7 +688,7 @@ index ef2c32715..89d89f604 100644
  
  	//////////////////////////////////////////////////////////////////////////
  	// Non-trivial settings
-@@ -608,6 +623,68 @@ GraphicsSettingsWidget::GraphicsSettingsWidget(SettingsWindow* settings_dialog,
+@@ -614,6 +629,68 @@ GraphicsSettingsWidget::GraphicsSettingsWidget(SettingsWindow* settings_dialog,
  
  		dialog()->registerWidgetHelp(m_pgs.pgsDisableReadbackSync, tr("Disable readback sync"), tr("Unchecked"),
  			tr("Disables sync for readbacks. Eliminates stalls, but will probably break things. Used for perf debug."));
@@ -758,7 +758,7 @@ index ef2c32715..89d89f604 100644
  
  	// Hardware Fixes tab
 diff --git a/pcsx2/CMakeLists.txt b/pcsx2/CMakeLists.txt
-index b9e8164f6..e7a46f837 100644
+index de10bb676..8546608c4 100644
 --- a/pcsx2/CMakeLists.txt
 +++ b/pcsx2/CMakeLists.txt
 @@ -655,7 +655,7 @@ endif()
@@ -771,10 +771,10 @@ index b9e8164f6..e7a46f837 100644
  	list(APPEND pcsx2GSSources GS/Renderers/parallel-gs/GSRendererPGS.cpp)
  	list(APPEND pcsx2GSHeaders GS/Renderers/parallel-gs/GSRendererPGS.h)
 diff --git a/pcsx2/Config.h b/pcsx2/Config.h
-index fcbf78a11..e11745552 100644
+index 0a828ea4f..4db8cd1f8 100644
 --- a/pcsx2/Config.h
 +++ b/pcsx2/Config.h
-@@ -898,6 +898,7 @@ struct Pcsx2Config
+@@ -902,6 +902,7 @@ struct Pcsx2Config
  		u8 ShadeBoost_Saturation = DEFAULT_SHADEBOOST_SATURATION;
  		u8 ShadeBoost_Gamma = DEFAULT_SHADEBOOST_GAMMA;
  		u8 PNGCompressionLevel = 1;
@@ -782,7 +782,7 @@ index fcbf78a11..e11745552 100644
  		u8 PGSSuperSampling = 0;
  		u8 PGSHighResScanout = 0;
  		u8 PGSDisableMipmaps = 0;
-@@ -905,6 +906,21 @@ struct Pcsx2Config
+@@ -909,6 +910,21 @@ struct Pcsx2Config
  		u8 PGSSuperSampleTextures = 0;
  		u8 PGSSharpBackbuffer = 0;
  		u8 PGSBlendDemotion = 0;
@@ -805,7 +805,7 @@ index fcbf78a11..e11745552 100644
  		u16 SWExtraThreads = 2;
  		u16 SWExtraThreadsHeight = 4;
 diff --git a/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.cpp b/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.cpp
-index c6885cb56..037633605 100644
+index c6885cb56..5a9f22e93 100644
 --- a/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.cpp
 +++ b/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.cpp
 @@ -66,7 +66,7 @@ static void FsrRcasCon(float *con, float sharpness)
@@ -826,19 +826,17 @@ index c6885cb56..037633605 100644
  		VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT, VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT,
  		VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT, VK_ACCESS_2_SHADER_SAMPLED_READ_BIT);
  }
-@@ -213,7 +213,10 @@ bool GSRendererPGS::Init()
+@@ -213,7 +213,8 @@ bool GSRendererPGS::Init()
  		return false;
  
  	wsi.set_platform(this);
 -	wsi.set_frame_duplication_aware(true);
-+
 +	wsi.set_frame_duplication_aware(true, 5);
-+	wsi.set_enable_timing_feedback(true);
 +
  	bool ret = wsi.init_simple(1, {});
  	if (!ret)
  		return false;
-@@ -250,6 +253,11 @@ bool GSRendererPGS::Init()
+@@ -250,6 +251,11 @@ bool GSRendererPGS::Init()
  	hacks.allow_blend_demote = GSConfig.PGSBlendDemotion != 0;
  	iface.set_hacks(hacks);
  
@@ -850,7 +848,7 @@ index c6885cb56..037633605 100644
  	return true;
  }
  
-@@ -258,6 +266,27 @@ void GSRendererPGS::Reset(bool /*hardware_reset*/)
+@@ -258,6 +264,27 @@ void GSRendererPGS::Reset(bool /*hardware_reset*/)
  	iface.reset_context_state();
  }
  
@@ -878,7 +876,7 @@ index c6885cb56..037633605 100644
  void GSRendererPGS::UpdateConfig()
  {
  	auto parsed = parse_super_sampling_options(GSConfig.PGSSuperSampling);
-@@ -277,6 +306,29 @@ void GSRendererPGS::UpdateConfig()
+@@ -277,6 +304,29 @@ void GSRendererPGS::UpdateConfig()
  	hacks.backbuffer_promotion = GSConfig.PGSSharpBackbuffer != 0;
  	hacks.allow_blend_demote = GSConfig.PGSBlendDemotion != 0;
  	iface.set_hacks(hacks);
@@ -908,7 +906,7 @@ index c6885cb56..037633605 100644
  }
  
  int GSRendererPGS::GetSaveStateSize(int version)
-@@ -485,6 +537,44 @@ int GSRendererPGS::Defrost(freezeData* data)
+@@ -485,6 +535,44 @@ int GSRendererPGS::Defrost(freezeData* data)
  	return 0;
  }
  
@@ -953,7 +951,7 @@ index c6885cb56..037633605 100644
  void GSRendererPGS::VSync(u32 field, bool registers_written)
  {
  	if (dump)
-@@ -508,32 +598,47 @@ void GSRendererPGS::VSync(u32 field, bool registers_written)
+@@ -508,32 +596,47 @@ void GSRendererPGS::VSync(u32 field, bool registers_written)
  	if (GSConfig.InterlaceMode != GSInterlaceMode::Automatic)
  		info.phase ^= (static_cast<int>(GSConfig.InterlaceMode) - 2) & 1;
  
@@ -1016,7 +1014,7 @@ index c6885cb56..037633605 100644
  
  	if (GSConfig.SkipDuplicateFrames && has_presented_in_current_swapchain && frame_is_duped)
  	{
-@@ -552,73 +657,264 @@ void GSRendererPGS::VSync(u32 field, bool registers_written)
+@@ -552,73 +655,275 @@ void GSRendererPGS::VSync(u32 field, bool registers_written)
  		}
  	}
  
@@ -1065,7 +1063,11 @@ index c6885cb56..037633605 100644
 +	// High-refresh rate path.
 +	uint32_t frame_multiplier = 1;
 +	RefreshRateInfo refresh_info;
-+
+ 
+-	float vp_offset_x = 0.0f;
+-	float vp_offset_y = 0.0f;
+-	float vp_width = 0.0f;
+-	float vp_height = 0.0f;
 +	if (wsi.get_refresh_rate_info(refresh_info) && refresh_info.refresh_duration)
 +	{
 +		// Are these values 100% accurate?
@@ -1073,10 +1075,8 @@ index c6885cb56..037633605 100644
 +		uint64_t target_period_ns = 1000000000ull / fps;
 +		bool force_vrr = false;
  
--	float vp_offset_x = 0.0f;
--	float vp_offset_y = 0.0f;
--	float vp_width = 0.0f;
--	float vp_height = 0.0f;
+-	if (GSConfig.LinearPresent != GSPostBilinearMode::BilinearSharp || !vsync.image)
+-		fsr_render_target.reset();
 +		if (refresh_info.mode != RefreshMode::VRR)
 +		{
 +			uint64_t interval = refresh_info.refresh_duration;
@@ -1121,30 +1121,48 @@ index c6885cb56..037633605 100644
 +			// Duplicate as many frames as we can within the refresh rate.
 +			frame_multiplier = target_period_ns / refresh_info.refresh_duration;
  
--	if (GSConfig.LinearPresent != GSPostBilinearMode::BilinearSharp || !vsync.image)
--		fsr_render_target.reset();
+-	bool fsr_render_is_valid = frame_is_duped && bool(fsr_render_target);
 +			// Every individual frame should be paced at a fraction of intended refresh.
 +			// Since we have VRR, this should be smoothly paced.
 +			target_period_ns = target_period_ns / frame_multiplier;
 +		}
  
--	bool fsr_render_is_valid = frame_is_duped && bool(fsr_render_target);
+-	if (vsync.image)
 +		wsi.set_target_presentation_time(0, target_period_ns, force_vrr);
 +	}
- 
--	if (vsync.image)
-+	// High refresh setup requires a lot of swapchain images ...
-+	if (frame_multiplier > 1)
-+		wsi.set_frame_duplication_aware(true, frame_multiplier * 3);
 +
-+	bool analog_output_is_valid = false;
-+
-+	for (uint32_t frame_index = 0; frame_index < frame_multiplier; frame_index++)
++	// We cannot reliably get timing feedback when running unlocked since we will exhaust queues.
++	if (wsi.get_present_mode() == PresentMode::SyncToVBlank)
  	{
 -		uint32_t fsr_width = dev.get_swapchain_view().get_view_width();
 -		uint32_t fsr_height = dev.get_swapchain_view().get_view_height();
 -		uint32_t new_width = fsr_width;
 -		uint32_t new_height = fsr_height;
++		wsi.set_enable_timing_feedback(true);
++	}
++	else
++	{
++		wsi.set_enable_timing_feedback(false);
++		wsi.set_target_presentation_time(0, 0, false);
++	}
+ 
+-		float display_aspect = float(fsr_width) / float(fsr_height);
+-		float game_aspect = GetCurrentAspectRatioFloat(priv->smode1.CMOD == 0);
++	// High refresh setup requires a lot of swapchain images ...
++	if (frame_multiplier > 1)
++		wsi.set_frame_duplication_aware(true, frame_multiplier * 3);
+ 
+-		float horizontal_scanout_ratio = float(vsync.internal_width) / float(vsync.mode_width);
+-		float vertical_scanout_ratio = float(vsync.internal_height) / float(vsync.mode_height);
+-		game_aspect *= horizontal_scanout_ratio / vertical_scanout_ratio;
++	bool analog_output_is_valid = false;
+ 
+-		if (display_aspect > game_aspect)
+-			new_width = uint32_t(std::round(float(fsr_height) * game_aspect));
+-		else
+-			new_height = uint32_t(std::round(float(fsr_width) / game_aspect));
++	for (uint32_t frame_index = 0; frame_index < frame_multiplier; frame_index++)
++	{
 +		if (!has_wsi_begin_frame)
 +			has_wsi_begin_frame = wsi.begin_frame();
 +
@@ -1158,7 +1176,9 @@ index c6885cb56..037633605 100644
 +			wsi.set_next_present_is_duplicated();
 +
 +		auto &dev = wsi.get_device();
-+
+ 
+-		// This won't preserve the aspect ratio necessarily, but eh.
+-		if (GSConfig.IntegerScaling)
 +		float vp_offset_x = 0.0f;
 +		float vp_offset_y = 0.0f;
 +		float vp_width = 0.0f;
@@ -1168,18 +1188,19 @@ index c6885cb56..037633605 100644
 +			fsr_render_target.reset();
 +
 +		bool fsr_render_is_valid = frame_is_duped && bool(fsr_render_target);
- 
--		float display_aspect = float(fsr_width) / float(fsr_height);
--		float game_aspect = GetCurrentAspectRatioFloat(priv->smode1.CMOD == 0);
++
 +		// Only run analog emulation if game is emitting an analog signal.
 +		// Some games can emit VGA which obviously skips all this stuff ...
 +		if (frame_index == 0 && GSConfig.PGSTVEmulation != PGS_TV_EMULATION_NONE && priv->smode1.LC == SMODE1Bits::LC_ANALOG)
-+		{
+ 		{
+-			new_width -= new_width % vsync.image->get_width();
+-			new_height -= new_height % vsync.image->get_height();
+-			if (new_width == 0)
+-				new_width = fsr_width;
+-			if (new_height == 0)
+-				new_height = fsr_height;
 +			AnalogVideoFilter::Options analog_options = {};
- 
--		float horizontal_scanout_ratio = float(vsync.internal_width) / float(vsync.mode_width);
--		float vertical_scanout_ratio = float(vsync.internal_height) / float(vsync.mode_height);
--		game_aspect *= horizontal_scanout_ratio / vertical_scanout_ratio;
++
 +			switch (GSConfig.PGSCable)
 +			{
 +				case PGS_CABLE_COMPOSITE: analog_options.cable = AnalogVideoFilter::Cable::Composite; break;
@@ -1187,11 +1208,7 @@ index c6885cb56..037633605 100644
 +				case PGS_CABLE_COMPONENT: analog_options.cable = AnalogVideoFilter::Cable::Component; break;
 +				default: break;
 +			}
- 
--		if (display_aspect > game_aspect)
--			new_width = uint32_t(std::round(float(fsr_height) * game_aspect));
--		else
--			new_height = uint32_t(std::round(float(fsr_width) / game_aspect));
++
 +			switch (GSConfig.PGSTVEmulation)
 +			{
 +				case PGS_TV_EMULATION_NTSC:
@@ -1221,28 +1238,32 @@ index c6885cb56..037633605 100644
 +				analog_filter.reset_line_counter(line_counter);
 +				analog_filter.init(wsi.get_device(), analog_options);
 +			}
-+		}
+ 		}
  
--		// This won't preserve the aspect ratio necessarily, but eh.
--		if (GSConfig.IntegerScaling)
+-		vp_offset_x = std::round(0.5f * float(fsr_width - new_width));
+-		fsr_width = new_width;
+-		vp_offset_y = std::round(0.5f * float(fsr_height - new_height));
+-		fsr_height = new_height;
 +		if (vsync.image)
- 		{
--			new_width -= new_width % vsync.image->get_width();
--			new_height -= new_height % vsync.image->get_height();
--			if (new_width == 0)
--				new_width = fsr_width;
--			if (new_height == 0)
--				new_height = fsr_height;
++		{
 +			uint32_t new_width = output_width;
 +			uint32_t new_height = output_height;
-+
+ 
+-		// Safeguard against ridiculous situations.
+-		if (!fsr_width)
+-			fsr_width = 1;
+-		if (!fsr_height)
+-			fsr_height = 1;
 +			float display_aspect = float(output_width) / float(output_height);
 +			float game_aspect = GetCurrentAspectRatioFloat(priv->smode1.CMOD == 0);
-+
+ 
+-		vp_width = float(fsr_width);
+-		vp_height = float(fsr_height);
 +			float horizontal_scanout_ratio = float(vsync.internal_width) / float(vsync.mode_width);
 +			float vertical_scanout_ratio = float(vsync.internal_height) / float(vsync.mode_height);
 +			game_aspect *= horizontal_scanout_ratio / vertical_scanout_ratio;
-+
+ 
+-		if (GSConfig.LinearPresent == GSPostBilinearMode::BilinearSharp)
 +			if (display_aspect > game_aspect)
 +				new_width = uint32_t(std::round(float(output_height) * game_aspect));
 +			else
@@ -1272,31 +1293,22 @@ index c6885cb56..037633605 100644
 +
 +			vp_width = float(output_width);
 +			vp_height = float(output_height);
- 		}
- 
--		vp_offset_x = std::round(0.5f * float(fsr_width - new_width));
--		fsr_width = new_width;
--		vp_offset_y = std::round(0.5f * float(fsr_height - new_height));
--		fsr_height = new_height;
++		}
++
 +		auto cmd = dev.request_command_buffer();
- 
--		// Safeguard against ridiculous situations.
--		if (!fsr_width)
--			fsr_width = 1;
--		if (!fsr_height)
--			fsr_height = 1;
++
 +		if (frame_index == 0 && vsync.image && GSConfig.PGSTVEmulation != PGS_TV_EMULATION_NONE && priv->smode1.LC == SMODE1Bits::LC_ANALOG)
-+		{
+ 		{
+-			if (!fsr_render_target || fsr_render_target->get_width() != fsr_width || fsr_render_target->get_height() != fsr_height)
 +			AnalogVideoFilter::FilterOptions filter_options = {};
 +			filter_options.dst_stage = VK_PIPELINE_STAGE_2_FRAGMENT_SHADER_BIT;
 +			filter_options.dst_access = VK_ACCESS_2_SHADER_SAMPLED_READ_BIT;
 +			filter_options.dst_layout = VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL;
 +			filter_options.phase = vsync.interlaced ? vsync.interlace_phase : 0;
- 
--		vp_width = float(fsr_width);
--		vp_height = float(fsr_height);
++
 +			switch (GSConfig.PGSCompositeDecode)
-+			{
+ 			{
+-				auto fsr_info = ImageCreateInfo::render_target(fsr_width, fsr_height, VK_FORMAT_R8G8B8A8_UNORM);
 +				case PGS_COMPOSITE_COMB:
 +					filter_options.line_comb = true;
 +					filter_options.skip_notch = true;
@@ -1312,24 +1324,21 @@ index c6885cb56..037633605 100644
 +					filter_options.skip_notch = false;
 +					break;
 +			}
- 
--		if (GSConfig.LinearPresent == GSPostBilinearMode::BilinearSharp)
++
 +			filter_options.input_sampling_rate_mhz = vsync.sampling_rate_mhz * (vsync.interlaced ? 1.0f : 0.5f);
 +			analog_filter.run_filter(*cmd, vsync.image->get_view(), filter_options);
 +			analog_output_is_valid = true;
 +		}
 +
 +		if (vsync.image && GSConfig.LinearPresent == GSPostBilinearMode::BilinearSharp)
- 		{
--			if (!fsr_render_target || fsr_render_target->get_width() != fsr_width || fsr_render_target->get_height() != fsr_height)
++		{
 +			if (!fsr_render_target || fsr_render_target->get_width() != output_width || fsr_render_target->get_height() != output_height)
- 			{
--				auto fsr_info = ImageCreateInfo::render_target(fsr_width, fsr_height, VK_FORMAT_R8G8B8A8_UNORM);
++			{
 +				auto fsr_info = ImageCreateInfo::render_target(output_width, output_height, VK_FORMAT_R8G8B8A8_UNORM);
  				fsr_info.initial_layout = VK_IMAGE_LAYOUT_UNDEFINED;
  				fsr_info.usage |= VK_IMAGE_USAGE_SAMPLED_BIT;
  				fsr_info.misc |= IMAGE_MISC_MUTABLE_SRGB_BIT;
-@@ -626,26 +922,105 @@ void GSRendererPGS::VSync(u32 field, bool registers_written)
+@@ -626,26 +931,110 @@ void GSRendererPGS::VSync(u32 field, bool registers_written)
  				fsr_render_is_valid = false;
  			}
  		}
@@ -1352,7 +1361,8 @@ index c6885cb56..037633605 100644
 +		{
 +			crt_filter_options.phase = vsync.interlaced ? vsync.interlace_phase : 0;
 +			crt_filter_options.progressive = !vsync.interlaced;
-+			crt_filter_options.feedback = 0.05f;
++			crt_filter_options.double_strike = vsync.double_strike;
++			crt_filter_options.feedback = 0.02f;
 +			crt_filter_options.feedback = std::pow(crt_filter_options.feedback, 1.0f / frame_multiplier);
 +
 +			crt_filter_options.input_strength = float(GSConfig.PGSExposure) / 100.0f;
@@ -1409,6 +1419,10 @@ index c6885cb56..037633605 100644
 +
 +			crt_filter_options.aperture_grille = GSConfig.PGSApertureGrille != 0;
 +			crt_filter_options.bloom_strength = 1.2f * float(GSConfig.PGSPhosphorBloom) / 100.0f;
++
++			// For wide-screen, assume a more HD CRT TV style with far higher TVL.
++			float game_aspect = GetCurrentAspectRatioFloat(priv->smode1.CMOD == 0);
++			crt_filter_options.tvl = uint32_t(480.0f * game_aspect);
 +
 +			crt_filter.run_filter_prepass(*cmd,
 +				analog_output_is_valid ? analog_filter.get_output() : vsync.image->get_view(),
@@ -1473,10 +1487,10 @@ index 0a4eb3558..8fba63757 100644
 +	ParallelGS::CRTFilter crt_filter;
  };
 diff --git a/pcsx2/Pcsx2Config.cpp b/pcsx2/Pcsx2Config.cpp
-index 8aa768e5a..432372890 100644
+index f1430e310..9c354f75b 100644
 --- a/pcsx2/Pcsx2Config.cpp
 +++ b/pcsx2/Pcsx2Config.cpp
-@@ -898,7 +898,22 @@ bool Pcsx2Config::GSOptions::OptionsAreEqual(const GSOptions& right) const
+@@ -902,7 +902,22 @@ bool Pcsx2Config::GSOptions::OptionsAreEqual(const GSOptions& right) const
  		OpEqu(PGSDisableMipmaps) &&
  		OpEqu(PGSDisableReadbackSync) &&
  		OpEqu(PGSSharpBackbuffer) &&
@@ -1500,7 +1514,7 @@ index 8aa768e5a..432372890 100644
  }
  
  bool Pcsx2Config::GSOptions::operator!=(const GSOptions& right) const
-@@ -988,6 +1003,7 @@ void Pcsx2Config::GSOptions::LoadSave(SettingsWrapper& wrap)
+@@ -992,6 +1007,7 @@ void Pcsx2Config::GSOptions::LoadSave(SettingsWrapper& wrap)
  	SettingsWrapBitBool(HWSpinCPUForReadbacks);
  	SettingsWrapBitBoolEx(GPUPaletteConversion, "paltex");
  	SettingsWrapBitBoolEx(AutoFlushSW, "autoflush_sw");
@@ -1508,7 +1522,7 @@ index 8aa768e5a..432372890 100644
  	SettingsWrapIntEnumEx(PGSSuperSampling, "pgsSuperSampling");
  	SettingsWrapBitBoolEx(PGSHighResScanout, "pgsHighResScanout");
  	SettingsWrapBitBoolEx(PGSSuperSampleTextures, "pgsSuperSampleTextures");
-@@ -995,6 +1011,22 @@ void Pcsx2Config::GSOptions::LoadSave(SettingsWrapper& wrap)
+@@ -999,6 +1015,22 @@ void Pcsx2Config::GSOptions::LoadSave(SettingsWrapper& wrap)
  	SettingsWrapBitBoolEx(PGSDisableReadbackSync, "pgsDisableReadbackSync");
  	SettingsWrapBitBoolEx(PGSSharpBackbuffer, "pgsSharpBackbuffer");
  	SettingsWrapBitBoolEx(PGSBlendDemotion, "pgsBlendDemotion");

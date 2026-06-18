@@ -1,0 +1,1091 @@
+From 669fb84a13f1e93560d31ff192e88775c2cef398 Mon Sep 17 00:00:00 2001
+From: Hans-Kristian Arntzen <post@arntzen-software.no>
+Date: Fri, 29 May 2026 21:23:20 +0200
+Subject: [PATCH] Hook up ImGui UI support.
+
+---
+ pcsx2/GS/GS.cpp                               |  61 ++-
+ .../Renderers/parallel-gs/GSRendererPGS.cpp   | 366 ++++++++++++++----
+ .../GS/Renderers/parallel-gs/GSRendererPGS.h  | 107 ++++-
+ pcsx2/GameDatabase.cpp                        |   2 +-
+ pcsx2/ImGui/ImGuiFullscreen.cpp               |  23 +-
+ pcsx2/ImGui/ImGuiManager.cpp                  |  67 +++-
+ 6 files changed, 496 insertions(+), 130 deletions(-)
+
+diff --git a/pcsx2/GS/GS.cpp b/pcsx2/GS/GS.cpp
+index 868c41745..7596b653a 100644
+--- a/pcsx2/GS/GS.cpp
++++ b/pcsx2/GS/GS.cpp
+@@ -3,6 +3,7 @@
+ //
+ #ifdef HAVE_PARALLEL_GS
+ #include "GS/Renderers/parallel-gs/GSRendererPGS.h"
++std::unique_ptr<GSDevicePGS> g_pgs_device;
+ std::unique_ptr<GSRendererPGS> g_pgs_renderer;
+ #endif
+ 
+@@ -155,8 +156,26 @@ static bool OpenGSDevice(GSRendererType renderer, bool clear_state_on_fail, bool
+ 
+ #ifdef HAVE_PARALLEL_GS
+ 		case RenderAPI::Granite:
++		{
++			g_pgs_device = std::make_unique<GSDevicePGS>();
++			bool okay = g_pgs_device->Init();
++			if (!okay)
++			{
++				g_pgs_device.reset();
++				return false;
++			}
++
+ 			// The renderer owns its own device for now.
++			okay = ImGuiManager::Initialize();
++			if (!okay)
++			{
++				Console.Error("Failed to initialize ImGuiManager");
++				g_pgs_device.reset();
++				return false;
++			}
++
+ 			return true;
++		}
+ #endif
+ 
+ 		default:
+@@ -200,11 +219,14 @@ static bool OpenGSDevice(GSRendererType renderer, bool clear_state_on_fail, bool
+ 
+ static void CloseGSDevice(bool clear_state)
+ {
+-	if (!g_gs_device)
+-		return;
+-
+ 	ImGuiManager::Shutdown(clear_state);
+-	g_gs_device->Destroy();
++
++#ifdef HAVE_PARALLEL_GS
++	g_pgs_device.reset();
++#endif
++
++	if (g_gs_device)
++		g_gs_device->Destroy();
+ 	g_gs_device.reset();
+ }
+ 
+@@ -238,9 +260,9 @@ static bool OpenGSRenderer(GSRendererType renderer, u8* basemem)
+ 		g_gs_renderer = std::make_unique<GSRendererNull>();
+ 	}
+ #ifdef HAVE_PARALLEL_GS
+-	else if (renderer == GSRendererType::ParallelGS)
++	else if (renderer == GSRendererType::ParallelGS || (renderer == GSRendererType::Auto && g_pgs_device))
+ 	{
+-		g_pgs_renderer = std::make_unique<GSRendererPGS>(basemem);
++		g_pgs_renderer = std::make_unique<GSRendererPGS>(*g_pgs_device, basemem);
+ 		if (!g_pgs_renderer->Init())
+ 		{
+ 			g_pgs_renderer.reset();
+@@ -625,7 +647,7 @@ void GSvsync(u32 field, bool registers_written)
+ 
+ #ifdef HAVE_PARALLEL_GS
+ 	if (g_pgs_renderer)
+-		g_pgs_renderer->VSync(field, registers_written);
++		g_pgs_renderer->VSync(field, registers_written, false);
+ #endif
+ 
+ 	// Do not move the flush into the VSync() method. It's here because EE transfers
+@@ -710,6 +732,10 @@ void GSEndCapture()
+ 
+ void GSPresentCurrentFrame()
+ {
++#ifdef HAVE_PARALLEL_GS
++	if (g_pgs_renderer)
++		g_pgs_renderer->VSync(0, false, true);
++#endif
+ 	if (g_gs_renderer)
+ 		g_gs_renderer->PresentCurrentFrame();
+ }
+@@ -740,8 +766,8 @@ void GSGameChanged()
+ bool GSHasDisplayWindow()
+ {
+ #ifdef HAVE_PARALLEL_GS
+-	if (g_pgs_renderer)
+-		return g_pgs_renderer->GetWindowInfo().type != WindowInfo::Type::Surfaceless;
++	if (g_pgs_device)
++		return g_pgs_device->GetWindowInfo().type != WindowInfo::Type::Surfaceless;
+ #else
+ 	pxAssert(g_gs_device);
+ #endif
+@@ -755,23 +781,19 @@ bool GSHasDisplayWindow()
+ void GSResizeDisplayWindow(u32 width, u32 height, float scale)
+ {
+ #ifdef HAVE_PARALLEL_GS
+-	if (g_pgs_renderer)
+-		g_pgs_renderer->ResizeWindow(width, height, scale);
++	if (g_pgs_device)
++		g_pgs_device->ResizeWindow(width, height, scale);
+ #endif
+ 	if (g_gs_device)
+-	{
+ 		g_gs_device->ResizeWindow(width, height, scale);
+-		ImGuiManager::WindowResized();
+-	}
++	ImGuiManager::WindowResized();
+ }
+ 
+ void GSUpdateDisplayWindow()
+ {
+ #ifdef HAVE_PARALLEL_GS
+ 	if (g_pgs_renderer)
+-	{
+ 		g_pgs_renderer->UpdateWindow();
+-	}
+ #endif
+ 
+ 	if (g_gs_device && !g_gs_device->UpdateWindow())
+@@ -780,8 +802,7 @@ void GSUpdateDisplayWindow()
+ 		return;
+ 	}
+ 
+-	if (g_gs_device)
+-		ImGuiManager::WindowResized();
++	ImGuiManager::WindowResized();
+ }
+ 
+ void GSSetVSyncMode(GSVSyncMode mode, bool allow_present_throttle)
+@@ -794,8 +815,8 @@ void GSSetVSyncMode(GSVSyncMode mode, bool allow_present_throttle)
+ 	Console.WriteLnFmt(Color_StrongCyan, "Setting vsync mode: {}{}", modes[static_cast<size_t>(mode)],
+ 		allow_present_throttle ? " (throttle allowed)" : "");
+ #ifdef HAVE_PARALLEL_GS
+-	if (g_pgs_renderer)
+-		g_pgs_renderer->SetVSyncMode(mode, allow_present_throttle);
++	if (g_pgs_device)
++		g_pgs_device->SetVSyncMode(mode, allow_present_throttle);
+ #endif
+ 	if (g_gs_device)
+ 		g_gs_device->SetVSyncMode(mode, allow_present_throttle);
+diff --git a/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.cpp b/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.cpp
+index 5a9f22e93..6ab9800ce 100644
+--- a/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.cpp
++++ b/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.cpp
+@@ -3,6 +3,7 @@
+ 
+ #include "GSRendererPGS.h"
+ #include "GS/GSState.h"
++#include "GSDumpReplayer.h"
+ #include "GS.h"
+ #include "math.hpp"
+ #include "muglm/muglm_impl.hpp"
+@@ -10,6 +11,9 @@
+ #include "PerformanceMetrics.h"
+ #include "VMManager.h"
+ #include "command_buffer.hpp"
++#include "ImGui/FullscreenUI.h"
++#include "ImGui/ImGuiManager.h"
++#include "imgui.h"
+ 
+ // Workaround because msbuild is broken when mixing C and C++ it seems ...
+ #ifdef _MSC_VER
+@@ -140,7 +144,7 @@ void GSRendererPGS::render_rcas(CommandBuffer &cmd, const ImageView &view,
+ 	memcpy(cmd.allocate_vertex_data(0, sizeof(vertex_data), sizeof(vec2)), vertex_data, sizeof(vertex_data));
+ 	cmd.set_vertex_attrib(0, 0, VK_FORMAT_R32G32_SFLOAT, 0);
+ 	cmd.set_srgb_texture(0, 0, view);
+-	cmd.set_sampler(0, 0, Vulkan::StockSampler::NearestClamp);
++	cmd.set_sampler(0, 0, StockSampler::NearestClamp);
+ 	cmd.set_opaque_state();
+ 	cmd.set_depth_test(false, false);
+ 	cmd.set_program(sharpen_program);
+@@ -164,7 +168,7 @@ void GSRendererPGS::render_blit(CommandBuffer &cmd, const ImageView &view,
+ {
+ 	cmd.set_srgb_texture(0, 0, view);
+ 	cmd.set_sampler(0, 0, GSConfig.LinearPresent != GSPostBilinearMode::Off ?
+-	                      Vulkan::StockSampler::LinearClamp : Vulkan::StockSampler::NearestClamp);
++	                      StockSampler::LinearClamp : StockSampler::NearestClamp);
+ 	cmd.set_opaque_state();
+ 	cmd.set_depth_test(false, false);
+ 	cmd.set_program(blit_program);
+@@ -173,10 +177,10 @@ void GSRendererPGS::render_blit(CommandBuffer &cmd, const ImageView &view,
+ 	cmd.draw(3);
+ }
+ 
+-GSRendererPGS::GSRendererPGS(u8 *basemem)
+-	: priv(reinterpret_cast<PrivRegisterState *>(basemem))
++GSRendererPGS::GSRendererPGS(GSDevicePGS &device_, u8 *basemem)
++	: device(device_), priv(reinterpret_cast<PrivRegisterState *>(basemem))
+ {
+-	wsi.set_backbuffer_format(BackbufferFormat::sRGB);
++	device.get_wsi().set_backbuffer_format(BackbufferFormat::sRGB);
+ }
+ 
+ u8 *GSRendererPGS::GetRegsMem()
+@@ -206,7 +210,7 @@ static ParsedSuperSampling parse_super_sampling_options(u8 super_sampling)
+ 	return parsed;
+ }
+ 
+-bool GSRendererPGS::Init()
++bool GSDevicePGS::Init()
+ {
+ 	// Always force the reload, since the other backends may clobber the volk pointers.
+ 	if (!Context::init_loader(nullptr, true))
+@@ -222,11 +226,22 @@ bool GSRendererPGS::Init()
+ 	// We will cycle through many memory contexts per frame most likely.
+ 	wsi.get_device().init_frame_contexts(12);
+ 
++	return true;
++}
++
++bool GSRendererPGS::Init()
++{
++	auto &wsi = device.get_wsi();
++
+ 	ResourceLayout layout;
+ 	Shaders<> suite(wsi.get_device(), layout, 0);
+ 	upscale_program = wsi.get_device().request_program(suite.upscale_vert, suite.upscale_frag);
+ 	sharpen_program = wsi.get_device().request_program(suite.sharpen_vert, suite.sharpen_frag);
+ 	blit_program = wsi.get_device().request_program(suite.quad, suite.blit);
++	ui_program[0][0] = wsi.get_device().request_program(suite.ui_vert, suite.ui_frag[0][0]);
++	ui_program[0][1] = wsi.get_device().request_program(suite.ui_vert, suite.ui_frag[0][1]);
++	ui_program[1][0] = wsi.get_device().request_program(suite.ui_vert, suite.ui_frag[1][0]);
++	ui_program[1][1] = wsi.get_device().request_program(suite.ui_vert, suite.ui_frag[1][1]);
+ 
+ 	GSOptions opts = {};
+ 	opts.vram_size = GSLocalMemory::m_vmsize;
+@@ -314,7 +329,7 @@ void GSRendererPGS::UpdateConfig()
+ 	if (meta.maxContentLightLevel >= 10000.0f)
+ 		meta.maxContentLightLevel = 0.0f;
+ 
+-	if (wsi.get_device().get_device_features().driver_id == VK_DRIVER_ID_NVIDIA_PROPRIETARY)
++	if (device.get_device().get_device_features().driver_id == VK_DRIVER_ID_NVIDIA_PROPRIETARY)
+ 	{
+ 		// NV workaround. It is out of spec and does not sanitize HDR metadata.
+ 		meta.maxLuminance = meta.maxContentLightLevel;
+@@ -326,7 +341,7 @@ void GSRendererPGS::UpdateConfig()
+ 		}
+ 	}
+ 
+-	wsi.set_hdr_metadata(meta);
++	device.get_wsi().set_hdr_metadata(meta);
+ }
+ 
+ int GSRendererPGS::GetSaveStateSize(int version)
+@@ -573,74 +588,85 @@ enum PGSGamma
+ 	PGS_GAMMA_28,
+ };
+ 
+-void GSRendererPGS::VSync(u32 field, bool registers_written)
++void GSRendererPGS::VSync(u32 field, bool registers_written, bool refresh_frame)
+ {
+-	if (dump)
++	auto &wsi = device.get_wsi();
++	bool frame_is_duped = false;
++
++	if (!refresh_frame)
+ 	{
+-		if (dump->VSync(field, dump_frames == 0, reinterpret_cast<GSPrivRegSet *>(priv)))
+-			dump.reset();
+-		else if (dump_frames != 0)
+-			dump_frames--;
+-	}
++		if (dump)
++		{
++			if (dump->VSync(field, dump_frames == 0, reinterpret_cast<GSPrivRegSet *>(priv)))
++				dump.reset();
++			else if (dump_frames != 0)
++				dump_frames--;
++		}
+ 
+-	iface.flush();
+-	iface.get_priv_register_state() = *priv;
++		iface.flush();
++		iface.get_priv_register_state() = *priv;
+ 
+-	VSyncInfo info = {};
++		VSyncInfo info = {};
+ 
+-	info.phase = field;
++		info.phase = field;
+ 
+-	// Apparently this is needed for some games. It's set by game-fixes.
+-	// I assume this problem exists at a higher level than whatever GS controls, so we'll just
+-	// apply this hack too.
+-	if (GSConfig.InterlaceMode != GSInterlaceMode::Automatic)
+-		info.phase ^= (static_cast<int>(GSConfig.InterlaceMode) - 2) & 1;
++		// Apparently this is needed for some games. It's set by game-fixes.
++		// I assume this problem exists at a higher level than whatever GS controls, so we'll just
++		// apply this hack too.
++		if (GSConfig.InterlaceMode != GSInterlaceMode::Automatic)
++			info.phase ^= (static_cast<int>(GSConfig.InterlaceMode) - 2) & 1;
+ 
+-	info.anti_blur = !GSConfig.PGSDisableCRTCEnhancements && GSConfig.PCRTCAntiBlur;
++		info.anti_blur = !GSConfig.PGSDisableCRTCEnhancements && GSConfig.PCRTCAntiBlur;
+ 
+-	info.force_progressive = GSConfig.PGSHighResScanout || !GSConfig.PGSDisableAutoProgressive;
++		info.force_progressive = GSConfig.PGSHighResScanout || !GSConfig.PGSDisableAutoProgressive;
+ 
+-	// The CRT simulation path assumes some kind of overscan.
+-	info.overscan = GSConfig.PGSTVEmulation != PGS_TV_EMULATION_NONE ||
+-	                GSConfig.PGSPhosphorPrimaries != PGS_CRT_NONE ||
+-	                GSConfig.PCRTCOverscan;
++		// The CRT simulation path assumes some kind of overscan.
++		info.overscan = GSConfig.PGSTVEmulation != PGS_TV_EMULATION_NONE ||
++						GSConfig.PGSPhosphorPrimaries != PGS_CRT_NONE ||
++						GSConfig.PCRTCOverscan;
+ 
+-	info.crtc_offsets = GSConfig.PGSDisableCRTCEnhancements || GSConfig.PCRTCOffsets;
++		info.crtc_offsets = GSConfig.PGSDisableCRTCEnhancements || GSConfig.PCRTCOffsets;
+ 
+-	info.dst_access = VK_ACCESS_2_SHADER_SAMPLED_READ_BIT;
+-	info.dst_stage = VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT | VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT;
+-	info.dst_layout = VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL;
++		info.dst_access = VK_ACCESS_2_SHADER_SAMPLED_READ_BIT;
++		info.dst_stage = VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT | VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT;
++		info.dst_layout = VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL;
+ 
+-	// The scaling blur is technically a blur ...
+-	// Force it for analog emulation since we do the scaling there and double scaling is just bad.
+-	info.adapt_to_internal_horizontal_resolution = GSConfig.PGSTVEmulation != PGS_TV_EMULATION_NONE || GSConfig.PCRTCAntiBlur;
++		// The scaling blur is technically a blur ...
++		// Force it for analog emulation since we do the scaling there and double scaling is just bad.
++		info.adapt_to_internal_horizontal_resolution = GSConfig.PGSTVEmulation != PGS_TV_EMULATION_NONE || GSConfig.PCRTCAntiBlur;
+ 
+-	// We want consistent results for any TV emulation.
+-	info.raw_circuit_scanout = GSConfig.PGSTVEmulation == PGS_TV_EMULATION_NONE && GSConfig.PGSPhosphorPrimaries == PGS_CRT_NONE;
++		// We want consistent results for any TV emulation.
++		info.raw_circuit_scanout = GSConfig.PGSTVEmulation == PGS_TV_EMULATION_NONE && GSConfig.PGSPhosphorPrimaries == PGS_CRT_NONE;
+ 
+-	// High-res scanout only makes sense if we're doing FSR style upscale.
+-	info.high_resolution_scanout = GSConfig.PGSTVEmulation == PGS_TV_EMULATION_NONE &&
+-	                               GSConfig.PGSPhosphorPrimaries == PGS_CRT_NONE &&
+-	                               GSConfig.PGSHighResScanout != 0;
++		// High-res scanout only makes sense if we're doing FSR style upscale.
++		info.high_resolution_scanout = GSConfig.PGSTVEmulation == PGS_TV_EMULATION_NONE &&
++									   GSConfig.PGSPhosphorPrimaries == PGS_CRT_NONE &&
++									   GSConfig.PGSHighResScanout != 0;
+ 
+-	// If we have CRT emulation, we deal with deinterlacing there.
+-	info.skip_deinterlace = GSConfig.PGSPhosphorPrimaries != PGS_CRT_NONE;
++		// If we have CRT emulation, we deal with deinterlacing there.
++		info.skip_deinterlace = GSConfig.PGSPhosphorPrimaries != PGS_CRT_NONE;
+ 
+-	auto stats = iface.consume_flush_stats();
++		auto stats = iface.consume_flush_stats();
+ 
+-	// Do not allow frame skip if frame-dupe is used.
+-	bool frame_is_duped = !registers_written && stats.num_render_passes == 0 && stats.num_copies == 0 && iface.vsync_can_skip(info);
++		// Do not allow frame skip if frame-dupe is used.
++		frame_is_duped = !registers_written && stats.num_render_passes == 0 && stats.num_copies == 0 && iface.vsync_can_skip(info);
+ 
+-	// Don't waste GPU time scanning out the same thing twice.
+-	if (!frame_is_duped || !vsync.image)
+-		vsync = iface.vsync(info);
++		// Don't waste GPU time scanning out the same thing twice.
++		if (!frame_is_duped || !vsync.image)
++			vsync = iface.vsync(info);
+ 
+-	if (frame_is_duped && !GSConfig.SkipDuplicateFrames)
+-		wsi.set_next_present_is_duplicated();
++		if (frame_is_duped && !GSConfig.SkipDuplicateFrames)
++			wsi.set_next_present_is_duplicated();
++
++		PerformanceMetrics::Update(registers_written, stats.num_render_passes != 0, false);
++	}
+ 
+-	if (GSConfig.SkipDuplicateFrames && has_presented_in_current_swapchain && frame_is_duped)
++	Host::BeginPresentFrame();
++
++	if (GSConfig.SkipDuplicateFrames && device.has_presented_in_current_swapchain && frame_is_duped && !refresh_frame)
+ 	{
+ 		PerformanceMetrics::Update(false, false, true);
++		ImGuiManager::SkipFrame();
+ 		return;
+ 	}
+ 
+@@ -774,10 +800,10 @@ void GSRendererPGS::VSync(u32 field, bool registers_written)
+ 
+ 	for (uint32_t frame_index = 0; frame_index < frame_multiplier; frame_index++)
+ 	{
+-		if (!has_wsi_begin_frame)
+-			has_wsi_begin_frame = wsi.begin_frame();
++		if (!device.has_wsi_begin_frame)
++			device.has_wsi_begin_frame = wsi.begin_frame();
+ 
+-		if (!has_wsi_begin_frame)
++		if (!device.has_wsi_begin_frame)
+ 			return;
+ 
+ 		uint32_t output_width = wsi.get_device().get_swapchain_view().get_view_width();
+@@ -888,6 +914,8 @@ void GSRendererPGS::VSync(u32 field, bool registers_written)
+ 
+ 		auto cmd = dev.request_command_buffer();
+ 
++		render_ui_prepare(*cmd);
++
+ 		if (frame_index == 0 && vsync.image && GSConfig.PGSTVEmulation != PGS_TV_EMULATION_NONE && priv->smode1.LC == SMODE1Bits::LC_ANALOG)
+ 		{
+ 			AnalogVideoFilter::FilterOptions filter_options = {};
+@@ -1028,18 +1056,20 @@ void GSRendererPGS::VSync(u32 field, bool registers_written)
+ 					vp_offset_x, vp_offset_y, vp_width, vp_height);
+ 			}
+ 		}
++
++		render_ui_flush(*cmd);
++
+ 		cmd->end_render_pass();
+ 		dev.submit(cmd);
+ 
+ 		wsi.end_frame();
+-		has_wsi_begin_frame = false;
++		device.has_wsi_begin_frame = false;
++		render_ui_end();
+ 	}
+ 
+ 	// For pacing purposes.
+-	has_wsi_begin_frame = wsi.begin_frame();
+-	has_presented_in_current_swapchain = true;
+-
+-	PerformanceMetrics::Update(registers_written, stats.num_render_passes != 0, false);
++	device.has_wsi_begin_frame = wsi.begin_frame();
++	device.has_presented_in_current_swapchain = true;
+ }
+ 
+ void GSRendererPGS::Transfer(const u8* mem, u32 size)
+@@ -1063,10 +1093,8 @@ void GSRendererPGS::GetInternalResolution(int *width, int *height)
+ 	*height = int(last_internal_height);
+ }
+ 
+-bool GSRendererPGS::UpdateWindow()
++bool GSDevicePGS::UpdateWindow()
+ {
+-	iface.flush();
+-
+ 	std::optional<WindowInfo> window = Host::AcquireRenderWindow(true);
+ 	if (window.has_value())
+ 	{
+@@ -1078,7 +1106,13 @@ bool GSRendererPGS::UpdateWindow()
+ 		return false;
+ }
+ 
+-void GSRendererPGS::ResizeWindow(int width, int height, float /*scale*/)
++bool GSRendererPGS::UpdateWindow()
++{
++	iface.flush();
++	return device.UpdateWindow();
++}
++
++void GSDevicePGS::ResizeWindow(int width, int height, float /*scale*/)
+ {
+ 	resize = true;
+ 	window_info.surface_width = width;
+@@ -1086,12 +1120,12 @@ void GSRendererPGS::ResizeWindow(int width, int height, float /*scale*/)
+ 	// TODO: No idea what to do about scale.
+ }
+ 
+-const WindowInfo &GSRendererPGS::GetWindowInfo() const
++const WindowInfo &GSDevicePGS::GetWindowInfo() const
+ {
+ 	return window_info;
+ }
+ 
+-void GSRendererPGS::SetVSyncMode(GSVSyncMode mode, bool /*allow_present_throttle*/)
++void GSDevicePGS::SetVSyncMode(GSVSyncMode mode, bool /*allow_present_throttle*/)
+ {
+ 	if (mode == GSVSyncMode::FIFO)
+ 		wsi.set_present_mode(PresentMode::SyncToVBlank);
+@@ -1102,7 +1136,7 @@ void GSRendererPGS::SetVSyncMode(GSVSyncMode mode, bool /*allow_present_throttle
+ 	// Unknown what allow_present_throttle means.
+ }
+ 
+-VkSurfaceKHR GSRendererPGS::create_surface(VkInstance instance, VkPhysicalDevice gpu)
++VkSurfaceKHR GSDevicePGS::create_surface(VkInstance instance, VkPhysicalDevice gpu)
+ {
+ 	if (window_info.type == WindowInfo::Type::Surfaceless)
+ 	{
+@@ -1150,12 +1184,12 @@ VkSurfaceKHR GSRendererPGS::create_surface(VkInstance instance, VkPhysicalDevice
+ 	return VK_NULL_HANDLE;
+ }
+ 
+-void GSRendererPGS::destroy_surface(VkInstance instance, VkSurfaceKHR surface)
++void GSDevicePGS::destroy_surface(VkInstance instance, VkSurfaceKHR surface)
+ {
+ 	WSIPlatform::destroy_surface(instance, surface);
+ }
+ 
+-std::vector<const char *> GSRendererPGS::get_instance_extensions()
++std::vector<const char *> GSDevicePGS::get_instance_extensions()
+ {
+ 	return {
+ 		VK_KHR_SURFACE_EXTENSION_NAME,
+@@ -1171,37 +1205,37 @@ std::vector<const char *> GSRendererPGS::get_instance_extensions()
+ 	};
+ }
+ 
+-std::vector<const char *> GSRendererPGS::get_device_extensions()
++std::vector<const char *> GSDevicePGS::get_device_extensions()
+ {
+ 	return { VK_KHR_SWAPCHAIN_EXTENSION_NAME };
+ }
+ 
+-bool GSRendererPGS::alive(WSI &)
++bool GSDevicePGS::alive(WSI &)
+ {
+ 	return true;
+ }
+ 
+-uint32_t GSRendererPGS::get_surface_width()
++uint32_t GSDevicePGS::get_surface_width()
+ {
+ 	return window_info.surface_width;
+ }
+ 
+-uint32_t GSRendererPGS::get_surface_height()
++uint32_t GSDevicePGS::get_surface_height()
+ {
+ 	return window_info.surface_height;
+ }
+ 
+-void GSRendererPGS::poll_input()
++void GSDevicePGS::poll_input()
+ {
+ 	// Dummy, we don't care about input here.
+ }
+ 
+-void GSRendererPGS::poll_input_async(Granite::InputTrackerHandler *)
++void GSDevicePGS::poll_input_async(Granite::InputTrackerHandler *)
+ {
+ 	// Dummy, we don't care about input here.
+ }
+ 
+-void GSRendererPGS::event_swapchain_destroyed()
++void GSDevicePGS::event_swapchain_destroyed()
+ {
+ 	WSIPlatform::event_swapchain_destroyed();
+ 	has_wsi_begin_frame = false;
+@@ -1238,9 +1272,183 @@ void GSRendererPGS::QueueSnapshot(const std::string &path, u32 gsdump_frames)
+ 	delete[] fd.data;
+ }
+ 
+-const VkApplicationInfo *GSRendererPGS::get_application_info()
++const VkApplicationInfo *GSDevicePGS::get_application_info()
+ {
+ 	static const VkApplicationInfo app = { VK_STRUCTURE_TYPE_APPLICATION_INFO, nullptr,
+ 	                                       "pcsx2", 0, "Granite", 0, VK_API_VERSION_1_3 };
+ 	return &app;
+ }
++
++GSDevicePGS::~GSDevicePGS()
++{
++	DestroyImGuiTextures();
++}
++
++void GSDevicePGS::DestroyImGuiTextures()
++{
++	if (!ImGui::GetCurrentContext())
++		return;
++
++	for (auto *im_tex : ImGui::GetPlatformIO().Textures)
++	{
++		if (im_tex->Status != ImTextureStatus_Destroyed)
++		{
++			auto *img = static_cast<Image *>(im_tex->BackendUserData);
++			if (img == nullptr)
++				continue;
++
++			pxAssert(im_tex->RefCount == 1);
++
++			img->release_reference();
++			im_tex->SetTexID(ImTextureID_Invalid);
++			im_tex->BackendUserData = nullptr;
++			im_tex->Status = ImTextureStatus_Destroyed;
++		}
++	}
++}
++
++void GSRendererPGS::render_ui_prepare(CommandBuffer &cmd)
++{
++	if (GSDumpReplayer::IsReplayingDump())
++		GSDumpReplayer::RenderUI();
++
++	FullscreenUI::Render();
++	ImGuiManager::RenderOSD();
++	ImGui::Render();
++
++	// Loose copy paste from GSDevice::UpdateImGuiTextures().
++	for (auto *im_tex : ImGui::GetPlatformIO().Textures)
++	{
++		switch (im_tex->Status)
++		{
++			case ImTextureStatus_OK:
++			case ImTextureStatus_Destroyed:
++				continue;
++
++			case ImTextureStatus_WantCreate:
++			{
++				ImageCreateInfo info = ImageCreateInfo::immutable_2d_image(im_tex->Width, im_tex->Height, VK_FORMAT_R8G8B8A8_UNORM);
++				info.usage = VK_IMAGE_USAGE_SAMPLED_BIT | VK_IMAGE_USAGE_TRANSFER_DST_BIT;
++				info.initial_layout = VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL;
++				ImageInitialData init = { im_tex->GetPixels() };
++				auto img = device.get_device().create_image(info, &init);
++				im_tex->SetTexID(reinterpret_cast<ImTextureID>(img.get()));
++				im_tex->BackendUserData = img.release();
++				im_tex->Status = ImTextureStatus_OK;
++				break;
++			}
++
++			case ImTextureStatus_WantUpdates:
++			{
++				const int upload_x = im_tex->UpdateRect.x;
++				const int upload_y = im_tex->UpdateRect.y;
++				const int upload_w = im_tex->UpdateRect.w;
++				const int upload_h = im_tex->UpdateRect.h;
++				const int upload_pitch = upload_w * im_tex->BytesPerPixel;
++
++				auto *img = static_cast<Image *>(im_tex->BackendUserData);
++
++				cmd.image_barrier(*img, VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL,
++					VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT, 0, VK_PIPELINE_STAGE_2_COPY_BIT,
++					VK_ACCESS_TRANSFER_WRITE_BIT);
++
++				auto *ptr = static_cast<uint8_t *>(cmd.update_image(*img, { upload_x, upload_y }, { uint32_t(upload_w), uint32_t(upload_h), 1 },
++					upload_w, upload_h, { VK_IMAGE_ASPECT_COLOR_BIT, 0, 0, 1 }));
++
++				for (int y = 0; y < upload_h; y++)
++					memcpy(ptr + upload_pitch * y, im_tex->GetPixelsAt(upload_x, upload_y + y), upload_pitch);
++
++				cmd.image_barrier(*img, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL,
++					VK_PIPELINE_STAGE_2_COPY_BIT, VK_ACCESS_TRANSFER_WRITE_BIT,
++					VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT, VK_ACCESS_2_SHADER_SAMPLED_READ_BIT);
++
++				im_tex->Status = ImTextureStatus_OK;
++				break;
++			}
++
++			case ImTextureStatus_WantDestroy:
++			{
++				auto *gs_tex = static_cast<Image *>(im_tex->BackendUserData);
++				if (gs_tex == nullptr)
++					break;
++
++				gs_tex->release_reference();
++				im_tex->SetTexID(ImTextureID_Invalid);
++				im_tex->BackendUserData = nullptr;
++				im_tex->Status = ImTextureStatus_Destroyed;
++				break;
++			}
++
++			default:
++				pxAssert(false);
++				break;
++		}
++	}
++}
++
++void GSRendererPGS::render_ui_flush(CommandBuffer &cmd)
++{
++	// Loosely based on GSDeviceVK::RenderImGui().
++	const ImDrawData *draw_data = ImGui::GetDrawData();
++
++	auto width = cmd.get_device().get_swapchain_view().get_view_width();
++	auto height = cmd.get_device().get_swapchain_view().get_view_height();
++	cmd.set_viewport({ 0, 0, float(width), float(height), 0, 1 });
++
++	for (int n = 0; n < draw_data->CmdListsCount; n++)
++	{
++		const ImDrawList *cmd_list = draw_data->CmdLists[n];
++		memcpy(cmd.allocate_vertex_data(0, cmd_list->VtxBuffer.Size * sizeof(ImDrawVert), sizeof(ImDrawVert)),
++			cmd_list->VtxBuffer.Data, cmd_list->VtxBuffer.Size * sizeof(ImDrawVert));
++		memcpy(cmd.allocate_index_data(cmd_list->IdxBuffer.Size * sizeof(uint16_t), VK_INDEX_TYPE_UINT16),
++			cmd_list->IdxBuffer.Data, cmd_list->IdxBuffer.Size * sizeof(uint16_t));
++		cmd.set_vertex_attrib(0, 0, VK_FORMAT_R32G32_SFLOAT, offsetof(ImDrawVert, pos));
++		cmd.set_vertex_attrib(1, 0, VK_FORMAT_R32G32_SFLOAT, offsetof(ImDrawVert, uv));
++		cmd.set_vertex_attrib(2, 0, VK_FORMAT_R8G8B8A8_UNORM, offsetof(ImDrawVert, col));
++
++		for (int cmd_i = 0; cmd_i < cmd_list->CmdBuffer.Size; cmd_i++)
++		{
++			const ImDrawCmd *pcmd = &cmd_list->CmdBuffer[cmd_i];
++			pxAssert(!pcmd->UserCallback);
++
++			auto scissor_x = int(std::max(0.0f, pcmd->ClipRect.x));
++			auto scissor_y = int(std::max(0.0f, pcmd->ClipRect.y));
++			auto scissor_z = int(pcmd->ClipRect.z);
++			auto scissor_w = int(pcmd->ClipRect.w);
++
++			if (scissor_z <= scissor_x || scissor_w <= scissor_y)
++				continue;
++
++			cmd.set_scissor({{ int(scissor_x), int(scissor_y) },
++				{ uint32_t(scissor_z - scissor_x), uint32_t(scissor_w - scissor_y) }});
++
++			// Since we don't have the GSTexture...
++			auto *img = reinterpret_cast<Image *>(pcmd->GetTexID());
++			if (img)
++				cmd.set_texture(0, 0, img->get_view(), StockSampler::LinearClamp);
++
++			vec2 inv_size = { 1.0f / float(device.window_info.surface_width), 1.0f / float(device.window_info.surface_height) };
++			cmd.push_constants(&inv_size, 0, sizeof(inv_size));
++
++			cmd.set_program(ui_program[img ? 1 : 0][device.get_wsi().get_backbuffer_format() == BackbufferFormat::sRGB]);
++			cmd.set_transparent_sprite_state();
++			cmd.set_primitive_topology(VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST);
++			cmd.set_depth_test(false, false);
++			cmd.set_cull_mode(VK_CULL_MODE_NONE);
++
++			cmd.draw_indexed(pcmd->ElemCount, 1, pcmd->IdxOffset, pcmd->VtxOffset, 0);
++		}
++	}
++}
++
++void GSRendererPGS::render_ui_end()
++{
++	ImGuiManager::NewFrame();
++}
++
++GSTexture *GSDevicePGS::CreateTexture(u32 width, u32 height, const void* pixels, u32 pitch)
++{
++	auto info = ImageCreateInfo::immutable_2d_image(width, height, VK_FORMAT_R8G8B8A8_UNORM);
++	ImageInitialData initial_data = { pixels, pitch / 4 };
++	return new GSTexturePGS(wsi.get_device().create_image(info, &initial_data));
++}
+diff --git a/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.h b/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.h
+index 8fba63757..159adc66c 100644
+--- a/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.h
++++ b/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.h
+@@ -13,22 +13,99 @@
+ #include "context.hpp"
+ #include "wsi.hpp"
+ #include "analog_video.hpp"
++#include "GS/Renderers/Common/GSTexture.h"
+ 
+-class GSRendererPGS final : private Vulkan::WSIPlatform
++// Purely for interop with fullscreen UI.
++class GSTexturePGS final : public GSTexture
+ {
+ public:
+-	explicit GSRendererPGS(u8 *basemem);
++	void *GetNativeHandle() const override { return const_cast<Vulkan::Image *>(img.get()); }
++
++	bool Update(const GSVector4i &, const void *, int, int) override
++	{
++		return false;
++	}
++
++	bool Map(GSMap &, const GSVector4i *, int) override
++	{
++		return false;
++	}
++
++	void Unmap() override {}
++	void GenerateMipmap() override {}
++
++#ifdef PCSX2_DEVBUILD
++	void SetDebugName(std::string_view) override {}
++#endif
++
++	explicit GSTexturePGS(Vulkan::ImageHandle img_) : img(std::move(img_))
++	{
++		m_size.x = img->get_width();
++		m_size.y = img->get_height();
++		m_mipmap_levels = 1;
++		m_type = Type::Texture;
++		m_format = Format::Color;
++	}
+ 
++private:
++	Vulkan::ImageHandle img;
++};
++
++// Somewhat stilted split, but it's necessary to integrate with UI code in a somewhat reasonable way.
++class GSDevicePGS final : private Vulkan::WSIPlatform
++{
++public:
++	friend class GSRendererPGS;
+ 	bool Init();
+-	bool UpdateWindow();
++	~GSDevicePGS();
++	Vulkan::WSI &get_wsi() { return wsi; }
++	Vulkan::Device &get_device() { return wsi.get_device(); }
++
++	void DestroyImGuiTextures();
++	GSTexture *CreateTexture(u32 width, u32 height, const void *pixels, u32 pitch);
++
+ 	void ResizeWindow(int width, int height, float scale);
+ 	const WindowInfo &GetWindowInfo() const;
++	u32 GetWindowWidth() const { return window_info.surface_width; }
++	u32 GetWindowHeight() const { return window_info.surface_height; }
++	float GetWindowScale() const { return window_info.surface_scale; }
+ 	void SetVSyncMode(GSVSyncMode mode, bool allow_present_throttle);
++
++private:
++	Vulkan::WSI wsi;
++
++	bool UpdateWindow();
++	VkSurfaceKHR create_surface(VkInstance instance, VkPhysicalDevice gpu) override;
++	void destroy_surface(VkInstance instance, VkSurfaceKHR surface) override;
++	std::vector<const char *> get_instance_extensions() override;
++	std::vector<const char *> get_device_extensions() override;
++	bool alive(Vulkan::WSI &wsi) override;
++	uint32_t get_surface_width() override;
++	uint32_t get_surface_height() override;
++	void poll_input() override;
++	void poll_input_async(Granite::InputTrackerHandler *) override;
++	void event_swapchain_destroyed() override;
++	const VkApplicationInfo *get_application_info() override;
++
++	WindowInfo window_info = {};
++	bool has_wsi_begin_frame = false;
++	bool has_presented_in_current_swapchain = false;
++};
++
++class GSRendererPGS
++{
++public:
++	GSRendererPGS(GSDevicePGS &device, u8 *basemem);
++
++	bool Init();
++	bool UpdateWindow();
++
+ 	void Reset(bool hardware_reset);
+ 
+ 	void Transfer(const u8 *mem, u32 size);
+ 
+-	void VSync(u32 field, bool registers_written);
++	void VSync(u32 field, bool registers_written, bool refresh_frame);
++
+ 	inline ParallelGS::GSInterface &get_interface() { return iface; };
+ 	void ReadFIFO(u8 *mem, u32 size);
+ 
+@@ -44,25 +121,14 @@ public:
+ 	void QueueSnapshot(const std::string &path, u32 gsdump_frames);
+ 
+ private:
+-	VkSurfaceKHR create_surface(VkInstance instance, VkPhysicalDevice gpu) override;
+-	void destroy_surface(VkInstance instance, VkSurfaceKHR surface) override;
+-	std::vector<const char *> get_instance_extensions() override;
+-	std::vector<const char *> get_device_extensions() override;
+-	bool alive(Vulkan::WSI &wsi) override;
+-	uint32_t get_surface_width() override;
+-	uint32_t get_surface_height() override;
+-	void poll_input() override;
+-	void poll_input_async(Granite::InputTrackerHandler *) override;
+-
++	GSDevicePGS &device;
+ 	ParallelGS::PrivRegisterState *priv;
+-	Vulkan::WSI wsi;
+ 	ParallelGS::GSInterface iface;
+-	WindowInfo window_info = {};
+-	bool has_wsi_begin_frame = false;
+ 
+ 	Vulkan::Program *upscale_program = nullptr;
+ 	Vulkan::Program *sharpen_program = nullptr;
+ 	Vulkan::Program *blit_program = nullptr;
++	Vulkan::Program *ui_program[2][2] = {};
+ 	void render_fsr(Vulkan::CommandBuffer &cmd, const Vulkan::ImageView &view);
+ 	void render_rcas(Vulkan::CommandBuffer &cmd, const Vulkan::ImageView &view,
+ 	                 float offset_x, float offset_y,
+@@ -70,23 +136,24 @@ private:
+ 	void render_blit(Vulkan::CommandBuffer &cmd, const Vulkan::ImageView &view,
+ 	                 float offset_x, float offset_y,
+ 	                 float width, float height);
+-	void event_swapchain_destroyed() override;
+ 	Vulkan::ImageHandle fsr_render_target;
+ 	ParallelGS::ScanoutResult vsync;
+ 
+ 	ParallelGS::SuperSampling current_super_sampling = ParallelGS::SuperSampling::X1;
+ 	bool current_ordered_super_sampling = false;
+ 	bool current_super_sample_textures = false;
+-	bool has_presented_in_current_swapchain = false;
+ 	uint32_t last_internal_width = 0;
+ 	uint32_t last_internal_height = 0;
+ 
+ 	static int GetSaveStateSize(int version);
+-	const VkApplicationInfo* get_application_info() override;
+ 
+ 	std::unique_ptr<GSDumpBase> dump;
+ 	uint32_t dump_frames = 0;
+ 
+ 	ParallelGS::AnalogVideoFilter analog_filter;
+ 	ParallelGS::CRTFilter crt_filter;
++
++	void render_ui_prepare(Vulkan::CommandBuffer &cmd);
++	void render_ui_flush(Vulkan::CommandBuffer &cmd);
++	void render_ui_end();
+ };
+diff --git a/pcsx2/GameDatabase.cpp b/pcsx2/GameDatabase.cpp
+index deafcb4de..ec49b775a 100644
+--- a/pcsx2/GameDatabase.cpp
++++ b/pcsx2/GameDatabase.cpp
+@@ -701,7 +701,7 @@ void GameDatabaseSchema::GameEntry::applyGSHardwareFixes(Pcsx2Config::GSOptions&
+ 
+ 	// Only apply GS HW fixes if the user hasn't manually enabled HW fixes.
+ 	const bool apply_auto_fixes = !config.ManualUserHacks;
+-	const bool is_sw_renderer = EmuConfig.GS.Renderer == GSRendererType::SW;
++	const bool is_sw_renderer = EmuConfig.GS.Renderer == GSRendererType::SW || EmuConfig.GS.Renderer == GSRendererType::ParallelGS;
+ 	if (!apply_auto_fixes)
+ 		Console.Warning("GameDB: Manual GS hardware renderer fixes are enabled, not using automatic hardware renderer fixes from GameDB.");
+ 
+diff --git a/pcsx2/ImGui/ImGuiFullscreen.cpp b/pcsx2/ImGui/ImGuiFullscreen.cpp
+index 93d62b5d7..ffc7a6dde 100644
+--- a/pcsx2/ImGui/ImGuiFullscreen.cpp
++++ b/pcsx2/ImGui/ImGuiFullscreen.cpp
+@@ -1,6 +1,11 @@
+ // SPDX-FileCopyrightText: 2002-2026 PCSX2 Dev Team
+ // SPDX-License-Identifier: GPL-3.0+
+ 
++#ifdef HAVE_PARALLEL_GS
++#include "GS/Renderers/parallel-gs/GSRendererPGS.h"
++extern std::unique_ptr<GSDevicePGS> g_pgs_device;
++#endif
++
+ #include "fmt/format.h"
+ #include "Host.h"
+ #include "GS/Renderers/Common/GSDevice.h"
+@@ -317,14 +322,28 @@ std::optional<RGBA8Image> ImGuiFullscreen::LoadTextureImage(const char* path)
+ 
+ std::shared_ptr<GSTexture> ImGuiFullscreen::UploadTexture(const char* path, const RGBA8Image& image)
+ {
+-	GSTexture* texture = g_gs_device->CreateTexture(image.GetWidth(), image.GetHeight(), 1, GSTexture::Format::Color);
++	GSTexture *texture;
++
++#ifdef HAVE_PARALLEL_GS
++	if (g_pgs_device)
++	{
++		texture = g_pgs_device->CreateTexture(image.GetWidth(), image.GetHeight(), image.GetPixels(), image.GetPitch());
++		return std::shared_ptr<GSTexture>(texture);
++	}
++#endif
++
++	if (!g_gs_device)
++		return {};
++
++	texture = g_gs_device->CreateTexture(image.GetWidth(), image.GetHeight(), 1, GSTexture::Format::Color);
++
+ 	if (!texture)
+ 	{
+ 		Console.Error("failed to create %ux%u texture for resource", image.GetWidth(), image.GetHeight());
+ 		return {};
+ 	}
+ 
+-	if (!texture->Update(GSVector4i(0, 0, image.GetWidth(), image.GetHeight()), image.GetPixels(), image.GetPitch()))
++	if (g_gs_device && !texture->Update(GSVector4i(0, 0, image.GetWidth(), image.GetHeight()), image.GetPixels(), image.GetPitch()))
+ 	{
+ 		Console.Error("Failed to upload %ux%u texture for resource", image.GetWidth(), image.GetHeight());
+ 		g_gs_device->Recycle(texture);
+diff --git a/pcsx2/ImGui/ImGuiManager.cpp b/pcsx2/ImGui/ImGuiManager.cpp
+index 228ec779b..f94d9bd62 100644
+--- a/pcsx2/ImGui/ImGuiManager.cpp
++++ b/pcsx2/ImGui/ImGuiManager.cpp
+@@ -1,6 +1,12 @@
+ // SPDX-FileCopyrightText: 2002-2026 PCSX2 Dev Team
+ // SPDX-License-Identifier: GPL-3.0+
+ 
++#ifdef HAVE_PARALLEL_GS
++#include "GS/Renderers/parallel-gs/GSRendererPGS.h"
++extern std::unique_ptr<GSRendererPGS> g_pgs_renderer;
++extern std::unique_ptr<GSDevicePGS> g_pgs_device;
++#endif
++
+ #include "GS/Renderers/Common/GSDevice.h"
+ #include "Config.h"
+ #include "Counters.h"
+@@ -153,7 +159,15 @@ bool ImGuiManager::Initialize()
+ 		return false;
+ 	}
+ 
+-	s_global_scale = std::max(0.5f, g_gs_device->GetWindowScale() * (GSConfig.OsdScale / 100.0f));
++	float window_scale = 1.0f;
++	if (g_gs_device)
++		window_scale = g_gs_device->GetWindowScale();
++#ifdef HAVE_PARALLEL_GS
++	else if (g_pgs_renderer)
++		window_scale = g_pgs_device->GetWindowScale();
++#endif
++
++	s_global_scale = std::max(0.5f, window_scale * (GSConfig.OsdScale / 100.0f));
+ 	s_scale_changed = false;
+ 
+ 	ImGuiContext& g = *ImGui::CreateContext();
+@@ -183,8 +197,18 @@ bool ImGuiManager::Initialize()
+ 	g.ConfigNavWindowingKeyPrev = ImGuiKey_None;
+ 	g.ConfigNavWindowingWithGamepad = false;
+ 
+-	s_window_width = static_cast<float>(g_gs_device->GetWindowWidth());
+-	s_window_height = static_cast<float>(g_gs_device->GetWindowHeight());
++	if (g_gs_device)
++	{
++		s_window_width = static_cast<float>(g_gs_device->GetWindowWidth());
++		s_window_height = static_cast<float>(g_gs_device->GetWindowHeight());
++	}
++#ifdef HAVE_PARALLEL_GS
++	else if (g_pgs_device)
++	{
++		s_window_width = static_cast<float>(g_pgs_device->GetWindowWidth());
++		s_window_height = static_cast<float>(g_pgs_device->GetWindowHeight());
++	}
++#endif
+ 	io.DisplayFramebufferScale = ImVec2(1, 1); // We already scale things ourselves, this would double-apply scaling
+ 	io.DisplaySize = ImVec2(s_window_width, s_window_height);
+ 
+@@ -233,7 +257,12 @@ void ImGuiManager::Shutdown(bool clear_state)
+ 	if (clear_state)
+ 		s_fullscreen_ui_was_initialized = false;
+ 
+-	g_gs_device->DestroyImGuiTextures();
++	if (g_gs_device)
++		g_gs_device->DestroyImGuiTextures();
++#ifdef HAVE_PARALLEL_GS
++	else if (g_pgs_device)
++		g_pgs_device->DestroyImGuiTextures();
++#endif
+ 
+ 	if (ImGui::GetCurrentContext())
+ 		ImGui::DestroyContext();
+@@ -258,8 +287,20 @@ float ImGuiManager::GetWindowHeight()
+ 
+ void ImGuiManager::WindowResized()
+ {
+-	const u32 new_width = g_gs_device ? g_gs_device->GetWindowWidth() : 0;
+-	const u32 new_height = g_gs_device ? g_gs_device->GetWindowHeight() : 0;
++	u32 new_width = 0, new_height = 0;
++
++	if (g_gs_device)
++	{
++		new_width = g_gs_device->GetWindowWidth();
++		new_height = g_gs_device->GetWindowHeight();
++	}
++#ifdef HAVE_PARALLEL_GS
++	else if (g_pgs_device)
++	{
++		new_width = g_pgs_device->GetWindowWidth();
++		new_height = g_pgs_device->GetWindowHeight();
++	}
++#endif
+ 
+ 	s_window_width = static_cast<float>(new_width);
+ 	s_window_height = static_cast<float>(new_height);
+@@ -299,7 +340,15 @@ void ImGuiManager::ReloadFonts()
+ 
+ void ImGuiManager::UpdateScale()
+ {
+-	const float window_scale = g_gs_device ? g_gs_device->GetWindowScale() : 1.0f;
++	float window_scale = 1.0f;
++
++	if (g_gs_device)
++		window_scale = g_gs_device->GetWindowScale();
++#ifdef HAVE_PARALLEL_GS
++	else if (g_pgs_device)
++		window_scale = g_pgs_device->GetWindowScale();
++#endif
++
+ 	const float scale = std::max(window_scale * (EmuConfig.GS.OsdScale / 100.0f), 0.5f);
+ 
+ 	if ((!ImGuiFullscreen::UpdateLayoutScale()) && scale == s_global_scale)
+@@ -1378,7 +1427,9 @@ void ImGuiManager::DestroySoftwareCursorTextures()
+ void ImGuiManager::UpdateSoftwareCursorTexture(u32 index)
+ {
+ 	SoftwareCursor& sc = s_software_cursors[index];
+-	if (sc.image_path.empty())
++
++	// TODO: Figure out how to deal with this in PGS.
++	if (sc.image_path.empty() || !g_gs_device)
+ 	{
+ 		sc.texture.reset();
+ 		return;
+-- 
+2.54.0
+
