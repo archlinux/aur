@@ -19,7 +19,7 @@ __ghurlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgve
 license=('MIT')
 
 makedepends=('git')
-depends=('bash')
+depends=('bash' 'glibc' 'libgcc' 'xz' 'bzip2')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -51,16 +51,14 @@ prepare() {
 package() {
 	cd "${srcdir}/" || exit
 
-	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 -t "${pkgdir}/usr/bin/" ./${_pkgname}
 
-	for lib in "lib${_pkgname}"*; do
-		install -Dm644 "${lib}" "${pkgdir}/usr/lib/$(basename ${lib})"
-	done
+	install -Dm644 -t "${pkgdir}/usr/lib/" ./lib*.a
 
-	install -dm755 "${pkgdir}/usr/share/${_pkgname}/tests"
-	cp -rf "git/tests/wasm/"* "${pkgdir}/usr/share/${_pkgname}/tests/"
+	install -dm755 "${pkgdir}/usr/share/${_pkgname}/tests/"
+	cp -rf ./git/tests/wasm/* "${pkgdir}/usr/share/${_pkgname}/tests/"
 
-	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "./README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "./LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
