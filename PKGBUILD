@@ -11,8 +11,9 @@ license=('MIT')
 depends=('python-tornado' 'pyalpm' 'python-setuptools' 'systemd')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 source=("git+https://github.com/farseerfc/pacvis.git")
+provides=("pacvis")
 conflicts=("pacvis")
-sha512sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"

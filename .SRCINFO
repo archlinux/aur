@@ -13,8 +13,9 @@ pkgbase = pacvis-git
 	depends = pyalpm
 	depends = python-setuptools
 	depends = systemd
+	provides = pacvis
 	conflicts = pacvis
 	source = git+https://github.com/farseerfc/pacvis.git
-	sha512sums = SKIP
+	sha256sums = SKIP
 
 pkgname = pacvis-git
