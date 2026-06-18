@@ -1,4 +1,4 @@
-# Maintainer: Nathan Elliott <hlrzobfg@addy.io>
+# Maintainer: Nathan Elliott <38136612-NathanTheTerrible@users.noreply.gitlab.com>
 pkgname=lua-evm
 pkgver=0.2.0
 pkgrel=1
