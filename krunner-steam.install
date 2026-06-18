@@ -1,3 +1,11 @@
 post_install() {
-	echo "Please run `kquitapp6 krunner` to load the plugin"
+  echo "WARNING: Please run «kquitapp6 krunner» to load the plugin"
+}
+
+post_upgrade() {
+  pkill -f "python3 /usr/lib/krunner-steam/main.py" || true
+}
+
+post_remove(){
+  pkill -f "python3 /usr/lib/krunner-steam/main.py" || true
 }
