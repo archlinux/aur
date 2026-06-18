@@ -1,6 +1,6 @@
 pkgbase = yazi-nightly-bin
 	pkgdesc = 💥 Blazing fast terminal file manager written in Rust, based on async I/O.
-	pkgver = 26.5.6.20260618.53d36b5
+	pkgver = 26.5.6.20260618.85132ff
 	pkgrel = 1
 	url = https://yazi-rs.github.io
 	arch = x86_64
