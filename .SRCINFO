@@ -1,6 +1,6 @@
 pkgbase = pi-studio-bin
 	pkgdesc = Local Codex-style desktop GUI for the Pi coding agent
-	pkgver = 0.1.28
+	pkgver = 0.1.31
 	pkgrel = 1
 	url = https://github.com/shixin-guo/pi-studio
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = pi-studio-bin
 	conflicts = pi-studio
 	options = !strip
 	options = !debug
-	source_x86_64 = pi-studio-bin-0.1.28-x86_64.deb::https://github.com/shixin-guo/pi-studio/releases/download/v0.1.28/PiStudio_0.1.28_amd64.deb
-	sha256sums_x86_64 = b2efa2aad2f59a6c4927cc8c5fc5a81d8fdb749beda13c351132be9543819888
-	source_aarch64 = pi-studio-bin-0.1.28-aarch64.deb::https://github.com/shixin-guo/pi-studio/releases/download/v0.1.28/PiStudio_0.1.28_arm64.deb
-	sha256sums_aarch64 = e6d3945385659ffacd626e9259a6570ee5b13df36ecf850ce10aefb983dae5cb
+	source_x86_64 = pi-studio-bin-0.1.31-x86_64.deb::https://github.com/shixin-guo/pi-studio/releases/download/v0.1.31/Picot_0.1.31_amd64.deb
+	sha256sums_x86_64 = 9b6f86234fc79db0bb76b269422b3d2bdbca6e2629587ef099208275b6bd2966
+	source_aarch64 = pi-studio-bin-0.1.31-aarch64.deb::https://github.com/shixin-guo/pi-studio/releases/download/v0.1.31/Picot_0.1.31_arm64.deb
+	sha256sums_aarch64 = 04e5ea3844d3c94f13ec68c32213d99e8a6f8dc500b6be7b94baa0205da9664c
 
 pkgname = pi-studio-bin
