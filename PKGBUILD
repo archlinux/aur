@@ -4,7 +4,7 @@
 
 pkgname=tetrio-plus-bin
 pkgver=10.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc='TETR.IO Plus desktop client'
 arch=('x86_64')
 license=('custom')
@@ -12,10 +12,10 @@ url='https://tetr.io/'
 depends=('libxss' 'unzip')
 conflicts=('tetrio-desktop')
 source=("TETR.IO.deb::https://tetr.io/about/desktop/builds/${pkgver%.*.*}/TETR.IO%20Setup.deb"
-        "tetrio-plus.asar.zip::https://gitlab.com/UniQMG/tetrio-plus/-/jobs/13795436076/artifacts/raw/tetrio-plus_v0.28.0_for_desktop_v10.asar.zip"
+        "tetrio-plus.asar.zip::https://gitlab.com/UniQMG/tetrio-plus/-/jobs/13880336788/artifacts/raw/tetrio-plus_v0.28.1_for_desktop_v10.asar.zip"
         LICENSE) # https://tetr.io/about/terms/
 sha256sums=('e3635a6f8d479bbf8dc56fdee7a65b2cf652e9633ef6e1acfc6c6f7055b4abdf'
-            'f367db29ab3fbc48a79fbe325935cb9d4df19b2efb03b55717cc849625e9be6a'
+            '933bc09d5b4a6787beff6c2696eb1d14a45f2cffd2c73ffe246aecc610cd3784'
             '5e721783706e2018878ca127ec6ed5d6a1298ee9cc6a853329e25fafe45265f9')
 
 package() {
