@@ -1,0 +1,5 @@
+[wox-bin]
+source = "github"
+github = "Wox-launcher/Wox"
+use_latest_release = true
+prefix = "v"
