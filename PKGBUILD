@@ -1,8 +1,8 @@
 # Maintainer: tony <tonycth@proton.me>
 
 pkgname=arcfetch
-pkgver=0.7.3
-pkgrel=3
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="A minimal and fast Rust-based system information fetch utility. "
 arch=('x86_64' 'aarch64')
 url="https://github.com/tonycth7/arcfetch"
