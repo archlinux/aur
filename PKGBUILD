@@ -2,7 +2,7 @@
 
 _name=tuna
 pkgname=python-$_name
-pkgver=0.5.11
+pkgver=0.5.15
 pkgrel=1
 pkgdesc='Python profile viewer'
 arch=(any)
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(python)
 makedepends=(python-setuptools python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('d47f3e39e80af961c8df016ac97d1643c3c60b5eb451299da0ab5fe411d8866c')
+sha256sums=('0109ab102374ecf5d47f950267b516b6009c3cf48e8caba3b2c859ed3f6fb996')
 
 build() {
 	cd "$_name-$pkgver"
