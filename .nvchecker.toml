@@ -4,5 +4,6 @@ github = "godotengine/godot-builds"
 use_max_release = true
 include_prereleases = true
 include_regex = '.*(beta|rc|stable).*'
-from_pattern = '(-|-stable)'
+from_pattern = '(-stable|-)'
 to_pattern = ''
+sort_version_key = 'vercmp'
