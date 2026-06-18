@@ -1,18 +1,20 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 pkgname=terrafirma
-pkgver=3.1.13
-pkgrel=2
+pkgver=4.0.6
+pkgrel=1
 pkgdesc='Mapping for Terraria'
 arch=(x86_64 aarch64 armv7h)
 url='http://seancode.com/terrafirma'
 license=(BSD-2-Clause)
-depends=(qt6-base)
-makedepends=(cmake)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mrkite/TerraFirma/archive/$pkgver.tar.gz")
-sha256sums=('fd09c8015d6540eb7be7356d4708c93a76279e679d6ad2e13d1acb412f5e5de6')
+makedepends=(git cmake libx11 libxext libxrandr libxcursor libxfixes libxi libxss libxtst libxkbcommon wayland libdecor libglvnd libdrm)
+source=("$pkgname-$pkgver::git+https://github.com/mrkite/TerraFirma.git?tag=v$pkgver")
+sha256sums=('SKIP')
 
 build() {
-	cd "$srcdir/TerraFirma-$pkgver"
+	cd "$srcdir/$pkgname-$pkgver"
+	git submodule init
+	git submodule update
+
 	mkdir -p build
 	cd build
 
@@ -21,7 +23,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/TerraFirma-$pkgver"
+	cd "$srcdir/$pkgname-$pkgver"
 	(cd build; make install)
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
