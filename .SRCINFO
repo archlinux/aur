@@ -1,0 +1,16 @@
+pkgbase = python-pynec
+	pkgdesc = Python antenna simulation module for NEC2++
+	pkgver = 1.7.4
+	pkgrel = 1
+	url = https://github.com/tmolteno/python-necpp
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = swig
+	depends = python
+	depends = python-numpy
+	source = git+https://github.com/tmolteno/python-necpp.git#commit=99c1533c2063a950b33254f5119e200785147c74
+	sha256sums = SKIP
+
+pkgname = python-pynec
