@@ -17,7 +17,7 @@ _base="https://github.com/rustyhorde/moshpit/releases/download/v${pkgver}"
 source=("${_base}/dist-mp-keygen.tar.gz")
 source_x86_64=("mp-keygen-x86_64::${_base}/mp-keygen-x86_64-unknown-linux-musl")
 source_aarch64=("mp-keygen-aarch64::${_base}/mp-keygen-aarch64-unknown-linux-musl")
-sha256sums=('5539ebd1f147eba7370f11907843af53700695d5cd0d44e4a615380212af0c7e')
+sha256sums=('02baaba81ad96215d258e94ac46e7d297624afb09d12e51724eadf589a9ef4a0')
 sha256sums_x86_64=('0528e9fb1fb962600a70cb49be1405f917283be7f736b57b6a9444099bae24b4')
 sha256sums_aarch64=('660344582aa58c4c0ce89737ba58a262c8ec368d0142d42eecf14267c0ec771e')
 
