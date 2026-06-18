@@ -1,18 +1,18 @@
 pkgbase = sqlui-native-bin
-	pkgdesc = A simple UI client for most SQL Engines,supports most dialects of RMBDs and has limited supports for Cassandra,MongoDB,Redis,CockroachDB,Azure CosmosDB and Azure Storage Tab.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.68.5
+	pkgdesc = A simple UI client for most SQL Engines,supports most dialects of RMBDs and has limited supports for Cassandra,MongoDB,Redis,CockroachDB,Azure CosmosDB and Azure Storage Tab.(Prebuilt version)
+	pkgver = 3.1.9
 	pkgrel = 1
-	url = https://synle.github.io/sqlui-native/
+	url = https://synle.github.io/sqlui-native
 	arch = x86_64
 	license = MIT
-	depends = electron41
-	provides = sqlui-native=1.68.5
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = sqlui-native=3.1.9
 	conflicts = sqlui-native
-	source = sqlui-native-1.68.5.rpm::https://github.com/synle/sqlui-native/releases/download/1.68.5/sqlui-native.rpm
-	source = LICENSE-1.68.5.md::https://raw.githubusercontent.com/synle/sqlui-native/1.68.5/LICENSE.md
-	source = sqlui-native.sh
-	sha256sums = 15e7a1512572318a71b0f3688412a8673f94414c85284763c4fe14e04dbce3a0
+	source = sqlui-native-3.1.9.deb::https://github.com/synle/sqlui-native/releases/download/v3.1.9/sqlui-native_3.1.9_amd64.deb
+	source = LICENSE-3.1.9.md::https://raw.githubusercontent.com/synle/sqlui-native/v3.1.9/LICENSE.md
+	sha256sums = 97ba4b5bcfda0b9656dc8cb63eadb5afa163f80e8db5eee8abe7a48f56453f59
 	sha256sums = a73494126f54d27c6155eecb8504842414b50317f84986eb1439fee7bb326099
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = sqlui-native-bin
