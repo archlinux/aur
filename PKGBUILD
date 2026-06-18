@@ -4,7 +4,7 @@
 
 pkgname=python-extra-platforms
 _name=${pkgname#python-}
-pkgver=13.0.0
+pkgver=13.0.1
 pkgrel=1
 pkgdesc='Detect platforms and group them by family'
 url='https://github.com/kdeldycke/extra-platforms'
@@ -13,7 +13,7 @@ depends=(python)
 license=('Apache-2.0')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kdeldycke/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('2e5b1f1d4dd1a5dd197f89f95ee27e082f52524330cf1d1199780e7dd73bfe4d17664384473696274d248f6f3de880be9d778d30f33ceb1e49319827d388dccd')
+sha512sums=('77d8a9c98c484e0dad18c829fb5c6964841fe4359e939ebac400c45256a1077aedcdd027033a218ef299387d6db046cc4a12316601ce840998b99030f553c90e')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
