@@ -1,6 +1,6 @@
 pkgbase = powhttp-bin
 	pkgdesc = Powerful HTTP Debugging made simple.
-	pkgver = 0.146.0
+	pkgver = 0.147.0
 	pkgrel = 1
 	url = https://powhttp.com
 	install = powhttp-bin.install
@@ -17,10 +17,10 @@ pkgbase = powhttp-bin
 	provides = powhttp
 	conflicts = powhttp
 	options = !debug
-	source = https://releases.powhttp.com/0.146.0/linux/x86_64/powhttp_0.146.0_amd64.deb
+	source = https://releases.powhttp.com/0.147.0/linux/x86_64/powhttp_0.147.0_amd64.deb
 	source = LICENSE
 	source = upstream-license
-	sha256sums = f89fe81c7e9c478deb8b67ce64b68c51eaf55ae61f1ea5dfe4b9bee5ba0ed4d2
+	sha256sums = d6f45f1aec97bdf426c23224249a0224dcb1d3608b8de929354b4ce8e5412530
 	sha256sums = febc00dc5a0557ca8afbcdc6d3896731dc42f4cecabd87e6c98326212f8dbf36
 	sha256sums = 2d075bcf302c1ead55d926ab30ec66994a1115b9e163085961dda151b00d0f5e
 
