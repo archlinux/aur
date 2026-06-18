@@ -27,7 +27,7 @@ source=("https://github.com/shini4i/openfortivpn-gui/releases/download/v${pkgver
         "openfortivpn-gui-helper.service::https://raw.githubusercontent.com/shini4i/openfortivpn-gui/v${pkgver}/data/openfortivpn-gui-helper.service"
         "hicolor.tar.xz")
 
-sha256sums=('578a35d704cef62814c71a8003e385d68af5b1190bcbe989ace54ee1a5fc1094'
+sha256sums=('cb0d222d878d1163dfbde70aef6aeedbbe2208f76ee09dced7bdd91388fc0725'
             '8d41dc4f9456ef72a37af1b6658a578edd17b28aff559855880c0c0d04b79849'
             '680de8a1ad9b253160921354a68bb773804ea8cdf5db979e2a43063174050f29'
             '61d2d0454a3d96355b202bcdfee0a59b1c38cc838c23b560cdf2e4edae2cef32')
