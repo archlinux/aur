@@ -3,8 +3,8 @@
 
 _pkgname="jiratui"
 pkgname="${_pkgname}-git"
-pkgver=1.8.1.r11.g06b2ac1
-pkgrel=2
+pkgver=1.9.1.r0.gdb4a7e2
+pkgrel=1
 pkgdesc="A Textual User Interface for interacting with Atlassian Jira from your shell"
 arch=('any')
 url="https://github.com/whyisdifficult/${_pkgname}"
@@ -24,7 +24,10 @@ depends=(
   'python-dateutil>=2.9.0'
   'python-json-logger>=3.3.0'
   'python-magic>=0.4.27'
+  'python-mistune>=1:3.0.0'
+  'python-puremagic>=2.0.0'
   'python-textual>=6.4.0'
+  'python-textual-autocomplete>=4.0.0'
   'python-textual-image>=0.8.2'
   'python-xdg-base-dirs>=6.0.2'
   'python-marklas>=0.7.0'
