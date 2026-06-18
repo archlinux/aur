@@ -1,0 +1,14 @@
+pkgbase = swtch
+	pkgdesc = A minimal terminal stopwatch
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/chitvs/swtch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	depends = glibc
+	source = swtch-1.0.0.tar.gz::https://github.com/chitvs/swtch/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 9ae18963330c46feb6497907562f4b5a24ecee836d90468ee3f243597c60a309
+
+pkgname = swtch
