@@ -4,7 +4,7 @@
 _reponame=godot
 pkgname=${_reponame}32
 pkgver=4.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced cross-platform 2D and 3D game engine (32-bit)'
 url='https://godotengine.org/'
 license=('MIT')
@@ -124,7 +124,6 @@ package() {
 
     install -Dm755 bin/godot.linuxbsd.editor.$_godot_arch "$pkgdir/usr/bin/godot32"
 
-    install -Dm644 icon.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
     install -Dm644 misc/dist/linux/org.godotengine.Godot.desktop "$pkgdir/usr/share/applications/org.godotengine.Godot32.desktop"
     install -Dm644 misc/dist/linux/org.godotengine.Godot.xml "$pkgdir/usr/share/mime/packages/org.godotengine.Godot32.xml"
 
