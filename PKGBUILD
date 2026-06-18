@@ -1,5 +1,5 @@
 pkgname=rapidcsv
-pkgver=8.97
+pkgver=8.99
 pkgrel=1
 pkgdesc="C++ CSV parser library"
 arch=('any')
@@ -8,7 +8,7 @@ license=('BSD')
 makedepends=('cmake')
 source=($pkgver-$pkgname.tar.gz::https://github.com/d99kris/rapidcsv/archive/refs/tags/v${pkgver}.tar.gz
         fix-install-dirs.patch)
-sha256sums=('933e2f1a9c4308fc320458845cc5dfff679a5f5bf6d3c6f42725c85910d75d04'
+sha256sums=('fbbf738483e31e788dc7b37af5a899db7314be416400f7d87b9d771dd5ebac03'
             'dbe9a63fbecc4f8653b6e79b80ac298ff8cc6619614923a1346720e22ef5f101')
 
 prepare() {
