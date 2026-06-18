@@ -1,6 +1,6 @@
 pkgname=fuzzel-ime-git
-pkgver=1.14.1.r4.g02f7346
-pkgrel=2
+pkgver=1.14.1.r21.g38e1c6e
+pkgrel=1
 pkgdesc="Fuzzel(a wayland launcher) with Input Method support."
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/dnkl/fuzzel"
@@ -9,19 +9,12 @@ depends=('fcft' 'libxkbcommon' 'pixman' 'tllist' 'wayland' 'glibc')
 makedepends=('git' 'meson' 'ninja' 'scdoc' 'wayland-protocols')
 provides=("fuzzel=${pkgver}")
 conflicts=('fuzzel' 'fuzzel-git')
-source=("fuzzel::git+https://codeberg.org/dnkl/fuzzel.git#branch=master"
-        "ime-support.patch")
-sha256sums=('SKIP'
-            '2c912de8ccdeac16ae1493b681d01b8937ecfde6b8d3fa66093b8185a7df88d3')
+source=("fuzzel::git+https://codeberg.org/dnkl/fuzzel.git#branch=master")
+sha256sums=('SKIP')
 
 pkgver() {
   cd fuzzel
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd fuzzel
-  patch -Np1 -i "${srcdir}/ime-support.patch"
 }
 
 build() {
