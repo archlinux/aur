@@ -1,6 +1,6 @@
 pkgbase = nineveh-bin
 	pkgdesc = Minimal ebook library manager for Linux with Kindle device support
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/sjsanc/nineveh
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = nineveh-bin
 	depends = gtk3
 	depends = libsoup3
 	options = !strip
-	source = nineveh-0.1.0-linux-amd64.tar.gz::https://github.com/sjsanc/nineveh/releases/download/v0.1.0/nineveh-0.1.0-linux-amd64.tar.gz
-	sha256sums = d84dded3150e7ec97e5293dd0e30ca26db76869061df53abd32635001c27ad31
+	source = nineveh-0.1.1-linux-amd64.tar.gz::https://github.com/sjsanc/nineveh/releases/download/v0.1.1/nineveh-0.1.1-linux-amd64.tar.gz
+	sha256sums = b64ca2eee4180e53e99cff4f0aebccbc7b29cb10be2e4938ed6de1778488d6f5
 
 pkgname = nineveh-bin
