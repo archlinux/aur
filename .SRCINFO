@@ -1,6 +1,6 @@
 pkgbase = llvm-bolt
 	pkgdesc = A post-link optimizer developed to speed up large applications
-	pkgver = 22.1.7
+	pkgver = 22.1.8
 	pkgrel = 1
 	url = https://github.com/llvm/llvm-project/tree/main/bolt
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = llvm-bolt
 	depends = zstd
 	options = !debug
 	options = !lto
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.7/llvm-project-22.1.7.src.tar.xz
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.7/llvm-project-22.1.7.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.8/llvm-project-22.1.8.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.8/llvm-project-22.1.8.src.tar.xz.sig
 	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
 	validpgpkeys = D574BD5D1D0E98895E3BF90044F2485E45D59042
 	validpgpkeys = FFB3368980F3E6BB5737145A316C56D064CACBA5
 	validpgpkeys = 71046D1E9C6656BDD61171873E83BABF4A4F9E85
-	b2sums = 201b7f8f8b4216ad250f9dcdc87f817ac2dac99c1c7f151077e46165c0efae6d04c33c84c70c04c670fe0733e621af866f78d4d93f49e4d8385645f71495f53b
+	b2sums = 092204f62e0f0364a041c737eb2c25fd073cb5689663d6ccd5a9e4e1743d6d80822360d59b64bff7b4d7872a68a79e899bf2f75f384e55c7d313a79243576f03
 	b2sums = SKIP
 
 pkgname = llvm-bolt
