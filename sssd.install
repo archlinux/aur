@@ -1,0 +1,13 @@
+post_install() {
+  systemd-sysusers usr/lib/sysusers.d/sssd.conf
+  chgrp sssd usr/lib/sssd/sssd/krb5_child
+  setcap cap_dac_read_search,cap_setgid,cap_setuid=p usr/lib/sssd/sssd/krb5_child
+  chgrp sssd usr/lib/sssd/sssd/ldap_child
+  setcap cap_dac_read_search=p usr/lib/sssd/sssd/ldap_child
+  chgrp sssd usr/lib/sssd/sssd/sssd_pam
+  setcap cap_dac_read_search=p usr/lib/sssd/sssd/sssd_pam
+}
+
+post_upgrade() {
+  post_install "$1"
+}

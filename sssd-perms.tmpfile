@@ -1,0 +1,4 @@
+z /etc/sssd/sssd.conf 600 sssd sssd -
+d /var/log/sssd - sssd sssd -
+Z /var/lib/sss - sssd sssd -
+z /usr/lib/sssd/sssd/proxy_child - - sssd -
