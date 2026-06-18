@@ -1,0 +1,20 @@
+pkgbase = vcs-lore
+	pkgdesc = Next-generation open source version control system by Epic Games (Pre-compiled binary)
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/EpicGames/lore
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = vcs-lore
+	conflicts = vcs-lore-bin
+	conflicts = vcs-lore-git
+	options = !strip
+	options = !debug
+	source = LICENSE
+	sha256sums = SKIP
+	source_x86_64 = https://github.com/EpicGames/lore/releases/download/v0.8.3/lore-v0.8.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 55eb9e6d334c3c8d099e281931d4594a13dbda401e4cd202fa9f3114c512b299
+
+pkgname = vcs-lore
