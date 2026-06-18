@@ -1,6 +1,6 @@
 # Maintainer: Mistan Khomdram <mistankhomdram@gmail.com>
 pkgname=lazychad
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 epoch=1
 pkgdesc="An intelligent, highly-aesthetic Neovim wrapper built on NvChad"
@@ -12,7 +12,7 @@ depends=(
   'ttf-jetbrains-mono-nerd' 'neovide'
 
   'nodejs' 'npm' 
-  'python' 'python-pip' 'python-pipx'
+  'python' 'python-pip'
   'lazygit' 'lua51' 'luarocks' 'lua-jsregexp'
   'wl-clipboard' 'xclip'
 )
