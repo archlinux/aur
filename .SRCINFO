@@ -1,0 +1,16 @@
+pkgbase = grafanactl-bin
+	pkgdesc = CLI tool for managing Grafana resources as code
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://github.com/grafana/grafanactl
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = grafanactl
+	conflicts = grafanactl
+	source_x86_64 = grafanactl-bin-0.1.10-x86_64.tar.gz::https://github.com/grafana/grafanactl/releases/download/v0.1.10/grafanactl_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 7f785c8be5ab6210579ae2bc0fddb9cdf180a2d59d928935adba8e581b69cfa9
+	source_aarch64 = grafanactl-bin-0.1.10-aarch64.tar.gz::https://github.com/grafana/grafanactl/releases/download/v0.1.10/grafanactl_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 8ea4b29606b9e39eb3882d0d6d38d21c2dd99cf4fdc7a7ef846e7488d83e8832
+
+pkgname = grafanactl-bin
