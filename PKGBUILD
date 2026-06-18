@@ -9,7 +9,7 @@
 pkgbase='linux-sk'
 pkgname=("$pkgbase"{,'-headers'})
 pkgver=7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-libre kernel with BORE scheduler, BBRv3, acpi-call, and cjktty'
 arch=(x86_64)
 url='https://linux-libre.fsfla.org/'
@@ -40,7 +40,7 @@ options=(
 )
 _srcname="linux-$pkgver"
 source=(
-  "https://linux-libre.fsfla.org/pub/linux-libre/releases/$pkgver-gnu/linux-libre-$pkgver-gnu.tar.xz"{,'.sign'}
+  "https://linux-libre.fsfla.org/pub/linux-libre/releases/$pkgver-gnu/linux-libre-$pkgver-gnu.tar.xz"
   'https://raw.githubusercontent.com/CachyOS/kernel-patches/52430eeac3404e8f6e32d36384351f5aa075fd35/7.1/sched/0001-bore.patch'
   'https://codeberg.org/shkouyo/gist/raw/commit/bd9947f418b6e80ee66ea84a5303d7c789cad7ea/bbr3-7.1.patch'
   'https://raw.githubusercontent.com/CachyOS/kernel-patches/fcdc4806b62f86b62a61b92c4b7213a1759537e5/7.1/misc/0001-acpi-call.patch'
@@ -51,7 +51,7 @@ source=(
   'config'
 )
 b2sums=(
-  'a3a90da13d2f246d9c9778fbc14696bed85e1afcb9a8d2e0097b9a2402b28c8610412fdfeaa27114fa4c64895a7f3b05a4e9fe0ad586a33b2c485a4932b382f7' 'SKIP'
+  'a3a90da13d2f246d9c9778fbc14696bed85e1afcb9a8d2e0097b9a2402b28c8610412fdfeaa27114fa4c64895a7f3b05a4e9fe0ad586a33b2c485a4932b382f7'
   '90f096c5d6b3ac9b0ce4ba2ba7378a8bc507e15b04672c30f38decac8e544583c12b83083f30d510adf8403acf65e21603cea5736fb1512833d9b90955372ccb'
   '4ef49070fec47fe2ccf52def09b9f290e7cce3cf131a496e14618655c0754b924ddd35c2a7faf0cc3ac7ec8969efe8835c10b2b2aa7fac4cc1dcfbc790a4a1a0'
   'ddaf90fd846e13cb213fb343f9599447d377dd51111cd2cbfbda2334836ba7c6925a28453353017a785163dbd1d5d44f1c7eca036c611a8dcf2cecab7d35c2de'
@@ -60,9 +60,6 @@ b2sums=(
   '77e8b8162aba9adc344ba36545a77079a9f11cdd313cec51cdd11d6b1873d0357e2293c3685c3e35e04bd21db10912fcef2b7eee64bc178c073fb84f9c6336df'
   'db6e3815cc7fc09e89ff034f33526f4bc03cd4b4720ff6d50f02fc2cdbca6314b37ba2e2d1098436018f373b62289f82b20500e9c2a7d801f7a2a27f9f0b73d8'
   'b8121572bf2f8805ecf5e26164b80159f4ab811b43702d60ceda1bbaf8d32c2c348a97df119f9af24b211d7a85a5012962c09efe3c8fadbb5c91947589f557fb'
-)
-validpgpkeys=(
-  '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # linux-libre (Alexandre Oliva) <linux-libre+lxoliva@fsfla.org>
 )
 
 export KBUILD_BUILD_HOST=archlinux
