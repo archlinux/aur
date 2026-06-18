@@ -1,5 +1,5 @@
 pkgname=openssh-gui-bin
-pkgver=3.2.0
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="A GUI for OpenSSH configuration and management (Binary version)"
 arch=('x86_64')
@@ -19,7 +19,14 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/frequency403/OpenSSH-GUI/v${pkgver}/LICENSE"
 )
 
-sha256sums=('59cc12771431bf31a3d2086d4f0174f997c62e998070da09e550b0383f41dbd8'
+sha256sums=('69254c6864b87f046b26eeeb48c540c8c16b89c9513a2fa2769efe371da87e6e'
             '19d7c119dcd8aaf1b2bac47325ebf73ac4b32bb3f757e62276a154845be49774'
             '0f53f092ae5b6a8547d016d3c4130c9352fe4af688e0eaaee7c94efdadb78470'
             '04765b5ced4962532281a4c40754d25380df5e89e49bf3f0ea9054f05a6ee34a')
+
+package() {
+  install -Dm755 "${srcdir}/openssh-gui" "${pkgdir}/usr/bin/openssh-gui"
+  install -Dm644 "${srcdir}/openssh-gui-icon" "${pkgdir}/usr/share/pixmaps/openssh-gui.png"
+  install -Dm644 "${srcdir}/openssh-gui-desktop" "${pkgdir}/usr/share/applications/io.github.frequency403.openssh_gui.desktop"
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
