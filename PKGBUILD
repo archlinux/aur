@@ -4,7 +4,7 @@
 pkgname=plasmazones-bin
 # pkgver/pkgrel are placeholders; CI overwrites them with the release tag
 # before publishing. See packaging/arch/update-aur.sh.
-pkgver=3.0.15
+pkgver=3.0.16
 pkgrel=1
 pkgdesc='Window tiling and autotiling for KDE Plasma (binary)'
 arch=('x86_64')
@@ -18,9 +18,9 @@ license=('GPL-3.0-or-later' 'LGPL-2.1-or-later')
 # Exact KWin upstream version this binary was built against. The kwin-effect
 # plugin's IID embeds KWin's exact upstream version string; KWin refuses to
 # load effects whose IID doesn't match its own version, including across patch
-# bumps (e.g. 6.6.4 -> 6.6.5). CI substitutes this value at release time from
+# bumps (e.g. 6.7.0 -> 6.7.1). CI substitutes this value at release time from
 # the build-host's installed kwin (see .github/workflows/release.yml).
-_kwin_ver=6.6.5
+_kwin_ver=6.7.0
 
 depends=(
     'qt6-base'
@@ -41,7 +41,7 @@ optdepends=(
 provides=('plasmazones')
 conflicts=('plasmazones' 'plasmazones-git')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/plasmazones-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('3f99c24df01fed6934c6309c40caded07b9868da73d99b1d5305dacaad4ecaa9')
+sha256sums=('3fee71b4ba826a250cf58bd3fd7b593cec3eef332581d8a05e1a7d2b0a523c6c')
 install=plasmazones.install
 
 package() {
