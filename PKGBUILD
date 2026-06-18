@@ -9,7 +9,7 @@
 
 pkgname=ffmpeg-libfdk_aac
 pkgver=8.1.2
-pkgrel=4
+pkgrel=5
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -97,7 +97,7 @@ makedepends=(
   avisynthplus
   clang
   ffnvcodec-headers
-  #frei0r-plugins
+  frei0r-plugins
   git
   ladspa
   mesa
@@ -151,6 +151,7 @@ build() {
     --enable-cuda-llvm \
     --enable-lto \
     --enable-fontconfig \
+    --enable-frei0r \
     --enable-gmp \
     --enable-gnutls \
     --enable-gpl \
@@ -215,7 +216,6 @@ build() {
     --enable-vulkan \
     --enable-libfdk-aac \
     --enable-nonfree
-    #--enable-frei0r \
   make
   make tools/qt-faststart
   make doc/ff{mpeg,play}.1
