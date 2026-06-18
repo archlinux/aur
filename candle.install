@@ -8,6 +8,7 @@ post_install() {
     echo
     _color_msg "1;33" "==> Add your user to the input group:"
     _color_msg "1;32" "    sudo usermod -aG input \$USER"
+    _color_msg "1;32" "    newgrp input"
     echo
     systemctl daemon-reload
     systemctl enable numlockd.service

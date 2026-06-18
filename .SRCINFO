@@ -24,6 +24,6 @@ pkgbase = candle-git
 	source = candle-git::git+https://github.com/HuanSoft-Open-Source-Community/candle.git
 	source = candle.install
 	sha256sums = SKIP
-	sha256sums = 793ed3c3dcecf1c583dd8928b37fbfe9beb4078934aad1a82eda97b801ca7e6f
+	sha256sums = 2e19fa4604a34ad14b8db58b3e36927c2f4df945b112d256a1de96bdd4883a10
 
 pkgname = candle-git
