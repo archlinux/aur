@@ -4,11 +4,11 @@
 
 _pkgname=krunner-steam
 pkgname=$_pkgname-git
-pkgver=r17.b86af5d
-pkgrel=3
+pkgver=r22.f56d5e5
+pkgrel=1
 pkgdesc="Launch Steam games from Krunner"
 arch=("any")
-url="https://github.com/xTibor/krunner-steam.git"
+url="https://github.com/Damglador/krunner-steam.git"
 license=("LGPL-2.0-or-later")
 depends=("python-gobject" "python-dbus" "krunner" "kservice")
 makedepends=("git")
