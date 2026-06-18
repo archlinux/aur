@@ -1,7 +1,7 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname=jgenesis
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Sega Genesis / Sega CD / SNES / Master System / Game Gear Emulator"
 arch=("x86_64")
@@ -13,7 +13,7 @@ source=(
     "jgenesis.desktop"
 )
 sha256sums=(
-    "a5e7b50345d1720904ce65fc149adb2efbb56e707f8eaff1f419628b206a8c9f"
+    "922837c5a29f4ba707c2d065417b82cc76dea02ad2d0cb2689943dda65eb8fe9"
     "6f75d9e1a31f0f5437495a32edc21addd0b85020a3ebc8921ef1d48419036746"
 )
 
