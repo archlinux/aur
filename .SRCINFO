@@ -1,0 +1,18 @@
+pkgbase = pagebuilder-bin
+	pkgdesc = An open source drag and drop Page Builder Made with Tauri
+	pkgver = 0.1.14
+	pkgrel = 1
+	url = https://github.com/abkarim/page-builder
+	arch = aarch64
+	arch = x86_64
+	license = LicenseRef-unknown
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = pagebuilder=0.1.14
+	conflicts = pagebuilder
+	source_aarch64 = pagebuilder-0.1.14-aarch64.rpm::https://github.com/abkarim/page-builder/releases/download/app-v0.1.14/pagebuilder-0.1.14-1.aarch64.rpm
+	sha256sums_aarch64 = f44d1f064e50a1c931cbc793bd10e23dca80cdc51a6eb2251fa0fde2d5a27658
+	source_x86_64 = pagebuilder-0.1.14-x86_64.rpm::https://github.com/abkarim/page-builder/releases/download/app-v0.1.14/pagebuilder-0.1.14-1.x86_64.rpm
+	sha256sums_x86_64 = 97272fd2aabfc9cf3a9279a787439190e136871171390f62bab0d5bff68b16c9
+
+pkgname = pagebuilder-bin
