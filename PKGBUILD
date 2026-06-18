@@ -1,4 +1,4 @@
-# Maintainer: Nathan Elliott <hlrzobfg@addy.io>
+# Maintainer: Nathan Elliott <38136612-NathanTheTerrible@users.noreply.gitlab.com>
 pkgname=libpdq
 pkgver=0.2.3
 pkgrel=2
