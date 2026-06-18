@@ -4,7 +4,7 @@ _gitauthor=hars-21
 _gitname=reqsh
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="Interactive, persistent shell for HTTP requests. Built with Rust for ultimate speed and simplicity"
+pkgdesc="Interactive, persistent shell for HTTP requests"
 
 pkgver=0.1.4
 pkgrel=1
