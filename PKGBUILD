@@ -1,9 +1,9 @@
 # Maintainer: Danilo <aur ät dbrgn döt ch>
 pkgname=threema-desktop-beta
 pkgdesc="Threema Desktop 2.0 Beta."
-pkgver=2.0_beta61
+pkgver=2.0_beta62
 _pkgver=${pkgver//_/-}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/threema-ch/threema-desktop"
 license=('AGPL-3.0-only')
@@ -50,7 +50,7 @@ makedepends=(
 )
 #options=('strip')
 source=("threema-desktop-v${_pkgver}::https://github.com/threema-ch/threema-desktop/archive/refs/tags/v${_pkgver}.tar.gz")
-b2sums=('8eabcd436008bc70261876f9a7771ec68a59c699853468fcbfb54ef8acd26b6c7b5a3152aa151448cd67935700eda45d8cacd283f2b0c164f7033c68a28e994f')
+b2sums=('c4045379908dfe5824ca1dd6984da67f027f88a3549ccd3c250280415419dc8eed1f4816b4cb25867cf1a824c3d019bf7180aefb3f23801b56c0831498bc5269')
 
 # See https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
 _ensure_local_nvm() {
