@@ -2,7 +2,7 @@
 # Contributor: NovaDragon <me@novadeagon.space>
 
 pkgname=godots-bin
-pkgver=1.4.1.stable
+pkgver=1.4.2.stable
 pkgrel=1
 pkgdesc="A hub for managing your Godot versions and projects."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver-LinuxX11.zip::https://github.com/MakovWait/godots/rele
         "$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/MakovWait/godots/refs/tags/v$pkgver/LICENSE"
         "$pkgname-$pkgver-icon.svg::https://raw.githubusercontent.com/MakovWait/godots/refs/tags/v$pkgver/icon.svg"
         "$pkgname-$pkgver-io.github.MakovWait.Godots.desktop::https://raw.githubusercontent.com/MakovWait/godots/refs/tags/v$pkgver/packaging/linux/io.github.MakovWait.Godots.desktop")
-sha256sums=('de2793951c5dfd52ba898a1c5715f377b969da9ce403c9b62c41d343ac21897b'
+sha256sums=('8f2d2e06ecc543f5087c93330e3d15a2fe701c7d72d37a028705c830e6ebe70e'
             '76b8e9aacad7b9b2fd0c699065186191f8705d8f1892ee36873c56f904f073ef'
             'de088f3452e04986b4988b2a22a6518a4aaaab64e808ea9eee352bea141e774a'
             '7e47f6279d501a57a6fe1babf386ac8d4ae39ce6c22b3764569d060c54d88792')
