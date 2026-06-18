@@ -1,12 +1,11 @@
 pkgbase = portugol-studio-bin
-	pkgdesc = Ambiente de Programação didático para a linguagem Portugol 2.0.
-	pkgver = 2.7.4
-	pkgrel = 1
-	url = http://lite.acad.univali.br/portugol/
-	arch = x86_64
-	license = GPL
-	source = https://github.com/UNIVALI-LITE/Portugol-Studio/releases/download/v2.7.4/portugol-studio-2.7.4-linux-x64-standalone.zip
-	md5sums = 06ff5fc05064754a457ad99cd7d2a001
+pkgdesc = Ambiente de Programação didático para a linguagem Portugol 2.0.
+pkgver = 2.7.5
+pkgrel = 1
+url = http://lite.acad.univali.br/portugol/
+arch = x86_64
+license = GPL
+source = https://github.com/UNIVALI-LITE/Portugol-Studio/releases/download/v2.7.5/portugol-studio-2.7.5-linux-x64.run.zip
+md5sums = 668807523ee1de448b9ef9b4c2d71d9b
 
 pkgname = portugol-studio-bin
-
