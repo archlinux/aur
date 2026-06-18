@@ -1,6 +1,6 @@
 pkgbase = jupyterlab-myst
 	pkgdesc = Use MyST in JupyterLab
-	pkgver = 2.4.2
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://github.com/executablebooks/jupyterlab-myst
 	arch = any
@@ -11,10 +11,11 @@ pkgbase = jupyterlab-myst
 	makedepends = python-hatch-jupyter-builder
 	makedepends = python-hatch-nodejs-version
 	makedepends = nodejs
+	makedepends = pnpm
 	makedepends = python-installer
 	depends = jupyter-server
 	provides = python-jupyterlab-myst
-	source = https://github.com/executablebooks/jupyterlab-myst/archive/refs/tags/v2.4.2.tar.gz
-	sha256sums = d50cab8e5e1a24710c490bb0898f1c6da2dcdeaed5dfa6691cb0f9f2fe45904e
+	source = jupyterlab-myst-2.7.0.tar.gz::https://github.com/executablebooks/jupyterlab-myst/archive/refs/tags/v2.7.0.tar.gz
+	sha256sums = ed8853c25e96d8dd58a4d745c5c7cb77961bd4c46fa80eb75fc60e2dfd2d8813
 
 pkgname = jupyterlab-myst
