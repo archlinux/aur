@@ -5,12 +5,12 @@ _pkgname=thelounge
 pkgname=thelounge-beta
 _pkgver=4.5.1-rc.1
 pkgver=${_pkgver/-/}
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern self-hosted web IRC client (Latest release/pre-release)'
 url='https://thelounge.chat/'
 arch=('any')
 license=('MIT')
-depends=('nodejs-lts-krypton')
+depends=('nodejs>=22')
 options=('!lto')
 makedepends=('yarn' 'git')
 conflicts=('thelounge')
