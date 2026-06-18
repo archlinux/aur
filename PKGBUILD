@@ -1,3 +1,4 @@
+# Maintainer: kekmacska <kekmacska2@proton.me>
 # Maintainer: sakure <duarm at disroot dot org>
 # Old Maintainer: nixi <nixi at cock dot li>
 # Contributor: <darkfeline@felesatra.moe>
@@ -6,7 +7,7 @@
 # Contributor: Michael Fellinger <m.fellinger@gmail.com>
 
 pkgname=sqlitebrowser-git
-pkgver=continuous.r0.gf37031e6
+pkgver=continuous.r0.g9cee4e5d
 pkgrel=1
 pkgdesc="DB Browser for SQLite"
 arch=('i686' 'x86_64')
@@ -26,9 +27,37 @@ pkgver() {
 }
 
 build() {
-	cd $srcdir/$pkgname
-	cmake -DQT_MAJOR=Qt6 -DCMAKE_INSTALL_PREFIX=/usr .
-	make
+    cd "$srcdir/$pkgname"
+
+    CFLAGS="-O3 -march=native -mtune=native \
+        -funroll-loops \
+        -falign-functions=32 -falign-loops=32 \
+        -fno-semantic-interposition \
+        -fno-math-errno -fno-trapping-math \
+        -fomit-frame-pointer -fno-plt \
+        -Wall -pipe -flto=auto"
+
+	CXXFLAGS="-O3 -march=native -mtune=native \
+			-funroll-loops \
+			-falign-functions=32 -falign-loops=32 \
+			-fno-semantic-interposition \
+			-fno-math-errno -fno-trapping-math \
+			-fomit-frame-pointer -fno-plt \
+			-Wall -pipe -flto=auto"
+
+	LDFLAGS="-fno-plt -flto=auto"
+
+    cmake \
+        -DQT_MAJOR=Qt6 \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_C_FLAGS="$CFLAGS" \
+        -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
+        -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
+        -DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS" \
+        .
+
+    make
 }
 
 package() {
