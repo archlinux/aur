@@ -1,6 +1,6 @@
 pkgname=omniglyph
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Emoji and Unicode symbol picker"
 arch=('x86_64')
 url="https://github.com/pshycodr/omniglyph"
@@ -22,8 +22,8 @@ source=(
     'omniglyph.png'
 )
 
-sha256sums=('79f49372d01c4f139385548c96171de67170b3b8c9d11ab8e68411827a8b3437'
-            'eecfaa0ae40f3afd050d237bf2af3d0e7c4d3eb3c6ccbdd490fd085d4e5670d1'
+sha256sums=('3fd77b92385b87115e53670a7ee87b6e89eb45a82d88b57c349556eceb1b0b03'
+            '3e6895c1da0ea0c1816aee75202a3a8e8467db334dddd3274b54dc4e5ea593f9'
             '13acc509f7dbe1f80885c0f260d2b3f87da2706a9437d68335d44cd27bdcaa18')
 
 package() {
