@@ -1,4 +1,4 @@
-# Maintainer: Dr. Richard Kellnberger
+# Maintainer: Dr. Richard Kellnberger <aur@richardk2n.de>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Alois Nespor <alium@centrum.cz>
 # Contributor: kikadf <kikadf.01@gmail.com>
