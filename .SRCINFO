@@ -1,6 +1,6 @@
 pkgbase = control-ofc-daemon
 	pkgdesc = Hardware fan control daemon for Linux (OpenFan, hwmon, GPU)
-	pkgver = 1.21.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/Plan-B-Development/control-ofc-daemon
 	install = control-ofc-daemon.install
@@ -17,11 +17,12 @@ pkgbase = control-ofc-daemon
 	optdepends = nct6686d-dkms-git: out-of-tree driver for Nuvoton NCT6686D (some newer ASRock boards)
 	optdepends = dkms: required by the *-dkms-git driver packages above
 	optdepends = linux-headers: required by DKMS to build out-of-tree drivers (must match your running kernel)
+	conflicts = control-ofc-gui<2.0.0
 	options = !lto
 	backup = etc/control-ofc/daemon.toml
 	backup = etc/control-ofc/profiles/quiet.json
 	backup = etc/modules-load.d/control-ofc.conf
-	source = control-ofc-daemon-1.21.0.tar.gz::https://github.com/Plan-B-Development/control-ofc-daemon/archive/v1.21.0.tar.gz
-	sha256sums = 74f0e991306111465f472ab3b149fa01826f088f8f37159b810b6203be968573
+	source = control-ofc-daemon-2.0.0.tar.gz::https://github.com/Plan-B-Development/control-ofc-daemon/archive/v2.0.0.tar.gz
+	sha256sums = e291ad8a5202f198e4e0c0cf747655546ea0c0716f838d35b997de3fae15cd08
 
 pkgname = control-ofc-daemon

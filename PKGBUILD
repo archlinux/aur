@@ -1,12 +1,13 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-daemon
-pkgver=1.21.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Hardware fan control daemon for Linux (OpenFan, hwmon, GPU)"
 arch=('x86_64')
 url="https://github.com/Plan-B-Development/control-ofc-daemon"
 license=('MIT')
 depends=('glibc' 'systemd-libs' 'libgcc')
+conflicts=('control-ofc-gui<2.0.0')
 optdepends=(
     'lm_sensors: sensors verification CLI; sensors-detect (last resort) for chips not covered by the built-in module list'
     'it87-dkms-git: out-of-tree driver for ITE 8625E/8686E/8688E/8689E/8696E/87952E (most newer Gigabyte boards)'
@@ -23,7 +24,7 @@ backup=('etc/control-ofc/daemon.toml'
 install=control-ofc-daemon.install
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('74f0e991306111465f472ab3b149fa01826f088f8f37159b810b6203be968573')
+sha256sums=('e291ad8a5202f198e4e0c0cf747655546ea0c0716f838d35b997de3fae15cd08')
 
 prepare() {
     cd "$pkgname-$pkgver"
