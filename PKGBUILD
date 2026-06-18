@@ -24,12 +24,14 @@ makedepends=(
 optdepends=('python: for using botan2.py')
 source=(https://botan.randombit.net/releases/Botan-${pkgver}.tar.xz{,.asc}
         boost-fixes.patch
+        fix-oaep-unpad-breaking-change.patch
         CVE-2024-50382.patch
         CVE-2024-50383.patch
 )
 sha256sums=('dfeea0e0a6f26d6724c4af01da9a7b88487adb2d81ba7c72fcaf52db522c9ad4'
             'SKIP'
             '4d6e04836b934671b893b7df207159b7a945191f25c134a8ab95ff43bd6ae536'
+            '4cdf87b7b8f6a7eda78df335944af806e63ab22cec528914306cf14c35a45d90'
             '34a34279260487a5f62859ba5abddb0cdcfdf0b62b1c49acf60117a941df0e07'
             '4493316d4d04e152f3dd980b4710741bd620db404af59fba846f269ce2efeaa1')
 validpgpkeys=('621DAF6411E1851C4CF9A2E16211EBF1EFBADFBC') # Botan Distribution Key
@@ -38,6 +40,7 @@ prepare() {
   cd "Botan-${pkgver}"
 
   patch -p0 -i ../boost-fixes.patch
+  patch -p1 -i ../fix-oaep-unpad-breaking-change.patch
 
   patch -p1 -i ../CVE-2024-50382.patch
   patch -p1 -i ../CVE-2024-50383.patch
