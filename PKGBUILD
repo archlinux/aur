@@ -2,12 +2,17 @@
 # Contributor: Nayrosk
 
 pkgname=claude-cowork-service
-pkgver=1.0.61
+pkgver=1.0.62
 pkgrel=1
 pkgdesc="Native Linux backend for Claude Desktop Cowork"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickjaja/claude-cowork-service"
 license=('MIT')
+
+# Don't emit a separate -debug package. The shipped binary is stripped by makepkg's
+# `strip` option; detached debug symbols aren't useful for this service and pull an
+# extra claude-cowork-service-debug package into installs. Overrides makepkg.conf.
+options=(!debug)
 
 depends=('util-linux')
 optdepends=('claude-desktop-bin: Unofficial Linux frontend for Claude Desktop Cowork'
@@ -20,7 +25,7 @@ backup=('etc/conf.d/claude-cowork')
 install="${pkgname}.install"
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('d2e264ec0c6c3a3a52fa17f2fcf870cf7252e8da36a32b00e99f3bbcb2b7b17a')
+sha256sums=('e7453d5ee365ef3908ec1b08a4758cd0f236d46ec4106709f87f6b7d22149668')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
