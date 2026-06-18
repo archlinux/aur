@@ -2,8 +2,8 @@
 # Maintainer: Hendrik "T4cC0re" Meyer <aur@t4cc0.re>
 # Maintainer: Javier Herrera <javierherrera at posteo dot net>
 pkgname=tfenv
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.2.2
+pkgrel=1
 epoch=
 pkgdesc="Terraform version manager inspired by rbenv"
 arch=("any")
@@ -14,7 +14,7 @@ depends=(bash unzip)
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=("tfenv" "terraform")
+provides=("tfenv" "terraform" "terragrunt-iac-provider")
 source=("https://github.com/tfutils/tfenv/archive/v${pkgver}.tar.gz")
 validpgpkeys=()
 install="${pkgname}.install"
@@ -46,4 +46,4 @@ package() {
 	install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 LICENSE
 }
 
-sha512sums=(ea4e72616e9be3613c9bddbeb860736fac241f576a5137408364a826f18503bb9964b9d4a230a0eb1b5d147264000904362e72ace53922fa28aa6c039faaa97c)
+sha512sums=(35aa7ab69e9e07947bb7cc70f3e388d47f7db2bb532b0d7518edf2cfcfac9f61bbd680fecc65e1a45b2d02695f24e167f23065d4b7fa8ca1ad579d66bbc86f3a)

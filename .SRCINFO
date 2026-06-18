@@ -1,7 +1,7 @@
 pkgbase = tfenv
 	pkgdesc = Terraform version manager inspired by rbenv
-	pkgver = 3.0.0
-	pkgrel = 2
+	pkgver = 3.2.2
+	pkgrel = 1
 	url = https://github.com/tfutils/tfenv
 	install = tfenv.install
 	arch = any
@@ -10,8 +10,9 @@ pkgbase = tfenv
 	depends = unzip
 	provides = tfenv
 	provides = terraform
+	provides = terragrunt-iac-provider
 	conflicts = terraform
-	source = https://github.com/tfutils/tfenv/archive/v3.0.0.tar.gz
-	sha512sums = ea4e72616e9be3613c9bddbeb860736fac241f576a5137408364a826f18503bb9964b9d4a230a0eb1b5d147264000904362e72ace53922fa28aa6c039faaa97c
+	source = https://github.com/tfutils/tfenv/archive/v3.2.2.tar.gz
+	sha512sums = 35aa7ab69e9e07947bb7cc70f3e388d47f7db2bb532b0d7518edf2cfcfac9f61bbd680fecc65e1a45b2d02695f24e167f23065d4b7fa8ca1ad579d66bbc86f3a
 
 pkgname = tfenv
