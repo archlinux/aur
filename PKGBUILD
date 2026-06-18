@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=epic-lore-bin
-pkgver=0.8.0
+pkgver=0.8.3
 pkgrel=1
 pkgdesc='Epic Games Lore version control system (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
