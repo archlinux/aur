@@ -2,7 +2,7 @@
 pkgname=arc_unpacker-git
 _pkgname=arc_unpacker
 pkgver=r2428.456834ec
-pkgrel=4
+pkgrel=7
 pkgdesc="CLI tool for extracting images and sounds from visual novels."
 arch=(x86_64)
 url="https://github.com/vn-tools/arc_unpacker"
@@ -44,6 +44,9 @@ prepare() {
 
   # disable failing tests
   git apply "$srcdir/failing_tests.patch"
+
+  sed CMakeLists.txt -i -e "/^find_package(Boost/ s, system , ,g"
+
 }
 
 build() {
@@ -63,3 +66,5 @@ package() {
   mkdir -p ${pkgdir}/usr/share/${_pkgname}
   cp -r etc ${pkgdir}/usr/share/${_pkgname}
 }
+
+# vim: set ai et ts=2 sts=2 sw=2:

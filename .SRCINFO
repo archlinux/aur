@@ -1,7 +1,7 @@
 pkgbase = arc_unpacker-git
 	pkgdesc = CLI tool for extracting images and sounds from visual novels.
 	pkgver = r2428.456834ec
-	pkgrel = 4
+	pkgrel = 7
 	url = https://github.com/vn-tools/arc_unpacker
 	arch = x86_64
 	license = GPL-3.0-or-later
