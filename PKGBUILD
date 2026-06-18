@@ -1,6 +1,6 @@
 # Maintainer: Mistan Khomdram <mistankhomdram@gmail.com>
 pkgname=lazychad
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 epoch=1
 pkgdesc="An intelligent, highly-aesthetic Neovim wrapper built on NvChad"
@@ -16,8 +16,7 @@ depends=(
   'lazygit' 'lua51' 'luarocks' 'lua-jsregexp'
   'wl-clipboard' 'xclip'
 )
-provides=('lazychad' 'lchad')
-conflicts=('lazychad')
+provides=('lchad')
 install=lazychad.install
 source=("git+https://github.com/MistanKh/LazyChad.git")
 sha256sums=('SKIP')
