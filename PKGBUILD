@@ -67,6 +67,9 @@ _get_pkgver() {
 
 
 prepare() {
+
+### Toolchains are curently not used in favour makepkg.conf
+
     mkdir -p toolchain
 
 cat > toolchain/clang_x86_64-pc-linux-gnu.cmake<< EOF
@@ -131,17 +134,18 @@ build() {
     cd "${srcdir}"
 
 
-### use the AUR package instead
-##  pip install compdb
+    ### use the AUR package instead
+    ##  pip install compdb
 
                               ###-G Ninja | -G "Unix Makefiles"
-    ## For deeper debugin switch to:
-    # -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-O2 -g -fno-omit-frame-pointer -DNDEBUG -fdiagnostics-color=always" \
-    # -DCMAKE_C_FLAGS_RELWITHDEBINFO="-O2 -g -fno-omit-frame-pointer -DNDEBUG -fdiagnostics-color=always" \
 
-    #Defaults are
-    #-DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
-    #-DCMAKE_C_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
+    ## For deeper debugin switch to:
+      # -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-O2 -g -fno-omit-frame-pointer -DNDEBUG -fdiagnostics-color=always" \
+      # -DCMAKE_C_FLAGS_RELWITHDEBINFO="-O2 -g -fno-omit-frame-pointer -DNDEBUG -fdiagnostics-color=always" \
+
+    #Defaults are:
+      #-DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
+      #-DCMAKE_C_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
 
     cmake3 -S "${srcdir}/${pkgname%-git}"  -G Ninja \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
