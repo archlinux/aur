@@ -5,7 +5,7 @@
 
 pkgname=matomo-bin
 _pkgname=matomo
-pkgver=5.11.1
+pkgver=5.11.2
 pkgrel=1
 pkgdesc="A real-time web analytics platform"
 arch=("any")
@@ -24,7 +24,7 @@ source=(
 	"https://builds.matomo.org/${_pkgname}-${pkgver}.tar.gz"
 	"https://builds.matomo.org/${_pkgname}-${pkgver}.tar.gz.asc")
 backup=("usr/share/webapps/${_pkgname}/piwik.js" "usr/share/webapps/${_pkgname}/matomo.js")
-sha256sums=('694e412219a9eff858416f62dcbd09149096c1fe61c296ac9b8b432a6383fd40'
+sha256sums=('ceb9c6111fabce8541efea22548bd30c602e4067b825fc29fbc6b2b6229b56f1'
             'SKIP')
 
 validpgpkeys=("F529A27008477483777FC23D63BB30D0E5D2C749")
