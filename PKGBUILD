@@ -23,7 +23,7 @@ package() {
   bsdtar -xf data.tar.gz -C "${pkgdir}/"
 
   desktop-file-edit --set-key=StartupWMClass --set-value=io.ente.ensu \
-    "${pkgdir}/ensu-bin/usr/share/applications/Ensu.desktop"
+    "${pkgdir}/usr/share/applications/Ensu.desktop"
   desktop-file-edit --set-key=Categories --set-value='Utility;' \
-    "${pkgdir}/ensu-bin/usr/share/applications/Ensu.desktop"
+    "${pkgdir}/usr/share/applications/Ensu.desktop"
 }
