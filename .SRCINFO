@@ -1,0 +1,16 @@
+pkgbase = bash-aur-retriever
+	pkgdesc = A minimalist Bash AUR Retriever and system updater tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/goremakesthingsforarch-sys/bar
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	depends = bash
+	depends = curl
+	depends = jq
+	depends = pacman
+	source = bar-1.0.0.tar.gz::https://github.com/goremakesthingsforarch-sys/bar/archive/v1.0.0.tar.gz
+	sha256sums = 4669c56ad41975a5b5631707b2dac603d3bc54e5bf88a7214b517f2938767c1c
+
+pkgname = bash-aur-retriever
