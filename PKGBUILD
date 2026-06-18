@@ -2,8 +2,8 @@
 
 pkgname=whylian-git
 _pkgname=whylian
-pkgver=1.0.2.r361.g4387e8b
-pkgrel=3
+pkgver=1.0.4.r364.g35c443c
+pkgrel=4
 pkgdesc="Lian Li device control for Linux — HydroShift II AdvanceMode fork of lian-li-linux (git)"
 arch=('x86_64')
 url="https://github.com/byrdltd/whylian"
@@ -70,6 +70,7 @@ prepare() {
 build() {
   cd "${_pkgname}"
   _use_distro_rust
+  export CARGO_TARGET_DIR="$PWD/target"
   export CARGO_PROFILE_RELEASE_STRIP=symbols
   export SLINT_NO_QT=1
   export RUSTFLAGS='-D warnings'
@@ -78,6 +79,8 @@ build() {
     features=(--features desktop-display)
   fi
   /usr/bin/cargo build --frozen --release -p lianli-daemon -p lianli-gui "${features[@]}"
+  test -x target/release/lianli-daemon
+  test -x target/release/lianli-gui
 }
 
 package() {
