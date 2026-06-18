@@ -1,0 +1,16 @@
+pkgbase = faultkit-bin
+	pkgdesc = Fault injection for the agent era — exercise the LLM, RAG, and tool-call failures that mocks can't simulate.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://faultkit.dev
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = faultkit
+	conflicts = faultkit
+	source_x86_64 = faultkit-0.1.2-x86_64.tar.gz::https://github.com/faultkit/faultkit/releases/download/v0.1.2/faultkit_0.1.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 92d8b1fdeacf162196a167638837270d6cfcc4bd3afd429cdaae9760f3471254
+	source_aarch64 = faultkit-0.1.2-aarch64.tar.gz::https://github.com/faultkit/faultkit/releases/download/v0.1.2/faultkit_0.1.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 30744ad23c3d904a05c864767a1254c50dc7ae24721e36a38c17482db37fdf89
+
+pkgname = faultkit-bin
