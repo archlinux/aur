@@ -9,11 +9,11 @@ url="https://github.com/igaw/jitterdebugger"
 license=('MIT')
 depends=(
   'glibc'
-  'python3'
+  'python'
   'python-pandas'
   'python-numpy'
   'python-matplotlib'
-  'hdf5>=1.8.17'
+  'hdf5'
   )
 makedepends=('git')
 provides=(

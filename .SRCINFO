@@ -8,11 +8,11 @@ pkgbase = jitterdebugger-git
 	license = MIT
 	makedepends = git
 	depends = glibc
-	depends = python3
+	depends = python
 	depends = python-pandas
 	depends = python-numpy
 	depends = python-matplotlib
-	depends = hdf5>=1.8.17
+	depends = hdf5
 	provides = jitterdebugger
 	provides = jitterplot
 	provides = jittersamples
