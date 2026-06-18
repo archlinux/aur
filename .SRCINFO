@@ -1,0 +1,18 @@
+pkgbase = owl-write
+	pkgdesc = Quick spellcheck TUI
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://codeberg.org/jpt/owl-write
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	provides = owl
+	conflicts = owl-write-git
+	options = !debug
+	options = !strip
+	source = owl-write-0.5.0.tar.gz::https://codeberg.org/jpt/owl-write/archive/0.5.0.tar.gz
+	sha256sums = 4082d6aaf4906c70163b65801d25fc9957c57bc90e2f2910878f03b99db78a54
+
+pkgname = owl-write
