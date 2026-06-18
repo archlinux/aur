@@ -1,20 +1,27 @@
 _name=pyefd
 pkgname=python-$_name
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Elliptic Fourier Features of a Closed Contour'
 arch=(any)
 url="https://github.com/hbldh/$_name"
 license=(MIT)
 depends=(python-numpy)
-_pyarch=py2.py3
-_wheel="$_name-$pkgver-$_pyarch-none-any.whl"
-source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
-noextract=("$_wheel")
-sha256sums=('3c0bff21bdd00a8f1da69618ed61ea5b8a38d94c7ff5556073716aae0f66c8a2')
+makedepends=(python-setuptools python-build python-installer)
+source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('8252267a5455f72bba0baeb6b15e77de9cc802309b3f5d4a52534e41ad4aa187')
+
+prepare() {
+	cd "${_name/-/_}-$pkgver"
+	sed -i 's/setup_requires=\["pytest-runner"\],//g' setup.py
+}
+
+build() {
+	cd "${_name/-/_}-$pkgver"
+	python -m build --wheel --no-isolation
+}
 
 package() {
-	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
-	mkdir -p "$site"
-	unzip "$_wheel" -d "$site"
+	cd "${_name/-/_}-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }

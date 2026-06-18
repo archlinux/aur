@@ -1,13 +1,15 @@
 pkgbase = python-pyefd
 	pkgdesc = Elliptic Fourier Features of a Closed Contour
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/hbldh/pyefd
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-numpy
-	noextract = pyefd-1.6.0-py2.py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py2.py3/p/pyefd/pyefd-1.6.0-py2.py3-none-any.whl
-	sha256sums = 3c0bff21bdd00a8f1da69618ed61ea5b8a38d94c7ff5556073716aae0f66c8a2
+	source = pyefd-1.7.0.tar.gz::https://github.com/hbldh/pyefd/archive/refs/tags/v1.7.0.tar.gz
+	sha256sums = 8252267a5455f72bba0baeb6b15e77de9cc802309b3f5d4a52534e41ad4aa187
 
 pkgname = python-pyefd
