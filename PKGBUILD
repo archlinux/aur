@@ -1,7 +1,7 @@
 # Maintainer: kobe-koto <k [at] koto [dot] cc>
 pkgname=preaur-git
 _repo=PreAUR
-pkgver=0.0.4.r3.g6ec07ef
+pkgver=0.0.6.r0.g9bcf9c7
 pkgrel=1
 pkgdesc="PreAUR, build AUR (not only) pkgbuilds ahead of time."
 arch=('any')
