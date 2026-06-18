@@ -2,24 +2,28 @@
 
 pkgbase=jetbrains-air
 pkgname=(jetbrains-air jetbrains-air-jre)
-pkgver=261.681.18
+pkgver=262.43.15
 pkgrel=1
 arch=('x86_64' 'i686')
 url='https://air.dev/'
 license=('custom:jetbrains')
 depends=('glib2')
 options=('!strip')
-source=("https://download.jetbrains.com/air/installers/linux_x64/Air-${pkgver}.tar.gz"
-        jetbrains-air.desktop
-        LICENSE)
-b2sums=('4892066df0b4ee9abfe4f056f5c0a1156abbdf163cf402e760c14badafe140259248e6e428eaa0039d28474a7b72f73589500e59ecaa589dbef5d60f9b7a4cf3'
+source=(
+  "https://download.jetbrains.com/air/installers/linux_x64/Air-${pkgver}.tar.gz"
+  jetbrains-air.desktop
+  LICENSE
+)
+b2sums=('b0073571eb0bd5d506cb3228d43969c0510302756067da202016fdf5bdbba102255e8dbb0b8edcdb2ac7d4552c9c82a56758d656bfd413cf708e15dd41b44898'
         'f9b91c558db8c82ac97ceb66219f1f9dae86834843b2a5fcc1f1029c217a91877dafc81e73b0fa8e6b86f485d75611fbfe252adb275fe055c129cdbf0c392424'
         'dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77')
 
 package_jetbrains-air() {
   pkgdesc='An Agentic Development Environment by Jetbrains'
-  optdepends=('jetbrains-air-jre: JetBrains custom Java Runtime (Recommended)'
-              'java-runtime: JRE - Required if jetbrains-air-jre is not installed')
+  optdepends=(
+    'jetbrains-air-jre: JetBrains custom Java Runtime (Recommended)'
+    'java-runtime: JRE - Required if jetbrains-air-jre is not installed'
+  )
   conflicts=('air')
 
   install -dm755 "${pkgdir}"/opt/
