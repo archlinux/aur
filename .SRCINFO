@@ -1,14 +1,15 @@
 pkgbase = python-sphinxcontrib-httpdomain
 	pkgdesc = HTTP domain extension for sphinx
-	pkgver = 1.8.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/sphinx-contrib/httpdomain
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
 	depends = python-sphinx
-	options = !emptydirs
-	source = https://github.com/sphinx-contrib/httpdomain/archive/refs/tags/1.8.1.tar.gz
-	sha256sums = 8c58e5874474f6b9b2100d6bddb2140d8a82d459cd20cd62342405c7e84811a6
+	source = https://github.com/sphinx-contrib/httpdomain/archive/refs/tags/2.0.0.tar.gz
+	sha256sums = efe2a0fd3320818db93d7c7045b88c2d2cebd23f2b1b5af974cb3012625f613b
 
 pkgname = python-sphinxcontrib-httpdomain

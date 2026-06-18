@@ -2,25 +2,29 @@
 
 pkgname=python-sphinxcontrib-httpdomain
 _libname=sphinxcontrib-httpdomain
-pkgver='1.8.1'
+pkgver='2.0.0'
 pkgrel='1'
 pkgdesc="HTTP domain extension for sphinx"
 arch=('any')
 url="https://github.com/sphinx-contrib/httpdomain"
 license=('BSD')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-uv-build')
 depends=('python-sphinx')
 source=("https://github.com/sphinx-contrib/httpdomain/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('8c58e5874474f6b9b2100d6bddb2140d8a82d459cd20cd62342405c7e84811a6')
+sha256sums=('efe2a0fd3320818db93d7c7045b88c2d2cebd23f2b1b5af974cb3012625f613b')
 
+prepare() {
+    cd httpdomain-${pkgver}
+    sed -i 's/uv_build >= 0.9.26, <0.10.0/uv_build/' pyproject.toml
+}
 
 build() {
     cd httpdomain-${pkgver}
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package(){
     cd httpdomain-${pkgver}
-    python setup.py install -O1 --skip-build --root="${pkgdir}" --optimize=1
+    python -m installer --destdir="$pkgdir/" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
