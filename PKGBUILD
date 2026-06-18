@@ -1,7 +1,7 @@
 # Maintainer: Repeater <fakeroration@gmail.com>
 pkgname=python-typst
 _pkgname=${pkgname#python-}
-pkgver=0.14.9
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Python binding to typst"
 arch=('x86_64')
@@ -25,3 +25,4 @@ package() {
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
+sha256sums=('6b166523a60fa9f33fec4e29eb00a8f26cf29095b8bcf9e9fc583d06147c0f9d')
