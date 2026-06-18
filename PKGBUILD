@@ -2,7 +2,7 @@
 _appname=proxy-pin
 pkgname="${_appname//-/}-bin"
 _pkgname=ProxyPin
-pkgver=1.2.3
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="Open source free packet capture tool.(Prebuilt version)"
 arch=('x86_64')
@@ -14,12 +14,14 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     'ca-certificates'
     'gtk3'
+    'libayatana-appindicator'
+    'libdbusmenu-glib'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-Linux.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2b3f3c3d8008df1046fd87ed3f0fd3527e3c864f97e34d348af935a559b7902b'
+sha256sums=('0b13f699d255a944ac564900697576e9c0d2d181ad6165f741af192b16da7b6c'
             '4b46d4c46f133f057b7859149b9e45689638ad849c4f0a8efabf2aacd6bf9142')
 prepare() {
     sed -i -e "
