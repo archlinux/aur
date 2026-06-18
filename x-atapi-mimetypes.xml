@@ -76,4 +76,11 @@
     <glob pattern="*.fxe"/>
     <glob pattern="*.FXE"/>
   </mime-type>
+  <mime-type type="application/x-tns">S
+    <comment>TI-Nspire Document</comment>
+    <comment xml:lang="en_GB">TI-Nspire Documen</comment>
+    <generic-icon name="application-x-executable"/>
+    <glob pattern="*.tns"/>
+    <glob pattern="*.TNS"/>
+  </mime-type>
 </mime-info>
