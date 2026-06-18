@@ -2,7 +2,7 @@
 # Contributor: Asuka Minato <i at asukaminato dot eu dot org>
 _pkgname=delance-runtime
 pkgname=delance-langserver
-pkgver=2026.2.103
+pkgver=2026.2.104
 pkgrel=1
 pkgdesc="A spear to the Python language server built with black magic"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 )
 makedepends=(deno npm)
 source=("${_pkgname}-v${pkgver}.tar.gz::https://git.sr.ht/~self/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('ccdb266938937c117c2f1585a7ac016e729d421896175b355da18603f53c6675')
+sha256sums=('fb790283acd99f6df54fe0f24cc1752bae2cdb57767cac3bcb2e9e2137b9f60f')
 provides=("${pkgname}=${pkgver}")
 
 build() {
