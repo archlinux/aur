@@ -2,6 +2,7 @@ pkgbase = sysinfo-bin
 	pkgdesc = Simple neofetch-based system info wrapper
 	pkgver = 1.2
 	pkgrel = 1
+	install = sysinfopostinst.install
 	arch = any
 	license = MIT
 	depends = neofetch
