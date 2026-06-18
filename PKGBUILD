@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=res-downloader-bin
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="Download common network resources such as video accounts, mini programs, Douyin, Kuaishou, Xiaohongshu, live streams, m3u8, Kugou, QQ Music, etc.(Prebuilt version)视频号、小程序、抖音、快手、小红书、直播流、m3u8、酷狗、QQ音乐等常见网络资源下载!"
 arch=(
@@ -22,8 +22,8 @@ optdepends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.deb")
-sha256sums_aarch64=('34faaae0b86bacb6c14dc7097ec7e8d469b64a0d344d7898619a8f2a1217877a')
-sha256sums_x86_64=('0bb83e1bd4d2f5ea7ed9cea4e06f720806f4c823816ac17a54e0c61d7f56b0d7')
+sha256sums_aarch64=('b8e94b06c9e45487bb8aafb7e97ffe1c2246e3b9daa9ae78512338986f201f87')
+sha256sums_x86_64=('b450b7d416a394238e189faa1b6a293f6aeacef8d7f771feb4ff129cb63c43c0')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i -e "
