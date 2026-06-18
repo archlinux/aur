@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=pi-studio
-pkgver=0.1.29
+pkgver=0.1.31
 pkgrel=1
 _pi_ver=0.78.0
 pkgdesc="Local Codex-style desktop GUI for the Pi coding agent"
@@ -34,14 +34,14 @@ options=('!lto' '!debug')
 _pi_relurl="https://github.com/earendil-works/pi-mono/releases/download/v${_pi_ver}"
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('76c3f080a5202662cf5ec448dcc3e1e9a5ee4ba39cb757d9d2b0744cdc4e3e3e')
+sha256sums=('793bd9bf3e484ca526a67633aefcbbe195aea229a212026d7ee0892584ee63b2')
 source_x86_64=("pi-linux-x64-${_pi_ver}.tar.gz::${_pi_relurl}/pi-linux-x64.tar.gz")
 sha256sums_x86_64=('8ac03343d1e1228106e8172157f32d6b882829e46b34feaf577f171a5f1387cc')
 source_aarch64=("pi-linux-arm64-${_pi_ver}.tar.gz::${_pi_relurl}/pi-linux-arm64.tar.gz")
 sha256sums_aarch64=('49155173682473720d9decf4deecbed754fae84925ef003c0b66aac31d5f9005')
 
 prepare() {
-    cd "${pkgname}-${pkgver}"
+    cd "picot-${pkgver}"
 
     export HOME="${srcdir}/.home"
     mkdir -p "$HOME"
@@ -56,16 +56,16 @@ prepare() {
 
     export CARGO_HOME="${srcdir}/.cargo"
     export RUSTUP_TOOLCHAIN=stable
-    (cd src-tauri && cargo fetch --locked --target "${CARCH}-unknown-linux-gnu")
+    (cd src-tauri && cargo fetch --target "${CARCH}-unknown-linux-gnu")
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "picot-${pkgver}"
 
     export HOME="${srcdir}/.home"
     export CARGO_HOME="${srcdir}/.cargo"
     export RUSTUP_TOOLCHAIN=stable
-    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}/${pkgname}-${pkgver}=/build/${pkgname} --remap-path-prefix=${srcdir}/.cargo/registry=/cargo-registry"
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}/picot-${pkgver}=/build/${pkgname} --remap-path-prefix=${srcdir}/.cargo/registry=/cargo-registry"
 
     # Build extensions
     bun run build:extensions
@@ -75,13 +75,13 @@ build() {
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "picot-${pkgver}"
 
-    install -Dm755 "src-tauri/target/release/${pkgname}" \
+    install -Dm755 "src-tauri/target/release/picot" \
         "${pkgdir}/usr/bin/${pkgname}"
 
     # Frontend resources
-    local _libdir="${pkgdir}/usr/lib/PiStudio"
+    local _libdir="${pkgdir}/usr/lib/Picot"
     install -d "${_libdir}"
     cp -a public "${_libdir}/public"
 
@@ -102,13 +102,13 @@ package() {
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<'EOF'
 [Desktop Entry]
 Type=Application
-Name=Pi Studio
+Name=Picot
 Comment=Local Codex-style desktop GUI for the Pi coding agent
 Exec=pi-studio
 Icon=pi-studio
 Terminal=false
 Categories=Development;
-StartupWMClass=pi-studio
+StartupWMClass=picot
 EOF
 
     # Upstream declares MIT in package.json but ships no LICENSE file
