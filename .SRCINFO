@@ -1,6 +1,6 @@
 pkgbase = claude-cowork-service
 	pkgdesc = Native Linux backend for Claude Desktop Cowork
-	pkgver = 1.0.60
+	pkgver = 1.0.61
 	pkgrel = 1
 	url = https://github.com/patrickjaja/claude-cowork-service
 	install = claude-cowork-service.install
@@ -14,7 +14,7 @@ pkgbase = claude-cowork-service
 	optdepends = systemd: required for the systemd user service unit (provided by base on Arch)
 	optdepends = openrc: required to use the OpenRC init script (Artix Linux)
 	backup = etc/conf.d/claude-cowork
-	source = claude-cowork-service-1.0.60.tar.gz::https://github.com/patrickjaja/claude-cowork-service/archive/v1.0.60.tar.gz
-	sha256sums = 4398ac0f7c7abbf2a47eaf87bcbcb16b3d7be4ec28fcd828be743a5b9e4afaec
+	source = claude-cowork-service-1.0.61.tar.gz::https://github.com/patrickjaja/claude-cowork-service/archive/v1.0.61.tar.gz
+	sha256sums = d2e264ec0c6c3a3a52fa17f2fcf870cf7252e8da36a32b00e99f3bbcb2b7b17a
 
 pkgname = claude-cowork-service
