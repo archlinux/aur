@@ -3,7 +3,7 @@
 
 _name=plotnine
 pkgname=python-$_name
-pkgver=0.15.3
+pkgver=0.15.7
 pkgrel=1
 pkgdesc='A grammar of graphics for python'
 arch=(any)
@@ -32,28 +32,26 @@ makedepends=(
 	python-setuptools
 	python-setuptools-scm
 )
-checkdepends=(
-	python-pytest
-	python-pytest-cov
-	python-vcrpy
-	python-geopandas
-)
+# checkdepends=(
+# 	python-pytest
+# 	python-pytest-cov
+# 	python-vcrpy
+# 	python-geopandas
+# )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('2e8130db4673e0daccb1fd1dfc9f2a6cd2e7843b14f861f4ab861dde1639045f')
+sha256sums=('6e578bdd93c7ba12ce495dcdeaf8651f8e4ccdceb0c85b94c8195566d709c2a0')
 
 build() {
 	cd "${_name}-${pkgver}"
+	export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
 	python -m build --wheel --no-isolation
 }
 
-# Image tests are flaky, skip by default
-BUILDENV+=('!check')
-
-check() {
-	cd "${_name}-${pkgver}"
-	# Most tests are broken due to some plot components being shifted 1-2 pixels
-	# PYTHONPATH=. pytest --color=yes -v --maxfail=1
-}
+# Most tests are broken due to some plot components being shifted 1-2 pixels
+# check() {
+# 	cd "${_name}-${pkgver}"
+# 	PYTHONPATH=. pytest --color=yes -v --maxfail=1
+# }
 
 package() {
 	cd "${_name}-${pkgver}"
