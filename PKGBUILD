@@ -7,7 +7,7 @@ pkgrel=13
 pkgdesc='Various Arch Linux customizations that I do :3'
 arch=(any)
 makedepends=()
-source=(x-atapi-mimetypes.xml 51-dolphinbar.rules 51-gamecube-adapter.rules killsteam steam-monitor unfuck_bt unfuck_wpe mod-preload.conf 10-atapi-envs.conf)
+source=(x-atapi-mimetypes.xml 51-dolphinbar.rules 51-gamecube-adapter.rules killsteam steam-monitor unfuck_bt unfuck_wpe mod-preload.conf 10-atapi-envs.conf edit-in-imhex.desktop edit-in-kate.desktop)
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
