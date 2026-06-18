@@ -1,17 +1,17 @@
 pkgbase = systemrescue-systemd-boot
 	pkgdesc = SystemRescue as systemd-boot loader entry
-	pkgver = 13.00
+	pkgver = 13.01
 	pkgrel = 1
 	url = https://www.system-rescue.org/
 	arch = x86_64
 	license = GPL
 	depends = systemd
-	noextract = systemrescue-13.00-amd64.iso
+	noextract = systemrescue-13.01-amd64.iso
 	options = !debug
 	backup = boot/loader/entries/systemrescue.conf
-	source = https://fastly-cdn.system-rescue.org/releases/13.00/systemrescue-13.00-amd64.iso
+	source = https://fastly-cdn.system-rescue.org/releases/13.01/systemrescue-13.01-amd64.iso
 	source = systemrescue.conf
-	sha256sums = 47d2348bbcbbaede14e4c93395b8a36585f6180384a9cbe973bb753a44ca40a0
+	sha256sums = 56289b690bc87c85d2b9eb35790319b2d42cbdafbeae476b601dc0576b040b65
 	sha256sums = 3069828b2396c65e2ba23d0639ddf6eb50d543f30c57ac019d5a07135c0f93f3
 
 pkgname = systemrescue-systemd-boot
