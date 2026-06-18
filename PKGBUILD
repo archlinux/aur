@@ -10,7 +10,7 @@ url="https://github.com/SalbugVR/$_pkgname"
 license=("MIT")
 depends=("python" "python-osc" "python-pynput" "python-pillow" "python-psutil" "python-tinyoscquery-git" "tk" "python-pystray")
 makedepends=("python-setuptools")
-conflicts=("${pkgname}-git" "${pkgname}-nuitka" "${pkgname}-nuitka-git")
+conflicts=("${pkgname}-git")
 source=("https://github.com/SalbugVR/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         "vrchat-avatar-scaler.desktop"
 	"vrchat-avatar-scaler"
