@@ -8,9 +8,9 @@ pkgbase = devilwm
 	license = custom
 	depends = libxrandr
 	depends = dmenu
-	source = https://github.com/catnipsta/devilwm/releases/download/1.4.3/devilwm-1.4.3.tar.gz
+	source = git+https://github.com/catnipsta/devilwm.git
 	source = LICENSE
-	sha256sums = 15db76f2efb01229977618ebcc7e4310d8d5ed2ede6843e39cfffd232118a3c5
+	sha256sums =  
 	sha256sums = fc302a303187ffc836f9379d88f9fafc64b9bd30c8db31768cbfa491ea8e4d36
 
 pkgname = devilwm
