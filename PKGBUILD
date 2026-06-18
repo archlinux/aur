@@ -3,7 +3,7 @@
 # Formerly (until 2017-09-30): Jon Gjengset <jon at thesquareplanet dot com>
 
 pkgname=memtier_benchmark
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Redis and Memcached traffic generation and benchmarking tool"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('zlib' 'libmemcached' 'bash-completion' 'openssl')
 makedepends=('pcre' 'libevent')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/redis/memtier_benchmark/archive/${pkgver}.tar.gz")
-sha256sums=('6fc96177d194bfe393b9522b127df30f6d5ce4a2a403ba63eff0387278126957')
+sha256sums=('ef6f64a96385aa215702a0544db2e77711c93440fad73787d7bb6396fc97c0e5')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
