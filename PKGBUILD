@@ -3,8 +3,8 @@
 # Contributor: StaticNullException <aurcontact@teto.party>
 
 pkgname=zen-browser
-pkgver=1.20.2b
-pkgrel=2
+pkgver=1.21.1b
+pkgrel=3
 pkgdesc='Firefox-based web browser built from upstream release source snapshot'
 url='https://zen-browser.app'
 arch=('x86_64')
@@ -87,11 +87,13 @@ source=(
   "$pkgname.desktop"
   '0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch'
   '0004-Use-wasm32-wasip1-target.patch'
+  '0005-Fix-cbindgen-BudgetType_VALUES-COUNT-issue.patch'
 )
-sha256sums=('d2089d193acbbeca626a0496e78dc39d6fb7a428d5b2e3dd84b9aca7ff42f6f2'
+sha256sums=('e218d89839fa601931939c48f3cd811a80dd053cb5e33ef659573873262106ab'
             'af16fec9a88cbfffee34a6a4eb5b3074931477fcefee252840d77cf146568851'
             'c7d6572fe1ac76f6adbfb10102f284fd55690396ac0a275a5cfea9a2efa22b58'
-            '28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89')
+            '28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89'
+            '0a44b78d761a279786ba2801091fb75bffeb0d9ae93c41738d2f64464d40e4d3')
 noextract=("$_srcroot-$pkgver.tar.zst")
 
 prepare() {
@@ -103,6 +105,7 @@ prepare() {
 
   patch -Np1 -i "$srcdir/0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch"
   patch -Np1 -i "$srcdir/0004-Use-wasm32-wasip1-target.patch"
+  patch -Np1 -i "$srcdir/0005-Fix-cbindgen-BudgetType_VALUES-COUNT-issue.patch"
 
   cat >"$srcdir/mozconfig" <<EOF
 ac_add_options --enable-application=browser
@@ -194,8 +197,9 @@ package() {
   local _appdir="$pkgdir/usr/lib/$_launcher"
   local _size
 
-  if [[ -d "$pkgdir/usr/lib/zen" && ! -d "$_appdir" ]]; then
-    mv "$pkgdir/usr/lib/zen" "$_appdir"
+  if [[ -d "$pkgdir/usr/lib/firefox" && ! -d "$_appdir" ]]; then
+    mv "$pkgdir/usr/lib/firefox" "$_appdir"
+    ln -sf firefox "$_appdir/zen"
   fi
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_launcher" <<'EOF'
