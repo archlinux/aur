@@ -1,0 +1,32 @@
+pkgbase = ds4-rocm-git
+	pkgdesc = Run DeepSeek4 LLM optimised for ROCm (AMD GPUs).
+	pkgver = r332.80ebbc3
+	pkgrel = 1
+	url = https://github.com/antirez/ds4
+	install = manual-steps.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = hipcub
+	makedepends = rocm-llvm
+	makedepends = rocminfo
+	makedepends = rocwmma
+	depends = curl
+	depends = hip
+	depends = hipblas
+	depends = hipblaslt
+	provides = ds4=r332.80ebbc3
+	conflicts = ds4
+	options = !lto
+	source = ds4-rocm::git+https://github.com/antirez/ds4.git#branch=main
+	source = download-dir.patch
+	source = ds4.service
+	source = sysusers.conf
+	source = tmpfiles.conf
+	sha256sums = SKIP
+	sha256sums = 88c01b9b2028bcf99a5374ec0b629d2e6462cb116c42723419ce3b138eae9b45
+	sha256sums = bed8b3ede69cedbc8e418e8990efde223290de6618bbf0a52a86da4384b538f5
+	sha256sums = 3085727fee5e492c34c2da1cc78486531ff25a2f368fa12d3854c3c65492a811
+	sha256sums = ac3ea5d0a4f38012e10a1834780798d75e0aff9e5d578436fe628c8a61d4caa6
+
+pkgname = ds4-rocm-git
