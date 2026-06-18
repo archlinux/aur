@@ -1,5 +1,5 @@
---- neservice	2025-07-22 15:31:30.298573158 -0400
-+++ neservice	2025-07-22 15:32:22.201598776 -0400
+--- netextender.old/neservice	2026-04-08 22:55:10.000000000 -0400
++++ netextender.new/neservice	2026-06-18 16:29:43.245622247 -0400
 @@ -9,12 +9,12 @@
  # Description:       SonicWall NetExtender Service
  ### END INIT INFO

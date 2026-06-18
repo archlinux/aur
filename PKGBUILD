@@ -11,7 +11,7 @@
 # Contributor: Roman Pearah
 
 pkgname=netextender
-pkgver=10.3.1_29
+pkgver=10.3.5_36
 pkgrel=1
 pkgdesc="SonicWALL SSL VPN Client"
 arch=('aarch64' 'x86_64')
@@ -19,7 +19,7 @@ url="https://www.sonicwall.com/en-us/products/remote-access/vpn-client"
 license=('custom')
 depends=('bash' 'ppp' 'net-tools' 'webkit2gtk-4.1')
 source_aarch64=(
-  "https://software.sonicwall.com/NetExtender/NetExtender-linux-arm64-${pkgver%%_*}.tar.gz"
+  "https://software.sonicwall.com/NetExtender/NetExtender-linux-arm64-${pkgver/_/-}.tar.gz"
   "https://www.sonicwall.com/legal/general-product-agreement"
   "com.sonicwall.NetExtender.desktop.patch"
   "NEService.service.patch"
@@ -27,7 +27,7 @@ source_aarch64=(
   "netextender.install"
 )
 source_x86_64=(
-  "https://software.sonicwall.com/NetExtender/NetExtender-linux-amd64-${pkgver%%_*}.tar.gz"
+  "https://software.sonicwall.com/NetExtender/NetExtender-linux-amd64-${pkgver/_/-}.tar.gz"
   "https://www.sonicwall.com/legal/general-product-agreement"
   "com.sonicwall.NetExtender.desktop.patch"
   "NEService.service.patch"
@@ -35,19 +35,19 @@ source_x86_64=(
   "netextender.install"
 )
 sha256sums_aarch64=(
-  "3bdd05fb8398506f1790efa482108e89d2ae5911a4b3c9bd6a8b1fbc6f93c39b"
+  "94d594f2fb98ad8cea845c6d60d4de76a7dcf57a88f7f0ba59c2fd77380e59c1"
   "SKIP"
-  "88a386970951db386eef17db0fd0e69a158082f9ce158f7d8443724240d2acaa"
-  "2508a93a89554078b9d1d1287b28d515013725cea8c34d52ed9b1e67c04b231d"
-  "3fbebc2942918484ddcbcfae02e6161069e43e8fcc0446770fa2edaa51094fb8"
+  "78b99c39bf7de7bb5be7e2d73628f94df25c6572d9e9fb92da95696cef5b1570"
+  "35722921dfc9eae9ba21dd250128cdfd2d55e70d028d228ed9c66f94bf7c4273"
+  "7c64cd38edb35aaf601fc01b9982fffc42542917832f9155c8ccf6605331ce9d"
   "27b25c1e57bf29ddb9dc422926b5aedf6f4bbba37e2d9196ab92869d8c7c9fcb"
 )
 sha256sums_x86_64=(
-  "849170d96c89e9b81b95f5eda337365178feff3bc22a17886c4c241253d74376"
+  "88582fa96fb1ddf287683bc366a7198a5e3e6ecdc4773df9136dfa3e493da386"
   "SKIP"
-  "88a386970951db386eef17db0fd0e69a158082f9ce158f7d8443724240d2acaa"
-  "2508a93a89554078b9d1d1287b28d515013725cea8c34d52ed9b1e67c04b231d"
-  "3fbebc2942918484ddcbcfae02e6161069e43e8fcc0446770fa2edaa51094fb8"
+  "78b99c39bf7de7bb5be7e2d73628f94df25c6572d9e9fb92da95696cef5b1570"
+  "35722921dfc9eae9ba21dd250128cdfd2d55e70d028d228ed9c66f94bf7c4273"
+  "7c64cd38edb35aaf601fc01b9982fffc42542917832f9155c8ccf6605331ce9d"
   "27b25c1e57bf29ddb9dc422926b5aedf6f4bbba37e2d9196ab92869d8c7c9fcb"
 )
 

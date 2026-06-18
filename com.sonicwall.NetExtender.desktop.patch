@@ -1,5 +1,5 @@
---- com.sonicwall.NetExtender.desktop	2024-10-28 07:18:58.000000000 -0400
-+++ com.sonicwall.NetExtender.desktop	2025-07-21 16:17:26.731878184 -0400
+--- netextender.old/com.sonicwall.NetExtender.desktop	2026-04-08 22:55:10.000000000 -0400
++++ netextender.new/com.sonicwall.NetExtender.desktop	2026-06-18 16:38:39.761957271 -0400
 @@ -1,7 +1,7 @@
  [Desktop Entry]
  Categories=Office
