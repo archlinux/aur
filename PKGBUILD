@@ -5,7 +5,7 @@ _pkgname=termflix
 pkgname=${_pkgname}-bin
 pkgdesc="Terminal animation player with many procedurally generated animations, multiple render modes, and true color support"
 
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,10 +25,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}")
-sha256sums=('a899d38aacf82a84e719eb04015819b89de13195fa77af3f1a321ec16c640168'
+sha256sums=('bb1ca34d2f5cdab810f03b4d6d3679458e2535c2e55bd647f20831385826382c'
             '93ae6ba13f66e259f90f83bc0cb8c218a5891858ac0cb168b7d3835fd636c150')
-sha256sums_x86_64=('8388aad13aed8a16448327f656b4a367448105437ae0e765de4cbd2e0fe54a17')
-sha256sums_aarch64=('510df41bdac3e7a8778bc79df1fb1daeaa956dfd597be8f2ce150d33e9c784f3')
+sha256sums_x86_64=('b4ca2f5598d198aa0a57907f235a13aaadc8c4716e158a40356e5aeb69de4179')
+sha256sums_aarch64=('301b4b40fd242c5080ef6f4da45d7a7025042b8d75bce9373e83645357fa02c0')
 
 
 package() {
