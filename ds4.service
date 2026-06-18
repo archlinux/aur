@@ -4,6 +4,7 @@ Wants=network-online.target
 After=network.target network-online.target
 
 [Service]
+# Note: the upstream docs use the default port of 8000. Here we configure it to be 11435 for a less likely clash with other services.
 ExecStart=/usr/bin/ds4-server --model /var/lib/ds4/ds4flash.gguf --ctx 100000 --kv-disk-dir /tmp/ds4-kv --kv-disk-space-mb 8192 --port 11435
 WorkingDirectory=/var/lib/ds4
 User=ds4
