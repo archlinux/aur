@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=evtx
-pkgver=0.11.2
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="Cross-platform parser for Windows XML EventLog Format"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc' 'libgcc')
 makedepends=('cargo')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b1a8d6c2e176fc67d9c6431255847d657024ac4ec32c8752375e189171bcfa57')
+sha256sums=('d1d69b5e4daab47214eec816bb3ef3b4cdadf3921879b4c422210b8dda297cd3')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
