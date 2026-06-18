@@ -1,16 +1,19 @@
 pkgbase = af-pro-display-bin
-	pkgdesc = Service that displays CPU and GPU temperatures on the Antec Flux Pro case display.
-	pkgver = 0.1.2
+	pkgdesc = Service to display CPU and GPU temperatures in real-time on the Antec Flux Pro case display.
+	pkgver = 0.1.3
 	pkgrel = 1
-	url = https://github.com/KylerianHD/af-pro-display-bin
+	url = https://github.com/KylerianHD/antec-flux-pro-display
 	install = af-pro-display-bin.install
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = rust
-	makedepends = cargo
-	depends = systemd
 	depends = gcc-libs
-	source = af-pro-display-0.1.2.tar.gz::https://github.com/nishtahir/antec-flux-pro-display/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 3e036ab7f8ebacc65a6df0ec97d3fcb5397edb5d8f98e917eebd2d4cb27f362b
+	depends = glibc
+	depends = libusb
+	depends = systemd-libs
+	optdepends = nvidia-utils: GPU temperature readout through NVML
+	provides = af-pro-display
+	conflicts = af-pro-display
+	source_x86_64 = https://github.com/KylerianHD/antec-flux-pro-display/releases/download/v0.1.3/af-pro-display-0.1.3-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 30d606f085eeff0311951414bd41b0506afc95e0d357d30650bc699f3106aba5
 
 pkgname = af-pro-display-bin

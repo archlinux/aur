@@ -1,46 +1,32 @@
 # Maintainer: ToxicByte (aka. KylerianHD) <contact@kylerianhd.com>
 pkgname=af-pro-display-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
-pkgdesc="Service that displays CPU and GPU temperatures on the Antec Flux Pro case display."
+pkgdesc="Service to display CPU and GPU temperatures in real-time on the Antec Flux Pro case display."
 arch=('x86_64')
-url="https://github.com/KylerianHD/af-pro-display-bin"
+url="https://github.com/KylerianHD/antec-flux-pro-display"
 license=('GPL-3.0-only')
-depends=('systemd' 'gcc-libs')
-makedepends=('rust' 'cargo')
-install="$pkgname.install"
-_sourcepkgname=af-pro-display
-source=("$_sourcepkgname-$pkgver.tar.gz::https://github.com/nishtahir/antec-flux-pro-display/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3e036ab7f8ebacc65a6df0ec97d3fcb5397edb5d8f98e917eebd2d4cb27f362b')
-
-prepare() {
-    cd "antec-flux-pro-display-$pkgver"
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-}
-
-build() {
-    cd "antec-flux-pro-display-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release
-}
+depends=('gcc-libs' 'glibc' 'libusb' 'systemd-libs')
+optdepends=('nvidia-utils: GPU temperature readout through NVML')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+source_x86_64=("$url/releases/download/v$pkgver/af-pro-display-$pkgver-$CARCH-linux.tar.gz")
+sha256sums_x86_64=('30d606f085eeff0311951414bd41b0506afc95e0d357d30650bc699f3106aba5')
 
 package() {
-    cd "antec-flux-pro-display-$pkgver"
+    cd "af-pro-display-$pkgver-$CARCH-linux"
 
     # Binary
-    install -Dm755 "target/release/af-pro-display" \
-        "$pkgdir/usr/bin/af-pro-display"
+    install -Dm755 af-pro-display "$pkgdir/usr/bin/af-pro-display"
 
-    # udev rules - grants session-based USB access via uaccess tag (no plugdev group needed)
-    install -Dm644 "packaging/udev/99-af-pro-display.rules" \
+    # udev rules - grants session-based USB access via uaccess tag
+    install -Dm644 99-af-pro-display.rules \
         "$pkgdir/usr/lib/udev/rules.d/99-af-pro-display.rules"
 
-    # systemd service (not auto-enabled; user enables manually per Arch guidelines)
-    install -Dm644 "packaging/systemd/af-pro-display.service" \
+    # systemd service
+    install -Dm644 af-pro-display.service \
         "$pkgdir/usr/lib/systemd/system/af-pro-display.service"
 
     # License
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
