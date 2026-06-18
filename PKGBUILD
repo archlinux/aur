@@ -1,62 +1,58 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=candle-git
-pkgver=r19.602608d
+pkgver=11.2.r8.ga4798f6
 pkgrel=1
-pkgdesc="An elegant automatic screen extinguishing stopper"
+pkgdesc="GRBL controller application with G-Code visualizer written in Qt"
 arch=($CARCH)
-url="https://github.com/HuanSoft-Open-Source-Community/candle"
+url="https://github.com/Denvi/Candle"
 license=('GPL-3.0-only')
 depends=(
-	dtk6core
-	dtk6log
-	dtk6widget
 	glibc
 	libgcc
 	libstdc++
-	qt6-base
 	hicolor-icon-theme
+	qt5-base
+	qt5-multimedia
+	qt5-script
+	qt5-serialport
+	qt5-tools
+	qt5-websockets
 )
 makedepends=(
 	cmake
 	ninja
-	dtk6gui
 	git
-	qt6-tools
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()
-install=${pkgname%-git}.install
+install=
 source=(
-    "${pkgname}::git+${url}.git"
-	${pkgname%-git}.install
+    "${pkgname%-git}::git+${url}.git"
 )
-sha256sums=('SKIP'
-            '2e19fa4604a34ad14b8db58b3e36927c2f4df945b112d256a1de96bdd4883a10')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
-    (
+    cd "${srcdir}/${pkgname%-git}"
+	(
         set -o pipefail
-        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --exclude=nightly --long --tag --abbrev=7 2>/dev/null |sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
             printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
-prepare() {
-	cd "${srcdir}/${pkgname}"
-	sed -i 's|/opt/apps/org.yxzl.candle|/usr|g' config/numlockd.service
-	sed -i 's|/opt/apps/org.yxzl.candle|/usr|g' CMakeLists.txt
-}
+# prepare() {
+# 	cd "${srcdir}/${pkgname%-git}"
+# }
 
 build() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname%-git}"
 	# see：https://wiki.archlinux.org/title/CMake_package_guidelines
 	cmake -DCMAKE_BUILD_TYPE=None \
-		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_PREFIX=/usr/share/candle \
 		-Wno-dev \
 		-B build \
 		-G Ninja
@@ -65,28 +61,16 @@ build() {
 }
 
 # check() {
-# 	cd "${srcdir}"/${pkgname}/
+# 	cd "${srcdir}"/${pkgname%-git}/
 # 	ninja -C build test
 # }
 
 package() {
-	cd "${srcdir}"/${pkgname}/
+	cd "${srcdir}"/${pkgname%-git}/
 	DESTDIR="${pkgdir}" ninja -C build install
-	install -vDm644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-	install -vDm644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/99-candle.rules" << EOF
-KERNEL=="uinput", MODE="0660", GROUP="input"
-EOF
-	install -vDm644 /dev/stdin "${pkgdir}/usr/share/applications/org.yxzl.candle.desktop" << EOF
-[Desktop Entry]
-Name=Candle
-Name[zh_CN]=秉烛
-Comment=Prevent screen dimming and system sleep
-Comment[zh_CN]=防止屏幕变暗和系统休眠
-Exec=candle
-Icon=org.yxzl.candle
-Type=Application
-Categories=Utility;System;
-Terminal=false
-StartupNotify=true
-EOF
+	install -vdm755 ${pkgdir}/usr/bin/
+	ln -sf /usr/share/candle/candle ${pkgdir}/usr/bin/candle
+	install -vDm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -vDm644 src/candle/images/icon.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/candle.svg
+	install -vDm644 deploy/linux/usr/share/applications/candle.desktop -t  "${pkgdir}/usr/share/applications/"
 }
