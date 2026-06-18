@@ -16,7 +16,7 @@ makedepends=(
   'dotnet-sdk>=10.0'
   'git'
 )
-options=('!lto')
+options=('!lto' '!debug')
 
 # Git source with submodule
 source=("${pkgname}::git+https://github.com/AscendLiu/LiteDBStudio.git#tag=v${pkgver}")
