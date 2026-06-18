@@ -1,6 +1,6 @@
 pkgbase = cue-normalize
 	pkgdesc = Minimal Bash CLI to normalize and repair problematic CUE files
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/seryogakovalyov/cue-normalize
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = cue-normalize
 	depends = sed
 	optdepends = uchardet: better encoding detection
 	options = !debug
-	source = cue-normalize-1.0.1.tar.gz::https://github.com/seryogakovalyov/cue-normalize/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 19235d217578ed437988172d5fd4f22dbf8a76ae5a1370cb9709a04ef85c4865
+	source = cue-normalize-1.1.0.tar.gz::https://github.com/seryogakovalyov/cue-normalize/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 786e2e91369c2b39d3f0872a512b725b57a62e3fef77ddc10217dfdee75f68bf
 
 pkgname = cue-normalize
