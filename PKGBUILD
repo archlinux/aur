@@ -1,7 +1,7 @@
 # Maintainer: ZXY595 <3303057136@qq.com>
 _pkgname=vtcode
 pkgname=$_pkgname-bin
-pkgver=0.131.1
+pkgver=0.132.0
 pkgrel=1
 pkgdesc="An open-source coding agent with LLM-native code understanding and robust shell safety."
 arch=('x86_64')
