@@ -25,6 +25,7 @@ makedepends=(
   openssl
   pahole
   perl
+  polly
   python
   rust
   rust-bindgen
