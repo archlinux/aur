@@ -1,7 +1,7 @@
 # Maintainer: gralito <gralito@protonmail.com>
 pkgname=upyay
-pkgver=3.1.2
-pkgrel=3
+pkgver=3.1.3
+pkgrel=1
 pkgdesc="A yay wrapper written in pure bash."
 arch=('any')
 url="https://github.com/gralito/upyay"
@@ -20,8 +20,8 @@ package() {
 	touch "/home/$USER/.logs/upyay/upyay.lock"
 
 	# install files
-	install -Dm755 upyay.sh "/usr/local/bin/upyay"
-	install -Dm644 README.md "/usr/share/doc/$pkgname/README.md"
-	install -Dm644 upyay.conf "/home/$USER/.config/$pkgname/upyay.conf"
-	install -Dm644 LICENSE "/usr/share/licenses/$pkgname/LICENSE"
+	sudo install -Dm755 upyay.sh "/usr/local/bin/upyay"
+	sudo install -Dm644 README.md "/usr/share/doc/$pkgname/README.md"
+	sudo install -Dm644 upyay.conf "/home/$USER/.config/$pkgname/upyay.conf"
+	sudo install -Dm644 LICENSE "/usr/share/licenses/$pkgname/LICENSE"
 }
