@@ -11,6 +11,10 @@ checkpcscd() {
     fi
 }
 
+pre_install() {
+    rm -f /opt/eidklient/lib/patched/*
+}
+
 ## arg 1:  the new package version
 post_install() {
     /opt/eidklient/patch-qt
@@ -19,6 +23,10 @@ post_install() {
 }
 
 pre_remove() {
+    rm -f /opt/eidklient/lib/patched/* /usr/lib/eID_klient/libQt6*
+}
+
+pre_upgrade() {
     rm -f /opt/eidklient/lib/patched/*
 }
 

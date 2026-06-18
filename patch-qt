@@ -8,5 +8,5 @@ for lib in libQt6{Core,Widgets}.so.6; do
 	objcopy \
 		--remove-section .note.gnu.property \
 		"/usr/lib/${lib}" \
-		"/opt/eidklient/lib/patched/${lib}"
+		"/usr/lib/eID_klient/${lib}"
 done
