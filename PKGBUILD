@@ -1,6 +1,6 @@
 # Maintainer: FAHAD ALYAMI <thecord2000@gmail.com>
 pkgname=tmuxai-bin
-pkgver=2.1.2
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="AI-Powered, Non-Intrusive Terminal Assistant for tmux (binary release)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('tmux')
 provides=('tmuxai')
 conflicts=('tmuxai' 'tmuxai-git')
 source=("https://github.com/alvinunreal/tmuxai/releases/download/v${pkgver}/tmuxai_Linux_amd64.tar.gz")
-sha256sums=('ac2d37ca16b97b286e1b6473e6ec509680a0a8f4d947d21e00b67efc53994551')
+sha256sums=('8ddcd15676351c77b20513defa47ff4afa57dcd3d15e3f1371ce7327e511456e')
 
 package() {
     # Install binary
