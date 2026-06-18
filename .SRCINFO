@@ -1,7 +1,7 @@
 pkgbase = memtier_benchmark
 	pkgdesc = Redis and Memcached traffic generation and benchmarking tool
-	pkgver = 2.3.0
-	pkgrel = 2
+	pkgver = 2.3.1
+	pkgrel = 1
 	url = https://github.com/redis/memtier_benchmark
 	arch = x86_64
 	license = GPL2
@@ -11,7 +11,7 @@ pkgbase = memtier_benchmark
 	depends = libmemcached
 	depends = bash-completion
 	depends = openssl
-	source = memtier_benchmark-2.3.0.tar.gz::https://github.com/redis/memtier_benchmark/archive/2.3.0.tar.gz
-	sha256sums = 4c3238e28e63b524e6adf31e3c306af911597c5a73da4957b1dd2498d6ae7c74
+	source = memtier_benchmark-2.3.1.tar.gz::https://github.com/redis/memtier_benchmark/archive/2.3.1.tar.gz
+	sha256sums = 0b63a9289399dbf7e04ee2213d0229c831274bb8f64ef8ff2e8f36896aa34146
 
 pkgname = memtier_benchmark
