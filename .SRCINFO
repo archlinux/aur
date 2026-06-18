@@ -18,13 +18,11 @@ pkgbase = polyorb
 	depends = xmlada
 	depends = gnatcoll-core
 	depends = openssl
-	source = git+https://github.com/AdaCore/PolyORB.git#branch=26.2
-	source = patch-Makefile.in
+	source = git+https://github.com/charlie5/PolyORB.git
 	source = json-build.sh-update_to_gnat22-patch
 	source = Makefile.in-update_to_gnat22-patch
 	source = polyorb_common.gpr-update_to_gnat22-patch
 	sha256sums = SKIP
-	sha256sums = c0703efe44949b5adb1be9fcb44110a132fbca81dda690a6623bc326df94328a
 	sha256sums = 705eb90b1ca895b1cae5a8e589c1da367e7bd6e0178d4c284908fe6291f630d8
 	sha256sums = f80fa5fd04a56c4d20c5768fc8cbdcc3b57734c32d059db00c999b51265db338
 	sha256sums = 9653e61e564eb00de9dcc372fd68f6bc14822ea28056556ced9cc3e0c2a08787

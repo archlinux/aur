@@ -23,14 +23,15 @@ makedepends=(gprbuild
              python-sphinx_rtd_theme
              texlive-meta)
 
-source=(git+https://github.com/AdaCore/PolyORB.git#branch=$pkgver
-        patch-Makefile.in
+#source=(git+https://github.com/AdaCore/PolyORB.git#branch=$pkgver
+source=(git+https://github.com/charlie5/PolyORB.git
+#        patch-Makefile.in
         json-build.sh-update_to_gnat22-patch
         Makefile.in-update_to_gnat22-patch
         polyorb_common.gpr-update_to_gnat22-patch)
 
 sha256sums=(SKIP
-            c0703efe44949b5adb1be9fcb44110a132fbca81dda690a6623bc326df94328a
+#            c0703efe44949b5adb1be9fcb44110a132fbca81dda690a6623bc326df94328a
             705eb90b1ca895b1cae5a8e589c1da367e7bd6e0178d4c284908fe6291f630d8
             f80fa5fd04a56c4d20c5768fc8cbdcc3b57734c32d059db00c999b51265db338
             9653e61e564eb00de9dcc372fd68f6bc14822ea28056556ced9cc3e0c2a08787)
@@ -40,7 +41,7 @@ prepare()
 {
    cd $srcdir/PolyORB
 
-   patch -p1 -i $srcdir/patch-Makefile.in
+ #  patch -p1 -i $srcdir/patch-Makefile.in
    patch -p0 -i $srcdir/json-build.sh-update_to_gnat22-patch
    patch -p0 -i $srcdir/Makefile.in-update_to_gnat22-patch
    patch -p0 -i $srcdir/polyorb_common.gpr-update_to_gnat22-patch
