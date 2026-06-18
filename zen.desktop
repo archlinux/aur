@@ -1,0 +1,23 @@
+[Desktop Entry]
+Name=Zen Browser
+Comment=A fast, private and secure web browser built to improve your day-to-day experience.
+Exec=zen-browser %u
+Icon=zen-browser
+Type=Application
+MimeType=application/json;application/pdf;application/rdf+xml;application/rss+xml;application/x-xpinstall;application/xhtml+xml;application/xml;audio/flac;audio/ogg;audio/webm;image/avif;image/gif;image/jpeg;image/png;image/svg+xml;image/webp;text/html;text/xml;video/ogg;video/webm;x-scheme-handler/chrome;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/mailto;
+StartupWMClass=zen
+Categories=Network;WebBrowser;
+StartupNotify=true
+Terminal=false
+X-MultipleArgs=false
+GenericName=Web Browser
+Keywords=Internet;WWW;Browser;Web;Explorer;HDR;Wide Gamut;
+Actions=new-window;private-window;
+
+[Desktop Action new-window]
+Name=Open a New Window
+Exec=zen-browser --new-window %u
+
+[Desktop Action private-window]
+Name=Open a New Private Window
+Exec=zen-browser --private-window %u
