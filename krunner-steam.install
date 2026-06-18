@@ -1,3 +1,3 @@
 post_install() {
-	kquitapp6 krunner
+	echo "Please run `kquitapp6 krunner` to load the plugin"
 }
