@@ -4,7 +4,7 @@
 pkgname=libarchive-static
 _pkgname=libarchive
 pkgver=3.8.7
-pkgrel=2
+pkgrel=3
 _attrver=2.5.2
 _aclver=2.3.2
 _sslver=3.6.3
@@ -110,6 +110,13 @@ fi
 # to enable func64 interface in musl for 64-bit file system functions
 export CFLAGS+=' -D_LARGEFILE64_SOURCE'
 export CXXFLAGS+=' -D_LARGEFILE64_SOURCE'
+
+# GCC 16 added -latomic_asneeded which musl-gcc's search path doesn't cover
+GCC_MAJOR=$(gcc -dumpversion | cut -d. -f1)
+if test "${GCC_MAJOR}" -ge 16; then
+    export CC+=' -fno-link-libatomic'
+    export CFLAGS+=' -fno-link-libatomic'
+fi
 
 # keep using xz-compressed packages, because one use of the package is to
 # recover on systems with broken zstd support in libarchive
