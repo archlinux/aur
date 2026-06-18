@@ -5,7 +5,7 @@
 
 pkgname=claude-code
 pkgver=2.1.181
-pkgrel=1
+pkgrel=2
 pkgdesc="An agentic coding tool that lives in your terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/anthropics/claude-code"
@@ -35,11 +35,15 @@ sha256sums_aarch64=('1393f993533e08d5c96245504750a7fcfe37490a5f44eec35b0beac3d70
 package() {
 	install -Dm755 "${srcdir}/claude-${pkgver}-${CARCH}" "${pkgdir}/opt/claude-code/bin/claude"
 
-	# Create wrapper script to disable upstream update paths
+	# Create wrapper script to disable upstream update paths, and to suppress the
+	# native-install health check. Claude Code expects the native installer layout
+	# (~/.local/bin/claude); since we install to /opt + /usr/bin it would otherwise
+	# warn on every startup: "claude command at ~/.local/bin/claude missing or broken".
 	install -dm755 "${pkgdir}/usr/bin"
 	cat > "${pkgdir}/usr/bin/claude" << 'EOF'
 #!/bin/sh
 export DISABLE_UPDATES=1
+export DISABLE_INSTALLATION_CHECKS=1
 exec /opt/claude-code/bin/claude "$@"
 EOF
 	chmod 755 "${pkgdir}/usr/bin/claude"
