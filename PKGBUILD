@@ -2,7 +2,7 @@
 
 pkgname=serial-studio
 _pkgname=Serial-Studio
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=($CARCH)
@@ -14,13 +14,17 @@ depends=(
     expat
     glibc
     libgcc
+    libglvnd
     libstdc++
+    $_qt-5compat
     $_qt-base
     $_qt-declarative
-    $_qt-canvaspainter 
     $_qt-connectivity
     $_qt-graphs
+    $_qt-positioning
+    $_qt-quick3d
     $_qt-serialport
+    $_qt-shadertools
     $_qt-svg
     $_qt-webengine
     zlib
@@ -30,8 +34,7 @@ makedepends=(
     git
     ninja
     openssl
-    $_qt-5compat
-    $_qt-quick3d
+    $_qt-canvaspainter 
     $_qt-tools
     pkgconf
     vulkan-headers
@@ -43,7 +46,7 @@ backup=()
 options=()
 install=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('5388b7cbebfc30f0d107ff698ccd7e95a70e7d3e3ac88ffadb81674ec11b03b6')
+sha256sums=('e820d6b464618d4c8216a2d84f1607d7c077a0a4ade2558197c5ee185420cc0d')
 noextract=()
 
 prepare() {
