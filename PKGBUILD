@@ -15,8 +15,7 @@ _ffbuild=1
 _l10n_commit=5db0b9bd7b7bdb9a5671cc504da09caf65d5d3b1
 _lwrelver=100
 pkgver="${_ffsrcver}.${_lwrelver}"
-pkgrel=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
@@ -183,8 +182,8 @@ prepare() {
   echo "${_lwrelver}" > release
   git submodule update --init --recursive
   rm -rf "${_lw_srcdir}/"* "${_lw_srcdir}/".* || true
-  mv "${srcdir}/firefox-${_ffsrcver%b*}"/* "${srcdir}/firefox-${_ffsrcver%b*}"/.* "${_lw_srcdir}/"
   mkdir -p "${_lw_srcdir}/lw"
+  mv "${srcdir}/firefox-${_ffsrcver%b*}"/* "${srcdir}/firefox-${_ffsrcver%b*}"/.* "${_lw_srcdir}/"
   mv "../firefox-l10n-${_l10n_commit}" "${_lw_srcdir}/lw/l10n"
 
   python3 scripts/librewolf-patches.py "${_ffsrcver}" "${_lwrelver}"
