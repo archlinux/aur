@@ -2,7 +2,7 @@
 
 pkgname='zoi-bin'
 _tag="Prod-Release-$pkgver"
-pkgver=1.18.5
+pkgver=1.18.6
 pkgrel=1
 pkgdesc="Advanced Package Manager & Environment Orchestrator (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -24,9 +24,9 @@ source_x86_64=("${pkgname%-bin}-linux-amd64.tar.zst::$url/-/releases/Prod-Releas
 source_aarch64=("${pkgname%-bin}-linux-arm64.tar.zst::$url/-/releases/Prod-Release-$pkgver/downloads/${pkgname%-bin}-linux-arm64.tar.zst"
   "LICENSE::$_license_url")
 
-sha512sums_x86_64=('1e870428ab3156b198e8136f14e4a3d0710b27e3ab6185885626d21484f492b494c5c6274713db4798f7d1e61a06bbfe00be5f58a506e1ce15d10432718cf46d'
+sha512sums_x86_64=('1fa1c71cb3170def8abd56ab0343185472d983e067df78d5f716de87bffc0a265bcffa122bf82924f9f7326ccdca1c7b8c1c3c0539f74f76de705dbf0c4d0ac9'
   'e2cca3fc757382874694b00e85372aa114ef6f6196d767ba445b4499f170ef6589e3aab60d41615bdc1a74596a1f0f6b148a934b19b69e639de1fddf6dd2b2ea')
-sha512sums_aarch64=('dded3bc745d524d0646d7dec53a1ca5f5b07f2bfd610a2fcab23ea0a360b246b4f7f9eba936ef1d11cd9b873f854860e558968f9886db3dcb3930a690dc0e8d0'
+sha512sums_aarch64=('9c84b3948fbfae1231d6986628cf8ef7ef6fcc0d0291efab62398dfdbfbe699ba08bbc3a7ff1768374f7481c86a4b26eac14fd94a552f67bacb3b309ad1b378f'
   'e2cca3fc757382874694b00e85372aa114ef6f6196d767ba445b4499f170ef6589e3aab60d41615bdc1a74596a1f0f6b148a934b19b69e639de1fddf6dd2b2ea')
 
 package() {
