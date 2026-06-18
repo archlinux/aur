@@ -1,6 +1,6 @@
 pkgbase = tapeback-tray
 	pkgdesc = System tray icon for tapeback (start/stop recording from tray)
-	pkgver = 0.9.6
+	pkgver = 0.9.7
 	pkgrel = 1
 	url = https://github.com/yastcher/tapeback
 	install = tapeback-tray.install
