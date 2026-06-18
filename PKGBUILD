@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-agent-tpm
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Moshpit agent daemon — TPM 2.0 sealed vault unlock backend"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('moshpit-agent' 'moshpit-agent-fido2' 'moshpit-agent-systemd-creds'
 depends=('tpm2-tss')
 makedepends=('cargo' 'cmake' 'gcc' 'tpm2-tss')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/moshpit/archive/v$pkgver.tar.gz")
-sha256sums=('728cf19995ea86f0d824dbff9af1b58f3074f61387a4527a84e5a269f2c2de29')
+sha256sums=('0b08f576be87f6b8cee57fd42c4656523b756e2dfec94077d0f36633d1e327e4')
 
 prepare() {
     cd "moshpit-$pkgver"
