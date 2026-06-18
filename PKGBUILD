@@ -2,9 +2,9 @@
 
 pkgname=tango-starter
 _pkgname=starter
-pkgver=9.0
+pkgver=9.1
 _pkgver=Starter-${pkgver}
-pkgrel=2
+pkgrel=1
 groups=("tango-controls")
 pkgdesc="This device server is able to control Tango device servers."
 arch=("x86_64" "armv7h")
@@ -17,7 +17,7 @@ source=(
   "tango-starter.service" "tango-sys.conf" "fortify.patch"
 )
 sha256sums=(
-  "8c747abcacc53c6431d9c7a0c01f49f2810a7535685692846bc6055063c51c5f"
+  "d60126d57df0c6007f21f5032bdf63065f38caca8958f682c6acb00f27c5295c"
   "c00c64ee4c3cda870471cb8bfe0a7e2273bf2b69056bd0687bac9d9be2cb984b"
   "befddd224a022acbded2cc0bd9ff217902cd2f7e092a901ff0c6b4065e550659"
   "65cafb5ad5068582e5fa8e89dfc3cd2081dd037ae77e1b5b7b2591982d34bfd5"
