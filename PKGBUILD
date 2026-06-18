@@ -3,7 +3,7 @@
 
 _pkgname=oksh
 pkgname=ksh-oksh
-pkgver=7.8
+pkgver=7.9
 pkgrel=1
 pkgdesc='Ported version of ksh from OpenBSD'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('ksh' 'ksh93' 'oksh')
 backup=(etc/ksh.kshrc)
 install=oksh.install
 source=("https://github.com/ibara/oksh/releases/download/$_pkgname-$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('3b30d5a1183b829590cc020d8ab87f22d288e98dc3fdf12feb7159536beaa950')
+sha256sums=('51b2d92515950c959dbf24f6fc33336db8c0526c2a50fee4ca598a18a6114a49')
 
 build() {
   cd $_pkgname-$pkgver
