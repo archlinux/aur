@@ -1,6 +1,6 @@
 # Maintainer: Plague-doctor <plague <at> privacyrequired <dot> com>
 pkgname=ntpdiag
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="NTP diagnostic utility — query a server or inspect the local clock"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 # The release profile strips symbols, so a -debug split package would be empty.
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('85af1a0ca94704c035e71b881e99a0117cd76d6713a224af0784e6c0d6a622b0')
+sha256sums=('7e170e972a26d070386c9a3c6254f92896f6cbcaae84cd02beb4dee73e701d9e')
 
 prepare() {
     cd "$pkgname-$pkgver"
