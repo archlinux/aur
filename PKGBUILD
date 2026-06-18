@@ -6,7 +6,8 @@ pkgdesc="JSON Stream Editor (command line utility)"
 arch=('x86_64')
 url="https://github.com/tidwall/jj"
 license=('MIT')
-makedepends=('git' 'go')
+depends=('glibc')
+makedepends=('git' 'go' 'gcc')
 provides=('jj')
 conflicts=('jj')
 source=("$pkgname"::"git+${url}")
@@ -24,7 +25,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -ldflags "-X main.version=$pkgver" -o jj cmd/jj/main.go
+  go build -ldflags "-s -w -X main.version=$pkgver" -o jj cmd/jj/main.go
 }
 
 package() {  
