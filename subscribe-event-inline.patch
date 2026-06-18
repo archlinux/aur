@@ -1,0 +1,30 @@
+--- a/src/client/DeviceProxy.cpp
++++ b/src/client/DeviceProxy.cpp
+@@ -8942,24 +8942,24 @@
+     return ret;
+ }
+
+-inline int DeviceProxy::subscribe_event(const std::string &attr_name, EventType event, CallBack *callback)
++int DeviceProxy::subscribe_event(const std::string &attr_name, EventType event, CallBack *callback)
+ {
+     std::vector<std::string> filt;
+     return subscribe_event(attr_name, event, callback, filt, false);
+ }
+
+-inline int
++int
+     DeviceProxy::subscribe_event(const std::string &attr_name, EventType event, CallBack *callback, bool stateless)
+ {
+     std::vector<std::string> filt;
+     return subscribe_event(attr_name, event, callback, filt, stateless);
+ }
+
+-inline int
++int
+     DeviceProxy::subscribe_event(const std::string &attr_name, EventType event, int event_queue_size, bool stateless)
+ {
+     std::vector<std::string> filt;
+     return subscribe_event(attr_name, event, event_queue_size, filt, stateless);
+ }
+
+ } // namespace Tango
