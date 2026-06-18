@@ -5,7 +5,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-speechrecognition
-pkgver=3.16.1
+pkgver=3.17.0
 pkgrel=1
 pkgdesc='Speech recognition module for Python, supporting several engines and APIs'
 arch=('any')
@@ -19,6 +19,7 @@ depends=(
 )
 optdepends=(
   'python-pyaudio: required for microphone input'
+  'python-librosa: required for audio split'
   'python-pocketsphinx: CMU Sphinx backend (local)'
   'python-google-cloud-speech: Google Cloud Speech-to-Text backend'
   'python-google-api-core: required for Google Cloud Speech-to-Text'
@@ -26,7 +27,7 @@ optdepends=(
   'python-vosk: Vosk backend (local)'
   'python-whisper: OpenAI Whisper backend (local)'
   'python-faster-whisper: Faster Whisper backend (local)'
-  'python-numpy: required for local Whisper'
+  'python-numpy: required for local Whisper and audio split'
   'python-pytorch: required for local Whisper'
   'python-soundfile: required for local Whisper'
   'python-openai: OpenAI Whisper API backend'
@@ -56,7 +57,7 @@ checkdepends=(
   'python-cryptography' # test_google_cloud.py
 )
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('23bbf04ba7263273e958005469305db1ec4183dc60a7f3bde872e63fb6b02b677ca51cd54da769464cf55dabf49511f06456bfed3e64caf145d62c80dac30a08')
+b2sums=('ef71c2912045045ff2f84015359b137c668f1f30bd462dd149a3cc80363f0ab649e5a08d06f0e8dded5850243c38d30ced5cefb8f15e8759b9df88719fc4f995')
 
 build() {
   cd "${srcdir}/speech_recognition-${pkgver}"
