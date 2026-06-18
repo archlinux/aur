@@ -1,0 +1,8 @@
+# AUR repos track only PKGBUILD and .SRCINFO. Ignore everything else:
+# downloaded sources, makepkg scratch dirs, and built packages.
+/src/
+/pkg/
+*.tar.gz
+*.pkg.tar.*
+*.pdf
+*.log

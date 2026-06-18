@@ -1,0 +1,23 @@
+pkgbase = orad-bin
+	pkgdesc = Illumina DRAGEN ORA decompression tool (orad): converts FASTQ.ORA back to FASTQ.GZ; bundles the default human reference
+	pkgver = 2.7.0
+	pkgrel = 1
+	url = https://support.illumina.com/sequencing/sequencing_software/DRAGENORA/software-downloads.html
+	arch = x86_64
+	license = custom:illumina
+	depends = glibc
+	depends = util-linux-libs
+	provides = orad=2.7.0
+	conflicts = orad
+	options = !strip
+	options = !debug
+	source = https://s3.amazonaws.com/webdata.illumina.com/downloads/software/dragen-decompression/orad.2.7.0.linux.tar.gz
+	source = https://support.illumina.com/content/dam/illumina-support/documents/downloads/software/dragen-decompression/1000000139522_02_Ora_Decompression_SW_EULA.pdf
+	source = https://support.illumina.com/content/dam/illumina-support/documents/downloads/software/dragen-decompression/200057653_00_DRAGEN_ORA_Decompression_v2.7.0_Customer_Release_Notes.pdf
+	source = orad-readme-v2.7.0.pdf::https://support.illumina.com/content/dam/illumina-support/documents/downloads/software/dragen-decompression/200057807_00-%20ORA%20decompression%20v2.7.0%20linux%20and%20mac%20Readme.pdf
+	sha256sums = 7a20c3cc1329598194bba032131de65aedadbde4e0f639f0d5f550e9459ff933
+	sha256sums = dfebcd553b19b5c889a802f08c3bd7b727c25fb59617c7406a5abff99eb38675
+	sha256sums = d12122eb455abd4e48c7214bb67219f053f83d7de3d94b7cfe5ba774e0edab50
+	sha256sums = 91392da7e084ed92f1cb4cf06cfdd0fb268ceefb0f9b6e85cfd985280165a1cd
+
+pkgname = orad-bin
