@@ -3,8 +3,8 @@ _branch=main
 
 pkgname=ds4-rocm-git
 pkgver=r332.80ebbc3
-pkgrel=2
-pkgdesc="Run DeepSeek4 LLM optimised for ROCm (AMD GPUs)."
+pkgrel=3
+pkgdesc="Run DeepSeek4 LLM optimised for ROCm (AMD GPUs)"
 arch=(x86_64)
 url="https://github.com/antirez/ds4"
 license=('MIT')
