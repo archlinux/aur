@@ -3,7 +3,7 @@
 pkgname=tsqx
 _name=tsqx
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Asymptote pre-processor for Euclidean geometry diagrams'
 arch=(any)
 url=https://github.com/vEnhance/tsqx
@@ -21,5 +21,5 @@ package() {
   cd "$_name-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
-sha256sums=('8dd179960cb1c332f54c9027a6c37ed840963820d635d54d996691c44398ac7b'
-            '98cc2ce670cd4520a18f5f76a9b69fb085efb342168e79362dc8a2a5b9c118d6')
+b2sums=('8783ac44003e7c36c6b7546a6074c052352554cea526e42c7431da5cfd50735ca6db435ddd32a296a987d6d579221092ff908f5d6ee444c1b258f26943c1e1e0'
+        '3ea48a19bf9b3ed6184f7b244fc2cf37e9a6328cb5af2895e3f55a7e18df54c009b93a205821ca1b50c8747711fec04cdbecbe08613965aa6112f0de30fbc681')
