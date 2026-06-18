@@ -1,6 +1,6 @@
 # Maintainer: RXTX4816 <RXTX4816@proton.me>
 pkgname=cockpit-compose
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Docker Compose management plugin for Cockpit"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('cockpit')
 optdepends=('docker: container runtime with Compose plugin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('3f881dae3c959c3c5b80454458338d90e5f7688c52657688a42448d28e4b83b4')
+sha256sums=('c807a051ad844227f11fc9caf498880e621b428d55152d2ada516c3892903c38')
 
 package() {
     install -d "${pkgdir}/usr/share/cockpit/${pkgname}"
