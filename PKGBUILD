@@ -2,7 +2,7 @@
 _branch=main
 
 pkgname=ds4-rocm-git
-pkgver=r311.512d07c
+pkgver=r332.80ebbc3
 pkgrel=1
 pkgdesc="Run DeepSeek4 LLM optimised for ROCm (AMD GPUs). Model weights are not included due to size. After installation run 'sudo ds4-download-model' to download."
 arch=(x86_64)
@@ -24,7 +24,7 @@ conflicts=("ds4")
 replaces=()
 backup=()
 options=(!lto)
-install=
+install=manual-steps.install
 source=("${pkgname%-git}::git+$url.git#branch=$_branch"
         download-dir.patch
         ds4.service
@@ -35,7 +35,7 @@ noextract=()
 sha256sums=('SKIP'
             '88c01b9b2028bcf99a5374ec0b629d2e6462cb116c42723419ce3b138eae9b45'
             'bed8b3ede69cedbc8e418e8990efde223290de6618bbf0a52a86da4384b538f5'
-            'b82d7a104b54245a13617b72050e7c08e05c6191feea89c875d64789a5f04e34'
+            '3085727fee5e492c34c2da1cc78486531ff25a2f368fa12d3854c3c65492a811'
             'ac3ea5d0a4f38012e10a1834780798d75e0aff9e5d578436fe628c8a61d4caa6'
 )
 

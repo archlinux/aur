@@ -1,0 +1,28 @@
+post_install() {
+    cat <<'EOF'
+================================================
+IMPORTANT: manual steps required for ds4 to work
+================================================
+
+1. ensure your GPU has at least 116 GB RAM available
+-----------------------------------------------------
+
+For example, create/update /etc/modprobe.d/gpumem.conf to have:
+
+    options ttm pages_limit=29360128 page_pool_size=29360128
+
+Then run:
+
+    sudo mkinitcpio -P
+
+and reboot the system.
+
+2. download the model
+---------------------
+
+The model weights are not included in the package due to their size. To
+download, run:
+
+    sudo ds4-download-model q2-imatrix
+EOF
+}
