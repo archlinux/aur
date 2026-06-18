@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=pi
-pkgver=0.79.6
+pkgver=0.79.7
 pkgrel=1
 pkgdesc="AI coding agent for the terminal — minimal, extensible and optimized for tool use"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=(
   'ripgrep: system-provided backend for the grep tool'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('60d255bd9465a7e5ef461ab6ac8529a9d7ad837dca0fafd50af18f1824928772')
+sha256sums=('e0717fa62d944f2cae47843eefae5de18e9d32885a4617d842c490f87b0ded81')
 
 build() {
   cd "${pkgname}-${pkgver}"
