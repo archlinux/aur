@@ -8,11 +8,13 @@ license=('Apache')
 depends=()
 provides=('archisteamfarm')
 conflicts=('archisteamfarm-bin')
+
 source_x86_64=("ASF-x64-${pkgver}.zip::https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/${pkgver}/ASF-linux-x64.zip")
 source_aarch64=("ASF-arm64-${pkgver}.zip::https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/${pkgver}/ASF-linux-arm64.zip")
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 noextract=("ASF-x64-${pkgver}.zip" "ASF-arm64-${pkgver}.zip")
+
 package() {
     install -dm755 "$pkgdir/opt/asf"
     if [ "$CARCH" = "x86_64" ]; then
