@@ -1,15 +1,15 @@
 pkgbase = ecdsautils
-        pkgdesc = Tiny collection of programs used for ECDSA (keygen, sign, verify)
-        pkgver = 0.4.1
-        pkgrel = 1
-        url = https://github.com/freifunk-gluon/ecdsautils
-        arch = i686
-        arch = x86_64
-        license = BSD
-        makedepends = cmake
-        depends = glibc
-        depends = libuecc>=6
-        source = ecdsautils-0.4.1.tar.gz::https://github.com/freifunk-gluon/ecdsautils/archive/refs/tags/v0.4.1.tar.gz
-        sha256sums = 6fd827b3070afddc9e31f37f1d805f54aabf8518d2310c5c2b26cc8eb53555a8
+	pkgdesc = Tiny collection of programs used for ECDSA (keygen, sign, verify)
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/freifunk-gluon/ecdsautils
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = glibc
+	depends = libuecc>=6
+	source = ecdsautils-0.4.2.tar.gz::https://github.com/freifunk-gluon/ecdsautils/archive/refs/tags/v0.4.2.tar.gz
+	sha256sums = 8880e5a506555a06d7a866de8a76c28bb4c7472abbf0d3fb396100d16c447174
 
 pkgname = ecdsautils
