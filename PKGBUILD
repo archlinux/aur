@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-boot-repair
-pkgver=26.06
+pkgver=26.06.1
 pkgrel=2
 pkgdesc="GUI tool for repairing GRUB bootloader"
 arch=('x86_64' 'i686')
@@ -10,8 +10,8 @@ depends=('efibootmgr' 'qt6-base' 'polkit')
 provides=('mx-boot-repair')
 conflicts=('mx-boot-repair')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-source=("https://github.com/MX-Linux/mx-bootrepair/archive/refs/tags/26.06.tar.gz")
-sha256sums=('3feb6d54c1cd771d1b6cb45a96d225d29e2575d7e34c5b1d66a16c0678acf5f6')
+source=("https://github.com/MX-Linux/mx-bootrepair/archive/refs/tags/26.06.1.tar.gz")
+sha256sums=('aad6262189566d5890e2f095e6a6d512f2831c3dd87f6d9f2653a8b14e4303b7')
 
 build() {
     cd "$srcdir/mx-bootrepair-$pkgver"
