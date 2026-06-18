@@ -1,7 +1,7 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 
 pkgname=libleidenalg
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Leiden algorithm'
 arch=(i686 x86_64)
@@ -10,7 +10,7 @@ depends=(igraph)
 makedepends=(cmake)
 license=(GPL-3.0-or-later)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('b9d27b99586ba9b1f44d1899e94990e66ff4bf740086c4aed321590c1d4bf808')
+sha256sums=('134e33bf68222b301cf5fbe93b5a8af222f2910caac34b85e33afac6e9365d2a')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"

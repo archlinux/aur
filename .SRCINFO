@@ -1,6 +1,6 @@
 pkgbase = libleidenalg
 	pkgdesc = Leiden algorithm
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/vtraag/libleidenalg
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = libleidenalg
 	license = GPL-3.0-or-later
 	makedepends = cmake
 	depends = igraph
-	source = libleidenalg-0.12.0.tar.gz::https://github.com/vtraag/libleidenalg/archive/refs/tags/0.12.0.tar.gz
-	sha256sums = b9d27b99586ba9b1f44d1899e94990e66ff4bf740086c4aed321590c1d4bf808
+	source = libleidenalg-0.13.0.tar.gz::https://github.com/vtraag/libleidenalg/archive/refs/tags/0.13.0.tar.gz
+	sha256sums = 134e33bf68222b301cf5fbe93b5a8af222f2910caac34b85e33afac6e9365d2a
 
 pkgname = libleidenalg
