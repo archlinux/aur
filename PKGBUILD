@@ -1,6 +1,6 @@
 # Maintainer: kobe-koto <k [at] koto [dot] cc>
 pkgname=preaur-bin
-pkgver=0.0.4
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="PreAUR, build AUR (not only) pkgbuilds ahead of time. (prebuilt binary)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=('preaur')
 source=(
   "preaur-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/preaur-v${pkgver}.tar.gz"
 )
-sha256sums=('SKIP')
+sha256sums=('430185a9598741fb4428d8c8d1426deba544ecf1e24ba7473c6cc14260f71f8f')
 
 package() {
   local release_dir="$srcdir/preaur-v${pkgver}"
