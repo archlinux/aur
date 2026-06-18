@@ -8,7 +8,7 @@ pkgbase="${_pkgbase}-bin"
 pkgname=(
   "${_pkgname[@]/%/-bin}"
 )
-pkgver=4.6.3
+pkgver=4.7
 pkgrel=1
 pkgdesc="Godot Engine - Prebuilt binary from GitHub"
 arch=(
@@ -50,15 +50,15 @@ source_x86_64=(
 )
 
 
-sha256sums=('2261028c0dfc10e0cf4800a5b2e5a57ea241f72965162327f5764d536a69a46a')
-sha256sums_aarch64=('90c70382eee1542904bf507b9bdc6e62a230ac73fd214bf3887a9e0a4d85aeed'
-                    '970d2fecb66d8cff7457903e291cac4293e2468d24375db58b747a0f8b6c58e4')
-sha256sums_armv7h=('9db8b77e916d45f9368c7654b9fa9b0e9b03dacd032118ad854f96c6e62c21b9'
-                   '17054d83892fefb920a4a00b06d7cec4ceee877ceec8acd2ca4deefe5fb178fa')
-sha256sums_i686=('03acad0ea2713954c3b499eaf3a2863892996100b91e58023bb125edb07f6292'
-                 'a5a96b09bfcfabb2ff2f50aa3ba0f24ec41b2437729c8ccbaf0045c91b724b60')
-sha256sums_x86_64=('d0bc2113065e481c9c2c2b2c37daa4e8be3fe9e27f0ab9ab0b6096e9a37907f3'
-                   '702a8a6785060203fd46373adf864586ecf0c377ac685d7107dde66b1eba0a9e')
+sha256sums=('e7acb6b27d6bee2525fdaa12660c602b034c25094e8a2679334601d8878a9e06')
+sha256sums_aarch64=('db5aa126353a18fd664818e4f1b9cfffaa77e32d4c9af0ea87e8f028a395a1ed'
+                    '77809a22b9681e98a26aec37c37897ff15fb7380798a16b1d1401b13bd1e7b87')
+sha256sums_armv7h=('b60e11a66805ecc19685aaa17220bd6f30b9c82f416c5fbb79f9828157ed6eed'
+                   'e90502b264e9826177f77660d94e00cc992c2ddcc50bbaa93196e4b00efef3f3')
+sha256sums_i686=('e4e0e175a3ce8b6801b2175a304d5776a82cf75dd5dffb664155b2a15a9abe8b'
+                 'c9cabb23c42387417fc8376f54c9ac4f916183359e9b9910cd1713e02d3fb98f')
+sha256sums_x86_64=('0b1a6c54c2c619c12e169fe9241edda4b81080b519451cec2984bf0d2c6cb73c'
+                   '69e855001e34b108eb8124ff1eae8445026b2a30a83b6e6314f705ae963d0fe1')
 
 prepare(){
 
@@ -104,7 +104,7 @@ package_godot-bin() {
 
 
   # dev versions of 4.7 have this in this commented out folder, lets have that stand here
-  # cd "${srcdir}/${_pkgsrc}/misc/logo"
+  cd "${srcdir}/${_pkgsrc}/misc/logo"
   install -vDm644 "icon.svg" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.svg"
 
   cd "${srcdir}/${_pkgsrc}/misc/dist/linux"
@@ -140,7 +140,7 @@ package_godot-mono-bin() {
   install -vDm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE.txt"
 
   # dev versions of 4.7 have this in this commented out folder, lets have that stand here
-  # cd "${srcdir}/${_pkgsrc}/misc/logo"
+  cd "${srcdir}/${_pkgsrc}/misc/logo"
   install -vDm644 "icon.svg" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.svg"
 
   cd "${srcdir}/${_pkgsrc}/misc/dist/linux"
