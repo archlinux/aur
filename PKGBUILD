@@ -1,7 +1,7 @@
 # Maintainer: Izu <ccatdev@proton.me>
 
 pkgname=concord
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="A feature-rich TUI client for Discord, written in Rust"
 arch=(x86_64 aarch64)
@@ -11,7 +11,7 @@ depends=(glibc libgcc alsa-lib opus)
 optdepends=('mpv: video playback support')
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('928d8e12b393d5e7ea6a8834c26a6c778e3cefd2b48b996c6b13f3436d5186ac')
+sha256sums=('77b7d6b83d564976927c5184fc22802931697e5f6a041948a1274677c500b637')
 options=('!lto')
 
 prepare() {
