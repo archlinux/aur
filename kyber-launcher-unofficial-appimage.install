@@ -1,0 +1,15 @@
+post_upgrade() {
+    cat <<'MSG'
+This package no longer self-installs a copy into ~/Applications. If you ran an
+earlier version, these leftovers from the old behaviour may remain and can be
+removed by hand:
+    ~/Applications/KyberLinuxPort-x86_64.AppImage
+    ~/Applications/KyberLinuxPort.extracted/
+    ~/.local/share/applications/kyber-linuxport*.desktop
+    ~/.local/share/applications/kyber-bf2*.desktop
+The launcher now lives in /opt and is managed by pacman. If qrc:// login or
+nxm:// links still point at an old handler, repoint them at the packaged ones:
+    xdg-mime default kyber-linuxport-qrc.desktop x-scheme-handler/qrc
+    xdg-mime default kyber-linuxport-nxm.desktop x-scheme-handler/nxm
+MSG
+}
