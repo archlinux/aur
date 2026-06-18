@@ -1,6 +1,6 @@
 # Maintainer: Mistan Khomdram <mistankhomdram@gmail.com>
 pkgname=lazychad
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 epoch=1
 pkgdesc="An intelligent, highly-aesthetic Neovim wrapper built on NvChad"
