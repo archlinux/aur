@@ -1,7 +1,7 @@
 pkgbase = apkeditor-git
 	pkgdesc = powerful android apk editor - aapt/aapt2 independent
 	pkgver = r380.7f76539
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/REAndroid/APKEditor
 	arch = any
 	license = Apache-2.0
