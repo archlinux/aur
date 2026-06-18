@@ -1,0 +1,3 @@
+[NAME]
+source = "git"
+git = "https://git.example.com/project.git"
