@@ -1,0 +1,19 @@
+pkgbase = owl-write-git
+	pkgdesc = Quick spellcheck TUI
+	pkgver = 0.5.0.r4.g2424d09
+	pkgrel = 1
+	url = https://codeberg.org/jpt/owl-write
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	provides = owl
+	conflicts = owl-write
+	options = !debug
+	options = !strip
+	source = owl-write-main::git+https://codeberg.org/jpt/owl-write.git#branch=main
+	sha256sums = SKIP
+
+pkgname = owl-write-git
