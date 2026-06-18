@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=all/allfiles;
+Actions=editInImHex
+Icon=imhex
+
+[Desktop Action editInImHex]
+Name=Edit with ImHex
+Icon=imhex
+Exec=/usr/bin/imhex %F

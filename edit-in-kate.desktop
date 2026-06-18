@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=all/allfiles;
+ExcludeMimeType=text/plain;text/markdown;application/json;text/x-patch;
+Actions=editInKate
+Icon=kate
+
+[Desktop Action editInKate]
+Name=Edit with Kate
+Icon=kate
+Exec=/usr/bin/kate %F
