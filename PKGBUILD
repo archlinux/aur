@@ -2,7 +2,7 @@
 # Contributor: hexchain <i@hexchain.org>
 pkgname=python-requirements-parser
 _name=${pkgname#python-}
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="A Pip requirements file parser."
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
 )
 checkdepends=('python-pytest')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2849d8ccbf3c27b9b1cb42cd091d0d54c18aaae75fbb149ab7d912ca380c92aa')
+sha256sums=('0503638c426185abd5647df49e875dbb0051a5a295688321c69b74b373dc6b53')
 
 build() {
   cd "$_name-$pkgver"

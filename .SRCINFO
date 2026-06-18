@@ -1,6 +1,6 @@
 pkgbase = python-requirements-parser
 	pkgdesc = A Pip requirements file parser.
-	pkgver = 0.13.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/madpah/requirements-parser
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-requirements-parser
 	makedepends = python-poetry-core
 	makedepends = python-wheel
 	depends = python-packaging
-	source = requirements-parser-0.13.0.tar.gz::https://github.com/madpah/requirements-parser/archive/refs/tags/v0.13.0.tar.gz
-	sha256sums = 2849d8ccbf3c27b9b1cb42cd091d0d54c18aaae75fbb149ab7d912ca380c92aa
+	source = requirements-parser-0.13.1.tar.gz::https://github.com/madpah/requirements-parser/archive/refs/tags/v0.13.1.tar.gz
+	sha256sums = 0503638c426185abd5647df49e875dbb0051a5a295688321c69b74b373dc6b53
 
 pkgname = python-requirements-parser
