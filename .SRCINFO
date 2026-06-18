@@ -11,7 +11,7 @@ pkgbase = preaur-bin
 	depends = base-devel
 	provides = preaur
 	conflicts = preaur
-	source = preaur-bin-0.0.4.min.js::https://github.com/kobe-koto/preaur/releases/download/v0.0.4/preaur.min.js
-	sha256sums = a84a9cdfe025d1a29e58e57bbff23ee4fea43c02068947c8321aa2b728f9c677
+	source = preaur-v0.0.4.tar.gz::https://github.com/kobe-koto/preaur/releases/download/v0.0.4/preaur-v0.0.4.tar.gz
+	sha256sums = SKIP
 
 pkgname = preaur-bin
