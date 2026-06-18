@@ -2,7 +2,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-cachyos-slr
-_srctag=11.0-20260601
+_srctag=11.0-20260602
 pkgver=${_srctag//-/.}
 pkgrel=1
 epoch=1
@@ -45,7 +45,6 @@ depends=(
   xdg-user-dirs
   xorg-xrandr
   xz
-  zenity
 )
 depends_x86_64=(
   lib32-alsa-plugins
@@ -77,7 +76,7 @@ optdepends=(
 optdepends+=(
   NTSYNC-MODULE
 )
-provides=('proton')
+provides=('proton-cachyos' 'proton')
 backup=(
   "usr/share/steam/compatibilitytools.d/${pkgname}/user_settings.py"
 )
@@ -105,6 +104,6 @@ package() {
     install -Dm644 "$srcdir/ntsync.conf" "$pkgdir/usr/lib/modules-load.d/10-$pkgname.conf"
 }
 
-b2sums=('670223c75caf96e5a6fff7317dfb04eca8554a8c43e74216f040a356f4a8856f575abff03e34d7d8e5ab52cee3cb6c3011944cab2ffcf473c073b9bc39fb815a'
+b2sums=('be708e224d347e2fe4a6e18feff142c37faff6f973d85dcaf37b4af7cd787ff0f606012636a94a12f7cd00ea70531a661bb575e9d847f26341fe337ceb2a211d'
         'f0a81d83e644ca074a6bf54fc74ae12f5bd047e29d87fab528fba20e4b8d013547ad4b26e912c2b3218a75114f5c76b64aa84fdbc3054d3a1d9bf96635c6212b'
         '964a3ba277821e570aec2127f0d1ae9898da6976c360deb6b196345a50bd3c2c55cb399527507006d8fddef868069032a30b083f23987d5050f185c74dd9de35')
