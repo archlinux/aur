@@ -3,7 +3,7 @@
 
 pkgname=kiro-account-manager-bin
 _pkgname=kiro-account-manager
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Kiro IDE account manager - multi-account switching and quota monitoring (Unofficial Community Package)"
 arch=('x86_64')
@@ -14,8 +14,8 @@ optdepends=('libappindicator-gtk3: for system tray icon support')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!strip)
-source_x86_64=("KiroAccountManager_1.9.1_amd64.deb::https://github.com/hj01857655/kiro-account-manager/releases/download/v1.9.1/KiroAccountManager_1.9.1_amd64.deb")
-sha256sums_x86_64=('8690907220a5ba0dbcb6b817776ca4ee9dbd26f8f309cfcf259abe47536fcb5a')
+source_x86_64=("KiroAccountManager_1.9.2_amd64.deb::https://github.com/hj01857655/kiro-account-manager/releases/download/v1.9.2/KiroAccountManager_1.9.2_amd64.deb")
+sha256sums_x86_64=('4e7e6f045768c4faee99ec38121e08b28fc5996eae68e33fe3ff94d5f9b89aea')
 
 package() {
 	bsdtar -xf "${srcdir}/KiroAccountManager_${pkgver}_amd64.deb"
