@@ -4,11 +4,14 @@ pkgbase = archisteamfarm-asf-bin
 	pkgrel = 1
 	url = https://github.com/JustArchiNET/ArchiSteamFarm
 	arch = x86_64
+	arch = aarch64
 	license = Apache
 	provides = archisteamfarm
 	conflicts = archisteamfarm-bin
 	noextract = ASF-linux-x64-6.3.6.1.zip
-	source = ASF-linux-x64-6.3.6.1.zip::https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/6.3.6.1/ASF-linux-x64.zip
-	sha256sums = SKIP
+	source_x86_64 = ASF-x64-6.3.6.1.zip::https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/6.3.6.1/ASF-linux-x64.zip
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = ASF-arm64-6.3.6.1.zip::https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/6.3.6.1/ASF-linux-arm64.zip
+	sha256sums_aarch64 = SKIP
 
 pkgname = archisteamfarm-asf-bin
