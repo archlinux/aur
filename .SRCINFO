@@ -1,13 +1,14 @@
 pkgbase = l
 	pkgdesc = an ls replacement
-	pkgver = 0.1.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://devan.gg/l
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = go
-	source = l-0.1.0.tar.gz::https://github.com/imdevan/l/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = REPLACE_WITH_ACTUAL_SHA256
+	source_x86_64 = l-linux-amd64-0.3.0.tar.gz::https://github.com/imdevan/l/releases/download/v0.3.0/l-linux-amd64.tar.gz
+	sha256sums_x86_64 = 59ca517fc81cefe20dcba026fb46f7aa241d33f9bb8821e6e6b484b32b0e40c1
+	source_aarch64 = l-linux-arm64-0.3.0.tar.gz::https://github.com/imdevan/l/releases/download/v0.3.0/l-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9ac8e26ff761b7900be9bca3ff2cfb006bbaf5766abf14cf56ae8116d79bedc2
 
 pkgname = l
