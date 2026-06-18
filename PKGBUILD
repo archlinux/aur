@@ -2,18 +2,18 @@
 
 pkgname=('beaker-common' 'beaker-client')
 pkgbase='beaker'
-pkgver=29.2
-pkgrel=2
+pkgver=29.3
+pkgrel=1
 pkgdesc="Full-stack software and hardware integration testing system"
 arch=('any')
 url="https://beaker-project.org/"
-license=('GPL-2.0-only' 'BSD')
+license=('GPL-2.0-or-later')
 makedepends=('python-setuptools' 'python-sphinx' 'python-sphinxcontrib-httpdomain' 'python-docutils' 'python-six' 'python-gssapi' 'python-lxml')
 depends=('python3' 'python-six' 'python-setuptools' 'python-gssapi' 'python-lxml')
 provides=('bkr' 'beaker-wizard')
 options=('zipman')
 source=("https://github.com/beaker-project/beaker/archive/refs/tags/$pkgbase-$pkgver.tar.gz")
-sha256sums=('fe9af5ea269d97d8793a029fb4faf2e34f5a251a7d01ac2e56cf114c3bf7abd3')
+sha256sums=('dd4b03f48da62409cd35a2997d571c2f0c553516eb1b531f90bfd9048b9e863a')
 
 build() {
         export BKR_PY3="$(which python3)"
