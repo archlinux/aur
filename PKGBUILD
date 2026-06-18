@@ -1,47 +1,39 @@
-# Maintainer: Young Acinonyx <young dot acinonyx at gmail dot com>
+# Maintainer: ojmarcelino <ojmarcelino at tutanota dot com>
 
 pkgname=portugol-studio-bin
 _pkgname=portugol-studio
-pkgver=2.7.4
+pkgver=2.7.5
 pkgrel=1
 pkgdesc="Ambiente de Programação didático para a linguagem Portugol 2.0."
 arch=('x86_64')
 url="http://lite.acad.univali.br/portugol/"
 license=('GPL')
-source=("https://github.com/UNIVALI-LITE/Portugol-Studio/releases/download/v$pkgver/$_pkgname-$pkgver-linux-x64-standalone.zip")
-noextract=()
-md5sums=('06ff5fc05064754a457ad99cd7d2a001')
+
+source=("https://github.com/UNIVALI-LITE/Portugol-Studio/releases/download/v$pkgver/portugol-studio-$pkgver-linux-x64.run.zip")
+sha256sums=('49f4d1807e883076d8a0c918acf99a1541abf139f96ad3e83fe0278858a552e5')
+noextract=('*.run.zip')
 
 prepare() {
-	# Replace "Icon=/usr/local/portugol-studio..." with "Icon=portugol-studio" inside the desktop file
-	sed -i 's/Icon=.*/Icon=portugol-studio/' "$srcdir/arquivos-auxiliares/$_pkgname.desktop"
+	unzip -o "$srcdir/portugol-studio-$pkgver-linux-x64.run.zip" -d "$srcdir"
+	if [ -f "$srcdir/portugol-studio-$pkgver-linux-x64.run" ]; then
+		chmod 755 "$srcdir/portugol-studio-$pkgver-linux-x64.run"
+	else
+		echo "Instalador .run não encontrado em $srcdir"
+		return 1
+	fi
 }
 
 package() {
-	# Create the "/usr/bin" directory
-	mkdir -p "$pkgdir/usr/bin"
-
-	# Set the correct permissions
-	chmod -R 755 "$srcdir/$_pkgname"
-	find "$srcdir/$_pkgname" -type f -execdir chmod 644 "{}" \;
-	find "$srcdir/$_pkgname/java/java-linux/bin" -type f -exec chmod 755 {} \;
-	chmod 755 "$srcdir/$_pkgname/executar-console-linux.sh"
-	chmod 755 "$srcdir/$_pkgname/executar-studio-linux.sh"
-
-	# Install the desktop file
-	install -Dm644 "$srcdir/arquivos-auxiliares/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-
-	# Install the icons
-	install -Dm644 "$srcdir/portugol-studio/aplicacao/icones/linux/arquivo-por.png" "$pkgdir/usr/share/icons/hicolor/256x256/mimetypes/application-x-portugol.png"
-	install -Dm644 "$srcdir/portugol-studio/aplicacao/icones/linux/portugol-studio.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/portugol-studio.png"
-
-	# Install the mime type association xml
-	install -Dm644 "$srcdir/arquivos-auxiliares/application-x-portugol.xml" "$pkgdir/usr/share/mime/packages/application-x-portugol.xml"
-
-	# Copy the necessary files
-	cp -R "$srcdir/$_pkgname" "$pkgdir/usr/share/"
-
-	# Link the shell executables to "/usr/bin"
-	ln -s "/usr/share/$_pkgname/executar-console-linux.sh" "$pkgdir/usr/bin/portugol-console"
-	ln -s "/usr/share/$_pkgname/executar-studio-linux.sh" "$pkgdir/usr/bin/$_pkgname"
+	install -d "$pkgdir/opt/$_pkgname"
+	install -Dm755 "$srcdir/portugol-studio-$pkgver-linux-x64.run" "$pkgdir/opt/$_pkgname/portugol-studio-$pkgver-x64.run"
+	install -d "$pkgdir/usr/bin"
+	cat > "$pkgdir/usr/bin/$_pkgname-install" <<'EOF'
+#!/bin/sh
+exec /opt/portugol-studio/portugol-studio-2.7.5-x64.run "$@"
+EOF
+	chmod 755 "$pkgdir/usr/bin/$_pkgname-install"
+	if [ -L "$pkgdir/usr/bin/portugol-studio-install" ] || [ -e "$pkgdir/usr/bin/portugol-studio-install" ]; then
+		rm -f "$pkgdir/usr/bin/portugol-studio-install"
+	fi
+	ln -s "/usr/bin/$_pkgname-install" "$pkgdir/usr/bin/portugol-studio-install"
 }
