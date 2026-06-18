@@ -5,10 +5,11 @@ pkgbase = kawaii-gcc-zh-cn-git
 	url = https://github.com/Bill-Haku/kawaii-gcc
 	install = kawaii-gcc-zh-cn-git.install
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = gettext
-	provides = kawaii-gcc
+	provides = kawaii-gcc-zh-cn
+	conflicts = kawaii-gcc-zh-cn
 	source = git+https://github.com/Bill-Haku/kawaii-gcc
 	sha256sums = SKIP
 
