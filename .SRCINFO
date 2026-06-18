@@ -1,0 +1,17 @@
+pkgbase = moniuszko
+	pkgdesc = Music player for GNOME (or any GTK env), inspired by Amarok 1 and Strawberry
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/michalmoc/moniuszko/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gtk4
+	depends = libadwaita
+	depends = alsa-lib
+	options = !debug
+	options = !lto
+	source = https://github.com/michalmoc/moniuszko/archive/refs/tags/v1.2.1.tar.gz
+	sha256sums = 38bf767600bf94d4120a17b3559f97f20777dfe26d97a2a31ad40d7e8dfc41e2
+
+pkgname = moniuszko
