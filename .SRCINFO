@@ -1,20 +1,17 @@
 pkgbase = r5-wallet-bin
 	pkgdesc = Open source community implementation of the R5 Network GUI desktop wallet in TypeScript/Electron.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.0.3_beta
+	pkgver = 1.0.4_beta
 	pkgrel = 1
 	url = https://r5.network/
 	arch = x86_64
 	license = GPL-3.0-or-later
-	makedepends = gendesk
 	depends = electron35
-	provides = r5-wallet=1.0.3_beta
+	provides = r5-wallet=1.0.4_beta
 	conflicts = r5-wallet
 	options = !emptydirs
-	source = r5-wallet-1.0.3_beta.tar.gz::https://github.com/r5-labs/r5-wallet/releases/download/v1.0.3-beta/r5_desktop_wallet_103_linux_x86-64.tar.gz
-	source = r5-wallet.png::https://raw.githubusercontent.com/r5-labs/r5-wallet/main/electron/src/ui/assets/r5-wallet.png
+	source = r5-wallet-1.0.4_beta.deb::https://github.com/r5-labs/r5-wallet/releases/download/v1.0.4-beta/r5_desktop_wallet_104_linux_x86-64.deb
 	source = r5-wallet.sh
-	sha256sums = 1a42d25043aba8f3aa0e278fe7799e33116302e87eef7496d2810e550bd9d239
-	sha256sums = e0cd5eccc850b6563fc216a6f6cd7ba6b9e76e99abe10dfe82e3672d14711ca5
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = e181b166da8a4db7432e2b2c101e3670b04ae99d383053ad2134789ab86a1f86
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = r5-wallet-bin
