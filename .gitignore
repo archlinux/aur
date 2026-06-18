@@ -2,6 +2,7 @@
 
 !/PKGBUILD
 !/README.md
+!/keys/
 !/keys/**
 !/.SRCINFO
 !/.gitignore
@@ -20,5 +21,8 @@
 !/*.hook
 
 !/LICENSE
+!/LICENSES/
 !/LICENSES/**
 !/REUSE.toml
+
+!/config
