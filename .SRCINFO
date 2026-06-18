@@ -1,0 +1,16 @@
+pkgbase = noteriv-bin
+	pkgdesc = A fast, open-source markdown editor with graph view, plugin API, themes, Git/WebDAV sync, and AI MCP server — built on Tauri 2
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/thejacedev/Noteriv
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = libsoup3
+	depends = gtk3
+	provides = noteriv=2.2.1
+	conflicts = noteriv
+	source = noteriv_2.2.1_amd64.deb::https://github.com/thejacedev/Noteriv/releases/download/v2.2.1/Noteriv_2.2.1_amd64.deb
+	sha256sums = 17b1a80be8360d3523703aa3923866b2971b118f40d42de17811654970bfd2c1
+
+pkgname = noteriv-bin
