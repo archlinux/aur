@@ -14,7 +14,9 @@ pkgdesc='Crypto library written in C++ (legacy version)'
 arch=(x86_64)
 url='https://botan.randombit.net/'
 license=(BSD)
-depends=(xz sqlite)
+depends=(
+  glibc
+)
 makedepends=(
   boost
   python
@@ -35,6 +37,18 @@ sha256sums=('dfeea0e0a6f26d6724c4af01da9a7b88487adb2d81ba7c72fcaf52db522c9ad4'
             '34a34279260487a5f62859ba5abddb0cdcfdf0b62b1c49acf60117a941df0e07'
             '4493316d4d04e152f3dd980b4710741bd620db404af59fba846f269ce2efeaa1')
 validpgpkeys=('621DAF6411E1851C4CF9A2E16211EBF1EFBADFBC') # Botan Distribution Key
+
+declare -gA _depends=(
+  [bzip2]="libbz2.so"
+  [libgcc]="libgcc_s.so"
+  [libstdc++]="libstdc++.so"
+  [sqlite]="libsqlite3.so"
+  [xz]="liblzma.so"
+  [zlib]="libz.so"
+)
+makedepends+=(
+  "${!_depends[@]}"
+)
 
 prepare() {
   cd "Botan-${pkgver}"
@@ -68,6 +82,11 @@ check() {
 }
 
 package() {
+  # shellcheck disable=SC2206
+  depends+=(
+    ${_depends[@]}
+  )
+
   DESTDIR="$pkgdir" make -C Botan-$pkgver install
   install -Dm644 Botan-$pkgver/license.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
