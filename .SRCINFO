@@ -1,5 +1,5 @@
 pkgbase = archisteamfarm-asf-bin
-	pkgdesc = ArchiSteamFarm - Steam card/hours farming tool
+	pkgdesc = C# application with primary purpose of farming Steam cards from multiple accounts simultaneously.
 	pkgver = 6.3.6.1
 	pkgrel = 1
 	url = https://github.com/JustArchiNET/ArchiSteamFarm
