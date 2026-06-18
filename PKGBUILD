@@ -4,7 +4,7 @@ pkgver=r847.f4c2dae
 pkgrel=1
 pkgdesc="Federated Recursive Artificial Neural Knowledge Interface - Neural OS"
 arch=('x86_64')
-url="https://github.com/antupillan/FRANKI"
+url="https://gitlab.com/Umbra_HS/franki_os"
 license=('custom:BUSL-1.1')
 install=franki.install
 depends=(
@@ -47,7 +47,7 @@ optdepends=(
     'python-torch: layer-wise inference for large models (Red Glial — AirLLM, optional)'
     'python-atspi: AT-SPI accessibility tree for native GUI interaction (hands_engine — Wayland click/fill)'
     'firejail: sandboxing for external process execution (envoltura_lisosomica)'
-    'sentrux: architectural quality sensor (Huso Neuromuscular + Area de Broca — install: curl -fsSL https://raw.githubusercontent.com/sentrux/sentrux/main/install.sh | sh)'
+    'sentrux: architectural quality sensor (Huso Neuromuscular + Area de Broca)'
 )
 options=('!debug' '!strip' '!buildflags')
 source=('franki::git+https://gitlab.com/Umbra_HS/franki_os.git')

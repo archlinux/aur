@@ -150,7 +150,7 @@ post_install() {
     echo " =============================================="
     echo "  FRANKI OS instalado. Inicia con: franki"
     echo "  Logs unificados:  franki-log"
-    echo "  (El backend iniciará automáticamente al abrir la app)"
+    echo "  (El backend iniciara automaticamente al abrir la app)"
     echo " =============================================="
 }
 
