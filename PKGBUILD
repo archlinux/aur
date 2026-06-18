@@ -2,13 +2,13 @@
 #Contributor: Static_Rocket
 
 pkgname=asusctl-devel-git
-pkgver=6.3.7.r0.gde4297a1
+pkgver=6.3.8.r27.g9b4d535f
 pkgrel=1
 pkgdesc="Asus laptop control utilities"
 arch=('x86_64')
-url="https://gitlab.com/asus-linux/asusctl"
-license=('MPL2')
-depends=('libusb' 'udev' 'systemd')
+url="https://github.com/OpenGamingCollective/asusctl"
+license=('MPL-2.0')
+depends=('libusb' 'udev' 'systemd' 'hicolor-icon-theme')
 optdepends=(
 	'libappindicator-gtk3: tray icon'
 	'gtk3: control center ui'
@@ -16,7 +16,7 @@ optdepends=(
 makedepends=('git' 'cargo' 'clang' 'cmake' 'pango' 'gdk-pixbuf2' 'at-spi2-core' 'gtk3' 'sdl2' 'seatd' 'libinput')
 provides=('asusctl' 'rog-control-center')
 conflicts=('asusctl' 'rog-control-center')
-source=('git+https://gitlab.com/asus-linux/asusctl.git#branch=devel')
+source=('git+https://github.com/OpenGamingCollective/asusctl.git#branch=main')
 md5sums=('SKIP')
 _gitdir=${pkgname%"-devel-git"}
 

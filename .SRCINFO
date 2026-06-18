@@ -1,10 +1,10 @@
 pkgbase = asusctl-devel-git
 	pkgdesc = Asus laptop control utilities
-	pkgver = 6.3.7.r0.gde4297a1
+	pkgver = 6.3.8.r27.g9b4d535f
 	pkgrel = 1
-	url = https://gitlab.com/asus-linux/asusctl
+	url = https://github.com/OpenGamingCollective/asusctl
 	arch = x86_64
-	license = MPL2
+	license = MPL-2.0
 	makedepends = git
 	makedepends = cargo
 	makedepends = clang
@@ -19,13 +19,14 @@ pkgbase = asusctl-devel-git
 	depends = libusb
 	depends = udev
 	depends = systemd
+	depends = hicolor-icon-theme
 	optdepends = libappindicator-gtk3: tray icon
 	optdepends = gtk3: control center ui
 	provides = asusctl
 	provides = rog-control-center
 	conflicts = asusctl
 	conflicts = rog-control-center
-	source = git+https://gitlab.com/asus-linux/asusctl.git#branch=devel
+	source = git+https://github.com/OpenGamingCollective/asusctl.git#branch=main
 	md5sums = SKIP
 
 pkgname = asusctl-devel-git
