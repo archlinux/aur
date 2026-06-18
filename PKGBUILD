@@ -1,6 +1,6 @@
 # Maintainer: CxOrg <clx.org@cloud-org.uk>
 pkgname=simplesinewavegenerator-git
-pkgver=0.0
+pkgver=0.0.4.r0.gd8b7efe
 pkgrel=4
 pkgdesc="Simple sine wave generator with GTK3 GUI and logarithmic frequency sweep"
 arch=('x86_64')
