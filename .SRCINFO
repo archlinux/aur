@@ -1,0 +1,16 @@
+pkgbase = prism-bar
+	pkgdesc = Status bar for the prism compositor — damascene-rendered, layer-shell native
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/computer-whisperer/prism-bar
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = vulkan-icd-loader
+	depends = wayland
+	source = prism-bar-0.1.0.tar.gz::https://github.com/computer-whisperer/prism-bar/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = ea7cf9d015754d865cc4b070a2f2149c6258bf1bdedb92f0e3f02624627a93f3
+
+pkgname = prism-bar
