@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous-git
 pkgbase=aqueous
-pkgver=0.1.0.r217.gd4ab421 # Will be updated by pkgver()
+pkgver=0.1.0.r219.gcb55ad8 # Will be updated by pkgver()
 pkgrel=1
 pkgdesc="Aqueous Wayland window manager bundled with RiverDelta"
 arch=('x86_64' 'aarch64')
