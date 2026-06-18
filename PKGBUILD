@@ -25,8 +25,8 @@ package() {
     install -d "${pkgdir}/usr/share/${pkgname}"
     
     # Копируем туда бинарник и ресурсы
-    install -m755 "${srcdir}/linux/zurvivalremastered" "${pkgdir}/usr/share/${pkgname}/zurvivalremastered"
-    install -m644 "${srcdir}/linux/zurvivalremastered.pck" "${pkgdir}/usr/share/${pkgname}/zurvivalremastered.pck"
+    install -m755 "${srcdir}/zurvivalremastered" "${pkgdir}/usr/share/${pkgname}/zurvivalremastered"
+    install -m644 "${srcdir}/zurvivalremastered.pck" "${pkgdir}/usr/share/${pkgname}/zurvivalremastered.pck"
     
     # Создаем глобальную команду запуска в системе
     install -d "${pkgdir}/usr/bin"
