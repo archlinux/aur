@@ -1,5 +1,0 @@
-[xlibre-input-void]
-source = "git"
-git = "https://github.com/x11libre/xf86-input-void.git"
-include_regex = "xlibre-xf86-input-void-.*"
-prefix = "xlibre-xf86-input-void-"

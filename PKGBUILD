@@ -1,61 +1,36 @@
-# Maintainer: artist for Artix Linux and XLibre <artist@artixlinux.org>
+# Maintainer: callmetango
+# Contributor: artist <artist@artixlinux.org>
+# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=xlibre-input-void
+_pkgname=xf86-input-void
 pkgver=25.0.0
-pkgrel=5
-pkgdesc="XLibre fork of X.Org void input driver"
-arch=(x86_64 aarch64)
+pkgrel=6
+pkgdesc="XLibre void input driver"
+arch=(x86_64)
 license=('custom')
-_pkgname="${pkgname//xlibre/xf86}"
-url="https://github.com/X11Libre/${_pkgname}"
-depends=("xlibre-xserver>=${pkgver%.*}" 'glibc')
-makedepends=("xlibre-xserver-devel>=${pkgver%.*}" 'xorgproto')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
-source=("${url}/archive/refs/tags/xlibre-${_pkgname}-${pkgver}.tar.gz")
+url='https://github.com/X11Libre/xf86-input-void'
+depends=('glibc' 'xlibre-xserver')
+makedepends=('xlibre-xserver-devel' 'X-ABI-XINPUT_VERSION=26.0' 'xorgproto')
+conflicts=('xf86-input-void' 'X-ABI-XINPUT_VERSION<26' 'X-ABI-XINPUT_VERSION>=27')
 groups=('xlibre-drivers')
+source=("${url}/archive/refs/tags/xlibre-${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('ee6bff8f0d31a77d9aa2cfb5099eb825c7999d9270c63d5d7612a0ff3a723bbc55576a10496b2355b95c0d35aff95c03008148d367131b8e1ddb159a32ee0d9a')
 
 build() {
-  case "$CARCH" in
-    "x86_64")
-      CFLAGS=" -march=x86-64"
-      ;;
-    "aarch64")
-      CFLAGS=" -march=armv8-a"
-      ;;
-    *)
-      CFLAGS=" -march=native"
-      ;;
-  esac
-  CFLAGS+=" -mtune=generic -O2 -pipe -fexceptions -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security"
-  CFLAGS+=" -fstack-clash-protection -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"
-  LDFLAGS=" -Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,lazy -Wl,-z,relro -Wl,-z,pack-relative-relocs"
-  if [[ $CARCH != 'aarch64' ]]; then
-    CFLAGS+=" -fcf-protection"
-  fi
-  if [[ "$_pkgname" == *"xf86-input"* ]]; then
-    CFLAGS+=" -fno-plt"
-    LDFLAGS+=" -Wl,-z,now"
-  fi
-  if [[ "$_pkgname" == *"xf86-video-intel"* ]]; then
-    CFLAGS+=" -fno-lto"
-    LDFLAGS+=" -fno-lto"
-  fi
-  CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-  export CFLAGS="${CFLAGS}"
-  export CXXFLAGS="${CXXFLAGS}"
-  export LDFLAGS="${LDFLAGS}"
-
   cd ${_pkgname}-xlibre-${_pkgname}-${pkgver}
-  ./autogen.sh
+  NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 package() {
   cd ${_pkgname}-xlibre-${_pkgname}-${pkgver}
-  make DESTDIR="${pkgdir}" install
-  install -Dm644 "${srcdir}"/${_pkgname}-xlibre-${_pkgname}-${pkgver}/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-}
 
-sha256sums=('2b242b55e429c25e31ca884dedf43bb60be4dbdd0a7ff015f10fa23cd6e08064')
+  make DESTDIR="${pkgdir}" install
+
+  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
+}
