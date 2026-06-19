@@ -1,58 +1,61 @@
 post_install() {
-  if ps -acx | grep -q "[s]shd-session"; then
-        echo "You have ssh session and this script will brick all network on remote
-	      Script will automatically run after disconect or connect event in any existing
-              Network Manager connection, at ~1m after boot,
-              and set persistent iptables rules with new sysctl settings for system and network.
-              Create some problems with tools like docker, lxc, and in some vpc, developed and tested
-              ONLY for using at every day desktop/worksation with isolated development boxes.
-              Have some compability with STEAM but in some cases block 'magic' on lo.
+	if ps -acx | grep -q "[s]shd-session"; then
+		echo "
+	     You have ssh session and this script will brick all network on remote
+	     Script will automatically run after disconect or connect event in any existing
+	     Network Manager connection, at ~1m after boot,
+	     and set persistent iptables rules with new sysctl settings for system and network.
+	     Create some problems with tools like docker, lxc, and in some vpc, developed and tested
+	     ONLY for using at every day desktop/worksation with isolated development boxes.
+	     Have some compability with STEAM but in some cases block 'magic' on lo.
 
-              Run sudo pacman -R simple-stateful-firewall-git
+	     Run sudo pacman -R simple-stateful-firewall-git
+	     "
+		systemctl stop simplestatefulfirewall.timer
+		systemctl disable simplestatefulfirewall.timer
+		systemctl stop iptables
+		systemctl disable iptables
+		systemctl stop ip6tables
+		systemctl disable ip6tables
+	else
+		systemctl enable simplestatefulfirewall.timer
+		systemctl start simplestatefulfirewall.timer
+
+		echo "
+	     Script will automatically run after disconect or connect event in any existing
+	     Network Manager connection, at ~1m after boot,
+             and set persistent iptables rules with new sysctl settings for system and network.
+             Create some problems with tools like docker, lxc, and in some vpc, developed and tested
+             ONLY for using at every day desktop/worksation with isolated development boxes.
+             Have some compability with STEAM but in some cases block 'magic' on lo.
+
+             run     - sudo systemctl start simplestatefulfirewall.service
+             restart - sudo systemctl restart simplestatefulfirewall.service
              "
-	systemctl stop simplestatefulfirewall.timer
-	systemctl disable simplestatefulfirewall.timer
-	systemctl stop iptables
-        systemctl disable iptables
-        systemctl stop ip6tables
-        systemctl disable ip6tables
-    else
-	systemctl enable simplestatefulfirewall.timer
-    	systemctl start simplestatefulfirewall.timer
-
-        echo "Script will automatically run after disconect or connect event in any existing
-              Network Manager connection, at ~1m after boot,
-              and set persistent iptables rules with new sysctl settings for system and network.
-              Create some problems with tools like docker, lxc, and in some vpc, developed and tested
-              ONLY for using at every day desktop/worksation with isolated development boxes.
-              Have some compability with STEAM but in some cases block 'magic' on lo.
-
-              run     - sudo systemctl start simplestatefulfirewall.service
-              restart - sudo systemctl restart simplestatefulfirewall.service
-         "
-    fi
+	fi
 }
 
 pre_upgrade() {
-    if ps -acx | grep -q "[s]shd-session"; then
-        echo "You have ssh session and this script will brick all network on remote"
-	systemctl stop simplestatefulfirewall.timer
-	systemctl disable simplestatefulfirewall.timer
-    fi
+	if ps -acx | grep -q "[s]shd-session"; then
+		echo "You have ssh session and this script will brick all network on remote"
+		systemctl stop simplestatefulfirewall.timer
+		systemctl disable simplestatefulfirewall.timer
+	fi
 }
 
 post_upgrade() {
-    if ps -acx | grep -q "[s]shd-session"; then
-	echo "You have ssh session and this script will brick all network on remote
+	if ps -acx | grep -q "[s]shd-session"; then
+		echo "
+	     You have ssh session and this script will brick all network on remote
 
-              Run sudo pacman -R simple-stateful-firewall
+             Run sudo pacman -R simple-stateful-firewall
              "
-	systemctl stop simplestatefulfirewall.timer
-        systemctl disable simplestatefulfirewall.timer
-    else
-        systemctl enable simplestatefulfirewall.timer
-        systemctl start simplestatefulfirewall.timer
-	echo "
+		systemctl stop simplestatefulfirewall.timer
+		systemctl disable simplestatefulfirewall.timer
+	else
+		systemctl enable simplestatefulfirewall.timer
+		systemctl start simplestatefulfirewall.timer
+		echo "
              Script will automatically run after disconect or connect event in any existing
              Network Manager connection, at ~1m after boot,
              and set persistent iptables rules with new sysctl settings for system and network.
@@ -63,55 +66,55 @@ post_upgrade() {
 	     run     - sudo systemctl start simplestatefulfirewall.service
              restart - sudo systemctl restart simplestatefulfirewall.service
              "
-    fi
+	fi
 }
 
 pre_remove() {
-     sudo systemctl disable simplestatefulfirewall.timer
-     if ps -acx | grep -q "[s]shd-session"; then
-        echo "You have ssh session and this script will brick all network on remote, cleanup iptables rules by self"
-	systemctl stop iptables
-        systemctl disable iptables
-        systemctl stop ip6tables
-        systemctl disable ip6tables
+	sudo systemctl disable simplestatefulfirewall.timer
+	if ps -acx | grep -q "[s]shd-session"; then
+		echo "You have ssh session and this script will brick all network on remote, cleanup iptables rules by self"
+		systemctl stop iptables
+		systemctl disable iptables
+		systemctl stop ip6tables
+		systemctl disable ip6tables
 
-     else
-        iptables -F
-        iptables -t raw -F
-        iptables -t nat -F
-        iptables -t mangle -F
+	else
+		iptables -F
+		iptables -t raw -F
+		iptables -t nat -F
+		iptables -t mangle -F
 
-        iptables -X
-        iptables -t raw -X
-        iptables -t nat -X
-        iptables -t mangle -X
+		iptables -X
+		iptables -t raw -X
+		iptables -t nat -X
+		iptables -t mangle -X
 
-        ip6tables -F
-        ip6tables -t raw -F
-        ip6tables -t nat -F
-        ip6tables -t mangle -F
+		ip6tables -F
+		ip6tables -t raw -F
+		ip6tables -t nat -F
+		ip6tables -t mangle -F
 
-        ip6tables -X
-        ip6tables -t raw -X
-        ip6tables -t nat -X
-        ip6tables -t mangle -X
+		ip6tables -X
+		ip6tables -t raw -X
+		ip6tables -t nat -X
+		ip6tables -t mangle -X
 
-        iptables-save > /etc/iptables/iptables.rules
-        ip6tables-save > /etc/iptables/ip6tables.rules
+		iptables-save >/etc/iptables/iptables.rules
+		ip6tables-save >/etc/iptables/ip6tables.rules
 
-        systemctl stop iptables
-        systemctl disable iptables
-        systemctl stop ip6tables
-        systemctl disable ip6tables
-     fi
+		systemctl stop iptables
+		systemctl disable iptables
+		systemctl stop ip6tables
+		systemctl disable ip6tables
+	fi
 }
 
 post_remove() {
-     if [ -f /usr/lib/systemd/system/opensnitchd.service ]; then
-        systemctl restart opensnitch
-     fi
-     if [ -f /usr/lib/systemd/system/ufw.service ]; then
-        systemctl enable ufw
-        systemctl start ufw
-     fi
+	if [ -f /usr/lib/systemd/system/opensnitchd.service ]; then
+		systemctl restart opensnitch
+	fi
+	if [ -f /usr/lib/systemd/system/ufw.service ]; then
+		systemctl enable ufw
+		systemctl start ufw
+	fi
 }
