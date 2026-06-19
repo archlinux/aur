@@ -5,7 +5,7 @@
 _pkgauthor=chapel-lang
 _pkgname=chapel
 pkgname=${_pkgname}
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Programming language designed for productive parallel computing at scale"
 
@@ -23,7 +23,7 @@ depends=('glibc' 'libstdc++' 'bash' 'ncurses' 'llvm-libs' 'lldb' 'perl' 'python'
 options=('!debug' '!lto')
 
 source=("${_pkgname}-${pkgver}.tgz::${_github}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('80e8c3018e33e49674c7a2542e062547ea41d64d6595edb3b799e90c88f963f8')
+sha256sums=('d91ececfc070f0e94c979dd08cdd3f6da84db4ee48fe06f3187ad259ea9553e7')
 
 
 prepare() {
