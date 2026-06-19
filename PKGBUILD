@@ -1,5 +1,5 @@
-pkgver=3.14.0.343
-sha256sums=("688eeee0f3a2f7513078b7ea2ecf462c9140f08ca43ebc9c31e1c00d5a2993ce"
+pkgver=3.15.0.346
+sha256sums=("1d63b28c1e9fddd586cac9afe5d26e4174bce2a952ef59b4e29b588e28a1dce7"
             "b5c9aadd1b2172158f0b0ff07fdaf84721c002bb5cd1394c9f9fe4557533964d"
             "65370e5aa8edb5cb8a3c66b385a782370cc5d5c578f7e4073f66e17fbc98ff5d")
 _pkgname=hmcl-dev
