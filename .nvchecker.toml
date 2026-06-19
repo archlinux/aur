@@ -1,5 +1,0 @@
-[xlibre-video-ati]
-source = "git"
-git = "https://github.com/x11libre/xf86-video-ati.git"
-include_regex = "xfree-xf86-video-ati-.*"
-prefix = "xfree-xf86-video-ati-"
