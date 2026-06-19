@@ -1,6 +1,6 @@
 pkgbase = tirith
 	pkgdesc = Terminal security - catches homograph attacks, pipe-to-shell, ANSI injection
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/sheeki03/tirith
 	install = tirith.install
@@ -11,7 +11,7 @@ pkgbase = tirith
 	makedepends = base-devel
 	depends = gcc-libs
 	options = !lto
-	source = tirith-0.3.2.tar.gz::https://github.com/sheeki03/tirith/archive/refs/tags/v0.3.2.tar.gz
-	sha256sums = 57f74fc7d0d3b508865f9d3d60d14c988c5c1aeb27c5202046388680c230381e
+	source = tirith-0.3.3.tar.gz::https://github.com/sheeki03/tirith/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = f6d4d66d7f151a3ddf4a3a8763e204b2301278cd016e8d496c4eb07cfc8ddc35
 
 pkgname = tirith
