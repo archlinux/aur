@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-keygen-bin
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Asymmetric key generation and inspection tool for moshpit (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -17,9 +17,9 @@ _base="https://github.com/rustyhorde/moshpit/releases/download/v${pkgver}"
 source=("${_base}/dist-mp-keygen.tar.gz")
 source_x86_64=("mp-keygen-x86_64::${_base}/mp-keygen-x86_64-unknown-linux-musl")
 source_aarch64=("mp-keygen-aarch64::${_base}/mp-keygen-aarch64-unknown-linux-musl")
-sha256sums=('a6a55b8471c6e94db5c983ea2d81c57f9692d152be062c5bb50cc0f7dc32a94d')
-sha256sums_x86_64=('f779ee0b4a2580ec8d6617b5b3ce930cadf8050eb19320894daf28c4347bb244')
-sha256sums_aarch64=('2803c06e7052fe088326ac5428bb87ebbc2107ccfd63ea03c5b698a897a10a88')
+sha256sums=('15eaabe9a264051ea5a52361f0f998bd66bfb0333891d72fe8e21e8f2d2967f1')
+sha256sums_x86_64=('7397cc7d7c9a068426d7e9077da19010f59b4c7bf5e3bea4b0adc733c0b75e79')
+sha256sums_aarch64=('9d8e07cc9f7a03d26bd87f6389e24c18b947f428cfcb5d8f0bd96a808b92f6f9')
 
 package() {
     install -Dm755 "mp-keygen-${CARCH}" "$pkgdir/usr/bin/mp-keygen"
