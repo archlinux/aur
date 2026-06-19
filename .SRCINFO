@@ -1,0 +1,25 @@
+pkgbase = libcase-git
+	pkgdesc = Library with various useful widgets
+	pkgver = 0.1.r9.gc73e77c
+	pkgrel = 1
+	url = https://altlinux.space/rirusha/libcase
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = blueprint-compiler
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = vala
+	depends = glibc
+	depends = glib2
+	depends = gtk4
+	depends = libadwaita
+	provides = libcase
+	conflicts = libcase
+	options = !debug
+	source = libcase::git+https://altlinux.space/rirusha/libcase.git
+	b2sums = SKIP
+
+pkgname = libcase-git
