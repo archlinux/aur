@@ -1,7 +1,7 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
 pkgname=('ezp2019')
 conflicts=('ezp2019-git')
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 provides=('ezp2019' 'libezp2019.so')
 options=(!debug)
@@ -18,7 +18,7 @@ source=(
 )
 
 sha512sums=(
-    '627bad76506023ba8806a6a2b8ee351b89539af30f5eb247868020fa5bc85bc989ac4c8bcb28885f7f233e0c099ec17b959b12497b3c04ea0539ab8d3ae412cc'
+    'ade4538fc7d0a22ad52e53c2699b7708b89ae2afa6907186a800357df09d2e780bf56f9b0a44c201fbedc5d6f2e914e0397c4b522cb6013144217ebbd3b71de8'
 )
 
 build() {
