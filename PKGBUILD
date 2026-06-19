@@ -19,7 +19,7 @@ prepare() {
 
 build() {
     cd "zero-dds-1.0.0-rc.3"
-    cargo build --frozen --release --workspace
+    cargo build --frozen --release --workspace --exclude zerodds-durability-store-lakehouse --exclude zerodds-durability-service-bin
 }
 
 package() {
