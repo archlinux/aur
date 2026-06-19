@@ -4,7 +4,7 @@
 _pkgname=satisfactory-mod-manager
 
 pkgname="${_pkgname}"-appimage
-pkgver=3.0.7
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Satisfactory Mod Manager (appimage)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ _appimage="SatisfactoryModManager_linux_amd64.AppImage"
 source=("https://github.com/satisfactorymodding/SatisfactoryModManager/releases/download/v${pkgver}/${_appimage}"
         "https://raw.githubusercontent.com/satisfactorymodding/SatisfactoryModManager/v${pkgver}/LICENSE")
 noextract=("${_appimage}")
-sha256sums=('0b9aa0570a03f6eeedba4abcc135260d570c08fbe774916fa1c0755f5b8c4830'
+sha256sums=('ce69b68903b6e6c931218b3ce2cc08574646db86e1544dd9f14c5897f83d15dd'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 conflicts=('satisfactory-mod-manager' 'satisfactory-mod-manager-git')
 prepare() {
