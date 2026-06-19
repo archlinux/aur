@@ -7,8 +7,8 @@
 _gitname=gascity
 _binname=gc
 pkgname=gascity-latest-bin
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="Gas City CLI (gc) — prebuilt release binary"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gastownhall/gascity"
@@ -30,8 +30,8 @@ options=('!strip')
 _base="${url}/releases/download/v${pkgver}"
 source_x86_64=("${_base}/gascity_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${_base}/gascity_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('7abc26d826881d38219600e25e78a0a36802eddf9e6ed77046275f5ec9e72172')
-sha256sums_aarch64=('305c55fe2832383264b4fb70a66af3d6af6255990c586760f8b21f01e6f043d4')
+sha256sums_x86_64=('b773b94d439085e78beb7983a3497f1f628d64feb049874ebedfa6a4c2aae21c')
+sha256sums_aarch64=('99a0243e56612da8ec9a891fbb69ede1a2051a71381403edaf42864fb697c538')
 
 package() {
     cd "$srcdir"

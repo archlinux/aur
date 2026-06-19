@@ -1,7 +1,7 @@
 pkgbase = gascity-latest-bin
 	pkgdesc = Gas City CLI (gc) — prebuilt release binary
-	pkgver = 1.2.1
-	pkgrel = 2
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = https://github.com/gastownhall/gascity
 	arch = x86_64
 	arch = aarch64
@@ -16,9 +16,9 @@ pkgbase = gascity-latest-bin
 	provides = gc
 	conflicts = gascity
 	options = !strip
-	source_x86_64 = https://github.com/gastownhall/gascity/releases/download/v1.2.1/gascity_1.2.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 7abc26d826881d38219600e25e78a0a36802eddf9e6ed77046275f5ec9e72172
-	source_aarch64 = https://github.com/gastownhall/gascity/releases/download/v1.2.1/gascity_1.2.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 305c55fe2832383264b4fb70a66af3d6af6255990c586760f8b21f01e6f043d4
+	source_x86_64 = https://github.com/gastownhall/gascity/releases/download/v1.3.1/gascity_1.3.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = b773b94d439085e78beb7983a3497f1f628d64feb049874ebedfa6a4c2aae21c
+	source_aarch64 = https://github.com/gastownhall/gascity/releases/download/v1.3.1/gascity_1.3.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 99a0243e56612da8ec9a891fbb69ede1a2051a71381403edaf42864fb697c538
 
 pkgname = gascity-latest-bin
