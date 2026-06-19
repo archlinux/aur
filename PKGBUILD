@@ -2,7 +2,7 @@
 pkgname=autolock-git
 _pkgname=autolock
 pkgver=0.3.r2.g68f70aa
-pkgrel=1
+pkgrel=2
 pkgdesc='A minimal X11 idle-watcher'
 url='https://codeberg.org/ayari/autolock'
 arch=(
@@ -14,6 +14,9 @@ depends=(
     'libx11'
     'libxss'
     'systemd-libs'
+)
+optdepends=(
+    'slock: the default lock screen'
 )
 makedepends=(
     'gcc'
