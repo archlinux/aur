@@ -1,0 +1,3 @@
+d /var/lib/aivpn       0750 aivpn aivpn -
+d /var/lib/aivpn/masks 0750 aivpn aivpn -
+d /run/aivpn           0750 aivpn aivpn -

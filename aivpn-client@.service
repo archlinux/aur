@@ -1,0 +1,22 @@
+[Unit]
+Description=AIVPN Client (%i)
+Documentation=https://github.com/infosave2007/aivpn
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Reads the aivpn:// connection key from /etc/aivpn/keys/<profile>.key
+# Create the file: install -m600 /dev/null /etc/aivpn/keys/myprofile.key
+#                  echo 'aivpn://<base64>' > /etc/aivpn/keys/myprofile.key
+# Enable: systemctl enable --now aivpn-client@myprofile
+ExecStart=/bin/sh -c 'exec /usr/bin/aivpn-client "$(cat /etc/aivpn/keys/%i.key)"'
+Restart=on-failure
+RestartSec=10s
+
+AmbientCapabilities=CAP_NET_ADMIN
+CapabilityBoundingSet=CAP_NET_ADMIN
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=multi-user.target

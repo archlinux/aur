@@ -1,0 +1,35 @@
+[Unit]
+Description=AIVPN Server
+Documentation=https://github.com/infosave2007/aivpn
+After=network.target
+
+[Service]
+Type=simple
+User=aivpn
+Group=aivpn
+WorkingDirectory=/var/lib/aivpn
+Environment=USER=aivpn HOME=/var/lib/aivpn
+ExecStart=/usr/bin/aivpn-server \
+    --config /etc/aivpn/server.json \
+    --clients-db /var/lib/aivpn/clients.json \
+    --key-file /etc/aivpn/server.key
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=5s
+KillMode=process
+
+# Capabilities needed for TUN device and port binding
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
+
+# Hardening
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/lib/aivpn /run/aivpn /etc/aivpn
+PrivateTmp=yes
+PrivateDevices=no
+DeviceAllow=/dev/net/tun rw
+
+[Install]
+WantedBy=multi-user.target

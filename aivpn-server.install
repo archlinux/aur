@@ -1,0 +1,33 @@
+post_install() {
+    systemd-sysusers /usr/lib/sysusers.d/aivpn-server.conf
+    systemd-tmpfiles --create /usr/lib/tmpfiles.d/aivpn-server.conf
+
+    if [ ! -f /etc/aivpn/server.key ]; then
+        echo -n "Generating server key..."
+        openssl rand -hex 32 > /etc/aivpn/server.key \
+            && chown root:aivpn /etc/aivpn/server.key \
+            && chmod 640 /etc/aivpn/server.key \
+            && echo " done." || echo " FAILED."
+    fi
+
+    if [ ! -f /var/lib/aivpn/clients.json ]; then
+        install -o aivpn -g aivpn -m 600 /dev/null /var/lib/aivpn/clients.json
+    fi
+
+    echo "
+==> aivpn-server installed. Before starting, review /etc/aivpn/server.json.
+    Manage clients with:
+      aivpn-server --add-client <name> --key-file /etc/aivpn/server.key \\
+                   --clients-db /var/lib/aivpn/clients.json --server-ip IP:PORT
+      aivpn-server --list-clients   --clients-db /var/lib/aivpn/clients.json
+      aivpn-server --show-client <name> --key-file /etc/aivpn/server.key \\
+                   --clients-db /var/lib/aivpn/clients.json --server-ip IP:PORT
+      aivpn-server --remove-client <name> --clients-db /var/lib/aivpn/clients.json
+    Then: systemctl enable --now aivpn-server
+"
+}
+
+post_upgrade() {
+    systemd-tmpfiles --create /usr/lib/tmpfiles.d/aivpn-server.conf
+    echo "==> aivpn-server upgraded. Restart the service: systemctl restart aivpn-server"
+}
