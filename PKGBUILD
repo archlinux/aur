@@ -1,7 +1,7 @@
 # Maintainer: Aaron Coach <aur@awc.id.au>
 pkgname=tracefinity
 _pkgname=tracefinity
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Generate custom gridfinity bins with AI, from photos of your tools"
 arch=('x86_64')
@@ -11,6 +11,7 @@ depends=('nodejs' 'python' 'glibc' 'gcc-libs' 'libglvnd' 'glib2' 'libsm' 'libxex
 makedepends=('git' 'python-pip' 'python-virtualenv' 'npm')
 backup=('etc/tracefinity/tracefinity.env')
 optdepends=('nginx: Reverse proxy to combine frontend and backend on a single port')
+install='tracefinity.install'
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tracefinity/tracefinity/archive/refs/tags/${pkgver}.tar.gz"
   "tracefinity-backend.service"
@@ -20,20 +21,22 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tracefinity/tracefinity
   "tracefinity.nginx.conf"
   "tracefinity.env")
 
-sha256sums=('ccf4949b429d11670d62cf6c55b03b669c00a739e1b3bf398f7ae8512d7e592a'
+sha256sums=('b852637aff258e11aad4e142ca638e369d3c7234ecd053e0feade01d78206007'
             'd4f393ee489dc518bf42a93d8ace1322bc7edd68d96a5d676a7f0b00f948e773'
             '7e50478cde51f9c618eeeb09e7529f9471b2e0bd463c72987fb7415eba3adf35'
             '7be50bd94eefbbb8907f5f150761b76e16f65f7a2527f2bb371cac426303cf2d'
             '69751a017f2f4d5b89b69efaf5958a9db4728e2352ce9476ac677341a201f2a6'
             '0fe90b1c7354e22f4fe69ac69d5005e35addf86a02069e4ed60e57480a0e911f'
-            '32cc705c49352c8658ed66c33f596b1088cccc4bcfaa5f9eefd197bf9c125d1f')
+            '905c4f757dd03c99754fb8827a6f677679655bce04556d922e9de8cead962eb7')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
 
   msg2 "Building frontend..."
   cd frontend
-  npm ci
+
+  npm install --cache "$srcdir/npm-cache" --no-audit --no-fund
+
   NEXT_TELEMETRY_DISABLED=1 NEXT_PUBLIC_API_URL= npm run build
 
   msg2 "Pruning frontend development dependencies..."

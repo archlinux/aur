@@ -1,0 +1,21 @@
+post_install() {
+  echo "======================================================================="
+  echo " Tracefinity requires manual configuration before starting!"
+  echo ""
+  echo " 1. Edit /etc/tracefinity/tracefinity.env"
+  echo " 2. Replace PROXY_SECRET='change-me' with a secure random string."
+  echo "    (Tip: You can generate one by running 'openssl rand -hex 32')"
+  echo " 3. Add your valid GOOGLE_API_KEY."
+  echo "======================================================================="
+}
+
+post_upgrade() {
+  # Only show this warning if they are upgrading from a version older than 0.5.0
+  if [ "$(vercmp "$2" "0.5.0")" -lt 0 ]; then
+    echo "======================================================================="
+    echo " WARNING: Tracefinity 0.5.0+ introduces internal proxy authentication."
+    echo " You MUST add a PROXY_SECRET to /etc/tracefinity/tracefinity.env"
+    echo " before restarting the backend service."
+    echo "======================================================================="
+  fi
+}
