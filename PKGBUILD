@@ -32,7 +32,7 @@ package() {
     cd "cyan-skillfish-governor-$pkgver"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/cyan-skillfish-governor${variant}"
     install -Dm0755 -t "$pkgdir/usr/bin/" "scripts/cyan-skillfish-performance-mode"
-    install -Dm644 -t "$pkgdir/usr/share/dbus-1/system.d/" com.cyan.SkillFishGovernor.conf
+    install -Dm644 -t "$pkgdir/usr/share/dbus-1/system.d/" com.cyanskillfish.Governor.conf
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/cyan-skillfish-governor${variant}/LICENSE"
     install -Dm644 default-config.toml "$pkgdir/etc/cyan-skillfish-governor${variant}/config.toml"
     install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" "cyan-skillfish-governor${variant}.service"
