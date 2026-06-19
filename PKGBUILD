@@ -5,7 +5,7 @@ _pkgname=oyui
 _execname=${_pkgname}
 
 pkgname=${_pkgname}
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Modern TUI merge tool and interactive diff editor for Jujutsu (jj) and Git"
 
@@ -18,7 +18,7 @@ provides=("${_execname}")
 makedepends=('rust')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('91f8b31e83dac218d970f8b646a5558258e5ff494f5cae969dcdfa74a3989608')
+sha256sums=('1d3d7da8039f568623458c6ca148b0b509c73349b7c9eb14162e2ffac18ea38c')
 
 prepare() {
 	cd ${srcdir}/${pkgname}-${pkgver}/ || exit 1
