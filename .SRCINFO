@@ -14,6 +14,7 @@ pkgbase = sfcgal
 	depends = gmp
 	depends = mpfr
 	depends = openscenegraph
+	depends = eigen
 	provides = sfcgal
 	source = https://gitlab.com/Oslandia/sfcgal/-/archive/v2.3.0/SFCGAL-v2.3.0.tar.gz
 	source = fix_boos189.patch::https://gitlab.com/sfcgal/SFCGAL/-/merge_requests/539.patch
