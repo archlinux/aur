@@ -1,0 +1,18 @@
+pkgbase = lab3d-sdl-git
+	pkgdesc = Enhanced port of Ken's Labyrinth with hi-res texture support (git version)
+	pkgver = r217.295e95a
+	pkgrel = 1
+	url = https://github.com/sacredbanana/lab3d-sdl
+	arch = x86_64
+	license = GPL
+	makedepends = cmake>=3.26
+	depends = sdl2
+	depends = zlib
+	depends = sdl2_image
+	depends = glu
+	depends = glibc
+	conflicts = lab3d-sdl
+	source = git+https://github.com/sacredbanana/lab3d-sdl
+	sha256sums = SKIP
+
+pkgname = lab3d-sdl-git
