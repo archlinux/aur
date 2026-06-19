@@ -1,3 +1,3 @@
 #!/bin/bash
 
-multilib-build "$@" && extra-i686-build "$@"
+extra-x86_64-build "$@"

@@ -17,13 +17,19 @@ VBOX_PATH_APP_DOCS := /usr/share/doc/virtualbox
 VBOX_PATH_PACKAGE_DOCS := $(VBOX_PATH_APP_DOCS)
 VBOX_BLD_PYTHON = python
 VBOX_JAVA_HOME = /usr/lib/jvm/java-8-openjdk
+# Arch splits Qt's host tools between the bin and libexec-style directories.
+PATH_TOOL_QT6_BIN := /usr/lib/qt6/bin
+PATH_TOOL_QT6_LIBEXEC := /usr/lib/qt6
 
 # do not fail on warning
 VBOX_GCC_WERR =
 VBOX_GCC_WARN =
 
 # fix gsoap missing zlib include and produce errors with --as-needed
-VBOX_GSOAP_CXX_LIBS := gsoapssl++ z
+VBOX_GSOAP_CXX_LIBS := gsoapssl++ ssl crypto z
+# Keep large generated enum maps together. This is also required by the
+# official Arch package with current gSOAP.
+VBOX_WITHOUT_SPLIT_SOAPC = 1
 
 # use system xorg and gl headers
 VBOX_USE_SYSTEM_XORG_HEADERS = 1
@@ -35,5 +41,14 @@ VBOX_WITH_UPDATE_REQUEST := 0
 # build shared library
 VBOX_GUI_WITH_SHARED_LIBRARY = 1
 
+# build the GPL VNC extension pack in OSE builds
+VBOX_WITH_EXTPACK_VNC = 1
+
 # disable experimental cloud infrastructure integration
 VBOX_WITH_CLOUD_NET :=
+
+# enable features shipped by the official Arch package
+VBOX_WITH_UNATTENDED = 1
+VBOX_WITH_VBOX_IMG = 1
+VBOX_WITH_VBOXIMGMOUNT = 1
+VBOX_WITH_VBOXSDL = 1

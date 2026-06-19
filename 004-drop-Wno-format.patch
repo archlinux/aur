@@ -5,11 +5,10 @@ Subject: [PATCH 1/1] drop -Wno-format
 
 ---
  src/VBox/Devices/EFI/Firmware/Config.kmk  |  2 +-
- src/VBox/Devices/Makefile.kmk             |  2 +-
  src/VBox/Devices/PC/ipxe/Makefile.kmk     |  2 +-
  src/VBox/ExtPacks/VBoxDTrace/Makefile.kmk |  2 +-
  src/VBox/Main/webservice/Makefile.kmk     |  3 +--
- 5 files changed
+ 4 files changed
 
 diff --git a/src/VBox/Devices/EFI/Firmware/Config.kmk b/src/VBox/Devices/EFI/Firmware/Config.kmk
 index ddd1fc1e..0614d90c 100644
@@ -24,17 +23,6 @@ index ddd1fc1e..0614d90c 100644
   	-Wno-empty-body -Wno-unused-parameter -Wno-unused-variable -Wno-unused-label
   TEMPLATE_VBoxEfiBldProg_CXXFLAGS = $(filter-out -pedantic,$(TEMPLATE_VBoxBldProg_CXXFLAGS)) \
   	-Wno-all -Wno-shadow -Wno-empty-body -Wno-unused-parameter -Wno-unused-variable \
-diff --git a/src/VBox/Devices/Makefile.kmk b/src/VBox/Devices/Makefile.kmk
-index a17e655f..fe905681 100644
-@@ -853,7 +853,7 @@ if !defined(VBOX_ONLY_EXTPACKS) && "$(in
-    ifeq ($(KBUILD_TARGET),win)
-     $(file)_CFLAGS = -wd4018
-    else
--    $(file)_CFLAGS += -Wno-sign-compare -Wno-format -Wno-bad-function-cast
-+    $(file)_CFLAGS += -Wno-sign-compare -Wno-bad-function-cast
-    endif
-   endef
-  
 diff --git a/src/VBox/Devices/PC/ipxe/Makefile.kmk b/src/VBox/Devices/PC/ipxe/Makefile.kmk
 index 7f5b4c5a..33705fe7 100644
 --- a/src/VBox/Devices/PC/ipxe/Makefile.kmk
@@ -56,8 +44,8 @@ index 081f02b0..75fe411b 100644
    VBoxDTraceCmd_DEFS.win = YY_USE_PROTOS=1 YYENABLE_NLS=0 YYLTYPE_IS_TRIVIAL=0
    VBoxDTraceCmd_SDKS = VBoxZlib
    ifn1of ($(KBUILD_TARGET), win)
--   VBoxDTraceCmd_CFLAGS = -Wno-format $(VBOX_GCC_Wno-overlength-strings) -Wno-sign-compare -Wno-strict-prototypes -Wno-missing-prototypes -Wno-missing-declarations -Wno-shadow
-+   VBoxDTraceCmd_CFLAGS = $(VBOX_GCC_Wno-overlength-strings) -Wno-sign-compare -Wno-strict-prototypes -Wno-missing-prototypes -Wno-missing-declarations -Wno-shadow
+-   VBoxDTraceCmd_CFLAGS = -Wno-format $(VBOX_GCC_Wno-overlength-strings) -Wno-sign-compare -Wno-strict-prototypes -Wno-missing-prototypes -Wno-missing-declarations -Wno-shadow $(VBOX_GCC_Wno-misleading-indentation)
++   VBoxDTraceCmd_CFLAGS = $(VBOX_GCC_Wno-overlength-strings) -Wno-sign-compare -Wno-strict-prototypes -Wno-missing-prototypes -Wno-missing-declarations -Wno-shadow $(VBOX_GCC_Wno-misleading-indentation)
    endif
    VBoxDTraceCmd_INCS = \
    	include \

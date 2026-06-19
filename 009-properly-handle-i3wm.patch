@@ -6,9 +6,9 @@ Subject: [PATCH] properly handle i3wm
 ---
  .../VirtualBox/src/globals/UIDesktopWidgetWatchdog.cpp        | 3 ++-
  .../Frontends/VirtualBox/src/platform/nix/VBoxUtils-nix.cpp   | 3 +++
- .../Frontends/VirtualBox/src/platform/nix/VBoxUtils-nix.h     | 3 ++-
+ .../Frontends/VirtualBox/src/platform/nix/VBoxUtils-nix.h     | 1 +
  src/VBox/Frontends/VirtualBox/src/widgets/UIMiniToolBar.cpp   | 4 ++++
- 4 files changed, 11 insertions(+), 2 deletions(-)
+ 4 files changed, 9 insertions(+), 1 deletion(-)
 
 diff --git a/src/VBox/Frontends/VirtualBox/src/globals/UIDesktopWidgetWatchdog.cpp b/src/VBox/Frontends/VirtualBox/src/globals/UIDesktopWidgetWatchdog.cpp
 index c27ff6f6..066a80e0 100644
@@ -50,21 +50,6 @@ index 66504c71..f83b5c85 100644
  };
  
  /** X11: Screen-saver inhibit methods. */
-@@ -102,11 +103,11 @@ namespace NativeWindowSubsystem
-     bool WaylandIsCompositingManagerRunning();
- 
-     /** Wrapper for window manager type functions. */
--    X11WMType windowManagerType(bool fIsXServerAvailable);
-+    SHARED_LIBRARY_STUFF X11WMType windowManagerType(bool fIsXServerAvailable);
-     /** X11: Determines and returns current Window Manager type. */
--    X11WMType X11WindowManagerType();
-+    SHARED_LIBRARY_STUFF X11WMType X11WindowManagerType();
-     /** Wayland: Determines and returns current Window Manager type. */
--    X11WMType WaylandWindowManagerType();
-+    SHARED_LIBRARY_STUFF X11WMType WaylandWindowManagerType();
- 
-     /** Wrapper for X11CheckExtension and WaylandCheckExtension functions. */
-     bool checkExtension(bool fIsXServerAvailable, const char *extensionName);
 diff --git a/src/VBox/Frontends/VirtualBox/src/widgets/UIMiniToolBar.cpp b/src/VBox/Frontends/VirtualBox/src/widgets/UIMiniToolBar.cpp
 index 7b37d46b..b838ad07 100644
 --- a/src/VBox/Frontends/VirtualBox/src/widgets/UIMiniToolBar.cpp
