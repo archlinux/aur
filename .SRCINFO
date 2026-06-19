@@ -1,17 +1,19 @@
 pkgbase = git-tui
 	pkgdesc = Collection of human friendly terminal interface for git
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ArthurSonzogni/git-tui
 	arch = x86_64
 	license = MIT
 	makedepends = cmake>=3.15
 	makedepends = ftxui
-	makedepends = subprocess>=0.4
+	makedepends = ninja
 	depends = gcc-libs
 	depends = git
 	depends = glibc
 	source = git-tui-1.3.0.tar.gz::https://github.com/ArthurSonzogni/git-tui/archive/refs/tags/v1.3.0.tar.gz
+	source = git+https://github.com/benman64/subprocess.git#commit=e1cae5e86e5d089e65e906f7c13917b7bbb75d04
 	sha256sums = f8e90d41f4f016916fbcbf07dba779faf3ba281cc9fe216a6176a7b60afcd9d2
+	sha256sums = d8bc12b63d4e0f573385c41ae5b4a25642bdacb1d5481ebc80dc0e409bddc1ee
 
 pkgname = git-tui
