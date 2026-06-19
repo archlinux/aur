@@ -1,6 +1,6 @@
 pkgbase = autolock-git
 	pkgdesc = A minimal X11 idle-watcher
-	pkgver = 0.1.r0.g0a24d70
+	pkgver = 0.3.r2.g68f70aa
 	pkgrel = 1
 	url = https://codeberg.org/ayari/autolock
 	arch = x86_64
@@ -19,6 +19,6 @@ pkgbase = autolock-git
 	source = autolock-main::git+https://codeberg.org/ayari/autolock.git
 	source = systemd-libs.patch
 	sha256sums = SKIP
-	sha256sums = a9ff995a37a5c84df46025df3ae96d2ab8b19b96968c8f1170ac7d7201210693
+	sha256sums = 66ae860a0f428979a551b3a95026e53897ee5ec68ab5e23ccdd86287e0883858
 
 pkgname = autolock-git

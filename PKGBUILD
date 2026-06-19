@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=autolock-git
 _pkgname=autolock
-pkgver=0.1.r0.g0a24d70
+pkgver=0.3.r2.g68f70aa
 pkgrel=1
 pkgdesc='A minimal X11 idle-watcher'
 url='https://codeberg.org/ayari/autolock'
@@ -30,7 +30,7 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    'a9ff995a37a5c84df46025df3ae96d2ab8b19b96968c8f1170ac7d7201210693'
+    '66ae860a0f428979a551b3a95026e53897ee5ec68ab5e23ccdd86287e0883858'
 )
 
 pkgver() {
@@ -52,6 +52,8 @@ build() {
 package() {
     cd "$_pkgname-main"
     install -Dm755 autolock "${pkgdir}/usr/bin/autolock"
+    install -Dm644 autolock.1 "${pkgdir}/usr/share/man/man1/autolock.1"
+    command -v gzip >/dev/null 2>&1 && gzip -9 "${pkgdir}/usr/share/man/man1/autolock.1"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
