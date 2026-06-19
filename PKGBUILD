@@ -1,31 +1,23 @@
 # Maintainer: Ishan Parihar <ishanp at protonmail dot com>
 pkgname=neverwrite-bin
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc='The bastard son between Cursor and Obsidian - local-first knowledge workspace with AI'
 arch=('x86_64')
 url='https://neverwrite.app/'
 license=('Apache-2.0')
-depends=('electron' 'libnotify' 'libxtst' 'nss' 'libxss' 'gtk3' 'mesa')
+depends=('fuse2' 'squashfuse' 'glib2' 'libnotify' 'libxtst' 'nss' 'libxss' 'gtk3' 'mesa')
 optdepends=('libappindicator-gtk3: Tray icon support')
 options=('!strip')
 source=("https://github.com/jsgrrchg/NeverWrite/releases/download/v${pkgver}/NeverWrite-${pkgver}-x64.AppImage"
         "neverwrite.desktop"
         "neverwrite.png")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('57c030fe6bbfa9b8f886274e2a03a456562618aa3fd28d4a1a11479cf49fc668'
+            '60e38a4b29806b1ab79b3db9afb90a4d27dadf89cff0311b3cf48bc900be4bcc'
+            '6f201da8de1e9c712ef751a88470d4f83a5baf2b111329b0c589fb4a892a508f')
 
 prepare() {
     chmod +x "NeverWrite-${pkgver}-x64.AppImage"
-    # Extract the AppImage to get the icon
-    if [ -f "NeverWrite-${pkgver}-x64.AppImage" ]; then
-        # Try to extract icon from AppImage
-        if ./NeverWrite-${pkgver}-x64.AppImage --appimage-extract > /dev/null 2>&1; then
-            # Look for icon in extracted files
-            find squashfs-root -name "*.png" -o -name "*.svg" | head -1 || true
-        fi
-    fi
 }
 
 package() {
