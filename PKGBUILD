@@ -13,7 +13,7 @@ depends=('pam' 'libcap' 'libseccomp' 'yaml-cpp')
 makedepends=('cmake>=3.18' 'clang' 'llvm' 'ninja' 'pkgconf' 'git' 'ccache' 'mold')
 backup=('etc/pam.d/voix' 'etc/voix.conf')
 source=("https://github.com/Veridian-Zenith/Voix/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f54837144b654be9d0116407f65f7342f9d961d62b400ef848cc665dea9c8020')
+sha256sums=('5574699be03bdb5d9f41a4a9d8aad7f3120a7ba897d2e01d996a9e30c27620b6')
 
 build() {
     cd "$_pkgname-$pkgver"
