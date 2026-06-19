@@ -1,6 +1,6 @@
 pkgname=waveloggate-git
 pkgdesc="CAT and WSJT-X Bridge for WaveLog"
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 arch=('x86_64')
 makedepends=(
@@ -13,6 +13,8 @@ depends=(
     'webkit2gtk-4.1'
     'hamlib'
 )
+provides=('waveloggate')
+conflicts=('waveloggate' 'waveloggate-bin')
 url="https://github.com/wavelog/WaveLogGate"
 license=('MIT')
 # graphic license: MIT
@@ -23,7 +25,7 @@ source=(
     "WaveLogGate.desktop"
     "wavelog_icon_only.png"
 )
-sha256sums=('SKIP'
+sha256sums=('e53d796ad926fb0ea5338b5334af27f93ae78c864121c3a3d50537f89a2c5506'
             '1f42c3eedc034ef363388224d05284b686ba94769650e1a2359f304c849197cb'
             '593e1c6e902130d0c911e34f5d26f1e4d2703327b814c94ae82be04e1c2d80bb'
             'aa5da810c4c84cbde4b79445e2fb1195c61d4f9b5c85eafa4bc2867b3d16a39d')
@@ -33,7 +35,6 @@ options=(!lto !debug)
 # not needed - javascript
 
 build () {
-
     cd WaveLogGate
     wails build -clean -tags webkit2_41
 }
