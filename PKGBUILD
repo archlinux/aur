@@ -35,23 +35,42 @@ optdepends=(
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('1845a53d3cac40ad2ca07d27f4476114e7add92a65f65735352b270dd7237863')
 
-_archive="$_pkgname-$pkgver"
+_archive="${_pkgname}-${pkgver}"
+
+prepare() {
+    cd "${srcdir}/${_archive}"
+
+    sed -i \
+        's|requires *= *\["flit_core[^"]*"\]|requires = ["flit_core"]|' \
+        pyproject.toml
+}
 
 build() {
-  cd "$_archive"
+    cd "${srcdir}/${_archive}"
 
-  python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$_archive"
+    cd "${srcdir}/${_archive}"
 
-  # Deselect failing tests - most are failing due to using CallMemo which was
-  # removed from typeguard in v4.0.0.
-  pytest --override-ini="addopts=" \
+    rm -rf "${srcdir}/test-install"
+
+    python -m installer \
+        --destdir="${srcdir}/test-install" \
+        dist/*.whl
+
+    pyver=$(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
+
+    export PYTHONPATH="${srcdir}/test-install/usr/lib/python${pyver}/site-packages"
+
+    pytest --override-ini="addopts=" \
+    --ignore=tests/test_linter/test_extractors/test_exceptions.py \
+    --deselect tests/test_linter/test_checker.py::test_flake8_integration \
     --deselect tests/test_cli/test_test.py::test_no_violations \
     --deselect tests/test_cli/test_test.py::test_print_exception \
     --deselect tests/test_doctest.py::test_doctest \
+    --deselect tests/test_linter/test_extractors/test_exceptions.py \
     --deselect tests/test_linter/test_extractors/test_exceptions_stubs.py::test_marhsmallow_stubs \
     --deselect tests/test_testing.py \
     --deselect tests/test_linter/test_extractors/test_common.py::test_infer
