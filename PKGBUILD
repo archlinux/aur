@@ -2,14 +2,14 @@
 pkgname=serwis-app-bin
 _pkgname=serwis-app
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Proste Prowadzenie Serwisu"
 arch=('x86_64')
 url="https://github.com/KlapkiSzatana/serwis-app"
 license=('GPL-3.0')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-
+replaces=("${_pkgname}")
 options=('!strip' '!debug')
 
 source=("https://github.com/KlapkiSzatana/serwis-app/releases/download/v${pkgver}/SerwisApp_linux.tar.gz")
