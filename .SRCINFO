@@ -1,9 +1,8 @@
 pkgbase = wlrun
 	pkgdesc = Keyboard-driven launcher and system console for wlr-layer-shell compositors: apps, network, Bluetooth, display, storage, keyboard, pass
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://codeberg.org/vighd/wlrun
-	install = wlrun.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -26,9 +25,7 @@ pkgbase = wlrun
 	optdepends = wl-clipboard: Ctrl+V paste on Wayland
 	optdepends = xclip: Ctrl+V paste on X11
 	optdepends = libnotify: desktop notifications
-	conflicts = river-delta
-	replaces = river-delta
-	source = wlrun-1.9.0.tar.gz::https://codeberg.org/vighd/wlrun/archive/v1.9.0.tar.gz
-	sha256sums = 29a79ce8a046f76a7b15712b282398df37471b26ac5486fd4f5c068285d5327e
+	source = wlrun-1.9.1.tar.gz::https://codeberg.org/vighd/wlrun/archive/v1.9.1.tar.gz
+	sha256sums = 44bce056528b8b464d5d90fe1ca2f3caf8c9a54fd751af0ad2b16580105149f4
 
 pkgname = wlrun

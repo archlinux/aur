@@ -1,6 +1,6 @@
 # Maintainer: Daniel Vigh <vighd@digital.co.hu>
 pkgname=wlrun
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Keyboard-driven launcher and system console for wlr-layer-shell compositors: apps, network, Bluetooth, display, storage, keyboard, pass"
 arch=('x86_64' 'aarch64')
@@ -8,10 +8,6 @@ url="https://codeberg.org/vighd/wlrun"
 license=('MIT')
 depends=('libxkbcommon' 'freetype2' 'fontconfig')
 makedepends=('go' 'pkgconf')
-# Renamed from river-delta: replace the old package cleanly and warn on install.
-replaces=('river-delta')
-conflicts=('river-delta')
-install="$pkgname.install"
 optdepends=(
   'iwd: Wi-Fi in the network mode'
   'dhcpcd: DHCP for wired networking'
@@ -29,7 +25,7 @@ optdepends=(
   'libnotify: desktop notifications'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('29a79ce8a046f76a7b15712b282398df37471b26ac5486fd4f5c068285d5327e')
+sha256sums=('44bce056528b8b464d5d90fe1ca2f3caf8c9a54fd751af0ad2b16580105149f4')
 
 build() {
   cd "$pkgname"
