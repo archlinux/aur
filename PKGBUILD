@@ -7,20 +7,23 @@
 pkgname=plasmazones
 # pkgver/pkgrel are placeholders; CI rewrites them against the release tag
 # before publishing. See packaging/arch/update-aur.sh.
-pkgver=3.0.16
+pkgver=3.0.17
 pkgrel=1
 pkgdesc='Window tiling and autotiling for KDE Plasma'
 arch=('x86_64')
 url='https://github.com/fuddlesworth/PlasmaZones'
 license=('GPL-3.0-or-later' 'LGPL-2.1-or-later')
 
-# Exact KWin upstream pin. The kwin-effect plugin's IID embeds KWin's exact
-# upstream version string; KWin refuses to load effects whose IID doesn't
-# match its own version, including across patch bumps (e.g. 6.7.0 -> 6.7.1).
-# kwin is in makedepends below, so it is installed before makepkg evaluates
-# depends. cut strips Arch's pkgrel so we pin to upstream (e.g. "6.7.0").
-_kwin_ver=$(pacman -Q kwin 2>/dev/null | awk '{print $2}' | cut -d- -f1)
-
+# KWin: minimum version, NOT an exact pin. The kwin-effect plugin's IID embeds
+# KWin's exact upstream version string and KWin refuses to load an effect whose
+# IID doesn't match its own version (even across patch bumps, e.g. 6.7.0 ->
+# 6.7.1). An exact `kwin=<ver>` pin, however, makes pacman hold KWin back on
+# -Syu whenever a newer KWin lands before this package is rebuilt, stranding the
+# desktop in a half-upgraded Plasma ("No KScreen backend found", black screen).
+# A mismatched effect is harmless — KWin reads the IID from plugin metadata and
+# never loads a non-matching effect, so the .so stays inert; only the drag
+# overlay is missing until a rebuild. Core tiling runs in the daemon +
+# layer-shell QPA plugin and is independent of the effect.
 depends=(
     'qt6-base'
     'qt6-declarative'
@@ -32,7 +35,7 @@ depends=(
     'kcmutils'
     'kglobalaccel'
     'qt6-wayland'
-    "kwin${_kwin_ver:+=}${_kwin_ver}"
+    'kwin>=6.7.0'
 )
 makedepends=(
     'cmake'
@@ -52,7 +55,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # 'SKIP' so local `makepkg -p PKGBUILD` doesn't fail integrity-check
 # on the placeholder pkgver. release.yml templates a real sha256 when
 # publishing to AUR (see the awk rewrite in the publish-aur job).
-sha256sums=('5a80c67dca430d17c4afeaab666bdb78226bdae934051010b6aa604bbef7e8e9')
+sha256sums=('eaad88582504b1fa3b2c461613249c6a02f5d994e9298ea2ab8dd8e7d6b12638')
 install=plasmazones.install
 
 build() {
