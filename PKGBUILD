@@ -21,7 +21,7 @@ url="http://courier-mta.org/cone/"
 license=('GPL-3.0-only')
 #groups=()
 makedepends=('procps-ng')
-depends=('libxml2' 'libidn2' 'libldap' 'courier-unicode' 'ncurses' 'openssl' 'glibc' 'aspell' 'gcc-libs')
+depends=('glibc' 'libgcc' 'libstdc++' 'libxml2' 'libidn2' 'libldap' 'courier-unicode' 'ncurses' 'openssl' 'aspell' )
 checkdepends=()
 #optdepends=()
 provides=('cone')
@@ -49,9 +49,11 @@ prepare()
 
 build()
 {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  "${srcdir}/${_pkgname}-${pkgver}/configure" -C --without-db --with-certdb=/usr/share/cone/rootcerts --prefix=/usr --exec-prefix=/usr --libexecdir=/usr/lib/cone --sysconfdir=/etc --with-notice=unicode
-  make
+  cd "${srcdir}/${_pkgname}-${pkgver}";
+  #./configure -C --without-db --with-certdb=/usr/share/cone/rootcerts --prefix=/usr --exec-prefix=/usr --libexecdir=/usr/lib/cone --sysconfdir=/etc --with-notice=unicode;
+  # Add C++17 workaround (https://sourceforge.net/p/courier/mailman/message/59348126/)
+  ./configure -C --without-db --with-certdb=/usr/share/cone/rootcerts --prefix=/usr --exec-prefix=/usr --libexecdir=/usr/lib/cone --sysconfdir=/etc --with-notice=unicode CXXFLAGS=--std=gnu++17;
+  make;
 }
 
 check()
