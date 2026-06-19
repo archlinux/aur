@@ -1,8 +1,8 @@
 # Maintainer: RoCHH <isvlad404  at  gmail dot com>
 
 pkgname=ttf-fast-font-git
-pkgver=r42.f1ec8f9
-pkgrel=2
+pkgver=0.0.2
+pkgrel=3
 pkgdesc="Fast-Font (VCS): font with OpenType feature to highlight first letters of words (built from Git)"
 url="https://github.com/Born2Root/Fast-Font"
 license=('MIT')
