@@ -3,13 +3,9 @@
 # Contributor: Lubosz Sarnecki <lubosz at gmail dot com>
 # Contributor: Vincent Hourdin <vh|at|free-astro=DOT=vinvin.tf>
 
-## links
-# https://www.siril.org/
-# https://gitlab.com/free-astro/siril
-
 _pkgname="siril"
 pkgname="$_pkgname-git"
-pkgver=1.4.0.r83.gf3f0431
+pkgver=1.4.4.r575.g36ec84a
 pkgrel=1
 pkgdesc="Astronomical image processing software for Linux (IRIS clone)"
 url="https://gitlab.com/free-astro/siril"
@@ -23,8 +19,8 @@ depends=(
   'ffms2'
   'fftw'
   'gsl'
-  'gtk3'
-  'gtksourceview4'
+  'gtk4'
+  'gtksourceview5'
   'kplotting'
   'libgit2'
   'libheif'
@@ -55,14 +51,6 @@ sha256sums=('SKIP')
 prepare() {
   cd "$_pkgsrc"
   git submodule update --init --recursive --depth=1
-
-  # https://github.com/mesonbuild/meson/pull/15297
-  sed -e '/LIBRARY_VERSION/d' -i subprojects/librtprocess/CMakeLists.txt
-  sed -E -e '/set_target_properties\(htmesh/d' \
-    -e '/^ *VERSION [0-9\.]+/d' \
-    -e '/^ *SOVERSION [0-9]+/d' \
-    -i subprojects/htmesh/CMakeLists.txt
-  sed -e '/YYJSON_SOVERSION/d' -i subprojects/yyjson/CMakeLists.txt
 }
 
 pkgver() {
@@ -91,5 +79,4 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-  rm -rf "$pkgdir/usr/lib"
 }
