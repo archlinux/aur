@@ -1,0 +1,24 @@
+pkgbase = pkl-lsp
+	pkgdesc = Language Server Protocol implementation for Pkl
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/apple/pkl-lsp
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python
+	depends = glibc
+	depends = zlib
+	source = pkl-lsp-0.7.1.tar.gz::https://github.com/apple/pkl-lsp/archive/refs/tags/0.7.1.tar.gz
+	source = LICENSE.txt::https://raw.githubusercontent.com/apple/pkl-lsp/0.7.1/LICENSE.txt
+	source = run-lsp-agent.py
+	sha512sums = 88fa02a73aaf99169df900ee9e300f52ad0b86f52ca4f82b54d1d1fc9fd9053af5d0a9af35cee34c112ec6aa7a99dfc77d944ce5a5ae723845ae2a11750f078d
+	sha512sums = 98f6b79b778f7b0a15415bd750c3a8a097d650511cb4ec8115188e115c47053fe700f578895c097051c9bc3dfb6197c2b13a15de203273e1a3218884f86e90e8
+	sha512sums = 0ad269086aa96c77d2c9a66bdab8fe59adb11cc8bd0e024266f33d474f415c8b5145157b26901fbaeca8bb92f32156361f12564af46727099671300b12e41d74
+	source_x86_64 = graalvm-jdk-25.1.3-dev-20260619_0111-x64.tar.gz::https://github.com/graalvm/graalvm-ce-dev-builds/releases/download/25.1.3-dev-20260619_0111/graalvm-community-dev-linux-amd64.tar.gz
+	sha512sums_x86_64 = 7097c459e88b4fe3bfbc81f1c5246c0d46988d6503176a373a30a3dc34836c50577b07af81ea7c82f0bdb866e5788b05c1f8434f8530c54900cc463e8f3ff7a2
+	source_aarch64 = graalvm-jdk-25.1.3-dev-20260619_0111-arm64.tar.gz::https://github.com/graalvm/graalvm-ce-dev-builds/releases/download/25.1.3-dev-20260619_0111/graalvm-community-dev-linux-aarch64.tar.gz
+	sha512sums_aarch64 = 3e3aeebdd8dfac4b8c1e2ac01ccee015dc15f3582a5f65d106c068642f547aa9d888ac3b2d3ce085497ccfb5ff4bae02819e90b6582c46005aea5b1e2b48779d
+
+pkgname = pkl-lsp
