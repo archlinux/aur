@@ -4,12 +4,12 @@
 # a GitHub Release asset, so installing does NOT compile anything on the user's
 # machine.
 pkgname=bigtube-bin
-_pkgname=python-bigtube
-pkgver=2.1.71
+_pkgname=bigtube
+pkgver=2.1.72
 pkgrel=1
 pkgdesc="Universal Multimedia Downloader (GTK4/libadwaita + GStreamer)"
 arch=('x86_64')
-url="https://github.com/eltonfabricio10/python-bigtube"
+url="https://github.com/eltonfabricio10/bigtube"
 license=('MIT')
 depends=('gtk4' 'libadwaita' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good'
          'gst-plugins-bad' 'gst-plugin-gtk4' 'yt-dlp')
@@ -18,7 +18,7 @@ provides=('bigtube')
 conflicts=('bigtube' 'bigtube-rs')
 # Prebuilt tarball published by the release workflow (layout rooted at usr/).
 source=("bigtube-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/bigtube-${pkgver}-x86_64.tar.gz")
-sha256sums=('1c401880bde8454e19b0a9d0a2c4d1f84fc0c838d75de92ec65631366a6c582b')
+sha256sums=('9448817c2d815df56fcc6f56c69729b2a5758a3078eb66063df5a9e9433e2fc8')
 
 package() {
   # The tarball already mirrors the install layout (usr/bin, usr/share, ...).
