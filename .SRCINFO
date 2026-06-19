@@ -1,17 +1,17 @@
 pkgbase = tagselecta-bin
 	pkgdesc = Vim-inspired tool for managing audio file metadata
-	pkgver = 2.6.0
+	pkgver = 2.6.4
 	pkgrel = 1
 	url = https://cantti.github.io/tagselecta
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = gcc-libs
 	depends = glibc
-	provides = tagselecta=2.6.0
+	provides = tagselecta=2.6.4
 	conflicts = tagselecta
 	options = !strip
 	options = !debug
-	source = tagselecta-bin-2.6.0.zip::https://github.com/cantti/tagselecta/releases/download/v2.6.0/tagselecta-linux-x64.zip
-	sha256sums = de5866e8dc866bd46467631a0e5971167e607c782baf6254b38fb7a99983b5e2
+	source = tagselecta-bin-2.6.4.zip::https://github.com/cantti/tagselecta/releases/download/v2.6.4/tagselecta-linux-x64.zip
+	sha256sums = 1877db6424af687df547d8e1b0e73f31f195dda4a888f28c530b913a4d0cf228
 
 pkgname = tagselecta-bin
