@@ -1,0 +1,19 @@
+pkgbase = carapace-ffmpeg-bin
+	pkgdesc = An FFmpeg argstream lexer and completer.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/carapace-sh/carapace-ffmpeg
+	license = MIT
+	conflicts = carapace-ffmpeg
+	provides = carapace-ffmpeg
+	arch = aarch64
+	source_aarch64 = https://github.com/carapace-sh/carapace-ffmpeg/releases/download/v0.0.3/carapace-ffmpeg_0.0.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6e787cb1a5cea4a96ffdbb10937661e23a7b1ffc7f20bbaaaebc99891e9013df
+	arch = i686
+	source_i686 = https://github.com/carapace-sh/carapace-ffmpeg/releases/download/v0.0.3/carapace-ffmpeg_0.0.3_linux_386.tar.gz
+	sha256sums_i686 = f75fb5e60c9c08f54e499bc9bf2538196e7ca164b106d7fb6c026f241a351215
+	arch = x86_64
+	source_x86_64 = https://github.com/carapace-sh/carapace-ffmpeg/releases/download/v0.0.3/carapace-ffmpeg_0.0.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 51803ddbce61c8670d72b02e2f32bff0ac399c5fcdb8032a5252958cfb58fb57
+	
+pkgname = carapace-ffmpeg-bin
