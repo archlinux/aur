@@ -6,7 +6,7 @@
 
 _pkgname="godot-export-templates"
 pkgname="$_pkgname-linux"
-pkgver="4.6.3"
+pkgver="4.7"
 pkgrel=1
 pkgdesc='Godot export templates - Linux x86_64'
 url="https://github.com/godotengine/godot"
@@ -32,8 +32,8 @@ source=(
   "$_pkgsrc.$_pkgext"::"$url/releases/download/$_godot_version/$_pkgsrc.$_pkgext"
   "$_pkgsrc.$_pkgext.sha256"::"$url/releases/download/$_godot_version/$_pkgsrc.$_pkgext.sha256"
 )
-sha256sums=('2261028c0dfc10e0cf4800a5b2e5a57ea241f72965162327f5764d536a69a46a'
-            'c6ee3ee0d9eccb08035078ea571832b7f1bfd0cd59142be618795a7aacde4590')
+sha256sums=('e7acb6b27d6bee2525fdaa12660c602b034c25094e8a2679334601d8878a9e06'
+            '0bafa240cc006d32f9db22f4d9fd1dbf8c47ff0236aa0f5ac71dd13d60bf2705')
 
 prepare() {
   sha256sum -c "$_pkgsrc.$_pkgext.sha256"
