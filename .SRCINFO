@@ -1,7 +1,7 @@
 pkgbase = whylian
 	pkgdesc = Lian Li device control for Linux — HydroShift II AdvanceMode fork of lian-li-linux
 	pkgver = 1.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/byrdltd/whylian
 	install = whylian.install
 	arch = x86_64
@@ -24,8 +24,6 @@ pkgbase = whylian
 	depends = libdrm
 	depends = libjpeg-turbo
 	optdepends = systemd: user daemon unit (enabled globally on install)
-	optdepends = evdi-dkms: rebuild with WHYLIAN_DESKTOP_DISPLAY=1 for virtual-monitor desktop mode; see docs/EVDI-ARCHITECTURE.md
-	optdepends = linux-headers: build evdi-dkms against your running kernel when DKMS rebuild is needed
 	provides = lianli-linux
 	provides = lianli-linux-git
 	conflicts = whylian-git
