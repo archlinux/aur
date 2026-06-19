@@ -12,6 +12,7 @@ pkgbase = bcachefs-tools-git
 	makedepends = jq
 	makedepends = llvm
 	makedepends = pkgconf
+	makedepends = rust-bindgen
 	depends = bash
 	depends = fuse3
 	depends = libaio.so

@@ -37,6 +37,7 @@ makedepends=(
     'jq'
     'llvm'
     'pkgconf'
+    'rust-bindgen'
 )
 
 source=("git+https://github.com/koverstreet/bcachefs-tools.git")
