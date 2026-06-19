@@ -1,5 +1,5 @@
 pkgbase = opengrep-bin
-	pkgdesc = Lightweight static analysis for many languages. Find bug variants with patterns that look like source code. Fork of semgrep
+	pkgdesc = Lightweight static analysis for many languages. Find bug variants with patterns that look like source code. Fork of semgrep (binary release)
 	pkgver = 1.23.0
 	pkgrel = 1
 	url = https://github.com/opengrep/opengrep
