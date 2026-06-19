@@ -1,16 +1,34 @@
-# Maintainer: kekmacska <kekmacska2@proton.me>
+# Maintainer: quietvoid <tcChlisop0@gmail.com>
+
 pkgname=subrandr
-pkgver=1.0.1
+pkgver=1.3.0
 pkgrel=1
-pkgdesc="A subtitle rendering library which aims to render SRV3 (YouTube) subtitles and WebVTT subtitles accurately"
+pkgdesc='A subtitle rendering library'
+_rootdir="${pkgname}-${pkgver}"
 arch=('x86_64')
-url="https://repo.archlinuxcn.org"
-license=('GPL')
-source=("https://repo.archlinuxcn.org/x86_64/subrandr-1.0.1-1-x86_64.pkg.tar.zst")
-provides=('subrandr')
-b2sums=('2c4b328a6cc123d53c63f8bf38c635814f198b599b4fc18059eadd88b153acf31e54ec66b69c8728caa68e8558b904c0415304dc9059b4bfd3a236f28222644d')
+url='https://github.com/afishhh/subrandr'
+license=('MPL-2.0')
+depends=('gcc-libs' 'glibc')
+makedepends=('cargo')
+conflicts=('subrandr')
+provides=('subrandr' 'libsubrandr.so')
+source=("${_rootdir}.tar.gz::https://github.com/afishhh/subrandr/archive/v${pkgver}.tar.gz")
+b2sums=('c70aff932edbcf300c805b4cf68bacddc1e7ece25823c7c6413da4da2a8ab82c1d23cae2558507ef4f9844b759bd35b798eeeb382b780495e3c5765b52fdd5b2')
+
+build() {
+  cd "${_rootdir}"
+
+  cargo xtask build
+}
 
 package() {
-    mkdir -p "$pkgdir"
-    cp "$srcdir/$(basename $source)" "$pkgdir/"
+  cd "${_rootdir}"
+
+  # destdir currently expects the prefix to be included
+  cargo xtask install \
+    --destdir "${pkgdir}/usr" \
+    --prefix "${pkgdir}/usr"
+
+
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
