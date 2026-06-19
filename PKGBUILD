@@ -25,6 +25,7 @@ package() {
     cd aur-sleuth
     sed -i '1s|.*|#!/usr/bin/python|' aur-sleuth
     install -Dm755 aur-sleuth "$pkgdir/usr/bin/aur-sleuth"
+    install -Dm755 makepkg-with-sleuthing "$pkgdir/usr/bin/makepkg-with-sleuthing"
     cd ..
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
