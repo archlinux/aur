@@ -1,7 +1,7 @@
 # Maintainer: YOUR_NAME <YOUR_EMAIL@example.com>
 
 pkgname=perry
-pkgver=0.5.1180
+pkgver=0.5.1182
 pkgrel=1
 pkgdesc='Native TypeScript compiler that compiles TypeScript to native executables'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('clang' 'gcc' 'gcc-libs' 'glibc' 'xz' 'bzip2')
 makedepends=('cargo')
 checkdepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/PerryTS/perry/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8a9c90311e326511759d3c970310aee6f047931f821d7267915804d66a0c404a')
+sha256sums=('1855f48e552ea96c04afa69d89897667b1c2ff6ccff4db6e4e995f99f8608d7e')
 
 prepare() {
     cd "$pkgname-$pkgver"
