@@ -1,11 +1,11 @@
 pkgbase = rexuiz-bin
 	pkgdesc = Fast-paced multiplayer first-person shooter
-	pkgver = 2.5.5_260419
+	pkgver = 2.5.5_260531
 	pkgrel = 1
 	url = https://sourceforge.net/projects/rexuiz/
 	arch = x86_64
 	license = GPL
-	source = https://downloads.sourceforge.net/rexuiz/Rexuiz-2.5.5-260419.zip
-	sha256sums = 5aa906da5569beacdc0afbca2ab21dbe37e4105bbaeec70cd7563f4dac769635
+	source = https://downloads.sourceforge.net/rexuiz/Rexuiz-2.5.5-260531.zip
+	sha256sums = 93a2039174df3b2aed5f697e0b5793ef69b650a9b8e05554ef0235b3aa3bb8b9
 
 pkgname = rexuiz-bin
