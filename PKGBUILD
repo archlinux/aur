@@ -1,5 +1,5 @@
 pkgname=tb-nema-git
-pkgver=r4.73d57ca
+pkgver=v0.1.0
 pkgrel=1
 pkgdesc="TUI network manager with vim controls"
 arch=('any')
