@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=r-ark-bin
-pkgver=0.1.249
+pkgver=0.1.252
 pkgrel=1
 pkgdesc="An R kernel"
 arch=('x86_64')
@@ -22,5 +22,5 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha256sums_x86_64=('2653302c696612ce9f92dad8d31f013b496b520abd2d28e2f0fd494aa4f10743'
+sha256sums_x86_64=('a01e8802e1ff156570df99debaf8030e326d75c1d4057b7578a3966b00274876'
                    '19713ea69a4231105033c381dc2145148d26eab51e0b7e458ef4e775db531863')

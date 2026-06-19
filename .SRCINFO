@@ -1,6 +1,6 @@
 pkgbase = r-ark-bin
 	pkgdesc = An R kernel
-	pkgver = 0.1.249
+	pkgver = 0.1.252
 	pkgrel = 1
 	url = https://github.com/posit-dev/ark
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = r-ark-bin
 	depends = glibc
 	conflicts = r-ark
 	options = !debug
-	source_x86_64 = r-ark-bin-0.1.249.tar.gz::https://github.com/posit-dev/ark/releases/download/0.1.249/ark-0.1.249-linux-x64.zip
-	source_x86_64 = https://raw.githubusercontent.com/posit-dev/ark/refs/tags/0.1.249/LICENSE
-	provides_x86_64 = r-ark=0.1.249
-	sha256sums_x86_64 = 2653302c696612ce9f92dad8d31f013b496b520abd2d28e2f0fd494aa4f10743
+	source_x86_64 = r-ark-bin-0.1.252.tar.gz::https://github.com/posit-dev/ark/releases/download/0.1.252/ark-0.1.252-linux-x64.zip
+	source_x86_64 = https://raw.githubusercontent.com/posit-dev/ark/refs/tags/0.1.252/LICENSE
+	provides_x86_64 = r-ark=0.1.252
+	sha256sums_x86_64 = a01e8802e1ff156570df99debaf8030e326d75c1d4057b7578a3966b00274876
 	sha256sums_x86_64 = 19713ea69a4231105033c381dc2145148d26eab51e0b7e458ef4e775db531863
 
 pkgname = r-ark-bin
