@@ -1,6 +1,6 @@
 pkgbase = libpathrs
 	pkgdesc = C-friendly API to make path resolution safer on Linux
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/cyphar/libpathrs
 	arch = x86_64
@@ -9,7 +9,10 @@ pkgbase = libpathrs
 	depends = glibc
 	depends = libgcc
 	options = !lto
-	source = https://github.com/cyphar/libpathrs/releases/download/v0.2.4/libpathrs-0.2.4.tar.xz
-	sha256sums = 45aca68e698b844fae0cf7c459bc441519b0e7b48397caa7d3936cfc68d73f77
+	source = https://github.com/cyphar/libpathrs/releases/download/v0.2.5/libpathrs-0.2.5.tar.xz
+	source = https://github.com/cyphar/libpathrs/releases/download/v0.2.5/libpathrs-0.2.5.tar.xz.asc
+	validpgpkeys = C9C370B246B09F6DBCFC744C34401015D1D2D386
+	sha256sums = f8f4a9419eb839cd5decbd120b65f0495bf6eac07155477fe39a8c2a23da589d
+	sha256sums = SKIP
 
 pkgname = libpathrs
