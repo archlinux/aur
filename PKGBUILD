@@ -12,7 +12,7 @@ depends=('jansson' 'capstone' 'wxwidgets-gtk3' 'lua>=5.5' 'botan')
 makedepends=('zip' 'perl-template-toolkit' 'busted' 'git')
 source=("$pkgname-$pkgver::git+https://github.com/solemnwarning/rehex.git#tag=$pkgver"
         "rehex.patch")
-sha256sums=('SKIP'
+sha256sums=('2220b368833ae84527d5e0ce358861b9cfa5d7625b2b5bcb0abad3ce9b60d08e'
             '925aa979895253ba482780da91cb72fb11260dc44ce0a0f9650164f4831a5d83')
 
 build() {
