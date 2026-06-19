@@ -28,7 +28,7 @@ pkgbase = dabri
 	options = !lto
 	source = dabri-2.1.4.tar.gz::https://github.com/AshBuk/dabri/archive/refs/tags/v2.1.4.tar.gz
 	source = whisper-cpp-1.8.6.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v1.8.6.tar.gz
-	sha256sums = 038107a22e77328a069bcf7e6247b40032a0416d22ebf3fc63f79268b3d4381c
+	sha256sums = 6c4e13b7302b9b130506e5c447e8b4cbafca50ccac2b256c5d6a84ed68952730
 	sha256sums = f8e632016ceae556f3132a16c7f704be1e7715595041f474fa81a2b64c1abf7c
 
 pkgname = dabri

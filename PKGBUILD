@@ -46,7 +46,7 @@ source=(
     "whisper-cpp-${_whisper_version}.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v${_whisper_version}.tar.gz"
 )
 sha256sums=(
-    '038107a22e77328a069bcf7e6247b40032a0416d22ebf3fc63f79268b3d4381c'
+    '6c4e13b7302b9b130506e5c447e8b4cbafca50ccac2b256c5d6a84ed68952730'
     'f8e632016ceae556f3132a16c7f704be1e7715595041f474fa81a2b64c1abf7c'
 )
 
