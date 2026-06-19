@@ -1,6 +1,6 @@
 # Maintainer: lyj404 <lyj404 at proton dot me>
 pkgname=keevault-bin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='A KeePass-compatible password manager built with Flutter'
 arch=('x86_64')
