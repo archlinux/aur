@@ -1,7 +1,7 @@
 pkgbase = autolock
 	pkgdesc = A minimal X11 idle-watcher
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/ayari/autolock
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = autolock
 	depends = libx11
 	depends = libxss
 	depends = systemd-libs
+	optdepends = slock: the default lock screen
 	provides = autolock
 	options = !debug
 	source = autolock-0.3.tar.gz::https://codeberg.org/ayari/autolock/archive/0.3.tar.gz

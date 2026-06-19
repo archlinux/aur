@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=autolock
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A minimal X11 idle-watcher'
 url='https://codeberg.org/ayari/autolock'
 arch=(
@@ -13,6 +13,9 @@ depends=(
     'libx11'
     'libxss'
     'systemd-libs'
+)
+optdepends=(
+    'slock: the default lock screen'
 )
 makedepends=(
     'gcc'
