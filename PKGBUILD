@@ -4,7 +4,7 @@
 
 pkgname=comchan
 _pkgname=ComChan
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A blazingly fast minimal serial monitor with plotter TUI and more"
 arch=(
@@ -17,7 +17,7 @@ license=('MIT')
 depends=('gcc-libs' 'libudev.so' 'fontconfig')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e5acea79990fde1058866120a740725b9597a2adc3d3b20059410af6ab3f60de')
+sha256sums=('21a3e01f02d67c70238ae94a31c1c2579d363d3d2548059e11e495e7d2b26c22')
 
 prepare() {
   cd "$_pkgname-$pkgver"
