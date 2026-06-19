@@ -27,7 +27,7 @@ pkgbase = docker-desktop
 	conflicts = docker-debug
 	conflicts = docker-mcp
 	conflicts = docker-scout
-	source = docker-desktop-4.78.0-x86_64.tar.zst::https://desktop.docker.com/linux/main/amd64/228796/docker-desktop-x86_64.pkg.tar.zst
-	sha256sums = 095a01c1456741c3dcff8d1bf6d16b4b396414c0a35077d18dadeab2040e70b4
+	source = docker-desktop-4.78.0-x86_64.tar.zst::https://desktop.docker.com/linux/main/amd64/229452/docker-desktop-x86_64.pkg.tar.zst
+	sha256sums = 445c37e985f3fbf1157c00b62c1ccb72a860d171d49e81a6f567f8a1a6d40d33
 
 pkgname = docker-desktop
