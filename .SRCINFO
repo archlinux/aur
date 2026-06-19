@@ -1,13 +1,14 @@
 pkgbase = termalyr
 	pkgdesc = Synchronized song lyrics in your terminal
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/yarochek/termalyr
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-requests
 	depends = python-pyfiglet
+	depends = python-setproctitle
 	depends = playerctl
 	source = termalyr.py::https://raw.githubusercontent.com/yarochek/termalyr/main/termalyr.py
 	source = launcher::https://raw.githubusercontent.com/yarochek/termalyr/main/launcher

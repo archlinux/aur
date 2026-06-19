@@ -1,11 +1,11 @@
 pkgname=termalyr
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Synchronized song lyrics in your terminal"
 arch=('any')
 url="https://github.com/yarochek/termalyr"
 license=('MIT')
-depends=('python' 'python-requests' 'python-pyfiglet' 'playerctl')
+depends=('python' 'python-requests' 'python-pyfiglet' 'python-setproctitle' 'playerctl')
 source=(
   "termalyr.py::https://raw.githubusercontent.com/yarochek/termalyr/main/termalyr.py"
   "launcher::https://raw.githubusercontent.com/yarochek/termalyr/main/launcher"
