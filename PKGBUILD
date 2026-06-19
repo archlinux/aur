@@ -1,12 +1,12 @@
 # Maintainer: Luis Gustavo S. Barreto <gustavosbarreto@gmail.com>
-# Maintainer: Leandro Cunha <leandrocunha016@gmail.com>
+# Maintainer: Leandro Cunha <leandrocunhaemail@gmail.com>
 # Maintainer: Mark Allen Park <markallenpark@gmail.com>
 # Maintainer: Luciano Ciccariello <luciano.ciccariello@docker.com>
 
 pkgname=docker-desktop
-pkgver=4.77.0
+pkgver=4.78.0
 _revision=228796
-pkgrel=2
+pkgrel=1
 pkgdesc="Docker Desktop is an easy-to-install application that enables you to locally build and share containerized applications and microservices."
 arch=('x86_64')
 url="https://www.docker.com/products/docker-desktop/"
