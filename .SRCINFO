@@ -1,6 +1,6 @@
 pkgbase = ghr
 	pkgdesc = GitHub in your terminal
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/chenyukang/ghr
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ghr
 	conflicts = ghr-bin
 	options = !lto
 	options = !debug
-	source = ghr-0.8.1.tar.gz::https://github.com/chenyukang/ghr/archive/refs/tags/v0.8.1.tar.gz
-	sha256sums = a0741841132728900b83cdef46f40ea97dd9ec2c2bc27dc1cd9a16659427afeb
+	source = ghr-0.8.2.tar.gz::https://github.com/chenyukang/ghr/archive/refs/tags/v0.8.2.tar.gz
+	sha256sums = 7c537e19a85261c4b93d41c06fff298cddac2f0015eb1826da726b3a22e3f843
 
 pkgname = ghr
