@@ -1,13 +1,19 @@
 pkgbase = nuxmv-bin
 	pkgdesc = State of the art, infinite state model checker built on NuSMV
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://nuxmv.fbk.eu/
 	arch = x86_64
 	license = LicenseRef-nuXmv-FBK-License
-	optdepends = python
+	makedepends = patchelf
+	depends = gcc-libs
+	depends = glibc
+	depends = util-linux-libs
+	optdepends = python: For using conversion scripts
 	provides = nuXmv
-	source_x86_64 = nuXmv-2.1.0-linux64.tar.xz::https://nuxmv.fbk.eu/theme/download.php?file=nuXmv-2.1.0-linux64.tar.xz
-	sha256sums_x86_64 = c7dfec43749bcb230c857efe81099b95d868b94efd9f81bccebe542a306a7c83
+	source = nuxmv.pc
+	sha256sums = 50c47088b2d434a3d2e243ae2d54f5c157dcd044563a89ede8622d6a508041c2
+	source_x86_64 = nuXmv-2.2.0-linux64.tar.xz::https://nuxmv.fbk.eu/downloads/2.2.0/nuXmv-2.2.0-linux64.tar.xz
+	sha256sums_x86_64 = a495d6de6bb8c95dc9c5ad3368833a897ac2f14841c18624f0e10cbdf28da259
 
 pkgname = nuxmv-bin
