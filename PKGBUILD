@@ -1,8 +1,8 @@
 # Maintainer: Lukas Spiss <lukas.spiss@outlook.de>
 
 pkgname=mockoon-bin
-pkgver=9.6.1
-pkgrel=2
+pkgver=9.7.0
+pkgrel=1
 pkgdesc="Mockoon is the easiest and quickest way to run mock APIs locally."
 arch=('x86_64' 'aarch64')
 url="https://mockoon.com/"
