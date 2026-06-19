@@ -1,5 +1,0 @@
-[xlibre-video-amdgpu]
-source = "git"
-git = "https://github.com/x11libre/xf86-video-amdgpu.git"
-include_regex = "xlibre-xf86-video-amdgpu-.*"
-prefix = "xlibre-xf86-video-amdgpu-"
