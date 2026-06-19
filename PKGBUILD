@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=uvr
-pkgver=0.3.9
+pkgver=0.3.12
 pkgrel=1
 pkgdesc="An extremely fast R package and project manager"
 url="https://github.com/nbafrank/uvr"
@@ -35,4 +35,4 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('27128434ce7037fa331a2a73cc1e5b2b287a65e6b278892d18b131a6915009b4def8f34fccdc848c638497e933de1b55e0fa6e3a7b397b657d64fe7eab8be724')
+sha512sums=('e8c52008cebb777745d063cadde8f369a9ec02f1c0fcfbc825ee527214f2fcba91b3331a838079f507f8f58e6357c0758845f9b220d404f8dd2a29ccec290291')
