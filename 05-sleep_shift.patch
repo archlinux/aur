@@ -1,0 +1,68 @@
+diff --git a/grub-core/commands/sleep.c b/grub-core/commands/sleep.c
+index a1370b7..be9f386 100644
+--- a/grub-core/commands/sleep.c
++++ b/grub-core/commands/sleep.c
+@@ -46,6 +46,31 @@ do_print (int n)
+   grub_refresh ();
+ }
+
++static int
++grub_check_keyboard (void)
++{
++  int mods = 0;
++  grub_term_input_t term;
++
++  if (grub_term_poll_usb)
++    grub_term_poll_usb (0);
++
++  FOR_ACTIVE_TERM_INPUTS(term)
++  {
++    if (term->getkeystatus)
++      mods |= term->getkeystatus (term);
++  }
++
++  if (mods >= 0 &&
++      (mods & (GRUB_TERM_STATUS_LSHIFT | GRUB_TERM_STATUS_RSHIFT)) != 0)
++    return 1;
++
++  if (grub_getkey_noblock () == GRUB_TERM_ESC)
++    return 1;
++
++  return 0;
++}
++
+ /* Based on grub_millisleep() from kern/generic/millisleep.c.  */
+ static int
+ grub_interruptible_millisleep (grub_uint32_t ms)
+diff --git a/grub-core/normal/menu.c b/grub-core/normal/menu.c
+index 8397886..c2943c6 100644
+--- a/grub-core/normal/menu.c
++++ b/grub-core/normal/menu.c
+@@ -617,8 +617,27 @@ run_menu (grub_menu_t menu, int nested, int *auto_boot)
+       saved_time = grub_get_time_ms ();
+       while (1)
+ 	{
++	  int mods = 0;
++	  grub_term_input_t term;
+ 	  int key;
+
++	  if (grub_term_poll_usb)
++	    grub_term_poll_usb (0);
++
++	  FOR_ACTIVE_TERM_INPUTS(term)
++	  {
++	    if (term->getkeystatus)
++	      mods |= term->getkeystatus (term);
++	  }
++
++	  if (mods >= 0 &&
++	      (mods & (GRUB_TERM_STATUS_LSHIFT
++		       | GRUB_TERM_STATUS_RSHIFT)) != 0)
++	    {
++	      timeout = -1;
++	      break;
++	    }
++
+ 	  key = grub_getkey_noblock ();
+ 	  if (key != GRUB_TERM_NO_KEY)
+ 	    {

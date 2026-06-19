@@ -1,0 +1,32 @@
+diff --git a/util/grub-mkconfig.in b/util/grub-mkconfig.in
+index f8cbb8d..17269b3 100644
+--- a/util/grub-mkconfig.in
++++ b/util/grub-mkconfig.in
+@@ -205,6 +205,8 @@ export GRUB_DEVICE \
+   GRUB_DEVICE_BOOT \
+   GRUB_DEVICE_BOOT_UUID \
+   GRUB_DISABLE_OS_PROBER \
++  GRUB_COLOR_NORMAL \
++  GRUB_COLOR_HIGHLIGHT \
+   GRUB_FS \
+   GRUB_FONT \
+   GRUB_PRELOAD_MODULES \
+diff --git a/util/grub.d/00_header.in b/util/grub.d/00_header.in
+index 93a9023..c5955df 100644
+--- a/util/grub.d/00_header.in
++++ b/util/grub.d/00_header.in
+@@ -125,6 +125,14 @@ cat <<EOF
+ 
+ EOF
+ 
++if [ x$GRUB_COLOR_NORMAL != x ] && [ x$GRUB_COLOR_HIGHLIGHT != x ] ; then
++    cat << EOF
++set menu_color_normal=$GRUB_COLOR_NORMAL
++set menu_color_highlight=$GRUB_COLOR_HIGHLIGHT
++
++EOF
++fi
++
+ serial=0;
+ gfxterm=0;
+ for x in ${GRUB_TERMINAL_INPUT} ${GRUB_TERMINAL_OUTPUT}; do

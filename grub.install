@@ -1,0 +1,16 @@
+post_install() {
+	setterm -cursor on >> /etc/issue
+	printf "\e[37;1m\e[44;1m%s\e[0m\n" "\
+- Please reinstall GRUB first:
+  # grub-install --target=i386-pc --boot-directory=/your/boot/partition --bootloader-id=GRUB /dev/sdx
+ 
+- Then; look at \"/etc/default/grub.silent\" sample file
+  and make necessary changes to \"/etc/default/grub\".
+  
+- Lastly, regenerate the GRUB config file:
+  # grub-mkconfig -o /your/boot/partition/grub/grub.cfg"
+}
+
+post_upgrade() {
+	post_install
+}
