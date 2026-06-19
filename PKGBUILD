@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('electron' 'libnotify' 'libxtst' 'nss' 'libxss' 'gtk3' 'mesa')
 optdepends=('libappindicator-gtk3: Tray icon support')
 options=('!strip')
-source=("${url}releases/download/v${pkgver}/NeverWrite-${pkgver}-x64.AppImage"
+source=("https://github.com/jsgrrchg/NeverWrite/releases/download/v${pkgver}/NeverWrite-${pkgver}-x64.AppImage"
         "neverwrite.desktop"
         "neverwrite.png")
 sha256sums=('SKIP'
