@@ -1,0 +1,18 @@
+pkgbase = dida-appimage
+	pkgdesc = 滴答清单（官网 AppImage 版） / Dida (official AppImage version)
+	pkgver = 8.0.10
+	pkgrel = 1
+	url = https://www.dida365.com/
+	arch = x86_64
+	license = custom
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fuse2
+	provides = dida
+	conflicts = dida-bin
+	noextract = dida-8.0.10-x86_64.AppImage
+	options = !strip
+	source = dida-8.0.10-x86_64.AppImage
+	sha256sums = 66067271d51c4f66f2408a27bce961d1bd96f6e0377b51971cae5644040c72d6
+
+pkgname = dida-appimage
