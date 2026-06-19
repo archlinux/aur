@@ -2,7 +2,7 @@
 
 pkgname=ttf-fast-font-git
 pkgver=r42.f1ec8f9
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast-Font (VCS): font with OpenType feature to highlight first letters of words (built from Git)"
 url="https://github.com/Born2Root/Fast-Font"
 license=('MIT')
