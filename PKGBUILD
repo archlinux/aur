@@ -19,7 +19,6 @@ depends=(aurorae
          kde-cli-tools
          kde-gtk-config
          kmenuedit
-         knighttime
          kpipewire
          krdp
          ksshaskpass
@@ -47,6 +46,7 @@ depends=(aurorae
          sonic-desktop-interface
          sonic-login-manager
          sonic-network-manager
+         sonic-night-light
          sonic-screen
          sonic-silver-theme
          sonic-system-info
