@@ -6,7 +6,6 @@ pkgbase = goosestation-libretro
 	arch = x86_64
 	arch = aarch64
 	license = CC-BY-NC-ND-4.0
-	makedepends = clang
 	makedepends = cmake
 	makedepends = ed
 	makedepends = git
