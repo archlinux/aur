@@ -1,7 +1,7 @@
 # Prev Maintainer: Tatsunori Aoki <ginjiro.135 at gmail dot com>
 # Maintainer: Takumi <dGFrdW9oQHR1dGEuaW8K | base64 -d>
 pkgname=man-pages-ja
-pkgver=20260515
+pkgver=20260615
 pkgrel=1
 pkgdesc="Man pages for Japanese"
 arch=('any')
@@ -14,7 +14,7 @@ install="${pkgname}.install"
 _url="https://github.com/linux-jm/manual"
 source=("$_url/releases/download/v${pkgver}/man-pages-ja-${pkgver}.tar.gz"
         "copyright.html::https://linuxjm.sourceforge.io/copyright.html")
-md5sums=('9c282cca5668310da47ead553b61fde2'
+md5sums=('55b1832800063bbca89e85c72e77a83e'
          '00000e85f561ecaf82803009e4daaa2f')
 
 prepare() {
