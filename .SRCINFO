@@ -1,6 +1,6 @@
 pkgbase = bcachefs-tools-git
 	pkgdesc = Bcachefs userspace tools (Git version)
-	pkgver = 1.38.3.r7350.gf6e1c62
+	pkgver = 1.38.6.r38.g7f64e89
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/koverstreet/bcachefs-tools
@@ -40,11 +40,11 @@ pkgbase = bcachefs-tools-git
 	sha256sums = SKIP
 
 pkgname = bcachefs-tools-git
-	provides = bcachefs-tools=1.38.3
+	provides = bcachefs-tools=1.38.6
 	conflicts = bcachefs-tools
 
 pkgname = bcachefs-dkms-git
 	pkgdesc = Bcachefs out-of-tree module (Git version)
 	depends = dkms
-	provides = bcachefs-dkms=1.38.3
+	provides = bcachefs-dkms=1.38.6
 	conflicts = bcachefs-dkms
