@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007 at yandex dot ru>
 
 pkgname=cassette-bin
-pkgver=0.2.1.g49
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
 arch=(aarch64 i686 x86_64)
@@ -21,7 +21,7 @@ depends=(
   libadwaita
   libsoup3
   libgee
-  libxml2-legacy #Temporary solution
+  libxml2
   sqlite
   webkitgtk-6.0
   xdg-desktop-portal-impl
@@ -29,16 +29,16 @@ depends=(
 provides=(${pkgname%-bin})
 conflicts=(${pkgname%-bin})
 options=(!debug)
-_b=(https://git.altlinux.org 397860 200 1) # (buildurl buildtask buildid alt) for download links
+_b=(https://git.altlinux.org 419245 200 1) # (buildurl buildtask buildid alt) for download links
 source_aarch64=(${_b[0]}/tasks/${_b[1]}/build/${_b[2]}/aarch64/rpms/${pkgname%-bin}-$pkgver-alt${_b[3]}.aarch64.rpm)
 source_i686=(   ${_b[0]}/tasks/${_b[1]}/build/${_b[2]}/i586/rpms/${pkgname%-bin}-$pkgver-alt${_b[3]}.i586.rpm)
 source_x86_64=( ${_b[0]}/tasks/${_b[1]}/build/${_b[2]}/x86_64/rpms/${pkgname%-bin}-$pkgver-alt${_b[3]}.x86_64.rpm)
-sha512sums_aarch64=('d8ae2ca33d59081136852ba2fb5d1e98fac10ad03f5d3969e3e7f86d918b9bdbc703ab363f4150f7d6e74925f803bacf783a2842bdfc97d1e38033ae3daab043')
-sha512sums_i686=('607b67e3e313585aa812da45f905e0b093691ccd2a8cea83da28d0405ab1bfe207716a3b286177d8a917808bce79c02b3ed2cfa79261fe91e1d9b11d7d38a016')
-sha512sums_x86_64=('f0ee4712aba3e7647f7e8273287280245cd532dacfb1bf485ef2c1725b1a7e236b542ab063e6b7537c43c21b86c16ad707237aeb7a5e3043c54793f6143052e5')
-b2sums_aarch64=('4877d5d683a50ba1d0a3e8539d0613ebb2501c4e0b34d031b4b16a2aac41d5f952a664e421742a0ae5afed942e9b1db57e655e1819e28a487f0feea8e2901518')
-b2sums_i686=('c0940503c265b57cd8beb09977dbe4aecce33d7c80a3d0fa43db4aa05ad037ce28a792778fcfe3f1628a9c40f43849b2fafb1a96407533d35a7fa1063f95ed64')
-b2sums_x86_64=('0c4937515c13ca16a27fd4aef2654503415d842c43f6f9d48a61414fbfb7ea630debfcd502aee4153f350d8ea50513bd15c8aa677d437138918062b2f3ce4f1b')
+sha512sums_aarch64=('0c52aa3591dd17a49bc80f4ef3177448acb0d251d2317534494b7a01e7e7714af49d916481a06d7b2b1afccb2013709274b4daa3f534bdb3b83fd30ecbcafc22')
+sha512sums_i686=('0dc4f5bf5b3afd0f1c39763d8cc5d83c96ff0f84812a3aeef2222d0be8e1169edc8d238aa05ddbc0863536504599d631517639178494035f22b8a40afb50849c')
+sha512sums_x86_64=('e9fb09a65dd07a64986d4344cca7c8cf8ff09d8369ad609fa2974060831ed5624578da2c2c95e93c012cf4d51e850b94c392febd2133ce8e03a6c9ca50ac4e71')
+b2sums_aarch64=('47dea7e4a1289b982ee5c457189f23d21cd45c3fae8a022958821cf4fd5ab1747ddc5889535910aec39faa500ce0f67dbbd9ed9270acd48601b210a09f6b80d9')
+b2sums_i686=('ebd29d8ed5a51f563f1e904ad92c72854810893151fb507dda5db511ba7db2dd72fa9c97d2e6d8b31b9d3ad1d1b3bebd78695778a4a30c885fc6179501bc0a59')
+b2sums_x86_64=('f4ff5c402244be8854e335871cc193a00f2d6bc92417f736945615135d736fdd523714e886d35470b4372d60daeefdfa39d8496dfc12e6f2cd6b2d23f550a9ac')
 
 package() {
   _prjname="space.rirusha.Cassette"
