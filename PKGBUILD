@@ -137,7 +137,7 @@ build() {
     ### use the AUR package instead
     ##  pip install compdb
 
-                              ###-G Ninja | -G "Unix Makefiles"
+
 
     ## For deeper debugin switch to:
       # -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-O2 -g -fno-omit-frame-pointer -DNDEBUG -fdiagnostics-color=always" \
@@ -147,6 +147,7 @@ build() {
       #-DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
       #-DCMAKE_C_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
 
+										###-G Ninja | -G "Unix Makefiles"
     cmake3 -S "${srcdir}/${pkgname%-git}"  -G Ninja \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
