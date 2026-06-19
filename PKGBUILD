@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://sourceforge.net/projects/rexuiz/"
 license=('GPL')
 source=("https://downloads.sourceforge.net/rexuiz/Rexuiz-${pkgver//_/-}.zip")
-sha256sums=('5aa906da5569beacdc0afbca2ab21dbe37e4105bbaeec70cd7563f4dac769635')
+sha256sums=('93a2039174df3b2aed5f697e0b5793ef69b650a9b8e05554ef0235b3aa3bb8b9')
 
 prepare() {
     cd Rexuiz
