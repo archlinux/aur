@@ -4,7 +4,7 @@
 # Contributor: Daniil Kovalev <daniil@kovalev.website>
 pkgname=0wgram
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Unofficial desktop version of Telegram messaging app'
 arch=('x86_64' 'aarch64')
