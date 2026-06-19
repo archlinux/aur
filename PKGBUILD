@@ -1,11 +1,12 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=smolvm
-pkgver=1.0.4
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Tool to build & run portable, lightweight, self-contained virtual machines.'
 arch=(
     'x86_64'
     'aarch64'
+    'riscv64'
 )
 url='https://github.com/smol-machines/smolvm'
 license=('Apache-2.0')
@@ -18,6 +19,8 @@ depends=(
     'e2fsprogs'
     'util-linux'
     'libcap'
+    'gzip'
+    'tar'
 )
 makedepends=(
     'cargo'
@@ -35,7 +38,7 @@ source=(
     'use-system-libs.patch'
 )
 sha256sums=(
-    'f6e0274c93510134abe2be8bfb9ff21e908e49facb5a59f7615fdbdb7828793b'
+    'c7a86e1814616e82ba17553ab008a04447fa42b3462d51a366ccc5b75e8d6219'
     'dc2b8c9f866cd48a10522c2d5d6d62af038c9d60998e79ca45c986605b19678e'
 )
 
