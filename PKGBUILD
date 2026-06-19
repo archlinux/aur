@@ -4,13 +4,14 @@ _pkgname=pkl-lsp
 
 pkgname=$_pkgname
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Language Server Protocol implementation for Pkl"
 arch=('x86_64' 'aarch64')
 url="https://github.com/apple/pkl-lsp"
 license=('Apache-2.0')
 makedepends=('git' 'python')
 depends=('glibc' 'zlib')
+conflicts=('pkl-lsp-bin')
 
 _graalvm_ver=25.1.3-dev-20260619_0111
 source=(
@@ -88,16 +89,15 @@ build() {
 
   native-image \
     -J--enable-native-access=ALL-UNNAMED \
-    --no-fallback \
     -march=compatibility \
-    -H:IncludeResources='.*' \
     --enable-url-protocols=https,http \
     --enable-native-access=ALL-UNNAMED \
     -H:+ForeignAPISupport \
     --initialize-at-build-time= \
-    -H:-ParseRuntimeOptions \
     -H:+ReportExceptionStackTraces \
+    -H:NativeLinkerOption=-Wl,-z,relro,-z,now \
     -H:+StripDebugInfo \
+    -R:MaxHeapSize=1g \
     --enable-sbom=false \
     -jar "${JAR}" \
     -o "${pkgname}"
