@@ -3,7 +3,7 @@
 
 pkgname=courier-unicode
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Courier Unicode Library"
 arch=("i686" "x86_64" "aarch64")
 url="http://www.courier-mta.org/unicode/"
@@ -19,7 +19,7 @@ sha256sums=(
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr CXXFLAGS=--std=gnu++17
   make
 }
 
