@@ -7,7 +7,7 @@
 # Contributor: Anders Bostrom <anders.bostrom@home.se>
 
 pkgname=thunderbird-globalmenu
-pkgver=151.0
+pkgver=152.0
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org'
 url='https://www.thunderbird.net/'
@@ -60,9 +60,8 @@ makedepends=(
   gawk perl findutils libotr wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi
 )
 options=(!emptydirs !makeflags !lto)
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/2d45fbdcd2a55cc391daa83c4c846c7b44a6a5bf
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/ea644662c7ce301d77ec2d4cc1f90a060814ab91
 source=(https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}/source/thunderbird-${pkgver}.source.tar.xz{,.asc}
-        $commit/0024-bgo-969412-glibc-2.43.patch
         $commit/clang22-wasm32-wasip1.patch
         $commit/vendor-prefs.js
         $commit/distribution.ini
@@ -189,14 +188,13 @@ END
     "$pkgdir/usr/lib/thunderbird/thunderbird-bin"
 }
 
-sha512sums=('a20f435f07ee7d0e1119072de3d9e98d4cb6eb7101d5b186641c74db8a8ba94b55d393ecef2cf4db8ff470b473cf4fd7367dbe3d0a0c891382f08fb9ec7c2a67'
+sha512sums=('51b950af634e7c7dfb7c043d69f925ed6d50d4c44341761e7e3ef02d5db28d2c539cd8d9286195e3facf84869f57b12a58760105b5195c449b4e1e4c9b6200d2'
             'SKIP'
-            '470f37b6401c9a031d11b56ed94dacc3f3e36e86c27931c5924ec8c3ad8f9676970d7d29af8f288ac88081a2a785b088365412128076559e1ba4df1546026dc8'
             'b7097f0d620be87047f6f11f152bd096dc144b1745fe30dc75db7d7050242c4178382f7e504cc10ad3545a3455174ca17a83fa3113443dffe660f28de006cb0e'
             '6918c0de63deeddc6f53b9ba331390556c12e0d649cf54587dfaabb98b32d6a597b63cf02809c7c58b15501720455a724d527375a8fb9d757ccca57460320734'
             '5cd3ac4c94ef6dcce72fba02bc18b771a2f67906ff795e0e3d71ce7db6d8a41165bd5443908470915bdbdb98dddd9cf3f837c4ba3a36413f55ec570e6efdbb9f'
             'f528f2645c44648a8a42015923e51b8626616e2c66cc3ff870c27223002c802c15616e570d639f9c79b3affa4b7f9e9f2c42c780bbcb42a55bd87edafa8352c5'
-            '7e43b1f25827ddae615ad43fc1e11c6ba439d6c2049477dfe60e00188a70c0a76160c59a97cc01d1fd99c476f261c7cecb57628b5be48874be7cf991c22db290'
+            '8373d45b594edea2aafd00151468e5c9491b1baa078882fea76669352d64843d5bdaa8ad87b0a9549e452aef7f246a5919b4b1e4c0c1deaf6ea65bc2dd120a32'
             'fffeb73e2055408c5598439b0214b3cb3bb4e53dac3090b880a55f64afcbc56ba5d32d1187829a08ef06d592513d158ced1fde2f20e2f01e967b5fbd3b2fafd4'
             '0736eadd278f034d3000dd0947ef75c2eff60fbba520931481984dfcdd83ca5cdfaa30257ad9b38ae82ab55d7fcf5b6025091a5618896c75f2a1ef461da3a5a5'
             )
