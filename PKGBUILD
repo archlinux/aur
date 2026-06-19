@@ -4,7 +4,7 @@ _pkgname=pkl-lsp
 
 pkgname=$_pkgname
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Language Server Protocol implementation for Pkl"
 arch=('x86_64' 'aarch64')
 url="https://github.com/apple/pkl-lsp"
@@ -92,11 +92,12 @@ build() {
     -march=compatibility \
     --enable-url-protocols=https,http \
     --enable-native-access=ALL-UNNAMED \
-    -H:+ForeignAPISupport \
     --initialize-at-build-time= \
     -H:+ReportExceptionStackTraces \
     -H:NativeLinkerOption=-Wl,-z,relro,-z,now \
+    -H:+UnlockExperimentalVMOptions \
     -H:+StripDebugInfo \
+    -H:-UnlockExperimentalVMOptions \
     -R:MaxHeapSize=1g \
     --enable-sbom=false \
     -jar "${JAR}" \
