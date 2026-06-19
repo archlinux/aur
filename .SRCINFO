@@ -1,0 +1,14 @@
+pkgbase = feather-wallet-bin
+	pkgdesc = A free and open-source Monero desktop wallet.
+	pkgver = 2.8.1
+	pkgrel = 1
+	url = https://featherwallet.org
+	arch = x86_64
+	license = BSD
+	provides = feather-wallet
+	conflicts = featherwallet-bin
+	noextract = feather-2.8.1-linux.zip
+	source = feather-2.8.1-linux.zip::https://github.com/feather-wallet/feather/releases/download/v2.8.1/feather-2.8.1-linux.zip
+	sha256sums = SKIP
+
+pkgname = feather-wallet-bin
