@@ -1,0 +1,41 @@
+pkgbase = ftop-tui
+	pkgdesc = TUI system monitor in Fortran 2018 with truecolor, braille graphs, and GPU monitoring
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/FortranGoingOnForty/ftop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gcc-fortran
+	makedepends = cmake
+	depends = glibc
+	source = git+https://github.com/FortranGoingOnForty/ftop.git#tag=v0.1.0
+	source = git+https://github.com/FortranGoingOnForty/fgof-temp.git#tag=v0.1.0
+	source = git+https://github.com/FortranGoingOnForty/fgof-pty.git#tag=v0.1.0
+	source = git+https://github.com/FortranGoingOnForty/fgof-screen.git#tag=v0.1.0
+	source = git+https://github.com/FortranGoingOnForty/fgof-termios.git#tag=v0.1.0
+	source = git+https://github.com/FortranGoingOnForty/fgof-keys.git#tag=v0.1.0
+	source = git+https://github.com/FortranGoingOnForty/fgof-lineedit.git#tag=v0.1.0
+	source = git+https://github.com/FortranGoingOnForty/fgof-fs.git#tag=v0.1.0
+	source = git+https://github.com/FortranGoingOnForty/fgof-process.git#tag=v0.1.1
+	source = git+https://github.com/FortranGoingOnForty/fgof-watch.git#tag=v0.1.0
+	source = git+https://github.com/FortranGoingOnForty/fgof-state.git#tag=v0.1.0
+	source = git+https://github.com/FortranGoingOnForty/fgof-cache.git#tag=v0.1.0
+	source = git+https://github.com/FortranGoingOnForty/fgof-expect.git#tag=v0.1.0
+	source = git+https://github.com/FortranGoingOnForty/fgof-toml.git#tag=v0.1.0
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ftop-tui
