@@ -2,7 +2,7 @@
 # Contributor: Kristofers Solo <dev at kristofers dot xyz>
 
 pkgname=scalpel-poe
-pkgver=0.9.14
+pkgver=0.9.15
 pkgrel=1
 pkgdesc="Path of Exile's First Fourth-Party Tool"
 arch=("x86_64")
@@ -17,6 +17,7 @@ makedepends=(
     "nodejs-lts-jod"
     "npm"
     "python"
+    "python-setuptools"
 )
 provides=("scalpel-poe")
 conflicts=("scalpel-poe-bin" "scalpel-poe-git")
@@ -26,7 +27,7 @@ source=(
     "scalpel-poe.sh"
     "scalpel-poe.desktop"
 )
-sha256sums=('fec8c58399ecdeb02ae68ffcd60806a9e85442fed2e403a157033a0969caac92'
+sha256sums=('9fc3c34bb2e938901f3513376ac2a6fd6ce9d5671b602b5b94251cfe16579e9a'
             'aec6807cc11a1f0f172577d5d24744d457c2d52fd51c4b92d1e6b8bfbb943b1f'
             'be4904493f9322e59649768c209eeeed71ebf8f4f92321614967f749807794dc')
 
