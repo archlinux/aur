@@ -1,8 +1,8 @@
 pkgbase = whylian-git
 	pkgdesc = Lian Li device control for Linux — HydroShift II AdvanceMode fork of lian-li-linux (git)
-	pkgver = 1.0.4.r1.g8908925
-	pkgrel = 5
-	url = https://github.com/byrdltd/whylian
+	pkgver = 1.0.4.r1.g8c467e9
+	pkgrel = 6
+	url = https://github.com/byrdltd/whyLIAN
 	install = whylian.install
 	arch = x86_64
 	license = MIT
@@ -33,7 +33,7 @@ pkgbase = whylian-git
 	options = !debug
 	options = !lto
 	options = strip
-	source = whylian::git+https://github.com/byrdltd/whylian.git
+	source = whylian::git+https://github.com/byrdltd/whyLIAN.git
 	sha256sums = SKIP
 
 pkgname = whylian-git

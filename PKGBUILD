@@ -2,11 +2,11 @@
 
 pkgname=whylian-git
 _pkgname=whylian
-pkgver=1.0.4.r1.g8908925
-pkgrel=5
+pkgver=1.0.4.r1.g8c467e9
+pkgrel=6
 pkgdesc="Lian Li device control for Linux — HydroShift II AdvanceMode fork of lian-li-linux (git)"
 arch=('x86_64')
-url="https://github.com/byrdltd/whylian"
+url="https://github.com/byrdltd/whyLIAN"
 license=('MIT')
 depends=(
   'libusb'
