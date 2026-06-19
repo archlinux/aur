@@ -4,7 +4,7 @@ _dotnet_ver=8.0
 _reponame=SyncClipboard
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-desktop"
-pkgver=3.1.5
+pkgver=3.1.6
 pkgrel=1
 pkgdesc="Cross-Platform Cipboard Syncing Solution (Desktop)"
 arch=("x86_64" "aarch64")
@@ -14,7 +14,7 @@ depends=("aspnet-runtime-${_dotnet_ver}" "fontconfig" "libxinerama" "libxt" "lib
 makedepends=("dotnet-sdk-${_dotnet_ver}" "librsvg")
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${_pkgname}.desktop")
-sha256sums=('f53649e8a60fcc4f1d9711c57b2bcb8927b3a4324077f189e712df114b5d2818'
+sha256sums=('0b712cb685f37ac7cc95007dd12ed6e46fafa32b01af452aef57a04ba39b4708'
             '77a340cd087cbfd79fdbbb1d53a33288884c21cd0945b6ea4abfd0c6a298fc75')
 case $CARCH in
     x86_64)  _dotnet_cpu=x64;;

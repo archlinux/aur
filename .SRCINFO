@@ -1,6 +1,6 @@
 pkgbase = syncclipboard-desktop
 	pkgdesc = Cross-Platform Cipboard Syncing Solution (Desktop)
-	pkgver = 3.1.5
+	pkgver = 3.1.6
 	pkgrel = 1
 	url = https://github.com/Jeric-X/SyncClipboard
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = syncclipboard-desktop
 	depends = libxtst
 	depends = wl-clipboard
 	depends = xclip
-	source = syncclipboard-3.1.5.tar.gz::https://github.com/Jeric-X/SyncClipboard/archive/refs/tags/v3.1.5.tar.gz
+	source = syncclipboard-3.1.6.tar.gz::https://github.com/Jeric-X/SyncClipboard/archive/refs/tags/v3.1.6.tar.gz
 	source = syncclipboard.desktop
-	sha256sums = f53649e8a60fcc4f1d9711c57b2bcb8927b3a4324077f189e712df114b5d2818
+	sha256sums = 0b712cb685f37ac7cc95007dd12ed6e46fafa32b01af452aef57a04ba39b4708
 	sha256sums = 77a340cd087cbfd79fdbbb1d53a33288884c21cd0945b6ea4abfd0c6a298fc75
 
 pkgname = syncclipboard-desktop
