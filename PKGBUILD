@@ -2,7 +2,8 @@
 
 pkgname=adwaita-colors-icon-theme-git
 _reponame=Adwaita-colors
-pkgver=2.5.r0.g00c8fd7
+pkgver=2.6.r0.g7d838af
+
 pkgrel=1
 pkgdesc="Adwaita Colors enhances the Adwaita icon theme by integrating GNOME’s accent color feature. It ensures that your Adwaita icons reflect the same accent color as your GNOME theme."
 arch=(any)
