@@ -1,7 +1,7 @@
 pkgbase = cassette-git
 	pkgdesc = GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems
-	pkgver = 0.2.1.g49.r290.gb3730b8
-	pkgrel = 2
+	pkgver = 0.2.1.g49.r307.ga1a166f
+	pkgrel = 1
 	url = https://altlinux.space/rirusha/cassette
 	arch = aarch64
 	arch = i686
@@ -19,6 +19,7 @@ pkgbase = cassette-git
 	depends = hicolor-icon-theme
 	depends = libadwaita
 	depends = libapi-base-git
+	depends = libcase-git
 	depends = libtape-git
 	depends = webkitgtk-6.0
 	depends = xdg-desktop-portal-impl
