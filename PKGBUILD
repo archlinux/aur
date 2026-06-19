@@ -1,8 +1,8 @@
 # Maintainer: FinleyLaempe <finley.laempe@web.de>
 pkgname=judoshiai
-pkgver=4.5.r1550.g827d3943
+pkgver=4.4.1
 pkgrel=1
-pkgdesc="A set of programs to help organize a judo tournament (built from upstream git)"
+pkgdesc="A set of programs to help organize a judo tournament (latest stable release)"
 arch=('x86_64')
 url="https://www.judoshiai.org"
 license=('custom')
@@ -13,21 +13,35 @@ depends=(
 )
 makedepends=('git' 'cmake' 'bison' 'flex' 'pkgconf' 'gcc' 'make' 'gettext')
 provides=('judotimer' 'judoinfo' 'judoweight' 'judojudogi')
-conflicts=()
+conflicts=('judoshiai-git')
+# VCS source: AUR helpers run with --devel will re-fetch and rebuild, picking
+# up any newly published stable tag automatically (see prepare/pkgver).
 source=("judoshiai-src::git+https://git.code.sf.net/p/judoshiai/judoshiai")
 sha256sums=('SKIP')
 
+# Newest stable tag = highest `version-X[.Y[.Z]]` (pre-release suffixes like
+# `4.0a` or `2.4beta10` are excluded by the numeric-only regex).
+_latest_stable_tag() {
+    git -C "$srcdir/judoshiai-src" tag -l 'version-*' \
+        | grep -E '^version-[0-9]+(\.[0-9]+)*$' \
+        | sort -V | tail -1
+}
+
 pkgver() {
     cd "$srcdir/judoshiai-src"
-    local v
-    v=$(awk -F= '/^SHIAI_VER_NUM=/{print $2; exit}' mk/common.mk)
-    printf '%s.r%s.g%s' "$v" \
-        "$(git rev-list --count HEAD)" \
-        "$(git rev-parse --short HEAD)"
+    git describe --tags --abbrev=0 | sed 's/^version-//'
 }
 
 prepare() {
     cd "$srcdir/judoshiai-src"
+
+    # Track the newest stable tag automatically. Runs before pkgver(), so the
+    # reported version always matches the checked-out tag.
+    local tag
+    tag=$(_latest_stable_tag)
+    [[ -n $tag ]] || { echo "no stable tag found" >&2; return 1; }
+    msg2 "Building stable tag: $tag"
+    git checkout -f "$tag"
 
     # Lua: code expects /usr/include/lua5.4 + -llua5.4. Arch ships plain lua.
     mkdir -p "$srcdir/lua-shim/include/lua5.4" "$srcdir/lua-shim/lib"

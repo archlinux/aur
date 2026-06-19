@@ -1,0 +1,5 @@
+src/
+pkg/
+judoshiai-src/
+*.pkg.tar.zst
+*.log

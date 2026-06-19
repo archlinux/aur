@@ -1,6 +1,6 @@
 pkgbase = judoshiai
-	pkgdesc = A set of programs to help organize a judo tournament (built from upstream git)
-	pkgver = 4.5.r1550.g827d3943
+	pkgdesc = A set of programs to help organize a judo tournament (latest stable release)
+	pkgver = 4.4.1
 	pkgrel = 1
 	url = https://www.judoshiai.org
 	arch = x86_64
@@ -33,6 +33,7 @@ pkgbase = judoshiai
 	provides = judoinfo
 	provides = judoweight
 	provides = judojudogi
+	conflicts = judoshiai-git
 	source = judoshiai-src::git+https://git.code.sf.net/p/judoshiai/judoshiai
 	sha256sums = SKIP
 
