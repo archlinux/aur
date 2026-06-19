@@ -23,8 +23,8 @@ depends=(
 install=openfortivpn-gui.install
 
 source=("https://github.com/shini4i/openfortivpn-gui/releases/download/v${pkgver}/openfortivpn-gui_${pkgver}_linux_amd64.tar.gz"
-        "com.github.shini4i.openfortivpn-gui-${pkgver}.desktop::https://raw.githubusercontent.com/XCroatoanX/openfortivpn-gui/main/data/com.github.shini4i.openfortivpn-gui.desktop"
-        "openfortivpn-gui-helper.service::https://raw.githubusercontent.com/shini4i/openfortivpn-gui/v${pkgver}/data/openfortivpn-gui-helper.service"
+        "com.github.shini4i.openfortivpn-gui.desktop::https://raw.githubusercontent.com/XCroatoanX/openfortivpn-gui/main/data/com.github.shini4i.openfortivpn-gui.desktop"
+        "openfortivpn-gui-helper.service::https://raw.githubusercontent.com/shini4i/openfortivpn-gui/main/data/openfortivpn-gui-helper.service"
         "hicolor.tar.xz")
 
 sha256sums=('cb0d222d878d1163dfbde70aef6aeedbbe2208f76ee09dced7bdd91388fc0725'
