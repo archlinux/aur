@@ -1,6 +1,6 @@
 pkgbase = voice-agent-git
 	pkgdesc = Real-time spoken assistant for Claude (Pipecat, local-first): mic→STT→brain→TTS with wake word, barge-in, and voice machine-control
-	pkgver = r51.9cbd609
+	pkgver = r52.45e0790
 	pkgrel = 1
 	url = https://github.com/indyfive11/voice-agent
 	install = voice-agent-git.install
