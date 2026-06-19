@@ -1,0 +1,5 @@
+[alwide-bin]
+source = "github"
+github = "arnauda-gh/Alwide"
+use_latest_release = true
+prefix = "v"
