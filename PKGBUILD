@@ -2,12 +2,12 @@
 
 pkgname=kwin-effects-better-blur-dx
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="KWin Better Blur DX effect fork with window class force blur feature (Wayland)"
 arch=('x86_64')
 url="https://github.com/xarblu/kwin-effects-better-blur-dx"
 license=(GPL-3.0-or-later)
-depends=(kio knotifications kcrash kglobalaccel kcmutils libepoxy kwin)
+depends=(kio knotifications kcrash kglobalaccel kcmutils libepoxy kwin vulkan-headers)
 conflicts=("kwin-effects-forceblur")
 replaces=("kwin-effects-forceblur")
 makedepends=(cmake extra-cmake-modules qt6-tools kwin)
