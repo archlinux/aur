@@ -1,16 +1,16 @@
 pkgbase = gitcommitgenerator-bin
 	pkgdesc = AI-powered Git commit message generator with configurable OpenAI-compatible LLM support
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/SunParis/GitCommitGenerator
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs
 	depends = glibc
-	provides = gitcommitgenerator=0.1.0
+	provides = gitcommitgenerator=0.1.1
 	conflicts = gitcommitgenerator
 	options = !debug
-	source_x86_64 = gitcommitgenerator-v0.1.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/SunParis/GitCommitGenerator/releases/download/v0.1.0/gitcommitgenerator-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 087ca325d15d2125e338d0cb60fcfb0c5bed3fa44b1a42e9fc870abf4ca136fd
+	source_x86_64 = gitcommitgenerator-v0.1.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/SunParis/GitCommitGenerator/releases/download/v0.1.1/gitcommitgenerator-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a170101d53dddfd419df87e51309ba9fe6acfc1ca89aa0e4b46d8bd9468f10a1
 
 pkgname = gitcommitgenerator-bin
