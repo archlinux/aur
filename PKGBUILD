@@ -1,7 +1,7 @@
 # Maintainer: Mia Sireneva <mia_sireneva@riseup.net>
 
 pkgname=mediamtx-bin
-pkgver=1.15.2
+pkgver=1.19.1
 pkgrel=1
 pkgdesc='Ready-to-use and zero-dependency real-time media server and media proxy that allows to publish, read, proxy, record and playback video and audio streams'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -29,9 +29,9 @@ sha256sums=(
 	'80442dadb22e57529b456c76bf33ac364cd022f134fc5290dc54a7e2f8378124'
 )
 
-sha256sums_x86_64=('8143486d886cc2d5c76f98d687cfb2ee6daf947fd45989c9322c0618057dcf5b')
-sha256sums_armv7h=('627182d3cfd24693f17611f07bafbe95d47f5223cf39bd296d7d0f408a909fe9')
-sha256sums_aarch64=('c9ad9ae5f93c1a84a3a52055f630687498b98566e735b5177ed604fefa7072b5')
+sha256sums_x86_64=('035ee04f91b1c7a0c02e13b2139ca2456e43b6bd6a80e3100e8c228556e07807')
+sha256sums_armv7h=('052654f2268ad0604f2bb277e417cf3c122d7399f814e6d1ca2dbcf180ed7fe9')
+sha256sums_aarch64=('97a277cf24153e168008c18da53fe84e8d364456e2d7b457dc0457666c32867b')
 
 package() {
 	cd "$srcdir"

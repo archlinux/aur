@@ -1,0 +1,11 @@
+*
+
+!.gitignore
+
+!PKGBUILD
+!.SRCINFO
+
+!mediamtx.service
+!mediamtx@.service
+!mediamtx.sysusers
+!mediamtx.tmpfiles
