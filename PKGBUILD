@@ -24,7 +24,7 @@ source=(
 	"console-${_console_ver}.tar.gz::https://github.com/rustfs/console/archive/refs/tags/v${_console_ver}.tar.gz"
 )
 sha256sums=(
-	'18db3a236d7339d47ea958f23abecf26bdbd401e736744c3f558d30ac62fb67a'
+	'142dc2c676549cc1a35ec2f7c98d5b35d671d127734d242e7e62ac261961a141'
 	'b5a87d52f7ba5919e685e40260371ba3ae6433397cb1e3362e07780639494f12'
 )
 
