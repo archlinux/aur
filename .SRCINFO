@@ -1,6 +1,6 @@
 pkgbase = linux-amd-drm-fixes
 	pkgdesc = Linux kernel fixes with bleeding edge AMD DRM drivers
-	pkgver = 7.1.2026.06.04
+	pkgver = 7.2.2026.06.19
 	pkgrel = 1
 	url = https://kernel.org/
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = linux-amd-drm-fixes
 	makedepends = xz
 	options = !strip
 	options = !debug
-	source = linux-amd-drm-fixes::git+https://gitlab.freedesktop.org/agd5f/linux#tag=amd-drm-fixes-7.1-2026-06-04
+	source = linux-amd-drm-fixes::git+https://gitlab.freedesktop.org/agd5f/linux#tag=amd-drm-fixes-7.2-2026-06-19
 	source = config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/main/config.x86_64
-	sha256sums = bdbd2c58bfad20c983a4d16c3d197212a89bc244866dce3b79831fd99162277d
+	sha256sums = 5e660fa77fe0c19abbe31155bc6d21da3fc876a571bc64852109967428f680ef
 	sha256sums = 4730d73b0cadb5f075d3e9c3b6318988bf44292f39d83a714431c154be41aeba
 
 pkgname = linux-amd-drm-fixes
