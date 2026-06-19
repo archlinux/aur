@@ -1,6 +1,6 @@
 # Maintainer: liyp <my@liyp.cc>
 pkgname=kun-gui
-pkgver=0.2.11
+pkgver=0.2.14
 pkgrel=1
 pkgdesc="AI agent workspace with Code and Write modes - Electron client"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('npm' 'nodejs>=20' 'python')
 optdepends=('libxss: screen saver inhibit support'
             'libappindicator-gtk3: system tray support on GTK-based DEs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KunAgent/Kun/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a68d0d83316c9513f67e37099bbc927ae4cc05a4db788df34d3d582630547b78')
+sha256sums=('45e0c7eb6854dd2c0e0173976c8ff054b0a633d073aec40ac1abe178fa2f490c')
 options=('!strip')
 
 prepare() {
