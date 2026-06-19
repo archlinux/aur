@@ -8,8 +8,8 @@ license=('BSD')
 depends=()
 provides=('feather-wallet')
 conflicts=('featherwallet-bin')
-source=("feather-${pkgver}-linux.zip::https://github.com/feather-wallet/feather/releases/download/v${pkgver}/feather-${pkgver}-linux.zip")
-sha256sums=('SKIP')
+source=("feather-${pkgver}-linux.zip::https://github.com/feather-wallet/feather/releases/download/${pkgver}/feather-${pkgver}-linux.zip")
+sha256sums=('4779c57e9443f7755add3c2414447d1593ebe06998e39a9f765deab5bd64c466')
 noextract=("feather-${pkgver}-linux.zip")
 
 package() {

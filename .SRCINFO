@@ -8,7 +8,7 @@ pkgbase = feather-wallet-bin
 	provides = feather-wallet
 	conflicts = featherwallet-bin
 	noextract = feather-2.8.1-linux.zip
-	source = feather-2.8.1-linux.zip::https://github.com/feather-wallet/feather/releases/download/v2.8.1/feather-2.8.1-linux.zip
-	sha256sums = SKIP
+	source = feather-2.8.1-linux.zip::https://github.com/feather-wallet/feather/releases/download/2.8.1/feather-2.8.1-linux.zip
+	sha256sums = 4779c57e9443f7755add3c2414447d1593ebe06998e39a9f765deab5bd64c466
 
 pkgname = feather-wallet-bin
