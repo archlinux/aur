@@ -1,6 +1,6 @@
 pkgbase = git-guitar-bin
 	pkgdesc = A terminal based git client with fast topological & chronological graph rendering - Pre-Build binary
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/asinglebit/guitar
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = git-guitar-bin
 	conflicts = git-guitar
 	conflicts = git-guitar-git
 	replaces = guitar-tui-bin
-	source = guitar-0.2.4::https://github.com/asinglebit/guitar/releases/download/v0.2.4/guitar-linux
-	source = LICENSE::https://raw.githubusercontent.com/asinglebit/guitar/refs/tags/v0.2.4/LICENSE
-	source = README.md::https://raw.githubusercontent.com/asinglebit/guitar/refs/tags/v0.2.4/README.md
-	sha256sums = 6f689ed3cfda36060dfe4ec355d170b2bc4ee5aebfa93d5fc43b786bd098f4c0
+	source = guitar-0.2.5::https://github.com/asinglebit/guitar/releases/download/v0.2.5/guitar-linux
+	source = LICENSE::https://raw.githubusercontent.com/asinglebit/guitar/refs/tags/v0.2.5/LICENSE
+	source = README.md::https://raw.githubusercontent.com/asinglebit/guitar/refs/tags/v0.2.5/README.md
+	sha256sums = 7781275af4484a32b0641382e9ffee301227659723983ccc0443518c5bc70db6
 	sha256sums = 36874402d076b70d59c8a9db16bf8c9ca55a5b5b3cfc3906cd9fd390a679a608
-	sha256sums = c346ac0892e58a3f2928bcc7fb7a7e50c30b3b093b415ca2d828bbe1b582ccac
+	sha256sums = d9805161249305936dbe223ceec608d6d6ebd47c5a56f0106e928b9808848af0
 
 pkgname = git-guitar-bin
