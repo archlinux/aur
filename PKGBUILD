@@ -1,13 +1,13 @@
 # Maintainer: Cleboost <clement.balarot@gmail.com>
 pkgname=codegraph-rs-git
-pkgver=r0.gAAAAAAA
+pkgver=r0.g0000000
 pkgrel=1
 pkgdesc="Local-first code intelligence: tree-sitter knowledge graph + MCP server (git)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Cleboost/codegraph-rs"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('rust' 'cargo' 'git')
+makedepends=('rust' 'cargo' 'git' 'gcc')
 provides=('codegraph')
 conflicts=('codegraph' 'codegraph-rs-bin')
 source=("$pkgname::git+$url.git")

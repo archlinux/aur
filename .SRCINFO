@@ -1,6 +1,6 @@
 pkgbase = codegraph-rs-git
 	pkgdesc = Local-first code intelligence: tree-sitter knowledge graph + MCP server (git)
-	pkgver = r0.gAAAAAAA
+	pkgver = r0.g0000000
 	pkgrel = 1
 	url = https://github.com/Cleboost/codegraph-rs
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = codegraph-rs-git
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
+	makedepends = gcc
 	depends = gcc-libs
 	provides = codegraph
 	conflicts = codegraph
