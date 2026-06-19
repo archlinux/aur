@@ -1,20 +1,20 @@
 # Maintainer: Alexander Pohl <alex@ahpohl.com>
 
 pkgname=fronius-bridge
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc="Lightweight Modbus-to-MQTT bridge for Fronius devices"
 url="https://github.com/ahpohl/fronius-bridge"
 license=('MIT')
 makedepends=('cmake' 'git' 'pkgconf')
-depends=('libfronius' 'yaml-cpp' 'nlohmann-json' 'spdlog' 'cli11' 'mosquitto' 'fmt')
+depends=('libfronius' 'yaml-cpp' 'nlohmann-json' 'spdlog' 'cli11' 'mosquitto' 'fmt' 'postgresql-libs')
 source=(
   "$pkgname-$pkgver::git+https://github.com/ahpohl/$pkgname.git#tag=v${pkgver}"
   "sysusers-meter.conf"
   "fronius-bridge.service"
 )
-sha256sums=('6f3fcb37074c3f9cc45972923d997352bf0c8ad3567d38a06c4a2ca545c052fd'
+sha256sums=('e589385ae272a98fce97214681b6de353586891c8f0cf66c0095f016cd17d425'
             'ceb25291231fff17ab14840233f700878897bd74d7749bed3345d6e46d4f4f24'
             '9b07ac29013a6548f1ed08a8aa9565084ef273653444a5f4a5192c4389206bb9')
 backup=('etc/fronius-bridge/config.yaml')
