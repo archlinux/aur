@@ -1,0 +1,14 @@
+pkgbase = bbscope-git
+	pkgdesc = Scope aggregation tool for bug bounty platforms (HackerOne, Bugcrowd, Intigriti, YesWeHack, Immunefi)
+	pkgver = r409.2d3bae6
+	pkgrel = 1
+	url = https://github.com/sw33tLie/bbscope
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = bbscope::git+https://github.com/sw33tLie/bbscope.git
+	sha256sums = SKIP
+
+pkgname = bbscope-git
