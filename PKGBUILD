@@ -1,6 +1,6 @@
 # Maintainer: Detrital <Detritalw@outlook.com>
 pkgname=bloret-launcher
-pkgver=27b2
+pkgver=27RC
 pkgrel=1
 pkgdesc="Be creative, be simple. Your Personal Innovative Open Source AI Minecraft Launcher. Relax, it's Bloret Launcher."
 arch=('any')

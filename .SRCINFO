@@ -1,6 +1,6 @@
 pkgbase = bloret-launcher
 	pkgdesc = Be creative, be simple. Your Personal Innovative Open Source AI Minecraft Launcher. Relax, it's Bloret Launcher.
-	pkgver = 27b2
+	pkgver = 27RC
 	pkgrel = 1
 	url = https://github.com/BloretCrew/Bloret-Launcher
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = bloret-launcher
 	depends = qt6-5compat
 	depends = qt6-declarative
 	optdepends = java-runtime: 运行 Minecraft 所需的 Java 环境
-	source = bloret-launcher-27b2.tar.gz::https://github.com/BloretCrew/Bloret-Launcher/archive/27b2.tar.gz
+	source = bloret-launcher-27RC.tar.gz::https://github.com/BloretCrew/Bloret-Launcher/archive/27RC.tar.gz
 	sha256sums = SKIP
 
 pkgname = bloret-launcher
