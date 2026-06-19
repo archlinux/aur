@@ -1,6 +1,6 @@
 # Maintainer: badluma <tarmac_quarrel_7f@icloud.com>
 pkgname=comprobot
-pkgver=2.5.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A self-hostable Discord bot built for maximum customization."
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-pip')
 makedepends=('python-build' 'python-wheel' 'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/c/comprobot/comprobot-${pkgver}.tar.gz")
-sha256sums=('7abaa9ef80b73f1a81f53e38c7da326ee35c51823d847e07d09aa686d73531dc')
+sha256sums=('00589516eb15937a9f1c50ccc454468eee118716b135a41ff2794153253480a8')
 
 build() {
     cd "comprobot-${pkgver}"
