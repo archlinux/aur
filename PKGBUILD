@@ -1,4 +1,4 @@
-# Maintainer: Daniel Vigh <vighd@digital.co.hu>
+# Maintainer: Daniel Vigh <vigh_dani@protonmail.ch>
 
 pkgname=wlbar-git
 _pkgname=wlbar
@@ -26,12 +26,8 @@ optdepends=(
   'wireless_tools: network module Wi-Fi SSID (iwgetid)'
   'iwd: network module Wi-Fi SSID alternative (iwctl)'
 )
-# Renamed from river-bar-git: take over the old package and warn migrating
-# users (binary + config dir moved) via the .install scriptlet below.
-provides=('wlbar' 'river-bar')
-replaces=('river-bar-git')
-conflicts=('wlbar' 'river-bar' 'river-bar-git')
-install='wlbar.install'
+provides=('wlbar')
+conflicts=('wlbar')
 source=("${_pkgname}::git+https://codeberg.org/vighd/wlbar.git")
 sha256sums=('SKIP')
 
