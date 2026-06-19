@@ -1,13 +1,13 @@
 pkgbase = firecrawl-cli
 	pkgdesc = Command-line interface for Firecrawl - scrape, crawl, and extract data from any website
-	pkgver = 1.19.13
+	pkgver = 1.19.17
 	pkgrel = 1
 	url = https://github.com/firecrawl/cli
 	arch = any
 	license = ISC
 	makedepends = pnpm
 	depends = nodejs
-	source = https://github.com/firecrawl/cli/archive/refs/tags/v1.19.13.tar.gz
-	sha256sums = c56d6f0ee01cc20e0f02d9d0b0240e0e5cf90d6323a382cec59ec3e73002c25c
+	source = https://github.com/firecrawl/cli/archive/refs/tags/v1.19.17.tar.gz
+	sha256sums = f4d807fb1de1cfeb1506281bf3f66b9abd95a0a1dac2b428be4248a45f4d7c98
 
 pkgname = firecrawl-cli
