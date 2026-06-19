@@ -1,0 +1,19 @@
+pkgbase = mebtty
+	pkgdesc = Self-hosted web terminal that brings server shells to the browser
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mill413/mebtty
+	install = mebtty.install
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = openssl
+	depends = systemd
+	source_x86_64 = mebtty-0.1.0-linux-amd64::https://github.com/mill413/mebtty/releases/download/v0.1.0/mebtty-0.1.0-linux-amd64
+	source_x86_64 = mebtty.service::https://github.com/mill413/mebtty/raw/v0.1.0/mebtty.service
+	source_x86_64 = LICENSE::https://github.com/mill413/mebtty/raw/v0.1.0/LICENSE
+	sha256sums_x86_64 = eb3b1c1b690744805ae78d01eeefd76135c9d1747b97b7b4889a3882a44fb349
+	sha256sums_x86_64 = 7f51f213114628b7c06cb9e3cae4bf4941a7a461050e9552930165fc9e8baa05
+	sha256sums_x86_64 = aeeb73fc1446b76daaf4b9735e56dec39185df9cc944bf38b9ab3b80a116fc1f
+
+pkgname = mebtty

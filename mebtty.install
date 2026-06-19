@@ -1,0 +1,69 @@
+post_install() {
+  _mebtty_create_env
+  _mebtty_print_notes
+}
+
+post_upgrade() {
+  _mebtty_create_env
+  _mebtty_print_notes
+}
+
+post_remove() {
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl daemon-reload >/dev/null 2>&1 || true
+  fi
+}
+
+_mebtty_create_env() {
+  local env_dir='/etc/mebtty'
+  local env_file="${env_dir}/mebtty.env"
+
+  if [[ -f "${env_file}" ]]; then
+    return
+  fi
+
+  install -dm700 "${env_dir}"
+
+  local secret
+  secret="$(openssl rand -hex 32 2>/dev/null || true)"
+  if [[ -z "${secret}" ]]; then
+    secret='replace-this-secret-before-starting-mebtty'
+  fi
+
+  umask 077
+  cat > "${env_file}" <<EOF
+# MebTTY environment configuration
+# Modify and restart with: systemctl restart mebtty
+
+MEBTTY_SECRET_KEY=${secret}
+MEBTTY_HOST=0.0.0.0
+MEBTTY_PORT=18888
+EOF
+}
+
+_mebtty_print_notes() {
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl daemon-reload >/dev/null 2>&1 || true
+  fi
+
+  cat <<'EOF'
+
+MebTTY has been installed.
+
+Configuration:
+  /etc/mebtty/mebtty.env
+
+Data:
+  /var/lib/mebtty
+
+Start the service:
+  sudo systemctl enable --now mebtty
+
+View logs:
+  journalctl -u mebtty -f
+
+Web UI:
+  http://localhost:18888
+
+EOF
+}
