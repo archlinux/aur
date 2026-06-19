@@ -21,12 +21,16 @@ pkgbase = smolvm-git
 	depends = e2fsprogs
 	depends = util-linux
 	depends = libcap
+	depends = gzip
+	depends = tar
 	provides = smolvm
 	conflicts = smolvm
 	conflicts = smolvm-bin
 	options = !lto
 	options = !debug
 	source = smolvm-main::git+https://github.com/smol-machines/smolvm.git#branch=main
+	source = use-system-libs.patch
 	sha256sums = SKIP
+	sha256sums = dc2b8c9f866cd48a10522c2d5d6d62af038c9d60998e79ca45c986605b19678e
 
 pkgname = smolvm-git
