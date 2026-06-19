@@ -8,7 +8,7 @@
 # etc. here — never in the AUR repo directly.
 pkgname=mousehop-bin
 _pkgname=mousehop
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc='Software KVM Switch / mouse & keyboard sharing software for Local Area Networks (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ conflicts=("$_pkgname" "$_pkgname-git")
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::https://github.com/jondkinney/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::https://github.com/jondkinney/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver-aarch64.tar.gz")
 # Placeholders — CI's updpkgsums overwrites with real hashes per release.
-sha256sums_x86_64=('b9e46b98c579e50d12af5ce9176962a96ea06353c7a14e44f93575e9ebf5eb0a')
-sha256sums_aarch64=('67b651af4420a35bcf88cd4f6851a7be6a067200b4f8448f2306ac64d663b54f')
+sha256sums_x86_64=('0db54e638cc8d9ebe49c22cab6aa0aa30159d3a098a4791776a46dd329e18bb9')
+sha256sums_aarch64=('b92520b4dd9e98deb68a46b529a490191700a5823e2c43da713e5c4814b4376d')
 
 package() {
   # The tarball top-level dir is mousehop-<ver>-<CARCH>; makepkg sets
