@@ -1,0 +1,15 @@
+pkgbase = manboster
+	pkgdesc = Manboster: Your personal AI agent manbo lobster!
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://manboster.dev/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	optdepends = llama.cpp: for running local safety gatekeeper model
+	provides = manboster
+	conflicts = manboster
+	source = manboster-0.1.0.tar.gz::https://github.com/manboster/manboster/archive/v0.1.0.tar.gz
+	sha256sums = eba40d5ecf27ce2c0e8da5d0b157b697a0322bfe90e2144ff741efc59b0f39f5
+
+pkgname = manboster
