@@ -4,7 +4,7 @@
 pkgname=plasmazones-bin
 # pkgver/pkgrel are placeholders; CI overwrites them with the release tag
 # before publishing. See packaging/arch/update-aur.sh.
-pkgver=3.0.16
+pkgver=3.0.17
 pkgrel=1
 pkgdesc='Window tiling and autotiling for KDE Plasma (binary)'
 arch=('x86_64')
@@ -15,13 +15,17 @@ url='https://github.com/fuddlesworth/PlasmaZones'
 # package.
 license=('GPL-3.0-or-later' 'LGPL-2.1-or-later')
 
-# Exact KWin upstream version this binary was built against. The kwin-effect
-# plugin's IID embeds KWin's exact upstream version string; KWin refuses to
-# load effects whose IID doesn't match its own version, including across patch
-# bumps (e.g. 6.7.0 -> 6.7.1). CI substitutes this value at release time from
-# the build-host's installed kwin (see .github/workflows/release.yml).
-_kwin_ver=6.7.0
-
+# KWin: minimum version, NOT an exact pin. The kwin-effect plugin's IID embeds
+# KWin's exact upstream version string and KWin refuses to load an effect whose
+# IID doesn't match its own version (even across patch bumps, e.g. 6.7.0 ->
+# 6.7.1). An exact `kwin=<ver>` pin, however, makes pacman hold KWin back on
+# -Syu whenever a newer KWin lands before this package is rebuilt, stranding the
+# desktop in a half-upgraded Plasma ("No KScreen backend found", black screen).
+# This prebuilt's effect therefore only *loads* on systems running the exact
+# KWin it was built against; on any other 6.7+ KWin the package still installs
+# and core tiling (daemon + layer-shell QPA plugin) works — KWin just skips the
+# mismatched effect (the .so is inert, never loaded), so only the drag overlay
+# is missing until a matching rebuild.
 depends=(
     'qt6-base'
     'qt6-declarative'
@@ -33,7 +37,7 @@ depends=(
     'kcmutils'
     'kglobalaccel'
     'qt6-wayland'
-    "kwin=${_kwin_ver}"
+    'kwin>=6.7.0'
 )
 optdepends=(
     'plasma-activities: activity-based layouts'
@@ -41,7 +45,7 @@ optdepends=(
 provides=('plasmazones')
 conflicts=('plasmazones' 'plasmazones-git')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/plasmazones-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('3fee71b4ba826a250cf58bd3fd7b593cec3eef332581d8a05e1a7d2b0a523c6c')
+sha256sums=('9d607b775c4ab8cd0702f2d762dcf5742c45ec100ece5c730c7c284d8dc4c7f2')
 install=plasmazones.install
 
 package() {
