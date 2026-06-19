@@ -1,7 +1,7 @@
 pkgbase = sonic-desktop-interface
 	pkgdesc = Sonic Desktop Interface
 	pkgver = 6.6.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sonic-DE/sonic-desktop-interface
 	arch = x86_64
 	groups = sonicde
@@ -85,7 +85,7 @@ pkgbase = sonic-desktop-interface
 	optdepends = ibus: kimpanel IBUS support
 	optdepends = kaccounts-integration: OpenDesktop integration plugin
 	optdepends = libaccounts-qt: OpenDesktop integration plugin
-	optdepends = packagekit-qt6: to install new krunner plugins
+	optdepends = packagekit-qt6: to install new sonic-frameworks-runner plugins
 	optdepends = scim: kimpanel SCIM support
 	optdepends = sonic-audio-applet-pulse: Audio volume applet
 	optdepends = sonic-network-manager: Network manager applet

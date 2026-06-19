@@ -5,7 +5,7 @@
 
 pkgname=sonic-desktop-interface
 pkgver=6.6.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Sonic Desktop Interface'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-desktop-interface'
