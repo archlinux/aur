@@ -3,7 +3,7 @@
 # Co-Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 
 pkgname="nzbhydra2"
-pkgver=8.8.3
+pkgver=8.8.4
 pkgrel=1
 pkgdesc="Search aggregator for newznab and torznab indexers."
 arch=('any')
@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/theotherp/nzbhydra2/arc
         'disable-update-checks.patch'
         'skip-unneeded-builds.patch')
 
-sha256sums=('f1bf4e9c0b1a108134049f86afc2549da83998962a9f2506c7b763783a9f0d95'
+sha256sums=('4490ef39de49c0c25b3fee6ad5dbe79ed043c9f435bdf1148e2736dd50c221e6'
             '86c2f02cb8913c3093b1669247447691329bf5bd88fee1b8f2977cff96775655'
             'a9ceeed2b50d55c5e554c0d4c615e855fe4d3889eb118e37908fa04ffb7cb003'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a'
