@@ -20,21 +20,22 @@ sha256sums=('50c47088b2d434a3d2e243ae2d54f5c157dcd044563a89ede8622d6a508041c2')
 
 package() {
   _output="${srcdir}/nuXmv-${pkgver}-linux64"
+  local _libdir="${CARCH}-linux-gnu"
 
   install -Dm755 "${_output}/usr/local/bin/nuXmv" -t "${pkgdir}/usr/bin/"
   install -Dm644 "${_output}/usr/local/include/nuxmv.h" -t "${pkgdir}/usr/include/"
-  install -Dm755 "${_output}/usr/local/lib/x86_64-linux-gnu/libnuxmv.so" -t "${pkgdir}/usr/lib/"
+  install -Dm755 "${_output}/usr/local/lib/${_libdir}/libnuxmv.so" -t "${pkgdir}/usr/lib/"
 
   install -Dm755 \
-    "${_output}/usr/local/lib/x86_64-linux-gnu/libbsd.so.0" \
-    "${_output}/usr/local/lib/x86_64-linux-gnu/libedit.so.2" \
-    "${_output}/usr/local/lib/x86_64-linux-gnu/libgmp.so.10" \
-    "${_output}/usr/local/lib/x86_64-linux-gnu/libicudata.so.70" \
-    "${_output}/usr/local/lib/x86_64-linux-gnu/libicuuc.so.70" \
-    "${_output}/usr/local/lib/x86_64-linux-gnu/liblzma.so.5" \
-    "${_output}/usr/local/lib/x86_64-linux-gnu/libmd.so.0" \
-    "${_output}/usr/local/lib/x86_64-linux-gnu/libtinfo.so.6" \
-    "${_output}/usr/local/lib/x86_64-linux-gnu/libxml2.so.2" \
+    "${_output}/usr/local/lib/${_libdir}/libbsd.so.0" \
+    "${_output}/usr/local/lib/${_libdir}/libedit.so.2" \
+    "${_output}/usr/local/lib/${_libdir}/libgmp.so.10" \
+    "${_output}/usr/local/lib/${_libdir}/libicudata.so.70" \
+    "${_output}/usr/local/lib/${_libdir}/libicuuc.so.70" \
+    "${_output}/usr/local/lib/${_libdir}/liblzma.so.5" \
+    "${_output}/usr/local/lib/${_libdir}/libmd.so.0" \
+    "${_output}/usr/local/lib/${_libdir}/libtinfo.so.6" \
+    "${_output}/usr/local/lib/${_libdir}/libxml2.so.2" \
     -t "${pkgdir}/opt/nuXmv/lib/"
 
   local _doc="${_output}/usr/local/doc"
