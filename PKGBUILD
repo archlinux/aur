@@ -1,13 +1,13 @@
 # Maintainer: nekoside <qwqnekoo@gmail.com>
 
 pkgname=sylvakru
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="A cross-platform music player for local and self-hosted libraries, built with Flutter"
 arch=('x86_64')
 url="https://github.com/AfalpHy/sylvakru"
 license=('Apache-2.0')
-_commit=81c167ef6c373bd4cf243a2c1c2346b3946fc2e2
+_commit=a6970aae6904ecb4b03ee2bed8a3074dddd7955d
 _flutter=3.44.0
 _pkgsrc=${pkgname}
 source=("git+https://github.com/AfalpHy/sylvakru.git#commit=${_commit}")
