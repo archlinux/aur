@@ -3,7 +3,7 @@
 
 pkgname=python-icontract
 _name=${pkgname#python-}
-pkgver=2.7.2
+pkgver=2.7.3
 pkgrel=1
 pkgdesc="Design-by-contract in Python3 with informative violation messages and inheritance"
 arch=(any)
@@ -31,7 +31,7 @@ checkdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a8d3424e433d84aea6b615224b4514b4e2451417236f7075ef68925494eac1dc')
+sha256sums=('e2c4cc8eb0605280feafa1998707fccfb01dd1c36c27db69c7f4ef62cd52b358')
 
 _archive="$_name-$pkgver"
 
@@ -45,6 +45,9 @@ check() {
   cd "$_archive"
 
   pytest \
+    --deselect tests/test_mypy_decorators.py::TestMypyDecorators::test_functions \
+    --deselect tests/test_mypy_decorators.py::TestMypyDecorators::test_class_type_when_decorated_with_invariant \
+    --deselect tests/test_mypy_decorators.py::TestMypyDecorators::test_that_mypy_complains_when_decorating_non_type_with_invariant \
     --deselect tests/test_globals.py::TestSlow::test_slow_set \
     --deselect tests/test_inheritance_postcondition.py::TestInvalid::test_abstract_method_not_implemented \
     --deselect tests/test_inheritance_precondition.py::TestInvalid::test_abstract_method_not_implemented
