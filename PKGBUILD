@@ -3,7 +3,7 @@
 _pkgname=goosestation-libretro
 _upstream_commit=7d1996827022cc557cc26539c071dd3a54e1809b
 _duckstation_srcdir="duckstation-${_upstream_commit}"
-_builder_tag=v0.6.5.11443
+_builder_tag=v0.6.6.11443
 _builder_raw="https://codeberg.org/hueponik/goosestation-builder/raw/tag/${_builder_tag}"
 pkgname=${_pkgname}
 pkgver=${_builder_tag#v}
@@ -38,8 +38,8 @@ source=(
   "goosestation_libretro-${_builder_tag}.info::${_builder_raw}/goosestation_libretro.info"
 )
 sha256sums=('6c2c242c7b3d0d85c7cebd0118b1e1ac4e989ade116f41b102ea42429e563fe8'
-            '38b6c678e6c61fc9a370128109c32913afd54ce62854dd9f985b1a7c628cee13'
-            'c3a0f6016479f5dfe6375729288784f33a31bb1abeb967a6d8a591ea8f6cbc3e')
+            '2901d87084be03bf15a35ee882e25e7bbc97cdf9ea452a02e0d89988e03d3641'
+            '974f9b9aee21f22c91fc7e46910232ef234e1345cfccfb11b1949554555eb8ca')
 
 prepare() {
   cd "duckstation-${_upstream_commit}"
