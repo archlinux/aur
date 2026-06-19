@@ -1,12 +1,29 @@
 pkgbase = trowser
-	pkgdesc = A browser for large line-oriented text files, implemented in Tcl/Tk
-	pkgver = 1.3
-	pkgrel = 5
-	url = http://www.nefkom.net/tomzo/prj/trowser/
-	arch = any
+	pkgdesc = Browser for large line-oriented text files with color highlighting and flexible search
+	pkgver = 089fb1d
+	pkgrel = 1
+	url = https://github.com/tomzox/trowser
+	arch = x86_64
 	license = GPL3
-	depends = tk
-	source = http://www.nefkom.net/tomzo/prj/trowser/trowser-1.3.tar.gz
-	md5sums = a8dd31314f1c0026cb747d1f9cd9bf45
+	makedepends = qt5-base
+	source = trowser-089fb1d.tar.gz::https://github.com/tomzox/trowser/archive/089fb1d0d22708f418952b7a1511e0018d8d8272.tar.gz
+	source = trowser.desktop
+	source = trowser-python.desktop
+	source = trowser-tcl.desktop
+	source = trowser.png
+	sha256sums = b2659278d8dfcac0425e839883b21b3bfdde527e3d47a29ad466d1938df40d8a
+	sha256sums = 0c8738714ff3efb1ba34322dfc3b44638b88915a66d7ba7ccd3ea7fbd652850d
+	sha256sums = 3572a7325fb37766d7e8221b3cf08f799283a2332829331da53c5b408417644c
+	sha256sums = d2e0c1d60e7d3668d860999f5e32ed1824a1422e154fc4fe7d7610f55c4da398
+	sha256sums = ea9155bb814d9a7680395dfccc71f97f70a8573686ebb3e25d1bd50d7bad0963
 
 pkgname = trowser
+	depends = qt5-base
+	conflicts = trowser-qt5
+
+pkgname = trowser-python
+	depends = python
+	depends = tk
+
+pkgname = trowser-tcl
+	depends = tk
