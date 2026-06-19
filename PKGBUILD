@@ -2,7 +2,7 @@
 
 pkgbase=python-torchrl
 pkgname=(python-torchrl python-torchrl-cuda)
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="A modular, primitive-first, python-first PyTorch library for Reinforcement Learning."
 url="https://github.com/pytorch/rl"
@@ -12,7 +12,7 @@ depends=(python python-cloudpickle python-tensordict python-numpy python-packagi
 makedepends=(python-build python-wheel python-installer python-setuptools gcc cuda python-pytorch ninja)
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz" "setup.patch" "cuda-flags.patch")
 sha256sums=(
-    '6b52114ac84bdae89a0e10c9e48a259de14b27a2efde93341847ded00fbaa3bf'
+    '306211dcaf6066e39e685317adf692af20a167bae9cf387bbb8bd1e31b8d474c'
     '3916428ad174568ea43162a133ac5588f135a6a242cfcd6e8e2c0eca7bfb80c3'
     '21c2864cb9a7de0faaa600bf266ab05c1e6bd3d3e879c2ac5697f74e0732e0f5'
 )
