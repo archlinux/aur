@@ -1,7 +1,7 @@
 # Maintainer: Edwar Diaz <edwardiaz.dev@gmail.com>
 
 pkgname=cliprithm-bin
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Prebuilt Cliprithm AppImage packaged for Arch Linux"
 arch=('x86_64')
@@ -11,46 +11,16 @@ depends=('ffmpeg' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libayatana-appindicator' 
 optdepends=('xdg-desktop-portal: improved desktop integration for file dialogs and portals')
 provides=('cliprithm')
 conflicts=('cliprithm')
-source=("Cliprithm_1.3.2_amd64.AppImage::https://github.com/BOTOOM/Cliprithm/releases/download/cliprithm-v1.3.2/Cliprithm_1.3.2_amd64.AppImage" "cliprithm.png::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.3.2/src-tauri/icons/128x128.png" "LICENSE::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.3.2/LICENSE")
-sha256sums=('a2a9a1aff2d4193b2bcb650e75efaa7bfe2ae4c46cecfbcfc2a1b605cd41fdb5' 'c7f874d897675e666ae09da79dfefeed2aa5bf9f51da33bf931050c5087b6a80' 'd90660ef692577f22ad72ccabe19ff6d10c4047d5a8345bf748f0c044932b52c')
-noextract=('Cliprithm_1.3.2_amd64.AppImage')
+source=("Cliprithm_1.3.3_amd64.AppImage::https://github.com/BOTOOM/Cliprithm/releases/download/cliprithm-v1.3.3/Cliprithm_1.3.3_amd64.AppImage" "cliprithm.png::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.3.3/src-tauri/icons/128x128.png" "LICENSE::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.3.3/LICENSE" "cliprithm" "cliprithm.desktop")
+sha256sums=('b2395a19f173026b1db7a8afb0343da3fdade0d91db937649160bc6045c7c116' 'c7f874d897675e666ae09da79dfefeed2aa5bf9f51da33bf931050c5087b6a80' 'd90660ef692577f22ad72ccabe19ff6d10c4047d5a8345bf748f0c044932b52c' '54d45b926225a2d82300cae35fbf604d0ef022f8343c2775b9ab20febb1dbc7f' 'fc1f073620a6ea5283c288a5870941eea57dc2369b691c0788ec8fb16260045f')
+noextract=('Cliprithm_1.3.3_amd64.AppImage')
 options=('!strip')
 
 package() {
-  install -Dm755 "$srcdir/Cliprithm_1.3.2_amd64.AppImage" "$pkgdir/opt/cliprithm/cliprithm.AppImage"
+  install -Dm755 "$srcdir/Cliprithm_1.3.3_amd64.AppImage" "$pkgdir/opt/cliprithm/cliprithm.AppImage"
   install -Dm644 "$srcdir/cliprithm.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/cliprithm.png"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  cat > "$srcdir/cliprithm" <<'EOF'
-#!/usr/bin/env bash
-set -euo pipefail
-export CLIPRITHM_DISTRIBUTION_CHANNEL=aur-bin
-export CLIPRITHM_UPDATE_STRATEGY=store-managed
-export CLIPRITHM_PACKAGE_NAME=cliprithm-bin
-export CLIPRITHM_STORE_NAME=AUR
-export CLIPRITHM_STORE_URL=https://aur.archlinux.org/packages/cliprithm-bin
-export CLIPRITHM_STORE_INSTRUCTIONS='yay -Syu cliprithm-bin'
-export CLIPRITHM_VERSION_SOURCE_TYPE=aur-rpc
-export CLIPRITHM_VERSION_SOURCE_URL=https://aur.archlinux.org/rpc/v5/info/cliprithm-bin
-export APPIMAGE_EXTRACT_AND_RUN=1
-export WEBKIT_DISABLE_DMABUF_RENDERER=1
-export WEBKIT_DISABLE_COMPOSITING_MODE=1
-export LIBGL_ALWAYS_SOFTWARE=1
-exec /opt/cliprithm/cliprithm.AppImage "$@"
-EOF
   install -Dm755 "$srcdir/cliprithm" "$pkgdir/usr/bin/cliprithm"
-
-  cat > "$srcdir/$pkgname.desktop" <<'EOF'
-[Desktop Entry]
-Type=Application
-Name=Cliprithm
-Comment=Smart video silence remover and clip editor
-Exec=cliprithm
-Icon=cliprithm
-Categories=AudioVideo;AudioVideoEditing;Video;
-Terminal=false
-StartupWMClass=cliprithm
-EOF
-
-  install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$srcdir/cliprithm.desktop" "$pkgdir/usr/share/applications/cliprithm.desktop"
 }
