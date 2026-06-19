@@ -16,7 +16,7 @@ pkgname=wine-valve
 epoch=5
 pkgver=11.0.1b5
 _pkgver='11.0-1-beta5'
-pkgrel=1
+pkgrel=2
 
 source=("https://github.com/ValveSoftware/wine/archive/proton-wine-${_pkgver}.tar.gz"
         '30-win32-aliases.conf'
@@ -127,7 +127,6 @@ optdepends=(
 )
 
 makedepends=(${makedepends[@]} ${depends[@]})
-install="$pkgname.install"
 
 prepare() {
   # Get rid of old build dirs

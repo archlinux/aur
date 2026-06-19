@@ -1,10 +1,9 @@
 pkgbase = wine-valve
 	pkgdesc = A compatibility layer for running Windows programs (Valve version)
 	pkgver = 11.0.1b5
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 5
 	url = https://github.com/ValveSoftware/wine.git
-	install = wine-valve.install
 	arch = x86_64
 	license = LGPL
 	makedepends = alsa-lib
