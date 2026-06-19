@@ -6,8 +6,8 @@
 # Contributor: Mateus Rodrigues Costa <charles [dot] costar [at] gmail [dot] com>
 
 pkgname=chrome-remote-desktop
-pkgver=149.0.7827.22
-pkgrel=2
+pkgver=150.0.7871.19
+pkgrel=1
 pkgdesc="Access other computers or allow another user to access your computer securely over the Internet"
 arch=("x86_64")
 url="https://remotedesktop.google.com"
@@ -21,7 +21,7 @@ source=(
   "crd"
   "xdg-base-directory.patch"
 )
-sha256sums=('a8e663e79845edfc172871a9f79d67b5a261da969c01f44c018312d2371b114f'
+sha256sums=('eb8ef7af8e6bf37688ced8d2527574fb243a45c85f8ecea31b6a5cb7a7c34fed'
             'fcc38269eb1cc902abff9688eda9377a22367e39b9f111f87c0dd8e77adb82e2'
             'e4105af96f029a80275986a0b19c7eaf563034230b20ee4d9158e1169d155e6d'
             '90bcfab85a87cfa6d038a55c556206f74b22eb03644ea51f46732cfb27679963')
