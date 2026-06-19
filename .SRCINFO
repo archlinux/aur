@@ -1,4 +1,4 @@
-pkgbase = yay
+pkgbase = uay
 	pkgdesc = Yet another yogurt. Pacman wrapper and AUR helper written in go.
 	pkgver = 13.0.1
 	pkgrel = 1
@@ -21,4 +21,4 @@ pkgbase = yay
 	source = yay-13.0.1.tar.gz::https://github.com/Jguer/yay/archive/v13.0.1.tar.gz
 	sha256sums = b77454bce87110180a1b6664c2d260de78124c9894b71101610ba84f551eb0d0
 
-pkgname = yay
+pkgname = uay
