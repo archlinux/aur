@@ -1,6 +1,6 @@
 pkgbase = p4lang-pi
 	pkgdesc = An implementation framework for a P4Runtime server
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/p4lang/PI
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = p4lang-pi
 	depends = boost-libs
 	depends = readline
 	options = !debug
-	source = git+https://github.com/p4lang/PI.git#tag=v0.1.1
-	sha256sums = 58cbfbc4f76f5a6440572bd0bd496a6d4d43fa424403f7997af1737167fa6fa8
+	source = git+https://github.com/p4lang/PI.git#tag=v0.1.2
+	sha256sums = c1b8938022d662d4311852cfce8bc79bd9e02b8cd42533374c339c435b36967b
 
 pkgname = p4lang-pi
