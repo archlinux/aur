@@ -26,7 +26,7 @@ pkgbase = opengrep-bin
 	depends = python-typing_extensions
 	depends = python-urllib3
 	depends = python-wcmatch
-	provides = opengrep
+	provides = opengrep=1.23.0
 	conflicts = opengrep
 	options = !strip
 	source = opengrep-bin-1.23.0.tar.gz::https://github.com/opengrep/opengrep/archive/refs/tags/v1.23.0.tar.gz

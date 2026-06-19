@@ -1,14 +1,14 @@
 # Maintainer: Julian Houba <info@craftingdragon.ch>
 _pkgname_base=opengrep
 pkgname=${_pkgname_base}-bin
-conflicts=(${_pkgname_base})
-provides=(${_pkgname_base})
 pkgver=1.23.0
 pkgrel=1
 _interfaces_commit=e0777714cf175fda0dd9fa679f044cefbc983a13
 pkgdesc="Lightweight static analysis for many languages. Find bug variants with patterns that look like source code. Fork of semgrep (binary release)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/opengrep/opengrep"
+provides=("${_pkgname_base}=${pkgver}")
+conflicts=("${_pkgname_base}")
 options=(!strip)
 license=('LGPL-2.1-only')
 
@@ -79,5 +79,5 @@ package() {
   python -m installer --destdir="${pkgdir}" dist/*.whl
   
   cd ..
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname_base}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
