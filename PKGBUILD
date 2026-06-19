@@ -11,7 +11,8 @@ depends=(
     'libssh2' 'libuv' 'gnutls' 'mpg123' 'libxml2-legacy' 'lua' 'libcap'
     'p11-kit' 'openssl'
 )
-makedepends=('git' 'cmake' 'bison' 'flex' 'pkgconf' 'gcc' 'make' 'gettext')
+makedepends=('git' 'cmake' 'bison' 'flex' 'pkgconf' 'gcc' 'make' 'gettext'
+             'curl' 'libarchive')
 provides=('judotimer' 'judoinfo' 'judoweight' 'judojudogi')
 conflicts=('judoshiai-git')
 # VCS source: AUR helpers run with --devel will re-fetch and rebuild, picking
@@ -88,6 +89,28 @@ build() {
     make "${mk[@]}" -C judoweight
     make "${mk[@]}" -C judojudogi
     make "${mk[@]}" -C utils
+
+    # Web UI (browser scoreboard/referee/weigh-in) = Flutter web apps the app's
+    # embedded HTTP server serves from etc/web. Building them needs the Flutter
+    # SDK, so for stable releases we instead pull the prebuilt etc/web tree from
+    # upstream's matching official .deb. Version derives from $pkgver (the tag),
+    # so this follows new releases automatically with no hardcoding.
+    local deb="$srcdir/judoshiai-upstream.deb"
+    local url="https://downloads.sourceforge.net/project/judoshiai/Linux-x86_64/judoshiai_${pkgver}-1_amd64.deb"
+    msg2 "Fetching prebuilt web assets from upstream .deb ($pkgver)"
+    curl -fL --retry 3 -o "$deb" "$url" || {
+        error "No upstream .deb for $pkgver yet (web assets unavailable)."
+        return 1
+    }
+    rm -rf "$srcdir/deb-extract"
+    mkdir -p "$srcdir/deb-extract"
+    bsdtar -xf "$deb" -C "$srcdir/deb-extract"
+    bsdtar -xf "$srcdir/deb-extract"/data.tar.* -C "$srcdir/deb-extract" \
+        ./usr/lib/judoshiai/etc/web
+    [[ -f "$srcdir/deb-extract/usr/lib/judoshiai/etc/web/shiai/index.html" ]] || {
+        error "etc/web not found in upstream .deb"
+        return 1
+    }
 }
 
 package() {
@@ -106,6 +129,9 @@ package() {
 
     # Resource trees
     cp -a etc            "$libdir/"
+    # Prebuilt Flutter web UI (from upstream .deb, fetched in build()). httpd.c
+    # serves browser requests for /web/* from installation_dir/etc/web.
+    cp -a "$srcdir/deb-extract/usr/lib/judoshiai/etc/web" "$libdir/etc/"
     cp -a svg            "$libdir/"
     cp -a svg-lisp       "$libdir/"
     cp -a svg-lua        "$libdir/"
