@@ -1,6 +1,6 @@
 pkgbase = pipetron
 	pkgdesc = A third-party daemon to fix Electron audio streams naming conflicts in PipeWire.
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://codeberg.org/ponleou/pipetron
 	install = pipetron.install
@@ -10,7 +10,7 @@ pkgbase = pipetron
 	makedepends = systemd
 	depends = pipewire
 	depends = tomlplusplus
-	source = pipetron-1.2.0.tar.gz::https://codeberg.org/ponleou/pipetron/archive/v1.2.0.tar.gz
-	sha256sums = d82d31c02b7423c919cafc443d0393e952bb2219f51bb3d2d5446d8a46ad3586
+	source = pipetron-1.2.1.tar.gz::https://codeberg.org/ponleou/pipetron/archive/v1.2.1.tar.gz
+	sha256sums = aa23e49aadc3281d5fc4c465d017c0d362d84a5832979644d212eb6a083f3da6
 
 pkgname = pipetron
