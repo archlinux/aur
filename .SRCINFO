@@ -1,6 +1,6 @@
 pkgbase = nylas-bin
 	pkgdesc = CLI for Nylas API - manage email, calendar, and contacts
-	pkgver = 3.1.23
+	pkgver = 3.1.24
 	pkgrel = 1
 	url = https://cli.nylas.com/
 	license = MIT
@@ -11,10 +11,10 @@ pkgbase = nylas-bin
 	conflicts = nylas
 	provides = nylas
 	arch = aarch64
-	source_aarch64 = https://github.com/nylas/cli/releases/download/v3.1.23/nylas_3.1.23_linux_arm64.tar.gz
-	sha256sums_aarch64 = 2d3041661b70432548a7f887b1df3313731e8782e21e4816b77a6275422bfad9
+	source_aarch64 = https://github.com/nylas/cli/releases/download/v3.1.24/nylas_3.1.24_linux_arm64.tar.gz
+	sha256sums_aarch64 = ae2c940a9abafc1f3e734d52a6b7d1b21af639e731185912217b9c958a41809f
 	arch = x86_64
-	source_x86_64 = https://github.com/nylas/cli/releases/download/v3.1.23/nylas_3.1.23_linux_amd64.tar.gz
-	sha256sums_x86_64 = c2f27681588be77bad69553e17ec454b290e3d9475104e5d7a6743efeebfb6a3
+	source_x86_64 = https://github.com/nylas/cli/releases/download/v3.1.24/nylas_3.1.24_linux_amd64.tar.gz
+	sha256sums_x86_64 = c63b2b76361f070373acac44c6d136240f5ea78772891d058872e68f889977b0
 	
 pkgname = nylas-bin
