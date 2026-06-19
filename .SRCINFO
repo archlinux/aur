@@ -1,6 +1,6 @@
 pkgbase = python-teleprox
 	pkgdesc = Simple python object proxies over TCP
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/campagnola/teleprox
 	arch = any
@@ -20,11 +20,11 @@ pkgbase = python-teleprox
 	depends = python-msgpack
 	optdepends = python-colorama: colorful logs
 	optdepends = python-numpy: SharedNDArray support
-	source = python-teleprox-2.2.1.tar.gz::https://github.com/campagnola/teleprox/archive/refs/tags/v2.2.1/teleprox-2.2.1.tar.gz
-	source = python-teleprox-2.2.1-release.tar.gz::https://github.com/campagnola/teleprox/releases/download/v2.2.1/teleprox-2.2.1.tar.gz
-	source = python-teleprox-2.2.1-release.tar.gz.sigstore.json::https://github.com/campagnola/teleprox/releases/download/v2.2.1/teleprox-2.2.1.tar.gz.sigstore.json
-	sha256sums = 519fc52991cdd86bbf033638e36482c030c3eca6408735864ae03f319be699a2
-	sha256sums = 2078a92a270a1bf70ca3fe94a6a8c5a750aa35092f789f79451b9636a7bc2190
-	sha256sums = 71ca3d09982ca9ac53c8a2db6b23931488fd095e82b99baa8016160b39140e68
+	source = python-teleprox-2.2.2.tar.gz::https://github.com/campagnola/teleprox/archive/refs/tags/v2.2.2/teleprox-2.2.2.tar.gz
+	source = python-teleprox-2.2.2-release.tar.gz::https://github.com/campagnola/teleprox/releases/download/v2.2.2/teleprox-2.2.2.tar.gz
+	source = python-teleprox-2.2.2-release.tar.gz.sigstore.json::https://github.com/campagnola/teleprox/releases/download/v2.2.2/teleprox-2.2.2.tar.gz.sigstore.json
+	sha256sums = 03667dee29e8568178fd5de2bce45541725fa4d780f665fd114edce40898e4fb
+	sha256sums = 558d6665f5a446878266d28c65b092bc0d5fce0b62fe03b2ba40ea428ab70e6f
+	sha256sums = d7d80a53070f9e8c0983b38dda1f8a8af875ef7316e9a1d42f706ce8990c58e6
 
 pkgname = python-teleprox
