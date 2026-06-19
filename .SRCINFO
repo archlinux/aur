@@ -1,0 +1,16 @@
+pkgbase = python-annotatedyaml
+	pkgdesc = Annotated YAML that supports secrets for Python
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = None
+	arch = any
+	license = unknown
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/ec/4b/973067092ee348e331d125acd60c45245f11663373c219650814b43d0025/annotatedyaml-1.0.2.tar.gz
+	sha256sums = f9a49952994ef1952ca17d27bb6478342eb1189d2c28e4c0ddbbb32065471fb0
+
+pkgname = python-annotatedyaml
