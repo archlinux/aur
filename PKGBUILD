@@ -1,6 +1,6 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-gui
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="PySide6 desktop GUI for the Control-OFC fan control daemon"
 arch=('any')
@@ -24,7 +24,7 @@ conflicts=('control-ofc-daemon<2.0.0')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'scdoc')
 install=control-ofc-gui.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a652fc465303e80bfb35f86129649b98044d2f99aff265b33447ff25eea0f538')
+sha256sums=('1d56c9d6d4872d3b16abb597e47f217ed714b6ab951aa9b1ebddc93ad48889fa')
 
 build() {
     cd "$pkgname-$pkgver"

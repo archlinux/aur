@@ -1,6 +1,6 @@
 pkgbase = control-ofc-gui
 	pkgdesc = PySide6 desktop GUI for the Control-OFC fan control daemon
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/Plan-B-Development/control-ofc-gui
 	install = control-ofc-gui.install
@@ -20,7 +20,7 @@ pkgbase = control-ofc-gui
 	depends = python-colorama
 	depends = hicolor-icon-theme
 	conflicts = control-ofc-daemon<2.0.0
-	source = control-ofc-gui-2.1.0.tar.gz::https://github.com/Plan-B-Development/control-ofc-gui/archive/v2.1.0.tar.gz
-	sha256sums = a652fc465303e80bfb35f86129649b98044d2f99aff265b33447ff25eea0f538
+	source = control-ofc-gui-2.1.1.tar.gz::https://github.com/Plan-B-Development/control-ofc-gui/archive/v2.1.1.tar.gz
+	sha256sums = 1d56c9d6d4872d3b16abb597e47f217ed714b6ab951aa9b1ebddc93ad48889fa
 
 pkgname = control-ofc-gui
