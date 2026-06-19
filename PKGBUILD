@@ -1,7 +1,7 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
 pkgname=mistral-vibe
-pkgver=2.17.0
+pkgver=2.17.1
 pkgrel=1
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
@@ -56,7 +56,7 @@ makedepends=(
     "vulture"
 )
 source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('415d4b99f95409df6efbfda826324759c77a5f53405f4c483dda8f223eef94fc')
+sha256sums=('765b6cdf24a016ab33a6d4d593e78d2a8dd9e822be135aec47690d11abacacf7')
 
 build() {
     cd "$pkgname"
