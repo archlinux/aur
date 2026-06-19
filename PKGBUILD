@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-agent-ssh-agent-piggyback-unstable-bin
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Moshpit agent daemon — SSH agent piggyback unlock with post-quantum ML-DSA support (pre-compiled MUSL static binary)"
 arch=('x86_64' 'aarch64')
@@ -20,9 +20,9 @@ _base="https://github.com/rustyhorde/moshpit/releases/download/v${pkgver}"
 source=("${_base}/dist-mpa.tar.gz")
 source_x86_64=("mpa-ssh-agent-piggyback-unstable-x86_64::${_base}/mpa-ssh-agent-piggyback-unstable-x86_64-unknown-linux-musl")
 source_aarch64=("mpa-ssh-agent-piggyback-unstable-aarch64::${_base}/mpa-ssh-agent-piggyback-unstable-aarch64-unknown-linux-musl")
-sha256sums=('dd21b66fbb5926de40eecab01d818b842bc396a8467803a31f0a1287b2bc58e7')
-sha256sums_x86_64=('1383c7e61cbc49857cc7d9058211fc40c50e223db9103da9e76fd44dd3ff8ad1')
-sha256sums_aarch64=('abb220f6e7bcafb232bf6ae979332681ccc39dc632693695446b2c61b4a1c7c0')
+sha256sums=('98b4b19dc8910acf3b5a23406aaa0112f6baf113e0593c9aaf7b6ccfadf8ffbc')
+sha256sums_x86_64=('88c205ff7245bcb0d6268572db6d0a7a1c5303af44674585f84c0048d7956bd8')
+sha256sums_aarch64=('bf828958e11758ece477dc7923e84916e5140f232b1451c19bc29759a995c85a')
 
 package() {
     install -Dm755 "mpa-ssh-agent-piggyback-unstable-${CARCH}" "$pkgdir/usr/bin/mpa"
