@@ -2,7 +2,7 @@
 # Maintainer: higorslva <higor.slva at outlook dot com>
 
 pkgname=pgadmin4-desktop-bin
-pkgver=9.15
+pkgver=9.16
 pkgrel=1
 pkgdesc='The desktop user interface for pgAdmin. pgAdmin is the most popular and feature rich Open Source administration and development platform for PostgreSQL, the most advanced Open Source database in the world.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('pgadmin4-desktop')
 conflicts=('pgadmin4-desktop')
 source=("pgadmin4-desktop-${pkgver}-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/noble/dists/pgadmin4/main/binary-amd64/pgadmin4-desktop_${pkgver}-1.noble_amd64.deb")
 #source=("pgadmin4-desktop-${pkgver}-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/noble/dists/pgadmin4/main/binary-amd64/pgadmin4-desktop_${pkgver}_amd64.deb")
-sha256sums=('96ee69e77c5f18419a0b2e3fa5052b755ad2b31e25b57bad3c7e6522489f394e')
+sha256sums=('788e18b307449e3165489d5c1a8199526c5c8e9cf57ef5d8c2b86102afa8d695')
 
 
 package() {
