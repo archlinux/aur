@@ -12,7 +12,7 @@ pkgbase = dida-appimage
 	conflicts = dida-bin
 	noextract = dida-8.0.10-x86_64.AppImage
 	options = !strip
-	source = dida-8.0.10-x86_64.AppImage
+	source = dida-8.0.10-x86_64.AppImage::https://cdn.dida365.cn/download/linux/linux_appimage_x64/dida-8.0.10-x86_64.AppImage
 	sha256sums = 66067271d51c4f66f2408a27bce961d1bd96f6e0377b51971cae5644040c72d6
 
 pkgname = dida-appimage
