@@ -59,7 +59,6 @@ _reload_udev() {
   if command -v udevadm &>/dev/null; then
     udevadm control --reload-rules 2>/dev/null || true
     udevadm trigger 2>/dev/null || true
-    [ -e /sys/module/evdi ] && udevadm trigger --action=add /sys/module/evdi 2>/dev/null || true
   fi
 }
 
@@ -98,10 +97,6 @@ automatically when the daemon discovers your devices.
 
 For headless machines (fan control without desktop login):
   sudo loginctl enable-linger \$USER
-
-evdi / desktop mode: read /usr/share/doc/whylian-git/EVDI-ARCHITECTURE.md
-  Default package build does not require evdi-dkms.
-  Rebuild with WHYLIAN_DESKTOP_DISPLAY=1 for virtual-monitor support.
 
 Install tip: use yay -S whylian-git (or paru).
 

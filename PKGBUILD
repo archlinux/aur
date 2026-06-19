@@ -2,8 +2,8 @@
 
 pkgname=whylian-git
 _pkgname=whylian
-pkgver=1.0.4.r364.g35c443c
-pkgrel=4
+pkgver=1.0.4.r1.g8908925
+pkgrel=5
 pkgdesc="Lian Li device control for Linux — HydroShift II AdvanceMode fork of lian-li-linux (git)"
 arch=('x86_64')
 url="https://github.com/byrdltd/whylian"
@@ -31,8 +31,6 @@ makedepends=(
 )
 optdepends=(
   'systemd: user daemon unit (enabled globally on install)'
-  'evdi-dkms: rebuild with WHYLIAN_DESKTOP_DISPLAY=1 for virtual-monitor desktop mode; see docs/EVDI-ARCHITECTURE.md'
-  'linux-headers: build evdi-dkms against your running kernel when DKMS rebuild is needed'
 )
 provides=('whylian' 'lianli-linux' 'lianli-linux-git')
 conflicts=('whylian' 'lianli-linux' 'lianli-linux-git')
@@ -74,11 +72,7 @@ build() {
   export CARGO_PROFILE_RELEASE_STRIP=symbols
   export SLINT_NO_QT=1
   export RUSTFLAGS='-D warnings'
-  local -a features=()
-  if [[ "${WHYLIAN_DESKTOP_DISPLAY:-0}" == "1" ]]; then
-    features=(--features desktop-display)
-  fi
-  /usr/bin/cargo build --frozen --release -p lianli-daemon -p lianli-gui "${features[@]}"
+  /usr/bin/cargo build --frozen --release -p lianli-daemon -p lianli-gui
   test -x target/release/lianli-daemon
   test -x target/release/lianli-gui
 }
@@ -91,7 +85,6 @@ package() {
   install -Dm644 packaging/udev/99-lianli.rules "${pkgdir}/usr/lib/udev/rules.d/99-lianli.rules"
   install -Dm644 packaging/systemd/lianli-daemon.service \
     "${pkgdir}/usr/lib/systemd/user/lianli-daemon.service"
-  install -Dm644 docs/EVDI-ARCHITECTURE.md "${pkgdir}/usr/share/doc/${pkgname}/EVDI-ARCHITECTURE.md"
   install -Dm644 packaging/desktop/com.sgtaziz.lianlilinux.desktop \
     "${pkgdir}/usr/share/applications/com.sgtaziz.lianlilinux.desktop"
   install -Dm644 assets/icons/32x32.png \
