@@ -1,7 +1,7 @@
-# Maintainer: Daniel Vigh <vighd@digital.co.hu>
+# Maintainer: Daniel Vigh <vigh_dani@protonmail.ch>
 
 pkgname=wlbar
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='A small status bar for the River and niri Wayland compositors'
 arch=('x86_64')
@@ -25,14 +25,8 @@ optdepends=(
   'wireless_tools: network module Wi-Fi SSID (iwgetid)'
   'iwd: network module Wi-Fi SSID alternative (iwctl)'
 )
-# Renamed from river-bar: take over the old package and warn migrating users
-# (binary + config dir moved) via the .install scriptlet below.
-provides=('river-bar')
-replaces=('river-bar')
-conflicts=('river-bar')
-install='wlbar.install'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('14add238b3bcd007a54150a4d39354e54f4a434e512ee350f5e8b002b05151e9')
+sha256sums=('6f7b4af7908f14139937e1eda26f760ec28902027c646c343ae62910ba12ac2d')
 
 build() {
   cd "${pkgname}"

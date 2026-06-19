@@ -1,9 +1,8 @@
 pkgbase = wlbar
 	pkgdesc = A small status bar for the River and niri Wayland compositors
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://codeberg.org/vighd/wlbar
-	install = wlbar.install
 	arch = x86_64
 	license = MIT
 	makedepends = go
@@ -20,10 +19,7 @@ pkgbase = wlbar
 	optdepends = iputils: network module connectivity check (ping)
 	optdepends = wireless_tools: network module Wi-Fi SSID (iwgetid)
 	optdepends = iwd: network module Wi-Fi SSID alternative (iwctl)
-	provides = river-bar
-	conflicts = river-bar
-	replaces = river-bar
-	source = wlbar-1.5.0.tar.gz::https://codeberg.org/vighd/wlbar/archive/v1.5.0.tar.gz
-	sha256sums = 14add238b3bcd007a54150a4d39354e54f4a434e512ee350f5e8b002b05151e9
+	source = wlbar-1.5.1.tar.gz::https://codeberg.org/vighd/wlbar/archive/v1.5.1.tar.gz
+	sha256sums = 6f7b4af7908f14139937e1eda26f760ec28902027c646c343ae62910ba12ac2d
 
 pkgname = wlbar
