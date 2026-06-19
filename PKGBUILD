@@ -8,7 +8,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=11.0.0
 _xaliaver=0.4.9
-pkgrel=2
+pkgrel=3
 epoch=1
 
 source=(
