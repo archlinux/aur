@@ -2,7 +2,7 @@
 
 pkgbase=lenocon-git
 pkgname=('lenocon-cli-git' 'lenocon-daemon-git')
-pkgver=v1.0.0.r0.gb9fb18c
+pkgver=v1.1.0.r0.gb9fb18c
 pkgrel=1
 url="https://github.com/KofTD/lenocon"
 arch=('x86_64')
