@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-fy-nl
 	pkgdesc = Frisian language pack for Firefox Nightly
-	pkgver = 154.0a1.20260617.212640
+	pkgver = 154.0a1.20260618.200449
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-fy-nl
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-fy-NL-154.0a1.20260617.212640.xpi
-	source = firefox-nightly-i18n-fy-NL-154.0a1.20260617.212640.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-154.0a1.fy-NL.langpack.xpi
-	sha256sums = eebdc02aa654137c1586f4d0a9d26b6a8351fd8d46436a48ffb39e3e1c586a7c
+	noextract = firefox-nightly-i18n-fy-NL-154.0a1.20260618.200449.xpi
+	source = firefox-nightly-i18n-fy-NL-154.0a1.20260618.200449.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-154.0a1.fy-NL.langpack.xpi
+	sha256sums = a9e968b6a9271961232093759a9178d587b8f8f7fa8f907548f2cf5676800eba
 
 pkgname = firefox-nightly-i18n-fy-nl
