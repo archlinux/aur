@@ -1,0 +1,26 @@
+pkgbase = harbor-stremio-bin
+	pkgdesc = A Stremio client built for adventure (binary release)
+	pkgver = 0.9.12
+	pkgrel = 1
+	url = https://github.com/harborstremio/harbor
+	arch = x86_64
+	license = MIT
+	makedepends = libarchive
+	depends = ffmpeg
+	depends = gst-libav
+	depends = gst-plugins-bad
+	depends = gst-plugins-good
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = mpv
+	depends = webkit2gtk-4.1
+	depends = yt-dlp
+	provides = harbor-stremio
+	provides = harbor
+	conflicts = harbor-stremio
+	conflicts = harbor
+	conflicts = harbor-stremio-git
+	source = https://github.com/AdityaHebballe/harbor-linux-builds/releases/download/v0.9.12/Harbor_0.9.12_amd64.deb
+	sha256sums = SKIP
+
+pkgname = harbor-stremio-bin
