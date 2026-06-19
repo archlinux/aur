@@ -1,16 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=('fluent-icon-theme-git' 'fluent-cursor-theme-git')
 pkgbase=fluent-icon-theme-git
-pkgver=2025.02.10.r1.g7d20e2d
+pkgver=2026.06.19.r0.ga163afe
 pkgrel=1
 pkgdesc="A Fluent design icon theme"
 arch=('any')
 url="https://github.com/vinceliuice/Fluent-icon-theme"
 license=('GPL-3.0-or-later')
-depends=(
-  'gtk-update-icon-cache'
-  'hicolor-icon-theme'
-)
 makedepends=('git')
 options=('!strip')
 source=('git+https://github.com/vinceliuice/Fluent-icon-theme.git')
@@ -29,6 +25,10 @@ prepare() {
 }
 
 package_fluent-icon-theme-git() {
+  depends=(
+    'gtk-update-icon-cache'
+    'hicolor-icon-theme'
+  )
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
 
@@ -39,7 +39,6 @@ package_fluent-icon-theme-git() {
 
 package_fluent-cursor-theme-git() {
   pkgdesc="An x-cursor theme inspired by Qogir theme and based on capitaine-cursors."
-  depends=('libxcursor')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
 
