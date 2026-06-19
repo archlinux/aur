@@ -43,7 +43,10 @@ sha256sums_aarch64=('e34c9ee1bf49f252d7116bcb51608aa4f2f7ccf2d5184e820de16fa7fd4
 prepare() {
 	cd "${srcdir}/" || exit
 
-	perl -i -0777 -pe "s|/usr/local/share/${_appname}|pack('A23', '/usr/share/${_appname}')|e" src/al
+	_new_path="/usr/share/${_appname}"
+	_old_path="/usr/local/share/${_appname}"
+	_old_len=$(echo -n "${_old_path}" | wc -m)
+	perl -i -0777 -pe "s|${_old_path}|pack('A' . ${_old_len}, '${_new_path}')|e" "${_execname}"
 }
 
 package() {
