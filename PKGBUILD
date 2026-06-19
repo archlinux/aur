@@ -11,7 +11,7 @@
 pkgbase=omsa8
 pkgname=('omsa8' 'omsa8-webserver')
 pkgver=8.4.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.dell.com/support/kbdoc/en-us/000177080/dell-emc-systems-management-openmanage-server-administrator'
 license=('custom:Dell')
@@ -224,6 +224,15 @@ package_omsa8-webserver() {
   [ -f "$pkgdir/etc/init.d/dsm_om_connsvc" ] && sed -i \
     's%/lib/lsb/init-functions%/opt/dell/srvadmin/lib/init-functions%g' \
     "$pkgdir/etc/init.d/dsm_om_connsvc"
+
+  # Raise the :1311 Tomcat connector's max HTTP header size. Reverse proxies
+  # (e.g. Cloudflare) add headers and cookies that overflow Tomcat's 8 KB
+  # default, which makes heavier requests return 400 and the web GUI bounce
+  # back to the login screen in a redirect loop.
+  local _serverxml="$pkgdir/opt/dell/srvadmin/lib64/openmanage/apache-tomcat/conf/server.xml"
+  [ -f "$_serverxml" ] && sed -i \
+    '/port="1311"/ { /maxHttpHeaderSize/! s/<Connector /<Connector maxHttpHeaderSize="65536" / }' \
+    "$_serverxml"
 
   install -Dm644 "$srcdir/pam-omauth" "$pkgdir/etc/pam.d/omauth"
   install -Dm644 "$srcdir/dell-openmanage-web.service" \

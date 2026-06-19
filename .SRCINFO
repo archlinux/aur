@@ -1,6 +1,6 @@
 pkgbase = omsa8
 	pkgver = 8.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dell.com/support/kbdoc/en-us/000177080/dell-emc-systems-management-openmanage-server-administrator
 	arch = x86_64
 	license = custom:Dell
