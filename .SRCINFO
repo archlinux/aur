@@ -1,7 +1,7 @@
 pkgbase = dusklight
 	pkgdesc = Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements.
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TwilitRealm/dusklight
 	arch = x86_64
 	license = CC0-1.0

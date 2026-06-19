@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=dusklight
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
 url="https://github.com/TwilitRealm/dusklight"
@@ -23,6 +23,8 @@ prepare() {
 	git submodule init
 	git config submodule.extern/aurora.url "$srcdir/aurora"
 	git -c protocol.file.allow=always submodule update
+	# Fix compile for now
+	sed -i -e '1i#include <cstring>\' extern/aurora/lib/card/CardGciFolder.cpp
 }
 
 build() {
@@ -36,7 +38,9 @@ build() {
 	-DCMAKE_CXX_FLAGS="${CXXFLAGS} -flto=thin -DNDEBUG" \
 	-DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS} -fuse-ld=lld" \
 	-DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS} -fuse-ld=lld" \
-	-DDUSK_ENABLE_UPDATE_CHECKER=OFF
+	-DDUSK_ENABLE_UPDATE_CHECKER=OFF \
+	-DDUSK_PACKAGE_INSTALL=OFF \
+	-DDUSK_VERSION_OVERRIDE="v${pkgver}"
 
 	cmake --build build
 }
@@ -55,7 +59,6 @@ package() {
 	install -Dm644 ${pkgname}/platforms/freedesktop/dev.twilitrealm.dusk.desktop "${pkgdir}/usr/share/applications/dev.twilitrealm.dusk.desktop"
 	#install -Dm644 ${pkgname}/res/icon.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/dev.twilitrealm.dusk.png"
 	install -Dm644 ${pkgname}/res/icon.png "${pkgdir}/usr/share/pixmaps/dev.twilitrealm.dusk.png"
-	sed -i 's/Icon=dusklight/Icon=dev.twilitrealm.dusk/g' "${pkgdir}/usr/share/applications/dev.twilitrealm.dusk.desktop"
 
 	patchelf --set-rpath "/usr/lib/${pkgname}" "${pkgdir}/usr/lib/${pkgname}/${pkgname}" #needed for rmlui & freeverb :)
 }
