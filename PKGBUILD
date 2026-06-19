@@ -4,7 +4,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-globalmenu
-pkgver=151.0.2
+pkgver=152.0.1
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser"
 url="https://www.mozilla.org/firefox/"
@@ -78,34 +78,31 @@ options=(
   !lto
   !makeflags
 )
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/95a1152b7bba4db2ecffda17b11e73832da88380
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/1273290ba8b395e7f6e2bc81f182c137ed3922dc
 source=(
   https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
   $commit/firefox-symbolic.svg
   $commit/firefox.desktop
   $commit/org.mozilla.firefox.metainfo.xml
   $commit/0001-Install-under-remoting-name.patch
-  $commit/0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
   # https://blog.mozilla.org/security/2025/04/01/updated-gpg-key-for-signing-firefox-releases-2/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('63c4267799f2618dd7ac5997d0306bbcf2a5306caaca0056795bc6c61d00f8c8'
+sha256sums=('bff037bd04f0df25a330daa7133bea6eee5a02b7ce39da30581580271502f15e'
             'SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             '2a51d57d98fbda86f094bc991e1ad4dd6e8a9d32fd0836b1183bf70ec4b68915'
             '23f557fa7989adcae03cc9458d94716981dbcf0e9d6d52a289a2426e50b4b785'
-            'f0118f1b092e471fe3c81c1e8b49a76a37f72f3263d00a18e939dcde80c90dac'
-            'c7d6572fe1ac76f6adbfb10102f284fd55690396ac0a275a5cfea9a2efa22b58')
-b2sums=('4b5fd2683a2b3aaf85fdf419cef5e4fab3660d623511bc0b3b2f463c04aae075e906309965730df1cd564778fd2d8e9b1262147016b4cd02b922d6952fbe9b03'
+            '075ecdf42fa429d6c4b273c52d406f4335484c31b38f76fe3cc2e33ead7750cc')
+b2sums=('e1ebcc491e47039fc3505972c1fc23bee3b642d48b2b7e6689f17c5542503d905be235d79d98629ca614f738920a9bc3e8af8f47bd63bb6107e84c33ceecc331'
         'SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         '63c62c85ee70e22b02e9ea34e69f04f50403b7634b99fb0e996a83c963916dc4224041a0b265e54f6c224bd1777ddfdeb255037e3e30fec288695f3050278b05'
         '1a7fc030b1051df00df1b2f5b247b8c658de6cdfba0788041c830da3aaaa6ac974ab684e05feb80672aa2d2c22294cacfa93a71dc664b3e60becdd65e879fcee'
-        'c1cbb2de5011ed88e77c22c6abbc944ac2bd0f6c95bddb75f668f40566e6cad8d0090e65a5ff498055612a359f82484b41202f74e1312236e17d099e71bbc952'
-        '0420be311ae633c05d3a110b9fe5a8da288530d918ec9435c1a54d8d13bbbd06f5ee90977a9ee71d39e68bc26deb20264e712816e1dc5d7374b64a920e51b353')
+        'b9fb91bb2d9513aa4dd7d9492738c873871fa9f0866a63a4897f08194bde05e98c8cdb278aef6635dd54982b97ce6e951b5d9f8e71b91a2a83b2f8093c57ba04')
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -118,10 +115,6 @@ prepare() {
 
   # Make different channels installable in parallel
   patch -Np1 -i ../0001-Install-under-remoting-name.patch
-
-  # Fix build with glibc 2.43
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
-  patch -Np1 -i ../0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
 
   # Appmenu patches
   patch -Np1 -i ../unity-menubar.patch
