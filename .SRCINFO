@@ -1,6 +1,6 @@
 pkgbase = comchan-bin
 	pkgdesc = A blazingly fast minimal serial monitor with plotter TUI and more
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/Vaishnav-Sabari-Girish/ComChan
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = comchan-bin
 	depends = dbus
 	provides = comchan
 	conflicts = comchan
-	source_x86_64 = comchan-bin-0.11.0-x86_64.tar.xz::https://github.com/Vaishnav-Sabari-Girish/ComChan/releases/download/v0.11.0/comchan-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = ed28393af1883c8bcf32a9a67ea96e7e6bb7b581d75549e75136eb9fcfec61eb
-	source_aarch64 = comchan-bin-0.11.0-aarch64.tar.xz::https://github.com/Vaishnav-Sabari-Girish/ComChan/releases/download/v0.11.0/comchan-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 9740f5aacabcb98893cdd9bd8d88439893213df642b34d14dd2cae401b9642d4
+	source_x86_64 = comchan-bin-0.12.0-x86_64.tar.xz::https://github.com/Vaishnav-Sabari-Girish/ComChan/releases/download/v0.12.0/comchan-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = d61f1f027a2d8c37029c3d11a81dc4fafbc43759a077b663229c7aad096fd77b
+	source_aarch64 = comchan-bin-0.12.0-aarch64.tar.xz::https://github.com/Vaishnav-Sabari-Girish/ComChan/releases/download/v0.12.0/comchan-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 283010a4645a99daa7eea9b3cef343dd534477a568bdcb5c89e37fce62944fb1
 
 pkgname = comchan-bin
