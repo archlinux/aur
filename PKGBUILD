@@ -3,7 +3,7 @@ pkgname=ifcopenshell-stable
 _pkgver=0.8.5
 pkgver=${_pkgver//-/}
 _vername=bonsai
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
 arch=('x86_64' 'i686')
 url="https://ifcopenshell.org/"
@@ -23,6 +23,7 @@ depends=(
   'opencascade'
   'python'
   'python-jinja'
+  'python-lark-parser'
   'python-numpy'
   'python-platformdirs'
   'python-pytest'
