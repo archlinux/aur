@@ -6,8 +6,8 @@
 
 pkgname=trowser-qt5
 pkgver=089fb1d
-pkgrel=1
-pkgdesc="A text-based browser with Qt5 interface (C++ version)"
+pkgrel=2
+pkgdesc="Browser for large line-oriented text files with color highlighting and flexible search"
 arch=('x86_64')
 url="https://github.com/tomzox/trowser"
 license=('GPL3')
