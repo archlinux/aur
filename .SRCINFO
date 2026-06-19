@@ -1,0 +1,14 @@
+pkgbase = trowser-qt5
+	pkgdesc = A text-based browser with Qt5 interface (C++ version)
+	pkgver = 089fb1d
+	pkgrel = 1
+	url = https://github.com/tomzox/trowser
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	provides = trowser
+	conflicts = trowser
+	source = trowser-qt5-089fb1d.tar.gz::https://github.com/tomzox/trowser/archive/089fb1d0d22708f418952b7a1511e0018d8d8272.tar.gz
+	sha256sums = b2659278d8dfcac0425e839883b21b3bfdde527e3d47a29ad466d1938df40d8a
+
+pkgname = trowser-qt5
