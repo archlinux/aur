@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Cliprithm
+Comment=Smart video silence remover and clip editor
+Exec=cliprithm
+Icon=cliprithm
+Categories=AudioVideo;AudioVideoEditing;Video;
+Terminal=false
+StartupWMClass=cliprithm

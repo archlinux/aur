@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This script is a wrapper for Cliprithm installed via AUR.
+# It configures distribution channel and update strategy variables.
+# The app itself does not auto-update or run update commands;
+# these variables are only used to show manual update instructions in the UI.
+set -euo pipefail
+export CLIPRITHM_DISTRIBUTION_CHANNEL=aur
+export CLIPRITHM_UPDATE_STRATEGY=store-managed
+export CLIPRITHM_PACKAGE_NAME=cliprithm
+export CLIPRITHM_STORE_NAME=AUR
+export CLIPRITHM_STORE_URL=https://aur.archlinux.org/packages/cliprithm
+export CLIPRITHM_STORE_INSTRUCTIONS='yay -Syu cliprithm'
+export CLIPRITHM_VERSION_SOURCE_TYPE=aur-rpc
+export CLIPRITHM_VERSION_SOURCE_URL=https://aur.archlinux.org/rpc/v5/info/cliprithm
+exec /usr/lib/cliprithm/cliprithm "$@"
