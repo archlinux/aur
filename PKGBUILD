@@ -1,7 +1,7 @@
 # Maintainer : Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=8.1.1
+pkgver=8.1.2
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
@@ -67,12 +67,11 @@ depends=(
 options=(!strip !buildflags staticlibs !debug)
 makedepends=('mingw-w64-amf-headers' 'mingw-w64-avisynthplus' 'mingw-w64-frei0r-plugins' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-vulkan-headers' 'git' 'nasm')
 # 'mingw-w64-opencl-headers'
-_tag=150ba6ddfabb5c433bb2fb3ee546d2a96e59066d
 source=(
-  git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
+  git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=n${pkgver}
   0001-Add-av_stream_get_first_dts-for-Chromium.patch
   configure.patch)
-b2sums=('f0725f1156a5fa34fb5ee617c0c02dd3615c91ea1fd6f94c7d622106ecaedeee0ce74d68b9965ceb6aa70ee1c539b409bc2102c3cf2309a85340af63d2a3e03e'
+b2sums=('a2b77f48a12486d07965ffa2f4ff27e04e552b7c8d2dec4a8bf847088d93a5858982636836a13ade2765c8c976ded8908633a8c2f4142e4bbd4ed430f8cc91ce'
         'e5f7b79f7731be9ee5a7280a9221fb531ac5a2d9820fc5870b68b0eabea667dfbe8f39f41c1e1763a4c84982896afaa54c81ff57847d203b70afafd726689e5d'
         '7171cf5055c4356f9aeb42a5bb550b3380cad20fff8dc4e9114d4fbb17e95bfe40c1057c3b7188641a1d7b9d026105e3eb0175789d7af30c5999793dfddf97fb')
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
@@ -89,12 +88,6 @@ prepare() {
 
   # Add library path for glslang static libs
   sed -i "${srcdir}"/ffmpeg/configure -e 's|-lglslang|-L${prefix}/static/lib -lglslang|'
-}
-
-pkgver() {
-  cd ffmpeg
-
-  git describe --tags | sed 's/^n//'
 }
 
 build() {
