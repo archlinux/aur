@@ -1,6 +1,6 @@
 pkgbase = bigkis-bin
 	pkgdesc = Declarative package bundle manager for Arch Linux
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://codeberg.org/gurg/bigkis
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = bigkis-bin
 	conflicts = bigkis
 	options = !strip
 	options = !debug
-	source = bigkis-linux-amd64::https://codeberg.org/gurg/bigkis/releases/download/v0.7.2/bigkis-linux-amd64
-	source = upstream-LICENSE::https://codeberg.org/gurg/bigkis/raw/tag/v0.7.2/LICENSE
-	sha256sums = 114ec78829c5446c0f46faf1ca755feb7b29f5a5b7dd49c6a8a76e1566cc1d82
+	source = bigkis-linux-amd64::https://codeberg.org/gurg/bigkis/releases/download/v0.7.3/bigkis-linux-amd64
+	source = upstream-LICENSE::https://codeberg.org/gurg/bigkis/raw/tag/v0.7.3/LICENSE
+	sha256sums = 61b23d02bb1011806b4354734b4888f4f186919b2e046207a6a7b82dfc0c56d0
 	sha256sums = 9be548f8ac17e571d7a82ab7931d4c761d75855cba77f2f58d50018e6faf1f1b
 
 pkgname = bigkis-bin
