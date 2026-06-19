@@ -5,7 +5,7 @@
 
 _pkgname="debhelper"
 pkgname="$_pkgname"
-pkgver=13.31
+pkgver=14.1
 pkgrel=1
 pkgdesc="Programs to automate common tasks in debian/rules when building Debian packages"
 url="https://salsa.debian.org/debian/debhelper"
@@ -31,7 +31,7 @@ source=(
   "$_pkgsrc_dh_strip_nd"::"git+https://salsa.debian.org/reproducible-builds/strip-nondeterminism.git"
 )
 sha256sums=(
-  'abfed982f9ffc4ae1c70a29b2fc341d11bc45979ee5145385302dba4ec6ecdf0'
+  'abb939d572894fbd20c26ae2e6a172698abe20178b751f568facd9a53387dbd8'
   'SKIP'
 )
 
