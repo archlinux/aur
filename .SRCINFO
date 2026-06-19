@@ -1,6 +1,6 @@
 pkgbase = youplaytx
 	pkgdesc = A full-screen, dual-pane YouTube audio player for the terminal
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://codeberg.org/ProfP303/youplaytx
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = youplaytx
 	depends = python-pyperclip
 	depends = python-platformdirs
 	depends = python-tomli-w
-	source = youplaytx-0.5.1.tar.gz::https://codeberg.org/ProfP303/youplaytx/archive/v0.5.1.tar.gz
-	sha256sums = bc877b1e1e5ac86403544cdcbe7773ad7f20325cf45832f3a0bc358b1d6bd73c
+	source = youplaytx-0.5.2.tar.gz::https://codeberg.org/ProfP303/youplaytx/archive/v0.5.2.tar.gz
+	sha256sums = 24d0b877fdde5e183102a3a65f3b9fe364aaf04ecf65c4a96fdd2079a05b1523
 
 pkgname = youplaytx

@@ -24,7 +24,7 @@ makedepends=(
     'python-setuptools-scm'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bc877b1e1e5ac86403544cdcbe7773ad7f20325cf45832f3a0bc358b1d6bd73c')
+sha256sums=('24d0b877fdde5e183102a3a65f3b9fe364aaf04ecf65c4a96fdd2079a05b1523')
 
 build() {
     cd "$srcdir/$pkgname"
