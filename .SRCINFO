@@ -1,7 +1,7 @@
 pkgbase = kwin-effects-better-blur-dx-git
 	pkgdesc = KWin Better Blur DX effect fork with window class force blur feature (Wayland)
-	pkgver = r552.089a158
-	pkgrel = 1
+	pkgver = r988.7a0d8b8
+	pkgrel = 2
 	url = https://github.com/xarblu/kwin-effects-better-blur-dx
 	install = kwin-effects-better-blur-dx-git.install
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = kwin-effects-better-blur-dx-git
 	depends = kcmutils
 	depends = libepoxy
 	depends = kwin
+	depends = vulkan-headers
 	provides = kwin-effects-better-blur-dx
 	conflicts = kwin-effects-better-blur-dx
 	conflicts = kwin-effects-forceblur
