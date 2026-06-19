@@ -1,6 +1,6 @@
 pkgbase = ytdlp-gui
 	pkgdesc = a GUI for yt-dlp written in Rust
-	pkgver = 3.4.0
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = https://github.com/BKSalman/ytdlp-gui
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ytdlp-gui
 	depends = ffmpeg
 	depends = yt-dlp
 	options = !lto
-	source = ytdlp-gui-3.4.0.tar.gz::https://github.com/BKSalman/ytdlp-gui/archive/refs/tags/v3.4.0.tar.gz
-	sha256sums = d446eec8c9765dcf38dff5a07f3dd0a94abd642a75dbdb8b4c4c7a9c0e3fbda6
+	source = ytdlp-gui-3.4.1.tar.gz::https://github.com/BKSalman/ytdlp-gui/archive/refs/tags/v3.4.1.tar.gz
+	sha256sums = 4f41897a9e19ea0800839b5888af81fddecbf49cf4fd75dbd15baca56829badb
 
 pkgname = ytdlp-gui
