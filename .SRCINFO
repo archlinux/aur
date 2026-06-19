@@ -1,6 +1,6 @@
 pkgbase = atlas
 	pkgdesc = ATLAS — Agentic Harness Standard. 10-30x fewer agent orientation tokens. Zero infrastructure.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Abbasi-Alain/atlas
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = atlas
 	optdepends = github-cli: for atlas auth/repo/mirror
 	optdepends = glab: for GitLab integration
 	optdepends = jq: for some adapter installers
-	source = atlas-0.2.0.tar.gz::https://github.com/Abbasi-Alain/atlas/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = aa56bb25aaece25ff7d6876a8371d2e833e108b73f0e7cf28fc860c3e1f7756e
+	source = atlas-0.3.0.tar.gz::https://github.com/Abbasi-Alain/atlas/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = dfa8dc1d48dee4d1a0f345ee7986e4d2bcc307d0094fbb8bf1eb15c7c4685ee2
 
 pkgname = atlas
