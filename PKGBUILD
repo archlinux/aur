@@ -1,7 +1,7 @@
 # Maintainer: REPLACE Before Publishing <your.name at example dot com>
 
 pkgname=ratune-bin
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Terminal music player for Subsonic-compatible servers (prebuilt binary)'
 url='https://github.com/acmagn/ratune'
@@ -25,9 +25,10 @@ source=(
 )
 
 sha256sums=(
-  '109f6bcc40bb56c48c6c54b6f84f851b51aa0e2a2bdb779806da9f860d93acb5'
+  '158da5c8e0726cf6e34459f85f523f3a2d2a2d19b8456a490dfa5a19017ced92'
   '553ae423a213082d16544f2ba650ac94275097dcce94609054e879a31a526950'
 )
+
 
 
 
