@@ -1,7 +1,7 @@
 # Maintainer: InTeaReable <leyn.the.cat@gmail.com>
 
 pkgname=nyado-git
-pkgver=0.2.5.r0.gd0e78b0
+pkgver=0.0.0.r0.g0000000
 pkgrel=1
 pkgdesc="A Rust todo-list manager with TUI (git version)"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/nyado"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --abbrev=0 | sed 's/^v//'
 }
 
 prepare() {

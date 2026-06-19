@@ -1,6 +1,6 @@
 pkgbase = nyado-git
 	pkgdesc = A Rust todo-list manager with TUI (git version)
-	pkgver = 0.2.5.r0.gd0e78b0
+	pkgver = 0.0.0.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/LeynTheCat/nyado
 	arch = x86_64
