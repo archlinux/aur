@@ -23,6 +23,4 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" prefix="/usr" install
-
-  patch -d "$pkgdir" -p1 < "$srcdir/$pkgname.patch"
 }
