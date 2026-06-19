@@ -1,7 +1,7 @@
 pkgbase = trowser-qt5
 	pkgdesc = Browser for large line-oriented text files with color highlighting and flexible search
 	pkgver = 089fb1d
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tomzox/trowser
 	arch = x86_64
 	license = GPL3

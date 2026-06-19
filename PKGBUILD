@@ -6,7 +6,7 @@
 
 pkgname=trowser-qt5
 pkgver=089fb1d
-pkgrel=2
+pkgrel=3
 pkgdesc="Browser for large line-oriented text files with color highlighting and flexible search"
 arch=('x86_64')
 url="https://github.com/tomzox/trowser"
@@ -28,7 +28,7 @@ package() {
   install -Dm755 "$srcdir/trowser-${_commit}/src_qt/build/trowser" \
     "$pkgdir/usr/bin/trowser"
   install -Dm644 "$srcdir/trowser-${_commit}/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    "$pkgdir/usr/share/licenses/trowser/LICENSE"
   install -Dm644 "$srcdir/trowser-${_commit}/doc/trowser.1" \
     "$pkgdir/usr/share/man/man1/trowser.1"
 }
