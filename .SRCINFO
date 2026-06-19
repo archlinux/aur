@@ -1,5 +1,5 @@
 pkgbase = harbor-stremio-bin
-	pkgdesc = A Stremio client built for adventure (binary release)
+	pkgdesc = A Stremio client built for adventure (unofficial binary release)
 	pkgver = 0.9.12
 	pkgrel = 1
 	url = https://github.com/harborstremio/harbor
