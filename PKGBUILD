@@ -1,6 +1,6 @@
 # Maintainer: 12tae12 <https://aur.archlinux.org/account/12tae12>
 pkgname=cadoodle-bin
-pkgver=1.5.5
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Simple drag-and-drop CAD tool, local TinkerCAD alternative (AppImage)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('cadoodle')
 
 source=("cadoodle-${pkgver}.AppImage::https://github.com/CommonWealthRobotics/CaDoodle/releases/download/${pkgver}/CaDoodle-Linux-x86_64.AppImage"
         "cadoodle.png::https://github.com/CommonWealthRobotics/CaDoodle/blob/main/SourceIcon.png?raw=true")
-sha256sums=('SKIP'
+sha256sums=('30fb769099a452e8316a6c911b79b4d3e49f2cc82633b1ed6af02b3635518e16'
             'd88745a3b7269d255109c46ba1b5146ebc4c38b8e20ba5afa15400da4db46e9f')
 
 package() {
