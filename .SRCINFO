@@ -1,6 +1,6 @@
 pkgbase = linuxtoys-bin
 	pkgdesc = A collection of tools for Linux in a user-friendly way.
-	pkgver = 6.2.13
+	pkgver = 6.3
 	pkgrel = 1
 	url = https://github.com/psygreg/linuxtoys
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = linuxtoys-bin
 	depends = python-requests
 	depends = gtk3
 	depends = vte3
-	provides = linuxtoys=6.2.13
-	source = https://github.com/psygreg/linuxtoys/releases/download/6.2.13/linuxtoys-6.2.13.tar.xz
-	sha256sums = 1119b74cc302fa764bb760dae2833cd0951dbfd222e16e041975d5fbc14bc78a
+	provides = linuxtoys=6.3
+	source = https://github.com/psygreg/linuxtoys/releases/download/6.3/linuxtoys-6.3.tar.xz
+	sha256sums = c36dce3cf1a9f5c3ff9d432fe89de2cca035f9358b903d6afb121785afda6356
 pkgname = linuxtoys-bin
