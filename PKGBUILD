@@ -2,7 +2,7 @@
 
 pkgname=miasma
 pkgdesc='Trap AI web scrapers in an endless poison pit.'
-pkgver=0.2.9
+pkgver=0.3.0
 pkgrel=1
 arch=(x86_64)
 license=('GPL-3.0-or-later')
@@ -13,12 +13,14 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   miasma.service
   sysusers-file
-  tmpfiles-file)
-sha256sums=('d0a568b0490d5e238f605452d29db4c582ce477d4a1e0c087b2e58d68f7b0602'
-            'b532e6e9e455bd5898a8076d0bf89fd5cc907d382690dd1b57d3a9c5cba4c18a'
+  tmpfiles-file
+  config.yaml)
+sha256sums=('e45695ee6bc4675673bd9aa94923b18908f425b22ea0da59a4d070932253032f'
+            'dcd69fb16f7e1fb223ed921b42b107e489795249723365585dd7d00ae7190a78'
             '211d658368c51a2dce6ad5f117d7159fe775516e392b7209df1304154c0a36d9'
-            '42a3df35a73eb4c198367a0885ef86ea3b6b9f4dc824d74b70d77f04b5ea245b')
-backup=('usr/lib/systemd/system/miasma.service')
+            '42a3df35a73eb4c198367a0885ef86ea3b6b9f4dc824d74b70d77f04b5ea245b'
+            '107ab9174502e07f588338837b58daae088e7e1aeb9970fa5a07d3d19e2d5ac7')
+backup=('usr/lib/systemd/system/miasma.service' 'etc/miasma.yaml')
 options=(!lto)
 
 prepare() {
@@ -46,5 +48,6 @@ package() {
   install -Dm644 "$srcdir/miasma.service" "$pkgdir/usr/lib/systemd/system/miasma.service"
   install -Dm644 "$srcdir/sysusers-file" "$pkgdir/usr/lib/sysusers.d/miasma.conf"
   install -Dm644 "$srcdir/tmpfiles-file" "$pkgdir/usr/lib/tmpfiles.d/miasma.conf"
+  install -Dm644 "$srcdir/config.yaml" "$pkgdir/etc/miasma.yaml"
 }
 

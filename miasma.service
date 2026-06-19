@@ -3,9 +3,7 @@ Description=Miasma headless server
 
 [Service]
 RuntimeDirectory=miasma
-ExecStart=/usr/bin/miasma --unix-socket /run/miasma/miasma.sock --link-prefix bots
-# Uncomment and change the credentials if you want to have metrics available
-# ExecStart=/usr/bin/miasma --unix-socket /run/miasma/miasma.sock --link-prefix bots --metrics-db-path /var/lib/miasma/logs.db --metrics-credentials changeme:changeme
+ExecStart=/usr/bin/miasma -f /etc/miasma.yaml
 ExecStop=/usr/bin/kill -INT $MAINPID
 User=miasma
 

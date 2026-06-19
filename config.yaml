@@ -1,0 +1,11 @@
+server:
+  unix_socket: /run/miasma/miasma.sock
+  # host: localhost
+  # port: 9999
+force_gzip: true
+link_prefix: /bots
+# metrics:
+#   db_path: /var/lib/miasma/logs.db
+#   username: changeme
+#   password: changeme
+#   endpoint: /metrics
