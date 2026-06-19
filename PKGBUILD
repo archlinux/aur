@@ -5,7 +5,7 @@
 
 pkgname=sonic-win
 pkgver=6.6.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='An easy to use, but flexible, X Window Manager'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-win'

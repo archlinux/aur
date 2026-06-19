@@ -1,7 +1,7 @@
 pkgbase = sonic-win
 	pkgdesc = An easy to use, but flexible, X Window Manager
 	pkgver = 6.6.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Sonic-DE/sonic-win
 	install = sonic-win.install
 	arch = x86_64
@@ -61,7 +61,6 @@ pkgbase = sonic-win
 	depends = sonic-keybind-daemon
 	depends = sonic-screenlocker
 	depends = systemd-libs
-	depends = wayland
 	depends = xcb-util-cursor
 	depends = xcb-util-keysyms
 	depends = xcb-util-wm
