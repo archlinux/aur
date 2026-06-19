@@ -1,0 +1,4 @@
+[weaviate-bin]
+source = "git"
+git = "https://github.com/weaviate/weaviate.git"
+prefix = "v"
