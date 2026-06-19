@@ -1,0 +1,17 @@
+post_install() {
+    echo ""
+    echo "==> To enable automatic backup push to GitHub, run as your user:"
+    echo "      systemctl --user enable --now cachyos-backup-push.timer"
+    echo "      systemctl --user enable --now cachyos-backup-extras.timer"
+    echo ""
+    echo "==> Then initialize your backup config:"
+    echo "      cachyos-backup --init"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> If you haven't already, enable the push timer:"
+    echo "      systemctl --user enable --now cachyos-backup-push.timer"
+    echo ""
+}

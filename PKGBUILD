@@ -1,7 +1,7 @@
 # Maintainer: Milan <your-email@example.com>
 pkgname=arch-backup-tool-git
 _pkgname=arch-backup
-pkgver=r16.0976165
+pkgver=r17.530e505
 pkgrel=1
 pkgdesc="PyQt6 GUI and CLI package baseline/dotfile tracking and recovery tool for Arch Linux & CachyOS"
 arch=('any')
@@ -15,6 +15,7 @@ optdepends=(
 )
 provides=('arch-backup-tool' 'cachyos-backup' 'cachyos-recovery')
 conflicts=('arch-backup-tool' 'cachyos-backup' 'cachyos-recovery')
+install=arch-backup-tool-git.install
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
