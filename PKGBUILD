@@ -3,7 +3,7 @@
 
 pkgname=netradiant-custom
 pkgver=20260114
-pkgrel=3
+pkgrel=4
 pkgdesc="The open-source, cross-platform level editor for id Tech based games (NetRadiant fork)"
 arch=('x86_64')
 url="https://garux.github.io/NRC/"
@@ -14,17 +14,15 @@ optdepends=('xorg-xwayland: required to use the application on a Wayland session
             'subversion: optional makedepend to fetch some gamepacks when using alternative DOWNLOAD_GAMEPACKS values')
 provides=('h2data' 'mbspc' 'q2map' 'q3map2' 'qdata3')
 source=("git+https://github.com/Garux/${pkgname}.git#tag=${pkgver}"
-        "${pkgname}.desktop"
-        "0001-Fix-build-with-GCC-16.patch")
+        "${pkgname}.desktop")
 sha256sums=('ed49f6ca545be3859f0ea8ab6d7b45fb2d31bf5051f09f859f5c3aad333513d1'
-            'c9f21fbacdd2024e417234e986790fca67daeb391a91b590abb68b440e0df648'
-            '086eb924489c2ec5fd7f3e9995e9a7ef4e76ddab6e634d454b533f7738031c23')
+            'c9f21fbacdd2024e417234e986790fca67daeb391a91b590abb68b440e0df648')
 
 prepare() {
 	cd "${srcdir}/${pkgname}/"
 
 	# Fix build with GCC 16, see https://github.com/Garux/netradiant-custom/issues/298
-	patch -p1 < "${srcdir}/0001-Fix-build-with-GCC-16.patch"
+	git cherry-pick --no-commit cd048695fb5118b885f3992f521d1c5ff21d7d24
 }
 
 build () {
