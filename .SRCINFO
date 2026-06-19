@@ -1,6 +1,6 @@
 pkgbase = litedbstudio
 	pkgdesc = Cross-platform GUI tool for LiteDB v5
-pkgver = 1.0.1
+pkgver = 1.0.2
 pkgrel = 1
 	url = https://github.com/AscendLiu/LiteDBStudio
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgrel = 1
 	depends = hicolor-icon-theme
 	options = !lto
 	options = !debug
-	source = litedbstudio::git+https://github.com/AscendLiu/LiteDBStudio.git#tag=v1.0.1
+	source = litedbstudio::git+https://github.com/AscendLiu/LiteDBStudio.git#tag=v1.0.2
 	b2sums = SKIP
 
 pkgname = litedbstudio

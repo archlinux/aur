@@ -1,7 +1,7 @@
 # Maintainer: Ascend Liu <ascendliu@qq.com>
 
 pkgname=litedbstudio
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Cross-platform GUI tool for LiteDB v5"
 arch=('x86_64')
