@@ -3,7 +3,7 @@
 
 _pkgname=nancy
 pkgname=${_pkgname}-bin
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='A tool to check for vulnerabilities in your Golang dependencies'
 arch=(x86_64 i686)
@@ -13,8 +13,8 @@ provides=("${_pkgname}")
 _src="${url}/releases/download/v${pkgver}/${_pkgname}"
 source_x86_64=("${_src}-v${pkgver}-linux-amd64.tar.gz")
 source_i686=("${_src}-v${pkgver}-linux-386.tar.gz")
-sha512sums_x86_64=('7abd7df00a27283b3fdf6acf515b9f56f4ee9e02045f6201d288259adf0ebfcd3bd7dba67d675b6c5b2976c552b5e5f3cb4aa0b512fd119ff61babb00b7b11d1')
-sha512sums_i686=('ae4425b036750e657e90bec7408d2685067dd1da5e40686ef2fb7135586c54469484255569d61f2a6bb89cdfb315dd7112756825bd6ab7a499a71864ca9a75b4')
+sha512sums_x86_64=('e083d2ce9ae6a32e12ed5ea01c6841723876c8f4a90e267935ba9d77006278c300bf99a6b20ffef3c4696ac7843094292ccadf8e0ae468027a9ff4431b8a0b30')
+sha512sums_i686=('7e981b0d78aeea4103dddda7c96274b26c0e988170f1dde8781294fcbc338945763cbf2aeec2bcbff47a69bcb5d72476a049ed1014925d887dedb66eef6555ae')
 
 package() {
   install -Dm755 "$_pkgname" -t "${pkgdir}/usr/bin"
