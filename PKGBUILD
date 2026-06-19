@@ -3,12 +3,25 @@
 
 _arch=x64v2
 _pkgbase=linux-xanmod-edge
-_major=7.0
+_major=7.1
 _minor=1
 _branch=7.x
 _xanmodrel=1
 _xanmodrev=
 pkgrel=1
+
+check_psabi() {
+  awk 'BEGIN {
+      while (!/flags/) if (getline < "/proc/cpuinfo" != 1) exit 1
+      if (/lm/&&/cmov/&&/cx8/&&/fpu/&&/fxsr/&&/mmx/&&/syscall/&&/sse2/) level = 1
+      if (level == 1 && /cx16/&&/lahf/&&/popcnt/&&/sse4_1/&&/sse4_2/&&/ssse3/) level = 2
+      if (level == 2 && /avx/&&/avx2/&&/bmi1/&&/bmi2/&&/f16c/&&/fma/&&/abm/&&/movbe/&&/xsave/) level = 3
+      if (level == 3 && /avx512f/&&/avx512bw/&&/avx512cd/&&/avx512dq/&&/avx512vl/) level = 4
+      if (level > 0) { print "x64v" level }
+  }' 2>/dev/null||echo "x64v1"
+}
+
+psabi="$(check_psabi)"
 
 pkgbase=${_pkgbase}-linux-bin-${_arch}
 pkgver=${_major}.${_minor}
@@ -49,14 +62,16 @@ prepare() {
   bsdtar -xf ${_file_headers} data.tar.xz
   bsdtar -xf data.tar.xz
   rm -f data.tar.xz
+  
+  echo ${psabi}
 }
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('f58cb2113502b65c9651cd4b0c16cbe31176613046f848e6806fbfabea706b5e'
-            '9fb2a701d5dc34ceddbcb3f5c438dca0092c1d583e0ea807ae15da6b664f1b13')
+sha256sums=('bf817ea170929bfa399e291debe47e6cb94f66b9bde1ecbce1b7a2f3d8e5de6c'
+            '136a83fa18a05ec516821caaa20511e091e49ce215356012d5d2216be2f11114')
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches - Rolling Release (EDGE) - Prebuilt version - ${_arch}"
