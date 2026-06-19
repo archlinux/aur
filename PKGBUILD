@@ -2,7 +2,7 @@
 # Contributor: Klimenko Maxim Sergievich <klimenkomaximsergievich@gmail.com>
 
 pkgname=simple-stateful-firewall-git
-pkgver=0.0.36
+pkgver=0.0.37
 pkgrel=1
 pkgdesc="Simple Stateful Firewall. For personal computers or you can change this by yourself"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ provides=('simple-stateful-firewall-git')
 install="simplestatefulfirewall.install"
 
 package() {
-    echo "Fakeroot directory is ${pkgdir}/"
-    cd "simple-stateful-firewall-${pkgver}" || exit 1
-    make DESTDIR="${pkgdir}/" install
+	echo "Fakeroot directory is ${pkgdir}/"
+	cd "simple-stateful-firewall-${pkgver}" || exit 1
+	make DESTDIR="${pkgdir}/" install
 }
