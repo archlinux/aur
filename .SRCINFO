@@ -1,6 +1,6 @@
 pkgbase = arch-smart-update
 	pkgdesc = Not sure when to update Arch Linux or its derivative? This script will help you decide.
-	pkgver = 3.13.1
+	pkgver = 3.13.2
 	pkgrel = 1
 	url = https://github.com/motorrin/Arch_Smart_Update
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = arch-smart-update
 	optdepends = topgrade: for comprehensive system updates
 	optdepends = fakeroot: for running the background update checker without sudo
 	optdepends = libnotify: for desktop notifications in daemon mode
-	source = https://github.com/motorrin/Arch_Smart_Update/archive/refs/tags/v3.13.1.tar.gz
-	sha256sums = dd3bf4a339163832219bff4b4b77c81ad2228156bffea26389639484847ba4b4
+	source = https://github.com/motorrin/Arch_Smart_Update/archive/refs/tags/v3.13.2.tar.gz
+	sha256sums = e32dc161a288f4b7d0143ae73e99a183cab5f53fbcfd27fc861fa612384220e1
 
 pkgname = arch-smart-update

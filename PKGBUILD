@@ -1,6 +1,6 @@
 # Maintainer: motorrin
 pkgname=arch-smart-update
-pkgver=3.13.1
+pkgver=3.13.2
 pkgrel=1
 pkgdesc="Not sure when to update Arch Linux or its derivative? This script will help you decide."
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
     'libnotify: for desktop notifications in daemon mode'
 )
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dd3bf4a339163832219bff4b4b77c81ad2228156bffea26389639484847ba4b4')
+sha256sums=('e32dc161a288f4b7d0143ae73e99a183cab5f53fbcfd27fc861fa612384220e1')
 
 package() {
     cd "Arch_Smart_Update-${pkgver}"
