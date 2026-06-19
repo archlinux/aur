@@ -11,7 +11,7 @@
 
 pkgname=courier-mta
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig"
 arch=(i686 x86_64)
 license=('GPL2')
@@ -58,6 +58,7 @@ build() {
   cd "${srcdir}/courier-${pkgver}"
 
   LDFLAGS+=" -L/usr/lib/courier-authlib -lcourierauth"
+  CXXFLAGS+=" -std=gnu++17"
 
   ./configure --prefix=/usr \
     --sbindir=/usr/bin \
