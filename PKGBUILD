@@ -1,12 +1,14 @@
 # Maintainer: stef204 < base64 -d c3RlZjIwNEB5YW5kZXguY29tCg== >
 
-# NOTE: This package downloads from the master branch at pinned commit 089fb1d.
+# NOTE: This is the standalone Qt5-only package. For all three frontends
+# (Qt5, Python, Tcl) in a split package, see the 'trowser' AUR package.
+# This package downloads from the master branch at pinned commit 089fb1d.
 # Please verify the PKGBUILD and checksums before building, as is good
 # practice with all AUR packages.
 
 pkgname=trowser-qt5
 pkgver=089fb1d
-pkgrel=4
+pkgrel=5
 pkgdesc="Browser for large line-oriented text files with color highlighting and flexible search"
 arch=('x86_64')
 url="https://github.com/tomzox/trowser"
