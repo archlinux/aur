@@ -27,7 +27,7 @@ provides=('harbor-stremio' 'harbor')
 conflicts=('harbor-stremio' 'harbor' 'harbor-stremio-git')
 
 source=("https://github.com/AdityaHebballe/harbor-linux-builds/releases/download/v${pkgver}/Harbor_${pkgver}_amd64.deb")
-sha256sums=('SKIP')
+sha256sums=('3638ba06609335db2e0d5c0ac69a66b9f9ad714abeb9ee7c50ec734ab834f80e')
 
 package() {
   rm -rf "$srcdir/deb-extract"
