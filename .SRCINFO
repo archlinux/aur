@@ -1,6 +1,6 @@
 pkgbase = cassette
 	pkgdesc = GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems
-	pkgver = 0.2.2
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://altlinux.space/rirusha/Cassette
 	arch = aarch64
@@ -28,7 +28,7 @@ pkgbase = cassette
 	depends = webkitgtk-6.0
 	depends = xdg-desktop-portal-impl
 	options = !debug
-	source = cassette-0.2.2.tar.gz::https://altlinux.space/rirusha/Cassette/releases/download/v0.2.2/sources.tar.gz
-	sha512sums = 958ab86fcdc46d385835b1098c26dc7b3499f0cb50470ca557ad9a7221d6113d6305232462ad36bb72f9d027df17869ad1fab8a68f172d5ded0c795fdde47ccd
+	source = cassette-0.2.4.tar.zst::https://altlinux.space/rirusha/Cassette/releases/download/v0.2.4/Cassette-0.2.4.tar.zst
+	sha512sums = 43bb332150583d4369be7849d4e4980d78573846265cdc91aaeadcb46cfe32170dbfc8b317c12993ea9a589a8369e5db2e561b732470929f6faa7f7d22b31094
 
 pkgname = cassette

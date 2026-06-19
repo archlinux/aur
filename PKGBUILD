@@ -2,7 +2,7 @@
 # Co-maintainer: Nebulosa <nebulosa2007 at yandex dot ru>
 
 pkgname=cassette
-pkgver=0.2.2
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="GTK4/Adwaita application that allows you to use Yandex Music service on Linux operating systems"
 arch=(aarch64 i686 x86_64)
@@ -33,15 +33,17 @@ makedepends=(
   vala
 )
 options=(!debug)
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/sources.tar.gz")
-sha512sums=('958ab86fcdc46d385835b1098c26dc7b3499f0cb50470ca557ad9a7221d6113d6305232462ad36bb72f9d027df17869ad1fab8a68f172d5ded0c795fdde47ccd')
+source=("$pkgname-$pkgver.tar.zst::$url/releases/download/v$pkgver/${pkgname^}-$pkgver.tar.zst")
+sha512sums=('43bb332150583d4369be7849d4e4980d78573846265cdc91aaeadcb46cfe32170dbfc8b317c12993ea9a589a8369e5db2e561b732470929f6faa7f7d22b31094')
 
 build() {
+  cd "${pkgname^}-$pkgver"
   arch-meson build
   meson configure  build --no-pager
   meson compile -C build
 }
 
 package() {
+  cd "${pkgname^}-$pkgver"
   meson install -C build --destdir "$pkgdir"
 }
