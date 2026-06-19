@@ -1,7 +1,9 @@
 # Maintainer: zeroclaw-labs <bot@zeroclaw.dev>
 pkgname=zeroclawlabs
 _reponame=zeroclaw
-pkgver=0.8.0
+# >>> generated:pkgbuild-version by `cargo generate installers` - do not edit <<<
+pkgver=0.8.1
+# >>> end generated:pkgbuild-version <<<
 pkgrel=1
 pkgdesc="Zero overhead. Zero compromise. 100% Rust. The fastest, smallest AI assistant."
 arch=('x86_64' 'aarch64')
@@ -12,7 +14,7 @@ makedepends=('cargo' 'git' 'nodejs' 'npm')
 provides=('zeroclaw' 'zerocode')
 conflicts=('zeroclaw' 'zerocode')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zeroclaw-labs/zeroclaw/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('201e25ac0cbc757d2176291182f3a9e228109c4f92b28ca90122b4beeb1ca826')
+sha256sums=('309cac6640481e7067f5cef041b83b13b8cdd7ca6747a5bf4a461a6b0ea5246b')
 
 prepare() {
   cd "${_reponame}-${pkgver}"
@@ -30,7 +32,9 @@ build() {
   cd web && npm ci && cd ..
   cargo web build
 
-  cargo build --frozen --profile dist --features channel-matrix,channel-lark
+  # >>> generated:pkgbuild-build by `cargo generate installers` - do not edit <<<
+  cargo build --frozen --profile dist --features acp-bridge,agent-runtime,channel-acp-server,channel-amqp,channel-bluesky,channel-clawdtalk,channel-dingtalk,channel-discord,channel-email,channel-imessage,channel-irc,channel-lark,channel-linq,channel-mattermost,channel-mochat,channel-mqtt,channel-nextcloud,channel-notion,channel-qq,channel-reddit,channel-signal,channel-slack,channel-telegram,channel-twitch,channel-twitter,channel-voice-call,channel-wati,channel-webhook,channel-wecom,channel-wecom-ws,channel-whatsapp-cloud,gateway,observability-prometheus,schema-export
+# >>> end generated:pkgbuild-build <<<
   cargo build --frozen --profile dist -p zerocode
 }
 
