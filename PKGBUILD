@@ -1,6 +1,6 @@
 # Maintainer: ProfP303 prof.p@gmx.net
 pkgname=youplaytx
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A full-screen, dual-pane YouTube audio player for the terminal"
 arch=('any')
