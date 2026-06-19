@@ -2,7 +2,7 @@
 
 _pypiname="array-api-extra"
 pkgname="python-${_pypiname}"
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Extra array functions built on top of the array API standard"
 arch=(
@@ -15,7 +15,7 @@ license=(
 )
 depends=(
   'python>=3.11'
-  'python-array-api-compat>=1.13.0'
+  'python-array-api-compat>=1.14.0'
 )
 # checkdepends=(
 #   'python-pytest'
@@ -39,7 +39,7 @@ _pkgsrc="${_url##*/}-${pkgver}"
 source=(
   "python-${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('b8cca701d504a9d51e8667c6a2c122940a0be2e622311b29d56820000035ff8a')
+sha256sums=('3739ebf297815722d491d120104a8678d0181358276665f3e5acf9f9cc4b24b4')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
