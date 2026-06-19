@@ -20,5 +20,5 @@ pkgver() {
 
 package() {
     install -dm755 "${pkgdir}/usr/share/fonts/fast-font"
-    cp -a "${srcdir}/Fast-Font/"*.ttf "${pkgdir}/usr/share/fonts/fast-font/"
+     cp -a "${srcdir}/Fast-Font/fast-fonts/"*.ttf "${pkgdir}/usr/share/fonts/fast-font/"
 }
