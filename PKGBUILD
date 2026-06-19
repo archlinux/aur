@@ -1,7 +1,7 @@
 # Maintainer: darkmagicsauce <caitlyn dot williams at proton dot me>
 
 pkgname=yaabsa-bin
-pkgver=1.4.5
+pkgver=1.4.6
 pkgrel=1
 pkgdesc="Unofficial feature rich, responsive, modern client for Audiobookshelf"
 arch=('x86_64')
@@ -29,5 +29,5 @@ package() {
     install -m644 "$srcdir/yaabsa.desktop" "$pkgdir/usr/share/applications/"
 }
 
-sha256sums=('3a332f85742ec286387462d210275c188d015e3795a03647dbb8358eb3e41211'
+sha256sums=('4f671cad78aa5e6f97081005dad6216a8accddd5dec1ab0b2ff9f904445543fd'
             '1aabc114d8ccc4d4e02e2491828f7c94f304890666724d39337c4614ac0a3b92')
