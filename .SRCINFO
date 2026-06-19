@@ -1,6 +1,6 @@
 pkgbase = pi-ext-cursor-sdk
 	pkgdesc = pi provider extension backed by Cursor SDK local agents
-	pkgver = 0.1.44
+	pkgver = 0.1.45
 	pkgrel = 1
 	url = https://github.com/fitchmultz/pi-cursor-sdk
 	install = pi-ext.install
@@ -15,7 +15,7 @@ pkgbase = pi-ext-cursor-sdk
 	optdepends = pi-coding-agent-git
 	options = !strip
 	options = !debug
-	source = pi-ext-cursor-sdk-0.1.44.tar.gz::https://github.com/fitchmultz/pi-cursor-sdk/archive/refs/tags/v0.1.44.tar.gz
-	sha256sums = df0e8f32c427759792f0e6a67a05369b3fff5cf9611d7867a6d4d03823c33ac5
+	source = pi-ext-cursor-sdk-0.1.45.tar.gz::https://github.com/fitchmultz/pi-cursor-sdk/archive/refs/tags/v0.1.45.tar.gz
+	sha256sums = 8287d69ae50d0bf1ca04fe00842fe20e40270ea9cef4248fc6ce150e216b7462
 
 pkgname = pi-ext-cursor-sdk
