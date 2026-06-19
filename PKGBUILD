@@ -3,7 +3,7 @@ _pkgname=@appium/universal-xml-plugin
 _scope="${_pkgname%%/*}"
 _name="${_pkgname##*/}"
 pkgname="nodejs-${_scope//@/}-$_name"
-pkgver=2.1.5
+pkgver=2.1.6
 pkgrel=1
 pkgdesc="Appium plugin for making XML source and XPath queries the same across iOS and Android"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/$_name-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('7c00d9a7aa30f80921418e55483dcfbfe56d41a6c84919a79e4c9fc0ddaa7932')
+sha256sums=('b4fa5771d4b5cf4a5680361e15098a72ed1f2c4e9d942f2cc15b8d07f468194c')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/$pkgname-$pkgver.tgz"
