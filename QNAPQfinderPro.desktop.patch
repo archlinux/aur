@@ -1,5 +1,5 @@
---- QNAPQfinderPro.desktop	2024-12-25 22:27:36.000000000 -0500
-+++ QNAPQfinderPro.desktop	2025-02-21 10:40:00.000000000 -0500
+--- usr.old/share/applications/QNAPQfinderPro.desktop	2026-05-21 00:43:00.000000000 -0400
++++ usr.new/share/applications/QNAPQfinderPro.desktop	2026-06-19 13:53:27.397981567 -0400
 @@ -1,6 +1,6 @@
  [Desktop Entry]
  Version=1.0
