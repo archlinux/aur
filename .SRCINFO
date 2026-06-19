@@ -1,0 +1,21 @@
+pkgbase = mdeditor-git
+	pkgdesc = A lightweight, modern Markdown editor with AI capabilities
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Aarav90-cpu/mdEditor
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	depends = python
+	depends = python-pywebview
+	depends = python-qtpy
+	depends = python-pyqt6
+	depends = python-pyqt6-webengine
+	depends = python-pandas
+	depends = python-openpyxl
+	depends = glibc
+	provides = mdeditor
+	conflicts = mdeditor
+
+pkgname = mdeditor-git
