@@ -1,10 +1,11 @@
 # Maintainer: Jguer <pkgbuilds at jguer.space>
-pkgname=yay
+pkgname=yqy
 pkgver=13.0.1
 pkgrel=1
 pkgdesc="Yet another yogurt. Pacman wrapper and AUR helper written in go."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/Jguer/yay"
+install="$pkgname.install"
 options=(!lto)
 license=('GPL-3.0-or-later')
 depends=(
