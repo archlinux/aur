@@ -2,13 +2,13 @@
 
 pkgname=flent
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The FLExible Network Tester.'
 arch=('any')
 url='https://flent.org'
 license=('GPL')
 depends=('python' 'netperf')
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel python-setuptools)
 conflicts=('netperf-wrapper')
 replaces=('netperf-wrapper')
 optdepends=(
