@@ -1,6 +1,6 @@
 pkgbase = arch-backup-tool-git
 	pkgdesc = PyQt6 GUI and CLI package baseline/dotfile tracking and recovery tool for Arch Linux & CachyOS
-	pkgver = r7.aab9a5c
+	pkgver = r16.0976165
 	pkgrel = 1
 	url = https://github.com/kosirm/arch-backup
 	arch = any
