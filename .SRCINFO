@@ -1,10 +1,10 @@
 pkgbase = rehex
-	pkgdesc = A cross-platform (Windows, Linux, Mac) hex editor for reverse engineering, and everything else
+	pkgdesc = A cross-platform (Windows, Linux, macOS) hex editor for reverse engineering, and everything else
 	pkgver = 0.64.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/solemnwarning/rehex
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = zip
 	makedepends = perl-template-toolkit
 	makedepends = busted
@@ -15,8 +15,6 @@ pkgbase = rehex
 	depends = lua>=5.5
 	depends = botan
 	source = rehex-0.64.0::git+https://github.com/solemnwarning/rehex.git#tag=0.64.0
-	source = rehex.patch
-	sha256sums = SKIP
-	sha256sums = 925aa979895253ba482780da91cb72fb11260dc44ce0a0f9650164f4831a5d83
+	sha256sums = 2220b368833ae84527d5e0ce358861b9cfa5d7625b2b5bcb0abad3ce9b60d08e
 
 pkgname = rehex
