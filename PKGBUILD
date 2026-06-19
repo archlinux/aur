@@ -9,7 +9,7 @@ url="https://github.com/AfalpHy/sylvakru"
 license=('Apache-2.0')
 _commit=a6970aae6904ecb4b03ee2bed8a3074dddd7955d
 _flutter=3.44.0
-_pkgsrc=${pkgname}
+_pkgsrc="${pkgname}"
 source=("git+https://github.com/AfalpHy/sylvakru.git#commit=${_commit}")
 sha256sums=('SKIP')
 makedepends=(
@@ -38,20 +38,20 @@ depends=(
 options=('!debug' 'strip')
 
 build() {
-    cd ${_pkgsrc}
-    fvm install ${_flutter}
-    fvm use ${_flutter}
+    cd "${_pkgsrc}" || return
+    fvm install "${_flutter}"
+    fvm use "${_flutter}"
     fvm flutter pub get
     fvm flutter build linux --release
 }
 
 package() {
-    install -d ${pkgdir}/opt/${pkgname}
-    cp -ra ${srcdir}/${pkgname}/build/linux/x64/release/bundle/. ${pkgdir}/opt/${pkgname}
-    patchelf --set-rpath '$ORIGIN/lib' "$pkgdir/opt/$pkgname/$pkgname"
-    find "${pkgdir}/opt/$pkgname/lib" -name '*.so' -exec patchelf --set-rpath '$ORIGIN' {} \;
-    install -d ${pkgdir}/usr/bin
-    ln -s /opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+    install -d "${pkgdir}/opt/${pkgname}"
+    cp -ra "${srcdir}/${pkgname}/build/linux/x64/release/bundle/." "${pkgdir}/opt/${pkgname}"
+    patchelf --set-rpath '$ORIGIN/lib' "${pkgdir}/opt/${pkgname}/${pkgname}"
+    find "${pkgdir}/opt/${pkgname}/lib" -name '*.so' -exec patchelf --set-rpath '$ORIGIN' {} \;
+    install -d "${pkgdir}/usr/bin"
+    ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
     # launcher
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" << EOF
