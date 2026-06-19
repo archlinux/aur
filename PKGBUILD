@@ -2,7 +2,7 @@
 
 pkgname=ncmdump 
 pkgver=1.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert Netease Cloud Music ncm files to mp3/flac files."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://git.taurusxin.com/taurusxin/ncmdump-go"
@@ -11,7 +11,7 @@ makedepends=("go")
 provides=("${pkgname}"{,-latest-bin})
 conflicts=("${pkgname}"{,-latest-bin})
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('98423dc245eaa7967ad49d4f0c7f2c057ca71676e6c8305a6e57ba2c43bb3387')
+sha256sums=('69aa760e9444068bf4d4cb839904a3e951faa2d3ed0faca9f20e901ce9c87e82')
 
 prepare() {
     cd "ncmdump-go"
