@@ -1,12 +1,13 @@
 pkgbase = archive-app-bin
 	pkgdesc = Zarządzanie Domowymi Dokumentami
 	pkgver = 1.3.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/KlapkiSzatana/archive-app
 	arch = x86_64
 	license = GPL-3.0
 	provides = archive-app
 	conflicts = archive-app
+	replaces = archive-app
 	options = !strip
 	options = !debug
 	source = https://github.com/KlapkiSzatana/archive-app/releases/download/v1.3.1/ArchiveApp_linux.tar.gz
