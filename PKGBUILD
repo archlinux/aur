@@ -4,7 +4,7 @@
 pkgname=rehex
 pkgver=0.64.0
 pkgrel=1
-pkgdesc="A cross-platform (Windows, Linux, Mac) hex editor for reverse engineering, and everything else"
+pkgdesc="A cross-platform (Windows, Linux, macOS) hex editor for reverse engineering, and everything else"
 arch=('x86_64')
 url="https://github.com/solemnwarning/rehex"
 license=('GPL-2.0-only')
