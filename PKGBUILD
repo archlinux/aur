@@ -20,7 +20,7 @@ url=${_ghurl}
 license=('MIT')
 
 provides=("${_appname}")
-conflicts=("${_appname}")
+conflicts=("${_appname}"{,-bin})
 
 makedepends=('unzip' 'github-cli')
 depends=('bash' 'glibc' 'libgcc' 'libstdc++' 'zlib')

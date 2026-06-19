@@ -15,6 +15,7 @@ pkgbase = rovr-nightly-bin
 	depends = zlib
 	provides = rovr
 	conflicts = rovr
+	conflicts = rovr-bin
 	options = !strip
 	source = README-0.9.2.0.20260617.513e7b1.md::https://raw.githubusercontent.com/NSPC911/rovr/nightly/README.md
 	source = LICENSE-0.9.2.0.20260617.513e7b1::https://raw.githubusercontent.com/NSPC911/rovr/nightly/LICENSE
