@@ -12,7 +12,7 @@ pkgbase = ds5-audio-haptics-bt
 	source = ds5-audio-haptics-bt-0.3.0.AppImage::https://github.com/loteran/DS5Dongle/releases/download/app-v0.3.0/ds5-audio-haptics-bt-0.3.0.AppImage
 	source = 70-ds5dongle.rules::https://raw.githubusercontent.com/loteran/DS5Dongle/master/config-app/70-ds5dongle.rules
 	source = ds5-audio-haptics-bt.desktop::https://raw.githubusercontent.com/loteran/DS5Dongle/master/config-app/ds5-audio-haptics-bt.desktop
-	sha256sums = SKIP
+	sha256sums = da549f16692efcd8415d78ddba072656786e8b5aa5d5b71eae4838a92b7c007b
 	sha256sums = SKIP
 	sha256sums = SKIP
 

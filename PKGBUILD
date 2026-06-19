@@ -12,7 +12,9 @@ source=(
   "70-ds5dongle.rules::https://raw.githubusercontent.com/loteran/DS5Dongle/master/config-app/70-ds5dongle.rules"
   "${pkgname}.desktop::https://raw.githubusercontent.com/loteran/DS5Dongle/master/config-app/${pkgname}.desktop"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('da549f16692efcd8415d78ddba072656786e8b5aa5d5b71eae4838a92b7c007b'
+            'SKIP'
+            'SKIP')
 noextract=("${pkgname}-${pkgver}.AppImage")
 
 prepare() {
