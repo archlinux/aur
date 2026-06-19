@@ -1,0 +1,24 @@
+pkgbase = neverwrite-bin
+	pkgdesc = The bastard son between Cursor and Obsidian - local-first knowledge workspace with AI
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://neverwrite.app/
+	arch = x86_64
+	license = Apache-2.0
+	depends = electron
+	depends = libnotify
+	depends = libxtst
+	depends = nss
+	depends = libxss
+	depends = gtk3
+	depends = mesa
+	optdepends = libappindicator-gtk3: Tray icon support
+	options = !strip
+	source = https://neverwrite.app/releases/download/v0.3.5/NeverWrite-0.3.5-x64.AppImage
+	source = neverwrite.desktop
+	source = neverwrite.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = neverwrite-bin

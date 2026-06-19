@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=NeverWrite
+Comment=The bastard son between Cursor and Obsidian - local-first knowledge workspace with AI
+Exec=/usr/bin/neverwrite %U
+Icon=neverwrite
+Type=Application
+Categories=Office;TextEditor;Utility;
+MimeType=text/plain;text/markdown;text/x-markdown;
+StartupWMClass=NeverWrite
