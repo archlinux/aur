@@ -61,7 +61,6 @@ depends=(aurorae
          sonic-keybind-daemon
          sonic-screenlocker
          systemd-libs
-         wayland
          xcb-util-cursor
          xcb-util-keysyms
          xcb-util-wm)
