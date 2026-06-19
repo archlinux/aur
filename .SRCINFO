@@ -1,11 +1,11 @@
 pkgbase = plasma-classic-wallpapers
 	pkgdesc = A collection of wallpapers from KDE4's artwork ported to work with plasma 6
-	pkgver = 2.0.1
-	pkgrel = 3
+	pkgver = 2.1
+	pkgrel = 1
 	url = https://github.com/MartinF99/plasma-classic-wallpapers
 	arch = any
 	license = LGPL-3.0
-	source = https://github.com/MartinF99/plasma-classic-wallpapers/archive/refs/tags/2.0.1.tar.gz
-	sha256sums = e7fb70bb5af2601857dd5b1f22500c10b5b73f7319a431954d24e200ea088f68
+	source = https://github.com/MartinF99/plasma-classic-wallpapers/archive/refs/tags/2.1.tar.gz
+	sha256sums = 8d35466eb29d8dd67db160b1c1177059c649173cc91f61fa0ee58adb80f79d88
 
 pkgname = plasma-classic-wallpapers
