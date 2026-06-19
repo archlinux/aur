@@ -4,7 +4,7 @@
 
 pkgname='dashcore-bin'
 _pkgname='dashcore'
-pkgver=23.1.3
+pkgver=23.1.4
 pkgrel=1
 pkgdesc="Dash Core (DASH, Dashpay, formerly Darkcoin) is an open source, privacy-centric digital currency. (Includes the qt-client, the headless daemon and the command-line tool.)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=('dash256.png'
 sha256sums=('d72bc417ed8ea88fc9eb1f32c9fe1cd58e2715ab1f75ad94d1fe6acde2af4dd9'
             '41f83cb53ecf33688d899f83e09bd52f9aa8e6d7b9b0f30810f192988b26079a'
             'f5681e3372ff866f494b7210b0f0953e64c119e27354574ad02918f040f2caaa'
-            'e82d4e1faab5f77232c02d6f085bff4a353a3abbbf9841b2198a08ef0f93d044'
+            'c0fa868fa21cb42f00b19a235348ad6143e45d5493ca872b36c5068c2df9e379'
             'SKIP')
 validpgpkeys=('29590362EC878A81FD3C202B52527BEDABE87984')
 
