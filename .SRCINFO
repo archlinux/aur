@@ -1,7 +1,7 @@
 pkgbase = youplaytx
 	pkgdesc = A full-screen, dual-pane YouTube audio player for the terminal
 	pkgver = 0.5.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://codeberg.org/ProfP303/youplaytx
 	arch = any
 	license = GPL-3.0-or-later
