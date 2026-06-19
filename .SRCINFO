@@ -1,0 +1,18 @@
+pkgbase = xsz
+	pkgdesc = a compsize rewrite with multithread support
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/SaltyKitkat/xsz
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = cargo
+	depends = libgcc
+	depends = glibc
+	provides = xsz
+	conflicts = xsz
+	replaces = xsz
+	source = https://github.com/SaltyKitkat/xsz/archive/v0.4.2/xsz-0.4.2.tar.gz
+	sha256sums = 681de4ef78eb1733b7f3be2f31a35720f263243a60a394df8a4212275477f31c
+	b2sums = 676a28fbbff117c58f3d917db5ecd67ab0b27c0cfa47bcf80a5988b194f092f3a8a7b1f2429b5f369e68d75e98f0453b7df217b7dabf62d0367304abf8a3cd81
+
+pkgname = xsz
