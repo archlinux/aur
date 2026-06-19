@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=moshpit-agent-full
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Moshpit agent daemon — all Linux unlock backends (secret-service, fido2, tpm, systemd-creds, fprintd, ssh-agent-piggyback)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('moshpit-agent' 'moshpit-agent-fido2' 'moshpit-agent-systemd-creds'
 depends=('dbus' 'fprintd' 'tpm2-tss')
 makedepends=('cargo' 'cmake' 'gcc' 'dbus' 'tpm2-tss')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/moshpit/archive/v$pkgver.tar.gz")
-sha256sums=('0b08f576be87f6b8cee57fd42c4656523b756e2dfec94077d0f36633d1e327e4')
+sha256sums=('688e22dcf4385cb381856759ccc8778eff46f040ffe5a9a8c96c64429a0887c3')
 
 prepare() {
     cd "moshpit-$pkgver"
