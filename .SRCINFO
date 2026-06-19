@@ -1,6 +1,6 @@
 pkgbase = cosmic-ext-control-center
 	pkgdesc = A modular, pluggable control center for the COSMIC desktop (editor + panel applet)
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/Pyxyll/cosmic-ext-control-center
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = cosmic-ext-control-center
 	optdepends = util-linux: Airplane mode (rfkill)
 	optdepends = wireplumber: Volume and Microphone tiles
 	optdepends = power-profiles-daemon: Power profile tile
-	source = git+https://github.com/Pyxyll/cosmic-ext-control-center.git#tag=v0.1.2
+	source = git+https://github.com/Pyxyll/cosmic-ext-control-center.git#tag=v0.1.3
 	sha256sums = SKIP
 
 pkgname = cosmic-ext-control-center
