@@ -15,6 +15,7 @@ pkgbase = lact-git
 	depends = hwdata
 	depends = vulkan-tools
 	depends = clinfo
+	depends = libdisplay-info
 	provides = lact
 	conflicts = lact
 	conflicts = lact-libadwaita
