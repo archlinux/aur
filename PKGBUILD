@@ -11,7 +11,7 @@
 pkgbase=omsa8
 pkgname=('omsa8' 'omsa8-webserver')
 pkgver=8.4.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://www.dell.com/support/kbdoc/en-us/000177080/dell-emc-systems-management-openmanage-server-administrator'
 license=('custom:Dell')
@@ -225,10 +225,33 @@ package_omsa8-webserver() {
     's%/lib/lsb/init-functions%/opt/dell/srvadmin/lib/init-functions%g' \
     "$pkgdir/etc/init.d/dsm_om_connsvc"
 
-  # Raise the :1311 Tomcat connector's max HTTP header size. Reverse proxies
-  # (e.g. Cloudflare) add headers and cookies that overflow Tomcat's 8 KB
-  # default, which makes heavier requests return 400 and the web GUI bounce
-  # back to the login screen in a redirect loop.
+  # Disable OMSA's SecureSessionFilter so the web GUI works behind a reverse
+  # proxy. The filter pins each session to the TLS session id and treats a
+  # request that arrives on a different TLS session as a hijacking attempt:
+  # it invalidates the session and returns an error. Connection-pooling proxies
+  # (Cloudflare, nginx, ...) open several TLS connections to the origin, so OMSA
+  # flags its own traffic and the GUI loops back to the login screen.
+  local _webxml="$pkgdir/opt/dell/srvadmin/lib64/openmanage/apache-tomcat/webapps/omsa/WEB-INF/web.xml"
+  if [ -f "$_webxml" ] && ! grep -q 'SecureSessionFilter disabled' "$_webxml"; then
+    awk '
+      /<filter-mapping>/ && !inmap { inmap=1; buf="" }
+      inmap {
+        buf = (buf=="" ? $0 : buf"\n"$0)
+        if ($0 ~ /<\/filter-mapping>/) {
+          if (buf ~ /SecureSessionFilter/)
+            print "<!-- SecureSessionFilter disabled for reverse-proxy use (TLS-session pinning breaks connection-pooling proxies):\n" buf "\n-->"
+          else
+            print buf
+          inmap=0
+        }
+        next
+      }
+      { print }
+    ' "$_webxml" > "$_webxml.tmp" && mv "$_webxml.tmp" "$_webxml"
+  fi
+
+  # Give the :1311 connector headroom for the extra headers and cookies a
+  # reverse proxy adds, well above Tomcat's small 8 KB default.
   local _serverxml="$pkgdir/opt/dell/srvadmin/lib64/openmanage/apache-tomcat/conf/server.xml"
   [ -f "$_serverxml" ] && sed -i \
     '/port="1311"/ { /maxHttpHeaderSize/! s/<Connector /<Connector maxHttpHeaderSize="65536" / }' \
