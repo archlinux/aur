@@ -1,6 +1,6 @@
 pkgbase = oyui-bin
 	pkgdesc = Modern TUI merge tool and interactive diff editor for Jujutsu (jj) and Git
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/emilien-jegou/oyui
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = oyui-bin
 	provides = oyui
 	conflicts = oyui
 	options = !strip
-	source = THEMES-0.1.0.md::https://raw.githubusercontent.com/emilien-jegou/oyui/v0.1.0/docs/themes.md
+	source = THEMES-0.2.0.md::https://raw.githubusercontent.com/emilien-jegou/oyui/v0.2.0/docs/themes.md
 	sha256sums = cd62106acad7264dd4e59fbcc676a4de5df6d09be8b5f2d0ed8bb5c8a33d9050
-	source_x86_64 = oyui-x86_64-0.1.0.tgz::https://github.com/emilien-jegou/oyui/releases/download/v0.1.0/oyui-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = eea961530e85ea148995cab1363e86e26b2a8cc1b8728a5c7ffe9da1b0bb3e7e
+	source_x86_64 = oyui-x86_64-0.2.0.tgz::https://github.com/emilien-jegou/oyui/releases/download/v0.2.0/oyui-v0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7f05e7c8fdb01f2d39b49f6541a3ff198abf6706ad89afe4574973ec1e0391b5
 
 pkgname = oyui-bin

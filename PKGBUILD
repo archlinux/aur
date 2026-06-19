@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_gitname}-bin
 pkgdesc="Modern TUI merge tool and interactive diff editor for Jujutsu (jj) and Git"
 
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,7 +30,7 @@ options=(!strip)
 source=("THEMES-${pkgver}.md::${_ghurlraw}/docs/themes.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 sha256sums=('cd62106acad7264dd4e59fbcc676a4de5df6d09be8b5f2d0ed8bb5c8a33d9050')
-sha256sums_x86_64=('eea961530e85ea148995cab1363e86e26b2a8cc1b8728a5c7ffe9da1b0bb3e7e')
+sha256sums_x86_64=('7f05e7c8fdb01f2d39b49f6541a3ff198abf6706ad89afe4574973ec1e0391b5')
 
 
 case ${CARCH} in
