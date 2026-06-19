@@ -28,6 +28,7 @@ pkgbase = opengrep-bin
 	depends = python-wcmatch
 	provides = opengrep
 	conflicts = opengrep
+	options = !strip
 	source = opengrep-bin-1.23.0.tar.gz::https://github.com/opengrep/opengrep/archive/refs/tags/v1.23.0.tar.gz
 	source = semgrep-interfaces-e0777714cf175fda0dd9fa679f044cefbc983a13.tar.gz::https://github.com/opengrep/semgrep-interfaces/archive/e0777714cf175fda0dd9fa679f044cefbc983a13.tar.gz
 	sha256sums = 465d1b1cb23311328636373e895932dc5a12fee944ce61b7fe02cd24a0e6a133

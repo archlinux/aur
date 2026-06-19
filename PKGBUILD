@@ -9,6 +9,7 @@ _interfaces_commit=e0777714cf175fda0dd9fa679f044cefbc983a13
 pkgdesc="Lightweight static analysis for many languages. Find bug variants with patterns that look like source code. Fork of semgrep (binary release)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/opengrep/opengrep"
+options=(!strip)
 license=('LGPL-2.1-only')
 
 depends=(
