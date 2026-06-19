@@ -1,0 +1,16 @@
+pkgbase = manboster-git
+	pkgdesc = Manboster: Your personal AI agent manbo lobster! (git version)
+	pkgver = nightly.20260617.444.a2915e3
+	pkgrel = 1
+	url = https://manboster.dev/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = git
+	optdepends = llama.cpp: for running local safety gatekeeper model
+	provides = manboster
+	conflicts = manboster
+	source = git+https://github.com/manboster/manboster.git
+	sha256sums = SKIP
+
+pkgname = manboster-git
