@@ -2,7 +2,7 @@
 # Contributor: InTeaReable <leyn.the.cat@gmail.com>
 
 pkgname=nyado
-pkgver=0.5.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A Rust todo-list manager with TUI"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('cargo')
 provides=("nyado")
 conflicts=("nyado-bin" "nyado-git")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LeynTheCat/nyado/archive/v$pkgver.tar.gz")
-sha256sums=('d23187dc0161825d0614165baf1d290ac3184b4b7324de53bdb89b44f6f070ad')
+sha256sums=('a3a64b7d016ddcff855aad03cbc6996a09fcc9f291d07b461409db72acb06763')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
