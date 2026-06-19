@@ -1,6 +1,9 @@
 # Maintainer: Julian Houba <info@craftingdragon.ch>
-pkgname=opengrep
-pkgver=1.22.0
+_pkgname_base=opengrep
+pkgname=${_pkgname_base}-bin
+conflicts=(${_pkgname_base})
+provides=(${_pkgname_base})
+pkgver=1.23.0
 pkgrel=1
 _interfaces_commit=e0777714cf175fda0dd9fa679f044cefbc983a13
 pkgdesc="Lightweight static analysis for many languages. Find bug variants with patterns that look like source code. Fork of semgrep"
@@ -44,13 +47,13 @@ source_aarch64=(
   "opengrep-core_linux_aarch64_v${pkgver}.tar.gz::https://github.com/opengrep/opengrep/releases/download/v${pkgver}/opengrep-core_linux_aarch64.tar.gz"
 )
 
-sha256sums=('9a614ffeec0910fecac0af94726915ea5130f9548489186265829d10191bd685'
+sha256sums=('465d1b1cb23311328636373e895932dc5a12fee944ce61b7fe02cd24a0e6a133'
             'b3c613800d530257c0b57197f7b33d440a340c7067a4844a8b845383f038135b')
-sha256sums_x86_64=('6f5d0624e764ee14cceb7a10c30be574d6f16ba289f3b9d9226d5865a9f3a5ed')
-sha256sums_aarch64=('009b85280229f7f9b03e5c789f7d44516362a72f4cf16177a6fb78659940a1e1')
+sha256sums_x86_64=('39ef9e12e3534b92df9eb67ebb0cd1bade2d3d42d70a5fb7888478441e19693e')
+sha256sums_aarch64=('eb1bf7608ae91383055f066bdc287402e6f6cfeb2305a46bb10e2a193d4a3965')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname_base}-${pkgver}"
   
   # Ensure the destination directory exists
   mkdir -p cli/src/semgrep/bin
@@ -66,14 +69,14 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname}-${pkgver}/cli"
+  cd "${_pkgname_base}-${pkgver}/cli"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${pkgname}-${pkgver}/cli"
+  cd "${_pkgname_base}-${pkgver}/cli"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   
   cd ..
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname_base}/LICENSE"
 }
