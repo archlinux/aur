@@ -2,8 +2,8 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-mpv
-pkgver=1.8.3
-pkgrel=4
+pkgver=1.8.4
+pkgrel=1
 _vdrapi=13
 pkgdesc="mpv player plugin for VDR"
 url="https://github.com/ua0lnj/vdr-plugin-mpv"
@@ -14,7 +14,7 @@ _plugname=${pkgname//vdr-/}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ua0lnj/vdr-plugin-mpv/archive/v$pkgver.tar.gz"
         "50-${pkgname//vdr-/}.conf")
 backup=("etc/vdr/conf.avail/50-${pkgname//vdr-/}.conf")
-sha256sums=('ee3cbc1baeab17e41953e0f70695652b40a1f6a0f905700889f0b428bc3582ce'
+sha256sums=('8ca92629408c3b8dd546a040332a55452af9a97126822909c992d996092b1230'
             'e03891f550b215efa19cdb51e133434d99b416e91f0f6e7204ffaee70287633c')
 
 build() {
