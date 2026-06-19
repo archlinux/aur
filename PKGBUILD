@@ -3,7 +3,7 @@
 
 pkgname=dnscontrol
 pkgver=4.42.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Synchronize your DNS to multiple providers from a simple DSL"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://dnscontrol.org/"
@@ -34,12 +34,12 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOFLAGS="${GOFLAGS} -buildmode=pie -trimpath -modcacherw -mod=readonly"
   export GO111MODULE=on
+  export GOPATH="${srcdir}"
   
   # Support -debug package
   if [[ " ${OPTIONS[*]} " =~ " debug " ]]
   then
     export GOFLAGS="${GOFLAGS//-trimpath/}"
-    export GOPATH="${srcdir}"
   fi
 
   set | grep GO_
