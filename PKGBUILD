@@ -1,12 +1,14 @@
-# fconvert v2.2.0 (c) 2023 - 2026 Eraldo Bako - MIT License
-# Maintainer: Eraldo Bako <eraldobako@gmail.com>
+# fconvert v2.3.0 | Copyright (c) 2023-2026 Eraldo Bako
+# Licensed under the Apache License, Version 2.0 (the "License")
+# Maintainer: eraldobako@gmail.com
+
 pkgname=fconvert
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="A fast, intentional CLI file converter for images, audio, video, documents."
 arch=('x86_64')
 url="https://github.com/Eraldo-Bako/fconvert"
-license=('MIT')
+license=('Apache')
 depends=('opencv' 'ffmpeg' 'libraw' 'imagemagick' 'ghostscript')
 makedepends=('gcc' 'cmake' 'git')
 optdepends=(
@@ -23,13 +25,14 @@ build() {
   cd "$pkgname"
 
   echo "fconvert==> Attempting compilation via CMake..."
-  if cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DCMAKE_STRIP=ON -DWITH_LIBRAW=ON && cmake --build build; then
+  rm -rf build
+  if cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DWITH_LIBRAW=ON && cmake --build build; then
     echo "fconvert==> CMake build successful!"
     cp build/fconvert .
   else
     echo "fconvert==> WARNING: CMake build failed. Falling back to manual g++ compilation..."
     rm -rf build     
-    g++ -std=c++17 -O3 -s main.cpp classes/*.cpp -o fconvert `pkg-config --cflags --libs opencv4 libraw`
+    g++ -std=c++17 -O3 -s main.cpp classes/*.cpp classes/program/*.cpp -o fconvert $(pkg-config --cflags --libs opencv4 libraw) $CXXFLAGS $LDFLAGS
   fi
 }
 
@@ -38,3 +41,4 @@ package() {
   install -Dm755 fconvert "$pkgdir/usr/bin/fconvert"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+

@@ -1,10 +1,10 @@
 pkgbase = fconvert
 	pkgdesc = A fast, intentional CLI file converter for images, audio, video, documents.
-	pkgver = 2.2.0
-	pkgrel = 2
+	pkgver = 2.3.0
+	pkgrel = 1
 	url = https://github.com/Eraldo-Bako/fconvert
 	arch = x86_64
-	license = MIT
+	license = Apache
 	makedepends = gcc
 	makedepends = cmake
 	makedepends = git
@@ -18,7 +18,7 @@ pkgbase = fconvert
 	optdepends = libheif: Essential format codec for HEIC/HEIF asset conversion
 	optdepends = libde265: HEVC decoder support for HEIF image sequences
 	optdepends = x265: HEVC encoder support for HEIF image sequences
-	source = fconvert::git+https://github.com/Eraldo-Bako/fconvert.git#tag=v2.2.0
+	source = fconvert::git+https://github.com/Eraldo-Bako/fconvert.git#tag=v2.3.0
 	sha256sums = SKIP
 
 pkgname = fconvert
