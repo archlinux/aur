@@ -2,7 +2,7 @@
 # Contributor: Alexey Neverov <leyn.the.cat@gmail.com>
 
 pkgname=nyado-bin
-pkgver=0.5.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A Rust todo-list manager with TUI, inspired by meowdo"
 arch=('x86_64' 'aarch64')
