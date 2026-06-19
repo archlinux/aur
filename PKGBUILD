@@ -1,5 +1,5 @@
 pkgname=waveloggate-bin
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="CAT and WSJT-X Bridge for WaveLog (prebuilt binary)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('waveloggate')
 conflicts=('waveloggate' 'waveloggate-git')
 options=(!strip !lto !debug)
 source=("waveloggate-${pkgver}.deb::${url}/releases/download/v${pkgver}/wavelog-gate_${pkgver}_webkit4.1_amd64.deb")
-sha256sums=('dd87a0bc2e5266e71d9edec754db12164f3100dde6c95a9606b737a8e9af634b')
+sha256sums=('adbf9bbecd85ff9e98707ca0c6e323c297af5775efc7cc801ec25907cf13df19')
 
 prepare() {
     # makepkg/bsdtar unpacks the outer .deb (ar archive); extract the payload.

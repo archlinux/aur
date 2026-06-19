@@ -1,6 +1,6 @@
 pkgbase = waveloggate-bin
 	pkgdesc = CAT and WSJT-X Bridge for WaveLog (prebuilt binary)
-	pkgver = 2.0.5
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://github.com/wavelog/WaveLogGate
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = waveloggate-bin
 	options = !strip
 	options = !lto
 	options = !debug
-	source = waveloggate-2.0.5.deb::https://github.com/wavelog/WaveLogGate/releases/download/v2.0.5/wavelog-gate_2.0.5_webkit4.1_amd64.deb
-	sha256sums = dd87a0bc2e5266e71d9edec754db12164f3100dde6c95a9606b737a8e9af634b
+	source = waveloggate-2.0.6.deb::https://github.com/wavelog/WaveLogGate/releases/download/v2.0.6/wavelog-gate_2.0.6_webkit4.1_amd64.deb
+	sha256sums = adbf9bbecd85ff9e98707ca0c6e323c297af5775efc7cc801ec25907cf13df19
 
 pkgname = waveloggate-bin
