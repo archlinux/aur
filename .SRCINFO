@@ -1,15 +1,16 @@
 pkgbase = python-pysfcgal
 	pkgdesc = An official Python wrapper for the SFCGAL library, inspired by Shapely
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://gitlab.com/sfcgal/pysfcgal
-	arch = any
+	arch = x86_64
 	license = MIT
+	checkdepends = python-icontract
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	depends = sfcgal
-	source = pysfcgal-2.2.0.tar.gz::https://gitlab.com/sfcgal/pysfcgal/-/archive/v2.2.0/pysfcgal-v2.2.0.tar.gz
-	sha256sums = b6bc1ec00d4b946fcf78c85bce111595a0a7ae6b5e463b973c20d566d747ea83
+	source = pysfcgal-2.3.0.tar.gz::https://gitlab.com/sfcgal/pysfcgal/-/archive/v2.3.0/pysfcgal-v2.3.0.tar.gz
+	sha256sums = 435c52b846dc758e9cc548417a54f4059b9029a98ea4d4a89e7e4d2d2bccb68a
 
 pkgname = python-pysfcgal
