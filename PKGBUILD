@@ -2,7 +2,7 @@
 # Co-maintainer: Nebulosa <nebulosa2007 at yandex dot ru>
 
 pkgname=libapi-base-git
-pkgver=7.5.r0.g31dc17a
+pkgver=7.8.r2.gcbb9437
 pkgrel=1
 pkgdesc="Base objects for API libraries"
 arch=(aarch64 i686 x86_64)
@@ -14,6 +14,7 @@ depends=(
   json-glib
   libgee
   libsoup3
+  libyaml
 )
 makedepends=(
   git
