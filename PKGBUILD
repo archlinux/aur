@@ -19,12 +19,13 @@ pkgver() {
 
 build() {
   cd hashpipe
-  make
+  make -s
 }
 
 package() {
   cd hashpipe
-  make install PREFIX=/usr DESTDIR="$pkgdir"
+  make install PREFIX=/usr DESTDIR="$pkgdir" >/dev/null
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
 # vim:set ts=2 sw=2 et ft=PKGBUILD:

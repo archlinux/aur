@@ -1,0 +1,13 @@
+pkgbase = hashpipe-git
+	pkgdesc = Verify hashes in pipeline
+	pkgver = r1.dc11b62
+	pkgrel = 1
+	url = https://git.zx2c4.com/hashpipe/
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = openssl
+	source = git+https://git.zx2c4.com/hashpipe.git
+	sha256sums = SKIP
+
+pkgname = hashpipe-git
