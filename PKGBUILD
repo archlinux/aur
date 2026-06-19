@@ -1,8 +1,8 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
 pkgname=('ezp2019')
 conflicts=('ezp2019-git')
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 provides=('ezp2019' 'libezp2019.so')
 options=(!debug)
 pkgdesc='USB SPI Flash Programmer'
@@ -18,7 +18,7 @@ source=(
 )
 
 sha512sums=(
-    'ade4538fc7d0a22ad52e53c2699b7708b89ae2afa6907186a800357df09d2e780bf56f9b0a44c201fbedc5d6f2e914e0397c4b522cb6013144217ebbd3b71de8'
+    '25c58a6d193de21fbb59c78c6b93f508a098132d9f943c32c689c5da994e8843c017021cca0ed2d637818c5c605ef5c13bc79a23591b1aac2a272799e8ba5674'
 )
 
 build() {
