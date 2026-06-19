@@ -1,0 +1,25 @@
+pkgbase = alwide
+	pkgdesc = The Modern TUI IDE. The intuitive experience in your terminal.
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/arnauda-gh/Alwide
+	install = alwide.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = make
+	makedepends = pkgconf
+	makedepends = clang
+	makedepends = rust
+	makedepends = cargo
+	makedepends = ncurses
+	makedepends = tree-sitter-cli
+	depends = glibc
+	depends = ncurses
+	provides = alwide
+	options = !strip
+	source = git+https://github.com/arnauda-gh/Alwide.git#tag=v1.0.8
+	sha256sums = bcacc4b93059777d15e969195da9f961f6c9dc8bb3b1effef4c84a2c8bde9cf3
+
+pkgname = alwide
