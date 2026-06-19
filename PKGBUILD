@@ -1,53 +1,29 @@
-# Maintainer: artist for Artix Linux and XLibre <artist@artixlinux.org>
+# Maintainer: callmetango
+# Contributor: artist <artist@artixlinux.org>
+# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: AndyRTR <andyrtr@archlinux.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: Alexander Baldeck <Alexander@archlinux.org
 
 pkgname=xlibre-input-evdev
+_pkgname=xf86-input-evdev
 pkgver=25.0.0
-pkgrel=7
-pkgdesc="XLibre fork of X.Org evdev input driver"
-arch=(x86_64 aarch64)
-_pkgname="${pkgname//xlibre/xf86}"
-url="https://github.com/X11Libre/${_pkgname}"
-depends=("xlibre-xserver>=${pkgver%.*}" 'glibc')
-makedepends=("xlibre-xserver-devel>=${pkgver%.*}" 'xorgproto')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
-source=("${url}/archive/refs/tags/xlibre-${_pkgname}-${pkgver}.tar.gz")
+pkgrel=8
+pkgdesc="XLibre evdev input driver"
+arch=(x86_64)
+url='https://github.com/X11Libre/xf86-input-evdev'
+license=('HPND-sell-variant AND MIT')
+depends=('systemd-libs' 'mtdev' 'libevdev' 'glibc' 'xlibre-xserver')
+makedepends=('xlibre-xserver-devel' 'X-ABI-XINPUT_VERSION=26.0' 'xorgproto')
+conflicts=('xf86-input-evdev' 'X-ABI-XINPUT_VERSION<26' 'X-ABI-XINPUT_VERSION>=27')
+# options=('!makeflags')
 groups=('xlibre-drivers')
-depends+=('mtdev' 'libevdev' 'glibc')
+source=("${url}/archive/refs/tags/xlibre-${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('b7498056f7394ffdf627a1db228bccc74e25eb9262ca45b1b01189ec57587092ddc56fe49dfcf28ea2829e3cee633cec4e150c3d43eb1bff39554f6200b549b6')
 
 build() {
-  case "$CARCH" in
-    "x86_64")
-      CFLAGS=" -march=x86-64"
-      ;;
-    "aarch64")
-      CFLAGS=" -march=armv8-a"
-      ;;
-    *)
-      CFLAGS=" -march=native"
-      ;;
-  esac
-  CFLAGS+=" -mtune=generic -O2 -pipe -fexceptions -Wp,-D_FORTIFY_SOURCE=3 -Wformat -Werror=format-security"
-  CFLAGS+=" -fstack-clash-protection -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"
-  LDFLAGS=" -Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,lazy -Wl,-z,relro -Wl,-z,pack-relative-relocs"
-  if [[ $CARCH != 'aarch64' ]]; then
-    CFLAGS+=" -fcf-protection"
-  fi
-  if [[ "$_pkgname" == *"xf86-input"* ]]; then
-    CFLAGS+=" -fno-plt"
-    LDFLAGS+=" -Wl,-z,now"
-  fi
-  if [[ "$_pkgname" == *"xf86-video-intel"* ]]; then
-    CFLAGS+=" -fno-lto"
-    LDFLAGS+=" -fno-lto"
-  fi
-  CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-  export CFLAGS="${CFLAGS}"
-  export CXXFLAGS="${CXXFLAGS}"
-  export LDFLAGS="${LDFLAGS}"
-
   cd ${_pkgname}-xlibre-${_pkgname}-${pkgver}
-  ./autogen.sh
+  NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr
   make
 }
@@ -55,7 +31,6 @@ build() {
 package() {
   cd ${_pkgname}-xlibre-${_pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
-  install -Dm644 "${srcdir}"/${_pkgname}-xlibre-${_pkgname}-${pkgver}/COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
-
-sha256sums=('c810cc2d4ba63ee917f40b12e8e09c3e046653badcaace6897561dd3087944e8')

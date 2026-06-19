@@ -1,5 +1,0 @@
-[xlibre-input-evdev]
-source = "git"
-git = "https://github.com/x11libre/xf86-input-evdev.git"
-include_regex = "xlibre-xf86-input-evdev-.*"
-prefix = "xlibre-xf86-input-evdev-"
