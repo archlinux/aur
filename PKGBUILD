@@ -1,7 +1,7 @@
 # Maintainer: constitutional <constitutional@tuta.com>
 pkgname=patreon-dl-gui-bin
 _pkgname=patreon-dl-gui
-pkgver=2.7.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="GUI for patreon-dl - download media from Patreon"
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip' '!debug')
 source=("${_pkgname}-${pkgver}.deb::https://github.com/patrickkfkan/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('833fd0f308038e98e1fbe7817fd678b6c38b7a5c8586e5b29c8b112282091fc6')
+sha256sums=('674f22646c146f928d6cd75014c17731250df5b80e72169fbd8dba30d62bb239')
 
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}/"

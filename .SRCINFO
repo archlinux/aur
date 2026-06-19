@@ -1,6 +1,6 @@
 pkgbase = patreon-dl-gui-bin
 	pkgdesc = GUI for patreon-dl - download media from Patreon
-	pkgver = 2.7.0
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://github.com/patrickkfkan/patreon-dl-gui
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = patreon-dl-gui-bin
 	conflicts = patreon-dl-gui
 	options = !strip
 	options = !debug
-	source = patreon-dl-gui-2.7.0.deb::https://github.com/patrickkfkan/patreon-dl-gui/releases/download/v2.7.0/patreon-dl-gui_2.7.0_amd64.deb
-	sha256sums = 833fd0f308038e98e1fbe7817fd678b6c38b7a5c8586e5b29c8b112282091fc6
+	source = patreon-dl-gui-2.10.0.deb::https://github.com/patrickkfkan/patreon-dl-gui/releases/download/v2.10.0/patreon-dl-gui_2.10.0_amd64.deb
+	sha256sums = 674f22646c146f928d6cd75014c17731250df5b80e72169fbd8dba30d62bb239
 
 pkgname = patreon-dl-gui-bin
