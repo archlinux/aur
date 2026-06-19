@@ -2,8 +2,8 @@
 # Maintainer: Alia_Atreides <mmurphy four zero nine six at gmail dot com>
 
 pkgname=zelda3reborn-beta-git
-pkgver=r15.fb47886
-pkgrel=1
+pkgver=r19.eb9600c
+pkgrel=4
 pkgdesc='A reverse engineered port of Zelda 3 - A Link to the Past with modern enhancements'
 url='https://github.com/xander-haj/Z3R-Beta'
 arch=("x86_64")
@@ -44,12 +44,6 @@ package() {
     install -Dm755 zelda3 $pkgdir/opt/$pkgname
     install -Dm644 zelda3_assets.dat $pkgdir/opt/$pkgname
     install -Dm644 $srcdir/zelda3reborn-beta.png $pkgdir/opt/$pkgname
-
-    # The game doesn't use the XDG spec, and will only save the game in the local directory
-    # Thus, we need to make a world writable folder until the developer allows
-    mkdir $pkgdir/opt/$pkgname/saves
-    chmod a+w $pkgdir/opt/$pkgname/saves
-    chmod a+w $pkgdir/opt/$pkgname
 
     echo "#!/usr/bin/env bash
     cd /opt/${pkgname}
