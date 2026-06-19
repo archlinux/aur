@@ -8,7 +8,7 @@ _bundlever="${pkgver%+*}"
 _pluginver="${pkgver##*+}"
 _scanver="6.7.65.0"
 _scanpluginver="1.0.0.6_1"
-pkgrel=1
+pkgrel=2
 pkgdesc="EPSON Image Scan! plugin for Epson scanners (DS, EP, ES, ET, EW, L, LX, PX, WF, XP Series, FF-640, GT-S650, Perfection V19, Perfection V39)"
 arch=(
   'i686'
