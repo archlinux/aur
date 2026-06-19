@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Categories=Development;Utility;
+Name=Trowser (Python)
+Comment=Browser for large line-oriented text files with color highlighting and flexible search
+Icon=trowser-python
+Exec=trowser.py %f
+MimeType=text/plain;text/html;text/css;text/x-python;application/x-shellscript;text/x-tcl;text/x-shellscript;text/x-lua;text/xml;application/xml;text/x-changelog;text/x-copying;text/x-log;text/x-readme;application/x-mozilla-bookmarks;application/x-desktop;
