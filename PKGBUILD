@@ -2,7 +2,7 @@
 
 pkgname=iqtree
 _pkgname=iqtree3
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="Efficient phylogenomic software by maximum likelihood https://doi.org/10.1093/molbev/msaa015"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=('GPL-2.0-or-later')
 depends=('boost-libs' 'gcc-libs' 'zlib')
 makedepends=('cmake' 'eigen' 'make' 'gcc' 'git' 'boost' 'eigen3')
 source=("git+$url.git#tag=v${pkgver}")
-md5sums=('19470b7058ef8e2821fb5b0089d9d3b4')
+md5sums=('19aa6e2d5199d1c01fa95d35e09bbe6e')
 
 prepare() {
   cd $_pkgname
