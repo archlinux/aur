@@ -1,6 +1,6 @@
 pkgbase = thermalright-trcc
 	pkgdesc = Thermalright LCD/LED Control Center for Linux
-	pkgver = 9.7.2
+	pkgver = 9.7.3
 	pkgrel = 1
 	url = https://github.com/Lexonight1/thermalright-trcc-linux
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = thermalright-trcc
 	optdepends = python-gobject: Wayland session support
 	optdepends = python-hidapi: Alternative HID transport
 	conflicts = thermalright-trcc-git
-	source = thermalright-trcc-linux-9.7.2.tar.gz::https://github.com/Lexonight1/thermalright-trcc-linux/archive/refs/tags/v9.7.2.tar.gz
-	sha256sums = 310d1eaadb34b7c8158cfb81bb54ed16b0057d9eb2c1dd9a1693d9cbf3d2c01e
+	source = thermalright-trcc-linux-9.7.3.tar.gz::https://github.com/Lexonight1/thermalright-trcc-linux/archive/refs/tags/v9.7.3.tar.gz
+	sha256sums = 119f2a5ecc6c4332b47bcc90f3e6d5b2060f4578ad9f50e1043a9f918f6661c0
 
 pkgname = thermalright-trcc
