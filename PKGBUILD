@@ -3,7 +3,7 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=terra
-_pkgver=1.9-27
+_pkgver=1.9-34
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,6 +25,7 @@ optdepends=(
   r-future
   r-future.apply
   r-htmlwidgets
+  r-igraph
   r-leaflet
   r-ncdf4
   r-sf
@@ -32,8 +33,8 @@ optdepends=(
   r-xml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2a1aa70d679256f92161c1a4430c6ed8')
-b2sums=('c936543e660596c1afceaaa7c95bc3f138b2054b819e3d96f0101a832f49edbd9525ea5661f2617d8bb8cd6183dbc105e29ff12897f2242741bffa6547db863a')
+md5sums=('6ebdff28ed268f9a19696015d6d501e0')
+b2sums=('95ece4e25fc13a9298350995fc4a5048298da15005c97af2c118eaffc6e989c46c70a3e6218a8dcbf21f7040894cd42583caca777c2a3e77cd133b99138ef5fd')
 
 build() {
   mkdir build
