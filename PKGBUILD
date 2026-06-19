@@ -1,7 +1,7 @@
 # Maintainer: Brуan Childs <godeater[at]𝚐mail[dot]com>
 # Co-Maintainer: Marat Bakeev <hawara[at]gmail[dot]com>
 pkgname=atmos-bin
-pkgver=1.220.0
+pkgver=1.221.1
 pkgrel=1
 pkgdesc='Automated Terraform Management & Orchestration Software (ATMOS)'
 arch=(x86_64 aarch64)
@@ -11,10 +11,10 @@ optdepends=('terraform'
             'opentofu')
 source_x86_64=("${pkgname/-bin/}_${pkgver}_linux_amd64::${url}/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}_linux_amd64")
 source_aarch64=("${pkgname/-bin/}_${pkgver}_linux_arm64::${url}/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}_linux_arm64")
-sha512sums_x86_64=('210979d57ce35e3c676db67ca4d402d8c78f7bdbae6c2865cc22fcea3eb85140021f7762238adceed945fc048eb3c097402bbf9da173e743495b4e4b25e633fa')
-sha512sums_aarch64=('1b1e4b389ffefd519e6ae3f50506c72ab05b03dbc53fccf632d034b60ad05023bb0c804904bc9f704244a208b779257e2d5078349adef84328ae4e12f97b901b')
-b2sums_x86_64=('578d3626ea276d7f209a41e9c8636fb38fd5a4680bf5ed76b177fce642cd1782dd4a04058350e12c490613300111b155a4fb6eff0f131275cf20498578ab9af8')
-b2sums_aarch64=('ba9d35a1a97dc6a6de1f95d3b5c9fb42e09c5991eed89696a0558582d414fe11bb2e633ef9369a8a3a35f9345070c8919d4cf45559c5729de05b0823503dff53')
+sha512sums_x86_64=('e14b5d797c43a2eb92d67f5acb3ae16feed54ea1df01640abb10c455b0ed1d81b17a9a41f9aa7999b73737b48709f3d8e36c8e5536a16dfe003efc54aa2ddb14')
+sha512sums_aarch64=('ec78a12d44ddc71f152c3359133328fc168b1b0166b46c475b436e99eb71dfe956021f77086996fc8cc72667daae0c1274bdc405fba9acb29e943b485817dadb')
+b2sums_x86_64=('d02cd5d9facdc0a77ec248053d5983f43e8ed6fcedf864d9802c39d0f2952e82c64a5e025ca5d38fff51659e5ab5138b6363153f018b3f67973044d81a1cb63c')
+b2sums_aarch64=('608ea36af88f1acedaa8bc6ca0cb227d0cac7aeae7774fd606a1f4a67d413bce98cb7fcf7d057c2a12e60f99fc4571dfaa55568ab97acbb53accd8fd71d50ea7')
 
 package() {
   local _srcarch='amd64'
