@@ -1,6 +1,6 @@
 pkgbase = vibepanel-git
 	pkgdesc = A GTK4 panel for Wayland with notifications, OSD, and quick settings (git version)
-	pkgver = 0.14.1.r33.g22e53ed
+	pkgver = 0.15.0.r6.gda4eeb7
 	pkgrel = 1
 	url = https://github.com/prankstr/vibepanel
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = vibepanel-git
 	depends = upower
 	depends = networkmanager
 	depends = bluez
+	depends = systemd-libs
 	optdepends = power-profiles-daemon: power profile switching in battery popover
 	optdepends = modemmanager: cellular/mobile network support
 	optdepends = cava: audio visualizer in the media widget
@@ -23,6 +24,8 @@ pkgbase = vibepanel-git
 	provides = vibepanel
 	conflicts = vibepanel
 	conflicts = vibepanel-bin
+	options = !lto
+	options = !debug
 	source = vibepanel::git+https://github.com/prankstr/vibepanel.git
 	sha256sums = SKIP
 

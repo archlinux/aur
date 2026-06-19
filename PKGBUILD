@@ -1,18 +1,22 @@
-# Maintainer: vi <vi@example.com>
+# Maintainer: prankstr <prankstr@users.noreply.github.com>
+# Keep depends/optdepends/options in sync across vibepanel, vibepanel-bin, and vibepanel-git.
 pkgname=vibepanel-git
 _pkgname=vibepanel
-pkgver=0.14.1.r33.g22e53ed
+pkgver=0.15.0.r6.gda4eeb7
 pkgrel=1
 pkgdesc="A GTK4 panel for Wayland with notifications, OSD, and quick settings (git version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/prankstr/vibepanel"
 license=('MIT')
-depends=('gtk4' 'gtk4-layer-shell' 'libpulse' 'upower' 'networkmanager' 'bluez')
+# systemd-libs provides libudev used by the brightness service.
+depends=('gtk4' 'gtk4-layer-shell' 'libpulse' 'upower' 'networkmanager' 'bluez' 'systemd-libs')
 makedepends=('git' 'cargo' 'rust' 'pkg-config')
 optdepends=('power-profiles-daemon: power profile switching in battery popover'
             'modemmanager: cellular/mobile network support'
             'cava: audio visualizer in the media widget'
             'iwd: alternative to NetworkManager for Wi-Fi')
+# ring native code fails with makepkg's default LTO flags.
+options=(!lto !debug)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-bin")
 source=("${_pkgname}::git+https://github.com/prankstr/vibepanel.git")
@@ -31,25 +35,13 @@ prepare() {
 
 build() {
   cd "${_pkgname}"
-  
-  # Clean environment from aggressive Arch defaults that break 'ring' crate linking
-  unset RUSTFLAGS
-  unset LDFLAGS
-  unset CFLAGS
-  unset CXXFLAGS
-  
   export CARGO_HOME="${srcdir}/cargo"
-  # Force safe defaults and standard linker
-  export RUSTFLAGS="-C debuginfo=none -C codegen-units=16 -C lto=off"
-  
-  cargo build --release --frozen
+  cargo build --release --frozen -p "${_pkgname}"
 }
 
 package() {
   cd "${_pkgname}"
   install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  # Font is embedded in the binary and extracted to cache on first run; no system font install needed.
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  
-  # Install the Material Symbols font to system fonts directory
-  install -Dm644 "assets/fonts/MaterialSymbolsRounded.ttf" "${pkgdir}/usr/share/fonts/TTF/MaterialSymbolsRounded.ttf"
 }
