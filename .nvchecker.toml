@@ -1,7 +1,0 @@
-[xlibre-input-synaptics]
-source = "git"
-git = "https://github.com/x11libre/xf86-input-synaptics.git"
-# include_regex = "xlibre-xf86-input-synaptics-.*"
-# prefix = "xlibre-xf86-input-synaptics-"
-include_regex = "xf86-input-synaptics-.*"
-prefix = "xf86-input-synaptics-"
