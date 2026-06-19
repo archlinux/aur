@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A cross-platform (Windows, Linux, Mac) hex editor for reverse engineering, and everything else"
 arch=('x86_64')
 url="https://github.com/solemnwarning/rehex"
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('jansson' 'capstone' 'wxwidgets-gtk3' 'lua>=5.5' 'botan')
 makedepends=('zip' 'perl-template-toolkit' 'busted' 'git')
 source=("$pkgname-$pkgver::git+https://github.com/solemnwarning/rehex.git#tag=$pkgver"
