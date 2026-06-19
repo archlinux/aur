@@ -4,7 +4,7 @@
 
 pkgname=sonicde-meta
 pkgver=6.6
-pkgrel=6
+pkgrel=7
 pkgdesc='Meta package to install SonicDE, an X11-focused fork of KDE'
 arch=(any)
 license=(None)
