@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=r-ark
-pkgver=0.1.249
+pkgver=0.1.252
 pkgrel=1
 pkgdesc="An R kernel"
 url="https://github.com/r-lib/rig"
@@ -34,4 +34,4 @@ package() {
   install -Dm644 "${srcdir}/ark-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('125ee8d8dd46f3b2c1ed6b819452fddeb6d1292143d312b676887b9c58560b290d8aba111e06df4ca806739218e760ea822ba4df1b118934e50517f71e68a285')
+sha512sums=('caf1c07c371f36a6e2b479d5263642bee2bd50c5b22d7facb0588bc31ac3616b98ac64a1919d82f0dda3dca35d3b03bdde667558e39585283d9e4b0ff4e9dbb4')
