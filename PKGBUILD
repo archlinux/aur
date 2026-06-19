@@ -3,7 +3,7 @@ _branch=main
 
 pkgname=ds4-rocm-git
 pkgver=r332.80ebbc3
-pkgrel=3
+pkgrel=4
 pkgdesc="Run DeepSeek4 LLM optimised for ROCm (AMD GPUs)"
 arch=(x86_64)
 url="https://github.com/antirez/ds4"
@@ -32,7 +32,7 @@ source=("${pkgname%-git}::git+$url.git#branch=$_branch"
 )
 noextract=()
 sha256sums=('SKIP'
-            '88c01b9b2028bcf99a5374ec0b629d2e6462cb116c42723419ce3b138eae9b45'
+            '214ac05e46cbae82ed9a82028ff01bd2bd38f4bafd20941b889fa1ac6319130c'
             'bc34e4f55af7fceb7bcbbb323e65dd6c3065c8c92a5cda5ec5dbe6fc199256cc'
             '3085727fee5e492c34c2da1cc78486531ff25a2f368fa12d3854c3c65492a811'
             'ac3ea5d0a4f38012e10a1834780798d75e0aff9e5d578436fe628c8a61d4caa6'
