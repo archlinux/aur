@@ -1,7 +1,7 @@
 post_install() {
   cat <<'EOF'
-codex-app-unofficial expects an existing 'codex' binary on PATH.
-If Codex CLI is installed somewhere else, set CODEX_CLI_PATH before launch.
+codex-app-unofficial uses its bundled Codex CLI by default.
+Set CODEX_CLI_PATH before launch only when intentionally testing another CLI.
 EOF
 }
 
