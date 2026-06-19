@@ -1,7 +1,7 @@
 # Maintainer: vvch
 
 pkgname=rexuiz-bin
-pkgver=2.5.5_260419
+pkgver=2.5.5_260531
 pkgrel=1
 pkgdesc="Fast-paced multiplayer first-person shooter"
 arch=('x86_64')
