@@ -1,12 +1,12 @@
 # Maintainer: lyj404 <lyj404 at proton dot me>
 pkgname=keevault-bin
-pkgver=0.3.9
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A KeePass-compatible password manager built with Flutter'
 arch=('x86_64')
 url='https://github.com/lyj404/keevault'
 license=('MIT')
-depends=('gtk3' 'libsecret')
+depends=('gtk3' 'libsecret' 'libayatana-appindicator' 'dbus')
 makedepends=()
 provides=('keevault')
 conflicts=('keevault')
