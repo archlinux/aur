@@ -3,7 +3,7 @@
 
 pkgname="git-tui"
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Collection of human friendly terminal interface for git"
 arch=('x86_64')
 url="https://github.com/ArthurSonzogni/${pkgname}"
@@ -13,10 +13,24 @@ makedepends=('cmake>=3.15' 'ftxui' 'ninja')
 _pkgsrc="${pkgname}-${pkgver}"
 source=(
   "${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+  "subprocess_fix_install.patch"
+  "subprocessConfig.cmake.in"
+  "subprocessConfigVersion.cmake.in"
   'git+https://github.com/benman64/subprocess.git#commit=e1cae5e86e5d089e65e906f7c13917b7bbb75d04'
 )
 sha256sums=('f8e90d41f4f016916fbcbf07dba779faf3ba281cc9fe216a6176a7b60afcd9d2'
+            '9aecb405ed37be3633eb2ea3a2b247c915ddecc0d66e540b4b9a04fd6f43126c'
+            '9dfa2f9166a0aee4cf4e15339fabf6580ad3c502b3443a1e27d6d860016fe3c0'
+            '85be543b806413728ed7d288843fe407b01073e1ec851ba06fdd2c0585fb5b3e'
             'd8bc12b63d4e0f573385c41ae5b4a25642bdacb1d5481ebc80dc0e409bddc1ee')
+
+prepare() {
+  cp -f 'subprocessConfig.cmake.in'        'subprocess/src/cpp/'
+  cp -f 'subprocessConfigVersion.cmake.in' 'subprocess/src/cpp/'
+
+  cd 'subprocess'
+  patch -p1 -i "${srcdir}/subprocess_fix_install.patch"
+}
 
 build() {
   cmake -G 'Ninja' -B 'subprocess-build' -S 'subprocess' -DCMAKE_BUILD_TYPE='None' -DCMAKE_INSTALL_PREFIX="${srcdir}/prefix"
@@ -24,12 +38,12 @@ build() {
   cmake --install 'subprocess-build'
 
   local cmake_options=(
-    -G 'Ninja' \
-    -B 'build' \
-    -S "${_pkgsrc}" \
-    -DCMAKE_BUILD_TYPE='None' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_PREFIX_PATH="${srcdir}/prefix" \
+    -G 'Ninja'
+    -B 'build'
+    -S "${_pkgsrc}"
+    -DCMAKE_BUILD_TYPE='None'
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_PREFIX_PATH="${srcdir}/prefix"
     -Wno-dev
   )
 

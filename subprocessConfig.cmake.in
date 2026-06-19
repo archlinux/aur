@@ -1,0 +1,9 @@
+@PACKAGE_INIT@
+
+# Set the include and library directories
+set(subprocess_INCLUDE_DIR "@PACKAGE_INCLUDE_INSTALL_DIR@")
+set(subprocess_LIBRARY "@PACKAGE_LIB_INSTALL_DIR@/libsubprocess.a")
+
+# Include the targets file
+include("${CMAKE_CURRENT_LIST_DIR}/@PROJECT_NAME@Targets.cmake")
+check_required_components(@PROJECT_NAME@)
