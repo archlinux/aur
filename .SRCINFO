@@ -1,6 +1,6 @@
 pkgbase = logitune
 	pkgdesc = Logitech device configurator for Linux — per-app profiles, button remapping, DPI, gestures
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/mmaher88/logitune
 	install = logitune.install
@@ -16,7 +16,7 @@ pkgbase = logitune
 	depends = systemd-libs
 	optdepends = gnome-shell: per-app profile switching on GNOME
 	optdepends = gnome-shell-extension-appindicator: tray icon on GNOME
-	source = logitune-0.3.5.tar.gz::https://github.com/mmaher88/logitune/archive/v0.3.5.tar.gz
-	sha256sums = f5304a1e36df2d422f2aeb52f70816d7cc2f7786258c9fffce0686f902fd9dd9
+	source = logitune-0.3.6.tar.gz::https://github.com/mmaher88/logitune/archive/v0.3.6.tar.gz
+	sha256sums = b2bf875703ffcca1ebdcd71ac68a6a8c7dd7f39227bfcdba628f3dcf4dc692a8
 
 pkgname = logitune
