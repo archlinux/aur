@@ -2,7 +2,7 @@
 pkgname=('ezp2019')
 conflicts=('ezp2019-git')
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 provides=('ezp2019' 'libezp2019.so')
 options=(!debug)
 pkgdesc='USB SPI Flash Programmer'
@@ -22,7 +22,7 @@ sha512sums=(
 )
 
 build() {
-    cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release -B"build" "$srcdir/ezp2019-$pkgver"
+    cmake -DCMAKE_DISABLE_FIND_PACKAGE_Git=ON -DGIT_TAG="v${pkgver}" -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release -B"build" "$srcdir/ezp2019-$pkgver"
     cmake --build "build"
 }
 

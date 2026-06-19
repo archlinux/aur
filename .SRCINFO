@@ -1,7 +1,7 @@
 pkgbase = ezp2019
 	pkgdesc = USB SPI Flash Programmer
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bokic/ezp2019
 	install = ezp2019.install
 	arch = x86_64
