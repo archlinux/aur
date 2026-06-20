@@ -1,7 +1,7 @@
 pkgbase = ftop-tui
 	pkgdesc = TUI system monitor in Fortran 2018 with truecolor, braille graphs, and GPU monitoring
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FortranGoingOnForty/ftop
 	arch = x86_64
 	arch = aarch64

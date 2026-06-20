@@ -4,7 +4,7 @@ pkgname=ftop-tui
 provides=('ftop')
 conflicts=('ftop')
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='TUI system monitor in Fortran 2018 with truecolor, braille graphs, and GPU monitoring'
 arch=('x86_64' 'aarch64')
 url='https://github.com/FortranGoingOnForty/ftop'
@@ -47,5 +47,4 @@ check() {
 package() {
     install -Dm755 "$srcdir/build/bin/ftop" "$pkgdir/usr/bin/ftop"
     install -Dm644 "$srcdir/ftop/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "$srcdir/ftop/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
