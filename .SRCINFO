@@ -1,6 +1,6 @@
 pkgbase = gabagent
 	pkgdesc = Claude Code-style AI coding assistant built on the Gab AI Developer API
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/indyfive11/gabagent
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = gabagent
 	optdepends = python-anthropic: Claude/Anthropic backend (/backend claude)
 	optdepends = python-starlette: voice mode brain (gab --voice-serve)
 	optdepends = python-uvicorn: voice mode brain (gab --voice-serve)
-	source = gabagent-0.5.1.tar.gz::https://github.com/indyfive11/gabagent/archive/v0.5.1.tar.gz
-	sha256sums = 033f7d8224499932198c5703ea16fc08bd3a856104c2374a3fedb9ff5dd8902b
+	source = gabagent-0.6.0.tar.gz::https://github.com/indyfive11/gabagent/archive/v0.6.0.tar.gz
+	sha256sums = 6ec678692d9cf8aecc95a448837df1923ef7c26eae95e93372fd33682511525d
 
 pkgname = gabagent
