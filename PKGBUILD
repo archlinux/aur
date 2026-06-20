@@ -20,7 +20,7 @@ source=(https://archive.mesa3d.org/mesa-$pkgver.tar.xz{,.sig})
 sha256sums=('8bd36c031cc6d0edfec04617527609454ee3a09ad53bdf983b45fc2c1e129b2e'
             'SKIP')
 
-_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
+_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "${srcdir}"/mesa-${pkgver}
