@@ -4,7 +4,6 @@ pkgbase = lore-vcs-bin
 	pkgrel = 1
 	url = https://github.com/EpicGames/lore
 	arch = x86_64
-	arch = aarch64
 	license = MIT
 	depends = glibc
 	depends = libgcc
