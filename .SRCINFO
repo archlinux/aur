@@ -1,6 +1,7 @@
 pkgbase = ttf-roboto-android
+	pkgdesc = Google's signature family of fonts (Android Variant)
 	pkgver = 3.016
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googlefonts/roboto-3-classic
 	arch = any
 	license = OFL-1.1
@@ -12,7 +13,5 @@ pkgbase = ttf-roboto-android
 	b2sums = 28a65c7a81ad3cdaea9bac928db1abca14ce8561da22f487aeefb6b53487cfd214c3ad8ba2d9fa595bf3224529dafc1687b462a099316bd333a1f2151b525a06
 
 pkgname = ttf-roboto-android
-	pkgdesc = Google's signature family of fonts (Android Variant)
 
 pkgname = ttf-roboto-android-vf
-	pkgdesc = Google's signature family of fonts (Android Variant, Variable)
