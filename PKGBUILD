@@ -1,7 +1,7 @@
 # Maintainer: fanfly <fanfly at pm dot me>
 pkgname=akochan
 pkgver=r87.53188a0
-pkgrel=2
+pkgrel=3
 pkgdesc="Artificial Intelligence for Japanese mahjong"
 arch=('any')
 url="https://github.com/critter-mj/akochan"
@@ -18,6 +18,20 @@ prepare() {
   cd "$pkgname"
   iconv -f shift-jis -t utf-8 LICENSE -o LICENSE.new
   mv LICENSE.new LICENSE
+
+  grep -q '#include <cstdint>' share/json11.cpp || \
+    sed -i '/#include <cstdio>/a #include <cstdint>' share/json11.cpp
+
+  # Drop the obsolete flag (Boost.System is header-only since 1.69).
+  sed -i 's/ *-lboost_system//' Makefile_Linux ai_src/Makefile_Linux
+
+  # Modernise removed Boost.Asio APIs.
+  sed -i 's/boost::asio::io_service/boost::asio::io_context/g' \
+    mjai_client.hpp mjai_client.cpp
+  sed -i 's/boost::asio::ip::address::from_string/boost::asio::ip::make_address/g' \
+    mjai_client.cpp
+  sed -i 's/boost::asio::buffer_cast<const char \*>(buffer.data())/static_cast<const char *>(buffer.data().data())/' \
+    mjai_client.cpp
 }
 
 pkgver() {
