@@ -31,7 +31,8 @@ makedepends=(git
              extra-cmake-modules
              kdoctools
              plasma-wayland-protocols
-             wayland-protocols)
+             wayland-protocols
+             vulkan-headers)
 options=('!debug')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
