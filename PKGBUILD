@@ -1,7 +1,7 @@
 # Maintainer: acaibowlz <hankthedev@gmail.com>
 pkgname=aur-sync-vote
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Syncing votes with the currently installed AUR packages"
 arch=('any')
 url="https://github.com/acaibowlz/aur-sync-vote"
@@ -9,9 +9,7 @@ license=('MIT')
 depends=('python-beautifulsoup4' 'python-html5lib' 'python-requests' 'python-keyring')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=(
-  'gnome-keyring: provides org.freedesktop.secrets.service'
-  'kwallet: provides org.freedesktop.secrets.service'
-  'keepassxc: provides org.freedesktop.secrets.service'
+  'org.freedesktop.secrets: password saving'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('36f8b68bc6e7c42523e95f5a034f3476db9a3a00d1f2c656de4b94d17b86f12d')
