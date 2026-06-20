@@ -1,7 +1,7 @@
 # Maintainer: zaps166 <mumei6102@gmail.com>
 
 pkgname=qmplay2-git
-pkgver=25.09.11.r34.g43b6cdaa
+pkgver=25.09.11.r65.g5c1b9e29
 pkgrel=1
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -46,7 +46,7 @@ build() {
         ../QMPlay2 \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF \
+        -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
         -DUSE_PCH=ON \
         -DUSE_GLSLC=ON \
         -DUSE_GIT_VERSION=ON
