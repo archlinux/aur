@@ -1,14 +1,471 @@
-BSD Zero Clause License
+Terms & Conditions
 
-Copyright (c) 2026 Ismet Togay
+Last updated: May 13 2026
 
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
+Introduction
 
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
+These Terms of Service ("Terms") and our Privacy Policy, constitute the
+entire agreement ("Agreement") between Langbase, Inc. d/b/a Command Code
+("Company", "We", "Our", "Us") and you ("You", "User"). These Terms govern
+your use of our website and services available at commandcode.ai (collectively,
+the "Service").
+
+The following terms apply to these Terms of Service: "Client", "You", and "Your"
+refer to the person accessing this website and agreeing to the Company's terms.
+"The Company", "We", "Our", and "Us" refer to the Company. "Party" or "Parties"
+refers to both the client and us, or either individually. "Content" includes all
+information, data, text, images, videos, software, and other materials available
+through our service or website, including intellectual property such as
+copyrights, trademarks, and patents. These terms cover the offer, acceptance,
+and payment necessary for us to assist the client in providing the Company's
+services in compliance with applicable laws.
+
+By (a) purchasing access to the service through an online ordering process that
+references this agreement, (b) signing up for a free plan through a screen that
+references this agreement, or (c) clicking a box indicating acceptance, you
+agree to be bound by these terms. If you do not agree to or cannot comply with
+this agreement, you may not use the service. Please read these terms carefully.
+
+Age and Eligibility
+
+The service is intended for individuals who are at least eighteen (18) years
+old. By accessing or using the Company's services, you represent and warrant
+that you are at least eighteen (18) years of age and possess the full
+authority, right, and capacity to enter into this agreement and comply with all
+its terms and conditions. If you are under eighteen (18) years old, you are not
+permitted to access or use the service.
+
+Accounts
+
+When creating an account with us, you affirm that you are at least 18 years old
+and that the information you provide is accurate, complete, and up-to-date.
+Failure to provide accurate and current information may lead to the immediate
+suspension or termination of your account.
+
+You are responsible for keeping your account credentials, including your
+password, confidential. This includes limiting access to your computer and
+account. You agree to take full responsibility for any activities or actions
+that occur under your account or password, whether associated with our service
+or a third-party service. If you become aware of any security breaches or
+unauthorized use of your account, you must notify us immediately.
+
+You may not use a username that belongs to another person or entity, or one
+that is not legally available for use, including any names or trademarks
+protected by the rights of others, without proper authorization. Additionally,
+usernames must not be offensive, vulgar, or obscene.
+
+We reserve the right to refuse service, terminate accounts, modify or remove
+content, or cancel orders at our sole discretion.
+
+Temporary Use License
+
+For the duration of your authorized use of the services and contingent upon
+your adherence to the terms of this agreement, you are granted a personal,
+non-sublicensable, non-exclusive, non-transferable, limited license to use the
+services for your internal business or personal purposes, in accordance with
+your account's service capacity. All rights not expressly granted herein are
+reserved, and no license or right to use any trademarks of the Company or any
+third party is granted to you in connection with the services.
+
+Communications
+
+By creating an account on our service, you agree to receive newsletters,
+marketing materials, promotional content, and other communications from us.
+However, you may opt out of receiving any or all of these communications by
+following the unsubscribe link or by contacting us via email.
+
+By using the services, you consent to receiving electronic communications from
+the Company. These communications may include notices about applicable service
+fees, charges, transactional information, and other details related to the
+services. Some of these communications may require your response or action to
+avoid service interruptions. These electronic communications are an integral
+part of your relationship with the Company and are provided as part of your use
+of the services. It is your responsibility to ensure that your account email
+address is kept current and that a responsive user is available at all times.
+You agree that any notices, agreements, disclosures, or other communications
+sent by the Company electronically will satisfy any legal requirements for
+communication, including those requiring that such communications be in writing.
+
+Content
+
+Our service allows you to post, link, store, share, and otherwise make
+available various types of information, text, graphics, videos, or other
+materials ("Content"). You are solely responsible for the content you post on
+or through the service, including its legality, reliability, and
+appropriateness.
+
+By posting content on or through the service, you represent and warrant that:
+(i) the content is either owned by you or you have the necessary rights to use
+it and grant us the rights and licenses described in these terms, and (ii) your
+content does not infringe upon the privacy rights, publicity rights, copyrights,
+contract rights, or any other rights of any person or entity. We reserve the
+right to terminate the accounts of users found to be infringing on copyrights.
+
+You retain all rights to any content you submit, post, or display on or through
+the service, and you are responsible for protecting those rights. We do not
+assume responsibility or liability for any content posted by you or any third
+party on or through the service. However, by posting content via the service,
+you grant us a license to use, modify, publicly perform, publicly display,
+reproduce, and distribute such content on and through the service. This license
+also allows us to make your content available to other users of the service, who
+may use your content in accordance with these terms.
+
+The Company reserves the right, but is not obligated, to monitor and edit any
+content provided by users.
+
+Payment of Fees
+
+Payments
+
+All payments must be made in U.S. dollars and within the United States. You are
+responsible for paying all applicable taxes, duties, withholdings, and similar
+charges. If the Company is legally required to pay or collect such taxes, you
+will pay the appropriate amount directly to the Company. The Company reserves
+the right to modify its fees and payment terms at its discretion; however, such
+changes will not take effect for you until the start of the next payment period.
+Your continued use of the services after the price change takes effect
+constitutes your agreement to pay the revised amount.
+
+Payments are processed by our third-party payment processor, Stripe, Inc.
+("Stripe"). When you provide payment information, you provide it directly to
+Stripe, and your payment information is subject to Stripe's terms of service
+and privacy policy. The Company does not store full payment card numbers on its
+systems.
+
+Subscriptions, Credits, and Deals
+
+Our subscriptions are sold on the basis of underlying API costs. The
+subscription fee you pay entitles you to use third-party AI model APIs (such as
+those provided by Anthropic, OpenAI, Google, and other model providers) through
+our service, and the value you receive corresponds to the API usage costs we
+incur on your behalf. You may expect, at maximum, a one-to-one (1:1) ratio
+between the subscription amount paid and the API credits made available to you.
+We do not guarantee any ratio greater than 1:1, and the actual usage available
+to you may be lower depending on model pricing, provider rate changes, taxes,
+overhead, and operational costs.
+
+Any additional credits, bonus credits, promotional credits, or top-up credits
+offered on top of a subscription (collectively, "Additional Credits") are
+provided strictly on a "while supplies last" basis. Additional Credits have no
+cash value, are non-refundable, non-transferable, and may be reduced, revoked,
+expired, or discontinued at any time at the Company's sole discretion, with or
+without notice.
+
+Any deals, discounts, promotions, launch offers, referral bonuses, or other
+limited-time offers (collectively, "Deals") are time-bound and may expire, be
+modified, or be withdrawn at any time at the Company's sole discretion, with or
+without notice. Eligibility for Deals may be limited based on account type,
+geography, plan tier, timing, or other criteria determined by the Company.
+Pricing displayed at the time of a Deal does not constitute a guarantee of
+future pricing, and any previously advertised Deal that has lapsed is considered
+expired.
+
+Both Additional Credits and Deals are subject to change at any time. The Company
+makes no representation or warranty that any specific credit amount, ratio,
+bonus, discount, or promotional benefit will remain available, continue at the
+same level, or be honored beyond its stated or unstated availability window.
+
+By registering for an account, subscribing to any plan, redeeming any credits,
+or accepting any Deal, you expressly acknowledge and agree to the foregoing
+terms regarding subscriptions, Additional Credits, and Deals, including the
+maximum 1:1 API credit expectation and the Company's right to change, expire,
+or terminate Additional Credits and Deals at any time.
+
+Previews
+
+The Company may choose to offer certain previews from time to time. These
+previews are provided "AS-IS," "WITH ALL FAULTS," and "AS AVAILABLE." LLMs may
+make mistakes, the Company's warranties and indemnities do not apply to
+previews, and no support services are provided for them. The Company reserves
+the right to modify, discontinue, or terminate your access to previews at any
+time without notice. The term "previews" refers to services, releases,
+features, or functionality provided for preview, pre-release, evaluation,
+demonstration, beta, or similar purposes.
+
+Generative AI Models and Limitations
+
+The Service incorporates generative AI models provided by third-party AI model
+providers, including but not limited to Anthropic, OpenAI, Google, and other
+model providers. When you use the Service, your prompts, attached content, and
+other inputs may be transmitted to these third-party providers for processing,
+and your use of the Service is also subject to those providers' applicable
+terms and policies.
+
+Generative AI models, like the ones you are interacting with, strive to be
+helpful and informative. However, they can occasionally produce responses that
+are incorrect, misleading, or not grounded in fact. This phenomenon is often
+referred to as "hallucinating" information. It is a known limitation of current
+AI technology.
+
+Users should exercise caution and not rely solely on AI-generated content for
+high-stakes decisions or critical advice. It is always advisable to verify
+information through additional reliable sources.
+
+If you encounter a response that you believe is incorrect or unhelpful, please
+let us know. You can provide feedback using the designated tools or contact us
+directly at support@commandcode.ai.
+
+Acceptable Use
+
+Your use of the Company's services, including participation in any community or
+discussion forums, is governed by the following rules:
+
+- The services may only be used in compliance with applicable laws.
+- You must not compromise the security or integrity of the Company's systems or
+  networks, nor attempt unauthorized access to any such systems or networks.
+- You are prohibited from using the services to facilitate or promote the sale
+  or distribution of illegal goods and services.
+- Automated tools, such as bots or scripts, must not be used to create multiple
+  accounts, perform automated searches or requests, or extract data from the
+  Company's website.
+- You must adhere to the Company's usage guidelines and limits. Creating
+  multiple accounts to circumvent these restrictions is prohibited.
+- The services must not be used to send unsolicited messages (spam), create
+  spammy content, or engage in clickbait or click fraud activities.
+- You are not permitted to use the services for creating or distributing
+  synthetic media ("deepfakes") that promote illegal activities.
+- You must not use the services to replicate the functionality of the Company
+  or its products.
+- You may not rent, lease, sell, or transfer access to the Company's website,
+  software, or documentation to a third party.
+- You must not interfere with or disrupt the services or impose an undue burden
+  on the Company's website or related networks.
+
+The Company reserves the right to determine whether an account is in violation
+of these terms. Violations may result in the termination of your access to the
+Company's services and the removal of your projects and deployments.
+
+Etiquette
+
+In addition to complying with the terms of this agreement, you must not use the
+services for, or link to, any content that the Company deems objectionable,
+abusive, profane, or promoting hate speech or any illegal activities. You agree
+to indemnify and hold the Company harmless against any claims arising from your
+use of the services in violation of these terms. Although the Company is not
+obligated to monitor your use, it may do so using tools that detect patterns of
+abuse. The Company reserves the right to disable or terminate the services if it
+identifies any content that violates this agreement.
+
+Security and Compliance
+
+General
+
+You are responsible for configuring your projects to ensure compliance with
+applicable laws, including obtaining proper consent for personal data
+transmission and storage. You must also configure the services in accordance
+with the documentation and implement appropriate encryption. The Company will
+not be liable for unauthorized access, loss, or corruption of your content due
+to your misconfigurations, malware, or security vulnerabilities.
+
+PCI Compliance
+
+The Company is not a payment processor. Card payments are handled by our
+third-party payment processor, Stripe. If your content or data is subject to
+the Payment Card Industry Data Security Standards (PCI DSS), you are
+responsible for ensuring compliance with PCI DSS requirements.
+
+Usage Restrictions
+
+You agree not to:
+
+- Sublicense, resell, rent, lease, transfer, or assign the services to any
+  third party.
+- Reverse engineer, decompile, disassemble, or attempt to discover the source
+  code of the Services.
+- Modify, translate, or create derivative works based on the services without
+  authorization.
+- Use the services for time sharing or service bureau purposes or for the
+  benefit of a third party.
+- Remove, alter, or obscure any proprietary notices or labels on the services
+  or documentation.
+- Violate any applicable laws or regulations or infringe on the rights of any
+  third party while using the services.
+- Engage in activities that violate the Company's policies or codes of conduct.
+
+The Company may set general practices and limits on the use of the services,
+including data retention, storage space, compute capacity, and data transfer
+limits. The Company reserves the right to change these practices at any time.
+
+Intellectual Property
+
+The service, including its original content (excluding user content), features,
+and functionality, is the exclusive property of the Company and its licensors.
+The service is protected by copyright, trademark, and other intellectual
+property laws in the United States and internationally. The trademarks and
+trade dress of the Company may not be used in connection with any product or
+service without prior written consent.
+
+Confidentiality
+
+The receiving party acknowledges that the disclosing party has provided or may
+provide proprietary business, technical, product, or financial information
+("Proprietary Information"). For the Company, this includes non-public details
+about the services' features, functionality, and performance. Your proprietary
+information includes non-public personal data provided to the Company or
+uploaded to the services ("Your Data"). The receiving party agrees to: (i)
+protect such proprietary information with reasonable precautions, and (ii) use
+it solely for the performance of the services or as permitted, and not disclose
+it to any third party.
+
+Company Ownership
+
+The Company retains all rights, title, and interest in the services, including
+any improvements, enhancements, or modifications, and all related intellectual
+property rights.
+
+Copyright Policy
+
+We respect the intellectual property rights of others and have established a
+policy to address claims of copyright infringement or other intellectual
+property violations ("Infringement"). If you are a copyright owner or
+authorized representative and believe that content on the service infringes upon
+your copyright, please send your claim via email to support@commandcode.ai with
+the subject line "Copyright Infringement." Your claim should include a detailed
+description of the alleged Infringement.
+
+DMCA Notice and Procedure for Copyright Infringement Claims
+
+To submit a notice under the Digital Millennium Copyright Act (DMCA), please
+provide our Copyright Agent with the following information in writing:
+
+1. An electronic or physical signature of the person authorized to act on
+   behalf of the copyright owner;
+2. A description of the copyrighted work that you claim has been infringed,
+   including the URL or a copy of the work;
+3. Identification of the URL or specific location on the service where the
+   infringing material is found;
+4. Your address, telephone number, and email address;
+5. A statement that you believe in good faith that the disputed use is not
+   authorized by the copyright owner, its agent, or the law;
+6. A statement made under penalty of perjury that the information in your
+   notice is accurate and that you are the copyright owner or authorized to
+   act on behalf of the copyright owner.
+
+Error Reporting and Feedback
+
+You may provide us with information and feedback about errors, suggestions for
+improvements, ideas, problems, complaints, and other matters related to our
+service ("Feedback") either directly at support@commandcode.ai or through
+third-party sites and tools. By providing feedback, you acknowledge and agree
+that: (i) you do not retain or assert any intellectual property rights or
+interests in the feedback; (ii) the Company may have development ideas similar
+to the feedback; (iii) the feedback does not contain confidential or
+proprietary information from you or any third party; and (iv) the Company is
+not obligated to maintain confidentiality regarding the feedback.
+
+Third-Party Services and Links
+
+The Service relies on, and may include links to, third-party services that are
+not owned or controlled by the Company. These include, without limitation: (i)
+AI model providers used to power generative AI features; (ii) payment
+processing services; (iii) cloud, hosting, and infrastructure providers; (iv)
+analytics, product telemetry, and marketing platforms used to operate and
+improve the Service and our marketing activities; (v) email and communications
+providers; and (vi) third-party developer tools and integrations. Your use of
+any such third-party services is solely between you and the applicable provider
+and is governed by that provider's terms and policies.
+
+The Company does not control and assumes no responsibility for the content,
+privacy policies, or practices of any third-party websites or services. We do
+not endorse or make any representations regarding the offerings of these
+external entities or their websites.
+
+You acknowledge and agree that the Company is not liable for any damage or
+loss, whether direct or indirect, resulting from or alleged to result from the
+use of or reliance on any content, goods, or services available through
+third-party websites or services.
+
+We strongly recommend reviewing the terms of service and privacy policies of any
+third-party websites or services you visit or use through the Service.
+
+Term and Termination
+
+Term
+
+This agreement begins upon your acceptance and continues as long as the
+services are provided. Subscriptions, and any additional services automatically
+renew for terms equal to the initial term unless canceled prior to renewal. You
+may terminate or downgrade your account by sending a request to our support team
+at support@commandcode.ai, effective at the next renewal period. The Company
+may terminate this agreement with thirty (30) days' notice to your account's
+administrative email or immediately with ten (10) days' notice (or two (2) days
+for nonpayment) if there is a breach.
+
+Survival
+
+Terms that naturally survive termination will remain in effect, including
+sections on payment rights, confidentiality, warranty disclaimers, and
+liability limitations.
+
+Effect of Termination
+
+Upon termination: (i) licenses to the services end, and use must cease; (ii)
+support services will stop; (iii) outstanding fees must be paid; and (iv)
+within fourteen (14) days, both parties must return or destroy each other's
+proprietary information, retaining only one archival copy for compliance
+purposes.
+
+Disclaimer
+
+The services are provided "as is." The Company disclaims all warranties, both
+express and implied, including but not limited to implied warranties of
+merchantability, fitness for a particular purpose, and non-infringement. The
+Company does not guarantee that the services or deliverables will be
+uninterrupted or error-free, nor does it warrant any specific results from
+their use.
+
+Indemnification
+
+You agree to defend, indemnify, and hold harmless the Company and its
+licensees, licensors, employees, contractors, agents, officers, and directors
+from any claims, damages, obligations, losses, liabilities, costs, debts, and
+expenses (including attorney's fees) arising from: (a) your use of and access
+to the service; (b) your violation of any term of these terms; (c) your
+violation of any third-party rights, including intellectual property rights and
+privacy rights; or (d) any claim that your content caused damage to a third
+party. This defense and indemnification obligation will survive these terms and
+your use of the service.
+
+Limitation of Liability
+
+To the maximum extent permitted by law, the Company and its directors,
+employees, partners, agents, suppliers, or affiliates will not be liable for
+any indirect, incidental, special, consequential, or punitive damages,
+including loss of profits, data, use, goodwill, or other intangible losses,
+arising from: (i) your access to or use of (or inability to access or use) the
+service; (ii) any conduct or content of any third party on the service; (iii)
+content obtained from the service; and (iv) unauthorized access, use, or
+alteration of your transmissions or content, whether based on warranty,
+contract, tort (including negligence), or any other legal theory, regardless of
+whether we have been informed of the possibility of such damage.
+
+Exclusions
+
+Some jurisdictions do not allow the exclusion of certain warranties or
+limitations on liability for incidental or consequential damages. Therefore,
+some of the limitations above may not apply to you. In these jurisdictions,
+the Company's liability will be limited to the maximum extent permitted by law.
+
+Governing Law
+
+These terms are governed and construed in accordance with the laws of
+Delaware, United States, without regard to its conflict of law provisions. Our
+failure to enforce any right or provision of these terms will not be considered
+a waiver of those rights. If any provision of these terms is found to be invalid
+or unenforceable by a court, the remaining provisions will remain in effect.
+These terms constitute the entire agreement between us regarding our service,
+and supersede any prior agreements we might have had.
+
+Changes
+
+We reserve the right to modify or replace these terms at any time at our sole
+discretion. If a revision is material, we will provide at least 30 days' notice
+before any new terms take effect. What constitutes a material change is
+determined at our sole discretion. By continuing to access or use our service
+after those revisions become effective, you agree to be bound by the revised
+terms. If you do not agree to the new terms, please stop using the service.
+
+Contact Us
+
+If you have any questions about these Terms, please contact us at
+support@commandcode.ai.

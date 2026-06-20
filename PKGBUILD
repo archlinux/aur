@@ -1,7 +1,7 @@
 # Maintainer: Ismet Togay <ismet.togay@gmail.com>
 
 pkgname=command-code
-pkgver=0.38.4
+pkgver=0.40.0
 pkgrel=1
 pkgdesc='AI coding agent that continuously learns your coding taste'
 arch=('x86_64')
@@ -12,8 +12,8 @@ makedepends=('npm' 'jq')
 options=(!strip)
 noextract=("${pkgname}-${pkgver}.tgz")
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
-        "$pkgname.license")
-sha256sums=('56ea5fe6ffa97f796edc6fd90b35d5c04814cb25ce71112590d558faaf999c9a'
+        "LICENSE")
+sha256sums=('58e57f90aba7e86242758623417a3c685c630ebfe1ea99082d70b3b8440b0066'
             'd0dd3a7697c4b7844529345c317d74edcaa10b9fd495249151cbe653d7421c6c')
 
 package() {
@@ -55,6 +55,6 @@ WRAPPER
         chmod 644 "$pkgjson"
     fi
 
-    install -Dm644 "${srcdir}/command-code.license" \
+    install -Dm644 "${srcdir}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
