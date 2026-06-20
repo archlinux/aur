@@ -2,8 +2,8 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Maintainer: Atay Özcan <atay@oezcan.me>
 pkgname=sentinel-kde
-pkgver=0.8.0
-pkgrel=3
+pkgver=0.8.1
+pkgrel=1
 install=sentinel-kde.install
 # Cargo.toml's release profile strips symbols at link time, so makepkg's
 # debug-package generator has nothing to index — opt out to silence the
@@ -58,7 +58,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Regenerated to a real value by the AUR-publish CI workflow before the
 # PKGBUILD lands on the AUR repo. In-repo copy stays 'SKIP' so dependabot-
 # style updates don't churn this file every release.
-sha256sums=('SKIP')
+sha256sums=('1e068c0b362ca425bbe891994cd7289523c9092db7121c240f2ef7db6967e7c1')
 
 prepare() {
     cd "$pkgname-$pkgver"
