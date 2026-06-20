@@ -24,7 +24,7 @@ makedepends=(git python-build python-installer python-wheel)
 #fi
 
 build() {
-	#cd "$srcdir/$_name"
+	cd "$srcdir/$_name"
 	cd "twuewand"
 	python -m build --wheel --no-isolation
 	cd "../rndaddentropy"
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-	#cd "$srcdir/$_name"
+	cd "$srcdir/$_name"
 	cd "twuewand"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	cd "../rndaddentropy"
