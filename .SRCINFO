@@ -1,0 +1,27 @@
+pkgbase = choir-overlay-git
+	pkgdesc = Wayland Discord voice overlay for Vulkan games (not affiliated with Discord Inc.)
+	pkgver = r65.g25f404f
+	pkgrel = 1
+	url = https://github.com/craftycorvid/choir-overlay
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = vulkan-headers
+	depends = qt6-base
+	depends = vulkan-icd-loader
+	provides = choir-overlay
+	conflicts = choir-overlay
+	noextract = imgui-1.92.5.tar.gz
+	noextract = imgui_1.92.5-1_patch.zip
+	noextract = nlohmann_json-3.12.0.zip
+	source = choir-overlay-git::git+https://github.com/craftycorvid/choir-overlay.git
+	source = imgui-1.92.5.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v1.92.5.tar.gz
+	source = imgui_1.92.5-1_patch.zip::https://wrapdb.mesonbuild.com/v2/imgui_1.92.5-1/get_patch
+	source = nlohmann_json-3.12.0.zip::https://github.com/nlohmann/json/releases/download/v3.12.0/include.zip
+	sha256sums = SKIP
+	sha256sums = 0eb50fe9aeba1a51f96b5843c7f630a32ed2e9362d693c61b87e4fa870cf826d
+	sha256sums = 636e9099a55869f25a95739b345e844c6b42166a0a0d22837ffbedd8e7af0bce
+	sha256sums = b8cb0ef2dd7f57f18933997c9934bb1fa962594f701cd5a8d3c2c80541559372
+
+pkgname = choir-overlay-git
