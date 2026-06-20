@@ -2,7 +2,7 @@
 
 _pkgname="ansible_dev_environment"
 pkgname="ansible-dev-environment"
-pkgver=25.12.2
+pkgver=26.4.0
 pkgrel=1
 pkgdesc="A pip-like install for ansible collections."
 arch=('x86_64')
@@ -13,10 +13,14 @@ makedepends=(python-{build,installer,pip,setuptools,setuptools-scm,wheel})
 checkdepends=('python-pytest')
 optdepends=('ansible: check official ansible collections')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2f3f01c2fccc2a2f9762c1db1cc685858f2e1f0a92ce43c220c9889455973543')
+sha256sums=('94543fe12892bb6f811e1a689d183154aa9aa47409d55e8afaf0c829c3e6988a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # workaround unavailability of setuptools-scm<10.0
+  sed -i 's/setuptools_scm\[simple\].*/setuptools_scm[simple] >= 8.4",  # required for "no-local-version" scheme/' pyproject.toml
+
   export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
   python -m build --wheel --no-isolation
 }

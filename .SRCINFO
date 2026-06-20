@@ -1,6 +1,6 @@
 pkgbase = ansible-dev-environment
 	pkgdesc = A pip-like install for ansible collections.
-	pkgver = 25.12.2
+	pkgver = 26.4.0
 	pkgrel = 1
 	url = https://github.com/ansible/ansible-dev-environment
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = ansible-dev-environment
 	depends = ansible-runner
 	depends = git
 	optdepends = ansible: check official ansible collections
-	source = ansible-dev-environment-25.12.2.tar.gz::https://github.com/ansible/ansible-dev-environment/archive/refs/tags/v25.12.2.tar.gz
-	sha256sums = 2f3f01c2fccc2a2f9762c1db1cc685858f2e1f0a92ce43c220c9889455973543
+	source = ansible-dev-environment-26.4.0.tar.gz::https://github.com/ansible/ansible-dev-environment/archive/refs/tags/v26.4.0.tar.gz
+	sha256sums = 94543fe12892bb6f811e1a689d183154aa9aa47409d55e8afaf0c829c3e6988a
 
 pkgname = ansible-dev-environment
