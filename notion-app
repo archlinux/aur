@@ -10,4 +10,4 @@ fi
 # Launch
 APP_DIR=/usr/lib/notion-app
 cd "$APP_DIR" || exit 1
-exec electron40 "$APP_DIR/app.asar" $NOTION_USER_FLAGS "$@" # https://wiki.archlinux.org/title/Electron_package_guidelines#Using_the_system_electron
+exec electron41 "$APP_DIR/app.asar" $NOTION_USER_FLAGS "$@" # https://wiki.archlinux.org/title/Electron_package_guidelines#Using_the_system_electron
