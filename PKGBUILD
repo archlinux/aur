@@ -1,8 +1,8 @@
-# Maintainer: Bridget Williams <bridget6454 at google's email domain ending in dot com>
+# Maintainer: Bridget Kittson <parasquared at juno dot com>
 
 pkgname=aerofoil-git
-pkgver=1.1.2.r76.gf6069e7
-pkgrel=5
+pkgver=1.1.2.r81.g75e5cce
+pkgrel=1
 # the repo makes no mention of what architectures are supported, so i'll just play it safe for now
 arch=('x86_64')
 pkgdesc='Multiplatform port of Glider PRO, the Macintosh paper airplane game'
