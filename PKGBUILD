@@ -1,6 +1,6 @@
 # Maintainer: hitalin <https://github.com/hitalin>
 pkgname=misskey-notedeck-bin
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc='Misskey deck client for desktop'
 arch=('x86_64')
