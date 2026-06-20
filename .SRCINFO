@@ -1,7 +1,7 @@
 pkgbase = openvino
 	pkgdesc = A toolkit for optimizing and deploying deep learning models
-	pkgver = 2026.2.0
-	pkgrel = 3
+	pkgver = 2026.2.1
+	pkgrel = 1
 	url = https://docs.openvino.ai/
 	arch = x86_64
 	license = Apache-2.0
@@ -23,7 +23,7 @@ pkgbase = openvino
 	makedepends = python-wheel
 	makedepends = snappy
 	options = !emptydirs
-	source = git+https://github.com/openvinotoolkit/openvino.git#commit=52ddc07385712456dd9f8c5ecf05d7e49c6da329?signed
+	source = git+https://github.com/openvinotoolkit/openvino.git#commit=ede283a88e35465f0d680dabbf1f44080f8fc387?signed
 	source = oneDNN-openvinotoolkit::git+https://github.com/openvinotoolkit/oneDNN.git
 	source = git+https://github.com/herumi/xbyak.git
 	source = git+https://github.com/madler/zlib.git
@@ -51,7 +51,7 @@ pkgbase = openvino
 	source = 020-openvino-disable-werror.patch
 	source = 030-openvino-ignore-system-onnx.patch
 	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
-	sha256sums = c33bfd5ecc535a4317c8484637f4e36d34e70832b9ec77c257ae48cf0ae58e71
+	sha256sums = e5ef4309dc42382fbd70779e3db3f39dc18bab83cb42c061e9674dc9351a882c
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -100,7 +100,7 @@ pkgname = openvino-intel-gpu-plugin
 	depends = libstdc++
 	depends = ocl-icd
 	depends = onetbb
-	depends = openvino=2026.2.0
+	depends = openvino=2026.2.1
 	depends = pugixml
 
 pkgname = openvino-intel-npu-plugin
@@ -112,7 +112,7 @@ pkgname = openvino-intel-npu-plugin
 	depends = libstdc++
 	depends = onetbb
 	depends = opencv
-	depends = openvino=2026.2.0
+	depends = openvino=2026.2.1
 	depends = pugixml
 
 pkgname = python-openvino
@@ -120,7 +120,7 @@ pkgname = python-openvino
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	depends = openvino=2026.2.0
+	depends = openvino=2026.2.1
 	depends = python
 	depends = python-numpy
 	depends = python-openvino-telemetry

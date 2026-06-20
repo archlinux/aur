@@ -6,9 +6,9 @@ pkgname=(
     'openvino-intel-gpu-plugin'
     'openvino-intel-npu-plugin'
     'python-openvino')
-pkgver=2026.2.0
-pkgrel=3
-_commit=52ddc07385712456dd9f8c5ecf05d7e49c6da329
+pkgver=2026.2.1
+pkgrel=1
+_commit=ede283a88e35465f0d680dabbf1f44080f8fc387
 pkgdesc='A toolkit for optimizing and deploying deep learning models'
 arch=('x86_64')
 url='https://docs.openvino.ai/'
@@ -58,7 +58,7 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#commit=${_commit}?s
         '010-openvino-change-install-paths.patch'
         '020-openvino-disable-werror.patch'
         '030-openvino-ignore-system-onnx.patch')
-sha256sums=('c33bfd5ecc535a4317c8484637f4e36d34e70832b9ec77c257ae48cf0ae58e71'
+sha256sums=('e5ef4309dc42382fbd70779e3db3f39dc18bab83cb42c061e9674dc9351a882c'
             'SKIP'
             'SKIP'
             'SKIP'
