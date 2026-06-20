@@ -1,7 +1,7 @@
 pkgbase = sonic-screen
 	pkgdesc = SonicDE screen management software
-	pkgver = 6.6.5
-	pkgrel = 2
+	pkgver = 6.7.0
+	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-screen
 	arch = x86_64
 	groups = sonicde
@@ -30,7 +30,7 @@ pkgbase = sonic-screen
 	depends = sonic-screen-library
 	provides = kscreen
 	conflicts = kscreen
-	source = sonic-screen-6.6.5.tar.gz::https://github.com/Sonic-DE/sonic-screen/archive/refs/tags/6.6.5.tar.gz
-	sha256sums = c32c825529a69b30d81beeccce834a48bcc8e922401473210d922024693c6d1a
+	source = sonic-screen-6.7.0.tar.gz::https://github.com/Sonic-DE/sonic-screen/archive/refs/tags/6.7.0.tar.gz
+	sha256sums = cf4767c7497d05b01696eb4c5296c78a72d60735e9a45e93ab066d0e7268d0f7
 
 pkgname = sonic-screen
