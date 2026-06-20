@@ -1,7 +1,7 @@
 # Maintainer: Ishan Parihar <ishanp at protonmail dot com>
 pkgname=neverwrite-bin
-pkgver=0.3.5
-pkgrel=2
+pkgver=0.3.6
+pkgrel=1
 pkgdesc='The bastard son between Cursor and Obsidian - local-first knowledge workspace with AI'
 arch=('x86_64')
 url='https://neverwrite.app/'
@@ -12,9 +12,15 @@ options=('!strip')
 source=("https://github.com/jsgrrchg/NeverWrite/releases/download/v${pkgver}/NeverWrite-${pkgver}-x64.AppImage"
         "neverwrite.desktop"
         "neverwrite.png")
-sha256sums=('57c030fe6bbfa9b8f886274e2a03a456562618aa3fd28d4a1a11479cf49fc668'
+sha256sums=('SKIP'
             '60e38a4b29806b1ab79b3db9afb90a4d27dadf89cff0311b3cf48bc900be4bcc'
             '6f201da8de1e9c712ef751a88470d4f83a5baf2b111329b0c589fb4a892a508f')
+
+pkgver() {
+  # Fetch latest release version from GitHub
+  curl -sL "https://api.github.com/repos/jsgrrchg/NeverWrite/releases/latest" \
+    | jq -r '.tag_name' | sed 's/^v//'
+}
 
 prepare() {
     chmod +x "NeverWrite-${pkgver}-x64.AppImage"

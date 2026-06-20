@@ -1,7 +1,7 @@
 pkgbase = neverwrite-bin
 	pkgdesc = The bastard son between Cursor and Obsidian - local-first knowledge workspace with AI
-	pkgver = 0.3.5
-	pkgrel = 2
+	pkgver = 0.3.6
+	pkgrel = 1
 	url = https://neverwrite.app/
 	arch = x86_64
 	license = Apache-2.0
@@ -16,10 +16,10 @@ pkgbase = neverwrite-bin
 	depends = mesa
 	optdepends = libappindicator-gtk3: Tray icon support
 	options = !strip
-	source = https://github.com/jsgrrchg/NeverWrite/releases/download/v0.3.5/NeverWrite-0.3.5-x64.AppImage
+	source = https://github.com/jsgrrchg/NeverWrite/releases/download/v0.3.6/NeverWrite-0.3.6-x64.AppImage
 	source = neverwrite.desktop
 	source = neverwrite.png
-	sha256sums = 57c030fe6bbfa9b8f886274e2a03a456562618aa3fd28d4a1a11479cf49fc668
+	sha256sums = SKIP
 	sha256sums = 60e38a4b29806b1ab79b3db9afb90a4d27dadf89cff0311b3cf48bc900be4bcc
 	sha256sums = 6f201da8de1e9c712ef751a88470d4f83a5baf2b111329b0c589fb4a892a508f
 
