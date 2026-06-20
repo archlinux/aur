@@ -1,6 +1,6 @@
 pkgbase = hyperhdr-git
 	pkgdesc = Highly optimized open source ambient lighting implementation based on modern digital video and audio stream analysis
-	pkgver = v22.0.0.0beta1.r26.b2f7dc35
+	pkgver = v22.0.0.0beta2.r2.771d0e57
 	pkgrel = 1
 	url = https://github.com/awawa-dev/HyperHDR.git
 	arch = i686
