@@ -1,6 +1,6 @@
 # Maintainer: Kostiantyn Kushnir <chpock@gmail.com>
 pkgname=quickdashboard
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Configurable Quickshell dashboard for Wayland"
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
 provides=("$pkgname=$pkgver")
 conflicts=('quickdashboard-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chpock/quickdashboard/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8afb25ed927bc553a22f25a147185dd81ea936268f4561413b30dbe019e7fd03')
+sha256sums=('565843bd34f07189bf4517d234fad79102e8bbf63e90f5d7962ed48691eacc12')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
