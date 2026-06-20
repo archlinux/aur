@@ -1,6 +1,6 @@
 pkgbase = shed-sh-bin
 	pkgdesc = A Linux shell with a powerful line editor and IPC socket extensibility
-	pkgver = 0.31.0
+	pkgver = 0.32.0
 	pkgrel = 1
 	url = https://github.com/km-clay/shed
 	install = shed.install
@@ -13,9 +13,9 @@ pkgbase = shed-sh-bin
 	provides = shed
 	conflicts = shed-sh
 	options = !strip
-	source = README-0.31.0.md::https://raw.githubusercontent.com/km-clay/shed/v0.31.0/README.md
+	source = README-0.32.0.md::https://raw.githubusercontent.com/km-clay/shed/v0.32.0/README.md
 	sha256sums = e7c6df7e4e0de0f78da1ce890164f924118e4ffb64505a90ac7727d1b626a3c5
-	source_x86_64 = shed-x86_64-0.31.0.tgz::https://github.com/km-clay/shed/releases/download/v0.31.0/shed-0.31.0-x86_64-linux-musl.tar.gz
-	sha256sums_x86_64 = aafbc636a93e1460649aff6f08f695cc3199cb98a0ecae03d9c02ba8c91ca34d
+	source_x86_64 = shed-x86_64-0.32.0.tgz::https://github.com/km-clay/shed/releases/download/v0.32.0/shed-0.32.0-x86_64-linux-musl.tar.gz
+	sha256sums_x86_64 = 602c9a347942d3eee035100390880f10e0e7345b9deca6d2848151b702a591be
 
 pkgname = shed-sh-bin
