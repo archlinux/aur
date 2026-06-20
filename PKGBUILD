@@ -55,8 +55,8 @@ esac
 prepare() {
 	cd "${srcdir}/${_pkgname}_${_pkgvername}_${_CARCH}/" || exit
 
-	msg2 "Patching binary"
-	patchelf --set-rpath "/usr/lib/${_pkgname}" "./${_pkgname}"
+	msg2 "Patching binary with 'patchelf'"
+	patchelf --set-rpath "/usr/lib/${_pkgname}" "./${_pkgname}" --no-sort
 }
 
 package() {
