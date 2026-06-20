@@ -2,7 +2,7 @@
 # Created with assistance from Gemini 3 Flash.
 
 pkgname=tun2proxy
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Tunnel (TUN) interface for SOCKS and HTTP proxies"
 url='https://github.com/tun2proxy/tun2proxy'
@@ -12,7 +12,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=(cargo)
 options=('!debug')
 source=("https://github.com/tun2proxy/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('2df576b413978bff6294ea13e4c5f31485bb5c95d82a213a5a706032dfc451c6')
+sha256sums=('4d13b3aa9da2ea1d640e84e8d9b90628d971a408c1099b6383e1d4ea5191ad93')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
