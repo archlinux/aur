@@ -1,4 +1,42 @@
-# SPDX-FileCopyrightText: 2025 Atay Özcan <atay@oezcan.me>
+# SPDX-FileCopyrightText: 2026 Atay Özcan <atay@oezcan.me>
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Arch makepkg install hook for sentinel / sentinel-git.
-# Intentionally empty — keep pacman output quiet on install / upgrade.
+# Arch makepkg install hook for sentinel-cosmic / sentinel-cosmic-git.
+
+post_install() {
+    cat <<'EOF'
+==> sentinel-cosmic installed. The polkit agent autostarts via
+    /etc/xdg/autostart/sentinel-polkit-agent.desktop on your next
+    COSMIC login. Only one polkit agent may register per session, so
+    disable cosmic's built-in one if it conflicts.
+
+    The agent's D-Bus bypass policy (org.sentinel.Agent) was installed
+    to /usr/share/dbus-1/system.d/ — reload dbus or relog to activate:
+
+      sudo systemctl reload dbus.service
+
+==> To guard sudo / su (optional), copy in the PAM drop-ins:
+
+      install -m644 /usr/share/doc/sentinel-cosmic/sudo /etc/pam.d/sudo
+      install -m644 /usr/share/doc/sentinel-cosmic/su   /etc/pam.d/su
+
+    Diff against the originals before overwriting — silently rewriting
+    /etc/pam.d/sudo is a notorious foot-gun.
+EOF
+}
+
+post_upgrade() {
+    cat <<'EOF'
+==> sentinel-cosmic upgraded. Restart the running agent to pick up the
+    new binary (or just relog):
+
+      pkill -x sentinel-polkit-agent   # autostart respawns it on relog
+EOF
+}
+
+pre_remove() {
+    cat <<'EOF'
+==> sentinel-cosmic is being removed. If you copied the sudo/su PAM
+    drop-ins, restore your distro originals from /etc/pam.d/*.pacsave
+    (or your snapshot).
+EOF
+}

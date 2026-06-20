@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Maintainer: Atay Özcan <atay@oezcan.me>
 pkgname=sentinel-cosmic
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 install=sentinel-cosmic.install
 # Cargo.toml's release profile already strips symbols (`strip = "symbols"`),
@@ -11,7 +11,7 @@ install=sentinel-cosmic.install
 options=('!debug')
 pkgdesc="UAC-style confirmation dialog for Linux privilege escalation (COSMIC + sudo-rs friendly)"
 arch=('x86_64' 'aarch64')
-url="https://github.com/atayozcan/sentinel-cosmic"
+url="https://github.com/atayozcan/sentinel"
 # Was published on AUR as `sentinel` for 0.x; renamed to make the COSMIC
 # target explicit alongside the KDE sibling (sentinel-kde). The old
 # `sentinel` AUR slot is being merged into this one.
@@ -46,16 +46,16 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # the PKGBUILD lands on the AUR repo. The in-repo copy stays at
 # 'SKIP' so dependabot-style updates don't churn this file every
 # release; never commit a real hash here.
-sha256sums=('7ca48f7d71ce17cffecc6f6da37ccb96030857dcc291f95d9df9a4f12c4ecef2')
+sha256sums=('f8bde1135aac13ed548bc5b36ec9f44c610eabe39fa591ef141ac4e112d32651')
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "sentinel-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "sentinel-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     export SENTINEL_PREFIX=/usr
@@ -70,7 +70,7 @@ build() {
     # (if a user sets RUSTFLAGS in /etc/makepkg.conf via cargo-rustflags)
     # composes cleanly.
     export RUSTFLAGS="${RUSTFLAGS:-} -C target-cpu=x86-64-v3"
-    cargo build --frozen --release --workspace
+    cargo build --frozen --release --workspace --exclude sentinel-helper-kde
 
     # Generate shell completions + man pages from the freshly-built binaries.
     install -d target/release/share
@@ -83,13 +83,13 @@ build() {
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "sentinel-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --release --workspace --locked
+    cargo test --frozen --release --workspace --exclude sentinel-helper-kde --locked
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "sentinel-$pkgver"
 
     install -Dm755 target/release/sentinel-helper \
         "$pkgdir/usr/lib/sentinel-helper"
