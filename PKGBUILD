@@ -2,32 +2,38 @@
 
 _pkgname=TermOx
 pkgname=termox
-pkgver=0.4
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="C++17 Terminal User Interface(TUI) Library. "
+pkgdesc="C++20 Terminal User Interface(TUI) Library."
 arch=('x86_64')
 url="https://github.com/a-n-t-h-o-n-y/TermOx"
-license=('custom:MIT')
-depends=('ncurses')
-makedepends=('cmake' 'git')
-source=("${url}/archive/v$pkgver.tar.gz" "patch")
-sha256sums=('b22e30079407226f0e99c20e17e64f98a3d5853726162440035c3703184a2b5b'
-            '1455912434b271fe685a5174efd773845a7aec9ff72ed552eb7fb3262c4fc9d5')
+license=('MIT')
+depends=('icu')
+makedepends=('cmake')
+source=(
+    "${url}/archive/v$pkgver.tar.gz"
+    "https://github.com/a-n-t-h-o-n-y/zzz/archive/9d7c047f47c81a95a5ea824075253618356593a2.tar.gz"
+    "https://github.com/a-n-t-h-o-n-y/Escape/archive/f797e8194b531663f01873f43007d2439fa89276.tar.gz"
+    "https://github.com/a-n-t-h-o-n-y/signals-light/archive/5b873d0aa515a2085138359e69746cd7d7a5362f.tar.gz"
+)
+sha256sums=(
+    'b2143b870183fede6086773b628e32e0af9f692927fd740490087d5583b8dd10'
+    'c6a4863e8b5703de07e5b65b9d4a18309a6a52b85c015b7f326f697c4d01d5df'
+    '8656c767fb43d7b5e57a04235bdf27b6907e88a6f100ad53b9a0fb1aa296541c'
+    'c993af6f8d5b9af200b159a7d7b981b89cdb206a9a2ed17c2d6652a8612f52cb'
+)
 
 prepare() {
     cd "$_pkgname-$pkgver"
-    git clone https://github.com/a-n-t-h-o-n-y/signals-light external/signals-light
-    # just delete tests
-    sed -i '27,31d' external/signals-light/CMakeLists.txt
-    patch -Np1 < ../patch
-
-    cmake -H. -Bbuild \
+    cmake -S . -B build \
       -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
       -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
-      -DCMAKE_INSTALL_LIBDIR=lib \
-      -DBUILD_SHARED_LIBS=OFF \
       -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_INSTALL_PREFIX=/usr
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
+      "-DFETCHCONTENT_SOURCE_DIR_ZZZ=$srcdir/zzz-9d7c047f47c81a95a5ea824075253618356593a2" \
+      "-DFETCHCONTENT_SOURCE_DIR_ESCAPE=$srcdir/Escape-f797e8194b531663f01873f43007d2439fa89276" \
+      "-DFETCHCONTENT_SOURCE_DIR_SIGNALS-LIGHT=$srcdir/signals-light-5b873d0aa515a2085138359e69746cd7d7a5362f"
 }
 
 build() {
@@ -37,18 +43,15 @@ build() {
 
 check() {
     cd "$_pkgname-$pkgver"
-    # no tests atm
-    # cmake --build build -- check
+    # tests are EXCLUDE_FROM_ALL; no default test target
 }
 
 package() {
     cd "$_pkgname-$pkgver"
-    # install is broken so quick and dirty copy
-    cmake --build build -- DESTDIR="$pkgdir/" install
-    mkdir -p "$pkgdir/usr/include/termox"
-    cp -r include/termox "$pkgdir/usr/include/"
-    install -Dm755 build/src/libTermOx.a  -t "$pkgdir/usr/lib"
-    install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
+    mkdir -p "$pkgdir/usr/include"
+    cp -r include/ox "$pkgdir/usr/include/"
+    install -Dm644 build/libTermOx.a -t "$pkgdir/usr/lib"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: set softtabstop=4 shiftwidth=4 expandtab:

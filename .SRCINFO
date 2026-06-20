@@ -1,17 +1,19 @@
 pkgbase = termox
 	pkgdesc = C++17 Terminal User Interface(TUI) Library.
-	pkgver = 0.4
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/a-n-t-h-o-n-y/TermOx
 	arch = x86_64
-	license = custom:MIT
+	license = MIT
 	makedepends = cmake
-	makedepends = git
-	depends = ncurses
-	source = https://github.com/a-n-t-h-o-n-y/TermOx/archive/v0.4.tar.gz
-	source = patch
-	sha256sums = b22e30079407226f0e99c20e17e64f98a3d5853726162440035c3703184a2b5b
-	sha256sums = 1455912434b271fe685a5174efd773845a7aec9ff72ed552eb7fb3262c4fc9d5
+	depends = icu
+	source = https://github.com/a-n-t-h-o-n-y/TermOx/archive/v2.0.0.tar.gz
+	source = https://github.com/a-n-t-h-o-n-y/zzz/archive/9d7c047f47c81a95a5ea824075253618356593a2.tar.gz
+	source = https://github.com/a-n-t-h-o-n-y/Escape/archive/f797e8194b531663f01873f43007d2439fa89276.tar.gz
+	source = https://github.com/a-n-t-h-o-n-y/signals-light/archive/5b873d0aa515a2085138359e69746cd7d7a5362f.tar.gz
+	sha256sums = b2143b870183fede6086773b628e32e0af9f692927fd740490087d5583b8dd10
+	sha256sums = c6a4863e8b5703de07e5b65b9d4a18309a6a52b85c015b7f326f697c4d01d5df
+	sha256sums = 8656c767fb43d7b5e57a04235bdf27b6907e88a6f100ad53b9a0fb1aa296541c
+	sha256sums = c993af6f8d5b9af200b159a7d7b981b89cdb206a9a2ed17c2d6652a8612f52cb
 
 pkgname = termox
-
