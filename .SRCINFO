@@ -2,7 +2,7 @@ pkgbase = aeroshell-libplasma-git
 	pkgdesc = Plasma library and runtime components, with AeroShell patches
 	pkgver = 6.7.0_18030.rd1c5ad5a1
 	pkgrel = 1
-	url = https://github.com/aeroshell-desktop/libplasma
+	url = https://gitgud.io/aeroshell/libplasma
 	arch = x86_64
 	license = LGPL-2.0-or-later
 	makedepends = git
@@ -40,7 +40,7 @@ pkgbase = aeroshell-libplasma-git
 	conflicts = aeroshell-libplasma
 	replaces = plasma-framework
 	options = !debug
-	source = aeroshell-libplasma-git::git+https://github.com/aeroshell-desktop/libplasma.git
+	source = aeroshell-libplasma-git::git+https://gitgud.io/aeroshell/libplasma.git
 	sha256sums = SKIP
 
 pkgname = aeroshell-libplasma-git
