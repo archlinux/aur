@@ -1,0 +1,5 @@
+[kari-bin]
+source = "github"
+github = "Dhairya3391/kari"
+use_latest_release = true
+prefix = "v"
