@@ -1,6 +1,6 @@
 _pkgname=plasma-splash-catppuccin-mocha
 pkgname=$_pkgname-git
-pkgver=0.2.6.r3.g0909503
+pkgver=0.2.7.r0.g4e2f142
 pkgrel=1
 pkgdesc="Soothing pastel splash screens for KDE Plasma - Mocha"
 arch=(any)
