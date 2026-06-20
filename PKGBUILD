@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-rs-bin
 pkgdesc="Modal text editor for writers written in Rust"
 
-pkgver=0.1.61
+pkgver=0.1.62
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('75a42e32d7befee17d22336772024994ad71d811ca48b045f8505dc3ced9a770')
-sha256sums_x86_64=('e06cdf2446a2ef773184f8e416da6bdedba173bfa8ac990d34b36962f7c64cb6')
-sha256sums_aarch64=('77334d21afce66b986271eeff5ba044c07b464e6f9f4fe0b37767e7d43f5c49d')
+sha256sums=('1fe2fcbdd36ad50fb1d5c33fedf5f7b600d5f48510396f1c77479cc06b94f370')
+sha256sums_x86_64=('78a0ee1e63457df0773bc7e5930a91e6f7ece3a233d00196be881329a7ade76b')
+sha256sums_aarch64=('87131402f8f5d0ab9dace3d935ed59cbc4fc3c94bfc27854bd6d2223bacb8fe1')
 
 
 package() {
