@@ -1,6 +1,6 @@
 pkgbase = nanocoder
 	pkgdesc = A beautiful local-first coding agent running in your terminal
-	pkgver = 1.27.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://github.com/Nano-Collective/nanocoder
 	changelog = changelog.md
@@ -10,14 +10,16 @@ pkgbase = nanocoder
 	makedepends = jq
 	depends = bash
 	depends = nodejs
+	depends = yarn
+	depends = libx11
 	provides = nanocoder
 	replaces = nodejs-nanocoder
-	noextract = nanocoder-1.27.0.tgz
+	noextract = nanocoder-1.28.0.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = https://registry.npmjs.org/@nanocollective/nanocoder/-/nanocoder-1.27.0.tgz
-	b2sums = 3d205cbfd5c0a0e6e090c91dbdbf9e175a0d93bac637d2080d96dce04d79003012edbcbfaba78734883a63d3c7feffb43b4525ee1fb601d8e50adf685cc68082
+	source = https://registry.npmjs.org/@nanocollective/nanocoder/-/nanocoder-1.28.0.tgz
+	b2sums = 1ffe2423813d666306a7d29d78b6d1d46421d1725a9d643b3f016bed534ee7567bff8912f8dce0a912fbcc5758238a2a36684ab4cd0bd4b11d1b03081eb5c87a
 
 pkgname = nanocoder

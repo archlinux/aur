@@ -2,7 +2,7 @@
 
 pkgname=nanocoder
 pkgauthor=Nano-Collective
-pkgver=1.27.0
+pkgver=1.28.0
 pkgrel=1
 
 _npmname=nanocoder
@@ -14,10 +14,11 @@ url="https://github.com/${pkgauthor}/${pkgname}"
 _urlraw="https://raw.githubusercontent.com/${pkgauthor}/${pkgname}/v${pkgver}"
 license=("MIT")
 
-replaces=("nodejs-${pkgname}")
-depends=("bash" "nodejs")
-makedepends=("npm" "jq")
 provides=("${pkgname}")
+replaces=("nodejs-${pkgname}")
+
+makedepends=("npm" "jq")
+depends=("bash" "nodejs" "yarn" "libx11")
 
 options=(!strip emptydirs staticlibs zipman)
 changelog="changelog.md"
@@ -25,7 +26,7 @@ changelog="changelog.md"
 source=("https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
 
-b2sums=('3d205cbfd5c0a0e6e090c91dbdbf9e175a0d93bac637d2080d96dce04d79003012edbcbfaba78734883a63d3c7feffb43b4525ee1fb601d8e50adf685cc68082')
+b2sums=('1ffe2423813d666306a7d29d78b6d1d46421d1725a9d643b3f016bed534ee7567bff8912f8dce0a912fbcc5758238a2a36684ab4cd0bd4b11d1b03081eb5c87a')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
