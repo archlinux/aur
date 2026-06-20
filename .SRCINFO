@@ -1,6 +1,6 @@
 pkgbase = material-gnome-manager-git
 	pkgdesc = GTK4/Libadwaita manager for the Material GNOME theme
-	pkgver = 0.1.0.r4.gdb24b00
+	pkgver = 0.1.0.r6.g5c6b68d
 	pkgrel = 1
 	url = https://github.com/AdityaHebballe/Material-Gnome-Manager
 	arch = any

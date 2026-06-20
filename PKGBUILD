@@ -2,7 +2,7 @@
 
 pkgname=material-gnome-manager-git
 _pkgname=Material-Gnome-Manager
-pkgver=0.1.0.r4.gdb24b00
+pkgver=0.1.0.r6.g5c6b68d
 pkgrel=1
 pkgdesc='GTK4/Libadwaita manager for the Material GNOME theme'
 arch=('any')
