@@ -1,13 +1,13 @@
 # Maintainer: dressedinblack5 <dressedinblack5@proton.me>
 pkgname=attack-shark-x11-electron
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform driver for the Attack Shark X11 gaming mouse with Electron GUI"
 arch=('x86_64')
 url="https://github.com/dressedinblack5/attack-shark-x11-electron"
 license=('MIT')
 depends=('electron' 'libusb')
-makedepends=('bun')
+makedepends=('bun' 'rust')
 options=('!strip')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('ea9b252b5f43a2ebe3d583a744a59bb4fc21fcc50c44558d51f890602ad95da1')
@@ -27,10 +27,8 @@ package() {
   install -d "$pkgdir/usr/lib/$pkgname"
   cp -r out/* "$pkgdir/usr/lib/$pkgname/"
 
-  install -d "$pkgdir/usr/lib/$pkgname"
+  cp -a node_modules "$pkgdir/usr/lib/$pkgname/"
   cp package.json "$pkgdir/usr/lib/$pkgname/"
-  cd "$pkgdir/usr/lib/$pkgname"
-  bun install --production
 
   install -d "$pkgdir/usr/bin"
   echo '#!/bin/sh' > "$pkgdir/usr/bin/attack-shark-x11-electron"
@@ -39,5 +37,5 @@ package() {
 
   install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$srcdir/$pkgname-$pkgver/assets/attack-shark-x11-electron.desktop" "$pkgdir/usr/share/applications/attack-shark-x11-electron.desktop"
-  install -Dm644 "$srcdir/$pkgname-$pkgver/assets/cs-mouse.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/attack-shark-x11.svg"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/assets/attack-shark-x11.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/attack-shark-x11.svg"
 }
