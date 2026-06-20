@@ -1,0 +1,17 @@
+pkgbase = lsimg-git
+	pkgdesc = Like ls, but for images — thumbnail grid in your terminal (kitty/iTerm2/sixel)
+	pkgver = r1.d052eb7
+	pkgrel = 1
+	url = https://github.com/prietus/lsimg
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = imagemagick
+	optdepends = kitty: kitten icat helper for the kitty graphics protocol
+	provides = lsimg
+	conflicts = lsimg
+	source = lsimg::git+https://github.com/prietus/lsimg.git
+	sha256sums = SKIP
+
+pkgname = lsimg-git
