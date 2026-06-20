@@ -2,7 +2,7 @@
 
 _name=llama-index-core
 pkgname=python-${_name}
-pkgver=0.14.21
+pkgver=0.14.22
 pkgrel=1
 pkgdesc="The core python package to the LlamaIndex library"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-filetype' 'python-dataclasses-json' 'python-banks' 'py
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=()
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('29706defbe2f429d28330a4eea010f9d92d42db92539382f8c800e19590cae45')
+sha256sums=('1384410f89bdbd32349aab444ef4f5c828c338787bc65bd1ffd8e86dfb44ac41')
 
 build() {
     cd "${srcdir}"/${_name//-/_}-${pkgver}
