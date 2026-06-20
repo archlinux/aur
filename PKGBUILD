@@ -4,7 +4,7 @@
 # pkgver is set to 5.0.0+dev is replaced in the update-aur.sh script
 
 pkgname=system-bridge-git
-pkgver=5.6.1.r5817.gd2f1253
+pkgver=5.6.2.r5821.ga9b863e
 pkgrel=1
 pkgdesc="A bridge for your systems (git version)"
 makedepends=('git' 'mise')
@@ -24,6 +24,10 @@ build() {
   cd "$pkgname"
   export MISE_DATA_DIR="${srcdir}/.mise"
   export MISE_CACHE_DIR="${srcdir}/.cache/mise"
+  # Isolate from the building user's global mise config so the build only
+  # installs this repo's mise.toml tools (bun, go, node) instead of their
+  # entire personal toolset.
+  export MISE_CONFIG_DIR="${srcdir}/.config/mise"
   export PATH="${MISE_DATA_DIR}/shims:${PATH}"
   export STATIC_EXPORT=true
   export CGO_ENABLED=1
