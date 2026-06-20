@@ -1,6 +1,6 @@
 pkgbase = pake-cli
 	pkgdesc = Turn any webpage into a desktop app with one command (Tauri/Rust-based CLI)
-	pkgver = 3.11.7
+	pkgver = 3.11.10
 	pkgrel = 1
 	url = https://github.com/tw93/Pake
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = pake-cli
 	optdepends = rust: for building apps with pake-cli
 	optdepends = rustup: for building apps with pake-cli (alternative to rust)
 	options = !debug
-	source = https://registry.npmjs.org/pake-cli/-/pake-cli-3.11.7.tgz
-	b2sums = 63ffd4070d6b1a2ef0cd45e103c6b11274ade17cd023b2a2267136325af4338fbd308095e098f764f948a3b70b8b8875aafa190fd9f3ffcde559e3040b2649f7
+	source = https://registry.npmjs.org/pake-cli/-/pake-cli-3.11.10.tgz
+	b2sums = 3585a0ea3f4409122be8478951fce352fcce7c98d0bc3c1d909a329479a12f5da58ff3bc29c3361ced2f4ba0d509e47cf087d6e03323927a5993c43684f9f8ba
 
 pkgname = pake-cli
