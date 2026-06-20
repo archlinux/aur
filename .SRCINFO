@@ -1,0 +1,17 @@
+pkgbase = fff-cr-bin
+	pkgdesc = 📁 A simple file manager written in Crystal.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ozgurulukir/fff.cr
+	arch = any
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = pcre2
+	depends = readline
+	provides = fff-cr
+	conflicts = fff-cr
+	source = https://github.com/ozgurulukir/fff.cr/archive/v0.3.0.tar.gz
+	sha256sums = efc9937d2d148361a4e8ca25b6fda63ede9ad1da1c8f5cfb8510f088c1d855e9
+
+pkgname = fff-cr-bin
