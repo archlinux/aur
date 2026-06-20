@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-adwaita-colors-home
-pkgver=4
+pkgver=7
 pkgrel=1
 pkgdesc="Official companion extension for the Adwaita Colors icon theme."
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=(
   'jq'
 )
 source=("git+https://github.com/dpejoh/Adwaita-Colors-Home.git#tag=v$pkgver")
-sha256sums=('3de78fc8f63a493cd9fb3dc002ceffc2b3bf41c47d79088bccf86bf64f661ca4')
+sha256sums=('6e19c9045578071eaaf11f984d9b761bf36e0f153370692e198c250d747fb9d7')
 
 build() {
   cd Adwaita-Colors-Home
