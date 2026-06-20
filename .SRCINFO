@@ -8,6 +8,7 @@ pkgbase = aeroshell-smod-git
 	makedepends = git
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
+	makedepends = vulkan-headers
 	depends = gcc-libs
 	depends = glibc
 	depends = kconfig

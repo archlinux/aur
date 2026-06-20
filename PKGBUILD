@@ -27,7 +27,8 @@ depends=(gcc-libs
          qt6-base)
 makedepends=(git
              extra-cmake-modules
-             kdoctools)
+             kdoctools
+             vulkan-headers)
 options=('!debug')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
