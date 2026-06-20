@@ -14,7 +14,7 @@ install=.install
 
 source_x86_64=("Clash.Verge_${pkgver}_amd64.deb::${url}/releases/download/autobuild/Clash.Verge_${pkgver}_amd64.deb")
 
-sha256sums_x86_64=('01da91d99b42d6cc091bf007d780ae4a480778d103385741c3072d7bd1bb6beb')
+sha256sums_x86_64=('a9df1f1d2b5a2d8f9c335ad79584cd305f2323f6f4813c4c3fc9ba5574c4ba30')
 
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
