@@ -1,26 +1,27 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=orca-slicer-git
-pkgver=2.3.2.r28108.f71e09a
+pkgver=2.4.0.r29400.b8dd2d3
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
 license=('AGPL-3.0-only')
-depends=('bash' 'cairo' 'dbus' 'expat' 'fontconfig' 'freetype2' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 
-         'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'hicolor-icon-theme' 'libglvnd' 'libjpeg-turbo' 'libspnav'
-         'libtiff' 'libx11' 'pango' 'python' 'ttf-nanum' 'wayland' 'webkit2gtk-4.1' 'zlib' 'zstd')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'glew' 'libigl' 'm4' 'ninja' 'pkgconf' 'wayland-protocols')
-optdepends=('mesa: Enables Zink fallback workaround for NVIDIA on Wayland'
-            'mesa-utils: for detecting renderer'
-            'nvidia-utils: for querying driver version')
+depends=('bash' 'cairo' 'dbus' 'expat' 'fontconfig' 'freetype2' 'gdk-pixbuf2' 'glib2' 'glibc' 'gspell' 'gstreamer'
+         'gst-plugins-bad-libs' 'gtk3' 'hicolor-icon-theme' 'libgcc' 'libglvnd' 'libjpeg-turbo' 'libspnav'
+         'libstdc++' 'libx11' 'libxkbcommon' 'mesa' 'mesa-utils' 'pango' 'python' 'wayland' 'webkit2gtk-4.1' 'zlib')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'glew' 'libigl' 'm4' 'ninja' 'pkgconf' 'wayland-protocols'
+              'ccache' 'python-numpy' 'libnotify' 'libmspack' 'superlu')
+optdepends=('nvidia-utils: for querying driver version')
 options=('!debug' '!emptydirs')
 provides=('orca-slicer')
 conflicts=('orca-slicer')
-source=($pkgname::git+https://github.com/SoftFever/OrcaSlicer.git
+source=($pkgname::git+https://github.com/OrcaSlicer/OrcaSlicer.git
         orca-slicer-wrapper.sh)
 b2sums=('SKIP'
-        'f32c48ed4bdb353c4408aa17fff76fa2bc5988f2b681be2c6f61fb3520cbb4d783649f39bc0f354bc99b127a31e5ee3b1c1a8fc7352a35fb651e0e336dd0ddb5')
+        'f32c48ed4bdb353c4408aa17fff76fa2bc5988f2b681be2c6f61fb3520cbb4d783649f39bc0f354bc99b127a31e5ee3b1c1a8fc7352a35fb651e0e336dd0ddb5'
+        '91c026d80fd33eafb65e6d2155283e0c13c349ced2b249819adf49b9873364a030ae0ad4909d0bff2dc44bea84e1c05096db2870b0abd0ad2b4ab8d3cabf0d9a'
+        'f39c0af2859c76c9b83819119209d1ac51cb070fa0a426650fc11f720fe989c82d334589a2d24f2341ca645d6a5caaa10e2663de45a5049f7630eaab3075dffa')
 
 pkgver() {
   cd $pkgname
@@ -41,8 +42,13 @@ prepare() {
 build() {
   cd $pkgname
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
-  
-  cmake \
+
+  jobs=4 # just a sane default, if it isn't set in MAKEFLAGS
+  if [[ $MAKEFLAGS =~ -j([0-9]+) ]]; then
+    jobs="${BASH_REMATCH[1]}"
+  fi
+
+   cmake \
     -G Ninja \
     -S deps \
     -B deps/build \
@@ -50,7 +56,7 @@ build() {
     -DDEP_DOWNLOAD_DIR="$PWD/deps/DL_CACHE" \
     -DCOLORED_OUTPUT=ON \
     -DDEP_WX_GTK3=ON
-  ninja -C deps/build
+  ninja -C deps/build -j"$jobs"
 
   cmake \
     -G Ninja \
@@ -63,10 +69,10 @@ build() {
     -DORCA_TOOLS=1 \
     -DSLIC3R_FHS=1 \
     -DSLIC3R_GTK=3
-  ninja -C build
-  
+  ninja -C build -j"$jobs"
+
   # add localizations
-  ./scripts//run_gettext.sh --full
+  ./scripts/run_gettext.sh --full
 }
 
 package() {
