@@ -1,0 +1,6 @@
+# makepkg fetches sources at build time; never track build artifacts.
+*.tar.gz
+*.tar.zst
+*.pkg.tar.*
+/src/
+/pkg/
