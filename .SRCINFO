@@ -1,0 +1,16 @@
+pkgbase = neostab
+	pkgdesc = yaml-inspired fstab generator
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zulc22/neostab
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/n/neostab/neostab-0.1.0.tar.gz
+	sha256sums = 6db067926b3d3519667116c998ac65f852fb9b7450815de78a332be71782f8f3
+
+pkgname = neostab
