@@ -2,10 +2,10 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgname=ffmpeg-full
-pkgver=8.1.1
+pkgver=8.1.2
 pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
-_whispercpp_ver='1.8.4'
+_whispercpp_ver='1.9.1'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://ffmpeg.org/'
@@ -173,10 +173,10 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch'
         '060-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
         'LICENSE')
-sha256sums=('b6863adde98898f42602017462871b5f6333e65aec803fdd7a6308639c52edf3'
+sha256sums=('464beb5e7bf0c311e68b45ae2f04e9cc2af88851abb4082231742a74d97b524c'
             'SKIP'
             'SKIP'
-            'b26f30e52c095ccb75da40b168437736605eb280de57381887bf9e2b65f31e66'
+            '147267177eef7b22ec3d2476dd514d1b12e160e176230b740e3d1bd600118447'
             'ff6dabc3cbef98d22cc8f081343d5c66b2564b3a898c2dbcc88baa5017d80232'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
             '73e516bd771024f100983d0b7a5d43b49fd1e992c83e6caec445b7338e79e8c2'
