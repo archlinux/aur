@@ -2,11 +2,11 @@
 # Created with assistance from Claude (Anthropic)
 
 pkgname=iris-yummy-anime
-pkgver=0.2.4
+pkgver=0.2.4.1
 pkgrel=1
 pkgdesc="GTK4 client for Yummy Anime streaming service"
 arch=('x86_64')
-url="https://altlinux.space/x1z53/iris"
+url="https://altlinux.space/alt-gnome/iris"
 license=('GPL-3.0-only')
 provides=('yummy-anime-gtk')
 replaces=('yummy-anime-gtk')
