@@ -20,11 +20,10 @@
 : ${_install_path:=usr/lib}
 : ${_wmclass:=floorp}
 
-: ${_runtime_commit:=07adb8dbcb94252bcba77dc92dc8bf2e1a8341db} # daily-907
-
+: ${_runtime_commit:=838d2c243625a5e0347bc1cf7fe4106ceabdb575} # daily-952
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.14.2
+pkgver=12.15.2
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -113,22 +112,12 @@ source=(
   "$_pkgname-runtime-${_runtime_commit::7}.$_pkgext"::"https://github.com/Floorp-Projects/Floorp-Runtime/archive/$_runtime_commit.$_pkgext"
   "floorp-projects.floorp-core"::"git+https://github.com/Floorp-Projects/Floorp-core.git"
   "$_pkgname.desktop"
-
-  # Fix for glibc 2.43
-  0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
-  0002-Fix-sandbox-to-build-with-glibc-2.43.patch
-
-  # Fix for clang 22
-  0003-Use-wasm32-wasip1-target.patch
 )
 sha256sums=(
-  'e9cb28e55ce33787a67ce063c50eb97b8a2786f997db7b1d1be8868039cd0f52'
+  '3a665f47d25bd42ceadc80d26ba042fcaac03b7db2dbb473061f036a1249d410'
   'SKIP'
   'SKIP'
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
-  'c2aaff2a743c738edbf02d7be816c30fe3a5acb2d3dcb7a3906357a9f2ed438f'
-  '8d2182ae8660474ac567482fe6658af77f3b402314e361c846528ae171586245'
-  '28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89'
 )
 
 _deno() {
