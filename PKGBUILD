@@ -1,6 +1,6 @@
 # Maintainer: Máté Molnár <molnar.mate@zengo.eu>
 pkgname=agent-session-manager
-pkgver=0.10.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Native GTK4 desktop app to manage and resume AI coding agent sessions (Claude Code, Cursor)"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 optdepends=('claude-code: resume Claude Code sessions'
             'cursor-agent: resume Cursor sessions')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c06af17b900d8e317c140ce6ee3233a7410f5155ee028f94fce249f10fd5d143')
+sha256sums=('59004120002cd1bb7bbe942e00be7349947a85644295bcfeb5ee27f6648d2bf9')
 
 build() {
   cd "agent-session-manager-$pkgver"

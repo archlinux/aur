@@ -1,6 +1,6 @@
 pkgbase = agent-session-manager
 	pkgdesc = Native GTK4 desktop app to manage and resume AI coding agent sessions (Claude Code, Cursor)
-	pkgver = 0.10.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/r4nd3l/agent-session-manager
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = agent-session-manager
 	depends = vte4
 	optdepends = claude-code: resume Claude Code sessions
 	optdepends = cursor-agent: resume Cursor sessions
-	source = agent-session-manager-0.10.0.tar.gz::https://github.com/r4nd3l/agent-session-manager/archive/refs/tags/v0.10.0.tar.gz
-	sha256sums = c06af17b900d8e317c140ce6ee3233a7410f5155ee028f94fce249f10fd5d143
+	source = agent-session-manager-1.0.0.tar.gz::https://github.com/r4nd3l/agent-session-manager/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 59004120002cd1bb7bbe942e00be7349947a85644295bcfeb5ee27f6648d2bf9
 
 pkgname = agent-session-manager
