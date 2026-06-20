@@ -1,6 +1,6 @@
 pkgbase = uutils-findutils
 	pkgdesc = Rust implementation of findutils
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/uutils/findutils
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = uutils-findutils
 	depends = glibc
 	depends = libgcc
 	depends = oniguruma
-	source = uutils-findutils-0.9.0-src.tar.gz::https://github.com/uutils/findutils/archive/refs/tags/0.9.0.tar.gz
-	sha256sums = 8b3eb813cac9fe519b77ee36705fdcd46b188d8807e98c0bb7126fabd8f64dda
+	source = uutils-findutils-0.9.1-src.tar.gz::https://github.com/uutils/findutils/archive/refs/tags/0.9.1.tar.gz
+	sha256sums = ac60fa34c09110a386c3782e94f5ca3f9294f64edf82855637c630c36de65ed3
 
 pkgname = uutils-findutils
