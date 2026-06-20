@@ -9,6 +9,8 @@ pkgbase = nls
 	makedepends = git
 	makedepends = go
 	source = git+https://github.com/nolight132/nls.git#tag=v0.1.0
+	source = LICENSE
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = nls
