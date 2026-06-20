@@ -1,0 +1,21 @@
+pkgbase = material-gnome-manager-git
+	pkgdesc = GTK4/Libadwaita manager for the Material GNOME theme
+	pkgver = 0.1.0.r3.gaf457a6
+	pkgrel = 1
+	url = https://github.com/AdityaHebballe/Material-Gnome-Manager
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	depends = git
+	depends = gtk4
+	depends = libadwaita
+	depends = python
+	depends = python-gobject
+	optdepends = matugen: generate color palettes from wallpapers or images
+	provides = material-gnome-manager
+	conflicts = material-gnome-manager
+	source = Material-Gnome-Manager::git+https://github.com/AdityaHebballe/Material-Gnome-Manager.git
+	sha256sums = SKIP
+
+pkgname = material-gnome-manager-git
