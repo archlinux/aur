@@ -2,7 +2,7 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 
 pkgname='carapace-ffmpeg-bin'
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='An FFmpeg argstream lexer and completer.'
 url='https://github.com/carapace-sh/carapace-ffmpeg'
@@ -12,13 +12,13 @@ provides=('carapace-ffmpeg')
 conflicts=('carapace-ffmpeg')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/carapace-sh/carapace-ffmpeg/releases/download/v${pkgver}/carapace-ffmpeg_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('5c3517ea83a935a777c7c54edba33cc2e1839dc630061faab4791147858c3250')
+sha256sums_aarch64=('e20011b81cef60a1842003d212e04a15749141ba62b71b3e911bc4449159fcb3')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/carapace-sh/carapace-ffmpeg/releases/download/v${pkgver}/carapace-ffmpeg_${pkgver}_linux_386.tar.gz")
-sha256sums_i686=('79717fae5ac4e94040b4b1ff5c17e642b646b265eb5fe3ccac50a80b7b8f8f57')
+sha256sums_i686=('d48214a5bc2bb67477aad12332c6df8f66ef62a67a737f8bd022c59d0ae3fc1b')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/carapace-sh/carapace-ffmpeg/releases/download/v${pkgver}/carapace-ffmpeg_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('f595af5873a80bf5363e406b407caa335a4ce0f8e61cad98ef8f75df60c627e8')
+sha256sums_x86_64=('6cbfe7f38b03b62bbe02e9c9988a29f4c941b9caf26ea7830f08b80905544a71')
 
 package() {
   install -Dm755 "./carapace-ffmpeg" "${pkgdir}/usr/bin/carapace-ffmpeg"
