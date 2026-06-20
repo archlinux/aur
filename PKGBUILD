@@ -1,7 +1,7 @@
 # Maintainer: LIghtJUNction <lightjunction@users.noreply.github.com>
 
 pkgname=cortexfs-git
-pkgver=0.1.0.r68.gc6f9f22
+pkgver=0.1.0.r78.g52e12af
 pkgrel=1
 pkgdesc="Provider-neutral AI API FUSE filesystem"
 arch=('x86_64')
