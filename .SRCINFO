@@ -1,6 +1,6 @@
 pkgbase = murmur-bin
 	pkgdesc = A native, opinionated IRC client. Subtle by default. IRCv3-ready. (prebuilt binary)
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/prietus/murmur
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = murmur-bin
 	depends = glibc
 	optdepends = hunspell-en_us: English autocomplete (ghost text)
 	optdepends = hunspell-es_es: Spanish autocomplete (ghost text)
-	provides = murmur=0.4.1
+	provides = murmur=0.4.2
 	conflicts = murmur
-	source_x86_64 = murmur-0.4.1-x86_64.tar.gz::https://github.com/prietus/murmur/releases/download/v0.4.1/murmur-x86_64-unknown-linux-gnu.tar.gz
-	source_x86_64 = murmur-0.4.1-extras.tar.gz::https://github.com/prietus/murmur/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums_x86_64 = b266a0ec960ab25aeff8783c9b87c1ff360a0f93f77164e63201f1ab6b308752
-	sha256sums_x86_64 = 22883ac194c18f8f71dc14ac3c71028e89f7b597f557f3ea97061aae90641066
+	source_x86_64 = murmur-0.4.2-x86_64.tar.gz::https://github.com/prietus/murmur/releases/download/v0.4.2/murmur-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = murmur-0.4.2-extras.tar.gz::https://github.com/prietus/murmur/archive/refs/tags/v0.4.2.tar.gz
+	sha256sums_x86_64 = 7bb92d5bd02926bae74922c0df4bbc7a2d90fa02eee9e08e516e5b3bb3bbbbb9
+	sha256sums_x86_64 = 10b37353455d3c57c4d5a116785a1fee613dac4f7103064a0c3ff3afa56522a1
 
 pkgname = murmur-bin
