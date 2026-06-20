@@ -1,6 +1,7 @@
-# Maintainer: Marco Rodolfi <marco dot rodolfi at tuta dot io>
-# Contributor: gaelic < gaelic at luchmhor dot net>
-# Contributor: Peter Reschenhofer < peterreschenhofer at gmail dot com >
+# Maintainer: Ahmet Arda Kavakcı <ahmetardakavakci at gmail dot com>
+# Contributor: Marco Rodolfi <marco dot rodolfi at tuta dot io>
+# Contributor: gaelic <gaelic at luchmhor dot net>
+# Contributor: Peter Reschenhofer <peterreschenhofer at gmail dot com>
 
 pkgname=gams
 pkgver=54.1.0
@@ -17,7 +18,7 @@ options=('!strip')
 source=("$pkgname-$pkgver.exe::https://d37drm4t2jghv5.cloudfront.net/distributions/$pkgver/linux/linux_x64_64_sfx.exe"
   "gams-studio.desktop")
 sha256sums=('527a5c23c3910a47bf9fdb363ae04e9876094910de7a29ea30867c974c38dbb1'
-            'e05cf76f5980b5a44c35dd812afafde262a53a00fc9fa89bcbca68e26a8edb16')
+  'e05cf76f5980b5a44c35dd812afafde262a53a00fc9fa89bcbca68e26a8edb16')
 
 package() {
   install -d "$pkgdir/opt/gams" "$pkgdir/usr/bin"
