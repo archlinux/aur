@@ -9,7 +9,7 @@
 # Contributor: Mika Fischer <mika.fischer@zoopnet.de>
 
 pkgname="soci"
-pkgver="4.1.3"
+pkgver="4.1.4"
 pkgrel="1"
 pkgdesc="C++ database access library."
 arch=("x86_64")
@@ -23,7 +23,7 @@ optdepends=("libfbclient: Firebird"
     "postgresql: PostgreSQL")
 conflicts=("soci-git")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("d3285ae9bd658c727a73296356fce485126a86eb9f20f71fb290af2ffa3deea5be99b7719d3dd1725934057e15db97e312351d892dc1bebe90c229ed4e3c4639")
+sha512sums=("0553fb7856c77158b229c33fb7a14402f9d740825db5b0c0c4cbbbc2596faa56b099f7e13bece5af506311c393e6fcb4e8b448522d15bba57c6dd0d23e6467c1")
 
 _compile()
 {
