@@ -1,0 +1,20 @@
+pkgbase = geolibre-bin
+	pkgdesc = Lightweight, cloud-native GIS platform for visualizing and analyzing geospatial data
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://geolibre.app/
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	optdepends = xdotool: global keyboard shortcuts
+	provides = geolibre
+	conflicts = geolibre
+	noextract = geolibre-bin-1.5.0.deb
+	options = !strip
+	options = !debug
+	source = geolibre-bin-1.5.0.deb::https://github.com/opengeos/GeoLibre/releases/download/v1.5.0/GeoLibre.Desktop_1.5.0_amd64.deb
+	sha256sums = d1591ab243795fd51bf4653b20adec9836a21dea2d44b8ea403f70fb3bed2595
+
+pkgname = geolibre-bin
