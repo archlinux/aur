@@ -3,21 +3,21 @@
 # Maintainer: Soramane <soramane32 at gmail dot com>
 
 pkgname='caelestia-cli'
-pkgver=1.0.8
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='The main cli for the Caelestia dotfiles'
 arch=('any')
 url='https://github.com/caelestia-dots/cli'
 license=('GPL-3.0-only')
 depends=('python' 'python-pillow' 'python-materialyoucolor' 'libnotify' 'swappy' 'grim' 'dart-sass'
-         'app2unit' 'wl-clipboard' 'slurp' 'gpu-screen-recorder' 'dconf' 'cliphist' 'fuzzel')
+         'wl-clipboard' 'slurp' 'gpu-screen-recorder' 'dconf' 'cliphist' 'fuzzel')
 optdepends=('caelestia-shell: shell control and screenshot function')
 makedepends=('python-build' 'python-installer' 'python-hatch' 'python-hatch-vcs')
 provides=('caelestia-cli')
 conflicts=('caelestia-cli-git')
 _archive="caelestia-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.gz")
-sha256sums=('1d238723b74581e9d8fae4f836837f71050d65759b11bfc9b3de71534accb368')
+sha256sums=('cc23d3c785f3b90685db920e65d3b119fdce5ea47d7b7488c4aded3742d96234')
 install=message.install
 
 build() {

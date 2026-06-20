@@ -1,6 +1,6 @@
 pkgbase = caelestia-cli
 	pkgdesc = The main cli for the Caelestia dotfiles
-	pkgver = 1.0.8
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/caelestia-dots/cli
 	install = message.install
@@ -17,7 +17,6 @@ pkgbase = caelestia-cli
 	depends = swappy
 	depends = grim
 	depends = dart-sass
-	depends = app2unit
 	depends = wl-clipboard
 	depends = slurp
 	depends = gpu-screen-recorder
@@ -27,7 +26,7 @@ pkgbase = caelestia-cli
 	optdepends = caelestia-shell: shell control and screenshot function
 	provides = caelestia-cli
 	conflicts = caelestia-cli-git
-	source = https://github.com/caelestia-dots/cli/releases/download/v1.0.8/caelestia-1.0.8.tar.gz
-	sha256sums = 1d238723b74581e9d8fae4f836837f71050d65759b11bfc9b3de71534accb368
+	source = https://github.com/caelestia-dots/cli/releases/download/v1.1.0/caelestia-1.1.0.tar.gz
+	sha256sums = cc23d3c785f3b90685db920e65d3b119fdce5ea47d7b7488c4aded3742d96234
 
 pkgname = caelestia-cli
