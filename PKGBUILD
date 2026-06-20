@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Maintainer: Atay Özcan <atay@oezcan.me>
 pkgname=sentinel-kde
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 install=sentinel-kde.install
 # Cargo.toml's release profile strips symbols at link time, so makepkg's
@@ -11,7 +11,7 @@ install=sentinel-kde.install
 options=('!debug')
 pkgdesc="UAC-style confirmation dialog for privilege escalation on KDE Plasma (Wayland)"
 arch=('x86_64' 'aarch64')
-url="https://github.com/atayozcan/sentinel-kde"
+url="https://github.com/atayozcan/sentinel"
 license=('GPL-3.0-or-later')
 depends=(
     'pam'
@@ -58,16 +58,16 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Regenerated to a real value by the AUR-publish CI workflow before the
 # PKGBUILD lands on the AUR repo. In-repo copy stays 'SKIP' so dependabot-
 # style updates don't churn this file every release.
-sha256sums=('1e068c0b362ca425bbe891994cd7289523c9092db7121c240f2ef7db6967e7c1')
+sha256sums=('b7efbe0774e573576a4654fac51e2e12f4f91cf1748b55a488ada76decbc2bab')
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "sentinel-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "sentinel-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     # `sentinel-polkit-agent`'s build.rs hardcodes the helper path it
@@ -94,7 +94,7 @@ build() {
     # writable build script run; `--frozen` blocks that on a cold cache,
     # which is exactly the CI / clean-chroot case. `--locked` (implied by
     # the prepare-step `cargo fetch --locked`) still pins Cargo.lock.
-    cargo build --release --workspace
+    cargo build --release --workspace --exclude sentinel-helper
 
     install -d target/release/share
     target/release/sentinel-polkit-agent completions bash > target/release/share/sentinel-polkit-agent.bash
@@ -104,7 +104,7 @@ build() {
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "sentinel-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     # The Qt/QML helper needs a Wayland compositor — skip it in chroot.
     cargo test --frozen --release --workspace --locked \
@@ -112,7 +112,7 @@ check() {
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "sentinel-$pkgver"
 
     # Binaries.
     install -Dm755 target/release/sentinel-helper-kde \
