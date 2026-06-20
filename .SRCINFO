@@ -1,6 +1,6 @@
 pkgbase = heidisql-qt6
 	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, Microsoft SQL and SQLite databases (Qt6)
-	pkgver = 12.18
+	pkgver = 12.19
 	pkgrel = 1
 	url = http://www.heidisql.com/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = heidisql-qt6
 	depends = sqlite
 	depends = freetds
 	provides = heidisql-client
-	source = https://github.com/HeidiSQL/HeidiSQL/archive/v12.18.tar.gz
-	sha256sums = c20aaf80b2d7927c978ed8f84ab0c69678333d4d5b7ae0920fb71665392dc811
+	source = https://github.com/HeidiSQL/HeidiSQL/archive/v12.19.tar.gz
+	sha256sums = 5b8f82cd3d3eaca521b98708b09c8f6e7506b50419d5b37dec01d853b094964e
 
 pkgname = heidisql-qt6

@@ -1,6 +1,6 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=heidisql-qt6
-pkgver=12.18
+pkgver=12.19
 pkgrel=1
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, Microsoft SQL and SQLite databases (Qt6)"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(qt6pas heidisql mariadb-libs postgresql-libs libperconaserverclient sql
 provides=(heidisql-client)
 
 source=("https://github.com/HeidiSQL/HeidiSQL/archive/v${pkgver}.tar.gz")
-sha256sums=('c20aaf80b2d7927c978ed8f84ab0c69678333d4d5b7ae0920fb71665392dc811')
+sha256sums=('5b8f82cd3d3eaca521b98708b09c8f6e7506b50419d5b37dec01d853b094964e')
 
 build() {
   cd "${srcdir}/HeidiSQL-${pkgver}"
