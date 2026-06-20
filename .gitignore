@@ -1,0 +1,5 @@
+/pkg/
+/src/
+/nls/
+/*.pkg.tar.zst
+/update-nls-aur.sh
