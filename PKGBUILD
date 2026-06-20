@@ -1,7 +1,7 @@
 # Maintainer: acaibowlz <hankthedev@gmail.com>
 pkgname=aur-sync-vote
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Syncing votes with the currently installed AUR packages"
 arch=('any')
 url="https://github.com/acaibowlz/aur-sync-vote"
