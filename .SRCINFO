@@ -1,16 +1,15 @@
 pkgbase = attack-shark-x11-electron
 	pkgdesc = Cross-platform driver for the Attack Shark X11 gaming mouse with Electron GUI
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.4.1
+	pkgrel = 1
 	url = https://github.com/dressedinblack5/attack-shark-x11-electron
 	arch = x86_64
 	license = MIT
 	makedepends = bun
-	makedepends = rust
 	depends = electron
 	depends = libusb
 	options = !strip
-	source = https://github.com/dressedinblack5/attack-shark-x11-electron/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = ea9b252b5f43a2ebe3d583a744a59bb4fc21fcc50c44558d51f890602ad95da1
+	source = https://github.com/dressedinblack5/attack-shark-x11-electron/archive/refs/tags/v1.4.1.tar.gz
+	sha256sums = f2839d8ad563321642706eea80f08bf3f16b478bf6e385cd9d3e504a43e83b86
 
 pkgname = attack-shark-x11-electron
