@@ -1,6 +1,6 @@
 pkgbase = kraken-desktop-auto-bin
 	pkgdesc = Kraken crypto exchange desktop application
-	pkgver = 1.19.1
+	pkgver = 1.19.2
 	pkgrel = 1
 	url = https://www.kraken.com/desktop
 	arch = aarch64
@@ -14,11 +14,11 @@ pkgbase = kraken-desktop-auto-bin
 	options = !strip
 	source = kraken.png
 	sha256sums = 6fc49c5128736ffa958ded6d12f3a1fa819bce5b563e768d479ca01a67517148
-	source_aarch64 = kraken-desktop-auto-bin-1.19.1-aarch64.zip::https://desktop-downloads.kraken.com/latest/kraken-aarch64-unknown-linux-gnu.zip
-	sha256sums_aarch64 = 69115f565c9a4e88e7fddf355de4e258740bee2100b9b1e73a3988beee21c982
-	source_armv7 = kraken-desktop-auto-bin-1.19.1-armv7.zip::https://desktop-downloads.kraken.com/latest/kraken-armv7-unknown-linux-gnueabihf.zip
-	sha256sums_armv7 = 9d37663fbecd923381d1de02e7034cce01b96a04604479c921e4b7987d903778
-	source_x86_64 = kraken-desktop-auto-bin-1.19.1-x86_64.zip::https://desktop-downloads.kraken.com/latest/kraken-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = d2e64292b866378bb0369e18a049f4f46d8f5acde7d5a439e3dd560531e934ac
+	source_aarch64 = kraken-desktop-auto-bin-1.19.2-aarch64.zip::https://desktop-downloads.kraken.com/latest/kraken-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = 20cddac24e8ad8631799828c89ea8419180001611c11d776fbbeb18dfd190429
+	source_armv7 = kraken-desktop-auto-bin-1.19.2-armv7.zip::https://desktop-downloads.kraken.com/latest/kraken-armv7-unknown-linux-gnueabihf.zip
+	sha256sums_armv7 = 3197bed042e395560312de6d23c1182c9ad83000771790b794786c280ca30606
+	source_x86_64 = kraken-desktop-auto-bin-1.19.2-x86_64.zip::https://desktop-downloads.kraken.com/latest/kraken-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = aba6384a699ddb0385feb1d31b2123cc74207babb21e76e784b45dad44b5435f
 
 pkgname = kraken-desktop-auto-bin
