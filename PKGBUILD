@@ -13,6 +13,7 @@ depends=('glibc' 'fuse2')
 optdepends=('zlib: required by some solvers'
   'libxkbcommon: Wayland keyboard support for GAMS Studio')
 options=('!strip')
+# Official GAMS CDN, as linked from https://gams.com/download/
 source=("$pkgname-$pkgver.exe::https://d37drm4t2jghv5.cloudfront.net/distributions/$pkgver/linux/linux_x64_64_sfx.exe"
   "gams-studio.desktop")
 sha256sums=('527a5c23c3910a47bf9fdb363ae04e9876094910de7a29ea30867c974c38dbb1'
