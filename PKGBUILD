@@ -1,11 +1,40 @@
 # Maintainer: InstaZDLL <github.105mh@8shield.net>
 pkgname=waveflow-bin
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
-pkgdesc='Local-first music player desktop app with a Spotify-inspired 3-panel UI'
+pkgdesc='Spotify for your local files - bit-perfect Hi-Res music player'
 arch=('x86_64')
 url='https://github.com/InstaZDLL/WaveFlow'
 license=('GPL-3.0-only')
+# AUR keywords show up as blue chips on the package page and drive
+# search discovery on aur.archlinux.org. The field name is bare
+# `keywords` (no leading underscore) — variables prefixed with `_`
+# are a PKGBUILD convention for PRIVATE values that makepkg ignores
+# during `--printsrcinfo`, so `_keywords=(...)` would silently
+# render zero chips. `keywords` is one of the recognised optional
+# .SRCINFO fields; each array entry comes out as a `keywords = ...`
+# line that the AUR web ingests on push. Mix of category terms
+# (music-player, audio-player), comparatives that match what people
+# search for (spotify-alternative, apple-music-alternative),
+# local-first differentiators (local-music, offline-music) and
+# audiophile-cluster (hi-res, dsd, flac, bit-perfect, replaygain).
+keywords=(
+  'music-player'
+  'music'
+  'audio-player'
+  'spotify-alternative'
+  'apple-music-alternative'
+  'local-music'
+  'offline-music'
+  'audiophile'
+  'hi-res'
+  'lossless'
+  'flac'
+  'dsd'
+  'bit-perfect'
+  'replaygain'
+  'tauri'
+)
 depends=(
   'webkit2gtk-4.1'
   'gtk3'
@@ -20,7 +49,7 @@ provides=('waveflow')
 conflicts=('waveflow')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.deb::https://github.com/InstaZDLL/WaveFlow/releases/download/v${pkgver}/WaveFlow_${pkgver}_linux-x86_64.deb")
-sha256sums=('52d1f73e3a068825dd6cd8b3f1bd932a449076030083f8708bfa3c4440955c28')
+sha256sums=('431d53ad7cf18277fb1bcb1b1331f5c2e2ca1121dcc831d511f693785b4b66e8')
 
 prepare() {
   # Crack open the .deb so package() can move its data tarball into $pkgdir.
