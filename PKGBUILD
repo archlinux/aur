@@ -10,42 +10,38 @@
 _pkgname="helium"
 pkgname="${_pkgname}-browser-beta-bin"
 _binaryname="helium-browser"
-pkgver=0.7.10.1
-pkgrel=3
+pkgver=0.13.4.1
+pkgrel=1
 pkgdesc="Private, fast, and honest web browser based on Chromium (pre-release)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/imputnet/helium-linux"
 license=('GPL-3.0-only AND BSD-3-Clause')
 options=('!strip')
-depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
-         'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
+depends=('alsa-lib' 'dbus' 'gtk3' 'hicolor-icon-theme' 'libcups' 'libpulse' 'libva'
+         'libxss' 'nss' 'ttf-liberation' 'udev' 'xdg-utils')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
-            'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma'
+            'qt5-base: support for Qt themes'
             'upower: Battery Status API support')
 conflicts=('helium-browser-bin')
 provides=("helium-browser-bin=${pkgver}")
 source=('0001-update-wrapper-arch.patch'
-        '0002-align-desktop-entry.patch')
+        '0002-align-desktop-entry.patch'
+        "LICENSE.ungoogled_chromium::https://raw.githubusercontent.com/imputnet/helium-linux/${pkgver}/LICENSE.ungoogled_chromium")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64_linux.tar.xz::https://github.com/imputnet/helium-linux/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64_linux.tar.xz"
-               "${_pkgname}-${pkgver}-x86_64_linux.tar.xz.asc::https://github.com/imputnet/helium-linux/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64_linux.tar.xz.asc"
-               "LICENSE.ungoogled_chromium::https://raw.githubusercontent.com/imputnet/helium-linux/${pkgver}/LICENSE.ungoogled_chromium")
+    "${_pkgname}-${pkgver}-x86_64_linux.tar.xz.asc::https://github.com/imputnet/helium-linux/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64_linux.tar.xz.asc")
 source_aarch64=("${_pkgname}-${pkgver}-arm64_linux.tar.xz::https://github.com/imputnet/helium-linux/releases/download/${pkgver}/${_pkgname}-${pkgver}-arm64_linux.tar.xz"
-                "${_pkgname}-${pkgver}-arm64_linux.tar.xz.asc::https://github.com/imputnet/helium-linux/releases/download/${pkgver}/${_pkgname}-${pkgver}-arm64_linux.tar.xz.asc"
-                "LICENSE.ungoogled_chromium::https://raw.githubusercontent.com/imputnet/helium-linux/${pkgver}/LICENSE.ungoogled_chromium")
+                "${_pkgname}-${pkgver}-arm64_linux.tar.xz.asc::https://github.com/imputnet/helium-linux/releases/download/${pkgver}/${_pkgname}-${pkgver}-arm64_linux.tar.xz.asc")
 validpgpkeys=('BE677C1989D35EAB2C5F26C9351601AD01D6378E') # Helium <helium@imput.net>
-sha256sums=('ab41ebe29de90c0fd44d2059ed8a433d5cbf7f9a6e9db772abcd7db1c8c7abb5'
-            '3fb34e8e3e4cfeb9c54bee353f676283e3a2409653b608f5dc502b7a4c9e1c26')
-sha256sums_x86_64=('03eff7d0632d010f01e71d5d1ff9b16c93f5852a7ac2276b4751c57a786a6f78'
-                   'SKIP'
-                   '9539b394e4179952698894bd62ef6566b6804ab0ff360dcf3a511cfaf7f78c4d')
-sha256sums_aarch64=('de643b7b9140be033adb009f3f93f4400c718808e2b652a8149847db12b9e6d6'
-                    'SKIP'
-                    '9539b394e4179952698894bd62ef6566b6804ab0ff360dcf3a511cfaf7f78c4d')
-
+sha256sums=('3846be557da5202267fc4d8a45572f4cedcd95e82d4e62e998c4486fed311314'
+            'b1253d30764b6586b05161b793b728ffee442cebf875e2074eedf2da5140036f'
+            '9539b394e4179952698894bd62ef6566b6804ab0ff360dcf3a511cfaf7f78c4d')
+sha256sums_x86_64=('aedfffc1c0271fb9f5a25fcf7cfdfb6b11e92142ab59749037a4a2b06b44ee1c'
+                   'SKIP')
+sha256sums_aarch64=('c661c3eb9254206e2fb95fc86ca203be8588a8c7b5e42e6a079fa37075c3be49'
+                    'SKIP')
 prepare() {
   # Get architecture specific directory
   _archdir="${_pkgname}-${pkgver}-$([[ $CARCH == "aarch64" ]] && echo "arm64" || echo "x86_64")_linux"
