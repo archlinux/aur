@@ -1,6 +1,6 @@
 pkgbase = rustpos-bin
 	pkgdesc = A modern, touch-friendly point of sale system built with Rust (binary repackage of upstream .deb)
-	pkgver = 1.3.9
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/dividebysandwich/rustpos
 	install = rustpos-bin.install
@@ -15,11 +15,11 @@ pkgbase = rustpos-bin
 	conflicts = rustpos
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/dividebysandwich/rustpos/releases/download/v1.3.9/rustpos_1.3.9_amd64.deb
-	sha256sums_x86_64 = 691dcc3b7fbff639b0a0a0379ac7ef14ef77ef40ac244470e5ad9b6889313733
-	source_aarch64 = https://github.com/dividebysandwich/rustpos/releases/download/v1.3.9/rustpos_1.3.9_arm64.deb
-	sha256sums_aarch64 = d4297162771c2b589f2fbad4603aa4859d216212cd6f5a8cb82763fc5484d296
-	source_armv7h = https://github.com/dividebysandwich/rustpos/releases/download/v1.3.9/rustpos_1.3.9_armhf.deb
-	sha256sums_armv7h = 7396d79b6de6ea182b405bf777c80644770e13f8c341d82443ff8b452d98de6b
+	source_x86_64 = https://github.com/dividebysandwich/rustpos/releases/download/v1.4.0/rustpos_1.4.0_amd64.deb
+	sha256sums_x86_64 = 04624d6345bea91f737c1d57e940801a6151691ebe5b029e80a4d49653753005
+	source_aarch64 = https://github.com/dividebysandwich/rustpos/releases/download/v1.4.0/rustpos_1.4.0_arm64.deb
+	sha256sums_aarch64 = 9b9bc285a61d7ccbe1de35a2fe91ff807d5dbf79664c690f2a538a315303adcd
+	source_armv7h = https://github.com/dividebysandwich/rustpos/releases/download/v1.4.0/rustpos_1.4.0_armhf.deb
+	sha256sums_armv7h = 07a1e01ce54dca2b649d138ce691bc1468cc1fd0e5f1c97df11591ded92436d3
 
 pkgname = rustpos-bin
