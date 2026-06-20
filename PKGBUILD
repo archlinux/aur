@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgbase=lib-starfish
 pkgname=lib-starfish
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Starfish graph visualization shared library"
 arch=('x86_64')
@@ -33,4 +33,4 @@ package() {
   # Install the shared library
   install -Dm755 out-widget/Starfish.GraphWidget.so "$pkgdir/usr/lib/lib-starfish.so"
 }
-sha256sums=('bff5fe98626dd24f9a2aac34f6fc48f9a08641fa159ba0ceec573c702047d3f9')
+sha256sums=('b23454991a24aaf3d65e1c584a9eb4e0c25effd51334784badbfd83980bef8fb')
