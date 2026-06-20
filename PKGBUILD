@@ -30,10 +30,8 @@ optdepends=(
   'heroic-games-launcher: Stale launcher runner cleaning'
   'bottles: Stale launcher runner cleaning'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/dressedinblack5/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
-        "unused-pkg-remover.desktop")
-sha256sums=('8373fe924fbadf5e5fec36556dadcb99ffaea0ad1afc3e9037a28620d6e031ef'
-            'bd62afefea6bd0fa7b89ff4a1878097b59eb0bc272d89d11000887af02a313c7')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dressedinblack5/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('8373fe924fbadf5e5fec36556dadcb99ffaea0ad1afc3e9037a28620d6e031ef')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -48,6 +46,6 @@ package() {
     "$pkgdir/usr/share/pixmaps/unused-pkg-remover.png"
   install -Dm644 assets/unused-pkg-remover.png \
     "$pkgdir/usr/share/icons/hicolor/128x128/apps/unused-pkg-remover.png"
-  install -Dm644 "$srcdir/unused-pkg-remover.desktop" \
+  install -Dm644 "$srcdir/$pkgname-$pkgver/assets/unused-pkg-remover.desktop" \
     "$pkgdir/usr/share/applications/unused-pkg-remover.desktop"
 }

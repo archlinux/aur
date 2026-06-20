@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Unused Package Remover
-Comment=Find and remove unused Arch Linux packages
-Exec=unused-pkg-remover
-Icon=unused-pkg-remover
-Terminal=false
-Type=Application
-Categories=Utility;System;PackageManager;Qt;

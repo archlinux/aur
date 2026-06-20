@@ -23,8 +23,6 @@ pkgbase = unused-pkg-remover
 	optdepends = heroic-games-launcher: Stale launcher runner cleaning
 	optdepends = bottles: Stale launcher runner cleaning
 	source = unused-pkg-remover-1.2.4.tar.gz::https://github.com/dressedinblack5/unused-pkg-remover/archive/refs/tags/v1.2.4.tar.gz
-	source = unused-pkg-remover.desktop
 	sha256sums = 8373fe924fbadf5e5fec36556dadcb99ffaea0ad1afc3e9037a28620d6e031ef
-	sha256sums = bd62afefea6bd0fa7b89ff4a1878097b59eb0bc272d89d11000887af02a313c7
 
 pkgname = unused-pkg-remover
