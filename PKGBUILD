@@ -7,7 +7,7 @@ pkgname=(
   "${pkgbase}-examples"
 )
 pkgver=7.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A C++ Functional Terminal User Interface"
 arch=(
   'i686'
@@ -29,10 +29,12 @@ source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
   "${pkgbase}_build_docs_target_all.patch"
   "${pkgbase}_make_examples_installable.patch"
+  "https://github.com/jothepro/doxygen-awesome-css/archive/refs/tags/v2.3.4/doxygen-awesome-css-2.3.4.tar.gz"
 )
 b2sums=('73bcba72f3ad52818d8a6d1647b7e8bff4259fbd5713db409c147f0d8f44b1895727d27389b3db797dda78a4a61271bb19396c7c108bf0fd7a56b68eae306151'
         'bf9e78066ff1721f857350f9dcce6fa8ac17cfc2bb726afc6c7f75cc372832f7212cc4ad7eccefe6aa9eee72fff46958c63f485452f45dcd7b1b77b1c2b408fe'
-        'c7e9e43b5d9b7f3ad825a150afa3976743f4d22fb0a443da8ed636b2323dc70137ac471ec24127dfbfa1556646967687cb9890e893c9aa3315ff7c365715f596')
+        'c7e9e43b5d9b7f3ad825a150afa3976743f4d22fb0a443da8ed636b2323dc70137ac471ec24127dfbfa1556646967687cb9890e893c9aa3315ff7c365715f596'
+        'eab70c020aa2e7254708e1938701bbc104a273b475f55f769e25aed02e0b0c8da50d62a659e384403a77ef27243cd6cd38360744e398596824f5e4f51ea6f569')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -41,7 +43,7 @@ prepare() {
 }
 
 build() {
-  export CXXFLAGS+=" -ffat-lto-objects"
+  # export CXXFLAGS+=" -ffat-lto-objects"
   local cmake_options=(
     -B "${_pkgsrc}/build"
     -S "${_pkgsrc}"
@@ -54,6 +56,8 @@ build() {
     -D FTXUI_BUILD_EXAMPLES:BOOL=ON
     -D FTXUI_BUILD_TESTS:BOOL=OFF
     -D FTXUI_BUILD_DOCS:BOOL=ON
+    -D FETCHCONTENT_FULLY_DISCONNECTED=ON
+    -D FETCHCONTENT_SOURCE_DIR_DOXYGEN-AWESOME-CSS="${srcdir}/doxygen-awesome-css-2.3.4"
   )
   
   cd "${srcdir}"
