@@ -1,6 +1,6 @@
 # Maintainer: Alain Abbasi <abbasi.alain@gmail.com>
 pkgname=atlas
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="ATLAS — Agentic Harness Standard. 10-30x fewer agent orientation tokens. Zero infrastructure."
 arch=('any')
@@ -11,7 +11,7 @@ optdepends=('github-cli: for atlas auth/repo/mirror'
             'glab: for GitLab integration'
             'jq: for some adapter installers')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Abbasi-Alain/atlas/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dfa8dc1d48dee4d1a0f345ee7986e4d2bcc307d0094fbb8bf1eb15c7c4685ee2')
+sha256sums=('a254f32612ca4dfbb954c26af211d2e7a05d8ef167a64a937266518d8d5cbd0e')
 
 package() {
   cd "$srcdir/atlas-${pkgver}"
