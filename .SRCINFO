@@ -1,6 +1,6 @@
 pkgbase = sonic-frameworks-auth
 	pkgdesc = Abstraction to system policy and authentication features
-	pkgver = 6.26.0
+	pkgver = 6.27.0
 	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-frameworks-auth
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = sonic-frameworks-auth
 	depends = sonic-frameworks-windowsystem
 	provides = kauth
 	conflicts = kauth
-	source = sonic-frameworks-auth-6.26.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-auth/archive/refs/tags/6.26.0.tar.gz
-	sha256sums = 3db9cd8091f7855a4b65332fdbb7adf7c6cfe17416ecf91443db2720fb94bd1a
+	source = sonic-frameworks-auth-6.27.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-auth/archive/refs/tags/6.27.0.tar.gz
+	sha256sums = f8a62517da27694733d618911a023c24bd500f8b3d3cfb17f5b92f426da7d5d9
 
 pkgname = sonic-frameworks-auth
