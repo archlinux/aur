@@ -9,6 +9,12 @@ license=('MIT')
 depends=('webkit2gtk-4.1' 'libayatana-appindicator')
 makedepends=('rust' 'cargo' 'npm' 'git')
 provides=('todarchy' 'tod')
+# Disable makepkg's global LTO for this package. With `lto` enabled, the
+# -flto=auto C flags compile the `ring` crate's C/asm helpers as LTO bitcode,
+# which the final Rust link (ld.lld) then can't resolve — you get a wall of
+# `undefined symbol: ring_core_*`. Rust does its own codegen optimization; the
+# C-level LTO buys nothing here and only breaks the link.
+options=('!lto')
 source=("git+$url.git")
 sha256sums=('SKIP')
 

@@ -13,6 +13,7 @@ pkgbase = todarchy-git
 	depends = libayatana-appindicator
 	provides = todarchy
 	provides = tod
+	options = !lto
 	source = git+https://github.com/ryanrusnak/todarchy-linux.git
 	sha256sums = SKIP
 
