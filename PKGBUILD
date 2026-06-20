@@ -10,7 +10,7 @@ pkgname=(
   "vlc-git"
   "vlc-plugin-lua-git"
 )
-pkgver=4.0.0.r36449.gd346f1f
+pkgver=4.0.0.r37650.g7bd9665
 pkgrel=1
 pkgdesc="Multi-platform MPEG, VCD/DVD, and DivX player"
 url="https://github.com/videolan/vlc"
@@ -42,6 +42,7 @@ depends=(
   'libxpm'
   'qt6-base'
   'qt6-declarative'
+  'qt6-svg'
   'rnnoise'
   'taglib'
   'xcb-util-keysyms'
@@ -144,10 +145,6 @@ prepare() {
     -e 's|whoami|echo builduser|g' \
     -e 's|hostname -f|echo arch|g' \
     -i configure
-
-  # fix for ffmpeg 8
-  sed -E -e 's|\bFF_PROFILE_|AV_PROFILE_|g' -i modules/codec/avcodec/encoder.c modules/codec/avcodec/vaapi.c
-  sed -E -e 's|\bFF_MIN_BUFFER_SIZE\b|16384|' -i modules/codec/avcodec/avcommon_compat.h
 }
 
 pkgver() {
