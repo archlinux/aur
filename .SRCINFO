@@ -1,6 +1,6 @@
 pkgbase = iptop
 	pkgdesc = htop for your network — a beautiful real-time IP traffic monitor for the terminal
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/franlol/iptop
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = iptop
 	makedepends = bun
 	conflicts = iptop-bin
 	options = !strip
-	source = iptop-0.1.0.tar.gz::https://github.com/franlol/iptop/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = fd6b4cf409bb52a6dfaef50302fdd01253c0284272f190a6c328b5e54aef97ef
+	source = iptop-0.1.1.tar.gz::https://github.com/franlol/iptop/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 227243969d58758354d7a25f859c44c2643cbc1c9196a2b3d27fae6ac2a9cbc7
 
 pkgname = iptop
