@@ -1,6 +1,6 @@
-# Maintainer: Koutheir Attouchi <koutheir@gmail.com>
+# Maintainer: Koutheir Attouchi <koutheir at gmail dot com>
 pkgname=llvm-bolt-bin
-pkgver=22.1.7
+pkgver=22.1.8
 pkgrel=1
 pkgdesc='Post-link optimizer developed to speed up large applications'
 url="https://github.com/llvm/llvm-project/tree/llvmorg-${pkgver}/bolt"
@@ -17,7 +17,7 @@ source=("https://github.com/llvm/llvm-project/raw/refs/tags/llvmorg-${pkgver}/LI
         "https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/LLVM-${pkgver}-Linux-X64.tar.xz")
 noextract=("LLVM-${pkgver}-Linux-X64.tar.xz")
 sha256sums=('8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee'
-            'edb0522b41e261819c06ea437d249f9b8acfa413d3805bc9920eec6fb76ff830')
+            'df0e1ecf16caf3489a272a5eea4eec9b0d82878f6477fa309504f918a0006384')
 validpgpkeys=()
 
 prepare() {

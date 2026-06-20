@@ -1,8 +1,8 @@
 pkgbase = llvm-bolt-bin
 	pkgdesc = Post-link optimizer developed to speed up large applications
-	pkgver = 22.1.7
+	pkgver = 22.1.8
 	pkgrel = 1
-	url = https://github.com/llvm/llvm-project/tree/llvmorg-22.1.7/bolt
+	url = https://github.com/llvm/llvm-project/tree/llvmorg-22.1.8/bolt
 	arch = x86_64
 	license = Apache-2.0 WITH LLVM-exception
 	makedepends = libarchive
@@ -11,12 +11,12 @@ pkgbase = llvm-bolt-bin
 	depends = libgcc
 	depends = libstdc++
 	depends = zlib
-	noextract = LLVM-22.1.7-Linux-X64.tar.xz
+	noextract = LLVM-22.1.8-Linux-X64.tar.xz
 	options = !debug
 	options = !strip
-	source = https://github.com/llvm/llvm-project/raw/refs/tags/llvmorg-22.1.7/LICENSE.TXT
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.7/LLVM-22.1.7-Linux-X64.tar.xz
+	source = https://github.com/llvm/llvm-project/raw/refs/tags/llvmorg-22.1.8/LICENSE.TXT
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.8/LLVM-22.1.8-Linux-X64.tar.xz
 	sha256sums = 8d85c1057d742e597985c7d4e6320b015a9139385cff4cbae06ffc0ebe89afee
-	sha256sums = edb0522b41e261819c06ea437d249f9b8acfa413d3805bc9920eec6fb76ff830
+	sha256sums = df0e1ecf16caf3489a272a5eea4eec9b0d82878f6477fa309504f918a0006384
 
 pkgname = llvm-bolt-bin
