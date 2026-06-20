@@ -4,7 +4,7 @@
 # Contributor: Mattias Andersson <contact@stablemate.se>
 
 pkgname=playwright
-pkgver=1.60.0
+pkgver=1.61.0
 pkgver() {
   npm view "$pkgname" version
 }
