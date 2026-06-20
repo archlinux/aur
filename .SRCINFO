@@ -1,0 +1,15 @@
+pkgbase = jwlink-git
+	pkgdesc = jwlink is a fork of the open watcom linker wlink
+	pkgver = v2.0.r1.cb7df12
+	pkgrel = 1
+	url = https://github.com/Baron-von-Riedesel/jwlink
+	arch = x86_64
+	license = Watcom-1.0
+	makedepends = git
+	depends = glibc
+	provides = jwlink
+	conflicts = jwlink
+	source = git+https://github.com/Baron-von-Riedesel/jwlink.git
+	sha256sums = SKIP
+
+pkgname = jwlink-git
