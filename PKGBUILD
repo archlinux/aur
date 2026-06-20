@@ -3,7 +3,7 @@
 pkgname=harbor-stremio-bin
 _pkgname=harbor
 pkgver=0.9.13
-pkgrel=1
+pkgrel=2
 pkgdesc='A Stremio client built for adventure (binary release)'
 arch=('x86_64')
 url='https://github.com/harborstremio/harbor'
