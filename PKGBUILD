@@ -2,7 +2,7 @@
 
 pkgname=nls
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Nushell-style ls for bash, zsh, and fish'
 arch=('x86_64' 'aarch64')
 url='https://github.com/nolight132/nls'
