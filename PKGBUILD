@@ -1,7 +1,7 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.0-rc.17
+_pkgver=13.0.0-rc.18
 _branding=catppuccin
 
 __pkgname=$_pkgname-catppuccin
@@ -66,9 +66,9 @@ source_x86_64=(
 source_aarch64=(
   $__pkgname-v$_pkgver.linux-arm64.tar.xz::$url/-/releases/v$_pkgver/downloads/$__pkgname.linux-arm64.tar.xz
 )
-sha256sums=('08ed0b573f95da3e388e9100709952ecf5c129f26430248c78e4d4a43c2063ed')
-sha256sums_x86_64=('6ef5608e8c250bbd88473b3b1301b8fb214d11e2c107a8c52a1e2490effa0df3')
-sha256sums_aarch64=('acb276ccb10a5379b46571e9ce188a2feb786302ba78078617b0210872af7f57')
+sha256sums=('00b621caebbc4c7bb672a459651d7db1ff853a8527d5f07dfe7c51432a74b622')
+sha256sums_x86_64=('d54596ee8b9d71ab3bb4f51e892bd3755222a3f3a88c95ff4395a8325a4b3370')
+sha256sums_aarch64=('b5745ee2ca57eb30e39e6bc72ed25df8531b49d508bd3ffad74185de844ce4da')
 noextract=(
   $__pkgname-v$_pkgver.linux-x64.tar.xz
   $__pkgname-v$_pkgver.linux-arm64.tar.xz
