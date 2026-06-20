@@ -11,7 +11,7 @@ license=('GPL')
 depends=(
     'bash' 'curl'
     'niri' 'nirius' 'mako' 'polkit-gnome' 'xdg-desktop-portal-gnome' 'xwayland-satellite' 'swayidle'
-    'fuzzel-ime-git' 'libnotify' 'brightnessctl' 'cava' 'cliphist' 'wl-clipboard' 
+    'fuzzel' 'libnotify' 'brightnessctl' 'cava' 'cliphist' 'wl-clipboard' 
     'grim' 'slurp' 'hyprlock' 'hyprpicker' 'swayosd' 'awww' 'waybar' 'matugen' 'cliphist-tui-git'
 )
 
