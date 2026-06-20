@@ -1,6 +1,6 @@
 pkgbase = python-llama-index-workflows
 	pkgdesc = An event-driven, async-first, step-based way to control the execution flow of AI agent
-	pkgver = 2.20.0
+	pkgver = 2.22.0
 	pkgrel = 1
 	url = https://github.com/run-llama/workflows-py
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-llama-index-workflows
 	depends = python-llama-index-instrumentation
 	depends = python-pydantic
 	depends = python-uv-build
-	source = https://files.pythonhosted.org/packages/source/l/llama_index_workflows/llama_index_workflows-2.20.0.tar.gz
-	sha256sums = df2760fea9e100c97a4e919d255461e344413acac4382d17d8217337806e4772
+	source = https://files.pythonhosted.org/packages/source/l/llama_index_workflows/llama_index_workflows-2.22.0.tar.gz
+	sha256sums = c8c97105a7fc9b472716e5df8cfe231003bb24e25adb51331652c26c59774f1e
 
 pkgname = python-llama-index-workflows

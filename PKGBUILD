@@ -2,7 +2,7 @@
 
 _name=llama-index-workflows
 pkgname=python-${_name}
-pkgver=2.20.0
+pkgver=2.22.0
 pkgrel=1
 pkgdesc="An event-driven, async-first, step-based way to control the execution flow of AI agent"
 arch=('any')
@@ -12,11 +12,11 @@ depends=('python' 'python-llama-index-instrumentation' 'python-pydantic' 'python
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel' 'python-uv-build')
 checkdepends=('python-pytest' 'python-pytest-asyncio')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('df2760fea9e100c97a4e919d255461e344413acac4382d17d8217337806e4772')
+sha256sums=('c8c97105a7fc9b472716e5df8cfe231003bb24e25adb51331652c26c59774f1e')
 
 prepare() {
     cd "${srcdir}"/${_name//-/_}-${pkgver}
-    sed -i 's/uv_build>=0.9.10,<0.10.0/uv_build>=0.9.10,<=0.10.10/' pyproject.toml
+    sed -i 's/uv_build>=0.9.10,<0.10.0/uv_build>=0.9.10,<=0.11.16/' pyproject.toml
 }
 
 build() {
