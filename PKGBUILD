@@ -1,6 +1,6 @@
 # Maintainer: Berny23 <webmaster@berny23.de>
 pkgname=virtual-surround-manager
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Enable virtual 7.1 surround sound for your headphones with just one click"
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=('git'
 conflicts=("$pkgname")
 provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('998370b379e8d4916b16470865dd7c0eb0e084a0307fb105e4b7df280ef4b6e8')
+sha256sums=('10baf6f0c8ea15b48297443965d18e766d874282b34b79b610c8e47d3b7051e9')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" -G Ninja
