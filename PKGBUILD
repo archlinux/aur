@@ -1,7 +1,7 @@
 # Maintainer: Wuxxin <wuxxin@gmail.com>
 # Contributor: SteamedFish <steamedfish@hotmail.com>
 pkgname=zeroclaw-git
-pkgver=0.8.0.r187.g1a4ba770c2
+pkgver=0.8.1.r16.g13a8a857ae
 pkgrel=1
 pkgdesc="Fast, small, and fully autonomous AI assistant infrastructure — deploy anywhere, swap anything (Rust, Git VCS version)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -18,7 +18,6 @@ provides=("zeroclaw")
 conflicts=("zeroclaw")
 source=(
     "zeroclaw::git+https://github.com/zeroclaw-labs/zeroclaw.git"
-    "fix-type-mismatch.patch"
     "zeroclaw.service"
     "zeroclaw-gateway.service"
     "zeroclaw-user.service"
@@ -26,7 +25,6 @@ source=(
     "zeroclaw.tmpfiles"
 )
 b2sums=('SKIP'
-        'ef9e9974d7b5a6137b3435d4ca559e9071bc903f7cea23ec262f89d2634b54cf1e44c466121179c3b6b6207e066d3ae198ca0163a09a5ce6483db59cc46cbf60'
         'e5673f822e1b470538013147d88009e7b90bf9ec0a02a86d8c6fa5f72d0c73f78b403c583ba0a196099cebfacf78f865ade532c9c901dc5f1fd78362ed9c3dee'
         '461f5245dbb1abac54d4db8f8c1e31d8e8c98c61bf224b0c8d677f616ce83b1694a86db09ecf6ad9dd847d4000182f0afebcd41f6ac7baccc6ca58388cfb5498'
         'b673a54133c1c2feaf63a2e74c7f49d9190335afbae19d83c56395224dd201336d6c9895648f947fc4b449336b6c370811a1cca6d21526374b90fbeaff530d2e'
@@ -43,9 +41,6 @@ prepare() {
 
     # Apply voice-wake subject fix patch
     # patch -Np1 -i "$srcdir/voice-wake-subject.patch"
-
-    # Apply type mismatch fix patch
-    patch -Np1 -i "$srcdir/fix-type-mismatch.patch"
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_HOME="$srcdir/.cargo-home"
