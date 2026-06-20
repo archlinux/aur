@@ -2,7 +2,7 @@
 
 pkgname=libastal-greetd-git
 _pkgname=greet
-pkgver=r786.ca3190d
+pkgver=r905.1c762bf
 pkgrel=2
 provides=(astal-greet libastal-greet libastal-greet.so=0-64)
 pkgdesc="IPC client for greetd"
@@ -13,6 +13,7 @@ depends=(
   glib2
   glibc
   json-glib
+  quarrel
 )
 makedepends=(
   meson

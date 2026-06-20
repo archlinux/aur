@@ -1,6 +1,6 @@
 pkgbase = libastal-greetd-git
 	pkgdesc = IPC client for greetd
-	pkgver = r786.ca3190d
+	pkgver = r905.1c762bf
 	pkgrel = 2
 	url = https://github.com/Aylur/astal
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = libastal-greetd-git
 	depends = glib2
 	depends = glibc
 	depends = json-glib
+	depends = quarrel
 	provides = astal-greet
 	provides = libastal-greet
 	provides = libastal-greet.so=0-64
