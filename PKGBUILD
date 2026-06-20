@@ -1,7 +1,7 @@
 # Maintainer: WackyIdeas <wackyideas@disroot.org>
 
 pkgname=('aeroshell-smodglow-x11-git')
-pkgver=6.6.3_27.rdef5938
+pkgver=6.7.0_37.r1f21dee
 pkgrel=1
 pkgdesc="Decoration button glow effect for SMOD decorations"
 arch=(x86_64)
