@@ -2,18 +2,22 @@
 
 _target=mipsel-linux-gnu
 pkgname="${_target}-binutils"
-pkgver=2.45
+pkgver=2.46.1
 pkgrel=1
 pkgdesc='Tools to assemble and manipulate binary and object files for the MIPSEL target (for the toolchain with GNU C library and multilib ABI)'
 arch=('x86_64')
 url='https://www.gnu.org/software/binutils/'
 license=('GPL-3.0-or-later')
-depends=('libelf' 'zlib')
+depends=(
+    'glibc'
+    'libelf'
+    'zlib'
+    'zstd')
 options=('!ccache' '!distcc' '!emptydirs' 'staticlibs')
 source=("https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz"{,.sig})
-sha256sums=('c50c0e7f9cb188980e2cc97e4537626b1672441815587f1eab69d2a1bfbef5d2'
+sha256sums=('e127a709cba24c76de8936cb7083dd768f28cd37eb010492e2f19b71eb1294e4'
             'SKIP')
-validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton
+validpgpkeys=('5EF3A41171BB77E6110ED2D01F3D03348DB1A3E2') # Sam James
 
 prepare() {
     mkdir -p build
