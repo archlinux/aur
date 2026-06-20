@@ -2,8 +2,8 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=sonic-keybind-daemon
-pkgver=6.6.5
-pkgrel=2
+pkgver=6.7.0
+pkgrel=1
 pkgdesc='Daemon providing Global Keyboard Shortcut (Accelerator) functionality'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-keybind-daemon'
@@ -28,7 +28,7 @@ provides=(kglobalacceld)
 conflicts=(kglobalacceld)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4218fdcde99b3a094cd145cb5ddfa055e999d09d0c06c3bcf67d3724cac6e8ed')
+sha256sums=('7ad2a6fc9ac3f44a3f9a5ed838acfda5dde776e5d32c366d9ca9213627590a21')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
