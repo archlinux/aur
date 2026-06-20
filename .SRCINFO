@@ -1,23 +1,42 @@
 pkgbase = aivpn
-	pkgdesc = VPN that disguises traffic as legitimate application traffic to evade DPI
-	pkgver = 0.4.0
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/infosave2007/aivpn
-	install = aivpn.install
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	backup = etc/aivpn/server.json
-	source = aivpn-0.4.0.tar.gz::https://github.com/infosave2007/aivpn/archive/refs/tags/v0.4.0.tar.gz
-	source = aivpn.service
-	source = aivpn.sysusers
-	source = aivpn.tmpfiles
-	source = server.json
-	sha512sums = 989b1764141dbe542db00086e9c599a69c8afb2fde264aff109f0cc3b107a127da4a2893a0b1bb7d7b795e26711669e34248ab4eb5ea6798fe968a378cac4941
-	sha512sums = 1b7a0740e9ed666f846b6f950edfeaf4896899f7d4c44ea5faadea92c6b1a3f84f0f9d7c53fc6488480d75168f6d333aeb21e42b5d59e4981a9d3ed5ce0fc7d3
-	sha512sums = cdca52deef0c352582aa324b7732248bfb14f2d10b23700107e1457696c6633cb23d0c8a9f26a51f4a6555eb6e94705e64ef8189252277e0c1d96cd5836f4bcd
-	sha512sums = 786f7c638b52a907828e417691f6759b2d59cbae5a9dd61acbe3d19693f11bec0138ff22469fafc9d3c418f85aea149546868ebb3d7e0e439ebfac877f87c1af
-	sha512sums = eb70d44a7590e81d12717cbef888e4b8862eea2acb9199b7e4d980d8584764e7e58f7611ab8143facf3a07388b85db84ef67c5c68eb447ce9594519dc88de824
+	source = aivpn-0.9.2.tar.gz::https://github.com/infosave2007/aivpn/archive/refs/tags/v0.9.2.tar.gz
+	source = aivpn-server.service
+	source = aivpn-server.sysusers
+	source = aivpn-server.tmpfiles
+	source = aivpn-server.install
+	source = aivpn-client@.service
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 
-pkgname = aivpn
+pkgname = aivpn-client
+	pkgdesc = AIVPN client — connects to an aivpn-server endpoint
+	depends = 
+	optdepends = aivpn-kernel-dkms: optional kernel-accelerated data path
+
+pkgname = aivpn-server
+	pkgdesc = AIVPN server — gateway with traffic mimicry and DPI evasion
+	install = aivpn-server.install
+	depends = 
+	optdepends = aivpn-kernel-dkms: optional kernel-accelerated data path
+	backup = etc/aivpn/server.json
+	backup = etc/aivpn/clients.json
+
+pkgname = aivpn-kernel-dkms
+	pkgdesc = AIVPN kernel module (DKMS) — in-kernel fast path (Linux 6.1+, CONFIG_RUST=y required)
+	arch = any
+	depends = dkms
+	optdepends = linux-headers: build against the default kernel
+	optdepends = linux-lts-headers: build against linux-lts
+	optdepends = rust-bindgen: required for Rust-for-Linux module compilation
+	optdepends = clang: optional — enables XDP fast-path filter

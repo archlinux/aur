@@ -2,7 +2,7 @@
 
 pkgbase=aivpn
 pkgname=('aivpn-client' 'aivpn-server' 'aivpn-kernel-dkms')
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/infosave2007/aivpn"
@@ -15,10 +15,8 @@ source=(
     'aivpn-server.tmpfiles'
     'aivpn-server.install'
     'aivpn-client@.service'
-    'server.json'
 )
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -48,15 +46,17 @@ package_aivpn-client() {
         "$pkgdir/usr/bin/aivpn-client"
     install -Dm644 'aivpn-client@.service' \
         "$pkgdir/usr/lib/systemd/system/aivpn-client@.service"
-    # Slot for per-profile connection keys: /etc/aivpn/keys/<profile>.key
     install -dm750 "$pkgdir/etc/aivpn/keys"
 }
 
 package_aivpn-server() {
     pkgdesc='AIVPN server — gateway with traffic mimicry and DPI evasion'
-    depends=('iptables-nft')
+    depends=()
     optdepends=('aivpn-kernel-dkms: optional kernel-accelerated data path')
-    backup=('etc/aivpn/server.json')
+    backup=(
+        'etc/aivpn/server.json'
+        'etc/aivpn/clients.json'
+    )
     install='aivpn-server.install'
 
     install -Dm755 "$pkgbase-$pkgver/target/release/aivpn-server" \
@@ -67,11 +67,14 @@ package_aivpn-server() {
         "$pkgdir/usr/lib/sysusers.d/aivpn-server.conf"
     install -Dm644 'aivpn-server.tmpfiles' \
         "$pkgdir/usr/lib/tmpfiles.d/aivpn-server.conf"
-    install -Dm640 'server.json' \
+    install -Dm640 "$pkgbase-$pkgver/deploy/config/server.json.example" \
         "$pkgdir/etc/aivpn/server.json"
+    # Empty client DB placeholder — preserved across upgrades via backup=
+    echo '{}' | install -Dm640 /dev/stdin \
+        "$pkgdir/etc/aivpn/clients.json"
 
     local mask
-    for mask in "$pkgbase-$pkgver/mask-assets/"*.json; do
+    for mask in "$pkgbase-$pkgver/assets/masks/"*.json; do
         install -Dm644 "$mask" \
             "$pkgdir/var/lib/aivpn/masks/$(basename "$mask")"
     done
@@ -88,7 +91,7 @@ package_aivpn-kernel-dkms() {
         'clang: optional — enables XDP fast-path filter'
     )
 
-    local ksrc="$pkgbase-$pkgver/aivpn-linux-kernel"
+    local ksrc="$pkgbase-$pkgver/platforms/linux-kernel"
     local dst="$pkgdir/usr/src/aivpn-$pkgver"
 
     install -dm755 "$dst"
@@ -98,7 +101,6 @@ package_aivpn-kernel-dkms() {
     install -Dm644 "$ksrc/Makefile" "$dst/Makefile"
     install -Dm644 "$ksrc/Kbuild"   "$dst/Kbuild"
 
-    # Substitute @VERSION@ placeholder in the upstream dkms.conf
     sed "s/@VERSION@/$pkgver/g" "$ksrc/dkms.conf" > "$dst/dkms.conf"
     chmod 644 "$dst/dkms.conf"
 }
