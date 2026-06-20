@@ -1,6 +1,6 @@
 pkgbase = proton-vpn-qt-app
 	pkgdesc = A Qt GUI frontend for the ProtonVPN CLI
-	pkgver = 1.9.2
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://github.com/wheat32/proton-vpn-qt-app
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = proton-vpn-qt-app
 	depends = proton-vpn-cli
 	optdepends = curl: display public IP address
 	optdepends = libnatpmp: enables port forwarding
-	source = git+https://github.com/wheat32/proton-vpn-qt-app.git#tag=v1.9.2
+	source = git+https://github.com/wheat32/proton-vpn-qt-app.git#tag=v1.10.1
 	sha256sums = SKIP
 
 pkgname = proton-vpn-qt-app
