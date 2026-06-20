@@ -1,0 +1,29 @@
+pkgbase = dredge
+	pkgdesc = Ear-first practice looper: loop sections, slow them down pitch-preserving, drill passages
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/ShawnMcCool/dredge
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = just
+	makedepends = clang
+	makedepends = pkgconf
+	makedepends = git
+	depends = rubberband
+	depends = pipewire
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	optdepends = ffmpeg: MP3 export, extra container formats, and demucs stem export
+	optdepends = uv: bootstrap the analyze/songformer ML venvs (beats, sections)
+	optdepends = python: ML analysis runtime
+	optdepends = demucs: 4-stem separation (vocals/drums/bass/other)
+	provides = dredge
+	conflicts = dredge-looper-bin
+	options = !lto
+	source = git+https://github.com/ShawnMcCool/dredge.git#tag=v0.4.1
+	sha256sums = SKIP
+
+pkgname = dredge
