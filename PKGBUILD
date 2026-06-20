@@ -5,9 +5,9 @@
 # Contributor: Alkindi42
 
 pkgname='dasel'
-pkgdesc='Select, put and delete data from CSV, HCL, INI, JSON, KDL, TOML, XML and YAML files with a single CLI tool'
+pkgdesc='Select, put and delete data from CSV, HCL, INI, JSON, KDL, NDJSON, TOML, XML and YAML files with a single CLI tool'
 pkgver=3.11.1
-pkgrel=1
+pkgrel=2
 url='https://github.com/TomWright/dasel'
 changelog="$pkgname.changelog"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
