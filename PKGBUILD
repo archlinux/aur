@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview-qt6
-pkgver=6.0.1
+pkgver=6.1.1
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -9,7 +9,7 @@ depends=('mingw-w64-qt6-tools' 'mingw-w64-qt6-svg' 'mingw-w64-qt6-5compat' 'ming
 makedepends=('mingw-w64-cmake' 'mingw-w64-wine' 'protobuf')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("${url}/files/v${pkgver:0:3}/ParaView-v${pkgver}.tar.xz")
-md5sums=('595ffe2aaf48c59d58414d284725ac91')
+md5sums=('8dd6919a9afbb5859367f84900d360a3')
 
 _architectures="x86_64-w64-mingw32"
 
@@ -43,14 +43,14 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_token=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_utf8=OFF \
       -B build-${_arch} .
-    WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make -C build-${_arch}
+    WINEPATH="/usr/${_arch}/bin;${PWD}/bin" cmake --build build-${_arch}
   done
 }
 
 package() {
+  cd "$srcdir/ParaView-v${pkgver}"
   for _arch in ${_architectures}; do
-    cd "$srcdir"/ParaView-v${pkgver}/build-${_arch}
-    make install/fast DESTDIR="$pkgdir"
+    DESTDIR="$pkgdir" cmake --build build-${_arch} --target install
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
