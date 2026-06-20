@@ -1,7 +1,7 @@
 # Maintainer: Sadie K (zulc22)
 pkgname=neostab
 _name=${pkgname}
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='yaml-inspired fstab generator'
 url='https://github.com/zulc22/neostab'
@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 depends=(python)
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('6db067926b3d3519667116c998ac65f852fb9b7450815de78a332be71782f8f3')
+sha256sums=('f62289aeb544db019457852fc7d5db72e3febe34deb94bc593f7a0cf21153ce8')
 
 makedepends=(python-build python-installer python-wheel python-hatchling)
 
