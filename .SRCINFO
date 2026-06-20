@@ -1,0 +1,16 @@
+pkgbase = sing-usbip
+	pkgdesc = Cross-platform usbip implementation in Go
+	pkgver = dev
+	pkgrel = 1
+	url = https://github.com/SagerNet/sing-usbip/
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-sing-usbip
+	makedepends = go
+	makedepends = clang
+	makedepends = lld
+	depends = glibc
+	source = sing-usbip::git+https://github.com/SagerNet/sing-usbip.git
+	sha256sums = SKIP
+
+pkgname = sing-usbip
