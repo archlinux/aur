@@ -1,7 +1,7 @@
 # Maintainer: Sandra Keßler <mail@sandra-kessler.net>
 pkgname=zerodds-bin
 _pkgname=zerodds
-pkgver=1.0.0_rc.3
+pkgver=1.0.0_rc.3.1
 pkgrel=1
 pkgdesc="Pure-Rust OMG Data Distribution Service implementation (precompiled binaries)"
 arch=('x86_64' 'aarch64')
@@ -16,28 +16,28 @@ makedepends=('binutils')
 # kompilierten binaries für seine Komponente. Wir extrahieren die
 # data.tar.* aus jedem .deb und bauen daraus den pacman-package-tree.
 source_x86_64=(
-  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3/zerodds-cli_1.0.0-rc.3_amd64.deb"
-  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3/zerodds-ws-bridge_1.0.0-rc.3_amd64.deb"
-  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3/zerodds-mqtt-bridge_1.0.0-rc.3_amd64.deb"
-  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3/zerodds-coap-bridge_1.0.0-rc.3_amd64.deb"
-  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3/zerodds-amqp-bridge_1.0.0-rc.3_amd64.deb"
-  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3/zerodds-grpc-bridge_1.0.0-rc.3_amd64.deb"
-  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3/zerodds-corba-bridge_1.0.0-rc.3_amd64.deb"
-  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3/zerodds-ros2_1.0.0-rc.3_amd64.deb"
-  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3/zerodds-core_1.0.0-rc.3_amd64.deb"
-  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3/zerodds-dev_1.0.0-rc.3_amd64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3.1/zerodds-cli_1.0.0-rc.3.1_amd64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3.1/zerodds-ws-bridge_1.0.0-rc.3.1_amd64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3.1/zerodds-mqtt-bridge_1.0.0-rc.3.1_amd64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3.1/zerodds-coap-bridge_1.0.0-rc.3.1_amd64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3.1/zerodds-amqp-bridge_1.0.0-rc.3.1_amd64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3.1/zerodds-grpc-bridge_1.0.0-rc.3.1_amd64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3.1/zerodds-corba-bridge_1.0.0-rc.3.1_amd64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3.1/zerodds-ros2_1.0.0-rc.3.1_amd64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3.1/zerodds-core_1.0.0-rc.3.1_amd64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3.1/zerodds-dev_1.0.0-rc.3.1_amd64.deb"
 )
 source_aarch64=(
-  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3/zerodds-cli_1.0.0-rc.3_arm64.deb"
-  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3/zerodds-ws-bridge_1.0.0-rc.3_arm64.deb"
-  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3/zerodds-mqtt-bridge_1.0.0-rc.3_arm64.deb"
-  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3/zerodds-coap-bridge_1.0.0-rc.3_arm64.deb"
-  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3/zerodds-amqp-bridge_1.0.0-rc.3_arm64.deb"
-  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3/zerodds-grpc-bridge_1.0.0-rc.3_arm64.deb"
-  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3/zerodds-corba-bridge_1.0.0-rc.3_arm64.deb"
-  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3/zerodds-ros2_1.0.0-rc.3_arm64.deb"
-  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3/zerodds-core_1.0.0-rc.3_arm64.deb"
-  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3/zerodds-dev_1.0.0-rc.3_arm64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3.1/zerodds-cli_1.0.0-rc.3.1_arm64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3.1/zerodds-ws-bridge_1.0.0-rc.3.1_arm64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3.1/zerodds-mqtt-bridge_1.0.0-rc.3.1_arm64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3.1/zerodds-coap-bridge_1.0.0-rc.3.1_arm64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3.1/zerodds-amqp-bridge_1.0.0-rc.3.1_arm64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3.1/zerodds-grpc-bridge_1.0.0-rc.3.1_arm64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3.1/zerodds-corba-bridge_1.0.0-rc.3.1_arm64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3.1/zerodds-ros2_1.0.0-rc.3.1_arm64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3.1/zerodds-core_1.0.0-rc.3.1_arm64.deb"
+  "https://github.com/zero-objects/zero-dds/releases/download/v1.0.0-rc.3.1/zerodds-dev_1.0.0-rc.3.1_arm64.deb"
 )
 sha256sums_x86_64=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 sha256sums_aarch64=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
