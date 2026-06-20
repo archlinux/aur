@@ -8,13 +8,12 @@
 
 pkgname=commoncpp2
 pkgver=1.8.1
-pkgrel=7
+pkgrel=8
 pkgdesc="A class framework specifically designed for telephony applications"
 arch=('x86_64')
 url='http://www.gnu.org/software/commoncpp/'
 license=('GPL-2.0-only' 'custom')
 depends=('gcc-libs' 'zlib' 'sh')
-options=('!makeflags')
 validpgpkeys=('84344FAA5350F5C61D2CE4A4046AC7983903A6DD')
 source=("https://ftp.gnu.org/pub/gnu/commoncpp/$pkgname-$pkgver.tar.gz"{,.sig})
 sha256sums=('53ced4aff74e28a1d8018eb2b4974519028db3c12471ab6dff1c873578c9af4e'
@@ -23,6 +22,7 @@ sha256sums=('53ced4aff74e28a1d8018eb2b4974519028db3c12471ab6dff1c873578c9af4e'
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
+  export CXXFLAGS="$CXXFLAGS -std=c++14 -fpermissive"
   sed -i -e '50 a\#include <sys/stat.h>' inc/cc++/applog.h
   ./configure --prefix=/usr --mandir=/usr/share/man
   make

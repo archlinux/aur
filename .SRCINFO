@@ -1,7 +1,7 @@
 pkgbase = commoncpp2
 	pkgdesc = A class framework specifically designed for telephony applications
 	pkgver = 1.8.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.gnu.org/software/commoncpp/
 	arch = x86_64
 	license = GPL-2.0-only
@@ -9,7 +9,6 @@ pkgbase = commoncpp2
 	depends = gcc-libs
 	depends = zlib
 	depends = sh
-	options = !makeflags
 	source = https://ftp.gnu.org/pub/gnu/commoncpp/commoncpp2-1.8.1.tar.gz
 	source = https://ftp.gnu.org/pub/gnu/commoncpp/commoncpp2-1.8.1.tar.gz.sig
 	validpgpkeys = 84344FAA5350F5C61D2CE4A4046AC7983903A6DD
