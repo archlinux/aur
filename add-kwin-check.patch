@@ -1,0 +1,20 @@
+diff -u --recursive gpu-screen-recorder-ui-orig/src/Utils.cpp gpu-screen-recorder-ui/src/Utils.cpp
+--- gpu-screen-recorder-ui-orig/src/Utils.cpp	2026-06-20 12:47:29.849319258 -0600
++++ gpu-screen-recorder-ui/src/Utils.cpp	2026-06-20 13:02:18.233788565 -0600
+@@ -385,7 +385,8 @@
+ 
+         return strstr(xdg_current_desktop, "Hyprland") ||
+                strstr(xdg_current_desktop, "niri") ||
+-               strstr(xdg_current_desktop, "river");
++               strstr(xdg_current_desktop, "river") ||
++               strstr(xdg_current_desktop, "KDE");
+     }
+ 
+     static bool get_drm_property_by_name(int drm_fd, drmModeObjectPropertiesPtr props, const char *name, uint64_t *result) {
+@@ -457,4 +458,4 @@
+         }
+         return false;
+     }
+-}
+\ No newline at end of file
++}
