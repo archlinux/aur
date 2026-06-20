@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Maintainer: Atay Özcan <atay@oezcan.me>
 pkgname=sentinel-cosmic
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 install=sentinel-cosmic.install
 # Cargo.toml's release profile already strips symbols (`strip = "symbols"`),
@@ -46,7 +46,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # the PKGBUILD lands on the AUR repo. The in-repo copy stays at
 # 'SKIP' so dependabot-style updates don't churn this file every
 # release; never commit a real hash here.
-sha256sums=('4eb3518c94ab0af476b74363ec46ea351cce01477ae502a62f18f39a3a48a01c')
+sha256sums=('7409cfb2c7425fb21774c8a0129ceb79ae6863c6d5b4a9d422c691beee6a10c1')
 
 prepare() {
     cd "sentinel-$pkgver"
