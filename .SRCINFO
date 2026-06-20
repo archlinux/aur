@@ -1,7 +1,7 @@
 pkgbase = adwaita-colors-icon-theme
 	pkgdesc = Adwaita Colors enhances the Adwaita icon theme by integrating GNOME’s accent color feature. It ensures that your Adwaita icons reflect the same accent color as your GNOME theme.
 	pkgver = 2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dpejoh/Adwaita-colors
 	arch = any
 	license = GPL3
