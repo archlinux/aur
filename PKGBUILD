@@ -1,7 +1,7 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-bin
-pkgver=2.3.3.4
+pkgver=2.4.0.0
 pkgrel=1
 pkgdesc="Shelly: A Modern Arch Package Manager (prebuilt binary)"
 arch=('x86_64')
@@ -28,13 +28,14 @@ depends=(
 optdepends=(
     'flatpak: For supporting flatpak implementation.'
     'fish: Fish shell completions'
+    'zsh: Zsh shell completions'
 )
 
 source=(
     "Shelly-ALPM-linux-x64-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v${pkgver}/Shelly-ALPM-linux-x64.tar.gz"
 )
 
-sha256sums=('851896ceae51609a4eba4a97145caf0f0874cfe066334c4d11ccd7e0f6e0d6f5')
+sha256sums=('8db1a91d85cf91d7a790a19e7ec423cfbf004826fc17ddb466fd34862516973b')
 
 package() {
   # Install Shelly.Gtk binary
@@ -43,7 +44,7 @@ package() {
   # Install Shelly-Notifications binary
   install -Dm755 "$srcdir/Shelly-Notifications" "$pkgdir/usr/bin/shelly-notifications"
 
-  # Install Shelly-CLI binary
+  # Install Shelly.Cli binary
   install -Dm755 "$srcdir/shelly" "$pkgdir/usr/bin/shelly"
 
   # Install Shelly.Keys binary
@@ -104,6 +105,9 @@ EOF
 
   # Install fish shell completions
   install -Dm644 "$srcdir/shelly.fish" "$pkgdir/usr/share/fish/vendor_completions.d/shelly.fish"
+
+  # Install zsh shell completions
+  install -Dm644 "$srcdir/_shelly" "$pkgdir/usr/share/zsh/site-functions/_shelly"
 
   # Install translations
 if [ -d "$srcdir/locale" ] && [ -n "$(ls -A "$srcdir/locale" 2>/dev/null)" ]; then
