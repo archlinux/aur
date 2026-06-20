@@ -1,6 +1,6 @@
 pkgbase = heidisql-gtk2-bin
 	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, Microsoft SQL and SQLite databases. (GTK2)
-	pkgver = 12.18
+	pkgver = 12.19
 	pkgrel = 1
 	url = https://github.com/HeidiSQL/HeidiSQL
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = heidisql-gtk2-bin
 	conflicts = heidisql
 	conflicts = heidisql-client
 	replaces = heidisql-bin
-	noextract = build-gtk2-v12.18.tgz
-	source = heidisql_12.18_x86_64.deb::https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.18/heidisql_12.18_amd64.deb
-	source = build-gtk2-v12.18.tgz::https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.18/build-gtk2-v12.18.tgz
-	sha256sums = 3b3ff47249508c7a7921f8a4d2370dfb3b1d195f9877b6d158b232503107be9c
-	sha256sums = 045b2e0b708e1c907700eb42e165049429d180c10bf6b6511988b560592a9c1c
+	noextract = build-gtk2-v12.19.tgz
+	source = heidisql_12.19_x86_64.deb::https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.19/heidisql_12.19_amd64.deb
+	source = build-gtk2-v12.19.tgz::https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.19/build-gtk2-v12.19.tgz
+	sha256sums = 216149b96d2d07f5c74a50c6f0cdcd0d98c54a9dbc850261978e657c9cdcaaad
+	sha256sums = 952e515630217e251948a13c180a4dd50e4add01a38cf255c587bb74386db6f9
 
 pkgname = heidisql-gtk2-bin
