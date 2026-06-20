@@ -1,45 +1,50 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=rkdeveloptool-gui
-pkgver=4.0.0
+pkgver=5.0.2
 pkgrel=1
 pkgdesc="RKDevelopTool GUI is a graphical front-end for Rockchip's official rkdeveloptool"
-arch=($CARCH)
+arch=(any)
 url="https://github.com/gahingwoo/RKDevelopTool-GUI"
 license=('GPL-3.0-only')
 provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
 depends=(
-    glibc
     hicolor-icon-theme
+    pyside6
+    python
+    python-dbus 
     # AUR
     rkdeveloptool
 )
 makedepends=(
     git
-    pyside6
-    nuitka
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel'
 )
 optdepends=(
 )
 backup=()
-options=('!strip' '!debug' '!lto')
 install=
 source=(
     "${pkgname}::git+${url}.git#tag=${pkgver}"
     "${pkgname}.png"
 )
-sha256sums=('e4a311bde556fae69c0546e9df166b830939376d8c4144ee7874fc2d202a0966'
+sha256sums=('99e792f008f1dfd5be62a115258d636da905356eabaedf8894079d551fadfa74'
             '91619e46e6adff808ed8a3061be5226589ed07ddf9ecd8df33e1a99f5ac563c4')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}" 
+    git cherry-pick -n 62f2cde9ae1938afd0620e39f94cdfab775ae894
 }
 
 build() {
     cd "${srcdir}/${pkgname}/"
-    python build_nuitka.py
+    python -m build --wheel --no-isolation
 }
 
 # check() {
@@ -48,19 +53,8 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}/"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
     install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-    install -vDm755 "dist/rkdevtoolgui.bin" "${pkgdir}/usr/bin/${pkgname}"
-    install -vDm644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<EOF
-[Desktop Entry]
-Name=${pkgname}
-Comment=${pkgdesc}
-GenericName=${pkgdesc}
-Exec=${pkgname}
-StartupNotify=false
-Terminal=false
-Type=Application
-Categories=Utility;
-Icon=${pkgname}.png
-EOF
+    install -vDm644 packaging/rkdeveloptool-gui.desktop -t "${pkgdir}/usr/share/applications/"
     install -vDm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
 }
