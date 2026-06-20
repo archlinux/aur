@@ -1,6 +1,6 @@
 pkgbase = python-rq
 	pkgdesc = Simple job queues for Python
-	pkgver = 2.9.1
+	pkgver = 2.10
 	pkgrel = 1
 	url = https://github.com/rq/rq
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-rq
 	depends = python-setproctitle
 	depends = python-typing_extensions
 	depends = python-greenlet
-	source = https://github.com/rq/rq/archive/refs/tags/v2.9.1.tar.gz
-	sha256sums = ff739323cf20b79c9e39edf281e64fb074162f8273a15490c3156371b31cc131
+	source = https://github.com/rq/rq/archive/refs/tags/v2.10.tar.gz
+	sha256sums = 9c42f792788d29705a88578503a19e8ae1db9c4f5a6d474ada3401ba05441616
 
 pkgname = python-rq
