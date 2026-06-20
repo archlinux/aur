@@ -1,7 +1,7 @@
 # Maintainer: nosduco <nosduco at gmail dot com>
 pkgname=streamcontroller
 pkgver=1.5.0beta14
-pkgrel=2
+pkgrel=3
 _pkgver=1.5.0-beta.14
 _reponame=StreamController-$_pkgver
 _pkgname=${pkgname}
@@ -12,7 +12,7 @@ license=('GPL-3')
 depends=('python' 'xdg-desktop-portal' 'xdg-desktop-portal-gtk' 'libportal' 'libportal-gtk4' 'libadwaita' 'gobject-introspection')
 makedepends=('python-pip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/StreamController/StreamController/archive/refs/tags/$_pkgver.tar.gz")
-sha256sums=('4656486b7474fa91c775ed2551c6a28bce5a67a6ef90bead9718c20367546e7a')
+sha256sums=('02f06f07a954f22a032f3c6dfe5321954e1755ea04403cb594dd8c815ddff998')
 provides=('streamcontroller')
 conflicts=('streamcontroller-git')
 
