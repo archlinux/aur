@@ -19,9 +19,13 @@ sha256sums=('527a5c23c3910a47bf9fdb363ae04e9876094910de7a29ea30867c974c38dbb1'
             'e05cf76f5980b5a44c35dd812afafde262a53a00fc9fa89bcbca68e26a8edb16')
 
 package() {
-	install -d "$pkgdir/opt/gams" "$pkgdir/usr/bin"
-	cp -a --no-preserve=ownership "gams${pkgver::4}_linux_x64_64_sfx/"* "$pkgdir/opt/gams/"
-	install -Dvm644 gams-studio.desktop -t "$pkgdir/usr/share/applications/"
-	ln -sv "/opt/gams/gams" "$pkgdir/usr/bin/gams"
-	ln -sv "/opt/gams/studio/studio.AppImage" "$pkgdir/usr/bin/gams-studio"
+  install -d "$pkgdir/opt/gams" "$pkgdir/usr/bin"
+  cp -a --no-preserve=ownership "gams${pkgver::4}_linux_x64_64_sfx/"* "$pkgdir/opt/gams/"
+  install -Dvm644 gams-studio.desktop -t "$pkgdir/usr/share/applications/"
+  ln -sv "/opt/gams/gams" "$pkgdir/usr/bin/gams"
+  ln -sv "/opt/gams/studio/studio.AppImage" "$pkgdir/usr/bin/gams-studio"
+
+  # license
+  install -Dvm644 "gams${pkgver::4}_linux_x64_64_sfx/EULA.md" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
