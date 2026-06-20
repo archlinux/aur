@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=vmaf-git
-pkgver=3.1.0.r0.g6375a4be
+pkgver=3.2.0.r1.gac9467ff
 pkgrel=1
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion (git version)'
 arch=('x86_64')
@@ -34,9 +34,10 @@ build() {
     _jobs="$(nproc)"
     
     # may fail to compile on a high core count system
-    if [ "$_jobs" > "$_max_jobs" ]
+    # https://github.com/Netflix/vmaf/issues/1541
+    if [ "$_jobs" -ge "$_max_jobs" ]
     then
-        local _jobs="$_max_jobs"
+        _jobs="$_max_jobs"
         printf '%s\n' "limiting the compilation jobs to ${_jobs}"
     fi
     
