@@ -1,4 +1,4 @@
-From 47dae7cb9dbb27b102d2c9039de0c339d200d7d3 Mon Sep 17 00:00:00 2001
+From 86ce055c36e349328428e812f3ee70b554280a1b Mon Sep 17 00:00:00 2001
 From: nicolasyang <nicolasyang243@proton.me>
 Date: Tue, 5 Nov 2024 12:42:12 +0800
 Subject: [PATCH 1/7] do not pin resolvelib
@@ -94,5 +94,5 @@ index ce0fb9cffe..9bc9ccef0b 100644
  semantic-version==2.10.0
  setuptools==66.1.0
 -- 
-2.52.0
+2.54.0
 

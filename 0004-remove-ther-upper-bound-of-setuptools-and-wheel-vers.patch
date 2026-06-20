@@ -1,4 +1,4 @@
-From c90d6a2722eee618de250590a786cf8103e1b4de Mon Sep 17 00:00:00 2001
+From 2fe4ea290ac17513479fba9bad1d76b697334bcf Mon Sep 17 00:00:00 2001
 From: nicolasyang <nicolasyang243@proton.me>
 Date: Wed, 19 Mar 2025 18:45:06 +0800
 Subject: [PATCH 4/7] remove ther upper bound of setuptools and wheel version
@@ -8,14 +8,14 @@ Subject: [PATCH 4/7] remove ther upper bound of setuptools and wheel version
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/pyproject.toml b/pyproject.toml
-index a0d6af00ec..1e02f39714 100644
+index 3bc93045a0..1e02f39714 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -1,3 +1,3 @@
  [build-system]
--requires = ["setuptools >= 66.1.0, <= 80.10.2", "wheel == 0.45.1"]  # lower bound to support controller Python versions, upper bound for latest version tested at release
+-requires = ["setuptools >= 66.1.0, <= 82.0.1", "wheel == 0.45.1"]  # lower bound to support controller Python versions, upper bound for latest version tested at release
 +requires = ["setuptools >= 66.1.0", "wheel >= 0.45.1"]  # lower bound to support controller Python versions
  build-backend = "setuptools.build_meta"
 -- 
-2.52.0
+2.54.0
 

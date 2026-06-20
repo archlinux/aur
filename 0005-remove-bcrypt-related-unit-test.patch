@@ -1,4 +1,4 @@
-From d9eb627a71cbbf6f218507e2d0ae47bdc62e9cd6 Mon Sep 17 00:00:00 2001
+From b3014b32c1a160f65b55820b9ceef01456a6d3c2 Mon Sep 17 00:00:00 2001
 From: nicolasyang <nicolasyang243@proton.me>
 Date: Wed, 10 Dec 2025 14:24:19 +0800
 Subject: [PATCH 5/7] remove bcrypt related unit test
@@ -67,5 +67,5 @@ index 2c4a612725..4f22574b6e 100644
 -    result = p.hash(secret, salt=repaired_salt, ident=ident)
 -    assert result == expected
 -- 
-2.52.0
+2.54.0
 

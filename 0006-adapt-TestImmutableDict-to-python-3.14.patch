@@ -1,4 +1,4 @@
-From 8bfd1ca4eaeda78c50e08deaa6ab35988aba3d80 Mon Sep 17 00:00:00 2001
+From ff9857620cbd0c6df9377f6976ff5dcf901d2a34 Mon Sep 17 00:00:00 2001
 From: nicolasyang <nicolasyang243@proton.me>
 Date: Sat, 17 Jan 2026 20:55:11 +0800
 Subject: [PATCH 6/7] adapt TestImmutableDict to python 3.14
@@ -21,5 +21,5 @@ index 8424502e07..bf6a6b42a8 100644
          with pytest.raises(TypeError, match=expected_reason):
              hash(imdict)
 -- 
-2.52.0
+2.54.0
 

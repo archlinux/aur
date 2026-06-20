@@ -1,4 +1,4 @@
-From dc27e5d2ae6274de9bdcfd5386df3c2dc97bfbfc Mon Sep 17 00:00:00 2001
+From 41201afab5e89ab19e15e08058a2986130b6ba97 Mon Sep 17 00:00:00 2001
 From: nicolasyang <nicolasyang243@proton.me>
 Date: Sat, 17 Jan 2026 21:00:24 +0800
 Subject: [PATCH 7/7] adapt test_check_required_arguments_no_params to python
@@ -19,5 +19,5 @@ index eb3d52e2fc..f736b06c3f 100644
 -    assert "'NoneType' is not iterable" in to_native(te.value)
 +    assert "'NoneType' is not a container or iterable" in to_native(te.value)
 -- 
-2.52.0
+2.54.0
 

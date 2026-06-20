@@ -1,4 +1,4 @@
-From 58a95aa26946a479a8f68661ff2ee915310b2270 Mon Sep 17 00:00:00 2001
+From 6c870999725ad3487c1133e10c7e567146e3a37a Mon Sep 17 00:00:00 2001
 From: nicolasyang <nicolasyang243@proton.me>
 Date: Tue, 24 Dec 2024 12:03:33 +0800
 Subject: [PATCH 2/7] update the upper boundary of controller python version to
@@ -46,5 +46,5 @@ index 36a5a2c434..76d4a9a2eb 100644
 +    '3.14',
  )
 -- 
-2.52.0
+2.54.0
 
