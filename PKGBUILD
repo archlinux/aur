@@ -3,7 +3,7 @@
 pkgname=harbor-stremio-bin
 _pkgname=harbor
 pkgver=0.9.13
-pkgrel=2
+pkgrel=3
 pkgdesc='A Stremio client built for adventure (binary release)'
 arch=('x86_64')
 url='https://github.com/harborstremio/harbor'
@@ -32,7 +32,7 @@ sha256sums=('e813e973f00a0b87cd6544b19524280af72dd037a806936b88cbc11f9bb5bfbd')
 package() {
   rm -rf "$srcdir/deb-extract"
   mkdir -p "$srcdir/deb-extract"
-  bsdtar -xf "$srcdir/Harbor_0.9.13_amd64.deb" -C "$srcdir/deb-extract"
+  bsdtar --no-same-owner -xf "$srcdir/Harbor_0.9.13_amd64.deb" -C "$srcdir/deb-extract"
 
   local data_archive
   data_archive="$(find "$srcdir/deb-extract" -maxdepth 1 -type f -name 'data.tar.*' | head -n 1)"
@@ -41,7 +41,7 @@ package() {
     return 1
   fi
 
-  bsdtar -xf "$data_archive" -C "$pkgdir"
+  bsdtar --no-same-owner -xf "$data_archive" -C "$pkgdir"
 
   rm -f "$pkgdir/usr/bin/ffmpeg" \
         "$pkgdir/usr/bin/ffprobe" \
