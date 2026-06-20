@@ -34,12 +34,14 @@ source=("${UE_SDK_VERSION}.tar.gz::https://cdn.unrealengine.com/Toolchain_Linux/
         'unreal-engine.sh'
         'com.unrealengine.UE5Editor.desktop'
         '0001-override-shared-target-build.patch'
+        '0002-adapt-android-setup-script.patch'
         'unreal-engine-5-pacman-cache.hook'
         'ue5editor.svg')
 sha256sums=('6eef42679b744cdcb50276f2d7cff0a51f7ddd632960e06bfbc3f6b9508ef615'
             '55a8ad79c2e502bc5919249b9d1804ad405795b36630ab2f23aeb99dd218e5f4'
             'aa09746f9db93713f470ef19390a89b279fd5a335835ad95eab6cdaafa1b9e99'
             '1cedb43efc103c384705e4e18746fed24c60c52a445e89f1acfd0f2992f5291d'
+            '3da3f449c6b42d49874d8507be476b1178509be099df6f5d58683802d7e05dd2'
             '9386160a91594abeeaf4fe02fea562e7a4ead4c6f9a258c2a37b2e5f10e7deca'
             'b00c398b63f15084c46f3963f62a45284ecd8dae9ba6f38a2c4af370bbfdab8d')
 # Not sure if compiling Unreal with LTO is legal? Lot's of different proprietary software goes into Unreal
@@ -245,6 +247,14 @@ esac
 export DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=0
 
 prepare() {
+  if [[ "${UE_WITH_ANDROID}" == "yes" ]]; then
+    if ! pacman -Q android-studio >/dev/null 2>&1; then
+      error "You need to install Android Studio with its cmdline-tools package first before compiling Unreal Engine with Android export support"
+    elif [[ ! -d "/opt/android-studio/cmdline-tools/latest/bin" ]]; then
+      error "You installed Android Studio, but you haven't installed the cmdline-tools SDK package yet. Please install it first and try again."
+    fi
+  fi
+
   # Check access to the repository
   if ! git ls-remote git@github.com:EpicGames/UnrealEngine &>/dev/null; then
     error 'You must register at unrealengine.com and link your github account to access this private repo. See the wiki for more info: https://wiki.archlinux.org/index.php/Unreal_Engine_4'
@@ -352,6 +362,10 @@ prepare() {
   "${srcdir}"/"${pkgname}"/Engine/Build/BatchFiles/Linux/BuildThirdParty.sh
   "${srcdir}"/"${pkgname}"/Engine/Build/BatchFiles/Linux/SetupDotnet.sh
   "${srcdir}"/"${pkgname}"/Engine/Build/BatchFiles/Linux/FixDependencyFiles.sh
+
+  if [[ "${UE_WITH_ANDROID}" == "yes" ]]; then
+    "${srcdir}"/"${pkgname}"/Engine/Extras/Android/SetupAndroid.sh
+  fi
 }
 
 build() {

@@ -1,0 +1,30 @@
+From c938108e4d53565d92b2dded8844ae83a3c4f072 Mon Sep 17 00:00:00 2001
+From: Alexis Belmonte <alexbelm48@gmail.com>
+Date: Sat, 16 May 2026 16:51:57 +0200
+Subject: [PATCH] Adapt Android setup script for an Arch Linux based
+ environment
+
+---
+ Engine/Extras/Android/SetupAndroid.sh | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Engine/Extras/Android/SetupAndroid.sh b/Engine/Extras/Android/SetupAndroid.sh
+index 19dfc07d0..1517383d4 100755
+--- a/Engine/Extras/Android/SetupAndroid.sh
++++ b/Engine/Extras/Android/SetupAndroid.sh
+@@ -40,10 +40,10 @@ if [[ -z "${NDK_VERSION}" ]]; then
+ fi
+ 
+ 
+-STUDIO_PATH="$HOME/android-studio"
++STUDIO_PATH="/opt/android-studio"
+ if [ ! -d "$STUDIO_PATH" ]; then
+ 	echo "Android Studio not installed, please download Android Studio 2022.2.1 from https://developer.android.com/studio"
+-	echo "Please download, extract and move to $HOME/android-studio"
++	echo "Please download, extract and move to $STUDIO_PATH"
+ 	${PAUSE}
+ 	exit 1
+ fi
+-- 
+2.54.0
+
