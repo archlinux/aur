@@ -5,6 +5,7 @@ pkgbase = rssguard-git
 	url = https://github.com/martinrotter/rssguard
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
