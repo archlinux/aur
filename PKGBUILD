@@ -1,6 +1,6 @@
 # Maintainer: Alex Forencich <alex@alexforencich.com>
 pkgname=python-cocotbext-eth
-pkgver=0.1.24
+pkgver=0.1.26
 pkgrel=1
 pkgdesc="Ethernet interface modules for cocotb"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python-cocotb' 'python-cocotbext-axi')
 makedepends=('python-setuptools')
 
 source=("cocotbext-eth-$pkgver.tar.gz::https://github.com/alexforencich/cocotbext-eth/archive/v$pkgver.tar.gz")
-sha256sums=('86ac759177ef8ee0baba8b4a83371e712de42e51de42f47379615abdca5c9b81')
+sha256sums=('093dbfb67308754ee3083ae02e9487125f4e1a84debcae07447d32f42cecbffb')
 
 build() {
     cd "$srcdir/cocotbext-eth-$pkgver"
