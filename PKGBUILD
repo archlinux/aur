@@ -1,6 +1,6 @@
 # Maintainer: indyfive11 <203553604+indyfive11@users.noreply.github.com>
 pkgname=voice-agent-git
-pkgver=r52.45e0790
+pkgver=r60.8aa70d4
 pkgrel=1
 pkgdesc="Real-time spoken assistant for Claude (Pipecat, local-first): mic→STT→brain→TTS with wake word, barge-in, and voice machine-control"
 arch=('any')
