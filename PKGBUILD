@@ -4,8 +4,8 @@
 # Optional dependencies are dissociated from arch and need to be installed manually into venv. Although, many are installed by hermes lazyly when needed.
 # TODO: there needs to be a way to copy skills upon hermes package update, or, at least, to prompt the user to do so.
 pkgname=hermes-agent
-pkgver=0.16.0
-_tagver=2026.6.5
+pkgver=0.17.0
+_tagver=2026.6.19
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
@@ -30,7 +30,7 @@ depends=(
 
 makedepends=('python311' 'nodejs' 'npm' 'rsync')
 source=("https://github.com/NousResearch/hermes-agent/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('09ae9eef4ea88d3a6689b2071e7c927a4a2ee10e737c0974afd5a19402c090ee')
+sha256sums=('69b805ec0a7a7be880068ba8a3b17479d7ba29f0cac0a2e9c6692c02f346ba91')
 validpgpkeys=()
 install=hermes-agent.install
 
@@ -75,6 +75,7 @@ build() {
   echo "==> Creating Python venv and installing dependencies..."
   python3.11 -m venv --clear venv || return 1
   venv/bin/pip install .[all]
+  venv/bin/pip install .[firecrawl,exa,parallel-web]
 }
 
 package() {
@@ -94,14 +95,22 @@ package() {
   --exclude='scripts/tests' --exclude='scripts/install.*' \
   . "$_optdir/"
 
+  # Add symlink to ui-tui in site-packages, hermes keeps looking for things inside site-packages
+  ln -s "$_optdir/ui-tui" "$_optdir/venv/lib/python3.11/site-packages/ui-tui"
+
+  echo "console.log('skipping build, using prebuilt dist/entry.js')" > "$_optdir/ui-tui/scripts/build.mjs"
+
   # Create simple wrapper script in /usr/bin.
   # Set HERMES_TUI_DIR so the launcher uses the prebuilt bundle without
   # trying to rebuild via esbuild at runtime (which would fail on the
   # root-owned site-packages tree).
+  sed -i '1c#!/opt/hermes-agent/venv/bin/python3.11' $_optdir/venv/bin/hermes 
   install -d "$pkgdir/usr/bin"
   {
     echo "#!/bin/bash"
-    echo "exec /opt/$pkgname/venv/bin/python -m hermes_cli.main" '"$@"'
+    echo "unset PYTHONPATH"
+    echo "unset PYTHONHOME"
+    echo "exec /opt/$pkgname/venv/bin/hermes" '"$@"'
   } > "$pkgdir/usr/bin/hermes"
 
   chmod 755 "$pkgdir/usr/bin/hermes"
