@@ -1,7 +1,7 @@
 pkgbase = optiscaler-client-bin
 	pkgdesc = Modern desktop client for installing, updating and configuring OptiScaler across game libraries
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Agustinm28/Optiscaler-Client
 	arch = x86_64
 	license = MIT
