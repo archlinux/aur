@@ -8,7 +8,7 @@ url="https://github.com/MrGodzilla38/rivalcfg-gui"
 license=('GPL-3.0-or-later')
 depends=('python' 'python-gobject' 'python-cairo' 'rivalcfg')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MrGodzilla38/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dd526094bae39e7eed3d27385deb035d42f7c4479b13ee7a256b61dac264898a')
+sha256sums=('c4f87b1e61d31f3d3aaa6eb104ba95be58e895d5717c4d5b31f7c45f6a6a47b8')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
