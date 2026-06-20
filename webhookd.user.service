@@ -1,12 +1,12 @@
 [Unit]
-Description = A very simple webhook server launching scripts.
-After = network-online.target
+Description=A very simple webhook server launching scripts.
+After=network-online.target
 
 [Service]
-WorkingDirectory = %h
-EnvironmentFile = -%E/webhookd/webhookd.env
-ExecStart = /usr/bin/webhookd
-RestartSec = 5
+WorkingDirectory=%h
+EnvironmentFile=-%E/webhookd/webhookd.env
+ExecStart=/usr/bin/webhookd
+RestartSec=5
 
 [Install]
-WantedBy = default.target
+WantedBy=default.target
