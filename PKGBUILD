@@ -19,13 +19,8 @@ provides=('twuewand-git')
 
 makedepends=(git python-build python-installer python-wheel)
 
-#if [[ "$_name" =~ ^\w+ ]]; then
-#	name="${BASH_REMATCH[1]}"
-#fi
-
 build() {
 	cd "$srcdir/$_name"
-	cd "twuewand"
 	python -m build --wheel --no-isolation
 	cd "../rndaddentropy"
 	make rndaddentropy
@@ -33,7 +28,6 @@ build() {
 
 package() {
 	cd "$srcdir/$_name"
-	cd "twuewand"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	cd "../rndaddentropy"
 	make DESTDIR="$pkgdir/" install
