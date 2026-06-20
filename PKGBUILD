@@ -5,7 +5,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin-screencast-api
-pkgver=6.6.5
+pkgver=6.7.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KWin with D-Bus API for screencast stream introspection'
@@ -16,7 +16,6 @@ provides=(kwin=$pkgver)
 conflicts=(kwin)
 depends=(aurorae
          breeze
-         gcc-libs
          glibc
          iio-sensor-proxy
          plasma-activities
@@ -55,9 +54,11 @@ depends=(aurorae
          libei
          libepoxy
          libevdev
+         libgcc
          libinput
          libpipewire
          libqaccessibilityclient-qt6
+         libstdc++
          libxcb
          libxcvt
          libxkbcommon
@@ -71,6 +72,7 @@ depends=(aurorae
          qt6-svg
          qt6-tools
          systemd-libs
+         vulkan-icd-loader
          wayland
          xcb-util-keysyms
          xcb-util-wm)
@@ -79,15 +81,18 @@ makedepends=(extra-cmake-modules
              krunner
              plasma-wayland-protocols
              python
+             vulkan-headers
              wayland-protocols
              xorg-xwayland)
 optdepends=('plasma-keyboard: virtual keyboard')
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/kwin-$pkgver.tar.xz{,.sig}
+        https://invent.kde.org/plasma/kwin/-/commit/cf00d9712316edecb4e1014bffe925136a74f072.patch
         screencast-dbus-api.patch)
-sha256sums=('6c187ce7a5506090b438ef900103836fa0537674dde8b31e5b497ef321643cb4'
+sha256sums=('d20b798094a9f58e57de55eca3d58b1cdcb7db2939eb8bf73918c4fab6d9aec5'
             'SKIP'
-            '379ccc9166405c102c79eee852678b6ba66ccc42c68a01fc80e3479cb3d13a4d')
+            'cb57c6364bc887ef36a059c2f51ef3e3a23f89a1b62f0f58884aeb1ebdea7f36'
+            '5573fbd610612845eb015b67ff6b04dd92ada97848ece32b8ca73ed88ac4ef7a')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
@@ -96,6 +101,10 @@ validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell
 
 prepare() {
   cd kwin-$pkgver
+  # https://bugs.kde.org/show_bug.cgi?id=520842#c17
+  # Disable Color Pipeline for NVIDIA
+  patch -Np1 -i ../cf00d9712316edecb4e1014bffe925136a74f072.patch
+  # D-Bus API for screencast stream introspection
   patch -Np1 -i ../screencast-dbus-api.patch
 }
 

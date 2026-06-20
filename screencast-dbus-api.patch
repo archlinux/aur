@@ -1,8 +1,8 @@
 diff --git a/autotests/integration/CMakeLists.txt b/autotests/integration/CMakeLists.txt
-index 7f3e594d7b..40b34d39bd 100644
+index c3c0d3d684..db23bcd697 100644
 --- a/autotests/integration/CMakeLists.txt
 +++ b/autotests/integration/CMakeLists.txt
-@@ -195,6 +195,9 @@ endif()
+@@ -199,6 +199,9 @@ endif()
  if (TARGET K::KPipeWire)
      integrationTest(NAME testScreencasting SRCS screencasting_test.cpp LIBS K::KPipeWire)
  endif()
@@ -14,10 +14,10 @@ index 7f3e594d7b..40b34d39bd 100644
      integrationTest(NAME testActivities SRCS activities_test.cpp LIBS XCB::ICCCM Plasma::Activities)
 diff --git a/autotests/integration/screencast_dbus_test.cpp b/autotests/integration/screencast_dbus_test.cpp
 new file mode 100644
-index 0000000000..58062d7f7b
+index 0000000000..bb3d3167bd
 --- /dev/null
 +++ b/autotests/integration/screencast_dbus_test.cpp
-@@ -0,0 +1,266 @@
+@@ -0,0 +1,267 @@
 +/*
 +    SPDX-FileCopyrightText: 2025 Jerzy Kołosowski <jerzy@kolosowscy.pl>
 +    SPDX-License-Identifier: GPL-2.0-or-later
@@ -55,6 +55,7 @@ index 0000000000..58062d7f7b
 +class ScreencastDbusTest : public GenericSceneOpenGLTest
 +{
 +    Q_OBJECT
++
 +public:
 +    ScreencastDbusTest()
 +        : GenericSceneOpenGLTest(QByteArrayLiteral("O2"))
@@ -518,18 +519,21 @@ index 0000000000..cff4868e6b
 +  </interface>
 +</node>
 diff --git a/src/plugins/screencast/outputscreencastsource.cpp b/src/plugins/screencast/outputscreencastsource.cpp
-index 0fd74bf3b8..e0132e2cdc 100644
+index 5a44c3f7f5..92de1feadc 100644
 --- a/src/plugins/screencast/outputscreencastsource.cpp
 +++ b/src/plugins/screencast/outputscreencastsource.cpp
-@@ -36,6 +36,7 @@ OutputScreenCastSource::OutputScreenCastSource(LogicalOutput *output, std::optio
+@@ -36,6 +36,10 @@ OutputScreenCastSource::OutputScreenCastSource(LogicalOutput *output, std::optio
              Q_EMIT closed();
          }
      });
 +    connect(m_output, &LogicalOutput::changed, this, &OutputScreenCastSource::geometryChanged);
-     connect(Compositor::self(), &Compositor::aboutToToggleCompositing, this, [this]() {
-         Q_EMIT closed();
-     });
-@@ -168,6 +169,31 @@ RectF OutputScreenCastSource::mapFromGlobal(const RectF &rect) const
++    connect(Compositor::self(), &Compositor::aboutToToggleCompositing, this, [this]() {
++        Q_EMIT closed();
++    });
+ }
+ 
+ OutputScreenCastSource::~OutputScreenCastSource()
+@@ -167,6 +171,31 @@ RectF OutputScreenCastSource::mapFromGlobal(const RectF &rect) const
      return m_output->mapFromGlobal(rect);
  }
  
@@ -1623,7 +1627,7 @@ index 0000000000..09b70f2dcc
 +
 +} // namespace KWin
 diff --git a/src/plugins/screencast/screencastmanager.cpp b/src/plugins/screencast/screencastmanager.cpp
-index d30c9136c3..9d0304582a 100644
+index 5067461292..f52269ffbc 100644
 --- a/src/plugins/screencast/screencastmanager.cpp
 +++ b/src/plugins/screencast/screencastmanager.cpp
 @@ -15,6 +15,7 @@
@@ -1652,8 +1656,8 @@ index d30c9136c3..9d0304582a 100644
 +        onStreamClosed(stream);
          stream->deleteLater();
      });
-     connect(stream, &ScreenCastStream::ready, stream, [waylandStream](uint nodeid) {
-@@ -182,6 +185,28 @@ void ScreencastManager::integrateStreams(ScreencastStreamV1Interface *waylandStr
+     connect(stream, &ScreenCastStream::ready, waylandStream, [waylandStream](uint nodeid, quint64 objectSerial) {
+@@ -183,6 +186,28 @@ void ScreencastManager::integrateStreams(ScreencastStreamV1Interface *waylandStr
      if (!stream->init()) {
          waylandStream->sendFailed(stream->error());
          delete stream;
@@ -1683,10 +1687,10 @@ index d30c9136c3..9d0304582a 100644
  }
  
 diff --git a/src/plugins/screencast/screencastmanager.h b/src/plugins/screencast/screencastmanager.h
-index 509c738ffb..1a05d4faa7 100644
+index 13fcbe3e6b..3474622e86 100644
 --- a/src/plugins/screencast/screencastmanager.h
 +++ b/src/plugins/screencast/screencastmanager.h
-@@ -17,6 +17,7 @@ namespace KWin
+@@ -18,6 +18,7 @@ namespace KWin
  class LogicalOutput;
  class ScreenCastStream;
  class PipeWireCore;
@@ -1694,7 +1698,7 @@ index 509c738ffb..1a05d4faa7 100644
  
  class ScreencastManager : public Plugin
  {
-@@ -25,6 +26,15 @@ class ScreencastManager : public Plugin
+@@ -26,6 +27,15 @@ class ScreencastManager : public Plugin
  public:
      explicit ScreencastManager();
  
@@ -1710,7 +1714,7 @@ index 509c738ffb..1a05d4faa7 100644
  private:
      void streamWindow(ScreencastStreamV1Interface *stream,
                        const QString &winid,
-@@ -46,11 +56,16 @@ private:
+@@ -47,11 +57,16 @@ private:
                        ScreencastV1Interface::CursorMode mode);
  
      void integrateStreams(ScreencastStreamV1Interface *waylandStream, ScreenCastStream *stream);
@@ -1728,10 +1732,10 @@ index 509c738ffb..1a05d4faa7 100644
  
  } // namespace KWin
 diff --git a/src/plugins/screencast/screencaststream.cpp b/src/plugins/screencast/screencaststream.cpp
-index 87584fc34f..ae5298aeef 100644
+index 23c1bb1293..e262e75fec 100644
 --- a/src/plugins/screencast/screencaststream.cpp
 +++ b/src/plugins/screencast/screencaststream.cpp
-@@ -18,6 +18,7 @@
+@@ -19,6 +19,7 @@
  #include "opengl/eglnativefence.h"
  #include "opengl/glplatform.h"
  #include "opengl/gltexture.h"
@@ -1750,7 +1754,7 @@ index 87584fc34f..ae5298aeef 100644
      case PW_STREAM_STATE_PAUSED:
          if (nodeId() == 0 && m_pwStream) {
              m_pwNodeId = pw_stream_get_node_id(m_pwStream);
-             Q_EMIT ready(nodeId());
+             Q_EMIT ready(nodeId(), objectSerial());
 +
 +            // Setup consumer tracker when we have node ID
 +            if (!m_consumerTracker) {
@@ -1780,7 +1784,7 @@ index 87584fc34f..ae5298aeef 100644
          break;
      }
  }
-@@ -363,6 +380,33 @@ ScreenCastStream::~ScreenCastStream()
+@@ -360,6 +377,33 @@ ScreenCastStream::~ScreenCastStream()
      }
  }
  
@@ -1814,7 +1818,7 @@ index 87584fc34f..ae5298aeef 100644
  bool ScreenCastStream::init()
  {
      if (!m_pwCore->m_error.isEmpty()) {
-@@ -396,7 +440,7 @@ uint ScreenCastStream::framerate()
+@@ -393,7 +437,7 @@ uint ScreenCastStream::framerate()
      return 0;
  }
  
@@ -1824,19 +1828,19 @@ index 87584fc34f..ae5298aeef 100644
      return m_pwNodeId;
  }
 diff --git a/src/plugins/screencast/screencaststream.h b/src/plugins/screencast/screencaststream.h
-index 9518b58a0d..da35f088b8 100644
+index d0af11d647..5825990195 100644
 --- a/src/plugins/screencast/screencaststream.h
 +++ b/src/plugins/screencast/screencaststream.h
-@@ -59,7 +59,7 @@ public:
+@@ -61,7 +61,7 @@ public:
  
      bool init();
      uint framerate();
 -    uint nodeId();
 +    uint nodeId() const;
+     uint64_t objectSerial() const;
      QString error() const
      {
-         return m_error;
-@@ -71,12 +71,23 @@ public:
+@@ -74,12 +74,23 @@ public:
  
      void setCursorMode(ScreencastV1Interface::CursorMode mode);
  
@@ -1852,7 +1856,7 @@ index 9518b58a0d..da35f088b8 100644
      void invalidateCursor();
  
  Q_SIGNALS:
-     void ready(quint32 nodeId);
+     void ready(quint32 nodeId, quint64 objectSerial);
      void closed();
 +    void consumerConnected(const QString &appName, quint32 pid);
 +    void consumerDisconnected();
@@ -1860,7 +1864,7 @@ index 9518b58a0d..da35f088b8 100644
  
  private:
      void onStreamParamChanged(uint32_t id, const struct spa_pod *format);
-@@ -140,6 +151,8 @@ private:
+@@ -143,6 +154,8 @@ private:
  
      QList<ScreenCastBuffer *> m_allBuffers;
      DamageJournal m_damageJournal;
@@ -2161,7 +2165,7 @@ index 0000000000..180da82a69
 +
 +} // namespace KWin
 diff --git a/src/plugins/screencast/windowscreencastsource.cpp b/src/plugins/screencast/windowscreencastsource.cpp
-index 59708970ea..93a477314f 100644
+index 19b37ba316..45540e9515 100644
 --- a/src/plugins/screencast/windowscreencastsource.cpp
 +++ b/src/plugins/screencast/windowscreencastsource.cpp
 @@ -33,7 +33,8 @@ WindowScreenCastSource::WindowScreenCastSource(Window *window)
@@ -2174,7 +2178,7 @@ index 59708970ea..93a477314f 100644
              add(window);
              if (m_active) {
                  Q_EMIT frame();
-@@ -80,12 +81,16 @@ void WindowScreenCastSource::watch(Window *window)
+@@ -77,12 +78,16 @@ void WindowScreenCastSource::watch(Window *window)
  {
      window->refOffscreenRendering();
      connect(window, &Window::damaged, this, &WindowScreenCastSource::frame);
@@ -2191,7 +2195,7 @@ index 59708970ea..93a477314f 100644
  }
  
  quint32 WindowScreenCastSource::drmFormat() const
-@@ -210,6 +215,54 @@ RectF WindowScreenCastSource::boundingRect() const
+@@ -207,6 +212,54 @@ RectF WindowScreenCastSource::boundingRect() const
      return boundingRect;
  }
  
