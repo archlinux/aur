@@ -1,0 +1,28 @@
+post_install() {
+  cat <<'EOF'
+yay-guard installed.
+
+Enable ONE integration:
+
+  1) Native yay v13 hook (recommended):
+       mkdir -p ~/.config/yay
+       cp /usr/share/yay-guard/init.lua ~/.config/yay/init.lua
+
+  2) Or wrapper alias (any yay version), in your shell rc:
+       alias yay='yay-guard'
+
+Pick an AI engine (optional; without one it runs heuristics + metadata only):
+       export AUR_AUDIT_ENGINE=claude-code            # uses your Claude Code session
+       export AUR_AUDIT_ENGINE=openai AUR_AUDIT_API_KEY=...   # any OpenAI-compatible API
+       export ANTHROPIC_API_KEY=sk-ant-...            # Anthropic API (default engine)
+
+Load the affected-packages list (auto-refreshes afterwards):
+       aur_audit.py update-list
+
+Docs: /usr/share/doc/yay-guard/README.md
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
