@@ -43,7 +43,7 @@ source=(
     "Reasonix-${pkgver}-linux-amd64.tar.gz::${_relurl}/Reasonix-linux-amd64.tar.gz"
     'reasonix-desktop.sh'
     'reasonix-desktop.desktop'
-    "appicon.png::https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/main-v2/desktop/build/appicon.png"
+    "appicon-${pkgver}.png::https://raw.githubusercontent.com/esengine/DeepSeek-Reasonix/desktop-v${pkgver}/desktop/build/appicon.png"
 )
 sha256sums=(
     '13e48c73a1907c48ed48ab0d79ee03317940e8fa473a473f15f17d40571ed5f0'
@@ -69,7 +69,7 @@ package() {
 
     # Install icons
     # 1024x1024 (original size from upstream)
-    install -Dm644 "${srcdir}/appicon.png" \
+    install -Dm644 "${srcdir}/appicon-${pkgver}.png" \
         "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/reasonix-desktop.png"
 
     # Generate common sizes for better desktop environment compatibility
@@ -78,12 +78,12 @@ package() {
     command -v magick &>/dev/null || _magick="convert"
     for size in 48 128 256 512; do
         install -d "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
-        ${_magick} "${srcdir}/appicon.png" -resize "${size}x${size}" \
+        ${_magick} "${srcdir}/appicon-${pkgver}.png" -resize "${size}x${size}" \
             "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/reasonix-desktop.png"
     done
 
     # Fallback icon for non-icon-theme environments
-    install -Dm644 "${srcdir}/appicon.png" \
+    install -Dm644 "${srcdir}/appicon-${pkgver}.png" \
         "${pkgdir}/usr/share/pixmaps/reasonix-desktop.png"
 
 }
