@@ -1,6 +1,6 @@
 pkgbase = plasma-meta-deflatpak
 	pkgdesc = Meta package to install KDE Plasma
-	pkgver = 6.6
+	pkgver = 6.7
 	pkgrel = 2
 	url = https://kde.org/plasma-desktop/
 	arch = any
@@ -70,6 +70,7 @@ pkgbase = plasma-meta-deflatpak
 	optdepends = plymouth-kcm: Configure Plymouth from systemsettings
 	optdepends = plasma-sdk: Development tools
 	optdepends = sddm-kcm: SDDM configuration module
+	optdepends = union: Next generation QtQuick/QtWidgets style engine
 	optdepends = wacomtablet: Drawing tablet settings on X
 
 pkgname = plasma-meta-deflatpak
