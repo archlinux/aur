@@ -1,6 +1,6 @@
 # Maintainer: Siiire <siiire@pm.me>
 pkgname=jellyfin-desktop-git-bin
-pkgver=0.r1013.40aeb62
+pkgver=0.r1018.a5e1d6e
 pkgrel=1
 epoch=1
 pkgdesc="A desktop client for Jellyfin (Nightly AppImage)"
