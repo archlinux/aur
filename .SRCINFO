@@ -1,6 +1,6 @@
 pkgbase = opensimh-git
 	pkgdesc = The Computer History Simulation Project
-	pkgver = open.simh.baseline.295.gc077c22d
+	pkgver = open.simh.baseline.447.g0dc9deca
 	pkgrel = 1
 	url = https://opensimh.org
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = opensimh-git
 	license = custom:opensimh
 	makedepends = git
 	makedepends = termcap
-	makedepends = unoconv
+	makedepends = abiword
 	depends = libpcap
 	depends = unzip
 	depends = sdl2

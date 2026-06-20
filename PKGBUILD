@@ -2,14 +2,14 @@
 
 pkgname="opensimh-git"
 _pkgname="simh"
-pkgver=open.simh.baseline.295.gc077c22d
+pkgver=open.simh.baseline.447.g0dc9deca
 pkgrel=1
 pkgdesc="The Computer History Simulation Project"
 arch=('i686' 'x86_64')
 url="https://opensimh.org"
 license=('custom:opensimh')
 depends=('libpcap' 'unzip' 'sdl2' 'ttf-dejavu' 'zlib' 'libpng')
-makedepends=('git' 'termcap' 'unoconv')
+makedepends=('git' 'termcap' 'abiword')
 provides=("${_pkgname%-*}")
 conflicts=("${_pkgname%-*}")
 source=('git+https://github.com/open-simh/simh.git')
@@ -48,12 +48,24 @@ package() {
 
   echo "Entering directory $srcdir/simh/doc."
   cd "$srcdir/simh/doc"
-  unoconv -d document --format=html *.doc
-  unoconv -d document --format=pdf *.doc
-  unoconv -d document --format=txt *.doc
+#  unoconv -d document --format=html *.doc
+  abiword --to=html *.doc *.docx
+  abiword --to=pdf *.doc *.docx
+  abiword --to=rtf *.doc *.docx
+  abiword --to=txt *.doc *.docx
+#  for file in *.doc; do
+#    echo "  Converting doc $file."
+#    docname=$( echo $file | sed 's<.doc<<' )
+#    pandoc --pdf-engine=xelatex -M mainfont="Hack" -o $docname.html $file
+#    pandoc --pdf-engine=xelatex -M mainfont="Hack" -o $docname.html $pdf
+#    pandoc --pdf-engine=xelatex -M mainfont="Hack" -o $docname.html $txt
+#  done
+#  unoconv -d document --format=pdf *.doc
+#  unoconv -d document --format=txt *.doc
   # install -D -t "$pkgdir/usr/share/doc/$pkgname" *.doc
   install -D -t "$pkgdir/usr/share/doc/$pkgname" *.html
   install -D -t "$pkgdir/usr/share/doc/$pkgname" *.pdf
+  install -D -t "$pkgdir/usr/share/doc/$pkgname" *.rtf
   install -D -t "$pkgdir/usr/share/doc/$pkgname" *.txt
 
   echo "Entering directory $srcdir/simh."
