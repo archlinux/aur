@@ -1,6 +1,6 @@
 pkgbase = n-dhcp4-git
 	pkgdesc = Dynamic Host Configuration Protocol for IPv4
-	pkgver = 1.79.ge19f319
+	pkgver = 1.86.g5c0c3bd
 	pkgrel = 1
 	url = https://github.com/nettools/n-dhcp4
 	arch = x86_64

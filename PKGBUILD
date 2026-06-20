@@ -3,7 +3,7 @@
 
 _pkgname=n-dhcp4
 pkgname=$_pkgname-git
-pkgver=1.79.ge19f319
+pkgver=1.86.g5c0c3bd
 pkgrel=1
 pkgdesc="Dynamic Host Configuration Protocol for IPv4"
 url="https://github.com/nettools/n-dhcp4"
