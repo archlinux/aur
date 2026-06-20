@@ -3,7 +3,7 @@
 pkgname=mustach-git
 pkgver=r226.32ba6c6
 pkgrel=1
-pkgdesc="mustach is a C implementation of the mustache template specification."
+pkgdesc="mustach is a C implementation of the mustache template specification. (Git)"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/jobol/mustach/"
 license=('0BSD')
