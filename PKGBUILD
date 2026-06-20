@@ -2,7 +2,7 @@
 # Original Author: scgm0 (MystiVaid)
 pkgname=mvl-bin
 _pkgname=mvl
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="第三方启动器，用于管理和启动 Vintage Story 游戏（内置游戏下载功能）"
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=('!strip' '!debug')
 source=(
     "${pkgname}-${pkgver}.AppImage::https://github.com/scgm0/MVL/releases/download/${pkgver}/MVL-${pkgver}.AppImage"
 )
-sha256sums=('28a66c33353635744f24c8d72d5c462e30f799a05e1489bc37bdf735452d59d7')
+sha256sums=('a08c501c186d6987f477abb584298c25899886525079c36ec7594723d26217c2')
 noextract=("${pkgname}-${pkgver}.AppImage")
 
 package() {

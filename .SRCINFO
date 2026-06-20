@@ -1,6 +1,6 @@
 pkgbase = mvl-bin
 	pkgdesc = 第三方启动器，用于管理和启动 Vintage Story 游戏（内置游戏下载功能）
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/scgm0/MVL
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = mvl-bin
 	depends = fuse2
 	provides = mvl
 	conflicts = mvl
-	noextract = mvl-bin-1.0.0.AppImage
+	noextract = mvl-bin-1.0.1.AppImage
 	options = !strip
 	options = !debug
-	source = mvl-bin-1.0.0.AppImage::https://github.com/scgm0/MVL/releases/download/1.0.0/MVL-1.0.0.AppImage
-	sha256sums = 28a66c33353635744f24c8d72d5c462e30f799a05e1489bc37bdf735452d59d7
+	source = mvl-bin-1.0.1.AppImage::https://github.com/scgm0/MVL/releases/download/1.0.1/MVL-1.0.1.AppImage
+	sha256sums = a08c501c186d6987f477abb584298c25899886525079c36ec7594723d26217c2
 
 pkgname = mvl-bin
