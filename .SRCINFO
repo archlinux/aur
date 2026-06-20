@@ -1,6 +1,6 @@
 pkgbase = phono3py
 	pkgdesc = A simulation package of phonon-phonon interaction related properties
-	pkgver = 3.30.1
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/phonopy/phono3py
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = phono3py
 	makedepends = ninja
 	depends = python-phonopy
 	depends = python-scipy
-	source = git+https://github.com/phonopy/phono3py.git#tag=v3.30.1
+	source = git+https://github.com/phonopy/phono3py.git#tag=v4.1.0
 	sha256sums = SKIP
 
 pkgname = phono3py
