@@ -1,3 +1,5 @@
+#  Maintainer: Jacob S. Gordon <jacob.as.gordon@gmail.com>
+# shellcheck disable=SC2034,SC2154,SC2164
 pkgname=wlsunset-git
 pkgver=0.1.0.r0.0569fb4
 pkgrel=1
@@ -14,12 +16,8 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
-
-# Git, tags available
+    # count from most recent tag
 	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-
-# Git, no tags available
-#	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -31,4 +29,5 @@ build() {
 package() {
 	cd "$pkgname"
 	DESTDIR="$pkgdir" ninja -C build install
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
