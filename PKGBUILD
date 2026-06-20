@@ -1,14 +1,14 @@
 # Maintainer: wysbd <aur@wysbd.dev>
 
 pkgname="hyprland-preview-share-picker-git"
-pkgver=0.2.1.r0.g211b789
+pkgver=0.2.1.r6.g344394a
 pkgrel=1
 pkgdesc="An alternative share picker for hyprland with window and monitor previews"
 arch=('x86_64' 'aarch64')
 url="https://github.com/WhySoBad/hyprland-preview-share-picker"
 license=(MIT)
 depends=('gtk4' 'gtk4-layer-shell' 'xdg-desktop-portal-hyprland' 'hyprland')
-makedepends=(cargo)
+makedepends=('cargo' 'git')
 optdepends=(
   'slurp: default tool for selecting share regions'
 )
