@@ -1,7 +1,7 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname="gearlynx"
-pkgver=1.2.13
+pkgver=1.2.14
 pkgrel=1
 pkgdesc="Atari Lynx Emulator and Debugger"
 url="https://github.com/drhelius/Gearlynx"
@@ -13,7 +13,7 @@ source=(
     "gearlynx.desktop"
 )
 sha256sums=(
-    "10686843833a4e3f487d13d9695869f621ce02f55c7ab4fbb42efe0510e16dce"
+    "c199ba815c90b52e75feb890b81b3724b7152331f95d6d668ae16e844b7cff50"
     "99b4dbf55dfc8071a541237029079c68f34ea11d67c25e2ffa4525e7c3e9086b"
 )
 
