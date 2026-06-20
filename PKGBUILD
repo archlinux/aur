@@ -1,7 +1,7 @@
 
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 pkgname=xmcl-electron-bin
-pkgver=0.56.8
+pkgver=0.57.0
 pkgrel=1
 pkgdesc="X Minecraft Launcher - An Open Source Minecraft Launcher with Modern UX. Provides a Disk Efficient way to manage all your Mods!"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ source=(
     "https://github.com/Voxelum/x-minecraft-launcher/raw/refs/heads/master/xmcl-electron-app/icons/dark.icns"
     "xmcl.desktop"
 )
-sha256sums=('ebae79b34a731eb4ef4737d02cae065777e35b7fe3db6b5fa84f4d1fb64b5412'
+sha256sums=('877ddc767d94d6e40e21ee76fb3f553dea89b9cc4013ddf7d8a5463b6c28c8db'
             'cf229073fb478254b751a8198b23be961533101065ca712e323cf60cd15f3383'
             '2bec20067e7ef4c7265be764a06dc8b94d98fef53cf6c1ddca25f2f6814d7010')
 
@@ -32,12 +32,12 @@ prepare() {
 }
 
 package() {
-    install -Dm 644 ${srcdir}/app-${pkgver}-linux.asar ${pkgdir}/usr/lib/xmcl/xmcl.asar
+    install -Dm 644 ${srcdir}/app-${pkgver}-linux.asar ${pkgdir}/usr/lib/xmcl/app.asar
     install -Dm 644 ${srcdir}/dark_256x256x32.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/xmcl.png
     install -Dm 644 ${srcdir}/dark_512x512x32.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/xmcl.png
     install -Dm 644 ${srcdir}/xmcl.desktop ${pkgdir}/usr/share/applications/xmcl.desktop
     install -Dm 755 /dev/stdin "${pkgdir}/usr/bin/xmcl" <<EOF
 #!/usr/bin/bash
-exec electron41 /usr/lib/xmcl/xmcl.asar "\$@"
+exec electron41 /usr/lib/xmcl/app.asar "\$@"
 EOF
 }
