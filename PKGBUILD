@@ -1,7 +1,7 @@
 # Maintainer: Marat Bakeev <hawara@gmail.com>
 
 pkgname=fido2-token2-git
-pkgver=r152.b054404
+pkgver=r157.4b85f49
 pkgrel=1
 pkgdesc='TOKEN2 FIDO2 management CLI with wrapper and GUI'
 arch=('x86_64')
