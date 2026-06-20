@@ -5,7 +5,7 @@ pkgver=6.7.0_37.r1f21dee
 pkgrel=1
 pkgdesc="KDecoration3 decoration engine for AeroShell-based desktops"
 arch=(x86_64)
-url="https://github.com/aeroshell-desktop/smod"
+url="https://gitgud.io/aeroshell/smod"
 license=('AGPL-3.0-or-later')
 depends=(gcc-libs
          glibc
@@ -18,7 +18,6 @@ depends=(gcc-libs
          kcmutils
          kguiaddons
          plasma-wayland-protocols
-         vulkan-headers
          wayland
          wayland-protocols
          qt6-wayland
