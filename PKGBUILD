@@ -9,10 +9,10 @@
 pkgname=commoncpp2
 pkgver=1.8.1
 pkgrel=7
-pkgdesc="GNU Common C++ 2"
+pkgdesc="A class framework specifically designed for telephony applications"
 arch=('x86_64')
 url='http://www.gnu.org/software/commoncpp/'
-license=('GPL' 'custom')
+license=('GPL-2.0-only' 'custom')
 depends=('gcc-libs' 'zlib' 'sh')
 options=('!makeflags')
 validpgpkeys=('84344FAA5350F5C61D2CE4A4046AC7983903A6DD')
