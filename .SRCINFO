@@ -1,0 +1,17 @@
+pkgbase = connecttebayo
+	pkgdesc = Qt6 QML plugin for IWD-based WiFi management via DBus
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/RyuZinOh/connecttebayo
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = iwd
+	source = connecttebayo-0.1.0.tar.gz::https://github.com/RyuZinOh/connecttebayo/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 44e86f5876270ad5207cd694ff64b0e83ad13a5f390e3874c542d0ea3665720e
+
+pkgname = connecttebayo
