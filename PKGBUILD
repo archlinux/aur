@@ -2,8 +2,8 @@
 # Contributor: Howard Cheung <mail@h-cheung.cf>
 pkgname=plasma6-themes-orchis-kde-git
 _gitname=Orchis-kde
-pkgver=r66.036e831
-pkgrel=2
+pkgver=r75.b2a9691
+pkgrel=3
 pkgdesc="A material Design theme for KDE Plasma desktop."
 arch=('any')
 url="https://github.com/vinceliuice/${_gitname}"
@@ -24,25 +24,48 @@ pkgver() {
 }
 
 package() {
-   # make folders
-   mkdir -p "${pkgdir}/usr/share/aurorae/themes"
-   mkdir -p "${pkgdir}/usr/share/color-schemes"
-   mkdir -p "${pkgdir}/usr/share/plasma"
-   mkdir -p "${pkgdir}/usr/share/Kvantum"
-   mkdir -p "${pkgdir}/usr/share/sddm/themes"
-   mkdir -p "${pkgdir}/usr/share/wallpapers"
+   local _theme="Orchis"
+   local _src="${srcdir}/${_gitname}"
 
-   # aurorae theme
-   cp -r "${srcdir}/${_gitname}/aurorae"/*/ "${pkgdir}/usr/share/aurorae/themes"
-   # kvantum theme
-   cp -r "${srcdir}/${_gitname}/Kvantum"/*/ "${pkgdir}/usr/share/Kvantum"
-   # color scheme
-   cp -r "${srcdir}/${_gitname}/color-schemes"/* "${pkgdir}/usr/share/color-schemes"
-   # desktop theme
-   cp -r "${srcdir}/${_gitname}/plasma"/*/ "${pkgdir}/usr/share/plasma"
-   # look and feel
-   cp -r "${srcdir}/${_gitname}/wallpaper/"*/ "${pkgdir}/usr/share/wallpapers"
-   # sddm
-   cp -r "${srcdir}/${_gitname}/sddm/"*/ "${pkgdir}/usr/share/sddm/themes"
+   # Destination directories (matching install.sh global paths)
+   local _aurorae="${pkgdir}/usr/share/aurorae/themes"
+   local _schemes="${pkgdir}/usr/share/color-schemes"
+   local _plasma="${pkgdir}/usr/share/plasma/desktoptheme"
+   local _lookfeel="${pkgdir}/usr/share/plasma/look-and-feel"
+   local _kvantum="${pkgdir}/usr/share/Kvantum"
+   local _wallpaper="${pkgdir}/usr/share/wallpapers"
+   local _sddm="${pkgdir}/usr/share/sddm/themes"
 
+   install -d "${_aurorae}" "${_schemes}" "${_plasma}" \
+              "${_lookfeel}" "${_kvantum}" "${_wallpaper}" "${_sddm}"
+
+   # Aurorae window decoration themes
+   cp -r "${_src}/aurorae"/* "${_aurorae}"
+
+   # Color schemes
+   cp -r "${_src}/color-schemes"/*.colors "${_schemes}"
+
+   # Kvantum themes
+   cp -r "${_src}/Kvantum"/* "${_kvantum}"
+
+   # Plasma desktop themes
+   cp -r "${_src}/plasma/desktoptheme/${_theme}" "${_plasma}"
+   cp -r "${_src}/plasma/desktoptheme/${_theme}-dark" "${_plasma}"
+
+   # Copy icons into each desktop theme (as install.sh does)
+   cp -r "${_src}/plasma/desktoptheme/icons" "${_plasma}/${_theme}/"
+   cp -r "${_src}/plasma/desktoptheme/icons" "${_plasma}/${_theme}-dark/"
+
+   # Copy color scheme files into desktop themes (as install.sh does)
+   cp -r "${_src}/color-schemes/${_theme}.colors" "${_plasma}/${_theme}/colors"
+   cp -r "${_src}/color-schemes/${_theme}Dark.colors" "${_plasma}/${_theme}-dark/colors"
+
+   # Look and feel (global themes)
+   cp -r "${_src}/plasma/look-and-feel"/* "${_lookfeel}"
+
+   # Wallpapers
+   cp -r "${_src}/wallpaper"/* "${_wallpaper}"
+
+   # SDDM theme (use 6.0 for Plasma 6)
+   cp -r "${_src}/sddm/6.0"/*/ "${_sddm}"
 }
