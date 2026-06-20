@@ -1,7 +1,7 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.0-rc.17
+_pkgver=13.0.0-rc.18
 _branding=dr460nized
 
 __pkgname=$_pkgname
@@ -69,9 +69,9 @@ source_x86_64=(
 source_aarch64=(
   $__pkgname-v$_pkgver.linux-arm64.tar.xz::$url/-/releases/v$_pkgver/downloads/$__pkgname.linux-arm64.tar.xz
 )
-sha256sums=('08ed0b573f95da3e388e9100709952ecf5c129f26430248c78e4d4a43c2063ed')
-sha256sums_x86_64=('b6234ea06768aa5742bd6d7323fce9654e14f5596d304a648719d06f98004dd1')
-sha256sums_aarch64=('bcb375772afcaae96842ee95d549d530de05c17521a0f0a7eae6879a3d379478')
+sha256sums=('00b621caebbc4c7bb672a459651d7db1ff853a8527d5f07dfe7c51432a74b622')
+sha256sums_x86_64=('87e8561e21ded86d16913c1b05d44874c9cf03949071e1e1e001f4604cd38c22')
+sha256sums_aarch64=('bb27a6352ceba4a94bb577e1345f81819e46e2a90133af7ad05a3933d90bf84f')
 noextract=(
   $__pkgname-v$_pkgver.linux-x64.tar.xz
   $__pkgname-v$_pkgver.linux-arm64.tar.xz
