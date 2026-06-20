@@ -1,0 +1,19 @@
+pkgbase = chromapper-bin
+	pkgdesc = Unity-based map editor for Beat Saber (binary)
+	pkgver = 0.13.892
+	pkgrel = 1
+	url = https://github.com/Caeden117/ChroMapper/
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = curl
+	provides = chromapper=0.13.892
+	conflicts = chromapper
+	conflicts = chromapper-dev
+	conflicts = chromapper-dev-bin
+	options = !strip
+	source = https://cm.topc.at/nix/892/Linux.tar.gz
+	source = https://cm.topc.at/cm.svg
+	sha256sums = f4c4f2199a8b4fed4c5cd296105232b5f8ef013ab51a0f402421613352e5ae5c
+	sha256sums = 533bdae8c7e95a94a4941a01de5f0ee94684ac2119d7297e4f5abe950ec64e80
+
+pkgname = chromapper-bin
