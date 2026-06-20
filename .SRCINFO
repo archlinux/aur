@@ -1,6 +1,6 @@
 pkgbase = rucio
 	pkgdesc = Decentralized peer-to-peer file sharing over libp2p, with eMule/Kad2 compatibility
-	pkgver = 0.29.0
+	pkgver = 0.30.0
 	pkgrel = 1
 	url = https://github.com/ogarcia/rucio
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = rucio
 	makedepends = rust-wasm
 	makedepends = trunk
 	options = !lto
-	source = rucio-0.29.0::git+https://github.com/ogarcia/rucio.git#tag=0.29.0
+	source = rucio-0.30.0::git+https://github.com/ogarcia/rucio.git#tag=0.30.0
 	source = rucio-system.service
 	source = rucio-user.service
 	source = rucio-bootstrap.service
-	b2sums = 7098dec97297a269966982a15bd03afd6b4e3dafc4c40be1182737c056bc77ab32a81fa71e0c746161d0ba85006ef6da5d1ff75f22e10bd1e1277388892c699a
+	b2sums = 7f9de431e2a53a2b716fab8afd86917c5f166989acf772591310a16b00138708ccf6ce3d497b6a42a0d88d76a023d3d868912ed41a8d76f6cbb470368e6235c4
 	b2sums = 7906f2c641558dea0d6314b4609943b41e9a9bf5d64e83de688b95e2610074e298e9b87b1421729924807bf317277f87c8ebf2a39268bfaa75568fd34606296d
 	b2sums = a3c04268a6909af624a572331b021cf1d83621ea2156379739a9c851e54d672a2280a73784e53830163a9aa7a7e4bad7995fb3328d1c41fc509cabede342ccff
 	b2sums = e12e4f4f91b5bf50669a83ff570796350b19c1c321ba13f0138b8fcbbfb3a92a6a17e31f65c439c34219dc80ee4b7e284a25a7d73bcd0ee7085c3716d4163086
