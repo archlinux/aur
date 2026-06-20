@@ -3,7 +3,7 @@ pkgname=ifcopenshell-stable
 _pkgver=0.8.5
 pkgver=${_pkgver//-/}
 _vername=bonsai
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
 arch=('x86_64' 'i686')
 url="https://ifcopenshell.org/"
@@ -93,6 +93,9 @@ source=(
   "006-use-spdx-license.patch::${_patch_url_prefix}/dec0d6bc2ab3da60a1d6bb1b3359db94695c0af2.patch"
   "007-fix-ld-eror.patch::${_patch_url_prefix}/ea018ae720a7d575422ed28ffb10f630e7e6420f.patch"
   "008-fix-for-boost-1.89-explicit-optional.patch::${_patch_url_prefix}/89b3f95c7ffaa90c2c583038fe8c75d0be2e0317.patch"
+
+  # fix cgal version 6.2
+  "009-fix-cgal-6.2-add-Point_d_4d_Less-comparator.patch::${_patch_url_prefix}/9d956f18b78b87373445fb5628d21acc2329de9f.patch"
 )
 
 sha256sums=(
@@ -109,6 +112,8 @@ sha256sums=(
   'adc1de9d21a9f1aae06cf88ac00b5093a8e171fd3e69132f98b8a61be60e0cc2'
   '9b25ef16cb438f50f08dbe6e60201b6ecf157b77326410d5cc10c2d3254d050d'
   '88e75be92925e4aa11458694aa3d0f86b2c20dd7b0bd0026fcbd5e71e5fc9998'
+
+  '45000e665535886e33152849a6179e60de0b83e588c540204ebd767e1e2012a0'
   )
 
 _iosdir="IfcOpenShell-${_vername}-${_pkgver}"
