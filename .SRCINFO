@@ -1,0 +1,21 @@
+pkgbase = aurscan-manticore-release-git
+	pkgdesc = LLM-powered pre-build malware scanner for AUR packages (paru/yay editor-gate)
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/manticore-projects/aurscan
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = git
+	optdepends = yay: syay wrapper and --update-check
+	optdepends = claude-code: keyless backend via your Claude subscription
+	optdepends = openai-codex: keyless backend via your Codex subscription
+	optdepends = xdg-utils: open mail client for mailing-list reports
+	conflicts = aurscan-git
+	conflicts = aurscan-manticore
+	conflicts = aurscan-manticore-git
+	source = aurscan-manticore-release-git::git+https://github.com/manticore-projects/aurscan.git
+	sha256sums = SKIP
+
+pkgname = aurscan-manticore-release-git
