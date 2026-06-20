@@ -1,6 +1,6 @@
 pkgbase = sentinel-cosmic
 	pkgdesc = UAC-style confirmation dialog for Linux privilege escalation (COSMIC + sudo-rs friendly)
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/atayozcan/sentinel
 	install = sentinel-cosmic.install
@@ -28,7 +28,7 @@ pkgbase = sentinel-cosmic
 	options = !debug
 	backup = etc/security/sentinel.conf
 	backup = etc/pam.d/polkit-1
-	source = sentinel-cosmic-0.10.0.tar.gz::https://github.com/atayozcan/sentinel/archive/refs/tags/v0.10.0.tar.gz
-	sha256sums = 744b6d6abf6a6f4040a5693bc6bd5085c1fe6d299c8178e57d686f4b54145996
+	source = sentinel-cosmic-0.11.0.tar.gz::https://github.com/atayozcan/sentinel/archive/refs/tags/v0.11.0.tar.gz
+	sha256sums = 4eb3518c94ab0af476b74363ec46ea351cce01477ae502a62f18f39a3a48a01c
 
 pkgname = sentinel-cosmic

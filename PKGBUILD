@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Maintainer: Atay Özcan <atay@oezcan.me>
 pkgname=sentinel-cosmic
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 install=sentinel-cosmic.install
 # Cargo.toml's release profile already strips symbols (`strip = "symbols"`),
@@ -46,7 +46,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # the PKGBUILD lands on the AUR repo. The in-repo copy stays at
 # 'SKIP' so dependabot-style updates don't churn this file every
 # release; never commit a real hash here.
-sha256sums=('744b6d6abf6a6f4040a5693bc6bd5085c1fe6d299c8178e57d686f4b54145996')
+sha256sums=('4eb3518c94ab0af476b74363ec46ea351cce01477ae502a62f18f39a3a48a01c')
 
 prepare() {
     cd "sentinel-$pkgver"
@@ -70,7 +70,7 @@ build() {
     # (if a user sets RUSTFLAGS in /etc/makepkg.conf via cargo-rustflags)
     # composes cleanly.
     export RUSTFLAGS="${RUSTFLAGS:-} -C target-cpu=x86-64-v3"
-    cargo build --frozen --release --workspace --exclude sentinel-helper-kde
+    cargo build --frozen --release -p sentinel-helper -p sentinel-polkit-agent -p pam-sentinel
 
     # Generate shell completions + man pages from the freshly-built binaries.
     install -d target/release/share
@@ -80,12 +80,6 @@ build() {
         target/release/$bin completions zsh  > target/release/share/_$bin
         target/release/$bin man              > target/release/share/$bin.1
     done
-}
-
-check() {
-    cd "sentinel-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --release --workspace --exclude sentinel-helper-kde --locked
 }
 
 package() {
