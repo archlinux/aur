@@ -1,0 +1,3 @@
+d /etc/mebtty 0750 root root -
+d /var/lib/mebtty 0750 root root -
+d /var/lib/mebtty/uploads 0750 root root -

@@ -1,9 +1,11 @@
 post_install() {
+  _mebtty_prepare_system
   _mebtty_create_env
   _mebtty_print_notes
 }
 
 post_upgrade() {
+  _mebtty_prepare_system
   _mebtty_create_env
   _mebtty_print_notes
 }
@@ -14,15 +16,24 @@ post_remove() {
   fi
 }
 
+_mebtty_prepare_system() {
+  if command -v systemd-tmpfiles >/dev/null 2>&1; then
+    systemd-tmpfiles --create mebtty.conf >/dev/null 2>&1 || true
+  fi
+}
+
 _mebtty_create_env() {
   local env_dir='/etc/mebtty'
   local env_file="${env_dir}/mebtty.env"
 
   if [[ -f "${env_file}" ]]; then
+    chown root:root "${env_dir}" "${env_file}" 2>/dev/null || true
+    chmod 750 "${env_dir}" 2>/dev/null || true
+    chmod 640 "${env_file}" 2>/dev/null || true
     return
   fi
 
-  install -dm700 "${env_dir}"
+  install -dm750 -o root -g root "${env_dir}"
 
   local secret
   secret="$(openssl rand -hex 32 2>/dev/null || true)"
@@ -38,7 +49,10 @@ _mebtty_create_env() {
 MEBTTY_SECRET_KEY=${secret}
 MEBTTY_HOST=0.0.0.0
 MEBTTY_PORT=18888
+MEBTTY_PAM_SERVICE=login
 EOF
+  chown root:root "${env_file}" 2>/dev/null || true
+  chmod 640 "${env_file}" 2>/dev/null || true
 }
 
 _mebtty_print_notes() {
@@ -55,6 +69,9 @@ Configuration:
 
 Data:
   /var/lib/mebtty
+
+Service user:
+  root
 
 Start the service:
   sudo systemctl enable --now mebtty
