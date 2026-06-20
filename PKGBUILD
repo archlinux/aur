@@ -2,7 +2,7 @@
 # Contributor: Gui Rossibrum <guirossibrum@proton.me>
 
 pkgname=guicrypt-tui
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="TUI manager for gocryptfs encrypted vaults"
 arch=('x86_64')
