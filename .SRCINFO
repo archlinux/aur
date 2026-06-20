@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-libtiff
 	pkgdesc = Library for manipulation of TIFF images (mingw-w64)
 	pkgver = 4.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://libtiff.gitlab.io/libtiff/
 	arch = any
 	license = custom
