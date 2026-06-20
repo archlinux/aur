@@ -1,0 +1,14 @@
+# shellcheck shell=bash
+
+post_install() {
+	echo "HyprPM owns the hyprspaces plugin. Use 'hyprpm add https://github.com/jtaw5649/hyprspaces' and 'hyprpm enable hyprspaces'."
+	echo "Run 'hyprspaces install' to wire managed config. Add '--waybar' to also configure the Waybar fork."
+	echo "Use '--skip-bindings' to keep your keybinds."
+	echo "Run 'hyprspaces doctor' for read-only validation."
+}
+
+post_upgrade() {
+	echo "HyprPM owns plugin updates. Run 'hyprpm update' for plugin rebuilds."
+	echo "Run 'hyprspaces install' to refresh helper-managed config if needed."
+	echo "Run 'hyprspaces doctor' for read-only validation."
+}
