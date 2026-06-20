@@ -1,4 +1,4 @@
-# Maintainer: Clar Fon <usr@ltdk.xyz>
+# Maintainer: Dominik Kummer <devel@arkades.org>
 # Contributor: Johann CAHIER <johann.cahier@iot.bzh>
 pkgname=mustach
 pkgver=1.2.10
@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="mustach is a C implementation of the mustache template specification."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/jobol/mustach/"
-license=('ISC')
+license=('0BSD')
 depends=('json-c')
 makedepends=('gcc' 'make')
 checkdepends=()
@@ -18,9 +18,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://gitlab.com/jobol/mustach/-/archive/$pkgver/mustach-$pkgver.zip")
+source=("https://gitlab.com/jobol/mustach/-/archive/$pkgver/mustach-$pkgver.tar.gz")
 noextract=()
-sha256sums=('ff4d2f1505c78b40e3cb00c0208a1f17ca65cf40c9e211102f59828224db07ba')
+sha256sums=('95a2a351e748db9eeb98f40ba8bfbf010c1c6d2e725d31a3c7e602526d05bf90')
 validpgpkeys=()
 
 build() {
