@@ -7,7 +7,7 @@
 pkgname=python-sse-starlette
 _pkgname=${pkgname#python-}
 pkgver=3.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Server Sent Events (SSE) for Starlette and FastAPI"
 arch=(any)
 url="https://github.com/sysid/sse-starlette"
@@ -25,7 +25,6 @@ makedepends=(
   python-wheel
 )
 checkdepends=(
-  python-async-timeout
   python-asgi-lifespan
   python-fastapi
   python-httpx
