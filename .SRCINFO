@@ -1,6 +1,6 @@
 pkgbase = modulejail
 	pkgdesc = Proactively shrink Linux kernel-module attack surface by blacklisting unused modules
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://modulejail.com
 	install = modulejail.install
@@ -11,10 +11,10 @@ pkgbase = modulejail
 	optdepends = util-linux: logger(1) for syslog integration
 	optdepends = mkinitcpio: enables the initramfs strip hook that --install-initramfs-hook drops
 	optdepends = curl: required by --self-update (wget also works)
-	source = modulejail-1.4.2.tar.gz::https://github.com/jnuyens/modulejail/archive/refs/tags/v1.4.2.tar.gz
-	source = modulejail-1.4.2.tarball-signature::https://github.com/jnuyens/modulejail/releases/download/v1.4.2/v1.4.2.tar.gz.sig
+	source = modulejail-1.4.3.tar.gz::https://github.com/jnuyens/modulejail/archive/refs/tags/v1.4.3.tar.gz
+	source = modulejail-1.4.3.tarball-signature::https://github.com/jnuyens/modulejail/releases/download/v1.4.3/v1.4.3.tar.gz.sig
 	source = modulejail-signing-key.gpg
-	sha256sums = e23f85aa9337419b1dc7c8fab475a69862b8f8f3efaca211399a2b6674ed991d
+	sha256sums = 18dc68ebb573a4d5785e57e396c8a119de19b047981b3ebae9f925e78a3d5ffe
 	sha256sums = SKIP
 	sha256sums = 5b4f8bef3957b8d8f91475aeb40f398dc87b550b7bdc8458b72661112b033433
 
