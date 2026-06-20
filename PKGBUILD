@@ -1,6 +1,6 @@
 # Maintainer: so1omon
 pkgname=plex-tui
-pkgver=0.4.7
+pkgver=0.4.9
 pkgrel=1
 pkgdesc="Standalone Plex terminal UI with mpv playback"
 arch=("any")
@@ -22,7 +22,7 @@ makedepends=(
   "python-wheel"
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("d5a42fe6f0bbcc43a29aa9d426fa0030ace6fbc2f772a4d6f2776aa09770c8d7")
+sha256sums=("41d75bb22befefedea8f61bca4a5f9f05a98d53854bde21c90dcac0d5ca74730")
 
 build() {
   cd "$pkgname-$pkgver"
