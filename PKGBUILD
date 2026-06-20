@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
 pkgver=r1.1234567
-pkgrel=30
+pkgrel=31
 pkgdesc="Shorin Niri Desktop Environment"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-niri"
@@ -21,7 +21,7 @@ optdepends=(
     'noto-fonts: Base fonts' 'noto-fonts-cjk: CJK fonts' 'noto-fonts-emoji: Emoji fonts'
     'ttf-jetbrains-mono-nerd: Nerd fonts' 'ttf-jetbrains-maple-mono-nf-xx-xx: Custom font' 'ttf-lxgw-wenkai-screen: Chinese font'
     'nautilus: File manager' 'thunar: Alternative file manager' 'file-roller: Archive manager'
-    'icoextract: exe thumbnailer' 
+    'icoextract: exe thumbnailer' 'python-pillow: Image processing for thumbnails'
     'gvfs-smb: SMB support' 'gvfs-mtp: MTP support' 'gvfs-gphoto2: PTP support'
     'nautilus-open-any-terminal: Nautilus terminal extension' 'gnome-keyring: Keyring service'
     'tumbler: Thumbnail service' 'poppler-glib: PDF rendering' 'ffmpegthumbnailer: Video thumbnails'
@@ -36,11 +36,11 @@ optdepends=(
     'wlsunset: Gamma adjustment' 'pavucontrol: Audio control' 'downgrade: Package downgrade'
     'strace: System call tracer' 'xdg-terminal-exec: XDG terminal' 'kitty: Terminal emulator' 'firefox: Web browser'
     'fastfetch: System info' 'btop: Resource monitor' 'gdu: Disk usage' 'opencode: Code opener'
-    'shorin-contrib-git: Shorin tools' 'clipsync-git: Clipboard sync' 'ddcutil-service: DDC util'
-    'python-pywalfox: Firefox theming' 'waypaper-git: Wallpaper setter' 'niri-sidebar-git: Sidebar'
-    'wl-longshot-git: Screenshot tool' 'shorin-screenrec-menu-git: Screen record menu'
+    'shorin-contrib-git: Shorin tools' 'linuxqq-clipsync-git: Clipboard sync' 'ddcutil-service: DDC util'
+    'python-pywalfox: Firefox theming' 'waypaper: Wallpaper setter' 'niri-sidebar-git: Sidebar'
+    'wl-longshot-git: Screenshot tool' 'shorin-screenrec-menu-git: Screen record menu' 'shorin-proton-wrapper-git: Proton wrapper for Windows executables'
     'fcitx5: Input method' 'rime-wanxiang-gram-zh-hans: better ime model' 'fcitx5-configtool: Fcitx5 config' 'fcitx5-gtk: Fcitx5 GTK' 'fcitx5-qt: Fcitx5 QT'
-    'fcitx5-rime: Fcitx5 Rime' 'rime-ice-git: Rime dict' 'rime-wubi: Rime wubi'
+    'fcitx5-rime: Fcitx5 Rime' 'rime-ice-git: Rime dict' 'rime-wubi: Rime wubi' 'rime-llm-translator-git: Rime LLM translator'
 )
 makedepends=('git')
 
