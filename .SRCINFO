@@ -13,6 +13,7 @@ pkgbase = mingw-w64-paraview-qt6
 	depends = mingw-w64-qt6-base
 	depends = mingw-w64-qt6-tools
 	depends = mingw-w64-qt6-svg
+	depends = mingw-w64-qt6-5compat
 	depends = mingw-w64-cgns
 	depends = mingw-w64-protobuf
 	options = !buildflags
