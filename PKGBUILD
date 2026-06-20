@@ -1,7 +1,7 @@
 # Maintainer: WackyIdeas <wackyideas@disroot.org>
 
 pkgname=('aeroshell-kwin-components-x11-git')
-pkgver=6.6.3_36.r002e505
+pkgver=6.7.0_57.r24d3266
 pkgrel=1
 pkgdesc='X11 KWin effects for AeroShell-based desktops'
 arch=(x86_64)
