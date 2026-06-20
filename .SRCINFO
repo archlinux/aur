@@ -1,6 +1,6 @@
 pkgbase = scrcpy-git
 	pkgdesc = Display and control your Android device
-	pkgver = 3.3.3_r2875.gf3d4fde1
+	pkgver = 4.0_r3115.g1e085efc
 	pkgrel = 1
 	url = https://github.com/Genymobile/scrcpy
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = scrcpy-git
 	makedepends = meson
 	depends = android-tools
 	depends = ffmpeg
-	depends = sdl2
+	depends = sdl3
 	depends = glibc
 	depends = libusb
 	depends = hicolor-icon-theme

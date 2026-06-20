@@ -1,16 +1,16 @@
 # Merged with official ABS scrcpy PKGBUILD by João, 2023/05/14 (all respective contributors apply herein)
-# Maintainer: Daniël Nazarkin <aur.danicatgames@pm.me>
+# Maintainer: Daniël Nazarkin <aur@danicatgames.nl>
 # Contributor: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 # Contributor: skydrome -at- protonmail
 
 pkgname=scrcpy-git
-pkgver=3.3.3_r2875.gf3d4fde1
+pkgver=4.0_r3115.g1e085efc
 pkgrel=1
 pkgdesc='Display and control your Android device'
 arch=('x86_64')
 url='https://github.com/Genymobile/scrcpy'
 license=(Apache-2.0)
-depends=(android-tools ffmpeg sdl2 glibc libusb hicolor-icon-theme)
+depends=(android-tools ffmpeg sdl3 glibc libusb hicolor-icon-theme)
 makedepends=(git meson)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
