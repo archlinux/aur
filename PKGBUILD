@@ -1,7 +1,7 @@
 # Maintainer: lod <aur@lod.sh>
 
 pkgname=edgetx-companion
-pkgver=2.12.0
+pkgver=2.12.2
 pkgrel=1
 pkgdesc="EEPROM Editor and Simulator for EdgeTX RC radio transmitter firmwares"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=("git+https://github.com/EdgeTX/edgetx.git#tag=v$pkgver"
         "git+https://github.com/nothings/stb.git"
         "git+https://github.com/microsoft/uf2"
         "git+https://github.com/signal11/hidapi")
-b2sums=('ffba9f9d811b2684079d90c901cfd047cb7cbe5a904b3111353f726cfe1dc731e47d288b76f2359cf059f6eebbffe8ec28a20793ee040488f53559fb7662339e'
+b2sums=('fa2ec6b2ec9bbaed394d81589f3d2a568f234821e27ca13571e88257280d0a2e9fb3350393d1985aea7b7df645572fcc4b3846eee6474353e9ab941c3939cff9'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -70,7 +70,7 @@ build() {
 
   declare -a simulator_plugins=(x9lite x9lites x9d x9dp x9dp2019 x9e
                                 x7 x7access
-                                t8 t12 t12max tx12 tx12mk2 t15 t15pro t16 t18 t20 t20v2
+                                t8 t12 t12max tx12 tx12mk2 t15 t15pro t22 t16 t18 t20 t20v2
                                 xlite xlites
                                 x10 x10express x12s
                                 zorro tx16s tx16smk3 tx15
