@@ -1,13 +1,13 @@
 # Maintainer: jtaw5649
 pkgname=hyprspaces-tools
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Helper CLI and config automation for the hyprspaces HyprPM plugin"
 arch=('any')
 url='https://github.com/jtaw5649/hyprspaces'
 license=('MIT')
 depends=('bash' 'python' 'hyprland')
-conflicts=('hyprspaces')
+conflicts=('hyprspaces<2.0.0')
 optdepends=(
   'waybar-hyprspaces-fork-bin: automated hyprspaces Waybar fork'
   'waybar: stock Waybar restore and restart helpers'
