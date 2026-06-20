@@ -8,27 +8,30 @@
 
 _name=lmms
 pkgname=lmms-git
-pkgver=1.3.0.alpha.1.r974.g38236a851
+pkgver=1.3.0.alpha.1.r999.ge215cd0c3
 pkgrel=1
 pkgdesc='The Linux MultiMedia Studio.'
 arch=('x86_64')
 url="https://lmms.io"
 license=('GPL2')
-depends=('fftw' 'fltk' 'fluidsynth' 'lame' 'libgig' 'qt5-x11extras' 'sdl2'
-'stk')
-optdepends=('pulseaudio: pulseaudio support'
-            'wine: VST plugin support'
-            'carla: carla support')
-makedepends=('cmake' 'doxygen' 'extra-cmake-modules' 'freetype2' 'git'
-'ladspa' 'qt5-tools' 'qt5-svg' 'wine' 'perl-list-moreutils' 'perl-xml-parser')
+depends=('fftw' 'fltk' 'fluidsynth' 'lame' 'libgig' 'libsamplerate' 'sndio' 'sdl2' 'qt6-svg' 'stk')
+optdepends=('pulse-native-provider: playing audio via pulseaudio'
+            'jack: playing audio via jack'
+            'alsa-lib: playing audio via alsa'
+            'portaudio: playing audio via portaudio'
+            'libsoundio: playing audio via soundio'
+            'wine: VST plugin support (64bit only)'
+            'wine32: VST plugin support (32bit+64bit)'
+            'carla: carla support'
+            'perl-xml-parser: swh LADSPA plugin support'
+            'lilv: lv2 support'
+            'libvorbis: exporting ogg vorbis'
+            'libogg: exporting ogg vorbis')
+makedepends=('cmake' 'doxygen' 'extra-cmake-modules' 'freetype2' 'git' 'ladspa' 'qt6-tools' 'wine' 'perl-list-moreutils' 'perl-xml-parser' 'libsndfile')
 provides=('lmms')
 conflicts=('lmms')
-source=("git+https://github.com/${_name}/${_name}.git"
-        'git+https://github.com/Lukas-W/qt5-x11embed.git'
-        'git+https://github.com/rampantpixels/rpmalloc.git')
-sha512sums=('SKIP'
-            'SKIP'
-            'SKIP')
+source=("git+https://github.com/${_name}/${_name}.git")
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${_name}"
@@ -39,29 +42,12 @@ prepare() {
   cd "${_name}"
   mkdir -vp build
   git submodule init
-  git config submodule.src/3rdparty/qt5-x11embed.url "${srcdir}/qt5-x11embed"
-  git config submodule.src/3rdparty/rpmalloc.url "${srcdir}/rpmalloc"
-  git -c protocol.file.allow=always submodule update
-  # setting lib dir
-  sed -e 's|lib64|lib|g' -i cmake/modules/DetectMachine.cmake
-  sed -e 's/\(${BASHCOMP_USER\)/\1/g' -i cmake/modules/BashCompletion.cmake
+  git submodule update
 }
 
 build() {
-  #echo "Done"
   cd "${_name}/build"
-  # TODO: Remove CMAKE_POLICY_VERSION_MINIMUM from here once qt5-x11embed PR#7 is merged.
-  cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DWANT_QT5=ON \
-        -DWANT_SOUNDIO=OFF \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_MODULE_PATH=/usr/share/ECM/find-modules \
-        -DCMAKE_PREFIX_PATH=/usr/include/wine/windows \
-        -DWINE_INCLUDE_DIR=/usr/include/wine/windows \
-        -DWINE_LIBRARY=/usr/lib32/wine \
-        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-        ..
-  #actually aknowledge other defaults
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DWANT_QT6=ON -DCMAKE_BUILD_TYPE=Release ..
   cmake --build .
 }
 
@@ -69,5 +55,3 @@ package() {
   cd "${_name}/build"
   make DESTDIR="$pkgdir" install
 }
-
-# vim:set ts=2 sw=2 et:
