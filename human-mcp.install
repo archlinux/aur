@@ -1,0 +1,26 @@
+post_install() {
+  cat <<'EOF'
+==> human-mcp installed.
+==> Initialize the admin account before starting the service:
+    sudo human-mcp init-admin --email <admin-login>
+==> The command writes /etc/human-mcp.env and prints the generated admin password.
+==> Then set HUMAN_PUBLIC_BASE_URL in /etc/human-mcp.env and start:
+    sudo systemctl enable --now human-mcp.service
+==> Admin self-update is available after configuring /etc/human-mcp-update.env
+    for the normal AUR user.
+==> GitHub OAuth stays disabled until HUMAN_GITHUB_CLIENT_ID and
+    HUMAN_GITHUB_CLIENT_SECRET are configured by an admin.
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+==> human-mcp upgraded.
+==> If this is a new deployment or you need to reset the admin login, run:
+    sudo human-mcp init-admin --email <admin-login>
+==> Restart after changing /etc/human-mcp.env:
+    sudo systemctl restart human-mcp.service
+==> If self-update fails, check /etc/human-mcp-update.env and
+    systemctl status human-mcp-self-update.service
+EOF
+}
