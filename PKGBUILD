@@ -6,7 +6,7 @@
 # GPG keys: https://github.com/visorcraft.gpg
 
 pkgname=grexa
-pkgver=1.5.3
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Fast Linux file content search with tabs, replace, and AI assistance"
 arch=('x86_64')
@@ -17,26 +17,23 @@ depends=(
     'qt6-declarative'
     'kirigami'
     'hicolor-icon-theme'
-    'poppler'
-)
+    'poppler')
 makedepends=(
     'cargo'
     'pkgconf'
     'qt6-tools'
     'clang'
     'ninja'
-    'git'
-)
+    'git')
 optdepends=(
     'podman: container search via rootless Podman'
     'docker: container search via Docker'
     'kwalletmanager: API key storage (KDE)'
-    'gnome-keyring: API key storage (non-KDE)'
-)
+    'gnome-keyring: API key storage (non-KDE)')
 provides=('grexa-cli')
 options=('!lto')
 source=("$pkgname::git+$url#tag=v$pkgver?signed")
-sha256sums=('6cbaa2d4c7f09217a0db45b8e43a83af4b7f02880f3101a4c98b065e167db58b')
+sha256sums=('ae1dfe6c360ca0fea9b0b4d2ab26aa4fed0b496eb199dfaeb5610530dd03172a')
 validpgpkeys=('198BC500E85FE8B2C24227B90526453161165CE5')
 
 prepare() {
