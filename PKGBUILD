@@ -22,7 +22,15 @@ source=(
   "optiscaler-client.desktop"
 )
 
-sha256sums=('PLACEHOLDER' 'SKIP' 'SKIP' 'SKIP')
+# These are placeholders only. They are overwritten automatically every
+# deploy by `updpkgsums: true` in deploy.yml (KSXGitHub/github-actions-deploy-aur).
+# Do NOT use 'SKIP' here -- 'SKIP' tells updpkgsums to leave that entry
+# untouched, which is exactly the "skipped verification" behavior that got
+# flagged. Any non-SKIP placeholder works since it's always replaced.
+sha256sums=('452481d4f5c6b902eda8c3d396f3885fca70d84676d3d0bc8a77e85898ca24d8'
+            'a090cf7fb9f449ece427a965a56a876e664b1b3fdc818dec6346707bf7d29f67'
+            '4a034f30f6430428921038f6f7c36a93d35f82197e0f6e004697583b3b8d10c9'
+            '1fee9e445e1633a393d5cb27b415dbf432aa2d6195fcd92b8e05cd79fe6bf955')
 
 package() {
   mkdir -p "$pkgdir/opt/optiscaler-client"
