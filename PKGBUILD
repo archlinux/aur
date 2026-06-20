@@ -6,7 +6,7 @@
 
 pkgname='dasel'
 pkgdesc='Select, put and delete data from CSV, HCL, INI, JSON, KDL, TOML, XML and YAML files with a single CLI tool'
-pkgver=3.11.0
+pkgver=3.11.1
 pkgrel=1
 url='https://github.com/TomWright/dasel'
 changelog="$pkgname.changelog"
@@ -82,10 +82,10 @@ package() {
 }
 
 sha256sums=(
-  'a7ca204fec11a80eeca4d02f78c90d11b9ecc4f7e40e290ce112436979c66f71'
+  '55e7cbc95bfea8197dc79a2f8683aaae6502a2d9f47bb5740af088d34bc3a90c'
 )
 b2sums=(
-  '910dac3ff3c1a7f5ffc3c8c7d6e2fe2d8827b2cbef8b28940d80608fb04042bdc43a024be80aa67b6f6075c22a2734e4378a4c8af2bd926bf8e4fa7460ce409d'
+  'f98fa7468235df91edd05a5e715f992ebf08798e6148a82caeb2d9e75277c792d887132391c88a2f51c6354f57dea33cc4c092ad44cb1f806570c850153469e9'
 )
 
 # eof
