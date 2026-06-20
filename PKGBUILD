@@ -6,7 +6,7 @@ _appname=insomnia
 pkgname="$_appname-electron-bin"
 _dirname="Insomnia.Core"
 epoch=1
-pkgver=13.0.0 # renovate: datasource=github-tags depName=Kong/insomnia extractVersion=^core@(?<version>(?:[^2].*|2(?:$|[^0].*)|20(?:$|[^2].*)|202(?:$|[^0-3].*|[0-3](?:$|[^.].*))))
+pkgver=13.0.1 # renovate: datasource=github-tags depName=Kong/insomnia extractVersion=^core@(?<version>(?:[^2].*|2(?:$|[^0].*)|20(?:$|[^2].*)|202(?:$|[^0-3].*|[0-3](?:$|[^.].*))))
 pkgrel=1
 pkgdesc='Cross-platform HTTP and GraphQL Client'
 #arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ source_x86_64=("$url/releases/download/core@$pkgver/$_dirname-$pkgver.tar.gz")
 b2sums=('f80a889547df667636d5b177cf98dbc66dece9263aa8da57003223d38ffad9e5ff24c0dde35e29a60bb41a1069e802a910314ae3711fe41594a0d3b6cb259ff2'
         'fc24b3075490bfed6f56aba46b33b50edcc9ead95e00d8209d38ed052f5d3514ea789a13c51eb1cf7d53807f6aa171c833222122634bfff6edc5c5f7936f1eff'
         'd7f795312b38ccd63cdc9a9333a5cdb3d1271b07d6855bc10c4711e143f0a30bd819cda931d99ed0090536ffa84b551a8d134299f614506b0e344c15afe19f6c')
-b2sums_x86_64=('88f46cff010c8b4418246a099e1d141e7e7988725b926c8942dc5d38a65dedb68d2178bdccf61701a1749e4d295086ca2c4e55bb7f1a80b5db0c8344c1109ee8')
+b2sums_x86_64=('022c73b4c5a2acce9a548b51ce57c2ae5387e43dff8d6cde8dfd94940f8ec991627f34a87dbb59d8718faaf3df688d526d862d741caf576870169b4b8e402902')
 #b2sums_aarch64=('7309729d4f504d21bee83cd6bd2dd83858078e76075126df61ba0f4466e091611d200bfa051bf81f2a31e79ade1184948ae8d3ff0fac1faa3a2e84e9b427b485')
 
 prepare() {
