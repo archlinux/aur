@@ -12,7 +12,7 @@ conflicts=('human-mcp' 'human-mcp-git')
 backup=('etc/human-mcp.env')
 install=human-mcp.install
 source=("https://github.com/LIghtJUNction/human-mcp/releases/download/v${pkgver}/human-mcp-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('847240623d410dd1005caadf6711b6388273c4f7ab356236e6d0b722f94f5bc8')
+sha256sums=('b62b4340b82618412d96f1dfb973882747fb3c76551ceca77ee3b63f2c7f96ad')
 
 package() {
   cd "human-mcp-${pkgver}-x86_64-unknown-linux-gnu"
