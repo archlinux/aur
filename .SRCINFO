@@ -1,0 +1,23 @@
+pkgbase = fff-cr
+	pkgdesc = 📁 A simple file manager written in Crystal.
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/ozgurulukir/fff.cr
+	arch = any
+	license = MIT
+	makedepends = yq
+	makedepends = make
+	makedepends = crystal
+	makedepends = shards
+	makedepends = ameba
+	depends = glibc
+	depends = libgcc
+	depends = gc
+	depends = pcre2
+	depends = readline
+	provides = fff-cr
+	options = !strip
+	source = fff-cr-0.3.3.tgz::https://github.com/ozgurulukir/fff.cr/archive/v0.3.3.tar.gz
+	sha256sums = 9f6a98c4c5052230e54e2c949bdd916789a872c52b80fe0c859afd67cfad4ea2
+
+pkgname = fff-cr

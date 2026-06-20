@@ -1,0 +1,5 @@
+[fff-cr]
+source = "github"
+github = "ozgurulukir/fff.cr"
+use_max_tag = true
+prefix = "v"
