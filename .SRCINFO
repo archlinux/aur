@@ -1,7 +1,7 @@
 pkgbase = toolshed
 	pkgdesc = Utilities for Tandy Color Computer and Dragon microcomputers cross-development.
-	pkgver = 2.4.2
-	pkgrel = 3
+	pkgver = 2.5.1
+	pkgrel = 1
 	url = https://github.com/nitros9project/toolshed
 	arch = x86_64
 	license = LicenseRef-CASM

@@ -1,8 +1,8 @@
 # Maintainer: Paul Hentschel <aur at hpminc dot com>
 
 pkgname=toolshed
-pkgver=2.4.2
-pkgrel=3
+pkgver=2.5.1
+pkgrel=1
 pkgdesc="Utilities for Tandy Color Computer and Dragon microcomputers cross-development."
 arch=('x86_64')
 url="https://github.com/nitros9project/toolshed"
