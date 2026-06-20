@@ -1,6 +1,6 @@
 # Maintainer: Lumina Nao <luminanao at duck.com>
 pkgname=llama-launcher
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Helper scripts for building llama.cpp and running llama-server with per-model configs, launch history, benchmarking, and SSH tunneling"
 arch=(any)
@@ -9,9 +9,6 @@ license=(MIT)
 depends=('bash' 'cmake' 'curl' 'git' 'jq' 'bc' 'nodejs' 'openssh')
 optdepends=(
     'llama-hdd: llama-server binary (required to launch models)'
-    'cuda: NVIDIA GPU acceleration (build with LLAMA_HDD_BACKEND=cuda)'
-    'rocm-hip-sdk: AMD GPU acceleration (build with LLAMA_HDD_BACKEND=rocm)'
-    'vulkan-icd-loader: Vulkan GPU acceleration (build with LLAMA_HDD_BACKEND=vulkan)'
 )
 source=(git+https://codeberg.org/LuminaNAO/${pkgname}.git#tag="v${pkgver}")
 sha256sums=(SKIP)
