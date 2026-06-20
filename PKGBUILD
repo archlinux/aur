@@ -1,7 +1,11 @@
 # Maintainer: dressedinblack5 <dressedinblack5@proton.me>
 pkgname=attack-shark-x11-electron
 pkgver=1.4.1
+<<<<<<< HEAD
 pkgrel=2
+=======
+pkgrel=1
+>>>>>>> e99b48c (upstream to v1.4.1)
 pkgdesc="Cross-platform driver for the Attack Shark X11 gaming mouse with Electron GUI"
 arch=('x86_64')
 url="https://github.com/dressedinblack5/attack-shark-x11-electron"
