@@ -1,7 +1,7 @@
 pkgbase = rivalcfg-gui
 	pkgdesc = GTK3 GUI configuration tool for SteelSeries mice (via rivalcfg)
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MrGodzilla38/rivalcfg-gui
 	arch = any
 	license = GPL-3.0-or-later

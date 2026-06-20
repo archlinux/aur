@@ -1,7 +1,7 @@
 # Maintainer: MrGodzilla38 <oyunustasigodzilla@gmail.com>
 pkgname=rivalcfg-gui
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK3 GUI configuration tool for SteelSeries mice (via rivalcfg)"
 arch=('any')
 url="https://github.com/MrGodzilla38/rivalcfg-gui"
