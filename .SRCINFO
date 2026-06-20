@@ -9,6 +9,7 @@ pkgbase = aeroshell-libplasma-git
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
 	makedepends = plasma-wayland-protocols
+	makedepends = wayland-protocols
 	depends = gcc-libs
 	depends = glibc
 	depends = plasma-activities
