@@ -18,6 +18,7 @@ depends=(gcc-libs
          kcmutils
          kguiaddons
          plasma-wayland-protocols
+         vulkan-headers
          wayland
          wayland-protocols
          qt6-wayland

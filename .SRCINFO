@@ -19,6 +19,7 @@ pkgbase = aeroshell-smod-git
 	depends = kcmutils
 	depends = kguiaddons
 	depends = plasma-wayland-protocols
+	depends = vulkan-headers
 	depends = wayland
 	depends = wayland-protocols
 	depends = qt6-wayland
