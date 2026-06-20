@@ -3,12 +3,11 @@ _build=892
 _base=chromapper
 pkgname="${_base}-bin"
 pkgver=0.13.892
-pkgrel=1
+pkgrel=2
 pkgdesc='Unity-based map editor for Beat Saber (binary)'
 arch=(x86_64)
 url='https://github.com/Caeden117/ChroMapper/'
 license=('GPL-2.0-only')
-makedepends=(curl)
 provides=("${_base}=${pkgver}")
 conflicts=("${_base}" "${_base}-dev" "${_base}-dev-bin")
 options=(!strip)
