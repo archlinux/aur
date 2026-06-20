@@ -1,13 +1,13 @@
 pkgbase = lastlint
 	pkgdesc = Linter for Evan Chen's LaTeX style guide
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/cjquines/lastlint
 	arch = any
 	license = MIT
 	makedepends = python-hatchling
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/l/lastlint/lastlint-0.4.1.tar.gz
-	b2sums = eb860ea7023f281994d4ecffdcd3213b23d78459e5b5088de7d863de000e154f1753b2e854e387f0cd9811480bd6156530e2cdf0c8ac9b928d7b5698193cb101
+	source = https://files.pythonhosted.org/packages/source/l/lastlint/lastlint-0.5.0.tar.gz
+	b2sums = d9be2f91ac9c74934270ececbfd0bb64d40077d66776ebcb7d3b7adfe0cb9ca3d7faffdea8e158c21e04fa658bef2124c23115ba7b46854795d547bc17ff248d
 
 pkgname = lastlint
