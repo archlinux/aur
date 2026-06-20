@@ -1,0 +1,5 @@
+[editxr-bin]
+source = "github"
+github = "pixdeo/editxr"
+use_latest_release = true
+prefix = "v"
