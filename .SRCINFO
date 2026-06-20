@@ -1,6 +1,6 @@
 pkgbase = sbv
 	pkgdesc = Web viewer for SMS Backup & Restore XML files
-	pkgver = 0.1.10
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/lowcarbdev/sbv
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = sbv
 	depends = bash
 	depends = glibc
 	options = !debug
-	source = sbv-0.1.10.tar.gz::https://github.com/lowcarbdev/sbv/archive/refs/tags/v0.1.10.tar.gz
-	sha256sums = 1682d0e12954d173c9d205cbfd78d23f145270ab777928922b87af42f56abb83
+	source = sbv-0.1.11.tar.gz::https://github.com/lowcarbdev/sbv/archive/refs/tags/v0.1.11.tar.gz
+	sha256sums = 53c056806888eb27f361cb3145b41ff152c984c9e503308c60f945a1d22aa864
 
 pkgname = sbv

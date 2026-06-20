@@ -2,7 +2,7 @@
 # Created with assistance from Codex (GPT-5.3).
 
 pkgname=sbv
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Web viewer for SMS Backup & Restore XML files"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -12,7 +12,7 @@ depends=('bash' 'glibc')
 makedepends=('go' 'npm')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lowcarbdev/sbv/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1682d0e12954d173c9d205cbfd78d23f145270ab777928922b87af42f56abb83')
+sha256sums=('53c056806888eb27f361cb3145b41ff152c984c9e503308c60f945a1d22aa864')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
