@@ -1,6 +1,6 @@
 pkgbase = caelestia-cli-git
 	pkgdesc = The main cli for the Caelestia dotfiles
-	pkgver = 1.0.7.r0.g5f1d008
+	pkgver = 1.1.0.r0.gb00daba
 	pkgrel = 1
 	url = https://github.com/caelestia-dots/cli
 	install = message.install
@@ -18,7 +18,6 @@ pkgbase = caelestia-cli-git
 	depends = swappy
 	depends = grim
 	depends = dart-sass
-	depends = app2unit
 	depends = wl-clipboard
 	depends = slurp
 	depends = gpu-screen-recorder
