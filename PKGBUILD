@@ -3,7 +3,7 @@
 # Contributor: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=polaris
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc='A self-hosted music streaming server'
 arch=('aarch64' 'x86_64')
@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${pkgna
         "${url}/raw/refs/tags/${pkgver}/docs/CONFIGURATION.md"
         "${url}/raw/refs/tags/${pkgver}/docs/DDNS.md"
         "${url}/raw/refs/tags/${pkgver}/LICENSE")
-b2sums=('ac2cd9c4a5ab6ec9fd2ced6cebbe7a33f1a7f83231ec80af8e6b07940e1f67e325fdbe9f3c4d42a82b3aca096c23b486b33964fcbadf7484d521108ef2dfdb41'
+b2sums=('6713820fed9c7ef1faccb74cf85048676ccf97c5b4e5656383bf43ccdbc841dc28615da727ce4ba18112f352451d733a9df4aac360da66c7d24149959df7a4bc'
         'f1472f577868139673a5a74bda932a1e94f41f011dfbb08e3cd19abe60afedb494657aee844c1807b0b85088f8a1c13f1a9f7e6ad1c58f5479dfa52738b72392'
         '8460996f8a3a56a854d3c0373c8f07a572a032a2d5ef9db8d898b487b4f18264a245d03ed41a7856f2054bb77ced3ac05def2f48ea83140bd15772e98aaa23f2'
         '3ad7155313052ff4a95fbfae6ccf88da5537faf3df16094f5389bbfcdb7a10f3a0f1584dacf63baafa13f5b5013561a552a8faa400ed305fd72d890512ad3133'
