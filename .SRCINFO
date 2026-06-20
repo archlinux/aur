@@ -1,6 +1,6 @@
 pkgbase = luminance
 	pkgdesc = A simple GTK application to control brightness of displays including external displays supporting DDC/CI
-	pkgver = 1.4.6
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/sidevesh/Luminance
 	arch = x86_64
@@ -14,9 +14,7 @@ pkgbase = luminance
 	depends = ddcutil
 	provides = luminance
 	conflicts = luminance
-	source = git+https://github.com/sidevesh/Luminance.git#tag=1.4.6
-	source = git+https://github.com/ahshabbir/ddcbc-api.git
-	sha256sums = SKIP
+	source = git+https://github.com/sidevesh/Luminance.git#tag=1.5.0
 	sha256sums = SKIP
 
 pkgname = luminance
