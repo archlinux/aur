@@ -1,6 +1,6 @@
 pkgbase = twingate
 	pkgdesc = Zero trust remote access client for resource and networks, based on twingate-bin
-	pkgver = 2026.140.6512
+	pkgver = 2026.160.6555
 	pkgrel = 1
 	url = https://twingate.com
 	install = twingate.install
@@ -10,10 +10,10 @@ pkgbase = twingate
 	depends = systemd
 	depends = cryptsetup
 	depends = dbus
-	noextract = twingate-2026.140.6512-x86_64.tar.zst
-	source_x86_64 = twingate-2026.140.6512-x86_64.tar.zst::https://binaries.twingate.com/client/linux/ARCH/x86_64/stable/twingate-amd64.pkg.tar.zst
-	sha256sums_x86_64 = 4d2acc7d61b0786efcc1f7a5cdd2996f8e558bbe351989b4b962b11da97a81db
-	source_aarch64 = twingate-2026.140.6512-aarch64.tar.zst::https://binaries.twingate.com/client/linux/ARCH/aarch64/stable/twingate-arm64.pkg.tar.zst
-	sha256sums_aarch64 = 5f23d74088719769c00b52c3e13a66ad1b24db1787f50edec45d63e36b222f16
+	noextract = twingate-2026.160.6555-x86_64.tar.zst
+	source_x86_64 = twingate-2026.160.6555-x86_64.tar.zst::https://binaries.twingate.com/client/linux/ARCH/x86_64/stable/twingate-amd64.pkg.tar.zst
+	sha256sums_x86_64 = 5b3527bcbf247d7fdb295c7777512a4a01f0fa6f45d2220ffc78696e847dd808
+	source_aarch64 = twingate-2026.160.6555-aarch64.tar.zst::https://binaries.twingate.com/client/linux/ARCH/aarch64/stable/twingate-arm64.pkg.tar.zst
+	sha256sums_aarch64 = 8691af99974878036395d6ea6e22bd8cdd2a57f1c8abf670e9bff5566f51d2ff
 
 pkgname = twingate
