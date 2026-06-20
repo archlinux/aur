@@ -1,17 +1,17 @@
 pkgbase = tkmm-appimage
 	pkgdesc = TotK Mod Manager, a mod manager and merger for Tears of the Kingdom
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://tkmm.org
 	arch = x86_64
 	license = MIT
-	provides = tkmm=2.0.2
+	provides = tkmm=2.0.3
 	conflicts = tkmm
-	noextract = tkmm-2.0.2.AppImage
+	noextract = tkmm-2.0.3.AppImage
 	options = !strip
-	source = tkmm-2.0.2.AppImage::https://github.com/TKMM-Team/Tkmm/releases/download/v2.0.2/Tkmm-linux-x64.AppImage
-	source = LICENSE-2.0.2::https://raw.githubusercontent.com/TKMM-Team/Tkmm/v2.0.2/License.md
-	sha256sums = 22ae9034b53897136f24d14cd8f3ed52e7ede55c0aab06b8cb3ac9819b94c2ce
+	source = tkmm-2.0.3.AppImage::https://github.com/TKMM-Team/Tkmm/releases/download/v2.0.3/Tkmm-linux-x64.AppImage
+	source = LICENSE-2.0.3::https://raw.githubusercontent.com/TKMM-Team/Tkmm/v2.0.3/License.md
+	sha256sums = 27258fd2ed99e6147235e0437d5565f2906bc73ab416767662521c7644b81820
 	sha256sums = f61e96cc0d00ece12e001f021cb5732bb9954dd8dc7c0d9c47e4ba499b18a58c
 
 pkgname = tkmm-appimage
