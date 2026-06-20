@@ -1,8 +1,9 @@
 pkgbase = kirastudio-bin
 	pkgdesc = KiraStudio is a lightweight, cross-platform music studio built around clarity and automation.
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kirastudio.org/
+	install = kirastudio.install
 	arch = x86_64
 	makedepends = unzip
 	depends = wine
@@ -11,9 +12,13 @@ pkgbase = kirastudio-bin
 	source = kirastudio.desktop
 	source = kirastudio.png
 	source = kirastudio-launcher
+	source = kirastudio.install
+	source = kirastudio.xml
 	sha256sums = SKIP
-	sha256sums = 0a26c8055ab9c5d9e05cb3f9616a42329a533a91e1ae4204d1f2bb6b0d7400fd
+	sha256sums = e19f63f871bc03a1875cd8cc6fe3130642dccb37a82d2d791192b24e744a8137
 	sha256sums = f735588984caeed04c40834de667ee156492cc355f764195415569c9344ce7ed
-	sha256sums = f1f8166400ed4dceea0a8b702c20b14eb28d90fc47b36343d0ce8e295464328f
+	sha256sums = 055d6b8b7e84b820e3e61ffdbc01a63b95afcf5e35079d0ad02b92f4feaff8ed
+	sha256sums = e8948576678d114f3997ea65f9caa25d530e767df46442a210fa555d72dc25fc
+	sha256sums = a7183e81321c6f5634c808d0cf2d58cd3e05e630a7a9af64f4447385d988a21a
 
 pkgname = kirastudio-bin

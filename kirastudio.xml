@@ -1,0 +1,6 @@
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/x-kirastudio-project">
+        <comment>KiraStudio Project File</comment>
+        <glob pattern="*.kir"/>
+    </mime-type>
+</mime-info>

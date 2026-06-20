@@ -19,4 +19,4 @@ if [ ! -d "$WDIR" ] || [ "$(get_version /usr/share/kirastudio)" != "$(get_versio
 fi
 
 cd $WDIR
-wine KiraStudio.exe
+wine KiraStudio.exe $1
