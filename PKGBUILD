@@ -3,12 +3,12 @@
 # Maintainer: eraldobako@gmail.com
 
 pkgname=fconvert
-pkgver=2.3.0
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="A fast, intentional CLI file converter for images, audio, video, documents."
 arch=('x86_64')
 url="https://github.com/Eraldo-Bako/fconvert"
-license=('Apache')
+license=('Apache-2.0')
 depends=('opencv' 'ffmpeg' 'libraw' 'imagemagick' 'ghostscript')
 makedepends=('gcc' 'cmake' 'git')
 optdepends=(
@@ -41,4 +41,3 @@ package() {
   install -Dm755 fconvert "$pkgdir/usr/bin/fconvert"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
