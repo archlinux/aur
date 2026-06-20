@@ -2,12 +2,12 @@
 
 pkgname=r-air-bin
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An R language server and formatter"
 arch=('x86_64')
 url="https://github.com/posit-dev/air"
 license=('MIT')
-depends=('gcc-libs' 'glibc' 'libgcc')
+depends=('glibc' 'libgcc')
 conflicts=('r-air')
 options=('!debug')
 provides_x86_64=("r-air=${pkgver}")
@@ -23,5 +23,5 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha256sums_x86_64=('91a09e164eeddb23afca783d3c3cf748ff30318e81611d5a2036d5f1d431313f'
+sha256sums_x86_64=('abfb6db0f5f45701a17b9c49d5323eecde6586cba909bcd7392d938716821493'
                    '19713ea69a4231105033c381dc2145148d26eab51e0b7e458ef4e775db531863')
