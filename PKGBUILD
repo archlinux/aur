@@ -1,8 +1,8 @@
 # Maintainer: vash909 <iu1bot@xzgroup.net>
 
 pkgname=wsjtcb
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc='CB-oriented fork of WSJT-X for weak-signal digital communications on 27 MHz'
 arch=('x86_64')
 url='https://github.com/vash909/WSJT-CB'

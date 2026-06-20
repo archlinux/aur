@@ -1,3 +1,4 @@
 pkg/
 src/
 WSJT-CB-*/
+*.pkg.tar.*
