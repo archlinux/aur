@@ -1,7 +1,7 @@
 pkgbase = deepseek-reasonix-desktop-bin
 	pkgdesc = DeepSeek-Reasonix Desktop - Electron-based desktop client for DeepSeek models
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/esengine/DeepSeek-Reasonix
 	arch = x86_64
 	license = MIT
