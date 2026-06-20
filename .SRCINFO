@@ -1,5 +1,5 @@
 pkgbase = gpu-screen-recorder-ui-kwin-git
-	pkgdesc = A fullscreen overlay UI for GPU Screen Recorder in the style of ShadowPlay
+	pkgdesc = A fullscreen overlay UI for GPU Screen Recorder in the style of ShadowPlay(with kwin check for wlr-layer-shell)
 	pkgver = 1.12.5.r6.g96f37ee
 	pkgrel = 1
 	url = https://git.dec05eba.com/gpu-screen-recorder-ui
