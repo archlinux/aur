@@ -3,8 +3,8 @@
 # Contributor: Peter Reschenhofer < peterreschenhofer at gmail dot com >
 
 pkgname=gams
-pkgver=45.6.0
-pkgrel=0
+pkgver=54.1.0
+pkgrel=1
 pkgdesc='A high-level modeling system for mathematical optimization'
 arch=('x86_64')
 license=('custom')
@@ -12,9 +12,9 @@ url='https://gams.com/'
 depends=('glibc')
 options=('!strip')
 source=("$pkgname-$pkgver.exe::https://d37drm4t2jghv5.cloudfront.net/distributions/$pkgver/linux/linux_x64_64_sfx.exe"
-        "gams-studio.desktop")
-sha256sums=('291198031dd0980a5150819eda3f87fdee6ab029648827522b0d12efa94457d7'
-            '5349929ad07ea8de5e6f1e5d03f264b2fd5afc161b4204981d30fc2ff8faed7e')
+  "gams-studio.desktop")
+sha256sums=('527a5c23c3910a47bf9fdb363ae04e9876094910de7a29ea30867c974c38dbb1'
+            'e05cf76f5980b5a44c35dd812afafde262a53a00fc9fa89bcbca68e26a8edb16')
 
 package() {
 	install -d "$pkgdir/opt/gams" "$pkgdir/usr/bin"
