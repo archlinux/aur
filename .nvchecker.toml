@@ -1,0 +1,4 @@
+[lore-vcs-bin]
+source = "git"
+git = "https://github.com/EpicGames/lore.git"
+prefix = "v"
