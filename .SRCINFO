@@ -1,7 +1,7 @@
 pkgbase = sonic-sysguard-library
 	pkgdesc = Library to retrieve information on the current status of computer hardware
-	pkgver = 6.6.5
-	pkgrel = 2
+	pkgver = 6.7.0
+	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-sysguard-library
 	arch = x86_64
 	groups = sonicde
@@ -31,7 +31,7 @@ pkgbase = sonic-sysguard-library
 	depends = sonic-frameworks-quick-ui
 	provides = libksysguard
 	conflicts = libksysguard
-	source = sonic-sysguard-library-6.6.5.tar.gz::https://github.com/Sonic-DE/sonic-sysguard-library/archive/refs/tags/6.6.5.tar.gz
-	sha256sums = 7ee001cc0d534fc9ab5f1ef8f1751107fe3af4503b6e914eaa5cbb174e360916
+	source = sonic-sysguard-library-6.7.0.tar.gz::https://github.com/Sonic-DE/sonic-sysguard-library/archive/refs/tags/6.7.0.tar.gz
+	sha256sums = f0e3a9e3e635eef5312dceb8812cf91c6f3bcbc5abe26db39301218b44bf8e4a
 
 pkgname = sonic-sysguard-library
