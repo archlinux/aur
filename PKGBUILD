@@ -6,7 +6,7 @@
 
 pkgname=python-sse-starlette
 _pkgname=${pkgname#python-}
-pkgver=3.4.4
+pkgver=3.4.5
 pkgrel=1
 pkgdesc="Server Sent Events (SSE) for Starlette and FastAPI"
 arch=(any)
@@ -35,7 +35,7 @@ checkdepends=(
   python-portend
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('98a9092aebda8ab0a8317536bc09f9f91d545f205d3287e8a81d6d86748799f5')
+sha256sums=("5ce84119136802b2ad42b80cbe157024fe8010160b7cab3d1a7c5bea8adef665")
 
 build() {
   cd "$_pkgname-$pkgver"
