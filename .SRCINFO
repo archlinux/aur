@@ -1,6 +1,6 @@
 pkgbase = keifu
 	pkgdesc = A TUI tool to visualize Git commit graphs with branch genealogy.
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/trasta298/keifu
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = keifu
 	depends = git
 	depends = gcc-libs
 	options = !lto
-	source = keifu-0.4.0.tar.gz::https://github.com/trasta298/keifu/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = e306f816bcc3105b8a8b538628d17f04be9b2262fbcdffb84df4f2e87f7392be
+	source = keifu-0.5.0.tar.gz::https://github.com/trasta298/keifu/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 0311321f62218fdd14d594a8ae659afd7cd5bed4157b14bdb62bf524ea7d0c1b
 
 pkgname = keifu
