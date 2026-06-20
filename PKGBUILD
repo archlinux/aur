@@ -1,4 +1,4 @@
-# Maintainer: taxin <unknownbrofrombd@duck.com>
+# Maintainer: Zenith <your-email@example.com>
 pkgname=browsercode-bin
 pkgver=0.1.12
 pkgrel=1
@@ -10,6 +10,7 @@ provides=('bcode' 'browsercode')
 conflicts=('bcode' 'browsercode')
 optdepends=('uv: required at runtime for the browser_execute tool')
 options=('!debug' '!strip')
+install=browsercode-bin.install
 
 source_x86_64=("https://github.com/browser-use/browsercode/releases/download/v${pkgver}/bcode-linux-x64.tar.gz")
 sha256sums_x86_64=('d1b25ae94ac7b6be54fd9ba100d3c8faa0b167f934252d9cf0be14fed604e3a7')

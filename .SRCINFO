@@ -3,6 +3,7 @@ pkgbase = browsercode-bin
 	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/browser-use/browsercode
+	install = browsercode-bin.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT

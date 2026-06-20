@@ -1,0 +1,15 @@
+post_install() {
+    echo ""
+    echo "==> BrowserCode (bcode) installed."
+    echo "==> Usage:"
+    echo "      cd <your-project>"
+    echo "      bcode"
+    echo "==> First time setup: inside bcode, run /connect to add a provider (API key)."
+    echo "==> The browser_execute tool needs Chrome with chrome://inspect enabled,"
+    echo "    or BU_CDP_WS pointing at a remote CDP endpoint."
+    echo "==> Docs: https://github.com/browser-use/browsercode"
+}
+
+post_upgrade() {
+    post_install
+}
