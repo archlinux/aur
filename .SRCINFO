@@ -1,7 +1,7 @@
 pkgbase = shorin-niri-git
 	pkgdesc = Shorin Niri Desktop Environment
-	pkgver = r1.1234567
-	pkgrel = 31
+	pkgver = r62.6df5784
+	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/shorin-niri
 	arch = any
 	license = GPL
