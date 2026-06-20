@@ -1,7 +1,7 @@
 # Maintainer: Kostiantyn Kushnir <chpock@gmail.com>
 pkgname=quickdashboard-git
 _pkgname=quickdashboard
-pkgver=0.0.4.r0.g5b47a08
+pkgver=0.0.5.r0.g4897e21
 pkgrel=1
 pkgdesc="Configurable Quickshell dashboard for Wayland"
 arch=('any')
