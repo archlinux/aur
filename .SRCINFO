@@ -6,10 +6,11 @@ pkgbase = attack-shark-x11-electron
 	arch = x86_64
 	license = MIT
 	makedepends = bun
+	makedepends = rust
 	depends = electron
 	depends = libusb
 	options = !strip
 	source = https://github.com/dressedinblack5/attack-shark-x11-electron/archive/refs/tags/v1.4.2.tar.gz
-	sha256sums = d34c88055a3a480e93824f00a6d333e7b45d1830440812edfa7e94bb73802b6d
+	sha256sums = a32cec5ee1d457e43b3a732fea0e7daae03c5bf6fea73b052e70639774b20ffd
 
 pkgname = attack-shark-x11-electron
