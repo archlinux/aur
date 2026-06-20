@@ -34,6 +34,7 @@ depends=(gcc-libs
 makedepends=(git
              extra-cmake-modules
              kdoctools
+             wayland-protocols
              plasma-wayland-protocols)
 conflicts=(plasma-framework libplasma aeroshell-libplasma)
 replaces=(plasma-framework)
