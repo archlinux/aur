@@ -1,6 +1,6 @@
 pkgbase = aws-sso-cli-bin
 	pkgdesc = A secure replacement for aws configure sso
-	pkgver = 2.2.4
+	pkgver = 2.2.5
 	pkgrel = 1
 	url = https://github.com/synfinatic/aws-sso-cli
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = aws-sso-cli-bin
 	license = GPL-3.0-or-later
 	provides = aws-sso
 	conflicts = aws-sso
-	source_x86_64 = https://github.com/synfinatic/aws-sso-cli/releases/download/v2.2.4/aws-sso-2.2.4-linux-amd64
-	sha256sums_x86_64 = 6612b1e799391433551d35247fdcfd56908d7d1c0843c51457dea6c0dbb1e3e9
-	source_aarch64 = https://github.com/synfinatic/aws-sso-cli/releases/download/v2.2.4/aws-sso-2.2.4-linux-arm64
-	sha256sums_aarch64 = eba904e79946cd89042fc94ea42a31fc75111bc2a9a39abf86f157c100cb0f52
+	source_x86_64 = https://github.com/synfinatic/aws-sso-cli/releases/download/v2.2.5/aws-sso-2.2.5-linux-amd64
+	sha256sums_x86_64 = 0c487841b5dfcef22019c7796d513040c561036a2d2de7ef339ef406270a59be
+	source_aarch64 = https://github.com/synfinatic/aws-sso-cli/releases/download/v2.2.5/aws-sso-2.2.5-linux-arm64
+	sha256sums_aarch64 = ceef6e235fb8263d413d23d66ad3535aae98d3754c76caaa0d356abe52869784
 
 pkgname = aws-sso-cli-bin
