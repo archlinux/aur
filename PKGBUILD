@@ -6,12 +6,17 @@ pkgname=asus-proart-px13-quirks
 # packaging-only changes. epoch=1 supersedes the short-lived date-based pkgver.
 epoch=1
 pkgver=7.0.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Userspace quirks for ASUS ProArt PX13 (HN7306EA): TAS2783/ACP UCM + PipeWire/WirePlumber drop-ins + MT7925 btusb autosuspend + TAS2783 firmware symlinks"
 arch=('any')
 url="https://aur.archlinux.org/packages/asus-proart-px13-quirks"
 license=('CC0-1.0')
-depends=("linux-cachyos-px13>=${pkgver}" 'alsa-ucm-conf>=1.2.16' 'pipewire' 'wireplumber' 'linux-firmware-other>=1:20260519')
+# alsa-ucm-conf is pinned EXACTLY: the conf.d redirect is a verbatim inline copy of
+# that version's sof-soundwire.conf (+ 2 PX13 deltas). When alsa-ucm-conf restructures
+# the master (e.g. 1.2.16.1 added ${var:SpeakerCodecFile}), a stale copy aborts the UCM
+# import and speakers fall silent. The exact pin turns that into a loud pacman conflict
+# on -Syu; re-sync the redirect (see conf.d header) and bump this version + pkgrel.
+depends=("linux-cachyos-px13>=${pkgver}" 'alsa-ucm-conf=1.2.16.1' 'pipewire' 'wireplumber' 'linux-firmware-other>=1:20260519')
 optdepends=(
     'sof-firmware: SOF firmware for AMD ACP'
     'alsa-utils: alsactl store to persist channel assignments'

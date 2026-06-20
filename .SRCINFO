@@ -1,13 +1,13 @@
 pkgbase = asus-proart-px13-quirks
 	pkgdesc = Userspace quirks for ASUS ProArt PX13 (HN7306EA): TAS2783/ACP UCM + PipeWire/WirePlumber drop-ins + MT7925 btusb autosuspend + TAS2783 firmware symlinks
 	pkgver = 7.0.11
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://aur.archlinux.org/packages/asus-proart-px13-quirks
 	arch = any
 	license = CC0-1.0
 	depends = linux-cachyos-px13>=7.0.11
-	depends = alsa-ucm-conf>=1.2.16
+	depends = alsa-ucm-conf=1.2.16.1
 	depends = pipewire
 	depends = wireplumber
 	depends = linux-firmware-other>=1:20260519
