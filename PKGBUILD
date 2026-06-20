@@ -1,6 +1,6 @@
 # Maintainer: Aptivi <ceo at aptivi dot anonaddy dot com>
 pkgname=bassboom-3
-pkgver=2.0.3.1+1.0.0
+pkgver=2.0.3.1+1.0.1
 pkgrel=1
 pkgdesc="Cross-platform music player written in C#"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=('jack2: Jack support for BassBoom'
 			'sdl2: SDL support for BassBoom'
 			'libpulse: PulseAudio support for BassBoom')
 options=('!strip')
-source=("${pkgname}::git+https://github.com/Aptivi/BassBoom#tag=v1.0.0")
+source=("${pkgname}::git+https://github.com/Aptivi/BassBoom#tag=v1.0.1")
 sha256sums=('SKIP')
 
 prepare() {
