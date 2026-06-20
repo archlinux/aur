@@ -9,7 +9,9 @@ pkgdesc='A high-level modeling system for mathematical optimization'
 arch=('x86_64')
 license=('custom')
 url='https://gams.com/'
-depends=('glibc')
+depends=('glibc' 'fuse2')
+optdepends=('zlib: required by some solvers'
+  'libxkbcommon: Wayland keyboard support for GAMS Studio')
 options=('!strip')
 source=("$pkgname-$pkgver.exe::https://d37drm4t2jghv5.cloudfront.net/distributions/$pkgver/linux/linux_x64_64_sfx.exe"
   "gams-studio.desktop")
