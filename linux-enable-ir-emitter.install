@@ -1,39 +1,39 @@
-post_upgrade() {
-  post_install
-}
-
 post_install() {
-  # support update v3 to v4
-  if [ -f /etc/linux-enable-ir-emitter.yaml ]; then
-    python /usr/lib/linux-enable-ir-emitter/migrate-v3.py
-    rm -f /etc/linux-enable-ir-emitter.yaml
-  fi
+  cat <<'EOF'
 
-  # if SELinux is installed, fix denied access to /dev/video
-  which semanage &> /dev/null
-  if [ "$?" -eq 0 ]; then
-      semanage fcontext -a -t bin_t /usr/lib/linux-enable-ir-emitter/driver/execute-driver
-      semanage fcontext -a -t bin_t /usr/lib/linux-enable-ir-emitter/driver/driver-generator
-      restorecon -v /usr/lib/linux-enable-ir-emitter/driver/* 1> /dev/null
-  fi
+==> linux-enable-ir-emitter is rootless and runs on demand (no systemd service).
+
+    1. Configure your camera (run as your normal user, not root):
+         linux-enable-ir-emitter configure
+       This writes the config to ~/.config/linux-enable-ir-emitter.toml
+
+    2. Enable the emitter when the IR camera is used. Pick one:
+
+       * Howdy / PAM (automatic): in every file listed by
+           grep -rl howdy /etc/pam.d
+         add the following line BEFORE the line mentioning "howdy"
+         (replace <USER> with your username):
+           auth optional pam_exec.so /usr/bin/linux-enable-ir-emitter run --config /home/<USER>/.config/linux-enable-ir-emitter.toml
+
+       * Manual / other programs: run this before using the camera:
+           linux-enable-ir-emitter run
+
+    See /usr/share/doc/linux-enable-ir-emitter-git/README.md for details.
+
+EOF
 }
 
-post_remove() {
-  # remove SeLinux permission
-  which semanage &> /dev/null
-  if [ "$?" -eq 0 ]; then
-      semanage fcontext -d /usr/lib/linux-enable-ir-emitter/driver/execute-driver
-      semanage fcontext -d /usr/lib/linux-enable-ir-emitter/driver/driver-generator
+post_upgrade() {
+  # v7 (Rust) is a full rewrite: the systemd service and udev rules are gone,
+  # and the config format/location changed (now ~/.config/linux-enable-ir-emitter.toml).
+  if (( $(vercmp "$2" 7.0.0) < 0 )); then
+    echo "==> Upgraded from v6: config format/location changed (now"
+    echo "    ~/.config/linux-enable-ir-emitter.toml) and is NOT migrated automatically."
+    echo "    REBOOT FIRST, then run 'linux-enable-ir-emitter configure'."
+    echo "    If the emitter is still enabled from v6, configure detects it as"
+    echo "    'already working', aborts, and saves an EMPTY config that fails on"
+    echo "    next boot. A reboot resets the camera so configure can search properly."
+    echo "    Also re-add your PAM/launch hook; the old systemd service is gone."
   fi
-
-  # delete python cache
-  rm -rf /usr/lib/linux-enable-ir-emitter/
-
-  # delete drivers
-  rm -rf /etc/linux-enable-ir-emitter
-
-  # delete systemd service
-  systemctl disable linux-enable-ir-emitter &> /dev/null
-  rm -f /usr/lib/systemd/system/linux-enable-ir-emitter.service
-  rm -f /etc/udev/rules.d/99-linux-enable-ir-emitter.rules
+  post_install
 }
