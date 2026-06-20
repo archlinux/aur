@@ -1,7 +1,7 @@
 pkgbase = cornelsen-offline-lernen-bin
 	pkgdesc = Cornelsen Offline Lernen Electron App
 	pkgver = 37.10.2
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.cornelsen.de
 	arch = x86_64
 	license = custom
