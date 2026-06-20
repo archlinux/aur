@@ -7,6 +7,7 @@ pkgbase = mingw-w64-vtk-qt6
 	license = BSD
 	makedepends = mingw-w64-cmake
 	makedepends = mingw-w64-wine
+	makedepends = qt6-base
 	depends = mingw-w64-crt
 	depends = mingw-w64-qt6-base
 	depends = mingw-w64-jsoncpp
