@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=v2
-pkgver=0.14.8
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc='A local-first rich text editor with Git-style version control'
 arch=(x86_64 aarch64)
 url=https://v2editor.com
@@ -26,7 +26,7 @@ makedepends=(git
              typescript)
 source=("git+$_url.git#tag=v$pkgver"
         "$pkgname.sh.in")
-sha256sums=('a24d0a18bb26402c8606caa401dff94c1c902b90b54617eafce2992464256e7b'
+sha256sums=('241a4877b0f14cfcc05ad33fc1af3b99e666079c26e01ae0621b86c13dff5aad'
             '4426132f3455e44ae2698752dfd4d748a9bd831079f7fed038d18814dc5088f1')
 
 _icons=(16 32 48 64 128 256 512)
