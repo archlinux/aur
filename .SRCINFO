@@ -1,22 +1,11 @@
 pkgbase = hyprspaces
-	pkgdesc = Paired workspace plugin and setup scripts for Hyprland
-	pkgver = 1.8
+	pkgdesc = Deprecated transition package for hyprspaces-tools
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/jtaw5649/hyprspaces
 	install = hyprspaces.install
-	arch = x86_64
+	arch = any
 	license = MIT
-	depends = bash
-	depends = hyprland
-	depends = python
-	depends = cmake
-	depends = pkgconf
-	depends = gcc
-	depends = make
-	options = !debug
-	source = hyprspaces-1.8.tar.gz::https://github.com/jtaw5649/hyprspaces/archive/refs/tags/v1.8.tar.gz
-	source = hyprspaces.hook
-	sha256sums = d227f0bd1406e5fa177177f76f7bb76703bb83818a898f6f003bd32d2060a040
-	sha256sums = a7868c8e64938386e8dd559b1bf1991ffbd7d144ec746830cbc80efacc357ebc
+	depends = hyprspaces-tools>=2.0.0
 
 pkgname = hyprspaces

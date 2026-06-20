@@ -1,10 +1,11 @@
+# shellcheck shell=bash
+
 post_install() {
-	echo "Run 'hyprspaces-install' to wire the plugin into your Hyprland config."
-	echo "Rebuild dependencies are installed with this package."
-	echo "Restart/logout after install to activate the plugin."
+	echo "The hyprspaces AUR package is now a transition package."
+	echo "HyprPM owns the plugin and hyprspaces-tools owns the helper CLI/config automation."
+	echo "You may remove this transition package after hyprspaces-tools is installed."
 }
 
 post_upgrade() {
-	echo "The plugin auto-rebuilds on Hyprland updates."
-	echo "Restart/logout after update or rebuild to activate the rebuilt plugin."
+	post_install
 }
