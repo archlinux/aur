@@ -1,32 +1,39 @@
 pkgbase = xwpe
-	pkgdesc = A Borland IDE-like text editor
-	pkgver = 1.5.30a
-	pkgrel = 3
-	url = http://www.identicalsoftware.com/xwpe
+	pkgdesc = Borland Turbo C/Pascal-style programming editor and IDE for console and X11, with LSP and DAP clients
+	pkgver = 1.6.5
+	pkgrel = 1
+	url = https://codeberg.org/mendezr/xwpe
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	source = http://www.identicalsoftware.com/xwpe/xwpe-1.5.30a.tar.gz
-	source = xwpe-1.5.30a-build.patch
-	source = xwpe-1.5.30a-compile.patch
-	sha256sums = fce37a5dd3afd7102a73d187eda8b9d1ab88bf5db649f385b8cd13e72e0c7961
-	sha256sums = 325accd4bbc21149d2b1d0dece9032c2e784773826fdb33629a86d67f84f7425
-	sha256sums = cce4914d44631e7e319edd219a4e54dd73f518730fd119999b0c689a450dfc1a
+	license = GPL-2.0-only
+	makedepends = texinfo
+	depends = ncurses
+	depends = libx11
+	depends = libxft
+	depends = cairo
+	depends = pango
+	depends = gpm
+	depends = libvterm
+	depends = json-c
+	depends = zlib
+	optdepends = gcc: C/C++ compiling (F9) and gdb debugging
+	optdepends = gdb: source-level debugging; also Rust via DAP
+	optdepends = clang: clangd language server for C/C++
+	optdepends = python-lsp-server: Python language server
+	optdepends = gopls: Go language server
+	optdepends = rust-analyzer: Rust language server
+	optdepends = delve: Go debugging via DAP
+	optdepends = go: Go compiler
+	optdepends = rust: Rust compiler
+	optdepends = jdk-openjdk: Java compiling (javac) and jdb debugging
+	optdepends = python: Python interpreter and pdb debugging
+	provides = wpe
+	provides = wpe-common
+	conflicts = wpe
+	conflicts = wpe-common
+	replaces = wpe
+	replaces = wpe-common
+	source = xwpe-1.6.5.tar.gz::https://codeberg.org/mendezr/xwpe/releases/download/v1.6.5/xwpe-1.6.5.tar.gz
+	sha256sums = 9e214192fa45c5bb5f2894343e0f4c879af69ea52ce95af08ec9a5d5aea35e6e
 
 pkgname = xwpe
-	pkgdesc = A Borland IDE-like text edit for X
-	depends = wpe-common=1.5.30a
-	depends = libsm
-	depends = libx11
-	depends = libxau
-	depends = libxdmcp
-
-pkgname = wpe-common
-	pkgdesc = Common files for WPE
-
-pkgname = wpe
-	pkgdesc = A Borland IDE-like text editor for the console
-	depends = wpe-common=1.5.30a
-	depends = zlib
-	depends = gpm
-	depends = ncurses

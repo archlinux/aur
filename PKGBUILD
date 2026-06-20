@@ -1,58 +1,51 @@
+# Maintainer: Juan Manuel Méndez Rey (vejeta) <juan.mendezr@proton.me>
 # Maintainer: Deposite Pirate <dpirate at metalpunks dot info>
 #
+# Upstream: https://codeberg.org/mendezr/xwpe
 # Upstream: https://git.metalpunks.info/arch-ports
 #
 # vim: ts=2 sw=2
 
-_pkgname=xwpe
-pkgname=("$_pkgname" wpe-common wpe)
-pkgver=1.5.30a
-pkgrel=3
-pkgdesc='A Borland IDE-like text editor'
+pkgname=xwpe
+pkgver=1.6.5
+pkgrel=1
+pkgdesc='Borland Turbo C/Pascal-style programming editor and IDE for console and X11, with LSP and DAP clients'
 arch=('i686' 'x86_64')
-url='http://www.identicalsoftware.com/xwpe'
-license=('GPL2')
-source=("${url}/${pkgname}-${pkgver}.tar.gz"
-        'xwpe-1.5.30a-build.patch'
-        'xwpe-1.5.30a-compile.patch')
-sha256sums=('fce37a5dd3afd7102a73d187eda8b9d1ab88bf5db649f385b8cd13e72e0c7961'
-            '325accd4bbc21149d2b1d0dece9032c2e784773826fdb33629a86d67f84f7425'
-            'cce4914d44631e7e319edd219a4e54dd73f518730fd119999b0c689a450dfc1a')
-
-prepare() {
-  cd "${pkgname}-${pkgver}"
-
-  # Fix and improve build
-  patch -p1 -i "${srcdir}/xwpe-1.5.30a-build.patch"
-  patch -p1 -i "${srcdir}/xwpe-1.5.30a-compile.patch"
-}
+url='https://codeberg.org/mendezr/xwpe'
+license=('GPL-2.0-only')
+depends=('ncurses' 'libx11' 'libxft' 'cairo' 'pango' 'gpm' 'libvterm' 'json-c' 'zlib')
+makedepends=('texinfo')
+optdepends=(
+  'gcc: C/C++ compiling (F9) and gdb debugging'
+  'gdb: source-level debugging; also Rust via DAP'
+  'clang: clangd language server for C/C++'
+  'python-lsp-server: Python language server'
+  'gopls: Go language server'
+  'rust-analyzer: Rust language server'
+  'delve: Go debugging via DAP'
+  'go: Go compiler'
+  'rust: Rust compiler'
+  'jdk-openjdk: Java compiling (javac) and jdb debugging'
+  'python: Python interpreter and pdb debugging'
+)
+provides=('wpe' 'wpe-common')
+conflicts=('wpe' 'wpe-common')
+replaces=('wpe' 'wpe-common')
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('9e214192fa45c5bb5f2894343e0f4c879af69ea52ce95af08ec9a5d5aea35e6e')
 
 build() {
   cd "${pkgname}-${pkgver}"
   CFLAGS="${CFLAGS}" ./configure \
    --prefix=/usr \
-   --libdir=/usr/share \
    --mandir=/usr/share/man
   make
 }
 
-package_wpe-common() {
-pkgdesc='Common files for WPE'
-  cd "xwpe-${pkgver}"
-  make install_data DESTDIR="${pkgdir}"
-  install -Dvm644 CHANGELOG README -t "${pkgdir}/usr/share/doc/${_pkgname}"
-}
-
-package_wpe() {
-pkgdesc='A Borland IDE-like text editor for the console'
-depends=("wpe-common=${pkgver}" 'zlib' 'gpm' 'ncurses')
-  cd "xwpe-${pkgver}"
-  make install_wpe DESTDIR="${pkgdir}"
-}
-
-package_xwpe() {
-pkgdesc='A Borland IDE-like text edit for X'
-depends=("wpe-common=${pkgver}" 'libsm' 'libx11' 'libxau' 'libxdmcp')
-  cd "xwpe-${pkgver}"
-  make install_xwpe DESTDIR="${pkgdir}"
+package() {
+  cd "${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+  rm -f "$pkgdir/usr/share/info/dir"
+  install -Dvm644 AUTHORS CHANGELOG README.md \
+    -t "$pkgdir/usr/share/doc/$pkgname"
 }
