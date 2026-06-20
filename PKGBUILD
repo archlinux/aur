@@ -18,8 +18,8 @@ options=('!strip' '!debug')
 source_x86_64=("koreader-nightly-x86_64-${pkgver}.deb::https://build.koreader.rocks/download/nightly/${_realver}/koreader_${_realver}-1_amd64.deb")
 source_aarch64=("koreader-nightly-aarch64-${pkgver}.deb::https://build.koreader.rocks/download/nightly/${_realver}/koreader_${_realver}-1_arm64.deb")
 
-sha256sums_x86_64=('ab5d333ffa01be051f34f2d30805b3d79e3e01b67ccc6539c46c3c67bdba3381')
-sha256sums_aarch64=('26578591b64608af62a5eedb245af5d4b9d71f3148cf4818192c12482e8e4d5c')
+sha256sums_x86_64=('7782e9a77919bcbacd60247e9ad7a39ae263bcbcaaf3eb146b682c5654417b54')
+sha256sums_aarch64=('aac987ded8ff09fa087b69c16c48c7664a5a5645e6855938386e0c7225c7e852')
 
 prepare() {
   rm -rf "${srcdir}/dpkgdir"
