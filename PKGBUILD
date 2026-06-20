@@ -3,7 +3,7 @@
 pkgname=harbor-stremio-bin
 _pkgname=harbor
 pkgver=0.9.13
-pkgrel=4
+pkgrel=5
 pkgdesc='A Stremio client built for adventure (binary release)'
 arch=('x86_64')
 url='https://github.com/harborstremio/harbor'
@@ -26,13 +26,13 @@ makedepends=('libarchive')
 provides=('harbor-stremio' 'harbor')
 conflicts=('harbor-stremio' 'harbor' 'harbor-stremio-git')
 
-source=("Harbor_${pkgver}-${pkgrel}_amd64.deb::https://github.com/AdityaHebballe/harbor-linux-builds/releases/download/v${pkgver}/Harbor_0.9.13_amd64.deb")
-sha256sums=('e813e973f00a0b87cd6544b19524280af72dd037a806936b88cbc11f9bb5bfbd')
+source=("https://github.com/AdityaHebballe/harbor-linux-builds/releases/download/v${pkgver}/Harbor_0.9.13_amd64.deb")
+sha256sums=('7a2a992e25456494cd06ac77715cd32f0ae74b06d84aecafb619f1a78be7433c')
 
 package() {
   rm -rf "$srcdir/deb-extract"
   mkdir -p "$srcdir/deb-extract"
-  bsdtar --no-same-owner -xf "$srcdir/Harbor_${pkgver}-${pkgrel}_amd64.deb" -C "$srcdir/deb-extract"
+  bsdtar --no-same-owner -xf "$srcdir/Harbor_0.9.13_amd64.deb" -C "$srcdir/deb-extract"
 
   local data_archive
   data_archive="$(find "$srcdir/deb-extract" -maxdepth 1 -type f -name 'data.tar.*' | head -n 1)"
