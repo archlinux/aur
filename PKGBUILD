@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Maintainer: Atay Özcan <atay@oezcan.me>
 pkgname=sentinel-kde
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 install=sentinel-kde.install
 # Cargo.toml's release profile strips symbols at link time, so makepkg's
@@ -58,7 +58,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Regenerated to a real value by the AUR-publish CI workflow before the
 # PKGBUILD lands on the AUR repo. In-repo copy stays 'SKIP' so dependabot-
 # style updates don't churn this file every release.
-sha256sums=('4eb3518c94ab0af476b74363ec46ea351cce01477ae502a62f18f39a3a48a01c')
+sha256sums=('7409cfb2c7425fb21774c8a0129ceb79ae6863c6d5b4a9d422c691beee6a10c1')
 
 prepare() {
     cd "sentinel-$pkgver"
@@ -130,18 +130,18 @@ package() {
         "$pkgdir/usr/share/doc/$pkgname/su"
 
     # systemd USER service + auto-enable in graphical-session.target.
-    install -Dm644 packaging/systemd/user/sentinel-polkit-agent.service \
+    install -Dm644 packaging-kde/packaging/systemd/user/sentinel-polkit-agent.service \
         "$pkgdir/usr/lib/systemd/user/sentinel-polkit-agent.service"
     install -d "$pkgdir/usr/lib/systemd/user/graphical-session.target.wants"
     ln -s ../sentinel-polkit-agent.service \
         "$pkgdir/usr/lib/systemd/user/graphical-session.target.wants/sentinel-polkit-agent.service"
 
     # DBus system-bus policy for the pre-approval interface.
-    install -Dm644 packaging/dbus/org.sentinel.Agent.conf \
+    install -Dm644 packaging-kde/packaging/dbus/org.sentinel.Agent.conf \
         "$pkgdir/usr/share/dbus-1/system.d/org.sentinel.Agent.conf"
 
     # Polkit admin rule — wheel-group members can self-confirm.
-    install -Dm644 packaging/arch/49-sentinel-admin.rules \
+    install -Dm644 packaging-kde/packaging/arch/49-sentinel-admin.rules \
         "$pkgdir/etc/polkit-1/rules.d/49-sentinel-admin.rules"
 
     # Shell completions.
@@ -155,9 +155,9 @@ package() {
     # Man pages.
     install -Dm644 target/release/share/sentinel-polkit-agent.1 \
         "$pkgdir/usr/share/man/man1/sentinel-polkit-agent.1"
-    install -Dm644 packaging/man/sentinel.conf.5 \
+    install -Dm644 packaging-kde/packaging/man/sentinel.conf.5 \
         "$pkgdir/usr/share/man/man5/sentinel.conf.5"
-    install -Dm644 packaging/man/pam_sentinel.8 \
+    install -Dm644 packaging-kde/packaging/man/pam_sentinel.8 \
         "$pkgdir/usr/share/man/man8/pam_sentinel.8"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
