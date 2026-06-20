@@ -12,6 +12,7 @@ pkgbase = aurscan-manticore-release-git
 	optdepends = claude-code: keyless backend via your Claude subscription
 	optdepends = openai-codex: keyless backend via your Codex subscription
 	optdepends = xdg-utils: open mail client for mailing-list reports
+	conflicts = aurscan
 	conflicts = aurscan-git
 	conflicts = aurscan-manticore
 	conflicts = aurscan-manticore-git

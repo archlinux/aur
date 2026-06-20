@@ -11,7 +11,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/manticore-projects/aurscan"
 license=('Apache-2.0')
 makedepends=('go' 'git')
-conflicts=('aurscan-git' 'aurscan-manticore' 'aurscan-manticore-git')
+conflicts=('aurscan' 'aurscan-git' 'aurscan-manticore' 'aurscan-manticore-git')
 optdepends=(
   'yay: syay wrapper and --update-check'
   'claude-code: keyless backend via your Claude subscription'
@@ -22,19 +22,28 @@ source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
+  cd "${srcdir}/${pkgname}"
   git tag --list | grep -E '^v[0-9]+\.' | sort -V | tail -1 | sed 's/^v//'
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "${srcdir}/${pkgname}"
   git reset --hard "v${pkgver}"
+  # go writes: GOMODCACHE (${srcdir}/.go-mod-cache)
+  export GOMODCACHE="${srcdir}/.go-mod-cache"
+  go mod download
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  export CGO_ENABLED=0
+  cd "${srcdir}/${pkgname}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  # go writes: GOMODCACHE (${srcdir}/.go-mod-cache), GOCACHE (${srcdir}/.go-build-cache)
+  export GOMODCACHE="${srcdir}/.go-mod-cache"
+  export GOCACHE="${srcdir}/.go-build-cache"
   local _date; _date="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
   go build -ldflags="-s -w \
     -X github.com/manticore-projects/aurscan/internal/version.Version=v${pkgver} \
@@ -44,13 +53,15 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$pkgname"
+  cd "${srcdir}/${pkgname}"
+  export GOMODCACHE="${srcdir}/.go-mod-cache"
+  export GOCACHE="${srcdir}/.go-build-cache"
   go list -f '{{if or .TestGoFiles .XTestGoFiles}}{{.ImportPath}}{{end}}' ./... \
     | xargs -r go test
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "${srcdir}/${pkgname}"
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   ln -s "${_pkgname}" "${pkgdir}/usr/bin/syay"
   ln -s "${_pkgname}" "${pkgdir}/usr/bin/sparu"
