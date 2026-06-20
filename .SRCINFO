@@ -1,6 +1,6 @@
 pkgbase = human-mcp-git
 	pkgdesc = Human-in-the-loop MCP server
-	pkgver = 0.1.20.r60.g54c78cb
+	pkgver = 0.1.21.r61.gaeabfaa
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/human-mcp
 	install = human-mcp.install

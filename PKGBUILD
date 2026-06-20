@@ -1,6 +1,6 @@
 # Maintainer: LIghtJUNction
 pkgname=human-mcp-git
-pkgver=0.1.20.r60.g54c78cb
+pkgver=0.1.21.r61.gaeabfaa
 pkgrel=1
 pkgdesc='Human-in-the-loop MCP server'
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd human-mcp
-  printf '0.1.20.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf '0.1.21.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
