@@ -22,7 +22,7 @@ pkgver() {
 prepare() {
     cd $pkgname
     export GOPATH=$srcdir
-    go mod download
+    go mod download -modcacherw
 }
 
 build() {
@@ -36,7 +36,12 @@ build() {
     export CC=clang
     export CXX=clang++
 
-    go build -v -o sing-usbip ./cmd/sing-usbip
+    go build -trimpath -v -o $pkgname ./cmd/$pkgname
+
+    install -d completions
+    ./$pkgname completion bash > completions/bash
+    ./$pkgname completion fish > completions/fish
+    ./$pkgname completion zsh  > completions/zsh
 }
 
 package() {
@@ -44,4 +49,8 @@ package() {
 
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm755 sing-usbip -t "$pkgdir/usr/bin"
+
+    install -Dm644 completions/bash "${pkgdir}/usr/share/bash-completion/completions/${pkgname}.bash"
+    install -Dm644 completions/fish "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+    install -Dm644 completions/zsh  "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }
