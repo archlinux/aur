@@ -22,13 +22,13 @@ makedepends=(git python-build python-installer python-wheel)
 build() {
 	cd "$srcdir/$_name"
 	python -m build --wheel --no-isolation
-	cd "../rndaddentropy"
+	cd "rndaddentropy"
 	make rndaddentropy
 }
 
 package() {
 	cd "$srcdir/$_name"
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	cd "../rndaddentropy"
+	cd "rndaddentropy"
 	make DESTDIR="$pkgdir/" install
 }
