@@ -42,6 +42,6 @@ pkgbase = deepseek-reasonix-desktop-bin
 	sha256sums = bd11cf73bda7418a9cd760859b290bc9569679b1ce28b4b75bcb131d270640e3
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 6778d9b903b3ff5ea8873f9f284be79f8a1d13ddfc3bbd1296bebc09d5d58116
+	sha256sums = 03a8452c6cfc366885b9a97fd5947db325d0831b274013356313fd6cf69357ff
 
 pkgname = deepseek-reasonix-desktop-bin
