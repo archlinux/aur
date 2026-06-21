@@ -1,0 +1,8 @@
+mihomo:
+  core:
+    config_dir: /etc/mihomo
+    bin_path: /bin/mihomo
+    config_path: /etc/mihomo/config.yaml
+  core_service:
+    service_name: mihomo
+    is_user: false

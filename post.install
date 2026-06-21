@@ -1,0 +1,9 @@
+_pkgname=clashtui
+
+post_install() {
+	echo ">>> $_pkgname will generate a default config at ~/.config/$_pkgname/config.json on first launch."
+	echo ">>> However, the default may not fit the Arch Linux ecosystem (e.g., mihomo paths)."
+	echo ">>> A tuned config is shipped at /usr/share/$_pkgname/config.yaml — you can use it as a reference:"
+	echo ">>>"
+	echo ">>>   mkdir -p ~/.config/$_pkgname && cp /usr/share/$_pkgname/config.yaml ~/.config/$_pkgname/config.json"
+}

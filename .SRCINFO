@@ -1,0 +1,18 @@
+pkgbase = clashtui-bin
+	pkgdesc = Mihomo (Clash.Meta) TUI Client
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/JohanChane/clashtui
+	install = post.install
+	arch = x86_64
+	license = MIT
+	depends = mihomo
+	depends = sudo
+	depends = fzf
+	conflicts = clashtui
+	source = https://github.com/JohanChane/clashtui/releases/download/v0.3.1/clashtui-linux-amd64-v0.3.1.gz
+	source = config.yaml
+	sha256sums = 4d4cf18563794ed9e0220bb843f5ca0ee3d81b008dd4d9cd2dff65082fa4735b
+	sha256sums = SKIP
+
+pkgname = clashtui-bin
