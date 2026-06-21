@@ -5,8 +5,8 @@ pkgname="${_pkgname}-git"
 # 2026-05-28: Seems to work with both OpenJDK 21 and OpenJDK 26. We do not enforce a specific Java version. But make sure that `archlinux-java` is set to a version where an SDK and not only a JRE is installed.
 #_jdkversion=21
 #_jdkversion=26
-pkgver=26.05.05+145.r2787.20260601.479734f2
-pkgrel=2
+pkgver=26.06.06+60.r2867.20260621.df44afb4
+pkgrel=1
 pkgdesc="Matrix client for desktop written in Kotlin and using the Matrix Rust SDK, designed to be fully keyboard controllable, multi account, hirarchical spaces. Design in the tradition of SchildiChat clients."
 arch=(
   "aarch64"
@@ -216,7 +216,6 @@ package() {
 
   printf '%s\n' " --> Installing basic documentation ..."
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" git.log README.md "${srcdir}/keybindings-readme.md"
-  cp --no-dereference --preserve=links -v AGENTS.md CLAUDE.md "${pkgdir}/usr/share/doc/${_pkgname}"/ # Copy those to preserve symlinks.
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" composeApp/src/jvmMain/composeResources/files/keybindings-default.toml
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" example-config/keybindings-advanced.toml
 
