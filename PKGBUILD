@@ -1,7 +1,7 @@
 # Maintainer: deadYokai
 
 pkgname=ds4u
-pkgver=0.0.2
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="DualSense 4 You — DualSense controller manager for Linux"
 arch=('x86_64')

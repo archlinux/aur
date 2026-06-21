@@ -1,6 +1,6 @@
 pkgbase = ds4u
 	pkgdesc = DualSense 4 You — DualSense controller manager for Linux
-	pkgver = 0.0.2
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://git.yokai.digital/deadYokai/ds4u
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ds4u
 	depends = openssl
 	provides = ds4u
 	conflicts = ds4u-git
-	source = ds4u-0.0.2.tar.gz::https://git.yokai.digital/deadYokai/ds4u/archive/v0.0.2.tar.gz
+	source = ds4u-0.1.0.tar.gz::https://git.yokai.digital/deadYokai/ds4u/archive/v0.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = ds4u
