@@ -2,8 +2,8 @@
 # Contributor: Robert Knauer <robert@capsaicin-dev.de>
 
 pkgname=courier-unicode
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="Courier Unicode Library"
 arch=("i686" "x86_64" "aarch64")
 url="http://www.courier-mta.org/unicode/"
@@ -14,12 +14,12 @@ source=(
   "https://sourceforge.net/projects/courier/files/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.bz2"
 )
 sha256sums=(
-  '5eca7a536516120ef8e5de6014e690711bc6b3fb1a1bd57d2f1903c54dedb3e0'
+  '0aed2349c5b62de0d33ccf8c23527aae41daf95a03c8054c88de4faef8da8a08'
 )
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr CXXFLAGS=--std=gnu++17
+  ./configure --prefix=/usr
   make
 }
 
