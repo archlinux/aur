@@ -1,0 +1,27 @@
+pkgbase = libggml-cuda
+	pkgdesc = Tensor library for machine learning
+	pkgver = 0.15.2
+	pkgrel = 1
+	url = https://github.com/ggml-org/ggml
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = cuda
+	makedepends = git
+	makedepends = ninja
+	makedepends = shaderc
+	makedepends = spirv-headers
+	makedepends = vulkan-headers
+	depends = openblas
+	depends = vulkan-icd-loader
+	provides = libggml=0.15
+	conflicts = libggml
+	source = ggml-0.15.2.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v0.15.2.tar.gz
+	sha256sums = 298e958817a126c44bb8e97c97d5d53d00bd15eca22bebf805f278223fe29e07
+
+pkgname = libggml-cuda
+	pkgdesc = Tensor library for machine learning with OpenBLAS + Vulkan + CUDA optimizations
+	depends = openblas
+	depends = vulkan-icd-loader
+	depends = nvidia-utils
+	depends = vulkan-driver
