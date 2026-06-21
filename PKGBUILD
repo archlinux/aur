@@ -4,15 +4,12 @@
 
 pkgname=vi
 pkgver=070224
-pkgrel=8
+pkgrel=9
 epoch=1
 pkgdesc="The original ex/vi text editor"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://ex-vi.sourceforge.net/"
-license=(
-  BSD-4-Clause-UC
-  Caldera-no-preamble
-)
+license=('BSD-4-Clause-UC AND Caldera-no-preamble')
 depends=('ncurses')
 optdepends=('s-nail: used by the preserve command for notification')
 provides=('vi')
