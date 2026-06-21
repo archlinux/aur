@@ -1,0 +1,17 @@
+pkgbase = adev
+	pkgdesc = Project-aware Android developer CLI — knows your repo's test, install, launch & clean commands
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/cesarferreira/adev
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	provides = adev
+	conflicts = adev
+	source = adev-0.3.1.crate::https://crates.io/api/v1/crates/adev/0.3.1/download
+	sha256sums = 9b43418099dab927593d913be2cf376b57d8b8fd5e9bbe148f60e7aba8d6da3a
+
+pkgname = adev
