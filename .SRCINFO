@@ -1,0 +1,21 @@
+pkgbase = mlterm-fb
+	pkgdesc = Framebuffer-only mlterm: truecolor + sixel + multilingual UTF-8 terminal on /dev/fb0 (no X/GTK)
+	pkgver = 3.9.4
+	pkgrel = 1
+	url = https://github.com/arakiken/mlterm
+	arch = x86_64
+	license = BSD
+	makedepends = intltool
+	makedepends = cairo
+	makedepends = libssh2
+	depends = freetype2
+	depends = fontconfig
+	depends = fribidi
+	depends = gpm
+	optdepends = libssh2: built-in SSH support (libptyssh plugin)
+	provides = mlterm-fb
+	conflicts = mlterm
+	source = https://downloads.sourceforge.net/mlterm/mlterm-3.9.4.tar.gz
+	sha256sums = 171de4c4f3443bc1211cc51df5caa0e082ffcdd33ab3ce261bc0a4cfe85d9b5e
+
+pkgname = mlterm-fb
