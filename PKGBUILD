@@ -1,5 +1,5 @@
 pkgname=hoshi-bin
-pkgver=1.1.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Hoshi desktop app"
 arch=('x86_64')
