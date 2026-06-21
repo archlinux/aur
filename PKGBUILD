@@ -1,16 +1,19 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-store-git
-pkgver=1.0.8.r9.gc29e42f
+pkgver=1.0.16.r0.g211987d
 pkgrel=1
 pkgdesc="COSMIC Store"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-store"
 license=('GPL-3.0-only')
 depends=(
+  'archlinux-appstream-data'
   'cosmic-icons-git'
   'flatpak'
   'glib2'
   'libxkbcommon'
+  'openssl'
+  'wayland'
 )
 makedepends=(
   'cargo'
@@ -37,7 +40,7 @@ prepare() {
   patch -Np1 -i ../lto.patch
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
