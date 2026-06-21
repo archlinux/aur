@@ -1,6 +1,6 @@
 # Maintainer: NewYearPrism
 
-_ggml_version=0.15.1
+_ggml_version=0.15.2
 pkgname=ggml-vulkan
 pkgver=${_ggml_version}
 pkgrel=1
