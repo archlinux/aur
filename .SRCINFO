@@ -3,6 +3,7 @@ pkgbase = rusty-monitor
 	pkgver = r29.a41b5bf
 	pkgrel = 1
 	url = https://github.com/JackpotMachine777/rusty-monitor
+	install = rusty-monitor.install
 	arch = x86_64
 	license = GPL
 	makedepends = nodejs
@@ -23,6 +24,8 @@ pkgbase = rusty-monitor
 	depends = nvidia-utils
 	options = !strip
 	source = git+https://github.com/JackpotMachine777/rusty-monitor#branch=main
+	source = 99-rusty-monitor-rapl.rules
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = rusty-monitor

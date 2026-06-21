@@ -9,8 +9,11 @@ license=('GPL')
 depends=('glibc' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'hicolor-icon-theme' 'nvidia-utils')
 makedepends=('nodejs' 'npm' 'rust' 'pkg-config' 'gcc' 'make' 'git' 'clang' 'lld' 'llvm')
 options=(!strip)
-source=("git+https://github.com/JackpotMachine777/rusty-monitor#branch=main")
-sha256sums=('SKIP')
+install='rusty-monitor.install'
+source=("git+https://github.com/JackpotMachine777/rusty-monitor#branch=main"
+        "99-rusty-monitor-rapl.rules")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver(){
   cd "$srcdir/$pkgname"
@@ -58,5 +61,6 @@ Categories=Utility;
 EOF
 
     install -Dm644 src-tauri/icons/sysmon.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/rusty-monitor.png"
+    install -Dm644 "$srcdir/99-rusty-monitor-rapl.rules" \
+        "$pkgdir/usr/lib/udev/rules.d/99-rusty-monitor-rapl.rules"
 }
-
