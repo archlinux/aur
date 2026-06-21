@@ -1,7 +1,7 @@
 pkgbase = python-spotifyscraper
 	pkgdesc = Extract public Spotify data — tracks, albums, artists, playlists, podcasts & lyrics — without the official API. Sync + async, typed models, one dependency.
-	pkgver = v3.7.0
-	pkgrel = 2
+	pkgver = v3.8.0
+	pkgrel = 1
 	url = https://spotifyscraper.readthedocs.io
 	arch = any
 	license = MIT
@@ -21,8 +21,8 @@ pkgbase = python-spotifyscraper
 	makedepends = mkdocstrings
 	makedepends = mkdocs-material
 	makedepends = mkdocstrings-python
-	source = git+https://github.com/AliAkhtari78/spotifyscraper#tag=v3.7.0
-	sha256sums = 7b9e05da144b25557d87fec7c5121206410345319439c9f54b7294404748c06e
+	source = git+https://github.com/AliAkhtari78/spotifyscraper#tag=v3.8.0
+	sha256sums = fd16363ed13cdeecf308bbeaff94c183b25ccaee2317bf21bfcc5d8883714b4c
 
 pkgname = python-spotifyscraper
 	depends = python>=3.10
