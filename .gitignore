@@ -5,12 +5,12 @@
 # upstream source clone (from the source=("ffmpeg::git+...") VCS source)
 /ffmpeg/
 
-# built packages and signatures
+# built packages and their signatures (any compression makepkg supports)
 *.pkg.tar
 *.pkg.tar.gz
 *.pkg.tar.xz
 *.pkg.tar.zst
-*.pkg.tar.zst.sig
+*.pkg.tar*.sig
 
 # stale source tarballs and VCS sources downloaded into the AUR repo
 *.tar.gz
@@ -18,3 +18,14 @@
 *.tar.bz2
 *.tar.zst
 *.tar
+
+# makepkg --log output (build/check/package/prepare/pkgver logs)
+*.log
+
+# patch / merge leftovers and editor backups
+*.orig
+*.rej
+*.bak
+*~
+*.swp
+*.swo
