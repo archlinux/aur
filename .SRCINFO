@@ -1,7 +1,7 @@
 pkgbase = amule-remote-qt
 	pkgdesc = Qt remote control for the aMule daemon over the EC protocol
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/manuel-alcocer/amule-remote-qt
 	arch = x86_64
 	license = GPL-3.0-or-later
