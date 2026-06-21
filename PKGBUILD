@@ -1,4 +1,3 @@
-# Maintainer: lmartinez-mirror
 # Maintainer: Artem Senichev <artemsen@gmail.com>
 # Contributor: Artem Senichev <artemsen@gmail.com>
 
@@ -10,29 +9,29 @@ pkgdesc='Image viewer for Wayland'
 arch=('x86_64')
 license=('MIT')
 makedepends=(
-  'git'
   'bash-completion'
+  'git'
   'meson'
   'wayland-protocols'
   )
 depends=(
-  'wayland'
   'exiv2'
-  'luajit'
-  'libxkbcommon'
   'fontconfig'
   'freetype2'
   'hicolor-icon-theme'
   'libavif'
   'libheif'
   'libjxl'
-  'librsvg'
-  'libwebp'
-  'libtiff'
-  'libsixel'
   'libraw'
+  'librsvg'
+  'libsixel'
+  'libtiff'
+  'libwebp'
+  'libxkbcommon'
+  'luajit'
   'openexr'
   'openjpeg2'
+  'wayland'
   )
 optdepends=('bash-completion: Bash completions')
 provides=("${_pkgname}")
@@ -47,28 +46,10 @@ pkgver() {
 }
 
 build() {
-  local meson_options=(
-    -D heif=enabled
-    -D bash=enabled
-    -D exif=enabled
-    -D exr=enabled
-    -D gif=enabled
-    -D jpeg=enabled
-    -D jp2=enabled
-    -D jxl=enabled
-    -D svg=enabled
-    -D tiff=enabled
-    -D sixel=enabled
-    -D webp=enabled
-    -D man=true
-    -D desktop=true
-    -D version=${pkgver}
-  )
-  arch-meson ${_pkgname} build "${meson_options[@]}"
+  arch-meson ${_pkgname} build --auto-features=enabled -D version=${pkgver}
   meson compile -C build
 }
 
 package(){
   meson install -C build --destdir "${pkgdir}"
-  install -Dm644 ${_pkgname}/LICENSE -t "${pkgdir}"/usr/share/licenses/${_pkgname}/
 }
