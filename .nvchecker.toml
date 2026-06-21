@@ -1,0 +1,4 @@
+[manora]
+source = "git"
+git = "https://github.com/Antiz96/manora.git"
+prefix = "v"
