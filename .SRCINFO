@@ -13,6 +13,6 @@ pkgbase = clashtui-bin
 	source = https://github.com/JohanChane/clashtui/releases/download/v0.3.1/clashtui-linux-amd64-v0.3.1.gz
 	source = config.yaml
 	sha256sums = 4d4cf18563794ed9e0220bb843f5ca0ee3d81b008dd4d9cd2dff65082fa4735b
-	sha256sums = SKIP
+	sha256sums = 3773ffa48b79886c33e7b9ad302f3e3efe6181b3aa3de1596afaee65d8b96958
 
 pkgname = clashtui-bin
