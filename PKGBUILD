@@ -3,7 +3,7 @@
 
 pkgname=ariang-allinone-bin
 _pkgname=ariang-allinone
-pkgver=1.3.13
+pkgver=1.3.14
 pkgrel=1
 pkgdesc="A modern web frontend making aria2 easier to use. (Use precompiled all-in-one version)"
 arch=('any')
@@ -22,7 +22,7 @@ source=("${_pkgname}-${pkgver}.zip::https://github.com/mayswind/AriaNg/releases/
 
 noextract=("${_pkgname}-${pkgver}.zip")
 
-b2sums=('354053eeb64751d5d3d7f454f85f18eba6a60dcea307e23a24cdd447e26ac2ea217fb37a9bb32829396d73fec2ad6a4c876fc09d6ec5263d3f30af38f5fb3348'
+b2sums=('406c356b61feccd247ee9e9b046f0d5af28300dd752b32349f48cff2ec83a256f5d23f9da86a54f6a02c911d1c87c5c799cc2237b4bf1b297e94c63eceb29b31'
         '75f9cd947d78ff94a20104cc2d138d82fdb47d8ba994292b27bf88f5e9a5204e989af39a738821bd4dfb500b63e45103cf70ddddc7523e3175b53652241c4701'
         'bfb87b310a76ee826edfcc8b04bc77e2c006681fd842bce7013e929cf5efd1ccaa4622aeace1bc1677633a185567732d3ea4a1ea5f9fea78e0bd1d9702f64be7'
         '627ad0d8dc89015801d7afb278e1ce80f148a8c4635292fb0a7402c7f33d13ee78060f5e5994e2629e7d0af87d8979784aab13ef906f0a2135213623bc74d2b0'
