@@ -1,11 +1,11 @@
 # Maintainer: Peter Mattern <pmattern at arcor dot de>
 
 _pkgname=cmst
-pkgname=$_pkgname-git
+pkgname="$_pkgname-git"
 pkgver=2023.03.14
 pkgrel=1
 pkgdesc='QT GUI for Connman with system tray icon'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url=https://github.com/andrew-bibb/cmst
 license=('MIT')
 depends=('qt5-base' 'connman' 'gtk-update-icon-cache')
@@ -28,7 +28,7 @@ build() {
 
 package() {
     cd $_pkgname
-    make INSTALL_ROOT=$pkgdir install
-    install -D -m644 $srcdir/$_pkgname/text/license.txt \
+    make INSTALL_ROOT="${pkgdir}" install
+    install -D -m644 "${srcdir}"/$_pkgname/text/license.txt \
       $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
