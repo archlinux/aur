@@ -21,8 +21,10 @@ pkgbase = triangles-qt-bin
 	conflicts = trianglesd
 	conflicts = triangles-cli
 	source = https://github.com/SamiAhmed7777/triangles_v5/releases/download/v5.9.20/cryptographic-triangles_5.9.20_amd64.deb
+	source = https://github.com/SamiAhmed7777/triangles_v5/releases/download/v5.9.20/cryptographic-triangles-daemon_5.9.20_amd64.deb
 	source = triangles-qt.desktop
 	sha256sums = b4afcf758f55c8fb256f4742917971414078ce37c0fe346383ccda5251917bde
+	sha256sums = 068d015cf73206f3f3604b0c8fbf60db307c20234cbe06e236996fb9a336df51
 	sha256sums = SKIP
 
 pkgname = triangles-qt-bin

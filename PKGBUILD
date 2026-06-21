@@ -12,15 +12,24 @@ provides=('triangles-qt' 'trianglesd' 'triangles-cli')
 conflicts=('triangles-qt' 'trianglesd' 'triangles-cli')
 source=(
     "https://github.com/SamiAhmed7777/triangles_v5/releases/download/v${pkgver}/cryptographic-triangles_${pkgver}_amd64.deb"
+    "https://github.com/SamiAhmed7777/triangles_v5/releases/download/v${pkgver}/cryptographic-triangles-daemon_${pkgver}_amd64.deb"
     "triangles-qt.desktop"
 )
 sha256sums=('b4afcf758f55c8fb256f4742917971414078ce37c0fe346383ccda5251917bde'
+            '068d015cf73206f3f3604b0c8fbf60db307c20234cbe06e236996fb9a336df51'
             'SKIP')
 
 prepare() {
     cd "$srcdir"
+    # Qt GUI + bundled Qt/libs come from the full wallet .deb
     ar x "cryptographic-triangles_${pkgver}_amd64.deb"
     tar --use-compress-program=unzstd -xf data.tar.zst
+    rm -f control.tar.zst data.tar.zst debian-binary
+
+    # Headless daemon + JSON-RPC client come from the daemon .deb
+    ar x "cryptographic-triangles-daemon_${pkgver}_amd64.deb"
+    tar --use-compress-program=unzstd -xf data.tar.zst
+    rm -f control.tar.zst data.tar.zst debian-binary
 }
 
 package() {
@@ -40,6 +49,7 @@ package() {
     # libdb_cxx-5.3.so, libboost_program_options.so.1.74.0) and are not
     # available at the right version on Arch, so we ship them ourselves.
     install -dm755 "${pkgdir}/opt/triangles/lib"
+    # Use GUI .deb libs (it has the full Qt set + everything daemon needs)
     install -m644 usr/lib/cryptographic-triangles/lib/* \
         "${pkgdir}/opt/triangles/lib/"
 
