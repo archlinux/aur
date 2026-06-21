@@ -9,8 +9,5 @@ if [ "${XDG_CURRENT_DESKTOP}" = "MATE" ]; then
     export XDG_CURRENT_DESKTOP=""
 fi
 export GDAL_ALLOW_LARGE_LIBJPEG_MEM_ALLOC=1
-export QTSERVICE_RUN=1
-export DOTNET_ROOT=/opt/zwcad/dotnet
-export QT_RELOAD_IMAGEFORMATS_PLUGINS=1
 cd /opt/zwcad/
-./ZWCAD "$@" /product ZWCAD
+./ZwLmgr /language zh-CN /product ZWCAD
