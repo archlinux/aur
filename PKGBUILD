@@ -1,7 +1,7 @@
 # Maintainer: Dennis Herbrich (Gyroplast) <dennis.herbrich@veloxis.de>
 
 pkgname=clockify-cli
-pkgver=0.58.0
+pkgver=0.64.1
 pkgrel=1
 pkgdesc='A simple cli to manage your time entries on Clockify from terminal'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://clockify-cli.netlify.app'
 license=('Apache-2.0')
 makedepends=('git' 'go')
 source=("${pkgname}-${pkgver}::git+https://github.com/lucassabreu/clockify-cli#tag=v${pkgver}")
-sha256sums=('03708332ae04a9d7bdd50675bc95ac6fc76a68d0c870956da383303c046cf1bc')
+sha256sums=('b8a69123da34b43f63abf6c9918ea26aa332049f73f67c97050f4b45985254a0')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
