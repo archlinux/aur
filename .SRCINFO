@@ -1,11 +1,11 @@
 pkgbase = hwaro
 	pkgdesc = Lightweight and fast Static Site Generator(SSG) written in Crystal.
-	pkgver = 0.15.3
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/hahwul/hwaro
 	arch = x86_64
 	license = MIT
-	source = hwaro-0.15.3::https://github.com/hahwul/hwaro/releases/download/v0.15.3/hwaro-v0.15.3-linux-x86_64
+	source = hwaro-0.16.0::https://github.com/hahwul/hwaro/releases/download/v0.16.0/hwaro-v0.16.0-linux-x86_64
 	sha256sums = SKIP
 
 pkgname = hwaro
