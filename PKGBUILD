@@ -1,9 +1,9 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=pi-studio
-pkgver=0.1.32
+pkgver=0.2.0
 pkgrel=1
-_pi_ver=0.78.0
+_pi_ver=0.79.6
 pkgdesc="Local Codex-style desktop GUI for the Pi coding agent"
 arch=('x86_64' 'aarch64')
 url="https://github.com/shixin-guo/pi-studio"
@@ -34,11 +34,11 @@ options=('!lto' '!debug')
 _pi_relurl="https://github.com/earendil-works/pi-mono/releases/download/v${_pi_ver}"
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2f3d3d30e4bd9fef9f2598d442e1ad3586026b440a7564b1905943fcaf274977')
+sha256sums=('c4ccb17a14c5c6594b3e5dd9f05656a9a593530f7de1f3fac3b06265f93efdcc')
 source_x86_64=("pi-linux-x64-${_pi_ver}.tar.gz::${_pi_relurl}/pi-linux-x64.tar.gz")
-sha256sums_x86_64=('8ac03343d1e1228106e8172157f32d6b882829e46b34feaf577f171a5f1387cc')
+sha256sums_x86_64=('05000ec8f5b2a8a2df8e2f505aab89eb80552dcf6dc11680fa0f3285839bb4cf')
 source_aarch64=("pi-linux-arm64-${_pi_ver}.tar.gz::${_pi_relurl}/pi-linux-arm64.tar.gz")
-sha256sums_aarch64=('49155173682473720d9decf4deecbed754fae84925ef003c0b66aac31d5f9005')
+sha256sums_aarch64=('c4c6f3984e7b556a4f447c0b6a458a20d1d53bb646565cadb7a0ca080ce690d8')
 
 prepare() {
     cd "picot-${pkgver}"
