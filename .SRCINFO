@@ -1,0 +1,26 @@
+pkgbase = senda-bin
+	pkgdesc = Fast, lightweight, git-native API client
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/this-senda/senda
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gtk4
+	depends = glib2
+	depends = libsoup3
+	depends = webkitgtk-6.0
+	provides = senda
+	provides = senda-desktop
+	conflicts = senda
+	options = !strip
+	source = README-0.1.2.md::https://raw.githubusercontent.com/this-senda/senda/v0.1.2/README.md
+	source = LICENSE-0.1.2::https://raw.githubusercontent.com/this-senda/senda/v0.1.2/LICENSE
+	sha256sums = ccfeed17b3dfef4f1fd9e0a6d1e00f11e58e9e7e16695bd4744e0a148d8071c6
+	sha256sums = 9be541594ab169eaf1bb278300d81a1fe2bf399980ca2505e978a225ba9d8e0e
+	source_x86_64 = senda-x86_64-0.1.2.tgz::https://github.com/this-senda/senda/releases/download/v0.1.2/senda_0.1.2_linux-amd64.tar.gz
+	sha256sums_x86_64 = 024ae3f0025a3831e9e4647ffb4dae5ff8b61dec1f1b88a282c981924d390036
+	source_aarch64 = senda-aarch64-0.1.2.tgz::https://github.com/this-senda/senda/releases/download/v0.1.2/senda_0.1.2_linux-amd64.tar.gz
+	sha256sums_aarch64 = 024ae3f0025a3831e9e4647ffb4dae5ff8b61dec1f1b88a282c981924d390036
+
+pkgname = senda-bin

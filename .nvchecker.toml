@@ -1,0 +1,5 @@
+[senda-bin]
+source = "github"
+github = "this-senda/senda"
+use_latest_release = true
+prefix = "v"
