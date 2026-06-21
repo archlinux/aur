@@ -1,6 +1,6 @@
 pkgbase = charasay-bin
 	pkgdesc = The future of cowsay 🐮! Colorful characters saying something 🗨️.
-	pkgver = 3.3.1
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = https://github.com/latipun7/charasay
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = charasay-bin
 	license = MIT
 	provides = charasay
 	conflicts = charasay
-	source_x86_64 = charasay-bin-3.3.1-x86_64.zip::https://github.com/latipun7/charasay/releases/download/v3.3.1/chara-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = 161e5f1a5723c502774976a696273931e356c69beddcc12b19b5e2016a30b8e7
-	source_aarch64 = charasay-bin-3.3.1-aarch64.zip::https://github.com/latipun7/charasay/releases/download/v3.3.1/chara-aarch64-unknown-linux-gnu.zip
-	sha256sums_aarch64 = 5e1657ae40e195816e2f1f3d09aebb5aab329c1140492a569c7b7c952254e7fd
+	source_x86_64 = charasay-bin-3.3.2-x86_64.zip::https://github.com/latipun7/charasay/releases/download/v3.3.2/chara-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+	source_aarch64 = charasay-bin-3.3.2-aarch64.zip::https://github.com/latipun7/charasay/releases/download/v3.3.2/chara-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
 
 pkgname = charasay-bin
