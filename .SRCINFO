@@ -1,0 +1,30 @@
+pkgbase = atlas-pm
+	pkgdesc = Arch-focused graphical package manager (Arch/AUR, Flatpak, AppImage)
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/Vatteck/Atlas
+	arch = any
+	license = Zlib
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pywebview>=4.2
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = python-gobject
+	depends = python-requests
+	depends = python-yaml
+	depends = python-dateutil
+	depends = python-colorama
+	depends = pacman
+	optdepends = flatpak: manage Flatpak applications
+	optdepends = git: build packages from the AUR
+	optdepends = pacman-contrib: accurate repo update detection without root (checkupdates)
+	optdepends = timeshift: system snapshot before applying changes
+	conflicts = atlas-pm-git
+	source = atlas-pm-0.14.0.tar.gz::https://github.com/Vatteck/Atlas/archive/refs/tags/v0.14.0.tar.gz
+	sha256sums = 06be03096789621bcdc29a7968cf2e55c1b1ba2cda4148212553da276488e21d
+
+pkgname = atlas-pm
