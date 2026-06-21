@@ -1,6 +1,6 @@
 pkgbase = atlas-pm-git
 	pkgdesc = Arch-focused graphical package manager (Arch/AUR, Flatpak, AppImage)
-	pkgver = 0.13.0.r340.gc51964d
+	pkgver = 0.13.0.r341.g47ab85c
 	pkgrel = 1
 	url = https://github.com/Vatteck/atlas
 	arch = any
