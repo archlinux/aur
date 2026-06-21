@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=scrcpy-mask-bin
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc='Control Android devices via customizable mouse/keyboard mappings using scrcpy protocol'
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=('!debug')
 
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/scrcpy-mask-linux-x64.zip"
         "${pkgname}-${pkgver}-icon.png::https://raw.githubusercontent.com/AkiChase/scrcpy-mask/v${pkgver}/icons/128x128.png")
-sha256sums=('37c6ef2ad69c3fc2edd9f898ebb89744b04ff393ec411b56748831310ff10f7d'
+sha256sums=('0dbbe4a301812f117e91b222a3337782f1afc46c7b239f6937cfb228ab8eed62'
             'cf45e9c198648bea6eb041e696f468a985b5b6401cc5e1f2706ada5c5993ab03')
 
 latestver() {
