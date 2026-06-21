@@ -1,0 +1,25 @@
+pkgbase = latency-map-git
+	pkgdesc = Desktop latency benchmarking app with Electron and native system network tools
+	pkgver = 0.0.6.r2.gb3c2c0e
+	pkgrel = 1
+	url = https://github.com/paulomanrique/latency-map
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	depends = traceroute
+	optdepends = iputils: tracepath fallback on Linux
+	provides = latency-map
+	conflicts = latency-map
+	conflicts = latency-map-bin
+	options = !strip
+	source = git+https://github.com/paulomanrique/latency-map.git
+	source = latency-map.desktop
+	source = latency-map.sh
+	sha256sums = SKIP
+	sha256sums = 52267164dcca52da84ad8944dccdb808de2e8c263047e4b43eb2204bf29eb123
+	sha256sums = 180daf21d0a54515604a8ce4c61fb861f3f04cca66700e2732876725c053fc56
+
+pkgname = latency-map-git
