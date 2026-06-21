@@ -2,7 +2,7 @@
 
 pkgname=iocaine
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The deadliest poison known to AI'
 arch=('any')
 url='https://iocaine.madhouse-project.org/'
