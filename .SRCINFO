@@ -1,11 +1,11 @@
 pkgbase = olive-nightly-bin
 	pkgdesc = Free non-linear video editor
-	pkgver = 0.2.0_674972831_d75aef40
+	pkgver = 0.2.0_8ac191ce
 	pkgrel = 1
-	epoch = 1
-	url = https://www.olivevideoeditor.org/
+	epoch = 2
+	url = https://olivevideoeditor.org
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = openexr
 	depends = ffmpeg
 	depends = openimageio
@@ -16,7 +16,7 @@ pkgbase = olive-nightly-bin
 	provides = olive
 	conflicts = olive
 	options = !strip
-	source = olive-nightly-bin-0.2.0_674972831_d75aef40.zip::https://pipelines.actions.githubusercontent.com/serviceHosts/3229b4d5-1a0d-48e1-91c9-6774f19602b4/_apis/pipelines/1/runs/1789/signedartifactscontent?artifactName=Olive-d75aef40-Linux-x86_64-clang&urlExpires=2023-05-02T15%3A52%3A13.4371595Z&urlSigningMethod=HMACV2&urlSignature=0kiPvRWJjFniYQo09%2B5OGFPLow7VGI8nHd5oGaRyUDk%3D
-	b2sums = SKIP
+	source_x86_64 = https://github.com/olive-editor/olive/releases/download/0.2.0-nightly/Olive-8ac191ce-Linux-x86_64.AppImage
+	b2sums_x86_64 = 49ca63d4033e793f257defd491a51a6a638373abb29ce66ede184fe89e30a59c748d5b7531728879f16c530338e422e0bc85c253838a5a8f4a46d732e9d72ab4
 
 pkgname = olive-nightly-bin
