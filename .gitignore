@@ -1,0 +1,8 @@
+*.gz
+*.lz4
+*.lz
+*.xz
+*.sig
+*.asc
+pkg/
+src/
