@@ -69,6 +69,9 @@ build() {
   CFLAGS+=" -Wno-error=deprecated-literal-operator"
   CXXFLAGS+=" -Wno-error=deprecated-literal-operator"
 
+  # fix missing include
+  export CXXFLAGS+=" -include cstdint"
+
   # fix incompatible flags on ARM
   if [ "${CARCH::1}" != "x" ]; then
     local _unwanted=(
@@ -112,7 +115,7 @@ package() {
   install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   # icon
-  install -Dm644 "$_pkgsrc/assets/favicon.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  install -Dm644 "$_pkgsrc/assets/logo/vector/logo_standalone.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.png"
 
   # launcher
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
