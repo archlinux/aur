@@ -4,7 +4,7 @@ _pkgname="roland"
 pkgname="$_pkgname-git"
 _pkgver=0.1.0
 pkgver=0.1.0.r14.g78351b9
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple touch gesture recognizer for Linux, built on top of the input crate."
 url="https://github.com/oknozor/roland"
 arch=("x86_64" "aarch64")
@@ -15,6 +15,7 @@ depends=(
 )
 makedepends=("cargo")
 conflicts=("$_pkgname")
+install="post.install"
 
 source=(
 	"git+$url.git"
@@ -44,10 +45,4 @@ package() {
   cd "$srcdir/$_pkgname"
   install -Dm755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
   install -Dm644 "$srcdir/${_pkgname}.service" -t "$pkgdir/usr/lib/systemd/user"
-}
-
-post_install() {
-  echo ":: To allow access to input devices, please add your user to the 'input' group:"
-  echo "   sudo usermod -a -G input <username>"
-  echo ":: You may need to log out and back in for the group changes to take effect."
 }
