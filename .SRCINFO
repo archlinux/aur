@@ -1,7 +1,7 @@
 pkgbase = python-cookietools
 	pkgdesc = Python cookietools.
-	pkgver = 0.1.4
-	pkgrel = 3
+	pkgver = 0.1.5
+	pkgrel = 1
 	url = https://pypi.org/project/python-cookietools
 	arch = any
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = python-cookietools
 	provides = python-cookietools
 	conflicts = python-cookietools
 	options = !strip
-	source = python_cookietools-0.1.4.tar.gz::https://files.pythonhosted.org/packages/source/p/python_cookietools/python_cookietools-0.1.4.tar.gz
-	sha256sums = ff98ae16c6008b95089df3c6d1c8c1f59d55c33ad62741d744f6016036b9d865
+	source = python_cookietools-0.1.5.tar.gz::https://files.pythonhosted.org/packages/source/p/python_cookietools/python_cookietools-0.1.5.tar.gz
+	sha256sums = 902418f8ce0917d66f752ba0d81f56486e1d7249ef8538ad7d6e4f3752a1c1c4
 
 pkgname = python-cookietools
