@@ -1,6 +1,6 @@
 pkgbase = goosestation-libretro
 	pkgdesc = Sony PlayStation libretro core based on goosified DuckStation
-	pkgver = 0.6.6.11443
+	pkgver = 0.6.7.11443
 	pkgrel = 1
 	url = https://codeberg.org/hueponik/goosestation-builder
 	arch = x86_64
@@ -22,10 +22,10 @@ pkgbase = goosestation-libretro
 	depends = zlib
 	depends = zstd
 	source = duckstation-7d1996827022cc557cc26539c071dd3a54e1809b.tar.gz::https://github.com/stenzek/duckstation/archive/7d1996827022cc557cc26539c071dd3a54e1809b.tar.gz
-	source = goosify-v0.6.6.11443.sh::https://codeberg.org/hueponik/goosestation-builder/raw/tag/v0.6.6.11443/goosify.sh
-	source = goosestation_libretro-v0.6.6.11443.info::https://codeberg.org/hueponik/goosestation-builder/raw/tag/v0.6.6.11443/goosestation_libretro.info
+	source = goosify-v0.6.7.11443.sh::https://codeberg.org/hueponik/goosestation-builder/raw/tag/v0.6.7.11443/goosify.sh
+	source = goosestation_libretro-v0.6.7.11443.info::https://codeberg.org/hueponik/goosestation-builder/raw/tag/v0.6.7.11443/goosestation_libretro.info
 	sha256sums = 6c2c242c7b3d0d85c7cebd0118b1e1ac4e989ade116f41b102ea42429e563fe8
-	sha256sums = 2901d87084be03bf15a35ee882e25e7bbc97cdf9ea452a02e0d89988e03d3641
-	sha256sums = 974f9b9aee21f22c91fc7e46910232ef234e1345cfccfb11b1949554555eb8ca
+	sha256sums = 9e830c42a86012a9f6c4dd9a47b8e6f62658cb531c304d4b17505a82c43889a2
+	sha256sums = dd65dc2de0b1fc6c38f1f0c0e9ec8922c0623a8461a3fb892d659c2a64dde372
 
 pkgname = goosestation-libretro
