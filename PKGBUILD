@@ -1,6 +1,6 @@
 pkgname=halley-git
 _pkgname=halley
-pkgver=r428.b1567b7
+pkgver=r616.2a9e55c
 pkgrel=1
 pkgdesc="Spatial Wayland compositor built around infinite workspace navigation"
 arch=('x86_64')
@@ -14,6 +14,8 @@ depends=(
   'mesa'
   'libdisplay-info'
   'libdrm'
+  'pipewire'
+  'xdg-desktop-portal'
 )
 makedepends=(
   'git'
@@ -23,6 +25,7 @@ makedepends=(
 )
 optdepends=(
   'xwayland-satellite: X11 application support'
+  'xdg-desktop-portal-gtk: fallback backend for common file/dialog portals'
   'fuzzel: launcher bound to Super+d by default'
   'ghostty: terminal for the default open-terminal binding'
   'kitty: terminal for the default open-terminal binding'
@@ -44,7 +47,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
   export CARGO_TARGET_DIR=target
-  cargo build --release --locked -p halley -p halley-cli
+  cargo build --release --locked -p halley -p halley-cli -p halley-portal
 }
 
 check() {
@@ -61,11 +64,29 @@ package() {
   install -Dm755 "target/release/halleyctl" \
     "$pkgdir/usr/bin/halleyctl"
 
+  install -Dm755 "target/release/xdg-desktop-portal-halley" \
+    "$pkgdir/usr/bin/xdg-desktop-portal-halley"
+
   install -Dm755 "packaging/wayland-sessions/halley-session" \
     "$pkgdir/usr/bin/halley-session"
 
   install -Dm644 "packaging/wayland-sessions/halley.desktop" \
     "$pkgdir/usr/share/wayland-sessions/halley.desktop"
+
+  install -Dm644 "packaging/dbus-1/services/org.freedesktop.impl.portal.desktop.halley.service" \
+    "$pkgdir/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.halley.service"
+
+  install -Dm644 "packaging/xdg-desktop-portal/portals/halley.portal" \
+    "$pkgdir/usr/share/xdg-desktop-portal/portals/halley.portal"
+
+  install -Dm644 "packaging/xdg-desktop-portal/halley-portals.conf" \
+    "$pkgdir/usr/share/xdg-desktop-portal/halley-portals.conf"
+
+  install -Dm644 "packaging/systemd-user/halley.service" \
+    "$pkgdir/usr/lib/systemd/user/halley.service"
+
+  install -Dm644 "packaging/systemd-user/halley-shutdown.target" \
+    "$pkgdir/usr/lib/systemd/user/halley-shutdown.target"
 
   if [[ -f LICENSE ]]; then
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
