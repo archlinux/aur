@@ -1,7 +1,7 @@
 # Maintainer: OpenLyst <https://openlyst.ink>
 # Version and download URL from Openlyst API: https://openlyst.ink/docs/api
 pkgname=doudou-bin
-pkgver=19.0.0
+pkgver=20.0.0
 pkgrel=1
 pkgdesc="Music player for self-hosted services"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=()
 provides=('doudou')
 conflicts=('doudou')
 options=('!strip')
-source=("doudou-bin-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-99/doudou-19.0.0-2026-06-04-linux-x64.zip")
+source=("doudou-bin-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-124/doudou-20.0.0-2026-06-20-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
