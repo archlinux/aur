@@ -1,9 +1,9 @@
 # Maintainer: NewYearPrism
 
-_ggml_version=0.15.1
+_ggml_version=0.15.2
 pkgname=ggml-cuda
 pkgver=${_ggml_version}
-pkgrel=2
+pkgrel=1
 pkgdesc='CUDA backend for ggml'
 arch=(x86_64)
 url='https://github.com/ggml-org/ggml'
