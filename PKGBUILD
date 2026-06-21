@@ -3,8 +3,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonicde-meta
-pkgver=6.6
-pkgrel=7
+pkgver=6.7
+pkgrel=1
 pkgdesc='Meta package to install SonicDE, an X11-focused fork of KDE'
 arch=(any)
 license=(None)

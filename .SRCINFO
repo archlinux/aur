@@ -1,7 +1,7 @@
 pkgbase = sonicde-meta
 	pkgdesc = Meta package to install SonicDE, an X11-focused fork of KDE
-	pkgver = 6.6
-	pkgrel = 7
+	pkgver = 6.7
+	pkgrel = 1
 	url = https://github.com/Sonic-DE
 	arch = any
 	license = None
