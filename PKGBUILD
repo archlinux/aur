@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
-pkgver=r161.6df5784
-pkgrel=2
+pkgver=r175.89f9a62
+pkgrel=1
 pkgdesc="Shorin Niri Desktop Environment"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-niri"
@@ -45,7 +45,7 @@ optdepends=(
 makedepends=('git')
 
 source=(
-    "git+https://github.com/SHORiN-KiWATA/shorin-niri.git"
+    "git+https://github.com/SHORiN-KiWATA/shorin-niri.git#branch=niri-shorin-fork"
 )
 sha256sums=('SKIP')
 

@@ -1,7 +1,7 @@
 pkgbase = shorin-niri-git
 	pkgdesc = Shorin Niri Desktop Environment
-	pkgver = r161.6df5784
-	pkgrel = 2
+	pkgver = r175.89f9a62
+	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/shorin-niri
 	arch = any
 	license = GPL
@@ -108,7 +108,7 @@ pkgbase = shorin-niri-git
 	optdepends = rime-ice-git: Rime dict
 	optdepends = rime-wubi: Rime wubi
 	optdepends = rime-llm-translator-git: Rime LLM translator
-	source = git+https://github.com/SHORiN-KiWATA/shorin-niri.git
+	source = git+https://github.com/SHORiN-KiWATA/shorin-niri.git#branch=niri-shorin-fork
 	sha256sums = SKIP
 
 pkgname = shorin-niri-git
