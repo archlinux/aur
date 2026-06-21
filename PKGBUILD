@@ -1,28 +1,34 @@
-# Maintainer: João Vitor S. Anjos <jvanjos at protonmail dot com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: João Vitor S. Anjos <jvanjos at protonmail dot com>
 
-pkgname=rexi
-pkgver=1.2.0
+pkgauthor="royreznik"
+pkgname="rexi"
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Terminal UI for Regex Testing"
+
 arch=('any')
-url="https://github.com/royreznik/rexi"
 license=('MIT')
-depends=('python-typer' 'python-textual' 'python-colorama')
+url="https://github.com/${pkgauthor}/${pkgname}"
+
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core')
+depends=('python' 'python-textual' 'python-colorama' 'python-typer')
+
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('a0221745dcb54925451b38614a2325c9ff35e53eb298a05f3d7b1cba521a587ceedd8914905530aa6e810e9f73de656fad9922b51361f676e3bfed8869cdb0ed')
+sha512sums=('ef7e7adcd51b3f23ec0e5dd64c9fec1767e33e53bfa4421fc193f85930c334125c9093e5ff88304f9a0384a112dbbaba756cc9fb667d4ff3974654aa45ac66df')
 
 build() {
-  cd ${pkgname}-${pkgver}
-  python -m build --wheel --no-isolation
+	cd ${pkgname}-${pkgver}
+
+	python -m build --wheel --no-isolation
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
-  python -m installer --destdir="$pkgdir" dist/*.whl
+	cd ${pkgname}-${pkgver}
 
-  install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}
+	python -m installer --destdir="${pkgdir}" dist/*.whl
+
+	install -Dm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
+
+	install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
-
-# vim: ts=2 sw=2 et:
-

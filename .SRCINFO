@@ -1,6 +1,6 @@
 pkgbase = rexi
 	pkgdesc = Terminal UI for Regex Testing
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/royreznik/rexi
 	arch = any
@@ -9,10 +9,11 @@ pkgbase = rexi
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-poetry-core
-	depends = python-typer
+	depends = python
 	depends = python-textual
 	depends = python-colorama
-	source = rexi-1.2.0.tar.gz::https://github.com/royreznik/rexi/archive/refs/tags/v1.2.0.tar.gz
-	sha512sums = a0221745dcb54925451b38614a2325c9ff35e53eb298a05f3d7b1cba521a587ceedd8914905530aa6e810e9f73de656fad9922b51361f676e3bfed8869cdb0ed
+	depends = python-typer
+	source = rexi-1.2.1.tar.gz::https://github.com/royreznik/rexi/archive/refs/tags/v1.2.1.tar.gz
+	sha512sums = ef7e7adcd51b3f23ec0e5dd64c9fec1767e33e53bfa4421fc193f85930c334125c9093e5ff88304f9a0384a112dbbaba756cc9fb667d4ff3974654aa45ac66df
 
 pkgname = rexi
