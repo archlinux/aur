@@ -1,0 +1,13 @@
+[Unit]
+Description=ClashRS Daemon, Another Clash Kernel.
+After=network.target NetworkManager.service systemd-networkd.service iwd.service
+
+[Service]
+Type=exec
+CapabilityBoundingSet=cap_net_admin
+AmbientCapabilities=cap_net_admin
+Restart=on-abort
+ExecStart=/usr/bin/clash-rs -d /etc/clash-rs
+
+[Install]
+WantedBy=multi-user.target

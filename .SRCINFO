@@ -1,19 +1,25 @@
 pkgbase = clash-rs
 	pkgdesc = custom protocol network proxy
-	pkgver = 0.7.7
+	pkgver = 0.10.7
 	pkgrel = 1
 	url = https://github.com/Watfaq/clash-rs
-	arch = any
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	arch = i686
 	license = Apache-2.0
-	makedepends = cargo-nightly
-	makedepends = git
-	depends = gcc-libs
-	depends = glibc
-	depends = xz
-	depends = protobuf
-	provides = clash-rs
+	makedepends = cargo
+	depends = libgcc
+	depends = libzstd.so
 	options = !lto
-	source = git+https://github.com/Watfaq/clash-rs.git#tag=v0.7.7
-	sha256sums = be93350a4d89b406dc94a577ff3330557313f3d520635d2172018d3a6bd8ab46
+	backup = etc/clash-rs/config.yaml
+	source = clash-rs-0.10.7.tar.gz::https://github.com/Watfaq/clash-rs/archive/v0.10.7.tar.gz
+	source = clash-rs.service
+	source = clash-rs@.service
+	source = config.yaml
+	sha256sums = d2e6a0e3ebde677e66757acf59f3c55c2a20de805cb8be4c7c14f574cec1044b
+	sha256sums = 64c1b08fe40af101b5a113212e28aec7e91f63424bec85d50efc5b0fc9ce62ce
+	sha256sums = c1629d3f5b48053616141076ad8d21031fbca84a352b123d9e3c5bad6406f4a7
+	sha256sums = d6f1782c0a57591ef6b8c4c898fc7a883363ec45742ae41eee8b91eb68d90f05
 
 pkgname = clash-rs

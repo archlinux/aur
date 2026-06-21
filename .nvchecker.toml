@@ -1,0 +1,4 @@
+[clash-rs]
+source = "git"
+git = "https://github.com/Watfaq/clash-rs.git"
+prefix = "v"
