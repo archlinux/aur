@@ -1,6 +1,6 @@
 pkgbase = pudu-git
 	pkgdesc = Minimal tiling Wayland compositor built on top of wlroots
-	pkgver = r0.1.g1123c1d
+	pkgver = 0.1.2.r0.gcbf0fc4
 	pkgrel = 1
 	url = https://github.com/vodkanull/pudu
 	arch = x86_64
