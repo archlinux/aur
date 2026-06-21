@@ -1,6 +1,6 @@
 pkgbase = shelly-bin
 	pkgdesc = Shelly: A Modern Arch Package Manager (prebuilt binary)
-	pkgver = 2.4.0.2
+	pkgver = 2.4.0.3
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = shelly-bin
 	provides = shelly
 	conflicts = shelly
 	conflicts = shelly-git
-	source = Shelly-ALPM-linux-x64-2.4.0.2.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v2.4.0.2/Shelly-ALPM-linux-x64.tar.gz
-	sha256sums = 7f61546a6deb55676e8316c1fd7b8f28a4ecab9b1203333e2bcef036803e56b0
+	source = Shelly-ALPM-linux-x64-2.4.0.3.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v2.4.0.3/Shelly-ALPM-linux-x64.tar.gz
+	sha256sums = d4de02c6ae36c2f52fdf8cf9e540ed3c0dee4251a01761677cf6f31394f93bf1
 
 pkgname = shelly-bin
