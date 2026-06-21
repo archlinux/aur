@@ -1,17 +1,17 @@
 pkgbase = ggml-hip
 	pkgdesc = HIP/ROCm backend for ggml
-	pkgver = 0.15.1
+	pkgver = 0.15.2
 	pkgrel = 1
 	url = https://github.com/ggml-org/ggml
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = ggml-src=0.15.1
+	makedepends = ggml-src=0.15.2
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = git
 	makedepends = rocm-hip-sdk
-	depends = ggml=0.15.1
+	depends = ggml=0.15.2
 	depends = glibc
 	depends = libgcc
 	depends = hip-runtime-amd
