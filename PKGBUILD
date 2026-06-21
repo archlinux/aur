@@ -128,6 +128,7 @@ package_dotnet-sdk-9.0() {
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   bsdtar -xf dotnet/artifacts/assets/Release/dotnet-sdk-${pkgver%.*.sdk*}.${pkgver#*sdk}-arch-*.tar.gz -C "${pkgdir}"/usr/share/dotnet/ --no-same-owner sdk sdk-manifests templates
+  touch "${pkgdir}"/usr/share/dotnet/metadata/workloads/${pkgver%.*.sdk*}.${pkgver#*.sdk}/userlocal
   ln -s dotnet-host "${pkgdir}"/usr/share/licenses/dotnet-sdk-9.0
 }
 
