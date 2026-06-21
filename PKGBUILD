@@ -2,11 +2,11 @@
 
 pkgname=wol-rs
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Wake up remote hosts with Wake On LAN magic packets'
 arch=('i686' 'x86_64')
 url="https://codeberg.org/swsnr/wol.rs"
-license=('MPL-2.0')
+license=('EUPL-1.2')
 depends=()
 conflicts=('wol')
 makedepends=('rust' 'cargo' 'git' 'openssh')
@@ -47,4 +47,5 @@ package() {
     install -Dm644 wol.1.gz "${pkgdir}/usr/share/man/man1/wol.1.gz"
     install -Dm644 complete.zsh "${pkgdir}/usr/share/zsh/site-functions/_wol"
     install -Dm644 complete.fish "${pkgdir}/usr/share/fish/vendor_completions.d/wol.fish"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
