@@ -4,11 +4,11 @@
 # Contributor: Kevin Brubeck Unhammer <unhammer@fsfe.org>
 pkgname=apertium
 pkgver=3.9.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Core tools (driver script, transfer, tagger, formatters) for the FOSS RBMT system Apertium"
 url="https://www.apertium.org/"
 license=('GPL2')
-makedepends=('pkgconf' 'gcc' 'make' 'autogen' 'flex' 'autoconf' 'automake' 'libtool' 'zlib' 'utf8cpp')
+makedepends=('pkgconf' 'gcc' 'make' 'autogen' 'flex' 'autoconf' 'automake' 'libtool' 'zlib' 'utf8cpp' 'boost')
 depends=('lttoolbox>=3.7.2' 'expat' 'gawk' 'libxslt' 'pcre' 'gcc-libs' 'libxml2>=2.6.17' 'gettext' 'icu')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/apertium/apertium/archive/refs/tags/v${pkgver}.tar.gz")
