@@ -3,11 +3,11 @@
 
 pkgname=opentubex
 _pkgname=OpenTubeX
-pkgver=0.25.4
+pkgver=0.25.5
 _pkgver="$pkgver-beta"
-pkgrel=2
+pkgrel=0
 pkgdesc='A fork of the open source desktop YouTube player FreeTube with additional features'
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('any')
 url="https://github.com/OpenTubeX/OpenTubeX"
 license=('AGPL-3.0-or-later')
 depends=('electron41')
@@ -15,7 +15,7 @@ makedepends=('git' 'npm' 'pnpm')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}-beta.tar.gz"
         opentubex.desktop
         opentubex.sh)
-sha256sums=('483b422127d572ea94d1d91e2bddea7dac9d4a1a91cacef730e6d6cf130dea1c'
+sha256sums=('ce987df98318118dd642016a17d73e4deda95255f4a2f9ffe56e9b65a965a260'
             '63154cb6dd377c8d70714bb858405f95d88a849815d86bf7cf1b6b344cc54b5d'
             '0f70946cec21a754755120e37c7f7d69e48c1c87a9c0d6e5f71363b1cafaf4cb')
 
