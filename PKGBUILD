@@ -16,7 +16,7 @@ optdepends=(
 )
 install=hyprspaces-tools.install
 source=("hyprspaces-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1bd1159358de68a1796f38a704285afa39dbac96141397c263f42be06bbcb920')
+sha256sums=('990b88a99cf3166ba6417bc21b7319630165140e55c69f06eab10760f1ebae30')
 
 package() {
   cd "${srcdir}/hyprspaces-${pkgver}"
