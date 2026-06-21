@@ -6,7 +6,7 @@ pkgname=(
   'cecli'
 )
 _gitpkgname=cecli
-pkgver=0.100.1
+pkgver=0.100.8
 pkgrel=1
 pkgdesc='AI pair programming in your terminal - dwash96 fork of AIDER with TUI and MCP support'
 arch=('any')
@@ -15,6 +15,8 @@ license=('Apache-2.0')
 _depends=(
   'litellm'
   'python'
+  'python-json_repair'
+  'python-ngram'
   'python-beautifulsoup4'
   'python-configargparse'
   'python-diff-match-patch'
@@ -90,7 +92,7 @@ source=(
   'fix-build-from-tarball.patch'
 )
 
-sha512sums=('87c8fb0ef675ef7d8fd7a4f4568ceefc799b1487404392a3acd19b276c9d505b24965f0abc13b573722444358bcd02713c143b2b21d6091ca528f90c5abd18a3'
+sha512sums=('5f714157913585e932773d221db0373318944f60dae0209a42af229d48586863223cdd592a5fe70277db5fab654de833be412f76c53713a643687ce0283cb235'
             '81a4593740fe643bea577d011d427ad962b0f46a9b2121e0f757606af73a097343d31e356ab7d2ad4a9c83e8e713f5bafadba7284fd1a81b30aa75b231e86029'
             '523aed2029146d079de44db15152833a385ff331ca6bb19230cbc92d5abed1a33e4a132a34150ead213a19c7eb715c564b480c8943fd03216400aa6954770d8c')
 
@@ -138,8 +140,11 @@ build() {
   python -m build --wheel --no-isolation
 
   echo >&2 'Generating shell completions'
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
+  if [ ! -d test-env ]; then
+      echo "test-env not found, creating ..."
+      python -m venv --system-site-packages test-env
+      test-env/bin/python -m installer dist/*.whl
+  fi;
   mkdir -p completions/{bash,zsh}
   "test-env/bin/${_gitpkgname}" --shell-completions bash \
     > 'completions/bash/cecli'
