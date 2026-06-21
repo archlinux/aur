@@ -1,6 +1,6 @@
 pkgbase = deadsync
 	pkgdesc = ITG/StepMania engine with Vulkan/OpenGL backends, focused on perfect sync and competitive-level performance
-	pkgver = 0.4.1000
+	pkgver = 0.4.1375
 	pkgrel = 1
 	url = https://github.com/pnn64/deadsync
 	install = deadsync.install
@@ -21,7 +21,7 @@ pkgbase = deadsync
 	options = !lto
 	options = !debug
 	options = !strip
-	source = deadsync-0.4.1000.tar.gz::https://github.com/pnn64/deadsync/archive/refs/tags/v0.4.1000.tar.gz
-	sha256sums = 6a2aa34b57527db2ef90a3f643a2977563159b3b2eff3e9c34c48d062960e5df
+	source = deadsync-0.4.1375.tar.gz::https://github.com/pnn64/deadsync/archive/refs/tags/v0.4.1375.tar.gz
+	sha256sums = e80dd65bd145f48cd94426667ffa2ae3bba884f8afe8098feaccba10eb2b7a35
 
 pkgname = deadsync
