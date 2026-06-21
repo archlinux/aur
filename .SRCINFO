@@ -1,0 +1,18 @@
+pkgbase = tmux-expose
+	pkgdesc = Mission Control-style tmux session switcher with live terminal previews
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/cesarferreira/tmux.expose
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	depends = tmux
+	provides = tmux-expose
+	conflicts = tmux-expose
+	source = tmux-expose-0.6.0.crate::https://crates.io/api/v1/crates/tmux-expose/0.6.0/download
+	sha256sums = 1a17b4d0035ecde1cf6c6ca208b8d67fc285eac22db813ab492f6c4d8731c817
+
+pkgname = tmux-expose
