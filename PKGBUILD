@@ -1,8 +1,8 @@
 # Maintainer: NewYearPrism
 
-_llama_cpp_version=9646
-_ggml_version=0.15.1
-_llama_cpp_sha256sum=aeaea2100ac1649d19a8a3bc6eee662c1b651a1440b11e04b75b2ae140ce3ca7
+_llama_cpp_version=9748
+_ggml_version=0.15.2
+_llama_cpp_sha256sum=3f2b25fb37948e82f7198a8ed1b695a10f0ab15e565db42a13420c871deb5ce3
 pkgname=llama.cpp-ggml
 pkgver=0.0.0.b${_llama_cpp_version}
 pkgrel=1
@@ -12,6 +12,7 @@ url='https://github.com/ggml-org/llama.cpp'
 license=('MIT')
 depends=(
     "ggml=${_ggml_version}"
+    ggml-cpu
     glibc
     libstdc++
     libgcc
@@ -25,7 +26,6 @@ makedepends=(
     npm
 )
 optdepends=(
-    'ggml-cpu: CPU inference'
     'ggml-vulkan: Vulkan inference'
     'ggml-cuda: CUDA inference'
     'ggml-hip: HIP/ROCm inference'
