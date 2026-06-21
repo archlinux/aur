@@ -1,7 +1,7 @@
 # Maintainer: vodkanull <vodkanull@proton.me>
 
 pkgname=pudu-git
-pkgver=r0.1.g1123c1d
+pkgver=0.1.2.r0.gcbf0fc4
 pkgrel=1
 pkgdesc="Minimal tiling Wayland compositor built on top of wlroots"
 arch=('x86_64')
@@ -27,5 +27,6 @@ build() {
 package() {
   cd "$srcdir/$pkgname/src"
   install -Dm755 build/pudu "$pkgdir/usr/bin/pudu"
+  mkdir -p "$pkgdir/usr/share/wayland-sessions"
   sed 's|/usr/local/bin/pudu|/usr/bin/pudu|' pudu.desktop > "$pkgdir/usr/share/wayland-sessions/pudu.desktop"
 }
