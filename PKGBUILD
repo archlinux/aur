@@ -1,6 +1,6 @@
 pkgname=mihomo-party-bin
 _pkgname=mihomo-party
-pkgver=1.9.5
+pkgver=1.9.6
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source=("${_pkgname}.sh")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/clash-party-linux-${pkgver}-amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/clash-party-linux-${pkgver}-arm64.deb")
 sha256sums=('242609b1259e999e944b7187f4c03aacba8134a7671ff3a50e2e246b4c4eff48')
-sha256sums_x86_64=("81362c50a66a9676bcab6e3cdf00d29898e323793507d1e1ba3af490ad2161a4")
-sha256sums_aarch64=("a9fce8353875baefe80cfffbd0000c58dedfe84a22e9d9d95f1f7d51d5839d61")
+sha256sums_x86_64=("9fc15417432eafa51dad21217f557c5c4b0292f814e76ffdc6a453a451f581ea")
+sha256sums_aarch64=("eb101ac31778280fe38e94abefc919c899a602dcd042f96e957dd6dabcdd80ae")
 
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
