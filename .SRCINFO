@@ -1,6 +1,6 @@
 pkgbase = cosmic-term-git
 	pkgdesc = COSMIC Terminal Emulator
-	pkgver = 1.0.6.r6.ga9c9d56
+	pkgver = 1.0.16.r1.g18b4450
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-term
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = cosmic-term-git
 	depends = cosmic-icons-git
 	depends = libgcc
 	depends = libxkbcommon
+	depends = wayland
 	provides = cosmic-term
 	provides = cosmic-terminal
 	conflicts = cosmic-term

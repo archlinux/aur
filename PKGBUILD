@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Kyuzial <kyuzial@protonmail.com>
 pkgname=cosmic-term-git
-pkgver=1.0.6.r6.ga9c9d56
+pkgver=1.0.16.r1.g18b4450
 pkgrel=1
 pkgdesc="COSMIC Terminal Emulator"
 arch=('x86_64' 'aarch64')
@@ -11,6 +11,7 @@ depends=(
   'cosmic-icons-git'
   'libgcc'
   'libxkbcommon'
+  'wayland'
 )
 makedepends=(
   'cargo'
@@ -37,7 +38,7 @@ prepare() {
   patch -Np1 -i ../lto.patch
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc --print host-tuple)"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
