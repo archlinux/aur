@@ -9,7 +9,7 @@
 _pkgname=discord
 _electron=electron
 pkgname=${_pkgname}_arch_electron
-pkgver=0.0.135
+pkgver=1.0.143
 pkgrel=1
 epoch=1
 pkgdesc="Discord using system provided ${_electron} for increased security and performance"
@@ -21,17 +21,28 @@ license=('custom')
 options=('!strip')
 install="$pkgname.install"
 depends=("${_electron}" 'libxss')
-makedepends=('asar' 'curl')
+makedepends=('asar')
 optdepends=('libpulse: Pulseaudio support'
             'xdg-utils: Open files'
             'python-pyelftools: Required for Krisp patcher'
             'python-capstone: Required for Krisp patcher')
 source=("https://dl.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+        'LICENSE.html::https://discord.com/terms'
+        'OSS-LICENSES.html::https://discord.com/licenses'
         'discord-launcher.sh'
         'krisp-patcher.py') # original: https://github.com/sersorrel/sys/blob/main/hm/discord/krisp-patcher.py
-sha512sums=('7be159b69fe322939fccfbe82c2c15b0dffb2ee2106a19824d7cc1ccb6b5f87b90446ba1915dfb81bbc59dab56561c104645d969acca5e9a95ac5b4c7afbd2ba'
+sha512sums=('9fca5b47061e9b79d991ad27f181f7472efadc5b8c168932dad8e8bf7f389902ea3d3ded676ec0b17bf97a17db0f5e27d4be6a6a630b580d8ce96513034df0e2'
+            '71db6a67ef3d42cd6a6b2e908e857b1eb38118a2aaeb3adfe44e5faba8796d0df134638ec1cc302a88256ab8e8185fd6371714ca2d95a667606d66b94ddff123'
+            'cc6577b22cdc448e021c14a29ef01dc1f6470bb46770644d9017a9299f20d3ae5befe29290adec240ce2a4f65eede6cf10bd098aa67cd991063d2ee0e08e8928'
             '5e2b4bc955606c23d3f788d73e81fbd6e6278b618ad85c5a3edc722428bbb6460c5dc874ad9b6ab893f658e669e1a0aa1a0d0830ddbfc019d01596425903dd57'
             '42cef68c1f7d574b4fbe859a4dc616e8994c7d16f62bcae3ff1f88e1edc58ac37b39c238d7defa9c97ceda417fcd6224cf0a0fd2608b8d18d0877e3c1befa59c')
+
+# Skip "LICENSE.html" and "OSS-LICENSES.html" files hashes as they are unstable
+# Since "updpkgsums"/"pkgctl version upgrade" overwrite the checksum array with
+# literal hashes, set them to SKIP with indexed assignments (pacman-contrib#119)
+# https://gitlab.archlinux.org/pacman/pacman-contrib/-/issues/119
+sha512sums[1]='SKIP'
+sha512sums[2]='SKIP'
 
 prepare() {
   # prepare launcher script
@@ -42,10 +53,6 @@ prepare() {
 
   # fix the .desktop file
   sed -i -e "s|Exec=.*|Exec=/usr/bin/${_pkgname}|" ${_pkgname^}/$_pkgname.desktop
-
-  # create the license files
-  curl -o "${srcdir}/LICENSE.html" https://discord.com/terms
-  curl -o "${srcdir}/OSS-LICENSES.html" https://discord.com/licenses
 }
 
 build() {
