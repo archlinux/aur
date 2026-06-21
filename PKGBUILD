@@ -1,12 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-screenshot-git
-pkgver=1.0.0.alpha.5.1.r0.g10a564d
+pkgver=1.0.16.r0.g2020fb2
 pkgrel=1
 pkgdesc="Utility for capturing screenshots via XDG Desktop Portal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-screenshot"
 license=('GPL-3.0-only')
-depends=('xdg-desktop-portal-cosmic-git')
+depends=(
+  'cosmic-icons-git'
+  'xdg-desktop-portal-cosmic-git'
+)
 makedepends=(
   'cargo'
   'git'
@@ -26,7 +29,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
