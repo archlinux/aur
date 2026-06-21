@@ -1,6 +1,6 @@
 pkgbase = rosec-provider-bitwarden-pm-bin
 	pkgdesc = Bitwarden Password Manager provider for rosec (sync, SSH keys) (prebuilt)
-	pkgver = 0.0.30
+	pkgver = 0.0.31
 	pkgrel = 1
 	url = https://github.com/jmylchreest/rosec
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = rosec-provider-bitwarden-pm-bin
 	depends = rosec
 	provides = rosec-provider-bitwarden-pm
 	conflicts = rosec-provider-bitwarden-pm
-	source = rosec-provider-bitwarden-pm-0.0.30.wasm.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.30/rosec-provider-bitwarden-pm-0.0.30.wasm.tar.gz
-	sha256sums = 60aaf29662ff370f62261f53ed6a96907af786877afed51ccfc1e7d919eb90c0
+	source = rosec-provider-bitwarden-pm-0.0.31.wasm.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.31/rosec-provider-bitwarden-pm-0.0.31.wasm.tar.gz
+	sha256sums = a3c06be416c629b486de40084712dc4b313de4a65209277ed4197d2618a3b6fd
 
 pkgname = rosec-provider-bitwarden-pm-bin
