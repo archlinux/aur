@@ -3,7 +3,7 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=9.50
-pkgrel=1
+pkgrel=2
 epoch=65
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' )
@@ -30,7 +30,6 @@ desktops=(
         "JLinkRTTClient.desktop"
         "JLinkRTTLogger.desktop"
         "JLinkRTTViewer.desktop"
-        "JLinkSTM32.desktop"
         "JLinkSWOViewerExe.desktop"
         "JMemExe.desktop"
         "JRunExe.desktop"
@@ -59,7 +58,6 @@ md5sums=("a57d93b791581c1f36e4c672303bb85d"
          "3699ccea9d54cdaf42736447a77597e5"
          "e87c6d996d3b688ee1152cb82f95b4de"
          "413a5481a768a5791b8b1babdc7a367d"
-         "8a42be169cf95f7cfe3017a435647492"
          "82c05490cff9899f637b9e6c95d86e47"
          "78a5e5dc623aa9e9c1ffe3974b084dfb"
          "6661cbd2790e4168cd835e50a2fb4e1d"
@@ -112,8 +110,8 @@ package(){
 
     # Bulk copy everything
     if [ ${CARCH} = "armv7h" ]; then
-        cp --preserve=mode -r J* DDC* DevProExe README.txt GDBServer Firmwares lib* "${pkgdir}/opt/SEGGER/JLink"
-    else cp --preserve=mode -r J* Doc DDC* DevProExe Samples ETC README.txt Firmwares GDBServer lib* "${pkgdir}/opt/SEGGER/JLink"
+        cp --preserve=mode -r J* DDC* DevProExe Script README.txt GDBServer Firmwares lib* "${pkgdir}/opt/SEGGER/JLink"
+    else cp --preserve=mode -r J* Doc DDC* DevProExe Script Samples ETC README.txt Firmwares GDBServer lib* "${pkgdir}/opt/SEGGER/JLink"
     fi
     if [ ${CARCH} = "x86_64" ]; then
         cp --preserve=mode -r x86 "${pkgdir}/opt/SEGGER/JLink"
