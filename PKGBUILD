@@ -12,7 +12,7 @@ source=(
   "70-ds5dongle.rules::https://raw.githubusercontent.com/loteran/DS5Dongle/master/config-app/70-ds5dongle.rules"
   "${pkgname}.desktop::https://raw.githubusercontent.com/loteran/DS5Dongle/master/config-app/${pkgname}.desktop"
 )
-sha256sums=('PLACEHOLDER'
+sha256sums=('cf5d9cffbc9088f302ed38332afa4c84912be65b5ed4bceb78135921bdfd3a0b'
             'SKIP'
             'SKIP')
 
