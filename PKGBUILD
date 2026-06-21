@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-player-git
-pkgver=1.0.0.alpha.6.r5.g56678a4
+pkgver=1.0.16.r0.gc0b1bda
 pkgrel=1
 pkgdesc="WIP COSMIC media player"
 arch=('x86_64' 'aarch64')
@@ -32,7 +32,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
