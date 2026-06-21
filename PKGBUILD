@@ -3,7 +3,7 @@
 pkgname=python-aiozoneinfo
 _name=${pkgname#python-}
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to fetch zoneinfo with asyncio"
 arch=('any')
 url="https://github.com/bluetooth-devices/aiozoneinfo"
