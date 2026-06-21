@@ -1,7 +1,7 @@
 pkgbase = clashtui-bin
 	pkgdesc = Mihomo (Clash.Meta) TUI Client
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JohanChane/clashtui
 	install = post.install
 	arch = x86_64
