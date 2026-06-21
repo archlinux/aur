@@ -1,9 +1,10 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Maintainer: Neroices <git@slce.moe>
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _author=BKSalman
 _basename=ytdlp-gui
 pkgname=${_basename}-bin
-pkgver=3.3.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="a GUI for yt-dlp written in Rust"
 arch=('x86_64')
@@ -20,9 +21,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
     "CHANGELOG-${pkgver}.md::${_urlraw}/CHANGELOG.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_basename}_${pkgver}-${pkgrel}_amd64.deb")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-    'fc06ff461f6c1f5dcaa794254355b5d1009d51f88835a6b5f62f8a587e01c90c'
-    '7799191a616d5786d2ec28df02f48b78e84f9df0aaa021696f085527d4617180')
-sha256sums_x86_64=('721b7e3ef700cb95fd4ca2148f5dcc4c6d0194df8c2593bc170e41cb85dc6007')
+            'fc06ff461f6c1f5dcaa794254355b5d1009d51f88835a6b5f62f8a587e01c90c'
+            '55572893d05ab570938fbf8039f67e44b8d63b15e7fa86cac35a79dcb0738596')
+sha256sums_x86_64=('adabaea62b73b5c4eec9b5271f8e9bfc97fa0f6118ac778556046c4bf1c5c2cd')
 
 package() {
     cd "${srcdir}" || return 1

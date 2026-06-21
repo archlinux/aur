@@ -1,6 +1,6 @@
 pkgbase = ytdlp-gui-bin
 	pkgdesc = a GUI for yt-dlp written in Rust
-	pkgver = 3.3.0
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = https://github.com/BKSalman/ytdlp-gui
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = ytdlp-gui-bin
 	depends = ffmpeg
 	provides = ytdlp-gui
 	conflicts = ytdlp-gui
-	source = LICENSE-3.3.0::https://raw.githubusercontent.com/BKSalman/ytdlp-gui/v3.3.0/LICENSE
-	source = README-3.3.0.md::https://raw.githubusercontent.com/BKSalman/ytdlp-gui/v3.3.0/README.md
-	source = CHANGELOG-3.3.0.md::https://raw.githubusercontent.com/BKSalman/ytdlp-gui/v3.3.0/CHANGELOG.md
+	source = LICENSE-3.4.1::https://raw.githubusercontent.com/BKSalman/ytdlp-gui/v3.4.1/LICENSE
+	source = README-3.4.1.md::https://raw.githubusercontent.com/BKSalman/ytdlp-gui/v3.4.1/README.md
+	source = CHANGELOG-3.4.1.md::https://raw.githubusercontent.com/BKSalman/ytdlp-gui/v3.4.1/CHANGELOG.md
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 	sha256sums = fc06ff461f6c1f5dcaa794254355b5d1009d51f88835a6b5f62f8a587e01c90c
-	sha256sums = 7799191a616d5786d2ec28df02f48b78e84f9df0aaa021696f085527d4617180
-	source_x86_64 = https://github.com/BKSalman/ytdlp-gui/releases/download/v3.3.0/ytdlp-gui_3.3.0-1_amd64.deb
-	sha256sums_x86_64 = 721b7e3ef700cb95fd4ca2148f5dcc4c6d0194df8c2593bc170e41cb85dc6007
+	sha256sums = 55572893d05ab570938fbf8039f67e44b8d63b15e7fa86cac35a79dcb0738596
+	source_x86_64 = https://github.com/BKSalman/ytdlp-gui/releases/download/v3.4.1/ytdlp-gui_3.4.1-1_amd64.deb
+	sha256sums_x86_64 = adabaea62b73b5c4eec9b5271f8e9bfc97fa0f6118ac778556046c4bf1c5c2cd
 
 pkgname = ytdlp-gui-bin
