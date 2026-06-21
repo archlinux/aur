@@ -1,7 +1,7 @@
 # Maintainer: NewYearPrism
 
-_ggml_version=0.15.1
-_ggml_sha256sum=b2fd615a552c0aeba35be361fd7e59c55623c94bffe5ca1acc5162e5d98e15ec
+_ggml_version=0.15.2
+_ggml_sha256sum=298e958817a126c44bb8e97c97d5d53d00bd15eca22bebf805f278223fe29e07
 pkgname=ggml
 pkgver=${_ggml_version}
 pkgrel=1
