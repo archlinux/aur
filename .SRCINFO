@@ -1,6 +1,6 @@
 pkgbase = cmst-git
 	pkgdesc = QT GUI for Connman with system tray icon
-	pkgver = 2023.03.14
+	pkgver = 2023.03.14.r90.gbf70640
 	pkgrel = 1
 	url = https://github.com/andrew-bibb/cmst
 	arch = i686

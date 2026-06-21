@@ -2,7 +2,7 @@
 
 _pkgname=cmst
 pkgname="$_pkgname-git"
-pkgver=2023.03.14
+pkgver=2023.03.14.r90.gbf70640
 pkgrel=1
 pkgdesc='QT GUI for Connman with system tray icon'
 arch=('i686' 'x86_64' 'aarch64')
@@ -17,7 +17,7 @@ sha256sums=("SKIP")
 
 pkgver() {
     cd $_pkgname
-    git describe --tags | sed 's/cmst.//;s/-/./g'
+    git describe --tags | sed 's/cmst.//;s/-/.r/;s/-/./'
 }
 
 build() {
