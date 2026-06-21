@@ -4,13 +4,13 @@ _build=970
 _base=chromapper
 pkgname="${_base}-dev-bin"
 pkgver=0.14.970
-pkgrel=1
+pkgrel=2
 pkgdesc='Unity-based map editor for Beat Saber (binary, dev)'
 arch=(x86_64)
 url='https://github.com/Caeden117/ChroMapper/'
 license=('GPL-2.0-only')
 provides=("${_base}=${pkgver}")
-conflicts=("${_base}" "${_base}-dev" "${_base}-dev-bin")
+conflicts=("${_base}" "${_base}-dev" "${_base}-bin")
 options=(!strip)
 depends=(glibc libgcc)
 makedepends=(python3 xdelta3)
