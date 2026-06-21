@@ -30,7 +30,7 @@ source=(
 )
 md5sums=('SKIP' 'b0d81b95746c7e698c39c7df1e15ca7d')
 noextract=("${_sdkname}.tar.xz")
-options=('!strip')
+options=('!strip' '!lto')
 install="$pkgname.install"
 
 # https://github.com/tpoechtrager/cctools-port/issues/108
