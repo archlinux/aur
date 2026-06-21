@@ -1,15 +1,15 @@
 # Maintainer: nasedkinpv <nasedkinpv@users.noreply.github.com>
 pkgname=numr-git
-pkgver=0.3.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A text calculator for natural language expressions with a vim-style TUI (git version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nasedkinpv/numr"
 license=('MIT')
-depends=('gcc-libs' 'openssl')
+depends=('gcc-libs')
 makedepends=('cargo' 'git')
 provides=('numr' 'numr-cli')
-conflicts=('numr')
+conflicts=('numr' 'numr-bin')
 source=("git+https://github.com/nasedkinpv/numr.git")
 sha256sums=('SKIP')
 
