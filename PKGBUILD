@@ -9,8 +9,8 @@
 pkgname=niri-shorin-fork-git
 _pkgname=niri
 pkgver=26.04.r87.gad55ebb
-pkgrel=1
-pkgdesc="Shorin's fork of Niri. New features such as shake cursor to enlarge and magnifier"
+pkgrel=2
+pkgdesc="Niri fork with grid, cursor enlarge, magnifier, SVG cursors, SHM screencast etc."
 arch=(x86_64 aarch64)
 url="https://github.com/SHORiN-KiWATA/niri"
 license=(GPL-3.0-or-later)

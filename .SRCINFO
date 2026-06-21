@@ -1,7 +1,7 @@
 pkgbase = niri-shorin-fork-git
-	pkgdesc = Shorin's fork of Niri. New features such as shake cursor to enlarge and magnifier
+	pkgdesc = Niri fork with grid, cursor enlarge, magnifier, SVG cursors, SHM screencast etc.
 	pkgver = 26.04.r87.gad55ebb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SHORiN-KiWATA/niri
 	arch = x86_64
 	arch = aarch64
