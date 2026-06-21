@@ -1,6 +1,6 @@
 # Maintainer: byteowlz <dev@byteowlz.com>
 pkgname=sldr
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Modular markdown presentations powered by slidev"
 arch=('x86_64' 'aarch64')
