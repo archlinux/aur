@@ -1,6 +1,6 @@
 pkgname=gitmun-bin
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform Git GUI built with Tauri"
 arch=('x86_64')
 url="https://github.com/cst8t/gitmun"
@@ -28,7 +28,7 @@ install=gitmun.install
 source=("LICENSE.gitmun")
 source_x86_64=("https://download.opensuse.org/repositories/home:/cst8t:/gitmun/xUbuntu_26.04/amd64/gitmun_0.8.0-1_amd64.deb")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('7b0c6e27a8ff37eae870096130793e73facf33798d463005055a2a204df46692')
+sha256sums_x86_64=('fd50adb994c26d6c86fdfd3eaeb46eb14b8e9204eec812bfa7960d46a9830f48')
 
 package() {
   cd "${srcdir}"
