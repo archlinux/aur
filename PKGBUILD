@@ -10,12 +10,14 @@ pkgname='sd-boot'
 pkgdesc='Tools to install linux kernels via kernel-install from systemd'
 _gitname='sd-boot'
 
-pkgver="5.8.1"
+pkgver="5.9.0"
 pkgrel=1
 url="https://github.com/gene-git/sd-boot"
 
 arch=(x86_64)
 license=(GPL-2.0-or-later)
+
+options=(!strip !debug)
 
 depends=(
     dracut
@@ -51,7 +53,6 @@ checkdepends=(
 )
 
 backup=(
-    etc/sd-boot/config
     etc/sd-boot/config.yaml
     etc/sd-boot/kernel.packages
     etc/sd-boot/efi-tool.packages
