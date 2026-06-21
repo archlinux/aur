@@ -1,6 +1,6 @@
 pkgbase = dora
 	pkgdesc = Dora desktop database client (prebuilt binary release)
-	pkgver = 0.29.0
+	pkgver = 0.30.0
 	pkgrel = 1
 	url = https://github.com/remcostoeten/dora
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = dora
 	depends = libayatana-appindicator
 	depends = openssl
 	depends = libsoup3
-	source = dora-0.29.0.tar.gz::https://github.com/remcostoeten/dora/releases/download/v0.29.0/dora-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 92d2e95d6718bc85c0cab6984d019109d0a9336edd2e763ec0c45fc1f137d71a
+	source = dora-0.30.0.tar.gz::https://github.com/remcostoeten/dora/releases/download/v0.30.0/dora-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 4dd5228ee967d5a06c9cf73eddc68e5b8a6c7dd7328f239829112ff04686da98
 
 pkgname = dora
