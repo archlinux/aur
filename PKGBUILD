@@ -1,6 +1,6 @@
 # Maintainer: Masoud Yousefvand <yousefvand@gmail.com>
 pkgname=burning-windows
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Burning Windows effect for KDE Plasma/KWin'
 arch=('x86_64')
@@ -23,11 +23,11 @@ makedepends=(
   'gcc'
 )
 install='burning-windows.install'
-source=("burning-windows-0.1.2.tar.gz::https://github.com/yousefvand/Burning-Windows/archive/refs/tags/0.1.2.tar.gz")
-sha256sums=('28891b2bfadaff6854101ba140607fec53c93b4d41cfae9d7faed123f5cfff7e')
+source=("burning-windows-0.1.3.tar.gz::https://github.com/yousefvand/Burning-Windows/archive/refs/tags/0.1.3.tar.gz")
+sha256sums=('71e4aeae5ac2efcfecac8714959500785779bc2def6397b699ed5d570fb461e7')
 
 build() {
-  cmake -S "$srcdir/Burning-Windows-0.1.2" -B build -G Ninja     -DCMAKE_BUILD_TYPE=Release     -DCMAKE_INSTALL_PREFIX=/usr     -DKDE_INSTALL_LIBDIR=lib     -DKDE_INSTALL_LIBEXECDIR=lib     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+  cmake -S "$srcdir/Burning-Windows-0.1.3" -B build -G Ninja     -DCMAKE_BUILD_TYPE=Release     -DCMAKE_INSTALL_PREFIX=/usr     -DKDE_INSTALL_LIBDIR=lib     -DKDE_INSTALL_LIBEXECDIR=lib     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
   cmake --build build
 }
 
