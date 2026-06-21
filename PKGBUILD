@@ -1,6 +1,6 @@
 # Maintainer: byteowlz <dev@byteowlz.com>
 pkgname=sldr-bin
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Modular markdown presentations powered by slidev"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 provides=('sldr')
 conflicts=('sldr')
 source=("sldr-${pkgver}.tar.gz::https://github.com/byteowlz/sldr/releases/download/v${pkgver}/sldr-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('085c3a7031301d122349e45bc2947161579389916f24a5e99a9c659847a5e410')
+sha256sums=('4667b3382e3753021177484f73c372b041440c50e055e6649724bc3df753d4f1')
 
 package() {
     install -Dm755 sldr "$pkgdir/usr/bin/sldr"
