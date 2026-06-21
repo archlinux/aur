@@ -1,8 +1,8 @@
 # Maintainer: orange-guo
 # Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/packages/fingerprint-chromium-bin
 pkgname=fingerprint-chromium-bin
-pkgver=144.0.7559.132
-pkgrel=6
+pkgver=148.0.7778.215
+pkgrel=1
 pkgdesc=Fingerprint\ Chromium\ \(Ungoogled\ Chromium\ with\ fingerprinting\ protection\)
 arch=(x86_64 )
 url=https://github.com/adryfish/fingerprint-chromium
@@ -17,10 +17,10 @@ conflicts=(fingerprint-chromium )
 validpgpkeys=()
 
 source=()
-sha256sums_x86_64=('79bad4c8eda407ebfd8ae7d7ce62034c06d118b1db9640ef82e42f63d2ae6d2e')
-source_x86_64=(fingerprint-chromium-bin-144.0.7559.132-x86_64.AppImage::https://github.com/adryfish/fingerprint-chromium/releases/download/144.0.7559.132/ungoogled-chromium-144.0.7559.132-1-x86_64.AppImage )
+sha256sums_x86_64=('a5fa5e6c05cb7fa3617ec2ca642ad3cc6e586ac5249cc29edb0a602d695685f0')
+source_x86_64=(fingerprint-chromium-bin-148.0.7778.215-x86_64.AppImage::https://github.com/adryfish/fingerprint-chromium/releases/download/148.0.7778.215/ungoogled-chromium-148.0.7778.215-1-x86_64.AppImage )
 
-_appimage_source_file=fingerprint-chromium-bin-144.0.7559.132-x86_64.AppImage
+_appimage_source_file=fingerprint-chromium-bin-148.0.7778.215-x86_64.AppImage
 _appimage_appdir_name=squashfs-root
 _appimage_install_dir=fingerprint-chromium
 _install_bin_path=/usr/bin/fingerprint-chromium
