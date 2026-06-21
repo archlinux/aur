@@ -1,6 +1,6 @@
 pkgbase = mihomo-party-electron-bin
 	pkgdesc = Another Mihomo GUI.
-	pkgver = 1.9.5
+	pkgver = 1.9.6
 	pkgrel = 1
 	url = https://github.com/mihomo-party-org/mihomo-party
 	install = mihomo-party.install
@@ -28,9 +28,9 @@ pkgbase = mihomo-party-electron-bin
 	source = mihomo-party.sh
 	sha256sums = 96a6250f67517493f839f964c024434dbcf784b25a73f074bb505f1521f52844
 	sha256sums = 87fddbcd4a4cc7bda22ec4cadff0040e54395bb13184ee4688b58788c1fa7180
-	source_x86_64 = mihomo-party-1.9.5-x86_64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.9.5/clash-party-linux-1.9.5-amd64.deb
-	sha256sums_x86_64 = 81362c50a66a9676bcab6e3cdf00d29898e323793507d1e1ba3af490ad2161a4
-	source_aarch64 = mihomo-party-1.9.5-aarch64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.9.5/clash-party-linux-1.9.5-arm64.deb
-	sha256sums_aarch64 = a9fce8353875baefe80cfffbd0000c58dedfe84a22e9d9d95f1f7d51d5839d61
+	source_x86_64 = mihomo-party-1.9.6-x86_64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.9.6/clash-party-linux-1.9.6-amd64.deb
+	sha256sums_x86_64 = 9fc15417432eafa51dad21217f557c5c4b0292f814e76ffdc6a453a451f581ea
+	source_aarch64 = mihomo-party-1.9.6-aarch64.deb::https://github.com/mihomo-party-org/mihomo-party/releases/download/v1.9.6/clash-party-linux-1.9.6-arm64.deb
+	sha256sums_aarch64 = eb101ac31778280fe38e94abefc919c899a602dcd042f96e957dd6dabcdd80ae
 
 pkgname = mihomo-party-electron-bin
