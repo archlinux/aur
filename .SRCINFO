@@ -1,0 +1,24 @@
+pkgbase = pudu-git
+	pkgdesc = Minimal tiling Wayland compositor built on top of wlroots
+	pkgver = r0.1.g1123c1d
+	pkgrel = 1
+	url = https://github.com/vodkanull/pudu
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkg-config
+	depends = wlroots0.19
+	depends = wayland
+	depends = libxkbcommon
+	depends = libinput
+	depends = cairo
+	depends = kitty
+	depends = seatd
+	provides = pudu
+	conflicts = pudu
+	source = pudu-git::git+https://github.com/vodkanull/pudu.git
+	sha256sums = SKIP
+
+pkgname = pudu-git
