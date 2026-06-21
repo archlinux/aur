@@ -2,7 +2,7 @@ pkgbase = fensterchef
 	pkgdesc = Ratpoison inspired window manager for X11
 	pkgver = 2.1
 	pkgrel = 3
-	url = https://github.com/fensterchef/fensterchef
+	url = https://github.com/DevByProxy/fensterchef
 	arch = any
 	license = MIT
 	makedepends = coreutils
@@ -13,7 +13,7 @@ pkgbase = fensterchef
 	depends = libxft
 	depends = fontconfig
 	provides = fensterchef
-	source = git+https://github.com/fensterchef/fensterchef
+	source = git+https://github.com/DevByProxy/fensterchef
 	sha1sums = SKIP
 
 pkgname = fensterchef
