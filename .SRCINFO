@@ -1,6 +1,6 @@
 pkgbase = cosmic-session-git
 	pkgdesc = Session manager for the COSMIC desktop environment
-	pkgver = 1.0.0.r3.g1dee7d1
+	pkgver = 1.0.16.r0.g495e591
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-session
 	arch = x86_64
