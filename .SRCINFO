@@ -1,6 +1,6 @@
 pkgbase = nuclear-player-bin
 	pkgdesc = Nuclear is a free, open-source music player without ads or tracking.
-	pkgver = 1.40.5
+	pkgver = 1.41.0
 	pkgrel = 1
 	url = https://nuclearplayer.com
 	arch = x86_64
@@ -16,12 +16,12 @@ pkgbase = nuclear-player-bin
 	provides = nuclear-player
 	conflicts = nuclear-player
 	conflicts = nuclear-player-git
-	noextract = nuclear-player-1.40.5.deb
+	noextract = nuclear-player-1.41.0.deb
 	options = !strip
 	options = !debug
-	source = nuclear-player-1.40.5.deb::https://github.com/nukeop/nuclear/releases/download/player@1.40.5/Nuclear_1.40.5_amd64.deb
-	source = https://raw.githubusercontent.com/nukeop/nuclear/player@1.40.5/LICENSE
-	sha256sums = 8467810209e24f4158c4fe3b08fcea5a3a6e1150d20c1ebbcaa9506b5281fdf9
+	source = nuclear-player-1.41.0.deb::https://github.com/nukeop/nuclear/releases/download/player@1.41.0/Nuclear_1.41.0_amd64.deb
+	source = https://raw.githubusercontent.com/nukeop/nuclear/player@1.41.0/LICENSE
+	sha256sums = ebd85506224f3f247c9edbd80b71f7cddf589acaace1d6e762e7d6f46623e051
 	sha256sums = SKIP
 
 pkgname = nuclear-player-bin
