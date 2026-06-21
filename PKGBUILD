@@ -3,7 +3,7 @@
 pkgname=harbor-stremio-bin
 _pkgname=harbor
 pkgver=0.9.13
-pkgrel=5
+pkgrel=6
 pkgdesc='A Stremio client built for adventure (binary release)'
 arch=('x86_64')
 url='https://github.com/harborstremio/harbor'
@@ -27,7 +27,7 @@ provides=('harbor-stremio' 'harbor')
 conflicts=('harbor-stremio' 'harbor' 'harbor-stremio-git')
 
 source=("https://github.com/AdityaHebballe/harbor-linux-builds/releases/download/v${pkgver}/Harbor_0.9.13_amd64.deb")
-sha256sums=('7a2a992e25456494cd06ac77715cd32f0ae74b06d84aecafb619f1a78be7433c')
+sha256sums=('03142cb77ae2a916e6d5b1997fcbdeca7d1934df21ff3972d3927d45e2a2d82b')
 
 package() {
   rm -rf "$srcdir/deb-extract"
