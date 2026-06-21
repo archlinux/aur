@@ -1,6 +1,6 @@
 pkgname=gitmun-bin
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform Git GUI built with Tauri"
 arch=('x86_64')
 url="https://github.com/cst8t/gitmun"
