@@ -4,7 +4,7 @@ _pkgname=dwproton
 pkgname=${_pkgname}-bin
 _srcver=11.0-4
 pkgver=${_srcver//-/_}
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Proton builds with the latest Dawn Winery fixes for gacha games, based on Proton-CachyOS."
 arch=('x86_64')
@@ -54,7 +54,6 @@ depends=(
   libogg
   jsoncpp
   ffmpeg4.4
-  gstreamer
   lapack
 )
 depends_x86_64=(

@@ -5,6 +5,13 @@ post_install() {
     echo "This AUR package is not officially maintained by Dawn Winery."
     echo "Consider getting more information from their official website: https://dawn.wine/dawn-winery/dwproton"
     echo ""
+    echo -e "\e[1;31mMaintainer warning:\e[3;32m Dawn Winery's Forgejo instance is blacklisting certain Vietnamese ISPs due"
+    echo "to abuse detected in their traffic, which is where I live."
+    echo "While I am personally unaffected (I use a different ISP), it's likely that I'll also be hit at"
+    echo "some point after the botfarming grifters change to a different ISP. I will probably not be"
+    echo "able to maintain this package then, so feel free to pick it up if that ever happens. You will"
+    echo "only need to change the version numbers and sha256sums every update. In the meantime I'll try"
+    echo "to figure out a workaround. Thanks =)"
 }
 
 post_upgrade() {
