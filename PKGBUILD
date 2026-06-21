@@ -1,11 +1,12 @@
 # Maintainer: KAAAsS <admin@kaaass.net>
 # Contributor: jose <jose1711 [at] gmail (dot) com>
 # Contributor: xarkes
+# Contributor: Neko_Rikka
 
 pkgname=unluac-unstable
-pkgver=2021_02_01b
+pkgver=2025_12_23
 pkgrel=1
-pkgdesc="(unstable) a decompiler for Lua 5.1"
+pkgdesc="(unstable) a decompiler for Lua 5.x"
 arch=('any')
 url="http://sourceforge.net/projects/unluac/"
 depends=('java-runtime')
@@ -23,6 +24,6 @@ package() {
 }
 
 md5sums=(
-    0855d20d9ddf9da55146a051b287081f
+    d899ca3cd4cdf32005dfd638d7d447d3
     50706e65c528abf7ce3e272296c92ee1
 )
