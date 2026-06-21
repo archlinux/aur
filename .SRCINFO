@@ -1,7 +1,7 @@
 pkgbase = p4lang-pi
 	pkgdesc = An implementation framework for a P4Runtime server
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/p4lang/PI
 	arch = x86_64
 	license = Apache-2.0
@@ -15,6 +15,8 @@ pkgbase = p4lang-pi
 	depends = readline
 	options = !debug
 	source = git+https://github.com/p4lang/PI.git#tag=v0.1.2
+	source = remove-boost-system.patch
 	sha256sums = c1b8938022d662d4311852cfce8bc79bd9e02b8cd42533374c339c435b36967b
+	sha256sums = 06a9a967e663eb56d91a8cdfc43f5f94a9985bce74eb6948a4d63744f4a4c458
 
 pkgname = p4lang-pi

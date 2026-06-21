@@ -1,7 +1,7 @@
 # Maintainer: insmtr <insmtr@insmtr.cn>
 pkgname=p4lang-pi
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An implementation framework for a P4Runtime server"
 arch=('x86_64')
 url="https://github.com/p4lang/PI"
@@ -18,14 +18,17 @@ makedepends=(
     'boost'
     'git'
 )
-source=("git+https://github.com/p4lang/PI.git#tag=v${pkgver}")
-sha256sums=('c1b8938022d662d4311852cfce8bc79bd9e02b8cd42533374c339c435b36967b')
+source=("git+https://github.com/p4lang/PI.git#tag=v${pkgver}"
+        "remove-boost-system.patch")
+sha256sums=('c1b8938022d662d4311852cfce8bc79bd9e02b8cd42533374c339c435b36967b'
+            '06a9a967e663eb56d91a8cdfc43f5f94a9985bce74eb6948a4d63744f4a4c458')
 options=(!debug)
 
 prepare() {
     cd PI
     git submodule update --init
     sed -i 's/this->allocate(new_capacity, FMT_NULL)/std::allocator_traits<Allocator>::allocate(*this, new_capacity)/' proto/third_party/fmt/format.h
+    patch -p1 -i "$srcdir/"remove-boost-system.patch
 }
 
 build() {
