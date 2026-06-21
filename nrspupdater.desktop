@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=NRSPUpdater
+Comment=SDRplay's NRSPUpdater
+Exec=/usr/bin/nrsupdater
+Icon=/usr/share/icons/nrspupdater.png
+Terminal=false
+Type=Application
+Categories=HamRadio;Audio;
+StartupNotify=true
+

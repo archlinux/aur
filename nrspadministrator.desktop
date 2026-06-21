@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=NRSPAdministrator
+Comment=SDRplay's NRSPAdministrator
+Exec=/usr/bin/nrspadministrator
+Icon=/usr/share/icons/nrspadministrator.png
+Terminal=false
+Type=Application
+Categories=HamRadio;Audio;
+StartupNotify=true
+
