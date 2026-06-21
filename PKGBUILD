@@ -1,14 +1,13 @@
 # Maintainer: Cyridge cyridge@proton.me
 pkgname=rsv-ng
-pkgver=r48.5704d8d
+pkgver=r50.81cc6e3
 pkgrel=1
 pkgdesc="A runit service manager with smart completions, scaffolding, and more"
 arch=('any')
 url="https://gitlab.com/runit-rsv/rsv-main"
 license=('GPL2')
 depends=('runit')
-optdepends=('fzf: interactive service selection'
-            'sudo: privilege escalation'
+optdepends=('sudo: privilege escalation'
             'opendoas: privilege escalation (alternative to sudo)')
 makedepends=('git')
 provides=('rsv-ng')
