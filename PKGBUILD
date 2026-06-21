@@ -15,7 +15,7 @@ license=('Apache-2.0' 'MIT')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'libgcc')
 
 _archive_suffix="unknown-linux-gnu"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}-${_archive_suffix}.tar.gz")
