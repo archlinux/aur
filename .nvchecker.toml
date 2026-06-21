@@ -1,0 +1,3 @@
+[python-geoip2fast]
+source = "pypi"
+pypi = "geoip2fast"

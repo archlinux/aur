@@ -1,0 +1,19 @@
+pkgbase = python-geoip2fast
+	pkgdesc = GeoIP2Fast is the fastest GeoIP2 country/city/asn lookup library.
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/rabuchaim/geoip2fast
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-geoip2
+	provides = geoip2fast
+	source = https://files.pythonhosted.org/packages/source/g/geoip2fast/geoip2fast-1.2.2.tar.gz
+	sha256sums = 38815700cedfeb197d51b4b8733b0d4f7965b36de15147c125527124f8b45d6b
+
+pkgname = python-geoip2fast
