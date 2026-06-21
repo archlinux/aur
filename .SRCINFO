@@ -1,12 +1,13 @@
 pkgbase = python-aiozoneinfo
 	pkgdesc = Tools to fetch zoneinfo with asyncio
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bluetooth-devices/aiozoneinfo
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-poetry-core>=2.0.0
 	makedepends = python-wheel
 	source = aiozoneinfo-0.2.3.tar.gz::https://github.com/Bluetooth-Devices/aiozoneinfo/releases/download/v0.2.3/aiozoneinfo-0.2.3.tar.gz
 	sha256sums = 987ce2a7d5141f3f4c2e9d50606310d0bf60d688ad9f087aa7267433ba85fff3
