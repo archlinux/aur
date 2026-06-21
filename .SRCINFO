@@ -1,6 +1,6 @@
 pkgbase = wol-rs
 	pkgdesc = Wake up remote hosts with Wake On LAN magic packets
-	pkgver = 0.4.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://codeberg.org/swsnr/wol.rs
 	arch = i686
@@ -9,8 +9,9 @@ pkgbase = wol-rs
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
+	makedepends = openssh
 	conflicts = wol
-	source = git+https://codeberg.org/swsnr/wol.rs.git#tag=v0.4.0
-	sha256sums = f7c35b0b440a08660a98f5459bcabb2c254b29c401a18a1ed2b88a8c69ab5a5d
+	source = git+https://codeberg.org/swsnr/wol.rs.git#tag=v0.5.1
+	sha256sums = e781a9fe5fd09300867f931b409a159a7b8d5aa945048623abca026bc2a6f817
 
 pkgname = wol-rs
