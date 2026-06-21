@@ -1,8 +1,8 @@
 pkgbase = gsimplecal-git
 	pkgdesc = Simple and lightweight GTK calendar (git)
-	pkgver = 2.1_r1_g2dc6bba
+	pkgver = 2.5.2_r0_g4b7a3f7
 	pkgrel = 1
-	url = http://dmedvinsky.github.com/gsimplecal/
+	url = https://dmedvinsky.github.io/gsimplecal
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -14,4 +14,3 @@ pkgbase = gsimplecal-git
 	md5sums = SKIP
 
 pkgname = gsimplecal-git
-

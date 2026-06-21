@@ -1,13 +1,14 @@
 # Maintainer:  WorMzy Tykashi <wormzy.tykashi@gmail.com>
+# Maintainer: Leandro Cunha <leandrocunhaemail@gmail.com>
 # Contributor:  Victor Feight <vrfeight3 at gmail dot com>
 
 pkgname=gsimplecal-git
 _gitname=gsimplecal
-pkgver=2.1_r1_g2dc6bba
+pkgver=2.5.2_r0_g4b7a3f7
 pkgrel=1
 pkgdesc="Simple and lightweight GTK calendar (git)"
 arch=('i686' 'x86_64')
-url="http://dmedvinsky.github.com/gsimplecal/"
+url="https://dmedvinsky.github.io/gsimplecal"
 license=('GPL')
 depends=('gtk3')
 makedepends=('git')
