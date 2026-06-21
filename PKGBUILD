@@ -8,8 +8,8 @@ pkgdesc='QT GUI for Connman with system tray icon'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://github.com/andrew-bibb/cmst
 license=('MIT')
-depends=('qt5-base' 'connman' 'gtk-update-icon-cache')
-makedepends=('git' 'qt5-tools')
+depends=('connman' 'qt6-base' 'gtk-update-icon-cache')
+makedepends=('git' 'qt6-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+${url}.git")
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
     cd $_pkgname
-    qmake-qt5 DISTRO=arch
+    qmake6
     make
 }
 
