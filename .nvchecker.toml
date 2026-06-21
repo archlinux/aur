@@ -1,6 +1,3 @@
 [signal-monochrome-tray]
-source = "github"
-github = "doppelhelix/signal-monochrome-tray-hook"
-branch = "main"
-prefix = "v"
-use_max_tag = true
+source = "git"
+git = "https://codeberg.org/doppelhelix/signal-monochrome-tray-hook.git"

@@ -5,7 +5,11 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!chroot-build.sh
+!LICENSE
 !.nvchecker.toml
-!*.asc
-!*/
+!/keys
+!/keys/pgp
+!/keys/pgp/*.asc
+!/LICENSES
+!/LICENSES/*.txt
+!REUSE.toml
