@@ -1,8 +1,8 @@
 pkgbase = wolfbrowser
 	pkgdesc = Web browser on python and PyQt6. With this browser you can save you data.
-	pkgver = 0.4.15
+	pkgver = 0.5.02
 	pkgrel = 1
-	url = https://codeberg.org/int13h3/Wolf_browser/src/branch/main/Wolf_browser_0.4.15.tar.xz
+	url = https://codeberg.org/int13h3/Wolf_browser
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = wolfbrowser
 	depends = python
 	depends = python-pyqt6
 	depends = python-pyqt6-webengine
-	source = Wolf_browser_0.4.15.tar.xz::https://codeberg.org/int13h3/Wolf_browser/raw/branch/main/Wolf_browser_0.4.15.tar.xz
+	source = Wolf_browser_0.5.02.tar.xz::https://codeberg.org/int13h3/Wolf_browser/raw/branch/main/Wolf_browser_0.5.02.tar.xz
 	sha256sums = SKIP
 
 pkgname = wolfbrowser
