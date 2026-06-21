@@ -4,7 +4,7 @@
 # download it separately.
 
 pkgname=beekeeper-qt
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Deduplicate redundant data in your disk and save space"
 url="https://github.com/techmanwalker/beekeeper-qt"
@@ -19,6 +19,12 @@ md5sums=('SKIP')
 
 build() {
   cd "$pkgname-$pkgver"
+
+  # -flto is enabled by default now. These flags from makepkg-optimize-mold are now incompatible.
+  CFLAGS=$(echo "$CFLAGS" | sed -e 's/-floop-[^ ]*//g' -e 's/-ftree-parallelize-loops=[0-9]*//g' -e 's/-fgraphite-identity//g')
+  CXXFLAGS=$(echo "$CXXFLAGS" | sed -e 's/-floop-[^ ]*//g' -e 's/-ftree-parallelize-loops=[0-9]*//g' -e 's/-fgraphite-identity//g')
+  LDFLAGS=$(echo "$LDFLAGS" | sed 's/-Wl,--emit-relocs//g')
+
   cmake -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
