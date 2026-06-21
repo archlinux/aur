@@ -1,4 +1,3 @@
-aws-sso-2.2.5-linux-amd64
 *.zst
 pkg/
 src/
