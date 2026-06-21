@@ -1,8 +1,7 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-
 pkgname=cosmic-applets-git
-pkgver=1.0.0.alpha.7.r59.g2c61862
+pkgver=1.0.16.r1.g95eda40
 pkgrel=1
 pkgdesc="Applets for COSMIC Panel"
 arch=('x86_64' 'aarch64')
@@ -38,7 +37,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
