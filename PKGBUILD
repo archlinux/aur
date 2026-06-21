@@ -9,10 +9,11 @@ arch=('x86_64')
 url="https://github.com/jellyfin/jellyfin-desktop"
 depends=(
     'cef'
-    'mpv'
+    'libglvnd'
     'libxcb'
     'libxkbcommon'
     'libxkbcommon-x11'
+    'mpv'
     'wayland'
     'xdg-utils'
 )
