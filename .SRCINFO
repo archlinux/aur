@@ -1,0 +1,13 @@
+pkgbase = picotool-bin
+	pkgdesc = Tool for working with RP2040/RP2350 binaries
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/raspberrypi/picotool
+	arch = x86_64
+	license = BSD-3-Clause
+	source = https://github.com/raspberrypi/pico-sdk-tools/releases/download/v2.2.0-3/picotool-2.2.0-a4-x86_64-lin.tar.gz
+	source = https://raw.githubusercontent.com/raspberrypi/picotool/25aa087b2c517b4901874a99536e869d4d27b678/LICENSE.TXT
+	md5sums = 034f611320f09e5ced5312e70f6a55ce
+	md5sums = db74c933ca4b8bb864b9088bec194057
+
+pkgname = picotool-bin
