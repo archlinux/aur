@@ -11,7 +11,7 @@
 #
 
 pkgname=cone-simple
-pkgver=1.18
+pkgver=2.0
 pkgrel=1
 epoch=
 pkgdesc="Curses text-based mail client - inspired by Alpine - handles multiple POP3, IMAP accounts, and local mail folders. contains a simple newsreader. This version has no dependencies to courier libraries (other than the mandatory courier-unicode)."
@@ -36,7 +36,7 @@ source=(http://sourceforge.net/projects/courier/files/cone/${pkgver}/cone-${pkgv
 
 #noextract=()
 
-sha256sums=('f05c51f70ce7ad48cf433e071a303f9a7ed57c2b986171fbc51821ebeb30475e')
+sha256sums=('d14b5d832aab8b98d6005a454972e7791d2892b03266f129f4b086a7635deb1c')
 
 #
 #
@@ -50,9 +50,9 @@ prepare()
 build()
 {
   cd "${srcdir}/${_pkgname}-${pkgver}";
-  #./configure -C --without-db --with-certdb=/usr/share/cone/rootcerts --prefix=/usr --exec-prefix=/usr --libexecdir=/usr/lib/cone --sysconfdir=/etc --with-notice=unicode;
+  ./configure -C --without-db --with-certdb=/usr/share/cone/rootcerts --prefix=/usr --exec-prefix=/usr --libexecdir=/usr/lib/cone --sysconfdir=/etc --with-notice=unicode;
   # Add C++17 workaround (https://sourceforge.net/p/courier/mailman/message/59348126/)
-  ./configure -C --without-db --with-certdb=/usr/share/cone/rootcerts --prefix=/usr --exec-prefix=/usr --libexecdir=/usr/lib/cone --sysconfdir=/etc --with-notice=unicode CXXFLAGS=--std=gnu++17;
+  #./configure -C --without-db --with-certdb=/usr/share/cone/rootcerts --prefix=/usr --exec-prefix=/usr --libexecdir=/usr/lib/cone --sysconfdir=/etc --with-notice=unicode CXXFLAGS=--std=gnu++17;
   make;
 }
 
