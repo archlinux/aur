@@ -5,7 +5,7 @@
 
 pkgname=beekeeper-qt
 pkgver=1.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Deduplicate redundant data in your disk and save space"
 url="https://github.com/techmanwalker/beekeeper-qt"
 depends=('qt6-base' 'qt6-tools' 'polkit-qt6' 'systemd' 'btrfs-progs' 'bees' 'util-linux')
