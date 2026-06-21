@@ -5,5 +5,5 @@ post_install() {
 	echo ">>> However, the default may not fit the Arch Linux ecosystem (e.g., mihomo paths)."
 	echo ">>> A tuned config is shipped at /usr/share/$_pkgname/config.yaml — you can use it as a reference:"
 	echo ">>>"
-	echo ">>>   mkdir -p ~/.config/$_pkgname && cp /usr/share/$_pkgname/config.yaml ~/.config/$_pkgname/config.json"
+	echo ">>>   mkdir -p ~/.config/$_pkgname && cp /usr/share/$_pkgname/config.yaml ~/.config/$_pkgname/config.yaml"
 }
