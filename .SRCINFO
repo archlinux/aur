@@ -1,0 +1,14 @@
+pkgbase = screenshot-niri
+	pkgdesc = Screenshot tool for niri compositor with scroll/stitch support
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/xander-lin/screenshot-niri
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/xander-lin/screenshot-niri.git
+	sha256sums = SKIP
+
+pkgname = screenshot-niri
