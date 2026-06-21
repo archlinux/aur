@@ -2,7 +2,7 @@
 
 pkgname=vsview-nativeres
 _origpkgname=vsview_nativeres
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A vsview plugin for analyzing and determining the native resolution of video content"
 arch=("x86_64")
@@ -19,9 +19,10 @@ makedepends=(
 	"python-setuptools"
 	"python-hatchling"
     "python-versioningit"
+    "python-hatch-sbom"
 )
 source=("https://files.pythonhosted.org/packages/1d/32/c21b4c70af267c936691718eac512257dc16d204e780a6fe45ab60efb3e1/vsview_nativeres-0.2.0.tar.gz")
-sha256sums=("c8e173fd7d51d837144ed9782ee20a863b03449a85e8aaedc2c39d79bbea38b8")
+sha256sums=('SKIP')
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
 	python -m build --wheel --no-isolation
