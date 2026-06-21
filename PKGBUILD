@@ -6,7 +6,7 @@
 # Contributor: Paul Mattal <paul@archlinux.org>
 
 pkgname=ffmpeg-whisper
-pkgver=8.1.1
+pkgver=8.1.2
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video, with vulkan whisper'
 arch=(x86_64)
@@ -107,6 +107,8 @@ optdepends=(
   'ladspa: LADSPA filters'
   'onevpl-intel-gpu: Intel QuickSync support'
 )
+_tag=1c2c67c0b9f7f66ab32c19dcf7f227bcd290aa4c
+
 provides=(
   ffmpeg
   libavcodec.so
@@ -118,13 +120,12 @@ provides=(
   libswscale.so
 )
 conflicts=(ffmpeg)
-_tag=a65b3bfe9dacc3b20597ef199d0afdd8bc8128e2
 source=(
   git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
   0001-Add-av_stream_get_first_dts-for-Chromium.patch
   0002-Expose-whisper-decode-options.patch
 )
-b2sums=('8e5818da4965fdd2dc7de521a2f20013a05bd4e9d6fc3eecb6ed261f91c3e4ed4b64687654bee190b0e3b702dc8184f86bfe1941a58cd0b002843c81f70fa904'
+b2sums=('a2b77f48a12486d07965ffa2f4ff27e04e552b7c8d2dec4a8bf847088d93a5858982636836a13ade2765c8c976ded8908633a8c2f4142e4bbd4ed430f8cc91ce'
         'e5f7b79f7731be9ee5a7280a9221fb531ac5a2d9820fc5870b68b0eabea667dfbe8f39f41c1e1763a4c84982896afaa54c81ff57847d203b70afafd726689e5d'
         '02bd31bf5c798247a4d68eb263b5c5ed5643e0d710aa0477a458af0a8ffa61749bc846ea5ceed7e455f09d11ef317efa62bff63810fd46ee20b88428bf5ae92e')
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
@@ -134,13 +135,7 @@ prepare() {
 
   # https://crbug.com/1251779
   git apply -3 ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
-
   git apply -3 ../0002-Expose-whisper-decode-options.patch
-}
-
-pkgver() {
-  cd ffmpeg
-  git describe --tags | sed 's/^n//'
 }
 
 build() {
