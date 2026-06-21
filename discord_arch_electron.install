@@ -1,4 +1,7 @@
 post_upgrade() {
+	# Call discord post-install script
+	/usr/share/discord/postinst.sh
+
 	# return if old package version is greater than or equal to 1:1.0.143-1...
 	(( $(vercmp $2 '1:1.0.143-1') >= 0 )) && return
 
@@ -9,6 +12,9 @@ EOF
 }
 
 post_install() {
+	# Call discord post-install script
+	/usr/share/discord/postinst.sh
+
 	cat <<EOF
 ==> In case of performance problems consider setting additional flags
     in '~/.config/discord-flags.conf'.

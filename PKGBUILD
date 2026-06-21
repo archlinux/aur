@@ -31,6 +31,7 @@ source=("https://dl.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.ta
         'LICENSE.html::https://discord.com/terms'
         'OSS-LICENSES.html::https://discord.com/licenses'
         'discord-launcher.sh'
+        'postinst.sh'
         'krisp-patcher.py'
 
         # Discord modules (from 'curl "https://updates.discord.com/distributions/app/manifests/latest?channel=stable&platform=linux&arch=x64"')
@@ -50,6 +51,7 @@ sha512sums=('9fca5b47061e9b79d991ad27f181f7472efadc5b8c168932dad8e8bf7f389902ea3
             'c671be39cb59413feeef548f044cc71405cd222d97519df0841be7f3943e1fa8b790f831abadde1eb90ffd3f230c99525bfed582fd2921e07c244efc1398acb6'
             'f6cf0181615766ee46183f55bde7c08a3254c9bda5a4e3ff716599600ad66b3be6010466a33e1bc3c56ce5f23991cf088f8ee0d5459f0cd2beccc9a2209f64b8'
             '4e0f9bedbabcf6c805e508b88dea4c2d3320cd4db2904f182c35365e17a574b981e8b32ca3796d9f1ca49a11e965ce1e5dc541ad7fe4a5133d1eb7a3da1fbbbf'
+            '06140d9a36193df4b8e5e6d2e30255c5b302488c4aeaafcfe61e2c26ccf3418cb3a543e2a96fbaa86c3c23c857acce8dc9d1dd093d515566dca5804a232cbcad'
             '85da93530b2b92faad58cc84d0f7ddaea6b22fbec413e806c1981eb6369a301ec995eee6bfbe6b828e2cd0baf6168e578bbde456f2450a13199994ff9a1e7cd0'
             '32568ff144259f0e76a47e631f6000dd30cf8c0d14d562145587cef57ce75f530afb73942b8761e3f0eead84a2feca3a659a34004ae331386c38fd05b260f559'
             '2d4364350eed4b12f59990bfaf5ec41945c56ad4540d78195cc47aede39b8599c3c78f35810330ea140df0798820f0d52256b8b982329d1c5b591626f354ecaa'
@@ -93,7 +95,8 @@ prepare() {
     tar -xf "${module}" --use-compress-program=brotli --one-top-level="modules/${module%%-*}" --strip-components=1 files/
   done
 
-  # prepare launcher script
+  # prepare post-install and launcher scripts
+  sed -i -e "s|@PKGNAME@|${_pkgname}|" postinst.sh
   sed -i -e "s|@PKGNAME@|${_pkgname}|" \
     -e "s|@PKGVER@|${pkgver}|" \
     -e "s|@ELECTRON@|${_electron}|" \
@@ -149,6 +152,9 @@ package() {
 
   # install the launch script
   install -Dm 755 discord-launcher.sh "${pkgdir}/usr/bin/${_pkgname}"
+
+  # install the post-install script
+  install -Dm 744 postinst.sh "${pkgdir}/usr/share/${_pkgname}/postinst.sh"
 
   # install licenses
   install -Dm 644 LICENSE.html "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
