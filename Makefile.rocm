@@ -1,0 +1,18 @@
+# ROCm/HIP build of gpu-burn (ported from CUDA).
+# GPU_ARCH auto-detects the building machine's GPU; override with `make GPU_ARCH=gfxXXXX`.
+ROCM      ?= /opt/rocm
+HIPCC     ?= $(ROCM)/bin/hipcc
+GPU_ARCH  ?= $(shell $(ROCM)/bin/rocminfo 2>/dev/null | grep -m1 -oE 'gfx[0-9a-f]+' || echo gfx1100)
+
+CXXFLAGS  := -O3 -std=c++17 -Wno-unused-result -I$(ROCM)/include
+LDFLAGS   := -L$(ROCM)/lib -lhipblas
+
+.PHONY: clean
+gpu_burn: gpu_burn-drv.o compare.code
+	$(HIPCC) -o $@ gpu_burn-drv.o $(LDFLAGS)
+gpu_burn-drv.o: gpu_burn-drv.cpp
+	$(HIPCC) $(CXXFLAGS) -c $< -o $@
+compare.code: compare.cu
+	$(HIPCC) --genco --offload-arch=$(GPU_ARCH) -x hip $< -o $@
+clean:
+	$(RM) gpu_burn-drv.o compare.code gpu_burn

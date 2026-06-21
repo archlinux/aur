@@ -1,0 +1,19 @@
+pkgbase = gpu-burn-rocm
+	pkgdesc = Multi-GPU stress test (ROCm/HIP port of gpu-burn) for AMD GPUs
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/wilicc/gpu-burn
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = rocm-hip-sdk
+	makedepends = git
+	depends = hipblas
+	depends = rocm-language-runtime
+	source = gpu-burn::git+https://github.com/wilicc/gpu-burn.git#commit=3ead140434da9473582b68452f7115967a7a0581
+	source = rocm-port.patch
+	source = Makefile.rocm
+	sha256sums = SKIP
+	sha256sums = 12d9b9bf8b5d33dc5b2e152110daab3199f5b802e94eed7d2f676bdf6b56cbbc
+	sha256sums = 1b916228b4ee1d92a8da08182d9ce6937a074c93a2411ab94a2bddca7b7183d5
+
+pkgname = gpu-burn-rocm

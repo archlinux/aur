@@ -1,0 +1,425 @@
+diff --git a/compare.cu b/compare.cu
+index 6ec8e8d..fbb16c7 100644
+--- a/compare.cu
++++ b/compare.cu
+@@ -27,6 +27,8 @@
+  * either expressed or implied, of the FreeBSD Project.
+  */
+ 
++#include <hip/hip_runtime.h>
++
+ // Actually, there are no rounding errors due to results being accumulated in an arbitrary order..
+ // Therefore EPSILON = 0.0f is OK
+ #define EPSILON 0.001f
+diff --git a/gpu_burn-drv.cpp b/gpu_burn-drv.cpp
+index e96ebcd..2109921 100644
+--- a/gpu_burn-drv.cpp
++++ b/gpu_burn-drv.cpp
+@@ -1,3 +1,4 @@
++#include "hip/hip_runtime.h"
+ /*
+  * Copyright (c) 2022, Ville Timonen
+  * All rights reserved.
+@@ -30,7 +31,7 @@
+ // Matrices are SIZE*SIZE..  POT should be efficiently implemented in CUBLAS
+ #define SIZE 8192ul
+ #define USEMEM 0.9 // Try to allocate 90% of memory
+-#define COMPARE_KERNEL "compare.fatbin"
++#define COMPARE_KERNEL "compare.code"
+ 
+ // Used to report op/s, measured through Visual Profiler, CUBLAS from CUDA 7.5
+ // (Seems that they indeed take the naive dim^3 approach)
+@@ -60,14 +61,14 @@
+ 
+ #define SIGTERM_TIMEOUT_THRESHOLD_SECS 30 // number of seconds for sigterm to kill child processes before forcing a sigkill
+ 
+-#include "cublas_v2.h"
++#include <hipblas/hipblas.h>
+ #define CUDA_ENABLE_DEPRECATED
+-#include <cuda.h>
++#include <hip/hip_runtime.h>
+ 
+ void _checkError(int rCode, std::string file, int line, std::string desc = "") {
+-    if (rCode != CUDA_SUCCESS) {
++    if (rCode != hipSuccess) {
+         const char *err;
+-        cuGetErrorString((CUresult)rCode, &err);
++        hipDrvGetErrorString((hipError_t)rCode, &err);
+ 
+         throw std::runtime_error(
+             (desc == "" ? std::string("Error (")
+@@ -78,13 +79,9 @@ void _checkError(int rCode, std::string file, int line, std::string desc = "") {
+     }
+ }
+ 
+-void _checkError(cublasStatus_t rCode, std::string file, int line, std::string desc = "") {
+-    if (rCode != CUBLAS_STATUS_SUCCESS) {
+-#if CUBLAS_VER_MAJOR >= 12
+-		const char *err = cublasGetStatusString(rCode);
+-#else
+-		const char *err = "";
+-#endif
++void _checkError(hipblasStatus_t rCode, std::string file, int line, std::string desc = "") {
++    if (rCode != HIPBLAS_STATUS_SUCCESS) {
++		const char *err = hipblasStatusToString(rCode);
+         throw std::runtime_error(
+             (desc == "" ? std::string("Error (")
+                         : (std::string("Error in ") + desc + " (")) +
+@@ -109,22 +106,21 @@ template <class T> class GPU_Test {
+   public:
+     GPU_Test(int dev, bool doubles, bool tensors, const char *kernelFile)
+         : d_devNumber(dev), d_doubles(doubles), d_tensors(tensors), d_kernelFile(kernelFile){
+-        checkError(cuDeviceGet(&d_dev, d_devNumber));
+-#if defined(CUDA_VERSION) && CUDA_VERSION >= 13000
+-            checkError(cuCtxCreate(&d_ctx, nullptr, 0, d_dev));
+-#else
+-            checkError(cuCtxCreate(&d_ctx, 0, d_dev));
+-#endif
++        // Use HIP runtime device binding (hipSetDevice) instead of the
++        // deprecated driver-API context (hipCtxCreate): hipBLAS targets the
++        // runtime device, so a separate driver context here leaves the GEMMs
++        // queued on the wrong context and the GPU effectively idle.
++        checkError(hipSetDevice(d_devNumber));
+ 
+         bind();
+ 
+         // checkError(cublasInit());
+-        checkError(cublasCreate(&d_cublas), "init");
++        checkError(hipblasCreate(&d_cublas), "init");
+ 
+         if (d_tensors)
+-            checkError(cublasSetMathMode(d_cublas, CUBLAS_TENSOR_OP_MATH));
++            checkError(hipblasSetMathMode(d_cublas, HIPBLAS_TENSOR_OP_MATH));
+ 
+-        checkError(cuMemAllocHost((void **)&d_faultyElemsHost, sizeof(int)));
++        checkError(hipHostMalloc((void **)&d_faultyElemsHost, sizeof(int)));
+         d_error = 0;
+ 
+         g_running = true;
+@@ -136,14 +132,14 @@ template <class T> class GPU_Test {
+     }
+     ~GPU_Test() {
+         bind();
+-        checkError(cuMemFree(d_Cdata), "Free A");
+-        checkError(cuMemFree(d_Adata), "Free B");
+-        checkError(cuMemFree(d_Bdata), "Free C");
+-        checkError(cuMemFree(d_faultyElemData), "Free faulty data");
+-        cuMemFreeHost(d_faultyElemsHost);
++        checkError(hipFree(d_Cdata), "Free A");
++        checkError(hipFree(d_Adata), "Free B");
++        checkError(hipFree(d_Bdata), "Free C");
++        checkError(hipFree(d_faultyElemData), "Free faulty data");
++        hipHostFree(d_faultyElemsHost);
+         printf("Freed memory for dev %d\n", d_devNumber);
+ 
+-        cublasDestroy(d_cublas);
++        hipblasDestroy(d_cublas);
+         printf("Uninitted cublas\n");
+     }
+ 
+@@ -160,19 +156,19 @@ template <class T> class GPU_Test {
+ 
+     size_t getIters() { return d_iters; }
+ 
+-    void bind() { checkError(cuCtxSetCurrent(d_ctx), "Bind CTX"); }
++    void bind() { checkError(hipSetDevice(d_devNumber), "Bind device"); }
+ 
+     size_t totalMemory() {
+         bind();
+         size_t freeMem, totalMem;
+-        checkError(cuMemGetInfo(&freeMem, &totalMem));
++        checkError(hipMemGetInfo(&freeMem, &totalMem));
+         return totalMem;
+     }
+ 
+     size_t availMemory() {
+         bind();
+         size_t freeMem, totalMem;
+-        checkError(cuMemGetInfo(&freeMem, &totalMem));
++        checkError(hipMemGetInfo(&freeMem, &totalMem));
+         return freeMem;
+     }
+ 
+@@ -197,15 +193,15 @@ template <class T> class GPU_Test {
+                d_resultSize, d_iters);
+         if ((size_t)useBytes < 3 * d_resultSize)
+             throw std::string("Low mem for result. aborting.\n");
+-        checkError(cuMemAlloc(&d_Cdata, d_iters * d_resultSize), "C alloc");
+-        checkError(cuMemAlloc(&d_Adata, d_resultSize), "A alloc");
+-        checkError(cuMemAlloc(&d_Bdata, d_resultSize), "B alloc");
++        checkError(hipMalloc(&d_Cdata, d_iters * d_resultSize), "C alloc");
++        checkError(hipMalloc(&d_Adata, d_resultSize), "A alloc");
++        checkError(hipMalloc(&d_Bdata, d_resultSize), "B alloc");
+ 
+-        checkError(cuMemAlloc(&d_faultyElemData, sizeof(int)), "faulty data");
++        checkError(hipMalloc(&d_faultyElemData, sizeof(int)), "faulty data");
+ 
+         // Populating matrices A and B
+-        checkError(cuMemcpyHtoD(d_Adata, A, d_resultSize), "A -> device");
+-        checkError(cuMemcpyHtoD(d_Bdata, B, d_resultSize), "B -> device");
++        checkError(hipMemcpyHtoD(d_Adata, A, d_resultSize), "A -> device");
++        checkError(hipMemcpyHtoD(d_Bdata, B, d_resultSize), "B -> device");
+ 
+         initCompareKernel();
+     }
+@@ -220,14 +216,14 @@ template <class T> class GPU_Test {
+         for (size_t i = 0; i < d_iters; ++i) {
+             if (d_doubles)
+                 checkError(
+-                    cublasDgemm(d_cublas, CUBLAS_OP_N, CUBLAS_OP_N, SIZE, SIZE,
++                    hipblasDgemm(d_cublas, HIPBLAS_OP_N, HIPBLAS_OP_N, SIZE, SIZE,
+                                 SIZE, &alphaD, (const double *)d_Adata, SIZE,
+                                 (const double *)d_Bdata, SIZE, &betaD,
+                                 (double *)d_Cdata + i * SIZE * SIZE, SIZE),
+                     "DGEMM");
+             else
+                 checkError(
+-                    cublasSgemm(d_cublas, CUBLAS_OP_N, CUBLAS_OP_N, SIZE, SIZE,
++                    hipblasSgemm(d_cublas, HIPBLAS_OP_N, HIPBLAS_OP_N, SIZE, SIZE,
+                                 SIZE, &alpha, (const float *)d_Adata, SIZE,
+                                 (const float *)d_Bdata, SIZE, &beta,
+                                 (float *)d_Cdata + i * SIZE * SIZE, SIZE),
+@@ -238,39 +234,28 @@ template <class T> class GPU_Test {
+     void initCompareKernel() {
+         {
+             std::ifstream f(d_kernelFile);
+-            checkError(f.good() ? CUDA_SUCCESS : CUDA_ERROR_NOT_FOUND,
++            checkError(f.good() ? hipSuccess : hipErrorNotFound,
+                        std::string("couldn't find compare kernel: ") + d_kernelFile);
+         }
+-        checkError(cuModuleLoad(&d_module, d_kernelFile), "load module");
+-        checkError(cuModuleGetFunction(&d_function, d_module,
++        checkError(hipModuleLoad(&d_module, d_kernelFile), "load module");
++        checkError(hipModuleGetFunction(&d_function, d_module,
+                                        d_doubles ? "compareD" : "compare"),
+                    "get func");
+ 
+-        checkError(cuFuncSetCacheConfig(d_function, CU_FUNC_CACHE_PREFER_L1),
+-                   "L1 config");
+-        checkError(cuParamSetSize(d_function, __alignof(T *) +
+-                                                  __alignof(int *) +
+-                                                  __alignof(size_t)),
+-                   "set param size");
+-        checkError(cuParamSetv(d_function, 0, &d_Cdata, sizeof(T *)),
+-                   "set param");
+-        checkError(cuParamSetv(d_function, __alignof(T *), &d_faultyElemData,
+-                               sizeof(T *)),
+-                   "set param");
+-        checkError(cuParamSetv(d_function, __alignof(T *) + __alignof(int *),
+-                               &d_iters, sizeof(size_t)),
+-                   "set param");
+-
+-        checkError(cuFuncSetBlockShape(d_function, g_blockSize, g_blockSize, 1),
+-                   "set block size");
++        // HIP passes kernel args at launch time via hipModuleLaunchKernel
++        // (see compare()), so the legacy driver-API param/blockshape setup
++        // (cuParamSetv / cuFuncSetBlockShape) is not needed here.
+     }
+ 
+     void compare() {
+-        checkError(cuMemsetD32Async(d_faultyElemData, 0, 1, 0), "memset");
+-        checkError(cuLaunchGridAsync(d_function, SIZE / g_blockSize,
+-                                     SIZE / g_blockSize, 0),
++        checkError(hipMemsetD32Async(d_faultyElemData, 0, 1, 0), "memset");
++        void *kernelArgs[] = {&d_Cdata, &d_faultyElemData, &d_iters};
++        checkError(hipModuleLaunchKernel(d_function, SIZE / g_blockSize,
++                                         SIZE / g_blockSize, 1, g_blockSize,
++                                         g_blockSize, 1, 0, 0, kernelArgs,
++                                         nullptr),
+                    "Launch grid");
+-        checkError(cuMemcpyDtoHAsync(d_faultyElemsHost, d_faultyElemData,
++        checkError(hipMemcpyDtoHAsync(d_faultyElemsHost, d_faultyElemData,
+                                      sizeof(int), 0),
+                    "Read faultyelemdata");
+     }
+@@ -289,30 +274,30 @@ template <class T> class GPU_Test {
+ 
+     static const int g_blockSize = 16;
+ 
+-    CUdevice d_dev;
+-    CUcontext d_ctx;
+-    CUmodule d_module;
+-    CUfunction d_function;
++    hipDevice_t d_dev;
++    hipCtx_t d_ctx;
++    hipModule_t d_module;
++    hipFunction_t d_function;
+ 
+-    CUdeviceptr d_Cdata;
+-    CUdeviceptr d_Adata;
+-    CUdeviceptr d_Bdata;
+-    CUdeviceptr d_faultyElemData;
++    hipDeviceptr_t d_Cdata;
++    hipDeviceptr_t d_Adata;
++    hipDeviceptr_t d_Bdata;
++    hipDeviceptr_t d_faultyElemData;
+     int *d_faultyElemsHost;
+ 
+-    cublasHandle_t d_cublas;
++    hipblasHandle_t d_cublas;
+ };
+ 
+ // Returns the number of devices
+ int initCuda() {
+     try {
+-        CUresult initResult = cuInit(0);
++        hipError_t initResult = hipInit(0);
+         const char *initErrStr = "<unavailable>";
+-        if (cuGetErrorString(initResult, &initErrStr) != CUDA_SUCCESS ||
++        if (hipDrvGetErrorString(initResult, &initErrStr) != hipSuccess ||
+             initErrStr == nullptr) {
+                 initErrStr = "<unavailable>";
+             }
+-        fprintf(stderr, "cuInit returned %d (%s)\n", initResult,
++        fprintf(stderr, "hipInit returned %d (%s)\n", initResult,
+             initErrStr);
+         checkError(initResult);
+     } catch (std::runtime_error e) {
+@@ -320,7 +305,7 @@ int initCuda() {
+         return 0;
+     }
+     int deviceCount = 0;
+-    checkError(cuDeviceGetCount(&deviceCount));
++    checkError(hipGetDeviceCount(&deviceCount));
+ 
+     if (!deviceCount)
+         throw std::string("No CUDA devices");
+@@ -336,6 +321,18 @@ int initCuda() {
+ template <class T>
+ void startBurn(int index, int writeFd, T *A, T *B, bool doubles, bool tensors,
+                ssize_t useBytes, const char *kernelFile) {
++    // ROCm/fork fix: hipMemcpyHtoD() hangs when the source host buffer was
++    // allocated in the parent and inherited via fork() (copy-on-write). Copy the
++    // matrices into child-owned host memory before they are uploaded.
++    {
++        size_t matBytes = sizeof(T) * SIZE * SIZE;
++        T *Achild = (T *)malloc(matBytes);
++        T *Bchild = (T *)malloc(matBytes);
++        memcpy(Achild, A, matBytes);
++        memcpy(Bchild, B, matBytes);
++        A = Achild;
++        B = Bchild;
++    }
+     GPU_Test<T> *our;
+     try {
+         our = new GPU_Test<T>(index, doubles, tensors, kernelFile);
+@@ -349,20 +346,27 @@ void startBurn(int index, int writeFd, T *A, T *B, bool doubles, bool tensors,
+     try {
+         int eventIndex = 0;
+         const int maxEvents = 2;
+-        CUevent events[maxEvents];
++        hipEvent_t events[maxEvents];
++        for (int i = 0; i < maxEvents; ++i)
++            hipEventCreateWithFlags(events + i, 0);
++
++        // HIP quirk: hipEventQuery() on a never-recorded event returns
++        // hipErrorNotReady (CUDA returns success), which stalls the throttle
++        // loop below after the first batch and leaves the GPU idle. Prime both
++        // events so the initial queries succeed.
+         for (int i = 0; i < maxEvents; ++i)
+-            cuEventCreate(events + i, 0);
++            hipEventRecord(events[i], 0);
+ 
+         int nonWorkIters = maxEvents;
+ 
+         while (our->shouldRun()) {
+             our->compute();
+             our->compare();
+-            checkError(cuEventRecord(events[eventIndex], 0), "Record event");
++            checkError(hipEventRecord(events[eventIndex], 0), "Record event");
+ 
+             eventIndex = ++eventIndex % maxEvents;
+ 
+-            while (cuEventQuery(events[eventIndex]) != CUDA_SUCCESS)
++            while (hipEventQuery(events[eventIndex]) != hipSuccess)
+                 usleep(1000);
+ 
+             if (--nonWorkIters > 0)
+@@ -375,7 +379,7 @@ void startBurn(int index, int writeFd, T *A, T *B, bool doubles, bool tensors,
+         }
+ 
+         for (int i = 0; i < maxEvents; ++i)
+-            cuEventSynchronize(events[i]);
++            hipEventSynchronize(events[i]);
+         delete our;
+     } catch (const std::exception &e) {
+         fprintf(stderr, "Failure during compute: %s\n", e.what());
+@@ -400,9 +404,15 @@ int pollTemp(pid_t *p) {
+         execlp("tegrastats", "tegrastats", "--interval", "5000", NULL);
+         fprintf(stderr, "Could not invoke tegrastats, no temps available\n");
+ #else
+-        execlp("nvidia-smi", "nvidia-smi", "-l", "5", "-q", "-d", "TEMPERATURE",
+-               NULL);
+-        fprintf(stderr, "Could not invoke nvidia-smi, no temps available\n");
++        // AMD/ROCm: emit edge temp (C) per GPU every 5s from sysfs hwmon,
++        // in a simple format that updateTemps() parses.
++        execlp("sh", "sh", "-c",
++               "while :; do "
++               "for h in /sys/class/drm/card*/device/hwmon/hwmon*/temp1_input; do "
++               "[ -r \"$h\" ] && echo \"GPUTEMP $(( $(cat \"$h\") / 1000 ))\"; "
++               "done; sleep 5; done",
++               (char *)NULL);
++        fprintf(stderr, "Could not invoke temp monitor, no temps available\n");
+ #endif
+ 
+         exit(ENODEV);
+@@ -421,8 +431,10 @@ void updateTemps(int handle, std::vector<int> *temps) {
+ 
+     int curPos = 0;
+     do {
+-        read(handle, data + curPos, sizeof(char));
+-    } while (data[curPos++] != '\n');
++        ssize_t n = read(handle, data + curPos, sizeof(char));
++        if (n <= 0)
++            return; // no temp source / pipe closed: avoid buffer overflow
++    } while (data[curPos++] != '\n' && curPos < readSize);
+ 
+     data[curPos - 1] = 0;
+ 
+@@ -438,18 +450,11 @@ void updateTemps(int handle, std::vector<int> *temps) {
+         }
+     }
+ #else
+-    // FIXME: The syntax of this print might change in the future..
+     int tempValue;
+-    if (sscanf(data,
+-               "		GPU Current Temp			: %d C",
+-               &tempValue) == 1) {
++    if (sscanf(data, "GPUTEMP %d", &tempValue) == 1) {
+         temps->at(gpuIter) = tempValue;
+         gpuIter = (gpuIter + 1) % (temps->size());
+-    } else if (!strcmp(data, "		Gpu				"
+-                             "	 : N/A"))
+-        gpuIter =
+-            (gpuIter + 1) %
+-            (temps->size()); // We rotate the iterator for N/A values as well
++    }
+ #endif
+ }
+ 
+@@ -674,7 +679,7 @@ void launch(int runLength, bool useDoubles, bool useTensorCores,
+     ss_model << f_model.rdbuf();
+     printf("%s\n", ss_model.str().c_str());
+ #else
+-    system("nvidia-smi -L");
++    system("rocm-smi --showproductname 2>/dev/null || true");
+ #endif
+ 
+     // Initting A and B with random data
+@@ -833,12 +838,12 @@ int main(int argc, char **argv) {
+                 throw std::runtime_error("No CUDA capable GPUs found.\n");
+             }
+             for (int i_dev = 0; i_dev < count; i_dev++) {
+-                CUdevice device_l;
++                hipDevice_t device_l;
+                 char device_name[255];
+-                checkError(cuDeviceGet(&device_l, i_dev));
+-                checkError(cuDeviceGetName(device_name, 255, device_l));
++                checkError(hipDeviceGet(&device_l, i_dev));
++                checkError(hipDeviceGetName(device_name, 255, device_l));
+                 size_t device_mem_l;
+-                checkError(cuDeviceTotalMem(&device_mem_l, device_l));
++                checkError(hipDeviceTotalMem(&device_mem_l, device_l));
+                 printf("ID %i: %s, %ldMB\n", i_dev, device_name,
+                        device_mem_l / 1000 / 1000);
+             }
