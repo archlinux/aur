@@ -1,13 +1,13 @@
 pkgbase = jcode-bin
 	pkgdesc = AI coding agent powered by Claude and ChatGPT
-	pkgver = 0.30.3
+	pkgver = 0.31.0
 	pkgrel = 1
 	url = https://github.com/1jehuang/jcode
 	arch = x86_64
 	license = MIT
 	provides = jcode
 	conflicts = jcode
-	source = https://github.com/1jehuang/jcode/releases/download/v0.30.3/jcode-linux-x86_64.tar.gz
-	sha256sums = 6a6c7c9dba36f5c5bbf2f80cb9e111c1be5d9f323d1a7fb14c333b3dbbae0adc
+	source = https://github.com/1jehuang/jcode/releases/download/v0.31.0/jcode-linux-x86_64.tar.gz
+	sha256sums = b7916a0b119f0b885d71ed43b7fb8449cd1cd40e4f3c90d7b3788dd14dc2ee0b
 
 pkgname = jcode-bin
