@@ -3,7 +3,7 @@
 _pkgauthor=keircn
 _pkgname=hostman
 pkgname=${_pkgname}-bin
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="A simple file host manager for various image hosting services"
 arch=('x86_64')
@@ -20,8 +20,8 @@ changelog="changelog.md"
 
 source=("fix_libncurses_x86_64.patch")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-x64.tar.gz")
-sha256sums=('1be55f98409584634e7ae3714ba857e9dd54278b906b786ff78a2a71648e8b7f')
-sha256sums_x86_64=('d4e951ebf06125959ab1639908049e0b6593a3ce239e6c1d0775897e437eed40')
+sha256sums=('e0e9081ab0803c530dbd3291b6d76b28a8837645b75e38aa64684267c76aec61')
+sha256sums_x86_64=('2708dafa3f141c8c35d5390dfa6fc65816a6f09ca69ef47388e6a9552b2460cd')
 
 prepare() {
     cd "${srcdir}/${_pkgname}-linux-x64" || exit
