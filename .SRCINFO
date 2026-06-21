@@ -1,6 +1,6 @@
 pkgbase = komai
 	pkgdesc = A fine Matrix chat app you can get to love
-	pkgver = 2026.06.02.0
+	pkgver = 2026.06.21.0
 	pkgrel = 1
 	url = https://github.com/etkecc/komai
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = komai
 	depends = gst-plugins-bad-libs
 	depends = hicolor-icon-theme
 	depends = kdsingleapplication
-	depends = litehtml
 	depends = org.freedesktop.secrets
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-imageformats
 	depends = qt6-multimedia
 	depends = qt6-svg
+	depends = qt6-webengine
 	depends = qtkeychain-qt6
 	optdepends = kimageformats: Support for additional image formats (AVIF, JXL, HEIC, etc.)
 	optdepends = gst-plugins-base-libs: VoIP/Video calls
@@ -32,7 +32,7 @@ pkgbase = komai
 	optdepends = gst-plugin-qml6: Video calls support
 	optdepends = gst-plugin-pipewire: Screen sharing on Wayland (xdg-desktop-portal)
 	options = !lto
-	source = git+https://github.com/etkecc/komai.git#tag=v2026.06.02.0
+	source = git+https://github.com/etkecc/komai.git#tag=v2026.06.21.0
 	sha256sums = SKIP
 
 pkgname = komai

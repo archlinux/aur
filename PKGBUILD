@@ -5,7 +5,7 @@
 # (aur.archlinux.org:komai.git) is kept in sync from the upstream file above.
 # Patches are welcome at the upstream repository, not against the AUR copy.
 pkgname=komai
-pkgver=2026.06.02.0
+pkgver=2026.06.21.0
 pkgrel=1
 pkgdesc="A fine Matrix chat app you can get to love"
 arch=('x86_64')
@@ -21,13 +21,17 @@ depends=(
 	gst-plugins-bad-libs
 	hicolor-icon-theme
 	kdsingleapplication
-	litehtml
 	'org.freedesktop.secrets'
 	qt6-base
 	qt6-declarative
 	qt6-imageformats
 	qt6-multimedia
 	qt6-svg
+	# QtWebEngine hosts the Element Call web bundle (ELEMENT_CALL is ON by
+	# default). On Arch this single package provides the libraries, headers,
+	# cmake config and the QtWebEngineProcess helper, so it is both a build
+	# and runtime dependency. Build with -DELEMENT_CALL=OFF to drop it.
+	qt6-webengine
 	qtkeychain-qt6
 )
 makedepends=(
