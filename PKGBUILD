@@ -6,6 +6,7 @@ pkgdesc="Spatial Wayland compositor built around infinite workspace navigation"
 arch=('x86_64')
 url="https://github.com/saltnpepper97/halley"
 license=('GPL-3.0-or-later')
+options=('!debug' '!lto')
 depends=(
   'wayland'
   'libxkbcommon'
