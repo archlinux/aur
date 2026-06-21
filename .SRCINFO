@@ -1,16 +1,16 @@
 pkgbase = mtgarena
 	pkgdesc = Magic: the Gathering Arena (via Wine)
-	pkgver = 0.1.12269.1265462
+	pkgver = 0.1.12921.1282485
 	pkgrel = 1
 	url = https://magic.wizards.com/en/mtgarena
 	arch = x86_64
 	license = custom
 	makedepends = icoutils
 	depends = wine
-	source = mtgarena-0.1.12269.1265462.msi::https://mtgarena.downloads.wizards.com/Live/Windows32/versions/12269.1265462/MTGAInstaller_0.1.12269.1265462.msi
+	source = mtgarena-0.1.12921.1282485.msi::https://mtgarena.downloads.wizards.com/Live/Windows32/versions/12921.1282485/MTGAInstaller_0.1.12921.1282485.msi
 	source = mtgarena
 	source = mtgarena.desktop
-	sha256sums = 8922ad8a217ad9c1ecbe87900a02f91411c6e1603380a2099fbbaf10a99fe254
+	sha256sums = 74c6d8f931dfeaaeeecf86bf5585434872930be6f640e6142c41f247c5a4f8c1
 	sha256sums = f7389c8dd1dba42a1af5f3fed0fe8f0bea591322a363bc981e9365c1df5e08fd
 	sha256sums = b646e4cbbeefc6d5dab93991d87afa21de3b3e6e54a06b37d92d1a9bfc5528ae
 
