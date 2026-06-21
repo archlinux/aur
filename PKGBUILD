@@ -2,7 +2,7 @@
 
 pkgname=typr-bin
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern type system for R"
 arch=('x86_64')
 url=https://github.com/we-data-ch/typr
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('glibc' 'libgcc')
 conflicts=('typr')
 options=('!debug')
-provides_x86_64=("arf=${pkgver}")
+provides_x86_64=("typr=${pkgver}")
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/we-data-ch/typr/releases/download/v${pkgver}/typr-v$pkgver-$CARCH-unknown-linux-gnu.tar.gz"
                 "https://raw.githubusercontent.com/we-data-ch/typr/refs/tags/v${pkgver}/LICENSE")
 
