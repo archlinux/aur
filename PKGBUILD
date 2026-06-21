@@ -1,10 +1,11 @@
-Maintainer: crowforkotlin <crowforkotlin@gmail.com>
+# Maintainer: crowforkotlin <crowforkotlin@gmail.com>
+
 pkgname=proxypin
 pkgver=1.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform HTTP/HTTPS proxy tool for capturing and manipulating network traffic"
 arch=('x86_64' 'aarch64')
-url="https://github.com/crowforkotlin/proxypin"
+url="https://github.com/wanghongenpin/proxypin"
 license=('Apache-2.0')
 depends=(
     'gtk3'
@@ -29,10 +30,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.desktop"
 )
-sha256sums=(
-    'SKIP'
-    'SKIP'
-)
+sha256sums=('bfbd0db4559bce72acab03974ca1548633ad5b62509d18ea25f7784030638098'
+            '33ccb42b1719c8682334d6b7c059cd6c71dfb054dc9d3966995689b53b3a3606')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
