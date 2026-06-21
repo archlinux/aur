@@ -10,13 +10,13 @@
 # If upgrading, you must read the guidance at http://www.courier-mta.org/maildirmake.html on "Converting pre-unicode format maildirs"
 
 pkgname=courier-mta
-pkgver=1.6.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig"
 arch=(i686 x86_64)
 license=('GPL2')
 url="http://courier-mta.org"
-depends=('courier-authlib>=0.72.5' 'courier-unicode>=2.4.0' 'gcc-libs>=10.0.0' 'gdbm' 'pcre2' 'mime-types' 'ca-certificates' 'libidn2>=2.0.5' 'wget')
+depends=('courier-authlib>=0.72.5' 'courier-unicode>=2.4.0' 'gcc-libs>=10.0.0' 'gdbm' 'pcre2' 'mime-types' 'ca-certificates' 'libidn2>=2.0.5' 'wget' 'ispell')
 optdepends=('libldap')
 makedepends=('pam' 'expect' 'gnupg' 'libldap')
 provides=('smtp-server' 'smtp-forwarder' 'imap-server' 'pop3-server' 'courier-imap' 'courier-maildrop')
@@ -39,7 +39,7 @@ source=(http://downloads.sourceforge.net/project/courier/courier/${pkgver}/couri
 	webmaild.service
 	courier-courierfilter.service
 	courier-mta.conf)
-sha1sums=('538a8487fcf2497d885c7d37b1c97f89af802dc8'
+sha1sums=('ae29570a938e0ac241e00c40c912b9f94e9ace2e'
           '68012617edb5d82a99245bd7a7e319d88580e110'
           '8400fc2538aebbb68933eac3c4d82b4303c61315'
           'c52f436744307d3777a852cfaa85b4ff6345f4a4'
@@ -58,7 +58,6 @@ build() {
   cd "${srcdir}/courier-${pkgver}"
 
   LDFLAGS+=" -L/usr/lib/courier-authlib -lcourierauth"
-  CXXFLAGS+=" -std=gnu++17"
 
   ./configure --prefix=/usr \
     --sbindir=/usr/bin \
