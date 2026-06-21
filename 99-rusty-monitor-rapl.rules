@@ -1,1 +1,0 @@
-SUBSYSTEM=="powercap", ACTION=="add", RUN+="/usr/bin/chmod 0444 /sys/class/powercap/intel-rapl:0/energy_uj"

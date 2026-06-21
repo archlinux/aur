@@ -1,11 +1,8 @@
 post_install() {
-    echo ":: rusty-monitor installed a udev rule to expose the CPU RAPL energy"
-    echo "   counter (/sys/class/powercap/.../energy_uj) for power draw readout."
-    echo "   Reboot or run 'sudo udevadm control --reload && sudo udevadm trigger'"
-    echo "   to apply it without rebooting."
-    echo ":: Note: this re-opens the RAPL energy side-channel (closed by default"
-    echo "   since CVE-2020-8694 / PLATYPUS). On a personal desktop this is"
-    echo "   generally fine, but worth knowing."
+    systemd-tmpfiles --create rusty-monitor-rapl.conf
+    echo ":: RAPL energy counter unlocked for CPU power draw."
+    echo "   (this re-opens the PLATYPUS side-channel from CVE-2020-8694;"
+    echo "    generally fine on a personal desktop, but worth knowing)"
 }
 
 post_upgrade() {
@@ -13,5 +10,5 @@ post_upgrade() {
 }
 
 post_remove() {
-    echo ":: The RAPL udev rule was removed. Reboot to restore default permissions."
+    echo ":: RAPL rule removed. energy_uj returns to root-only on next boot."
 }

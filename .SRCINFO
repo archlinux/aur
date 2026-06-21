@@ -1,7 +1,7 @@
 pkgbase = rusty-monitor
 	pkgdesc = Lightweight system monitor
 	pkgver = r29.a41b5bf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JackpotMachine777/rusty-monitor
 	install = rusty-monitor.install
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = rusty-monitor
 	depends = nvidia-utils
 	options = !strip
 	source = git+https://github.com/JackpotMachine777/rusty-monitor#branch=main
-	source = 99-rusty-monitor-rapl.rules
+	source = rusty-monitor-rapl.conf
 	sha256sums = SKIP
 	sha256sums = SKIP
 

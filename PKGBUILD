@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Kowalski <jackpotmachinedev777@gmail.com>
 pkgname='rusty-monitor'
 pkgver=r29.a41b5bf
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight system monitor"
 arch=('x86_64')
 url="https://github.com/JackpotMachine777/rusty-monitor"
@@ -11,7 +11,7 @@ makedepends=('nodejs' 'npm' 'rust' 'pkg-config' 'gcc' 'make' 'git' 'clang' 'lld'
 options=(!strip)
 install='rusty-monitor.install'
 source=("git+https://github.com/JackpotMachine777/rusty-monitor#branch=main"
-        "99-rusty-monitor-rapl.rules")
+        "rusty-monitor-rapl.conf")
 sha256sums=('SKIP'
             'SKIP')
 
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
-  
+
   npm run build
 
   export NO_STRIP=true
@@ -61,6 +61,6 @@ Categories=Utility;
 EOF
 
     install -Dm644 src-tauri/icons/sysmon.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/rusty-monitor.png"
-    install -Dm644 "$srcdir/99-rusty-monitor-rapl.rules" \
-        "$pkgdir/usr/lib/udev/rules.d/99-rusty-monitor-rapl.rules"
+    install -Dm644 "$srcdir/rusty-monitor-rapl.conf" \
+        "$pkgdir/usr/lib/tmpfiles.d/rusty-monitor-rapl.conf"
 }
