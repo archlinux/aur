@@ -1,4 +1,4 @@
-# Maintainer: Goodi <goodi@users.noreply.github.com>
+# Maintainer: Goodarz <1831847+a-goodarzi@users.noreply.github.com>
 
 pkgname=coverup-pdf
 pkgver=0.4.2
