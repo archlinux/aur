@@ -1,6 +1,6 @@
 pkgbase = cosmic-workspaces-git
 	pkgdesc = Cosmic workspaces
-	pkgver = 1.0.7.r4.g87dca9e
+	pkgver = 1.0.16.r0.g5e62de1
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-workspaces-epoch
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = cosmic-workspaces-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = mold
+	depends = cosmic-icons-git
 	depends = libinput
 	depends = libxkbcommon
 	depends = mesa

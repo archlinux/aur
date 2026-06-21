@@ -1,12 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-workspaces-git
-pkgver=1.0.7.r4.g87dca9e
+pkgver=1.0.16.r0.g5e62de1
 pkgrel=1
 pkgdesc="Cosmic workspaces"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-workspaces-epoch"
 license=('GPL-3.0-only')
 depends=(
+  'cosmic-icons-git'
   'libinput'
   'libxkbcommon'
   'mesa'
@@ -36,7 +37,7 @@ prepare() {
   patch -Np1 -i ../lto.patch
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -47,7 +48,7 @@ build() {
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  ARGS+=" --frozen" nice make
+  nice make ARGS+=" --frozen --release"
 }
 
 package() {
