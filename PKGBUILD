@@ -6,7 +6,7 @@
 # after each successful build before pushing to AUR.
 
 pkgname=polify-bin
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Cross-platform music manager with multi-source library, audio fingerprinting, and ID3 tag editing"
 arch=('x86_64')
