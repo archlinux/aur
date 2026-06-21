@@ -29,7 +29,7 @@ fi
 if [ "${_opt_UTIL}" -eq 1 ]; then
   pkgname+=("zfs-utils${_opt_git}")
 fi
-pkgver=2.3.99.r212.gfe674998bb
+pkgver=2.4.99.r705.gc0f62d4fdf
 pkgrel=1
 _pkgver="${pkgver%%.r*}"
 #_commit="#branch=zfs-${_pkgver%.*}-release"
@@ -73,12 +73,6 @@ sha256sums=('SKIP'
             'da1cdc045d144d2109ec7b5d97c53a69823759d8ecff410e47c3a66b69e6518d'
             '9c20256093997f7cfa9e7eb5d85d4a712d528a6ff19ef35b83ad03fb1ceae3bc'
             'ac9ed396465e26fa6896762c52a93eb7aaf8af6d7b2c69bd826d219ff821b2c9')
-b2sums=('SKIP'
-        'becb6d74105f79e41b653abe41e3666d0c67c5640de30a512a425deaed83a49113526e66930a30fb0f61d04867f7b9b5c562c8638ab095f0c1be5db46cab7950'
-        '7eb3408b1354a4dd504000739101afc7ec0aed1afcdfa029552bf6989e9a8cd4a95b3d3563b3fb7902afa30a80fb01a3f5a2d5af82f9c734c48b5cc23aac25ca'
-        '570e995bba07ea0fb424dff191180b8017b6469501964dc0b70fd51e338a4dad260f87cc313489866cbfd1583e4aac2522cf7309c067cc5314eb83c37fe14ff3'
-        'e14366cbf680e3337d3d478fe759a09be224c963cc5207bee991805312afc49a49e6691f11e5b8bbe8dde60e8d855bd96e7f4f48f24a4c6d4a8c1bab7fc2bba0'
-        'fcd871d72c62a7c99d6cf29cb40a4751bfc08238ff39e8c9440d119754e92ded4705414710db86e99d044011f3524e54c778bda94696dde2c06b3289da6628d0')
 
 _extramodules="$(uname -r)"
 
@@ -96,7 +90,7 @@ _fn_calc_extramodules() {
     fi
   done
   if [ ! -z "${_fmax}" ] && [ "${_extramodules}" != "${_fmax}" ]; then
-    set +u; msg "Found upgraded kernel ${_fmax}"; set -u
+    echo "Found upgraded kernel ${_fmax}"
     _extramodules="${_fmax}"
   fi
 }
@@ -105,18 +99,15 @@ if [ ! -z "${_opt_git}" ]; then
   source[0]="git+https://github.com/zfsonlinux/zfs.git${_commit:-}"
   md5sums[0]='SKIP'
   sha256sums[0]='SKIP'
-  b2sums[0]='SKIP'
 pkgver() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
   git describe --long | sed -e 's/^zfs-//' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
-  set +u
 }
 elif [ "${_pkgver}" != "${pkgver}" ]; then
 pkgver() {
-  set -u
+  local -; set -u
   echo "${_pkgver}"
-  set +u
 }
 fi
 
@@ -129,7 +120,7 @@ if [ ! -z "${HOME:-}" ]; then # block mksrcinfo
 fi
 
 prepare() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
 
   #From: Eli Schwartz <eschwartz@archlinux.org>
@@ -158,11 +149,10 @@ prepare() {
 }" -i 'configure.ac'
     popd > /dev/null
   fi
-  set +u
 }
 
 build() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
   if [ ! -s 'configure' ]; then
     ./autogen.sh
@@ -237,11 +227,10 @@ build() {
   rm -rf "${srcdir}/inst"
   install -d "${srcdir}/inst"
   make -s -j1 DESTDIR="${srcdir}/inst" install
-  set +u
 }
 
 package_zfs-linux-git() {
-  set -u
+  local -; set -u
   pkgdesc='Kernel modules for the Zettabyte File System.'
   install='zfs.install'
   provides=("zfs=${_pkgver}" "zfs-linux=${_pkgver}" "spl=${_pkgver}")
@@ -290,7 +279,6 @@ package_zfs-linux-git() {
     cp scripts/enum-extract.pl scripts/dkms.postbuild "${_dkmsdir}"/scripts/
     popd > /dev/null
   fi
-  set +u
 }
 _z="$(declare -f package_zfs-linux-git)"; eval "${_z//-git/}"
 
@@ -329,7 +317,7 @@ _del_modules() {
 }
 
 package_zfs-utils-git() {
-  set -u
+  local -; set -u
   pkgdesc='Userspace utilities for the Zettabyte File System.'
   depends=('systemd')
   optdepends=(
@@ -345,7 +333,6 @@ package_zfs-utils-git() {
   _fix_modules
   _del_modules
   _del_headers
-  set +u
 }
 _z="$(declare -f package_zfs-utils-git)"; eval "${_z//-git/}"
 
@@ -359,7 +346,7 @@ _fix_utils() {
 
   # Remove uneeded files
   rm -r "${pkgdir}"/etc/init.d
-  rm -r "${pkgdir}"/etc/sudoers.d #???
+  rm -fr "${pkgdir}"/etc/sudoers.d #???
   # We're experimenting with dracut in [extra], so start installing this.
   #rm -r "${pkgdir}"/usr/lib/dracut
   rm -r "${pkgdir}"/usr/lib/modules-load.d
@@ -372,7 +359,7 @@ _fix_utils() {
 }
 
 package_zfs-linux-git-headers() {
-  set -u
+  local -; set -u
   pkgdesc='Kernel headers for the Zettabyte File System.'
   depends=("zfs-utils=${_pkgver}")
   provides=("zfs-headers=${_pkgver}" "zfs-linux-headers=${_pkgver}" "spl-headers=${_pkgver}")
@@ -388,7 +375,6 @@ package_zfs-linux-git-headers() {
   # Remove reference to ${srcdir}
   _fn_calc_extramodules
   sed -e "s+${srcdir}++" -i "${pkgdir}"/usr/src/zfs-*/${_extramodules}/Module.symvers
-  set +u
 }
 _z="$(declare -f package_zfs-linux-git-headers)"; eval "${_z//-git/}"
 unset _z
