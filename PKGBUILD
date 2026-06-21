@@ -1,16 +1,16 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-
 pkgname=cosmic-app-library-git
-pkgver=1.0.6.r1.g2be09f0
+pkgver=1.0.16.r0.g1eb859f
 pkgrel=1
 pkgdesc="An application launcher for the COSMIC desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-applibrary"
 license=('GPL-3.0-only')
 depends=(
-  'hicolor-icon-theme'
-  'libxkbcommon')
+  'cosmic-icons-git'
+  'libxkbcommon'
+)
 makedepends=(
   'cargo'
   'git'
@@ -30,7 +30,7 @@ pkgver() {
 prepare() {
   cd cosmic-applibrary
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -41,7 +41,7 @@ build() {
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  nice just build-release
+  nice just build-release --frozen
 }
 
 package() {
