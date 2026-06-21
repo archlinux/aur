@@ -20,6 +20,7 @@ pkgbase = osxcross-git
 	conflicts = apple-darwin-osxcross
 	noextract = MacOSX10.11.sdk.tar.xz
 	options = !strip
+	options = !lto
 	source = git+https://github.com/tpoechtrager/osxcross.git
 	source = https://web.archive.org/https://s3.dockerproject.org/darwin/v2/MacOSX10.11.sdk.tar.xz
 	md5sums = SKIP
