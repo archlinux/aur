@@ -1,6 +1,6 @@
 # Maintainer: Manuel Alcocer J <m.alcocer1978@gmail.com>
 pkgname=amule-remote-qt
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Qt remote control for the aMule daemon over the EC protocol"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('qt6-base' 'qt6-svg')
 makedepends=('cmake' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9037ddf5e52b46adfbba583e1897fd1afe91f9186d87a689e10e32447dc16f41')
+sha256sums=('bd1477355200a35b701e99a9cff4a0709c9c6661b254035279e6604367b405c3')
 
 build() {
   cmake -S "$pkgname-$pkgver" -B build -G Ninja \
