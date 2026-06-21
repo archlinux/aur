@@ -1,7 +1,7 @@
 # Maintainer: Vatteck <vatteck@gmail.com>
 pkgname=atlas-pm-git
 _srcname=atlas
-pkgver=0.13.0.r337.gfb8ef88
+pkgver=0.13.0.r339.gae61209
 pkgrel=1
 pkgdesc="Arch-focused graphical package manager (Arch/AUR, Flatpak, AppImage)"
 arch=('any')
