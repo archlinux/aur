@@ -1,0 +1,23 @@
+pkgbase = noumena-code-git
+	pkgdesc = Noumena Code (ncode) - open-source terminal AI coding agent, optimized for Noumena's inference stack
+	pkgver = 0.1.0.r14.g20343de6
+	pkgrel = 1
+	url = https://github.com/noumena-network/code
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = bun
+	makedepends = rust
+	makedepends = openssl
+	depends = glibc
+	depends = gcc-libs
+	depends = icu
+	depends = openssl
+	provides = noumena-code
+	conflicts = noumena-code
+	options = !strip
+	options = !debug
+	source = noumena-code-git::git+https://github.com/noumena-network/code.git
+	sha256sums = SKIP
+
+pkgname = noumena-code-git
