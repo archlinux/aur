@@ -1,0 +1,15 @@
+pkgbase = python-ngram
+	pkgdesc = A set subclass providing fuzzy search based on N-gram
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = https://github.com/gpoulter/python-ngram
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/n/ngram/ngram-4.0.3.tar.gz
+	sha256sums = 06d1809ee2fedddced6065dcd19826c61318787d47bf4f10b1c011783d419aa6
+
+pkgname = python-ngram
