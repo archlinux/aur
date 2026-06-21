@@ -1,7 +1,7 @@
 pkgbase = ffmpeg5.1
 	pkgdesc = Complete solution to record, convert and stream audio and video (legacy v5.1 branch, with libavcodec v59)
-	pkgver = 5.1.8
-	pkgrel = 2
+	pkgver = 5.1.10
+	pkgrel = 1
 	epoch = 1
 	url = https://ffmpeg.org
 	arch = aarch64
@@ -79,7 +79,7 @@ pkgbase = ffmpeg5.1
 	optdepends = ladspa: LADSPA filters
 	provides = ffmpeg-compat-59
 	conflicts = ffmpeg-compat-59
-	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=n5.1.8
+	source = git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=n5.1.10
 	validpgpkeys = DD1EC9E8DE085C629B3E1846B18E8928B3948D64
 	b2sums = SKIP
 	depends_x86_64 = libmfx

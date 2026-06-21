@@ -12,8 +12,8 @@
 
 _pkgname=ffmpeg
 pkgname="${_pkgname}5.1"
-pkgver=5.1.8
-pkgrel=2
+pkgver=5.1.10
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (legacy v5.1 branch, with libavcodec v59)'
 arch=(aarch64 i686 x86_64)
