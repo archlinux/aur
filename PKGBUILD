@@ -33,8 +33,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.zip::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.zip")
 sha256sums=('7e331c8d7ad76b984c11c23de3b860e9f93cae4bad82c264475788a5fc6866ac'
             'b1f7cd544c998e25bcc990abc8c1f7c46d01b3a2ec61efb454ea932cbcc69445')
-sha256sums_x86_64=('78e21b2fe43d2fca364709faa412cedb0a63abbac0ee69c83b78b2ab0d3603df')
-sha256sums_aarch64=('4e27e98af2e3a3829285bf74f20fb3d30788a14f28d904452bf29c7e9890051f')
+sha256sums_x86_64=('45a18cc48f591abdaaede75793f572fb46de69f82e27469f84e6b30926f3d1ae')
+sha256sums_aarch64=('cc57cde35f3d92c09980b91bb3cc8f0f94501fbb7556b84377b05590b7f6873e')
 
 
 pkgver() {
