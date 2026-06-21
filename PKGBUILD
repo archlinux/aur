@@ -1,6 +1,6 @@
 # Maintainer: Zeal Wierslee <zeal@wierslee.me>
 pkgname=sugarjar
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="A git/github helper inspired by arcanist (and others)"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/jaymzh/sugarjar"
 license=('Apache')
 depends=('git' 'github-cli' 'libxcrypt-compat' 'ruby' 'rubygems' 'ruby-mixlib-log' 'ruby-mixlib-shellout' 'ruby-pastel' 'ruby-deep_merge' 'ruby-rspec' 'glab')
 source=("https://github.com/jaymzh/sugarjar/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("abccb802954dbf1cf37941516e3f750c64d56f24c99a730585c49609135f3456")
+sha256sums=("67c3a9475e6a37df5447a8346c51f5d62b9993b751280611dca8f05cd36403ad")
 
 package() {
   local _gemdir="$(env -i ruby -e'puts Gem.default_dir')"
@@ -42,10 +42,5 @@ check() {
   local _gemdir="$(env -i ruby -e'puts Gem.default_dir')"
   cd "$pkgname-$pkgver"
 
-  #rspec .
-
-  # Temporarily disable this tests to work around an issue
-  # with forge_host not being properly mocked in the unit tests.
-  # Shouldn't be necessary after 3.0.0
-  rspec --exclude-pattern './spec/commands_spec.rb' .
+  rspec .
 }
