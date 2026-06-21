@@ -1,6 +1,6 @@
 pkgbase = reverbic-bin
 	pkgdesc = All-in-one terminal player — Radio, Spotify & YouTube.
-	pkgver = 1.5.6
+	pkgver = 1.5.7
 	pkgrel = 1
 	url = https://github.com/sewandev/Reverbic
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = reverbic-bin
 	provides = reverbic
 	conflicts = reverbic
 	options = !strip
-	source = README-1.5.6.md::https://raw.githubusercontent.com/sewandev/Reverbic/v1.5.6/README.md
-	source = LICENSE-1.5.6::https://raw.githubusercontent.com/sewandev/Reverbic/v1.5.6/LICENSE
+	source = README-1.5.7.md::https://raw.githubusercontent.com/sewandev/Reverbic/v1.5.7/README.md
+	source = LICENSE-1.5.7::https://raw.githubusercontent.com/sewandev/Reverbic/v1.5.7/LICENSE
 	sha256sums = 135debdd1fed3f4926d080280cd9d3dc756ca31de0af71b4248e8d2f9e0ac1f8
 	sha256sums = 746e5a753e38e8188a5839559aca0bd9a4c3b4b698138e7597b71b0ac39a16d3
-	source_x86_64 = reverbic-x86_64-1.5.6.tgz::https://github.com/sewandev/Reverbic/releases/download/v1.5.6/Reverbic-v1.5.6-x86_64-linux.tar.gz
-	sha256sums_x86_64 = c2646579a6597749956fd171b8f6ec11973512ea7b02568d6bd10044a1a3b855
+	source_x86_64 = reverbic-x86_64-1.5.7.tgz::https://github.com/sewandev/Reverbic/releases/download/v1.5.7/Reverbic-v1.5.7-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 863fbc4aa234d82048b53651508a0e12ebfbe35b29a6fc59e2195eb895206003
 
 pkgname = reverbic-bin
