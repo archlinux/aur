@@ -1,9 +1,8 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-
 pkgname=cosmic-bg-git
-pkgver=1.0.0.beta.1.r0.g40254a7
-pkgrel=2
+pkgver=1.0.16.r0.gb1ca4c1
+pkgrel=1
 pkgdesc="COSMIC session service which applies backgrounds to displays."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-bg"
@@ -39,7 +38,7 @@ prepare() {
   patch -Np1 -i ../lto.patch
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -50,7 +49,7 @@ build() {
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  nice just build-release
+  nice just build-release --frozen
 }
 
 package() {
