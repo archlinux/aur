@@ -119,6 +119,11 @@ build() {
     -e "s|process\.resourcesPath|'/usr/share/${_pkgname}/resources'|g" \
     core/resources/app/bundle.js
   sed -i -e "s|process\.resourcesPath|'/usr/share/${_pkgname}/resources'|" core/resources/app/splashScreenPreload.js
+
+  # This is required to properly show the window icon under wayland
+  jq ".desktopName = \"${_pkgname}.desktop\"" core/resources/app/package.json > tmp.json
+  mv tmp.json core/resources/app/package.json
+
   asar p core/resources/app core/resources/app.asar
   rm -rf core/resources/app
 
