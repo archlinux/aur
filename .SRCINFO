@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-obs
 	pkgdesc = Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD
-	pkgver = 8.1.1
-	pkgrel = 2
+	pkgver = 8.1.2
+	pkgrel = 1
 	url = https://ffmpeg.org/
 	arch = x86_64
 	arch = aarch64
@@ -29,7 +29,7 @@ pkgbase = ffmpeg-obs
 	depends = fribidi
 	depends = glib2
 	depends = glibc
-	depends = glslang>=1.4.350
+	depends = glslang>=1.4.350.1
 	depends = gmp
 	depends = gnutls
 	depends = gsm
@@ -83,7 +83,7 @@ pkgbase = ffmpeg-obs
 	depends = vid.stab>=1.1.1
 	depends = vulkan-icd-loader
 	depends = x264>=0.164
-	depends = x265>=4.1
+	depends = x265>=4.2
 	depends = xvidcore
 	depends = xz
 	depends = zeromq
@@ -97,7 +97,7 @@ pkgbase = ffmpeg-obs
 	optdepends = ladspa: LADSPA filters
 	optdepends = nvidia-utils: Nvidia NVDEC/NVENC support
 	optdepends = vpl-runtime: Intel QuickSync support
-	provides = ffmpeg=8.1.1
+	provides = ffmpeg=8.1.2
 	provides = libavcodec.so
 	provides = libavdevice.so
 	provides = libavfilter.so
@@ -106,7 +106,7 @@ pkgbase = ffmpeg-obs
 	provides = libswresample.so
 	provides = libswscale.so
 	conflicts = ffmpeg
-	source = ffmpeg-src::git+https://code.ffmpeg.org/FFmpeg/FFmpeg.git#tag=239f2c733de417201d7ad3b3b8b0d9b63285b2b1
+	source = ffmpeg-src::git+https://code.ffmpeg.org/FFmpeg/FFmpeg.git#tag=38b88335f99e76ed89ff3c93f877fdefce736c13
 	source = obs-deps::git+https://github.com/obsproject/obs-deps.git#tag=2024-09-12
 	source = 0001-Add-av_stream_get_first_dts-for-Chromium.patch
 	sha256sums = SKIP
