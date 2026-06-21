@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-idle-git
-pkgver=1.0.0.alpha.7.r0.g267bb83
+pkgver=1.0.16.r0.gc95d066
 pkgrel=1
 pkgdesc="Cosmic idle daemon"
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
