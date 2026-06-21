@@ -1,36 +1,32 @@
 pkgname=factorio-demo
 pkgver=2.0.76
-pkgrel=1
+pkgrel=2
 pkgdesc="A game in which you build and maintain factories"
 arch=(x86_64)
 url="http://www.factorio.com/"
-license=('custom: commercial')
-depends=('libxcursor' 'alsa-lib' 'libxrandr' 'libxinerama' 'mesa')
+license=(LicenseRef-factorio)
+depends=(glibc)
+makedepends=(xz)
 conflicts=('factorio' 'factorio-headless' 'factorio-experimental')
-makedepends=('xz')
 source=(factorio-demo_linux_${pkgver}.tar.xz::http://www.factorio.com/get-download/${pkgver}/demo/linux64
         factorio.desktop
         LICENSE
 )
 sha256sums=('d5caee49636290b678d35adc59d2fc80ecbdbad8bf420731f1317971c89f941b'
-            '61f62d75491147fbc6853cd7fa3a6f287227c3f5fc70dd9f4ec4083ebc31b743'
-            'bc7f224b0fcc4cec82f5ca950b1c042251e27b0bcd0bf98f7945e09413a3c561')
-# no modifications needed, the executable looks for:
-# - data in /usr/share/factorio
-# - config in ~/.factorio
+            '8b5d83c82c2b93b7765e6a51abca11dd53858a47a5bb5c5a36591b8dec9173a6'
+            '02b42f985d69541660200cd286642b3e9c9af070f95b95588910c9bf93044aa7')
 
 package() {
-  cd "${srcdir}/factorio"
+  cd "${srcdir}"
 
-  install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/usr/share/applications"
+  install -Dm644 factorio.desktop -t "${pkgdir}/usr/share/applications/"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+
+  cd factorio
+  install -Dm755 bin/x64/factorio -t "${pkgdir}/usr/bin/"
+
   install -d "${pkgdir}/usr/share/factorio"
-  install -d "${pkgdir}/usr/share/licenses/factorio-demo"
-
-  install -m755 "bin/x64/factorio" "${pkgdir}/usr/bin/factorio"
   cp -r data/* "${pkgdir}/usr/share/factorio"
-  install -m644 "${srcdir}/factorio.desktop" "${pkgdir}/usr/share/applications/factorio.desktop"
-  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/factorio-demo/LICENSE"
 }
 
 check() {
