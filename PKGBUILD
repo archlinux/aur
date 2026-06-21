@@ -3,7 +3,7 @@
 _gemname=gepub
 pkgname="ruby-$_gemname"
 
-pkgver=1.0.17
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="gepub is a generic EPUB parser/generator. Generates and parse EPUB2 and EPUB3"
 
@@ -19,7 +19,7 @@ depends=( "ruby"
 options=(!emptydirs)
 source=( "https://rubygems.org/downloads/$_gemname-$pkgver.gem" )
 noextract=( "$_gemname-$pkgver.gem" )
-sha256sums=( "8c72dd33f47a437bddde1cef6d8d6a9d5cd4721c79bb8d2df70f66bf9fb33c3a" )
+sha256sums=( "b7f2667d6edcb034b8e8809293b245b62b2815de12b950ad4a282bcafe73b15b" )
 
 package() {
 	local _gemdir="$(ruby -e'puts Gem.default_dir')"
