@@ -1,4 +1,5 @@
 pkgbase = ttf-noto-vf
+	pkgdesc = Google Noto font (Variable weight and width, TTF)
 	pkgver = 2026.06.01
 	pkgrel = 1
 	url = https://fonts.google.com/noto
@@ -8,25 +9,6 @@ pkgbase = ttf-noto-vf
 	provides = noto-fonts
 	provides = noto-fonts-extra
 	source = https://github.com/notofonts/notofonts.github.io/archive/refs/tags/noto-monthly-release-2026.06.01.tar.gz
-	source = 46-noto-sans-vf.conf
-	source = 46-noto-serif-vf.conf
-	source = 46-noto-sans-mono-vf.conf
-	source = 66-noto-sans-vf.conf
-	source = 66-noto-serif-vf.conf
-	source = 66-noto-sans-mono-vf.conf
-	sha256sums = 2f8539d08b9b6c73e86dce670eaa46e1d47d2330137ccb11ef4c69b27c865601
-	sha256sums = 83a8faf6a47954075f97a2d555048e2a6689c38603b2ca00150157bf645f4593
-	sha256sums = c94368b24506770767d003e5bcba589a8e402e489c240ee52453bf3ac7e9b5fa
-	sha256sums = f5c09b37280d7569b6c99a78511639be4ae25b8c5406464422fe0421fe13a884
-	sha256sums = 52684bebf6447be22618d2a04ff37623ec92f9d8ccf6b6f972e5bcbcfee90d69
-	sha256sums = 4459944b63dc083107280f5d7375c69746bf80a09416a4a4909a100e58e5a33a
-	sha256sums = 4526289f59654e2a81dc734669a1ae4e416f9a56d0896ec3741c6bf065baf8a8
+	b2sums = 37b8953291f6a472e7006e576fad99d2a476f6bc55af70296057f39cd6f1c179cf54325b82af2d8bbe2be8dc0fa2b2e9d953a9ed66b8358c8a65f52548efb355
 
-pkgname = ttf-noto-sans-vf
-	pkgdesc = Google Noto Sans font (Variable weight and width, TTF)
-
-pkgname = ttf-noto-serif-vf
-	pkgdesc = Google Noto Serif font (Variable weight and width, TTF)
-
-pkgname = ttf-noto-sans-mono-vf
-	pkgdesc = Google Noto Sans Mono font (Variable weight and width, TTF)
+pkgname = ttf-noto-vf
