@@ -1,7 +1,7 @@
 # Rclone-WIZ
 ### A Graphical Rclone Mount Helper for Linux
 
-[![Version](https://img.shields.io/badge/Version-1.7.2-blue.svg)](https://github.com/themix88/Clone-WIZ/Rclone-WIZ)
+[![Version](https://img.shields.io/badge/Version-1.7.3-blue.svg)](https://github.com/themix88/Clone-WIZ/Rclone-WIZ)
 [![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 
 Rclone-WIZ is a user-friendly graphical utility designed to simplify the process of configuring, scripting, and mounting cloud storage remotes using `rclone` on Linux systems. It aims to provide an intuitive interface for managing your cloud drives, making `rclone` more accessible to a wider audience.

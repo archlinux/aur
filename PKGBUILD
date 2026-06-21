@@ -1,7 +1,7 @@
 # Maintainer: Miran Kljun <miran.kljun@gmail.com>
 pkgname=rclone-wiz
-pkgver=1.7.2
-pkgrel=11
+pkgver=1.7.3
+pkgrel=12
 pkgdesc="A simple and easy to use tool to configure, script, and mount cloud drives using rclone"
 arch=('any')
 url="https://github.com/themix88/Clone-WIZ"
@@ -19,6 +19,8 @@ optdepends=(
     'alacritty: Supported terminal for rclone config'
     'gnome-terminal: Supported terminal for rclone config'
     'xterm: Supported terminal for rclone config'
+    'kitty: Supported terminal for rclone config'
+    'ghostty: Supported terminal for rclone config'
 )
 
 # We include the .desktop file and VERSION in the source array so makepkg finds them

@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.7.3] - 2026-06-21
+### Minor
+- **Added** kitty and ghostty to the list of supported terminal emulators for configuration fallback, enhancing compatibility across different Linux distributions and desktop environments.
+
 ## [1.7.2] - 2026-06-20
 ### Minor
 - Refactor mount script execution and enhance error handling; improve UI feedback and script management

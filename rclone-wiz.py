@@ -949,7 +949,7 @@ class RcloneKdeApp(QMainWindow):
         
         about_html = """
         <div style="font-family: sans-serif;">
-            <h2 style="color: #3daee9;">Rclone-WIZ 1.7.2</h2>
+            <h2 style="color: #3daee9;">Rclone-WIZ 1.7.3</h2>
             <p>A simple and easy-to-use tool to configure, script, and mount cloud drives using rclone.</p>
             <hr>
             <p><b>Created by:</b> Miran Kljun<br>
@@ -1036,7 +1036,8 @@ class RcloneKdeApp(QMainWindow):
             ["xfce4-terminal", "-x", "rclone", "config"],
             ["xterm", "-e", "rclone", "config"],
             ["alacritty", "-e", "rclone", "config"],
-            ["kitty", "rclone", "config"]
+            ["kitty", "rclone", "config"],
+            ["ghostty", "-e", "rclone", "config"]
         ]
         
         launched = False
