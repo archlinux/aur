@@ -1,6 +1,6 @@
 pkgbase = metacubexd-bin
 	pkgdesc = Clash.Meta Dashboard, The Official One, XD (Precompiled version)
-	pkgver = 1.258.4
+	pkgver = 1.260.0
 	pkgrel = 1
 	url = https://github.com/MetaCubeX/metacubexd
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = metacubexd-bin
 	optdepends = mihomo: Another Clash Kernel by MetaCubeX
 	provides = metacubexd
 	conflicts = metacubexd
-	source = metacubexd-bin-1.258.4.tgz::https://github.com/MetaCubeX/metacubexd/releases/download/v1.258.4/compressed-dist.tgz
+	source = metacubexd-bin-1.260.0.tgz::https://github.com/MetaCubeX/metacubexd/releases/download/v1.260.0/compressed-dist.tgz
 	source = https://github.com/MetaCubeX/metacubexd/raw/main/LICENSE
-	sha256sums = 258ee93283627f1b5a401d9bca5d1ee3c7d2a5d6c39795eafa806137039ad3a4
+	sha256sums = 29828bd96a2ecdd6443dd88667f43f3b4c8ffdb065978ebc1ca6323e2125cf8e
 	sha256sums = cd0735ba06f26a0008bbca399890c7ca87fe129aacc302c2e33fb03e60a4e8c3
 
 pkgname = metacubexd-bin
