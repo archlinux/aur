@@ -1,7 +1,7 @@
 pkgbase = ticker-bin
 	pkgdesc = Terminal stock ticker with live updates and position tracking
-	pkgver = 5.2.1
-	pkgrel = 2
+	pkgver = 5.3.0
+	pkgrel = 1
 	url = https://github.com/achannarasappa/ticker
 	arch = x86_64
 	arch = armv6h
@@ -10,11 +10,11 @@ pkgbase = ticker-bin
 	provides = ticker
 	conflicts = ticker
 	options = !strip
-	source_x86_64 = ticker-x86_64-5.2.1.tgz::https://github.com/achannarasappa/ticker/releases/download/v5.2.1/ticker-5.2.1-linux-amd64.tar.gz
-	sha256sums_x86_64 = 6c61882de840d20db449c77b4830cab945c44fd811f5f05b333160adab9098a4
-	source_armv6h = ticker-armv6h-5.2.1.tgz::https://github.com/achannarasappa/ticker/releases/download/v5.2.1/ticker-5.2.1-linux-armv6.tar.gz
-	sha256sums_armv6h = c91d7cb95ad1f255aaa87e4de18a4d7bb13f5aca8eb37018729d18fa8f23a5cb
-	source_aarch64 = ticker-aarch64-5.2.1.tgz::https://github.com/achannarasappa/ticker/releases/download/v5.2.1/ticker-5.2.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = 69058bceec7cc72b6628ab01d6f0231020b4147639795dfcf34c8ecaa88bce72
+	source_x86_64 = ticker-x86_64-5.3.0.tgz::https://github.com/achannarasappa/ticker/releases/download/v5.3.0/ticker-5.3.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = fa4991f1c963559d0a27dec6ddc35cff411954a6f62ae3c2c3dc24d9ffedc12a
+	source_armv6h = ticker-armv6h-5.3.0.tgz::https://github.com/achannarasappa/ticker/releases/download/v5.3.0/ticker-5.3.0-linux-armv6.tar.gz
+	sha256sums_armv6h = fee26efb61f7c64f1a9b10315c790e6021bb0ea466e108887c90500c0d675a13
+	source_aarch64 = ticker-aarch64-5.3.0.tgz::https://github.com/achannarasappa/ticker/releases/download/v5.3.0/ticker-5.3.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 98f1316362cd48a2a235bb2088fc8b7514e58aaeb6b3a3992e0b70facfde94ca
 
 pkgname = ticker-bin
