@@ -1,7 +1,7 @@
 # Maintainer: NewYearPrism
 
 _ggml_version=0.15.2
-pkgname=ggml-vulkan
+pkgname=ggml-vulkan-engine
 pkgver=${_ggml_version}
 pkgrel=1
 pkgdesc='Vulkan backend for ggml'

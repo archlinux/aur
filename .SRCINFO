@@ -1,4 +1,4 @@
-pkgbase = ggml-vulkan
+pkgbase = ggml-vulkan-engine
 	pkgdesc = Vulkan backend for ggml
 	pkgver = 0.15.2
 	pkgrel = 1
@@ -21,4 +21,4 @@ pkgbase = ggml-vulkan
 	options = lto
 	options = !debug
 
-pkgname = ggml-vulkan
+pkgname = ggml-vulkan-engine
