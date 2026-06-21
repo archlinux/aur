@@ -1,13 +1,13 @@
 pkgbase = mill-global
 	pkgdesc = Mill Build Tool, global installation
-	pkgver = 1.1.6
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://github.com/com-lihaoyi/mill
 	arch = any
 	license = MIT
-	source = https://repo1.maven.org/maven2/com/lihaoyi/mill-dist/1.1.6/mill-dist-1.1.6-mill.sh
+	source = https://repo1.maven.org/maven2/com/lihaoyi/mill-dist/1.1.7/mill-dist-1.1.7-mill.sh
 	source = https://raw.githubusercontent.com/lefou/mill-bash-completion/dfd5ac9b8b0d08b0a22596e88f0f4b1d15abcfd4/mill.complete.sh
-	sha256sums = af73fadc1fa005e43962bcd529690f448592f4e0786a90b712ac6509378a9eb2
+	sha256sums = 5044a3d858085e9720ad43228b8fccc65167649e96172a145f9d567029a94f8b
 	sha256sums = bf293fbc521cc0c8108cbbc3580adc81cbf470380b4f5cd160af075a5f1214e0
 
 pkgname = mill-global
