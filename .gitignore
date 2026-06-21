@@ -1,4 +1,5 @@
 pkg
 src
 iocaine
+iocaine-*-x86_64-*.log
 *.pkg.tar.zst

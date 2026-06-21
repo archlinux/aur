@@ -7,7 +7,7 @@ pkgdesc='The deadliest poison known to AI'
 arch=('any')
 url='https://iocaine.madhouse-project.org/'
 license=('MIT')
-makedepends=('cargo' 'just' 'clang')
+makedepends=('git' 'cargo' 'just' 'clang' 'nftables')
 optdepends=('nginx: when using nginx as reverse proxy'
 			'caddy: when using caddy as reverse proxy')
 backup=('etc/iocaine/config.kdl')
