@@ -1,4 +1,5 @@
 # Maintainer: Victor Lavaud <victor.lavaud@pm.me>
+# Contributor: Victor Lavaud <victor.lavaud@pm.me>
 pkgname=python-aiozoneinfo
 _name=${pkgname#python-}
 pkgver=0.2.3
