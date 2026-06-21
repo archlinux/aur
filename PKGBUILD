@@ -10,11 +10,11 @@ depends=("cups")
 depends_x86_64=("lib32-glibc")
 install="$pkgname.install"
 source=(
+	"$pkgname.install"
 	"http://download.brother.com/welcome/dlf106075/mfcl2880dwpdrv-$pkgver-$pkgrel.i386.rpm"
 )
-md5sums=(
-	"e03e7d0863f9ed0864a191273f349508"
-)
+sha256sums=('4f230a6d3590e2065821d57adce6917c9a3159d155da12083e5121abe84a4b40'
+            'e3fbb03a00788c6832ce0254864bf407061727eceb8202a05fe45779c4c82558')
 
 package() {
 	_model="MFCL2880DW"
