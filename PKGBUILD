@@ -2,7 +2,7 @@
 # Feedback is appreciated
 
 pkgname=xmage
-pkgver=1.4.59V1
+pkgver=1.4.60V1
 pkgrel=0
 
 pkgdesc="Java-based program for playing Magic:The Gathering, including client and server"
@@ -12,12 +12,12 @@ url="http://xmage.today"
 license=('MIT')
 
 source=(
-	"http://beta.xmage.today/files/mage-full_1.4.59-dev_2026-05-26_22-35.zip"
+	"http://beta.xmage.today/files/mage-full_1.4.60-dev_2026-06-20_17-27.zip"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt'
 	'https://raw.githubusercontent.com/magefree/Launcher/master/src/main/resources/icon-mage.png'
 	'https://raw.githubusercontent.com/magefree/Launcher/refs/heads/master/src/deb/xmage.desktop')
 
-sha256sums=("d677eac6a40eae4f40198833b9349434b52473071ee0df6fb3ebbb7ea58bb1c0" 
+sha256sums=("0e4bec4b38a4173e8ef3d10e413eaa274b8badc58b2c87315a38611f43cc03bd" 
 	"SKIP"
 	"SKIP"
 	"SKIP")
