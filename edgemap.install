@@ -1,0 +1,10 @@
+post_install() {
+    echo ">>> dseuhid (UHID proxy daemon, requires root):"
+    echo "    sudo systemctl enable --now dseuhid"
+    echo ">>> edgemap (user config daemon):"
+    echo "    systemctl --user enable --now edgemap"
+}
+
+post_upgrade() {
+    post_install
+}

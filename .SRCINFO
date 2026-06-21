@@ -1,0 +1,18 @@
+pkgbase = edgemap
+	pkgdesc = DualSense UHID proxy — remap, combo, macro, profile auto-switching
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Kurobac/edgemap
+	install = edgemap.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	optdepends = libnotify: desktop notifications on profile switch
+	optdepends = python-pyqt6: GUI config editor (edgemap-gui)
+	optdepends = hicolor-icon-theme: desktop icon theme support
+	source = edgemap-1.0.1.tar.gz::https://github.com/Kurobac/edgemap/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = e2a686026cfc552e439ab44e5f1b3712363880e6512d96fe032a848e14cd69a7
+
+pkgname = edgemap
