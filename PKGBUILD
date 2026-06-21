@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-launcher-git
-pkgver=1.0.8.r7.ga3d950b
+pkgver=1.0.16.r0.ga64ed9a
 pkgrel=1
 pkgdesc="Layer Shell frontend for Pop Launcher."
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-launcher"
 license=('GPL-3.0-only')
 depends=(
-  'hicolor-icon-theme'
+  'cosmic-icons-git'
   'libxkbcommon'
   'pop-launcher-git'
   'wayland'
@@ -38,7 +38,7 @@ prepare() {
   patch -Np1 -i ../lto.patch
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -46,7 +46,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
 
   # use nice to build with lower priority
-  nice just build-release
+  nice just build-release --frozen
 }
 
 package() {
