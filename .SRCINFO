@@ -1,6 +1,6 @@
 pkgbase = suvadu-bin
 	pkgdesc = A database-backed shell history replacement with fuzzy search, AI agent monitoring, and interactive TUI
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/AppachiTech/suvadu
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = suvadu-bin
 	provides = suvadu
 	provides = suv
 	conflicts = suvadu
-	source = README-0.3.3.md::https://raw.githubusercontent.com/AppachiTech/suvadu/v0.3.3/README.md
+	source = README-0.3.4.md::https://raw.githubusercontent.com/AppachiTech/suvadu/v0.3.4/README.md
 	sha256sums = 299e3fc09e76460d6e6dd2bac257ef1fbddbbd4df5e41041da79df35221a952f
-	source_x86_64 = suvadu-x86_64-0.3.3.tgz::https://github.com/AppachiTech/suvadu/releases/download/v0.3.3/suv-linux-v0.3.3.tar.gz
-	sha256sums_x86_64 = 91ee90e272cffab8d37abfb7e0a57f5ff4f7251ff6eb38a261a3b5b57e714a01
-	source_aarch64 = suvadu-aarch64-0.3.3.tgz::https://github.com/AppachiTech/suvadu/releases/download/v0.3.3/suv-linux-aarch64-v0.3.3.tar.gz
-	sha256sums_aarch64 = 9059e1226d652b9df85ed06c21e76fd12c4bb6f24a9e3c45415e600027f2ccd2
+	source_x86_64 = suvadu-x86_64-0.3.4.tgz::https://github.com/AppachiTech/suvadu/releases/download/v0.3.4/suv-linux-v0.3.4.tar.gz
+	sha256sums_x86_64 = e8656d6eef11a62474851612f57b186479f5289f54bdf4920d9c625340733dba
+	source_aarch64 = suvadu-aarch64-0.3.4.tgz::https://github.com/AppachiTech/suvadu/releases/download/v0.3.4/suv-linux-aarch64-v0.3.4.tar.gz
+	sha256sums_aarch64 = bba673eb2ea0aa44eb87f387116f018efd3f3089a8b7387cbc0119b70be3e659
 
 pkgname = suvadu-bin
