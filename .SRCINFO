@@ -1,7 +1,7 @@
 pkgbase = python-pytorch
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration
-	pkgver = 2.12.0
-	pkgrel = 5
+	pkgver = 2.12.1
+	pkgrel = 1
 	url = https://pytorch.org
 	arch = x86_64
 	license = BSD-3-Clause-Modification
@@ -68,7 +68,7 @@ pkgbase = python-pytorch
 	optdepends = python-onnxscript: for the ONNX exporter
 	options = !lto
 	options = !debug
-	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.12.0
+	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.12.1
 	source = python-pytorch-FP16::git+https://github.com/Maratyszcza/FP16.git
 	source = python-pytorch-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git
 	source = python-pytorch-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git
@@ -114,7 +114,7 @@ pkgbase = python-pytorch
 	source = add_gpu_targets_rocm.patch
 	source = aotriton_disable_install.patch
 	source = pyproject.patch
-	b2sums = 607de4efeed0bfece53c010bc1493e83c0aff088faea14110b3f64d5e3f231a5bc2677c54a5df0d5069913d0e073356f882c95ef85902b624d51eebda2b985a2
+	b2sums = 98f5a0196764acd7b8595f43473a544f3b515f25546a526a58b0fa7f57854025990860efa4e3d765dadb94b308b40c5b0b5344a13dd23f62207d15f0956d6214
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -165,7 +165,7 @@ pkgname = python-pytorch
 
 pkgname = python-pytorch-opt
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (with AVX2 CPU optimizations)
-	provides = python-pytorch=2.12.0
+	provides = python-pytorch=2.12.1
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-cuda
@@ -200,7 +200,7 @@ pkgname = python-pytorch-cuda
 	depends = nccl
 	depends = cudnn
 	depends = onednn
-	provides = python-pytorch=2.12.0
+	provides = python-pytorch=2.12.1
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-opt-cuda
@@ -235,8 +235,8 @@ pkgname = python-pytorch-opt-cuda
 	depends = nccl
 	depends = cudnn
 	depends = onednn
-	provides = python-pytorch=2.12.0
-	provides = python-pytorch-cuda=2.12.0
+	provides = python-pytorch=2.12.1
+	provides = python-pytorch-cuda=2.12.1
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-rocm
@@ -276,7 +276,7 @@ pkgname = python-pytorch-rocm
 	depends = onednn
 	depends = python-triton
 	depends = python-aotriton
-	provides = python-pytorch=2.12.0
+	provides = python-pytorch=2.12.1
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-opt-rocm
@@ -316,8 +316,8 @@ pkgname = python-pytorch-opt-rocm
 	depends = onednn
 	depends = python-triton
 	depends = python-aotriton
-	provides = python-pytorch=2.12.0
-	provides = python-pytorch-rocm=2.12.0
+	provides = python-pytorch=2.12.1
+	provides = python-pytorch-rocm=2.12.1
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-xpu
@@ -355,7 +355,7 @@ pkgname = python-pytorch-xpu
 	depends = level-zero-loader
 	depends = onednn
 	depends = oneccl
-	provides = python-pytorch=2.12.0
+	provides = python-pytorch=2.12.1
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-opt-xpu
@@ -393,6 +393,6 @@ pkgname = python-pytorch-opt-xpu
 	depends = level-zero-loader
 	depends = onednn
 	depends = oneccl
-	provides = python-pytorch=2.12.0
-	provides = python-pytorch-xpu=2.12.0
+	provides = python-pytorch=2.12.1
+	provides = python-pytorch-xpu=2.12.1
 	conflicts = python-pytorch
