@@ -1,5 +1,5 @@
 pkgname=milkup
-pkgver=1.0.17
+pkgver=1.0.18
 pkgrel=1
 pkgdesc="Cross-platform instant-rendering desktop Markdown editor"
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-sha256sums=('f75c4a0e6f64c5f46a844600a429c93df76190cbe3c7dc63a4584f9f80421aad')
+sha256sums=('c8e35e003680fde5f5da229949fbbc2cd676ba7028e473fe5782be3342a365f3')
 
 prepare() {
   cd "${srcdir}/${_srcdir}"
