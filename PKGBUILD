@@ -12,7 +12,7 @@
 
 pkgname=axisforge-bin
 _pkgname=axisforge
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Linux HOTAS / joystick remapper with action graphs, trim, and an AI setup assistant"
 arch=('x86_64')
@@ -41,7 +41,7 @@ source=(
 # After editing pkgver, run:
 #   updpkgsums
 sha256sums=(
-    '7278fed6795ef500eb755cbcb2f573f5be33c42843a42a88a8c4037f42e5187b'   # AxisForge-1.0.2-x86_64.AppImage (modern build)
+    '267fa33ad5b662103d7afe6dc9fc9df6c5acdd0d33c183c071e0dc1e6169ba1c'   # AxisForge-1.0.3-x86_64.AppImage (modern build)
     '7b8d44f8021b81c470e80799fe73e04feba8a90e330ed53034116c07a4bc1116'   # axisforge.desktop
     '04a92c0cc0eb37ae82a466cf55a6d93d11a1b7002b51b9e4060bb6e9a18cde27'   # 99-axisforge.rules
 )
