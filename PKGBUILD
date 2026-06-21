@@ -15,9 +15,9 @@ optdepends=(
   'sunshine: optional Sunshine headless helper'
 )
 install=hyprspaces-tools.install
-_commit='d3f660c15183280733c885f216723557f6d78abc'
+_commit='718fd59bc98eafee0eefea583b6d3c4e65c5629d'
 source=("hyprspaces-${pkgver}.tar.gz::${url}/archive/${_commit}.tar.gz")
-sha256sums=('48d51174632ff5c331d667c4631a42cdbd310b90ca07516dddd665a5cceac04b')
+sha256sums=('9bfb7d6f7713a57e10d559a93c8cf74029b64742a2b43e1f83501bf8023e3ac5')
 
 package() {
   cd "${srcdir}/hyprspaces-${_commit}"
