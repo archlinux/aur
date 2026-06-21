@@ -1,0 +1,12 @@
+# pacman install scriptlet for bastionfw.
+# On removal, run bastion's own teardown so no stale runtime config/units are left behind
+# (machine.conf, /etc/edge-*, the systemd units, and nftables.service's bastion-set state).
+# Only fires on a true `pacman -R` (NOT on upgrades, which use pre_upgrade), and never blocks
+# removal on an error.
+
+pre_remove() {
+  if command -v bastion >/dev/null 2>&1; then
+    echo ":: bastionfw: tearing down (removing layers + config, restoring nftables.service)..."
+    bastion teardown --yes || true
+  fi
+}
