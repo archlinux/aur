@@ -1,7 +1,7 @@
 pkgbase = pawlette-legacy
 	pkgdesc = Git-based theme manager (legacy version for meowrch < 3.1.0)
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/meowrch/pawlette
 	arch = any
 	license = GPL-3.0
