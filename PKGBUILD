@@ -2,13 +2,13 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-git
-pkgver=2026.02.03.r16.g8b30e6c
+pkgver=2026.05.20.r28.g00f1b203
 pkgrel=1
 pkgdesc="Minimalistic document viewer"
 arch=('x86_64')
 url="https://pwmt.org/projects/zathura"
 license=('Zlib')
-depends=('cairo' 'file' 'girara-git' 'glibc' 'glib2' 'gtk3' 'json-glib' 'libseccomp' 'libsynctex' 'sqlite')
+depends=('cairo' 'file' 'girara-git' 'glibc' 'glib2' 'gtk4' 'json-glib' 'libseccomp' 'libsynctex' 'sqlite')
 makedepends=('git' 'meson' 'ninja' 'python-sphinx')
 conflicts=('zathura')
 provides=('zathura')

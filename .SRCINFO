@@ -1,6 +1,6 @@
 pkgbase = zathura-git
 	pkgdesc = Minimalistic document viewer
-	pkgver = 2026.02.03.r16.g8b30e6c
+	pkgver = 2026.05.20.r28.g00f1b203
 	pkgrel = 1
 	url = https://pwmt.org/projects/zathura
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = zathura-git
 	depends = girara-git
 	depends = glibc
 	depends = glib2
-	depends = gtk3
+	depends = gtk4
 	depends = json-glib
 	depends = libseccomp
 	depends = libsynctex
