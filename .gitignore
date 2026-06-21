@@ -1,0 +1,8 @@
+# makepkg build artifacts
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.xz
+
+# local maintainer notes, not part of the AUR package
+RELEASING.md

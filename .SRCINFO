@@ -1,0 +1,13 @@
+pkgbase = fcitx5-pinboard
+	pkgdesc = Fcitx5 clipboard history addon with pinning, using the native candidate window
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/7-1/fcitx5-pinboard
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = cmake
+	depends = fcitx5
+	source = fcitx5-pinboard-0.1.0.tar.gz::https://github.com/7-1/fcitx5-pinboard/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 810bbdff1a78237a125ca3de4ce843e83d9517bccea8e40b4dd130191fa6a852
+
+pkgname = fcitx5-pinboard
