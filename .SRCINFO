@@ -1,0 +1,12 @@
+pkgbase = ttf-noto-sans-mono-vf
+	pkgdesc = Google Noto Sans Mono font (Variable weight and width, TTF)
+	pkgver = 2.014
+	pkgrel = 1
+	url = https://github.com/notofonts/latin-greek-cyrillic
+	arch = any
+	license = OFL-1.1
+	provides = ttf-font
+	source = https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSansMono-v2.014/NotoSansMono-v2.014.zip
+	b2sums = c7078e43e350b1ae19e6ed83bd2ffa87253bb876175159d9dae0646865155f8b5aaf57246a598831957c6c995f70f90a9ef5db5b95dbd21e6de63129d48c0869
+
+pkgname = ttf-noto-sans-mono-vf
