@@ -6,10 +6,10 @@
 pkgname='treegrep-bin'
 _pkgname="${pkgname/-bin}"
 pkgdesc='Frontend for ripgrep that presents results in a tree format (pre-compiled)'
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 url='https://github.com/4imothy/treegrep'
-changelog="$pkgname.changelog"
+changelog="$_pkgname.changelog"
 arch=('aarch64' 'x86_64')
 license=('MIT')  # SPDX-License-Identifier: MIT
 provides=('tgrep' 'treegrep')
@@ -64,12 +64,11 @@ package() {
 }
 
 sha256sums_aarch64=(
-  'b3454d9918d7ac65b2b07eff8df3e0190f379b8a504b16c67b4c9e261b318a8a'
+  'b3e14917d27830e2b47c72cb51553a83076c4f720e2b30b09a5dacd2a83bafac'
   'SKIP'
 )
-
 sha256sums_x86_64=(
-  'b863d7aa2d1374b06dcc761f5ce39303470d3a52311b913d8ccf96329a3b5f48'
+  '43a7fe7d9bdbed62840fa411c0ab2ed2d485e904e6d8d410edbbece00f6804f4'
   'SKIP'
 )
 
