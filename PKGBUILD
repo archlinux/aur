@@ -5,7 +5,7 @@
 # checksum (updpkgsums) and regenerates .SRCINFO automatically.
 _pkgname=burrow
 pkgname=burrow-tunnel-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Turn any SSH server into a local proxy and a system-wide VPN (prebuilt binaries)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('polkit' 'fontconfig' 'libglvnd' 'wayland' 'libxkbcommon'
 provides=('burrow-tunnel')
 conflicts=('burrow-tunnel')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${_pkgname}-${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('c3cb1b772f26d17cd89c76cb414ee3af5623ea57eb1418385d8e43839896eb69')
+sha256sums=('e0073afa0ceeed6771112b78294a6bb336a6848392b5e7bf9b939e25f4efd466')
 
 package() {
   cd "$srcdir/${_pkgname}-${pkgver}-x86_64-linux"
