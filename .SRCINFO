@@ -1,0 +1,21 @@
+pkgbase = safepaste
+	pkgdesc = Offline-first desktop app for automatic secret redaction before sharing
+	pkgver = 0.2.2
+	pkgrel = 3
+	url = https://github.com/a-goodarzi/SafePaste
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = npm
+	makedepends = patchelf
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libayatana-appindicator
+	depends = librsvg
+	depends = webkit2gtk-4.1
+	options = !lto
+	source = safepaste-0.2.2.tar.gz::https://github.com/a-goodarzi/SafePaste/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = 28548c3907ed4368afe65b82c073ab4a1dd3f256241caad0ffec3534b3a029e8
+
+pkgname = safepaste
