@@ -2,13 +2,13 @@
 # Contributor: Laurin Neff <laurin at laurinneff dot ch>
 pkgname=satisfactory-mod-manager
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A mod manager for easy installation of mods and modloader for Satisfactory"
 arch=(x86_64)
 url="https://github.com/satisfactorymodding/SatisfactoryModManager"
 license=('GPL3')
 makedepends=('git' 'yarn' 'nodejs' 'node-gyp' 'python' 'wails' 'go-task' 'pnpm')
-depends=('webkit2gtk' 'gst-plugins-good')
+depends=('webkit2gtk-4.1' 'gst-plugins-good')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/satisfactorymodding/SatisfactoryModManager/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
 sha512sums=('fe94123ee23defb88843cb19f1f56d6bf2e012006c303f5fe751f9735d819495e750eda9eb2826045ee0dae350e7e71d14c8afaea995ba221b95da55602a2b41'
@@ -16,7 +16,12 @@ sha512sums=('fe94123ee23defb88843cb19f1f56d6bf2e012006c303f5fe751f9735d819495e75
 
 build() {
 	cd "${srcdir}/SatisfactoryModManager-$pkgver"
-	go-task build
+
+	echo 'allowBuilds:' >> frontend/pnpm-workspace.yaml
+	echo '  esbuild: true' >> frontend/pnpm-workspace.yaml
+	echo '  svelte-preprocess: true' >> frontend/pnpm-workspace.yaml
+
+	go-task build -- -tags webkit2_41
 }
 
 package() {
