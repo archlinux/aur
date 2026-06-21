@@ -2,7 +2,7 @@
 
 pkgname=madness-interactive-reloaded
 pkgver=0.51.1_beta
-pkgrel=1
+pkgrel=2
 pkgdesc='Moddable action video game based on Madness Combat'
 arch=('x86_64')
 url='https://studiominus.nl/madness-interactive-reloaded'
@@ -56,10 +56,13 @@ build() {
 
 	# compile the game itself
 
+	export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
 	cd "$srcdir/$pkgname/src/MadnessInteractiveReloaded"
-	dotnet publish -c Release --no-self-contained --runtime linux-x64
+	dotnet build -c Release -r linux-x64 --no-self-contained -p:PublishTrimmed=true -p:TrimMode=partial -p:DebugType=none
 
 	cd bin/Release/net9.0/linux-x64
+	chmod -R go+r . # fix permissions
 
 	# symlink ffmpeg5.1 libraries
 	ln -sf /usr/lib/libavcodec.so.59 .

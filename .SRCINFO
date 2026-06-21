@@ -1,7 +1,7 @@
 pkgbase = madness-interactive-reloaded
 	pkgdesc = Moddable action video game based on Madness Combat
 	pkgver = 0.51.1_beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://studiominus.nl/madness-interactive-reloaded
 	arch = x86_64
 	license = GPL-3.0-only
