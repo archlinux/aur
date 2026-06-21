@@ -2,8 +2,8 @@
 
 _name=opcua-asyncio
 pkgname=python-opcua-asyncio
-pkgver=1.1.6
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 pkgdesc='An OPC-UA client and server library for Python, also known as asyncua'
 url=https://github.com/FreeOpcUa/opcua-asyncio
 arch=(any)
