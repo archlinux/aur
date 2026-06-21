@@ -9,7 +9,7 @@ license=('MIT' 'Apache-2.0')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MFAIZAN20/zapreq/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6ebb70e9ceb29f2d3507937fbce087d3679ed22b953d06a7c806a75f937d374c')
+sha256sums=('696f4eb6697b0e581a503834ac766aec0c9bec3a13a0c66f01c05689a26e3d0f')
 
 build() {
     cd "$pkgname-$pkgver"
