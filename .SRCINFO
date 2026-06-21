@@ -1,0 +1,21 @@
+pkgbase = openrgb-ruler
+	pkgdesc = GUI for automated RGB lighting control rules via OpenRGB
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/oguzkaganeren/openrgb-ruler
+	install = openrgb-ruler.install
+	arch = x86_64
+	license = GPL3
+	depends = cairo
+	depends = dbus
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = pango
+	depends = openrgb
+	source = https://github.com/oguzkaganeren/openrgb-ruler/releases/download/v1.0.3/openrgb-ruler-gtk-v1.0.3-linux-x86_64.tar.gz
+	sha256sums = 7b99393e400eef1541b015af44e77490777022855ea598dc0961d0c78ef05189
+
+pkgname = openrgb-ruler
