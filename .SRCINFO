@@ -1,0 +1,18 @@
+pkgbase = xlibre-meta
+	pkgdesc = Meta package to install XLibre, a fork of Xorg
+	pkgver = 25.1
+	pkgrel = 1
+	url = https://xlibre.net
+	arch = any
+	license = None
+	depends = xlibre-input-libinput
+	depends = xlibre-xserver
+	optdepends = nvidia-open: NVIDIA open kernel modules
+	optdepends = xlibre-input-synaptics: Synaptics driver for notebook touchpads
+	optdepends = xlibre-input-wacom: Wacom tablet driver
+	optdepends = xlibre-video-amdgpu: AMD video driver
+	optdepends = xlibre-video-ati: ati video driver
+	optdepends = xlibre-video-intel: Intel video driver
+	optdepends = xlibre-video-qxl: qxl video driver
+
+pkgname = xlibre-meta
