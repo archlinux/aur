@@ -3,7 +3,7 @@
 pkgname=mtgarena
 _shortver=12921.1282485
 pkgver=0.1.$_shortver
-pkgrel=1
+pkgrel=2
 pkgdesc="Magic: the Gathering Arena (via Wine)"
 arch=('x86_64')
 url="https://magic.wizards.com/en/mtgarena"
@@ -26,6 +26,7 @@ sha256sums=(
 prepare() {
     export WINEPREFIX="${srcdir}/wineprefix"
     export WINEARCH=win64
+    export WINEDLLOVERRIDES="winemenubuilder.exe=d"
     wineboot -u
     wine "${srcdir}/${pkgname}-${pkgver}.msi" /quiet
 
