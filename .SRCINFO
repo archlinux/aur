@@ -1,6 +1,6 @@
 pkgbase = claude-commander
 	pkgdesc = A high-performance terminal UI for managing Claude coding sessions
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/sizeak/claude-commander
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = claude-commander
 	depends = tmux
 	depends = git
 	options = !debug
-	source = claude-commander-0.16.0.tar.gz::https://github.com/sizeak/claude-commander/archive/refs/tags/v0.16.0.tar.gz
-	sha256sums = 4078fe9bf8ce5445fe198f481be98e070fa2158bec0343c078329ce4f26ea87d
+	source = claude-commander-0.17.0.tar.gz::https://github.com/sizeak/claude-commander/archive/refs/tags/v0.17.0.tar.gz
+	sha256sums = a1ff063f1c99b9b993a8cc130acf825b067ec345c84ce08b4b90bbb1adb6f1eb
 
 pkgname = claude-commander
