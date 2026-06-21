@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-custom-command-toggle
 	pkgdesc = Create customizable GNOME quick-toggle buttons to run user commands and scripts
-	pkgver = 12
+	pkgver = 13
 	pkgrel = 1
 	url = https://github.com/StorageB/custom-command-toggle
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = glib2
 	depends = gnome-shell
-	source = gnome-shell-extension-custom-command-toggle-12.zip::https://github.com/StorageB/custom-command-toggle/releases/download/v12/custom-command-toggle.zip
-	sha256sums = 3a04bd3fd6776ae9e64896a6d89f920be3075cb88f9db222b54c4b6ef443145b
+	source = gnome-shell-extension-custom-command-toggle-13.zip::https://github.com/StorageB/custom-command-toggle/releases/download/v13/custom-command-toggle.zip
+	sha256sums = 8fcb42a3a5670ff23be1f0b6512abb3af06d0cb29d2f3c100d441f1e98cd300e
 
 pkgname = gnome-shell-extension-custom-command-toggle
