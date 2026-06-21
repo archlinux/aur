@@ -2,7 +2,7 @@
 
 pkgname=lore-vcs
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Lore is a next-generation, open source version control system'
 url='https://github.com/EpicGames/lore'
 license=('MIT')
@@ -17,9 +17,10 @@ prepare() {
   cd "lore-$pkgver"
 
   sed -i "s/^version = \"$pkgver-nightly\"/version = \"${pkgver}\"/" Cargo.toml
+  sed -i "s/^version = \"$pkgver-nightly\"/version = \"${pkgver}\"/" Cargo.lock
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --offline --target host-tuple
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
