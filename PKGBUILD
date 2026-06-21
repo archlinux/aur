@@ -8,7 +8,7 @@
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
-pkgver=5.8
+pkgver=5.8.0
 pkgrel=1
 ## Check unreal-engine/Engine/Config/Linux/Linux_SDK.json (MainVersion value) for what the below should be set to
 UE_SDK_VERSION="native-linux-v26_clang-20.1.8-rockylinux8"
@@ -30,6 +30,7 @@ optdepends=('polly: for potentially increased performance'
             'fake-ms-fonts: Font support for "demo/free/sample/example/tutorial" projects'
             'ttf-ms-fonts: Font support for "demo/free/sample/example/tutorial" projects')
 license=('custom:UnrealEngine' 'GPL3')
+install="${pkgname}.install"
 source=("${UE_SDK_VERSION}.tar.gz::https://cdn.unrealengine.com/Toolchain_Linux/${UE_SDK_VERSION}.tar.gz"
         'unreal-engine.sh'
         'com.unrealengine.UE5Editor.desktop'
@@ -442,9 +443,7 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}/LICENSE.md"  "${pkgdir}/usr/share/licenses/UnrealEngine/LICENSE.md"
   
   # Engine
-  ## Set to all permissions to prevent the engine from breaking itself; more elegant solutions might exist - suggest them if they can be automated here
-  ## Also, correct me if I package this improperly; I added Win64 support for the build in hopes of supporting cross-compilation
-  install -dm777 "${pkgdir}/${UE_INSTALL_DIR}/Engine"
+  install -dm755 "${pkgdir}/${UE_INSTALL_DIR}/Engine"
   
   # Copy LocalBuilds to pkg...
   rsync -a "${srcdir}/${pkgname}/LocalBuilds/Engine/Linux/" "${pkgdir}/${UE_INSTALL_DIR}/"
@@ -489,4 +488,15 @@ package() {
   DesktopFileChecksum=$(sha256sum "${pkgdir}/usr/share/applications/com.unrealengine.UE5Editor.desktop" | cut -f 1 -d ' ')
   sed -i "s|ChecksumPlaceholder|${DesktopFileChecksum}|" "${pkgdir}/usr/bin/unreal-engine"
   sed -i "s|InstalledLocationPlaceholder|/${UE_INSTALL_DIR}/Engine/Binaries|" "${pkgdir}/usr/bin/unreal-engine"
+
+  # Ship the resolved install prefix so the .install scriptlet can locate the tree
+  # even when a custom UE_INSTALL_DIR was used at build time.
+  printf '/%s\n' "${UE_INSTALL_DIR#/}" \
+    | install -Dm644 /dev/stdin "${pkgdir}/usr/share/${pkgname}/install-prefix"
+
+  # Bake group-writability into the package so members of the 'unreal' group can
+  # write engine build/runtime artifacts without a manual chown. The group OWNER
+  # is set at install time by the scriptlet, since a -r group's GID is unknown here.
+  chmod -R g+w "${pkgdir}/${UE_INSTALL_DIR}"
+  find "${pkgdir}/${UE_INSTALL_DIR}" -type d -exec chmod g+s {} +
 }
