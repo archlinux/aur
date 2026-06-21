@@ -1,7 +1,7 @@
 # Maintainer: enotan <enotan@majou.xyz>
 
 pkgname=kakera
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Visual novel library, launcher, and playtime tracker"
 arch=('x86_64')
@@ -25,15 +25,13 @@ source=(
     "kakera.desktop"
 )
 
-sha256sums=(
-    '1592634ead7fb5d31d2b3fbce04c2f8ad924997ad84e8ab14d30f72d28407d6b'
-    'af1c27b344257bb058f9dcd85eb01438b72d1e8603b37b32207b6948f57494c1'
-)
+sha256sums=('36b24e0605ad57d0b95bede840259b48bcfd87185db70fc96606b619ed26e832'
+            'af1c27b344257bb058f9dcd85eb01438b72d1e8603b37b32207b6948f57494c1')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    usr/bin/dx build --release --locked
+    dx build --release --locked
 }
 
 package() {
