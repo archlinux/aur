@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=fff-mcp-bin
 _upstream=fff.nvim
-pkgver=0.9.5
+pkgver=0.9.6
 _tag=v${pkgver}
 pkgrel=1
 pkgdesc="High-performance file finder MCP server for AI code assistants"
@@ -16,8 +16,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/dmtrKovalenko/${_u
 source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/dmtrKovalenko/${_upstream}/releases/download/${_tag}/fff-mcp-x86_64-unknown-linux-gnu")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://github.com/dmtrKovalenko/${_upstream}/releases/download/${_tag}/fff-mcp-aarch64-unknown-linux-gnu")
 sha256sums=('f8264de82db188834a5711d7e348dc08c33db14f79bb587ccb42616fd694ee81')
-sha256sums_x86_64=('0bceb87752cb38540dbad585cd08fab3d26a315576bbf5af8b0d3c9c9ddf068b')
-sha256sums_aarch64=('3f7b5306c79f099f8c18720a5f88e1c503ebaa11553758a230270727adf5bd13')
+sha256sums_x86_64=('d1bd2b89a79e8eda71b1754260499cec1feaafd2adf372e92371c8d6b68509a3')
+sha256sums_aarch64=('91e6fa14e040588dc92de854e35020536f1e2458ce3386b2b727b2e7a88f6684')
 
 latestver() {
     gh api --paginate "repos/dmtrKovalenko/${_upstream}/releases" --jq '.[] | select(.prerelease == false and .draft == false and any(.assets[]; .name == "fff-mcp-x86_64-unknown-linux-gnu")) | .tag_name | ltrimstr("v")' |
