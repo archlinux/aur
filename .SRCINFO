@@ -1,0 +1,27 @@
+pkgbase = svt-av1-tritium-git
+	pkgdesc = SVT-AV1-Tritium is a fork of SVT-AV1-HDR aiming to incorporate features from SVT-AV1-PSYEX and SVT-AV1-Essential.
+	pkgver = 4.1.0.r52.g1e33a0d12
+	pkgrel = 1
+	url = https://github.com/Uranite/svt-av1-tritium
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = clang
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = nasm
+	depends = libhdr10plus-rs-git
+	provides = svt-av1
+	provides = SvtAv1EncApp
+	provides = SvtAv1EncApp.so
+	conflicts = svt-av1
+	conflicts = svt-av1-hdr-git
+	conflicts = svt-av1-essential-git
+	conflicts = svt-av1-psy-git
+	conflicts = svt-av1-psyex-git
+	conflicts = svt-av1-hdr10plus-git
+	conflicts = svt-av1-bluesword-git
+	source = svt-av1-tritium-git::git+https://github.com/Uranite/svt-av1-tritium
+	sha256sums = SKIP
+
+pkgname = svt-av1-tritium-git
