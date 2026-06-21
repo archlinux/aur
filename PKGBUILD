@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
-pkgver=1.0.8.r2.g8d83e2a
+pkgver=1.0.16.r56.g75c0480
 pkgrel=1
 pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
@@ -9,6 +9,7 @@ license=('GPL-3.0-only')
 depends=(
   'acpid'
   'adw-gtk-theme'
+  'geoclue'
   'libinput'
   'libpulse'
   'openssl'
@@ -46,18 +47,19 @@ prepare() {
   patch -Np1 -i ../lto.patch
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
+  export GEOCLUE_AGENT="/usr/lib/geoclue-2.0/demos/agent"
 
   # use mold instead of lld to speed up build
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  ARGS+=" --frozen" nice make
+  nice make ARGS+=" --frozen --release" geoclue_agent='/usr/lib/geoclue-2.0/demos/agent'
 }
 
 package() {
