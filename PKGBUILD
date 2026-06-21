@@ -1,6 +1,6 @@
 # Maintainer: Christopher Price <pricechrispy at gmail dot com>
 pkgname=tiny_httpd
-pkgver=0.20
+pkgver=0.21
 pkgrel=1
 pkgdesc='Minimal HTTP server'
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
 )
 options=('!strip' 'staticlibs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/c-cube/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('1c762c05a49e7bd15d6f3481a57fc3f7cdfd6c3622c57f0f8c889c2519a2ae66')
+sha256sums=('01c82f2d5dd7be79ef607111187b02d8534929b6b81880a04ae8a7132d990751')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
