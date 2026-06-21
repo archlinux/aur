@@ -1,7 +1,7 @@
 pkgbase = bashcities
-	pkgdesc = A Neocities client written in Bash.
+	pkgdesc = A Neocities client that actually works, written in Bash.
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tatsumoto-ren/bashcities
 	arch = any
 	license = GPL3
