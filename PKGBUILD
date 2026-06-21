@@ -1,7 +1,7 @@
 # Maintainer: OpenLyst <https://openlyst.ink>
 # Version and download URL from Openlyst API: https://openlyst.ink/docs/api
 pkgname=klit-bin
-pkgver=9.0.0
+pkgver=10.1.2
 pkgrel=1
 pkgdesc="E926 API client"
 arch=('x86_64')
@@ -9,34 +9,34 @@ url="https://openlyst.ink"
 license=('GPL3')
 depends=('gtk3')
 optdepends=()
-provides=('klit')
-conflicts=('klit')
+provides=('kilt')
+conflicts=('kilt')
 options=('!strip')
-source=("klit-bin-${pkgver}.zip::https://gitlab.com/api/v4/projects/79691113/packages/generic/github-mirror/build-68/klit-9.0.0-2026-03-09-linux-x64.zip")
+source=("klit-bin-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-110/kilt-10.1.2-2026-06-11-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
     cd "${srcdir}/bundle"
 
-    install -d "${pkgdir}/opt/klit"
-    install -Dm755 "klit" "${pkgdir}/opt/klit/klit"
-    install -d "${pkgdir}/opt/klit/lib"
-    install -Dm644 lib/*.so "${pkgdir}/opt/klit/lib/"
-    cp -r data "${pkgdir}/opt/klit/"
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/klit.desktop" <<EOF
+    install -d "${pkgdir}/opt/kilt"
+    install -Dm755 "kilt" "${pkgdir}/opt/kilt/kilt"
+    install -d "${pkgdir}/opt/kilt/lib"
+    install -Dm644 lib/*.so "${pkgdir}/opt/kilt/lib/"
+    cp -r data "${pkgdir}/opt/kilt/"
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/kilt.desktop" <<EOF
 [Desktop Entry]
-Name=Klit
+Name=Kilt
 Comment=E926 API client
-Exec=/opt/klit/klit
-Icon=klit
+Exec=/opt/kilt/kilt
+Icon=kilt
 Type=Application
 Categories=Network;Graphics;
 Keywords=e621;booru;privacy;;
 EOF
     if [ -f "data/flutter_assets/assets/icons/icon.png" ]; then
-        install -Dm644 "data/flutter_assets/assets/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/klit.png"
+        install -Dm644 "data/flutter_assets/assets/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/kilt.png"
     fi
     install -d "${pkgdir}/usr/bin"
-    ln -s /opt/klit/klit "${pkgdir}/usr/bin/klit"
+    ln -s /opt/kilt/kilt "${pkgdir}/usr/bin/kilt"
 }
 
