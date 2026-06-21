@@ -1,0 +1,30 @@
+_ue_prefix() {
+  cat /usr/share/unreal-engine/install-prefix 2>/dev/null || echo /opt/unreal-engine
+}
+
+_ue_apply_group() {
+  getent group unreal >/dev/null 2>&1 || groupadd -r unreal
+  dir="$(_ue_prefix)"
+  # Mode bits (group-write + setgid) are baked into the package; only the group
+  # owner has to be applied here, since the GID is assigned on this machine.
+  [ -d "$dir" ] && chgrp -R unreal "$dir"
+}
+
+post_install() {
+  _ue_apply_group
+  cat <<'MSG'
+==> A system group 'unreal' now owns the engine files under the install prefix.
+==> Add every user that will build/edit Unreal projects to it, then re-login:
+==>     sudo gpasswd -a "$USER" unreal
+==> (Log out/in or run `newgrp unreal` for the new group to take effect.)
+MSG
+}
+
+post_upgrade() {
+  # Re-extracted files are root:root again, so re-apply the group ownership.
+  _ue_apply_group
+}
+
+post_remove() {
+  getent group unreal >/dev/null 2>&1 && groupdel unreal || true
+}
