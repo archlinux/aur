@@ -15,7 +15,11 @@ pkgbase = hostman-bin
 	provides = hostman
 	conflicts = hostman
 	source = fix_libncurses_x86_64.patch
+	source = MAN-1.2.6.1::https://raw.githubusercontent.com/keircn/hostman/v1.2.6/man/hostman.1
+	source = MAN-CONFIG-1.2.6.5::https://raw.githubusercontent.com/keircn/hostman/v1.2.6/man/hostman-config.5
 	sha256sums = e0e9081ab0803c530dbd3291b6d76b28a8837645b75e38aa64684267c76aec61
+	sha256sums = d01fa445be92a98ffad2d9efecd787666dd301a678c209756db8c9a74ff47dd1
+	sha256sums = b04f38243a5041fc3dce4e28924e13eb036e4750012eec032197e4b90dea0ad8
 	source_x86_64 = https://github.com/keircn/hostman/releases/download/v1.2.6/hostman-linux-x64.tar.gz
 	sha256sums_x86_64 = 2708dafa3f141c8c35d5390dfa6fc65816a6f09ca69ef47388e6a9552b2460cd
 
