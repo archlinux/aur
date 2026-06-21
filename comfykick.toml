@@ -2,7 +2,7 @@
 # #
 # # This is a user-facing example. Edit a copy of this file at one of the
 # # following locations (highest priority last):
-# #   - ~/.config/comfykick.toml ($XDG_CONFIG_HOME/comfykick.toml)
+# #   - ~/.config/comfykick/comfykick.toml ($XDG_CONFIG_HOME/comfykick/comfykick.toml)
 # #   - /etc/comfykick.toml
 # #
 # # Omit a key (e.g. comment it out as `# output_dir = /tmp`) to inherit

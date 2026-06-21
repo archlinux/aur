@@ -112,7 +112,7 @@ def _read_toml(path):
 def _load_config():
     config_files = [
         Path(f"/etc/{PROJECT_NAME}.toml"),
-        XDG_CONFIG_HOME / f"{PROJECT_NAME}.toml",
+        XDG_CONFIG_HOME / PROJECT_NAME / f"{PROJECT_NAME}.toml",
         PROJECT_DIR / "dev" / f"{PROJECT_NAME}.toml",
     ]
 

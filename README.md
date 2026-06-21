@@ -42,7 +42,7 @@ The [ComfyUI](https://github.com/Comfy-Org/ComfyUI) is designed to be run from a
 
 - [`comfykick-user.service`](comfykick-user.service) → `~/.config/systemd/user/comfykick.service` (or `$XDG_CONFIG_HOME/systemd/user/comfykick.service`)
 
-- [`comfykick.toml`](comfykick.toml) → `~/.config/comfykick.toml` (or `$XDG_CONFIG_HOME/comfykick.toml`)
+- [`comfykick.toml`](comfykick.toml) → `~/.config/comfykick/comfykick.toml` (or `$XDG_CONFIG_HOME/comfykick/comfykick.toml`)
 
 #### Uninstall (Manual)
 
@@ -50,5 +50,5 @@ Reverse do [install](#install-manual).
 
 ## Kick
 
-1. Edit the config file to `~/.config/comfykick.toml` (or `$XDG_CONFIG_HOME/comfykick.toml`)
+1. Edit the config file to `~/.config/comfykick/comfykick.toml` (or `$XDG_CONFIG_HOME/comfykick/comfykick.toml`)
 2. `systemctl --user start comfykick.service` 🚀
