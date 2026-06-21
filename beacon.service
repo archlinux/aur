@@ -1,0 +1,16 @@
+[Unit]
+Description=Beacon Minecraft Server Manager
+After=network.target
+
+[Service]
+Type=simple
+User=beacon
+Group=beacon
+StateDirectory=beacon
+WorkingDirectory=/opt/beacon
+Environment=PORT=3000
+ExecStart=/usr/bin/node /opt/beacon/server/index.mjs
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
