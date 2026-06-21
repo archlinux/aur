@@ -2,7 +2,7 @@
 pkgname=pawlette-legacy
 conflicts=('pawlette')
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Git-based theme manager (legacy version for meowrch < 3.1.0)"
 arch=('any')
 url="https://github.com/meowrch/pawlette"
@@ -27,7 +27,7 @@ package() {
   # Create launch script
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/pawlette" <<EOF
 #!/bin/sh
-cd /opt/pawlette
+cd /opt/pawlette-legacy/
 exec .venv/bin/python run.py "\$@"
 EOF
 
