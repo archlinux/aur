@@ -5,6 +5,45 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.6] - 2026-06-21
+
+### Added
+
+- Clipboard manager config override (`clipboard_manager` key)
+- `--insecure` / `-k` flag to skip TLS certificate verification
+
+### Changed
+
+- CLI help text now includes `--insecure` option for upload command
+- Refactored global option parsing into shared helper (reduced duplication)
+
+### Fixed
+
+- `delete-file` now captures and displays server response body on error
+- `delete-file` now respects the `--insecure` flag
+- Unchecked `malloc`/`realloc` calls now properly handle OOM conditions
+
+## [1.2.5] - 2026-05-19
+
+### Added
+
+- Host presets for commonly used upload targets
+- Man page (`man hostman`)
+- Bundle cJSON as a vendored static library (removes external dependency)
+- Build cJSON as a static library to simplify linking
+
+### Changed
+
+- Full TUI refactor for improved navigation and usability
+- CLI now parses global flags (`--json`, `--verbose`, etc.) in any position, not just before subcommands
+- Improved clipboard tool detection with proper `PATH` traversal instead of shelling out
+
+### Fixed
+
+- Fixed cJSON CMake import on non-Linux platforms
+- Fixed wl-copy invocation arguments for better Wayland compatibility
+- Removed leftover debug files
+
 ## 1.2.4 - 2026-03-09
 
 ### Added
@@ -144,4 +183,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Initial release
-
