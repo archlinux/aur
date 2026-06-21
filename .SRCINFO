@@ -1,0 +1,12 @@
+pkgbase = ttf-noto-serif-vf
+	pkgdesc = Google Noto Serif font (Variable weight and width, TTF)
+	pkgver = 2.015
+	pkgrel = 1
+	url = https://github.com/notofonts/latin-greek-cyrillic
+	arch = any
+	license = OFL-1.1
+	provides = ttf-font
+	source = https://github.com/notofonts/latin-greek-cyrillic/releases/download/NotoSerif-v2.015/NotoSerif-v2.015.zip
+	b2sums = d0b6e674878481b5c93969742e93818dea1a72c3dc092bc4da4f075974abd8494ee2395b701125758d0375a1eb5f482f2ac714481a3efebacbca5f06d92e7ede
+
+pkgname = ttf-noto-serif-vf
