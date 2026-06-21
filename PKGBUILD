@@ -1,13 +1,13 @@
 # Maintainer: 30p87 <30p87@30p87.de>
 
 pkgname=iocaine-git
-pkgver=r775.9d133f3
-pkgrel=2
+pkgver=r801.809bcec
+pkgrel=1
 pkgdesc='The deadliest poison known to AI'
 arch=('any')
 url='https://iocaine.madhouse-project.org/'
 license=('MIT')
-makedepends=('cargo' 'just' 'clang')
+makedepends=('git' 'cargo' 'just' 'clang' 'nftables')
 optdepends=('nginx: when using nginx as reverse proxy'
 			'caddy: when using caddy as reverse proxy')
 backup=('etc/iocaine/config.kdl')
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
             '3ba1d429be28b8291861aca9b91564ab4db4f83aa7d955ed102d090259d46b5b'
             'd98c03791baff0fbd59261de5f0e38e592e3a4f2014d3dbf135567771ccf8193'
             '7761fab52173f5f0cfeb8678bcbf9e4c297fcb6282acb13c604b6cba4f760f9b'
-            'ed95d2d7e8a73b8b9dace5ac6192b255147729465a8016933cf322feac4e7a61')
+            '5c158cca61ea3ffb34841d3c4969491054c97d53d49e722c8b1c7543bf389bfd')
 
 pkgver() {
 	cd "${pkgname%-git}"
@@ -51,12 +51,12 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/webapps/iocaine"
 
 	# Docs/Example configs
-	install -Dm644 "iocaine-powder/embeds/defaults/config.kdl" "${pkgdir}/etc/iocaine/config.kdl"
+	install -Dm644 "iocaine-label/rc/data/etc/config.d/00-default-bind.kdl" "${pkgdir}/etc/iocaine/config.kdl"
 	install -Dm644 "${srcdir}/nginx_filter.conf" "${pkgdir}/usr/share/doc/${pkgname}/nginx/iocaine_filter.conf"
 	install -Dm644 "${srcdir}/nginx_component.conf" "${pkgdir}/usr/share/doc/${pkgname}/nginx/iocaine.component"
 
 	# Systemd/Arch integration
-	install -Dm644 "iocaine-powder/embeds/iocaine.service" "${pkgdir}/usr/lib/systemd/system/iocaine.service"
+	install -Dm644 "iocaine-label/rc/iocaine.service" "${pkgdir}/usr/lib/systemd/system/iocaine.service"
 	install -Dm644 "${srcdir}/sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/iocaine.conf"
 	install -Dm644 "${srcdir}/tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/iocaine.conf"
 

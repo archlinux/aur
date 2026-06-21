@@ -1,5 +1,5 @@
---- iocaine/iocaine-powder/embeds/iocaine.service	2025-07-18 19:00:29.998251290 +0200
-+++ iocaine.n/iocaine-powder/embeds/iocaine.service	2025-07-18 19:13:31.869608457 +0200
+--- iocaine/iocaine-label/rc/iocaine.service	2025-07-18 19:00:29.998251290 +0200
++++ iocaine.n/iocaine-label/rc/iocaine.service	2025-07-18 19:13:31.869608457 +0200
 @@ -7,10 +7,10 @@
  Description=iocaine, the deadliest poison known to AI
  
