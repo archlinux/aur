@@ -6,7 +6,7 @@ pkgbase = srb2-legacy-data
 	arch = any
 	license = custom
 	makedepends = git-lfs
-	source = git+https://git.do.srb2.org/STJr/srb2assets-public.git#branch=SRB2_2.1
-	sha256sums = SKIP
+	source = git+https://git.do.srb2.org/STJr/srb2assets-public.git#commit=5c9cab509dcc3389cf9bddf55dd168840e62e315
+	sha256sums = 96ffdd8899334e0550834d42785d5e86ca95c70461c61464f714f71d32befdf9
 
 pkgname = srb2-legacy-data
