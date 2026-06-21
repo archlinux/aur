@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.6.4-1] 2026-06-21
+
+### Changed
+
+- CMake >= 3.5 declared in makedepends, matching upstream compatibility
+- Optional dependency renamed: `timidity-freepats` → `freepats-general-midi`
+  for default MIDI music
+- Made CMake --build and --install directories relative to "look normal"
+
+### Fixed
+
+- Autodetect location of sample configuration in sources
+- Launcher script patched to work with an installation below /usr
+
+### Removed
+
+- Manual installation of desktop file and icon; done during install
+
 ## [1.6.3-1] 2024-05-15
 
 ### Changed
@@ -39,6 +57,7 @@ Package submitted.
 
 - Add .desktop file (carstene1ns)
 
+[1.6.4-1]: https://github.com/gameflorist/dunedynasty/releases/tag/v1.6.4
 [1.6.3-1]: https://github.com/gameflorist/dunedynasty/releases/tag/v1.6.3
 [1.6.2-1]: https://github.com/gameflorist/dunedynasty/releases/tag/v1.6.2
 [1.5.7-1]: https://dunedynasty.sourceforge.net/changes.html#version-1.5.7-2013-08-18

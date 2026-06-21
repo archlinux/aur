@@ -1,6 +1,6 @@
 pkgbase = dunedynasty
 	pkgdesc = Maintained fork of an enhanced continuation of the classic real-time strategy game Dune II
-	pkgver = 1.6.3
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = https://github.com/gameflorist/dunedynasty
 	install = dunedynasty.install
@@ -8,7 +8,7 @@ pkgbase = dunedynasty
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0-only
-	makedepends = cmake
+	makedepends = cmake>=3.5
 	depends = allegro
 	depends = alsa-lib
 	depends = enet
@@ -17,8 +17,10 @@ pkgbase = dunedynasty
 	depends = libmad
 	optdepends = soundfont-fluid: soundfont for fluidsynth
 	optdepends = timidity++: MIDI music support alternative
-	optdepends = timidity-freepats: patch set for timidity++
-	source = dunedynasty-1.6.3.tar.gz::https://github.com/gameflorist/dunedynasty/archive/refs/tags/v1.6.3.tar.gz
-	sha256sums = 43d113541acfe3435e5bc740371f3cd3a25bb7a1adf4e7f9024fda63c9487844
+	optdepends = freepats-general-midi: patch set for timidity++
+	source = dunedynasty-1.6.4.tar.gz::https://github.com/gameflorist/dunedynasty/archive/refs/tags/v1.6.4.tar.gz
+	source = launcher.patch
+	sha256sums = 47a78bcc9ac9f65924616cb097f0448f56c1be8fdf025b49ac361a060295b2b1
+	sha256sums = aa3a93eb339b9b704bc6ff8d3715ba9f81b698934a7e8800c306446f72eb0108
 
 pkgname = dunedynasty

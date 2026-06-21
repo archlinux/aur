@@ -1,0 +1,28 @@
+diff -urN dunedynasty-1.6.4.orig/static/linux/dunedynasty-launcher dunedynasty-1.6.4/static/linux/dunedynasty-launcher
+--- dunedynasty-1.6.4.orig/static/linux/dunedynasty-launcher	2025-05-31 19:12:09.000000000 +0200
++++ dunedynasty-1.6.4/static/linux/dunedynasty-launcher	2025-12-14 11:27:11.932463662 +0100
+@@ -1,5 +1,13 @@
+ #!/bin/sh
+-cp -r /app/share/dunedynasty $XDG_DATA_HOME
++XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
++
++PREFIX=/usr
++if [ -d "/app/share/dunedynasty" ]; then
++	cp -r "/app/share/dunedynasty" "$XDG_DATA_HOME"
++elif [ -d "$PREFIX/share/dunedynasty" ]; then
++	cp -r "$PREFIX/share/dunedynasty" "$XDG_DATA_HOME"
++fi
++
+ if ! [ -f "$XDG_DATA_HOME/dunedynasty/data/DUNE.PAK" ]; then
+   error="ERROR: Dune II data files not found.\nPlace your Dune2 1.07eu data files in this folder:\n$XDG_DATA_HOME/dunedynasty/data"
+   if command -v zenity >/dev/null 2>&1; then
+@@ -9,6 +17,8 @@
+   else
+     echo $error
+   fi
++elif [ -x "/app/bin/dunedynasty" ]; then
++  exec "/app/bin/dunedynasty"
+ else
+-  /app/bin/dunedynasty
++  exec "$PREFIX/bin/dunedynasty"
+ fi
