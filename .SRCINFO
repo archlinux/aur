@@ -1,6 +1,6 @@
 pkgbase = clin-rs-bin
 	pkgdesc = Encrypted terminal note-taking app
-	pkgver = 0.8.25
+	pkgver = 0.8.26
 	pkgrel = 1
 	url = https://github.com/reekta92/clin-rs
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = clin-rs-bin
 	provides = clin
 	conflicts = clin-rs
 	options = !strip
-	source_x86_64 = clin-x86_64-0.8.25.txz::https://github.com/reekta92/clin-rs/releases/download/v0.8.25/clin-rs-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = bc3f065e64ccb5328eea5f6006a0037f2df129f10b17e219cf54ec4bb4e6ed3f
+	source_x86_64 = clin-x86_64-0.8.26.txz::https://github.com/reekta92/clin-rs/releases/download/v0.8.26/clin-rs-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 3f37fec5e09660c303da24d43ea13c3cd820170cafcfbfa694572c68cf9b4694
 
 pkgname = clin-rs-bin
