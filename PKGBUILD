@@ -1,42 +1,50 @@
 # Maintainer: Joao Costa <arch@joaocosta.dev>
 pkgname=orca-bambustudio-appimage
-_pkgname=Orca-BambuStudio
-pkgver=1.0.0
-pkgrel=5
-pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
+_pkgname=BambuStudio-OrcaSlicer
+pkgver=02.07.01.57
+pkgrel=1
+pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.) with changes from Pawel Jarczak for Bambu Cloud Support"
 arch=('x86_64')
-url="https://github.com/FULU-Foundation/OrcaSlicer-bambulab"
-license=('AGPL-3.0')
+url="https://github.com/jarczakpawel/OrcaStudio"
+license=('AGPL-3.0-only')
 options=('!strip' '!debug')
 provides=('orca-bambustudio')
 conflicts=('orca-bambustudio' 'orca-bambustudio-git' 'orca-bambustudio-bin')
 depends=('libwebp' 'webkit2gtk-4.1')
-source=("${_pkgname}-${pkgver}.AppImage::https://github.com/FULU-Foundation/OrcaSlicer-bambulab/releases/download/v${pkgver}/OrcaSlicer-BMCU_Linux_AppImage_ubuntu24.04_amd64_${pkgver}.AppImage" "Orca-BambuStudio.desktop" "orca-bambu")
-sha256sums=('fb948fc235c12916fddca8eddf44678ca86c936a4b14acc70d75c2bd22067994' '364e4ba2d39b35e1c19790c581bc8ee632a7411f1667abf097742305cb216bc7' '5b90719fdc4f5787d7466a1ef73834ec146a76f13f773b72aaf9b9044e38f675')
+source=("${_pkgname}-${pkgver//_/-}.AppImage::https://github.com/jarczakpawel/OrcaStudio/releases/download/v${pkgver//_/-}/${_pkgname}_Linux_AppImage_ubuntu24.04_amd64_${pkgver//_/-}.AppImage")
+sha256sums=('d516b3865c85109fbdd92394b43c6e0b18c44f7a3b1d09d3ff35bd9495f5867e')
 
 package() {
 
-  if [ -f "Orca-BambuStudio.desktop" ]; then
-    install -Dm644 "Orca-BambuStudio.desktop" "$pkgdir/usr/share/applications/Orca-BambuStudio.desktop"
+  #if [ -f "Orca-BambuStudio.desktop" ]; then
+  #  install -Dm644 "Orca-BambuStudio.desktop" "$pkgdir/usr/share/applications/Orca-BambuStudio.desktop"
+  #else
+  #  msg2 "Fail: Could not automatically find desktop icon file (Orca-BambuStudio.desktop) within the AppImage."
+  #  exit 1
+  #fi
+
+  #chmod +x "orca-bambu"
+  #install -Dm755 "orca-bambu" "$pkgdir/usr/bin/orca-bambu"
+
+  cd "$srcdir"
+  chmod +x "${_pkgname}-${pkgver//_/-}.AppImage"
+  ./"${_pkgname}-${pkgver//_/-}.AppImage" --appimage-extract 
+  if [ -f "squashfs-root/com.orcaslicer.BambuStudio-OrcaSlicer.desktop" ]; then
+    sed 's|Exec=AppRun %F|Exec=/usr/bin/bambustudio-orcaslicer|' squashfs-root/com.orcaslicer.BambuStudio-OrcaSlicer.desktop > com.orcaslicer.BambuStudio-OrcaSlicer.desktop
+    install -Dm644 "com.orcaslicer.BambuStudio-OrcaSlicer.desktop" "$pkgdir/usr/share/applications/com.orcaslicer.BambuStudio-OrcaSlicer.desktop"
   else
-    msg2 "Fail: Could not automatically find desktop icon file (Orca-BambuStudio.desktop) within the AppImage."
+    echo "Fail: Could not automatically find Desktop entry file (com.orcaslicer.BambuStudio-OrcaSlicer.desktop) within the AppImage."
     exit 1
   fi
 
-  chmod +x "orca-bambu"
-  install -Dm755 "orca-bambu" "$pkgdir/usr/bin/orca-bambu"
-
-  cd "$srcdir"
-
-  chmod +x "${_pkgname}-${pkgver}.AppImage"
-  install -Dm755 "${_pkgname}-${pkgver}.AppImage" "$pkgdir/usr/bin/${_pkgname}"
-
-  ./"${_pkgname}-${pkgver}.AppImage" --appimage-extract &>/dev/null
-
-  if [ -f "squashfs-root/OrcaSlicer.png" ]; then
-    install -Dm644 "squashfs-root/OrcaSlicer.png" "$pkgdir/usr/share/pixmaps/OrcaSlicer.png"
+  if [ -f "squashfs-root/BambuStudio-OrcaSlicer.png" ]; then
+    install -Dm644 "squashfs-root/BambuStudio-OrcaSlicer.png" "$pkgdir/usr/share/pixmaps/BambuStudio-OrcaSlicer.png"
   else
-    msg2 "Warning: Could not automatically find an icon file (OrcaSlicer.png) within the AppImage."
-    msg2 "         Desktop entry icon might be missing."
+    echo "Warning: Could not automatically find an icon file (OrcaSlicer.png) within the AppImage."
+    echo "         Desktop entry icon might be missing."
   fi
+
+  chmod +x "${_pkgname}-${pkgver//_/-}.AppImage"
+  install -Dm755 "${_pkgname}-${pkgver//_/-}.AppImage" "$pkgdir/usr/bin/${_pkgname,,}"
+  
 }

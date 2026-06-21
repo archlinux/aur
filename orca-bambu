@@ -1,4 +1,0 @@
-#!/bin/bash
-export GDK_BACKEND=x11
-export LD_PRELOAD=/usr/lib/libsharpyuv.so
-exec /usr/bin/Orca-BambuStudio "$@"
