@@ -1,0 +1,16 @@
+pkgbase = devsecrets-bin
+	pkgdesc = Manage your local dev secrets & environment variables globally
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/peterkracik/dev-secrets
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = devsecrets
+	conflicts = devsecrets
+	options = !strip
+	source_x86_64 = devsecrets-x86_64-0.0.2.tgz::https://github.com/peterkracik/dev-secrets/releases/download/v0.0.2/devsecrets-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a3ea630f894902030e33f0d3b81a1d4d4028a41ce3af7157cb09e15252f4e3a0
+
+pkgname = devsecrets-bin

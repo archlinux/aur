@@ -1,0 +1,5 @@
+[devsecrets-bin]
+source = "github"
+github = "peterkracik/dev-secrets"
+use_latest_release = true
+prefix = "v"
