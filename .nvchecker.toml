@@ -1,0 +1,3 @@
+[python-mcp]
+source = "pypi"
+pypi = "mcp"
