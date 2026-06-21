@@ -1,6 +1,6 @@
 pkgbase = bling-git
 	pkgdesc = Minimal system info fetcher made in C
-	pkgver = r34.da1d146
+	pkgver = r35.9304f6d
 	pkgrel = 1
 	url = https://codeberg.org/mazylol/bling
 	arch = x86_64
