@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=xdg-desktop-portal-cosmic-git
-pkgver=1.0.0.alpha.6.r3.ga515c19
+pkgver=1.0.16.r3.gd26e566
 pkgrel=1
 pkgdesc="A backend implementation for xdg-desktop-portal for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/xdg-desktop-portal-cosmic"
 license=('GPL-3.0-only')
 depends=(
-  'hicolor-icon-theme'
+  'cosmic-icons-git'
   'libpipewire'
   'libxkbcommon'
   'mesa'
@@ -20,7 +20,6 @@ makedepends=(
   'git'
   'mold'
 )
-options=('!lto')
 provides=("${pkgname%-git}" 'xdg-desktop-portal-impl')
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/xdg-desktop-portal-cosmic.git')
@@ -34,7 +33,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -45,7 +44,7 @@ build() {
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
-  ARGS+=" --frozen" nice make
+  nice make ARGS+=" --frozen --release"
 }
 
 package() {
