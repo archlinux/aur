@@ -100,6 +100,7 @@ package_dotnet-runtime-9.0() {
     openssl
   )
   optdepends=('lttng-ust2.12: CoreCLR tracing')
+  provides=(dotnet-runtime=${pkgver%.*.sdk*})
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   bsdtar -xf dotnet/artifacts/assets/Release/dotnet-sdk-${pkgver%.*.sdk*}.${pkgver#*sdk}-arch-*.tar.gz -C "${pkgdir}"/usr/share/dotnet/ --no-same-owner shared/Microsoft.NETCore.App
@@ -109,6 +110,7 @@ package_dotnet-runtime-9.0() {
 package_aspnet-runtime-9.0() {
   pkgdesc='The ASP.NET Core runtime'
   depends=(dotnet-runtime-9.0)
+  provides=(aspnet-runtime=${pkgver%.*.sdk*})
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   bsdtar -xf dotnet/artifacts/assets/Release/dotnet-sdk-${pkgver%.*.sdk*}.${pkgver#*sdk}-arch-*.tar.gz -C "${pkgdir}"/usr/share/dotnet/ --no-same-owner shared/Microsoft.AspNetCore.App
@@ -125,6 +127,7 @@ package_dotnet-sdk-9.0() {
     netstandard-targeting-pack
   )
   optdepends=('aspnet-targeting-pack: Build ASP.NET Core applications')
+  provides=(dotnet-sdk=${pkgver%.*.sdk*})
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   bsdtar -xf dotnet/artifacts/assets/Release/dotnet-sdk-${pkgver%.*.sdk*}.${pkgver#*sdk}-arch-*.tar.gz -C "${pkgdir}"/usr/share/dotnet/ --no-same-owner sdk sdk-manifests templates
@@ -135,6 +138,7 @@ package_dotnet-sdk-9.0() {
 package_dotnet-targeting-pack-9.0() {
   pkgdesc='The .NET Core targeting pack'
   depends=(netstandard-targeting-pack)
+  provides=(dotnet-targeting-pack=${pkgver%.*.sdk*})
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   bsdtar -xf dotnet/artifacts/assets/Release/dotnet-sdk-${pkgver%.*.sdk*}.${pkgver#*sdk}-arch-*.tar.gz -C "${pkgdir}"/usr/share/dotnet/ --no-same-owner packs/Microsoft.NETCore.App.{Host.arch-*,Ref}
@@ -144,6 +148,7 @@ package_dotnet-targeting-pack-9.0() {
 package_aspnet-targeting-pack-9.0() {
   pkgdesc='The ASP.NET Core targeting pack'
   depends=(dotnet-targeting-pack-9.0)
+  provides=(aspnet-targeting-pack=${pkgver%.*.sdk*})
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   bsdtar -xf dotnet/artifacts/assets/Release/dotnet-sdk-${pkgver%.*.sdk*}.${pkgver#*sdk}-arch-*.tar.gz -C "${pkgdir}"/usr/share/dotnet/ --no-same-owner packs/Microsoft.AspNetCore.App.Ref
@@ -152,8 +157,7 @@ package_aspnet-targeting-pack-9.0() {
 
 package_dotnet-source-built-artifacts-9.0() {
   pkgdesc='Internal package for building the .NET Core SDK'
+  provides=(dotnet-source-built-artifacts=${pkgver%.*.sdk*})
 
   install -Dm 644 dotnet/artifacts/assets/Release/Private.SourceBuilt.Artifacts.*.tar.gz -t "${pkgdir}"/usr/share/dotnet/source-built-artifacts/
 }
-
-# vim: ts=2 sw=2 et:
