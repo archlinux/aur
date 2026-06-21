@@ -3,7 +3,7 @@
 pkgname=('rom-properties' 'rom-properties-gtk' 'rom-properties-kde')
 pkgbase=rom-properties
 pkgdesc="Shell extension for displaying ROM and disc image metadata in file managers"
-pkgver=2.7.1
+pkgver=2.8
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/GerbilSoft/rom-properties'
@@ -25,17 +25,17 @@ makedepends=(
     'kwidgetsaddons'
     'libnautilus-extension'
     'pkgconf'
+    'pugixml'
     'python'
     'qt5-base'
     'qt6-base'
     'qt6-tools'
-    'tinyxml2'
 )
 source=(
     "$pkgbase-$pkgver.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v$pkgver.tar.gz"
 )
 sha256sums=(
-    '6856e3ad88720d0571e82fcac64c0c51605f8ddfbd942130ee5a6e688a2bc399'
+    'c9eccc8d57751878c115073cd3b61ae6b7a0380bf5a07e229bc4d8683675aa71'
 )
 options=(!debug)
 
@@ -55,6 +55,15 @@ build() {
     -DBUILD_KF6=ON \
     -DBUILD_GTK3=ON \
     -DBUILD_GTK4=ON \
+    -DENABLE_ZSTD=ON \
+    -DENABLE_LZ4=ON \
+    -DENABLE_LZO=ON \
+    -DENABLE_XML=ON \
+    -DUSE_INTERNAL_ZSTD=OFF \
+    -DUSE_INTERNAL_LZ4=OFF \
+    -DUSE_INTERNAL_LZO=OFF \
+    -DUSE_INTERNAL_XML=OFF \
+    -DUSE_INTERNAL_FMT=OFF \
     -Wno-dev
 
     make
@@ -65,21 +74,24 @@ package_rom-properties() {
     depends=(
         'curl'
         'fmt'
-        'gcc-libs'
         'glibc'
+        'libgcc'
+        'libgomp'
         'libjpeg-turbo'
         'libpng'
         'libseccomp'
-        'lz4'
-        'lzo'
+        'libstdc++'
         'nettle'
-        'tinyxml2'
+        'pugixml'
         'zlib'
+        'zstd'
     )
     optdepends=(
-        'zstd: Zstandard decompression'
-        'rom-properties-gtk: for GTK file explores (Caja, Nautilus, Nemo and Thunar)'
-        'rom-properties-kde: for Dolphin file explorer'
+        'libwebp: WebP image decoding support (for Android APK packages)'
+        'lz4: For PSP CISOv2 and ZISO compressed disc decompression'
+        'lzo: For PSP JISO compressed disc decompression'
+        'rom-properties-gtk: GTK extensions for file managers (Nautilus, Desktop Search, Caja, Nemo, Thunar)'
+        'rom-properties-kde: Qt6/KF6 plugins for Dolphin and KFileMetaData'
     )
 
     cd "$pkgbase-$pkgver/build"
@@ -102,15 +114,17 @@ package_rom-properties() {
 
 
 package_rom-properties-gtk() {
-    pkgdesc="Shell extension for displaying ROM and disc image metadata in file managers (GTK)"
+    pkgdesc="Nautilus and other GTK-based file manager extensions for rom-properties"
     depends=(
         'cairo'
-        'gcc-libs'
+        'fmt'
         'glib2'
         'glibc'
         'gsound'
         'gtk3'
         'gtk4'
+        'libgcc'
+        'libstdc++'
         'pango'
         'rom-properties'
     )
@@ -121,14 +135,16 @@ package_rom-properties-gtk() {
 }
 
 package_rom-properties-kde() {
-    pkgdesc="Shell extension for displaying ROM and disc image metadata in file managers (KDE)"
+    pkgdesc="Dolphin, KFileMetaData, and KF6 plugins for rom-properties"
     depends=(
-        'gcc-libs'
+        'fmt'
         'glibc'
         'kcoreaddons'
         'kfilemetadata'
         'kio'
         'kwidgetsaddons'
+        'libgcc'
+        'libstdc++'
         'qt6-base'
         'rom-properties'
     )
