@@ -1,7 +1,7 @@
 # Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=manora
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A simple CLI / TUI tool to display (or save) man pages as PDF files"
 url="https://github.com/Antiz96/manora"
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('glibc' 'libgcc' 'man' 'groff' 'xdg-utils')
 makedepends=('cargo' 'scdoc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2de00d0ca0bafcebfc1806fbfb614732874e26473f80b0ed10808442bf16b133')
+sha256sums=('a2efa7312bb0125b1b8f40f2b6ae79531811d429a659328ae492292584972f76')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
