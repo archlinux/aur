@@ -4,7 +4,7 @@
 pkgname=undertalemodtool-avalonia-bin
 _pkgname=undertalemodtool-avalonia
 
-pkgver=2026.06.08
+pkgver=2026.06.21
 _pkgver=$(date +"%Y.%m.%d")
 pkgrel=1
 arch=('x86_64')
@@ -49,7 +49,7 @@ package() {
 
   # Linking the desktop in the path
   mkdir -p "$pkgdir/usr/bin"
-  ln -s /opt/undertalemodtool-avalonia/UndertaleModToolAvalonia.Desktop "$pkgdir/usr/bin/${_pkgname}"
+  ln -s /opt/undertalemodtool-avalonia/UndertaleModToolAvalonia "$pkgdir/usr/bin/${_pkgname}"
 
   # Desktop file
   install -Dm644 "${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
