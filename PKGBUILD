@@ -1,6 +1,6 @@
 # Maintainer: HcgRandon <me@randon.moe>
 pkgname=heaper-bin
-pkgver=16.16.43
+pkgver=16.18.0
 pkgrel=1
 pkgdesc="Your files deserve their story"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=("${pkgname}-${pkgver}.AppImage::https://github.com/JanLunge/heaper-relea
         "heaper.sh"
         "heaper.desktop")
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha256sums=('9abf234ffe71d7183400eb7951df86065d9085d8052a62c0fa3d62a611401787'
+sha256sums=('b810a3a367f71b35600edcd40f8dda2b434b3cdc5821e2219d5db04d62ced38d'
             '882d4689f2e4f28857ad6d1ed39f69a87ae5e2e5b69f973094306291703fe9a5'
             '22a32e412696d5be061d27ba43f07bc925e9f2fa835e52e377b710826a7371fd')
 
