@@ -14,7 +14,7 @@ pkgbase = hyprspaces-tools
 	optdepends = socat: stock Waybar custom module helper
 	optdepends = sunshine: optional Sunshine headless helper
 	conflicts = hyprspaces<2.0.0
-	source = hyprspaces-2.1.0.tar.gz::https://github.com/jtaw5649/hyprspaces/archive/48692ce58dd733da711bfa7cbcc3b64c8ec69c7c.tar.gz
-	sha256sums = 2077f52d6aa022bc30842da6b0f125da057f289247551a3ea539f46b3702972a
+	source = hyprspaces-2.1.0.tar.gz::https://github.com/jtaw5649/hyprspaces/archive/d3f660c15183280733c885f216723557f6d78abc.tar.gz
+	sha256sums = 48d51174632ff5c331d667c4631a42cdbd310b90ca07516dddd665a5cceac04b
 
 pkgname = hyprspaces-tools
