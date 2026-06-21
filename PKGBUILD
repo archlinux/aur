@@ -2,7 +2,7 @@
 _pkgname=clashtui
 pkgname=$_pkgname-bin
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mihomo (Clash.Meta) TUI Client"
 arch=('x86_64')
 url="https://github.com/JohanChane/clashtui"
