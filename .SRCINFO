@@ -1,14 +1,17 @@
 pkgbase = dvd_info
 	pkgdesc = DVD utilities to print information, copy tracks, etc.
-	pkgver = 1.17
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/beandog/dvd_info
 	arch = x86_64
 	license = GPL2
+	makedepends = cmake
+	makedepends = pkgconf
 	depends = libdvdread
 	depends = libdvdcss
 	depends = mpv
-	source = dvd_info-1.17.tar.gz::https://github.com/beandog/dvd_info/archive/refs/tags/1.17.tar.gz
-	sha256sums = 0c07060753c80e63b6ac854f2a722ce634fb6d744cfe3514ebfb060a1719fd78
+	optdepends = ffmpeg: required by the dvd_rip script for transcoding
+	source = dvd_info-2.2.tar.gz::https://github.com/beandog/dvd_info/archive/refs/tags/2.2.tar.gz
+	sha256sums = de47b6f6443a5ffbcd10ccc2598b28c61b2f74f5dcfc5abd04673b196bb73521
 
 pkgname = dvd_info
