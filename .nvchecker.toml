@@ -1,0 +1,5 @@
+[lucid-bin]
+source = "github"
+github = "sharkdp/lucid"
+use_latest_release = true
+prefix = "v"

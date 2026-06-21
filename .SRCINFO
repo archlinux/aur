@@ -1,0 +1,16 @@
+pkgbase = lucid-bin
+	pkgdesc = A simple mock-application for programs that work with child processes
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/sharkdp/lucid
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = lucid
+	conflicts = lucid
+	source_x86_64 = lucid-x86_64-0.3.0.tgz::https://github.com/sharkdp/lucid/releases/download/v0.3.0/lucid-v0.3.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f2485b0b2e2152feb7e977be6b400a9075b2925647b92b6f812eff84c8de7c93
+
+pkgname = lucid-bin
