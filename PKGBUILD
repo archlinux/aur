@@ -15,9 +15,11 @@ source=(
     "https://github.com/SamiAhmed7777/triangles_v5/releases/download/v${pkgver}/cryptographic-triangles-daemon_${pkgver}_amd64.deb"
     "triangles-qt.desktop"
 )
-sha256sums=('b4afcf758f55c8fb256f4742917971414078ce37c0fe346383ccda5251917bde'
-            '068d015cf73206f3f3604b0c8fbf60db307c20234cbe06e236996fb9a336df51'
-            'SKIP')
+sha256sums=(
+    'b4afcf758f55c8fb256f4742917971414078ce37c0fe346383ccda5251917bde'
+    '068d015cf73206f3f3604b0c8fbf60db307c20234cbe06e236996fb9a336df51'
+    'SKIP'
+)
 
 prepare() {
     cd "$srcdir"
