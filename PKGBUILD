@@ -1,7 +1,7 @@
 # Maintainer: Vatteck <vatteck@gmail.com>
 pkgname=atlas-pm-git
 _srcname=atlas
-pkgver=0.13.0.r339.gae61209
+pkgver=0.13.0.r340.gc51964d
 pkgrel=1
 pkgdesc="Arch-focused graphical package manager (Arch/AUR, Flatpak, AppImage)"
 arch=('any')
@@ -51,9 +51,14 @@ package() {
     # StartupWMClass, and the runtime app_id via set_prgname) — NOT the bare 'atlas', which
     # collides with a generic 'atlas' map icon several themes ship (char-white, Tela, Fluent,
     # WhiteSur, …). KDE resolves a window's icon by an app_id→icon-name lookup, so a 'atlas'
-    # app_id would hit the theme map before the .desktop's Icon=. logo.png is 512x512, so
-    # install it to the hicolor 512x512 dir (what GNOME/KDE app grids search) plus pixmaps.
+    # app_id would hit the theme map before the .desktop's Icon=.
+    #
+    # Ship the scalable SVG (hicolor/scalable) as the primary icon — KDE prefers it and renders it
+    # crisply at any size, including the small titlebar/taskbar sizes that a lone 512x512 PNG can
+    # miss (which is how the generic theme 'atlas' map can sneak back in). Keep the 512 PNG (app
+    # grids) and the pixmaps copy as fallbacks for environments without the scalable lookup.
     install -Dm644 atlas/desktop/atlas-pm.desktop "$pkgdir/usr/share/applications/atlas-pm.desktop"
+    install -Dm644 atlas/view/resources/img/logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/atlas-pm.svg"
     install -Dm644 atlas/view/resources/img/logo.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/atlas-pm.png"
     install -Dm644 atlas/view/resources/img/logo.png "$pkgdir/usr/share/pixmaps/atlas-pm.png"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
