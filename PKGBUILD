@@ -1,6 +1,6 @@
 # Maintainer: loteran <https://github.com/loteran>
 pkgname=ds5-audio-haptics-bt
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Cross-platform configuration app for DS5Dongle — Auto Haptics Edition"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
   "70-ds5dongle.rules::https://raw.githubusercontent.com/loteran/DS5Dongle/master/config-app/70-ds5dongle.rules"
   "${pkgname}.desktop::https://raw.githubusercontent.com/loteran/DS5Dongle/master/config-app/${pkgname}.desktop"
 )
-sha256sums=('cf5d9cffbc9088f302ed38332afa4c84912be65b5ed4bceb78135921bdfd3a0b'
+sha256sums=('3ee0e3e23a6f3777822674b5fb95fdf5da58714b8a698b60f308c292a2a56d73'
             'SKIP'
             'SKIP')
 

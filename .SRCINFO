@@ -1,16 +1,16 @@
 pkgbase = ds5-audio-haptics-bt
 	pkgdesc = Cross-platform configuration app for DS5Dongle — Auto Haptics Edition
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/loteran/DS5Dongle
 	arch = x86_64
 	license = MIT
 	depends = hicolor-icon-theme
 	depends = libusb
-	source = ds5-audio-haptics-bt-0.3.1-linux-x64.tar.gz::https://github.com/loteran/DS5Dongle/releases/download/app-v0.3.0/ds5-audio-haptics-bt-0.3.1-linux-x64.tar.gz
+	source = ds5-audio-haptics-bt-0.4.0-linux-x64.tar.gz::https://github.com/loteran/DS5Dongle/releases/download/app-v0.3.0/ds5-audio-haptics-bt-0.4.0-linux-x64.tar.gz
 	source = 70-ds5dongle.rules::https://raw.githubusercontent.com/loteran/DS5Dongle/master/config-app/70-ds5dongle.rules
 	source = ds5-audio-haptics-bt.desktop::https://raw.githubusercontent.com/loteran/DS5Dongle/master/config-app/ds5-audio-haptics-bt.desktop
-	sha256sums = cf5d9cffbc9088f302ed38332afa4c84912be65b5ed4bceb78135921bdfd3a0b
+	sha256sums = 3ee0e3e23a6f3777822674b5fb95fdf5da58714b8a698b60f308c292a2a56d73
 	sha256sums = SKIP
 	sha256sums = SKIP
 
