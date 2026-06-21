@@ -23,7 +23,6 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release --all-features
-
 	scdoc < "doc/man/${pkgname}.1.scd" > "doc/man/${pkgname}.1"
 }
 
@@ -36,7 +35,6 @@ check() {
 package() {
 	cd "${pkgname}-${pkgver}"
 	install -Dm 755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-
 	install -Dm 644 "res/completions/${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
 	install -Dm 644 "res/completions/${pkgname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 	install -Dm 644 "res/completions/${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
