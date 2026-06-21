@@ -1,7 +1,7 @@
 # Maintainer: Hannes Hapke <hannes.hapke@gmail.com>
 pkgname=yaak-cli
 _pkgname=yaak
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Translate natural language to bash commands using any OpenAI-compatible LLM"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ conflicts=('yaak' 'yaak-cli-bin')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/hanneshapke/yaak/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e266ec065a96e71b07b4529d1fe1029c45bda27679d789a31060efa336502b4c')
+sha256sums=('d1ecba4b53dc9358c66fe347095df3f1cee119934e3d390f4968d0c4a3ff2334')
 
 prepare() {
   cd "$_pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = yaak-cli
 	pkgdesc = Translate natural language to bash commands using any OpenAI-compatible LLM
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/hanneshapke/yaak
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = yaak-cli
 	provides = yaak-cli-bin
 	conflicts = yaak
 	conflicts = yaak-cli-bin
-	source = yaak-0.1.4.tar.gz::https://github.com/hanneshapke/yaak/archive/refs/tags/v0.1.4.tar.gz
-	sha256sums = e266ec065a96e71b07b4529d1fe1029c45bda27679d789a31060efa336502b4c
+	source = yaak-0.1.5.tar.gz::https://github.com/hanneshapke/yaak/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = d1ecba4b53dc9358c66fe347095df3f1cee119934e3d390f4968d0c4a3ff2334
 
 pkgname = yaak-cli
