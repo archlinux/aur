@@ -2,7 +2,7 @@
 
 pkgname=ffmpeg-cuda-full
 pkgver=8.1.1
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc='Latest FFmpeg with CUDA/NVENC and all codecs including nonfree (libfdk-aac) - dynamically tracks upstream releases'
 arch=('x86_64')
@@ -171,12 +171,15 @@ build() {
     cd ffmpeg
 
     # Optimize for the build machine's CPU and use -O3 for better performance.
-    # Safe for AUR since every user compiles locally with their own -march=native.
-    CFLAGS="${CFLAGS/-march=x86-64/-march=native}"
-    CFLAGS="${CFLAGS/-mtune=generic/-mtune=native}"
+    # Replace the *entire* -march=/-mtune= token rather than a substring: a
+    # bare "${CFLAGS/-march=x86-64/...}" turns a microarchitecture level such as
+    # -march=x86-64-v3 into the invalid -march=native-v3 ("cc1: error: bad value
+    # 'native-v3'"). Matching -march=<non-space>+ forces native regardless of the
+    # configured arch. -O2 is bumped to -O3, but an explicit lower level
+    # (e.g. -O0 for debugging) is deliberately left alone.
+    CFLAGS=$(sed -E 's/-march=[^[:space:]]+/-march=native/; s/-mtune=[^[:space:]]+/-mtune=native/' <<<"$CFLAGS")
     CFLAGS="${CFLAGS/-O2/-O3}"
-    CXXFLAGS="${CXXFLAGS/-march=x86-64/-march=native}"
-    CXXFLAGS="${CXXFLAGS/-mtune=generic/-mtune=native}"
+    CXXFLAGS=$(sed -E 's/-march=[^[:space:]]+/-march=native/; s/-mtune=[^[:space:]]+/-mtune=native/' <<<"$CXXFLAGS")
     CXXFLAGS="${CXXFLAGS/-O2/-O3}"
 
     # FFmpeg's configure expects threads="yes"/"no" internally.

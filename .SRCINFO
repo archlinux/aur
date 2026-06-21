@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-cuda-full
 	pkgdesc = Latest FFmpeg with CUDA/NVENC and all codecs including nonfree (libfdk-aac) - dynamically tracks upstream releases
 	pkgver = 8.1.1
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 2
 	url = https://ffmpeg.org/
 	install = ffmpeg-cuda-full.install
