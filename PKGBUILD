@@ -1,6 +1,6 @@
 # Maintainer: jtaw5649
 pkgname=waybar-hyprspaces-fork-bin
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Prebuilt Waybar fork with hyprspaces paired workspace support"
 arch=('x86_64')
@@ -45,13 +45,13 @@ conflicts=('waybar-hyprspaces-fork')
 options=('!debug')
 _release_tag="hyprspaces-v${pkgver}"
 _asset="waybar-hyprspaces-fork-x86_64.tar.zst"
-_commit='6ae4bed38751fd977ca07af614e6a28fd2d16e70'
+_commit='6b507d53612ba1b33a70c63b7737e4692836500c'
 source=(
   "${url}/releases/download/${_release_tag}/${_asset}"
   "LICENSE::https://raw.githubusercontent.com/jtaw5649/Waybar/${_commit}/LICENSE"
 )
 sha256sums=(
-  '7286ba870d0b309a1a974a1a7429d56f864f507116531834dd1ae74f8cf22e03'
+  '9ec14744538634d2720f42f4549f519d40804cf4cafb8e8b7925e02c6d84d045'
   'cf9f7af35361d9e0af784fb60a1ed8be5bb939233fbd70671575a90e458db00e'
 )
 
