@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
 pkgver=1.0.16.r56.g75c0480
-pkgrel=1
+pkgrel=2
 pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings-daemon"
@@ -23,6 +23,7 @@ depends=(
 )
 makedepends=(
   'cargo'
+  'clang'
   'git'
   'libxkbcommon'
   'mold'
