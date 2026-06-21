@@ -36,6 +36,7 @@ source=("${UE_SDK_VERSION}.tar.gz::https://cdn.unrealengine.com/Toolchain_Linux/
         'com.unrealengine.UE5Editor.desktop'
         '0001-override-shared-target-build.patch'
         '0002-adapt-android-setup-script.patch'
+        '0003-disable-lumen-surface-cache-feedback-on-linux.patch'
         'unreal-engine-5-pacman-cache.hook'
         'ue5editor.svg')
 sha256sums=('6eef42679b744cdcb50276f2d7cff0a51f7ddd632960e06bfbc3f6b9508ef615'
@@ -43,6 +44,7 @@ sha256sums=('6eef42679b744cdcb50276f2d7cff0a51f7ddd632960e06bfbc3f6b9508ef615'
             'aa09746f9db93713f470ef19390a89b279fd5a335835ad95eab6cdaafa1b9e99'
             '1cedb43efc103c384705e4e18746fed24c60c52a445e89f1acfd0f2992f5291d'
             '3da3f449c6b42d49874d8507be476b1178509be099df6f5d58683802d7e05dd2'
+            'db60ce742e6d236a0a9f79b7a8b59496fa2bf003332b244f4a177d81391f83b2'
             '9386160a91594abeeaf4fe02fea562e7a4ead4c6f9a258c2a37b2e5f10e7deca'
             'b00c398b63f15084c46f3963f62a45284ecd8dae9ba6f38a2c4af370bbfdab8d')
 # Not sure if compiling Unreal with LTO is legal? Lot's of different proprietary software goes into Unreal
