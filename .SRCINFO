@@ -1,12 +1,12 @@
 pkgbase = readknead
 	pkgdesc = Knead your sequencing reads before baking: clips, demultiplexes, filters and trims reads
-	pkgver = 0.2.3
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://sr.ht/~vejnar/ReadKnead
 	arch = x86_64
 	license = MPLv2
 	makedepends = go
-	source = readknead-0.2.3.tar.gz::https://git.sr.ht/~vejnar/ReadKnead/archive/v0.2.3.tar.gz
-	sha256sums = b6ddff1821aee40d669100c0466abc3fd876eee625f1da44548d3ff762d42e6b
+	source = readknead-0.3.0.tar.gz::https://git.sr.ht/~vejnar/ReadKnead/archive/v0.3.0.tar.gz
+	sha256sums = ba79dcfc2c4e2bc0b0f850e87462e5d6f51bff5c7fb7355727a1bf25304bfd79
 
 pkgname = readknead
