@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=JISOCreator
-Comment=Herramienta de creación de ISOs
+Comment=JIsoCreator is a ISO9660 CD Image creator, frontend of MKISOFS
 Exec=jisocreator
 Icon=jisocreator
 Terminal=false

@@ -1,17 +1,22 @@
 pkgbase = jisocreator-bin
-	pkgdesc = Herramienta para crear archivos ISO (versión binaria)
-	pkgver = 0.1.3
+	pkgdesc = JIsoCreator is a ISO9660 CD Image creator, frontend of MKISOFS
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/Cavallinux/jisocreator
 	arch = x86_64
 	license = GPL3
 	depends = java-runtime>=21
-	depends = gtk3>=3.24.52-1.1
+	depends = gtk3
+	depends = cdrtools
 	provides = jisocreator
 	conflicts = jisocreator
-	source = https://github.com/Cavallinux/jisocreator/releases/download/v0.1.3/jisocreator-0.1.3-gtk.linux.x86_64.zip
+	source = https://github.com/Cavallinux/jisocreator/releases/download/v0.1.4/jisocreator-0.1.4-gtk.linux.x86_64.zip
 	source = jisocreator.desktop
-	sha256sums = aec1c2e0b097e476ca077aee30b7e4748e1c86195b3b92b8ad4d79e4efd406af
-	sha256sums = 90777606d96171becf2a35fee41e86a39b8a8b45fb8f50e2e0614b1769b29138
+	source = jisocreator.sh
+	source = jisocreator.png
+	sha256sums = 6e6ee46795d832fc66b58342fc69af953fa9bb06b823277cd9e90e259d67f121
+	sha256sums = 5d2ab72c7d2c422ffadcb2e1f88f932a7943c89628781d653093d1efb4cc7a4e
+	sha256sums = eedd19de2e0b9eb87791b6b4fd45f94cbd98a36e7fc56b1086a288480a821962
+	sha256sums = b662235eed256debee97df87331dd91abc359f05016b14ba562a78f1becca2b7
 
 pkgname = jisocreator-bin
