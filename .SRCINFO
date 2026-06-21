@@ -1,6 +1,6 @@
 pkgbase = xgo
 	pkgdesc = XGo is a programming language that reads like plain English and lets you leverage assets from C/C++, Go, Python, and JavaScript/TypeScript
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/goplus/xgo
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = xgo
 	provides = xgo
 	conflicts = goplus
 	replaces = goplus
-	source = xgo-1.7.2.tgz::https://github.com/goplus/xgo/archive/refs/tags/v1.7.2.tar.gz
-	sha256sums = be369106bea43407da81390e82db6a9fa9afb5c3483a64d9664360369ce7d164
+	source = xgo-1.7.3.tgz::https://github.com/goplus/xgo/archive/refs/tags/v1.7.3.tar.gz
+	sha256sums = fa3ebdea43b05a5542a62801eeb19cf27a718cdb57ea7fb56f957e81afce6f66
 
 pkgname = xgo
