@@ -3,7 +3,7 @@
 
 pkgname=python-ffmpeg-progress-yield
 _name=${pkgname#python-}
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Run an ffmpeg command with its progress yielded."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('ffmpeg' 'python-tqdm')
 makedepends=('python-installer' 'python-build' 'python-uv-build')
 checkdepends=('ffmpeg' 'python-pytest' 'python-pytest-asyncio' 'procps-ng')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha512sums=('b91c6b6e59936662c1fec163349f394b53732c4ddf692ebf7d8bb0a06d51af17420167ed4d64d18513afef7674da4c557cd1d15d346c151712a02f2cb6863d49')
+sha512sums=('cdbce109637f3e28b18897ea552cfa36f8e956f7f8ebe922c9fb162d78686a8baaf55ddfe27fdf394cae1fefd53ce5e2272b84e551741502e55bafad03b444a5')
 
 build() {
   cd ${_name}-${pkgver}
