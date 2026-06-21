@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=LatencyMap
+Comment=Measure network latency and traceroute to cloud provider endpoints
+Exec=latency-map %U
+Icon=latency-map
+Terminal=false
+Categories=Network;Utility;
+StartupWMClass=LatencyMap

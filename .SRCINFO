@@ -1,0 +1,27 @@
+pkgbase = latency-map-bin
+	pkgdesc = Desktop latency benchmarking app with Electron and native system network tools
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/paulomanrique/latency-map
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	depends = fuse2
+	depends = traceroute
+	optdepends = iputils: tracepath fallback on Linux
+	provides = latency-map
+	conflicts = latency-map
+	conflicts = latency-map-git
+	options = !strip
+	source = latency-map.png
+	source = latency-map.desktop
+	source = latency-map.sh
+	sha256sums = 94ac4fd79a20265b5448b4d745edf09cea3bc34e80aee90a407a60176cb8aaad
+	sha256sums = 52267164dcca52da84ad8944dccdb808de2e8c263047e4b43eb2204bf29eb123
+	sha256sums = e1ad15fcbe663a3062441059d2c4eb7b29e7094c063e6b0ba30b6f00ec1a7a68
+	source_x86_64 = LatencyMap-0.0.6-linux-x86_64.AppImage::https://github.com/paulomanrique/latency-map/releases/download/v0.0.6/LatencyMap-0.0.6-linux-x86_64.AppImage
+	sha256sums_x86_64 = 96c4833f05f9917d83f209a8f89cd456b9b5fd9ac054d0a794f608e9c0cffc76
+	source_aarch64 = LatencyMap-0.0.6-linux-arm64.AppImage::https://github.com/paulomanrique/latency-map/releases/download/v0.0.6/LatencyMap-0.0.6-linux-arm64.AppImage
+	sha256sums_aarch64 = 8aab9d4af09b99f319e87d8cc24a0a1927b8bc454ba020e2337ddeee6f1c3261
+
+pkgname = latency-map-bin
