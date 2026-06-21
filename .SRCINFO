@@ -1,6 +1,6 @@
 pkgbase = oolite-git
 	pkgdesc = Open Source remake of Elite with many, many enhancements, git version
-	pkgver = 1.93.1.182.r0.5083ea425
+	pkgver = 1.93.1.184.r0.269131299
 	pkgrel = 1
 	url = https://oolite.space/
 	arch = x86_64
@@ -28,10 +28,12 @@ pkgbase = oolite-git
 	depends = sdl3
 	depends = libvorbis
 	depends = libpng
+	conflicts = oolite
 	options = !strip
+	options = !debug
 	source = oolite-git::git+https://github.com/OoliteProject/oolite
 	source = oolite-git.sh
 	sha512sums = SKIP
-	sha512sums = 569d6ec72266c8651a2140b663192ca558a4de59a26d2d3ee6659b96a1f7a3c8c945638b59532c0c5a6740e4b374bae28a771f70c9d209f39368e792f2251e6a
+	sha512sums = 350d9f4e95b1f74385bce62729a197d5ce2b565783cebf187e4b0cc75d8bf0f89996e824a85df15c1609983136919e21dca05bad05a809b5cfc95fee509fab08
 
 pkgname = oolite-git
