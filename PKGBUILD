@@ -1,7 +1,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='histui'
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc='Notification history browser and daemon for Linux desktops'
 url='https://github.com/jmylchreest/histui'
@@ -13,7 +13,7 @@ provides=('histui' 'histuid')
 conflicts=('histui-bin')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jmylchreest/histui/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fd258b10dfa4766762542ffea31adcee5611da9c034a3ef87c9e976551aa397f')
+sha256sums=('324e27e0db90fa53d9e7c038ddaa17104d93df4df23199453a874a56caf93302')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -24,7 +24,7 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
 
     # Build metadata
-    local _commit="5945d6929ce8f589a33d4f5701f0c6f3588901b1"
+    local _commit="0caa799bf393298a7e426ce3e66f06919cd7beec"
     local _buildtime="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
     local _ldflags="-s -w -X main.version=${pkgver} -X main.commit=${_commit} -X main.buildTime=${_buildtime}"
 
