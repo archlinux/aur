@@ -2,14 +2,14 @@
 
 _pkgname=qlipper
 pkgname="$_pkgname-git"
-pkgver=2.0.2.31.gdae06f3
-pkgrel=2
+pkgver=6.1.0
+pkgrel=1
 pkgdesc='Cross-platform clipboard history applet'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/pvanek/qlipper'
-license=('GPL2')
-depends=('qt5-base' 'gtk-update-icon-cache')
-makedepends=('git' 'cmake' 'qt5-tools')
+license=('GPL-2.0-only')
+depends=('kguiaddons' 'gtk-update-icon-cache')
+makedepends=('git' 'cmake' 'qt6-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+${url}.git")
@@ -17,7 +17,7 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd $_pkgname
-  git describe --always | sed "s/-/./g"
+  git describe --always | sed "s/-/.r/;s/-/./"
 }
 
 build() {
