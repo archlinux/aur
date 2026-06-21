@@ -7,8 +7,6 @@ _zipfile="TTFONT.ZIP"
 _fontfile="TT.ttf"
 _pkgver() {
   # Reason for a $_pkgver(): Have something to run before source download so that we can have version aware source downloads.
-  _unpackeddir="${srcdir}"
-  cd "${_unpackeddir}"
 
   # _ver="$(fc-query -f "%{fontversion}" "${_fontfile}")"
   # _ver="$(wget -q -O- "${url}" | html2text -b 0 | grep 'Font Timetable, version' | sed 's|^.*version[[:space:]]\([0-9\.]*\)[^0-9].*$|\1|g')"
