@@ -1,14 +1,14 @@
 pkgbase = shorin-niri-git
 	pkgdesc = Shorin Niri Desktop Environment
 	pkgver = r161.6df5784
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SHORiN-KiWATA/shorin-niri
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = bash
 	depends = curl
-	depends = niri
+	depends = niri-shorin-fork-git
 	depends = nirius
 	depends = mako
 	depends = polkit-gnome
