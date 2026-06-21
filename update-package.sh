@@ -25,33 +25,16 @@ msgend() {
 }
 
 
-readonly krisp_zip='discord_krisp-1.zip'
-readonly krisp_bin='discord_krisp.node'
-
 # head to directory of this script
 cd $(dirname "$0")
 
-# update package to version used in PKGBUILD
-source PKGBUILD
+msgbegin "Checking for latest version… "
+readonly latest_version="$(curl -s "https://discord.com/api/updates/stable?platform=linux" | jq -r .name)"
+sed -E -i "s/pkgver=.*/pkgver=${latest_version}/;s/pkgrel=.*/pkgrel=1/" PKGBUILD
+msgend "Found ${latest_version}"
 
 msg "Running updpkgsums (Updating checksums)"
 updpkgsums
 
 msg "Running mksrcinfo (Updating SRCINFO file)"
 makepkg --printsrcinfo > .SRCINFO
-
-msg "Getting Krisp module"
-curl -O "https://dl.discordapp.net/apps/linux/${_pkgver:-${pkgver}}/modules/${krisp_zip}"
-unzip "${krisp_zip}" "${krisp_bin}"
-
-msg "Checking if Krisp module is patchable (watch output)"
-python krisp-patcher.py "${krisp_bin}"
-
-#msg "Updating Krisp module checksum"
-#readonly chcksm=$(b2sum "${krisp_bin}.orig" | head -c 128)
-#sed -i "s/^_krisp_b2sum='.*'$/_krisp_b2sum='${chcksm}'/" PKGBUILD
-
-msgbegin "Cleaning up... "
-rm -f "${krisp_zip}" "${krisp_bin}" "${krisp_bin}.orig"
-
-msgend "Done"
