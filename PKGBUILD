@@ -1,12 +1,12 @@
 # Maintainer: NewYearPrism
 
-_stable_diffusion_cpp_tag=master-703-bb90bfa
-_stable_diffusion_cpp_version=703
+_stable_diffusion_cpp_tag=master-709-92a3b73
+_stable_diffusion_cpp_version=709
 _stable_diffusion_cpp_commit=${_stable_diffusion_cpp_tag##*-}
-_ggml_version=0.15.1
-_stable_diffusion_cpp_sha256sum=9da87530990168338e8500bddd1e6bbd165d5252f7020df6ae4088d47b34a1ca
-_sdcpp_webui_commit=797ccf80825cc035508ba9b599b2a21953e7f835
-_sdcpp_webui_sha256sum=a053b9b606a44bc07e555e23d04fc5e834b78cb267d3e0fdf640ff66f131e8c9
+_ggml_version=0.15.2
+_stable_diffusion_cpp_sha256sum=5c14f0304ceafe7b590dc16d00b5f39e9730c7123a1d52e1cb127a6652329838
+_sdcpp_webui_commit=c4bce3d6b3f236614cca21014f076083b7270ba8
+_sdcpp_webui_sha256sum=1265543d02ebab560cee6734b3bf1491e831c6be3436647505d6939dd78f2993
 pkgname=stable-diffusion.cpp-ggml
 pkgver=0.0.0.${_stable_diffusion_cpp_version}
 pkgrel=1
@@ -16,6 +16,7 @@ url='https://github.com/leejet/stable-diffusion.cpp'
 license=('MIT')
 depends=(
     "ggml=${_ggml_version}"
+    ggml-cpu
     glibc
     libstdc++
     libgcc
@@ -29,7 +30,6 @@ makedepends=(
     pnpm
 )
 optdepends=(
-    'ggml-cpu: CPU inference'
     'ggml-vulkan: Vulkan inference'
     'ggml-cuda: CUDA inference'
     'ggml-hip: HIP/ROCm inference'
