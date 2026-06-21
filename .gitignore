@@ -1,0 +1,9 @@
+*
+!/PKGBUILD
+!/.SRCINFO
+
+!/discord-launcher.sh
+!/postinst.sh
+
+!/krisp-patcher.py
+!/update-package.py

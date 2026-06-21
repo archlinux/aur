@@ -73,7 +73,6 @@ for i in md.disasm(krisp_initialize, krisp_initialize_address):
 if je_location:
     print(f"Found patch location: 0x{je_location:x}")
 
-    shutil.copyfile(executable, executable + ".orig")
     f = open(executable, 'rb+')
     f.seek(je_location - address_to_file)
     f.write(b'\x90' * je_size)   # je can be larger than 2 bytes given a large enough displacement :(
@@ -83,3 +82,4 @@ else:
         print("Couldn't find patch location - already patched.")
     else:
         print("Couldn't find patch location - review manually. Sorry.")
+        sys.exit(1)
