@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 _pkgname=webhookd
 pkgname=webhookd-bin
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='A very simple webhook server launching shell scripts'
 arch=('x86_64' 'aarch64')
@@ -10,12 +10,11 @@ license=('MIT')
 provides=('webhookd')
 conflicts=('webhookd')
 depends=('glibc')
-source_x86_64=("$pkgname-$pkgver-$CARCH.tgz::$url/releases/download/v$pkgver/webhookd-linux-amd64.tgz")
-sha256sums_x86_64=('60ddf9a21af6819711347f88e3d874bf7327c4bb47d3dfd25896f675851aa77b')
+source_x86_64=("$_pkgname-$pkgver-$CARCH.tgz::$url/releases/download/v$pkgver/webhookd-linux-amd64.tgz")
+sha256sums_x86_64=('9ce7ee86c67cacb841cbf5bc88b2b0817f2a2ba649518e57ded930faf2530bd9')
 
 package() {
-  install -Dm755 "$srcdir/webhookd" -t "$pkgdir/usr/bin/"
-  install -Dm644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname"
-  install -Dm644 "$srcdir/README.md" -t "$pkgdir/usr/share/doc/$_pkgname"
-  install -Dm644 "$srcdir/CHANGELOG.md" -t "$pkgdir/usr/share/doc/$_pkgname"
+  install -Dm755 webhookd -t "$pkgdir/usr/bin/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
+  install -Dm644 README.md CHANGELOG.md -t "$pkgdir/usr/share/doc/$_pkgname"
 }
