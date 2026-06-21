@@ -1,4 +1,5 @@
 # Maintainer: zocker_160 <zocker1600 at posteo dot net>
+# Maintainer: Martin Rys <https://rys.rs/contact>
 # Contributor: Joel Snape <aur@sna.pe>
 
 pkgname=rehex
