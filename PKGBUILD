@@ -10,13 +10,10 @@ url="https://github.com/jellyfin/jellyfin-desktop"
 depends=(
     'cef'
     'mpv'
-    'libglvnd'
     'libxcb'
     'libxkbcommon'
     'libxkbcommon-x11'
-    'systemd-libs'
     'wayland'
-    'xcb-util-cursor'
     'xdg-utils'
 )
 makedepends=(
