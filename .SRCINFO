@@ -14,6 +14,7 @@ pkgbase = xcute
 	depends = python-pkg_resources
 	depends = python-typing_extensions
 	depends = gyp
+	optdepends = powershell
 	provides = xcute
 	noextract = xcute-0.10.3.tgz
 	options = !strip

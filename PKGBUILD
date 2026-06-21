@@ -11,6 +11,7 @@ _urlraw="https://raw.githubusercontent.com/HichemTab-tech/xcute/v${pkgver}"
 license=("MIT")
 
 depends=("bash" "nodejs" "python" "python-packaging" "python-pkg_resources" "python-typing_extensions" "gyp")
+optdepends=("powershell")
 makedepends=("npm" "jq")
 provides=("${_appname}")
 
@@ -20,6 +21,7 @@ _npmver=${pkgver}
 options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
+# source=("${pkgname}-${pkgver}.tgz::${url}/archive/${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
 b2sums=('53c36bf5c15f06003f8b851adeac30f8e42c4c384a6acace082fefa3410cf7b7ba6f9502f8da1616558b20f0bb4e1dabb562f317a1664b5d2606abfc51872997')
 
