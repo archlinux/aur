@@ -9,7 +9,7 @@ license=('MIT')
 depends=('cockpit')
 optdepends=('caddy: the reverse proxy server this plugin manages')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('1edf9e343eeda71665cb93a9f93e6f125c965ee8f59db6e3c46296fa61694aa1')
+sha256sums=('a8e336618d98b4b42493e50f1db13656c4c18c17b7c8d137bd3a29597a7fd54d')
 
 package() {
     install -d "${pkgdir}/usr/share/cockpit/${pkgname}"
