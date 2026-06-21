@@ -1,15 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-greeter-git
-pkgver=1.0.1.r0.g4d74121
+pkgver=1.0.16.r0.g7a0c083
 pkgrel=1
-pkgdesc="libcosmic greeter for greetd, which can be run inside cosmic-comp"
+pkgdesc="COSMIC greeter for greetd"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-greeter"
 license=('GPL-3.0-only')
 depends=(
   'cosmic-comp-git'
   'cosmic-icons-git'
-  'gnome-keyring'
+  'cosmic-randr-git'
+  'dbus'
   'greetd'
   'libxkbcommon'
   'pam'
@@ -23,12 +24,10 @@ makedepends=(
   'just'
   'mold'
 )
-backup=(
-  "etc/greetd/${pkgname%-git}.toml"
-#  "/etc/pam.d/${pkgname%-git}"
-)
+backup=("etc/greetd/${pkgname%-git}.toml")
 optdepends=(
-  'fprintd: fingerprint authentication'
+  'fprintd: Fingerprint authentication'
+  'gnome-keyring: Start gnome keyring components if the daemon is active'
   'xorg-xinit: Xorg session'
 )
 provides=("${pkgname%-git}")
@@ -47,20 +46,22 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-
-  # Use thin LTO
-  patch -Np1 -i ../lto.patch
-
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-
   git lfs install --local
   git remote add network-origin https://github.com/pop-os/cosmic-greeter
   git lfs fetch network-origin
   git lfs checkout
 
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target host-tuple
+
+  # revert pam config for now
+  git revert -n ef1253aa2393666bb2a0b0132b722f51ec7ebbf3
+
   # Enable default-display-manager systemd service link
   patch -Np1 -i ../display-manager.patch
+
+  # Use thin LTO
+  patch -Np1 -i ../lto.patch
 }
 
 build() {
@@ -81,8 +82,4 @@ package() {
   install -Dm644 "${pkgname%-git}.toml" -t "$pkgdir/etc/greetd/"
   install -Dm644 debian/"${pkgname%-git}"{.service,-daemon.service} -t \
     "$pkgdir/usr/lib/systemd/system/"
-
-  # Symlink PAM login config instead of shipping upstream greeter config
-  install -d "$pkgdir/etc/pam.d"
-  ln -s /etc/pam.d/login "$pkgdir/etc/pam.d/${pkgname%-git}"
 }
