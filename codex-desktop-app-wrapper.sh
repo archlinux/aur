@@ -3,6 +3,8 @@
 set -euo pipefail
 
 APPDIR="${CODEXPP_OPENAI_CODEX_APP_DIR:-/usr/lib/openai-codex-desktop}"
+UPSTREAM_LAUNCHER="${CODEXPP_OPENAI_CODEX_LAUNCHER:-/usr/lib/codex-plus-plus/upstream/codex-desktop}"
+ELECTRON_CONFIG="${CODEXPP_OPENAI_CODEX_ELECTRON_CONFIG:-/etc/codex-plus-plus/electron}"
 APP_ASAR="${APPDIR}/resources/app.asar"
 WEBVIEW_DIR="${APPDIR}/content/webview"
 PLUGIN_AUTH_UNLOCK_FILE="${CODEXPP_PLUGIN_AUTH_UNLOCK_FILE:-/usr/lib/codex-plus-plus/webview/plugin-auth-unlocked.js}"
@@ -16,6 +18,20 @@ USER_FLAGS=()
 
 find_electron_bin() {
   local candidate
+  local configured_electron
+  local upstream_electron
+
+  configured_electron="$(resolve_configured_electron)"
+  if [[ -n "${configured_electron}" ]]; then
+    printf '%s\n' "${configured_electron}"
+    return
+  fi
+
+  upstream_electron="$(resolve_upstream_launcher_electron)"
+  if [[ -n "${upstream_electron}" ]]; then
+    printf '%s\n' "${upstream_electron}"
+    return
+  fi
 
   if [[ -x "${APPDIR}/codex" ]]; then
     printf '%s\n' "${APPDIR}/codex"
@@ -26,6 +42,68 @@ find_electron_bin() {
     [[ -x "${candidate}" ]] || continue
     printf '%s\n' "${candidate}"
   done | sort -V | tail -n1
+}
+
+resolve_configured_electron() {
+  local configured
+
+  [[ -f "${ELECTRON_CONFIG}" ]] || return 0
+  while IFS= read -r configured || [[ -n "${configured}" ]]; do
+    configured="${configured%%#*}"
+    configured="${configured#"${configured%%[![:space:]]*}"}"
+    configured="${configured%"${configured##*[![:space:]]}"}"
+    [[ -z "${configured}" ]] && continue
+    [[ -x "${configured}" ]] && printf '%s\n' "${configured}"
+    break
+  done <"${ELECTRON_CONFIG}"
+}
+
+resolve_upstream_launcher_electron() {
+  local launcher="${UPSTREAM_LAUNCHER}"
+  local appdir_value
+  local resolved
+
+  if [[ -L "${launcher}" ]]; then
+    resolved="$(readlink -f "${launcher}")"
+    [[ -n "${resolved}" ]] && launcher="${resolved}"
+  fi
+
+  [[ -f "${launcher}" ]] || return 0
+
+  appdir_value="$(awk '
+    match($0, /appdir="([^"]+)"/, m) {
+      print m[1]
+      exit
+    }
+    match($0, /appdir='\''([^'\'']+)'\''/, m) {
+      print m[1]
+      exit
+    }
+  ' "${launcher}")"
+
+  awk -v appdir="${appdir_value}" '
+    match($0, /electron="([^"]+)"/, m) {
+      value = m[1]
+      gsub(/\$\{appdir\}/, appdir, value)
+      gsub(/\$appdir/, appdir, value)
+      print value
+      exit
+    }
+    match($0, /electron='\''([^'\'']+)'\''/, m) {
+      value = m[1]
+      gsub(/\$\{appdir\}/, appdir, value)
+      gsub(/\$appdir/, appdir, value)
+      print value
+      exit
+    }
+    match($0, /\/usr\/lib\/electron[0-9]+\/electron/) {
+      print substr($0, RSTART, RLENGTH)
+      exit
+    }
+  ' "${launcher}" | while IFS= read -r resolved; do
+    [[ -x "${resolved}" ]] && printf '%s\n' "${resolved}"
+    break
+  done
 }
 
 create_patched_webview_dir() {

@@ -2,7 +2,7 @@
 
 pkgname=codex-plus-plus
 pkgver=1.2.12
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc='Codex++ auto-injector bridge for openai-codex-desktop'
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
 )
 sha256sums=(
   '247a41f4d8c35d6e13bc86d298fedbd08ee1c8090d5b41bdf503a5fc25574a27'
-  '403e0708d7facfde7138d0c7b390c8a0a3cbc7184b54db3482fa4f781c89e737'
+  '0f45cd59ba6d0964d783cc37fc185aeaaa50cc5bdef8a027a6ca2e0e82c03619'
   '2669ce573262d96ea38f085280899e729bc8b542890c6bbdb01e23853e2cd661'
   '4097d1937593ca1e2e5dcf3bbed65f85a2cb066e4d336ad286061a822aacfd8e'
   'f817b382ad3ca0c3a000d8d476ed27ebde13e7a2a027d5b376505bd6db778087'
