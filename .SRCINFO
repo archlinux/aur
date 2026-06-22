@@ -1,6 +1,6 @@
 pkgbase = ketch
 	pkgdesc = Fast, stateless CLI for web search, code search, library docs, and scraping
-	pkgver = 0.9.3
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://github.com/1broseidon/ketch
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = ketch
 	optdepends = chromium: browser rendering for JavaScript-rendered pages
 	optdepends = github-cli: GitHub code search authentication via gh auth token
 	options = !debug
-	source = ketch-0.9.3.tar.gz::https://github.com/1broseidon/ketch/archive/refs/tags/v0.9.3.tar.gz
+	source = ketch-0.9.4.tar.gz::https://github.com/1broseidon/ketch/archive/refs/tags/v0.9.4.tar.gz
 	source = LICENSE
-	sha256sums = 8722a073e8f48586cdf271ceaa26a395bfe23315a844752480495a212f6f50b6
+	sha256sums = 6039127f9e15ee09fcf2e602dc4b6df7ff0757e1b825969ae6116883283d1324
 	sha256sums = e70156b67cf31c8962232c0f4900ddfe742c5331fd9a1437ea5f4c41dc9bfb9f
 
 pkgname = ketch

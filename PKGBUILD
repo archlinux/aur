@@ -1,6 +1,6 @@
 # Maintainer: Algorant <Algorantic@proton.me>
 pkgname=ketch
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="Fast, stateless CLI for web search, code search, library docs, and scraping"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   'LICENSE'
 )
-sha256sums=('8722a073e8f48586cdf271ceaa26a395bfe23315a844752480495a212f6f50b6'
+sha256sums=('6039127f9e15ee09fcf2e602dc4b6df7ff0757e1b825969ae6116883283d1324'
             'e70156b67cf31c8962232c0f4900ddfe742c5331fd9a1437ea5f4c41dc9bfb9f')
 
 build() {
