@@ -1,0 +1,17 @@
+pkgbase = liber-bin
+	pkgdesc = A browser-native email client
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://liber.sh
+	arch = x86_64
+	license = LicenseRef-PolyForm-Noncommercial-1.0.0
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	provides = liber
+	conflicts = liber
+	options = !strip
+	source = liber-0.1.8-x86_64.AppImage::https://github.com/nickheyer/liber-desktop/releases/download/v0.1.8/liber-0.1.8-x86_64.AppImage
+	sha256sums = 2b1ee0061c071bfca369f5a10314e12d00ac26e7f3095b16a72eb8c62e88a4c2
+
+pkgname = liber-bin
