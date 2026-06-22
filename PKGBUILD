@@ -1,4 +1,4 @@
-# Maintainer: thebu
+# Maintainer: Dylan Sandall <dsandalledu@gmail.com>
 pkgname=smi-usbdisplay
 pkgver=2.24.8.0
 pkgrel=1
