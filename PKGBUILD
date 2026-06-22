@@ -18,10 +18,10 @@ optdepends=("zathura: fallback PDF reader"
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!strip)
-source=("${_pkgname}-${pkgver}.bash::${_raw_url}/v${pkgver}/res/completions/manora.bash"
-        "${_pkgname}-${pkgver}.zsh::${_raw_url}/v${pkgver}/res/completions/manora.zsh"
-        "${_pkgname}-${pkgver}.fish::${_raw_url}/v${pkgver}/res/completions/manora.fish"
-        "${_pkgname}-${pkgver}.1.scd::${_raw_url}/v${pkgver}/doc/man/manora.1.scd"
+source=("${_pkgname}-${pkgver}.bash::${_raw_url}/v${pkgver}/res/completions/${_pkgname}.bash"
+        "${_pkgname}-${pkgver}.zsh::${_raw_url}/v${pkgver}/res/completions/${_pkgname}.zsh"
+        "${_pkgname}-${pkgver}.fish::${_raw_url}/v${pkgver}/res/completions/${_pkgname}.fish"
+        "${_pkgname}-${pkgver}.1.scd::${_raw_url}/v${pkgver}/doc/man/${_pkgname}.1.scd"
 	"README-${pkgver}.md::${_raw_url}/v${pkgver}/README.md")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64")
 sha256sums=('513e952b835fbfa53afb6d38e3fd13632cd497d930510586dd903eb39927d6f8'
