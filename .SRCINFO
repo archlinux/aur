@@ -1,0 +1,45 @@
+pkgbase = python-micommunitytool-git
+	pkgdesc = Submitting a request for bootloader unlocking permission from the Mi Community automatically
+	pkgver = 1.5.4.r13.g1d5f452
+	pkgrel = 1
+	url = https://github.com/offici5l/MiCommunityTool
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-pytz
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-ntplib
+	depends = python
+	depends = python-requests
+	depends = python-migate
+	source = micommunitytool::git+https://github.com/offici5l/MiCommunityTool.git
+	sha256sums = SKIP
+
+pkgname = python-micommunitytool-git
+	depends = python
+	depends = python-micommunity
+	depends = python-miapply
+	depends = python-migate
+	provides = python-micommunitytool-git
+	conflicts = python-micommunitytool-git
+
+pkgname = python-micommunity-git
+	pkgdesc = for Interacting with the Mi Community
+	depends = python
+	depends = python-migate
+	provides = python-micommunity
+	conflicts = python-micommunity
+
+pkgname = python-miapply-git
+	pkgdesc = A cli that automatically submits the Xiaomi bootloader unlock permission request
+	depends = python
+	depends = python-requests
+	depends = python-ntplib
+	depends = python-pytz
+	depends = python-micommunity
+	depends = python-migate
+	provides = python-miapply
+	conflicts = python-miapply
