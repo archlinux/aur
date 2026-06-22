@@ -1,0 +1,21 @@
+pkgbase = wingman-git
+	pkgdesc = Run multiple NetBird networks on one machine at once — isolated configs, sockets, and WireGuard interfaces
+	pkgver = 0.1.4.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/dsandall/wingman
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-typer
+	depends = netbird
+	provides = wingman
+	conflicts = wingman
+	source = wingman::git+https://github.com/dsandall/wingman.git
+	sha256sums = SKIP
+
+pkgname = wingman-git
