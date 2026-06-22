@@ -1,0 +1,31 @@
+diff --git a/meson.build b/meson.build
+index 5d6b4ca..b03ae87 100644
+--- a/meson.build
++++ b/meson.build
+@@ -115,14 +115,9 @@ elif get_option('svg-backend') == 'nanosvg'
+   librsvg = declare_dependency()
+   resvg = declare_dependency()
+ elif get_option('svg-backend') == 'resvg'
+-  # resvg doesn't provide pkg-config, so we need to find it manually
+-  resvg = cc.find_library('resvg', required: true)
+-  if cc.has_header('resvg.h')
+-    svg_backend = 'resvg'
+-    add_project_arguments('-DFUZZEL_ENABLE_SVG_RESVG=1', language: 'c')
+-  else
+-    error('resvg.h not found. Please install resvg development files.')
+-  endif
++  resvg = dependency('resvg', required: true)
++  svg_backend = 'resvg'
++  add_project_arguments('-DFUZZEL_ENABLE_SVG_RESVG=1', language: 'c')
+   librsvg = declare_dependency()
+   nanosvg = declare_dependency()
+ else
+@@ -262,7 +257,7 @@ install_data(
+   'fuzzel.ini',
+   install_dir: join_paths(get_option('sysconfdir'), 'xdg', 'fuzzel'))
+ install_data(
+-  'LICENSE', 'README.md', 'CHANGELOG.md',
++  'README.md', 'CHANGELOG.md',
+   install_dir: join_paths(get_option('datadir'), 'doc', 'fuzzel'))
+ 
+ subdir('completions')
