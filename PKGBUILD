@@ -3,7 +3,7 @@
 pkgname=nvidiactl-git
 _pkgname=${pkgname%-git}
 pkgver=v0.3.0.r1.g0ca678b
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool providing dynamic fan speed and power limit adjustments for NVIDIA GPUs, balancing performance and noise. It can optionally be run as a systemd service.'
 arch=('x86_64')
 options=('!strip')
