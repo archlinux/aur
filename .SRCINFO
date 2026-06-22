@@ -1,14 +1,14 @@
 pkgbase = jitsi-videobridge-bin
 	pkgdesc = Jitsi Meet Videobridge binary
 	pkgver = 2.3+295+g8d5c0037b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jitsi.org/jitsi-meet/
 	install = jitsi.install
 	arch = any
 	license = Apache
 	makedepends = tar
 	makedepends = unzip
-	depends = java-runtime-openjdk=11
+	depends = java-runtime-openjdk=17
 	depends = bash
 	optdepends = prosody
 	provides = jitsi-videobridge

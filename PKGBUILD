@@ -9,12 +9,12 @@ _pkgbase=${_basename}-${_pkgname}
 _debname=${_basename}-${_pkgname}2
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet Videobridge binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
-depends=("java-runtime-openjdk=11" "bash")
+depends=("java-runtime-openjdk=17" "bash")
 optdepends=("prosody")
 makedepends=('tar' 'unzip')
 options=('!strip')
