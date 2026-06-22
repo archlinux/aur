@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034,SC2148,SC2154
-
+#
 # Maintainer: Toria <ninetailedtori@uwu.gal>
-
-pkgname=masterpdfeditor-qt5
+#
+_pkgname=masterpdfeditor
+pkgname=${_pkgname}-qt5
 pkgver=5.9.98
 _patchver='-1'
 _armpatchver=''
@@ -34,8 +35,8 @@ makedepends=(
     'curl'
     'patchelf'
 )
-provides=("${pkgname}=${pkgver}")
-conflicts=("${pkgname}")
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
 source_x86_64=("https://code-industry.net/public/master-pdf-editor-${pkgver}${_patchver}-qt5.x86_64.tar.gz")
 sha1sums_x86_64=("${_checksum_x86_64% *}")
 source_aarch64=("https://code-industry.net/public/master-pdf-editor-${pkgver}${_patchver}-qt5.arm64.tar.gz")
