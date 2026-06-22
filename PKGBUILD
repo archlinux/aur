@@ -1,6 +1,6 @@
 # makepkg --printsrcinfo > .SRCINFO
 pkgname=worklog-bin
-pkgver=1.3.10
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Local-first desktop project manager for small dev teams"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
   'gcc-libs'
 )
 source=("https://github.com/regisx001/worklog/releases/download/app-v${pkgver}/worklog_${pkgver}_amd64.AppImage")
-sha256sums=('0a4013122961c6549e8e649918ec888c493705d87efa82b045c2d709c2c4bb31')
+sha256sums=('574e16b942937eb8a8f9d1c0ea62aaebbcd4f9e9b1ed806523810c6324db5a13')
 
 prepare() {
   cd "$srcdir"
