@@ -9,13 +9,13 @@ depends=('mingw-w64-sdl2')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!strip' '!buildflags')
 source=("http://www.libsdl.org/projects/SDL_net/release/SDL2_net-$pkgver.tar.gz")
-sha256sums=('4e4a891988316271974ff4e9585ed1ef729a123d22c08bd473129179dc857feb')
+sha256sums=('9cbca2527feb3f1a622d48ba65cc7dee9b1e3f2c55ceafb7d7720bb058aafb30')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
 	cd "${srcdir}/SDL2_net-${pkgver}"
-	sed -i "s|#include <winsock.h>|#include <winsock2.h>|g" SDLnetsys.h
+	sed -i "s|#include <winsock.h>|#include <winsock2.h>|g" src/SDLnetsys.h
 }
 
 build() {
