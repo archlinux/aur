@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ueli-bin
 _pkgname=Ueli
-pkgver=9.28.1
+pkgver=9.29.0
 _electronversion=41
 pkgrel=1
 pkgdesc="Cross-Platform Keystroke Launcher(Prebuilt version.Use system-wide electron)"
@@ -25,11 +25,14 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
 sha256sums=('8da6c1a79d367a41aadf313019833f4bb3f2ff55f0da5b522fd058183d2f9106'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('f96934fd76c88fc0d905e2160143a0bb04319cdb56a2a03d41f5e3318756502a')
-sha256sums_x86_64=('109ca3440e1188ab7391f8c8d0f87eb43530e1bf063acbfe233a29383ee0ee3b')
+sha256sums_aarch64=('85ba0b55b8c8dcc374b66c9492ffa2f85be9cb928dc0862be66f6842832e876e')
+sha256sums_x86_64=('88a0f18ca635844eb2b51d0ffae38fdca29e30f3cbea8813220e31ce898e960e')
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
 _check_electron_version() {
     echo "Verifying Electron version..."
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _app_dir=$(_get_app_dir)
     local _main_exe=""
     if [[ -n "${_app_dir}" ]]; then
         _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
@@ -63,7 +66,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"

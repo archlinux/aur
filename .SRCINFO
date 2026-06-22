@@ -1,21 +1,21 @@
 pkgbase = ueli-bin
 	pkgdesc = Cross-Platform Keystroke Launcher(Prebuilt version.Use system-wide electron)
-	pkgver = 9.28.1
+	pkgver = 9.29.0
 	pkgrel = 1
 	url = https://ueli.app/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = electron41
-	provides = ueli=9.28.1
+	provides = ueli=9.29.0
 	conflicts = ueli
-	source = LICENSE-9.28.1::https://raw.githubusercontent.com/oliverschwendener/ueli/v9.28.1/LICENSE
+	source = LICENSE-9.29.0::https://raw.githubusercontent.com/oliverschwendener/ueli/v9.29.0/LICENSE
 	source = ueli.sh
 	sha256sums = 8da6c1a79d367a41aadf313019833f4bb3f2ff55f0da5b522fd058183d2f9106
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = ueli-9.28.1-aarch64.rpm::https://github.com/oliverschwendener/ueli/releases/download/v9.28.1/ueli-9.28.1.aarch64.rpm
-	sha256sums_aarch64 = f96934fd76c88fc0d905e2160143a0bb04319cdb56a2a03d41f5e3318756502a
-	source_x86_64 = ueli-9.28.1-x86_64.rpm::https://github.com/oliverschwendener/ueli/releases/download/v9.28.1/ueli-9.28.1.x86_64.rpm
-	sha256sums_x86_64 = 109ca3440e1188ab7391f8c8d0f87eb43530e1bf063acbfe233a29383ee0ee3b
+	source_aarch64 = ueli-9.29.0-aarch64.rpm::https://github.com/oliverschwendener/ueli/releases/download/v9.29.0/ueli-9.29.0.aarch64.rpm
+	sha256sums_aarch64 = 85ba0b55b8c8dcc374b66c9492ffa2f85be9cb928dc0862be66f6842832e876e
+	source_x86_64 = ueli-9.29.0-x86_64.rpm::https://github.com/oliverschwendener/ueli/releases/download/v9.29.0/ueli-9.29.0.x86_64.rpm
+	sha256sums_x86_64 = 88a0f18ca635844eb2b51d0ffae38fdca29e30f3cbea8813220e31ce898e960e
 
 pkgname = ueli-bin
