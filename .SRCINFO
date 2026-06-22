@@ -1,17 +1,19 @@
 pkgbase = perl-b-utils
 	pkgdesc = Helper functions for op tree manipulation
 	pkgver = 0.27
-	pkgrel = 5
-	url = https://metacpan.org/release/B-Utils
-	arch = i686
+	pkgrel = 6
+	url = https://metacpan.org/dist/B-Utils
 	arch = x86_64
-	license = Artistic-2.0
-	license = GPL-1.0-or-later
-	makedepends = perl-test-reporter
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-cbuilder
+	makedepends = perl-extutils-depends>=0.301
+	makedepends = perl-test-simple
+	depends = perl-exporter
+	depends = perl-scalar-list-utils
 	depends = perl-task-weaken
-	depends = perl-extutils-depends
+	depends = perl>=5.6.0
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/B-Utils-0.27.tar.gz
-	sha512sums = a896476f59a424fa9062c5dfe6431493c020e51746fa7f7b4c7fcdb109d1c0fa252292b891263d676884f064db95f16958a5d2ed5981dc5997436dced6579e74
+	sha256sums = f97f53f6a3050109aa414feeb184cad101812d41760e952b5d84993f6685ffea
 
 pkgname = perl-b-utils

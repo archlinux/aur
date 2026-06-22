@@ -1,41 +1,55 @@
-# Maintainer: Moritz Bunkus <moritz@bunkus.org>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Moritz Bunkus <moritz@bunkus.org>
 
-pkgname='perl-b-utils'
-pkgver='0.27'
-pkgrel='5'
-pkgdesc="Helper functions for op tree manipulation"
-arch=('i686' 'x86_64')
-license=('Artistic-2.0' 'GPL-1.0-or-later')
+_author=ETHER
+_dist=B-Utils
+pkgname=perl-${_dist@L}
+pkgver=0.27
+pkgrel=6
+pkgdesc='Helper functions for op tree manipulation'
+arch=('x86_64')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-exporter'
+    'perl-scalar-list-utils'
+    'perl-task-weaken'
+    'perl>=5.6.0'
+)
+makedepends=(
+    'perl-extutils-cbuilder'
+    'perl-extutils-depends>=0.301'
+    'perl-test-simple'
+)
 options=('!emptydirs')
-depends=('perl-task-weaken' 'perl-extutils-depends')
-makedepends=('perl-test-reporter')
-url='https://metacpan.org/release/B-Utils'
-source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/B-Utils-${pkgver}.tar.gz")
-sha512sums=('a896476f59a424fa9062c5dfe6431493c020e51746fa7f7b4c7fcdb109d1c0fa252292b891263d676884f064db95f16958a5d2ed5981dc5997436dced6579e74')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('f97f53f6a3050109aa414feeb184cad101812d41760e952b5d84993f6685ffea')
 
+build()
+{
+    cd "$_dist-$pkgver"
 
-prepare_environment() {
-  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-    PERL_AUTOINSTALL=--skipdeps                            \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
-  cd "${srcdir}/B-Utils-${pkgver}"
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
 }
 
-build() {
-  prepare_environment
-  /usr/bin/perl Makefile.PL
-  make
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
 }
 
-check() {
-  prepare_environment
-  make test
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-package() {
-  prepare_environment
-  make install
-  find "$pkgdir" '(' -name .packlist -o -name perllocal.pod ')' -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
