@@ -5,7 +5,7 @@ _pkgname="${pkgname//-bin/""}"
 __pkgname=konform
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-pkgver=140.12.0_100
+pkgver=140.12.0_101
 _konformver="${pkgver%_*}"
 _konformrel="${pkgver#*_}"
 pkgrel=1
@@ -83,12 +83,12 @@ source=(
 )
 source_aarch64=("${_uploadpath_aarch64}" "${_uploadpath_sig_aarch64}")
 source_x86_64=("${_uploadpath_x86_64}" "${_uploadpath_sig_x86_64}")
-sha256sums=('c297d87275f7f76e556bbfa3f844791ff78eeca6cb174802191520462da6e079'
+sha256sums=('580f8cf8d3acaf116d1b25c97744c1269b6a16eeba03f276167e843c90287d41'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4')
-sha256sums_x86_64=('0f28e8f0588e3b317d21b1739536e0616023245bea126cdafb6a668905cbb5e1'
+sha256sums_x86_64=('8d4be97be6cb0629cd11cdf05e635d86a3602e16b335a3c298113eee212ea43c'
                    'SKIP')
-sha256sums_aarch64=('7916e07e7f4efb1c8c234d75f10d53f555f5e4555a1d6872e78191dae51ff929'
+sha256sums_aarch64=('fad495c7c4c152374b39725b4048a7ec80916cb8d107e2326442cfac4d067609'
                     'SKIP')
 
 package() {
@@ -120,14 +120,14 @@ app.partner.konform=${_pkgname}
 END
 
   for i in 16 32 48 64 128; do
-    install -Dvm644 ${srcdir}/source/themes/browser/branding/librewolf/default$i.png \
+    install -Dvm644 ${srcdir}/source/themes/browser/branding/vendor/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$__pkgname.png"
   done
   install -Dvm644 ${srcdir}/default192x192.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/$__pkgname.png"
 
   # arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
-  install -Dvm644 ${srcdir}/source/themes/browser/branding/librewolf/default16.png \
+  install -Dvm644 ${srcdir}/source/themes/browser/branding/vendor/default16.png \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$__pkgname-symbolic.png"
 
   install -Dvm644 ${srcdir}/$__pkgname.desktop \
