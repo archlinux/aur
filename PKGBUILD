@@ -6,9 +6,9 @@
 
 pkgname=kwin-without-gestures
 _pkgname=kwin
-pkgver=6.6.5
+pkgver=6.7.0
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2
+pkgrel=1
 pkgdesc='An easy to use, but flexible, wayland compositor. Patched to get rid of hardcoded touchpad gestures'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -17,8 +17,8 @@ provides=("$_pkgname=$pkgver" 'kwin-heddxh')
 conflicts=('kwin' 'kwin-heddxh')
 depends=(aurorae
          breeze
-         gcc-libs
          glibc
+         iio-sensor-proxy
          plasma-activities
          kauth
          kcmutils
@@ -54,22 +54,26 @@ depends=(aurorae
          libdrm
          libei
          libepoxy
+         libevdev
+         libgcc
          libinput
          libpipewire
          libqaccessibilityclient-qt6
+         libstdc++
          libxcb
          libxcvt
          libxkbcommon
          mesa
+         milou
          pipewire-session-manager
          libplasma
          qt6-5compat
          qt6-base
          qt6-declarative
-         qt6-sensors
          qt6-svg
          qt6-tools
          systemd-libs
+         vulkan-icd-loader
          wayland
          xcb-util-keysyms
          xcb-util-wm)
@@ -78,14 +82,17 @@ makedepends=(extra-cmake-modules
              krunner
              plasma-wayland-protocols
              python
+             vulkan-headers
              wayland-protocols
              xorg-xwayland)
-optdepends=('maliit-keyboard: virtual keyboard')
+optdepends=('plasma-keyboard: virtual keyboard')
 source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
-	0001-feature-allow-disable-hardcoded-touchpad-gestures.patch)
-sha256sums=('6c187ce7a5506090b438ef900103836fa0537674dde8b31e5b497ef321643cb4'
+        https://invent.kde.org/plasma/kwin/-/commit/cf00d9712316edecb4e1014bffe925136a74f072.patch
+        0001-feature-allow-disable-hardcoded-touchpad-gestures.patch)
+sha256sums=('d20b798094a9f58e57de55eca3d58b1cdcb7db2939eb8bf73918c4fab6d9aec5'
             'SKIP'
-            'c821314c83316a1f80b32eddf5095692b433ec91c0767796692f4de2e497ee2c')
+            'cb57c6364bc887ef36a059c2f51ef3e3a23f89a1b62f0f58884aeb1ebdea7f36'
+            '6847f4739304e49ea8292231cd63cf25e7039af7ab59c1fee3bb2cdbebd079f0')
 install=$_pkgname.install
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
@@ -94,7 +101,11 @@ validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
 prepare() {
-  patch -d $_pkgname-$pkgver -p1 < 0001-feature-allow-disable-hardcoded-touchpad-gestures.patch
+  cd $_pkgname-$pkgver
+  # https://bugs.kde.org/show_bug.cgi?id=520842#c17
+  # Disable Color Pipeline for NVIDIA
+  patch -Np1 -i ../cf00d9712316edecb4e1014bffe925136a74f072.patch
+  patch -Np1 -i ../0001-feature-allow-disable-hardcoded-touchpad-gestures.patch
 }
 
 build() {
@@ -106,5 +117,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  setcap CAP_SYS_NICE=+ep "$pkgdir"/usr/bin/kwin_wayland
 }
-
