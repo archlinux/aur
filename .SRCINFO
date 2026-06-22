@@ -1,6 +1,6 @@
 pkgbase = libvldmail
 	pkgdesc = Your friendly e-mail address validation library.
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://code.rosaelefanten.org/libvldmail
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = libvldmail
 	checkdepends = cmake
 	makedepends = cmake
 	depends = glibc
-	source = libvldmail-v1.2.1.tar.gz::https://code.rosaelefanten.org/libvldmail/tarball/release-1.2.1/libvldmail-1.2.1.tar.gz
-	sha512sums = fe807921ed16baf15dfef97881d1d8659bb1c2c5c5886201d9ca5d671220f3e476d630fe9e0a458ffe468ee708f79258dd7f3904cef0dbb291f8f3384effd39b
+	source = libvldmail-v1.2.2.tar.gz::https://code.rosaelefanten.org/libvldmail/tarball/release-1.2.2/libvldmail-1.2.2.tar.gz
+	sha512sums = 098d6217b2be81d326977a4c2cd18d38d354f81890b5702a9f547a0f409c1ef20e2e2b89d51c36786ae9d1432c563cd63ef877f44f25669c22abf8ed84dce842
 
 pkgname = libvldmail
