@@ -27,7 +27,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('5478e5a98666c41de828fb7f50c3ea53b05755b7bda7d11211c6b1406d3046ba'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 sha256sums_aarch64=('bca6f8957b72ede1301f51a303c09673a1e59d6cd5f4cd8f45eaa6a1816e715d')
 sha256sums_x86_64=('6e21fcee8c7c37bf22ee4e146c44346c4d49924b36579a30daf97ad929b79d81')
 _get_app_dir() {
