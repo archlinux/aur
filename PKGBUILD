@@ -2,7 +2,7 @@
 
 pkgname=edirstat-git
 _pkgname=edirstat
-pkgver=1.1.0.r149.ge051df8
+pkgver=2.0.0.r0.gefae91a
 pkgrel=1
 pkgdesc="A fast, cross-platform disk usage analyzer with work-stealing multithreading, zero-copy snapshots, deduplication, and an interactive treemap GUI. (Development Git Version)"
 arch=('x86_64')
