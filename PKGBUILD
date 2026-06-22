@@ -3,7 +3,7 @@
 pkgname=undertalemodtool-bin
 _pkgname=undertalemodtool
 
-pkgver=0.8.4.1
+pkgver=0.9.1.0
 pkgrel=1
 arch=('x86_64')
 
@@ -22,8 +22,8 @@ source=(
   "gamemaker-data.xml"
   "icon.png"
   )
-sha256sums=('671f8be32a88f333f1111628fbbc927913b77b89f2c0f15872c597b2c076210b'
-            'feb2961625d3a959c3c5e06a1dc57451f4baf14e71fa09585f77fb78ba0dd251'
+sha256sums=('7ad4855ddf3cb5c33c895f04a78d1cf9b86036b400a633483da8e393b995fb0a'
+            '2f0ef17e0a6e2ff4fd7193ee5d53b801577bd88865ebbd82d827377634e2ee51'
             'b117db1939eaf99652da0617f82e6994e0e69ac45d993e504fb766793f2d7773'
             '64c7b9ab34a2c519f99533b85a6ff8b4a50710ec6ee93024f3b239493dc9d61e'
             '4f501b7495960a291dfaa3a5c7b87b529170c47447c365d2407d1d317d97c51f')
