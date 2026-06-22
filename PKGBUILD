@@ -1,20 +1,18 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-pkgname=punt
 pkgauthor=lance0
+pkgname=punt
 pkgver=0.5.1
 pkgrel=1
+pkgdesc="Share terminal output instantly via punt.sh - quick, colorful, ephemeral."
 
 _npmname=${pkgname}
 _npmauthor=@${pkgauthor}
 _npmver=${pkgver}
 
-pkgdesc="Share terminal output instantly via punt.sh - quick, colorful, ephemeral."
-pkgver=${_npmver}
-pkgrel=1
 arch=("x86_64")
-url="https://github.com/lance0/punt"
 license=("MIT")
+url="https://github.com/${pkgauthor}/${pkgname}"
 
 depends=("bun")
 makedepends=("npm" "jq")
