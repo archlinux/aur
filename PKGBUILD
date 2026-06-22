@@ -12,7 +12,7 @@
 # =============================================================================
 
 pkgname=cosmostrix-bin
-pkgver=5.0.0
+pkgver=5.0.1
 _tag=
 pkgrel=1
 
@@ -33,7 +33,7 @@ options=('!strip')
 # ---------------------------------------------------------------------------
 # source=() is intentionally empty.  Assets are selected dynamically in
 # prepare() based on the host CPU, then downloaded and verified with the
-# sidecar .sha512 checksum from the GitHub Release.
+# sidecar .sha512sum checksum from the GitHub Release.
 #
 # This avoids:
 #   - downloading all 4 x86_64 variants when only 1 is needed
@@ -47,7 +47,7 @@ sha512sums=()
 # prepare() — runtime CPU feature detection + verified download
 # ---------------------------------------------------------------------------
 # 1. Select the optimal binary variant for the host CPU
-# 2. Download the asset and its .sha512 sidecar from GitHub Releases
+# 2. Download the asset and its .sha512sum sidecar from GitHub Releases
 # 3. Verify integrity with sha512sum --check
 # 4. Extract into srcdir
 #
@@ -112,14 +112,14 @@ prepare() {
         --location \
         --proto '=https' \
         --tlsv1.2 \
-        --output "${srcdir}/${asset}.sha512" \
-        "${url}.sha512"
+        --output "${srcdir}/${asset}.sha512sum" \
+        "${url}.sha512sum"
 
     # -- Verify integrity --
     msg2 "Verifying SHA512 checksum..."
     (
         cd "${srcdir}" || return 1
-        sha512sum --check "${asset}.sha512"
+        sha512sum --check "${asset}.sha512sum"
     )
 
     # -- Extract (normalize archive layout) --
