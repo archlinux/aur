@@ -1,0 +1,3 @@
+[perl-sys-sigaction]
+source = "cpan"
+cpan = "Sys-SigAction"
