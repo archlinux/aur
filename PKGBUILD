@@ -1,16 +1,16 @@
 # Maintainer: LIghtJUNction <lightjunction@users.noreply.github.com>
 
 pkgname=cortexfs-git
-pkgver=0.1.0.r78.g52e12af
+pkgver=0.1.0.r90.gf947325
 pkgrel=1
-pkgdesc="Provider-neutral AI API FUSE filesystem"
+pkgdesc="CortexFS v1 Agent OS ABI core and CLI"
 arch=('x86_64')
 url="https://github.com/LIghtJUNction/cortexfs"
 license=('MIT')
 depends=('fuse3' 'libgcc')
 makedepends=('cargo' 'git')
-provides=('cortexfs' 'cortex-cli')
-conflicts=('cortexfs' 'cortex-cli')
+provides=('cortexfs' 'ctx')
+conflicts=('cortexfs' 'ctx')
 source=(
   'git+https://github.com/LIghtJUNction/cortexfs.git'
   'LICENSE'
@@ -27,13 +27,15 @@ pkgver() {
 
 build() {
   cd "$srcdir/cortexfs"
-  cargo build --release --locked -p cortex-cli
+  cargo build --release --locked -p cortexfs
 }
 
 package() {
   cd "$srcdir/cortexfs"
-  install -Dm755 target/release/cortex "$pkgdir/usr/bin/cortex"
-  install -Dm644 packaging/systemd/cortexfs@.service "$pkgdir/usr/lib/systemd/system/cortexfs@.service"
+  install -Dm755 target/release/ctx "$pkgdir/usr/bin/ctx"
+  install -Dm755 target/release/cortexfs-mount "$pkgdir/usr/bin/cortexfs-mount"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 docs/DESIGN.md "$pkgdir/usr/share/doc/$pkgname/DESIGN.md"
+  cp -R docs/spec "$pkgdir/usr/share/doc/$pkgname/spec"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
