@@ -1,0 +1,16 @@
+pkgbase = mediainfogui
+	pkgdesc = GUI for MediaInfo data — Qt6, GTK3 and GTK4
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/kanehekili/MediaInfoGui
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	depends = mediainfo
+	optdepends = python-pyqt6: Qt6 interface
+	optdepends = python-gobject: GTK3/GTK4 interface
+	optdepends = ffmpeg: MPEG-TS program info
+	source = https://github.com/kanehekili/MediaInfoGui/releases/download/1.3.0/MediaInfoGui1.3.0.tar
+	md5sums = a715b1d5d2864c82bbe687d06a2e4ea8
+
+pkgname = mediainfogui
