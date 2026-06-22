@@ -5,8 +5,8 @@ pkgdesc="Git cli tool for managing worktrees"
 pkgver=5.0.0
 pkgrel=1
 arch=("x86_64")
-url="https://github.com/coderaiser/cloudcmd"
-_urlraw="https://raw.githubusercontent.com/coderaiser/cloudcmd/v${pkgver}"
+url="https://github.com/yordan-kanchelov/sync-worktrees"
+_urlraw="https://raw.githubusercontent.com/yordan-kanchelov/sync-worktrees/v${pkgver}"
 license=("MIT")
 
 _npmname=${pkgname}
