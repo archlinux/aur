@@ -2,7 +2,7 @@
 
 pkgbase=ruri-git
 pkgname=ruri-git
-pkgver=3.9.3.r45.g777e35f
+pkgver=3.9.4.rc1.r27.gde5463f
 pkgrel=1
 pkgdesc="A zipped Linux container runtime that zips (Lightweight User-friendly Linux-container Implementation)"
 arch=($CARCH)
@@ -47,6 +47,7 @@ build() {
     # see：https://wiki.archlinux.org/title/CMake_package_guidelines
     cmake -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_C_FLAGS="-Wno-error=format-security -Wno-error=unused-result" \
         -Wno-dev \
         -B build \
         -G Ninja
