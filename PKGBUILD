@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 _basename=jicofo
-_version=1.0+1181
+_version=1.0+1184
 
 _pkgbase=${_basename}-nightly
 pkgname=${_pkgbase}-bin
@@ -11,7 +11,7 @@ pkgdesc="JItsi meet COnference FOcus nightly binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
-depends=("java-runtime-openjdk=11" "bash")
+depends=("java-runtime-openjdk=17" "bash")
 optdepends=("prosody")
 makedepends=('tar' 'unzip')
 options=('!strip')
@@ -62,7 +62,7 @@ package() {
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
-sha256sums=('c3c1ad858cd8d4b7058fd61b7c467d31ab80eef48728ea167ac8805e5964b064'
+sha256sums=('9384b2ff9bda8dff00be7ff4b48e5fb921b81c3e2ea6ac0b45ce0e7451b856e4'
             '363dfa979fb360ef728cb755da73cf0c20b97c5233d6b793aa7c36cf9a53fa96'
             'c258808de5031c0d72df0aedfd521d07e6c442cd152e75737bdc1d758545521e'
             '548d307aa9f4ffae64b4c9c3e891f4332a8454bd7b271e5b76932c705697ee74'
