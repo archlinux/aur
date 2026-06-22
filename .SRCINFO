@@ -1,6 +1,6 @@
 pkgbase = xfce4-settings-git
 	pkgdesc = Settings manager for xfce (git checkout)
-	pkgver = 4.21.0+246+g2bbc1a46
+	pkgver = 4.21.2+1+ge7c5907e
 	pkgrel = 1
 	url = https://docs.xfce.org/xfce/xfce4-settings/start
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = xfce4-settings-git
 	makedepends = xf86-input-libinput
 	makedepends = wlr-protocols
 	depends = garcon
-	depends = libxfce4ui>=4.21.2
+	depends = libxfce4ui>=4.21.8
 	depends = xfconf
 	depends = libnotify
 	depends = libcanberra
@@ -28,7 +28,7 @@ pkgbase = xfce4-settings-git
 	optdepends = xiccd: for displays support in xfce4-color-settings
 	optdepends = cups: for printers support in xfce4-color-settings
 	optdepends = sane: for scanners support in xfce4-color-settings
-	provides = xfce4-settings=4.21.0
+	provides = xfce4-settings=4.21.2
 	conflicts = xfce4-settings
 	source = xfce4-settings::git+https://gitlab.xfce.org/xfce/xfce4-settings
 	source = default-xsettings-xml.patch

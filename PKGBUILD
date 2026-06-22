@@ -2,14 +2,14 @@
 
 _pkgname=xfce4-settings
 pkgname=${_pkgname}-git
-pkgver=4.21.0+246+g2bbc1a46
+pkgver=4.21.2+1+ge7c5907e
 pkgrel=1
 pkgdesc="Settings manager for xfce (git checkout)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://docs.xfce.org/xfce/xfce4-settings/start"
 license=('GPL2')
 groups=('xfce4-git')
-depends=('garcon' 'libxfce4ui>=4.21.2' 'xfconf' 'libnotify' 'libcanberra' 'upower'
+depends=('garcon' 'libxfce4ui>=4.21.8' 'xfconf' 'libnotify' 'libcanberra' 'upower'
          'colord' 'libxklavier' 'elementary-icon-theme' 'gnome-themes-extra')
 makedepends=('git' 'glib2-devel' 'xfce4-dev-tools' 'xf86-input-libinput' 'wlr-protocols')
 optdepends=('python: xfce4-compose-mail -- "mailto:" URI handling'
@@ -32,6 +32,9 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
   patch -Np1 -i ../default-xsettings-xml.patch
+  
+  git submodule init
+  git submodule update
 }
 
 build() {
