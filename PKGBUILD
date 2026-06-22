@@ -1,14 +1,14 @@
 # Maintainer: Christopher Snowhill <kode54@gmail.com>
 pkgname=fooyin-kode54-plugins-git
 _pkgname=${pkgname%-git}
-pkgver=r90.7a368e2
+pkgver=r91.297ebb1
 pkgrel=1
 pkgdesc="A set of plugins for Fooyin (Git version)"
 url="https://github.com/kode54/fooyin-kode54-plugins"
 arch=('x86_64')
 license=('GPL-3.0-only')
 makedepends=('cmake' 'git')
-depends=('fooyin' 'libmgba' 'vgmstream' 'libspessasynth')
+depends=('fooyin-git' 'libmgba' 'vgmstream' 'libspessasynth')
 optdepends=('soundfont-generaluserxg: Suggested default XG/GS banks')
 source=('git+https://github.com/kode54/fooyin-kode54-plugins.git'
         'git+https://bitbucket.org/losnoco/psflib.git'
