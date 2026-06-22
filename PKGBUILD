@@ -1,36 +1,53 @@
-# Maintainer: Jiachen Yang <farseerfc@gmail.com>
-# Contributor: Arthur Zamarin <arthurzam@gmail.com>
-# Contributor: Ferik <djferik at gmail dot com>
-# Contributor for Qt5 version: pavbaranov
+#!/usr/bin/env bash
+# shellcheck disable=SC2034,SC2148,SC2154
+
+# Maintainer: Toria <ninetailedtori@uwu.gal>
 
 pkgname=masterpdfeditor-qt5
-pkgver=3.7.10
-pkgrel=2
-pkgdesc="A complete solution for creation and editing PDF files. (Free for non-commercial use) - Qt5 version"
-url="http://code-industry.net/free-pdf-editor.php"
-arch=('x86_64')
+pkgver=5.9.98
+_patchver='-1'
+_armpatchver=''
+pkgrel=1
+pkgdesc='A complete solution for viewing, creating and editing PDF files (qt5 version).'
+url='https://code-industry.net/free-pdf-editor/'
+_checksum_x86_64=$(curl 'https://code-industry.net/checksum-information/' | grep -oP '[a-f0-9]{40}(?=.*master-pdf-editor-'"${pkgver}${_patchver}"'-qt5.x86_64.tar.gz)')
+_checksum_aarch64=$(curl 'https://code-industry.net/checksum-information/' | grep -oP '[a-f0-9]{40}(?=.*master-pdf-editor-'"${pkgver}${_armpatchver}"'-qt5.arm64.tar.gz)')
+arch=(
+    'x86_64'
+    'aarch64'
+)
 license=('custom')
-depends=('qt5-base' 'qt5-svg')
-conflicts=('masterpdfeditor')
-
-source=(${pkgname}.desktop)
-source_x86_64=(http://get.code-industry.net/public/master-pdf-editor-${pkgver}_qt5.amd64.tar.gz)
-
-sha256sums=('29218c206e5b78776bc3ec44a760773273274bb56baee5e19e06c3ec55db59fd')
-sha256sums_x86_64=('361f75e278574c6397bdec0ed122efb16287798f9f2cc42056ce1808a963707b')
+depends=(
+    'libgl'
+    'pkcs11-helper'
+    'sane'
+    'qt5-base'
+    'qt5-svg'
+    'qt5-declarative'
+    'xcb-util-image'
+    'xcb-util-keysyms'
+    'xcb-util-renderutil'
+    'xcb-util-wm'
+    'glibc>=2.28'
+)
+makedepends=(
+    'curl'
+    'patchelf'
+)
+provides=("${pkgname}=${pkgver}")
+conflicts=("${pkgname}")
+source_x86_64=("https://code-industry.net/public/master-pdf-editor-${pkgver}${_patchver}-qt5.x86_64.tar.gz")
+sha1sums_x86_64=("${_checksum_x86_64% *}")
+source_aarch64=("https://code-industry.net/public/master-pdf-editor-${pkgver}${_patchver}-qt5.arm64.tar.gz")
+sha1sums_aarch64=("${_checksum_aarch64% *}")
 
 package() {
-    mkdir -p "${pkgdir}/opt/masterpdfeditor"
-    cd "${srcdir}/master-pdf-editor-3"
-    /bin/tar cf - * | ( cd "${pkgdir}"/opt/masterpdfeditor; tar xfp - )
-    install -D -m755 "${srcdir}"/master-pdf-editor-3/lang/*.qm "${pkgdir}"/opt/masterpdfeditor/lang
-    install -D -m755 "${srcdir}"/master-pdf-editor-3/lang/*.ts "${pkgdir}"/opt/masterpdfeditor/lang
-    install -D -m644 "${srcdir}"/master-pdf-editor-3/license.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-    install -D -m644 "${srcdir}"/master-pdf-editor-3/masterpdfeditor3.png "${pkgdir}"/usr/share/pixmaps/pdfeditor.png
-    install -D -m644 "${srcdir}"/masterpdfeditor-qt5.desktop "${pkgdir}"/usr/share/applications/masterpdfeditor.desktop
-    rm "${pkgdir}"/opt/masterpdfeditor/license.txt
-    chmod 644 "${pkgdir}"/opt/masterpdfeditor/lang/*
-    chmod 755 "${pkgdir}"/opt/masterpdfeditor/lang
-    mkdir -p "${pkgdir}"/usr/bin
-    ln -s /opt/masterpdfeditor/masterpdfeditor3 "${pkgdir}"/usr/bin/pdfeditor
+    install -d "${pkgdir}/{opt,usr/bin}/"
+    cp -a --no-preserve=ownership "master-pdf-editor-${pkgver%%.*}" "${pkgdir}/opt/"
+
+    cd                      "${pkgdir}/opt/master-pdf-editor-${pkgver%%.*}" || return 1
+    ln -sr                  "masterpdfeditor${pkgver%%.*}"          -t "${pkgdir}/usr/bin/"
+    install -Dm644          "masterpdfeditor${pkgver%%.*}.desktop"  -t "${pkgdir}/usr/share/applications/"
+    install -Dm644          'license_en.txt'                        -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    patchelf --remove-rpath "masterpdfeditor${pkgver%%.*}"
 }
