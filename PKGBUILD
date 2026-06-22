@@ -9,14 +9,14 @@
 pkgname=aurscan-manticore-bin-release-git
 pkgver=0.5.2
 _pkgname=aurscan
-pkgrel=2
-pkgdesc="LLM-powered pre-build malware scanner for AUR packages (with paru/yay hooks)"
+pkgrel=3
+pkgdesc='LLM-powered pre-build malware scanner for AUR packages (with paru / yay hooks) -- git release binary'
 arch=('x86_64' 'aarch64')
 url="https://github.com/manticore-projects/aurscan"
 license=('Apache-2.0')
 makedepends=('git' 'curl' 'gnupg' 'jq')
 options=('!strip')
-conflicts=('aurscan' 'aurscan-git' 'aurscan-manticore' 'aurscan-manticore-git' 'aurscan-manticore-release-git')
+conflicts=(aurscan aurscan-manticore{'',-bin}-release-git)
 optdepends=(
   'paru: sparu wrapper, PreBuildCommand hook, and --update-check'
   'yay: syay wrapper, editor-gate hook, and --update-check'
