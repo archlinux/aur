@@ -1,0 +1,16 @@
+pkgbase = bellit
+	pkgdesc = Cross-platform CLI tool for sending desktop notification.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/greyishsong/bellit
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = clang
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = git
+	options = !debug
+	source = https://github.com/greyishsong/bellit/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 953ec45f5194cbecf3fd2fa260d5fca0982c0c5b222c3f448063fc5a92d9d3f7
+
+pkgname = bellit
