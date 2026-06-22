@@ -1,11 +1,17 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 5.6.2 ➙ 5.9.0
-              : 2026-06-06 ➙ 2026-06-21
+ Tags         : 5.7.1 ➙ 5.10.0
+              : 2026-06-08 ➙ 2026-06-22
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-06-21   : 5.9.0
+ 2026-06-22   : 5.10.0
+              - **5.10.0**
+            
+                * Replace remaining strncpy() with strlcpy()
+                * Small man page makefile tweak.
+
+ 2026-06-21   : 5.9.0, origin/master
               - **5.9.0**
             
                 * Kernel plugins can now be de-activated in */etc/sd-boot/config.yaml*
@@ -161,18 +167,4 @@
             
                 Some caching likely especially with previous approach.
  2026-06-06   ⋯
-              - update Changelog
-
- 2026-06-06   : 5.6.2
-              - **5.6.2**
-            
-                * Install sd-boot-find-boot-mounts in /usr/bin.
-                * Documentation
-                    * Add man pages for command line tools.
-                    * Update readme.
-                * No functional change.
- 2026-06-05   ⋯
-              - Update Changelog
-              - Tweak readme file
- 2026-06-04   ⋯
               - update Changelog
