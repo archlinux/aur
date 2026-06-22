@@ -2,7 +2,7 @@
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 
 pkgname="deezer"
-pkgver=7.1.240
+pkgver=7.1.250
 pkgrel=1
 
 # Keep this in sync with the formatter version used by aunetx/deezer-linux.
@@ -65,7 +65,7 @@ noextract=(
     "mpris-service-${_mpris_ver}.tgz"
 )
 
-sha256sums=('65ac383ca35f10d690990c15f6a45fbee131feca7385b434f82867cfef46da66'
+sha256sums=('8895cac9a80246c2534efb30aaf4bfac73a9ee23056c250da2726cd6a9b324de'
             'c33b398d8ae279a620cf2914c806f7ee00c47519e4f404874cfd90a68fc8d80f'
             '3a23339b7b00d5d6d59768699f585d2565fc1cd7d2c43a254206de3840546eb6'
             '951c80c9dc4848b31a5fcc9655b005f3a218b1ff735396168c13922ac658c83b'
@@ -120,6 +120,7 @@ _setup_mpris() {
 
     npm ci \
         --prefix "$srcdir/mpris-vendor" \
+        --cache "$srcdir/npm-cache" \
         --omit=dev \
         --no-audit \
         --no-fund \
