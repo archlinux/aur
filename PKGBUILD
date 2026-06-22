@@ -40,7 +40,6 @@ backup=(etc/${_jdkname}/logging.properties
         etc/${_jdkname}/management/jmxremote.password.template
         etc/${_jdkname}/management/management.properties
         etc/${_jdkname}/net.properties
-        etc/${_jdkname}/security/java.policy
         etc/${_jdkname}/security/java.security
         etc/${_jdkname}/security/policy/README.txt
         etc/${_jdkname}/security/policy/limited/default_US_export.policy
@@ -73,6 +72,9 @@ source_aarch64=(https://download.bell-sw.com/java/$_pkgver/bellsoft-jdk$_pkgver-
 source_armv7h=(https://download.bell-sw.com/java/$_pkgver/bellsoft-jdk$_pkgver-linux-arm32-vfp-hflt-full.tar.gz)
 source_armv8h=(${source_armv7h[@]})
 source_x86_64=(https://download.bell-sw.com/java/$_pkgver/bellsoft-jdk$_pkgver-linux-amd64-full.tar.gz)
+
+# Skip debug package generation and stripping for prebuilt binaries
+options=(!debug !strip)
 
 # Upstream-provided
 
