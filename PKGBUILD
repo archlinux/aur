@@ -2,7 +2,7 @@
 _pkgname=backend.ai-desktop
 pkgname="${_pkgname//./-}-bin"
 _appname='Backend.AI Desktop'
-pkgver=26.4.8
+pkgver=26.4.9
 _electronversion=39
 pkgrel=1
 pkgdesc="Provides a convenient environment for users, while allowing various commands to be executed without CLI. It also provides some visual features that are not provided by the CLI, such as dashboards and statistics."
@@ -33,8 +33,8 @@ source=(
 )
 sha256sums=('c54209c33c387908bfaae40a9c5f6c96bacaa52684f2546068e2b4441f4a53b3'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('bce553c52521f3b6d90c8ed95bce3a5c239105ab194edc68e26cf299c8baada1')
-sha256sums_x86_64=('a115e2d0d15f62b679e10932ebe84601b8992c7f3879e54a6cdd43ee04b0d63a')
+sha256sums_aarch64=('2243c817b9995ef32eb5ce7a0a171cb1ce2df6cedeb94027ee03cb6110d1b354')
+sha256sums_x86_64=('3ec1eb80bfbc6c1b822d56e8ee9133956ebb8ab58cf8bd81e0788226e1b85397')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
