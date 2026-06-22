@@ -2,13 +2,13 @@
 
 _pyname=ubi_reader
 pkgname=python-${_pyname//_/-}-git
-pkgver=0.8.9.r2.gcc7225e
+pkgver=0.8.14.r0.gc6c9c1a
 pkgrel=1
 pkgdesc='Scripts for reading information about and extracting data from UBI and UBIFS images.'
 arch=('any')
 url="https://github.com/onekey-sec/$_pyname"
 license=(GPL)
-depends=(python)
+depends=(python python-zstandard)
 conflicts=(python-ubi-reader)
 provides=("python-ubi-reader=${pkgver%.r*}")
 makedepends=(git python-build python-installer python-wheel python-setuptools python-poetry)
