@@ -1,6 +1,6 @@
 pkgbase = codewhale
 	pkgdesc = CodeWhale (formerly DeepSeek-TUI) - DeepSeek-first agentic terminal for open-source coding models
-	pkgver = 0.8.63
+	pkgver = 0.8.64
 	pkgrel = 1
 	url = https://github.com/Hmbown/CodeWhale
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = codewhale
 	conflicts = deepseek-tui
 	conflicts = deepseek-tui-bin
 	options = !lto
-	source = codewhale-0.8.63.tar.gz::https://github.com/Hmbown/CodeWhale/archive/refs/tags/v0.8.63.tar.gz
-	sha256sums = 11f85c9a680ba37e59c6fa6a3c492e00dc7b4c73f065676ae15752f5eac2ebfe
+	source = codewhale-0.8.64.tar.gz::https://github.com/Hmbown/CodeWhale/archive/refs/tags/v0.8.64.tar.gz
+	sha256sums = 300282e39b11de9b7c41b3b97d872d8ab541fbf0e3c22f251fd58665216b21fe
 
 pkgname = codewhale
