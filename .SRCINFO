@@ -1,0 +1,12 @@
+pkgbase = ttf-terrywang-hot-metal-fonts-git
+	pkgdesc = Hot-metal typesetting style Chinese fonts by Terry Wang (https://huozi.cool/).
+	pkgver = r2.d4177de
+	pkgrel = 1
+	url = https://github.com/BH1PHL/ttf-terrywang-hot-metal-fonts
+	arch = any
+	license = custom:terrywang-font-license
+	makedepends = git
+	source = git+https://github.com/BH1PHL/ttf-terrywang-hot-metal-fonts.git
+	sha1sums = SKIP
+
+pkgname = ttf-terrywang-hot-metal-fonts-git
