@@ -1,6 +1,6 @@
 # Maintainer: greembow <greembow@outlook.com>
 pkgname=dotdotdot-git
-pkgver=r0.unknown
+pkgver=r11.2116ef3
 pkgrel=1
 pkgdesc="A variable-based dotfiles manager with a template engine for multi-machine deployments"
 arch=('x86_64' 'aarch64')
