@@ -1,14 +1,14 @@
 # Maintainer: Nicolas Derumigny nderumigny <at> gmail <dot> com
 pkgname=spack
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="A flexible package manager for supercomputer that supports multiple versions, configurations, platforms, and compilers."
+pkgdesc="A flexible package manager for supercomputers."
 arch=('i686' 'x86_64')
 url="https://spack.io/"
 license=('MIT')
 depends=('python' 'polkit')
 optdepends=( 'env-modules-tcl' 'lmod' )
-makedepends=('python-build' 'python-hatchling' 'python-installer')
+makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-pip')
 source=(
         spack-${pkgver}.tar.gz::https://github.com/spack/spack/archive/v${pkgver}.tar.gz
         spack.sysusers
@@ -22,14 +22,14 @@ source=(
         environment.py.patch
       )
 sha256sums=(
-        'a0160ae5e84adc81ac7832562a65ad79053d5c135996815dbb0d2eee6b2fca1c'
+        '8704e2be0e1d101dc84541b7723394d0caf513a74dd19af26a22d0c0110ffb7a'
         'e6d46e8f5140b4e86596d38f23af379d9adce8e9afc66f800571d7a4d9211e19'
         '8f4ae16577e17ea497daca03228ab532886b8e89482f03ca770e809909a17867'
         '1f2c4c6b8841d927fa4056206b8e5603719c0d829586ff0937efaa935d054376'
         '7f593b7f9289972ae83ad11e0dd3281faf1c56bffa0428dd69641b36b8b94356'
         '0bddb0a0f1d470509f44c3031041ab0de5472de84f58c90d4b6c91e6782cb6a2'
         '7b427625d7890dbc0ae493da095a4d7de47742fd3b02e3f42d7ee52e3599a4ac'
-        'd7a700e62d55008c11af88d368977a5947e541cb279c2ed6a70be967f8e699be'
+        'fab69677830f668bda5f7a324a1e94af83ae46d6e259168f430f2cd02b37376f'
         '55dc48adbba01c953e9be97c8dbca3c1e04fe11aecef37d7a5e0536ea8ea0132'
         '733c9631ca354210722998094a1ca0e7c17a5a0a016e04d465fb872dee434683'
 )
@@ -55,12 +55,15 @@ prepare() {
 }
 
 build() {
-  python3 -m build --wheel ${srcdir}/${pkgname}-${pkgver} --no-isolation
+  python -m build --wheel ${srcdir}/${pkgname}-${pkgver}
 }
 
 package() {
   warning "Remember to add yourself as member for the new \`spack\` group after installation!"
+  # Avoid a regression in installer that prevent installation
+  pip install --break-system-packages 'installer<1.0'
   python -m installer --destdir ${pkgdir}/ ${srcdir}/${pkgname}-${pkgver}/dist/spack-${pkgver}-py3-none-any.whl
+  pip uninstall -y --break-system-packages 'installer'
 
   PYTHON_VERSION=`python -c "import sys; print (f'{sys.version_info[0]}.{sys.version_info[1]}', end='')"`
   pushd ${pkgdir}/usr/lib/python${PYTHON_VERSION}/site-packages/
