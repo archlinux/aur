@@ -1,0 +1,24 @@
+pkgbase = edirstat-bin
+	pkgdesc = A fast, cross-platform disk usage analyzer with work-stealing multithreading, zero-copy snapshots, deduplication, and an interactive treemap GUI. (Precompiled Version)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://xangelix.itch.io/edirstat
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = libxkbcommon
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	optdepends = wayland: For running natively on Wayland compositors
+	optdepends = libx11: For running on traditional X11/Xorg desktops
+	provides = edirstat=2.0.0
+	conflicts = edirstat
+	source = manual://edirstat-2.0.0-portable-x86_64
+	source = edirstat.desktop
+	source = edirstat-2.0.0-source.tar.gz::https://github.com/Xangelix/edirstat/archive/v2.0.0.tar.gz
+	sha512sums = 424833b80c3c9f74b4f05a36ff6e9ac925ffe4a47da9398e660fbf3a293934af39bb4ba06e6986a190f76ce6f8aa96b0879ca0b84d534fdc58edd8291f38ba29
+	sha512sums = 5cbf9075b721335159eb3317cd3f787ac406fa7c398a2dea114870d362688f67809bbaaede155d8e1ad3a2830c35132ae37a02e24d9dabd60326b2b7e66a02b3
+	sha512sums = 6928a66d35df9a17d98c2873d1369393fc2b186eb3d11ab67bf24dd1f934dcce7142f7ca01e169e1bd8155feab3ebd3aa31305121752c8f511b1fae1aef3635d
+
+pkgname = edirstat-bin
