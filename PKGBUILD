@@ -9,6 +9,8 @@ license=('Apache-2.0')
 
 depends=(
 	'lua54'
+	'lua54-socket'
+	'lua54-dkjson'
 	'libxcb'
 	'xcb-util'
 	'xcb-util-keysyms'
@@ -25,6 +27,7 @@ depends=(
 	'libxext'
 	'polkit'
 	'fontconfig'
+	'xorg-fonttosfnt'
 	'glib2'
 	'systemd-libs'
 	'atch-stellar-git'
