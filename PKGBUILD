@@ -9,7 +9,7 @@ license=('BSD-3-Clause')
 depends=(
   'mtools'
   'dosfstools'
-  'squashfstools'
+  'squashfs-tools'
   'grub'
   'xorriso'
 )
