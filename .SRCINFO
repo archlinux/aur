@@ -1,7 +1,7 @@
 pkgbase = bettbox-compatible-bin
 	pkgdesc = A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash. (Build with GOAMD64=v1)
 	pkgver = 1.18.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/appshubcc/Bettbox
 	arch = x86_64
 	license = GPL-3.0-or-later

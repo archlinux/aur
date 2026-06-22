@@ -4,7 +4,7 @@ pkgname=bettbox-compatible-bin
 _pkgname=Bettbox
 pkgver=1.18.1
 _pkgver="${pkgver/.pre/-pre}"
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash. (Build with GOAMD64=v1)"
 arch=('x86_64')
 url="https://github.com/appshubcc/Bettbox"
@@ -32,6 +32,7 @@ prepare() {
 }
 
 package() {
+    install -Dm755 -d "${pkgdir}/usr/bin"
     ln -s "/usr/lib/${pkgname%-compatible-bin}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-compatible-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-compatible-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/usr/share/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-compatible-bin}/"
