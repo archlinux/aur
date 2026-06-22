@@ -1,6 +1,6 @@
 pkgbase = reasonix-desktop-deb
 	pkgdesc = Terminal-native AI coding agent with DeepSeek API (desktop GUI, repackaged from .deb)
-	pkgver = 1.9.1
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/esengine/DeepSeek-Reasonix
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = reasonix-desktop-deb
 	conflicts = deepseek-reasonix-desktop
 	conflicts = deepseek-reasonix-desktop-bin
 	options = !strip
-	source = reasonix-desktop_1.9.1_amd64.deb::https://github.com/esengine/DeepSeek-Reasonix/releases/download/desktop-v1.9.1/Reasonix-linux-amd64.deb
-	sha256sums = 7a28229c4efa45a74522fcbbcdf15a8145a922f8b0d8ac5f24c99b23c8efa6e9
+	source = reasonix-desktop_1.10.0_amd64.deb::https://github.com/esengine/DeepSeek-Reasonix/releases/download/desktop-v1.10.0/Reasonix-linux-amd64.deb
+	sha256sums = f0e6be3bc6d3d4e4fc2eab52381381e2f712f1234ca829c396904453235ccc75
 
 pkgname = reasonix-desktop-deb
