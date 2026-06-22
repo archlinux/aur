@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=uutils-findutils-bin
-pkgver=0.8.0
-pkgrel=3
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="Rust implementation of findutils"
 arch=('x86_64')
 url="https://github.com/uutils/findutils"
@@ -11,7 +11,7 @@ depends=('glibc' 'libgcc')
 provides=("uutils-findutils=$pkgver")
 conflicts=('uutils-findutils')
 source_x86_64=("https://github.com/uutils/findutils/releases/download/$pkgver/findutils-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('1dadf135f099f6270014fbbdb3c13523bdc558667892fc3bed8d30b2bf1a9ded')
+sha256sums_x86_64=('beb3c82b785cb1c9e86d1f4e73ad836955dfee692e5605bdbdc23c16745c4c24')
 
 
 package() {
