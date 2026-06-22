@@ -1,11 +1,11 @@
 # Maintainer: Slavi Pantaleev <slavi@devture.com>
 #
-# Upstream location: https://github.com/etkecc/komai/blob/main/etc/packaging/archlinux/PKGBUILD
+# Upstream location: https://github.com/etkecc/komai/blob/main/etc/packaging/archlinux/komai/PKGBUILD
 # Komai develops this PKGBUILD in-tree. The copy submitted to AUR
 # (aur.archlinux.org:komai.git) is kept in sync from the upstream file above.
 # Patches are welcome at the upstream repository, not against the AUR copy.
 pkgname=komai
-pkgver=2026.06.21.0
+pkgver=2026.06.22.0
 pkgrel=1
 pkgdesc="A fine Matrix chat app you can get to love"
 arch=('x86_64')
