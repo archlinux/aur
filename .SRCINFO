@@ -1,0 +1,23 @@
+pkgbase = persepolis-bin
+	pkgdesc = Persepolis is a download manager written in Python. Persepolis is a sample of free and open source software.
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = https://github.com/persepolisdm/persepolis
+	arch = any
+	license = GPLv3
+	depends = python-urllib3
+	depends = python-pysocks
+	depends = python-requests
+	depends = python-setproctitle
+	depends = python-psutil
+	depends = yt-dlp
+	depends = ffmpeg
+	depends = python-dasbus
+	depends = breeze
+	depends = pyside6
+	provides = persepolis
+	conflicts = persepolis
+	source = https://github.com/persepolisdm/persepolis/releases/download/5.2.0/persepolis_5.2.0.2_all.deb
+	sha256sums = 2cdbdd8e9f6669958d1ad03aaf1b29bd0e883f09ac0efe3701fed57b41f8160b
+
+pkgname = persepolis-bin
