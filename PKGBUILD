@@ -1,7 +1,7 @@
 # Maintainer: Sanjaya Danushka <dsanjaya712@gmail.com>
 pkgname=neoarch-git
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="NeoArch Package Manager for Arch Linux"
 arch=('any')
 url="https://github.com/Sanjaya-Danushka/Neoarch"
@@ -13,11 +13,6 @@ conflicts=('neoarch')
 install=neoarch-git.install
 source=('git+https://github.com/Sanjaya-Danushka/Neoarch.git')
 md5sums=('SKIP')
-
-pkgver() {
-  cd Neoarch
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 package() {
   cd "$srcdir"
