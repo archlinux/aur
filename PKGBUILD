@@ -3,8 +3,8 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-server
-pkgver=3.1.0a2
-pkgrel=2
+pkgver=3.1.0a3
+pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=(x86_64 aarch64)
 url="https://github.com/GNS3/$pkgname"
@@ -50,6 +50,7 @@ optdepends=(
     'gns3-gui: graphical user interface for GNS3 server'
     'qemu: Used by GNS3 to run Cisco ASA, PIX and IDS'
     'libvirt: needed for the NAT cloud'
+    'fastmcp: MCP (Model Context Protocol) dependency'
     'python-sentry_sdk: Python SDK for Sentry.io'
     'vpcs: Simple PC emulation for basic network operations'
     'ubridge: Bridge for UDP tunnels, Ethernet, TAP and VMnet interfaces'
@@ -58,9 +59,9 @@ install="$pkgname".install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname@.service"
         fix_requirements_for_Arch.patch)
-sha256sums=('86fe644e4b0e5580f150e27573210cabf47ab849ee660b01045e0b6b47d477bd'
+sha256sums=('d42a2d0de7008ecb31f75b46dc8e20d2d711d01fbf44b88ef228467d95160ef5'
             'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f'
-            'f5d3d20bd700b08bb352a68a0e00f1936f575f4baa8d96c662d1f7ab5cffcc1d')
+            '9d5d8c5aea9afc0af8e6620ed1fc804bc71d17ac4979395bf7547e2a4a96633c')
 
 prepare() {
     cd "$pkgname-$pkgver"
