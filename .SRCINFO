@@ -1,0 +1,21 @@
+pkgbase = konsole-companion-git
+	pkgdesc = Theme-synced profiles and tab-set manager for KDE Konsole
+	pkgver = 0.1.0.r1.g95e39eb
+	pkgrel = 1
+	url = https://github.com/Egor3f/konsole-companion
+	arch = any
+	license = WTFPL
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = pyside6
+	depends = konsole
+	provides = konsole-companion
+	conflicts = konsole-companion
+	source = git+https://github.com/Egor3f/konsole-companion.git
+	sha256sums = SKIP
+
+pkgname = konsole-companion-git
