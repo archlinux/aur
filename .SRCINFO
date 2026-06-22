@@ -1,6 +1,6 @@
 pkgbase = ds4u-git
 	pkgdesc = DualSense 4 You — DualSense controller manager (git)
-	pkgver = r64.g71e9466
+	pkgver = r67.g9533093
 	pkgrel = 1
 	url = https://git.yokai.digital/deadYokai/ds4u
 	arch = x86_64
