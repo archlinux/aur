@@ -6,7 +6,7 @@ _electron=electron40
 _node=24
 pkgname=joplin-beta
 pkgver=3.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A note taking and to-do application with synchronization capabilities (beta version)"
 arch=("x86_64")
 url="https://joplinapp.org/"
@@ -51,6 +51,9 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}/packages/app-desktop/dist/linux-unpacked/resources"
+
+	# Cleanup unused os/arch binaries
+	find -type d \( -name darwin -or -name win32 -or -name arm64 \) -prune -execdir rm -rf {} \;
 
 	install -dm0755 "${pkgdir}/usr/lib/joplin"
 	find . -type d -exec install -d {,"${pkgdir}/usr/lib/joplin/"}{} \;
