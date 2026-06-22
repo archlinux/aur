@@ -1,8 +1,8 @@
 # Maintainer: Philipp Joram <mail [at] phijor [dot] me>
 
 pkgname='python-soundcloud-v2'
-_name=${pkgname#python-}
-pkgver=1.6.0
+_name=soundcloud_v2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Python wrapper for the v2 SoundCloud API"
 url="https://github.com/7x11x13/soundcloud.py"
@@ -17,8 +17,9 @@ depends=(
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 conflicts=('python-soundcloud')
 provides=('python-soundcloud')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('73684165eac42c220ba3e9eb1a102d5b70e1b7e17a876049f553bea7d7d3934852307fe251b464c4c0a8c7098aa9d36ff57e8b7340f2e7c008c892fa4243d25d')
+#source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/f1/87/abf8b9f9075c908b4433ee31ca856f9be068dc4315a71e05e9a384ba3a1f/soundcloud_v2-1.7.0.tar.gz")
+sha512sums=('6d3e18be9a1b1773d2da7d12d9f481c65d76f368430f9dfe62c943a4bf51c28eea5ca6c8280f2c9a43c1aabf243d6716b02cc91541baf35ed61bb142a24592f4')
 
 build() {
   cd "${_name}-${pkgver}"
