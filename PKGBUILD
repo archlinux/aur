@@ -3,7 +3,7 @@
 pkgauthor=d7omdev
 pkgname=tupass
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, keyboard-driven terminal UI for GNU pass, built with OpenTUI"
 
 _npmname=${pkgname}
@@ -51,6 +51,10 @@ package() {
 		mv "${tmppackage}" "${pkgjson}"
 		chmod 644 "${pkgjson}"
 	done
+
+	install -Dm644 "/usr/lib/node_modules/${_npmname}/docs/${_npmname}.desktop" "${pkgdir}/usr/share/applications/${_npmname}.desktop"
+
+	install -Dm644 "/usr/lib/node_modules/${_npmname}/docs/${_npmname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_npmname}.svg"
 
 	msg2 "Install README file"
 	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"

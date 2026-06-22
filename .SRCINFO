@@ -1,7 +1,7 @@
 pkgbase = tupass
 	pkgdesc = A fast, keyboard-driven terminal UI for GNU pass, built with OpenTUI
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/d7omdev/tupass
 	arch = x86_64
 	license = MIT
