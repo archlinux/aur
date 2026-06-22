@@ -22,10 +22,10 @@ url="https://github.com/${_pkgauthor}/${_pkgname}"
 
 license=('Apache-2.0')
 
+provides=("${_pkgname}" "${_pkgalias}")
+
 makedepends=('rust')
 depends=('glibc' 'libgcc')
-
-provides=("${_pkgname}" "${_pkgalias}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
 sha256sums=('cddffddd69c0ec53410d629aa89f7ddd43bec2130cdccb708edb918c3080aad0')
@@ -46,7 +46,7 @@ build() {
 package() {
 	cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
 
-	install -Dm755 "target/release/${_cratename%%-cli}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 "target/release/${_cratename}" "${pkgdir}/usr/bin/${_pkgname}"
 	ln -sf "/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgalias}"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
