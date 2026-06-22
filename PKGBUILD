@@ -4,15 +4,15 @@
 _pkgname=themix-icons-suru-plus-aspromauros
 _reponame=suru-plus-aspromauros
 pkgname="${_pkgname}-git"
-pkgver=3.0.r0.gd43a8ec4
-pkgrel=2
+pkgver=3.0.r0.gc92fa86d
+pkgrel=1
 pkgdesc="Suru++ Aspromauros icons plugin for Themix GUI designer"
 arch=('x86_64' 'i686')
-url="https://github.com/gusbemacbe/suru-plus-aspromauros/"
+url="https://github.com/suru-plus/suru-plus-aspromauros"
 license=('GPL3')
 source=(
 	"git+https://github.com/themix-project/oomox.git#branch=master"
-	"${_reponame}::git+https://github.com/gusbemacbe/suru-plus-aspromauros.git#branch=master"
+	"${_reponame}::git+${url}.git#branch=master"
 )
 md5sums=('SKIP'
          'SKIP')
