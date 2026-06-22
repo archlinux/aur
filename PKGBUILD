@@ -3,12 +3,13 @@
 pkgname=miasma
 pkgdesc='Trap AI web scrapers in an endless poison pit.'
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=('GPL-3.0-or-later')
 url='https://github.com/austin-weeks/miasma'
 makedepends=('cargo')
-depends=('libgcc' 'glibc' 'sqlite')
+depends=('libgcc' 'glibc')
+optdepends=('sqlite: Collecting metrics on bots that request the service')
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   miasma.service
