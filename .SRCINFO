@@ -1,0 +1,19 @@
+pkgbase = tmux-mcp-rs-bin
+	pkgdesc = A Model Context Protocol (MCP) server for tmux, written in Rust
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/bnomei/tmux-mcp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = tmux
+	provides = tmux-mcp-rs
+	conflicts = tmux-mcp-rs
+	source = LICENSE::https://github.com/bnomei/tmux-mcp/raw/v0.5.0/LICENSE
+	sha256sums = 077d138387dd107179fec3cefab95ced64f27c20845d014488fc542c4093c962
+	source_x86_64 = tmux-mcp-rs-0.5.0-x86_64.tar.gz::https://github.com/bnomei/tmux-mcp/releases/download/v0.5.0/tmux-mcp-rs-v0.5.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = f1f88bafbbcb4fffce84539dd7cc8c4d2a6adc5a46d9892fe9dd3961db746b0f
+	source_aarch64 = tmux-mcp-rs-0.5.0-aarch64.tar.gz::https://github.com/bnomei/tmux-mcp/releases/download/v0.5.0/tmux-mcp-rs-v0.5.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 7aecc33bbb7c4a37c0a3896d0a248a64a27e59fc142ecd3393a2ec9397c9a2dd
+
+pkgname = tmux-mcp-rs-bin
