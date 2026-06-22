@@ -1,6 +1,6 @@
 pkgbase = coder
 	pkgdesc = Provision remote development environments via Terraform
-	pkgver = 2.28.3
+	pkgver = 2.34.3
 	pkgrel = 1
 	url = https://github.com/coder/coder
 	arch = i386
@@ -10,12 +10,13 @@ pkgbase = coder
 	license = AGPL-3.0-only
 	makedepends = go>=1.22.0
 	makedepends = pnpm
-	makedepends = nodejs-lts-iron
+	makedepends = nodejs-lts-krypton
 	makedepends = protobuf
+	makedepends = git
 	depends = glibc
-	source = coder-2.28.3.tar.gz::https://github.com/coder/coder/archive/refs/tags/v2.28.3.tar.gz
+	source = coder-2.34.3.tar.gz::https://github.com/coder/coder/archive/refs/tags/v2.34.3.tar.gz
 	source = coder-oss.install
-	sha512sums = baa3b870ee29a1bf6603d5e3d8b3155aeda181fd6a6650da411522a57db4a83bdeb943641b603a3f1300b6cc5694048e28aba83b834bc8c52585da5021f42dcf
+	sha512sums = 9f04b5fad33ad8debb62659996cfbf281186b7270881fa3c89368e8268c9d564776022ff3965b64d5895df48357e806076e250be1601e0d533a0eec217ec0bc0
 	sha512sums = 2882e905971ace0722f4e28dcabaacab8f9ab0eb555fd71448a71725dbc8d397f52467c522aa982e50239bd2486c6448cc8bb5a2b23891312520a425038e14f4
 
 pkgname = coder-oss
