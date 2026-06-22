@@ -1,6 +1,6 @@
 pkgbase = aur-guard
 	pkgdesc = Garde-fou de sécurité pour les mises à jour AUR : délai, whitelist, scan statique et review IA du diff PKGBUILD
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Xhelliom/aur-guard
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = aur-guard
 	depends = libadwaita
 	depends = gcc-libs
 	depends = glibc
-	source = aur-guard-0.1.1.tar.gz::https://github.com/Xhelliom/aur-guard/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = c2065c3c78062a905ce5fbf57f3e92c93f9698b023d48793634eb2638d6782a4
+	source = aur-guard-0.2.0.tar.gz::https://github.com/Xhelliom/aur-guard/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = a369652671ecdbf45bbae469ba5095807f7017baad11557c49e25d60be1810e4
 
 pkgname = aur-guard

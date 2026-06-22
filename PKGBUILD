@@ -1,6 +1,6 @@
 # Maintainer: Xhelliom
 pkgname=aur-guard
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Garde-fou de sécurité pour les mises à jour AUR : délai, whitelist, scan statique et review IA du diff PKGBUILD"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gtk4' 'libadwaita' 'gcc-libs' 'glibc')
 makedepends=('cargo' 'gettext')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Remplacé par updpkgsums une fois le tag v$pkgver publié (le CI le fait tout seul).
-sha256sums=('c2065c3c78062a905ce5fbf57f3e92c93f9698b023d48793634eb2638d6782a4')
+sha256sums=('a369652671ecdbf45bbae469ba5095807f7017baad11557c49e25d60be1810e4')
 
 prepare() {
   cd "$pkgname-$pkgver"
