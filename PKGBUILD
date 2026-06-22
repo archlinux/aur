@@ -1,9 +1,9 @@
 # Maintainer: mammo0 <marc.ammon@hotmail.de>
 pkgname=owncloud-client-desktop-shell-integration-nautilus
 _resources_pkgname=client-desktop-shell-integration-resources
-pkgver=6.0.0
+pkgver=6.1.0
 _resources_pgkver=1.0.0
-pkgrel=4
+pkgrel=1
 pkgdesc="A Python extension for Nautilus and its forks Nemo and Caja to provide shell integration for the ownCloud desktop client for the GNOME, Cinnamon and MATE desktop environments."
 arch=('any')
 url="https://github.com/owncloud/client-desktop-shell-integration-nautilus"
@@ -14,10 +14,8 @@ source=(
     "extension.tar.gz::https://github.com/owncloud/${pkgname#*-}/archive/refs/tags/v${pkgver}.tar.gz"
     "resources.tar.gz::https://github.com/owncloud/${_resources_pkgname}/archive/refs/tags/v${_resources_pgkver}.tar.gz"
 )
-sha256sums=(
-    '7d37b484b117be3ac69f6cdd650e648765b6960ae4a4308ca43c05b16ee09748'
-    'dcd5821d422fe9923e774978e93ffe3ba8825094f9f77c596b5b0dba65641da8'
-)
+sha256sums=('e0d11a2f9a406fa9d178c1ed411750342c18a73e43e0b01a977afca9b3985b80'
+            'dcd5821d422fe9923e774978e93ffe3ba8825094f9f77c596b5b0dba65641da8')
 
 _cmake_build_dir="build"
 _archivedir="${pkgname#*-}-${pkgver}"
