@@ -12,7 +12,8 @@ _pkgname=aurscan
 pkgrel=3
 pkgdesc='LLM-powered pre-build malware scanner for AUR packages (with paru / yay hooks) -- git release binary'
 arch=('x86_64' 'aarch64')
-url="https://github.com/manticore-projects/aurscan"
+_repo="manticore-projects/aurscan"
+url="https://github.com/${_repo}"
 license=('Apache-2.0')
 makedepends=('git' 'curl' 'gnupg' 'jq')
 options=('!strip')
@@ -38,7 +39,7 @@ case "${CARCH:-}" in
 esac
 
 pkgver() {
-  git ls-remote --tags 'https://github.com/manticore-projects/aurscan.git' 'v[0-9]*' \
+  git ls-remote --tags "https://github.com/${_repo}.git" 'v[0-9]*' \
     | awk '{print $2}' \
     | sed 's|^refs/tags/||; s/\^{}$//' \
     | sort -V -u \
@@ -53,7 +54,7 @@ prepare() {
 build() {
   cd "${srcdir}"
   local _rel_url="${url}/releases/download/v${pkgver}"
-  local _raw_url="https://raw.githubusercontent.com/manticore-projects/aurscan/v${pkgver}"
+  local _raw_url="https://raw.githubusercontent.com/${_repo}/v${pkgver}"
   curl -fsSL "${_rel_url}/${_asset}" -o "${_asset}"
   curl -fsSL "${_raw_url}/LICENSE"   -o LICENSE
   curl -fsSL "${_raw_url}/README.md" -o README.md
@@ -62,7 +63,7 @@ build() {
 check() {
   # Verify the release tag's GPG signature against the bundled public key via
   # the GitHub API (avoids a full git clone).
-  local _api="https://api.github.com/repos/manticore-projects/aurscan"
+  local _api="https://api.github.com/repos/${_repo}"
   local _ref_sha
 
   _ref_sha=$(curl -fsS "${_api}/git/ref/tags/v${pkgver}" | jq -r '.object.sha')
