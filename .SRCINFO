@@ -1,6 +1,6 @@
 pkgbase = qoder-cn-bin
 	pkgdesc = Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://qoder.com.cn
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = qoder-cn-bin
 	depends = nodejs
 	optdepends = bash
 	optdepends = zsh
-	provides = qoder-cn=1.2.0
+	provides = qoder-cn=1.3.0
 	conflicts = qoder-cn
 	options = !emptydirs
 	options = !strip
-	source = qoder-cn-1.2.0.rpm::https://ide.qoder.com.cn/qoder/release/lastest/qoder-cn_x86_64.rpm
+	source = qoder-cn-1.3.0.rpm::https://ide.qoder.com.cn/qoder/release/lastest/qoder-cn_x86_64.rpm
 	source = LICENSE.html
 	source = qoder-cn.js
 	source = qoder-cn.sh
