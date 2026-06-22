@@ -1,0 +1,16 @@
+pkgbase = tempora-bin
+	pkgdesc = An application designed to simplify and speed up the process of synchronizing a recorded piece of music to a digital metronome
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/teamkongehund/Tempora
+	arch = x86_64
+	license = CC-BY-NC-ND-4.0
+	makedepends = imagemagick
+	provides = tempora=1.5.0
+	options = !strip
+	source = https://github.com/teamkongehund/Tempora/releases/download/v1.5.0-beta/Tempora-v1.5.0-beta-Linux.zip
+	source = https://raw.githubusercontent.com/teamkongehund/Tempora/refs/tags/v1.5.0-beta/Images/Tempora2.png
+	sha256sums = 19f41ad6312bbec78fcb54a40a5d3cdf958dfd444ed5d2ff7e8d0ff59634a1db
+	sha256sums = 195caf987721f51d2a4cbb2f33f7a749d7457e1087cc956d3d7c51253d0abed3
+
+pkgname = tempora-bin
