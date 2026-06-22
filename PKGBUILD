@@ -83,16 +83,12 @@ check() {
   GNUPGHOME="$_gpghome" gpg --batch --homedir "$_gpghome" \
     --import "${srcdir}/andreas-manticore.gpg" >/dev/null 2>&1
 
-  if ! GNUPGHOME="$_gpghome" gpg --batch --homedir "$_gpghome" \
-    --verify "${srcdir}/tag-sig.gpg" "${srcdir}/tag-payload" >/dev/null 2>&1; then
-    GNUPGHOME="$_gpghome" gpg --batch --homedir "$_gpghome" \
-      --verify "${srcdir}/tag-sig.gpg" "${srcdir}/tag-payload"
-    printf "GPG verification of tag v%s failed\n" "${pkgver}" >&2
-    return 1
-  fi
+  GNUPGHOME="$_gpghome" gpg --batch --homedir "$_gpghome" \
+    --quick-set-ownertrust "61E73AA7539ACB261ABCF10C188331308EF56D11" ultimate
 
-  # Clean up verification artifacts
-  rm -rf "${srcdir}/.gnupg" "${srcdir}/tag-payload" "${srcdir}/tag-sig.gpg"
+  printf 'Verifying signature on git tag v%s:\n' "${pkgver}"
+  GNUPGHOME="$_gpghome" gpg --batch --homedir "$_gpghome" \
+    --verify "${srcdir}/tag-sig.gpg" "${srcdir}/tag-payload"
 }
 
 package() {
