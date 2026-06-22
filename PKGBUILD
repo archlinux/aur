@@ -1,6 +1,6 @@
 # Maintainer: Dennis Blümer <dennis.bluemer@ducart.de>
 pkgname=resonance-bin
-pkgver=2.11.3
+pkgver=2.11.4
 pkgrel=1
 pkgdesc="A local-first, zero-account API client with excellent user experience"
 arch=('x86_64' 'aarch64')
@@ -23,9 +23,9 @@ source_x86_64=(
 source_aarch64=(
     "resonance-$pkgver-arm64.deb::https://github.com/db-mobile/resonance/releases/download/v$pkgver/resonance_${pkgver}_arm64.deb"
 )
-sha256sums=('78e8bfe80dec77c15302791d77017854690826fccb0677cca139f1b444a8e6fd')
-sha256sums_x86_64=('b7f2c16d8dd2a09ea9da868de578e6ec00ccee5cc953d5c2cb3397d27721599f')
-sha256sums_aarch64=('526c9eb9590dfcb33195ca35217c4622609a3ba669aca221c3c5def67602d87a')
+sha256sums=('d18902194010ca6975baf62af065b7bf4c4d44f706f9cd8a45eddb5b44f37a93')
+sha256sums_x86_64=('56f65af1087c734ddfec26d5050e2df4c35ba0085ab045b10dc92e7424cd8e46')
+sha256sums_aarch64=('5b7ed804f58817bde757c0785bc1ce841d3252eb70cbfe2b37d9229395ab7b76')
 
 package() {
     # Detect architecture-specific .deb filename
