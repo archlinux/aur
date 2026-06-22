@@ -1,41 +1,58 @@
-# CPAN Name  : Clipboard
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: Anton Leontiev <scileont /at/ gmail.com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname=perl-clipboard
-pkgver=0.28
+_author=SHLOMIF
+_dist=Clipboard
+pkgname=perl-${_dist@L}
+pkgver=0.32
 pkgrel=1
-pkgdesc='Perl clipboard module'
+pkgdesc='Copy and paste with any OS'
 arch=('any')
-url='https://metacpan.org/release/Clipboard'
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl'
+    'perl-cgi'
+    'perl-file-temp'
+    'perl-pathtools'
+    'perl-uri'
+    'xclip'
+)
 makedepends=('perl-module-build>=0.28')
-depends=('perl-cgi' 'perl-uri' 'xclip')
-source=(http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Clipboard-0.28.tar.gz)
-options=(!emptydirs)
-md5sums=('fcd645045894ebac18e1aec630d2a489')
+checkdepends=(
+    'perl-lib'
+    'perl-test-simple'
+)
+optdepends=('xsel: XSel support')
+options=('!emptydirs')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('95e234cde474cd62ee762f45f8c9d8297436c61ac53bc6af7a73c257358c4bd0')
 
-sanitize() {
-	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+
+    /usr/bin/perl Build.PL --create_packlist=0
+    ./Build
 }
 
-build() {
-	cd Clipboard-0.28
-	sanitize
-	/usr/bin/perl Build.PL --installdirs vendor --destdir "$pkgdir"
-	/usr/bin/perl Build
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    ./Build test
 }
 
-check() {
-	cd Clipboard-0.28
-	sanitize
-	/usr/bin/perl Build test
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-package() {
-	cd Clipboard-0.28
-	sanitize
-	/usr/bin/perl Build install
-	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    ./Build install --installdirs=vendor --destdir="$pkgdir"
 }

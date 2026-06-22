@@ -1,18 +1,22 @@
 pkgbase = perl-clipboard
-	pkgdesc = Perl clipboard module
-	pkgver = 0.28
+	pkgdesc = Copy and paste with any OS
+	pkgver = 0.32
 	pkgrel = 1
-	url = https://metacpan.org/release/Clipboard
+	url = https://metacpan.org/dist/Clipboard
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-lib
+	checkdepends = perl-test-simple
 	makedepends = perl-module-build>=0.28
+	depends = perl
 	depends = perl-cgi
+	depends = perl-file-temp
+	depends = perl-pathtools
 	depends = perl-uri
 	depends = xclip
+	optdepends = xsel: XSel support
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Clipboard-0.28.tar.gz
-	md5sums = fcd645045894ebac18e1aec630d2a489
+	source = https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/Clipboard-0.32.tar.gz
+	sha256sums = 95e234cde474cd62ee762f45f8c9d8297436c61ac53bc6af7a73c257358c4bd0
 
 pkgname = perl-clipboard
-
