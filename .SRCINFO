@@ -1,32 +1,44 @@
 pkgbase = perl-devel-repl
-	pkgdesc = a modern perl interactive shell
+	pkgdesc = A modern perl interactive shell
 	pkgver = 1.003029
-	pkgrel = 4
+	pkgrel = 5
 	url = https://metacpan.org/dist/Devel-REPL
 	arch = any
-	license = Artistic-2.0
-	license = GPL-1.0-or-later
-	makedepends = perl-test-fatal
-	depends = perl
-	depends = perl-file-homedir
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-if
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.8.1
+	makedepends = perl-cpan-meta-requirements
+	makedepends = perl-extutils-makemaker
+	makedepends = perl-module-metadata
 	depends = perl-module-runtime
-	depends = perl-moose>=0.93
+	depends = perl-moose
 	depends = perl-moosex-getopt>=0.18
 	depends = perl-moosex-object-pluggable>=0.0009
 	depends = perl-namespace-autoclean
+	depends = perl-pathtools
 	depends = perl-scalar-list-utils
 	depends = perl-task-weaken
+	depends = perl-term-ansicolor
+	depends = perl-term-readline
+	depends = perl-time-hires
+	depends = perl>=5.8.1
+	depends = perl-app-nopaste
 	depends = perl-b-keywords
-	depends = perl-data-dump-streamer
+	depends = perl-data-dump-streamer>=2.39
 	depends = perl-data-dumper-concise
 	depends = perl-file-next
 	depends = perl-lexical-persistence
 	depends = perl-module-refresh
 	depends = perl-ppi
-	depends = perl-ppi-xs
 	depends = perl-sys-sigaction
+	optdepends = perl-cpan-meta>=2.120900
+	optdepends = perl-ppi-xs>=0.902
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Devel-REPL-1.003029.tar.gz
-	sha512sums = 08aeaa94e088051506f0912fb4d51585f6c73107fce54ef590706dba0cb9b04ea65ceb64e1bbf0b8c409a6aeb3d5e4e044d19277f41ba5b8e3b9459bb5dbf1c4
+	sha256sums = 7c87ebd88fe3abab2ff8c3fb681c6446ee7a2dc1390a6df7aa604f2634473c69
 
 pkgname = perl-devel-repl
