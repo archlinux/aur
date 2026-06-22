@@ -27,14 +27,13 @@ changelog=
 source=("https://raw.githubusercontent.com/lare354/waller/refs/heads/main/install.sh")
 noextract=()
 sha256sums=('0ae41487504b76dcba09f03be683f3b2952deb57d5b83623fbf180f02290973d')
-validpgpkeys=()}
+validpgpkeys=()
 
 build() {
 	cd "$pkgname-$pkgver"
 	sh ./install.sh
 }
 
-check() {
-	cd "$pkgname-$pkgver"
-	make -k check
+package() {
+	install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"	
 }
