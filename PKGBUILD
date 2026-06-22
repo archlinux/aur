@@ -1,7 +1,7 @@
-# Maintainer: Yakov Till <yakov.till@gmail.com>
-
+# Maintainer: Luis Bocanegra <luisbocanegra17b at gmail dot com>
+_gitname=plasma-application-widget
 pkgname=plasma6-applets-application-widget
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Run applications as Plasma widgets'
 arch=('any')
@@ -11,21 +11,16 @@ depends=('plasma-desktop' 'qt6-wayland')
 makedepends=('cmake' 'extra-cmake-modules' 'ki18n')
 provides=('plasma-application-widget')
 conflicts=('plasma-application-widget')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1548cb292a1fba869d53cae6ab06b0fb8e5b7110bd751b0d7a594cfd27be1300')
-
-latestver() {
-    gh api --paginate repos/luisbocanegra/plasma-application-widget/tags --jq '.[].name' |
-        sed -nE 's/^v([0-9]+(\.[0-9]+)*)$/\1/p' | sort -V | tail -1
-}
+source=("${_gitname}-${pkgver}.tar.gz::$url/archive/v${pkgver}/${_gitname}-${pkgver}.tar.gz")
+sha256sums=('77b3c38fd765cad0cb9ecccb91c4d3d9feaf093b9d13191ba2a88625dcd8cb4d')
 
 build() {
-    cmake -B build -S plasma-application-widget-${pkgver} \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=None
+    cd "${srcdir}/${_gitname}-$pkgver"
+    cmake -B build -S . -DCMAKE_BUILD_TYPE=None
     cmake --build build
 }
 
 package() {
+    cd "${srcdir}/${_gitname}-$pkgver"
     DESTDIR="${pkgdir}" cmake --install build
 }

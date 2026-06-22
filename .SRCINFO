@@ -1,6 +1,6 @@
 pkgbase = plasma6-applets-application-widget
 	pkgdesc = Run applications as Plasma widgets
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/luisbocanegra/plasma-application-widget
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = plasma6-applets-application-widget
 	depends = qt6-wayland
 	provides = plasma-application-widget
 	conflicts = plasma-application-widget
-	source = plasma6-applets-application-widget-0.1.0.tar.gz::https://github.com/luisbocanegra/plasma-application-widget/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 1548cb292a1fba869d53cae6ab06b0fb8e5b7110bd751b0d7a594cfd27be1300
+	source = plasma-application-widget-0.2.0.tar.gz::https://github.com/luisbocanegra/plasma-application-widget/archive/v0.2.0/plasma-application-widget-0.2.0.tar.gz
+	sha256sums = 77b3c38fd765cad0cb9ecccb91c4d3d9feaf093b9d13191ba2a88625dcd8cb4d
 
 pkgname = plasma6-applets-application-widget
