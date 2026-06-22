@@ -14,11 +14,11 @@ depends=(
 )
 makedepends=(
     "python-build"
-	"python-installer"
-	"python-wheel"
-	"python-setuptools"
-	"python-hatchling"
-	"python-versioningit"
+    "python-installer"
+    "python-wheel"
+    "python-setuptools"
+    "python-hatchling"
+    "python-versioningit"
     "python-hatch-sbom"
 )
 source=("https://files.pythonhosted.org/packages/source/v/${_origpkgname}/${_origpkgname}-${pkgver}.tar.gz")
