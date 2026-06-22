@@ -8,9 +8,10 @@ pkgbase = fitgirl-ddl-git
 	license = MIT
 	makedepends = rust
 	makedepends = git
+	makedepends = cmake
+	makedepends = clang
 	depends = gcc-libs
 	depends = glibc
-	depends = libcurl.so=4-64
 	source = git+https://github.com/mokurin000/fitgirl-ddl.git
 	sha256sums = SKIP
 
