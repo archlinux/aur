@@ -1,6 +1,6 @@
 pkgbase = joker
 	pkgdesc = Small Clojure interpreter, linter, and formatter
-	pkgver = 1.8.2
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://github.com/candid82/joker
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = joker
 	license = EPL-1.0
 	makedepends = go
 	depends = glibc
-	source = joker-1.8.2.tar.gz::https://github.com/candid82/joker/archive/v1.8.2.tar.gz
-	sha256sums = 51281b77741f61cc8fbe8f11b9c6da49cadebc66565f9be91f71530d562db441
+	source = joker-1.8.3.tar.gz::https://github.com/candid82/joker/archive/v1.8.3.tar.gz
+	sha256sums = 94fced43603f382309944544c527e27042523feb2c253e5cd1661d91c656bd36
 
 pkgname = joker
