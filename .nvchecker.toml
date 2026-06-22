@@ -1,0 +1,3 @@
+[perl-ppi-xs]
+source = "cpan"
+cpan = "PPI-XS"
