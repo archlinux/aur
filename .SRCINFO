@@ -1,7 +1,7 @@
 pkgbase = clawd-on-desk-bin
 	pkgdesc = A desktop pet that reacts to your Claude Code sessions in real-time — thinking, typing, juggling, sleeping, and more.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rullerzhou-afk/clawd-on-desk
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -14,7 +14,7 @@ pkgbase = clawd-on-desk-bin
 	options = !strip
 	source = clawd-on-desk-0.10.0.deb::https://github.com/rullerzhou-afk/clawd-on-desk/releases/download/v0.10.0/Clawd-on-Desk-0.10.0-amd64.deb
 	source = clawd-on-desk.sh
-	sha256sums = 6ff20badb0904e3b90ca56b0dcf77161a42a7d7c4560fd73e92d5999300f5cd9
+	sha256sums = 5963b6f660c70b8fd8868cd3c93f5bf31d4eb6c3a728b19b912940a09edcdc94
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = clawd-on-desk-bin
