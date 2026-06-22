@@ -1,25 +1,46 @@
-# Maintainer: Stewart Webb <stew@rtwebb.com>
-# Maintainer: Nathan Owens <ndowens @ artixlinux.org>
-
+# Maintainer: Andy Chow <thegreatandychow@gmail.com>
 pkgname=python-luigi
-pkgver=2.8.13
+_name=luigi
+pkgver=3.8.1
 pkgrel=1
-pkgdesc="Workflow mgmgt + task scheduling + dependency resolution"
+pkgdesc="Workflow management, task scheduling, and dependency resolution"
 arch=('any')
-depends=('python' 'python-daemon' 'python-tornado')
-makedepends=('python-setuptools' 'git')
 url="https://github.com/spotify/luigi"
-license=('Apache')
-source=("git+https://github.com/spotify/luigi.git#tag=${pkgver}")
-md5sums=('SKIP')
-sha256sums=('SKIP')
+license=('Apache-2.0')
+
+depends=(
+    'python'
+    'python-dateutil'
+    'python-tornado'
+    'python-daemon'
+    'python-tenacity'
+    'python-typing_extensions'
+    'python-psutil'
+    'python-prometheus_client'
+    'python-mechanize'
+    'python-requests'
+    'python-pygments'
+    'python-jsonschema'
+)
+
+makedepends=(
+    'python-build'
+    'python-installer'
+    'python-wheel'
+    'python-setuptools'
+    'python-hatchling'
+    'python-hatch-fancy-pypi-readme'
+)
+
+source=("$_name-$pkgver.tar.gz::https://github.com/spotify/luigi/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('6d3bef9b59a3320565bb2eb9c44f9f9d049cdaab567fc297a6a901ff4851f3d8')
 
 build() {
-  cd "$srcdir/luigi"
-  python setup.py build
+    cd "$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/luigi"
-  python setup.py install --root="$pkgdir" --optimize=1
+    cd "$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }

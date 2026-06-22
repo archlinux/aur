@@ -1,18 +1,29 @@
 pkgbase = python-luigi
-	pkgdesc = Workflow mgmgt + task scheduling + dependency resolution
-	pkgver = 2.8.13
+	pkgdesc = Workflow management, task scheduling, and dependency resolution
+	pkgver = 3.8.1
 	pkgrel = 1
 	url = https://github.com/spotify/luigi
 	arch = any
-	license = Apache
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
-	makedepends = git
+	makedepends = python-hatchling
+	makedepends = python-hatch-fancy-pypi-readme
 	depends = python
-	depends = python-daemon
+	depends = python-dateutil
 	depends = python-tornado
-	source = git+https://github.com/spotify/luigi.git#tag=2.8.13
-	md5sums = SKIP
-	sha256sums = SKIP
+	depends = python-daemon
+	depends = python-tenacity
+	depends = python-typing_extensions
+	depends = python-psutil
+	depends = python-prometheus_client
+	depends = python-mechanize
+	depends = python-requests
+	depends = python-pygments
+	depends = python-jsonschema
+	source = luigi-3.8.1.tar.gz::https://github.com/spotify/luigi/archive/refs/tags/v3.8.1.tar.gz
+	sha256sums = 6d3bef9b59a3320565bb2eb9c44f9f9d049cdaab567fc297a6a901ff4851f3d8
 
 pkgname = python-luigi
-
