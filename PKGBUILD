@@ -4,11 +4,11 @@
 # Maintainer: Zhou Zhiqiang <aur@strrl.dev>
 # Contributor: Feishu Linux Team <contact@feishu.cn>
 pkgname=feishu-bin
-pkgver=7.66.10
+pkgver=7.66.11
 #_pkgrel=1
 _pkgtyp=stable
-_pkghash_x64=289abaac
-_pkghash_arm64=382a3d72
+_pkghash_x64=6e3610b5
+_pkghash_arm64=36c6e858
 pkgrel=1
 pkgdesc="Linux client of Feishu (Lark) from Bytedance."
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://sf3-cn.feishucdn.com/obj/ee-appcenter/${_pkghash_x64}/Feishu-linux_x64-${pkgver}.deb")
 source_aarch64=("https://sf3-cn.feishucdn.com/obj/ee-appcenter/${_pkghash_arm64}/Feishu-linux_arm64-${pkgver}.deb")
-sha256sums_x86_64=('ebc58a7d3e1d6e540e403779d67f749f20333b1ae4044491d29a9b8dbc2b3aca')
-sha256sums_aarch64=('05e87475827de81bb02704cc3c5eb51fa47dbbdf49720e29cc4175ac53a3f560')
+sha256sums_x86_64=('dc4f0d2c2db3cc83bb9758cf71e3e131f09a7e08eec963b378d660c534ccfd31')
+sha256sums_aarch64=('da73070ae272d9d622a24c11ddd1409084de0601fc2bda6827d82424da78d9a4')
 
 package(){
   # Extract package data
