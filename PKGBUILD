@@ -218,14 +218,15 @@ ac_add_options --with-system-zlib
 ac_add_options --with-system-webp
 ac_add_options --with-system-libevent
 ac_add_options --with-system-libvpx
+ac_add_options --with-system-libdrm
 
-# Features
-# keep alsa option in here until merged upstream
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
 ac_add_options --enable-pulseaudio
+ac_add_options --enable-audio-backends=alsa,jack,pulseaudio
 
 # wasi
+ac_add_options --enable-wasm-simd
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
 # options for ci / weaker build systems
