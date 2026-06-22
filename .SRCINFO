@@ -1,6 +1,6 @@
 pkgbase = gns3-gui
 	pkgdesc = GNS3 network simulator. Graphical user interface package.
-	pkgver = 3.1.0a2
+	pkgver = 3.1.0a3
 	pkgrel = 1
 	url = https://github.com/GNS3/gns3-gui
 	arch = any
@@ -22,11 +22,11 @@ pkgbase = gns3-gui
 	optdepends = python-sentry_sdk: Python SDK for Sentry.io
 	optdepends = xterm: Default terminal emulator for CLI management of virtual instances
 	optdepends = wireshark-qt: Live packet capture
-	source = gns3-gui-3.1.0a2.tar.gz::https://github.com/GNS3/gns3-gui/archive/v3.1.0a2.tar.gz
+	source = gns3-gui-3.1.0a3.tar.gz::https://github.com/GNS3/gns3-gui/archive/v3.1.0a3.tar.gz
 	source = gns3.desktop
 	source = fix_requirements_for_Arch.patch
-	sha256sums = b5c139f6c5e9450c2afc27c105ecf50430a48381337efd80275d10aa448574cd
+	sha256sums = bb187178b21e9c2b6c4e2e4fcf3139e4a445e75263526a47cffeffe5283740c2
 	sha256sums = 51e6db5b47e6af3d008d85e8c597755369fafb75ddb2af9e79a441f943f4c166
-	sha256sums = 5a3e8838ced932f14c68d5656c48738556907603652ade4480a44a0617f1351d
+	sha256sums = d628916b0ec8a528abe9ad1379432dec8497b8d4686f90ec941dc2ccf8b6978b
 
 pkgname = gns3-gui

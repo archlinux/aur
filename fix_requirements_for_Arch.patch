@@ -1,5 +1,5 @@
---- a/gns3-gui-3.1.0a2/requirements.txt	2026-05-12 18:34:05.000000000 +0200
-+++ b/gns3-gui-3.1.0a2/requirements.txt	2026-05-13 19:06:35.187452869 +0200
+--- a/gns3-gui-3.1.0a3/requirements.txt	2026-06-06 23:19:24.000000000 +0200
++++ b/gns3-gui-3.1.0a3/requirements.txt	2026-06-22 14:11:00.985143955 +0200
 @@ -1,7 +1,6 @@
 -jsonschema==4.25.1; python_version == '3.9'  # version 4.25.1 is the last to support Python 3.9
 -jsonschema>=4.26.0,<4.27; python_version >= '3.10'
@@ -8,7 +8,8 @@
 +sentry-sdk>=2.59.0
  psutil>=7.2.2
  distro>=1.9.0
- truststore>=0.10.4; python_version >= '3.10'
+-truststore>=0.10.4; python_version >= '3.10'
 -QDarkStyle==3.2.3
 \ No newline at end of file
++truststore>=0.10.4
 +QDarkStyle>=3.2.3
