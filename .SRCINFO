@@ -1,0 +1,24 @@
+pkgbase = komi-store-bin
+	pkgdesc = A free, open-source app store for GitHub releases — browse, discover, and install apps with one click. Powered by Kotlin and Compose Multiplatform for Android & Desktop.(Prebuilt version)
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://www.github-store.org/
+	arch = x86_64
+	license = Apache-2.0
+	depends = alsa-lib
+	depends = java-runtime>=21
+	depends = libxrender
+	depends = libx11
+	depends = libxext
+	depends = libglvnd
+	depends = libxi
+	depends = libxtst
+	depends = fontconfig
+	provides = komi-store=1.9.1
+	conflicts = komi-store
+	source = komi-store-1.9.1.rpm::https://github.com/kurikomi-labs/komi-store/releases/download/v1.9.1/komi-store-1.9.1-1-x86_64.pkg.tar.zst
+	source = komi-store.sh
+	sha256sums = d46a1b8275fcde65d7954476557fbcb2b1c036c50d288857f00ee83a610713a6
+	sha256sums = b76d13cfeadef3a08745465c31ad8047d0039a1759d56af45953c8e507d34365
+
+pkgname = komi-store-bin
