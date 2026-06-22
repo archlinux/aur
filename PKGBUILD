@@ -13,7 +13,7 @@ depends=(
 )
 conflicts=('oneclient-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Polyfrost/OneLauncher/archive/refs/tags/oneclient-${pkgver}.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('3ceb00fedab4400d8bee0c5157461bd1cd59f9d35de599f77be96d4706daf27d')
 options=('!lto')
 
 prepare() {
