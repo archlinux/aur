@@ -1,0 +1,24 @@
+pkgbase = orca-ide-bin
+	pkgdesc = ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription. Available on desktop and mobile.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.4.90
+	pkgrel = 1
+	url = https://onorca.dev/
+	arch = x86_64
+	license = MIT
+	depends = electron42
+	depends = nodejs
+	depends = python
+	depends = python-gobject
+	depends = github-cli
+	depends = npm
+	provides = orca-ide=1.4.90
+	conflicts = orca-ide
+	options = !emptydirs
+	source = orca-ide-1.4.90.rpm::https://github.com/stablyai/orca/releases/download/v1.4.90/orca-ide-1.4.90.x86_64.rpm
+	source = LICENSE-1.4.90::https://raw.githubusercontent.com/stablyai/orca/v1.4.90/LICENSE
+	source = orca-ide.sh
+	sha256sums = 3e8634a4fabd8d909b1130c3d683aeede57fd40039c102421118da41253168f8
+	sha256sums = ff1b611f80580d49f4b97e93a97b24eb050b0671b26b8afe16341fab699112f3
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+
+pkgname = orca-ide-bin
