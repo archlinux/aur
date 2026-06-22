@@ -1,6 +1,6 @@
 pkgbase = somewm
 	pkgdesc = AwesomeWM ported to Wayland - 100% Lua API compatible
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/trip-zip/somewm
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = somewm
 	optdepends = xorg-xwayland: X11 application support
 	provides = somewm
 	conflicts = somewm-git
-	source = somewm-1.4.1.tar.gz::https://github.com/trip-zip/somewm/archive/refs/tags/v1.4.1.tar.gz
-	sha256sums = a9cec46c38184b5141bc7bc6f72838f3ae0428bcaec7ee558839f08e518d0369
+	source = somewm-1.4.2.tar.gz::https://github.com/trip-zip/somewm/archive/refs/tags/v1.4.2.tar.gz
+	sha256sums = 799bd0fd01f68899fbeb28d83d9dba6633f5e6e33767748d9c10e8e1354adb5a
 
 pkgname = somewm
