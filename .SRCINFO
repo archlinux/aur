@@ -1,6 +1,6 @@
 pkgbase = n2-git
 	pkgdesc = n2 ("into"), a ninja compatible build system
-	pkgver = 0.1.0.r533.9c83053
+	pkgver = 0.1.0.r557.b1fead5
 	pkgrel = 1
 	url = https://github.com/evmar/n2
 	arch = x86_64
@@ -14,8 +14,9 @@ pkgbase = n2-git
 	depends = gcc-libs
 	depends = glibc
 	provides = n2
+	provides = ninja
 	conflicts = n2
-	options = !lto
+	conflicts = ninja
 	source = n2::git+https://github.com/evmar/n2.git
 	sha256sums = SKIP
 
