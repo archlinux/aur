@@ -1,5 +1,5 @@
 pkgname=lindora
-pkgver=1.3
+pkgver=1.4
 pkgrel=0
 pkgdesc="An unofficial site-specific browser wrapper for the Pandora web service."
 arch=('x86_64')
