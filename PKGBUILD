@@ -3,8 +3,8 @@
 # Contributor: Asuka Minato
 _appname=teams-for-linux
 pkgname="${_appname}-electron-bin"
-pkgver=2.11.1
-_electronversion=41
+pkgver=2.12.0
+_electronversion=42
 pkgrel=1
 pkgdesc="Unofficial Microsoft Teams for Linux client.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -12,7 +12,8 @@ arch=(
 	'armv7h'
 	'x86_64'
 )
-url="https://github.com/IsmaelMartinez/teams-for-linux"
+url="https://ismaelmartinez.github.io/teams-for-linux/"
+_ghurl="https://github.com/IsmaelMartinez/teams-for-linux"
 license=('GPL-3.0-or-later')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=(
@@ -26,16 +27,19 @@ depends=(
     "electron${_electronversion}"
 )
 source=("${pkgname%-bin}.sh")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.aarch64.rpm")
-source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.armv7l.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.aarch64.rpm")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.armv7l.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}.x86_64.rpm")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('7a4b3ef137166dc7e6e33c49d6da5e01b520ef7bc908a1c7b06d9810fb8f8aad')
-sha256sums_armv7h=('f012624484554281c58e0b1ffd1b896bbc61123da2cbc69ae70cfbd264e7f2ca')
-sha256sums_x86_64=('0b6480eb37f64dedc28462bafccd74f3c5ebf52204cc53ff5a19ed1a8f943a8e')
+sha256sums_aarch64=('4108ff28b78b6720048f55ca6d2384f8d2cf07446c1b468df0843ea68d1badc4')
+sha256sums_armv7h=('356fff3c343e59d6f3d7bcda118a5748ed5dcfb1ff99826670c01c1447f69d3c')
+sha256sums_x86_64=('4c5cd0c3e381d9c00714e6990993e3b54a7f5f99c64490ea20196e892710c096')
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
 _check_electron_version() {
     echo "Verifying Electron version..."
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _app_dir=$(_get_app_dir)
     local _main_exe=""
     if [[ -n "${_app_dir}" ]]; then
         _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
@@ -69,7 +73,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
