@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A simple CLI / TUI tool to display (or save) man pages as PDF files"
 
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,9 +28,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}")
-sha256sums=('c1f1ed8698eb296f9e3ec7ca2e65ea1c671fb4370c21f32c8ac7d29823515eea'
+sha256sums=('2f81fb0bf2e24128b3dbcc53a16fbe2606aaa178b06cb1693cba81ba5d915c69'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('acb2667b9171e075c0f9e3cb569e6e1cf5c5d59d53feba0ef233ac7906d7240c')
+sha256sums_x86_64=('cd32bab86d4cf5926ef2642e84ac76dd172e6bfdf72e40f0b7934a832bbf7b7d')
 
 
 package() {
