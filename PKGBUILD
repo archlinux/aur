@@ -2,7 +2,7 @@
 
 pkgname=hermes-agent-desktop-bin
 _pkgname=hermes-desktop
-pkgver=0.6.32
+pkgver=0.6.35
 pkgrel=1
 pkgdesc='Desktop companion for Hermes Agent'
 arch=('x86_64')
@@ -34,7 +34,7 @@ options=('!strip')
 source=("${_pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/fathah/hermes-desktop/v${pkgver}/LICENSE")
 source_x86_64=("${_pkgname}_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 sha256sums=('85d12b0f8894e7095f904a9a89fcfaea1b0d037cbfb4a12aba81daa87bcdbcd4')
-sha256sums_x86_64=('27d0a547ccfca3a8c795688ccd0737a3bab5574dd1c51f8430477b7423d87790')
+sha256sums_x86_64=('e5583faad319a03b0cd8ff9e7879587eb1f90078a8510f1112daedc84ce5a3d4')
 
 package() {
   bsdtar -xOf "${srcdir}/${_pkgname}_${pkgver}_amd64.deb" data.tar.xz |
