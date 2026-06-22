@@ -1,0 +1,1918 @@
+#!/usr/bin/env python3
+"""
+ytm — CLI YouTube Music Player
+
+Search YouTube, queue and play audio through mpv.
+All operations are non-interactive shell commands.
+
+Usage:
+   ytm tui                  Launch interactive TUI (text user interface)
+   ytm search <query>       Search YouTube and print numbered results
+   ytm play [n|url|id]      Play search result #n (default 1), or a URL/ID
+   ytm mpv [n|url|id]       Open video in mpv window for full HD
+   ytm add <n> [n ...]      Add search result(s) #n to the queue
+  ytm add-id <url|id>      Add a specific video by URL/ID to the queue
+  ytm remove <n>           Remove item #n from the queue
+  ytm next                 Skip to next track in queue
+  ytm prev                 Previous track
+  ytm stop                 Stop playback and clear queue
+  ytm pause                Toggle play/pause
+  ytm queue                Show current queue and now-playing
+  ytm clear                Clear the queue
+  ytm volume [0-100]       Get or set volume
+  ytm loop                 Toggle queue looping
+  ytm status               Show now-playing and player state
+  ytm help                 Show this help
+  ytm <query>              Shorthand: search + interactive pick (fzf)
+
+Examples:
+  ytm tui
+  ytm search akon
+  ytm play 2
+  ytm add 1 2 3
+  ytm remove 2
+  ytm add-id dQw4w9WgXcQ
+  ytm next
+"""
+
+import json
+import os
+import shutil
+import socket
+import subprocess
+import sys
+import textwrap
+import time
+import urllib.request
+from pathlib import Path
+
+# ---------------------------------------------------------------------------
+# Constants
+# ---------------------------------------------------------------------------
+
+CACHE_DIR = Path.home() / ".cache" / "ytm"
+STATE_FILE = CACHE_DIR / "state.json"
+MPV_SOCKET = "/tmp/ytm-mpv-socket"
+
+YT_DLP = shutil.which("yt-dlp") or "yt-dlp"
+MPV = shutil.which("mpv") or "mpv"
+FZF = shutil.which("fzf")
+
+DEFAULT_STATE = {
+    "queue": [],
+    "current_index": -1,
+    "last_search": [],
+    "volume": 70,
+    "loop": False,
+}
+
+
+# ---------------------------------------------------------------------------
+# State
+# ---------------------------------------------------------------------------
+
+# ── ANSI 16-color palette for thumbnail rendering ──
+_ANSI_RGB = [
+    (0x00, 0x00, 0x00),  # 0 black
+    (0xAA, 0x00, 0x00),  # 1 red
+    (0x00, 0xAA, 0x00),  # 2 green
+    (0xAA, 0x55, 0x00),  # 3 brown/yellow
+    (0x00, 0x00, 0xAA),  # 4 blue
+    (0xAA, 0x00, 0xAA),  # 5 magenta
+    (0x00, 0xAA, 0xAA),  # 6 cyan
+    (0xAA, 0xAA, 0xAA),  # 7 light gray
+    (0x55, 0x55, 0x55),  # 8 dark gray
+    (0xFF, 0x55, 0x55),  # 9 bright red
+    (0x55, 0xFF, 0x55),  # 10 bright green
+    (0xFF, 0xFF, 0x55),  # 11 bright yellow
+    (0x55, 0x55, 0xFF),  # 12 bright blue
+    (0xFF, 0x55, 0xFF),  # 13 bright magenta
+    (0x55, 0xFF, 0xFF),  # 14 bright cyan
+    (0xFF, 0xFF, 0xFF),  # 15 bright white
+]
+
+
+def _rgb_to_ansi(r: int, g: int, b: int) -> int:
+    """Map (r,g,b) to the nearest ANSI 16-color index."""
+    best = 0
+    best_dist = float("inf")
+    for i, (cr, cg, cb) in enumerate(_ANSI_RGB):
+        dr = r - cr
+        dg = g - cg
+        db = b - cb
+        dist = dr * dr + dg * dg + db * db
+        if dist < best_dist:
+            best = i
+            best_dist = dist
+    return best
+
+
+def _get_thumbnail(video_id: str) -> str | None:
+    """Download YouTube thumbnail to cache. Returns local path or None."""
+    thumb_dir = CACHE_DIR / "thumbs"
+    thumb_dir.mkdir(parents=True, exist_ok=True)
+    thumb_path = thumb_dir / f"{video_id}.jpg"
+    if thumb_path.exists():
+        return str(thumb_path)
+    url = f"https://img.youtube.com/vi/{video_id}/hqdefault.jpg"
+    try:
+        urllib.request.urlretrieve(url, thumb_path)
+        return str(thumb_path)
+    except Exception:
+        return None
+
+
+def _ensure_cache() -> None:
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def load_state() -> dict:
+    _ensure_cache()
+    if STATE_FILE.exists():
+        try:
+            return {**DEFAULT_STATE, **json.loads(STATE_FILE.read_text())}
+        except (json.JSONDecodeError, TypeError):
+            pass
+    return dict(DEFAULT_STATE)
+
+
+def save_state(state: dict) -> None:
+    _ensure_cache()
+    STATE_FILE.write_text(json.dumps(state, indent=2, default=str))
+
+
+# ---------------------------------------------------------------------------
+# YouTube helpers
+# ---------------------------------------------------------------------------
+
+def search_yt(query: str, limit: int = 15) -> list[dict]:
+    """Search YouTube. Returns list of {id, title, duration, channel, url}."""
+    cmd = [
+        YT_DLP, "--flat-playlist", "--dump-single-json",
+        "--no-playlist",
+        "--default-search", "ytsearch",
+        "-f", "bestaudio/best",
+        f"ytsearch{limit}:{query}",
+    ]
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+        if r.returncode != 0:
+            _eprint(f"Search error: {r.stderr.strip()}")
+            return []
+        data = json.loads(r.stdout)
+        entries = data if isinstance(data, list) else data.get("entries", [])
+        return [
+            {
+                "id": e["id"],
+                "title": e.get("title", "Unknown"),
+                "duration": e.get("duration") or 0,
+                "channel": e.get("channel") or e.get("uploader", "Unknown"),
+                "url": f"https://youtube.com/watch?v={e['id']}",
+            }
+            for e in entries if e.get("id")
+        ]
+    except subprocess.TimeoutExpired:
+        _eprint("Search timed out.")
+    except (json.JSONDecodeError, KeyError) as exc:
+        _eprint(f"Search parse error: {exc}")
+    return []
+
+
+def get_metadata(video_id: str) -> dict | None:
+    """Fetch full metadata for a video URL or ID."""
+    url = video_id if video_id.startswith("http") else f"https://youtube.com/watch?v={video_id}"
+    cmd = [YT_DLP, "--dump-single-json", "--no-playlist", url]
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+        if r.returncode != 0:
+            return None
+        d = json.loads(r.stdout)
+        return {
+            "id": d.get("id", ""),
+            "title": d.get("title", "Unknown"),
+            "duration": d.get("duration") or 0,
+            "channel": d.get("channel") or d.get("uploader", "Unknown"),
+            "url": d.get("webpage_url", url),
+        }
+    except (subprocess.TimeoutExpired, json.JSONDecodeError):
+        return None
+
+
+def get_audio_url(video_url: str) -> str | None:
+    """Extract the best audio stream URL."""
+    cmd = [YT_DLP, "-f", "bestaudio/best", "--get-url", video_url]
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+        if r.returncode == 0:
+            return r.stdout.strip().split("\n")[0]
+    except subprocess.TimeoutExpired:
+        pass
+    return None
+
+
+def get_related(video_id: str, limit: int = 20) -> list[dict]:
+    """Fetch related/recommended videos via YouTube Mix radio playlist.
+
+    Returns up to *limit* items (excluding the seed video).
+    Items have the same {id, title, duration, channel, url} format as search results.
+    Falls back to an empty list on any error.
+    """
+    mix_url = f"https://www.youtube.com/watch?v={video_id}&list=RD{video_id}"
+    cmd = [
+        YT_DLP, "--flat-playlist", "--dump-single-json",
+        "--no-download", "--no-warnings", "--quiet",
+        mix_url,
+    ]
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+        if r.returncode != 0:
+            return []
+        data = json.loads(r.stdout)
+        entries = data if isinstance(data, list) else data.get("entries", [])
+        related = []
+        for e in entries:
+            eid = e.get("id")
+            if not eid or eid == video_id:
+                continue  # skip the seed video
+            related.append({
+                "id": eid,
+                "title": e.get("title", "Unknown"),
+                "duration": e.get("duration") or 0,
+                "channel": e.get("channel") or e.get("uploader", "Unknown"),
+                "url": f"https://youtube.com/watch?v={eid}",
+            })
+            if len(related) >= limit:
+                break
+        return related
+    except (subprocess.TimeoutExpired, json.JSONDecodeError, KeyError):
+        return []
+
+
+# ---------------------------------------------------------------------------
+# Formatting
+# ---------------------------------------------------------------------------
+
+def fmt_dur(seconds: int | float) -> str:
+    if not seconds:
+        return "--:--"
+    m, s = divmod(int(seconds), 60)
+    h, m = divmod(m, 60)
+    return f"{h}:{m:02d}:{s:02d}" if h else f"{m}:{s:02d}"
+
+
+def fmt_item(item: dict) -> str:
+    dur = fmt_dur(item.get("duration", 0))
+    return f"{item['title']}  [{dur}]  ({item['channel']})"
+
+
+# ---------------------------------------------------------------------------
+# MPV IPC
+# ---------------------------------------------------------------------------
+
+def _mpv_send(cmd: dict) -> dict | None:
+    """Send JSON command to mpv via Unix socket."""
+    try:
+        s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+        s.settimeout(3)
+        s.connect(MPV_SOCKET)
+        s.sendall(json.dumps(cmd).encode() + b"\n")
+        resp = b""
+        while True:
+            chunk = s.recv(4096)
+            if not chunk:
+                break
+            resp += chunk
+            if b"\n" in chunk:
+                break
+        s.close()
+        if resp:
+            return json.loads(resp.decode().strip())
+    except (OSError, json.JSONDecodeError):
+        return None
+    return None
+
+
+def mpv_running() -> bool:
+    """Check if mpv is actually running by testing the IPC socket."""
+    if not os.path.exists(MPV_SOCKET):
+        return False
+    resp = _mpv_send({"command": ["get_property", "pid"]})
+    return resp is not None and resp.get("error") in (None, "success")
+
+
+def _wait_for_socket(timeout: float = 4.0) -> bool:
+    """Wait for the mpv IPC socket file to appear (mpv is starting)."""
+    for _ in range(int(timeout / 0.25)):
+        if os.path.exists(MPV_SOCKET):
+            return True
+        time.sleep(0.25)
+    return False
+
+
+def start_mpv(url: str, volume: int = 70, paused: bool = False) -> bool:
+    """Start or reload mpv for playback."""
+    if mpv_running():
+        resp = _mpv_send({"command": ["loadfile", url, "replace"]})
+        if resp and resp.get("error") in (None, "success"):
+            _mpv_send({"command": ["set_property", "volume", volume]})
+            return True
+        # Stale socket — quit mpv and start fresh
+        _mpv_send({"command": ["quit"]})
+        time.sleep(0.3)
+        try:
+            os.unlink(MPV_SOCKET)
+        except OSError:
+            pass
+
+    # Clean any leftover socket before fresh start
+    try:
+        os.unlink(MPV_SOCKET)
+    except OSError:
+        pass
+
+    cmd = [
+        MPV,
+        "--no-video",
+        f"--volume={volume}",
+        f"--input-ipc-server={MPV_SOCKET}",
+        "--no-terminal",
+        url,
+    ]
+    if paused:
+        cmd.insert(1, "--pause")
+
+    subprocess.Popen(
+        cmd,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        preexec_fn=os.setsid,
+    )
+
+    if not _wait_for_socket():
+        _eprint("mpv failed to start (IPC socket not ready).")
+        return False
+    return True
+
+
+def stop_mpv() -> None:
+    if mpv_running():
+        _mpv_send({"command": ["quit"]})
+    try:
+        os.unlink(MPV_SOCKET)
+    except OSError:
+        pass
+
+
+def start_mpv_video(url: str) -> None:
+    """Open a YouTube video in mpv window for full HD playback.
+
+    Uses mpv's built-in yt-dlp support to resolve and play the best
+    quality video stream. Starts at 60% of screen size with a
+    decorated, freely resizable window.
+    """
+    subprocess.Popen(
+        [MPV, "--no-terminal", "--autofit=60%", "--border", "--quiet", url],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        preexec_fn=os.setsid,
+    )
+
+
+def mpv_get(prop: str):
+    resp = _mpv_send({"command": ["get_property", prop]})
+    if resp and "data" in resp:
+        return resp["data"]
+    return None
+
+
+# ---------------------------------------------------------------------------
+# Playback
+# ---------------------------------------------------------------------------
+
+def _play(item: dict, state: dict) -> bool:
+    """Resolve audio URL and start playing the given item."""
+    print(f"▶  {item['title']}")
+    url = get_audio_url(item["url"])
+    if not url:
+        _eprint("Could not extract audio stream.")
+        return False
+    if start_mpv(url, volume=state.get("volume", 70)):
+        state["current"] = item
+        state["playing"] = True
+        return True
+    return False
+
+
+# ---------------------------------------------------------------------------
+# Commands
+# ---------------------------------------------------------------------------
+
+def cmd_search(query: str) -> None:
+    """Search YouTube, print numbered results, save to state."""
+    results = search_yt(query)
+    if not results:
+        print("No results found.")
+        return
+
+    state = load_state()
+    state["last_search"] = results
+    save_state(state)
+
+    for i, r in enumerate(results, 1):
+        print(f"  {i:2d}. {fmt_item(r)}")
+
+
+def cmd_play(n_or_url: str | None = None) -> None:
+    """
+    Play an item by index from last search, or by URL/ID.
+    Default: play result #1 from last search.
+    """
+    state = load_state()
+
+    # If argument looks like a URL or video ID (11 chars alphanumeric)
+    if n_or_url and (n_or_url.startswith("http") or
+                     (len(n_or_url) in (11, 34) and n_or_url.replace("_", "").isalnum())):
+        meta = get_metadata(n_or_url)
+        if not meta:
+            _eprint("Could not fetch video metadata.")
+            return
+        state["queue"] = []
+        state["current_index"] = -1
+        _play(meta, state)
+        save_state(state)
+        return
+
+    # Otherwise play by index from last search
+    try:
+        n = int(n_or_url) if n_or_url else 1
+    except ValueError:
+        meta = get_metadata(n_or_url)
+        if meta:
+            state["queue"] = []
+            state["current_index"] = -1
+            _play(meta, state)
+            save_state(state)
+            return
+        _eprint(f"Invalid input: {n_or_url}")
+        return
+
+    results = state.get("last_search", [])
+    if not results:
+        _eprint("No search results. Run 'ytm search <query>' first.")
+        return
+    if n < 1 or n > len(results):
+        _eprint(f"Invalid index {n}. Results are 1-{len(results)}.")
+        return
+
+    item = results[n - 1]
+    state["queue"] = []
+    state["current_index"] = -1
+    _play(item, state)
+    save_state(state)
+
+
+def cmd_add(n: int) -> None:
+    """Add search result #n to the queue."""
+    state = load_state()
+    results = state.get("last_search", [])
+    if not results:
+        _eprint("No search results. Run 'ytm search <query>' first.")
+        return
+    if n < 1 or n > len(results):
+        _eprint(f"Invalid index {n}. Results are 1-{len(results)}.")
+        return
+
+    item = results[n - 1]
+    state["queue"].append(item)
+    print(f"➕  {item['title']}")
+
+    if not mpv_running() and state["current_index"] < 0:
+        state["current_index"] = len(state["queue"]) - 1
+        _play(item, state)
+
+    save_state(state)
+
+
+def cmd_add_id(vid: str) -> None:
+    """Add a specific video by URL or ID to the queue."""
+    state = load_state()
+    meta = get_metadata(vid)
+    if not meta:
+        _eprint("Could not fetch video metadata.")
+        return
+    state["queue"].append(meta)
+    print(f"➕  {meta['title']}")
+
+    if not mpv_running() and state["current_index"] < 0:
+        state["current_index"] = len(state["queue"]) - 1
+        _play(meta, state)
+
+    save_state(state)
+
+
+def cmd_auto(n_or_url: str | None = None) -> None:
+    """Play a song and auto-queue related/recommended songs."""
+    state = load_state()
+
+    # Resolve input to a video item (same resolution logic as cmd_play)
+    item: dict | None = None
+
+    # Case 1: URL or video ID (11 or 34 chars alphanumeric)
+    if n_or_url and (
+        n_or_url.startswith("http")
+        or (len(n_or_url) in (11, 34) and n_or_url.replace("_", "").isalnum())
+    ):
+        meta = get_metadata(n_or_url)
+        if meta:
+            item = meta
+
+    # Case 2: numeric index into last_search
+    if item is None:
+        try:
+            n = int(n_or_url) if n_or_url else 1
+        except ValueError:
+            meta = get_metadata(n_or_url)
+            if meta:
+                item = meta
+        else:
+            results = state.get("last_search", [])
+            if not results:
+                _eprint("No search results. Run 'ytm search <query>' first.")
+                return
+            if n < 1 or n > len(results):
+                _eprint(f"Invalid index {n}. Results are 1-{len(results)}.")
+                return
+            item = results[n - 1]
+
+    if item is None:
+        _eprint("Could not resolve video.")
+        return
+
+    video_id = item["id"]
+
+    # Play the seed song
+    state["queue"] = [item]
+    state["current_index"] = 0
+    ok = _play(item, state)
+    if not ok:
+        return
+
+    # Fetch related songs in background
+    related = get_related(video_id)
+    if related:
+        state["queue"].extend(related)
+        print(f"📻  Auto-queued {len(related)} related song{'s' if len(related) != 1 else ''}")
+
+    save_state(state)
+
+
+def cmd_next() -> None:
+    state = load_state()
+    if not state["queue"]:
+        print("Queue is empty.")
+        return
+    nxt = state["current_index"] + 1
+    if nxt < len(state["queue"]):
+        state["current_index"] = nxt
+    elif state.get("loop", False):
+        state["current_index"] = 0
+    else:
+        print("End of queue.")
+        state.pop("current", None)
+        state["playing"] = False
+        save_state(state)
+        return
+
+    _play(state["queue"][state["current_index"]], state)
+    save_state(state)
+
+
+def cmd_prev() -> None:
+    state = load_state()
+    if not state["queue"] or state["current_index"] <= 0:
+        print("No previous track.")
+        return
+    state["current_index"] -= 1
+    _play(state["queue"][state["current_index"]], state)
+    save_state(state)
+
+
+def cmd_stop() -> None:
+    stop_mpv()
+    state = load_state()
+    state["playing"] = False
+    state["queue"] = []
+    state["current_index"] = -1
+    state.pop("current", None)
+    save_state(state)
+    print("⏹  Stopped. Queue cleared.")
+
+
+def cmd_pause() -> None:
+    if not mpv_running():
+        print("Not playing.")
+        return
+    resp = _mpv_send({"command": ["cycle", "pause"]})
+    if resp and resp.get("error") in (None, "success"):
+        paused = mpv_get("pause")
+        print("⏸  Paused" if paused else "▶  Resumed")
+    else:
+        _eprint("Could not communicate with mpv.")
+
+
+def cmd_volume(args: list[str]) -> None:
+    if not args:
+        vol = mpv_get("volume")
+        print(f"🔊  Volume: {vol}%" if vol is not None else "Not playing.")
+        return
+    try:
+        vol = max(0, min(100, int(args[0])))
+        _mpv_send({"command": ["set_property", "volume", vol]})
+        state = load_state()
+        state["volume"] = vol
+        save_state(state)
+        print(f"🔊  Volume: {vol}%")
+    except ValueError:
+        _eprint("Volume must be 0-100.")
+
+
+def cmd_queue() -> None:
+    state = load_state()
+    current = state.get("current")
+    if current:
+        print(f"▶  {current['title']}  [{fmt_dur(current.get('duration', 0))}]")
+    elif mpv_running():
+        meta = mpv_get("metadata")
+        if meta:
+            print(f"▶  {meta.get('title', 'Unknown')}")
+    else:
+        print("Not playing.")
+
+    if state["queue"]:
+        print(f"\nQueue ({len(state['queue'])} track{'' if len(state['queue']) == 1 else 's'}):")
+        for i, item in enumerate(state["queue"]):
+            dur = fmt_dur(item.get("duration", 0))
+            marker = "▸" if i == state["current_index"] else " "
+            print(f"  {marker}  {i + 1}. {item['title']}  [{dur}]")
+
+    paused = mpv_get("pause")
+    vol = mpv_get("volume")
+    if paused is not None:
+        status = "⏸ Paused" if paused else "▶ Playing"
+        print(f"\n{status}  |  🔊 {vol}%  |  🔁 {'on' if state['loop'] else 'off'}")
+    else:
+        print(f"\n🔁  Loop: {'on' if state['loop'] else 'off'}")
+
+
+def cmd_clear() -> None:
+    state = load_state()
+    state["queue"] = []
+    state["current_index"] = -1
+    save_state(state)
+    print("🗑  Queue cleared.")
+
+
+def cmd_remove(n: int) -> None:
+    """Remove item #n (1-based) from the queue."""
+    state = load_state()
+    if not state["queue"]:
+        _eprint("Queue is empty.")
+        return
+    if n < 1 or n > len(state["queue"]):
+        _eprint(f"Invalid index {n}. Queue has {len(state['queue'])} items.")
+        return
+
+    idx = n - 1
+    removed = state["queue"].pop(idx)
+    print(f"✖  Removed: {removed['title']}")
+
+    # Adjust current_index if it pointed to or past the removed item
+    if state["current_index"] >= len(state["queue"]):
+        state["current_index"] = len(state["queue"]) - 1
+    elif idx < state["current_index"]:
+        state["current_index"] -= 1
+
+    # If we removed the currently playing item, stop and play next if available
+    if idx == state["current_index"] or (state.get("current") and
+       state["current"].get("id") == removed.get("id")):
+        if state["queue"] and state["current_index"] >= 0:
+            _play(state["queue"][state["current_index"]], state)
+        else:
+            stop_mpv()
+            state.pop("current", None)
+            state["playing"] = False
+            state["current_index"] = -1
+
+    save_state(state)
+
+
+def cmd_loop() -> None:
+    state = load_state()
+    state["loop"] = not state["loop"]
+    save_state(state)
+    print(f"🔁  Loop: {'on' if state['loop'] else 'off'}")
+
+
+def cmd_status() -> None:
+    state = load_state()
+    if not mpv_running():
+        print("No active playback.")
+        if state["queue"]:
+            print(f"Queue: {len(state['queue'])} track{'' if len(state['queue']) == 1 else 's'} waiting.")
+        return
+
+    paused = mpv_get("pause")
+    vol = mpv_get("volume")
+    time_pos = mpv_get("time-pos")
+    duration = mpv_get("duration")
+    path_meta = mpv_get("metadata")
+
+    current = state.get("current", {})
+    title = current.get("title", path_meta.get("title", "Unknown") if path_meta else "Unknown")
+    channel = current.get("channel", path_meta.get("artist", "") if path_meta else "")
+
+    print(f"🎵  {title}")
+    if channel:
+        print(f"    {channel}")
+    if time_pos is not None:
+        print(f"⏱  {fmt_dur(time_pos)} / {fmt_dur(duration)}")
+    print(f"🔊  Volume: {vol}%")
+    status_str = "⏸ Paused" if paused else "▶ Playing"
+    print(f"Status: {status_str}")
+    print(f"🔁  Loop: {'on' if state['loop'] else 'off'}")
+    if state["queue"]:
+        remaining = len(state["queue"]) - state["current_index"] - 1
+        print(f"📋  {remaining} track{'' if remaining == 1 else 's'} remaining")
+
+
+# ---------------------------------------------------------------------------
+# Terminal video playback (full-screen ANSI)
+# ---------------------------------------------------------------------------
+
+def _render_rgb24_to_ansi(buf: bytes, pw: int, ph: int,
+                         antialias: int = 1) -> list[str]:
+    """Render raw rgb24 frame to half-block ANSI strings (one per terminal row).
+
+    Each terminal cell is the upper half-block '▀' where foreground = top pixel,
+    background = bottom pixel, doubling vertical resolution. ANSI color codes
+    are coalesced (skipped when the same as the previous pixel) to reduce
+    terminal output size significantly.
+
+    When antialias > 1, the video is scaled to pw = term.columns * antialias
+    and each character cell averages antialias pixel columns for smooth
+    sub-pixel horizontal rendering.
+    """
+    stride = pw * 3
+    out_cols = pw // antialias
+    lines = []
+    for ty in range(ph // 2):
+        top_off = ty * 2 * stride
+        bot_off = (ty * 2 + 1) * stride
+        cells: list[str] = []
+        prev = ""
+        for tx in range(out_cols):
+            base = tx * antialias * 3
+            r1_sum = g1_sum = b1_sum = 0
+            r2_sum = g2_sum = b2_sum = 0
+            for sx in range(antialias):
+                o = base + sx * 3
+                r1_sum += buf[top_off + o]
+                g1_sum += buf[top_off + o + 1]
+                b1_sum += buf[top_off + o + 2]
+                r2_sum += buf[bot_off + o]
+                g2_sum += buf[bot_off + o + 1]
+                b2_sum += buf[bot_off + o + 2]
+            r1 = r1_sum // antialias
+            g1 = g1_sum // antialias
+            b1 = b1_sum // antialias
+            r2 = r2_sum // antialias
+            g2 = g2_sum // antialias
+            b2 = b2_sum // antialias
+            code = f"38;2;{r1};{g1};{b1};48;2;{r2};{g2};{b2}"
+            if code != prev:
+                cells.append(f"\033[{code}m")
+                prev = code
+            cells.append("▀")
+        cells.append("\033[0m")
+        lines.append("".join(cells))
+    return lines
+
+
+def _write_ansi_frame(lines: list[str], prev_lines: list[str] | None,
+                      term_h: int, elapsed: float, force: bool = False) -> list[str]:
+    """Write frame to terminal with line-level differencing.
+
+    Only rows that changed between frames are redrawn (via ANSI cursor
+    positioning), which dramatically reduces output data on near-static scenes.
+    Returns the current lines for use as prev_lines next frame.
+    """
+    mm, ss = divmod(int(elapsed), 60)
+    status = f"\033[{term_h};1H\033[K\033[2m[q] quit [Space] pause  {mm}:{ss:02d}\033[0m"
+
+    if force or prev_lines is None or len(prev_lines) != len(lines):
+        # Full redraw: clear screen, write all lines
+        out = ["\033[2J\033[H"]
+        for i, line in enumerate(lines):
+            out.append(line)
+            if i < len(lines) - 1:
+                out.append("\n")
+        out.append(status)
+        sys.stdout.write("".join(out))
+    else:
+        # Partial: only changed rows
+        parts: list[str] = []
+        for i, (line, old) in enumerate(zip(lines, prev_lines)):
+            if line != old:
+                parts.append(f"\033[{i + 1};1H{line}\033[0m\033[K")
+        if parts:
+            parts.append(status)
+            sys.stdout.write("".join(parts))
+    sys.stdout.flush()
+    return lines
+
+
+def _terminal_video(url: str) -> None:
+    """Watch a YouTube video in-terminal using 24-bit ANSI true color rendering.
+
+    Streams video via direct ffmpeg URL (no yt-dlp pipe), audio via ffplay URL.
+    Wall-clock sync keeps A/V aligned by dropping video frames when behind.
+    Frame differencing and ANSI color coalescing minimize terminal output.
+    No disk writes. Requires: ffmpeg, yt-dlp.
+    """
+    if not sys.stdin.isatty():
+        _eprint("A terminal with true color support is required for video mode.")
+        return
+
+    ffplay_bin = shutil.which("ffplay")
+    if not ffplay_bin:
+        _eprint("Missing dependency: ffplay (from ffmpeg). Install: pacman -S ffmpeg")
+        return
+    ytdlp = shutil.which("yt-dlp")
+    if not ytdlp:
+        _eprint("\nMissing dependency: yt-dlp. Install: pacman -S yt-dlp")
+        return
+    ffmpeg_bin = shutil.which("ffmpeg")
+    if not ffmpeg_bin:
+        _eprint("Missing dependency: ffmpeg. Install: pacman -S ffmpeg")
+        return
+
+    # No codec exclusion — ffmpeg handles AV1, VP9, H.264, etc.
+    format_spec = "bestvideo[height<=1080]+bestaudio/best[height<=1080]"
+
+    # --- Step 1: Resolve metadata + extract direct stream URLs ---
+    print("Resolving…", end="", flush=True)
+    try:
+        r = subprocess.run(
+            [ytdlp, "--no-warnings", "--no-playlist", "-j", "-f", format_spec, url],
+            capture_output=True, text=True, timeout=30,
+        )
+        if r.returncode != 0:
+            _eprint(f"\nFailed to resolve: {r.stderr.strip()}")
+            return
+        data = json.loads(r.stdout)
+    except subprocess.TimeoutExpired:
+        _eprint("\nTimed out resolving video.")
+        return
+    except json.JSONDecodeError:
+        _eprint("\nFailed to parse video info.")
+        return
+
+    width = data.get("width") or 1280
+    height = data.get("height") or 720
+    source_fps = data.get("fps", 30) or 30
+    target_fps = max(15, min(60, int(source_fps)))
+
+    # Extract direct stream URLs from requested_formats (separate v/a)
+    video_url: str | None = None
+    audio_url: str | None = None
+    requested = data.get("requested_formats")
+    if requested:
+        for fmt in requested:
+            furl = fmt.get("url")
+            if not furl:
+                continue
+            vcodec = fmt.get("vcodec", "none")
+            acodec = fmt.get("acodec", "none")
+            if vcodec not in ("none", None):
+                video_url = furl
+                width = fmt.get("width") or width
+                height = fmt.get("height") or height
+            if acodec not in ("none", None):
+                audio_url = furl
+    else:
+        # Single muxed stream
+        video_url = data.get("url")
+        audio_url = data.get("url")
+
+    if not video_url:
+        _eprint("\nNo playable video stream found.")
+        return
+
+    # --- Step 2: Terminal size for ffmpeg resize ---
+    term = shutil.get_terminal_size()
+    ANTIALIAS = 3                  # oversample 3x horizontally, average per cell
+    pw = term.columns * ANTIALIAS  # pixel width  (ANTIALIAS pixel cols per char cell)
+    ph = (term.lines - 1) * 2      # pixel height (2 pixel rows per cell, -1 status)
+    frame_size = pw * ph * 3       # raw rgb24
+
+    print(" streaming…", end="", flush=True)
+
+    # --- Step 3: Start video decoder (ffmpeg reads URL directly) ---
+    ffmpeg_proc = subprocess.Popen(
+        [ffmpeg_bin, "-loglevel", "quiet",
+         "-i", video_url,
+         "-vf", f"scale={pw}:{ph},fps={target_fps}",
+         "-f", "rawvideo", "-pix_fmt", "rgb24",
+         "-"],
+        stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
+    )
+
+    # --- Step 4: Start audio (ffplay reads audio URL directly) ---
+    audio_proc: subprocess.Popen | None = None
+    if audio_url:
+        audio_proc = subprocess.Popen(
+            [ffplay_bin, "-nodisp", "-autoexit", "-loglevel", "quiet",
+             "-i", audio_url],
+            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+        )
+
+    print(" rendering…")
+
+    # --- Step 5: Enter full-screen ANSI mode ---
+    sys.stdout.write("\033[?1049h\033[?25l")
+    sys.stdout.flush()
+
+    import termios
+    import tty
+    import select
+
+    fd = sys.stdin.fileno()
+    old_attr = termios.tcgetattr(fd)
+    try:
+        tty.setraw(fd)
+
+        paused = False
+        play_elapsed = 0.0          # wall-clock playback position (seconds)
+        last_clock = time.perf_counter()
+        frame_idx = 0
+        prev_lines: list[str] | None = None
+        last_buf: bytes | None = None
+
+        # Prime first frame
+        first = ffmpeg_proc.stdout.read(frame_size)
+        if first and len(first) == frame_size:
+            last_buf = first
+            frame_idx = 1
+            lines = _render_rgb24_to_ansi(first, pw, ph, antialias=ANTIALIAS)
+            prev_lines = _write_ansi_frame(lines, None, term.lines, 0.0, force=True)
+
+        while True:
+            now = time.perf_counter()
+            dt = now - last_clock
+            last_clock = now
+
+            # --- Non-blocking keyboard ---
+            if select.select([sys.stdin], [], [], 0)[0]:
+                ch = sys.stdin.read(1)
+                if ch == "q":
+                    break
+                elif ch == " ":
+                    paused = not paused
+                    if paused and audio_proc:
+                        # Kill audio (will restart from correct position on resume)
+                        try:
+                            audio_proc.terminate()
+                            audio_proc.wait(timeout=2)
+                        except (subprocess.TimeoutExpired, AttributeError):
+                            try:
+                                audio_proc.kill()
+                            except AttributeError:
+                                pass
+                    elif not paused and audio_url:
+                        # Restart audio at current wall-clock position
+                        audio_proc = subprocess.Popen(
+                            [ffplay_bin, "-nodisp", "-autoexit", "-loglevel", "quiet",
+                             "-ss", f"{play_elapsed:.1f}", audio_url],
+                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                        )
+                    # Render pause state immediately
+                    mm, ss = divmod(int(play_elapsed), 60)
+                    pause_indicator = " ⏸ paused" if paused else ""
+                    status = (f"\033[{term.lines};1H\033[K\033[2m"
+                              f"[q] quit [Space] resume{pause_indicator}"
+                              f"  {mm}:{ss:02d}\033[0m")
+                    sys.stdout.write(status)
+                    sys.stdout.flush()
+                    continue
+
+            if paused:
+                time.sleep(0.02)
+                continue
+
+            # --- Wall-clock sync: advance play position ---
+            play_elapsed += dt
+            target = play_elapsed * target_fps
+
+            # Read/discard frames until we reach the target frame index
+            latest: bytes | None = None
+            while frame_idx < target:
+                buf = ffmpeg_proc.stdout.read(frame_size)
+                if not buf or len(buf) < frame_size:
+                    break
+                frame_idx += 1
+                latest = buf
+
+            if latest is not None:
+                last_buf = latest
+                lines = _render_rgb24_to_ansi(latest, pw, ph, antialias=ANTIALIAS)
+                prev_lines = _write_ansi_frame(lines, prev_lines, term.lines, play_elapsed)
+            elif last_buf and frame_idx >= target:
+                # Stream ended — render last frame one more time then exit
+                lines = _render_rgb24_to_ansi(last_buf, pw, ph, antialias=ANTIALIAS)
+                _write_ansi_frame(lines, prev_lines, term.lines, play_elapsed)
+                time.sleep(0.5)
+                break
+
+            # --- Throttle: sleep if we're ahead of schedule ---
+            elapsed_tick = time.perf_counter() - now
+            sleep = max(0.0, (1.0 / target_fps) - elapsed_tick)
+            if sleep > 0:
+                time.sleep(sleep)
+
+    except (KeyboardInterrupt, BrokenPipeError):
+        pass
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old_attr)
+        sys.stdout.write("\033[?25h\033[?1049l")
+        sys.stdout.flush()
+
+        # Kill ffmpeg
+        if ffmpeg_proc.poll() is None:
+            ffmpeg_proc.terminate()
+            try:
+                ffmpeg_proc.wait(timeout=3)
+            except subprocess.TimeoutExpired:
+                ffmpeg_proc.kill()
+
+        # Kill audio
+        if audio_proc and audio_proc.poll() is None:
+            try:
+                audio_proc.terminate()
+                audio_proc.wait(timeout=3)
+            except subprocess.TimeoutExpired:
+                try:
+                    audio_proc.kill()
+                except AttributeError:
+                    pass
+
+
+def cmd_watch(n_or_url: str | None = None) -> None:
+    """Watch a YouTube video in-terminal as full-color ANSI art."""
+    state = load_state()
+
+    # Resolve input to a video URL
+    if n_or_url and (
+        n_or_url.startswith("http")
+        or (len(n_or_url) in (11, 34) and n_or_url.replace("_", "").isalnum())
+    ):
+        url = n_or_url if n_or_url.startswith("http") else f"https://youtube.com/watch?v={n_or_url}"
+        _terminal_video(url)
+        return
+
+    # Play by index from last search
+    try:
+        n = int(n_or_url) if n_or_url else 1
+    except ValueError:
+        _eprint(f"Invalid input: {n_or_url}")
+        return
+
+    results = state.get("last_search", [])
+    if not results:
+        _eprint("No search results. Run 'ytm search <query>' first.")
+        return
+    if n < 1 or n > len(results):
+        _eprint(f"Invalid index {n}. Results are 1-{len(results)}.")
+        return
+
+    item = results[n - 1]
+    url = item["url"]
+    _terminal_video(url)
+
+
+def cmd_mpv(n_or_url: str | None = None) -> None:
+    """Open a YouTube video in mpv window for full HD playback."""
+    # Resolve input to a video URL
+    if n_or_url and (
+        n_or_url.startswith("http")
+        or (len(n_or_url) in (11, 34) and n_or_url.replace("_", "").isalnum())
+    ):
+        url = n_or_url if n_or_url.startswith("http") else f"https://youtube.com/watch?v={n_or_url}"
+        start_mpv_video(url)
+        return
+
+    # Play by index from last search
+    try:
+        n = int(n_or_url) if n_or_url else 1
+    except ValueError:
+        _eprint(f"Invalid input: {n_or_url}")
+        return
+
+    state = load_state()
+    results = state.get("last_search", [])
+    if not results:
+        _eprint("No search results. Run 'ytm search <query>' first.")
+        return
+    if n < 1 or n > len(results):
+        _eprint(f"Invalid index {n}. Results are 1-{len(results)}.")
+        return
+
+    item = results[n - 1]
+    print(f"▶  Opening in mpv: {item['title']}")
+    start_mpv_video(item["url"])
+
+
+# ---------------------------------------------------------------------------
+# TUI (interactive curses mode)
+# ---------------------------------------------------------------------------
+
+def cmd_tui() -> None:
+    """Launch interactive TUI mode with live player display and command input."""
+    import curses
+    import io
+
+    # ── helpers ──────────────────────────────────────────────────────
+
+    def _run_cmd(cmd_str: str) -> str:
+        """Run a ytm command string inside TUI, capture its output."""
+        parts = cmd_str.strip().split()
+        if not parts:
+            return ""
+        c = parts[0]
+        a = parts[1:]
+        buf = io.StringIO()
+        old_out, old_err = sys.stdout, sys.stderr
+        sys.stdout = sys.stderr = buf
+
+        try:
+            _tui_dispatch(c, a)
+        except SystemExit:
+            pass
+        except Exception as e:
+            print(f"Error: {e}")
+        finally:
+            sys.stdout = old_out
+            sys.stderr = old_err
+        return buf.getvalue().rstrip()
+
+    def _tui_dispatch(cmd: str, args: list[str]):
+        """Minimal dispatch for commands that may be called inside TUI."""
+        match cmd:
+            case "search": cmd_search(" ".join(args))
+            case "play": cmd_play(args[0] if args else None)
+            case "auto": cmd_auto(args[0] if args else None)
+            case "add":
+                for a in args:
+                    try:
+                        cmd_add(int(a))
+                    except ValueError:
+                        pass
+            case "add-id": cmd_add_id(args[0]) if args else None
+            case "remove": cmd_remove(int(args[0])) if args else None
+            case "next": cmd_next()
+            case "prev": cmd_prev()
+            case "stop": cmd_stop()
+            case "pause": cmd_pause()
+            case "queue": cmd_queue()
+            case "clear": cmd_clear()
+            case "loop": cmd_loop()
+            case "volume": cmd_volume(args)
+            case "status": cmd_status()
+            case "watch": cmd_watch(args[0] if args else None)
+            case "mpv": cmd_mpv(args[0] if args else None)
+            case "help": cmd_help()
+            case _:
+                # Bare query → search
+                cmd_search(" ".join([cmd] + args))
+
+    def _draw_header(win, state):
+        """Draw now-playing header with cover art."""
+        h, w = win.getmaxyx()
+        playing = state.get("current", {})
+        title = playing.get("title", "")
+        if not title and mpv_running():
+            meta = mpv_get("metadata")
+            title = meta.get("title", "") if meta else ""
+
+        paused = mpv_get("pause")
+        vol = mpv_get("volume")
+        time_pos = mpv_get("time-pos")
+        duration = mpv_get("duration")
+        status_icon = "⏸" if paused else "▶"
+
+        # Cover art dimensions
+        cover_w = min(20, w // 4 - 1)
+        cover_h = 6
+        cover_x = 1
+        cover_y = 1
+
+        # Info column starts right of cover
+        info_x = cover_x + cover_w + 2
+
+        # Draw cover art
+        video_id = playing.get("id", "")
+        if video_id:
+            _draw_cover(win, video_id, cover_y, cover_x, cover_w, cover_h)
+
+        # Draw now-playing info next to the cover
+        line = cover_y
+        max_info = w - info_x - 1
+        if title:
+            win.addnstr(line, info_x, f" {status_icon}  {title}", max_info)
+            line += 1
+            parts = []
+            if time_pos is not None:
+                parts.append(f"{fmt_dur(time_pos)} / {fmt_dur(duration)}")
+            if vol is not None:
+                parts.append(f"🔊 {vol}%")
+            if parts:
+                win.addnstr(line, info_x, "  ".join(parts), max_info)
+                line += 1
+        else:
+            win.addnstr(line, info_x, "  No active playback.", max_info)
+            line += 1
+
+        # Loop indicator
+        if state.get("loop"):
+            win.addnstr(line, info_x, "  🔁 Loop on", max_info)
+            line += 1
+
+        # Return next line, ensuring header is tall enough for the cover
+        return max(line, cover_y + cover_h) + 1
+
+    def _draw_cover(win, video_id, y, x, cols, rows):
+        """Render YouTube thumbnail as half-block art at (y,x).
+
+        Each terminal cell shows one half-block char (▄) where the
+        foreground color = top pixel and background color = bottom pixel,
+        giving 2× vertical resolution.
+        """
+        if not video_id:
+            return
+        try:
+            from PIL import Image
+        except ImportError:
+            return
+        path = _get_thumbnail(video_id)
+        if path is None:
+            return
+        try:
+            img = Image.open(path).convert("RGB")
+        except Exception:
+            return
+        # resize: each char row = 2 pixel rows, each char col = 1 pixel
+        img = img.resize((cols, rows * 2), Image.LANCZOS)
+        for cy in range(rows):
+            for cx in range(cols):
+                pr = cy * 2
+                pb = cy * 2 + 1
+                r1, g1, b1 = img.getpixel((cx, pr))
+                r2, g2, b2 = img.getpixel((cx, pb))
+                t_idx = _rgb_to_ansi(r1, g1, b1)
+                b_idx = _rgb_to_ansi(r2, g2, b2)
+                pair_id = t_idx * 16 + b_idx + 1
+                if pair_id >= curses.COLOR_PAIRS:
+                    pair_id = 1
+                try:
+                    win.attron(curses.color_pair(pair_id))
+                    win.addch(y + cy, x + cx, "▄")
+                    win.attroff(curses.color_pair(pair_id))
+                except curses.error:
+                    pass
+
+    # ── curses setup ─────────────────────────────────────────────────
+
+    if not sys.stdout.isatty():
+        print("Error: 'ytm tui' requires a real terminal.", file=sys.stderr)
+        return
+
+    stdscr = curses.initscr()
+    # ── init colors for cover art ──
+    if curses.has_colors():
+        curses.start_color()
+        curses.use_default_colors()
+        for fg in range(16):
+            for bg in range(16):
+                pair_id = fg * 16 + bg + 1
+                if pair_id < curses.COLOR_PAIRS:
+                    curses.init_pair(pair_id, fg, bg)
+        # Selection highlight pair: color id 16+ (white bg, black fg) if available
+        try:
+            curses.init_color(16, 200, 200, 200)
+            curses.init_pair(257, curses.COLOR_BLACK, 16)
+        except curses.error:
+            curses.init_pair(257, curses.COLOR_BLACK, curses.COLOR_WHITE)
+    curses.noecho()
+    curses.cbreak()
+    stdscr.keypad(True)
+    stdscr.timeout(500)  # non-blocking getch, redraw every 500ms for time updates
+    curses.curs_set(0)  # hidden cursor in normal mode
+
+    # ── TUI state ──
+    mode = "normal"       # "normal" | "search-input" | "search-results"
+    selected = 0           # selected index in the visible list
+    search_query = ""
+    search_results: list | None = None  # results from last search, or None
+    message = ""
+    msg_linger = 0
+    running = True
+
+    try:
+        while running:
+            h, w = stdscr.getmaxyx()
+            state = load_state()
+            queue = state.get("queue", [])
+            current_idx = state.get("current_index", -1)
+
+            stdscr.clear()
+
+            # ── determine visible items ──
+            if mode == "search-results" and search_results:
+                visible = search_results
+                show_queue = False
+            else:
+                visible = queue
+                show_queue = True
+                if mode == "search-input":
+                    pass  # keep queue visible during typing
+
+            # Clamp selection
+            if visible:
+                selected = max(0, min(selected, len(visible) - 1))
+            else:
+                selected = 0
+
+            # ── draw top bar ──
+            if mode == "search-input":
+                bar = f" search: {search_query}█"
+                try:
+                    stdscr.addstr(0, 0, bar[:w], curses.A_REVERSE)
+                except curses.error:
+                    pass
+            else:
+                try:
+                    stdscr.addstr(0, 0, " ytm ", curses.A_REVERSE)
+                    # Remaining bar space shows context
+                    paused = mpv_get("pause")
+                    icon = "⏸" if paused else "▶"
+                    vol = mpv_get("volume")
+                    vol_str = f"🔊{vol:.0f}" if vol else ""
+                    status_parts = [icon, vol_str]
+                    if state.get("loop"):
+                        status_parts.append("🔁")
+                    status = "  ".join(p for p in status_parts if p)
+                    if status:
+                        try:
+                            stdscr.addnstr(0, 5, f"  {status}", w - 6, curses.A_REVERSE)
+                        except curses.error:
+                            pass
+                except curses.error:
+                    pass
+
+            # ── draw header (cover + now-playing) ──
+            header_end = _draw_header(stdscr, state)
+
+            # ── divider ──
+            div_line = header_end
+            if div_line < h - 2:
+                try:
+                    stdscr.addstr(div_line, 0, "─" * (w - 1), curses.A_DIM)
+                except curses.error:
+                    pass
+                div_line += 1
+
+            # ── draw list ──
+            list_y = div_line
+            list_avail = h - list_y - 1  # leave footer line
+
+            if not visible:
+                if list_avail > 0:
+                    msg = "  Queue is empty. Press s to search."
+                    if mode == "search-results":
+                        msg = "  No results. Press s to try again."
+                    try:
+                        stdscr.addnstr(list_y, 0, msg, w - 2)
+                    except curses.error:
+                        pass
+            else:
+                # List header
+                if show_queue:
+                    label = f" Queue ({len(visible)} track{'' if len(visible) == 1 else 's'})"
+                else:
+                    label = f" Search results ({len(visible)})"
+                try:
+                    stdscr.addnstr(list_y, 0, label, w - 2, curses.A_BOLD)
+                except curses.error:
+                    pass
+                list_y += 1
+                list_avail -= 1
+
+                # Scrolling: ensure selected is visible
+                scroll_offset = 0
+                if list_avail <= 0:
+                    pass
+                elif selected >= scroll_offset + list_avail:
+                    scroll_offset = selected - list_avail + 1
+                elif selected < scroll_offset:
+                    scroll_offset = selected
+
+                for i in range(scroll_offset, min(len(visible), scroll_offset + list_avail)):
+                    item = visible[i]
+                    dur = fmt_dur(item.get("duration", 0))
+                    is_sel = (i == selected)
+                    is_current = (show_queue and i == current_idx)
+
+                    marker = "▸" if is_current else " "
+                    text = f" {'●' if is_sel else ' '}{marker}  {i + 1}. {item['title']}  [{dur}]"
+                    text = text[:w - 1]
+
+                    try:
+                        if is_sel:
+                            stdscr.attron(curses.color_pair(257) if curses.has_colors() else curses.A_REVERSE)
+                            stdscr.addnstr(list_y, 0, text, w - 1)
+                            stdscr.attroff(curses.color_pair(257) if curses.has_colors() else curses.A_REVERSE)
+                        else:
+                            stdscr.addnstr(list_y, 0, text, w - 1)
+                    except curses.error:
+                        pass
+                    list_y += 1
+
+            # ── draw footer / message ──
+            footer_y = h - 1
+            if message and msg_linger > 0:
+                try:
+                    stdscr.addnstr(footer_y, 0, f" {message}", w - 2)
+                except curses.error:
+                    pass
+                msg_linger -= 1
+            else:
+                msg_linger = 0
+                if mode == "search-input":
+                    hint = " Enter=search  Esc=cancel"
+                elif mode == "search-results":
+                    hint = " ↑↓  Enter=play  a=add  A=auto-queue  s=new search  Esc=back"
+                else:
+                    hint = " ↑↓  Enter=play  d=remove  s=search  v=ansi V=HD  n=next"
+                    hint += "  p=pause  +/-:vol  l=loop  A=radio  q=quit"
+                try:
+                    stdscr.addnstr(footer_y, 0, hint[:w - 1], curses.A_REVERSE)
+                except curses.error:
+                    pass
+
+            stdscr.refresh()
+
+            # ── input handling ──
+            key = stdscr.getch()
+
+            if key == -1:
+                continue  # timeout, redraw
+
+            if key == curses.KEY_RESIZE:
+                continue
+
+            if mode == "search-input":
+                if key == 27:  # Esc
+                    mode = "normal"
+                    search_query = ""
+                    search_results = None
+                    curses.curs_set(0)
+                elif key in (curses.KEY_BACKSPACE, 127, 8):
+                    if search_query:
+                        search_query = search_query[:-1]
+                elif key == ord('\n'):
+                    q = search_query.strip()
+                    if q:
+                        results = search_yt(q)
+                        if results:
+                            search_results = results
+                            mode = "search-results"
+                            selected = 0
+                            search_query = ""
+                        else:
+                            message = "No results found."
+                            msg_linger = 3
+                elif 32 <= key <= 126:
+                    if len(search_query) < w - 20:
+                        search_query += chr(key)
+
+            elif mode == "search-results":
+                if key == 27:  # Esc
+                    mode = "normal"
+                    search_results = None
+                    curses.curs_set(0)
+                elif key in (ord('j'), curses.KEY_DOWN):
+                    if visible:
+                        selected = min(len(visible) - 1, selected + 1)
+                elif key in (ord('k'), curses.KEY_UP):
+                    selected = max(0, selected - 1)
+                elif key == ord('g'):
+                    selected = 0
+                elif key == ord('G'):
+                    if visible:
+                        selected = len(visible) - 1
+                elif key == ord('\n') or key == ord(' '):
+                    if visible and selected < len(visible):
+                        item = visible[selected]
+                        state["queue"] = []
+                        state["current_index"] = -1
+                        old_out, old_err = sys.stdout, sys.stderr
+                        sys.stdout = sys.stderr = io.StringIO()
+                        ok = _play(item, state)
+                        sys.stdout, sys.stderr = old_out, old_err
+                        if ok:
+                            save_state(state)
+                            message = f"▶  {item['title']}"
+                            msg_linger = 5
+                            mode = "normal"
+                            search_results = None
+                            curses.curs_set(0)
+                elif key == ord('a'):
+                    if visible and selected < len(visible):
+                        item = visible[selected]
+                        q = state.get("queue", [])
+                        q.append(item)
+                        state["queue"] = q
+                        if len(q) == 1:
+                            state["current_index"] = 0
+                            old_out, old_err = sys.stdout, sys.stderr
+                            sys.stdout = sys.stderr = io.StringIO()
+                            ok = _play(item, state)
+                            sys.stdout, sys.stderr = old_out, old_err
+                            message = f"➕ +▶  {item['title']}" if ok else f"➕  {item['title']}"
+                        else:
+                            message = f"➕  {item['title']}"
+                        save_state(state)
+                        msg_linger = 3
+                elif key == ord('A'):
+                    if visible and selected < len(visible):
+                        item = visible[selected]
+                        old_out, old_err = sys.stdout, sys.stderr
+                        sys.stdout = sys.stderr = io.StringIO()
+                        cmd_auto(item["id"])
+                        sys.stdout, sys.stderr = old_out, old_err
+                        message = f"📻  Auto-queued from: {item['title']}"
+                        msg_linger = 5
+                        mode = "normal"
+                        search_results = None
+                        curses.curs_set(0)
+                elif key == ord('s'):
+                    mode = "search-input"
+                    search_query = ""
+                    search_results = None
+                    curses.curs_set(1)
+
+            else:  # normal mode
+                if key == ord('q'):
+                    running = False
+                elif key in (ord('j'), curses.KEY_DOWN):
+                    if visible:
+                        selected = min(len(visible) - 1, selected + 1)
+                elif key in (ord('k'), curses.KEY_UP):
+                    selected = max(0, selected - 1)
+                elif key == ord('g'):
+                    selected = 0
+                elif key == ord('G'):
+                    if visible:
+                        selected = len(visible) - 1
+                elif key in (ord('s'), ord('/'), ord('S')):
+                    mode = "search-input"
+                    search_query = ""
+                    search_results = None
+                    curses.curs_set(1)
+                elif key == ord('v'):
+                    # Watch video in-terminal (ANSI art)
+                    if visible and selected < len(visible):
+                        item = visible[selected]
+                        vid = item.get("id", "") or item.get("url", "")
+                        if vid:
+                            curses.endwin()
+                            url = vid if vid.startswith("http") else f"https://youtube.com/watch?v={vid}"
+                            _terminal_video(url)
+                            # Re-enter curses
+                            stdscr = curses.initscr()
+                            curses.noecho()
+                            curses.cbreak()
+                            stdscr.keypad(True)
+                            stdscr.timeout(500)
+                            if curses.has_colors():
+                                curses.start_color()
+                                curses.use_default_colors()
+                                for fg in range(16):
+                                    for bg in range(16):
+                                        pair_id = fg * 16 + bg + 1
+                                        if pair_id < curses.COLOR_PAIRS:
+                                            curses.init_pair(pair_id, fg, bg)
+                                try:
+                                    curses.init_color(16, 200, 200, 200)
+                                    curses.init_pair(257, curses.COLOR_BLACK, 16)
+                                except curses.error:
+                                    curses.init_pair(257, curses.COLOR_BLACK, curses.COLOR_WHITE)
+                            curses.curs_set(0)
+                            continue
+                elif key == ord('V'):
+                    # Open video in mpw window (full HD)
+                    if visible and selected < len(visible):
+                        item = visible[selected]
+                        vid = item.get("id", "") or item.get("url", "")
+                        if vid:
+                            url = vid if vid.startswith("http") else f"https://youtube.com/watch?v={vid}"
+                            print(f"▶  Opening in mpv: {item.get('title', '')}")
+                            start_mpv_video(url)
+                elif key == ord('\n'):
+                    if visible and selected < len(visible):
+                        item = visible[selected]
+                        if show_queue:
+                            # Play this queue item from its current position
+                            state["current_index"] = selected
+                            state["current"] = item
+                            old_out, old_err = sys.stdout, sys.stderr
+                            sys.stdout = sys.stderr = io.StringIO()
+                            ok = _play(item, state)
+                            sys.stdout, sys.stderr = old_out, old_err
+                            if ok:
+                                save_state(state)
+                                message = f"▶  {item['title']}"
+                                msg_linger = 5
+                        else:
+                            # Search result — play it
+                            state["queue"] = []
+                            state["current_index"] = -1
+                            old_out, old_err = sys.stdout, sys.stderr
+                            sys.stdout = sys.stderr = io.StringIO()
+                            ok = _play(item, state)
+                            sys.stdout, sys.stderr = old_out, old_err
+                            if ok:
+                                save_state(state)
+                                message = f"▶  {item['title']}"
+                                msg_linger = 5
+                                mode = "normal"
+                                search_results = None
+                                curses.curs_set(0)
+                                message = f"▶  {item['title']}"
+                                msg_linger = 5
+                elif key == ord('d') or key == ord('x'):
+                    if show_queue and visible and selected < len(visible):
+                        item = visible[selected]
+                        idx = selected
+                        if 0 <= idx < len(queue):
+                            q = list(queue)
+                            removed = q.pop(idx)
+                            state["queue"] = q
+                            if current_idx > idx or current_idx == len(q):
+                                state["current_index"] = max(-1, current_idx - 1)
+                            save_state(state)
+                            if selected >= len(q) and selected > 0:
+                                selected -= 1
+                            message = f"✖  Removed: {removed['title']}"
+                            msg_linger = 3
+                elif key == ord('n'):
+                    state = load_state()
+                    q = state.get("queue", [])
+                    ci = state.get("current_index", -1)
+                    if ci + 1 < len(q):
+                        _tui_dispatch("next", [])
+                        message = "⏭  Next track"
+                    else:
+                        message = "End of queue"
+                    msg_linger = 3
+                elif key == ord('p') or key == 32:  # p or Space
+                    _tui_dispatch("pause", [])
+                    paused = mpv_get("pause")
+                    message = "⏸  Paused" if paused else "▶  Resumed"
+                    msg_linger = 3
+                elif key == ord('A'):
+                    state = load_state()
+                    current = state.get("current")
+                    if current:
+                        vid = current.get("id")
+                        if vid:
+                            old_out, old_err = sys.stdout, sys.stderr
+                            sys.stdout = sys.stderr = io.StringIO()
+                            related = get_related(vid)
+                            sys.stdout, sys.stderr = old_out, old_err
+                            if related:
+                                state["queue"].extend(related)
+                                save_state(state)
+                                message = f"📻  Radio on: {len(related)} related songs queued"
+                            else:
+                                message = "No related songs found."
+                    else:
+                        message = "Nothing playing to base radio on."
+                    msg_linger = 5
+                elif key == ord('l'):
+                    state = load_state()
+                    loop = not state.get("loop", False)
+                    state["loop"] = loop
+                    save_state(state)
+                    message = "🔁  Loop: on" if loop else "🔁  Loop: off"
+                    msg_linger = 3
+                elif key in (ord('+'), ord('=')):
+                    vol = mpv_get("volume") or 50
+                    new_vol = min(100, vol + 10)
+                    _mpv_send({"command": ["set_property", "volume", new_vol]})
+                    message = f"🔊  Volume: {new_vol:.0f}%"
+                    msg_linger = 3
+                elif key == ord('-') or key == ord('_'):
+                    vol = mpv_get("volume") or 50
+                    new_vol = max(0, vol - 10)
+                    _mpv_send({"command": ["set_property", "volume", new_vol]})
+                    message = f"🔊  Volume: {new_vol:.0f}%"
+                    msg_linger = 3
+                elif key in (12, ord('r')):  # Ctrl+L or r = refresh
+                    pass
+
+    except KeyboardInterrupt:
+        pass
+    finally:
+        try:
+            curses.curs_set(0)
+            curses.nocbreak()
+            stdscr.keypad(False)
+            curses.echo()
+            curses.endwin()
+        except (curses.error, NameError):
+            pass
+
+    # Clean exit message
+    print("ytm TUI exited. Run 'ytm tui' to reopen.")
+
+
+def cmd_help() -> None:
+    print(textwrap.dedent("""\
+    ytm — CLI YouTube Music Player
+
+    Search, queue, and play YouTube audio through mpv.
+    All operations are non-interactive shell commands.
+
+    USAGE
+      ytm tui                  Launch interactive TUI (text user interface)
+      ytm search <query>       Search YouTube and print numbered results
+      ytm play [n|url|id]      Play search result #n (default 1), or a URL/ID
+      ytm auto [n|url|id]      Play + auto-queue related songs via YouTube Mix
+      ytm watch [n|url|id]     Watch video in-terminal as ANSI art
+      ytm mpv [n|url|id]       Open video in mpv window for full HD
+      ytm add <n>              Add search result #n to the queue
+      ytm add-id <url|id>      Add a specific video by URL/ID to the queue
+      ytm remove <n>           Remove item #n from the queue
+      ytm next                 Skip to next track in queue
+      ytm prev                 Previous track
+      ytm stop                 Stop playback and clear queue
+      ytm pause                Toggle play/pause
+      ytm queue                Show current queue and now-playing
+      ytm clear                Clear the queue
+      ytm volume [0-100]       Get or set volume
+      ytm loop                 Toggle queue looping
+      ytm status               Show now-playing and player state
+      ytm help                 Show this help
+      ytm <query>              Shorthand: search + interactive pick (fzf)
+
+    EXAMPLES
+      ytm tui                       # interactive mode
+      ytm search akon               # find songs
+      ytm play 2                    # play result #2
+      ytm add 1 2 3                 # queue results 1-3
+      ytm add-id dQw4w9WgXcQ        # queue by video ID
+      ytm auto 2                    # play result #2 + auto-queue related
+      ytm remove 2                  # remove from queue
+      ytm next                      # skip track
+      ytm volume 50                 # set volume to 50%
+
+    DEPENDENCIES
+      mpv, yt-dlp, ffmpeg           # required
+      fzf                           # optional (interactive mode)
+
+    FILES
+      ~/.cache/ytm/state.json       # queue, search, settings
+      /tmp/ytm-mpv-socket           # mpv IPC socket
+    """))
+
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+
+def _eprint(*args, **kwargs) -> None:
+    print(*args, file=sys.stderr, **kwargs)
+
+
+def main() -> None:
+    if len(sys.argv) < 2:
+        cmd_help()
+        return
+
+    cmd = sys.argv[1]
+    args = sys.argv[2:]
+
+    match cmd:
+        case "search":
+            if args:
+                cmd_search(" ".join(args))
+            else:
+                _eprint("Usage: ytm search <query>")
+
+        case "play":
+            cmd_play(args[0] if args else None)
+
+        case "auto":
+            cmd_auto(args[0] if args else None)
+
+        case "add":
+            if args:
+                for a in args:
+                    try:
+                        cmd_add(int(a))
+                    except ValueError:
+                        _eprint(f"Invalid index: {a}")
+            else:
+                _eprint("Usage: ytm add <n> [n ...]")
+
+        case "add-id":
+            if args:
+                cmd_add_id(args[0])
+            else:
+                _eprint("Usage: ytm add-id <url|id>")
+
+        case "next":
+            cmd_next()
+        case "prev":
+            cmd_prev()
+        case "stop":
+            cmd_stop()
+        case "pause":
+            cmd_pause()
+        case "queue":
+            cmd_queue()
+        case "remove":
+            if args:
+                try:
+                    cmd_remove(int(args[0]))
+                except ValueError:
+                    _eprint("Usage: ytm remove <n>")
+            else:
+                _eprint("Usage: ytm remove <n>")
+        case "clear":
+            cmd_clear()
+        case "loop":
+            cmd_loop()
+        case "volume":
+            cmd_volume(args)
+        case "status":
+            cmd_status()
+        case "watch":
+            cmd_watch(args[0] if args else None)
+        case "mpv":
+            cmd_mpv(args[0] if args else None)
+        case "tui" | "interactive":
+            cmd_tui()
+        case "help":
+            cmd_help()
+        case _:
+            # Bare query: try fzf interactive, fall back to print results
+            query = " ".join(sys.argv[1:])
+            results = search_yt(query)
+            if not results:
+                return
+            if FZF:
+                items = [fmt_item(r) for r in results]
+                try:
+                    r = subprocess.run(
+                        [FZF, "--prompt", "Play: "],
+                        input="\n".join(items),
+                        capture_output=True,
+                        text=True,
+                        timeout=30,
+                    )
+                    if r.returncode == 0 and r.stdout.strip():
+                        sel = r.stdout.strip()
+                        for i, it in enumerate(items):
+                            if it == sel:
+                                state = load_state()
+                                state["queue"] = []
+                                state["current_index"] = -1
+                                _play(results[i], state)
+                                save_state(state)
+                                return
+                except (subprocess.TimeoutExpired, FileNotFoundError):
+                    pass
+            # Fallback: print numbered results
+            for i, r in enumerate(results, 1):
+                print(f"  {i:2d}. {fmt_item(r)}")
+            _eprint("\nRun 'ytm play <n>' to play a result.")
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print()
+    except BrokenPipeError:
+        pass
