@@ -6,7 +6,7 @@ pkgdesc="Extract zip files in parallel"
 url=https://github.com/google/ripunzip
 license=('MIT')
 arch=('x86_64')
-depends=(bzip2 gcc-libs glibc openssl xz)
+depends=(bzip2 libgcc glibc openssl xz)
 makedepends=(rust pkgconf mold)
 optdepends=("rust-src: optimize with RUSTC_BOOTSTRAP=1")
 source=("${pkgname}${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
