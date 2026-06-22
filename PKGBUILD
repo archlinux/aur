@@ -2,7 +2,7 @@
 
 _basename=heidisql
 pkgname=${_basename}-qt6-bin
-pkgver=12.19
+pkgver=12.20
 pkgrel=1
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, Microsoft SQL and SQLite databases. (Qt6)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("${_basename}" heidisql-client)
 provides=("${_basename}")
 depends=('qt6pas' 'libperconaserverclient' 'mariadb-libs' 'postgresql-libs' 'sqlite' 'freetds')
 source=("${_basename}_${pkgver}_${arch[0]}.deb::${url}/releases/download/v${pkgver}/${_basename}_${pkgver}_${_barch[0]}.deb")
-sha256sums=('216149b96d2d07f5c74a50c6f0cdcd0d98c54a9dbc850261978e657c9cdcaaad')
+sha256sums=('f805a1ad0bf6c500a101e9b76a1a64b504779384f2b7413957535019a5c3e221')
 
 package() {
   cd "${pkgdir}"
