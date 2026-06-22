@@ -2,7 +2,7 @@
 
 pkgname=python-cozempic
 _pkgname="${pkgname#python-}"
-pkgver=1.8.17
+pkgver=1.8.34
 pkgrel=1
 pkgdesc="Context cleaning for Claude Code — prune bloated sessions, protect Agent Teams from context loss, auto-guard with tiered pruning"
 arch=("any")
@@ -15,7 +15,7 @@ makedepends=(
   python-setuptools
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('9dd09b7f416e1ece7b92c04a7f61d255ec4b901ee15f54bed1b2d8dec307b2a4')
+sha256sums=('5a1cc6239c9eef533fab0b65b6da9e2f88f63ba3f2f06c4d7d2c6cfded95a9cf')
 
 build() {
   cd "${_pkgname}-${pkgver}"
