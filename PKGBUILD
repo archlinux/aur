@@ -8,7 +8,6 @@ pkgdesc="A Python extension for Nautilus and its forks Nemo and Caja to provide 
 arch=('any')
 url="https://github.com/owncloud/client-desktop-shell-integration-nautilus"
 license=('GPL-2.0')
-depends=('owncloud-client>=6')
 makedepends=('cmake' 'ninja' 'extra-cmake-modules')
 source=(
     "extension.tar.gz::https://github.com/owncloud/${pkgname#*-}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -43,6 +42,8 @@ build() {
 }
 
 package() {
+    depends=('owncloud-client>=6')
+
     # resources
     # do not install *.cmake files; they are marked as component "Devel"
     cmake --install "${srcdir}/${_resources_archivedir}/${_cmake_build_dir}" --component Unspecified

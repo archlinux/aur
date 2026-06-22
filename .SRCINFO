@@ -15,3 +15,4 @@ pkgbase = owncloud-client-desktop-shell-integration-nautilus
 	sha256sums = dcd5821d422fe9923e774978e93ffe3ba8825094f9f77c596b5b0dba65641da8
 
 pkgname = owncloud-client-desktop-shell-integration-nautilus
+	depends = owncloud-client>=6
