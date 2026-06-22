@@ -1,13 +1,15 @@
 pkgbase = edirstat
 	pkgdesc = A fast, cross-platform disk usage analyzer with work-stealing multithreading, zero-copy snapshots, deduplication, and an interactive treemap GUI.
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Xangelix/edirstat
 	arch = x86_64
 	license = MIT
 	makedepends = cargo-nightly
 	makedepends = rust-nightly
 	depends = hicolor-icon-theme
+	provides = edirstat
+	conflicts = edirstat
 	options = !lto
 	source = edirstat-2.0.0.tar.gz::https://github.com/Xangelix/edirstat/archive/v2.0.0.tar.gz
 	source = edirstat.desktop

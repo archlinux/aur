@@ -2,13 +2,15 @@
 
 pkgname=edirstat
 pkgver="2.0.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, cross-platform disk usage analyzer with work-stealing multithreading, zero-copy snapshots, deduplication, and an interactive treemap GUI."
 arch=('x86_64')
 url="https://github.com/Xangelix/edirstat"
 license=('MIT')
 depends=('hicolor-icon-theme')
 makedepends=('cargo-nightly' 'rust-nightly')
+provides=('edirstat')
+conflicts=('edirstat')
 options=('!lto') # Disable LTO to prevent build-script linker errors
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
