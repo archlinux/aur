@@ -11,7 +11,8 @@
 # Contributor: Dhina17 <dhinalogu@gmail.com>
 
 pkgname=android-studio-system
-pkgver=2025.2.2.8
+pkgver=2026.1.1.10
+_relname=quail1-patch2
 pkgrel=1
 pkgdesc="The official Android IDE (Stable branch)"
 arch=('x86_64')
@@ -21,10 +22,10 @@ makedepends=()
 depends=('alsa-lib' 'libxtst' 'java-environment=21' 'kotlin')
 optdepends=('ncurses5-compat-libs: native debugger support')
 options=('!strip') # Removing it is a bit more violent but it removes 90MB of files...
-source=("https://dl.google.com/dl/android/studio/ide-zips/$pkgver/android-studio-$pkgver-linux.tar.gz"
+source=("https://dl.google.com/dl/android/studio/ide-zips/$pkgver/android-studio-$_relname-linux.tar.gz"
         "android-studio.desktop"
         "license.html")
-b2sums=('76f308724ac92ad230470bc5c92a9bf9a71d9d9c66c2c5d16a0ba59983ddc7acf718169cee94d7cca691af6f9b2c9bf63d4b3a248515a16ca450cf19d617ff03'
+b2sums=('add83a328549401870044e843aa594c7efcaead55d62ee0b2af0e5de104f28f468fa960bf2d6663b7f74276f219af872696357e2ff0e4193da85caf9a790d9ba'
         '16940866032d710ce995cc6bb0b994875215df0f6191b09a3ece5d6c5750c4fb3d430c683f545154eeceecad10d70333d59302fe6c5efd97c3fc9e66f3009dca'
         '43b288fb81656cd72826a52620e41fbd0daa65d37246cb5b7dbff9c326022eabf18344513517b16134b557d6ae86535f44f863ebd06d6fe0410f92117c1a8c67')
 provides=("android-studio")
@@ -44,8 +45,8 @@ package() {
   ln -s /usr/share/kotlin/build.txt $pkgdir/usr/share/android-studio/plugins/Kotlin/kotlinc/build.txt
 
   # clangd
-  rm $pkgdir/usr/share/android-studio/plugins/c-clangd/bin/clang/linux/x64/bin/clangd
-  ln -s /usr/bin/clangd $pkgdir/usr/share/android-studio/plugins/c-clangd/bin/clang/linux/x64/bin/clangd
+  rm $pkgdir/usr/share/android-studio/plugins/cidr-clangd/bin/clang/linux/x64/bin/clangd
+  ln -s /usr/bin/clangd $pkgdir/usr/share/android-studio/plugins/cidr-clangd/bin/clang/linux/x64/bin/clangd
 
   ln -s /usr/share/android-studio/bin/studio $pkgdir/usr/bin/android-studio
   ln -s /usr/lib/jvm/java-21-openjdk/ $pkgdir/usr/share/android-studio/jbr
