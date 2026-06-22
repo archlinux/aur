@@ -1,6 +1,6 @@
 pkgbase = hyprgraphics-git
 	pkgdesc = Hyprland graphics / resource utilities
-	pkgver = 0.5.1.r3.g68d0644
+	pkgver = 0.5.1.r4.g6c6cf26
 	pkgrel = 1
 	url = https://github.com/hyprwm/hyprgraphics
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = hyprgraphics-git
 	depends = file
 	depends = hyprutils-git
 	depends = libgl
+	depends = libheif
 	depends = libjpeg
 	depends = libjxl
 	depends = libpng
