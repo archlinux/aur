@@ -6,7 +6,7 @@
 _quake=vkQuake
 pkgname=vkquake
 pkgver=1.34.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
 arch=('x86_64')
 provides=('vkquake')
@@ -34,13 +34,13 @@ prepare() {
 
 build() {
   
-  cd "$srcdir/$_quake-$pkgver"
-  [[ -d build ]] && rm -rf build
-  mkdir build && cd build
+  cd "$srcdir"
 
   CFLAGS="$CFLAGS -DDO_USERDIRS=1" \
   CXXFLAGS="$CXXFLAGS -DDO_USERDIRS=1" \
   arch-meson \
+  build \
+  "${_quake}-${pkgver}" \
   -D use_codec_mp3=enabled \
   -D use_codec_flac=enabled \
   -D use_codec_vorbis=enabled \
@@ -49,12 +49,12 @@ build() {
   -D mp3_lib=mpg123
 
   # Compile vkquake binary
-  ninja
+  meson compile -C build
 }
 
 package() {
 
-  cd "$srcdir/$_quake-$pkgver"
+  cd "$srcdir"
 
   # Install main binary
   install -Dm755 build/vkquake "$pkgdir"/usr/bin/vkquake
@@ -66,6 +66,6 @@ package() {
   install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/vkquake.desktop"
   install -Dm644 "$srcdir/$pkgname.png" "$pkgdir/usr/share/pixmaps/vkquake.png"
   install -Dm644 "$srcdir/$pkgname.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/vkquake.svg"
-  install -Dm644 readme.md "$pkgdir"/usr/share/doc/vkquake/readme.md
+  install -Dm644 "${_quake}-${pkgver}/readme.md" "$pkgdir"/usr/share/doc/vkquake/readme.md
 
 }
