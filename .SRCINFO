@@ -1,7 +1,7 @@
 pkgbase = screenshot-niri
 	pkgdesc = Screenshot tool for niri compositor — normal and long/scroll capture with frozen-background selection overlay
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/xander-lin/screenshot-niri
 	arch = x86_64
 	license = MIT
