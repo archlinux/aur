@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=calmly-writer-bin
 _pkgname=CalmlyWriter
-pkgver=3.0.2
+pkgver=3.0.4
 _electronversion=41
 pkgrel=1
 pkgdesc="An editor designed to focus on what you want to tell, with a simple, unobtrusive and ease-to-use user interface."
@@ -23,13 +23,16 @@ source=(
     "LICENSE.html::${url}/eula.htm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ef7a9b96350b985806a28ad6542fd437cfb34c740107c6d8306b85dd99be348e'
+sha256sums=('f968adf93a81385f20c95c7354ee6e5afbc93b2a5d1f0f81abf3296aeca8faf1'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('072f34c3b900f30c7dcb38ef940d6659674f3240c6cf08bc62207885a8b2f9fe')
-sha256sums_x86_64=('04da83f4aaaa604c0ef8ad6236e693cde57ad69740e264aae4ec40a67b54ea06')
+sha256sums_aarch64=('4b87f1490902b7bcb52c38f66107bd79c8c1ea2e103afde95ba7b7b70c5ca7bd')
+sha256sums_x86_64=('b98c714e524eea18593504e01703e4ed540c10a5c6268ce35bec9abd49dc097f')
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
 _check_electron_version() {
     echo "Verifying Electron version..."
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _app_dir=$(_get_app_dir)
     local _main_exe=""
     if [[ -n "${_app_dir}" ]]; then
         _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
@@ -64,7 +67,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
