@@ -1,4 +1,4 @@
-pkgbase = waller
+pkgbase = waller-git
 	pkgdesc = rofi wallpaper changer with optional automatic blurring
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -6,7 +6,9 @@ pkgbase = waller
 	arch = any
 	license = MIT
 	depends = swww
+	depends = rofi
 	depends = imagemagick
+	provides = waller
 	source = https://raw.githubusercontent.com/lare354/waller/refs/heads/main/install.sh
 
-pkgname = waller
+pkgname = waller-git

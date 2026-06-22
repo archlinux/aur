@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Lare <lare354@duck.com>
-pkgname=waller
+pkgname=waller-git
 pkgver=1.0.0
 pkgrel=1
 epoch=
@@ -13,11 +13,11 @@ arch=(any)
 url="https://github.com/lare354/waller"
 license=('MIT')
 groups=()
-depends=(swww imagemagick)
+depends=(swww rofi imagemagick)
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=()
+provides=(waller)
 conflicts=()
 replaces=()
 backup=()
