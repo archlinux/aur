@@ -1,7 +1,7 @@
 pkgbase = tagstudio-bin
 	pkgdesc = A User-Focused Photo & File Management System (pre-compiled)
 	pkgver = 9.5.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/TagStudioDev/TagStudio
 	arch = x86_64
 	license = GPL-3.0-only
