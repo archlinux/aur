@@ -1,28 +1,28 @@
 pkgbase = jicofo-nightly
 	pkgdesc = JItsi Meet COnference FOcus nightly build
-	pkgver = 1.0+1181
+	pkgver = 1.0+1184
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = install
 	arch = any
 	license = Apache
 	makedepends = git
-	makedepends = java-environment-openjdk=11
+	makedepends = java-environment-openjdk=17
 	makedepends = unzip
 	makedepends = maven
-	depends = java-runtime-openjdk=11
+	depends = java-runtime-openjdk=17
 	depends = bash
 	optdepends = prosody
 	options = !strip
 	backup = etc/jicofo-nightly/config
 	backup = etc/jicofo-nightly/logging.properties
 	backup = etc/jicofo-nightly/jicofo.conf
-	source = jicofo-nightly::git+https://github.com/jitsi/jicofo#tag=1181
+	source = jicofo-nightly::git+https://github.com/jitsi/jicofo#tag=1184
 	source = config
 	source = service
 	source = sysusers.conf
 	source = tmpfiles.conf
-	sha256sums = 06ec28ad827c17be7ec667ce6904659fd41d1a530cf4dc55cb68c9ade3630342
+	sha256sums = 4c4a58fa082df0d6eb552155e628c581b2245bfdd880dd93722cd605e3b6ae64
 	sha256sums = c258808de5031c0d72df0aedfd521d07e6c442cd152e75737bdc1d758545521e
 	sha256sums = 548d307aa9f4ffae64b4c9c3e891f4332a8454bd7b271e5b76932c705697ee74
 	sha256sums = 0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440
