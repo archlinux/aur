@@ -31,7 +31,6 @@ source=("https://dl.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.ta
         'LICENSE.html::https://discord.com/terms'
         'OSS-LICENSES.html::https://discord.com/licenses'
         'discord-launcher.sh'
-        'postinst.sh'
         'krisp-patcher.py'
 
         # Discord modules (from 'curl "https://updates.discord.com/distributions/app/manifests/latest?channel=stable&platform=linux&arch=x64"')
@@ -95,8 +94,7 @@ prepare() {
     tar -xf "${module}" --use-compress-program=brotli --one-top-level="modules/${module%%-*}" --strip-components=1 files/
   done
 
-  # prepare post-install and launcher scripts
-  sed -i -e "s|@PKGNAME@|${_pkgname}|" postinst.sh
+  # prepare launcher script
   sed -i -e "s|@PKGNAME@|${_pkgname}|" \
     -e "s|@PKGVER@|${pkgver}|" \
     -e "s|@ELECTRON@|${_electron}|" \
@@ -157,9 +155,6 @@ package() {
 
   # install the launch script
   install -Dm 755 discord-launcher.sh "${pkgdir}/usr/bin/${_pkgname}"
-
-  # install the post-install script
-  install -Dm 744 postinst.sh "${pkgdir}/usr/share/${_pkgname}/postinst.sh"
 
   # install licenses
   install -Dm 644 LICENSE.html "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
