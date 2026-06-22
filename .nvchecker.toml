@@ -1,0 +1,5 @@
+[microsandbox-bin]
+source = "github"
+github = "superradcompany/microsandbox"
+use_latest_release = true
+prefix = "v"
