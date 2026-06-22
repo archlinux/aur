@@ -1,6 +1,6 @@
 pkgbase = websudo-bin
 	pkgdesc = Local browser askpass helper for sudo commands.
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/rijuyuezhu/websudo
 	install = websudo-bin.install
@@ -12,9 +12,9 @@ pkgbase = websudo-bin
 	provides = websudo
 	conflicts = websudo
 	options = !strip
-	source_x86_64 = websudo-0.1.1-x86_64.tar.gz::https://github.com/rijuyuezhu/websudo/releases/download/v0.1.1/websudo-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = e9af31d208010c8821324eb8355b415d2664ba49569958d1c0f7141e5cba54a2
-	source_aarch64 = websudo-0.1.1-aarch64.tar.gz::https://github.com/rijuyuezhu/websudo/releases/download/v0.1.1/websudo-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 69a0fbfdf32547c02b1353c61923768f722d60ab91c930b2aa8e9f56c61a7451
+	source_x86_64 = websudo-0.1.2-x86_64.tar.gz::https://github.com/rijuyuezhu/websudo/releases/download/v0.1.2/websudo-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a5df63980da5ad2da4e8825811ffce1d5b6b87ae2e1d4a3e610146816059f51b
+	source_aarch64 = websudo-0.1.2-aarch64.tar.gz::https://github.com/rijuyuezhu/websudo/releases/download/v0.1.2/websudo-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 70dbfcc11735ac704d37cce43d1b1362b4258e7cad0baf051f1567147418cf32
 
 pkgname = websudo-bin
