@@ -13,7 +13,7 @@ depends=(
 provides=('oneclient')
 conflicts=('oneclient')
 source=("https://github.com/Polyfrost/OneLauncher/releases/download/oneclient-${pkgver}/oneclient_${pkgver}_amd64.deb")
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums=('eb131c7277645a2f6f656a66ce9ac36715ef70cc5f64c48f0242c86efa57dfe6')
 
 build() {
     cd "$srcdir/"
