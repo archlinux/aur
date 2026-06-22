@@ -3,7 +3,6 @@
 set -euo pipefail
 
 name=@PKGNAME@
-ver=@PKGVER@
 electron=@ELECTRON@
 
 # Support .config/discord-flags.conf file
