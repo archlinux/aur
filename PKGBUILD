@@ -1,7 +1,7 @@
 # Maintainer: Alexander Pohl <alex@ahpohl.com>
 
 pkgname=fronius-bridge
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc="Lightweight Modbus-to-MQTT bridge for Fronius devices"
@@ -14,7 +14,7 @@ source=(
   "sysusers-meter.conf"
   "fronius-bridge.service"
 )
-sha256sums=('b58c3ed81b0021b097a3e6d8f1bccebf89edb1480bcceaf6211e9eabd9cf58c7'
+sha256sums=('b99b95cf23438579dee43fef84a25b0964774e07e3dcb60e20b872b24ee3f367'
             'ceb25291231fff17ab14840233f700878897bd74d7749bed3345d6e46d4f4f24'
             '9b07ac29013a6548f1ed08a8aa9565084ef273653444a5f4a5192c4389206bb9')
 backup=('etc/fronius-bridge/config.yaml')
