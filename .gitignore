@@ -1,0 +1,5 @@
+komai-bin*.pkg.*
+*.AppImage
+pkg
+src
+squashfs-root
