@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vibeyard-bin
 _pkgname=Vibeyard
-pkgver=0.3.1
+pkgver=0.3.2
 _electronversion=41
 pkgrel=1
 pkgdesc="The IDE built for AI coding agents.Manage multiple agent sessions, run them in parallel, track costs, and never lose context — with Claude Code, Codex CLI, 和 Gemini CLI. (Prebuilt version.Use system-wide electron)"
@@ -29,12 +29,15 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/elirantutia/vibeyard/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('62c7b846337c6f216db87691ae61bdadbb42efa5960351bef30ea8a466f3e95f'
+sha256sums=('94eacd4b3a773047b30bf7301f3555615f1ba5d0ae9c300f358d41e3f00d31aa'
             'f32a5d5a0a417aa082b78d4455b2ce0d4eee07982062b30daf8d32f3afe28452'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
 _check_electron_version() {
     echo "Verifying Electron version..."
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _app_dir=$(_get_app_dir)
     local _main_exe=""
     if [[ -n "${_app_dir}" ]]; then
         _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
@@ -66,7 +69,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"

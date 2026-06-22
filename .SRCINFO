@@ -1,6 +1,6 @@
 pkgbase = vibeyard-bin
 	pkgdesc = The IDE built for AI coding agents.Manage multiple agent sessions, run them in parallel, track costs, and never lose context — with Claude Code, Codex CLI, 和 Gemini CLI. (Prebuilt version.Use system-wide electron)
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/elirantutia/vibeyard
 	install = vibeyard.install
@@ -9,14 +9,14 @@ pkgbase = vibeyard-bin
 	depends = electron41
 	depends = python
 	depends = npm
-	provides = vibeyard=0.3.1
+	provides = vibeyard=0.3.2
 	conflicts = vibeyard
 	options = !emptydirs
 	options = !strip
-	source = vibeyard-0.3.1.deb::https://github.com/elirantutia/vibeyard/releases/download/v0.3.1/vibeyard_0.3.1_amd64.deb
-	source = LICENSE-0.3.1::https://raw.githubusercontent.com/elirantutia/vibeyard/v0.3.1/LICENSE
+	source = vibeyard-0.3.2.deb::https://github.com/elirantutia/vibeyard/releases/download/v0.3.2/vibeyard_0.3.2_amd64.deb
+	source = LICENSE-0.3.2::https://raw.githubusercontent.com/elirantutia/vibeyard/v0.3.2/LICENSE
 	source = vibeyard.sh
-	sha256sums = 62c7b846337c6f216db87691ae61bdadbb42efa5960351bef30ea8a466f3e95f
+	sha256sums = 94eacd4b3a773047b30bf7301f3555615f1ba5d0ae9c300f358d41e3f00d31aa
 	sha256sums = f32a5d5a0a417aa082b78d4455b2ce0d4eee07982062b30daf8d32f3afe28452
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
