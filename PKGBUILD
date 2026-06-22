@@ -1,5 +1,5 @@
 pkgname=ioruba-desktop
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Tactile audio mixer for Arduino-based Linux control"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('glibc' 'gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator')
 makedepends=('npm' 'rust' 'cargo' 'pkgconf' 'webkit2gtk-4.1' 'gtk3' 'librsvg' 'patchelf' 'libappindicator-gtk3')
 source=("ioruba-${pkgver}.tar.gz::https://github.com/bernardopg/ioruba/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('aff01e2665d5b7eaa605248322eefe64462a26895dff3cd9a6684a4bd866e3da')
+sha256sums=('d5bb9622805beaa7f00f7255d68deb80b4d8cc1cfbac71b5387f1b76b5518321')
 
 prepare() {
   cd "ioruba-${pkgver}"
