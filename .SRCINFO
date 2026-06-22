@@ -1,6 +1,6 @@
 pkgbase = uutils-coreutils-git
 	pkgdesc = Rust rewrite of coreutils
-	pkgver = 0.8.0.r101.g5daf0a5
+	pkgver = 0.9.0.r205.ge68ac35
 	pkgrel = 1
 	url = https://github.com/uutils/coreutils
 	arch = x86_64
@@ -15,9 +15,7 @@ pkgbase = uutils-coreutils-git
 	conflicts = uutils-coreutils
 	conflicts = coreutils
 	source = uutils-coreutils::git+https://github.com/uutils/coreutils.git
-	source = tee.patch::https://patch-diff.githubusercontent.com/raw/uutils/coreutils/pull/11943.patch
 	source = https://github.com/uutils/coreutils/releases/download/latest-commit/docs.tar.zst
-	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 

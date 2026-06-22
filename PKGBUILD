@@ -3,7 +3,7 @@
 # Contributor: Árni Dagur <arnidg at protonmail dot ch>
 
 pkgname=uutils-coreutils-git
-pkgver=0.8.0.r101.g5daf0a5
+pkgver=0.9.0.r205.ge68ac35
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
@@ -15,13 +15,8 @@ optdepends=("rust-src: optimize with RUSTC_BOOTSTRAP=1")
 provides=(coreutils)
 conflicts=({uutils-,}coreutils)
 source=("${pkgname%-git}::git+${url}.git"
-"tee.patch::https://patch-diff.githubusercontent.com/raw/uutils/coreutils/pull/11943.patch"
 "${url}/releases/download/latest-commit/docs.tar.zst")
-b2sums=('SKIP'
-        '9b54db80ef99627fee08dc748e7d24a8082699dda59d84a61170cd289f823e283ec96156599366d4a87acb2ab7554187d8ca68991f958ecada7157f60b287822'
-        '5739c34cbed5543bcbbe6e0c892a3ed9755500455f7bf06c089116801d857736823129f24f7fed52db814bd516ed1b36aafee426dbcfddadcc3186af99f879c2')
-b2sums[1]=SKIP
-b2sums[2]=SKIP
+b2sums=('SKIP' 'SKIP')
 pkgver() {
   cd ${pkgname%-git}
   git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -33,7 +28,6 @@ export RUSTFLAGS="${RUSTFLAGS} -C force-unwind-tables=no --cfg=linux_latest" # r
 [ $RUSTC_BOOTSTRAP = 1 ] && export CARGOFLAGS='-Zbuild-std=std,panic_abort --config=profile.release.panic=\"immediate-abort\" -Zpanic-immediate-abort'
 package(){
   cd ${pkgname%-git}
-  git apply -v -p1 ../tee.patch
   unset optdepends
   export DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release MULTICALL=y LN="ln -f" MANPAGES=n COMPLETIONS=n #LOCALES=n
   make install LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} SKIP_UTILS="arch kill more uptime hostname" #expand factor unexpand pinky ptx sum shred shuf"
