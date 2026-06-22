@@ -1,0 +1,26 @@
+pkgbase = zcode-appimage
+	pkgdesc = ZCode desktop app packaged from the upstream AppImage
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://zcode.z.ai/en
+	arch = x86_64
+	license = custom:proprietary
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libnotify
+	depends = libxss
+	depends = xdg-utils
+	depends = libdrm
+	depends = mesa
+	provides = zcode
+	conflicts = zcode-bin
+	conflicts = zcode-desktop-bin
+	conflicts = z-code-bin
+	noextract = ZCode-3.1.2-linux-x64.AppImage
+	options = !strip
+	options = !debug
+	source = ZCode-3.1.2-linux-x64.AppImage::https://cdn.zcode-ai.com/zcode/electron/releases/3.1.2/ZCode-3.1.2-linux-x64.AppImage
+	sha256sums = 209f4fc7b9d15ae3165e5bb6be6349306dfff1fbf37c78bbf3e39b6cb58204bd
+
+pkgname = zcode-appimage
