@@ -3,7 +3,7 @@
 _pkgauthor=nao1215
 _pkgname=gup
 pkgname=${_pkgname}-bin
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Update binaries installed by \"go install\" with goroutines"
@@ -21,9 +21,9 @@ options=(!strip)
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.deb")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.dev::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.deb")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[2]}.deb")
-sha256sums_x86_64=('7a36e3653117cc66cf3d49a0d9f4efb48454eb6098d0f0f4f84093861623ec89')
-sha256sums_i686=('0182a72fc074c0d35d78b7b49f2e32dad7a92d5da513043703fb5592e28b9963')
-sha256sums_aarch64=('60df2c0705a08f6cf7c4eb34ea9016538e374591907eba70734dfafee331865f')
+sha256sums_x86_64=('2ea19f5c90a02d0ecfab4dd782681da1865b9ffb6852b63bf32ee715c0fee231')
+sha256sums_i686=('6b6eaa9d252de12ed7fadeefe15a129feed263bf1a21b71bf0b02e272dd644ac')
+sha256sums_aarch64=('2b1dc2c957e1eed3dac80ff44ebf1eb71193fec4ffde61f6411e92716560478a')
 
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = gup-bin
 	pkgdesc = Update binaries installed by "go install" with goroutines
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/nao1215/gup
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = gup-bin
 	provides = gup
 	conflicts = gup
 	options = !strip
-	source_x86_64 = gup-x86_64-1.4.0.deb::https://github.com/nao1215/gup/releases/download/v1.4.0/gup_1.4.0_linux_amd64.deb
-	sha256sums_x86_64 = 7a36e3653117cc66cf3d49a0d9f4efb48454eb6098d0f0f4f84093861623ec89
-	source_i686 = gup-i686-1.4.0.dev::https://github.com/nao1215/gup/releases/download/v1.4.0/gup_1.4.0_linux_386.deb
-	sha256sums_i686 = 0182a72fc074c0d35d78b7b49f2e32dad7a92d5da513043703fb5592e28b9963
-	source_aarch64 = gup-aarch64-1.4.0.deb::https://github.com/nao1215/gup/releases/download/v1.4.0/gup_1.4.0_linux_arm64.deb
-	sha256sums_aarch64 = 60df2c0705a08f6cf7c4eb34ea9016538e374591907eba70734dfafee331865f
+	source_x86_64 = gup-x86_64-1.5.0.deb::https://github.com/nao1215/gup/releases/download/v1.5.0/gup_1.5.0_linux_amd64.deb
+	sha256sums_x86_64 = 2ea19f5c90a02d0ecfab4dd782681da1865b9ffb6852b63bf32ee715c0fee231
+	source_i686 = gup-i686-1.5.0.dev::https://github.com/nao1215/gup/releases/download/v1.5.0/gup_1.5.0_linux_386.deb
+	sha256sums_i686 = 6b6eaa9d252de12ed7fadeefe15a129feed263bf1a21b71bf0b02e272dd644ac
+	source_aarch64 = gup-aarch64-1.5.0.deb::https://github.com/nao1215/gup/releases/download/v1.5.0/gup_1.5.0_linux_arm64.deb
+	sha256sums_aarch64 = 2b1dc2c957e1eed3dac80ff44ebf1eb71193fec4ffde61f6411e92716560478a
 
 pkgname = gup-bin
