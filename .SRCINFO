@@ -1,17 +1,17 @@
 pkgbase = drakontech-bin
-	pkgdesc = A Visual IDE for JavaScript Development.(Prebuilt version.Use system-wide electron)
-	pkgver = 2026.06.04
+	pkgdesc = A flowchart editor that generates source code in Clojure, JavaScript, Lua, Perfolenta, and OneScript.(Prebuilt version.Use system-wide electron)
+	pkgver = 2026.06.19
 	pkgrel = 1
 	url = https://github.com/stepan-mitkin/drakon.tech.desktop
 	arch = x86_64
 	license = Unlicense
 	depends = electron32
-	provides = drakontech=2026.06.04
+	provides = drakontech=2026.06.19
 	conflicts = drakontech
 	options = !emptydirs
-	source = drakontech-2026.06.04.rpm::https://github.com/stepan-mitkin/drakon.tech.desktop/releases/download/v2026.06.04/drakontech-2026.06.04-1.x86_64.rpm
+	source = drakontech-2026.06.19.rpm::https://github.com/stepan-mitkin/drakon.tech.desktop/releases/download/v2026.06.19/drakontech-2026.06.19-1.x86_64.rpm
 	source = drakontech.sh
-	sha256sums = 6f91bb0bb6e771326dc24a0fb6fc3c87fd942b284b0621dc260b65b8b5782a80
+	sha256sums = 193e0059845065e917a5b83301ae287dc34b51c80500b4647ea7f71497986db9
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = drakontech-bin

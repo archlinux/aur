@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=drakontech-bin
 _pkgname=DrakonTech
-pkgver=2026.06.04
+pkgver=2026.06.19
 _electronversion=32
 pkgrel=1
-pkgdesc="A Visual IDE for JavaScript Development.(Prebuilt version.Use system-wide electron)"
+pkgdesc="A flowchart editor that generates source code in Clojure, JavaScript, Lua, Perfolenta, and OneScript.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/stepan-mitkin/drakon.tech.desktop"
 license=('Unlicense')
@@ -20,11 +20,14 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6f91bb0bb6e771326dc24a0fb6fc3c87fd942b284b0621dc260b65b8b5782a80'
+sha256sums=('193e0059845065e917a5b83301ae287dc34b51c80500b4647ea7f71497986db9'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
 _check_electron_version() {
     echo "Verifying Electron version..."
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _app_dir=$(_get_app_dir)
     local _main_exe=""
     if [[ -n "${_app_dir}" ]]; then
         _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
@@ -58,7 +61,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/${pkgname%-bin}/resources/app/drakosha.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
