@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Air Manager
+Comment=Flight simulator instrument panels
+Exec=/usr/bin/airmanager
+Icon=airmanager
+Terminal=false
+Type=Application
+Categories=Game;Simulation;

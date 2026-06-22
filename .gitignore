@@ -1,0 +1,13 @@
+# Makepkg build directories
+src/
+pkg/
+
+# Downloaded source archives
+*.zip
+*.deb
+
+# Compiled Arch Linux packages
+*.pkg.tar.*
+
+# Extracted AirManager directory
+AirManager/
