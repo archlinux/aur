@@ -1,7 +1,7 @@
 # Maintainer Chris Werner Rau <aur@cwrau.io>
 
 pkgname=nodejs-paperclipai
-pkgver=2026.428.0 # renovate: datasource=npm depName=paperclipai
+pkgver=2026.609.0 # renovate: datasource=npm depName=paperclipai
 pkgrel=1
 pkgdesc="Paperclip CLI — orchestrate AI agent teams to run a business"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=("nodejs")
 makedepends=("npm" "python" "nodejs-addon-api")
 source=("https://registry.npmjs.org/${pkgname#nodejs-}/-/${pkgname#nodejs-}-${pkgver}.tgz")
 noextract=("${pkgname#nodejs-}-${pkgver}.tgz")
-sha512sums=('96e30333f44d8b27d38147a72a8363400f75138aab67a1f1b97b4e38926115aeffc7f50336b9ca7e1ffb9caec79087a4434e62aae46670c27e3c9fac6f8bc1da')
+sha512sums=('904f23102d7222e37059f8e5da5b896c10b01fa75ba8654e6705a093dbeacbed310d7108e5175c859e350fc97ca1853bb533f36e952c8eb50a5f8b1ea0a977ab')
 
 package() {
   export NODE_PATH=/usr/lib/node_modules
