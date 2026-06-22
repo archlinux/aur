@@ -1,0 +1,13 @@
+pkgbase = capo-shell-mcp
+	pkgdesc = MCP provider for capo-shell — exec into cluster-api workload clusters
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cwrau/capo-shell-mcp
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	source = capo-shell-mcp-0.1.0.tar.gz::https://github.com/cwrau/capo-shell-mcp/archive/v0.1.0.tar.gz
+	sha256sums = 7335093e950b0012b23fd27fb111f933afebfd8c361ba6917ea592fdf6a4de8e
+
+pkgname = capo-shell-mcp
