@@ -3,8 +3,8 @@
 _pkgauthor=tomasvotava
 pkgname=python-fastapi-sso
 _pkgname=${pkgname#python-}
-pkgver=0.21.0
-pkgrel=2
+pkgver=0.21.1
+pkgrel=1
 pkgdesc="FastAPI plugin to enable SSO to most common providers"
 arch=('any')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -27,7 +27,7 @@ makedepends=(
 conflicts=("${pkgname}")
 provides=("${pkgname}")
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
-sha256sums=('6849853b5626a08b388c76adb04bcf231f02de11a612a1a13a3466cc6248d97a')
+sha256sums=('de0b418651ee3b85717625cdb42a43ab5b7c1b07e70e2ca7d4b5b355bb8e2e3b')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx

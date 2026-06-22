@@ -1,7 +1,7 @@
 pkgbase = python-fastapi-sso
 	pkgdesc = FastAPI plugin to enable SSO to most common providers
-	pkgver = 0.21.0
-	pkgrel = 2
+	pkgver = 0.21.1
+	pkgrel = 1
 	url = https://github.com/tomasvotava/fastapi-sso
 	arch = any
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = python-fastapi-sso
 	depends = python-starlette
 	provides = python-fastapi-sso
 	conflicts = python-fastapi-sso
-	source = python-fastapi-sso::git+https://github.com/tomasvotava/fastapi-sso.git#tag=0.21.0
-	sha256sums = 6849853b5626a08b388c76adb04bcf231f02de11a612a1a13a3466cc6248d97a
+	source = python-fastapi-sso::git+https://github.com/tomasvotava/fastapi-sso.git#tag=0.21.1
+	sha256sums = de0b418651ee3b85717625cdb42a43ab5b7c1b07e70e2ca7d4b5b355bb8e2e3b
 
 pkgname = python-fastapi-sso
