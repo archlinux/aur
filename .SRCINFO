@@ -1,0 +1,18 @@
+pkgbase = escope-git
+	pkgdesc = CLI client for escope, an ephemeral scoped URL shortener
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/exerinity/escope.cli
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	makedepends = git
+	depends = curl
+	optdepends = xclip: clipboard support
+	optdepends = xsel: clipboard support
+	provides = escope
+	conflicts = escope
+	source = escope-git::git+https://github.com/exerinity/escope.cli.git
+	sha256sums = SKIP
+
+pkgname = escope-git
