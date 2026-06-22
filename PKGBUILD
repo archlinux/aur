@@ -3,7 +3,7 @@
 # Contributor: Kuba Serafinowski <zizzfizzix(at)gmail(dot)com>
 pkgname=owncloud-client-6
 pkgver=6.0.3.18040
-pkgrel=2
+pkgrel=3
 pkgdesc='ownCloud client based on mirall (Legacy 6.x version with support for ownCloud Server)'
 arch=(x86_64)
 url='http://owncloud.org/'
@@ -32,7 +32,7 @@ optdepends=(
     'python-nautilus: integration with Nautilus'
 )
 conflicts=(owncloud-client)
-provides=(owncloud-client)
+provides=(owncloud-client=$pkgver)
 install="${pkgname}.install"
 backup=('etc/ownCloud/sync-exclude.lst')
 source=(https://download.owncloud.com/desktop/ownCloud/stable/$pkgver/source/ownCloud-$pkgver.tar.xz)

@@ -1,7 +1,7 @@
 pkgbase = owncloud-client-6
 	pkgdesc = ownCloud client based on mirall (Legacy 6.x version with support for ownCloud Server)
 	pkgver = 6.0.3.18040
-	pkgrel = 2
+	pkgrel = 3
 	url = http://owncloud.org/
 	install = owncloud-client-6.install
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = owncloud-client-6
 	optdepends = nemo-python: integration with Nemo
 	optdepends = python-caja: integration with Caja
 	optdepends = python-nautilus: integration with Nautilus
-	provides = owncloud-client
+	provides = owncloud-client=6.0.3.18040
 	conflicts = owncloud-client
 	backup = etc/ownCloud/sync-exclude.lst
 	source = https://download.owncloud.com/desktop/ownCloud/stable/6.0.3.18040/source/ownCloud-6.0.3.18040.tar.xz
