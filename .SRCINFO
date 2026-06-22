@@ -1,0 +1,15 @@
+pkgbase = dms-shell-plugins-git
+	pkgdesc = First party plugins for DankMaterialShell.
+	pkgver = r102.f458344
+	pkgrel = 1
+	url = https://github.com/AvengeMedia/dms-plugins
+	install = dms-shell-plugins.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = dms-shell
+	provides = dms-shell-plugins
+	source = dms-plugins::git+https://github.com/AvengeMedia/dms-plugins.git
+	sha256sums = SKIP
+
+pkgname = dms-shell-plugins-git
