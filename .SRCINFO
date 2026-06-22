@@ -1,0 +1,19 @@
+pkgbase = calagopus-wings-git
+	pkgdesc = Game server node daemon
+	pkgver = r811.abc6c0c
+	pkgrel = 1
+	url = https://calagopus.com
+	arch = x86_64
+	arch = aarch64
+	arch = powerpc64le
+	arch = riscv64
+	license = MIT
+	provides = calagopus-wings
+	conflicts = calagopus-wings-bin
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	source = calagopus-wings::git+https://github.com/calagopus/wings.git
+	sha256sums = SKIP
+
+pkgname = calagopus-wings-git
