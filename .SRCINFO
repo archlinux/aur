@@ -1,0 +1,36 @@
+pkgbase = wiilink-patcher-bin
+	pkgdesc = Qt application to patch WiiLink servers into WiiConnect24 channels (pre-compiled)
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://github.com/WiiLink24/WiiLink-Patcher-GUI
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	depends = glibc
+	depends = hicolor-icon-theme
+	provides = wiilink-patcher=1.5.3
+	conflicts = wiilink-patcher
+	options = !strip
+	options = !debug
+	source = wiilink-patcher-bin-1.5.3-1.ca.wiilink.Patcher.desktop::https://raw.githubusercontent.com/WiiLink24/WiiLink-Patcher-GUI/v1.5.3/flatpak/ca.wiilink.Patcher.desktop
+	source = wiilink-patcher-bin-1.5.3-1.16x16.png::https://raw.githubusercontent.com/WiiLink24/WiiLink-Patcher-GUI/v1.5.3/flatpak/icons/16x16.png
+	source = wiilink-patcher-bin-1.5.3-1.32x32.png::https://raw.githubusercontent.com/WiiLink24/WiiLink-Patcher-GUI/v1.5.3/flatpak/icons/32x32.png
+	source = wiilink-patcher-bin-1.5.3-1.48x48.png::https://raw.githubusercontent.com/WiiLink24/WiiLink-Patcher-GUI/v1.5.3/flatpak/icons/48x48.png
+	source = wiilink-patcher-bin-1.5.3-1.64x64.png::https://raw.githubusercontent.com/WiiLink24/WiiLink-Patcher-GUI/v1.5.3/flatpak/icons/64x64.png
+	source = wiilink-patcher-bin-1.5.3-1.128x128.png::https://raw.githubusercontent.com/WiiLink24/WiiLink-Patcher-GUI/v1.5.3/flatpak/icons/128x128.png
+	source = wiilink-patcher-bin-1.5.3-1.256x256.png::https://raw.githubusercontent.com/WiiLink24/WiiLink-Patcher-GUI/v1.5.3/flatpak/icons/256x256.png
+	source = wiilink-patcher-bin-1.5.3-1.512x512.png::https://raw.githubusercontent.com/WiiLink24/WiiLink-Patcher-GUI/v1.5.3/flatpak/icons/512x512.png
+	sha256sums = 46e28f63495ad943b00518a7ea6059fa1dd11211b8e20d29cb28cd7403e88761
+	sha256sums = 61d485b0e9308d524502a8a9689e971c1024ff53e83552aed37f39e226b68a13
+	sha256sums = 6a2d361bcf54456e3f39db748897990584df52aac4316cdf45d5243799933fee
+	sha256sums = 776dc64195101f25fbef9c671432a420430a81389f23902bbfd76408462b7f63
+	sha256sums = 470694f8414e4f23e534bb6ee3f5e93505a567054d88fcbfbf55aa890e02e226
+	sha256sums = e0daeed6d621919ce5c29910eb1221804deec0b0b94ad49baf0b80e506650f96
+	sha256sums = 2c1f9b9449e0bdd0602f31cc45541261487ce9b34e2f7e5cf419056629964945
+	sha256sums = 877ef2a91ae48fd82dd844ff14f3b27abf36baa379bae81242f561a4ac44c2db
+	source_x86_64 = wiilink-patcher-bin-1.5.3-1.WiiLinkPatcherGUI-Linux-x64.tar.gz::https://github.com/WiiLink24/WiiLink-Patcher-GUI/releases/download/v1.5.3/WiiLinkPatcherGUI-Linux-x64.tar.gz
+	sha256sums_x86_64 = 76f8469df7524fc0a1b59f8be39003a4839fc2500f353fcc4de34b45ac3d6cd3
+	source_aarch64 = wiilink-patcher-bin-1.5.3-1.WiiLinkPatcherGUI-Linux-arm64.tar.gz::https://github.com/WiiLink24/WiiLink-Patcher-GUI/releases/download/v1.5.3/WiiLinkPatcherGUI-Linux-arm64.tar.gz
+	sha256sums_aarch64 = 87ae70f4f2dc8b6b62635e5745f140a8d6034eeb687dc89a4931e18ce0da33b2
+
+pkgname = wiilink-patcher-bin
