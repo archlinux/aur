@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Qt-Kurarin
+Icon=qt-kurarin
+Exec=qt-kurarin
+Terminal=false
+Categories=AudioVideo;

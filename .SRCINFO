@@ -1,0 +1,19 @@
+pkgbase = qt-kurarin
+	pkgdesc = > 🖥️ Qt-powered Kyuukurarin (きゅうくらりん) on your desktop — animated sprites in sync with the music 🎵
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/VincentZyuApps/Qt-Kurarin
+	arch = any
+	license = unknown
+	makedepends = uv
+	makedepends = python-installer
+	depends = python>=3.12
+	depends = python-pyqt6
+	depends = python-pyqt6-sip
+	depends = python-textual
+	source = https://pypi.python.org//packages/source/q/qt-kurarin/qt_kurarin-0.2.3.tar.gz
+	source = qt-kurarin.desktop
+	sha256sums = 266c5c2791cf6ca45b5ee97a422a2c5bad70e9b77d4ab21511286af04cbf1e7f
+	sha256sums = 0c3eb2d411be433f5017894a7bb6d956161f164e8276c05101ae430e950e49f6
+
+pkgname = qt-kurarin
