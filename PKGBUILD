@@ -9,7 +9,7 @@
 pkgname=aurscan-manticore-bin-release-git
 pkgver=0.5.2
 _pkgname=aurscan
-pkgrel=3
+pkgrel=4
 pkgdesc='LLM-powered pre-build malware scanner for AUR packages (with paru / yay hooks) -- git release binary'
 arch=('x86_64' 'aarch64')
 _repo="manticore-projects/aurscan"
