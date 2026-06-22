@@ -1,27 +1,27 @@
 pkgbase = pince
 	pkgdesc = A Linux reverse engineering tool inspired by Cheat Engine.
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://github.com/korcankaraokcu/PINCE
 	arch = x86_64
 	license = GPL-3.0-or-later WITH CC-BY-3.0
 	makedepends = git
-	makedepends = python-pip
 	makedepends = qt6-tools
 	depends = gdb
 	depends = polkit
 	depends = python-capstone
 	depends = python-keyboard
 	depends = python-keystone
+	depends = python-msgpack
 	depends = python-pexpect
 	depends = python-pygdbmi
 	depends = python-pyqt6
 	optdepends = qt6-wayland: wayland support
-	source = pince::git+https://github.com/korcankaraokcu/PINCE.git#tag=v0.8
+	source = pince::git+https://github.com/korcankaraokcu/PINCE.git#tag=v0.9
 	source = libmemscan::git+https://github.com/brkzlr/libmemscan.git#commit=d5989e416ebaa729f287e7ce490dce03e90c25e2
 	source = pince.desktop
 	source = pince.sh
-	sha256sums = 2318c1434081176923b44e56f3c1be79d7bfff3a718d4613f5ae538cafd94c3b
+	sha256sums = b12e326343e5c0739720baf0dc385836da9cee4d6c10f4280b01e428e7fc0f8d
 	sha256sums = 28bfa1011872220d05389d1747cbaf89765d6e8e158ebf9fe1660e89cfc06b1c
 	sha256sums = ce07383acea3a2b607e6328cc33390d76a5c76481ae8cff8080dc6eb6da274ab
 	sha256sums = ce4e18550a4aecd48ce21ba7f4233b9acfdd70c9c163aff0d53a1d960fc2c5d7
