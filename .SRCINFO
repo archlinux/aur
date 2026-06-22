@@ -1,0 +1,22 @@
+pkgbase = jumper-bin
+	pkgdesc = Accurate and fast files/directories' jumper
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/homerours/jumper
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = jumper
+	conflicts = jumper
+	options = !strip
+	source = README-1.2.md::https://raw.githubusercontent.com/homerours/jumper/v1.2/README.md
+	source = LICENSE-1.2::https://raw.githubusercontent.com/homerours/jumper/v1.2/LICENCE
+	sha256sums = c4e877fa72dbdc6a40438c12ff0ec79644eef6d0c627f776931cd56c7d2b86a6
+	sha256sums = 6504a1b173cf6f9c16873d14f07100d98bc2b381c131b2368b599debb94fcd3a
+	source_x86_64 = jumper-x86_64-1.2.tgz::https://github.com/homerours/jumper/releases/download/v1.2/jumper-v1.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 29dfdf03763cb24fdc61e7d6a0958932d652fe49f1f3482e48c3e6aa465e4f1b
+	source_aarch64 = jumper-aarch64-1.2.tgz::https://github.com/homerours/jumper/releases/download/v1.2/jumper-v1.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = eb46b65f70b278269744a40195fec4b1be47698a908852b0df3dd0c9b8c7d708
+
+pkgname = jumper-bin

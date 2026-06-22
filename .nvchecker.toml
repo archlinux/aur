@@ -1,0 +1,5 @@
+[jumper-bin]
+source = "github"
+github = "homerours/jumper"
+use_latest_release = true
+prefix = "v"
