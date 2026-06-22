@@ -1,20 +1,21 @@
 pkgbase = ai-gate
-	pkgdesc = ChatGPT + Google Gemini (Bard) + Perplexity AI+ Claude AI = Ai Gate. NO API key needed.(Use system-wide electron)
-	pkgver = 4.5.0
+	pkgdesc = A single gateway to ChatGPT, Gemini, Claude, Grok, Perplexity and more.(Use system-wide electron)
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://aigate.inulute.com/
 	arch = any
-	license = MIT
+	license = GPL-3.0-only
 	makedepends = gendesk
 	makedepends = npm
 	makedepends = nvm
 	makedepends = curl
 	makedepends = jq
+	makedepends = git
 	depends = electron34
 	conflicts = ai-gate
-	source = ai-gate-4.5.0::git+https://github.com/inulute/ai-gate#tag=v4.5.0
+	source = ai-gate-4.6.0::git+https://github.com/inulute/ai-gate#tag=v4.6.0
 	source = ai-gate.sh
-	sha256sums = fab67aa465db0e79db49afda0811ec0f1443bab8246be6c84720983ee68908c0
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = 4ead903d9ac756c1e3795140c8713d49119c93dc88d75cf7c68dd4ee2dfb397d
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = ai-gate
