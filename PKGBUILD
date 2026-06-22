@@ -3,8 +3,8 @@
 
 _pkgname=hermes-agent
 pkgname=python-${_pkgname}
-tag=2026.6.5
-pkgver=0.16.0
+tag=2026.6.19
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="The self-improving AI agent — creates skills from experience, improves them during use, and runs anywhere"
 arch=('any')
@@ -13,11 +13,12 @@ license=('MIT')
 depends=('python>=3.11' 'python-dotenv' 'python-prompt_toolkit' 'python-openai' 'python-fire'
           'python-ruamel-yaml' 'python-rich' 'python-pyjwt' 'python-tenacity' 'python-yaml'
           'python-httpx' 'python-requests' 'python-jinja' 'python-pydantic' 'python-psutil'
-          'python-markdown' 'python-pathspec' 'python-ptyprocess')
+          'python-markdown' 'python-pathspec' 'python-ptyprocess'
+          'python-certifi' 'python-packaging' 'python-urllib3' 'python-websockets'
+          'python-pillow' 'python-multipart' 'python-fastapi' 'python-starlette')
 optdepends=('python-telegram-bot: Telegram messaging support'
             'python-discord: Discord messaging support'
             'python-aiohttp: Async HTTP for messaging/web, QQ bot & Wechat messaging needs this'
-            'python-fastapi: Web API server support'
             'python-mcp: Model Context Protocol support'
             'python-anthropic: Anthropic Claude API support'
             'python-faster-whisper: Local voice transcription'
@@ -26,7 +27,23 @@ optdepends=('python-telegram-bot: Telegram messaging support'
             'python-simple-term-menu: Interactive CLI menu'
             'python-slack-sdk: Slack integration'
             'python-qrcode: QR code generation for auth'
-            'python-croniter: Cron scheduling support')
+            'python-uvicorn: ASGI server (AUR)'
+            'python-croniter: Cron scheduling support (AUR)'
+            'python-exa-py: Exa web search backend'
+            'python-firecrawl-py: Firecrawl web search backend'
+            'python-parallel-web: Parallel web search backend'
+            'python-fal-client: Fal image generation backend'
+            'python-edge-tts: Edge TTS TTS backend'
+            'python-modal: Modal backend'
+            'python-daytona: Daytona backend'
+            'python-hindsight-client: Hindsight backend'
+            'python-brotlicffi: Brotli compression for aiohttp'
+            'python-slack-bolt: Slack Bolt framework'
+            'python-mautrix: Matrix messaging support'
+            'python-aiosqlite: SQLite async for Matrix'
+            'python-asyncpg: PostgreSQL async for Matrix'
+            'python-aiohttp-socks: SOCKS proxy for Matrix'
+            'python-defusedxml: XML hardening for WeCom')
 makedepends=('python-installer' 'python-wheel' 'python-build' 'python-setuptools' 'nodejs' 'npm')
 # Binary is a self-contained Bun executable with embedded JS/resources - stripping breaks it
 options=('!strip' '!debug')
@@ -34,7 +51,7 @@ source=(
     "${url}/archive/refs/tags/v${tag}.tar.gz"
 )
 sha256sums=(
-    '09ae9eef4ea88d3a6689b2071e7c927a4a2ee10e737c0974afd5a19402c090ee'
+    '69b805ec0a7a7be880068ba8a3b17479d7ba29f0cac0a2e9c6692c02f346ba91'
 )
 
 package() {
