@@ -4,8 +4,8 @@
 #https://comate-ide.bj.bcebos.com/updates/stable/linux/x64/latest.json
 pkgname=comate-bin
 _pkgname=Comate
-pkgver=2.1.4
-_version=abff953ef9fd72cfae07b2d96e0e66c91de5e5a6-256928360
+pkgver=2.2.0
+_version=c948bd9dc56221a6f21c345f8c3f77f7574d0cfc-257651054
 _electronversion=39
 pkgrel=1
 pkgdesc="Code as you like, one step ahead, and understand your intelligent code assistant better.(Prebuilt version)"
@@ -48,7 +48,7 @@ sha256sums=('a8bc5fd3f812e99060966d24f38295a1b07874e82bb5f28bfa8633b0f173af39'
             '0c8fee636da036e57fcde0385bdc698126c4b179de663ad315e8299d483abc9d'
             '787bf0078b80c66fa5b8191991700afd6e32e9f285cdb32f69791b8894c86fd5'
             '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
-sha256sums_x86_64=('e830e88bd6f5afc5e9943e58f3e1d187a0b6c3fc19d6a742fdd84d6d78ec50f6')
+sha256sums_x86_64=('cd58013e25bcd8563947e6b73a29ff762e8316d7d0694e3327fc542ac169ad84')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
