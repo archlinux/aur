@@ -1,0 +1,16 @@
+pkgbase = imagetransient
+	pkgdesc = Compact Qt 6 app for creating MP4 transition videos from two still images
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/yousefvand/ImageTransient
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	depends = qt6-base
+	depends = ffmpeg
+	source = imagetransient-0.2.0.tar.gz::https://github.com/yousefvand/ImageTransient/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = c03fa44e03083394f1c34ace5973ac104e3d7d7d3341946c1a6654b3d62e7f77
+
+pkgname = imagetransient
