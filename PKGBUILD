@@ -30,7 +30,7 @@ optdepends=(
 # content URLs. All dynamic, so no static source entry for release assets.
 _gpgkey="andreas@manticore-projects.com.gpg"
 source=("${_gpgkey}")
-sha256sums=('08ca421f7b39c6ca91e684fd18ab053466394e3658cabf89d001358e72b17def')
+sha256sums=('182cc1de21af47b7d5cd498cc21d04ff01d9a3cabc149dfcabba88a4be761322')
 
 # Map Arch architecture -> upstream asset suffix
 case "${CARCH:-}" in
