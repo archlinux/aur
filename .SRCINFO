@@ -1,6 +1,6 @@
 pkgbase = python-prospector
 	pkgdesc = Python static analysis tool
-	pkgver = 1.18.0
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://github.com/PyCQA/prospector/
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-prospector
 	optdepends = vulture: find dead code
 	optdepends = python-ruff: python linter
 	optdepends = pyright: python type checker
-	source = python-prospector-1.18.0.tar.gz::https://github.com/prospector-dev/prospector/archive/refs/tags/v1.18.0.tar.gz
-	sha256sums = fe2bbf5b276582d9906057683ae828d17256c7dda5d6191056891f31cae71932
+	source = python-prospector-1.19.0.tar.gz::https://github.com/prospector-dev/prospector/archive/refs/tags/v1.19.0.tar.gz
+	sha256sums = a744eef6763b15bdcdb8756b90dd731558caabb1434dd68e17f690ce96614fdc
 
 pkgname = python-prospector
 	depends = python
