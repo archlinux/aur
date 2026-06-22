@@ -1,0 +1,17 @@
+pkgbase = microsandbox
+	pkgdesc = Easy, fast and local-first microVM runtime
+	pkgver = 0.5.8
+	pkgrel = 1
+	url = https://github.com/superradcompany/microsandbox
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = rust
+	depends = glibc
+	depends = libgcc
+	provides = microsandbox
+	provides = msb
+	source = microsandbox-0.5.8.crate::https://crates.io/api/v1/crates/microsandbox/0.5.8/download
+	sha256sums = cddffddd69c0ec53410d629aa89f7ddd43bec2130cdccb708edb918c3080aad0
+
+pkgname = microsandbox
