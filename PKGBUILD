@@ -2,7 +2,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=browser360-bin
 _pkgname=com.360.browser-stable
-pkgver=13.4.1130.70
+pkgver=13.4.1130.80
 pkgrel=1
 pkgdesc="360 Browser stable version"
 arch=(
@@ -16,16 +16,16 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'qt5-base'
     'alsa-lib'
-    'gtk2'
     'gtk3'
     'nss'
     'dmidecode'
+    'libxcrypt-compat'
 )
 install="${pkgname%-bin}.install"
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::https://gedown.360safe.com/gc/signed_${_pkgname}_${pkgver}-1_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::https://gedown.360safe.com/gc/signed_${_pkgname}_${pkgver}-1_amd64.deb")
-sha256sums_aarch64=('55b1350a4b531fa7dcfd8dbf1ce69e01593240971096525c945acc1aa51fbc92')
-sha256sums_x86_64=('8e54f99a95c7d0f3980d3ffca0ee3c78c931366a1d96a44e9c8beb4892b6df03')
+sha256sums_aarch64=('f285c19c282e5125f1705b6046daf5926580e1b55e32facf2dbd479e9dc1bb2c')
+sha256sums_x86_64=('979b36d0f62442e2260bed621de37a81aba95d709b9800c5a9e623ab765f84db')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     rm -rf  "${srcdir}/opt/apps/${_pkgname}/info" \
