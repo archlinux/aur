@@ -1,20 +1,18 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-pkgname=gitmsg
 pkgauthor=razakadam74
+pkgname=gitmsg
 pkgver=0.9.0
 pkgrel=1
+pkgdesc="Fast, offline, deterministic Conventional Commit message generator. No LLM, no API key, no network."
 
 _npmname=${pkgname}
 _npmauthor=@${pkgauthor}
 _npmver=${pkgver}
 
-pkgdesc="Fast, offline, deterministic Conventional Commit message generator. No LLM, no API key, no network."
-pkgver=${_npmver}
-pkgrel=1
 arch=("x86_64")
-url="https://github.com/lance0/punt"
 license=("MIT")
+url="https://github.com/${pkgauthor}/${pkgname}"
 
 depends=("nodejs")
 makedepends=("npm" "jq")
