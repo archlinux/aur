@@ -1,6 +1,6 @@
 pkgbase = chess-git
 	pkgdesc = Chess with variants (Fog of War, Bughouse, 4-player, Crazyhouse, Atomic…), AI, LAN and puzzles — Flutter + Rust (latest git)
-	pkgver = 1.0.1.r0.g0000000
+	pkgver = 1.0.1.r4.g9e75802
 	pkgrel = 1
 	url = https://github.com/RamazanBerk20/chess
 	arch = x86_64

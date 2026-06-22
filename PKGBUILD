@@ -1,6 +1,6 @@
 # Maintainer: Ramazan Berk Şirin <ramazanberksirin@protonmail.com>
 pkgname=chess-git
-pkgver=1.0.1.r0.g0000000
+pkgver=1.0.1.r4.g9e75802
 pkgrel=1
 pkgdesc="Chess with variants (Fog of War, Bughouse, 4-player, Crazyhouse, Atomic…), AI, LAN and puzzles — Flutter + Rust (latest git)"
 arch=('x86_64')
