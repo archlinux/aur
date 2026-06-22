@@ -1,6 +1,6 @@
 pkgbase = mogan-bin
 	pkgdesc = A structured wysiwyg scientific text editor.(Prebuilt version)
-	pkgver = 2026.2.5
+	pkgver = 2026.2.6
 	pkgrel = 1
 	url = https://mogan.app/
 	arch = x86_64
@@ -15,12 +15,12 @@ pkgbase = mogan-bin
 	depends = qt6-base
 	depends = libxkbcommon
 	depends = fcitx5-qt
-	provides = mogan=2026.2.5
+	provides = mogan=2026.2.6
 	conflicts = mogan
 	options = !strip
-	source = mogan-2026.2.5.deb::https://github.com/XmacsLabs/mogan/releases/download/v2026.2.5/mogan-stem-v2026.2.5-debian13-amd64.deb
+	source = mogan-2026.2.6.deb::https://github.com/XmacsLabs/mogan/releases/download/v2026.2.6/mogan-stem-v2026.2.6-debian13-amd64.deb
 	source = mogan.sh
-	sha256sums = a54d9fb46693febcfc8e90f02165b70c9eca8338f67fa5e064e108528d45e1f5
+	sha256sums = b78771d2dded00076f11f4d041fbf2552b8950ef66d56902ad8a2a0e09c56003
 	sha256sums = b3e9c2ea2115387e381b4f66d286e59c0ad4a16b94eed5313b03ce05fadc8863
 
 pkgname = mogan-bin

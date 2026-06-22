@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mogan-bin
 _pkgname='Mogan STEM'
-pkgver=2026.2.5
+pkgver=2026.2.6
 pkgrel=1
 pkgdesc="A structured wysiwyg scientific text editor.(Prebuilt version)"
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-stem-v${pkgver}-debian13-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a54d9fb46693febcfc8e90f02165b70c9eca8338f67fa5e064e108528d45e1f5'
+sha256sums=('b78771d2dded00076f11f4d041fbf2552b8950ef66d56902ad8a2a0e09c56003'
             'b3e9c2ea2115387e381b4f66d286e59c0ad4a16b94eed5313b03ce05fadc8863')
 prepare() {
     sed -i -e "
@@ -40,8 +40,8 @@ prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i -e "
         s/Exec=\/opt\/${pkgname%-bin}-stem\/bin\/${pkgname%-bin}stem/Exec=${pkgname%-bin}/g
-        s/Icon=${pkgname%-bin}-stem/Icon=${pkgname%-bin}/g
-    " "${srcdir}/usr/share/applications/${pkgname%-bin}-stem.desktop"
+        s/Icon=${_pkgname// /}/Icon=${pkgname%-bin}/g
+    " "${srcdir}/usr/share/applications/${_pkgname// /}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
@@ -60,6 +60,6 @@ package() {
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_mt_size}/mimetypes/texmacs-document.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_mt_size}/apps"
     done
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}-stem.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname// /}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/mime/packages/texmacs.xml" "${pkgdir}/usr/share/mime/packages/${pkgname%-bin}.xml"
 }
