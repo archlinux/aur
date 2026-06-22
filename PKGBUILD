@@ -1,7 +1,7 @@
 # Maintainer: 9M2PJU <9m2pju@gmail.com>
 pkgname=aprstac-bin
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern APRS web client, digipeater, IGate, BBS, and fileshare (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
 url="https://aprstac.com/"
@@ -23,6 +23,8 @@ package() {
   # makepkg automatically extracts the downloaded .deb ar archive into $srcdir.
   # We extract the inner data archive to $pkgdir.
   bsdtar -xf "$srcdir/data.tar.xz" -C "$pkgdir/" --no-same-owner
+  find "$pkgdir" -type d -exec chmod 755 {} +
+  find "$pkgdir" -type f -exec chmod go-w {} +
 
   # Align systemd service path with Arch Linux packaging standards
   # (Debian uses /etc/systemd/system, Arch packages use /usr/lib/systemd/system)
