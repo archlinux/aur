@@ -1,0 +1,25 @@
+post_install() {
+    cat <<'EOF'
+FUJIFILM Printer Driver for UOS has been installed.
+
+Restart CUPS before adding printers:
+  sudo systemctl restart cups.service
+
+In the CUPS or desktop printer setup UI, select:
+  Manufacturer: FUJIFILM
+  Model: PDF Print Driver for UOS
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    cat <<'EOF'
+FUJIFILM Printer Driver for UOS has been removed.
+
+Restart CUPS to unload removed filters:
+  sudo systemctl restart cups.service
+EOF
+}

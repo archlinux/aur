@@ -1,0 +1,21 @@
+pkgbase = ffuosprint-bin
+	pkgdesc = FUJIFILM Printer Driver for UOS
+	pkgver = 1.0.1.7
+	pkgrel = 1
+	url = https://m3support-fb.fujifilm-fb.com.cn/driver_downloads/www/
+	install = ffuosprint-bin.install
+	arch = x86_64
+	license = LicenseRef-FUJIFILM-custom
+	depends = cups
+	depends = glibc
+	depends = libcups
+	provides = ffuosprint
+	conflicts = ffuosprint
+	options = !strip
+	options = !debug
+	backup = etc/cups/mimeff.convs
+	backup = etc/cups/mimeff.types
+	source = https://m3support-fb.fujifilm-fb.com.cn/driver_downloads/signed_ffuosprint_1.0.1.7-1_amd64.deb.zip
+	sha256sums = a1ae897aec62cadbe8621622cce06a1bf962c9a23bf47649e3c1636cf5f7287f
+
+pkgname = ffuosprint-bin
