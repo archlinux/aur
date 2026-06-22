@@ -1,7 +1,7 @@
 # Maintainer: Klim Kostiuk <2601074@gmail.com>
 pkgname=driftwm-git
 _pkgname=driftwm
-pkgver=0.11.0.r0.g938462c
+pkgver=0.12.0.r0.gfe5d63b
 pkgrel=1
 pkgdesc="Trackpad-first infinite canvas Wayland compositor (git)"
 arch=('x86_64' 'aarch64')
