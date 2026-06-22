@@ -3,7 +3,7 @@
 
 _pkgbase=whisper.cpp
 pkgname="${_pkgbase}-cuda"
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="High-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model (with NVIDIA CUDA optimizations)"
 arch=('aarch64' 'x86_64')
@@ -23,13 +23,13 @@ source=(
   "${_pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
   disable-deprecated.patch
 )
-sha256sums=('58252617f539320c42f8f40052433bce0556f78977d3f47f0ddcfe31a4722146'
+sha256sums=('147267177eef7b22ec3d2476dd514d1b12e160e176230b740e3d1bd600118447'
             '5f880edae417c7083a9403260e5c381285e4c52ccc39f127c6510fdfa249c1ad')
-b2sums=('a837f6c70472b6a893f38f272e4ba42ce4db4a684318b718fae3cc4e7d3f179973162a6504cbdfd4e8314239d9788f438de052f2ad6628f7af15675a6276059c'
+b2sums=('7e9321dd01ac2a3816202a803e0ba7e1230b0b741170d308dd552a00c6196932a35413957b71e568f7de10f0648da9b1e611cfd9df3e4950cfd24d8087141ed5'
         '578d36bdb1749b846ea96c76bf42871bea1c6ce3a3eee3670a121361c71ae09b0bf36179880fc4f0e752d09a0adc5bee1304a1e570cd6dc3e9a84662dd2fd899')
 
 prepare() {
-  cd "${srcdir}/${_pkgbase}-${pkgver}"
+  cd "${srcdir}/${_pkgbase}-${pkgver}" || exit
   patch -Np1 -i "${srcdir}/disable-deprecated.patch"
 }
 
