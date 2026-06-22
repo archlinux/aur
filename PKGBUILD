@@ -2,8 +2,8 @@
 
 _basename=jitsi
 _pkgname=videobridge
-_tag=2.3-293-g9ea6a8cc1
-_version=2.3+293+g9ea6a8cc1
+_tag=2.3-296-g318c08ddc
+_version=2.3+296+g318c08ddc
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
@@ -12,11 +12,11 @@ pkgdesc="Jitsi Meet Videobridge nightly build"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
-depends=("java-runtime-openjdk=11" "bash")
+depends=("java-runtime-openjdk=17" "bash")
 optdepends=("prosody")
 makedepends=(
         "git"
-        "java-environment-openjdk=11"
+        "java-environment-openjdk=17"
         "unzip" "maven"
 )
 options=('!strip')
@@ -37,7 +37,7 @@ source=(
 
 build() {
         cd "$pkgname"
-        export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+        export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
         export PATH=$JAVA_HOME/bin:$PATH
         mvn clean
         mvn package -DskipTests -Dassembly.skipAssembly=true install
@@ -68,7 +68,7 @@ package() {
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/$pkgname.conf"
 }
-sha256sums=('9aa1489724b2c6a8d447379429fb3c79b0e48bcd20f2dded6e0275ff0424a6fd'
+sha256sums=('8c28eaf7b4957d8d84240dd8e670ceea719d5fb756c31593d043cc9cead998a6'
             '0bd385d7444211b5f28d332dad263e9b3683fc27942926ac614cfa32f4a3f2f8'
             'cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7'
             '70412a3894300f86a997ee926db87bb6148990a73dd71119f29a50286f919699'
