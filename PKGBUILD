@@ -54,11 +54,12 @@ build() {
   # go writes: GOMODCACHE (${srcdir}/.go-mod-cache), GOCACHE (${srcdir}/.go-build-cache)
   export GOMODCACHE="${srcdir}/.go-mod-cache"
   export GOCACHE="${srcdir}/.go-build-cache"
+  local _import="${url#https://}"
   local _date; _date="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
   go build -ldflags="-s -w \
-    -X github.com/manticore-projects/aurscan/internal/version.Version=v${pkgver} \
-    -X github.com/manticore-projects/aurscan/internal/version.Commit=${pkgver} \
-    -X github.com/manticore-projects/aurscan/internal/version.Date=${_date}" \
+    -X ${_import}/internal/version.Version=v${pkgver} \
+    -X ${_import}/internal/version.Commit=${pkgver} \
+    -X ${_import}/internal/version.Date=${_date}" \
     -o aurscan "./cmd/aurscan"
 }
 
