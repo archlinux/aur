@@ -76,15 +76,10 @@ check() {
   curl -fsS "${_api}/git/tags/${_ref_sha}" \
     | jq -j '.verification.signature' > "${srcdir}/tag-sig.gpg"
 
-  local _gpghome="${srcdir}/gnupg"
-  mkdir -p "$_gpghome"
-  chmod 700 "$_gpghome"
-  local _gpg=(gpg --batch --homedir "$_gpghome")
-  "${_gpg[@]}" --import "${srcdir}/andreas@manticore-projects.com.gpg" >/dev/null 2>&1
-  "${_gpg[@]}" --quick-set-ownertrust "61E73AA7539ACB261ABCF10C188331308EF56D11" ultimate
-
   printf 'Verifying signature on git tag v%s:\n' "${pkgver}"
-  "${_gpg[@]}" --verify "${srcdir}/tag-sig.gpg" "${srcdir}/tag-payload"
+  gpg --dearmor < "${srcdir}/andreas@manticore-projects.com.gpg" > "${srcdir}/keyring.gpg"
+  gpgv --keyring "${srcdir}/keyring.gpg" \
+    "${srcdir}/tag-sig.gpg" "${srcdir}/tag-payload"
 }
 
 package() {
