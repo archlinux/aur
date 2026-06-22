@@ -9,7 +9,7 @@ pkgname=(
     python-miapply-git
 )
 pkgver=1.5.4.r13.g1d5f452
-pkgrel=1
+pkgrel=2
 pkgdesc="Submitting a request for bootloader unlocking permission from the Mi Community automatically"
 arch=(any)
 url="https://github.com/offici5l/MiCommunityTool"
@@ -56,11 +56,12 @@ build() {
 }
 
 package_python-micommunitytool-git() {
-    provides=(${pkgname})
-    conflicts=(${pkgname})
+    provides=(${pkgname%-git})
+    conflicts=(${pkgname%-git})
     depends=(
         python
         # AUR
+        miunlocktool
         python-micommunity
         python-miapply
         python-migate
