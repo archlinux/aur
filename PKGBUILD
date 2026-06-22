@@ -6,12 +6,12 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Easy userspace bandwidth manager for Linux"
 
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 _gitversion=v${pkgver}
 
 arch=('x86_64')
-_barch=('linux-x86_64')
+_barch=('x86_64-linux')
 
 _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
@@ -30,23 +30,28 @@ source=("USAGE-${pkgver}.md::${_ghurlraw}/docs/usage.md"
 		"GETTING-STARTED-${pkgver}.md::${_ghurlraw}/docs/getting-started.md"
 		"STRICT-BACKEND_DESIGN-${pkgver}.md::${_ghurlraw}/docs/strict-backend-design.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
-source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
 sha256sums=('0d7b530ad317af15a5cc8eb0c91926d3c0f26ebfcfe5342e4c10c8bede3b5923'
             'df41f581b3bcec0f061c17d7e24b7d2f9d56d065fd12079f5c783239615e27d0'
-            '6bd60b489145eadfe91e3f70baf4bd8456a1b26bfda113c301bbf08dfddc8ee4'
+            'ae9752c1388fe6f064a472b87bccb298f2805f1535293485d35bc60285771f02'
             'ca9afbfe436189bc5f49ae4109135223dd00fc7f4f61f052605225abc329a7b7')
-sha256sums_x86_64=('19442095c1718925025a860a49955c0762546836edd7be4c8d336a93106aa8f4')
+sha256sums_x86_64=('553236629569463f6516f9f487670b36971eea9f7640e02faf64fa1e40bd49e6')
 
+
+case ${CARCH} in
+  ${arch[0]})
+    _CARCH=${_barch[0]}
+    ;;
+esac
 
 prepare() {
-    cd "${srcdir}/${_gitname}-${_gitversion}/" || exit
+    cd "${srcdir}/${_gitname}-${_gitversion}-${_CARCH}/" || exit
 
     mkdir -p docs
     mv ../*.md ./docs
 }
 
 build() {
-    cd "${srcdir}/${_gitname}-${_gitversion}/" || exit
+    cd "${srcdir}/${_gitname}-${_gitversion}-${_CARCH}/" || exit
 
     mkdir -p completions
     ./${_appname} completions zsh > "./completions/${_appname}.zsh"
@@ -58,7 +63,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${_gitname}-${_gitversion}/" || exit
+	cd "${srcdir}/${_gitname}-${_gitversion}-${_CARCH}/" || exit
 
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
