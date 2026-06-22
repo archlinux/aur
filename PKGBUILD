@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Palencsar <moin@nerdbear.de>
 pkgname=bearwave-git
 pkgver=1.0.5
-pkgrel=2
+pkgrel=8
 pkgdesc="KDE-focused desktop internet radio app"
 arch=('x86_64')
 url="https://github.com/spalencsar/bearwave"
