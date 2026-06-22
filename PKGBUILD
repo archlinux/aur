@@ -2,7 +2,7 @@
 
 pkgname=orca-slicer-bin
 pkgver=2.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="G-code generator for 3D printers"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
@@ -36,4 +36,6 @@ package() {
 
   install -d ${pkgdir}/usr/share/icons/
   cp -r squashfs-root/usr/share/icons/hicolor/ ${pkgdir}/usr/share/icons/
+
+  chmod +x ${pkgdir}/opt/orca-slicer/libexec/orca-slicer-env
 }
