@@ -2,26 +2,33 @@
 
 pkgbase=bcu-git
 pkgname=bcu-git
-pkgver=1.1.129.r0.g5342999
+pkgver=1.1.130.r0.g806e143
 pkgrel=1
 epoch=
 pkgdesc="bcu (Board Control Utilities)"
 arch=($CARCH)
 url="https://github.com/nxp-imx/bcu"
-license=('Custom')
+license=('BSD-3-Clause')
 groups=()
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
-depends=(bzip2
-    zlib
-    confuse
-    curl
+depends=(
+    glibc
     libftdi
     libyaml
     libusb
+)
+makedepends=(
+    'cmake' 
+    'git' 
+    'ninja'
+    bzip2
+    confuse
+    curl
     libzip
-    openssl)
-makedepends=('cmake' 'git' 'ninja')
+    openssl
+    zlib
+    )
 checkdepends=()
 optdepends=("mfgtools-git: uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools.")
 replaces=()
