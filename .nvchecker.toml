@@ -1,0 +1,3 @@
+[perl-email-stuffer]
+source = "cpan"
+cpan = "Email-Stuffer"
