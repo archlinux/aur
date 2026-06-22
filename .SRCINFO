@@ -1,6 +1,6 @@
 pkgbase = agentsview-bin
 	pkgdesc = A local-first desktop and web application for browsing, searching, and analyzing AI agent coding sessions. Supports Claude Code, Codex, Gemini, OpenCode, Copilot and many other agents.
-	pkgver = 0.34.1
+	pkgver = 0.34.3
 	pkgrel = 1
 	url = https://github.com/kenn-io/agentsview
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = agentsview-bin
 	depends = libstdc++
 	provides = agentsview
 	conflicts = agentsview
-	source = README-0.34.1.md::https://raw.githubusercontent.com/kenn-io/agentsview/v0.34.1/README.md
-	source = LICENSE-0.34.1::https://raw.githubusercontent.com/kenn-io/agentsview/v0.34.1/LICENSE
+	source = README-0.34.3.md::https://raw.githubusercontent.com/kenn-io/agentsview/v0.34.3/README.md
+	source = LICENSE-0.34.3::https://raw.githubusercontent.com/kenn-io/agentsview/v0.34.3/LICENSE
 	sha256sums = 933f5ccc13ca37767203cdf349ea8fe367335782b577a64ad13d6532c4f39bf3
 	sha256sums = ffb1006bf3c32ec8da3ad6c5f693d8516eecb355df848a694332fa13174a77d4
-	source_x86_64 = agentsview-x86_64-0.34.1.tgz::https://github.com/kenn-io/agentsview/releases/download/v0.34.1/agentsview_0.34.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = b17fd4fcbf7980ddab75b25d0409bc58d236ad2c5166fe937065b547323f4d1c
-	source_aarch64 = agentsview-aarch64-0.34.1.tgz::https://github.com/kenn-io/agentsview/releases/download/v0.34.1/agentsview_0.34.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = b95b3c5ef7fc2bffdc3e28a22784a74c4ecb591748a364425219cc069ead358e
+	source_x86_64 = agentsview-x86_64-0.34.3.tgz::https://github.com/kenn-io/agentsview/releases/download/v0.34.3/agentsview_0.34.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 30ef04ac12d57041e82cf247ae56a2ce38a671519e7de21197e5812649b44591
+	source_aarch64 = agentsview-aarch64-0.34.3.tgz::https://github.com/kenn-io/agentsview/releases/download/v0.34.3/agentsview_0.34.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = bf2170256f66006091f2d8a4393d690c01fae66fb9d9feb04332fe87c8b60efc
 
 pkgname = agentsview-bin
