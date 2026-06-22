@@ -1,46 +1,57 @@
-# Maintainer: Moritz Bunkus <moritz@bunkus.org>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Moritz Bunkus <moritz@bunkus.org>
 
-pkgname='perl-ppi-xs'
-pkgver='0.910'
-pkgrel='2'
-pkgdesc="(Minor) XS acceleration for PPI"
-arch=('i686' 'x86_64')
-license=('Artistic-2.0' 'GPL-1.0-or-later')
+_author=ETHER
+_dist=PPI-XS
+pkgname=perl-${_dist@L}
+pkgver=0.910
+pkgrel=3
+pkgdesc='(Minor) XS acceleration for PPI'
+arch=('x86_64')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-ppi>=1.000'
+    'perl-xsloader'
+    'perl>=5.6.0'
+)
+makedepends=('perl-extutils-makemaker')
+checkdepends=(
+    'perl-extutils-makemaker'
+    'perl-pathtools'
+    'perl-test-simple'
+    'perl>=5.6.0'
+)
+optdepends=('perl-cpan-meta>=2.120900')
 options=('!emptydirs')
-depends=('perl-ppi>=1.000')
-makedepends=()
-url='https://metacpan.org/pod/PPI::XS'
-source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/PPI-XS-${pkgver}.tar.gz")
-sha512sums=('e4eb631cb6272bcb42acefe70ccb7fcf2c2fb34feabf16908de135df98b870ffc4b4d21fd705b5daeee76fe076478508391ccec9db764e9360ff523cfc1a777d')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('cdf4e37d8f7fc3b44d4bdbe86fd35d5cb331ca6ff44d26e00a1d97e0f46ffc60')
 
-prepare_environment() {
-  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-    PERL_AUTOINSTALL=--skipdeps                            \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
-  cd "${srcdir}/PPI-XS-${pkgver}"
+build()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
 }
 
-build() {
-  prepare_environment
-  /usr/bin/perl Makefile.PL
-  make
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
 }
 
-check() {
-  prepare_environment
-  make test
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-package() {
-  prepare_environment
-  make install
-  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
-}
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}
