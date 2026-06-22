@@ -1,16 +1,19 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
+pkgauthor=yordan-kanchelov
 pkgname=sync-worktrees
 pkgdesc="Git cli tool for managing worktrees"
 pkgver=5.0.0
 pkgrel=1
-arch=("x86_64")
-url="https://github.com/yordan-kanchelov/sync-worktrees"
-_urlraw="https://raw.githubusercontent.com/yordan-kanchelov/sync-worktrees/v${pkgver}"
-license=("MIT")
 
 _npmname=${pkgname}
 _npmver=${pkgver}
+
+arch=("x86_64")
+license=("MIT")
+
+url="https://github.com/${pkgauthor}/${pkgname}"
+_urlraw="https://raw.githubusercontent.com/${pkgauthor}/${pkgname}/v${pkgver}"
 
 provides=("${pkgname}")
 
