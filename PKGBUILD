@@ -4,7 +4,7 @@ pkgname=bettbox-compatible-bin
 _pkgname=Bettbox
 pkgver=1.18.1
 _pkgver="${pkgver/.pre/-pre}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash. (Build with GOAMD64=v1)"
 arch=('x86_64')
 url="https://github.com/appshubcc/Bettbox"
@@ -16,20 +16,12 @@ depends=(
     'libkeybinder3'
 )
 options=('!debug')
-source=(
-    "${pkgname%-compatible-bin}.sh"
-)
 source_x86_64=(
     "${pkgname%-compatible-bin}-${pkgver}-${arch}.deb::${url}/releases/download/v${_pkgver}/${_pkgname}-${_pkgver%-pre*}-linux-amd64-compatible.deb"
 )
-sha256sums=('efe4503308a1e4e44b892065b6fb8f582bd2f7d01e3f0232e4d86539101ebbb5')
 sha256sums_x86_64=('0ad84977a0973b7004a13496104d62461b6e3f1bebdb17a56361972ec071b549')
 
 prepare() {
-    sed -i -e "
-        s/@appname@/${pkgname%-compatible-bin}/g
-        s/@runname@/${_pkgname}/g
-    " "${srcdir}/${pkgname%-compatible-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-compatible-bin}/g
@@ -40,7 +32,7 @@ prepare() {
 }
 
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-compatible-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-compatible-bin}"
+    ln -s "/usr/lib/${pkgname%-compatible-bin}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-compatible-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-compatible-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/usr/share/${_pkgname}/"* "${pkgdir}/usr/lib/${pkgname%-compatible-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-compatible-bin}.desktop"
