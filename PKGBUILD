@@ -1,6 +1,6 @@
 # Maintainer: Rijuyuezhu <rijuyuezhu@users.noreply.github.com>
 pkgname=websudo-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Local browser askpass helper for sudo commands.'
 arch=('x86_64' 'aarch64')
@@ -9,11 +9,12 @@ license=('MIT')
 depends=('sudo' 'systemd')
 provides=('websudo')
 conflicts=('websudo')
+install=websudo-bin.install
 options=('!strip')
 source_x86_64=("websudo-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/websudo-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("websudo-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/websudo-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('b144133a3bd67e7c41759e085f3e3ab5aeecf67cee4c6563a2014cbff6c4ea19')
-sha256sums_aarch64=('a3b92ecd06a1bc976cf24704b370eb7c8103107ad875e713b15bf41703173c4b')
+sha256sums_x86_64=('e9af31d208010c8821324eb8355b415d2664ba49569958d1c0f7141e5cba54a2')
+sha256sums_aarch64=('69a0fbfdf32547c02b1353c61923768f722d60ab91c930b2aa8e9f56c61a7451')
 
 package() {
   local target
