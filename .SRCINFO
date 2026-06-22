@@ -1,7 +1,7 @@
 pkgbase = zcode-bin
 	pkgdesc = ZCode - AI-powered code editor by CodeGeeX
 	pkgver = 3.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://zcode.z.ai/
 	arch = x86_64
 	license = LicenseRef-ZCode

@@ -4,7 +4,7 @@ pkgname=zcode-bin
 _pkgname=ZCode
 pkgver=3.1.2
 _electronversion=41
-pkgrel=2
+pkgrel=3
 pkgdesc="ZCode - AI-powered code editor by CodeGeeX"
 arch=('x86_64')
 url="https://zcode.z.ai/"
@@ -68,7 +68,10 @@ prepare() {
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i \
+        -e "s|^Exec=.*|Exec=${pkgname%-bin} %U|" \
+        -e "s|^Icon=.*|Icon=${pkgname%-bin}|" \
+        "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     local _app_dir=$(_get_app_dir)
     asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     rm -rf "${_app_dir}/resources/app.asar"
