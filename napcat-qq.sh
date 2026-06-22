@@ -13,6 +13,7 @@ fi
 
 QQ_VERSION_CONFIG="$HOME/.config/QQ/versions/config.json"
 NAPCAT_VERSION="3.2.23-44343"
+BUILD_ID="44343"
 BACKUP="${QQ_VERSION_CONFIG}.napcat.bak"
 
 [ -f "$BACKUP" ] && mv "$BACKUP" "$QQ_VERSION_CONFIG"
@@ -25,7 +26,7 @@ if [ -f "$QQ_VERSION_CONFIG" ]; then
 {
     "baseVersion": "$NAPCAT_VERSION",
     "curVersion": "$NAPCAT_VERSION",
-    "buildId": "44343"
+    "buildId": "$BUILD_ID"
 }
 EOF
     trap "mv '$BACKUP' '$QQ_VERSION_CONFIG'" EXIT
