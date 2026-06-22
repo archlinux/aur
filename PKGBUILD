@@ -1,7 +1,7 @@
 # Maintainer: vaelixd <vaelixd@proton.me>
 pkgname="flockosi-git"
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A flexible, configurable ISO builder inspired by mkosi"
 arch=('x86_64')
 url="https://codeberg.org/Songbird-Project/flockosi"
