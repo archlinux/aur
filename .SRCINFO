@@ -1,6 +1,6 @@
 pkgbase = sidemark-git
 	pkgdesc = PDF viewer and annotator with a live markdown notes sidebar
-	pkgver = 0.2.2.r0.ge73476b
+	pkgver = 0.3.0.r0.ge90f98e
 	pkgrel = 1
 	url = https://github.com/brokkoli71/sidemark
 	arch = any
@@ -16,6 +16,8 @@ pkgbase = sidemark-git
 	depends = adwaita-icon-theme
 	optdepends = librsvg: render PNG icon sizes at install time
 	optdepends = libreoffice: convert PPTX files to PDF
+	optdepends = ocrmypdf: add a searchable text layer to scanned PDFs (OCR)
+	optdepends = qrencode: show a QR code to share the PDF to a phone
 	optdepends = jq: recent-files menu for the walker launcher
 	source = sidemark::git+https://github.com/brokkoli71/sidemark.git
 	sha256sums = SKIP
