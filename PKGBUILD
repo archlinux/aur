@@ -9,7 +9,7 @@
 pkgname=aurscan-manticore-bin-release-git
 pkgver=0.5.2
 _pkgname=aurscan
-pkgrel=4
+pkgrel=5
 pkgdesc='LLM-powered pre-build malware scanner for AUR packages (with paru / yay hooks) -- git release binary'
 arch=('x86_64' 'aarch64')
 _repo="manticore-projects/aurscan"
@@ -30,7 +30,7 @@ optdepends=(
 # content URLs. All dynamic, so no static source entry for release assets.
 _gpgkey="andreas@manticore-projects.com.gpg"
 source=("${_gpgkey}")
-sha256sums=('182cc1de21af47b7d5cd498cc21d04ff01d9a3cabc149dfcabba88a4be761322')
+b2sums=('e80ad8b775d2d503e066d0a8a55d365eb3c4a4caa0e1812afb66b81f7adb279cde7f9d561fe329650a9176aba2f83cd45aab3bf304af861e21c12df9230bfe38')
 
 # Map Arch architecture -> upstream asset suffix
 case "${CARCH:-}" in
