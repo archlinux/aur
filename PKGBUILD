@@ -2,7 +2,7 @@
 
 pkgname=python-pyvhdlmodel
 pkgdesc='An abstract VHDL language model'
-pkgver=0.34.0
+pkgver=0.35.0
 pkgrel=1
 arch=('any')
 url='https://github.com/VHDL/pyVHDLModel'
@@ -23,12 +23,12 @@ checkdepends=(
   'python-pytest-cov'
 )
 
-_commit=03061d6
+_commit=6a832c3
 source=(
   "git+https://github.com/VHDL/pyVHDLModel.git?signed#commit=$_commit"
 )
 sha256sums=(
-  '9cab2979a520b26cc8dd7b28d2c56c5e8b04a53ac3a064413e1e2cca6367e0dc'
+  '0fb573b998d4ad04dc35bf79c60cf8a4e285f0ddde62b9ce1017565b04e2c077'
 )
 validpgpkeys=(
   '968479A1AFF927E37D1A566BB5690EEEBB952194'  # GitHub signing key
