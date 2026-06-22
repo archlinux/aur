@@ -1,19 +1,19 @@
 pkgbase = neanes-bin
 	pkgdesc = A free and open source scorewriter for notating Byzantine chant in Byzantine notation.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.5.30
+	pkgver = 0.5.32
 	pkgrel = 1
 	url = https://danielgarthur.github.io/neanes/
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron42
-	provides = neanes=0.5.30
+	provides = neanes=0.5.32
 	conflicts = neanes
 	source = neanes.sh
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = neanes-0.5.30-aarch64.AppImage::https://github.com/neanes/neanes/releases/download/v0.5.30/Neanes-0.5.30-arm64.AppImage
-	sha256sums_aarch64 = 7b260c072364a1927cab8e2224b0c2f12a36dfc0a0a975b4117ff3cae48587b9
-	source_x86_64 = neanes-0.5.30-x86_64.AppImage::https://github.com/neanes/neanes/releases/download/v0.5.30/Neanes-0.5.30.AppImage
-	sha256sums_x86_64 = 599ecfed9779dadff1f232e347597cc23344fccc080bd7653453062b15d04dbc
+	source_aarch64 = neanes-0.5.32-aarch64.AppImage::https://github.com/neanes/neanes/releases/download/v0.5.32/Neanes-0.5.32-arm64.AppImage
+	sha256sums_aarch64 = 4861419a819512ec06b4dbe6a62e0370f7e8d246e984c7df8511f08552c05100
+	source_x86_64 = neanes-0.5.32-x86_64.AppImage::https://github.com/neanes/neanes/releases/download/v0.5.32/Neanes-0.5.32.AppImage
+	sha256sums_x86_64 = 9b822be6c3f0b79800c6b8fa40abbc6372f76e1b826bdab478f34ea525d71848
 
 pkgname = neanes-bin
