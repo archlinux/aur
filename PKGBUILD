@@ -3,7 +3,7 @@
 
 _basename=heidisql
 pkgname=${_basename}-gtk2-bin
-pkgver=12.19
+pkgver=12.20
 pkgrel=1
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, Microsoft SQL and SQLite databases. (GTK2)"
 arch=('x86_64')
@@ -17,8 +17,8 @@ depends=('gtk2' 'libperconaserverclient' 'mariadb-libs' 'postgresql-libs' 'sqlit
 source=("${_basename}_${pkgver}_${arch[0]}.deb::${url}/releases/download/v${pkgver}/${_basename}_${pkgver}_${_barch[0]}.deb"
 	"build-gtk2-v${pkgver}.tgz::${url}/releases/download/v${pkgver}/build-gtk2-v${pkgver}.tgz")
 noextract=("build-gtk2-v${pkgver}.tgz")
-sha256sums=('216149b96d2d07f5c74a50c6f0cdcd0d98c54a9dbc850261978e657c9cdcaaad'
-            '952e515630217e251948a13c180a4dd50e4add01a38cf255c587bb74386db6f9')
+sha256sums=('f805a1ad0bf6c500a101e9b76a1a64b504779384f2b7413957535019a5c3e221'
+            'f8fb6a2a61a5c3c659490bc202cf10133136c693342fba40da35d809f8190bf7')
 
 package() {
   cd "${pkgdir}"
