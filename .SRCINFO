@@ -1,12 +1,12 @@
 pkgbase = ttf-harmonyos-sans
 	pkgdesc = HarmonyOS Sans Fonts.华为鸿蒙字体
-	pkgver = 2025.09.23
+	pkgver = 2026.06.12
 	pkgrel = 1
 	url = https://developer.huawei.com/consumer/cn/design/resource/
 	arch = any
 	license = LicenseRef-custom
 	conflicts = harmonyos-sans
-	source = ttf-harmonyos-sans-2025.09.23.zip::https://alliance-communityfile-drcn.dbankcdn.com/FileServer/getFile/cmtyManage/011/111/111/0000000000011111111.20250923104318.11664078982054632530113858317517:50001231000000:2800:C0DB7AC2067D28B96607BC0D598A48EAF74CA1B7D936B819A36F67CB6E071F30.zip
-	sha256sums = 0bb556d79c65f4778e33d9b5835e5133bce4ad9ee46f823a5a3dcda888610e78
+	source = ttf-harmonyos-sans-2026.06.12.zip::https://alliance-communityfile-drcn.dbankcdn.com/FileServer/getFile/cmtyManage/011/111/111/0000000000011111111.20260611171743.77886644144213121813005934094365:50001231000000:2800:0CCF575ADA0FCAD85EE25909C15C402A40FA94ABCCFEFC5BD37061A6B94239FF.zip
+	sha256sums = 2d129ad1b7f8193b9b7be54d126d79b6d02170dd166422bea18d84b2ce55a2aa
 
 pkgname = ttf-harmonyos-sans
