@@ -25,6 +25,7 @@ pkgbase = python-outetts
 	depends = python-einops
 	depends = python-ftfy
 	depends = python-aiohttp
+	depends = python-polars
 	noextract = outetts-0.4.4-py3-none-any.whl
 	source = outetts-0.4.4-py3-none-any.whl::https://files.pythonhosted.org/packages/1b/ea/980e108960caeacc6de1cbf5d5ba61a74b86869ac56bb1321eb18706f1b0/outetts-0.4.4-py3-none-any.whl
 	b2sums = 3845737ebce9f7760e0d93b7aa8382fb3c7f7370aff876eed02b0236a1316e7121c982c8f1c0752f69a6bddea55088c9d8f98664a1eec9691710322fb7ea6568

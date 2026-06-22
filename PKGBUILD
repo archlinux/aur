@@ -26,6 +26,7 @@ depends=(
   'python-einops'
   'python-ftfy'
   'python-aiohttp'
+  'python-polars'
 )
 makedepends=('python-installer' 'python-wheel')
 source=("outetts-${pkgver}-py3-none-any.whl::https://files.pythonhosted.org/packages/1b/ea/980e108960caeacc6de1cbf5d5ba61a74b86869ac56bb1321eb18706f1b0/outetts-${pkgver}-py3-none-any.whl")
