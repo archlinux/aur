@@ -1,5 +1,5 @@
 pkgname=hpr
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Offline zero-account activity tracker"
 arch=('x86_64')
