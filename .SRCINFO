@@ -1,6 +1,6 @@
 pkgbase = anifetch-cli
 	pkgdesc = Animated terminal fetch with video and audio support
-	pkgver = 1.0.4
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/Notenlish/anifetch
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = anifetch-cli
 	depends = python-wcwidth
 	depends = python-rich
 	depends = python-pynput
-	source = anifetch-cli-1.0.4.tar.gz::https://github.com/Notenlish/anifetch/archive/refs/tags/1.0.4.tar.gz
-	sha256sums = a249350724ca66818a74e321477d772fc66d7adfc53b559a15f737b76d0a7572
+	source = anifetch-cli-1.0.6.tar.gz::https://github.com/Notenlish/anifetch/archive/refs/tags/1.0.6.tar.gz
+	sha256sums = 6d9ca7b426da7d9aefcc97eb7ccc9c38a13cf0bb65dcdc9c6f8ec6b74e8ab3f1
 
 pkgname = anifetch-cli
