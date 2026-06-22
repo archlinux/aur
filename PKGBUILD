@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flyenv-bin
 _pkgname=FlyEnv
-pkgver=4.15.3
+pkgver=4.15.4
 _electronversion=39
 pkgrel=1
 pkgdesc="All-In-One Full-Stack Environment Management Tool.Help developers quickly set up a local development environment.(Prebuilt version.Use system-wide electron)"
@@ -59,11 +59,14 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.rpm")
 sha256sums=('01d77fe9ffb39b0a9507ca8d1cae189f56efd625078c3b13b59ce7aae42a4f7d'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('cc5ebe1f33c85ebbaff4a1861b8d2e8b95d612aa0b4ca282a5b00505a7fc543d')
-sha256sums_x86_64=('37578da03c076b09980f3e2c2ffbe3013a51f08adc3ea409b1acff01b78fb8f2')
+sha256sums_aarch64=('bb72e6a347af7b39203aab6ddfdd23767da37d426a6e2655ae09dad8ba629285')
+sha256sums_x86_64=('a920e74162d076eaa92e244eb7026f7b98473799870b8231fa669d4ba612aff2')
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
 _check_electron_version() {
     echo "Verifying Electron version..."
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _app_dir=$(_get_app_dir)
     local _main_exe=""
     if [[ -n "${_app_dir}" ]]; then
         _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
@@ -93,29 +96,30 @@ prepare() {
         s/\/opt\/${_pkgname}\/${_pkgname}/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    local _app_dir=$(_get_app_dir)
     rm -rf \
-        "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/7zip-bin/"{linux/{arm,ia32},mac} \
-        "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/"{darwin-*,win32-*}
-    ln -sf "/usr/bin/xsel" "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/clipboardy/fallbacks/linux/xsel"
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/7zip-bin/"{linux/{arm,ia32},mac} \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/"{darwin-*,win32-*}
+    ln -sf "/usr/bin/xsel" "${_app_dir}/resources/app.asar.unpacked/node_modules/clipboardy/fallbacks/linux/xsel"
     case "${CARCH}" in
         'aarch64')
             rm -rf \
-                "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/7zip-bin/linux/x64" \
-                "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/linux-x64"
-            ln -sf "/usr/bin/7za" "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/7zip-bin/linux/arm64/7za"
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/7zip-bin/linux/x64" \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/linux-x64"
+            ln -sf "/usr/bin/7za" "${_app_dir}/resources/app.asar.unpacked/node_modules/7zip-bin/linux/arm64/7za"
             ;;
         'x86_64')
             rm -rf \
-                "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/7zip-bin/linux/arm64" \
-                "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/linux-arm64"
-            ln -sf "/usr/bin/7za" "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules/7zip-bin/linux/x64/7za"
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/7zip-bin/linux/arm64" \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/linux-arm64"
+            ln -sf "/usr/bin/7za" "${_app_dir}/resources/app.asar.unpacked/node_modules/7zip-bin/linux/x64/7za"
             ;;
     esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
