@@ -1,19 +1,19 @@
 diff -ruN vmaf-3.1.0/libvmaf/src/feature/integer_adm.c patched/libvmaf/src/feature/integer_adm.c
---- vmaf-3.1.0/libvmaf/src/feature/integer_adm.c	2026-04-02 20:41:56.000000000 +0200
-+++ patched/libvmaf/src/feature/integer_adm.c	2026-04-04 16:45:09.594810123 +0200
-@@ -2646,7 +2646,9 @@
-         s->i4_adm_csf = i4_adm_csf_avx2;
-         s->i4_adm_cm = i4_adm_cm_avx2;
+--- vmaf-3.1.0/libvmaf/src/feature/integer_adm.c	2026-06-20 02:51:09.000000000 +0200
++++ patched/libvmaf/src/feature/integer_adm.c	2026-06-23 00:31:52.698271054 +0200
+@@ -3083,7 +3083,9 @@
+         if (!(w % 8)) s->dwt2_8 = adm_dwt2_8_avx2;
+         s->dwt2_16 = adm_dwt2_16_avx2;
          s->adm_decouple = adm_decouple_avx2;
 +#ifndef __MINGW32__
          s->adm_decouple_s123 = adm_decouple_s123_avx2;
 +#endif
-     }
- #if HAVE_AVX512
-     if (flags & VMAF_X86_CPU_FLAG_AVX512) {
+         s->adm_csf = adm_csf_avx2;
+         s->i4_adm_csf = i4_adm_csf_avx2;
+         s->adm_csf_den_scale = adm_csf_den_scale_avx2;
 diff -ruN vmaf-3.1.0/libvmaf/src/feature/x86/adm_avx2.c patched/libvmaf/src/feature/x86/adm_avx2.c
---- vmaf-3.1.0/libvmaf/src/feature/x86/adm_avx2.c	2026-04-02 20:41:56.000000000 +0200
-+++ patched/libvmaf/src/feature/x86/adm_avx2.c	2026-04-04 16:45:31.562188002 +0200
+--- vmaf-3.1.0/libvmaf/src/feature/x86/adm_avx2.c      2026-04-02 20:41:56.000000000 +0200
++++ patched/libvmaf/src/feature/x86/adm_avx2.c 2026-04-04 16:45:31.562188002 +0200
 @@ -1352,6 +1352,7 @@
      return _mm256_or_si256(rl_shift, signmask);
  }

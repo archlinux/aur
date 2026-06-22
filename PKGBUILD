@@ -2,7 +2,7 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mingw-w64-vmaf
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion (mingw-w64)'
 arch=('any')
@@ -24,9 +24,9 @@ checkdepends=(
 source=("https://github.com/Netflix/vmaf/archive/v${pkgver}/vmaf-${pkgver}.tar.gz"
         'staticlib.patch'
         'avx2-fix.patch')
-sha256sums=('80090e29d7fd0db472ddc663513f5be89bc936815e62b767e630c1d627279fe2'
+sha256sums=('a28f93f3b4fa65601be324587072e32a6a704a304ba7b1aec9b70b3f709bc1dc'
             '9d7e03ac0f890e201cf27f1c0adea1e78407ac60b09073c2e3865c7945939bec'
-            '7b8146849f0f66098abed3752ae322cea0ba721ea318096f7da5de3e69f94992')
+            '2a037ba87d673f8c251c93981066f87583324aebd37f96324fd07d8c94300bb5')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -43,9 +43,10 @@ build() {
   _jobs="$(nproc)"
 
   # may fail to compile on a high core count system
-  if [ "$_jobs" > "$_max_jobs" ]
+  # https://github.com/Netflix/vmaf/issues/1541
+  if [ "$_jobs" -ge "$_max_jobs" ]
   then
-      local _jobs="$_max_jobs"
+      _jobs="$_max_jobs"
       printf '%s\n' "limiting the compilation jobs to ${_jobs}"
   fi
 
