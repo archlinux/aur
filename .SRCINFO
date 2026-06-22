@@ -1,6 +1,6 @@
 pkgbase = aionui
 	pkgdesc = Free, local, open-source 24/7 Cowork app and OpenClaw for Gemini CLI, Claude Code, Codex, OpenCode, Qwen Code, Goose CLI, Auggie, and more.(Use system-wide electron)
-	pkgver = 2.1.20
+	pkgver = 2.1.21
 	pkgrel = 1
 	url = https://www.aionui.com/
 	arch = aarch64
