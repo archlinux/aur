@@ -1,8 +1,8 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 _basename=jicofo
-_tag=1180
-_version=1.0.1180
+_tag=1183
+_version=1.0.1183
 
 pkgname=${_basename}
 pkgver=${_version}
@@ -11,11 +11,11 @@ pkgdesc="JItsi Meet COnference FOcus"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
-depends=("java-runtime-openjdk=11" "bash")
+depends=("java-runtime-openjdk=17" "bash")
 optdepends=("prosody")
 makedepends=(
         "git"
-        "java-environment-openjdk=11"
+        "java-environment-openjdk=17"
         "unzip" "maven"
 )
 options=('!strip')
@@ -35,7 +35,7 @@ install=install
 
 build() {
         cd "$pkgname"
-        export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+        export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
         export PATH=$JAVA_HOME/bin:$PATH
         mvn -DskipTests -Dassembly.skipAssembly=true clean package install
         mvn dependency:copy-dependencies -DincludeScope=runtime
@@ -63,7 +63,7 @@ package() {
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/$pkgname.conf"
 }
-sha256sums=('73e704066b7537dfeb74a1989deb6d0f31763724851df98786330210b645628e'
+sha256sums=('18e87c3d7984f70be9f99f116e44d66abd69f2ddf02cb8266a2d3be35e3a76c1'
             'b69f9485ba55b53fe6d1a8b5e4a37c542641cb205c6f5c0b2cf89d236cc6b562'
             '902229d135e9b949da318f539cbe8f266bdd4e32e514f37d8782ad4562dc791b'
             '0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440'

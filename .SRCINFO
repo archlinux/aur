@@ -1,28 +1,28 @@
 pkgbase = jicofo
 	pkgdesc = JItsi Meet COnference FOcus
-	pkgver = 1.0.1180
+	pkgver = 1.0.1183
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = install
 	arch = any
 	license = Apache
 	makedepends = git
-	makedepends = java-environment-openjdk=11
+	makedepends = java-environment-openjdk=17
 	makedepends = unzip
 	makedepends = maven
-	depends = java-runtime-openjdk=11
+	depends = java-runtime-openjdk=17
 	depends = bash
 	optdepends = prosody
 	options = !strip
 	backup = etc/jicofo/config
 	backup = etc/jicofo/logging.properties
 	backup = etc/jicofo/jicofo.conf
-	source = jicofo::git+https://github.com/jitsi/jicofo#tag=1180
+	source = jicofo::git+https://github.com/jitsi/jicofo#tag=1183
 	source = config
 	source = service
 	source = sysusers.conf
 	source = tmpfiles.conf
-	sha256sums = 73e704066b7537dfeb74a1989deb6d0f31763724851df98786330210b645628e
+	sha256sums = 18e87c3d7984f70be9f99f116e44d66abd69f2ddf02cb8266a2d3be35e3a76c1
 	sha256sums = b69f9485ba55b53fe6d1a8b5e4a37c542641cb205c6f5c0b2cf89d236cc6b562
 	sha256sums = 902229d135e9b949da318f539cbe8f266bdd4e32e514f37d8782ad4562dc791b
 	sha256sums = 0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440
