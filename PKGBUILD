@@ -26,5 +26,5 @@ build() {
 }
 package() {
   install -Dsm755 ./xytz "${pkgdir}/usr/bin/xytz"
-  install -Dsm644 ./LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ./LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
