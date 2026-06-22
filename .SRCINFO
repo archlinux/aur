@@ -1,13 +1,15 @@
 pkgbase = perl-sys-sigaction
 	pkgdesc = Perl extension for Consistent Signal Handling
 	pkgver = 0.24
-	pkgrel = 1
-	url = https://metacpan.org/pod/Sys::SigAction
+	pkgrel = 2
+	url = https://metacpan.org/dist/Sys-SigAction
 	arch = any
-	license = Artistic-2.0
-	depends = perl
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker
+	depends = perl-test-simple
+	depends = perl>=5.6.0
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/L/LB/LBAXTER/Sys-SigAction-0.24.tar.gz
-	sha512sums = 80162f1c8d67110863570b0d591502cef9a2f4ce5131f1eac69603a7d8b0b9fd0277c198c81c96ab786f2150641b25c3232d65ac01580525dfc5ec03535059a4
+	sha256sums = e04c9a7fdf745d3e9cd9e8b2d5a46d826ba958c5e1e0c48b3cd132bb15396255
 
 pkgname = perl-sys-sigaction
