@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=APRStac
+GenericName=APRS Client
+Comment=APRS Web Client, Digipeater, IGate, BBS & Fileshare
+Exec=aprstac-server
+Icon=aprstac
+Categories=HamRadio;Network;
+Keywords=APRS;amateur radio;ham radio;digipeater;IGate;AX.25;packet radio;Meshtastic;VARA;BBS;
+Terminal=true

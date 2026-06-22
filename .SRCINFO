@@ -1,6 +1,6 @@
 pkgbase = aprstac-bin
 	pkgdesc = A modern APRS web client, digipeater, IGate, BBS, and fileshare (pre-compiled binary)
-	pkgver = 0.1.9
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://aprstac.com/
 	arch = x86_64
@@ -9,10 +9,12 @@ pkgbase = aprstac-bin
 	provides = aprstac
 	conflicts = aprstac
 	source = LICENSE
+	source = aprstac.desktop
 	sha256sums = d2309a72446dac53dbe391ec2e8972f2fccbc6a06ab144c9011d5bd419c998e7
-	source_x86_64 = aprstac-0.1.9-x86_64.deb::https://aprstac.com/downloads/aprstac_0.1.9_amd64.deb
-	sha256sums_x86_64 = cc8e690ef6ec6c40a3839502bb2b3ea1b77e2e61d737ae54530c13f0d9004025
-	source_aarch64 = aprstac-0.1.9-aarch64.deb::https://aprstac.com/downloads/aprstac_0.1.9_arm64.deb
-	sha256sums_aarch64 = 358387279d4575210b720743025da194528515f860bae34481134f0e63f74e9d
+	sha256sums = 6c57b27e9502b24d45105c6bd64f4e692750f485611285a92a75a87c5ffd2a12
+	source_x86_64 = aprstac-0.2.1-x86_64.deb::https://aprstac.com/downloads/aprstac_0.2.1_amd64.deb
+	sha256sums_x86_64 = 30394793fce1efcd89db745f7c6efecee4e62b7795fc02de0ccf11f129c9019a
+	source_aarch64 = aprstac-0.2.1-aarch64.deb::https://aprstac.com/downloads/aprstac_0.2.1_arm64.deb
+	sha256sums_aarch64 = 219e4b5d4b518156b03890dce243af8b6dbed7c286eda26561c41e353aa5e209
 
 pkgname = aprstac-bin
