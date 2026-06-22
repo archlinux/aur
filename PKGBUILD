@@ -1,7 +1,7 @@
 # Maintainer: LIghtJUNction <lightjunction@users.noreply.github.com>
 
 pkgname=cortexfs-git
-pkgver=0.1.0.r92.g6b25ae8
+pkgver=0.1.0.r96.g46ec0e8
 pkgrel=1
 pkgdesc="CortexFS v1 Agent OS ABI core and CLI"
 arch=('x86_64')
@@ -34,6 +34,7 @@ package() {
   cd "$srcdir/cortexfs"
   install -Dm755 target/release/ctx "$pkgdir/usr/bin/ctx"
   install -Dm755 target/release/cortexfs-mount "$pkgdir/usr/bin/cortexfs-mount"
+  install -Dm644 packaging/systemd/cortexfs.service "$pkgdir/usr/lib/systemd/system/cortexfs.service"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 docs/DESIGN.md "$pkgdir/usr/share/doc/$pkgname/DESIGN.md"
   cp -R docs/spec "$pkgdir/usr/share/doc/$pkgname/spec"
