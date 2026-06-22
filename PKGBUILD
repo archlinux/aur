@@ -1,46 +1,63 @@
-# Maintainer: Moritz Bunkus <moritz@bunkus.org>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Moritz Bunkus <moritz@bunkus.org>
 
-pkgname="perl-email-stuffer"
-pkgver="0.020"
-pkgrel='3'
-pkgdesc="A more casual approach to creating and sending emails"
+_author=RJBS
+_dist=Email-Stuffer
+pkgname=perl-${_dist@L}
+pkgver=0.020
+pkgrel=4
+pkgdesc='A more casual approach to creating and sending Email:: emails'
 arch=('any')
-url="https://metacpan.org/pod/Email::Stuffer"
-license=('Artistic-2.0' 'GPL-1.0-or-later')
-depends=('perl-email-mime>=1.943' 'perl-email-sender' 'perl-module-runtime' 'perl-params-util>=1.05' 'perl-scalar-list-utils')
-makedepends=('perl-email-sender>=0.120000' 'perl-moo' 'perl-test-fatal')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-carp'
+    'perl-email-mime'
+    'perl-email-sender'
+    'perl-module-runtime'
+    'perl-params-util>=1.05'
+    'perl-scalar-list-utils'
+    'perl>=5.12.0'
+)
+makedepends=('perl-extutils-makemaker>=6.78')
+checkdepends=(
+    'perl-email-sender>=0.120000'
+    'perl-extutils-makemaker'
+    'perl-moo'
+    'perl-pathtools'
+    'perl-test-fatal'
+    'perl-test-simple'
+)
+optdepends=('perl-cpan-meta>=2.120900')
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Email-Stuffer-${pkgver}.tar.gz")
-sha512sums=('62de0ed98ae892dfa79a6c19b0ddc82f932e7edb048323633810aefef26eed41501a672457f22ecf22846836ca731bfb10e29e2b1295125bc9540bbf04b7e18f')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('0a1efb7f2dedd39052b126f718ca2d3b5845a4123a39392fd9dfa0c76e6057c7')
 
-prepare_environment() {
-  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-    PERL_AUTOINSTALL=--skipdeps                            \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
-  cd "${srcdir}/Email-Stuffer-${pkgver}"
+build()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
 }
 
-build() {
-  prepare_environment
-  /usr/bin/perl Makefile.PL
-  make
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
 }
 
-check() {
-  prepare_environment
-  make test
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-package() {
-  prepare_environment
-  make install
-  find "$pkgdir" '(' -name .packlist -o -name perllocal.pod ')' -delete
-}
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}
