@@ -1,6 +1,6 @@
 pkgbase = libastal-mpris-git
 	pkgdesc = Library and cli tool for controlling media players
-	pkgver = r786.ca3190d
+	pkgver = r908.11842ae
 	pkgrel = 2
 	url = https://github.com/Aylur/astal
 	arch = x86_64
@@ -10,9 +10,12 @@ pkgbase = libastal-mpris-git
 	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = vala
+	depends = gdk-pixbuf2
 	depends = glib2
 	depends = glibc
 	depends = json-glib
+	depends = libsoup3
+	depends = quarrel
 	provides = astal-mpris
 	provides = libastal-mpris
 	provides = libastal-mpris.so=0-64

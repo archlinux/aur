@@ -2,7 +2,7 @@
 
 pkgname=libastal-mpris-git
 _pkgname=mpris
-pkgver=r786.ca3190d
+pkgver=r908.11842ae
 pkgrel=2
 provides=(astal-mpris libastal-mpris libastal-mpris.so=0-64)
 pkgdesc="Library and cli tool for controlling media players"
@@ -10,9 +10,12 @@ arch=(x86_64)
 license=(LGPL-2.1-only)
 url="https://github.com/Aylur/astal"
 depends=(
+  gdk-pixbuf2
   glib2
   glibc
   json-glib
+  libsoup3
+  quarrel
 )
 makedepends=(
   meson
