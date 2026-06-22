@@ -1,0 +1,14 @@
+pkgbase = color-scheme-control
+	pkgdesc = Utility for color scheme toggling written in Go and extensible by Lua
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/mohterbaord/color-scheme-control
+	install = color-scheme-control.install
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = systemd
+	source = color-scheme-control-0.1.0.tar.gz::https://codeberg.org/mohterbaord/color-scheme-control/archive/0.1.0.tar.gz
+	sha256sums = 8cbf108489f78cf42950404e32de6fcee1b48a21fe011ca9c1bca00e1b8f1b48
+
+pkgname = color-scheme-control
