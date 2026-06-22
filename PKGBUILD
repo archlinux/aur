@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=orca-ide-bin
 _pkgname=Orca
-pkgver=1.4.90
+pkgver=1.4.91
 _electronversion=42
 pkgrel=1
 pkgdesc="ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription. Available on desktop and mobile.(Prebuilt version.Use system-wide electron)"
@@ -27,7 +27,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/stablyai/orca/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3e8634a4fabd8d909b1130c3d683aeede57fd40039c102421118da41253168f8'
+sha256sums=('cae2e4dddc9ac71b4a014b21ce292eb9e6951351ee32a4ae954f593aec48e920'
             'ff1b611f80580d49f4b97e93a97b24eb050b0671b26b8afe16341fab699112f3'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
