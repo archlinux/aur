@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=container-desktop-bin
 _pkgname='Container Desktop'
-pkgver=5.3.2
+pkgver=5.3.6
 _electronversion=42
 pkgrel=1
 pkgdesc="Podman desktop companion.A familiar desktop graphical interface to the free and open container manager, podman!(Prebuilt version.Use system-wide electron)"
@@ -27,8 +27,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${_ghurl}/releases/do
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-linux-x64-${pkgver}.pacman")
 sha256sums=('fd5805079cad1ee5ebcfd2a2a58e16553314c51700ce5f4e32dba06d9ce49283'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('531627117dc579161cd893c9ed42240e34ad98b339b3a86839253036d7132e2e')
-sha256sums_x86_64=('122f2a8974388e171eb78696930eea678616e42596028a3e4985a3da7fd8ef03')
+sha256sums_aarch64=('9d19f9665300973e726436064fed8b94c109b90b35336751695ffa0f458ebdc4')
+sha256sums_x86_64=('5237ecc16aace8e36abb374d17da098ffcd543148b299b747fd00b00cf0ff70b')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
