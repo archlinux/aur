@@ -18,8 +18,18 @@ makedepends=('cmake' 'catch2' 'boost' 'wireless_tools' 'vulkan-headers' 'vulkan-
 optdepends=('gamemode: Gamemoded support')
 conflicts=('eden-bin' 'eden-git' 'eden-preview-bin' 'eden-beta')
 options=('!debug')
-source=("eden-v${pkgver}.tar.gz::https://git.eden-emu.dev/eden-emu/eden/archive/v${pkgver}.tar.gz")
-sha256sums=('a43ea2886b75204438f691a4ddfad99e88b508e30431978dd13fba1c22440d19')
+source=("eden-v${pkgver}.tar.gz::https://git.eden-emu.dev/eden-emu/eden/archive/v${pkgver}.tar.gz"
+		"60e1032771.patch"
+		"7c0e993b5b.patch")
+sha256sums=('a43ea2886b75204438f691a4ddfad99e88b508e30431978dd13fba1c22440d19'
+            '2d73f9f8473644385efd73507f828f172cfe2e3e829e962584bb1d0429e25e3f'
+            'e078d47ee07f93432c155ab03f5589ad1166466a2a0f5ab9832c0f3c2cb7a573')
+
+prepare() {
+	cd $srcdir/eden
+	patch -p1 < "$srcdir/60e1032771.patch"
+	patch -p1 < "$srcdir/7c0e993b5b.patch"
+}
 
 build() {
 	cd "$srcdir"
