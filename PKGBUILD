@@ -2,7 +2,7 @@
 
 pkgname=mistral-vibe
 pkgver=2.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
 url='https://github.com/mistralai/mistral-vibe'
@@ -66,7 +66,25 @@ build() {
 check() {
     cd "$pkgname"
     uv sync
-    uv run pytest --ignore=tests/test_install_script.py --ignore=tests/snapshots/test_ui_snapshot_mcp_command.py --ignore=tests/audio_recorder/test_audio_recorder.py --ignore=tests/e2e/test_cli_tui_tool_approval.py
+    # The build environment has no D-Bus session bus, so keyring's
+    # SecretService backend blocks indefinitely on every lookup (e.g. during
+    # ACP initialize and CLI onboarding), which times out the e2e and ACP
+    # tests. Force a non-blocking in-memory backend.
+    export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+
+    # These two tests exercise scripts/install.sh and assume no `uv`/`vibe`
+    # binary in /usr/bin or /bin. They fail on a builder that already has
+    # system-wide installs (which this package itself provides). Skip them.
+    local deselect=(
+        --deselect tests/test_install_script.py::test_install_reports_missing_path_for_uv_tool_bin
+        --deselect tests/test_install_script.py::test_install_fails_when_vibe_not_in_uv_tool_dir
+    )
+
+    # Run test suite in parallel, skip deselected and any e2e tests.
+    uv run pytest -n auto "${deselect[@]}" --ignore=tests/e2e
+    
+    # Run e2e tests serially (these fail too often in parallel).
+    uv run pytest -n0 "${deselect[@]}" tests/e2e
 }
 
 package() {
