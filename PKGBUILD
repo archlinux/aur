@@ -1,4 +1,4 @@
-# Maintainer Augusto Modanese <augusto.modanese@aalto.fi>
+# Maintainer Augusto Modanese <augusto.modanese@cispa.de>
 
 pkgname=latex-template-lipics
 pkgver=2021.1.3
