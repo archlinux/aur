@@ -31,7 +31,10 @@ makedepends=(
     'patchelf'
 )
 provides=("${_pkgname}=${pkgver}")
-conflicts=("${_pkgname}")
+conflicts=(
+    "${_pkgname}-qt_include"
+    "${_pkgname}-qt5"
+)
 source_x86_64=("https://code-industry.net/public/master-pdf-editor-${pkgver}${_patchver}-qt6.x86_64.tar.gz")
 sha1sums_x86_64=("${_checksum% *}")
 
