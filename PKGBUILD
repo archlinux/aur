@@ -1,10 +1,10 @@
 # Maintainer: uberben <ben at benbergman dot ca>
 
 pkgname="orca-slicer-nightly-bin"
-pkgver=2026.05.29.083622Z
+pkgver=2026.06.21.182501Z
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (nightly builds)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/SoftFever/OrcaSlicer"
 license=('AGPL3')
 depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk-4.1' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'gst-plugins-base' 'gst-libav')
@@ -50,13 +50,17 @@ _verify_digest() {
 }
 
 verify() {
+  local appimage
+  [ "$CARCH" = "aarch64" ] && \
+    appimage=OrcaSlicer_Linux_AppImage_Ubuntu2404_aarch64_nightly.AppImage || \
+    appimage=OrcaSlicer_Linux_AppImage_Ubuntu2404_nightly.AppImage
   msg2 "Fetching latest nightly AppImage URL..."
   local meta_data
   meta_data=$(curl -fsL \
     -H "Accept: application/vnd.github+json" \
     -H "X-GitHub-Api-Version: 2022-11-28" \
     https://api.github.com/repos/SoftFever/OrcaSlicer/releases/tags/nightly-builds \
-    | jq -rc '.assets | map({ name: .name, date: .created_at, digest: .digest, url: .browser_download_url }) | map(select(.name | test("AppImage")))[0]')
+    | jq -rc '.assets | map({ name: .name, date: .created_at, digest: .digest, url: .browser_download_url }) | map(select(.name | test("'"$appimage"'")))[0]')
   if [[ -z "${meta_data}" || "${meta_data}" == "null" ]]; then
     echo "Failed to fetch AppImage metadata from GitHub API"
     return 1
