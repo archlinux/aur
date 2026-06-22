@@ -1,15 +1,14 @@
 # Maintainer: Ebbez <ebbe at cequent(dot)nl>
 _pkgname=multios-usb
 pkgname=multios-usb-bin-git
-pkgver=0.9.9.r8.gbb66853
+pkgver=0.11.1.r0.gc7858db
 pkgrel=1
 pkgdesc='Simple tool for creating GRUB multiboot USB with Secure Boot support.'
 arch=('x86_64')
 url='https://github.com/Mexit/MultiOS-USB'
 license=('GPL-3.0-or-later')
-depends=('tar' 'bzip2' 'xz' 'gptfdisk' 'util-linux')
+depends=('tar' 'bzip2' 'xz' 'gptfdisk' 'util-linux' 'dosfstools')
 optdepends=(
-	'dosfstools: FAT support'
 	'exfatprogs: exFAT support'
 	'e2fsprogs: ext2/3/4 support'
 	'ntfs-3g: NTFS support')
