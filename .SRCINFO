@@ -1,6 +1,6 @@
 pkgbase = fitgirl-ddl-qt6-git
 	pkgdesc = fitgirl-repacks.site extractor (Qt6 backend)
-	pkgver = r28.g44f72c3
+	pkgver = r116.gbfffe94
 	pkgrel = 1
 	url = https://github.com/mokurin000/fitgirl-ddl
 	arch = x86_64
