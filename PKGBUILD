@@ -1,7 +1,7 @@
 # Maintainer: Kenneth Shaw <kenshaw at gmail dot com>
 
 pkgname=iv-cli
-pkgver=0.11.1
+pkgver=0.13.3
 pkgrel=1
 pkgdesc='A command-line image viewer using terminal graphics (Sixel, iTerm, Kitty)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ depends=('ffmpeg' 'graphicsmagick' 'imagemagick' 'lcms2' 'libexif' 'libheif' 'li
 optdepends=('libreoffice')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d19ec0f89ee9c17a8c3ce35773fdf2423dec4b27ca301f26488b1c8b19e83f83')
+sha256sums=('7cb5f572e62487fbcee338795ba6597dd1286abc0b088310dba5836870006f96')
 
 build() {
     cd iv-$pkgver
