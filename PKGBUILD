@@ -1,6 +1,6 @@
 # Maintainer: TODO <TODO>
 pkgname=kata-all-bin
-pkgver=3.31.0
+pkgver=3.32.0
 pkgrel=1
 pkgdesc='Kata Containers - lightweight VMs for container isolation (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
@@ -27,11 +27,11 @@ source_aarch64=(
     "https://github.com/kata-containers/kata-containers/releases/download/${pkgver}/kata-containers-${pkgver}-vendor.tar.gz"
 )
 sha256sums=('7f19328f600392d50062f3a760af5c603699831d81ae0b6363dfaf9fac61fba1')
-sha256sums_x86_64=('68c2786a0b97023f62f3eca02dc868b78a794e5469d4ddd6cc9e0bd4a7212b0b'
-                   '09b5a75ae017759126d3a27f2a0362c1a5082594310a2af27bc83c1293e62001')
-sha256sums_aarch64=('42a7e67a2c2bf3e97a615c99a293b2bc01ea9c84111fc2bf4abeedb7adc9c2ac'
-                    'ab8972dc026cfaad85705e93019506384c2af286f715bd364701062c88330891'
-                    'd7f0bda92159b33719c91fd22473dc5c073347c7d6b479fdab2b02246dc9751e')
+sha256sums_x86_64=('1449ecea50bd91fa73a94648db195d18950fe869ba4b1f12d05f55f1fa7c1b01'
+                   'f11a49d7a15f81a7ec3289293fa44ebe9c29610b6578535b35f1d604f22d6015')
+sha256sums_aarch64=('8736c054d9223974735394f822000823baef509e1c33405ec798240fa9b6e4b5'
+                    '722a022d873e6742788eca9f6ed74e8b7c4f70ffe4713144bd2e91fc3db620d0'
+                    'a93c36f50c62e393f0bead53ffa2fde18714f05e8a828030a10f6b4255e6c4f5')
 
 prepare() {
     if [[ "$CARCH" == "aarch64" ]]; then
