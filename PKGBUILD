@@ -1,6 +1,6 @@
 # Maintainer: Sami Ahmed <https://github.com/SamiAhmed7777>
 pkgname=triangles-qt-bin
-pkgver=5.9.20
+pkgver=5.9.21
 pkgrel=1
 pkgdesc="Cryptographic Triangles (TRI) cryptocurrency wallet - Qt GUI"
 arch=('x86_64')
@@ -16,8 +16,8 @@ source=(
     "triangles-qt.desktop"
 )
 sha256sums=(
-    'b4afcf758f55c8fb256f4742917971414078ce37c0fe346383ccda5251917bde'
-    '068d015cf73206f3f3604b0c8fbf60db307c20234cbe06e236996fb9a336df51'
+    '601a3501f14a73c3c5524b6dcc091424c11882de716abc8fcd49462ecffdd527'
+    '08a76dc4b403ce9fa048770c62f9909a4fde5cadf9f37c2cdd2f46dba831c4d4'
     'SKIP'
 )
 
