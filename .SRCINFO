@@ -16,7 +16,6 @@ pkgbase = cone-simple
 	depends = courier-unicode
 	depends = ncurses
 	depends = openssl
-	depends = aspell
 	provides = cone
 	source = http://sourceforge.net/projects/courier/files/cone/2.0/cone-2.0.tar.bz2
 	sha256sums = d14b5d832aab8b98d6005a454972e7791d2892b03266f129f4b086a7635deb1c
