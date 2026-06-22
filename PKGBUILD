@@ -8,6 +8,7 @@ pkgdesc="Simple command line app for encoding/decoding SSDV (Slow Scan Digital V
 arch=('x86_64')
 url="https://codeberg.org/fsphil/ssdv"
 license=('GPL3')
+options=(!debug)
 depends=('glibc')
 makedepends=('git' 'gcc')
 source=("$pkgname::git+https://codeberg.org/fsphil/ssdv.git#commit=d1ceda81b69f88741396f3e052b50c8ae40efb76")
