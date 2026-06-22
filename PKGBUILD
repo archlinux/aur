@@ -2,7 +2,7 @@
 
 pkgname=osu-gu-bin
 _pkgname=${pkgname%-bin}
-pkgver=2026.611.0
+pkgver=2026.621.0
 _pkgtag=v${pkgver}-lazer
 pkgrel=1
 pkgdesc="A free-to-win rhythm game. GooGuTeam fork of osu!lazer."
@@ -27,7 +27,7 @@ source=(
   "osu-gu"
 )
 noextract=("$_pkgname-$pkgver.AppImage")
-sha256sums=('d026ec4afef6412813da3e7343376d00cd468270adf68580084b2460f4893b80'
+sha256sums=('37102172a488ff4c58df108fb6add057c9ee96a04b2b7d7ef2fca70c173d5845'
             '30cf4df3fd76006b08a0bcb6a325fb2fdcf6a4371f77001da3c38cbce871bd51'
             '30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244'
             '719733029ec5eddd3bfd9c7fdfcdcb5b4fbbc52a021d284448443d165191e34c'
