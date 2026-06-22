@@ -1,12 +1,13 @@
 pkgname=hyprwall-git
-pkgver=0.1.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="GUI менеджер обоев для Hyprland с поддержкой видео"
 arch=('x86_64')
 url="https://github.com/Rainkord/HyprWall"
 license=('MIT')
-depends=('qt6-base' 'hyprpaper' 'mpvpaper' 'wayland')
-optdepends=('papirus-icon-theme: icon theme support')
+depends=('qt6-base' 'hyprpaper' 'swww' 'wayland')
+optdepends=('mpvpaper: video wallpaper support'
+            'papirus-icon-theme: icon theme support')
 makedepends=('cmake' 'ninja' 'qt6-tools' 'wayland-protocols' 'git')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
