@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zyfun-bin
-pkgver=3.4.3
-_electronversion=40
+pkgver=3.4.7
+_electronversion=41
 pkgrel=1
 pkgdesc="Cross-platform desktop video resource player, free high value.(Prebuilt version.Use system-wide electron)跨平台桌面端视频资源播放器,免费高颜值"
 arch=(
@@ -9,7 +9,7 @@ arch=(
     'x86_64'
 )
 url="https://github.com/Hiram-Wong/zyfun"
-license=("MIT")
+license=("AGPL-3.0-only")
 provides=("${pkgname%-bin}-${pkgver}")
 conflicts=(
     "${pkgname%-bin}"
@@ -21,22 +21,36 @@ depends=(
     'python'
     'python-requests'
     'python-lxml'
-    'python-pyzmq'
     'python-pycryptodome'
 )
 source_aarch=("${pkgname%-bin}-${pkgver}-aarch.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-x86_64.rpm")
-source=(
-    "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/Hiram-Wong/zyfun/v${pkgver}/LICENSE.txt"
-    "${pkgname%-bin}.sh"
-)
-sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch=('986cb57852500fd761ba0ef26bb641420d47604c93cc797714840b2c28d2a37d')
-sha256sums_x86_64=('727e096fb790b4393bb8631b933784dbd90bb4be6c6f69e2449822f3016c3706')
-_get_electron_version() {
-    _electronversion="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+source=("${pkgname%-bin}.sh")
+sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums_aarch=('d287503ca5edfffac7b6206c3cf1ce75c1ffedbcdc8e232a032204b2c99711de')
+sha256sums_x86_64=('9d171a0f7b65c2006c1a536b2fe2ef441c19284287cb0934ed2ce19c7f98065c')
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
+_check_electron_version() {
+    echo "Verifying Electron version..."
+    local _app_dir=$(_get_app_dir)
+    local _main_exe=""
+    if [[ -n "${_app_dir}" ]]; then
+        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
+    fi
+    if [[ -n "${_main_exe}" ]]; then
+        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
+        if [[ -n "${_elec_ver}" ]]; then
+            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
+                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
+            else
+                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+            fi
+        fi
+    else
+        echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
+    fi
 }
 prepare() {
     sed -i -e "
@@ -44,45 +58,39 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    _get_electron_version
+    _check_electron_version
     sed -i -e "
         s/\/opt\/${pkgname%-bin}\///g
         s/Audio;Video/AudioVideo/g
     " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    local _app_dir=$(_get_app_dir)
     rm -rf \
-        "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/7zip-bin-full/"{mac,win,linux/{arm,ia32}} \
-        "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/zeromq/build/"{darwin,win32}
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/7zip-bin-full/"{mac,win,linux/{arm,ia32}} \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/zeromq/build/"{darwin,win32}
     case "${CARCH}" in
         aarch64)
             rm -rf \
-                "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/7zip-bin-full/linux/x64" \
-                "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/zeromq/build/linux/x64"
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/7zip-bin-full/linux/x64" \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/zeromq/build/linux/x64"
                 ;;
         x86_64)
             rm -rf \
-                "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/7zip-bin-full/linux/arm64" \
-                "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/zeromq/build/linux/arm64"
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/7zip-bin-full/linux/arm64" \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/zeromq/build/linux/arm64"
                 ;;
     esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	find "${srcdir}/opt/${pkgname%-bin}/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
-    if find "${srcdir}/opt/${pkgname%-bin}/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for _subdir in "${srcdir}/opt/${pkgname%-bin}/resources/"*; do
-            if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
-            fi
-        done
-    fi
+	local _app_dir=$(_get_app_dir)
+	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+        _extension="${_i##*.}"
+        _icon_path="${_i#*share/icons/}"
+        _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+        install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
