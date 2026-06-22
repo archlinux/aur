@@ -1,13 +1,13 @@
 pkgbase = yoro-bin
 	pkgdesc = A yazi-inspired terminal UI for local calendars and contacts
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/zackb/yoro
 	arch = x86_64
 	license = MIT
 	provides = yoro
 	conflicts = yoro
-	source = https://github.com/zackb/yoro/releases/download/v0.3.0/yoro-0.3.0-linux-amd64.tar.gz
-	sha256sums = 4b219b0a6ceefb627889c030dffe9ae32b01919295d762b4c5a2b7a74541656a
+	source = https://github.com/zackb/yoro/releases/download/v0.3.1/yoro-0.3.1-linux-amd64.tar.gz
+	sha256sums = d791ed62752060bfbcb59286751b5d51a279ad1dcca079f79a2e9cbeaadc9b1c
 
 pkgname = yoro-bin
