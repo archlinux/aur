@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=qsoc-git
-pkgver=1.0.5.r40.g5a6f631
+pkgver=1.8.0.r0.g42ad204
 pkgrel=1
 epoch=
 pkgdesc="QSoC - Quick System on Chip Studio"
@@ -47,6 +47,7 @@ source=(
     "slang::git+https://github.com/MikePopoloski/slang.git"
     "json::git+https://github.com/nlohmann/json.git"
     "yaml::git+https://github.com/jbeder/yaml-cpp.git"
+    "qschematic::git+https://github.com/simulton/QSchematic.git"
     "gpds::git+https://github.com/simulton/gpds.git"
     "csv::git+https://github.com/d99kris/rapidcsv.git"
     "inja::git+https://github.com/pantor/inja.git"
@@ -56,28 +57,31 @@ source=(
     "replxx::git+https://github.com/AmokHuginnsson/replxx.git"
     "libssh2::git+https://github.com/libssh2/libssh2.git"
     "mbedtls::git+https://github.com/Mbed-TLS/mbedtls.git"
+    "cmark-gfm::git+https://github.com/github/cmark-gfm.git"
+    "lexbor::git+https://github.com/lexbor/lexbor.git"
     "framework::git+https://github.com/Mbed-TLS/mbedtls-framework.git"
     "tf-psa-crypto::git+https://github.com/Mbed-TLS/TF-PSA-Crypto.git"
     "mldsa-native::git+https://github.com/Mbed-TLS/mldsa-native.git"
 )
-sha256sums=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 validpgpkeys=()
 noextract=()
 
@@ -98,6 +102,7 @@ prepare() {
     git config submodule.external/slang.url "$srcdir/slang"
     git config submodule.external/json.url "$srcdir/json"
     git config submodule.external/yaml.url "$srcdir/yaml"
+    git config submodule.external/qschematic.url "$srcdir/qschematic"
     git config submodule.external/gpds.url "$srcdir/gpds"
     git config submodule.external/csv.url "$srcdir/csv"
     git config submodule.external/inja.url "$srcdir/inja"
@@ -107,7 +112,12 @@ prepare() {
     git config submodule.external/replxx.url "$srcdir/replxx"
     git config submodule.external/libssh2.url "$srcdir/libssh2"
     git config submodule.external/mbedtls.url "$srcdir/mbedtls"
+    git config submodule.external/cmark-gfm.url "$srcdir/cmark-gfm"
+    git config submodule.external/lexbor.url "$srcdir/lexbor"
     git -c protocol.file.allow=always submodule update
+
+    sed -i '1i #include <stdint.h>' \
+        external/yaml/src/emitterutils.cpp
 
     cd "${srcdir}/${pkgname}/external/mbedtls"
     git submodule init
