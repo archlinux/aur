@@ -1,4 +1,4 @@
-# Maintainer: esflanagin <esflanagin@gmail.com>
+# Maintainer: BlightedDespot <esflanagin@gmail.com>
 # ROCm/HIP port of wilicc/gpu-burn for AMD GPUs.
 pkgname=gpu-burn-rocm
 pkgver=1.1
