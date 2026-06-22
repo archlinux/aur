@@ -1,0 +1,23 @@
+pkgbase = tupass
+	pkgdesc = A fast, keyboard-driven terminal UI for GNU pass, built with OpenTUI
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/d7omdev/tupass
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	depends = bun
+	provides = tupass
+	noextract = tupass-0.2.0.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = tupass-0.2.0.tgz::https://registry.npmjs.org/tupass/-/tupass-0.2.0.tgz
+	source = LICENSE
+	b2sums = b23dbb753e7803cf9fdc67e8c297a35258eeafc2c9fe313524d97f470142b8129d936cd0336d45f2295e6a6ba124a4a056a98a689c30fa625134258c0e0e506d
+	b2sums = 04ab96465ce4c2469766658172723846b57e3d6ef0a782053cee5bfee947b5b7681370124b35d2e300812070af4f38c76c2289f32a6ac53dfe4fd92ab00fb4c7
+
+pkgname = tupass
