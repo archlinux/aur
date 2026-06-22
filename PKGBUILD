@@ -1,8 +1,8 @@
 # Maintainer: Doridian <archlinux@doridian.net>
 
 pkgname=ltfs-git
-pkgver=2.4.3.0.10450.r125.gadb3722
-pkgrel=2
+pkgver=2.4.8.4.10522.r0.g7d0de7c
+pkgrel=1
 pkgdesc='Linear Tape File System'
 arch=('x86_64' 'i686')
 url='https://github.com/LinearTapeFileSystem/ltfs'
@@ -20,6 +20,11 @@ pkgver() {
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    cd "$pkgname"
+    git submodule update --init --recursive
+}
+
 build() {
     cd "${srcdir}/${pkgname}"
     ./autogen.sh
@@ -29,8 +34,8 @@ build() {
         --sysconfdir=/etc \
         --localstatedir=/var \
         --enable-fast
-
-    make
+    # for net-snmp https://github.com/net-snmp/net-snmp/issues/1035
+    make CFLAGS='-Wno-error=declaration-after-statement'
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = ltfs-git
 	pkgdesc = Linear Tape File System
-	pkgver = 2.4.3.0.10450.r125.gadb3722
-	pkgrel = 2
+	pkgver = 2.4.8.4.10522.r0.g7d0de7c
+	pkgrel = 1
 	url = https://github.com/LinearTapeFileSystem/ltfs
 	arch = x86_64
 	arch = i686
