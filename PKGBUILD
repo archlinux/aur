@@ -2,7 +2,7 @@
 
 _basename=jitsi
 _pkgname=videobridge
-_version=2.3+293+g9ea6a8cc1
+_version=2.3+296+g318c08ddc
 
 _pkgbase=${_basename}-${_pkgname}-nightly
 _debname=${_basename}-${_pkgname}2
@@ -13,7 +13,7 @@ pkgdesc="Jitsi Meet Videobridge nightly binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
-depends=("java-runtime-openjdk=11" "bash")
+depends=("java-runtime-openjdk=17" "bash")
 optdepends=("prosody")
 makedepends=('tar' 'unzip')
 options=('!strip')
@@ -64,7 +64,7 @@ package() {
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
-sha256sums=('de3b274c5b731d99dd86367f21252946bb25d63a961b8c16d49569893b1b891c'
+sha256sums=('2f66883c4958d2b671a9f361ac41c55f5d820ed609c897b57d0fff3a96783e55'
             '0bd385d7444211b5f28d332dad263e9b3683fc27942926ac614cfa32f4a3f2f8'
             'cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7'
             '70412a3894300f86a997ee926db87bb6148990a73dd71119f29a50286f919699'
