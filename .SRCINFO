@@ -1,0 +1,19 @@
+pkgbase = shuck-bin-release-git
+	pkgdesc = Command-line shell checker and formatter — latest Git binary release
+	pkgver = 0.0.41
+	pkgrel = 1
+	url = https://github.com/ewhauser/shuck
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc>=2.35
+	provides = shuck
+	conflicts = shuck
+	conflicts = shuck-git
+	conflicts = shuck-release-git
+	conflicts = shuck-bin
+	options = !strip
+	source = shuck-cli-x86_64-unknown-linux-gnu.tar.xz::https://github.com/ewhauser/shuck/releases/download/v0.0.41/shuck-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = 3dcf888baaa0c15a339738a28125898054b910e91baebeae79046c7fcf5990b5
+
+pkgname = shuck-bin-release-git
