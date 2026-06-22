@@ -1,6 +1,6 @@
 # Maintainer: RXTX4816 <RXTX4816@proton.me>
 pkgname=cockpit-caddy
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Caddy reverse proxy management plugin for Cockpit"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('cockpit')
 optdepends=('caddy: the reverse proxy server this plugin manages')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('78e906809d66510ee2dac19933facc10c4e48238aca31569297b360503ab5ec1')
+sha256sums=('ff345283741e1d25c111e942288b96a51382feab55f9ca4d622e55d5d24b1860')
 
 package() {
     install -d "${pkgdir}/usr/share/cockpit/${pkgname}"
