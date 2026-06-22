@@ -1,17 +1,17 @@
 pkgbase = tray-link-bin
 	pkgdesc = System tray application to provide a shortcut for your projects on vscode and github-desktop.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.2.17
+	pkgver = 2.2.19
 	pkgrel = 1
 	url = https://github.com/thejoaov/tray-link
 	arch = x86_64
 	license = MIT
 	depends = electron33
 	depends = nodejs
-	provides = tray-link=2.2.17
+	provides = tray-link=2.2.19
 	conflicts = tray-link
-	source = tray-link-2.2.17.rpm::https://github.com/thejoaov/tray-link/releases/download/v2.2.17/tray-link-2.2.17-1.x86_64.rpm
+	source = tray-link-2.2.19.rpm::https://github.com/thejoaov/tray-link/releases/download/v2.2.19/tray-link-2.2.19-1.x86_64.rpm
 	source = tray-link.sh
-	sha256sums = 702126b14e73a72113f53681cd8b79830f3f364364eb3298852f2d558a2d89d6
+	sha256sums = fb985d5cdc3301284e566170cb7c07210cb327854562a74d2ee2f70384655a7a
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = tray-link-bin
