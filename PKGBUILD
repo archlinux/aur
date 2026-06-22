@@ -1,6 +1,6 @@
 # Maintainer: franlol
 pkgname=iptop
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="htop for your network — a beautiful real-time IP traffic monitor for the terminal"
 arch=('x86_64' 'aarch64')
@@ -9,17 +9,17 @@ license=('MIT')
 makedepends=('bun')
 conflicts=('iptop-bin')
 options=(!strip)
-source=("iptop-$pkgver.tar.gz::https://github.com/franlol/iptop/archive/refs/tags/v0.1.1.tar.gz")
-sha256sums=('227243969d58758354d7a25f859c44c2643cbc1c9196a2b3d27fae6ac2a9cbc7')
+source=("iptop-$pkgver.tar.gz::https://github.com/franlol/iptop/archive/refs/tags/v0.1.2.tar.gz")
+sha256sums=('1ea26ff5bed0d28e0851f3ed6305af436aa52ec8d273a7bc88f43122054ff2c2')
 
 build() {
-  cd "$srcdir/iptop-0.1.1"
+  cd "$srcdir/iptop-0.1.2"
   bun install --frozen-lockfile
   bun build --compile src/index.tsx --outfile iptop
 }
 
 package() {
-  cd "$srcdir/iptop-0.1.1"
+  cd "$srcdir/iptop-0.1.2"
   install -Dm755 iptop "$pkgdir/usr/bin/iptop"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
