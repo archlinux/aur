@@ -1,0 +1,14 @@
+pkgbase = screenshot-plain
+	pkgdesc = Lightweight wlroots Wayland screenshot tool — plain variant (normal screenshots, supports Niri/Hyprland/Sway/Wayfire/River)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/xander-lin/screenshot-niri
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	conflicts = screenshot-niri
+	source = git+https://github.com/xander-lin/screenshot-niri.git#branch=plain
+	sha256sums = SKIP
+
+pkgname = screenshot-plain
