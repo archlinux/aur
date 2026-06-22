@@ -33,11 +33,20 @@ prepare() {
   git reset --hard "v${pkgver}"
 
   # Verify the release tag's GPG signature against the bundled public key.
+  # git cat-file tag emits the raw tag object: payload lines then a blank line
+  # then the PGP signature block. Split with sed for gpgv.
+  git cat-file tag "v${pkgver}" > "${srcdir}/tag-object"
+  sed '/-----BEGIN PGP SIGNATURE-----/,$d' "${srcdir}/tag-object" > "${srcdir}/tag-payload"
+  sed -n '/-----BEGIN PGP SIGNATURE-----/,/-----END PGP SIGNATURE-----/p' "${srcdir}/tag-object" > "${srcdir}/tag-sig.gpg"
+
+  if [[ ! -s "${srcdir}/tag-sig.gpg" ]]; then
+    printf "GPG verification of tag v%s failed: no signature found\n" "${pkgver}" >&2
+    return 1
+  fi
   printf 'Verifying signature on git tag v%s:\n' "${pkgver}"
-  local _gnupghome; _gnupghome="$(mktemp -d)"
-  gpg --homedir="${_gnupghome}" --import "${srcdir}/andreas@manticore-projects.com.gpg" >/dev/null 2>&1
-  GNUPGHOME="${_gnupghome}" git verify-tag "v${pkgver}"
-  rm -rf "${_gnupghome}"
+  gpg --dearmor < "${srcdir}/andreas@manticore-projects.com.gpg" > "${srcdir}/keyring.gpg"
+  gpgv --keyring "${srcdir}/keyring.gpg" \
+    "${srcdir}/tag-sig.gpg" "${srcdir}/tag-payload"
 
   # go writes: GOMODCACHE (${srcdir}/.go-mod-cache)
   export GOMODCACHE="${srcdir}/.go-mod-cache"
