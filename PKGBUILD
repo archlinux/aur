@@ -1,6 +1,6 @@
 # Maintainer: Chris Sutcliff <chris@sutcliff.me>
 pkgname=keychron-battery-dkms
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="HID driver for Keychron mouse battery reporting via power_supply subsystem"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('linux-headers: build the module against the Arch stock kernel'
 provides=('keychron-battery')
 conflicts=('keychron-battery')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('172b0d0363a118f8d6a2e745f5b293c551df80de952365a8ce0028ed6e9cda0b')
+sha256sums=('9353e2e9b10bf99931e9839079adde154c43d4137f06856a029d84bd86162a93')
 
 package() {
     local install_dir="${pkgdir}/usr/src/${pkgname%-dkms}-${pkgver}"
