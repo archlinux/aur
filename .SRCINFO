@@ -1,6 +1,6 @@
 pkgbase = triangles-qt-bin
 	pkgdesc = Cryptographic Triangles (TRI) cryptocurrency wallet - Qt GUI
-	pkgver = 5.9.22
+	pkgver = 5.9.23
 	pkgrel = 1
 	url = https://cryptographic-triangles.org
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = triangles-qt-bin
 	conflicts = triangles-qt
 	conflicts = trianglesd
 	conflicts = triangles-cli
-	source = https://github.com/SamiAhmed7777/triangles_v5/releases/download/v5.9.22/cryptographic-triangles_5.9.22_amd64.deb
-	source = https://github.com/SamiAhmed7777/triangles_v5/releases/download/v5.9.22/cryptographic-triangles-daemon_5.9.22_amd64.deb
+	source = https://github.com/SamiAhmed7777/triangles_v5/releases/download/v5.9.23/cryptographic-triangles_5.9.23_amd64.deb
+	source = https://github.com/SamiAhmed7777/triangles_v5/releases/download/v5.9.23/cryptographic-triangles-daemon_5.9.23_amd64.deb
 	source = triangles-qt.desktop
-	sha256sums = baff8d953efbb75af8dffc95ceda766aa7f34669234c5f327f3b0fff33d78fd9
-	sha256sums = e5bd1a22d81acbfab8fc33718d32ab80a9f4539335ab0f28b64d91d7f48fcc3e
+	sha256sums = dbf4081ba0ed216eab4d6e9fcf4d038f518ad830732582a9cef200a80b95287c
+	sha256sums = 2f151f2c88bb5f698b1534e3ad3672aae07b73de28e7b7db2c32ab1475df80e8
 	sha256sums = SKIP
 
 pkgname = triangles-qt-bin
