@@ -1,6 +1,6 @@
 pkgbase = carton-bin
 	pkgdesc = A Windows and Linux GUI client for sing-box.(主打高性能和易用性，非electron tauri等web套皮)
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/821869798/carton
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = carton-bin
 	provides = carton
 	conflicts = carton
 	conflicts = carton-appimage
-	source = LICENSE::https://raw.githubusercontent.com/821869798/carton/refs/tags/v0.4.2/LICENSE
-	source = carton_icon.png::https://raw.githubusercontent.com/821869798/carton/refs/tags/v0.4.2/src/carton.GUI/Assets/carton_icon.png
+	source = LICENSE::https://raw.githubusercontent.com/821869798/carton/refs/tags/v0.5.0/LICENSE
+	source = carton_icon.png::https://raw.githubusercontent.com/821869798/carton/refs/tags/v0.5.0/src/carton.GUI/Assets/carton_icon.png
 	sha256sums = d0f7cd798fd03274d6742245e320bbd2133dfdb7161c4470df4ea862b4fa57dd
 	sha256sums = ddcf47960f17c5652904b24ad99a4a92af03dab850b8f29e50401d2a4a038138
-	source_x86_64 = carton-v0.4.2-x64-portable.tar.gz::https://github.com/821869798/carton/releases/download/v0.4.2/carton-0.4.2-linux-x64-portable.tar.gz
-	sha256sums_x86_64 = 3a0d1d8578f0d7b12f2ec33a28351e352b2d53c55c0d31ab2f7564602e4a0faf
-	source_aarch64 = carton-v0.4.2-arm64-portable.tar.gz::https://github.com/821869798/carton/releases/download/v0.4.2/carton-0.4.2-linux-arm64-portable.tar.gz
-	sha256sums_aarch64 = 22145cdb1fef09f3d5cb1f731fe7bd9aac40ee0572499d1a1caaee2fc9f3f7a3
+	source_x86_64 = carton-v0.5.0-x64-portable.tar.gz::https://github.com/821869798/carton/releases/download/v0.5.0/carton-0.5.0-linux-x64-portable.tar.gz
+	sha256sums_x86_64 = f6cc5858da7167c7f4f2c900bc715a0d6402c584f14c6a8516939594ba5f6579
+	source_aarch64 = carton-v0.5.0-arm64-portable.tar.gz::https://github.com/821869798/carton/releases/download/v0.5.0/carton-0.5.0-linux-arm64-portable.tar.gz
+	sha256sums_aarch64 = e15d685d6252045c4563b1d8bc02a670ae7a10c3babedbcca85de53833970bff
 
 pkgname = carton-bin
