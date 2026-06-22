@@ -1,0 +1,14 @@
+post_install() {
+  systemctl daemon-reload
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+  if systemctl is-enabled --quiet nvidiactl.service; then
+    systemctl try-restart nvidiactl.service
+  fi
+}
+
+post_remove() {
+  systemctl daemon-reload
+}

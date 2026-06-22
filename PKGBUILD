@@ -2,17 +2,19 @@
 
 pkgname=nvidiactl-git
 _pkgname=${pkgname%-git}
-pkgver=r76.48c076f
+pkgver=v0.3.0.r1.g0ca678b
 pkgrel=1
 pkgdesc='A tool providing dynamic fan speed and power limit adjustments for NVIDIA GPUs, balancing performance and noise. It can optionally be run as a systemd service.'
 arch=('x86_64')
 options=('!strip')
 license=('MIT')
 depends=('NVIDIA-MODULE')
-makedepends=('git' 'go>=1.23' 'upx')
+makedepends=('git' 'go>=1.26' 'gcc')
 optdepends=('sudo' 'doas')
 url="https://codeberg.org/mutker/$_pkgname"
 source=("$_pkgname::git+$url.git")
+install=nvidiactl.install
+backup=('etc/nvidiactl.conf')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 sha256sums=('SKIP')
@@ -37,19 +39,20 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname"
   export CGO_ENABLED=1
+  local version
+  version=$(tr -d '[:space:]' < VERSION)
   go build -v \
-    -ldflags="-s -w" \
-    -gcflags=all="-l -B" \
+    -ldflags="-s -w -X main.Version=${version}" \
     -trimpath \
     -o build/"$_pkgname" ./cmd/nvidiactl
-  upx -qqq build/"$_pkgname"
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -Dm 755 build/"$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install -Dm 644 -t "$pkgdir/usr/share/doc/$_pkgname/" README.md
-  install -Dm 644 "$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
-  install -Dm 644 "$_pkgname.example.conf" "$pkgdir/etc/$_pkgname.conf"
-  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm755 build/"$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" README.md
+  install -Dm644 "$_pkgname.example.conf" "$pkgdir/usr/share/doc/$_pkgname/$_pkgname.example.conf"
+  install -Dm644 "$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+  install -Dm644 "$_pkgname.example.conf" "$pkgdir/etc/$_pkgname.conf"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
