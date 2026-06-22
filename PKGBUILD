@@ -3,7 +3,7 @@
 
 _pkgname="xdg-desktop-portal-hyprland"
 pkgname="$_pkgname-git"
-pkgver=1.3.12.r3.g813ea5c
+pkgver=1.3.12.r5.g0b39218
 pkgrel=1
 pkgdesc="xdg-desktop-portal backend for Hyprland"
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,6 @@ makedepends=(
   hyprland-protocols-git
   hyprwayland-scanner-git
   ninja
-  scdoc
   wayland-protocols
 )
 optdepends=(
