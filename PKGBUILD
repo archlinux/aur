@@ -1,19 +1,20 @@
 # Maintainer: Tom Hale <tom at hale dot ee>
-# Based upon: https://github.com/manticore-projects/aurscan/blob/main/packaging/PKGBUILD
 # Binary variant of aurscan-manticore-release-git: tracks the latest upstream
 # GitHub release tag and installs the pre-built binaries instead of building
 # from source.
+# Uses git ls-remote + GitHub API for version discovery and GPG verification
+# (no full git clone needed).
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164  # var unused / var not assigned / cd without || exit
 
 pkgname=aurscan-manticore-bin-release-git
 pkgver=0.5.2
 _pkgname=aurscan
-pkgrel=1
+pkgrel=2
 pkgdesc="LLM-powered pre-build malware scanner for AUR packages (paru/yay editor-gate)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/manticore-projects/aurscan"
 license=('Apache-2.0')
-makedepends=('git' 'curl' 'gnupg')
+makedepends=('git' 'curl' 'gnupg' 'jq')
 options=('!strip')
 conflicts=('aurscan' 'aurscan-git' 'aurscan-manticore' 'aurscan-manticore-git' 'aurscan-manticore-release-git')
 optdepends=(
@@ -23,13 +24,11 @@ optdepends=(
   'openai-codex: keyless backend via your Codex subscription'
   'xdg-utils: open mail client for mailing-list reports'
 )
-# The git clone is used to discover the latest release tag and to verify its
-# GPG signature; the release binary itself is fetched in build() so it always
-# matches the tag makepkg picked.
-source=("$pkgname::git+$url.git"
-        "andreas-manticore.gpg")
-sha256sums=('SKIP'
-            '08ca421f7b39c6ca91e684fd18ab053466394e3658cabf89d001358e72b17def')
+# No git clone: pkgver() uses git ls-remote; GPG verify uses GitHub API; binary,
+# LICENSE, and README are fetched in build() from GitHub release assets and raw
+# content URLs. All dynamic, so no static source entry for release assets.
+source=("andreas-manticore.gpg")
+sha256sums=('08ca421f7b39c6ca91e684fd18ab053466394e3658cabf89d001358e72b17def')
 
 # Map Arch architecture -> upstream asset suffix
 case "${CARCH:-}" in
@@ -38,29 +37,45 @@ case "${CARCH:-}" in
 esac
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  git tag --sort=-v:refname --list 'v[0-9]*' | head -1 | sed 's/^v//'
+  git ls-remote --tags 'https://github.com/manticore-projects/aurscan.git' 'v[0-9]*' \
+    | awk '{print $2}' \
+    | sed 's|^refs/tags/||; s/\^{}$//' \
+    | sort -V -u \
+    | tail -1 \
+    | sed 's/^v//'
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
-  git fetch --tags --force
-  git checkout "v${pkgver}"
+  true
 }
 
 build() {
   cd "${srcdir}"
-  local _url="${url}/releases/download/v${pkgver}/${_asset}"
-  if [[ ! -s "${_asset}" ]]; then
-    curl -fsSL "$_url" -o "${_asset}"
-  fi
+  local _rel_url="${url}/releases/download/v${pkgver}"
+  local _raw_url="https://raw.githubusercontent.com/manticore-projects/aurscan/v${pkgver}"
+  curl -fsSL "${_rel_url}/${_asset}" -o "${_asset}"
+  curl -fsSL "${_raw_url}/LICENSE"   -o LICENSE
+  curl -fsSL "${_raw_url}/README.md" -o README.md
 }
 
 check() {
-  cd "${srcdir}"
+  # Verify the release tag's GPG signature against the bundled public key via
+  # the GitHub API (avoids a full git clone).
+  local _api="https://api.github.com/repos/manticore-projects/aurscan"
+  local _ref_sha
 
-  # 1. Verify the release tag's GPG signature against the bundled public key.
-  #    Upstream signs tags with key 188331308EF56D11 (Andreas Reichel).
+  _ref_sha=$(curl -fsS "${_api}/git/ref/tags/v${pkgver}" | jq -r '.object.sha')
+
+  # jq -j omits trailing newline; payload and signature must be exact bytes
+  if ! curl -fsS "${_api}/git/tags/${_ref_sha}" \
+    | jq -j '.verification.payload' > "${srcdir}/tag-payload" 2>/dev/null \
+    || [[ ! -s "${srcdir}/tag-payload" ]]; then
+    printf "GPG verification of tag v%s failed: could not fetch tag payload\n" "${pkgver}" >&2
+    return 1
+  fi
+  curl -fsS "${_api}/git/tags/${_ref_sha}" \
+    | jq -j '.verification.signature' > "${srcdir}/tag-sig.gpg"
+
   local _gpghome="${srcdir}/.gnupg"
   rm -rf "$_gpghome"
   mkdir -p "$_gpghome"
@@ -68,25 +83,24 @@ check() {
   GNUPGHOME="$_gpghome" gpg --batch --homedir "$_gpghome" \
     --import "${srcdir}/andreas-manticore.gpg" >/dev/null 2>&1
 
-  cd "${srcdir}/${pkgname}"
-  if ! GNUPGHOME="$_gpghome" git tag -v "v${pkgver}" >/dev/null 2>&1; then
-    GNUPGHOME="$_gpghome" git tag -v "v${pkgver}"
-    printf '%s\n' "GPG verification of tag v${pkgver} failed" >&2
+  if ! GNUPGHOME="$_gpghome" gpg --batch --homedir "$_gpghome" \
+    --verify "${srcdir}/tag-sig.gpg" "${srcdir}/tag-payload" >/dev/null 2>&1; then
+    GNUPGHOME="$_gpghome" gpg --batch --homedir "$_gpghome" \
+      --verify "${srcdir}/tag-sig.gpg" "${srcdir}/tag-payload"
+    printf "GPG verification of tag v%s failed\n" "${pkgver}" >&2
     return 1
   fi
+
+  # Clean up verification artifacts
+  rm -rf "${srcdir}/.gnupg" "${srcdir}/tag-payload" "${srcdir}/tag-sig.gpg"
 }
 
 package() {
   cd "${srcdir}"
   install -Dm755 "${_asset}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -dt "${pkgdir}/usr/bin"
   ln -sf "${_pkgname}" "${pkgdir}/usr/bin/syay"
   ln -sf "${_pkgname}" "${pkgdir}/usr/bin/sparu"
   ln -sf "${_pkgname}" "${pkgdir}/usr/bin/aurscan-edit"
-
-  # Ship LICENSE and README from the cloned tag so docs/licenses stay in sync
-  # with the exact release the binary was built from.
-  cd "${srcdir}/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
