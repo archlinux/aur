@@ -1,6 +1,6 @@
 pkgbase = beacon-git
 	pkgdesc = A sleek and modern Minecraft server manager built with Nuxt (cutting-edge version)
-	pkgver = 1.0.0.rceee951
+	pkgver = 1.0.0.r7c9a583
 	pkgrel = 1
 	url = https://code.weexnes.dev/Beacon
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = beacon-git
 	provides = beacon
 	conflicts = beacon
 	options = !strip
-	source = beacon-git-ceee9519b622f82bcec3698303e41754996490d1.tar.gz::https://code.weexnes.dev/~downloads/projects/24/archives?revision=ceee9519b622f82bcec3698303e41754996490d1&format=tgz
+	source = beacon-git-7c9a583681ff82c53515bced9900401ab5faa88c.tar.gz::https://code.weexnes.dev/~downloads/projects/24/archives?revision=7c9a583681ff82c53515bced9900401ab5faa88c&format=tgz
 	source = beacon.service
 	source = beacon.sysusers
 	sha256sums = SKIP
