@@ -1,7 +1,7 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname=ymir-emu
-pkgver=0.3.1
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Sega Saturn Emulator"
 arch=("x86_64")
@@ -46,6 +46,7 @@ build() {
         -D Ymir_ENABLE_DEVLOG=OFF
         -D Ymir_ENABLE_IMGUI_DEMO=OFF
         -D Ymir_ENABLE_SANDBOX=OFF
+        -D Ymir_DEV_BUILD=OFF
         --fresh
     )
     cmake "${cmake_options[@]}"

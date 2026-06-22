@@ -1,6 +1,6 @@
 pkgbase = ymir-emu
 	pkgdesc = Sega Saturn Emulator
-	pkgver = 0.3.1
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/StrikerX3/Ymir
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = ymir-emu
 	depends = sdl3
 	provides = ymir-emu
 	conflicts = ymir-emu
-	source = ymir::git+https://github.com/StrikerX3/Ymir.git#tag=v0.3.1
+	source = ymir::git+https://github.com/StrikerX3/Ymir.git#tag=v0.3.3
 	source = ymir-emu.desktop
 	sha256sums = SKIP
 	sha256sums = f5e56bef2d099a16ea07863e0d24e348d534f18927961090c16f82c953400acc
