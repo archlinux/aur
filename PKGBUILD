@@ -1,39 +1,27 @@
 # Maintainer:  Karl-Felix Glatzer <karl.glatzer@gmx.de>
 
 pkgname=mingw-w64-x265
-pkgver=4.1
+pkgver=4.2
 pkgrel=1
 pkgdesc='Open Source H265/HEVC video encoder (mingw-w64)'
 arch=('any')
-url='https://www.videolan.org/developers/x265.html'
+url=https://www.x265.org/
 license=('GPL-2.0-or-later')
 depends=('mingw-w64-crt')
 options=(!strip !buildflags staticlibs !debug)
 makedepends=('mingw-w64-cmake' 'git' 'nasm' 'ninja')
-_tag=f21b135c3414ade4e22305d008bf07d23d0595fb
 source=(
-  x265::git+https://bitbucket.org/multicoreware/x265_git.git#tag=${_tag}
+  "git+https://github.com/Multicorewareinc/x265.git#tag=${pkgver}"
   0001-Fix-build-with-GCC-15.patch
   mingw.patch
 )
-b2sums=('26be1f78e43a93ddbec87003d26e302b0759913bd500c571a5bbdd73d62d787b81529729988743a146b955983483d1067e9934f61d915b3b6854ac6aae459191'
+b2sums=('1ad111130a64ca822b5b78dc84e0078e30bbadb67a9db16bdd6a860a4210c17701ae5681930e10ec3e6335ea767ac01391fc1a68ce5ca72450c4a075b664a348'
         'af2ee0460c0c2f6f36e4f124a9ac16610e3884001262a6f08043fa1de4a85e2b5fd4fb12c64b8c94cfb59c3031bb7a1324e307fa2049e3378e2add9a58f5bd9e'
         'ec8e763beb4f6fd93bd959b18b75b038b1cad2f137be488dffed383ea14b1e880e3830be09da32a67821b628f30fd120364052b0a02ff82a65ddebd68293f645')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-pkgver() {
-  cd x265
-
-  git describe --tags | sed 's/^v//'
-}
-
 prepare() {
   cd x265
-
-  # Fix build with CMake 4.0
-  git cherry-pick -n b354c009a60bcd6d7fc04014e200a1ee9c45c167 \
-                     51ae8e922bcc4586ad4710812072289af91492a8 \
-                     78e5ac35c13c5cbccc5933083edceb0d3eaeaa21
 
   # Fix build with GCC 15
   git apply -3 ../0001-Fix-build-with-GCC-15.patch
