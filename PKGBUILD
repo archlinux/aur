@@ -1,6 +1,6 @@
 # Maintainer: thebu
 pkgname=smi-usbdisplay
-pkgver=2.24.7.0
+pkgver=2.24.8.0
 pkgrel=1
 pkgdesc="Silicon Motion SMI USB Display driver (userspace daemon for 090c:0768)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 )
 noextract=("SMI-USB-Display-for-Linux-v${pkgver}.zip")
 sha256sums=(
-  'aa4874f531cde509ee2f744eec50eade9b4c8ec2051d704170322885a0609200'
+  'bb22458b526471b79af41874712247ae12dfdcaefca638d1e2c78103751fe07f'
   'b95a0d56fe93a10ce5177e7a6a5cb52a8e2cca014a35f3976fbecb3e2b1b089a'
   'b8e1f7313cf088ad8682f534311558d095e6d47fc8824a6854c6683ddf0baa52'
   '058241b06c90232588c49d1b84b7b75cc6ddd0a0ed678d9ae124ac5517b3d86a'
