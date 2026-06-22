@@ -1,6 +1,6 @@
 pkgbase = ply-bin
 	pkgdesc = Local-first package manager for coding-agent assets.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://plycli.dev
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = ply-bin
 	depends = git
 	provides = ply
 	conflicts = ply
-	source_x86_64 = ply-0.1.0-x86_64.tar.xz::https://github.com/jeansimeoni/ply/releases/download/v0.1.0/ply-x86_64-unknown-linux-musl.tar.xz
-	sha256sums_x86_64 = 78b8ad4e01e60af912afe35d55d057d5b766ffd4ca0b5cdc56c311b01a2da8c9
-	source_aarch64 = ply-0.1.0-aarch64.tar.xz::https://github.com/jeansimeoni/ply/releases/download/v0.1.0/ply-aarch64-unknown-linux-musl.tar.xz
-	sha256sums_aarch64 = 3dc8ef27221230c2175edb8fed5ff92c3dd4597a38a82ba3a27fab00c295cf69
+	source_x86_64 = ply-0.1.1-x86_64.tar.xz::https://github.com/jeansimeoni/ply/releases/download/v0.1.1/ply-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = 3d20d7c1e8fa2fe81ac2ebbe320cea463badf23c63c18d0bb37cd5aee526d892
+	source_aarch64 = ply-0.1.1-aarch64.tar.xz::https://github.com/jeansimeoni/ply/releases/download/v0.1.1/ply-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = a25795ec12fc7328f50c75fb2c6dad7656198d68079537634502f1da5a0e6ec9
 
 pkgname = ply-bin
