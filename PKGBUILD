@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'chafa' 'ffmpeg' 'fastfetch' 'python-platformdirs' 'python-wcwidth' 'python-rich' 'python-pynput')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Notenlish/anifetch/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('6d9ca7b426da7d9aefcc97eb7ccc9c38a13cf0bb65dcdc9c6f8ec6b74e8ab3f1')
+sha256sums=('383263d7fd237dd46bcc4bf59d7587fea14490370c3845f1bca6ac6853e5b4b9')
 
 build() {
   cd "$srcdir/anifetch-$pkgver"
