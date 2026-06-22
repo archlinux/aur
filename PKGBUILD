@@ -5,7 +5,7 @@
 pkgname=aurscan-manticore-release-git
 pkgver=0.5.2
 _pkgname=aurscan
-pkgrel=1
+pkgrel=2
 pkgdesc="LLM-powered pre-build malware scanner for AUR packages (paru/yay editor-gate)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/manticore-projects/aurscan"
@@ -13,8 +13,8 @@ license=('Apache-2.0')
 makedepends=('go' 'git')
 conflicts=('aurscan' 'aurscan-git' 'aurscan-manticore' 'aurscan-manticore-git')
 optdepends=(
-  'paru: sparu wrapper and --update-check'
-  'yay: syay wrapper and --update-check'
+  'paru: sparu wrapper, PreBuildCommand hook, and --update-check'
+  'yay: syay wrapper, editor-gate hook, and --update-check'
   'claude-code: keyless backend via your Claude subscription'
   'openai-codex: keyless backend via your Codex subscription'
   'xdg-utils: open mail client for mailing-list reports'
