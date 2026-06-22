@@ -13,6 +13,7 @@ makedepends=(
     'rust' 'git'
     'cmake' 'clang' # btls-sys build
 )
+options=(!lto)
 
 source=("git+${url}.git")
 
@@ -21,24 +22,23 @@ sha256sums=('SKIP')
 prepare() {
     cd "${_pkgname}"
 
-    export RUSTUP_TOOLCHAIN=nightly
+    export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target ${CARCH}-unknown-linux-gnu
 }
 
 pkgver() {
     cd "${_pkgname}"
 
-    export RUSTUP_TOOLCHAIN=nightly
+    export RUSTUP_TOOLCHAIN=stable
     echo "r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
     cd "${_pkgname}"
 
-    export RUSTUP_TOOLCHAIN=nightly
+    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
-    export RUSTFLAGS="-C link-args=-flto"
     cargo build --frozen --release --bin ${_pkgname}
 }
 
