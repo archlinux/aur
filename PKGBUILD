@@ -13,8 +13,8 @@ _pkgname=flowshield
 # AUR forbids hyphens in pkgver, so prereleases get hyphens converted to
 # dots (3.2.1-alpha.0 → 3.2.1.alpha.0). _tagver keeps the original form
 # for the GitHub URL, which uses the literal release tag.
-pkgver=3.5.0.alpha.0
-_tagver=3.5.0-alpha.0
+pkgver=3.5.1.alpha.0
+_tagver=3.5.1-alpha.0
 pkgrel=1
 pkgdesc='Cross-platform productivity tracker that pairs with the FlowShield web dashboard'
 arch=('x86_64')
@@ -33,7 +33,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip')
 source=("${_pkgname}-${pkgver}.AppImage::https://github.com/asifthewebguy/FlowShield/releases/download/v${_tagver}/FlowShield_${_tagver}_amd64.AppImage")
-sha256sums=('72a38527d93d34d489d8ca2628f45f5d23ac50047255a2f092bf0c5626bb305c')
+sha256sums=('1da64d119ed5a24f2a0fcb8374871fde124f9c4064de509e9be3bb2c87ef944c')
 noextract=("${_pkgname}-${pkgver}.AppImage")
 
 package() {
