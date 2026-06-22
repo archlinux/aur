@@ -32,6 +32,8 @@ depends=(
 	'systemd-libs'
 	'atch-stellar-git'
 	'awesome-stellar-git'
+	'picom'
+	'stalonetray'
 )
 
 optdepends=(
