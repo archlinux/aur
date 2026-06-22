@@ -1,0 +1,22 @@
+pkgbase = calagopus-panel-git
+	pkgdesc = Web panel for managing game servers
+	pkgver = r2046.cf59404
+	pkgrel = 1
+	url = https://calagopus.com
+	arch = x86_64
+	arch = aarch64
+	arch = powerpc64le
+	arch = riscv64
+	license = MIT
+	provides = calagopus-panel
+	conflicts = calagopus-panel-bin
+	conflicts = calagopus-panel-aio-bin
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = git
+	source = calagopus-panel::git+https://github.com/calagopus/panel.git
+	sha256sums = SKIP
+
+pkgname = calagopus-panel-git
