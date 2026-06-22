@@ -5,7 +5,7 @@ _gitname=microsandbox
 _appname=${_gitname}
 _appalias=msb
 pkgname=${_appname}-bin
-pkgdesc="Universal test runner with auto-detection for 11 languages"
+pkgdesc="Easy, fast and local-first microVM runtime"
 
 pkgver=0.5.8
 pkgrel=1
