@@ -15,6 +15,7 @@ _architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare () {
   cd CoACD-$pkgver
+  curl -L https://github.com/SarahWeiii/CoACD/pull/105.patch | patch -p1
 }
 
 build() {
