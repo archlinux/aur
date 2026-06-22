@@ -1,7 +1,7 @@
-# Maintainer: Daniël Nazarkin <aur.danicatgames@pm.me>
+# Maintainer: Daniël Nazarkin <aur@danicatgames.nl>
 
 pkgname=basalt
-pkgver=0.12.5
+pkgver=0.12.6
 pkgrel=1
 pkgdesc='A TUI Application to manage Obsidian notes'
 url='https://github.com/erikjuhani/basalt'
@@ -10,7 +10,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 arch=('x86_64' 'aarch64' 'armv7h')
 source=("$url/archive/refs/tags/basalt/v$pkgver.tar.gz")
-sha256sums=('8438ebb628bfae283172d7ca450567ca49e44dcd1825d4843d40173f77d39927')
+sha256sums=('e5b2672b3644f6a870c4673b81138a3ec9d30bda76a2b8de9db9f73b0d94c081')
 _srcdir="$pkgname-$pkgname-v$pkgver"
 
 prepare() {
