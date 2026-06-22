@@ -14,7 +14,7 @@ pkgbase = flockosi-git
 	depends = xorriso
 	provides = flockosi
 	conflicts = flockosi
-	source = git+https://codeberg.org/Songbird-Project/flockosi-git.git
+	source = git+https://codeberg.org/Songbird-Project/flockosi.git
 	sha256sums = SKIP
 
 pkgname = flockosi-git

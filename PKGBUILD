@@ -24,7 +24,7 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://codeberg.org/Songbird-Project/$pkgname.git")
+source=("git+https://codeberg.org/Songbird-Project/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
