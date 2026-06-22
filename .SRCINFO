@@ -1,0 +1,18 @@
+pkgbase = irkt-git
+	pkgdesc = Modern terminal IRC client: full IRCv3, SASL/CertFP, inline images (Kitty/iTerm2/Sixel)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/prietus/irkt
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = irkt
+	conflicts = irkt
+	conflicts = irkt-bin
+	source = irkt-git::git+https://github.com/prietus/irkt.git
+	sha256sums = SKIP
+
+pkgname = irkt-git
