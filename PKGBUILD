@@ -257,9 +257,6 @@ ac_add_options --enable-lto=cross
 END
 fi
 
-  # reduce chance of builds failung during linking due to running out of memory
-  export LDFLAGS+=" -Wl,--no-keep-memory"
-
   # Fix build with glibc 2.43
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
   patch -B .patchorigin -Np1 -i ../../0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
