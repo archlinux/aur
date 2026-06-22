@@ -1,10 +1,11 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: Jasper Hafkenscheid <jasperh+aur@hafcom.nl>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Simon Gomizelj <simongmzlj@gmail.com>
 
 _pkgname=sipp
 pkgname=sipp-git
-pkgver=3.6.1.r42.g9f62be0
-pkgrel=2
+pkgver=3.7.7.r56.gbe58e3e
+pkgrel=1
 pkgdesc="A free open source test tool and traffic generator for the SIP protocol"
 arch=('i686' 'x86_64')
 url="http://github.com/sipp"
