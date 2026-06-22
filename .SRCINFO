@@ -1,6 +1,6 @@
 pkgbase = qsoc-git
 	pkgdesc = QSoC - Quick System on Chip Studio
-	pkgver = 1.8.0.r0.g42ad204
+	pkgver = 1.8.1.r0.gd82885e
 	pkgrel = 1
 	url = https://github.com/vowstar/qsoc
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=qsoc-git
-pkgver=1.8.0.r0.g42ad204
+pkgver=1.8.1.r0.gd82885e
 pkgrel=1
 epoch=
 pkgdesc="QSoC - Quick System on Chip Studio"
@@ -115,9 +115,6 @@ prepare() {
     git config submodule.external/cmark-gfm.url "$srcdir/cmark-gfm"
     git config submodule.external/lexbor.url "$srcdir/lexbor"
     git -c protocol.file.allow=always submodule update
-
-    sed -i '1i #include <stdint.h>' \
-        external/yaml/src/emitterutils.cpp
 
     cd "${srcdir}/${pkgname}/external/mbedtls"
     git submodule init
