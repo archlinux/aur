@@ -8,7 +8,7 @@ _patchver='-1'
 pkgrel=1
 pkgdesc='A complete solution for viewing, creating and editing PDF files (qt5 version with static-linked qt libs).'
 url='https://code-industry.net/free-pdf-editor/'
-_checksum="$(curl 'https://code-industry.net/checksum-information/' | grep "master-pdf-editor-${pkgver}${_patchver}-qt5.x86_64-qt_include.tar.gz")"
+_checksum=$(curl 'https://code-industry.net/checksum-information/' | grep -oP '[a-f0-9]{40}(?=.*master-pdf-editor-'"${pkgver}${_patchver}"'-qt5.x86_64-qt_include.tar.gz)')
 arch=('x86_64')
 license=('custom')
 depends=(
