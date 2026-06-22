@@ -1,6 +1,6 @@
 pkgbase = ueli
 	pkgdesc = Cross-Platform Keystroke Launcher.(Use system-wide electron)
-	pkgver = 9.28.1
+	pkgver = 9.29.0
 	pkgrel = 1
 	url = https://ueli.app/
 	arch = x86_64

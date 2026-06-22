@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ueli
 _pkgname=Ueli
-pkgver=9.28.1
+pkgver=9.29.0
 _electronversion=41
 _nodeversion=22
 pkgrel=1
