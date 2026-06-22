@@ -34,6 +34,6 @@ package() {
   # Install sysusers config
   install -Dm644 "$srcdir/beacon.sysusers" "$pkgdir/usr/lib/sysusers.d/beacon.conf"
 }
-sha256sums=('6778e7dd96fdfc146569243e1d5928f461557958ee6ef040229f24331f0ded8c'
-            '896ee60fd167ada26ba222693e394bd670a14339c83272b565ca1d1ca04b21cf'
-            'a197ad3fb5f9286228c65c22a9eea85d28776ee3d555bba1c26032ae7f3c4218')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')

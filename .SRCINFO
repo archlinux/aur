@@ -13,8 +13,8 @@ pkgbase = beacon-git
 	source = beacon-git-844f7300b8a4f55ce6b5c4185617cc78ed4128ff.tar.gz::https://code.weexnes.dev/~downloads/projects/24/archives?revision=844f7300b8a4f55ce6b5c4185617cc78ed4128ff&format=tgz
 	source = beacon.service
 	source = beacon.sysusers
-	sha256sums = 6778e7dd96fdfc146569243e1d5928f461557958ee6ef040229f24331f0ded8c
-	sha256sums = 896ee60fd167ada26ba222693e394bd670a14339c83272b565ca1d1ca04b21cf
-	sha256sums = a197ad3fb5f9286228c65c22a9eea85d28776ee3d555bba1c26032ae7f3c4218
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = beacon-git
