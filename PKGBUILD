@@ -10,7 +10,7 @@ pkgname=aurscan-manticore-bin-release-git
 pkgver=0.5.2
 _pkgname=aurscan
 pkgrel=2
-pkgdesc="LLM-powered pre-build malware scanner for AUR packages (paru/yay editor-gate)"
+pkgdesc="LLM-powered pre-build malware scanner for AUR packages (with paru/yay hooks)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/manticore-projects/aurscan"
 license=('Apache-2.0')
@@ -78,8 +78,9 @@ check() {
 
   local _gpghome="${srcdir}/gnupg"
   mkdir -p "$_gpghome"
+  chmod 700 "$_gpghome"
   local _gpg=(gpg --batch --homedir "$_gpghome")
-  "${_gpg[@]}" --import "${srcdir}/andreas@manticore-projects.com.gpg"
+  "${_gpg[@]}" --import "${srcdir}/andreas@manticore-projects.com.gpg" >/dev/null 2>&1
   "${_gpg[@]}" --quick-set-ownertrust "61E73AA7539ACB261ABCF10C188331308EF56D11" ultimate
 
   printf 'Verifying signature on git tag v%s:\n' "${pkgver}"
