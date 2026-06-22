@@ -1,0 +1,3 @@
+[perl-devel-repl]
+source = "cpan"
+cpan = "Devel-REPL"
