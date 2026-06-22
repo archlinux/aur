@@ -10,5 +10,6 @@ pkgbase = waller-git
 	depends = imagemagick
 	provides = waller
 	source = https://raw.githubusercontent.com/lare354/waller/refs/heads/main/install.sh
+	sha256sums = 0ae41487504b76dcba09f03be683f3b2952deb57d5b83623fbf180f02290973d
 
 pkgname = waller-git
