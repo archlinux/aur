@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=imsprog-git
-pkgver=1.8.3.r2.g0ad7af5
+pkgver=1.8.5.r11.gb7b02f0
 pkgrel=1
 pkgdesc="I2C, MicroWire and SPI EEPROM/Flash chip Programmer - is a program to read, write EEPROM chips use the CH341A programmer device and CH347T programmer device"
 arch=($CARCH)
@@ -9,19 +9,19 @@ url="https://github.com/bigbigmdm/IMSProg"
 license=('GPL-3.0-only')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
+_qt=qt6
 depends=(
-  sh
   glibc
   libgcc
   libstdc++
   libusb
-  qt5-base
+  $_qt-base
 )
 makedepends=(
   cmake
   git
   ninja
-  qt5-tools
+  $_qt-tools
 )
 optdepends=(
   "ezp-chip-data-editor: QT based editor chip database for EZP2019, EZP2019+, EZP2020, EZP2023, EZP2025, MinPro programmer devices"
@@ -34,7 +34,7 @@ pkgver() {
   cd "${srcdir}/${pkgname}"
   (
     set -o pipefail
-    git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
