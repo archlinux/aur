@@ -1,6 +1,6 @@
 # Maintainer: Zack Bartel <zack@bartel.com>
 pkgname=yoro-git
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A yazi-inspired terminal UI for local calendars and contacts"
 arch=('x86_64' 'aarch64')
