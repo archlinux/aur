@@ -1,0 +1,4 @@
+[python-pysmartthings]
+source = "git"
+git = "https://github.com/pysmartthings/pysmartthings.git"
+prefix = "v"

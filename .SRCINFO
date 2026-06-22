@@ -1,0 +1,19 @@
+pkgbase = python-pysmartthings
+	pkgdesc = A Python library for interacting with the SmartThings cloud API
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = https://github.com/pysmartthings/pysmartthings
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-aiohttp
+	depends = python-yarl
+	depends = python-mashumaro
+	depends = python-orjson
+	source = python-pysmartthings-4.0.1.tar.gz::https://github.com/pysmartthings/pysmartthings/archive/v4.0.1.tar.gz
+	sha256sums = 5d2083db133d2bad7cb366dcfccbb3ee273b0b4b6524e9e9c13dd20b54fd63d0
+
+pkgname = python-pysmartthings
