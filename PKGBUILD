@@ -13,7 +13,7 @@ depends=(
   'grub'
   'xorriso'
 )
-optdepands=(
+optdepends=(
   'arch-install-scripts: For the Arch Linux preset'
   'debootstrap: For the Debian preset'
   'dnf: For the Fedora preset'
@@ -29,7 +29,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "%s" "$(git describe --long | sed 's/v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long --tags | sed 's/v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
@@ -41,7 +41,9 @@ package() {
   cd "$srcdir/${pkgname%-git}"
 
   install -Dm0755 zig-out/bin/flockosi "$pkgdir/usr/bin/flockosi"
-  cp -r zig-out/etc/flockosi "$pkdir/etc/flockosi"
+
+  install -d "$pkgdir/etc"
+  cp -r zig-out/etc/flockosi "$pkgdir/etc/flockosi"
 
   install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
