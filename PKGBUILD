@@ -7,12 +7,12 @@ _version=1.0+1183
 _pkgbase=${_basename}
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="JItsi meet COnference FOcus binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
-depends=("java-runtime-openjdk=11" "bash")
+depends=("java-runtime-openjdk=17" "bash")
 optdepends=("prosody")
 makedepends=('tar' 'unzip')
 options=('!strip')
