@@ -5,7 +5,7 @@
 org=agentclientprotocol
 realname=claude-agent-acp
 pkgname=$realname
-pkgver=0.48.0
+pkgver=0.49.0
 pkgrel=3
 pkgdesc="Use Claude Agent from any ACP client such as Zed!"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('nodejs')
 conflicts=('claude-code-acp')
 provides=('claude-code-acp')
 source=("$realname-$pkgver.tar.gz::https://github.com/$org/$realname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7be508fc5ae50c3c42fbfa530ca06d2132310eaf2b4bdd21daca60644369e5bc')
+sha256sums=('6478c4f9e3c4aacf5fb9e0177d341c3f8cafd54dde3d40502d90421e75a56d5d')
 options=(!strip !debug)
 
 build() {
