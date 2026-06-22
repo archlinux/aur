@@ -1,0 +1,12 @@
+pkgbase = ttf-terrywang-typewriter-fonts-git
+	pkgdesc = Chinese typewriter/mimeograph style fonts by Terry Wang (https://huozi.cool/).
+	pkgver = r2.0f49da5
+	pkgrel = 1
+	url = https://github.com/BH1PHL/ttf-terrywang-typewriter-fonts
+	arch = any
+	license = custom:terrywang-font-license
+	makedepends = git
+	source = git+https://github.com/BH1PHL/ttf-terrywang-typewriter-fonts.git
+	sha1sums = SKIP
+
+pkgname = ttf-terrywang-typewriter-fonts-git
