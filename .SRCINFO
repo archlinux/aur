@@ -1,0 +1,23 @@
+pkgbase = chess
+	pkgdesc = Chess with variants (Fog of War, Bughouse, 4-player, Crazyhouse, Atomic…), AI, LAN and puzzles — Flutter + Rust
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/RamazanBerk20/chess
+	arch = x86_64
+	license = MIT
+	makedepends = flutter
+	makedepends = rust
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = git
+	depends = gtk3
+	conflicts = chess-bin
+	conflicts = chess-git
+	options = !strip
+	options = !debug
+	source = chess-1.0.1.tar.gz::https://github.com/RamazanBerk20/chess/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 556ebc17c05ce5c4de46a088b9a9e671b7088f304fb16a047c09fbce22bb9462
+
+pkgname = chess
