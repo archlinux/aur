@@ -1,7 +1,7 @@
 # Maintainer: Ralph Torres <mail at ralphptorr dot es>
 
 pkgname=exam-env
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='The freeCodeCamp Exam Environment desktop application'
 arch=(x86_64)
@@ -16,7 +16,7 @@ source=(
     https://raw.githubusercontent${_url#*github}/refs/heads/main/LICENSE.md
 )
 sha256sums=(
-    8c7ee02d82d5970d2f6082b4d7c49f9f64018869f732407084549c41b9db59cf
+    2889f69436b49efb6744ffbf0c48996f65316ea6dbc70ac28f8753ab940b8cf3
     b078ff602cbd37a85255691adf62a6ee232dbfba6105220827c1352002ad2941
 )
 options=(!debug !strip)
