@@ -1,0 +1,3 @@
+[perl-clipboard]
+source = "cpan"
+cpan = "Clipboard"
