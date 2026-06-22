@@ -1,17 +1,17 @@
 pkgbase = dbgate-bin
 	pkgdesc = Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others.(Prebuilt version.Use system-wide electron)
-	pkgver = 7.2.0
+	pkgver = 7.2.1
 	pkgrel = 1
 	url = https://dbgate.org/
 	arch = x86_64
 	license = MIT
 	depends = electron38
-	provides = dbgate=7.2.0
+	provides = dbgate=7.2.1
 	conflicts = dbgate
-	source = dbgate-7.2.0.deb::https://github.com/dbgate/dbgate/releases/download/v7.2.0/dbgate-7.2.0-linux_amd64.deb
-	source = LICENSE-7.2.0::https://raw.githubusercontent.com/dbgate/dbgate/v7.2.0/LICENSE
+	source = dbgate-7.2.1.deb::https://github.com/dbgate/dbgate/releases/download/v7.2.1/dbgate-7.2.1-linux_amd64.deb
+	source = LICENSE-7.2.1::https://raw.githubusercontent.com/dbgate/dbgate/v7.2.1/LICENSE
 	source = dbgate.sh
-	sha256sums = d6c4a71f2df999f6abcc065ac57cb3356b775f445c573f518c11923208e4841d
+	sha256sums = a0e0b83ec6eb5cea479e283bddbf1a37f1b3b1a37c16ed271c4afb711bf0ef6d
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
