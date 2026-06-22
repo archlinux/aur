@@ -1,7 +1,7 @@
 pkgbase = acarsdec
 	pkgdesc = Multi-channel ACARS decoder
-	pkgver = 4.5
-	pkgrel = 2
+	pkgver = 4.6
+	pkgrel = 1
 	url = https://github.com/f00b4r0/acarsdec
 	arch = x86_64
 	license = GPL-2.0-only
@@ -13,7 +13,7 @@ pkgbase = acarsdec
 	depends = rtl-sdr
 	depends = soapysdr
 	optdepends = acarsserv: Store messages in sqlite database
-	source = acarsdec-4.5.tar.gz::https://github.com/f00b4r0/acarsdec/archive/v4.5.tar.gz
-	sha256sums = bd42006077378617a58fa985d98efe364b978fef332b8c5ed05322bbeddf11be
+	source = acarsdec-4.6.tar.gz::https://github.com/f00b4r0/acarsdec/archive/v4.6.tar.gz
+	sha256sums = b317ce10791cdf804116e91d09d4b34aac6bac8f8c40ff48f632ca01f2183128
 
 pkgname = acarsdec

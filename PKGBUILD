@@ -3,8 +3,8 @@
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
 
 pkgname=acarsdec
-pkgver=4.5
-pkgrel=2
+pkgver=4.6
+pkgrel=1
 pkgdesc="Multi-channel ACARS decoder"
 arch=('x86_64')
 url="https://github.com/f00b4r0/acarsdec"
@@ -13,7 +13,7 @@ depends=('airspy' 'alsa-lib' 'cjson' 'libsndfile' 'rtl-sdr' 'soapysdr')
 makedepends=('cmake')
 optdepends=('acarsserv: Store messages in sqlite database')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bd42006077378617a58fa985d98efe364b978fef332b8c5ed05322bbeddf11be')
+sha256sums=('b317ce10791cdf804116e91d09d4b34aac6bac8f8c40ff48f632ca01f2183128')
 
 build() {
   cmake -S "$pkgname-$pkgver" -B build \
