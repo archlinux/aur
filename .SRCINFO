@@ -1,0 +1,22 @@
+pkgbase = psst-keyring-prompter-bin
+	pkgdesc = GNOME Keyring unlock prompt for wayland (layer-shell).
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/phisch/psst
+	arch = x86_64
+	license = MPL-2.0
+	depends = fontconfig
+	depends = freetype2
+	depends = libxkbcommon
+	depends = wayland
+	depends = vulkan-icd-loader
+	depends = gcc-libs
+	optdepends = gnome-keyring: the keyring daemon this unlocks
+	provides = psst-keyring-prompter
+	conflicts = psst-keyring-prompter
+	options = !strip
+	options = !debug
+	source = psst-keyring-prompter-bin-0.2.0.tar.gz::https://github.com/phisch/psst/releases/download/v0.2.0/psst-v0.2.0-x86_64-linux.tar.gz
+	sha256sums = ce7895f28821b78f0fac3f54c7ce9fb7a8de4f14207192eed1167dcd8e0628f1
+
+pkgname = psst-keyring-prompter-bin
