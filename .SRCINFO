@@ -1,6 +1,6 @@
 pkgbase = kwin-karousel
 	pkgdesc = KWin tiling script with scrolling
-	pkgver = 0.16
+	pkgver = 0.17
 	pkgrel = 1
 	url = https://github.com/peterfajdiga/karousel/
 	install = kwin-karousel.install
@@ -8,7 +8,7 @@ pkgbase = kwin-karousel
 	license = GPL-3.0-or-later
 	depends = qt6-declarative
 	depends = knotifications
-	source = karousel-0.16.tar.gz::https://github.com/peterfajdiga/karousel/releases/download/v0.16/karousel_0_16.tar.gz
-	sha256sums = f9f326a9e4573f3ac3f24c9c7a0f059470f659902877033686b962bc93f2b3bb
+	source = karousel-0.17.tar.gz::https://github.com/peterfajdiga/karousel/releases/download/v0.17/karousel_0_17.tar.gz
+	sha256sums = 492e2962dc0e510e4779a0eedfc2aa311c2ee3e4b6621648eae60edbe30bd1c3
 
 pkgname = kwin-karousel
