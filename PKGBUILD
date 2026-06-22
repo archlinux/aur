@@ -1,5 +1,7 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: Moritz Bunkus <moritz@bunkus.org>
+# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
+# Contributor: Olaf Leidinger <oleid@mescharet.de>
 
 _author=LBAXTER
 _dist=Sys-SigAction
