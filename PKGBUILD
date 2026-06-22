@@ -13,8 +13,8 @@ __pkgname=konform
 _ffsrcvername=140.12.0esr
 _ffbuild=1
 _l10n_commit=89defc2f7a4742ef9a06ffd123afe62b0ddf9a06
-_lwrelver=100
-pkgrel=3
+_lwrelver=101
+pkgrel=1
 _ffsrcver="${_ffsrcvername%esr*}"
 if [[ "${_ffsrcver}" =~ .+\..+\..+ ]]; then
   _srcver="${_ffsrcver}"
@@ -154,10 +154,10 @@ source=(
   "0004-skia-m142-update.patch.xz"
   "0005-cbindgen-0_29_4.patch"
 )
-sha256sums=('c297d87275f7f76e556bbfa3f844791ff78eeca6cb174802191520462da6e079'
+sha256sums=('580f8cf8d3acaf116d1b25c97744c1269b6a16eeba03f276167e843c90287d41'
             '85dfb9f6021152b4302b8968ef485d958c8c471cb02415a19853daaad5acce62'
             'SKIP'
-            '50b9d366fb58a45ba7dd3949e08600f6bebf0ead86cc35e9c2f5c20b624de512'
+            'fc96c4d5e900719737fbd9274d9c513d63e6a4eeb40e0eafa0629e5c8a59495a'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
             '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852'
@@ -193,7 +193,7 @@ prepare() {
   mv "${srcdir}/firefox-${_ffsrcver}"/* "${srcdir}/firefox-${_ffsrcver}"/.* "${_srcdir}/"
   mv "../firefox-l10n-${_l10n_commit}" "${_srcdir}/lw/l10n"
 
-  python3 scripts/librewolf-patches.py "${_srcver}" "${_lwrelver}"
+  python3 scripts/apply-patches.py "${_srcver}" "${_lwrelver}"
 
   ## </srcprep>
 
@@ -439,14 +439,14 @@ app.partner.konform=${_pkgname}
 END
 
   for i in 16 32 48 64 128; do
-    install -Dvm644 browser/branding/librewolf/default$i.png \
+    install -Dvm644 browser/branding/vendor/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$__pkgname.png"
   done
   install -Dvm644 ${srcdir}/default192x192.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/$__pkgname.png"
 
   # arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
-  install -Dvm644 browser/branding/librewolf/default16.png \
+  install -Dvm644 browser/branding/vendor/default16.png \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$__pkgname-symbolic.png"
 
   install -Dvm644 ${srcdir}/$__pkgname.desktop \
