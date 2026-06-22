@@ -76,19 +76,14 @@ check() {
   curl -fsS "${_api}/git/tags/${_ref_sha}" \
     | jq -j '.verification.signature' > "${srcdir}/tag-sig.gpg"
 
-  local _gpghome="${srcdir}/.gnupg"
-  rm -rf "$_gpghome"
+  local _gpghome="${srcdir}/gnupg"
   mkdir -p "$_gpghome"
-  chmod 700 "$_gpghome"
-  GNUPGHOME="$_gpghome" gpg --batch --homedir "$_gpghome" \
-    --import "${srcdir}/andreas-manticore.gpg" >/dev/null 2>&1
-
-  GNUPGHOME="$_gpghome" gpg --batch --homedir "$_gpghome" \
-    --quick-set-ownertrust "61E73AA7539ACB261ABCF10C188331308EF56D11" ultimate
+  local _gpg=(GNUPGHOME="$_gpghome" gpg --batch --homedir "$_gpghome")
+  "${_gpg[@]}" --import "${srcdir}/andreas-manticore.gpg" >/dev/null 2>&1
+  "${_gpg[@]}" --quick-set-ownertrust "61E73AA7539ACB261ABCF10C188331308EF56D11" ultimate
 
   printf 'Verifying signature on git tag v%s:\n' "${pkgver}"
-  GNUPGHOME="$_gpghome" gpg --batch --homedir "$_gpghome" \
-    --verify "${srcdir}/tag-sig.gpg" "${srcdir}/tag-payload"
+  "${_gpg[@]}" --verify "${srcdir}/tag-sig.gpg" "${srcdir}/tag-payload"
 }
 
 package() {
