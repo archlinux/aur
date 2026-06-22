@@ -17,7 +17,6 @@ optdepends=('mpv: for playing videos')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/xdagiz/xytz/releases/download/v${pkgver}/xytz_${pkgver}.tar.gz")
 sha256sums=('2e607b78203b56575187ee2592b03400bf7635c113f21b6d2cdfbfd7c10ace1c')
 build() {
-  cd "${pkgname}_${pkgver}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -26,7 +25,6 @@ build() {
   go build -ldflags="-w -s -buildid='' -linkmode=external -X github.com/xdagiz/xytz/internal/version.Version=${pkgver}" -o xytz .
 }
 package() {
-  cd "${pkgname}_${pkgver}"
   install -Dsm755 ./xytz "${pkgdir}/usr/bin/xytz"
   install -Dsm644 ./LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
