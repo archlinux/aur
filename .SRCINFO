@@ -5,6 +5,7 @@ pkgbase = masterpdfeditor-qt_include
 	url = https://code-industry.net/free-pdf-editor/
 	arch = x86_64
 	license = custom
+	makedepends = curl
 	makedepends = patchelf
 	depends = libgl
 	depends = pkcs11-helper
