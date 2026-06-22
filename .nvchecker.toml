@@ -1,0 +1,3 @@
+[perl-b-utils]
+source = "cpan"
+cpan = "B-Utils"
