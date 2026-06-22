@@ -1,6 +1,6 @@
 pkgbase = switchhosts
 	pkgdesc = An app for managing hosts file,and switch hosts quickly !
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://switchhosts.app/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = switchhosts
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
 	conflicts = switchhosts
-	source = switchhosts-5.0.0::git+https://github.com/oldj/SwitchHosts#tag=v5.0.0
-	sha256sums = fae5f86960a5164eeab24fb061e1419476a5ff864bdb82dda57b39c5f6279ec2
+	source = switchhosts-5.0.1::git+https://github.com/oldj/SwitchHosts#tag=v5.0.1
+	sha256sums = 7fb54efff10867d87f02b58c5d80833cc09856938160ca8989afc05d5f7833b6
 
 pkgname = switchhosts
