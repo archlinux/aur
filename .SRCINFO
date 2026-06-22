@@ -1,0 +1,14 @@
+pkgbase = sentencepiece-browsermt
+	pkgdesc = SentencePiece for BrowserMT
+	pkgver = 0.2
+	pkgrel = 2
+	url = https://github.com/kroketio/sentencepiece-browsermt
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = protobuf-21
+	depends = protobuf-21
+	source = https://github.com/kroketio/sentencepiece-browsermt/archive/refs/tags/0.2.tar.gz
+	sha256sums = 1cdd7b4ef66efad3cfb8c0aa7ac78d648a616b37649c4919056eb94dc3202d29
+
+pkgname = sentencepiece-browsermt
