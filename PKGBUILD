@@ -8,7 +8,7 @@
 
 # Maintainer: Nick Cottrell <ncottrellweb@gmail.com>
 pkgname=rz-jsdec # '-bzr', '-git', '-hg' or '-svn'
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Provides js decompiler for rizin"
 arch=('any')
@@ -23,7 +23,7 @@ backup=()
 options=()
 install=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rizinorg/${pkgname#rz-}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2b2587dd117d48b284695416a7349a21c4dd30fbe75cc5890ed74945c9b474ea')
+sha256sums=('2f6c1ad0bdd6ee73433263113dee4f2a0eef7552b3551c50bd75f59dbf26e6b9')
 
 build() {
     cd "$srcdir/${pkgname#rz-}-${pkgver}/"
