@@ -1,6 +1,6 @@
 pkgbase = stgit
 	pkgdesc = Stack-based patch management for Git
-	pkgver = 2.6.0
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://stacked-git.github.io/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = stgit
 	depends = git
 	depends = curl
 	depends = bzip2
-	source = https://github.com/stacked-git/stgit/releases/download/v2.6.0/stgit-2.6.0.tar.gz
-	sha256sums = b03f8e123726253013fd1a03d8ebb89d53f1e130cc4612ffbf96ec8d96c8bfc0
+	source = https://github.com/stacked-git/stgit/releases/download/v2.6.1/stgit-2.6.1.tar.gz
+	sha256sums = 45e6db343bac075ae898d3e8616565804c917545d9be45273ddc8f0666133147
 
 pkgname = stgit
