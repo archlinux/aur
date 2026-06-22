@@ -2,7 +2,7 @@
 
 pkgname=uutils-findutils
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust implementation of findutils"
 arch=('i686' 'x86_64')
 url="https://github.com/uutils/findutils"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc' 'libgcc' 'oniguruma')
 makedepends=('cargo')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/uutils/findutils/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ac60fa34c09110a386c3782e94f5ca3f9294f64edf82855637c630c36de65ed3')
+sha256sums=('d6dc466b7953f170cc7a4332c1576c5171b7d497b64e08cc63b3fcf54085e0ac')
 
 
 prepare() {
