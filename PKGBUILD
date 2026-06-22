@@ -2,7 +2,7 @@
 
 _hackage_name=weeder
 pkgname="haskell-${_hackage_name}"
-pkgver=2.9.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Detect dead exports or package imports"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/ocharles/weeder"
 license=('BSD')
 makedepends=('git' 'cabal-install')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('02d905109dfa1aaae009b03e4e6db7ff612aebd84debc305d3c48769e1eb9a9f')
+sha256sums=('ce2f22b539806b5182a3f03a57bb67d8cf15b964168958f476dba8db3ddfede6')
 
 prepare() {
     cd "${srcdir}/${_hackage_name}-${pkgver}"

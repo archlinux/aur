@@ -1,13 +1,13 @@
 pkgbase = haskell-weeder
 	pkgdesc = Detect dead exports or package imports
-	pkgver = 2.9.0
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://github.com/ocharles/weeder
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	makedepends = cabal-install
-	source = https://github.com/ocharles/weeder/archive/refs/tags/2.9.0.tar.gz
-	sha256sums = 02d905109dfa1aaae009b03e4e6db7ff612aebd84debc305d3c48769e1eb9a9f
+	source = https://github.com/ocharles/weeder/archive/refs/tags/2.10.0.tar.gz
+	sha256sums = ce2f22b539806b5182a3f03a57bb67d8cf15b964168958f476dba8db3ddfede6
 
 pkgname = haskell-weeder
