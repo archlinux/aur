@@ -1,5 +1,6 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: Moritz Bunkus <moritz@bunkus.org>
+# Contributor: Caleb Cushing <xenoterracide@gmail.com>
 
 _author=ETHER
 _dist=Devel-REPL
