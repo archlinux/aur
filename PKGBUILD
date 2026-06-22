@@ -7,7 +7,9 @@ pkgdesc="A fast, cross-platform disk usage analyzer with work-stealing multithre
 arch=('x86_64')
 url="https://github.com/Xangelix/edirstat"
 license=('MIT')
+depends=('hicolor-icon-theme')
 makedepends=('cargo-nightly' 'rust-nightly')
+options=('!lto') # Disable LTO to prevent build-script linker errors
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "$pkgname.desktop"
@@ -22,12 +24,14 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --frozen
+  # Compile with release optimizations, frozen lockfile, and no default features
+  cargo build --release --frozen --no-default-features
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --release --locked
+  # Run tests with release optimizations, locked dependencies, and no default features
+  cargo test --release --locked --no-default-features
 }
 
 package() {
