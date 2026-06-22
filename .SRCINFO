@@ -1,6 +1,6 @@
 pkgbase = wiiudownloader
 	pkgdesc = Allows to download encrypted wiiu files from nintendo's official servers
-	pkgver = 2.93
+	pkgver = 2.94
 	pkgrel = 1
 	url = https://github.com/Xpl0itU/WiiUDownloader
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = wiiudownloader
 	depends = pango
 	depends = fontconfig
 	options = !debug
-	source = https://github.com/Xpl0itU/WiiUDownloader/archive/refs/tags/v2.93.tar.gz
-	sha256sums = e2b346d7078c6f32688ae8ca242b9110e5b16bcb15c8cd6ebc32774e7ec06bc2
+	source = https://github.com/Xpl0itU/WiiUDownloader/archive/refs/tags/v2.94.tar.gz
+	sha256sums = 226dd7c55077af62a82307639b1ded23f66e2cbaef9f2ec626ad10cdf35980ff
 
 pkgname = wiiudownloader
