@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deepchat-bin
 _pkgname=DeepChat
-pkgver=1.0.5
+pkgver=1.0.6
 _electronversion=40
 pkgrel=1
 pkgdesc="A smart assistant that connects powerful AI to your personal world.(Prebuilt version.Use system-wide electron)"
@@ -28,11 +28,14 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d7b861b5c7ce79627e5c51f627bfacf69507cd07e4d7a4944c956438e21b76ee'
+sha256sums=('e507224df1962e25ee160ff981b341d8fe73bc2f36b7168b92fca1da7f07153a'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
 _check_electron_version() {
     echo "Verifying Electron version..."
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _app_dir=$(_get_app_dir)
     local _main_exe=""
     if [[ -n "${_app_dir}" ]]; then
         _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
@@ -65,16 +68,22 @@ prepare() {
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _check_electron_version
-    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
-    find "${srcdir}/squashfs-root/resources/app.asar.unpacked" -type d \( -name "darwin" -o -name "win32" \) -exec rm -rf {} +
-    find "${srcdir}/squashfs-root/resources" -type d -perm 700 -exec chmod 755 {} +
-    rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/classic-level/prebuilds/"{android-*,darwin-*,win32-*,linux-arm*}
+    local _app_dir=$(_get_app_dir)
+    sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${_app_dir}/${pkgname%-bin}.desktop"
+    find "${_app_dir}/resources/app.asar.unpacked" -type d \( -name "darwin" -o -name "win32" \) -exec rm -rf {} +
+    find "${_app_dir}/resources" -type d -perm 700 -exec chmod 755 {} +
+    rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/classic-level/prebuilds/"{android-*,darwin-*,win32-*,linux-arm*}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/1024x1024/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${_app_dir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+        _extension="${_i##*.}"
+        _icon_path="${_i#*share/icons/}"
+        _target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+        install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
+    done
 }
