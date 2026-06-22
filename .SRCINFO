@@ -1,0 +1,21 @@
+pkgbase = manora-git
+	pkgdesc = A simple CLI / TUI tool to display (or save) man pages as PDF files (git version)
+	pkgver = 2.0.1.r182.af240e6
+	pkgrel = 1
+	url = https://github.com/Antiz96/manora
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = scdoc
+	depends = glibc
+	depends = libgcc
+	depends = man
+	depends = groff
+	depends = xdg-utils
+	provides = manora
+	conflicts = manora
+	source = git+https://github.com/Antiz96/manora.git
+	sha256sums = SKIP
+
+pkgname = manora-git
