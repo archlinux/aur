@@ -8,6 +8,7 @@ pkgbase = aurscan-manticore-release-git
 	license = Apache-2.0
 	makedepends = go
 	makedepends = git
+	optdepends = paru: sparu wrapper and --update-check
 	optdepends = yay: syay wrapper and --update-check
 	optdepends = claude-code: keyless backend via your Claude subscription
 	optdepends = openai-codex: keyless backend via your Codex subscription

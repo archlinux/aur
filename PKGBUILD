@@ -13,6 +13,7 @@ license=('Apache-2.0')
 makedepends=('go' 'git')
 conflicts=('aurscan' 'aurscan-git' 'aurscan-manticore' 'aurscan-manticore-git')
 optdepends=(
+  'paru: sparu wrapper and --update-check'
   'yay: syay wrapper and --update-check'
   'claude-code: keyless backend via your Claude subscription'
   'openai-codex: keyless backend via your Codex subscription'
