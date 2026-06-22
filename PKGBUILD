@@ -27,7 +27,8 @@ optdepends=(
 # No git clone: pkgver() uses git ls-remote; GPG verify uses GitHub API; binary,
 # LICENSE, and README are fetched in build() from GitHub release assets and raw
 # content URLs. All dynamic, so no static source entry for release assets.
-source=("andreas@manticore-projects.com.gpg")
+_gpgkey="andreas@manticore-projects.com.gpg"
+source=("${_gpgkey}")
 sha256sums=('08ca421f7b39c6ca91e684fd18ab053466394e3658cabf89d001358e72b17def')
 
 # Map Arch architecture -> upstream asset suffix
@@ -77,7 +78,7 @@ check() {
     | jq -j '.verification.signature' > "${srcdir}/tag-sig.gpg"
 
   printf 'Verifying signature on git tag v%s:\n' "${pkgver}"
-  gpg --dearmor < "${srcdir}/andreas@manticore-projects.com.gpg" > "${srcdir}/keyring.gpg"
+  gpg --dearmor < "${srcdir}/${_gpgkey}" > "${srcdir}/keyring.gpg"
   gpgv --keyring "${srcdir}/keyring.gpg" \
     "${srcdir}/tag-sig.gpg" "${srcdir}/tag-payload"
 }
