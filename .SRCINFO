@@ -1,14 +1,14 @@
 pkgbase = jicofo-bin
 	pkgdesc = JItsi meet COnference FOcus binary
 	pkgver = 1.0+1183
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jitsi.org/jitsi-meet/
 	install = jitsi.install
 	arch = any
 	license = Apache
 	makedepends = tar
 	makedepends = unzip
-	depends = java-runtime-openjdk=11
+	depends = java-runtime-openjdk=17
 	depends = bash
 	optdepends = prosody
 	provides = jicofo
