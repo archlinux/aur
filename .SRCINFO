@@ -1,0 +1,22 @@
+pkgbase = gickup-bin
+	pkgdesc = Backup tool for your cloud git repositories
+	pkgver = 0.10.45
+	pkgrel = 1
+	url = https://github.com/cooperspencer/gickup
+	arch = x86_64
+	arch = 386
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = git
+	provides = gickup
+	conflicts = gickup
+	options = !strip
+	source_x86_64 = gickup-x86_64-0.10.45.tgz::https://github.com/cooperspencer/gickup/releases/download/v0.10.45/gickup_0.10.45_linux_amd64.tar.gz
+	sha256sums_x86_64 = 55cbc9aa8eb21fe2965ed9331aed85cdf1e681817cb1c2471f7df9ff3342d61c
+	source_386 = gickup-386-0.10.45.tgz::https://github.com/cooperspencer/gickup/releases/download/v0.10.45/gickup_0.10.45_linux_386.tar.gz
+	sha256sums_386 = 813f12523466c1c403ecd7a7111e5a3d1d224ae3f911f50d48be21562ae8e1dd
+	source_aarch64 = gickup-aarch64-0.10.45.tgz::https://github.com/cooperspencer/gickup/releases/download/v0.10.45/gickup_0.10.45_linux_arm64.tar.gz
+	sha256sums_aarch64 = c51a80df7a82ee008f9a91b9e56f69c1ba505e896e9c2789a1ad7266aeafab41
+
+pkgname = gickup-bin

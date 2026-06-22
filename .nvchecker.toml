@@ -1,0 +1,5 @@
+[gickup-bin]
+source = "github"
+github = "cooperspencer/gickup"
+use_latest_release = true
+prefix = "v"
