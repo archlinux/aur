@@ -1,0 +1,14 @@
+pkgbase = wordstar-rs
+	pkgdesc = A faithful DOS WordStar 7 clone for the terminal, written in Rust
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/dividebysandwich/wordstar-rs
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = cargo
+	depends = gcc-libs
+	source = wordstar-rs-0.3.1.tar.gz::https://github.com/dividebysandwich/wordstar-rs/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 6839c42638a80df46f66504a5a021fa0e7044e84d0cc1bf23f160cae3c869ebe
+
+pkgname = wordstar-rs
