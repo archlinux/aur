@@ -1,9 +1,10 @@
 pkgbase = marian-lite
-	pkgdesc = NMT Framework and Text Tokenizer
+	pkgdesc = Marian NMT lite
 	pkgver = 0.2.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/terslang/marian-lite
 	arch = x86_64
+	license = MIT
 	makedepends = cmake
 	makedepends = openblas
 	makedepends = cli11
@@ -11,24 +12,13 @@ pkgbase = marian-lite
 	makedepends = pathie-cpp
 	makedepends = sqlitecpp
 	makedepends = yaml-cpp
-	source = marian-lite-0.2.9-1.tar.gz::https://github.com/terslang/marian-lite/archive/refs/tags/v0.2.9-1.tar.gz
-	source = protobuf-21.12.tar.gz::https://github.com/protocolbuffers/protobuf/archive/v21.12/protobuf-21.12.tar.gz
-	source = sentencepiece-browsermt-0.2.tar.gz::https://github.com/kroketio/sentencepiece-browsermt/archive/refs/tags/0.2.tar.gz
-	source = python3.11.patch::https://github.com/protocolbuffers/protobuf/commit/da973aff.patch
-	source = fix-abi.patch::https://github.com/protocolbuffers/protobuf/commit/101b6199.patch
-	sha256sums = 13a681c936f15c0d95d42fa78fc7c468aa3d08e40ee608e080b825098488c809
-	sha256sums = 22fdaf641b31655d4b2297f9981fa5203b2866f8332d3c6333f6b0107bb320de
-	sha256sums = 1cdd7b4ef66efad3cfb8c0aa7ac78d648a616b37649c4919056eb94dc3202d29
-	sha256sums = def1c370c9d4b91262d8b13ffba39394af96235e33ff96c9808c72e5250e9f27
-	sha256sums = 086c54277c592c7b4ec1b70f9868aa4c8288d663077a31868d2ba46638ecb4f3
-
-pkgname = sentencepiece-browsermt
-	pkgdesc = SentencePiece for BrowserMT
-	license = Apache
-
-pkgname = marian-lite
-	pkgdesc = Marian NMT lite
-	license = MIT
+	makedepends = protobuf-21
+	makedepends = sentencepiece-browsermt
 	depends = openblas
 	depends = sqlitecpp
 	depends = yaml-cpp
+	depends = protobuf-21
+	source = https://github.com/terslang/marian-lite/archive/refs/tags/v0.2.9-1.tar.gz
+	sha256sums = 13a681c936f15c0d95d42fa78fc7c468aa3d08e40ee608e080b825098488c809
+
+pkgname = marian-lite
