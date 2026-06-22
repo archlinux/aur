@@ -36,7 +36,10 @@ makedepends=(
     'patchelf'
 )
 provides=("${_pkgname}=${pkgver}")
-conflicts=("${_pkgname}")
+conflicts=(
+    "${_pkgname}-qt_include"
+    "${_pkgname}-qt6"
+)
 source_x86_64=("https://code-industry.net/public/master-pdf-editor-${pkgver}${_patchver}-qt5.x86_64.tar.gz")
 sha1sums_x86_64=("${_checksum_x86_64% *}")
 source_aarch64=("https://code-industry.net/public/master-pdf-editor-${pkgver}${_patchver}-qt5.arm64.tar.gz")
@@ -47,8 +50,8 @@ package() {
     cp -a --no-preserve=ownership "master-pdf-editor-${pkgver%%.*}" "${pkgdir}/opt/"
 
     cd                      "${pkgdir}/opt/master-pdf-editor-${pkgver%%.*}" || return 1
-    ln -sr                  "masterpdfeditor${pkgver%%.*}"          -t "${pkgdir}/usr/bin/"
-    install -Dm644          "masterpdfeditor${pkgver%%.*}.desktop"  -t "${pkgdir}/usr/share/applications/"
-    install -Dm644          'license_en.txt'                        -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-    patchelf --remove-rpath "masterpdfeditor${pkgver%%.*}"
+    ln -sr                  "${_pkgname}${pkgver%%.*}"          -t "${pkgdir}/usr/bin/"
+    install -Dm644          "${_pkgname}${pkgver%%.*}.desktop"  -t "${pkgdir}/usr/share/applications/"
+    install -Dm644          'license_en.txt'                    -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    patchelf --remove-rpath "${_pkgname}${pkgver%%.*}"
 }
