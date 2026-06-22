@@ -27,7 +27,7 @@ optdepends=(
 # No git clone: pkgver() uses git ls-remote; GPG verify uses GitHub API; binary,
 # LICENSE, and README are fetched in build() from GitHub release assets and raw
 # content URLs. All dynamic, so no static source entry for release assets.
-source=("andreas-manticore.gpg")
+source=("andreas@manticore-projects.com.gpg")
 sha256sums=('08ca421f7b39c6ca91e684fd18ab053466394e3658cabf89d001358e72b17def')
 
 # Map Arch architecture -> upstream asset suffix
@@ -78,8 +78,8 @@ check() {
 
   local _gpghome="${srcdir}/gnupg"
   mkdir -p "$_gpghome"
-  local _gpg=(GNUPGHOME="$_gpghome" gpg --batch --homedir "$_gpghome")
-  "${_gpg[@]}" --import "${srcdir}/andreas-manticore.gpg" >/dev/null 2>&1
+  local _gpg=(gpg --batch --homedir "$_gpghome")
+  "${_gpg[@]}" --import "${srcdir}/andreas@manticore-projects.com.gpg"
   "${_gpg[@]}" --quick-set-ownertrust "61E73AA7539ACB261ABCF10C188331308EF56D11" ultimate
 
   printf 'Verifying signature on git tag v%s:\n' "${pkgver}"

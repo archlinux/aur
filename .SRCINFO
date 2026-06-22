@@ -21,7 +21,7 @@ pkgbase = aurscan-manticore-bin-release-git
 	conflicts = aurscan-manticore-git
 	conflicts = aurscan-manticore-release-git
 	options = !strip
-	source = andreas-manticore.gpg
+	source = andreas@manticore-projects.com.gpg
 	sha256sums = 08ca421f7b39c6ca91e684fd18ab053466394e3658cabf89d001358e72b17def
 
 pkgname = aurscan-manticore-bin-release-git
