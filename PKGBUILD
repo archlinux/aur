@@ -13,7 +13,7 @@ arch=("x86_64")
 license=("MIT")
 url="https://github.com/${pkgauthor}/${pkgname}"
 
-depends=("nodejs" "bun")
+depends=("nodejs" "bun" "pass" "pass-otp" "gnupg")
 makedepends=("npm" "jq")
 provides=("${_npmname}")
 
