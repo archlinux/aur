@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164  # var unused / var not assigned / cd without || exit
 
 pkgname=aurscan-manticore-release-git
-pkgver=0.4.2
+pkgver=0.5.2
 _pkgname=aurscan
 pkgrel=1
 pkgdesc="LLM-powered pre-build malware scanner for AUR packages (paru/yay editor-gate)"

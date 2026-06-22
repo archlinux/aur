@@ -1,6 +1,6 @@
 pkgbase = aurscan-manticore-release-git
 	pkgdesc = LLM-powered pre-build malware scanner for AUR packages (paru/yay editor-gate)
-	pkgver = 0.4.2
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/manticore-projects/aurscan
 	arch = x86_64
