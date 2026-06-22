@@ -7,7 +7,8 @@ all: build
 
 .PHONY: build
 build:
-	makepkg --clean --cleanbuild --force --syncdeps && makepkg --printsrcinfo > .SRCINFO
+	makepkg --clean --cleanbuild --force --noconfirm --noprogressbar --syncdeps
+	makepkg --printsrcinfo > .SRCINFO
 
 .PHONY: commit
 commit:
