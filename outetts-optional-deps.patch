@@ -1,0 +1,184 @@
+diff -ruN outetts-0.4.4-orig/outetts/models/gguf_model.py outetts-0.4.4/outetts/models/gguf_model.py
+--- outetts-0.4.4-orig/outetts/models/gguf_model.py	2026-06-22 15:30:45.860639161 +0200
++++ outetts-0.4.4/outetts/models/gguf_model.py	2026-06-22 15:30:45.879862762 +0200
+@@ -12,11 +12,8 @@
+ except:
+     llama_cpp_version = "0.0.0"
+     _GGUF_AVAILABLE = False
+-    raise ImportError(
+-        "llama.cpp Python bindings not found. This is required for GGUF model support.\n\n"
+-        "To install, please follow our installation guide:\n"
+-        "https://github.com/edwko/OuteTTS?tab=readme-ov-file#installation\n\n"
+-    )
++    # llama_cpp is optional - only needed for GGUF backend
++    pass
+ 
+ CURRENT_VERSION = version.parse(llama_cpp_version)
+ VERSION_0_3_7 = version.parse("0.3.7")
+diff -ruN outetts-0.4.4-orig/outetts/utils/chunking.py outetts-0.4.4/outetts/utils/chunking.py
+--- outetts-0.4.4-orig/outetts/utils/chunking.py	2026-06-22 15:30:45.861300464 +0200
++++ outetts-0.4.4/outetts/utils/chunking.py	2026-06-22 15:30:45.880019422 +0200
+@@ -1,7 +1,12 @@
+ import re
+ from typing import List
+ import unicodedata
+-import MeCab
++try:
++    import MeCab
++    _MECAB_AVAILABLE = True
++except ImportError:
++    MeCab = None
++    _MECAB_AVAILABLE = False
+ 
+ def check_language(text: str) -> bool:
+     return any('\u3040' <= char <= '\u309f' or
+@@ -18,7 +23,7 @@
+     if not text.strip():
+         return []
+     
+-    if check_language(text):
++    if check_language(text) and _MECAB_AVAILABLE:
+         mecab = MeCab.Tagger("-Owakati")
+         return mecab.parse(text).strip().split()
+     else:
+diff -ruN outetts-0.4.4-orig/outetts/utils/preprocessing.py outetts-0.4.4/outetts/utils/preprocessing.py
+--- outetts-0.4.4-orig/outetts/utils/preprocessing.py	2026-06-22 15:30:45.861300464 +0200
++++ outetts-0.4.4/outetts/utils/preprocessing.py	2026-06-22 15:30:45.880095062 +0200
+@@ -1,6 +1,16 @@
+ import re
+-import uroman as ur
+-import MeCab
++try:
++    import uroman as ur
++    _UROMAN_AVAILABLE = True
++except ImportError:
++    ur = None
++    _UROMAN_AVAILABLE = False
++try:
++    import MeCab
++    _MECAB_AVAILABLE = True
++except ImportError:
++    MeCab = None
++    _MECAB_AVAILABLE = False
+ import string
+ import unicodedata
+ 
+@@ -63,7 +73,7 @@
+ def get_words(text: str):
+     text = text_normalizations(text)
+     text = normalize_token_spacing(text)
+-    if check_language(text):
++    if check_language(text) and _MECAB_AVAILABLE:
+         mecab = MeCab.Tagger("-Owakati")
+         return mecab.parse(text).strip().split()
+     return text.split()
+diff -ruN outetts-0.4.4-orig/outetts/version/playback.py outetts-0.4.4/outetts/version/playback.py
+--- outetts-0.4.4-orig/outetts/version/playback.py	2026-06-22 15:30:45.861552119 +0200
++++ outetts-0.4.4/outetts/version/playback.py	2026-06-22 15:30:45.879941979 +0200
+@@ -1,5 +1,4 @@
+ import torch
+-import torchaudio
+ from loguru import logger
+ import numpy as np
+ import os
+@@ -20,7 +19,7 @@
+         self.audio = self.resample(audio, og_sr, self.sr)
+ 
+     def resample(self, audio: torch.Tensor, og_sr: int, to_sr: int):
+-        resampler = torchaudio.transforms.Resample(orig_freq=og_sr, new_freq=to_sr).to(audio.device)
++        import torchaudio; resampler = torchaudio.transforms.Resample(orig_freq=og_sr, new_freq=to_sr).to(audio.device)
+         return resampler(audio)
+ 
+     def save(self, path: str):
+@@ -39,7 +38,7 @@
+         if not path.endswith(".wav"):
+             path += ".wav"
+ 
+-        torchaudio.save(path, audio_2d, sample_rate=self.sr, encoding='PCM_S', bits_per_sample=16)
++        import torchaudio; torchaudio.save(path, audio_2d, sample_rate=self.sr, encoding='PCM_S', bits_per_sample=16)
+         logger.info(f"Saved audio to: {path}")
+ 
+     def _sounddevice(self):
+diff -ruN outetts-0.4.4-orig/outetts/version/v1/alignment.py outetts-0.4.4/outetts/version/v1/alignment.py
+--- outetts-0.4.4-orig/outetts/version/v1/alignment.py	2026-06-22 15:30:45.861761306 +0200
++++ outetts-0.4.4/outetts/version/v1/alignment.py	2026-06-22 15:30:45.880157407 +0200
+@@ -34,8 +34,18 @@
+ import torchaudio.functional as F
+ import inflect
+ import re
+-import uroman as ur
+-import MeCab
++try:
++    import uroman as ur
++    _UROMAN_AVAILABLE = True
++except ImportError:
++    ur = None
++    _UROMAN_AVAILABLE = False
++try:
++    import MeCab
++    _MECAB_AVAILABLE = True
++except ImportError:
++    MeCab = None
++    _MECAB_AVAILABLE = False
+ 
+ class CTCForcedAlignment:
+ 
+diff -ruN outetts-0.4.4-orig/outetts/version/v1/prompt_processor.py outetts-0.4.4/outetts/version/v1/prompt_processor.py
+--- outetts-0.4.4-orig/outetts/version/v1/prompt_processor.py	2026-06-22 15:30:45.861761306 +0200
++++ outetts-0.4.4/outetts/version/v1/prompt_processor.py	2026-06-22 15:30:45.880217227 +0200
+@@ -2,8 +2,18 @@
+ from loguru import logger
+ import re
+ import inflect
+-import uroman as ur
+-import MeCab
++try:
++    import uroman as ur
++    _UROMAN_AVAILABLE = True
++except ImportError:
++    ur = None
++    _UROMAN_AVAILABLE = False
++try:
++    import MeCab
++    _MECAB_AVAILABLE = True
++except ImportError:
++    MeCab = None
++    _MECAB_AVAILABLE = False
+ 
+ class PromptProcessor:
+     def __init__(self, tokenizer_path: str):
+diff -ruN outetts-0.4.4-orig/outetts/version/v2/text_processor.py outetts-0.4.4/outetts/version/v2/text_processor.py
+--- outetts-0.4.4-orig/outetts/version/v2/text_processor.py	2026-06-22 15:30:45.861979049 +0200
++++ outetts-0.4.4/outetts/version/v2/text_processor.py	2026-06-22 15:30:45.880282739 +0200
+@@ -1,7 +1,17 @@
+ import re
+ import inflect
+-import uroman as ur
+-import MeCab
++try:
++    import uroman as ur
++    _UROMAN_AVAILABLE = True
++except ImportError:
++    ur = None
++    _UROMAN_AVAILABLE = False
++try:
++    import MeCab
++    _MECAB_AVAILABLE = True
++except ImportError:
++    MeCab = None
++    _MECAB_AVAILABLE = False
+ import string
+ from loguru import logger
+ 
+diff -ruN outetts-0.4.4-orig/outetts-0.4.4.dist-info/METADATA outetts-0.4.4/outetts-0.4.4.dist-info/METADATA
+--- outetts-0.4.4-orig/outetts-0.4.4.dist-info/METADATA	2026-06-22 15:30:45.865144691 +0200
++++ outetts-0.4.4/outetts-0.4.4.dist-info/METADATA	2026-06-22 15:30:45.865466897 +0200
+@@ -20,7 +20,7 @@
+ Requires-Dist: huggingface-hub
+ Requires-Dist: encodec
+ Requires-Dist: matplotlib
+-Requires-Dist: transformers==4.52.3
++Requires-Dist: transformers>=4.52.3
+ Requires-Dist: soundfile
+ Requires-Dist: numpy
+ Requires-Dist: inflect
