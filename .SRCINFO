@@ -1,0 +1,19 @@
+pkgbase = tmux-mcp-rs
+	pkgdesc = Tmux MCP server in Rust
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/bnomei/tmux-mcp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = libgcc
+	depends = tmux
+	source = tmux-mcp-0.5.0.zip::https://github.com/bnomei/tmux-mcp/archive/refs/tags/v0.5.0.zip
+	source = LICENSE::https://github.com/bnomei/tmux-mcp/raw/v0.5.0/LICENSE
+	source = schemars-1.2.1.crate::https://static.crates.io/crates/schemars/schemars-1.2.1.crate
+	sha256sums = 7813536217920a3dd24eb719f8d0e8455987d67c85ff1d023c0ed1c8c1e73db1
+	sha256sums = 077d138387dd107179fec3cefab95ced64f27c20845d014488fc542c4093c962
+	sha256sums = a2b42f36aa1cd011945615b92222f6bf73c599a102a300334cd7f8dbeec726cc
+
+pkgname = tmux-mcp-rs
