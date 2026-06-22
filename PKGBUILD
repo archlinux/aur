@@ -3,7 +3,7 @@
 pkgname=nvidiactl-git
 _pkgname=${pkgname%-git}
 pkgver=v0.3.0.r1.g0ca678b
-pkgrel=2
+pkgrel=3
 pkgdesc='A tool providing dynamic fan speed and power limit adjustments for NVIDIA GPUs, balancing performance and noise. It can optionally be run as a systemd service.'
 arch=('x86_64')
 options=('!strip')
@@ -34,6 +34,12 @@ prepare() {
     return 1
   fi
   mkdir -p build
+  # Shipped-config bump: documents metrics + schema v6 for .pacnew on upgrade.
+  if ! grep -q 'schema v6 sampler tables' nvidiactl.example.conf; then
+    sed -i '/^# Enable metrics collection/i\
+# Enable metrics to run schema v6 sampler tables and DB migrations on startup.\
+' nvidiactl.example.conf
+  fi
 }
 
 build() {
