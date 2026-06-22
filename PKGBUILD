@@ -2,7 +2,7 @@
 
 pkgname=acheron-git
 _pkgname=acheron
-pkgver=r136.ac7bd28
+pkgver=r157.f4d362f
 pkgrel=1
 pkgdesc='Alternative Discord client made in C++ with Qt 6'
 arch=('x86_64')
@@ -37,7 +37,7 @@ sha256sums=(
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  git submodule update --init --filter=tree:0 vendor/{qtkeychain,emoji-segmenter,libdave,miniaudio,vcpkg}
+  git submodule update --init --filter=tree:0 vendor/{qtkeychain,emoji-segmenter,libdave,miniaudio,vcpkg,rnnoise}
 }
 
 build() {
