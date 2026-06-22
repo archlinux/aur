@@ -10,18 +10,25 @@ provides=(konform-browser)
 conflicts=()
 _pkgname="${pkgname}"
 __pkgname=konform
-_ffsrcver=140.12.0
+_ffsrcvername=140.12.0esr
 _ffbuild=1
-_l10n_commit=5db0b9bd7b7bdb9a5671cc504da09caf65d5d3b1
+_l10n_commit=89defc2f7a4742ef9a06ffd123afe62b0ddf9a06
 _lwrelver=100
-pkgver="${_ffsrcver}.${_lwrelver}"
 pkgrel=3
+_ffsrcver="${_ffsrcvername%esr*}"
+if [[ "${_ffsrcver}" =~ .+\..+\..+ ]]; then
+  _srcver="${_ffsrcver}"
+else
+  _srcver="${_ffsrcver}.0"
+fi
+_ffsrcver="${_ffsrcver%b*}"
+pkgver="${_srcver}.${_lwrelver}"
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
-  : "${_ffsrcurl:="https://archive.mozilla.org/pub/firefox/releases/${_ffsrcver}esr"}"
+  : "${_ffsrcurl:="https://archive.mozilla.org/pub/firefox/releases/${_ffsrcvername}"}"
 else
-  : "${_ffsrcurl:="https://archive.mozilla.org/pub/firefox/candidates/${_ffsrcver}esr-candidates/build${_ffbuild}"}"
+  : "${_ffsrcurl:="https://archive.mozilla.org/pub/firefox/candidates/${_ffsrcvername}-candidates/build${_ffbuild}"}"
 fi
 arch=(x86_64 aarch64)
 license=(MPL-2.0)
@@ -132,12 +139,12 @@ options=(
 )
 
 install='konform.install'
-_tag="${_ffsrcver}.${_lwrelver}"
-_ff_source_tarball="firefox-${_ffsrcver}esr.source.tar.xz"
+_tag="${_srcver}.${_lwrelver}"
+_ff_source_tarball="firefox-${_ffsrcvername}-${_ffbuild}.source.tar.xz"
 source=(
   "src"::"git+https://codeberg.org/konform-browser/source.git#tag=${_tag}"
-  "${_ff_source_tarball}"::"${_ffsrcurl}/source/${_ff_source_tarball}"
-  "${_ff_source_tarball}.asc"::"${_ffsrcurl}/source/${_ff_source_tarball}.asc"
+  "${_ff_source_tarball}"::"${_ffsrcurl}/source/firefox-${_ffsrcvername}.source.tar.xz"
+  "${_ff_source_tarball}.asc"::"${_ffsrcurl}/source/firefox-${_ffsrcvername}.source.tar.xz.asc"
   "firefox-l10n-${_l10n_commit}.tar.gz"::"https://github.com/mozilla-l10n/firefox-l10n/archive/$_l10n_commit.tar.gz"
   "${__pkgname}.desktop"
   "default192x192.png"
@@ -173,24 +180,24 @@ _languages=(
 )
 
 prepare() {
-  _lw_srcdir=$srcdir/src/source-$_ffsrcver
+  _srcdir=$srcdir/src/source-$_srcver
   ## <srcprep>
   cp -p *.desktop *.png src/
 
   cd src
-  mkdir -p mozbuild
+  mkdir -p mozbuild "${_srcdir}"
   echo "${_lwrelver}" > release
   git submodule update --init --recursive
-  rm -rf "${_lw_srcdir}/"* "${_lw_srcdir}/".* || true
-  mkdir -p "${_lw_srcdir}/lw"
-  mv "${srcdir}/firefox-${_ffsrcver%b*}"/* "${srcdir}/firefox-${_ffsrcver%b*}"/.* "${_lw_srcdir}/"
-  mv "../firefox-l10n-${_l10n_commit}" "${_lw_srcdir}/lw/l10n"
+  rm -rf "${_srcdir}/"* "${_srcdir}/".* || true
+  mkdir -p "${_srcdir}/lw"
+  mv "${srcdir}/firefox-${_ffsrcver}"/* "${srcdir}/firefox-${_ffsrcver}"/.* "${_srcdir}/"
+  mv "../firefox-l10n-${_l10n_commit}" "${_srcdir}/lw/l10n"
 
-  python3 scripts/librewolf-patches.py "${_ffsrcver}" "${_lwrelver}"
+  python3 scripts/librewolf-patches.py "${_srcver}" "${_lwrelver}"
 
   ## </srcprep>
 
-  cd $_lw_srcdir
+  cd $_srcdir
   mv -b mozconfig ../mozconfig || true
 
   cat >>../mozconfig <<END
@@ -269,8 +276,8 @@ fi
 
 
 build() {
-  _lw_srcdir=$srcdir/src/source-$_ffsrcver
-  cd "${_lw_srcdir}"
+  _srcdir=$srcdir/src/source-$_srcver
+  cd "${_srcdir}"
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -396,8 +403,8 @@ END
 }
 
 package() {
-  _lw_srcdir=$srcdir/src/source-$_ffsrcver
-  cd "${_lw_srcdir}"
+  _srcdir=$srcdir/src/source-$_srcver
+  cd "${_srcdir}"
   if [[ "${_package_multilocale}" == "true" ]]; then
     MOZ_PKG_FORMAT=tar ./mach package-multi-locale --locales ${_languages[@]}
     export MOZ_CHROME_MULTILOCALE="${_languages[*]}"
