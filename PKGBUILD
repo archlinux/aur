@@ -6,16 +6,17 @@ conflicts=('fitgirl-ddl-gtk4')
 provides=('fitgirl-ddl-gtk4')
 _pkgname=fitgirl-ddl
 _binname=fitgirl-ddl_gui
-pkgver=r28.g44f72c3
+pkgver=r116.gbfffe94
 pkgrel=1
 url="https://github.com/mokurin000/${_pkgname}"
 arch=('x86_64' 'aarch64')
 license=('MIT')
-depends=(gcc-libs glibc 'libcurl.so=4-64' gtk4 glib2)
+depends=(gcc-libs glibc gtk4 glib2)
 makedepends=(
     'rust' 'git'
+    'cmake' 'clang'
 )
-
+options=(!lto)
 
 source=("git+${url}.git")
 
@@ -41,7 +42,6 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
-    export RUSTFLAGS="-C link-args=-flto"
     cargo build --frozen --release --bin ${_binname} --no-default-features -F gtk
 }
 
