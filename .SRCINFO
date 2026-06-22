@@ -1,6 +1,6 @@
 pkgbase = wtcc
 	pkgdesc = WorkTree Command Center — a TUI for running Claude Code agents across git worktrees
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/isorensen/wtcc
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wtcc
 	depends = tmux
 	optdepends = github-cli: per-worktree PR/CI status badges
 	optdepends = claude-code: the coding agent launched in each worktree
-	source = wtcc-0.4.0.tar.gz::https://github.com/isorensen/wtcc/archive/v0.4.0.tar.gz
-	sha256sums = 429f43944bdcc81cb5cf3a8197cb18d344cdb43bb9261bb0ac5a4313736788f3
+	source = wtcc-0.5.0.tar.gz::https://github.com/isorensen/wtcc/archive/v0.5.0.tar.gz
+	sha256sums = f9185c3b1fc7d6577e242ad1eb1c8b8a0ad20afc00d35b437d969ab8c830b86f
 
 pkgname = wtcc
