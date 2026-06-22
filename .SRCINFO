@@ -1,6 +1,6 @@
 pkgbase = ranger-git
 	pkgdesc = A simple, vim-like file manager
-	pkgver = 1.9.3.938.g057c8799
+	pkgver = 1.9.3.941.g5aa378d5
 	pkgrel = 1
 	url = https://ranger.github.io/
 	arch = any
