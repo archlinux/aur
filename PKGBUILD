@@ -2,7 +2,7 @@
 pkgname=moekoemusic
 _pkgname='MoeKoe Music'
 _zhsname='萌音'
-pkgver=1.6.5
+pkgver=1.6.6
 _electronversion=39
 _nodeversion=22
 pkgrel=1
@@ -41,6 +41,27 @@ _get_electron_version() {
     _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
+_set_build_env() {
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+	local HOME="${srcdir}/.electron-gyp"
+	export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
+	export NPM_CONFIG_MAXSOCKETS=32
+	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+		{
+			export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+			export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+			export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+			export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+			export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
+			export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
+		}
+		find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+	fi
+}
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
 prepare() {
     cd "${srcdir}"
     if [[ ! -d "${pkgname}-${pkgver}" ]]; then
@@ -65,18 +86,7 @@ prepare() {
         --name="${_pkgname}" \
         --exec="${pkgname} %U" \
         --custom=Name[zh_CN]="${_zhsname}"
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    local HOME="${srcdir}/.electron-gyp"
-    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
-    export NPM_CONFIG_MAXSOCKETS=32
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-        }
-        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-    fi
+    _set_build_env
     _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i -e "
@@ -91,6 +101,7 @@ prepare() {
 }
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
+    _set_build_env
     _ensure_local_nvm
 	local electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
@@ -108,7 +119,7 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -exec dirname {} + | head -n 1)
+    local _app_dir=$(_get_app_dir)
     cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname}/"
     cp -a "${_app_dir}"/{api,assets} "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/icons/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"

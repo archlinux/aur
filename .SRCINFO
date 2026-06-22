@@ -1,6 +1,6 @@
 pkgbase = moekoemusic
 	pkgdesc = An open-source, concise, and aesthetically pleasing third-party client for KuGou.(Use system-wide electron)一款开源简洁高颜值的酷狗第三方客户端
-	pkgver = 1.6.5
+	pkgver = 1.6.6
 	pkgrel = 1
 	url = https://music.moekoe.cn/
 	arch = aarch64
