@@ -1,16 +1,16 @@
 pkgbase = jicofo-git
 	pkgdesc = JItsi Meet COnference FOcus git build
-	pkgver = 1.0.996+0+gaafb61b5
+	pkgver = 1.0.1184+0+g72d22deda
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = install
 	arch = any
 	license = Apache
 	makedepends = git
-	makedepends = java-environment-openjdk=11
+	makedepends = java-environment-openjdk=17
 	makedepends = unzip
 	makedepends = maven
-	depends = java-runtime-openjdk=11
+	depends = java-runtime-openjdk=17
 	depends = bash
 	optdepends = prosody
 	options = !strip

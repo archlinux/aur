@@ -1,17 +1,17 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jicofo-git
-pkgver=1.0.996+0+gaafb61b5
+pkgver=1.0.1184+0+g72d22deda
 pkgrel=1
 pkgdesc="JItsi Meet COnference FOcus git build"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
-depends=("java-runtime-openjdk=11" "bash")
+depends=("java-runtime-openjdk=17" "bash")
 optdepends=("prosody")
 makedepends=(
         "git"
-        "java-environment-openjdk=11"
+        "java-environment-openjdk=17"
         "unzip" "maven"
 )
 options=('!strip')
@@ -36,7 +36,7 @@ pkgver() {
 
 build() {
         cd "$pkgname"
-        export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+        export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
         export PATH=$JAVA_HOME/bin:$PATH
         mvn -DskipTests -Dassembly.skipAssembly=true clean package install
         mvn dependency:copy-dependencies -DincludeScope=runtime
