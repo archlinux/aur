@@ -26,7 +26,7 @@ source=(
 
 
 source_x86_64=(
-    "${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
+    "${pkgname%-bin}-${pkgver}-x86_64.deb::https://gh-proxy.com/${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb"
 )
 
 
