@@ -1,7 +1,7 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=orca-slicer-git
-pkgver=2.4.0.r29400.b8dd2d3
+pkgver=2.5.0.r29402.a409791
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
@@ -19,9 +19,7 @@ conflicts=('orca-slicer')
 source=($pkgname::git+https://github.com/OrcaSlicer/OrcaSlicer.git
         orca-slicer-wrapper.sh)
 b2sums=('SKIP'
-        'f32c48ed4bdb353c4408aa17fff76fa2bc5988f2b681be2c6f61fb3520cbb4d783649f39bc0f354bc99b127a31e5ee3b1c1a8fc7352a35fb651e0e336dd0ddb5'
-        '91c026d80fd33eafb65e6d2155283e0c13c349ced2b249819adf49b9873364a030ae0ad4909d0bff2dc44bea84e1c05096db2870b0abd0ad2b4ab8d3cabf0d9a'
-        'f39c0af2859c76c9b83819119209d1ac51cb070fa0a426650fc11f720fe989c82d334589a2d24f2341ca645d6a5caaa10e2663de45a5049f7630eaab3075dffa')
+        'f32c48ed4bdb353c4408aa17fff76fa2bc5988f2b681be2c6f61fb3520cbb4d783649f39bc0f354bc99b127a31e5ee3b1c1a8fc7352a35fb651e0e336dd0ddb5')
 
 pkgver() {
   cd $pkgname
