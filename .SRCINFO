@@ -1,6 +1,6 @@
 pkgbase = clai-desktop-bin
 	pkgdesc = Desktop app for building, running, and supervising teams of AI agents
-	pkgver = 26.6.18
+	pkgver = 26.6.22
 	pkgrel = 1
 	url = https://github.com/juacker/clai
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = clai-desktop-bin
 	conflicts = clai
 	options = !strip
 	options = !debug
-	source = https://github.com/juacker/clai/releases/download/v26.6.18/clai_26.6.18_amd64.deb
-	source = https://github.com/juacker/clai/raw/v26.6.18/LICENSE
-	sha256sums = 8e72aebada6b941179265c6aa9b75b1d185d99fb973ff02530934a97ddf004e5
+	source = https://github.com/juacker/clai/releases/download/v26.6.22/clai_26.6.22_amd64.deb
+	source = https://github.com/juacker/clai/raw/v26.6.22/LICENSE
+	sha256sums = ca98f3128f901fc05f545e27da8497181ddd0b6782e73c125ba8c2300ef008fd
 	sha256sums = SKIP
 
 pkgname = clai-desktop-bin
