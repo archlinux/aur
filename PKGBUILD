@@ -1,40 +1,59 @@
 # Maintainers: thadah
 pkgname="synergy3-beta-bin"
-pkgver="v3.1.3"
+pkgver="3.7.0"
 pkgrel="1"
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
-license=('unknown')
+license=('custom:Proprietary')
 arch=("x86_64")
-source_x86_64=("https://symless.com/synergy/synergy/api/download/synergy-linux_x64-libssl3-$pkgver-beta.deb")
-sha256sums_x86_64=("8b90eaec23cf917824adf638c61596ccff37398ec81e5a7bb96b80ee2213b371")
-
-conflicts=('synergy' 'synergy1-bin' 'synergy-git' 'synergy-1.6' 'synergy2-bin' 'synergy3-bin' 'synergy3-stable-bin')
-depends=('openssl')
-optdepends=('libappindicator-gtk3')
+source=()
+sha256sums=()
+conflicts=('synergy' 'synergy1-bin' 'synergy-git' 'synergy-1.6' 'synergy2-bin' 'synergy3-bin' 'synergy3-beta-bin')
+depends=('openssl' 'alsa-lib' 'libei' 'libnotify' 'nss' 'qt6-base' 'libxkbfile' 'libxtst' 'libappindicator-gtk3' 'libayatana-appindicator')
+optdepends=('pugixml')
 options=("!strip")
+install="${pkgname}.install"
+
+# Anonymous download permalink provided by Symless
+_permalink="https://email.mg.symless.com/c/eJxMjj1PwzAUAH-Ns1HZ7zn-GDw0gggJECBRqXSzXqw2JbEj2xTCr0d0Yry75QYHPgjTBCe0EdAqbXRzcgSDIkNGWC-EFzRwoFaRJm81tzo0owMOiisB3CJyvbHEEbHVEAhRKmSSz8dNWecplLKhNDeTO9W6FIZbBj2D_l-7Ugz5uDLo_TIy6If0Fafkhz9BFEph2Nf0ESLDW3l4PEO8ed6_bA_nRcLr2hHa9odqd6fu3_P-8-nte_fQiXbXZHcJMWWDRgKT3Gdf8xivQxcHvwEAAP__hk5M-A"
+
+_pkgfile="synergy-${pkgver}-beta-linux-noble-x86_64.pkg.tar.zst"
+
+prepare() {
+  curl -fsSL -c "${srcdir}/cookies.txt" -o /dev/null "$_permalink"
+  curl -fsSL -b "${srcdir}/cookies.txt" -o "${srcdir}/page.html" \
+    "https://symless.com/synergy/download/package/synergy-personal-v3/arch-linux/${_pkgfile}"
+
+  local token
+  token=$(grep -oP '(?<=\\"token\\":\\")[^\\"]+' "${srcdir}/page.html" | head -n1)
+  if [[ -z "$token" ]]; then
+    echo "Failed to get download token."
+    return 1
+  fi
+
+  echo "Downloading .pkg.tar.zst file with permalink token..."
+  curl -fsSL -o "${srcdir}/${_pkgfile}" "https://symless.com/synergy/api/download/${_pkgfile}?token=${token}"
+}
 
 package() {
-  bsdtar -xf ${srcdir}/data.tar.bz2 -C ${pkgdir}/
-  mkdir -p ${pkgdir}/usr/bin
-  ln -s /opt/Synergy/synergys ${pkgdir}/usr/bin/synergys
-  ln -s /opt/Synergy/synergyc ${pkgdir}/usr/bin/synergyc
-  ln -s /opt/Synergy/synergy-core ${pkgdir}/usr/bin/synergy-core
-  mkdir -p ${pkgdir}/etc/systemd/user/graphical-session.target.wants
-  cp ${pkgdir}/opt/Synergy/resources/services/global/synergy.service ${pkgdir}/etc/systemd/user/
-  cp ${pkgdir}/opt/Synergy/resources/services/global/synergy.service ${pkgdir}/etc/systemd/user/graphical-session.target.wants/
-  chmod 4755 ${pkgdir}/opt/Synergy/chrome-sandbox || true
-}
+  # Extract the .tar.zst file keeping permissions
+  bsdtar -xpf "${srcdir}/${_pkgfile}" -C "${pkgdir}/" opt usr
 
-post_install() {
-  update-mime-database /usr/share/mime || true
-  update-desktop-database /usr/share/applications || true
-}
+  install -d "${pkgdir}/usr/bin"
+  ln -s /opt/Synergy/synergy "${pkgdir}/usr/bin/synergy"
+  ln -s /opt/Synergy/synergy-core "${pkgdir}/usr/bin/synergy-core"
 
-post_remove() {
-  rm -f '/usr/bin/synergys'
-  rm -f '/usr/bin/synergyc'
-  rm -f '/usr/bin/synergy-core'
-  rm -f '/etc/systemd/user/synergy.service'
-  rm -f '/etc/systemd/user/graphical-session.target.wants/synergy.service'
+  # Install the user service and enable it.
+  install -Dm644 "${pkgdir}/opt/Synergy/resources/services/global/synergy.service" "${pkgdir}/etc/systemd/user/synergy.service"
+  install -d "${pkgdir}/etc/systemd/user/graphical-session.target.wants"
+  ln -s /etc/systemd/user/synergy.service "${pkgdir}/etc/systemd/user/graphical-session.target.wants/synergy.service"
+
+  # Install the login service into the system unit directory (disabled).
+  install -Dm644 "${pkgdir}/opt/Synergy/resources/services/system/synergy.service" "${pkgdir}/usr/lib/systemd/system/synergy.service"
+
+  # Add the loginInfo file
+  install -d "${pkgdir}/etc/Synergy"
+  install -m666 /dev/null "${pkgdir}/etc/Synergy/loginInfo"
+
+  chmod 4755 "${pkgdir}/opt/Synergy/chrome-sandbox" || true
 }
