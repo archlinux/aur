@@ -1,0 +1,19 @@
+pkgbase = xlibre-video-nested
+	pkgdesc = Driver to run Xorg on top of Xorg or something else.
+	pkgver = 25.0.0
+	pkgrel = 1
+	url = https://github.com/X11Libre/xf86-video-nested
+	arch = x86_64
+	arch = i686
+	groups = xorg-drivers
+	license = MIT
+	makedepends = xlibre-xserver-devel
+	depends = libxext
+	provides = xf86-video-nested
+	conflicts = xf86-video-nested
+	conflicts = xf86-video-nested-git
+	options = !libtool
+	source = https://github.com/X11Libre/xf86-video-nested/archive/refs/tags/xlibre-xf86-video-nested-25.0.0.tar.gz
+	sha256sums = 0efe66138df65a00f1340fc1ea58bc75e0e8180ca598feb2ef0c8b74202c4dba
+
+pkgname = xlibre-video-nested
