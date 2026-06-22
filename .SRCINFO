@@ -1,0 +1,13 @@
+pkgbase = p5.js
+	pkgdesc = p5.js is a client-side JS platform that empowers artists, designers, students, and anyone to learn to code and express themselves creatively on the web. It is based on the core principles of Processing. (Full library)
+	pkgver = v2.3.0
+	pkgrel = 1
+	url = https://beta.p5js.org
+	arch = any
+	license = LGPL-2.1-only
+	makedepends = git
+	makedepends = npm
+	source = git+https://github.com/processing/p5.js#tag=v2.3.0
+	sha256sums = b20280ad573b39cf08ee1a76cd015a1947e846eaf800bdff004b3e21bfb3f6b5
+
+pkgname = p5.js
