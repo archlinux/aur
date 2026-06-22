@@ -10,7 +10,7 @@
 
 pkgname=zennotes-bin
 _appname=ZenNotes
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Keyboard-first, local-first Markdown notes with vim motions and live preview"
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=(
 # No artifact to hash yet — the v2.4.0 tarball is created at release time, so
 # SKIP is a placeholder. Run `updpkgsums` against the uploaded release asset
 # before publishing to AUR (step 2 above) to pin the real checksum.
-sha256sums=('63e97f6e13ff97d6d47ac3c03fe7fdc0718498c494f207b382696aa69615c5ab')
+sha256sums=('9f6548197077ec7fe138bf0a3cdff3495c7e0f7b8d21a0a050fbbe607d8b695f')
 
 package() {
   cd "${srcdir}"
