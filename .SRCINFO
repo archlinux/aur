@@ -1,6 +1,6 @@
 pkgbase = electerm
 	pkgdesc = Terminal/ssh/telnet/serialport/sftp client.(Use system-wide electron)
-	pkgver = 3.15.58
+	pkgver = 3.15.69
 	pkgrel = 1
 	url = https://electerm.html5beta.com/
 	arch = aarch64
