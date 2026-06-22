@@ -1,7 +1,7 @@
 pkgbase = konform-browser
 	pkgdesc = Firefox ESR fork with increased security, privacy, and customizability
-	pkgver = 140.12.0.100
-	pkgrel = 3
+	pkgver = 140.12.0.101
+	pkgrel = 1
 	epoch = 1
 	url = https://codeberg.org/konform-browser/source
 	install = konform.install
@@ -88,10 +88,10 @@ pkgbase = konform-browser
 	options = !makeflags
 	backup = usr/lib/konform/librewolf.cfg
 	backup = usr/lib/konform/distribution/policies.json
-	source = src::git+https://codeberg.org/konform-browser/source.git#tag=140.12.0.100
-	source = firefox-140.12.0esr.source.tar.xz::https://archive.mozilla.org/pub/firefox/candidates/140.12.0esr-candidates/build1/source/firefox-140.12.0esr.source.tar.xz
-	source = firefox-140.12.0esr.source.tar.xz.asc::https://archive.mozilla.org/pub/firefox/candidates/140.12.0esr-candidates/build1/source/firefox-140.12.0esr.source.tar.xz.asc
-	source = firefox-l10n-5db0b9bd7b7bdb9a5671cc504da09caf65d5d3b1.tar.gz::https://github.com/mozilla-l10n/firefox-l10n/archive/5db0b9bd7b7bdb9a5671cc504da09caf65d5d3b1.tar.gz
+	source = src::git+https://codeberg.org/konform-browser/source.git#tag=140.12.0.101
+	source = firefox-140.12.0esr-1.source.tar.xz::https://archive.mozilla.org/pub/firefox/candidates/140.12.0esr-candidates/build1/source/firefox-140.12.0esr.source.tar.xz
+	source = firefox-140.12.0esr-1.source.tar.xz.asc::https://archive.mozilla.org/pub/firefox/candidates/140.12.0esr-candidates/build1/source/firefox-140.12.0esr.source.tar.xz.asc
+	source = firefox-l10n-89defc2f7a4742ef9a06ffd123afe62b0ddf9a06.tar.gz::https://github.com/mozilla-l10n/firefox-l10n/archive/89defc2f7a4742ef9a06ffd123afe62b0ddf9a06.tar.gz
 	source = konform.desktop
 	source = default192x192.png
 	source = 0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
@@ -100,10 +100,10 @@ pkgbase = konform-browser
 	source = 0004-skia-m142-update.patch.xz
 	source = 0005-cbindgen-0_29_4.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = c297d87275f7f76e556bbfa3f844791ff78eeca6cb174802191520462da6e079
+	sha256sums = 580f8cf8d3acaf116d1b25c97744c1269b6a16eeba03f276167e843c90287d41
 	sha256sums = 85dfb9f6021152b4302b8968ef485d958c8c471cb02415a19853daaad5acce62
 	sha256sums = SKIP
-	sha256sums = 50b9d366fb58a45ba7dd3949e08600f6bebf0ead86cc35e9c2f5c20b624de512
+	sha256sums = fc96c4d5e900719737fbd9274d9c513d63e6a4eeb40e0eafa0629e5c8a59495a
 	sha256sums = 68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4
 	sha256sums = b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b
 	sha256sums = 157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852
