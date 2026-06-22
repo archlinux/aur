@@ -2,7 +2,7 @@
 
 pkgname=edirstat
 pkgver="1.1.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast, cross-platform disk usage analyzer with work-stealing multithreading, zero-copy snapshots, deduplication, and an interactive treemap GUI."
 arch=('x86_64')
 url="https://github.com/Xangelix/edirstat"
@@ -39,8 +39,16 @@ package() {
   # Install the documentation
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 
-  # Install the 256x256 icon
-  install -Dm 644 "assets/img/icon-256x.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+  # Install the raster PNG icons for standard desktop sizes
+  local size
+  for size in 16 32 48 64 128 256 512; do
+    install -Dm 644 "assets/img/icon_${size}x.png" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
+  done
+
+  # Install the scalable SVG vector icon as a high-DPI fallback
+  install -Dm 644 "assets/img/icon-transparent.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
 
   # Install the .desktop file
   install -Dm 644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications"
