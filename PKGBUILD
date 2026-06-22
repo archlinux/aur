@@ -1,6 +1,6 @@
 # Maintainer: jazztickets <amF6enRpY2tldHNAZ21haWwuY29tCg==>
 pkgname=mingw-w64-sdl2_mixer
-pkgver=2.8.1
+pkgver=2.8.2
 pkgrel=1
 pkgdesc="A simple multi-channel audio mixer (mingw-w64)"
 arch=(any)
@@ -10,7 +10,7 @@ makedepends=(mingw-w64-gcc mingw-w64-configure)
 depends=(mingw-w64-crt mingw-w64-sdl2 mingw-w64-libmodplug mingw-w64-libvorbis mingw-w64-flac mingw-w64-mpg123)
 options=(staticlibs !strip !buildflags)
 source=("https://github.com/libsdl-org/SDL_mixer/releases/download/release-$pkgver/SDL2_mixer-$pkgver.tar.gz")
-sha256sums=('cb760211b056bfe44f4a1e180cc7cb201137e4d1572f2002cc1be728efd22660')
+sha256sums=('938dff531d00ace2296557a6599abe6f34599e2f34f0a4a08a397e2ccac8b8f7')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
