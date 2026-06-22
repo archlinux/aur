@@ -13,7 +13,5 @@ pkgbase = shuck-bin-release-git
 	conflicts = shuck-release-git
 	conflicts = shuck-bin
 	options = !strip
-	source = shuck-cli-x86_64-unknown-linux-gnu.tar.xz::https://github.com/ewhauser/shuck/releases/download/v0.0.41/shuck-cli-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums = 3dcf888baaa0c15a339738a28125898054b910e91baebeae79046c7fcf5990b5
 
 pkgname = shuck-bin-release-git
