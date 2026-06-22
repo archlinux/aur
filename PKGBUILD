@@ -3,10 +3,10 @@
 
 pkgname=ytm
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI YouTube Music Player - search, queue, and play audio via mpv + yt-dlp"
 arch=('any')
-url="https://github.com/nabil0x/audio"
+url="https://github.com/nabil0x/ytm_cli"
 license=('MIT')
 depends=('mpv' 'yt-dlp' 'python')
 optdepends=('fzf: interactive search result selection'
