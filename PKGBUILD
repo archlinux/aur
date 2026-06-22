@@ -3,13 +3,13 @@
 
 pkgname='openwebrx-plus'
 _pkgname='openwebrx'
-pkgver=1.2.116
-pkgrel=1
+pkgver=1.2.117
+pkgrel=2
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
 url='https://luarvique.github.io/ppa/'
 license=('AGPL-3.0-only')
-depends=('python-csdr-luarvique>=0.18.37' 'rtl-sdr' 'owrx_connector-luarvique' 'python-setuptools' 'python-distutils-extra' 'python-importlib-metadata')
+depends=('python-csdr-luarvique>=0.18.37' 'rtl-sdr' 'owrx_connector-luarvique' 'python-setuptools' 'python-distutils-extra' 'python-importlib-metadata' 'python-protobuf')
 install="${pkgname}".install
 optdepends=(
     # decoding
@@ -41,11 +41,13 @@ optdepends=(
     'nrsc5: decode HDRadio broadcasts'
     'csdr-skimmer: decode multiple CW signals at once'
     'radiosonde_auto_rx: decode radiosonde data'
+    'python-meshtastic: decode Meshtastic messages'
     # lorarx (dxlAPRS): decode LoRa data, manual build required, no AUR package yet
     # tools
     'imagemagick: automatically convert received images to the PNG format'
     'sox: sound processing tools'
     'python-paho-mqtt: send decoded signal data to an MQTT broker for further processing by third-party applications'
+    'python-pycryptodome: cryptography support for Meshtastic decoding'
     'hamlib: synchronize frequency and modulation with external transceivers'
     'lame: to compress recorded audio into MP3 format'
     'aprs-symbols: display APRS symbols'
@@ -78,7 +80,7 @@ source=(
     'openwebrx-plus.sysusers'
     'openwebrx-plus.tmpfiles'
 )
-sha256sums=('d6f28943167f62a1dbe38854aa7ea5d5ce18082b40d21bf6d7a984468e3c8848'
+sha256sums=('499057d1442bd87766f4ebc7e4e34f663e13b49591c964b275e5933d2d67767e'
             '4f618a2fd96bca7359a6d52a0ae996d08ab30d94d9d2717f1e353f2296ee0fd7'
             'eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade')
 provides=('openwebrx')
