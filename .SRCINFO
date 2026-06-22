@@ -1,0 +1,21 @@
+pkgbase = manora-bin
+	pkgdesc = A simple CLI / TUI tool to display (or save) man pages as PDF files
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/Antiz96/manora
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = man
+	depends = groff
+	depends = xdg-utils
+	provides = manora
+	conflicts = manora
+	options = !strip
+	source = README-2.0.1.md::https://raw.githubusercontent.com/Antiz96/manora/v2.0.1/README.md
+	source = LICENSE-2.0.1::https://raw.githubusercontent.com/Antiz96/manora/v2.0.1/LICENSE
+	sha256sums = c1f1ed8698eb296f9e3ec7ca2e65ea1c671fb4370c21f32c8ac7d29823515eea
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = manora-x86_64-2.0.1::https://github.com/Antiz96/manora/releases/download/v2.0.1/manora-2.0.1-x86_64
+	sha256sums_x86_64 = acb2667b9171e075c0f9e3cb569e6e1cf5c5d59d53feba0ef233ac7906d7240c
+
+pkgname = manora-bin

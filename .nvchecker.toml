@@ -1,0 +1,5 @@
+[manora-bin]
+source = "github"
+github = "Antiz96/manora"
+use_latest_release = true
+prefix = "v"
