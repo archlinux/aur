@@ -1,9 +1,9 @@
 # Maintainer: BNDays27 <brionical@proton.me>
 _pkgname=hedgemodmanager
 pkgname=$_pkgname-bin
-pkgver=8.0.0.beta5
+pkgver=8.0.0.beta6
 _pkgtag=${pkgver/.beta/-beta}
-pkgrel=2
+pkgrel=1
 pkgdesc="(UNOFFICIAL PACKAGE) A mod manager for Hedgehog Engine games on PC."
 arch=(x86_64)
 url="https://github.com/hedge-dev/HedgeModManager"
@@ -15,7 +15,7 @@ source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/$_pkgtag/HedgeModManag
 	"$_pkgname.desktop::https://raw.githubusercontent.com/hedge-dev/HedgeModManager/refs/heads/main/flatpak/hedgemodmanager.desktop"
 	"$_pkgname.png::https://raw.githubusercontent.com/hedge-dev/HedgeModManager/refs/heads/main/flatpak/hedgemodmanager.png"
 	"LICENSE.md::https://raw.githubusercontent.com/hedge-dev/HedgeModManager/refs/heads/main/LICENSE.md")
-sha256sums=('cdeb5c7bca2bba5842ae389afbab7ff41fef8eefe0a0f7a08dc84c09452e7241'
+sha256sums=('c88e70fef4ea4c9134b1e8dd539a85d49ca163b52c551d90c394091ae40a0344'
 	"SKIP"
 	"SKIP"
 	"SKIP")
