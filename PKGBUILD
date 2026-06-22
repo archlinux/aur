@@ -2,7 +2,7 @@
 # Upstream: Philip Heron <phil@sanslogic.co.uk>
 
 pkgname=ssdv
-pkgver=r58.d1ceda8
+pkgver=r58.d1ceda9
 pkgrel=1
 pkgdesc="Simple command line app for encoding/decoding SSDV (Slow Scan Digital Video) image data"
 arch=('x86_64')
