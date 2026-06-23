@@ -1,6 +1,6 @@
 # Maintainer: schultz-dev0
 pkgname=cloudyy-hcm-git
-pkgver=0.1.0.r1.1434d83
+pkgver=0.1.0.r2.1664fd0
 pkgrel=1
 pkgdesc="Hyprland config manager for Cloud Center (cloudyy-linux)"
 arch=('x86_64' 'aarch64')
