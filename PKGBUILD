@@ -13,8 +13,19 @@ pkgdesc='Open Source H265/HEVC video encoder. 32bit libraries.'
 arch=('x86_64')
 url='https://bitbucket.org/multicoreware/x265_git'
 license=('GPL')
-depends=('x265' 'lib32-gcc-libs'  'lib32-libnuma')
-makedepends=('cmake' 'nasm' 'git')
+depends=(
+  'x265'
+  'lib32-glibc'
+  'lib32-libnuma'
+  'libgcc'
+  'libstdc++'
+)
+makedepends=(
+  'cmake'
+  'git'
+  'nasm'
+  'ninja'
+)
 provides=('libx265.so')
 source=(
   "${pkgname#lib32-*}::git+${url}.git#tag=${pkgver}"
