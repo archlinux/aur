@@ -1,23 +1,35 @@
-# Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
-pkgname=python-tables
-_pkgname=${pkgname:7}
-pkgver=3.9.1
-pkgrel=3
+# Maintainer: Youcef NAFA <youcef.nafa at gmail>
+
+_name=tables
+pkgname=python-${_name}
+pkgver=3.11.1
+pkgrel=1
 pkgdesc="Hierarchical datasets for Python"
 arch=('any')
-url="https://pypi.org/project/tables"
-license=('BSD')
-makedepends=(python-build python-installer python-wheel)
-depends=(python hdf5 python-numpy python-oldest-supported-numpy python-numexpr python-packaging python-blosc2)
-source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('48331503cd509c9f1f95cf2f5c64a57c48c0aa5141423f0eca352965c4f9bf81')
+url="https://www.pytables.org/"
+license=('MIT')
+depends=('python')
+makedepends=('python-blosc2' 'blosc2' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=()
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
+sha256sums=('78abcf413091bc7c1e4e8c10fbbb438d1ac0b5a87436c5b972c3e8253871b6fb')
 
 build() {
-    cd ${srcdir}/${_pkgname}-${pkgver}
+    cd "${srcdir}"/${_name//-/_}-${pkgver}
     python -m build --wheel --no-isolation
 }
 
+check() {
+  local pytest_options=(
+    -vv
+  )
+  cd "${srcdir}"/${_name//-/_}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  #test-env/bin/python -m pytest "${pytest_options[@]}" tests
+}
+
 package() {
-    cd ${srcdir}/${_pkgname}-${pkgver}
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "${srcdir}"/${_name//-/_}-${pkgver}
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
