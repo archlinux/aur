@@ -1,0 +1,23 @@
+pkgbase = wiilink-patcher-cli-bin
+	pkgdesc = Legacy .NET CLI to patch WiiLink servers into WiiConnect24 channels (pre-compiled)
+	pkgver = 2.1.3
+	pkgrel = 1
+	url = https://github.com/WiiLink24/WiiLink24-Patcher
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MPL-2.0
+	depends = glibc
+	depends = gcc-libs
+	provides = wiilink-patcher-cli=2.1.3
+	conflicts = wiilink-patcher-cli
+	options = !strip
+	options = !debug
+	source_x86_64 = WiiLinkPatcher_Linux-x64_v213::https://github.com/WiiLink24/WiiLink24-Patcher/releases/download/v2.1.3/WiiLinkPatcher_Linux-x64_v213
+	sha256sums_x86_64 = d8558e650182076a45497f7ea34477db53c7d016bf2efaa058f4143c674a4ea3
+	source_aarch64 = WiiLinkPatcher_Linux-ARM64_v213::https://github.com/WiiLink24/WiiLink24-Patcher/releases/download/v2.1.3/WiiLinkPatcher_Linux-ARM64_v213
+	sha256sums_aarch64 = 75547f00505188a350d0f75bac883d602db88b288b771b0faac5ea1037d04876
+	source_armv7h = WiiLinkPatcher_Linux-ARM32_v213::https://github.com/WiiLink24/WiiLink24-Patcher/releases/download/v2.1.3/WiiLinkPatcher_Linux-ARM32_v213
+	sha256sums_armv7h = 8d111e1f32d25af5f275b08c3ba6c339dfa19b41a6e3e40ac77ddc9819005cff
+
+pkgname = wiilink-patcher-cli-bin
