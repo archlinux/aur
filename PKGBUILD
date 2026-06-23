@@ -1,10 +1,10 @@
 # Maintainer: Vadim Gerasimov <angryvadik@gmail.com>
 pkgname=media-server
-pkgver=0.7.2
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 # Web client release to bundle. Must share the same minor version as pkgver
 # (the project keeps the server and web-client minor versions in lockstep).
-_webver=0.7.2
+_webver=0.8.0
 pkgdesc="Self-hosted media server"
 arch=('x86_64')
 url="https://github.com/dog4ik/media-server"
@@ -19,7 +19,7 @@ source=(
 )
 # git source uses SKIP (tag-pinned); tarball pins a real checksum (`updpkgsums`).
 sha256sums=('SKIP'
-            'ea7c0ca491df6d9af73218dab9a65098d2f9de23ab1a0f451f98e2766d8314f7')
+            '08a8598705b839b5ddef46f11aec2f60077c200f201418c49a9a0c0bb54b1506')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -43,7 +43,8 @@ package() {
 
   # web client (prebuilt dist downloaded from the matching web-client release)
   install -d "$pkgdir/usr/share/media-server/dist"
-  cp -a "$srcdir/dist/." "$pkgdir/usr/share/media-server/dist/"
+  cp -r "$srcdir/dist/." "$pkgdir/usr/share/media-server/dist/"
+  chmod -R u=rwX,go=rX "$pkgdir/usr/share/media-server/dist"
 
   # systemd unit + environment file
   install -Dm644 "packaging/systemd/media-server.service" \
