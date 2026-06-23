@@ -1,0 +1,4 @@
+[matlab-mcp-server]
+source = "git"
+git = "https://github.com/matlab/matlab-mcp-server.git"
+prefix = "v"

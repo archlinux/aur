@@ -1,0 +1,22 @@
+--- a/internal/adaptors/application/parameter/defaultparameters/defaultparameters.go
++++ b/internal/adaptors/application/parameter/defaultparameters/defaultparameters.go
+@@ -159,7 +159,7 @@
+ 		false,
+ 		"",
+ 		messages.CLIMessages_DisableTelemetryDescription,
+-		false,
++		true,
+ 		true,
+ 		true,
+ 	)
+--- a/internal/adaptors/mcpb/userconfig/userconfig_test.go
++++ b/internal/adaptors/mcpb/userconfig/userconfig_test.go
+@@ -100,7 +100,7 @@
+ 	assert.Empty(t, config["PreferredLocalMATLABRoot"].Default)
+ 	assert.Empty(t, config["PreferredMATLABStartingDirectory"].Default)
+ 	assert.Equal(t, false, config["InitializeMATLABOnStartup"].Default)
+-	assert.Equal(t, false, config["DisableTelemetry"].Default)
++	assert.Equal(t, true, config["DisableTelemetry"].Default)
+ 	assert.Equal(t, "desktop", config["MATLABDisplayMode"].Default)
+ }
+ 
