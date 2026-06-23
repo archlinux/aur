@@ -1,6 +1,6 @@
 pkgbase = lib32-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (32 bit)
-	pkgver = 8.0.1
+	pkgver = 8.0.2
 	pkgrel = 1
 	epoch = 2
 	url = http://ffmpeg.org
@@ -15,7 +15,7 @@ pkgbase = lib32-ffmpeg
 	makedepends = nasm
 	makedepends = opencl-headers
 	makedepends = vulkan-headers
-	depends = ffmpeg>=2:8.0.1
+	depends = ffmpeg>=2:8.0.2
 	depends = lib32-alsa-lib
 	depends = lib32-aom
 	depends = lib32-bzip2
