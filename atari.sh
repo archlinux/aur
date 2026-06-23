@@ -92,7 +92,7 @@ fi
   # Or better yet, just delete ~/.atari800.cfg because there are other settings changes
 
   # Limited to 2 sticks, now supports 4 sticks
-  mul=$(( (1500-65)/30*10 ))
+  mul="$(( (1500-65)/30*10 ))"
   _opts=(
     -atari
     -autosave-config
@@ -122,17 +122,19 @@ fi
     -showspeed
     #-multijoy # breaks all joysticks, doesn't add 4 sticks
     # new features as of 2019-12-27
-    -kbdjoy0
-    -kbdjoy1
+    #-kbdjoy0
+    #-kbdjoy1
+    -no-kbdjoy0
+    -no-kbdjoy1
     -atari_files "${HOME}/${_atari}/romsdave"
     -saved_files "${HOME}/${_atari}"
   )
 
   analog='Off'
   players='2'
-  ver="$(atari800 --version)" || :
-  ver="${ver##* }"
-  if [ "$(vercmp "${ver}" '4.0.0')" -ge 0 ]; then
+#  ver="$(atari800 --version)" || :
+#  ver="${ver##* }"
+#  if [ "$(vercmp "${ver}" '4.0.0')" -ge 0 ]; then
     analog='On'
     players='4'
     _opts+=(
@@ -141,7 +143,7 @@ fi
       -joy2hat
       -joy3hat
     )
-  fi
+#  fi
 if ! :; then
   # No command line switches for some settings
   sed -e 's:^\(SDL_JOY_0_ENABLED\)=.*$:\1=1:g' \

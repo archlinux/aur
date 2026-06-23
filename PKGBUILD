@@ -7,7 +7,7 @@
 set -u
 pkgname='atari800'
 #pkgname+='-git'
-pkgver=5.2.0
+pkgver=6.1.0
 pkgrel=1
 pkgdesc='An emulator of the Atari 800/800XL/130XE/5200 with various extensions'
 arch=('i686' 'x86_64')
@@ -33,10 +33,10 @@ if ! :; then
   _srcdir="${pkgname%-git}-${_srcf}"
 fi
 unset _srcf
-md5sums=('bed6188abbe73c2ac109dc954050fd46'
+md5sums=('75b39a1ad0b2d77f0a5d8920c4eeaa8c'
          '4f6ae0290954e7132c705c9f9fc37dd2'
          '82d425a60aa04f7596ffe0d3cf3dfd92')
-sha256sums=('3874d02b89d83c8089f75391a4c91ecb4e94001da2020c2617be088eba1f461f'
+sha256sums=('b76bba5ef84bfb1415e9cc2e83d8e2057f14cbbad5addb22cbefb5490171702a'
             '832fcb80e3eb02e7d5d8d50512e82c28aef9110e4f764f288b12228e99c13f42'
             '95e03020358a0855e12ee19b62abebb336e472fcf525f7eb42dcc28419588df9')
 
@@ -48,7 +48,7 @@ if [ "${pkgname%-git}" != "${pkgname}" ]; then
   provides=("${pkgname%-git}=${pkgver%%.r*}")
   _srcdir="${pkgname%-git}"
 pkgver() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
   local _ver="$(git describe --tags --long)"
   _ver="${_ver#ATARI800_}"
@@ -56,7 +56,6 @@ pkgver() {
   _ver="${_ver//_/.}"
   _ver="${_ver//-/.}"
   printf '%s' "${_ver}"
-  set +u
 }
 else
   if [ "${pkgver%.r*}" != "${pkgver}" ]; then
@@ -67,7 +66,7 @@ pkgver() {
 fi
 
 build() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
   if [ -s 'src/autogen.sh' ]; then
     cd 'src'
@@ -86,11 +85,10 @@ build() {
     ./configure "${_copts[@]}"
   fi
   make
-  set +u
 }
 
 package() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
   if [ -s 'src/autogen.sh' ]; then
     cd 'src'
