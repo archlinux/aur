@@ -9,6 +9,7 @@ pkgbase = manboster-bin
 	optdepends = llama.cpp: for running local safety gatekeeper model
 	provides = manboster
 	conflicts = manboster
+	conflicts = manboster-git
 	source_x86_64 = manboster-0.2.3-x86_64.tar.gz::https://github.com/manboster/manboster/releases/download/v0.2.3/manboster_0.2.3_linux_amd64.tar.gz
 	sha256sums_x86_64 = 1e77f73f00c9eaf13d506fe4aba5e4b48abfe6cbf6a6a3fc76a063f796281fc0
 	source_aarch64 = manboster-0.2.3-aarch64.tar.gz::https://github.com/manboster/manboster/releases/download/v0.2.3/manboster_0.2.3_linux_arm64.tar.gz
