@@ -1,8 +1,8 @@
 post_install() {
-  if systemctl -q is-active runsunloginclient.service ;then
-    systemctl daemon-reload
-    systemctl restart runsunloginclient.service
-    echo "restart runsunloginclient.service."
+  # recreate the runtime config the daemon expects (matches upstream postinst)
+  if [ ! -f '/etc/orayconfig.conf' ]; then
+    touch /etc/orayconfig.conf
+    chmod 644 /etc/orayconfig.conf
   fi
 
   ECHOLEN=$(echo -e|awk '{print length($0)}')
@@ -12,15 +12,20 @@ post_install() {
   else
     ECHO='echo'
   fi
-  
-  $ECHO "\033[36m*************************************************************************\033[0m"
-  $ECHO "\033[36m*  sunlogin daemon service must be running for sunloginclient to work   *\033[0m"
-  $ECHO "\033[36m*  Type: systemctl start runsunloginclient.service                      *\033[0m"
-  $ECHO "\033[36m*************************************************************************\033[0m"
+
+  $ECHO "\033[36m***************************************************************************\033[0m"
+  $ECHO "\033[36m*  the awesun daemon must be running for sunloginclient to function       *\033[0m"
+  $ECHO "\033[36m*  enable & start it with:                                                *\033[0m"
+  $ECHO "\033[36m*    systemctl enable --now runsunloginclient.service                      *\033[0m"
+  $ECHO "\033[36m***************************************************************************\033[0m"
 }
 
 post_upgrade() {
-  post_install
+  if systemctl -q is-active runsunloginclient.service ;then
+    systemctl daemon-reload
+    systemctl restart runsunloginclient.service
+    echo "restarted runsunloginclient.service."
+  fi
 }
 
 post_remove() {
@@ -28,11 +33,11 @@ post_remove() {
     rm -f /etc/orayconfig.conf
   fi
 
-  if [ -f "/etc/xdg/autostart/sunlogin.desktop" ];then
-    rm -f /etc/xdg/autostart/sunlogin.desktop
+  if [ -f "/etc/xdg/autostart/awesun.desktop" ];then
+    rm -f /etc/xdg/autostart/awesun.desktop
   fi
 
-  rm -rf /var/log/sunlogin
+  rm -rf /var/log/awesun
 }
 
 # vim: ts=2 sw=2 et:

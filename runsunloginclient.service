@@ -1,13 +1,14 @@
 [Unit]
-Description=check running sunloginclinet loop
+Description=Sunlogin (AweSun) remote control daemon
 Requires=network-online.target
 After=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/opt/sunlogin/bin/oray_rundaemon -m server
-KillMode=process
-ExecStop=
+ExecStart=/opt/awesun/bin/awesun_daemon -m server -name awesun
+KillMode=control-group
+Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
