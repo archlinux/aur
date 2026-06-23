@@ -1,7 +1,7 @@
 pkgbase = barmer-ecare-bin
 	pkgdesc = Desktopanwendung für die Elektronische Patientenakte der BARMER extrahiert aus dem snap packet der BARMER
-	pkgver = 25.10.2
-	pkgrel = 1
+	pkgver = 26.1.1
+	pkgrel = 2
 	url = https://www.barmer.de/unsere-leistungen/leistungen-a-z/online-services/ecare-elektronische-patientenakte/ecare-fuer-pc-laptop-1056418
 	arch = x86_64
 	license = Proprietary
@@ -13,6 +13,7 @@ pkgbase = barmer-ecare-bin
 	makedepends = asar
 	makedepends = modclean
 	makedepends = imagemagick
+	makedepends = uglify-js
 	depends = gcc-libs
 	depends = glibc
 	depends = libasound.so=2-64
