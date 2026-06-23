@@ -2,7 +2,7 @@
 pkgname=shadps4-qtlauncher-pre-release-bin
 _pkgname=shadPS4QtLauncher
 _pkgid=net.shadps4.shadps4-qtlauncher
-pkgver=20260419.6671c44
+pkgver=20260620.cead95c
 pkgrel=1
 pkgdesc="The official Qt launcher for shadps4 emulator (Pre-release version)"
 arch=('x86_64')
@@ -42,21 +42,17 @@ prepare() {
     # Dynamically find the latest release
     _download_url=$(curl -s "https://api.github.com/repos/shadps4-emu/shadps4-qtlauncher/releases" | \
                     jq -r '. | map(select(.prerelease == true))[0].assets[] | select(.name | contains("linux-qt")) | .browser_download_url')
-
     msg2 "Downloading AppImage ZIP..."
     curl -L "$_download_url" -o "launcher.zip"
-
     unzip -o "launcher.zip"
     _appimage=$(ls *.AppImage)
     chmod +x "$_appimage"
-
     msg2 "Extracting AppImage content..."
     ./"$_appimage" --appimage-extract
 }
 
 build() {
     cd "${srcdir}/squashfs-root"
-
     # Patch AppRun to point to the fixed installation directory in /opt,
     # adjust the Exec and Icon paths in the .desktop,
     # and change the binary name
@@ -70,17 +66,13 @@ package() {
     # Create directory structure
     install -dm755 "${pkgdir}/opt/${_pkgname}"
     install -dm755 "${pkgdir}/usr/bin"
-
     # Move extracted content to /opt
     cp -ar "${srcdir}/squashfs-root/." "${pkgdir}/opt/${_pkgname}/"
-
     # Install the .desktop file and the icon
     install -Dm644 "${srcdir}/squashfs-root/${_pkgid}.desktop" "${pkgdir}/usr/share/applications/shadps4-qtlauncher.desktop"
     install -Dm644 "${srcdir}/squashfs-root/net.shadps4.shadPS4.svg" "${pkgdir}/usr/share/pixmaps/shadps4-qtlauncher.svg"
-
     # Create a symbolic link for the AppRun
     ln -s "/opt/${_pkgname}/AppRun" "${pkgdir}/usr/bin/shadps4-qtlauncher"
-
-	# Permissions
-	chmod -R u+rwX,go+rX,go-w "${pkgdir}/opt/${_pkgname}"
+    # Permissions
+    chmod -R u+rwX,go+rX,go-w "${pkgdir}/opt/${_pkgname}"
 }
