@@ -1,18 +1,18 @@
 pkgbase = hathor-wallet-bin
 	pkgdesc = Hathor Official Wallet for Desktop.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.31.0
+	pkgver = 0.34.0
 	pkgrel = 1
 	url = https://hathor.network/
 	arch = x86_64
 	license = MIT
 	depends = electron27
-	provides = hathor-wallet=0.31.0
+	provides = hathor-wallet=0.34.0
 	conflicts = hathor-wallet
-	source = hathor-wallet-0.31.0.deb::https://github.com/HathorNetwork/hathor-wallet/releases/download/v0.31.0/hathor-wallet_0.31.0_amd64.deb
-	source = LICENSE-0.31.0::https://raw.githubusercontent.com/HathorNetwork/hathor-wallet/v0.31.0/LICENSE
+	source = hathor-wallet-0.34.0.deb::https://github.com/HathorNetwork/hathor-wallet/releases/download/v0.34.0/hathor-wallet_0.34.0_amd64.deb
+	source = LICENSE-0.34.0::https://raw.githubusercontent.com/HathorNetwork/hathor-wallet/v0.34.0/LICENSE
 	source = hathor-wallet.sh
-	sha256sums = f0885f9a7df7d15c86163dd573e421adafffbc55cc5025683cfc209b0f717829
+	sha256sums = 0880f736761cf46e1432473c74039981b902c34125ca0d96a8faa22b88096f8d
 	sha256sums = 8fc34ede2d7615b4ef2eee1acfa4a457ab3e7c317e4ba6a1354b3b57ad11cbd0
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = hathor-wallet-bin
