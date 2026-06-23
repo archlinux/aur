@@ -1,14 +1,14 @@
 pkgbase = dash-static-musl
 	pkgdesc = A POSIX compliant shell that aims to be as small as possible
 	pkgver = 0.5.13.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gondor.apana.org.au/~herbert/dash/
 	install = dash.install
 	arch = x86_64
 	arch = aarch64
 	license = BSD
 	makedepends = musl
-	makedepends = gcc
+	makedepends = clang
 	makedepends = make
 	provides = dash
 	conflicts = dash
