@@ -1,5 +1,5 @@
 # Maintainer: Eugene 'Vindex' Stulin <tech.vindex@gmail.com>
-PROJECT=vitis
+PROJECT=vitis-fs
 DESCR="Semantic file system"
 makedepends=("bash" "chrpath" "findutils" "glib2" "amalthea-ldc2" "oxfuse-ldc2" "ldc")
 depends=("glib2" "amalthea-ldc2" "oxfuse-ldc2")
