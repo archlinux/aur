@@ -1,0 +1,11 @@
+  Fast Optimized GCC
+~~~~~~~~~~~~~~~~~~~~~~
+
+This set of packages are original GCC's packages replaced with local tuning and
+more aggressive optimizations.
+
+This project is forked from the original PKGBUILD from official archlinux's repo.
+
+URL: https://sr.ht/~devlavender/arch-aur-contribs/
+
+Please report bugs there.

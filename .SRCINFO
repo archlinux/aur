@@ -1,0 +1,205 @@
+pkgbase = gcc-fast-optimized
+	pkgdesc = The GNU Compiler Collection optimized with -O3 and local tuning
+	pkgver = 16.1.0
+	pkgrel = 1
+	url = https://gcc.gnu.org
+	arch = x86_64
+	license = GPL-3.0-or-later WITH GCC-exception-3.1
+	license = GFDL-1.3-or-later
+	checkdepends = dejagnu
+	checkdepends = expect
+	checkdepends = inetutils
+	checkdepends = python-pytest
+	checkdepends = tcl
+	makedepends = binutils
+	makedepends = doxygen
+	makedepends = libisl
+	makedepends = libmpc
+	makedepends = python
+	makedepends = zstd
+	options = !emptydirs
+	options = !lto
+	source = https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz
+        source = "https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz.sig"
+	source = c89
+	source = c99
+	validpgpkeys = F3691687D867B81B51CE07D9BBE43771487328A9
+	validpgpkeys = 86CFFCA918CF3AF47147588051E8B148A9999C34
+	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
+	validpgpkeys = D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62
+        sha256sums = 50efb4d94c3397aff3b0d61a5abd748b4dd31d9d3f2ab7be05b171d36a510f79
+        sha256sums = 33a851c045ea2ef6f580d82b2abfb1dc75d8b270727800028ca5f40c3b4a4246
+        sha256sums = 7b09ec947f90b98315397af675369a1e3dfc527fa70013062e6e85c4be0275ab
+        sha256sums = 44ea973558842f3f4bd666bdaf6e810fd7b7c7bd36b5cc4c69f93d2cd0124fc7
+
+pkgname = gcc-fast-optimized
+	pkgdesc = The GNU Compiler Collection - C and C++ frontends optimized with -O3 and local tuning
+	depends = libasan=16.1.0-1
+	depends = libgcc=16.1.0-1
+	depends = libhwasan=16.1.0-1
+	depends = liblsan=16.1.0-1
+	depends = libstdc++=16.1.0-1
+	depends = libtsan=16.1.0-1
+	depends = libubsan=16.1.0-1
+	depends = binutils>=2.28
+	depends = glibc>=2.27
+	depends = gmp
+	depends = libisl.so
+	depends = libmpc
+	depends = mpfr
+	depends = zlib
+	depends = zstd
+	provides = gcc
+	replaces = gcc
+	conflicts = gcc
+	options = !emptydirs
+	options = staticlibs
+
+pkgname = gcc-libs-fast-optimized
+	pkgdesc = Runtime libraries shipped by GCC optimized with -O3 and local tuning
+	depends = glibc>=2.27
+	depends = libasan
+	depends = libatomic
+	depends = libgcc
+	depends = libgfortran
+	depends = libgomp
+	depends = libhwasan
+	depends = liblsan
+	depends = libobjc
+	depends = libquadmath
+	depends = libstdc++
+	depends = libtsan
+	depends = libubsan
+	provides = gcc-libs
+	replaces = gcc-libs
+	conflicts = gcc-libs
+
+pkgname = libasan-fast-optimized
+	pkgdesc = Address Sanitizer runtime library shipped by GCC optimized with -O3 and local tuning
+	depends = glibc>=2.27
+	depends = libgcc
+	depends = libstdc++
+	provides = libasan.so
+	provides = libasan
+	replaces = libasan
+	conflicts = libasan
+
+pkgname = libatomic-fast-optimized
+	pkgdesc = GNU Atomic library shipped by GCC optimized with -O3 and local tuning
+	depends = glibc>=2.27
+	provides = libatomic.so
+	provides = libatomic
+	replaces = libatomic
+	conflicts = libatomic
+
+pkgname = libgcc-fast-optimized
+	pkgdesc = Low-level runtime library shipped by GCC optimized with -O3 and local tuning
+	depends = glibc>=2.27
+	provides = libgcc_s.so
+	provides = libgcc_s
+	replaces = libgcc_s
+	conflicts = libgcc_s
+
+pkgname = libgccjit-fast-optimized
+	pkgdesc = Just-In-Time Compilation with GCC backend  optimized with -O3 and local tuning
+	depends = gcc=16.1.0-1
+	depends = glibc>=2.27
+	depends = gmp
+	depends = libisl.so
+	depends = libmpc
+	depends = mpfr
+	depends = zlib
+	depends = zstd
+	provides = libgccjit.so
+	provides = libgccjit
+	replaces = libgccjit
+	conflicts = libgccjit
+
+pkgname = libgomp-fast-optimized
+	pkgdesc = OpenMP library shipped by GCC optimized with -O3 and local tuning
+	depends = glibc>=2.27
+	provides = libgomp.so
+	provides = libgomp
+	replaces = libgomp
+	conflicts = libgomp
+
+pkgname = libhwasan-fast-optimized
+	pkgdesc = Hardware-assisted Address Sanitizer runtime library shipped by GCC optimized with -O3 and local tuning
+	depends = glibc>=2.27
+	depends = libgcc
+	depends = libstdc++
+	provides = libhwasan.so
+	provides = libhwasan
+	replaces = libhwasan
+	conflicts = libhwasan
+
+pkgname = libitm-fast-optimized
+	pkgdesc = GNU Transactional Memory library shipped by GCC optimized with -O3 and local tuning
+	depends = glibc>=2.27
+	depends = libgcc
+	provides = libitm.so
+	provides = libitm
+	replaces = libitm
+	conflicts = libitm
+
+pkgname = liblsan-fast-optimized
+	pkgdesc = Leak Sanitizer runtime library shipped by GCC optimized with -O3 and local tuning
+	depends = glibc>=2.27
+	depends = libgcc
+	depends = libstdc++
+	provides = liblsan.so
+	provides = liblsan
+	replaces = liblsan
+	conflicts = liblsan
+
+pkgname = libquadmath-fast-optimized
+	pkgdesc = GCC __float128 library optimized with -O3 and local tuning
+	depends = glibc>=2.27
+	depends = libgcc
+	provides = libquadmath.so
+	provides = libquadmath
+	replaces = libquadmath
+	conflicts = libquadmath
+
+pkgname = libstdc++-fast-optimized
+	pkgdesc = C++ runtime libraries shipped by GCC optimized with -O3 and local tuning
+	depends = glibc>=2.27
+	depends = libgcc
+	provides = libstdc++.so
+	provides = libstdc++
+	replaces = libstdc++
+	conflicts = libstdc++
+
+pkgname = libtsan-fast-optimized
+	pkgdesc = Thread Sanitizer runtime library shipped by GCC optimized with -O3 and local tuning
+	depends = glibc>=2.27
+	depends = libgcc
+	depends = libstdc++
+	provides = libtsan.so
+	provides = libtsan
+	replaces = libtsan
+	conflicts = libtsan
+
+pkgname = libubsan-fast-optimized
+	pkgdesc = Undefined Behavior Sanitizer runtime library shipped by GCC optimized with -O3 and local tuning
+	depends = glibc>=2.27
+	depends = libgcc
+	depends = libstdc++
+	provides = libubsan.so
+	provides = libubsan
+	replaces = libubsan
+	conflicts = libubsan
+
+pkgname = lto-dump-fast-optimized
+	pkgdesc = Dump link time optimization object files optimized with -O3 and local tuning
+	depends = gcc=16.1.0-1
+	depends = glibc>=2.27
+	depends = gmp
+	depends = libisl.so
+	depends = libmpc
+	depends = mpfr
+	depends = zlib
+	depends = zstd
+	provides = lto-dump
+	replaces = lto-dump
+	conflicts = lto-dump
