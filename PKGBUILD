@@ -9,7 +9,7 @@ pkgdesc="A DSL for data-driven computational pipelines"
 arch=('any')
 url='https://www.nextflow.io'
 license=('Apache-2.0')
-depends=('java-runtime>=17' 'bash')
+depends=('java-runtime>=17' 'java-runtime<=26' 'bash')
 source=("${pkgname}-${pkgver}::https://github.com/nextflow-io/nextflow/releases/download/v${pkgver}/nextflow")
 sha256sums=('a94f8bd1db9c0271ad58ec40b9c71f812d081a66f782396928b9b1f740f0be5f')
 
