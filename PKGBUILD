@@ -7,7 +7,7 @@
 # Contributor: Alexandre Demers <alexandre.f.demers@gmail.com>
 
 pkgname=lib32-x265
-pkgver=4.1
+pkgver=4.2
 pkgrel=1
 epoch=1
 pkgdesc='Open Source H265/HEVC video encoder. 32bit libraries.'
