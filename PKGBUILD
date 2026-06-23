@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 
 pkgname=kwin-effects-better-blur-dx-x11
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="KWin Better Blur DX effect fork with window class force blur feature (X11)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("kwin-effects-forceblur")
 makedepends=(cmake extra-cmake-modules qt6-tools kwin-x11)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 install="$pkgname.install"
-sha256sums=('e039cdfce81d93761bcf2baeade9d1b2ba83a899ec2954ddf62760a758bf7905')
+sha256sums=('2f8f5f748078efd8f11defe6de0bc33235e876721b50d83d16dab6e1ca9fffce')
 
 build() {
     local _cmake_args=(
