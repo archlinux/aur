@@ -1,0 +1,16 @@
+pkgbase = git-file-history-rs
+	pkgdesc = TUI for browsing the Git history of a single file
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/wykwit/git-file-history
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = git
+	provides = git-file-history
+	source = git-file-history-0.1.0.tar.gz::https://gitlab.com/wykwit/git-file-history/-/archive/v0.1.0/git-file-history-v0.1.0.tar.gz
+	sha256sums = fc81be3acec8f3d3acc52c112ef4fb2b46f17ef79bc26dfad96e93eae46c1bab
+
+pkgname = git-file-history-rs
