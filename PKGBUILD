@@ -34,10 +34,10 @@ if ! :; then
 fi
 unset _srcf
 md5sums=('75b39a1ad0b2d77f0a5d8920c4eeaa8c'
-         '4f6ae0290954e7132c705c9f9fc37dd2'
+         '202bce91bbf1728f63c511057ba93d94'
          '82d425a60aa04f7596ffe0d3cf3dfd92')
 sha256sums=('b76bba5ef84bfb1415e9cc2e83d8e2057f14cbbad5addb22cbefb5490171702a'
-            '832fcb80e3eb02e7d5d8d50512e82c28aef9110e4f764f288b12228e99c13f42'
+            'e9f427a3688df21eb76a9544584350e3f036c9fa50a8a9c76ce6f3759f44d0d9'
             '95e03020358a0855e12ee19b62abebb336e472fcf525f7eb42dcc28419588df9')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
