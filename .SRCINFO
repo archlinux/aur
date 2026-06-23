@@ -1,6 +1,6 @@
 pkgbase = reco
 	pkgdesc = An audio recording app designed for elementary OS
-	pkgver = 5.1.1
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://github.com/ryonakano/reco
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = reco
 	depends = ryokucha
 	depends = live-chart
 	depends = libadwaita
-	source = reco-5.1.1.tar.gz::https://github.com/ryonakano/reco/archive/5.1.1.tar.gz
-	sha256sums = 2e9c8304e62297d172fe9f95e28dfe6606d37129e6bef371fcc89d5fbdf28499
+	source = reco-5.2.1.tar.gz::https://github.com/ryonakano/reco/archive/5.2.1.tar.gz
+	sha256sums = 1f56164c8d362772fbc8ff17448b261e9820b1957712ea9d2af924da3e92da2a
 
 pkgname = reco
