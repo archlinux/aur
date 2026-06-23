@@ -1,8 +1,8 @@
 # Maintainer: Dae Euhwa <daedaevibin@ik.me>
 pkgname=voix
 _pkgname=Voix # The case-sensitive name of the repository from git
-pkgver=4.5.0
-pkgrel=2
+pkgver=4.6.0
+pkgrel=1
 pkgdesc="A secure privilege escalation tool replacing sudo/doas, using PAM for authentication"
 provides=('sudo' 'doas')
 conflicts=('sudo' 'doas')
@@ -13,7 +13,7 @@ depends=('pam' 'libcap' 'libseccomp' 'yaml-cpp')
 makedepends=('cmake>=3.18' 'clang' 'llvm' 'ninja' 'pkgconf' 'git' 'ccache' 'mold')
 backup=('etc/pam.d/voix' 'etc/voix.conf')
 source=("https://github.com/Veridian-Zenith/Voix/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0268bdc489951006bc9f2b2bbf26b0e46f1f6a0542db3432144f13b80fde1d11')
+sha256sums=('1db4948b4176510a7ac642f5e59672517db902630ce69f37ed10aeedc51f2482')
 
 build() {
     cd "$_pkgname-$pkgver"
