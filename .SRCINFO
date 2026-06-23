@@ -11,6 +11,7 @@ pkgbase = screamingfrogseospider
 	depends = java-runtime-openjdk>=21
 	depends = ttf-font
 	depends = bash
+	options = !debug
 	source = LICENSE
 	source = screamingfrogseospider
 	source = patch-java-check.py

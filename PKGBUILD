@@ -10,6 +10,7 @@ url="https://www.screamingfrog.co.uk/seo-spider/"
 license=('custom')
 depends=('java-runtime-openjdk>=21' 'ttf-font' 'bash')
 makedepends=('tar' 'python')
+options=('!debug')
 source=(
   "LICENSE"
   "screamingfrogseospider"
