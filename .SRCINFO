@@ -1,0 +1,25 @@
+pkgbase = git-xet
+	pkgdesc = Git LFS plugin that uploads and downloads using the Xet protocol
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/huggingface/xet-core
+	install = git-xet.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = git
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = git
+	depends = git-lfs
+	depends = glibc
+	depends = libgit2
+	depends = openssl
+	depends = zlib
+	options = !lto
+	source = git-xet::git+file:///home/julian/Downloads/xet-package/../xet-core#tag=git-xet-v0.2.1
+	sha256sums = SKIP
+
+pkgname = git-xet
