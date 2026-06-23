@@ -3,8 +3,7 @@
 
 pkgname='rustpython'
 _pkgname='RustPython'
-pkgver=0.4.0+55
-_pkgver='2025-11-10-main-55'
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A Python Interpreter written in Rust'
 arch=('x86_64' 'i686')
@@ -12,20 +11,21 @@ url='https://github.com/RustPython/RustPython'
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'libffi' 'openssl' 'xz')
 makedepends=('cargo')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
-sha256sums=('d72fa8ebbd668de7e08cfb35098dcfc58af57584b51f0c4dedf0d48cffa11c66')
+options=(!lto)
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('6fa2bfd6d3a6c0ecb2aae216552ba24ad263546198c8a7b0c03c8111b6389d9c')
 
-_rustpythonpath="/usr/lib/${pkgname}-${_pkgver}"
+_rustpythonpath="/usr/lib/${pkgname}-${pkgver}"
 
 prepare() {
-  cd "${_pkgname}-${_pkgver}"
+  cd "${_pkgname}-${pkgver}"
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "${_pkgname}-${_pkgver}"
+  cd "${_pkgname}-${pkgver}"
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
@@ -41,7 +41,7 @@ build() {
 }
 
 package() {
-  cd "${_pkgname}-${_pkgver}"
+  cd "${_pkgname}-${pkgver}"
 
   install -Dm755 "./target/release/${pkgname}" -t "${pkgdir}/usr/bin"
   install -Dm644 ./LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
