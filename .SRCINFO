@@ -1,7 +1,7 @@
 pkgbase = matlab-mcp-server-git
 	pkgdesc = Run MATLAB® using AI applications with the official MATLAB MCP Server from MathWorks®
 	pkgver = 0.11.0.r0.g1545405
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mathworks.com/products/matlab-mcp-server.html
 	arch = x86_64
 	license = BSD-3-Clause
@@ -12,6 +12,7 @@ pkgbase = matlab-mcp-server-git
 	depends = sh
 	provides = matlab-mcp-server=0.11.0
 	provides = matlab-mcp-core-server=0.11.0.r0.g1545405
+	provides = matlab-mcp-core-server-git=0.11.0.r0.g1545405
 	conflicts = matlab-mcp-server
 	conflicts = matlab-mcp-core-server
 	replaces = matlab-mcp-core-server-git<=0.11.0.r0.g1545405-1

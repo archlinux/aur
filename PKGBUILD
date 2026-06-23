@@ -6,7 +6,7 @@
 _pkgname="matlab-mcp-server"
 pkgname="${_pkgname}-git"
 pkgver=0.11.0.r0.g1545405
-pkgrel=1
+pkgrel=2
 pkgdesc="Run MATLAB® using AI applications with the official MATLAB MCP Server from MathWorks®"
 arch=(
   'x86_64' # x64
@@ -28,6 +28,7 @@ makedepends=(
 provides=(
   "${_pkgname}=${pkgver%.r0.g*}"
   "matlab-mcp-core-server=${pkgver}"
+  "matlab-mcp-core-server-git=${pkgver}"
 )
 conflicts=(
   "${_pkgname}"
