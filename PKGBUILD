@@ -2,7 +2,7 @@
 
 _pkgbase=gnome-shell-extension-all-in-one-clipboard
 pkgname=${_pkgbase}-bin
-pkgver=24
+pkgver=25
 pkgrel=1
 pkgdesc="A powerful, integrated clipboard manager for GNOME Shell."
 arch=(any)
@@ -12,7 +12,7 @@ depends=(gnome-shell)
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source=($pkgname-$pkgver.zip::$url/releases/download/v${pkgver}/all-in-one-clipboard@NiffirgkcaJ.github.com.zip)
-sha256sums=('c7a3b314f51eeecbd8d21c517bbb15f4f89dc0ee8f12d2e54a0750b95acaff63')
+sha256sums=('2f160c53774d91b5bef39c03aac11e7e0653ea27335292e0ff87b53e38ec7f12')
 noextract=("${pkgname}-${pkgver}.zip")
 
 prepare() {
