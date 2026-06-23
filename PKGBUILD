@@ -1,7 +1,7 @@
 # Maintainer: Chen Ark <ark2241@outlook.com>
 pkgname=sfd-tool
 pkgver=1.8.9.2
-pkgrel=1892
+pkgrel=1893
 pkgdesc="SFD Tool is a cross‑platform GUI and CLI tool for working with Spreadtrum/UNISOC devices. It focuses on safe partition backup/restore, PAC flashing, and advanced maintenance operations, with first‑class support for modern 64‑bit platforms."
 arch=('x86_64')
 url="https://github.com/C-Hidery/sfd_tool"
