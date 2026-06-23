@@ -1,8 +1,8 @@
 # Maintainer: Jerzy Kołosowski <jerzy@kolosowscy.pl>
 
 pkgname=kdisplay-presets
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Standalone KDE Plasma utility for managing display configuration presets"
 arch=('x86_64')
 url="https://github.com/jkolo/kdisplay-presets"
@@ -17,7 +17,9 @@ depends=(
     'kglobalaccel'
     'kcmutils'
     'kxmlgui'
+    'knotifications'
     'plasma-workspace'
+    'libplasma'
     'libkscreen'
 )
 makedepends=(
@@ -26,7 +28,7 @@ makedepends=(
     'ninja'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jkolo/kdisplay-presets/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8c0b37cde061c81037dc4b2a24577e1b4e4a6904f1798aa8f54660990189e786')
+sha256sums=('a4896dc705754370e793aa730474b209536d5698ff361ae5a5dae00bc4517012')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" -G Ninja \
