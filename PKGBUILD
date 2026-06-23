@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=pi-studio
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 _pi_ver=0.79.6
 pkgdesc="Local Codex-style desktop GUI for the Pi coding agent"
@@ -34,7 +34,7 @@ options=('!lto' '!debug')
 _pi_relurl="https://github.com/earendil-works/pi-mono/releases/download/v${_pi_ver}"
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c4ccb17a14c5c6594b3e5dd9f05656a9a593530f7de1f3fac3b06265f93efdcc')
+sha256sums=('507b10278dd7160ef38c30e6b2dcfb230663977dd165a55903ae584a95920738')
 source_x86_64=("pi-linux-x64-${_pi_ver}.tar.gz::${_pi_relurl}/pi-linux-x64.tar.gz")
 sha256sums_x86_64=('05000ec8f5b2a8a2df8e2f505aab89eb80552dcf6dc11680fa0f3285839bb4cf')
 source_aarch64=("pi-linux-arm64-${_pi_ver}.tar.gz::${_pi_relurl}/pi-linux-arm64.tar.gz")
