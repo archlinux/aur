@@ -7,7 +7,8 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-wsl
-pkgver=7.0.12.arch1
+install=$pkgbase.install
+pkgver=7.0.13.arch1
 pkgrel=1
 pkgdesc='Linux (WSL without Microsoft out-of-tree patches)'
 url='https://github.com/archlinux/linux'
@@ -16,6 +17,8 @@ arch=(
 )
 license=(GPL-2.0-only)
 makedepends=(
+  e2fsprogs
+  qemu-img
   bc
   binutils
   cpio
@@ -59,16 +62,16 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('57edc9a41efc1ca6b797afa8f4a587a30da2af6bca7356eb56e1e1a4ada265da'
+sha256sums=('3c81edd0f716aca3dd48dff691681827580cc53d35a8eec3be47d346d1f89913'
             'SKIP'
-            'ce38af1268931b099993cf01c537d6c3b21007e08cad84d2f1e71f95cc5cb75b'
+            'd37578467eefea5a8bb8e9832fd7cce73d1cb4a974ea3e13efe5dd65ad23821b'
             'SKIP')
-sha256sums_x86_64=('265f4b0906e06d26fb19cec4d03d385295516c3edaf944b63101725ded66fad5')
-b2sums=('2c53f205a940b0f9f68653b92ef46d49f828cbef3cfa8cf94d050c8e6df05c4fcaa4f9b9681b9130b14e3c790d31208eb244d123249a93e35e8e6165f3d858c9'
+sha256sums_x86_64=('206016c64d0192548e12b1475ea1a31e62c0b0fe372c0fa9621286cf069aa908')
+b2sums=('c92878038062d7f41f805fa8d2bcbc4f1621c7d07e6b210b0ed03b3aa078832b4978761c391db3583459902acb1b22072ee5ebbcd6e37e9e263308b9c9521a5d'
         'SKIP'
-        '26230d1a111b24fe9239273acdfacda37c5bf009f861c448ad25392dcca433514246d629a077ce5c66478c7e0f4e5477ce5f95c91d08b3a02cc87bb35b849bcf'
+        'ae188d8aea54fcf1d0851951d44071914171c880fb635467fd11e10585b886b65cf4f7313b6005c050c1eceb8f640d2a22bcc0699ecda9847fdec050765baef4'
         'SKIP')
-b2sums_x86_64=('2a70559c7a84ba37868f4ffbcbd65455afd718b54f21b86d8ca07e80e36d0c837a3def852269f79c86073debd9f35c440e2a886d5df06c6adf0af232666b2cbf')
+b2sums_x86_64=('35fb795acb67627e17bdd71e9902294311f9fd511187f16694a5f7c240b346c9f1848b3f8890d2841e019ed8e570eb10f72caf922e7905f076053d70a15554c3')
 
 # https://www.kernel.org/pub/linux/kernel/v7.x/sha256sums.asc
 
@@ -113,7 +116,6 @@ _package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=(
     coreutils
-    initramfs
     kmod
   )
   optdepends=(
@@ -123,22 +125,14 @@ _package() {
     'wireless-regdb: to set the correct wireless channels of your country'
   )
   provides=(
-    KSMBD-MODULE
-    NTSYNC-MODULE
-    VIRTUALBOX-GUEST-MODULES
     WIREGUARD-MODULE
   )
 
   cd $_srcname
   local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
-  echo "Installing boot image..."
-  # systemd expects to find the kernel here to allow hibernation
-  # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
-
-  # Used by mkinitcpio to name the kernel
-  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
+  echo "Installing boot image to /boot..."
+  install -Dm644 "$(make -s image_name)" "$pkgdir/boot/vmlinuz-$pkgbase"
 
   echo "Installing modules..."
   ZSTD_CLEVEL=19 make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
@@ -146,6 +140,31 @@ _package() {
 
   # remove build link
   rm "$modulesdir"/build
+
+  # depmod now so the vhdx (overlay lowerdir) ships a ready modules.dep. WSL stacks a
+  # tmpfs upper over this vhdx, so runtime depmod is possible but pointless; bake it in.
+  depmod -b "$pkgdir/usr" "$(<version)"
+
+  # Pre-seed a 'build' symlink into the vhdx -> headers' real dir under /usr/src.
+  # /lib/modules/<ver> is an overlay (vhdx ro lower + tmpfs upper); writes under build/
+  # would hit tmpfs and vanish on shutdown. The symlink lives in the ro lowerdir
+  # (persistent, always visible) and resolves the moment linux-wsl-headers populates
+  # /usr/src, giving DKMS a writable persistent build tree without touching tmpfs.
+  ln -sfn "/usr/src/$pkgbase-$(<version)" "$modulesdir/build"
+
+  echo "Building modules VHDX..."
+  local _data _size
+  _data=$(du -sb "$modulesdir" | cut -f1)
+  _size=$(( _data + _data/10 + 64*1024*1024 ))
+  truncate -s "$_size" "$srcdir/vmlinuz-$pkgbase-modules.img"
+  mkfs.ext4 -F -q -b 4096 -O ^has_journal -m 0 \
+    -U e5ad0b84-b754-40a7-b15f-20625830df25 \
+    -E hash_seed=e5ad0b84-b754-40a7-b15f-20625830df25 \
+    -d "$modulesdir" "$srcdir/vmlinuz-$pkgbase-modules.img"
+  install -d "$pkgdir/boot"
+  qemu-img convert -f raw -O vhdx "$srcdir/vmlinuz-$pkgbase-modules.img" "$pkgdir/boot/vmlinuz-$pkgbase-modules.vhdx"
+  rm -f "$srcdir/vmlinuz-$pkgbase-modules.img"
+  rm -rf "$modulesdir"
 }
 
 _package-headers() {
@@ -164,7 +183,7 @@ _package-headers() {
   provides=(LINUX-HEADERS)
 
   cd $_srcname
-  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+  local builddir="$pkgdir/usr/src/$pkgbase-$(<version)"
 
   local karch
   case $CARCH in
@@ -216,9 +235,6 @@ _package-headers() {
     install -Dt "$builddir/rust" rust/*.so
   fi
 
-  echo "Installing unstripped VDSO..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install \
-    link=  # Suppress build-id symlinks
 
   echo "Removing unneeded architectures..."
   local arch
@@ -264,7 +280,7 @@ _package-docs() {
   pkgdesc="Documentation for the $pkgdesc kernel"
 
   cd $_srcname
-  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+  local builddir="$pkgdir/usr/src/$pkgbase-$(<version)"
 
   echo "Installing documentation..."
   local src dst

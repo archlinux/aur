@@ -1,0 +1,26 @@
+_warn_boot() {
+  if ! mountpoint -q /boot 2>/dev/null || \
+     ! findmnt -no FSTYPE /boot 2>/dev/null | grep -qE '^(9p|drvfs|virtiofs)$'; then
+    cat >&2 <<'EOF'
+==> WARNING: /boot is not a Windows-backed (drvfs/9p) mount.
+==>   The linux-wsl kernel + modules.vhdx live in /boot; without a Windows-backed /boot
+==>   they sit in the distro filesystem where Windows cannot read them, so .wslconfig
+==>   kernel=/kernelModules= will NOT load this kernel. Anything installed for it (the
+==>   kernel, headers, docs) stays inert until /boot is mounted from Windows and the
+==>   package reinstalled.
+EOF
+  fi
+}
+_kernel_note() {
+  cat >&2 <<'EOF'
+==> By specifying vmlinuz-linux-wsl-modules.vhdx via the wsl2.kernelModules option,
+==> the corresponding kernel modules can be loaded automatically. However, once WSL loads
+==> this .vhdx file, it gets locked by Windows, preventing any updates. Therefore, if you
+==> want to update the kernel, you need to temporarily shutdown wsl, remove the
+==> wsl2.kernelModules setting and then restore it after the update is complete.
+EOF
+}
+pre_install() { _kernel_note; }
+pre_upgrade() { _kernel_note; }
+post_install() { _warn_boot; }
+post_upgrade() { _warn_boot; }
