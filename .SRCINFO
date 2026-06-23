@@ -1,0 +1,13 @@
+pkgbase = rime-array-git
+	pkgdesc = Array30 schema for Rime (with global activation)
+	pkgver = r46.557dbe3
+	pkgrel = 1
+	url = https://github.com/rime/rime-array
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = librime
+	source = git+https://github.com/rime/rime-array.git
+	sha256sums = SKIP
+
+pkgname = rime-array-git
