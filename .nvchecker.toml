@@ -1,0 +1,5 @@
+[matlab-mcp-server-bin]
+source = "github"
+github = "matlab/matlab-mcp-server"
+use_latest_release = true
+prefix = "v"
