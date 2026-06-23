@@ -1,0 +1,10 @@
+# makepkg build artifacts
+/src/
+/pkg/
+*.pkg.tar*
+*.src.tar*
+*.tar.gz
+*.tar.zst
+
+# editor / tooling
+/.claude/

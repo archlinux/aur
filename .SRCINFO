@@ -1,0 +1,23 @@
+pkgbase = python-pykrx
+	pkgdesc = KRX (Korea Exchange) stock and bond data scraping library
+	pkgver = 1.2.8
+	pkgrel = 1
+	url = https://github.com/sharebook-kr/pykrx
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-requests
+	depends = python-pandas
+	depends = python-numpy
+	depends = python-deprecated
+	depends = python-multipledispatch
+	depends = python-matplotlib
+	source = python-pykrx-1.2.8.tar.gz::https://files.pythonhosted.org/packages/source/p/pykrx/pykrx-1.2.8.tar.gz
+	sha256sums = b2da03e62047db0ca7eefbcdf5bc2489857fa25a6faf1c2ddbb070b10fab0246
+
+pkgname = python-pykrx
