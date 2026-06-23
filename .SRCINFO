@@ -1,6 +1,6 @@
 pkgbase = devdrop
 	pkgdesc = Local-first workspace sync for developers
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/skorotkiewicz/devdrop
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = devdrop
 	depends = sqlite
 	depends = openssl
 	options = !strip
-	source_x86_64 = devdrop-0.1.1-x86_64.tar.gz::https://github.com/skorotkiewicz/devdrop/releases/download/v0.1.1/devdrop-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = c730580c1ec69d8bf819de87871a7c5f0015ddee285362b624f7f508f9c1ced7
-	source_aarch64 = devdrop-0.1.1-aarch64.tar.gz::https://github.com/skorotkiewicz/devdrop/releases/download/v0.1.1/devdrop-v0.1.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 9293a774884a30436b7bc63606ec914cada141d145efbd4bb79be664c07660db
+	source_x86_64 = devdrop-0.1.2-1-x86_64.tar.gz::https://github.com/skorotkiewicz/devdrop/releases/download/v0.1.2/devdrop-v0.1.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e547d9b73de720190a6ce120fc0685ad40435ceb39065316e998c35de27bb05c
+	source_aarch64 = devdrop-0.1.2-1-aarch64.tar.gz::https://github.com/skorotkiewicz/devdrop/releases/download/v0.1.2/devdrop-v0.1.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4659c5407c34a1f21124fc72341d6fb81c1a419626832dfac668791cf59838d5
 
 pkgname = devdrop

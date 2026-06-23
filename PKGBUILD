@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=devdrop
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Local-first workspace sync for developers"
 arch=('x86_64' 'aarch64')
@@ -10,11 +10,11 @@ depends=('gcc-libs' 'git' 'sqlite' 'openssl')
 makedepends=()
 options=(!strip)
 
-source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/devdrop-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/devdrop-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
+source_x86_64=("$pkgname-$pkgver-$pkgrel-x86_64.tar.gz::$url/releases/download/v$pkgver/devdrop-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("$pkgname-$pkgver-$pkgrel-aarch64.tar.gz::$url/releases/download/v$pkgver/devdrop-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('c730580c1ec69d8bf819de87871a7c5f0015ddee285362b624f7f508f9c1ced7')
-sha256sums_aarch64=('9293a774884a30436b7bc63606ec914cada141d145efbd4bb79be664c07660db')
+sha256sums_x86_64=('e547d9b73de720190a6ce120fc0685ad40435ceb39065316e998c35de27bb05c')
+sha256sums_aarch64=('4659c5407c34a1f21124fc72341d6fb81c1a419626832dfac668791cf59838d5')
 
 package() {
   install -Dm755 devdrop "$pkgdir/usr/bin/devdrop"
