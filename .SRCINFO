@@ -1,11 +1,12 @@
 pkgbase = python-google-cloud-texttospeech
 	pkgdesc = Google Cloud Texttospeech API client library.
-	pkgver = 2.27.0
+	pkgver = 2.37.0
 	pkgrel = 1
 	url = https://github.com/googleapis/google-cloud-python/tree/main/packages/google-cloud-texttospeech
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
@@ -15,9 +16,10 @@ pkgbase = python-google-cloud-texttospeech
 	depends = python-grpcio
 	depends = python-grpcio-status
 	depends = python-google-auth
+	depends = python-cryptography
 	depends = python-proto-plus
 	depends = python-protobuf
-	source = https://files.pythonhosted.org/packages/source/g/google-cloud-texttospeech/google_cloud_texttospeech-2.27.0.tar.gz
-	sha256sums = 94a382c95b7cc58efd2505a24c2968e2614fc6bdf9d76fb9a819d4ed29ae188e
+	source = https://files.pythonhosted.org/packages/source/g/google-cloud-texttospeech/google_cloud_texttospeech-2.37.0.tar.gz
+	sha256sums = db726382f393ceb6b36002c35abd62b53c4d8e17fc2f31df8b07fd0fabbe4f8b
 
 pkgname = python-google-cloud-texttospeech
