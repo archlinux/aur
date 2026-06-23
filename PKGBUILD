@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/UruhaLushia/sparxie"
 depends=("gtk3")
 provides=("sparxie=${pkgver}")
-conflicts=('sparxie' 'sparxie-git')
+conflicts=('sparxie-git')
 options=(!strip)
 license=('GPL-3.0-only')
 source_x86_64=("https://github.com/UruhaLushia/sparxie/releases/download/v${pkgver}/sparxie-linux-x86_64.deb")
