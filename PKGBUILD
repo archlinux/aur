@@ -1,15 +1,13 @@
 # Maintainer: italoghost <eduprodive at posteo dot me>
 pkgname=bb_launcher-bin
-pkgver=15.07
+pkgver=16.00
 _pkgname=bb_launcher
 _pkgid=BB_Launcher
-_pkgdate=2026-06-09
-_pkgcommit=aebcb7a
-pkgrel=2
-pkgdesc="shadPS4 Launcher for Bloodborne (bin version)"
+pkgrel=1
+pkgdesc="Dedicated launcher/mod manager combo app for Bloodborne on shadPS4 (binary version)"
 arch=('x86_64')
 license=('GPL-3.0-only')
-url="https://github.com/rainmakerv3/${_pkgname}"
+url="https://github.com/rainmakerv3/${_pkgid}"
 depends=(
         'glibc' 
         'libgcc' 
@@ -25,16 +23,15 @@ makedepends=('curl' 'unzip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip' '!zipman' '!emptydirs' '!debug')
-_appimage=${_pkgid}-qt.AppImage
+_appimage=${_pkgid}-qt-Downloader.AppImage
+_archive=${_appimage}-${pkgver}
 noextract=("${_appimage}")
-_zip=${_pkgid}-linux-qt-downloader-${_pkgdate}-${_pkgcommit}.zip
-source=(https://github.com/rainmakerv3/BB_Launcher/releases/download/Release${pkgver}/${_zip})
-sha256sums=('5ea39bd1cf2fbe2b01bbbf6132a61eca250bb15da4fb944e12e5c1c4e90276f8')
+source=(${_appimage}-${pkgver}::https://github.com/rainmakerv3/BB_Launcher/releases/download/Release${pkgver}/${_appimage})
+sha256sums=('70883ed12443fe96e712ad3673cbf5be28de269311ec4799c15f3f8bc27f166e')
 
 prepare() {
-    unzip -o "${_zip}"
-    chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
+    chmod +x "${_archive}"
+    ./"${_archive}" --appimage-extract
 }
 
 build() {
@@ -42,9 +39,9 @@ build() {
     # Patch AppRun to point to the fixed installation directory in /opt,
     sed -i "s|appdir=\$(readlink -f \${APPDIR:-\$(dirname \"\$0\")})|appdir=\"/opt/${_pkgname}\"|" "$srcdir/squashfs-root/AppRun"
     # Patch .desktop file
-	mv "BBLauncher.desktop" "${_pkgname}.desktop"
+    mv "BBLauncher.desktop" "${_pkgname}.desktop"
     mv "BBIcon.png" "${_pkgname}.png"
-	sed -i -e "s/Exec=${_pkgid}/Exec=${_pkgname}/" "${_pkgname}.desktop"
+    sed -i -e "s/Exec=${_pkgid}/Exec=${_pkgname}/" "${_pkgname}.desktop"
     sed -i -e "s/Icon=BBIcon/Icon=${_pkgname}/" "${_pkgname}.desktop"
     # Remove .DirIcon file
     rm ".DirIcon"
@@ -56,13 +53,13 @@ package() {
     # Create directory structure
     install -dm755 "${pkgdir}/opt/${_pkgname}"
     install -dm755 "${pkgdir}/usr/bin"
-	# Move extracted content to /opt
-	cp -rp "${srcdir}/squashfs-root/." "${pkgdir}/opt/${_pkgname}/"
-	# Install the .desktop file and the icon
-	install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.png" "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
-	install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
-	# Create a symbolic link for the AppRun
-	ln -s "/opt/${_pkgname}/AppRun" "${pkgdir}/usr/bin/${_pkgname}"
-	# Permissions
-	chmod -R u+rwX,go+rX,go-w "${pkgdir}/opt/${_pkgname}"
+    # Move extracted content to /opt
+    cp -rp "${srcdir}/squashfs-root/." "${pkgdir}/opt/${_pkgname}/"
+    # Install the .desktop file and the icon
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.png" "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+    # Create a symbolic link for the AppRun
+    ln -s "/opt/${_pkgname}/AppRun" "${pkgdir}/usr/bin/${_pkgname}"
+    # Permissions
+    chmod -R u+rwX,go+rX,go-w "${pkgdir}/opt/${_pkgname}"
 }
