@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.84.4
+pkgver=0.84.7
 _electronversion=41
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker.(Prebuilt version.Use system-wide electron)"
@@ -31,12 +31,15 @@ source=(
 )
 sha256sums=('ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('c2ca7a8577828550d503a8aeb8674e007d1acbae2b6b0d382bcfee5f6fc18e8c')
-sha256sums_armv7h=('8b816f4a23df04110d7798abebe1868bc5f76ae04623b2f6c8b27a7b8c2d1659')
-sha256sums_x86_64=('3060b201b69b60ff31884e73196d79e6d6c59fe69ae0d99fce12ef60976c5644')
+sha256sums_aarch64=('3e24ee4234490b80666ac9e3079da32a3bf4ffe70609061c9ef79ef0ba59314a')
+sha256sums_armv7h=('3537330dcbaa30b758160e5319030187b6773754aba1abfd3a1fa3ca792f24a1')
+sha256sums_x86_64=('4591e720e4ac9f39b9531c31cc0f3c46dbbd716e9130a3cb9a46e7c73067ab9e')
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
 _check_electron_version() {
     echo "Verifying Electron version..."
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _app_dir=$(_get_app_dir)
     local _main_exe=""
     if [[ -n "${_app_dir}" ]]; then
         _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
@@ -68,6 +71,7 @@ prepare() {
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
     sed -i "s/\/usr\/lib\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    local _app_dir=$(_get_app_dir)
     PATTERNS=(
         "**/android-*"
         "**/darwin-*"
@@ -75,24 +79,24 @@ prepare() {
         "**/win32-*"
     )
     for pattern in "${PATTERNS[@]}"; do
-        find "${srcdir}/usr/lib/${pkgname%-bin}/resources/app/packages" -type d -path "${pattern}" -exec rm -rf {} +
+        find "${_app_dir}/resources/app/packages" -type d -path "${pattern}" -exec rm -rf {} +
     done
     case "${CARCH}" in
         aarch64)
-            find "${srcdir}/usr/lib/${pkgname%-bin}/resources/app/packages" -type d -name "linux-x64" -exec rm -rf {} +
+            find "${_app_dir}/resources/app/packages" -type d -name "linux-x64" -exec rm -rf {} +
             ;;
         armv7h)
-            find "${srcdir}/usr/lib/${pkgname%-bin}/resources/app/packages" -type d -name "linux-arm64" -o -name "linux-x64" -exec rm -rf {} +
+            find "${_app_dir}/resources/app/packages" -type d -name "linux-arm64" -o -name "linux-x64" -exec rm -rf {} +
             ;;
         x86_64)
-            find "${srcdir}/usr/lib/${pkgname%-bin}/resources/app/packages" -type d -name "linux-arm*" -exec rm -rf {} +
+            find "${_app_dir}/resources/app/packages" -type d -name "linux-arm*" -exec rm -rf {} +
             ;;
     esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/doc/${pkgname%-bin}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
