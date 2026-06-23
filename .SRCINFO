@@ -1,7 +1,7 @@
 pkgbase = freellmapi-desktop-git
-	pkgdesc = FreeLLMAPI local server with Electron viewer (runs in user directory)
-	pkgver = 0.4.1.r9.g4ab1300
-	pkgrel = 3
+	pkgdesc = FreeLLMAPI local server with Electron viewer (persistent encryption key)
+	pkgver = 0.4.1.r12.g78a26cc
+	pkgrel = 1
 	url = https://github.com/tashfeenahmed/freellmapi
 	arch = x86_64
 	arch = aarch64

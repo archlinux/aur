@@ -1,8 +1,8 @@
 # Maintainer: pakrohk <pakrohk@gmail.com>
 pkgname=freellmapi-desktop-git
-pkgver=0.4.1.r9.g4ab1300
-pkgrel=3
-pkgdesc="FreeLLMAPI local server with Electron viewer (runs in user directory)"
+pkgver=0.4.1.r12.g78a26cc
+pkgrel=4
+pkgdesc="FreeLLMAPI local server with Electron viewer (persistent encryption key)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tashfeenahmed/freellmapi"
 license=('MIT')
@@ -39,7 +39,7 @@ package() {
   cd "$pkgdir/usr/lib/freellmapi"
   npm install --production
 
-  # 4. Create the main launcher script (copies app to user dir on first run)
+  # 4. Create the main launcher script (with persistent encryption key)
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/freellmapi" <<'EOF'
 #!/bin/bash
 
@@ -64,20 +64,30 @@ fi
 # Create data directory if it doesn't exist
 mkdir -p "$DATA_DIR"
 
-# Generate encryption key if not set
-if [ -z "$ENCRYPTION_KEY" ]; then
+# --- ENCRYPTION KEY HANDLING (FIX) ---
+# Read or generate encryption key persistently
+if [ -f "$ENV_FILE" ] && grep -q "^ENCRYPTION_KEY=" "$ENV_FILE"; then
+  # Read existing key from .env
+  ENCRYPTION_KEY=$(grep "^ENCRYPTION_KEY=" "$ENV_FILE" | cut -d '=' -f2-)
+  echo "🔑 Using existing encryption key from .env"
+else
+  # Generate new key and save to .env
   ENCRYPTION_KEY="$(node -e 'console.log(require("crypto").randomBytes(32).toString("hex"))')"
-fi
+  echo "🔑 Generated new encryption key and saved to .env"
 
-# Kill any existing server instances
-pkill -f "node.*$APP_DIR/server/dist/index.js" 2>/dev/null || true
-
-# Ensure .env exists with required variables
-if [ ! -f "$ENV_FILE" ]; then
-  echo "ENCRYPTION_KEY=$ENCRYPTION_KEY" > "$ENV_FILE"
+  # Update or create .env with the key
+  if [ -f "$ENV_FILE" ]; then
+    # Remove existing ENCRYPTION_KEY line if present
+    sed -i '/^ENCRYPTION_KEY=/d' "$ENV_FILE"
+  fi
+  echo "ENCRYPTION_KEY=$ENCRYPTION_KEY" >> "$ENV_FILE"
   echo "PORT=$PORT" >> "$ENV_FILE"
   echo "NODE_ENV=production" >> "$ENV_FILE"
 fi
+# --- END ENCRYPTION KEY HANDLING ---
+
+# Kill any existing server instances
+pkill -f "node.*$APP_DIR/server/dist/index.js" 2>/dev/null || true
 
 # Start the server in background
 export NODE_ENV=production
@@ -105,6 +115,7 @@ echo "📡 Server URL: http://localhost:$PORT"
 echo "📄 Logs: /tmp/freellmapi-server.log"
 echo "📁 App directory: $APP_DIR"
 echo "📁 Data directory: $DATA_DIR"
+echo "🔑 Encryption key: ${ENCRYPTION_KEY:0:8}... (saved in .env)"
 
 # Launch Electron viewer from the user's copy
 /usr/bin/electron "$APP_DIR/viewer.js" "$PORT"
