@@ -1,10 +1,10 @@
 # Maintainer: Efe Esen <halilefeesen@proton.me>
 
-_pkgauthor=binaryharbinger
+_pkgauthor=BinaryHarbinger
 _pkgname=riftbar
 
 pkgname=${_pkgname}-bin
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=0
 _pkgvername=v${pkgver}
 
@@ -30,7 +30,7 @@ source=(
 )
 
 
-sha256sums=('4936aea053807f8444b6a0b3b1ed7918fc5a56a5cf808b33a7c929bf47979b9f'
+sha256sums=('dbb099085aa278c96571ce0f6c16b1fce2a2655497ffb72c0c750afc05cedafb'
             'SKIP'
             'SKIP')
 
