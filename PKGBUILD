@@ -1,7 +1,7 @@
 # Maintainer: kasish <kasishgadadhasu9950@gmail.com>
 pkgname=unirun-git
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="Run Anything. Anywhere. — Universal Application Runtime orchestration layer"
 arch=('any')
 url="https://github.com/KasishStar/UniRun"
