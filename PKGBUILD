@@ -3,7 +3,7 @@
 
 _pkgname="envio"
 pkgname="${_pkgname}-bin"
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A Modern And Secure CLI Tool For Managing Environment Variables"
 arch=(
@@ -17,14 +17,8 @@ license=(
   'Apache-2.0 OR MIT'
 )
 depends=(
-  'dbus'
   'glibc'
-  'gpgme'
   'libgcc'
-  'libgpg-error'
-)
-makedepends=(
-  'patchelf'
 )
 provides=(
   "${_pkgname}"
@@ -41,17 +35,16 @@ source_i686=(
 source_x86_64=(
   "${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
 )
-sha256sums_aarch64=('e2a0c6d7ef28072da8a51cb9705fd0ee7b0714fe851708e724e09b000178b192')
-sha256sums_i686=('db01aa6decbf75a8b57ac7705671b045a3a896117eba9a3b3d80bdce226ba2e7')
-sha256sums_x86_64=('51a2d7fe3706a6434ae87e26fdf6aa881b5c60391a90ccef581ba561e6a810da')
-
-prepare() {
-  cd "${srcdir}/${_pkgname}-v${pkgver}-${CARCH}-unknown-linux-gnu"
-  patchelf --replace-needed libgpgme.so.11 libgpgme.so "${_pkgname}"
-}
+sha256sums_aarch64=('f5c68399397da2ef13020e5d419d5fb1c1983ab31bd7d01ddcdbb15cbe7328ab')
+sha256sums_i686=('168be693acf148c59df0e60631ae85a9c5cfe989d7eb83a4ce81bfa23baa9ca1')
+sha256sums_x86_64=('7896721033b30aeeccf9020bf594241087fb4472779fb75d8268f9866c950509')
 
 package() {
-  cd "${srcdir}/${_pkgname}-v${pkgver}-${CARCH}-unknown-linux-gnu"
+  local source_array="source_${CARCH}[0]"
+  local source_url="${!source_array}"
+  local source_artifact="${source_url##*/}"
+
+  cd "${srcdir}/${source_artifact%.tar*}"
   install -vDm755 "${_pkgname}"    "${pkgdir}/usr/bin/${_pkgname}"
   install -vDm644 "README.md"      "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -vDm644 "LICENSE-APACHE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-APACHE"
