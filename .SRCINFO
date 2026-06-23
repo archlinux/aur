@@ -1,0 +1,16 @@
+pkgbase = themis-bin
+	pkgdesc = A theme orchestrator CLI for Linux (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/TwoWells/Themis
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = gcc-libs
+	provides = themis
+	conflicts = themis
+	source = themis-0.1.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/TwoWells/Themis/releases/download/v0.1.0/themis-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/TwoWells/Themis/v0.1.0/LICENSE
+	sha256sums = 3ce410c9ecb6381454054ecdb130b985c1f2423194f1ba621fafa4be92bae194
+	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
+
+pkgname = themis-bin
