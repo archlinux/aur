@@ -2,7 +2,7 @@
 # Contributor: Jonas Nyrén <jonas.nyren*mindkiller.com>
 
 pkgname=sidplayfp
-pkgver=3.0.2
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Sidplay2 fork with improved filter emulation"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('libsidplayfp' 'alsa-lib' 'gcc-libs' 'glibc' 'mpg123')
 optdepends=('libpulse')
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('a6c632daefa53ddb3551946946ed341ec97fb594fcb5f5eca6aad19ffc2e34fa')
+sha256sums=('58a2d6df3be7b2d4215f1a75f165a7c698d9c0dd9f8ff83a2b85fad9d55fbc59')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}
