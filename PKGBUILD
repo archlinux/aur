@@ -2,16 +2,16 @@
 
 pkgname=cosma
 _PkgName=COSMA
-pkgver=2.7.0
+pkgver=2.8.4
 pkgrel=1
 pkgdesc="Distributed Communication-Optimal Matrix-Matrix Multiplication Algorithm"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://github.com/eth-cscs/COSMA"
 license=(BSD-3-Clause)
-depends=(cblas costa)
+depends=(blas-openblas costa)
 makedepends=(cmake ninja cxxopts gcc-fortran)
 source=($pkgname-$pkgver.tar.gz::"$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f4775d18379539d7bb5053bff8acb4e13d6ed31a9677f498d9099a7500488789')
+sha256sums=('b478cc239a99baf6fdf889d123308a6b01a4521330bdb3f4def457feb0f7dfa0')
 options=(!buildflags)
 
 build() {
