@@ -6,6 +6,14 @@ more aggressive optimizations.
 
 This project is forked from the original PKGBUILD from official archlinux's repo.
 
+ 1. ISSUES
+-----------
 URL: https://sr.ht/~devlavender/arch-aur-contribs/
 
-Please report bugs there.
+Please report bugs and improvement suggestions there.
+
+ 2. CONTRIBUTING
+-----------------
+
+Contributions should be sent using standard patch emailing format (i.e. via
+`git send-email`) to ~devlavender/arch-aur-contribs@lists.sr.ht
