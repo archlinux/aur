@@ -13,7 +13,7 @@ optdepends=('llama.cpp: for running local safety gatekeeper model')
 provides=("manboster")
 conflicts=("manboster-bin" "manboster-git")
 source=("$pkgname-$pkgver.tar.gz::$_giturl/archive/v$pkgver.tar.gz")
-sha256sums=('eba40d5ecf27ce2c0e8da5d0b157b697a0322bfe90e2144ff741efc59b0f39f5')
+sha256sums=('9ba16b7f58ee3ba93b8c413d286757641d248ab57a1f4889af74cce35dfeded4')
 
 build() {
 	cd "${_name}-$pkgver"

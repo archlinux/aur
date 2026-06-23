@@ -12,6 +12,6 @@ pkgbase = manboster
 	conflicts = manboster-bin
 	conflicts = manboster-git
 	source = manboster-0.2.3.tar.gz::https://github.com/manboster/manboster/archive/v0.2.3.tar.gz
-	sha256sums = eba40d5ecf27ce2c0e8da5d0b157b697a0322bfe90e2144ff741efc59b0f39f5
+	sha256sums = 9ba16b7f58ee3ba93b8c413d286757641d248ab57a1f4889af74cce35dfeded4
 
 pkgname = manboster
