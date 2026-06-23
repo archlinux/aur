@@ -6,12 +6,12 @@
 
 pkgname=powershell
 pkgver=7.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url='https://microsoft.com/PowerShell'
 license=('MIT')
-options=('!strip')
+options=('!debug')
 depends=(
   dotnet-runtime-10.0
 )
