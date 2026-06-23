@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgbase=azahar
 pkgname=({,libretro-}"$_pkgbase-git")
-pkgver=2125.0.1.r11.g3066887
+pkgver=2126.0.alpha2.r3.gc9d2593
 pkgrel=1
 arch=('x86_64')
 url="https://azahar-emu.org/"
@@ -90,6 +90,8 @@ prepare() {
 	sed -i '/check_submodules_present()/d' ../../CMakeLists.txt
 	# use system spirv-tools
 	sed -i '/spirv-tools/d' ../../externals/CMakeLists.txt
+	# fix build
+	sed -i '/^namespace/i #include <cstring>' ../../src/audio_core/{cubeb_input,cubeb_sink}.cpp
 }
 
 build() {
@@ -107,13 +109,12 @@ build() {
 		-D DISABLE_SYSTEM_SOUNDTOUCH=ON
 		-D DISABLE_SYSTEM_XBYAK=ON
 		-D DISABLE_SYSTEM_ZSTD=ON
+		-D ENABLE_DISCORD_RPC=ON
 		-D ENABLE_LTO=OFF
-		-D ENABLE_QT_TRANSLATION=ON
 		-D ENABLE_ROOM_STANDALONE=OFF
 		-D ENABLE_TESTS="$CHECKFUNC"
-		-D USE_DISCORD_PRESENCE=ON
 		-D USE_SYSTEM_LIBS=ON
-		-Wno-dev
+		-W no-dev
 	)
 	local flags
 	IFS=' ' read -r -a flags <<< "$CXXFLAGS"
@@ -126,7 +127,6 @@ build() {
 	options+=(
 		-D ENABLE_LIBRETRO=ON
 		-D ENABLE_QT_TRANSLATION=OFF
-		-D ENABLE_TESTS=OFF
 	)
 	cmake "${options[@]}" -B build-libretro
 	cmake --build build-libretro
@@ -135,6 +135,7 @@ build() {
 check() {
 	cd $_pkgbase
 	ctest --output-on-failure --test-dir build
+	ctest --output-on-failure --test-dir build-libretro
 }
 
 package_azahar-git() {
