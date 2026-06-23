@@ -1,6 +1,6 @@
 pkgbase = bb-imager-cli
 	pkgdesc = Tool for creating and flashing BeagleBoard OS images
-	pkgver = 1.0.11
+	pkgver = 1.0.12
 	pkgrel = 1
 	url = https://www.beagleboard.org/bb-imager
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = bb-imager-cli
 	depends = libusb
 	depends = glibc
 	depends = libgcc
-	source = bb-imager-cli-1.0.11::https://github.com/beagleboard/bb-imager-rs/archive/refs/tags/1.0.11.tar.gz
-	source = bb-imager-cli-vendor-1.0.11::https://github.com/beagleboard/bb-imager-rs/releases/download/1.0.11/cargo-vendor.tar.zst
-	sha256sums = e2c6836fcbe92b9edea2ab51d4f2827906a9209d166502fe00871e57ce86e275
-	sha256sums = 94ef4a01c4dce3ac9b81a14ba7eb5c6ff090edc3524c1b67a64d3dd9232f4efd
+	source = bb-imager-cli-1.0.12::https://github.com/beagleboard/bb-imager-rs/archive/refs/tags/1.0.12.tar.gz
+	source = bb-imager-cli-vendor-1.0.12::https://github.com/beagleboard/bb-imager-rs/releases/download/1.0.12/cargo-vendor.tar.zst
+	sha256sums = 914bfa97a5c3e03f3c78e6e4ea43ca9ace736fac094c1d636b6bc7589a830358
+	sha256sums = 355a72d2578fae9b3e49ee811e99024b11baa9813903ef3163beadf0b318dba8
 
 pkgname = bb-imager-cli
