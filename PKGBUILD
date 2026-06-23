@@ -9,7 +9,7 @@
 
 pkgname=asterisk-lts-22
 _pkg=${pkgname/-lts-22/}
-pkgver=22.8.2
+pkgver=22.10.0
 pkgrel=1
 pkgdesc='A complete PBX solution - LTS Release 22'
 arch=(x86_64 i686 aarch64 armv7h)
@@ -152,7 +152,7 @@ source=("https://downloads.asterisk.org/pub/telephony/${_pkg}/releases/$_archive
         "${_pkg}.logrotated"
         "${_pkg}.tmpfiles"
         "fix-upnp.patch")
-sha256sums=('8dd373ce0771a9ed40bb54a72a889ccdd14c0cee458ed68da9ce913a668e4b22'
+sha256sums=('27e49d483efb0739faf7d0a17a9e55f88439347ed9668f24eea909440473c32e'
             '38a53911647fb2308482179cba605ebf12345df37eed23eb4ea67bf0bf041486'
             'b97dc10a262621c95e4b75e024834712efd58561267b59b9171c959ecd9f7164'
             '1b6b489d4f71015bfc56ce739d92df7e9abdb349aed6f5a47dd9c18d84546c1b'
