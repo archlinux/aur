@@ -4,14 +4,14 @@ _name=manboster
 pkgver=0.2.3
 pkgrel=1
 pkgdesc="Manboster: Your personal AI agent manbo lobster!"
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 url="https://manboster.dev/"
 _giturl="https://github.com/manboster/manboster"
 license=('Apache-2.0')
 makedepends=("go")
 optdepends=('llama.cpp: for running local safety gatekeeper model')
 provides=("manboster")
-conflicts=("manboster")
+conflicts=("manboster-bin" "manboster-git")
 source=("$pkgname-$pkgver.tar.gz::$_giturl/archive/v$pkgver.tar.gz")
 sha256sums=('eba40d5ecf27ce2c0e8da5d0b157b697a0322bfe90e2144ff741efc59b0f39f5')
 
