@@ -1,23 +1,25 @@
 # Maintainer: Lili1228 <aur at lili dot lgbt>
 pkgname=86box-git
-pkgver=6.0.r0.g4fef696a4
+pkgver=6.0.r545.gd5432d2a2
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('x86_64' 'aarch64') # use 86box-5.1 for pentium4 and armv7h
 url='https://86box.net/'
 license=('GPL-2.0-or-later' 'CC-BY-4.0')
 depends=('fluidsynth' 'hicolor-icon-theme' 'libserialport' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2' # explicit
-'freetype2' 'gcc-libs' 'glib2' 'glibc' 'libevdev' 'libglvnd' 'libpng' 'libsndfile' 'libx11' 'libxcb' 'libxext' 'libxi' 'libxkbcommon-x11' 'libxkbcommon' 'wayland' 'zlib') # implicit 
+'freetype2' 'glib2' 'glibc' 'libatomic' 'libevdev' 'libgcc' 'libglvnd' 'libpng' 'libsndfile' 'libstdc++' 'libx11' 'libxcb' 'libxext' 'libxi' 'libxkbcommon-x11' 'libxkbcommon' 'wayland' 'zlib') # implicit 
 makedepends=('git' 'cmake>=3.21' 'extra-cmake-modules' 'ninja' 'qt6-tools' 'vde2' 'vulkan-headers')
 optdepends=(
     '86box-roms-git: ROM files'
     'discord-game-sdk: Discord Rich Presence'
     'ghostscript: Printing with Generic PostScript Printer'
     'libpcap: Networking not limited to TCP/IP'
+	'librashader>=0.11.2: Vulkan slang shaders'
+	'libretro-shaders-slang: Shaders for OpenGL and Vulkan'
 )
 provides=('86box')
 conflicts=('86box')
-options=('!buildflags')
+options=('!buildflags' '!zipman')
 source=(
 	"${pkgname}::git+https://github.com/86Box/86Box.git"
 	"${pkgname}-assets::git+https://github.com/86Box/assets.git"
