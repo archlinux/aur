@@ -13,5 +13,11 @@ Restart=on-failure
 RestartSec=5
 WorkingDirectory=%h
 
+# Security hardening
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=%h/.9router
+NoNewPrivileges=true
+
 [Install]
 WantedBy=default.target
