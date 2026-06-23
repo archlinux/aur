@@ -1,20 +1,22 @@
 pkgbase = snippai-bin
 	pkgdesc = AI-Powered Snipping Tool.(Use system-wide electron)
-	pkgver = 0.2.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://snippai.de/
+	arch = aarch64
 	arch = x86_64
 	license = AGPL-3.0-only
-	makedepends = gendesk
 	depends = electron34
-	provides = snippai=0.2.1
+	provides = snippai=0.3.2
 	conflicts = snippai
 	options = !emptydirs
-	source = snippai-0.2.1.zip::https://github.com/xyTom/snippai/releases/download/v0.2.1/Snippai-linux-x64.zip
-	source = snippai-0.2.1.svg::https://raw.githubusercontent.com/xyTom/snippai/v0.2.1/docs/public/logo.svg
+	source = snippai-0.3.2.svg::https://raw.githubusercontent.com/xyTom/snippai/v0.3.2/docs/public/logo.svg
 	source = snippai.sh
-	sha256sums = 21fd2d0bc7977c040c9b051804ed5ed9165c680e3efc59dd3e434720d61ce51f
 	sha256sums = ec0c42565d1a536da8e70b67539ec3405b7d78e76fa08f425aba222129c91904
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	source_aarch64 = snippai-0.3.2-aarch64.deb::https://github.com/xyTom/snippai/releases/download/v0.3.2/Snippai-linux-arm64-snippai_0.3.2_arm64.deb
+	sha256sums_aarch64 = 298aee32b2291b21297cc21e576fd516029d24714c967a601c42e4342144fae2
+	source_x86_64 = snippai-0.3.2-x86_64.deb::https://github.com/xyTom/snippai/releases/download/v0.3.2/Snippai-linux-x64-snippai_0.3.2_amd64.deb
+	sha256sums_x86_64 = cf2c7acd69ba2c538b73ee774f5065cad8767fc5e59181a18cff65478ce4684c
 
 pkgname = snippai-bin
