@@ -1,0 +1,23 @@
+pkgbase = sigye-bin
+	pkgdesc = A beautiful terminal clock with ASCII art fonts
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/am2rican5/sigye
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = sigye
+	conflicts = sigye
+	options = !strip
+	source = README-0.5.0.md::https://raw.githubusercontent.com/am2rican5/sigye/v0.5.0/README.md
+	source = LICENSE-0.5.0::https://raw.githubusercontent.com/am2rican5/sigye/v0.5.0/LICENSE
+	sha256sums = a1c8edd4875a9f127b7123cd916c6d5657d4c900c5c9b95e95771c9217deee3b
+	sha256sums = 679f179395bbc24603397c0676553b4ffc57aa64eea701d565a3b8421fc13a1b
+	source_x86_64 = sigye-x86_64-0.5.0.tgz::https://github.com/am2rican5/sigye/releases/download/v0.5.0/sigye-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = c7f0944825352a5c8606a43f62fcf9b6bc13114da20330e6bcbb452997cb3700
+	source_aarch64 = sigye-aarch64-0.5.0.tgz::https://github.com/am2rican5/sigye/releases/download/v0.5.0/sigye-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f369a70d57c7e50221d4e335cf68b79845a93199a9a4ad5b182743cf7fd08afa
+
+pkgname = sigye-bin

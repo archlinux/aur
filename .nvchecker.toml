@@ -1,0 +1,5 @@
+[sigye-bin]
+source = "github"
+github = "am2rican5/sigye"
+use_latest_release = true
+prefix = "v"
