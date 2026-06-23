@@ -2,7 +2,7 @@
 _pkgname=metashape-pro
 pkgname=agisoft-${_pkgname}
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Photogrammetric processing of digital images and 3D spatial data generation software. Professional edition"
 arch=('x86_64')
 url="https://www.agisoft.com/"
@@ -28,7 +28,7 @@ source=("https://download.agisoft.com/${_pkgname}_${pkgver//./_}_amd64.tar.gz"
         "agisoft-psx-mime-icon-encoded.txt"
         "agisoft-psz-mime-icon-encoded.txt"
         "agisoft-3dv-mime-icon-encoded.txt")
-sha256sums=('ec2299220abc109bcfe862f78b09b9e00dd7f87625538205d2dd4ff18ece62c3'
+sha256sums=('2c6a678b4aaa3b9051252c3b1b270ee879ae5acf5bf50a6e14539dd7e41c1de0'
             '959eb21ce482a5b1f84a0e04ec6f0d53aaf679c84bce9f813b350afe5dd201ba'
             'ef484e2a60966a722d7989abdbb85464054c47dd56b2ce182b2c0c5602476599'
             'a5e29a00393d55a9b589e1fb30acb57a96ef26756507d2793e7f3494d5778ae3'
