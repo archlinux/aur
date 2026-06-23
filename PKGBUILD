@@ -131,10 +131,12 @@ build() {
     --enable-bootstrap \
     "${_confflags[@]:?_confflags unset}"
 
+  echo "MAKEFLAGS=${MAKEFLAGS}"
+  sleep 1
   # see https://bugs.archlinux.org/task/71777 for rationale re *FLAGS handling
   make -O STAGE1_CFLAGS="-O2" \
-        BOOT_CFLAGS="$CFLAGS -march=native -mtune=native" \
-        BOOT_LDFLAGS="$LDFLAGS" \
+        BOOT_CFLAGS="$CFLAGS -O3 -march=native -mtune=native -fno-semantic-interposition" \
+        BOOT_LDFLAGS="$LDFLAGS -Wl,-O1" \
         LDFLAGS_FOR_TARGET="$LDFLAGS" \
         profiledbootstrap
 
