@@ -1,0 +1,15 @@
+pkgbase = python-dlclibrary
+	pkgdesc = Lightweight library supporting universal functions for the DeepLabCut ecosystem
+	pkgver = 0.0.12
+	pkgrel = 1
+	url = https://github.com/DeepLabCut/DLClib
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/d/dlclibrary/dlclibrary-0.0.12.tar.gz
+	sha256sums = 9c1dcb98edcba03f33c31e0c0f9d18ce1c349bef65f8d3cd5bde49d5e76171db
+
+pkgname = python-dlclibrary
