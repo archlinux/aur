@@ -2,7 +2,7 @@
 
 pkgname=mistral-vibe
 pkgver=2.17.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
 url='https://github.com/mistralai/mistral-vibe'
@@ -81,7 +81,7 @@ check() {
     )
 
     # Run test suite in parallel, skip deselected and any e2e tests.
-    uv run pytest -n auto "${deselect[@]}" --ignore=tests/e2e
+    uv run pytest -n4 "${deselect[@]}" --ignore=tests/e2e
     
     # Run e2e tests serially (these fail too often in parallel).
     uv run pytest -n0 "${deselect[@]}" tests/e2e
