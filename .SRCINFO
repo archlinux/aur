@@ -1,12 +1,12 @@
 pkgbase = abra
 	pkgdesc = The Co-op Cloud command-line interface.
-	pkgver = 0.11.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://git.coopcloud.tech/toolshed/abra
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = go
-	source = abra-0.11.0.tar.gz::https://git.coopcloud.tech/toolshed/abra/archive/0.11.0-beta.tar.gz
-	sha256sums = 9a0c11160daf8f485770d1a2f3b34820b059a54c3a2e1e27fce209e364b7d8ec
+	source = abra-0.13.0.tar.gz::https://git.coopcloud.tech/toolshed/abra/archive/0.13.0-beta.tar.gz
+	sha256sums = 984a278ccac448303d33f6d14212a298bd180dca3da58ee98f4fa95aade9fb34
 
 pkgname = abra

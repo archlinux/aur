@@ -1,7 +1,7 @@
 # Maintainer: Wiktor W. <wykwit@disroot.org>
 
 pkgname=abra
-pkgver=0.11.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='The Co-op Cloud command-line interface.'
 arch=('any')
@@ -9,7 +9,7 @@ makedepends=('go')
 url='https://git.coopcloud.tech/toolshed/abra'
 license=('GPL-3.0-or-later')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver-beta.tar.gz")
-sha256sums=('9a0c11160daf8f485770d1a2f3b34820b059a54c3a2e1e27fce209e364b7d8ec')
+sha256sums=('984a278ccac448303d33f6d14212a298bd180dca3da58ee98f4fa95aade9fb34')
 
 prepare() {
   cd "$pkgname"
