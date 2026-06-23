@@ -1,21 +1,22 @@
 # Maintainer: Anton Kudelin <kudelin at proton dot me>
 
 pkgname=python-slack-sdk
-pkgver=3.34.0
+pkgver=3.42.0
 pkgrel=1
 pkgdesc="Slack Python SDK"
 arch=(any)
 url="https://slack.dev/$pkgname"
 license=(MIT)
-depends=(python-aiohttp python-botocore python-sqlalchemy python-websockets
+depends=(python python-aiohttp python-botocore python-sqlalchemy python-websockets
          python-websocket-client)
 optdepends=(python-aiodns)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(python-flask python-flask-sockets python-moto python-pytest)
+checkdepends=(python-pytest python-pytest-asyncio python-moto python-boto3
+              python-psutil python-greenlet python-aiosqlite)
 replaces=(python-slackclient)
 conflicts=(python-slackclient)
 source=($pkgname-$pkgver.tar.gz::https://github.com/slackapi/$pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('2315d19889672f15581545ce00e60fe912bc6b55263bcdff265246d30380e7b2')
+sha256sums=('61f4ee9df1b295e700256b0e4c27eb64831cd623cbbb62c8c3c560a75754d89c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
