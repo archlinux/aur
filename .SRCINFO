@@ -1,6 +1,6 @@
 pkgbase = cursor-early-access-bin
 	pkgdesc = AI-first coding environment (early access channel, bundled Electron)
-	pkgver = 3.8.22
+	pkgver = 3.8.23
 	pkgrel = 1
 	url = https://www.cursor.com
 	arch = x86_64
@@ -22,13 +22,13 @@ pkgbase = cursor-early-access-bin
 	conflicts = cursor-bin
 	conflicts = cursor-nightly-bin
 	conflicts = cursor-ide-bin
-	noextract = cursor_3.8.22_amd64.deb
+	noextract = cursor_3.8.23_amd64.deb
 	options = !strip
 	options = !debug
-	source = cursor_3.8.22_amd64.deb::https://downloads.cursor.com/production/46fb7aafe279d7c72346febe68c2e004b7d1de6e/linux/x64/deb/amd64/deb/cursor_3.8.22_amd64.deb
+	source = cursor_3.8.23_amd64.deb::https://downloads.cursor.com/production/7cf19b7482706625cdb70db3211b7dd035b7aa35/linux/x64/deb/amd64/deb/cursor_3.8.23_amd64.deb
 	source = cursor.desktop
 	source = cursor-launcher.sh
-	sha512sums = 3c935893be8ee0c90663f1371c39eb4e7fa381bb8c58662679cb4638d39ab701ddfbe010b13883f6868ded83932fb7f8dc86107fed4325a35a1d9110f73da02b
+	sha512sums = f89cf6dbcf37b66e486afa8961ca531e582bf601194b2b9650d3771534999ad6741437253fcffe8177a23504480316b855ef95d68999d6b22922a95805a012e4
 	sha512sums = 037aa5d878eddb06fc1d5be788e7bc64545773decacb34228053be746dfc33237371ad49cc331dac8e3437d7d885a9bc1564d0f114fc22e308827b33d0c55ad8
 	sha512sums = 9defecd35fd033a484642732605264cc00faf5791d852234d9705bf9ac005c76173780cd496208e4150685ac9ddbb73c8eb87cd5141526dd4521d455342e8233
 
