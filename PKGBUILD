@@ -1,6 +1,8 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Gilles Gagniard <gilles@gagniard.org>
 
-pkgname=plasma-login-manager
+pkgname=plasma-login-manager-idle
+_pkgname=plasma-login-manager
 pkgver=6.7.3
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
@@ -35,16 +37,24 @@ depends=(glibc
 makedepends=(extra-cmake-modules
              qt6-tools)
 groups=(plasma)
-source=(https://download.kde.org/stable/plasma/$_dirver/$pkgname-$pkgver.tar.xz{,.sig})
+provides=(plasma-login-manager)
+conflicts=(plasma-login-manager)
+source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
+        https://invent.kde.org/plasma/plasma-login-manager/-/merge_requests/123.patch)
 sha256sums=('199cc04b1efcfcf4d4cefd027861902013d0c342bbc754d0231859fa17567fd9'
-            'SKIP')
+            'SKIP'
+            '5d35d506ee823a55648c1a747901ec50b79d3b77075cbcbd30444b1fbd8e0f5c')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
+prepare() {
+  patch -d $_pkgname-$pkgver -Np1 -i "$srcdir/123.patch"
+}
+
 build() {
-  cmake -B build -S $pkgname-$pkgver \
+  cmake -B build -S $_pkgname-$pkgver \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DDBUS_CONFIG_FILENAME=plasma_org.freedesktop.DisplayManager.conf
   cmake --build build
