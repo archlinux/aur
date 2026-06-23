@@ -1,0 +1,13 @@
+post_install() {
+    echo "==> sfd-tool udev rules installed"
+    echo "==> Please run:"
+    echo "    sudo udevadm control --reload-rules"
+    echo "    sudo udevadm trigger"
+}
+
+post_upgrade() {
+    echo "==> sfd-tool updated"
+    echo "==> Please run:"
+    echo "    sudo udevadm control --reload-rules"
+    echo "    sudo udevadm trigger"
+}

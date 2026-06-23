@@ -1,7 +1,7 @@
 # Maintainer: Chen Ark <ark2241@outlook.com>
 pkgname=sfd-tool
-pkgver=1.8.9.1
-pkgrel=1891
+pkgver=1.8.9.2
+pkgrel=1892
 pkgdesc="SFD Tool is a cross‑platform GUI and CLI tool for working with Spreadtrum/UNISOC devices. It focuses on safe partition backup/restore, PAC flashing, and advanced maintenance operations, with first‑class support for modern 64‑bit platforms."
 arch=('x86_64')
 url="https://github.com/C-Hidery/sfd_tool"
@@ -12,7 +12,7 @@ depends=(
 	'gtk3'	
 	'libusb'
 )
-
+install=sfd-tool.install
 makedepends=(
 	'cmake'
 	'gettext'
@@ -20,21 +20,24 @@ makedepends=(
 )
 
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+	"99-sprd.rules"
 )
 
-sha256sums=('d90278651cbc9c63a081c1d9f149d72c55d8f7baf4cb94c53d9b754fe4433e03')
+sha256sums=('c7bfe9681530312b8e99f7c88c0731e4d217a04bd05f9a824ce0740d560cc15d')
 
 _srcname=sfd_tool
 
 build() {
-    cmake -B build -S "$srcdir/$_srcname-$pkgver" \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr
+	cmake -B build -S "$srcdir/$_srcname-$pkgver" \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr
 
-    cmake --build build
+	cmake --build build
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dm644 99-sprd.rules \
+		"$pkgdir/usr/lib/udev/rules.d/99-sprd.rules"
 }
