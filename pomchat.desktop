@@ -10,4 +10,3 @@ Terminal=false
 StartupNotify=true
 Encoding=UTF-8
 Categories=AudioVideo
-MimeType=application/json
