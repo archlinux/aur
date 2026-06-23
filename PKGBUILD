@@ -12,7 +12,7 @@ epoch=1
 pkgdesc='Open Source H265/HEVC video encoder. 32bit libraries.'
 arch=('x86_64')
 url='https://bitbucket.org/multicoreware/x265_git'
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=(
   'x265'
   'lib32-glibc'
