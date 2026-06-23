@@ -1,0 +1,16 @@
+pkgbase = corral-bin
+	pkgdesc = Automatically clone and organise GitHub repositories by visibility and language.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/sebastienrousseau/corral
+	license = GPL-3.0
+	conflicts = corral
+	provides = corral
+	arch = aarch64
+	source_aarch64 = https://github.com/sebastienrousseau/corral/releases/download/v0.0.2/corral_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 31ef09839778d6c97c7c789052ac4ef579269732935998610f657da48f4f7c33
+	arch = x86_64
+	source_x86_64 = https://github.com/sebastienrousseau/corral/releases/download/v0.0.2/corral_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = a4d1d6d76c502ebed31ca53bdb2ca1bef2f918df896ea2fee7ae41c1bf81e1ff
+	
+pkgname = corral-bin
