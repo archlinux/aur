@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 561c1ae..a9d9202 100644
+index 25d3962..e2593c3 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -33,6 +33,11 @@ endif()
@@ -24,7 +24,7 @@ index 561c1ae..a9d9202 100644
  
  add_subdirectory(src)
 diff --git a/deps.json b/deps.json
-index b8ff598..96aef3f 100644
+index 677f1b5..d823f80 100644
 --- a/deps.json
 +++ b/deps.json
 @@ -1,27 +1,4 @@
@@ -85,7 +85,7 @@ index b8ff598..96aef3f 100644
    {
      "dest": "build/_flatpak_deps/rstd-src",
      "disable-shallow-clone": true,
-@@ -76,28 +30,5 @@
+@@ -76,41 +30,5 @@
        "name": "wavsen",
        "exclude_from_all": true
      }
@@ -105,8 +105,21 @@ index b8ff598..96aef3f 100644
 -  {
 -    "dest": "build/_flatpak_deps/cef-src",
 -    "type": "archive",
--    "url": "https://cef-builds.spotifycdn.com/cef_binary_147.0.10%2Bgd58e84d%2Bchromium-147.0.7727.118_linux64_minimal.tar.bz2",
--    "sha256": "087ccfa1f0438429e20d91293b15cae08ee9e7b4988cc018d47568dd59dad1ef",
+-    "only-arches": ["x86_64"],
+-    "url": "https://cef-builds.spotifycdn.com/cef_binary_149.0.4%2Bg2f1bfd8%2Bchromium-149.0.7827.156_linux64_minimal.tar.bz2",
+-    "sha256": "6d43607675e47ed6bfa40d1cfce136d04e7720529f8f1c4435d4ba1dcd1839b2",
+-    "x-cmake": {
+-      "name": "cef",
+-      "exclude_from_all": true,
+-      "source_subdir": "cmake-noop"
+-    }
+-  },
+-  {
+-    "dest": "build/_flatpak_deps/cef-src",
+-    "type": "archive",
+-    "only-arches": ["aarch64"],
+-    "url": "https://cef-builds.spotifycdn.com/cef_binary_149.0.4%2Bg2f1bfd8%2Bchromium-149.0.7827.156_linuxarm64_minimal.tar.bz2",
+-    "sha256": "8909a79689eec7b23ed80084b69766952d44e00f9a345832951b32903f8a80a0",
 -    "x-cmake": {
 -      "name": "cef",
 -      "exclude_from_all": true,
@@ -126,11 +139,24 @@ index 0c922de..04ad44c 100644
  pkg_check_modules(LZ4 REQUIRED liblz4)
  pkg_check_modules(FONTCONFIG REQUIRED IMPORTED_TARGET fontconfig)
  
+diff --git a/src/Core/CMakeLists.txt b/src/Core/CMakeLists.txt
+index c617f88..9afc2dc 100644
+--- a/src/Core/CMakeLists.txt
++++ b/src/Core/CMakeLists.txt
+@@ -15,7 +15,7 @@ target_sources(owe-core
+          nlohmann_json.cppm
+          Json.cppm)
+ target_link_libraries(owe-core
+-  PUBLIC rstd::rstd rstd.cppstd rstd.log Eigen3::Eigen nlohmann_json)
++  PUBLIC rstd::rstd rstd.cppstd rstd.log Eigen3::Eigen nlohmann_json::nlohmann_json)
+ target_compile_features(owe-core PUBLIC cxx_std_20)
+ target_compile_options(owe-core PRIVATE -Wno-missing-field-initializers)
+ set_property(TARGET owe-core PROPERTY POSITION_INDEPENDENT_CODE ON)
 diff --git a/src/Scene/CMakeLists.txt b/src/Scene/CMakeLists.txt
-index 9f35acb..94b4b7b 100644
+index 0289c73..0485f91 100644
 --- a/src/Scene/CMakeLists.txt
 +++ b/src/Scene/CMakeLists.txt
-@@ -54,7 +54,7 @@ target_sources(owe-base
+@@ -51,7 +51,7 @@ target_sources(owe-base
           Lighting/Lighting.cppm
           Scene/Scene.cppm)
  target_link_libraries(owe-base
@@ -139,7 +165,7 @@ index 9f35acb..94b4b7b 100644
    PRIVATE ${LZ4_LIBRARIES}
            ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
  target_include_directories(owe-base
-@@ -73,7 +73,7 @@ target_sources(owe-script
+@@ -70,7 +70,7 @@ target_sources(owe-script
    PUBLIC FILE_SET cxx_modules TYPE CXX_MODULES FILES Script/Script.cppm)
  target_link_libraries(owe-script
    PUBLIC  owe-base
@@ -148,7 +174,7 @@ index 9f35acb..94b4b7b 100644
  target_include_directories(owe-script
    PUBLIC  .. . Utils/include
    PRIVATE Utils Utils/include/Utils Script)
-@@ -127,7 +127,7 @@ target_sources(owe-parse
+@@ -129,7 +129,7 @@ target_sources(owe-parse
           Text/Text.cppm)
  target_link_libraries(owe-parse
    PUBLIC owe-base owe-shader-compile owe-script
@@ -158,7 +184,7 @@ index 9f35acb..94b4b7b 100644
    PUBLIC  .. . Utils/include
    PRIVATE Utils Utils/include/Utils Scene Particle)
 diff --git a/src/Vulkan/CMakeLists.txt b/src/Vulkan/CMakeLists.txt
-index 7731bb3..3ec665e 100644
+index 2d3ef4e..21143f3 100644
 --- a/src/Vulkan/CMakeLists.txt
 +++ b/src/Vulkan/CMakeLists.txt
 @@ -7,7 +7,7 @@ target_sources(owe-shader-compile
@@ -184,40 +210,62 @@ index 17a7069..ab1f9e6 100644
  #include "Utils/Sha.hpp"
  module wescene.shader_compile;
 diff --git a/src/Web/CMakeLists.txt b/src/Web/CMakeLists.txt
-index d429e15..be8029e 100644
+index 6dcb9bf..80f9290 100644
 --- a/src/Web/CMakeLists.txt
 +++ b/src/Web/CMakeLists.txt
-@@ -10,7 +10,7 @@ add_library(owe-web-host STATIC
-     BrowserHost.cpp)
- target_include_directories(owe-web-host PUBLIC .)
+@@ -9,7 +9,7 @@ target_sources(owe-web-api
+         Manifest.cppm
+         BrowserHost.cppm)
+ target_include_directories(owe-web-api PUBLIC .)
+-target_link_libraries(owe-web-api PUBLIC nlohmann_json rstd.cppstd)
++target_link_libraries(owe-web-api PUBLIC nlohmann_json::nlohmann_json rstd.cppstd)
+ target_compile_features(owe-web-api PUBLIC cxx_std_20)
+ set_target_properties(owe-web-api PROPERTIES
+     POSITION_INDEPENDENT_CODE ON
+@@ -33,11 +33,10 @@ target_include_directories(owe-web-host PUBLIC .)
  target_link_libraries(owe-web-host
--    PUBLIC libcef_lib libcef_dll_wrapper nlohmann_json)
-+    PUBLIC ${CEF_LIBRARIES} nlohmann_json::nlohmann_json)
+     PUBLIC
+         owe-web-api
+-        libcef_lib
+-        libcef_dll_wrapper
+-        nlohmann_json)
++        ${CEF_LIBRARIES}
++        nlohmann_json::nlohmann_json)
  target_compile_features(owe-web-host PUBLIC cxx_std_20)
--weweb_apply_cef_target_settings(owe-web-host)
+-weweb_apply_cef_module_target_settings(owe-web-host)
 +SET_LIBRARY_TARGET_PROPERTIES(owe-web-host)
- set_property(TARGET owe-web-host PROPERTY POSITION_INDEPENDENT_CODE ON)
+ set_target_properties(owe-web-host PROPERTIES
+     POSITION_INDEPENDENT_CODE ON
+     CXX_SCAN_FOR_MODULES ON)
 diff --git a/third_party/CMakeLists.txt b/third_party/CMakeLists.txt
-index aa15331..8555f57 100644
+index aa15331..08e0699 100644
 --- a/third_party/CMakeLists.txt
 +++ b/third_party/CMakeLists.txt
-@@ -48,11 +48,6 @@ set(BUILD_TESTING           OFF CACHE INTERNAL "")
+@@ -47,19 +47,3 @@ set(GLSLANG_TESTS           OFF CACHE INTERNAL "")
+ set(BUILD_TESTING           OFF CACHE INTERNAL "")
  
  fetchdeps(${CMAKE_SOURCE_DIR}/deps.json)
- 
+-
 -# Post-fetch setup for eigen (header-only, source_subdir=cmake-noop).
 -add_library(eigen INTERFACE)
 -add_library(Eigen3::Eigen ALIAS eigen)
 -target_include_directories(eigen SYSTEM INTERFACE ${eigen_SOURCE_DIR})
 -
- # Audio output is handled by wavsen::audio (pulse/pipewire-backed,
- # selectable via WAVSEN_AUDIO_BACKEND in the wavsen subtree).
- 
+-# Audio output is handled by wavsen::audio (pulse/pipewire-backed,
+-# selectable via WAVSEN_AUDIO_BACKEND in the wavsen subtree).
+-
+-# Promote CEF source dir to global scope so weweb/cmake/cef.cmake can
+-# reach it via add_subdirectory from the project root. fetchdeps()
+-# populates `cef_SOURCE_DIR` here in third_party/, but only this scope
+-# sees it without an explicit cache.
+-if(DEFINED cef_SOURCE_DIR)
+-    set(cef_SOURCE_DIR "${cef_SOURCE_DIR}" CACHE INTERNAL "" FORCE)
+-endif()
 diff --git a/viewer/CMakeLists.txt b/viewer/CMakeLists.txt
-index 1777116..7e807cb 100644
+index e1d711a..9e220d5 100644
 --- a/viewer/CMakeLists.txt
 +++ b/viewer/CMakeLists.txt
-@@ -76,11 +76,10 @@ if(BUILD_WEWEB)
+@@ -77,11 +77,10 @@ if(BUILD_WEWEB)
          PkgConfig::GLFW
          Vulkan::Vulkan
          argparse::argparse
@@ -233,10 +281,10 @@ index 1777116..7e807cb 100644
 -    weweb_stage_cef_runtime(WebViewer)
  endif()
 diff --git a/viewer/WebViewer.cpp b/viewer/WebViewer.cpp
-index 0a778c1..853790a 100644
+index 772ce1b..1edcf31 100644
 --- a/viewer/WebViewer.cpp
 +++ b/viewer/WebViewer.cpp
-@@ -169,8 +169,8 @@ int main(int argc, char** argv) {
+@@ -167,8 +167,8 @@ int main(int argc, char** argv) {
      auto exe_dir = viewer::ExecutableDir(argv[0]);
  
      weweb::BrowserHost::InitOptions opts;
@@ -248,7 +296,7 @@ index 0a778c1..853790a 100644
          opts.enable_remote_debugging = true;
          opts.remote_debugging_port   = port;
 diff --git a/waywallen/CMakeLists.txt b/waywallen/CMakeLists.txt
-index e413171..a23a978 100644
+index ec03027..6a2ff50 100644
 --- a/waywallen/CMakeLists.txt
 +++ b/waywallen/CMakeLists.txt
 @@ -12,11 +12,11 @@ if(OWE_WAYWALLEN_PLUGIN_BUNDLE_LAYOUT)
@@ -266,15 +314,15 @@ index e413171..a23a978 100644
  set(_OWE_STRIP_FILES ${OWE_WESCENE_BIN})
  
  add_library(waywallen-bridge-producer STATIC)
-@@ -109,6 +109,7 @@ if(BUILD_WEWEB)
-     target_compile_features(waywallen-weweb-renderer PRIVATE cxx_std_20)
-     set_target_properties(waywallen-weweb-renderer PROPERTIES
-         CXX_SCAN_FOR_MODULES ON
-+        INSTALL_RPATH "\$ORIGIN:\$ORIGIN/../lib:\$ORIGIN/../lib/cef"
-     )
-     target_include_directories(waywallen-weweb-renderer
-         PRIVATE
-@@ -136,44 +137,11 @@ if(BUILD_WEWEB)
+@@ -50,6 +50,7 @@ target_sources(waywallen-wescene-renderer PRIVATE BridgeExSwapchain.cpp)
+ target_compile_features(waywallen-wescene-renderer PRIVATE cxx_std_20)
+ set_target_properties(waywallen-wescene-renderer PROPERTIES
+     CXX_SCAN_FOR_MODULES ON
++    INSTALL_RPATH "\$ORIGIN:\$ORIGIN/../lib:\$ORIGIN/../lib/cef"
+ )
+ 
+ target_include_directories(waywallen-wescene-renderer
+@@ -132,44 +133,11 @@ if(BUILD_WEWEB)
      target_compile_options(waywallen-weweb-renderer PRIVATE
          -Wall -Wextra -Wpedantic
      )
@@ -319,7 +367,7 @@ index e413171..a23a978 100644
  endif()
  
  # --- Generate the plugin manifest -----------------------------------------
-@@ -210,21 +178,6 @@ set(_OWE_FILES
+@@ -215,21 +183,6 @@ set(_OWE_FILES
  )
  if(BUILD_WEWEB)
      list(APPEND _OWE_FILES ${OWE_WEWEB_BIN})
@@ -342,10 +390,10 @@ index e413171..a23a978 100644
  list(SORT _OWE_FILES)
  string(JOIN "\n" _owe_files_txt ${_OWE_FILES})
 diff --git a/waywallen/web_main.cpp b/waywallen/web_main.cpp
-index 1c8eab8..7837084 100644
+index 8eec104..155be46 100644
 --- a/waywallen/web_main.cpp
 +++ b/waywallen/web_main.cpp
-@@ -462,8 +462,8 @@ int main(int argc, char** argv) {
+@@ -543,8 +543,8 @@ int main(int argc, char** argv) {
      // BrowserHost::Init wants resources / locales relative to argv[0].
      auto                            exe_dir = executable_dir(argv[0]);
      weweb::BrowserHost::InitOptions ho;
