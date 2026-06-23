@@ -3,7 +3,7 @@ _pkgname=mekhq
 pkgname=${_pkgname}-development
 pkgver=0.51.0
 _pkgver_mmdata=0.3.1
-pkgrel=1
+pkgrel=2
 epoch=
 install=mekhq.install
 pkgdesc="MekHQ is a java helper program for the MegaMek game that allows users to load a list of entities from an XML file, perform repairs and customizations, and then save the new entities to another XML file that can be loaded into MegaMek."
@@ -20,7 +20,7 @@ conflicts=('megamek' 'mekhq')
 source=("mekhq.tar.gz::https://github.com/MegaMek/mekhq/archive/refs/tags/v${pkgver}.tar.gz"
         "megamek.tar.gz::https://github.com/MegaMek/megamek/archive/refs/tags/v${pkgver}.tar.gz"
         "megameklab.tar.gz::https://github.com/MegaMek/megameklab/archive/refs/tags/v${pkgver}.tar.gz"
-        "mm-data.tar.gz::https://github.com/MegaMek/mm-data/archive/refs/tags/v${_pkgver_mmdata}.tar.gz"
+        "mm-data.tar.gz::https://github.com/MegaMek/mm-data/archive/e068e5be404a5413b2f59e555a9593f49c06f93d.tar.gz"
         "mekhq.install"
         "mekhq.desktop"
         "megamek.desktop"
