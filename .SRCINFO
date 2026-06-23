@@ -1,0 +1,13 @@
+pkgbase = oversight
+	pkgdesc = Security Intelligence & Static Audit Engine for local scripts and raw web links
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://github.com/Rakosn1cek/oversight
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = openssl
+	source = oversight-0.5.5.tar.gz::https://github.com/Rakosn1cek/oversight/archive/v0.5.5.tar.gz
+	sha256sums = SKIP
+
+pkgname = oversight
