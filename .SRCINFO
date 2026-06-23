@@ -1,6 +1,6 @@
 pkgbase = hyprdecaffeine
 	pkgdesc = A Rofi-based sleep timer utility for Wayland/Hyprland
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/davi-s/hyprdecaffeine
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = hyprdecaffeine
 	depends = systemd
 	depends = rofi
 	depends = libnotify
-	source = hyprdecaffeine-1.0.1.tar.gz::https://github.com/davi-s/hyprdecaffeine/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 10236f792e78d0a95e82bde8473fdb033dc5adfde8421ca86263de90f97c4d5c
+	source = hyprdecaffeine-1.0.2.tar.gz::https://github.com/davi-s/hyprdecaffeine/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = e7a730fd465205ff70156de34999a7bb5647ca55059d428fb5314bae738dd9f5
 
 pkgname = hyprdecaffeine
