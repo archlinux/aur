@@ -1,6 +1,6 @@
 # Maintainer: Shawn McCool <shawn@mccool.email>
 pkgname=dredge
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Ear-first practice looper: loop sections, slow them down pitch-preserving, drill passages"
 arch=('x86_64')

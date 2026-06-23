@@ -1,6 +1,6 @@
 pkgbase = dredge
 	pkgdesc = Ear-first practice looper: loop sections, slow them down pitch-preserving, drill passages
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/ShawnMcCool/dredge
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = dredge
 	provides = dredge
 	conflicts = dredge-looper-bin
 	options = !lto
-	source = git+https://github.com/ShawnMcCool/dredge.git#tag=v0.5.1
+	source = git+https://github.com/ShawnMcCool/dredge.git#tag=v0.6.0
 	sha256sums = SKIP
 
 pkgname = dredge
