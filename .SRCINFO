@@ -1,6 +1,6 @@
 pkgbase = cowbird
 	pkgdesc = A password manager that uses HashiCorp Vault as its backend
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/cowbird-labs/cowbird-desktop
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = cowbird
 	makedepends = go
 	depends = glibc
 	options = !debug
-	source = cowbird-desktop-0.10.0.tar.gz::https://github.com/cowbird-labs/cowbird-desktop/archive/refs/tags/v0.10.0.tar.gz
+	source = cowbird-desktop-0.11.0.tar.gz::https://github.com/cowbird-labs/cowbird-desktop/archive/refs/tags/v0.11.0.tar.gz
 	source = co.avitac.cowbird.desktop
 	source = co.avitac.cowbird.svg
-	sha256sums = 8957937dfb8f53e1aaf8eeccbffc2e871bc988b7e044a2915f5ed229662c36c4
+	sha256sums = 334e8cbbd855034f2bf41464c7ba380b86679a4961085ec206cd29c573f4188f
 	sha256sums = f4d6a801a301a0da67611fb2bd8534382424893a03474b87d4728933b3ed754b
 	sha256sums = 0232008204af9a35532a89dbfcd3b7092193b971b8cb2f942276635267de44be
 
