@@ -1,6 +1,6 @@
 # Maintainer: Sergey Shatunov <me@aur.rocks>
 pkgname=satisfactory-mod-manager-git
-pkgver=3.0.1.r0.gd90106a
+pkgver=3.1.0.r0.g935ec4a
 pkgrel=1
 pkgdesc="A mod manager for easy installation of mods and modloader for Satisfactory"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('GPL3')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 makedepends=('git' 'yarn' 'nodejs' 'node-gyp' 'python' 'wails' 'go-task' 'pnpm')
-depends=('webkit2gtk' 'gst-plugins-good')
+depends=('webkit2gtk-4.1' 'gst-plugins-good')
 source=("git+https://github.com/satisfactorymodding/SatisfactoryModManager.git"
         "${pkgname%-git}.desktop")
 sha512sums=('SKIP'
@@ -22,9 +22,13 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/SatisfactoryModManager"
-	go-task build
-}
 
+	echo 'allowBuilds:' >> frontend/pnpm-workspace.yaml
+	echo '  esbuild: true' >> frontend/pnpm-workspace.yaml
+	echo '  svelte-preprocess: true' >> frontend/pnpm-workspace.yaml
+
+	go-task build -- -tags webkit2_41
+}
 
 package() {
 	cd "${srcdir}/SatisfactoryModManager"
