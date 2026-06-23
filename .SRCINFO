@@ -6,7 +6,7 @@ pkgbase = feel
 	arch = any
 	license = MIT
 	depends = python
-	source = feel
+	source = feel::git+https://github.com/Camelliatse/feel.git
 	sha256sums = SKIP
 
 pkgname = feel
