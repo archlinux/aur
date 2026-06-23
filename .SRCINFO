@@ -1,0 +1,16 @@
+pkgbase = cloudyy-hcm-git
+	pkgdesc = Hyprland config manager for Cloud Center (cloudyy-linux)
+	pkgver = 0.1.0.r1.1434d83
+	pkgrel = 1
+	url = https://github.com/schultz-dev0/hcm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = hcm
+	conflicts = hcm
+	source = cloudyy-hcm-git::git+https://github.com/schultz-dev0/hcm.git
+	sha256sums = SKIP
+
+pkgname = cloudyy-hcm-git
