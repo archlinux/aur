@@ -2,13 +2,13 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=screamingfrogseospider
-pkgver=24.1
+pkgver=24.2
 pkgrel=1
 pkgdesc="spiders websites’ links, images, CSS, script and apps from an SEO perspective."
 arch=('x86_64' 'aarch64')
 url="https://www.screamingfrog.co.uk/seo-spider/"
 license=('custom')
-depends=('java-runtime-openjdk>=21' 'ttf-font')
+depends=('java-runtime-openjdk>=21' 'ttf-font' 'bash')
 makedepends=('tar' 'python')
 source=(
   "LICENSE"
@@ -20,8 +20,8 @@ source_aarch64=("screamingfrogseospider_${pkgver}_arm64.deb::https://download.sc
 b2sums=('6cde786ef5e5bf0e2d1cb9403eb9bbe6923731e22263e1cd2b3c3f0258d6efb4151eba5b59ee9e87894d17af75f1f72509bd389d1425a9fcab37ba51d9b50cd7'
         '30d4dae44d6388046bd0ebd1e36b3d4c9889b451ce2ca75483c6cac57813c9f20faeae38be35c7da86917b81802b6b1e1c950fa7bd406242bb4f4e97b63e140e'
         '297204e5385359137534c7e031da006b510915140cc5e35b18cde0a12dc1b1eed1281d76420a7563df13df97d7d55eec7aa1671f97a973f7333664d59714d5d5')
-b2sums_x86_64=('0a41099a9cce3da86f026785997b7f809018badc25a3e45adcd7b8cfc6edf2bf7394d2522c0334a630ba6d188e8496118e3eb611f9c1c4597f02f0440ce5e53d')
-b2sums_aarch64=('530f57bee353df8a4aea2d7b7fca077e31371489501615ee158c836b4cbd8cbbbf874af7b0ba8d4a028a5e16c2e7e84465e8af2fece489593b2a9e61931a2d38')
+b2sums_x86_64=('5d8d23cb0d1c52c9f42f38b9fba11cb47ed12c1a54e99dbdf165d7100b97cf0759829f61302e93f69809e102cb0a747b342764aea8a3898ba591f1ab1c58fdd7')
+b2sums_aarch64=('18050f1f4540083d8f5a709567ca3c5308752d4c83bc45c1deef0e7afad0c8f8b9c5ee7734c84f36dccb6d1f2f685a1152f215c325f1bf9a75e9655542638d61')
 
 build() {
   msg "Extracting deb data..."
