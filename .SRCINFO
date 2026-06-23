@@ -1,6 +1,6 @@
 pkgbase = findlargedir-bin
 	pkgdesc = Quickly locate flat "blackhole" directories with pathological entry counts
-	pkgver = 0.12.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/dkorunic/findlargedir
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = findlargedir-bin
 	provides = findlargedir
 	conflicts = findlargedir
 	options = !strip
-	source_x86_64 = findlargedir-x86_64-0.12.1.txz::https://github.com/dkorunic/findlargedir/releases/download/0.12.1/findlargedir-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 832da31c055d2304695951edde24a68884aaa91bb5cb788695ae35ff1620a2d2
-	source_aarch64 = findlargedir-aarch64-0.12.1.txz::https://github.com/dkorunic/findlargedir/releases/download/0.12.1/findlargedir-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = b00e0fdefd89fb3e1af42d7779956dffd5a9f332e03c748ad9de043d90b8b9b4
+	source_x86_64 = findlargedir-x86_64-0.13.0.txz::https://github.com/dkorunic/findlargedir/releases/download/0.13.0/findlargedir-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 378df0d383549d053dc6dced2860731cd2b2e34dc8b7119de6dc8cd24fdf0929
+	source_aarch64 = findlargedir-aarch64-0.13.0.txz::https://github.com/dkorunic/findlargedir/releases/download/0.13.0/findlargedir-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 6910080bece4977471e18648270c73f8e83611157217b85a9764082e3070bfc0
 
 pkgname = findlargedir-bin
