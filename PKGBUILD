@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=zen-adblocker
-pkgver=0.22.0
+pkgver=0.23.0
 pkgrel=1
 _nodeversion=24
 pkgdesc="Simple, free and efficient ad-blocker and privacy guard"
@@ -11,6 +11,7 @@ depends=(
   'ca-certificates-utils'
   'coreutils'
   'gtk3'
+  'libayatana-appindicator'
   'libsoup3'
   'networkmanager'
   'p11-kit'
@@ -24,7 +25,7 @@ makedepends=(
 )
 source=("git+https://github.com/ZenPrivacy/zen-desktop.git#tag=v$pkgver"
         "$pkgname.desktop")
-sha256sums=('0517f86a637d6a5e2ef2e715139d96616bccada57a2f0e1331b1c61dc56353ff'
+sha256sums=('7088430efc1d6a541eafab263561570bc2d281ce94235c2062db405f8937b4f0'
             '83ba6731812f400d32e595b893e8b1e42a8df5c32d11637976c39dad40e243cf')
 
 _ensure_local_nvm() {
@@ -39,10 +40,11 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-  cd zen-desktop
-  export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
   nvm install "${_nodeversion}"
+
+  cd zen-desktop
+  export npm_config_cache="$srcdir/npm_cache"
   npm install --prefix frontend
 }
 
