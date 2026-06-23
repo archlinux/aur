@@ -1,20 +1,24 @@
 pkgbase = chinesechesscontrol-bin
 	pkgdesc = Including Chinese chess MFC extension library, Chinese chess activex controls, Chinese chess Qt plugin, artificial intelligence engine, etc(Prebuilt version)
-	pkgver = 2.0.13
-	pkgrel = 3
+	pkgver = 2.0.14
+	pkgrel = 1
 	url = https://github.com/KangLin/ChineseChessControl
+	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = openssl
 	depends = qt6-multimedia
 	depends = qt6-base
-	depends = qt6-webengine
+	depends = qt6-svg
 	depends = qt6-scxml
-	provides = chinesechesscontrol=2.0.13
+	provides = chinesechesscontrol=2.0.14
 	conflicts = chinesechesscontrol
-	source = chinesechesscontrol-2.0.13.deb::https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.13/chinesechesscontrol_v2.0.13_Linux_x86_64_setup.deb
+	options = !emptydirs
 	source = chinesechesscontrol.sh
-	sha256sums = 16009e75c9ff725c200a34f967132ab585584f315983358bcbf6fe9a8425ad57
 	sha256sums = e851b25999d06859cc1551500796ce2fd82dc4bda3c0a29fde2a036028c93bc7
+	source_aarch64 = chinesechesscontrol-2.0.14-aarch64.zip::https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.14/ChineseChess_2.0.14_Linux_aarch64_Setup.zip
+	sha256sums_aarch64 = 2ab12c3df897cb28d765b7c5c0ea57755602c119e09801cedb91935a0f943d57
+	source_x86_64 = chinesechesscontrol-2.0.14-x86_64.zip::https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.14/ChineseChess_2.0.14_Linux_x86_64_Setup.zip
+	sha256sums_x86_64 = b5c6dab7b75953defdc82a1d9a8c0fb6cf0b9fa92c72b4751a181e0213116afd
 
 pkgname = chinesechesscontrol-bin
