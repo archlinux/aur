@@ -6,7 +6,7 @@ pkgname=sunloginclient
 _pkgname=awesun
 _debname=awesun
 pkgver=16.5.0.30560
-pkgrel=1
+pkgrel=10
 pkgdesc="Proprietary software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)"
 arch=("x86_64")
 url="https://sunlogin.oray.com"
@@ -24,16 +24,11 @@ source=("runsunloginclient.service"
         'LICENSE::https://service.oray.com/question/1820.html')
 source_x86_64=("https://down.oray.com/sl/linux/${_debname}-${pkgver}-x86_64.deb")
 install="${pkgname}.install"
-options=(emptydirs)
+options=(!strip emptydirs)
 sha256sums=('31a15b3da81917f13eab0e34a2ea7fb50b33af20e6cebf3779f188571d459501'
             'SKIP')
 sha256sums_x86_64=('eda3fffe6d5324afbc4f939f0cb85c08b7851efad3c01878621474ec7503d10f')
 
-# upstream ships the whole app under /usr/local/awesun; we relocate it to
-# /opt/awesun. the bundled binaries resolve their libraries via $ORIGIN
-# (RUNPATH), so the tree is fully relocatable -- only a single standalone
-# "/usr/local/awesun" string baked into three binaries needs patching, and it
-# is replaced same-length to stay binary-safe.
 _opt_path="/opt/${_pkgname}"
 _orig_path="/usr/local/${_pkgname}"
 
@@ -49,16 +44,17 @@ package() {
   install -dm755 "${pkgdir}/opt"
   cp -a "usr/local/${_pkgname}" "${pkgdir}/opt/"
 
-  # relocate the standalone prefix baked into the bundled binaries
-  # (same length: /usr/local/awesun -> ///////opt/awesun, resolves to /opt/awesun)
-  sed -i "s#${_orig_path}#///////${_opt_path#/}#g" \
-    "${pkgdir}${_opt_path}/bin/awesun" \
-    "${pkgdir}${_opt_path}/bin/awesun_daemon" \
-    "${pkgdir}${_opt_path}/bin/awesun_desktop"
-
+  # relocate the hardcoded /usr/local/awesun prefix to /opt/awesun in every file
+  local _pad_path="///////opt/${_pkgname}"
+  while IFS= read -r -d '' _f; do
+    sed -i "s#${_orig_path}#${_pad_path}#g" "$_f"
+  done < <(grep -RslZ "${_orig_path}" "${pkgdir}${_opt_path}")
+  
   # relocate paths in the helper scripts (plain text)
-  sed -i "s#${_orig_path}#${_opt_path}#g" \
-    "${pkgdir}${_opt_path}/scripts/"*
+  sed -i "s#${_pad_path}#${_opt_path}#g" "${pkgdir}${_opt_path}/scripts/"*
+
+  # oray config file
+  install -Dm644 /dev/null "${pkgdir}/etc/orayconfig.conf"
 
   # system service
   install -Dm644 "${srcdir}/run${pkgname}.service" \
