@@ -1,11 +1,12 @@
 pkgbase = python-google-cloud-speech
 	pkgdesc = Google Cloud Speech API client library.
-	pkgver = 2.36.0
+	pkgver = 2.40.0
 	pkgrel = 1
 	url = https://github.com/googleapis/google-cloud-python/tree/main/packages/google-cloud-speech
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
@@ -15,9 +16,10 @@ pkgbase = python-google-cloud-speech
 	depends = python-grpcio
 	depends = python-grpcio-status
 	depends = python-google-auth
+	depends = python-cryptography
 	depends = python-proto-plus
 	depends = python-protobuf
-	source = https://files.pythonhosted.org/packages/source/g/google-cloud-speech/google_cloud_speech-2.36.0.tar.gz
-	sha256sums = 3a445a033cc7772f7d073c03142a7e80048415db42981372c6b81edc76a1e27a
+	source = https://files.pythonhosted.org/packages/source/g/google-cloud-speech/google_cloud_speech-2.40.0.tar.gz
+	sha256sums = e89e688e4ce0b926754038bf992d0d0f065c5f1c3503bb20e6c46d08b63658fc
 
 pkgname = python-google-cloud-speech
