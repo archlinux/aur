@@ -53,7 +53,7 @@ pipeline {
         stage('Cleanup - makepkg Artifacts') {
             steps {
                 sh '''
-                    rm -rf pkg src logstash-8*
+                    rm -rf pkg src logstash-9*
                 '''
             }
         }
