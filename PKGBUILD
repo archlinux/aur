@@ -4,7 +4,7 @@
 _name='QCElemental'
 _pkgname="${_name,,}"
 pkgname="python-${_pkgname}"
-pkgver=0.50.3
+pkgver=0.50.4
 pkgrel=1
 pkgdesc='Periodic table, physical constants, and molecule parsing for quantum chemistry'
 arch=('any')
