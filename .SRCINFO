@@ -1,0 +1,13 @@
+pkgbase = colloid-hyprcursor
+	pkgdesc = Colloid Dark Cursors converted to Hyprcursor format
+	pkgver = 20260623
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Colloid-icon-theme/tree/main/cursors
+	arch = x86_64
+	makedepends = hyprcursor
+	makedepends = xcur2png
+	makedepends = colloid-cursors-git
+	depends = hyprcursor
+	options = !strip
+
+pkgname = colloid-hyprcursor
