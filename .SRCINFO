@@ -1,7 +1,7 @@
 pkgbase = zeldaladxhd-bin
 	pkgdesc = Open source and unofficial Links Awakening DX HD PC port
-	pkgver = v1.8.6
-	pkgrel = 2
+	pkgver = v1.9.3
+	pkgrel = 1
 	url = https://github.com/BigheadSMZ/Zelda-LA-DX-HD-Updated
 	arch = x86_64
 	arch = aarch64
@@ -19,9 +19,9 @@ pkgbase = zeldaladxhd-bin
 	options = !strip
 	source = https://gitlab.com/linuxbombay/zeldaladxhd/-/archive/1.0.1/zeldaladxhd-1.0.1.tar.bz2
 	sha256sums = b9565e4e4dbbb8f5d74c5b227a23d103c55e4e06a1ec8af2ca6ef46db37c9813
-	source_x86_64 = https://github.com/BigheadSMZ/Zelda-LA-DX-HD-Updated/releases/download/v1.8.6/LADXHD-Patcher-v1.8.6-Linux-x64.zip
-	sha256sums_x86_64 = a9979226519850f6e25913758230c62e8e44c9a2166fabf6b49cf7ccc7c97532
-	source_aarch64 = https://github.com/BigheadSMZ/Zelda-LA-DX-HD-Updated/releases/download/v1.8.6/LADXHD-Patcher-v1.8.6-Linux-Arm64.zip
-	sha256sums_aarch64 = 8bb9503a9958e1d5e41a36084702eb6053f0a43f119c14533deee9ad3ad158eb
+	source_x86_64 = https://github.com/BigheadSMZ/Zelda-LA-DX-HD-Updated/releases/download/v1.9.3/LADXHD-Patcher-v1.9.3-Linux-x64.zip
+	sha256sums_x86_64 = 1ea2cb6c52088ecccd5a100689b8653757ada2c04a98fe0dbc64d83e0e27744d
+	source_aarch64 = https://github.com/BigheadSMZ/Zelda-LA-DX-HD-Updated/releases/download/v1.9.3/LADXHD-Patcher-v1.9.3-Linux-Arm64.zip
+	sha256sums_aarch64 = 50abb852c7eedddf6f7baa74c76b9a1eeb5c03d9832ab6aa7e4e517bf0862c68
 
 pkgname = zeldaladxhd-bin
