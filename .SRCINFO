@@ -1,0 +1,20 @@
+pkgbase = glm-bin
+	pkgdesc = CLI tool to launch Claude Code with GLM (ChatGLM) settings via BigModel API
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/xqsit94/glm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = glm
+	conflicts = glm
+	options = !strip
+	options = !debug
+	source = LICENSE-1.2.1::https://raw.githubusercontent.com/xqsit94/glm/v1.2.1/LICENSE
+	sha256sums = 138a4aef89fcd56fde8126e690a13378c174e21721ff1524560dd853b09cc670
+	source_x86_64 = glm-bin-1.2.1::https://github.com/xqsit94/glm/releases/download/v1.2.1/glm-linux-amd64
+	sha256sums_x86_64 = 6cdb295158569bb99750c1a895748bddb6028d8d48d2f0a4e7bbbe3ace946d18
+	source_aarch64 = glm-bin-1.2.1::https://github.com/xqsit94/glm/releases/download/v1.2.1/glm-linux-arm64
+	sha256sums_aarch64 = 1412633ae36ee1f6e85f4e7ea3bbde85928ee6ad9b9ea037eb54f4f57990e9cd
+
+pkgname = glm-bin
