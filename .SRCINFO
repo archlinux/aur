@@ -1,6 +1,6 @@
 pkgbase = byobu
 	pkgdesc = Enhanced tmux
-	pkgver = 7.11
+	pkgver = 7.12
 	pkgrel = 1
 	url = https://byobu.org/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = byobu
 	depends = libnewt
 	depends = python
 	depends = tmux
-	source = git+https://github.com/dustinkirkland/byobu#tag=7.11
-	b2sums = e7d8b461e0c8c5f39527205088f1c539f0e1aee9c15057cacc738cb894dc2539f1f0efdf471f5fd5eb48592a3bac74c8a285aa205225a9370927a50074631fb6
+	source = git+https://github.com/dustinkirkland/byobu#tag=7.12
+	b2sums = b137dbcb4046c24628a16b6e3a3c04fea8119686e24a28835004abedd3688b0d52514d6db305ad8b2e0cfe54c8b0496f0c15fc0cd6271029b4006c87288a44f5
 
 pkgname = byobu
