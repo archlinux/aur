@@ -1,0 +1,4 @@
+[postsrsd]
+source = "github"
+github = "roehling/postsrsd"
+use_latest_release = true
