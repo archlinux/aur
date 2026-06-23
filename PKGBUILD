@@ -4,6 +4,7 @@
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: kfgz <kfgz@interia.pl>
 # Contributor: Lorenzo Ferrillo <lorenzofer at live dot it>
+# Contributor: Alexandre Demers <alexandre.f.demers@gmail.com>
 
 pkgname=lib32-x265
 pkgver=4.1
