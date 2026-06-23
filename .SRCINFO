@@ -1,6 +1,6 @@
 pkgbase = mimo-code-bin
 	pkgdesc = Next-generation AI coding assistant for developers with unlimited context
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://mimo.xiaomi.com/mimocode
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = mimo-code-bin
 	conflicts = mimo-code
 	options = !strip
 	options = !debug
-	source_x86_64 = mimo-code-bin-amd64-0.1.1.tar.gz::https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v0.1.1/mimocode-linux-x64.tar.gz
-	sha256sums_x86_64 = 53a777c4d828d564a139a50569ebef071cd286b179a13a5fcdc23857ce256f7a
-	source_aarch64 = mimo-code-bin-arm64-0.1.1.tar.gz::https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v0.1.1/mimocode-linux-arm64.tar.gz
-	sha256sums_aarch64 = 54c1fc07e112486c895eee2c8685f3b1e1d736db75ed0ee6634372882a4ed2d9
+	source_x86_64 = mimo-code-bin-amd64-0.1.2.tar.gz::https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v0.1.2/mimocode-linux-x64.tar.gz
+	sha256sums_x86_64 = 4dde524778ab995ce73827e1ee6fd805f0311c3e1a0e14f73215d2c1aae01dd4
+	source_aarch64 = mimo-code-bin-arm64-0.1.2.tar.gz::https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v0.1.2/mimocode-linux-arm64.tar.gz
+	sha256sums_aarch64 = bf7d801dd92c453ef0a1f2ef8d6101d0c549988c45b490f2e2d66d016073b09b
 
 pkgname = mimo-code-bin
