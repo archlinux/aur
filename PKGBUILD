@@ -10,7 +10,7 @@ depends=('gcc-libs' 'git' 'git-lfs' 'glibc' 'libgit2' 'openssl' 'zlib')
 makedepends=('cargo' 'cmake' 'git' 'pkgconf')
 options=('!lto')
 install="${pkgname}.install"
-source=("${pkgname}::git+file://${startdir}/../xet-core#tag=${pkgname}-v${pkgver}")
+source=("${pkgname}::git+https://github.com/huggingface/xet-core.git#tag=${pkgname}-v${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {

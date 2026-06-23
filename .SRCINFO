@@ -19,7 +19,7 @@ pkgbase = git-xet
 	depends = openssl
 	depends = zlib
 	options = !lto
-	source = git-xet::git+file:///home/julian/Downloads/xet-package/../xet-core#tag=git-xet-v0.2.1
+	source = git-xet::git+https://github.com/huggingface/xet-core.git#tag=git-xet-v0.2.1
 	sha256sums = SKIP
 
 pkgname = git-xet
