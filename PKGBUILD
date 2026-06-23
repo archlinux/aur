@@ -1,7 +1,7 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-bg-git
-pkgver=1.0.16.r0.gb1ca4c1
+pkgver=1.0.16.r1.g8dd97b6
 pkgrel=1
 pkgdesc="COSMIC session service which applies backgrounds to displays."
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-bg.git'
         'lto.patch')
 sha256sums=('SKIP'
-            'd6700a009732ec4087fe8dfae5ea9470dd889a0e63969e91e2abaaa56ca7827c')
+            '2b4301ace6827e4d5360cff2932470562e2d12ac8eb5b47a567dfdbbdd9a552d')
 
 pkgver() {
   cd "${pkgname%-git}"

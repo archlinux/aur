@@ -1,8 +1,12 @@
-diff --unified --recursive --text a/Cargo.toml b/Cargo.toml
---- a/Cargo.toml	2025-09-01 12:11:09.659939524 -0600
-+++ b/Cargo.toml	2025-09-01 12:13:17.707605444 -0600
-@@ -33,3 +33,4 @@
+diff -Npur a/Cargo.toml b/Cargo.toml
+--- a/Cargo.toml	2026-06-23 12:19:46.702227724 -0600
++++ b/Cargo.toml	2026-06-23 12:20:39.216443658 -0600
+@@ -34,6 +34,7 @@ features = ["calloop"]
  
  [profile.release]
  opt-level = 3
 +lto = "thin"
+ 
+ [dev-dependencies]
+ tempfile = "3"
+Binary files a/.git/index and b/.git/index differ
