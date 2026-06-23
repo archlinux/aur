@@ -32,6 +32,7 @@ depends=(
   'lib32-gsm'
   'lib32-jack'
   'lib32-lame'
+#  'lib32-lcms2'
   'lib32-libass'
   'lib32-libavc1394'
   'lib32-libbluray'
@@ -78,6 +79,7 @@ depends=(
   'lib32-opus'
   'lib32-sdl2'
 #  'lib32-snappy'
+#  'lib32-sndio'
   'lib32-speex'
   'lib32-srt'
 #  'lib32-svt-av1'
@@ -87,6 +89,7 @@ depends=(
   'lib32-vulkan-icd-loader'
   'lib32-xz'
   'lib32-zlib'
+  'libgcc'
 )
 makedepends=(
 #  'avisynthplus'
@@ -123,16 +126,13 @@ provides=(
 options=(
 #  debug
 )
-_tag=d22ecc4f6f3fca77b3e71b18641ceddb25973e97
 source=(
-  git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
+  git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=n${pkgver}
   0001-Add-av_stream_get_first_dts-for-Chromium.patch
-  0001-unbreak-glslang-build.patch
 )
 b2sums=(
-  '0796d77c58d5db487ccda15454dadf129a6e0ae2a5a9cec562c86f2050b1e9314164c7f2dbf0a6c8cdae37dfd5e28f494d5ac248e970bc7f01b097100971fe8a'
+  'SKIP'
   'e5f7b79f7731be9ee5a7280a9221fb531ac5a2d9820fc5870b68b0eabea667dfbe8f39f41c1e1763a4c84982896afaa54c81ff57847d203b70afafd726689e5d'
-  '650631d4f06dffec55bd6419f680d95617a9093d8e548b3dac0b379496477dcbd4121883128438343c568e992cb5b455efc0b7c4e34a5e7200518f9b5beaa231'
 )
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
@@ -143,14 +143,6 @@ prepare() {
 
   # https://crbug.com/1251779
   git apply -3 ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
-
-  # https://github.com/FFmpeg/FFmpeg/commit/f1e9032a2000b8b885cffd6fed8eacd47b37673f
-  git apply -3 ../0001-unbreak-glslang-build.patch
-}
-
-pkgver() {
-  cd ${_pkgbasename}
-  git describe --tags | sed 's/^n//'
 }
 
 build() {
@@ -228,6 +220,7 @@ build() {
 ## not available under 32 bit
 #    --enable-avisynth \
 #    --enable-frei0r \
+#    --enable-lcms2 \
 #    --enable-libjxl \
 #    --enable-libopenh264
 #    --enable-libopenmpt \
