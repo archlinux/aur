@@ -1,0 +1,18 @@
+pkgbase = wikiosophy-bin
+	pkgdesc = CLI that follows the first body link of a Wikipedia article until it reaches Philosophy (prebuilt binary)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/BitsBob/wikiphilosophy
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	provides = wikiosophy=1.0
+	conflicts = wikiosophy
+	source = wikiosophy-1.0::https://github.com/BitsBob/wikiphilosophy/releases/download/1.0/wikiosophy
+	source = wikiosophy-1.0-README.md::https://github.com/BitsBob/wikiphilosophy/raw/1.0/README.md
+	sha256sums = cdfd2475292ccb037b641bd9a853b19778aec8d211afcfc8a96a49654994db77
+	sha256sums = 55f697bf77df3b8fd8cf0fb735f533058003cee77a7c56d12ef8b7bda33fd354
+
+pkgname = wikiosophy-bin
