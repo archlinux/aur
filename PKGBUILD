@@ -2,7 +2,7 @@
 pkgname=lagrange-bin
 _pkgname=Lagrange
 _appname="fi.skyjake.${_pkgname}"
-pkgver=1.20.7
+pkgver=1.20.8
 pkgrel=1
 pkgdesc="A Beautiful Gemini Client.(Prebuilt version)"
 arch=(
@@ -32,14 +32,19 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/do
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.AppImage")
 sha256sums=('d8dd2acc4ba121ca7da3c899c8c443484ab54526ed5933e34fffae2cedb28fbe'
             '574c9abedf1d4ff7d577a1e180faffeab850eb2aa4eaff000946025787185895')
-sha256sums_armv7h=('174579ff3a28cf1918952d0e6f224f45e9ad569b307d9178da04e3ce296fc6dd')
-sha256sums_x86_64=('8ad2054cde4c1554ef65dbd8a3e7f4b8d4230871ff31a0e4043cffc0969aa277')
+sha256sums_armv7h=('2e6b852f81978da9d3ce48774f1bce227bf6a76d54f8e4d944750f4cc901c3d1')
+sha256sums_x86_64=('b19fc7f2a8cb822e041db8df95e084153672209bc126cc7706a5aa4d037a67c7')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i "s/${_appname}/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${_appname}.desktop"
     sed -i "s/${_appname}/${pkgname%-bin}/g" "${srcdir}/squashfs-root/usr/share/metainfo/${_appname}.appdata.xml"
@@ -47,7 +52,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/usr/"{bin,lib,share} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -a "${srcdir}/squashfs-root/usr/"{bin,lib,share} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/squashfs-root/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/metainfo/${_appname}.appdata.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-bin}.appdata.xml"
