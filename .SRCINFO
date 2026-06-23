@@ -1,7 +1,7 @@
 pkgbase = open-goal-launcher-bin
 	pkgdesc = A launcher for the OpenGOAL Project to simplify usage and installation
 	pkgver = 2.10.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/open-goal/launcher
 	arch = x86_64
 	license = ISC
@@ -21,7 +21,7 @@ pkgbase = open-goal-launcher-bin
 	depends = json-glib
 	depends = dav1d
 	depends = leancrypto
-	depends = nghttp3
+	depends = libnghttp3
 	depends = libngtcp2
 	depends = curl
 	conflicts = open-goal-launcher

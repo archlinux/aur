@@ -2,7 +2,7 @@
 # Previous maintainer: Wasabi <wasabithumbs@gmail.com>
 pkgname=open-goal-launcher-bin
 pkgver="2.10.4"
-pkgrel=2
+pkgrel=3
 pkgdesc="A launcher for the OpenGOAL Project to simplify usage and installation"
 arch=("x86_64")
 url='https://github.com/open-goal/launcher'
@@ -24,7 +24,7 @@ depends=(
     'json-glib'         # linked by webkit2gtk
     'dav1d'             # linked by webkit2gtk
     'leancrypto'        # linked by libgiognutls
-    'nghttp3'           # linked by libgiolibproxy
+    'libnghttp3'           # linked by libgiolibproxy
     'libngtcp2'         # linked by libgiolibproxy
     'curl'              # linked by libgiolibproxy
 )
