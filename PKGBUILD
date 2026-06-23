@@ -1,7 +1,7 @@
 # Maintainer: Bernardo Pinto Gomes <bernardopgomes@hotmail.com>
 # shellcheck disable=all
 pkgname=full-upgrade
-pkgver=3.13.0
+pkgver=3.13.1
 pkgrel=1
 pkgdesc="Orquestrador Bash modular para atualizar, manter e auditar máquinas Arch Linux"
 arch=('any')
@@ -13,7 +13,9 @@ optdepends=(
   'yay: alternativa ao paru para AUR'
   'reflector: atualização da mirrorlist'
   'pacman-contrib: paccache e pacdiff (.pacnew)'
-  'yad: ícone de bandeja (--tray)'
+  'python-gobject: backend AppIndicator do systray em Wayland'
+  'libayatana-appindicator: backend AppIndicator do systray em Wayland'
+  'yad: backend X11 do ícone de bandeja (--tray)'
   'libnotify: notificações desktop'
   'xdg-utils: abrir último log e integrar com desktop'
   'xdg-terminal-exec: escolher terminal para ações do systray'
@@ -25,7 +27,7 @@ optdepends=(
 )
 makedepends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c601ff2e914f7ad5f03f5a560dcaf645390b40b9f06e7cbefd30b749bc55235a')
+sha256sums=('ba04bd0d1d6baad68e3030fe15ea7187488f4700d8367510ee408c5d3d97dda5')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
