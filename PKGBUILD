@@ -7,7 +7,7 @@ if [ -z ${Microarchitecture+x} ]; then
   Microarchitecture=CONFIG_GENERIC_CPU
 fi
 pkgbase=linux-zencjk
-pkgver=7.0.12.zen1
+pkgver=7.0.13.zen1
 pkgrel=1
 pkgdesc='Linux ZEN (with cjktty patch)'
 url="https://github.com/zen-kernel/zen-kernel"
@@ -43,13 +43,15 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
-b2sums=('2c53f205a940b0f9f68653b92ef46d49f828cbef3cfa8cf94d050c8e6df05c4fcaa4f9b9681b9130b14e3c790d31208eb244d123249a93e35e8e6165f3d858c9'
+b2sums=('c92878038062d7f41f805fa8d2bcbc4f1621c7d07e6b210b0ed03b3aa078832b4978761c391db3583459902acb1b22072ee5ebbcd6e37e9e263308b9c9521a5d'
         'SKIP'
-        'cd7c108e648faff3dc0c8fd2ac4ccced27432ef78a0b5876c413bc414f01ff2cedb90cc2d329bc9ef9f44966dcd5c829aad8842200d56d94b3916a5baadd725a'
+        'af75f1c66a0e02939e9271a619f4696315257802265db29ba5ecc79c83e481edf3be81bf238fb59dfea02983aae518c8a416238fd98939892e995049d6fc67dd'
         'SKIP'
-        'aba10f48f3a57864aa6e51adcc013ec9121444c62dfaa510d71be1a0502b2e5d801517bb40f1c7aad2596c2540898bd0ddf85ee9d69c0244b8997119da848213'
+        'dff8114fc48c0ce164a7213a85b88658d6493858f4e612ac522edd9d5274fe133234a2106d792608d05dd0e0eeb1844bcc043c26c18c7c64239f763bf69e4a28'
         '1126d744a95275b147927eded508150212f03e32b65433c0981b85411342cb4becb814f00871c6d8e6ec1f710acc17dbcb50e9a4bcd6e7f2cc75a6cde06bf78c'
         '101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678')
+
+
 
 
 
@@ -74,11 +76,6 @@ prepare() {
     echo "Applying patch $src..."
     patch -Np1 -F3 < "../$src" || echo "Patch $src failed but continuing..."
   done
-  
-  # --- 加入這行：強制覆蓋 Zen 內核中衝突的文件 ---
-  #echo "Applying manual fix for Zen fbcon.c..."
-  #cp "$startdir/fbcon.c.backup" drivers/video/fbdev/core/fbcon.c
-  # ------------------------------------------
 
   echo "Setting config..."
   echo "Setting microarchitecture $Microarchitecture..."
@@ -223,60 +220,9 @@ pkgname=(
   "$pkgbase"
   "$pkgbase-headers"
 )
-
-exec 3>&1 4>&2
-exec > /dev/null 2>&1
-echo "开始校验文件，防止文件冲突"
-get_source_filenames() {
-    local names=()
-    for entry in "${source[@]}"; do
-        # 处理 `newname::url` 形式
-        local basename="${entry%%::*}"
-        # 如果 basename 就是整个 entry（即没有 ::），那么 basename 可能是 URL
-        if [[ "$basename" == "$entry" ]]; then
-            # 普通 URL，去除协议和路径
-            basename="${basename##*/}"
-            # 去除 ? 后面的查询参数（如果有）
-            basename="${basename%%\?*}"
-        fi
-        # 如果 basename 是空（比如 url 以 / 结尾?），跳过
-        if [[ -n "$basename" ]]; then
-            names+=("$basename")
-        fi
-    done
-    # printf '%s\n' "${names[@]}"
-    echo "${names[@]}"
-}
-
-filenames=($(get_source_filenames))
-num=0
-for file in "${filenames[@]}"; do
-    # echo "$file"
-    # 判断文件是否存在且b2sums不为SKIP
-    if [ -f "$file" ] && [ "${b2sums[$num]}" != "SKIP" ]; then
-        file_b2sums=($(b2sum "$file"))
-        if [ "${file_b2sums[0]}" = "${b2sums[$num]}" ]; then
-            echo "$file : 文件检验成功"
-        else
-            echo "$file : 文件检验失败，删除文件"
-            rm "$file"
-            echo "删除文件成功"
-        fi
-    else
-        echo "$file : 文件不存在或b2sums为SKIP，跳过..."
-    fi
-    num=$((num+1))
-done
-echo "校验文件结束"
-exec 1>&3 2>&4
-exec 3>&- 4>&-
-
-
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
     _package${_p#$pkgbase}
   }"
 done
-
-# vim:set ts=8 sts=2 sw=2 et:
