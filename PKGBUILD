@@ -18,6 +18,7 @@ optdepends=(
     'ffmpeg: --record support'
     'tesseract: --tesseract (OCR) support'
     'tesseract-data-eng: english OCR data'
+    'translate-shell: --translate (OCR -> translated text) support'
     'libjpeg-turbo: JPEG output (--format jpeg)'
     'libwebp: WebP output (--format webp)'
     'pipewire: pw-play (default shutter-sound player)'
@@ -27,8 +28,8 @@ optdepends=(
 )
 provides=("grabit=${pkgver}")
 conflicts=('grabit')
-source=("LICENSE-${pkgver}::https://heliopolis.live/creations/grabit/-/raw/${pkgver}/LICENSE")
-source_x86_64=("grabit-${pkgver}-x86_64::https://heliopolis.live/api/v4/projects/creations%2Fgrabit/packages/generic/grabit/${pkgver}/grabit-x86_64-linux")
+source=("LICENSE-${pkgver}::https://heliopolis.live/creations/grabit/raw/tag/${pkgver}/LICENSE")
+source_x86_64=("grabit-${pkgver}-x86_64::https://heliopolis.live/creations/grabit/releases/download/${pkgver}/grabit%20%28x86_64%20linux%29")
 sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
 sha256sums_x86_64=('0ab2fcd3db73e993ad648d18914f4a552536d964091b902337b41e30cb5f9c88')
 

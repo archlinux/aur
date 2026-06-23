@@ -15,6 +15,7 @@ pkgbase = grabit-bin
 	optdepends = ffmpeg: --record support
 	optdepends = tesseract: --tesseract (OCR) support
 	optdepends = tesseract-data-eng: english OCR data
+	optdepends = translate-shell: --translate (OCR -> translated text) support
 	optdepends = libjpeg-turbo: JPEG output (--format jpeg)
 	optdepends = libwebp: WebP output (--format webp)
 	optdepends = pipewire: pw-play (default shutter-sound player)
@@ -23,9 +24,9 @@ pkgbase = grabit-bin
 	optdepends = sox: play (alternative sound player)
 	provides = grabit=0.3.0
 	conflicts = grabit
-	source = LICENSE-0.3.0::https://heliopolis.live/creations/grabit/-/raw/0.3.0/LICENSE
+	source = LICENSE-0.3.0::https://heliopolis.live/creations/grabit/raw/tag/0.3.0/LICENSE
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
-	source_x86_64 = grabit-0.3.0-x86_64::https://heliopolis.live/api/v4/projects/creations%2Fgrabit/packages/generic/grabit/0.3.0/grabit-x86_64-linux
+	source_x86_64 = grabit-0.3.0-x86_64::https://heliopolis.live/creations/grabit/releases/download/0.3.0/grabit%20%28x86_64%20linux%29
 	sha256sums_x86_64 = 0ab2fcd3db73e993ad648d18914f4a552536d964091b902337b41e30cb5f9c88
 
 pkgname = grabit-bin
