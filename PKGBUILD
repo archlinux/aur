@@ -7,7 +7,7 @@ _pkgname=masterpdfeditor
 pkgname=${_pkgname}-qt6
 pkgver=5.9.98
 _patchver='-1'
-pkgrel=1
+pkgrel=2
 pkgdesc='A complete solution for viewing, creating and editing PDF files.'
 url='https://code-industry.net/free-pdf-editor/'
 _checksum=$(curl 'https://code-industry.net/checksum-information/' | grep -oP '[a-f0-9]{40}(?=.*master-pdf-editor-'"${pkgver}${_patchver}"'-qt6.x86_64.tar.gz)')
@@ -39,10 +39,11 @@ source_x86_64=("https://code-industry.net/public/master-pdf-editor-${pkgver}${_p
 sha1sums_x86_64=("${_checksum% *}")
 
 package() {
-    install -d "${pkgdir}/{opt,usr/bin}/"
-    cp -a --no-preserve=ownership "master-pdf-editor-${pkgver%%.*}" "${pkgdir}/opt/"
+    install -d "${pkgdir}/opt"
+    install -d "${pkgdir}/usr/bin"
+    cp -a --no-preserve=ownership "master-pdf-editor-${pkgver%%.*}" "${pkgdir}/opt/masterpdfeditor"
 
-    cd                      "${pkgdir}/opt/master-pdf-editor-${pkgver%%.*}" || return 1
+    cd                      "${pkgdir}/opt/masterpdfeditor"     || return 1
     ln -sr                  "${_pkgname}${pkgver%%.*}"          -t "${pkgdir}/usr/bin/"
     install -Dm644          "${_pkgname}${pkgver%%.*}.desktop"  -t "${pkgdir}/usr/share/applications/"
     install -Dm644          'license_en.txt'                    -t "${pkgdir}/usr/share/licenses/${pkgname}/"
