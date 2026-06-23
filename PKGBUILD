@@ -6,7 +6,7 @@
 pkgname=tango-database
 _pkgname=TangoDatabase
 pkgver=5.30
-pkgrel=1
+pkgrel=2
 _pkgver=Database-Release-${pkgver}
 groups=("tango-controls")
 pkgdesc="TANGO distributed control system - database server"
@@ -31,7 +31,7 @@ sha256sums=(
   "9938ca3c375254380961b1f361f38140045c2641f353d1be2840f25b3f26d29a"
   "0edcbdda3f3789973d30ab65589b5a0920a3b70b185e25544f60cc4669492475"
   "ab966cba68b02c7163cb3a210c59ef7e645d5a43fc1ad18869a2533e1b297fc8"
-  "a77e1b23dd90f36345a43fc45afa738e458ea3b88d395f83c396516ba2efdfbd"
+  "e644ce6e0ead5df685f67d336167bfc32bb7941dfa7896607700bcf06baec7c6"
 )
 
 prepare() {
