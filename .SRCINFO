@@ -1,6 +1,6 @@
 pkgbase = grabit
 	pkgdesc = Screenshot, screen-recording, OCR, and uploader for wlroots and KDE Plasma 6 Wayland compositors
-	pkgver = 0.3.0.r82.gf39fadf
+	pkgver = 0.3.0.r103.gdfdf690
 	pkgrel = 1
 	url = https://heliopolis.live/creations/grabit
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = grabit
 	optdepends = ffmpeg: --record support
 	optdepends = tesseract: --tesseract (OCR) support
 	optdepends = tesseract-data-eng: english OCR data
+	optdepends = translate-shell: --translate (OCR -> translated text) support
 	optdepends = libjpeg-turbo: JPEG output (--format jpeg)
 	optdepends = libwebp: WebP output (--format webp)
 	optdepends = pipewire: pw-play (default shutter-sound player)

@@ -1,5 +1,5 @@
 pkgname=grabit
-pkgver=0.3.0.r82.gf39fadf
+pkgver=0.3.0.r103.gdfdf690
 pkgrel=1
 pkgdesc="Screenshot, screen-recording, OCR, and uploader for wlroots and KDE Plasma 6 Wayland compositors"
 arch=('x86_64' 'aarch64')
@@ -22,6 +22,7 @@ optdepends=(
     'ffmpeg: --record support'
     'tesseract: --tesseract (OCR) support'
     'tesseract-data-eng: english OCR data'
+    'translate-shell: --translate (OCR -> translated text) support'
     'libjpeg-turbo: JPEG output (--format jpeg)'
     'libwebp: WebP output (--format webp)'
     'pipewire: pw-play (default shutter-sound player)'
