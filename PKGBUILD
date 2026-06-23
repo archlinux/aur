@@ -2,7 +2,7 @@
 # Contributor: Keithsel <keithsel@disroot.org>
 pkgname=9router-bin
 pkgver=0.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="AI router and proxy providing an OpenAI-compatible endpoint for multiple AI providers"
 arch=('x86_64')
 url="https://github.com/decolua/9router"
@@ -13,11 +13,13 @@ optdepends=('systemd: user service management via systemctl --user')
 install="${pkgname}.install"
 options=('!strip')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/9router/-/9router-${pkgver}.tgz"
-        '9router.sh' '9router.service' '.env.example')
+        '9router.sh' '9router.service' '.env.example'
+        'fix-tokenplan-region.py')
 sha256sums=('77a306d326b8d5f2f6e2beeac130b58f4c4d90a5daf6c3742b192b8ce66b6825'
             '912c4a6f0c3589a23dd4e015c28500643727086b89463ec79f62e6dc569a4804'
             '39ea05509034ce1e49c8388e918ecd7f478e0ec996eec8c0cfb7bd57f995eb1a'
-            'be29534e45b564eca0a854fd06a06166a5ca0992a48bcedbc36b31e364521786')
+            'be29534e45b564eca0a854fd06a06166a5ca0992a48bcedbc36b31e364521786'
+            '83f38c469d9a573671740093107e763798e31d7b27291538211cacc6f71b8782')
 
 build() {
   # npm extracts to a fixed package/ directory
@@ -50,6 +52,11 @@ package() {
   # Clean up build artifacts and path leaks (targeted, no full-tree scan)
   find "${_dest}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
   find "${_dest}" -type f \( -name "*.mk" -o -name "Makefile" -o -name "*.d" -o -name "config.gypi" \) -delete
+
+  # Fix: xiaomi-tokenplan test endpoint hardcodes SGP, ignoring connection region
+  # The test-connection function uses a static URL map; patch it to read
+  # providerSpecificData.region so CN/AMS keys test against their own endpoint.
+  python3 "${srcdir}/fix-tokenplan-region.py" "${_dest}"
 
   # Set correct permissions (single recursive pass)
   chmod -R a+rX "${_dest}"
