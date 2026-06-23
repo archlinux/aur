@@ -1,7 +1,7 @@
 # Maintainer: GrassBlock <i [at] gb0 [dot] dev>
 pkgname=manboster
 _name=manboster
-pkgver=0.1.0
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Manboster: Your personal AI agent manbo lobster!"
 arch=("x86_64")
