@@ -1,6 +1,6 @@
 pkgbase = masiro-bin
 	pkgdesc = A third-party Masiro client based on Flutter.(Prebuilt version)一个基于 Flutter 的第三方真白萌客户端
-	pkgver = eff3392
+	pkgver = 47cc934
 	pkgrel = 1
 	url = https://github.com/qixiaoo/masiro
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = masiro-bin
 	depends = libayatana-indicator
 	depends = libdbusmenu-glib
 	depends = ayatana-ido
-	provides = masiro=eff3392
+	provides = masiro=47cc934
 	conflicts = masiro
-	noextract = masiro-eff3392.zip
-	source = masiro-eff3392.zip::https://github.com/qixiaoo/masiro/releases/download/eff3392/masiro-eff3392-linux.zip
+	noextract = masiro-47cc934.zip
+	source = masiro-47cc934.zip::https://github.com/qixiaoo/masiro/releases/download/47cc934/masiro-47cc934-linux.zip
 	source = masiro.sh
-	sha256sums = 0381b9afd03d62e4ced27e055a3fc191510e4680bf45a8f285b8d7e3d0dd97e9
+	sha256sums = 4696ad8c989b6bfcf28402db394ca6458f2cda5c3f9a7f02e9afb183e8970288
 	sha256sums = f003b130010311751a619cae8188af15f003369d71c59f7b34bbc26c98e615d5
 
 pkgname = masiro-bin
