@@ -1,0 +1,156 @@
+# Maintainer: Damian Höster <damian.hoester@posteo.de>
+# Contributor: Evangelos Foutras <foutrelis@archlinux.org>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+
+pkgname=clang-static-git
+pkgver=23.0.0_r585301.bb8f468d260f
+pkgrel=1
+pkgdesc='LLVM compiler and tools for C-family languages (git, statically linked LLVM libs)'
+arch=(x86_64)
+url=https://clang.llvm.org/
+license=('Apache-2.0 WITH LLVM-exception')
+depends=(
+  gcc-libs
+  glibc
+  libxml2
+  ncurses
+  zlib
+  libgcc
+  libstdc++
+)
+makedepends=(
+  git
+  cmake
+  ninja
+  python
+)
+optdepends=(
+  'openmp: OpenMP support in clang with -fopenmp'
+  'python: for scan-view and git-clang-format'
+)
+provides=(
+  clang
+  clang-format
+  clang-tools-extra
+  clang-analyzer
+  clangd
+  compiler-rt
+)
+conflicts=(
+  clang
+  clang-format
+  clang-tools-extra
+  clang-analyzer
+  clangd
+  compiler-rt
+)
+options=(
+  staticlibs
+  !lto
+)
+source=(llvm-project::git+https://github.com/llvm/llvm-project.git)
+sha256sums=(SKIP)
+
+pkgver() {
+  cd llvm-project/cmake/Modules
+
+  # Matches the output of `llvm-config --version` with dashes replaced by underscores
+  local _pkgver=$(awk -F 'MAJOR |MINOR |PATCH |)' \
+    'BEGIN { ORS="." ; i=0 } \
+           /set\(LLVM_VERSION_/ { print $2 ; i++ ; if (i==2) ORS="" } \
+           END { print "\n" }' \
+    LLVMVersion.cmake)_r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo "$_pkgver"
+}
+
+_get_distribution_components() {
+  local target
+  ninja -C _build -t targets | grep -Po 'install-\K.*(?=-stripped:)' |
+    while read -r target; do
+      case $target in
+      clang-libraries | distribution) continue ;;
+      clang | clangd | clang-* | compiler-rt | compiler-rt-* | clang_rt* | builtins | runtimes | scan-build | scan-view) ;;
+      *) continue ;;
+      esac
+      echo $target
+    done
+}
+
+build() {
+  export CFLAGS+=" ${CPPFLAGS}"
+  export CXXFLAGS+=" ${CPPFLAGS}"
+
+  local cmake_args=(
+    -B _build
+    -S llvm-project/llvm
+    -G Ninja
+    -D CMAKE_BUILD_TYPE=Release
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D CMAKE_INSTALL_DOCDIR=share/doc
+    -D LLVM_ENABLE_PROJECTS='clang;clang-tools-extra'
+    -D LLVM_ENABLE_RUNTIMES='compiler-rt'
+    -D LLVM_BUILD_LLVM_DYLIB=OFF
+    -D LLVM_LINK_LLVM_DYLIB=OFF
+    -D LLVM_INCLUDE_TESTS=OFF
+    -D LLVM_INCLUDE_BENCHMARKS=OFF
+    -D CLANG_DEFAULT_PIE_ON_LINUX=ON
+    -Wno-dev
+  )
+
+  # Pass 1: Configure targets
+  cmake "${cmake_args[@]}"
+
+  # Fetch targeted components
+  local _dist_components=$(_get_distribution_components | paste -sd\;)
+
+  # Pass 2: Lock in distribution components
+  cmake "${cmake_args[@]}" -D LLVM_DISTRIBUTION_COMPONENTS="$_dist_components"
+
+  # Build only the requested distribution
+  ninja -C _build distribution
+}
+
+package() {
+  DESTDIR="$pkgdir" ninja -C _build install-distribution
+
+  # Remove files that conflict with the llvm package
+  rm -f "$pkgdir"/usr/bin/clang-offload-packager
+  rm -f "$pkgdir"/usr/bin/llvm-offload-binary
+
+  install -Dm644 llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  # Move scanbuild-py into site-packages and install Python bindings
+  local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
+  if [[ -d "$pkgdir"/usr/lib/libear ]] ||
+    [[ -d "$pkgdir"/usr/lib/libscanbuild ]]; then
+    install -d "$pkgdir"/$_site_packages
+
+    mv "$pkgdir"/usr/lib/{libear,libscanbuild} \
+      "$pkgdir"/$_site_packages/ 2>/dev/null || true
+
+    cp -a llvm-project/clang/bindings/python/clang "$pkgdir"/$_site_packages/
+  fi
+
+  # Move analyzer scripts out of /usr/libexec
+  if [[ -d "$pkgdir"/usr/libexec ]]; then
+    install -d "$pkgdir"/usr/lib/clang
+    mv "$pkgdir"/usr/libexec/* "$pkgdir"/usr/lib/clang/
+    rmdir "$pkgdir"/usr/libexec
+
+    # Patch paths if the files exist
+    [[ -f "$pkgdir"/usr/bin/scan-build ]] &&
+      sed -i 's|libexec|lib/clang|' "$pkgdir"/usr/bin/scan-build
+
+    local _analyze_py="$pkgdir"/$_site_packages/libscanbuild/analyze.py
+    [[ -f "$_analyze_py" ]] &&
+      sed -i 's|libexec|lib/clang|' "$_analyze_py"
+  fi
+
+  # Move bash completion
+  local bash_completion_destdir="$pkgdir"/usr/share/bash-completion/completions
+  if [[ -f "$pkgdir"/usr/share/clang/bash-autocomplete.sh ]]; then
+    install -d $bash_completion_destdir
+    mv "$pkgdir"/usr/share/clang/bash-autocomplete.sh $bash_completion_destdir/clang
+  fi
+}
