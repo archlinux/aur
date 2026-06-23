@@ -1,6 +1,6 @@
 pkgbase = bra
 	pkgdesc = A git worktree manager with project-aware configuration
-	pkgver = 0.2.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://gitlab.com/wykwit/bra
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = bra
 	makedepends = cargo
 	makedepends = rust
 	depends = git
-	source = bra-0.2.0.tar.gz::https://gitlab.com/wykwit/bra/-/archive/v0.2.0/bra-v0.2.0.tar.gz
-	sha256sums = c12bb312ec9f6262abd85a94c9700a46b3a681a027fa31ff31d6d6f7b8d02619
+	source = bra-0.4.0.tar.gz::https://gitlab.com/wykwit/bra/-/archive/v0.4.0/bra-v0.4.0.tar.gz
+	sha256sums = 897a0bf58c7bb3d79043fbeb39cf0a690240896d1bcf449d8c2bd2e0e720ff76
 
 pkgname = bra

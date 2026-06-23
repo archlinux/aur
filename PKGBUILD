@@ -1,7 +1,7 @@
 # Maintainer: Wiktor W. <wykwit@disroot.org>
 
 pkgname='bra'
-pkgver=0.2.0
+pkgver=0.4.0
 _pkgver="v${pkgver}"
 pkgrel=1
 pkgdesc='A git worktree manager with project-aware configuration'
@@ -11,7 +11,7 @@ makedepends=('cargo' 'rust')
 depends=('git')
 arch=('x86_64' 'i686')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('c12bb312ec9f6262abd85a94c9700a46b3a681a027fa31ff31d6d6f7b8d02619')
+sha256sums=('897a0bf58c7bb3d79043fbeb39cf0a690240896d1bcf449d8c2bd2e0e720ff76')
 
 prepare() {
   cd "${pkgname}-${_pkgver}"
