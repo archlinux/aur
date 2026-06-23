@@ -1,6 +1,6 @@
 pkgbase = v2ray-rs
 	pkgdesc = Linux desktop GUI for v2ray/xray/sing-box proxy management
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/victorzhuk/v2ray-rs
 	install = v2ray-rs.install
@@ -17,7 +17,7 @@ pkgbase = v2ray-rs
 	optdepends = sing-box: sing-box proxy backend
 	optdepends = polkit: one-time TUN privilege grant via pkexec
 	options = !lto
-	source = v2ray-rs-0.10.0.tar.gz::https://github.com/victorzhuk/v2ray-rs/archive/v0.10.0.tar.gz
-	sha256sums = eb94afb0d9daea2e21ef07cd7c7a05725c1ad351f9c5a0fc1c7ff89331dd00a4
+	source = v2ray-rs-0.10.1.tar.gz::https://github.com/victorzhuk/v2ray-rs/archive/v0.10.1.tar.gz
+	sha256sums = ec26105b38a138c0142ae9c6e8f218cb63fd2fba0b150e9029d6689a2320d217
 
 pkgname = v2ray-rs
