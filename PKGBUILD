@@ -1,38 +1,37 @@
 # Maintainer: Manel Castillo Giménez
 pkgname="clavis-git"
-pkgver="2.0.3"
+pkgver="2.1.0"
 pkgrel="2"
 pkgdesc="An easy to use Password Manager. Development version"
 arch=("x86_64")
 url="https://github.com/ManelCG/clavis"
-depends=("gtk4" "gtkmm-4.0" "cmake" "gpgme")
-conflicts=("clavis" "clavis-debug")
-optdepends=("git")
+license=("GPL3")
+depends=("gtk4" "gtkmm-4.0" "gpgme")
+makedepends=("cmake" "git" "gcc" "make" "pkgconf")
+optdepends=("git: password store synchronization")
+provides=("clavis")
+conflicts=("clavis")
+source=("clavis::git+https://github.com/ManelCG/clavis.git#branch=develop")
+sha256sums=("SKIP")
 
-_gitroot="https://github.com/ManelCG/clavis.git"
-_gitname="clavis"
-source=()
-sha256sums=()
+pkgver() {
+  cd "${srcdir}/clavis"
+  # Derive the version from git so the development package reflects the actual
+  # checked-out commit (e.g. 2.1.0.1.r33.gabc1234), falling back to a commit count.
+  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
+    || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
-package(){
-  echo "Building Clavis..."
-  cd ${srcdir}
+build() {
+  cd "${srcdir}/clavis"
 
-  echo "Downloading Clavis from github..."
-  if [ -d ${srcdir}/${_gitname} ]; then
-    cd "${srcdir}/${_gitname}"
-    git pull origin
-    echo "Local files updated..."
-  else
-    git clone ${_gitroot} ${srcdir}/${_gitname}
-  fi
+  # The cmake 'archlinux' target bakes its staging directory (PACKAGE_DIR) from
+  # $ENV{BDIR} at *configure* time, so BDIR must be exported here, while make.sh
+  # runs cmake. package() then only re-runs the already-configured target.
+  BDIR="${pkgdir}" ./make.sh
+}
 
-  cd ${srcdir}/${_gitname}
-  git checkout develop
-
-  echo "Git checkout done"
-
-  echo "Starting configure"
-
-  BDIR=${pkgdir} ./make.sh archlinux
+package() {
+  cd "${srcdir}/clavis/out"
+  make archlinux
 }
