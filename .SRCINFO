@@ -1,0 +1,20 @@
+pkgbase = codeglance
+	pkgdesc = The 10-second codebase tour. Understand any repo in one command.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/mansoor-mamnoon/codeglance
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	provides = codeglance
+	noextract = codeglance-0.2.0.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = codeglance-0.2.0.tgz::https://registry.npmjs.org/codeglance/-/codeglance-0.2.0.tgz
+	b2sums = 63c852eb1421607f3b0f65127a4c7f23aaf3c308254202d53ea2bfc0b05a7f2bfc12aa49104011ce07fd0b37ce531466a70b70f5930e48edb138ce4cf1e8adee
+
+pkgname = codeglance
