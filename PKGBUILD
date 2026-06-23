@@ -1,7 +1,7 @@
 # Maintainer: Shawn McCool <shawn@mccool.email>
 pkgname=dredge-looper-bin
 _appname=dredge
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Ear-first practice looper: loop sections, slow them down pitch-preserving, drill passages (prebuilt)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('ffmpeg: MP3 export, extra container formats, and demucs stem export
 provides=('dredge')
 conflicts=('dredge')
 source=("https://github.com/ShawnMcCool/dredge/releases/download/v${pkgver}/${_appname}-${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('81da4fa1e3558a277ce1989c2263910c24e492d636892a9914eda84b62b32911')
+sha256sums=('fc13c5554242a45f12eb27083eb5580da557e99bbcdb436eb2efb33768ac4193')
 
 package() {
   # The tarball is a relocatable /usr tree (see `just tarball`).
