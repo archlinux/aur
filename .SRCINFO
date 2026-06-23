@@ -1,14 +1,13 @@
 pkgbase = quien
 	pkgdesc = A better whois and domain intelligence toolkit
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/retlehs/quien
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	depends = glibc
-	source = quien-0.11.0.tar.gz::https://github.com/retlehs/quien/archive/v0.11.0.tar.gz
-	sha256sums = 8361a2d292152896e93220ca5e85474ac72b5f44795f640f69b0b2a8dace26c3
+	source = quien-0.12.0.tar.gz::https://github.com/retlehs/quien/archive/v0.12.0.tar.gz
+	sha256sums = 49eef2d196a1b9c1e46c037c8fa300f6ced71c952828761fb4810ad8151e14c2
 
 pkgname = quien
