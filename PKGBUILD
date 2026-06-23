@@ -2,7 +2,7 @@
 
 _name=smithy-core
 pkgname=python-$_name
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Core components for implementing Smithy tooling in Python.'
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel'
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-freezegun')
 optdepends=('python-typing_extensions: typing')
 source=("$_name::git+$_repo.git#tag=$_name/v$pkgver")
-sha256sums=('68ebb6567862fffa9c31e5d5494064086b046967dd9f2ce5d2cada816b3679c6')
+sha256sums=('76f4b6eecc4ae8e10a0ae5622e1f25d459f11bede40cdd191473dfe82279aa9c')
 
 build() {
   cd "$srcdir"/$_name/packages/$_name
