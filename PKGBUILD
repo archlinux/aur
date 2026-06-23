@@ -1,18 +1,22 @@
 # Maintainer: Bernardo Pinto Gomes <bernardopgomes@hotmail.com>
 # shellcheck disable=all
 pkgname=full-upgrade
-pkgver=3.12.1
+pkgver=3.13.0
 pkgrel=1
 pkgdesc="Orquestrador Bash modular para atualizar, manter e auditar máquinas Arch Linux"
 arch=('any')
 url="https://github.com/bernardopg/full-upgrade"
 license=('MIT')
-depends=('bash' 'pacman')
+depends=('bash' 'pacman' 'hicolor-icon-theme')
 optdepends=(
   'paru: atualização de pacotes AUR'
   'yay: alternativa ao paru para AUR'
   'reflector: atualização da mirrorlist'
   'pacman-contrib: paccache e pacdiff (.pacnew)'
+  'yad: ícone de bandeja (--tray)'
+  'libnotify: notificações desktop'
+  'xdg-utils: abrir último log e integrar com desktop'
+  'xdg-terminal-exec: escolher terminal para ações do systray'
   'flatpak: atualização de aplicações Flatpak'
   'fwupd: atualização de firmware'
   'btrfs-progs: snapshots e doctor de saúde btrfs'
@@ -21,7 +25,7 @@ optdepends=(
 )
 makedepends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('25109251ef4390491d63915b96475f8664879b86eaaac8784fe4f7162b63f07c')
+sha256sums=('c601ff2e914f7ad5f03f5a560dcaf645390b40b9f06e7cbefd30b749bc55235a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -44,6 +48,11 @@ package() {
 
   # Config de exemplo (o usuário copia para ~/.config/full-upgrade/config).
   install -Dm644 config.example "${pkgdir}/usr/share/${pkgname}/config.example"
+
+  # Ícones/desktop/service do systray opcional.
+  install -Dm644 assets/icons/*.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
+  install -Dm644 res/full-upgrade-tray.desktop "${pkgdir}/usr/share/applications/full-upgrade-tray.desktop"
+  install -Dm644 res/full-upgrade-tray.service "${pkgdir}/usr/lib/systemd/user/full-upgrade-tray.service"
 
   # Documentação e licença.
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
