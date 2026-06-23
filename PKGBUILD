@@ -2,9 +2,9 @@
 
 _suffix=rc
 pkgname="obs-studio-${_suffix}"
-_pkgver=32.1.2
+_pkgver=32.2.0-beta2
 pkgver="${_pkgver//-/_}"
-pkgrel=3
+pkgrel=1
 epoch=13
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
