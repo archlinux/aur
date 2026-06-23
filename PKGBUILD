@@ -11,7 +11,7 @@ license=(GPL-3.0-or-later)
 depends=(kio knotifications kcrash kglobalaccel kcmutils libepoxy kwin)
 conflicts=()
 provides=("${pkgname%-git}")
-makedepends=(git cmake extra-cmake-modules qt6-tools kwin)
+makedepends=(git cmake extra-cmake-modules qt6-tools kwin vulkan-headers)
 
 # Build from upstream git source.
 source=("${pkgname}::git+https://github.com/4v3ngR/kwin-effects-glass.git")

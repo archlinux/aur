@@ -10,6 +10,7 @@ pkgbase = kwin-effects-glass-git
 	makedepends = extra-cmake-modules
 	makedepends = qt6-tools
 	makedepends = kwin
+	makedepends = vulkan-headers
 	depends = kio
 	depends = knotifications
 	depends = kcrash
