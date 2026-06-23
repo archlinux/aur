@@ -7,7 +7,7 @@ pkgname=(
   "viewfinder-data-gog-bin"
   "viewfinder-launcher"
 )
-pkgver=1.0.6+gog80943
+pkgver=1.1.4+gog91670
 pkgrel=1
 epoch=0
 arch=(
