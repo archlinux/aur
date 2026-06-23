@@ -1,6 +1,6 @@
 # Maintainer: vaelixd <vaelixd@proton.me>
 pkgname="flockosi-git"
-pkgver=0.1.0
+pkgver=r6.ec69f14
 pkgrel=1
 pkgdesc="A flexible, configurable ISO builder inspired by mkosi"
 arch=('x86_64')
@@ -29,7 +29,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "%s" "$(git describe --long --tags | sed 's/v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

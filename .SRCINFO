@@ -1,6 +1,6 @@
 pkgbase = flockosi-git
 	pkgdesc = A flexible, configurable ISO builder inspired by mkosi
-	pkgver = 0.1.0
+	pkgver = r6.ec69f14
 	pkgrel = 1
 	url = https://codeberg.org/Songbird-Project/flockosi
 	arch = x86_64
