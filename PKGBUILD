@@ -1,6 +1,6 @@
 # Maintainer: Aspen Schneider <rendezvous71 at outlook dot com>
 pkgname=swingby
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A small GUI library for Wayland client programming - rendered with Skia"
 arch=('x86_64')
