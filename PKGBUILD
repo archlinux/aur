@@ -1,8 +1,8 @@
 # Maintainer: LIghtJUNction <lightjunction@users.noreply.github.com>
 
 pkgname=cortexfs-git
-pkgver=0.1.0.r144.gcb53179
-pkgrel=2
+pkgver=0.1.0.r145.gae69b47
+pkgrel=1
 pkgdesc="CortexFS v1 Agent OS ABI core and CLI"
 arch=('x86_64')
 url="https://github.com/LIghtJUNction/cortexfs"
