@@ -1,7 +1,7 @@
 # Maintainer: Anand Pant
 
 pkgname=nyrra-foundry-cli-bin
-pkgver=0.0.16
+pkgver=0.0.20
 pkgrel=1
 pkgdesc="Foundry DevOps automation CLI"
 arch=('x86_64')
@@ -12,8 +12,8 @@ makedepends=('github-cli')
 provides=('nyrra-foundry-cli')
 conflicts=('nyrra-foundry-cli')
 
-_asset='nyrra-foundry-cli_0.0.16_linux_amd64.tar.gz'
-_sha256='48636ebfb8041b3c0d84d3de7d42f3689ef2acae7bae6680a4bbccadf712c25d'
+_asset='nyrra-foundry-cli_0.0.20_linux_amd64.tar.gz'
+_sha256='588b279672d2368cc0ac1863c3918389d1978cda64963fd2a8fd66027033fd2d'
 
 prepare() {
   gh release download "v${pkgver}" \
