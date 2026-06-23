@@ -1,3 +1,40 @@
+
+S3QL 6.2.2 (2026-06-07)
+=======================
+
+* Fixed a crash in the HTTP client when a server emits more than one Date header in a response (observed against some real OpenStack Swift deployments).
+* Fixed a crash when using the Amazon S3 backend and attempting to delete multiple objects.
+* Fixed the Google Cloud Storage backend hanging indefinitely on startup when the server returns Content-Type: application/json; charset=utf-8 (without quotes around the charset value).
+* Fixed the Backblaze B2 backend (b2:// URL scheme): startup no longer fails with HTTPError: 403 for accounts whose bucket does not live in the us-east-005 region.
+* This release still ships with the b2old:// backend in case some users are unable to use the rewritten b2:// backend. The b2old backend will be removed in a future release if no regressions are reported - so please file an issue at https://github.com/s3ql/s3ql/issues if you encounter any problems with b2://.
+
+S3QL 6.2.0 (2026-05-31)
+=======================
+
+* The Backblaze B2 backend has been rewritten to use Backblaze's S3-compatible endpoint rather than the native B2 API. The b2:// URL scheme is unchanged; existing filesystems are fully readable by the new backend. The old native backend is temporarily available under the      b2old:// scheme for users who encounter regressions. The b2old backend will be removed in a future release if no regressions are reported.
+* On backends without a native batch-delete API (Google Cloud Storage, and the new B2 backend), object deletion during mount/unmount, fsck, and s3qladm shrink-db is now parallelized across all available HTTP connections, reducing the time proportionally to the connection pool size.
+* s3qladm clear now uses native batch-delete endpoints on S3 and Swift. On other backends the parallel fan-out described above applies.
+* Upload and eviction of cache entries should be faster for large caches (performance is no longer linear in cache size).
+* S3QL now now uses on h11 and httpcore instead of S3QL's own HTTP/1.1 implementation.
+
+S3QL 6.1.0 (2026-05-08)
+=======================
+
+* Mounting and unmounting filesystems with many metadata blocks is now significantly faster: per-block metadata uploads and downloads run in parallel across the backend connection pool, instead of serialising on a single connection.
+* mkfs.s3ql, fsck.s3ql, s3qladm and s3ql_verify now accept --max-connections and --max-threads, matching the options that mount.s3ql already exposed. s3ql_verify's old --parallel option has been removed in favour of the new flags.
+* s3qladm upgrade no longer crashes with a NoSuchObject error when run against a filesystem that is already at the current revision.
+* umount.s3ql now falls back to fusermount3 if fusermount is not installed. This makes umount work on distributions that ship libfuse 3 only (e.g. recent Debian/Ubuntu).
+* Fixed two issues in the Backblaze B2 backend: the async close() function now works correctly, and the upload connection is properly disconnected after a transient error instead of leaking the underlying TLS socket.
+
+S3QL 6.0.0 (2026-03-18)
+=======================
+
+* There have been significant changes in the internal architecture, but user-facing behaviour should remain mostly unchanged.
+* There are now separate limits for the maximum number of concurrent backend connections, and concurrent compression/encryption threads. mount.s3ql's --threads flag has been replaced with --max-connections and --max-threads.
+* Creating metadata backups while the filesystem is mounted no longer blocks filesystem operations.
+* The documentation is now provided in HTML and manpage format only (no more PDF).
+* This release is signed with the key that was originally intended for S3QL 5.5 (i.e, signify/s3ql-5.5.pub in the last S3QL tarball). In the future, the key for the next version will be labelled as s3ql-next to prevent such confusion.
+
 S3QL 5.4.2 (2025-12-28)
 =======================
 
