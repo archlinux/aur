@@ -15,19 +15,6 @@ source=("bb-imager-cli-$pkgver::https://github.com/beagleboard/bb-imager-rs/arch
 sha256sums=('e2c6836fcbe92b9edea2ab51d4f2827906a9209d166502fe00871e57ce86e275'
             '94ef4a01c4dce3ac9b81a14ba7eb5c6ff090edc3524c1b67a64d3dd9232f4efd')
 
-prepare() {
-        cd "bb-imager-rs-$pkgver"
-
-        mkdir -p .cargo
-        cat > .cargo/config.toml <<EOF
-[source.crates-io]
-replace-with = "vendored-sources"
-
-[source.vendored-sources]
-directory = "${srcdir}/vendor"
-EOF
-}
-
 build() {
         cd "bb-imager-rs-$pkgver"
         make build-cli SYSTEM_DEPS=1 SHARED_HIDRAW=1 OFFLINE=1
