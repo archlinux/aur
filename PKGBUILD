@@ -1,7 +1,7 @@
 # Maintainer: Danila Vershinin <ciapnz@gmail.com>
 pkgname=gixy-ng
 _pyname=gixy_ng
-pkgver=0.2.47
+pkgver=0.2.49
 pkgrel=1
 pkgdesc="NGINX configuration static analyzer focused on security (maintained fork of yandex/gixy)"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('python-rich: prettier terminal output'
 provides=('gixy')
 conflicts=('gixy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('6729f4ae6b24ce554925bce51cbbca9e51785c31a2f85b923834c40c8d200dd1')
+sha256sums=('ee79f29ec5d7c80b4af66755d6d4966f26e9341923089a99d98f2f5c0973edf5')
 
 build() {
   cd "${_pyname}-${pkgver}"

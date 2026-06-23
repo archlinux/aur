@@ -1,6 +1,6 @@
 pkgbase = gixy-ng
 	pkgdesc = NGINX configuration static analyzer focused on security (maintained fork of yandex/gixy)
-	pkgver = 0.2.47
+	pkgver = 0.2.49
 	pkgrel = 1
 	url = https://gixy.getpagespeed.com/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = gixy-ng
 	optdepends = python-requests: ReDoS checks via external API
 	provides = gixy
 	conflicts = gixy
-	source = https://files.pythonhosted.org/packages/source/g/gixy_ng/gixy_ng-0.2.47.tar.gz
-	sha256sums = 6729f4ae6b24ce554925bce51cbbca9e51785c31a2f85b923834c40c8d200dd1
+	source = https://files.pythonhosted.org/packages/source/g/gixy_ng/gixy_ng-0.2.49.tar.gz
+	sha256sums = ee79f29ec5d7c80b4af66755d6d4966f26e9341923089a99d98f2f5c0973edf5
 
 pkgname = gixy-ng
