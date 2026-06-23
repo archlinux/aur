@@ -1,0 +1,16 @@
+pkgbase = sjnmusic-cli-git
+	pkgdesc = CLI client for sjnmusicd HTTP daemon
+	pkgver = r11.f67e43c
+	pkgrel = 1
+	url = https://github.com/serverjonas/SJNmusic
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = sjnmusicd-git
+	provides = sjnmusic-cli
+	conflicts = sjnmusic-cli
+	source = git+https://github.com/serverjonas/SJNmusic.git
+	sha256sums = SKIP
+
+pkgname = sjnmusic-cli-git
