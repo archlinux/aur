@@ -3,17 +3,18 @@
 
 _pyname=kafka
 pkgname=python-$_pyname
-pkgver=2.2.10
+pkgver=3.0.4
 pkgrel=1
 pkgdesc='Python client for Apache Kafka'
-arch=(x86_64 aarch64)
+arch=(any)
 url="https://github.com/dpkp/kafka-python"
 license=(Apache-2.0)
-depends=(python-snappy python-lz4 python-crc32c python-zstandard python-xxhash)
+depends=(python python-snappy python-lz4 python-crc32c python-zstandard python-xxhash)
 makedepends=(python-setuptools python-build python-installer python-wheel)
-checkdepends=(python-mock python-pytest-mock)
+checkdepends=(python-pytest-mock python-pytest-timeout)
+optdepends=('python-yaml: YAML logging config for the CLI')
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=('327d6ad1ab8cd191f307cc24df6cc03424e5b5deedf0796c0ef7485b75da82b8')
+sha256sums=('332c3926cddceb361ff6b766915adb1141e9fda28ad3f8af8d6a58722e7bed58')
 
 build() {
   cd "$srcdir/$_pyname-python-$pkgver"
@@ -30,7 +31,6 @@ check() {
   test-env/bin/python -m installer dist/*.whl
 
   mv $_pyname $_pyname-orig
-  sed -i 's/--timeout=300//' pytest.ini
 
   test-env/bin/python -m pytest -v test
 }
@@ -41,4 +41,6 @@ package() {
     --destdir="$pkgdir" \
     --compile-bytecode=2 \
     dist/*.whl
+
+  rm -r "$pkgdir"/usr/lib/python*/site-packages/test
 }
