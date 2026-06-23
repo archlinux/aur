@@ -3,7 +3,7 @@
 
 _name=mistralai
 pkgname=python-$_name
-pkgver=2.4.11
+pkgver=2.4.13
 pkgrel=1
 pkgdesc="Python Client SDK for the Mistral AI API."
 arch=('any')
@@ -11,6 +11,7 @@ url="https://github.com/mistralai/client-python"
 license=('MIT')
 depends=('python' 'python-httpx' 'python-pydantic' 'python-dateutil' 'python-typing-inspection' 'python-opentelemetry-api' 'python-opentelemetry-semantic-conventions' 'python-jsonpath-python')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-pyyaml' 'python-msgpack' 'python-opentelemetry-instrumentation-httpx' 'python-opentelemetry-sdk' 'python-opentelemetry-exporter-otlp-proto-http' 'python-pytest' 'python-pytest-asyncio' 'python-mcp' 'python-griffe' 'python-authlib' 'python-websockets' 'python-zstandard' 'python-google-auth')
 optdepends=('python-google-auth: gcp' 'python-requests: gcp'
             'python-mcp: agents' 'python-griffe: agents' 'python-authlib: agents'
             'python-websockets: realtime'
@@ -21,11 +22,22 @@ optdepends=('python-google-auth: gcp' 'python-requests: gcp'
             'python-cryptography: workflow_payload_encryption'
             'python-msgpack: workflow_payload_compression' 'python-zstandard: workflow_payload_compression')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('07a48728976c9fa92d8eb5a245b4f61f2d8893be39e79b7645a5779ec5823d9f')
+sha256sums=('17ddb24f2f47ea44728679a8c04c04b50413f887aac5e6b1988bfd6ae79237ae')
 
 build() {
   cd "$srcdir"/client-python-$pkgver
   python -m build --wheel --no-isolation
+}
+
+check(){
+  local pytest_options=(
+    -vv
+    --disable-warnings
+  )
+  cd "$srcdir"/client-python-$pkgver
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -P -m pytest "${pytest_options[@]}" tests
 }
 
 package() {
