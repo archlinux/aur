@@ -5,7 +5,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin-screencast-api
-pkgver=6.7.0
+pkgver=6.7.1
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=2
 pkgdesc='KWin with D-Bus API for screencast stream introspection'
@@ -87,11 +87,9 @@ makedepends=(extra-cmake-modules
 optdepends=('plasma-keyboard: virtual keyboard')
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/kwin-$pkgver.tar.xz{,.sig}
-        https://invent.kde.org/plasma/kwin/-/commit/cf00d9712316edecb4e1014bffe925136a74f072.patch
         screencast-dbus-api.patch)
-sha256sums=('d20b798094a9f58e57de55eca3d58b1cdcb7db2939eb8bf73918c4fab6d9aec5'
+sha256sums=('352bfb34efad1435071960ef4cd392b110a18e1c168d1fdc5cce6b43331d0875'
             'SKIP'
-            'cb57c6364bc887ef36a059c2f51ef3e3a23f89a1b62f0f58884aeb1ebdea7f36'
             'a86ce4aa125ffb43ecc3fae830a393302d401c3651acb28a432041aa924d9ce5')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
@@ -101,9 +99,6 @@ validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell
 
 prepare() {
   cd kwin-$pkgver
-  # https://bugs.kde.org/show_bug.cgi?id=520842#c17
-  # Disable Color Pipeline for NVIDIA
-  patch -Np1 -i ../cf00d9712316edecb4e1014bffe925136a74f072.patch
   # D-Bus API for screencast stream introspection
   patch -Np1 -i ../screencast-dbus-api.patch
 }
