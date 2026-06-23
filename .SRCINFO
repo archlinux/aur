@@ -1,0 +1,19 @@
+pkgbase = surrealkit-bin
+	pkgdesc = Schema management and migration tool for SurrealDB (binary release)
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/surrealdb/surrealkit
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = surrealkit
+	conflicts = surrealkit
+	options = !debug
+	source = LICENSE-v0.7.0::https://github.com/surrealdb/surrealkit/raw/v0.7.0/LICENSE
+	sha256sums = 2165441a9b0e6246a670d9e6219b3f47acd6443afe55a5931288795ecfeb4629
+	source_x86_64 = https://github.com/surrealdb/surrealkit/releases/download/v0.7.0/surrealkit-v0.7.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 686d57daac13ea9f3c2b753d8d4ec75ddc78b8baeef8a8977bbf621109186122
+	source_aarch64 = https://github.com/surrealdb/surrealkit/releases/download/v0.7.0/surrealkit-v0.7.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b292ce78f2dd40b3195d0c7df9f028d7d06f3fce9eb7378757a1e6185fb14636
+
+pkgname = surrealkit-bin
