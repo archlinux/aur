@@ -10,7 +10,6 @@ arch=('any')
 url="https://github.com/CamelliaTse/feel"
 license=('MIT')
 depends=('python')
-source=("feel")
 sha256sums=('SKIP')
 source=('git+https://github.com/Camelliatse/feel.git')
 
