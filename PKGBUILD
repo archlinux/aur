@@ -1,7 +1,7 @@
 # Maintainer: William Sandström <w.sandstrom@gmail.com>
 _pkgroot=typesense
 pkgname="${_pkgroot}-bin"
-pkgver=30.1
+pkgver=30.2
 pkgrel=1
 pkgdesc="A fast, typo-tolerant search engine for building delightful search experiences."
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ sha256sums=('ef4b613a67e00db11e419fbbbab704c878fd9cc91ac9b55bb47d13ffe4326c31'
             'be5d6252e0239e98f30273ae272aa101385b4fe51d00abdd3534eb3d50658528'
             'efd39e4aaa4acd14c0eece9b4090781939972d4ee5303e86162752d96706aac0'
             '55596bc915fd5e89712a53f6ceb66b486570b972014f09f18bb5fa72e27b5410')
-sha256sums_x86_64=('4a1c9ce33efa70b26e24a043bd48792856212845ee0061ea6b9f8a2b7ad76c89')
-sha256sums_aarch64=('39212289689b763ae219f322cb87d977b751662f5856b68543bccdaa448200ae')
+sha256sums_x86_64=('cd791605e7c6cc7be457794f534cd4b9f9d361781adb10e40020efc22840ebc3')
+sha256sums_aarch64=('a9b9d6e2927c863900306290e8532c17f66bdff34ef2ad043b24ed4ccec8a6bc')
 
 package() {
     cd "${srcdir}"
