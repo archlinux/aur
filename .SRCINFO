@@ -18,6 +18,6 @@ pkgbase = v2ray-rs
 	optdepends = polkit: one-time TUN privilege grant via pkexec
 	options = !lto
 	source = v2ray-rs-0.10.0.tar.gz::https://github.com/victorzhuk/v2ray-rs/archive/v0.10.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = eb94afb0d9daea2e21ef07cd7c7a05725c1ad351f9c5a0fc1c7ff89331dd00a4
 
 pkgname = v2ray-rs

@@ -16,7 +16,7 @@ optdepends=(
 options=(!lto)
 install=v2ray-rs.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('eb94afb0d9daea2e21ef07cd7c7a05725c1ad351f9c5a0fc1c7ff89331dd00a4')
 
 prepare() {
     cd "$pkgname-$pkgver"
