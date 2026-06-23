@@ -1,0 +1,21 @@
+pkgbase = zentorrent-bin
+	pkgdesc = Just a CLI torrent downloader. No UI, no BS!
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/subwaycookiecrunch/zentorrent
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = zentorrent
+	conflicts = zentorrent
+	options = !strip
+	source = README-3.0.0.md::https://raw.githubusercontent.com/subwaycookiecrunch/zentorrent/v3.0.0/README.md
+	source = LICENSE-3.0.0::https://raw.githubusercontent.com/subwaycookiecrunch/zentorrent/v3.0.0/LICENSE
+	sha256sums = 0b59c86623b0f0126653456773046da420f63cc3f87b37687019710f1b5c4802
+	sha256sums = 5eea9322571742b0584f859e0ee9dfc3958e7d82c597cdc29bff2b623cf07beb
+	source_x86_64 = zentorrent-x86_64-3.0.0::https://github.com/subwaycookiecrunch/zentorrent/releases/download/v3.0.0/zentorrent-linux-amd64
+	sha256sums_x86_64 = 65e5d7a13b9070d1814a4aaf125a457547d4fff73d0e6bc58fd0ceb2aeb13f3f
+
+pkgname = zentorrent-bin

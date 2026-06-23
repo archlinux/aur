@@ -1,0 +1,5 @@
+[zentorrent-bin]
+source = "github"
+github = "subwaycookiecrunch/zentorrent"
+use_latest_release = true
+prefix = "v"
