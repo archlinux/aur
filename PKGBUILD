@@ -35,6 +35,7 @@ package() {
   install -Dm755 target/release/ctx "$pkgdir/usr/bin/ctx"
   install -Dm755 target/release/cortexfs-mount "$pkgdir/usr/bin/cortexfs-mount"
   install -Dm755 target/release/cortexfs-agent-runtime "$pkgdir/usr/bin/cortexfs-agent-runtime"
+  install -Dm755 target/release/cortexfs-object-runner "$pkgdir/usr/bin/cortexfs-object-runner"
   install -Dm644 packaging/systemd/cortexfs.service "$pkgdir/usr/lib/systemd/system/cortexfs.service"
   install -Dm644 packaging/systemd/cortexfs-agent@.socket "$pkgdir/usr/lib/systemd/system/cortexfs-agent@.socket"
   install -Dm644 packaging/systemd/cortexfs-agent@.service "$pkgdir/usr/lib/systemd/system/cortexfs-agent@.service"
