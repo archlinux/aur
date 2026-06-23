@@ -11,6 +11,7 @@ pkgbase = screamingfrogseospider-jre
 	depends = bash
 	provides = screamingfrogseospider
 	conflicts = screamingfrogseospider
+	options = !debug
 	source = LICENSE
 	source = screamingfrogseospider
 	b2sums = 6cde786ef5e5bf0e2d1cb9403eb9bbe6923731e22263e1cd2b3c3f0258d6efb4151eba5b59ee9e87894d17af75f1f72509bd389d1425a9fcab37ba51d9b50cd7

@@ -12,6 +12,7 @@ provides=('screamingfrogseospider')
 conflicts=('screamingfrogseospider')
 depends=('ttf-font' 'bash')
 makedepends=('tar')
+options=('!debug')
 source=(
   "LICENSE"
   "screamingfrogseospider"
