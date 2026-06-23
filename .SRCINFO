@@ -1,6 +1,6 @@
 pkgbase = costa
 	pkgdesc = Communication-optimal shuffle and transpose algorithms.
-	pkgver = 2.2.4
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/eth-cscs/COSTA
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = costa
 	depends = glibc
 	depends = scalapack
 	provides = costa
-	source = costa-2.2.4.tar.gz::https://github.com/eth-cscs/COSTA/archive/v2.2.4.tar.gz
-	sha256sums = 2155af3696cd0db1d18f9da7325de6fbcd87833c5b9e62445229e17151f7fd0b
+	source = costa-2.3.2.tar.gz::https://github.com/eth-cscs/COSTA/archive/v2.3.2.tar.gz
+	sha256sums = 2beb8b30ab641693094efe0015e5cb7393c25cef4753deb67493e17d05f9a797
 
 pkgname = costa
