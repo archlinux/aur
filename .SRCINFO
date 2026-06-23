@@ -1,0 +1,19 @@
+pkgbase = python-jkey
+	pkgdesc = Python library for password management and TOTP verification
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/imjiaoyuan/jkey
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools>=61.0
+	depends = python>=3.10
+	depends = python-opencv>=4.9.0
+	options = !strip
+	options = !debug
+	source = python-jkey-0.1.8.tar.gz::https://github.com/imjiaoyuan/jkey/archive/v0.1.8.tar.gz
+	sha256sums = b1b567f9cd11a56c91b9341c4edb8c56f2a56ea4a2e7a329caf70eca1e0866e5
+
+pkgname = python-jkey
