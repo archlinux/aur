@@ -1,4 +1,4 @@
-# Maintainer: shimi.chen <shimi.chen@gmail.com>
+# Maintainer: Shimi Chen <shimi.chen@gmail.com>
 
 pkgname=python-pykrx
 _pkgname=pykrx
