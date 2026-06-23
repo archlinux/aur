@@ -1,6 +1,6 @@
 pkgbase = ai-memory
 	pkgdesc = Local-first long-term memory MCP server for AI coding agents
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/akitaonrails/ai-memory
 	install = ai-memory.install
@@ -16,7 +16,7 @@ pkgbase = ai-memory
 	options = !debug
 	backup = etc/ai-memory/config.toml
 	backup = etc/ai-memory/env
-	source = ai-memory-1.2.1.tar.gz::https://github.com/akitaonrails/ai-memory/archive/refs/tags/v1.2.1.tar.gz
-	sha256sums = dcd347ea1cc02b9e6af05264775733d1c6378439900a53da357d2b968eec7cf9
+	source = ai-memory-1.2.2.tar.gz::https://github.com/akitaonrails/ai-memory/archive/refs/tags/v1.2.2.tar.gz
+	sha256sums = b86f3f06c9dab32a415e7ce9b84e0cbf68885a6c2606ab777b1752132f89368e
 
 pkgname = ai-memory
