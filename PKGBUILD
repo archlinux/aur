@@ -1,6 +1,6 @@
 # Maintainer: Quicknode <support@quicknode.com>
 pkgname=qn-bin
-pkgver=0.1.12
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Command-line interface for the Quicknode SDK'
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('qn')
 conflicts=('qn')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.xz::https://github.com/quicknode/cli/releases/download/v$pkgver/quicknode-cli-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.xz::https://github.com/quicknode/cli/releases/download/v$pkgver/quicknode-cli-aarch64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('812ae898735e9cadea4eefd6b8a46914a58a8d5db320ee2c31c41eb70a7f5307')
-sha256sums_aarch64=('86fabd9b9c6ed9bd98f8b01415280d7913ec369f446eaf915004290507bf600f')
+sha256sums_x86_64=('7b6ad50b427f0e8d3b9eab4b848e7e42b5948fd0b21824ebaac49cc2e18a069d')
+sha256sums_aarch64=('1d6b440ead6f88359888fa89ebd2dc470248a549cba72ea4a064fb508abb7775')
 
 package() {
   local archdir
