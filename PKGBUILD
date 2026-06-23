@@ -24,7 +24,8 @@ source=(
 	"99-sprd.rules"
 )
 
-sha256sums=('c7bfe9681530312b8e99f7c88c0731e4d217a04bd05f9a824ce0740d560cc15d')
+sha256sums=('c7bfe9681530312b8e99f7c88c0731e4d217a04bd05f9a824ce0740d560cc15d'
+            '5b561bef25bd00650f7b4a236d291229623cdccf152bf6fdf8214aecc7d37e2e')
 
 _srcname=sfd_tool
 
