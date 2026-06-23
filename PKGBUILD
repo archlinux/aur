@@ -16,17 +16,23 @@ license=('GPL')
 depends=('x265' 'lib32-gcc-libs'  'lib32-libnuma')
 makedepends=('cmake' 'nasm' 'git')
 provides=('libx265.so')
-_tag=f0c1022b6be121a753ff02853fbe33da71988656
-source=("${pkgname#lib32-*}::git+${url}.git#tag=${pkgver}" "cstdint_missing.patch")
-sha256sums=('a6a10ca581c13d8f43713f198ac2164d02d44b6c70ca31ec54e6bdb59410cdf5'
-            'd97c14a03f32672ba84880e40dc934027117bd1c6a331f3351e08466598767ac')
+source=(
+  "${pkgname#lib32-*}::git+${url}.git#tag=${pkgver}"
+  "0001-Fix-build-with-GCC-15.patch"
+)
+b2sums=(
+  '1ad111130a64ca822b5b78dc84e0078e30bbadb67a9db16bdd6a860a4210c17701ae5681930e10ec3e6335ea767ac01391fc1a68ce5ca72450c4a075b664a348'
+  'af2ee0460c0c2f6f36e4f124a9ac16610e3884001262a6f08043fa1de4a85e2b5fd4fb12c64b8c94cfb59c3031bb7a1324e307fa2049e3378e2add9a58f5bd9e'
+)
 
 prepare() {
   cd "${pkgname#lib32-*}"
   # Fix CMake build error with latest CMake 4.0 release
   git cherry-pick --no-commit b354c009a60bcd6d7fc04014e200a1ee9c45c167
-  # Fix missing required cstdint include
-  patch -Np1 -i ../cstdint_missing.patch
+
+  # Fix build with GCC 15
+  git apply -3 ../0001-Fix-build-with-GCC-15.patch
+
 }
 
 build() {
