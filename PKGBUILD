@@ -40,7 +40,7 @@ build() {
     --runtime linux-$_CARCH \
     -o "$_artifacts" \
     /p:PublishSingleFile=true /p:Version=$pkgver /p:DebugSymbols=false \
-                                                                       && dotnet build-server shutdown # Build servers do not terminate automatically
+      && dotnet build-server shutdown # Build servers do not terminate automatically
 }
 
 package() {
