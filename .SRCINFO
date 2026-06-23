@@ -1,10 +1,11 @@
 pkgbase = junior-desktop
 	pkgdesc = The desktop app for Junior
 	pkgver = 2.0.33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Andrew-AI-JR/Desktop-Releases
 	arch = x86_64
 	license = ISC
+	makedepends = imagemagick
 	depends = gtk3
 	depends = libnotify
 	depends = nss
