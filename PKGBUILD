@@ -4,7 +4,7 @@ _electron="electron35"
 _reponame=ChatLab
 pkgbase="${_reponame,,}"
 pkgname=("${pkgbase}-cli" "${pkgbase}-desktop")
-pkgver=0.27.0
+pkgver=0.27.1
 pkgrel=1
 pkgdesc="Rediscover your social memories with local, AI-powered analysis"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgbase}-web@.service"
         "${pkgbase}-desktop.sh"
         "${pkgbase}.desktop")
-sha256sums=('b46d2edd6c94fed771c1f1c55c0675c0202f5b2121e72e23f0a88102b51a0496'
+sha256sums=('bb0008810c9cfdba8d79647c8a2257303dec60c31dc7eb998376b54f0c2f0f94'
             '82c5f90bb3ec326c87f0f2d71dda73f17b3871f61bb5a191f0be1e88d0b9a9c9'
             '4dcdf4d5d07e107c3a52bbb641a6f02084335d06c4501854c6bd17aa776a2e14'
             '3821adac2e719fb61967f438531eb5be8bbcd78b46e4c35cf9750a57b68393c4'
