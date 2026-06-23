@@ -1,25 +1,27 @@
 # Maintainer: Spinu Alexandru <spinualexandru@outlook.com>
 pkgname=asus-rog-touchpad-numpad
-pkgver=0.1.1.r8.f4ec1e5
+pkgver=0.2.0.r10.e3c804e
 pkgrel=1
 pkgdesc="Linux driver for ASUS ROG laptop touchpad numpad overlay with LED backlight control"
 arch=('x86_64')
 url="https://github.com/spinualexandru/asus-rog-touchpad-driver"
 license=('GPL-2.0-only')
-depends=('gcc-libs' 'glibc' 'libevdev')
+depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'git')
 install=$pkgname.install
 backup=('etc/modules-load.d/i2c-dev.conf')
 _reponame=asus-rog-touchpad-driver
-source=("git+$url.git")
+source=("git+$url.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "$_reponame"
+    local cargo_ver
+    cargo_ver="$(sed -n 's/^version = "\(.*\)"/\1/p' Cargo.toml | head -n1)"
     if git describe --tags --long &>/dev/null; then
         git describe --tags --long | sed 's/^v//;s/-/.r/;s/-/./'
     else
-        printf "0.1.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        printf "%s.r%s.%s" "$cargo_ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     fi
 }
 
