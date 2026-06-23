@@ -1,17 +1,20 @@
 pkgbase = shuli-bin
 	pkgdesc = Personal Knowledge Management Assistant.Double-chain, table, rich text, high performance, local first.书立，个体知识管理助手,双链、表格、富文本、高性能、本地优先
-	pkgver = 0.1.8
-	pkgrel = 2
+	pkgver = 0.10.7
+	pkgrel = 1
 	url = https://slinote.com/home
+	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-custom
-	depends = electron31
-	provides = shuli=0.1.8
+	depends = electron41
+	provides = shuli=0.10.7
 	conflicts = shuli
 	options = !emptydirs
-	source = shuli-0.1.8.rpm::https://file.slinote.com/installer/linux/shuli-0.1.8.x86_64.rpm
 	source = shuli.sh
-	sha256sums = b1097519b6889c458edc197f5d486e83ff98b5ca995de696e93698385db7a61f
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	source_aarch64 = shuli-0.10.7-aarch64.rpm::https://file.slinote.com/installer/linux-arm/shuli-0.10.7.aarch64.rpm
+	sha256sums_aarch64 = f5f17f2091a4c10812f3268cc577df688bbf76debd2f037bb25068fae2309fea
+	source_x86_64 = shuli-0.10.7-x86_64.rpm::https://file.slinote.com/installer/linux/shuli-0.10.7.x86_64.rpm
+	sha256sums_x86_64 = c31b73b0a61503f62070e7deac85e1862f9669dd5984d8059440078e1febd6d8
 
 pkgname = shuli-bin
