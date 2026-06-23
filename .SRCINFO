@@ -1,6 +1,6 @@
 pkgbase = s3ql
 	pkgdesc = A full-featured file system for online data storage.
-	pkgver = 5.4.2
+	pkgver = 6.2.2
 	pkgrel = 1
 	url = https://github.com/s3ql/s3ql
 	install = s3ql.install
@@ -15,12 +15,14 @@ pkgbase = s3ql
 	depends = python-apsw
 	depends = python-trio
 	depends = python-pyfuse3
+	depends = python-h11
+	depends = python-httpcore
 	depends = cython
 	optdepends = python-systemd: for enabling systemd support
 	optdepends = python-requests: for OAuth2 authentication with Google Storage
 	optdepends = python-google-auth: for ADC authentication with Google Storage
 	optdepends = python-google-auth-oauthlib: for browser-based authentication with Google Storage
-	source = https://github.com/s3ql/s3ql/releases/download/s3ql-5.4.2/s3ql-5.4.2.tar.gz
-	sha256sums = 3ec2e183d2c9a3eb46be9eb43a12866ad8e2640e3d7ad023431de5f406a605d0
+	source = https://github.com/s3ql/s3ql/releases/download/s3ql-6.2.2/s3ql-6.2.2.tar.gz
+	sha256sums = d8ee855f628baa0b175ed37c61851c8020e3e26fd8d494729817992edc23c08f
 
 pkgname = s3ql
