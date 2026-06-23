@@ -1,6 +1,6 @@
 # Maintainer: Bujju (https://github.com/BujjuIsABee)
 pkgname=shimelinux
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="An unofficial Linux port of Shimeji-ee Desktop Pet"
 arch=(any)
@@ -9,7 +9,7 @@ license=('BSD-3-Clause')
 depends=('libappindicator' 'java-runtime>=21')
 makedepends=('git' 'gradle' 'java-environment>=21')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BujjuIsABee/shimelinux/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9ba1ecf5a690414de509c4a4b59efe6c7504c56dfedff057ab8b6cbfe826e603')
+sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -24,7 +24,7 @@ package() {
     install -Dm755 "$srcdir/$pkgname-$pkgver/shimelinux.sh" "$pkgdir/usr/bin/$pkgname"
 
     # Create desktop entry
-    install -Dm644 "$srcdir/$pkgname-$pkgver/src/main/resources/img/icon.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -Dm644 "$srcdir/$pkgname-$pkgver/src/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
     install -Dm644 "$srcdir/$pkgname-$pkgver/shimelinux.desktop" -t "$pkgdir/usr/share/applications/"
 
     # Install licenses
