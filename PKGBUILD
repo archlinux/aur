@@ -4,7 +4,7 @@
 _slug=computerscare
 _name=computerscare-vcv-modules
 pkgname=vcvrack-computerscare
-pkgver=2.3.1
+pkgver=2.3.3
 pkgrel=1
 pkgdesc='Computerscare VCV Rack modules'
 arch=(aarch64 x86_64)
@@ -14,7 +14,7 @@ groups=(pro-audio vcvrack-plugins)
 depends=(gcc-libs vcvrack)
 makedepends=(simde zstd)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/freddyz/$_name/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d004aaac73e6622970c41c973153ca291e02951388f2048e4832ceb7522bcbca')
+sha256sums=('fd796202edf39104da72b5443c14177f8845ffad6090e4f7b55ce6e8e6642b1a')
 
 build() {
   cd $_name-$pkgver
