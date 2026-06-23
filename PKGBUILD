@@ -12,7 +12,9 @@ license=('MIT')
 depends=('python')
 source=("feel")
 sha256sums=('SKIP')
+source=('git+https://github.com/Camelliatse/feel.git')
 
 package() {
-    install -Dm755 "${srcdir}/feel" "${pkgdir}/usr/bin/feel"
+    install -Dm755 "${srcdir}/feel/feel" "${pkgdir}/usr/bin/feel"
+    install -Dm 755 "${srcdir}/feel/feel.1" "${pkgdir}/usr/share/man/man1/feel.1"
 }
