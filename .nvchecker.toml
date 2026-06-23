@@ -1,0 +1,4 @@
+[python-secure]
+source = "git"
+git = "https://github.com/TypeError/secure.py.git"
+prefix = "v"
