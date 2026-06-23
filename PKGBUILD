@@ -1,6 +1,6 @@
 # Maintainer: Jurek Kołosowski <jurek@kolosowscy.pl>
 pkgname=krunner-yubikey-oath
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="KDE Plasma 6 KRunner plugin for YubiKey and Nitrokey OATH (TOTP/HOTP) integration"
 arch=('x86_64')
@@ -31,7 +31,7 @@ makedepends=(
     'clang'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jkolo/yubikey-oath-krunner/archive/v${pkgver}.tar.gz")
-sha256sums=('87ab2bdc7c8b0ec94fa3c272db71556914cb9963764657cf91f27521cfce1fc8')
+sha256sums=('c0a13f5373dfaf24fab225669da2911694635b4c24fbeb4dd1fa81863fc855ce')
 
 build() {
     cd "${srcdir}/yubikey-oath-krunner-${pkgver}"
