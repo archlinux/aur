@@ -1,6 +1,6 @@
 # Maintainer: Xefreh
 pkgname=zcode-appimage
-pkgver=3.1.2
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="ZCode desktop app packaged from the upstream AppImage"
 arch=('x86_64')
