@@ -2,12 +2,13 @@
 
 pkgname=stem
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="st terminal with kitty graphics, scrollback and configuration via Xresources"
 arch=('x86_64')
 url="https://github.com/deonspengler/stem"
 license=('MIT')
 depends=('libxft' 'imlib2')
+optdepends=('terminus-font: xos4 Terminus, the default font in the shipped config')
 provides=('st')
 conflicts=('st')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")

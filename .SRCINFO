@@ -1,12 +1,13 @@
 pkgbase = stem
 	pkgdesc = st terminal with kitty graphics, scrollback and configuration via Xresources
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deonspengler/stem
 	arch = x86_64
 	license = MIT
 	depends = libxft
 	depends = imlib2
+	optdepends = terminus-font: xos4 Terminus, the default font in the shipped config
 	provides = st
 	conflicts = st
 	source = stem-0.9.3.tar.gz::https://github.com/deonspengler/stem/archive/refs/tags/0.9.3.tar.gz
