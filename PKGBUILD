@@ -7,6 +7,8 @@ pkgdesc="Secrets scanner for repositories"
 arch=('x86_64' 'aarch64')
 url="https://trufflesecurity.com/$_name"
 license=('AGPL-3.0-only')
+provides=("$_name")
+conflicts=("$_name")
 depends=(
   'glibc'
 )

@@ -9,6 +9,8 @@ pkgbase = trufflehog-git
 	makedepends = git
 	makedepends = go>=1.25.0
 	depends = glibc
+	provides = trufflehog
+	conflicts = trufflehog
 	source = git+https://github.com/trufflesecurity/trufflehog
 	b2sums = SKIP
 
