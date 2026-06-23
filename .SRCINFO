@@ -1,6 +1,6 @@
 pkgbase = python-sphinx-collections
 	pkgdesc = Sphinx extension for collecting external data for Sphinx build
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://sphinx-collections.readthedocs.io
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-sphinx-collections
 	makedepends = python-installer
 	makedepends = python-sphinx
 	makedepends = python-gitpython
-	source = https://github.com/useblocks/sphinx-collections/archive/refs/tags/0.3.1.tar.gz
-	md5sums = cb7e7171c323071edd961eefd17ca069
+	source = https://github.com/useblocks/sphinx-collections/archive/refs/tags/0.3.2.tar.gz
+	md5sums = 23472ed396a59b8a9fc1cf181e5be6b6
 
 pkgname = python-sphinx-collections
 	depends = python-sphinx>=4.0

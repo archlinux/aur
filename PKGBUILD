@@ -2,9 +2,11 @@
 
 pkgbase=python-sphinx-collections
 _pyname=${pkgbase#python-}
+#_pname=${pkgbase#python-}
 #_pyname=${_pname//-/_}
 pkgname=("python-${_pyname}"  "python-${_pyname}-doc")
-pkgver=0.3.1
+#pkgname=("python-${_pname}"  "python-${_pname}-doc")
+pkgver=0.3.2
 #_commit="37b54c0a78e1772aabe13634ea2e2211749ac865"
 pkgrel=1
 pkgdesc="Sphinx extension for collecting external data for Sphinx build"
@@ -21,7 +23,7 @@ checkdepends=('python-pytest')    # sphinx, gitpython already in makedepends
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/useblocks/sphinx-collections/archive/refs/tags/${pkgver}.tar.gz")
 #source=("https://github.com/useblocks/sphinx-collections/archive/${_commit}.tar.gz")
-md5sums=('cb7e7171c323071edd961eefd17ca069')
+md5sums=('23472ed396a59b8a9fc1cf181e5be6b6')
 
 #get_pyinfo() {
 #    [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
@@ -37,7 +39,7 @@ md5sums=('cb7e7171c323071edd961eefd17ca069')
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
 #   cd ${srcdir}/${_pyname}-${_commit}
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation --skip-dependency-check
 
     msg "Building Docs"
 #   mkdir -p dist/lib
