@@ -1,7 +1,7 @@
 # Maintainer: Jerzy Kołosowski <jerzy@kolosowscy.pl>
 
 pkgname=plasma-screencastborder-effect
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Visual border indicator effect for active screencasts in KDE Plasma'
 arch=(x86_64)
