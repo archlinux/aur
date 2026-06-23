@@ -3,11 +3,11 @@
 
 pkgname=gosuki-git
 _pkgname=${pkgname%-git}
-pkgver=v1.3.0.r38.g346c366
+pkgver=v1.4.0.r3.gf6e0b4f
 pkgrel=1
 pkgdesc="Multi-browser, real-time, extension-free bookmark manager with p2p synchronization and archiving"
 arch=('i686' 'x86_64')
-makedepends=(git git-lfs go make sqlite)
+makedepends=(git go make sqlite)
 url='https://github.com/blob42/gosuki'
 license=(AGPL3)
 sha256sums=(SKIP)
@@ -19,17 +19,6 @@ pkgver() {
   cd ${pkgname%-git}
   git describe --tags | sed "s+-+.r+" | tr - .
 
-}
-
-prepare() {
-    msg2 'Setting up repository...'
-    cd "${_pkgname}"
-    git lfs install --local
-    if ! git remote -v | grep -q 'network-origin'; then
-      git remote add network-origin ${url};
-    fi
-    git lfs fetch network-origin
-    git lfs checkout
 }
 
 build() {
