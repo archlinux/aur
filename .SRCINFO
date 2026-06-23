@@ -1,0 +1,16 @@
+pkgbase = cloudyy-system-monitor-git
+	pkgdesc = NDJSON system stats daemon for Quickshell (cloudyy-linux)
+	pkgver = 0.1.0.r2.3517d14
+	pkgrel = 1
+	url = https://github.com/schultz-dev0/cloudyy-system-monitor
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = cloudyy-system-monitor
+	conflicts = cloudyy-system-monitor
+	source = cloudyy-system-monitor-git::git+https://github.com/schultz-dev0/cloudyy-system-monitor.git
+	sha256sums = SKIP
+
+pkgname = cloudyy-system-monitor-git
