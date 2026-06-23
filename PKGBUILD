@@ -1,13 +1,13 @@
 # Maintainer: Markus Hartung <mail@hartmark.se>
 
 pkgname=glsmac-git
-pkgver=0.3.f239b59b
+pkgver=0.3.r1260.a94bf3b6
 pkgrel=1
 pkgdesc='Unofficial open-source OpenGL/SDL2 reimplementation of Sid Meier''s Alpha Centauri ( + Alien Crossfire )'
 arch=('x86_64')
 url='https://github.com/afwbkbc/glsmac'
 license=('AGPL-3.0-only')
-depends=(glew sdl2 gcc-libs libglvnd yaml-cpp sdl2_image glibc freetype2 uuid sh)
+depends=(glew sdl2 libglvnd yaml-cpp sdl2_image freetype2 uuid glibc libstdc++ libgcc)
 makedepends=(git cmake base-devel)
 source=("${pkgname}::git+https://github.com/afwbkbc/glsmac.git")
 sha256sums=('SKIP')
@@ -20,7 +20,7 @@ prepare() {
 
 pkgver() {
   cd "${pkgname}"
-  printf "%s.%s\n" "$(grep -Eo 'v(0\.[0-9])' CHANGELOG.md | sed 's/v//' | head -1)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s\n" "$(grep -Eo 'v(0\.[0-9])' CHANGELOG.md | sed 's/v//' | head -1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
