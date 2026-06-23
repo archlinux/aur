@@ -1,6 +1,6 @@
 pkgbase = monero-gui-static-bin
 	pkgdesc = Monero: the secure, private, untraceable peer-to-peer currency
-	pkgver = 0.18.4.4
+	pkgver = 0.18.5.0
 	pkgrel = 1
 	url = https://www.getmonero.org/downloads/#gui
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = monero-gui-static-bin
 	provides = monero-gui
 	conflicts = monero
 	conflicts = monero-gui
-	source = https://downloads.getmonero.org/gui/monero-gui-linux-x64-v0.18.4.4.tar.bz2
-	sha256sums = e45cb3fa9d972d67628cfed6463fb7604ae1414a11ba449f5e2f901c769ac788
+	source = https://downloads.getmonero.org/gui/monero-gui-linux-x64-v0.18.5.0.tar.bz2
+	sha256sums = 99d7e9b1e8084f09bdf837dd862ad96c47a86292bdbd6c2f6b3aaa46ff510b62
 
 pkgname = monero-gui-static-bin
