@@ -2,7 +2,7 @@
 pkgname=saber-bin
 _appname="com.adilhanney.${pkgname%-bin}"
 _pkgname=Saber
-pkgver=1.34.2
+pkgver=1.34.3
 pkgrel=1
 pkgdesc="The cross-platform open-source app built for handwriting.(Prebuilt version)"
 arch=(
@@ -41,7 +41,7 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/usr" "${pkgdir}"
+    cp -a "${srcdir}/usr" "${pkgdir}"
     rm -rf "${pkgdir}/usr/lib/${pkgname%-bin}/share"
     install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/share/icons/hicolor/scalable/apps/${_appname}.svg" \
         "${pkgdir}/usr/share/hicolor/scalable/apps/${pkgname%-bin}.svg"
