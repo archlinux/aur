@@ -1,25 +1,25 @@
 # Maintainer: Anton Kudelin <kudelin at proton dot me>
 
 pkgname=quickfix
-pkgver=1.15.1
-pkgrel=6
+pkgver=1.16.0
+pkgrel=1
 pkgdesc="C++ Fix Engine Library"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="http://www.quickfixengine.org"
-license=('custom:The QuickFIX Software License, Version 1.0')
+license=('LicenseRef-QuickFIX')
 depends=(python tbb)
 optdepends=(mysql postgresql-libs ruby)
 makedepends=(boost python-setuptools)
-checkdepends=(ruby)
-source=($pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz
-        unit_test.patch)
-sha256sums=('1c4322a68704526ca3d1f213e7b0dcd30e067a8815be2a79b2ab1197ef70dcf7'
-            '238110374f3082db505cd0574b67d20aeb23c36e76f68ea7b2e277d8e1b3cada')
+checkdepends=(ruby psmisc)
+source=($pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz)
+sha256sums=('6eb0e678288473e57db220d3bf53c4d5c92814629ca548af09ca7e365fd7ee70')
 options=(!lto)
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  patch -p1 < ../unit_test.patch
+  # kill leftover test server that hangs the build
+  sed -i 's| 2 &&> /dev/null| 2>/dev/null|' test/runat.sh
+  sed -i 's|^exit $RESULT|kill "$PROCID" 2>/dev/null\n&|' test/runat.sh
   ./bootstrap
 }
 
