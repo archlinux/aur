@@ -1,7 +1,7 @@
 # Maintainer: animawave <animawave@github.com>
 pkgname=animawave-git
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Internet radio player (fork of shortwave)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/animaios/animawave"
