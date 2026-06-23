@@ -17,9 +17,9 @@ pkgname=(
 	$_basename-server
 	$_basename-unixd-clients
 )
-pkgver=1.10.3
+pkgver=1.10.4
 _realver=${pkgver/_/-}
-pkgrel=2
+pkgrel=1
 pkgdesc='A identity management service and clients.'
 url='https://github.com/kanidm/kanidm'
 source=(
@@ -29,7 +29,7 @@ arch=(x86_64 aarch64)
 license=(MPL-2.0)
 makedepends=(cargo systemd clang tpm2-tss lld)
 options=(!buildflags)
-sha256sums=('7c9bd65a0e877d0fabac32baeb085b191654bcba8d345df012106339365e8717')
+sha256sums=('826f63b9b30bf653b08ecb830ba9ecb432745141803bc4a4f016b5d0085321da')
 
 
 build () {
