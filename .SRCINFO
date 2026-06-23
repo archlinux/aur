@@ -1,0 +1,15 @@
+pkgbase = apparmor-language-server
+	pkgdesc = Language server for AppArmor profiles
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://gitlab.com/apparmor/apparmor-language-server
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pygls
+	depends = python-lsprotocol
+	source = https://gitlab.com/apparmor/apparmor-language-server/-/archive/v0.8.2/apparmor-language-server-v0.8.2.tar.gz
+	sha256sums = c68d0b8ab7cca56e745fb2712164088610caa5f89daff91dcba89fb9b1e1d706
+
+pkgname = apparmor-language-server
