@@ -34,16 +34,21 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  zig build -Doptimize=ReleaseSafe
+  zig build \
+    -Doptimize=ReleaseFast \
+    --prefix "$srcdir/${pkgname%-git}/install" \
+    --cache-dir "$srcdir/${pkgname%-git}/.zig-cache" \
+    --global-cache-dir "$srcdir/${pkgname%-git}/.zig-global-cache" \
+    --summary all
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
 
-  install -Dm0755 zig-out/bin/flockosi "$pkgdir/usr/bin/flockosi"
+  install -Dm0755 "$srcdir/${pkgname%-git}/install/bin/flockosi" "$pkgdir/usr/bin/flockosi"
 
   install -d "$pkgdir/etc"
-  cp -r zig-out/etc/flockosi "$pkgdir/etc/flockosi"
+  cp -r "$srcdir/${pkgname%-git}/install/etc/flockosi" "$pkgdir/etc/flockosi"
 
   install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
