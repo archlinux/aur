@@ -8,7 +8,7 @@ provides=('python-cantools')
 conflicts=('python-cantools')
 pkgdesc="Python CAN bus tools in Python 3"
 url="https://github.com/eerimoq/cantools"
-pkgver=41.4.3
+pkgver=42.0.0
 pkgrel=1
 arch=('any')
 license=('MIT')
@@ -37,7 +37,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('5c9919b9c61a3f05bf5b7a260ab1ce93')
+md5sums=('09dddb9b216f364cabffdeeabd3b435a')
 
 build() {
 	cd "$srcdir/$_gitname-$pkgver"
