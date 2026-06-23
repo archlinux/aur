@@ -2,7 +2,7 @@
 
 pkgname=ai-memory-bin
 _pkgname=ai-memory
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Local-first long-term memory MCP server for AI coding agents (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -19,9 +19,9 @@ install=ai-memory.install
 options=('!strip' '!debug')
 
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz")
-sha256sums_x86_64=('eb0d6546c46b8b21b9c7d9d06946e3a1fc7fa27b17f2aefb7c9555695fa285ae')
+sha256sums_x86_64=('db43d76ce48e8d92c71badeb8c7e8261a88150b7bf3b338f38e73a74b81c0d19')
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64.tar.gz")
-sha256sums_aarch64=('1c97b3e1e1bde86e165062a25bd9e506181b2bccd9be8adb8914f011560de36f')
+sha256sums_aarch64=('b861a33872ae96ae3da880f49c95e2e409ed6021609c43a1334819835b8ccecd')
 
 package() {
     install -Dm0755 ai-memory "$pkgdir/usr/bin/ai-memory"
