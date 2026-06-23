@@ -11,7 +11,7 @@ url="https://github.com/CamelliaTse/feel"
 license=('MIT')
 depends=('python')
 sha256sums=('SKIP')
-source=('git+https://github.com/Camelliatse/feel.git')
+source=('feel::git+https://github.com/Camelliatse/feel.git')
 
 package() {
     install -Dm755 "${srcdir}/feel/feel" "${pkgdir}/usr/bin/feel"
