@@ -6,7 +6,7 @@
 # relevant tool is on PATH. Errors are swallowed so a minimal chroot
 # without the helper still finishes the install — a kbuildsycoca.hook
 # alacarte handles the canonical sycoca refresh on KDE installs.
-_pz_refresh_caches() {
+_p_refresh_caches() {
     if [[ -x /usr/bin/gtk-update-icon-cache ]]; then
         /usr/bin/gtk-update-icon-cache -qtf /usr/share/icons/hicolor 2>/dev/null || true
     fi
@@ -22,7 +22,7 @@ _pz_refresh_caches() {
 }
 
 post_install() {
-    _pz_refresh_caches
+    _p_refresh_caches
     echo ""
     echo "══════════════════════════════════════════════════════════════════"
     echo "  PlasmaZones installed successfully!"
@@ -40,7 +40,7 @@ post_install() {
 }
 
 post_upgrade() {
-    _pz_refresh_caches
+    _p_refresh_caches
     echo ""
     echo "══════════════════════════════════════════════════════════════════"
     echo "  PlasmaZones upgraded!"
@@ -63,7 +63,7 @@ post_remove() {
     if command -v systemctl >/dev/null 2>&1; then
         systemctl --global disable plasmazones.service 2>/dev/null || true
     fi
-    _pz_refresh_caches
+    _p_refresh_caches
     echo ""
     echo "  PlasmaZones removed. The systemd unit symlink has been"
     echo "  disabled; per-user state under ~/.config/plasmazones/ and"
