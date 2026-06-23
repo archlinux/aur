@@ -8,6 +8,10 @@ url="https://github.com/prietus/irkt"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
+optdepends=(
+  'hunspell-en_us: English autocomplete (ghost text)'
+  'hunspell-es_es: Spanish autocomplete (ghost text)'
+)
 provides=('irkt')
 conflicts=('irkt' 'irkt-bin')
 source=("$pkgname::git+https://github.com/prietus/irkt.git")
