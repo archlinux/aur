@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=patent
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A prior-art search for your code ideas. Stop building what already exists.'
 arch=(
@@ -33,7 +33,7 @@ source=(
 )
 install=patent.install
 sha256sums=(
-    '8ab25c3b1158b1a66cc3d5748c92bcb82af448c1c2e0bb147ef83ff81e464025'
+    'a221d9f82c8f69fabf66eee3415f7a118eeb442fe1d549352679b7f4ee17edb8'
     '24dff75c38b578cb7e8057366a764cb4313078f16bada568baf79ecde5cb49af'
 )
 
