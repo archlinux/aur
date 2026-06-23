@@ -28,7 +28,7 @@ makedepends=(
 )
 provides=('libx265.so')
 source=(
-  "${pkgname#lib32-*}::git+${url}.git#tag=${pkgver}"
+  "git+${url}#tag=${pkgver}"
   "0001-Fix-build-with-GCC-15.patch"
 )
 b2sums=(
@@ -37,9 +37,7 @@ b2sums=(
 )
 
 prepare() {
-  cd "${pkgname#lib32-*}"
-  # Fix CMake build error with latest CMake 4.0 release
-  git cherry-pick --no-commit b354c009a60bcd6d7fc04014e200a1ee9c45c167
+  cd x265_git
 
   # Fix build with GCC 15
   git apply -3 ../0001-Fix-build-with-GCC-15.patch
@@ -51,20 +49,46 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  cmake -B build -S ${pkgname#lib32-*}/source \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DLIB_INSTALL_DIR='lib32'  \
-    -DENABLE_SHARED='TRUE' \
-    -DENABLE_HDR10_PLUS='TRUE' \
-    -DEXTRA_LINK_FLAGS='-L .' \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+  local common_options=(
+    -S x265_git/source
+    -G Ninja
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D LIB_INSTALL_DIR=lib32
+    -D ENABLE_HDR10_PLUS=TRUE
+    -D ENABLE_ASSEMBLY=OFF
+    -W no-dev
+  ) hdr_options=(
+    "${common_options[@]}"
+    -D ENABLE_CLI=FALSE
+    -D ENABLE_SHARED=FALSE
+    -D EXPORT_C_API=FALSE
+    -D HIGH_BIT_DEPTH=TRUE
+  ) final_options=(
+    "${common_options[@]}"
+    -D ENABLE_SHARED=TRUE
+    -D EXTRA_LIB='x265_main10.a;x265_main12.a'
+    -D EXTRA_LINK_FLAGS='-L .'
+    -D LINKED_10BIT=TRUE
+    -D LINKED_12BIT=TRUE
+  )
 
-  make -C build
+  echo "Building build-10"
+  cmake -B build-10 "${hdr_options[@]}"
+  cmake --build build-10
 
+  echo "Building build-12"
+  cmake -B build-12 "${hdr_options[@]}" -D MAIN12=TRUE
+  cmake --build build-12
+
+  echo "Building build"
+  cmake -B build "${final_options[@]}"
+  ln -sr build-10/libx265.a build/libx265_main10.a
+  ln -sr build-12/libx265.a build/libx265_main12.a
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
   rm "${pkgdir}"/usr/bin  "${pkgdir}"/usr/include -Rf
 }
 
