@@ -1,6 +1,6 @@
 pkgbase = sigye
 	pkgdesc = A beautiful terminal clock with ASCII art fonts
-	pkgver = 0.4.3
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/am2rican5/sigye
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = sigye
 	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = sigye-0.4.3.tar.gz::https://github.com/am2rican5/sigye/archive/v0.4.3.tar.gz
-	sha256sums = 1303fab0d754803582acb5ae9cb78ace229ea925e9230523e895119bb0f5e475
+	source = sigye-0.5.0.tar.gz::https://github.com/am2rican5/sigye/archive/v0.5.0.tar.gz
+	sha256sums = 0d4ca742d5158c5ab29c0bfb01cb7991eb7fed7b428078f0722d5ec40969bce2
 
 pkgname = sigye
