@@ -1,6 +1,6 @@
 # Maintainer: Magus <packaging@example.com>
 pkgname=magelab-bin
-pkgver=0.11.10
+pkgver=0.11.11
 pkgrel=1
 pkgdesc="Mage Lab is a user-centric AI interface with local reasoning and tools"
 arch=('x86_64')
@@ -14,11 +14,11 @@ source=("LICENSE::https://raw.githubusercontent.com/majesticio/magelab/refs/head
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
 
 _magelab_zst_asset="magelab-bin-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst"
-_magelab_zst_url="https://cdn.crabnebula.app/asset/01KVRMQD7KFXGYHG5Z60XWEMY0"
-_magelab_zst_sha256='be140f46ffb0316a5031bf0424e2a8973b6afd2cfbe11350f1890bacafc33e63'
+_magelab_zst_url="https://cdn.crabnebula.app/asset/01KVS0NRYXS82RQ371X4F1E1XA"
+_magelab_zst_sha256='738006b9b9327fcfc4ed1a6fe679656248de9e2608bee8988af0793f9cbf1fbd'
 _magelab_deb_asset="magelab_${pkgver}_amd64.deb"
-_magelab_deb_url="https://cdn.crabnebula.app/asset/01KVRJACJV0NM1BW8GS9MW186Z"
-_magelab_deb_sha256='63c405b75cd2a7b469070f736b26dd41e959757c2b0d03c689c5109db560c86d'
+_magelab_deb_url="https://cdn.crabnebula.app/asset/01KVS09TVN488S7CHKQX7KYJZ6"
+_magelab_deb_sha256='cbd70c6694e39c2c2b32a0113d6c2becbfe6a19d35dd995ab4f549238c999c69'
 
 if [[ ${MAGELAB_BUILD_FROM_DEB:-0} != 0 ]]; then
   _magelab_source_type='deb'
