@@ -25,32 +25,67 @@ options=('!strip' '!debug')
 source=("${url}/archive/refs/tags/${_pkgver_tag}.tar.gz")
 sha256sums=('69b805ec0a7a7be880068ba8a3b17479d7ba29f0cac0a2e9c6692c02f346ba91')
 
-_srcdir="${srcdir}/hermes-agent-${_pkgver_tag#v}"
+# NOTE: ${srcdir} is empty at the top level of a PKGBUILD — makepkg only sets
+# it inside the function scope of prepare()/build()/package(). Computing the
+# extracted directory once at the top (as `_srcdir=...`) silently produces a
+# root-prefixed path (`/hermes-agent-2026.6.19`) and `cd` fails. Define a helper
+# and call it from each function instead.
+_extract_dir() {
+  echo "${srcdir}/hermes-agent-${_pkgver_tag#v}"
+}
 
 prepare() {
-  cd "${_srcdir}"
+  cd "$(_extract_dir)"
+  # write-build-stamp.cjs (run by apps/desktop's `build` script) needs a git
+  # commit SHA to stamp the packaged installer. The release tarball has no
+  # .git/ so `git rev-parse HEAD` fails — peel the tag with `^{}` to handle
+  # annotated tags and fetch the commit SHA from GitHub.
+  GITHUB_SHA=$(git ls-remote "https://github.com/NousResearch/hermes-agent" \
+    "refs/tags/${_pkgver_tag}^{}" 2>/dev/null | awk '{print $1}')
+  if [ -z "${GITHUB_SHA:-}" ]; then
+    error "Could not resolve ${_pkgver_tag} to a commit SHA via git ls-remote."
+    return 1
+  fi
+  export GITHUB_SHA GITHUB_REF_NAME="${_pkgver_tag}"
   npm install --prefer-offline --no-audit --ignore-scripts
 }
 
 build() {
-  cd "${_srcdir}/apps/desktop"
-  npm run dist:linux
+  cd "$(_extract_dir)/apps/desktop"
+  # electron-builder's FPM target (.deb/.rpm) requires a `homepage` in
+  # package.json's `build` section. Upstream omits it because they ship
+  # via the website installer rather than FPM. Inject it here so the
+  # .deb target produces output. `npm pkg set` is built into npm 7+ and
+  # patches the file in place.
+  npm pkg set homepage='https://hermes-agent.nousresearch.com/'
+  # Build only the `dir` target (unpacked directory) — skipping the
+  # .deb/.rpm/AppImage targets. The FPM binary that ships with
+  # electron-builder is a precompiled Ruby that links against the
+  # legacy glibc libcrypt.so.1, which modern Arch/CachyOS does not
+  # ship (the system has libcrypt.so.2 from libxcrypt instead). The
+  # unpacked directory contains exactly the same files that would land
+  # in /opt/Hermes/ via the .deb, so we can install them directly with
+  # no functional difference. This trades one extra build dep
+  # (libxcrypt-compat) for one fewer target, and produces a cleaner
+  # build that doesn't depend on FPM/Ruby at all.
+  # We invoke the build+builder scripts directly (rather than `npm run
+  # dist:linux`) so we can override the hardcoded `--linux AppImage deb
+  # rpm` in upstream's dist:linux script with `--linux dir`.
+  npm run build
+  npm run builder -- --linux dir
 }
 
 package() {
-  cd "${_srcdir}"
-  local deb
-  deb="$(ls apps/desktop/release/*.deb 2>/dev/null | head -n1 || true)"
-  if [ -z "${deb}" ]; then
-    msg2 "ERROR: no .deb produced by electron-builder"
+  cd "$(_extract_dir)"
+  local appdir="apps/desktop/release/linux-unpacked"
+  if [ ! -d "${appdir}" ]; then
+    msg2 "ERROR: electron-builder did not produce ${appdir}"
     ls -la apps/desktop/release/ 2>/dev/null || true
     return 1
   fi
-  bsdtar -xOf "${deb}" data.tar.xz | bsdtar -xJf - -C "${pkgdir}"
-  if [ -d "${pkgdir}/opt/${_upstream}" ]; then
-    mv "${pkgdir}/opt/${_upstream}" "${pkgdir}/opt/${pkgname}"
-  fi
-  rm -f "${pkgdir}/usr/share/applications/${_upstream}.desktop"
+  install -dm755 "${pkgdir}/opt/${pkgname}"
+  cp -a "${appdir}/." "${pkgdir}/opt/${pkgname}/"
+  chmod 755 "${pkgdir}/opt/${pkgname}/${_upstream}"
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/${_upstream}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${_pkgname}.desktop" <<EOF
