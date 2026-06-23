@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=requestly-bin
 _pkgname=Requestly
-pkgver=26.6.8
+pkgver=26.6.22
 _electronversion=23
 pkgrel=1
 pkgdesc="Debug your network request across all platforms and browsers using a single app.(Prebuilt version.Use system-wide electron)"
@@ -24,12 +24,15 @@ source=(
     "index.html-${pkgver}::https://raw.githubusercontent.com/requestly/http-interceptor-desktop-app/v${pkgver}/src/loadingScreen/index.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2e6d49abb2966a5024718253654e282a33de423f6dfd92da109657d286018bac'
+sha256sums=('9405640ca11d8fedc5436bf07210d28273d0609a12cfb9170e2cf2f13ff68326'
             '458836a4541233742fec5da1bf75b151cc0b1f879b0574f362ae793d055a233d'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
 _check_electron_version() {
     echo "Verifying Electron version..."
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _app_dir=$(_get_app_dir)
     local _main_exe=""
     if [[ -n "${_app_dir}" ]]; then
         _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
@@ -62,20 +65,21 @@ prepare() {
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _check_electron_version
-    sed -i "s/AppRun/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    local _app_dir=$(_get_app_dir)
+    sed -i "s/AppRun/${pkgname%-bin}/g" "${_app_dir}/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} +
     rm -rf \
-        "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/win-version-info/prebuilds" \
-        "${srcdir}/squashfs-root/resources/app.asar.unpacked/static/nss/"{darwin,win32} \
-        "${srcdir}/squashfs-root/resources/app.asar.unpacked/static/overrides/path/"*.bat
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/win-version-info/prebuilds" \
+        "${_app_dir}/resources/app.asar.unpacked/static/nss/"{darwin,win32} \
+        "${_app_dir}/resources/app.asar.unpacked/static/overrides/path/"*.bat
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
-    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${_app_dir}/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
+    install -Dm644 "${_app_dir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
