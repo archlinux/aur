@@ -1,6 +1,6 @@
 pkgbase = file-manager-bin
 	pkgdesc = Linux desktop file manager written in Rust and Iced
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/nsjsv/File_Manager
 	arch = x86_64
@@ -12,9 +12,10 @@ pkgbase = file-manager-bin
 	optdepends = ffmpeg: video preview and metadata support
 	optdepends = ffmpegthumbnailer: video thumbnail generation
 	optdepends = p7zip: 7z and rar archive preview support
+	optdepends = systemd: user service supervision for indexed search
 	provides = file-manager
 	conflicts = file-manager
-	source_x86_64 = https://github.com/nsjsv/File_Manager/releases/download/v0.0.8/file-manager-v0.0.8-x86_64.tar.gz
-	sha256sums_x86_64 = 324e75e7b2cf7e5350273ccd595a9a5f2e82e8da7230b1266139154ebcb715d0
+	source_x86_64 = https://github.com/nsjsv/File_Manager/releases/download/v0.0.9/file-manager-v0.0.9-x86_64.tar.gz
+	sha256sums_x86_64 = 56e01d6c8069777b32b664a44de676e384b6082a1c1c6b2132ee387ed94ad64c
 
 pkgname = file-manager-bin
