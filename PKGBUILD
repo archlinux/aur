@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.mx>
 pkgname=snowflake-pt-server
 _gitname=snowflake
-pkgver=2.11.0
+pkgver=2.14.0
 pkgrel=1
 pkgdesc="Snowflake is a pluggable transport that proxies traffic through temporary proxies using WebRTC"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD-3-Clause')
 depends=('libx11')
 makedepends=('git' 'go')
 source=("git+https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake.git#tag=v${pkgver}")
-b2sums=('e63f8c64f46ec70b66dd73d986ea3b60fe0e78d5b42e1386eeaae84685c2ef6f19dfc97c827faa7db91bf54e848559e167888e960f9c957fee66bd3e1afb0281')
+b2sums=('efaf353917ecd5f0910c7259025836680cb06c08653bea7132cf292e57fe7e8d13d9df0d2b6cd878f38fe59bfc0dab22bf341a232d87a207624845f25081ec46')
 
 build() {
   export GOPATH="$srcdir"
