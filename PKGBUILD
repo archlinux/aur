@@ -2,7 +2,7 @@
 
 pkgname=lagrange
 pkgrel=1
-pkgver=1.20.7
+pkgver=1.20.8
 pkgdesc="Beautiful Gemini Client"
 url="https://git.skyjake.fi/skyjake/lagrange"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -49,4 +49,4 @@ package() {
     make DESTDIR="$pkgdir" install
 }
 
-sha256sums=('979d83f69144512631d7386ab6b31ef97257157e1e3607ba58e0408377353c74')
+sha256sums=('eff268bf2f9e1b68b59d37172c06226e61868dcde792bdfc44e90987dc46c6c1')
