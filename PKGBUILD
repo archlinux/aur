@@ -2,9 +2,9 @@
 # Maintainer: Energetix/Dark Nebula <https://github.com/Jobanny-Friki>
 
 pkgname=marian-lite
-pkgver=0.2.9.1
-_pkgver=0.2.9-1
-pkgrel=2
+pkgver=0.2.9.2
+_pkgver=0.2.9-2
+pkgrel=1
 pkgdesc="Marian NMT lite"
 arch=('x86_64')
 url="https://github.com/terslang/marian-lite"
@@ -14,7 +14,7 @@ depends=('openblas' 'sqlitecpp' 'yaml-cpp'
 makedepends=('cmake' 'openblas' 'cli11' 'intgemm' 'pathie-cpp'
     'sqlitecpp' 'yaml-cpp' 'protobuf-21' 'sentencepiece-browsermt')
 source=("https://github.com/terslang/marian-lite/archive/refs/tags/v$_pkgver.tar.gz")
-sha256sums=('13a681c936f15c0d95d42fa78fc7c468aa3d08e40ee608e080b825098488c809')
+sha256sums=('47b3f3c5897c5c8b9f156afb8618e5ab6653dc0abd460abe71e3df7deedc4efa')
 
 prepare() {
     cd "$srcdir/marian-lite-$_pkgver"
