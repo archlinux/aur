@@ -2,7 +2,7 @@
 
 pkgbase=autocorrect-rs-git
 pkgname=autocorrect-git
-pkgver=2.13.3.r3.gb775e19
+pkgver=2.16.3.r2.ge1a75da
 pkgrel=1
 pkgdesc="A linter and formatter to help you to improve copywriting, correct spaces, words, and punctuations between CJK (Chinese, Japanese, Korean)."
 arch=($CARCH)
@@ -31,7 +31,7 @@ pkgver() {
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
     cd "${srcdir}/${pkgname}"
-    #     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target host-tuple
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
