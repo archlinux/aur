@@ -1,7 +1,7 @@
 pkgbase = postybirb-plus-bin
 	pkgdesc = An application that helps artists post art and other multimedia to multiple websites more quickly.(Prebuilt version.Use system-wide electron)
 	pkgver = 3.1.71
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mvdicarlo/postybirb-plus
 	arch = x86_64
 	license = BSD-3-Clause
@@ -12,7 +12,7 @@ pkgbase = postybirb-plus-bin
 	source = postybirb-plus-3.1.71-x86_64.AppImage::https://github.com/mvdicarlo/postybirb-plus/releases/download/v3.1.71/postybirb-plus-3.1.71-x86_64.AppImage
 	source = LICENSE-3.1.71::https://raw.githubusercontent.com/mvdicarlo/postybirb-plus/v3.1.71/LICENSE
 	source = postybirb-plus.sh
-	sha256sums = 39f83a0b233c27a238033b20fb47f1772ce58241e41e64a4395c5c253af29a04
+	sha256sums = 38b4cb42388b7739d07845d9145d4af3355d5484041300e9417ab85205af8a83
 	sha256sums = a0b91aa0ffc9564128c6599eac1fc0ba93b8fe477dff6258ef315f0019b5726d
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
