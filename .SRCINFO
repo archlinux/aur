@@ -1,6 +1,6 @@
 pkgbase = voiden-appimage
 	pkgdesc = Voiden API Client
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://voiden.md
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = voiden-appimage
 	conflicts = voiden-beta-appimage
 	options = !strip
 	options = !debug
-	source = https://voiden.md/api/download/stable/linux/x64/Voiden-2.0.1.AppImage
-	sha256sums = 02ec86a453926e43bc656af2cbc859e1d6a57ac27a997457c9063304f77e2d0a
+	source = https://voiden.md/api/download/stable/linux/x64/Voiden-2.1.0.AppImage
+	sha256sums = fba87fbba22c748daabb396be8573bfb492a2472a5b972103eadadcc5c3a26d4
 
 pkgname = voiden-appimage
