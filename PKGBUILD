@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mediachips-bin
 _pkgname=MediaChips
-pkgver=0.12.5_beta
-_electronversion=23
+pkgver=0.13.1
+_electronversion=39
 pkgrel=11
 pkgdesc="Manage your videos, add any metadata to them and play them.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -14,12 +14,13 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'nodejs'
+    'ffmpeg'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver//_/-}/${_pkgname}.v${pkgver%_beta}.Linux.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}.v${pkgver}.Linux.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('da94f529e064057feba54cf0b09cc38ae4f74d0e9d87cb8ada0425769040c64a'
+sha256sums=('62df15d7bddd2fe6b7db1bafa8efddf2f96cdcd1a65c343df4f54ede8e9838db'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
@@ -64,7 +65,12 @@ prepare() {
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Utility/Utility;AudioVideo/g
     " "${_app_dir}/${pkgname%-bin}.desktop"
-    find "${_app_dir}/resources" -type d -exec chmod 755 {} \;
+    find "${_app_dir}/resources" -type d -exec chmod 755 {} +
+    rm -rf \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/ffprobe-static/bin/"{darwin,linux/ia32} \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v3/"{darwin,win32,linux/arm64}
+    ln -sf "/usr/bin/ffmpeg" "${_app_dir}/resources/app.asar.unpacked/node_modules/ffmpeg-static/ffmpeg"
+    ln -sf "/usr/bin/ffprobe" "${_app_dir}/resources/app.asar.unpacked/node_modules/ffprobe-static/bin/linux/x64/ffprobe"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
