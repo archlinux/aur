@@ -2,7 +2,7 @@
 # Contributor: Dominik Schwaiger <mail@dominik-schwaiger.ch>
 
 pkgname=surrealdb
-pkgver=3.1.3
+pkgver=3.1.5
 pkgrel=1
 pkgdesc="A scalable, distributed, collaborative, document-graph database, for the realtime web"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
 
 sha256sums=(
 	"98a94ac615f88370865016487b436fa404560910bd329794ed7502277a94b805"
-	"3d6c622378d07faf775387ed103f3b8d2a5f22bad4c5f912b5112526cb2444c6"
+	"1c08537138b4d1ef6b86d7f162790843594736beff79bd4fe2daf4035b16cf0f"
 )
 
 prepare() {
