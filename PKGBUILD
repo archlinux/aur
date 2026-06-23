@@ -1,6 +1,6 @@
 # PKGBUILD
 pkgname=majestic-linux-runner-git
-pkgver=r38.3613cfd
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Python orchestration runner for Majestic RP on Linux via Proton"
 arch=('any')
