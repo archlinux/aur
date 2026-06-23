@@ -2,7 +2,7 @@
 folder_name="lucidglyph"
 
 pkgname=("lucidglyph")
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 arch=('any')
 pkgdesc='Carefully tuned adjustments designed to improve font rendering on Linux systems packaged for Arch Linux.'
@@ -13,10 +13,10 @@ validpgpkeys=(
   "B7E510C142B88F4B"
 )
 md5sums=(
-  'c58ba9d67b40538e96fd46e9c1782973' # lucidglyph.zip
+  '301502788944dcc2b8a50be37dca8f46' # lucidglyph.zip
 )
 sha512sums=(
-  'e8b9b5db578ab2d8c074c22478f3b160b72d0ddcc2a2bd5b64c3f3c8ce0adc3fa5ad359a3a7bf5f6444d5b3d673a5b2027909b3ef8cb220da47049b5849ddee3' # lucidglyph.zip
+  '1f9fb11b10ee693614828f85966db53bb780f4aa4bf5dfe0910fed672e65f4cca29639a723aaeea1d25c729a960f6478f56b2894acef36f6d5b191befe8c49b6' # lucidglyph.zip
 )
 makedepends=('git')
 depends=(
