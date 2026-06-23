@@ -20,7 +20,7 @@ pkgbase = zcode-appimage
 	noextract = ZCode-3.1.4-linux-x64.AppImage
 	options = !strip
 	options = !debug
-	source = ZCode-3.1.4-linux-x64.AppImage::https://cdn.zcode-ai.com/zcode/electron/releases/3.1.4/ZCode-3.1.4-linux-x64.AppImage
-	sha256sums = 209f4fc7b9d15ae3165e5bb6be6349306dfff1fbf37c78bbf3e39b6cb58204bd
+	source = ZCode-3.1.4-linux-x64.AppImage::https://cdn-zcode.z.ai/zcode/electron/releases/3.1.4/ZCode-3.1.4-linux-x64.AppImage
+	sha256sums = 8028a01cb2e73f1665efef483cba57e5bd126586fd61f0ea215727c3f2e01df3
 
 pkgname = zcode-appimage

@@ -13,8 +13,8 @@ options=('!strip' '!debug')
 _appimage="ZCode-${pkgver}-linux-x64.AppImage"
 _appdir="/opt/${pkgname}"
 noextract=("${_appimage}")
-source=("${_appimage}::https://cdn.zcode-ai.com/zcode/electron/releases/${pkgver}/${_appimage}")
-sha256sums=('209f4fc7b9d15ae3165e5bb6be6349306dfff1fbf37c78bbf3e39b6cb58204bd')
+source=("${_appimage}::https://cdn-zcode.z.ai/zcode/electron/releases/${pkgver}/${_appimage}")
+sha256sums=('8028a01cb2e73f1665efef483cba57e5bd126586fd61f0ea215727c3f2e01df3')
 
 prepare() {
     cd "${srcdir}"
