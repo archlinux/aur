@@ -1,20 +1,20 @@
 pkgbase = pitv-bin
 	pkgdesc = A cross-platform STB and IPTV player client.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.1.1
-	pkgrel = 7
+	pkgver = 1.1.2
+	pkgrel = 1
 	url = https://ozankaraali.com/PiTV/
 	arch = x86_64
 	license = MIT
 	depends = electron22
 	depends = ffmpeg
-	provides = pitv=1.1.1
+	provides = pitv=1.1.2
 	conflicts = pitv
 	options = !emptydirs
-	source = pitv-1.1.1.rpm::https://github.com/ozankaraali/PiTV/releases/download/1.1.1/pitv-1.1.1-1.x86_64.rpm
-	source = LICENSE-1.1.1::https://raw.githubusercontent.com/ozankaraali/PiTV/1.1.1/LICENSE
+	source = pitv-1.1.2.rpm::https://github.com/ozankaraali/PiTV/releases/download/latest/pitv-1.1.2-1.x86_64.rpm
+	source = LICENSE-1.1.2::https://raw.githubusercontent.com/ozankaraali/PiTV/latest/LICENSE
 	source = pitv.sh
-	sha256sums = f6eda109fd828c2661e69f0e4bc53545c82dc487d992f55cfd0b3b18aaffdeb7
+	sha256sums = 714196a916460066326bf757b09649f58f0b1ae208b18273714537ebd50b195c
 	sha256sums = 1473d16a8edb299025ac4faecc2b83570a5aca99e5ad66781b8492d2d328525e
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = pitv-bin
