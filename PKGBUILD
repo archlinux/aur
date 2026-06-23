@@ -10,6 +10,8 @@ license=('AGPL-3.0-or-later')
 depends=('gcc-libs')
 provides=('themis')
 conflicts=('themis')
+# Prebuilt binary is already stripped upstream; skip the (empty) debug split.
+options=('!debug' '!strip')
 _target="x86_64-unknown-linux-gnu"
 # The release tarball ships only the `themis` binary, so the AGPL LICENSE is
 # fetched separately from the tagged tree.
