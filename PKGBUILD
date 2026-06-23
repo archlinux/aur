@@ -1,8 +1,8 @@
 # Maintainer: Lynx <wostarxi@outlook.com>
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nfs-browser-bin
-_mainver=6.0.0
-_subver=m26_1nfs5
+_mainver=6.0.1
+_subver=m3+16nfs5
 pkgver="${_mainver}_${_subver}"
 pkgrel=1
 pkgdesc="方德安全浏览器"
@@ -22,10 +22,11 @@ depends=(
 options=(
     '!emptydirs'
 )
+DLAGENTS=('https::/usr/bin/curl -fL -A Mozilla/5.0 -e https://browser.nfschina.com/se.html -o %o %u')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::https://browser.nfschina.com/download/flavor/aarch64/latest/linux_64")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::https://browser.nfschina.com/download/flavor/x86_64/latest/linux_64")
-sha256sums_aarch64=('fdd88d82bc0593d6cb1bf43852f2ee9ca11ddf460058f7d417de725b32da5aaf')
-sha256sums_x86_64=('f21d96be6346b594d1fd9121bb20d2b4e235d62100a2281c6f5611a1f9ab950e')
+sha256sums_aarch64=('a2f91fc7dec3275e9755d661633ebe1bebccdd05abdf41a8467ab92f4a0350e8')
+sha256sums_x86_64=('4e054ee422c7c7dd64ee222498599a0480a10bc737bfa03c0e28b8feb6842d4d')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/\/usr\/bin\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
