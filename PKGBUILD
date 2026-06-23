@@ -6,12 +6,12 @@
 
 pkgname=fityk
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for nonlinear fitting of analytical functions to data."
 arch=(i686 x86_64)
 url="http://fityk.nieto.pl/"
 license=('GPL')
-depends=('lua' 'wxwidgets-gtk3' 'xylib>=1.4')
+depends=('lua54' 'wxwidgets-gtk3' 'xylib>=1.4')
 makedepends=('boost' 'swig')
 options=(!libtool)
 source=("https://github.com/wojdyr/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.bz2")
@@ -20,12 +20,12 @@ sha256sums=('6da5eb6279d90b241108e36c2d4880cafec82d7225a5d49a28675a07b4360f0b')
 
 prepare(){
   cd "$srcdir/$pkgname-$pkgver"
-  #patch -p1 < ../gtk3_fix.patch
+  #patch -p1 < ../lua55_fix.patch
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure CXXFLAGS="${CXXFLAGS} -std=c++14" --prefix=/usr
+  ./configure LUA_INCLUDE=-I/usr/include/lua5.4 LUA=/usr/bin/lua5.4 CXXFLAGS="${CXXFLAGS} -std=c++14" --prefix=/usr
   make
 }
 
