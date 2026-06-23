@@ -1,6 +1,6 @@
 pkgbase = manboster-bin
 	pkgdesc = Manboster: Your personal AI agent manbo lobster! (prebuilt binary)
-	pkgver = 0.2.0
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://manboster.dev/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = manboster-bin
 	optdepends = llama.cpp: for running local safety gatekeeper model
 	provides = manboster
 	conflicts = manboster
-	source_x86_64 = manboster-bin-0.2.0-x86_64.tar.gz::https://github.com/manboster/manboster/releases/download/v0.2.0-rc/manboster_0.2.0-rc_linux_amd64.tar.gz
-	sha256sums_x86_64 = ff40627f0ebc9ffa00b74e7229b2e39ce2eab32e194b2b3fec73cbed4dc70513
-	source_aarch64 = manboster-bin-0.2.0-aarch64.tar.gz::https://github.com/manboster/manboster/releases/download/v0.2.0-rc/manboster_0.2.0-rc_linux_arm64.tar.gz
-	sha256sums_aarch64 = 30201d1d3fb685170ff0aba07a6f73f43fd8cc3f6bf49f0ad7d5cde0cd33870d
+	source_x86_64 = manboster-0.2.3-x86_64.tar.gz::https://github.com/manboster/manboster/releases/download/v0.2.3/manboster_0.2.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1e77f73f00c9eaf13d506fe4aba5e4b48abfe6cbf6a6a3fc76a063f796281fc0
+	source_aarch64 = manboster-0.2.3-aarch64.tar.gz::https://github.com/manboster/manboster/releases/download/v0.2.3/manboster_0.2.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7dfbc71f0ee62a5c52c6ebf337c0dc473fa537d3aa1447c72deb0742ea9a99b3
 
 pkgname = manboster-bin
