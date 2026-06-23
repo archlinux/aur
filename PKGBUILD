@@ -24,6 +24,7 @@ prepare() {
 build() {
   CFLAGS+=' -ffat-lto-objects'
   cd "$srcdir/${_reponame}-${pkgver}"
+  pnpm add esbuild --allow-build=esbuild
   pnpm install
   pnpm tauri build --bundles=deb
 }
