@@ -3,9 +3,9 @@
 
 pkgname='arcconf'
 _pkgname='Arcconf'
-_pkgrel='28200'
-pkgver="5.05.00.${_pkgrel}"
-_rpmver="5.05-${_pkgrel}"
+_pkgrel='28391'
+pkgver="5.09.00.${_pkgrel}"
+_rpmver="5.09-${_pkgrel}"
 pkgrel='1'
 pkgdesc='Microsemi Adaptec command line interface utility'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ url='https://microchip.com/en-us/adaptec'
 license=('custom')
 source=("${pkgname}_B${_pkgrel}.zip::https://microchip.com/bin/mchp/downloadeuladocument.json?path=%2FaemDocuments%2Fdocuments%2Fadaptec%2Fsoftware%2F${pkgname}_B${_pkgrel}.zip"
 	"${pkgname}_v3_07_23980.zip::https://microchip.com/bin/mchp/downloadeuladocument.json?path=%2FaemDocuments%2Fdocuments%2Fadaptec%2Fsoftware%2F${pkgname}_v3_07_23980.zip")
-sha256sums=('c39cedc54a53f7acaf9483004c1a4319c9722a9029be229a3d6dc6293a97e817'
+sha256sums=('58897538963c45073f0f62d5aab986ca8b295dc5f43e6b81d14aa69d9c22f032'
             '7041ff8dad06dfb1ef3559af60227ac9f864183bbaf0dcbbe0c148293868b873')
 noextract=("${source[@]##*/}")
 
