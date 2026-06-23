@@ -153,10 +153,12 @@ build() {
   cd ${_pkgbasename}
 
   ./configure \
+    --arch=x86_32 \
+    --extra-cflags="-m32" \
+    --extra-ldflags="-m32" \
     --prefix='/usr' \
     --libdir=/usr/lib32 \
     --shlibdir=/usr/lib32 \
-    --cc="gcc -m32" \
     --disable-debug \
     --disable-static \
     --disable-stripping \
