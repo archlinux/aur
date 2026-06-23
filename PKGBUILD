@@ -1,6 +1,6 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 pkgname=jellyfin-desktop-git
-pkgver=0.r990.c219161
+pkgver=0.r1024.04fae1c
 pkgrel=1
 epoch=1
 license=('GPL-2.0-only')
@@ -19,7 +19,6 @@ depends=(
 )
 makedepends=(
     'clang'
-    'cmake'
     'git'
     'rust'
 )
