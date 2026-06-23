@@ -2,7 +2,7 @@
 
 _pkgname=helixnotes
 pkgname=${_pkgname}-bin
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='A local markdown note-taking app built with Tauri, SvelteKit, and Rust (deb version)'
 arch=('x86_64')
@@ -25,7 +25,7 @@ conflicts=("${_pkgname}")
 options=(!debug)
 
 source=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/HelixNotes_${pkgver}_amd64.deb")
-sha256sums=('9e6826c0966da9b6735405e7363315a976a65ceae42ea2737cb2d80b8c2e39c7')
+sha256sums=('8acabdbdf5a46d717f1400a1e7d31383c300a1c708ad707d0f9908ef674e5f4c')
 
 package() {
 
