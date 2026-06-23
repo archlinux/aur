@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Minimal find reimplementation with the emphasis on speed"
 
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.xz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('2723a6c2705a332a487ab8433ec779eb21baaee702930aa54cc8a4a1a0a88ac7')
-sha256sums_aarch64=('9f502295cf6e2bfcc3a1ac5b71bff671da173b95bcb39a7d3e54f12bf6591594')
+sha256sums_x86_64=('adf35f3f31fc116f76146950ba44cd3d072deca0d1787178a17ff0202cf3800d')
+sha256sums_aarch64=('017052be459c78882765da50936c58211fef7d20fe7410687b2eebd0787aa025')
 
 
 case ${CARCH} in

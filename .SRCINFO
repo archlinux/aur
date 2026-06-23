@@ -1,6 +1,6 @@
 pkgbase = minifind-bin
 	pkgdesc = Minimal find reimplementation with the emphasis on speed
-	pkgver = 0.8.1
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/dkorunic/minifind
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = minifind-bin
 	provides = minifind
 	conflicts = minifind
 	options = !strip
-	source_x86_64 = minifind-x86_64-0.8.1.txz::https://github.com/dkorunic/minifind/releases/download/0.8.1/minifind-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 2723a6c2705a332a487ab8433ec779eb21baaee702930aa54cc8a4a1a0a88ac7
-	source_aarch64 = minifind-aarch64-0.8.1.txz::https://github.com/dkorunic/minifind/releases/download/0.8.1/minifind-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 9f502295cf6e2bfcc3a1ac5b71bff671da173b95bcb39a7d3e54f12bf6591594
+	source_x86_64 = minifind-x86_64-0.9.0.txz::https://github.com/dkorunic/minifind/releases/download/0.9.0/minifind-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = adf35f3f31fc116f76146950ba44cd3d072deca0d1787178a17ff0202cf3800d
+	source_aarch64 = minifind-aarch64-0.9.0.txz::https://github.com/dkorunic/minifind/releases/download/0.9.0/minifind-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 017052be459c78882765da50936c58211fef7d20fe7410687b2eebd0787aa025
 
 pkgname = minifind-bin
