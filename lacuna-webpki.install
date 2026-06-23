@@ -1,22 +1,25 @@
 post_install() {
 	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 
-	# Chrome and Chromium uses the manifest file in the /etc dir, which is
+	# Chrome and Chromium use the manifest file in the /etc dir, which is
 	# checked as an error in Litium package verification.
 	# Thus we are going to move the manifest file after installation.
 
 	# ensure that chrome and chromium extension manifest dir exists
 	CHROME_MANIFEST_DIR=/etc/opt/chrome/native-messaging-hosts/
 	CHROMIUM_MANIFEST_DIR=/etc/chromium/native-messaging-hosts/
-        EDGE_MANIFEST_DIR=/etc/opt/edge/native-messaging-hosts/
-	sudo mkdir -p $CHROME_MANIFEST_DIR
-	sudo mkdir -p $CHROMIUM_MANIFEST_DIR
-	sudo mkdir -p $EDGE_MANIFEST_DIR
+	EDGE_MANIFEST_DIR=/etc/opt/edge/native-messaging-hosts/
+	install -dm755 "${CHROME_MANIFEST_DIR}"
+	install -dm755 "${CHROMIUM_MANIFEST_DIR}"
+	install -dm755 "${EDGE_MANIFEST_DIR}"
 
 	# copy manifest to respective dirs
-	sudo cp /opt/lacuna-webpki/manifest.json "$CHROME_MANIFEST_DIR"com.lacunasoftware.webpki.json
-	sudo cp /opt/lacuna-webpki/manifest.json "$CHROMIUM_MANIFEST_DIR"com.lacunasoftware.webpki.json
-        sudo cp /opt/lacuna-webpki/manifest.json "$EDGE_MANIFEST_DIR"com.lacunasoftware.webpki.json
+	install -Dm644 /opt/lacuna-webpki/manifest.json \
+		"${CHROME_MANIFEST_DIR}com.lacunasoftware.webpki.json"
+	install -Dm644 /opt/lacuna-webpki/manifest.json \
+		"${CHROMIUM_MANIFEST_DIR}com.lacunasoftware.webpki.json"
+	install -Dm644 /opt/lacuna-webpki/manifest-edge.json \
+		"${EDGE_MANIFEST_DIR}com.lacunasoftware.webpki.json"
 
 	update-desktop-database -q
 }
@@ -28,20 +31,13 @@ post_upgrade() {
 post_remove() {
 	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 
-	# remove user data
-	DIR=~/.lacuna-webpki
-	if [ -d $DIR ];
-	then
-		rm -r "$DIR"
-	fi
-
-	# remove chromium and chrome manifests
+	# remove chromium, chrome, and edge manifests
 	CHROME_MANIFEST_DIR=/etc/opt/chrome/native-messaging-hosts/
 	CHROMIUM_MANIFEST_DIR=/etc/chromium/native-messaging-hosts/
-        EDGE_MANIFEST_DIR=/etc/opt/edge/native-messaging-hosts/
-	sudo rm "$CHROME_MANIFEST_DIR"com.lacunasoftware.webpki.json
-	sudo rm "$CHROMIUM_MANIFEST_DIR"com.lacunasoftware.webpki.json
-        sudo rm "$EDGE_MANIFEST_DIR"com.lacunasoftware.webpki.json
+	EDGE_MANIFEST_DIR=/etc/opt/edge/native-messaging-hosts/
+	rm -f "${CHROME_MANIFEST_DIR}com.lacunasoftware.webpki.json"
+	rm -f "${CHROMIUM_MANIFEST_DIR}com.lacunasoftware.webpki.json"
+	rm -f "${EDGE_MANIFEST_DIR}com.lacunasoftware.webpki.json"
 
 	update-desktop-database -q
 }
