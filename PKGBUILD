@@ -1,7 +1,7 @@
 # Maintainer: Evan Purkhiser <evanpurkhiser@gmail.com>
 
 pkgname=things3-cloud
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Command-line client for Things 3 using the Things Cloud API"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/evanpurkhiser/things3-cloud/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5eab88be323510628c2bf335d20d957347db68f2535a1b690cfc25f8c11afd25')
+sha256sums=('947227cbdd87133720b650e5cbe376c32ec3afce340f5d5f1c6dff8e3f2945fa')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
