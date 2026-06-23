@@ -7,11 +7,11 @@ provides=('fitgirl-ddl-qt6')
 _pkgname=fitgirl-ddl
 _binname=fitgirl-ddl_gui
 pkgver=r116.gbfffe94
-pkgrel=1
+pkgrel=2
 url="https://github.com/mokurin000/${_pkgname}"
 arch=('x86_64' 'aarch64')
 license=('MIT')
-depends=(gcc-libs glibc 'libcurl.so=4-64' qt6-base)
+depends=(gcc-libs glibc qt6-base)
 makedepends=(
     'rust' 'git'
     'cmake' 'clang'
