@@ -11,8 +11,7 @@ arch=(
   'i686'
   'x86_64'
 )
-url="https://envio-cli.github.io/home"
-_url="https://github.com/envio-cli/${_pkgname}"
+url="https://github.com/envio-cli/${_pkgname}"
 license=(
   'Apache-2.0 OR MIT'
 )
@@ -27,13 +26,13 @@ conflicts=(
   "${_pkgname}"
 )
 source_aarch64=(
-  "${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
+  "${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
 )
 source_i686=(
-  "${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-i686-unknown-linux-gnu.tar.gz"
+  "${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-i686-unknown-linux-gnu.tar.gz"
 )
 source_x86_64=(
-  "${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
+  "${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
 )
 sha256sums_aarch64=('f5c68399397da2ef13020e5d419d5fb1c1983ab31bd7d01ddcdbb15cbe7328ab')
 sha256sums_i686=('168be693acf148c59df0e60631ae85a9c5cfe989d7eb83a4ce81bfa23baa9ca1')
