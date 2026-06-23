@@ -6,7 +6,7 @@ pkgname=(
   'python-spotifyscraper-docs'
 )
 _pkgname=spotifyscraper
-pkgver=v3.8.0
+pkgver=v3.9.1
 pkgrel=1
 pkgdesc="Extract public Spotify data — tracks, albums, artists, playlists, podcasts & lyrics — without the official API. Sync + async, typed models, one dependency."
 arch=('any')
@@ -32,24 +32,27 @@ checkdepends=(
   'python-pytest-timeout'
 )
 
-source=("git+https://github.com/AliAkhtari78/${_pkgname}#tag=${pkgver}")
+source=("git+https://github.com/AliAkhtari78/$_pkgname#tag=$pkgver")
 license=('MIT')
-sha256sums=('fd16363ed13cdeecf308bbeaff94c183b25ccaee2317bf21bfcc5d8883714b4c')
+sha256sums=('f9f04311aaeb46ca828750e45c46dd842d0f1a7a206b47bcc3fb846a9288d6b4')
 
 build() {
   cd "$_pkgname"
+
   python -m build --wheel --no-isolation
   #Note: mkdocs looks for modules in predefined paths, this a work-around for modules not installed yet (i.e. not in sys.path, also PYTHONPATH is last, and local for our use).
-  PYTHONPATH="$PWD/src" mkdocs build --quiet --strict --site-dir ./html
+  PYTHONPATH="$srcdir/$_pkgname/src" mkdocs build --quiet --strict --site-dir ./html
 }
 
 check(){
   cd "$_pkgname"
+
   pytest
 }
 
 package_python-spotifyscraper() {
   cd "$_pkgname"
+  
   depends=(
     'python>=3.10'
     'python-httpx>=0.27'
@@ -69,9 +72,10 @@ package_python-spotifyscraper() {
 }
 package_python-spotifyscraper-docs(){
   cd "$_pkgname"
+  
   pkgdesc+=' (documentation)'
 
-  install -d "$pkgdir/usr/share/doc/${pkgname}" 
-  cp -r ./html/* "$pkgdir/usr/share/doc/${pkgname}"
-  install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/share/doc/$pkgname" 
+  cp -r ./html/* "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
