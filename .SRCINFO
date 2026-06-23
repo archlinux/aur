@@ -1,26 +1,26 @@
 pkgbase = poddycast-bin
 	pkgdesc = A Podcast app made with Electron, lots of ❤️ and ☕️.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.12.0
-	pkgrel = 3
+	pkgver = 0.13.0
+	pkgrel = 1
 	url = https://github.com/MrChuckomo/poddycast
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = gendesk
-	depends = electron22
+	depends = electron35
 	depends = nodejs
-	provides = poddycast=0.12.0
+	provides = poddycast=0.13.0
 	conflicts = poddycast
 	options = !strip
 	options = !emptydirs
 	source = poddycast.sh
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = poddycast-0.12.0-aarch64.zip::https://github.com/MrChuckomo/poddycast/releases/download/v0.12.0/Poddycast-linux-arm64.zip
-	sha256sums_aarch64 = 6f34223f142ee046b013ec6729c3b949872f6da92933740e4ea9e7f2443386c6
-	source_armv7h = poddycast-0.12.0-armv7h.zip::https://github.com/MrChuckomo/poddycast/releases/download/v0.12.0/Poddycast-linux-armv7l.zip
-	sha256sums_armv7h = 0a540b05f93c2f05e690eae2bad71b75ac3b810f38a00608047312325f233a9d
-	source_x86_64 = poddycast-0.12.0-x86_64.zip::https://github.com/MrChuckomo/poddycast/releases/download/v0.12.0/Poddycast-linux-x64.zip
-	sha256sums_x86_64 = bdc260ad416063fb3b4c97b6cbe21c7fc66c4fddee08e07f5f17cd5c44c6bf59
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	source_aarch64 = poddycast-0.13.0-aarch64.zip::https://github.com/MrChuckomo/poddycast/releases/download/v0.13.0/Poddycast-linux-arm64.zip
+	sha256sums_aarch64 = 1c2f4ea506e6575b462f312ecec8cffecd78ae72cbbe0b8a78fa40ae959550ce
+	source_armv7h = poddycast-0.13.0-armv7h.zip::https://github.com/MrChuckomo/poddycast/releases/download/v0.13.0/Poddycast-linux-armv7l.zip
+	sha256sums_armv7h = de21ca54b3d73ce9e04f02a3a8fab500f259b67749af2570d3dd02c36335368f
+	source_x86_64 = poddycast-0.13.0-x86_64.zip::https://github.com/MrChuckomo/poddycast/releases/download/v0.13.0/Poddycast-linux-x64.zip
+	sha256sums_x86_64 = ff2f7137334a670e4f9145d0b9b4fe37f9ee5a47bc19d7ab2aeab17161b3802c
 
 pkgname = poddycast-bin
