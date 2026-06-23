@@ -1,7 +1,7 @@
 # Maintainer: Remisa Phillips <remisa.yousefvand@gmail.com>
 
 pkgname=remidock
-pkgver=0.4.12
+pkgver=0.4.13
 pkgrel=1
 pkgdesc='Custom Qt/QML dock for KDE Plasma Wayland'
 arch=('x86_64')
@@ -21,8 +21,8 @@ makedepends=(
   'gcc'
   'extra-cmake-modules'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/yousefvand/RemiDock/archive/refs/tags/v0.4.12.tar.gz")
-sha256sums=('622400f375870c9d30884275c47f65027133bcda143504323a33db43776d6acd')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/yousefvand/RemiDock/archive/refs/tags/v0.4.13.tar.gz")
+sha256sums=('50ccab764776f40777e22310d56368e86756f89fe723d2554f6acfab6b2e74c6')
 
 build() {
   cmake -S "RemiDock-${pkgver}" -B build -G Ninja \
@@ -32,20 +32,24 @@ build() {
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  # Binary-only package: do not run , because that may
+  # install README, license, desktop files, icons, autostart files, or other
+  # project resources. Only the compiled executable is packaged.
+  local binary_path=""
 
-  install -Dm644 "RemiDock-${pkgver}/icon.png" "$pkgdir/usr/share/pixmaps/remidock.png"
-
-  if [[ -f "$pkgdir/usr/share/applications/org.remisa.RemiDock.desktop" ]]; then
-    sed -i 's/^Icon=.*/Icon=remidock/' "$pkgdir/usr/share/applications/org.remisa.RemiDock.desktop"
+  # The RemiDock CMake build currently places the executable in build/bin/.
+  # Older or different layouts may place it elsewhere, so keep a safe fallback.
+  if [[ -f "build/bin/RemiDock" && -x "build/bin/RemiDock" ]]; then
+    binary_path="build/bin/RemiDock"
+  else
+    binary_path="$(find build -type f -perm -111 -name 'RemiDock' | head -n 1)"
   fi
 
-  # Install a global XDG autostart entry so RemiDock starts automatically
-  # for users on their next Plasma/KDE login after installing from AUR.
-  if [[ -f "RemiDock-${pkgver}/data/org.remisa.RemiDock.desktop" ]]; then
-    install -Dm644 "RemiDock-${pkgver}/data/org.remisa.RemiDock.desktop" "$pkgdir/etc/xdg/autostart/org.remisa.RemiDock.desktop"
-    sed -i 's/^Icon=.*/Icon=remidock/' "$pkgdir/etc/xdg/autostart/org.remisa.RemiDock.desktop"
-    grep -q '^X-GNOME-Autostart-enabled=' "$pkgdir/etc/xdg/autostart/org.remisa.RemiDock.desktop" ||       printf 'X-GNOME-Autostart-enabled=true\n' >> "$pkgdir/etc/xdg/autostart/org.remisa.RemiDock.desktop"
-    grep -q '^X-KDE-autostart-after=' "$pkgdir/etc/xdg/autostart/org.remisa.RemiDock.desktop" ||       printf 'X-KDE-autostart-after=panel\n' >> "$pkgdir/etc/xdg/autostart/org.remisa.RemiDock.desktop"
+  if [[ -z "${binary_path:-}" || ! -f "$binary_path" || ! -x "$binary_path" ]]; then
+    printf 'ERROR: Could not find built executable file: RemiDock\n' >&2
+    find build -maxdepth 3 -name 'RemiDock' -print >&2 || true
+    exit 1
   fi
+
+  install -Dm755 "$binary_path" "$pkgdir/usr/bin/RemiDock"
 }
