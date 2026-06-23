@@ -7,6 +7,10 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/prietus/irkt"
 license=('MIT')
 depends=('gcc-libs')
+optdepends=(
+  'hunspell-en_us: English autocomplete (ghost text)'
+  'hunspell-es_es: Spanish autocomplete (ghost text)'
+)
 provides=('irkt')
 conflicts=('irkt' 'irkt-git')
 source_x86_64=("irkt-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/irkt-x86_64-unknown-linux-gnu.tar.gz")
