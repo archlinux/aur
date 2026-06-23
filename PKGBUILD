@@ -6,7 +6,7 @@ arch=('any')
 url="https://github.com/imjiaoyuan/jkey"
 license=('MIT')
 depends=('python>=3.10' 'python-opencv>=4.9.0')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools>=61.0')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools>=61.0' 'uv')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('b1b567f9cd11a56c91b9341c4edb8c56f2a56ea4a2e7a329caf70eca1e0866e5')

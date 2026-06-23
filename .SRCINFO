@@ -9,6 +9,7 @@ pkgbase = python-jkey
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools>=61.0
+	makedepends = uv
 	depends = python>=3.10
 	depends = python-opencv>=4.9.0
 	options = !strip
