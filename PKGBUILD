@@ -2,19 +2,18 @@
 pkgname=deeptutor
 _name=${pkgname}
 pkgver=1.4.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Agent-native intelligent learning companion with multi-agent collaboration and RAG"
 arch=('any')
 url="https://github.com/HKUDS/DeepTutor"
 license=('Apache-2.0')
 # Runtime deps match Requires-Dist in pyproject.toml + wheel METADATA.
-# Notes on each package's availability (official repos vs AUR) are inline below
-# so the maintainer can spot which deps still need AUR helper packages.
+# Availability tags: [extra] = Arch official repo, [AUR] = AUR.
+# Packages not yet in AUR are listed under optdepends= below; install them
+# manually if you need the corresponding feature.
 depends=(
   'python>=3.11'
   # --- core / CLI runtime ---
-  # Availability tags: [core]/[extra] = Arch official repo, [AUR] = AUR,
-  # [TODO] = not yet in AUR — see packaging/aur/README.md.
   'python-yaml'              # PyYAML                       [extra]
   'python-jinja'             # jinja2                       [extra]
   'python-openai'            # openai                       [extra]
@@ -23,7 +22,6 @@ depends=(
   'python-httpx'             # httpx                        [extra]
   'python-requests'          # requests                     [extra]
   'python-ddgs'              # ddgs                         [AUR]
-  'python-nest_asyncio'      # nest_asyncio                 [TODO]
   'python-tenacity'          # tenacity                     [extra]
   'python-pydantic'          # pydantic                     [extra]
   'python-pydantic-settings' # pydantic-settings            [extra]
@@ -31,15 +29,11 @@ depends=(
   'python-typer'             # typer[all]                   [extra]
   'python-rich'              # rich                         [extra]
   'python-prompt_toolkit'    # prompt_toolkit               [extra]
-  'python-pyte'              # pyte                         [TODO]
+  'python-pyte'              # pyte                         [extra]
   # --- LLM provider SDKs ---
   'python-anthropic'         # anthropic                    [AUR]
   'python-dashscope'         # dashscope                    [AUR]
-  'python-perplexityai'      # perplexityai                 [TODO]
-  'python-oauth-cli-kit'     # oauth-cli-kit                [TODO]
-  # --- RAG (LlamaIndex) ---
-  'python-llama-index'       # llama-index                  [TODO]
-  'python-llama-index-retrievers-bm25'  # bm25 retriever    [TODO]
+  # --- RAG core reader (LlamaIndex engine itself is optdepends) ---
   'python-pymupdf'           # PyMuPDF                      [extra]
   'python-numpy'             # numpy                        [extra]
   'python-arxiv'             # arxiv                        [AUR]
@@ -58,9 +52,7 @@ depends=(
   'python-multipart'         # python-multipart             [extra]
   'python-bcrypt'            # bcrypt                       [extra]
   'python-jose'              # python-jose[cryptography]    [extra]
-  'python-pocketbase'        # pocketbase                   [TODO]
   'python-loguru'            # loguru                       [extra]
-  'python-json-repair'       # json-repair                  [TODO]
   'python-croniter'          # croniter (server extra)      [AUR]
 )
 makedepends=(
@@ -75,6 +67,17 @@ checkdepends=(
   'python-pytest-asyncio'
 )
 optdepends=(
+  # --- LLM provider SDKs not yet packaged in AUR ---
+  'python-perplexityai: Perplexity AI search provider (Settings → Search Provider)'
+  'python-oauth-cli-kit: OAuth helper for GitHub Copilot and OpenAI Codex LLM providers'
+  # --- RAG / knowledge-base engine (LlamaIndex) ---
+  'python-llama-index: RAG knowledge-base engine (Settings → Knowledge Base)'
+  'python-llama-index-retrievers-bm25: BM25 retriever for the LlamaIndex RAG engine'
+  # --- storage / data backends ---
+  'python-pocketbase: PocketBase storage backend'
+  # --- LLM output robustness ---
+  'python-json-repair: Repair malformed JSON in LLM responses'
+  'python-nest_asyncio: Allow nested asyncio event loops (required by some notebook / code-exec flows)'
   # --- document-parsing engines ---
   'python-markitdown: markitdown document parser (Settings → Document Parsing)'
   'python-docling: docling document parser (Settings → Document Parsing)'
