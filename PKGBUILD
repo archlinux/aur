@@ -1,38 +1,28 @@
 # Maintainer: Manel Castillo Giménez
 pkgname="clavis"
-pkgver="2.0.3"
+pkgver="2.1.0"
 pkgrel="2"
 pkgdesc="An easy to use Password Manager."
 arch=("x86_64")
 url="https://github.com/ManelCG/clavis"
-depends=("gtk4" "gtkmm-4.0" "cmake" "gpgme")
-conflicts=("clavis-git" "clavis-git-debug")
-optdepends=("git")
+license=("GPL3")
+depends=("gtk4" "gtkmm-4.0" "gpgme")
+makedepends=("cmake" "git" "gcc" "make" "pkgconf")
+optdepends=("git: password store synchronization")
+conflicts=("clavis-git")
+source=("clavis::git+https://github.com/ManelCG/clavis.git#tag=v2.1.0-2")
+sha256sums=("SKIP")
 
-_gitroot="https://github.com/ManelCG/clavis.git"
-_gitname="clavis"
-source=()
-sha256sums=()
+build() {
+  cd "${srcdir}/clavis"
 
-package(){
-  echo "Building Clavis..."
-  cd ${srcdir}
+  # The cmake 'archlinux' target bakes its staging directory (PACKAGE_DIR) from
+  # $ENV{BDIR} at *configure* time, so BDIR must be exported here, while make.sh
+  # runs cmake. package() then only re-runs the already-configured target.
+  BDIR="${pkgdir}" ./make.sh
+}
 
-  echo "Downloading Clavis from github..."
-  if [ -d ${srcdir}/${_gitname} ]; then
-    cd "${srcdir}/${_gitname}"
-    git pull origin
-    echo "Local files updated..."
-  else
-    git clone ${_gitroot} ${srcdir}/${_gitname}
-  fi
-
-  cd ${srcdir}/${_gitname}
-  git checkout v2.0.3-2
-
-  echo "Git checkout done"
-
-  echo "Starting configure"
-
-  BDIR=${pkgdir} ./make.sh archlinux
+package() {
+  cd "${srcdir}/clavis/out"
+  make archlinux
 }

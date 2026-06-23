@@ -1,15 +1,21 @@
 pkgbase = clavis
 	pkgdesc = An easy to use Password Manager.
-	pkgver = 2.0.3
+	pkgver = 2.1.0
 	pkgrel = 2
 	url = https://github.com/ManelCG/clavis
 	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkgconf
 	depends = gtk4
 	depends = gtkmm-4.0
-	depends = cmake
 	depends = gpgme
-	optdepends = git
+	optdepends = git: password store synchronization
 	conflicts = clavis-git
-	conflicts = clavis-git-debug
+	source = clavis::git+https://github.com/ManelCG/clavis.git#tag=v2.1.0-2
+	sha256sums = SKIP
 
 pkgname = clavis
