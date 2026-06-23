@@ -1,0 +1,13 @@
+# Grant the route helper CAP_NET_ADMIN so TUN mode can program routes without
+# elevating the whole GUI. The backend binary (xray/sing-box) is system-managed
+# and not owned by this package; the app grants its capabilities on demand via
+# a one-time pkexec setcap.
+
+post_install() {
+    setcap 'cap_net_admin+ep' /usr/bin/v2ray-rs-netctl 2>/dev/null || \
+        echo "==> Could not setcap v2ray-rs-netctl; TUN mode needs: sudo setcap 'cap_net_admin+ep' /usr/bin/v2ray-rs-netctl"
+}
+
+post_upgrade() {
+    post_install
+}
