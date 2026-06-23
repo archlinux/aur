@@ -1,0 +1,21 @@
+pkgbase = rake-unstable-bin
+	pkgdesc = Configuration-driven build tool that runs Rakefile.toml targets (pre-compiled, nightly unstable build)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/rustyhorde/cargo-rake
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	provides = rake
+	conflicts = rake
+	options = !strip
+	options = !debug
+	source = https://github.com/rustyhorde/cargo-rake/releases/download/v0.1.0/dist-rake.tar.gz
+	sha256sums = 7dbeb6dfd0052b68e81f5e906e91b72f474018428b2f2fba10734c8041f8da35
+	source_x86_64 = rake-unstable-x86_64::https://github.com/rustyhorde/cargo-rake/releases/download/v0.1.0/rake-unstable-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 6d8e69efb107da299103f55b1ffd4d102282dcbb2cb08d29a75699c72247b7bb
+	source_aarch64 = rake-unstable-aarch64::https://github.com/rustyhorde/cargo-rake/releases/download/v0.1.0/rake-unstable-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = bb6b50bf47be439209cbb75ac9984e8a236605144e13791b73725f78af2c6524
+
+pkgname = rake-unstable-bin
