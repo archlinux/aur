@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-vulkan
 _pkgname=${pkgname%%-vulkan}
-pkgver=b9768
+pkgver=b9769
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -33,8 +33,8 @@ optdepends=(
   'python-transformers: needed for convert_hf_to_gguf.py'
   'python-gguf: needed for convert_hf_to_gguf.py'
 )
-provides=(${_pkgname} libggml ggml)
-conflicts=(${_pkgname} libggml ggml stable-diffusion.cpp)
+provides=(${_pkgname} llama-cpp libggml ggml ggml-vulkan)
+conflicts=(${_pkgname} llama-cpp libggml ggml ggml-vulkan stable-diffusion.cpp)
 options=(lto !debug)
 backup=("etc/conf.d/llama.cpp")
 source=(
@@ -42,7 +42,7 @@ source=(
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
 )
-sha256sums=('a0753efd4a49238e36f0412a3592337b43097b6a643c35eae5cbc63604f43b8e'
+sha256sums=('3052aac0648b727814be6a26e3547ad375852f8b3344b28999932f4bcc8ea71f'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
             'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
 
