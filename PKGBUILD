@@ -1,7 +1,7 @@
 # Maintainer: RockinChaos
 
 pkgname=shiru
-pkgver=6.7.0
+pkgver=6.7.1
 pkgrel=1
 pkgdesc="A personal anime library manager for watching and tracking your collection in real time. Lightweight, powerful, and paws-itively fast. No waiting required!"
 arch=("x86_64")
@@ -12,7 +12,7 @@ options=("!strip")
 source=("https://github.com/RockinChaos/Shiru/releases/download/v${pkgver}/linux-Shiru-v${pkgver}.AppImage"
         "shiru.png"
         "shiru.desktop")
-sha256sums=("e3921359859dae4f30278fe194a19f938d53a27b2a4892ac29c5a4fa7fbd65ec"
+sha256sums=("a25ffd7dd46a18814a84dab655ad1c521c8f22b497f4f0a5776714d819d0fa78"
             "2bbe68a752d1a96e4a4c97201cf2d15aef90284493f17619f528ab50f5729a60"
             "bcbf6d336a50196ed73a17e5acd36f66a5e813d7004a1d947f542a6919f3aebd")
 
