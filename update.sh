@@ -6,7 +6,7 @@ PKGNAME="python-jkey"
 
 echo "==> Checking for new version..."
 
-LATEST_TAG=$(curl -s https://api.github.com/repos/imjiaoyuan/jkey/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')
+LATEST_TAG=$(curl -s https://api.github.com/repos/imjiaoyuan/jkey/tags | grep -oP '"name": "\K(.*)(?=")' | head -1)
 LATEST_VERSION=${LATEST_TAG#v}
 
 if [ -z "$LATEST_VERSION" ]; then
