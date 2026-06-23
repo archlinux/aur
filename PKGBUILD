@@ -2,7 +2,7 @@
 
 _pkgname="dbxcli"
 pkgname="${_pkgname}-bin"
-pkgver=3.3.3
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="A command line client for Dropbox built using the Go SDK"
 arch=(
@@ -33,9 +33,9 @@ source_armv7h=(
 source_x86_64=(
   "${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz"
 )
-sha256sums_aarch64=('175f4f5c4d903bb9b7565dfb1418d64e57a10a9ae0baa6b38d8c2b0938c31fc6')
-sha256sums_armv7h=('baf88591bef60a883996f48ba1de8aca41c50f53dc6a447a6cbe09fcdace4740')
-sha256sums_x86_64=('3b1fbf63b5bbb811066d5fd4988d9c34be0bbe3ae9b576840445d5c78068063f')
+sha256sums_aarch64=('6ce4ab6ed6f19e750bd746606befad332bd0573e0c53cdff1e5dc458c5d2aa04')
+sha256sums_armv7h=('fd8469105fe7d6296d4582068340a46541c48c5d9afa6a9781ccbfdc4859157e')
+sha256sums_x86_64=('dd8c626519023eadae24ac9818caaa62a5141d077f59e6957340850114b03cfd')
 
 prepare() {
   local source_array="source_${CARCH}[0]"
