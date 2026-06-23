@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pdmaas-pro-bin
 _pkgname=PDMaas-Pro
-pkgver=2.3.0
+pkgver=2.3.3
 _electronversion=29
 pkgrel=1
 pkgdesc="Enterprise level data model design platform, supporting multi brand databases.(Prebuilt version.Use system-wide electron)"
@@ -23,11 +23,14 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_dlurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_dlurl}/releases/download/${pkgname%-bin}/${_pkgname}-linux_amd64_v${pkgver}.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('d14b33b2f6c76c69403f842be3a923ae3a259124d710c7a114a6418ec12bc510')
-sha256sums_x86_64=('71e8dfdd8f8ed67fc8400fba89884d7be48ca5f5bc0f833768453116a63dbeff')
+sha256sums_aarch64=('888f76a2c4aa253e920039d59a53079b00d20f95cbd57d51e42051b4bf26e5e3')
+sha256sums_x86_64=('999a871fc06efb2c69620ab3cc17ea51c29e6f79f40a32b95d03e09c7e929e01')
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
 _check_electron_version() {
     echo "Verifying Electron version..."
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _app_dir=$(_get_app_dir)
     local _main_exe=""
     if [[ -n "${_app_dir}" ]]; then
         _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
@@ -62,7 +65,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
