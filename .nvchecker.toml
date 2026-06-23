@@ -1,0 +1,4 @@
+[opengothic]
+source = "git"
+git = "https://github.com/Try/OpenGothic.git"
+prefix = "v"
