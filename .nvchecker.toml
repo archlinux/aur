@@ -1,0 +1,4 @@
+[matlab-terminal-server]
+source = "git"
+git = "https://github.com/matlab/terminal-in-matlab.git"
+prefix = "v"
