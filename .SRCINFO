@@ -1,0 +1,26 @@
+pkgbase = vypl
+	pkgdesc = A lightweight Python REPL with Vim like inputs
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/HoraDomu/vypl
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-cwcwidth
+	depends = python-greenlet
+	depends = python-pygments
+	depends = python-watchdog
+	depends = python-curtsies
+	depends = python-pyxdg
+	depends = python-jedi
+	depends = python-pyperclip
+	provides = vypl
+	source = https://files.pythonhosted.org/packages/source/v/vypl/vypl-1.0.0.tar.gz
+	sha256sums = 72b952c9072291661f13147538b0d9ae224e282f9ef3c1269c9286e39724ba1c
+
+pkgname = vypl

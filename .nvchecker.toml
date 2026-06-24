@@ -1,0 +1,3 @@
+[vypl]
+source = "pypi"
+pypi = "vypl"
