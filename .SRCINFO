@@ -1,9 +1,8 @@
 pkgbase = smartsub-git
 	pkgdesc = Generate subtitle files for video or audio in batches, and support subtitle translation. Support Baidu, Volcano, OpenAI, Olama, Deepseek and other translations.(Use system-wide electron)
-	pkgver = 2.16.0.r0.ga17aa75
+	pkgver = 3.1.0.r0.ge8f972c
 	pkgrel = 1
-	url = https://github.com/buxuku/SmartSub
-	arch = aarch64
+	url = https://smartsub.linxiaodong.com/
 	arch = x86_64
 	license = MIT
 	makedepends = gendesk
@@ -16,7 +15,8 @@ pkgbase = smartsub-git
 	depends = electron30
 	depends = python-openai-whisper
 	depends = ffmpeg
-	provides = smartsub=2.16.0
+	depends = nodejs
+	provides = smartsub=3.1.0
 	conflicts = smartsub
 	source = smartsub.git::git+https://github.com/buxuku/SmartSub
 	source = smartsub.sh
