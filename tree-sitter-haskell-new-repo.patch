@@ -1,0 +1,27 @@
+diff --git a/Cargo.lock b/Cargo.lock
+index 417c9eefa..368da27fa 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -3584,8 +3584,7 @@ dependencies = [
+ [[package]]
+ name = "tree-sitter-haskell"
+ version = "0.23.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "977c51e504548cba13fc27cb5a2edab2124cf6716a1934915d07ab99523b05a4"
++source = "git+https://github.com/tree-sitter-grammars/tree-sitter-haskell?branch=master#98aedbd2d6947a168ba3ba3755d70b0cb6b78395"
+ dependencies = [
+  "cc",
+  "tree-sitter-language",
+diff --git a/Cargo.toml b/Cargo.toml
+index 6210ff090..2263b3bc1 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -323,7 +323,7 @@ tree-sitter-erlang = "0.16.0"
+ tree-sitter-fortran = "0.6.0"
+ tree-sitter-go = "0.25"
+ tree-sitter-graphql = "0.1.0"
+-tree-sitter-haskell = "0.23"
++tree-sitter-haskell = { git = "https://github.com/tree-sitter-grammars/tree-sitter-haskell", branch = "master" }
+ tree-sitter-hcl = "1.1"
+ tree-sitter-html = "0.23"
+ tree-sitter-ini = "1.4.0"

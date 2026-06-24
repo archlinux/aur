@@ -2,7 +2,7 @@
 
 pkgname=oh-my-pi
 pkgver=16.1.14
-pkgrel=1
+pkgrel=2
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
 url="https://github.com/can1357/oh-my-pi"
@@ -12,43 +12,20 @@ makedepends=('bun' 'git' 'rustup')
 options=('!strip')
 source=(
     "${pkgname}::git+https://github.com/can1357/oh-my-pi.git#tag=v${pkgver}"
-    "tree-sitter-haskell-gcc-no-strict-aliasing.patch"
+    "tree-sitter-haskell-new-repo.patch"
     "skip-native-embed-for-aur.patch"
 )
 sha256sums=('SKIP'
-            '3eea6cd7fc2e5fa973b81cac109688231e40087f51c3ce4cf01e45e1b7893b17'
+            'dde09e30999046c4edef7283114055121b91438edc2b71dbb059b6e5c2676ecd'
             '45cee585735b74da7e369da7f177a792e88fac8069774a952f32fc2212c66cc0')
-
-# Patch to fix tree-sitter-haskell crash. See:
-# https://github.com/tree-sitter/tree-sitter-haskell/pull/157
-# https://github.com/tree-sitter/tree-sitter-haskell/issues/144
-_patch_tree_sitter_haskell_gcc_workaround() {
-    local _repo_root="$1"
-    local _patch_file="${srcdir}/tree-sitter-haskell-gcc-no-strict-aliasing.patch"
-    local _tsh_dirs=()
-    export CARGO_HOME="${srcdir}/cargo-home"
-
-    cargo fetch --locked --manifest-path "${_repo_root}/Cargo.toml"
-
-    shopt -s nullglob
-    _tsh_dirs=("${CARGO_HOME}"/registry/src/*/tree-sitter-haskell-*)
-    shopt -u nullglob
-    if ((${#_tsh_dirs[@]} != 1)); then
-        msg2 "Expected exactly one fetched tree-sitter-haskell source directory, found ${#_tsh_dirs[@]}"
-        return 1
-    fi
-
-    if patch -p1 -R -d "${_tsh_dirs[0]}" -i "${_patch_file}" --dry-run -sf; then
-        msg2 "Ignoring patch: ${_patch_file}"
-    else
-        patch -p1 -d "${_tsh_dirs[0]}" -i "${_patch_file}"
-    fi
-}
 
 prepare() {
     cd "${srcdir}/${pkgname}"
 
     patch -p1 -i "${srcdir}/skip-native-embed-for-aur.patch"
+    # Use a maintained fork of tree-sitter-haskell to resolve a crash issue. See:
+    # https://github.com/tree-sitter/tree-sitter-haskell/issues/144
+    patch -p1 -i "${srcdir}/tree-sitter-haskell-new-repo.patch"
 }
 
 build() {
@@ -72,7 +49,6 @@ build() {
     unset CI CC CXX CFLAGS CXXFLAGS LDFLAGS RUSTFLAGS
 
     bun install --frozen-lockfile
-    _patch_tree_sitter_haskell_gcc_workaround "${PWD}"
 
     CI=1 TARGET_PLATFORM='linux' TARGET_ARCH='x64' TARGET_VARIANTS='baseline modern' \
         bun run ci:build:native
