@@ -2,7 +2,7 @@
 
 pkgname=vmaf-full
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion with all features enabled'
 arch=('x86_64')
 url='https://github.com/Netflix/vmaf/'
@@ -24,8 +24,17 @@ conflicts=('vmaf')
 optdepends=(
     'nvidia-utils: runtime NVIDIA driver support for CUDA feature extractors'
     'nsight-systems: NVTX range profiling')
-source=("vmaf-${pkgver}.tar.gz::https://github.com/Netflix/vmaf/archive/v${pkgver}/vmaf-${pkgver}.tar.gz")
-sha256sums=('a28f93f3b4fa65601be324587072e32a6a704a304ba7b1aec9b70b3f709bc1dc')
+source=(
+    "vmaf-${pkgver}.tar.gz::https://github.com/Netflix/vmaf/archive/v${pkgver}/vmaf-${pkgver}.tar.gz"
+    'vmaf-full-cuda-include-dir.patch')
+sha256sums=(
+    'a28f93f3b4fa65601be324587072e32a6a704a304ba7b1aec9b70b3f709bc1dc'
+    '25daa03f6424fab9899420643eeb1027bd7c606a0e35ab3a364ac76d30bb02f7')
+
+prepare() {
+    cd "vmaf-${pkgver}"
+    patch -Np1 -i "${srcdir}/vmaf-full-cuda-include-dir.patch"
+}
 
 build() {
     local _jobs

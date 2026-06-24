@@ -1,0 +1,22 @@
+diff --git a/libvmaf/src/meson.build b/libvmaf/src/meson.build
+index 7446f2c..6877e17 100644
+--- a/libvmaf/src/meson.build
++++ b/libvmaf/src/meson.build
+@@ -257,7 +257,7 @@ libvmaf_include = include_directories(
+     src_dir,
+     feature_src_dir,
+     feature_src_dir + 'common',
+-    is_nvtx_enabled ? '/usr/local/cuda/include' : '',
++    is_nvtx_enabled ? '/usr/include' : '',
+ )
+ 
+ libvmaf_cpu_static_lib = static_library(
+@@ -334,7 +334,7 @@ cuda_inc = []
+ if is_nvtx_enabled
+     cuda_dependency += declare_dependency(
+         link_with: shared_library('dl'),
+-        include_directories: include_directories('/usr/local/cuda/include'))
++        include_directories: include_directories('/usr/include'))
+ endif
+ 
+ if is_cuda_enabled
