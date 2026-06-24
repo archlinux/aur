@@ -1,0 +1,17 @@
+pkgbase = matlab-terminal-server-git
+	pkgdesc = Use a terminal in MATLAB® to run command-line interface tools (server)
+	pkgver = 0.3.0.r0.g78e2c68
+	pkgrel = 1
+	url = https://github.com/matlab/terminal-in-matlab
+	arch = x86_64
+	license = custom:BSD-2-Clause-alike
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	depends = matlab-release>=R2024b
+	provides = matlab-terminal-server=0.3.0
+	conflicts = matlab-terminal-server
+	source = terminal-in-matlab::git+https://github.com/matlab/terminal-in-matlab.git
+	sha256sums = SKIP
+
+pkgname = matlab-terminal-server-git
