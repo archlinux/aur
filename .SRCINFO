@@ -1,0 +1,13 @@
+pkgbase = eoyc
+	pkgdesc = Endless Options, Your Chain - chainable string encoding/decoding CLI written in Crystal.
+	pkgver = 0.3.0
+	pkgrel = 2
+	url = https://github.com/hahwul/eoyc
+	arch = x86_64
+	license = MIT
+	source = eoyc-0.3.0::https://github.com/hahwul/eoyc/releases/download/v0.3.0/eoyc-v0.3.0-linux-x86_64
+	source = LICENSE-eoyc-0.3.0::https://raw.githubusercontent.com/hahwul/eoyc/refs/tags/v0.3.0/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = eoyc
