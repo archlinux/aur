@@ -14,7 +14,7 @@ source=("flexoptix-${pkgver}.AppImage::https://flexbox.reconfigure.me/download/e
         'https://www.flexoptix.net/static/frontend/Flexoptix/default/en_US/files/99-tprogrammer.rules'
         'disable-autoupdate.patch')
 sha256sums=('9c4a8d0e258ef2c5754bb8485dc7301a5172355079813c359569d12040a682a4'
-            '3997b9755e74c6af7da252266e8ec94313e345dee11b204857016fb51f5c2157'
+            'ff566d253fb520cc98ab0dcdd1b549fd3def6e67b1d7af65cf1f92958e56b270'
             'f1ae709af8a4c26d177d9339084b7dc73fd9bbb988f4e7601e0969f5f0121612')
 
 prepare() {
