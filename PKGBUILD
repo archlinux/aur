@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=android-messages-desktop
-pkgver=6.0.2
+pkgver=6.0.3
 pkgrel=1
 _nodeversion=24
 _electronversion=41
@@ -17,7 +17,7 @@ makedepends=(
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('288a7df8b5de4bf35c1ebe0b4898ac6635ab0018197130b6853c12b02b09ed1a'
+sha256sums=('e486813d58d3cc50a94cb9a7ef0ef86da7b8ef23b37a6bfbd643c80702cec9c2'
             'e8b021832cbf8a6759f7808f5e667c91dbb6d8d1f973ea0bc6578c2c52674bcb'
             '1bf16b8864712b0c1de72d8c3764db14b75ecf64dae44d206a26aa036ac53b1a')
 
@@ -37,6 +37,9 @@ prepare() {
   _ensure_local_nvm
   nvm install "${_nodeversion}"
 
+  export PNPM_HOME="$srcdir/pnpm-home"
+  pnpm install --frozen-lockfile
+
   sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/$pkgname.sh"
 }
 
@@ -47,7 +50,6 @@ build() {
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   export PNPM_HOME="$srcdir/pnpm-home"
   _ensure_local_nvm
-  pnpm install --frozen-lockfile
   pnpm build
   pnpm electron-builder --config electron-builder.config.js --linux --x64 --dir \
     $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
