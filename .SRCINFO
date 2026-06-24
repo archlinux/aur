@@ -1,0 +1,19 @@
+pkgbase = hstui
+	pkgdesc = Terminal user interface for managing hyprsunset on Hyprland
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mplaczek99/hstui
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	depends = hyprland
+	depends = hyprsunset
+	depends = libnotify
+	depends = uwsm
+	options = !debug
+	source = git+https://github.com/mplaczek99/hstui.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = hstui
