@@ -4,7 +4,7 @@
 # Contributor: Wuxxin <wuxxin@gmail.com>
 
 pkgname=openclaw
-pkgver=2026.6.9
+pkgver=2026.6.10
 pkgrel=1
 pkgdesc='Multi-channel AI gateway with extensible messaging integrations'
 arch=(x86_64 aarch64)
@@ -14,7 +14,7 @@ license=(MIT)
 depends=('nodejs>=22')
 makedepends=(npm)
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
-sha256sums=(581c61d9cfef2dd0235508fef68293d07b8f56e3f22728633c2c5229a3322596)
+sha256sums=(263d6b0d7f5fa6f772e58e3413979484549540397722dd51230d8522e94e3202)
 options=(!debug !strip)
 install=$pkgname.install
 noextract=($pkgname-$pkgver.tgz)
