@@ -1,0 +1,6 @@
+*.tar.xz
+*.tar.xz.sig
+*.patch
+!0001-feature-allow-disable-hardcoded-touchpad-gestures.patch
+*.pkg.tar.zst
+*.log
