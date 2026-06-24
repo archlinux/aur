@@ -1,6 +1,6 @@
 # Maintainer: lemonxah <lemonxah@gmail.com>
 pkgname=zestbay
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="A PipeWire patchbay and audio routing manager with LV2/CLAP/VST3 plugin hosting"
 arch=('x86_64')
