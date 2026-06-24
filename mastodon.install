@@ -16,9 +16,9 @@ post_install() {
 	echo "sudo -u mastodon RAILS_ENV=production NODE_OPTIONS=--openssl-legacy-provider PATH=./:$PATH bundle exec rails mastodon:setup"
 	echo
 	echo "Afterwards, check if your nginx is properly setup. Please orient yourself on this file: https://github.com/mastodon/mastodon/blob/main/dist/nginx.conf"
-	echo "Other Reverse Proxy are _not_ supported by upstream. Use them on your own and expect them to not work or fail after updates"
+	echo "Other reverse proxies are _not_ supported by upstream. Use them on your own and expect them to not work or fail after updates."
 	echo
-	echo "And if you want an working search, it is highly recommended to also install OpenSearch and setup that package before continuing here"
+	echo "And if you want working search, it is highly recommended to also install OpenSearch and set up that package before continuing here."
 	echo
 	echo "### Finally, enable and start all the required services ###"
 	echo "systemctl enable --now mastodon.target"
@@ -29,7 +29,24 @@ post_upgrade() {
 	echo "### Mastodon Upgrade Instructions ###"
 	echo "#####################################"
 	echo
-	echo "### IMPORTANT: before upgrading to Mastodon 4.6.0, make sure you have a PostgreSQL backup ###"
+	echo "### IMPORTANT: choose the correct procedure depending on your previous Mastodon version ###"
+	echo
+	echo "########################################################"
+	echo "### Case 1: upgrade from Mastodon 4.6.0 to 4.6.1      ###"
+	echo "### No database migration is required                 ###"
+	echo "########################################################"
+	echo
+	echo "cd /var/lib/mastodon; find -path ./public/system -prune -o -exec chown -h mastodon:mastodon {} +"
+	echo "sudo -u mastodon RAILS_ENV=production bundle exec rails assets:precompile"
+	echo "systemctl daemon-reload; systemctl restart mastodon-web mastodon-sidekiq mastodon-streaming"
+	echo
+	echo
+	echo "########################################################"
+	echo "### Case 2: upgrade from Mastodon 4.5.x or lower      ###"
+	echo "### Database migrations are required                  ###"
+	echo "########################################################"
+	echo
+	echo "### IMPORTANT: before upgrading to Mastodon 4.6.x, make sure you have a PostgreSQL backup ###"
 	echo "### Example, adapt the path if needed: ###"
 	echo "sudo -u postgres pg_dump -Fc mastodon_production > /root/mastodon_production_before_upgrade.dump"
 	echo
@@ -48,7 +65,7 @@ post_upgrade() {
 	echo "### Precompile the assets ###"
 	echo "sudo -u mastodon RAILS_ENV=production bundle exec rails assets:precompile"
 	echo
-	echo "### Mastodon 4.6.0: run the pre-deployment database migration before restarting services ###"
+	echo "### Run the pre-deployment database migration before restarting services ###"
 	echo "sudo -u mastodon SKIP_POST_DEPLOYMENT_MIGRATIONS=true RAILS_ENV=production bundle exec rails db:migrate"
 	echo
 	echo "### Reload systemd and start Mastodon services ###"
@@ -58,7 +75,7 @@ post_upgrade() {
 	echo "### Check that the services are running. Expected result: active ###"
 	echo "systemctl is-active mastodon-web mastodon-sidekiq mastodon-streaming"
 	echo
-	echo "### Mastodon 4.6.0: run the post-deployment database migration after services are running ###"
+	echo "### Run the post-deployment database migration after services are running ###"
 	echo "sudo -u mastodon RAILS_ENV=production bundle exec rails db:migrate"
 	echo
 	echo "### Optional: check the full status if something looks wrong ###"
