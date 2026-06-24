@@ -4,7 +4,7 @@
 _android_arch=x86-64
 
 pkgname=android-${_android_arch}-sdl3
-pkgver=3.4.0
+pkgver=3.4.10
 pkgrel=1
 arch=('any')
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3) (Android ${_android_arch})"
@@ -17,10 +17,8 @@ depends=("android-${_android_arch}-hidapi"
 makedepends=('android-cmake'
              'java-environment-common')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://github.com/libsdl-org/SDL/releases/download/release-${pkgver}/SDL3-${pkgver}.tar.gz"{,.sig})
-md5sums=('25cc9aade08c60e883b7accd87eb4600'
-         'SKIP')
-validpgpkeys=('1528635D8053A57F77D1E08630A59377A7763BE6') # Sam Lantinga
+source=("https://github.com/libsdl-org/SDL/releases/download/release-${pkgver}/SDL3-${pkgver}.tar.gz")
+md5sums=('8d8f2df5bc7818ec1080ce8e1611db9c')
 clases_file_name=sdl3.jar
 
 build() {
