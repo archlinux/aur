@@ -1,7 +1,7 @@
 pkgbase = expresso
 	pkgdesc = A Rofi-based system awake and sleep inhibition utility
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/davi-s/expresso
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = expresso
 	depends = systemd
 	depends = rofi
 	depends = libnotify
+	depends = wayland-idle-inhibitor-git
 	source = expresso-1.0.2.tar.gz::https://github.com/davi-s/expresso/archive/refs/tags/v1.0.2.tar.gz
 	sha256sums = 696292e422c85d4955e1fc9e0412ec3d929719d3cd410c0e3e8a629d6e8f1b07
 
