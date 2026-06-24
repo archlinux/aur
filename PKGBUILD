@@ -1,7 +1,7 @@
 # Maintainer: Arnold DECHAMPS <ard at dechamps.aero>
 
 pkgname=flexoptix
-pkgver=5.64.0
+pkgver=5.65.1
 pkgrel=1
 pkgdesc='Flexoptix Flexbox transceiver programmer'
 arch=('any')
@@ -13,7 +13,7 @@ install=flexoptix.install
 source=("flexoptix-${pkgver}.AppImage::https://flexbox.reconfigure.me/download/electron/linux/x64/FLEXOPTIX%20App.${pkgver}-latest.AppImage"
         'https://www.flexoptix.net/static/frontend/Flexoptix/default/en_US/files/99-tprogrammer.rules'
         'disable-autoupdate.patch')
-sha256sums=('9c4a8d0e258ef2c5754bb8485dc7301a5172355079813c359569d12040a682a4'
+sha256sums=('aafc501a93e00ba463eaf74fcc4d270711fb54335ef79b59cd84f866eb1d7624'
             'ff566d253fb520cc98ab0dcdd1b549fd3def6e67b1d7af65cf1f92958e56b270'
             'f1ae709af8a4c26d177d9339084b7dc73fd9bbb988f4e7601e0969f5f0121612')
 
