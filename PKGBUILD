@@ -16,7 +16,7 @@ pkgver=r11455.33463e015
 pkgrel=1
 pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (custom git version for N32)"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
-url="http://openocd.org"
+url="https://github.com/Adlyq/openocd"
 license=('GPL')
 depends=('libftdi-compat' 'libusb-compat' 'hidapi' 'libudev.so' 'capstone' 'libjaylink')
 makedepends=('git' 'automake>=1.11' 'autoconf' 'libtool' 'tcl')
