@@ -1,6 +1,6 @@
 # Maintainer: Spinu Alexandru <spinualexandru@outlook.com>
 pkgname=asus-rog-touchpad-numpad
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Linux driver for ASUS ROG laptop touchpad numpad overlay with LED backlight control"
 arch=('x86_64')
