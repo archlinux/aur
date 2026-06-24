@@ -6,7 +6,7 @@
 
 pkgname=kwin-without-gestures
 _pkgname=kwin
-pkgver=6.7.0
+pkgver=6.7.1
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='An easy to use, but flexible, wayland compositor. Patched to get rid of hardcoded touchpad gestures'
@@ -87,11 +87,9 @@ makedepends=(extra-cmake-modules
              xorg-xwayland)
 optdepends=('plasma-keyboard: virtual keyboard')
 source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
-        https://invent.kde.org/plasma/kwin/-/commit/cf00d9712316edecb4e1014bffe925136a74f072.patch
         0001-feature-allow-disable-hardcoded-touchpad-gestures.patch)
-sha256sums=('d20b798094a9f58e57de55eca3d58b1cdcb7db2939eb8bf73918c4fab6d9aec5'
+sha256sums=('352bfb34efad1435071960ef4cd392b110a18e1c168d1fdc5cce6b43331d0875'
             'SKIP'
-            'cb57c6364bc887ef36a059c2f51ef3e3a23f89a1b62f0f58884aeb1ebdea7f36'
             '6847f4739304e49ea8292231cd63cf25e7039af7ab59c1fee3bb2cdbebd079f0')
 install=$_pkgname.install
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
@@ -102,9 +100,6 @@ validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell
 
 prepare() {
   cd $_pkgname-$pkgver
-  # https://bugs.kde.org/show_bug.cgi?id=520842#c17
-  # Disable Color Pipeline for NVIDIA
-  patch -Np1 -i ../cf00d9712316edecb4e1014bffe925136a74f072.patch
   patch -Np1 -i ../0001-feature-allow-disable-hardcoded-touchpad-gestures.patch
 }
 
