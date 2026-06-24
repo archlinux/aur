@@ -1,12 +1,12 @@
 pkgbase = clusterctl
 	pkgdesc = Cluster API command line interface
-	pkgver = 1.13.2
+	pkgver = 1.13.3
 	pkgrel = 1
 	url = https://cluster-api.sigs.k8s.io/
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = go
-	source = clusterctl-1.13.2.tar.gz::https://github.com/kubernetes-sigs/cluster-api/archive/refs/tags/v1.13.2.tar.gz
-	sha256sums = 30d77bda139bdf8f98191b93abc007a8df9c955b37a1a24ecc8b4cd57fa249a0
+	source = clusterctl-1.13.3.tar.gz::https://github.com/kubernetes-sigs/cluster-api/archive/refs/tags/v1.13.3.tar.gz
+	sha256sums = ea7c481afe86381981aaa7f4d7ac6c8ec7dc66fda10a1029c62deadf624216e0
 
 pkgname = clusterctl
