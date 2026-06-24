@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Interactive, persistent shell for HTTP requests"
 
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,7 +31,7 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
 sha256sums=('c49529006e8fd51adae017e08bc912932cd16e10fb0ddb719a5c38f467db49d2'
             '2d7124e8942793e458a12398becb960d5cc152e04b4e7b6977a1696c5e428f3c')
-sha256sums_x86_64=('2369abf456b296db18865fa8f0d206afe7e083522c5b75ddf64194162b97390b')
+sha256sums_x86_64=('284f9864438dbfb2dcc9c46adbb51eb50cec8bed310f215a1a1c1aa318e4fd79')
 
 
 package() {
