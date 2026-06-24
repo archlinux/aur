@@ -1,0 +1,5 @@
+[fortitude]
+source = "github"
+github = "PlasmaFAIR/fortitude"
+prefix = "v"
+use_latest_release = true
