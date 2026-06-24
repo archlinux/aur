@@ -1,5 +1,3 @@
-# Maintainer: Jordy van Wolferen <jordy@jvwdev.nl>
-
 pkgname=xfce4-volumed-pulse-git
 pkgdesc='A volume keys control daemon for Xfce using pulseaudio'
 pkgver=r183.fea9100
