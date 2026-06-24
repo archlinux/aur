@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-libvpx
 	pkgdesc = VP8 and VP9 codec (Android x86-64)
-	pkgver = 1.15.2
-	pkgrel = 2
+	pkgver = 1.16.0
+	pkgrel = 1
 	url = http://www.webmproject.org/
 	arch = any
 	groups = android-libvpx
@@ -13,7 +13,7 @@ pkgbase = android-x86-64-libvpx
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/webmproject/libvpx/archive/v1.15.2.tar.gz
-	md5sums = 4c7a93808c12b359733430c8377b7fcf
+	source = https://github.com/webmproject/libvpx/archive/v1.16.0.tar.gz
+	md5sums = fb51551487ecfdec93f3d243b7fb1a67
 
 pkgname = android-x86-64-libvpx
