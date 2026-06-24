@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=flutter-git
-pkgver=1.26.0.1.0.pre.r0.63062a6443
+pkgver=3.33.0.0.0.pre.r6038.909a79582b7
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64")
@@ -20,11 +20,9 @@ source=(
   "${pkgname%-git}.sh"
   "${pkgname%-git}.csh"
 )
-sha256sums=(
-  "SKIP"
-  "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
-  "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f"
-)
+sha256sums=('SKIP'
+            '1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a'
+            '7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
@@ -50,6 +48,5 @@ package() {
   cp -ra "${srcdir}/${pkgname%-git}" "${pkgdir}/opt/"
   find "${pkgdir}/opt/${pkgname%-git}" -type d -exec chmod a+rx {} +
   find "${pkgdir}/opt/${pkgname%-git}" -type f -exec chmod a+r {} +
-  chmod a+rw "${pkgdir}/opt/${pkgname%-git}/version"
   ln -s "/opt/${pkgname%-git}/bin/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
 }
