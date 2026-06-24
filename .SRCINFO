@@ -1,25 +1,12 @@
 pkgbase = swish
-	pkgdesc = SWI-Prolog for SHaring: a SWI-Prolog web IDE
-	pkgver = r1360.237320c
+	pkgdesc = Command line interface for Infomaniak's Swisstransfer service.
+	pkgver = 1.0.2
 	pkgrel = 1
-	url = https://github.com/SWI-Prolog/swish
-	install = .install
+	url = https://github.com/Blutsh/Swish
 	arch = x86_64
-	license = BSD
-	makedepends = git
-	makedepends = make
-	makedepends = bower
-	makedepends = sed
-	depends = bash
-	depends = coreutils
-	depends = gawk
-	depends = libxinerama
-	depends = libxpm
-	depends = swi-prolog-devel
-	conflicts = swish-cplint
-	conflicts = swish-cplint-bin
-	source = git+https://github.com/SWI-Prolog/swish#branch=master
-	md5sums = SKIP
+	license = GPL
+	makedepends = cargo
+	source = https://github.com/Blutsh/Swish/archive/refs/tags/1.0.2.tar.gz
+	sha256sums = 25893418e02e6d35ef7712fea447c450f148e15bccfecac39bb8f18fd4ef732d
 
 pkgname = swish
-
