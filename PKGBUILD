@@ -7,13 +7,13 @@ _srcname=xscreensaver
 pkgver=6.15
 pkgrel=1
 pkgdesc="Standalone graphical hacks and screensavers from xscreensaver"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://www.jwz.org/xscreensaver/"
 license=('BSD-2-Clause')
 conflicts=('xscreensaver')
 
 depends=('libxxf86vm' 'mesa' 'libxmu' 'gdk-pixbuf2' 'gdk-pixbuf-xlib' 'libx11' 'libxext' 'libxt')
-makedepends=('bc')
+makedepends=('bc' 'intltool')
 
 source=("https://www.jwz.org/xscreensaver/$_srcname-$pkgver.tar.gz"
         "LICENSE")
