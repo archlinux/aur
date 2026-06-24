@@ -4,8 +4,8 @@
 # Contributor: GI Jack <GI_Jack@hackermail.com>
 
 pkgname=sleuthkit-java
-pkgver=4.14.0
-pkgrel=2
+pkgver=4.15.0
+pkgrel=1
 pkgdesc='Java bindings for The Sleuth Kit.'
 arch=(x86_64)
 url='http://www.sleuthkit.org/sleuthkit'
@@ -14,7 +14,7 @@ depends=(java-runtime=17 java-openjfx=17 sleuthkit)
 optdepends=('sqlite-jdbc: For JDBC SQLite support')
 makedepends=(ant java-environment=17)
 source=("https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-${pkgver}/sleuthkit-${pkgver}.tar.gz")
-sha512sums=('cc486ced49595f830e473bf3831b0b02525305c29795e3e17f0292231a0c25c619463b02584c3266b61c33a77912b73eefc257ff9aa3c9af68102b49e3e99105')
+sha512sums=('754ca24c13ce62703aca3a55fa21dcd04fd7b3febfd0c21b2adaa304439ae56bbab588a355680f7063b826920c9ae0abb17c2e7f5d40eb745c1a957ce283cba9')
 
 build() {
 	cd "sleuthkit-${pkgver}"
