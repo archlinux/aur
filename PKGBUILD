@@ -14,7 +14,7 @@ depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt
 optdepends=('photoqt-extensions: Official extensions for PhotoQt')
 makedepends=('cmake' 'qt6-tools' 'extra-cmake-modules')
 source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz)
-sha256sums=('7e786a04cd06168d11249c909a7fae25410c142766da11b5305d04de0bcf00e7')
+sha256sums=('1a27de9be8153e6a45eee8620f66ad7a3b4598e56ebbbb7664b28730d4b9caf6')
 
 # NOTE
 # To use GraphicsMagick instead of ImageMagick replace it in the depends array above and change
