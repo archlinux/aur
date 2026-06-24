@@ -27,6 +27,7 @@ pkgbase = plank-reloaded-git
 	depends = pango
 	depends = libdbusmenu-gtk3
 	depends = libdbusmenu-glib
+	depends = libcanberra
 	provides = plank
 	conflicts = plank
 	source = git+https://github.com/zquestz/plank-reloaded.git

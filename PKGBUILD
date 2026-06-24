@@ -2,7 +2,7 @@
 # Maintainer:  Josh Ellithorpe <quest@mac.com>
 
 pkgname=plank-reloaded-git
-pkgver=0.11.146.r0.g7ef72c7
+pkgver=0.11.167.r1.g41636f9
 pkgrel=1
 pkgdesc='Fork of the original Plank project, providing a simple dock for X11 desktop environments'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/zquestz/plank-reloaded'
 license=('GPL-3.0-or-later')
 depends=('atk' 'bamf' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gnome-menus'
          'gtk3' 'libgee' 'libwnck3' 'libx11' 'libxfixes' 'libxi' 'pango'
-         'libdbusmenu-gtk3' 'libdbusmenu-glib')
+         'libdbusmenu-gtk3' 'libdbusmenu-glib' 'libcanberra')
 makedepends=('gnome-common' 'git' 'intltool' 'vala' 'meson' 'ninja')
 provides=('plank')
 conflicts=('plank')
