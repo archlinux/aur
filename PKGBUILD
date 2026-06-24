@@ -4,7 +4,7 @@
 _pkgname="material-kwin-decoration"
 pkgname="${_pkgname}-git"
 pkgver=r602.4b71e65
-pkgrel=1
+pkgrel=2
 pkgdesc="Material-ish window decoration for KWin, with LIM (Locally Integrated Menu) support"
 url="https://github.com/guiodic/material-decoration"
 license=('GPL-2.0-or-later')
@@ -16,7 +16,6 @@ makedepends=(
   extra-cmake-modules
   git
   kwin
-  kwin-x11
 )
 optdepends=(
   'plasma-x11-session: for X11 support'
