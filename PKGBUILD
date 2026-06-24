@@ -14,7 +14,7 @@ makedepends=(
     'cmake' 'marian-lite' 'rapidjson'
     'pybind11' 'python-build' 'python-installer'
     'python-setuptools' 'python-wheel'
-    'cli11' 'pathie-cpp' 'intgemm' 'sentencepiece-browsermt'
+    'cli11' 'intgemm' 'sentencepiece-browsermt'
 )
 
 source=(

@@ -13,7 +13,6 @@ pkgbase = kotki
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = cli11
-	makedepends = pathie-cpp
 	makedepends = intgemm
 	makedepends = sentencepiece-browsermt
 	source = https://github.com/terslang/kotki/archive/refs/tags/v0.6.0-1.tar.gz
