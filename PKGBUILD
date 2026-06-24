@@ -3,11 +3,12 @@
 pkgbase=kanidm-bin
 pkgname=(kanidm-clients-bin kanidm-unixd-clients-bin kanidm-server-bin kanidm-bin)
 pkgver=1.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern identity management platform (prebuilt binaries)'
 arch=(x86_64 aarch64)
 url='https://kanidm.com'
 license=('MPL-2.0')
+options=(!debug !strip)
 
 _publisher=bendik/kanidm
 
