@@ -1,7 +1,7 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=principia
-pkgver=2026.06.06
+pkgver=2026.06.19
 pkgrel=1
 pkgdesc="Physics-based sandbox building game."
 url='https://github.com/Bithack/principia/'
@@ -10,7 +10,7 @@ license=('bsd-3')
 depends=('gtk3' 'curl' 'libpng' 'libjpeg' 'freetype2' 'sdl2')
 makedepends=('clang' 'cmake' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Bithack/principia/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('81110ca1c75e97a33c48c73b50853dd770b874d75ece85b4603bb96f77f48ac5')
+sha256sums=('52ffbbdbf6580b65b17760b6a46aff52ce74c4876be22ae0f244848f68ba2c3f')
 options=(!lto)
 
 build() {
