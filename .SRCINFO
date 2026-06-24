@@ -1,9 +1,8 @@
 pkgbase = animawave-git
 	pkgdesc = Internet radio player (fork of shortwave) — git version
-	pkgver = 5.0.0
-	pkgrel = 4
+	pkgver = 5.0.1
+	pkgrel = 1
 	url = https://github.com/animaios/animawave
-
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
@@ -27,10 +26,10 @@ pkgbase = animawave-git
 	depends = sqlite
 	depends = openssl
 	optdepends = gst-plugins-ugly: additional codecs
-	conflicts = animawave
-	conflicts = shortwave
 	provides = animawave
 	provides = shortwave
+	conflicts = animawave
+	conflicts = shortwave
 	replaces = shortwave
 	source = animawave-git::git+https://github.com/animaios/animawave.git
 	sha256sums = SKIP

@@ -2,8 +2,8 @@
 # Contributor: animawave <animawave@github.com>
 
 pkgname=animawave-git
-_pkgver=5.0.0
-pkgrel=4
+pkgver=5.0.1
+pkgrel=1
 pkgdesc="Internet radio player (fork of shortwave) — git version"
 arch=('x86_64' 'aarch64')
 url="https://github.com/animaios/animawave"
@@ -30,7 +30,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --long --tags --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || echo "$_pkgver"
+  git describe --long --tags --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
+    || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
