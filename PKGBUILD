@@ -3,9 +3,9 @@
 
 pkgname=parakeet.cpp-vulkan-bin-release-git
 _pkgname=parakeet-cli
-_repo=mudler/parakeet.cpp
 pkgver=0.3.2
-pkgrel=2
+pkgrel=3
+_repo=mudler/parakeet.cpp
 pkgdesc='Fast on-device ASR using NVIDIA Parakeet models via ggml (prebuilt Vulkan binary, latest Git release)'
 arch=('x86_64')
 url="https://github.com/${_repo}"
@@ -22,7 +22,7 @@ pkgver() {
     | sed 's/^v//'
 }
 
-prepare() {
+build() {
   cd "${srcdir}"
   curl -sSLO "${url}/releases/download/v${pkgver}/parakeet-v${pkgver}-bin-linux-vulkan-x64.tar.gz"
   tar xf "parakeet-v${pkgver}-bin-linux-vulkan-x64.tar.gz"
