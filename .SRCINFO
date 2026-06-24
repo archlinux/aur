@@ -14,6 +14,6 @@ pkgbase = codex-account-switcher-bin
 	provides = codex-account-switcher
 	conflicts = codex-account-switcher
 	source = codex-account-switcher-bin-0.2.7.tar.zst::https://github.com/jR4dh3y/codex-account-switcher/releases/download/v0.2.7/codex-account-switcher-0.2.7-x86_64.tar.zst
-	sha256sums = c92e43b5a249a2d4bbf650df3a9cbb2b1cc9a3c45a8836e0cca793b53fe0bdc1
+	sha256sums = 4425964393f95fc4ecdca641990eac2002d1952e08665fb9db3dff46dc0483a1
 
 pkgname = codex-account-switcher-bin

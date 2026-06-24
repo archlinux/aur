@@ -18,7 +18,7 @@ conflicts=('codex-account-switcher')
 source=(
   "${pkgname}-${pkgver}.tar.zst::${url}/releases/download/v${pkgver}/codex-account-switcher-${pkgver}-x86_64.tar.zst"
 )
-sha256sums=('c92e43b5a249a2d4bbf650df3a9cbb2b1cc9a3c45a8836e0cca793b53fe0bdc1')
+sha256sums=('4425964393f95fc4ecdca641990eac2002d1952e08665fb9db3dff46dc0483a1')
 
 package() {
   install -d "${pkgdir}"
