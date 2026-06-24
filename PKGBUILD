@@ -4,7 +4,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-x265
-pkgver=4.1
+pkgver=4.2
 pkgrel=1
 arch=('any')
 pkgdesc="Open Source H265/HEVC video encoder (Android ${_android_arch})"
@@ -16,7 +16,7 @@ makedepends=('android-cmake'
              'nasm')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://bitbucket.org/multicoreware/x265_git/downloads/x265_${pkgver}.tar.gz")
-md5sums=('f1c3c80248d8574378a4aac8f374f6de')
+md5sums=('0a7edcf495aba9f320047d61647d610b')
 
 prepare() {
     cd "${srcdir}/x265_${pkgver}"
