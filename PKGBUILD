@@ -12,7 +12,7 @@ depends=('gtk3' 'webkit2gtk-4.1')
 provides=('wuyou-toolkit')
 conflicts=('wuyou-toolkit')
 options=('!strip')
-source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/duanluan/wuyou-toolkit-releases/releases/download/v0.5.0/wuyou-toolkit_0.5.0_amd64.deb")
+source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/duanluan/wuyou-toolkit-releases/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 sha256sums=('35721f4d8f60c76a8a938cc75a49f4fadca38cb4fa60b1ca91ca4f99193adb10')
 
 package() {
