@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aionui
 _pkgname=AionUi
-pkgver=2.1.22
+pkgver=2.1.23
 _electronversion=37
 _nodeversion=22
 pkgrel=1
@@ -27,8 +27,12 @@ makedepends=(
     'git'
     'jq'
 )
-source=("${pkgname}.sh")
-sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+source=(
+    "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
+    "${pkgname}.sh"
+)
+sha256sums=('113c4a30eb8fdc77d544261b4ea59e2daaef00d93de791d80bd2f6635033f3c1'
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -63,14 +67,6 @@ _set_build_env() {
     fi
 }
 prepare() {
-    cd "${srcdir}"
-    if [[ ! -d "${srcdir}/${pkgname}-${pkgver}" ]]; then
-        git clone \
-            --depth 1 \
-            --branch "v${pkgver}" \
-            "${_ghurl}" \
-            "${pkgname}-${pkgver}"
-    fi
     cd "${srcdir}/${pkgname}-${pkgver}"
     _get_electron_version
     sed -i -e "
