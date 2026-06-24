@@ -5,11 +5,11 @@ _binname=junie
 provides=('junie')
 conflicts=('junie')
 
-pkgver=1892.12
+pkgver=2144.5
 pkgrel=1
 pkgdesc="Junie command‑line client"
 arch=('x86_64' 'aarch64')
-options=('!strip' 'staticlibs')
+options=('staticlibs')
 url="https://github.com/jetbrains/junie"
 
 license=('LicenseRef-Junie')
@@ -19,6 +19,7 @@ depends=(
   'bash'
   'glibc'
   'gcc-libs'
+  'java-runtime'
   'zlib'
   'libx11'
   'libxext'
@@ -43,27 +44,24 @@ sha512sums=('SKIP'
             'SKIP')
 
 _latest_eap_version() {
-
-  jq -rs '
-    def blacklist: [];
-
-    map(
-      select(.version? != null)
-      | select(.version as $v | blacklist | index($v) | not)
-      | .version
-    )
-    | max_by(split(".") | map(tonumber))
-  ' "$srcdir/$pkgname/update-info-eap.jsonl"
+  jq -r '.version' "$srcdir/$pkgname/update-info-eap.jsonl" | sort -V | tail -n 1
 }
 
 _eap_download_url() {
   local _version="$1"
   local _platform="$2"
+  local _url
 
-  jq -rse --arg version "$_version" --arg platform "$_platform" '
+  _url=$(jq -rse --arg version "$_version" --arg platform "$_platform" '
     map(select(.version == $version and .platform == $platform and .downloadUrl? != null))
     | .[0].downloadUrl
-  ' "$srcdir/$pkgname/update-info-eap.jsonl"
+  ' "$srcdir/$pkgname/update-info-eap.jsonl" 2>/dev/null)
+
+  if [[ -z "$_url" || "$_url" == "null" ]]; then
+    _url="https://github.com/JetBrains/junie/releases/download/${_version}/junie-eap-${_version}-${_platform}.zip"
+  fi
+
+  echo "$_url"
 }
 
 pkgver() {
@@ -80,14 +78,11 @@ prepare() {
 
   _version="$(_latest_eap_version)"
 
-  case "$CARCH" in
-    x86_64) _platform="linux-amd64" ;;
-    aarch64) _platform="linux-aarch64" ;;
-    *)
-      printf 'Unsupported architecture: %s\n' "$CARCH" >&2
-      return 1
-      ;;
-  esac
+  if [[ "$CARCH" == "aarch64" ]]; then
+    _platform="linux-aarch64"
+  else
+    _platform="linux-amd64"
+  fi
 
   if ! _download_url="$(_eap_download_url "$_version" "$_platform")"; then
     printf 'No download URL found for version %s on %s\n' "$_version" "$_platform" >&2
