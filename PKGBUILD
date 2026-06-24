@@ -1,21 +1,19 @@
 # Maintainer: lpt <aur AT lucapetrucci DOT net>
 
 pkgname=youtube-local
-pkgver=2.8.12
-pkgrel=3
+pkgver=2.8.13
+pkgrel=1
 pkgdesc="Browser based client for watching YouTube anonymously and with greater page performance"
 url="https://github.com/user234683/youtube-local"
 license=("custom")
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 	"remove-portable-mode.patch"
-	"ast.patch"
 	"youtube-local.service"
 )
 sha256sums=(
-	"7cb252196d1461e3969439afb84c598cb11dca04c4e0742d0c7a3ed918233aab"
+	"8670dfde2c7f59f9a35bd1e1700ec2c463f149a33884728ced5a32b7158ad7f3"
 	"ce89efec6cac4db6f60cd3e02003c13e7a264f30f2b7d6797dd4efebc1a0f230"
-	"f8617f69ed9004f5a81056bc5385cc9d4ba24b9f672e332f576d58b511e89589"
 	"ab7878c75eea2caac1c731ce2cb79193a19758f2c546f853793c9e2822752591"
 )
 arch=("any")
@@ -41,7 +39,6 @@ check () {
 prepare () {
 	cd "$pkgname-$pkgver"
 	patch -Np1 -i "$srcdir/remove-portable-mode.patch"
-	patch -Np1 -i "$srcdir/ast.patch"
 }
 
 build () {
