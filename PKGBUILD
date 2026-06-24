@@ -2,7 +2,7 @@
 
 _pkgname=proton-drive-cli
 pkgname=$_pkgname-git
-pkgver=0.4.6.r0.f21e74c
+pkgver=0.4.6.r18.dc1ba4a
 pkgrel=1
 pkgdesc='Official Proton Drive command-line client'
 arch=(x86_64 aarch64)
@@ -30,10 +30,11 @@ build() {
         head -1 | sed 's|^js/v||')
     _shorthash=$(git rev-parse --short HEAD)
 
-    cd js/sdk
+    cd client/js
     bun install
+    bun run build
 
-    cd ../cli
+    cd ../../cli
     bun install --frozen-lockfile
     mkdir -p release
 
@@ -50,13 +51,13 @@ build() {
 }
 
 package() {
-    cd "$srcdir"/sdk/js/cli
+    cd "$srcdir"/sdk/cli
     install -Dm644 -t "$pkgdir"/usr/lib/$_pkgname release/proton-drive.js
     cat > ${_pkgname%-cli} << 'EOF'
 #!/bin/sh
 exec bun /usr/lib/proton-drive-cli/proton-drive.js "$@"
 EOF
     install -Dm755 -t "$pkgdir"/usr/bin ${_pkgname%-cli}
-    install -Dm644 -t "$pkgdir"/usr/share/licenses/$_pkgname ../../LICENSE.md
+    install -Dm644 -t "$pkgdir"/usr/share/licenses/$_pkgname ../LICENSE.md
     install -Dm644 -t "$pkgdir"/usr/share/doc/$_pkgname CHANGELOG.md README.md
 }
