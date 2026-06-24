@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 pkgname=aquacontrol
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Suite di controllo per Aquaero 6 LT"
 arch=('any')
