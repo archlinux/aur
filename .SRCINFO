@@ -1,7 +1,7 @@
 pkgbase = kanidm-bin
 	pkgdesc = Modern identity management platform (prebuilt binaries)
 	pkgver = 1.10.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kanidm.com
 	arch = x86_64
 	arch = aarch64
@@ -9,9 +9,9 @@ pkgbase = kanidm-bin
 	options = !debug
 	options = !strip
 	source_x86_64 = kanidm-v1.10.4-x86_64-linux-gnu.tar.gz::https://github.com/bendik/kanidm/releases/download/v1.10.4-bin/kanidm-v1.10.4-x86_64-linux-gnu.tar.gz
-	sha256sums_x86_64 = 32ef745e5291d6364cd67272496b451e97b899f8132892d9fbb9d7e536c2fb3a
+	sha256sums_x86_64 = 51c519b56cb9a3874eb069d7a6271127ad11d38cb57211f47eee31ae10f84ab5
 	source_aarch64 = kanidm-v1.10.4-aarch64-linux-gnu.tar.gz::https://github.com/bendik/kanidm/releases/download/v1.10.4-bin/kanidm-v1.10.4-aarch64-linux-gnu.tar.gz
-	sha256sums_aarch64 = d0ed06835b57e94b3b98a4bcc62881e73f51073ea77e5cdf4eee25dbcfd8273a
+	sha256sums_aarch64 = ea664fde2581970a7f8ff7f024efc3602a9b6a57adbadb6492b0d0e66a9f095d
 
 pkgname = kanidm-clients-bin
 	pkgdesc = Kanidm command-line client (prebuilt binaries)
