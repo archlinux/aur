@@ -1,7 +1,7 @@
 pkgbase = animawave-git
 	pkgdesc = Internet radio player (fork of shortwave) — git version
 	pkgver = 5.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/animaios/animawave
 	arch = x86_64
 	arch = aarch64

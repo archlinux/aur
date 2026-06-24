@@ -3,7 +3,7 @@
 
 pkgname=animawave-git
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Internet radio player (fork of shortwave) — git version"
 arch=('x86_64' 'aarch64')
 url="https://github.com/animaios/animawave"
@@ -28,10 +28,29 @@ replaces=('shortwave')
 source=("$pkgname::git+https://github.com/animaios/animawave.git")
 sha256sums=('SKIP')
 
+# Reuse the user's cargo registry cache instead of downloading fresh
+export CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
+
 pkgver() {
   cd "$srcdir/$pkgname"
   git describe --long --tags --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
     || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+# Retry cargo fetch up to 3 times on flaky networks
+_cargo_fetch_retry() {
+  local retries=3
+  for i in $(seq 1 $retries); do
+    echo "Fetching crates (attempt $i/$retries)..."
+    cargo fetch --locked --manifest-path "$srcdir/$pkgname/Cargo.toml" && return 0
+    echo "Fetch failed, waiting before retry..." >&2
+    sleep $((2 ** i))
+  done
+  return 1
+}
+
+prepare() {
+  _cargo_fetch_retry
 }
 
 build() {
