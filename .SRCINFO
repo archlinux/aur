@@ -1,20 +1,20 @@
 pkgbase = youtube-app-bin
 	pkgdesc = Unoffical YouTube linux desktop client with ad blocking and performance tweaks (Prebuilt version.Use system-wide electron)
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/cx051/YouTube-App
 	arch = x86_64
 	license = ISC
-	depends = electron35
-	provides = youtube-app=2.0.0
+	depends = electron41
+	provides = youtube-app=2.0.1
 	conflicts = youtube-app
 	options = !emptydirs
 	options = !strip
-	source = youtube-app-2.0.0.deb::https://github.com/cx051/YouTube-App/releases/download/v2.0.0/youtube_2.0.0_amd64.deb
-	source = LICENSE-2.0.0::https://raw.githubusercontent.com/cx051/YouTube-App/v2.0.0/LICENSE
+	source = youtube-app-2.0.1.deb::https://github.com/cx051/YouTube-App/releases/download/2.0.1/youtube_2.0.1_amd64.deb
+	source = LICENSE-2.0.1::https://raw.githubusercontent.com/cx051/YouTube-App/2.0.1/LICENSE
 	source = youtube-app.sh
-	sha256sums = ccf49fb0478c438da0b7a7f362c369275d4974911ac77fe3f7546bec0dd20b09
+	sha256sums = 728271677006e75aad9592945ca3a55c4c997f7838850b3b651539fe9e69d3fd
 	sha256sums = ef6167f39ce8ea8fe037da2ef01e45b47a32cede9622d1f70d5c6cf1b1c10490
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = youtube-app-bin
