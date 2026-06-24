@@ -1,14 +1,14 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
 pkgbase=fcitx5-lotus-bin
 pkgname=('fcitx5-lotus-bin' 'fcitx5-lotus-openrc-bin' 'fcitx5-lotus-runit-bin')
-pkgver=3.2.4
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Vietnamese input method for fcitx5"
 arch=('x86_64')
 url="https://github.com/LotusInputMethod/fcitx5-lotus"
 license=('GPL-3.0-or-later')
 source=("https://github.com/LotusInputMethod/fcitx5-lotus/releases/download/v${pkgver}/fcitx5-lotus-v${pkgver}-x86_64-archlinux.tar.zst")
-sha256sums=('a104c7a6450f5e9a8cbc6c4b95c58be14601363b569181e8df657d2e979dcb2a')
+sha256sums=('6dd78f9ab2056d4062c5175e51003b4286dd9232f6a7796a963db6cd1bddd3be')
 
 package_fcitx5-lotus-bin() {
     provides=('fcitx5-lotus')
