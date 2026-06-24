@@ -2,7 +2,7 @@
 # Contributor: Andrej Radović <r.andrej@gmail.com>
 
 pkgname=python-copier
-pkgver=9.15.2
+pkgver=9.16.0
 pkgrel=1
 pkgdesc='Library and command-line utility for rendering projects templates'
 arch=('any')
@@ -45,12 +45,12 @@ optdepends=(
   'git: VCS support'
 )
 
-_commit=a90729e
+_commit=fa9ce15
 source=(
   "git+https://github.com/copier-org/copier.git#commit=$_commit"
 )
 sha256sums=(
-  '11d9359b74de4c7bee5ebb8452463b8a2e9bbacbdbbc695785ca7d1055f7e478'
+  'b519cc7b4965780fc93bd95825f250dd1b6ffb48d149edc65d3bb09a401db3b3'
 )
 
 build() {
