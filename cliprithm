@@ -12,4 +12,21 @@ export CLIPRITHM_STORE_URL=https://aur.archlinux.org/packages/cliprithm
 export CLIPRITHM_STORE_INSTRUCTIONS='yay -Syu cliprithm'
 export CLIPRITHM_VERSION_SOURCE_TYPE=aur-rpc
 export CLIPRITHM_VERSION_SOURCE_URL=https://aur.archlinux.org/rpc/v5/info/cliprithm
-exec /usr/lib/cliprithm/cliprithm "$@"
+
+# Try running the app, capture stderr to detect EGL initialization issues
+STDERR_LOG=$(mktemp)
+trap 'rm -f "$STDERR_LOG"' EXIT
+
+# Disable exit on error temporarily so we can handle the failure and retry
+set +e
+/usr/lib/cliprithm/cliprithm "$@" 2> >(tee "$STDERR_LOG" >&2)
+EXIT_CODE=$?
+set -e
+
+if [ $EXIT_CODE -ne 0 ] && grep -q "Could not create default EGL display" "$STDERR_LOG"; then
+    echo "==> Cliprithm: EGL initialization failed. Retrying with X11 backend fallback..." >&2
+    export GDK_BACKEND=x11
+    exec /usr/lib/cliprithm/cliprithm "$@"
+fi
+
+exit $EXIT_CODE
