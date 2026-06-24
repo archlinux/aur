@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=jarl-bin
-pkgver=0.5.0
+pkgver=0.5.0 # renovate: datasource=github-tags depName=etiennebacher/jarl
 pkgrel=1
 pkgdesc="Fast linter for the R language"
 arch=('x86_64')
