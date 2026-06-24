@@ -18,8 +18,9 @@ url=${_ghurl}
 
 license=('MIT')
 
+makedepends=('go')
+
 provides=("${_appname}")
-conflicts=("${_appname}")
 
 options=(!strip)
 
