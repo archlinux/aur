@@ -1,7 +1,7 @@
 pkgbase = crispasr-release-git
 	pkgdesc = C++ ggml runtime hub for ASR (fork of whisper.cpp) — (latest Git release)
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CrispStrobe/CrispASR
 	arch = x86_64
 	license = MIT

@@ -9,7 +9,7 @@ _reponame=CrispASR
 
 pkgname=${_pkgname}-release-git
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ ggml runtime hub for ASR (fork of whisper.cpp) — (latest Git release)'
 arch=('x86_64')
 url="https://github.com/CrispStrobe/${_reponame}"
@@ -101,7 +101,7 @@ build() {
     -DGGML_NATIVE="${_native}" \
     "${_cmake_extra[@]}"
   # Only use half the cores to build (upstream grinds on all)
-  cmake --build build -s -j$(( $(nproc 2>/dev/null || echo 2) / 2 ))
+  cmake --build build -- -s -j$(( $(nproc 2>/dev/null || echo 2) / 2 ))
 }
 
 package() {
