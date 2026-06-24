@@ -1,6 +1,6 @@
 # Maintainer: Bhanupong Petchlert <bpetlert@gmail.com>
 pkgname=pacman-repo-stats
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Show usage statistics of repositories in pacman.conf"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=(libalpm.so)
 makedepends=(cargo)
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bpetlert/${pkgname}/archive/${pkgver}.tar.gz")
-b2sums=('4dd93e363b94525740599d52f68c06636b385bcf7badf70b8172b82eab6e0b99925d4a847ff259f52804a4a929dee3cdfbe5ac712d9a9dd166d583e5dae53e82')
+b2sums=('9e1f55877bcefd9543b2e99f672fdb43e496eb841f1831608596ffabd1e35fd8294fa26a88588176b45b2a1ab84c44ab8e3136f515343102643e108ed939ee28')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
