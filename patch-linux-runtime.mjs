@@ -52,6 +52,13 @@ runtimeSource = replaceExactlyOnce(
 
 source = replaceExactlyOnce(
   source,
+  "  if (options.binaryPath) {\n    return options.binaryPath;\n  }\n  if (!options.isPackaged) {",
+  '  if (options.binaryPath) {\n    return options.binaryPath;\n  }\n  if (process.env.HILO_OPENCODE_BINARY_PATH) {\n    return process.env.HILO_OPENCODE_BINARY_PATH;\n  }\n  if (!options.isPackaged) {',
+  "upstream bundle layout changed; could not patch OpenCode runtime override",
+);
+
+source = replaceExactlyOnce(
+  source,
   'const isDev = !app.isPackaged;',
   'try{Object.defineProperty(app,"isPackaged",{configurable:true,get:()=>true})}catch{}const isDev = false;',
   "upstream bundle layout changed; could not patch packaged state",
@@ -70,6 +77,10 @@ if (!source.includes("HILO_DESKTOP_RESOURCES_PATH") || !runtimeSource.includes("
 
 if (!source.includes('Object.defineProperty(app,"isPackaged"') || !source.includes("HILO_DISABLE_BUILTIN_UPDATER")) {
   fail("patch verification failed; packaged state or updater guard missing");
+}
+
+if (!source.includes("HILO_OPENCODE_BINARY_PATH")) {
+  fail("patch verification failed; OpenCode runtime override missing");
 }
 
 if (
