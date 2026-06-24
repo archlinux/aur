@@ -12,7 +12,7 @@ depends=('gtk3' 'hicolor-icon-theme' 'webkit2gtk-4.1')
 provides=('mind-elixir')
 conflicts=('mind-elixir')
 options=('!strip')
-source=("Mind.Elixir_${pkgver}_amd64.deb::https://github.com/SSShooter/Mind-Elixir-Desktop-Release/releases/download/app-v1.9.0/Mind.Elixir_1.9.0_amd64.deb")
+source=("Mind.Elixir_${pkgver}_amd64.deb::https://github.com/SSShooter/Mind-Elixir-Desktop-Release/releases/download/app-v${pkgver}/Mind.Elixir_${pkgver}_amd64.deb")
 sha256sums=('c29d750871e09a38b6613b2004779f378e32d3342a89d778ee3ecfbc188d6a6f')
 
 package() {
