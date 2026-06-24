@@ -3,7 +3,7 @@ pkgbase = animawave-git
 	pkgver = 5.0.0
 	pkgrel = 4
 	url = https://github.com/animaios/animawave
-	install =
+
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
