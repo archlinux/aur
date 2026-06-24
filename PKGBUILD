@@ -3,7 +3,7 @@
 _pkgauthor=ChausseBenjamin
 _pkgname=termpicker
 pkgname=${_pkgname}-bin
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="A color picker for the terminal"
 arch=('x86_64' 'i686' 'aarch64')
@@ -28,10 +28,10 @@ source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_Linux_${_barch[1]}
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_Linux_${_barch[2]}.tar.gz")
 
 sha256sums=('bf9abdea4e804279ff552c3d4f25d3dc82463760f999bf2b26960f8788debad8'
-            '6b1afa4aaa6bcab0229dd31b8fc0d08b9962453200d02ed3bde2302b11a5d411')
-sha256sums_x86_64=('1ee66612d610f3b7992e1a37f02f3e9be8454c7d13bcabe30d870e5655d11438')
-sha256sums_i686=('0ff380eb59fc2e09832e57792da64dd5ef20231179e820ed7b940ed0d541ad3d')
-sha256sums_aarch64=('d2cfbfca3846a40d72ddd89b5c74334f03bfb112c45a5970698bea0970e53e1d')
+            'b8b17b558d3bcfd8c77d9044bcfc5ca60d606440b504e83592213c311b0d5051')
+sha256sums_x86_64=('5538925cc09a0ecb9862d9e490c8ad2ba12487f057988ba5056251c82f76b6da')
+sha256sums_i686=('3cc531b28109e438b793988c6c0d99e5a55382c82b434088224207993d5fa613')
+sha256sums_aarch64=('b2019ca54825e7408c2c1070aed649f00dc6471b9544ecf4793fed06391cea8c')
 
 
 package() {
