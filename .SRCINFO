@@ -1,13 +1,16 @@
 pkgbase = autokuma-cli
 	pkgdesc = kuma-cli tool from the AutoKuma project
 	pkgver = 2.1.0_rc.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BigBoot/AutoKuma
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
 	depends = glibc
+	depends = openssl
+	depends = libgcc
+	depends = libstdc++
 	options = !lto
 	source = autokuma-cli-2.1.0_rc.2.tar.gz::https://github.com/BigBoot/AutoKuma/archive/refs/tags/v2.1.0-rc.2.tar.gz
 	sha256sums = d33c3115eae4969f322a77ec0688b07dddd4e2f08714b0a12bcc054fad07fea0
