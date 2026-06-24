@@ -2,7 +2,7 @@
 
 pkgbase=un-lock-git
 pkgname=miunlocktool-git
-pkgver=1.6.9.r9.g6c62051
+pkgver=1.7.3.r9.g904a859
 pkgrel=1
 pkgdesc="MiUnlockTool developed to retrieve encryptData(token) for Xiaomi devices for unlocking bootloader, It is compatible with all platforms."
 arch=(any)
@@ -12,11 +12,8 @@ provides=(${pkgname%-git} ${basename%-git})
 conflicts=(${pkgname%-git} ${basename%-git})
 replaces=()
 _pydeps=(
-    colorama
     requests
-    urllib3
-    pycryptodomex
-    termcolor
+    rich
     # AUR
     migate
 )
