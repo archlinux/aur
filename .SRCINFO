@@ -1,6 +1,6 @@
 pkgbase = retorrent-bin
 	pkgdesc = A BitTorrent client with an alpha/test UI, built in Rust
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/mlm-games/retorrent
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = retorrent-bin
 	options = !strip
 	source = icon.png::https://raw.githubusercontent.com/mlm-games/retorrent/refs/heads/master/fastlane/metadata/android/en-US/images/icon.png
 	sha256sums = SKIP
-	source_x86_64 = retorrent-0.2.7-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/retorrent/releases/download/0.2.7/retorrent-0.2.7-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 3007d668097acbf1a305ecd406847418decb5a1b94cc02c7f1ef47a7dd3618fc
-	source_aarch64 = retorrent-0.2.7-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/retorrent/releases/download/0.2.7/retorrent-0.2.7-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = a0f80e75ae0db3cff28bd3582ecf10cd2ce4a6d161339e9b8b09ff581d3ad23f
+	source_x86_64 = retorrent-0.2.8-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/retorrent/releases/download/0.2.8/retorrent-0.2.8-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0760526bf98d00dfc82b7c693865ea4d6f2a4e43f547909be3d7dc47465b8e45
+	source_aarch64 = retorrent-0.2.8-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/retorrent/releases/download/0.2.8/retorrent-0.2.8-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 5d594ccb91d2e15a66ada31e35070871699fcfe59e04b5f27a3bbc08c26c86f1
 
 pkgname = retorrent-bin

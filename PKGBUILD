@@ -1,7 +1,8 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=retorrent-bin
 _pkgname=retorrent
-pkgver=0.2.7
+pkgver=0.2.8
+_tag=0.2.8
 pkgrel=1
 pkgdesc="A BitTorrent client with an alpha/test UI, built in Rust"
 arch=('x86_64' 'aarch64')
@@ -13,13 +14,13 @@ provides=('retorrent')
 conflicts=('retorrent')
 options=('!strip')
 
-source_x86_64=("${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/retorrent/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("${_pkgname}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/retorrent/releases/download/${pkgver}/${_pkgname}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
+source_x86_64=("${_pkgname}-${_tag}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/retorrent/releases/download/${_tag}/${_pkgname}-${_tag}-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("${_pkgname}-${_tag}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/retorrent/releases/download/${_tag}/${_pkgname}-${_tag}-aarch64-unknown-linux-gnu.tar.gz")
 
 source=("icon.png::https://raw.githubusercontent.com/mlm-games/retorrent/refs/heads/master/fastlane/metadata/android/en-US/images/icon.png")
 
-sha256sums_x86_64=('3007d668097acbf1a305ecd406847418decb5a1b94cc02c7f1ef47a7dd3618fc')
-sha256sums_aarch64=('a0f80e75ae0db3cff28bd3582ecf10cd2ce4a6d161339e9b8b09ff581d3ad23f')
+sha256sums_x86_64=('0760526bf98d00dfc82b7c693865ea4d6f2a4e43f547909be3d7dc47465b8e45')
+sha256sums_aarch64=('5d594ccb91d2e15a66ada31e35070871699fcfe59e04b5f27a3bbc08c26c86f1')
 sha256sums=('SKIP') # for icon.png
 
 package() {
@@ -30,14 +31,14 @@ package() {
     target="aarch64-unknown-linux-gnu"
   fi
 
-  local dir="${srcdir}/${_pkgname}-${pkgver}-${target}"
+  local dir="${srcdir}/${_pkgname}-${_tag}-${target}"
   install -Dm755 "${dir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${_pkgname}.desktop" << DESKTOP_EOF
 [Desktop Entry]
 Name=Retorrent
 Comment=A semi-modern BitTorrent client
-Exec=${_pkgname} %F
+Exec=${_pkgname} %U
 Icon=${_pkgname}
 Terminal=false
 Type=Application
