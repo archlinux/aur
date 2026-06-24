@@ -1,0 +1,19 @@
+pkgbase = parakeet.cpp-vulkan-bin-release-git
+	pkgdesc = Fast on-device ASR using NVIDIA Parakeet models via ggml (prebuilt Vulkan binary, latest Git release)
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/mudler/parakeet.cpp
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = curl
+	depends = vulkan-icd-loader
+	provides = parakeet.cpp
+	conflicts = parakeet.cpp
+	conflicts = parakeet.cpp-git
+	conflicts = parakeet.cpp-bin
+	conflicts = parakeet.cpp-release-git
+	source = parakeet.cpp-vulkan-bin-release-git::git+https://github.com/mudler/parakeet.cpp.git
+	sha256sums = SKIP
+
+pkgname = parakeet.cpp-vulkan-bin-release-git
