@@ -15,7 +15,7 @@ provides=('keyviz')
 conflicts=('keyviz' 'keyviz-bin' 'keyviz-cn-bin')
 options=('!strip')
 source=(
-  "${_srcdir}.tar.gz::https://codeload.github.com/duanluan/keyviz/tar.gz/abff97c6687e96736c63d4dad1c4bba06a1f8205"
+  "${_srcdir}.tar.gz::https://codeload.github.com/duanluan/keyviz/tar.gz/${_commit}"
 )
 sha256sums=(
   '06f4a2b8b8550a3dff8ade226e905d3abcaceaff8a2795faab73f19dfb7fb512'
