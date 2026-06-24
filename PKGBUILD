@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=rake-unstable
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Configuration-driven build tool that runs Rakefile.toml targets (nightly unstable build)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('rake')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/cargo-rake/archive/v$pkgver.tar.gz")
 # Checksum is filled in by the release workflow before publishing to the AUR.
-sha256sums=('41f15050b2ddd4f87f38df90365cf104eca5e961e0f54a861124c2e696bfe382')
+sha256sums=('751e445a08f058d093d8d7873e1e10ecb61239980ec7d514c8e6c5ddeff09089')
 
 prepare() {
     cd "cargo-rake-$pkgver"
