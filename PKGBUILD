@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=paq8px
-pkgver=215
+pkgver=216
 pkgrel=1
 pkgdesc="Lossless data compressor achieving high compression ratios"
 arch=('x86_64')
@@ -10,10 +10,24 @@ license=('GPL-2.0-or-later')
 depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hxim/paq8px/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e3a86a08961f90bab73b01cb3db27327471a701b6ac2dde0c972e5b6f78c0737')
+sha256sums=('d231d814a0dc79657a2691ed166692a5dfbfa740388357654253ecadbdf8ef75')
 
 latestver() {
   gh api repos/hxim/paq8px/releases/latest --jq '.tag_name' | sed 's/^v//'
+}
+
+prepare() {
+  # v216 ships the header as Clz.hpp but ResidualMap.cpp includes "clz.hpp".
+  # The case mismatch resolves fine on case-insensitive filesystems (NTFS/APFS
+  # defaults, where upstream develops) but is a fatal "No such file" on
+  # case-sensitive ones (ext4/btrfs/xfs — the norm under Linux, so every Arch
+  # user hits it). Still unfixed on upstream master as of v216 (no release/issue).
+  local f="${pkgname}-${pkgver}/src/ResidualMap.cpp"
+  grep -q '#include "clz.hpp"' "$f" || {
+    echo "paq8px: expected case-mismatched include is gone — upstream likely fixed it, drop this prepare()" >&2
+    return 1
+  }
+  sed -i 's/#include "clz\.hpp"/#include "Clz.hpp"/' "$f"
 }
 
 build() {
