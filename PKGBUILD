@@ -4,7 +4,7 @@ pkgname=databricks-cli-bin
 _pkgname=databricks-cli
 provides=($_pkgname)
 conflicts=('python-databricks-cli' 'python-dbx')
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Databricks CLI"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ makedepends=('unzip')
 depends=()
 source_x86_64=("https://github.com/databricks/cli/releases/download/v${pkgver}/databricks_cli_${pkgver}_linux_amd64.zip")
 source_aarch64=("https://github.com/databricks/cli/releases/download/v${pkgver}/databricks_cli_${pkgver}_linux_arm64.zip")
-sha256sums_x86_64=('cd15f02ef19530b0601396f247c4dc90a7a84c80ef718b294d7f7f0dd5140c5b')
-sha256sums_aarch64=('7eb279ac8d5476a13354b85aa298f9bcbbe7ad3fc443612b34cc6635d45bfe79')
+sha256sums_x86_64=('140e0d41e474ff236594c9e8ff99c57244053077107cf6a4bed529bb65d904a8')
+sha256sums_aarch64=('593354affe6ae56187728c698f55a3b0125da73f8ea83f769765b68460554df7')
 
 package() {
 	install -Dm0755 $srcdir/databricks $pkgdir/usr/bin/databricks
