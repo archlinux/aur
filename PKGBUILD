@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=protonup-qt
 _app_id=net.davidotek.pupgui2
-pkgver=2.15.0
+pkgver=2.15.1
 pkgrel=1
 pkgdesc="Install and manage GE-Proton, Luxtorpeda & more for Steam, Lutris and Heroic"
 arch=('any')
@@ -46,7 +46,7 @@ optdepends=(
   'yad: required for SteamTinkerLaunch'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DavidoTek/ProtonUp-Qt/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d06fae6748c811ac942e3cd2a1d3de3efbf330b442323580ebe9b581f39546da')
+sha256sums=('7028c0f3451fcb69f384ba0687b58a973b35fab2b0a64d5435eb1f782f09ea08')
 
 build() {
   cd "ProtonUp-Qt-$pkgver"
@@ -63,7 +63,7 @@ package() {
   cd "ProtonUp-Qt-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  cp -r share "$pkgdir/usr/"
+  cp -a share "$pkgdir/usr/"
 
   ln -s "/usr/bin/$pkgname" "$pkgdir/usr/bin/${_app_id}"
 }
