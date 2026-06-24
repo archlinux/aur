@@ -9,7 +9,10 @@
 # Tencent's proprietary CodeBuddy service license, NOT this MIT notice.
 
 pkgname=codebuddy-ide-cn
-pkgver=4.9.13.30241433
+_cb_ver=4.9.14
+_cb_build=31414011
+_cb_hash=6230de8a
+pkgver="${_cb_ver}.${_cb_build}"
 pkgrel=1
 pkgdesc='腾讯云代码助手CodeBuddy IDE，是一款辅助编码工具。'
 arch=('x86_64')
@@ -43,12 +46,11 @@ options=('!strip' '!debug')
 
 # Helper repository pinned to a specific commit so the conversion
 # logic is reproducible. Bump together with pkgver if needed.
-_helper_commit='2e46bbca7f562c0319244ac2c36ee43662ca4afe'
-_electron_version='34.5.1'
-_dmg_buildid='0acccacc'
+_helper_commit='3d5a015100ef22e8f8308cd7d5dc5c19faf6b097'
+_electron_version=35.6.0
 
 source=(
-    "CodeBuddy-darwin-x64-${pkgver}-${_dmg_buildid}-cn.dmg::https://download.codebuddy.cn/aiide/darwin-x64/CodeBuddy-darwin-x64-${pkgver}-${_dmg_buildid}-cn.dmg"
+    "CodeBuddy-darwin-x64-${pkgver}-${_cb_hash}-cn.dmg::https://download.codebuddy.cn/aiide/darwin-x64/CodeBuddy-darwin-x64-${pkgver}-${_cb_hash}-cn.dmg"
     "codebuddy-ide-cn-linux-${_helper_commit}.tar.gz::${url}/archive/${_helper_commit}.tar.gz"
     "electron-v${_electron_version}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_version}/electron-v${_electron_version}-linux-x64.zip"
     'LICENSE.notice'
@@ -57,16 +59,14 @@ source=(
 # DMG is not a format makepkg can extract; leave the Electron zip as-is
 # and let install.sh consume it from a pre-populated cache directory.
 noextract=(
-    "CodeBuddy-darwin-x64-${pkgver}-${_dmg_buildid}-cn.dmg"
+    "CodeBuddy-darwin-x64-${pkgver}-${_cb_hash}-cn.dmg"
     "electron-v${_electron_version}-linux-x64.zip"
 )
 
-sha256sums=(
-    '5a104627ede72733dea9e7a0cbac8bdf147f20d498bfb1b0c3ffb13bb3fe1306'
-    'a4e2b9cd9efebdf0366c8a319d657a767e4fe97ef3032ac2ecacdb6cd9eb82fd'
-    '3ae6f75fa08f5c1bdb7bbcec4dc9cf7d7f53ffcf6a4292e4a482b2ce515505e7'
-    'SKIP'
-)
+sha256sums=('83a7101717fc6eb327a381140a23bd756d511ffbb2c511109caba6fa47f9fcc9'
+            'a602fdef69a33f01e8f4264dfdaf33134383de103a666eac51b19ce4cc2133e8'
+            '94f3987a46b7cc39f16dc3428e304dd0dee679f3266fbea85ccfeb3daabb2c45'
+            'b3260549a765c478dc33680c7b9a1a30e5a038456e340d6d25f7748390724241')
 
 prepare() {
     local helper_dir="${srcdir}/codebuddy-ide-cn-linux-${_helper_commit}"
@@ -87,7 +87,7 @@ prepare() {
 
 build() {
     local helper_dir="${srcdir}/codebuddy-ide-cn-linux-${_helper_commit}"
-    local dmg_path="${srcdir}/CodeBuddy-darwin-x64-${pkgver}-${_dmg_buildid}-cn.dmg"
+    local dmg_path="${srcdir}/CodeBuddy-darwin-x64-${pkgver}-${_cb_hash}-cn.dmg"
     local out_dir="${srcdir}/build/${pkgname}"
 
     install -d "${out_dir}"
@@ -191,7 +191,7 @@ EOF
     while IFS= read -r upstream_license; do
         [ -f "${upstream_license}" ] || continue
         install -Dm644 "${upstream_license}" \
-            "${pkgdir}/usr/share/licenses/${pkgname}/upstream/$(basename "${upstream_license}")"
+            "${pkgdir}/usr/share/licenses/${pkgname}/upstream/\$(basename "${upstream_license}")"
     done < <(find "${out_dir}/resources/app" \
                 -maxdepth 1 \
                 \( -iname 'LICENSE*' -o -iname 'EULA*' -o -iname 'NOTICE*' \

@@ -40,5 +40,5 @@ terms published by Tencent at:
 
 This repository does not redistribute any Tencent binary. It only
 provides automation that fetches them from Tencent's official URL on
-behalf of the end user, who is presumed to be entitled to access those
+ behalf of the end user, who is presumed to be entitled to access those
 URLs under Tencent's terms of service.
