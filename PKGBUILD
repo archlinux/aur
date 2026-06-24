@@ -207,16 +207,12 @@ package_gcc-fast-optimized() {
 
   cd gcc-build
 
-  echo "pkgdir=$pkgdir"
   make -C gcc DESTDIR="$pkgdir" install-driver install-cpp install-gcc-ar \
     c++.install-common install-headers install-plugin install-lto-wrapper
   
-  echo "done make, installing gcov,gcov-tool"
   install -m755 -t "$pkgdir/usr/bin/" gcc/gcov{,-tool}
-  echo "now installing cc1,cc1plus,collect2,lto1 to $_libdir"
   install -m755 -t "$pkgdir/$_libdir/" gcc/{cc1,cc1plus,collect2,lto1}
 
-  echo "new make install"
   make -C $CHOST/libgcc DESTDIR="$pkgdir" install
 
   make -C $CHOST/libstdc++-v3/src DESTDIR="$pkgdir" install
