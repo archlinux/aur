@@ -13,14 +13,14 @@ pkgbase = parakeet.cpp-release-git
 	optdepends = vulkan-icd-loader: Vulkan backend runtime
 	optdepends = cuda: CUDA backend runtime
 	optdepends = rocm-hip-runtime: HIP/ROCm backend runtime
-	provides = parakeet=0.3.2
-	provides = parakeet-cli=0.3.2
-	provides = parakeet-server=0.3.2
-	conflicts = parakeet
-	conflicts = parakeet-cli
-	conflicts = parakeet-server
-	conflicts = parakeet-bin
-	conflicts = parakeet-bin-release-git
+	provides = parakeet.cpp=0.3.2
+	provides = parakeet.cpp-cli=0.3.2
+	provides = parakeet.cpp-server=0.3.2
+	conflicts = parakeet.cpp
+	conflicts = parakeet.cpp-cli
+	conflicts = parakeet.cpp-server
+	conflicts = parakeet.cpp-bin
+	conflicts = parakeet.cpp-vulkan-bin-release-git
 	source = parakeet.cpp-release-git::git+https://github.com/mudler/parakeet.cpp.git
 	sha256sums = SKIP
 

@@ -5,8 +5,8 @@
 # pkgver() derives the version from the latest v* tag; prepare() checks out that tag.
 
 pkgname=parakeet.cpp-release-git
-_pkgname=parakeet
-_upstream=mudler
+_pkgname=parakeet.cpp
+_repo="mudler/${_pkgname}"
 pkgver=0.3.2
 pkgrel=1
 pkgdesc='C++/ggml inference engine for NVIDIA Parakeet ASR models (latest Git release)'
@@ -51,9 +51,9 @@ optdepends=(
 )
 
 provides=("${_pkgname}=${pkgver}" "${_pkgname}-cli=${pkgver}" "${_pkgname}-server=${pkgver}")
-conflicts=("${_pkgname}" "${_pkgname}-cli" "${_pkgname}-server" "${_pkgname}-bin" "${_pkgname}-bin-release-git")
+conflicts=("${_pkgname}" "${_pkgname}-cli" "${_pkgname}-server" "${_pkgname}-bin" "${_pkgname}-vulkan-bin-release-git")
 
-source=("${pkgname}::git+https://github.com/${_upstream}/${_pkgname}.cpp.git")
+source=("${pkgname}::git+https://github.com/${_repo}.git")
 sha256sums=('SKIP')
 
 pkgver() {
