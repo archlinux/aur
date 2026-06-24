@@ -12,8 +12,8 @@ url="https://www.jwz.org/xscreensaver/"
 license=('BSD-2-Clause')
 conflicts=('xscreensaver')
 
-depends=('libxxf86vm' 'mesa' 'libxmu' 'gdk-pixbuf2' 'gdk-pixbuf-xlib' 'libx11' 'libxext' 'libxt')
-makedepends=('bc' 'intltool' 'libglvnd')
+depends=('libxxf86vm' 'mesa' 'libxmu' 'gdk-pixbuf2' 'gdk-pixbuf-xlib' 'libx11' 'libxext' 'libxt' 'glu')
+makedepends=('bc' 'intltool')
 
 source=("https://www.jwz.org/xscreensaver/$_srcname-$pkgver.tar.gz"
         "LICENSE")
