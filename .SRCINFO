@@ -1,0 +1,23 @@
+pkgbase = piratebay-bin
+	pkgdesc = Search and download torrents from The Pirate Bay
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/tsirysndr/piratebay
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = piratebay
+	conflicts = piratebay
+	options = !strip
+	source = README-0.3.0.md::https://raw.githubusercontent.com/tsirysndr/piratebay/v0.3.0/README.md
+	source = LICENSE-0.3.0::https://raw.githubusercontent.com/tsirysndr/piratebay/v0.3.0/LICENSE
+	sha256sums = 6b780613ac88c15180c2207ad738be2b1fe59fae66d5d7baad76d09c9febe303
+	sha256sums = 30ecb4ff4afd5dd70a51d7727c4f873db145b899fb9836627eacca05080515bf
+	source_x86_64 = piratebay-x86_64-0.3.0.tgz::https://github.com/tsirysndr/piratebay/releases/download/v0.3.0/piratebay_v0.3.0_x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 12330a444bce1b4d23fded131de4939ac446887f5b72d548f93859fc2e1834df
+	source_aarch64 = piratebay-aarch64-0.3.0.tgz::https://github.com/tsirysndr/piratebay/releases/download/v0.3.0/piratebay_v0.3.0_aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a711c62cff95fab940f10213a29ec1aeaf2af801aa40898f368c225192070d0b
+
+pkgname = piratebay-bin

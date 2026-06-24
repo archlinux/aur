@@ -1,0 +1,5 @@
+[piratebay-bin]
+source = "github"
+github = "tsirysndr/piratebay"
+use_latest_release = true
+prefix = "v"
