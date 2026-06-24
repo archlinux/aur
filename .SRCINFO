@@ -1,7 +1,7 @@
 pkgbase = sparxie-bin
 	pkgdesc = 跨平台代理控制器。
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/UruhaLushia/sparxie
 	arch = x86_64
 	arch = aarch64
@@ -13,9 +13,9 @@ pkgbase = sparxie-bin
 	conflicts = sparxie
 	conflicts = sparxie-git
 	options = !strip
-	source_x86_64 = https://github.com/UruhaLushia/sparxie/releases/download/v0.1.0/sparxie-linux-x86_64.deb
+	source_x86_64 = sparxie_0.1.0_amd64.deb::https://github.com/UruhaLushia/sparxie/releases/download/v0.1.0/sparxie-linux-x86_64.deb
 	sha256sums_x86_64 = d80acff84b859adbdf9d983945cd387b623f0d7abd75648bd47f9687574b8f9b
-	source_aarch64 = https://github.com/UruhaLushia/sparxie/releases/download/v0.1.0/sparxie-linux-arm64.deb
+	source_aarch64 = sparxie_0.1.0_arm64.deb::https://github.com/UruhaLushia/sparxie/releases/download/v0.1.0/sparxie-linux-arm64.deb
 	sha256sums_aarch64 = ed4b51167d1c14a29f3ff758cb4dd4678dc2d1c380252f301351615a9fcf9212
 
 pkgname = sparxie-bin
