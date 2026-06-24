@@ -2,8 +2,8 @@
 pkgname=licord-bin
 _pkgname=licord
 pkgver=0.1.0
-pkgrel=1
-pkgdesc="A fast, native, resource-efficient communication client for Arch Linux / CachyOS (Better-VC)"
+pkgrel=2
+pkgdesc="Hosted Discord-inspired native chat for Arch Linux / CachyOS"
 arch=('x86_64')
 url="https://github.com/ardahzr/Licord"
 license=('MIT')
@@ -26,8 +26,8 @@ depends=(
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip' '!debug')
-source=("${url}/releases/download/v${pkgver}/Licord_${pkgver}_amd64.deb")
-sha256sums=('5e26471e18b489e5246bc1520a612a85c04b77b3e17abdfe3f1b03dcf6a2c7fe')
+source=("${url}/releases/download/v${pkgver}/Licord_${pkgver}-${pkgrel}_amd64.deb")
+sha256sums=('7d1826d97397d629919b8aded2940f3d8d4cab9d4ebf243289c3a1ac2e18d486')
 
 package() {
   bsdtar -xf data.tar.gz -C "${pkgdir}"
