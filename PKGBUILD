@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable-git
 epoch=1
-pkgver=17.0.alpha.9.r0.g6bb5edb3
+pkgver=17.0.beta.r0.g99a386b6
 pkgrel=1
 epoch=1
 pkgdesc="Portable Sandboxing framework"
@@ -35,6 +35,8 @@ optdepends=(
 	'at-spi2-core: accessibility'
 	'orca: screen reader'
 	'netsock: Per-app firewall'
+	'stashpak: Install Portable packages with ease'
+	'bawn: Transient sandbox generator'
 )
 
 makedepends+=(
