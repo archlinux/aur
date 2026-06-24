@@ -1,6 +1,6 @@
 pkgbase = lice-git
 	pkgdesc = inject a license file into your git repo
-	pkgver = r8.c7df858
+	pkgver = r11.695f15b
 	pkgrel = 1
 	url = https://gitlab.com/5unekku/lice
 	arch = x86_64

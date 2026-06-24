@@ -2,7 +2,7 @@
 
 pkgname=lice-git
 _pkgname=lice
-pkgver=r8.c7df858
+pkgver=r11.695f15b
 pkgrel=1
 pkgdesc="inject a license file into your git repo"
 arch=('x86_64')
