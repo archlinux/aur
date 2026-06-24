@@ -1,6 +1,6 @@
 pkgbase=eim-bin
 pkgname=('eim-cli' 'eim-gui')
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=1
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/espressif/idf-im-ui"
@@ -13,13 +13,13 @@ _icon_url="https://raw.githubusercontent.com/espressif/idf-im-ui/master/src-taur
 
 source=("eim-gui.desktop")
 sha256sums=('eb574ade90f636523bb00078df0b92dfd8e289c31f136af257953e689ac84d69')
-sha256sums_x86_64=('0442468dfed3c9c4e888fade8650495bc816768009bfc9c9b8eee278bdbbe390'
-                   'e89fb1dd832e32f49d6db12b1222a100a3747c4740c08345eb325ab0b0142768'
+sha256sums_x86_64=('8a1065fa4ba1d4ff4b4a89332e540f018cb7f3cf989ab90a526e99dc00c52d32'
+                   '1222467f33cb5cde7b41de43763db7d785b4a3f4957e925a3841b5f9edc5cf10'
                    '780e992f87e6622361a1cb54681d4d215d8b2c0232e96f55aaa682b0ee51bc41')
-sha256sums_aarch64=('cb96b64f27802eee8ba3cd9ae0f7a70346e12cb6db5179b9c9a8f45f55d14a17'
-                    'bf31ea1045f7a97b6bd4871cc156f7d8133b1a91b2b45ac8461fdf0833586dc6'
+sha256sums_aarch64=('5e88ae1ca7eba08526d6655f301f072b43f36e850a033cbf079021b882fc05bc'
+                    'b0e74b2990a11e524c3cec1507a88e030fa90895ce2287c187e761907a38ba03'
                     '780e992f87e6622361a1cb54681d4d215d8b2c0232e96f55aaa682b0ee51bc41')
-sha256sums_armv7h=('ae33ecfb84d2f67830f9911643d9e7350f0455444eb929e376174a2b14476ec7')
+sha256sums_armv7h=('67739b9067d72ce2f8ea5fcfa8c8aa0ccfbe5ba91706f47ba8e0f621103d3109')
 
 source_x86_64+=("cli-${pkgver}-x64.zip::${url}/releases/download/v${pkgver}/eim-cli-linux-x64.zip"
                 "gui-${pkgver}-x64.zip::${url}/releases/download/v${pkgver}/eim-gui-linux-x64.zip"
