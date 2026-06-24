@@ -1,5 +1,14 @@
 # lxappearance-wlr changelog
 
+## 0.6.4-12
+- Add a Wayland-safe mouse cursor preview gallery powered by `libXcursor`, without requiring an X server.
+- Show the previously hidden cursor-size control in the Mouse Cursor tab (the slider row was missing `visible` in the UI), fix it to a stable 8–96 range, and refresh the preview live; this control sets `XCURSOR_SIZE`.
+- Mirror `XCURSOR_THEME` and `XCURSOR_SIZE` to `~/.config/labwc/environment` on Apply while preserving comments and other variables.
+- On Apply, run `labwc --reconfigure` when running under labwc (detected via `$LABWC_PID`) so the cursor updates without re-login; other wlroots compositors are left untouched.
+- Remove the empty `NotShowIn=` key from the desktop entry.
+- Reword the Mouse Cursor tab note to be compositor-agnostic (not all wlroots compositors change the cursor on the fly; some need a compositor restart).
+- Add `README.en.md` and `README.ru.md`, and install them together with `AGENTS.md` to `/usr/share/doc/lxappearance-wlr/`.
+
 ## 0.6.4-11
 - Add popup hints on `Widget` tab (theme list, preview area, default font controls).
 - Add Russian translations for these tooltip strings in `po/ru.po` to keep the UI fully localized.
