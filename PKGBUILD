@@ -1,10 +1,13 @@
 pkgname=garmin-tracker-rs
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Sync your devices and track your strength training'
 arch=('x86_64')
 url="https://github.com/Emiliopg91/${pkgname}"
 license=('GPL-2')
+makedepends=(
+  'rust'
+)
 source=(
   "git+$url.git#tag=$pkgver"
 )
