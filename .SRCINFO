@@ -1,6 +1,6 @@
 pkgbase = millennium
 	pkgdesc = Open-source modding framework for creating and managing Steam Client themes and plugins
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/SteamClientHomebrew/Millennium
 	install = millennium.install
@@ -25,8 +25,7 @@ pkgbase = millennium
 	makedepends = libx11
 	makedepends = libxtst
 	depends = steam
-	options = debug
-	source = git+https://github.com/SteamClientHomebrew/Millennium.git#commit=6ca76735b93d622d10483491b9365b722743d670
+	source = git+https://github.com/SteamClientHomebrew/Millennium.git#commit=dc3eae41082dd6b3b3eacffc3bfc711afbbda707
 	sha256sums = SKIP
 
 pkgname = millennium
