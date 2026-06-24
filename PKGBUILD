@@ -1,11 +1,7 @@
-# Maintainer: icasdri <icasdri@gmail.com>
-# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
-# Contributor: tobias <tobias funnychar archlinux.org>
-
 _pkgname=xfce4-notifyd-layer-shell
 pkgname=xfce4-notifyd-layer-shell-git
-pkgver=0.4.4.r63.gade6a8e
-pkgrel=2
+pkgver=0.4.4.r262.gcdf1ea5
+pkgrel=1
 pkgdesc="xfce4-notifyd (Xfce's notification daemon) with Wayland layer shell support"
 arch=('x86_64')
 url='https://github.com/icasdri/xfce4-notifyd-layer-shell'
@@ -16,6 +12,7 @@ makedepends=('xfce4-dev-tools' 'intltool' 'python' 'xfce4-panel')
 provides=('notification-daemon')
 source=('git+https://github.com/icasdri/xfce4-notifyd-layer-shell.git')
 sha256sums=('SKIP')
+options=('!lto')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -25,6 +22,8 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
+  export LDFLAGS="$LDFLAGS -fuse-ld=bfd"
+  export LIBS="$(pkg-config --libs gtk+-3.0) $LIBS"
   ./autogen.sh \
     --prefix=/usr \
     --disable-static \
