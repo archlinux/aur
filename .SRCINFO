@@ -1,6 +1,6 @@
 pkgbase = dpyproxy
 	pkgdesc = Python Proxy that implements DPI evasion mechanisms
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/UPB-SysSec/DPYProxy
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = dpyproxy
 	provides = python-dpyproxy
 	conflicts = python-dpyproxy
 	replaces = python-dpyproxy
-	source = dpyproxy-2.2.0.tar.gz::https://github.com/UPB-SysSec/DPYProxy/archive/v2.2.0.tar.gz
-	sha256sums = aac6fcab15385fd93cffff7dcff76e9857fb916b966b6309764c46847c653c06
+	source = dpyproxy-2.2.1.tar.gz::https://github.com/UPB-SysSec/DPYProxy/archive/v2.2.1.tar.gz
+	sha256sums = 6442bcffa3b1c59e7b3bcc7167b30c082d6ad9d3c8bfae7132d0704448666f86
 
 pkgname = dpyproxy

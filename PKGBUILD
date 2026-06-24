@@ -2,7 +2,7 @@
 
 _pkgname=DPYProxy
 pkgname=dpyproxy
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='Python Proxy that implements DPI evasion mechanisms '
 arch=('any')
@@ -25,7 +25,7 @@ replaces=('python-dpyproxy')
 conflicts=('python-dpyproxy')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('aac6fcab15385fd93cffff7dcff76e9857fb916b966b6309764c46847c653c06')
+sha256sums=('6442bcffa3b1c59e7b3bcc7167b30c082d6ad9d3c8bfae7132d0704448666f86')
 
 # Document: https://wiki.archlinux.org/title/Python_package_guidelines
 build() {
