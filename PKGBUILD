@@ -1,7 +1,7 @@
 # Maintainer: d10n <david at bitinvert dot com>
 
 pkgname=mullvad-tui-bin
-pkgver=0.9.1
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='Terminal user interface for mullvad-vpn'
 arch=(x86_64)
@@ -14,7 +14,7 @@ options=(!lto !debug)
 source=(
     "https://github.com/d10n/mullvad-tui/releases/download/v$pkgver/mullvad-tui-$pkgver-x86_64-unknown-linux-gnu.tar.gz"
 )
-sha256sums=('d5219e1a02a391d3abb94612a3b712001dd0bb59377dac1c81c589d12e432caa')
+sha256sums=('377b130fd0e98a235d0b767d100e3203491a606b39f58c9bab7db3548bc0a857')
 
 package() {
   cd "$srcdir/mullvad-tui-$pkgver-x86_64-unknown-linux-gnu"
