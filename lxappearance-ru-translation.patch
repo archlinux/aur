@@ -1,6 +1,8 @@
+diff --git a/po/ru.po b/po/ru.po
+index 66e9a51..b1c1138 100644
 --- a/po/ru.po
 +++ b/po/ru.po
-@@ -49,7 +49,6 @@
+@@ -49,7 +49,6 @@ msgstr ""
  "Andriy Grytsenko <andrej@rep.kiev.ua>"
  
  #: ../data/ui/lxappearance.glade.h:1
@@ -8,11 +10,28 @@
  #| msgid "Customize Look and Feel"
  msgctxt "Title"
  msgid "Customize Look and Feel"
-@@ -278,6 +277,45 @@
- #: ../data/ui/lxappearance.glade.h:55
+@@ -179,13 +178,11 @@ msgstr "Больше"
+ 
+ #: ../data/ui/lxappearance.glade.h:32
+ msgid ""
+-"<b>Note:</b> Not all of the desktop applications support changing cursor "
+-"theme on-the-fly. So your changes here might not be fully applied to all "
+-"applications till next login."
++"<b>Note:</b> Not all wlroots compositors support changing the cursor theme "
++"on the fly. Changes may only take effect after the compositor is restarted."
+ msgstr ""
+-"<b>Замечание:</b> Не все приложения поддерживают смену темы курсора на лету. "
+-"Поэтому ваши изменения могут быть применены только при следующем запуске "
+-"приложения."
++"<b>Замечание:</b> Не все wlroots-композиторы поддерживают смену темы курсора "
++"на лету. Изменения могут быть применены только при перезапуске композитора."
+ 
+ #: ../data/ui/lxappearance.glade.h:33
+ msgid "Mouse Cursor"
+@@ -279,6 +276,45 @@ msgstr "<b>Специальные возможности</b>"
  msgid "Other"
  msgstr "Другие"
-+
+ 
 +msgid "Preview area for selected GTK widget theme."
 +msgstr "Область предпросмотра выбранной GTK-темы виджетов."
 +
@@ -51,6 +70,7 @@
 +
 +msgid "Sub-pixel rendering options for LCD text clarity."
 +msgstr "Параметры субпиксельного рендеринга для четкости текста на LCD."
- 
++
  #: ../data/ui/lxappearance.glade.h:56
  #, fuzzy
+ #| msgid "None"

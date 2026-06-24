@@ -1,5 +1,5 @@
 diff --git a/src/lxappearance.c b/src/lxappearance.c
-index f705f61..c5a09b1 100644
+index f705f61..339977c 100644
 --- a/src/lxappearance.c
 +++ b/src/lxappearance.c
 @@ -385,6 +385,8 @@ static void lxappearance_save_gtkrc()
@@ -42,10 +42,11 @@ index f705f61..c5a09b1 100644
      g_free(file_path_settings);
      g_key_file_free(content);
  
-@@ -535,6 +551,92 @@ static void lxappearance_save_lxsession()
+@@ -535,6 +551,195 @@ static void lxappearance_save_lxsession()
      g_free(user_config_file);
  }
  
++
 +static void sync_gsettings_interface()
 +{
 +    char *quoted, *command;
@@ -106,6 +107,108 @@ index f705f61..c5a09b1 100644
 +        g_message("Applied appearance values to gsettings");
 +}
 +
++static gboolean labwc_environment_line_matches_key(const char *line, const char *key)
++{
++    gsize key_len;
++
++    while (*line == ' ' || *line == '\t')
++        ++line;
++
++    if (*line == '#')
++        return FALSE;
++
++    key_len = strlen(key);
++    if (strncmp(line, key, key_len) != 0)
++        return FALSE;
++
++    line += key_len;
++    while (*line == ' ' || *line == '\t')
++        ++line;
++
++    return *line == '=';
++}
++
++static void append_labwc_environment_line(GString *out, const char *line,
++                                          const char *theme, const char *size,
++                                          gboolean *theme_written,
++                                          gboolean *size_written)
++{
++    if (labwc_environment_line_matches_key(line, "XCURSOR_THEME"))
++    {
++        if (!*theme_written)
++            g_string_append_printf(out, "XCURSOR_THEME=%s\n", theme);
++        *theme_written = TRUE;
++        return;
++    }
++
++    if (labwc_environment_line_matches_key(line, "XCURSOR_SIZE"))
++    {
++        if (!*size_written)
++            g_string_append_printf(out, "XCURSOR_SIZE=%s\n", size);
++        *size_written = TRUE;
++        return;
++    }
++
++    g_string_append(out, line);
++    g_string_append_c(out, '\n');
++}
++
++static void sync_labwc_environment()
++{
++    char *labwc_dir;
++    char *environment_path;
++    char *contents = NULL;
++    char **lines;
++    char *size;
++    const char *theme;
++    GString *out;
++    gboolean theme_written = FALSE;
++    gboolean size_written = FALSE;
++    int i;
++
++    theme = (app.cursor_theme && *app.cursor_theme) ? app.cursor_theme : "default";
++    size = g_strdup_printf("%d", app.cursor_theme_size);
++
++    labwc_dir = g_build_filename(g_get_user_config_dir(), "labwc", NULL);
++    g_mkdir_with_parents(labwc_dir, 0755);
++    environment_path = g_build_filename(labwc_dir, "environment", NULL);
++
++    if (!g_file_get_contents(environment_path, &contents, NULL, NULL))
++        contents = g_strdup("");
++
++    lines = g_strsplit(contents, "\n", -1);
++    out = g_string_new(NULL);
++
++    for (i = 0; lines[i] != NULL; ++i)
++    {
++        if (lines[i + 1] == NULL && lines[i][0] == '\0')
++            break;
++        append_labwc_environment_line(out, lines[i], theme, size,
++                                      &theme_written, &size_written);
++    }
++
++    if (!theme_written)
++        g_string_append_printf(out, "XCURSOR_THEME=%s\n", theme);
++    if (!size_written)
++        g_string_append_printf(out, "XCURSOR_SIZE=%s\n", size);
++
++    if (g_file_set_contents(environment_path, out->str, -1, NULL))
++        g_message("Applied cursor values to labwc environment: %s", environment_path);
++
++    /* If we run under labwc, ask it to reload XCURSOR_THEME/XCURSOR_SIZE now.
++     * Other wlroots compositors do not provide this command; there the values
++     * above still apply to newly started clients and after the next login. */
++    if (g_getenv("LABWC_PID") && g_find_program_in_path("labwc"))
++        g_spawn_command_line_async("labwc --reconfigure", NULL);
++
++    g_string_free(out, TRUE);
++    g_strfreev(lines);
++    g_free(contents);
++    g_free(environment_path);
++    g_free(labwc_dir);
++    g_free(size);
++}
++
 +static void ensure_user_autostart_sync()
 +{
 +    char *autostart_dir;
@@ -135,12 +238,13 @@ index f705f61..c5a09b1 100644
  static void on_dlg_response(GtkDialog* dlg, int res, gpointer user_data)
  {
      switch(res)
-@@ -544,6 +646,8 @@ static void on_dlg_response(GtkDialog* dlg, int res, gpointer user_data)
+@@ -544,6 +749,9 @@ static void on_dlg_response(GtkDialog* dlg, int res, gpointer user_data)
          if(app.use_lxsession)
              lxappearance_save_lxsession();
          lxappearance_save_gtkrc();
 +        ensure_user_autostart_sync();
 +        sync_gsettings_interface();
++        sync_labwc_environment();
  
          reload_all_programs();
  

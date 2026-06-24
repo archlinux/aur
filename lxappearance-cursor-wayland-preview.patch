@@ -1,0 +1,258 @@
+diff --git a/configure.ac b/configure.ac
+index 3ae09b2..c7bafe0 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -56,6 +56,10 @@ PKG_CHECK_MODULES(XLIB, "x11")
+ AC_SUBST(XLIB_CFLAGS)
+ AC_SUBST(XLIB_LIBS)
+ 
++PKG_CHECK_MODULES(XCURSOR, "xcursor")
++AC_SUBST(XCURSOR_CFLAGS)
++AC_SUBST(XCURSOR_LIBS)
++
+ if test "x$enable_gtk3" = "xyes" ; then
+   CFLAGS="$CFLAGS -DENABLE_GTK3 -Wno-deprecated-declarations"
+   gtk_modules="gtk+-3.0 >= 3.0.0 gthread-2.0"
+@@ -188,4 +192,3 @@ echo http://lxde.org/
+ echo
+ echo "Ready to make lxappearance. Type 'make' to continue."
+ echo
+-
+diff --git a/data/ui/lxappearance.glade b/data/ui/lxappearance.glade
+index 96d3516..7e8349c 100644
+--- a/data/ui/lxappearance.glade
++++ b/data/ui/lxappearance.glade
+@@ -1345,6 +1345,7 @@
+                     </child>
+                     <child>
+                       <object class="GtkLabel" id="label26">
++                        <property name="visible">True</property>
+                         <property name="can_focus">False</property>
+                         <property name="xalign">0</property>
+                         <property name="label" translatable="yes">Size of cursors</property>
+@@ -1357,6 +1358,7 @@
+                     </child>
+                     <child>
+                       <object class="GtkHBox" id="hbox5">
++                        <property name="visible">True</property>
+                         <property name="can_focus">False</property>
+                         <property name="spacing">12</property>
+                         <child>
+@@ -1410,7 +1412,7 @@
+                         <property name="can_focus">False</property>
+                         <property name="xalign">0</property>
+                         <property name="yalign">0</property>
+-                        <property name="label" translatable="yes">&lt;b&gt;Note:&lt;/b&gt; Not all of the desktop applications support changing cursor theme on-the-fly. So your changes here might not be fully applied to all applications till next login.</property>
++                        <property name="label" translatable="yes">&lt;b&gt;Note:&lt;/b&gt; Not all wlroots compositors support changing the cursor theme on the fly. Changes may only take effect after the compositor is restarted.</property>
+                         <property name="use_markup">True</property>
+                         <property name="wrap">True</property>
+                       </object>
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 5ff999f..7684af9 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -36,6 +36,7 @@ lxappearance_SOURCES = \
+ lxappearance_CFLAGS = \
+ 	$(GTK_CFLAGS) \
+ 	$(XLIB_CFLAGS) \
++	$(XCURSOR_CFLAGS) \
+ 	$(GMODULE_CFLAGS) \
+ 	$(DBUS_CFLAGS) \
+ 	$(ADDITIONAL_FLAGS) \
+@@ -45,6 +46,7 @@ lxappearance_CFLAGS = \
+ lxappearance_LDADD = \
+ 	$(GTK_LIBS) \
+ 	$(XLIB_LIBS) \
++	$(XCURSOR_LIBS) \
+ 	$(GMODULE_LIBS) \
+ 	$(DBUS_LIBS) \
+ 	$(INTLLIBS) \
+diff --git a/src/cursor-theme.c b/src/cursor-theme.c
+index 00a9e08..4bb360e 100644
+--- a/src/cursor-theme.c
++++ b/src/cursor-theme.c
+@@ -22,28 +22,128 @@
+ #include "cursor-theme.h"
+ #include "icon-theme.h"
+ #include "lxappearance.h"
+-#include <gdk/gdkx.h>
++#include <X11/Xcursor/Xcursor.h>
++
++static guchar unpremultiply_cursor_channel(guchar channel, guchar alpha)
++{
++    if(alpha == 0)
++        return 0;
++    return MIN(255, (channel * 255 + alpha / 2) / alpha);
++}
++
++static GdkPixbuf* pixbuf_from_xcursor_image(XcursorImage* image)
++{
++    guchar* data;
++    guint rowstride;
++    guint i;
++
++    if(image == NULL || image->width == 0 || image->height == 0 || image->pixels == NULL)
++        return NULL;
++
++    rowstride = image->width * 4;
++    data = g_malloc(rowstride * image->height);
++
++    for(i = 0; i < image->width * image->height; ++i)
++    {
++        XcursorPixel pixel = image->pixels[i];
++        guchar alpha = (pixel >> 24) & 0xff;
++        guchar red = (pixel >> 16) & 0xff;
++        guchar green = (pixel >> 8) & 0xff;
++        guchar blue = pixel & 0xff;
++        guchar* out = data + i * 4;
++
++        out[0] = unpremultiply_cursor_channel(red, alpha);
++        out[1] = unpremultiply_cursor_channel(green, alpha);
++        out[2] = unpremultiply_cursor_channel(blue, alpha);
++        out[3] = alpha;
++    }
++
++    return gdk_pixbuf_new_from_data(data, GDK_COLORSPACE_RGB, TRUE, 8,
++                                    image->width, image->height, rowstride,
++                                    (GdkPixbufDestroyNotify)g_free, NULL);
++}
++
++static XcursorImage* choose_nearest_cursor_image(XcursorImages* images, int requested_size)
++{
++    XcursorImage* best = NULL;
++    guint best_distance = G_MAXUINT;
++    int i;
++
++    if(images == NULL || images->nimage <= 0)
++        return NULL;
++
++    for(i = 0; i < images->nimage; ++i)
++    {
++        XcursorImage* image = images->images[i];
++        guint size;
++        guint distance;
++
++        if(image == NULL)
++            continue;
++
++        size = image->size ? image->size : MAX(image->width, image->height);
++        distance = ABS((int)size - requested_size);
++        if(best == NULL || distance < best_distance)
++        {
++            best = image;
++            best_distance = distance;
++        }
++    }
++
++    return best;
++}
++
++static GdkPixbuf* load_cursor_variant_pixbuf(const char* const* names, const char* theme, int size)
++{
++    int i;
++
++    for(i = 0; names[i] != NULL; ++i)
++    {
++        XcursorImages* images = XcursorLibraryLoadImages(names[i], theme, size);
++        GdkPixbuf* pixbuf = NULL;
++
++        if(images == NULL)
++            continue;
++
++        pixbuf = pixbuf_from_xcursor_image(choose_nearest_cursor_image(images, size));
++        XcursorImagesDestroy(images);
++
++        if(pixbuf != NULL)
++            return pixbuf;
++    }
++
++    return NULL;
++}
+ 
+ static void update_cursor_demo()
+ {
+     GtkListStore* store = gtk_list_store_new(1, GDK_TYPE_PIXBUF);
+-    GdkCursor* cursor;
+-    GdkCursorType types[] = {
+-        GDK_LEFT_PTR,
+-        GDK_HAND2,
+-        GDK_WATCH,
+-        GDK_FLEUR,
+-        GDK_XTERM,
+-        GDK_LEFT_SIDE,
+-        GDK_TOP_LEFT_CORNER,
+-        GDK_SB_H_DOUBLE_ARROW};
++    const char* theme = (app.cursor_theme && *app.cursor_theme) ? app.cursor_theme : "default";
++    int size = MAX(1, app.cursor_theme_size);
++    const char* left_ptr[] = {"left_ptr", "default", NULL};
++    const char* pointer[] = {"pointer", "hand2", "hand1", NULL};
++    const char* wait[] = {"wait", "watch", NULL};
++    const char* text[] = {"text", "xterm", NULL};
++    const char* move[] = {"move", "fleur", NULL};
++    const char* ns_resize[] = {"ns-resize", "sb_v_double_arrow", NULL};
++    const char* ew_resize[] = {"ew-resize", "sb_h_double_arrow", NULL};
++    const char* help[] = {"help", "question_arrow", NULL};
++    const char* const* variants[] = {
++        left_ptr,
++        pointer,
++        wait,
++        text,
++        move,
++        ns_resize,
++        ew_resize,
++        help};
+     int i;
+-    for(i = 0; i < (int)G_N_ELEMENTS(types); ++i)
++
++    for(i = 0; i < (int)G_N_ELEMENTS(variants); ++i)
+     {
+         GtkTreeIter it;
+-        cursor = gdk_cursor_new(types[i]);
+-        GdkPixbuf* pix = gdk_cursor_get_image(cursor);
+-        gdk_cursor_unref(cursor);
++        GdkPixbuf* pix = load_cursor_variant_pixbuf(variants[i], theme, size);
++
+         if (pix != NULL)
+         {
+             gtk_list_store_insert_with_values(store, &it, -1, 0, pix, -1);
+@@ -52,20 +152,6 @@ static void update_cursor_demo()
+     }
+     gtk_icon_view_set_model(GTK_ICON_VIEW(app.cursor_demo_view), GTK_TREE_MODEL(store));
+     g_object_unref(store);
+-
+-    /* gtk+ programs should reload named cursors correctly.
+-     * However, if the cursor is inherited from the root window,
+-     * gtk+ won't change it. So we need to update the cursor of root window.
+-     * Unfortunately, this doesn't work for non-gtk+ programs.
+-     * KDE programs seem to require special handling with XFixes */
+-    cursor = gdk_cursor_new(GDK_LEFT_PTR);
+-    i = gdk_display_get_n_screens(gdk_display_get_default());
+-    while(--i >= 0)
+-    {
+-        GdkScreen* screen = gdk_display_get_screen(gdk_display_get_default(), i);
+-        gdk_window_set_cursor(gdk_screen_get_root_window(screen), cursor);
+-    }
+-    gdk_cursor_unref(cursor);
+ }
+ 
+ static void on_cursor_theme_sel_changed(GtkTreeSelection* tree_sel, gpointer user_data)
+@@ -105,18 +191,12 @@ static void on_cursor_theme_size_changed(GtkRange* range, gpointer user_data)
+ 
+ void cursor_theme_init(GtkBuilder* b)
+ {
+-    guint max_cursor_w, max_cursor_h, max_size;
+     GtkTreeSelection* sel = gtk_tree_view_get_selection(GTK_TREE_VIEW(app.cursor_theme_view));
+     /* treeview and model are already set up in icon_theme_init() */
+     g_signal_connect(sel, "changed", G_CALLBACK(on_cursor_theme_sel_changed), NULL);
+ 
+-    gdk_display_get_maximal_cursor_size(gdk_display_get_default(), &max_cursor_w, &max_cursor_h);
+-    max_size = MAX(max_cursor_w, max_cursor_h);
+-
+-    /* FIXME: this isn't fully working... */
+     app.cursor_size_range = GTK_WIDGET(gtk_builder_get_object(b, "cursor_size"));
+-    if(max_size < 128)
+-        gtk_range_set_range(GTK_RANGE(app.cursor_size_range), 1, max_size + 10); /* 10 is page size */
++    gtk_range_set_range(GTK_RANGE(app.cursor_size_range), 8, 96);
+     gtk_range_set_value(GTK_RANGE(app.cursor_size_range), app.cursor_theme_size);
+     g_signal_connect(app.cursor_size_range, "value-changed", G_CALLBACK(on_cursor_theme_size_changed), NULL);
+ 
