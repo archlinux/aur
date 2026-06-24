@@ -1,10 +1,11 @@
-# Maintainer: Alexander Shpilkin <ashpilkin at gmail dot com>
+# Maintainer: Roshless <pkg@roshless.com>
+# Contributor: Alexander Shpilkin <ashpilkin at gmail dot com>
 # Contributor: Sam Stuewe <halosghost at archlinux dot info>
 
 pkgname=uacme
 pkgver=1.8.1
 _pkgsha=1b6b27892cddf9b6e19c94f333aa36f07c776150 # git show-ref upstream/$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc='An ACMEv2 client written in plain C with minimal dependencies'
 arch=('i686' 'x86_64')
 url='https://github.com/ndilieto/uacme/'
