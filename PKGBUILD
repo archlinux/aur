@@ -1,7 +1,7 @@
 # Maintainer: nroi <nroi@mailbox.org>
 pkgname=flexo-git
 pkgrel=1
-pkgver=1.6.11.r2.gf71516f
+pkgver=1.6.12.r0.gd303437
 pkgdesc="A central pacman cache"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/nroi/flexo'
