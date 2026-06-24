@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rename-photos-bin
 _pkgname='Rename Photos'
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Bulk rename photos using EXIF data 🐶 (Prebuilt version)使用 EXIF 数据批量重命名照片."
 arch=('x86_64')
-url="https://rename.armantang.fun/"
+url="https://arman19941113.github.io/rename-photos/"
 _ghurl="https://github.com/Arman19941113/rename-photos"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Arman19941113/rename-photos/v${pkgver}/LICENSE"
 )
-sha256sums=('5eb2c94455a570adc6a8d691707abfef3f1d80347cc4a97b1bb5a11447335813'
+sha256sums=('c5b4eeddf2125f8fee2f2a92fb9f6a661c4def591e5c03f540a1d78150ab9018'
             '5ad2df4d8f7256a87d9d21c5a8568a8d1d6ff63e8506f87c683612bee4877c07')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
