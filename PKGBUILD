@@ -1,18 +1,19 @@
-# Maintainer: tygrdev <hi at tygr dot dev>
-# Contributor: tygrdev <hi at tygr dot dev>
+# Maintainer: tygrdev <hi@tygr.dev>
+# Contributor: wackery, nord-studio
 pkgname=pulsar-music-bin
-pkgver=0.0.1
+pkgver=0.0.0.r114
 pkgrel=1
-pkgdesc="Pulsar is a local-first, cross-platform music player. A Nord Studio project."
+pkgdesc="A local-first, cross-platform music player."
 arch=('x86_64')
 url="https://usepulsar.app"
-license=('zlib')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'alsa-lib' 'xdg-utils')
-options=('!strip' '!debug')
-install=${pkgname}.install
-source_x86_64=("${url}/api/download/linux?distro=deb")
+license=('AGPL-3.0-or-later')
+provides=('pulsar-music')
+conflicts=('pulsar-music')
+depends=('alsa-lib' 'fontconfig' 'libxkbcommon' 'libx11' 'libxcb' 'wayland' 'dbus' 'vulkan-icd-loader')
+source=("pulsar-music_${pkgver}_amd64.deb::https://lab.nordstud.io/api/v4/projects/72/packages/generic/pulsar/0.0.0.r114/pulsar-music_0.0.0.r114_amd64.deb")
+sha256sums=('SKIP')
+
 package() {
-  # Extract package data
-  tar -xvf data.tar.gz -C "${pkgdir}"
+	bsdtar -xf "${srcdir}/pulsar-music_${pkgver}_amd64.deb" -C "${srcdir}"
+	bsdtar -xf "${srcdir}"/data.tar.* -C "${pkgdir}"
 }
-sha256sums_x86_64=('a51e2a679b4822a00db4cb58937910f9ad2ea45d025e054feb51c2ca55706879')
