@@ -1,7 +1,7 @@
 pkgbase = minimax-hub-bin
 	pkgdesc = MiniMax Hub desktop app repackaged from the official macOS release
 	pkgver = 1.0.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://hub.minimaxi.com/
 	install = minimax-hub-bin.install
 	arch = x86_64

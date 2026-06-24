@@ -3,7 +3,7 @@
 pkgname=minimax-hub-bin
 _pkgname=minimax-hub
 pkgver=1.0.4
-pkgrel=4
+pkgrel=5
 pkgdesc='MiniMax Hub desktop app repackaged from the official macOS release'
 arch=('x86_64' 'aarch64')
 url='https://hub.minimaxi.com/'
@@ -171,6 +171,9 @@ package() {
     "${pkgdir}/usr/lib/${pkgname}/resources/app.asar"
   cp -a resources/. \
     "${pkgdir}/usr/lib/${pkgname}/resources/"
+  find "${pkgdir}/usr/lib/${pkgname}/resources" -type d -exec chmod 755 '{}' +
+  find "${pkgdir}/usr/lib/${pkgname}/resources" -type f -perm /111 -exec chmod 755 '{}' +
+  find "${pkgdir}/usr/lib/${pkgname}/resources" -type f ! -perm /111 -exec chmod 644 '{}' +
 
   install -Dm644 resources/app-resources/icon.png \
     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/minimax-hub.png"
