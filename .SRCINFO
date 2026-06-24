@@ -1,0 +1,16 @@
+pkgbase = crisper-bin
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = x86_64
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	maintainer = psychosomat <hello@ddark.dev>
+	pkgdesc = Local video transcription with speaker diarization
+	url = https://github.com/psychosomat/Crisper
+	license = MIT
+	provides = crisper
+	conflicts = crisper
+	source = https://github.com/psychosomat/Crisper/releases/download/v0.1.0/Crisper-0.1.0-linux-amd64.tar.gz
+	sha256sums = 824ce72079db94bf89b87e8923c4f4dc33423021f9e324db49ed799e454067d6
+
+	pkgname = crisper-bin
