@@ -1,6 +1,6 @@
 pkgbase = codex-account-switcher-bin
 	pkgdesc = GTK app for switching between ChatGPT accounts for Codex CLI
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/jR4dh3y/codex-account-switcher
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = codex-account-switcher-bin
 	depends = libsoup3
 	provides = codex-account-switcher
 	conflicts = codex-account-switcher
-	source = codex-account-switcher-bin-0.2.6.tar.zst::https://github.com/jR4dh3y/codex-account-switcher/releases/download/v0.2.6/codex-account-switcher-0.2.6-x86_64.tar.zst
-	sha256sums = 2c36315f5997f31457990b4f14154c794695976ec95fe4df5464377cb48c7fb4
+	source = codex-account-switcher-bin-0.2.7.tar.zst::https://github.com/jR4dh3y/codex-account-switcher/releases/download/v0.2.7/codex-account-switcher-0.2.7-x86_64.tar.zst
+	sha256sums = c92e43b5a249a2d4bbf650df3a9cbb2b1cc9a3c45a8836e0cca793b53fe0bdc1
 
 pkgname = codex-account-switcher-bin
