@@ -1,0 +1,4 @@
+[vim-startuptime]
+source = "git"
+git = "https://github.com/dstein64/vim-startuptime.git"
+prefix = "v"
