@@ -1,6 +1,6 @@
 pkgbase = processing-bin
 	pkgdesc = Programming environment for creating images, animations and interactions.(Prebuilt version)
-	pkgver = 4.5.3
+	pkgver = 4.5.4
 	pkgrel = 1
 	url = https://processing.org/
 	arch = aarch64
@@ -15,12 +15,12 @@ pkgbase = processing-bin
 	depends = libglvnd
 	depends = libxtst
 	depends = libxrender
-	provides = processing=4.5.3
+	provides = processing=4.5.4
 	conflicts = processing
 	options = !strip
-	source_aarch64 = processing-4.5.3-aarch64.zip::https://github.com/processing/processing4/releases/download/processing-1314-4.5.3/processing-4.5.3-linux-aarch64-portable.zip
-	sha256sums_aarch64 = c5b7b10a80f008d4903fe0238fc3861e0259d0a790b145c881d72d01598a4897
-	source_x86_64 = processing-4.5.3-x86_64.zip::https://github.com/processing/processing4/releases/download/processing-1314-4.5.3/processing-4.5.3-linux-x64-portable.zip
-	sha256sums_x86_64 = bf1dd11fbbd3a5bb039818439c310de3319ee3d9f80ef0bd27df929f849eae1f
+	source_aarch64 = processing-4.5.4-aarch64.zip::https://github.com/processing/processing4/releases/download/processing-1432-4.5.4/processing-4.5.4-linux-aarch64-portable.zip
+	sha256sums_aarch64 = 60d36e67de2d736562ec118b6a42d2394231fa9616f3ca924ab21a9171ea3fa1
+	source_x86_64 = processing-4.5.4-x86_64.zip::https://github.com/processing/processing4/releases/download/processing-1432-4.5.4/processing-4.5.4-linux-x64-portable.zip
+	sha256sums_x86_64 = 97313594b5083a36f4e280320d613089dcac16476dc5001dd5747f38e407fa46
 
 pkgname = processing-bin
