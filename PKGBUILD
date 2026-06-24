@@ -1,5 +1,5 @@
+# Maintainer: Andreas Reichel <aurscan at manticore-projects dot com>
 # Maintainer: Tom Hale <tom at hale dot ee>
-# Based upon: https://github.com/manticore-projects/aurscan/blob/main/packaging/PKGBUILD
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164  # var unused / var not assigned / cd without || exit
 
 pkgname=aurscan-manticore-release-git
@@ -19,9 +19,9 @@ optdepends=(
   'xdg-utils: open mail client for mailing-list reports'
 )
 source=("$pkgname::git+$url.git"
-        "andreas@manticore-projects.com.gpg")
-sha256sums=('SKIP'
-            '182cc1de21af47b7d5cd498cc21d04ff01d9a3cabc149dfcabba88a4be761322')
+        "andreas-manticore-projects.gpg")
+b2sums=('SKIP'
+        'e80ad8b775d2d503e066d0a8a55d365eb3c4a4caa0e1812afb66b81f7adb279cde7f9d561fe329650a9176aba2f83cd45aab3bf304af861e21c12df9230bfe38')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
