@@ -1,9 +1,9 @@
 # Maintainer: bendork <bendik.lynghaug@gmail.com>
 
 pkgbase=kanidm-bin
-pkgname=(kanidm-bin kanidm-unixd-bin kanidmd-bin)
+pkgname=(kanidm-clients-bin kanidm-unixd-clients-bin kanidm-server-bin kanidm-bin)
 pkgver=1.10.4
-pkgrel=3
+pkgrel=1
 pkgdesc='Modern identity management platform (prebuilt binaries)'
 arch=(x86_64 aarch64)
 url='https://kanidm.com'
@@ -21,11 +21,11 @@ _srcdir() {
   else echo "kanidm-v${pkgver}-aarch64-linux-gnu"; fi
 }
 
-package_kanidm-bin() {
+package_kanidm-clients-bin() {
   pkgdesc='Kanidm command-line client (prebuilt binaries)'
   depends=(glibc gcc-libs openssl sqlite)
-  provides=(kanidm-clients "kanidm-clients=${pkgver}" kanidm "kanidm=${pkgver}")
-  conflicts=(kanidm-clients kanidm)
+  provides=(kanidm-clients "kanidm-clients=${pkgver}")
+  conflicts=(kanidm-clients)
   local src; src=$(_srcdir)
   install -Dm755 "${srcdir}/${src}/bin/kanidm" \
                  "${pkgdir}/usr/bin/kanidm"
@@ -35,11 +35,11 @@ package_kanidm-bin() {
                  "${pkgdir}/etc/kanidm/config.example"
 }
 
-package_kanidm-unixd-bin() {
+package_kanidm-unixd-clients-bin() {
   pkgdesc='Kanidm UNIX integration daemons (prebuilt; PAM/NSS modules not included)'
   depends=(glibc gcc-libs openssl sqlite pam dbus libcap tpm2-tss systemd-libs)
-  provides=(kanidm-unixd-clients "kanidm-unixd-clients=${pkgver}" kanidm-unixd "kanidm-unixd=${pkgver}")
-  conflicts=(kanidm-unixd-clients kanidm-unixd)
+  provides=(kanidm-unixd-clients "kanidm-unixd-clients=${pkgver}")
+  conflicts=(kanidm-unixd-clients)
   local src; src=$(_srcdir)
   install -Dm755 "${srcdir}/${src}/bin/kanidm_unixd" \
                  "${pkgdir}/usr/bin/kanidm_unixd"
@@ -57,11 +57,11 @@ package_kanidm-unixd-bin() {
                  "${pkgdir}/etc/kanidm/unixd.example"
 }
 
-package_kanidmd-bin() {
+package_kanidm-server-bin() {
   pkgdesc='Kanidm server daemon (prebuilt binary)'
   depends=(glibc gcc-libs openssl sqlite tpm2-tss systemd-libs libcap)
-  provides=(kanidm-server "kanidm-server=${pkgver}" kanidmd "kanidmd=${pkgver}")
-  conflicts=(kanidm-server kanidmd)
+  provides=(kanidm-server "kanidm-server=${pkgver}")
+  conflicts=(kanidm-server)
   local src; src=$(_srcdir)
   install -Dm755 "${srcdir}/${src}/bin/kanidmd" \
                  "${pkgdir}/usr/bin/kanidmd"
@@ -69,4 +69,12 @@ package_kanidmd-bin() {
                  "${pkgdir}/usr/lib/systemd/system/kanidmd.service"
   install -Dm644 "${srcdir}/${src}/config/server.toml.example" \
                  "${pkgdir}/etc/kanidm/server.toml.example"
+}
+
+package_kanidm-bin() {
+  pkgdesc='Kanidm identity management platform (meta package, prebuilt binaries)'
+  depends=(kanidm-clients-bin kanidm-unixd-clients-bin kanidm-server-bin)
+  provides=(kanidm "kanidm=${pkgver}")
+  conflicts=(kanidm)
+  # meta package - no files
 }

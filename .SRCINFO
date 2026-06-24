@@ -1,7 +1,7 @@
 pkgbase = kanidm-bin
 	pkgdesc = Modern identity management platform (prebuilt binaries)
 	pkgver = 1.10.4
-	pkgrel = 3
+	pkgrel = 1
 	url = https://kanidm.com
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = kanidm-bin
 	source_aarch64 = kanidm-v1.10.4-aarch64-linux-gnu.tar.gz::https://github.com/bendik/kanidm/releases/download/v1.10.4-bin/kanidm-v1.10.4-aarch64-linux-gnu.tar.gz
 	sha256sums_aarch64 = d0ed06835b57e94b3b98a4bcc62881e73f51073ea77e5cdf4eee25dbcfd8273a
 
-pkgname = kanidm-bin
+pkgname = kanidm-clients-bin
 	pkgdesc = Kanidm command-line client (prebuilt binaries)
 	depends = glibc
 	depends = gcc-libs
@@ -19,12 +19,9 @@ pkgname = kanidm-bin
 	depends = sqlite
 	provides = kanidm-clients
 	provides = kanidm-clients=1.10.4
-	provides = kanidm
-	provides = kanidm=1.10.4
 	conflicts = kanidm-clients
-	conflicts = kanidm
 
-pkgname = kanidm-unixd-bin
+pkgname = kanidm-unixd-clients-bin
 	pkgdesc = Kanidm UNIX integration daemons (prebuilt; PAM/NSS modules not included)
 	depends = glibc
 	depends = gcc-libs
@@ -37,12 +34,9 @@ pkgname = kanidm-unixd-bin
 	depends = systemd-libs
 	provides = kanidm-unixd-clients
 	provides = kanidm-unixd-clients=1.10.4
-	provides = kanidm-unixd
-	provides = kanidm-unixd=1.10.4
 	conflicts = kanidm-unixd-clients
-	conflicts = kanidm-unixd
 
-pkgname = kanidmd-bin
+pkgname = kanidm-server-bin
 	pkgdesc = Kanidm server daemon (prebuilt binary)
 	depends = glibc
 	depends = gcc-libs
@@ -53,7 +47,13 @@ pkgname = kanidmd-bin
 	depends = libcap
 	provides = kanidm-server
 	provides = kanidm-server=1.10.4
-	provides = kanidmd
-	provides = kanidmd=1.10.4
 	conflicts = kanidm-server
-	conflicts = kanidmd
+
+pkgname = kanidm-bin
+	pkgdesc = Kanidm identity management platform (meta package, prebuilt binaries)
+	depends = kanidm-clients-bin
+	depends = kanidm-unixd-clients-bin
+	depends = kanidm-server-bin
+	provides = kanidm
+	provides = kanidm=1.10.4
+	conflicts = kanidm
