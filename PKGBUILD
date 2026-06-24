@@ -40,9 +40,9 @@ esac
 build() {
 	cd "${srcdir}/" || exit
 
-	./${_pkgname} completion bash > ${_pkgname}.bash
-	./${_pkgname} completion zsh > ${_pkgname}.zsh
-	./${_pkgname} completion fish > ${_pkgname}.fish
+	./${_pkgname} completion bash > ${_pkgname}.bash 2> /dev/null
+	./${_pkgname} completion zsh > ${_pkgname}.zsh 2> /dev/null
+	./${_pkgname} completion fish > ${_pkgname}.fish 2> /dev/null
 }
 
 package() {
