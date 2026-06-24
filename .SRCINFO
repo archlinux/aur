@@ -1,6 +1,6 @@
 pkgbase = popugai-agent
 	pkgdesc = A cross-platform SSH agent and key manager with GUI
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/Monliker2/popugai-agent
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = popugai-agent
 	makedepends = libxxf86vm
 	makedepends = libglvnd
 	depends = glibc
-	source = popugai-agent-1.0.3.tar.gz::https://github.com/Monliker2/popugai-agent/archive/refs/tags/v1.0.3.tar.gz
-	sha256sums = 8af0e305ed748781667582374a855fcdec64f378ce32dcf53fdfba32244d41f1
+	source = popugai-agent-1.0.4.tar.gz::https://github.com/Monliker2/popugai-agent/archive/refs/tags/v1.0.4.tar.gz
+	sha256sums = 6810313ed66ffc9958cd6eff28507a7f1921d0d7589c029e02c866cab620cf2d
 
 pkgname = popugai-agent

@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=popugai-agent
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A cross-platform SSH agent and key manager with GUI"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git' 'libx11' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libxext' 'libxxf86vm' 'libglvnd')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Monliker2/popugai-agent/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8af0e305ed748781667582374a855fcdec64f378ce32dcf53fdfba32244d41f1')
+sha256sums=('6810313ed66ffc9958cd6eff28507a7f1921d0d7589c029e02c866cab620cf2d')
 
 build() {
   cd "${pkgname}-${pkgver}"
