@@ -2,7 +2,7 @@
 
 pkgname=oniri-git
 _pkgname="${pkgname%-git}"
-pkgver=1.2.0.r48.307081e
+pkgver=1.2.3.r83.d80c0c9
 pkgrel=1
 pkgdesc="A tool that automatically maximizes the only window of a niri workspace (git version)"
 url="https://github.com/Antiz96/oniri"
@@ -31,7 +31,6 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release --all-features
-
 	scdoc < "doc/man/${_pkgname}.1.scd" > "doc/man/${_pkgname}.1"
 }
 
@@ -44,7 +43,6 @@ check() {
 package() {
 	cd "${_pkgname}"
 	install -Dm 755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-
 	install -Dm 644 "res/completions/${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
 	install -Dm 644 "res/completions/${_pkgname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
 	install -Dm 644 "res/completions/${_pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"

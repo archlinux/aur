@@ -1,6 +1,6 @@
 pkgbase = oniri-git
 	pkgdesc = A tool that automatically maximizes the only window of a niri workspace (git version)
-	pkgver = 1.2.0.r48.307081e
+	pkgver = 1.2.3.r83.d80c0c9
 	pkgrel = 1
 	url = https://github.com/Antiz96/oniri
 	arch = x86_64
