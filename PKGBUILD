@@ -19,6 +19,7 @@ url="https://www.yozosoft.com/product-officelinux.html"
 options=(
     '!strip'
 )
+install=yozo-office.install
 license=('LicenseRef-custom')
 arch=('x86_64')
 source=("${pkgbase}-${pkgver}.deb::https://dl.yozosoft.com/yozo/project/file/${_relver}/${pkgbase}_${pkgver}_amd64.deb")
@@ -49,18 +50,19 @@ package_yozo-office() {
         'mesa'
         'libmng'
         'nspr'
-        'libpng12'
         'twolame'
         'libice'
         'nss'
+        'libtiff5'
         'sdl12-compat'
+        'lsof'
     )
     optdepends=(
         "${pkgbase}-fonts: built-in fonts"
         "${pkgbase}-templates: built-in document templates"
     )
     # Installing main binaries ...
-    cp -Pr --no-preserve=ownership "${srcdir}"/{usr,opt,etc} "${pkgdir}"
+    cp -a "${srcdir}"/{usr,opt,etc} "${pkgdir}"
     rm -rf "${pkgdir}/usr/share/fonts"
     rm -rf "${pkgdir}/opt/apps/${_pkgname}/Templates"
     # Fixing permissions of binaries in /usr/bin ...
@@ -81,6 +83,6 @@ package_yozo-office-templates() {
     pkgdesc="Built-in document templates of Yozo Office 2024"
     # Installing built-in document templates of Yozo Office 2024 ...
     install -Dm755 -d "${pkgdir}/opt/Yozosoft/${_pkgname}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/apps/${_pkgname}/Templates" "${pkgdir}/opt/Yozosoft/${_pkgname}"
+    cp -a "${srcdir}/opt/apps/${_pkgname}/Templates" "${pkgdir}/opt/Yozosoft/${_pkgname}"
     install -Dm644 "${srcdir}/opt/apps/${_pkgname}/thirdpartylicensereadme.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
