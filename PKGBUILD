@@ -6,7 +6,7 @@
 
 pkgname=powershell
 pkgver=7.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url='https://microsoft.com/PowerShell'
@@ -183,17 +183,8 @@ check() {
   rm test/powershell/engine/Basic/Assembly.LoadFrom.Tests.ps1
   rm test/powershell/engine/Basic/Assembly.LoadNative.Tests.ps1
 
-  # Some users report this test failing, cannot reproduce but removing anyway
-  #rm test/powershell/Modules/Microsoft.PowerShell.Management/Start-Process.Tests.ps1
-
-  # Can't figure out why it fails
-  # If you want to dig into this, your patch will be appreciated
-  #rm test/powershell/Modules/Microsoft.PowerShell.Utility/Format-Table.Tests.ps1
-  #rm test/powershell/Language/Parser/RedirectionOperator.Tests.ps1
-  #rm test/powershell/Language/Scripting/NativeExecution/NativeWindowsTildeExpansion.Tests.ps1
-  #rm test/powershell/Modules/Microsoft.PowerShell.Utility/WebCmdlets.Tests.ps1
-  #rm test/powershell/Modules/Microsoft.PowerShell.PSResourceGet/Microsoft.PowerShell.PSResourceGet.Tests.ps1
-  #rm test/powershell/Host/TabCompletion/TabCompletion.Tests.ps1
+  # Creates a file under ~/.profile, skip
+  rm test/powershell/Host/ConsoleHost.Tests.ps1
 
   ## Restore-PSPester()
   unzip -ud temp_pester "$srcdir/pester.${_pesterversion}.nupkg"

@@ -1,7 +1,7 @@
 pkgbase = powershell
 	pkgdesc = A cross-platform automation and configuration tool/framework
 	pkgver = 7.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://microsoft.com/PowerShell
 	install = powershell.install
 	arch = x86_64
