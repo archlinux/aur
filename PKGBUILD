@@ -6,6 +6,7 @@
 # Contributor: Chuck Yang <Chuck.Yang@gmail.com>
 
 pkgname=lshw-git
+_pkgname=lshw
 pkgver=B.02.20.r13.g687be8b
 pkgrel=1
 pkgdesc="A small tool to provide detailed information on the hardware configuration of the machine"
@@ -15,8 +16,8 @@ arch=(x86_64)
 depends=(gcc-libs hwdata)
 optdepends=('gtk3: for gtk-lshw')
 makedepends=(gtk3 sqlite docbook-utils perl-sgmls git)
-conflicts=("${pkgname}")
-provides=("${pkgname}")
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 options=(!lto)
 source=(git+https://ezix.org/src/pkg/lshw.git)
 sha256sums=('SKIP')
