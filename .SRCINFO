@@ -1,6 +1,6 @@
 pkgbase = ros2-lyrical-base
 	pkgdesc = A set of software libraries and tools for building robot applications (Lyrical Luth, base variant)
-	pkgver = 2026.05.22
+	pkgver = 2026.06.23
 	pkgrel = 1
 	url = https://index.ros.org/p/ros_base/#lyrical
 	arch = any
@@ -29,10 +29,10 @@ pkgbase = ros2-lyrical-base
 	depends = zenoh-cpp
 	conflicts = ros2-lyrical
 	options = !debug
-	source = https://github.com/ros2/ros2/archive/release-lyrical-20260522.tar.gz
+	source = https://github.com/ros2/ros2/archive/release-lyrical-20260623.tar.gz
 	source = ros2-variants-0.13.0.tar.gz::https://github.com/ros2/variants/archive/0.13.0.tar.gz
 	source = colcon.meta
-	sha256sums = bb126100ed069a41239f4b40df8ca29d63814dd58422d57f2322118bd51f492a
+	sha256sums = 52a4ecffdabf951041342351768fa914a95aed3f3eebbbc7dbb495377ac8ba42
 	sha256sums = d14cc0ec092511b26cb2be60200eaeb59ee1b1d21750b7d63fe98f476e6db89f
 	sha256sums = b9de02644cd80ffee220401ca4b2c00290f4329d655fa06491e0f218700f61ad
 
