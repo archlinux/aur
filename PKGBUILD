@@ -21,7 +21,7 @@ depends=('alsa-lib' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-lib
          'libappindicator' 'xdg-utils')
 
 sha256sums=('2565e60d233d653206f33fc25b35c7b31b42d45c5fb1de7b28be966fae959d58'
-            '58ede01d840ec711e0f994be429c85e13afeb33662ac8d4671bfd4c013cea0e5')
+            '65f432e4230bcead4f6f9a5a3640c701048eb9da49f1c5bf82d56d340c2de969')
 
 build() {
   cd "$srcdir"
