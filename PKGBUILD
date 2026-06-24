@@ -14,7 +14,7 @@ provides=('pilauncher')
 conflicts=('pilauncher')
 options=('!strip')
 source=(
-  "${_appname}_${pkgver}_amd64.AppImage::https://github.com/MrShellad/pilauncher/releases/download/v0.1.41/PiLauncher_0.1.41_amd64.AppImage"
+  "${_appname}_${pkgver}_amd64.AppImage::https://github.com/MrShellad/pilauncher/releases/download/v${pkgver}/${_appname}_${pkgver}_amd64.AppImage"
   'LICENSE'
 )
 noextract=("${_appname}_${pkgver}_amd64.AppImage")
@@ -66,7 +66,7 @@ StartupNotify=true
 StartupWMClass=PiLauncher
 Categories=Game;
 Keywords=Minecraft;Launcher;PiLauncher;
-X-AppImage-Version=0.1.41
+X-AppImage-Version=${pkgver}
 DESKTOP
 
   while IFS= read -r icon_source; do
