@@ -2,7 +2,7 @@
 
 pkgname="python-memory-graph"
 pkgdesc="Generate intuitive graphs of your Python data"
-pkgver=0.3.77
+pkgver=0.3.82
 pkgrel=1
 
 _pypi_package=${pkgname##python-}
@@ -16,7 +16,7 @@ depends=('python' 'python-graphviz' 'python-numpy' 'python-pandas')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
-sha256sums=('cdbc913d2ed0b8306f3d853fca77f4470a8346256b7eae1069f92fbec0d23a66')
+sha256sums=('3d31fd2831803af0310c0c6b35ed52e9b5427a6ffd9c9b89c030031a246a7e2a')
 
 
 build() {
