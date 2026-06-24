@@ -4,9 +4,10 @@
 
 _plugin_name=user-agent-switcher
 _plugin_ext=""
-_file=4449854
+_file=4772478
+
 pkgname=librewolf-extension-$_plugin_name
-pkgver=1.4.89
+pkgver=1.4.102
 pkgrel=1
 arch=('any')
 pkgdesc="Firefox extension to override the browser's User-Agent string"
@@ -16,7 +17,7 @@ depends=("librewolf>=57")
 source=("https://addons.mozilla.org/firefox/downloads/file/${_file}/uaswitcher-${pkgver}${_plugin_ext}.xpi")
 
 noextract=('user_agent_switcher-${pkgver}${_plugin_ext}.xpi')
-sha256sums=('ad488274976139ce84517a3e12de6b729edfb8daded18c7184ffc64b90591a0a')
+sha256sums=('b83c36fe95d44ecd5dd8611b4af87390aa7b8c653d637b3bb287c152e63da8c8')
 
 package() {
   cd "${srcdir}"
