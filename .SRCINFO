@@ -3,6 +3,7 @@ pkgbase = fresh-node
 	pkgver = 26.06.1
 	pkgrel = 1
 	url = https://gerrit.wikimedia.org/g/fresh
+	install = fresh-node.install
 	arch = any
 	license = custom:0BSD
 	makedepends = git

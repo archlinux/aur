@@ -12,6 +12,7 @@ checkdepends=()
 optdepends=('podman: podman or docker must be installed'
             'docker: podman or docker must be installed')
 source=("$pkgname-$pkgver::git+https://gerrit.wikimedia.org/r/fresh#tag=$pkgver")
+install=fresh-node.install
 sha256sums=('SKIP')
 
 prepare () {
@@ -30,5 +31,6 @@ package() {
 	cd "$pkgname-$pkgver"
 	install -Dm644 LICENSE-0BSD "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm755 -t "$pkgdir/usr/bin/" bin/fresh-node*
+    install -Dm755 bin/fresh-npm "$pkgdir/usr/bin/fresh-npm"
     ln -s /usr/bin/fresh-node24 "$pkgdir/usr/bin/fresh-node"
 }
