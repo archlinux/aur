@@ -1,0 +1,7 @@
+[stremio-web]
+source = "github"
+github = "Stremio/stremio-web"
+use_max_tag = true
+prefix = "v"
+from_pattern = "-"
+to_pattern = "_"
