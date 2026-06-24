@@ -1,18 +1,20 @@
-# Maintainer: Swadhin Biswas <swadhinbiswas.cse@gmail.com>
+# Maintainer: Swadhin Biswas <swadhin.biswas@example.com>
+# Contributor: Arch Linux users
 # AUR Package for Linuxy - One-click Linux Application Manager
 
 pkgname=linuxy
-pkgver=1.2.0
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="One-click Linux Application Manager with Firejail sandboxing"
-arch=('x86_64')
+pkgdesc="Multi-platform Desktop Application Manager with Firejail sandboxing"
+arch=('x86_64' 'aarch64')
 url="https://github.com/swadhinbiswas/linuxy"
 license=('MIT')
 depends=('firejail' 'xdg-utils' 'webkit2gtk' 'gtk3' 'libappindicator-gtk3' 'xdo')
-makedepends=('cargo' 'nodejs' 'npm')
+makedepends=('cargo' 'nodejs' 'npm' 'llvm' 'clang' 'patchelf')
+optdepends=('appimageupdatetool: AppImage auto-updates')
 install=linuxy.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/swadhinbiswas/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('76b293fb2b2517248f0259dc3bd0602655f45730724290dbf405ad1fe0e23f02')
+sha256sums=('a242dbeb9ac5b30f8168116508a8026c492f4c03b45d864447f99ce0155ef84f')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -23,24 +25,27 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   npm run build
   cd src-tauri
-  cargo build --release
+  cargo build --release --locked
+}
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver"
+  cargo test --locked --manifest-path src-tauri/Cargo.toml
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  
-  # Install binary
+
   install -Dm755 "src-tauri/target/release/linuxy" "$pkgdir/usr/bin/linuxy"
-  
-  # Install desktop file
+
   install -Dm644 "src-tauri/debian/desktop-template.desktop" "$pkgdir/usr/share/applications/linuxy.desktop"
-  
-  # Install icons
-  install -Dm644 "src-tauri/icons/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/linuxy.png"
-  install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/linuxy.png"
-  install -Dm644 "src-tauri/icons/128x128@2x.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/linuxy.png"
-  install -Dm644 "src-tauri/icons/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/linuxy.png"
-  
-  # Install license
+
+  for size in 32 128 256 512; do
+    icon="src-tauri/icons/${size}x${size}.png"
+    [ -f "$icon" ] && install -Dm644 "$icon" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/linuxy.png"
+  done
+  [ -f "src-tauri/icons/icon.png" ] && install -Dm644 "src-tauri/icons/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/linuxy.png"
+  [ -f "src-tauri/icons/icon.icns" ] && install -Dm644 "src-tauri/icons/icon.icns" "$pkgdir/usr/share/icons/hicolor/512x512/apps/linuxy.icns"
+
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
