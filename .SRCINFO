@@ -1,6 +1,6 @@
 pkgbase = jellyfin-desktop-git
 	pkgdesc = Jellyfin Desktop Client
-	pkgver = 0.r1024.04fae1c
+	pkgver = 0.r1025.f224a4b
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/jellyfin/jellyfin-desktop

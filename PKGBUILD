@@ -1,6 +1,6 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 pkgname=jellyfin-desktop-git
-pkgver=0.r1024.04fae1c
+pkgver=0.r1025.f224a4b
 pkgrel=1
 epoch=1
 license=('GPL-2.0-only')
@@ -45,14 +45,8 @@ build() {
 package() {
     cd jellyfin-desktop
 
-    install -dm755 "$pkgdir/opt/jellyfin-desktop"
-
     # Main binary
-    install -m755 build/jellyfin-desktop "$pkgdir/opt/jellyfin-desktop/"
-
-    # Symlink to /usr/bin
-    install -dm755 "$pkgdir/usr/bin"
-    ln -s /opt/jellyfin-desktop/jellyfin-desktop "$pkgdir/usr/bin/jellyfin-desktop"
+    install -Dm755 build/jellyfin-desktop "$pkgdir/usr/bin/jellyfin-desktop"
 
     # Icon
     install -Dm644 resources/linux/org.jellyfin.JellyfinDesktop.svg \
