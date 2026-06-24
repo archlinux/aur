@@ -7,7 +7,7 @@
 # Original Contributor: Bob Finch <w9ya at qrparci dot net>
 
 pkgname=xastir
-pkgver=2.2.2
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="HAM RADIO - Full featured APRS Tracking/Information Reporting System"
 arch=('armv7h' 'i686' 'x86_64')
@@ -52,13 +52,13 @@ package() {
 
 	chmod -s $pkgdir/usr/bin/$pkgname
 }
-md5sums=('8f75103c50beb47de02d108020b43afa'
+md5sums=('235bda541f3bf459f33ce5150f3d8003'
          'c314946788a828d42d804670ad23e646'
          '2a06e041a0dc5f20c1427a130613d793'
          '2f8af994b7f5086d4ca2d951ced9019a'
          'e56e55a1c43038d4488fbdd429a0a755'
          '0a7269113052d3bd2711b84ff2fda9d6')
-sha256sums=('e80d1640ef2b8071984a633d45beae878c120d6012cb371405b160a06b328542'
+sha256sums=('cc521b8590bacc8d1f1f99a6596660c46174f7c809d6ecbbbf4b8dfa57a68419'
             'fd7b0d60386964b8a35ec2e504238d8393f9217e32607a6ddfaeac6bde7d4f4a'
             '555ee695b83e59ebd270a001d7947bad7c5168ea319d80a3dc7842981975f6ec'
             '3452ca25072da4ccbaad2a8f07a61f1685872e1874cd6b28e5e5571f734fb47b'
