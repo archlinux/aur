@@ -4,20 +4,21 @@
 # Credit for simplifying build goes to Martin Cihlář.
 
 _pkgname=opentubex
+_ghurl='https://github.com/OpenTubeX/OpenTubeX'
 pkgname=${_pkgname}-bin
 pkgver=0.25.5
 pkgrel=1
 pkgdesc="A fork of the open source desktop YouTube player FreeTube with additional features"
 arch=('x86_64' 'aarch64')
-url='https://github.com/OpenTubeX/OpenTubeX'
+url='https://opentubex.org'
 license=('AGPL3')
 options=('!strip' 'staticlibs')
 depends=('ttf-liberation')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source_x86_64=("${pkgname}-${pkgver}-amd64.deb"::"$url/releases/download/v$pkgver-beta/${_pkgname}_${pkgver}_beta_amd64.deb")
-source_aarch64=("${pkgname}-${pkgver}-arm64.deb"::"$url/releases/download/v$pkgver-beta/${_pkgname}_${pkgver}_beta_arm64.deb")
+source_x86_64=("${pkgname}-${pkgver}-amd64.deb"::"$_ghurl/releases/download/v$pkgver-beta/${_pkgname}_${pkgver}_beta_amd64.deb")
+source_aarch64=("${pkgname}-${pkgver}-arm64.deb"::"$_ghurl/releases/download/v$pkgver-beta/${_pkgname}_${pkgver}_beta_arm64.deb")
 
 prepare() {
     mkdir -p data
