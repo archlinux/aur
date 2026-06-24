@@ -1,0 +1,50 @@
+pkgbase = kanidm-bin
+	pkgdesc = Modern identity management platform (prebuilt binaries)
+	pkgver = 1.10.4
+	pkgrel = 1
+	url = https://kanidm.com
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	source_x86_64 = kanidm-v1.10.4-x86_64-linux-gnu.tar.gz::https://github.com/bendik/kanidm/releases/download/v1.10.4-bin/kanidm-v1.10.4-x86_64-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2f7bc8ec1a7313cb913e4b571a01c78667c72438d694c104bb41c944cbdc0ef5
+	source_aarch64 = kanidm-v1.10.4-aarch64-linux-gnu.tar.gz::https://github.com/bendik/kanidm/releases/download/v1.10.4-bin/kanidm-v1.10.4-aarch64-linux-gnu.tar.gz
+	sha256sums_aarch64 = ae914587e5c6da9b292ba702158a8136d929fa95285ff0fcc2a91995a6aef073
+
+pkgname = kanidm-bin
+	pkgdesc = Kanidm command-line client (prebuilt binaries)
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	depends = sqlite
+	provides = kanidm
+	provides = kanidm=1.10.4
+	conflicts = kanidm
+
+pkgname = kanidm-unixd-bin
+	pkgdesc = Kanidm UNIX integration daemons (prebuilt; PAM/NSS modules not included)
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	depends = sqlite
+	depends = pam
+	depends = dbus
+	depends = libcap
+	depends = tpm2-tss
+	depends = systemd-libs
+	provides = kanidm-unixd
+	provides = kanidm-unixd=1.10.4
+	conflicts = kanidm-unixd
+
+pkgname = kanidmd-bin
+	pkgdesc = Kanidm server daemon (prebuilt binary)
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	depends = sqlite
+	depends = tpm2-tss
+	depends = systemd-libs
+	depends = libcap
+	provides = kanidmd
+	provides = kanidmd=1.10.4
+	conflicts = kanidmd
