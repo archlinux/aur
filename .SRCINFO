@@ -1,17 +1,18 @@
 pkgbase = lean-ctx-bin
 	pkgdesc = Context Engineering Layer for AI Coding — 77 MCP tools, 10 read modes, 95+ shell patterns, persistent knowledge, multi-agent orchestration. Privacy-first, opt-in only. (pre-built binary)
-	pkgver = 3.8.11
+	pkgver = 3.8.12
 	pkgrel = 1
 	url = https://leanctx.com
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	depends = gcc-libs
+	depends = onnxruntime
 	provides = lean-ctx
 	conflicts = lean-ctx
-	source_x86_64 = lean-ctx-3.8.11-x86_64.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v3.8.11/lean-ctx-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = fab37f84639b677deed6613c7c324e13c395adf4c28e6e0dc2ba27f58e5b417c
-	source_aarch64 = lean-ctx-3.8.11-aarch64.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v3.8.11/lean-ctx-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = add02ccdd07138fa11d33e71411b851480adb07051581b5e9456b3df98d98025
+	source_x86_64 = lean-ctx-3.8.12-x86_64.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v3.8.12/lean-ctx-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = edab3de63879a0ab4a9324c9e70973f46d7cbf4242f3eb54ca6534b043ad8afa
+	source_aarch64 = lean-ctx-3.8.12-aarch64.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v3.8.12/lean-ctx-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7881fa92b818d852766ae689eb2e3217655af21c8246bc32191bd67aa05c14ed
 
 pkgname = lean-ctx-bin
