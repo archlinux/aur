@@ -9,7 +9,6 @@ pkgbase = marian-lite
 	makedepends = openblas
 	makedepends = cli11
 	makedepends = intgemm
-	makedepends = pathie-cpp
 	makedepends = sqlitecpp
 	makedepends = yaml-cpp
 	makedepends = protobuf-21

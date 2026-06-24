@@ -11,7 +11,7 @@ url="https://github.com/terslang/marian-lite"
 license=('MIT')
 depends=('openblas' 'sqlitecpp' 'yaml-cpp'
     'protobuf-21')
-makedepends=('cmake' 'openblas' 'cli11' 'intgemm' 'pathie-cpp'
+makedepends=('cmake' 'openblas' 'cli11' 'intgemm'
     'sqlitecpp' 'yaml-cpp' 'protobuf-21' 'sentencepiece-browsermt')
 source=("https://github.com/terslang/marian-lite/archive/refs/tags/v$_pkgver.tar.gz")
 sha256sums=('47b3f3c5897c5c8b9f156afb8618e5ab6653dc0abd460abe71e3df7deedc4efa')
