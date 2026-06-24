@@ -10,7 +10,7 @@ _reponame=CrispASR
 pkgname=${_pkgname}-release-git
 pkgver=0.8.3
 pkgrel=1
-pkgdesc='C++ ggml runtime hub for ASR (fork of whisper.cpp) — Vulkan build, tracks latest release tag'
+pkgdesc='C++ ggml runtime hub for ASR (fork of whisper.cpp) — (latest Git release)'
 arch=('x86_64')
 url="https://github.com/CrispStrobe/${_reponame}"
 license=('MIT')
@@ -22,11 +22,13 @@ _vulkan=${CRISPASR_GGML_VULKAN:-ON}
 _cuda=${CRISPASR_GGML_CUDA:-OFF}
 _hip=${CRISPASR_GGML_HIP:-OFF}
 # GGML_NATIVE=ON compiles with -march=native, optimising for the build host's
-# CPU. AUR packages are source-built and run on the same machine, so this is
-# correct by default. Set CRISPASR_GGML_NATIVE=OFF (e.g. for a CI build or
-# when building for a different CPU than the build host) to target the
-# portable x86-64 baseline instead.
-_native=${CRISPASR_GGML_NATIVE:-ON}
+# CPU. OFF by default: AUR packages are distributed and must target the
+# portable x86-64 baseline so binaries run on any user's CPU (per the Arch
+# reproducible-builds and portability conventions — -march=native produces
+# host-specific code that can SIGILL on older CPUs and breaks reproducibility).
+# Set CRISPASR_GGML_NATIVE=ON to optimise for the build host when building
+# for your own machine.
+_native=${CRISPASR_GGML_NATIVE:-OFF}
 
 # Assemble extra CMake args from backend toggles.
 _cmake_extra=()
@@ -47,13 +49,21 @@ depends=('libgomp')
 # Vulkan loader — only needed when Vulkan backend is enabled.
 [[ "$_vulkan" == ON ]] && depends+=('vulkan-icd-loader')
 
-# Runtime deps for GPU backends — optional since binaries work on CPU alone.
+# Optional audio format support — auto-detected at build time.
+# If present at build time, the binary hard-links them; if absent, the
+# feature is compiled out. Listed as optdepends because whether they
+# are needed depends on the build system's detection, not the runtime.
 optdepends=(
   'vulkan-radeon: AMD GPU support (Mesa/RADV)'
   'vulkan-intel: Intel GPU support (Mesa/anv)'
   'nvidia-utils: NVIDIA GPU support (proprietary Vulkan ICD)'
   'cuda: CUDA backend runtime'
   'rocm-hip-runtime: HIP/ROCm backend runtime'
+  'opus: .opus decode (auto-detected at build time via pkg-config)'
+  'opusfile: .opus decode (auto-detected at build time via pkg-config)'
+  'opencore-amr: AMR-NB/WB decode (auto-detected at build time via pkg-config)'
+  'cblas: BLAS-accelerated mel filterbank (auto-detected at build time)'
+  'lame: MP3 encoding (auto-detected at build time by miniaudio)'
 )
 
 provides=("${_pkgname}")
@@ -91,7 +101,7 @@ build() {
     -DGGML_NATIVE="${_native}" \
     "${_cmake_extra[@]}"
   # Only use half the cores to build (upstream grinds on all)
-  cmake --build build -j$(( $(nproc 2>/dev/null || echo 2) / 2 ))
+  cmake --build build -s -j$(( $(nproc 2>/dev/null || echo 2) / 2 ))
 }
 
 package() {
