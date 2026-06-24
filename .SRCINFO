@@ -1,6 +1,6 @@
 pkgbase = microsandbox-bin
 	pkgdesc = Easy, fast and local-first microVM runtime
-	pkgver = 0.5.8
+	pkgver = 0.5.10
 	pkgrel = 1
 	url = https://github.com/superradcompany/microsandbox
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = microsandbox-bin
 	provides = msb
 	conflicts = microsandbox
 	options = !strip
-	source = README-0.5.8.md::https://raw.githubusercontent.com/superradcompany/microsandbox/v0.5.8/README.md
-	source = LICENSE-0.5.8::https://raw.githubusercontent.com/superradcompany/microsandbox/v0.5.8/LICENSE
+	source = README-0.5.10.md::https://raw.githubusercontent.com/superradcompany/microsandbox/v0.5.10/README.md
+	source = LICENSE-0.5.10::https://raw.githubusercontent.com/superradcompany/microsandbox/v0.5.10/LICENSE
 	sha256sums = bafe82d3de4c2c4b5e60ff67785851aa54135397ee81698c152f770f12db7c9a
 	sha256sums = a276ca3381fefb9cde42fccae847856085c76027557d62eee83f057eb6c53433
-	source_x86_64 = microsandbox-x86_64-0.5.8::https://github.com/superradcompany/microsandbox/releases/download/v0.5.8/msb-linux-x86_64
-	sha256sums_x86_64 = ff244cfb24b1283f3e324d7a96c1b150d911cb58e4fd38b5b5cfdb7460721e98
-	source_aarch64 = microsandbox-aarch64-0.5.8::https://github.com/superradcompany/microsandbox/releases/download/v0.5.8/msb-linux-aarch64
-	sha256sums_aarch64 = 62cff93eb408b9dc7b3796abbdbc211c8df81f0de3bdfd51912f827b74157b5b
+	source_x86_64 = microsandbox-x86_64-0.5.10::https://github.com/superradcompany/microsandbox/releases/download/v0.5.10/msb-linux-x86_64
+	sha256sums_x86_64 = c6d7ffe9c6ccdaed2ff43baf81170c25fb85d757a1540c6ddb534923d627df68
+	source_aarch64 = microsandbox-aarch64-0.5.10::https://github.com/superradcompany/microsandbox/releases/download/v0.5.10/msb-linux-aarch64
+	sha256sums_aarch64 = d9f1f57d9739bb9fcd628eabd9729ffe9a87be13cfd1350ef9cb62412af1c23d
 
 pkgname = microsandbox-bin
