@@ -33,6 +33,8 @@ path = [
     "shared-libwebp.patch",
     "shared-skia-deps.patch",
     "shared_libjpeg-turbo.patch",
+    "change_use_of_removed_intrinsic.patch",
+    "LicenseRef-Aseprite-EULA.txt",
 ]
 SPDX-FileCopyrightText = "Aseprite contributors"
 SPDX-License-Identifier = "LicenseRef-Aseprite-EULA"
