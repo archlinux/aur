@@ -1,0 +1,23 @@
+pkgbase = pocketenv-bin
+	pkgdesc = The universal sandbox runtime for agents and humans.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/pocketenv-io/pocketenv
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	depends = glibc
+	depends = libgcc
+	provides = pocketenv
+	conflicts = pocketenv
+	options = !strip
+	source = README-0.7.1.md::https://raw.githubusercontent.com/pocketenv-io/pocketenv/v0.7.1/README.md
+	source = LICENSE-0.7.1::https://raw.githubusercontent.com/pocketenv-io/pocketenv/v0.7.1/LICENSE
+	sha256sums = 087a03cbcc98b8b4aeba3617de88922f9b5548901510b7c140a21de63ba99aba
+	sha256sums = 104edfe39b2e0993f4702019c9ecc5fb79dd6e33999e251eaffa4cd6d83510b0
+	source_x86_64 = pocketenv-x86_64-0.7.1.tgz::https://github.com/pocketenv-io/pocketenv/releases/download/v0.7.1/pocketenv_v0.7.1_x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 89aab66b7ad7b2210d69f42eede31400592883a06c018fb0b81f5ac698be314b
+	source_aarch64 = pocketenv-aarch64-0.7.1.tgz::https://github.com/pocketenv-io/pocketenv/releases/download/v0.7.1/pocketenv_v0.7.1_aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 5885dd86300761681c51f988c00c1f242e5641ba07d4492721935e01a25fe8dc
+
+pkgname = pocketenv-bin

@@ -1,0 +1,5 @@
+[pocketenv-bin]
+source = "github"
+github = "pocketenv-io/pocketenv"
+use_latest_release = true
+prefix = "v"
