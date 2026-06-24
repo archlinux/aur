@@ -1,9 +1,9 @@
 # Maintainer: d10n <david at bitinvert dot com>
 
 pkgname=mullvad-tui
-pkgver=0.9.1
+pkgver=0.10.1
 pkgrel=1
-_upstream_ref=47ef04e6afa863316c2e4f4e37cd6395758bf26f
+_upstream_ref=dc6607c9452b50ca6ee51faedc0ebc7fe07f86cf
 pkgdesc='Terminal user interface for mullvad-vpn'
 arch=(x86_64)
 url=https://github.com/d10n/mullvad-tui
@@ -15,8 +15,8 @@ source=(
     "mullvad-tui-v$pkgver.tar.gz::https://github.com/d10n/mullvad-tui/archive/refs/tags/v$pkgver.tar.gz"
     "mullvadvpn-app-$_upstream_ref.tar.gz::https://github.com/mullvad/mullvadvpn-app/archive/$_upstream_ref.tar.gz"
 )
-sha256sums=('deeee0ae4570702f550c0bd06b0ae2e1a87d3599661837f3e7cc3ea5588422fb'
-            'fc7836c51415e112fd93fef160a4abe44ff99eb1cb2bf23a6b7a8124ed29151f')
+sha256sums=('ccb23cc30994c4d3a9ee0e79c005083aaba3848148d23313ea18058d9947e067'
+            '1075deb7b5497fc63658314c5557e30157353d12e300b932327cf9b54f984214')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -27,11 +27,15 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  # Stop mullvad-version's build script from walking up to the aur package repo
+  export GIT_CEILING_DIRECTORIES="$srcdir"
   cargo build --frozen --release -p mullvad-tui
 }
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
+  # Stop mullvad-version's build script from walking up to the aur package repo
+  export GIT_CEILING_DIRECTORIES="$srcdir"
   cargo test --frozen --release --all-targets
 }
 
