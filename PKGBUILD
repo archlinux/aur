@@ -8,7 +8,7 @@ pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'libcap' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
-pkgver=2.75.2
+pkgver=2.76
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
@@ -21,7 +21,7 @@ source=(
     "$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz"
 )
 
-sha256sums=('b59998e0e7f2b683d04999d968ef29f9b9933cdb2c85ffc83cf1505bc3efccf1')
+sha256sums=('78ad358dc685ab5a40b9ca0b3fc283ae7c8fbbabb4612182d512bde7efeef605')
 
 
 prepare() {
@@ -67,6 +67,8 @@ with_core_bits = 0
 with_alt_snap_mount_dir = 1
 with_apparmor = 1
 with_testkeys = 0
+with_vendor = 1
+with_static_pie = 0
 EXTRA_GO_BUILD_FLAGS = -trimpath
 EXTRA_GO_LDFLAGS = -w -s
 __DEFINES__
@@ -103,13 +105,10 @@ __DEFINES__
 check() {
     cd "$pkgname-$pkgver"
 
-    # make sure the binaries that need to be built statically really are
-    for binary in snap-exec snap-update-ns snapctl; do
-        if ! LC_ALL=C ldd "$srcdir/_go_build/$binary" 2>&1 | grep -q 'not a dynamic executable'; then
-            echo "$binary is not a static binary"
-            exit 1
-        fi
-    done
+    make -f packaging/snapd.mk \
+      SNAPD_DEFINES_DIR="$srcdir" \
+      check-static-binaries \
+      check-trusted-account-keys
 }
 
 package() {
