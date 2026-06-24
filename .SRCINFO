@@ -1,0 +1,17 @@
+pkgbase = digitemp-git
+	pkgdesc = reading values from 1-wire devices
+	pkgver = 3.7.2.r15.gf600e1f
+	pkgrel = 1
+	url = https://www.digitemp.com/software.shtml
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	makedepends = libusb-compat
+	optdepends = libusb-compat: for digitemp_DS2490
+	provides = digitemp
+	conflicts = digitemp
+	source = git+https://github.com/bcl/digitemp.git
+	sha256sums = SKIP
+
+pkgname = digitemp-git
