@@ -1,0 +1,17 @@
+pkgbase = paint-bin
+	pkgdesc = A simple paint application for Linux
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/dvytvs/Paint-linux
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = alsa-lib
+	provides = paint
+	conflicts = paint
+	source = paint-1.2.0.pacman::https://github.com/dvytvs/Paint-linux/releases/download/1.2.0/paint-1.2.0.pacman
+	sha256sums = SKIP
+
+pkgname = paint-bin
