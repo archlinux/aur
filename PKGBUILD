@@ -5,7 +5,7 @@ pkgname=(
     'python-slint'
     'slint-cpp'
     'slint-tools')
-pkgver=1.16.1
+pkgver=1.17.0
 pkgrel=1
 pkgdesc='Declarative GUI toolkit to build native user interfaces'
 license=('GPL-3.0-or-later OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0')
@@ -18,20 +18,20 @@ makedepends=(
     'freetype2'
     'git'
     'gstreamer'
-    'libx11'
-    'libxcb'
+    'libinput'
     'libxkbcommon'
+    'mesa'
     'python'
     'python-build'
     'python-installer'
     'python-maturin'
     'python-setuptools'
     'python-wheel'
-    'wayland')
+    'systemd-libs')
 source=("https://github.com/slint-ui/slint/archive/v${pkgver}/slint-${pkgver}.tar.gz"
         '010-slint-remove-jemalloc.patch')
-sha256sums=('7c701e9dfd8160e2a55df5cdb25eb3245659ddb1cf8c456c68a559be3ee29a19'
-            '0b3d5eb6a7513d921f19c1aa7b312fe80cf58850a2bd516d9dbe0a189709d685')
+sha256sums=('1cce5cc1e32a140e35366fe819fcf17a7b278338f67073d7bc97d4fa7a2a4d4e'
+            '2a7ff1dc07291a2917de05ebefc4fc970421be0c37f1cad05ffde7e5693fad42')
 
 prepare () {
     cargo fetch --locked --target "$(rustc --print host-tuple)" --manifest-path="${pkgbase}-${pkgver}/Cargo.toml"
@@ -72,7 +72,6 @@ build() {
         --no-default-features \
         --package='slint-lsp' \
         --package='slint-tr-extractor' \
-        --package='slint-updater' \
         --package='slint-viewer' \
         --release
     
@@ -93,13 +92,15 @@ package_python-slint() {
     pkgdesc="${pkgdesc} for Python apps"
     depends=(
         'fontconfig'
+        'freetype2'
         'glibc'
         'libgcc'
-        'libx11'
-        'libxcb'
+        'libinput'
+        'libstdc++'
         'libxkbcommon'
+        'mesa'
         'python'
-        'wayland')
+        'systemd-libs')
    optdepends=(
         'libgl: for Skia OpenGL renderer backend'
         'vulkan-icd-loader: for Skia Vulkan renderer backend')
@@ -115,10 +116,7 @@ package_slint-cpp() {
         'freetype2'
         'glibc'
         'libgcc'
-        'libx11'
-        'libxcb'
-        'libxkbcommon'
-        'wayland')
+        'libstdc++')
     optdepends=(
         'libgl: for Skia OpenGL renderer backend'
         'vulkan-icd-loader: for Skia Vulkan renderer backend')
@@ -130,23 +128,19 @@ package_slint-cpp() {
 }
 
 package_slint-tools() {
-    pkgdesc='Tools for the Slint GUI toolkit (lsp, tr-extractor, updater and viewer)'
+    pkgdesc='Tools for the Slint GUI toolkit (lsp, tr-extractor and viewer)'
     depends=(
         'fontconfig'
         'freetype2'
         'glibc'
         'libgcc'
-        'libx11'
-        'libxcb'
-        'libxkbcommon'
-        'wayland')
+        'libstdc++')
     optdepends=(
         'libgl: for Skia OpenGL renderer backend in slint-viewer'
         'vulkan-icd-loader: for Skia Vulkan renderer backend in slint-viewer')
     provides=(
         'slint-lsp'
         'slint-tr-extractor'
-        'slint-updater'
         'slint-viewer')
     
     install -d -m755 "${pkgdir}/usr/lib"
