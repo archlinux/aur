@@ -16,7 +16,7 @@ WorkingDirectory=%h
 # Security hardening
 ProtectSystem=strict
 ProtectHome=read-only
-ReadWritePaths=%h/.9router
+ReadWritePaths=%h/.9router /tmp
 NoNewPrivileges=true
 
 [Install]

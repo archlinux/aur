@@ -2,7 +2,7 @@
 # Contributor: Keithsel <keithsel@disroot.org>
 pkgname=9router-bin
 pkgver=0.5.8
-pkgrel=2
+pkgrel=3
 pkgdesc="AI router and proxy providing an OpenAI-compatible endpoint for multiple AI providers"
 arch=('x86_64')
 url="https://github.com/decolua/9router"
@@ -14,12 +14,13 @@ install="${pkgname}.install"
 options=('!strip')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/9router/-/9router-${pkgver}.tgz"
         '9router.sh' '9router.service' '.env.example'
-        'fix-tokenplan-region.py')
+        'fix-tokenplan-region.py' 'fix-tokenplan-ui-region.py')
 sha256sums=('77a306d326b8d5f2f6e2beeac130b58f4c4d90a5daf6c3742b192b8ce66b6825'
             '912c4a6f0c3589a23dd4e015c28500643727086b89463ec79f62e6dc569a4804'
-            '39ea05509034ce1e49c8388e918ecd7f478e0ec996eec8c0cfb7bd57f995eb1a'
+            'd3cf28a661868f9cab0ba942e5be2a57f3a9cff4a66c6b9e4a26f4f0881e6f36'
             'be29534e45b564eca0a854fd06a06166a5ca0992a48bcedbc36b31e364521786'
-            '83f38c469d9a573671740093107e763798e31d7b27291538211cacc6f71b8782')
+            '83f38c469d9a573671740093107e763798e31d7b27291538211cacc6f71b8782'
+            'ba54406d1fdb39819c61006ca1c5e986a8083dec8342bde236a54a1c7591910c')
 
 build() {
   # npm extracts to a fixed package/ directory
@@ -57,6 +58,11 @@ package() {
   # The test-connection function uses a static URL map; patch it to read
   # providerSpecificData.region so CN/AMS keys test against their own endpoint.
   python3 "${srcdir}/fix-tokenplan-region.py" "${_dest}"
+
+  # Fix: xiaomi-tokenplan web UI missing region selector
+  # The Q2 config builder checks e.regions at top level, but v0.5.8 moved it
+  # inside transport.regions. Inject top-level regions array for the UI.
+  python3 "${srcdir}/fix-tokenplan-ui-region.py" "${_dest}"
 
   # Set correct permissions (single recursive pass)
   chmod -R a+rX "${_dest}"
