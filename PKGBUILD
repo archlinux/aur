@@ -105,7 +105,7 @@ package_masterpdfeditor-qt6() {
         -e 's|^Exec=.*|Exec=/usr/bin/masterpdfeditor5 %f|' \
         -e 's|^Path=.*|Path=/opt/masterpdfeditor|' \
         -e 's|^Icon=.*|Icon=/opt/masterpdfeditor/masterpdfeditor5.png|' \
-        "${srcdir}/${_pkgname}${pkgver%%.*}.desktop"
+        "${_pkgname}${pkgver%%.*}.desktop"
 
     # Install all the files.
     install -Dm755 \
