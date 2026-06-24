@@ -1,13 +1,13 @@
 # Maintainer: bnema <b at bnema dot dev>
 pkgname=dumber-browser-git
-pkgver=0.29.0.r156.geba31825
+pkgver=0.29.0.r160.g8ffb740e
 pkgrel=1
 pkgdesc="A minimal keyboard-driven browser for tiling WMs (git version)"
 arch=('x86_64')
 url="https://github.com/bnema/dumber"
 license=('MIT')
 makedepends=('go>=1.26' 'git' 'brotli')
-depends=('gtk4' 'webkitgtk-6.0')
+depends=('gtk4' 'cef' 'webkitgtk-6.0')
 optdepends=(
     'gst-plugins-base: Base media codecs'
     'gst-plugins-good: Additional media codecs'
@@ -16,6 +16,8 @@ optdepends=(
     'gst-libav: FFmpeg-based codecs'
     'gst-plugin-pipewire: PipeWire audio support'
     'gst-plugin-va: Hardware video decoding (VA-API stateless decoders)'
+    'cef-vaapi-bin: Prebuilt CEF provider with VA-API hardware video decoding support'
+    'cef-vaapi: Source-built CEF provider with VA-API hardware video decoding support'
     'pipewire: Audio/video routing'
     'pipewire-pulse: PulseAudio replacement'
     'mesa: VA-API driver for AMD GPUs'
