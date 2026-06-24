@@ -1,6 +1,6 @@
 pkgbase = psysonic-bin-rc
 	pkgdesc = Desktop music player for Subsonic API-compatible servers - release candidate (pre-built binary)
-	pkgver = 1.48.1.rc.1
+	pkgver = 1.49.0.rc.1
 	pkgrel = 1
 	url = https://github.com/Psychotoxical/psysonic
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = psysonic-bin-rc
 	depends = at-spi2-core
 	depends = libxtst
 	depends = xorg-xwayland
-	source = https://github.com/Psychotoxical/psysonic/releases/download/app-v1.48.1-rc.1/Psysonic_1.48.1-rc.1_amd64.deb
-	sha256sums = d4b85705540ea3de42a08e0065772c3c616ad6495a6e06af5efe83baf829ab70
+	source = https://github.com/Psychotoxical/psysonic/releases/download/app-v1.49.0-rc.1/Psysonic_1.49.0-rc.1_amd64.deb
+	sha256sums = cd84bbdf9e650f3f89f687f366526264623f8b8cf99e071df6b0ee7f774d7efb
 
 pkgname = psysonic-bin-rc
