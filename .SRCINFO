@@ -1,0 +1,16 @@
+pkgbase = corralctl-bin
+	pkgdesc = Automatically clone and organise GitHub repositories by visibility and language.
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/sebastienrousseau/corral
+	license = GPL-3.0
+	conflicts = corralctl
+	provides = corralctl
+	arch = aarch64
+	source_aarch64 = https://github.com/sebastienrousseau/corral/releases/download/v0.0.6/corralctl_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 74a35fe551c01b89baf6f1611545dd01db8b6ac81acba3078e30c49c8aa5ce29
+	arch = x86_64
+	source_x86_64 = https://github.com/sebastienrousseau/corral/releases/download/v0.0.6/corralctl_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = de6c77cd48df0a563d53599a1086f6bc541eb803e2f1b7abaaae55f485b6d7bb
+	
+pkgname = corralctl-bin
