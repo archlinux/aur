@@ -1,0 +1,1 @@
+OPTS="--log-level info -- /usr/lib/sshpiper/fixed --target localhost:22"

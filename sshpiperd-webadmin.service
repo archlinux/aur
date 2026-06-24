@@ -1,0 +1,45 @@
+[Unit]
+Description=SSHPiper: ssh reverse proxy - Webadmin service
+After=network.target sshpiperd.service
+Wants=sshpiperd.service
+
+[Service]
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+DevicePolicy=closed
+DynamicUser=yes
+EnvironmentFile=-/etc/default/sshpiperd-webadmin
+ExecStart=/usr/bin/sshpiperd-webadmin $OPTS
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+MemoryMax=10%
+MemorySwapMax=10%
+NoNewPrivileges=true
+PermissionsStartOnly=true
+PrivateDevices=yes
+PrivateTmp=true
+#PrivateUsers=yes
+ProcSubset=pid
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=yes
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=invisible
+ProtectSystem=strict
+RemoveIPC=true
+#RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SecureBits=noroot
+SyslogIdentifier=collectd_exporter
+SystemCallArchitectures=native
+SystemCallFilter=~@clock @cpu-emulation @debug @module @mount @obsolete @privileged @raw-io @reboot @resources @swap
+Type=simple
+UMask=0026
+
+[Install]
+WantedBy=multi-user.target
