@@ -1,7 +1,7 @@
 # Maintainer: orange-guo
 # Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/packages/boxd-cli-bin
 pkgname=boxd-cli-bin
-pkgver=0.1.18
+pkgver=0.1.19
 pkgrel=1
 pkgdesc=External\ CLI\ for\ managing\ boxd\ cloud\ VMs
 arch=(x86_64 aarch64 )
@@ -18,12 +18,12 @@ validpgpkeys=()
 install=boxd-cli-bin.install
 source=(LICENSE )
 sha256sums=('7f5da622099b2595235408e5130e231f74b8a4d6972fd0d5234be963f5baa247')
-sha256sums_x86_64=('41f7bea957c42d07f2a68f5a974850f7e39b7a6f512ad8b0bd1bd35c65a09df0')
-sha256sums_aarch64=('443fcfcb7c6cf3ea2be0e01ea374176af475cdec0efe30cad28dcb46b890e89c')
-source_x86_64=(boxd-cli-bin-0.1.18-x86_64::https://boxd.sh/downloads/cli/boxd-linux-amd64 )
-source_aarch64=(boxd-cli-bin-0.1.18-aarch64::https://boxd.sh/downloads/cli/boxd-linux-arm64 )
+sha256sums_x86_64=('75210ab4d956a16597366aebfa9437c790fa4b50f2e40188cd7784026d44ab4d')
+sha256sums_aarch64=('3772df5cc2a958aeea6a819fe5aed4f3039a0f28ec8038b989d51cb2ce23a40c')
+source_x86_64=(boxd-cli-bin-0.1.19-x86_64::https://boxd.sh/downloads/cli/boxd-linux-amd64 )
+source_aarch64=(boxd-cli-bin-0.1.19-aarch64::https://boxd.sh/downloads/cli/boxd-linux-arm64 )
 
-_binary_source_path=boxd-cli-bin-0.1.18-\*
+_binary_source_path=boxd-cli-bin-0.1.19-\*
 _install_bin_path=/usr/bin/boxd
 _wrapper_source_path=''
 _wrapper_install_path=''
