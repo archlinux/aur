@@ -1,6 +1,6 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=soredowe
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Experimental GUI for pacman/AUR users who prefer it (Wayland/Vulkan)"
 arch=('x86_64' 'aarch64')
@@ -16,6 +16,7 @@ depends=(
   'hicolor-icon-theme'
 )
 makedepends=('rustup' 'base-devel')
+options=('!lto')
 provides=('soredowe')
 conflicts=('soredowe-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mlm-games/soredowe/archive/refs/tags/v${pkgver}.tar.gz")
