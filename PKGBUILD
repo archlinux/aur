@@ -1,6 +1,6 @@
 # Maintainer: Nathan Elliott <38136612-NathanTheTerrible@users.noreply.gitlab.com>
 pkgname=lua-evm
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Pure-Lua client for Ethereum and EVM-compatible blockchains"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
 )
 provides=("$pkgname=$pkgver")
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('d116df2529fb4163dd1a46b44b7ee6214fc54206eab3a695baff5b2ffbc9bf61')
+sha256sums=('700354c7cd9b811b305d17ca34d2bc69fbf89db0837f12a3b1330fe8cb148b78')
 
 check() {
   cd "$srcdir/$pkgname-v$pkgver"
