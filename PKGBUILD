@@ -2,7 +2,7 @@
 
 pkgname=rebased-bin
 _pkgname=rebased
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc='Standalone JetBrains-based Git client (prebuilt binary)'
 arch=('x86_64')
@@ -13,8 +13,8 @@ optdepends=('xdg-utils: open URLs from the IDE')
 provides=('rebased')
 conflicts=('rebased')
 options=('!strip')
-source=("${_pkgname}-${pkgver}-${CARCH}.AppImage::https://github.com/DetachHead/rebased/releases/download/1.1.3/Rebased-x86_64.AppImage")
-sha256sums=('1cd435469c02b830987f7f9d4db8ad6ddc092dafc5550b5de9011d77ead671ac')
+source=("${_pkgname}-${pkgver}-${CARCH}.AppImage::https://github.com/DetachHead/rebased/releases/download/${pkgver}/Rebased-x86_64.AppImage")
+sha256sums=('38c242808e3fdb109d92f90a221d03a2fce8ad0e5e1175e08b5bbd9f212e8a3e')
 
 package() {
   local appimage="${srcdir}/${_pkgname}-${pkgver}-${CARCH}.AppImage"
@@ -43,7 +43,7 @@ SCRIPT
   install -Dm644 "${extract_dir}/squashfs-root/usr/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
   install -Dm644 "${extract_dir}/squashfs-root/usr/NOTICE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE.txt"
 
-  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/rebased.desktop" <<'DESKTOP'
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/rebased.desktop" <<DESKTOP
 [Desktop Entry]
 Type=Application
 Version=1.0
@@ -56,6 +56,6 @@ StartupNotify=true
 StartupWMClass=jetbrains-rebased
 Categories=Development;IDE;VersionControl;
 Keywords=git;vcs;jetbrains;
-X-AppImage-Version=1.1.3
+X-AppImage-Version=${pkgver}
 DESKTOP
 }
