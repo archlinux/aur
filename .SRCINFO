@@ -7,7 +7,10 @@ pkgbase = sparxie-bin
 	arch = aarch64
 	license = GPL-3.0-only
 	depends = gtk3
+	optdepends = noto-fonts-cjk: CJK support
+	optdepends = noto-fonts-emoji: Emoji support
 	provides = sparxie=0.1.0
+	conflicts = sparxie
 	conflicts = sparxie-git
 	options = !strip
 	source_x86_64 = https://github.com/UruhaLushia/sparxie/releases/download/v0.1.0/sparxie-linux-x86_64.deb
