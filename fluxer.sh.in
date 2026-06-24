@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec @ELECTRON@ /usr/lib/fluxer/app.asar "$@"

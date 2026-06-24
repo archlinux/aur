@@ -1,40 +1,35 @@
-# Maintainer: John Regan <john@jrjrtech.com>
+# Maintainer: meow <aur at mreow full point org>
+# Contributor: John Regan <john@jrjrtech.com>
 pkgname=fluxer-git
 _pkgname=fluxer
-pkgver=r92.aa4e5b0
-pkgrel=2
-pkgdesc="A free and open source instant messaging and VoIP platform built for friends, groups, and communities. "
+pkgver=r192.a45693f
+pkgrel=1
+pkgdesc="A free and open source instant messaging and VoIP platform built for friends, groups, and communities."
 arch=('x86_64' 'aarch64')
 url="https://fluxer.app/"
 license=('AGPL-3.0-or-later')
+options=('!lto')
 provides=('fluxer')
 conflicts=('fluxer')
 _electronver=39
 _nodever=20
-depends=(
-  "electron$_electronver"
-  bash
-  hicolor-icon-theme
-)
 makedepends=(
   'git'
-  'librsvg'
   "nodejs>=$_nodever"
+  "electron$_electronver"
   'npm'
   'pnpm'
   'python'
+  'rust'
+  'clang'
+  'libfido2'
 )
 source=(
   "$_pkgname::git+https://github.com/fluxerapp/fluxer.git#branch=main"
-  "$_pkgname.sh.in"
-  "$_pkgname.desktop"
 )
 sha256sums=(
   'SKIP'
-  '6e7f62aebf5d3ba3326a4b562724235657852786900b366b5d72e05d69e4c599'
-  '54af8898c7d6674f803f4ae436da03e710a686d81f3915e14da61dcbea69e1dd'
 )
-_resolutions=( 16 32 48 64 96 128 256 512 1024 )
 
 pkgver() {
     cd "$_pkgname"
@@ -42,15 +37,7 @@ pkgver() {
 }
 
 prepare() {
-    sed "s/@ELECTRON@/electron$_electronver/" $_pkgname.sh.in > $_pkgname.sh
-
-    cd "$_pkgname/fluxer_app"
-    echo "store-dir=${srcdir}/pnpm-store" > .npmrc
-
-    for resolution in "${_resolutions[@]}" ; do
-        rsvg-convert --width=$resolution --height=$resolution src/images/fluxer-logo-color.svg > "$_pkgname-$resolution.png"
-    done
-
+    cd "$_pkgname/fluxer_desktop"
     pnpm install --frozen-lockfile
 }
 
@@ -60,24 +47,17 @@ build() {
       --dir
       -c.electronDist=/usr/lib/electron$_electronver
     )
-
-    cd "$_pkgname/fluxer_app"
+    cd "$_pkgname/fluxer_desktop"
     export NODE_ENV=production
-    pnpm electron:compile
+    pnpm build
     pnpm exec electron-builder --config electron-builder.config.cjs ${electron_builder_options[@]}
 }
 
 package() {
-    install -vDm 755 $_pkgname.sh "$pkgdir/usr/bin/$_pkgname"
-    install -vDm 644 $_pkgname.desktop -t "$pkgdir/usr/share/applications/"
-
-    cd "$_pkgname/fluxer_app"
-
+    cd "$_pkgname/fluxer_desktop"
+    sed -i 's|Exec=app.fluxer.Fluxer|Exec=/usr/lib/fluxer/fluxer|' packaging/linux/app.fluxer.Fluxer.desktop
+    install -vDm 644 packaging/linux/app.fluxer.Fluxer.desktop -t "$pkgdir/usr/share/applications/"
+    install -vDm 644 packaging/linux/app.fluxer.Fluxer.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/app.fluxer.Fluxer.svg"
     install -vdm 755 "$pkgdir/usr/lib/$_pkgname/"
-    cp -rv  dist-electron/linux-unpacked/resources/* "$pkgdir/usr/lib/$_pkgname/"
-    install -vDm 644 src/images/fluxer-logo-color.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
-
-    for resolution in "${_resolutions[@]}" ; do
-        install -vDm 644 "$_pkgname-$resolution.png" "$pkgdir/usr/share/icons/hicolor/${resolution}x${resolution}/apps/$_pkgname.png"
-    done
+    cp -rv dist-electron/linux-unpacked/* "$pkgdir/usr/lib/$_pkgname/"
 }
