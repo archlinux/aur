@@ -1,6 +1,6 @@
 pkgbase = ttt-bin
 	pkgdesc = A terminal text editor IDE
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/eugenioenko/ttt
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = ttt-bin
 	provides = ttt
 	conflicts = ttt
 	options = !strip
-	source = README-0.3.3.md::https://raw.githubusercontent.com/eugenioenko/ttt/v0.3.3/README.md
-	source = LICENSE-0.3.3::https://raw.githubusercontent.com/eugenioenko/ttt/v0.3.3/LICENSE
+	source = README-0.3.4.md::https://raw.githubusercontent.com/eugenioenko/ttt/v0.3.4/README.md
+	source = LICENSE-0.3.4::https://raw.githubusercontent.com/eugenioenko/ttt/v0.3.4/LICENSE
 	sha256sums = 0fd750c0eaec9f8b1aa7a630fd5b7865103325f7d44426de016fd843ef3169b9
 	sha256sums = c707616518e3fce85635504ec18ab7d12e204686a56f0b683601e300e6429aa2
-	source_x86_64 = ttt-x86_64-0.3.3::https://github.com/eugenioenko/ttt/releases/download/v0.3.3/ttt-linux-amd64
-	sha256sums_x86_64 = 62e371aaf39dba20112dd13816f82c7001fbd742d8d17fdccaa010b640a16520
-	source_aarch64 = ttt-aarch64-0.3.3::https://github.com/eugenioenko/ttt/releases/download/v0.3.3/ttt-linux-arm64
-	sha256sums_aarch64 = 618192f493246cb1d8fdfff799f6d7a3a5b4c61f3e36b2da591f2c6b30d1b505
+	source_x86_64 = ttt-x86_64-0.3.4::https://github.com/eugenioenko/ttt/releases/download/v0.3.4/ttt-linux-amd64
+	sha256sums_x86_64 = be8f486a4df507c1481a3ccb125ff026a7197a692861e2c5973e160cb61deca0
+	source_aarch64 = ttt-aarch64-0.3.4::https://github.com/eugenioenko/ttt/releases/download/v0.3.4/ttt-linux-arm64
+	sha256sums_aarch64 = 90c87157c43bf2bd3a299ffbc158c4c1d74187fa9e076c8e06a81f35f7cff326
 
 pkgname = ttt-bin
