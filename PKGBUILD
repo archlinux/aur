@@ -1,6 +1,6 @@
 # Maintainer: K4YT3X <aur@k4yt3x.com>
 pkgname=flowsurface
-pkgver=0.8.8
+pkgver=0.8.9
 pkgrel=1
 pkgdesc="A native desktop charting platform for crypto markets"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('libxkbcommon-x11')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         'flowsurface.desktop')
-b2sums=('08a47314ef45cf112b663c1d84e76cbf49ebd867e26503ee4962d0ae9747d340228929138a423130760548343e10e1060cdbe98690f33dce101924c7c5f8932c'
+b2sums=('373af2f1e2044516efc7e25111cfc67933bde3f7940e899765d44b362e7794035ef98a3c11331358e69e0ec5c51bec736191cd481e25652d303522601cff25fe'
         'b91515e242fd17052d82ed136861dcd9ccadca1314157123a7b2e31fbcf2a58864b271cb5068b83832278b18c30d550329924050f674f39e1d6687a8431062c8')
 options=('!lto')
 
