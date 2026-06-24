@@ -1,4 +1,5 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+# Contributor: Christian Hesse <mail@eworm.de>
 
 pkgname=gimp-nufraw
 _realver=0.43-3
