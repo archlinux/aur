@@ -2,41 +2,35 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164  # var unused / var not assigned / cd without || exit
 
 pkgname=parakeet.cpp-vulkan-bin-release-git
+_pkgname=parakeet-cli
+_repo=mudler/parakeet.cpp
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast on-device ASR using NVIDIA Parakeet models via ggml (prebuilt Vulkan binary, latest Git release)'
 arch=('x86_64')
-url='https://github.com/mudler/parakeet.cpp'
+url="https://github.com/${_repo}"
 license=('MIT')
 depends=('vulkan-icd-loader')
-makedepends=('git' 'curl')
-provides=('parakeet.cpp')
-conflicts=('parakeet.cpp' 'parakeet.cpp-git' 'parakeet.cpp-bin' 'parakeet.cpp-release-git')
-source=("${pkgname}::git+${url}.git")
-sha256sums=('SKIP')
+makedepends=('git')
+provides=('parakeet.cpp' 'parakeet.cpp-vulkan')
+conflicts=('parakeet.cpp' 'parakeet.cpp-git' 'parakeet.cpp-release-git')
+source=()
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  # Release tag only; binary archive URL is derived from this clean version.
-  git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//'
+  git ls-remote --tags "${url}.git" 'v[0-9]*' \
+    | awk '{print $2}' | sed 's|^refs/tags/||' | sort -V | tail -1 \
+    | sed 's/^v//'
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
-  git reset --hard "$(git describe --tags --abbrev=0)"
-
-  # Download the prebuilt Vulkan binary release archive derived from pkgver.
-  # Option D: binary asset fetched dynamically; git source is only for version tracking.
-  local _ver="${pkgver}"
-  local _archive="parakeet-v${_ver}-bin-linux-vulkan-x64.tar.gz"
-  local _dlurl="${url}/releases/download/v${_ver}/${_archive}"
-  curl -fL "${_dlurl}" -o "${srcdir}/${_archive}"
-  tar -xzf "${srcdir}/${_archive}" -C "${srcdir}"
+  cd "${srcdir}"
+  curl -sSLO "${url}/releases/download/v${pkgver}/parakeet-v${pkgver}-bin-linux-vulkan-x64.tar.gz"
+  tar xf "parakeet-v${pkgver}-bin-linux-vulkan-x64.tar.gz"
 }
 
 package() {
   local _bindir="${srcdir}/parakeet-v${pkgver}-bin-linux-vulkan-x64"
-  install -Dm755 "${_bindir}/parakeet-cli" "${pkgdir}/usr/bin/parakeet-cli"
+  install -Dm755 "${_bindir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "${_bindir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${_bindir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
