@@ -48,6 +48,10 @@ package() {
         install -Dm644 "${vendor}" "${pkgdir}/usr/share/cetus/vendors/$(basename ${vendor})"
     done
 
+    # Install Python package modules
+    install -dm755 "${pkgdir}/usr/share/cetus"
+    cp -r cetuslib "${pkgdir}/usr/share/cetus/cetuslib"
+
     # Install desktop file
     install -Dm644 cetus.desktop "${pkgdir}/usr/share/applications/cetus.desktop"
 
