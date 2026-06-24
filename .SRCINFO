@@ -1,7 +1,7 @@
 pkgbase = minimax-hub-bin
 	pkgdesc = MiniMax Hub desktop app repackaged from the official macOS release
 	pkgver = 1.0.4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://hub.minimaxi.com/
 	install = minimax-hub-bin.install
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = minimax-hub-bin
 	sha256sums = 4e8ac22b373c6290dbd80576df9d9bec4203d1aafc4fbbbdb33e556966de5e04
 	sha256sums = 4c9da9d8bab463dbd04b4320c1a2f2b4dfc885e2e4a1a53955fb328e1a271329
 	sha256sums = 9d78784df2f0854fdf08d436c22501adff17068de77ae584254045e51c041490
-	sha256sums = f2d046c35924beebc7dcb2a48a65411c80d8539f9de1daa0832f659e5fdc0a44
+	sha256sums = 20bcf5b029a2b88bd1027207f287e44d87586d2dac6e82ac66174141f9fb928b
 	sha256sums = a95f4a1bb7d5ba464ca8503549fa98a6d6bdfc667af0a9265f6b01416f85de96
 	source_x86_64 = MiniMax-Hub-1.0.4-mac-x64.dmg::https://filecdn.minimax.chat/public/minimax-hub/release/domestic/MiniMax%20Hub-1.0.4.dmg
 	sha256sums_x86_64 = caa5ff2e1f3d98a3e39adce010b774297e788b4f7649e21166bb572f481066bb
