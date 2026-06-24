@@ -120,14 +120,14 @@ app.partner.konform=${_pkgname}
 END
 
   for i in 16 32 48 64 128; do
-    install -Dvm644 ${srcdir}/source/themes/browser/branding/vendor/default$i.png \
+    install -Dvm644 ${srcdir}/source/browser/branding/vendor/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$__pkgname.png"
   done
   install -Dvm644 ${srcdir}/default192x192.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/$__pkgname.png"
 
   # arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
-  install -Dvm644 ${srcdir}/source/themes/browser/branding/vendor/default16.png \
+  install -Dvm644 ${srcdir}/source/browser/branding/vendor/default16.png \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$__pkgname-symbolic.png"
 
   install -Dvm644 ${srcdir}/$__pkgname.desktop \
