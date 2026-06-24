@@ -1,7 +1,7 @@
 # Maintainer: rg-Sens Contributors
 pkgname=rg-sens-git
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, customizable system monitoring dashboard for Linux (git version)"
 arch=('x86_64')
 url="https://github.com/hilgardt-collab/rg-Sens"
@@ -24,6 +24,11 @@ optdepends=(
     'webkit2gtk-4.1: CSS Template panel with WebView support'
 )
 install=rg-sens.install
+# Disable makepkg's global LTO: -flto=auto leaks into the `ring` crate's C/asm
+# build (via the cc crate reading CFLAGS), producing GCC-LTO objects that
+# rust-lld cannot resolve, causing undefined ring_core_* symbols at link time.
+# The Rust release profile still performs its own (LLVM) LTO.
+options=(!lto)
 provides=('rg-sens')
 conflicts=('rg-sens')
 source=("$pkgname::git+$url.git")
