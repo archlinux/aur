@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Pulsar
+Comment=A local-first, cross-platform music player.
+Exec=pulsar
+Icon=pulsar
+Terminal=false
+Categories=AudioVideo;Audio;Player;
