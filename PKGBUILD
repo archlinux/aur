@@ -1,21 +1,22 @@
-# Maintainer: 31337h4ck3r at gmail dot com
+# Maintainer: Cyrus Troy Bazar <bazartroy531@gmail.com>
+# Contributor: 31337h4ck3r at gmail dot com
 # Contributor: katt <magunasu.b97@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Stefano Zamprogno <stefano dot zamprogno at gmail dot com>
 # Contributor: Chuck Yang <Chuck.Yang@gmail.com>
 
 pkgname=lshw-git
-pkgver=B.02.19.r74.g52736f6
-pkgrel=2
-pkgdesc='A small tool to provide detailed information on the hardware configuration of the machine'
+pkgver=B.02.20.r13.g687be8b
+pkgrel=1
+pkgdesc="A small tool to provide detailed information on the hardware configuration of the machine"
 url=https://ezix.org/project/wiki/HardwareLiSter
-license=(GPL)
+license=('GPL')
 arch=(x86_64)
 depends=(gcc-libs hwdata)
 optdepends=('gtk3: for gtk-lshw')
 makedepends=(gtk3 sqlite docbook-utils perl-sgmls git)
-conflicts=("${pkgname%-git}")
-provides=("${pkgname%-git}")
+conflicts=("${pkgname}")
+provides=("${pkgname}")
 options=(!lto)
 source=(git+https://ezix.org/src/pkg/lshw.git)
 sha256sums=('SKIP')
