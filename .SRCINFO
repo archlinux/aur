@@ -1,0 +1,27 @@
+pkgbase = crispasr-release-git
+	pkgdesc = C++ ggml runtime hub for ASR (fork of whisper.cpp) — Vulkan build, tracks latest release tag
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/CrispStrobe/CrispASR
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = shaderc
+	makedepends = spirv-headers
+	depends = libgomp
+	depends = vulkan-icd-loader
+	optdepends = vulkan-radeon: AMD GPU support (Mesa/RADV)
+	optdepends = vulkan-intel: Intel GPU support (Mesa/anv)
+	optdepends = nvidia-utils: NVIDIA GPU support (proprietary Vulkan ICD)
+	optdepends = cuda: CUDA backend runtime
+	optdepends = rocm-hip-runtime: HIP/ROCm backend runtime
+	provides = crispasr
+	conflicts = crispasr
+	conflicts = crispasr-git
+	source = crispasr-release-git::git+https://github.com/CrispStrobe/CrispASR.git
+	source = fix-opusfile-include-dirs.patch
+	sha256sums = SKIP
+	sha256sums = ab16165e72297bfcb9117a09a7014e792a6633bc56612086a1ff17307035cde1
+
+pkgname = crispasr-release-git

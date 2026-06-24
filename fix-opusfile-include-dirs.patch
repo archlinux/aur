@@ -1,0 +1,10 @@
+--- a/src/CMakeLists.txt	2026-06-24 19:49:31.819410028 +0700
++++ b/src/CMakeLists.txt	2026-06-24 19:49:41.422988769 +0700
+@@ -252,6 +252,7 @@
+                 # With this you e.g. get `-lopusfile -logg -lopus` instead of just
+                 # `/usr/lib/libopusfile.so` passed to the linker.
+                 target_link_libraries(crispasr-lib PRIVATE ${OPUSFILE_STATIC_LIBRARIES})
++                target_include_directories(crispasr-lib PRIVATE ${OPUSFILE_INCLUDE_DIRS})
+                 set(_crispasr_opus_ok ON)
+                 message(STATUS "CrispASR: .opus via system opusfile ${OPUSFILE_VERSION} (pkg-config)")
+             endif()
