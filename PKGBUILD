@@ -6,7 +6,7 @@ pkgver=0.7.5.1
 pkgrel=4
 pkgdesc='Arcade style 2D shooter'
 arch=(x86_64)
-url='http://koboredux.com/'
+url='https://olofson.itch.io/kobo-redux'
 license=(GPL2)
 
 makedepends=(
