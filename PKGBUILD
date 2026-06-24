@@ -14,7 +14,7 @@
 pkgname=stepmania
 _pkgver=d55acb1ba26f1c5b5e3048d6d6c0bd116625216f
 pkgver=5.1.0.b2.r627.d55acb1ba2
-pkgrel=5
+pkgrel=6
 pkgdesc="Advanced rhythm game. Designed for both home and arcade use."
 arch=(x86_64)
 url="http://www.stepmania.com/"
@@ -32,8 +32,8 @@ source=("$pkgname-$_pkgver.tar.gz::https://github.com/stepmania/stepmania/archiv
   "ffmpeg-remove-asm-requirement.patch"
   "stepmania.sh")
 sha256sums=('7d0e0d4b13f780fc6181561b257d9cd8a3ef73df513f4b8f36743acebb63a130'
-  'fe3c77293d65b654c91d419ba7421feb2ad2da8e4561fadc5f02b3bd0f791634'
-  'b04bc15cbe85a41117220fadbadce5aa0893582fa8d720697ee6b864f7f0c093'
+  'da938d74e01c0153732f49b5f4c76caaeaa7a722110cd633a83c9dfb001a8e7b'
+  'faecef296768235c41f84124096dcbb69a69389422332b512cff57a4015f4892'
   'f6406a9daa61f53a530402965cfc9533f9836d558026b0fc5627db05f8cde068'
   'f6dd2f33ff89c56728df15d808a7853c27c82aad774ff63e231983906656619c'
   '490c8a8eb89e637ddfdaefec4d6212e8607d94580ae99d8069b26559d0ecdbe5'
