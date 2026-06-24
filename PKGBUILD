@@ -1,21 +1,21 @@
+# Maintainer: Andreas Reichel <aurscan at manticore-projects dot com>
 # Maintainer: Tom Hale <tom at hale dot ee>
+#
 # Binary variant of aurscan-manticore-release-git: tracks the latest upstream
 # GitHub release tag and installs the pre-built binaries instead of building
 # from source.
-# Uses git ls-remote + GitHub API for version discovery and GPG verification
-# (no full git clone needed).
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164  # var unused / var not assigned / cd without || exit
 
 pkgname=aurscan-manticore-bin-release-git
-pkgver=0.5.2
+pkgver=0.6.3
 _pkgname=aurscan
-pkgrel=5
+pkgrel=1
 pkgdesc='LLM-powered pre-build malware scanner for AUR packages (with paru / yay hooks) -- git release binary'
 arch=('x86_64' 'aarch64')
 _repo="manticore-projects/aurscan"
 url="https://github.com/${_repo}"
 license=('Apache-2.0')
-makedepends=('git' 'curl' 'gnupg' 'jq')
+makedepends=('git' 'curl' 'gnupg')
 options=('!strip')
 conflicts=(aurscan aurscan-manticore{'',-bin}-release-git)
 optdepends=(
@@ -25,10 +25,11 @@ optdepends=(
   'openai-codex: keyless backend via your Codex subscription'
   'xdg-utils: open mail client for mailing-list reports'
 )
-# No git clone: pkgver() uses git ls-remote; GPG verify uses GitHub API; binary,
-# LICENSE, and README are fetched in build() from GitHub release assets and raw
-# content URLs. All dynamic, so no static source entry for release assets.
-_gpgkey="andreas@manticore-projects.com.gpg"
+# No git clone: pkgver() uses git ls-remote; GPG verify uses the release
+# SHA256SUMS sidecar; binary, LICENSE, README, checksums and signature are
+# fetched in build() from GitHub release assets and raw content URLs. All
+# dynamic, so no static source entry for release assets.
+_gpgkey="andreas-manticore-projects.gpg"
 source=("${_gpgkey}")
 b2sums=('e80ad8b775d2d503e066d0a8a55d365eb3c4a4caa0e1812afb66b81f7adb279cde7f9d561fe329650a9176aba2f83cd45aab3bf304af861e21c12df9230bfe38')
 
@@ -55,33 +56,22 @@ build() {
   cd "${srcdir}"
   local _rel_url="${url}/releases/download/v${pkgver}"
   local _raw_url="https://raw.githubusercontent.com/${_repo}/v${pkgver}"
-  curl -fsSL "${_rel_url}/${_asset}" -o "${_asset}"
-  curl -fsSL "${_raw_url}/LICENSE"   -o LICENSE
-  curl -fsSL "${_raw_url}/README.md" -o README.md
+  curl -fsSL "${_rel_url}/${_asset}"      -o "${_asset}"
+  curl -fsSL "${_rel_url}/SHA256SUMS"     -o SHA256SUMS
+  curl -fsSL "${_rel_url}/SHA256SUMS.asc" -o SHA256SUMS.asc
+  curl -fsSL "${_raw_url}/LICENSE"        -o LICENSE
+  curl -fsSL "${_raw_url}/README.md"      -o README.md
 }
 
 check() {
-  # Verify the release tag's GPG signature against the bundled public key via
-  # the GitHub API (avoids a full git clone).
-  local _api="https://api.github.com/repos/${_repo}"
-  local _ref_sha
-
-  _ref_sha=$(curl -fsS "${_api}/git/ref/tags/v${pkgver}" | jq -r '.object.sha')
-
-  # jq -j omits trailing newline; payload and signature must be exact bytes
-  if ! curl -fsS "${_api}/git/tags/${_ref_sha}" \
-    | jq -j '.verification.payload' > "${srcdir}/tag-payload" 2>/dev/null \
-    || [[ ! -s "${srcdir}/tag-payload" ]]; then
-    printf "GPG verification of tag v%s failed: could not fetch tag payload\n" "${pkgver}" >&2
-    return 1
-  fi
-  curl -fsS "${_api}/git/tags/${_ref_sha}" \
-    | jq -j '.verification.signature' > "${srcdir}/tag-sig.gpg"
-
-  printf 'Verifying signature on git tag v%s:\n' "${pkgver}"
+  # Verify the release SHA256SUMS signature against the bundled public key,
+  # then verify the downloaded binary matches the signed checksum manifest.
+  cd "${srcdir}"
+  printf 'Verifying GPG signature on SHA256SUMS for v%s:\n' "${pkgver}"
   gpg --dearmor < "${srcdir}/${_gpgkey}" > "${srcdir}/keyring.gpg"
   gpgv --keyring "${srcdir}/keyring.gpg" \
-    "${srcdir}/tag-sig.gpg" "${srcdir}/tag-payload"
+    "${srcdir}/SHA256SUMS.asc" "${srcdir}/SHA256SUMS"
+  grep "  ${_asset}\$" "${srcdir}/SHA256SUMS" | sha256sum -c
 }
 
 package() {
