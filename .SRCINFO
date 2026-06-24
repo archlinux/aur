@@ -1,6 +1,6 @@
 pkgbase = catbath
 	pkgdesc = a tiny terminal text editor with search, undo, mouse.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/skorotkiewicz/catbath
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = catbath
 	license = MIT
 	depends = gcc-libs
 	options = !strip
-	source_x86_64 = catbath-0.1.0-1-x86_64.tar.gz::https://github.com/skorotkiewicz/catbath/releases/download/v0.1.0/catbath-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 2527ee5da3381f75608e46687bc2709d7634ae53318403467cb364fdd33eb0ce
-	source_aarch64 = catbath-0.1.0-1-aarch64.tar.gz::https://github.com/skorotkiewicz/catbath/releases/download/v0.1.0/catbath-v0.1.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = a2030fb1584a72a6571e1d0c16c74cb25e8d2b6972ec1744d7fa24c510335ef4
+	source_x86_64 = catbath-0.1.1-1-x86_64.tar.gz::https://github.com/skorotkiewicz/catbath/releases/download/v0.1.1/catbath-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 3943e476738959c3e35710e120869375b52a75ccd5d751e4292239d8cd65a547
+	source_aarch64 = catbath-0.1.1-1-aarch64.tar.gz::https://github.com/skorotkiewicz/catbath/releases/download/v0.1.1/catbath-v0.1.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f195496d7c82702c406eb9ef75222ca12fdf169a1745a97d4b82b043c6b0d26c
 
 pkgname = catbath
