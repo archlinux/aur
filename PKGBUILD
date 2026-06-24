@@ -3,7 +3,7 @@
 _pkgname=Amethyst-Mod-Manager
 pkgname=amethyst-mod-manager
 pkgver=1.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc='A Linux native mod manager for a variety of games'
 arch=('any')
 url='https://github.com/ChrisDKN/Amethyst-Mod-Manager'
@@ -67,7 +67,7 @@ package() {
         -not -name "run.sh" \
         -not -name "loot.cpython*.so" \
         -type f \
-        -exec install -Dm 755 '{}' "$pkgdir/usr/share/${pkgname}/{}" \;
+        -exec install -Dm 644 '{}' "$pkgdir/usr/share/${pkgname}/{}" \;
     popd > /dev/null
 
     install -d "$pkgdir/usr/bin/"
@@ -83,6 +83,7 @@ package() {
     install -Dm644 "flatpak/io.github.Amethyst.ModManager.desktop" "$pkgdir/usr/share/applications/io.github.Amethyst.ModManager.desktop"
     install -Dm644 "src/appimage/mod-manager.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/io.github.Amethyst.ModManager.png"
 
+    install -Dm644 Changelog.txt "${pkgdir}/usr/share/${pkgname}/Changelog.txt"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
