@@ -1,7 +1,7 @@
 pkgbase = android-aarch64-fftw
 	pkgdesc = A library for computing the discrete Fourier transform (DFT) (Android aarch64)
-	pkgver = 3.3.10
-	pkgrel = 3
+	pkgver = 3.3.11
+	pkgrel = 1
 	url = http://www.fftw.org/
 	arch = any
 	groups = android-fftw
@@ -12,7 +12,7 @@ pkgbase = android-aarch64-fftw
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = http://www.fftw.org/fftw-3.3.10.tar.gz
-	md5sums = 8ccbf6a5ea78a16dbc3e1306e234cc5c
+	source = http://www.fftw.org/fftw-3.3.11.tar.gz
+	md5sums = 40ec8d0447d03b8f01f8c90aa77bd16f
 
 pkgname = android-aarch64-fftw
