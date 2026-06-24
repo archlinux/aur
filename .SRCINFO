@@ -1,6 +1,6 @@
 pkgbase = android-riscv64-cmocka
 	pkgdesc = Elegant unit testing framework for C with support for mock objects (Android riscv64)
-	pkgver = 1.1.8
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://cmocka.org/
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = android-riscv64-cmocka
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://cmocka.org/files/1.1/cmocka-1.1.8.tar.xz
-	source = https://cmocka.org/files/1.1/cmocka-1.1.8.tar.xz.asc
+	source = https://cmocka.org/files/2.0/cmocka-2.0.2.tar.xz
+	source = https://cmocka.org/files/2.0/cmocka-2.0.2.tar.xz.asc
 	validpgpkeys = 8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D
-	md5sums = 976fe5a166f9729c350119d997256d2f
+	md5sums = 5f80f0aa5494ecf36bdedb3bc659dba9
 	md5sums = SKIP
 
 pkgname = android-riscv64-cmocka
