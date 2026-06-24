@@ -4,8 +4,8 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-boost
-pkgver=1.89.0
-pkgrel=2
+pkgver=1.91.0
+pkgrel=1
 arch=('any')
 pkgdesc="Free peer-reviewed portable C++ source libraries (Android ${_android_arch})"
 url="https://www.boost.org/"
@@ -18,11 +18,11 @@ depends=("android-${_android_arch}-bzip2"
          "android-${_android_arch}-zstd")
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
-source=("https://github.com/boostorg/boost/releases/download/boost-${pkgver}/boost-${pkgver}-cmake.tar.xz")
-md5sums=('537da0e22b31b8b7185cc44fdde70458')
+source=("https://github.com/boostorg/boost/releases/download/boost-${pkgver}-1/boost-${pkgver}-1-cmake.tar.xz")
+md5sums=('5dbaf96221c99afa302d99385b4ccbaa')
 
 build() {
-    cd "${srcdir}/boost-${pkgver}"
+    cd "${srcdir}/boost-${pkgver}-1"
     source android-env ${_android_arch}
 
     ./bootstrap.sh -with-toolset=gcc
@@ -89,7 +89,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/boost-${pkgver}"
+    cd "${srcdir}/boost-${pkgver}-1"
     source android-env ${_android_arch}
 
     make -C build-shared DESTDIR="${pkgdir}" install
