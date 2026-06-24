@@ -2,7 +2,7 @@
 
 name="imgup"
 pkgname="${name}-bin"
-pkgver="4.0.2"
+pkgver="4.0.3"
 pkgrel=1
 pkgdesc="Upload images via APIs"
 arch=("x86_64" "aarch64")
@@ -15,8 +15,8 @@ options=("!strip")
 source_x86_64=("${name}-x86_64-unknown-linux-gnu.tar.gz::${url}/releases/download/v${pkgver//_/-}/${name}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${name}-aarch64-unknown-linux-gnu.tar.gz::${url}/releases/download/v${pkgver//_/-}/${name}-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('5a30fb5ba405628123245cc4f484254534f2403869d4b8fc1a3fac1584ac14b3')
-sha256sums_aarch64=('756089f6a6498f0d37949d070ff3c62caedd23f59e2c44edcc75239c1b1b378a')
+sha256sums_x86_64=('0ae8b944a725130f66b905387839de089e79234f5c46b9eae344bbaf83dc019b')
+sha256sums_aarch64=('2c967b1dd8dbb44d07071c5e8c3e18a0c7fac47850dc8a1639a5d8cc4f378b7c')
 
 package() {
     install -Dm755 "${srcdir}/${name}" "${pkgdir}/usr/bin/${name}"
