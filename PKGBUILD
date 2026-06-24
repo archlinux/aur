@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A spatial desktop IDE with an infinite canvas for code, terminals, browsers, and git"
 
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,7 +30,7 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 source_x86_64=("${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.deb")
 sha256sums=('4bb8f03988607ad273ac4824a32eebc802dccece6c178862ef4e4414681882c5'
             '1e585acefe712004c775251ae0146fc72ac59fc776851b0bc227130f429d585c')
-sha256sums_x86_64=('96dc02be0fbddb93c8717d071b1604dc84864facc6eaa4ee3ce166e494332658')
+sha256sums_x86_64=('9c19497a0e4497030500ed032e660ea9097537b9b6927cfe54bd7fecca8b306a')
 
 
 package() {
