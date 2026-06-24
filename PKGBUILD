@@ -8,7 +8,7 @@ url='https://github.com/slatkin/anus'
 license=('MIT')
 depends=('webkit2gtk-4.1')
 source=("$pkgname-$pkgver-linux-x86_64.tar.gz::https://github.com/slatkin/anus/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('d1672c977a1855905f70e59ae2987ef93a3b7a4c384f5af037dc06b247d09a0c')
+sha256sums=('b7439455d9e68bbffcd717d3d65dcb0b34e86a4fb5e930222fce6b4e293fd2ca')
 
 package() {
   cd "$pkgname-$pkgver"
