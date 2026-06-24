@@ -5,7 +5,7 @@
 pkgbase=open3d
 pkgname=( {,python-}open3d python-py3d )
 pkgver=0.19.0
-pkgrel=13
+pkgrel=14
 epoch=1
 pkgdesc="A Modern Library for 3D Data Processing"
 arch=('x86_64')
@@ -52,6 +52,8 @@ depends=(
     cppzmq
     intel-oneapi-basekit
     minizip
+    nlohmann-json
+    fast_float
 )
 optdepends=(
     'openmp: Multiprocess support'
@@ -178,6 +180,8 @@ function package_open3d() {
         cppzmq
         intel-oneapi-basekit
         minizip
+        nlohmann-json
+        fast_float
     )
     optdepends=(
         'openmp: Multiprocess support'
@@ -231,6 +235,8 @@ function package_python-open3d() {
         cppzmq
         intel-oneapi-basekit
         minizip
+        nlohmann-json
+        fast_float
     )
     optdepends=(
         'jupyter-notebook: Jupyter notebook support'
@@ -291,6 +297,8 @@ function package_python-py3d() {
         cppzmq
         intel-oneapi-basekit
         minizip
+        nlohmann-json
+        fast_float
     )
     optdepends=(
         'jupyter-notebook: Jupyter notebook support'
