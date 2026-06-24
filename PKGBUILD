@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tray-link-bin
 _pkgname='Tray Link'
-pkgver=2.2.19
+pkgver=2.3.0
 _electronversion=33
 pkgrel=1
 pkgdesc="System tray application to provide a shortcut for your projects on vscode and github-desktop.(Prebuilt version.Use system-wide electron)"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('fb985d5cdc3301284e566170cb7c07210cb327854562a74d2ee2f70384655a7a'
+sha256sums=('386095fa4d49ee2dd94af11a80430ec5bb4acb25d518b3e60b8ae91f840056b9'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
