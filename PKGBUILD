@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie
 
 pkgname=xdg-desktop-portal-xapp-filechooser
-pkgver=1.1.4
+pkgver=1.1.4.r72.fe2e41b
 pkgrel=1
 pkgdesc='A backend implementation for xdg-desktop-portal using GTK/Cinnamon with native folder selection support'
 arch=(x86_64)
