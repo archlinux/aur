@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=JISOCreator
+Comment=JIsoCreator is a ISO9660 CD Image creator, frontend of MKISOFS
+Exec=jisocreator
+Icon=jisocreator
+Terminal=false
+Type=Application
+Categories=Utility;System;
