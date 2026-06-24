@@ -1,6 +1,6 @@
 pkgbase = flowshield-bin
 	pkgdesc = Cross-platform productivity tracker that pairs with the FlowShield web dashboard
-	pkgver = 3.9.0.alpha.0
+	pkgver = 3.9.1.alpha.0
 	pkgrel = 1
 	url = https://flowshield.app
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = flowshield-bin
 	depends = gtk3
 	provides = flowshield
 	conflicts = flowshield
-	noextract = flowshield-3.9.0.alpha.0.AppImage
+	noextract = flowshield-3.9.1.alpha.0.AppImage
 	options = !strip
-	source = flowshield-3.9.0.alpha.0.AppImage::https://github.com/asifthewebguy/FlowShield/releases/download/v3.9.0-alpha.0/FlowShield_3.9.0-alpha.0_amd64.AppImage
-	sha256sums = 7fb82b69cd3c6deeabf7c9e70013a1516a3938b7b8e1dab37cdca14cdf8e14c9
+	source = flowshield-3.9.1.alpha.0.AppImage::https://github.com/asifthewebguy/FlowShield/releases/download/v3.9.1-alpha.0/FlowShield_3.9.1-alpha.0_amd64.AppImage
+	sha256sums = 6da7baeef98162a4088b3983b7cce5585ca7c772bee4134b93a009aa8f1e0cbc
 
 pkgname = flowshield-bin
