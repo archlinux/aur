@@ -13,15 +13,15 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_minecraft_ver="26.1.2"
+_minecraft_ver="26.2"
 _fabric_ver="1.1.1"
-_fabric_loader_ver="0.19.1"
+_fabric_loader_ver="0.19.3"
 _mng_ver=1.0.4
 
 pkgname="fabric-server"
 _fabric_name="fabric"
 pkgver=${_minecraft_ver}_${_fabric_loader_ver}_${_fabric_ver}
-pkgrel=2
+pkgrel=1
 pkgdesc="A Fabric (a modular, lightweight mod loader) enabled Minecraft server"
 arch=("any")
 url="https://fabricmc.net"
