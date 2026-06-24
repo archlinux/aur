@@ -1,0 +1,15 @@
+pkgbase = brainfile
+	pkgdesc = Terminal task coordination protocol manager
+	pkgver = 0.17.2
+	pkgrel = 1
+	url = https://github.com/brainfile/cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	source = https://registry.npmjs.org/@brainfile/cli/-/cli-0.17.2.tgz
+	source = LICENSE
+	sha256sums = a18448062a9393f8fa3179bb5205efa62db9089f372dc693ba3e26ffdde27484
+	sha256sums = 4c664526268b1e3267e9bc2d4e048fc64c9da12a46d50fd7f3a54b7398690d8e
+
+pkgname = brainfile
