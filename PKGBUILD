@@ -3,7 +3,7 @@
 
 pkgname=devin-desktop-next
 pkgver=3.3.1018_next.16737566f5
-pkgrel=1
+pkgrel=2
 pkgdesc="Devin Desktop (next channel) - AI-powered editor (formerly Windsurf Editor)"
 arch=('x86_64')
 url="https://docs.devin.ai"
@@ -20,11 +20,13 @@ _debfile="Devin-linux-x64-${_upstream_ver}.deb"
 
 depends=(
     'vulkan-driver'
-    'ffmpeg'
     'glibc'
     'libglvnd'
     'gtk3'
     'alsa-lib'
+    'ripgrep'
+    'xdg-utils'
+    'electron39'
 )
 makedepends=()
 optdepends=(
@@ -40,12 +42,14 @@ source=(
     "${pkgname}-${pkgver}.deb::${_apt_base}/${_apt_pool}/${_debfile}"
     'devin-desktop-next.desktop'
     'devin-desktop-next-url-handler.desktop'
+    'devin-desktop-next.sh'
 )
 
 sha256sums=(
     'ca3dfa5ad77c2cdcd60962de209d6641f8889b03d72dc6c667e680e664fca417'
     'bc9e2c12080d88a97c30da3bc675fea68bb9a202ce58b48cccfede63c9e6b467'
     '115606abbe310c96631241b6ede64379cbeed11f45dfe24da5bee8b90136507c'
+    'efbc8e4f82028f483339bb08aad18698965908ed984b70012303c8ac399c1233'
 )
 
 prepare() {
@@ -70,6 +74,43 @@ prepare() {
     fi
 }
 
+build() {
+    cd "$srcdir/deb-extract/data"
+
+    # The deb installs to usr/share/<name>/ — find the real install dir.
+    local _installdir
+    for _candidate in "usr/share/devin-desktop-next" "usr/share/windsurf-next"; do
+        if [[ -d "$_candidate" ]]; then
+            _installdir="$_candidate"
+            break
+        fi
+    done
+    if [[ -z "$_installdir" ]]; then
+        _installdir=$(find usr/share -maxdepth 1 -type d -not -path "usr/share" | head -1)
+    fi
+    if [[ -z "$_installdir" || ! -d "$_installdir/resources/app" ]]; then
+        echo "Error: Installation directory not found!" >&2
+        return 1
+    fi
+
+    # Detect the Electron major version required by this release.
+    # Primary: package.json devDependency.  Fallback: mine the bundled binary.
+    local _electron_major
+    _electron_major=$(sed -n '/"electron":/s/.*"electron": *"\{0,1\} *\([0-9]\+\).*/\1/p' "$_installdir/resources/app/package.json" | head -1)
+    if [[ -z "$_electron_major" ]]; then
+        _electron_major=$(strings "$_installdir/devin-desktop-next" | sed -n 's|Electron/\([0-9]\+\).*|\1|p' | head -1)
+    fi
+    if [[ -z "$_electron_major" ]]; then
+        echo "Error: Could not detect Electron version from package.json or bundled binary" >&2
+        return 1
+    fi
+    printf 'electron%s\n' "$_electron_major" > "$srcdir/.electron-dep"
+
+    # Generate the launcher script with the correct Electron version.
+    sed -e "s|@@ELECTRON@@|electron${_electron_major}|g" \
+        "$srcdir/$pkgname.sh" > "$srcdir/launcher"
+}
+
 package() {
     cd "$srcdir/deb-extract/data"
 
@@ -89,27 +130,22 @@ package() {
         return 1
     fi
 
-    # Copy all files to /opt/<pkgname>
+    # Copy app resources to /opt/<pkgname>
     install -dm755 "$pkgdir/opt/$pkgname"
     cp -a "$_installdir"/. "$pkgdir/opt/$pkgname/"
 
-    # Create symlink for the executable in /usr/bin.
+    # Strip bundled Electron runtime — keep only resources/ (the app).
+    cd "$pkgdir/opt/$pkgname"
+    find . -mindepth 1 -maxdepth 1 -not -name resources -exec rm -rf {} +
+    cd "$srcdir/deb-extract/data"
+
+    # Replace bundled ripgrep with the system binary.
+    ln -sf /usr/bin/rg "$pkgdir/opt/$pkgname/resources/app/node_modules/@vscode/ripgrep/bin/rg"
+
+    # Install the launcher script as the main executable.
+    install -Dm755 "$srcdir/launcher" "$pkgdir/opt/$pkgname/$pkgname"
     install -dm755 "$pkgdir/usr/bin"
-    if [[ -f "$pkgdir/opt/$pkgname/$pkgname" ]]; then
-        ln -sf "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    else
-        # Binary has a different name (e.g. after another rebrand) — find it.
-        local _bin _binname
-        _bin=$(find "$pkgdir/opt/$pkgname" -maxdepth 1 -type f -name 'devin-*' -executable | head -1)
-        : "${_bin:=$(find "$pkgdir/opt/$pkgname" -maxdepth 1 -type f -name 'windsurf-*' -executable | head -1)}"
-        _binname=$(basename "$_bin")
-        if [[ -z "$_binname" ]]; then
-            echo "Error: Could not find executable in $pkgdir/opt/$pkgname" >&2
-            return 1
-        fi
-        ln -sf "$_binname" "$pkgdir/opt/$pkgname/$pkgname"
-        ln -sf "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    fi
+    ln -sf "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop entries (patched to point at /opt)
     install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
@@ -135,12 +171,13 @@ package() {
         fi
     done
 
-    # Fix permissions
-    local _main_bin
-    for _main_bin in "$pkgdir/opt/$pkgname/$pkgname" "$pkgdir/opt/$pkgname/devin-desktop-next"; do
-        [[ -f "$_main_bin" ]] && chmod 755 "$_main_bin"
-    done
-    if [[ -f "$pkgdir/opt/$pkgname/chrome-sandbox" ]]; then
-        chmod 4755 "$pkgdir/opt/$pkgname/chrome-sandbox"
+    # Drift assertion: if upstream bumps the Electron major, fail loudly
+    # instead of shipping a broken package.  Bump the electron39 entry in
+    # depends above when this fires.
+    local _electron_dep
+    _electron_dep=$(cat "$srcdir/.electron-dep" 2>/dev/null)
+    if [[ -n "$_electron_dep" ]] && ! printf '%s\n' "${depends[@]}" | grep -qxF "$_electron_dep"; then
+        error "upstream now requires %s; bump the electron entry in PKGBUILD depends" "$_electron_dep"
+        return 1
     fi
 }
