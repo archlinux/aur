@@ -1,19 +1,17 @@
 pkgbase = js-design-electron-bin
 	pkgdesc = A professional UI design software tailored for Chinese designers.(Prebuilt version.Use system-wide electron)即时设计
 	pkgver = 1.0.7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://js.design
 	arch = x86_64
 	license = LicenseRef-custom
-	makedepends = asar
-	makedepends = fuse2
 	depends = electron15
 	conflicts = js-design
-	source = js-design-electron-1.0.7.AppImage::https://img.js.design/assets/download/%E5%8D%B3%E6%97%B6%E8%AE%BE%E8%AE%A1%20Linux%E7%89%88.AppImage
+	source = js-design-electron-1.0.7-x86_64.AppImage::https://download.js.design/assets/download/%E5%8D%B3%E6%97%B6%E8%AE%BE%E8%AE%A1%20Linux%E7%89%88.AppImage
 	source = LICENSE.txt
 	source = js-design-electron.sh
 	sha256sums = 3697482be454c0191810f39b0b93eb3c28eb5e9c77c6c3ad0634269f8e1a2bd5
 	sha256sums = f1c8afcb7fbd3ad91d1f8b4bea8d66a21f9cb85be22b16ce652b66ca9473c616
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = js-design-electron-bin
