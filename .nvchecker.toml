@@ -1,0 +1,4 @@
+[python-pex]
+source = "git"
+git = "https://github.com/pex-tool/pex.git"
+prefix = "v"
