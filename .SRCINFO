@@ -1,6 +1,6 @@
 pkgbase = elpa
 	pkgdesc = Eigenvalue SoLvers for Petaflop-Applications
-	pkgver = 2025.06.002
+	pkgver = 2026.02.001
 	pkgrel = 1
 	url = https://elpa.mpcdf.mpg.de
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = elpa
 	depends = python-mpi4py
 	options = !makeflags
 	options = !buildflags
-	source = https://elpa.mpcdf.mpg.de/software/tarball-archive/Releases/2025.06.002/elpa-2025.06.002.tar.gz
-	sha256sums = de3180c06e2b0dbb56939e84ad1a5fd1684465bd38ad2196792d0f4028937fda
+	source = https://elpa.mpcdf.mpg.de/software/tarball-archive/Releases/2026.02.001/elpa-2026.02.001.tar.gz
+	sha256sums = a379f27f4dbd27b2ee45017afec656d064301e97150c874649bdfd64957b75ed
 
 pkgname = elpa

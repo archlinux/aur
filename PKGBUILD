@@ -1,7 +1,7 @@
 # Maintainer: Anton Kudelin <kudelin at proton dot me>
 
 pkgname=elpa
-pkgver=2025.06.002
+pkgver=2026.02.001
 _pkgver=${pkgver}
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -11,7 +11,7 @@ license=(LGPL-3.0-only)
 depends=(blas-openblas scalapack python-numpy python-mpi4py)
 makedepends=(gcc-fortran cython vim)
 source=($url/software/tarball-archive/Releases/$pkgver/$pkgname-$_pkgver.tar.gz)
-sha256sums=('de3180c06e2b0dbb56939e84ad1a5fd1684465bd38ad2196792d0f4028937fda')
+sha256sums=('a379f27f4dbd27b2ee45017afec656d064301e97150c874649bdfd64957b75ed')
 options=(!makeflags !buildflags)
 
 prepare() {
@@ -52,6 +52,9 @@ prepare() {
   # SSE is always enabled on x86_64 architecture
   _SSE=yes
 
+  _NEON=no
+  _SVE128=no
+
   # Checking CPU architecture
   if [ $CARCH == 'aarch64' ];
   then
@@ -59,7 +62,14 @@ prepare() {
     _AVX=no
     _AVX2=no
     _AVX512=no
-    echo "No vectorization is enabled"
+
+    _NEON=yes
+    echo "NEON vectorization is enabled"
+
+    if gfortran -march=native -dM -E - < /dev/null | grep -q '__ARM_FEATURE_SVE\b'; then
+      _SVE128=yes
+      echo "SVE128 vectorization is enabled"
+    fi
   fi
 
   # Python version
@@ -77,11 +87,13 @@ build() {
   ./configure \
     --prefix=/usr \
     --enable-openmp \
-    --enable-sse=$_SSE \
-    --enable-sse-assembly=$_SSE \
-    --enable-avx=$_AVX \
-    --enable-avx2=$_AVX2 \
-    --enable-avx512=$_AVX512 \
+    --enable-sse-kernels=$_SSE \
+    --enable-sse-assembly-kernels=$_SSE \
+    --enable-avx-kernels=$_AVX \
+    --enable-avx2-kernels=$_AVX2 \
+    --enable-avx512-kernels=$_AVX512 \
+    --enable-neon-arch64-kernels=$_NEON \
+    --enable-sve128-kernels=$_SVE128 \
     --enable-autotune-redistribute-matrix \
     --enable-python \
     --enable-scalapack-tests \
