@@ -3,8 +3,8 @@
 
 pkgname=zxc
 pkgver=0.12.0
-pkgrel=1
-pkgdesc="Asymmetric lossless compression library for ultra-fast decode — 40%+ faster than LZ4 on ARM64"
+pkgrel=2
+pkgdesc="Asymmetric lossless compression library for ultra-fast decode (development: CLI + C library + headers + CMake)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hellobertrand/zxc"
 license=('BSD-3-Clause')
