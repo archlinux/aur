@@ -10,7 +10,7 @@ pkgbase = parakeet.cpp-release-git
 	makedepends = vulkan-headers
 	makedepends = spirv-headers
 	makedepends = shaderc
-	optdepends = vulkan-icd-loader: Vulkan backend runtime
+	depends = vulkan-icd-loader
 	optdepends = cuda: CUDA backend runtime
 	optdepends = rocm-hip-runtime: HIP/ROCm backend runtime
 	provides = parakeet.cpp=0.3.2

@@ -44,6 +44,11 @@ makedepends=('cmake' 'git')
 [[ "$_hip"    == ON ]] && makedepends+=('rocm-hip-runtime')
 
 # Runtime deps for GPU backends — optional since binaries work on CPU alone.
+# Vulkan loader is a hard DT_NEEDED when _vulkan=ON (the default), so promote
+# it to depends in that case. CUDA/HIP remain optdepends (opt-in via env).
+if [[ "$_vulkan" == ON ]]; then
+  depends=('vulkan-icd-loader')
+fi
 optdepends=(
   'vulkan-icd-loader: Vulkan backend runtime'
   'cuda: CUDA backend runtime'
@@ -101,7 +106,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
 
-  install -Dm755 build/examples/cli/parakeet-cli     "${pkgdir}/usr/bin/parakeet-cli"
+  install -Dm755 build/examples/cli/parakeet-cli       "${pkgdir}/usr/bin/parakeet-cli"
   install -Dm755 build/examples/server/parakeet-server "${pkgdir}/usr/bin/parakeet-server"
 
   install -Dm644 include/parakeet.h      "${pkgdir}/usr/include/parakeet/parakeet.h"
