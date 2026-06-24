@@ -1,3 +1,2 @@
 #!/bin/sh
-cd /opt/hmcl-dev
-java -jar hmcl.jar
+exec /usr/bin/java -jar '/opt/hmcl-dev/hmcl.jar' "$@"
