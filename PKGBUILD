@@ -13,7 +13,7 @@
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.1.2.25
+pkgver=7.1.2.26
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -32,6 +32,7 @@ makedepends=(
     'fontconfig'
     'freetype2'
     'ghostscript'
+    'git'
     'glib2'
     'glu'
     'gperftools'
@@ -72,13 +73,12 @@ makedepends=(
     'xz'
     'zlib'
     'zstd')
-source=("https://imagemagick.org/archive/releases/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.lz"{,.asc})
-sha256sums=('1eb7adcd520d940e97a127bd3d90463c7163d13486d01dd4b36627b2edbcb034'
-            'SKIP')
+source=("git+https://github.com/ImageMagick/ImageMagick.git#tag=${pkgver%.*}-${pkgver##*.}")
+sha256sums=('3281eb4bdbf31d0a0263d7d28548e09c6fd4d2b93916b4e7a557884db2880ba5')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
 
 build() {
-    cd "ImageMagick-${pkgver%.*}-${pkgver##*.}"
+    cd ImageMagick
     export CFLAGS+=' -I/usr/include/FLIF'
     local _perldir
     _perldir="$(perl -V:vendorarch | sed "s/^vendorarch='//;s/'\;$//")"
@@ -158,7 +158,7 @@ build() {
 }
 
 check() {
-    make -C "ImageMagick-${pkgver%.*}-${pkgver##*.}" check
+    make -C ImageMagick check
 }
 
 package_imagemagick-full() {
@@ -232,11 +232,11 @@ package_imagemagick-full() {
     conflicts=('imagemagick' 'libmagick')
     replaces=('libmagick-full')
     
-    make -C "ImageMagick-${pkgver%.*}-${pkgver##*.}" DESTDIR="$pkgdir" install
+    make -C ImageMagick DESTDIR="$pkgdir" install
     find "${pkgdir}/usr/lib/perl5" -name '*.so' -exec chrpath -d {} +
     rm "${pkgdir}/usr/lib"/*.la
     mv "${pkgdir}/usr/share/doc" .
-    install -D -m644 "ImageMagick-${pkgver%.*}-${pkgver##*.}"/{LICENSE,NOTICE} -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 ImageMagick/{LICENSE,NOTICE} -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_imagemagick-full-doc() {
@@ -245,6 +245,6 @@ package_imagemagick-full-doc() {
     provides=("imagemagick-doc=${pkgver}")
     conflicts=('imagemagick-doc')
     
-    install -D -m644 "ImageMagick-${pkgver%.*}-${pkgver##*.}"/{LICENSE,NOTICE} -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 ImageMagick/{LICENSE,NOTICE} -t "${pkgdir}/usr/share/licenses/${pkgname}"
     mv doc "${pkgdir}/usr/share"
 }
