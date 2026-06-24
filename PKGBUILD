@@ -1,6 +1,6 @@
 # Maintainer: slatkin <slatkin@gmail.com>
 pkgname=anus
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Miniflux desktop reader'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/slatkin/anus'
 license=('MIT')
 depends=('webkit2gtk-4.1')
 source=("$pkgname-$pkgver-linux-x86_64.tar.gz::https://github.com/slatkin/anus/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('63e516a6d3f05f5c87a8c7182c51f945244a3a47a4fa178ec60ff3a34b406bb5')
+sha256sums=('d1672c977a1855905f70e59ae2987ef93a3b7a4c384f5af037dc06b247d09a0c')
 
 package() {
   cd "$pkgname-$pkgver"
