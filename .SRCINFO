@@ -1,0 +1,17 @@
+pkgbase = hype-bin
+	pkgdesc = Find Hype moments from Twitch.tv.(Prebuilt version)
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://hype.lol/
+	arch = x86_64
+	license = LicenseRef-unknown
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	depends = ffmpeg
+	provides = hype=2.0.2
+	conflicts = hype
+	source = hype-2.0.2.rpm::https://github.com/TimIsOverpowered/Hype/releases/download/v2.0.2/Hype-2.0.2-1.x86_64.rpm
+	sha256sums = 0d32b4704db1ea5f193d9c10b2509f3b43eef418f6903dafc24b988f5320b320
+
+pkgname = hype-bin
