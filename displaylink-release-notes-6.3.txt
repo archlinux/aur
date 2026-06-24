@@ -3,12 +3,12 @@
 
         DisplayLink Ubuntu Software Release Note
 
-Version: v6.2.0
-Build: posix/67-1149-gdd8daba24a1 (30)
+Version: v6.3.0
+Build: posix/68-1563-g29c031e9e94 (48)
 
-Date: 8th September 2025
+Date: 30th April 2026
 
-Extensible Virtual Display Interface version included: v1.14.11-0 (34da6e30)
+Extensible Virtual Display Interface version included: v1.14.14-5 (3dafd62)
 =============================================================================
 =============================================================================
 
@@ -16,7 +16,7 @@ Extensible Virtual Display Interface version included: v1.14.11-0 (34da6e30)
 A. Introduction
 ===============
 
-This is DisplayLink Driver Software v6.2.0 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
+This is DisplayLink Driver Software v6.3.0 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
 
 The driver enables video support for products using DisplayLink USB 3.0 technology. Standard native Ubuntu drivers provide support for DisplayLink audio and ethernet interfaces.
 
@@ -44,6 +44,12 @@ I.  Future development
 
 C.  Bugs fixed in this release
 ==============================
+
+C.13 Changes in 6.3.0 release
+-----------------------------
+- Support for Ubuntu 26.04
+- Fixed an issue where disabling one of the DisplayLink screens using xrandr caused multiple screens to go black. (VIFR-7205)
+- DL-7xxx: Fixed an issue causing blank screens after resuming from sleep. (VIFR-7208, VIFR-7254)
 
 C.12 Changes in 6.2.0 release
 -----------------------------
@@ -162,7 +168,7 @@ C.1  Changes in 5.4.0 release
 D. Supported O/S variants
 =========================
 
-This release has been prepared to be compatible with Ubuntu 25.04, 24.04, 22.04 and 20.04.
+This release has been prepared to be compatible with Ubuntu 26.04, 25.04, 24.04, 22.04 and 20.04.
 Other variants and editions may be compatible if they meet minimum O/S requirements, but are not supported by DisplayLink.
 
 The Software contains binaries which work on i686, amd64, armv7 and aarch64 architectures.
