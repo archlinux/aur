@@ -5,9 +5,9 @@ pkgname=(
     'tensorrt'
     'tensorrt-cross-builder-libs'
     'python-tensorrt')
-pkgver=11.0.0.114
-_cudaver=13.2
-_protobuf_ver=3.20.3 # https://github.com/NVIDIA/TensorRT/blob/v11.0/CMakeLists.txt#L243
+pkgver=11.1.0.106
+_cudaver=13.3
+_protobuf_ver=3.20.3 # https://github.com/NVIDIA/TensorRT/blob/v11.1/CMakeLists.txt#L318
 _pybind11_ver=2.9.2
 _onnx_graphsurgeon_ver=0.6.1
 _polygraphy_ver=0.49.27
@@ -43,8 +43,8 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         '020-tensorrt-fix-python.patch'
         'TensorRT-LICENSE-AGREEMENT.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('ba9ce9c39da5b202bf1a3653002d66fa94e9dbfe5678a1f9fb4d931e6ba5c657'
-            '569143044b73e725d263feac60f2190831b16d7fae3edf5c87a6a6e9314b87b1'
+sha256sums=('5751e82792aa69973a00f1f270f04889605abf682bcf6a924f5dbd9ed1149d1d'
+            'b2514a533fee302d8e533153688111b74676a707b9064e4345b756bc1e347f5b'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -147,7 +147,6 @@ package_tensorrt() {
     
     DESTDIR="$pkgdir" cmake --install build
     install -D -m755 "TensorRT-${pkgver}/bin"/* -t "${pkgdir}/usr/bin"
-    install -D -m644 build/libnvinfer_plugin_static.a -t "${pkgdir}/usr/lib"
     cp -dr --no-preserve='ownership' "TensorRT-${pkgver}/include" "${pkgdir}/usr"
     cp -dr --no-preserve='ownership' "TensorRT-${pkgver}/lib"/lib{nvinfer{,_dispatch,_lean},tensorrt_shim}.so* "${pkgdir}/usr/lib"
     
