@@ -1,6 +1,6 @@
 pkgname=digitemp-git
 pkgver=3.7.2.r15.gf600e1f
-pkgrel=1
+pkgrel=2
 pkgdesc="reading values from 1-wire devices"
 arch=(i686 x86_64 armv7h)
 url="https://www.digitemp.com/software.shtml"
@@ -8,7 +8,7 @@ license=('GPL')
 provides=('digitemp')
 conflicts=('digitemp')
 depends=()
-makedepends=('libusb-compat')
+makedepends=('libusb-compat' 'git')
 optdepends=('libusb-compat: for digitemp_DS2490')
 source=("git+https://github.com/bcl/digitemp.git")
 sha256sums=("SKIP")
