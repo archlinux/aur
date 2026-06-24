@@ -1,0 +1,5 @@
+[nginx-language-server]
+source = "github"
+github = "pappasam/nginx-language-server"
+prefix = "v"
+use_latest_release = true

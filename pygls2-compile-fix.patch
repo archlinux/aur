@@ -1,0 +1,24 @@
+diff --color -ura nginx-language-server/nginx_language_server/pygls_utils.py nginx-language-server-fixed/nginx_language_server/pygls_utils.py
+--- nginx-language-server/nginx_language_server/pygls_utils.py	2026-06-24 18:12:45.932874395 +0200
++++ nginx-language-server-fixed/nginx_language_server/pygls_utils.py	2026-06-24 18:44:44.047375052 +0200
+@@ -6,7 +6,7 @@
+ from typing import Optional
+ 
+ from lsprotocol.types import Position, Range
+-from pygls.workspace import Document
++from pygls.workspace import TextDocument as Document
+ 
+ 
+ def char_before_cursor(
+diff --color -ura nginx-language-server/nginx_language_server/server.py nginx-language-server-fixed/nginx_language_server/server.py
+--- nginx-language-server/nginx_language_server/server.py	2026-06-24 18:12:45.932874395 +0200
++++ nginx-language-server-fixed/nginx_language_server/server.py	2026-06-24 18:44:44.047375052 +0200
+@@ -22,7 +22,7 @@
+     MarkupKind,
+     TextDocumentPositionParams,
+ )
+-from pygls.server import LanguageServer
++from pygls.lsp.server import LanguageServer
+ 
+ from nginx_language_server import __version__, pygls_utils
+ from nginx_language_server.parser import DIRECTIVES, VARIABLES, nginxconf

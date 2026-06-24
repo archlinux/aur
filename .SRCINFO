@@ -1,0 +1,22 @@
+pkgbase = nginx-language-server
+	pkgdesc = A Language Server for nginx.conf
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/pappasam/nginx-language-server
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = crossplane
+	depends = python
+	depends = python-lsprotocol
+	depends = python-pydantic
+	depends = python-pygls
+	source = nginx-language-server::git+https://github.com/pappasam/nginx-language-server#tag=v0.9.0
+	source = pygls2-compile-fix.patch
+	sha512sums = d4640e9d763fb7549ba1c7744707c7c97da99262e28057fc8a442e0057141c7b76d933bc6bec4616b1f98907cf5f1895f573635dc6514e4324855862c4aa97d5
+	sha512sums = 2b3382c1b66c5045c9989bd29b2aa1d3e55f44f34ca97c12e211f33eb8b901f7114869c8fad13ff800da6682b6e98ffc13c594e40eb6fc58bbcd41270cd2e064
+
+pkgname = nginx-language-server
