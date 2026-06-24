@@ -8,7 +8,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-faac
-pkgver=1.31.1
+pkgver=1.50
 pkgrel=1
 arch=('any')
 pkgdesc="Freeware Advanced Audio Coder (Android ${_android_arch})"
@@ -17,33 +17,29 @@ license=('GPL2'
          'custom')
 groups=('android-faac')
 depends=('android-ndk')
-makedepends=('android-configure')
+makedepends=('android-meson')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/knik0/faac/archive/refs/tags/faac-${pkgver}.tar.gz")
-md5sums=('a3f8194516769cfc3f8743364cc57824')
-
-prepare() {
-    cd "${srcdir}/faac-faac-${pkgver}"
-    source android-env ${_android_arch}
-
-    autoreconf -fiv
-}
+md5sums=('10a90885ef4d6b521b22e9ed7ecf9992')
 
 build() {
     cd "${srcdir}/faac-faac-${pkgver}"
     source android-env ${_android_arch}
 
-    android-${_android_arch}-configure
-    make $MAKEFLAGS
+    android-${_android_arch}-meson build \
+        -D frontend=false
+    meson compile -C build
 }
 
 package() {
     cd "${srcdir}/faac-faac-${pkgver}"
     source android-env ${_android_arch}
 
-    make DESTDIR="${pkgdir}" install
+    meson install -C build --destdir "${pkgdir}"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_BIN}"
     rm -rf "${pkgdir}/${ANDROID_PREFIX_SHARE}"
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
-    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
+    ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a || true
+
+    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }

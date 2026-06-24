@@ -1,19 +1,19 @@
 pkgbase = android-x86-faac
 	pkgdesc = Freeware Advanced Audio Coder (Android x86)
-	pkgver = 1.31.1
+	pkgver = 1.50
 	pkgrel = 1
 	url = https://www.audiocoding.com/
 	arch = any
 	groups = android-faac
 	license = GPL2
 	license = custom
-	makedepends = android-configure
+	makedepends = android-meson
 	depends = android-ndk
 	options = !strip
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://github.com/knik0/faac/archive/refs/tags/faac-1.31.1.tar.gz
-	md5sums = a3f8194516769cfc3f8743364cc57824
+	source = https://github.com/knik0/faac/archive/refs/tags/faac-1.50.tar.gz
+	md5sums = 10a90885ef4d6b521b22e9ed7ecf9992
 
 pkgname = android-x86-faac
