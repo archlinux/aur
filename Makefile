@@ -7,25 +7,35 @@ all: build
 
 .PHONY: build
 build:
+	@echo '======================================================= Build ==='
 	makepkg --clean --cleanbuild --force --noconfirm --noprogressbar --syncdeps
 	makepkg --printsrcinfo > .SRCINFO
+	@echo '================================================================='
 
 .PHONY: commit
 commit:
-	git add .SRCINFO
-	source ./PKGBUILD && git commit -am "aur: $$pkgver-$$pkgrel"
+	@echo '====================================================== Commit ==='
+	git add PKGBUILD .SRCINFO
+	source ./PKGBUILD && git commit -m "aur: $$pkgver-$$pkgrel"
+	@echo '================================================================='
 
 .PHONY: push
 push:
+	@echo '================================================= Push to AUR ==='
 	git push 'ssh://aur@aur.archlinux.org/$(call escape,$(PKG_NAME)).git' "$$( git symbolic-ref HEAD ):master"
+	@echo '============================================ Push to upstream ==='
+	git push
+	@echo '================================================================='
 
 .PHONY: pkgver
 pkgver:
 	@git fetch && \
 	new_pkgver="$$( git describe --tags --abbrev=0 origin/master | sed 's/^v//' )" && \
 	source PKGBUILD && \
-	echo "Current pkgver: $$pkgver" && \
-	echo "New pkgver: $$new_pkgver" && \
+	echo '================================================ Check pkgver ===' && \
+	echo "Package pkgver: $$pkgver" && \
+	echo "Upstream pkgver: $$new_pkgver" && \
+	echo '=================================================================' && \
 	if [ "$$pkgver" != "$$new_pkgver" ]; then \
 		sed -i -e "s/^pkgver=.*/pkgver=$$new_pkgver/" PKGBUILD && \
 		sed -i -e "s/^pkgrel=.*/pkgrel=1/" PKGBUILD ; \
@@ -40,7 +50,6 @@ maintenance: pkgver
 		true; \
 	elif [ "$$git_status" = $$' M .SRCINFO\n M PKGBUILD' ]; then \
 		$(MAKE) commit && \
-		git push -q && \
 		$(MAKE) push ; \
 	else \
 		echo; \
