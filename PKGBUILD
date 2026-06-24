@@ -1,5 +1,5 @@
 pkgname=grabit
-pkgver=0.3.0.r103.gdfdf690
+pkgver=0.4.0.r106.gaa122c0
 pkgrel=1
 pkgdesc="Screenshot, screen-recording, OCR, and uploader for wlroots and KDE Plasma 6 Wayland compositors"
 arch=('x86_64' 'aarch64')
