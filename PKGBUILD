@@ -20,7 +20,7 @@
 #     There is intentionally no .SRCINFO.template — a hand-maintained one
 #     drifted from this PKGBUILD in the past (tebako-era tarball refs).
 pkgname=hive-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Folder-as-agent pipeline for autonomous software tasks'
 arch=('any')
@@ -37,7 +37,7 @@ provides=('hive')
 conflicts=('hive' 'apache-hive')
 install=hive.install
 source=("https://github.com/ivankuznetsov/hive/releases/download/v${pkgver}/hive-cli-${pkgver}.gem")
-sha256sums=('c0c73861ad8c5c65395f9c0db22326857c0e2cb815604f7aa93b39d4b2a49afb')
+sha256sums=('db88de0543c0fefbdcb83b45d17e97afbed28d2d43dcbf5a30267afd07846fcf')
 noextract=("hive-cli-${pkgver}.gem")
 
 package() {
@@ -64,6 +64,7 @@ package() {
 #!/usr/bin/env bash
 export GEM_HOME="/usr/share/hive/gems"
 export GEM_PATH="\${GEM_HOME}\${GEM_PATH:+:\$GEM_PATH}"
+export HIVE_INVOKED_BIN="\${HIVE_INVOKED_BIN:-\$0}"
 exec "/usr/share/hive/gems/bin/hive" "\$@"
 WRAPPER
   chmod 755 "${pkgdir}/usr/bin/hive"
