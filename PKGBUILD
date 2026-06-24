@@ -3,7 +3,7 @@
 pkgname=minimax-hub-bin
 _pkgname=minimax-hub
 pkgver=1.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc='MiniMax Hub desktop app repackaged from the official macOS release'
 arch=('x86_64' 'aarch64')
 url='https://hub.minimaxi.com/'
@@ -29,10 +29,12 @@ makedepends=(
 provides=('minimax-hub')
 conflicts=('minimax-hub')
 options=('!strip' '!lto')
+install='minimax-hub-bin.install'
 source=(
   'minimax-hub.sh'
   'minimax-hub.desktop'
   'patch-linux-runtime.mjs'
+  'minimax-hub-bin.install'
   'LICENSE'
 )
 source_x86_64=(
@@ -48,6 +50,7 @@ noextract=(
 sha256sums=('4e8ac22b373c6290dbd80576df9d9bec4203d1aafc4fbbbdb33e556966de5e04'
             '4c9da9d8bab463dbd04b4320c1a2f2b4dfc885e2e4a1a53955fb328e1a271329'
             '9d78784df2f0854fdf08d436c22501adff17068de77ae584254045e51c041490'
+            'f2d046c35924beebc7dcb2a48a65411c80d8539f9de1daa0832f659e5fdc0a44'
             'a95f4a1bb7d5ba464ca8503549fa98a6d6bdfc667af0a9265f6b01416f85de96')
 sha256sums_x86_64=('caa5ff2e1f3d98a3e39adce010b774297e788b4f7649e21166bb572f481066bb')
 sha256sums_aarch64=('3981f3e9105911a6af8356fac93ac88cfcbb0b3de917a4b5ca493335e5f6bd8e')
