@@ -8,7 +8,7 @@
 _pkgname="palemoon"
 pkgname="$_pkgname-gtk3-bin"
 epoch=1
-pkgver="34.3.0.1"
+pkgver="34.3.1"
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency"
 url="https://www.palemoon.org/"
@@ -38,7 +38,7 @@ source=(
   "https://rm-eu.palemoon.org/release/palemoon-${pkgver}.linux-x86_64-gtk3.tar.xz"{,.sig}
 )
 sha256sums=('b3803b30b5e6b9589387b7162cd24247da242fe77c0aed0d09bc51338d36d7d8'
-            '8913bc51abd92bc3328942eb296b9b0d61b3fb5441dd3b62fa58fc8e9d373b24'
+            '5e59facce62b4332ce134833a65bda4cbc6c234383780c676940b1eac75d0739'
             'SKIP')
 validpgpkeys=(
   '439F46F42C6AE3D23CF52E70865E6C87C65285EC' # T. Wine
