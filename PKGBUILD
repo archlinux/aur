@@ -6,7 +6,7 @@ _pkgauthor=urbanadventurer
 _pkgname=WhatWeb
 pkgname=${_pkgname,,}
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Next generation web scanner that identifies what websites are running."
 
 arch=('x86_64')
@@ -16,7 +16,7 @@ url="https://github.com/${_pkgauthor}/${_pkgname}"
 provides=("${pkgname}")
 conflicts=("${pkgname}"{-git,-bin})
 
-depends=('bash' 'ruby' 'ruby-addressable')
+depends=('bash' 'ruby' 'ruby-addressable' 'ruby-getoptlong' 'ruby-resolv-replace')
 optdepends=('ruby-rake: development test use'
             'ruby-rdoc: development test use'
             'ruby-minitest: development test use'

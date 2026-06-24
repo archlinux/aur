@@ -1,13 +1,15 @@
 pkgbase = whatweb
 	pkgdesc = Next generation web scanner that identifies what websites are running.
 	pkgver = 0.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/urbanadventurer/WhatWeb
 	arch = x86_64
 	license = GPL-2.0
 	depends = bash
 	depends = ruby
 	depends = ruby-addressable
+	depends = ruby-getoptlong
+	depends = ruby-resolv-replace
 	optdepends = ruby-rake: development test use
 	optdepends = ruby-rdoc: development test use
 	optdepends = ruby-minitest: development test use
