@@ -1,8 +1,5 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-: "${MAKEPKG_MATLAB_PREFIX:=/opt}"
-: "${MAKEPKG_MATLAB_ROOT:=${MAKEPKG_MATLAB_PREFIX}/MATLAB}"
-
 pkgname="matlab-terminal-server"
 pkgver=0.3.0
 pkgrel=1
