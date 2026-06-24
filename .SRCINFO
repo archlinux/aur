@@ -8,6 +8,7 @@ pkgbase = xscreensaver-hacks
 	license = BSD-2-Clause
 	makedepends = bc
 	makedepends = intltool
+	makedepends = libglvnd
 	depends = libxxf86vm
 	depends = mesa
 	depends = libxmu
