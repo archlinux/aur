@@ -1,7 +1,7 @@
 # Maintainer: Pablo Hardouin <pablohardouin02 at gmail dot com>
 _pkgname="MrPython"
 pkgname="mrpython"
-pkgver="5.1.3beta"
+pkgver="5.1.6beta"
 pkgrel=1
 pkgdesc="A simplified programming environment for Python (3.x) - based on IDLE"
 arch=("x86_64")
