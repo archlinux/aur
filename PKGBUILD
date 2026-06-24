@@ -1,6 +1,6 @@
 # Maintainer: Algorant <Algorantic@proton.me>
 
-pkgname=brainfile
+pkgname=brainfile-cli
 pkgver=0.17.2
 pkgrel=1
 pkgdesc="Terminal task coordination protocol manager"
@@ -8,6 +8,8 @@ arch=('any')
 url="https://github.com/brainfile/cli"
 license=('MIT')
 depends=('nodejs')
+provides=('brainfile')
+conflicts=('brainfile')
 makedepends=('npm')
 source=(
   "https://registry.npmjs.org/@brainfile/cli/-/cli-$pkgver.tgz"
