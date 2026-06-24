@@ -1,16 +1,16 @@
 pkgbase = ntrack-bin
 	pkgdesc = A desktop app where you can easily keep track of your time-based tasks.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.3.0
-	pkgrel = 8
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://github.com/kutay-celebi/ntracker
 	arch = x86_64
 	license = LicenseRef-custom
-	depends = electron22
-	provides = ntrack=1.3.0
+	depends = electron36
+	provides = ntrack=1.5.0
 	conflicts = ntrack
-	source = ntrack-1.3.0.deb::https://github.com/kutay-celebi/ntracker/releases/download/1.3.0/ntrack_1.3.0_amd64.deb
+	source = ntrack-1.5.0.deb::https://github.com/kutay-celebi/ntracker/releases/download/1.5.0/ntrack_1.5.0_amd64.deb
 	source = ntrack.sh
-	sha256sums = 45f3d8938b232a7fa7c8f942c840a6dfaa8765c32862071d7edce6cd94b48e1f
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 6642ea5f7ec40c0a4681624998c607a8682035aa7429ae3e01bad85978f7aa24
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = ntrack-bin
