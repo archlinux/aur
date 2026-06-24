@@ -25,7 +25,7 @@ makedepends=(
 )
 provides=(xdg-desktop-portal-impl xdg-desktop-portal-xapp)
 conflicts=(xdg-desktop-portal-xapp)
-source=("xdg-desktop-portal-xapp::git+https://github.com/Twilight0/xdg-desktop-portal-xapp.git#branch=feature/native-file-picker")
+source=("xdg-desktop-portal-xapp::git+https://github.com/Twilight0/xdg-desktop-portal-xapp.git#branch=feature/gtk-file-picker")
 sha256sums=('SKIP')
 
 pkgver() {
