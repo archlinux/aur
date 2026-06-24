@@ -1,0 +1,15 @@
+pkgbase = hunspell-si
+	pkgdesc = Sinhala dictionary for Hunspell
+	pkgver = 2012.09.01
+	pkgrel = 1
+	url = https://cgit.freedesktop.org/libreoffice/dictionaries/tree/si_LK
+	arch = any
+	license = GPL3
+	optdepends = hunspell: the spell checking libraries and apps
+	provides = hunspell-dictionary
+	source = hunspell-si-2012.09.01.aff::https://cgit.freedesktop.org/libreoffice/dictionaries/plain/si_LK/si_LK.aff?id=a4473e06b56bfe35187e302754f6baaa8d75e54f
+	source = hunspell-si-2012.09.01.dic::https://cgit.freedesktop.org/libreoffice/dictionaries/plain/si_LK/si_LK.dic?id=a4473e06b56bfe35187e302754f6baaa8d75e54f
+	b2sums = aabca563c98074dc7d1c75331d1faec55e92543c169d821cba600c53497bccb938c6ad5c545d8632925398c6a1eb865377a6b2bcf5ac45de4119e2ff9100c1e1
+	b2sums = deceaa13d683543bc40d1c66dbf52b7f47e0da9377a591ab580b201a1597f2cffe851de34c402bbf23bfff0097b9bf42cf8b3c6804141dc52186c2448fdefff9
+
+pkgname = hunspell-si
