@@ -1,8 +1,9 @@
 pkgbase = imibrowser
 	pkgdesc = Freeware MIB browser tool for SNMP API (requires SLA acceptance)
-	pkgver = 15.0.5020
+	pkgver = 15.0.5022
 	pkgrel = 1
 	url = https://www.ireasoning.com/mibbrowser.shtml
+	install = imibrowser.install
 	arch = x86_64
 	license = LicenseRef-custom
 	license = GPL-2.0-or-later
@@ -12,10 +13,11 @@ pkgbase = imibrowser
 	depends = hicolor-icon-theme
 	options = !strip
 	options = !debug
-	source = imibrowser-15.0.5020.zip::https://www.ireasoning.com/download/mibfree/mibbrowser.zip
+	options = !emptydirs
+	source = imibrowser-15.0.5022.zip::https://www.ireasoning.com/download/mibfree/mibbrowser.zip
 	source = iMIBrowser.desktop
 	source = SLA
-	sha256sums = 856f2b04e58dcbaf6514e828bc401e233a70dd7eebfa985afe20cfc6088c4150
+	sha256sums = 594a5524f7098406c3f91961067c74e3e5e081923c8f28fab50782ef6672bb52
 	sha256sums = ecfc557a66cb3e11f50c0034019fff55960d4b9551ba0639754ed14647cb6446
 	sha256sums = f15a61ab9c02cdab41460763608bfd5b5f0624826724e0f80120ecef3285acfa
 

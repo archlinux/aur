@@ -1,0 +1,23 @@
+post_install() {
+  cat <<-MSG
+  >>> iReasoning MIB Browser - Software License Agreement (SLA)
+
+  This software is freeware (Personal Edition) for private, non-commercial use.
+  By installing and using this software, you confirm that you have read and
+  accept the terms of the Software License Agreement.
+
+  The full SLA is installed at:
+    /usr/share/licenses/imibrowser/SLA
+
+  You can also review it online at:
+    https://www.ireasoning.com/downloadmibbrowserlicense.shtml
+
+  If you do NOT agree to the terms, remove this package immediately.
+	MSG
+}
+
+post_upgrade() {
+  post_install
+}
+
+# vim:set ts=2 sw=2 et:
