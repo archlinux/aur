@@ -1,0 +1,4 @@
+[aerion-bin]
+source = "git"
+git = "https://github.com/hkdb/aerion.git"
+prefix = "v"
