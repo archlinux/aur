@@ -1,6 +1,6 @@
 pkgbase = anodizer-bin
 	pkgdesc = A Rust-native release automation tool
-	pkgver = 0.11.3
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/tj-smith47/anodizer
 	license = MIT
@@ -10,10 +10,10 @@ pkgbase = anodizer-bin
 	conflicts = anodizer
 	provides = anodizer
 	arch = aarch64
-	source_aarch64 = https://github.com/tj-smith47/anodizer/releases/download/v0.11.3/anodizer-0.11.3-linux-arm64-extra.tar.xz
-	sha256sums_aarch64 = ec4096787ef707d7b33386caff9cc0cf260ce4edd1dea2653e07aadbfedb5c47
+	source_aarch64 = https://github.com/tj-smith47/anodizer/releases/download/v0.12.0/anodizer-0.12.0-linux-arm64-extra.tar.xz
+	sha256sums_aarch64 = 3dad467c648d215f46d38451a57fa4def388b920cdcd74a92d4831d95f3b300e
 	arch = x86_64
-	source_x86_64 = https://github.com/tj-smith47/anodizer/releases/download/v0.11.3/anodizer-0.11.3-linux-amd64-extra.tar.xz
-	sha256sums_x86_64 = e9c860e20e0b22c8c1adc22ade117c3a0fc19d178bf600153de9ceda14725e6c
+	source_x86_64 = https://github.com/tj-smith47/anodizer/releases/download/v0.12.0/anodizer-0.12.0-linux-amd64-extra.tar.xz
+	sha256sums_x86_64 = 51275d82280fb6f5d03e246911926366c438c3e05502b9547885f15cbbf4ee29
 
 pkgname = anodizer-bin
