@@ -2,14 +2,14 @@
 # https://koi.rip
 
 pkgname=meowtd
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="send cute MOTDs to your (girl|enby|boy)friends' computers"
 arch=('x86_64' 'aarch64')
 url="https://git.koi.rip/koi/$pkgname"
 license=('Apache-2.0')
 source=("$pkgname-$pkgver::git+$url.git#tag=v$pkgver")
-sha256sums=('d70258bf67e7b5c8d4a16d85bea98a6afadf5185779ebcdaad82d17412d87576')
+sha256sums=('0fd0a6488dee6653c16014ec1a9c107d65a391c755f67dcf98e084636d74d9bf')
 makedepends=('zig')
 depends=('libssh2')
 
