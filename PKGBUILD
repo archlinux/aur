@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=3x-ui
-pkgver=3.3.1
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
@@ -26,13 +26,8 @@ optdepends=(
   'ufw: Firewall Management'
 )
 options=(!debug)
-source=(
-  $url/archive/v$pkgver/$pkgname-$pkgver.tar.gz
-  ${pkgname:1}-updategeo.{service,timer}
-)
-b2sums=('6629026a61f5f8342c475c6eed8304830967cb05d5f1b485a2fed1ad7878c02b66abb6cee72893f7c4c18c0f6736c91fe59e8f94615cf9338db8188b9cf76ac4'
-        'a6f4eba028beba4f94d78ce40080e531939f98c9fa265c7a27d6ea17777cb549cd65be0193e390850fc418457e204f478c36f87b66844cb0abc69c893192e970'
-        'da9c55306c37438f79adfb550d1d0003f14c4d597b170e4424428fc07040391fd904d63f738c46ac92ba13d8c8577b3e4a74bfe119d0f7b914d3e7839c4a0336')
+source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
+b2sums=('571756444aeacfce78b42f48395433d1852d80ef9f8d42b75bb35c1ba14662816868b6aed544f9320d951ffbb7d5ddd8c8ac6e497be962ba6c35ea575cfff01f')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -65,8 +60,7 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  install -vDm 755 ${pkgname:1}.sh                              "$pkgdir"/usr/bin/${pkgname:1}
-  install -vDm 755 build/$pkgname                               "$pkgdir"/usr/lib/${pkgname:1}/${pkgname:1}
-  install -vDm 644 ${pkgname:1}.service.arch                    "$pkgdir"/usr/lib/systemd/system/${pkgname:1}.service
-  install -vDm 644 ../${pkgname:1}-updategeo.{service,timer} -t "$pkgdir"/usr/lib/systemd/system/
+  install -vDm 755 ${pkgname:1}.sh           "$pkgdir"/usr/bin/${pkgname:1}
+  install -vDm 755 build/$pkgname            "$pkgdir"/usr/lib/${pkgname:1}/${pkgname:1}
+  install -vDm 644 ${pkgname:1}.service.arch "$pkgdir"/usr/lib/systemd/system/${pkgname:1}.service
 }
