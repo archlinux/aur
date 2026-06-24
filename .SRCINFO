@@ -1,7 +1,7 @@
 pkgbase = photoqt-bin
 	pkgdesc = Fast and highly configurable image viewer with a simple and nice interface (binary release)
-	pkgver = 5.3
-	pkgrel = 2
+	pkgver = 5.4
+	pkgrel = 1
 	url = http://photoqt.org/
 	arch = x86_64
 	license = GPL2
@@ -25,7 +25,6 @@ pkgbase = photoqt-bin
 	depends = lcms2
 	depends = openmp
 	depends = yaml-cpp
-	depends = qca-qt6
 	depends = ffmpegthumbnailer
 	depends = qt6-quick3d
 	optdepends = photoqt-extensions-bin: Official extensions for PhotoQt
@@ -33,7 +32,7 @@ pkgbase = photoqt-bin
 	provides = photoqt-bin-debug
 	conflicts = photoqt
 	conflicts = photoqt-debug
-	source = https://photoqt.org/downloads/bin/photoqt-5.3.tar.gz
-	sha256sums = e3895878b7ce535e9a88534c45dfe5efaa0329481da449c60d07e46a44a3e835
+	source = https://photoqt.org/downloads/bin/photoqt-5.4.tar.gz
+	sha256sums = 76d72863bec863852829cfcce4788306b785e1740b5ade1da9bedc1859da833c
 
 pkgname = photoqt-bin
