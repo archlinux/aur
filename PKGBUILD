@@ -1,8 +1,8 @@
 # Maintainer: etonedemid <etonedemid@proton.me>
 pkgname=cold-start
-pkgver=1.5.0
+pkgver=3.3.1
 pkgrel=1
-pkgdesc="Top-down twin-stick shooter with wave-based combat — Nintendo Switch homebrew, also playable on PC"
+pkgdesc="Top-down twin-stick shooter with wave-based combat - Nintendo Switch homebrew, also playable on PC"
 arch=('x86_64')
 url="https://github.com/etonedemid/cold-start-nx"
 license=('MIT')
@@ -10,7 +10,7 @@ depends=('sdl2' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'enet')
 makedepends=('cmake' 'ninja' 'pkgconf')
 optdepends=('miniupnpc: UPnP support for hosting servers')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/etonedemid/cold-start-nx/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6880cd77f8bc0195f75c17a98b4f90288759359cff4a916762af0b67e392c872')
+sha256sums=('5dfe4376352cb535b8299901e852a6903e6b90d1f7467853f8f787c42662f0a8')
 
 build() {
     cmake -S "cold-start-nx-$pkgver" \
@@ -26,7 +26,7 @@ package() {
     # Binary
     install -Dm755 build/cold_start "$pkgdir/opt/cold-start/cold_start"
 
-    # Assets (romfs — loaded relative to working directory)
+    # Assets (romfs - loaded relative to working directory)
     cp -r "cold-start-nx-$pkgver/romfs" "$pkgdir/opt/cold-start/romfs"
 
     # Default config
@@ -50,7 +50,7 @@ EOF
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/cold-start.desktop" << 'DESKTOP'
 [Desktop Entry]
 Name=Cold Start
-Comment=Top-down twin-stick shooter — wave survival
+Comment=Top-down twin-stick shooter - wave survival
 Exec=/usr/bin/cold-start
 Icon=cold-start
 Terminal=false

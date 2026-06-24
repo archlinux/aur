@@ -1,6 +1,6 @@
 pkgbase = cold-start
-	pkgdesc = Top-down twin-stick shooter with wave-based combat — Nintendo Switch homebrew, also playable on PC
-	pkgver = 1.5.0
+	pkgdesc = Top-down twin-stick shooter with wave-based combat - Nintendo Switch homebrew, also playable on PC
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://github.com/etonedemid/cold-start-nx
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = cold-start
 	depends = sdl2_mixer
 	depends = enet
 	optdepends = miniupnpc: UPnP support for hosting servers
-	source = cold-start-1.5.0.tar.gz::https://github.com/etonedemid/cold-start-nx/archive/refs/tags/v1.5.0.tar.gz
-	sha256sums = 6880cd77f8bc0195f75c17a98b4f90288759359cff4a916762af0b67e392c872
+	source = cold-start-3.3.1.tar.gz::https://github.com/etonedemid/cold-start-nx/archive/refs/tags/v3.3.1.tar.gz
+	sha256sums = 5dfe4376352cb535b8299901e852a6903e6b90d1f7467853f8f787c42662f0a8
 
 pkgname = cold-start
