@@ -1,6 +1,6 @@
 pkgbase = deltacp
 	pkgdesc = A copy tool designed for incremental backup of block devices by utilizing reflink (CoW)
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://codeberg.org/sharow/deltacp
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = deltacp
 	optdepends = thin-provisioning-tools: CBT support (dm-era and thin-provisioning)
 	options = zipman
 	options = !debug
-	source = deltacp-0.2.1.tar.gz::https://codeberg.org/sharow/deltacp/archive/v0.2.1.tar.gz
-	sha256sums = 5dd4133114abcdb81fe676a04f73f9493082dca275db1a5eb853d96404e502b9
+	source = deltacp-0.2.2.tar.gz::https://codeberg.org/sharow/deltacp/archive/v0.2.2.tar.gz
+	sha256sums = 96ba7663fc83870dcc7ad8a3375f98ad4575e433573c872cdf2d493bec8f5343
 
 pkgname = deltacp
