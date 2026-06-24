@@ -7,6 +7,12 @@ pkgbase = parakeet.cpp-release-git
 	license = MIT
 	makedepends = cmake
 	makedepends = git
+	makedepends = vulkan-headers
+	makedepends = spirv-headers
+	makedepends = shaderc
+	optdepends = vulkan-icd-loader: Vulkan backend runtime
+	optdepends = cuda: CUDA backend runtime
+	optdepends = rocm-hip-runtime: HIP/ROCm backend runtime
 	provides = parakeet=0.3.2
 	provides = parakeet-cli=0.3.2
 	provides = parakeet-server=0.3.2

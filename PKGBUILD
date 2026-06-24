@@ -2,9 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164  # var unused / var not assigned / cd without || exit
 
 # -release-git: tracks upstream release tag cadence from a git source.
-# pkgver() derives the version from the latest v* tag; prepare() checks out
-# that tag. Build uses BUILD_SHARED_LIBS=OFF to fold ggml into self-contained
-# binaries (matches the upstream release workflow).
+# pkgver() derives the version from the latest v* tag; prepare() checks out that tag.
 
 pkgname=parakeet.cpp-release-git
 _pkgname=parakeet
@@ -15,16 +13,46 @@ pkgdesc='C++/ggml inference engine for NVIDIA Parakeet ASR models (latest Git re
 arch=('x86_64')
 url='https://github.com/mudler/parakeet.cpp'
 license=('MIT')
+
+# Build configuration (env overrides, all prefixed PARAKEET_CPP_)
+# ---------------------------------------------------------------
+# Shared libparakeet.so — on by default; OFF produces only static binaries.
+_shared=${PARAKEET_CPP_SHARED:-ON}
+# GPU backends — opt-in via env; Vulkan on by default (lowest friction GPU path).
+_vulkan=${PARAKEET_CPP_GGML_VULKAN:-ON}
+_cuda=${PARAKEET_CPP_GGML_CUDA:-OFF}
+_hip=${PARAKEET_CPP_GGML_HIP:-OFF}
+# GGML_NATIVE=ON compiles with -march=native, optimising for the build host's
+# CPU. AUR packages are source-built and run on the same machine, so this is
+# correct by default. Set PARAKEET_CPP_GGML_NATIVE=OFF (e.g. for a CI build or
+# when building for a different CPU than the build host) to target the
+# portable x86-64 baseline instead.
+_native=${PARAKEET_CPP_GGML_NATIVE:-ON}
+
+# Assemble extra CMake args from backend toggles.
+_cmake_extra=()
+[[ "$_vulkan" == ON ]] && _cmake_extra+=(-DPARAKEET_GGML_VULKAN=ON)
+[[ "$_cuda"   == ON ]] && _cmake_extra+=(-DPARAKEET_GGML_CUDA=ON)
+[[ "$_hip"    == ON ]] && _cmake_extra+=(-DPARAKEET_GGML_HIP=ON)
+
 makedepends=('cmake' 'git')
+# Vulkan SDK — only needed when Vulkan backend is enabled.
+[[ "$_vulkan" == ON ]] && makedepends+=('vulkan-headers' 'spirv-headers' 'shaderc')
+# CUDA — only needed when user opts in.
+[[ "$_cuda"   == ON ]] && makedepends+=('cuda')
+# HIP/ROCm — only needed when user opts in.
+[[ "$_hip"    == ON ]] && makedepends+=('rocm-hip-runtime')
+
+# Runtime deps for GPU backends — optional since binaries work on CPU alone.
+optdepends=(
+  'vulkan-icd-loader: Vulkan backend runtime'
+  'cuda: CUDA backend runtime'
+  'rocm-hip-runtime: HIP/ROCm backend runtime'
+)
+
 provides=("${_pkgname}=${pkgver}" "${_pkgname}-cli=${pkgver}" "${_pkgname}-server=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-cli" "${_pkgname}-server" "${_pkgname}-bin" "${_pkgname}-bin-release-git")
 
-# GGML_NATIVE=ON compiles with -march=native, optimising for the build host's
-# CPU. AUR packages are source-built and run on the same machine, so this is
-# correct by default. Set GGML_NATIVE=OFF (e.g. for a CI build or when building
-# for a different CPU than the build host) to target the portable AVX2 baseline
-# instead. Override at build time: makepkg GGML_NATIVE=OFF.
-_native=${GGML_NATIVE:-ON}
 source=("${pkgname}::git+https://github.com/${_upstream}/${_pkgname}.cpp.git")
 sha256sums=('SKIP')
 
@@ -42,11 +70,17 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  # BUILD_SHARED_LIBS=OFF folds ggml into the binaries (matches upstream release bundles).
-  # GGML_NATIVE=${_native}: -march=native when ON (optimise for build host = install host
-  #   on AUR source builds); OFF targets the portable AVX2 baseline.
-  # GGML_LTO=ON + CMAKE_INTERPROCEDURAL_OPTIMIZATION=ON: link-time optimisation (free perf).
-  # -ffile-prefix-map strips the absolute build path from __FILE__ macros (reproducible build).
+  # BUILD_SHARED_LIBS=OFF folds ggml into libparakeet (matches upstream release bundles).
+  # PARAKEET_SHARED=${_shared}: builds libparakeet.so when ON (default), absent when OFF.
+  # GGML_NATIVE=${_native}: -march=native when =ON (optimise for build host),
+  #   =OFF targets the portable x86-64 baseline.
+  # GGML_LTO=ON + CMAKE_INTERPROCEDURAL_OPTIMIZATION=ON: link-time optimisation across
+  #   all targets (ggml + parakeet); redundant with makepkg's default lto option but
+  #   guarantees LTO even if !lto is set or building outside makepkg.
+  # CMAKE_SKIP_RPATH=ON: prevents cmake from embedding the build directory into the
+  #   binaries' RUNPATH (which triggers makepkg's $srcdir-reference warning).
+  # -ffile-prefix-map strips the absolute build path from __FILE__ macros (reproducible).
+  # _cmake_extra: GPU backend flags (Vulkan by default; CUDA/HIP opt-in via env).
   CFLAGS="${CFLAGS} -ffile-prefix-map=${srcdir}=." \
   CXXFLAGS="${CXXFLAGS} -ffile-prefix-map=${srcdir}=." \
   cmake -B build \
@@ -56,9 +90,12 @@ build() {
     -DPARAKEET_BUILD_TESTS=OFF \
     -DPARAKEET_BUILD_CLI=ON \
     -DPARAKEET_BUILD_SERVER=ON \
+    -DPARAKEET_SHARED="${_shared}" \
     -DGGML_NATIVE="${_native}" \
-    -DGGML_LTO=ON
-  cmake --build build -j"$(nproc)"
+    -DGGML_LTO=ON \
+    "${_cmake_extra[@]}"
+  # Only use half the cores to build (default was all)
+  cmake --build build -j$(( $(nproc 2>/dev/null || echo 2) / 2 ))
 }
 
 package() {
@@ -69,6 +106,11 @@ package() {
 
   install -Dm644 include/parakeet.h      "${pkgdir}/usr/include/parakeet/parakeet.h"
   install -Dm644 include/parakeet_capi.h "${pkgdir}/usr/include/parakeet/parakeet_capi.h"
+
+  # Install shared library if built
+  if [[ -f build/libparakeet.so ]]; then
+    install -Dm755 build/libparakeet.so "${pkgdir}/usr/lib/libparakeet.so"
+  fi
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
