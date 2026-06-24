@@ -5,8 +5,8 @@
 
 pkgname=advanced-ssh-config
 _name=assh
-pkgver=2.17.1
-_vcsref=69451d3
+pkgver=2.17.2
+_vcsref=158e7de
 pkgrel=1
 pkgdesc='ssh wrapper using ProxyCommand that adds regex, aliases, gateways, includes, dynamic hostnames to SSH and ssh-config'
 arch=('x86_64')
@@ -16,17 +16,24 @@ depends=('glibc' 'openssh')
 makedepends=('go')
 optdepends=(
   'bash-completion: for shell auto-completion'
-  'zsh-completions: for shell auto-completion'
   'openbsd-netcat: for gateway proxycommand support (nc)'
   'socat: alternative proxycommand helper'
   'graphviz: render dot output'
 )
 conflicts=('assh' 'assh-bin' 'assh-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/moul/assh/archive/v${pkgver}.tar.gz")
-sha256sums=('9571e3424dcfa5d52e32f3f7dd19995e3d1f30c9d80420e77d47681d4a201744')
+sha256sums=('80d33252b5c27e65c1a1539cfc3d49274c7b53372ca5005399c00b465422dd27')
+
+prepare() {
+  cd "$_name-$pkgver"
+  export GOPATH="${srcdir}/gopath"
+  export GOTOOLCHAIN=local
+  go mod download -modcacherw
+}
 
 build() {
   export GOPATH="${srcdir}/gopath"
+  export GOTOOLCHAIN=local
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -38,6 +45,7 @@ build() {
     -buildvcs=false \
     -buildmode=pie \
     -mod=readonly \
+    -modcacherw \
     -ldflags "-linkmode external -extldflags '${LDFLAGS}' \
       -X 'moul.io/assh/v2/pkg/version.Version=${pkgver}' \
       -X 'moul.io/assh/v2/pkg/version.VcsRef=${_vcsref}'" \
@@ -47,8 +55,9 @@ build() {
 
 check() {
   export GOPATH="${srcdir}/gopath"
+  export GOTOOLCHAIN=local
   cd "$_name-$pkgver"
-  go test -buildvcs=false ./...
+  go test -buildvcs=false -mod=readonly -modcacherw ./...
 }
 
 package() {
