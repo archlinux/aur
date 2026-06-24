@@ -5,7 +5,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-cmocka
-pkgver=1.1.8
+pkgver=2.0.2
 pkgrel=1
 arch=('any')
 pkgdesc="Elegant unit testing framework for C with support for mock objects (Android ${_android_arch})"
@@ -14,9 +14,9 @@ license=('Apache')
 groups=(android-cmocka)
 depends=('android-ndk')
 makedepends=('android-cmake')
-source=("https://cmocka.org/files/1.1/cmocka-${pkgver}.tar.xz"{,.asc})
+source=("https://cmocka.org/files/2.0/cmocka-${pkgver}.tar.xz"{,.asc})
 options=(!strip !buildflags staticlibs !emptydirs)
-md5sums=('976fe5a166f9729c350119d997256d2f'
+md5sums=('5f80f0aa5494ecf36bdedb3bc659dba9'
          'SKIP')
 validpgpkeys=('8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D') # Andreas Schneider <asn@cryptomilk.org>
 
@@ -56,5 +56,5 @@ package() {
     ${ANDROID_STRIP} -g --strip-unneeded "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.so
     ${ANDROID_STRIP} -g "${pkgdir}/${ANDROID_PREFIX_LIB}"/*.a
 
-    install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
