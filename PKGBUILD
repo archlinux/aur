@@ -1,6 +1,6 @@
 # Maintainer: jtaw5649
 pkgname=hyprspaces-tools
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Helper CLI and config automation for the hyprspaces HyprPM plugin"
 arch=('any')
@@ -15,9 +15,9 @@ optdepends=(
   'sunshine: optional Sunshine headless helper'
 )
 install=hyprspaces-tools.install
-_commit='718fd59bc98eafee0eefea583b6d3c4e65c5629d'
+_commit='f132acf28602cb4c12852028add388dd108e7e0e'
 source=("hyprspaces-${pkgver}.tar.gz::${url}/archive/${_commit}.tar.gz")
-sha256sums=('9bfb7d6f7713a57e10d559a93c8cf74029b64742a2b43e1f83501bf8023e3ac5')
+sha256sums=('dd424044e5e438120e9272365a985da942401c0facc6e7c9b8a867ceae19eff7')
 
 package() {
   cd "${srcdir}/hyprspaces-${_commit}"
