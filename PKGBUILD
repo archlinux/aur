@@ -9,7 +9,7 @@ license=('MIT')
 depends=('bash' 'systemd' 'rofi' 'libnotify')
 # This downloads the source code directly from your GitHub release
 source=("$pkgname-$pkgver.tar.gz::https://github.com/davi-s/expresso/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP') # Remember to run updpkgsums or makepkg -g to update this
+sha256sums=('ad505f0a02bd3cd5adc2bd6c593138010373ac527e2d92576c6dd5854936a3f3')
 
 package() {
     cd "$pkgname-$pkgver"

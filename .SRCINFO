@@ -1,0 +1,15 @@
+pkgbase = expresso
+	pkgdesc = A Rofi-based system awake and sleep inhibition utility
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/davi-s/expresso
+	arch = any
+	license = MIT
+	depends = bash
+	depends = systemd
+	depends = rofi
+	depends = libnotify
+	source = expresso-1.0.0.tar.gz::https://github.com/davi-s/expresso/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = ad505f0a02bd3cd5adc2bd6c593138010373ac527e2d92576c6dd5854936a3f3
+
+pkgname = expresso
