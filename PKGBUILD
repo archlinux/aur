@@ -7,7 +7,7 @@ pkgbase=${_pkgname}-bin
 pkgname=(${_pkgname}-bin ${_pkgname}-server-bin)
 pkgdesc="Tasks, boards & notes for the command-line habitat"
 
-pkgver=1.3.3
+pkgver=1.5.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -32,17 +32,17 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 			   "${_pkgname}-server-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-server-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}.tar.gz"
 				"${_pkgname}-server-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-server-${_barch[1]}.tar.gz")
-sha256sums=('ea9cd32fc0c7e49e550d54fd2f225b71a61ec2260c3e0631cc595a665c3bdd19'
-            '6ab99a27e8459947fe3f594861c9eb12f9e3360725d2327be5d65dcc3f85264c'
+sha256sums=('e49b81d6927bf77baea7a0e938a04f3992082973d83326cd7f22d4ee9880b800'
+            'c455ce183dcb1a34d4b899943a71972693ff730f4ccb8cd00f092a20eab67840'
             '0e34e5eb9b602a98ba132e1e538086085dd5681c3dbcc30754b495d4879bcdee'
-            'd24ddcad0e18f17dae1a970452e5ca2e955e86a15f0f0960ca1fffa3794ac334'
-            'f3b6d0020bb98d66e2a41b9e2b8eb3edfd650850e2136c58aec4662cb080121a'
-            '35b6a243a1cd7605843a88bdfc95df4d65915b79797015ede542d373995e5e68'
+            'cd7b5c186b362b66f8811b84c3758c398845c4736cb558dd7fe504c694bd0bfc'
+            'd1c038eac716e6909c28063b6042dc1152408d937cf68fc2f836e524cebacc0a'
+            '2045fddabe0a90c3ed2bd6c34e4b02376a579ed4aa8cad204a2a3ee7308c264a'
             'b316e800f1ff5cf46477e6464c7749b214c03dadc85571c6758e4fa6584c6708')
-sha256sums_x86_64=('501850477c03c9fc68fd7ccdeb3674d976d89baa6aa5811fa872f3b74abfc896'
-                   '13cf6e1e52e23b08a7aa7a751f91524f117fda8f8da206798058584c278847be')
-sha256sums_aarch64=('32ef0c0610279aed5061291c9e19afa2f0c5e0f47bed5e424073bc2edbcc729b'
-                    'dedf6ab0dce0c705956db2468116ffaab5ec6c97f8d5401d419298c9fc0f9627')
+sha256sums_x86_64=('d2eba1d656f9664cc33916bd02df63674d6bcc87af7ba2da513b476bedfa906e'
+                   '785eba1ed911558166ac2d3d9b15fdac842fe17d0de0e540f7512abed988eb26')
+sha256sums_aarch64=('84313a87ec10955686b9a6146014c93e8f02929d8021170d7255fbf32ae2212e'
+                    'a6390f5cd9308b3708a9de4a122bbaeb6076eaf7da0fca0b31df9c722d22be81')
 
 
 package_taskbook-bin() {
