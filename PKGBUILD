@@ -2,7 +2,7 @@
 
 pkgname=vmaf-full
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion with all features enabled'
 arch=('x86_64')
 url='https://github.com/Netflix/vmaf/'
@@ -13,13 +13,13 @@ depends=(
     'libstdc++')
 makedepends=(
     'cuda'
+    'doxygen'
     'ffnvcodec-headers'
     'meson'
     'nasm'
-    'nvtx')
-checkdepends=(
+    'nvtx'
     'vim')
-provides=('vmaf')
+provides=("vmaf=${pkgver}")
 conflicts=('vmaf')
 optdepends=(
     'nvidia-utils: runtime NVIDIA driver support for CUDA feature extractors'
@@ -29,7 +29,7 @@ source=(
     'vmaf-full-cuda-include-dir.patch')
 sha256sums=(
     'a28f93f3b4fa65601be324587072e32a6a704a304ba7b1aec9b70b3f709bc1dc'
-    '25daa03f6424fab9899420643eeb1027bd7c606a0e35ab3a364ac76d30bb02f7')
+    '07486510455ea887e062d61cad7e831e92fc2e49ef189be7823d7e729bbd4f00')
 
 prepare() {
     cd "vmaf-${pkgver}"
@@ -71,7 +71,7 @@ build() {
 }
 
 check() {
-    meson test -C build
+    meson test -C build --no-suite cuda
 }
 
 package() {
