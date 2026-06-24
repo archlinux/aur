@@ -2,7 +2,7 @@
 
 pkgname=xfce4-volumed-pulse-git
 pkgdesc='A volume keys control daemon for Xfce using pulseaudio'
-pkgver=r83.faec2e8
+pkgver=r183.fea9100
 pkgrel=1
 arch=('x86_64')
 license=('GPL3')
@@ -15,7 +15,7 @@ depends=('libnotify' 'pulseaudio' 'libkeybinder3' 'xfconf')
 optdepends=('xfce4-notifyd: for OSD notifications')
 makedepends=('git' 'xfce4-dev-tools')
 
-source=("${pkgname%-git}::git://git.xfce.org/apps/xfce4-volumed-pulse")
+source=("${pkgname%-git}::git+https://gitlab.xfce.org/apps/xfce4-volumed-pulse")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -24,15 +24,12 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/${pkgname%-git}"
-    ./autogen.sh
-    ./configure --prefix=/usr --sysconfdir=/etc \
-                --libexecdir=/usr/lib \
-                --localstatedir=/var
-    make
+    arch-meson "$srcdir/${pkgname%-git}" build
+
+    # 編譯原始碼
+    meson compile -C build
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
-    make DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" meson install -C build
 }
