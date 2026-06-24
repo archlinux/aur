@@ -1,0 +1,24 @@
+pkgbase = aish-bin
+	pkgdesc = Empower the Shell to think. Evolve Operations.
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/AI-Shell-Team/aish
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = aish
+	conflicts = aish
+	options = !strip
+	backup = etc/aish/security_policy.yaml
+	source = README-0.3.5.md::https://raw.githubusercontent.com/AI-Shell-Team/aish/v0.3.5/README.md
+	source = LICENSE-0.3.5::https://raw.githubusercontent.com/AI-Shell-Team/aish/v0.3.5/LICENSE
+	sha256sums = 1358c9b194f4e2e746ddcaea0297e5af8de2e3a74f6f1fd8baf0275a005592af
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = aish-x86_64-0.3.5.tgz::https://github.com/AI-Shell-Team/aish/releases/download/v0.3.5/aish-0.3.5-linux-amd64.tar.gz
+	sha256sums_x86_64 = ea98c2028c8518390df51a6206fb12617d72fadc71c163de5d3e2f0b353f76e9
+	source_aarch64 = aish-aarch64-0.3.5.tgz::https://github.com/AI-Shell-Team/aish/releases/download/v0.3.5/aish-0.3.5-linux-arm64.tar.gz
+	sha256sums_aarch64 = 92da2cd38b5034cdc3b8830408a0c0ee4c9600d1bc24584caf80949c4d8bec67
+
+pkgname = aish-bin
