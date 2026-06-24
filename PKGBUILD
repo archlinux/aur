@@ -2,7 +2,7 @@
 
 pkgname=oniri-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="A tool that automatically maximizes the only window of a niri workspace (bin version)"
 url="https://github.com/Antiz96/oniri"
@@ -21,11 +21,11 @@ source=("${_pkgname}-${pkgver}.bash::${_raw_url}/v${pkgver}/res/completions/${_p
 	"README-${pkgver}.md::${_raw_url}/v${pkgver}/README.md")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64")
 sha256sums=('43c50afecf55c84f82a7e439df17304d7e546bace39ec7e85f1e7fa54fb5092d'
-            'ec11a7337ad6eed76e5e21a63553ca353d9a5ac16717ef84db2efb34fc73914b'
+            '346563c769e65d5f11dcdc2595cc43dec831bb98328e3d7750999e2ebb8286bc'
             'fef89be770e8351ee118b94ee7fe9233715647574858592137500d741785cb88'
-            '3162aabb6768a840517903f542d977e3940e196e196e522f64466c4bfebd47b7'
-            '26ecc1359798f2d5947af4f678709c4e83d7ada3cc7f784001f01e883461552e')
-sha256sums_x86_64=('081cfee667eb051461d3e2ac30404b4cccc62409e03e66c24bb253e1c3670e0d')
+            'cc5b877fb4777b7821e93af34043002ffe4287e6fbab3abaef5eeaf324f55397'
+            'd8ba23466edd175c12ce88c8735fb08cdaa253a5eac10469e2f4c682b4a968ba')
+sha256sums_x86_64=('71487e46ecaf160079fec269cd7785328c6c3d1068493faf37df4ca400b49a1b')
 
 build() {
        scdoc < "${_pkgname}-${pkgver}.1.scd" > "${_pkgname}.1"
