@@ -1,13 +1,13 @@
 pkgbase = rake
 	pkgdesc = Configuration-driven build tool that runs Rakefile.toml targets
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/rustyhorde/cargo-rake
 	arch = x86_64
 	license = MIT
 	license = Apache-2.0
 	makedepends = cargo
-	source = rake-0.3.0.tar.gz::https://github.com/rustyhorde/cargo-rake/archive/v0.3.0.tar.gz
-	sha256sums = 751e445a08f058d093d8d7873e1e10ecb61239980ec7d514c8e6c5ddeff09089
+	source = rake-0.3.1.tar.gz::https://github.com/rustyhorde/cargo-rake/archive/v0.3.1.tar.gz
+	sha256sums = e92f6295146c8d4d159444328a35fab3ce47ed03ecb9c7c9802c345ba8adb8ac
 
 pkgname = rake
