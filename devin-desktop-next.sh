@@ -14,17 +14,29 @@ _main="${_app}/out/main.js"
 # User-configurable flags (mirrors Arch's code/code.sh convention).
 _flags_file="${XDG_CONFIG_HOME:-$HOME/.config}/devin-desktop-next-flags.conf"
 
+# Read a flags file, skipping blank lines and comments.
+_read_flags() {
+    local file="$1"
+    local -n _out="$2"
+    local line
+    while IFS= read -r line || [[ -n "$line" ]]; do
+        [[ "$line" =~ ^[[:space:]]*# ]] && continue
+        [[ -z "${line// /}" ]] && continue
+        _out+=("$line")
+    done < "$file"
+}
+
 _codeflags=()
 if [[ -f "${_flags_file}" ]]; then
-    mapfile -t _codeflags < "${_flags_file}"
+    _read_flags "${_flags_file}" _codeflags
 fi
 
 _electronflags=()
 _electron_flags_file="${XDG_CONFIG_HOME:-$HOME/.config}/${_name}-flags.conf"
 if [[ -f "${_electron_flags_file}" ]]; then
-    mapfile -t _electronflags < "${_electron_flags_file}"
+    _read_flags "${_electron_flags_file}" _electronflags
 elif [[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/electron-flags.conf" ]]; then
-    mapfile -t _electronflags < "${XDG_CONFIG_HOME:-$HOME/.config}/electron-flags.conf"
+    _read_flags "${XDG_CONFIG_HOME:-$HOME/.config}/electron-flags.conf" _electronflags
 fi
 
 ELECTRON_RUN_AS_NODE=1 exec "/usr/lib/${_name}/electron" "${_cli}" "${_electronflags[@]}" "${_main}" "${_codeflags[@]}" "$@"
