@@ -1,7 +1,7 @@
 pkgbase = kanidm-bin
 	pkgdesc = Modern identity management platform (prebuilt binaries)
 	pkgver = 1.10.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://kanidm.com
 	arch = x86_64
 	arch = aarch64
@@ -17,8 +17,11 @@ pkgname = kanidm-bin
 	depends = gcc-libs
 	depends = openssl
 	depends = sqlite
+	provides = kanidm-clients
+	provides = kanidm-clients=1.10.4
 	provides = kanidm
 	provides = kanidm=1.10.4
+	conflicts = kanidm-clients
 	conflicts = kanidm
 
 pkgname = kanidm-unixd-bin
@@ -32,8 +35,11 @@ pkgname = kanidm-unixd-bin
 	depends = libcap
 	depends = tpm2-tss
 	depends = systemd-libs
+	provides = kanidm-unixd-clients
+	provides = kanidm-unixd-clients=1.10.4
 	provides = kanidm-unixd
 	provides = kanidm-unixd=1.10.4
+	conflicts = kanidm-unixd-clients
 	conflicts = kanidm-unixd
 
 pkgname = kanidmd-bin
@@ -45,6 +51,9 @@ pkgname = kanidmd-bin
 	depends = tpm2-tss
 	depends = systemd-libs
 	depends = libcap
+	provides = kanidm-server
+	provides = kanidm-server=1.10.4
 	provides = kanidmd
 	provides = kanidmd=1.10.4
+	conflicts = kanidm-server
 	conflicts = kanidmd
