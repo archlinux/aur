@@ -7,8 +7,8 @@
 ### PKGBUILD METADATA ###
 
 pkgname=webcord-git
-pkgver=4.11.1.r1024.2d26028
-pkgrel=2
+pkgver=4.13.0.r1048.69cf4c5
+pkgrel=1
 pkgdesc="A Discord and Fosscord client made with the Electron (master branch)."
 arch=("any")
 
@@ -40,8 +40,8 @@ b2sums=(
 )
 
 validpgpkeys=(
-  # SpacingBat3 (Personal GPG key for signing GIT commits.)
-  'EF07385224D965FADB1E3570FECEF941D3081BAA'
+  # SpacingBat3 (General-purpose key)
+  '4A39F0DDDE3266998D1FB70CCBDE7E9FAC1B7B71'
 )
 
 ### CONFIGURABLE VARIABLES ###
