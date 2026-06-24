@@ -5,7 +5,7 @@ pkgname=(
     'python-slint-git'
     'slint-cpp-git'
     'slint-tools-git')
-pkgver=1.14.1.r1577.g28f9fd710b
+pkgver=1.17.0.r6.g381287b30c
 pkgrel=1
 pkgdesc='Declarative GUI toolkit to build native user interfaces (git version)'
 license=('GPL-3.0-or-later OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0')
@@ -18,20 +18,22 @@ makedepends=(
     'freetype2'
     'git'
     'gstreamer'
-    'libx11'
-    'libxcb'
+    'libinput'
     'libxkbcommon'
+    'mesa'
     'python'
     'python-build'
     'python-installer'
     'python-maturin'
     'python-setuptools'
     'python-wheel'
-    'wayland')
+    'systemd-libs')
 source=('git+https://github.com/slint-ui/slint.git'
-        '010-slint-cpp-disable-jemalloc.patch')
+        '010-slint-cpp-disable-jemalloc.patch'
+        '020-slint-allow-python-maturin-0.14.1.patch')
 sha256sums=('SKIP'
-            'ac0944396bb96413da23bfb9101e0d5555e9093b38fac19b33ce3642db48ab08')
+            'c15240a6330c486652ad72e0e438aed19eb044e41523beea16dade7c4e483ca9'
+            '784edbc91e7f5c6e9fcc650a652d30f7f1027a115e657a96b719b0e46f78f988')
 
 prepare () {
     cargo fetch --target "$(rustc --print host-tuple)" --manifest-path='slint/Cargo.toml'
@@ -39,16 +41,20 @@ prepare () {
     
     patch -d slint -Np1 -i "${srcdir}/010-slint-cpp-disable-jemalloc.patch"
     
+    # allow python-maturin versions >= 1.14.1, as the upstream restriction is due to iOS cross-building issues
+    # https://github.com/slint-ui/slint/commit/6205004217ebd74430aec556af773b46f505ed5d
+    patch -d slint -Np1 -i "${srcdir}/020-slint-allow-python-maturin-0.14.1.patch"
+    
     cd slint
     
     # The commands bellow remove jemalloc, as it causes build issues (avoid patching due to ever changing code from git repo)
     
     # Remove jemalloc from the workspace entirely
-    find . -name "Cargo.toml" -exec sed -i '/tikv-jemallocator/d' {} +
+    find . -name 'Cargo.toml' -exec sed -i '/tikv-jemallocator/d' {} +
     
     # Remove any forced jemalloc features from tools
-    find . -name "Cargo.toml" -exec sed -i 's/"jemalloc"//g' {} +
-    find . -name "Cargo.toml" -exec sed -i 's/jemalloc = \[.*\]//g' {} +
+    find . -name 'Cargo.toml' -exec sed -i 's/"jemalloc",*//g' {} +
+    find . -name 'Cargo.toml' -exec sed -i 's/jemalloc = \[.*\]//g' {} +
     
     # Remove the jemalloc block from tools/compiler/main.rs
     sed -i '0,/static GLOBAL: Jemalloc = Jemalloc;/{ /#\[cfg(all(/,/static GLOBAL: Jemalloc = Jemalloc;/d }' tools/compiler/main.rs
@@ -61,9 +67,9 @@ prepare () {
     sed -i '/#\[global_allocator\]/,/static GLOBAL: Jemalloc = Jemalloc;/d' tools/{compiler,lsp,viewer}/main.rs
     
     # Comment out the allocator usage in the entire tree
-    find . -name "*.rs" -exec sed -i 's/#!\[no_std\]//g' {} + # Ensure we stay in std mode
-    find . -name "*.rs" -exec sed -i 's/extern crate tikv_jemallocator;//g' {} +
-    find . -name "*.rs" -exec sed -i '/@\[global_allocator\]/,/;/ s/^/\/\//' {} +
+    find . -name '*.rs' -exec sed -i 's/#!\[no_std\]//g' {} + # Ensure we stay in std mode
+    find . -name '*.rs' -exec sed -i 's/extern crate tikv_jemallocator;//g' {} +
+    find . -name '*.rs' -exec sed -i '/@\[global_allocator\]/,/;/ s/^/\/\//' {} +
 }
 
 pkgver() {
@@ -102,7 +108,6 @@ build() {
         --no-default-features \
         --package='slint-lsp' \
         --package='slint-tr-extractor' \
-        --package='slint-updater' \
         --package='slint-viewer' \
         --release
     
@@ -123,14 +128,15 @@ package_python-slint-git() {
     pkgdesc='Declarative GUI toolkit to build native user interfaces for Python apps (git version)'
     depends=(
         'fontconfig'
-        'gcc-libs'
+        'freetype2'
         'glibc'
         'libgcc'
-        'libx11'
-        'libxcb'
+        'libinput'
+        'libstdc++'
         'libxkbcommon'
+        'mesa'
         'python'
-        'wayland')
+        'systemd-libs')
    optdepends=(
         'libgl: for Skia OpenGL renderer backend'
         'vulkan-icd-loader: for Skia Vulkan renderer backend')
@@ -150,10 +156,7 @@ package_slint-cpp-git() {
         'freetype2'
         'glibc'
         'libgcc'
-        'libx11'
-        'libxcb'
-        'libxkbcommon'
-        'wayland')
+        'libstdc++')
     optdepends=(
         'libgl: for Skia OpenGL renderer backend'
         'vulkan-icd-loader: for Skia Vulkan renderer backend')
@@ -169,16 +172,13 @@ package_slint-cpp-git() {
 }
 
 package_slint-tools-git() {
-    pkgdesc='Tools for the Slint GUI toolkit (lsp, tr-extractor, updater and viewer) (git version)'
+    pkgdesc='Tools for the Slint GUI toolkit (lsp, tr-extractor and viewer) (git version)'
     depends=(
         'fontconfig'
         'freetype2'
         'glibc'
         'libgcc'
-        'libx11'
-        'libxcb'
-        'libxkbcommon'
-        'wayland')
+        'libstdc++')
     optdepends=(
         'libgl: for Skia OpenGL renderer backend in slint-viewer'
         'vulkan-icd-loader: for Skia Vulkan renderer backend in slint-viewer')
@@ -186,13 +186,11 @@ package_slint-tools-git() {
         'slint-lsp'
         'slint-tools'
         'slint-tr-extractor'
-        'slint-updater'
         'slint-viewer')
     conflicts=(
         'slint-lsp'
         'slint-tools'
         'slint-tr-extractor'
-        'slint-updater'
         'slint-viewer')
     
     install -d -m755 "${pkgdir}/usr/lib"
