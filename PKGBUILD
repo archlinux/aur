@@ -2,12 +2,12 @@
 # Co-Maintainer: Jai Brown (aur JaINTP) <dev [at] jaintp [dot] com>
 
 _pkgname=capacities
-_version=1.65.13
+_version=1.66.1
 _image_url_x86_64="https://2vks4.upcloudobjects.com/capacities-desktop-app/Capacities-${_version}.AppImage"
 _image_url_aarch64="https://2vks4.upcloudobjects.com/capacities-desktop-app/Capacities-${_version}-arm64.AppImage"
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.65.13
+pkgver=1.66.1
 pkgrel=1
 pkgdesc="Personal Knowledge Management app - A studio for your mind"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ provides=('capacities')
 
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.AppImage::${_image_url_x86_64}")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.AppImage::${_image_url_aarch64}")
-sha256sums_x86_64=('013897d61f615e628c16d63a384c9912827f4b124681b8f9fd0670145d6c7c54')
-sha256sums_aarch64=('fb27d704ebea5213bc557950b3de903fa419a586e97f0593a6288e04c9044516')
+sha256sums_x86_64=('be71ca824b9f9b46d1ed89e3618cf7943aa9c5f2401a8ec8ff790bd218a8c5d9')
+sha256sums_aarch64=('297c751d961c260c87823ca45924373a699df91282352ecc12fa6016ca75aaa5')
 
 _appimage="${_pkgname}-${pkgver}-${CARCH}.AppImage"
 noextract=(
@@ -31,12 +31,7 @@ noextract=(
 prepare() {
     chmod +x "${_appimage}"
     ./"${_appimage}" --appimage-extract ${_pkgname}.desktop
-    ./"${_appimage}" --appimage-extract ${_pkgname}.png
-    real_icon_path=$(readlink "squashfs-root/${_pkgname}.png")
-    if [[ -n "$real_icon_path" ]]; then
-        ./"${_appimage}" --appimage-extract "$real_icon_path"
-        mv "squashfs-root/$real_icon_path" "squashfs-root/${_pkgname}.png"
-    fi
+    ./"${_appimage}" --appimage-extract usr/share/icons/hicolor/scalable/capacities.svg
     ./"${_appimage}" --appimage-extract LICENSE.electron.txt
     ./"${_appimage}" --appimage-extract LICENSES.chromium.html
 }
@@ -45,7 +40,7 @@ build() {
     # Adjust .desktop so it will work outside of AppImage container
     sed -i \
         -e "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" \
-        -e "s|Icon=.*|Icon=/usr/share/icons/${_pkgname}.png|" \
+        -e "s|Icon=.*|Icon=${_pkgname}|" \
         "squashfs-root/${_pkgname}.desktop"
 }
 
@@ -60,8 +55,8 @@ package() {
             "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
     # Icon images
-    install -dm755 "${pkgdir}/usr/share/"
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/scalable/capacities.svg" \
+            "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
