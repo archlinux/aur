@@ -83,7 +83,9 @@ build() {
   #   all targets (ggml + parakeet); redundant with makepkg's default lto option but
   #   guarantees LTO even if !lto is set or building outside makepkg.
   # CMAKE_SKIP_RPATH=ON: prevents cmake from embedding the build directory into the
-  #   binaries' RUNPATH (which triggers makepkg's $srcdir-reference warning).
+  #   binaries' RUNPATH. Without this, parakeet-cli/server embed
+  #   $srcdir/.../build as RUNPATH and only resolve libparakeet.so from there;
+  #   the package is then broken off the build host.
   # -ffile-prefix-map strips the absolute build path from __FILE__ macros (reproducible).
   # _cmake_extra: GPU backend flags (Vulkan by default; CUDA/HIP opt-in via env).
   CFLAGS="${CFLAGS} -ffile-prefix-map=${srcdir}=." \
@@ -91,6 +93,7 @@ build() {
   cmake -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
+    -DCMAKE_SKIP_RPATH=ON \
     -DBUILD_SHARED_LIBS=OFF \
     -DPARAKEET_BUILD_TESTS=OFF \
     -DPARAKEET_BUILD_CLI=ON \
