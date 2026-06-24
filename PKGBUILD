@@ -1,19 +1,19 @@
-# Maintainer: Connor McFarlane <cm at semtex dot net>
+# Maintainer: Arnold DECHAMPS <ard at dechamps.aero>
 
 pkgname=flexoptix
-pkgver=5.21.0
+pkgver=5.64.0
 pkgrel=1
 pkgdesc='Flexoptix Flexbox transceiver programmer'
 arch=('any')
 url='https://www.flexoptix.net/en/flexoptix-app'
 license=('custom')
 depends=('hidapi')
-makedepends=('asar')
+makedepends=('asar' 'nodejs')
 install=flexoptix.install
 source=("flexoptix-${pkgver}.AppImage::https://flexbox.reconfigure.me/download/electron/linux/x64/FLEXOPTIX%20App.${pkgver}-latest.AppImage"
-        'https://www.flexoptix.net/skin/udev_rules/99-tprogrammer.rules'
+        'https://www.flexoptix.net/static/frontend/Flexoptix/default/en_US/files/99-tprogrammer.rules'
         'disable-autoupdate.patch')
-sha256sums=('6910cae629c02faaf34b6ee7ccffa69ee59cc2f66432a79dfff230fa9acab7ab'
+sha256sums=('9c4a8d0e258ef2c5754bb8485dc7301a5172355079813c359569d12040a682a4'
             '3997b9755e74c6af7da252266e8ec94313e345dee11b204857016fb51f5c2157'
             'f1ae709af8a4c26d177d9339084b7dc73fd9bbb988f4e7601e0969f5f0121612')
 
@@ -44,7 +44,7 @@ package() {
   # install desktop entries
   install -Dm644 "${_appdir}/flexoptix-app.desktop" "${pkgdir}/usr/share/applications/flexoptix-app.desktop"
   install -Dm644 "${_appdir}/flexoptix-app.png" "${pkgdir}/usr/share/applications/flexoptix-app.png"
-  install -Dm644 "${_appdir}/usr/share/icons/hicolor/0x0/apps/flexoptix-app.png" "${pkgdir}/usr/share/icons/hicolor/0x0/apps/flexoptix-app.png"
+  install -Dm644 "${_appdir}/usr/share/icons/hicolor/1024x1024/apps/flexoptix-app.png" "${pkgdir}/usr/share/icons/hicolor/0x0/apps/flexoptix-app.png"
 
   # clean up unused bits
   rm -rf "${_appdir}/usr" "${_appdir}/flexoptix-app.desktop" "{_appdir}/flexoptix-app.png"
