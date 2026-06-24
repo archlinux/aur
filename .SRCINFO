@@ -23,7 +23,7 @@ pkgbase = cliprithm
 	source = cliprithm-1.3.5.tar.gz::https://github.com/BOTOOM/Cliprithm/archive/refs/tags/cliprithm-v1.3.5.tar.gz
 	source = cliprithm
 	source = cliprithm.desktop
-	sha256sums = 60936327d01eed09595d6211b4f1e8f182c9464bd82ce0d62dfab5ae75e91a72
+	sha256sums = dc51a03805ce27ace29b7c40e968733609824d7269898b9f790963185191febc
 	sha256sums = fb39cdb168e8c849348069eaf812712f206694268da8228b7d03972b77fadbd5
 	sha256sums = fc1f073620a6ea5283c288a5870941eea57dc2369b691c0788ec8fb16260045f
 
