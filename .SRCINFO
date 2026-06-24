@@ -1,0 +1,19 @@
+pkgbase = zram-init-openrc-git
+	pkgdesc = OpenRC init script for 'zram-init'.
+	pkgver = 13.3.r36.20260228.66ef54e
+	pkgrel = 1
+	url = https://github.com/vaeth/zram-init
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = zram-init>=13
+	depends = zram-init<14
+	optdepends = openrc: To make use of this script.
+	provides = zram-init-openrc=13.3.r36.20260228.66ef54e
+	conflicts = zram-init-openrc
+	options = !emptydirs
+	backup = etc/conf.d/zram-init
+	source = zram-init::git+https://github.com/vaeth/zram-init.git
+	sha256sums = SKIP
+
+pkgname = zram-init-openrc-git
