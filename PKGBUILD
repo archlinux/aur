@@ -5,7 +5,7 @@ _pkgauthor=tonyantony300
 _pkgname=alt-sendme
 pkgname=${_pkgname}-bin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Frictionless, real-time file transfer tool'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
@@ -20,7 +20,7 @@ conflicts=("${_pkgname}")
 
 options=('!strip')
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgtitle}_${pkgver}_${_barch[0]}.deb")
-sha256sums_x86_64=('66d7b3446566d872a8de693da70e9c6422c2b4d957e1e11ad4553d4c15839349')
+sha256sums_x86_64=('a62b8ce91eab72d0a101e0229ef6c9e83870666b764bf9458512be6b2434106b')
 
 
 package() {
