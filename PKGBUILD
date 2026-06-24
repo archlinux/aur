@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Chausse <benjamin@chausse.xyz>
 
 pkgname=termpicker-git
-pkgver=v1.5.1
+pkgver=v1.5.2
 pkgrel=1
 pkgdesc="A color picker for the terminal"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 )
 provides=('termpicker')
 conflicts=('termpicker' 'termpicker-bin')
-source=("${pkgname}::git+https://github.com/ChausseBenjamin/termpicker.git#tag=v1.5.1")
+source=("${pkgname}::git+https://github.com/ChausseBenjamin/termpicker.git#tag=v1.5.2")
 sha256sums=('SKIP')
 
 
