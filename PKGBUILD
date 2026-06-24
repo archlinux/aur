@@ -2,7 +2,7 @@
 _appname=flomo
 pkgname="${_appname}-pake"
 _pkgname=Flomo
-pkgver=3.11.8
+pkgver=3.12.0
 pkgrel=1
 pkgdesc="Use Pake to package Flomo.浮墨笔记,像发微博一样记笔记,记录你想法的川流.全平台覆盖,还支持微信服务号输入."
 arch=('x86_64')
@@ -18,8 +18,8 @@ source=(
     "${pkgname%-pake}-${pkgver}.deb::${_ghurl}/releases/download/V${pkgver}/${_pkgname}_${CARCH}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${pkgver}/LICENSE"
 )
-sha256sums=('524d4eca363a1c7ebeecfea818f48b1c5c05fe75c84eeb5099185e3c6f787ccd'
-            '462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758')
+sha256sums=('4b06e62951ee9d1da5fe40f21460a1c1d7d78f70405ba6f0b487c9cfc244b821'
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -e "
