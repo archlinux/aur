@@ -2,7 +2,7 @@
 pkgname=nmlinux
 pkgver=1.6.0
 pkgrel=1
-pkgdesc="Unified network toolkit for Linux — 29 modules, SSH terminal, topology, asset inventory"
+pkgdesc="A unified network toolkit for Linux and macOS — SSH, WinRM, topology, 29 modules"
 arch=('any')
 url="https://github.com/thongor77/nmlinux"
 license=('GPL2')
