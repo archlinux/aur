@@ -3,8 +3,8 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-libvpx
-pkgver=1.15.2
-pkgrel=2
+pkgver=1.16.0
+pkgrel=1
 arch=('any')
 pkgdesc="VP8 and VP9 codec (Android ${_android_arch})"
 url="http://www.webmproject.org/"
@@ -15,7 +15,7 @@ makedepends=('android-configure'
              'yasm')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("https://github.com/webmproject/libvpx/archive/v${pkgver}.tar.gz")
-md5sums=('4c7a93808c12b359733430c8377b7fcf')
+md5sums=('fb51551487ecfdec93f3d243b7fb1a67')
 
 prepare() {
     source android-env ${_android_arch}
