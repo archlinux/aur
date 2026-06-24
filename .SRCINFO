@@ -1,6 +1,6 @@
 pkgbase = ttt
 	pkgdesc = A terminal text editor IDE
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/eugenioenko/ttt
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ttt
 	optdepends = ripgrep: Workspace Search
 	provides = ttt
 	options = !strip
-	source = ttt-0.3.3.tgz::https://github.com/eugenioenko/ttt/archive/v0.3.3.tar.gz
-	sha256sums = cef3e62338a9b16edb823a3e3c3c98a1892b721c8ffb77475c1ed259201731c9
+	source = ttt-0.3.4.tgz::https://github.com/eugenioenko/ttt/archive/v0.3.4.tar.gz
+	sha256sums = c791ff0c315dddbb46dd8bd88173f9ec9b24b048e4cce4646d5f4b30faaf3a3f
 
 pkgname = ttt
