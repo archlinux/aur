@@ -1,2 +1,2 @@
 #!/usr/bin/sh
-exec /opt/Bluestar-Manager/Bluestar\ Manager "$@"
+DESKTOPINTEGRATION=1 exec /opt/Bluestar-Manager/Bluestar\ Manager "$@"
