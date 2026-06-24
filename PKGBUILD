@@ -4,12 +4,13 @@
 # Contributor: Alexandre Filgueira <alexfilgueira@cinnarch.com>
 # Contributor: Ner0
 
-pkgname=nemo-filechooser
-pkgver=6.7.3
+pkgbase=nemo-filechooser
+pkgname=dory
+pkgver=6.7.3.r2603.682e738
 pkgrel=1
-pkgdesc='File manager for Cinnamon (Nautilus fork) - with native file chooser D-Bus portal integration'
+pkgdesc='Cinnamon File Chooser Portal Helper (Nemo fork) - side-by-side native picker'
 arch=(x86_64)
-url='https://github.com/linuxmint/nemo'
+url='https://github.com/Twilight0/nemo'
 license=('GPL-3.0-or-later AND LGPL-2.1-or-later')
 depends=(
   at-spi2-core
@@ -34,43 +35,58 @@ depends=(
   python-cairo
   python-gobject
   xapp
-)
-optdepends=(
-  'catdoc: search helpers support for legacy MS Word files'
-  'cinnamon-translations: i18n'
-  'ffmpegthumbnailer: support for video thumbnails'
-  'ghostscript: search helpers support for PostScript files'
-  'libgsf: search helpers support for MS Office files'
-  'libreoffice: search helpers support for legacy MS PowerPoint files'
-  'poppler: search helpers support for PDF files'
-  'python-xlrd: search helpers support for legacy MS Excel files'
+  nemo
 )
 makedepends=(
   git
   glib2-devel
   gobject-introspection
-  gtk-doc
-  intltool
   libgsf
   meson
 )
-provides=(nemo)
-conflicts=(nemo)
-source=("nemo::git+https://github.com/Twilight0/nemo.git#branch=feature/native-file-picker")
+source=("dory::git+https://github.com/Twilight0/nemo.git#branch=feature/dory-file-picker")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd nemo
+  cd dory
   printf "6.7.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  arch-meson nemo build \
-    --libexecdir=lib/nemo \
-    -D gtk_doc=true
+  arch-meson dory build \
+    --libexecdir=lib/dory \
+    -D gtk_doc=false
   meson compile -C build
 }
 
-package() {
+package_dory() {
   meson install -C build --destdir="$pkgdir"
+
+  # Clean up all files that conflict with the official nemo package
+  rm -f "$pkgdir/usr/bin/nemo-desktop"
+  rm -f "$pkgdir/usr/bin/nemo-autorun-software"
+  rm -f "$pkgdir/usr/bin/nemo-connect-server"
+  rm -f "$pkgdir/usr/bin/nemo-open-with"
+  rm -f "$pkgdir/usr/bin/nemo-xls-to-txt"
+  rm -f "$pkgdir/usr/bin/nemo-odf-to-txt"
+  rm -f "$pkgdir/usr/bin/nemo-epub2text"
+  rm -f "$pkgdir/usr/bin/nemo-action-layout-editor"
+  rm -f "$pkgdir/usr/bin/nemo-mso-to-txt"
+  rm -f "$pkgdir/usr/bin/nemo-ppt-to-txt"
+  rm -f "$pkgdir/usr/share/dbus-1/services/nemo.FileManager1.service"
+  rm -f "$pkgdir/usr/share/dbus-1/services/nemo.service"
+  rm -rf "$pkgdir/usr/lib/dory"
+  rm -rf "$pkgdir/usr/share/applications"
+  rm -rf "$pkgdir/usr/share/icons"
+  rm -rf "$pkgdir/usr/share/polkit-1"
+  rm -rf "$pkgdir/usr/share/nemo"
+  rm -f "$pkgdir/usr/lib/libnemo-extension.so"*
+  rm -rf "$pkgdir/usr/lib/girepository-1.0"
+  rm -rf "$pkgdir/usr/share/gir-1.0"
+  rm -rf "$pkgdir/usr/share/glib-2.0/schemas"
+  rm -rf "$pkgdir/usr/include"
+  rm -f "$pkgdir/usr/lib/pkgconfig/libnemo-extension.pc"
+  rm -rf "$pkgdir/usr/share/gtksourceview-"*
+  rm -rf "$pkgdir/usr/share/man"
+  rm -rf "$pkgdir/usr/share/mime"
 }
