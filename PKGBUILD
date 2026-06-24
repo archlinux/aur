@@ -1,4 +1,4 @@
-# Maintainer: Pablo Hardouin <pablohardouin02 at gmail dot com>
+# Maintainer: Pablo <contact at pablo dot town>
 _pkgname="MrPython"
 pkgname="mrpython"
 pkgver="5.1.6beta"
