@@ -3,10 +3,11 @@
 # Contributor: Rikarnto Bariampa <richard1996ba@gmail.com>
 # Contributor: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 # Contributor: Max Liebkies <mail@maxliebkies.de>
+# Contributor: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
 
 pkgname=powershell
 pkgver=7.6.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url='https://microsoft.com/PowerShell'
@@ -185,6 +186,12 @@ check() {
 
   # Creates a file under ~/.profile, skip
   rm test/powershell/Host/ConsoleHost.Tests.ps1
+
+  # Attempts to createt the USER_MODULES and SHARED_MODULES locations
+  rm test/powershell/Modules/Microsoft.PowerShell.PSResourceGet/Microsoft.PowerShell.PSResourceGet.Tests.ps1
+
+  # Runs Install-Script affecting the CurrentUser scope
+  rm test/powershell/Modules/PowerShellGet/PowerShellGet.Tests.ps1
 
   ## Restore-PSPester()
   unzip -ud temp_pester "$srcdir/pester.${_pesterversion}.nupkg"
