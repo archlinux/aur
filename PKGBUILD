@@ -1,28 +1,26 @@
 # Maintainer: c2h5oh
 
 pkgname="orca-slicer"
-pkgver=2.3.2
-pkgrel=6
+pkgver=2.4.0
+pkgrel=1
 epoch=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
-url="https://github.com/SoftFever/OrcaSlicer"
+url="https://github.com/OrcaSlicer/OrcaSlicer"
 license=('AGPL-3.0-only')
-depends=('bash' 'cairo' 'dbus' 'expat' 'fontconfig' 'gdk-pixbuf2' 'glib2' 'glibc' 'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'hicolor-icon-theme' 'libgcc' 'libglvnd' 'libjpeg-turbo' 'libsecret' 'libspnav' 'libstdc++' 'libtiff' 'libx11' 'mesa' 'mesa-utils' 'pango' 'python'  'wayland' 'webkit2gtk-4.1' 'zlib')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'glew' 'libigl' 'm4' 'ninja' 'pkgconf' 'wayland-protocols' 'wget' 'awk')
+depends=('bash' 'cairo' 'dbus' 'expat' 'fontconfig' 'gdk-pixbuf2' 'glib2' 'glibc' 'gspell' 'gst-plugins-bad-libs'
+         'gstreamer' 'gtk3' 'hicolor-icon-theme' 'libgcc' 'libglvnd' 'libjpeg-turbo' 'libstdc++' 'libx11' 'libxkbcommon'
+         'mesa' 'mesa-utils' 'pango' 'python' 'wayland' 'webkit2gtk-4.1' 'zlib')
+makedepends=('awk' 'ccache' 'cmake' 'extra-cmake-modules' 'git' 'glew' 'libigl' 'libmspack' 'libnotify' 'm4' 'ninja'
+             'pkgconf' 'python-numpy' 'superlu' 'wayland-protocols')
 optdepends=('nvidia-utils: for querying driver version')
 options=('!debug' '!emptydirs')
 provides=("orca-slicer")
 conflicts=("orca-slicer")
-source=(
-  "OrcaSlicer-v${pkgver}.tar.gz::https://codeload.github.com/OrcaSlicer/OrcaSlicer/tar.gz/refs/tags/v${pkgver}"
-  "orca-slicer.sh"
-  "deps-build-parallelism.patch"
-  )
-sha256sums=('2c7eea7b1e3757011f2c9520dc1712d789b9182b5c276aba271bf814172b0a52'
-            'c1ca1fadba5f5c088af80f076f911c74fa594e8200cee7be65e4330f43909e7d'
-            'c94df90eb725b301b7732974b73f21014e34853727266204f8a74aab0acda432')
-
+source=("OrcaSlicer-v${pkgver}.tar.gz::https://codeload.github.com/OrcaSlicer/OrcaSlicer/tar.gz/refs/tags/v${pkgver}"
+        "orca-slicer.sh")
+sha256sums=('e7a05f4e8222e22d470298897e318d123ba0abd99e363d61469d1ce1bfc0dff5'
+            'c1ca1fadba5f5c088af80f076f911c74fa594e8200cee7be65e4330f43909e7d')
 
 build() {
   # cmake 4.x compatibility workaround
@@ -36,8 +34,6 @@ build() {
     export CMAKE_BUILD_PARALLEL_LEVEL=$(awk '/MemFree/ { printf "%.0f\n", $2/1024/1024 }' /proc/meminfo)
   fi
 
-  git apply ../deps-build-parallelism.patch
-
   # deps
   cmake -S deps \
     -B deps/build \
@@ -45,8 +41,7 @@ build() {
     -DDEP_WX_GTK3=ON \
     -DDESTDIR="$PWD/deps/build/destdir" \
     -DDEP_DOWNLOAD_DIR="$PWD/deps/DL_CACHE" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCOLORED_OUTPUT=ON
+    -DCMAKE_BUILD_TYPE=Release
   cmake --build deps/build -j1
 
   cmake \
