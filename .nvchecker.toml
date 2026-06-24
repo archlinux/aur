@@ -1,0 +1,5 @@
+[matlab-terminal-server-bin]
+source = "github"
+github = "matlab/terminal-in-matlab"
+use_latest_release = true
+prefix = "v"
