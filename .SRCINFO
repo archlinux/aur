@@ -1,0 +1,17 @@
+pkgbase = meta-rules-dat-git
+	pkgdesc = rules dat files by MetaCubeX
+	pkgver = 20260624
+	pkgrel = 1
+	url = https://github.com/MetaCubeX/meta-rules-dat
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = coreutils
+	provides = meta-rules-dat=20260624
+	provides = meta-rules-dat-lite=20260624
+	conflicts = meta-rules-dat
+	conflicts = meta-rules-dat-lite
+	source = meta-rules-dat-git::git+https://github.com/MetaCubeX/meta-rules-dat
+	sha256sums = SKIP
+
+pkgname = meta-rules-dat-git
