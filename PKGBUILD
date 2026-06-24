@@ -7,8 +7,8 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-fftw
-pkgver=3.3.10
-pkgrel=3
+pkgver=3.3.11
+pkgrel=1
 arch=('any')
 pkgdesc="A library for computing the discrete Fourier transform (DFT) (Android ${_android_arch})"
 url="http://www.fftw.org/"
@@ -18,7 +18,7 @@ depends=('android-ndk')
 makedepends=('android-cmake')
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://www.fftw.org/fftw-${pkgver}.tar.gz")
-md5sums=('8ccbf6a5ea78a16dbc3e1306e234cc5c')
+md5sums=('40ec8d0447d03b8f01f8c90aa77bd16f')
 _build_types=(single double long-double)
 # Android's clang does not support quad precision
 # _build_types+=(quad)
