@@ -1,7 +1,7 @@
 pkgbase = zcode-appimage
 	pkgdesc = ZCode desktop app packaged from the upstream AppImage
-	pkgver = 3.1.4
-	pkgrel = 2
+	pkgver = 3.1.5
+	pkgrel = 1
 	url = https://zcode.z.ai/en
 	arch = x86_64
 	license = custom:proprietary
@@ -17,10 +17,10 @@ pkgbase = zcode-appimage
 	conflicts = zcode-bin
 	conflicts = zcode-desktop-bin
 	conflicts = z-code-bin
-	noextract = ZCode-3.1.4-linux-x64.AppImage
+	noextract = ZCode-3.1.5-linux-x64.AppImage
 	options = !strip
 	options = !debug
-	source = ZCode-3.1.4-linux-x64.AppImage::https://cdn-zcode.z.ai/zcode/electron/releases/3.1.4/ZCode-3.1.4-linux-x64.AppImage
-	sha256sums = 8028a01cb2e73f1665efef483cba57e5bd126586fd61f0ea215727c3f2e01df3
+	source = ZCode-3.1.5-linux-x64.AppImage::https://cdn-zcode.z.ai/zcode/electron/releases/3.1.5/ZCode-3.1.5-linux-x64.AppImage
+	sha256sums = c5a9ad44a0aa9cf8fad18d80d0c861fa16ec94e73710ad549decf4e3c3b7c28d
 
 pkgname = zcode-appimage
