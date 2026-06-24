@@ -1,6 +1,6 @@
 pkgbase = exilecompass-bin
 	pkgdesc = Path of Exile 2 game overlay (campaign guide, stash regex, build tracker)
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/juddisjudd/exilecompass
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = exilecompass-bin
 	conflicts = exilecompass
 	options = !strip
 	options = !debug
-	source = ExileCompass_0.3.2_amd64.deb::https://github.com/juddisjudd/exilecompass/releases/download/v0.3.2/ExileCompass_0.3.2_amd64.deb
-	sha256sums = 11fe2532685e047f1382178a08879de39a5befe58f36ec2233a9a3bcf457d1fc
+	source = ExileCompass_0.3.3_amd64.deb::https://github.com/juddisjudd/exilecompass/releases/download/v0.3.3/ExileCompass_0.3.3_amd64.deb
+	sha256sums = 38dc61e1ec7ac7bec4e2f40309b0bc0af683622608456a0acc66f3b65c13f3ec
 
 pkgname = exilecompass-bin
