@@ -4,7 +4,7 @@ pkgbase=dms-shell-git
 _pkgbase=${pkgbase%-git}
 _pkgname=DankMaterialShell
 pkgname=($_pkgbase-git)
-pkgver=1.4.0.r283.ga0c7ffd
+pkgver=1.4.0.r722.g52834c6
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
@@ -32,14 +32,16 @@ source=(
         "completions.fish"
         "completions.zsh"
         "danklogo.svg"
-        "dms-open.desktop")
+        "dms-open.desktop"
+        "com.danklinux.dms.desktop")
 sha256sums=('SKIP'
             '036f9a61170ddc315479081b84eeba3b3fb610018b82edf31dacce65c290acba'
             '61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4'
             '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
             '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d'
             '540c27cacf8ac512b62f88c1613d6e3f42ba96e3dce47acbb8283471d1730bab'
-            '16cb5af919380a95b50a2d6248128740e735e51967b3bd05e2b0a4fdb659ef2d')
+            '16cb5af919380a95b50a2d6248128740e735e51967b3bd05e2b0a4fdb659ef2d'
+            '52a575af9fc0eaad3e320a4374203653a7add7c2c427bd069cb3bd9a8eff1183')
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags --abbrev=7 --match="v*" HEAD 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || echo "0.0.0.r0.$(git rev-parse --short=7 HEAD)"
@@ -78,5 +80,6 @@ package_dms-shell-git() {
 	install -Dm0644 "completions.zsh" "$pkgdir/usr/share/zsh/site-functions/_dms"
 	install -Dm0644 "completions.fish" "$pkgdir/usr/share/fish/vendor_completions.d/dms.fish"
 	install -Dm0644 "dms-open.desktop" "$pkgdir/usr/share/applications/dms-open.desktop"
+	install -Dm0644 "com.danklinux.dms.desktop" "$pkgdir/usr/share/applications/com.danklinux.dms.desktop"
 	install -Dm0644 "danklogo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/danklogo.svg"
 }

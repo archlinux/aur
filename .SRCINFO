@@ -28,6 +28,7 @@ pkgbase = dms-shell-git
 	source = completions.zsh
 	source = danklogo.svg
 	source = dms-open.desktop
+	source = com.danklinux.dms.desktop
 	sha256sums = SKIP
 	sha256sums = 036f9a61170ddc315479081b84eeba3b3fb610018b82edf31dacce65c290acba
 	sha256sums = 61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4
@@ -35,6 +36,7 @@ pkgbase = dms-shell-git
 	sha256sums = 41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d
 	sha256sums = 540c27cacf8ac512b62f88c1613d6e3f42ba96e3dce47acbb8283471d1730bab
 	sha256sums = 16cb5af919380a95b50a2d6248128740e735e51967b3bd05e2b0a4fdb659ef2d
+	sha256sums = 52a575af9fc0eaad3e320a4374203653a7add7c2c427bd069cb3bd9a8eff1183
 
 pkgname = dms-shell-git
 	install = dms-shell-git.install
