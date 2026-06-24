@@ -12,7 +12,7 @@ pkgname=(
 pkgver=5.9.98
 qt6ver="6.4.2-1"
 _patchver='-1'
-pkgrel=3
+pkgrel=4
 pkgdesc='A complete solution for viewing, creating and editing PDF files.'
 url='https://code-industry.net/free-pdf-editor/'
 _checksum=$(curl 'https://code-industry.net/checksum-information/' | grep -oP '[a-f0-9]{40}(?=.*master-pdf-editor-'"${pkgver}${_patchver}"'-qt6.x86_64.tar.gz)')
@@ -99,6 +99,15 @@ package_masterpdfeditor-qt6() {
 
     # Finally, the application extras, such as launcher
     cd "${pkgdir}/opt/${_pkgname}" || return 1
+
+    # Patch the desktop to use usr/bin launcher
+    sed -i \
+        -e 's|^Exec=.*|Exec=/usr/bin/masterpdfeditor5 %f|' \
+        -e 's|^Path=.*|Path=/opt/masterpdfeditor|' \
+        -e 's|^Icon=.*|Icon=/opt/masterpdfeditor/masterpdfeditor5.png|' \
+        "${srcdir}/${_pkgname}${pkgver%%.*}.desktop"
+
+    # Install all the files.
     install -Dm755 \
         "${srcdir}/${_pkgname}" \
         "${pkgdir}/usr/bin/"

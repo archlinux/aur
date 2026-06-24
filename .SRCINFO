@@ -1,7 +1,7 @@
 pkgbase = masterpdfeditor-qt6
 	pkgdesc = A complete solution for viewing, creating and editing PDF files.
 	pkgver = 5.9.98
-	pkgrel = 3
+	pkgrel = 4
 	url = https://code-industry.net/free-pdf-editor/
 	arch = x86_64
 	license = custom
