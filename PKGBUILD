@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=r-air-bin
-pkgver=0.10.0
+pkgver=0.10.0 # renovate: datasource=github-tags depName=posit-dev/air
 pkgrel=2
 pkgdesc="An R language server and formatter"
 arch=('x86_64')
