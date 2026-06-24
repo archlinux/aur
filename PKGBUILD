@@ -1,5 +1,5 @@
 pkgname=tg-ws-proxy
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="Telegram Desktop WebSocket Bridge Proxy"
 arch=('any')
