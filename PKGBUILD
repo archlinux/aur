@@ -1,6 +1,6 @@
 
 pkgname=python-pygame-menu
-pkgver=4.2.8
+pkgver=4.5.4
 pkgrel=1
 pkgdesc="Menu for pygame"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('python-setuptools')
 depends=('python' 'python-pygame' )
 source=("https://github.com/ppizarror/pygame-menu/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('c422fe4420cf12388a1835aefe89114796562963d1de6d7aa88f68880a2d0311')
+sha256sums=('da7f48a4063e857ffd55e5b53b494223db63ce1791a39825e7791684ebcd01ce')
 
 build() {
     cd pygame-menu-"$pkgver"
