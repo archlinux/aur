@@ -1,6 +1,6 @@
 pkgbase = stack-bin
 	pkgdesc = The Haskell Tool Stack. Packaged from upstream binary release.
-	pkgver = 3.9.3
+	pkgver = 3.11.1
 	pkgrel = 1
 	url = https://github.com/commercialhaskell/stack
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = stack-bin
 	provides = stack-static
 	conflicts = stack
 	conflicts = stack-static
-	source = https://github.com/commercialhaskell/stack/releases/download/v3.9.3/stack-3.9.3-linux-x86_64.tar.gz
-	sha256sums = bc45cf6e1d00910348dcceb510a469056f6d9c63997230f901c22cf997598b05
+	source = https://github.com/commercialhaskell/stack/releases/download/v3.11.1/stack-3.11.1-linux-x86_64.tar.gz
+	sha256sums = 1fda71e657cd8d355625cc66b61b352699279dfee2664c014a392163bd19a952
 
 pkgname = stack-bin
