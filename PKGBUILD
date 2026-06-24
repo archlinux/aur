@@ -2,7 +2,7 @@
 
 pkgname=zcode-desktop-bin
 _pkgname=zcode
-pkgver=3.1.2
+pkgver=3.1.4
 pkgrel=1
 pkgdesc='ZCode desktop app repackaged from the official macOS release'
 arch=('x86_64')
@@ -25,7 +25,7 @@ provides=('zcode')
 conflicts=('zcode')
 options=('!strip' '!lto')
 source=(
-  "ZCode-${pkgver}-mac-arm64.dmg::https://cdn.zcode-ai.com/zcode/electron/releases/${pkgver}/ZCode-${pkgver}-mac-arm64.dmg"
+  "ZCode-${pkgver}-mac-arm64.dmg::https://cdn-zcode.z.ai/zcode/electron/releases/${pkgver}/ZCode-${pkgver}-mac-arm64.dmg"
   'zcode.sh'
   'zcode-agent.sh'
   'zcode.desktop'
@@ -37,7 +37,7 @@ noextract=(
   'node-pty.tgz'
 )
 sha256sums=(
-  '80c5b4cc211f5ab5e1eeb7d8e1822e4743df93afbfbbacf073af94d35f2bcbcb'
+  '71d683b8fbaa62d3efb243161dc4d9f899d445a78bf95dd071d809f2c7467f9d'
   '3a4a003b52841ae44b2f52ee3934db4a6817c81ade7712b3d7ebd1342f8cfec1'
   'c6e3e82a1bdd4d32e93169d7ea1cff5b8774bf90cebfae9de68768b882494d1c'
   '93bb4962e64681acff5ae798b0025154a80160f147347747b397b31aba603ddc'
