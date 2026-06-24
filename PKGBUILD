@@ -7,7 +7,7 @@
 
 pkgname=powershell
 pkgver=7.6.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url='https://microsoft.com/PowerShell'
@@ -16,7 +16,8 @@ options=('!debug')
 depends=(
   dotnet-runtime-10.0
 )
-optdepends=('openssh: PowerShell Remoting over ssh')
+optdepends=('openssh: PowerShell Remoting over ssh'
+  'xclip: Clipboard functionality')
 makedepends=(
   dotnet-sdk-10.0
   aspnet-targeting-pack-10.0
@@ -25,9 +26,12 @@ makedepends=(
   jq
 )
 checkdepends=(
+  expect        # Needed for test/powershell/Host/Read-Host.Tests.ps1
+  lttng-ust2.12 # Used for CoreCLR tracing, adds to reproducibility here
   inetutils
   iputils
   openssh # Needed for test/powershell/engine/Remoting/SSHRemotingCmdlets.Tests.ps1
+  xclip   # Needed for test/powershell/Modules/Microsoft.PowerShell.Management/Clipboard.Tests.ps1
   xdg-utils
 )
 install=powershell.install
@@ -40,17 +44,27 @@ source=(
   'Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets'
   "https://globalcdn.nuget.org/packages/pester.$_pesterversion.nupkg"
   'nuget-source.patch'
+  'disable-telemetry.patch'
 )
 noextract=("pester.${_pesterversion}.nupkg")
-sha256sums=('4432e2669efc11bb538043b61b5a77bf0ac91969e1035c6b1fda664269517b5b'
-            '0c81200e5211a2f63bc8d9941432cbf98b5988249f0ceeb1f118a14adddbaa8e'
-            '6c996dc4dc8bef068cefb1680292154f45577c66fb0600dd0fb50939bbf8a3a3'
-            '84d34a09759271aa7aa614b97ff62642c773b2f81a712ac18d99985cf7a3c3ea')
+sha512sums=('2a185b1388744ff2ae36d87a56734532381fa0fcfa71b7c973ac0efbafe0347a9ae43f4b7b76fde69484d7ae35e208500923aed8904f5e8824073b2f621baec3'
+  '5a70efe247cdae8ed5c66702909137e0727cf5e25aca54983891fc17716a56081825f9a6e57c56f8fa8aa5615a159f81c68ca501d42e2ce085c073be633b3025'
+  '28044ba021b435692c22f7b1c8601774c87ddbfbc48356b74927a1e66c6d0cd1c16bd6b8a60a97ce8fed8114b7f39ef42684b9e3df30c01ba8359a901c7e8a81'
+  'b23c18212391a9396e02e3b92abd91036d9f1bef3339d8b895b216c51b0f0e25b8baf3175204c6a802f6c6202c352d6574746c57297d4d38cb30b8fec2774792'
+  '85b41fa0e6e2b40df3de5ddcb382d0801dff1cf709ec05c8f83116bfdba37ab740cddda1fcd47701cdb367a279e179ea518a00f01d698276abfb12074eeffbd1')
+b2sums=('9846ac2506e74038ad74d1f79e9de8eadd1f0d54a5855109e3d38fb4e960c9f0f7d004c06e893ec8aac9f4ffa3cd86fa933583acaf61613e722d365a1a00316c'
+  'ae227c4fb537ebc22fab66ed51ad49eee6b9c5be884a245256039cedfdc72e7e09329f814394aa961bcadf4c00b566c31da868f442392e72c6937a7a96587c14'
+  '7f271e30cd911ad386789e83d0e45ba1e34a3dcce551e306f2fbf603613f4257dfa0b315a13643beb6efc5bdd3937088cccb4883e7fb0ca525a8a4eb20f9986c'
+  '2c343d12d57057d1b0602fd772c3c99d8ca81448ab4a57447797d3ace540b7feed5e0271c2644ffe296fdbdef0b546549b9ef7d969bff5f4d98e487d3771dde8'
+  '726b8934b144bf3a5ac1fc70a42a5da6d2dc47e939e1d63f35b6b05f2dd17b22977a94e42accd18b33d0cae22b9583b3008a0172efce95f457853eb96d7dcf1a')
 
 prepare() {
   cd PowerShell
 
-  jq '.sdk.version = "10.0.0" | .sdk.rollForward = "feature"' global.json > _global.json
+  # Change the default for POWERSHELL_TELEMETRY_OPTOUT to disable telemetry by default
+  patch --strip=0 --input=../disable-telemetry.patch
+
+  jq '.sdk.version = "10.0.0" | .sdk.rollForward = "feature"' global.json >_global.json
   mv _global.json global.json
 
   # Use nuget.org source
@@ -184,14 +198,17 @@ check() {
   rm test/powershell/engine/Basic/Assembly.LoadFrom.Tests.ps1
   rm test/powershell/engine/Basic/Assembly.LoadNative.Tests.ps1
 
-  # Creates a file under ~/.profile, skip
+  # Creates a file named ~/.profile, skip
   rm test/powershell/Host/ConsoleHost.Tests.ps1
 
-  # Attempts to createt the USER_MODULES and SHARED_MODULES locations
+  # Attempts to create the USER_MODULES and SHARED_MODULES locations
   rm test/powershell/Modules/Microsoft.PowerShell.PSResourceGet/Microsoft.PowerShell.PSResourceGet.Tests.ps1
 
   # Runs Install-Script affecting the CurrentUser scope
   rm test/powershell/Modules/PowerShellGet/PowerShellGet.Tests.ps1
+
+  # We disable telemetry by default, which the telemetry tests do not expect
+  rm test/powershell/engine/Basic/Telemetry.Tests.ps1
 
   ## Restore-PSPester()
   unzip -ud temp_pester "$srcdir/pester.${_pesterversion}.nupkg"
@@ -233,11 +250,11 @@ check() {
     $env:PSModulePath = "$(Get-Location)/test/tools/Modules:" + $env:PSModulePath
     Import-Module "Pester"
     Invoke-Pester -Show Header,Failed,Summary -EnableExit `
-      -OutputFormat NUnitXml -OutputFile pester-tests.xml `
-      -ExcludeTag @("Slow", "RequireSudoOnUnix") `
-      -Tag @("CI", "Feature") `
-      "test/powershell"
-  '
+    -OutputFormat NUnitXml -OutputFile pester-tests.xml `
+    -ExcludeTag @("Slow", "RequireSudoOnUnix") `
+    -Tag @("CI", "Feature") `
+    "test/powershell"
+    '
 }
 
 package() {

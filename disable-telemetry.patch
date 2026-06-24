@@ -1,0 +1,11 @@
+--- src/System.Management.Automation/utils/Telemetry.cs	2026-06-23 21:15:59.756270827 +0200
++++ src/System.Management.Automation/utils/Telemetry.cs.fixed	2026-06-25 00:26:24.535793028 +0200
+@@ -177,7 +177,7 @@
+         /// </summary>
+         static ApplicationInsightsTelemetry()
+         {
+-            CanSendTelemetry = !Utils.GetEnvironmentVariableAsBool(name: _telemetryOptoutEnvVar, defaultValue: false)
++            CanSendTelemetry = !Utils.GetEnvironmentVariableAsBool(name: _telemetryOptoutEnvVar, defaultValue: true)
+                 && Platform.TryDeriveFromCache("telemetry.uuid", out s_uuidPath);
+ 
+ #if !UNIX
