@@ -1,6 +1,6 @@
 pkgbase = sway-mirror
 	pkgdesc = Fast zero-copy screen mirroring for Sway/wlroots
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/pescheckit/sway-mirror
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = sway-mirror
 	depends = wayland
 	depends = libgbm
 	depends = libdrm
-	source = sway-mirror-1.0.2.tar.gz::https://github.com/pescheckit/sway-mirror/archive/refs/tags/v1.0.2.tar.gz
+	source = sway-mirror-1.0.3.tar.gz::https://github.com/pescheckit/sway-mirror/archive/refs/tags/1.0.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = sway-mirror

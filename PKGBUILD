@@ -1,6 +1,6 @@
 # Maintainer: Bram <bram+sway@pescheck.io>
 pkgname=sway-mirror
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Fast zero-copy screen mirroring for Sway/wlroots"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/pescheckit/sway-mirror"
 license=('MIT')
 depends=('wayland' 'libgbm' 'libdrm')
 makedepends=('cargo' 'wayland-protocols')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/pescheckit/sway-mirror/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pescheckit/sway-mirror/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 prepare() {
