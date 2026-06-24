@@ -1,0 +1,21 @@
+pkgbase = parakeet.cpp-release-git
+	pkgdesc = C++/ggml inference engine for NVIDIA Parakeet ASR models (latest Git release)
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/mudler/parakeet.cpp
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	provides = parakeet=0.3.2
+	provides = parakeet-cli=0.3.2
+	provides = parakeet-server=0.3.2
+	conflicts = parakeet
+	conflicts = parakeet-cli
+	conflicts = parakeet-server
+	conflicts = parakeet-bin
+	conflicts = parakeet-bin-release-git
+	source = parakeet.cpp-release-git::git+https://github.com/mudler/parakeet.cpp.git
+	sha256sums = SKIP
+
+pkgname = parakeet.cpp-release-git
