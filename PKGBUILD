@@ -1,8 +1,10 @@
-# Maintainer: animawave <animawave@github.com>
+# Maintainer: vi70x3 <vi70x3@github.com>
+# Contributor: animawave <animawave@github.com>
+
 pkgname=animawave-git
-pkgver=5.0.0
-pkgrel=3
-pkgdesc="Internet radio player (fork of shortwave)"
+_pkgver=5.0.0
+pkgrel=4
+pkgdesc="Internet radio player (fork of shortwave) — git version"
 arch=('x86_64' 'aarch64')
 url="https://github.com/animaios/animawave"
 license=('GPL-3.0-or-later')
@@ -15,6 +17,7 @@ depends=(
 makedepends=(
   'rust' 'cargo' 'meson' 'ninja'
   'glib2' 'gtk4' 'libadwaita'
+  'git'
 )
 optdepends=(
   'gst-plugins-ugly: additional codecs'
@@ -25,7 +28,10 @@ replaces=('shortwave')
 source=("$pkgname::git+https://github.com/animaios/animawave.git")
 sha256sums=('SKIP')
 
-pkgver="5.0.0"
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git describe --long --tags --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || echo "$_pkgver"
+}
 
 build() {
   cd "$srcdir/$pkgname"
