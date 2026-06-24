@@ -4,7 +4,7 @@
 
 _pkgname=sshpilot
 pkgname=sshpilot-bin
-pkgver=5.3.0
+pkgver=5.4.2
 pkgrel=1
 _pkgrel_deb=1
 pkgdesc="SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support."
@@ -19,7 +19,7 @@ source=(
     "sshpilot_${pkgver}.deb::${url}/releases/download/v${pkgver}/sshpilot_${pkgver}-${_pkgrel_deb}_all.deb"
     "LICENSE::https://raw.githubusercontent.com/mfat/sshpilot/refs/tags/v${pkgver}/LICENSE"
 )
-sha512sums=('05139662d95f88180ae1b4f9ea124d42aa3fbc1a62d3deba7d37530789eec85c930a3a1dee084e8cce2b4f80f0244bc23956ecbcb65433fff29e310c1698bfe5'
+sha512sums=('212fe61e199b85daa7468b2c4c3f705e3afd27441151a614b1e21bfb091eeea2549fa0bb0327a6ea79302802052e4262e34f9be03089dc214c4dc4a9ad7cb8e7'
             'a33658d9271e5c537ccd41bf540b463ad2a5eca4a060c80486ff42a736f0aa042d10436e7177c34d792177cb11285243dee1f31c4df54fb0bfaabbc306406930')
 
 package() {
