@@ -2,7 +2,7 @@
 
 pkgname=python-click-spinner
 _pkgname=click-spinner
-pkgver=0.1.10
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Spinner for Click"
 arch=("any")
@@ -10,10 +10,10 @@ url="https://github.com/click-contrib/click-spinner"
 license=('MIT')
 depends=('python-click')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
+source=("https://github.com/click-contrib/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         "${url}/raw/master/LICENSE")
-sha256sums=('87eacf9d7298973a25d7615ef57d4782aebf913a532bba4b28a37e366e975daf'
-            '5a6c9188bff3c34c09dce216996d2c99fc9ea8c1baea3a6903b893d979ac721e')
+sha256sums=('557fbe3ae58921cec0fe6d530cc0f152f8d08e71e647e6470bbb4fb3320d69c4'
+            'c5c1fd90ca653c10b25eb2f8ce55d41654515ccf0254f13e24c8a982a5ad5a5c')
 
 build() {
   cd ${_pkgname}-${pkgver}
