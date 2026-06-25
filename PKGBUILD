@@ -2,13 +2,14 @@
 
 pkgname='pepecoin'
 pkgver='1.1.0'
-pkgrel=5
+pkgrel=6
 pkgdesc="The world's first fully decentralized and secure blockchain for Pepe."
 arch=('x86_64')
 url='https://github.com/pepecoinppc/pepecoin'
 license=('MIT')
 makedepends=(
   'boost'
+  'protobuf'
   'qt5-tools'
 )
 checkdepends=(
@@ -49,6 +50,9 @@ prepare() {
   cd "${pkgname}-${pkgver}"
 
   patch -p1 -i ../use-c++17.patch
+
+  # Regenerate protobuf headers to match system protobuf version
+  protoc --cpp_out=src/qt --proto_path=src/qt src/qt/paymentrequest.proto
 }
 
 build() {
