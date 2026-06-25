@@ -1,7 +1,7 @@
 pkgbase = emutastic-bin
 	pkgdesc = Beautiful retro game library and emulation frontend (libretro)
 	pkgver = 0.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/codingncaffeine/Emutastic-For-Linux
 	arch = x86_64
 	license = GPL-3.0-only
@@ -18,7 +18,7 @@ pkgbase = emutastic-bin
 	source = https://github.com/codingncaffeine/Emutastic-For-Linux/releases/download/v0.8.8/Emutastic-0.8.8-linux-x64.tar.gz
 	source = https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v0.8.8/LICENSE
 	source = emutastic-logo.png::https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v0.8.8/src/Emutastic/Assets/banners%20and%20icons/emutastic-logo.png
-	sha256sums = 811739ce20e46ffb13be166e9b06081f47002fbe2b0bc3bc84fdd4c92ad0879f
+	sha256sums = 27f75381ca9db4c102e0a0c2f65e186f7cade817c09183dcb9cf20c4188392ec
 	sha256sums = SKIP
 	sha256sums = SKIP
 

@@ -4,7 +4,7 @@
 #   makepkg --printsrcinfo > .SRCINFO
 pkgname=emutastic-bin
 pkgver=0.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Beautiful retro game library and emulation frontend (libretro)"
 arch=('x86_64')
 url="https://github.com/codingncaffeine/Emutastic-For-Linux"
@@ -24,7 +24,7 @@ options=('!strip')   # self-contained .NET bundle — stripping breaks it
 source=("$url/releases/download/v$pkgver/Emutastic-$pkgver-linux-x64.tar.gz"
         "$url/raw/v$pkgver/LICENSE"
         "emutastic-logo.png::$url/raw/v$pkgver/src/Emutastic/Assets/banners%20and%20icons/emutastic-logo.png")
-sha256sums=('811739ce20e46ffb13be166e9b06081f47002fbe2b0bc3bc84fdd4c92ad0879f'
+sha256sums=('27f75381ca9db4c102e0a0c2f65e186f7cade817c09183dcb9cf20c4188392ec'
             'SKIP'
             'SKIP')
 
