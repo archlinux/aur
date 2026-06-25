@@ -1,7 +1,7 @@
 pkgbase = wavetask-git
 	pkgdesc = A Plasma 6 task manager plasmoid with zoom effect
 	pkgver = 1.1.r26.gc772608
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vickoc911/org.vicko.wavetask
 	arch = x86_64
 	license = GPL-3.0-only
@@ -9,6 +9,7 @@ pkgbase = wavetask-git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = gcc
+	makedepends = vulkan-headers
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = ki18n

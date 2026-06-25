@@ -3,7 +3,7 @@
 _pkgname=wavetask
 pkgname="$_pkgname-git"
 pkgver=1.1.r26.gc772608
-pkgrel=1
+pkgrel=2
 pkgdesc="A Plasma 6 task manager plasmoid with zoom effect"
 arch=('x86_64')
 url="https://github.com/vickoc911/org.vicko.wavetask"
@@ -37,6 +37,7 @@ makedepends=(
   'cmake'
   'extra-cmake-modules'
   'gcc'
+  'vulkan-headers'
 )
 
 conflicts=("$_pkgname")
