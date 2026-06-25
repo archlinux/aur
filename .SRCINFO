@@ -1,0 +1,25 @@
+pkgbase = sehn
+	pkgdesc = a light-weight, configurable V4L2 camera viewer and capture tool for X11.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/thayeeboi890/sehn
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = pkgconf
+	depends = libx11
+	depends = libxext
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libv4l
+	depends = ffmpeg
+	depends = pulseaudio
+	depends = cairo
+	depends = libexif
+	depends = curl
+	source = https://github.com/thayeeboi890/sehn/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = sehn
