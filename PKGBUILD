@@ -18,7 +18,7 @@ ENABLED_DICTIONARIES=(
 
 pkgname=mozc-ut
 pkgver=3.33.6239.20260625
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
 arch=('x86_64')
 url='https://github.com/google/mozc'
@@ -41,7 +41,7 @@ source=('git+https://github.com/google/mozc.git#commit=291c72fcb648fcb6e7500a0da
         'git+https://github.com/utuhiro78/mozcdic-ut-place-names.git#commit=6f9d9bda14f0bd2c10c1563d2aed9150ea95095c'
         'git+https://github.com/utuhiro78/mozcdic-ut-skk-jisyo.git#commit=7c02e535bd6d999a715a53b58c3366f2401bfb7f'
         'git+https://github.com/utuhiro78/mozcdic-ut-sudachidict.git#commit=7def3da408b1854801bd5b559273f9fb8001ef5b'
-        'https://dumps.wikimedia.org/jawiki//jawiki-20260601-pages-articles-multistream-index.txt.bz2'
+        'https://dumps.wikimedia.org/jawiki/20260601/jawiki-20260601-pages-articles-multistream-index.txt.bz2'
         # Bazel module repo (copy of https://bcr.bazel.build/)
         'git+https://github.com/bazelbuild/bazel-central-registry.git#commit=b0cb0e8ec70689252e3b35f109ffa4a32329b900'
         # Bazel binary
