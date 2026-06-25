@@ -1,0 +1,4 @@
+[python-optuna]
+source = "git"
+git = "https://github.com/optuna/optuna.git"
+prefix = "v"
