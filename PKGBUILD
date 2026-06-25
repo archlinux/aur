@@ -1,6 +1,6 @@
 # Maintainer: Kristyan Carvalho <kristyancarvalho@hotmail.com>
 pkgname=tux-letter
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="AI-assisted Linux and open-source newsletter service"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('go')
 options=('!debug' '!lto')
 source=("$pkgname-$pkgver-src.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver-src.tar.gz")
-sha256sums=('88da520313b0026d8e0dcb1ddd8c1117a4b99c828dac497c4eae183a3d908971')
+sha256sums=('89928fdfafd51b7ddd1969c844760673251ae4c0dd6b5eb733f7c5c0d30798bd')
 
 build() {
   cd "$pkgname-$pkgver"
