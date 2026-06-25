@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=r-rig-bin
-pkgver=0.8.0
+pkgver=0.8.1 # renovate: datasource=github-tags depName=r-lib/rig
 pkgrel=1
 pkgdesc="The R Installation Manager"
 arch=('x86_64')
@@ -25,5 +25,5 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha256sums_x86_64=('62bbf8881594f2239e7306799bfdd8c4c0e90b93a368cf6288aa38d58cb3978a'
+sha256sums_x86_64=('b7b44279144b713f99390003ee9d4489c8bced27e1da7a71af957516c501973b'
                    '6cd5c8d39a38fe457509cb88b5ab333f078c7b05014d27dfebeb69fd4b490db2')

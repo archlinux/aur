@@ -1,6 +1,6 @@
 pkgbase = r-rig-bin
 	pkgdesc = The R Installation Manager
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/r-lib/rig
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = r-rig-bin
 	depends = glibc
 	conflicts = r-rig
 	options = !debug
-	source_x86_64 = r-rig-bin-0.8.0.tar.gz::https://github.com/r-lib/rig/releases/download/v0.8.0/rig-linux-0.8.0.tar.gz
-	source_x86_64 = https://raw.githubusercontent.com/r-lib/rig/refs/tags/v0.8.0/LICENSE
-	provides_x86_64 = r-rig=0.8.0
-	sha256sums_x86_64 = 62bbf8881594f2239e7306799bfdd8c4c0e90b93a368cf6288aa38d58cb3978a
+	source_x86_64 = r-rig-bin-0.8.1.tar.gz::https://github.com/r-lib/rig/releases/download/v0.8.1/rig-linux-0.8.1.tar.gz
+	source_x86_64 = https://raw.githubusercontent.com/r-lib/rig/refs/tags/v0.8.1/LICENSE
+	provides_x86_64 = r-rig=0.8.1
+	sha256sums_x86_64 = b7b44279144b713f99390003ee9d4489c8bced27e1da7a71af957516c501973b
 	sha256sums_x86_64 = 6cd5c8d39a38fe457509cb88b5ab333f078c7b05014d27dfebeb69fd4b490db2
 
 pkgname = r-rig-bin
