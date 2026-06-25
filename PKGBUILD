@@ -2,21 +2,22 @@
 
 _name=livekit-api
 pkgname=python-$_name
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='Python Server API for LiveKit.'
 arch=('any')
-url='https://github.com/livekit/python-sdks/tree/main/livekit-api'
+_repo='https://github.com/livekit/python-sdks'
+url='$_repo/tree/main/livekit-api'
 license=('Apache-2.0')
 depends=('python' 'python-pyjwt' 'python-aiohttp' 'python-protobuf' 'python-livekit-protocol')
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
-source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('f94c000534d3a9b506e6aed2f35eb88db1b23bdea33bb322f0144c4e9f73934e')
+source=("$_repo/archive/refs/tags/api-v$pkgver.tar.gz")
+sha256sums=('d8d6703adf89d03ce0bc3636492c6c9c1208433401e2e6b77fde7b7758808f19')
 
 build() {
-  cd "$srcdir"/${_name//-/_}-$pkgver
-  python -m build --wheel --no-isolation
+  cd "$srcdir"/python-sdks-${_name//livekit-/}-v$pkgver
+  python -m build --wheel --no-isolation $_name
 }
 
 check() {
@@ -24,11 +25,11 @@ check() {
     -vv
     --disable-warnings
   )
-  cd "$srcdir"/${_name//-/_}-$pkgver
-  PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
+  cd "$srcdir"/python-sdks-${_name//livekit-/}-v$pkgver
+  PYTHONPATH=$PWD/$_name pytest "${pytest_options[@]}" tests/${_name//livekit-/}
 }
 
 package() {
-  cd "$srcdir"/${_name//-/_}-$pkgver
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$srcdir"/python-sdks-${_name//livekit-/}-v$pkgver
+  python -m installer --destdir="$pkgdir" $_name/dist/*.whl
 }
