@@ -29,6 +29,7 @@ _mebtty_create_env() {
   if [[ -f "${env_file}" ]]; then
     chown root:root "${env_dir}" "${env_file}" 2>/dev/null || true
     chmod 750 "${env_dir}" 2>/dev/null || true
+    _mebtty_append_optional_env "${env_file}"
     chmod 640 "${env_file}" 2>/dev/null || true
     return
   fi
@@ -46,13 +47,182 @@ _mebtty_create_env() {
 # MebTTY environment configuration
 # Modify and restart with: systemctl restart mebtty
 
+# Required: JWT signing key. Keep this secret and stable across restarts.
 MEBTTY_SECRET_KEY=${secret}
+
+# Server bind address.
 MEBTTY_HOST=0.0.0.0
+
+# Server listen port.
 MEBTTY_PORT=18888
+
+# PAM service used to verify local user passwords.
 MEBTTY_PAM_SERVICE=login
+
+# Authentication rate limit. Set attempts to 0 to disable.
+# MEBTTY_AUTH_RATE_LIMIT_ATTEMPTS=5
+# MEBTTY_AUTH_RATE_LIMIT_WINDOW_SECONDS=300
+# MEBTTY_AUTH_RATE_LIMIT_LOCKOUT_SECONDS=300
+
+# Database connection string.
+# MEBTTY_DATABASE_URL=sqlite+aiosqlite:////var/lib/mebtty/mebtty.db
+
+# Directory for uploaded files and avatars.
+# MEBTTY_UPLOAD_DIR=/var/lib/mebtty/uploads
+
+# Directory where uploaded plugins are installed.
+# MEBTTY_PLUGIN_DIR=/var/lib/mebtty/plugins
+
+# Maximum plugin package size in bytes.
+# MEBTTY_PLUGIN_MAX_SIZE=20971520
+
+# Allow installing third-party plugin packages through API/UI.
+# MEBTTY_PLUGIN_INSTALL_ENABLED=true
+
+# Require plugin signatures before installation.
+# MEBTTY_PLUGIN_SIGNATURE_REQUIRED=false
+
+# Allow trusted backend plugin code execution.
+# MEBTTY_PLUGIN_BACKEND_CODE_ENABLED=false
+
+# Optional fixed root directory exposed by the file browser.
+# MEBTTY_BROWSE_ROOT=/home/your-user
+
+# Path to frontend build output. Leave empty to auto-detect bundled assets.
+# MEBTTY_STATIC_DIR=
+
+# JWT access token lifetime in minutes.
+# MEBTTY_ACCESS_TOKEN_EXPIRE_MINUTES=60
+
+# JWT refresh token lifetime in days.
+# MEBTTY_REFRESH_TOKEN_EXPIRE_DAYS=7
+
+# Maximum upload size in bytes.
+# MEBTTY_MAX_UPLOAD_SIZE=104857600
+
+# Allow creating new MebTTY web accounts.
+# MEBTTY_REGISTRATION_ENABLED=true
+
+# Allow selecting root as a local terminal user.
+# MEBTTY_ALLOW_ROOT_LOCAL_USER=false
+
+# JWT signing algorithm.
+# MEBTTY_ALGORITHM=HS256
+
+# Reserved for deployments that enable Redis-backed features.
+# MEBTTY_REDIS_URL=redis://localhost:6379/0
+
+# Local deploy.sh development only; ignored by packaged systemd service.
+# MEBTTY_DEV_FRONTEND_HOST=127.0.0.1
+# MEBTTY_DEV_FRONTEND_PORT=3000
 EOF
   chown root:root "${env_file}" 2>/dev/null || true
   chmod 640 "${env_file}" 2>/dev/null || true
+}
+
+_mebtty_append_optional_env() {
+  local env_file="$1"
+
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_DATABASE_URL" \
+    "Database connection string." \
+    "sqlite+aiosqlite:////var/lib/mebtty/mebtty.db"
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_UPLOAD_DIR" \
+    "Directory for uploaded files and avatars." \
+    "/var/lib/mebtty/uploads"
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_PLUGIN_DIR" \
+    "Directory where uploaded plugins are installed." \
+    "/var/lib/mebtty/plugins"
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_PLUGIN_MAX_SIZE" \
+    "Maximum plugin package size in bytes." \
+    "20971520"
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_PLUGIN_INSTALL_ENABLED" \
+    "Allow installing third-party plugin packages through API/UI." \
+    "true"
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_PLUGIN_SIGNATURE_REQUIRED" \
+    "Require plugin signatures before installation." \
+    "false"
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_PLUGIN_BACKEND_CODE_ENABLED" \
+    "Allow trusted backend plugin code execution." \
+    "false"
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_AUTH_RATE_LIMIT_ATTEMPTS" \
+    "Authentication rate limit attempts. Set to 0 to disable." \
+    "5"
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_AUTH_RATE_LIMIT_WINDOW_SECONDS" \
+    "Authentication rate limit window in seconds." \
+    "300"
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_AUTH_RATE_LIMIT_LOCKOUT_SECONDS" \
+    "Authentication rate limit lockout in seconds." \
+    "300"
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_BROWSE_ROOT" \
+    "Optional fixed root directory exposed by the file browser." \
+    "/home/your-user"
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_STATIC_DIR" \
+    "Path to frontend build output. Leave empty to auto-detect bundled assets." \
+    ""
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_ACCESS_TOKEN_EXPIRE_MINUTES" \
+    "JWT access token lifetime in minutes." \
+    "60"
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_REFRESH_TOKEN_EXPIRE_DAYS" \
+    "JWT refresh token lifetime in days." \
+    "7"
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_MAX_UPLOAD_SIZE" \
+    "Maximum upload size in bytes." \
+    "104857600"
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_REGISTRATION_ENABLED" \
+    "Allow creating new MebTTY web accounts." \
+    "true"
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_ALLOW_ROOT_LOCAL_USER" \
+    "Allow selecting root as a local terminal user." \
+    "false"
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_ALGORITHM" \
+    "JWT signing algorithm." \
+    "HS256"
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_REDIS_URL" \
+    "Reserved for deployments that enable Redis-backed features." \
+    "redis://localhost:6379/0"
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_DEV_FRONTEND_HOST" \
+    "Local deploy.sh development only; ignored by packaged systemd service." \
+    "127.0.0.1"
+  _mebtty_append_commented_env "${env_file}" \
+    "MEBTTY_DEV_FRONTEND_PORT" \
+    "Local deploy.sh development only; ignored by packaged systemd service." \
+    "3000"
+}
+
+_mebtty_append_commented_env() {
+  local env_file="$1"
+  local key="$2"
+  local description="$3"
+  local value="$4"
+
+  if grep -Eq "^[[:space:]#]*${key}=" "${env_file}"; then
+    return
+  fi
+
+  {
+    printf '\n# %s\n' "${description}"
+    printf '# %s=%s\n' "${key}" "${value}"
+  } >> "${env_file}"
 }
 
 _mebtty_print_notes() {
