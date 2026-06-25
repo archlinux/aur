@@ -5,15 +5,15 @@ _pkgname=satisfactory-mod-manager
 
 pkgname="${_pkgname}"-appimage
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Satisfactory Mod Manager (appimage)"
 arch=('x86_64')
 url="https://github.com/satisfactorymodding/SatisfactoryModManager"
 license=('GPL3')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 options=(!strip)
-_appimage="SatisfactoryModManager_linux_amd64.AppImage"
-source=("https://github.com/satisfactorymodding/SatisfactoryModManager/releases/download/v${pkgver}/${_appimage}"
+_appimage="SatisfactoryModManager_linux_amd64-${pkgver}.AppImage"
+source=("${_appimage}::https://github.com/satisfactorymodding/SatisfactoryModManager/releases/download/v${pkgver}/SatisfactoryModManager_linux_amd64.AppImage"
         "https://raw.githubusercontent.com/satisfactorymodding/SatisfactoryModManager/v${pkgver}/LICENSE")
 noextract=("${_appimage}")
 sha256sums=('ce69b68903b6e6c931218b3ce2cc08574646db86e1544dd9f14c5897f83d15dd'
