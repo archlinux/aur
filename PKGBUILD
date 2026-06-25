@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=lichtfeld-studio
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.5.3
+pkgrel=1
 pkgdesc="Real-time 3D Gaussian Splatting studio for point cloud visualization and editing"
 arch=('x86_64')
 url="https://github.com/MrNeRF/LichtFeld-Studio"
@@ -15,8 +15,10 @@ depends=(
     'freetype2'
     'gcc-libs'
     'glibc'
+    'gtk3'  # libgtk-3/libgdk-3, linked via nativefiledialog-extended's GTK backend
     'hicolor-icon-theme'
     'libarchive'
+    'libdeflate'  # find_package(libdeflate CONFIG); links libdeflate.so
     'libglvnd'
     'libwebp'
     'nvidia-utils'  # driver >= 570 required at runtime
@@ -27,12 +29,15 @@ depends=(
     'python312-packaging'
     'sdl3'
     'spdlog'
+    'vulkan-icd-loader'  # libvulkan.so (volk loads it; find_package(Vulkan))
+    'zeromq'  # libzmq.so for the TCP/cppzmq layer
 )
 makedepends=(
     'autoconf'
     'autoconf-archive'
     'automake'
     'cmake>=3.30'
+    'cppzmq'  # header-only ZMQ C++ binding, ships cppzmqConfig.cmake
     'curl'
     'git'
     'glm'
@@ -47,6 +52,8 @@ makedepends=(
     'robin-map'
     'tar'
     'unzip'
+    'volk'  # find_package(volk CONFIG); header-only loader
+    'vulkan-headers'  # find_package(Vulkan) + VMA/volk compile against these
     'zip'
 )
 provides=('lichtfeld-studio')
@@ -57,7 +64,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MrNeRF/LichtFeld-Studio
         'vcpkg::git+https://github.com/microsoft/vcpkg.git'
         "libvterm-${_libvtermcommit}.tar.gz::https://github.com/neovim/libvterm/archive/${_libvtermcommit}.tar.gz"
         'lichtfeld-studio.desktop')
-sha256sums=('3dcbf8e97b4681bada448ca3ed94200514c52b8da9cd6534f0c0a0f074396911'
+sha256sums=('2f8427f685d935f71874966a952a2671a49995639bf8b769a9fcd72261243357'
             'SKIP'
             'f09525eb2a02679be0eb50bc1c294569e8cbaa4b59fb867d606236de2830045f'
             'a07642f575ad454ef6783e0a49d03afc96cc7df14d82db7a9de2ccad045fde65')
@@ -105,13 +112,16 @@ EOF
             /VISUALIZER_.*_PATH="\${VISUALIZER_BUILD_RESOURCE_DIR}/d;
             /VISUALIZER_SOURCE_.*_PATH="\${VISUALIZER_SOURCE_RESOURCE_DIR}/d' \
         src/visualizer/CMakeLists.txt
-    sed -i '/SHADER_PATH="\${RENDERING_BUILD_RESOURCE_DIR}/d;
-            /RENDERING_SOURCE_SHADER_PATH="\${RENDERING_SOURCE_RESOURCE_DIR}/d' \
-        src/rendering/CMakeLists.txt
     # Use the packaged interpreter path instead of whatever build-local Python
     # path CMake resolved.
     sed -i 's|LFS_PYTHON_EXECUTABLE="\${Python_EXECUTABLE}"|LFS_PYTHON_EXECUTABLE="/usr/bin/python3.12"|' \
         src/python/CMakeLists.txt
+
+    # Point the vulkan rasterizer's dev SPV fallback at the installed shaders
+    # instead of the build tree (unconditional compile def; runtime primary is
+    # already getResourceBaseDir()/shaders/vulkan_rasterizer via FHS).
+    sed -i 's|LFS_VULKAN_RASTERIZER_DEV_SPV_DIR="\${LFS_VULKAN_RASTERIZER_SPV_DIR}/"|LFS_VULKAN_RASTERIZER_DEV_SPV_DIR="/usr/share/LichtFeld-Studio/shaders/vulkan_rasterizer/"|' \
+        src/rendering/rasterizer/vulkan/CMakeLists.txt
 
     # Trim vcpkg.json to only deps without system equivalents.
     # Everything else comes from Arch packages (faster build, smaller footprint).
@@ -124,11 +134,13 @@ with open('vcpkg.json') as f:
 keep = {
     'imgui',              # needs docking-experimental branch
     'implot',             # must match vcpkg imgui
-    'glad',               # Arch package is generator only
     'rmlui',              # AUR package lacks SVG feature
     'args',               # tiny, no Arch package
     'nativefiledialog-extended',  # no Arch package
     'usd',                # OpenUSD, no Arch package
+    'vulkan-memory-allocator',  # not in official Arch repos
+    'shader-slang',       # not in official Arch (cachyos-only); provides slangc tool
+    'glslang',            # visualizer FORCE-pins glslang_DIR to vcpkg dir
 }
 
 cfg['dependencies'] = [
@@ -174,6 +186,8 @@ build() {
         -DCMAKE_CUDA_FLAGS="-Xcompiler=-ffile-prefix-map=${srcdir}/=" \
         -DBUILD_PYTHON_STUBS=OFF \
         -DBUILD_TESTS=OFF \
+        -DLFS_DEV_IMPORT_SOURCE_RESOURCES=OFF \
+        -DLFS_DEV_IMPORT_SOURCE_PYTHON=OFF \
         -DPython_EXECUTABLE=/usr/bin/python3.12 \
         -DPython_ROOT_DIR=/usr \
         -DPython_FIND_STRATEGY=LOCATION \
@@ -199,6 +213,11 @@ package() {
 
     # liblfs_rmlui.so is built but not installed by cmake
     install -Dm755 build/liblfs_rmlui.so -t "$pkgdir/usr/lib/"
+
+    # Vendored OpenMesh libs (built under build/Build/lib, not installed by cmake;
+    # needed at runtime by the main binary and the python module). No Arch package.
+    install -Dm755 build/Build/lib/libOpenMeshCore.so.11.0 \
+        build/Build/lib/libOpenMeshTools.so.11.0 -t "$pkgdir/usr/lib/"
 
     # OpenUSD shared libs (vcpkg-built, not installed by cmake but needed at runtime
     # by liblfs_mcp.so). Exact transitive closure from readelf NEEDED walk.
