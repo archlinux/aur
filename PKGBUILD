@@ -3,7 +3,7 @@
 _appname=code
 _pkgname="visual-studio-${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.125.0
+pkgver=1.126.0
 _electronversion=42
 pkgrel=1
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications.(Prebuilt and System-wide Electron edition)"
@@ -13,6 +13,7 @@ arch=(
     'x86_64'
 )
 url="https://code.visualstudio.com/"
+_ghurl="https://github.com/microsoft/vscode"
 #_dlurl="https://packages.microsoft.com/yumrepos/vscode/Packages/c"
 license=('LicenseRef-scancode-commercial-license')
 provides=(
@@ -53,12 +54,15 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::https://code.visualstudio.
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64")
 sha256sums=('68a94e4a9d746da48f5bb990d48b434363e476dfde006394a3ced94b4a54b4a7'
             '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
-sha256sums_aarch64=('7240aa61d71f094a7ae3a73adf8c2ee12dc17e373ec70daa7fd00e5f9617b7cc')
-sha256sums_armv7h=('b5b7dced98f2630a605a55593e7e3834a9d3cf7c9257fb630120db413b714073')
-sha256sums_x86_64=('05599b6d5e6b2ffe07f8a8f4f587246e6aff992914f3da729eda7f4798c2f9a2')
+sha256sums_aarch64=('043697833907b243e9242a42fcc30b7014bfc99864193ce6e08c4863d5a8a655')
+sha256sums_armv7h=('b372c9e356dbb5993fdb213a0f9d123afb5aef67212539d7bdd5bedf4c433874')
+sha256sums_x86_64=('d32c1460bd7dd003495726e2365acb75e31298182fcdad99f23e45bcc6e2d513')
 pkgver() {
     cd "${srcdir}/usr/share/${_appname}/resources/app"
     grep '"version": ' package.json | awk '{print $2}' | tr -d '"' | tr -d ','
+}
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/share/${_appname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
@@ -85,7 +89,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+    local _app_dir=$(_get_app_dir)
     cp -a "${_app_dir}/resources/app/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/appdata/${_appname}.appdata.xml" "${pkgdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}-url-handler.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}-url-handler.desktop"
