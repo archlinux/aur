@@ -11,20 +11,8 @@ optdepends=(
   'steam: Steam runtime support'
   'lutris: Lutris runner support'
   'mangohud: performance overlay for --mangohud'
+  'libnotify: desktop notifications during first run'
   'wget: alternative downloader'
-  'lib32-alsa-lib: 32-bit ALSA audio support'
-  'lib32-libpulse: 32-bit PulseAudio audio support'
-  'lib32-alsa-plugins: 32-bit ALSA plugins for pure ALSA systems'
-  'lib32-mpg123: 32-bit MP3 decoding'
-  'lib32-libvorbis: 32-bit Vorbis decoding'
-  'lib32-opus: 32-bit Opus decoding'
-  'lib32-libvpx: 32-bit VP8/VP9 decoding'
-  'lib32-gst-plugins-base-libs: 32-bit GStreamer media support (archlinuxcn)'
-  'mpg123: MP3 decoding'
-  'libvorbis: Vorbis decoding'
-  'opus: Opus decoding'
-  'libvpx: VP8/VP9 decoding'
-  'ttf-liberation: Windows font metric compatibility'
 )
 makedepends=('git')
 provides=('shorin-proton-wrapper')
