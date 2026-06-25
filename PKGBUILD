@@ -2,7 +2,7 @@
 pkgname=jisocreator
 pkgver=0.1.4
 pkgrel=1
-pkgdesc="JIsoCreator is a ISO9660 CD Image creator, frontend of MKISOFS"
+pkgdesc="JIsoCreator is a ISO9660 CD Image creator, frontend of MKISOFS, built from sources"
 arch=('x86_64')
 url="https://github.com/Cavallinux/$pkgname"
 license=('GPL-3.0')
