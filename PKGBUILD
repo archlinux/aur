@@ -1,46 +1,51 @@
-# Maintainer: Moritz Bunkus <moritz@bunkus.org>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Moritz Bunkus <moritz@bunkus.org>
 
-pkgname='perl-class-c3'
-pkgver='0.35'
-pkgrel='3'
-pkgdesc="A pragma to use the C3 method resolution order algorithm"
+_author=HAARG
+_dist=Class-C3
+pkgname=perl-${_dist@L}
+pkgver=0.35
+pkgrel=4
+pkgdesc='A pragma to use the C3 method resolution order algorithm'
 arch=('any')
-license=('Artistic-2.0' 'GPL-1.0-or-later')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-algorithm-c3>=0.07'
+    'perl-scalar-list-utils'
+    'perl>=5.6.0'
+)
+makedepends=('perl-extutils-makemaker')
+checkdepends=('perl-test-simple')
 options=('!emptydirs')
-depends=('perl-algorithm-c3>=0.07' 'perl')
-makedepends=()
-url='https://metacpan.org/release/Class-C3'
-source=("https://cpan.metacpan.org/authors/id/H/HA/HAARG/Class-C3-${pkgver}.tar.gz")
-sha512sums=('792dda26d6c77652ae0d1ca868284a798c631523d29f338d3b5bc771fd151a8529f6f8692a8fec7a9116ac8e40831b714bcfd205736c04e56e91fa39a4bae9a6')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('84053cf1a68fcc8c12056c2f120adf04f7f68e3be34f4408e95d026fee67e33e')
 
-prepare_environment() {
-  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-    PERL_AUTOINSTALL=--skipdeps                            \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
-  cd "${srcdir}/Class-C3-${pkgver}"
+build()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
 }
 
-build() {
-  prepare_environment
-  /usr/bin/perl Makefile.PL
-  make
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
 }
 
-check() {
-  prepare_environment
-  make test
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-package() {
-  prepare_environment
-  make install
-  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
-}
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}

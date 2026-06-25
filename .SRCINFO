@@ -1,15 +1,17 @@
 pkgbase = perl-class-c3
 	pkgdesc = A pragma to use the C3 method resolution order algorithm
 	pkgver = 0.35
-	pkgrel = 3
-	url = https://metacpan.org/release/Class-C3
+	pkgrel = 4
+	url = https://metacpan.org/dist/Class-C3
 	arch = any
-	license = Artistic-2.0
-	license = GPL-1.0-or-later
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
 	depends = perl-algorithm-c3>=0.07
-	depends = perl
+	depends = perl-scalar-list-utils
+	depends = perl>=5.6.0
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/H/HA/HAARG/Class-C3-0.35.tar.gz
-	sha512sums = 792dda26d6c77652ae0d1ca868284a798c631523d29f338d3b5bc771fd151a8529f6f8692a8fec7a9116ac8e40831b714bcfd205736c04e56e91fa39a4bae9a6
+	sha256sums = 84053cf1a68fcc8c12056c2f120adf04f7f68e3be34f4408e95d026fee67e33e
 
 pkgname = perl-class-c3
