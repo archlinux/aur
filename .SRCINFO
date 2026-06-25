@@ -1,8 +1,8 @@
-pkgbase = xdg-desktop-portal-xapp-filechooser
+pkgbase = xdg-desktop-portal-filepicker
 	pkgdesc = A backend implementation for xdg-desktop-portal using GTK/Cinnamon with native folder selection support
-	pkgver = 1.1.4.r72.fe2e41b
+	pkgver = 1.1.4.r73.35f454d
 	pkgrel = 1
-	url = https://github.com/linuxmint/xdg-desktop-portal-xapp
+	url = https://github.com/Twilight0/xdg-desktop-portal-filepicker
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	makedepends = git
@@ -17,9 +17,7 @@ pkgbase = xdg-desktop-portal-xapp-filechooser
 	depends = xdg-desktop-portal
 	depends = xdg-desktop-portal-gtk
 	provides = xdg-desktop-portal-impl
-	provides = xdg-desktop-portal-xapp
-	conflicts = xdg-desktop-portal-xapp
-	source = xdg-desktop-portal-xapp::git+https://github.com/Twilight0/xdg-desktop-portal-xapp.git#branch=feature/gtk-file-picker
+	source = xdg-desktop-portal-filepicker::git+https://github.com/Twilight0/xdg-desktop-portal-filepicker.git
 	sha256sums = SKIP
 
-pkgname = xdg-desktop-portal-xapp-filechooser
+pkgname = xdg-desktop-portal-filepicker
