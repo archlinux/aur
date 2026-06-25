@@ -8,7 +8,7 @@ _name=prometheus-push-gateway
 ################################################################################
 
 pkgname="${_name}-bin"
-pkgver=1.11.2
+pkgver=1.11.3
 pkgrel=1
 pkgdesc='Prometheus push acceptor for ephemeral and batch jobs'
 arch=('x86_64'
@@ -30,11 +30,11 @@ source_aarch64=("https://github.com/prometheus/pushgateway/releases/download/v${
 sha256sums=('be9f4e2f79402e681c0cd3c4b29be0a409f77a46d343467c3fbd13984222f5ef'
             '8b13f20a2c51bc08d0f5ce00145dcd0c15e4251709a0d4036315e9ef9794fa18'
             '40f36f2a5c81c1fee899bd01d5610a2ecccb06ddb12b0a9585f1795acd397b50')
-sha256sums_x86_64=('2ec72315e150dda071fdeef09360780a386a67e5207ebaa53bb18f2f1a3b89cf')
-sha256sums_arm=('907e95534017010583a7bf48f98a11e403eaed679e6f4f36b045c454b48b6ea0')
-sha256sums_armv6h=('9a298bf5027c2479080cf09a36613fe81af93f0abe0345ef42d57691d9ade3f5')
-sha256sums_armv7h=('3f95bad8a40edf34e3602d18323f07ef92d3d5b7a141b1145c5e6dbfce7cd7ce')
-sha256sums_aarch64=('b3fb835dbb0a29b1d6f9cd7ae3568a5615e59b96f8787965248cea67163d4db1')
+sha256sums_x86_64=('bb0a44dee0953df9e8cd3c082981ff50327de56d965d83bdd9b0957d83921e38')
+sha256sums_arm=('762a5bbd5a897bd45623789559fcf81f990ee309c852206d97a68f6de3460b0e')
+sha256sums_armv6h=('cd4fadf1dbff52a7055aefc606a9aad82b55245d2daca95876713a051b203d44')
+sha256sums_armv7h=('38e10f4132e255fa5ef99b9bded8d7967d0831e0fa7a3d262e39cbbced37f35b')
+sha256sums_aarch64=('727ff0098943657b44c21a029be9d9fcc4f249ec72dcb9f0a34aa66b2d5f1ecc')
 
 ################################################################################
 
