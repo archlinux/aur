@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=rake
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Configuration-driven build tool that runs Rakefile.toml targets"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT' 'Apache-2.0')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rustyhorde/cargo-rake/archive/v$pkgver.tar.gz")
 # Checksum is filled in by the release workflow before publishing to the AUR.
-sha256sums=('696487feca50eef791a6654f629515645c854b845a13e034152363b8561655a9')
+sha256sums=('34d004cf3aefb35aa9095898d3d5c6ab8d2c5c080171ba7134ecf20b179be659')
 
 prepare() {
     cd "cargo-rake-$pkgver"
