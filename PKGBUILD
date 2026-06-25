@@ -3,7 +3,7 @@
 _pkgauthor=drunkleen
 _pkgname=leenfetch
 pkgname=${_pkgname}-bin
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Fast, minimal, customizable system info tool in Rust (Neofetch alternative)"
 arch=('x86_64' 'aarch64')
@@ -21,10 +21,10 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${arch[0]}.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${arch[1]}.tar.gz")
 sha256sums=('e673ac9666ad19db4dceaac6e42e8b0c3e9e86b1911e6877bb6ee7f3f31565ee'
-            '33c2e660c512db57150d7c77fc57ae4db590d21469162f3cbc578d89ed4ff064'
-            '385eff7d956cb29e327b1815cd158b2120893cab86f3106dc7c1f0a387d0c379')
-sha256sums_x86_64=('18becb0a41a047effd52135bbcdb8982f3748b1caab6082dfbc6ad8405aec219')
-sha256sums_aarch64=('0cfcf383f789742bee399aaed9bb4617f3d010f20be4ed82ddda7bd1368cdc03')
+            'c30c3e23f985ac8b0a08480e14af7ca839d76824cbd7d94a31c1ad77ad885c53'
+            '569bf43c3ae111eda9f88d1e64d540551253f8592dea7811d3227d73aa05b32c')
+sha256sums_x86_64=('29fe4a5630fda72d9bdbd29185708cdf6002050c0a70814b5af3dbd6dc37c0f7')
+sha256sums_aarch64=('3d6eefc3cb530e58c5990aa16d8a05873a93fb52ce2e2e99ee534c8420f22a15')
 
 package() {
 	cd "${srcdir}/" || exit
