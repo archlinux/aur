@@ -3,14 +3,14 @@
 # Contributor: Emil Renner Berthing <aur@esmil.dk>
 
 pkgname=riscv-openocd-git
-pkgver=v20180629.r2363.g9906763b8
+pkgver=v20180629.r4404.geb01c632a
 pkgrel=1
 pkgdesc='Fork of OpenOCD that has RISC-V support'
 arch=('x86_64')
 url='https://github.com/riscv/riscv-openocd'
 license=('GPL')
-depends=('libftdi' 'hidapi')
-makedepends=('git' 'automake>=1.11' 'autoconf' 'libtool')
+depends=('libftdi' 'hidapi' 'jimtcl')
+makedepends=('git')
 source=("$pkgname::git+https://github.com/riscv/riscv-openocd.git#branch=riscv")
 sha1sums=('SKIP')
 pkgdatadir="/usr/share/riscv-openocd"
