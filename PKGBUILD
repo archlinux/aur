@@ -2,7 +2,7 @@
 
 pkgname=kazumi-bin
 _pkgname=${pkgname%-bin}
-pkgver="2.1.6"
+pkgver="2.1.7"
 pkgrel=1
 pkgdesc="基于自定义规则的番剧采集APP，支持流媒体在线观看，支持弹幕"
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('GPL-3.0-or-later')
 depends=('libayatana-appindicator' 'xdg-user-dirs' 'webkit2gtk-4.1')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("kazumi-2.1.6.deb::https://github.com/Predidit/Kazumi/releases/download/2.1.6/Kazumi_linux_2.1.6_amd64.deb")
-sha512sums=('898a71e89f956797cfccc80431083b1be6ccbb12f6043d223301fb6a891797c5672ae458ba3379cabc869b528737c0bce4bb55157facf8ada2fe240f998b2eaa')
+source=("kazumi-2.1.7.deb::https://github.com/Predidit/Kazumi/releases/download/2.1.7/Kazumi_linux_2.1.7_amd64.deb")
+sha512sums=('2bf9e7c303bd6bb215ed01afd9327250eb15bc92f88262c5ee8a2a9bec16100919ee256fc370caebb63aeecb3361129a6eea3cdddf486135b70ec92bf3edaf37')
 
 package() {
     local _debdir="${srcdir}/deb-extract"
