@@ -1,6 +1,6 @@
 pkgbase = termframe
 	pkgdesc = Convert terminal output into an SVG file
-	pkgver = 0.8.6
+	pkgver = 0.8.7
 	pkgrel = 1
 	url = https://github.com/pamburus/termframe
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = termframe
 	depends = gcc-libs
 	depends = zlib
 	options = !lto
-	source = termframe-0.8.6.tar.gz::https://github.com/pamburus/termframe/archive/refs/tags/v0.8.6.tar.gz
-	sha256sums = 7e9fe9b19da85eb1b2cd7d644b4a2d74cdda7c5e4ae4b01dc3eb1f61acc3b482
+	source = termframe-0.8.7.tar.gz::https://github.com/pamburus/termframe/archive/refs/tags/v0.8.7.tar.gz
+	sha256sums = 25d60c50c8f5022434ddd04ada7cd7334c61eb55efb735b052e1489e26293cde
 
 pkgname = termframe
