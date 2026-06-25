@@ -1,0 +1,4 @@
+[python-mashumaro]
+source = "git"
+git = "https://github.com/Fatal1ty/mashumaro.git"
+prefix = "v"
