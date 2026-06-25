@@ -1,16 +1,15 @@
 # Maintainer: simonlinuxcraft <simonlinuxcraft at users dot noreply dot github dot com>
 # Contributor: Yilmaz4 <https://github.com/Yilmaz4>
 pkgname=kyber-launcher-unofficial-appimage
-pkgver=2.0.0_beta9_6.4.7
-pkgrel=2
+pkgver=2.0.0_beta9_6.4.8
+pkgrel=3
 epoch=
 pkgdesc="Native binary build of the Kyber V2 mod launcher for Star Wars Battlefront II (2017), by Yilmaz4. Renamed to kyber-launcher-bin at beta 10. Not endorsed by the Kyber team."
 arch=('x86_64')
 url="https://github.com/simonlinuxcraft/kyber-linuxport-unofficial"
 license=('GPL-3.0-only')
 groups=()
-depends=('gtk3' 'mpv' 'ffmpeg' 'gstreamer' 'gst-plugins-base-libs' 'curl'
-         'zeromq' 'libsecret' 'libepoxy' 'librsvg' 'glib2' 'tinysparql' 'glycin')
+depends=('gtk3' 'mpv' 'ffmpeg' 'gstreamer' 'gst-plugins-base-libs' 'curl' 'zeromq' 'libsecret' 'libepoxy' 'librsvg' 'glib2' 'tinysparql' 'glycin')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -21,9 +20,9 @@ backup=()
 options=(!debug)
 install="${pkgname}.install"
 changelog=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Yilmaz4/kyber-linuxport-unofficial/releases/download/$pkgver/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.xz::https://github.com/Yilmaz4/kyber-linuxport-unofficial/releases/download/$pkgver/$pkgver.tar.xz")
 noextract=()
-sha256sums=("ea9ae8019a836c85531f9c2ecc876d63951e92e3fd27bc5ca7769e6a32c543ed")
+sha256sums=("52d7821d28ec1cd0c1d725b75cf2f8384d442dd4d5c2216842bec7cf4f4cea18")
 validpgpkeys=()
 
 package() {
