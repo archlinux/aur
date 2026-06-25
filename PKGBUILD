@@ -19,25 +19,25 @@ sha256sums=(SKIP)
 options=(!lto)
 
 pkgver() {
-    cd "$pkgname"
+    cd "$pkgname/kuma-cli"
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$pkgname"
+    cd "$pkgname/kuma-cli"
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$pkgname"
+    cd "$pkgname/kuma-cli"
 	export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 	cargo build --frozen --release --all-features
 }
 
 check() {
-    cd "$pkgname"
+    cd "$pkgname/kuma-cli"
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
