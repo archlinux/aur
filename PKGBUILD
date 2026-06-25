@@ -1,7 +1,7 @@
 # Maintainer: reakjra <reakjra@proton.me>
 pkgname=omikuji-bin
 _pkgname=omikuji
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='Qt/QML based wine apps launcher for Linux'
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip')
 _appimage="Omikuji-v${pkgver}-anylinux-x86_64.AppImage"
 source=("$_appimage::${url}/releases/download/v${pkgver}/${_appimage}")
 noextract=("$_appimage")
-sha256sums=('f1ef4cb44967a26af2d5ebc3c7685ebc1bd573c90d03652e75e825579bb40e88')
+sha256sums=('6459c3b6431a8c74d1dc6eac6089c92fdd052343134b29a43ffe5b8bd4364a25')
 
 package() {
     cd "$srcdir"
