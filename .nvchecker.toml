@@ -1,0 +1,3 @@
+[perl-algorithm-c3]
+source = "cpan"
+cpan = "Algorithm-C3"
