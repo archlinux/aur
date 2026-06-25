@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deepchat-git
 _pkgname=DeepChat
-pkgver=1.0.4.r0.gb298666
+pkgver=1.0.7.r0.g2087e5b
 _electronversion=40
 _nodeversion=24
 pkgrel=1
@@ -33,12 +33,42 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            '3a7ecae1d2c898c1dc66ac8143285a83d068ec2b98e0b06025fc5a49daf2b4d5')
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
+_set_build_env() {
+    electronDist="/usr/lib/electron${_electronversion}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+	HOME="${srcdir}/.electron-gyp"
+	{
+		export PNPM_LINK_WORKSPACE_PACKAGES=true
+		export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+		export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+		export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+		export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
+		export PNPM_SHAMEFULLY_HOIST=true
+		export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
+		export PNPM_NODE_LINKER=hoisted
+		export PNPM_NETWORK_CONCURRENCY=32
+	}
+	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+		{
+			export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+			export npm_config_registry="https://registry.npmmirror.com"
+			export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+			export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+			export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+			export NVM_NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+		}
+	fi
 }
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -67,55 +97,37 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    local HOME="${srcdir}/.electron-gyp"
-    {
-        export PNPM_LINK_WORKSPACE_PACKAGES=true
-        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_SHAMEFULLY_HOIST=true
-        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
-        export PNPM_NODE_LINKER=hoisted
-        export PNPM_NETWORK_CONCURRENCY=32
-    }
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-        }
-    fi
+    _set_build_env
     _ensure_local_nvm
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=development    pnpm install
+    NODE_ENV=development    pnpm run install:sharp
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
+    _set_build_env
     _ensure_local_nvm
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     pnpm run build
-    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config=electron-builder.yml"
-    local _arch_rem
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+
+    local _eb_arch
     case "${CARCH}" in
-        aarch64) _arch_rem="*x64*" ;;
-        x86_64)  _arch_rem="*arm64*" ;;
+        x86_64)  _eb_arch="x64" ;;
+        aarch64) _eb_arch="arm64" ;;
     esac
+
+    NODE_ENV=production     pnpm run build
+    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir --${_eb_arch} -c.electronDist=${electronDist} --config=electron-builder.yml"
+    local _app_dir=$(_get_app_dir)
     find "${_app_dir}/resources" -type d \( \
         -name "*darwin*" -o \
-        -name "*win32*" -o \
-        -name "${_arch_rem}" \
+        -name "*win32*" \
     \) -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+    local _app_dir=$(_get_app_dir)
+    cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
     install -Dm644 "${srcdir}/${pkgname//-/.}/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/README.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
