@@ -1,10 +1,11 @@
 # Maintainer: Leonidas Spyropoulos <artafinde @ archlinux.org>
+# Maintainer: DeepChirp <deepchirp@archlinux.org>
 # Contributor: Peter Jung ptr1337 <admin@ptr1337.dev>
 # Contributor: Piotr Gorski <piotrgorski@cachyos.org>
 
 pkgname=cachyos-ananicy-rules
 _gitname=ananicy-rules
-pkgver=1.1.41
+pkgver=1.1.42
 pkgrel=1
 epoch=1
 groups=(cachyos)
@@ -13,7 +14,7 @@ url="https://github.com/CachyOS/${_gitname}"
 license=(GPL-3.0-only)
 pkgdesc='CachyOS - ananicy-rules'
 source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('45d7eeff504541381dbadaab2bdb98740745ab73c9a4755742306031e1f4395d')
+sha256sums=('071befdad07f203d43b71d7d8356e353f8301f082f3fa1f1f123d3e377d730a5')
 replaces=(ananicy-rules-git)
 
 prepare() {
