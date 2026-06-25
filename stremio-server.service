@@ -1,0 +1,20 @@
+[Unit]
+Description=Stremio streaming server (pure-Go implementation)
+Documentation=https://github.com/M0Rf30/stremio-server-go
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/stremio-server
+Restart=on-failure
+RestartSec=5
+
+# Security hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=%h/.stremio-server
+
+[Install]
+WantedBy=default.target
