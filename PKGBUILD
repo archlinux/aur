@@ -1,11 +1,11 @@
 # Maintainer: 	ngdngdc <2959471117 at qq dot com>
 
 _npmname=wenku8
-_npmver=4.0.0
+_npmver=5.1.0
 pkgname=nodejs-wenku8-downloader # All lowercase
-pkgver=4.0.0
+pkgver=5.1.0
 pkgrel=1
-pkgdesc="轻小说文库下载器"
+pkgdesc="Resumable Wenku8 novel downloader and EPUB 3 builder"
 arch=(any)
 url="https://github.com/Messiahhh/wenku8-downloader#readme"
 license=(MIT)
@@ -13,7 +13,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
 noextract=(${_npmname}-${_npmver}.tgz)
-sha1sums=('b5734d16323c1f1305b14b045f7df67fcc80ab3c')
+sha1sums=('86e439317d72b244808c6a7b3547356258fa35b8')
 
 package() {
     cd $srcdir

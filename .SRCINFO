@@ -1,14 +1,14 @@
 pkgbase = nodejs-wenku8-downloader
-	pkgdesc = 轻小说文库下载器
-	pkgver = 4.0.0
+	pkgdesc = Resumable Wenku8 novel downloader and EPUB 3 builder
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/Messiahhh/wenku8-downloader#readme
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = wenku8-4.0.0.tgz
-	source = https://registry.npmjs.org/wenku8/-/wenku8-4.0.0.tgz
-	sha1sums = b5734d16323c1f1305b14b045f7df67fcc80ab3c
+	noextract = wenku8-5.1.0.tgz
+	source = https://registry.npmjs.org/wenku8/-/wenku8-5.1.0.tgz
+	sha1sums = 86e439317d72b244808c6a7b3547356258fa35b8
 
 pkgname = nodejs-wenku8-downloader
