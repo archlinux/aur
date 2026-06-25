@@ -2,10 +2,10 @@
 # Contributor: Raansu
 # Contributor: Lance G. <Gero3977@gmail.com>
 pkgname=postybirb-plus
-pkgver=3.1.71
+pkgver=3.1.72
 _electronversion=19
 _nodeversion=18
-pkgrel=2
+pkgrel=1
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly. Postybirb plus version (Client/Server).(Use system-wide electron)"
 url="https://www.postybirb.com"
 _ghurl="https://github.com/mvdicarlo/postybirb-plus"
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('9609e30ea6b4f0224bd0ef033886bc9074757c7adfcf6899a1fa7ff6f5fb9065'
+sha256sums=('bece85dba307cf262cf6b5f87c3c85fd7d51a39d2d4f131266a81993e05bbcf5'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -41,8 +41,8 @@ _get_app_dir() {
 _set_build_env() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-	local HOME="${srcdir}/.electron-gyp"
-    local electronDist="/usr/lib/electron${_electronversion}"
+	HOME="${srcdir}/.electron-gyp"
+    electronDist="/usr/lib/electron${_electronversion}"
 	export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
 	export NPM_CONFIG_MAXSOCKETS=32
 	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
