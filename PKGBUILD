@@ -4,17 +4,18 @@
 
 pkgname='python-sphinx-lua-ls'
 _module='sphinx-lua-ls'
-pkgver='3.10.0'
+pkgver='3.12.0'
 _src_folder="sphinx_lua_ls-${pkgver}"
 pkgrel=1
 pkgdesc="Automatic documentation generation via EmmyLua/LuaLs, usable with sphinx"
 url="https://sphinx-lua-ls.readthedocs.io/en/"
-depends=('python')
+depends=('python' 'python-sphinx>=8.0')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('unknown')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/fc/a7/fd6cec6c5cfca98913ff0b581e037e1c635f6c07c163f04cbf21e934d96f/sphinx_lua_ls-3.10.0.tar.gz")
-sha256sums=('5ca27e5b41e3626a0c2a0efc79b99b54c44dd59b183afc098b8b6ebd7478860f')
+# doesn't work with github tarball
+source=("https://files.pythonhosted.org/packages/e9/0b/ef708ee31f8e7ffd68402dea7ffe7cc21f542180c2aa81802ba91fe430f8/sphinx_lua_ls-3.12.0.tar.gz")
+sha256sums=('9f31a5f5da4d4431acc04cf7e9b2061ba8b0cddb62c238bd1baf066ef983577f')
 
 build() {
     cd "${srcdir}/${_src_folder}"
@@ -22,7 +23,6 @@ build() {
 }
 
 package() {
-
     cd "${srcdir}/${_src_folder}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+   python -m installer --destdir="${pkgdir}" dist/*.whl
 }
