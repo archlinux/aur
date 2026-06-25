@@ -1,6 +1,6 @@
 pkgbase = swagsh-bin
 	pkgdesc = A sleek, high-performance Linux shell built in Rust for speed and reliability.
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/takashialpha/swagsh
 	install = swagsh.install
@@ -10,11 +10,11 @@ pkgbase = swagsh-bin
 	depends = libgcc
 	provides = swagsh
 	conflicts = swagsh
-	source = README-0.7.0.md::https://raw.githubusercontent.com/takashialpha/swagsh/v0.7.0/README.md
-	source = LICENSE-0.7.0::https://raw.githubusercontent.com/takashialpha/swagsh/v0.7.0/LICENSE
-	sha256sums = 5e13e52d605b0b3765a4254c29f58c894075c1dd15435dd8e42b4369af0b8099
+	source = README-0.8.0.md::https://raw.githubusercontent.com/takashialpha/swagsh/v0.8.0/README.md
+	source = LICENSE-0.8.0::https://raw.githubusercontent.com/takashialpha/swagsh/v0.8.0/LICENSE
+	sha256sums = 8bd93ff47fac0c0a9fbb1a515380fc38559ed224cdedf65667241f41a7d08480
 	sha256sums = a24266a5d80f4172e4356c8cdb0b72c0cc884f27afcc7f274a7a6a15eba5f366
-	source_x86_64 = swagsh-bin-x86_64-0.7.0.tgz::https://github.com/takashialpha/swagsh/releases/download/v0.7.0/swagsh-v0.7.0-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 1ee7af92a90b92b8c46777bb6c12b3a863d6a07c1622f3590200cb094d8fb5a7
+	source_x86_64 = swagsh-bin-x86_64-0.8.0.tgz::https://github.com/takashialpha/swagsh/releases/download/v0.8.0/swagsh-v0.8.0-x86_64-linux.tar.gz
+	sha256sums_x86_64 = e0a297e85961fba768718feca4c937e1ec7cd40687e2d9dca32649fe8ea62d10
 
 pkgname = swagsh-bin
