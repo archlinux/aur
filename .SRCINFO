@@ -1,5 +1,5 @@
 pkgbase = swagsh-bin
-	pkgdesc = A sleek, high-performance Linux shell built in Rust for speed and reliability.
+	pkgdesc = A fast, minimal, modern Linux shell. Named after swag, slang for stylish flair.
 	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/takashialpha/swagsh
