@@ -1,6 +1,6 @@
 # Maintainer: Simon Jackson <sizeak at gmail dot com>
 pkgname=claude-commander
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc='A high-performance terminal UI for managing Claude coding sessions'
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ makedepends=('cargo')
 # fixes the build; Rust's own release LTO is set in [profile.release], not here.
 options=('!debug' '!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sizeak/claude-commander/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dc2949588be4680b85a894a16ef56bfe4652f75e2676cdb33368aeb0c199bef3')
+sha256sums=('0347e3c148647f619834566a4096c39f9a910ec0f163ef171eb5e367371423e8')
 
 prepare() {
   cd "$pkgname-$pkgver"
