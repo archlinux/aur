@@ -1,14 +1,23 @@
 pkgbase = perl-context-preserve
-	pkgdesc = run code after a subroutine call, preserving the context the subroutine would have seen if it were the last statement in the caller
+	pkgdesc = Run code after a subroutine call, preserving the context the subroutine would have seen if it were the last statement in the caller
 	pkgver = 0.03
-	pkgrel = 3
+	pkgrel = 4
 	url = https://metacpan.org/dist/Context-Preserve
 	arch = any
-	license = Artistic-2.0
-	license = GPL-1.0-or-later
-	makedepends = perl-test-exception
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-exception
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.6.0
+	makedepends = perl-extutils-makemaker
+	depends = perl-base
+	depends = perl-carp
+	depends = perl-exporter
+	depends = perl>=5.6.0
+	optdepends = perl-cpan-meta>=2.120900
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Context-Preserve-0.03.tar.gz
-	sha512sums = a5f412d553ba2ded7302f594b920bd9c04021c5ec60e94939da097a0fa2de61a0b49dd864e3212eb9b3a7d5236295e1923452e81d56789ae6852c73ec3086cea
+	sha256sums = 09914a4c2c7bdb99cab680c183cbf492ec98d6e23fbcc487fcc4ae10567dfd1f
 
 pkgname = perl-context-preserve
