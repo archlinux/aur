@@ -2,7 +2,7 @@
 
 _pkgname=ntfy
 pkgname=${_pkgname}sh-bin
-pkgver=2.24.0
+pkgver=2.25.0
 pkgrel=1
 pkgdesc="Send push notifications to your phone or desktop using PUT/POST"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -21,11 +21,11 @@ source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux
 source_armv7h=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv7.tar.gz"
                "${_pkgname}.sysusers")
 
-sha256sums_x86_64=('4789b38c1c068ef849f95645df4dcb100a7a05f94b29b3cff85153ff4d3b29bb'
+sha256sums_x86_64=('628bc8d3ad73778484ae1c6116e7745ef5fa414619567e6b4c2581927c355b1e'
                    '0799a140256072b350b56c1b2db5fc21c94c6992277d6d1364c28ddf7058cc8f')
-sha256sums_aarch64=('42041d3587bea2df3bbff65fb88cc273af32c1668b625a7ea3318230bf064739'
+sha256sums_aarch64=('ed8d4ecf77b7e9d338eac8d412919a95cb0fc3757acd852903fd90d678b84afc'
                    '0799a140256072b350b56c1b2db5fc21c94c6992277d6d1364c28ddf7058cc8f')
-sha256sums_armv7h=('5ff911fde5488d710e38ddd9540a3238fb770ceb9c7628ab3d4625ce135c9b61'
+sha256sums_armv7h=('6362e4149f6e2d5b1782195bce27a59596e3d0fd37e04e7afd22824e6c33754b'
                    '0799a140256072b350b56c1b2db5fc21c94c6992277d6d1364c28ddf7058cc8f')
 
 package() {
