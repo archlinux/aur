@@ -1,5 +1,5 @@
 pkgname=lightningview
-pkgver=2.6.0
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="A lightning-fast cross-platform image viewer written in Rust, supporting many raw camera formats."
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
     "$pkgname.desktop"
     "logo_256.png"
 )
-sha256sums=('db92de4bdc5d67613cc4f2cc649ab7d196d0f56463adba875969d331ae796a24'
+sha256sums=('ceed55c02eb5d0edcbeaef0d0815e6dd275853ddefe7e7cde78cb5a8ae8fd715'
             '830ce1fe85eb1e00530d020e1c0f735e77e10909d2575e84db231023ce42a99b'
             '09492ed9bde5eb1d4857e2551c0fabcaf57bdd873d09c0112b3b27ef01135893')
 
