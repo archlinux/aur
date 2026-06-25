@@ -1,7 +1,7 @@
 pkgbase = fcitx5-shorin-patched-git
 	pkgdesc = Next generation of fcitx (with XIM leak, CapsLock, and preedit fixes)
 	pkgver = 5.1.20.r4.g6e560311
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SHORiN-KiWATA/fcitx5
 	arch = x86_64
 	license = GPL
