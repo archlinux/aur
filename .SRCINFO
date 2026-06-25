@@ -1,6 +1,6 @@
 pkgbase = rencal-bin
 	pkgdesc = A calendar for Omarchy
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/t4t5/rencal
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = rencal-bin
 	conflicts = rencal
 	options = !debug
 	options = !strip
-	source = rencal-0.2.0.deb::https://github.com/t4t5/rencal/releases/download/v0.2.0/renCal_0.2.0_amd64.deb
-	sha256sums = 683018b32b66db01eac20d67636edee5a5d54f3cd57f4e52c2625ef92159309c
+	source = rencal-0.3.0.deb::https://github.com/t4t5/rencal/releases/download/v0.3.0/renCal_0.3.0_amd64.deb
+	sha256sums = 87d2e290c21aa7809f8f685a7c8d38d3e9b96ab189d863586a11ca83b69b8296
 
 pkgname = rencal-bin
