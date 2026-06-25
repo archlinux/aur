@@ -2,8 +2,8 @@
 
 _name=livekit
 pkgname=python-$_name
-pkgver=1.1.11
-_livekit_ffi_ver=0.12.62
+pkgver=1.1.12
+_livekit_ffi_ver=0.12.67
 pkgrel=1
 pkgdesc="Python Real-time SDK for LiveKit."
 arch=('x86_64' 'aarch64')
@@ -20,13 +20,13 @@ source=("$_repo/archive/refs/tags/rtc-v$pkgver.tar.gz"
         "$_repo/raw/refs/tags/rtc-v$pkgver/tests/rtc/fixtures//test_processed.wav")
 source_x86_64=("https://github.com/livekit/rust-sdks/releases/download/livekit-ffi/v$_livekit_ffi_ver/ffi-linux-x86_64.zip")
 source_aarch64=("https://github.com/livekit/rust-sdks/releases/download/livekit-ffi/v$_livekit_ffi_ver/ffi-linux-arm64.zip")
-sha256sums=('b39fb54cb438afdce198c96cf40218f286653cada896a9edd86c02a95d49bbc7'
+sha256sums=('6198722fb946ee149d7edcb4a21515d8605a059080e82e7f77ae41f7da24d235'
             'ac5cba8b2477ab55c9bc5f95faffcd3d9b9ad4e6a01d79308fbe6eeef733ce80'
             '90626c2c532dfb8313ae52501a9500f1c90235570aab8ff1367e7f91fb697a7e'
             'cf50f57f00fa941ab612c57c24a28811b93c878d3c98edcb4a8f21508aa8e566'
             '8a48eb2f6a2143b4bc6adfe306983637f628fffc9d550c60b4ebcecd506d6245')
-sha256sums_x86_64=('9ccbd7c642c5160fb55d491317f83fa2d5bd58986f0cb1cc299051625a435590')
-sha256sums_aarch64=('7d6ae558c105154b92bab9dfd787083770fd9d15ed2c414e93b322c6b9536835')
+sha256sums_x86_64=('47bdcd74b96cb89fc8b9abd870a6217d4e6af09bf2bae649b2d3fa71e67e7c0d')
+sha256sums_aarch64=('6dd59145b875796ceb2efda8e19c52e1d22b32dd7dd1461aeb3f6da25a8eb4c6')
 
 prepare(){
   cp -f "$srcdir"/test_audio.wav "$srcdir"/python-sdks-rtc-v$pkgver/tests/rtc/fixtures/test_audio.wav
