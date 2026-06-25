@@ -2,7 +2,7 @@
 # Contributor: Peter Mattern <pmattern at arcor dot de>
 
 pkgname=python-social-auth-core
-pkgver=4.9.1 # renovate: datasource=github-tags depName=python-social-auth/social-core
+pkgver=5.0.1 # renovate: datasource=github-tags depName=python-social-auth/social-core
 pkgrel=3
 pkgdesc='Python Social Auth core component'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
   'python-wheel'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('764e2b0ccecb08cd6cb70e97e494d13e032b47c0dd9ab4161dd77fcdfa1e1c6c')
+sha256sums=('ab3a648e38502c0f78d04b862cb42241858be20ae72e7965b524f88cbc7f1a13')
 
 build() {
   cd social-core-"${pkgver}"
@@ -31,5 +31,5 @@ package() {
   install -Dm644 "${srcdir}/social-core-${pkgver}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  rm -rf "${pkgdir}/usr/lib/python3.11/site-packages/social_core/tests"
+  rm -rf "${pkgdir}"/usr/lib/python3*/site-packages/social_core/tests
 }
