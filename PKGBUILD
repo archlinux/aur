@@ -2,7 +2,7 @@
 
 pkgname=neovim-rose-pine-git
 _pkgname=neovim-rose-pine
-pkgver=r261.15aac8c
+pkgver=r374.ff48305
 pkgrel=1
 pkgdesc="Port of the dark Rose Pine colorscheme for neovim. Includes lualine theme."
 arch=('any')
@@ -23,6 +23,6 @@ pkgver() {
 package() {
 	cd "$_pkgname"
 	find colors lua -type f -exec install -Dvm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
-	install -Dvm 644 readme.md -t "$pkgdir/usr/share/doc/$pkgname/"
-	install -Dvm 644 license -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
