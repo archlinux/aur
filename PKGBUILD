@@ -1,13 +1,12 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=retorrent
-pkgver=0.2.10
+pkgver=0.2.11
 pkgrel=1
 pkgdesc="A BitTorrent client with an alpha/test UI, built in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mlm-games/retorrent"
 license=('AGPL3')
-depends=('gtk3' 'glibc')
-optdepends=('libappindicator-gtk3: system tray icon')
+depends=('glibc')
 makedepends=('cargo' 'rust' 'pkg-config')
 provides=('retorrent')
 conflicts=('retorrent-bin')

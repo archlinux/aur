@@ -1,6 +1,6 @@
 pkgbase = retorrent
 	pkgdesc = A BitTorrent client with an alpha/test UI, built in Rust
-	pkgver = 0.2.10
+	pkgver = 0.2.11
 	pkgrel = 1
 	url = https://github.com/mlm-games/retorrent
 	arch = x86_64
@@ -9,13 +9,11 @@ pkgbase = retorrent
 	makedepends = cargo
 	makedepends = rust
 	makedepends = pkg-config
-	depends = gtk3
 	depends = glibc
-	optdepends = libappindicator-gtk3: system tray icon
 	provides = retorrent
 	conflicts = retorrent-bin
 	options = !lto
-	source = retorrent-0.2.10.tar.gz::https://github.com/mlm-games/retorrent/archive/refs/tags/v0.2.10.tar.gz
+	source = retorrent-0.2.11.tar.gz::https://github.com/mlm-games/retorrent/archive/refs/tags/v0.2.11.tar.gz
 	sha256sums = SKIP
 
 pkgname = retorrent
