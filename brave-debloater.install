@@ -1,0 +1,12 @@
+post_upgrade() {
+  echo ">>    See enabled and disabled features here: /etc/brave/policies/managed/policies.json"
+  echo ">>    "
+  echo ">>    Check out https://support.brave.app/hc/en-us/articles/360039248271-Group-Policy"
+  echo ">>    for more information on this."
+  echo ">>    "
+  echo ">>    And don't forget if you have *.pacsave after install / update"
+}
+
+post_install() {
+  post_upgrade
+}

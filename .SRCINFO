@@ -1,0 +1,13 @@
+pkgbase = brave-debloater
+	pkgdesc = Debloat Brave Browser by disabling AI, Rewards, Wallet, VPN, Telemetry, and other extras.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Anxarden/brave-debloater
+	install = brave-debloater.install
+	arch = any
+	license = MIT
+	depends = brave
+	source = https://github.com/Anxarden/brave-debloater/releases/download/v1.2.0/policies.json
+	sha256sums = 50d15acd527fefa79a9519cb685d57baf9f0564a2b192ba16baaa087aa31d611
+
+pkgname = brave-debloater
