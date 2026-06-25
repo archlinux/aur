@@ -1,6 +1,6 @@
 pkgbase = lvce-bin
 	pkgdesc = VS Code inspired text editor that mostly runs in a webworker.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.84.9
+	pkgver = 0.84.10
 	pkgrel = 1
 	url = https://lvce-editor.github.io/lvce-editor
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = lvce-bin
 	license = MIT
 	depends = electron41
 	depends = nodejs
-	provides = lvce=0.84.9
+	provides = lvce=0.84.10
 	conflicts = lvce
 	options = !strip
 	options = !emptydirs
@@ -17,11 +17,11 @@ pkgbase = lvce-bin
 	source = lvce.sh
 	sha256sums = ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = lvce-0.84.9-aarch64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.84.9/lvce-v0.84.9_arm64.deb
-	sha256sums_aarch64 = 897fba872ee19386e7c1351acaf29dfbc350bd4929f97e5b1257d0e77890d34c
-	source_armv7h = lvce-0.84.9-armv7h.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.84.9/lvce-v0.84.9_armhf.deb
-	sha256sums_armv7h = 74832b7cd85fda59ab64a06677530e6c6986db8f8681d962b8a8b04bae92d982
-	source_x86_64 = lvce-0.84.9-x86_64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.84.9/lvce-v0.84.9_amd64.deb
-	sha256sums_x86_64 = 96207f2e59856883175319eee5ebbcfbb16923daeb2056e979b0dda54543bba2
+	source_aarch64 = lvce-0.84.10-aarch64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.84.10/lvce-v0.84.10_arm64.deb
+	sha256sums_aarch64 = 020d2585e522e5123dd5b4bd655d7356a41be3ff7e4042df289cf83f0e3fa765
+	source_armv7h = lvce-0.84.10-armv7h.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.84.10/lvce-v0.84.10_armhf.deb
+	sha256sums_armv7h = 2431a6f5c253bc91db1226c8a048f81561f3d183dde9864d29f88aa2ec1e2db7
+	source_x86_64 = lvce-0.84.10-x86_64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.84.10/lvce-v0.84.10_amd64.deb
+	sha256sums_x86_64 = 987e3ff4619952fc68a73adc8b7c8fa61a38b8cf37d53cd0bde0a044f9f7d7da
 
 pkgname = lvce-bin
