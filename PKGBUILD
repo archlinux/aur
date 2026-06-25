@@ -17,7 +17,6 @@ pkgname=(
   libgcc-fast-optimized
   libgccjit-fast-optimized
   libgomp-fast-optimized
-  libhwasan-fast-optimized
   libitm-fast-optimized
   liblsan-fast-optimized
   libquadmath-fast-optimized
@@ -26,8 +25,15 @@ pkgname=(
   libubsan-fast-optimized
   lto-dump-fast-optimized
 )
+
+# TODO: The official gcc package with hwasan available didn't arrive the
+# official build. While the libhwasan package for x86 doesn't arrive the
+# official repo, this causes a dependency hell when switching from
+# fast-optimized to official gcc. Add it again when it's available.
+  # libhwasan-fast-optimized
+
 pkgver=16.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection optimized with -O3 and local cpu tuning'
 arch=(x86_64)
 license=(
@@ -177,7 +183,6 @@ package_gcc-fast-optimized() {
   depends=(
     "libasan-fast-optimized=$pkgver-$pkgrel"
     "libgcc-fast-optimized=$pkgver-$pkgrel"
-    "libhwasan-fast-optimized=$pkgver-$pkgrel"
     "liblsan-fast-optimized=$pkgver-$pkgrel"
     "libstdc++-fast-optimized=$pkgver-$pkgrel"
     "libtsan-fast-optimized=$pkgver-$pkgrel"
@@ -191,6 +196,8 @@ package_gcc-fast-optimized() {
     zlib
     zstd
   )
+  # TODO: Add back:
+    # "libhwasan-fast-optimized=$pkgver-$pkgrel"
   optdepends=(
   )
   provides=(
@@ -242,7 +249,8 @@ package_gcc-fast-optimized() {
   make -C $CHOST/libquadmath DESTDIR="$pkgdir" install-nodist_libsubincludeHEADERS
   make -C $CHOST/libsanitizer DESTDIR="$pkgdir" install-nodist_{saninclude,toolexeclib}HEADERS
   make -C $CHOST/libsanitizer/asan DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
-  make -C $CHOST/libsanitizer/hwasan DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
+  # TODO: Add back:
+  # make -C $CHOST/libsanitizer/hwasan DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
   make -C $CHOST/libsanitizer/tsan DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
   make -C $CHOST/libsanitizer/lsan DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
 
@@ -285,13 +293,14 @@ package_gcc-libs-fast-optimized() {
     libatomic-fast-optimized
     libgcc-fast-optimized
     libgomp-fast-optimized
-    libhwasan-fast-optimized
     liblsan-fast-optimized
     libquadmath-fast-optimized
     libstdc++-fast-optimized
     libtsan-fast-optimized
     libubsan-fast-optimized
   )
+  # TODO: Add back:
+    # libhwasan-fast-optimized
   provides=(
     gcc-libs
   )
@@ -414,28 +423,29 @@ package_libgomp-fast-optimized(){
   _install_runtime_library_exception
 }
 
-package_libhwasan-fast-optimized(){
-  pkgdesc='Hardware-assisted Address Sanitizer runtime library shipped by GCC optimized with -O3 and local cpu tuning'
-  depends=(
-    'glibc>=2.27'
-    libgcc-fast-optimized
-    libstdc++-fast-optimized
-  )
-  provides=(
-    libhwasan.so
-    libhwasan
-  )
-  replaces=(
-    libhwasan
-  )
-  conflicts=(libhwasan)
-
-  cd gcc-build
-
-  make -C $CHOST/libsanitizer/hwasan DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
-
-  _install_runtime_library_exception
-}
+# TODO: Add back (uncomment):
+#package_libhwasan-fast-optimized(){
+#  pkgdesc='Hardware-assisted Address Sanitizer runtime library shipped by GCC optimized with -O3 and local cpu tuning'
+#  depends=(
+#    'glibc>=2.27'
+#    libgcc-fast-optimized
+#    libstdc++-fast-optimized
+#  )
+#  provides=(
+#    libhwasan.so
+#    libhwasan
+#  )
+#  replaces=(
+#    libhwasan
+#  )
+#  conflicts=(libhwasan)
+#
+#  cd gcc-build
+#
+#  make -C $CHOST/libsanitizer/hwasan DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
+#
+#  _install_runtime_library_exception
+#}
 
 package_libitm-fast-optimized(){
   pkgdesc='GNU Transactional Memory library shipped by GCC optimized with -O3 and local cpu tuning'

@@ -1,7 +1,7 @@
 pkgbase = gcc-fast-optimized
-	pkgdesc = The GNU Compiler Collection optimized with -O3 and local tuning
+	pkgdesc = The GNU Compiler Collection optimized with -O3 and local cpu tuning
 	pkgver = 16.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gcc.gnu.org
 	arch = x86_64
 	license = GPL-3.0-or-later WITH GCC-exception-3.1
@@ -19,28 +19,27 @@ pkgbase = gcc-fast-optimized
 	makedepends = zstd
 	options = !emptydirs
 	options = !lto
-	source = https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz
-        source = "https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz.sig"
+	source = https://ftp.gnu.org/gnu/gcc/gcc-16.1.0/gcc-16.1.0.tar.xz
+	source = https://ftp.gnu.org/gnu/gcc/gcc-16.1.0/gcc-16.1.0.tar.xz.sig
 	source = c89
 	source = c99
 	validpgpkeys = F3691687D867B81B51CE07D9BBE43771487328A9
 	validpgpkeys = 86CFFCA918CF3AF47147588051E8B148A9999C34
 	validpgpkeys = 13975A70E63C361C73AE69EF6EEB81F8981C74C7
 	validpgpkeys = D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62
-        sha256sums = 50efb4d94c3397aff3b0d61a5abd748b4dd31d9d3f2ab7be05b171d36a510f79
-        sha256sums = 33a851c045ea2ef6f580d82b2abfb1dc75d8b270727800028ca5f40c3b4a4246
-        sha256sums = 7b09ec947f90b98315397af675369a1e3dfc527fa70013062e6e85c4be0275ab
-        sha256sums = 44ea973558842f3f4bd666bdaf6e810fd7b7c7bd36b5cc4c69f93d2cd0124fc7
+	sha256sums = 50efb4d94c3397aff3b0d61a5abd748b4dd31d9d3f2ab7be05b171d36a510f79
+	sha256sums = 33a851c045ea2ef6f580d82b2abfb1dc75d8b270727800028ca5f40c3b4a4246
+	sha256sums = 7b09ec947f90b98315397af675369a1e3dfc527fa70013062e6e85c4be0275ab
+	sha256sums = 44ea973558842f3f4bd666bdaf6e810fd7b7c7bd36b5cc4c69f93d2cd0124fc7
 
 pkgname = gcc-fast-optimized
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends optimized with -O3 and local tuning
-	depends = libasan=16.1.0-1
-	depends = libgcc=16.1.0-1
-	depends = libhwasan=16.1.0-1
-	depends = liblsan=16.1.0-1
-	depends = libstdc++=16.1.0-1
-	depends = libtsan=16.1.0-1
-	depends = libubsan=16.1.0-1
+	depends = libasan-fast-optimized=16.1.0-2
+	depends = libgcc-fast-optimized=16.1.0-2
+	depends = liblsan-fast-optimized=16.1.0-2
+	depends = libstdc++-fast-optimized=16.1.0-2
+	depends = libtsan-fast-optimized=16.1.0-2
+	depends = libubsan-fast-optimized=16.1.0-2
 	depends = binutils>=2.28
 	depends = glibc>=2.27
 	depends = gmp
@@ -49,60 +48,58 @@ pkgname = gcc-fast-optimized
 	depends = mpfr
 	depends = zlib
 	depends = zstd
+	optdepends = 
 	provides = gcc
-	replaces = gcc
 	conflicts = gcc
+	replaces = gcc
 	options = !emptydirs
 	options = staticlibs
 
 pkgname = gcc-libs-fast-optimized
-	pkgdesc = Runtime libraries shipped by GCC optimized with -O3 and local tuning
+	pkgdesc = Runtime libraries shipped by GCC optimized with -O3 and local cpu tuning
 	depends = glibc>=2.27
-	depends = libasan
-	depends = libatomic
-	depends = libgcc
-	depends = libgfortran
-	depends = libgomp
-	depends = libhwasan
-	depends = liblsan
-	depends = libobjc
-	depends = libquadmath
-	depends = libstdc++
-	depends = libtsan
-	depends = libubsan
+	depends = libasan-fast-optimized
+	depends = libatomic-fast-optimized
+	depends = libgcc-fast-optimized
+	depends = libgomp-fast-optimized
+	depends = liblsan-fast-optimized
+	depends = libquadmath-fast-optimized
+	depends = libstdc++-fast-optimized
+	depends = libtsan-fast-optimized
+	depends = libubsan-fast-optimized
 	provides = gcc-libs
-	replaces = gcc-libs
 	conflicts = gcc-libs
+	replaces = gcc-libs
 
 pkgname = libasan-fast-optimized
-	pkgdesc = Address Sanitizer runtime library shipped by GCC optimized with -O3 and local tuning
+	pkgdesc = Address Sanitizer runtime library shipped by GCC optimized with -O3 and local cpu tuning
 	depends = glibc>=2.27
-	depends = libgcc
-	depends = libstdc++
+	depends = libgcc-fast-optimized
+	depends = libstdc++-fast-optimized
 	provides = libasan.so
 	provides = libasan
-	replaces = libasan
 	conflicts = libasan
+	replaces = libasan
 
 pkgname = libatomic-fast-optimized
-	pkgdesc = GNU Atomic library shipped by GCC optimized with -O3 and local tuning
+	pkgdesc = GNU Atomic library shipped by GCC optimized with -O3 and local cpu tuning
 	depends = glibc>=2.27
 	provides = libatomic.so
 	provides = libatomic
-	replaces = libatomic
 	conflicts = libatomic
+	replaces = libatomic
 
 pkgname = libgcc-fast-optimized
-	pkgdesc = Low-level runtime library shipped by GCC optimized with -O3 and local tuning
+	pkgdesc = Low-level runtime library shipped by GCC optimized with -O3 and local cpu tuning
 	depends = glibc>=2.27
 	provides = libgcc_s.so
-	provides = libgcc_s
-	replaces = libgcc_s
-	conflicts = libgcc_s
+	provides = libgcc
+	conflicts = libgcc
+	replaces = libgcc
 
 pkgname = libgccjit-fast-optimized
-	pkgdesc = Just-In-Time Compilation with GCC backend  optimized with -O3 and local tuning
-	depends = gcc=16.1.0-1
+	pkgdesc = Just-In-Time Compilation with GCC backend optimized with -O3 and local cpu tuning
+	depends = gcc-fast-optimized=16.1.0-2
 	depends = glibc>=2.27
 	depends = gmp
 	depends = libisl.so
@@ -112,87 +109,77 @@ pkgname = libgccjit-fast-optimized
 	depends = zstd
 	provides = libgccjit.so
 	provides = libgccjit
-	replaces = libgccjit
 	conflicts = libgccjit
+	replaces = libgccjit
 
 pkgname = libgomp-fast-optimized
-	pkgdesc = OpenMP library shipped by GCC optimized with -O3 and local tuning
+	pkgdesc = OpenMP library shipped by GCC optimized with -O3 and local cpu tuning
 	depends = glibc>=2.27
 	provides = libgomp.so
 	provides = libgomp
-	replaces = libgomp
 	conflicts = libgomp
-
-pkgname = libhwasan-fast-optimized
-	pkgdesc = Hardware-assisted Address Sanitizer runtime library shipped by GCC optimized with -O3 and local tuning
-	depends = glibc>=2.27
-	depends = libgcc
-	depends = libstdc++
-	provides = libhwasan.so
-	provides = libhwasan
-	replaces = libhwasan
-	conflicts = libhwasan
+	replaces = libgomp
 
 pkgname = libitm-fast-optimized
-	pkgdesc = GNU Transactional Memory library shipped by GCC optimized with -O3 and local tuning
+	pkgdesc = GNU Transactional Memory library shipped by GCC optimized with -O3 and local cpu tuning
 	depends = glibc>=2.27
-	depends = libgcc
+	depends = libgcc-fast-optimized
 	provides = libitm.so
 	provides = libitm
-	replaces = libitm
 	conflicts = libitm
+	replaces = libitm
 
 pkgname = liblsan-fast-optimized
-	pkgdesc = Leak Sanitizer runtime library shipped by GCC optimized with -O3 and local tuning
+	pkgdesc = Leak Sanitizer runtime library shipped by GCC optimized with -O3 and local cpu tuning
 	depends = glibc>=2.27
-	depends = libgcc
-	depends = libstdc++
+	depends = libgcc-fast-optimized
+	depends = libstdc++-fast-optimized
 	provides = liblsan.so
 	provides = liblsan
-	replaces = liblsan
 	conflicts = liblsan
+	replaces = liblsan
 
 pkgname = libquadmath-fast-optimized
-	pkgdesc = GCC __float128 library optimized with -O3 and local tuning
+	pkgdesc = GCC __float128 library optimized with -O3 and local cpu tuning
 	depends = glibc>=2.27
-	depends = libgcc
+	depends = libgcc-fast-optimized
 	provides = libquadmath.so
 	provides = libquadmath
-	replaces = libquadmath
 	conflicts = libquadmath
+	replaces = libquadmath
 
 pkgname = libstdc++-fast-optimized
-	pkgdesc = C++ runtime libraries shipped by GCC optimized with -O3 and local tuning
+	pkgdesc = C++ runtime libraries shipped by GCC optimized with -O3 and local cpu tuning
 	depends = glibc>=2.27
-	depends = libgcc
+	depends = libgcc-fast-optimized
 	provides = libstdc++.so
 	provides = libstdc++
-	replaces = libstdc++
 	conflicts = libstdc++
+	replaces = libstdc++
 
 pkgname = libtsan-fast-optimized
-	pkgdesc = Thread Sanitizer runtime library shipped by GCC optimized with -O3 and local tuning
+	pkgdesc = Thread Sanitizer runtime library shipped by GCC optimized with -O3 and local cpu tuning
 	depends = glibc>=2.27
-	depends = libgcc
-	depends = libstdc++
+	depends = libgcc-fast-optimized
+	depends = libstdc++-fast-optimized
 	provides = libtsan.so
 	provides = libtsan
-	replaces = libtsan
 	conflicts = libtsan
+	replaces = libtsan
 
 pkgname = libubsan-fast-optimized
-	pkgdesc = Undefined Behavior Sanitizer runtime library shipped by GCC optimized with -O3 and local tuning
+	pkgdesc = Undefined Behavior Sanitizer runtime library shipped by GCC optimized with -O3 and local cpu tuning
 	depends = glibc>=2.27
-	depends = libgcc
-	depends = libstdc++
+	depends = libgcc-fast-optimized
+	depends = libstdc++-fast-optimized
 	provides = libubsan.so
 	provides = libubsan
-	replaces = libubsan
 	conflicts = libubsan
+	replaces = libubsan
 
 pkgname = lto-dump-fast-optimized
-	pkgdesc = Dump link time optimization object files optimized with -O3 and local tuning
-	depends = gcc=16.1.0-1
+	pkgdesc = Dump link time optimization object files optimized with -O3 and local cpu tuning
+	depends = gcc-fast-optimized=16.1.0-2
 	depends = glibc>=2.27
 	depends = gmp
 	depends = libisl.so
@@ -201,5 +188,5 @@ pkgname = lto-dump-fast-optimized
 	depends = zlib
 	depends = zstd
 	provides = lto-dump
-	replaces = lto-dump
 	conflicts = lto-dump
+	replaces = lto-dump
