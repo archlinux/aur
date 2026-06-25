@@ -1,7 +1,7 @@
 pkgbase = yarr
-	pkgdesc = Self-hosted, web-based feed aggregator with an embedded sqlite database
+	pkgdesc = Yet Another RSS Reader: Self-hosted, web-based feed aggregator with an embedded sqlite database
 	pkgver = 2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nkanaev/yarr
 	changelog = yarr.changelog
 	arch = aarch64

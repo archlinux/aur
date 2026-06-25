@@ -4,9 +4,9 @@
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname=yarr
-pkgdesc='Self-hosted, web-based feed aggregator with an embedded sqlite database'
+pkgdesc='Yet Another RSS Reader: Self-hosted, web-based feed aggregator with an embedded sqlite database'
 pkgver=2.7
-pkgrel=1
+pkgrel=2
 url='https://github.com/nkanaev/yarr'
 changelog="$pkgname.changelog"
 arch=('aarch64' 'x86_64')
