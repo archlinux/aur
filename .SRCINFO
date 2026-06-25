@@ -1,0 +1,16 @@
+pkgbase = cqli-bin
+	pkgdesc = A chess query facility for PGN databases
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://cql64.com
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = glibc>=2.27
+	provides = cqli
+	conflicts = cqli
+	options = !strip
+	options = !debug
+	source = cqli-1.0.7.zip::https://cql64.com/downloads/cqli-1.0.7-linux.zip
+	sha256sums = 03937bf2c2672f8ba52b86d7867de09756f3b2bd94feb175ea3409d762c9b67f
+
+pkgname = cqli-bin
