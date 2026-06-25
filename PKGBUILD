@@ -2,7 +2,7 @@
 
 pkgname=python-udsoncan
 _name=${pkgname#python-}
-pkgver=1.26.0
+pkgver=1.26.1
 pkgrel=1
 epoch=
 pkgdesc="Implementation of the Unified Diagnostic Service (UDS) protocol (ISO-14229) used in the automotive industry."
@@ -28,7 +28,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('c91735ecf040bcc06680635ff39899e1bf3193f9d87540a59c8642c36ef74122')
+sha256sums=('e4e04df9ad3be4f1dd6cc6dd580aa8a25cb842b3bb1b10c482d3cffa07303910')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
