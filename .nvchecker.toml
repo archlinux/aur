@@ -1,0 +1,3 @@
+[perl-dbix-class]
+source = "cpan"
+cpan = "DBIx-Class"
