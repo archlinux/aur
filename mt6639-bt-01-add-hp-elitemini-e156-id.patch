@@ -1,0 +1,33 @@
+Bluetooth: btusb/btmtk: add 0489:e156 (HP EliteMini, MT6639)
+
+Kernel 7.1 carries native MT6639 (MT7927) Bluetooth support and the full
+set of known MT6639/MT7927 USB IDs, but the HP EliteMini's 0489:e156 is
+not among them. Without a quirks_table entry the device matches the
+generic 0489 rule in btusb_table, which sets BTUSB_BCM_PATCHRAM (Broadcom)
+and never reaches the MediaTek setup path.
+
+Add 0489:e156 to the btusb quirks_table so it is handled as a MediaTek
+device, and to btmtk_mt6639_devs[] so the zero-CHIPID workaround is scoped
+to it. Reported and tested by majkm4 (GitHub #87).
+
+--- a/btmtk.c
++++ b/btmtk.c
+@@ -476,6 +476,7 @@
+ 	u16 product;
+ } btmtk_mt6639_devs[] = {
+ 	{ 0x0489, 0xe13a },	/* ASUS ROG Crosshair X870E Hero */
++	{ 0x0489, 0xe156 },	/* HP EliteMini */
+ 	{ 0x0489, 0xe0fa },	/* Lenovo Legion Pro 7 16ARX9 */
+ 	{ 0x0489, 0xe10f },	/* Gigabyte Z790 AORUS MASTER X */
+ 	{ 0x0489, 0xe110 },	/* MSI X870E Ace Max */
+--- a/btusb.c
++++ b/btusb.c
+@@ -755,6 +755,8 @@
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x0489, 0xe13a), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x0489, 0xe156), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x0489, 0xe0fa), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x0489, 0xe10f), .driver_info = BTUSB_MEDIATEK |

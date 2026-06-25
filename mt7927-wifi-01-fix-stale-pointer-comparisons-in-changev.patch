@@ -20,12 +20,12 @@ Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
 
-cea97b5a804238af7979727f6458401ed3f48e7d
+065b239f75f3b586199aeec93f5f62750341c17c
 diff --git a/mt7925/main.c b/mt7925/main.c
-index 2d358a9..f128a19 100644
+index 73d3722..4d8ca04 100644
 --- a/mt7925/main.c
 +++ b/mt7925/main.c
-@@ -2049,5 +2049,5 @@ free:
+@@ -2181,5 +2181,5 @@ free:
  
 -		if (mconf != &mvif->bss_conf)
 +		if (mconfs[link_id] != &mvif->bss_conf)

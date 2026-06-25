@@ -26,7 +26,7 @@ Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
 
-87917796bc18c35f203dc6969ba7ac0f4c94d265
+cb0ba837f1b2d5b4a6ea878fb3d274b0f21c10c4
 diff --git a/mt76_connac.h b/mt76_connac.h
 index 51423c7..2deee83 100644
 --- a/mt76_connac.h
@@ -40,7 +40,7 @@ index 51423c7..2deee83 100644
 +
  static inline bool is_mt7920(struct mt76_dev *dev)
 diff --git a/mt7925/main.c b/mt7925/main.c
-index f128a19..cfce851 100644
+index 4d8ca04..bf38d65 100644
 --- a/mt7925/main.c
 +++ b/mt7925/main.c
 @@ -185,2 +185,6 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum nl80211_band band,

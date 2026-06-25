@@ -21,12 +21,12 @@ Signed-off-by: Javier Tia <floss@jetm.me>
 Tested-by: Marcin Wróblewski <mawroble@gmail.com>
 Tested-by: Clément Metz <metz.clement@gmail.com>
 
-cb234606f197714fd0e282973e2ba41068595d3f
+5cce6e7e4c6759de07390858a19c8d7d8bdcd4d0
 diff --git a/mt7925/mcu.c b/mt7925/mcu.c
-index 0755fee..d42025a 100644
+index 1edfc4b..26c4f2e 100644
 --- a/mt7925/mcu.c
 +++ b/mt7925/mcu.c
-@@ -3839,2 +3839,14 @@ int mt7925_mcu_set_rate_txpower(struct mt76_phy *phy)
+@@ -3857,2 +3857,14 @@ int mt7925_mcu_set_rate_txpower(struct mt76_phy *phy)
  
 +	if (phy->chandef.chan) {
 +		struct mt76_power_limits la = {};

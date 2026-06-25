@@ -51,12 +51,12 @@ Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
 
-1f0c7853737a0d87e7a0604cdf8fd2302a2f61e8
+1fbeee215dd0762473b98b1a01ba394b4c9dc273
 diff --git a/mt7925/init.c b/mt7925/init.c
-index 3ce5d6f..c4c9938 100644
+index c0c5cb9..f203f64 100644
 --- a/mt7925/init.c
 +++ b/mt7925/init.c
-@@ -117,2 +117,15 @@ static int __mt7925_init_hardware(struct mt792x_dev *dev)
+@@ -119,2 +119,15 @@ static int __mt7925_init_hardware(struct mt792x_dev *dev)
  
 +	/* MT7927: Enable DBDC (dual-band) mode. Without this, firmware
 +	 * defaults to 2.4GHz only and ignores 5GHz scan requests.
@@ -240,10 +240,10 @@ index 6cceff8..1f50d1e 100644
 +	}
  
 diff --git a/mt792x_regs.h b/mt792x_regs.h
-index 14ebe82..2a83785 100644
+index 2ed0d1a..859f212 100644
 --- a/mt792x_regs.h
 +++ b/mt792x_regs.h
-@@ -503,2 +503,20 @@
+@@ -507,2 +507,20 @@
  
 +/* CBInfra registers - MT7927 combo chip */
 +#define MT7927_CBINFRA_WAKEPU_TOP		0xe01a0

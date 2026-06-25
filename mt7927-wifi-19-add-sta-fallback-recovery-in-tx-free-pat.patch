@@ -1,0 +1,44 @@
+wifi: mt76: mt7925: add STA fallback recovery in TX free path
+
+mt7925_txwi_free lacks the STA fallback recovery that
+mt76_connac2_txwi_free (mt7921) has. When firmware sends MSDU entries
+without a preceding WCID pair entry, sta stays NULL and
+mt7925_tx_check_aggr never runs, preventing AMPDU BA session setup.
+
+Add the same fallback pattern: re-read WCID from TXD1, look up the
+STA via __mt76_wcid_ptr, and call tx_check_aggr if found. Also add
+debug tracing in both mt7925_txwi_free (fallback path) and
+mt7925_mac_tx_free (PAIR lookup failure) to diagnose whether firmware
+reports correct WCIDs for AP-mode client STAs.
+
+Signed-off-by: Javier Tia <floss@jetm.me>
+Tested-by: Patryk Kowalczyk <patryk@kowalczyk.ws>
+
+0fe4ebc47c7ee47d9fcf064f64cbf02771ce7d1d
+diff --git a/mt7925/mac.c b/mt7925/mac.c
+index d681005..80737c7 100644
+--- a/mt7925/mac.c
++++ b/mt7925/mac.c
+@@ -1094,2 +1094,13 @@ void mt7925_txwi_free(struct mt792x_dev *dev, struct mt76_txwi_cache *t,
+ 		wcid_idx = le32_get_bits(txwi[1], MT_TXD1_WLAN_IDX);
++		wcid = __mt76_wcid_ptr(mdev, wcid_idx);
++
++		if (wcid && wcid->sta) {
++			sta = container_of((void *)wcid,
++					   struct ieee80211_sta,
++					   drv_priv);
++			pr_info_ratelimited("mt7925 txwi_free: fallback sta=%pM wcid_idx=%u\n",
++					    sta->addr, wcid_idx);
++			if (likely(t->skb->protocol != cpu_to_be16(ETH_P_PAE)))
++				mt7925_tx_check_aggr(sta, t->skb, wcid);
++		}
+ 	}
+@@ -1142,4 +1153,7 @@ mt7925_mac_tx_free(struct mt792x_dev *dev, void *data, int len)
+ 			sta = wcid_to_sta(wcid);
+-			if (!sta)
++			if (!sta) {
++				pr_info_ratelimited("mt7925 txfree: wcid_idx=%u sta=NULL wcid_sta=%d\n",
++						    idx, wcid ? wcid->sta : -1);
+ 				continue;
++			}
+ 

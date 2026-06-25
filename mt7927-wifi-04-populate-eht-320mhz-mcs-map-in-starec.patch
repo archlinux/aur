@@ -20,12 +20,12 @@ Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
 
-f35a9da2a47cb2b032a69313196e5159fa18b73e
+e2644a481636cb1ba6c13c05ea0e38a28ee4b5d3
 diff --git a/mt7925/mcu.c b/mt7925/mcu.c
-index dd5ecb0..a7f27c5 100644
+index 016c534..f403d9d 100644
 --- a/mt7925/mcu.c
 +++ b/mt7925/mcu.c
-@@ -1685,2 +1685,3 @@ mt7925_mcu_sta_eht_tlv(struct sk_buff *skb, struct ieee80211_link_sta *link_sta)
+@@ -1669,2 +1669,3 @@ mt7925_mcu_sta_eht_tlv(struct sk_buff *skb, struct ieee80211_link_sta *link_sta)
  	memcpy(eht->mcs_map_bw160, &mcs_map->bw._160, sizeof(eht->mcs_map_bw160));
 +	memcpy(eht->mcs_map_bw320, &mcs_map->bw._320, sizeof(eht->mcs_map_bw320));
  }

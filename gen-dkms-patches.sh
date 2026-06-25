@@ -3,9 +3,9 @@ set -euo pipefail
 
 # Generate DKMS WiFi patches from kernel tree commits.
 #
-# Creates a temp git repo from the kernel tarball + mt7902 patch, then applies
-# each kernel commit's diff sequentially. The resulting diffs have exact line
-# numbers for the DKMS build context (kernel.org + mt7902 + preceding patches).
+# Creates a temp git repo from the kernel tarball, then applies each kernel
+# commit's diff sequentially. The resulting diffs have exact line numbers for
+# the DKMS build context (kernel.org tarball + preceding patches).
 #
 # Usage:
 #   ./gen-dkms-patches.sh              # regenerate all
@@ -42,13 +42,14 @@ done
 mt76_kver=$(grep '^_mt76_kver=' "$DKMS_DIR/PKGBUILD" | cut -d"'" -f2)
 tarball="$DKMS_DIR/linux-${mt76_kver}.tar.xz"
 
-# The dkms branch must be based on dkms-base (v6.19.x + mt7902 patch).
+# The dkms branch must be based on dkms-base (the kernel tarball tag, v7.1.1+;
+# MT7902 WiFi 6E is upstream as of 7.0, so no mt7902 patch is layered on).
 # This ensures diffs have the correct context for DKMS builds.
 base_ref="dkms-base"
 
 if ! git -C "$KERNEL_TREE" rev-parse --verify "$base_ref" &>/dev/null; then
 	echo "ERROR: $base_ref ref not found in $KERNEL_TREE"
-	echo "Create it: git checkout -b dkms-base v\${mt76_kver} && apply mt7902 patch"
+	echo "Create it: git branch -f dkms-base v\${mt76_kver}"
 	exit 1
 fi
 
@@ -166,11 +167,6 @@ git config user.name "$(git -C "$KERNEL_TREE" config user.name)"
 git add -A
 git commit -q -m "kernel.org v${mt76_kver}"
 
-# Apply mt7902 patch to establish shifted baseline
-patch -p1 --quiet <"$DKMS_DIR/mt7902-wifi-6.19.patch"
-git add -A
-git commit -q -m "mt7902"
-
 # Clean stale patches before full regeneration
 if ((${#patches_to_gen[@]} == 0)) && ! $dry_run; then
 	echo "Cleaning old DKMS patches..."
@@ -200,7 +196,7 @@ for i in "${!commits[@]}"; do
 		continue
 	fi
 
-	# Apply to temp tree (which has mt7902 + preceding patches)
+	# Apply to temp tree (which has the preceding patches)
 	cd "$work/mt76"
 	if ! echo "$kernel_diff" | git apply --quiet 2>/dev/null; then
 		if ! echo "$kernel_diff" | git apply --3way --quiet 2>/dev/null; then

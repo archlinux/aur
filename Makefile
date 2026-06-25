@@ -67,8 +67,6 @@ $(STAMP): check-version
 		--strip-components=3 \
 		-C "$(SRCDIR)/bluetooth" \
 		"linux-$(MT76_KVER)/drivers/bluetooth"
-	@echo "==> Applying mt7902-wifi-6.19.patch..."
-	patch -d "$(SRCDIR)/mt76" -p1 < "$(TOPDIR)mt7902-wifi-6.19.patch"
 	@echo "==> Applying MT7927 WiFi patches..."
 	@for p in $(TOPDIR)mt7927-wifi-*.patch; do \
 		echo "  $$(basename "$$p")"; \
@@ -137,7 +135,6 @@ install: sources
 	install -dm755 "$(DESTDIR)$(DKMS_PREFIX)/patches/bt"
 	install -dm755 "$(DESTDIR)$(DKMS_PREFIX)/patches/wifi"
 	install -m644 $(TOPDIR)mt6639-bt-[0-9]*.patch $(TOPDIR)mt6639-bt-compat-*.patch "$(DESTDIR)$(DKMS_PREFIX)/patches/bt/"
-	install -m644 "$(TOPDIR)mt7902-wifi-6.19.patch" "$(DESTDIR)$(DKMS_PREFIX)/patches/wifi/"
 	install -m644 $(TOPDIR)mt7927-wifi-*.patch "$(DESTDIR)$(DKMS_PREFIX)/patches/wifi/"
 	@echo "==> Install complete."
 

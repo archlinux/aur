@@ -22,7 +22,7 @@ BT_BRANCH="${BT_BRANCH:-bt-dkms}"
 BT_SUBDIR="drivers/bluetooth"
 UPSTREAM_BRANCH="${UPSTREAM_BRANCH:-mt7927-bt-support}"
 
-# Same base as WiFi: v6.19.x + mt7902 (mt7902 doesn't touch bluetooth)
+# Same base as WiFi: the kernel tarball tag (v7.1.1+)
 base_ref="dkms-base"
 
 # Parse arguments

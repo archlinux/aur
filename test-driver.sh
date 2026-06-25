@@ -255,28 +255,34 @@ check_bt_usb() {
 # 10. Bluetooth firmware loading from dmesg
 # ---------------------------------------------------------------------------
 check_bt_firmware() {
-	local dmesg_out=""
+	# The authoritative "BT is up" signal is a registered HCI device in
+	# sysfs, not dmesg text: MT6639 downloads its firmware several seconds
+	# after the module loads, so a check run right after a module reload
+	# would otherwise false-negative. Poll /sys/class/bluetooth for it.
+	local hci_dev="" waited=0
+	while ((waited < 10)); do
+		for h in /sys/class/bluetooth/hci*; do
+			[[ -e "$h" ]] && {
+				hci_dev="$(basename "$h")"
+				break
+			}
+		done
+		[[ -n "$hci_dev" ]] && break
+		sleep 1
+		waited=$((waited + 1))
+	done
+
+	local dmesg_out bt_dmesg=""
 	dmesg_out="$(dmesg 2>/dev/null || true)"
-
-	if [[ -z "$dmesg_out" ]]; then
-		skip "dmesg not accessible"
-		return
+	if [[ -n "$dmesg_out" ]]; then
+		bt_dmesg="$(echo "$dmesg_out" | grep -iE 'btmtk|btusb|mt6639|mt7927.*bluetooth|BT_RAM_CODE' || true)"
 	fi
 
-	local bt_dmesg
-	bt_dmesg="$(echo "$dmesg_out" | grep -iE 'btmtk|btusb|mt6639|mt7927.*bluetooth|BT_RAM_CODE|hci[0-9].*MT' || true)"
-
-	if [[ -z "$bt_dmesg" ]]; then
-		na "no btmtk/btusb messages in dmesg"
-		return
-	fi
-
-	# Check for firmware load errors
-	if echo "$bt_dmesg" | has_match 'firmware.*error\|failed.*error\|Direct firmware load.*failed'; then
-		local fw_err
-		fw_err="$(echo "$bt_dmesg" | grep -i 'error' | tail -1)"
-		local errno
-		errno="$(echo "$fw_err" | grep -oP 'error -?\K[0-9]+' || true)"
+	# A genuine firmware load failure is a FAIL regardless of HCI state.
+	if echo "$bt_dmesg" | has_match -iE 'Direct firmware load.*failed|btmtk.*firmware.*(fail|error)|hci[0-9].*firmware.*(fail|error)'; then
+		local fw_err errno
+		fw_err="$(echo "$bt_dmesg" | grep -iE 'firmware.*(fail|error|-[0-9]+)' | tail -1)"
+		errno="$(echo "$fw_err" | grep -oP '(error |=)-?\K[0-9]+' | tail -1 || true)"
 		case "$errno" in
 		2) fail "firmware not found (ENOENT - check firmware path)" ;;
 		22) fail "firmware invalid (EINVAL - check file integrity)" ;;
@@ -286,13 +292,22 @@ check_bt_firmware() {
 		return
 	fi
 
-	# Check for successful HCI registration (MT6639-specific)
-	if echo "$bt_dmesg" | has_match 'hci[0-9].*Device setup\|hci[0-9].*AOSP extensions'; then
-		ok "loaded"
-	elif echo "$bt_dmesg" | has_match 'hci[0-9]'; then
-		ok "loaded"
+	if [[ -n "$hci_dev" ]]; then
+		# Registered cleanly. Surface the loaded BT firmware version if dmesg
+		# reported one (best effort; format varies across firmware builds).
+		local fw_ver
+		fw_ver="$(echo "$bt_dmesg" | grep -oiP '(fw[_ ]ver(sion)?|BT_RAM_CODE_MT6639_)[ :=]*\K[0-9][0-9._]*' | tail -1 || true)"
+		ok "${hci_dev}${fw_ver:+, fw ${fw_ver}}"
+		return
+	fi
+
+	# No HCI device after the wait.
+	if [[ -z "$bt_dmesg" ]]; then
+		na "no btmtk/btusb messages in dmesg"
 	else
-		na "no HCI device registered"
+		# USB device enumerated but never registered an HCI node: the #23
+		# warm-reload pattern. A cold power cycle usually recovers it.
+		na "no HCI device (warm-reload; cold power cycle usually fixes - #23)"
 	fi
 }
 

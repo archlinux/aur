@@ -1,0 +1,19 @@
+default_language_version:
+  python: python3
+
+fail_fast: false
+
+repos:
+  # Local hooks - TOML formatting and linting
+  - repo: local
+    hooks:
+      - id: tombi-format
+        name: tombi format
+        entry: tombi format
+        language: system
+        types: [toml]
+      - id: tombi-lint
+        name: tombi lint
+        entry: tombi lint
+        language: system
+        types: [toml]

@@ -33,7 +33,7 @@ Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
 
-94d8392558b028ad7082cc88aa823aa8cf329bfa
+7a4eec75ad14c6ebbfbcc03f058b98a50d23a03c
 diff --git a/mt7925/pci.c b/mt7925/pci.c
 index 604c0e9..415194a 100644
 --- a/mt7925/pci.c
@@ -198,10 +198,10 @@ index 604c0e9..415194a 100644
 +	dev->dma_config = is_mt7927_hw ? &mt7927_dma_cfg : &mt7925_dma_cfg;
  	mt76_mmio_init(&dev->mt76, pcim_iomap_table(pdev)[0]);
 diff --git a/mt792x.h b/mt792x.h
-index bb308f1..d456c57 100644
+index 0984048..114d5b7 100644
 --- a/mt792x.h
 +++ b/mt792x.h
-@@ -207,2 +207,22 @@ struct mt792x_irq_map {
+@@ -208,2 +208,22 @@ struct mt792x_irq_map {
  
 +struct mt792x_dma_config {
 +	/* RX ring indices */
@@ -224,7 +224,7 @@ index bb308f1..d456c57 100644
 +};
 +
  #define mt792x_init_reset(dev)		((dev)->hif_ops->init_reset(dev))
-@@ -254,2 +274,3 @@ struct mt792x_dev {
+@@ -255,2 +275,3 @@ struct mt792x_dev {
  	const struct mt792x_irq_map *irq_map;
 +	const struct mt792x_dma_config *dma_config;
  
@@ -322,7 +322,7 @@ index 002aece..0d27ea3 100644
  EXPORT_SYMBOL_GPL(mt792x_wfsys_reset);
 -
 diff --git a/mt792x_regs.h b/mt792x_regs.h
-index 15adb66..14ebe82 100644
+index 20d27ae..2ed0d1a 100644
 --- a/mt792x_regs.h
 +++ b/mt792x_regs.h
 @@ -303,3 +303,5 @@

@@ -35,8 +35,9 @@
 #   - The mt76 driver framework is shared: building mt7925e already requires the
 #     mt76 core, mt76-connac-lib, and mt792x-lib modules.
 #   - mt7921e (which serves MT7902) shares the exact same dependency chain.
-#   - Including it costs nothing extra and helps users with MT7902 hardware who
-#     need the WiFi 6E patches from lore.kernel.org (Sean Wang's series).
+#   - MT7902 WiFi 6E support is upstream as of kernel 7.0, so it ships straight
+#     from the tarball; building mt7921e backports it to older host kernels at
+#     no extra cost.
 #
 # The ASUS driver ZIP is automatically downloaded from the ASUS CDN.
 # Alternatively, manually download from your board's ASUS support page:
@@ -45,7 +46,7 @@
 # Place the ZIP in this directory before running makepkg.
 
 pkgname=mediatek-mt7927-dkms
-pkgver=2.11
+pkgver=2.12
 pkgrel=1
 # Keywords: MT7927 MT7925 MT6639 MT7902 Filogic 380 WiFi 7 Bluetooth btusb mt7925e mt7921e
 pkgdesc="DKMS Bluetooth (MT6639) and WiFi (MT7925e/MT7902) modules for MediaTek MT7927 Filogic 380"
@@ -66,16 +67,16 @@ _driver_filename='DRV_WiFi_MTK_MT7925_MT7927_TP_W11_64_V5603998_20250709R.zip'
 _driver_sha256='b377fffa28208bb1671a0eb219c84c62fba4cd6f92161b74e4b0909476307cc8'
 
 # Kernel version the mt76 WiFi patches target
-_mt76_kver='7.0'
+_mt76_kver='7.1.1'
 
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v${_mt76_kver%%.*}.x/linux-${_mt76_kver}.tar.xz"
   'extract_firmware.py'
   'dkms.conf'
 )
-sha256sums=('bb7f6d80b387c757b7d14bb93028fcb90f793c5c0d367736ee815a100b3891f0'
+sha256sums=('5215fa3541dc7e7f5bcd51bf7e57f169cec6fce508ca54e3dc85fdee14371d7d'
             '1eb7d542ed94a305e727e20671412d2e2a5793607a020742312a69dff9486b7b'
-            '628dbc6ad0e464190a825d8f1abc2560dc1587c2ce46a8b74da7bc48cb776864')
+            '1f5d87c492ce3b1b748e51eff101233a5710e3851a593cc4001c47ca77a7feaf')
 
 # Auto-download via ASUS CDN token API
 _download_driver_zip() {

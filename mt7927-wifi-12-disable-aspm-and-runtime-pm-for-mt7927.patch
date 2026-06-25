@@ -13,12 +13,12 @@ determined.
 
 Signed-off-by: Javier Tia <floss@jetm.me>
 
-ba78c9477f637f911543b34452554c87761d2702
+121e460e746fc16285db36ece6062aa2d293911d
 diff --git a/mt7925/init.c b/mt7925/init.c
-index c4c9938..89140fc 100644
+index f203f64..98b73b2 100644
 --- a/mt7925/init.c
 +++ b/mt7925/init.c
-@@ -245,3 +245,7 @@ int mt7925_register_device(struct mt792x_dev *dev)
+@@ -247,3 +247,7 @@ int mt7925_register_device(struct mt792x_dev *dev)
  	dev->pm.stats.last_doze_event = jiffies;
 -	if (!mt76_is_usb(&dev->mt76)) {
 +	/* MT7927: runtime PM disabled. The combo chip shares a CONNINFRA

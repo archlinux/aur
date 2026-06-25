@@ -1,0 +1,79 @@
+wifi: mt76: compat: use pre-7.1 action-frame API on older hosts
+
+This DKMS package extracts the mt76 WiFi driver from the kernel 7.1.1
+tarball but compiles it against the host kernel, which is commonly 6.17
+through 7.0 (Fedora 43, Ubuntu 24.04, Proxmox, Bazzite, Artix, etc.).
+
+Kernel 7.1 reworked the action-frame helpers: IEEE80211_MIN_ACTION_SIZE
+became a parameterized macro taking the union member, and the ADDBA
+request fields moved out of the mgmt->u.action.u union directly under
+mgmt->u.action. The 7.1.1 mt76 source uses the new form, which fails to
+build on pre-7.1 hosts:
+
+  mt76_connac_mac.c: error: macro "IEEE80211_MIN_ACTION_SIZE" passed
+                     1 argument, but takes just 0
+  mt7925/mac.c: error: 'union' has no member named 'action_code'
+
+Wrap both ADDBA write_txwi call sites so the native 7.1 form is used on
+>= 7.1 hosts and the pre-7.1 form on older hosts. The size argument
+differs per the respective upstream call site.
+
+The inverse of this shim - the new API guarded behind a 7.0-based
+tarball - was contributed by Komzpa in GitHub PR #70. This version is
+adapted for the 7.1.1 tarball, where the source already defaults to the
+new API and only older hosts need the fallback.
+
+--- a/mt76_connac_mac.c
++++ b/mt76_connac_mac.c
+@@ -4,6 +4,7 @@
+ #include "mt76_connac.h"
+ #include "mt76_connac2_mac.h"
+ #include "dma.h"
++#include <linux/version.h>
+ 
+ #define HE_BITS(f)		cpu_to_le16(IEEE80211_RADIOTAP_HE_##f)
+ #define HE_PREP(f, m, v)	le16_encode_bits(le32_get_bits(v, MT_CRXV_HE_##m),\
+@@ -413,10 +414,17 @@
+ 	u32 val;
+ 
+ 	if (ieee80211_is_action(fc) &&
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 1, 0)
+ 	    skb->len >= IEEE80211_MIN_ACTION_SIZE(addba_req.capab) &&
+ 	    mgmt->u.action.category == WLAN_CATEGORY_BACK &&
+ 	    mgmt->u.action.action_code == WLAN_ACTION_ADDBA_REQ) {
+ 		u16 capab = le16_to_cpu(mgmt->u.action.addba_req.capab);
++#else
++	    skb->len >= IEEE80211_MIN_ACTION_SIZE + 1 + 1 + 2 &&
++	    mgmt->u.action.category == WLAN_CATEGORY_BACK &&
++	    mgmt->u.action.u.addba_req.action_code == WLAN_ACTION_ADDBA_REQ) {
++		u16 capab = le16_to_cpu(mgmt->u.action.u.addba_req.capab);
++#endif
+ 
+ 		txwi[5] |= cpu_to_le32(MT_TXD5_ADD_BA);
+ 		tid = (capab >> 2) & IEEE80211_QOS_CTL_TID_MASK;
+--- a/mt7925/mac.c
++++ b/mt7925/mac.c
+@@ -2,6 +2,7 @@
+ /* Copyright (C) 2023 MediaTek Inc. */
+ 
+ #include <linux/devcoredump.h>
++#include <linux/version.h>
+ #include <linux/etherdevice.h>
+ #include <linux/timekeeping.h>
+ #include "mt7925.h"
+@@ -673,9 +674,15 @@
+ 	u32 val;
+ 
+ 	if (ieee80211_is_action(fc) &&
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 1, 0)
+ 	    skb->len >= IEEE80211_MIN_ACTION_SIZE(action_code) &&
+ 	    mgmt->u.action.category == WLAN_CATEGORY_BACK &&
+ 	    mgmt->u.action.action_code == WLAN_ACTION_ADDBA_REQ)
++#else
++	    skb->len >= IEEE80211_MIN_ACTION_SIZE + 1 &&
++	    mgmt->u.action.category == WLAN_CATEGORY_BACK &&
++	    mgmt->u.action.u.addba_req.action_code == WLAN_ACTION_ADDBA_REQ)
++#endif
+ 		tid = MT_TX_ADDBA;
+ 	else if (ieee80211_is_mgmt(hdr->frame_control))
+ 		tid = MT_TX_NORMAL;

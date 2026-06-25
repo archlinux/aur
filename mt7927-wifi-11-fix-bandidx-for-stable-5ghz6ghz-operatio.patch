@@ -36,12 +36,12 @@ Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
 
-f96e466934fd4d661738155bb2ad6073496251a6
+6afff0e42e30c8cacac4bb5a302aef27d3064639
 diff --git a/mt7925/main.c b/mt7925/main.c
-index cfce851..f36638b 100644
+index bf38d65..f07d9af 100644
 --- a/mt7925/main.c
 +++ b/mt7925/main.c
-@@ -396,3 +396,15 @@ static int mt7925_mac_link_bss_add(struct mt792x_dev *dev,
+@@ -397,3 +397,15 @@ static int mt7925_mac_link_bss_add(struct mt792x_dev *dev,
  			       0 : mconf->mt76.idx;
 -	mconf->mt76.band_idx = 0xff;
 +
@@ -58,22 +58,22 @@ index cfce851..f36638b 100644
 +	}
 +
  	mconf->mt76.wmm_idx = ieee80211_vif_is_mld(vif) ?
-@@ -413,3 +425,4 @@ static int mt7925_mac_link_bss_add(struct mt792x_dev *dev,
+@@ -414,3 +426,4 @@ static int mt7925_mac_link_bss_add(struct mt792x_dev *dev,
  	mlink->wcid.tx_info |= MT_WCID_TX_INFO_SET;
 -	mt76_wcid_init(&mlink->wcid, 0);
 +	mt76_wcid_init(&mlink->wcid,
 +		       mconf->mt76.band_idx == 0xff ? 0 : mconf->mt76.band_idx);
  
-@@ -2115,2 +2128,3 @@ static int mt7925_assign_vif_chanctx(struct ieee80211_hw *hw,
+@@ -2247,2 +2260,3 @@ static int mt7925_assign_vif_chanctx(struct ieee80211_hw *hw,
  	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
 +	struct mt792x_link_sta *mlink;
  	struct mt792x_dev *dev = mt792x_hw_dev(hw);
-@@ -2118,2 +2132,4 @@ static int mt7925_assign_vif_chanctx(struct ieee80211_hw *hw,
+@@ -2250,2 +2264,4 @@ static int mt7925_assign_vif_chanctx(struct ieee80211_hw *hw,
  	struct mt792x_bss_conf *mconf;
 +	u8 band_idx;
 +	u8 old_band;
  
-@@ -2133,2 +2149,17 @@ static int mt7925_assign_vif_chanctx(struct ieee80211_hw *hw,
+@@ -2265,2 +2281,17 @@ static int mt7925_assign_vif_chanctx(struct ieee80211_hw *hw,
  
 +	old_band = mconf->mt76.band_idx;
 +	if (ctx->def.chan) {
@@ -92,7 +92,7 @@ index cfce851..f36638b 100644
 +
  	mconf->mt76.ctx = ctx;
 diff --git a/mt7925/mcu.c b/mt7925/mcu.c
-index a7f27c5..0755fee 100644
+index f403d9d..1edfc4b 100644
 --- a/mt7925/mcu.c
 +++ b/mt7925/mcu.c
 @@ -303,4 +303,5 @@ mt7925_mcu_roc_iter(void *priv, u8 *mac, struct ieee80211_vif *vif)
@@ -139,7 +139,7 @@ index a7f27c5..0755fee 100644
  						mt7925_mcu_roc_iter, grant);
 +
  	dev->phy.roc_grant = true;
-@@ -1380,6 +1401,10 @@ int mt7925_mcu_set_mlo_roc(struct mt792x_bss_conf *mconf, u16 sel_links,
+@@ -1364,6 +1385,10 @@ int mt7925_mcu_set_mlo_roc(struct mt792x_phy *phy, struct mt792x_bss_conf *mconf
  
 -		/* STR : 0xfe indicates BAND_ALL with enabling DBDC
 -		 * EMLSR : 0xff indicates (BAND_AUTO) without DBDC
@@ -154,26 +154,26 @@ index a7f27c5..0755fee 100644
 +			req.roc[i].dbdcband = type == MT7925_ROC_REQ_JOIN ?
 +					      0xfe : 0xff;
  
-@@ -1421,3 +1446,4 @@ int mt7925_mcu_set_roc(struct mt792x_phy *phy, struct mt792x_bss_conf *mconf,
+@@ -1405,3 +1430,4 @@ int mt7925_mcu_set_roc(struct mt792x_phy *phy, struct mt792x_bss_conf *mconf,
  			.center_chan_from_ap = center_ch,
 -			.dbdcband = 0xff, /* auto */
 +			.dbdcband = mt7925_band_idx(&dev->mt76,
 +						    chan->band),
  		},
-@@ -1468,3 +1494,5 @@ int mt7925_mcu_abort_roc(struct mt792x_phy *phy, struct mt792x_bss_conf *mconf,
+@@ -1452,3 +1478,5 @@ int mt7925_mcu_abort_roc(struct mt792x_phy *phy, struct mt792x_bss_conf *mconf,
  			.bss_idx = mconf->mt76.idx,
 -			.dbdcband = 0xff, /* auto*/
 +			.dbdcband = mconf->mt76.band_idx <= 1 ?
 +					    mconf->mt76.band_idx :
 +					    0xff, /* auto */
  		},
-@@ -2501,2 +2529,4 @@ mt7925_mcu_bss_basic_tlv(struct sk_buff *skb,
+@@ -2505,2 +2533,4 @@ mt7925_mcu_bss_basic_tlv(struct sk_buff *skb,
  
 +	mconf->mt76.band_idx = mt7925_band_idx(phy->dev, band);
 +
  	if (band == NL80211_BAND_2GHZ)
 diff --git a/mt7925/mt7925.h b/mt7925/mt7925.h
-index 6b9bf1b..2f908d1 100644
+index 46b480f..f44a4e1 100644
 --- a/mt7925/mt7925.h
 +++ b/mt7925/mt7925.h
 @@ -65,2 +65,9 @@ enum mt7925_roc_req {

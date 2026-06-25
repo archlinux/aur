@@ -20,7 +20,7 @@ Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
 
-d7646b08c81b8b7213be177009d242886eba7155
+26b1fc679c28341a077bf2504d67cfc14294eb11
 diff --git a/mt7925/pci.c b/mt7925/pci.c
 index 693e08f..00c3601 100644
 --- a/mt7925/pci.c

@@ -25,7 +25,7 @@ Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
 
-d2ccdff823fdff1cbef764a61487c3694a6e3533
+af37f2ce3737d0b20eb1392ffc82f1830c0ae1a3
 diff --git a/mt7925/pci.c b/mt7925/pci.c
 index f820d5a..604c0e9 100644
 --- a/mt7925/pci.c
@@ -76,7 +76,7 @@ index 3072850..1626a36 100644
 +		MT_INT_MCU_CMD);
  	mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0xff);
 diff --git a/mt792x_regs.h b/mt792x_regs.h
-index 7ddde92..15adb66 100644
+index d2a8b2b..20d27ae 100644
 --- a/mt792x_regs.h
 +++ b/mt792x_regs.h
 @@ -312,2 +312,5 @@

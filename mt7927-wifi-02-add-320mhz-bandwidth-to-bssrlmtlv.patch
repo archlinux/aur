@@ -26,12 +26,12 @@ Tested-by: Chapuis Dario <chapuisdario4@gmail.com>
 Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Signed-off-by: Javier Tia <floss@jetm.me>
 
-c42291f18b23ad82fe8ff875b290ddd23e01cdf3
+e86a1917c31ecbb570ecb6c91cec6cf796de36d5
 diff --git a/mt7925/mcu.c b/mt7925/mcu.c
-index cf0fdea..dd5ecb0 100644
+index 37cdf3e..016c534 100644
 --- a/mt7925/mcu.c
 +++ b/mt7925/mcu.c
-@@ -2333,2 +2333,6 @@ void mt7925_mcu_bss_rlm_tlv(struct sk_buff *skb, struct mt76_phy *phy,
+@@ -2336,2 +2336,6 @@ void mt7925_mcu_bss_rlm_tlv(struct sk_buff *skb, struct mt76_phy *phy,
  		break;
 +	case NL80211_CHAN_WIDTH_320:
 +		req->bw = CMD_CBW_320MHZ;

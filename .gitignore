@@ -2,7 +2,7 @@
 *.zip
 src/
 pkg/
-_build/
+_build*/
 linux-*.tar.xz
 FINDINGS.md
 openspec/
