@@ -1,0 +1,347 @@
+From 8d8dab72f08c72bae35b82fc8daf32fe9bff9617 Mon Sep 17 00:00:00 2001
+From: Shuhao Zhang <studyingfather@outlook.com>
+Date: Sat, 30 May 2026 01:44:27 +0800
+Subject: [PATCH 1/6] util/unit: avoid GCC 16 array-bounds warnings in json
+ string ranges
+
+GCC 16 reports false-positive -Warray-bounds warnings through the ranget::map shared_ptr/std::function instantiations used with json_stringt values.
+
+Build the source-location pragma JSON array explicitly, and keep json_arrayt range-construction coverage by collecting an existing range of json_stringt values directly. This avoids the warning path without changing the JSON output or tested behaviour.
+---
+ src/util/json_irep.cpp    |  9 ++++-----
+ unit/util/json_array.cpp  | 15 +++++----------
+ unit/util/json_object.cpp | 29 +++++++++++++++++++++++++++++
+ 3 files changed, 38 insertions(+), 15 deletions(-)
+
+diff --git a/src/util/json_irep.cpp b/src/util/json_irep.cpp
+index 2fc56264a7b..8600e1d99ff 100644
+--- a/src/util/json_irep.cpp
++++ b/src/util/json_irep.cpp
+@@ -185,11 +185,10 @@ json_objectt json(const source_locationt &location)
+   const auto &pragmas = location.get_pragmas();
+   if(!pragmas.empty())
+   {
+-    auto json_pragma_range = make_range(pragmas.begin(), pragmas.end())
+-                               .map([](const std::pair<irep_idt, irept> &entry)
+-                                    { return json_stringt{entry.first}; });
+-    result["pragma"] =
+-      json_arrayt{json_pragma_range.begin(), json_pragma_range.end()};
++    json_arrayt json_pragmas;
++    for(const auto &pragma : pragmas)
++      json_pragmas.push_back(json_stringt{pragma.first});
++    result["pragma"] = std::move(json_pragmas);
+   }
+ 
+   return result;
+diff --git a/unit/util/json_array.cpp b/unit/util/json_array.cpp
+index 1c233ee25d2..382275a22ff 100644
+--- a/unit/util/json_array.cpp
++++ b/unit/util/json_array.cpp
+@@ -7,11 +7,9 @@ Author: Diffblue Ltd.
+ \*******************************************************************/
+ 
+ #include <testing-utils/use_catch.h>
+-#include <util/constructor_of.h>
+ #include <util/json.h>
+ #include <util/range.h>
+ 
+-#include <string>
+ #include <vector>
+ 
+ SCENARIO(
+@@ -43,16 +41,13 @@ SCENARIO(
+   "Test that json_arrayt can be constructed using `ranget`",
+   "[core][util][json]")
+ {
+-  GIVEN("A vector of strings.")
++  GIVEN("A vector of json strings.")
+   {
+-    const std::vector<std::string> input{"foo", "bar"};
+-    THEN(
+-      "A json_arrayt can be constructed from the vector of strings using range "
+-      "and map.")
++    const std::vector<json_stringt> input{
++      json_stringt{"foo"}, json_stringt{"bar"}};
++    THEN("A json_arrayt can be constructed from the vector using range.")
+     {
+-      const json_arrayt array = make_range(input)
+-                                  .map(constructor_of<json_stringt>())
+-                                  .collect<json_arrayt>();
++      const json_arrayt array = make_range(input).collect<json_arrayt>();
+       auto it = array.begin();
+       REQUIRE(it->kind == jsont::kindt::J_STRING);
+       REQUIRE(it->value == "foo");
+diff --git a/unit/util/json_object.cpp b/unit/util/json_object.cpp
+index 74d70147fb3..94f1f282558 100644
+--- a/unit/util/json_object.cpp
++++ b/unit/util/json_object.cpp
+@@ -9,8 +9,10 @@ Author: Diffblue Ltd.
+ #include <testing-utils/use_catch.h>
+ 
+ #include <util/json.h>
++#include <util/json_irep.h>
+ #include <util/optional_utils.h>
+ #include <util/range.h>
++#include <util/source_location.h>
+ 
+ #include <algorithm>
+ #include <iterator>
+@@ -104,3 +106,30 @@ SCENARIO(
+     };
+   }
+ }
++
++SCENARIO(
++  "Test that source location pragmas are converted to JSON arrays.",
++  "[core][util][json]")
++{
++  GIVEN("A source location with pragmas.")
++  {
++    source_locationt location;
++    location.add_pragma("disable:pointer-check");
++    location.add_pragma("disable:bounds-check");
++
++    THEN("The pragmas are emitted as strings.")
++    {
++      const json_objectt output = json(location);
++      const json_arrayt &pragmas = to_json_array(output["pragma"]);
++
++      auto pragma_it = pragmas.begin();
++      REQUIRE(pragma_it->kind == jsont::kindt::J_STRING);
++      REQUIRE(pragma_it->value == "disable:bounds-check");
++      ++pragma_it;
++      REQUIRE(pragma_it->kind == jsont::kindt::J_STRING);
++      REQUIRE(pragma_it->value == "disable:pointer-check");
++      ++pragma_it;
++      REQUIRE(pragma_it == pragmas.end());
++    }
++  }
++}
+
+From 32d58b98b515a23a82b1f782068435f28130d0d2 Mon Sep 17 00:00:00 2001
+From: Shuhao Zhang <studyingfather@outlook.com>
+Date: Sat, 30 May 2026 01:44:51 +0800
+Subject: [PATCH 2/6] variable-sensitivity: avoid GCC 16 array-bounds warnings
+ from virtual dispatch
+
+GCC 16 can report false-positive -Warray-bounds warnings after devirtualising and inlining calls on base-class objects as if derived-class layouts were available.
+
+Call the known base implementations explicitly in the variable-sensitivity factory and the corresponding unit-test helper. The constructed dynamic types are unchanged, and the explicit calls avoid the over-eager diagnostic path.
+---
+ .../variable-sensitivity/variable_sensitivity_domain.h       | 2 +-
+ unit/analyses/variable-sensitivity/eval-member-access.cpp    | 5 ++---
+ 2 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/src/analyses/variable-sensitivity/variable_sensitivity_domain.h b/src/analyses/variable-sensitivity/variable_sensitivity_domain.h
+index 707de155078..b89ce29483b 100644
+--- a/src/analyses/variable-sensitivity/variable_sensitivity_domain.h
++++ b/src/analyses/variable-sensitivity/variable_sensitivity_domain.h
+@@ -266,7 +266,7 @@ class variable_sensitivity_domain_factoryt
+   {
+     auto d = std::make_unique<variable_sensitivity_domaint>(
+       object_factory, configuration);
+-    CHECK_RETURN(d->is_bottom());
++    CHECK_RETURN(d->variable_sensitivity_domaint::is_bottom());
+     return std::unique_ptr<statet>(d.release());
+   }
+ 
+diff --git a/unit/analyses/variable-sensitivity/eval-member-access.cpp b/unit/analyses/variable-sensitivity/eval-member-access.cpp
+index 3fd4c3537ad..7b03dad8b82 100644
+--- a/unit/analyses/variable-sensitivity/eval-member-access.cpp
++++ b/unit/analyses/variable-sensitivity/eval-member-access.cpp
+@@ -162,7 +162,6 @@ exprt integer_expression(int i)
+ 
+ exprt top_expression()
+ {
+-  auto top_value =
+-    std::make_shared<abstract_objectt>(integer_typet(), true, false);
+-  return top_value->to_constant();
++  abstract_objectt top_value(integer_typet(), true, false);
++  return top_value.abstract_objectt::to_constant();
+ }
+
+From 30cd989ba290722e7504f2a794ded7485f59c003 Mon Sep 17 00:00:00 2001
+From: Shuhao Zhang <studyingfather@outlook.com>
+Date: Sat, 30 May 2026 01:45:10 +0800
+Subject: [PATCH 3/6] smt2 incremental: avoid reference_wrapper on incomplete
+ namespace type
+
+GCC 16 warns when std::reference_wrapper<const namespacet> is instantiated while namespacet is still incomplete in struct_encoding.h.
+
+Use a plain reference member instead. struct_encodingt already binds to an external namespace for its lifetime, so this preserves behaviour while avoiding -Wsfinae-incomplete under -Werror.
+---
+ src/solvers/smt2_incremental/encoding/struct_encoding.cpp | 7 +++----
+ src/solvers/smt2_incremental/encoding/struct_encoding.h   | 2 +-
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/src/solvers/smt2_incremental/encoding/struct_encoding.cpp b/src/solvers/smt2_incremental/encoding/struct_encoding.cpp
+index baf18f3187d..2444fc10f11 100644
+--- a/src/solvers/smt2_incremental/encoding/struct_encoding.cpp
++++ b/src/solvers/smt2_incremental/encoding/struct_encoding.cpp
+@@ -176,8 +176,7 @@ exprt struct_encodingt::encode_member(const member_exprt &member_expr) const
+     }
+     const auto &struct_type =
+       compound_type.id() == ID_struct_tag
+-        ? ns.get().follow_tag(
+-            type_checked_cast<struct_tag_typet>(compound_type))
++        ? ns.follow_tag(type_checked_cast<struct_tag_typet>(compound_type))
+         : type_checked_cast<struct_typet>(compound_type);
+     return count_trailing_bit_width(
+       struct_type, member_expr.get_component_name(), *boolbv_width);
+@@ -243,7 +242,7 @@ exprt struct_encodingt::decode(
+   INVARIANT(
+     can_cast_type<bv_typet>(encoded.type()),
+     "Structs are expected to be encoded into bit vectors.");
+-  const struct_typet definition = ns.get().follow_tag(original_type);
++  const struct_typet definition = ns.follow_tag(original_type);
+   exprt::operandst encoded_fields;
+   for(const auto &component : definition.components())
+   {
+@@ -261,7 +260,7 @@ exprt struct_encodingt::decode(
+   INVARIANT(
+     can_cast_type<bv_typet>(encoded.type()),
+     "Unions are expected to be encoded into bit vectors.");
+-  const union_typet definition = ns.get().follow_tag(original_type);
++  const union_typet definition = ns.follow_tag(original_type);
+   const auto &components = definition.components();
+   if(components.empty())
+     return empty_union_exprt{original_type};
+diff --git a/src/solvers/smt2_incremental/encoding/struct_encoding.h b/src/solvers/smt2_incremental/encoding/struct_encoding.h
+index bb19a0110c4..0c499f79106 100644
+--- a/src/solvers/smt2_incremental/encoding/struct_encoding.h
++++ b/src/solvers/smt2_incremental/encoding/struct_encoding.h
+@@ -33,7 +33,7 @@ class struct_encodingt final
+ 
+ private:
+   std::unique_ptr<boolbv_widtht> boolbv_width;
+-  std::reference_wrapper<const namespacet> ns;
++  const namespacet &ns;
+ 
+   exprt encode_member(const member_exprt &member_expr) const;
+ };
+
+From 9e2fe963810d5be13e00f773049ac424e6d94a6f Mon Sep 17 00:00:00 2001
+From: Shuhao Zhang <studyingfather@outlook.com>
+Date: Sat, 30 May 2026 01:45:23 +0800
+Subject: [PATCH 4/6] smt2: remove unused struct component counter
+
+The counter in smt2_convt::unflatten was incremented while converting datatype structs but was never read.
+
+Remove it, and keep the touched loop formatted, to avoid the GCC 16 -Wunused-but-set-variable warning under -Werror without changing the generated SMT2 output.
+---
+ src/solvers/smt2/smt2_conv.cpp | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/src/solvers/smt2/smt2_conv.cpp b/src/solvers/smt2/smt2_conv.cpp
+index d118a55ef32..a256dc5cc4b 100644
+--- a/src/solvers/smt2/smt2_conv.cpp
++++ b/src/solvers/smt2/smt2_conv.cpp
+@@ -5098,11 +5098,9 @@ void smt2_convt::unflatten(
+ 
+         std::size_t offset=0;
+ 
+-        std::size_t i=0;
+-        for(struct_typet::componentst::const_iterator
+-            it=components.begin();
+-            it!=components.end();
+-            it++, i++)
++        for(struct_typet::componentst::const_iterator it = components.begin();
++            it != components.end();
++            it++)
+         {
+           if(is_zero_width(it->type(), ns))
+             continue;
+
+From 01ad51091ec2b3eca66716fc2ab34517a1482390 Mon Sep 17 00:00:00 2001
+From: Shuhao Zhang <studyingfather@outlook.com>
+Date: Tue, 2 Jun 2026 00:01:44 +0800
+Subject: [PATCH 5/6] unit: avoid assuming source-location pragma order
+
+The source-location pragma JSON test should check the emitted pragma set rather than the iteration order of irept::named_subt.
+
+Collect and sort the JSON string values before comparing them so the test remains stable across named_subt implementations and dstring interning order.
+---
+ unit/util/json_object.cpp | 20 ++++++++++++--------
+ 1 file changed, 12 insertions(+), 8 deletions(-)
+
+diff --git a/unit/util/json_object.cpp b/unit/util/json_object.cpp
+index 94f1f282558..e62cc54b933 100644
+--- a/unit/util/json_object.cpp
++++ b/unit/util/json_object.cpp
+@@ -122,14 +122,18 @@ SCENARIO(
+       const json_objectt output = json(location);
+       const json_arrayt &pragmas = to_json_array(output["pragma"]);
+ 
+-      auto pragma_it = pragmas.begin();
+-      REQUIRE(pragma_it->kind == jsont::kindt::J_STRING);
+-      REQUIRE(pragma_it->value == "disable:bounds-check");
+-      ++pragma_it;
+-      REQUIRE(pragma_it->kind == jsont::kindt::J_STRING);
+-      REQUIRE(pragma_it->value == "disable:pointer-check");
+-      ++pragma_it;
+-      REQUIRE(pragma_it == pragmas.end());
++      std::vector<std::string> pragma_values;
++      for(const auto &pragma : pragmas)
++      {
++        REQUIRE(pragma.kind == jsont::kindt::J_STRING);
++        pragma_values.push_back(pragma.value);
++      }
++
++      std::sort(pragma_values.begin(), pragma_values.end());
++      REQUIRE(
++        pragma_values ==
++        std::vector<std::string>{
++          "disable:bounds-check", "disable:pointer-check"});
+     }
+   }
+ }
+
+From 80e2c18224d4dca43dfe71183cf3e84dad9866d8 Mon Sep 17 00:00:00 2001
+From: Shuhao Zhang <studyingfather@outlook.com>
+Date: Tue, 2 Jun 2026 00:12:42 +0800
+Subject: [PATCH 6/6] unit: format JSON test includes
+
+Move the testing-utils include after util includes in the JSON unit tests to match clang-format-15 include ordering.
+---
+ unit/util/json_array.cpp  | 3 ++-
+ unit/util/json_object.cpp | 4 ++--
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/unit/util/json_array.cpp b/unit/util/json_array.cpp
+index 382275a22ff..193e10f54f2 100644
+--- a/unit/util/json_array.cpp
++++ b/unit/util/json_array.cpp
+@@ -6,10 +6,11 @@ Author: Diffblue Ltd.
+ 
+ \*******************************************************************/
+ 
+-#include <testing-utils/use_catch.h>
+ #include <util/json.h>
+ #include <util/range.h>
+ 
++#include <testing-utils/use_catch.h>
++
+ #include <vector>
+ 
+ SCENARIO(
+diff --git a/unit/util/json_object.cpp b/unit/util/json_object.cpp
+index e62cc54b933..77399b8d555 100644
+--- a/unit/util/json_object.cpp
++++ b/unit/util/json_object.cpp
+@@ -6,14 +6,14 @@ Author: Diffblue Ltd.
+ 
+ \*******************************************************************/
+ 
+-#include <testing-utils/use_catch.h>
+-
+ #include <util/json.h>
+ #include <util/json_irep.h>
+ #include <util/optional_utils.h>
+ #include <util/range.h>
+ #include <util/source_location.h>
+ 
++#include <testing-utils/use_catch.h>
++
+ #include <algorithm>
+ #include <iterator>
+ #include <string>

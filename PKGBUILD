@@ -3,7 +3,7 @@
 # Contributor: Python Shell <pythonshell@yeah.net>
 
 pkgname=cbmc
-pkgver=6.9.0
+pkgver=6.10.0
 pkgrel=1
 pkgdesc='C Bounded Model Checker'
 arch=('x86_64')
@@ -17,15 +17,16 @@ _minisatver=2.2.1
 source=(
   "https://github.com/diffblue/cbmc/archive/refs/tags/cbmc-$pkgver.tar.gz"
   "https://ftp.debian.org/debian/pool/main/m/minisat2/minisat2_$_minisatver.orig.tar.gz")
-b2sums=('5ccf128667327a6a2661f0cd564878cc31710a0b8a961be2fe99d9050f7e336d7db75aefab45798be7ef8bcf8f7a65e37f879fa305db480e6213f6d36d96c59e'
+b2sums=('a053a5353e858bc6bcfb46bf9815c6bd5bab07045a6252ebbcabb2cd60eca874ebb47a5bcecdd70ec37be8c68326765b331a39056aef5b39823c345de4281d0d'
         'de9bded4bd8a17ec157af486c0572d47429cd0f59bdd57e1238d3c031d7406dc4e305e5e7368898c991e0184ed845bae21717f10a8ba36ea6b60aac0fb84dc71')
 
 prepare() {
   mv "minisat2-$_minisatver" "minisat-$_minisatver"
   mv "minisat-$_minisatver" "$srcdir/cbmc-cbmc-$pkgver"
 
-  cd "$srcdir/cbmc-cbmc-$pkgver/minisat-$_minisatver"
-  patch -p1 < "../scripts/minisat-$_minisatver-patch"
+  cd "$srcdir/cbmc-cbmc-$pkgver"
+  patch -d "minisat-$_minisatver" -p1 < "scripts/minisat-$_minisatver-patch"
+  patch -p1 < ../../fix-gcc-warnings.patch
 }
 
 build() {
