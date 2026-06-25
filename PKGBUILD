@@ -1,9 +1,9 @@
 # Maintainer: nathawat <nathawat[at]noreply[dot]codeberg[dot]org>
 
 pkgname=howdy-next-git
-pkgver=3.1.0.r248.g84c37f6
+pkgver=3.1.0.r264.g352960c
 pkgrel=1
-pkgdesc="A modernized fork of original Howdy, Facial recognition authentication for Linux"
+pkgdesc="Security-focused C++ rewrite of Howdy for facial-recognition authentication on Linux"
 arch=('x86_64')
 url="https://codeberg.org/nathawat/howdy-next"
 license=('MIT')
@@ -21,7 +21,7 @@ source=(
 	"polkit-agent-helper-howdy.conf"
 )
 b2sums=('SKIP'
-        'ac6c1a82d6b4a00e4d518ad49592d5eb0aa4590e6c584328230fe875af0604b56861235cfbf9cd8a93bc9f1130eafb02392705cfa3a247770eb013da8576922b')
+		'ac6c1a82d6b4a00e4d518ad49592d5eb0aa4590e6c584328230fe875af0604b56861235cfbf9cd8a93bc9f1130eafb02392705cfa3a247770eb013da8576922b')
 
 pkgver() {
 	cd howdy-next
@@ -44,6 +44,10 @@ build() {
 		-Duser_models_dir=/etc/howdy/models
 
 	meson compile -C "$srcdir/build"
+}
+
+check() {
+	meson test -C "$srcdir/build" --print-errorlogs
 }
 
 package() {
