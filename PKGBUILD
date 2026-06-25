@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A utility to count things. Quickly."
 
-pkgver=0.2.1
+pkgver=0.4.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,9 +27,9 @@ options=(!strip)
 
 source=("README-${pkgver}.md::${_ghurlraw}/README.md" "LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
-sha256sums=('afa8da161ee35e68cc664e4767d3d89effe87c7aaac72d6b9735605f457f64d0'
+sha256sums=('c78808a204c2fe54d488acbf2fc78cf970fd942d67c1bffe9e1df757c9b4769f'
             '9c86affc128ff5a2fd9437bae5688ef015a948eb3c41cfea36c259e05ab77665')
-sha256sums_x86_64=('7f2fb282c1b3d4caa118deddb92385485de6dda1d4323cc319ad70f42d4dc152')
+sha256sums_x86_64=('e19dca83983de1f329319d4dc498565762f8854887a2631e3c7fa22b4cde4816')
 
 
 package() {
