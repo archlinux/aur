@@ -3,7 +3,7 @@
 _appauthor=takashialpha
 _appname=swagsh
 pkgname=${_appname}
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A sleek, high-performance Linux shell built in Rust for speed and reliability."
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=('rust' 'cargo')
 install=${_appname}.install
 
 source_x86_64=("${pkgname}-${arch[0]}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums_x86_64=('b9b145f6f87ed8dcf980cf1a49a1544898398fa635ff954d62eaf829117b32a8')
+sha256sums_x86_64=('ec5f8ce70660b279d059cd7431777e856b2ac729d8af7ac144f9b54549c8f124')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}" || exit
