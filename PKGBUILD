@@ -3,14 +3,14 @@
 # for dm Fotowelt: based on PKGBUILD of https://aur.archlinux.org/packages/cewe-fotobuch/
 
 _keyaccount=1320
-_productUrname='dm Fotowelt'
-_productRename='dm Fotowelt'
+_productUrname='dm Foto by CEWE'
+_productRename='dm Foto by CEWE'
 _lang='de_DE'
 
 pkgname=dm-fotowelt
-pkgdesc='an offline client for creating photobooks, greeting cards, posters and more, uploading and ordering them at fotoparadies.de'
-sha256sums=('46f5afaf6d7ba5e0b5ee6bf6d173a6b37b8698a85b818dbe1143a4f3c92e17a3')
-pkgver=8.0.5
+pkgdesc='an offline client for creating photobooks, greeting cards, posters and more, uploading and ordering them at foto.dm.de, previously known as fotoparadies.de'
+sha256sums=('542e350be7a9df788e2ed7f4e1633e7b192f413efeef394d739222815ff13be2')
+pkgver=8.1.3
 pkgrel=1
 url="https://www.fotoparadies.de/"
 license=("custom:eula")
@@ -55,7 +55,7 @@ package() {
 		cd ${_installDir#$pkgdir}
 		# nouveau bug with QT web engine: https://bugreports.qt.io/browse/QTBUG-41242
 		lsmod | grep nouveau && export QT_XCB_FORCE_SOFTWARE_OPENGL=1
-		exec ./"${_productUrname// /-}" "\$@"
+		exec ./"${_productUrname}" "\$@"
 	EOF
 	cat > $pkgdir/usr/share/applications/$pkgname.desktop <<-EOF
 		[Desktop Entry]
