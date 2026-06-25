@@ -1,16 +1,17 @@
 # Maintainer: Mohammed El-sayed Ahmed <MohammedEl-sayedAhmed@users.noreply.github.com>
 pkgname=clipman-clipboard
-pkgver=1.0.6
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A clipboard history manager for Wayland (GNOME, KDE, Sway, Hyprland, etc.)"
 arch=('any')
-url="https://github.com/MohammedEl-sayedAhmed/clipman"
+url="https://mohammedel-sayedahmed.github.io/clipman/"
 license=('Apache-2.0')
 depends=(
     'python>=3.10'
     'python-gobject'
     'python-dbus'
-    'gtk3'
+    'gtk4'
+    'libadwaita'
     'wl-clipboard'
 )
 optdepends=(
@@ -18,7 +19,7 @@ optdepends=(
 )
 _srcname=clipman
 source=("$_srcname-$pkgver.tar.gz::https://github.com/MohammedEl-sayedAhmed/clipman/archive/v$pkgver.tar.gz")
-sha256sums=('40c5c52a042acf1da544dfabbfe3d908b5d3f88a078eb0c672d23868dc2020b9')
+sha256sums=('d69d3304f9f67a49dc2f4b603fbfa62ed242c09c4ff9222243bd19c61e37bc04')
 
 package() {
     cd "$srcdir/$_srcname-$pkgver"
