@@ -6,8 +6,14 @@
 post_install() {
     setcap 'cap_net_admin+ep' /usr/bin/v2ray-rs-netctl 2>/dev/null || \
         echo "==> Could not setcap v2ray-rs-netctl; TUN mode needs: sudo setcap 'cap_net_admin+ep' /usr/bin/v2ray-rs-netctl"
+    id v2ray-rs-bypass &>/dev/null || useradd --system --no-create-home --shell /usr/bin/nologin v2ray-rs-bypass
+    chmod u+s /usr/bin/v2ray-rs-run 2>/dev/null || true
 }
 
 post_upgrade() {
     post_install
+}
+
+pre_remove() {
+    userdel v2ray-rs-bypass 2>/dev/null || true
 }

@@ -1,5 +1,5 @@
 pkgname=v2ray-rs
-pkgver=0.10.2
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Linux desktop GUI for v2ray/xray/sing-box proxy management"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 options=(!lto)
 install=v2ray-rs.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('589d07acce94f6f972e797ee4168eb5cc536db510197a1af6e88ffec3581037c')
+sha256sums=('264f1852990542373bc9b5572b2ac5fadeca2ea3aac396c9e9b1aa43dbc0d524')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -28,7 +28,7 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release -p v2ray-rs-ui -p v2ray-rs-netctl
+    cargo build --frozen --release -p v2ray-rs-ui -p v2ray-rs-netctl -p v2ray-rs-run
 }
 
 package() {
@@ -36,6 +36,7 @@ package() {
     install -Dm755 "target/release/v2ray-rs-ui" "$pkgdir/usr/bin/v2ray-rs"
     # Privileged TUN route helper; granted cap_net_admin in the install hook.
     install -Dm755 "target/release/v2ray-rs-netctl" "$pkgdir/usr/bin/v2ray-rs-netctl"
+    install -Dm4755 "target/release/v2ray-rs-run" "$pkgdir/usr/bin/v2ray-rs-run"
     install_icon "assets/v2ray-rs.svg" \
         "crates/ui/icons/hicolor/scalable/apps/com.github.v2ray-rs.svg" \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.github.v2ray-rs.svg"
