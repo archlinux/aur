@@ -6,11 +6,11 @@
 pkgname=kochmorse
 _author=hmatuschek
 pkgver=3.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A easy to use Morse Code (Ham Radio) trainer using the Koch-method."
 arch=('i686' 'x86_64')
 url="https://github.com/$_author/$pkgname"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('qt5-multimedia' 'hamradio-menus')
 makedepends=('cmake' 'qt5-tools')
 provides=('kochmorse')
@@ -29,7 +29,8 @@ build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	msg "Starting build..."
 
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RELEASE -DPORTAUDIO_INCLUDE_DIRS=/usr/include
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RELEASE -DPORTAUDIO_INCLUDE_DIRS=/usr/include\
+		-DCMAKE_POLICY_VERSION_MINIMUM=3.5
 	make
 }
 
