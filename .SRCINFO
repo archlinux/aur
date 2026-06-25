@@ -13,6 +13,7 @@ pkgbase = reckless-git
 	depends = glibc
 	provides = reckless
 	conflicts = reckless
+	conflicts = reckless-bin
 	options = !debug
 	source = reckless::git+https://github.com/codedeliveryservice/Reckless.git
 	sha256sums = SKIP

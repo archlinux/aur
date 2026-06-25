@@ -11,7 +11,7 @@ depends=('libgcc' 'glibc')
 makedepends=('cargo' 'clang' 'git')
 options=('!debug')
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("$_pkgname" "$_pkgname-bin")
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
