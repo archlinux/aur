@@ -1,4 +1,4 @@
-# Maintainer: damachin3 (damachine3 at proton dot me)
+# Maintainer: Christian Kühn (damachine3 at proton dot me)
 # Website: https://github.com/damachine/coolerdash
 pkgname=coolerdash-git
 pkgver=3.2.0.r0.g4c62d28
