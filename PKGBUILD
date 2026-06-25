@@ -5,7 +5,7 @@ _wavsen_commit=107f2aeab439276c5b7271658b7df1f4ab0ed028
 
 pkgname=open-wallpaper-engine
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source scene renderer, mostly for linux."
 arch=(x86_64)
 url=https://github.com/waywallen/open-wallpaper-engine
@@ -23,7 +23,7 @@ sha256sums=('733696e47ad942d1292c3c2767f1a31f9cbebcc95ebfd1d01f51ebc89f5160d8'
             '287e451ba68eb156cf9dc6c33825e9d58fc506ea58718725c8c0f772a40a83ca'
             '2ebbd8684784fcd69f26515fcd73d868b67996f93b3a4cb1b54f2e197ff11888'
             '9551eafef6c78a5ce380bd3ae97a68383689a473d68253f03edced3694a9c48f'
-            'd08ea72bfa0cfdc5454bb9f3c13f1a33a2965b861c7d8373a5f23d068683d68e')
+            '45c3088c9ff70d59399d08031f7eea656e02598d45e0231f88f83de97d304dbe')
 
 prepare() {
     cd "$srcdir/$pkgname"
@@ -52,4 +52,6 @@ build() {
 }
 package() {
     DESTDIR="$pkgdir" cmake --install build
+    install -Dvm755 -t "$pkgdir/usr/lib/$pkgname" \
+        build/viewer/{Scene,Web}Viewer
 }

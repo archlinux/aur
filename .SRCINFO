@@ -1,7 +1,7 @@
 pkgbase = open-wallpaper-engine
 	pkgdesc = Open source scene renderer, mostly for linux.
 	pkgver = 0.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/waywallen/open-wallpaper-engine
 	arch = x86_64
 	license = GPL-2.0-only
@@ -39,6 +39,6 @@ pkgbase = open-wallpaper-engine
 	sha256sums = 287e451ba68eb156cf9dc6c33825e9d58fc506ea58718725c8c0f772a40a83ca
 	sha256sums = 2ebbd8684784fcd69f26515fcd73d868b67996f93b3a4cb1b54f2e197ff11888
 	sha256sums = 9551eafef6c78a5ce380bd3ae97a68383689a473d68253f03edced3694a9c48f
-	sha256sums = d08ea72bfa0cfdc5454bb9f3c13f1a33a2965b861c7d8373a5f23d068683d68e
+	sha256sums = 45c3088c9ff70d59399d08031f7eea656e02598d45e0231f88f83de97d304dbe
 
 pkgname = open-wallpaper-engine

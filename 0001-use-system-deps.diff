@@ -262,7 +262,7 @@ index aa15331..08e0699 100644
 -    set(cef_SOURCE_DIR "${cef_SOURCE_DIR}" CACHE INTERNAL "" FORCE)
 -endif()
 diff --git a/viewer/CMakeLists.txt b/viewer/CMakeLists.txt
-index e1d711a..9e220d5 100644
+index e1d711a..e939b90 100644
 --- a/viewer/CMakeLists.txt
 +++ b/viewer/CMakeLists.txt
 @@ -77,11 +77,10 @@ if(BUILD_WEWEB)
@@ -275,8 +275,8 @@ index e1d711a..9e220d5 100644
          CXX_SCAN_FOR_MODULES ON
 -        BUILD_RPATH   "\$ORIGIN"
 -        INSTALL_RPATH "\$ORIGIN"
-+        BUILD_RPATH   "\$ORIGIN:\$ORIGIN/../lib:\$ORIGIN/../lib/cef"
-+        INSTALL_RPATH "\$ORIGIN:\$ORIGIN/../lib:\$ORIGIN/../lib/cef"
++        BUILD_RPATH   "\$ORIGIN:\$ORIGIN/..:\$ORIGIN/../cef"
++        INSTALL_RPATH "\$ORIGIN:\$ORIGIN/..:\$ORIGIN/../cef"
          BUILD_WITH_INSTALL_RPATH ON)
 -    weweb_stage_cef_runtime(WebViewer)
  endif()
@@ -296,7 +296,7 @@ index 772ce1b..1edcf31 100644
          opts.enable_remote_debugging = true;
          opts.remote_debugging_port   = port;
 diff --git a/waywallen/CMakeLists.txt b/waywallen/CMakeLists.txt
-index ec03027..6a2ff50 100644
+index ec03027..3dd3819 100644
 --- a/waywallen/CMakeLists.txt
 +++ b/waywallen/CMakeLists.txt
 @@ -12,11 +12,11 @@ if(OWE_WAYWALLEN_PLUGIN_BUNDLE_LAYOUT)
@@ -314,14 +314,14 @@ index ec03027..6a2ff50 100644
  set(_OWE_STRIP_FILES ${OWE_WESCENE_BIN})
  
  add_library(waywallen-bridge-producer STATIC)
-@@ -50,6 +50,7 @@ target_sources(waywallen-wescene-renderer PRIVATE BridgeExSwapchain.cpp)
- target_compile_features(waywallen-wescene-renderer PRIVATE cxx_std_20)
- set_target_properties(waywallen-wescene-renderer PROPERTIES
-     CXX_SCAN_FOR_MODULES ON
-+    INSTALL_RPATH "\$ORIGIN:\$ORIGIN/../lib:\$ORIGIN/../lib/cef"
- )
- 
- target_include_directories(waywallen-wescene-renderer
+@@ -110,6 +110,7 @@ if(BUILD_WEWEB)
+     target_compile_features(waywallen-weweb-renderer PRIVATE cxx_std_20)
+     set_target_properties(waywallen-weweb-renderer PROPERTIES
+         CXX_SCAN_FOR_MODULES ON
++        INSTALL_RPATH "\$ORIGIN:\$ORIGIN/../lib:\$ORIGIN/../lib/cef"
+     )
+     target_include_directories(waywallen-weweb-renderer
+         PRIVATE
 @@ -132,44 +133,11 @@ if(BUILD_WEWEB)
      target_compile_options(waywallen-weweb-renderer PRIVATE
          -Wall -Wextra -Wpedantic
