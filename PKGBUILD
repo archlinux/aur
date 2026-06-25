@@ -1,47 +1,59 @@
-# Maintainer: Moritz Bunkus <moritz@bunkus.org>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Moritz Bunkus <moritz@bunkus.org>
 
-pkgname='perl-class-accessor-grouped'
-pkgver='0.10014'
-pkgrel='3'
-pkgdesc="Lets you build groups of accessors"
+_author=HAARG
+_dist=Class-Accessor-Grouped
+pkgname=perl-${_dist@L}
+pkgver=0.10014
+pkgrel=4
+pkgdesc='Lets you build groups of accessors'
 arch=('any')
-license=('Artistic-2.0')
+url=https://metacpan.org/dist/$_dist
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-carp'
+    'perl-module-runtime>=0.012'
+    'perl-scalar-list-utils'
+    'perl>=5.6.0'
+)
+makedepends=('perl-extutils-makemaker')
+checkdepends=(
+    'perl-test-exception>=0.31'
+    'perl-test-simple'
+)
+optdepends=(
+    'perl-class-xsaccessor>=1.19'
+    'perl-sub-name>=0.05'
+)
 options=('!emptydirs')
-depends=('perl-module-runtime>=0.012')
-makedepends=('perl-test-exception>=0.31')
-url='https://metacpan.org/release/Class-Accessor-Grouped'
-source=("https://cpan.metacpan.org/authors/id/H/HA/HAARG/Class-Accessor-Grouped-${pkgver}.tar.gz")
-sha512sums=('d69fe27c3a12845bb4d0abe6c73d1a82eaf550821184f0945c3802e3932c7742e04c6f655e550386923c2a005e7f893f44ed950c56e6e80785b5a23e7b3c80b3')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('35d5b03efc09f67f3a3155c9624126c3e162c8e3ca98ff826db358533a44c4bb')
 
-prepare_environment() {
-  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-    PERL_AUTOINSTALL=--skipdeps                            \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
 
-  cd "${srcdir}/Class-Accessor-Grouped-${pkgver}"
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
 }
 
-build() {
-  prepare_environment
-  /usr/bin/perl Makefile.PL
-  make
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
 }
 
-check() {
-  prepare_environment
-  make test
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-package() {
-  prepare_environment
-  make install
-  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
-}
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}
