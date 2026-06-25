@@ -1,0 +1,3 @@
+[perl-context-preserve]
+source = "cpan"
+cpan = "Context-Preserve"
