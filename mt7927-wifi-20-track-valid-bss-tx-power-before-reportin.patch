@@ -1,0 +1,53 @@
+wifi: mt76: mt7925: track valid BSS TX power before reporting
+
+mt7925 stores per-BSS TX power once mac80211 sends BSS_CHANGED_TXPOWER.
+Before that event, dev->phy.txpower is still the zero-initialized value,
+but mt7925_mcu_set_rate_txpower() treats it as a valid configured power
+and feeds 0 into mt76_get_power_bound(). This leaves phy->txpower_cur at
+0 and makes userspace report txpower 0.00 dBm after reload or while
+disconnected.
+
+Track whether the per-BSS TX power has actually been received. Until it
+has, fall back first to hw->conf.power_level and then to the current
+channel regulatory max power before entering the existing mt76 power
+bound and rate power limit path. Once mac80211 has sent BSS TX power,
+use it as-is, including a legitimate 0 dBm value.
+
+Signed-off-by: Darafei Praliaskouski <me@komzpa.net>
+Signed-off-by: Javier Tia <floss@jetm.me>
+
+9bc2b5de9b8cccf771ed6718ce6b99ff4fdb1df8
+diff --git a/mt7925/main.c b/mt7925/main.c
+index 9f269e2..0d3d066 100644
+--- a/mt7925/main.c
++++ b/mt7925/main.c
+@@ -2127,4 +2127,5 @@ static void mt7925_link_info_changed(struct ieee80211_hw *hw,
+ 	if (changed & BSS_CHANGED_TXPOWER &&
+-	    info->txpower != phy->txpower) {
++	    (!phy->txpower_set || info->txpower != phy->txpower)) {
+ 		phy->txpower = info->txpower;
++		phy->txpower_set = true;
+ 		mt7925_mcu_set_rate_txpower(phy->mt76);
+diff --git a/mt7925/mcu.c b/mt7925/mcu.c
+index 6f19a97..2c5b625 100644
+--- a/mt7925/mcu.c
++++ b/mt7925/mcu.c
+@@ -3935,4 +3935,8 @@ int mt7925_mcu_set_rate_txpower(struct mt76_phy *phy)
+ 
+-		tx_power = mt76_get_power_bound(phy,
+-						dev->phy.txpower);
++		tx_power = dev->phy.txpower_set ? dev->phy.txpower :
++						  mdev->hw->conf.power_level;
++		if (!tx_power)
++			tx_power = phy->chandef.chan->max_power;
++
++		tx_power = mt76_get_power_bound(phy, tx_power);
+ 		tx_power = mt76_get_rate_power_limits(phy,
+diff --git a/mt792x.h b/mt792x.h
+index f067cb3..0e74f0c 100644
+--- a/mt792x.h
++++ b/mt792x.h
+@@ -171,2 +171,3 @@ struct mt792x_phy {
+ 	int txpower;
++	bool txpower_set;
+ 

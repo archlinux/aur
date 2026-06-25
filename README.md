@@ -196,6 +196,85 @@ sudo ./stability-test.sh -s 192.168.1.50   # with iperf3 server
 
 ## Troubleshooting
 
+**`modprobe: ERROR: could not insert 'mt7925e': Key was rejected by service` (Secure Boot):**
+
+Secure Boot is enabled and `mt7925e` is not signed with a key trusted by the firmware.
+Fix: sign modules automatically via DKMS with a Machine Owner Key (MOK) — this keeps
+Secure Boot enabled and re-signs on every kernel upgrade.
+
+**Step 1 — Check for an existing DKMS key** (Ubuntu 20.04+ may already have one):
+
+```bash
+ls /var/lib/dkms/mok.key /var/lib/dkms/mok.pub 2>/dev/null
+```
+
+If both files exist, skip to Step 3.
+
+**Step 2 — Generate a MOK signing key:**
+
+```bash
+sudo mkdir -p /var/lib/dkms
+
+sudo openssl req -new -x509 -newkey rsa:2048 \
+  -keyout /var/lib/dkms/mok.key \
+  -out /var/lib/dkms/mok.pub \
+  -days 36500 \
+  -subj "/CN=DKMS module signing key/" \
+  -nodes
+
+sudo chmod 600 /var/lib/dkms/mok.key
+```
+
+**Step 3 — Enroll the key with Secure Boot:**
+
+```bash
+sudo mokutil --import /var/lib/dkms/mok.pub
+# You will be prompted to set a one-time password — remember it for the next boot
+sudo reboot
+```
+
+On reboot, the MokManager screen (blue UI) will appear: select **Enroll MOK** →
+**Continue** → **Yes** → enter the one-time password → **Reboot**.
+
+**Step 4 — Configure DKMS to auto-sign (non-Ubuntu distros):**
+
+> **Ubuntu users:** DKMS automatically uses `/var/lib/dkms/mok.key` and
+> `/var/lib/dkms/mok.pub` — skip this step.
+
+For other distros, add signing configuration to `/etc/dkms/framework.conf`:
+
+```bash
+sudo tee -a /etc/dkms/framework.conf << 'EOF'
+sign_tool="/etc/dkms/sign_helper.sh"
+EOF
+```
+
+Then create the sign helper script:
+
+```bash
+sudo tee /etc/dkms/sign_helper.sh << 'EOF'
+#!/bin/sh
+/usr/lib/linux-kbuild-$(uname -r | cut -d- -f1)/scripts/sign-file \
+  sha256 \
+  /var/lib/dkms/mok.key \
+  /var/lib/dkms/mok.pub \
+  "$@"
+EOF
+
+sudo chmod +x /etc/dkms/sign_helper.sh
+```
+
+**Step 5 — Rebuild the module and verify:**
+
+```bash
+sudo dkms autoinstall
+sudo modinfo mt7925e | grep -i signer
+sudo modprobe mt7925e
+mokutil --list-enrolled | grep -i dkms
+```
+
+If `modprobe` succeeds without errors, the fix is complete.
+
 **5/6 GHz authentication retries:** WPA handshake may fail on the first attempt.
 Configure NetworkManager to retry automatically:
 

@@ -96,6 +96,16 @@ if [[ "$aur_url" != *"aur.archlinux.org"* ]]; then
 	exit 1
 fi
 
+# Refuse to release from a stale master. The tag and the AUR push both read
+# HEAD, so a local branch behind origin would publish a rewound tree.
+echo "Fetching origin to check sync..."
+git fetch origin master
+behind=$(git rev-list --count HEAD..origin/master)
+if ((behind > 0)); then
+	echo >&2 "ERROR: master is ${behind} commit(s) behind origin/master - pull first"
+	exit 1
+fi
+
 # Check working tree is clean (except the files we're about to modify)
 if ! git diff --quiet --exit-code -- ':!PKGBUILD' ':!dkms.conf' ':!CHANGELOG.md' ':!.SRCINFO'; then
 	echo "ERROR: Working tree has uncommitted changes"
@@ -139,18 +149,29 @@ if [[ "$confirm" != [yY] ]]; then
 	exit 1
 fi
 
-# Tag
-git tag "${new_tag}"
+# Commit the version bump. Both publish paths read HEAD (the GitHub push and
+# push-aur's `git ls-tree HEAD`), so an uncommitted sed bump reaches neither.
+echo ""
+echo "Committing version bump..."
+git add -- "$PKGBUILD" "$DKMS_CONF" CHANGELOG.md .SRCINFO
+if ! git commit -s -m "mediatek-mt7927-dkms: release ${new_tag}"; then
+	echo "  pre-commit hook reformatted files, re-staging and retrying..."
+	git add -u
+	git commit -s -m "mediatek-mt7927-dkms: release ${new_tag}"
+fi
 
-# From here on, the local tag exists. Don't roll back PKGBUILD/dkms.conf on
-# subsequent failures - the user can retry the push steps manually.
+# The bump is now durable in a commit. Don't roll back PKGBUILD/dkms.conf on
+# subsequent failures - the user can retry the tag/push steps manually.
 release_committed=1
 
-# Push to GitHub first (tag triggers GH Actions: release + RPM/DEB)
+# Annotated tag so `git push --follow-tags` carries it with the branch push.
+git tag -a "${new_tag}" -m "Release ${new_tag}"
+
+# Push to GitHub first (tag triggers GH Actions: release + RPM/DEB).
+# --follow-tags carries the annotated release tag with the branch push.
 echo ""
 echo "Pushing to GitHub..."
-git push origin master
-git push origin "${new_tag}"
+git push origin master --follow-tags
 
 # Push to AUR last (so GitHub release exists when AUR users see the update)
 echo ""

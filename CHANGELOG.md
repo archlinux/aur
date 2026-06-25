@@ -5,6 +5,12 @@ All notable changes to the MediaTek MT7927 DKMS package are documented here.
 Format: `v<pkgver>-<pkgrel>` where pkgver bumps for driver/patch changes
 and pkgrel bumps for PKGBUILD packaging changes.
 
+## [2.12-2] - 2026-06-25
+
+### Driver
+
+- Add patch 20: track valid BSS TX power before reporting (Komzpa, PR #83). `iw` reported `txpower 0.00 dBm` before the first `BSS_CHANGED_TXPOWER` event (after a reload or while disconnected), because the stored per-BSS power was still zero. Track whether it has been received and fall back to `hw->conf.power_level`, then the channel regulatory max, until it has. Complements patch 14, which sets the reported `txpower_cur`.
+
 ## [2.12-1] - 2026-06-25
 
 ### Driver
