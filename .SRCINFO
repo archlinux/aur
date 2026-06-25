@@ -1,0 +1,20 @@
+pkgbase = mcpp-bin
+	pkgdesc = Modern C++ build & package management tool (prebuilt binary)
+	pkgver = 0.0.65
+	pkgrel = 1
+	url = https://github.com/mcpp-community/mcpp
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = git
+	provides = mcpp
+	conflicts = mcpp
+	options = !strip
+	source = mcpp.sh
+	sha256sums = SKIP
+	source_x86_64 = mcpp-0.0.65-linux-x86_64.tar.gz::https://github.com/mcpp-community/mcpp/releases/download/v0.0.65/mcpp-0.0.65-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 0d1d16aae05e4d7c59a00a2621abc4b99421b9821d2145c139fabf95fcf93409
+	source_aarch64 = mcpp-0.0.65-linux-aarch64.tar.gz::https://github.com/mcpp-community/mcpp/releases/download/v0.0.65/mcpp-0.0.65-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 20dd7a8be657bf2e32dcffcf10b758e34fe740fcdb1ceb374822d5ee25cb4a52
+
+pkgname = mcpp-bin
