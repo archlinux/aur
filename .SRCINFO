@@ -8,7 +8,6 @@ pkgbase = matcha-client-bin
 	license = MIT
 	provides = matcha
 	conflicts = matcha
-	conflicts = matcha-bin
 	source_x86_64 = matcha-x86_64-0.43.0.tgz::https://github.com/floatpane/matcha/releases/download/v0.43.0/matcha_0.43.0_linux_amd64.tar.gz
 	sha256sums_x86_64 = 51782176a720f0a11bbcc6cfcec7a065d05f9e8ee933d955f4fe616f9b403e35
 	source_aarch64 = matcha-aarch64-0.43.0.tgz::https://github.com/floatpane/matcha/releases/download/v0.43.0/matcha_0.43.0_linux_arm64.tar.gz
