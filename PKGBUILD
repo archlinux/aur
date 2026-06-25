@@ -23,8 +23,8 @@ makedepends=(
   glib2-devel
   meson
 )
-provides=(xdg-desktop-portal-impl)
-conflicts=()
+provides=(xdg-desktop-portal-impl xdg-desktop-portal-xapp)
+conflicts=(xdg-desktop-portal-xapp)
 source=("xdg-desktop-portal-filepicker::git+https://github.com/Twilight0/xdg-desktop-portal-filepicker.git")
 sha256sums=('SKIP')
 
