@@ -17,6 +17,8 @@ pkgbase = xdg-desktop-portal-filepicker
 	depends = xdg-desktop-portal
 	depends = xdg-desktop-portal-gtk
 	provides = xdg-desktop-portal-impl
+	provides = xdg-desktop-portal-xapp-filechooser
+	conflicts = xdg-desktop-portal-xapp-filechooser
 	source = xdg-desktop-portal-filepicker::git+https://github.com/Twilight0/xdg-desktop-portal-filepicker.git
 	sha256sums = SKIP
 
