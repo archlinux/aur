@@ -2,7 +2,7 @@
 
 pkgname=netcoredbg-bin
 _name=${pkgname%-bin}
-_pkgver=3.1.3-1062
+_pkgver=3.2.0-1092
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc='Debugger for .NET Core runtime'
@@ -15,7 +15,7 @@ depends=('dotnet-runtime-10.0' 'glibc' 'gcc-libs')
 
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/Samsung/netcoredbg/releases/download/$_pkgver/$_name-linux-amd64.tar.gz"
         "$_name-$_pkgver-LICENSE::https://raw.githubusercontent.com/Samsung/netcoredbg/$_pkgver/LICENSE")
-sha256sums=('3814341c028c81ff7eea03ac316ad92e9ad7d705d2a00e3e3df269cdc241c763'
+sha256sums=('080eb3b2d2152465f599d3b33d1ee6e747794e11cc0a3773ec689f5e5f2c5afa'
             '6cd03b0de8299b0800f22b35ae842c931ded7684a2d1ba4f1d4188bab9b09a11')
 
 package() {
