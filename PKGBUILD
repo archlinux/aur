@@ -6,11 +6,18 @@ pkgdesc="Modern graphical interface for network management with Serial, SSH, TFT
 arch=('any')
 url="https://github.com/benjamimgois/opengrid"
 license=('GPL-3.0-or-later')
-depends=('python' 'python-pyqt6' 'python-pyte' 'python-paramiko' 'python-pysnmp' 'python-standard-telnetlib' 'qt6-serialport' 'picocom' 'sudo' 'openssh' 'samba' 'iperf3' 'traceroute' 'mtr' 'networkmanager' 'nmap')
-optdepends=('python-speedtest-cli: speedtest.net speed test support'
-            'python-pyftpdlib: built-in FTP server support'
-            'tigervnc: VNC remote desktop viewer'
-            'freerdp: RDP remote desktop client (provides wlfreerdp for Wayland)')
+depends=(
+    'python' 'python-pyqt6' 'python-pyte' 'python-paramiko'
+    'python-pysnmp' 'python-standard-telnetlib' 'qt6-serialport'
+    'picocom' 'sudo' 'openssh' 'samba' 'iperf3' 'traceroute'
+    'mtr' 'networkmanager' 'nmap'
+)
+optdepends=(
+    'python-speedtest-cli: speedtest.net speed test support'
+    'python-pyftpdlib: built-in FTP server support'
+    'tigervnc: VNC remote desktop viewer'
+    'freerdp: RDP remote desktop client'
+)
 makedepends=('git')
 provides=('cetus')
 conflicts=('cetus')
@@ -26,10 +33,29 @@ pkgver() {
 package() {
     cd "${srcdir}/${pkgname}"
 
-    # Install main script
+    # Install main launcher script
     install -Dm755 cetus "${pkgdir}/usr/bin/cetus"
 
-    # Install pre-built PNG sizes
+    # Install cetuslib module under /usr/share/cetus
+    install -dm755 "${pkgdir}/usr/share/cetus"
+    cp -r cetuslib "${pkgdir}/usr/share/cetus/cetuslib"
+
+    # Create a .pth file in site-packages so Python always finds cetuslib,
+    # regardless of whether the launcher's path discovery works.
+    local sitepkg
+    sitepkg="$(PYTHONPATH= python3 -c "
+import site
+for sp in site.getsitepackages():
+    if sp.startswith('/usr/lib/'):
+        print(sp)
+        break
+" 2>/dev/null)"
+    if [ -n "${sitepkg}" ]; then
+        install -dm755 "${pkgdir}${sitepkg}"
+        echo "/usr/share/cetus" > "${pkgdir}${sitepkg}/cetus.pth"
+    fi
+
+    # Install icons
     for size in 16 32 48 64 128 256 512; do
         install -Dm644 "assets/icons/cetus-${size}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/cetus.png"
@@ -38,19 +64,17 @@ package() {
     # Install author photo for About dialog
     install -Dm644 assets/photo.png "${pkgdir}/usr/share/cetus/photo.png"
 
-    # Install UI icons (sidebar and misc) — all SVGs
+    # Install UI icons
+    install -dm755 "${pkgdir}/usr/share/cetus/icons"
     for icon in assets/icons/*.svg; do
         install -Dm644 "${icon}" "${pkgdir}/usr/share/cetus/icons/$(basename ${icon})"
     done
 
     # Install vendor icons
+    install -dm755 "${pkgdir}/usr/share/cetus/vendors"
     for vendor in assets/vendors/*.svg; do
         install -Dm644 "${vendor}" "${pkgdir}/usr/share/cetus/vendors/$(basename ${vendor})"
     done
-
-    # Install Python package modules
-    install -dm755 "${pkgdir}/usr/share/cetus"
-    cp -r cetuslib "${pkgdir}/usr/share/cetus/cetuslib"
 
     # Install desktop file
     install -Dm644 cetus.desktop "${pkgdir}/usr/share/applications/cetus.desktop"
