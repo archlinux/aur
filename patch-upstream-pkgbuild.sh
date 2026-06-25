@@ -1,6 +1,5 @@
 #!/bin/sh -eu
 
-# TODO: add my name as maintainer
 sed "$1" \
 	-e 's|^# Maintainer:|# Contributor:|' \
 	-e '1i\# Maintainer: Thomas J Faughnan Jr <thomas@faughnan.net>' \
