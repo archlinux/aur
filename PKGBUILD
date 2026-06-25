@@ -1,7 +1,7 @@
 
 
 pkgname=jaq-git
-pkgver=3.0.0.r25.g43c41e21
+pkgver=3.1.0.15.gb3365b2a
 pkgver() {
   cd jaq
   git describe --long --tags | sed -e "s/v//" -e 's/-alpha-/.r/' -e 's/\-/\./g'
@@ -13,23 +13,26 @@ arch=('x86_64')
 license=(MIT)
 depends=(gcc-libs glibc)
 makedepends=(rust)
-optdepends=("rust-src: optimize with RUSTC_BOOTSTRAP=1")
+optdepends=("jotdown: man page"
+"rust-src: optimize with RUSTC_BOOTSTRAP=1")
 conflicts=(jaq jq)
 provides=(jaq jq)
 source=("git+${url}.git")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 build() {
   cd jaq
   test $RUSTC_BOOTSTRAP = 1 && _cargoflags="-Zbuild-std=std,panic_abort"
   RUSTFLAGS+=" -Cpanic=abort"
   cargo build --release $_cargoflags
+  command -v jotdown && make -C docs jaq.1
 }
 
 package() {
   unset optdepends
   cd jaq
   install -Dm 755 target/release/jaq -t "$pkgdir"/usr/bin
+  install -Dm 755 docs/jaq.1 -t "$pkgdir"/usr/share/man/man1
   ln -sf jaq "$pkgdir"/usr/bin/jq
   install -Dm 644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname"
 }

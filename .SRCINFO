@@ -1,6 +1,6 @@
 pkgbase = jaq-git
 	pkgdesc = A jq clone
-	pkgver = 3.0.0.r25.g43c41e21
+	pkgver = 3.1.0.15.gb3365b2a
 	pkgrel = 1
 	url = https://github.com/01mf02/jaq
 	arch = x86_64
@@ -8,12 +8,13 @@ pkgbase = jaq-git
 	makedepends = rust
 	depends = gcc-libs
 	depends = glibc
+	optdepends = jotdown: man page
 	optdepends = rust-src: optimize with RUSTC_BOOTSTRAP=1
 	provides = jaq
 	provides = jq
 	conflicts = jaq
 	conflicts = jq
 	source = git+https://github.com/01mf02/jaq.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = jaq-git
