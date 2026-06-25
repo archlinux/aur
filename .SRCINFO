@@ -1,0 +1,15 @@
+pkgbase = gbins
+	pkgdesc = GTFOBins in your terminal — fuzzy-search and copy the exploit
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/franlol/gbins
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = bun
+	conflicts = gbins-bin
+	options = !strip
+	source = gbins-0.1.0.tar.gz::https://github.com/franlol/gbins/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = d66969fafa67b00b50ecf66f2cf20e168ffd2635dddd32f5a280baaeb1a33bc1
+
+pkgname = gbins
