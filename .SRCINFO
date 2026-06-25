@@ -1,7 +1,7 @@
 pkgbase = howdy-next
-	pkgdesc = A modernized fork of original Howdy, Facial recognition authentication for Linux
+	pkgdesc = Security-focused C++ rewrite of Howdy for facial-recognition authentication on Linux
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/nathawat/howdy-next
 	install = howdy-next.install
 	arch = x86_64

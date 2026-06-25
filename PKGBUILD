@@ -2,8 +2,8 @@
 
 pkgname=howdy-next
 pkgver=3.1.0
-pkgrel=1
-pkgdesc="A modernized fork of original Howdy, Facial recognition authentication for Linux"
+pkgrel=2
+pkgdesc="Security-focused C++ rewrite of Howdy for facial-recognition authentication on Linux"
 arch=('x86_64')
 url="https://codeberg.org/nathawat/howdy-next"
 license=('MIT')
@@ -30,6 +30,10 @@ build() {
 		-Duser_models_dir=/etc/howdy/models
 
 	meson compile -C "$srcdir/build"
+}
+
+check() {
+	meson test -C "$srcdir/build" --print-errorlogs
 }
 
 package() {
