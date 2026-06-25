@@ -1,7 +1,7 @@
 # Maintainer: tygrdev <hi@tygr.dev>
 # Contributor: wackery, nord-studio
 pkgname=pulsar-music-bin
-pkgver=0.0.0.r116
+pkgver=0.0.0
 pkgrel=1
 pkgdesc="A local-first, cross-platform music player."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('AGPL-3.0-or-later')
 provides=('pulsar-music')
 conflicts=('pulsar-music')
 depends=('alsa-lib' 'fontconfig' 'libxkbcommon' 'libx11' 'libxcb' 'wayland' 'dbus' 'vulkan-icd-loader')
-source=("pulsar-music_${pkgver}_amd64.deb::https://lab.nordstud.io/api/v4/projects/72/packages/generic/pulsar/0.0.0.r116/pulsar-music_0.0.0.r116_amd64.deb")
+source=("pulsar-music_${pkgver}_amd64.deb::https://lab.nordstud.io/api/v4/projects/72/packages/generic/pulsar/0.0.0/pulsar-music_0.0.0_amd64.deb")
 sha256sums=('SKIP')
 
 package() {
