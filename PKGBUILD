@@ -1,10 +1,10 @@
 # Maintainer: NanKill <nankill@nankill.xyz>
 pkgname=glassy-music-nankill-git
 _app_id=glassy-music-nankill-mod
-pkgver=3.12.8.beta.r26.g91f8f1a
+pkgver=3.12.8.beta.r65.ge00cfb4
 pkgrel=1
 _nodeversion=24
-_electronversion=41
+_electronversion=42
 pkgdesc="Glassy Music is extension for music player "
 arch=('x86_64')
 url="https://github.com/NanKillBro/glassy-music-nankill"
@@ -50,7 +50,7 @@ prepare() {
   find . -type f -name "*.js" -exec sed -i "s|process.resourcesPath|'/usr/lib/${pkgname%-git}'|g" {} +
 
   export PNPM_HOME="$srcdir/pnpm-home"
-  pnpm install --no-frozen-lockfile --ignore-scripts
+  pnpm install --no-frozen-lockfile
 
   sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/${pkgname%-git}.sh"
 }
