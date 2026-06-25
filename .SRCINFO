@@ -1,6 +1,6 @@
 pkgbase = zasper-git
 	pkgdesc = An IDE designed from the ground up to support massive concurrency. It provides a minimal memory footprint, exceptional speed, 和 the ability to handle numerous concurrent connections.(Use system-wide electron)
-	pkgver = 0.1.0.alpha.r2.g0d7bbd6
+	pkgver = 0.2.0.beta.r33.g49fd945
 	pkgrel = 1
 	url = https://zasper.io/
 	arch = any
@@ -12,12 +12,13 @@ pkgbase = zasper-git
 	makedepends = gendesk
 	makedepends = go
 	makedepends = icoutils
+	makedepends = jq
 	depends = electron30
-	provides = zasper=0.1.0.alpha
+	provides = zasper=0.2.0.beta
 	conflicts = zasper
 	source = zasper.git::git+https://github.com/zasper-io/zasper.git
 	source = zasper.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = zasper-git
