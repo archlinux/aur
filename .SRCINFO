@@ -6,7 +6,7 @@ pkgbase = papirus-colors-git
 	arch = any
 	license = GPLv3
 	makedepends = git
-	depends = plasma-desktop
+	depends = kcolorscheme
 	source = papirus-colors-git::git+https://github.com/varlesh/papirus-colors.git
 	sha256sums = SKIP
 
