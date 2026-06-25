@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal-cosmic-git
 	pkgdesc = A backend implementation for xdg-desktop-portal for the COSMIC desktop environment
-	pkgver = 1.0.16.r3.gd26e566
+	pkgver = 1.1.0.r2.g5aad2f5
 	pkgrel = 1
 	url = https://github.com/pop-os/xdg-desktop-portal-cosmic
 	arch = x86_64
@@ -9,7 +9,9 @@ pkgbase = xdg-desktop-portal-cosmic-git
 	makedepends = cargo
 	makedepends = clang
 	makedepends = git
+	makedepends = just
 	makedepends = mold
+	makedepends = setconf
 	depends = cosmic-icons-git
 	depends = libpipewire
 	depends = libxkbcommon
