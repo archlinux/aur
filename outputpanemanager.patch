@@ -1,0 +1,29 @@
+diff --git a/src/plugins/coreplugin/outputpanemanager.cpp b/src/plugins/coreplugin/outputpanemanager.cpp
+index d5f74e0a..f63577f9 100644
+--- a/src/plugins/coreplugin/outputpanemanager.cpp
++++ b/src/plugins/coreplugin/outputpanemanager.cpp
+@@ -841,16 +841,17 @@ void OutputPaneManager::setupButtons()
+                     m_instance->updateActions(outPane);
+             });
+ 
+-            auto *toolBar = new QToolBar(m_instance->m_opToolBarWidgets);
+-            toolBar->setContentsMargins(0, 0, 0, 0);
++            QWidget *toolButtonsContainer = new QWidget(m_instance->m_opToolBarWidgets);
++            using namespace Layouting;
++            Row toolButtonsRow { spacing(0), noMargin };
++
+             const QList<QWidget *> toolBarWidgets = outPane->toolBarWidgets();
+             for (QWidget *toolButton : toolBarWidgets)
+-                toolBar->addWidget(toolButton);
+-            auto stretch = new QWidget;
+-            stretch->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Ignored);
+-            toolBar->addWidget(stretch);
++                toolButtonsRow.addItem(toolButton);
++            toolButtonsRow.addItem(st);
++            toolButtonsRow.attachTo(toolButtonsContainer);
+ 
+-            m_instance->m_opToolBarWidgets->insertWidget(i, toolBar);
++            m_instance->m_opToolBarWidgets->insertWidget(i, toolButtonsContainer);
+         }
+         QTC_CHECK(idx == i);
+ 

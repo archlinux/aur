@@ -1,7 +1,16 @@
 diff --git a/src/libs/utils/fancymainwindow.cpp b/src/libs/utils/fancymainwindow.cpp
-index 4f282659..d824a459 100644
+index 49be086a..9cf896cb 100644
 --- a/src/libs/utils/fancymainwindow.cpp
 +++ b/src/libs/utils/fancymainwindow.cpp
+@@ -66,7 +66,7 @@ DocksAndSizes DocksAndSizes::fromMap(const QVariantMap &store, const QList<QDock
+     info.sizes = store.value(kDocksAndSizesSizes).value<QList<int>>();
+ 
+     // clean up for docks that could not be found
+-    for (int i = info.docks.size() - 1; i >= 0; --i) {
++    for (int i = 0; i < info.docks.size(); ++i) {
+         if (!info.docks.at(i)) {
+             info.docks.removeAt(i);
+             if (i < info.sizes.size())
 @@ -110,6 +110,12 @@ public:
  
      QVariant saveState() const;
@@ -15,7 +24,16 @@ index 4f282659..d824a459 100644
  
      FancyMainWindow *q;
  
-@@ -124,6 +130,9 @@ private:
+@@ -117,7 +123,7 @@ signals:
+     void collapseChanged();
+ 
+ protected:
+-    bool event(QEvent *event) final
++    bool event(QEvent *event)
+     {
+         switch (event->type()) {
+         case QEvent::MouseButtonDblClick:
+@@ -149,6 +155,9 @@ private:
      QWidget *m_hiddenInnerWidget = nullptr;
      int m_hiddenInnerWidgetHeight = 0;
      TitleBarWidget *m_titleBar;
@@ -25,7 +43,7 @@ index 4f282659..d824a459 100644
  };
  
  // Stolen from QDockWidgetTitleButton
-@@ -190,30 +199,19 @@ void DockWidgetTitleButton::paintEvent(QPaintEvent *)
+@@ -215,30 +224,19 @@ void DockWidgetTitleButton::paintEvent(QPaintEvent *)
      style()->drawComplexControl(QStyle::CC_ToolButton, &opt, &p, this);
  }
  
@@ -61,7 +79,7 @@ index 4f282659..d824a459 100644
  
  #ifndef QT_NO_ACCESSIBILITY
          m_floatButton->setAccessibleName(QDockWidget::tr("Float"));
-@@ -222,33 +220,39 @@ public:
+@@ -247,33 +245,39 @@ public:
          m_closeButton->setAccessibleDescription(QDockWidget::tr("Closes the dock widget"));
  #endif
  
@@ -114,7 +132,7 @@ index 4f282659..d824a459 100644
      }
  
      void setActive(bool on)
-@@ -259,52 +263,47 @@ public:
+@@ -284,52 +288,47 @@ public:
  
      void updateChildren()
      {
@@ -185,30 +203,35 @@ index 4f282659..d824a459 100644
  DockWidget::DockWidget(QWidget *inner, FancyMainWindow *parent, bool immutable)
      : QDockWidget(parent)
      , q(parent)
-@@ -321,7 +320,7 @@ DockWidget::DockWidget(QWidget *inner, FancyMainWindow *parent, bool immutable)
+@@ -344,7 +343,9 @@ DockWidget::DockWidget(QWidget *inner, FancyMainWindow *parent, bool immutable)
+     title = stripAccelerator(title);
+     setWindowTitle(title);
  
-     QStyleOptionDockWidget opt;
-     initStyleOption(&opt);
 -    m_titleBar = new TitleBarWidget(this);
++    QStyleOptionDockWidget opt;
++    initStyleOption(&opt);
 +    m_titleBar = new TitleBarWidget(this, opt);
      m_titleBar->m_titleLabel->setText(title);
      setTitleBarWidget(m_titleBar);
  
-@@ -330,6 +329,13 @@ DockWidget::DockWidget(QWidget *inner, FancyMainWindow *parent, bool immutable)
+@@ -353,10 +354,13 @@ DockWidget::DockWidget(QWidget *inner, FancyMainWindow *parent, bool immutable)
          return;
      }
  
+-    QPalette p = palette();
+-    p.setColor(QPalette::Window, creatorColor(Theme::Token_Stroke_Subtle));
+-    setPalette(p);
 +    m_timer.setSingleShot(true);
 +    m_timer.setInterval(500);
 +
 +    connect(&m_timer, &QTimer::timeout, this, &DockWidget::handleMouseTimeout);
 +    connect(this, &QDockWidget::topLevelChanged, this, &DockWidget::handleToplevelChanged);
-+
+ 
 +    m_titleBar->setActive(false);
      connect(toggleViewAction(), &QAction::triggered, this, [this] {
          if (isVisible())
              raise();
-@@ -451,6 +457,49 @@ void DockWidget::setCollapsed(bool collapse)
+@@ -480,6 +484,49 @@ void DockWidget::setCollapsed(bool collapse)
      emit collapseChanged();
  }
  
@@ -258,3 +281,45 @@ index 4f282659..d824a459 100644
  const char kDockWidgetInnerWidgetHeight[] = "InnerWidgetHeight";
  
  QVariant DockWidget::saveState() const
+@@ -590,7 +637,6 @@ FancyMainWindow::FancyMainWindow(QWidget *parent) :
+ FancyMainWindow::~FancyMainWindow()
+ {
+     delete d;
+-    d = nullptr;
+ }
+ 
+ QDockWidget *FancyMainWindow::addDockForWidget(QWidget *widget, bool immutable)
+@@ -627,18 +673,6 @@ QDockWidget *FancyMainWindow::addDockForWidget(QWidget *widget, bool immutable)
+         connect(dockWidget, &QDockWidget::dockLocationChanged, this, handleDockWidgetChanged);
+         connect(dockWidget, &QDockWidget::topLevelChanged, this, handleDockWidgetChanged);
+         connect(dockWidget, &QDockWidget::visibilityChanged, this, handleDockWidgetChanged);
+-        connect(dockWidget, &QDockWidget::destroyed, this, [this](QObject *dock) {
+-            if (!d)
+-                return;
+-            for (DocksAndSizes &hiddenDocks : d->m_hiddenAreas) {
+-                const int i = hiddenDocks.docks.indexOf(static_cast<QDockWidget *>(dock));
+-                if (i >= 0) {
+-                    hiddenDocks.docks.removeAt(i);
+-                    if (i < hiddenDocks.sizes.size())
+-                        hiddenDocks.sizes.removeAt(i);
+-                }
+-            }
+-        });
+     }
+ 
+     return dockWidget;
+@@ -804,13 +838,7 @@ void FancyMainWindow::setDockAreaVisible(Qt::DockWidgetArea area, bool visible)
+     } else {
+         const QList<QDockWidget *> docks = docksInArea(area);
+         if (!docks.isEmpty()) {
+-            const Qt::Orientation orientation = orientationForArea(area);
+-            const auto sizeForDock = [orientation](QDockWidget *w) {
+-                if (orientation == Qt::Vertical)
+-                    return w->height();
+-                return w->width();
+-            };
+-            const QList<int> sizes = transform(docks, sizeForDock);
++            const QList<int> sizes = transform(docks, [](QDockWidget *w) { return w->height(); });
+             d->m_hiddenAreas.insert(area, DocksAndSizes{docks, sizes});
+             for (QDockWidget *w : docks)
+                 w->setVisible(false);

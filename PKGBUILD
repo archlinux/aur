@@ -1,7 +1,7 @@
 pkgbase=qtcreator-patches
 pkgname=(qtcreator-patches qtcreator-devel-patches)
-pkgver=19.0.1
-_commit=19.0
+pkgver=20.0.0
+_commit=20.0
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=(x86_64)
@@ -38,8 +38,8 @@ source=("fancymainwindow.patch"
         "multitextcursor.patch"
         "center_on_scroll.patch"
         "libsecret.patch"
-        "english.patch")
-sha256sums=('22f9559555524f7b40d9910627d63307ff48486b48312efa5325762fbc04d3a1'
+        "outputpanemanager.patch")
+sha256sums=('351366320002004d0f32b18dc963a8373fe617e488e6d1d3d0cd740ac5ab832a'
             '5f13820fd849ae6baf7ebb2b61bd8be2a18b605326fce3d84755f1ee6998d47e'
             '8ef74fcac471d668875bf1ae645cbc991d5916441386576f63ff9f29770b77d3'
             'bae874c52203cc82aead56ca98a1bcee81f663f847c977ddf85039f41db1ecf8'
@@ -53,7 +53,7 @@ sha256sums=('22f9559555524f7b40d9910627d63307ff48486b48312efa5325762fbc04d3a1'
             '6546401d89e6b4991e5051b138a92e4222923283183ec2d9b347752113b6dbe1'
             '30c2c76f4f98a25a469e0e7ee76c5b1faf2b18a26d037739d8a3512c8b4372a5'
             'e25f58bc4364e75987f9d9b908ad8e661e431f21ca8c7dd90d5b2824ae62952b'
-            'cfe74f9b03fd5b7e1460ccb30e17b0521e5a675cb3e9cc564d2278dc35981151')
+            '124805e1b237b44d0aec01d26e8a493763fc6477b80d4b5343c691d1343dabea')
 prepare() {
   cd $srcdir
 
@@ -77,7 +77,7 @@ prepare() {
   patch -d qt-creator -p1 < libsecret.patch
   patch -d qt-creator -p1 < pyindent.patch        # Fix rename symbol under cursor
   patch -d qt-creator -p1 < multitextcursor.patch # Fix delete and move cursor to left
-  patch -d qt-creator -p1 < english.patch
+  patch -d qt-creator -p1 < outputpanemanager.patch
 #  patch -d qt-creator -p1 < center_on_scroll.patch
 }
 
