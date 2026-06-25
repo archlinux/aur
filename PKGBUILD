@@ -1,6 +1,6 @@
 # Maintainer: CmdHub Contributors
 pkgname=cmdh-bin
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Decentralized registry and offline search tool for AI Agents"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ provides=('cmdh')
 conflicts=('cmdh')
 source_x86_64=("https://github.com/Xuepoo/cmdhub-oss/releases/download/v${pkgver}/cmdh-linux-x86_64")
 source_aarch64=("https://github.com/Xuepoo/cmdhub-oss/releases/download/v${pkgver}/cmdh-linux-aarch64")
-sha256sums_x86_64=('4bdcde31eb0b92f9e3f87b18c3bb1ca49f8426b5c3b3d9a3254de25b0610fec1')
-sha256sums_aarch64=('325af8e7d9df42e8480a2cc2f0a5b663168e16257f3f94fa948b79f89e764d65')
+sha256sums_x86_64=('8cce840fe9addd0b21432e82c802e64207837606cd260b46c4d2198b27687b67')
+sha256sums_aarch64=('9f44413560e12003e1a2dc10f1ac713a6968e71da010e97110da30150ecf8710')
 
 package() {
   if [ "$CARCH" = "x86_64" ]; then
