@@ -1,0 +1,30 @@
+# wingman runs rootless: the daemon runs as your user, but creating a WireGuard
+# interface needs CAP_NET_ADMIN. Rather than running netbird as root, we grant
+# that one capability to the netbird binary. pacman strips file capabilities on
+# every (re)install of netbird, so the shipped pacman hook
+# (/usr/share/libalpm/hooks/wingman-netbird-setcap.hook) reapplies it after each
+# netbird transaction. Here we apply it once at wingman install time so it works
+# immediately, before that hook ever fires.
+
+_apply_cap() {
+	if [ -x /usr/bin/netbird ]; then
+		setcap cap_net_admin,cap_net_raw+eip /usr/bin/netbird || \
+			echo ">>> wingman: could not setcap netbird; run it yourself:" \
+			     "sudo setcap cap_net_admin,cap_net_raw+eip /usr/bin/netbird"
+	fi
+}
+
+post_install() {
+	_apply_cap
+	cat <<'EOF'
+>>> wingman installed (rootless).
+    Bring an instance up as your normal user (no sudo):
+        wingman up <name> --setup-key <KEY>
+    To start instances on boot without an active login session, enable linger:
+        sudo loginctl enable-linger "$USER"
+EOF
+}
+
+post_upgrade() {
+	_apply_cap
+}
