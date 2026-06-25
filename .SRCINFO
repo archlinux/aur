@@ -1,6 +1,6 @@
 pkgbase = uvr-bin
 	pkgdesc = An extremely fast R package and project manager
-	pkgver = 0.3.12
+	pkgver = 0.3.13
 	pkgrel = 1
 	url = https://github.com/nbafrank/uvr
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = uvr-bin
 	depends = xz
 	conflicts = uvr
 	options = !debug
-	source_x86_64 = uvr-bin-0.3.12.tar.gz::https://github.com/nbafrank/uvr/releases/download/v0.3.12/uvr-x86_64-unknown-linux-gnu.tar.gz
-	source_x86_64 = https://raw.githubusercontent.com/nbafrank/uvr/refs/tags/v0.3.12/LICENSE
-	provides_x86_64 = uvr=0.3.12
-	sha256sums_x86_64 = 4fe3969c047a4e4dec9cd90b5b2d61df1d5ba9700b127ce98eb2d8d73a847f4f
+	source_x86_64 = uvr-bin-0.3.13.tar.gz::https://github.com/nbafrank/uvr/releases/download/v0.3.13/uvr-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://raw.githubusercontent.com/nbafrank/uvr/refs/tags/v0.3.13/LICENSE
+	provides_x86_64 = uvr=0.3.13
+	sha256sums_x86_64 = 056077d060a4a01088cb94ff00b98120f0ed7fe0e01d81c8ba117680824585de
 	sha256sums_x86_64 = 77b70ed5d9b61311ad9b3be2940e7bc5491600d0a28a641eb801991690d4debc
 
 pkgname = uvr-bin
