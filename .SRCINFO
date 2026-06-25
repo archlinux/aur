@@ -1,5 +1,5 @@
 pkgbase = jisocreator
-	pkgdesc = JIsoCreator is a ISO9660 CD Image creator, frontend of MKISOFS
+	pkgdesc = JIsoCreator is a ISO9660 CD Image creator, frontend of MKISOFS, built from sources
 	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/Cavallinux/jisocreator
