@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aionui
 _pkgname=AionUi
-pkgver=2.1.23
+pkgver=2.1.24
 _electronversion=37
 _nodeversion=22
 pkgrel=1
@@ -28,10 +28,10 @@ makedepends=(
     'jq'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
+    "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('113c4a30eb8fdc77d544261b4ea59e2daaef00d93de791d80bd2f6635033f3c1'
+sha256sums=('0bedcdf4514d82b9449527d8880c8475adcf2661ebf2a967553ca618e2e2afd4'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -53,7 +53,7 @@ _set_build_env() {
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     local HOME="${srcdir}/.electron-gyp"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    local electronDist="/usr/lib/electron${_electronversion}"
+    electronDist="/usr/lib/electron${_electronversion}"
     rm -rf bunfig.toml bun.lockb || true
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
@@ -67,7 +67,7 @@ _set_build_env() {
     fi
 }
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -88,17 +88,17 @@ prepare() {
     bunx electron-builder install-app-deps
 }
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     _set_build_env
-    _ensure_local_nvm    
+    _ensure_local_nvm   
     bun run dist:linux
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
     local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname}/"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/resources/app.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname}/"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/resources/app.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
