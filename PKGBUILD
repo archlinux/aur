@@ -1,7 +1,7 @@
 # Maintainer: Benjamim Gois <benjamimgois@gmail.com>
 pkgname=cetus-git
 pkgver=r416.g40cef91
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern graphical interface for network management with Serial, SSH, TFTP, IP Scanner, SNMP, Traceroute, VulnScan and Speed Test (iPerf3 / speedtest.net)"
 arch=('any')
 url="https://github.com/benjamimgois/opengrid"
