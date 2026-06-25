@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deepchat-bin
 _pkgname=DeepChat
-pkgver=1.0.6
+pkgver=1.0.7
 _electronversion=40
 pkgrel=1
 pkgdesc="A smart assistant that connects powerful AI to your personal world.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ depends=(
     'python-defusedxml'
     'python-pillow'
     'python-yaml'
-    'rtk'
+    'nodejs'
 )
 options=(
     '!strip'
@@ -28,7 +28,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e507224df1962e25ee160ff981b341d8fe73bc2f36b7168b92fca1da7f07153a'
+sha256sums=('e5720c42138cb0b1da4a97a711a542a6a06c3214f9e9ed26017d6a2fab440eb4'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
