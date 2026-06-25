@@ -2,7 +2,7 @@
 
 pkgname=bodyslide
 _pkgname=BodySlide
-pkgver=5.8.1
+pkgver=5.8.2
 pkgrel=1
 pkgdesc='BodySlide and Outfit Studio, a tool to convert, create, and customize outfits and bodies for Bethesda games.'
 arch=('x86_64')
