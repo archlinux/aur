@@ -6,7 +6,7 @@
 pkgname=cachyos-ananicy-rules
 _gitname=ananicy-rules
 pkgver=1.1.42
-pkgrel=1
+pkgrel=2
 epoch=1
 groups=(cachyos)
 arch=('any')
@@ -17,14 +17,10 @@ source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('071befdad07f203d43b71d7d8356e353f8301f082f3fa1f1f123d3e377d730a5')
 replaces=(ananicy-rules-git)
 
-prepare() {
-  cd "${_gitname}-${pkgver}"
-  rm -f README.md
-}
-
 package() {
   cd "${_gitname}-${pkgver}"
   install -d "$pkgdir/etc/ananicy.d"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
   cp -rf "$srcdir/$_gitname-$pkgver/"* "$pkgdir/etc/ananicy.d"
+  rm -f "$pkgdir/etc/ananicy.d"/{LICENSE,README.md,sort-games.sh}
 }
