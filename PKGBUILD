@@ -3,7 +3,7 @@
 pkgname=lib32-libarchive
 _name="${pkgname#lib32-}"
 pkgver=3.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-format archive and compression library - 32bit"
 arch=(x86_64)
 url="https://libarchive.org"
@@ -35,6 +35,8 @@ validpgpkeys=('DB2C7CF1B4C265FAEF56E3FC5848A18B8F14184B'  # Martin Matuska <mart
               '659C84C0E23EA1FA97E0B58CC040B508D63D2B36') # Martin Matuska <mm@FreeBSD.org>
 
 _backports=(
+  # read_data_into_fd: Fix spurious "Seek error" for trailing holes
+  '91c146e87d61e952c629e2f8a8f9f2a9267c13ff'
 )
 
 _reverts=(
