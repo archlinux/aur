@@ -3,7 +3,7 @@
 pkgbase=kh-ucanfd
 pkgname=(kh-ucanfd kh-ucanfd-dkms)
 pkgver=1.4.1
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="KunHong UCANFD Linux driver"
 arch=($CARCH)
@@ -101,10 +101,10 @@ package_kh-ucanfd-dkms() {
 
     install -Dm644 /dev/stdin "${pkgdir}/usr/src/${pkgname}-${pkgver}/Makefile" <<EOF
 DESTDIR =
-MODDIR  = \$(DESTDIR)/lib/modules
-KVERS   = \$(shell uname -r)
-KVER    = \$(KVERS)
-VMODDIR = \$(MODDIR)/\$(KVER)
+MODDIR  ?= \$(DESTDIR)/lib/modules
+KVERS   ?= \$(shell uname -r)
+KVER    ?= \$(KVERS)
+VMODDIR ?= \$(MODDIR)/\$(KVER)
 KSRC    ?= \$(VMODDIR)/build
 
 obj-m := kcan.o

@@ -1,7 +1,7 @@
 pkgbase = kh-ucanfd
 	pkgdesc = KunHong UCANFD Linux driver
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://gitee.com/ChengDu-KunHong/KH-UCANFD_Linux_SDK
 	arch = x86_64
 	license = GPL-2.0-only AND LGPL-2.0-only
