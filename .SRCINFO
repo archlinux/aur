@@ -1,0 +1,21 @@
+pkgbase = float-mux-bin
+	pkgdesc = Floating window terminal multiplexer
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/Henktorius/float
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = float-mux
+	conflicts = float-mux
+	options = !strip
+	source = README-1.2.1.md::https://raw.githubusercontent.com/Henktorius/float/v1.2.1/README.md
+	sha256sums = de0e07d0d39a36707c01653770aba75f0766e3208116be177ea96af11a8783e5
+	source_x86_64 = float-mux-x86_64-1.2.1::https://github.com/Henktorius/float/releases/download/v1.2.1/float-mux-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 8dc404aaf4ef53fd1fe663e897174dbff5029469b50f7a3d11e5df13fc2f712d
+	source_aarch64 = float-mux-aarch64-1.2.1::https://github.com/Henktorius/float/releases/download/v1.2.1/float-mux-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = d0de8dae8a3d590b44e53dcdcd77c51e221e576d6c67cb3ea737f18afae504c2
+
+pkgname = float-mux-bin

@@ -1,0 +1,5 @@
+[float-mux-bin]
+source = "github"
+github = "Henktorius/float"
+use_latest_release = true
+prefix = "v"
