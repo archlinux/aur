@@ -3,34 +3,34 @@
 # Contributor: fdiblen <fdiblen at gmail dot com>
 
 pkgname=casacore
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="Suite of C++ libraries for radio astronomy data processing"
 arch=(x86_64)
-url="https://github.com/${pkgname}/${pkgname}"
-license=('GPL-2.0-or-later')
-depends=(boost-libs fftw gsl cfitsio wcslib python-numpy)
+url="https://github.com/casacore/casacore"
+license=(GPL-2.0-or-later)
+depends=(boost-libs fftw gsl cfitsio wcslib python-numpy libdeflate)
 makedepends=(cmake gcc-fortran gsl boost)
-optdepends=('sofa: only for testing casacore measures'
-  'hdf5: for the HDF5 C++ bindings')
+optdepends=('sofa: testing casacore measures'
+            'hdf5: HDF5 C++ bindings')
 provides=(
-  'libcasa_casa.so=6-64'
-  'libcasa_coordinates.so=6-64'
-  'libcasa_derivedmscal.so=6-64'
-  'libcasa_fits.so=6-64'
-  'libcasa_images.so=6-64'
-  'libcasa_lattices.so=6-64'
-  'libcasa_meas.so=6-64'
-  'libcasa_measures.so=6-64'
-  'libcasa_mirlib.so=6-64'
-  'libcasa_msfits.so=6-64'
-  'libcasa_ms.so=6-64'
-  'libcasa_python3.so=6-64'
-  'libcasa_scimath_f.so=6-64'
-  'libcasa_scimath.so=6-64'
-  'libcasa_tables.so=6-64')
-source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('4831cfde5bc792b9b010c0071b403b507ecb00a43ecb2bda6a6f74f2013d0f311dc11cd567d8d409f2731c68ec4e4e5ab364f5088632b960618f3d776842cd7d')
+  libcasa_casa.so=6-64
+  libcasa_coordinates.so=6-64
+  libcasa_derivedmscal.so=6-64
+  libcasa_fits.so=6-64
+  libcasa_images.so=6-64
+  libcasa_lattices.so=6-64
+  libcasa_meas.so=6-64
+  libcasa_measures.so=6-64
+  libcasa_mirlib.so=6-64
+  libcasa_msfits.so=6-64
+  libcasa_ms.so=6-64
+  libcasa_python3.so=6-64
+  libcasa_scimath_f.so=6-64
+  libcasa_scimath.so=6-64
+  libcasa_tables.so=6-64)
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('41d4463432033995d0e85632faa07c2fedc820a810f593d2aad5144706a41482296200730fc0b99d5ad962b7ffbfb55c0b67a123d0f49f0e8f774cfbd8d9c9f4')
 
 build() {
   export CXXFLAGS="${CFLAGS}"
@@ -48,5 +48,5 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --build build --target install
-  install -Dm 644 ${pkgname}-${pkgver}/COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 "${pkgname}-${pkgver}/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

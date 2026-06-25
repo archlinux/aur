@@ -1,0 +1,4 @@
+[casacore]
+source = "git"
+git = "https://github.com/casacore/casacore.git"
+prefix = "v"
