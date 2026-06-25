@@ -2,7 +2,7 @@
 
 pkgname=wolfssl-all
 _pkgname=${pkgname%-all}
-pkgver=5.9.1
+pkgver=5.9.2
 pkgrel=1
 pkgdesc="Lightweight, portable, C-language-based SSL/TLS library (built with --enable-all)"
 arch=(x86_64)
@@ -13,9 +13,9 @@ provides=(wolfssl libwolfssl.so)
 conflicts=(wolfssl)
 source=("$_pkgname-$pkgver-stable.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/refs/tags/v$pkgver-stable.tar.gz"
         "https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver-stable/$_pkgname-$pkgver-stable.tar.gz.asc")
-sha512sums=('84adcc41fc07dc89467b7f1bda32ab49f61cb15bb7b5ce3f3b5263346534a3af179bcb402c348a438a4de91a2b76b269db26110ad5c3f0e1bd5b8d234dfaf516'
+sha512sums=('ed0f6bff353b1a835e1f1c15e1863eda9e04030962211be64d7c764f8373b016778e04ea9538ca6cf2f58d55d0f855c2af1739d776f9697b2f4a13a5e489d85f'
             'SKIP')
-b2sums=('ab26467ab745d542ff27f2ac20dc9c667d988a160fe4e775f0583ab70b3c59563a17fd7fef7b83350732bafdefca6ea342dea3c9a67190c1c1cf4cc90cbae835'
+b2sums=('4e47fb590a0420231e4219ace3095ba2e0f8d188da19ae6e984eb80825bcc90211bed56e931920dbad5cf797655aeb63c7b3cda0924569a41096e590f60be1d9'
         'SKIP')
 validpgpkeys=(
     A2A48E7BCB96C5BECB987314EBC80E415CA29677 # wolfSSL <secure@wolfssl.com>
