@@ -1,0 +1,21 @@
+pkgbase = alavai
+	pkgdesc = Lightweight Tailscale client for Linux with one-click tailnet switching
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/alex-poor/alavai
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = tailscale
+	depends = xdg-utils
+	depends = wayland
+	depends = libxkbcommon
+	depends = libx11
+	depends = gcc-libs
+	depends = glibc
+	optdepends = ttf-dejavu: a sans + monospace font for the UI
+	source = alavai-0.2.4.tar.gz::https://github.com/alex-poor/alavai/archive/refs/tags/v0.2.4.tar.gz
+	sha256sums = 6641978cff9bf0b2d42cbdc6c68744e222326b17c3b3cec65665dea81571d2f6
+
+pkgname = alavai
