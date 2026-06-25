@@ -1,7 +1,7 @@
 # Maintainer: Michael Placzek <mplaczek99@users.noreply.github.com>
 
 pkgname=hstui
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Terminal user interface for managing hyprsunset on Hyprland'
 arch=('x86_64')
@@ -25,7 +25,7 @@ build() {
     -trimpath \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode=external -extldflags \"${LDFLAGS}\"" \
+    -ldflags "-linkmode=external -extldflags \"${LDFLAGS}\" -s -w" \
     -o "${pkgname}" .
 }
 

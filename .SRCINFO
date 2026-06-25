@@ -1,6 +1,6 @@
 pkgbase = hstui
 	pkgdesc = Terminal user interface for managing hyprsunset on Hyprland
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/mplaczek99/hstui
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = hstui
 	depends = libnotify
 	depends = uwsm
 	options = !debug
-	source = git+https://github.com/mplaczek99/hstui.git#tag=v1.0.0
+	source = git+https://github.com/mplaczek99/hstui.git#tag=v1.1.0
 	sha256sums = SKIP
 
 pkgname = hstui
