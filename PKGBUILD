@@ -2,7 +2,7 @@
 # Maintainer: Emmanuel Gautier <emmanuel@cerberauth.com>
 
 pkgname='stubidp-bin'
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='A mock OpenID Connect server for developers. Zero config, instant OIDC.'
 url='https://www.cerberauth.com/docs/stubidp/'
@@ -12,10 +12,10 @@ provides=('stubidp')
 conflicts=('stubidp')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/cerberauth/stubidp/releases/download/v${pkgver}/stubidp_Linux_arm64.tar.gz")
-sha256sums_aarch64=('22e93e1392993a6afb21fa667045047a68013f6bb8cd6a8352ea5df97e926c6b')
+sha256sums_aarch64=('c5e5e28f7cbe02c69cee3734de8133cf5ba30a07f1979caa2c033998d31add01')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cerberauth/stubidp/releases/download/v${pkgver}/stubidp_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('feaece0d08708f9fe3a12ddb8328a7dff189782fbfc522e34e5e199dec5d2d0c')
+sha256sums_x86_64=('fdfe97391fd2a37f9eabb289c095fef464d4fb651acba10dc076852b151c04b9')
 
 package() {
   install -Dm755 "./stubidp" "${pkgdir}/usr/bin/stubidp"
