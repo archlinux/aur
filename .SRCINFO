@@ -1,6 +1,6 @@
 pkgbase = bawn
 	pkgdesc = Bawn is a transient Portable sandbox generator
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/Kimiblock/bawn
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = bawn
 	makedepends = git
 	depends = glibc
 	depends = libgcc
-	source = git+https://github.com/Kimiblock/bawn.git#tag=0.0.1
-	sha256sums = 9c2a6acba8552d95d9571953e6af1c1d9cbdb5040503beaefedf60d8906f819f
+	source = git+https://github.com/Kimiblock/bawn.git#tag=0.0.2
+	sha256sums = c1498fcbec4c0f227466f4434b768e78d43860a75e7b57a69991b4870eab60e1
 
 pkgname = bawn
