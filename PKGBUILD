@@ -2,8 +2,8 @@
 
 pkgname=asteria
 _pkgname=Asteria
-pkgver=2.4.6
-pkgrel=3
+pkgver=2.4.7
+pkgrel=1
 pkgdesc='Astrological chart calculator and analyzer with AI interpretations'
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/alamahant/${_pkgname}"
@@ -13,17 +13,17 @@ makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "swisseph-2.10.3final.tar.gz::https://github.com/aloistr/swisseph/archive/refs/tags/v2.10.3final.tar.gz"
         "asteria.install")
-sha256sums=('b7e9a0035b308a9da4c14ee65cf47e4828b6b3d1a4e4a0245a774c4698c0451f'
+sha256sums=('df1fb07ffa8a5a00ca0eda1c5c9d7ed3b6486237d98381801a17b78acd7dcab2'
             '032a71d18cff92c9bf960020abda28d44c8f0c678072dcbab561e9aeb0399fbc'
-	    'bec2b835191bd5a8c4ea7e11e495ccf8e30c225076d94629d17acf7fca80d97e')
+	    '89e47c8772b86d78ec898a9759e2d1a4ea149e82f6013f41af493dac3f83af32')
 install="asteria.install"
 
 prepare(){
-  #first copy the Swiss Ephemeris into the Asteria build directory (it needs to be compiled statically with Asteria) as 'swisseph':
+  # first copy the Swiss Ephemeris into the Asteria's build directory (it needs to be compiled statically with Asteria) as 'swisseph':
   mv "$srcdir/swisseph-2.10.3final" "$srcdir/swisseph"
   cp -r "$srcdir/swisseph" "$srcdir/${_pkgname}-${pkgver}"
   
-  #now, change the value of the local SWISSEPH_DIR in file CMakeLists.txt - line 55:
+  # now, change the value of the local SWISSEPH_DIR in file CMakeLists.txt - line 55:
   sed -i '55 s/\/home\/dharma\/ssd\/cpp/\./' "$srcdir/${_pkgname}-${pkgver}/CMakeLists.txt"
 }
 
