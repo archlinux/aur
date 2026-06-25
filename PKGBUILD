@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=r-rig
-pkgver=0.8.0
+pkgver=0.8.1 # renovate: datasource=github-tags depName=r-lib/rig
 pkgrel=1
 pkgdesc="The R Installation Manager"
 url="https://github.com/r-lib/rig"
@@ -33,4 +33,4 @@ package() {
   install -Dm644 "${srcdir}/rig-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('044cdaa77ab7f50bb336737a983c57ff4c048a3b1649ef35cd664169ba9ee61629c3710bd77e6834d30956041980458a59eb97f0582d661d59783254e60c981c')
+sha512sums=('dd72a26854e26d370b64c366832de5e9e4d82404962def8e0615e5137a0debb7075e2a2b2ee68b463b16fd9e65984bf368dbc1cb33e5cd43c0581824ee9a22bb')

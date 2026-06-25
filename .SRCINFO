@@ -1,6 +1,6 @@
 pkgbase = r-rig
 	pkgdesc = The R Installation Manager
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/r-lib/rig
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = r-rig
 	conflicts = r-rig-bin
 	options = !lto
 	options = !debug
-	source = rig-0.8.0.tar.gz::https://github.com/r-lib/rig/archive/v0.8.0.tar.gz
-	sha512sums = 044cdaa77ab7f50bb336737a983c57ff4c048a3b1649ef35cd664169ba9ee61629c3710bd77e6834d30956041980458a59eb97f0582d661d59783254e60c981c
+	source = rig-0.8.1.tar.gz::https://github.com/r-lib/rig/archive/v0.8.1.tar.gz
+	sha512sums = dd72a26854e26d370b64c366832de5e9e4d82404962def8e0615e5137a0debb7075e2a2b2ee68b463b16fd9e65984bf368dbc1cb33e5cd43c0581824ee9a22bb
 
 pkgname = r-rig
