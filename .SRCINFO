@@ -1,0 +1,27 @@
+pkgbase = cpclip-bin
+	pkgdesc = CLI clipboard tool for X11 and Wayland (copy, paste, add, clear)
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/jvidal86/cpclip
+	arch = x86_64
+	license = GPL-2.0
+	depends = glibc
+	depends = libxfixes
+	depends = libx11
+	depends = wayland
+	provides = cppaste
+	provides = cpadd
+	provides = cpclip
+	provides = cuclip
+	provides = cuadd
+	provides = cpclear
+	conflicts = cpclip
+	options = !strip
+	source = README-0.2.2.md::https://raw.githubusercontent.com/jvidal86/cpclip/v0.2.2/README.md
+	source = LICENSE-0.2.2::https://raw.githubusercontent.com/jvidal86/cpclip/v0.2.2/LICENSE
+	sha256sums = f7fe3ad80e3695a817cbd8259a037700329df6cf20119c923f52bb0a026040d9
+	sha256sums = 8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643
+	source_x86_64 = cpclip-x86_64-0.2.2.tgz::https://github.com/jvidal86/cpclip/releases/download/v0.2.2/cpclip-0.2.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = 7f310aaa059071e13f6b2e253ffacbe8418b1b08181ec29f7e4941d267820ca1
+
+pkgname = cpclip-bin

@@ -1,0 +1,5 @@
+[cpclip-bin]
+source = "github"
+github = "jvidal86/cpclip"
+use_latest_release = true
+prefix = "v"
