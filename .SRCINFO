@@ -9,7 +9,7 @@ pkgbase = lib-lazybios
 	license = MIT
 	makedepends = cmake
 	depends = glibc
-	source = https://github.com/LazySeldi/lazybios/releases/download/v0.1.0/lazybios-0.1.0.tar.gz
+	source = https://github.com/LazySeldi/lazybios/releases/download/0.1.0/lazybios-0.1.0.tar.gz
 	sha256sums = 1441aeb98dbb1c0e18335b01bf1ac75830a77be2302e6a88e396a750aba56314
 
 pkgname = lib-lazybios
