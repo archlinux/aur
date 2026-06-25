@@ -1,6 +1,6 @@
 pkgbase = libthemis
 	pkgdesc = Open-source high-level cryptographic services library.
-	pkgver = 0.15.6
+	pkgver = 0.15.7
 	pkgrel = 1
 	url = https://github.com/cossacklabs/themis
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = libthemis
 	depends = openssl
 	provides = libthemis.so
 	provides = libsoter.so
-	source = libthemis-0.15.6.tar.gz::https://github.com/cossacklabs/themis/archive/0.15.6.tar.gz
+	source = libthemis-0.15.7.tar.gz::https://github.com/cossacklabs/themis/archive/0.15.7.tar.gz
 	source = makefile-ldconfig.patch
-	sha256sums = 67c48ca11b189d91f22e5150c6ffecb245c05afe1256a2c991fbe7c6e3ac73b7
+	sha256sums = f71121a7aa9b5c3dc30c5cae59ec1da684fa35c028be214ab0578c93e499fe09
 	sha256sums = 5378f6535e5c2bd44d72d0f7b461307135578a656dd8f64c54367bc0a1e12a1f
 
 pkgname = libthemis

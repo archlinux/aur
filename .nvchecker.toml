@@ -1,0 +1,3 @@
+[libthemis]
+source = "git"
+git = "https://github.com/cossacklabs/themis.git"
