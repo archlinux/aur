@@ -1,6 +1,6 @@
 pkgbase = gdscript-formatter-bin
 	pkgdesc = A fast code formatter for GDScript and Godot 4, written in Rust
-	pkgver = 0.19.0
+	pkgver = 0.20.1
 	pkgrel = 1
 	url = https://github.com/GDQuest/GDScript-formatter
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = gdscript-formatter-bin
 	provides = gdscript-formatter
 	conflicts = gdscript-formatter
 	options = !strip
-	source = https://github.com/GDQuest/GDScript-formatter/releases/download/0.19.0/gdscript-formatter-0.19.0-linux-x86_64.zip
-	source = https://raw.githubusercontent.com/GDQuest/GDScript-formatter/refs/tags/0.19.0/LICENSE
-	sha256sums = e78b91fe624043f20063780d4beed8df7fc410caf47e3e7cd412203773517052
+	source = https://github.com/GDQuest/GDScript-formatter/releases/download/0.20.1/gdscript-formatter-0.20.1-linux-x86_64.zip
+	source = https://raw.githubusercontent.com/GDQuest/GDScript-formatter/refs/tags/0.20.1/LICENSE
+	sha256sums = 8cd2a9e8520bc4d0f80a51bca8b3cb4295f9f4f21f7b09aec95a058271729077
 	sha256sums = dfbd41d6f39efbc96ca870f74f341f10ad44c1d66feca2049629917d19c2251c
 
 pkgname = gdscript-formatter-bin
