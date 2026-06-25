@@ -1,21 +1,22 @@
 pkgbase = python-py-build-cmake
-	pkgdesc = Modern, PEP 517 compliant build backend for creating Python packages with extensions built using CMake.
-	pkgver = 0.1.8
-	pkgrel = 2
+	pkgdesc = PEP 517 compliant build backend for creating Python packages with extensions built using CMake
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/tttapa/py-build-cmake
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-build
-	makedepends = python-flit-core
 	makedepends = python-installer
-	depends = python-distlib
-	depends = python-flit-core
-	depends = python-tomli
+	depends = python
 	depends = python-click
-	optdepends = python-virtualenv: Use virtualenv for build isolation
-	source = git+https://github.com/tttapa/py-build-cmake#tag=0.1.8
-	sha512sums = SKIP
+	depends = python-distlib
+	depends = python-lark-parser
+	depends = python-packaging
+	depends = python-pyproject-metadata
+	depends = python-tomli
+	source = git+https://github.com/tttapa/py-build-cmake#tag=0.5.0
+	sha512sums = f7a4bdd7e17194ac7ebb0a31ed664da7324d72d0a90f1bef6ca4bd675237d3a4a5b507a71c7da44252b34ff8abd7ff61b9440fbe7f35790f98b074344f1f1287
 
 pkgname = python-py-build-cmake
