@@ -1,0 +1,3 @@
+[perl-config-any]
+source = "cpan"
+cpan = "Config-Any"
