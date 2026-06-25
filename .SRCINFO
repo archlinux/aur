@@ -1,5 +1,5 @@
 pkgbase = audium
-	pkgdesc = A keyboard-driven music app for people who live in the terminal.
+	pkgdesc = A terminal music app: keyboard-driven, for people who live in the command line.
 	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/takashialpha/audium
