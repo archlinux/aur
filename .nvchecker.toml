@@ -1,0 +1,3 @@
+[perl-sql-abstract-classic]
+source = "cpan"
+cpan = "SQL-Abstract-Classic"
