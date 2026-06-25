@@ -1,7 +1,7 @@
 # Maintainer: Bernardo Pinto Gomes <bernardopgomes@hotmail.com>
 # shellcheck disable=all
 pkgname=full-upgrade
-pkgver=3.16.1
+pkgver=3.17.0
 pkgrel=1
 pkgdesc="Orquestrador Bash modular para atualizar, manter e auditar máquinas Arch Linux"
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
 )
 makedepends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('876c480dff1ddaa8ac93625a6d7051964ce92968ffd9487b60a0a1cb14051ec3')
+sha256sums=('e479e04d4f9f15ea454af156bc6dd3f37a981472a1e8f9fc3c6f5c6991ba4710')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
