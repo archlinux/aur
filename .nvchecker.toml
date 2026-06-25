@@ -1,0 +1,3 @@
+[perl-class-accessor-grouped]
+source = "cpan"
+cpan = "Class-Accessor-Grouped"
