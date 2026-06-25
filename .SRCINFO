@@ -1,6 +1,6 @@
 pkgbase = keyd-viz
 	pkgdesc = The visual face of keyd: a native GUI of your keyboard layout with live layers and keypress glow
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/coffeeowl-labs/keyd-viz
 	install = keyd-viz.install
@@ -14,9 +14,10 @@ pkgbase = keyd-viz
 	depends = libxcb
 	depends = libglvnd
 	depends = wayland
+	depends = polkit
 	options = !lto
 	options = !debug
-	source = keyd-viz-1.2.0.tar.gz::https://github.com/coffeeowl-labs/keyd-viz/archive/refs/tags/v1.2.0.tar.gz
-	sha256sums = 72f1442a62cce4dc35f3c919f1db512ce361cb0c6895d85e44198528db04a59f
+	source = keyd-viz-1.3.0.tar.gz::https://github.com/coffeeowl-labs/keyd-viz/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = 489bb6a34b1fbbea31cb7b2783ec6921f84de8bf99d6d78a76de70ba5a9a4853
 
 pkgname = keyd-viz
