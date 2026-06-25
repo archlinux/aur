@@ -1,7 +1,7 @@
 # Maintainer: tygrdev <hi@tygr.dev>
 # Contributor: wackery, nord-studio
 pkgname=pulsar-music
-pkgver=0.0.0.r116
+pkgver=0.0.0
 pkgrel=1
 pkgdesc="A local-first, cross-platform music player."
 arch=('x86_64')
