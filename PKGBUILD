@@ -4,9 +4,9 @@
 # Contributor: Jun Bo Bi <jambonmcyeah@gmail.com>
 
 pkgname=netcoredbg
-_pkgver=3.1.3-1062
+_pkgver=3.2.0-1092
 pkgver="${_pkgver//-/_}"
-pkgrel=2
+pkgrel=1
 pkgdesc='Debugger for .NET Core runtime'
 url='https://github.com/Samsung/netcoredbg'
 license=('MIT')
@@ -15,21 +15,12 @@ depends=('dotnet-runtime-10.0' 'glibc' 'gcc-libs')
 makedepends=('cmake' 'clang' 'dotnet-sdk-10.0')
 # keep synced with extra/dotnet-core
 # see src/source-manifest.json of dotnet/dotnet
-_runtime_tag=0ada13fb1c2aefeef56450edb3e6ff4bc1e889bf
+_runtime_tag=5eaa18a9f3398d54ba9b8c0974d88171663be892
 source=("$pkgname-$_pkgver.tar.gz::https://github.com/Samsung/netcoredbg/archive/refs/tags/$_pkgver.tar.gz"
-        "dotnet_runtime_${_runtime_tag:0:7}.tar.gz::https://github.com/dotnet/runtime/archive/$_runtime_tag.tar.gz"
-        "broken-assert.patch")
+        "dotnet_runtime_${_runtime_tag:0:7}.tar.gz::https://github.com/dotnet/runtime/archive/$_runtime_tag.tar.gz")
 
-sha256sums=('4138f6f99432822b7f56053b91abb550607e1015d91275b82c3cddeaa02d903e'
-            '44818b3e6c42afe303c5277bc3fc0383dc8ffdb8c59a3a3ee8310c213f6027dd'
-            '3f468b84a0b018aec679339e7516ce8f365cb65dc77c97d891e8283756ced8ca')
-
-prepare() {
-  cd "$pkgname-$_pkgver"
-
-  # TODO: fix the root problem upstream
-  patch --strip=1 --input=../broken-assert.patch
-}
+sha256sums=('18fe4e77e436d9cf98bcf58a949546da1b5278b57c7704a87473509b87585609'
+            'e1859b52d33d095b2a4cfb805851af52d7986f4bb316d0bfcc72f3329d79008e')
 
 build() {
   cmake -B build -S "$pkgname-$_pkgver" \
