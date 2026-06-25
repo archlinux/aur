@@ -1,0 +1,13 @@
+pkgbase = verso-reader
+	pkgdesc = Minimal, text-first EPUB reader for the terminal (Bubble Tea)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/atiladefreitas/verso
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	conflicts = verso
+	source = verso-reader-0.1.0.tar.gz::https://github.com/atiladefreitas/verso/archive/v0.1.0.tar.gz
+	sha256sums = c200071aa60361999d1b2221f135d6579887fef156e3828fe3a0a6565ae90f25
+
+pkgname = verso-reader
