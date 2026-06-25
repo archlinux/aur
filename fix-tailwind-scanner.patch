@@ -1,0 +1,12 @@
+--- /dev/null
++++ b/tools/ui/src/.gitignore
+@@ -0,0 +1 @@
++!*
+--- a/tools/ui/sources.cmake
++++ b/tools/ui/sources.cmake
+@@ -12,4 +12,5 @@ set(UI_SOURCE_FILES
+     svelte.config.js
+     tsconfig.json
+     scripts/vite-plugin-llama-cpp-build.ts
++    src/.gitignore
+ )

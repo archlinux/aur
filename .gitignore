@@ -4,3 +4,4 @@
 !.gitignore
 !llama.cpp.conf
 !llama.cpp.service
+!fix-tailwind-scanner.patch

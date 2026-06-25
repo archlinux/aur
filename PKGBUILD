@@ -2,7 +2,7 @@
 : ${aur_llamacpp_build_universal:=false}
 pkgname=llama.cpp-cuda-git
 _pkgname="${pkgname%-cuda-git}"
-pkgver=b9305.r2.549b9d8433
+pkgver=b9788.r5.f728adab68
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)"
 arch=(x86_64 aarch64)
@@ -52,17 +52,27 @@ source=(
 "git+https://github.com/ggml-org/llama.cpp.git"
 llama.cpp.conf
 llama.cpp.service
+fix-tailwind-scanner.patch
 )
 sha256sums=('SKIP'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
-            '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
+            '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
+            'SKIP')
 b2sums=('SKIP'
         '088e6b702e42bf1af019f69c8a85b0cd1196599e12f196e086ea1271e1800540947d1b51e3500821ec4556386f8e3c8217c0ad03570b764b85016827648939e7'
-        '56e8e6e99c37f9baa1db5e3f8956f48a59bdbdc48797ae9b41292f0d1cdc3e41e5174bd7d721f3db84587ca271b11b480525e8c32cdb0f17f689b5537623c0a7')
+        '56e8e6e99c37f9baa1db5e3f8956f48a59bdbdc48797ae9b41292f0d1cdc3e41e5174bd7d721f3db84587ca271b11b480525e8c32cdb0f17f689b5537623c0a7'
+        'SKIP')
 
 pkgver() {
   cd "${_pkgname}" || exit
   printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+  cd "${_pkgname}" || exit
+  # Reset any prior in-tree modifications so repeated builds apply cleanly
+  git checkout -- . 2>/dev/null || true
+  patch -Np1 -i "${srcdir}/fix-tailwind-scanner.patch"
 }
 
 build() {
