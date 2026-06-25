@@ -15,7 +15,7 @@ conflicts=("${_pkgname}")
 depends=('libx11' 'libxrandr' 'glibc' 'gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('135260c052c0c008bc733e8cc97304061c4d152cb79f94539e82b12c08fdc4f7')
+sha256sums=('af2f003f04e596c3ed3cc260c6fb2661d117476f9071376a0671c7bab8deb204')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
