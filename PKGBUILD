@@ -4,8 +4,8 @@
 pkgname=manora-bin
 _pkgname="${pkgname%-bin}"
 pkgver=2.2.0
-pkgrel=1
-pkgdesc="A simple CLI / TUI tool to display, download and save man pages as PDF files (bin version)"
+pkgrel=2
+pkgdesc="A simple CLI & TUI tool to display, download and save man pages as PDF files (bin version)"
 url="https://github.com/Antiz96/manora"
 _raw_url="https://raw.githubusercontent.com/Antiz96/manora"
 arch=('x86_64')
