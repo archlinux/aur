@@ -4,7 +4,7 @@
 
 pkgname=aic8800d80-pcie-dkms
 pkgver=6.4.3.0
-pkgrel=3
+pkgrel=4
 
 pkgdesc="DKMS modules for AIC8800D80 PCIe Wi-Fi and companion USB Bluetooth adapters (Ugreen CM958 and similar)"
 arch=('x86_64')
@@ -22,6 +22,7 @@ source=(
   "0002-export-pci-modalias.patch"
   "0003-normalize-driver-logging.patch"
   "0004-aic-btusb-bluez.patch"
+  "0005-linux-7.1-compat.patch"
   "aic8800d80-sleep-hook"
   "aic8800d80-btusb.conf"
   "dkms.conf"
@@ -33,6 +34,7 @@ sha256sums=(
   '98699379ab9b302c0e5059d6a16e1598ad3ace7cfb15570c988c994c12a0333f'
   '60744f321ef8f069e10efeb579a20a6114aeefa5796c0da2d9e0e0c91965ff8e'
   'cf5532c0254f9f0f6ce80b6f0eda15f3103cebfdb6af500c9d38cd04cda0295b'
+  'b78fb00a2afab38213fd705d6500c3a9dd6456fd394c548829d831f28392f88f'
   '1d34e929c3570cfae9aea2b79d3e143ca89c41ad165457e10c143c2bb74489da'
   '17abd63c992a6929015475561fb183e955ad1402d25c64cfd1e63a40290fa21b'
   '88d8e7274bc799eada757fabc87ec90dade6f3e6757075f4ba5fc7537f2acee8'
@@ -48,6 +50,7 @@ prepare() {
 	patch -d "$srcdir/aic8800_linux_drvier" -p1 -i "$srcdir/0002-export-pci-modalias.patch"
 	patch -d "$srcdir/aic8800_linux_drvier" -p1 -i "$srcdir/0003-normalize-driver-logging.patch"
 	patch -d "$srcdir/aic8800_linux_drvier" -p1 -i "$srcdir/0004-aic-btusb-bluez.patch"
+	patch -d "$srcdir/aic8800_linux_drvier" -p1 -i "$srcdir/0005-linux-7.1-compat.patch"
 }
 
 package() {
