@@ -1,12 +1,12 @@
 [Desktop Entry]
-Name=GitHub Desktop Plus
-Comment=GitHub Desktop fork with advanced functionality and Bitbucket integration.
+Name=Desktop Plus
+Comment=GitHub Desktop fork with advanced functionality and improvements.
 Comment[es]=Trabaja con GitHub desde tu escritorio.
 Comment[eu]=GitHub-ekin lan egin zure ordenagailutik.
-Exec=/usr/bin/github-desktop-plus %U
+Exec=/usr/bin/desktop-plus %U
 Terminal=false
 Type=Application
-Icon=github-desktop-plus
+Icon=desktop-plus
 Categories=Development;
 MimeType=x-scheme-handler/x-github-client;x-scheme-handler/x-github-desktop-auth;x-scheme-handler/x-github-desktop-dev-auth;
 Keywords=git;github;gitlab;bitbucket;

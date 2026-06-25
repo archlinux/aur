@@ -5,8 +5,8 @@
 # Contributor: Igor Petrov
 # Contributor: Jiawen Geng
 
-_pkgname='github-desktop-plus'
-pkgname="${_pkgname}-git"
+_pkgname='desktop-plus'
+pkgname="github-desktop-plus-git"
 pkgver=0
 pkgrel=1
 pkgdesc="Fork of GitHub Desktop with extra features and improvements (git version)."
