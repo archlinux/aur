@@ -1,0 +1,20 @@
+pkgbase = autokuma-cli-git
+	pkgdesc = kuma-cli tool from the AutoKuma project
+	pkgver = v2.1.0.rc.2.r0.g1cba1f0
+	pkgrel = 1
+	url = https://github.com/BigBoot/AutoKuma
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = openssl
+	depends = libgcc
+	depends = libstdc++
+	provides = autokuma-cli
+	conflicts = autokuma-cli
+	options = !lto
+	source = autokuma-cli-git::git+https://github.com/BigBoot/AutoKuma.git#branch=master
+	sha256sums = SKIP
+
+pkgname = autokuma-cli-git
