@@ -1,6 +1,6 @@
 pkgbase = databend
 	pkgdesc = Opensource alternative to Snowflake
-	pkgver = 1.2.905
+	pkgver = 1.2.922
 	pkgrel = 1
 	url = https://github.com/databendlabs/databend/releases
 	install = databend.install
@@ -11,9 +11,9 @@ pkgbase = databend
 	backup = etc/databend/databend-query.toml
 	source = databend.install
 	sha256sums = b6516eed6b0b3ffc35d914581f2e7bb1ccf1effe92d63df59d48984ebf918332
-	source_aarch64 = https://github.com/databendlabs/databend/releases/download/v1.2.905-nightly/databend-v1.2.905-nightly-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = a3c6abb5a693943e6cd9ebe5956ae8e8fe0a560e29ec1b8c3da3513400eec4f4
-	source_x86_64 = https://github.com/databendlabs/databend/releases/download/v1.2.905-nightly/databend-v1.2.905-nightly-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 8f07defe80e88fcd46f1e00e7a0162d2a86df7516aa4f03e513e35b33cd666c0
+	source_aarch64 = https://github.com/databendlabs/databend/releases/download/v1.2.922-nightly/databend-v1.2.922-nightly-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = d7285028c8dcaece45d2c4b29deb87b8ef94fe854cc45ff677ca1df73a7b6ede
+	source_x86_64 = https://github.com/databendlabs/databend/releases/download/v1.2.922-nightly/databend-v1.2.922-nightly-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d9912a1bbb643da2da93ba53d3192e2406b7ca2a1c851b47e291c71f473fabee
 
 pkgname = databend
