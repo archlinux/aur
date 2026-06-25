@@ -4,10 +4,10 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=zip
-_pkgver=2.3.3
+_pkgver=3.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-Platform 'zip' Compression"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -15,41 +15,38 @@ license=('MIT')
 depends=(
   r
 )
+makedepends=(
+  r-cli
+)
 checkdepends=(
+  7zip
+  r-curl
   r-testthat
+  r-webfakes
 )
 optdepends=(
-  r-covr
+  r-callr
+  r-cli
+  r-curl
+  r-pillar
   r-processx
   r-r6
   r-testthat
+  r-webfakes
   r-withr
-  r-pillar
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
-        "libr-zip.patch")
-md5sums=('81352ca51860d1dbd0ce801d0d697bb0'
-         '54567d238fb1409ea2a6fcd82034b15b')
-b2sums=('69ba4e57c21e6bff29b2b33f46af3cc31fc7f9aecec4f985c3b9feca0853e976dcd03deafb3a4eddf220bbfb51f5aa002b4dd1a42308d340b0d49ee81f1ef2b6'
-        '9f00d0cae1521ffc8831e0c2261e8a88f9a255d01fedb5d0f0f2f6e82c6c30834d0c21130e51d131c9414c058f35d640ac50affdb312a7c3255e40c85b85b181')
-
-prepare() {
-  # fix LDFLAGS, put common functionality into libr-zip.so
-  patch -Np1 -i libr-zip.patch
-  # rename miniz symbols with r_ prefix, see https://github.com/r-lib/zip/issues/98
-  cd "$_pkgname/src"
-  sed -i 's/mz_/r_mz_/g' *.c *.h
-}
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('8a975bcb98d7efc62f6d5b5510873d18')
+b2sums=('094b746dcba04d73493888d3771ed5f30a2aeedd63dd7b35e9f0a7fc146d4218d687d18a25ecd0e9963bce1e9305850aeed37fb921dd88a1260ed3980e478657')
 
 build() {
-  mkdir build
-  # set LD_LIBRARY_PATH for libr-zip.so
-  LD_LIBRARY_PATH="$srcdir/$_pkgname/src" R CMD INSTALL -l build "$_pkgname"
+  mkdir -p build
+  R CMD INSTALL -l build "$_pkgname"
 }
 
 check() {
   cd "$_pkgname/tests"
-  LD_LIBRARY_PATH="$srcdir/$_pkgname/src" R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
@@ -58,7 +55,4 @@ package() {
 
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
-
-  # move libr-zip.so to /usr/lib
-  mv "$pkgdir/usr/lib/R/library/$_pkgname/libs/libr-zip.so" "$pkgdir/usr/lib"
 }
