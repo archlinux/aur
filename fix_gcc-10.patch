@@ -1,0 +1,44 @@
+From: Georges Khaznadar <georgesk@debian.org>
+Date: Wed, 10 Dec 2025 16:56:22 +0100
+Subject: Fix ftbfs with GCC-10
+
+Author: Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+Bug-Debian: https://bugs.debian.org/957183
+Forwarded: no
+---
+ src/common/quadrilateral.c | 4 ++--
+ src/common/triangle.c      | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/common/quadrilateral.c b/src/common/quadrilateral.c
+index 050c163..650c137 100644
+--- a/src/common/quadrilateral.c
++++ b/src/common/quadrilateral.c
+@@ -26,9 +26,9 @@
+ 
+ #define STO(addr) (POP(_symbol))->content->value.point = (addr)
+ 
+-double l, m, x, y, u, v;
++static double l, m, x, y, u, v;
+ 
+-_point *A, *B, *C, *D;
++static _point *A, *B, *C, *D;
+ 
+ void assign(int p, int s)
+ {
+diff --git a/src/common/triangle.c b/src/common/triangle.c
+index 83e2bda..5e23b62 100644
+--- a/src/common/triangle.c
++++ b/src/common/triangle.c
+@@ -26,9 +26,9 @@
+ 
+ #define STO(addr) (POP(_symbol))->content->value.point = (addr)
+ 
+-_point *A, *B, *C;
++static _point *A, *B, *C;
+ 
+-double a, x, y;
++static double a, x, y;
+ 
+ void assign_A_B(int p)
+ {

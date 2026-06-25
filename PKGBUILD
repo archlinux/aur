@@ -1,37 +1,58 @@
 # Maintainer: Henrik Holst <hholst80@gmail.com>
-# Patch from here:
-# https://bz-attachments.freebsd.org/attachment.cgi?id=155711&action=diff&format=raw&headers=1
 pkgname=eukleides
 pkgver=1.5.4
-pkgrel=2
-epoch=
-pkgdesc="Eukleides is a computer language devoted to elementary plane geometry."
+pkgrel=3
+pkgdesc="Euclidean geometry drawing language"
 arch=(x86_64)
-url="http://eukleides.org/"
-license=('GPL')
-groups=()
-depends=()
-makedepends=(gcc make flex bison texinfo texlive-core)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("http://eukleides.org/files/$pkgname-$pkgver.tar.bz2" "$pkgname-$pkgver.patch")
-noextract=()
-md5sums=(2c88fc857008c2ce23c7848c60621548 bbc5626dcdeb15aaf31ecb9050f28982)
-validpgpkeys=()
+url="https://web.archive.org/web/20110716232813/http://www.eukleides.org/"
+license=(GPL-3.0-or-later)
+depends=(bash readline)
+makedepends=(flex bison texinfo)
+optdepends=(
+	"pstoedit: convert EPS output to other vector formats"
+	"texlive-bin: LaTeX and dvips support for helper scripts"
+	"texlive-fontutils: epstopdf support for euktopdf"
+	"texlive-latex: LaTeX base files for helper scripts"
+	"texlive-pstricks: PSTricks support for helper scripts"
+)
+source=(
+	"https://web.archive.org/web/20110716232813id_/http://www.eukleides.org/files/$pkgname-$pkgver.tar.bz2"
+	"old-patches.diff"
+	"spelling-mistakes.diff"
+	"ld-as-needed.diff"
+	"fix_gcc-10.patch"
+	"cross.patch"
+	"utf-8.patch"
+	"fixes-for-gcc15.patch"
+)
+sha256sums=(
+	"18c489460cb2cb98f4ea9c0187519ef77b4422117fd43bcd4e4836580ef40c69"
+	"996986e1b1e45ea50d1607c77f6a5e61da3c9ef7c33d4e790aaa919daba796cc"
+	"c7d572ff4cefd9a8d055b19c5b5fd38e969adc790d041b60b9c75c80b7279f53"
+	"a22305a6f3b550a19ed4a075c911dbe396e7c9155ad640b107c90401908be1d3"
+	"1874968edcc5541f7ea45da2e0c4924632b3219ad61158ad00028caef3578dd2"
+	"3fcd8fe273228394b7dd3ea3088845e01c8b402aca3acf4d72a5d68211da6bcc"
+	"f84779933a1074bba998e457fa687328d1c897afe3d36e4d8d27c520262bf423"
+	"63916f626ec3d2178341acee95f5d44e4143e74afcf85eb3be4d8de8ac768cc1"
+)
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	patch -p0 -i "$srcdir/$pkgname-$pkgver.patch"
-	sed -i "s@^PREFIX *=.*@PREFIX=$pkgdir/usr/@" Config
-	# sed -i "s@^PAPER *=.*@PAPER=LETTER@" Config
-	sed -i "s@ginstall-info@install-info@" doc/Makefile
+
+	local patch_file
+	for patch_file in \
+		old-patches.diff \
+		spelling-mistakes.diff \
+		ld-as-needed.diff \
+		fix_gcc-10.patch \
+		cross.patch \
+		utf-8.patch \
+		fixes-for-gcc15.patch; do
+		patch -Np1 -i "$srcdir/$patch_file"
+	done
+
+	sed -i 's|@$(CC) $^ -o $@ $(LIBS)|@$(CC) $(LDFLAGS) $^ -o $@ $(LIBS)|' build/Makefile
+	sed -i 's|@$(INSTALL) -s $< $(BIN_DIR)|@$(INSTALL) $< $(BIN_DIR)|' build/Makefile
 }
 
 build() {
@@ -41,6 +62,8 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	mkdir -p $pkgdir/usr/bin
-	make install
+	install -d "$pkgdir/usr/bin"
+	make DESTDIR="$pkgdir" install
+	install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
+	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }

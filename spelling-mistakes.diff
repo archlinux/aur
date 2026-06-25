@@ -1,0 +1,118 @@
+From: Georges Khaznadar <georgesk@debian.org>
+Date: Wed, 10 Dec 2025 16:56:22 +0100
+Subject: spelling-mistakes
+
+---
+ doc/eukleides.texi | 8 ++++----
+ man/eukleides.1    | 2 +-
+ man/euktoeps.1     | 2 +-
+ man/euktopdf.1     | 2 +-
+ man/euktopst.1     | 2 +-
+ man/euktotex.1     | 2 +-
+ 6 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/doc/eukleides.texi b/doc/eukleides.texi
+index a43ca78..03102d8 100644
+--- a/doc/eukleides.texi
++++ b/doc/eukleides.texi
+@@ -172,7 +172,7 @@ there is no backwards compatibility.
+ 
+ Eukleides is a computer language devoted to elementary plane geometry. It aims
+ to be a fairly comprehensive system to create geometric figures, either static
+-or dynamic. It allows to handle basic types of data: numbers and strings, as
++or dynamic. It allows one to handle basic types of data: numbers and strings, as
+ well as geometric types of data: points, vectors, sets (of points), lines,
+ circles, and conics.
+ 
+@@ -1560,7 +1560,7 @@ end
+ @end example
+ 
+ @findex stop
+-Using the @code{stop} command within a conditional statement allows to abort the
++Using the @code{stop} command within a conditional statement allows one to abort the
+ execution of a script when some condition is met.
+ 
+ @subheading Boolean operators
+@@ -1860,7 +1860,7 @@ present, only the last one is taken into account.
+ 
+ @subheading Animation
+ 
+-With @command{eukleides}, the @w{@code{--animate}} option allows to generate
++With @command{eukleides}, the @w{@code{--animate}} option allows one to generate
+ PostScript files containing several pages which may be converted into animated
+ GIFs (using ImageMagik's @command{convert} for instance). The parameter for this
+ option consists in a single letter followed by an integer number (without
+@@ -1974,7 +1974,7 @@ using @command{latex}.
+ @cindex localized keywords
+ 
+ Localized versions of the keywords are available (currently German and French).
+-The @w{@code{--locale}} option allows to specify the desired locale. With no
++The @w{@code{--locale}} option allows one to specify the desired locale. With no
+ argument given, the current locale is set to the value of the LANG environment
+ variable. Otherwise the argument has to be a valid locale identifier, e.g.
+ @code{fr_FR} or @code{fr_FR.utf8}, depending on the default charmap.
+diff --git a/man/eukleides.1 b/man/eukleides.1
+index c60e727..66d4c62 100644
+--- a/man/eukleides.1
++++ b/man/eukleides.1
+@@ -7,7 +7,7 @@ eukleides - Eukleides interpreter to PostScript
+ Eukleides is a computer language devoted to elementary plane geometry.
+ It aims to be a fairly comprehensive system to create geometric figures,
+ either static or dynamic.
+-It allows to handle geometric types of data like points, vectors,
++It allows one to handle geometric types of data like points, vectors,
+ lines, circles, or conics.
+ .PP
+ The \fBeukleides\fP program is useful to convert Eukleides scripts
+diff --git a/man/euktoeps.1 b/man/euktoeps.1
+index aba962d..12e62c7 100644
+--- a/man/euktoeps.1
++++ b/man/euktoeps.1
+@@ -7,7 +7,7 @@ euktoeps - Eukleides to Encapsulated PostScript converter
+ Eukleides is a computer language devoted to elementary plane geometry.
+ It aims to be a fairly comprehensive system to create geometric figures,
+ either static or dynamic.
+-It allows to handle geometric types of data like points, vectors,
++It allows one to handle geometric types of data like points, vectors,
+ lines, circles, or conics.
+ .PP
+ The \fBeuktoeps\fP script is useful to convert Eukleides scripts into
+diff --git a/man/euktopdf.1 b/man/euktopdf.1
+index cb81964..b6b7b8c 100644
+--- a/man/euktopdf.1
++++ b/man/euktopdf.1
+@@ -7,7 +7,7 @@ euktopdf - Eukleides to PDF converter
+ Eukleides is a computer language devoted to elementary plane geometry.
+ It aims to be a fairly comprehensive system to create geometric figures,
+ either static or dynamic.
+-It allows to handle geometric types of data like points, vectors,
++It allows one to handle geometric types of data like points, vectors,
+ lines, circles, or conics.
+ .PP
+ The \fBeuktopdf\fP script is useful to convert auxiliary Eukleides
+diff --git a/man/euktopst.1 b/man/euktopst.1
+index 9ec6126..97b097c 100644
+--- a/man/euktopst.1
++++ b/man/euktopst.1
+@@ -7,7 +7,7 @@ euktopst - Eukleides interpreter to PSTricks
+ Eukleides is a computer language devoted to elementary plane geometry.
+ It aims to be a fairly comprehensive system to create geometric figures,
+ either static or dynamic.
+-It allows to handle geometric types of data like points, vectors,
++It allows one to handle geometric types of data like points, vectors,
+ lines, circles, or conics.
+ .PP
+ The \fBeuktopst\fP program interprets Eukleides scripts into PSTricks
+diff --git a/man/euktotex.1 b/man/euktotex.1
+index ffeab8e..c2017c9 100644
+--- a/man/euktotex.1
++++ b/man/euktotex.1
+@@ -7,7 +7,7 @@ euktotex - Eukleides to PSTricks converter
+ Eukleides is a computer language devoted to elementary plane geometry.
+ It aims to be a fairly comprehensive system to create geometric figures,
+ either static or dynamic.
+-It allows to handle geometric types of data like points, vectors,
++It allows one to handle geometric types of data like points, vectors,
+ lines, circles, or conics.
+ .PP
+ The \fBeuktotex\fP script is useful to convert auxiliary Eukleides

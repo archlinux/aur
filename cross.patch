@@ -1,0 +1,32 @@
+From: Georges Khaznadar <georgesk@debian.org>
+Date: Wed, 10 Dec 2025 16:56:22 +0100
+Subject: cross
+
+===================================================================
+---
+ build/Makefile | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/build/Makefile b/build/Makefile
+index c2c28ca..a3cacd2 100644
+--- a/build/Makefile
++++ b/build/Makefile
+@@ -11,7 +11,8 @@ LEX = flex
+ LFLAGS = -8
+ YACC = bison
+ YFLAGS = -d
+-CC = gcc
++CC ?= gcc
++INSTALL ?= install
+ IFLAGS = -I$(COMMON_DIR) -I$(MAIN_DIR) -I$(BUILD_DIR) 
+ ifneq ($(strip $(LOCALES)),)
+ MOFLAGS = -DMO_DIR=\"$(MO_DIR)\" 
+@@ -55,7 +56,7 @@ endif
+ 
+ install: $(BINARY)
+ 	@echo "Installing $<"
+-	@install -s $< $(BIN_DIR)
++	@$(INSTALL) -s $< $(BIN_DIR)
+ 
+ uninstall:
+ 	@$(RM) $(addprefix $(BIN_DIR)/,$(BINARIES))

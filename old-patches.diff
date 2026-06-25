@@ -1,0 +1,97 @@
+From: Georges Khaznadar <georgesk@debian.org>
+Date: Wed, 10 Dec 2025 16:56:22 +0100
+Subject: old-patches
+
+---
+ Config             |  4 ++--
+ Makefile           |  1 -
+ doc/Makefile       |  7 ++++---
+ doc/eukleides.texi | 10 +++++-----
+ 4 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/Config b/Config
+index 3be55e8..c9bc041 100644
+--- a/Config
++++ b/Config
+@@ -2,7 +2,7 @@
+ # Copyright (c) Christian Obrecht 2004-2010
+ 
+ # Installation prefix
+-PREFIX=/usr/local
++PREFIX=$(DESTDIR)/usr
+ 
+ BINARIES = eukleides euktopst
+ 
+@@ -12,7 +12,7 @@ BINARIES = eukleides euktopst
+ 
+ # Documentation
+ # Alternative targets are 'pdf' and 'html'.
+-DOC = info
++DOC = info html
+ 
+ # Preferred HTML output
+ # Comment this out for single HTML file.
+diff --git a/Makefile b/Makefile
+index 695291e..a0a9258 100644
+--- a/Makefile
++++ b/Makefile
+@@ -51,7 +51,6 @@ install_tex:
+ 	@echo "Installing TeX files"
+ 	@install -d $(TEX_DIR)
+ 	@install -m 0644 tex/* $(TEX_DIR)
+-	@mktexlsr 2> /dev/null
+ 
+ install_loc:
+ ifneq ($(LOC),)
+diff --git a/doc/Makefile b/doc/Makefile
+index 27bdaeb..c4d5a59 100644
+--- a/doc/Makefile
++++ b/doc/Makefile
+@@ -3,13 +3,13 @@
+ 
+ include ../Config
+ 
+-MAKEHTML = makeinfo --no-validate --html
++MAKEHTML = makeinfo --no-validate --html --force
+ TEXI = eukleides.texi
+ CSS = eukleides.css
+ 
+ documentation: $(DOC)
+ 
+-info: eukleides.info.gz
++info: eukleides.info
+ 
+ eukleides.info: $(TEXI)
+ 	@echo "    Building info pages"
+@@ -45,7 +45,8 @@ eukleides.html: $(TEXI)
+ 
+ INST_TARG := $(addprefix install_, $(DOC))
+ 
+-install: $(INST_TARG)
++install:
++#install: $(INST_TARG)
+ 
+ install_info: eukleides.info.gz
+ 	@echo "    Installing info pages"
+diff --git a/doc/eukleides.texi b/doc/eukleides.texi
+index 77aace2..a43ca78 100644
+--- a/doc/eukleides.texi
++++ b/doc/eukleides.texi
+@@ -6,12 +6,12 @@
+ 
+ % ------------------------------------------------------------------------------
+ 
+-\def\LaTeX{L\kern-.34em\raise.49ex\hbox{\sevenrm A}\kern-.18em\TeX}
+-\def\mdeg{$^\circ$}
++\def\LaTeX@{L\kern-.34em\raise.49ex\hbox@{\sevenrm A@}\kern-.18em\TeX@}
++\def\mdeg@{$^\circ$@}
+ \font\degfont=cmtt8
+-\def\deg{\raise.7ex\hbox{\degfont o}}
+-\def\exm#1{\noindent{\textit Example:}\quad{\texttt #1}}
+-\def\exmp{\noindent{\textit Example:}}
++\def\deg@{\raise.7ex\hbox@{\degfont o@}@}
++\def\exm#1@{\noindent@{\textit Example:@}\quad@{\texttt #1@}@}
++\def\exmp@{\noindent@{\textit Example:@}@}
+ 
+ % ------------------------------------------------------------------------------
+ 

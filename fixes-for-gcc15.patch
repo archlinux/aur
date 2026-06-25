@@ -1,0 +1,1599 @@
+From: Georges Khaznadar <georgesk@debian.org>
+Date: Wed, 10 Dec 2025 18:06:45 +0100
+Subject: fixes for gcc15
+
+---
+ src/common/circle.h       | 28 +++++++--------
+ src/common/compiler.h     |  2 +-
+ src/common/conic.h        | 34 +++++++++---------
+ src/common/core.c         | 22 ++++++------
+ src/common/core.h         | 14 +++++---
+ src/common/draw.h         | 34 +++++++++---------
+ src/common/function.c     |  2 +-
+ src/common/function.h     |  2 +-
+ src/common/intersection.h | 18 +++++-----
+ src/common/io.c           |  4 +--
+ src/common/io.h           | 24 ++++++-------
+ src/common/lexer.l        | 12 +++----
+ src/common/line.h         | 44 +++++++++++------------
+ src/common/locus.h        |  2 +-
+ src/common/number.h       | 52 +++++++++++++--------------
+ src/common/point.h        | 40 ++++++++++-----------
+ src/common/set.h          | 36 +++++++++----------
+ src/common/setting.c      |  2 +-
+ src/common/setting.h      | 12 +++----
+ src/common/strings.c      | 34 +++++++++---------
+ src/common/strings.h      | 28 ++++++++-------
+ src/common/test.h         | 90 +++++++++++++++++++++++------------------------
+ src/common/vector.h       | 34 +++++++++---------
+ src/euktopst/check.h      | 22 ++++++------
+ src/euktopst/main.c       |  4 +--
+ 25 files changed, 301 insertions(+), 295 deletions(-)
+
+Index: eukleides/src/common/circle.h
+===================================================================
+--- eukleides.orig/src/common/circle.h
++++ eukleides/src/common/circle.h
+@@ -17,30 +17,30 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
+-void create_circle_with_radius(void);
++void create_circle_with_radius(_param p);
+ 
+-void circle_center(void);
++void circle_center(_param p);
+ 
+-void create_circle_with_diameter(void);
++void create_circle_with_diameter(_param p);
+ 
+-void create_circumcircle(void);
++void create_circumcircle(_param p);
+ 
+-void create_incircle(void);
++void create_incircle(_param p);
+ 
+-void translate_circle(void);
++void translate_circle(_param p);
+ 
+-void reflect_circle(void);
++void reflect_circle(_param p);
+ 
+-void symetric_circle(void);
++void symetric_circle(_param p);
+ 
+-void rotate_circle(void);
++void rotate_circle(_param p);
+ 
+-void homothetic_circle(void);
++void homothetic_circle(_param p);
+ 
+-void circle_radius(void);
++void circle_radius(_param p);
+ 
+-void circle_perimeter(void);
++void circle_perimeter(_param p);
+ 
+-void circle_area(void);
++void circle_area(_param p);
+ 
+-void point_on_circle_argument(void);
++void point_on_circle_argument(_param p);
+Index: eukleides/src/common/compiler.h
+===================================================================
+--- eukleides.orig/src/common/compiler.h
++++ eukleides/src/common/compiler.h
+@@ -25,7 +25,7 @@ void add_instr(const char* inst, int arg
+ 
+ #else
+ 
+-void add_instr(void (*f)(), _param p);
++void add_instr(void (*f)(_param p), _param p);
+ 
+ #define instruction(arg, fct, param) add_instr(fct, param)
+ 
+Index: eukleides/src/common/conic.h
+===================================================================
+--- eukleides.orig/src/common/conic.h
++++ eukleides/src/common/conic.h
+@@ -16,39 +16,39 @@
+  *  along with this program; if not, write to the Free Software
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */ 
+-void create_ellipse(void);
++void create_ellipse(_param p);
+ 
+-void create_hyperbola(void);
++void create_hyperbola(_param p);
+ 
+-void create_parabola(void);
++void create_parabola(_param p);
+ 
+-void conic_center(void);
++void conic_center(_param p);
+ 
+-void conic_foci(void);
++void conic_foci(_param p);
+ 
+-void create_conic_with_directrix(void);
++void create_conic_with_directrix(_param p);
+ 
+-void create_conic_with_foci(void);
++void create_conic_with_foci(_param p);
+ 
+-void translate_conic(void);
++void translate_conic(_param p);
+ 
+-void reflect_conic(void);
++void reflect_conic(_param p);
+ 
+-void symetric_conic(void);
++void symetric_conic(_param p);
+ 
+-void rotate_conic(void);
++void rotate_conic(_param p);
+ 
+-void homothetic_conic(void);
++void homothetic_conic(_param p);
+ 
+-void major_axis(void);
++void major_axis(_param p);
+ 
+-void minor_axis(void);
++void minor_axis(_param p);
+ 
+-void eccentricity(void);
++void eccentricity(_param p);
+ 
+-void conic_argument(void);
++void conic_argument(_param p);
+ 
+-void point_on_conic_argument(void);
++void point_on_conic_argument(_param p);
+ 
+ void parametric_ellipse(double *x, double *y, double t,
+ 			double x0, double y0, double a, double b,
+Index: eukleides/src/common/core.c
+===================================================================
+--- eukleides.orig/src/common/core.c
++++ eukleides/src/common/core.c
+@@ -154,7 +154,7 @@ void gosub_addr(_param p)
+     itable.cur = itable.tbl + p.addr - 1;
+ }
+ 
+-void go_back(void)
++void go_back(_param p)
+ {
+     itable.cur = pop_addr();
+ }
+@@ -164,7 +164,7 @@ void jump_if_zero(_param p)
+     if (pop_param().addr == 0) itable.cur = itable.tbl + p.addr - 1;
+ }
+ 
+-void stop(void)
++void stop(_param p)
+ {
+     itable.cur = itable.last;
+ }
+@@ -184,7 +184,7 @@ void set_cur_file(_param p)
+ }
+ 
+ #ifdef __debug__
+-void echo_itable(void)
++void echo_itable(_param p)
+ {
+     static int i = 0;
+     _instr* ins;
+@@ -206,7 +206,7 @@ void echo_itable(void)
+ }
+ #endif
+ 
+-void exec_itable(void)
++void exec_itable(_param p)
+ {
+ #ifdef __debug__
+     echo_itable();
+@@ -215,7 +215,7 @@ void exec_itable(void)
+ 	(itable.cur->func)(itable.cur->param);
+ }
+ 
+-void reset_instr_table(void)
++void reset_instr_table(_param p)
+ {
+     itable.last = itable.tbl;
+ }
+@@ -233,7 +233,7 @@ _mpages mem;
+ 
+ #define PAGE_SIZE	(16384 - sizeof(void *))
+ 
+-void init_memory(void)
++void init_memory(_param p)
+ {
+     mem.first = malloc(PAGE_SIZE);
+     check_ptr(mem.first);
+@@ -262,7 +262,7 @@ void *allocate(int size)
+     return addr;
+ }
+ 
+-void reset_memory(void)
++void reset_memory(_param p)
+ {
+     mem.cur = mem.start;
+     mem.first = (void *)mem.start;
+@@ -276,13 +276,13 @@ void init_stack_machine(void)
+     init_param_stack();
+     init_return_stack();
+     init_instr_table();
+-    init_memory();
++    init_memory((_param)0);
+ }
+ 
+-void reset_stack_machine(void)
++void reset_stack_machine(_param p)
+ {
+     reset_param_stack();
+     reset_return_stack();
+-    reset_instr_table();
+-    reset_memory();
++    reset_instr_table((_param)0);
++    reset_memory((_param)0);
+ }
+Index: eukleides/src/common/core.h
+===================================================================
+--- eukleides.orig/src/common/core.h
++++ eukleides/src/common/core.h
+@@ -17,6 +17,9 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
++#ifndef CORE_H
++#define CORE_H
++
+ typedef union {
+     void *ptr;
+     double num;
+@@ -41,7 +44,7 @@ typedef struct {
+     const char* inst;
+     int arg;
+ #endif
+-    void (*func)();
++    void (*func)(_param param);
+     _param param;
+ } _instr;
+ 
+@@ -58,19 +61,19 @@ void goto_addr(_param p);
+ 
+ void gosub_addr(_param p);
+ 
+-void go_back(void);
++void go_back(_param p);
+ 
+ void jump_if_zero(_param p);
+ 
+-void stop(void);
++void stop(_param p);
+ 
+ void set_cur_line(_param p);
+ 
+ void set_cur_file(_param p);
+ 
+-void exec_itable(void);
++void exec_itable(_param p);
+ 
+-void reset_stack_machine(void);
++void reset_stack_machine(_param p);
+ 
+ void *allocate(int size);
+ 
+@@ -79,3 +82,4 @@ void *allocate(int size);
+ #define get_elem(var) \
+         var = (_set *)allocate(sizeof(_set)); \
+         var->p = (_point *)allocate(sizeof(_point))
++#endif
+Index: eukleides/src/common/draw.h
+===================================================================
+--- eukleides.orig/src/common/draw.h
++++ eukleides/src/common/draw.h
+@@ -19,40 +19,40 @@
+ 
+ int preamble;
+ 
+-void put_preamble(void);
++void put_preamble(_param p);
+ 
+-void put_closing(void);
++void put_closing(_param p);
+ 
+-void draw_point(void);
++void draw_point(_param p);
+ 
+-void draw_vector(void);
++void draw_vector(_param p);
+ 
+-void draw_path(void);
++void draw_path(_param p);
+ 
+-void draw_polygon(void);
++void draw_polygon(_param p);
+ 
+-void fill_polygon(void);
++void fill_polygon(_param p);
+ 
+-void hatch_polygon(void);
++void hatch_polygon(_param p);
+ 
+-void draw_line(void);
++void draw_line(_param p);
+ 
+-void draw_circle(void);
++void draw_circle(_param p);
+ 
+-void draw_arc(void);
++void draw_arc(_param p);
+ 
+-void fill_circle(void);
++void fill_circle(_param p);
+ 
+-void hatch_circle(void);
++void hatch_circle(_param p);
+ 
+-void draw_conic(void);
++void draw_conic(_param p);
+ 
+-void draw_conic_arc(void);
++void draw_conic_arc(_param p);
+ 
+ void draw_string(_param p);
+ 
+-void label_segment(void);
++void label_segment(_param p);
+ 
+-void label_angle(void);
++void label_angle(_param p);
+ 
+ void label_point(_param p);
+Index: eukleides/src/common/function.c
+===================================================================
+--- eukleides.orig/src/common/function.c
++++ eukleides/src/common/function.c
+@@ -88,7 +88,7 @@ void restore_table(_function func)
+ 	drop((_param)(void *)*sym);
+ }
+ 
+-void return_error(void)
++void return_error(_param p)
+ {
+     runtime_error(_("function ending without return statement"));
+ }
+Index: eukleides/src/common/function.h
+===================================================================
+--- eukleides.orig/src/common/function.h
++++ eukleides/src/common/function.h
+@@ -29,7 +29,7 @@ void check_return(int type);
+ 
+ void end_function(void);
+ 
+-void restore_variables(void);
++void restore_variables(_param p);
+ 
+ void init_call(_symbol *symbol);
+ 
+Index: eukleides/src/common/intersection.h
+===================================================================
+--- eukleides.orig/src/common/intersection.h
++++ eukleides/src/common/intersection.h
+@@ -17,20 +17,20 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
+-void orthogonal_projection(void);
++void orthogonal_projection(_param p);
+ 
+-void parallel_projection(void);
++void parallel_projection(_param p);
+ 
+-void lines_intersection(void);
++void lines_intersection(_param p);
+ 
+-void line_set_intersection(void);
++void line_set_intersection(_param p);
+ 
+-void line_circle_intersection(void);
++void line_circle_intersection(_param p);
+ 
+-void line_conic_intersection(void);
++void line_conic_intersection(_param p);
+ 
+-void sets_intersection(void);
++void sets_intersection(_param p);
+ 
+-void circles_intersection(void);
++void circles_intersection(_param p);
+ 
+-void circle_set_intersection(void);
++void circle_set_intersection(_param p);
+Index: eukleides/src/common/io.c
+===================================================================
+--- eukleides.orig/src/common/io.c
++++ eukleides/src/common/io.c
+@@ -182,7 +182,7 @@ void input_str(void)
+ 
+     check_data_file();
+ 
+-    start_buffer();
++    start_buffer((_param)0);
+     if (data_file == stdin) {
+ 	if (opt_batchmode)
+ 	    print_warning("Undefined data in batchmode. Using empty string");
+@@ -192,6 +192,6 @@ void input_str(void)
+ 	}
+     } else
+ 	while ((c = getc(data_file)) && c != EOF && c != '\n' && c != '\r') add_char(c);
+-    PSH(get_buffer());
++    PSH(get_buffer((_param)0));
+     if (s) free(s);
+ }
+Index: eukleides/src/common/io.h
+===================================================================
+--- eukleides.orig/src/common/io.h
++++ eukleides/src/common/io.h
+@@ -19,26 +19,26 @@
+ 
+ extern int output;
+ 
+-void open_read_mode(void);
++void open_read_mode(_param p);
+ 
+-void open_write_mode(void);
++void open_write_mode(_param p);
+ 
+-void open_append_mode(void);
++void open_append_mode(_param p);
+ 
+-void close_data_file(void);
++void close_data_file(_param p);
+ 
+-void close_result_file(void);
++void close_result_file(_param p);
+ 
+-void print_num(void);
++void print_num(_param p);
+ 
+-void print_pnt(void);
++void print_pnt(_param p);
+ 
+-void print_set(void);
++void print_set(_param p);
+ 
+-void print_str(void);
++void print_str(_param p);
+ 
+-void print_nl(void);
++void print_nl(_param p);
+ 
+-void input_num(void);
++void input_num(_param p);
+ 
+-void input_str(void);
++void input_str(_param p);
+Index: eukleides/src/common/lexer.l
+===================================================================
+--- eukleides.orig/src/common/lexer.l
++++ eukleides/src/common/lexer.l
+@@ -64,9 +64,9 @@ void load_module(char *name, int len)
+     yyin = fopen(name, "r");
+     if (yyin == NULL) fatal_error(_("Unable to open module"));
+     yy_switch_to_buffer(yy_create_buffer(yyin, YY_BUF_SIZE));
+-    start_buffer();
++    start_buffer((_param)0);
+     add_string(name, len);
+-    mstack.name[mstack.index] = get_buffer();
++    mstack.name[mstack.index] = get_buffer((_param)0);
+     mstack.lineno[mstack.index] = 1;
+ }
+ 
+@@ -162,19 +162,19 @@ w [\t ]+
+ 
+ 	/* Strings */
+ 
+-\"			{ start_buffer(); BEGIN STR0; }
++\"			{ start_buffer((_param)0); BEGIN STR0; }
+ 
+ <STR0>[^"%\n\r]*	{ add_string(yytext, yyleng); }
+ <STR0>%[nrt"%]		{ add_special_char(yytext[1]); }
+ <STR0>\"{n}{w}\"	{ incr_lineno(); }
+ <STR0>\"		{
+     BEGIN INITIAL;
+-    yylval.string = get_buffer();
++    yylval.string = get_buffer((_param)0);
+     return CONST_STR;
+ }
+ 
+ \$			{
+-    start_buffer();
++    start_buffer((_param)0);
+ #ifdef __euktopst__
+     add_char('$');
+ #endif
+@@ -189,7 +189,7 @@ w [\t ]+
+ #ifdef __euktopst__
+     add_char('$');
+ #endif
+-    yylval.string = get_buffer();
++    yylval.string = get_buffer((_param)0);
+     return CONST_STR;
+ }
+ 
+Index: eukleides/src/common/line.h
+===================================================================
+--- eukleides.orig/src/common/line.h
++++ eukleides/src/common/line.h
+@@ -17,46 +17,46 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
+-void create_line_with_argument(void);
++void create_line_with_argument(_param p);
+ 
+-void create_line_with_points(void);
++void create_line_with_points(_param p);
+ 
+-void create_line_with_vector(void);
++void create_line_with_vector(_param p);
+ 
+-void create_line_with_segment(void);
++void create_line_with_segment(_param p);
+ 
+-void create_tangent_to_circle(void);
++void create_tangent_to_circle(_param p);
+ 
+-void create_tangent_to_conic(void);
++void create_tangent_to_conic(_param p);
+ 
+-void create_parallel_to_line(void);
++void create_parallel_to_line(_param p);
+ 
+-void create_parallel_to_segment(void);
++void create_parallel_to_segment(_param p);
+ 
+-void create_perpendicular_to_line(void);
++void create_perpendicular_to_line(_param p);
+ 
+-void create_perpendicular_to_segment(void);
++void create_perpendicular_to_segment(_param p);
+ 
+-void create_perpendicular_bisector(void);
++void create_perpendicular_bisector(_param p);
+ 
+-void create_angle_bisector(void);
++void create_angle_bisector(_param p);
+ 
+-void create_lines_bisector(void);
++void create_lines_bisector(_param p);
+ 
+-void create_altitude(void);
++void create_altitude(_param p);
+ 
+-void create_median(void);
++void create_median(_param p);
+ 
+-void translate_line(void);
++void translate_line(_param p);
+ 
+-void reflect_line(void);
++void reflect_line(_param p);
+ 
+-void symetric_line(void);
++void symetric_line(_param p);
+ 
+-void rotate_line(void);
++void rotate_line(_param p);
+ 
+-void homothetic_line(void);
++void homothetic_line(_param p);
+ 
+-void point_line_distance(void);
++void point_line_distance(_param p);
+ 
+-void line_argument(void);
++void line_argument(_param p);
+Index: eukleides/src/common/locus.h
+===================================================================
+--- eukleides.orig/src/common/locus.h
++++ eukleides/src/common/locus.h
+@@ -21,4 +21,4 @@ extern int locus_addr;
+ 
+ void init_locus(_param p);
+ 
+-void put_pnt(void);
++void put_pnt(_param p);
+Index: eukleides/src/common/number.h
+===================================================================
+--- eukleides.orig/src/common/number.h
++++ eukleides/src/common/number.h
+@@ -17,54 +17,54 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
+-void add(void);
++void add(_param p);
+ 
+-void substract(void);
++void substract(_param p);
+ 
+-void multiply(void);
++void multiply(_param p);
+ 
+-void divide(void);
++void divide(_param p);
+ 
+-void modulo(void);
++void modulo(_param p);
+ 
+-void change_sign(void);
++void change_sign(_param p);
+ 
+-void square_root(void);
++void square_root(_param p);
+ 
+-void power(void);
++void power(_param p);
+ 
+-void exponential(void);
++void exponential(_param p);
+ 
+-void logarithm(void);
++void logarithm(_param p);
+ 
+-void rtod(void);
++void rtod(_param p);
+ 
+-void dtor(void);
++void dtor(_param p);
+ 
+-void sine(void);
++void sine(_param p);
+ 
+-void cosine(void);
++void cosine(_param p);
+ 
+-void tangent(void);
++void tangent(_param p);
+ 
+-void arcsine(void);
++void arcsine(_param p);
+ 
+-void arccosine(void);
++void arccosine(_param p);
+ 
+-void arctangent(void);
++void arctangent(_param p);
+ 
+-void absolute_value(void);
++void absolute_value(_param p);
+ 
+-void sign(void);
++void sign(_param p);
+ 
+-void ceil_value(void);
++void ceil_value(_param p);
+ 
+-void floor_value(void);
++void floor_value(_param p);
+ 
+-void round_value(void);
++void round_value(_param p);
+ 
+-void minimum(void);
++void minimum(_param p);
+ 
+-void maximum(void);
++void maximum(_param p);
+ 
+-void clamp(void);
++void clamp(_param p);
+Index: eukleides/src/common/point.h
+===================================================================
+--- eukleides.orig/src/common/point.h
++++ eukleides/src/common/point.h
+@@ -17,42 +17,42 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
+-void create_point_cartesian(void);
++void create_point_cartesian(_param p);
+ 
+-void create_point_polar(void);
++void create_point_polar(_param p);
+ 
+-void create_point_on_segment(void);
++void create_point_on_segment(_param p);
+ 
+-void create_point_on_line(void);
++void create_point_on_line(_param p);
+ 
+-void create_point_with_abscissa(void);
++void create_point_with_abscissa(_param p);
+ 
+-void create_point_with_ordinate(void);
++void create_point_with_ordinate(_param p);
+ 
+-void create_point_on_circle(void);
++void create_point_on_circle(_param p);
+ 
+-void create_point_on_conic(void);
++void create_point_on_conic(_param p);
+ 
+-void create_midpoint(void);
++void create_midpoint(_param p);
+ 
+-void create_isobarycenter(void);
++void create_isobarycenter(_param p);
+ 
+-void create_barycenter(void);
++void create_barycenter(_param p);
+ 
+-void create_orthocenter(void);
++void create_orthocenter(_param p);
+ 
+-void translate_point(void);
++void translate_point(_param p);
+ 
+-void reflect_point(void);
++void reflect_point(_param p);
+ 
+-void symetric_point(void);
++void symetric_point(_param p);
+ 
+-void rotate_point(void);
++void rotate_point(_param p);
+ 
+-void homothetic_point(void);
++void homothetic_point(_param p);
+ 
+-void point_abscissa(void);
++void point_abscissa(_param p);
+ 
+-void point_ordinate(void);
++void point_ordinate(_param p);
+ 
+-void points_distance(void);
++void points_distance(_param p);
+Index: eukleides/src/common/set.h
+===================================================================
+--- eukleides.orig/src/common/set.h
++++ eukleides/src/common/set.h
+@@ -17,44 +17,44 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
+-void create_set(void);
++void create_set(_param p);
+ 
+-void create_segment(void);
++void create_segment(_param p);
+ 
+-void add_head_point(void);
++void add_head_point(_param p);
+ 
+-void add_tail_point(void);
++void add_tail_point(_param p);
+ 
+-void catenate_sets(void);
++void catenate_sets(_param p);
+ 
+-void push_point(void);
++void push_point(_param p);
+ 
+ void extract_point(_param p);
+ 
+ void extract_subset(_param p);
+ 
+-void create_polygon(void);
++void create_polygon(_param p);
+ 
+-void translate_set(void);
++void translate_set(_param p);
+ 
+-void reflect_set(void);
++void reflect_set(_param p);
+ 
+-void symetric_set(void);
++void symetric_set(_param p);
+ 
+-void rotate_set(void);
++void rotate_set(_param p);
+ 
+-void homothetic_set(void);
++void homothetic_set(_param p);
+ 
+-void set_cardinal(void);
++void set_cardinal(_param p);
+ 
+ void path_length(_param p);
+ 
+-void polygon_area(void);
++void polygon_area(_param p);
+ 
+-void create_centroid(void);
++void create_centroid(_param p);
+ 
+-void segment_argument(void);
++void segment_argument(_param p);
+ 
+-void vertex_angle(void);
++void vertex_angle(_param p);
+ 
+-void triangle_height(void);
++void triangle_height(_param p);
+Index: eukleides/src/common/setting.c
+===================================================================
+--- eukleides.orig/src/common/setting.c
++++ eukleides/src/common/setting.c
+@@ -255,7 +255,7 @@ void restore_default_settings(void)
+     global_dec = local_dec = NONE;
+ }
+ 
+-void restore_global_settings(void)
++void restore_global_settings(_param p)
+ {
+     local_style = global_style;
+     local_shape = global_shape;
+Index: eukleides/src/common/setting.h
+===================================================================
+--- eukleides.orig/src/common/setting.h
++++ eukleides/src/common/setting.h
+@@ -28,7 +28,7 @@ extern double min_x, min_y, max_x, max_y
+ 
+ void set_box(_param p);
+ 
+-void set_scale(void);
++void set_scale(_param p);
+ 
+ 
+ void set_global_color(_param p);
+@@ -49,9 +49,9 @@ extern double global_size;
+ extern double local_size;
+ 
+ 
+-void set_global_step(void);
++void set_global_step(_param p);
+ 
+-void set_local_step(void);
++void set_local_step(_param p);
+ 
+ extern double global_step;
+ 
+@@ -97,9 +97,9 @@ void set_local_arrow(_param p);
+ extern int local_arrow;
+ 
+ 
+-void set_global_font(void);
++void set_global_font(_param p);
+ 
+-void set_local_font(void);
++void set_local_font(_param p);
+ 
+ extern char *global_font_desc;
+ 
+@@ -135,6 +135,6 @@ extern int global_settings;
+ 
+ extern int local_settings;
+ 
+-void restore_default_settings(void);
++void restore_default_settings(_param p);
+ 
+ void clear_local_settings(void);
+Index: eukleides/src/common/strings.c
+===================================================================
+--- eukleides.orig/src/common/strings.c
++++ eukleides/src/common/strings.c
+@@ -104,7 +104,7 @@ void resize_buffer_stack(void)
+     stk.end = stk.first + 2*size;
+ }
+ 
+-void init_string(void)
++void init_string(_param p)
+ {
+     init_string_table();
+     init_buffer_stack();
+@@ -114,7 +114,7 @@ void init_string(void)
+ 
+ #define BUF_INIT_SIZE	128
+ 
+-void start_buffer(void)
++void start_buffer(_param p)
+ {
+     stk.last++;
+     stk.last->buf = (char *)malloc(BUF_INIT_SIZE);
+@@ -164,7 +164,7 @@ void add_special_char(char c)
+     add_char(get_special_char(c));
+ }
+ 
+-char *get_buffer(void)
++char *get_buffer(_param p)
+ {
+     char *val;
+ 
+@@ -177,7 +177,7 @@ char *get_buffer(void)
+ 
+ 	/* String functions */
+ 
+-void extract_substring(void)
++void extract_substring(_param p)
+ {
+     char *s;
+     double a, b;
+@@ -189,19 +189,19 @@ void extract_substring(void)
+     i = (int)a;
+     j = (int)b;
+     if (a < 0 || b < a || j >= strlen(s)) runtime_error(_("invalid indices"));
+-    start_buffer();
++    start_buffer((_param)0);
+     add_string(s + i, j - i + 1);
+-    PSH(get_buffer());
++    PSH(get_buffer((_param)0));
+ }
+ 
+-void start_string(void)
++void start_string(_param p)
+ {
+-    start_buffer();
++  start_buffer((_param)0);
+ }
+ 
+ char tmp[31];
+ 
+-void cat_num(void)
++void cat_num(_param p)
+ {
+     double x;
+ 
+@@ -209,7 +209,7 @@ void cat_num(void)
+     add_string(tmp, snprintf(tmp, 14, "%g", fabs(x) < EPSILON ? 0 : x));
+ }
+ 
+-void cat_pnt(void)
++void cat_pnt(_param p)
+ {
+     _point *A;
+ 
+@@ -221,7 +221,7 @@ void cat_pnt(void)
+ #endif 
+ }
+ 
+-void cat_set(void)
++void cat_set(_param p)
+ {
+     _set *s;
+ 
+@@ -242,7 +242,7 @@ void cat_set(void)
+     }
+ }
+ 
+-void cat_str(void)
++void cat_str(_param p)
+ {
+     char *s;
+ 
+@@ -250,22 +250,22 @@ void cat_str(void)
+     add_string(s, strlen(s));
+ }
+ 
+-void get_string(void)
++void get_string(_param p)
+ {
+-    PSH(get_buffer());
++  PSH(get_buffer((_param)0));
+ }
+ 
+-void str_eq(void)
++void str_eq(_param p)
+ {
+     PSHn(strcmp(POPs, POPs) == 0);
+ }
+ 
+-void str_neq(void)
++void str_neq(_param p)
+ {
+     PSHn(strcmp(POPs, POPs) != 0);
+ }
+ 
+-void str_length(void)
++void str_length(_param p)
+ {
+     PSHn((double)strlen(POPs));
+ }
+Index: eukleides/src/common/strings.h
+===================================================================
+--- eukleides.orig/src/common/strings.h
++++ eukleides/src/common/strings.h
+@@ -17,9 +17,11 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
+-void init_string(void);
++#include "core.h"
+ 
+-void start_buffer(void);
++void init_string(_param p);
++
++void start_buffer(_param p);
+ 
+ void add_string(char *s, int l);
+ 
+@@ -27,26 +29,26 @@ void add_char(char ch);
+ 
+ void add_special_char(char ch);
+ 
+-char *get_buffer(void);
++char *get_buffer(_param p);
+ 
+-void extract_substring(void);
++void extract_substring(_param p);
+ 
+-void start_string(void);
++void start_string(_param p);
+ 
+-void cat_num(void);
++void cat_num(_param p);
+ 
+-void cat_pnt(void);
++void cat_pnt(_param p);
+ 
+-void cat_set(void);
++void cat_set(_param p);
+ 
+-void cat_str(void);
++void cat_str(_param p);
+ 
+-void get_string(void);
++void get_string(_param p);
+ 
+-void str_eq(void);
++void str_eq(_param p);
+ 
+-void str_neq(void);
++void str_neq(_param p);
+ 
+-void str_length(void);
++void str_length(_param p);
+ 
+ char* get_output_name(char* in, const char* suf);
+Index: eukleides/src/common/test.h
+===================================================================
+--- eukleides.orig/src/common/test.h
++++ eukleides/src/common/test.h
+@@ -17,92 +17,92 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
+-void not(void);
++void not(_param p);
+ 
+-void and(void);
++void and(_param p);
+ 
+-void or(void);
++void or(_param p);
+ 
+-void ternary(void);
++void ternary(_param p);
+ 
+-void num_eq(void);
++void num_eq(_param p);
+ 
+-void num_neq(void);
++void num_neq(_param p);
+ 
+-void num_lt(void);
++void num_lt(_param p);
+ 
+-void num_leq(void);
++void num_leq(_param p);
+ 
+-void num_gt(void);
++void num_gt(_param p);
+ 
+-void num_geq(void);
++void num_geq(_param p);
+ 
+-void pnt_eq(void);
++void pnt_eq(_param p);
+ 
+-void pnt_neq(void);
++void pnt_neq(_param p);
+ 
+-void collinear_points(void);
++void collinear_points(_param p);
+ 
+-void vec_eq(void);
++void vec_eq(_param p);
+ 
+-void vec_neq(void);
++void vec_neq(_param p);
+ 
+-void collinear_vectors(void);
++void collinear_vectors(_param p);
+ 
+-void set_eq(void);
++void set_eq(_param p);
+ 
+-void set_neq(void);
++void set_neq(_param p);
+ 
+-void is_empty(void);
++void is_empty(_param p);
+ 
+-void on_path(void);
++void on_path(_param p);
+ 
+-void in_set(void);
++void in_set(_param p);
+ 
+-void lin_eq(void);
++void lin_eq(_param p);
+ 
+-void lin_neq(void);
++void lin_neq(_param p);
+ 
+-void on_line(void);
++void on_line(_param p);
+ 
+-void parallel_lines(void);
++void parallel_lines(_param p);
+ 
+-void perpendicular_lines(void);
++void perpendicular_lines(_param p);
+ 
+-void cir_eq(void);
++void cir_eq(_param p);
+ 
+-void cir_neq(void);
++void cir_neq(_param p);
+ 
+-void on_circle(void);
++void on_circle(_param p);
+ 
+-void con_eq(void);
++void con_eq(_param p);
+ 
+-void con_neq(void);
++void con_neq(_param p);
+ 
+-void on_conic(void);
++void on_conic(_param p);
+ 
+-void is_ellipse(void);
++void is_ellipse(_param p);
+ 
+-void is_hyperbola(void);
++void is_hyperbola(_param p);
+ 
+-void is_parabola(void);
++void is_parabola(_param p);
+ 
+-void is_isosceles(void);
++void is_isosceles(_param p);
+ 
+-void is_equilateral(void);
++void is_equilateral(_param p);
+ 
+-void is_right(void);
++void is_right(_param p);
+ 
+-void is_parallelogram(void);
++void is_parallelogram(_param p);
+ 
+-void is_rectangle(void);
++void is_rectangle(_param p);
+ 
+-void is_square(void);
++void is_square(_param p);
+ 
+-void eps_output(void);
++void eps_output(_param p);
+ 
+-void pstricks_output(void);
++void pstricks_output(_param p);
+ 
+-void display_output(void);
++void display_output(_param p);
+ 
+-void for_test(void);
++void for_test(_param p);
+Index: eukleides/src/common/vector.h
+===================================================================
+--- eukleides.orig/src/common/vector.h
++++ eukleides/src/common/vector.h
+@@ -17,36 +17,36 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
+-void create_vector_cartesian(void);
++void create_vector_cartesian(_param p);
+ 
+-void create_vector_polar(void);
++void create_vector_polar(_param p);
+ 
+-void create_vector_from_points(void);
++void create_vector_from_points(_param p);
+ 
+-void create_vector_from_segment(void);
++void create_vector_from_segment(_param p);
+ 
+-void create_vector_from_line(void);
++void create_vector_from_line(_param p);
+ 
+-void add_vectors(void);
++void add_vectors(_param p);
+ 
+-void substract_vectors(void);
++void substract_vectors(_param p);
+ 
+-void reverse_vector(void);
++void reverse_vector(_param p);
+ 
+-void multiply_vector(void);
++void multiply_vector(_param p);
+ 
+-void divide_vector(void);
++void divide_vector(_param p);
+ 
+-void rotate_vector(void);
++void rotate_vector(_param p);
+ 
+-void vector_abscissa(void);
++void vector_abscissa(_param p);
+ 
+-void vector_ordinate(void);
++void vector_ordinate(_param p);
+ 
+-void vector_length(void);
++void vector_length(_param p);
+ 
+-void vector_argument(void);
++void vector_argument(_param p);
+ 
+-void vectors_angle(void);
++void vectors_angle(_param p);
+ 
+-void scalar_product(void);
++void scalar_product(_param p);
+Index: eukleides/src/euktopst/check.h
+===================================================================
+--- eukleides.orig/src/euktopst/check.h
++++ eukleides/src/euktopst/check.h
+@@ -17,26 +17,26 @@
+  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+ 
+-void check_color(void);
++void check_color(_param p);
+ 
+-void check_shape(void);
++void check_shape(_param p);
+ 
+-void check_dotsize(void);
++void check_dotsize(_param p);
+ 
+-void check_style(void);
++void check_style(_param p);
+ 
+-void check_font(void);
++void check_font(_param p);
+ 
+-void check_linewidth(void);
++void check_linewidth(_param p);
+ 
+-void check_arrowsize(void);
++void check_arrowsize(_param p);
+ 
+ void check_hatch(double a);
+ 
+-void check_path_settings(void);
++void check_path_settings(_param p);
+ 
+-void put_local(void);
++void put_local(_param p);
+ 
+-void put_font(void);
++void put_font(_param p);
+ 
+-void put_egroup(void);
++void put_egroup(_param p);
+Index: eukleides/src/euktopst/main.c
+===================================================================
+--- eukleides.orig/src/euktopst/main.c
++++ eukleides/src/euktopst/main.c
+@@ -37,10 +37,10 @@ int main(int argc, char *argv[])
+     process_args(argc, argv);
+     load_keywords();
+     init_symbol_list();
+-    init_string();
++    init_string((_param)0);
+     init_module_stack();
+     init_stack_machine();
+     yyparse();
+-    exec_itable();
++    exec_itable((_param)0);
+     return EXIT_SUCCESS;
+ }
+Index: eukleides/src/eukleides/main.c
+===================================================================
+--- eukleides.orig/src/eukleides/main.c
++++ eukleides/src/eukleides/main.c
+@@ -37,15 +37,15 @@ int main(int argc, char *argv[])
+     process_args(argc, argv);
+     load_keywords();
+     init_symbol_list();
+-    init_string();
++    init_string((_param)0);
+     init_module_stack();
+     init_stack_machine();
+     yyparse();
+     if (anim_amount)
+ 	for (anim_cur = 0; anim_cur < anim_amount; anim_cur++) {
+-	    exec_itable();
++	  exec_itable((_param)0);
+ 	    strokes[anim_state][anim_dir] += anim_inc;
+ 	}
+-    else exec_itable();
++    else exec_itable((_param)0);
+     return EXIT_SUCCESS;
+ }
+Index: eukleides/src/common/compiler.c
+===================================================================
+--- eukleides.orig/src/common/compiler.c
++++ eukleides/src/common/compiler.c
+@@ -30,7 +30,7 @@ void add_instr(const char* inst, int arg
+     itable.last->inst = inst;
+     itable.last->arg = arg;
+ #else
+-void add_instr(void (*f)(void), _param p)
++void add_instr(void (*f)(_param p), _param p)
+ {
+ #endif
+     itable.last->func = f;
+Index: eukleides/src/euktopst/draw.c
+===================================================================
+--- eukleides.orig/src/euktopst/draw.c
++++ eukleides/src/euktopst/draw.c
+@@ -74,11 +74,11 @@ void draw_point(void)
+     _point *A;
+ 
+     A = POP(_point);
+-    check_color();
+-    check_shape();
+-    check_dotsize();
++    check_color((_param)0);
++    check_shape((_param)0);
++    check_dotsize((_param)0);
+     fprintf(output_file, "\\psdots");
+-    put_local();
++    put_local((_param)0);
+     fprintf(output_file, "(%.4f,%.4f)\n", A->x, A->y);
+ }
+ 
+@@ -89,10 +89,10 @@ void draw_vector(void)
+ 
+     A = POP(_point);
+     v = POP(_vector);
+-    check_path_settings();
+-    check_arrowsize();
++    check_path_settings((_param)0);
++    check_arrowsize((_param)0);
+     fprintf(output_file, "\\psline");
+-    put_local();
++    put_local((_param)0);
+     fprintf(output_file, "{->}(%.4f,%.4f)(%.4f,%.4f)\n",
+ 	    A->x, A->y, A->x + v->x, A->y + v->y);
+ }
+@@ -127,10 +127,10 @@ void draw_path(void)
+ 
+     s = POP(_set);
+     if (s == NULL || s->next == NULL) return;
+-    check_path_settings();
+-    check_arrowsize();
++    check_path_settings((_param)0);
++    check_arrowsize((_param)0);
+     fprintf(output_file, "\\psline");
+-    put_local();
++    put_local((_param)0);
+     put_arrows();
+     put_set(s);
+ }
+@@ -141,9 +141,9 @@ void draw_polygon(void)
+ 
+     s = POP(_set);
+     if (s == NULL) return;
+-    check_path_settings();
++    check_path_settings((_param)0);
+     fprintf(output_file, "\\pspolygon");
+-    put_local();
++    put_local((_param)0);
+     put_set(s);
+ }
+ 
+@@ -153,9 +153,9 @@ void fill_polygon(void)
+ 
+     s = POP(_set);
+     if (s == NULL) return;
+-    check_color();
++    check_color((_param)0);
+     fprintf(output_file, "\\pspolygon*");
+-    put_local();
++    put_local((_param)0);
+     put_set(s);
+ }
+ 
+@@ -167,7 +167,7 @@ void hatch_polygon(void)
+     s = POP(_set);
+     if (s == NULL) return;
+     fprintf(output_file, "\\pspolygon");
+-    put_local();
++    put_local((_param)0);
+     put_set(s);
+ }
+ 
+@@ -179,7 +179,7 @@ void draw_line(void)
+     _line * l;
+ 
+     l = POP(_line);
+-    check_path_settings();
++    check_path_settings((_param)0);
+     if (local_part == HALF) {
+ 	if ((local_dir == FORTH && (l->a > -90 && l->a <= 90))
+ 	    || (local_dir == BACK && (l->a <= -90 || l->a > 90))) m_x = l->x;
+@@ -231,7 +231,7 @@ void draw_line(void)
+     }
+     if (i == 2) {
+ 	fprintf(output_file, "\\psline");
+-	put_local();
++	put_local((_param)0);
+ 	fprintf(output_file, "{c-c}(%.4f,%.4f)(%.4f,%.4f)\n",
+ 		x[0], y[0], x[1], y[1]);
+     }
+@@ -242,9 +242,9 @@ void draw_circle(void)
+     _circle* c;
+ 
+     c = POP(_circle);
+-    check_path_settings();
++    check_path_settings((_param)0);
+     fprintf(output_file, "\\pscircle");
+-    put_local();
++    put_local((_param)0);
+     fprintf(output_file, "(%.4f,%.4f){%.4f}\n", c->x, c->y, c->r);
+ }
+ 
+@@ -256,10 +256,10 @@ void draw_arc(void)
+     v = POPn;
+     u = POPn;
+     c = POP(_circle);
+-    check_path_settings();
+-    check_arrowsize();
++    check_path_settings((_param)0);
++    check_arrowsize((_param)0);
+     fprintf(output_file, "\\psarc");
+-    put_local();
++    put_local((_param)0);
+     put_arrows();
+     fprintf(output_file, "\n(%.4f,%.4f){%.4f}{%.4f}{%.4f}\n",
+ 	    c->x, c->y, c->r, u, v);
+@@ -270,9 +270,9 @@ void fill_circle(void)
+     _circle* c;
+ 
+     c = POP(_circle);
+-    check_color();
++    check_color((_param)0);
+     fprintf(output_file, "\\pscircle*");
+-    put_local();
++    put_local((_param)0);
+     fprintf(output_file, "(%.4f,%.4f){%.4f}\n", c->x, c->y, c->r);
+ }
+ 
+@@ -283,7 +283,7 @@ void hatch_circle(void)
+     check_hatch(POPn);
+     c = POP(_circle);
+     fprintf(output_file, "\\pscircle");
+-    put_local();
++    put_local((_param)0);
+     fprintf(output_file, "(%.4f,%.4f){%.4f}\n", c->x, c->y, c->r);
+ }
+ 
+@@ -312,9 +312,9 @@ void draw_parabolic_arc(double x0, doubl
+     e = Acos(p/get_max(x0, y0) - 1);
+     if (f < -e) f = -e;
+     if (g > e) g = e;
+-    check_path_settings();
++    check_path_settings((_param)0);
+     fprintf(output_file, "\\pspolygon");
+-    put_local();
++    put_local((_param)0);
+     for (t = f, n = 0; t <= g; t += local_step, n++) {
+ 	parametric_parabola(&x, &y, t, x0, y0, p, c, s);
+ 	if (n % 4 == 0) fputc('\n', output_file);
+@@ -329,9 +329,9 @@ void draw_elliptic_arc(double x0, double
+     double x, y, t;
+     int n;
+ 
+-    check_path_settings();
++    check_path_settings((_param)0);
+     fprintf(output_file, "\\pspolygon");
+-    put_local();
++    put_local((_param)0);
+     for (t = f, n = 0; t <= g; t += local_step, n++) {
+ 	parametric_ellipse(&x, &y, t, x0, y0, a, b, c, s);
+ 	if (n % 4 == 0) fputc('\n', output_file);
+@@ -348,9 +348,9 @@ void draw_branch(double i, double j, dou
+ 
+     if (f > i) i = f;
+     if (g < j) j = g;
+-    check_path_settings();
++    check_path_settings((_param)0);
+     fprintf(output_file, "\\pspolygon");
+-    put_local();
++    put_local((_param)0);
+     for (t = i, n = 0; t <= j; t += local_step, n++) {
+ 	parametric_hyperbola(&x, &y, t, x0, y0, a, b, c, s);
+ 	if (n % 4 == 0) fputc('\n', output_file);
+@@ -423,7 +423,7 @@ void draw_string(_param p)
+     _point *O;
+     _set *s;
+ 
+-    check_font();
++    check_font((_param)0);
+     a = POPn;
+     r = DEFAULT_DIST*local_size;
+     if (p.addr) {
+@@ -440,7 +440,7 @@ void draw_string(_param p)
+ 	y = O->y + r*Sin(a);
+     }
+     fprintf(output_file, "\\rput(%.4f,%.4f){", x, y);
+-    put_font();
++    put_font((_param)0);
+     fprintf(output_file, "%s}\n", POPs);
+ }
+ 
+@@ -460,7 +460,7 @@ void label_segment(void)
+     x = (A->x + B->x)/2;
+     y = (A->y + B->y)/2;
+     fprintf(output_file, "\\pscustom");
+-    put_local();
++    put_local((_param)0);
+     fprintf(output_file, "{\\");
+     switch (local_segment) {
+ 	case SIMPLE:
+@@ -506,7 +506,7 @@ void label_angle(void)
+     double a, b, r, s, t,x1, y1, x2, y2;
+     _point *A, *B, *C;
+ 
+-    check_color();
++    check_color((_param)0);
+     C = POP(_point);
+     B = POP(_point);
+     A = POP(_point);
+@@ -515,7 +515,7 @@ void label_angle(void)
+     r = SIZE(.5);
+     s = .08/scale;
+     fprintf(output_file, "\\pscustom");
+-    put_local();
++    put_local((_param)0);
+     fprintf(output_file, "{\n");
+     switch (local_angle) {
+ 	case SIMPLE:
+@@ -581,12 +581,12 @@ void label_point(_param p)
+     _symbol *s;
+     _point *O;
+ 
+-    check_font();
++    check_font((_param)0);
+     a = POPn;
+     r = DEFAULT_DIST*local_size;
+     s = (_symbol *)p.ptr;
+     O = s->content->value.point;
+     fprintf(output_file, "\\rput(%.4f,%.4f){", O->x + r*Cos(a), O->y + r*Sin(a));
+-    put_font();
++    put_font((_param)0);
+     fprintf(output_file, "$%s$}\n", s->symbol);
+ }

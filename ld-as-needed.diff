@@ -1,0 +1,32 @@
+From: Georges Khaznadar <georgesk@debian.org>
+Date: Wed, 10 Dec 2025 16:56:22 +0100
+Subject: ld-as-needed
+
+---
+ build/Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/build/Makefile b/build/Makefile
+index ba1fa5b..c2c28ca 100644
+--- a/build/Makefile
++++ b/build/Makefile
+@@ -16,8 +16,8 @@ IFLAGS = -I$(COMMON_DIR) -I$(MAIN_DIR) -I$(BUILD_DIR)
+ ifneq ($(strip $(LOCALES)),)
+ MOFLAGS = -DMO_DIR=\"$(MO_DIR)\" 
+ endif
+-CFLAGS = -Wall -D__$(BINARY)__ $(IFLAGS) $(MOFLAGS)
+-LDFLAGS = -lncurses -lreadline -lm
++CFLAGS += -Wall -D__$(BINARY)__ $(IFLAGS) $(MOFLAGS)
++LIBS += -lreadline -lm
+ VPATH = $(COMMON_DIR):$(MAIN_DIR):$(BUILD_DIR)
+ 
+ $(BINARY):
+@@ -47,7 +47,7 @@ $(BUILD_DIR)/%.o: %.c
+ 
+ $(BINARY): $(OBJECTS)
+ 	@echo "    Linking $(notdir $@)"
+-	@$(CC) $(LDFLAGS) $^ -o $@
++	@$(CC) $^ -o $@ $(LIBS)
+ 
+ ifneq ($(BINARY),)
+ -include $(DEPEND)
