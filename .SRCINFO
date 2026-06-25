@@ -1,0 +1,20 @@
+pkgbase = python-google-antigravity
+	pkgdesc = Google's agentic development platform (Python SDK)
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/google-antigravity/antigravity-sdk-python
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-installer
+	depends = python
+	depends = python-absl
+	depends = python-pydantic
+	depends = python-websockets
+	depends = python-protobuf
+	depends = uvicorn
+	depends = python-mcp
+	depends = python-google-genai
+	source = google_antigravity-0.1.5-py3-none-manylinux_2_17_x86_64.whl::https://files.pythonhosted.org/packages/6e/18/d89abb1dafe906451c2bd13f0c32917e1d35ba95d2436a06907045a69cfd/google_antigravity-0.1.5-py3-none-manylinux_2_17_x86_64.whl
+	sha256sums = ec1ebe4044b92e41f6f1632cfac98bb29f03ef0be52446cb5a67576147148363
+
+pkgname = python-google-antigravity
