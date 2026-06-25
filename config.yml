@@ -8,27 +8,38 @@ exit_constraint: auto
 # exit_constraint:
 #  country: NL
 
+# exit_constraint:
+#   country_city:
+#   - JP
+#   - Tokyo
+
 broker:
-  race:
-    - fronted:
-        front: https://www.cdn77.com/
-        host: 1826209743.rsc.cdn77.org
-    - fronted:
-        front: https://vuejs.org/
-        host: svitania-naidallszei-2.netlify.app
-    - aws_lambda:
+  priority_race:
+    1500:
+      aws_lambda:
         function_name: geph-lambda-bouncer
         region: us-east-1
-        obfs_key: 855MJGAMB58MCPJBB97NADJ36D64WM2T:C4TN2M1H68VNMRVCCH57GDV2C5VN6V3RB8QMWP235D0P4RT2ACV7GVTRCHX3EC37
+        obfs_key: "855MJGAMB58MCPJBB97NADJ36D64WM2T:C4TN2M1H68VNMRVCCH57GDV2C5VN6V3RB8QMWP235D0P4RT2ACV7GVTRCHX3EC37"
+    300:
+      fronted:
+        front: https://kubernetes.io/
+        host: svitania-naidallszei-2.netlify.app
+        override_dns:
+          - 75.2.60.5:443
+    0:
+      fronted:
+        front: https://kubernetes.io/
+        host: svitania-naidallszei-2.netlify.app
+tunneled_broker:
+  direct: https://broker.geph.io
+broker_keys:
+  master: 88c1d2d4197bed815b01a22cadfc6c35aa246dddb553682037a118aebfaa3954
+  mizaru_free: 0558216cbab7a9c46f298f4c26e171add9af87d0694988b8a8fe52ee932aa754
+  mizaru_plus: cf6f58868c6d9459b3a63bc2bd86165631b3e916bad7f62b578cd9614e0bcb3b
+  mizaru_bw: 3082010a0282010100d0ae53a794ea37bf2e100cb3a872177ec6c11e8375fdcbf92960ce0293465674eb1426a1841b7622a58979a5ff3f8aa2301a621545e9b90bb39d1a6bfda19d6ca1aae74a3192ddfd2b9558eb652c3c2c22f42bdde272852fb67d93cae5846213512c474bf799844aee019bf718f6fa64223be06364459fc8dec66796b141d450d730c4fffe1cac7df8f05591560afa44bcf274f6c0e2303b39c21ab09d19b459ee594512b8341f3d407c026e2509f42c6d89f82f6a3a36fd5c05ad423cd99ad39089403eb9122ea60ef6648afff65438e8e26ce41fa55b9b18741965c77a627bae947bd38fc345e9adab42d6c458f6e194e4232cfd3f04924d5a5e932fe769610203010001
 
 credentials:
   secret: "your-account-secret"
-
-# For legacy username and password
-# credentials:
-#   legacy_username_password:
-#     username: your_username
-#     password: your_password
 
 sess_metadata:
   filter:
