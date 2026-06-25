@@ -1,9 +1,10 @@
 # Maintainer: Andrey Trishin <zatrit at gmail dot com>
 _pkgbase=uniwill-laptop
+_branch=wmi-ec
 pkgname=uniwill-laptop-dkms-git
-pkgver=r37.03e7d36
+pkgver=r38.98dc327
 pkgrel=1
-pkgdesc='Uniwill laptop platform driver (DKMS, infinitybook_gen10 branch)'
+pkgdesc="Uniwill laptop platform driver (DKMS, ${_branch} branch)"
 arch=('x86_64')
 url='https://github.com/Wer-Wolf/uniwill-laptop'
 license=('GPL2')
@@ -12,7 +13,7 @@ makedepends=('git')
 conflicts=('uniwill-laptop')
 provides=('uniwill-laptop')
 
-source=("${_pkgbase}::git+${url}.git#branch=infinitybook_gen10")
+source=("${_pkgbase}::git+${url}.git#branch=${_branch}")
 sha256sums=('SKIP')
 
 pkgver() {

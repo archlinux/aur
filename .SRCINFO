@@ -1,5 +1,5 @@
 pkgbase = uniwill-laptop-dkms-git
-	pkgdesc = Uniwill laptop platform driver (DKMS, infinitybook_gen10 branch)
+	pkgdesc = Uniwill laptop platform driver (DKMS, wmi-ec branch)
 	pkgver = r37.03e7d36
 	pkgrel = 1
 	url = https://github.com/Wer-Wolf/uniwill-laptop
@@ -9,7 +9,7 @@ pkgbase = uniwill-laptop-dkms-git
 	depends = dkms
 	provides = uniwill-laptop
 	conflicts = uniwill-laptop
-	source = uniwill-laptop::git+https://github.com/Wer-Wolf/uniwill-laptop.git#branch=infinitybook_gen10
+	source = uniwill-laptop::git+https://github.com/Wer-Wolf/uniwill-laptop.git#branch=wmi-ec
 	sha256sums = SKIP
 
 pkgname = uniwill-laptop-dkms-git
