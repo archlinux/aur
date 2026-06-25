@@ -1,0 +1,18 @@
+pkgbase = cathode
+	pkgdesc = Cross-platform IPTV player (Tauri + Dioxus + mpv)
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/kaiserbh/cathode
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rustup
+	makedepends = git
+	makedepends = dioxus-cli
+	depends = mpv
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	options = !lto
+	source = cathode::git+https://github.com/kaiserbh/cathode.git#tag=v0.5.3
+	sha256sums = SKIP
+
+pkgname = cathode
