@@ -1,6 +1,6 @@
 pkgbase = tidgi-desktop-bin
 	pkgdesc = An privatcy-in-mind, automated, auto-git-backup, freely-deployed Tiddlywiki knowledge management Desktop note app, with local REST API.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.13.1
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://tidgi.fun/
 	arch = aarch64
@@ -8,18 +8,17 @@ pkgbase = tidgi-desktop-bin
 	license = MPL-2.0
 	makedepends = asar
 	depends = electron41
-	depends = perl
-	depends = libcurl-gnutls
-	provides = tidgi-desktop=0.13.1
+	depends = git
+	provides = tidgi-desktop=0.14.0
 	conflicts = tidgi-desktop
 	conflicts = tidgi
 	options = !strip
 	options = !emptydirs
 	source = tidgi-desktop.sh
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = tidgi-desktop-0.13.1-aarch64.rpm::https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v0.13.1-fix/tidgi-0.13.1-1.arm64.rpm
-	sha256sums_aarch64 = eb07adcebf940d1700a26052aa2d85479083fa440180967377f27c5a86b27510
-	source_x86_64 = tidgi-desktop-0.13.1-x86_64.rpm::https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v0.13.1-fix/tidgi-0.13.1-1.x86_64.rpm
-	sha256sums_x86_64 = 711a8eef4b7eec4d5d732d4b776d3cca74d50e64360d86f69aa98d4305488d19
+	sha256sums = ccfd848e97dd874460bd2499b0750127add3e034d024014fbd6e6a7d0398e676
+	source_aarch64 = tidgi-desktop-0.14.0-aarch64.rpm::https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v0.14.0-1/tidgi-0.14.0-1.arm64.rpm
+	sha256sums_aarch64 = 59b33010e8056cac0d558d82ce8b4109500b688c252ac1b4f0e0843881a35019
+	source_x86_64 = tidgi-desktop-0.14.0-x86_64.rpm::https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v0.14.0-1/tidgi-0.14.0-1.x86_64.rpm
+	sha256sums_x86_64 = 77bbe7efadf1a5e440c5249926977f8a29246163b8594fb82ae46c2ee0dfc951
 
 pkgname = tidgi-desktop-bin
