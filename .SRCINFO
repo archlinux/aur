@@ -1,20 +1,20 @@
 pkgbase = bsky-electron-bin
 	pkgdesc = Bluesky Electron Client.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.4.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/CaffeeLake/bsky-electron
 	arch = aarch64
 	arch = x86_64
 	license = MPL-2.0
-	depends = electron37
-	provides = bsky-electron=0.4.1
+	depends = electron42
+	provides = bsky-electron=0.6.0
 	conflicts = bsky-electron
 	options = !emptydirs
 	source = bsky-electron.sh
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = bsky-electron-0.4.1-aarch64.rpm::https://github.com/CaffeeLake/bsky-electron/releases/download/v0.4.1/bsky-electron_v0.4.1_linux_aarch64.rpm
-	sha256sums_aarch64 = 8ee17ac7c0a81a3b011f0f1710d1414341e1245bf3b924f4903c9ff1c1884d57
-	source_x86_64 = bsky-electron-0.4.1-x86_64.rpm::https://github.com/CaffeeLake/bsky-electron/releases/download/v0.4.1/bsky-electron_v0.4.1_linux_x86_64.rpm
-	sha256sums_x86_64 = d0c3641a437084544a67a56be19ec01fc2b3f4c6659ff08b0ec1cc8efe61718c
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	source_aarch64 = bsky-electron-0.6.0-aarch64.rpm::https://github.com/CaffeeLake/bsky-electron/releases/download/v0.6.0/bsky-electron_v0.6.0_linux_aarch64.rpm
+	sha256sums_aarch64 = d8b847f25247339385d05366593cfa36953724bba990068bac72cc3bfcfe1027
+	source_x86_64 = bsky-electron-0.6.0-x86_64.rpm::https://github.com/CaffeeLake/bsky-electron/releases/download/v0.6.0/bsky-electron_v0.6.0_linux_x86_64.rpm
+	sha256sums_x86_64 = 255883a812dbf77b0911bab3ff20f2f6b087b052aeab69161014e04d9d34f9a0
 
 pkgname = bsky-electron-bin
