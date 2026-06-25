@@ -1,7 +1,7 @@
 pkgbase = sing-box
 	pkgdesc = The universal proxy platform.
-	pkgver = 1.13.13
-	pkgrel = 4
+	pkgver = 1.13.14
+	pkgrel = 1
 	url = https://sing-box.sagernet.org/
 	arch = i686
 	arch = pentium4
@@ -20,7 +20,7 @@ pkgbase = sing-box
 	conflicts = sing-box-git
 	conflicts = sing-box-beta
 	backup = etc/sing-box/config.json
-	source = sing-box-1.13.13.tar.gz::https://github.com/SagerNet/sing-box/archive/v1.13.13.tar.gz
-	sha256sums = 38d6570738445c07497423dd05ac2a62276f00d9259f765bc843cac3365df324
+	source = sing-box-1.13.14.tar.gz::https://github.com/SagerNet/sing-box/archive/v1.13.14.tar.gz
+	sha256sums = d18294eb00128743b1dbf1d5f4f01902bdfd59a2d2858cda809abe5351a9cd40
 
 pkgname = sing-box
