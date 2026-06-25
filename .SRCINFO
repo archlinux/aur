@@ -1,7 +1,7 @@
 pkgbase = kochmorse
 	pkgdesc = A easy to use Morse Code (Ham Radio) trainer using the Koch-method.
 	pkgver = 3.5.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/hmatuschek/kochmorse
 	arch = i686
 	arch = x86_64
