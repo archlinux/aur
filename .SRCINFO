@@ -1,8 +1,9 @@
 pkgbase = dpsprep-git
 	pkgdesc = A DjVu to PDF converter
 	pkgver = 2.7.0.r241.5c1155e
-	pkgrel = 1.314
+	pkgrel = 2.314
 	url = https://github.com/kcroker/dpsprep
+	install = dpsprep-git.install
 	arch = any
 	license = GPL-3.0-only
 	checkdepends = python-pytest

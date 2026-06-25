@@ -2,7 +2,7 @@
 pkgname=dpsprep-git
 _pkgbasename="${pkgname%-git}"
 pkgver=2.7.0.r241.5c1155e
-pkgrel=1.314
+pkgrel=2.314
 pkgdesc='A DjVu to PDF converter'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
@@ -20,6 +20,7 @@ optdepends=(
 )
 source=("git+https://github.com/kcroker/dpsprep.git")
 md5sums=('SKIP')
+install=dpsprep-git.install
 
 # Based on https://aur.archlinux.org/packages/dpsprep-git#comment-1031722
 pkgver() {
