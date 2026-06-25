@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Maintainer: fow0ryl <henning.ryll at web dot de>
 pkgname=zoraxy-git
-pkgver=3.1.7.r3.g2769558
+pkgver=3.3.3.r2.gddf62ad
 pkgrel=1
 pkgdesc='A general purpose HTTP reverse proxy and forwarding tool.'
 arch=('any')
@@ -28,7 +28,7 @@ pkgver() {
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
-prepare() {
+_set_build_env() {
     export CGO_ENABLED=1
     export GO111MODULE=on
     export GOOS=linux
@@ -38,9 +38,13 @@ prepare() {
         export GOPROXY=https://goproxy.cn,direct
     fi
 }
-build() {
+prepare() {
     cd "${srcdir}/${pkgname//-/.}/src"
     go mod tidy
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}/src"
+    _set_build_env
     go build
 }
 package() {

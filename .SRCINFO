@@ -1,13 +1,13 @@
 pkgbase = zoraxy-git
 	pkgdesc = A general purpose HTTP reverse proxy and forwarding tool.
-	pkgver = 3.1.7.r3.g2769558
+	pkgver = 3.3.3.r2.gddf62ad
 	pkgrel = 1
 	url = https://zoraxy.aroz.org/
 	arch = any
 	license = AGPL-3.0-only
 	makedepends = git
 	makedepends = go
-	provides = zoraxy=3.1.7
+	provides = zoraxy=3.3.3
 	conflicts = zoraxy
 	source = zoraxy.git::git+https://github.com/tobychui/zoraxy.git
 	source = zoraxy.service
