@@ -1,6 +1,6 @@
 pkgbase = python-inspice
 	pkgdesc = Python interface to Ngspice and Xyce circuit simulators (forked from InSpice)
-	pkgver = 1.7.0.4
+	pkgver = 1.7.0.5
 	pkgrel = 1
 	url = https://github.com/insim-ai/InSpice
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = python-inspice
 	conflicts = python-inspice
 	options = !strip
 	options = !debug
-	source = inspice::git+https://github.com/insim-ai/InSpice.git#tag=v1.7.0.4
-	sha256sums = 68f90380ee2623d3bf418c1c3cdf789e6248e9881bba68ce97a53adc8bc25967
+	source = inspice::git+https://github.com/insim-ai/InSpice.git#tag=v1.7.0.5
+	sha256sums = 6665aca737c2c9cbeeda8d489cc280eb95ab4d4c330ab0fe1faaff4f5dddf8a0
 
 pkgname = python-inspice
