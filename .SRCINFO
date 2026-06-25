@@ -1,6 +1,6 @@
 pkgbase = anydesk-bin
 	pkgdesc = The Fast Remote Desktop Application
-	pkgver = 8.0.2
+	pkgver = 8.0.3
 	pkgrel = 1
 	url = https://anydesk.com
 	arch = x86_64
@@ -33,9 +33,9 @@ pkgbase = anydesk-bin
 	provides = anydesk
 	conflicts = anydesk
 	options = !strip
-	source_x86_64 = https://download.anydesk.com/linux/anydesk-8.0.2-amd64.tar.gz
-	sha256sums_x86_64 = ea7a0c3df7b4c7a931ff087277aeaa72693b5a1122bf1df12b9ab9f127bd223d
-	source_aarch64 = https://download.anydesk.com/rpi/anydesk-8.0.2-arm64.tar.gz
-	sha256sums_aarch64 = c1f63e382c7d3b22c29a2036f518e7633720fe90293085d64f952b71d7324583
+	source_x86_64 = https://download.anydesk.com/linux/anydesk-8.0.3-amd64.tar.gz
+	sha256sums_x86_64 = 323975ee187903fa704408bb8222f548962543ad4ed125d7f8a787f124d9e1bb
+	source_aarch64 = https://download.anydesk.com/rpi/anydesk-8.0.3-arm64.tar.gz
+	sha256sums_aarch64 = 321023e5ccbcd6e04ca0d7853ef3b28413a52730603511d7c825eba5dbc5f271
 
 pkgname = anydesk-bin
