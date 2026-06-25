@@ -33,7 +33,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip')
 source=("${_pkgname}-${pkgver}.AppImage::https://github.com/asifthewebguy/FlowShield/releases/download/v${_tagver}/FlowShield_${_tagver}_amd64.AppImage")
-sha256sums=('2d5e7c67f5663be8e58cc8037092895e310263c11038db8ba100f5523202d90c')
+sha256sums=('04b1950bab896df20b0ae8724d88e899c61e81ecefc70dea33fdae5fecd37a92')
 noextract=("${_pkgname}-${pkgver}.AppImage")
 
 package() {

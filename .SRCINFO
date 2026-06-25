@@ -13,6 +13,6 @@ pkgbase = flowshield-bin
 	noextract = flowshield-3.10.0.alpha.0.AppImage
 	options = !strip
 	source = flowshield-3.10.0.alpha.0.AppImage::https://github.com/asifthewebguy/FlowShield/releases/download/v3.10.0-alpha.0/FlowShield_3.10.0-alpha.0_amd64.AppImage
-	sha256sums = 2d5e7c67f5663be8e58cc8037092895e310263c11038db8ba100f5523202d90c
+	sha256sums = 04b1950bab896df20b0ae8724d88e899c61e81ecefc70dea33fdae5fecd37a92
 
 pkgname = flowshield-bin
