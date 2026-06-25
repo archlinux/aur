@@ -1,14 +1,16 @@
 pkgbase = yozo-office
 	pkgdesc = Yozo Office 2024 - An MS Office compatible office suite
 	pkgver = 9.0.6589.141ZH.S1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.yozosoft.com/product-officelinux.html
 	install = yozo-office.install
 	arch = x86_64
 	license = LicenseRef-custom
 	options = !strip
 	source = yozo-office-9.0.6589.141ZH.S1.deb::https://dl.yozosoft.com/yozo/project/file/20251224_134417_869690/yozo-office_9.0.6589.141ZH.S1_amd64.deb
+	source = yozo-office.install
 	sha256sums = 495375f2d122fb362ca7deb971f800a6090993deb77dbb4ae86624dcae098567
+	sha256sums = a130b02a31faeb37d04daf091ac64223df189740e32eca0f086e6ebb9d6b72e4
 
 pkgname = yozo-office
 	depends = freetype2
@@ -27,7 +29,7 @@ pkgname = yozo-office
 	depends = twolame
 	depends = libice
 	depends = nss
-	depends = libtiff5
+	depends = libtiff
 	depends = sdl12-compat
 	depends = lsof
 	optdepends = yozo-office-fonts: built-in fonts

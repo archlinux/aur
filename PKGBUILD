@@ -13,18 +13,27 @@ pkgname=(
 )
 pkgver=9.0.6589.141ZH.S1
 _relver=20251224_134417_869690
-pkgrel=1
+pkgrel=2
 pkgdesc="Yozo Office 2024 - An MS Office compatible office suite"
 url="https://www.yozosoft.com/product-officelinux.html"
 options=(
     '!strip'
 )
-install=yozo-office.install
+install="${pkgbase}.install"
 license=('LicenseRef-custom')
 arch=('x86_64')
-source=("${pkgbase}-${pkgver}.deb::https://dl.yozosoft.com/yozo/project/file/${_relver}/${pkgbase}_${pkgver}_amd64.deb")
-sha256sums=('495375f2d122fb362ca7deb971f800a6090993deb77dbb4ae86624dcae098567')
+source=(
+    "${pkgbase}-${pkgver}.deb::https://dl.yozosoft.com/yozo/project/file/${_relver}/${pkgbase}_${pkgver}_amd64.deb"
+    "${pkgbase}.install"
+)
+sha256sums=('495375f2d122fb362ca7deb971f800a6090993deb77dbb4ae86624dcae098567'
+            'a130b02a31faeb37d04daf091ac64223df189740e32eca0f086e6ebb9d6b72e4')
 prepare() {
+    sed -i -e "
+        s/@pkgbase@/${pkgbase}/g
+        s/@pkgname@/${_pkgname}/g
+        s/@pkgver@/${pkgver}/g
+    " "${srcdir}/${pkgbase}.install"
     cd "${srcdir}"
     # Extracting data.tar.xz ...
     bsdtar -xf "${srcdir}/data."*
@@ -53,7 +62,7 @@ package_yozo-office() {
         'twolame'
         'libice'
         'nss'
-        'libtiff5'
+        'libtiff'
         'sdl12-compat'
         'lsof'
     )
@@ -82,7 +91,7 @@ package_yozo-office-fonts() {
 package_yozo-office-templates() {
     pkgdesc="Built-in document templates of Yozo Office 2024"
     # Installing built-in document templates of Yozo Office 2024 ...
-    install -Dm755 -d "${pkgdir}/opt/Yozosoft/${_pkgname}"
-    cp -a "${srcdir}/opt/apps/${_pkgname}/Templates" "${pkgdir}/opt/Yozosoft/${_pkgname}"
+    install -Dm755 -d "${pkgdir}/opt/apps/${_pkgname}"
+    cp -a "${srcdir}/opt/apps/${_pkgname}/Templates" "${pkgdir}/opt/apps/${_pkgname}"
     install -Dm644 "${srcdir}/opt/apps/${_pkgname}/thirdpartylicensereadme.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
