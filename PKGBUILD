@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=8.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -273,6 +273,7 @@ _args=(
   --enable-vapoursynth
   --enable-version3
   --enable-vulkan
+  --disable-decoder=magicyuv
 )
 
 ## Force enable autodetect feature built with upstream
