@@ -1,0 +1,22 @@
+pkgbase = restic-exporter
+	pkgdesc = Prometheus exporter for the Restic backup system
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/ngosang/restic-exporter
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-mock
+	makedepends = python-pytest
+	depends = restic
+	backup = etc/conf.d/prometheus-restic-exporter
+	source = restic-exporter-2.1.0.tar.gz::https://codeload.github.com/ngosang/restic-exporter/tar.gz/refs/tags/2.1.0
+	source = prometheus-restic-exporter.sysusers
+	sha256sums = 0be9139ab174a20fc4b549e6d45326664a77b02b2a2554be22ad636aef019448
+	sha256sums = 87216fd93e8320a1456ba3cc97d655a0fd1a823b33bb19654ba940082685639c
+
+pkgname = prometheus-restic-exporter
