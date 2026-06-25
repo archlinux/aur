@@ -3,7 +3,7 @@
 pkgname=zcode-desktop-bin
 _pkgname=zcode
 pkgver=3.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='ZCode desktop app repackaged from the official macOS release'
 arch=('x86_64')
 url='https://zcode.z.ai/en'
