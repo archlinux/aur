@@ -15,7 +15,8 @@ url="https://github.com/SHORiN-KiWATA/fcitx5"
 license=('GPL')
 depends=('cairo' 'enchant' 'iso-codes' 'libgl' 'libxkbcommon-x11' 'pango' 'wayland'
          'xcb-imdkit' 'xcb-util-wm' 'libxkbfile' 'fmt' 'gdk-pixbuf2')
-makedepends=('extra-cmake-modules' 'git' 'ninja' 'wayland-protocols')
+makedepends=('extra-cmake-modules' 'git' 'ninja' 'wayland-protocols'
+             'plasma-wayland-protocols' 'nlohmann-json')
 provides=("${_pkgname}" "${_pkgname}-git")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 
