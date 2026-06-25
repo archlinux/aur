@@ -1,7 +1,7 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 _pkgname=appium-geckodriver
 pkgname="nodejs-$_pkgname"
-pkgver=3.0.5
+pkgver=3.0.6
 pkgrel=1
 pkgdesc="Appium driver for Gecko-based browsers and web views"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('f021583eadd054781c74d904c3dcb32bdc9b3c929b9180796439de116a770d05')
+sha256sums=('830f92d37ae1fab312431f3ff62f20899105c9572930d5ff80da35c2d17f46bd')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" "$srcdir/$pkgname-$pkgver.tgz"
