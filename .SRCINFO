@@ -1,8 +1,8 @@
 pkgbase = python-asyncer
 	pkgdesc = Asyncer, async and await, focused on developer experience.
-	pkgver = 0.0.17
+	pkgver = 0.0.18
 	pkgrel = 1
-	url = https://github.com/tiangolo/asyncer
+	url = https://github.com/fastapi/asyncer
 	arch = any
 	license = MIT
 	makedepends = python-build
@@ -13,7 +13,7 @@ pkgbase = python-asyncer
 	depends = python-anyio
 	depends = python-sniffio
 	depends = python-typing_extensions
-	source = asyncer-0.0.17.tar.gz::https://github.com/tiangolo/asyncer/archive/refs/tags/0.0.17.tar.gz
-	sha256sums = 8f2d83f075e7ca06d77ef229d1ffaf228a17104349b02261684aed031abff4c1
+	source = asyncer-0.0.18.tar.gz::https://github.com/fastapi/asyncer/archive/refs/tags/0.0.18.tar.gz
+	sha256sums = 98f4fb7e9f978c84ea17e983bdaa5d2f200d23e3555075827e6b7fc295df7217
 
 pkgname = python-asyncer
