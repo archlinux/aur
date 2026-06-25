@@ -3,30 +3,31 @@
 
 pkgbase='restic-exporter'
 pkgname="prometheus-${pkgbase}"
-pkgver='2.1.0'
+pkgver='2.1.2'
 pkgrel='1'
 pkgdesc='Prometheus exporter for the Restic backup system'
 arch=('x86_64' 'aarch64')
 _uri='github.com/ngosang'
 url="https://${_uri}/${pkgbase}"
 license=('MIT')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-sphinx'
-	     'python-mock' 'python-pytest')
-depends=('restic')
-source=("${pkgbase}-${pkgver}.tar.gz::https://codeload.${_uri}/${pkgbase}/tar.gz/refs/tags/${pkgver}"
-	"${pkgname}.sysusers")
-sha256sums=('0be9139ab174a20fc4b549e6d45326664a77b02b2a2554be22ad636aef019448'
-            '87216fd93e8320a1456ba3cc97d655a0fd1a823b33bb19654ba940082685639c')
-backup=("etc/conf.d/${pkgname}")
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-mock' 'python-pytest')
+depends=('python-prometheus_client' 'restic')
+source=("${pkgbase}-${pkgver}.tar.gz::https://codeload.${_uri}/${pkgbase}/tar.gz/refs/tags/${pkgver}")
+sha256sums=('cc1b1259d5e7c3fcff596aaf07e66ea707760107f2fe25685c1631687507bed7')
+backup=("etc/prometheus/${pkgname}.env")
 
 prepare() {
   cd "${pkgbase}-${pkgver}"
-  sed -i \
-    -e 's|User='${pkgbase}'|User='${pkgname}'|g' \
-    -e 's|Group='${pkgbase}'|Group='${pkgname}'|g' \
-  "systemd/${pkgbase}.service"
-}
+  sed --in-place \
+    --expression 's|User='${pkgbase}'|User='${pkgname}'|g' \
+    --expression 's|Group='${pkgbase}'|Group='${pkgname}'|g' \
+    --expression 's|EnvironmentFile=-/etc/default/'${pkgbase}'|EnvironmentFile=-/etc/prometheus/'${pkgname}'.env|g' \
+    --expression 's|ExecStart=/usr/local/bin/'${pkgbase}'|ExecStart=/usr/bin/'${pkgbase}'|g' \
+    "systemd/${pkgbase}.service"
 
+  sed --in-place \
+    --expression 's|'${pkgbase}'|'${pkgname}'|g' "systemd/${pkgbase}.sysusers"
+}
 
 build() {
   cd "${pkgbase}-${pkgver}"
@@ -38,8 +39,7 @@ package() {
   pushd "${pkgbase}-${pkgver}"
   python -m installer --destdir="${pkgdir}" "dist/"*".whl"
   install -Dm0644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm0644 "systemd/${pkgbase}" "${pkgdir}/etc/conf.d/${pkgname}"
+  install -Dm0644 "systemd/${pkgbase}" "${pkgdir}/etc/prometheus/${pkgname}"
   install -Dm0644 "systemd/${pkgbase}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-  popd
-  install -Dm0644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -Dm0644 "systemd/${pkgbase}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 }
