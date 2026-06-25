@@ -9,6 +9,8 @@ license=('AGPL-3.0-only')
 depends=('libgcc' 'glibc')
 makedepends=('cargo' 'clang')
 options=('!debug')
+provides=("$pkgname")
+conflicts=("$pkgname-git" "$pkgname-bin")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('39a69c82b5bd8ef2b57db6c115128479a51dcd716c509360853bff41dbf9d273')
 
