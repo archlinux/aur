@@ -1,0 +1,3 @@
+[python-smda]
+source = "pypi"
+pypi = "smda"
