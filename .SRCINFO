@@ -1,6 +1,6 @@
 pkgbase = llm-wiki-bin
 	pkgdesc = LLM Wiki is a cross-platform desktop application that turns your documents into an organized, interlinked knowledge base — automatically.
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/nashsu/llm_wiki
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = llm-wiki-bin
 	depends = libsoup3
 	depends = hicolor-icon-theme
 	depends = cairo
-	provides = llm-wiki=0.5.1
+	provides = llm-wiki=0.5.2
 	conflicts = llm-wiki
 	conflicts = llm-wiki-appimage
-	source = https://github.com/nashsu/llm_wiki/releases/download/v0.5.1/LLM.Wiki_0.5.1_amd64.deb
-	sha256sums = a9f6a778a4d8e36df8786b18d2551f72b1707fc8a0c9d08c4f5b8cab663ec06d
+	source = https://github.com/nashsu/llm_wiki/releases/download/v0.5.2/LLM.Wiki_0.5.2_amd64.deb
+	sha256sums = 1def5a412ed34db25c7a4c905cd86366dddf37a23d6a08f360f8e02933d769f4
 
 pkgname = llm-wiki-bin
