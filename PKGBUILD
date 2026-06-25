@@ -1,6 +1,6 @@
 # Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
 pkgname=nnote
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="A plain, file-based note-taking CLI"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=(python-build python-installer python-wheel python-uv-build)
 provides=("python-$pkgname")
 conflicts=("python-$pkgname")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('05f4c79e4952f166329cde1cddae117814d6d43b4d480e0235a444dbc200a648')
+sha256sums=('db77876791ea4d5fdbd91b4bc18d652073a30bfc683a14cabe1048092aa32f69')
 
 build() {
     cd "${pkgname}-${pkgver}"
