@@ -2,7 +2,7 @@
 # Contributor: ston <2424284164@qq.com>
 
 pkgname=auto-editor-bin
-pkgver=31.0.0
+pkgver=31.0.2
 pkgrel=1
 pkgdesc="A command line application for automatically editing video and audio."
 url="https://auto-editor.com/"
@@ -15,7 +15,7 @@ optdepends=(
   'yt-dlp: download and use URLs as inputs'
   'xdg-utils: automatically open completed files with xdg-open')
 source=("auto-editor-$pkgver-bin::https://github.com/WyattBlue/auto-editor/releases/download/${pkgver}/auto-editor-linux-${CARCH}")
-sha256sums=('0adf0d535f348ff143ccc1123d16fecb417c92b11de13c88b9d9a3807333ac3b')
+sha256sums=('1c7f73eb1c725e84800c259558a5ed0b32146c7ca2f45f1244d3208c5d4363f2')
 
 options=(!debug)
 
