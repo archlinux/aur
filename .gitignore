@@ -1,0 +1,6 @@
+.gitignore
+src/
+pkg/
+*.pkg.tar*
+*.tar.gz
+fcitx5/
