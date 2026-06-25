@@ -14,6 +14,8 @@ license=(MIT)
 depends=(gcc-libs glibc)
 makedepends=(rust)
 optdepends=("rust-src: optimize with RUSTC_BOOTSTRAP=1")
+conflicts=(jotdown)
+provides=(jotdown)
 source=("git+${url}.git")
 b2sums=('SKIP')
 
