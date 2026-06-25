@@ -8,8 +8,9 @@ pkgbase = reckless
 	license = AGPL-3.0-only
 	makedepends = cargo
 	makedepends = clang
-	depends = gcc-libs
+	depends = libgcc
 	depends = glibc
+	options = !debug
 	source = reckless-0.9.0.tar.gz::https://github.com/codedeliveryservice/Reckless/archive/refs/tags/v0.9.0.tar.gz
 	sha256sums = 39a69c82b5bd8ef2b57db6c115128479a51dcd716c509360853bff41dbf9d273
 
