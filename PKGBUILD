@@ -1,7 +1,7 @@
 # Maintainer: Wallun <wallun@disroot.org>
 pkgname=prometheus-libvirt-exporter
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A prometheus exporter for libvirt"
 arch=('x86_64')
 url="https://github.com/inovex/prometheus-libvirt-exporter"
@@ -13,7 +13,7 @@ makedepends=(
   'go'
   'goreleaser'
 )
-source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         prometheus-libvirt-exporter.service)
 sha256sums=('de202e07eec13d0e6d52a0dabfe3dc29a3bbf3a1b439845b22c5065896703974'
             'fd2852b523324e4b97efbe280b36b615f6d54895280b5ddd30e9fe60152bbec2')
