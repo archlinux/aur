@@ -30,4 +30,6 @@ package() {
   cd "$srcdir/$_pkgname-$pkgver"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
