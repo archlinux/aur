@@ -15,10 +15,12 @@ pkgbase = sehn
 	depends = libpng
 	depends = libv4l
 	depends = ffmpeg
-	depends = pulseaudio
+	depends = libpulse
 	depends = cairo
 	depends = libexif
 	depends = curl
+	optdepends = pulseaudio: PulseAudio sound server
+	optdepends = pipewire-pulse: PipeWire-based PulseAudio replacement
 	source = https://github.com/thayeeboi890/sehn/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = SKIP
 
