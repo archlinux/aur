@@ -1,6 +1,6 @@
 pkgbase = python-amazon.ion
 	pkgdesc = A Python implementation of Amazon Ion
-	pkgver = 0.13.0
+	pkgver = 0.14.4
 	pkgrel = 1
 	url = https://amzn.github.io/ion-docs/
 	arch = x86_64
@@ -9,13 +9,12 @@ pkgbase = python-amazon.ion
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = python-pytest-runner
+	makedepends = python-py-build-cmake
 	depends = python
-	source = git+https://github.com/amazon-ion/ion-python.git#tag=v0.13.0
+	source = git+https://github.com/amazon-ion/ion-python.git#tag=v0.14.4
 	source = git+https://github.com/amazon-ion/ion-c.git
-	b2sums = 6053229fe5edf0f15aeca93632eb20cfa3c40d7466bfcfd214a8292c2bbd9af56a9ccf94ed7b3fd79e46dc017b524a81a2eb9352ae92e1ba05ccb1deea45d92e
+	b2sums = 07a5238d005f54cc8f4d94a77c9ef00e11fc8683b7871e42ac7bafce83416ac50ee2349534d3e923e2a342942a961614c2a747897e60559e8bb2d67cc133f6dc
 	b2sums = SKIP
 
 pkgname = python-amazon.ion

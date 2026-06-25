@@ -1,7 +1,7 @@
 # Contributor: pumpkincheshire <me at pumpkincheshire dot com>
 
 pkgname="python-amazon.ion"
-pkgver=0.13.0
+pkgver=0.14.4
 pkgrel=1
 pkgdesc='A Python implementation of Amazon Ion'
 url='https://amzn.github.io/ion-docs/'
@@ -13,31 +13,23 @@ makedepends=(
     'git'
     'python-build'
     'python-installer'
-    'python-setuptools'
     'python-wheel'
-    'python-pytest-runner' # AUR
+    'python-py-build-cmake' # AUR
 )
 source=("git+https://github.com/amazon-ion/ion-python.git#tag=v$pkgver"
         "git+https://github.com/amazon-ion/ion-c.git")
-b2sums=('6053229fe5edf0f15aeca93632eb20cfa3c40d7466bfcfd214a8292c2bbd9af56a9ccf94ed7b3fd79e46dc017b524a81a2eb9352ae92e1ba05ccb1deea45d92e'
+b2sums=('07a5238d005f54cc8f4d94a77c9ef00e11fc8683b7871e42ac7bafce83416ac50ee2349534d3e923e2a342942a961614c2a747897e60559e8bb2d67cc133f6dc'
         'SKIP')
 
 prepare() {
     cd ion-python
     git submodule init
     git config submodule.ion-c.url "$srcdir/ion-c"
-    git -c protocol.file.allow=always submodule update ion-c
+    git -c protocol.file.allow=always submodule update src/ion-c
 }
 
 build() {
-    # build ion-c (see build-release.sh)
-    cd ion-python/ion-c
-    export CFLAGS+=" -fpermissive"
-    cmake -B build/release -DCMAKE_BUILD_TYPE=Release -DIONC_BUILD_TESTS=OFF .
-    make -C build/release
-    cd ..
-
-    # build module
+    cd ion-python
     python -m build --wheel --no-isolation
 }
 
