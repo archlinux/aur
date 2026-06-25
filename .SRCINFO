@@ -1,8 +1,9 @@
 pkgbase = yarr
-	pkgdesc = Self-hosted RSS reader with vue.js front and sqlite back
-	pkgver = 2.6
-	pkgrel = 2
+	pkgdesc = Self-hosted, web-based feed aggregator with an embedded sqlite database
+	pkgver = 2.7
+	pkgrel = 1
 	url = https://github.com/nkanaev/yarr
+	changelog = yarr.changelog
 	arch = aarch64
 	arch = x86_64
 	license = MIT
@@ -10,8 +11,7 @@ pkgbase = yarr
 	makedepends = go
 	makedepends = make
 	depends = glibc
-	source = yarr-2.6.tar.gz::https://github.com/nkanaev/yarr/archive/refs/tags/v2.6.tar.gz
-	sha256sums = e6dc7d70d91b1cfb120840c0ea67b77cb465556d3e6103abe75b8c252cba9862
-	b2sums = 9b455fdc8ae148a3962d4f9318f76ca5ec86e0dd1ca7bc87938e12eb29184f2405fc39ab786f879b17ec6ab622c4ea8153402b4ccbcb4ab770cb4f27349c2c3b
+	source = yarr-2.7.tar.gz::https://github.com/nkanaev/yarr/archive/refs/tags/v2.7.tar.gz
+	sha256sums = 8a22bc1ae43a6855ea8f6cf9936080b936d63550e7a53da115201a00b412e140
 
 pkgname = yarr

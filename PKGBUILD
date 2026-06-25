@@ -1,48 +1,64 @@
+# shellcheck shell=bash
 # -*- mode: sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname=yarr
-pkgver=2.6
-pkgrel=2
-pkgdesc='Self-hosted RSS reader with vue.js front and sqlite back'
-arch=('aarch64' 'x86_64')
+pkgdesc='Self-hosted, web-based feed aggregator with an embedded sqlite database'
+pkgver=2.7
+pkgrel=1
 url='https://github.com/nkanaev/yarr'
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-license=('MIT')  # SPDX-License-Identifier: MIT
-depends=('glibc')
+changelog="$pkgname.changelog"
+arch=('aarch64' 'x86_64')
+license=('MIT')
 makedepends=('git' 'go' 'make')
+depends=('glibc')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('8a22bc1ae43a6855ea8f6cf9936080b936d63550e7a53da115201a00b412e140')
 
-_githash=1052735
+_githash=05d57a2
 
 prepare() {
   cd "$pkgname-$pkgver"
 
   sed -i "s/^GITHASH=/GITHASH\?=/g" makefile
-
+  sed -i "s/^VERSION=/VERSION\?=/g" makefile
   go mod tidy
 }
 
 build(){
   cd "$pkgname-$pkgver"
 
-  env GITHASH="$_githash" make host
+  case "Z${CARCH:-unknown}" in
+    'Zx86_64' | 'Zaarch64' )
+      # Fix “ELF file lacks GNU_PROPERTY_X86_FEATURE_1_SHSTK.”
+      export LDFLAGS="$LDFLAGS -Wl,-z,shstk"
+    ;;
+  esac
+
+  export CGO_ENABLED=1
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_LDFLAGS="$LDFLAGS"
+  export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
+
+  env GITHASH="$_githash" VERSION="$pkgver" make host
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+
+  printf '%s %s\n' "$pkgname" "$(out/yarr -version)"
 }
 
 package() {
   cd "$pkgname-$pkgver"
 
-  install -vDm0755 -t "$pkgdir/usr/bin" out/yarr
-  install -vDm0644 readme.md "$pkgdir/usr/share/doc/$pkgname/readme.md"
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" doc/*.{md,txt}
-  install -vDm0644 license "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm0755 -t "$pkgdir/usr/bin" out/yarr
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" readme.md
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" doc/*.{md,txt}
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" license
 }
-
-sha256sums=(
-  'e6dc7d70d91b1cfb120840c0ea67b77cb465556d3e6103abe75b8c252cba9862'
-)
-b2sums=(
-  '9b455fdc8ae148a3962d4f9318f76ca5ec86e0dd1ca7bc87938e12eb29184f2405fc39ab786f879b17ec6ab622c4ea8153402b4ccbcb4ab770cb4f27349c2c3b'
-)
 
 # eof
