@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Sergey A <murlakatamenka@disroot.org>
 pkgname=falcond
-pkgver=2.0.8
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="Advanced Linux gaming performance daemon"
 arch=('x86_64')
@@ -22,7 +22,7 @@ conflicts=('gamemode')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('0fc81d651bda5765f923a998d3ce592a948b3be21b7bd0fc3ac74d1fd6a34c17')
+sha256sums=('aee3bf2a7e0f129e9e34e93f3d436535a11d1148a0ef2107cf739c48ca66fea2')
 
 prepare() {
   mkdir -p "$pkgname-$pkgver"
