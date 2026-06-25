@@ -2,7 +2,7 @@
 
 pkgname=python-p115oss
 _name=${pkgname#python-}
-pkgver=0.1.0.1
+pkgver=0.1.0.2
 pkgrel=1
 epoch=
 pkgdesc="115 oss upload."
@@ -40,7 +40,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('cec1ec7a699a7779a4b13d451d8556c54b22f3f43b4791ad39a88d7f1b0d076c')
+sha256sums=('5a35fc047e4b0c5ff68cc646495ce12ad8fbcb4bdbebc826f8003b6f909bdc0d')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
