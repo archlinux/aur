@@ -1,6 +1,6 @@
 pkgbase = zenshin-git
 	pkgdesc = 🔖 Web & Electron based Anime Torrent Streamer for 🐈s.(Use system-wide electron)
-	pkgver = 2.2.2.r0.gbe4e02c
+	pkgver = 3.0.0.r0.gcfd65cd
 	pkgrel = 1
 	url = https://hitarth-gg.github.io/zenshin-website
 	arch = any
@@ -10,12 +10,13 @@ pkgbase = zenshin-git
 	makedepends = git
 	makedepends = curl
 	makedepends = gendesk
+	makedepends = jq
 	depends = electron34
 	depends = python
 	depends = nodejs
 	source = zenshin.git::git+https://github.com/hitarth-gg/zenshin.git
 	source = zenshin.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = zenshin-git
