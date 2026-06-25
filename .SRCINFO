@@ -1,6 +1,6 @@
 pkgbase = rtrlib-git
 	pkgdesc = RPKI-RTR client library
-	pkgver = r805.0346176
+	pkgver = r810.f89666f
 	pkgrel = 1
 	url = https://github.com/rtrlib/rtrlib
 	arch = x86_64
