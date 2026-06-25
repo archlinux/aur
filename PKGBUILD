@@ -12,7 +12,7 @@ source=("https://github.com/LazySeldi/lazybios/releases/download/$pkgver/lazybio
 sha256sums=('1441aeb98dbb1c0e18335b01bf1ac75830a77be2302e6a88e396a750aba56314')
 
 build() {
-  cd "$srcdir/lazybios"
+  cd "$srcdir/lazybios$pkgver"
   mkdir -p build && cd build
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
@@ -22,7 +22,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/lazybios/build"
+  cd "$srcdir/lazybios$pkgver/build"
   make DESTDIR="$pkgdir" install
 
   install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
