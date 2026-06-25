@@ -1,0 +1,17 @@
+pkgbase = netmnt
+	pkgdesc = Mount SMB network shares from Dolphin's right-click menu (Rust + D-Bus + polkit)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/thongor77/netmnt
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = cifs-utils
+	depends = polkit
+	optdepends = kdialog: graphical credential prompt for "Mount as…"
+	optdepends = kwallet: store credentials for authenticated shares
+	optdepends = dolphin: file-manager integration (KDE service menus)
+	source = netmnt-0.1.0.tar.gz::https://github.com/thongor77/netmnt/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 81b349670cc8e11bcebceafeeda0e142fa31c20bf83763ffa0b62b39540e1b34
+
+pkgname = netmnt
