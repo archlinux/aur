@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgbase=azahar
 pkgname=({,libretro-}"$_pkgbase-git")
-pkgver=2126.0.alpha2.r3.gc9d2593
+pkgver=2126.0.alpha2.r7.g93143bc
 pkgrel=1
 arch=('x86_64')
 url="https://azahar-emu.org/"
@@ -90,8 +90,6 @@ prepare() {
 	sed -i '/check_submodules_present()/d' ../../CMakeLists.txt
 	# use system spirv-tools
 	sed -i '/spirv-tools/d' ../../externals/CMakeLists.txt
-	# fix build
-	sed -i '/^namespace/i #include <cstring>' ../../src/audio_core/{cubeb_input,cubeb_sink}.cpp
 }
 
 build() {
