@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="talm"
-pkgver=0.31.0
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="Manage Talos Linux the GitOps Way!"
 arch=('aarch64' 'i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b7ac081fcd6628efe8c5fb5f76fffc0064cfa6c72ff0f342eaddb871eab91fd6')
+sha256sums=('60326eac385f71d6377adb9aa4a4ab04b9a5e359334c216a794d741afa4e9e28')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
