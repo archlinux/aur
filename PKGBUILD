@@ -1,8 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bluebubbles-bin
 _pkgname=BlueBubbles
-pkgver=1.15.7
-_subver=2B76
+pkgver=1.15.7+76
 pkgrel=1
 pkgdesc="A cross-platform app ecosystem, bringing iMessage to Android, PC (Windows, Linux, & even macOS), and Web!(Prebuilt version)"
 arch=(
@@ -29,8 +28,8 @@ makedepends=(
 options=(
     '!emptydirs'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}%${_subver}-desktop/${pkgname%-bin}-linux-aarch64.tar.gz")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}%${_subver}-desktop/${pkgname%-bin}-linux-x86_64.tar.gz")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}-desktop/${pkgname%-bin}-linux-aarch64.tar.gz")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}-desktop/${pkgname%-bin}-linux-x86_64.tar.gz")
 source=("${pkgname%-bin}.sh")
 sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
 sha256sums_aarch64=('c850cf686c449c6f6c1628a7ed01e47761f4d1dfd5275904716a4c63f56a3396')
@@ -50,7 +49,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/"{data,lib} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -a "${srcdir}/"{data,lib} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/data/flutter_assets/assets/icon/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     ln -sf "/usr/lib/libmpv.so" "${pkgdir}/usr/lib/libmpv.so.1"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
