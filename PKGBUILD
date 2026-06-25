@@ -7,7 +7,7 @@ pkgname=(
   libusbsio
   python-libusbsio
 )
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Library for USB-HID communication over SPI, I2C or GPIO"
 arch=($CARCH)
@@ -25,7 +25,7 @@ makedepends=(
   systemd
 )
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('dadb0419edab599f985dd1e4a36986a5f8afd6f926747943fd1f33637e88aae8e07f3abe0af310b6496051f26afba25621962ead4cb9b8de12db85cc7ed464e5')
+sha512sums=('102d79911c99a17ca683ea6a5998021d8da3e8ffed0d37492f2dcfda6b553425bd87c8a57cf2255076a5958b3a5db9250591a87c3abe600642ae7b88f248dcb2')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
@@ -58,7 +58,7 @@ package_python-libusbsio() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -vdm 755 "$pkgdir/$_site_packages/$pkgbase/bin/linux_$CARCH"
   ln -fsv /usr/lib/$pkgbase.so "$pkgdir/$_site_packages/$pkgbase/bin/linux_$CARCH/$pkgbase.so"
-  install -vDm 644 license/*.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -vDm 644 *.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -vDm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
   install -vDm 644 examples/*.py -t "$pkgdir/usr/share/doc/$pkgname/"
 }
