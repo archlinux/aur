@@ -3,7 +3,10 @@ pkgname=pixes-bin
 pkgver=1.2.1
 pkgrel=1
 pkgdesc="Unofficial pixiv app.(Prebuilt version)"
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://github.com/wgh136/pixes"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
@@ -12,28 +15,28 @@ depends=(
     'gtk3'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.pkg.tar.zst::${url}/releases/download/v${pkgver}/pixes-${pkgver}-${pkgver//./}-${CARCH}.pkg.tar.zst"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/wgh136/pixes/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('97b5bb7eb1e57808d9b29ffb1aa87cca12de02e73289e93ac77d7897f94a1ae9'
-            '5aaabbeafa067d045963cfc2d8d0fed63c41d0e20267771b1b8501a350d3b3f5'
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+sha256sums=('5aaabbeafa067d045963cfc2d8d0fed63c41d0e20267771b1b8501a350d3b3f5'
             '3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
+sha256sums_aarch64=('d3217939ac194f2ca13dc00aa737d2fb28bcd6d61a933aaa0caf6e21678d840c')
+sha256sums_x86_64=('183e44353a2181666150d6bcadf956c1a14f17fdba3e05511507f1f1057c2ac5')
 prepare() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
-    sed -e "
-        s/\/usr\/bin\/${pkgname%-bin}_pkg\/${pkgname%-bin}/${pkgname%-bin}/g
-        s/\/usr\/share\/icons\/hicolor\/64x64\/apps\/${pkgname%-bin}.png/${pkgname%-bin}/g
-    " -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    bsdtar -xf "${srcdir}/data."*
+    sed -i "s/\/usr\/local\/lib\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/usr/bin/${pkgname%-bin}_pkg/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/64x64/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    cp -a "${srcdir}/usr/local/lib/${pkgname%-bin}/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/icons/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
