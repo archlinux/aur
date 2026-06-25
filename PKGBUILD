@@ -1,6 +1,6 @@
 # Maintainer: Luke Simpson <luke@s4solutions.ai>
 pkgname=nexis
-pkgver=2.6.2
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Linux system optimizer and monitoring tool"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=('cmake' 'gcc' 'make' 'qt6-tools')
 # build using plain objects that any linker handles.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/s4solutionsllc/Nexis/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('571e7a4f493abc186feadca44303fb313a2e42484761106a8645043b8bcd1444')
+sha256sums=('9e70667bbabf1e52f47108e916870a7ccb5b2f00d67f21f8041d6f3cb6eca215')
 
 build() {
     # GH#82: in-tree LLD auto-selection is now OFF by default (see
