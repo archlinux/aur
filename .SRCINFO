@@ -1,0 +1,20 @@
+pkgbase = ulatencyd-rs-git
+	pkgdesc = A Rust rewrite of ulatencyd – cgroup v2 + scheduler latency daemon (git version)
+	pkgver = 0.1.0.r33.gc4b52da
+	pkgrel = 1
+	url = https://github.com/padoruuuu/-ulatencyd-rs
+	arch = x86_64
+	license = GPL
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = dbus
+	depends = polkit
+	depends = glibc
+	optdepends = systemd: systemd service file support
+	provides = ulatencyd-rs
+	conflicts = ulatencyd-rs
+	source = ulatencyd-rs-git::git+https://github.com/padoruuuu/-ulatencyd-rs.git
+	sha256sums = SKIP
+
+pkgname = ulatencyd-rs-git
