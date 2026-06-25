@@ -45,16 +45,17 @@ source = source.replaceAll("process.resourcesPath", resourceExpression);
 hostSource = hostSource.replaceAll("process.resourcesPath", resourceExpression);
 
 const helperAppImportPattern = new RegExp(
-  `import\\{app as (${identifier})\\}from"electron";function Pn\\(\\)\\{`,
+  `import\\{app as (${identifier})\\}from"electron";function (${identifier})\\(\\)\\{return \\1\\?\\.isPackaged===!0\\}`,
 );
 const helperAppImportMatch = source.match(helperAppImportPattern);
 
 if (helperAppImportMatch?.[1]) {
   const appVar = helperAppImportMatch[1];
+  const helperName = helperAppImportMatch[2];
   source = replaceExactlyOnce(
     source,
     helperAppImportPattern,
-    `import{app as ${appVar}}from"electron";try{Object.defineProperty(${appVar},"isPackaged",{configurable:true,get:()=>true})}catch{}function Pn(){`,
+    `import{app as ${appVar}}from"electron";try{Object.defineProperty(${appVar},"isPackaged",{configurable:true,get:()=>true})}catch{}function ${helperName}(){return ${appVar}?.isPackaged===!0}`,
     "upstream bundle layout changed; could not patch app packaged helper",
   );
 } else {
