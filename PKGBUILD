@@ -1,7 +1,7 @@
 # Maintainer: Edwar Diaz <edwardiaz.dev@gmail.com>
 
 pkgname=cliprithm-bin
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Prebuilt Cliprithm AppImage packaged for Arch Linux"
 arch=('x86_64')
@@ -11,16 +11,35 @@ depends=('ffmpeg' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libayatana-appindicator' 
 optdepends=('xdg-desktop-portal: improved desktop integration for file dialogs and portals')
 provides=('cliprithm')
 conflicts=('cliprithm')
-source=("Cliprithm_1.4.2_amd64.AppImage::https://github.com/BOTOOM/Cliprithm/releases/download/cliprithm-v1.4.2/Cliprithm_1.4.2_amd64.AppImage" "cliprithm.png::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.4.2/src-tauri/icons/128x128.png" "LICENSE::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.4.2/LICENSE" "cliprithm" "cliprithm.desktop")
-sha256sums=('1c119b9702fb9577b4f12d103e687e2310a239e0661326d812559db6756acd37' 'c7f874d897675e666ae09da79dfefeed2aa5bf9f51da33bf931050c5087b6a80' 'd90660ef692577f22ad72ccabe19ff6d10c4047d5a8345bf748f0c044932b52c' '4153d44c086be9e15fd8d9be5a94498d0e48da29a07fdf13f25a0449b40c7bb1' 'fc1f073620a6ea5283c288a5870941eea57dc2369b691c0788ec8fb16260045f')
-noextract=('Cliprithm_1.4.2_amd64.AppImage')
+source=("cliprithm_1.4.3_amd64.deb::https://github.com/BOTOOM/Cliprithm/releases/download/cliprithm-v1.4.3/cliprithm_1.4.3_amd64.deb" "cliprithm.png::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.4.3/src-tauri/icons/128x128.png" "LICENSE::https://raw.githubusercontent.com/BOTOOM/Cliprithm/cliprithm-v1.4.3/LICENSE" "cliprithm" "cliprithm.desktop")
+sha256sums=('ce80afd57e0ba84579fd98bf6f1cf323ea3a85bc71ea55d7561046f53430411a' 'c7f874d897675e666ae09da79dfefeed2aa5bf9f51da33bf931050c5087b6a80' 'd90660ef692577f22ad72ccabe19ff6d10c4047d5a8345bf748f0c044932b52c' '3c17eb114fb4bbe061f41a80acae4c03439c36f7a9379d2e6907649ebf3f45e1' 'fc1f073620a6ea5283c288a5870941eea57dc2369b691c0788ec8fb16260045f')
 options=('!strip')
 
 package() {
-  install -Dm755 "$srcdir/Cliprithm_1.4.2_amd64.AppImage" "$pkgdir/opt/cliprithm/cliprithm.AppImage"
+  # Extract the .deb file
+  bsdtar -xf "$srcdir/cliprithm_1.4.3_amd64.deb" -C "$srcdir" data.tar.gz || bsdtar -xf "$srcdir/cliprithm_1.4.3_amd64.deb" -C "$srcdir" data.tar.xz
+
+  # Extract the data archive directly into the pkgdir
+  if [ -f "$srcdir/data.tar.gz" ]; then
+    bsdtar -xf "$srcdir/data.tar.gz" -C "$pkgdir/"
+  elif [ -f "$srcdir/data.tar.xz" ]; then
+    bsdtar -xf "$srcdir/data.tar.xz" -C "$pkgdir/"
+  fi
+
+  # Clean up the extracted deb directories we don't need or want to overwrite
+  rm -rf "$pkgdir/usr/share/applications/cliprithm.desktop"
+  rm -rf "$pkgdir/usr/share/applications/Cliprithm.desktop"
+
+  # Install our custom launcher, icon, and desktop file
   install -Dm644 "$srcdir/cliprithm.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/cliprithm.png"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
+  # Move the native binary extracted from deb to avoid conflicts with our wrapper
+  if [ -f "$pkgdir/usr/bin/cliprithm" ]; then
+     mv "$pkgdir/usr/bin/cliprithm" "$pkgdir/usr/bin/cliprithm-bin"
+  fi
+
+  # Install our custom launcher
   install -Dm755 "$srcdir/cliprithm" "$pkgdir/usr/bin/cliprithm"
   install -Dm644 "$srcdir/cliprithm.desktop" "$pkgdir/usr/share/applications/cliprithm.desktop"
 }
