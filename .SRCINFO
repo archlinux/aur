@@ -1,6 +1,6 @@
 pkgbase = r-jmvcore
 	pkgdesc = Dependencies for the 'jamovi' Framework
-	pkgver = 2.7.7
+	pkgver = 2.7.35
 	pkgrel = 1
 	url = https://cran.r-project.org/package=jmvcore
 	arch = any
@@ -12,13 +12,14 @@ pkgbase = r-jmvcore
 	optdepends = r-export
 	optdepends = r-fastmap
 	optdepends = r-ggplot2
+	optdepends = r-jmvreadwrite
 	optdepends = r-knitr
 	optdepends = r-ragg
 	optdepends = r-rcolorbrewer
 	optdepends = r-rprotobuf
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/jmvcore_2.7.7.tar.gz
-	md5sums = df70719f55a52ae6f0d64cd58fa88f98
-	b2sums = 4d7f2120a34eb7e0b75783c64dc9dc969899a360b947200f01d0951e3794d493883aff4986bbf72a31c3d52d36d860b79459218ebc403fd85d9a2d79ee6b2f1f
+	source = https://cran.r-project.org/src/contrib/jmvcore_2.7.35.tar.gz
+	md5sums = e9be33a142748deba034ad7819145d5e
+	b2sums = e4de62555684f1ee30e44721aa24aa35db124c99b1ae6c559c05b41419c1da3534e79efe0b1fc44ae327543fd9e9785d3c4989f166e3243e7a751a39fdea7670
 
 pkgname = r-jmvcore
