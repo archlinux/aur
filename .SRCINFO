@@ -1,0 +1,24 @@
+pkgbase = hypr-rdp
+	pkgdesc = Native RDP server for Hyprland
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/MuNeNICK/hypr-rdp
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	makedepends = cmake
+	depends = ffmpeg
+	depends = libpulse
+	depends = libva
+	depends = libxkbcommon
+	depends = mesa
+	depends = pipewire
+	depends = wayland
+	optdepends = intel-media-driver: VA-API hardware encoding for Intel GPUs
+	optdepends = libva-mesa-driver: VA-API hardware encoding for AMD GPUs
+	options = !debug
+	source = hypr-rdp-0.1.3.tar.gz::https://github.com/MuNeNICK/hypr-rdp/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = 7cbe5cfe925335515df93a224c939d3f48ed9595a01455e47d64cfaf40dce26b
+
+pkgname = hypr-rdp
