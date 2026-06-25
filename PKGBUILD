@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=meru-git
 _pkgname=meru
-pkgver=3.48.0.r0.g59d34f5
+pkgver=3.52.0.r0.g2e1156b
 _electronversion=42
 _nodeversion=24
 pkgrel=1
@@ -40,6 +40,25 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_set_build_env() {
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    electronDist="/usr/lib/electron${_electronversion}"
+    HOME="${srcdir}/.electron-gyp"
+    rm -rf bunfig.toml bun.lockb || true
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+        export BUN_REGISTRY_MIRROR="https://registry.npmmirror.com"
+        export BUN_BINARY_MIRROR_OVERRIDE="https://registry.npmmirror.com/-/binary/"
+        export BUN_INSTALL_REWRITE="https://registry.npmjs.org/*=https://registry.npmmirror.com/\$1"
+        export BUN_INSTALL_NO_CACHE=1
+        export BUN_INSTALL_DISABLE_DEFAULT_REGISTRY_FALLBACK=1
+        export BUN_CACHE_DIR="${srcdir}/.bun_cache"
+    fi
+}
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
         -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
@@ -61,35 +80,24 @@ prepare() {
         --categories="Network;Office" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
-    rm -rf bunfig.toml bun.lockb || true
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-        export BUN_REGISTRY_MIRROR="https://registry.npmmirror.com"
-        export BUN_BINARY_MIRROR_OVERRIDE="https://registry.npmmirror.com/-/binary/"
-        export BUN_INSTALL_REWRITE="https://registry.npmjs.org/*=https://registry.npmmirror.com/\$1"
-        export BUN_INSTALL_NO_CACHE=1
-        export BUN_INSTALL_DISABLE_DEFAULT_REGISTRY_FALLBACK=1
-        export BUN_CACHE_DIR="${srcdir}/.bun_cache"
-    fi
+    _set_build_env
     _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     bun install
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
+    _set_build_env
     _ensure_local_nvm
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    local electronDist="/usr/lib/electron${_electronversion}"
     bun run build:js
     bun x electron-builder --linux dir -c.electronDist="${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
+    local _app_dir=$(_get_app_dir)
+    cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
+    rm -f "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname%-git}.git/build/icons/${_icon_sizes}.png" \
