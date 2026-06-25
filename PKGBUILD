@@ -1,6 +1,6 @@
 # Maintainer: Jakob Munch Overgaard <jmo@tvipper.com>
 pkgname=remotepower-server
-pkgver=5.0.1
+pkgver=5.1.0
 pkgrel=1
 pkgdesc='Self-hosted fleet-management server for RemotePower (nginx + Python CGI): dashboards, CVE/drift/compliance, monitoring, AI'
 arch=('any')
@@ -24,7 +24,7 @@ source=(
   "remotepower-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/remotepower-$pkgver.tar.gz.asc"
 )
 sha256sums=(
-  '7d8a7cd028f48f1367e551ed804191faa9c8f60834a001e16cbb3490d2cb04ef'
+  '591cb63274247f10728b6f4ad42cac9e21ff155d6548e7bffb97f4325a25c9db'
   'SKIP'
 )
 validpgpkeys=('E7B5AD456728B8462A8B54BFD488AF115D2CCDBF')  # Jakob Munch Overgaard <jmo@tvipper.com>
@@ -34,12 +34,15 @@ package() {
   local web="$pkgdir/var/www/remotepower"
   install -dm755 "$web/cgi-bin" "$web/agent" "$web/static" "$web/docs"
 
-  # ── Backend: cgi-bin Python. Only api.py is a CGI entry point (executed via
-  #    fcgiwrap; SCRIPT_FILENAME=api.py); the siblings are imported modules. ──
+  # ── Backend: cgi-bin Python. The CGI entry point is api_cgi.py (executed via
+  #    fcgiwrap; SCRIPT_FILENAME=api_cgi.py) — a thin shim that runs api.py from
+  #    its cached bytecode instead of recompiling the ~50k-line module on every
+  #    request. api.py stays +x too (still directly runnable + imported by the
+  #    siblings); the rest are imported modules. compileall runs in .install. ──
   local f n
   for f in server/cgi-bin/*.py; do
     n=$(basename "$f")
-    if [ "$n" = 'api.py' ]; then
+    if [ "$n" = 'api.py' ] || [ "$n" = 'api_cgi.py' ]; then
       install -m755 "$f" "$web/cgi-bin/$n"
     else
       install -m644 "$f" "$web/cgi-bin/$n"

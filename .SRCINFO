@@ -1,6 +1,6 @@
 pkgbase = remotepower-server
 	pkgdesc = Self-hosted fleet-management server for RemotePower (nginx + Python CGI): dashboards, CVE/drift/compliance, monitoring, AI
-	pkgver = 5.0.1
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/tyxak/remotepower
 	install = remotepower-server.install
@@ -17,10 +17,10 @@ pkgbase = remotepower-server
 	optdepends = python-pysaml2: SAML SSO (AUR)
 	optdepends = xmlsec: SAML signature verification (pairs with python-pysaml2)
 	backup = etc/nginx/snippets/remotepower-locations.conf
-	source = remotepower-5.0.1.tar.gz::https://github.com/tyxak/remotepower/releases/download/v5.0.1/remotepower-5.0.1.tar.gz
-	source = remotepower-5.0.1.tar.gz.asc::https://github.com/tyxak/remotepower/releases/download/v5.0.1/remotepower-5.0.1.tar.gz.asc
+	source = remotepower-5.1.0.tar.gz::https://github.com/tyxak/remotepower/releases/download/v5.1.0/remotepower-5.1.0.tar.gz
+	source = remotepower-5.1.0.tar.gz.asc::https://github.com/tyxak/remotepower/releases/download/v5.1.0/remotepower-5.1.0.tar.gz.asc
 	validpgpkeys = E7B5AD456728B8462A8B54BFD488AF115D2CCDBF
-	sha256sums = 7d8a7cd028f48f1367e551ed804191faa9c8f60834a001e16cbb3490d2cb04ef
+	sha256sums = 591cb63274247f10728b6f4ad42cac9e21ff155d6548e7bffb97f4325a25c9db
 	sha256sums = SKIP
 
 pkgname = remotepower-server

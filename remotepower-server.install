@@ -24,13 +24,23 @@ _setup_msg() {
 MSG
 }
 
+# Precompile the backend so the CGI user loads cached bytecode. The CGI entry
+# point api_cgi.py imports api, and a CGI *main script* never uses the .pyc
+# cache — without a prebuilt __pycache__ the ~50k-line module is recompiled on
+# every request (the web root is root-owned, so the http user can't build it).
+_compile_backend() {
+  python3 -m compileall -q /var/www/remotepower/cgi-bin/ >/dev/null 2>&1 || true
+}
+
 post_install() {
   systemd-tmpfiles --create remotepower.conf >/dev/null 2>&1 || true
+  _compile_backend
   _setup_msg
 }
 
 post_upgrade() {
   systemd-tmpfiles --create remotepower.conf >/dev/null 2>&1 || true
+  _compile_backend
   echo '==> RemotePower server upgraded. Reload services if running:'
   echo '      systemctl reload nginx   (and: systemctl restart remotepower-api  if you use the SCGI worker)'
 }
