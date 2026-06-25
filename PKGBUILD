@@ -1,8 +1,8 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=retorrent-bin
 _pkgname=retorrent
-pkgver=0.2.8
-_tag=0.2.8
+pkgver=0.2.10
+_tag=0.2.10
 pkgrel=1
 pkgdesc="A BitTorrent client with an alpha/test UI, built in Rust"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source_aarch64=("${_pkgname}-${_tag}-aarch64-unknown-linux-gnu.tar.gz::https://g
 
 source=("icon.png::https://raw.githubusercontent.com/mlm-games/retorrent/refs/heads/master/fastlane/metadata/android/en-US/images/icon.png")
 
-sha256sums_x86_64=('0760526bf98d00dfc82b7c693865ea4d6f2a4e43f547909be3d7dc47465b8e45')
-sha256sums_aarch64=('5d594ccb91d2e15a66ada31e35070871699fcfe59e04b5f27a3bbc08c26c86f1')
+sha256sums_x86_64=('6e3a1f6a408e5f0df5bf47b5aadba698fbd9f1e0b50421c96c49433bd8331cb9')
+sha256sums_aarch64=('24a98128f5380b91d3c2c16a16afbacca63d69ca66114b9d2d61134002f47b6a')
 sha256sums=('SKIP') # for icon.png
 
 package() {
@@ -45,6 +45,7 @@ Type=Application
 Categories=Network;FileTransfer;P2P;
 MimeType=application/x-bittorrent;x-scheme-handler/magnet;
 StartupNotify=true
+StartupWMClass=retorrent
 DESKTOP_EOF
 
   install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
