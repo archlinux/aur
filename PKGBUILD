@@ -9,7 +9,7 @@
 
 pkgname=ffmpeg-libfdk_aac
 pkgver=8.1.2
-pkgrel=6
+pkgrel=7
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -215,7 +215,8 @@ build() {
     --enable-version3 \
     --enable-vulkan \
     --enable-libfdk-aac \
-    --enable-nonfree
+    --enable-nonfree \
+    --disable-decoder=magicyuv # pixelsmash
   make
   make tools/qt-faststart
   make doc/ff{mpeg,play}.1
