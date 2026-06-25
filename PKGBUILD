@@ -1,7 +1,7 @@
 # Maintainer: dashy9000
 pkgname=stardom-card
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool to scrape and display Stardom event cards"
 arch=('x86_64')
 url="https://github.com/dashy-jngl/StardomCardGo"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('1203f8e2e6a21873d51f5eaefc1a8826e03b28691799747539a30a2c8acdf636')
 
 build() {
     cd "StardomCardGo-$pkgver"
