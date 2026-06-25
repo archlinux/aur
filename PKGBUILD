@@ -4,7 +4,7 @@
 
 pkgname=kaggle-api
 _name=${pkgname%-api}
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc='Kaggle API CLI'
 arch=('any')
@@ -24,7 +24,7 @@ depends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-hatchling')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('c35ec93f851f7253e2ae04ea1e24aedb8afd44551a7e7f721463fd6dc2256e21')
+sha256sums=('ce292c459a13950553d894ee7368d6454be53291bd75c2d27ad2bed149cdd6c4')
 
 latestver() {
   curl -s "https://pypi.org/pypi/${_name}/json" | jq -r '.info.version'
