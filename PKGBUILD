@@ -3,7 +3,7 @@
 
 pkgname=rtrlib
 pkgver=0.8.0
-pkgrel=4
+pkgrel=5
 pkgdesc="RPKI-RTR client library"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/rtrlib/rtrlib"
@@ -29,6 +29,8 @@ prepare() {
         -DCMAKE_SHARED_LINKER_FLAGS:STRING="${LDFLAGS}" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR:STRING=lib \
+        -DCMAKE_BUILD_TYPE="RelWithDebInfo" \
+        -DUNIT_TESTING=y \
         .
 }
 
@@ -39,18 +41,6 @@ build() {
 
 check() {
     cd ${srcdir}/${pkgname}-${pkgver}
-    cmake \
-        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-        -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
-        -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
-        -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
-        -DCMAKE_SHARED_LINKER_FLAGS:STRING="${LDFLAGS}" \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR:STRING=lib \
-        -DUNIT_TESTING=y \
-        .
-
-    make
     make test
 }
 
