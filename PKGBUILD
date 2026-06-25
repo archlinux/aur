@@ -3,7 +3,7 @@
 
 pkgname=python-transformers
 _pkgname=${pkgname#python-}
-pkgver=5.10.3
+pkgver=5.11.0
 pkgrel=1
 pkgdesc='State-of-the-art pretrained models for inference and training'
 arch=('any')
@@ -35,15 +35,13 @@ optdepends=(
 source=(
   "python-transformers-$pkgver.tar.gz"::"https://github.com/huggingface/transformers/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('0312703591bcd2b6589867cb33a52019cf589c514d9c228d224e7d9b8af37ff8')
+sha256sums=('15cbd6a66bf122253ccca45548270d14fc43ecfc2ef00ea6c8e22b77e11eeda9')
 
 prepare() {
   cd "transformers-$pkgver"
   # Remove annoying dependency check on `tokenizers`.
   sed -i '/tokenizers/c\    "tokenizers": "tokenizers",' \
       src/transformers/dependency_versions_table.py
-  # Fix broken release versioning.
-  sed -i 's/"5.10.4"/"5.10.3"/' setup.py src/transformers/__init__.py
 }
 
 build() {
