@@ -1,0 +1,14 @@
+pkgbase = mgp-vn-tool-deb
+	pkgdesc = A tool for visual novels association of MoegirlPedia
+	pkgver = 0.1.0
+	pkgrel = 0
+	url = https://github.com/BearBin1215/mgp-vn-tool
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = mgp-vn-tool
+	source = https://github.com/BearBin1215/mgp-vn-tool/releases/download/v0.1.0/mgp-vn-tool_0.1.0_amd64.deb
+	sha256sums = ea034694ab3149dd7d2b90f2920adbff1a9c2a75ff9d342bab2d3ab36800d30e
+
+pkgname = mgp-vn-tool-deb
