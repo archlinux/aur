@@ -3,7 +3,7 @@
 pkgname=bodyslide
 _pkgname=BodySlide
 pkgver=5.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='BodySlide and Outfit Studio, a tool to convert, create, and customize outfits and bodies for Bethesda games.'
 arch=('x86_64')
 
@@ -35,7 +35,8 @@ sha256sums=('SKIP'
 prepare() {
 	ln -srf BodySlide-and-Outfit-Studio ${pkgname}
 	ln -sf ${srcdir}/nifly/* ${pkgname}/lib/nifly
-	sed -i '139d' ${pkgname}/src/ui/WeightCopyDialog.cpp
+	sed -i 's|"\\"%s\\\\%s\\" %s",|"%s/%s %s",|' \
+${pkgname}/src/program/BodySlideApp.cpp
 }
 
 build() {
