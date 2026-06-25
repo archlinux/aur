@@ -1,6 +1,6 @@
 # Maintainer: dougEfresh <dchimento@gmail.com>
 pkgname=pi-ext-web-access
-pkgver=0.10.7
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Web search, URL fetching, and content extraction extension for pi coding agent'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/nicobailon/pi-web-access/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('869fc70ce1b23ee6b8ff83ca5814929d2a12ed45092ffc7208432948d002a33a')
+sha256sums=('6e7e0f099d35fd04a6ace8b994431eb4d64d8d9ba43e3044ca3d53a82edee8f3')
 install=pi-ext.install
 optdepends=('pi-coding-agent' 'pi-coding-agent-git')
 
