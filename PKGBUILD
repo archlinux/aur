@@ -3,7 +3,7 @@
 
 pkgname=bottles
 _pkgname=Bottles
-pkgver=63.2
+pkgver=64.1
 pkgrel=1
 epoch=2
 pkgdesc='Easily manage wine and proton prefix'
@@ -11,57 +11,59 @@ arch=(any)
 url="https://github.com/bottlesdevs/Bottles"
 license=(GPL-3.0-only)
 depends=(
-  cabextract
-  dconf
   fvs2
-  gamemode
   gtk4
   gtksourceview5
   hicolor-icon-theme
   icoextract
-  imagemagick
   libadwaita
   libportal-gtk4
-  p7zip
   patool
   python
+  python-cairo
+  python-certifi
   python-chardet
-  python-fvs
+  python-charset-normalizer
   python-gobject
+  python-idna
   python-markdown
   python-orjson
   python-pathvalidate
+  python-pefile
   python-pycurl
   python-requests
-  python-steamgriddb
+  python-urllib3
   python-yaml
   python-yara
-  webkit2gtk-4.1
-  xorg-xdpyinfo
   vkbasalt-cli
 )
-optdepends=(
-  gvfs 
-  lib32-gamemode
-  lib32-gnutls
-  lib32-vkd3d 
-  lib32-vulkan-icd-loader 
-  vkd3d
-  vulkan-icd-loader
-  wine
-)
 makedepends=(
-  blueprint-compiler
   meson
   ninja
+  blueprint-compiler
+  gobject-introspection
+  desktop-file-utils
+  appstream-glib
+  gettext
+  glib2-devel
+)
+optdepends=(
+  'vulkan-tools: vkcube test / Vulkan info'
+  'xorg-xdpyinfo: display info detection'
+  'imagemagick: icon/image conversion'
+  'vmtouch: preload bottle files into memory'
+  'mangohud: performance overlay'
+  'gamemode: feral gamemode integration'
+  'gamescope: gamescope session integration'
+  'xterm: fallback terminal for "Run executable in terminal"'
 )
 source=(
   "${_pkgname}-${pkgver}.tar.gz::https://github.com/bottlesdevs/Bottles/archive/refs/tags/${pkgver}.tar.gz"
   remove-flatpak-checks.patch
 )
 sha256sums=(
-  820a505a84003c766582de69d7008dcc0a3f4bb808a2074d7d8fa37931ca4f77
-  1d2e1417803e93a5d487d46c76ec256c301459f28854e0c8d049a8be11e50fc0
+  8d81cc6a3f25675ef15f7ec35fadba247f17634b016be7eead6af536aee8c536
+  5b4a8818bdac2bfb46615959f02ef4dc94cfcc30768357ed56e91d15842d0ea7
 )
 
 prepare() {
