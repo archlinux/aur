@@ -13,8 +13,10 @@ url="https://github.com/mcpp-community/mcpp"
 license=('Apache-2.0')
 # mcpp/xlings are statically linked; git is used for package-index sync.
 depends=('git')
-provides=('mcpp')
-conflicts=('mcpp')
+# mcpp-m = same tool (mutually exclusive); mcpp = Matsui's C preprocessor
+# (extra/mcpp), which also owns /usr/bin/mcpp. No `provides=mcpp` — that name
+# is the preprocessor, not us.
+conflicts=('mcpp-m' 'mcpp')
 # Prebuilt upstream binaries — do not strip/repackage them.
 options=('!strip')
 
