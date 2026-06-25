@@ -1,6 +1,6 @@
 # Maintainer: munenick <https://github.com/MuNeNICK>
 pkgname=hypr-rdp-git
-pkgver=0.1.1.r0.gffa17c9
+pkgver=0.1.3.r1.gafec3bd
 pkgrel=1
 pkgdesc="Native RDP server for Hyprland"
 arch=('x86_64')
@@ -9,6 +9,7 @@ license=('MIT')
 options=(!debug)
 depends=(
     'ffmpeg'
+    'libpulse'
     'libva'
     'libxkbcommon'
     'mesa'
@@ -33,7 +34,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$pkgname"
     git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "0.1.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    printf "0.1.3.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
@@ -56,4 +57,5 @@ package() {
     install -Dm755 "target/release/hypr-rdp" "$pkgdir/usr/bin/hypr-rdp"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 }
