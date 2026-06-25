@@ -1,0 +1,3 @@
+[perl-class-c3-componentised]
+source = "cpan"
+cpan = "Class-C3-Componentised"
