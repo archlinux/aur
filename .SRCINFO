@@ -1,0 +1,15 @@
+pkgbase = jotdown-git
+	pkgdesc = A Djot parser
+	pkgver = 0.10.0.8.gd46dab4
+	pkgrel = 1
+	url = https://github.com/hellux/jotdown
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	optdepends = rust-src: optimize with RUSTC_BOOTSTRAP=1
+	source = git+https://github.com/hellux/jotdown.git
+	b2sums = SKIP
+
+pkgname = jotdown-git
