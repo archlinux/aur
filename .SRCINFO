@@ -15,6 +15,6 @@ pkgbase = leenfetch
 	provides = leenfetch
 	conflicts = leenfetch
 	source = leenfetch-1.2.2.tar.gz::https://github.com/drunkleen/leenfetch/archive/refs/tags/v1.2.2.tar.gz
-	sha256sums = af2f003f04e596c3ed3cc260c6fb2661d117476f9071376a0671c7bab8deb204
+	sha256sums = ac5e25875711d7d0632de22a2f2ec8941e9038bf948558ec6ad40f10d48958dc
 
 pkgname = leenfetch
