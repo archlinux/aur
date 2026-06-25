@@ -1,0 +1,4 @@
+[python-dnfile]
+source = "git"
+git = "https://github.com/malwarefrank/dnfile.git"
+prefix = "v"

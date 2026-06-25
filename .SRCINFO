@@ -1,16 +1,21 @@
 pkgbase = python-dnfile
 	pkgdesc = Python .NET executable parsing module
-	pkgver = 0.13.0
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/malwarefrank/dnfile
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
 	depends = python-pefile
-	source = dnfile-0.13.0.tar.gz::https://github.com/malwarefrank/dnfile/archive/v0.13.0/dnfile-0.13.0.tar.gz
-	sha256sums = 48b9b2ed3b295ab3d9f93639b2418915cee7970cb57ef56f858e3610e1b45ea8
+	source = python-dnfile-0.18.0.tar.gz::https://github.com/malwarefrank/dnfile/archive/v0.18.0.tar.gz
+	source = test-data::git+https://github.com/malwarefrank/dnfile-testfiles
+	sha256sums = a71ad659b97dbd6bec52b0e97e5299986a970aa70b7ad35cd23f07442c05ddfb
+	sha256sums = SKIP
 
 pkgname = python-dnfile
