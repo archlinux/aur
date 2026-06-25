@@ -1,6 +1,6 @@
 pkgbase = aingdesk-git
 	pkgdesc = A simple and easy-to-use AI assistant that supports knowledge bases, model APIs, sharing, internet search, and intelligent agents.(Use system-wide electron)
-	pkgver = 1.1.8.r0.g25503be
+	pkgver = 1.2.4.r1.g40b1be5
 	pkgrel = 1
 	url = https://www.aingdesk.com/
 	arch = any
@@ -9,15 +9,14 @@ pkgbase = aingdesk-git
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
+	makedepends = jq
 	depends = electron31
-	depends = python
-	depends = python-requests
 	optdepends = ollama: Use your local LLMs
-	provides = aingdesk=1.1.8
+	provides = aingdesk=1.2.4
 	conflicts = aingdesk
 	source = aingdesk.git::git+https://github.com/aingdesk/AingDesk.git
 	source = aingdesk.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = aingdesk-git
