@@ -15,7 +15,7 @@ sha256sums=('e3af30c4e2345b7a71b0a6f6d5d5a93e51bf1d2c276817fbcd1853c6930e7195')
 
 package() {
   cd "$srcdir"
-  bsdtar -xf ${srcdir}/data.tar.gz -C ${pkgdir}/
+  bsdtar -xf ${srcdir}/data.tar.zst -C ${pkgdir}/
 
   chown root:root -vR "${pkgdir}/"
   chmod 755 -vR "${pkgdir}/usr/bin"
