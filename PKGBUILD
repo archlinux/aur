@@ -1,6 +1,6 @@
 # Maintainer: rg-Sens Contributors
 pkgname=rg-sens
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="A fast, customizable system monitoring dashboard for Linux"
 arch=('x86_64')
@@ -26,7 +26,7 @@ install=rg-sens.install
 provides=('rg-sens')
 conflicts=('rg-sens-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f321619ef0f45f757201e78275ad9ab6c3ed9d77d181cd463b3670284ad9ec83')
+sha256sums=('8dfae7e04295fd2169aa556fb5f5d9a669fa5986fd94202f0d60478ab986be3c')
 
 build() {
     cd "rg-Sens-$pkgver"
