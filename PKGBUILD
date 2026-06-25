@@ -8,12 +8,12 @@ license=('AGPL3')
 arch=('aarch64' 'x86_64')
 depends=('ffmpeg' 'opus')
 makedepends=('cargo' 'cmake' 'git')
-url='https://simonrepp.com/faircamp'
 conflicts=('faircamp')
 provides=('faircamp')
 options=('!lto')
 source=('faircamp-git::git+https://codeberg.org/simonrepp/faircamp.git')
 md5sums=('SKIP')
+url='https://faircamp.org'
 
 build() {
     export RUSTUP_TOOLCHAIN=stable
