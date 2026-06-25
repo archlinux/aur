@@ -1,7 +1,7 @@
 pkgbase = gitversion
 	pkgdesc = From git log to SemVer in no time
 	pkgver = 6.7.0
-	pkgrel = 4
+	pkgrel = 6
 	url = https://github.com/GitTools/GitVersion
 	arch = x86_64
 	license = MIT
@@ -9,9 +9,12 @@ pkgbase = gitversion
 	makedepends = moreutils
 	makedepends = jq
 	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	options = !debug
 	options = !strip
 	options = staticlibs
-	source = https://github.com/GitTools/GitVersion/archive/refs/tags/6.7.0.tar.gz
+	source = gitversion-6.7.0.tar.gz::https://github.com/GitTools/GitVersion/archive/refs/tags/6.7.0.tar.gz
 	sha512sums = d86688a3fa6bc68fa72ee10c0ba6372dd6cb9ffeab24bfce2f2ddf10e27a9c4bffb636a27660fc3a1edd4a60980bfc990dd6c8c53748c5de6f6253193b7f4893
 
 pkgname = gitversion
