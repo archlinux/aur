@@ -8,7 +8,7 @@ url="https://github.com/LazySeldi/lazybios"
 license=('MIT')
 depends=('glibc')
 makedepends=('cmake')
-source=("https://github.com/LazySeldi/lazybios/releases/download/$pkgver/lazybios-$pkgver.tar.gz")
+source=("https://github.com/LazySeldi/lazybios/releases/download/$pkgver/lazybios$pkgver.tar.gz")
 sha256sums=('1441aeb98dbb1c0e18335b01bf1ac75830a77be2302e6a88e396a750aba56314')
 
 build() {
