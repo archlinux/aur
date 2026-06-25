@@ -7,7 +7,7 @@ pkgname=${_appname}-bin
 pkgtitle="API Client"
 pkgdesc="Fast, lightweight, git-native API client"
 
-pkgver=0.1.5
+pkgver=0.1.8
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,10 +31,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
-sha256sums=('815e1d2654dcedbc7c87e1801b82f2efa41bd4532aafd01151036f1d0e081e1d'
+sha256sums=('c81953b379a2f47ee537705c134f28671edc87cdcd68d4a2ce0f2ff0daafe0fb'
             '9be541594ab169eaf1bb278300d81a1fe2bf399980ca2505e978a225ba9d8e0e')
-sha256sums_x86_64=('db53ff204ad28c13b4f4922577e4bcf68cabd07fdefb85b83262e9072a48a5f3')
-sha256sums_aarch64=('db53ff204ad28c13b4f4922577e4bcf68cabd07fdefb85b83262e9072a48a5f3')
+sha256sums_x86_64=('1b03cd98536be991c41cdd8d503c67ef6fb43e86b50e3febb1bc8e08c2d23e81')
+sha256sums_aarch64=('1b03cd98536be991c41cdd8d503c67ef6fb43e86b50e3febb1bc8e08c2d23e81')
 
 
 prepare() {
