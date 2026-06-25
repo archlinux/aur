@@ -3,7 +3,7 @@
 pkgbase=ch34x-mphsi-master-git
 pkgname=(ch34x-mphsi-master-git)
 pkgver=r17.f33863f
-pkgrel=4
+pkgrel=6
 pkgdesc="CH341A/B/C/F/H/T | CH347F/T | CH339W Linux USB to SPI/I2C/GPIO Controller Driver"
 arch=('any')
 url="https://github.com/WCHSoftGroup/ch34x_mphsi_master_linux"
@@ -37,22 +37,16 @@ prepare()
 }
 
 package() {
-
     cd "$srcdir/${pkgbase}/driver"
     rm -rf Makefile
     install -Dm755 /dev/stdin  Makefile <<EOF
-KERNELDIR := /lib/modules/\$(shell uname -r)/build
 obj-m := ch34x_mphsi_master.o
 ch34x_mphsi_master-y := ch34x_mphsi_master_usb.o ch34x_mphsi_master_spi.o ch34x_mphsi_master_i2c.o ch34x_mphsi_master_gpio.o
 
-ifdef KERNELDIR
+KERNELDIR ?= /lib/modules/\$(shell uname -r)/build
+
 all:
 	\$(MAKE) -C \$(KERNELDIR) M=\$(PWD) modules
-else
-all:
-	@echo "Error: KERNELDIR is undefined. Please specify KERNELDIR=\$(KERNELDIR)"
-	@exit 1
-endif
 
 clean:
 	\$(MAKE) -C \$(KERNELDIR) M=\$(PWD) clean
@@ -65,7 +59,7 @@ EOF
     install -Dm0644 /dev/stdin "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver}/dkms.conf" <<EOF
 PACKAGE_NAME="ch34x_mphsi_master"
 PACKAGE_VERSION="${pkgver}"
-MAKE[0]="make"
+MAKE[0]="make KERNELDIR=/lib/modules/\${kernelver}/build"
 BUILT_MODULE_NAME[0]="ch34x_mphsi_master"
 MAKEFILE="Makefile"
 DEST_MODULE_LOCATION[0]="/kernel/drivers/usb/misc"
@@ -78,3 +72,4 @@ EOF
 
     install -Dm644 ../README.md "${pkgdir}/usr/src/${pkgbase%-git}-${pkgver}/README.md"
 }
+
