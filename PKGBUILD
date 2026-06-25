@@ -2,7 +2,7 @@
 
 pkgname=bruno
 pkgdesc="Opensource API Client for Exploring and Testing APIs"
-pkgver=3.4.2
+pkgver=3.5.0
 pkgrel=1
 arch=('x86_64')
 url="https://www.usebruno.com/"
@@ -23,10 +23,8 @@ source=(
    com.usebruno.app.Bruno.desktop
 )
 
-sha256sums=(
-    '8a3805812a7d15603184f6e1828a3138555767f08591327435b4bd566074b6b6'
-    '62a5857397cbce6c8668651728c013ceb8dea0fde22c290380d6092d1a7edeff'
-)
+sha256sums=('085360a0b98330800fea72b136935cb9711a9b2da52ab27af4dc2a4412421cd9'
+            '62a5857397cbce6c8668651728c013ceb8dea0fde22c290380d6092d1a7edeff')
 
 _ensure_local_nvm() {
   # lets be sure we are starting clean
