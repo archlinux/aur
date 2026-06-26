@@ -1,7 +1,7 @@
 # Maintainer: Twilight <>
 
 pkgname=dory-git-tags-git
-pkgver=r2
+pkgver=r3
 pkgrel=1
 pkgdesc="Git integration extension for Dory file manager"
 arch=('any')
