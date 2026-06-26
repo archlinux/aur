@@ -12,10 +12,10 @@ provides=('KAPI')
 conflicts=('KAPI')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/slouowzee/KAPI/releases/download/v1.2.0-beta.1/KAPI_linux_arm64.tar.gz")
-sha256sums_aarch64=('bbe29030db045d1af7ccb08df0896d1680a12529b974e0cd7fadb492220e4770')
+sha256sums_aarch64=('9d2bfd1e75125876b28ef608e36a002ce31b36c1ec6f68cbe4c934148a22dcd1')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/slouowzee/KAPI/releases/download/v1.2.0-beta.1/KAPI_linux_amd64.tar.gz")
-sha256sums_x86_64=('e3fd99ad6176552a62f6ca8b18167685b60e1598f9a6066f4b73e56b8ae67e35')
+sha256sums_x86_64=('cee15ea6a9f0103c294b344431254be203b1fada122c6f6779a3f6c90a6e9a70')
 
 package() {
   install -Dm755 "./kapi" "${pkgdir}/usr/bin/kapi"
