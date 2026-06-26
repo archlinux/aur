@@ -1,6 +1,6 @@
 # Maintainer: Jakob Munch Overgaard <jmo@tvipper.com>
 pkgname=remotepower-server
-pkgver=5.1.1
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='Self-hosted fleet-management server for RemotePower (nginx + Python CGI): dashboards, CVE/drift/compliance, monitoring, AI'
 arch=('any')
@@ -14,6 +14,8 @@ optdepends=(
   'python-webauthn: passkey / WebAuthn MFA (AUR)'
   'python-pysaml2: SAML SSO (AUR)'
   'xmlsec: SAML signature verification (pairs with python-pysaml2)'
+  'wireguard-go: WG Access road-warrior VPN hub (Admin -> WG Access)'
+  'wireguard-tools: WG Access — wg/wg-quick used by the VPN hub helper'
 )
 backup=('etc/nginx/snippets/remotepower-locations.conf')
 install="$pkgname.install"
@@ -24,7 +26,7 @@ source=(
   "remotepower-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/remotepower-$pkgver.tar.gz.asc"
 )
 sha256sums=(
-  '4f6f6dd1728fcaaee9aeabc46f3f2da486b80137d1208252dfaf529f84e22220'
+  'c2208146c5f4524d2ab0b27e5295dfaf26eea706ff196fa67b619728af7082ea'
   'SKIP'
 )
 validpgpkeys=('E7B5AD456728B8462A8B54BFD488AF115D2CCDBF')  # Jakob Munch Overgaard <jmo@tvipper.com>
@@ -69,6 +71,17 @@ package() {
 
   # Agent binary, served read-only for agent self-update (/api/agent/download).
   install -m755 client/remotepower-agent "$web/agent/remotepower-agent"
+
+  # ── WG Access (v5.2.0): root-owned privileged helper + scoped sudoers. The CGI
+  #    runs unprivileged and shells out to this one script (argv-only JSON spec)
+  #    via a NOPASSWD rule for the nginx user (http). wireguard-go is an optdepend;
+  #    until it's installed the WG Access page just shows an "unavailable" notice. ──
+  install -Dm755 packaging/remotepower-wg-apply \
+    "$pkgdir/usr/local/sbin/remotepower-wg-apply"
+  install -dm750 "$pkgdir/etc/sudoers.d"
+  printf 'http ALL=(root) NOPASSWD: /usr/local/sbin/remotepower-wg-apply\n' \
+    > "$pkgdir/etc/sudoers.d/remotepower-wg"
+  chmod 440 "$pkgdir/etc/sudoers.d/remotepower-wg"
 
   # ── nginx: shared locations snippet (works as-is with /var/www/remotepower). ──
   install -Dm644 server/conf/remotepower-locations.conf \
