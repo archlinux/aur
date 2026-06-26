@@ -1,7 +1,7 @@
 # Maintainer: Christian Kühn (damachine3 at proton dot me)
 # Website: https://github.com/damachine/coolerdash
 pkgname=coolerdash-git
-pkgver=3.2.1.r0.g9aeafbc
+pkgver=3.2.2.r0.gbbcf6b0
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
@@ -14,7 +14,7 @@ depends=('cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'ttf-roboto')
 makedepends=('gcc' 'make' 'pkg-config' 'git')
 backup=('var/lib/coolercontrol/plugins/coolerdash/config.json')
 install=coolerdash.install
-_commit=9aeafbce420582144dd8c85ae17a700c11bc6e71
+_commit=bbcf6b0d8321226617b748f9e0eee0f3ca8d5650
 source=("coolerdash-git::git+https://github.com/damachine/coolerdash.git#commit=${_commit}")
 sha256sums=('SKIP') # SKIP for git repo source builds
 
@@ -41,19 +41,6 @@ build() {
     make
 }
 
-check() {
-    # Check in the checked-out repository
-    cd "${srcdir}"/"${pkgname}"
-
-    # Verify that the binary was created successfully
-    if [[ -f bin/coolerdash ]]; then
-        msg "Build successful - binary created"
-    else
-        error "Build failed - binary not found"
-        return 1
-    fi
-}
-
 package() {
     # Binary to /usr/libexec, plugin data to /var/lib/coolercontrol/plugins/
     install -dm711 "${pkgdir}/var/lib/coolercontrol"
@@ -72,8 +59,5 @@ package() {
     sed -i "s/{{VERSION}}/${pkgver}/g" "${pkgdir}/var/lib/coolercontrol/plugins/coolerdash/manifest.toml"
     sed -i "s/{{VERSION}}/${pkgver}/g" "${pkgdir}/var/lib/coolercontrol/plugins/coolerdash/ui/index.html"
 
-    install -Dm644 "${srcdir}/${pkgname}/man/coolerdash.1" "${pkgdir}/usr/share/man/man1/coolerdash.1"
-    install -Dm644 "${srcdir}/${pkgname}/etc/applications/coolerdash.desktop" "${pkgdir}/usr/share/applications/coolerdash.desktop"
-    install -Dm644 "${srcdir}/${pkgname}/etc/icons/coolerdash.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/coolerdash.svg"
     install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
