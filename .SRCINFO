@@ -14,7 +14,9 @@ pkgbase = dory-git
 	depends = xapp
 	depends = gtk3
 	provides = dory
+	provides = nemo
 	conflicts = dory
+	conflicts = nemo
 	source = dory::git+https://github.com/Twilight0/dory.git
 	sha256sums = SKIP
 

@@ -19,8 +19,8 @@ makedepends=(
   meson
   gobject-introspection
 )
-provides=(dory)
-conflicts=(dory)
+provides=(dory nemo)
+conflicts=(dory nemo)
 source=("dory::git+https://github.com/Twilight0/dory.git")
 sha256sums=('SKIP')
 
