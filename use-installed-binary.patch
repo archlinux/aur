@@ -1,0 +1,60 @@
+--- a/src/jcodemunch_mcp/cli/init.py	2026-06-26 22:31:44.642898061 +1200
++++ b/src/jcodemunch_mcp/cli/init.py	2026-06-26 22:32:35.199798541 +1200
+@@ -93,10 +93,21 @@
+ The `model=` parameter rides on the existing `plan_turn` call — it does **not** add a separate tool invocation. If `plan_turn` is not appropriate for a non-code task, call `announce_model(model="...")` once instead.
+ """
+ 
+-_MCP_ENTRY = {
+-    "command": "uvx",
+-    "args": ["jcodemunch-mcp"],
+-}
++def _server_command() -> str:
++    """Executable for the MCP server entry.
++
++    This distro package installs a real ``jcodemunch-mcp`` on PATH, so launch
++    it directly. The upstream default of ``uvx jcodemunch-mcp`` is wrong for a
++    system install: ``uvx`` may not be present (and is not a dependency), and
++    even when it is it fetches a *separate* copy from PyPI, bypassing the
++    installed package. Resolve to an absolute path so it works regardless of
++    the spawning shell's PATH; fall back to the bare name.
++    """
++    return shutil.which("jcodemunch-mcp") or "jcodemunch-mcp"
++
++
++def _mcp_entry() -> dict[str, Any]:
++    return {"command": _server_command(), "args": []}
+ 
+ def _hook_invocation() -> str:
+     """Return the executable path used in hook command strings.
+@@ -293,7 +304,7 @@
+ 
+     if "mcpServers" not in data:
+         data["mcpServers"] = {}
+-    data["mcpServers"]["jcodemunch"] = _MCP_ENTRY
++    data["mcpServers"]["jcodemunch"] = _mcp_entry()
+     _write_json(path, data, backup=backup)
+     return f"  added jcodemunch to {path}"
+ 
+@@ -312,18 +323,19 @@
+ 
+ def _configure_claude_code(*, dry_run: bool = False) -> str:
+     """Run `claude mcp add` for Claude Code CLI."""
++    exe = _server_command()
+     if dry_run:
+-        return "  would run: claude mcp add jcodemunch uvx jcodemunch-mcp"
++        return f"  would run: claude mcp add jcodemunch {exe}"
+     claude = _claude_cli_exe()
+     if not claude:
+         return "  claude CLI not found — skipped"
+     try:
+         result = subprocess.run(
+-            [claude, "mcp", "add", "jcodemunch", "uvx", "jcodemunch-mcp"],
++            [claude, "mcp", "add", "jcodemunch", exe],
+             capture_output=True, text=True, timeout=30,
+         )
+         if result.returncode == 0:
+-            return "  ran: claude mcp add jcodemunch uvx jcodemunch-mcp"
++            return f"  ran: claude mcp add jcodemunch {exe}"
+         # Already exists or other non-fatal issue
+         stderr = result.stderr.strip()
+         if "already exists" in stderr.lower():

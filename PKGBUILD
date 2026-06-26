@@ -4,7 +4,7 @@
 pkgname=jcodemunch-mcp
 _pkgname=jcodemunch_mcp
 pkgver=1.108.82
-pkgrel=1
+pkgrel=2
 pkgdesc="Token-efficient MCP server for source code exploration via tree-sitter AST parsing"
 arch=(any)
 url="https://github.com/jgravelle/jcodemunch-mcp"
@@ -40,8 +40,23 @@ optdepends=(
   'python-numpy: voice features (groq-voice extra)'
   'python-sounddevice: voice features (groq-voice extra)'
 )
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('8b9f6eee2f65a40f8a472d19b7ae5779aeeca72e38a00ec0f0c657f8d71e542f')
+source=(
+  "https://files.pythonhosted.org/packages/source/${_pkgname::1}/$pkgname/$_pkgname-$pkgver.tar.gz"
+  use-installed-binary.patch
+)
+sha256sums=(
+  '8b9f6eee2f65a40f8a472d19b7ae5779aeeca72e38a00ec0f0c657f8d71e542f'
+  'be3cfbcec8e4008d967ac9d5ebf7015c5eb7739381d5fe2976060961be6fbef0'
+)
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+  # `jcodemunch-mcp init` otherwise writes MCP/`claude mcp add` configs that
+  # launch the server via `uvx jcodemunch-mcp`. uvx isn't a dependency (and may
+  # be absent), and even when present it fetches a separate copy from PyPI
+  # instead of this installed package. Point the configs at the installed binary.
+  patch -Np1 -i "$srcdir/use-installed-binary.patch"
+}
 
 build() {
   cd "$_pkgname-$pkgver"
