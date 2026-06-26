@@ -1,3 +1,81 @@
+## [0.2.8] - 2026-06-25
+
+A major feature release introducing workflow automation, system tray integration, improved Linux packaging, and numerous usability and stability improvements.
+
+### New Features
+
+- Added a **System Tray** integration with support for minimizing to the tray and quick actions (Play/Pause, Stop All, Quit).
+- Added **Watch Folder** support to automatically monitor directories and process newly added files with a workflow.
+- Added an **Import** button for opening `.ffgraph` workflow files via drag-and-drop or the native file picker.
+- Added **Context Features** for managing tag relationships and context-aware workflow operations.
+- Introduced descriptive **Empty State** screens across Queue, Logs, Timeline, Stream, and Compare panels.
+- Added a configurable default limit for log entries (default: 2000).
+- Switched to the native system file picker for file selection.
+
+### Linux & Packaging
+
+- Reworked AppImage packaging with a simplified script-based build process that no longer requires FUSE or `appimagetool`.
+- Bundled GStreamer plugins and shared libraries from Ubuntu 22.04 for improved ABI compatibility.
+- Fixed Linux startup issues by setting `GIO_MODULE_DIR=/nonexistent` to prevent `libgvfsdbus` crashes.
+- Bundled `gst-plugins-bad` and `gst-libav` to improve H.264/MP4 playback support.
+- Improved Debian packaging with proper AppStream metadata, license information, and runtime dependency declarations.
+- Expanded CI to support manual builds, producing `.deb`, `.AppImage`, and checksum artifacts.
+
+### Bug Fixes & Improvements
+
+- Fixed timeline preview instability causing video shaking.
+- Fixed keyboard shortcuts on non-US keyboard layouts.
+- Improved workflow command handling for file paths containing spaces.
+- Improved FFmpeg error reporting for invalid executable paths.
+- Fixed a UI race condition causing workflow switching flicker.
+- Fixed a Linux black screen issue by disabling the WebKitGTK DMA-BUF renderer by default.
+- Fixed glyph rendering issues affecting application icons.
+- Removed unnecessary system tray rebuilds to improve responsiveness.
+- Corrected CSS styling issues in the workflow settings UI.
+
+### Infrastructure
+
+- Bundled video.js v8.23.4 and Font Awesome 6.4.0 as local assets, removing CDN dependencies.
+- Improved the internal HTTP server to dynamically probe ports 9200–9299 when selecting an available port.
+
+### What's Changed
+
+- System tray support
+- Watch Folder automation
+- Workflow import improvements
+- Context-aware workflow operations
+- Linux packaging overhaul
+- Numerous bug fixes and UI improvements
+- Infrastructure and dependency updates
+
+This release focuses on workflow automation, Linux reliability, packaging improvements, and overall usability, making FFStudio more capable for both desktop and production workflows.
+
+## [0.2.7] - 2026-02-28
+
+Introduced undo/redo support, an experimental Variables node, parser improvements, and several quality-of-life enhancements.
+
+### New Features
+
+- Added full **Undo** and **Redo** support for graph editing.
+- Added an experimental **Variables** control node for centralized configuration and value reuse across workflows.
+
+### Bug Fixes & Improvements
+
+- Improved FFmpeg command parser flexibility and compatibility.
+- Changed `sws_flags` from an enum to a string input, allowing multiple FFmpeg scaling flags to be specified.
+- Improved argument handling for complex FFmpeg commands.
+- Miscellaneous stability and quality-of-life improvements.
+
+### Experimental
+
+- **Variables** node — define reusable configuration values in a single location and reference them throughout a workflow.
+
+### What's Changed
+
+- Feature/undo redo by @Draver93 in #20
+
+This release focuses on improving the editing experience with undo/redo support while expanding workflow flexibility through the experimental Variables node and enhanced FFmpeg argument handling.
+
 ## [0.2.6] - 2026-02-10
 
 Improved stability and usability of the command parser.
