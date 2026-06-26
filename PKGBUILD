@@ -1,6 +1,6 @@
 # Maintainer: detestern <detestern@proton.me>
 pkgname=karincore-git
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="KarinCore - Modern and secure proxy client"
 arch=('x86_64')
