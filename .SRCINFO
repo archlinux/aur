@@ -1,14 +1,14 @@
 pkgbase = dman
 	pkgdesc = A dotfile manager focused on Git overlay model and snapshots
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/alexjoedt/dman
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = dman-1.4.1-x86_64.tar.gz::https://github.com/alexjoedt/dman/releases/download/v1.4.1/dman_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = c811a1048b534c513ddf3afcfdc39ffe84e5fca3d7dc01fc40d75db7f0142178
-	source_aarch64 = dman-1.4.1-aarch64.tar.gz::https://github.com/alexjoedt/dman/releases/download/v1.4.1/dman_Linux_arm64.tar.gz
-	sha256sums_aarch64 = c13412cdad20540e6c26c3139d283dae86f3a70bd1cbecf213896824ebd0345d
+	source_x86_64 = dman-1.5.0-x86_64.tar.gz::https://github.com/alexjoedt/dman/releases/download/v1.5.0/dman_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = ecfa95f2232726094d39b932f550ffb6d6c98a7798ba44c7399c54d4c798a11e
+	source_aarch64 = dman-1.5.0-aarch64.tar.gz::https://github.com/alexjoedt/dman/releases/download/v1.5.0/dman_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 60ca0b9128f92c1fa24b9b9c50b1249ec9d301fbb265a0518c7e1ab651c13402
 
 pkgname = dman
