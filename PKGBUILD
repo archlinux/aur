@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous-git
 pkgbase=aqueous
-pkgver=0.1.0.r219.gcb55ad8 # Will be updated by pkgver()
+pkgver=0.1.0.r263.gd1de190 # Will be updated by pkgver()
 pkgrel=1
 pkgdesc="Aqueous Wayland window manager bundled with RiverDelta"
 arch=('x86_64' 'aarch64')
@@ -13,12 +13,15 @@ depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
          'noctalia-shell' 'libdecor' 'grim' 'slurp' 'xwayland-satellite'
          'xdg-desktop-portal-wlr' 'wlroots0.20' 'wl-clipboard'
          'xdg-desktop-portal-gtk' 'libnotify' 'swaylock-effects' 'swayidle'
+         # uwsm manages the session lifecycle (env export, graphical-session.target,
+         # clean teardown). The aqueous.desktop session entry execs `uwsm start`.
+         'uwsm'
          # NativeAOT runtime link targets (BCL dlopens/dynlinks against these).
          'zlib' 'krb5' 'openssl' 'scenefx')
 makedepends=('dotnet-sdk-10.0' 'clang' 'lld' 'llvm' 'zlib' 'krb5' 'openssl'
              'git' 'wayland-protocols' 'scenefx')
-optdepends=('ly: tuigreeter'
-            'greetd: minimal login manager for tuigreet'
+optdepends=('ly: recommended display manager / login greeter'
+            'greetd: alternative minimal login manager for tuigreet'
             'tabby: recommended terminal emulator'
             'nemo: recommended file manager'
             'firefox: web browser'
@@ -154,6 +157,13 @@ package() {
     install -Dm755 "$srcdir/aqueous/packaging/aqueous-wm.sh" "$pkgdir/usr/bin/aqueous-wm"
     install -Dm644 "$srcdir/aqueous/aqueous.desktop" "$pkgdir/usr/share/wayland-sessions/aqueous.desktop"
 
+    # uwsm environment file. uwsm sources /etc/uwsm/env-aqueous (the -aqueous
+    # suffix matches DesktopNames=Aqueous) before launching the compositor and
+    # exports the static toolkit/backend hints into the systemd --user / D-Bus
+    # environment, so user-unit-launched apps inherit them too.
+    install -Dm644 "$srcdir/aqueous/packaging/uwsm/env-aqueous" \
+        "$pkgdir/etc/uwsm/env-aqueous"
+
     # xdg-desktop-portal routing config. Pins ScreenCast/Screenshot to the
     # wlroots backend (xdg-desktop-portal-wlr) so screen sharing works out of
     # the box and is not silently won by a competing backend (cosmic/gtk).
@@ -179,6 +189,21 @@ package() {
     # logout — making the portal (and flameshot/screencast) work out of the box.
     install -Dm644 "$srcdir/aqueous/packaging/aqueous-session.target" \
         "$pkgdir/usr/lib/systemd/user/aqueous-session.target"
+
+    # Noctalia shell as a graphical-session.target user unit. This brings the
+    # SNI tray watcher (org.kde.StatusNotifierWatcher) up BEFORE
+    # xdg-desktop-autostart.target, so tray apps autostarted by uwsm register
+    # against a live watcher and their icons populate on first login. The
+    # symlink in graphical-session.target.wants pulls it in on every session
+    # with zero per-user action (mirrors how the rest of the session is wired).
+    # Replaces the old [[exec]] noctalia block in wm.toml (which lost the
+    # startup race because it launched the bar after Aqueous had already
+    # started, post xdg-desktop-autostart.target).
+    install -Dm644 "$srcdir/aqueous/packaging/noctalia.service" \
+        "$pkgdir/usr/lib/systemd/user/noctalia.service"
+    install -d "$pkgdir/usr/lib/systemd/user/graphical-session.target.wants"
+    ln -s ../noctalia.service \
+        "$pkgdir/usr/lib/systemd/user/graphical-session.target.wants/noctalia.service"
 
     # tmpfiles snippet: materialises per-user state/cache/config dirs at
     # login via systemd-tmpfiles --user.
