@@ -11,6 +11,8 @@ pkgbase = simplesinewavegenerator-git
 	makedepends = libpulse
 	depends = gtk3
 	optdepends = pulseaudio: PulseAudio backend (or pipewire-pulse)
+	conflicts = simplesinewavegenerator-bin
+	provides = simplesinewavegenerator
 	source = git+https://github.com/ixnewton/simpleSineWaveGenerator.git#branch=Sweep-Generator-aur
 	sha256sums = SKIP
 
