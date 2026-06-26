@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-activities
-pkgver=6.7.0
+pkgver=6.7.1
 pkgrel=1
 pkgdesc='Core components for SonicDE Activities'
 arch=(x86_64)
@@ -23,7 +23,7 @@ provides=(plasma-activities)
 conflicts=(kactivities plasma-activities)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('1f700d7b338abb270012384d61a049420412af2d2e30b5c1d5fea2c9cc162a66')
+sha256sums=('3aed97129d150ee4136cfd9904e1264c8936dc95adace9e5efe1160ad67d1f36')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
