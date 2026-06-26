@@ -1,5 +1,5 @@
 # Contributor: kaduvert
-pkgname=kptools
+pkgname=kptools-bin
 pkgver=0.13.1
 pkgrel=1
 pkgdesc="Patching and hooking the Linux kernel with only a stripped Linux kernel image."
