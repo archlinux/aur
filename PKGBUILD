@@ -1,6 +1,6 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=wl-longshot-git
-pkgver=r44.861dccf
+pkgver=r46.4df957f
 pkgrel=1
 pkgdesc="A scrolling screenshot tool (long screenshot tool) for Wayland Compositors"
 arch=('x86_64')
