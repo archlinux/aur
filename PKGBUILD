@@ -1,11 +1,12 @@
 # Maintainer: Tymour Kadry <tymitaly@gmail.com>
 pkgname=dictapulse-bin
 _appname=DictaPulse
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Local AI voice dictation for KDE Plasma (Wayland) — prebuilt Vulkan AppImage"
 arch=('x86_64')
-url="https://github.com/Silverhairfx/DictaPulse"
+url="https://dictapulse.com"
+_repo="https://github.com/Silverhairfx/DictaPulse"
 license=('GPL-3.0-or-later')
 # Qt/KF6 are bundled inside the AppImage; only host-provided deps are listed.
 depends=('ffmpeg' 'hicolor-icon-theme')
@@ -17,9 +18,9 @@ optdepends=(
 provides=('dictapulse')
 conflicts=('dictapulse')
 options=('!strip')   # prebuilt bundle — do not strip its libraries
-source=("$_appname-$pkgver-$CARCH.AppImage::$url/releases/download/v$pkgver/$_appname-$pkgver-$CARCH.AppImage")
+source=("$_appname-$pkgver-$CARCH.AppImage::$_repo/releases/download/v$pkgver/$_appname-$pkgver-$CARCH.AppImage")
 noextract=("$_appname-$pkgver-$CARCH.AppImage")   # extracted manually in package()
-sha256sums=('a61d2ea3828d6f6401ecc3a97dcd99c3158ee8f008332b3427b1023471830383')
+sha256sums=('5b06e315aed7abfc3723065d8c00d7de057f3ad636fd2c7711a60f17f487eca5')
 
 package() {
   cd "$srcdir"
