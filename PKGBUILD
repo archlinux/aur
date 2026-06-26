@@ -1,7 +1,7 @@
 #!/bin/bash
 # Maintainer: Alexandre Andrade <alex.andrade@alexandrade.me>
 pkgname=apidog-bin
-pkgver=2.8.33
+pkgver=2.8.35
 pkgrel=1
 pkgdesc="Design. Debug. Test. Document. Mock.Build APIs Faster & Together."
 provides=('apidog')
@@ -36,5 +36,5 @@ package() {
         "${pkgdir}/usr/share/icons/hicolor/512x512/apps/apidog.png"
 }
 
-sha256sums_x86_64=('4629a5ccf9080059ac4e0b52068719cb88364b7782bc6abfafdf77bb41a38ffe'
+sha256sums_x86_64=('839f9f30ff31bde1f371b531d9ea1893746977b3654308ab4a0c1fea7e2be8cc'
                    'df7ead28acf1b9ed171b08c4db34efbe0d1689bce594ccc68408e75af9cb8bc5')
