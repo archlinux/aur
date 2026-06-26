@@ -23,7 +23,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 provides=('bearhub' 'bauh')
 conflicts=('bearhub-git' 'bauh' 'bauh-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}-bearhub.6.tar.gz")
-sha256sums=('50f61c09e1dc71b50ec8b4e57c15adee99726358b5071ad9047095e6f4546d7c')
+sha256sums=('6fa9dfbff1cdb86a5eb837275170434069d320fd3072324ca9f4eb4beea92a04')
 
 build() {
   cd "$srcdir/$pkgname-${pkgver}-bearhub.6"

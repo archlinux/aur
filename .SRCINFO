@@ -25,6 +25,6 @@ pkgbase = bearhub
 	conflicts = bauh
 	conflicts = bauh-git
 	source = bearhub-0.10.7.tar.gz::https://github.com/spalencsar/bearhub/archive/refs/tags/0.10.7-bearhub.6.tar.gz
-	sha256sums = 50f61c09e1dc71b50ec8b4e57c15adee99726358b5071ad9047095e6f4546d7c
+	sha256sums = 6fa9dfbff1cdb86a5eb837275170434069d320fd3072324ca9f4eb4beea92a04
 
 pkgname = bearhub
