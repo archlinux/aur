@@ -1,0 +1,11 @@
+[Unit]
+Description=ydotool user daemon
+Documentation=man:ydotool(1) man:ydotoold(8)
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ydotoold --socket-path=%t/.ydotool_socket --socket-own=%U:%U
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

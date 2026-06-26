@@ -1,0 +1,25 @@
+pkgbase = computer-use-linux-bin
+	pkgdesc = Linux desktop control over MCP — AT-SPI accessibility tree, multi-compositor window targeting (GNOME, KWin, Hyprland, i3, COSMIC), screencast portal screenshots, and ydotool input synthesis. Wayland-first, X11 best-effort.
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/agent-sh/computer-use-linux
+	install = computer-use-linux.install
+	arch = x86_64
+	license = MIT
+	depends = dbus
+	depends = openssl
+	depends = curl
+	depends = ydotool
+	depends = at-spi2-core
+	optdepends = gnome-shell: GNOME Shell extension for window listing/focus
+	options = !debug
+	source = computer-use-linux::https://github.com/agent-sh/computer-use-linux/releases/download/v0.2.9/computer-use-linux-x86_64-unknown-linux-gnu
+	source = computer-use-linux-cosmic::https://github.com/agent-sh/computer-use-linux/releases/download/v0.2.9/computer-use-linux-cosmic-x86_64-unknown-linux-gnu
+	source = computer-use-linux-0.2.9.tar.gz::https://github.com/agent-sh/computer-use-linux/archive/v0.2.9.tar.gz
+	source = ydotoold.service
+	sha256sums = 73e0329ce2f45571d330ee16f4ea73d1acdd0391aba3b7867654eea7fec91c7f
+	sha256sums = ef3d30f68fbcc4eed6f90eb5ed03b7a818a9ed468006726b8ebb8b22973e005a
+	sha256sums = SKIP
+	sha256sums = 4cdc91505f77b2d8897015b8dbbdb3d5704ae4b9727e891d2a2c3fac180bc51b
+
+pkgname = computer-use-linux-bin

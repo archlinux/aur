@@ -1,0 +1,35 @@
+post_install() {
+    local B='\e[1m' G='\e[32m' Y='\e[33m' R='\e[31m' C='\e[36m' N='\e[0m'
+
+    printf "\n${B}${G}==> computer-use-linux 已成功安装${N}\n\n"
+
+    printf "${B}${Y}!!! 重要：/dev/uinput 权限配置${N}\n"
+    printf "ydotoold 需要读写 /dev/uinput，请执行以下操作之一：\n\n"
+    printf "  ${B}方式一（推荐）：将用户加入 input 组${N}\n"
+    printf "    ${C}sudo usermod -aG input \$USER${N}\n"
+    printf "    然后重新登录生效\n\n"
+    printf "  ${B}方式二：添加 udev 规则${N}\n"
+    printf "    ${C}echo 'KERNEL==\"uinput\", MODE=\"0660\", GROUP=\"input\", OPTIONS+=\"static_node=uinput\"' |${N}\n"
+    printf "    ${C}  sudo tee /etc/udev/rules.d/60-uinput.rules${N}\n"
+    printf "    ${C}sudo udevadm control --reload-rules && sudo udevadm trigger${N}\n\n"
+
+    printf "${B}${Y}!!! 启动 ydotoold 服务${N}\n"
+    printf "    ${C}systemctl --user enable --now ydotoold${N}\n\n"
+
+    printf "${B}${G}  验证安装${N}\n"
+    printf "    ${C}computer-use-linux doctor${N}\n\n"
+
+    printf "${B}${Y}GNOME 用户额外步骤：${N}\n"
+    printf "    ${C}gsettings set org.gnome.desktop.interface toolkit-accessibility true${N}\n"
+    printf "    ${C}gnome-extensions enable computer-use-linux@avifenesh.dev${N}\n\n"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo "computer-use-linux 已卸载。如需清理用户数据:"
+    echo "  rm -rf ~/.local/share/computer-use-linux"
+    echo "  systemctl --user disable --now ydotoold  # 如果不再需要"
+}
