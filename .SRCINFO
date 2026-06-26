@@ -1,6 +1,6 @@
 pkgbase = rake-bin
 	pkgdesc = Configuration-driven build tool that runs Rakefile.toml targets (pre-compiled binary)
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/rustyhorde/cargo-rake
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = rake-bin
 	conflicts = rake
 	options = !strip
 	options = !debug
-	source = https://github.com/rustyhorde/cargo-rake/releases/download/v0.4.1/dist-rake.tar.gz
-	sha256sums = 2b2711d6c70fcf34a965a705b858865c01eaedbebef34f2b224d38d8e1b262d9
-	source_x86_64 = rake-x86_64::https://github.com/rustyhorde/cargo-rake/releases/download/v0.4.1/rake-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 8226d7fa5bf495e31536460246bed936e1332543177b921e27349162b64e0733
-	source_aarch64 = rake-aarch64::https://github.com/rustyhorde/cargo-rake/releases/download/v0.4.1/rake-aarch64-unknown-linux-musl
-	sha256sums_aarch64 = 63ec397226e15bbde1f5d1f1ff3510729930f8338244bb91c2290cf78e900833
+	source = https://github.com/rustyhorde/cargo-rake/releases/download/v0.4.2/dist-rake.tar.gz
+	sha256sums = 337ee39a9d9f167a47dafb498959064c06cac5e76e7b3ba05838e6fd28f04024
+	source_x86_64 = rake-x86_64::https://github.com/rustyhorde/cargo-rake/releases/download/v0.4.2/rake-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = da7c5d17129de912efd81fa6628d6c147dc43849727ce5cf664af215288b69e6
+	source_aarch64 = rake-aarch64::https://github.com/rustyhorde/cargo-rake/releases/download/v0.4.2/rake-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = abf133be54c4801edaf9ec53468d7be8400e340152a2785450a2661aceb2a208
 
 pkgname = rake-bin
