@@ -1,0 +1,5 @@
+[javacc]
+source = "github"
+github = "javacc/javacc"
+prefix = "javacc-"
+use_latest_release = true
