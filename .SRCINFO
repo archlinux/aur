@@ -1,0 +1,16 @@
+pkgbase = dory-python-git
+	pkgdesc = Python bindings and scripting support for Dory file manager (git)
+	pkgver = 6.7.0.r0
+	pkgrel = 1
+	url = https://github.com/Twilight0/dory-extensions
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = gobject-introspection
+	depends = dory
+	depends = python
+	source = git+https://github.com/Twilight0/dory-extensions.git
+	sha256sums = SKIP
+
+pkgname = dory-python-git
