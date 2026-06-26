@@ -2,7 +2,7 @@
 pkgname=verso-reader
 _repo=verso # GitHub repository name (tarball extracts to $_repo-$pkgver)
 _bin=verso  # installed command name
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Minimal, text-first EPUB reader for the terminal (Bubble Tea)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('go')
 conflicts=('verso') # the unrelated AUR 'verso' package also ships /usr/bin/verso
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c200071aa60361999d1b2221f135d6579887fef156e3828fe3a0a6565ae90f25')
+sha256sums=('8fbea38bf8447edddbc494a2ea189b8ce160549a4fd3090a68e26c9e6dc2d6c2')
 
 prepare() {
 	cd "$_repo-$pkgver"
