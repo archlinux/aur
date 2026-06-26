@@ -1,8 +1,213 @@
-post_install() {
-    echo "To load the module immediately:"
+#!/bin/bash
+
+# 4K Pro detection and card naming use /usr/lib/sc0710/sc0710-firmware-lib.sh
+
+DRV_NAME="sc0710"
+FW_SCRIPT="/usr/lib/sc0710/sc0710-firmware.sh"
+FW_LIB="/usr/lib/sc0710/sc0710-firmware-lib.sh"
+EXTRACT_SCRIPT="/usr/lib/sc0710/extract-firmware.sh"
+FIRMWARE_FILE="SC0710.FWI.HEX"
+
+is_4k_pro() {
+    if [[ -f "$FW_LIB" ]]; then
+        # shellcheck source=/dev/null
+        source "$FW_LIB"
+        sc0710_is_4k_pro
+        return $?
+    fi
+    lspci -n -v -d 12ab:0710 2>/dev/null | grep -qi "1cfa:0012"
+}
+
+detect_card_name() {
+    if [[ -f "$FW_LIB" ]]; then
+        # shellcheck source=/dev/null
+        source "$FW_LIB"
+        sc0710_detect_card_name
+        return $?
+    fi
+    return 1
+}
+
+print_mk2_next_steps() {
+    echo "To load the module now:"
     echo "  sudo modprobe sc0710"
+    echo ""
+    echo "Optional boot load:"
+    echo "  echo sc0710 | sudo tee /etc/modules-load.d/sc0710.conf"
+    echo ""
+    echo "Then check status:"
+    echo "  sc0710-cli --status"
+}
+
+print_4k_pro_next_steps() {
+    echo "4K Pro — ECP5 firmware is handled on boot by:"
+    echo "  sc0710-firmware.service        (prepares firmware before driver load)"
+    echo "  sc0710-firmware-verify.service (verifies FPGA programming after load)"
+    echo ""
+    echo "Check driver, firmware, and service status:"
+    echo "  sc0710-cli --status"
+    echo ""
+    echo "If video is black after a cold boot:"
+    echo "  sudo sc0710-cli --restart"
+    echo "  sudo bash /usr/lib/sc0710/sc0710-firmware.sh --verify"
+    echo ""
+    echo "View service logs:"
+    echo "  journalctl -u sc0710-firmware.service -b"
+    echo "  journalctl -u sc0710-firmware-verify.service -b"
+}
+
+firmware_present() {
+    [[ -f "/lib/firmware/sc0710/$FIRMWARE_FILE" ]] || \
+    [[ -f "/etc/firmware/sc0710/$FIRMWARE_FILE" ]] || \
+    [[ -f "/var/lib/sc0710/firmware/$FIRMWARE_FILE" ]]
+}
+
+setup_modprobe_boot() {
+    if [[ ! -f "/etc/modules-load.d/${DRV_NAME}.conf" ]]; then
+        echo "$DRV_NAME" > "/etc/modules-load.d/${DRV_NAME}.conf"
+    fi
+    if [[ ! -f "/etc/modprobe.d/${DRV_NAME}.conf" ]]; then
+        cat > "/etc/modprobe.d/${DRV_NAME}.conf" <<EOF
+softdep ${DRV_NAME} pre: videodev videobuf2-v4l2 videobuf2-vmalloc videobuf2-common snd-pcm
+EOF
+    fi
+}
+
+install_firmware_services() {
+    local verify_after="systemd-modules-load.service"
+
+    [[ -x "$FW_SCRIPT" && -f "$FW_LIB" ]] || return 1
+
+    cat > "/etc/systemd/system/sc0710-firmware.service" <<FWEOF
+[Unit]
+Description=SC0710 4K Pro ECP5 Firmware Preparation
+After=local-fs.target systemd-udev-settle.service
+Before=${verify_after} sc0710-firmware-verify.service
+ConditionPathExists=${FW_SCRIPT}
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash ${FW_SCRIPT}
+RemainAfterExit=yes
+TimeoutStartSec=180
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+FWEOF
+
+    cat > "/etc/systemd/system/sc0710-firmware-verify.service" <<FWVEOF
+[Unit]
+Description=SC0710 4K Pro ECP5 Firmware Verify
+After=${verify_after} sc0710-firmware.service
+ConditionPathExists=${FW_SCRIPT}
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash ${FW_SCRIPT} --verify
+RemainAfterExit=yes
+TimeoutStartSec=300
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+FWVEOF
+
+    systemctl daemon-reload
+    systemctl enable sc0710-firmware.service sc0710-firmware-verify.service >/dev/null 2>&1 || true
+    systemctl start sc0710-firmware.service >/dev/null 2>&1 || true
+
+    for dep in videodev videobuf2-common videobuf2-v4l2 videobuf2-vmalloc snd-pcm; do
+        modprobe "$dep" 2>/dev/null || true
+    done
+    modprobe "$DRV_NAME" 2>/dev/null || true
+    systemctl start sc0710-firmware-verify.service >/dev/null 2>&1 || true
+}
+
+setup_4k_pro() {
+    echo "Configuring ECP5 firmware stack for 4K Pro..."
+
+    if ! firmware_present && [[ -x "$EXTRACT_SCRIPT" ]]; then
+        echo "Extracting ECP5 firmware (requires network)..."
+        if ! bash "$EXTRACT_SCRIPT"; then
+            echo "warning: firmware extraction failed; sc0710-firmware.service will retry on boot"
+        fi
+    fi
+
+    setup_modprobe_boot
+
+    if install_firmware_services; then
+        echo "ECP5 firmware services installed, enabled, and started."
+    else
+        echo "warning: firmware helpers missing; run: sudo /usr/lib/sc0710/extract-firmware.sh"
+        return 1
+    fi
+}
+
+post_install_common() {
+    local card_name=""
+
+    echo ""
+    echo "Installed: DKMS module, sc0710-cli, and /usr/lib/sc0710/ firmware helpers."
+    echo ""
+
+    if card_name=$(detect_card_name); then
+        echo "Detected card: ${card_name}"
+    else
+        echo "Detected card: none (no 12ab:0710 device found)"
+    fi
+    echo ""
+    echo "Manage the driver with:"
+    echo "  sc0710-cli --status"
+    echo "  sc0710-cli --help"
+    echo ""
+
+    if is_4k_pro; then
+        setup_4k_pro
+        echo ""
+        print_4k_pro_next_steps
+    else
+        print_mk2_next_steps
+    fi
+}
+
+post_install() {
+    post_install_common
 }
 
 post_upgrade() {
-    post_install
+    post_install_common
+}
+
+remove_firmware_services() {
+    local removed=0
+
+    if systemctl is-active sc0710-firmware.service >/dev/null 2>&1 \
+        || systemctl is-enabled sc0710-firmware.service >/dev/null 2>&1 \
+        || [[ -f /etc/systemd/system/sc0710-firmware.service ]]; then
+        removed=1
+    fi
+    if systemctl is-active sc0710-firmware-verify.service >/dev/null 2>&1 \
+        || systemctl is-enabled sc0710-firmware-verify.service >/dev/null 2>&1 \
+        || [[ -f /etc/systemd/system/sc0710-firmware-verify.service ]]; then
+        removed=1
+    fi
+
+    systemctl stop sc0710-firmware.service 2>/dev/null || true
+    systemctl disable sc0710-firmware.service 2>/dev/null || true
+    systemctl stop sc0710-firmware-verify.service 2>/dev/null || true
+    systemctl disable sc0710-firmware-verify.service 2>/dev/null || true
+    rm -f /etc/systemd/system/sc0710-firmware.service
+    rm -f /etc/systemd/system/sc0710-firmware-verify.service
+    systemctl daemon-reload 2>/dev/null || true
+
+    if [[ "$removed" -eq 1 ]]; then
+        echo "Removed sc0710-firmware.service and sc0710-firmware-verify.service"
+    fi
+}
+
+pre_remove() {
+    remove_firmware_services
 }
