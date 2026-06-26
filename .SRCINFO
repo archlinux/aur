@@ -1,0 +1,16 @@
+pkgbase = dory-image-converter-git
+	pkgdesc = Image converter extension for Dory file manager (git)
+	pkgver = 6.7.0.r0
+	pkgrel = 1
+	url = https://github.com/Twilight0/dory-extensions
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = libxml2
+	depends = dory
+	depends = gtk3
+	source = git+https://github.com/Twilight0/dory-extensions.git
+	sha256sums = SKIP
+
+pkgname = dory-image-converter-git
