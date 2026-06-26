@@ -2,7 +2,7 @@
 _pkgname="claurst"
 _repo="Kuberwastaken/claurst"
 pkgname="${_pkgname}-bin"
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Your Favorite Terminal Coding Agent, now in Rust"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ makedepends=('curl')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 sha256sums=('81cbae84a29ce7e770bf2bc7b178e50bda0ce8de6067aba661b0bc7b05b562f8')
-sha256sums_x86_64=('1d224478ec3fa100dbabf14e8e3ad36770204a8e021f6ba2b242546a9b05e643')
-sha256sums_aarch64=('45b04ee3f1659b67eac6976b2455e9feb8bec4bdad346939734c4e88d6bd9077')
+sha256sums_x86_64=('6182bfd374cc37effb3e569b95755d885392adf4ef9a6ee813c5adc57258be0b')
+sha256sums_aarch64=('30fe334e7ebecffa4fceaf837dc6b9ec25a6db8a942f170fecf2d007e7cd0d61')
 source=(
 	"LICENSE-${sha256sums[0]}::https://raw.githubusercontent.com/$_repo/v${pkgver}/LICENSE.md"
 )
