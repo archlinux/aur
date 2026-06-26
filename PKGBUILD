@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chatbox-git
 _pkgname=Chatbox
-pkgver=1.21.0.r0.g19de00f
+pkgver=1.21.1.r0.g8639c94
 _electronversion=35
 _nodeversion=22
 pkgrel=1
@@ -45,6 +45,35 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_set_build_env() {
+    export electronDist="/usr/lib/electron${_electronversion}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+	HOME="${srcdir}/.electron-gyp"
+	{
+		export PNPM_LINK_WORKSPACE_PACKAGES=true
+		export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+		export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+		export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+		export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
+		export PNPM_SHAMEFULLY_HOIST=true
+		export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
+		export PNPM_NODE_LINKER=hoisted
+		export PNPM_NETWORK_CONCURRENCY=32
+	}
+	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+		{
+			export pnpm_config_registry="https://registry.npmmirror.com"
+			export npm_config_registry="https://registry.npmmirror.com"
+			export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+			export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+			export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+		}
+	fi
+}
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
         -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
@@ -66,28 +95,7 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-	HOME="${srcdir}/.electron-gyp"
-	{
-		export PNPM_LINK_WORKSPACE_PACKAGES=true
-		export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-		export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-		export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-		export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
-		export PNPM_SHAMEFULLY_HOIST=true
-		export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
-		export PNPM_NODE_LINKER=hoisted
-		export PNPM_NETWORK_CONCURRENCY=32
-	}
-	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-		{
-			export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-			export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-			export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-			export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-		}
-	fi
+    _set_build_env
     _ensure_local_nvm
     find src -type f -exec sed -i "s/process.resourcesPath/\"\/usr\/lib\/${pkgname%-git}\"/g" {} \;
     sed -i "/UPDATE_CHANNEL/d" electron-builder.yml
@@ -96,14 +104,29 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
-    local electronDist="/usr/lib/electron${_electronversion}"
+    _set_build_env
+    _ensure_local_nvm
     NODE_ENV=production     pnpm run build
     NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.yml"
+    local _app_dir=$(_get_app_dir)
+    rm -rf "${_app_dir}/resources/default_app.asar"
+    case "${CARCH}" in
+        aarch64)
+            rm -rf \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/@anthropic-ai/sandbox-runtime/dist/vendor/seccomp/x64" \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/@anthropic-ai/sandbox-runtime/vendor/seccomp/x64"
+            ;;
+        x86_64)
+            rm -rf \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/@anthropic-ai/sandbox-runtime/dist/vendor/seccomp/arm64" \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/@anthropic-ai/sandbox-runtime/vendor/seccomp/arm64"
+            ;;
+    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -exec dirname {} + | head -n 1)
+    local _app_dir=$(_get_app_dir)
     cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
