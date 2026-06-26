@@ -1,6 +1,6 @@
 pkgbase = annas-mcp
 	pkgdesc = MCP server and CLI tool for searching and downloading documents from Anna's Archive
-	pkgver = 0.0.5
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/iosifache/annas-mcp
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = annas-mcp
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/iosifache/annas-mcp.git#tag=v0.0.5
+	source = git+https://github.com/iosifache/annas-mcp.git#tag=v0.1
 	sha256sums = SKIP
 
 pkgname = annas-mcp
