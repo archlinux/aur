@@ -1,0 +1,5 @@
+[nextcloud-app-user-usage-report]
+source = "github"
+github = "nextcloud/user_usage_report"
+prefix = "v"
+use_latest_release = true
