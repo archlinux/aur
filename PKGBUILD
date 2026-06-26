@@ -9,53 +9,60 @@ url="https://codeberg.org/mohterbaord/${pkgname}"
 license=( 'MIT' )
 makedepends=( 'go' )
 depends=( 'systemd' )
-install=color-scheme-control.install
+install="${pkgname}.install"
 source=( "${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz" )
 sha256sums=( '8cbf108489f78cf42950404e32de6fcee1b48a21fe011ca9c1bca00e1b8f1b48' )
 
-prepare() {
-  mkdir -p "${srcdir}/go"
-  cp -r "${srcdir}/${pkgname}/cmd" \
-        "${srcdir}/${pkgname}/internal" \
-        "${srcdir}/${pkgname}/main.go" \
-        "${srcdir}/${pkgname}/go.mod" \
-        "${srcdir}/${pkgname}/go.sum" \
-        "${srcdir}/go"
+_binary_name=csctl
 
-  cp "${srcdir}/${pkgname}/systemd/color-scheme-control.service" \
-     "${srcdir}/${pkgname}/README.md" \
-     "${srcdir}/${pkgname}/LICENSE" \
-     "${srcdir}"
+prepare() {
+  cd "./${pkgname}"
+  mkdir -p ./build/completions
 }
 
 build() {
-  cd "${srcdir}/go"
+  cd "./${pkgname}"
+
   export CGO_ENABLED=0
   go build \
+    -o "./build/${_binary_name}" \
+    -ldflags "-s -w -X codeberg.org/mohterbaord/${pkgname}/cmd.version=${pkgver}" \
     -trimpath \
-    -o "${srcdir}/csctl" \
-    -ldflags "-s -w -X codeberg.org/mohterbaord/color-scheme-control/cmd.version=${pkgver}" \
     .
 
-  "${srcdir}/csctl" completion bash >"${srcdir}/csctl.bash"
-  "${srcdir}/csctl" completion zsh  >"${srcdir}/_csctl"
-  "${srcdir}/csctl" completion fish >"${srcdir}/csctl.fish"
+  cd ./build
+
+  "./${_binary_name}" completion bash >"./completions/${_binary_name}"
+  "./${_binary_name}" completion zsh  >"./completions/_${_binary_name}"
+  "./${_binary_name}" completion fish >"./completions/${_binary_name}.fish"
 }
 
 check() {
-  cd "${srcdir}/go"
+  cd "./${pkgname}"
   go test './...'
 }
 
 package() {
-  install -Dm755 "${srcdir}/csctl" -t "${pkgdir}/usr/bin/"
+  cd "./${pkgname}"
 
-  install -Dm644 "${srcdir}/csctl.bash"    "${pkgdir}/usr/share/bash-completion/completions/csctl"
-  install -Dm644 "${srcdir}/_csctl"     -t "${pkgdir}/usr/share/zsh/site-functions/"
-  install -Dm644 "${srcdir}/csctl.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d/"
+  install -Dm755 "./build/${_binary_name}" \
+    --target-directory="${pkgdir}/usr/bin"
 
-  install -Dm644 "${srcdir}/color-scheme-control.service" -t "${pkgdir}/usr/lib/systemd/user/"
+  install -Dm644 "./build/completions/${_binary_name}" \
+    --target-directory="${pkgdir}/usr/share/bash-completion/completions"
 
-  install -Dm644 "${srcdir}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
-  install -Dm644 "${srcdir}/LICENSE"   -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 "./build/completions/_${_binary_name}" \
+    --target-directory="${pkgdir}/usr/share/zsh/site-functions"
+
+  install -Dm644 "./build/completions/${_binary_name}.fish" \
+    --target-directory="${pkgdir}/usr/share/fish/vendor_completions.d"
+
+  install -Dm644 "./systemd/${pkgname}.service" \
+    --target-directory="${pkgdir}/usr/lib/systemd/user"
+
+  install -Dm644 ./README.md \
+    --target-directory="${pkgdir}/usr/share/doc/${pkgname}"
+
+  install -Dm644 ./LICENSE \
+    --target-directory="${pkgdir}/usr/share/licenses/${pkgname}"
 }
