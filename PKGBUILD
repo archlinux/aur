@@ -2,16 +2,17 @@
 
 pkgname=gisp
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="File encryption utility using XChaCha20-Poly1305 and Argon2id"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
-url="https://codeberg.org/artich0ke/gisp"
+url="https://savannah.nongnu.org/projects/gisp"
 license=('GPL-3.0-or-later')
 depends=('libsodium')
-makedepends=('gcc' 'make' 'autoconf' 'automake' 'gettext' 'texinfo' 'pkgconf')
+makedepends=('git' 'gcc' 'make' 'autoconf' 'automake' 'gettext' 'texinfo' 'pkgconf')
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/artich0ke/gisp/archive/v${pkgver}.tar.gz")
-sha256sums=('c4605fdb5869d5756996c531611cb9569a2507124633275f0c811497bcffb3f5')
+# Savannah disables cgit snapshot tarballs, so fetch the tagged tree over git.
+source=("$pkgname::git+https://https.git.savannah.gnu.org/git/gisp.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 build() {
   cd "$pkgname"

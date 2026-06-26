@@ -1,14 +1,15 @@
 pkgbase = gisp
 	pkgdesc = File encryption utility using XChaCha20-Poly1305 and Argon2id
 	pkgver = 1.1
-	pkgrel = 1
-	url = https://codeberg.org/artich0ke/gisp
+	pkgrel = 2
+	url = https://savannah.nongnu.org/projects/gisp
 	install = gisp.install
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	arch = armv7h
 	license = GPL-3.0-or-later
+	makedepends = git
 	makedepends = gcc
 	makedepends = make
 	makedepends = autoconf
@@ -17,7 +18,7 @@ pkgbase = gisp
 	makedepends = texinfo
 	makedepends = pkgconf
 	depends = libsodium
-	source = gisp-1.1.tar.gz::https://codeberg.org/artich0ke/gisp/archive/v1.1.tar.gz
-	sha256sums = c4605fdb5869d5756996c531611cb9569a2507124633275f0c811497bcffb3f5
+	source = gisp::git+https://https.git.savannah.gnu.org/git/gisp.git#tag=v1.1
+	sha256sums = SKIP
 
 pkgname = gisp
