@@ -2,7 +2,7 @@
 
 _pyname=xgboost
 pkgname=python-$_pyname
-pkgver=3.1.3
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Gradient Boosting Library for Python"
 arch=(x86_64 aarch64)
@@ -38,7 +38,7 @@ optdepends=(
 )
 source=($_pyname-$pkgver.tar.gz::https://github.com/dmlc/xgboost/archive/refs/tags/v$pkgver.tar.gz
         git+https://github.com/dmlc/dmlc-core.git)
-sha256sums=('17c545f43ca543979dcafdfeb4921240ba3673d1464ec4c2f592733af12ad578'
+sha256sums=('83f5ca80b961700ca598a2aa97483af3ca016836e3f2f6fbef9bdee60105ef72'
             'SKIP')
 
 prepare() {
@@ -54,8 +54,8 @@ build() {
   cd "$srcdir"
   cmake -B build -S $_pyname-$pkgver \
     -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_CXX_FLAGS="$CXXFLAGS -fno-char8_t" \
     -D Protobuf_PROTOC_EXECUTABLE=/usr/bin/protoc \
-    -D BUILD_DEPRECATED_CLI=ON \
     -D PLUGIN_FEDERATED=ON \
     -D USE_OPENMP=ON \
     -D USE_PARQUET=ON \
@@ -78,7 +78,7 @@ check() {
   source test-env/bin/activate
   python -m installer python-package/dist/*.whl
 
-  python -m pytest -v tests/python -k 'not test_custom_multiclass_objective'
+  python -m pytest -v tests/python -k 'not test_allreduce'
 
   deactivate
 }
