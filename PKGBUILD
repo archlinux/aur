@@ -2,7 +2,7 @@
 
 _pkgname=sing-box
 pkgname="$_pkgname"-ref1nd-bin
-_pkgver_stable=1.13.13-reF1nd # renovate: datasource=github-releases depName=reF1nd/sing-box-releases
+_pkgver_stable=1.13.14-reF1nd # renovate: datasource=github-releases depName=reF1nd/sing-box-releases
 pkgver="${_pkgver_stable//-/\.}"
 pkgrel=1
 
@@ -30,8 +30,8 @@ sha256sums=('4da8152e6cc1b50b1eaa4ff5606510aeb6d3f6a6a5c91614d4b2c0ea9a2b1bde'
             '0b8740010bb3b2a5b65f1cc444b00127372d015f70f272ed566606949ed2b91b'
             'ebdab3b912603c44b4d76640c5db5c4bc0ca04213d7f34ccaa5e789ba40b426f'
             '0d0631619b6f680b9a80b9a8f65c7a30f2565e80279182f63c77854051c5d473')
-sha256sums_x86_64=('48737c15bed120494be9443fff662a6409d742bea865f370ea1ab818569ae807')
-sha256sums_aarch64=('edad766f553a14b5e1fc9555224cde16ab40abc94f655e92092184878ee2e781')
+sha256sums_x86_64=('52eb180d2c3ad0e4c5aae7b91a3da1649b71d432924ab615a0f43fe2b419b253')
+sha256sums_aarch64=('fcb5921301693ebb39c013c855c5acc0bcb3065194b8728a91475f2ddc0d61fc')
 
 conflicts=("$_pkgname"  "$_pkgname-bin" "$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta" "$_pkgname-beta-bin" "$_pkgname-ref1nd" "$_pkgname-ref1nd-git")
 
