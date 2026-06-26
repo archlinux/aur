@@ -1,0 +1,15 @@
+pkgbase = waynote
+	pkgdesc = Wayland-native markdown sticky notes for tiling WMs (wlr-layer-shell)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mryll/waynote
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gtk4
+	depends = gtk4-layer-shell
+	options = !debug
+	source = waynote-0.1.0.tar.gz::https://github.com/mryll/waynote/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 6e41ae90c8181355a47c67caba8de9b074b339e0ef9d84a9f0b7075c40f7c086
+
+pkgname = waynote
