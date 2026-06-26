@@ -1,7 +1,7 @@
 pkgbase = kptools-bin
 	pkgdesc = Patching and hooking the Linux kernel with only a stripped Linux kernel image.
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/bmax121/KernelPatch
 	arch = x86_64
 	license = GPL-2.0

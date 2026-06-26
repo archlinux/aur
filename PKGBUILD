@@ -1,7 +1,7 @@
 # Contributor: kaduvert
 pkgname=kptools-bin
 pkgver=0.13.1
-pkgrel=1
+pkgrel=3
 pkgdesc="Patching and hooking the Linux kernel with only a stripped Linux kernel image."
 arch=(
     'x86_64'
