@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-spreadsheet-parsexlsx'
-pkgver='0.36'
+pkgver='0.37'
 pkgrel='1'
 pkgdesc="parse XLSX files"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-archive-zip>=1.34' 'perl-cryptx>=0' 'perl-graphics-colorutils>=0' 'perl-ole-storage-lite>=0' 'perl-spreadsheet-parseexcel>=0' 'perl-xml-twig>=0' 'perl>=5.010')
 makedepends=()
 url='https://metacpan.org/release/Spreadsheet-ParseXLSX'
-source=('http://search.cpan.org/CPAN/authors/id/N/NU/NUDDLEGG/Spreadsheet-ParseXLSX-0.36.tar.gz')
-md5sums=('41ee9438720f7ed57bbe2e288c0a58d9')
-sha512sums=('359062b92000b5efd072b92e39c4be5334681f4af9291e0d0a0dc25c9419d3fe49e8ea06b27258017c49a193be272aa3ac2dabc58d22446cfca18dc4d5dffa71')
-_distdir="Spreadsheet-ParseXLSX-0.36"
+source=('http://search.cpan.org/CPAN/authors/id/N/NU/NUDDLEGG/Spreadsheet-ParseXLSX-0.37.tar.gz')
+md5sums=('be898f0d795cacc883258d03c292a4ef')
+sha512sums=('1d39edc7b8c1d0bd820d9971743dce7de01448a38f83c6fbbc4c5d22d0a4b396fab8374ef4f43ac08163e4d9a83db97da11551cc2d96d070bc326a77141f01b7')
+_distdir="Spreadsheet-ParseXLSX-0.37"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
