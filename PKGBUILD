@@ -1,7 +1,7 @@
 # Maintainer: loss
 pkgname=aghub-bin
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="One hub for every AI coding agent - unified configuration management for 22+ assistants"
 arch=('x86_64')
 url="https://github.com/AkaraChen/aghub"
@@ -15,7 +15,7 @@ source=("https://github.com/AkaraChen/aghub/releases/download/v${pkgver}/aghub_$
         "aghub.desktop")
 sha256sums=('533a1b4f826d96cd53e37c4aaf5aaf6e34cb01bb24047335ce7045842a4e6768'
             '2931cc70d04df89dc26f28421cb388465f43cac1578d3f2761bdae38a4c6d1b3'
-            'c757f3e63c64ac773c4693804e5710b66d280ea7e07eafa3a0ef384245a4375c')
+            'f5d925768036493dd03820589b63e29c686d0d087ea73f4db38d7fc06b30019f')
 
 package() {
     cd "${srcdir}"
