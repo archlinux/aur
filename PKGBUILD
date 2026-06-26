@@ -2,8 +2,8 @@
 
 pkgbase=ch343ser-git
 pkgname=(ch343ser-git ch343ser-dkms-git libch343ser-git)
-pkgver=r56.b705737
-pkgrel=2
+pkgver=r58.9e6eb31
+pkgrel=1
 pkgdesc="USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc."
 arch=($CARCH)
 url="https://github.com/WCHSoftGroup/ch343ser_linux"
@@ -136,18 +136,11 @@ package_libch343ser-git() {
 
     cd "$srcdir/${pkgbase}/lib"
     if [ ${CARCH} = "x86_64" ]; then
-        mv x64 libch343ser
+        install -vDm644 x64/dynamic/*.so -t "${pkgdir}/usr/lib/"
+        install -vDm644 x64/dynamic/*.h -t "${pkgdir}/usr/include/"
     fi
     if [ ${CARCH} = "aarch64" ]; then
-        mv aarch64 libch343ser
+        install -vDm644 aarch64/dynamic/*.so -t "${pkgdir}/usr/lib/"
+        install -vDm644 aarch64/dynamic/*.h -t "${pkgdir}/usr/include/"
     fi
-
-    install -dm755 "${pkgdir}/usr/lib/" \
-        "${pkgdir}/usr/include/"
-    cd libch343ser/dynamic
-    install -Dm644 libch343.so -t "${pkgdir}/usr/lib/"
-    install -Dm644 libch34xcfg.so -t "${pkgdir}/usr/lib/"
-    install -Dm644 ch343_lib.h -t "${pkgdir}/usr/include/"
-    install -Dm644 ch34x_parse_cfg.h -t "${pkgdir}/usr/include/"
-    #     install -Dm644 ch9344_lib.h -t "${pkgdir}/usr/include/"
 }
