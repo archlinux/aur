@@ -1,0 +1,4 @@
+latte-dock-ng/
+pkg/
+src/
+*.pkg.tar.zst
