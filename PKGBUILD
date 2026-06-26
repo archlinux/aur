@@ -2,7 +2,7 @@
 
 pkgname=orca-slicer-bin
 pkgver=2.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="G-code generator for 3D printers"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
@@ -30,9 +30,9 @@ package() {
   install -d $pkgdir/usr/bin
   ln -s /opt/${pkgname%-bin}/AppRun ${pkgdir}/usr/bin/orca-slicer
 
-  install -Dm644 squashfs-root/com.orcaslicer.OrcaSlicer.desktop -t ${pkgdir}/usr/share/applications/
-  sed -i '/^Exec=/ c\Exec=/opt/orca-slicer/AppRun %U' ${pkgdir}/usr/share/applications/com.orcaslicer.OrcaSlicer.desktop
-  sed -i '/^MimeType=/ s|$|x-scheme-handler/orcaslicer;x-scheme-handler/bambustudio;|' ${pkgdir}/usr/share/applications/com.orcaslicer.OrcaSlicer.desktop
+  install -Dm644 squashfs-root/com.orcaslicer.OrcaSlicer.desktop ${pkgdir}/usr/share/applications/orca-slicer.desktop
+  sed -i '/^Exec=/ c\Exec=/opt/orca-slicer/AppRun %U' ${pkgdir}/usr/share/applications/orca-slicer.desktop
+  sed -i '/^MimeType=/ s|$|x-scheme-handler/orcaslicer;x-scheme-handler/bambustudio;|' ${pkgdir}/usr/share/applications/orca-slicer.desktop
 
   install -d ${pkgdir}/usr/share/icons/
   cp -r squashfs-root/usr/share/icons/hicolor/ ${pkgdir}/usr/share/icons/
