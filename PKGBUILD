@@ -1,6 +1,6 @@
 # Maintainer: NewYearPrism
 
-_ggml_version=0.15.2
+_ggml_version=0.15.3
 pkgname=ggml-cpu
 pkgver=${_ggml_version}
 pkgrel=1
@@ -9,7 +9,6 @@ arch=(x86_64 aarch64)
 url='https://github.com/ggml-org/ggml'
 license=('MIT')
 depends=(
-    "ggml=${pkgver}"
     glibc
     libstdc++
     libgcc
@@ -19,7 +18,6 @@ makedepends=(
     "ggml-src=${pkgver}"
     cmake
     ninja
-    git
 )
 options=(
     lto
@@ -59,11 +57,14 @@ build() {
     -DGGML_LTO=ON
   )
 
-  if [ "$GGML_CPU_ALL_VARIANTS" == 0 ]; then
+  if [ "$GGML_CPU_ALL_VARIANTS" == 0 ] || [ "$GGML_CPU_ALL_VARIANTS" == off ]; then
+    msg2 "GGML_CPU_ALL_VARIANTS: OFF"
     _cmake_options+=(
       -DGGML_CPU=ON
+      -DGGML_CPU_ALL_VARIANTS=OFF
     )
   else
+    msg2 "GGML_CPU_ALL_VARIANTS: ON"
     _cmake_options+=(
       -DGGML_CPU_ALL_VARIANTS=ON
     )
@@ -80,8 +81,9 @@ build() {
 }
 
 package() {
+    depends+=("ggml=${pkgver}")
   for lib in build/bin/libggml-cpu*.so; do
     install -Dm755 "$lib" "${pkgdir}/usr/lib/ggml/backends/$(basename $lib)"
   done
-  install -Dm644 "/usr/share/licenses/ggml/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "/usr/src/ggml-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
