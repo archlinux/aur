@@ -2,7 +2,7 @@
 
 pkgname=gisp
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="File encryption utility using XChaCha20-Poly1305 and Argon2id"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://savannah.nongnu.org/projects/gisp"
