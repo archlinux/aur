@@ -6,7 +6,7 @@ _appname=${_gitname//-api/}
 pkgname=${_appname}-bin
 pkgdesc="Local-first desktop API client built for developers and AI agents"
 
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,8 +31,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname^}_${pkgver}_${_barch[1]}.deb")
 sha256sums=('a019d554dd7a316a1277cb79c5f4d16d00b949ec577d1660e485f37486084757'
             '54afa993b1c990afd7d7d24b0297398beb6b0d422b5624139e3dff59626da804')
-sha256sums_x86_64=('36fe27749abcb9758285fa4b2894c1ace24c1db1390820681bf8278dfe2498ed')
-sha256sums_aarch64=('7c12943ba3e50ea4775369448fde93f0872aec6dedba32f3372c6d7e18f0954d')
+sha256sums_x86_64=('3fe6adf0fe00017c0351edb7dcb3b29b643a43996e6b404a7967d4cafe70f1b2')
+sha256sums_aarch64=('9780da147080da34182e97cbcb92d057dc967f75baf492f1b8e4aeed183b6c2d')
 
 
 package() {
@@ -44,4 +44,6 @@ package() {
 	install -Dm644 "${srcdir}/README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
 	install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	sed -e "s|Categories=\.*|Categories=Development;Utility;|g" -i "${pkgdir}/usr/share/applications/${_appname^}.desktop"
 }
