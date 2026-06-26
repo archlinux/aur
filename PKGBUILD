@@ -1,6 +1,6 @@
 # Maintainer: Laurent Baaziz <balaurent@users.noreply.github.com>
 pkgname=deez-notes-bin
-pkgver=0.3.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A TUI Markdown note manager with fuzzy search, themes, and folder organization"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('deez-notes')
 depends=('gcc-libs')
 source=("${pkgname}-${pkgver}::https://github.com/BaLaurent/deez-notes/releases/download/v${pkgver}/deez-notes-linux-amd64"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/BaLaurent/deez-notes/master/LICENSE")
-sha256sums=('a30d52ba7fc5879c89a4442f5b990d6d8d27e7c152414c7a8fdf7dd0b4aa6b3e'
+sha256sums=('60a5423a6ef1fb3031543b4c7cac175dd4afb0682dfc48ee7be3ba7d5d0b7c61'
             'SKIP')
 
 package() {
