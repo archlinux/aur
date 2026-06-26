@@ -8,7 +8,7 @@ pkgbase = dory-emblems-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = dory
-	depends = python-dory-git
+	depends = dory-python-git
 	source = git+https://github.com/Twilight0/dory-extensions.git
 	sha256sums = SKIP
 
