@@ -1,16 +1,16 @@
 pkgbase = kapi-bin
 	pkgdesc = A Go-based interactive TUI CLI for project scaffolding
-	pkgver = 1.1.0_beta.1
+	pkgver = 1.2.0_beta.1
 	pkgrel = 1
 	url = https://github.com/slouowzee/kapi
 	license = MIT
 	conflicts = KAPI
 	provides = KAPI
 	arch = aarch64
-	source_aarch64 = https://github.com/slouowzee/KAPI/releases/download/v1.1.0-beta.1/KAPI_linux_arm64.tar.gz
-	sha256sums_aarch64 = 79bccd10982546ae2c37349955d4f66920e0f6458d06990d70fa70a0c26f519f
+	source_aarch64 = https://github.com/slouowzee/KAPI/releases/download/v1.2.0-beta.1/KAPI_linux_arm64.tar.gz
+	sha256sums_aarch64 = bbe29030db045d1af7ccb08df0896d1680a12529b974e0cd7fadb492220e4770
 	arch = x86_64
-	source_x86_64 = https://github.com/slouowzee/KAPI/releases/download/v1.1.0-beta.1/KAPI_linux_amd64.tar.gz
-	sha256sums_x86_64 = 4510b43fbc03ebb802b6bdd9e32d1a28862cc2937f05193a75c1bf66f705b82d
+	source_x86_64 = https://github.com/slouowzee/KAPI/releases/download/v1.2.0-beta.1/KAPI_linux_amd64.tar.gz
+	sha256sums_x86_64 = e3fd99ad6176552a62f6ca8b18167685b60e1598f9a6066f4b73e56b8ae67e35
 	
 pkgname = kapi-bin
