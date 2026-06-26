@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 
 pkgname=rmux
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Universal Rust multiplexer with a typed SDK'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=(cargo)
 conflicts=("$pkgname-bin")
 
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('45ef9e32cfd62e49f11aa276b678f738a7e9e558e9092a90406f252a93a1b1f6')
+sha256sums=('24a6209255f3bcde50029dca4fa6286d9eecad19e423419333f9b4a2db088c3e')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -33,6 +33,6 @@ package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
   install -Dm644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 "$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
+  install -Dm644 docs/man/"$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
