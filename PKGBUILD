@@ -12,7 +12,7 @@ optdepends=('onnxruntime-rocm' 'rocm-hip-runtime')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://github.com/SergioRibera/sss/releases/download/sss_cli/v0.2.1/sss-rocm-bin-0.2.1-x86_64.tar.gz")
-sha256sums=('150ebeddf908b7be99bb187340c85a8b3503fee97b4cafdb7a1e89d8c31e3cd3')
+sha256sums=('a7fec354b87caf5b7c660f3f0234c8ce807e2193fba5c381b93e5d4e3ecdd82f')
 
 
 package() {
