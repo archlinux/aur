@@ -1,7 +1,7 @@
 pkgbase = certomancer
 	pkgdesc = Quickly construct, mock & deploy PKI test configurations using simple declarative configuration.
-	pkgver = 0.15.0
-	pkgrel = 2
+	pkgver = 0.15.1
+	pkgrel = 1
 	url = https://github.com/MatthiasValvekens/certomancer
 	arch = any
 	license = MIT
@@ -29,7 +29,7 @@ pkgbase = certomancer
 	depends = python-jinja
 	depends = python-werkzeug
 	depends = python-python-pkcs11
-	source = git+https://github.com/MatthiasValvekens/certomancer.git#tag=v0.15.0
-	sha512sums = 495ea58bb279e171d5816eb836bcd8233075d44b33409c7c110ab5c8177426b3389b1ae0302d606d2461920704ebfcfc71edd06f8b87b5561e9573ba1e71da23
+	source = git+https://github.com/MatthiasValvekens/certomancer.git#tag=v0.15.1
+	sha512sums = 6aa38e50ced7e3b901161f76728772f445b6cc31f2a2a69087a4c33778d58a0e7632424a0e804a4db84179d1b91345a1a2d0c8a15f151fe7bf808cd89fc80e17
 
 pkgname = certomancer
