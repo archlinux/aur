@@ -3,5 +3,5 @@
 !PKGBUILD
 !.SRCINFO
 !modrinth-app.desktop
-!modrinth-app
+!modrinth-app.sh
 !modrinth-file-extensions.xml

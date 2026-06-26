@@ -5,4 +5,4 @@ if lspci | grep -i nvidia > /dev/null; then
   export WEBKIT_DISABLE_DMABUF_RENDERER=1
 fi
 
-env MODRINTH_EXTERNAL_UPDATE_PROVIDER=1 /opt/modrinth-app/modrinth-app "$@"
+env MODRINTH_EXTERNAL_UPDATE_PROVIDER=1 /usr/lib/modrinth-app "$@"
