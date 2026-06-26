@@ -1,0 +1,5 @@
+[powershell-editor-services]
+source = "github"
+github = "PowerShell/PowerShellEditorServices"
+prefix = "v"
+use_latest_release = true
