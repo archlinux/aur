@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=beekeeper-studio-git
 _pkgname="Beekeeper Studio"
-pkgver=5.8.1.r30.gc20ce8d
+pkgver=5.9.0.beta.3.r41.g106bde0
 _electronversion=39
 _nodeversion=22
 pkgrel=1
@@ -42,6 +42,34 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_set_build_env() {
+    export electronDist="/usr/lib/electron${_electronversion}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+	export HOME="${srcdir}/.electron-gyp"
+	mkdir -p "${srcdir}/.electron-gyp"
+	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+		{
+			export YARN_REGISTRY="https://registry.npmmirror.com"
+			export ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+			export ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+			export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+			export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
+			export YARN_PLUGINS_FOLDER="${srcdir}/.yarn/plugins"
+			export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/global"
+			export YARN_USE_HARDLINKS=true
+			# export YARN_BUILD_FROM_SOURCE=true
+			export YARN_LINK_WORKSPACE_PACKAGES=true
+			export YARN_FETCH_RETRIES=3
+			export YARN_FETCH_RETRY_TIMEOUT=10000
+			export YARN_NETWORK_CONCURRENCY=32
+		}
+		find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
+	fi
+}
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
         -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
@@ -63,27 +91,7 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
-    mkdir -p "${srcdir}/.electron-gyp"
-    if [[ "$(curl -s cip.cc)" == *"中国"* ]]; then
-        {
-            export YARN_REGISTRY="https://registry.npmmirror.com"
-            export ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-            export ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-            export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
-            export YARN_PLUGINS_FOLDER="${srcdir}/.yarn/plugins"
-            export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/global"
-            export YARN_USE_HARDLINKS=true
-            # export YARN_BUILD_FROM_SOURCE=true
-            export YARN_LINK_WORKSPACE_PACKAGES=true
-            export YARN_FETCH_RETRIES=3
-            export YARN_FETCH_RETRY_TIMEOUT=10000
-            export YARN_NETWORK_CONCURRENCY=32
-        }
-        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
-    fi
+    _set_build_env
     _ensure_local_nvm
     NODE_ENV=development    yarn add -W -D node-gyp
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
@@ -92,18 +100,18 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git/"
+    _set_build_env
     _ensure_local_nvm
     NODE_ENV=production     yarn run lib:build
     cd "${srcdir}/${pkgname%-git}.git/apps/studio"
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn run build
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder-config.js
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -exec dirname {} + | head -n 1)
+    local _app_dir=$(_get_app_dir)
     cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
     icon_sizes=(16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024)
     for _icons in "${icon_sizes[@]}";do
