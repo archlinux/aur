@@ -3,13 +3,13 @@
 # Contributor: Árni Dagur <arnidg at protonmail dot ch>
 
 pkgname=uutils-coreutils-git
-pkgver=0.9.0.r205.ge68ac35
+pkgver=0.9.0.r235.g697df98
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
 license=('MIT')
 arch=('x86_64')
-depends=(libgcc glibc oniguruma)
+depends=(acl systemd-libs libgcc glibc oniguruma)
 makedepends=(git rust)
 optdepends=("rust-src: optimize with RUSTC_BOOTSTRAP=1")
 provides=(coreutils)
@@ -29,7 +29,8 @@ export RUSTFLAGS="${RUSTFLAGS} -C force-unwind-tables=no --cfg=linux_latest" # r
 package(){
   cd ${pkgname%-git}
   unset optdepends
-  export DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release MULTICALL=y LN="ln -f" MANPAGES=n COMPLETIONS=n #LOCALES=n
+  export CARGOFLAGS="--features feat_acl,feat_systemd_logind"
+  export DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release MULTICALL=y MANPAGES=n COMPLETIONS=n #LOCALES=n
   make install LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} SKIP_UTILS="arch kill more uptime hostname" #expand factor unexpand pinky ptx sum shred shuf"
   make install PROG_PREFIX=uu- UTILS="arch kill more uptime hostname"
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname%-git}
