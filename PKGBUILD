@@ -30,7 +30,7 @@ pkgver() {
 build() {
     cd yay-sys-tray
     pnpm install --frozen-lockfile
-    pnpm tauri build --bundles none
+    pnpm tauri build --no-bundle
 }
 
 package() {
