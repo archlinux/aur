@@ -1,0 +1,23 @@
+pkgbase = i3blocks-walltime-git
+	pkgdesc = Define blocks for your i3bar status line (sentriz fork, timers aligned to wall time)
+	pkgver = 1.5.r12.gd25555d
+	pkgrel = 1
+	url = https://github.com/sentriz/i3blocks
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	optdepends = acpi: For example battery script
+	optdepends = bc: For bandwidth script
+	optdepends = lm_sensors: For temperature script
+	optdepends = sysstat: For example cpu_usage script
+	optdepends = alsa-utils: For default volume script
+	optdepends = playerctl: For mediaplayer contrib script
+	optdepends = pandoc: For man pages generation
+	optdepends = openvpn: For openvpn contrib script
+	provides = i3blocks
+	conflicts = i3blocks
+	source = git+https://github.com/sentriz/i3blocks
+	sha256sums = SKIP
+
+pkgname = i3blocks-walltime-git
