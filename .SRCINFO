@@ -1,7 +1,7 @@
 pkgbase = skeema
 	pkgdesc = Declarative pure-SQL schema management for MySQL and MariaDB
-	pkgver = 1.13.2
-	pkgrel = 4
+	pkgver = 1.14.0
+	pkgrel = 1
 	url = https://github.com/skeema/skeema
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = skeema
 	depends = glibc
 	conflicts = skeema-bin
 	options = !lto
-	source = skeema-1.13.2.tar.gz::https://github.com/skeema/skeema/archive/refs/tags/v1.13.2.tar.gz
-	sha256sums = 05d259e214d81908880b7d3b3c0b99cecc8674e8df4220474863c5003a9ac215
+	source = skeema-1.14.0.tar.gz::https://github.com/skeema/skeema/archive/refs/tags/v1.14.0.tar.gz
+	sha256sums = 931a88df4a86502822fd315587dcb7527aa4a1c67ed6f97b00698f33fd5a51a2
 
 pkgname = skeema

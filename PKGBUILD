@@ -1,8 +1,8 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=skeema
-pkgver=1.13.2
-pkgrel=4
+pkgver=1.14.0
+pkgrel=1
 pkgdesc='Declarative pure-SQL schema management for MySQL and MariaDB'
 arch=(x86_64 aarch64)
 url='https://github.com/skeema/skeema'
@@ -12,7 +12,7 @@ depends=(glibc)
 makedepends=('go')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('05d259e214d81908880b7d3b3c0b99cecc8674e8df4220474863c5003a9ac215')
+sha256sums=('931a88df4a86502822fd315587dcb7527aa4a1c67ed6f97b00698f33fd5a51a2')
 
 prepare() {
   cd "$pkgname-$pkgver"
