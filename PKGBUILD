@@ -1,6 +1,6 @@
 pkgname=bearhub
 pkgver=0.10.7
-pkgrel=8
+pkgrel=1
 pkgdesc="Arch-first package manager hub (community-maintained fork of bauh)"
 arch=('any')
 url="https://github.com/spalencsar/bearhub"
@@ -22,16 +22,16 @@ optdepends=(
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 provides=('bearhub' 'bauh')
 conflicts=('bearhub-git' 'bauh' 'bauh-git')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}-bearhub.5.tar.gz")
-sha256sums=('42001198cccd5ade206f93fc0570c9d3dbb7e49a1f85b790fa577c3af41aee70')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}-bearhub.6.tar.gz")
+sha256sums=('50f61c09e1dc71b50ec8b4e57c15adee99726358b5071ad9047095e6f4546d7c')
 
 build() {
-  cd "$srcdir/$pkgname-${pkgver}-bearhub.5"
+  cd "$srcdir/$pkgname-${pkgver}-bearhub.6"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$pkgname-${pkgver}-bearhub.5"
+  cd "$srcdir/$pkgname-${pkgver}-bearhub.6"
 
   sed -i 's|^Exec=/usr/bin/bearhub$|Exec=env QT_QPA_PLATFORM=xcb /usr/bin/bearhub|' "bearhub/desktop/bearhub.desktop"
   sed -i 's|^Exec=/usr/bin/bearhub-tray$|Exec=env QT_QPA_PLATFORM=xcb /usr/bin/bearhub-tray|' "bearhub/desktop/bearhub_tray.desktop"
