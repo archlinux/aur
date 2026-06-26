@@ -1,7 +1,7 @@
 # Maintainer: badcast <lmecomposer@gmail.com> or <support@imister.kz>
 # Contributor: Artem Izmaylov <support@aimp.ru>
 
-_pkver=(6.00 3070)
+_pkver=(6.00 3071)
 pkgname=aimp
 pkgver=${_pkver[0]}.${_pkver[1]}
 pkgrel=1
@@ -18,7 +18,7 @@ source=(
    "https://aimp.ru/files/desktop/builds/aimp-${_pkver[0]}-${_pkver[1]}b-x86_64.pkg.tar.zst"
    "changelog"
 )
-sha256sums=('9edc817bcab4329e069e86e45b513e157c40bd0376c79340e034afdd325d1c20'
+sha256sums=('49b64ee3d94c8608b746d156f2e7171c46747ed77c28bb6cda5d64353d2cc418'
             '7f79c61ff759b93c88b8ae883595a5e7b86b399bfcd585f8ea8605eb499b1efd')
 changelog=changelog
 
