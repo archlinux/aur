@@ -12,9 +12,7 @@ url=https://github.com/01mf02/jaq
 arch=('x86_64')
 license=(MIT)
 depends=(gcc-libs glibc)
-makedepends=(rust)
-optdepends=("jotdown: man page"
-"rust-src: optimize with RUSTC_BOOTSTRAP=1")
+makedepends=(rust jotdown)
 conflicts=(jaq jq)
 provides=(jaq jq)
 source=("git+${url}.git")
@@ -22,10 +20,10 @@ b2sums=('SKIP')
 
 build() {
   cd jaq
-  test $RUSTC_BOOTSTRAP = 1 && _cargoflags="-Zbuild-std=std,panic_abort"
+  test $RUSTC_BOOTSTRAP = 1 && test -e /usr/lib/rustlib/src/rust/library/Cargo.toml && _cargoflags="-Zbuild-std=std,panic_abort"
   RUSTFLAGS+=" -Cpanic=abort"
   cargo build --release $_cargoflags
-  command -v jotdown && make -C docs jaq.1
+  make -C docs jaq.1
 }
 
 package() {

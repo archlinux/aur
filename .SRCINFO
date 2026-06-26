@@ -6,10 +6,9 @@ pkgbase = jaq-git
 	arch = x86_64
 	license = MIT
 	makedepends = rust
+	makedepends = jotdown
 	depends = gcc-libs
 	depends = glibc
-	optdepends = jotdown: man page
-	optdepends = rust-src: optimize with RUSTC_BOOTSTRAP=1
 	provides = jaq
 	provides = jq
 	conflicts = jaq
