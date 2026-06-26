@@ -3,7 +3,7 @@
 # Python package name now is with an underscore
 _pname=python_barbicanclient
 pkgname=python-barbicanclient
-pkgver=7.2.0
+pkgver=7.4.0
 pkgrel=1
 pkgdesc='Client library for the Barbican Key Management API'
 arch=(any)
@@ -17,7 +17,7 @@ checkdepends=(python-fixtures python-requests-mock python-stestr
               python-testtools python-oslotest python-oslo-config
               python-openstackclient)
 source=("https://tarballs.opendev.org/openstack/$pkgname/$_pname-$pkgver.tar.gz")
-sha512sums=('2a40de2369f46752b1f02ffa8bdcd371adc3aeb6c03bd691319f0b74519e212953de034237b96ef233330f0b16bff4182907f89369d3e0ceab5dd2f6328cc2d9')
+sha512sums=('c8899e3a8c21a595bf3b09e9b9989e03679a6a6a10e8e807220ae7b7343b359a3687580bdf53a21c8aa4e1f79a2555cd3ee11e8ad2464deaa408272df123010e')
 
 export PBR_VERSION=$pkgver
 
