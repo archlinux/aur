@@ -1,0 +1,27 @@
+post_install() {
+  # Apply the freshly installed udev rule so a plugged-in camera is usable now.
+  if command -v udevadm >/dev/null 2>&1; then
+    udevadm control --reload-rules >/dev/null 2>&1 || true
+    udevadm trigger >/dev/null 2>&1 || true
+  fi
+  cat <<'EOF'
+
+  Orbbec SDK v2 installed:
+    libs     -> /usr/lib/libOrbbecSDK.so*  (+ /usr/lib/extensions)
+    headers  -> /usr/include/libobsensor
+    cmake    -> find_package(OrbbecSDK CONFIG)  works with no extra flags
+                (or pass -DOrbbecSDK_DIR=/usr/lib explicitly)
+    udev     -> /usr/lib/udev/rules.d/99-obsensor-libusb.rules
+
+  Replug the camera (or run: udevadm trigger) for the udev rule to take effect.
+  No sudo needed to run apps on Linux once the udev rule is active.
+
+EOF
+}
+
+post_upgrade() {
+  if command -v udevadm >/dev/null 2>&1; then
+    udevadm control --reload-rules >/dev/null 2>&1 || true
+    udevadm trigger >/dev/null 2>&1 || true
+  fi
+}

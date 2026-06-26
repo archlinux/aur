@@ -1,0 +1,22 @@
+pkgbase = orbbecsdk-v2-bin
+	pkgdesc = Orbbec SDK v2 (libobsensor) — prebuilt cross-platform SDK for Orbbec 3D cameras (Femto, Gemini, Astra)
+	pkgver = 2.8.6
+	pkgrel = 1
+	url = https://github.com/orbbec/OrbbecSDK_v2
+	install = orbbecsdk-v2-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = libusb
+	depends = gcc-libs
+	provides = orbbecsdk
+	provides = libobsensor
+	conflicts = orbbecsdk
+	conflicts = libobsensor
+	options = !strip
+	source_x86_64 = OrbbecSDK_v2.8.6_linux_x86_64.tar.gz::https://github.com/orbbec/OrbbecSDK_v2/releases/download/v2.8.6/OrbbecSDK_v2.8.6_202604271452_6399409_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 2faf400920594d42a08c2eb057ddf08d2affd3c8215c5482c9d4e6ad94d72d5a
+	source_aarch64 = OrbbecSDK_v2.8.6_linux_arm64.tar.gz::https://github.com/orbbec/OrbbecSDK_v2/releases/download/v2.8.6/OrbbecSDK_v2.8.6_202604271452_6399409_linux_arm64.tar.gz
+	sha256sums_aarch64 = a052221d4bdea6afb2f8b338bcd6e635afffcebbacab1483422b986e680fb441
+
+pkgname = orbbecsdk-v2-bin
