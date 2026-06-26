@@ -2,7 +2,7 @@
 _base=morethemes
 pkgname=python-${_base}
 pkgdesc="More themes for matplotlib"
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/y-sunflower/${_base}"
@@ -11,7 +11,7 @@ depends=(python-pyfonts)
 makedepends=(python-build python-installer python-setuptools-scm)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('cb857cf9b450c64d57ca22603f684a2be02cb45f1702f4f55eee71d3728a669010f327c6b2f4b88e99dc91f04d0c46f528af73aae385e716f8ea9c4d2cc2ec75')
+sha512sums=('4701f3a569d3b10f15915fd9ba581d988c42d766ecad91c40a2af513a5de4075122f0ecf10035e1cd1ef222c7ff6df28e3c1fdc716e08e820f2eed193ff61e23')
 
 build() {
   cd ${_base}-${pkgver}
