@@ -4,6 +4,7 @@ if [ ! -d "$HOME"/.mupen64-rr-lua ]; then
     mkdir -p "$HOME"/.mupen64-rr-lua
 
     ln -s /usr/share/mupen64-rr-lua/mupen64.exe "$HOME"/.mupen64-rr-lua/mupen64.exe
+    ln -s /usr/share/mupen64-rr-lua/*.dll "$HOME"/.mupen64-rr-lua
     ln -s /usr/share/mupen64-rr-lua/plugin "$HOME"/.mupen64-rr-lua/plugin
 fi
 
