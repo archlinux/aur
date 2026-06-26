@@ -3,7 +3,7 @@ pkgname=yadaw-bin
 _pkgname=yadaw
 pkgver=0.9.2
 _tag=v0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another mini-DAW - a lightweight sfx tool in pure Rust (binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mlm-games/yadaw"
@@ -13,7 +13,7 @@ optdepends=(
   'pipewire-pulse: for PipeWire audio support'
   'pulseaudio: for PulseAudio audio support'
 )
-provides=('yadaw')
+provides=('yadaw' 'clap-host' 'lv2-host')
 conflicts=('yadaw')
 options=('!strip')
 
