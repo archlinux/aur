@@ -1,7 +1,7 @@
 # Maintainer: Charlotte <cemetery394@gmail.com>
 
 pkgname=citron-neo-nightly-bin
-pkgver=2026.06.25
+pkgver=2026.06.26
 pkgrel=1
 pkgdesc="Nightly build of Citron Neo Nintendo Switch emulator (AppImage)"
 arch=('x86_64')
@@ -14,11 +14,11 @@ conflicts=('citron' 'citron-git' 'citron-neo' 'citron-neo-git' 'citron-neo-bin')
 options=(!strip)
 depends=('hicolor-icon-theme' 'fuse2' 'qt6-base' 'qt6-webengine')
 
-_commit="ff5d14a69"
-_appimage="citron_nightly-ff5d14a69-linux-x86_64.AppImage"
+_commit="540272b7e"
+_appimage="citron_nightly-540272b7e-linux-x86_64.AppImage"
 
 source=("${_appimage}::https://github.com/citron-neo/CI/releases/download/nightly-linux/${_appimage}")
-sha256sums=('47ea3359cdbaa58b789a60fc87d17d73e8acfc6283900dc694605ab24e2ef4b0')
+sha256sums=('291628fbfffae259c67cc552d034cceb8b6fd65e6eaa5c32b65bee1723a557f2')
 
 prepare() {
     chmod +x "${_appimage}"
