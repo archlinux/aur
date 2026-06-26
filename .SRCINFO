@@ -1,0 +1,16 @@
+pkgbase = dory-git-tags-git
+	pkgdesc = Git integration extension for Dory file manager
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/Twilight0/dory-extensions
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = dory-python-git
+	depends = git
+	provides = dory-git-tags
+	conflicts = dory-git-tags
+	source = dory-git-tags-git::git+https://github.com/Twilight0/dory-extensions.git
+	sha256sums = SKIP
+
+pkgname = dory-git-tags-git
