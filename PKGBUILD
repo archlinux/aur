@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledOpen"
 
 pkgname=untitled-open
-pkgver=2.7.0.0
+pkgver=3.0.0.0
 pkgrel=1
 pkgdesc="Cross-platform C/C++ library for opening links and file pickers natively"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
@@ -13,7 +13,7 @@ depends=("gcc-libs" "glibc" "pkgconf" "dbus" "xdg-desktop-portal")
 provides=("lib${PKG_REAL_NAME}.so")
 makedepends=("cmake" "make" "pkgconf" "dbus" "xdg-desktop-portal")
 source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('ebaeda029399bf7b5050716e5f5c5ead8e7846f773a9b9126fe20fb75beb6f5c')
+sha256sums=('659967ae05ab3d95e43ab0eba32aa7f1807a7fabc51e5ea185313743754d4681')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver || exit
