@@ -1,0 +1,5 @@
+[nextcloud-app-files-accesscontrol]
+source = "github"
+github = "nextcloud/files_accesscontrol"
+prefix = "v"
+use_latest_release = true
