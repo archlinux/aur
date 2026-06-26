@@ -1,6 +1,6 @@
 # Maintainer: Yaroslav Krytsun <slavko7 at gmail dot com>
 pkgname=dyedfox-radio
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Desktop internet radio player for KDE Plasma"
 arch=('any')
