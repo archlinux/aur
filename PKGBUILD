@@ -3,7 +3,7 @@
 pkgname=aqueous-git
 pkgbase=aqueous
 pkgver=0.1.0.r263.gd1de190 # Will be updated by pkgver()
-pkgrel=1
+pkgrel=15
 pkgdesc="Aqueous Wayland window manager bundled with RiverDelta"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Aqueous"

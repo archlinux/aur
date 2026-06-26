@@ -2,10 +2,20 @@ post_install() {
     cat <<'EOF'
 ==> Aqueous installed (NativeAOT build -- no .NET runtime required).
 
-    Select 'Aqueous' from your display manager's session list (sddm, ly,
-    tuigreet/greetd), or install 'aqueous-greetd-config' (or apply
-    packaging/greetd/config.toml.example) for a preconfigured
-    greetd + tuigreet setup.
+    Select 'Aqueous' from your display manager's session list. 'ly' is the
+    recommended greeter (enable it with 'systemctl enable ly.service'); sddm
+    and tuigreet/greetd also work. greetd users can install
+    'aqueous-greetd-config' (or apply packaging/greetd/config.toml.example).
+
+    The session is now managed by uwsm (Universal Wayland Session Manager):
+    the 'Aqueous' wayland-session entry runs 'uwsm start -- aqueous-wm', which
+    wraps the compositor as a systemd user unit, exports a FRESH Wayland
+    environment on every start, activates graphical-session.target, and tears
+    the whole session down cleanly on exit. This fixes the stale-WAYLAND_DISPLAY
+    reconnect loop that could leave the bar chasing a dead socket across a
+    compositor restart. Aqueous now also exits when its compositor connection
+    drops, so uwsm brings the session down (and back up) cleanly. Static
+    toolkit/backend hints live in /etc/uwsm/env-aqueous.
 
     The output daemon (aqueous-outputd) drives wlr-randr from inside
     River's control context. It is started automatically by
@@ -18,13 +28,27 @@ post_install() {
         systemctl --user enable --now aqueous-outputd.service
     Requires the 'wlr-randr' package.
 
-    The graphical session is brought up via aqueous-session.target (a
-    wrapper that activates the static graphical-session.target) so that
-    xdg-desktop-portal.service -- which has Requisite=graphical-session.target
-    -- can start. This is what makes flameshot/screencast/screenshots work.
-    It is started automatically by /usr/bin/aqueous-init at session start;
-    no manual 'enable' is needed. Run 'systemctl --user daemon-reload' once
-    so the new unit is picked up without a relogin.
+    The graphical session is brought up by uwsm (it activates the static
+    graphical-session.target itself), so that xdg-desktop-portal.service --
+    which has Requisite=graphical-session.target -- can start. This is what
+    makes flameshot/screencast/screenshots work. When uwsm is unavailable,
+    aqueous-init falls back to the bundled aqueous-session.target wrapper.
+    Run 'systemctl --user daemon-reload' once so the units are picked up
+    without a relogin.
+
+    The Noctalia bar/shell is started as a systemd user unit
+    (noctalia.service), wanted by graphical-session.target and ordered
+    Before=xdg-desktop-autostart.target. This makes its system-tray watcher
+    (org.kde.StatusNotifierWatcher) come up BEFORE autostarted tray apps
+    (nm-applet, blueman-applet, ...), so their icons populate reliably -- the
+    old [[exec]] launch raced the autostart target and dropped icons. It is
+    enabled automatically via a graphical-session.target.wants symlink; no
+    per-user 'systemctl --user enable' is needed.
+
+    If tray icons are still missing after login, check that no KDE tray daemon
+    (kded6) is squatting the watcher:
+        busctl --user list | grep -i StatusNotifier
+        pkill kded6   # then restart noctalia.service
 
     Per-user state/cache/config directories will be created at first
     login by systemd-tmpfiles --user.
@@ -39,9 +63,9 @@ EOF
 post_upgrade() {
     local old_ver="$2"
     echo "==> Aqueous upgraded from ${old_ver:-unknown}."
-    echo "    Reload user units (picks up aqueous-session.target, which now"
-    echo "    activates graphical-session.target so xdg-desktop-portal can"
-    echo "    start) and restart the output daemon:"
+    echo "    The session is now launched via uwsm (uwsm start -- aqueous-wm)"
+    echo "    and exits cleanly on compositor disconnect. Reload user units"
+    echo "    and restart the output daemon:"
     echo "        systemctl --user daemon-reload"
     echo "        systemctl --user try-restart aqueous-outputd.service"
     echo "    The session target takes effect on your next login."
