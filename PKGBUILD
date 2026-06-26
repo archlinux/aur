@@ -6,7 +6,7 @@
 # Contributor: Radiolin <anton.osi2011@gmail.com>
 
 pkgname=alpaca-ai
-pkgver=9.2.3
+pkgver=9.2.4
 pkgrel=1
 pkgdesc='An Ollama client. Chat with local AI models or connect to third party AI providers like ChatGPT, Gemini and more'
 arch=('any')
@@ -58,7 +58,7 @@ optdepends=(
   'python-openai: connect to OpenAI-compatible APIs'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('4aa5357bf621d04d93d60dd8c0eed4293f476358a5fcf9e54a6212642bf4d7eadbf38fa57a0df6fc930d8dc5854634539320cef523e478460bc1bae0257c5af7')
+b2sums=('0dee3cec699045cba285f1e637223a5b40e986ff5bca58d0fa7f02d39633e67e4c00ecdb73f521fdd35261a42a01050a4224d0d1d2b00471497d96b050ae8633')
 
 build() {
   arch-meson "${srcdir}/Alpaca-${pkgver}" build
