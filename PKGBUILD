@@ -11,7 +11,7 @@ depends=('libsodium')
 makedepends=('gcc' 'make' 'autoconf' 'automake' 'gettext' 'texinfo' 'pkgconf')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/artich0ke/gisp/archive/v${pkgver}.tar.gz")
-sha256sums=('545b5fd3a136118ca7a1d830bf2ce539aa0fe0b3adddbfb9f75ae9632412cea5')
+sha256sums=('c4605fdb5869d5756996c531611cb9569a2507124633275f0c811497bcffb3f5')
 
 build() {
   cd "$pkgname"

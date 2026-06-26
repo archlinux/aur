@@ -18,6 +18,6 @@ pkgbase = gisp
 	makedepends = pkgconf
 	depends = libsodium
 	source = gisp-1.1.tar.gz::https://codeberg.org/artich0ke/gisp/archive/v1.1.tar.gz
-	sha256sums = 545b5fd3a136118ca7a1d830bf2ce539aa0fe0b3adddbfb9f75ae9632412cea5
+	sha256sums = c4605fdb5869d5756996c531611cb9569a2507124633275f0c811497bcffb3f5
 
 pkgname = gisp
