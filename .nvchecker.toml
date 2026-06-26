@@ -1,0 +1,4 @@
+[nextcloud-app-video-converter]
+source = "github"
+github = "PaulLereverend/NextcloudVideo_Converter"
+use_latest_release = true
