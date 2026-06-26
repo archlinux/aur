@@ -6,8 +6,8 @@ pkgname=(
     fcitx5-osk-git
     fcitx5-osk-kwin-launcher-git
 )
-_pkgver=0.1.0
-pkgver=0.1.0.r38.g39580a6
+_pkgver=0.2.0
+pkgver=0.2.0.r0.g96305da
 pkgrel=1
 pkgdesc='An onscreen keyboard working with fcitx5'
 url='https://github.com/fortime/fcitx5-osk'
@@ -15,7 +15,10 @@ source=("git+https://github.com/fortime/fcitx5-osk")
 arch=('x86_64')
 license=('MIT')
 makedepends=('cargo' 'git' 'cmake')
+# Disable lto in `makepkg`, otherwise, aws_lc can't be built
+options=(!lto)
 depends=('fcitx5' 'ttf-font-nerd')
+optdepends=('kwin: needed by kwin launcher')
 sha256sums=(SKIP)
 
 pkgver() {

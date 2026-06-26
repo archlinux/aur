@@ -1,6 +1,6 @@
 pkgbase = fcitx5-osk-git
 	pkgdesc = An onscreen keyboard working with fcitx5
-	pkgver = 0.1.0.r38.g39580a6
+	pkgver = 0.2.0.r0.g96305da
 	pkgrel = 1
 	url = https://github.com/fortime/fcitx5-osk
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = fcitx5-osk-git
 	makedepends = cmake
 	depends = fcitx5
 	depends = ttf-font-nerd
+	optdepends = kwin: needed by kwin launcher
+	options = !lto
 	source = git+https://github.com/fortime/fcitx5-osk
 	sha256sums = SKIP
 
