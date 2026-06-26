@@ -1,0 +1,16 @@
+pkgbase = sqlalchemy-lsp
+	pkgdesc = Language server for SQLAlchemy and Alembic: diagnostics, completion, hover, navigation
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/alex-oleshkevich/sqlalchemy-lsp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = sqlalchemy-lsp
+	conflicts = sqlalchemy-lsp
+	source_x86_64 = sqlalchemy-lsp-linux-x86_64::https://github.com/alex-oleshkevich/sqlalchemy-lsp/releases/download/v0.2.1/sqlalchemy-lsp-linux-x86_64
+	sha256sums_x86_64 = c0c0aadba90bc72c8bce9de695b0383e2263a2ea7fd04a1fab93d69cc024b473
+	source_aarch64 = sqlalchemy-lsp-linux-aarch64::https://github.com/alex-oleshkevich/sqlalchemy-lsp/releases/download/v0.2.1/sqlalchemy-lsp-linux-aarch64
+	sha256sums_aarch64 = a9bbf14c85a81676b52b03449690d89d4285cb978940b9d7556c5c1c207a5ff5
+
+pkgname = sqlalchemy-lsp
