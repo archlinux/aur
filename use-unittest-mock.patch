@@ -1,0 +1,25 @@
+Use unittest.mock from the standard library instead of the external mock
+package, which is no longer required on supported Python versions.
+
+--- a/freshdesk/v2/tests/test_solutions.py
++++ b/freshdesk/v2/tests/test_solutions.py
+@@ -4,7 +4,7 @@
+ import json
+ import os.path
+ import sys
+-from mock import patch, ANY
++from unittest.mock import patch, ANY
+
+ import pytest
+
+--- a/freshdesk/v2/tests/test_ticket.py
++++ b/freshdesk/v2/tests/test_ticket.py
+@@ -1,7 +1,7 @@
+ import datetime
+ import json
+ import os.path
+-from mock import patch, ANY
++from unittest.mock import patch, ANY
+
+ import pytest
+
