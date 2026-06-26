@@ -3,9 +3,9 @@
 
 _target=mips64-elf
 pkgname=${_target}-gcc-stage1
-pkgver=14.2.0
+pkgver=14.4.0
 _islver=0.26
-pkgrel=2
+pkgrel=1
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target})"
 arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
@@ -17,7 +17,7 @@ options=('!emptydirs' '!strip')
 source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
         "https://libisl.sourceforge.io/isl-${_islver}.tar.xz"
         "mabi32.patch")
-sha256sums=('a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9'
+sha256sums=('752b6f567beac83159c77a7680b1316bdd784738bff9a9d070112c09da90f6d9'
             'a0b5cb06d24f9fa9e77b55fabbe9a3c94a336190345c2555f9915bb38e976504'
             '86c06dfb12295e665204441ca17440d4e597da24b6cffad052c94268ec562169')
 
@@ -25,7 +25,7 @@ prepare() {
   cd gcc-${pkgver}
 
   # link isl for in-tree builds
-  ln -s ../isl-$_islver isl
+  ln -sf ../isl-$_islver isl
 
   # Do not run fixincludes
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
