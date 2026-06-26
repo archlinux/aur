@@ -1,3 +1,4 @@
 [octoprint-venv]
 source = "git"
 git = "https://github.com/OctoPrint/OctoPrint.git"
+exclude_regex = '^.*[A-Za-z].*$'

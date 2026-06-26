@@ -5,7 +5,7 @@
 
 _pkgname="octoprint"
 pkgname="$_pkgname-venv"
-pkgver=1.11.7
+pkgver=1.11.8
 pkgrel=1
 pkgdesc="Web interface for 3D printers (venv installation type)"
 url="https://github.com/OctoPrint/OctoPrint"
@@ -23,10 +23,12 @@ conflicts=("$_pkgname")
 
 install="$_pkgname.install"
 
+options=('!debug' '!strip')
+
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/releases/download/${pkgver}/OctoPrint-${pkgver}.source.tar.gz")
-sha256sums=('5743244a351ff5dafbf0bcd53c03b47f37dba4599f9f5de4ca9c7f9f70a63ad3')
+sha256sums=('f3b64821fc59d377a3710404f251f29b218537b47d7d5c7967a8e796cba4552b')
 
 prepare() {
   sed -E -e '/^PYTHON_REQUIRES/s& = .*& = ">=3.7"&' -i "$_pkgsrc/setup.py"
