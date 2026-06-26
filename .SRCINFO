@@ -1,6 +1,6 @@
 pkgbase = plank-reloaded
 	pkgdesc = Fork of the original Plank project, providing a simple dock for X11 desktop environments
-	pkgver = 0.11.167
+	pkgver = 0.11.168
 	pkgrel = 1
 	url = https://github.com/zquestz/plank-reloaded
 	arch = x86_64
@@ -27,9 +27,10 @@ pkgbase = plank-reloaded
 	depends = pango
 	depends = libdbusmenu-gtk3
 	depends = libdbusmenu-glib
+	depends = libcanberra
 	provides = plank
 	conflicts = plank
-	source = https://github.com/zquestz/plank-reloaded/archive/refs/tags/0.11.167.tar.gz
-	sha256sums = 7c24a46bff96eb86f1dfc820c843d78a14634077cbcbb3695b2cb1aad184c536
+	source = https://github.com/zquestz/plank-reloaded/archive/refs/tags/0.11.168.tar.gz
+	sha256sums = 6bc33b091f8d34610e8e499bce7b682dc42b1b2153105decacba2e17b8f0cd42
 
 pkgname = plank-reloaded
