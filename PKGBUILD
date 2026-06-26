@@ -3,7 +3,7 @@ pkgbase=git-credential-manager
 pkgname=("$pkgbase"
          "${pkgbase}-extras")
 pkgver=2.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A secure Git credential helper built on .NET that runs on Windows, macOS, and Linux"
 arch=(i686 x86_64)
 url="https://github.com/git-ecosystem/git-credential-manager"
@@ -30,6 +30,13 @@ sha512sums=('8853975f1d1591c8c252b23d80a22a9813d1cec16acc5f15104d4bd9d22e04171e5
 build() {
     cd "${pkgbase}-${pkgver}"
 
+    export DOTNET_CLI_HOME="$srcdir/.dotnet"
+    export HOME="$srcdir/.home"
+    export GIT_CONFIG_GLOBAL="$HOME/.gitconfig"
+    mkdir -p "$DOTNET_CLI_HOME" "$HOME"
+
+    rm -rf out
+
     # Map Arch architecture to standard .NET Runtime Identifier (RID)
     local _rid="linux-x64"
     if [ "$CARCH" = "i686" ]; then
@@ -47,6 +54,11 @@ build() {
 
 check() {
     cd "${pkgbase}-${pkgver}"
+
+    export DOTNET_CLI_HOME="$srcdir/.dotnet"
+    export HOME="$srcdir/.home"
+    export GIT_CONFIG_GLOBAL="$HOME/.gitconfig"
+    mkdir -p "$DOTNET_CLI_HOME" "$HOME"
 
     local _rid="linux-x64"
     if [ "$CARCH" = "i686" ]; then
