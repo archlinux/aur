@@ -38,12 +38,21 @@ post_install() {
 
     The Noctalia bar/shell is started as a systemd user unit
     (noctalia.service), wanted by graphical-session.target and ordered
-    Before=xdg-desktop-autostart.target. This makes its system-tray watcher
+    Before=xdg-desktop-autostart.target. It runs the Noctalia v5 native shell
+    via 'noctalia --daemon', which forks the shell and returns once it is up;
+    Type=forking makes systemd wait for that return before marking the unit
+    active (a real readiness barrier). This makes its system-tray watcher
     (org.kde.StatusNotifierWatcher) come up BEFORE autostarted tray apps
     (nm-applet, blueman-applet, ...), so their icons populate reliably -- the
     old [[exec]] launch raced the autostart target and dropped icons. It is
     enabled automatically via a graphical-session.target.wants symlink; no
     per-user 'systemctl --user enable' is needed.
+
+    On first login aqueous-init seeds a default Noctalia config to
+    ~/.config/noctalia/config.toml (bundled wallpapers + idle/lock defaults)
+    only when you have no config yet; an existing config is never overwritten.
+    GUI changes Noctalia makes itself land in
+    ~/.local/state/noctalia/settings.toml and are independent of this seed.
 
     If tray icons are still missing after login, check that no KDE tray daemon
     (kded6) is squatting the watcher:
