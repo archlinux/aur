@@ -1,6 +1,6 @@
 # Maintainer: NewYearPrism
 
-_ggml_version=0.15.2
+_ggml_version=0.15.3
 pkgname=ggml-vulkan-engine
 pkgver=${_ggml_version}
 pkgrel=1
@@ -9,7 +9,6 @@ arch=(x86_64 aarch64)
 url='https://github.com/ggml-org/ggml'
 license=('MIT')
 depends=(
-    "ggml=${pkgver}"
     glibc
     libstdc++
     libgcc
@@ -19,7 +18,6 @@ makedepends=(
     "ggml-src=${pkgver}"
     cmake
     ninja
-    git
     shaderc
     spirv-headers
     vulkan-headers
@@ -76,6 +74,7 @@ build() {
 }
 
 package() {
+    depends+=("ggml=${pkgver}")
   install -Dm755 build/bin/libggml-vulkan.so "${pkgdir}/usr/lib/ggml/backends/libggml-vulkan.so"
   install -Dm644 "/usr/share/licenses/ggml/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

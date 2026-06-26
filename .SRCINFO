@@ -1,19 +1,17 @@
 pkgbase = ggml-vulkan-engine
 	pkgdesc = Vulkan backend for ggml
-	pkgver = 0.15.2
+	pkgver = 0.15.3
 	pkgrel = 1
 	url = https://github.com/ggml-org/ggml
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = ggml-src=0.15.2
+	makedepends = ggml-src=0.15.3
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = git
 	makedepends = shaderc
 	makedepends = spirv-headers
 	makedepends = vulkan-headers
-	depends = ggml=0.15.2
 	depends = glibc
 	depends = libstdc++
 	depends = libgcc
@@ -22,3 +20,8 @@ pkgbase = ggml-vulkan-engine
 	options = !debug
 
 pkgname = ggml-vulkan-engine
+	depends = glibc
+	depends = libstdc++
+	depends = libgcc
+	depends = vulkan-icd-loader
+	depends = ggml=0.15.3
