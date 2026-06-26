@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: Jake <aur@ja-ke.tech>
 
 : ${_install_path:=opt}
