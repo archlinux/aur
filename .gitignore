@@ -7,3 +7,5 @@
 !.SRCINFO
 !*.install
 !*.patch
+!.pre-commit
+!.nvchecker.toml

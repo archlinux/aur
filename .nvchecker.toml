@@ -1,0 +1,5 @@
+[pyenv-virtualenv]
+source = "github"
+github = "pyenv/pyenv-virtualenv"
+prefix = "v"
+use_latest_release = true
