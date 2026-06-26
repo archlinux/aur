@@ -1,0 +1,18 @@
+pkgbase = ucloud-cli
+	pkgdesc = Command line interface for UCloud services
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/ucloud/ucloud-cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = ucloud
+	conflicts = ucloud
+	options = !debug
+	source = git+https://github.com/ucloud/ucloud-cli.git#tag=v0.3.3
+	sha256sums = SKIP
+
+pkgname = ucloud-cli
