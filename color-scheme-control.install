@@ -4,8 +4,11 @@ Welcome to Color Scheme Control!
 
 Quick Start:
 
-    systemctl --user enable --now color-scheme-control.service
+    csctl daemon >/dev/null 2>&1 &
+    csctl toggle
     csctl help
+
+More Info: https://codeberg.org/mohterbaord/color-scheme-control
 
 HELP
 }
