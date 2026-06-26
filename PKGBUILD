@@ -1,5 +1,5 @@
 pkgname=pingall
-pkgver=2.1.5
+pkgver=2.1.7
 pkgrel=1
 pkgdesc='Ping everything you can reach'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ optdepends=('avahi: hostname resolution with avahi-resolve')
 conflicts=('pingall-bin' 'pingall-git')
 _cratename='pingall'
 source=("${_cratename}-${pkgver}.crate::https://static.crates.io/crates/${_cratename}/${_cratename}-${pkgver}.crate")
-sha256sums=('37faf36b0acb588c225b0508836661d7224c5a0ea1b4067e7648973dad7350ae')
+sha256sums=('b058cce581ea9a91f49a45f86725da899ddeebbd6b4f33f510b2121155ed1e06')
 
 prepare() {
   cd "${_cratename}-${pkgver}"
