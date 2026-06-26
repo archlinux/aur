@@ -2,30 +2,28 @@
 
 pkgname=llm-thalamus
 _pkgname=llm_thalamus
-pkgver=0.16
+pkgver=1.0
 pkgrel=1
-pkgdesc="Local AI controller and PySide6 UI integrating OpenMemory with Ollama"
+pkgdesc="Qt desktop GUI for the pi coding agent — rich chat interface using pi --mode rpc"
 arch=('any')
 url="https://github.com/evertvorster/llm_thalamus"
 license=('GPL-3.0-or-later')
 depends=(
-  'ollama'
+  'pi-coding-agent'
   'python'
-  'pyside6'               # Qt6 Python bindings (includes WebEngine bindings) :contentReference[oaicite:0]{index=0}
-  'python-markdown-it-py' # markdown-it-py parser
-  'python-mdit_py_plugins' 
-  'python-langgraph'
-  'katex'                 # provides /usr/lib/node_modules/katex/dist assets :contentReference[oaicite:1]{index=1}
-  'qt6-webengine'         # underlying Qt WebEngine libs :contentReference[oaicite:2]{index=2}
-  'highlightjs'           # Javascript highlighting
-  'llm-thalamus-theme'    # Meta-mackage that installs a theme.
-  'openmemory-backend'
+  'pyside6'
+  'qt6-webengine'
+  'python-markdown-it-py'
+  'python-mdit_py_plugins'
+  'katex'
+  'highlightjs'
+  'llm-thalamus-theme'
 )
 makedepends=('python')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/evertvorster/llm_thalamus/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('6146368687421b3daf1e690a7cdc0fca17f565b8d7dd227cf29ccf47d5beaa03')
+sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -35,6 +33,24 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  # Use the project Makefile to install everything
-  make DESTDIR="${pkgdir}" PREFIX=/usr install
+  # Install Python sources
+  install -dm0755 "${pkgdir}/usr/lib/llm_thalamus"
+  cp -a src/. "${pkgdir}/usr/lib/llm_thalamus/"
+  find "${pkgdir}/usr/lib/llm_thalamus" -type d -name "__pycache__" -prune -exec rm -rf {} +
+  find "${pkgdir}/usr/lib/llm_thalamus" -type f -name "*.py[co]" -delete
+
+  # Install pi-config for local-only mode
+  install -dm0755 "${pkgdir}/usr/share/llm-thalamus/pi-config"
+  cp -a resources/pi-config/. "${pkgdir}/usr/share/llm-thalamus/pi-config/"
+
+  # Install desktop file
+  install -Dm0644 llm_thalamus.desktop "${pkgdir}/usr/share/applications/llm_thalamus.desktop"
+
+  # Install launcher
+  install -dm0755 "${pkgdir}/usr/bin"
+  cat > "${pkgdir}/usr/bin/llm-thalamus" << 'EOF'
+#!/bin/sh
+exec /usr/bin/python3 /usr/lib/llm_thalamus/llm_thalamus.py "$@"
+EOF
+  chmod 0755 "${pkgdir}/usr/bin/llm-thalamus"
 }
