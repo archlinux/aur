@@ -8,6 +8,8 @@ url="https://github.com/ixnewton/simpleSineWaveGenerator"
 license=('MIT')
 depends=('gtk3')
 optdepends=('pulseaudio: PulseAudio backend (or pipewire-pulse)')
+conflicts=('simplesinewavegenerator-git')
+provides=('simplesinewavegenerator')
 source=("https://github.com/ixnewton/simpleSineWaveGenerator/releases/download/v${pkgver}/simpleSineWaveGenerator-${pkgver}-x86_64.tar.gz")
 sha256sums=('SKIP')
 

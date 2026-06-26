@@ -7,6 +7,8 @@ pkgbase = simplesinewavegenerator-bin
 	license = MIT
 	depends = gtk3
 	optdepends = pulseaudio: PulseAudio backend (or pipewire-pulse)
+	conflicts = simplesinewavegenerator-git
+	provides = simplesinewavegenerator
 	source = https://github.com/ixnewton/simpleSineWaveGenerator/releases/download/v0.0.4/simpleSineWaveGenerator-0.0.4-x86_64.tar.gz
 	sha256sums = SKIP
 
