@@ -1,6 +1,6 @@
 # Maintainer: Carlos Prieto Ortiz <prietus@live.com>
 pkgname=irkt-bin
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Modern terminal IRC client: full IRCv3, SASL/CertFP, inline images (Kitty/iTerm2/Sixel)"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ provides=('irkt')
 conflicts=('irkt' 'irkt-git')
 source_x86_64=("irkt-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/irkt-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("irkt-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/irkt-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('2b2db8e5cb911492b06fb038660d833e2930593dd396431bd33e4c1ab976ccbb')
-sha256sums_aarch64=('9798b831309df3e40bd24c394d5d8ed85a642d04c398f5641584394f41b99e72')
+sha256sums_x86_64=('11645f376ac967e121695be793853a18a017b91b81bada50fc8bb9875e6676fe')
+sha256sums_aarch64=('77858211d1cc3dbc812faa4af330bc825d19aaf1cf870e894bb19f84d3c81548')
 package() {
 	install -Dm0755 irkt "$pkgdir/usr/bin/irkt"
 	install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
