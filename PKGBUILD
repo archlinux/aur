@@ -1,6 +1,6 @@
 # Maintainer: Furkan Sahin furkansahin824@gmail.com
 pkgname=vscode-js-debug
-pkgver=1.90.0
+pkgver=v1.117.0
 pkgrel=1
 pkgdesc='A VS Code debugger for JavaScript & TypeScript, powered by the Microsoft vscode-js-debug'
 arch=(any)
@@ -12,10 +12,15 @@ makedepends=(
   npm
 )
 # source=("${pkgname}-${pkgver}.tar.gz::https://github.com/microsoft/vscode-js-debug/archive/refs/tags/v${pkgver}.tar.gz")
-source=("git+$url.git#tag=v$pkgver")
+source=("git+$url")
 sha256sums=('SKIP')
 
 _server="dapDebugServer.js"
+
+pkgver() {
+	cd "$srcdir/${pkgname}"
+	git describe --tags --abbrev=0
+}
 
 build() {
   cd $pkgname

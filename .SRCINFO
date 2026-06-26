@@ -1,6 +1,6 @@
 pkgbase = vscode-js-debug
 	pkgdesc = A VS Code debugger for JavaScript & TypeScript, powered by the Microsoft vscode-js-debug
-	pkgver = 1.90.0
+	pkgver = v1.117.0
 	pkgrel = 1
 	url = https://github.com/microsoft/vscode-js-debug
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = vscode-js-debug
 	makedepends = git
 	makedepends = npm
 	depends = nodejs
-	source = git+https://github.com/microsoft/vscode-js-debug.git#tag=v1.90.0
+	source = git+https://github.com/microsoft/vscode-js-debug
 	sha256sums = SKIP
 
 pkgname = vscode-js-debug
