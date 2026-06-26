@@ -1,0 +1,10 @@
+*.pkg.tar*
+*.tar.gz
+*.tar
+*.log
+pkg/
+src/
+gajae-code-bin-*-LICENSE
+gajae-code-bin-*-NOTICE.md
+gajae-code-bin-*-x86_64
+gajae-code-bin-*-aarch64
