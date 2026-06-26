@@ -1,5 +1,6 @@
 # Ignore everything
 *
+
 # But not these files...
 !.gitignore
 !PKGBUILD
@@ -7,3 +8,4 @@
 !*.install
 !*.patch
 !.pre-commit
+!.nvchecker.toml

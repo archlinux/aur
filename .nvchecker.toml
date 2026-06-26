@@ -1,0 +1,5 @@
+[nextcloud-app-quota-warning]
+source = "github"
+github = "nextcloud/quota_warning"
+prefix = "v"
+use_latest_release = true
