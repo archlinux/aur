@@ -1,7 +1,7 @@
 pkgbase = clutch
 	pkgdesc = A highly customizable TUI RPC interface for the Transmission bittorrent client
-	pkgver = 0.1.0
-	pkgrel = 3
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://gitlab.com/jay-thomas/clutch
 	arch = x86_64
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = clutch
 	optdepends = zsh: tab completion for zsh (requires compinit in ~/.zshrc)
 	options = !debug
 	options = !lto
-	source = clutch::git+https://gitlab.com/jay-thomas/clutch#tag=v0.1.0
-	sha256sums = dc6dddaa6c082c9cfec25ed37eae39f8300b62f89bb905a07745231761c526b5
+	source = clutch::git+https://gitlab.com/jay-thomas/clutch.git#tag=v0.2.0
+	sha256sums = c85012731b37867c7ba8fdd559dbc4d97c3ce53a740251d23238bbf49bae187d
 
 pkgname = clutch
