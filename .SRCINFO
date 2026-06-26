@@ -1,6 +1,6 @@
 pkgbase = maze
-	pkgdesc = Public WiFi security monitor — MITM detection, MAC randomization, nftables firewall
-	pkgver = 1.3.0
+	pkgdesc = Maze Network — public WiFi security monitor: MITM detection, MAC randomization, nftables firewall
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/berk-kucuk/Maze
 	install = maze.install
@@ -13,9 +13,10 @@ pkgbase = maze
 	depends = iproute2
 	depends = dbus
 	depends = libdbus
+	depends = systemd
 	optdepends = wireless_tools: WiFi interface monitoring (iwgetid)
 	optdepends = imagemagick: resize app icon to multiple sizes during install
-	source = maze-1.3.0.tar.gz::https://github.com/berk-kucuk/Maze/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = d8cf0f43cca5929859f52d80d3ef8dd329cf4961b317186d6583d3536d51623b
+	source = maze-2.0.0.tar.gz::https://github.com/berk-kucuk/Maze/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = bd1cc1a0fd87e6ab7f2469daa27550d541c144c587055c499f8cff3d8dc0f0e9
 
 pkgname = maze

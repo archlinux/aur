@@ -1,9 +1,9 @@
 # Maintainer: berkkucukk <berkkucukk@proton.me>
 
 pkgname=maze
-pkgver=1.3.0
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="Public WiFi security monitor — MITM detection, MAC randomization, nftables firewall"
+pkgdesc="Maze Network — public WiFi security monitor: MITM detection, MAC randomization, nftables firewall"
 arch=('x86_64' 'aarch64')
 url="https://github.com/berk-kucuk/Maze"
 license=('MIT')
@@ -17,6 +17,7 @@ depends=(
     'iproute2'         # ip route / ip neigh commands
     'dbus'             # dbus daemon (runtime)
     'libdbus'          # shared library for dbus-python
+    'systemd'          # runs the privileged helper as a daemon (maze.service)
 )
 makedepends=()
 optdepends=(
@@ -26,7 +27,7 @@ optdepends=(
 install=maze.install
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/berk-kucuk/Maze/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d8cf0f43cca5929859f52d80d3ef8dd329cf4961b317186d6583d3536d51623b')
+sha256sums=('bd1cc1a0fd87e6ab7f2469daa27550d541c144c587055c499f8cff3d8dc0f0e9')
 
 package() {
     cd "$srcdir/Maze-${pkgver}"
@@ -49,13 +50,43 @@ package() {
 exec /opt/maze/venv/bin/python3 /opt/maze/main.py "$@"
 LAUNCHER
 
-    # ── .desktop entry ─────────────────────────────────────────────────────
+    # ── Privileged helper daemon (systemd) ─────────────────────────────────
+    # Runs as root so the GUI never needs a sudo password. Access to its socket
+    # (/run/maze/maze.sock) is gated by the 'maze' group.
+    install -dm755 "$pkgdir/usr/lib/systemd/system"
+    install -m644 /dev/stdin "$pkgdir/usr/lib/systemd/system/maze.service" << 'UNIT'
+[Unit]
+Description=Maze Network privileged helper
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/maze/venv/bin/python3 /opt/maze/maze/helper.py
+Restart=on-failure
+RestartSec=2
+RuntimeDirectory=maze
+RuntimeDirectoryMode=0750
+ProtectHome=true
+ProtectControlGroups=true
+ProtectKernelLogs=true
+
+[Install]
+WantedBy=multi-user.target
+UNIT
+
+    # ── sysusers: create the 'maze' group that gates the helper socket ──────
+    install -dm755 "$pkgdir/usr/lib/sysusers.d"
+    install -m644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/maze.conf" << 'SYSUSERS'
+g maze -
+SYSUSERS
+
+    # ── .desktop entry (application menu) ──────────────────────────────────
     install -dm755 "$pkgdir/usr/share/applications"
     install -m644 /dev/stdin "$pkgdir/usr/share/applications/maze.desktop" << 'DESKTOP'
 [Desktop Entry]
 Version=1.1
 Type=Application
-Name=Maze
+Name=Maze Network
 GenericName=Network Security Monitor
 Comment=Public WiFi protection — MITM detection, MAC randomization, firewall
 Exec=/usr/bin/maze
@@ -67,6 +98,24 @@ StartupNotify=true
 StartupWMClass=maze
 X-GNOME-UsesNotifications=true
 DESKTOP
+
+    # ── Autostart entry (start hidden in the system tray on login) ─────────
+    install -dm755 "$pkgdir/etc/xdg/autostart"
+    install -m644 /dev/stdin "$pkgdir/etc/xdg/autostart/maze.desktop" << 'AUTOSTART'
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=Maze Network
+GenericName=Network Security Monitor
+Comment=Start Maze Network minimized in the system tray
+Exec=/usr/bin/maze --background
+Icon=maze
+Terminal=false
+Categories=Network;Security;System;
+StartupNotify=false
+StartupWMClass=maze
+X-GNOME-Autostart-enabled=true
+AUTOSTART
 
     # ── Icons ──────────────────────────────────────────────────────────────
     if [[ -f MAZE.png ]]; then
@@ -88,17 +137,4 @@ DESKTOP
     # ── License ────────────────────────────────────────────────────────────
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
     [[ -f LICENSE ]] && install -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
-
-    # ── Sudoers example ────────────────────────────────────────────────────
-    install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-    install -m644 /dev/stdin \
-        "$pkgdir/usr/share/doc/$pkgname/maze.sudoers.example" << 'SUDOERS'
-# Maze — skip sudo password prompt at startup.
-#
-# 1. Copy this file to /etc/sudoers.d/maze
-# 2. Replace USERNAME with your actual Linux username
-# 3. Verify with:  sudo visudo -c
-#
-# USERNAME ALL=(root) NOPASSWD: /opt/maze/venv/bin/python3 /opt/maze/maze/helper.py *
-SUDOERS
 }

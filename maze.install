@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Maze post-install hooks
-# Handles venv creation and Python package installation / upgrade / removal.
+# Maze Network post-install hooks
+# Handles venv creation, Python package install/upgrade, and the helper daemon.
 
 _INSTALL_DIR="/opt/maze"
 _VENV="$_INSTALL_DIR/venv"
@@ -84,16 +84,32 @@ _refresh_desktop() {
         update-desktop-database /usr/share/applications 2>/dev/null || true
 }
 
+_setup_group() {
+    # systemd-sysusers normally creates 'maze' from /usr/lib/sysusers.d/maze.conf;
+    # fall back to groupadd in case the hook did not run.
+    getent group maze >/dev/null 2>&1 || groupadd -r maze 2>/dev/null || true
+}
+
+_enable_daemon() {
+    systemctl daemon-reload 2>/dev/null || true
+    systemctl enable --now maze.service 2>/dev/null \
+        && _ok "maze.service enabled and started" \
+        || _warn "Could not enable maze.service automatically — run: sudo systemctl enable --now maze.service"
+}
+
 _print_summary() {
     echo ""
-    echo "  ┌─────────────────────────────────────────────────────┐"
-    echo "  │  Maze installed — run: maze                         │"
-    echo "  │                                                     │"
-    echo "  │  To skip the sudo password prompt at startup:       │"
-    echo "  │    sudo cp /usr/share/doc/maze-git/maze.sudoers.example \\"
-    echo "  │             /etc/sudoers.d/maze                     │"
-    echo "  │    sudo nano /etc/sudoers.d/maze  # set USERNAME    │"
-    echo "  └─────────────────────────────────────────────────────┘"
+    echo "  ┌──────────────────────────────────────────────────────────┐"
+    echo "  │  Maze Network installed — run: maze                       │"
+    echo "  │                                                          │"
+    echo "  │  The privileged helper now runs as a daemon — NO password │"
+    echo "  │  prompt. To use it, join the 'maze' group and re-login:    │"
+    echo "  │                                                          │"
+    echo "  │    sudo usermod -aG maze \$USER                            │"
+    echo "  │    # then log out and back in (or run: newgrp maze)       │"
+    echo "  │                                                          │"
+    echo "  │  Autostart launches Maze Network hidden in the tray.      │"
+    echo "  └──────────────────────────────────────────────────────────┘"
     echo ""
 }
 
@@ -105,6 +121,8 @@ post_install() {
     _install_dbus_python
     _fix_permissions
     _refresh_desktop
+    _setup_group
+    _enable_daemon
     _print_summary
 }
 
@@ -121,14 +139,21 @@ post_upgrade() {
     "$_PIP" install --quiet --upgrade "dbus-python>=1.3.2" 2>/dev/null || true
     _fix_permissions
     _refresh_desktop
-    _ok "Maze upgraded"
+    _setup_group
+    # Pick up unit changes and restart the running helper.
+    systemctl daemon-reload 2>/dev/null || true
+    systemctl try-restart maze.service 2>/dev/null || true
+    _ok "Maze Network upgraded"
 }
 
 pre_remove() {
-    :
+    # Stop and disable the daemon before its files disappear.
+    systemctl disable --now maze.service 2>/dev/null || true
 }
 
 post_remove() {
+    systemctl daemon-reload 2>/dev/null || true
+    rm -rf /run/maze 2>/dev/null || true
     # venv is inside /opt/maze which pacman already removed; just refresh caches
     _refresh_desktop
 }
