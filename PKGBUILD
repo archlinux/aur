@@ -3,7 +3,7 @@
 
 pkgname='perl-spreadsheet-parsexlsx'
 pkgver='0.37'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="parse XLSX files"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -11,7 +11,7 @@ options=('!emptydirs')
 depends=('perl-archive-zip>=1.34' 'perl-cryptx>=0' 'perl-graphics-colorutils>=0' 'perl-ole-storage-lite>=0' 'perl-spreadsheet-parseexcel>=0' 'perl-xml-twig>=0' 'perl>=5.010')
 makedepends=()
 url='https://metacpan.org/release/Spreadsheet-ParseXLSX'
-source=('http://search.cpan.org/CPAN/authors/id/N/NU/NUDDLEGG/Spreadsheet-ParseXLSX-0.37.tar.gz')
+source=('https://cpan.metacpan.org/authors/id/N/NU/NUDDLEGG/Spreadsheet-ParseXLSX-0.37.tar.gz')
 md5sums=('be898f0d795cacc883258d03c292a4ef')
 sha512sums=('1d39edc7b8c1d0bd820d9971743dce7de01448a38f83c6fbbc4c5d22d0a4b396fab8374ef4f43ac08163e4d9a83db97da11551cc2d96d070bc326a77141f01b7')
 _distdir="Spreadsheet-ParseXLSX-0.37"
