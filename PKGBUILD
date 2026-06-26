@@ -5,17 +5,18 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-gnutls
 pkgver=3.8.11
-pkgrel=2
+pkgrel=4
 arch=('any')
 pkgdesc="A library which provides a secure layer over a reliable transport layer (Android ${_android_arch})"
 url="https://www.gnutls.org/"
 license=('GPL-3.0-or-later AND LGPL-2.1-or-later')
 groups=('android-gnutls')
-depends=("android-${_android_arch}-libtasn1"
-         "android-${_android_arch}-zlib"
+depends=("android-${_android_arch}-libidn2"
+         "android-${_android_arch}-libtasn1"
+         "android-${_android_arch}-libunistring"
          "android-${_android_arch}-nettle"
          "android-${_android_arch}-p11-kit"
-         "android-${_android_arch}-libunistring")
+         "android-${_android_arch}-zlib")
 makedepends=('android-configure'
              'autogen')
 optdepends=("android-${_android_arch}-openssl: libgnutls-openssl")
