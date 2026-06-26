@@ -1,6 +1,6 @@
 # Maintainer: f-o-o-g-s <tollwitch@proton.me>
 pkgname=nokkvi-bin
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="A native Rust/Iced desktop client for Navidrome music servers"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('nokkvi')
 conflicts=('nokkvi')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/nokkvi-v${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz")
-sha256sums=('d90c8765953e8ac1a10a18c9db76ebdf7e255c123bbec85d990b8a0f3ff583ce')
+sha256sums=('030f58d9336c6eef557506cdbdfc2a3b2b8d7b2065673806498e8e0be6449809')
 
 package() {
     cd "${srcdir}/nokkvi-v${pkgver}-${CARCH}-unknown-linux-gnu"
