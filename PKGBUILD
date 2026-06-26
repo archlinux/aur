@@ -15,6 +15,10 @@ depends=('claude-code')          # runtime: the `claude` CLI (authenticated)
 makedepends=('bun' 'git')
 provides=('saur')
 conflicts=('saur')
+# Do NOT strip: this is a bun standalone executable with the app bundle appended after the ELF.
+# `strip` (which makepkg runs by default) corrupts that trailer, so the binary falls back to bun's
+# own CLI — `saur update` then runs `bun update`. Keep the compiled binary intact.
+options=('!strip')
 source=("${_binname}::git+https://git.josf.dev/josefandersson/saur.git")
 sha256sums=('SKIP')
 
