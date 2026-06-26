@@ -1,13 +1,13 @@
 pkgbase = infisical
 	pkgdesc = Fetch and inject secrets into any framework in local development
-	pkgver = 0.43.98
+	pkgver = 0.43.99
 	pkgrel = 1
 	url = https://github.com/Infisical/cli
 	arch = x86_64
 	license = LicenseRef-Custom
 	makedepends = go
 	depends = glibc
-	source = infisical-0.43.98.tar.gz::https://github.com/Infisical/cli/archive/refs/tags/v0.43.98.tar.gz
-	sha256sums = de014735dff55d53eadf200dd8842accb21a284762dadec25f6c8fb078c3c405
+	source = infisical-0.43.99.tar.gz::https://github.com/Infisical/cli/archive/refs/tags/v0.43.99.tar.gz
+	sha256sums = ea59e6b700a345ed231593e2bd6a01f2fd3ccde7dd894633d37b2cacc9416264
 
 pkgname = infisical
