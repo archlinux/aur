@@ -1,6 +1,6 @@
 pkgbase = aquacontrol
 	pkgdesc = Suite di controllo per Aquaero 6 LT
-	pkgver = 3.3.1
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = https://github.com/raffaele-90/aquacontrol
 	install = aquacontrol.install
@@ -13,7 +13,7 @@ pkgbase = aquacontrol
 	provides = aquacontrol
 	conflicts = openaquaero
 	replaces = openaquaero
-	source = aquacontrol-3.3.1.tar.gz::https://github.com/raffaele-90/aquacontrol/archive/refs/tags/v3.3.1.tar.gz
+	source = aquacontrol-3.3.2.tar.gz::https://github.com/raffaele-90/aquacontrol/archive/refs/tags/v3.3.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = aquacontrol
