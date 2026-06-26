@@ -1,18 +1,40 @@
+# SECURITY: pre-daemon releases let the app write a passwordless sudoers rule at
+# runtime (the old "Auth Mode" toggle).  pacman never owned that file, so it
+# would survive an upgrade and keep a local privilege-escalation path.  Remove it.
+_remove_legacy_sudoers() {
+    rm -f /etc/sudoers.d/entropy-shield
+}
+
 post_install() {
+    _remove_legacy_sudoers
     echo ""
     echo "  Entropy Shield installed successfully."
     echo ""
-    echo "  Launch the GUI:"
+    echo "  Privileged operations now run in a root daemon (no pkexec/sudo)."
+    echo "  Finish setup in 3 steps:"
+    echo ""
+    echo "    1) Enable the privileged daemon:"
+    echo "         sudo systemctl enable --now entropy-shield"
+    echo ""
+    echo "    2) Add your user to the 'entropy-shield' group so the GUI can"
+    echo "       reach the daemon socket:"
+    echo "         sudo usermod -aG entropy-shield \"\$USER\""
+    echo ""
+    echo "    3) Log out and back in (or reboot) for the group to take effect."
+    echo ""
+    echo "  Then launch the GUI:"
     echo "    entropy-shield"
-    echo ""
-    echo "  Headless / server mode (Tor + DNSCrypt, no GUI):"
-    echo "    systemctl enable --now entropy-shield"
-    echo ""
-    echo "  To enable passwordless connect/disconnect, open the app"
-    echo "  and go to Settings -> General -> Auth Mode."
     echo ""
 }
 
 post_upgrade() {
-    post_install
+    _remove_legacy_sudoers
+    echo ""
+    echo "  Entropy Shield upgraded to a daemon-based privilege model."
+    echo ""
+    echo "  If this is your first upgrade to 4.x, make sure the daemon is"
+    echo "  enabled and your user is in the 'entropy-shield' group:"
+    echo "    sudo systemctl enable --now entropy-shield"
+    echo "    sudo usermod -aG entropy-shield \"\$USER\"   # then re-login"
+    echo ""
 }

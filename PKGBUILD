@@ -1,6 +1,6 @@
 # Maintainer: Berk Kucuk <berkkucukk@proton.me>
 pkgname=entropy-shield
-pkgver=3.0.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Modern Linux desktop privacy stack — Tor, DNSCrypt, I2P, Onion Server"
 arch=('any')
@@ -16,7 +16,6 @@ depends=(
     'nftables'
     'iptables-nft'
     'iproute2'
-    'polkit'
     'conntrack-tools'
     'curl'
 )
@@ -29,7 +28,7 @@ optdepends=(
     'chromium: isolated browser integration'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/berk-kucuk/entropy-shield/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('28f2f3265f7abf2392f9ffe7c322d5cab9b27d34e61e713ddb05c8e505eceb91')
+sha256sums=('09a3969588b2200ce5b34b92ab0028d961205436d77e7e7f23556ff3d16ea265')
 
 package() {
     cd "$pkgname-$pkgver"
@@ -39,7 +38,8 @@ package() {
     cp -r core gui logos Fonts main.py "$pkgdir/opt/entropy-shield/"
     chmod 755 "$pkgdir/opt/entropy-shield/main.py"
 
-    # Launcher
+    # Launcher — runs as the normal user; privileged operations go through the
+    # root entropy-shield daemon over its group-restricted socket.
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/entropy-shield" <<'EOF'
 #!/usr/bin/env bash
 exec python3 /opt/entropy-shield/main.py "$@"
@@ -65,30 +65,17 @@ Terminal=false
 StartupWMClass=entropy-shield
 EOF
 
-    # Systemd service (headless / server mode — optional)
+    # Privileged daemon — systemd service (runs as root, drives all privileged
+    # operations). The GUI talks to it over /run/entropy-shield/daemon.sock.
     install -Dm644 entropy-shield.service \
         "$pkgdir/usr/lib/systemd/system/entropy-shield.service"
 
-    # Polkit policy
+    # System group that gates access to the daemon socket (root:entropy-shield
+    # 0660).  systemd-sysusers creates it on install; the user adds themselves
+    # with: usermod -aG entropy-shield <user>  (see the post-install message).
     install -Dm644 /dev/stdin \
-        "$pkgdir/usr/share/polkit-1/actions/org.entropyshield.policy" <<'EOF'
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE policyconfig PUBLIC
-  "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
-  "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
-<policyconfig>
-  <action id="org.entropyshield.run">
-    <description>Run Entropy Shield</description>
-    <message>Authentication required to manage network privacy layers</message>
-    <defaults>
-      <allow_any>auth_admin</allow_any>
-      <allow_inactive>auth_admin</allow_inactive>
-      <allow_active>auth_admin_keep</allow_active>
-    </defaults>
-    <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/python3</annotate>
-    <annotate key="org.freedesktop.policykit.exec.argv1">/opt/entropy-shield/core/privileged_runner.py</annotate>
-  </action>
-</policyconfig>
+        "$pkgdir/usr/lib/sysusers.d/entropy-shield.conf" <<'EOF'
+g entropy-shield -
 EOF
 
     # License
