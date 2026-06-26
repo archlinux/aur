@@ -1,6 +1,6 @@
 pkgbase = harbor-stremio-bin
 	pkgdesc = A Stremio client built for adventure (binary release)
-	pkgver = 0.9.17
+	pkgver = 0.9.18
 	pkgrel = 1
 	url = https://github.com/harborstremio/harbor
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = harbor-stremio-bin
 	conflicts = harbor-stremio
 	conflicts = harbor
 	conflicts = harbor-stremio-git
-	source = Harbor_0.9.17-1_amd64.deb::https://github.com/AdityaHebballe/harbor-linux-builds/releases/download/v0.9.17/Harbor_0.9.17_amd64.deb
-	sha256sums = da3ecdee27021a1eb0e0c61e50aab2230989834d48b7abcfada8f9d9f75ada2c
+	source = Harbor_0.9.18-1_amd64.deb::https://github.com/AdityaHebballe/harbor-linux-builds/releases/download/v0.9.18/Harbor_0.9.18_amd64.deb
+	sha256sums = 3a36cd62f51c860acbab192b4399c327100bae3e4fc4001e5024515bd109e837
 
 pkgname = harbor-stremio-bin

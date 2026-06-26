@@ -2,7 +2,7 @@
 
 pkgname=harbor-stremio-bin
 _pkgname=harbor
-pkgver=0.9.17
+pkgver=0.9.18
 pkgrel=1
 pkgdesc='A Stremio client built for adventure (binary release)'
 arch=('x86_64')
@@ -26,8 +26,8 @@ makedepends=('libarchive')
 provides=('harbor-stremio' 'harbor')
 conflicts=('harbor-stremio' 'harbor' 'harbor-stremio-git')
 
-source=("Harbor_${pkgver}-${pkgrel}_amd64.deb::https://github.com/AdityaHebballe/harbor-linux-builds/releases/download/v${pkgver}/Harbor_0.9.17_amd64.deb")
-sha256sums=('da3ecdee27021a1eb0e0c61e50aab2230989834d48b7abcfada8f9d9f75ada2c')
+source=("Harbor_${pkgver}-${pkgrel}_amd64.deb::https://github.com/AdityaHebballe/harbor-linux-builds/releases/download/v${pkgver}/Harbor_0.9.18_amd64.deb")
+sha256sums=('3a36cd62f51c860acbab192b4399c327100bae3e4fc4001e5024515bd109e837')
 
 package() {
   rm -rf "$srcdir/deb-extract"
