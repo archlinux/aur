@@ -1,0 +1,15 @@
+pkgbase = librenotes-bin
+	pkgdesc = Private, self-hosted, end-to-end encrypted note-taking app
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Piliii/LibreNotes
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = gtk3
+	optdepends = xdg-utils: open links from notes
+	provides = librenotes
+	conflicts = librenotes
+	source_x86_64 = librenotes-bin-1.0.1-linux-x86_64.tar.gz::https://github.com/Piliii/LibreNotes/releases/download/v1.0.1/LibreNotes-1.0.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 6818e31bfb745f59c69e6759f1a805a62110186b2025a9eb1833f4aabdede399
+
+pkgname = librenotes-bin
