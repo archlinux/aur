@@ -1,0 +1,18 @@
+pkgbase = mvis-bin
+	pkgdesc = Lightweight cross-platform memory visualizer tool
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/SickleFire/m-vis
+	arch = x86_64
+	license = MIT
+	provides = mvis
+	conflicts = mvis
+	options = !strip
+	source = README-0.3.0.md::https://raw.githubusercontent.com/SickleFire/m-vis/v0.3.0/README.md
+	source = LICENSE-0.3.0::https://raw.githubusercontent.com/SickleFire/m-vis/v0.3.0/LICENSE.md
+	sha256sums = 1b8ee6fb45e7b15d8c9fc7e5ef2193dfa48c215646ba9fd46de2d772a415867b
+	sha256sums = 019f7f5848f43d6afb179ac038dc41eb208a83caa10db821b1fb097b1ed6f1bd
+	source_x86_64 = mvis-x86_64-0.3.0::https://github.com/SickleFire/m-vis/releases/download/v0.3.0/mvis-linux-x86_64
+	sha256sums_x86_64 = d5b4dc4aaa9111db7dc3cf7c7cd8d3fa500428474258def291962e0dd58a6d3f
+
+pkgname = mvis-bin
