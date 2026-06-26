@@ -2,87 +2,67 @@
 # Contributor: Austin Keller <austin.keller@smartsheet.com>
 # Maintainer: tee < teeaur at duck dot com >
 
-pkgbase=sqlitestudio
+pkgbase=letos
 pkgname=(
-  sqlitestudio
-  sqlitestudio-plugins
+  letos
+  letos-plugins
 )
-_pkgname=SQLiteStudio
-pkgver=3.4.21
+pkgver=4.0.0
 pkgrel=1
-pkgdesc='Database manager for SQLite'
+pkgdesc='Database manager for SQLite formerly sqlitestudio'
 arch=(x86_64)
-url='https://sqlitestudio.pl'
-_git='https://github.com/pawelsalawa/letos'
+url='https://letos.org'
 license=('GPL-3.0-or-later AND LicenseRef-custom')
+#replaces=(sqlitestudio)
 depends=(
-  qt5-base
-  qt5-declarative
-  qt5-script
+  qt6-base
+  qt6-declarative
+  qt6-tools
+  hicolor-icon-theme
+  sqlite
 )
-# test remove qt5-script
 makedepends=(
-  qt5-svg
-  qt5-tools
-  qt5-wayland
+  qt6-wayland
   python
   tcl
+  ninja
 )
-source=(
-  ${pkgbase}-${pkgver}.tar.gz::${_git}/archive/${pkgver}.tar.gz
-  ${pkgbase}.desktop
-)
-noextract=(
-  ${pkgbase}-${pkgver}.tar.gz
-)
-sha256sums=('6c98530b4d8614578ac03e9abea8a73bebda8a17e9f7de11ce4dc0ee139cff71'
-            'db6705def8e528c5749da122b6c7cc3a7982b8669e6f7e43e291f8e42dcc2ee4')
-
-prepare(){
-  tar -xf "${pkgbase}-${pkgver}.tar.gz" --strip-components=1
-}
+source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/pawelsalawa/letos/archive/${pkgver}.tar.gz)
+b2sums=('6d043b6edbd2371c188e02fbe61f153e6265eed8ca12a2e40c56daa0ec735be9cf6c54739f6b520f1d6a1aa015badbe24280f344ec55fe57d6cde854bf85324f')
 
 build(){
-  mkdir -p "$srcdir"/output/build/Plugins
-  msg2 "Making sqlitestudio3-main"
-  cd "$srcdir"/output/build
-  qmake ../../SQLiteStudio3 \
-    "LIBS += -L$srcdir/SQLiteStudio3/coreSQLiteStudio/services/impl"
-  make -s
-  # test rm LIBS
+  msg2 "Making letos-main"
+  cmake -Bbuild -S "letos-$pkgver"/Letos -GNinja \
+      -DBUILD_TESTING=OFF \
+	  -DCMAKE_BUILD_TYPE=Release \
+	  -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
 
-  msg2 "Making sqlitestudio3-plugins"
-  cd "$srcdir"/output/build/Plugins
-
-  local ver=$(pkgconf --modversion python3)
-  qmake "$srcdir"/Plugins \
-    "PYTHON_VERSION = $ver" \
-    "INCLUDEPATH += $srcdir/SQLiteStudio3/coreSQLiteStudio" \
-    "INCLUDEPATH += /usr/include/python$ver"
-  (
-    cd $srcdir/Plugins/DbSqliteCipher
-    ln -sf $srcdir/SQLiteStudio3/coreSQLiteStudio/plugins
-    ln -sf $srcdir/SQLiteStudio3/coreSQLiteStudio/db
-  )
-  make -s -j1
+  msg2 "Making letos-plugins"
+  cmake -Bplugins -S "letos-$pkgver"/Plugins -GNinja \
+    -DBUILD_TESTING=OFF \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DWITH_ALL_PLUGINS=ON \
+    -DWITH_DYNAMIC_PYTHON=ON
+  cmake --build plugins
 }
 
-package_sqlitestudio(){
-  make -C output/build INSTALL_ROOT="$pkgdir/usr" install
-
-  install -Dm644 sqlitestudio.desktop -t "$pkgdir"/usr/share/applications/
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgbase/"
-  cd SQLiteStudio3/guiSQLiteStudio/img/
-  install -Dm644 sqlitestudio.svg -t "$pkgdir"/usr/share/icons/hicolor/scalable/apps/
-  install -Dm644 sqlitestudio_16.png -t "$pkgdir"/usr/share/icons/hicolor/16x16/apps/
-  install -Dm644 sqlitestudio_48.png -t "$pkgdir"/usr/share/icons/hicolor/48x48/apps/
-  install -Dm644 sqlitestudio_256.png -t "$pkgdir"/usr/share/icons/hicolor/256x256/apps/
+package_letos(){
+  replaces=(sqlitestudio)
+  cmake --install build --prefix="$pkgdir"/usr
+  cd "letos-$pkgver"
+  install -Dm644 Letos/letos/letos.desktop -t "$pkgdir"/usr/share/applications/
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 ChangeLog.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
-package_sqlitestudio-plugins(){
+package_letos-plugins(){
   pkgdesc='Official plugins for sqlitestudio'
-  depends=(sqlitestudio python tcl)
+  depends=(letos python tcl)
+  replaces=(sqlitestudio-plugins)
 
-  make -C output/build/Plugins INSTALL_ROOT="$pkgdir/usr" install
+  cmake --install plugins --prefix="$pkgdir"/usr
 }
 # vim:set noet sts=0 sw=4 ts=4:
