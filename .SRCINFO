@@ -1,6 +1,6 @@
 pkgbase = sober-bin
 	pkgdesc = Local-first repository governance assistant with deterministic review readiness
-	pkgver = 0.4.10
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://git.sovereign-society.org/Sober/sober
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = sober-bin
 	depends = tree-sitter
 	provides = sober
 	conflicts = sober
-	source = https://git.sovereign-society.org/Sober/sober/releases/download/v0.4.10/sober_v0.4.10_linux_amd64
-	source = https://git.sovereign-society.org/Sober/sober/releases/download/v0.4.10/SHA256SUMS
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = https://git.sovereign-society.org/Sober/sober/releases/download/v0.5.2/sober_v0.5.2_linux_amd64
+	source = https://git.sovereign-society.org/Sober/sober/releases/download/v0.5.2/SHA256SUMS
+	sha256sums = b2ba95da309a11002b6dbecdfb70f0716d71d38bc54e73525ea41185770c1505
+	sha256sums = 5ee564c03eeb545a5566f32dabd09f4cdf9ae6f8b0f84acdf6371c5d9a453443
 
 pkgname = sober-bin
