@@ -1,7 +1,7 @@
 # Maintainer: Ricky Morabito <codericcardo@gmail.com>
 
 pkgname=tokscale-bin
-pkgver=4.0.2
+pkgver=4.0.4
 pkgrel=1
 pkgdesc='CLI tool and TUI for tracking token usage and costs from AI coding agents (prebuilt binary)'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('tokscale')
 conflicts=('tokscale' 'tokscale-git')
 source=("tokscale-v$pkgver-linux-x64-gnu.tgz::https://registry.npmjs.org/@tokscale/cli-linux-x64-gnu/-/cli-linux-x64-gnu-$pkgver.tgz"
          "tokscale-LICENSE::https://raw.githubusercontent.com/junhoyeo/tokscale/v$pkgver/LICENSE")
-b2sums=('78305e514fa55dafefff4ebda0bd9e7a6384b6cdf7f5cdaa8c5bb5e2b5cb67d52eadf9080adb3ccca931052034d9d10ff7b0053e9dcc360df7f29bf6097d9b3b'
+b2sums=('d73606343f8fd08154543aed3d972cef1b627a905d1249a3b1eca804a8c28ba661c35c177745d6eecb167de9ac36670406ecbc9eaab943f45bc76bb2960b1f1c'
         'b1bda54b1595c875bc2ef3d02acbc5f4371406bd5c21fb56ecef98b2bc8357baf56dd8908e6f1867f4f4bc5c8ceeb7900c01e9f6ca4e44f31721419baba32381')
 
 package() {
