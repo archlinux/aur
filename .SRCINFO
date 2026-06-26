@@ -1,0 +1,16 @@
+pkgbase = tirdad-dkms-git
+	pkgdesc = Tirdad kernel module for random ISN generation
+	pkgver = r57.62dc8cb
+	pkgrel = 1
+	url = https://github.com/0xsirus/tirdad
+	install = tirdad-dkms-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = dkms
+	source = tirdad::git+https://github.com/0xsirus/tirdad.git#branch=master
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 23928bbd67a46f9a418b545729d8549d4ce1e8a02723b86891e5b7deb5b60750
+
+pkgname = tirdad-dkms-git
