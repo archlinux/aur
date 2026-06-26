@@ -4,8 +4,8 @@
 
 pkgbase=libdxvk
 pkgname=('libdxvk' 'lib32-libdxvk')
-pkgver=2.7.1
-pkgrel=2
+pkgver=3.0
+pkgrel=1
 pkgdesc="Vulkan-based implementation of D3D8, 9, 10 and 11 for Linux"
 arch=(x86_64)
 url="https://github.com/doitsujin/dxvk"
@@ -17,8 +17,10 @@ source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/Joshua-Ashton/mingw-directx-headers.git"
 	"git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 	"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
-	"git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git")
-sha256sums=('1a2ec0f93f4ef744b55e3ad084431f3ea6cf44eec9cd6853a4581a1401b41a00'
+	"git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git"
+	"git+https://github.com/doitsujin/dxbc-spirv.git")
+sha256sums=('4dd37a1aa09939e96597af97e1c6a11f93f000a22e3a7ec25da86d1fa80f015f'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -33,8 +35,12 @@ prepare() {
 	git config submodule.include/vulkan.url "$srcdir/Vulkan-Headers"
 	git config submodule.include/spirv.url "$srcdir/SPIRV-Headers"
 	git config submodule.subprojects/libdisplay-info.url "$srcdir/libdisplay-info"
+	git config submodule.subprojects/dxbc-spirv.url "$srcdir/dxbc-spirv"
 	git -c protocol.file.allow=always submodule update
-	sed -i "s/dependency('glfw/dependency('glfw3/g" meson.build
+	cd "$srcdir/$pkgname/subprojects/dxbc-spirv"
+	git submodule init
+	git config submodule.submodules/spirv_headers.url "$srcdir/SPIRV-Headers"
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
