@@ -139,7 +139,7 @@ package_yaru-metacity-theme-git() {
 
 package_yaru-icon-theme-git() {
   pkgdesc="Yaru default ubuntu icon theme"  
-  depends=("hicolor-icon-theme" "gtk-update-icon-cache" "librsvg" "humanity-icon-theme")
+  depends=("hicolor-icon-theme" "gtk-update-icon-cache" "librsvg")
   provides=(yaru-icon-theme)
   conflicts=(yaru-icon-theme)
 

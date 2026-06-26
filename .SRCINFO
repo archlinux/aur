@@ -61,7 +61,6 @@ pkgname = yaru-icon-theme-git
 	depends = hicolor-icon-theme
 	depends = gtk-update-icon-cache
 	depends = librsvg
-	depends = humanity-icon-theme
 	provides = yaru-icon-theme
 	conflicts = yaru-icon-theme
 
