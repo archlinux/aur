@@ -1,8 +1,8 @@
 # Maintainer: Michael Placzek <mplaczek99@users.noreply.github.com>
 
 pkgname=hyprsunset-tui
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='Terminal user interface for managing hyprsunset on Hyprland'
 arch=('x86_64')
 url='https://github.com/mplaczek99/hyprsunset-tui'

@@ -1,7 +1,7 @@
 pkgbase = hyprsunset-tui
 	pkgdesc = Terminal user interface for managing hyprsunset on Hyprland
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://github.com/mplaczek99/hyprsunset-tui
 	arch = x86_64
 	license = GPL-3.0-only
@@ -16,7 +16,7 @@ pkgbase = hyprsunset-tui
 	conflicts = hstui
 	replaces = hstui
 	options = !debug
-	source = git+https://github.com/mplaczek99/hyprsunset-tui.git#tag=v1.1.0
+	source = git+https://github.com/mplaczek99/hyprsunset-tui.git#tag=v1.1.1
 	sha256sums = SKIP
 
 pkgname = hyprsunset-tui
