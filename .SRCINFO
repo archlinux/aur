@@ -1,11 +1,10 @@
 pkgbase = icaclient
 	pkgdesc = Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver)
-	pkgver = 26.01.0.150
+	pkgver = 26.04.0.105
 	pkgrel = 3
 	url = https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html
 	install = citrix-client.install
 	arch = x86_64
-	arch = aarch64
 	license = LicenseRef-Citrix
 	depends = alsa-lib
 	depends = curl
@@ -43,9 +42,7 @@ pkgbase = icaclient
 	sha256sums = a3bd74aaf19123cc550cde71b5870d7dacf9883b7e7a85c90e03b508426c16c4
 	sha256sums = 0e3a6c7cf7fa9eee7dcde7356e90ffa1cb312bffc0813a0bf123d2f918dc369d
 	sha256sums = 739da3fca95d07fc3076522acc6b6c1b12b988047bd2fb3c87e37231e49f2e1f
-	source_x86_64 = icaclient-x64-26.01.0.150.tar.gz::https://downloads.citrix.com/25945/linuxx64-26.01.0.150.tar.gz
-	sha256sums_x86_64 = 7764b9f3d32be349678269aadfaac0e13d725f3ffa49c2cddd32427c6572792b
-	source_aarch64 = icaclient-arm64-26.01.0.150.tar.gz::https://downloads.citrix.com/25945/linuxarm64-26.01.0.150.tar.gz
-	sha256sums_aarch64 = f990a87247f22e5433fa5d4f32aaa258ea7298f098c3db44230ac774cd5a02fd
+	source_x86_64 = icaclient-x64-26.04.0.105.tar.gz::https://downloads.citrix.com/26374/linuxx64-gcc-8-26.04.0.105.tar.gz
+	sha256sums_x86_64 = afec7036209b3223f556c1ef1ca84ada24448454ef13880ff658e84a358818ab
 
 pkgname = icaclient
