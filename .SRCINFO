@@ -1,6 +1,6 @@
 pkgbase = caprine-ng-git
 	pkgdesc = Elegant Facebook Messenger desktop app - Legacy OS Builds.(Use system-wide electron)
-	pkgver = 2.57.0.r89.g88308ca
+	pkgver = 2.60.3.r1.g58803e6
 	pkgrel = 1
 	url = https://github.com/Alex313031/caprine-ng
 	arch = any
@@ -9,14 +9,15 @@ pkgbase = caprine-ng-git
 	makedepends = git
 	makedepends = nvm
 	makedepends = curl
+	makedepends = jq
 	depends = electron22
-	provides = caprine=2.57.0
-	provides = caprine-ng=2.57.0
+	provides = caprine=2.60.3
+	provides = caprine-ng=2.60.3
 	conflicts = caprine-ng
 	conflicts = caprine
 	source = caprine-ng.git::git+https://github.com/Alex313031/caprine-ng.git
 	source = caprine-ng.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = caprine-ng-git
