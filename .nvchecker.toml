@@ -1,0 +1,5 @@
+[plaza]
+source = "github"
+github = "StaszeKrk/plaza"
+use_latest_release = true
+prefix = "v"
