@@ -1,5 +1,5 @@
 pkgname=pinepods
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Pinepods is a complete podcast management system and allows you to play, download, and keep track of podcasts you enjoy. All self hosted and enjoyed on your own server!"
 arch=('x86_64' 'aarch64')
@@ -9,8 +9,8 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 source_x86_64=("https://github.com/madeofpendletonwool/PinePods/releases/download/${pkgver}/Pinepods_${pkgver}_amd64.deb")
 source_aarch64=("https://github.com/madeofpendletonwool/PinePods/releases/download/${pkgver}/Pinepods_${pkgver}_arm64.deb")
-sha256sums_x86_64=('417fd75c9d0fc3d88217978d13c71072cdd5087c3f2ab3e3f2fd7f5f7483c93c')
-sha256sums_aarch64=('1d3cf66153b56b631a2b4f03fdde2141140696a5e1713b75ca0ce1c65bcd9c0f')
+sha256sums_x86_64=('473938ec868ad603bb2eddf71a4b35e48dd1ef2f309d463e2179dc8428508cf3')
+sha256sums_aarch64=('c309588a1dbc2bcf26740955d1547c0986109db5d067e29493ca64fa3ba34596')
 
 package() {
   # Extract the .deb package
