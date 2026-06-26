@@ -1,6 +1,6 @@
 pkgbase = dory-git-tags-git
 	pkgdesc = Git integration extension for Dory file manager
-	pkgver = r1
+	pkgver = r2
 	pkgrel = 1
 	url = https://github.com/Twilight0/dory-extensions
 	arch = any
