@@ -1,0 +1,16 @@
+pkgbase = sss-rocm-bin
+	pkgdesc = Take pretty screenshots of your screen with annotations + ROCm OCR
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/SergioRibera/sss
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	optdepends = onnxruntime-rocm
+	optdepends = rocm-hip-runtime
+	provides = sss-rocm=0.2.1
+	conflicts = sss-rocm
+	source = https://github.com/SergioRibera/sss/releases/download/sss_cli/v0.2.1/sss-rocm-bin-0.2.1-x86_64.tar.gz
+	sha256sums = 150ebeddf908b7be99bb187340c85a8b3503fee97b4cafdb7a1e89d8c31e3cd3
+
+pkgname = sss-rocm-bin
