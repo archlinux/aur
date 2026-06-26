@@ -1,7 +1,7 @@
 pkgbase = ibus-mozc
 	pkgdesc = The Open Source edition of Google Japanese Input (IBus module)
 	pkgver = 3.34.6239
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/mozc
 	arch = x86_64
 	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary
@@ -9,6 +9,7 @@ pkgbase = ibus-mozc
 	depends = ibus
 	depends = mozc>=3.34.6239
 	depends = qt6-base
+	provides = mozc-engine-module
 	noextract = bazel-9.0.2-linux-x86_64
 	noextract = abseil-cpp-20260107.1.tar.gz
 	noextract = apple_support.2.4.0.tar.gz
