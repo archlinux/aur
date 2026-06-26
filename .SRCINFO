@@ -1,12 +1,12 @@
 pkgbase = tigerbeetle-bin
 	pkgdesc = A distributed financial accounting database designed for safety and performance
-	pkgver = 0.17.0
+	pkgver = 0.17.8
 	pkgrel = 1
 	url = https://tigerbeetle.com
 	install = tigerbeetle-bin.install
 	arch = x86_64
 	license = Apache-2.0
-	source = tigerbeetle-bin-0.17.0.zip::https://github.com/tigerbeetle/tigerbeetle/releases/download/0.17.0/tigerbeetle-x86_64-linux.zip
-	sha256sums = 32f93835849ed9bbce3471679ee73984b15950da345c350fa1c0ffa513373824
+	source = tigerbeetle-bin-0.17.8.zip::https://github.com/tigerbeetle/tigerbeetle/releases/download/0.17.8/tigerbeetle-x86_64-linux.zip
+	sha256sums = c69b548018c9fef9dfce83efc2f36e880ab1ef7f7e9c2182b81f9077b9a999a7
 
 pkgname = tigerbeetle-bin
