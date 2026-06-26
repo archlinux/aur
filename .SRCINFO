@@ -1,6 +1,6 @@
 pkgbase = wingman-git
 	pkgdesc = Run multiple NetBird networks on one machine at once — isolated configs, sockets, and WireGuard interfaces
-	pkgver = 0.1.4.r62.g06d98cf
+	pkgver = 0.1.4.r63.g9b6ae47
 	pkgrel = 1
 	url = https://github.com/dsandall/wingman
 	install = wingman-git.install
