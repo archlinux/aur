@@ -1,0 +1,5 @@
+[ruclouds-bin]
+source = "github"
+github = "AndyFerns/ruclouds"
+use_latest_release = true
+prefix = "v"
