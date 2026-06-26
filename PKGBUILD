@@ -1,22 +1,21 @@
 # Maintainer: NewYearPrism
 
-_stable_diffusion_cpp_tag=master-709-92a3b73
-_stable_diffusion_cpp_version=709
+_stable_diffusion_cpp_tag=master-721-8caa3f9
+_stable_diffusion_cpp_version=721
 _stable_diffusion_cpp_commit=${_stable_diffusion_cpp_tag##*-}
-_ggml_version=0.15.2
-_stable_diffusion_cpp_sha256sum=5c14f0304ceafe7b590dc16d00b5f39e9730c7123a1d52e1cb127a6652329838
+_ggml_version=0.15.3
+_stable_diffusion_cpp_sha256sum=d791d712a247937112a5140ebc2e6c1e84dc0b3305d7171edac9e08b50f6778a
 _sdcpp_webui_commit=c4bce3d6b3f236614cca21014f076083b7270ba8
 _sdcpp_webui_sha256sum=1265543d02ebab560cee6734b3bf1491e831c6be3436647505d6939dd78f2993
 pkgname=stable-diffusion.cpp-ggml
 pkgver=0.0.0.${_stable_diffusion_cpp_version}
-pkgrel=1
+pkgrel=2
 pkgdesc='Diffusion model(SD,Flux,Wan,...) inference in pure C/C++ (use system ggml)'
 arch=(x86_64 aarch64)
 url='https://github.com/leejet/stable-diffusion.cpp'
 license=('MIT')
 depends=(
     "ggml=${_ggml_version}"
-    ggml-cpu
     glibc
     libstdc++
     libgcc
@@ -26,7 +25,6 @@ makedepends=(
     "ggml-src=${_ggml_version}"
     cmake
     ninja
-    git
     pnpm
 )
 optdepends=(
@@ -57,7 +55,6 @@ sha256sums=(
 prepare() {
   ln -sf "stable-diffusion.cpp-${_stable_diffusion_cpp_tag}" stable-diffusion.cpp
   ln -sf "sdcpp-webui-${_sdcpp_webui_commit}" sdcpp-webui
-  mkdir -p "stable-diffusion.cpp/.git"
   rm -rf stable-diffusion.cpp/ggml
   ln -sf /usr/src/ggml-${_ggml_version} stable-diffusion.cpp/ggml
   rm -rf stable-diffusion.cpp/examples/server/frontend
@@ -103,6 +100,9 @@ build() {
 }
 
 package() {
+    depends+=(
+        ggml-cpu
+    )
   DESTDIR="${pkgdir}" cmake --install build
 
   install -Dm644 "stable-diffusion.cpp/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
