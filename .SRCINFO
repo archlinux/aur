@@ -1,6 +1,6 @@
 pkgbase = jean-bin
 	pkgdesc = AI assistant application built with Tauri, React, and TypeScript
-	pkgver = 0.1.57
+	pkgver = 0.1.59
 	pkgrel = 1
 	url = https://github.com/coollabsio/jean
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = jean-bin
 	conflicts = jean
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/coollabsio/jean/releases/download/v0.1.57/Jean_0.1.57_amd64.deb
-	sha256sums_x86_64 = e66b645399b88ca50305948ee8c3c060d42687140fd4e67730b7e362f1cb4b40
+	source_x86_64 = https://github.com/coollabsio/jean/releases/download/v0.1.59/Jean_0.1.59_amd64.deb
+	sha256sums_x86_64 = 1025f2d4469b0c049dd9be837e1edaa8544eb8a7df2459dabd0366c8d30fa063
 
 pkgname = jean-bin
