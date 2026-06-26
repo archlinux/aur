@@ -1,6 +1,6 @@
 pkgbase = r-estimability
 	pkgdesc = Tools for Assessing Estimability of Linear Predictions
-	pkgver = 1.5.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=estimability
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = r-estimability
 	depends = r
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/estimability_1.5.1.tar.gz
-	md5sums = 90c2834919962894b19fa023eed3072e
-	b2sums = 650c48287112b71922f603653b3f77107a8e1be1f5a671f7ad1cc80440096885be7f58eb3a3484a5668718ce8fd327bffc0eba7082850aecb611b9e3f24d76c2
+	source = https://cran.r-project.org/src/contrib/estimability_2.0.0.tar.gz
+	md5sums = a3060510843713ed688963c36d09b441
+	b2sums = b00b403f9186109fac6b817f7bb49902f22c5b0d573cf7b0ea24f94e9dcd7a2a069206d9a52353f65bc1e5376b53eeb174878d4a3f2a20f5856658559ea6561f
 
 pkgname = r-estimability
