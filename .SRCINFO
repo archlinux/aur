@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-ggml
 	pkgdesc = LLM inference in C/C++ (use system ggml)
-	pkgver = 0.0.0.b9748
+	pkgver = 0.0.0.b9820
 	pkgrel = 1
 	url = https://github.com/ggml-org/llama.cpp
 	arch = x86_64
@@ -8,11 +8,9 @@ pkgbase = llama.cpp-ggml
 	license = MIT
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = git
 	makedepends = nodejs
 	makedepends = npm
-	depends = ggml=0.15.2
-	depends = ggml-cpu
+	depends = ggml=0.15.3
 	depends = glibc
 	depends = libstdc++
 	depends = libgcc
@@ -25,7 +23,13 @@ pkgbase = llama.cpp-ggml
 	conflicts = llama.cpp
 	options = lto
 	options = !debug
-	source = llama.cpp-b9748.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b9748.tar.gz
-	sha256sums = 3f2b25fb37948e82f7198a8ed1b695a10f0ab15e565db42a13420c871deb5ce3
+	source = llama.cpp-b9820.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b9820.tar.gz
+	sha256sums = fcb84a9f0f2c5c37de0d58adf32d47e6d598d4e3ea17bbf7b27fff958334aa1c
 
 pkgname = llama.cpp-ggml
+	depends = ggml=0.15.3
+	depends = glibc
+	depends = libstdc++
+	depends = libgcc
+	depends = openssl
+	depends = ggml-cpu
