@@ -2,7 +2,7 @@
 # Contributor: Samuel Bernard <samuel.bernard@gmail.com>
 # Based on https://aur.archlinux.org/packages/mathematica/
 pkgname=wolframengine
-pkgver=14.3.0
+pkgver=15.0.0
 pkgrel=1
 pkgdesc="Free Wolfram Engine(TM) for Developers"
 arch=('x86_64')
@@ -10,11 +10,13 @@ url="https://www.wolfram.com/engine/"
 license=('proprietary')
 provides=("wolframscript" "wolframplayer" "wolfram")
 conflicts=("mathematica" "mathematica-light")
+_dlver=${pkgver%.0}
+_dlver=${_dlver%.0}
 source=(
-	"WolframEngine_${pkgver}_LINUX.sh::https://account.wolfram.com/dl/WolframEngine?platform=Linux&version=${pkgver%".0"}"
+	"WolframEngine_${pkgver}_LINUX.sh::https://account.wolfram.com/dl/WolframEngine?platform=Linux&version=${_dlver}"
 )
 noextract=("WolframEngine_${pkgver}_LINUX.sh")
-sha256sums=('861629cc718592a2aca969a1db6a432cf189d2b95bf8bd9f61e263dd617536dc')
+sha256sums=('5352d1e544db742a9ae493770e5b87e08abb605f8a7d96d9c77e585551c032ee')
 # TODO: list based on namcap, all in opt but some are probably mandatory
 depends=()
 optdepends=(
