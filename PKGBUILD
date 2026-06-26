@@ -1,16 +1,16 @@
 # Maintainer: Haram Choi <altitudinem at google dot com>
 pkgname=linux-fireface-mixer
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="GUI mixer application for RME Fireface 400 on Linux"
 arch=('x86_64')
 url="https://github.com/oudeis01/linux-fireface-mixer"
 license=('GPL3')
-depends=('alsa-lib' 'libx11' 'libxrandr' 'libxinerama' 'libxcursor' 'libxi' 'systemd-libs' 'snd-firewire-ctl-services')
+depends=('alsa-lib' 'libx11' 'libxrandr' 'libxinerama' 'libxcursor' 'libxi' 'systemd-libs' 'liblo' 'snd-firewire-ctl-services')
 makedepends=('cmake')
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bfebdbff854cecc5a780025fbcd5686421b834e0c8519d49fc3243b9ff237b44')
+sha256sums=('4e84c8e64294b8162e99b7db894f36ac85ff93c1928b0c84e8c3ce6af1733f9d')
 
 build() {
   cd "$pkgname-$pkgver"
