@@ -1,7 +1,7 @@
 # Maintainer: Ricky Morabito <codericcardo@gmail.com>
 
 pkgname=tokscale-git
-pkgver=4.0.2.r1677.g7c1c7ba3
+pkgver=4.0.4.r1681.g39cb8e23
 pkgrel=1
 pkgdesc='CLI tool and TUI for tracking token usage and costs from AI coding agents (development branch)'
 arch=('x86_64')
