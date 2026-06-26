@@ -8,7 +8,6 @@ pkgbase = jotdown-git
 	makedepends = rust
 	depends = gcc-libs
 	depends = glibc
-	optdepends = rust-src: optimize with RUSTC_BOOTSTRAP=1
 	provides = jotdown
 	conflicts = jotdown
 	source = git+https://github.com/hellux/jotdown.git
