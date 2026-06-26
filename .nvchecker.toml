@@ -1,0 +1,3 @@
+[latte-dock-ng]
+source = "git"
+git = "https://github.com/ruizhi-lab/latte-dock-ng.git"
