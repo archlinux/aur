@@ -5,7 +5,7 @@
 
 pkgname=fcitx5-mozc-ut
 pkgver=3.34.6239
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source edition of Google Japanese Input (Fcitx5 module)'
 arch=('x86_64')
 url='https://github.com/fcitx/mozc'
@@ -169,11 +169,11 @@ build() {
 package() {
     cd mozc-fcitx/src
 
-    install -Dm755 -t "${pkgdir}"/usr/lib/fcitx5                    bazel-bin/unix/fcitx5/fcitx5-mozc.so
-    install -Dm644 -t "${pkgdir}"/usr/share/fcitx5/addon            unix/fcitx5/mozc-addon.conf
-    install -Dm644 -t "${pkgdir}"/usr/share/fcitx5/inputmethod      unix/fcitx5/mozc.conf
+    install -Dm755 bazel-bin/unix/fcitx5/fcitx5-mozc.so "${pkgdir}"/usr/lib/fcitx5/fcitx5-mozc.so
+    install -Dm644 unix/fcitx5/mozc-addon.conf          "${pkgdir}"/usr/share/fcitx5/addon/mozc.conf
+    install -Dm644 unix/fcitx5/mozc.conf                "${pkgdir}"/usr/share/fcitx5/inputmethod/mozc.conf
 
-    install -Dm644 -t "${pkgdir}"/usr/share/licenses/"${pkgname}"   LICENSE
+    install -Dm644 LICENSE                              "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 
     for pofile in unix/fcitx5/po/*.po
     do
