@@ -1,7 +1,7 @@
 pkgbase = starfish
 	pkgdesc = Starfish: Arch Depdency Viewer
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Seafoam-Labs/Starfish
 	arch = x86_64
 	license = GPL-3.0-only
@@ -13,8 +13,22 @@ pkgbase = starfish
 	depends = libglvnd
 	depends = hicolor-icon-theme
 	depends = glibc
-	provides = Starfish
 	source = starfish-0.0.6.tar.gz::https://github.com/Seafoam-Labs/Starfish/archive/v0.0.6.tar.gz
 	sha256sums = b23454991a24aaf3d65e1c584a9eb4e0c25effd51334784badbfd83980bef8fb
 
 pkgname = starfish
+	pkgdesc = Starfish: Arch Depdency Viewer
+	depends = libstarfish
+	depends = shelly
+	depends = gtk4
+	depends = glib2
+	depends = libglvnd
+	depends = hicolor-icon-theme
+	depends = glibc
+
+pkgname = libstarfish
+	pkgdesc = Starfish graph visualization shared library
+	depends = gtk4
+	depends = glib2
+	depends = libglvnd
+	depends = glibc
