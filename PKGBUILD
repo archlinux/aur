@@ -6,7 +6,7 @@
 
 pkgname=mattermost-plugin-playbooks
 pkgver=2.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='reliable and repeatable processes using checklists, automation, and retrospectives'
 arch=(x86_64)
 url="https://github.com/${pkgname%%-*}/$pkgname"
@@ -24,7 +24,9 @@ validpgpkeys=(C55881B80F69E863B85AD5D1D1B54B47A5CEFEC4) # Mattermost, Inc. <supp
 # 1. Call respective function helper in package() *after* cd'ing to the source directory
 # 2. Add makedepends+=(jq)
 _get_supported_ranges() {
-	_plugin_min_mattermost="$(< plugin.json jq -r '.min_server_version')"
+	# _plugin_min_mattermost="$(< plugin.json jq -r '.min_server_version')"
+	# TODO: restore min version clamping when they actually release the matching version
+	_plugin_min_mattermost="11.8.2"
 }
 _mattermost_plugin_package() {
 	_get_supported_ranges
