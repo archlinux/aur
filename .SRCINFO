@@ -1,0 +1,21 @@
+pkgbase = dory-git
+	pkgdesc = A standalone Nemo fork named Dory for file picking and portal integration (git)
+	pkgver = 6.7.3.r2625.f5e9a4ef
+	pkgrel = 1
+	url = https://github.com/Twilight0/dory
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = gobject-introspection
+	depends = cinnamon-desktop
+	depends = libexif
+	depends = exempi
+	depends = xapp
+	depends = gtk3
+	provides = dory
+	conflicts = dory
+	source = dory::git+https://github.com/Twilight0/dory.git
+	sha256sums = SKIP
+
+pkgname = dory-git
