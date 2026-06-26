@@ -1,11 +1,12 @@
 pkgbase = json-c-git
 	pkgdesc = A JSON implementation in C
-	pkgver = r1427.ccd2803
+	pkgver = r1440.cce075f
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/json-c/json-c/wiki
 	arch = x86_64
 	license = MIT
+	checkdepends = tinyxxd
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
