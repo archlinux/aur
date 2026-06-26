@@ -22,3 +22,6 @@ build-install: build-prepare
 
 update-srcinfo:
   makepkg --printsrcinfo >.SRCINFO
+
+update-src-checksums:
+  updpkgsums
