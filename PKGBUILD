@@ -3,7 +3,7 @@
 
 _name=django_upgrade
 pkgname=django-upgrade
-pkgver=1.30.0
+pkgver=1.31.1
 pkgrel=1
 pkgdesc='Automatically upgrade your Django projects.'
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python' 'python-tokenize-rt')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('7ac6af2c55efc9fbf6f50dbe6526eefe1ed405be58febba8513fb6b3f7d9cbab9a3ab685989c576ed49eb68659a6cfe1780b10b94aa285dc2a7f37c2b506e8e4')
+b2sums=('0a9b7d892c891f61296091f64b569e331ec56adbc154fcd29a12849626b904eaef9560d0edc2806dac8ed996829be60ccd8c7b85dd5cd2a1d1e24faae8b50084')
 
 build() {
     cd "${_name}-${pkgver}"
