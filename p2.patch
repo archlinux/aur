@@ -1,3 +1,0 @@
-21,22d20
-< DIRS-$(CONFIG_ISAL) += isalbuild
-< DIRS-$(CONFIG_ISAL_CRYPTO) += isalcryptobuild
