@@ -1,6 +1,6 @@
 # Maintainer: NewYearPrism
 
-_ggml_version=0.15.2
+_ggml_version=0.15.3
 pkgname=ggml-cuda
 pkgver=${_ggml_version}
 pkgrel=1
@@ -9,7 +9,6 @@ arch=(x86_64)
 url='https://github.com/ggml-org/ggml'
 license=('MIT')
 depends=(
-    "ggml=${pkgver}"
     nvidia-utils
     cuda
     nccl
@@ -21,7 +20,6 @@ makedepends=(
     "ggml-src=${pkgver}"
     cmake
     ninja
-    git
     cudnn
 )
 options=(
@@ -84,6 +82,7 @@ build() {
 }
 
 package() {
+    depends+=("ggml=${pkgver}")
   install -Dm755 build/bin/libggml-cuda.so "${pkgdir}/usr/lib/ggml/backends/libggml-cuda.so"
   install -Dm644 "/usr/share/licenses/ggml/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
