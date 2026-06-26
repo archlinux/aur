@@ -1,6 +1,6 @@
 # Maintainer: Orion-zhen <https://github.com/Orion-zhen>
 pkgname=opencode-dynamic-context-pruning
-pkgver=3.1.13
+pkgver=3.1.14
 pkgrel=1
 pkgdesc="Dynamic context pruning plugin for OpenCode - intelligently manages conversation context to optimize token usage ."
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=("${pkgname}-debug")
 install=$pkgname.install
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('267d1246d04885035178a1eeb49f15bec57997c2197a4b273ab2e5c0cd2aa90c')
+sha256sums=('8eed29036af547823eb2b52342a64262925ef84f38c78a1f9115a301cb2eb934')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
