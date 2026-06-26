@@ -11,7 +11,6 @@ pkgbase = audium
 	depends = libgcc
 	depends = alsa-lib
 	provides = audium
-	conflicts = audium
 	source_x86_64 = audium-x86_64-1.2.1.tgz::https://github.com/takashialpha/audium/archive/v1.2.1.tar.gz
 	sha256sums_x86_64 = 58bb2e257dd5220a8297c113fbfa9cbacf0ee444df9e7923647433a271471a61
 

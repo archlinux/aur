@@ -12,9 +12,9 @@ _urlraw="https://raw.githubusercontent.com/${_appauthor}/${_appname}/v${pkgver//
 license=('Apache-2.0')
 
 provides=("${_appname}")
-conflicts=("${_appname}")
-depends=('glibc' 'libgcc' 'alsa-lib')
+
 makedepends=('rust' 'cargo')
+depends=('glibc' 'libgcc' 'alsa-lib')
 
 source_x86_64=("${pkgname}-${arch[0]}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums_x86_64=('58bb2e257dd5220a8297c113fbfa9cbacf0ee444df9e7923647433a271471a61')
