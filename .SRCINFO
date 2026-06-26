@@ -1,0 +1,19 @@
+pkgbase = piclift
+	pkgdesc = SD card photo import, cull, and upload tool for photographers
+	pkgver = 0.5.7
+	pkgrel = 1
+	url = https://codeberg.org/Bykow/piclift
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = cargo
+	makedepends = cmake
+	makedepends = nasm
+	depends = dbus
+	depends = sqlite
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = piclift-0.5.7.tar.gz::https://codeberg.org/Bykow/piclift/archive/v0.5.7.tar.gz
+	sha256sums = 14e2971d96e001c15e72f4e4e3ce467b81521b9b7ae5db5788eb5b07ddea39aa
+
+pkgname = piclift
