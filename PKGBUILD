@@ -3,7 +3,7 @@
 pkgname=codecontext-ai
 
 
-pkgver=1.27.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='AI-powered codebase analyzer — scans project structure, builds dependency graphs, generates LLM-optimized prompts with minification, skeleton mode, and JSON patching'
 arch=('any')
