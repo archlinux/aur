@@ -6,7 +6,7 @@ pkgname=(
   'python-spotifyscraper-docs'
 )
 _pkgname=spotifyscraper
-pkgver=v3.9.1
+pkgver=v3.9.2
 pkgrel=1
 pkgdesc="Extract public Spotify data — tracks, albums, artists, playlists, podcasts & lyrics — without the official API. Sync + async, typed models, one dependency."
 arch=('any')
@@ -34,7 +34,7 @@ checkdepends=(
 
 source=("git+https://github.com/AliAkhtari78/$_pkgname#tag=$pkgver")
 license=('MIT')
-sha256sums=('f9f04311aaeb46ca828750e45c46dd842d0f1a7a206b47bcc3fb846a9288d6b4')
+sha256sums=('e6dc2d82cd989e7f523d88f63bf18fd27f4c66f67755f998880153771b82e27e')
 
 build() {
   cd "$_pkgname"
