@@ -1,0 +1,17 @@
+pkgbase = lazycron-bin
+	pkgdesc = A fast, keyboard-driven TUI for managing cron jobs on Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Domenez-dev/lazycron
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = lazycron
+	conflicts = lazycron
+	options = !strip
+	source_x86_64 = lazycron-x86_64-0.1.0.tgz::https://github.com/Domenez-dev/lazycron/releases/download/v0.1.0/lazycron_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = b9484268f9eaec835ff7db433e9358cd46b863f500eb90739518531f3f9ab0cd
+	source_aarch64 = lazycron-aarch64-0.1.0.tgz::https://github.com/Domenez-dev/lazycron/releases/download/v0.1.0/lazycron_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = d7fe30261c37b78a6995a14bbb4eb06937b312e6f257b2d068f23d0772ca6b34
+
+pkgname = lazycron-bin

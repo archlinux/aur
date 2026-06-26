@@ -1,0 +1,5 @@
+[lazycron-bin]
+source = "github"
+github = "Domenez-dev/lazycron"
+use_latest_release = true
+prefix = "v"
