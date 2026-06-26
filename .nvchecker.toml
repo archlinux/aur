@@ -1,0 +1,5 @@
+[nextcloud-app-groupfolders]
+source = "github"
+github = "nextcloud/groupfolders"
+prefix = "v"
+use_latest_release = true
