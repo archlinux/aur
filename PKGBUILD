@@ -3,7 +3,7 @@
 # Contributor: robertfoster
 
 pkgname=rtpengine
-pkgver=26.0.1.13
+pkgver=26.1.1.2
 pkgrel=1
 pkgdesc="Media relay for RTP sessions (Sipwise proxy)"
 arch=('x86_64')
@@ -18,8 +18,8 @@ depends=(
   'perl' 'perl-bencode' 'perl-config-tiny' 'perl-crypt-openssl-rsa'
   'perl-crypt-rijndael' 'perl-data-dumper' 'perl-digest-crc'
   'perl-digest-hmac' 'perl-io-multiplex' 'perl-io-socket-ip' 'perl-json'
-  'perl-libwww' 'perl-net-interface' 'perl-socket6' 'perl-xmlrpc-lite'
-  'spandsp' 'systemd-libs' 'xmlrpc-c' 'zlib'
+  'perl-libwww' 'perl-net-interface' 'perl-socket6'
+  'spandsp' 'systemd-libs' 'zlib'
 )
 
 makedepends=(
@@ -49,7 +49,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sipwise/rtpengine/archi
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "10-kmod.conf")
-sha256sums=('a6d23de8f656c3ad54e4060813c230861d100b79fb45ba1ce728ad2cef780143'
+sha256sums=('e35f01416df3cabb1b763e3578b1ed403c9870ff3d330d3b8579ed2a397b2881'
             '9ee6664c7368cc0466d813c199c997ac4889eb0e72f7f0b51149510cf0ae0b3e'
             '50330c2dd7c3f3fcb4dd0ed947cbc08139a1255199885299646ebefc48f5f34f'
             '342781f68382a10521dfe2eb1c0527e7f1bab18435995ea41da8eb57ca7d7e9d')
@@ -67,23 +67,23 @@ prepare() {
   # Correct PID location for unprivileged execution
   sed -i 's|/run/rtpengine.pid|/run/rtpengine/rtpengine.pid|g' el/${pkgname}.sysconfig
 
-  # Bypass Debian changelog version parsing
-  sed -i "s|dpkg-parsechangelog.*|echo ${pkgver} |g" daemon/Makefile || true
+  # Set version for the new build system via .release-version
+  echo "${pkgver}" > .release-version
 }
 
 build() {
   cd "${pkgname}-mr${pkgver}"
-  make with_transcoding=yes PREFIX=/usr
+  make with_transcoding=yes PREFIX=/usr RTPENGINE_VERSION=${pkgver}
 }
 
 check() {
   cd "${pkgname}-mr${pkgver}"
-  make check || warning "Some tests may fail in isolated environments."
+  make check RTPENGINE_VERSION=${pkgver} || warning "Some tests may fail in isolated environments."
 }
 
 package() {
   cd "${pkgname}-mr${pkgver}"
-  make DESTDIR="${pkgdir}" with_transcoding=yes PREFIX=/usr install
+  make DESTDIR="${pkgdir}" with_transcoding=yes PREFIX=/usr RTPENGINE_VERSION=${pkgver} install
 
   # Install configs with restricted permissions
   install -Dm640 "etc/${pkgname}.conf" "${pkgdir}/etc/${pkgname}/${pkgname}.conf"
@@ -106,5 +106,4 @@ package() {
 
   # Directories and Cleanup
   install -d "${pkgdir}/var/spool/rtpengine"
-  rm -rf "${pkgdir}/usr/libexec"
 }
