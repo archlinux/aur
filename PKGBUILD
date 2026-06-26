@@ -4,19 +4,19 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname=mozc
-pkgver=3.33.6239
+pkgver=3.34.6239
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
 depends=('qt6-base')
-makedepends=('git' 'python')
+makedepends=('git')
 optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
             'ibus-mozc: IBus integration'
             'emacs-mozc: Emacs integration')
 install='mozc.install'
-source=('git+https://github.com/google/mozc.git#commit=291c72fcb648fcb6e7500a0dac512aef6a860fbc'
+source=('git+https://github.com/google/mozc.git#commit=76887c679e1e4f156102e4bc62ea9cf9174678a3'
         # Bazel module repo (copy of https://bcr.bazel.build/)
         'git+https://github.com/bazelbuild/bazel-central-registry.git#commit=b0cb0e8ec70689252e3b35f109ffa4a32329b900'
         # Bazel binary
@@ -51,7 +51,8 @@ source=('git+https://github.com/google/mozc.git#commit=291c72fcb648fcb6e7500a0da
         'https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/refs/tags/2025-01-25.zip'
         'https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/621d059fbcbfae17bfca15b439692bae934268c3/jigyosyo.zip'
         'https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/621d059fbcbfae17bfca15b439692bae934268c3/ken_all.zip')
-noextract=('abseil-cpp-20260107.1.tar.gz'
+noextract=('bazel-9.0.2-linux-x86_64'
+           'abseil-cpp-20260107.1.tar.gz'
            'apple_support.2.4.0.tar.gz'
            'v1.10.0.tar.gz'
            'bazel_features-v1.42.1.tar.gz'
@@ -79,7 +80,7 @@ noextract=('abseil-cpp-20260107.1.tar.gz'
            '2025-01-25.zip'
            'jigyosyo.zip'
            'ken_all.zip')
-b2sums=('9bb288ba4915ddb1e04845099d24d6027dbcc59d2ac43f94ebff302f70a0916f4cbdf3952390738c8c716bc01aac464c74c2d03d90406d26fd453103ef2097b0'
+b2sums=('f55e3633cf0e688d9bbb4701b3bdefdd62b857ddf0866fcba525c3ab6c4666f338d17f59438b3f8121a63d5a294968fbddade4a4a8f850041ea8ad6882120cea'
         '0fa68a06d930796445f215ecb16a7dba7bf9cae1004318c766269fd403ba3a44bc46035672949fc3731cf9cf778630291a078fda98ef46dce1f1c27f08b02bbb'
         '83457d476468763e9e94ce6ea3ee7abf9ad123887e24c304067993922f0b4430786da797c27bf5b15acba57a30c5c7472fd0ff285089368b9b51ce085f33c254'
         '1c0814eefb6181a82437128c9d3c08dec0540c2353b8a317204c49b1510b311173897de4a737da6f0cc034bf1b23717dea54f0338e3794f6a56f7292f53937bc'
