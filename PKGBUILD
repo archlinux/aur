@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=opencie-pkcs11
-pkgver=1.0.6 # renovate: datasource=github-tags depName=M0Rf30/opencie-pkcs11
+pkgver=1.0.7 # renovate: datasource=github-tags depName=M0Rf30/opencie-pkcs11
 pkgrel=1
 _podofover=1.1.0 # renovate: datasource=github-tags depName=podofo/podofo
 pkgdesc="Native PKCS#11 library for the Italian Electronic Identity Card (CIE)"
@@ -15,7 +15,7 @@ depends=('openssl' 'crypto++' 'pcsclite' 'curl' 'libxml2' 'fontconfig'
 makedepends=('meson' 'ninja' 'cmake' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/M0Rf30/opencie-pkcs11/archive/refs/tags/$pkgver.tar.gz"
         "podofo-$_podofover.tar.gz::https://github.com/podofo/podofo/archive/refs/tags/$_podofover.tar.gz")
-sha256sums=('7d8d687c3a7facbc7ac14b9e918e7f693512778a785756a620a7ba8ab4517bb9'
+sha256sums=('4b7b92afc9673273c41052de3ff8c0dd4e3d75f60d019c29f66002d5764bc971'
             'f34b4413b613e33ab9fe83ff5aa7e2827a6425fcbcd343339458d614b7d6a951')
 
 prepare() {
