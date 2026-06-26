@@ -4,7 +4,7 @@
 
 _name=wakatime-cli
 pkgname=wakatime
-pkgver='2.19.0'
+pkgver='2.21.0'
 pkgrel=1
 pkgdesc="Command line interface used by all WakaTime text editor plugins"
 arch=('x86_64')
@@ -15,8 +15,8 @@ makedepends=('go')
 # LTO renders GO BUILDID unreproducible: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=108534
 options=(!lto)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('f64cd3172b374740b0497650ec0cf4f243f08d3ea35295ceb8a011a529abd96f50aca21ce60395f6fd25c1d0729044e63e9959a83c0321203648b2159b71332e')
-b2sums=('3d4749cdc70d8df7c7efbe59238f855efb5ee060453fc6243d7a6035828db2c2df91a8b58a2b659f29cb1af8be684a79b6e99d34301a936d313852cf36e2e614')
+sha512sums=('d0db7c2ef28d1c542f8ad72fef9168366d9cd8d4cb503d18b16d5605c501788c92dedbc7dfd41a96ca37038ba476d40374520cc3b462cb6ca28af99738746fe7')
+b2sums=('e15a83b9a6e90fee1306f3ed6e579d7dd352e3d5ad7628b6e0f674baf931bf991634d5d856a12a1fc2688daa98b5c47971b4e7b9c6072b01fb407c65de8bb499')
 
 prepare() {
   rm -rf "$_name-$pkgver"/build
