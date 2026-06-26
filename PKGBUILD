@@ -1,6 +1,6 @@
 pkgname=bearhub
 pkgver=0.10.7
-pkgrel=1
+pkgrel=9
 pkgdesc="Arch-first package manager hub (community-maintained fork of bauh)"
 arch=('any')
 url="https://github.com/spalencsar/bearhub"
