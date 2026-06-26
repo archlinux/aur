@@ -2,7 +2,7 @@
 pkgname=voix
 _pkgname=Voix # The case-sensitive name of the repository from git
 pkgver=4.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure privilege escalation tool replacing sudo/doas, using PAM for authentication"
 provides=('sudo' 'doas')
 conflicts=('sudo' 'doas')
@@ -32,6 +32,9 @@ package() {
     # Apply permissions manually for AUR packaging
     chown root:root "$pkgdir/usr/bin/voix"
     chmod 4755 "$pkgdir/usr/bin/voix"
+
+    # Create sanctuary directory
+    mkdir -p "$pkgdir/var/lib/voix"
 
     # Create compatibility symlinks
     ln -sf /usr/bin/voix "$pkgdir/usr/bin/sudo"
