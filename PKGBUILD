@@ -1,5 +1,5 @@
 pkgname=bearhub-git
-pkgver=0.10.7.r0.g0000000
+pkgver=0.10.7.r2372.g70988336
 pkgrel=5
 pkgdesc="Arch-first package manager hub (development snapshot, fork of bauh)"
 arch=('any')
