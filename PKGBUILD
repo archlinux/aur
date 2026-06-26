@@ -5,7 +5,7 @@
 
 pkgname=emacs-mozc
 pkgver=3.34.6239
-pkgrel=1
+pkgrel=2
 pkgdesc='The Open Source edition of Google Japanese Input (Emacs module)'
 arch=('x86_64')
 url='https://github.com/google/mozc'
