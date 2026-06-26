@@ -1,7 +1,7 @@
 pkgbase = sfd-tool
 	pkgdesc = SFD Tool is a cross‑platform GUI and CLI tool for working with Spreadtrum/UNISOC devices. It focuses on safe partition backup/restore, PAC flashing, and advanced maintenance operations, with first‑class support for modern 64‑bit platforms.
-	pkgver = 1.8.9.2
-	pkgrel = 1893
+	pkgver = 1.8.9.4
+	pkgrel = 1894
 	url = https://github.com/C-Hidery/sfd_tool
 	install = sfd-tool.install
 	arch = x86_64
@@ -13,9 +13,11 @@ pkgbase = sfd-tool
 	depends = gtk3
 	depends = libusb
 	options = !debug
-	source = sfd-tool-1.8.9.2.tar.gz::https://github.com/C-Hidery/sfd_tool/archive/refs/tags/v1.8.9.2.tar.gz
+	source = sfd-tool-1.8.9.4.tar.gz::https://github.com/C-Hidery/sfd_tool/archive/refs/tags/v1.8.9.4.tar.gz
 	source = 99-sprd.rules
-	sha256sums = c7bfe9681530312b8e99f7c88c0731e4d217a04bd05f9a824ce0740d560cc15d
+	source = sfd-tool.install
+	sha256sums = 746fe52adbcb82244f7d894b9c381c1390e484a0eece4237175d1d1798c061f2
 	sha256sums = 5b561bef25bd00650f7b4a236d291229623cdccf152bf6fdf8214aecc7d37e2e
+	sha256sums = f6ee547089356a8fe175c82e80445df69c00629b754cb15a6ec020db8d9d5381
 
 pkgname = sfd-tool
