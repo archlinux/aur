@@ -3,8 +3,8 @@
 _android_arch=riscv64
 
 pkgname=android-${_android_arch}-ffmpeg-minimal
-pkgver=8.0.1
-pkgrel=1
+pkgver=8.1.2
+pkgrel=2
 arch=('any')
 pkgdesc="Complete solution to record, convert and stream audio and video (Android ${_android_arch})"
 url="http://ffmpeg.org/"
@@ -28,7 +28,7 @@ conflicts=(${pkgname%-minimal})
 options=(!strip !buildflags staticlibs !emptydirs)
 source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
         'configure.patch')
-md5sums=('b4e86cef7b3333034977ae9df391896d'
+md5sums=('797de9b3657247cdb1ea3635cd3e6e1b'
          'c1851376794c16bcb37cfa8918e10cba')
 
 prepare() {
@@ -130,6 +130,7 @@ build() {
         --enable-encoder=vp8_mediacodec \
         --enable-encoder=vp9_mediacodec \
         --disable-muxers \
+        --enable-muxer=flv \
         --enable-muxer=mp4 \
         --enable-muxer=webm \
         --disable-demuxers \
@@ -191,6 +192,7 @@ build() {
         --disable-bzlib \
         --disable-lzma \
         --disable-zlib \
+        --enable-gnutls \
         --enable-lto \
         --enable-libaom \
         --enable-libdav1d \
