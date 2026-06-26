@@ -1,5 +1,5 @@
 pkgname=alt-sendme
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Peer-to-peer file and folder transfer app without cloud storage"
 arch=('x86_64' 'aarch64')
@@ -33,7 +33,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '17683e47bf5192d68022888bf938671fde764061de734e28361660c9fadfa76b'
+  'b28932dc4986a8bd8867cd754998f1cf17d93c986ae436bf86d7cdf07b815c5d'
 )
 
 prepare() {
