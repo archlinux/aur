@@ -1,11 +1,12 @@
 # Maintainer: Tymour Kadry <tymitaly@gmail.com>
 pkgname=dictapulse
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 _whisperver=1.7.6
 pkgdesc="Local AI voice dictation for KDE Plasma (Wayland)"
 arch=('x86_64')
-url="https://github.com/Silverhairfx/DictaPulse"
+url="https://dictapulse.com"
+_repo="https://github.com/Silverhairfx/DictaPulse"
 license=('GPL-3.0-or-later')
 depends=(
   qt6-base qt6-declarative qt6-multimedia qt6-svg qt6-wayland
@@ -24,10 +25,10 @@ makedepends=(cmake extra-cmake-modules git
 # source and point FetchContent at the unpacked tree so build() is fully offline.
 # Keep _whisperver in sync with the GIT_TAG in DictaPulse's CMakeLists.txt.
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$_repo/archive/refs/tags/v$pkgver.tar.gz"
   "whisper.cpp-$_whisperver.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v$_whisperver.tar.gz"
 )
-sha256sums=('c2745aaf50b330a231c53a2d03da44f5aea44da96818c6e8403be296e68658a3'
+sha256sums=('31c5dc976e32dbe8070eda8274b940fce419c4210443c7b63381a746fb94dc2a'
             '166140e9a6d8a36f787a2bd77f8f44dd64874f12dd8359ff7c1f4f9acb86202e')
 
 build() {
