@@ -8,8 +8,6 @@ pkgbase = simplesinewavegenerator-bin
 	depends = gtk3
 	optdepends = pulseaudio: PulseAudio backend (or pipewire-pulse)
 	source = https://github.com/ixnewton/simpleSineWaveGenerator/releases/download/v0.0.4/simpleSineWaveGenerator-0.0.4-x86_64.tar.gz
-	source = https://github.com/ixnewton/simpleSineWaveGenerator/releases/download/v0.0.4/simpleSineWaveGenerator-0.0.4-x86_64.tar.gz.sig
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = simplesinewavegenerator-bin

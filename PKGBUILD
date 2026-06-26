@@ -8,10 +8,8 @@ url="https://github.com/ixnewton/simpleSineWaveGenerator"
 license=('MIT')
 depends=('gtk3')
 optdepends=('pulseaudio: PulseAudio backend (or pipewire-pulse)')
-source=("https://github.com/ixnewton/simpleSineWaveGenerator/releases/download/v${pkgver}/simpleSineWaveGenerator-${pkgver}-x86_64.tar.gz"
-        "https://github.com/ixnewton/simpleSineWaveGenerator/releases/download/v${pkgver}/simpleSineWaveGenerator-${pkgver}-x86_64.tar.gz.sig")
-sha256sums=('SKIP' 'SKIP')
-validpgpkeys=()
+source=("https://github.com/ixnewton/simpleSineWaveGenerator/releases/download/v${pkgver}/simpleSineWaveGenerator-${pkgver}-x86_64.tar.gz")
+sha256sums=('SKIP')
 
 package() {
   cd "$srcdir"
