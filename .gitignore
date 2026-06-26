@@ -8,3 +8,4 @@
 !*.install
 !*.patch
 !.pre-commit
+!.nvchecker.toml

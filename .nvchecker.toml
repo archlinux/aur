@@ -1,0 +1,5 @@
+[nextcloud-app-files_retention]
+source = "github"
+github = "nextcloud/files_retention"
+prefix = "v"
+use_latest_release = true
