@@ -1,15 +1,15 @@
 # Maintainer: Your name <bros at brocode dot sh>
 
 pkgname=rose-pine-bloom
-pkgver=3.0.1
-pkgrel=4
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="Generate Rosé Pine themes"
 arch=('x86_64')
 url="https://github.com/rose-pine/rose-pine-bloom"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('257b0a66db0cef2acf51df009726aa51fc1a6044bf8692527f41e724994c8f4c')
+sha256sums=('9bf63c1aa95375542c8292fa6149ff4dda1dcefdae8ab6589f764c99c0164788')
 
 prepare() {
   cd "$pkgname-$pkgver"
