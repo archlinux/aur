@@ -9,7 +9,7 @@ license=('MIT')
 depends=('libayatana-appindicator' 'gtk3' 'libgl' 'libgles' 'libegl')
 install=nexus-open.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-amd64.tar.gz")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('26561c5a015d8463dad9c268c6030ecbb037e3b31b128187b101d46eff3db1db')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
