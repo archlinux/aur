@@ -20,12 +20,8 @@ license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source=("README-${pkgver}.md::${_urlraw}/README.md"
-		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums=('731018d97938adbbdf2c301f0fda13e23fd22cf370aa0756e5c8d7f1988e0c06'
-            'f7440e20d28e4a11ed8ede489f90405e038b4da4d9281bcb1540bf9cde5d9c71')
 sha256sums_x86_64=('f570f30c4151444039c4bc6a652391deb00587f59baec6744bd251a48908260f')
 sha256sums_aarch64=('ef490aeffb45ca18b2e0d0d4fcc44513750351bc9a4d6c50593e2f7d13b63d56')
 
@@ -35,7 +31,7 @@ package() {
 
 	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
