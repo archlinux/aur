@@ -1,0 +1,5 @@
+[bmputil]
+source = "gitea"
+gitea = "blackmagic-debug/bmputil"
+host = "codeberg.org"
+use_latest_release = true
