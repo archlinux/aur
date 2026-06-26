@@ -7,7 +7,7 @@ pkgname=(
 	wivrn-dashboard
 )
 pkgver=26.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/WiVRn/WiVRn"
@@ -105,7 +105,7 @@ build() {
 	-DWIVRN_USE_X264=ON \
 	-DWIVRN_USE_NVENC=ON \
 	-DWIVRN_USE_VULKAN_ENCODE=ON \
-	-DOVR_COMPAT_SEARCH_PATH=/opt/xrizer:/opt/opencomposite \
+	-DOVR_COMPAT_SEARCH_PATH=/opt/xrizer:/opt/opencomposite:/opt/VapoR \
 	-DWIVRN_FEATURE_STEAMVR_LIGHTHOUSE=ON \
 	-Wno-dev
 
@@ -140,7 +140,7 @@ build() {
 	-DWIVRN_BUILD_DASHBOARD=ON \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	-DCMAKE_INSTALL_PREFIX="/usr" \
-	-DOVR_COMPAT_SEARCH_PATH=/opt/xrizer:/opt/opencomposite \
+	-DOVR_COMPAT_SEARCH_PATH=/opt/xrizer:/opt/opencomposite:/opt/VapoR \
 	-DWIVRN_FEATURE_STEAMVR_LIGHTHOUSE=ON \
 	-Wno-dev
 
@@ -155,6 +155,7 @@ package_wivrn-server() {
 	optdepends=(
 		"opencomposite: OpenVR to OpenXR translation layer"
 		"xrizer: Another OpenVR to OpenXR translation layer"
+		"vapor-openvr: Yet another OpenVR to OpenXR translation layer"
 	)
 
 	cd "WiVRn-$pkgver"
