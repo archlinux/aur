@@ -1,0 +1,5 @@
+[mvis]
+source = "github"
+github = "SickleFire/m-vis"
+use_latest_release = true
+prefix = "v"
