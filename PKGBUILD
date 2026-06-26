@@ -32,12 +32,12 @@ pkgver () {
 build () {
   cd "$_pkgname"
   ./autogen.sh
-  ./configure
-  make PREFIX=/usr
+  ./configure --prefix=/usr --sysconfdir=/etc
+  make
 }
 
 package () {
-  make -C "$srcdir/$_pkgname" DESTDIR="$pkgdir/" PREFIX=/usr LIBEXECDIR=/usr/lib install
+  make -C "$srcdir/$_pkgname" DESTDIR="$pkgdir/" install
 }
 
 # vim: et ts=2 sw=2
