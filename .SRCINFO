@@ -1,6 +1,5 @@
 pkgbase = ggml
-	pkgdesc = Tensor library for machine learning (API library)
-	pkgver = 0.15.2
+	pkgver = 0.15.3
 	pkgrel = 1
 	url = https://github.com/ggml-org/ggml
 	arch = x86_64
@@ -8,22 +7,24 @@ pkgbase = ggml
 	license = MIT
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = git
 	makedepends = patch
-	depends = glibc
-	depends = libstdc++
-	depends = libgcc
-	depends = libgomp
-	depends = python
-	depends = python-yaml
-	provides = libggml=0.15.2
-	provides = ggml-src=0.15.2
-	conflicts = libggml
 	options = lto
 	options = !debug
-	source = ggml-0.15.2.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v0.15.2.tar.gz
+	source = ggml-0.15.3.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v0.15.3.tar.gz
 	source = ggml-h-ggml-max-name-128.patch
-	sha256sums = 298e958817a126c44bb8e97c97d5d53d00bd15eca22bebf805f278223fe29e07
+	sha256sums = 86800455b5520fc86023979790703a9e2e1e4038b20039334be21df4d55bc868
 	sha256sums = b3be0f6368ca8344e52e044f60dc81efb98e646e93ce3fe690f8d8b4750eb27a
 
 pkgname = ggml
+	pkgdesc = Tensor library for machine learning (API library)
+	depends = glibc
+	depends = libstdc++
+	depends = libgcc
+	provides = libggml=0.15.3
+	conflicts = libggml
+
+pkgname = ggml-src
+	pkgdesc = Tensor library for machine learning (source files)
+	arch = any
+	depends = python
+	depends = python-yaml
