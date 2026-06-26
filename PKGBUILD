@@ -1,6 +1,6 @@
 # Maintainer: NewYearPrism
 
-_ggml_version=0.15.2
+_ggml_version=0.15.3
 pkgname=ggml-hip
 pkgver=${_ggml_version}
 pkgrel=1
@@ -9,7 +9,6 @@ arch=(x86_64 aarch64)
 url='https://github.com/ggml-org/ggml'
 license=('MIT')
 depends=(
-    "ggml=${pkgver}"
     glibc
     libgcc
     hip-runtime-amd
@@ -20,7 +19,6 @@ makedepends=(
     "ggml-src=${pkgver}"
     cmake
     ninja
-    git
     rocm-hip-sdk
 )
 options=(
@@ -86,6 +84,7 @@ build() {
 }
 
 package() {
+    depends+=("ggml=${pkgver}")
   install -Dm755 build/bin/libggml-hip.so "${pkgdir}/usr/lib/ggml/backends/libggml-hip.so"
   install -Dm644 "/usr/share/licenses/ggml/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
