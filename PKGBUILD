@@ -1,7 +1,7 @@
 # Maintainer: Alex3236 <me@alex3236.moe>
 
 pkgname=pineapple-notepad-bin
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A Qt 6, KDE Framework and Scintilla-based Cross-Platform Notepad++ Alternative"
 arch=('x86_64')
@@ -27,13 +27,13 @@ optdepends=('breeze: Breeze widget style for Qt (recommended for best experience
 provides=('pineapple-notepad')
 conflicts=('pineapple-notepad')
 source=(
-    "${pkgname}-${pkgver}-deepin.deb::https://github.com/BLumia/pineapple-notepad/releases/download/${pkgver}-freeware/pineapple-notepad-deepin-crimson-x86_64-${pkgver}.deb"
-    "${pkgname}-${pkgver}-debian.deb::https://github.com/BLumia/pineapple-notepad/releases/download/${pkgver}-freeware/pineapple-notepad-debian-trixie-x86_64-${pkgver}.deb"
+    "${pkgname}-${pkgver}-deepin.deb::https://github.com/BLumia/pineapple-notepad/releases/download/${pkgver}-freeware/pineapple-notepad-${pkgver}-deepin-crimson-x86_64.deb"
+    "${pkgname}-${pkgver}-debian.deb::https://github.com/BLumia/pineapple-notepad/releases/download/${pkgver}-freeware/pineapple-notepad-${pkgver}-debian-trixie-x86_64.deb"
     "EULA::https://raw.githubusercontent.com/BLumia/pineapple-notepad/master/LICENSE"
 )
 sha256sums=(
-    'd11bcd168fe51690999bb8ce998fa777bfacccefbbd2d68dac2378a06985d1d8'
-    '31a6ca692d1ffb51bf6bf971665d61ea59cb979ec88d653c2cbacf974c77dbaa'
+    '60f49b885434d72c3f528bf51d1d353bcc763d707bfcdcd3a938fe1b04223c86'
+    'b5e78993e35c41f27ff5723ee6b3c71088eddde5120c810ea12add6fe3bded9f'
     'SKIP'
 )
 
