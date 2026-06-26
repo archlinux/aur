@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-ffmpeg-minimal
 	pkgdesc = Complete solution to record, convert and stream audio and video (Android x86-64)
-	pkgver = 8.0.1
-	pkgrel = 1
+	pkgver = 8.1.2
+	pkgrel = 2
 	url = http://ffmpeg.org/
 	arch = any
 	groups = android-ffmpeg-minimal
@@ -25,9 +25,9 @@ pkgbase = android-x86-64-ffmpeg-minimal
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = http://ffmpeg.org/releases/ffmpeg-8.0.1.tar.xz
+	source = http://ffmpeg.org/releases/ffmpeg-8.1.2.tar.xz
 	source = configure.patch
-	md5sums = b4e86cef7b3333034977ae9df391896d
+	md5sums = 797de9b3657247cdb1ea3635cd3e6e1b
 	md5sums = c1851376794c16bcb37cfa8918e10cba
 
 pkgname = android-x86-64-ffmpeg-minimal
