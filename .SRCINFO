@@ -1,0 +1,14 @@
+pkgbase = hota-redux
+	pkgdesc = Heart of The Alien engine reimplementation
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/carstene1ns/hota-redux
+	arch = x86_64
+	license = GPLv2
+	makedepends = cmake
+	depends = sdl3
+	depends = sdl3_mixer
+	source = hota-redux-2.0.0.tar.gz::https://github.com/carstene1ns/hota-redux/archive/refs/tags/2.0.0.tar.gz
+	sha256sums = cad8c5188ed2c26205d6acddf4b5161b84e1dfc644021f6a1598ff42244cf03d
+
+pkgname = hota-redux
