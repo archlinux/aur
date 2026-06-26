@@ -1,16 +1,20 @@
-pkgbase = windsurf-marketplace
-	pkgdesc = Enable vscode marketplace in windsurf
-	pkgver = 1.1.0
+pkgbase = devin-marketplace
+	pkgdesc = Enable VS Code marketplace in Devin Desktop (formerly windsurf-marketplace)
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://marketplace.visualstudio.com/vscode
-	install = windsurf-marketplace.install
+	install = devin-marketplace.install
 	arch = any
 	license = 0BSD
-	source = windsurf-marketplace.hook
-	source = patch.py
-	sha256sums = 6dded2716ea268d86abcc768613e63bc37837264bf6ceb11aca9652f23564dfd
-	sha256sums = cbb67095313282989b34c1ff41e3717c2136ff6c010479ac841dfddf7fd68441
-
-pkgname = windsurf-marketplace
-	depends = windsurf
+	depends = devin-desktop
 	depends = python
+	provides = devin-marketplace
+	provides = windsurf-marketplace
+	conflicts = windsurf-marketplace
+	replaces = windsurf-marketplace
+	source = devin-marketplace.hook
+	source = patch.py
+	sha256sums = 09f7894edda7124ae62731afb97d7d1e080450af3730df411dd61dd848c6e27e
+	sha256sums = 69b47e73434641d6cff16de7e9d698d2ae02570f82f6aa3d71e97a68862d1ffa
+
+pkgname = devin-marketplace

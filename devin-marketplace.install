@@ -1,0 +1,15 @@
+post_install() {
+  /usr/share/devin-marketplace/patch.py
+}
+
+pre_upgrade() {
+  /usr/share/devin-marketplace/patch.py -R
+}
+
+post_upgrade() {
+  /usr/share/devin-marketplace/patch.py
+}
+
+pre_remove() {
+  /usr/share/devin-marketplace/patch.py -R
+}

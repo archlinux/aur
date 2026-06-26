@@ -1,22 +1,24 @@
 # Maintainer: Luca Steccanella <steccas at pm dot me>
 # Contributor: ZorinArch < zorinarch at protonmail dot com >
 
-pkgname=windsurf-marketplace
-pkgver=1.1.0
+pkgname=devin-marketplace
+pkgver=1.2.0
 pkgrel=1
-pkgdesc='Enable vscode marketplace in windsurf'
+pkgdesc='Enable VS Code marketplace in Devin Desktop (formerly windsurf-marketplace)'
 arch=('any')
 url='https://marketplace.visualstudio.com/vscode'
 license=('0BSD')
+depends=('devin-desktop' 'python')
+provides=('devin-marketplace' 'windsurf-marketplace')
+replaces=('windsurf-marketplace')
+conflicts=('windsurf-marketplace')
 install="${pkgname}.install"
-source=('windsurf-marketplace.hook'
+source=("${pkgname}.hook"
         'patch.py')
-sha256sums=('6dded2716ea268d86abcc768613e63bc37837264bf6ceb11aca9652f23564dfd'
-            'cbb67095313282989b34c1ff41e3717c2136ff6c010479ac841dfddf7fd68441')
+sha256sums=('09f7894edda7124ae62731afb97d7d1e080450af3730df411dd61dd848c6e27e'
+            '69b47e73434641d6cff16de7e9d698d2ae02570f82f6aa3d71e97a68862d1ffa')
 
 package() {
-  depends=('windsurf' 'python')
-
-  install -Dm 644 "${srcdir}"/windsurf-marketplace.hook "${pkgdir}"/usr/share/libalpm/hooks/windsurf-marketplace.hook
-  install -Dm 755 "${srcdir}"/patch.py "${pkgdir}"/usr/share/windsurf/resources/app/patch.py
+  install -Dm 644 "${srcdir}/${pkgname}.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook"
+  install -Dm 755 "${srcdir}/patch.py" "${pkgdir}/usr/share/devin-marketplace/patch.py"
 }
