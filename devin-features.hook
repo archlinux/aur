@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = devin-desktop
+
+[Action]
+Description = [devin-features] Patching product.json...
+Exec = /usr/share/devin-features/patch.py devin-features patch
+When = PostTransaction

@@ -1,0 +1,16 @@
+post_install() {
+  /usr/share/devin-features/patch.py devin-features patch
+}
+
+pre_upgrade() {
+  /usr/share/devin-features/patch.py devin-features restore
+}
+
+post_upgrade() {
+  /usr/share/devin-features/patch.py devin-features patch
+}
+
+pre_remove() {
+  /usr/share/devin-features/patch.py devin-features restore
+  /usr/bin/rm -f /usr/share/devin-features/cache.json
+}
