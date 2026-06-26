@@ -1,0 +1,17 @@
+post_install() {
+    echo "==> To start yay-sys-tray now and on login:"
+    echo "     systemctl --user enable --now yay-sys-tray"
+    echo ""
+    echo "==> Or run it once without autostart:"
+    echo "     yay-sys-tray"
+}
+
+post_upgrade() {
+    echo "==> Restart the service to pick up changes:"
+    echo "     systemctl --user restart yay-sys-tray"
+}
+
+post_remove() {
+    echo "==> If the service was enabled, clean up with:"
+    echo "     systemctl --user disable yay-sys-tray"
+}

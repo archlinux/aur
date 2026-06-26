@@ -1,0 +1,22 @@
+pkgbase = yay-sys-tray-bin
+	pkgdesc = Arch Linux system tray update checker using yay (prebuilt binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/skint007/yay-sys-tray
+	install = yay-sys-tray-bin.install
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = pacman-contrib
+	depends = yay
+	optdepends = tailscale: remote server update checking via Tailscale
+	optdepends = openssh: SSH access for remote server update checks
+	provides = yay-sys-tray
+	conflicts = yay-sys-tray
+	conflicts = yay-sys-tray-git
+	source = yay-sys-tray-1.0.0-x86_64.tar.gz::https://github.com/skint007/yay-sys-tray/releases/download/v1.0.0/yay-sys-tray-1.0.0-x86_64.tar.gz
+	sha256sums = b5ea4c5e9d87c461337a05484cbd8a6eaf1c3ff29208c67651cf873876251b76
+
+pkgname = yay-sys-tray-bin
