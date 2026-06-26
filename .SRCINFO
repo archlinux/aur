@@ -1,6 +1,6 @@
-pkgbase = kikitan-translator
+pkgbase = kikitan-translator-git
 	pkgdesc = Kikitan Translator, a realtime VRChat Translator
-	pkgver = 2.0.0
+	pkgver = 2.0.0.alpha1.r74.g198405b
 	pkgrel = 1
 	url = https://github.com/YusufOzmen01/kikitan-translator
 	arch = x86_64
@@ -10,6 +10,9 @@ pkgbase = kikitan-translator
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = squashfs-tools
+	depends = glibc
+	depends = libstdc++
+	depends = libgcc
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = glib2
@@ -25,12 +28,17 @@ pkgbase = kikitan-translator
 	depends = pipewire-audio
 	depends = aspnet-runtime-9.0
 	depends = dotnet-runtime-9.0
+	depends = bash
+	provides = kikitan-translator
+	conflicts = kikitan-translator
 	options = !strip
 	source = kikitan-translator::git+https://github.com/YusufOzmen01/kikitan-translator.git#branch=dotnet
+	source = skippable-flatpak.patch
 	source = kikitan-translator.desktop
 	source = kikitan
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
 
-pkgname = kikitan-translator
+pkgname = kikitan-translator-git

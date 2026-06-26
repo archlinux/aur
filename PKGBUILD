@@ -1,12 +1,18 @@
-# Maintainer: Your Name <your@email.com>
-pkgname=kikitan-translator
-pkgver=2.0.0
+# Original Author: YusufOzmen01 <yusufmarquina at gmail dot com>
+# Maintainer: hypevhs <hackgammavision at gmail dot com>
+
+pkgname=kikitan-translator-git
+_appname=kikitan-translator
+pkgver=2.0.0.alpha1.r74.g198405b
 pkgrel=1
 pkgdesc="Kikitan Translator, a realtime VRChat Translator"
 arch=('x86_64')
 url="https://github.com/YusufOzmen01/kikitan-translator"
 license=('MIT')
 depends=(
+    'glibc'
+    'libstdc++'
+    'libgcc'
     'webkit2gtk-4.1'
     'gtk3'
     'glib2'
@@ -22,6 +28,7 @@ depends=(
     'pipewire-audio'
     'aspnet-runtime-9.0'
     'dotnet-runtime-9.0'
+    'bash'
 )
 makedepends=(
     'git'
@@ -30,9 +37,12 @@ makedepends=(
     'npm'
     'squashfs-tools'
 )
+provides=('kikitan-translator')
+conflicts=('kikitan-translator')
 options=('!strip')
 source=(
-    "${pkgname}::git+${url}.git#branch=dotnet"
+    "${_appname}::git+${url}.git#branch=dotnet"
+    "skippable-flatpak.patch"
     "kikitan-translator.desktop"
     "kikitan"
 )
@@ -40,25 +50,28 @@ sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
+    'SKIP'
 )
 pkgver() {
-    cd "${srcdir}/${pkgname}"
-    grep -m1 '<Version>' KikitanTranslator.Photino/KikitanTranslator.Photino.csproj | sed 's/.*<Version>\(.*\)<\/Version>.*/\1/' | tr -d '[:space:]'
+    cd "${srcdir}/${_appname}"
+    # grep -m1 '<Version>' KikitanTranslator.Photino/KikitanTranslator.Photino.csproj | sed 's/.*<Version>\(.*\)<\/Version>.*/\1/' | tr -d '[:space:]'
+    git describe --long --tags --abbrev=7 --match 'v[0-9].*' --exclude 'v.0.0.0' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_appname}"
 
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
     export HOME="${srcdir}/home"
     mkdir -p "${HOME}"
 
+    patch -Np1 < ../skippable-flatpak.patch
     cd KikitanTranslator.Photino/UserInterface
     npm i
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_appname}"
 
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
     export HOME="${srcdir}/home"
@@ -68,11 +81,11 @@ build() {
     dotnet tool install -g vpk
     export PATH="$PATH:${HOME}/.dotnet/tools"
 
-    dotnet build -c Release -r linux-x64 KikitanTranslator.Photino/
+    dotnet build -c Release -r linux-x64 KikitanTranslator.Photino/ /p:SkipFlatpak=true
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_appname}"
 
     _appimage="KikitanTranslator.Photino/bin/Release/net9.0/linux-x64/Release/com.github.yusufozmen01.kikitan-translator.AppImage"
 
@@ -84,14 +97,14 @@ package() {
     find squashfs-root/usr/bin -type f -exec chmod 755 {} +
     chmod +x squashfs-root/AppRun
 
-    install -dm755 "${pkgdir}/opt/${pkgname}"
-    cp -r squashfs-root/. "${pkgdir}/opt/${pkgname}/"
+    install -dm755 "${pkgdir}/opt/${_appname}"
+    cp -r squashfs-root/. "${pkgdir}/opt/${_appname}/"
 
-    install -Dm644 "KikitanTranslator.Photino/Resources/wwwroot/kikitan_logo.ico" "${pkgdir}/usr/share/pixmaps/${pkgname}.ico"
+    install -Dm644 "KikitanTranslator.Photino/Resources/wwwroot/kikitan_logo.ico" "${pkgdir}/usr/share/pixmaps/${_appname}.ico"
 
-    install -Dm644  "${srcdir}/kikitan-translator.desktop"  "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644  "${srcdir}/kikitan-translator.desktop"  "${pkgdir}/usr/share/applications/${_appname}.desktop"
 
-    install -Dm755 "${srcdir}/kikitan" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "${srcdir}/kikitan" "${pkgdir}/usr/bin/${_appname}"
 
-    chmod +x "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }

@@ -1,2 +1,9 @@
-src
 kikitan-translator
+kikitan-translator-git
+kikitan-translator-*-pkgver.log
+kikitan-translator-*-prepare.log
+kikitan-translator-*-build.log
+kikitan-translator-*-package.log
+kikitan-translator-*-pkgver.log
+kikitan-translator-*.pkg.tar.zst
+.vscode/
