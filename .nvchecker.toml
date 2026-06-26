@@ -1,0 +1,5 @@
+[nextcloud-app-files_automatedtagging]
+source = "github"
+github = "nextcloud/files_automatedtagging"
+prefix = "v"
+use_latest_release = true

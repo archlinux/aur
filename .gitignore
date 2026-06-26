@@ -1,8 +1,11 @@
-# Sources
-src/
-*.tar.gz
+# Ignore everything
+*
 
-# Built package
-pkg/
-*.pkg.tar.xz
-*.pkg.tar.zst
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.install
+!*.patch
+!.pre-commit
+!.nvchecker.toml
