@@ -1,0 +1,31 @@
+pkgbase = keeperfx
+	pkgdesc = Dungeon Keeper remake (KeeperFX), native Linux build. Requires you own the original Dungeon Keeper.
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/ForkedInTime/keeperfx
+	install = keeperfx.install
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = 7zip
+	depends = sdl2
+	depends = ffmpeg
+	depends = openal
+	depends = lua
+	depends = enet
+	depends = zlib
+	depends = libepoxy
+	depends = minizip
+	optdepends = dungeon-keeper-gold-gog: source for the 16 required original DK files
+	conflicts = keeperfx-linux
+	replaces = keeperfx-linux
+	noextract = keeperfx_1_3_2_complete.7z
+	options = !debug
+	source = keeperfx::git+https://github.com/ForkedInTime/keeperfx.git#tag=linux-v1.3.2
+	source = keeperfx_1_3_2_complete.7z::https://github.com/dkfans/keeperfx/releases/download/v1.3.2/keeperfx_1_3_2_complete.7z
+	sha256sums = SKIP
+	sha256sums = 2a8b0dcce85b954c5328f4c6cc8dc7f6ecf6243a4df04a7145fdc48c9aa45b8a
+
+pkgname = keeperfx
