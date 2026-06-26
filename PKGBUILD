@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gale
-pkgver=1.16.1
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="A modern mod manager for Thunderstore"
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Kesomannen/gale/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('5f7fc3466a5a409a4e377f05e7ec884d401b8e19a81ce0957bcfd0ec1deb595d'
+sha256sums=('f85a17f91685e534081586b33c7bb97418cdbcd7725aa0aedd8ee6bd57e424c5'
             '4de7796da59ef55bf7bbcde65a53b051245f80b3284ab53be20c4728345c4ff1')
 
 prepare() {
@@ -44,7 +44,7 @@ check() {
   export RUSTUP_TOOLCHAIN=stable
 
   # config::bepinex::tests::check_from_string ... FAILED
-#  cargo test --manifest-path src-tauri/Cargo.toml --locked
+#  cargo test --manifest-path src-tauri/Cargo.toml --frozen
 }
 
 package() {
