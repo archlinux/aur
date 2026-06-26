@@ -1,0 +1,16 @@
+pkgbase = dory-compare-git
+	pkgdesc = File comparison extension for Dory file manager (git)
+	pkgver = 6.7.0.r0
+	pkgrel = 1
+	url = https://github.com/Twilight0/dory-extensions
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = dory
+	depends = python-dory-git
+	depends = meld
+	source = git+https://github.com/Twilight0/dory-extensions.git
+	sha256sums = SKIP
+
+pkgname = dory-compare-git
