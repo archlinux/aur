@@ -2,7 +2,7 @@
 _pkgbase=uniwill-laptop
 _branch=infinitybook_gen10
 pkgname=uniwill-laptop-dkms-git
-pkgver=r38.98dc327
+pkgver=r37.03e7d36
 pkgrel=1
 pkgdesc="Uniwill laptop platform driver (DKMS, ${_branch} branch)"
 arch=('x86_64')
