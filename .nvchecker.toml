@@ -1,0 +1,5 @@
+[voleeo-bin]
+source = "github"
+github = "voleeo/voleeo-api"
+use_latest_release = true
+prefix = "v"
