@@ -1,0 +1,21 @@
+pkgbase = linux-totalmix-web-remote-bin
+	pkgdesc = Mobile web remote (PWA) and OSC bridge for linux-fireface-mixer (Pre-compiled binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/oudeis01/linux-totalmix-web-remote
+	arch = x86_64
+	license = GPL3
+	depends = gcc-libs
+	optdepends = linux-fireface-mixer: the desktop mixer this remote controls
+	provides = linux-totalmix-web-remote
+	conflicts = linux-totalmix-web-remote
+	source = LICENSE-0.1.0::https://github.com/oudeis01/linux-totalmix-web-remote/raw/v0.1.0/LICENSE
+	source = README-0.1.0.md::https://github.com/oudeis01/linux-totalmix-web-remote/raw/v0.1.0/README.md
+	source = README-kr-0.1.0.md::https://github.com/oudeis01/linux-totalmix-web-remote/raw/v0.1.0/README-kr.md
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = 4546517a7045bcb9a1908fccc7b8bde63174998b95146eda3196a7466c1910d7
+	sha256sums = 2742ea9c5528e689092279f31a62a2c4e565a70741c689b001bdb7f8e1cdcfb6
+	source_x86_64 = linux-totalmix-web-remote-x86_64-0.1.0::https://github.com/oudeis01/linux-totalmix-web-remote/releases/download/v0.1.0/linux-totalmix-web-remote-x86_64
+	sha256sums_x86_64 = e6a1a5d8820e9a017224e930435e00a10fc879af320f010c2997ad42739c357a
+
+pkgname = linux-totalmix-web-remote-bin
