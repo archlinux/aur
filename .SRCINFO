@@ -1,0 +1,27 @@
+pkgbase = brows3
+	pkgdesc = Super fast open-source S3 browser, S3 explorer, and desktop client for Amazon S3, MinIO, Cloudflare R2, Wasabi, and other S3-compatible storage
+	pkgver = 0.2.43
+	pkgrel = 1
+	url = https://github.com/rgcsekaraa/brows3
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = patchelf
+	makedepends = cmake
+	makedepends = nasm
+	makedepends = jq
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libappindicator-gtk3
+	depends = librsvg
+	depends = hicolor-icon-theme
+	options = !lto
+	options = !strip
+	source = brows3-0.2.43.tar.gz::https://github.com/rgcsekaraa/brows3/archive/refs/tags/app-v0.2.43.tar.gz
+	sha256sums = d3b52d0bed3c644029d6087ed64c78e5682f3b21c9b4656baae6c224318ee247
+
+pkgname = brows3
