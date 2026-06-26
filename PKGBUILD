@@ -1,6 +1,6 @@
 # Maintainer: Atila de Freitas <atiladefreitas@users.noreply.github.com>
 pkgname=tical
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Minimalist TUI calculator with mouse & keyboard control and a Tokyo Night theme"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=(
 	'xclip: copy results to the clipboard on Xorg'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b2f54022cd841dd32aae6ac9b5f999ff9418b523edc653fb3d2ba0e2b01c4c2c')
+sha256sums=('5261a7fabc00b08e6ace5396358e0f0d5ef8fcce9368dd58923319789dda51b2')
 
 prepare() {
 	cd "$pkgname-$pkgver"
