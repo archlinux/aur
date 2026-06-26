@@ -1,7 +1,7 @@
 pkgname=rmatrix
 _cratename='r-matrix'
 _binname='r-matrix'
-pkgver=2.0.3
+pkgver=2.0.6
 pkgrel=1
 pkgdesc='Rust port of cmatrix'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 conflicts=('rmatrix-bin' 'rmatrix-git')
 source=("${_cratename}-${pkgver}.crate::https://static.crates.io/crates/${_cratename}/${_cratename}-${pkgver}.crate")
-sha256sums=('9f7d242e77f6f17510ef446c686253229dd4ad8f884a7ebfea3838d1825aac1e')
+sha256sums=('e97e2cfbe34312b492ee09bf844086c2cde0e60d49885e50a5b18572a903ad30')
 
 prepare() {
   cd "${_cratename}-${pkgver}"

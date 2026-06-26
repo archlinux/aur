@@ -1,6 +1,6 @@
 pkgbase = rmatrix
 	pkgdesc = Rust port of cmatrix
-	pkgver = 2.0.3
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://github.com/Fierthraix/rmatrix
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = rmatrix
 	depends = glibc
 	conflicts = rmatrix-bin
 	conflicts = rmatrix-git
-	source = r-matrix-2.0.3.crate::https://static.crates.io/crates/r-matrix/r-matrix-2.0.3.crate
-	sha256sums = 9f7d242e77f6f17510ef446c686253229dd4ad8f884a7ebfea3838d1825aac1e
+	source = r-matrix-2.0.6.crate::https://static.crates.io/crates/r-matrix/r-matrix-2.0.6.crate
+	sha256sums = e97e2cfbe34312b492ee09bf844086c2cde0e60d49885e50a5b18572a903ad30
 
 pkgname = rmatrix
