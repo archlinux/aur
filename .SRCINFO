@@ -1,0 +1,21 @@
+pkgbase = ucloud-bin
+	pkgdesc = Command line interface for UCloud services
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/ucloud/ucloud-cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = ucloud
+	provides = ucloud-cli
+	conflicts = ucloud
+	conflicts = ucloud-git
+	options = !strip
+	options = !debug
+	source_x86_64 = ucloud-bin-0.3.3-x86_64.zip::https://github.com/ucloud/ucloud-cli/releases/download/v0.3.3/ucloud-linux_amd64.zip
+	sha256sums_x86_64 = e40fc12dd2b7e5445ce12b02c22b5afb2e05ca9910e066760ad925ee756bbd5f
+	source_aarch64 = ucloud-bin-0.3.3-aarch64.zip::https://github.com/ucloud/ucloud-cli/releases/download/v0.3.3/ucloud-linux_arm64.zip
+	sha256sums_aarch64 = af37de4f26b16d7b8af833faa072d721545687997dc2cae8e646d1be741b6145
+
+pkgname = ucloud-bin
