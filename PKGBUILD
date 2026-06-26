@@ -2,8 +2,8 @@
 
 pkgname=banban
 pkgver=0.1.4
-pkgrel=1
-pkgdesc="Rotating shift schedule CLI + TUI — 17 commands, HTTP API, DBus daemon"
+pkgrel=2
+pkgdesc="Rotating shift schedule CLI + TUI — 18 commands, shift handover, Waybar popup, HTTP API, DBus daemon"
 arch=('x86_64' 'aarch64')
 url="https://github.com/MiniPikka/SimpleShiftScheduler"
 license=('MIT')

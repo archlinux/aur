@@ -1,7 +1,7 @@
 pkgbase = banban
-	pkgdesc = Rotating shift schedule CLI + TUI — 17 commands, HTTP API, DBus daemon
+	pkgdesc = Rotating shift schedule CLI + TUI — 18 commands, shift handover, Waybar popup, HTTP API, DBus daemon
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MiniPikka/SimpleShiftScheduler
 	arch = x86_64
 	arch = aarch64
