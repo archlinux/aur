@@ -12,9 +12,9 @@ _urlraw="https://raw.githubusercontent.com/${_appauthor}/${_appname}/v${pkgver//
 license=('Apache-2.0')
 
 provides=("${_appname}")
-conflicts=("${_appname}")
-depends=('glibc' 'libgcc')
+
 makedepends=('rust' 'cargo')
+depends=('glibc' 'libgcc')
 
 install=${_appname}.install
 

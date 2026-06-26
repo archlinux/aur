@@ -11,7 +11,6 @@ pkgbase = swagsh
 	depends = glibc
 	depends = libgcc
 	provides = swagsh
-	conflicts = swagsh
 	source_x86_64 = swagsh-x86_64-0.8.0.tgz::https://github.com/takashialpha/swagsh/archive/v0.8.0.tar.gz
 	sha256sums_x86_64 = ec5f8ce70660b279d059cd7431777e856b2ac729d8af7ac144f9b54549c8f124
 
