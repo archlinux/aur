@@ -1,7 +1,7 @@
 # Maintainer: Wuxxin <wuxxin@gmail.com>
 # Contributor: SteamedFish <steamedfish@hotmail.com>
 pkgname=zeroclaw-git
-pkgver=0.8.1.r16.g13a8a857ae
+pkgver=0.8.2.r43.g97f8782ed2
 pkgrel=1
 pkgdesc="Fast, small, and fully autonomous AI assistant infrastructure — deploy anywhere, swap anything (Rust, Git VCS version)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -99,14 +99,27 @@ build() {
         --release \
         --frozen \
         --features "$features"
+
+    cargo build \
+        --release \
+        --frozen \
+        -p zerocode
 }
 
 package() {
     cd "$srcdir/zeroclaw"
     install -Dm755 "target/release/zeroclaw" "$pkgdir/usr/bin/zeroclaw"
     install -Dm755 "target/release/zeroclaw-acp-bridge" "$pkgdir/usr/bin/zeroclaw-acp-bridge"
+    install -Dm755 "target/release/zerocode" "$pkgdir/usr/bin/zerocode"
     install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
     install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
+
+    # Install web dashboard assets
+    mkdir -p "$pkgdir/usr/share/zeroclawlabs/web"
+    cp -r web/dist "$pkgdir/usr/share/zeroclawlabs/web/"
+    find "$pkgdir/usr/share/zeroclawlabs/web/dist" -type d -exec chmod 755 {} +
+    find "$pkgdir/usr/share/zeroclawlabs/web/dist" -type f -exec chmod 644 {} +
+
     # system service
     install -Dm644 "$srcdir/zeroclaw.service" "$pkgdir/usr/lib/systemd/system/zeroclaw.service"
     install -Dm644 "$srcdir/zeroclaw-gateway.service" "$pkgdir/usr/lib/systemd/system/zeroclaw-gateway.service"

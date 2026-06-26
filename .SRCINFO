@@ -1,6 +1,6 @@
 pkgbase = zeroclaw-git
 	pkgdesc = Fast, small, and fully autonomous AI assistant infrastructure — deploy anywhere, swap anything (Rust, Git VCS version)
-	pkgver = 0.8.1.r16.g13a8a857ae
+	pkgver = 0.8.2.r43.g97f8782ed2
 	pkgrel = 1
 	url = https://github.com/zeroclaw-labs/zeroclaw
 	arch = x86_64
