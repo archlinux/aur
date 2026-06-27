@@ -1,52 +1,123 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Tokyob0t <tokyob0t.business[at]proton.me>
 
-## You must import the GPG keys separately before installing
-## Keys are located at https://github.com/torchedsammy.gpg
+pkgbase=hilbish-git
+pkgname=(
+    hilbish-git
+    hilbish-midnight-git
+)
 
-pkgname=hilbish-git
-pkgver=2.0.0.rc1.r23.g1024f93
+pkgver=2.3.4.r132.g6cd7cd3d
 pkgrel=1
-pkgdesc="The flower shell for Lua users"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/rosettea/hilbish"
 license=('MIT')
-depends=('lua-lunacolors' 'lua-succulent' 'lua-inspect')
+
 makedepends=('git' 'go')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+
 install=hilbish.install
-options=('!emptydirs')
-source=("$pkgname::git+$url?signed")
+
+source=("hilbish::git+$url")
 sha256sums=('SKIP')
-validpgpkeys=('784DF7A14968C5094E16839C904FC49417B44DCD') ## TorchedSammy
 
 pkgver() {
-	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/-rc/.rc/;s/-/.r/;s/-/./'
+    cd hilbish
+    git describe --long --tags | sed 's/^v//;s/-rc/.rc/;s/-/.r/;s/-/./'
 }
 
 prepare() {
-	cd "$pkgname"
-	go mod download
+    cd hilbish
+    go mod download
 }
 
 build() {
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    cd hilbish
 
-	cd "$pkgname"
-	go build -ldflags "-linkmode=external -X main.version=$pkgver"
+    export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
+
+    # ========= STANDARD =========
+    go build \
+    -ldflags="-linkmode=external \
+		-X main.dataDir=/usr/share/hilbish \
+		-X main.version=$pkgver"
+
+    mv hilbish "$srcdir/hilbish-standard"
+
+    # ========= MIDNIGHT =========
+    go build \
+        -tags "midnight,lua54" \
+    -ldflags="-linkmode=external \
+		-X main.dataDir=/usr/share/hilbish \
+		-X main.version=$pkgver"
+
+    mv hilbish "$srcdir/hilbish-midnight"
 }
 
-package() {
-	cd "$pkgname"
-	install -Dv hilbish -t "$pkgdir/usr/bin/"
-	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-	install -Dvm644 .hilbishrc.lua -t "$pkgdir/usr/share/hilbish/"
-	cp -av --no-preserve=ownership nature "$pkgdir/usr/share/hilbish/"
-	install -dv "$pkgdir/usr/share/hilbish/libs/"
-	cp -avp --no-preserve=ownership libs/ansikit "$pkgdir/usr/share/hilbish/libs/"
+_package_common() {
+    install -Dm644 LICENSE \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    install -Dm644 README.md \
+        "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+    install -Dm644 .hilbishrc.lua \
+        "$pkgdir/usr/share/hilbish/.hilbishrc.lua"
+
+    cp -a --no-preserve=ownership \
+        nature \
+        "$pkgdir/usr/share/hilbish/"
+
+    mkdir -p "$pkgdir/usr/share/hilbish/libs"
+
+    cp -a --no-preserve=ownership \
+        libs/ansikit \
+        "$pkgdir/usr/share/hilbish/libs/"
+}
+
+package_hilbish-git() {
+    pkgdesc="The flower shell for Lua users (Standard edition)"
+
+    depends=(
+        'lua-lunacolors'
+        'lua-succulent'
+        'lua-inspect'
+    )
+
+    provides=('hilbish')
+    conflicts=(
+        'hilbish'
+        'hilbish-midnight-git'
+    )
+
+    cd hilbish
+
+    install -Dm755 \
+        "$srcdir/hilbish-standard" \
+        "$pkgdir/usr/bin/hilbish"
+
+    _package_common
+}
+
+package_hilbish-midnight-git() {
+    pkgdesc="The flower shell for Lua users (Midnight edition)"
+
+    depends=(
+        'lua54'
+        'lua-lunacolors'
+        'lua-succulent'
+        'lua-inspect'
+    )
+
+    provides=('hilbish')
+    conflicts=(
+        'hilbish'
+        'hilbish-git'
+    )
+
+    cd hilbish
+
+    install -Dm755 \
+        "$srcdir/hilbish-midnight" \
+        "$pkgdir/usr/bin/hilbish"
+
+    _package_common
 }

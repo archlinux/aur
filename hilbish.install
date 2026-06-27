@@ -1,11 +1,11 @@
 post_install()  {
-  grep -qe '^/usr/bin/hilbish$' /etc/shells || echo '/usr/bin/hilbish' >> /etc/shells
+    grep -qxF '/usr/bin/hilbish' /etc/shells || echo '/usr/bin/hilbish' >> /etc/shells
 }
 
 post_upgrade()  {
-  post_install
+    post_install
 }
 
-pre_remove()  {
-  sed -ri -e '\|^/usr/bin/hilbish$|d' /etc/shells
+pre_remove() {
+    sed -ri '/^(\/usr)?\/bin\/hilbish$/d' /etc/shells
 }
