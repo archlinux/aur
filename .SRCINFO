@@ -20,7 +20,6 @@ pkgbase = namp
 	depends = ncurses
 	depends = taglib
 	provides = namp
-	conflicts = namp
 	source = namp-2.57.tgz::https://github.com/d99kris/namp/archive/refs/tags/v2.57.tar.gz
 	sha256sums = 544cbff4ccda6d5ac26ee9c4cdfe457029f5f0e66ecba15d599cb9601e59f045
 

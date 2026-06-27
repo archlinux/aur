@@ -13,7 +13,7 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 license=('GPL-2.0')
 
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+
 depends=('gcc-libs' 'glibc' 'qt6-base' 'libglvnd' 'ncurses' 'taglib')
 makedepends=('qt6-base' 'qt6-tools' 'qtutilities-qt6' 'qt6-multimedia' 'qt6-multimedia-ffmpeg' 'qt6-imageformats' 'gstreamer' 'help2man')
 
