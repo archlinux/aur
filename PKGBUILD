@@ -48,7 +48,6 @@ makedepends=(
     'p7zip'      # Extract outer TD archive
     'innoextract' # Extract inner Inno Setup installer
 )
-noextract=('TouchDesigner.${_td_ver}.exe')
 optdepends=(
     'nvidia-utils: NVIDIA GPU acceleration'
 )
@@ -76,12 +75,10 @@ _winetricks_url="https://raw.githubusercontent.com/Winetricks/winetricks/master/
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_repo_url}"
     "soda-${_soda_version}.tar.xz::${_soda_url}"
-    "TouchDesigner.${_td_ver}.exe::${_td_url}"
     "dxvk-${_dxvk_version}.tar.gz::${_dxvk_url}"
     "winetricks::${_winetricks_url}"
 )
 sha256sums=(
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -92,6 +89,13 @@ sha256sums=(
 
 build() {
     cd "${srcdir}"
+
+    # Download TouchDesigner installer (not in source() to avoid bsdtar pre-extraction)
+    msg2 "Downloading TouchDesigner ${_td_ver} installer..."
+    local td_exe="TouchDesigner.${_td_ver}.exe"
+    if [ ! -f "$td_exe" ]; then
+        curl -L -o "$td_exe" "${_td_url}" 2>&1 | grep -E "(rate|complete|ETA|[%])" || true
+    fi
 
     # 1. Extract Soda Wine
     msg2 "Extracting Soda Wine..."
