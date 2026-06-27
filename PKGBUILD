@@ -11,7 +11,7 @@ makedepends=('cmake' 'ninja' 'wayland' 'wayland-protocols')
 optdepends=('wayland: Wayland idle detection via ext-idle-notify-v1')
 backup=('etc/draind/draind.json')
 install=draind.install
-source=("$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vlukyanets/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
