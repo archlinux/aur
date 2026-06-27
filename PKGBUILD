@@ -23,7 +23,7 @@ depends=(
     'lib32-libxcomposite' 'lib32-gnutls' 'lib32-freetype2'
     'lib32-fontconfig' 'lib32-alsa-lib' 'xorg-xwayland'
 )
-makedepends=('innoextract')
+makedepends=()
 optdepends=('nvidia-utils: NVIDIA GPU acceleration')
 provides=("${pkgname}-${pkgver}")
 conflicts=()
@@ -58,37 +58,10 @@ build() {
     #
     # We find the inner Inno Setup exe and extract it with innoextract.
 
-    # First, try 7z on the main exe (best results)
-    msg2 "Extracting with 7z..."
-    7z x "TouchDesigner.${_td_ver}.exe" -o"td-7z" -y >/dev/null 2>&1
-
-    # 7z extracts numbered streams like [0], [1] etc (not .exe files)
-    inner_exe=""
-    for f in td-7z/*; do
-        if [ -f "$f" ] && [ "$(basename "$f")" != "CERTIFICATE" ]; then
-            inner_exe="$f"
-            break
-        fi
-    done
-
-    if [ -z "$inner_exe" ]; then
-        # Fallback: bsdtar may have extracted .bin files
-        for f in *.bin *.exe; do
-            if [ -f "$f" ] && [ "$f" != "TouchDesigner.${_td_ver}.exe" ]; then
-                inner_exe="$f"
-                break
-            fi
-        done
-    fi
-
-    if [ -z "$inner_exe" ]; then
-        error "No inner installer found in TouchDesigner archive"
-        exit 1
-    fi
-
-    msg2 "Innoextracting: ${inner_exe}..."
+    # innoextract handles the .exe directly (multi-volume .bin files from bsdtar)
+    msg2 "Extracting TouchDesigner with innoextract..."
     mkdir -p td-inno
-    innoextract -d td-inno -e "$inner_exe"
+    innoextract -d td-inno "TouchDesigner.${_td_ver}.exe"
 
     if [ ! -d "td-inno/\$/app" ]; then
         error "Unexpected installer structure"

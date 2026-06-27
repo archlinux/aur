@@ -5,7 +5,6 @@ pkgbase = touchdesigner-linux
 	url = https://github.com/iswad-lab/TouchDesigner-Linux
 	arch = x86_64
 	license = custom:custom
-	makedepends = innoextract
 	depends = python
 	depends = git
 	depends = curl
