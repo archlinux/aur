@@ -14,11 +14,11 @@ source=($pkgname-$pkgver.tar.gz::"https://github.com/Cavallinux/$pkgname/archive
         "$pkgname.desktop"
         "$pkgname.sh"
         "$pkgname.png")
-
 sha256sums=('bb2973b1b5eed5381893b4fad7c363140dc691d276e0dbe5193bf8eb36525e2b'
             '5d2ab72c7d2c422ffadcb2e1f88f932a7943c89628781d653093d1efb4cc7a4e'
             'eedd19de2e0b9eb87791b6b4fd45f94cbd98a36e7fc56b1086a288480a821962'
             'b662235eed256debee97df87331dd91abc359f05016b14ba562a78f1becca2b7')
+validpgpkeys=('C66674F3E744D24235FD945F49E28787ECF14843')
 
 build() {
 	cd "$pkgname-$pkgver"
