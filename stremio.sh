@@ -1,5 +1,6 @@
 #!/bin/bash
 export SERVER_PATH=/usr/share/stremio/server.js
+export ANV_DEBUG="video-decode,video-encode" # https://github.com/Stremio/stremio-linux-shell/commit/cacc1249da045fa6a1d30d3d15049855ecb3e08a
 
 # https://github.com/Stremio/stremio-linux-shell/blob/main/data/stremio.sh
 # Use GSK OpenGL renderer for Nvidia cards
