@@ -1,5 +1,5 @@
 pkgname=hyperledger-fabric-ca-bin
-pkgver=1.5.20
+pkgver=1.5.21
 pkgrel=1
 pkgdesc="Hyperledger Fabric CA binaries (fabric-ca-client and fabric-ca-server)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('hyperledger-fabric-ca')
 conflicts=('hyperledger-fabric-ca')
 options=('!strip')
 source=("https://github.com/hyperledger/fabric-ca/releases/download/v${pkgver}/hyperledger-fabric-ca-linux-amd64-${pkgver}.tar.gz")
-sha256sums=('922dc753fec9d5b0dddf83b1e31b3280f011c8eb614f04e99c944ec09d1bc873')
+sha256sums=('a599e8e9d57aede74b9e1ba2bcdbb679957a877f2952c3ae3e2260df63240165')
 
 package() {
   local _bins=(
