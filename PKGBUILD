@@ -25,6 +25,7 @@ depends=(
 )
 makedepends=()
 optdepends=('nvidia-utils: NVIDIA GPU acceleration')
+options=('!strip')
 provides=("${pkgname}-${pkgver}")
 conflicts=()
 replaces=()
@@ -58,10 +59,10 @@ build() {
     #
     # We find the inner Inno Setup exe and extract it with innoextract.
 
-    # innoextract handles the .exe directly (multi-volume .bin files from bsdtar)
-    msg2 "Extracting TouchDesigner with innoextract..."
+    msg2 "Extracting TouchDesigner (innoextract)..."
     mkdir -p td-inno
-    innoextract -d td-inno "TouchDesigner.${_td_ver}.exe"
+    msg2 "Extracting TouchDesigner (innoextract)..."
+    innoextract -d td-inno -q "TouchDesigner.${_td_ver}.exe"
 
     if [ ! -d "td-inno/\$/app" ]; then
         error "Unexpected installer structure"
@@ -79,12 +80,12 @@ build() {
     # 2. Soda Wine
     msg2 "Extracting Soda Wine..."
     mkdir -p soda-wine
-    tar -xJf "soda-${_soda_version}.tar.xz" -C soda-wine --strip-components=1
+    tar -xJf "soda-${_soda_version}.tar.xz" -C soda-wine --strip-components=1 2>/dev/null
 
     # 3. DXVK
     msg2 "Extracting DXVK..."
     mkdir -p dxvk
-    tar -xzf "dxvk-${_dxvk_version}.tar.gz" -C dxvk --strip-components=1
+    tar -xzf "dxvk-${_dxvk_version}.tar.gz" -C dxvk --strip-components=1 2>/dev/null
 
     # 4. Winetricks
     chmod +x winetricks
@@ -100,22 +101,22 @@ package() {
     # ── Soda Wine ──
     msg2 "Installing Soda Wine..."
     mkdir -p "${pkgdir}${prefix}/wine"
-    cp -r soda-wine/* "${pkgdir}${prefix}/wine/"
+    cp -r soda-wine/* "${pkgdir}${prefix}/wine/" 2>/dev/null
 
     # ── TouchDesigner ──
     msg2 "Installing TouchDesigner ${_td_ver}..."
     mkdir -p "${pkgdir}${prefix}/td"
-    cp -r td/* "${pkgdir}${prefix}/td/"
+    cp -r td/* "${pkgdir}${prefix}/td/" 2>/dev/null
 
     if [ -d td-commonappdata ]; then
         mkdir -p "${pkgdir}${prefix}/data/ProgramData"
-        cp -r td-commonappdata/* "${pkgdir}${prefix}/data/ProgramData/"
+        cp -r td-commonappdata/* "${pkgdir}${prefix}/data/ProgramData/" 2>/dev/null
     fi
 
     # ── DXVK ──
     msg2 "Installing DXVK..."
     mkdir -p "${pkgdir}${prefix}/dxvk"
-    cp -r dxvk/* "${pkgdir}${prefix}/dxvk/"
+    cp -r dxvk/* "${pkgdir}${prefix}/dxvk/" 2>/dev/null
 
     # ── Winetricks ──
     install -Dm755 winetricks "${pkgdir}${prefix}/winetricks"
@@ -239,7 +240,7 @@ MIME
     if [ -f "${repo_dir}/td-install" ]; then
         install -Dm755 "${repo_dir}/td-install" "${pkgdir}/usr/bin/td-install"
         mkdir -p "${pkgdir}/usr/share/touchdesigner-linux"
-        cp -r "${repo_dir}/td_lib" "${pkgdir}/usr/share/touchdesigner-linux/"
+        cp -r "${repo_dir}/td_lib" "${pkgdir}/usr/share/touchdesigner-linux/" 2>/dev/null
         if [ -f "${repo_dir}/Assets/wine_ui_fixes.tox" ]; then
             install -Dm644 "${repo_dir}/Assets/wine_ui_fixes.tox" \
                 "${pkgdir}/usr/share/touchdesigner-linux/wine_ui_fixes.tox"
