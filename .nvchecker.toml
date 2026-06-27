@@ -1,0 +1,4 @@
+[python-stable-baselines3-contrib]
+source = "git"
+git = "https://github.com/Stable-Baselines-Team/stable-baselines3-contrib.git"
+prefix = "v"

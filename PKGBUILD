@@ -1,6 +1,6 @@
 # Maintainer: Benoît Allard <benoit.allard@gmx.de>
 pkgname=python-stable-baselines3-contrib
-pkgver=2.7.1
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Contrib package of Stable Baselines3, experimental code."
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools')
 depends=("python" "python-stable-baselines3")
 _name=${pkgname#python-}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Stable-Baselines-Team/$_name/archive/v$pkgver.tar.gz")
-sha256sums=('f1ccbb48801a752e478c96160430ecf056c9d6396663ac097ab07a308e32b127')
+sha256sums=('e316fa029fb5fbabe9c532ef35bb184c166d44fb403762522dc843106be6e408')
 
 build() {
     cd $_name-$pkgver

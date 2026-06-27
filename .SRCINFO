@@ -1,6 +1,6 @@
 pkgbase = python-stable-baselines3-contrib
 	pkgdesc = Contrib package of Stable Baselines3, experimental code.
-	pkgver = 2.7.1
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://sb3-contrib.readthedocs.io
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-stable-baselines3-contrib
 	makedepends = python-setuptools
 	depends = python
 	depends = python-stable-baselines3
-	source = python-stable-baselines3-contrib-2.7.1.tar.gz::https://github.com/Stable-Baselines-Team/stable-baselines3-contrib/archive/v2.7.1.tar.gz
-	sha256sums = f1ccbb48801a752e478c96160430ecf056c9d6396663ac097ab07a308e32b127
+	source = python-stable-baselines3-contrib-2.9.0.tar.gz::https://github.com/Stable-Baselines-Team/stable-baselines3-contrib/archive/v2.9.0.tar.gz
+	sha256sums = e316fa029fb5fbabe9c532ef35bb184c166d44fb403762522dc843106be6e408
 
 pkgname = python-stable-baselines3-contrib
