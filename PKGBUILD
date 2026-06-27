@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: username227 <gfrank227 [at] gmail [dot] com>
 
 ## options
@@ -6,7 +6,7 @@
 
 _pkgname="shadps4"
 pkgname="$_pkgname"
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 url="https://github.com/shadps4-emu/shadPS4"
@@ -14,7 +14,6 @@ license=('GPL-2.0-or-later')
 arch=('aarch64' 'x86_64')
 
 depends=(
-  'glslang'
   'libavcodec.so'    # ffmpeg
   'libavformat.so'   # ffmpeg
   'libavutil.so'     # ffmpeg
@@ -28,6 +27,7 @@ depends=(
   'libz.so'          # zlib
   'miniz'
   'pugixml'
+  'sdl3'
 )
 makedepends=(
   'boost'
@@ -40,12 +40,6 @@ makedepends=(
   'spirv-headers'
   'stb'
   'toml11'
-
-  ## sdl3
-  'libxi'
-  'libxrandr'
-  'libxss'
-  'libxtst'
 )
 
 if [[ "${_use_clang::1}" == "t" ]]; then
@@ -55,11 +49,11 @@ if [[ "${_use_clang::1}" == "t" ]]; then
   )
 fi
 
-options=('!debug' '!lto' '!strip')
+options=('!lto')
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git#tag=v.$pkgver")
-sha256sums=('28c7501ae300bb6d13367fcb5a79f860381b43510cd9fb554a4a09d268bda4f9')
+sha256sums=('b46f6d8ed12b424d68dafa78100bf0e7d9644a3aa8c33c086304d3114d4e903e')
 
 prepare() {
   cd "$_pkgsrc"
@@ -75,15 +69,15 @@ prepare() {
   git rm -r externals/miniz
   git rm -r externals/pugixml
   git rm -r externals/robin-map
+  git rm -r externals/sdl3
   git rm -r externals/stb
   git rm -r externals/toml11
   git rm -r externals/xxhash
   git rm -r externals/zlib-ng
   git submodule update --init --recursive --depth 1
 
-  # fix nlohmann-json
-  sed -E -e '/nlohmann_json/i find_package(nlohmann_json)' -i CMakeLists.txt
-  sed -E -e '/add_subdirectory\(json\)/d' -i externals/CMakeLists.txt
+  # revert pull/4322; selects wrong gpu device
+  git revert -n -m1 a762f70df3fc23185540f88724b261b065e5d979
 
   # allow any version
   sed -E -e '/find_package/s&(glslang) \S+ (CONFIG)&\1 \2&' -i CMakeLists.txt
@@ -108,9 +102,9 @@ build() {
     LDFLAGS="$(sed -E -e 's&\S*fuse-ld\S*&&g' -e 's&\s+& &g' <<< "$LDFLAGS") -fuse-ld=lld"
   fi
 
-  # no longer buildable with v1
-  export CFLAGS+=" -march=x86-64-v2"
-  export CXXFLAGS+=" -march=x86-64-v2"
+  # no longer buildable with pure v1
+  export CFLAGS+=" -msse4.1 -DNDEBUG"
+  export CXXFLAGS+=" -msse4.1 -DNDEBUG"
 
   local _cmake_options=(
     -B build
@@ -122,9 +116,9 @@ build() {
     -DBUILD_TESTING=OFF
     -Wno-dev
 
-    -DTRACY_ENABLE=OFF
     -DENABLE_UPDATER=OFF
     -DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON
+    -DTRACY_ENABLE=OFF
   )
 
   cmake "${_cmake_options[@]}"
