@@ -1,0 +1,25 @@
+pkgbase = alter-runtime-git
+	pkgdesc = ~Alter Identity Runtime: L3 local sovereign daemon (git)
+	pkgver = 0.1.0.r0.0000000
+	pkgrel = 1
+	url = https://github.com/true-alter/alter-runtime
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-httpx
+	depends = python-pydantic
+	depends = python-yaml
+	depends = python-watchdog
+	optdepends = python-dbus-next: D-Bus session bus integration
+	optdepends = systemd: systemd user unit integration
+	provides = alter-runtime
+	conflicts = alter-runtime
+	source = alter-runtime-git::git+https://github.com/true-alter/alter-runtime.git#branch=main
+	sha256sums = SKIP
+
+pkgname = alter-runtime-git
