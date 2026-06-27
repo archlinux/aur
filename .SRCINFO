@@ -1,20 +1,13 @@
 pkgbase = superlauncher
 	pkgdesc = Minecraft launcher with mod support and server management
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ludvig2457Ultra/SuperLauncherMC-for-linux
 	arch = any
 	license = GPL3
 	depends = python
 	depends = python-pyqt6
-	depends = python-requests
-	depends = python-pillow
-	depends = python-pypresence
-	optdepends = python-cryptography: encrypted storage
-	optdepends = python-psutil: system resource monitoring
-	optdepends = python-pyjwt: JWT authentication
-	optdepends = python-minecraft-launcher-lib: Minecraft version management
-	optdepends = jdk17-openjdk: run Minecraft Java Edition
+	depends = python-pip
 	source = superlauncher-2.0.0.tar.gz
 	sha256sums = SKIP
 
