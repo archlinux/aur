@@ -2,7 +2,7 @@
 _pkgname=futo-notes
 pkgname=${_pkgname}-bin
 pkgver=1.5.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Fast, private, local-first notes"
 arch=('x86_64')
 url="https://notes.futo.tech"
@@ -43,15 +43,10 @@ EOF
   sed -i \
     -e "s|^Exec=.*|Exec=${_pkgname}|" \
     -e 's|^Categories=.*|Categories=Office;Utility;|' \
-    -e "s|^Icon=.*|Icon=${_pkgname}|" \
     "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
   install -dm755 "${pkgdir}/usr/share/icons/hicolor"
-  local icon="squashfs-root/FUTO Notes.png"
-  for size in 32x32 48x48 64x64 128x128 256x256; do
-    install -dm755 "${pkgdir}/usr/share/icons/hicolor/${size}/apps"
-    install -Dm644 "$icon" "${pkgdir}/usr/share/icons/hicolor/${size}/apps/${_pkgname}.png"
-  done
+  cp -a squashfs-root/usr/share/icons/hicolor/. "${pkgdir}/usr/share/icons/hicolor/"
 
   install -Dm644 "$srcdir/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
