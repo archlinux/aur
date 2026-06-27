@@ -1,0 +1,85 @@
+.TH CUL-KDE 1 "2026-06-27" "1.0.0" "MCP Servers"
+.SH NAME
+cul-kde \- KDE Plasma Wayland desktop control MCP server
+.SH SYNOPSIS
+.B cul-kde
+[\fIdoctor\fR|\fB\-\-version\fR]
+.SH DESCRIPTION
+.B cul-kde
+is an MCP (Model Context Protocol) server that exposes KDE Plasma
+Wayland desktop capabilities to LLM clients. It provides 18 tools
+for screen capture, window management, input simulation, and
+accessibility tree access.
+.SH COMMANDS
+.PD 0
+.TP
+.B doctor
+Run environment diagnostics and readiness check.
+.TP
+.B \-\-version
+Print version information.
+.PD
+.SH MCP TOOLS
+On startup,
+.B cul-kde
+runs in MCP stdio server mode and advertises the following tools:
+.PD 0
+.TP
+.B doctor
+Environment diagnostics
+.TP
+.B screenshot
+Capture screen / window / region
+.TP
+.B list_windows
+List all managed windows
+.TP
+.B focused_window
+Get the currently focused window
+.TP
+.B activate_window
+Activate a window by UUID
+.TP
+.B click\fR, \fBdrag\fR, \fBscroll
+Pointer input simulation
+.TP
+.B press_key\fR, \fBtype_text
+Keyboard input simulation
+.TP
+.B perform_action\fR, \fBset_value
+AT-SPI accessibility actions
+.TP
+.B set_clipboard\fR, \fBget_clipboard
+System clipboard via Klipper
+.TP
+.B list_apps
+List accessible applications
+.TP
+.B get_app_state
+Screenshot + AT-SPI tree snapshot
+.TP
+.B setup_accessibility
+Enable AT-SPI accessibility bus
+.TP
+.B setup_window_targeting
+Verify KWin window targeting
+.PD
+.SH EXIT STATUS
+.B cul-kde
+returns 0 on success, 1 on failure.
+.SH ENVIRONMENT
+.TP
+.B XDG_SESSION_TYPE
+Must be \fIwayland\fR.
+.TP
+.B KDE_SESSION_VERSION
+Must be set (KDE Plasma session).
+.SH FILES
+.TP
+.I /etc/udev/rules.d/99-uinput.rules
+udev rule for /dev/uinput access
+.TP
+.I /etc/modules-load.d/uinput.conf
+Kernel module auto-load configuration
+.SH AUTHORS
+AscendLiu <ascendliu@qq.com>

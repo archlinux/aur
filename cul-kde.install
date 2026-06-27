@@ -1,0 +1,41 @@
+msg_info()   { printf "\033[1;34m  ==>  \033[0;36m%s\033[0m\n" "$*"; }
+msg_ok()     { printf "\033[1;32m  ==>  \033[0;32m%s\033[0m\n" "$*"; }
+msg_warn()   { printf "\033[1;33m  ==>  \033[0;33m%s\033[0m\n" "$*"; }
+msg_step()   { printf "\n\033[1;36m  ::  \033[1m%s\033[0m\n" "$*"; }
+msg_fix()    { printf "\033[0;36m       %s\033[0m\n" "$*"; }
+
+post_install() {
+  msg_step "cul-kde 安装后配置"
+
+  # 开机自动加载 uinput 内核模块
+  echo "uinput" > /etc/modules-load.d/uinput.conf
+  msg_ok "已写入 /etc/modules-load.d/uinput.conf"
+
+  # 触发 udev 规则
+  udevadm control --reload 2>/dev/null || true
+  udevadm trigger 2>/dev/null || true
+  msg_ok "已载入 udev 规则（/etc/udev/rules.d/99-uinput.rules）"
+
+  # 检查当前用户是否在 input 组
+  if ! groups | grep -q '\binput\b'; then
+    msg_warn "当前用户不在 input 组中！/dev/uinput 不可写"
+    msg_fix "请执行以下命令后重新登录："
+    msg_fix ""
+    msg_fix "  \033[1msudo usermod -aG input $USER\033[0m"
+    msg_fix ""
+    msg_fix "验证方法：重新登录后运行 \`groups\`，确认 input 在列表中"
+  else
+    msg_ok "当前用户已在 input 组中"
+  fi
+
+  echo
+  msg_info "安装完成。运行 \`cul-kde doctor\` 确认环境就绪"
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  rm -f /etc/modules-load.d/uinput.conf
+}
