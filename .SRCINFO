@@ -1,7 +1,7 @@
 pkgbase = futo-notes-bin
 	pkgdesc = Fast, private, local-first notes
 	pkgver = 1.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://notes.futo.tech
 	arch = x86_64
 	license = LicenseRef-FUTO

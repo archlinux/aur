@@ -2,7 +2,7 @@
 _pkgname=futo-notes
 pkgname=${_pkgname}-bin
 pkgver=1.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, private, local-first notes"
 arch=('x86_64')
 url="https://notes.futo.tech"
@@ -27,17 +27,27 @@ package() {
   cp -a squashfs-root/apprun-hooks "${pkgdir}/opt/${_pkgname}/"
   install -Dm755 squashfs-root/AppRun "${pkgdir}/opt/${_pkgname}/AppRun"
   install -Dm755 squashfs-root/AppRun.wrapped "${pkgdir}/opt/${_pkgname}/AppRun.wrapped"
+  install -Dm644 "squashfs-root/FUTO Notes.png" "${pkgdir}/opt/${_pkgname}/FUTO Notes.png"
+  ln -s "usr/share/applications/FUTO Notes.desktop" "${pkgdir}/opt/${_pkgname}/FUTO Notes.desktop"
 
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/opt/${_pkgname}/AppRun" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}" <<EOF
+#!/usr/bin/env bash
+exec /opt/${_pkgname}/AppRun "\$@"
+EOF
 
   install -Dm644 "squashfs-root/usr/share/applications/FUTO Notes.desktop" \
     "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   sed -i \
     -e "s|^Exec=.*|Exec=${_pkgname}|" \
     -e 's|^Categories=.*|Categories=Office;Utility;|' \
+    -e "s|^Icon=.*|Icon=${_pkgname}|" \
     "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
   install -dm755 "${pkgdir}/usr/share/icons/hicolor"
-  cp -a squashfs-root/usr/share/icons/hicolor/. "${pkgdir}/usr/share/icons/hicolor/"
+  local icon="squashfs-root/FUTO Notes.png"
+  for size in 32x32 48x48 64x64 128x128 256x256; do
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor/${size}/apps"
+    install -Dm644 "$icon" "${pkgdir}/usr/share/icons/hicolor/${size}/apps/${_pkgname}.png"
+  done
 }
