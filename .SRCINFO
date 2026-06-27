@@ -1,6 +1,6 @@
 pkgbase = monogit-bin
 	pkgdesc = Multi-repo Git dashboard for your terminal
-	pkgver = 0.2.2
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/JoaoOliveira889/monogit
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = monogit-bin
 	provides = monogit
 	conflicts = monogit
 	options = !strip
-	source_x86_64 = monogit-x86_64-0.2.2.tgz::https://github.com/JoaoOliveira889/monogit/releases/download/v0.2.2/monogit_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 2b46c9ae746eecbcbc96d335f6326441734766f885dd2cb5efa3d131991d242a
-	source_aarch64 = monogit-aarch64-0.2.2.tgz::https://github.com/JoaoOliveira889/monogit/releases/download/v0.2.2/monogit_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 5d489729237b885c5d4cd65446fa839c27d59415eeec9c15bd5479685046bb35
+	source_x86_64 = monogit-x86_64-0.2.4.tgz::https://github.com/JoaoOliveira889/monogit/releases/download/v0.2.4/monogit_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 35a382c53b3fc7d07f133f37dbd70d3d64922ef21762995f4e825d4738e9e797
+	source_aarch64 = monogit-aarch64-0.2.4.tgz::https://github.com/JoaoOliveira889/monogit/releases/download/v0.2.4/monogit_Linux_arm64.tar.gz
+	sha256sums_aarch64 = f20b26aa4bb3688b8c91bbc1e3e98b9e6bd5d7232b16f640fc9232eb27e72302
 
 pkgname = monogit-bin
