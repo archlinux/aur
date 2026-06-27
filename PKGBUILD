@@ -1,7 +1,7 @@
 # Maintainer: Elia Elmas <eliaelmas at proton dot me>
 _pkgname=onthespot
 pkgname="$_pkgname-appimage"
-pkgver=1.8.0beta4
+pkgver=1.8.0beta5
 pkgrel=1
 pkgdesc="A GUI music downloader for Apple Music, Bandcamp, Deezer, Qobuz, Spotify, Tidal, and Youtube"
 arch=('x86_64')
@@ -16,8 +16,10 @@ _appimagezip="${pkgname}-${pkgver}.AppImage.zip"
 _appimage="OnTheSpot-x86_64.AppImage"
 source=("${_appimagezip}::https://github.com/justin025/onthespot/releases/download/v${pkgver}/OnTheSpot-x86_64.AppImage.zip" "https://raw.githubusercontent.com/justin025/onthespot/refs/tags/v${pkgver}/LICENSE")
 noextract=("${_appimagezip}")
-md5sums=('183dc20513ac286c1e254a47f4431f7b' '267d14867132fa03d20ea4c695c31e8c')
-sha256sums=('ae64a4c54b8f2ea0450aad3aff12dcf8acedfa93635c8621e96870e004d11934' 'ce7f2f7bc1c5b68f592a04b763abaa9c180c5e44e30563153bee280763b54ae7')
+md5sums=('e55a5967a0e55cb405da2be1d5e6ffe2'
+         '267d14867132fa03d20ea4c695c31e8c')
+sha256sums=('4782d2a09446ed9852569a4b6a5249a7cddbbd45cc2b4c6e8b545cbba6d53b3f'
+            'ce7f2f7bc1c5b68f592a04b763abaa9c180c5e44e30563153bee280763b54ae7')
 
 prepare() {   
     # Extract the AppImage
