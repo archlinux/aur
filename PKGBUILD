@@ -12,7 +12,7 @@ depends=('glibc')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://github.com/SergioRibera/sss/releases/download/sss_cli/v0.2.1/sss-noocr-bin-0.2.1-x86_64.tar.gz")
-sha256sums=('f577130118fbf9797ef1af878396918744e51814b28b4eccd091c9eb4c72c0bc')
+sha256sums=('c8c7d3db794991045d2dfc60a851b813016c7a095cc504adf3a320faf282f9cb')
 
 
 package() {
