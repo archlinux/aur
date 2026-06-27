@@ -8,6 +8,12 @@ post_install() {
         echo ":: WARNING: tun2socks binary not found."
         echo "   Install 'tun2socks' or 'tun2socks-bin' for TUN mode VPN support."
     fi
+
+    echo ":: systemd user service installed."
+    echo "   To enable VPN auto-connect at boot:"
+    echo "     1. Launch whoisthat, configure profiles, enable 'Autoconnect' in Settings"
+    echo "     2. systemctl --user enable --now whoisthat.service"
+    echo "     3. sudo loginctl enable-linger \$USER    # start at boot, not login"
 }
 
 post_upgrade() {
