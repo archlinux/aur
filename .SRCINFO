@@ -1,0 +1,12 @@
+pkgbase = pipewire-lhdc-meta
+	pkgdesc = Meta package for LHDC v5 Bluetooth playback through PipeWire
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/DBeidachazi/pipewire-lhdc-meta
+	arch = any
+	license = MIT
+	depends = pipewire-bluez5-lhdc-git
+	depends = lhdc-v5-helper
+	depends = wireplumber-lhdc-config
+
+pkgname = pipewire-lhdc-meta
