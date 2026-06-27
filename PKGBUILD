@@ -1,6 +1,6 @@
 # Maintainer: Matt <matthew.panton@gmail.com>
 pkgname=nexus-open
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Linux controller for Corsair iCUE Nexus display device"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('libayatana-appindicator' 'gtk3' 'libgl' 'libgles' 'libegl')
 install=nexus-open.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-amd64.tar.gz")
-sha256sums=('26561c5a015d8463dad9c268c6030ecbb037e3b31b128187b101d46eff3db1db')
+sha256sums=('1648b6f933d4aef47e23be8812ed8e12531386006f0f4814e8cdb402a64fe4c7')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
