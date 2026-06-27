@@ -15,7 +15,7 @@ license=('BSD-3-Clause')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 makedepends=('cmake' 'binutils')
-depends=('gcc-libs' 'glibc' 'bash' 'libelf')
+depends=('glibc' 'libgcc' 'libstdc++' 'libelf' 'bash')
 
 source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('36f85ed08170ab5f5953414b27c4369dc8136132f49233084e17185a89f192af')
