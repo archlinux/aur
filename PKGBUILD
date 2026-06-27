@@ -3,9 +3,9 @@
 # Contributor: tee < teeaur at duck dot com >
 
 pkgname=weaviate
-pkgver=1.38.1
+pkgver=1.38.2
 pkgrel=1
-_commit=916247e
+_commit=5bf9fbd
 pkgdesc='An open source vector database written in Go'
 arch=('x86_64' 'aarch64')
 url='https://github.com/weaviate/weaviate'
@@ -17,7 +17,7 @@ source=("$pkgname::git+$url#commit=${_commit}?signed"
         "weaviate.service"
         "weaviate.sysusers"
         "weaviate.tmpfiles")
-sha256sums=('c477b0217583792e43265ddb65d3a24cb4cb36d1839d50debbcfd605bb25472c'
+sha256sums=('612522a758e113a355372b802c2b5b97624fae028cd4cfcf82f64e0a0c28ffcb'
             'a375b1c55be48563ea3284a264352f1673c3f8e8f83bfd337c2ddfaeb532ce6d'
             '1507f4003ed6d3d5230cc9570e6f69c3be6177b52496b976f10a93519626b86a'
             'a644fc4eaa46e97381df09b5321e60a9ca1cfdac67277b8fe103fb4bd96d4fa0'
