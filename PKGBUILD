@@ -17,15 +17,17 @@ pkgdesc='Build cross platform desktop apps with web technologies'
 arch=(x86_64)
 url='https://electronjs.org'
 license=(MIT BSD-3-Clause)
-depends=(c-ares
-         gcc-libs # libgcc_s.so
+depends=(
+         c-ares
+         libgcc
          glibc # libc.so libm.so
          gtk3 libgtk-3.so
          libevent
          libffi libffi.so
          libpulse libpulse.so
          nss # libnss3.so
-         zlib libz.so)
+         zlib libz.so
+)
 makedepends=(clang
              git
              gn
