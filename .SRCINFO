@@ -13,6 +13,7 @@ pkgbase = cul-kde
 	depends = at-spi2-core
 	depends = xdg-desktop-portal-kde
 	depends = libei
+	options = !debug
 	source = cul-kde-1.0.0.tar.gz::https://github.com/AscendLiu/cul-kde/archive/v1.0.0.tar.gz
 	source = 99-uinput.rules
 	source = cul-kde.1

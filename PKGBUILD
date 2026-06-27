@@ -16,6 +16,7 @@ depends=(
 )
 makedepends=('rust' 'pkgconf')
 install=cul-kde.install
+options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AscendLiu/cul-kde/archive/v$pkgver.tar.gz"
         "99-uinput.rules"
         "cul-kde.1")
