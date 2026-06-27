@@ -2,38 +2,15 @@
 #
 # PKGBUILD for Cathode, a cross-platform IPTV player (Tauri + Dioxus + mpv).
 #
-# Build + install with:  makepkg -si   (no AUR helper required)
-#
-# Notes for maintaining this on the AUR:
-#   - keep `pkgver` in sync with the release tag (it maps to v$pkgver below),
-#   - regenerate the source info on every change: makepkg --printsrcinfo > .SRCINFO
-#   - lint with: namcap PKGBUILD && namcap cathode-*.pkg.tar.zst
-#   - the build needs network access: rustup fetches the toolchain pinned in the
-#     repo's rust-toolchain.toml, prepare() builds tauri-cli, and dx downloads a
-#     matching wasm-bindgen. This is fine for makepkg/AUR helpers, but a fully
-#     network-isolated chroot build would need those pre-provisioned.
 pkgname=cathode
-pkgver=0.5.3 # x-release-please-version
+pkgver=0.5.4 # x-release-please-version
 pkgrel=1
 pkgdesc="Cross-platform IPTV player (Tauri + Dioxus + mpv)"
 arch=('x86_64')
 url="https://github.com/kaiserbh/cathode"
 license=('GPL-3.0-or-later')
-# Runtime: mpv provides libmpv.so.2 (linked by the libmpv2 crate); the UI runs in
-# WebKitGTK on top of GTK 3.
 depends=('mpv' 'gtk3' 'webkit2gtk-4.1')
-# Build: rustup honours the repo's rust-toolchain.toml, so it installs the pinned
-# toolchain AND the wasm32-unknown-unknown target the Dioxus frontend compiles to
-# (the plain `rust` package would need `rust-wasm` and ignores the pin). dioxus-cli
-# (dx) is in the official repos. tauri-cli is deliberately NOT a makedep: its AUR
-# package is frequently outdated/broken, so prepare() builds a pinned copy with
-# cargo (whose crates.io client is reliable) into a package-local prefix. This also
-# keeps the package buildable with bare makepkg, no AUR helper. base-devel (always
-# present for makepkg) supplies the C toolchain and pkgconf; git is for the VCS
-# source and the cargo git fetch below.
 makedepends=('rustup' 'git' 'dioxus-cli')
-# Cargo's release profile already does fat LTO; don't let makepkg inject -flto
-# into the C deps (e.g. bundled sqlite) on top of it.
 options=('!lto')
 source=("$pkgname::git+https://github.com/kaiserbh/cathode.git#tag=v$pkgver")
 sha256sums=('SKIP')
