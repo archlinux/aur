@@ -1,0 +1,23 @@
+pkgbase = cul-kde
+	pkgdesc = KDE Plasma Wayland desktop control MCP server
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AscendLiu/cul-kde
+	install = cul-kde.install
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = pkgconf
+	depends = kwin
+	depends = plasma-workspace
+	depends = at-spi2-core
+	depends = xdg-desktop-portal-kde
+	depends = libei
+	source = cul-kde-1.0.0.tar.gz::https://github.com/AscendLiu/cul-kde/archive/v1.0.0.tar.gz
+	source = 99-uinput.rules
+	source = cul-kde.1
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cul-kde
