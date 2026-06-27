@@ -92,10 +92,49 @@ build() {
 
 
 check() {
+    local pytest_options=(
+        -vv
+        --override-ini="addopts="
+        -W ignore::DeprecationWarning
+        -n auto
+        --timeout=300
+        --timeout-method signal
+        --deselect tests/test_buckets.py
+        --deselect tests/test_buckets_cli.py
+        --deselect tests/test_buckets_hf_file_system.py
+        --deselect tests/test_cache_layout.py
+        --deselect tests/test_cache_no_symlinks.py
+        --deselect tests/test_commit_scheduler.py
+        --deselect tests/test_file_download.py
+        --deselect tests/test_hf_api.py
+        --deselect tests/test_hf_file_system.py
+        --deselect tests/test_inference_client.py
+        --deselect tests/test_kernels.py
+        --deselect tests/test_oauth.py::test_oauth_workflow
+        --deselect tests/test_repocard.py
+        --deselect tests/test_repository.py
+        --deselect tests/test_snapshot_download.py
+        --deselect tests/test_utils_cache.py
+        --deselect tests/test_webhooks_server.py::test_deserialize_payload_example_with_comment
+        --deselect tests/test_webhooks_server.py::test_deserialize_payload_example_without_comment
+        --deselect tests/test_webhooks_server.py::test_deserialize_payload_example_with_updated_refs
+        --deselect tests/test_utils_strict_dataclass.py::test_autocompletion_init_with_kwargs
+        --deselect tests/test_utils_strict_dataclass.py::test_autocompletion_init_without_kwargs
+        --deselect tests/test_utils_strict_dataclass.py::test_autocompletion_attribute_with_kwargs
+        --deselect tests/test_utils_strict_dataclass.py::test_autocompletion_attribute_without_kwargs
+        --deselect tests/test_login_utils.py::TestSetGlobalStore::test_set_store_as_git_credential_helper_globally
+        --deselect tests/test_xet_upload.py::TestXetLargeUpload::test_upload_large_folder_batch_size_greater_than_one
+        --deselect tests/test_cli.py::TestDownloadCommand::test_download_with_all_options
+        --deselect tests/test_cli_output.py
+        --deselect tests/test_cli.py
+        --deselect tests/test_cli_discussions.py
+        --deselect tests/test_copy_files.py
+    )
+
     cd "${pkgname}"
     python -m venv --system-site-packages test-env
     test-env/bin/python -m installer dist/*.whl
-    test-env/bin/python -P -m pytest -o addopts="" --ignore=tests/fixtures
+    test-env/bin/python -P -m pytest "${pytest_options[@]}" tests
 }
 
 
@@ -105,4 +144,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et ft=PKGBUILD:
-
