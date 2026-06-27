@@ -1,0 +1,24 @@
+pkgbase = animaksmd-git
+	pkgdesc = Rust userspace KSM daemon with a PSI-aware governor and memory scanner
+	pkgver = 0.1.0.r23.g50b106c
+	pkgrel = 1
+	url = https://github.com/animaios/animaksm
+	install = animaksmd-git.install
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = animaksmd
+	provides = animaksm
+	conflicts = animaksmd
+	conflicts = animaksm
+	backup = etc/animaksm.toml
+	source = git+https://github.com/animaios/animaksm.git
+	source = animaksmd-git.tmpfiles
+	b2sums = SKIP
+	b2sums = 7da2a448820d75d113802e5cd8d09ccdcb68ff4f20c141a16d2f468da29398cb771b21c36a56864ba852162a2c874c29ee9fb7c264e757fc633a8ac8325b337d
+
+pkgname = animaksmd-git
