@@ -4,17 +4,17 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=feluda
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
-_commit=addcb45
+_commit=c0f13c9
 pkgdesc='Detect license usage restrictions in your project'
 arch=('x86_64' 'aarch64')
 url="https://github.com/anistark/$pkgname"
 license=('MIT')
-depends=('glibc' 'gcc-libs' 'openssl')
+depends=('glibc' 'libgcc' 'openssl' 'zlib')
 makedepends=('cargo' 'git')
 source=("$pkgname::git+$url#commit=${_commit}?signed")
-sha256sums=('4c0d4d9db60b1d76740e28a78dc0e42b8844c88ca0b57efaa61702e59e237f1c')
+sha256sums=('bebe4dc1dbedd1b9248f94c74856e0d53aae7a49dbfa54dcb5697fb2ec6f9810')
 validpgpkeys=('40B91E0A4E89F8434EA16C9E9864F6B815BC2B00') # Kumar Aniruhda
 options=('!lto')
 
