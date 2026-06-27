@@ -13,6 +13,7 @@ backup=('etc/draind/draind.json')
 install=draind.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vlukyanets/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
+options=('!debug')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"

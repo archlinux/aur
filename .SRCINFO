@@ -12,6 +12,7 @@ pkgbase = draind
 	makedepends = wayland-protocols
 	depends = systemd-libs
 	optdepends = wayland: Wayland idle detection via ext-idle-notify-v1
+	options = !debug
 	backup = etc/draind/draind.json
 	source = draind-0.1.0.tar.gz::https://github.com/vlukyanets/draind/archive/v0.1.0.tar.gz
 	sha256sums = SKIP
