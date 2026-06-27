@@ -67,8 +67,12 @@ optdepends=(
 )
 provides=("python-huggingface-hub=${pkgver}")
 conflicts=("python-huggingface-hub")
-source=("${pkgname}::git+${url}")
-b2sums=('SKIP')
+source=("${pkgname}::git+${url}"
+        "hf.bash"
+        "tiny-agents.bash")
+b2sums=('SKIP'
+        'ff48171da536c7c75076acc78732b2dfbf653a3ac06eece273b60ae4020184a2bb0a8dd63d4928b87eebc22442e0439d90ab2c15edacf6ccbd6fb356d1530303'
+        '27faf66a0b9da5be31c5592e7ad56d78452563e3cce2e831c5a447edcb5707a135b1f70d7e42786c65e07b651190cbd619f1a117104b97f042580086a40fca9e')
 
 
 pkgver() {
@@ -168,20 +172,8 @@ package() {
 
     # Bash completions (delegation wrappers — Typer 0.25 lacks static bash source generation)
     local _bash_dir="${pkgdir}/usr/share/bash-completion/completions"
-    install -Dm644 /dev/stdin "${_bash_dir}/hf" <<'BASH'
-_hf_completion() {
-    local IFS=$'\n'
-    COMPREPLY=($(COMP_WORDS="${COMP_WORDS[*]}" COMP_CWORD="${COMP_CWORD}" _HF_COMPLETE=complete_bash hf 2>/dev/null))
-}
-complete -F _hf_completion hf
-BASH
-    install -Dm644 /dev/stdin "${_bash_dir}/tiny-agents" <<'BASH'
-_tiny_agents_completion() {
-    local IFS=$'\n'
-    COMPREPLY=($(COMP_WORDS="${COMP_WORDS[*]}" COMP_CWORD="${COMP_CWORD}" _TINY_AGENTS_COMPLETE=complete_bash tiny-agents 2>/dev/null))
-}
-complete -F _tiny_agents_completion tiny-agents
-BASH
+    install -Dm644 "${srcdir}/hf.bash" "${_bash_dir}/hf"
+    install -Dm644 "${srcdir}/tiny-agents.bash" "${_bash_dir}/tiny-agents"
 }
 
 # vim:set ts=2 sw=2 et ft=PKGBUILD:
