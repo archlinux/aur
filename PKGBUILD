@@ -10,7 +10,15 @@ pkgdesc="C++ port of the Typesafe Config library"
 arch=('x86_64')
 url="https://github.com/puppetlabs/cpp-hocon"
 license=('APACHE')
-depends=('boost-libs' 'gcc-libs' 'glibc' 'leatherman' 'leatherman_util.so' 'leatherman_locale.so')
+depends=(
+  'boost-libs'
+  'libgcc'
+  'libstdc++'
+  'glibc'
+  'leatherman'
+  'leatherman_util.so'
+  'leatherman_locale.so'
+)
 makedepends=('boost' 'cmake' 'leatherman' 'rapidjson')
 checkdepends=('python')
 provides=('libcpp-hocon.so')
