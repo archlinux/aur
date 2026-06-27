@@ -57,10 +57,6 @@ pkgbase = python-huggingface-hub-git
 	provides = python-huggingface-hub=1.21.0.r2538.g1e41293
 	conflicts = python-huggingface-hub
 	source = python-huggingface-hub-git::git+https://github.com/huggingface/huggingface_hub
-	source = hf.bash
-	source = tiny-agents.bash
 	b2sums = SKIP
-	b2sums = ff48171da536c7c75076acc78732b2dfbf653a3ac06eece273b60ae4020184a2bb0a8dd63d4928b87eebc22442e0439d90ab2c15edacf6ccbd6fb356d1530303
-	b2sums = 27faf66a0b9da5be31c5592e7ad56d78452563e3cce2e831c5a447edcb5707a135b1f70d7e42786c65e07b651190cbd619f1a117104b97f042580086a40fca9e
 
 pkgname = python-huggingface-hub-git
