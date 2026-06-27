@@ -1,6 +1,6 @@
 pkgbase = zluda-preview-bin
 	pkgdesc = CUDA on AMD GPUs (pre-release ZLUDA binary).
-	pkgver = 6.preview.78
+	pkgver = 6.preview.79
 	pkgrel = 1
 	url = https://github.com/vosen/ZLUDA
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = zluda-preview-bin
 	conflicts = nvidia-utils
 	options = !strip
 	options = !debug
-	source = zluda-linux-a7bf2ba2.tar.gz::https://github.com/vosen/ZLUDA/releases/download/v6-preview.78/zluda-linux-a7bf2ba2.tar.gz
-	source = LICENSE-MIT::https://raw.githubusercontent.com/vosen/ZLUDA/v6-preview.78/LICENSE-MIT
-	sha256sums = cd44a52d48fd8bbe770e0aa6df03c898da5f90777dddc4693345b1639889cb32
+	source = zluda-linux-3fe12063.tar.gz::https://github.com/vosen/ZLUDA/releases/download/v6-preview.79/zluda-linux-3fe12063.tar.gz
+	source = LICENSE-MIT::https://raw.githubusercontent.com/vosen/ZLUDA/v6-preview.79/LICENSE-MIT
+	sha256sums = d9fd9893abaf3206c56d3eb25f0475c6327aa8de8e77f21be8a24f275556c3e1
 	sha256sums = 23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3
 
 pkgname = zluda-preview-bin
