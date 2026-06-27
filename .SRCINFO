@@ -1,0 +1,21 @@
+pkgbase = carboxyl-servo-git
+	pkgdesc = Terminal browser built on Servo — community fork of Carbonyl
+	pkgver = r208.g93b0323
+	pkgrel = 1
+	url = https://github.com/carboxyl-rs/carboxyl
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = cargo
+	makedepends = pkg-config
+	makedepends = cmake
+	depends = gcc-libs
+	depends = fontconfig
+	provides = carboxyl
+	conflicts = carboxyl
+	options = !strip
+	options = !lto
+	source = carboxyl::git+https://github.com/carboxyl-rs/carboxyl.git#branch=servo-dev
+	b2sums = SKIP
+
+pkgname = carboxyl-servo-git
