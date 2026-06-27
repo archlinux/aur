@@ -64,6 +64,7 @@ _post_install_upgrade_common() {
   # adds an undeclared runtime dependency on a configured sudoers file.
   local -a setup_env=(
     ODYSSEUS_SKIP_ADMIN_PROMPT=1
+    ODYSSEUS_DATA_DIR=/var/lib/odysseus-ai/data
     PYTHONHOME=/usr/lib/odysseus-ai/venv
     HOME=/var/lib/odysseus-ai
   )

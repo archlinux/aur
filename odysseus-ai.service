@@ -60,7 +60,20 @@ RestrictRealtime=yes
 RestrictSUIDSGID=yes
 RestrictNamespaces=yes
 PrivateTmp=yes
-PrivateDevices=yes
+# GPU device access for Cookbook hardware detection (nvidia-smi, rocminfo).
+# PrivateDevices=yes would block /dev/nvidia*, /dev/dri/, /dev/kfd.
+# Instead we allowlist specific device groups:
+#   /dev/nvidiactl /dev/nvidia[0-9]*  — NVIDIA control + per-GPU devices
+#   /dev/nvidia-modeset               — NVIDIA modesetting
+#   /dev/nvidia-uvm*                  — NVIDIA Unified Virtual Memory
+#   /dev/dri                          — AMD / Intel DRM (rocminfo)
+#   /dev/kfd                          — AMD ROCm kernel driver
+DeviceAllow=/dev/nvidiactl rw
+DeviceAllow=/dev/nvidia[0-9]* rw
+DeviceAllow=/dev/nvidia-modeset rw
+DeviceAllow=/dev/nvidia-uvm* rw
+DeviceAllow=/dev/dri rw
+DeviceAllow=/dev/kfd rw
 ProtectHome=yes
 ProtectSystem=strict
 ProtectKernelTunables=yes

@@ -1,6 +1,8 @@
+diff --git a/setup.py b/setup.py
+index a9c5652..8bbfa4f 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -33,7 +33,9 @@
+@@ -31,7 +31,9 @@ DIRS = [
      CHROMA_DIR,
      RAG_DIR,
      MEMORY_VECTORS_DIR,
@@ -11,7 +13,8 @@
  ]
  
  
-@@ -141,6 +143,10 @@
+@@ -155,6 +157,10 @@ def create_default_admin():
+ 
  def create_env():
      """Copy .env.example to .env if it doesn't exist."""
 +    # AUR package: env vars come from /etc/odysseus-ai/odysseus-ai.env

@@ -27,30 +27,6 @@ force_symlink() {
     ln -sfn "$target" "$linkpath"
 }
 
-# --- Writable state dirs (odysseus-owned) ---
-# services/search/cache.py writes into services/cache/{search,content}
-# at import time. We pre-create them under /var/lib/odysseus-ai/services/
-# and symlink them so the upstream CWD-relative paths land on writable
-# storage. The parent services/cache/ doesn't exist in the upstream
-# tree, so we create it first (a real dir; the children are symlinks).
-mkdir -p "$STATE/services" "$STATE/services/cache"
-chown odysseus:odysseus "$STATE/services"
-# The upstream tree may not ship services/cache/. Create the parent so
-# ln -sfn can place symlinks inside it.
-mkdir -p "$APP/services/cache"
-force_symlink "$STATE/services/cache/search"  "$APP/services/cache/search"
-force_symlink "$STATE/services/cache/content" "$APP/services/cache/content"
-
-# services/search/analytics.py writes two files into services/ (the
-# parent of analytics.py) at import time. Symlink them to writable state.
-# These need the target files to exist first so the symlink resolves.
-touch "$STATE/services/search_analytics.json"
-touch "$STATE/services/search_engine_error.log"
-chown odysseus:odysseus "$STATE/services/search_analytics.json" \
-                       "$STATE/services/search_engine_error.log"
-force_symlink "$STATE/services/search_analytics.json"   "$APP/services/search_analytics.json"
-force_symlink "$STATE/services/search_engine_error.log" "$APP/services/search_engine_error.log"
-
 # --- Read-only web UI symlink ---
 # The app reads static/login.html, static/index.html, static/app.js, etc.
 # via CWD-relative paths (BASE_DIR is CWD per the AUR patch, so they

@@ -10,12 +10,9 @@
 # `uv pip compile requirements.txt -o requirements.lock`). This gives us
 # deterministic, byte-identical rebuilds without an AUR-side wheel cache.
 #
-# JS deps (currently @anthropic-ai/sdk ^0.104.1) are installed via
-# `npm ci --omit=dev` against the upstream package-lock.json. The JS deps
-# are runtime deps, not devDeps, so we do NOT pass --omit=dev... wait, we
-# do, because @antithesishq/bombadil is the only devDep and we don't ship
-# the docs build. The Anthropic SDK itself is a real `dependencies` entry
-# in package.json, so npm ci --omit=dev installs it. Verified.
+# JS deps (currently @antithesishq/bombadil ^0.6.1) are installed via
+# `npm ci --omit=dev` against the upstream package-lock.json. bombadil is
+# the only devDep and we don't ship the docs build. Verified.
 #
 # The venv's interpreter is built with `--link-mode=copy` so bin/python3.12
 # is a real ELF copy, not a symlink to $HOME/.local/share/uv/python/...
@@ -23,8 +20,8 @@
 
 pkgname=odysseus-ai-git
 _pkgname=odysseus
-pkgver=r1497.d9ebdd6
-pkgrel=16
+pkgver=r1598.dd055ee
+pkgrel=1
 pkgdesc="Self-hosted AI workspace with prebuilt Python 3.12 venv, tracking upstream main"
 arch=('x86_64')
 url='https://github.com/pewdiepie-archdaemon/odysseus'
@@ -76,18 +73,18 @@ source=(
   "LICENSE"
 )
 sha256sums=('SKIP'
-            'ceb52bebe3cf25c77087b0529d64d480184f452f3cdbe2a1a920b2c2581ffbe2'
-            '372b1117a50731f718bb271af5cff61caf7d666afc95f81a423129e8ec8c4353'
-            '83fd58a89da27b1211d7727f0d83f9d6f3633d15e117c6df1097445af6fb542d'
+            '84f589824a9878424aee0bd19110b939a93f14e31166481528b34ca0a41033bc'
+            'bfaa75c4fca1a90e6d711250573fd1b4d025f65e5c0305778b13c868eccfa299'
+            '92cfbe07c666215c60cd101f52af024ed1a604d1fa39c3c0b93d7a2ac30eb1c3'
             '8fee9c720af5531a42dff4a96ea07983e861b1d61df9ed70d2749ea4cb718d86'
             '089ff2f58c09c17e7254749e022cad62710a6b6968a808cbbe9861384a087425'
             'c1464cb1073ea2f8b298f282e16eab71b9474e9d65a2963bfc543df4be2164f9'
             'c8f0c2378fa72d90aa710765895be4ff47ee4160615a5066b9bc5311af6ea71f'
-            'e6ed70e346300313dfa3e9cb2be8fb04789b8afcafc0c66f62fc9b0887ba6245'
+            '3c188d767f6117dd225be967c489c9331d3ee95b19b80a896b4b6a75ec8afde1'
             'd43eb701dd137d95bca167c0c86f18692faea573fe7333840248297587f43cbe'
             '295f647c0e114eea7a56c3d77e173c0a245c55c612df268b34521b907acfb58e'
-            '67ad7ffae29ad3a2bf7a480091edbb7629d8fd296efff3e9d98ee42df79f10ae'
-            '2e2872c6cfc42b2e543255846ae0d07fd157f13aba1cb5cee3a95dcffe3e0314'
+            'b7004f7af075cf27f88a015d1102af4aa1087e439f174b813b47f5c74aae1208'
+            '2aaf60d97bcad8be3748cf7013691431b1d1c13bff643f88a35ffb4a921f9de1'
             '11933a234233ea483e306ef3f6401737d51ef3107c47fbe94741f2c97626c65a'
             '4674cc172af2a0de35fc4f0fea59da77a204264e8008f0452b71aa90faf77bb2')
 
@@ -109,134 +106,6 @@ prepare() {
 
   # ---- Patch setup.py to use CWD-relative paths (WorkingDirectory=) ----
   patch -p1 -i "$srcdir/setup.py.patch"
-  # ---- Patch src/constants.py so BASE_DIR is CWD ----
-  # src/constants.py contains `BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/"`
-  # which resolves to /usr/lib/odysseus-ai/app/. The app then tries to
-  # os.makedirs(STATIC_DIR) and write JSON files into that read-only path.
-  # Make BASE_DIR resolve to os.getcwd() (== WorkingDirectory=) instead.
-  for cf in src/constants.py; do
-    sed -i 's|^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/"$|BASE_DIR = os.getcwd() + "/"|' "$cf"
-  done
-
-  # ---- Patch src/config.py so DataConfig.base_dir is CWD ----
-  # Same problem: base_dir defaults to Path(__file__).parent.parent which
-  # resolves to /usr/lib/odysseus-ai/app/. The field_validator then uses
-  # it to compute data_dir = base_dir / "data" -> read-only path.
-  sed -i 's|base_dir: Path = Field(default=Path(__file__).parent.parent, description="Base directory for the application")|base_dir: Path = Field(default=Path(os.getcwd()), description="Base directory for the application (AUR: = WorkingDirectory =)")|' src/config.py
-  # The validator's fallback also needs to use CWD
-  sed -i 's|base_dir = Path(__file__).parent.parent$|base_dir = Path(os.getcwd())|' src/config.py
-
-  # ---- Patch the allowlist of remaining Path(__file__).parent.parent uses.
-  # Upstream uses this pattern both for runtime writes (data/, services/,
-  # static/, cache/, logs/) AND for read-only asset paths (templates,
-  # migration files, packaged resources). A broad sed would patch the
-  # latter too, breaking them on a read-only /usr/lib/odysseus-ai/app/.
-  # The list below is explicit: each entry has been verified to use the
-  # path for a runtime write. When upstream adds a new file that needs
-  # the same treatment, add it here deliberately — never via a broad sed.
-  # Files that already have dedicated handling above are excluded:
-  #   core/constants.py, src/constants.py  (BASE_DIR sed)
-  #   src/config.py                         (Pydantic Field sed)
-  #   src/rag_singleton.py                  (rag_singleton.py.patch)
-  for f in \
-    core/auth.py \
-    mcp_servers/email_server.py \
-    mcp_servers/rag_server.py \
-    mcp_servers/memory_server.py \
-    mcp_servers/image_gen_server.py \
-    routes/contacts_routes.py \
-    routes/document_routes.py \
-    routes/email_helpers.py \
-    routes/emoji_routes.py \
-    routes/codex_routes.py \
-    services/search/cache.py \
-    services/search/analytics.py \
-    src/secret_storage.py \
-    src/tool_execution.py
-  do
-    [[ -f "$f" ]] || error "Expected path file missing: $f"
-    sed -i 's|Path(__file__)\(\.resolve()\)\?\.parent\.parent|Path(os.getcwd())|g' "$f"
-    # Make sure `import os` is present at MODULE level. The file's runtime
-    # path now references os.getcwd() / os.path.join etc., so os must be
-    # in scope. We require column-0 (no leading whitespace) because an
-    # `import os` indented inside a function or class is NOT module-level
-    # and won't make `os` available at the top of the file.
-    # Inject AFTER any shebang, encoding comment, and `from __future__`
-    # imports to avoid breaking Python's syntax rules.
-    if ! grep -qE '^(import os\b|from os\b)' "$f"; then
-      python - "$f" <<'PY'
-from pathlib import Path
-import sys
-
-p = Path(sys.argv[1])
-s = p.read_text()
-lines = s.splitlines()
-insert_at = 0
-
-# Preserve shebang, encoding comment, and from __future__ imports.
-while insert_at < len(lines):
-    line = lines[insert_at]
-    if (
-        line.startswith("#!") or
-        line.lstrip().startswith("#") and "coding" in line or
-        line.startswith("from __future__") or
-        line.startswith("import __future__")
-    ):
-        insert_at += 1
-        continue
-    break
-
-lines.insert(insert_at, "import os")
-p.write_text("\n".join(lines) + "\n")
-PY
-    fi
-  done
-
-  # ---- Patch the allowlist of os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-  # uses. Same rationale as the Path() allowlist above: only files that
-  # need a runtime-write path to be CWD-relative are listed. core/constants.py
-  # and src/constants.py are handled by the dedicated BASE_DIR sed above.
-  for f in \
-    routes/embedding_routes.py \
-    src/builtin_mcp.py \
-    src/embeddings.py \
-    src/mcp_manager.py
-  do
-    [[ -f "$f" ]] || error "Expected path file missing: $f"
-    # Two distinct forms in the wild:
-    #   os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  (most common)
-    #   os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/"  (only in constants.py, already handled)
-    sed -i 's|os\.path\.dirname(os\.path\.dirname(os\.path\.abspath(__file__)))|os.getcwd()|g' "$f"
-    # `os` is almost always already imported in these files (they use
-    # os.environ / os.path heavily), but verify and inject at module level
-    # if not.
-    if ! grep -qE '^(import os\b|from os\b)' "$f"; then
-      python - "$f" <<'PY'
-from pathlib import Path
-import sys
-
-p = Path(sys.argv[1])
-s = p.read_text()
-lines = s.splitlines()
-insert_at = 0
-
-while insert_at < len(lines):
-    line = lines[insert_at]
-    if (
-        line.startswith("#!") or
-        line.lstrip().startswith("#") and "coding" in line or
-        line.startswith("from __future__") or
-        line.startswith("import __future__")
-    ):
-        insert_at += 1
-        continue
-    break
-
-lines.insert(insert_at, "import os")
-p.write_text("\n".join(lines) + "\n")
-PY
-    fi
-  done
 
   # ---- Use the committed package-lock.json verbatim for `npm ci` ----
   # The AUR source ships a pinned package-lock.json so the build is
@@ -324,11 +193,11 @@ check() {
   # ---- Verify the key runtime deps actually import cleanly
   # (bcrypt is the one that bit us on a system python 3.14 with no venv;
   # this guarantees the venv's python is the one being used, and that the
-  # the lock file resolved all 102 packages.)
+  # the lock file resolved all 105 packages.)
   msg2 "Verifying key runtime dependencies import cleanly..."
   "$srcdir/venv/bin/python3.12" -c "
 import fastapi, sqlalchemy, pydantic, pydantic_settings, bcrypt, mcp, uvicorn
-import chromadb, loguru, httpx, cryptography
+import chromadb, httpx, cryptography
 print('ok')
 " || error "key runtime dependency missing from venv"
 }
@@ -345,7 +214,7 @@ package() {
   # ---- Install app source tree to /usr/lib/odysseus-ai/app ----
   install -dm755 "$pkgdir/usr/lib/odysseus-ai/app"
   # Copy the parts that are actually needed at runtime. node_modules
-  # is large; we ship it because @anthropic-ai/sdk is a runtime dep.
+  # is large but ships because npm ci installed it.
   # `static/` is the web UI (login.html, app.js, fonts/, js/, etc.) and
   # MUST be installed; the app reads it via CWD-relative paths
   # (e.g. abs_join(BASE_DIR, "static/login.html")).
