@@ -1,6 +1,6 @@
 pkgbase = kun-gui
 	pkgdesc = AI agent workspace with Code and Write modes - Electron client
-	pkgver = 0.2.14
+	pkgver = 0.2.18
 	pkgrel = 1
 	url = https://github.com/KunAgent/Kun
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = kun-gui
 	optdepends = libxss: screen saver inhibit support
 	optdepends = libappindicator-gtk3: system tray support on GTK-based DEs
 	options = !strip
-	source = kun-gui-0.2.14.tar.gz::https://github.com/KunAgent/Kun/archive/refs/tags/v0.2.14.tar.gz
-	sha256sums = 45e0c7eb6854dd2c0e0173976c8ff054b0a633d073aec40ac1abe178fa2f490c
+	source = kun-gui-0.2.18.tar.gz::https://github.com/KunAgent/Kun/archive/refs/tags/v0.2.18.tar.gz
+	sha256sums = c3a4033eaebf5b4e7564af6e75ab413370a3dae45e30986a0fa38e57ef6240b2
 
 pkgname = kun-gui
