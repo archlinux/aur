@@ -1,7 +1,7 @@
 pkgbase = authentik-platform-bin
 	pkgdesc = authentik Platform authentication, Agent, CLI and other components
 	pkgver = 0.44.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/goauthentik/platform
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,6 @@ pkgbase = authentik-platform-bin
 	noextract = libnss-authentik.deb
 	noextract = libpam-authentik.deb
 	options = !strip
-	options = !emptydirs
 	source = authentik-nss.install
 	source = authentik-pam.install
 	source = authentik-sysd.install

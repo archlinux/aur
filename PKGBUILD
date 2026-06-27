@@ -9,14 +9,13 @@ pkgname=('authentik-cli-bin'
          'libpam-authentik-bin' 
          'libnss-authentik-bin')
 pkgver=0.44.3
-pkgrel=3
+pkgrel=4
 url="https://github.com/goauthentik/platform"
 license=('MIT')
 makedepends=()
 arch=('x86_64'
       'aarch64')
-options=('!strip'
-         '!emptydirs')
+options=('!strip')
 
 source=('authentik-nss.install'
         'authentik-pam.install'
