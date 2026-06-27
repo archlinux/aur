@@ -1,6 +1,6 @@
 # Maintainer: Tilman BLUMENBACH <tilman AT ax86 DOT net>
 pkgname=7zip-docs
-pkgver=26.01
+pkgver=26.02
 pkgrel=1
 pkgdesc='HTML documentation for the 7-Zip file archiver'
 url='https://7-zip.org/'
@@ -19,4 +19,4 @@ package() {
     find "${pkgdir?}/usr/share/doc/7zip" -type d -execdir chmod 755 {} +
 }
 
-sha256sums=('8ea0fc8a135e7b848e80a4116fe22dff56c8c4518dde1f43cce67f4e340b437a')
+sha256sums=('41aaba7b1235304ab5aa0624530c67ae829496cd29e875925271efdccc28c03e')
