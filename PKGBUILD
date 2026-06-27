@@ -1,6 +1,6 @@
 # Maintainer: vbopk9x3 <vbopk9x3@4wrd.cc>
 pkgname=pangolin-bin
-pkgver=0.10.2
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Pangolin Client - Secure reverse proxy and tunnel (Binary version)"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h' 'riscv64')
@@ -18,11 +18,11 @@ source_riscv64=("pangolin-${pkgver}::https://github.com/fosrl/cli/releases/downl
 
 
 # SHA256 Checksums (Generate these using 'updpkgsums')
-sha256sums_x86_64=('9f97e4922ee24e1ae4d7dffbcd537e701abc8219826b419ab232f078ce3fa1af')
-sha256sums_aarch64=('632ad698bc973fa6a2cfa38e95f380fa6da596bab9f4b04029cfdfadd6a1ce71')
-sha256sums_armv7h=('1818c0eac811a1f35e547b6c994e0f20bacf8d1826242c4ae7bdc1ddb39090b6')
-sha256sums_armv6h=('24aa456b176826a992f8907531ffbbb77fdb8df1728076921c81bdb481f1bbdc')
-sha256sums_riscv64=('b82d145833e5ced1e8ced7f62d725082cbefe1704cb4a138b7001328ad584aa1')
+sha256sums_x86_64=('c1833a2234f91f9e34f4342d9c18a227ae0d3df6c89f5bf7d926a3cded69f872')
+sha256sums_aarch64=('c4d97697e27fed030bbcff235fccafdf53a935832faae3a2324bce33ab65bbfe')
+sha256sums_armv7h=('115992d5af0cd8c98720cf3e1bd2be50f84821824f62ac02caf8f9a6623eb769')
+sha256sums_armv6h=('eeae499790d126b89794936348426dbbb38f47523e17aa1a8d0542c725a1a697')
+sha256sums_riscv64=('d44dac453cba2d5a4919c73f89ed78b221a3268f07dda5b784bb6765be060e11')
 
 package() {
     # Install the binary to /usr/bin and set executable permissions
