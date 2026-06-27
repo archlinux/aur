@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-greeter-git
-pkgver=1.0.16.r0.g7a0c083
+pkgver=1.1.0.r2.g953478f
 pkgrel=1
 pkgdesc="COSMIC greeter for greetd"
 arch=('x86_64' 'aarch64')
@@ -62,6 +62,9 @@ prepare() {
 
   # Use thin LTO
   patch -Np1 -i ../lto.patch
+
+  # Change sysusers to fully locked system accounts
+  sed 's/^u /u!/' -i debian/cosmic-greeter.sysusers
 }
 
 build() {
