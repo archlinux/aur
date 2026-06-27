@@ -1,14 +1,14 @@
 # Maintainer: Jake Leahy <jake (at) leahy (dot) dev
 
 pkgname=slint-cpp-bin
-pkgver=1.16.1
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Slint is a toolkit to efficiently develop fluid graphical user interfaces for any display: embedded devices and desktop applications"
 arch=("x86_64")
 url="https://slint-ui.com"
 license=("GPL3")
 source=("slint-cpp-$pkgver.tar.gz::https://github.com/slint-ui/slint/releases/download/v$pkgver/Slint-cpp-$pkgver-Linux-$CARCH.tar.gz")
-sha256sums=('125dd01e579c041f80dab0b92522a027b99d7cee47b5c005d6291f4cca639715')
+sha256sums=('4de40322dee9c425d95f30f76219522a181001477d0e9c6dd2c7d72fc7894224')
 depends=("freetype2" "qt5-base")
 provides=("slint-cpp")
 conflicts=("slint-cpp")
