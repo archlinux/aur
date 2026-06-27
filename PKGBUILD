@@ -17,8 +17,6 @@ _url_github="https://github.com/${pkgauthor}/${pkgname}"
 url='https://moulti.run/'
 
 provides=("${_pypi_package}")
-replaces=("python-${pkgname}")
-conflicts=("python-${pkgname}")
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatchling')
 depends=('bash' 'python' 'python-huggingface-hub' 'python-scikit-learn' 'python-pillow' 'python-numpy' 'python-pytorch' 'python-scipy' 'python-fonttools')
 
