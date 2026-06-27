@@ -6,7 +6,7 @@
 pkgname=vmd-src
 _pkgname=vmd
 pkgver=1.9.4a57
-pkgrel=4
+pkgrel=5
 pkgdesc="Visual Molecular Dynamics"
 url="http://www.ks.uiuc.edu/Research/vmd/"
 license=(custom)
@@ -23,18 +23,33 @@ conflicts=($_pkgname $_pkgname-bin)
 # You have to download the package from the VMD url
 # and put it in the PKGBUILD folder.
 source=(local://$_pkgname-${pkgver}.src.tar.gz
-        configure.patch)
+        configure.patch
+        vmd20260627.patch)
 sha256sums=('de278d0c5d969336d89068e0806fb50aaa0cb0f546ba985d840b279357860679'
-            'a74a8bbee40667742907b59aa24bdb37607761389a9c332c2d449ef07a2f0937')
+            'a74a8bbee40667742907b59aa24bdb37607761389a9c332c2d449ef07a2f0937'
+            '8daf4d5364f51afe9881703ebe39ce1f1a63fa7b7ae2fcf41570dc876da6181c')
 
 prepare() {
   sed -i 's/ltcl8.5/ltcl/g' plugins/Make-arch
+  sed -i 's/"CCFLAGS = /"CCFLAGS = -std=gnu17 /g' plugins/Make-arch
+
   cd $_pkgname-$pkgver
   mkdir plugins
   sed -i 's#:${LD_LIBRARY_PATH}/:${LD_LIBRARY_PATH}:#/opt/optix/lib64#g' bin/*
   # Assuming openmpi; if it's not the case edit configure.patch
   patch -p0 < ../configure.patch
-  
+
+  # Making the package agnostic towards the Python version
+  local _pyver
+  _pyver=$(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
+  export PYTHON_INCLUDE_DIR=$(python -c 'import sysconfig; print(sysconfig.get_path("include"))')
+  export PYTHON_LIBRARY_DIR=$(python -c 'import sysconfig; print(sysconfig.get_config_var("LIBPL"))')
+  export NUMPY_INCLUDE_DIR=$(python -c 'import numpy; print(numpy.get_include() + "/numpy")')
+  export NUMPY_LIBRARY_DIR=$(python -c 'import numpy; print(numpy.get_include())')
+  sed -i "s/-lpython[0-9]\+\.[0-9]\+/-lpython${_pyver}/g" configure
+
+  patch -p0 < ../vmd20260627.patch
+
   export TCLINC="-I/usr/include"
   export TCLLIB="-L/usr/lib"
   export PLUGINDIR=$srcdir/$_pkgname-$pkgver/plugins

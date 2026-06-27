@@ -1,0 +1,32 @@
+--- src/PythonTextInterp.C
++++ src/PythonTextInterp.C
+@@ -102,7 +102,7 @@
+ 
+   for (int i=0; i<PyList_GET_SIZE(cblist); i++) {
+     PyObject *obj = PyList_GET_ITEM(cblist, i);
+-    PyObject *result = PyEval_CallObject(obj, arglist);
++    PyObject *result = PyObject_CallObject(obj, arglist);
+     if (result == NULL) {
+       PyErr_Print();
+       PySequence_DelItem(cblist, i);
+@@ -174,7 +174,9 @@
+ 
+   // Do emit DeprecationWarnings
+ #if PY_MAJOR_VERSION >= 3
++#if PY_VERSION_HEX < 0x030D0000
+   PySys_AddWarnOption(L"default");
++#endif
+ #else
+   PySys_AddWarnOption((char*) "default");
+ #endif
+--- src/SelectionBuilder.C
++++ src/SelectionBuilder.C
+@@ -182,7 +182,7 @@
+ 
+   int line = self->macrobrowser->value();
+   if (!line) {
+-    self->macrooutput->value(NULL);
++    self->macrooutput->value((const char *)NULL);
+     return;
+   }
+   const char *name = self->macrobrowser->text(line);
