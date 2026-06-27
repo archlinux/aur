@@ -1,0 +1,17 @@
+pkgbase = miyu
+	pkgdesc = Command-line AI assistant
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SHORiN-KiWATA/Miyu
+	arch = x86_64
+	license = custom:unlicensed
+	depends = chafa
+	depends = gcc-libs
+	depends = ripgrep
+	optdepends = fish: fish shell hook support
+	optdepends = bash: bash shell hook support
+	optdepends = zsh: zsh shell hook support
+	source = miyu-0.1.0-1-x86_64.pkg.tar.zst::https://github.com/SHORiN-KiWATA/Miyu/releases/download/v0.1.0/miyu-0.1.0-1-x86_64.pkg.tar.zst
+	sha256sums = f05d3fcd7b69d4bd48d9f6b952aeed59f6b09ae61707a41ef036ea5c67dbb720
+
+pkgname = miyu
