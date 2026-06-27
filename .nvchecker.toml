@@ -1,0 +1,5 @@
+[ruby-enum]
+source = "github"
+github = "dblock/ruby-enum"
+use_max_tag = "true"
+prefix = "v"
