@@ -2,7 +2,7 @@
 
 pkgname=deeplx
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful free DeepL API, no token required"
 arch=('x86_64' 'aarch64' 'i686' 'mips')
 url="https://github.com/OwO-Network/DeepLX"
@@ -14,7 +14,7 @@ install=deeplx.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "deeplx.install")
 b2sums=('1b3bbd8d5030ddc1c5b1dac89db6b4fd63a0a625353e880ce3569636a786ea04878105aab9cfa2daf6a55c26af73548cdc3fc588cbefeee1d09e54361935bb0e'
-        'f3c59fa3e6b491a9fd25bb01643db7d431d60025fc5ab74c2a1971fe90966c8a0201abbe798bd7786f85c4347018dd8bed1902e443f8c027c094268042b9a07f')
+        'd759538dd2271ce506dc146d22dbc60d79d34d35e24ddb7fe31029d1f61088f358a183d4eb140980a7f4ac2e707bd9c3c49449a2af03bffbca9f50a7863ae643')
 
 export CGO_CPPFLAGS="${CPPFLAGS}"
 export CGO_CFLAGS="${CFLAGS}"

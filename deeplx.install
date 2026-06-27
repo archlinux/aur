@@ -3,7 +3,7 @@ post_install() {
 To start and enable the service on boot:
   systemctl enable --now deeplx.service
 
-The default API endpoint should be http://localhost:1188
+The default listen address should be http://localhost:1188
 EOF
 }
 
