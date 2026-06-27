@@ -1,6 +1,6 @@
 # Maintainer: Siyia <eutychios23@gmail.com>
 pkgname=iso-commander-bin
-pkgver=7.4.0
+pkgver=7.4.1
 pkgrel=1
 pkgdesc='The Fastest ISO Manager on the Planet, written in C++'
 arch=('x86_64')
@@ -17,8 +17,8 @@ source=(
     "isocmd::https://github.com/siyia2/iso-commander/releases/download/v${pkgver}/isocmd"
     "isocmd.1::https://raw.githubusercontent.com/siyia2/iso-commander/refs/tags/v${pkgver}/man/isocmd.1"
 )
-md5sums=('0d83f53b146a26cff52cb20319c8cf73'
-         '1be397e3795779c23578e3ec12b4a875')
+md5sums=('c675a73261653ed1159fe700af6c6d5d'
+         'fadd28cad4438aae42b14cbf6d2ab9ff')
 package() {
     install -Dm755 "${srcdir}/isocmd" "${pkgdir}/usr/bin/isocmd"
     install -Dm644 "${srcdir}/isocmd.1" "${pkgdir}/usr/share/man/man1/isocmd.1"
