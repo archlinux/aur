@@ -9,12 +9,12 @@ pkgname=cef-vaapi
 # To update this package, update the _cef_commit and _chromium_ver variables.
 # For the CEF versioning scheme, see
 # https://chromiumembedded.github.io/cef/branches_and_building#version-number-format
-pkgver=149.0.4
+pkgver=149.0.6
 # See https://github.com/chromiumembedded/cef/tree/<release branch>
 # Also see https://chromiumembedded.github.io/cef/branches_and_building
-_cef_commit=2f1bfd842a0b6a9e770b708654986b6e5f17d772
+_cef_commit=0d0eeb61160536e447c79335c1ee963f57eb6d60
 # the chromium version must match CHROMIUM_BUILD_COMPATIBILITY.txt in the CEF repo
-_chromium_ver=149.0.7827.156
+_chromium_ver=149.0.7827.201
 _system_clang=1
 pkgrel=1
 pkgdesc="Chromium Embedded Framework (CEF), simple framework for embedding Chromium-based browsers in other applications (VAAPI-enabled variant)"
@@ -69,25 +69,25 @@ makedepends=(
 )
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=("chromium-$_chromium_ver-lite.tar.xz::https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$_chromium_ver-lite.tar.xz"
-        "cef::git+https://github.com/chromiumembedded/cef.git#commit=${_cef_commit}"
-        chromium-138-nodejs-version-check.patch
-        chromium-145-fix-SYS_SECCOMP.patch
-        chromium-147-revert-clang-no-lifetime-dse-flag.patch
-        chromium-147-rust-1.95-bytemuck.patch
-        chromium-149-drop-unknown-clang-flag.patch
-        chromium-149-unbundle-minizip-undo-unicode.patch
-        chromium-149-use-of-undeclared-identifier-ERROR.patch
-        chromium-149-build-with-wasm-rollup.patch
-        compiler-rt-adjust-paths.patch
-        increase-fortify-level.patch
-        glibc-2.42-baud-rate-fix.patch
-        cef-no-sysroot.patch
-        cef-no-libxml-visibility-patch.patch
-        chromium-disable-font-tests.patch
-        FindCEF.cmake
+  "cef::git+https://github.com/chromiumembedded/cef.git#commit=${_cef_commit}"
+  chromium-138-nodejs-version-check.patch
+  chromium-145-fix-SYS_SECCOMP.patch
+  chromium-147-revert-clang-no-lifetime-dse-flag.patch
+  chromium-147-rust-1.95-bytemuck.patch
+  chromium-149-drop-unknown-clang-flag.patch
+  chromium-149-unbundle-minizip-undo-unicode.patch
+  chromium-149-use-of-undeclared-identifier-ERROR.patch
+  chromium-149-build-with-wasm-rollup.patch
+  compiler-rt-adjust-paths.patch
+  increase-fortify-level.patch
+  glibc-2.42-baud-rate-fix.patch
+  cef-no-sysroot.patch
+  cef-no-libxml-visibility-patch.patch
+  chromium-disable-font-tests.patch
+  FindCEF.cmake
 )
-sha256sums=('cdd6eb8c92ed1662fc71fa81f1cf5bee9a9997040fb16b4eaf236401e8c4fa8a'
-            '4cfc8014b0141a5816712d3073cf967bda9559458ca2f3d8d3b9d1dd1090ecaf'
+sha256sums=('188e41921e1e2d4b5dd198509c0140e81a19cfa95f3426ed2b8bce28e445acf6'
+            '923520ed985a5219effda413dbde66245fc65f771d798afe2548f8c4df45e8a0'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e'
             'c382830318c5b37826ecf44f3ba9def6be8affdad1bce819ecb83f3222ff4b3a'
@@ -233,7 +233,7 @@ prepare() {
 
   # https://crbug.com/893950
   sed -i -e 's/\<xmlMalloc\>/malloc/' -e 's/\<xmlFree\>/free/' \
-         -e '1i #include <cstdlib>' \
+    -e '1i #include <cstdlib>' \
     third_party/blink/renderer/core/xml/*.cc \
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
@@ -282,12 +282,12 @@ prepare() {
   patch -Np1 -i ../cef-no-libxml-visibility-patch.patch
 
   # CEF: Override clang_exe to use system clang
-  echo 'clang_exe = "clang"' >> cef/tools/clang_util.py
+  echo 'clang_exe = "clang"' >>cef/tools/clang_util.py
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin \
-           third_party/jdk/current/bin \
-           third_party/rust-toolchain/bin
+    third_party/jdk/current/bin \
+    third_party/rust-toolchain/bin
 
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
   ln -s /usr/bin/java third_party/jdk/current/bin/
@@ -299,7 +299,7 @@ prepare() {
   rm -f third_party/gperf/cipd/bin/gperf
   ln -s /usr/bin/gperf third_party/gperf/cipd/bin/
 
-  if (( !_system_clang )); then
+  if ((!_system_clang)); then
     # Use prebuilt rust as system rust cannot be used due to the error:
     #   error: the option `Z` is only accepted on the nightly compiler
     ./tools/rust/update_rust.py
@@ -344,7 +344,7 @@ pkgver() {
 build() {
   cd chromium-$_chromium_ver
 
-  if (( _system_clang )); then
+  if ((_system_clang)); then
     export CC=clang
     export CXX=clang++
     export AR=ar
@@ -368,7 +368,7 @@ build() {
     'custom_toolchain="//build/toolchain/linux/unbundle:default"'
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
     'is_official_build=true' # implies is_cfi=true on x86_64
-    'symbol_level=0' # sufficient for backtraces on x86(_64)
+    'symbol_level=0'         # sufficient for backtraces on x86(_64)
     'treat_warnings_as_errors=false'
     'fatal_linker_warnings=false'
     'disable_fieldtrial_testing_config=true'
@@ -399,9 +399,10 @@ build() {
     _flags+=('icu_use_data_file=false')
   fi
 
-  if (( _system_clang )); then
-     local _clang_version=$(
-       clang --version | grep -m1 version | sed 's/.* \([0-9]\+\).*/\1/')
+  if ((_system_clang)); then
+    local _clang_version=$(
+      clang --version | grep -m1 version | sed 's/.* \([0-9]\+\).*/\1/'
+    )
 
     _flags+=(
       'clang_base_path="/usr"'
@@ -437,22 +438,22 @@ build() {
   CXXFLAGS+=' -Wno-unknown-warning-option'
 
   # Let Chromium set its own symbol level
-  CFLAGS=${CFLAGS/-g }
-  CXXFLAGS=${CXXFLAGS/-g }
+  CFLAGS=${CFLAGS/-g /}
+  CXXFLAGS=${CXXFLAGS/-g /}
 
   # https://github.com/ungoogled-software/ungoogled-chromium-archlinux/issues/123
-  CFLAGS=${CFLAGS/-fexceptions}
-  CFLAGS=${CFLAGS/-fcf-protection}
-  CXXFLAGS=${CXXFLAGS/-fexceptions}
-  CXXFLAGS=${CXXFLAGS/-fcf-protection}
+  CFLAGS=${CFLAGS/-fexceptions/}
+  CFLAGS=${CFLAGS/-fcf-protection/}
+  CXXFLAGS=${CXXFLAGS/-fexceptions/}
+  CXXFLAGS=${CXXFLAGS/-fcf-protection/}
 
   # This appears to cause random segfaults when combined with ThinLTO
   # https://bugs.archlinux.org/task/73518
-  CFLAGS=${CFLAGS/-fstack-clash-protection}
-  CXXFLAGS=${CXXFLAGS/-fstack-clash-protection}
+  CFLAGS=${CFLAGS/-fstack-clash-protection/}
+  CXXFLAGS=${CXXFLAGS/-fstack-clash-protection/}
 
   # https://crbug.com/957519#c122
-  CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
+  CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS/}
 
   python3 cef/tools/gclient_hook.py
   sed -i '/__sanitizer_set_death_callback/d' v8/src/sandbox/testing.cc
