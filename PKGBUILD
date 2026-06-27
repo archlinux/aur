@@ -3,7 +3,7 @@
 _pkgauthor=d99kris
 _pkgname=namp
 pkgname=${_pkgname}
-pkgver=2.43
+pkgver=2.57
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Terminal-based audio player"
@@ -18,7 +18,7 @@ depends=('gcc-libs' 'glibc' 'qt6-base' 'libglvnd' 'ncurses' 'taglib')
 makedepends=('qt6-base' 'qt6-tools' 'qtutilities-qt6' 'qt6-multimedia' 'qt6-multimedia-ffmpeg' 'qt6-imageformats' 'gstreamer' 'help2man')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2cf01db0723fc7537ac41e416e8b0eeca538a5521acc19db8ba68dd54a0187a6')
+sha256sums=('544cbff4ccda6d5ac26ee9c4cdfe457029f5f0e66ecba15d599cb9601e59f045')
 
 
 build() {
