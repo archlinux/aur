@@ -3,7 +3,7 @@
 
 pkgname=bitcoin-git
 _gitname=bitcoin
-pkgver=30.0rc1.r46108
+pkgver=31.99.0.r49473
 pkgrel=1
 pkgdesc="Bitcoin is a peer-to-peer network based digital currency. This package provides bitcoin-core binaries: bitcoind, bitcoin-qt, bitcoin-tx, and bitcoin-cli"
 arch=('x86_64')
@@ -21,7 +21,10 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  printf "%s.r%s" "$(git describe --tags $(git rev-list --tags --max-count=1) | sed "s/^v//;s/-/./g")" "$(git rev-list --count HEAD)"
+    major=$(sed -n 's/^set(CLIENT_VERSION_MAJOR \([0-9]*\)).*/\1/p' CMakeLists.txt)
+    minor=$(sed -n 's/^set(CLIENT_VERSION_MINOR \([0-9]*\)).*/\1/p' CMakeLists.txt)
+    build=$(sed -n 's/^set(CLIENT_VERSION_BUILD \([0-9]*\)).*/\1/p' CMakeLists.txt)
+    printf "%s.%s.%s.r%s\n" "$major" "$minor" "$build" "$(git rev-list --count HEAD)" # "$(git rev-parse --short HEAD)"
 }
 
 build() {
