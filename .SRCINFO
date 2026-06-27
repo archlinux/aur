@@ -1,14 +1,14 @@
 pkgbase = thunderbird-extension-cardbook
 	pkgdesc = A new Thunderbird address book based on the CardDAV and vCard standards
-	pkgver = 93.6
+	pkgver = 105.8
 	pkgrel = 1
 	url = https://gitlab.com/cardbook/cardbook
 	arch = any
-	license = MPL2
+	license = MPL-2.0
 	depends = thunderbird
-	conflicts = thunderbird<113
-	conflicts = thunderbird>=117
-	source = https://gitlab.com/cardbook/cardbook/uploads/c801bdb471789a2f7cf99ae74cd1aef5/cardbook-93.6-tb.xpi
-	sha256sums = 99137f63ecca8efb68092b4844b2c420e67597657634d1a3faf58a242d238d54
+	conflicts = thunderbird<128
+	conflicts = thunderbird>=155
+	source = https://gitlab.com/cardbook/cardbook/-/archive/487557b6c2b064531fdaa65fa927ce135ede085e/cardbook-105.8.tar.gz
+	sha256sums = ec8ffe831808e206c7941e9338f3334c103d578161439791157e21fc76d32831
 
 pkgname = thunderbird-extension-cardbook
