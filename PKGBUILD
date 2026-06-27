@@ -1,14 +1,15 @@
 # Maintainer: Timothy Flowers <t_chuck_flowers@yahoo.com>
 pkgname=ellipsis-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=r22.5f6c049
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 arch=('any')
 url=""
 license=('unknown')
 groups=()
-depends=()
-makedepends=('git')
+depends=(stow)
+makedepends=('git' 'shellcheck')
+optdepends=('fzf: for interactive selections')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
