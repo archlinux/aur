@@ -1,20 +1,19 @@
-# Maintainer:  Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer:  Anton Kudelin <kudelin at proton dot me>
 # Contributor: Jerry Lin <jerry73204 at gmail dot com>
 
 _pyname=aiokafka
 pkgname=python-$_pyname
-pkgver=0.12.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Asyncio client for Kafka'
 arch=(x86_64 aarch64)
 url='https://aiokafka.readthedocs.io'
-license=(Apache)
-depends=(python-kafka python-async-timeout)
+license=(Apache-2.0)
+depends=(python-async-timeout python-packaging python-typing_extensions)
 makedepends=(python-setuptools cython python-build python-installer python-wheel)
-checkdepends=(python-pytest-asyncio python-docker python-snappy
-              python-zstandard python-lz4 python-pytest-mock)
+checkdepends=(python-pytest-asyncio python-pytest-mock python-docker python-cramjam)
 source=($pkgname-$pkgver.tar.gz::https://github.com/aio-libs/aiokafka/archive/v$pkgver.tar.gz)
-sha256sums=('d71e708393708d00524bd522caabde8b3b488c6fd6e8b96662a60510c22d9f99')
+sha256sums=('750e128e778690d9f33d04d7fcdebcf882230c2ced204a781245f1e6850dbf5c')
 
 build() {
   cd "$srcdir/$_pyname-$pkgver"
