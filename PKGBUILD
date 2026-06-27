@@ -2,18 +2,20 @@
 _pkgname=futo-notes
 pkgname=${_pkgname}-bin
 pkgver=1.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast, private, local-first notes"
 arch=('x86_64')
 url="https://notes.futo.tech"
-license=('LicenseRef-FUTO')
+license=('LicenseRef-SourceFirst-1.1')
 depends=('hicolor-icon-theme' 'desktop-file-utils')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip')
 _appimage="${pkgname}-${pkgver}-x86_64.AppImage"
+source=("LICENSE.md::https://gitlab.futo.org/futo-notes/futo-notes/-/raw/main/LICENSE.md")
 source_x86_64=("${_appimage}::https://gitlab.futo.org/api/v4/projects/488/packages/generic/${_pkgname}/v${pkgver}/FUTO-Notes-${pkgver}-x86_64.AppImage")
 noextract=("${_appimage}")
+sha256sums=('4d8522558ced82190b4b7e2d86d0955e4dc910d0fbb8eb2f01eed7cacd4f94ef')
 sha256sums_x86_64=('0ff9b19a803f285f92c6752f48024d8378421ae98c680c12ea4a89e0fb17dd74')
 
 prepare() {
@@ -50,4 +52,6 @@ EOF
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/${size}/apps"
     install -Dm644 "$icon" "${pkgdir}/usr/share/icons/hicolor/${size}/apps/${_pkgname}.png"
   done
+
+  install -Dm644 "$srcdir/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
