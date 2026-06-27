@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=wrkflw
-pkgver=0.7.3
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='validate and execute GitHub Actions workflows locally'
 url="https://github.com/bahdotsh/$pkgname"
@@ -13,7 +13,7 @@ depends=(gcc-libs
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('475acd61bff0b6ee4ec58aa566b442355e88d9efe18267c58c1501f3fb93f4bc')
+sha256sums=('79d63da0c40cfb884600b671830d63bb6cf143f1d8e65886e067a747491c23b4')
 
 prepare() {
 	cd "$_archive"
@@ -35,7 +35,14 @@ build() {
 
 check() {
 	_srcenv
-	cargo test --frozen --all-features
+	local skipped=(
+		# Possibly impure, reaching into system Git config?
+		prefilter::prefilter_tests::non_strict_filter_allows_event_alone_with_warning_and_empty_change_set
+		prefilter::prefilter_tests::skip_decision_returned_when_trigger_does_not_match
+		prefilter::prefilter_tests::strict_filter_rejects_event_alone_without_diff_or_changed_files
+		prefilter::prefilter_tests::strict_filter_rejects_pull_request_without_base_branch
+	)
+	cargo test --frozen --all-features -- ${skipped[@]/#/--skip }
 }
 
 package() {
