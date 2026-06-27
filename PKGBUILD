@@ -4,7 +4,7 @@
 
 _pyname=deepl
 pkgname=python-${_pyname}
-pkgver=1.28.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Python library for the DeepL API'
 arch=(any)
@@ -23,7 +23,7 @@ validpgpkeys=('D84A62C6CA4D3E3D6656083438FCACAAFD2C06B8'  # Jan Ebbing <Jan.Ebbi
               '8081F8A3C01CD680B2AF98B564AB78B6A11D8222'  # Brianna Delgado <brianna.delgado@deepl.com> (@BriannaDelgado)
               '8FE39865F20E9B0DADEF7B00B7F1A94E099738CD'  # Leon Cheng <leonc@alum.mit.edu> (@leoncheng57)
               '7E7DC2C6F2E67A2C5E7B418606C6A25989EC87F1') # Leon Cheng <leon.cheng@deepl.com> (@leoncheng57)
-sha256sums=('842443a904860d02252f538dac586bb5e7d9ebdf00d69c4850388fc8eae994a4')
+sha256sums=('b68478a6fdeb80ac6fdb739ad599650e31d3fef1e5ead676a92f9dfe1b7fd5e5')
 
 build() {
 	cd "$_pyname-python"
