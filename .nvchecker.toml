@@ -1,0 +1,4 @@
+[elfbsp]
+source = "git"
+git = "https://github.com/elf-alchemist/elfbsp.git"
+prefix = "elfbsp_v"
