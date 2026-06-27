@@ -1,6 +1,6 @@
 pkgbase = portable-unstable
 	pkgdesc = Fast, private, efficient sandbox for Linux desktop. Unstable beta versions.
-	pkgver = 17.0.rc.4
+	pkgver = 17.0.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Kraftland/portable
@@ -32,7 +32,7 @@ pkgbase = portable-unstable
 	optdepends = stashpak: Install Portable packages with ease
 	optdepends = bawn: Transient sandbox generator
 	provides = portable
-	source = portable::git+https://github.com/Kraftland/portable.git#tag=17.0.rc.4
-	md5sums = 03e9446d17d73527711cbf718d0b5b78
+	source = portable::git+https://github.com/Kraftland/portable.git#tag=17.0.1
+	md5sums = 0619a2208c04624cb12ff1f1d7a9f7d8
 
 pkgname = portable-unstable
