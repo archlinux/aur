@@ -14,7 +14,7 @@ license=('MIT')
 
 provides=("${_pkgname}")
 
-depends=('glibc' 'gcc-libs' 'ncurses' 'taglib' 'curl')
+depends=('glibc' 'libgcc' 'libstdc++' 'ncurses' 'taglib' 'curl')
 makedepends=('cmake' 'pkg-config' 'nlohmann-json' 'chromaprint' 'help2man')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
