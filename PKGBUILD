@@ -2,7 +2,7 @@
 
 _reponame=RcloneShuttle
 pkgname=rclone-shuttle
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc='Upload your files to anywhere - GTK4 GUI for Rclone'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('gtk4' 'libadwaita' 'rclone')
 makedepends=('rust')
 options=('!debug')
 source=("${pkgname}-${pkgver//+/-}.tar.gz::https://github.com/pieterdd/${_reponame}/archive/refs/tags/${pkgver//+/-}.tar.gz")
-b2sums=('b4bac4192e73639d74ba39011a6427c7788d0eaa1adcb2246739fda7d323b26eecb0dbb757da551e5b7f6eedc5e695e537cd5d94e38bf936a8e00a0c020c102b')
+b2sums=('3c0a87d9a802387f0be8fa913ca2904ac7eb04bb68bdbd64a1904e3ed1c71acdefb0269c0b7cdde62c2db1dfd92b4e220ed2ccf012e3fb623c4475edb0fb8b6f')
 
 prepare() {
   cd "${_reponame}-${pkgver//+/-}"
