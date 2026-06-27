@@ -1,22 +1,17 @@
-# arg 1:  the new package version
 post_install() {
   systemd-sysusers
   systemctl daemon-reload
 }
 
-# arg 1:  the new package version
-# arg 2:  the old package version
 post_upgrade() {
   systemd-sysusers
   systemctl daemon-reload
 }
 
-# arg 1:  the old package version
 pre_upgrade() {
   systemctl stop loreserver.service 2>/dev/null || true
 }
 
-# arg 1:  the old package version
 pre_remove() {
   systemctl stop loreserver.service 2>/dev/null || true
 }

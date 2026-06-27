@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=epic-lore-bin
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc='Epic Games Lore version control system (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
@@ -24,11 +24,11 @@ source_aarch64=(
 
 sha256sums=('1e719ba96030560ebb8f23fa7f18d15c9e94b230d5cd451e9c0edc027113499c'
             'd6899f04359ee944316aaa6336cbede36824364724c4b987e5dec744a3c8e398'
-            'da618618c97a72f4b21bff3e836b64e05f3ec3b77f53378f636086f3ffa95850')
-sha256sums_x86_64=('55eb9e6d334c3c8d099e281931d4594a13dbda401e4cd202fa9f3114c512b299'
-                   'c46d34e6e7b5d1ee00c7fac81f7bbe15918bd7740be21ef2e101631d0dc2dedd')
-sha256sums_aarch64=('72ebd59fb365ab1aeb2f0c080a488dbbaf05e6626691dee850c01474235b0a59'
-                    'bf14e77c95760608b3a5c72f7763b9211ee3e3c35dca6c83b58c62156a9715a2')
+            '731ff6b7b872fcb5ab22f7d07038762cdae8f1786ff590b785f4dee9fdf4f066')
+sha256sums_x86_64=('b1dfab854aaa2bbb4078c0266331a1049e25a5e27a58c49635808d0b3db339bb'
+                   '42bce4124d07642e0eb1c996d6262889760b142992d0ed0f6054d0968bc9efc1')
+sha256sums_aarch64=('46223f8f28bc6e3472b9a7686068c76d419ba3f2a815f7bdfdcba7aa48ce2d5e'
+                    '031234846f8f81ed0e4bd489aea006f213b61264c08a53d4878d01c159ae2dcb')
 
 package() {
   install -Dm755 lore "$pkgdir/usr/bin/lore"
