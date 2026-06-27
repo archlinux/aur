@@ -2,7 +2,7 @@
 
 pkgname=llm-thalamus
 _pkgname=llm_thalamus
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Qt desktop GUI for the pi coding agent — rich chat interface using pi --mode rpc"
 arch=('any')
