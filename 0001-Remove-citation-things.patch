@@ -1,3 +1,5 @@
+diff --git a/src/parallel b/src/parallel
+index fdb1a54c..e19e0ed3 100755
 --- a/src/parallel
 +++ b/src/parallel
 @@ -2436,11 +2436,6 @@ sub options_completion_hash() {
@@ -27,11 +29,10 @@
      # no-* overrides *
      if($opt::nokeeporder) { $opt::keeporder = undef; }
  
-@@ -3064,88 +3051,6 @@ sub parse_options(@) {
- 	    eval q{ sub mbswidth { return length @_; } };
+@@ -3065,87 +3052,6 @@ sub parse_options(@) {
  	}
      }
--
+ 
 -    # If you want GNU Parallel to be maintained in the future you
 -    # should keep this.
 -    # _YOU_ will be harming free software by removing the notice.
@@ -116,7 +117,7 @@
      parse_halt();
  
      if($ENV{'PARALLEL_ENV'}) {
-@@ -6622,85 +6527,9 @@ sub usage() {
+@@ -6622,85 +6528,9 @@ sub usage() {
  	 "--recstart str  Record start separator for --pipe.",
  	 "",
  	 "GNU Parallel can do much more. See 'man $Global::progname' for details",
@@ -125,8 +126,8 @@
 -	 "If you use programs that use GNU Parallel to process data for an article in a",
 -	 "scientific publication, please cite:",
 -	 "",
--	 "  Tange, O. (2026, May 22). GNU Parallel 20260522 ('Hantavirus').",
--	 "  Zenodo. https://doi.org/10.5281/zenodo.20402000",
+-	 "  Tange, O. (2026, June 22). GNU Parallel 20260622 ('Rape Gang Inquiry').",
+-	 "  Zenodo. https://doi.org/10.5281/zenodo.20959929",
 -	 "",
 -	 # Before changing these lines,  please read
 -	 # https://www.gnu.org/software/parallel/parallel_design.html#citation-notice
@@ -158,8 +159,8 @@
 -	     "If you use programs that use GNU Parallel to process data for an article in a",
 -	     "scientific publication, please cite:",
 -	     "",
--	     "  Tange, O. (2026, May 22). GNU Parallel 20260522 ('Hantavirus').",
--	     "  Zenodo. https://doi.org/10.5281/zenodo.20402000",
+-	     "  Tange, O. (2026, June 22). GNU Parallel 20260622 ('Rape Gang Inquiry').",
+-	     "  Zenodo. https://doi.org/10.5281/zenodo.20959929",
 -	     "",
 -	     # Before changing these line,   please read
 -	     # https://www.gnu.org/software/parallel/parallel_design.html#citation-notice and
@@ -202,7 +203,7 @@
  sub status(@) {
      my @w = @_;
      my $fh = $Global::status_fd || *STDERR;
-@@ -6765,9 +6594,6 @@ sub version() {
+@@ -6765,9 +6595,6 @@ sub version() {
  	 "This is free software: you are free to change and redistribute it.",
  	 "GNU $Global::progname comes with no warranty.",
  	 "",
