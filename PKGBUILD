@@ -1,8 +1,8 @@
 # Maintainer: NewYearPrism
 
-_llama_cpp_version=9820
+_llama_cpp_version=9827
 _ggml_version=0.15.3
-_llama_cpp_sha256sum=fcb84a9f0f2c5c37de0d58adf32d47e6d598d4e3ea17bbf7b27fff958334aa1c
+_llama_cpp_sha256sum=ce5dda4859a3ef541ff01c22b83cbebb72311d78ecd28a7f50f8b4db777adc57
 pkgname=llama.cpp-ggml
 pkgver=0.0.0.b${_llama_cpp_version}
 pkgrel=1
