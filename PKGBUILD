@@ -13,7 +13,7 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 license=('BSD-3-Clause')
 
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+
 makedepends=('cmake' 'binutils')
 depends=('glibc' 'libgcc' 'libstdc++' 'libelf' 'bash')
 
