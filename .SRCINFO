@@ -1,0 +1,18 @@
+pkgbase = qrgen
+	pkgdesc = A simple QR code generator
+	pkgver = 1.0_beta
+	pkgrel = 1
+	url = https://github.com/Saber0324/qrgen
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = uv
+	makedepends = python-installer
+	depends = python
+	depends = pyside6
+	depends = python-pillow
+	depends = qt6-svg
+	options = !debug
+	source = qrgen-1.0_beta.tar.gz::https://github.com/Saber0324/qrgen/archive/refs/tags/v1.0-beta.tar.gz
+	sha256sums = 80b8fb2151c6159e9d3181fd1837b7fb4d077d1cde4f584d59321919a52eb637
+
+pkgname = qrgen
