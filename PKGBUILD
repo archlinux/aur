@@ -3,9 +3,9 @@
 
 pkgbase=btcd
 pkgname=('btcd' 'btcwallet')
-pkgver=0.25.0
-_pkgver_btcd=v0.25.0
-_pkgver_btcwallet=v0.16.18
+pkgver=0.26.0
+_pkgver_btcd=v0.26.0
+_pkgver_btcwallet=v0.18.0
 pkgrel=1
 pkgdesc="btcd an alternative full node Bitcoin implementation written in Go and btcwallet a secure Bitcoin wallet daemon written in Go "
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ provides=('btcd' 'btcwallet')
 conflicts=('btcd')
 source=(git+https://github.com/btcsuite/btcd#tag=$_pkgver_btcd
         git+https://github.com/btcsuite/btcwallet#tag=$_pkgver_btcwallet)
-sha256sums=('b3c4d32b9e2350b268695dc01bedd0e5e8398e18d9264fda30b6375f693b4402'
-            '69fb5a70e603f81966d80286bf01ff3ae90be4988d141334d270e75f99fbf426')
+sha256sums=('b850b52d74a2ae7fdbfb2bb967c2d86627703a94d29b1b3cd6b5b2905f9a83cb'
+            '04ef29c47ce0d249effab1089c06b248c231ac925e384b5c95739088cf0033be')
 
 prepare() {
   export GOPATH="$srcdir"
@@ -59,7 +59,7 @@ package_btcd() {
           -t "$pkgdir/usr/share/licenses/btcd"
 
   echo 'Installing btcd docs...'
-  for _doc in CHANGES README.md sample-btcd.conf; do
+  for _doc in README.md sample-btcd.conf; do
     install -Dm 644 "$srcdir/src/github.com/btcsuite/btcd/$_doc" \
             -t "$pkgdir/usr/share/doc/btcd"
   done
@@ -90,7 +90,7 @@ package_btcwallet() {
           -t "$pkgdir/usr/share/licenses/btcwallet"
 
   echo 'Installing btcwallet docs...'
-  for _doc in CHANGES README.md sample-btcwallet.conf; do
+  for _doc in README.md sample-btcwallet.conf; do
     install -Dm 644 "$srcdir/src/github.com/btcsuite/btcwallet/$_doc" \
             -t "$pkgdir/usr/share/doc/btcwallet"
   done
