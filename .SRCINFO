@@ -1,0 +1,22 @@
+pkgbase = charmander-git
+	pkgdesc = Wayland popup character picker — insert any Unicode symbol via hotkey
+	pkgver = r13.2ed4522
+	pkgrel = 1
+	url = https://github.com/Szizoid/charmander
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = wtype
+	provides = charmander
+	conflicts = charmander
+	source = charmander-git::git+https://github.com/Szizoid/charmander.git
+	sha256sums = SKIP
+
+pkgname = charmander-git
