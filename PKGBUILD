@@ -1,5 +1,5 @@
 pkgname=whispers-bin
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Local-first speech-to-text dictation for Wayland (prebuilt release bundle)'
 arch=('x86_64')
@@ -8,11 +8,11 @@ license=('MIT')
 depends=('alsa-lib' 'gcc-libs' 'glibc' 'noto-fonts' 'wl-clipboard')
 optdepends=('python: experimental faster-whisper and NeMo runtimes')
 provides=('whispers')
-conflicts=('whispers' 'whispers-git' 'whispers-cuda-bin' 'whispers-cuda-git')
+conflicts=('whispers' 'whispers-git' 'whispers-cuda-bin' 'whispers-cuda-git' 'whispers-vulkan-bin' 'whispers-vulkan-git')
 source=(
   "$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/whispers-$pkgver-x86_64-unknown-linux-gnu.tar.gz"
 )
-sha256sums=('d9648a614adc7cffc83eea3670ac13c60bbf5161cdd69c36e7422bbffc993aed')
+sha256sums=('b49316cd7ddf51750a07fdd5676d94fdc0c663acc8f8bc19f689031c86f83b98')
 
 package() {
   local bundle_dir="$srcdir/whispers-$pkgver-x86_64-unknown-linux-gnu"
