@@ -22,6 +22,9 @@ post_install() {
         wingman up <name> --setup-key <KEY>
     To start instances on boot without an active login session, enable linger:
         sudo loginctl enable-linger "$USER"
+    NetBird DNS works rootless via the shipped polkit rule
+    (50-wingman-netbird-dns.rules), which authorizes members of the wheel
+    group to set per-interface DNS. Not in wheel? Edit that rule's group.
 EOF
 }
 

@@ -1,7 +1,7 @@
 # Maintainer: Dylan Sandall <thebudman6@proton.me>
 pkgname=wingman-git
 _pkgname=wingman
-pkgver=0.1.4.r63.g9b6ae47
+pkgver=0.1.4.r65.ge60ca92
 pkgrel=1
 pkgdesc="Run multiple NetBird networks on one machine at once — isolated configs, sockets, and WireGuard interfaces"
 arch=('any')
@@ -11,7 +11,9 @@ license=('MIT')
 # to the `netbird` binary and is non-functional without it). libcap provides
 # setcap/getcap: wingman grants CAP_NET_ADMIN to netbird so a rootless daemon
 # can create its WireGuard interface (see the .install and the pacman hook).
-depends=('python' 'python-typer' 'netbird' 'libcap')
+# polkit carries the rule that lets a rootless daemon configure systemd-resolved
+# per-interface DNS (see the shipped 50-wingman-netbird-dns.rules).
+depends=('python' 'python-typer' 'netbird' 'libcap' 'polkit')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 provides=('wingman')
 conflicts=('wingman')
@@ -44,4 +46,9 @@ package() {
 	# daemon silently loses the ability to create its WireGuard interface.
 	install -Dm644 packaging/arch/wingman-netbird-setcap.hook \
 		"$pkgdir/usr/share/libalpm/hooks/wingman-netbird-setcap.hook"
+	# polkit rule letting a rootless daemon set its interface's DNS via
+	# systemd-resolved. Unlike the file capability above, polkit rules survive
+	# package upgrades, so this needs no reapply hook — just ship the file.
+	install -Dm644 packaging/arch/wingman-netbird-dns.rules \
+		"$pkgdir/usr/share/polkit-1/rules.d/50-wingman-netbird-dns.rules"
 }
