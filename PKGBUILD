@@ -10,7 +10,14 @@ pkgdesc="Collection of C++ and CMake utility libraries"
 arch=('x86_64')
 url="https://github.com/puppetlabs/leatherman"
 license=('Apache-2.0')
-depends=('boost-libs' 'libcurl.so' 'icu' 'gcc-libs' 'glibc')
+depends=(
+  'boost-libs'
+  'libcurl.so'
+  'icu'
+  'libgcc'
+  'libstdc++'
+  'glibc'
+)
 makedepends=('boost' 'cmake' 'rapidjson' 'python')
 checkdepends=('ruby')
 optdepends=('python: cpplint cmake script')
