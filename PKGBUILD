@@ -1,6 +1,6 @@
 # Maintainer: user981257923
 pkgname=vital-synth
-pkgver=1.5.5
+pkgver=1.6.4
 pkgrel=14
 pkgdesc="Spectral warping wavetable synth. Manual download of .deb installer required."
 arch=('x86_64')
