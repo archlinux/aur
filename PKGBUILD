@@ -2,7 +2,7 @@
 # Contributor Nicole Watterson <poisonimy at protonmail dot com>
 _pkgname=liboqs
 pkgname=$_pkgname-git
-pkgver=0.14.0.r37.gdd942d4
+pkgver=0.16.0.rc1.r0.gaa294f5
 pkgrel=1
 pkgdesc="C library for prototyping and experimenting with quantum-resistant cryptography"
 arch=(x86_64)
@@ -22,6 +22,7 @@ makedepends=(
 checkdepends=(
     python-pytest
     python-pytest-xdist
+    python-requests
     python-yaml
 )
 provides=(liboqs)
@@ -43,7 +44,8 @@ build() {
         -DOQS_BUILD_ONLY_LIB=OFF \
         -DOQS_DIST_BUILD=ON \
         -DOQS_USE_OPENSSL=ON \
-        -DOQS_DLOPEN_OPENSSL=OFF \
+        -DOQS_MEMOPT_BUILD=OFF \
+        -DOQS_DLOPEN_OPENSSL=ON \
         -DOQS_USE_AES_OPENSSL=ON \
         -DOQS_USE_SHA2_OPENSSL=ON \
         -DOQS_USE_SHA3_OPENSSL=ON \
