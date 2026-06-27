@@ -68,8 +68,8 @@ build() {
 
     # Patch NewProject.toe during build (user can't write to /opt/touchdesigner/td at runtime)
     msg2 "Patching NewProject.toe templates..."
-    find "${srcdir}/td" -type f -iname 'toeexpand.exe' -print -quit | read TOE_EXP
-    find "${srcdir}/td" -type f -iname 'toecollapse.exe' -print -quit | read TOE_COL
+    TOE_EXP="$(find "${srcdir}/td" -type f -iname 'toeexpand.exe' -print -quit 2>/dev/null)"
+    TOE_COL="$(find "${srcdir}/td" -type f -iname 'toecollapse.exe' -print -quit 2>/dev/null)"
     if [ -n "$TOE_EXP" ] && [ -n "$TOE_COL" ]; then
         # Copy fix file
         [ -f "TouchDesigner-Linux-${pkgver}/Assets/wine_ui_fixes.tox" ] && cp "TouchDesigner-Linux-${pkgver}/Assets/wine_ui_fixes.tox" wine_ui_fixes.tox
