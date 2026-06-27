@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=proton-pass-cli
-pkgver=2.1.4
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='A command-line interface for Proton Pass'
 arch=(aarch64 x86_64)
@@ -10,7 +10,7 @@ license=(GPL-3.0-or-later)
 depends=(glibc libgcc openssl)
 makedepends=(cargo)
 source=(https://github.com/protonpass/pass-cli/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('eab79e540ae542e93a64a93f3c480ba615899678dc20ac152f7f9f6cc1bc0abbe17dc1992408e9b57b4b0a7009e04b11c3149b6a17cd311b0a0197b2ab6659a1')
+b2sums=('45fa51bbabe7a3ce90c33b13147dc43c4c16114a0f403e4c7213797fdafae4eee6a2147d3f7b3968c6127f58b3137a2867f45eb77aee8ee358866cc6de2eecd2')
 
 prepare() {
     cd pass-cli-$pkgver
