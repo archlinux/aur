@@ -2,9 +2,9 @@
 # Co-Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zcode-bin
 _pkgname=ZCode
-pkgver=3.1.2
+pkgver=3.1.8
 _electronversion=41
-pkgrel=3
+pkgrel=1
 pkgdesc="ZCode - AI-powered code editor by CodeGeeX"
 arch=('x86_64')
 url="https://zcode.z.ai/"
@@ -29,11 +29,11 @@ options=(
     '!strip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.deb::https://cdn.codegeex.cn/zcode/electron/releases/${pkgver}/${_pkgname}-${pkgver}-linux-x64.deb"
+    "${pkgname%-bin}-${pkgver}-x86_64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/${pkgver}/${_pkgname}-${pkgver}-linux-x64.deb"
     "LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a68ac2dd7e2c18b4221d664629aa5dcf2049176b6ecb2a7a5a6e6fc5ad3c13ed'
+sha256sums=('2d8cc45f241fb58eba421e4204d24c934b408006667ac12bb63e1627f5409a2f'
             '6f7a7821eec5ffc00c7e5c24ac0b917864d503253816c6546c723e84ed418919'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
