@@ -1,6 +1,6 @@
 # Maintainer: Benoît Allard <benoit.allard@gmx.de>
 pkgname=python-stable-baselines3
-pkgver=2.7.1
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="A set of reliable implementations of reinforcement learning algorithms in PyTorch"
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=('python-opencv: For render'
 makedepends+=("python-setuptools")
 _name=${pkgname#python-}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DLR-RM/$_name/archive/v$pkgver.tar.gz")
-sha256sums=('57b3b92785428d8dc3551041c8b02527941f2cee7848c22cf641c2f8fca771f5')
+sha256sums=('6de8d2dc3239f5b20ab54de1d1ab6718f384bfe3ecc44debe259d1ee6f072ca2')
 
 build() {
     cd $_name-$pkgver

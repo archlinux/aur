@@ -1,0 +1,4 @@
+[python-stable-baselines3]
+source = "git"
+git = "https://github.com/DLR-RM/stable-baselines3.git"
+prefix = "v"
