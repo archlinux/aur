@@ -2,64 +2,79 @@
 # Contributor: Brian Thompson <brianrobt at pm dot me>
 
 pkgname=stable-diffusion.cpp-vulkan-git
-pkgver=r660.d2797b8
+_pkgname=stable-diffusion.cpp
+pkgver=r726.9956436
 pkgrel=1
 pkgdesc="Stable Diffusion and Flux in pure C/C++ (Vulkan version)"
 license=('MIT')
 depends=(
     'gcc-libs'
     'glibc'
+    'libwebp'
     'vulkan-icd-loader'
-    'vulkan-validation-layers'
-)
+    'vulkan-validation-layers')
 makedepends=(
     'cmake'
     'git'
+    'pnpm'
     'shaderc'
     'spirv-headers'
-    'vulkan-headers'
-)
+    'vulkan-headers')
 arch=('x86_64')
 url="https://github.com/leejet/stable-diffusion.cpp"
-provides=('stable-diffusion.cpp')
-conflicts=('stable-diffusion.cpp')
+provides=($_pkgname)
+conflicts=($_pkgname)
+options=(
+    lto
+    !debug)
 source=("git+https://github.com/leejet/stable-diffusion.cpp.git"
-        "git+https://github.com/ggerganov/ggml.git")
+        "git+https://github.com/ggerganov/ggml.git"
+        "git+https://github.com/leejet/sdcpp-webui.git")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 
-prepare() {
-    cd "$srcdir/stable-diffusion.cpp"
-    git submodule init
-    git config submodule.ggml.url "$srcdir/ggml"
-    git -c protocol.file.allow=always submodule update --remote
-}
-
 pkgver() {
-    cd "$srcdir/stable-diffusion.cpp"
+    cd "$srcdir/$_pkgname"
     echo "r$(git rev-list --count HEAD).$(git rev-parse --short=7 HEAD)"
 }
 
+prepare() {
+    cd "$srcdir/$_pkgname"
+    git submodule init
+    git config submodule.ggml.url "$srcdir/ggml"
+    git config submodule.examples/server/frontend.url "$srcdir/sdcpp-webui"
+    git -c protocol.file.allow=always submodule update --remote
+}
+
 build() {
-    # https://archlinux.org/todo/lto-fat-objects/
-    CFLAGS+=" -DNDEBUG -ffat-lto-objects"
-    CXXFLAGS+=" -DNDEBUG -ffat-lto-objects"
-    cmake -B build-vulkan -S stable-diffusion.cpp \
-        -DCMAKE_BUILD_TYPE=None \
+    # embedded web UI
+    pushd "$srcdir/$_pkgname/examples/server/frontend"
+    pnpm install
+    popd
+    cmake -B build-vulkan -S $_pkgname \
+        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
+        -DSD_BUILD_SHARED_LIBS=ON \
+        -DSD_BUILD_SHARED_GGML_LIB=OFF \
+        -DSD_BUILD_EXAMPLES=ON \
+        -DSD_SERVER_BUILD_FRONTEND=ON \
+        -DSD_WEBP=ON \
+        -DSD_USE_SYSTEM_WEBP=ON \
+        -DSD_WEBM=OFF \
         -DSD_HIPBLAS=OFF \
         -DSD_METAL=OFF \
-        -DSD_VULKAN=ON \
         -DSD_SYCL=OFF \
-        -DSD_BUILD_SHARED_LIBS=ON
+        -DSD_VULKAN=ON \
+        -Wno-dev
     cmake --build build-vulkan -- -j $(nproc)
 }
 
 package() {
     DESTDIR="$pkgdir" cmake --install build-vulkan
-    install -Dm644 stable-diffusion.cpp/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 build-vulkan/bin/libstable-diffusion.so "$pkgdir/usr/lib"
-
+    install -Dm644 "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     # Remove ggml content
     rm -r "$pkgdir/usr/include/"gg* \
           "$pkgdir/usr/lib/cmake" \
