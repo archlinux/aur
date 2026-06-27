@@ -1,0 +1,14 @@
+pkgbase = urx
+	pkgdesc = Extracts URLs from OSINT Archives for Security Insights
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/hahwul/urx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = urx-0.10.0.tar.gz::https://github.com/hahwul/urx/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = urx
