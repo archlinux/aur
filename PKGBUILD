@@ -1,17 +1,16 @@
 # Maintainer: Jonathan Wright <jon@than.io>
 # Built upon authentik-platform-git PKGBUILD by Matt Cuneo <m@cuneu.au>
 
-_repo=platform
 pkgbase="authentik-platform-bin"
-pkgdesc='Authentik Platform tools'
+pkgdesc='authentik Platform authentication, Agent, CLI and other components'
 pkgname=('authentik-cli-bin' 
          'authentik-agent-bin' 
          'authentik-sysd-bin'
          'libpam-authentik-bin' 
          'libnss-authentik-bin')
 pkgver=0.44.3
-pkgrel=1
-url="https://github.com/goauthentik/$_repo"
+pkgrel=2
+url="https://github.com/goauthentik/platform"
 license=('MIT')
 makedepends=()
 arch=('x86_64'
@@ -62,7 +61,6 @@ package_authentik-sysd-bin() {
   pkgdesc="authentik System Agent"
   provides=(authentik-sysd)
   conflicts=(authentik-sysd)
-  depends=(authentik-agent)
   backup=(etc/authentik/config.json)
   install=authentik-sysd.install
 
@@ -78,7 +76,7 @@ package_authentik-agent-bin() {
   pkgdesc="authentik Agent"
   provides=(authentik-agent)
   conflicts=(authentik-agent)
-  depends=(authentik-cli)
+  depends=(aithentik-sysd authentik-cli)
 
   bsdtar -O -xf "authentik-agent.deb" data.tar.gz | bsdtar -C "${pkgdir}" -xf -
 }
@@ -87,6 +85,7 @@ package_authentik-cli-bin() {
   pkgdesc="authentik CLI"
   provides=(authentik-cli)
   conflicts=(authentik-cli)
+  depends=(authentik-agent authentik-sysd)
 
   bsdtar -O -xf "authentik-cli.deb" data.tar.gz | bsdtar -C "${pkgdir}" -xf -
 }

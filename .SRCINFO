@@ -1,7 +1,7 @@
 pkgbase = authentik-platform-bin
-	pkgdesc = Authentik Platform tools
+	pkgdesc = authentik Platform authentication, Agent, CLI and other components
 	pkgver = 0.44.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/goauthentik/platform
 	arch = x86_64
 	arch = aarch64
@@ -42,11 +42,14 @@ pkgbase = authentik-platform-bin
 
 pkgname = authentik-cli-bin
 	pkgdesc = authentik CLI
+	depends = authentik-agent
+	depends = authentik-sysd
 	provides = authentik-cli
 	conflicts = authentik-cli
 
 pkgname = authentik-agent-bin
 	pkgdesc = authentik Agent
+	depends = aithentik-sysd
 	depends = authentik-cli
 	provides = authentik-agent
 	conflicts = authentik-agent
@@ -54,7 +57,6 @@ pkgname = authentik-agent-bin
 pkgname = authentik-sysd-bin
 	pkgdesc = authentik System Agent
 	install = authentik-sysd.install
-	depends = authentik-agent
 	optdepends = libnss-authentik: Make the system aware of Authentik users
 	optdepends = libpam-authentik: Allow logging in as an Authentik user
 	provides = authentik-sysd

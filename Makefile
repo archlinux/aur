@@ -53,10 +53,10 @@ clean: ## Clean the current workspace
 .PHONY: pull
 pull: clean ## Pull changes from the AUR
 	@echo -e "${CC_YELLOW}==>${CC_WHITE} Check for, and pull, changes from AUR${CC_END}"
-	# git pull --ff-only
+	git pull --ff-only
 
 .PHONY: update-version
-update-version: pull ## Update the package version in PKGBUILD (use pkgver and pkgrel)
+update-version: clean ## Update the package version in PKGBUILD (use pkgver and pkgrel)
 	@if [ "$(pkgver)" = "$(current_pkgver)" ] && [ "$(pkgrel)" = "$(current_pkgrel)" ]; then
 		echo -e "${CC_YELLOW}==>${CC_WHITE} No changes to the package version or release${CC_END}";
 	else
