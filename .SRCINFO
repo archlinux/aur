@@ -1,9 +1,12 @@
 pkgbase = ellipsis-git
 	pkgver = r22.5f6c049
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = unknown
 	makedepends = git
+	makedepends = shellcheck
+	depends = stow
+	optdepends = fzf: for interactive selections
 	provides = ellipsis
 	conflicts = ellipsis
 	source = ellipsis::git+https://github.com/chuck-flowers/ellipsis
