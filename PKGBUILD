@@ -5,11 +5,11 @@
 
 pkgbase=caelestia-sddm-git
 pkgname=(
-  caelestia-sddm-locklike-git       # Mimics the original Caelestia lock screen
-  caelestia-sddm-minimalist-git     # Minimalist variant with gradient background
-  caelestia-sddm-minimalistv2-git   # Minimalist variant with improved fonts and UI
+  caelestia-sddm-locklike-git     # Mimics the original Caelestia lock screen
+  caelestia-sddm-minimalist-git   # Minimalist variant with gradient background
+  caelestia-sddm-minimalistv2-git # Minimalist variant with improved fonts and UI
 )
-pkgver=r168.f064389
+pkgver=r177.e0efc91
 pkgrel=1
 arch=('any')
 url='https://github.com/ItsABigIgloo/caelestia-sddm'
@@ -48,9 +48,15 @@ _package_variant() {
   local variant="$1"
   local theme_dir="$pkgdir/usr/share/sddm/themes/caelestia"
   local src_dir="$srcdir/${pkgbase}"
+  local variant_dir="$src_dir/themes/$variant"
+
+  if find "$variant_dir" -type l -print -quit | grep -q .; then
+    echo "Refusing to package theme variant containing symlinks: $variant" >&2
+    exit 1
+  fi
 
   install -dm755 "$theme_dir"
-  cp -r "$src_dir/themes/$variant"/* "$theme_dir/"
+  cp -r "$variant_dir"/* "$theme_dir/"
 
   install -Dm755 "$src_dir/scripts/sync.sh" \
     "$theme_dir/scripts/sync.sh"
@@ -65,6 +71,7 @@ DROPIN
 
   find "$theme_dir/assets" -type d -exec chmod 755 {} + 2>/dev/null || true
   find "$theme_dir/assets" -type f -exec chmod 644 {} + 2>/dev/null || true
+  chmod 755 "$theme_dir/scripts/sync.sh"
   chmod 644 "$theme_dir/theme.conf" 2>/dev/null || true
 }
 
