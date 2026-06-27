@@ -1,0 +1,11 @@
+pkgbase = glaredb-bin
+	pkgdesc = A light and fast SQL database for analytics
+	pkgver = 25.6.3
+	pkgrel = 1
+	url = https://glaredb.com
+	arch = x86_64
+	license = MIT
+	source_x86_64 = glaredb-25.6.3::https://github.com/GlareDB/glaredb/releases/download/v25.6.3/glaredb-linux-x86_64
+	b2sums_x86_64 = 3875b59d2f5f852352a19ff08ae176eab69f2c845af82463aa416e475f2e7afea1b8c7e33d86ef97a4d949d71a1c9ad9b55db1f2dff5d4c5ad29e2a2431a0b6f
+
+pkgname = glaredb-bin
