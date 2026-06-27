@@ -1,16 +1,24 @@
 # Maintainer: graysky <therealgraysky AT proton DOT me>
 pkgname=comchap
 pkgver=0.0.1.r90.gdd7db30
-pkgrel=1
+pkgrel=2
 _commit=dd7db30c258e965f282ac78825971dd0703a031e
 pkgdesc="Detect commercials with Comskip and add chapter marks (comchap) or cut them (comcut)"
-arch=('any')
+arch=(any)
 url="https://github.com/BrettSheleski/comchap"
-license=('MIT')
-depends=('bash' 'ffmpeg')
+license=(MIT)
+depends=(bash ffmpeg)
+makedepends=(git)
 optdepends=('comskip: commercial detection when no .edl file is present')
-source=("$pkgname-$_commit.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('d3b5d07c59ac8a77a6532107bf58f0e2cac4856b87cfe20c6ba3e0c306d52930')
+source=("$pkgname-$_commit.tar.gz::$url/archive/$_commit.tar.gz"
+  0001-comcut-add-support-for-non-TS-compatible-video-codec.patch)
+sha256sums=('d3b5d07c59ac8a77a6532107bf58f0e2cac4856b87cfe20c6ba3e0c306d52930'
+            '44cc4208a1479c3cd9e8e473988068ce1e92e070285fc0d1b24e50459a342206')
+
+prepare() {
+  cd "$srcdir/$pkgname-$_commit"
+  patch -p1 -i ../0001-comcut-add-support-for-non-TS-compatible-video-codec.patch
+}
 
 package() {
 	cd "$srcdir/$pkgname-$_commit"

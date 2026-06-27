@@ -1,0 +1,101 @@
+From 7a6ac1cce7439da8c84935e7b0711747caddb858 Mon Sep 17 00:00:00 2001
+From: graysky <therealgraysky AT proton DOT me>
+Date: Sat, 27 Jun 2026 08:56:08 -0400
+Subject: [PATCH] comcut: add support for non-TS compatible video codecs
+
+This change dynamically detects the video codec of the input file. If the codec is not natively compatible with MPEG-TS (e.g., codecs other than H.264, HEVC, or MPEG series), the script now uses MKV as the intermediate container format instead of TS. It also updates the concatenation logic to use FFmpeg's concat demuxer with a file list for MKV files, ensuring wider format support while maintaining the existing TS workflow for compatible streams.
+---
+ comcut | 44 +++++++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 39 insertions(+), 5 deletions(-)
+
+diff --git a/comcut b/comcut
+index f72c37f06f17..aaf67ee2dccd 100755
+--- a/comcut
++++ b/comcut
+@@ -142,6 +142,26 @@ if [ ! -f "$edlfile" ]; then
+   $comskipPath $comskipoutput --ini="$comskipini" "$infile"
+ fi
+ 
++videocodec=$($ffmpegPath -hide_banner -nostdin -i "$infile" 2>&1 \
++  | grep "Video:" | sed 's/.*Video: //' | awk '{print $1}' | tr -d ',')
++
++echo "Detected video codec: $videocodec"
++
++ts_compatible=false
++case "$videocodec" in
++  h264|hevc|mpeg2video|mpeg1video|mpeg4)
++    ts_compatible=true
++    ;;
++esac
++
++if $ts_compatible; then
++  tempext="ts"
++  echo "Using MPEG-TS intermediate format"
++else
++  tempext="mkv"
++  echo "Using MKV intermediate format (codec '$videocodec' not TS-compatible)"
++fi
++
+ start=0
+ i=0
+ hascommercials=false
+@@ -170,7 +190,7 @@ do
+     echo END=`echo "$end $totalcutduration" | awk  '{printf "%i", ($1 - $2) * 1000}'` >> "$metafile"
+     echo "title=Chapter $i" >> "$metafile"
+ 
+-    chapterfile="${infile%.*}.part-$i.ts"
++    chapterfile="${infile%.*}.part-$i.$tempext"
+ 
+     if [[ ! -z "$workdir" ]]; then
+       chapterfile=`basename "$chapterfile"`
+@@ -178,7 +198,9 @@ do
+     fi
+ 
+     tempfiles+=("$chapterfile")
+-    concat="$concat|$chapterfile"
++    if $ts_compatible; then
++      concat="$concat|$chapterfile"
++    fi
+ 
+     duration=`echo "$end" "$start" | awk  '{printf "%f", $1 - $2}'`
+     $ffmpegPath -hide_banner -loglevel error -nostdin -i "$infile" -ss "$start" -t "$duration" -c copy -y "$chapterfile"
+@@ -205,7 +227,7 @@ if $hascommercials ; then
+     echo END=`echo "$end $totalcutduration" | awk  '{printf "%i", ($1 - $2) * 1000}'` >> "$metafile"
+     echo "title=Chapter $i" >> "$metafile"
+ 
+-    chapterfile="${infile%.*}.part-$i.ts"
++    chapterfile="${infile%.*}.part-$i.$tempext"
+ 
+     if [[ ! -z "$workdir" ]]; then
+       chapterfile=`basename "$chapterfile"`
+@@ -213,13 +235,25 @@ if $hascommercials ; then
+     fi
+ 
+     tempfiles+=("$chapterfile")
+-    concat="$concat|$chapterfile"
++    if $ts_compatible; then
++      concat="$concat|$chapterfile"
++    fi
+ 
+     duration=`echo "$end" "$start" | awk  '{printf "%f", $1 - $2}'`
+     $ffmpegPath -hide_banner -loglevel error -nostdin -i "$infile" -ss "$start" -t "$duration" -c copy -y "$chapterfile"
+   fi
+ 
+-  $ffmpegPath -hide_banner -loglevel error -nostdin -i "$metafile" -i "concat:${concat:1}" -c copy -map_metadata 0 -y "$outfile"
++  if $ts_compatible; then
++    $ffmpegPath -hide_banner -loglevel error -nostdin -i "$metafile" -i "concat:${concat:1}" -c copy -map_metadata 0 -y "$outfile"
++  else
++    filelistfile="${infile%.*}.filelist.txt"
++    printf "file '%s'\n" "${tempfiles[@]}" > "$filelistfile"
++    $ffmpegPath -hide_banner -loglevel error -nostdin \
++      -f concat -safe 0 -i "$filelistfile" \
++      -i "$metafile" \
++      -map 0 -map_metadata 1 -c copy -y "$outfile"
++    rm "$filelistfile"
++  fi
+ fi
+ 
+ for i in "${tempfiles[@]}"
+-- 
+2.54.0
+
