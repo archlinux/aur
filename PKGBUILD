@@ -1,6 +1,6 @@
 # Maintainer: Muhammad Faizan <mfkhalil683@gmail.com>
 pkgname=zapreq
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="A fast, friendly HTTP client for the terminal"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT' 'Apache-2.0')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MFAIZAN20/zapreq/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('696f4eb6697b0e581a503834ac766aec0c9bec3a13a0c66f01c05689a26e3d0f')
+sha256sums=('de670e1b3d29714dfeba5522f0c1470c9e4ef24a1e930b9413e78c45833d15d8')
 
 build() {
     cd "$pkgname-$pkgver"
