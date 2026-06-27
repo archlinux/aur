@@ -5,7 +5,6 @@ pkgbase = fantascene-dynamic-wallpaper
 	url = https://github.com/dependon/fantascene-dynamic-wallpaper
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = git
 	makedepends = qt6-tools
 	makedepends = qt6-webengine
 	makedepends = pkgconfig
@@ -28,7 +27,7 @@ pkgbase = fantascene-dynamic-wallpaper
 	provides = fantascene-dynamic-wallpaper
 	conflicts = fantascene-dynamic-wallpaper
 	conflicts = fantascene-dynamic-wallpaper-git
-	source = fantascene-dynamic-wallpaper::git+https://github.com/dependon/fantascene-dynamic-wallpaper.git#tag=2.1.2
+	source = fantascene-dynamic-wallpaper-2.1.2.tar.gz::https://github.com/dependon/fantascene-dynamic-wallpaper/archive/refs/tags/2.1.2.tar.gz
 	sha256sums = 375ddda2f2bf4a0eb0ea0775d908a92183d6a6347edca389a5d151d37e0085f5
 
 pkgname = fantascene-dynamic-wallpaper
