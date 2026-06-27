@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  cargo build --release --frozen
+  cargo build --release
 }
 
 package() {
