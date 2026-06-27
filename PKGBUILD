@@ -1,7 +1,7 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=fantascene-dynamic-wallpaper
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="dynamic wallpaper. A very nice animated wallpaper on X11 systems.Support Movie and Web animated wallpaper."
 arch=($CARCH)
@@ -33,7 +33,7 @@ makedepends=(
     make
 )
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
-sha256sums=('24aaa147cf9d2ab3e43c97565b9aad8804affa0fe4113bf786d59d4770ba19f8')
+sha256sums=('375ddda2f2bf4a0eb0ea0775d908a92183d6a6347edca389a5d151d37e0085f5')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
