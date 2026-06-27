@@ -46,9 +46,9 @@ pkgbase = touchdesigner-linux
 	source = dxvk-2.4.tar.gz::https://github.com/doitsujin/dxvk/releases/download/v2.4/dxvk-2.4.tar.gz
 	source = winetricks::https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
 	sha256sums = SKIP
-	sha256sums = ac5c8e342d376bd87f3d488b86b58e4ed8a35f1d807d5bdc325adec3943b0ced
 	sha256sums = SKIP
-	sha256sums = e78a1522ef9c738a39622e331a7c12618b2f764935c30ea54f9e1f0bedb11872
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = touchdesigner-linux

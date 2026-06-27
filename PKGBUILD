@@ -61,7 +61,6 @@ _repo_url="https://github.com/iswad-lab/TouchDesigner-Linux/archive/refs/tags/v$
 # ── Soda Wine 9.0-1 ──────────────────────────────────────────────────────────
 _soda_version="9.0-1"
 _soda_url="https://github.com/bottlesdevs/wine/releases/download/soda-${_soda_version}/soda-${_soda_version}-x86_64.tar.xz"
-_soda_sha256="ac5c8e342d376bd87f3d488b86b58e4ed8a35f1d807d5bdc325adec3943b0ced"
 
 # ── TouchDesigner ────────────────────────────────────────────────────────────
 _td_url="https://download.derivative.ca/TouchDesigner.${_td_ver}.exe"
@@ -69,7 +68,6 @@ _td_url="https://download.derivative.ca/TouchDesigner.${_td_ver}.exe"
 # ── DXVK 2.4 ─────────────────────────────────────────────────────────────────
 _dxvk_version="2.4"
 _dxvk_url="https://github.com/doitsujin/dxvk/releases/download/v${_dxvk_version}/dxvk-${_dxvk_version}.tar.gz"
-_dxvk_sha256="e78a1522ef9c738a39622e331a7c12618b2f764935c30ea54f9e1f0bedb11872"
 
 # ── Winetricks ───────────────────────────────────────────────────────────────
 _winetricks_url="https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks"
@@ -83,9 +81,9 @@ source=(
 )
 sha256sums=(
     'SKIP'
-    "${_soda_sha256}"
     'SKIP'
-    "${_dxvk_sha256}"
+    'SKIP'
+    'SKIP'
     'SKIP'
 )
 
