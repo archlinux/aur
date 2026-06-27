@@ -22,6 +22,6 @@ pkgbase = superlauncher
 	optdepends = python-pyjwt: JWT authentication
 	optdepends = jdk17-openjdk: run Minecraft Java Edition
 	source = superlauncher-2.0.0.tar.gz
-	sha256sums = 0afba3431e11c311e682f350b42cbd526094c1cd2eb994997cd4945afe0f3ddb
+	sha256sums = a1251a808c5a2b68aac6b082895b397c121e892392582d7d295bfb1660fb15da
 
 pkgname = superlauncher
