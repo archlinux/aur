@@ -1,6 +1,6 @@
 pkgbase = rat-commander
 	pkgdesc = A self-contained Norton/Midnight-Commander-style TUI file manager
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/dividebysandwich/rat-commander
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = rat-commander
 	depends = xz
 	provides = rc
 	options = !lto
-	source = rat-commander-0.3.0.tar.gz::https://github.com/dividebysandwich/rat-commander/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = f2ac6590f2c3336bfa720e32db4d9b290be5a346fd8aa2a6da6878a2edd6eb17
+	source = rat-commander-0.4.0.tar.gz::https://github.com/dividebysandwich/rat-commander/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 62874b9ebaad690fae12a0f9a3d69b623adfc7b234e3a08b000fec5d71eae4d2
 
 pkgname = rat-commander
