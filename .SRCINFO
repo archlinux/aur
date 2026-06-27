@@ -1,0 +1,27 @@
+pkgbase = whispers-vulkan-bin
+	pkgdesc = Local-first speech-to-text dictation for Wayland (prebuilt Vulkan release bundle)
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/OneNoted/whispers
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	depends = noto-fonts
+	depends = vulkan-icd-loader
+	depends = wl-clipboard
+	optdepends = python: experimental faster-whisper and NeMo runtimes
+	optdepends = vulkan-radeon: AMD Radeon Vulkan driver
+	optdepends = vulkan-driver: Vulkan driver for other GPUs
+	provides = whispers
+	conflicts = whispers
+	conflicts = whispers-bin
+	conflicts = whispers-git
+	conflicts = whispers-cuda-bin
+	conflicts = whispers-cuda-git
+	conflicts = whispers-vulkan-git
+	source = whispers-vulkan-bin-0.2.4.tar.gz::https://github.com/OneNoted/whispers/releases/download/v0.2.4/whispers-vulkan-0.2.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 0f444f104ccb9dcdc5ff7e8d3eff210aae8ed69b36f176f54da921318cf40391
+
+pkgname = whispers-vulkan-bin
