@@ -2,7 +2,7 @@
 # Contributor: INhBQfUQO2eFzulN <281587887a at protonmail dot ch>
 _pkgname=oscar
 pkgname=$_pkgname-bin
-pkgver=1.7.0
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Open Source CPAP Analysis Reporter"
 arch=(x86_64)
@@ -12,7 +12,7 @@ conflicts=("oscar-git")
 provides=("$_pkgname")
 depends=("qt5-serialport")
 source=("https://www.sleepfiles.com/OSCAR/${pkgver}/${_pkgname}_${pkgver}-Debian13_amd64-Qt5.deb")
-sha256sums=("5dc73f1adab3613946fe6a76d30b6da89ea932256f9ca6c863d0782f196ef543")
+sha256sums=("6eacb91b21ece3978b7e95839eb4ce17fb916c7232cb19e7e112f751961edece")
 
 package() {
 	echo $srcdir
