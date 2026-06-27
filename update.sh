@@ -20,7 +20,6 @@ cmd() {
     "$@"
 }
 
-
 tmp_files=()
 
 cleanup() {
