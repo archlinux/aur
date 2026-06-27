@@ -1,9 +1,10 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
 # shellcheck disable=SC2034,SC2154,SC2164
+# shellcheck shell=bash
 
 pkgname="powershell-editor-services"
 pkgver=4.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A common platform for PowerShell development support in any editor or application'
 url="https://github.com/PowerShell/PowerShellEditorServices"
 arch=('any')
@@ -22,8 +23,8 @@ sha512sums=('c9408c3462334a6fd6f78ae793b8483dd550ad3918cac969bf78a6e1d753820ece6
 b2sums=('94bbeb6af2cef3feed161759ff732370ef34929235220c5b827263493dfe405de1afe56032738367aeb0160defa8fa3012d77d7fd676d14576b2699f38e2b5fd')
 
 prepare() {
-  set -x
   cd "$srcdir"/PowerShellEditorServices
+  export NUGET_PACKAGES="$PWD/nuget"
 
   mkdir -p "$srcdir"/build-modules
 
@@ -40,16 +41,13 @@ prepare() {
   # Update global.json to match with the current SDK
   rm global.json
   sdk8ver=$(dotnet --list-sdks | grep -F "$_dotnetsdkver" | sed "s/ .*$//")
-  dotnet new globaljson --sdk-version "$sdk8ver" --roll-forward latestFeature --verbosity quiet
+  DOTNET_NOLOGO=1 dotnet new globaljson --sdk-version "$sdk8ver"
 
   # Disable self-contained deployment
-  sed -i -e 's/dotnet publish/dotnet publish --self-contained false --ucr/g' PowerShellEditorServices.build.ps1
+  sed -i -e 's/dotnet publish/dotnet publish -r linux-x64/g' PowerShellEditorServices.build.ps1
 
   # Adjust the output paths
   sed -i -e 's/\/publish/\/linux-x64\/publish/g' PowerShellEditorServices.build.ps1
-
-  # Disable .NET analyzers
-  sed -i -e 's/<EnableNETAnalyzers>true/<EnableNETAnalyzers>false/g' PowerShellEditorServices.Common.props
 
   # Change style warnings to silent as we build with a much newer .NET than upstream
   # There would be tons of new style warnings that would cause the build to fail
@@ -65,13 +63,11 @@ prepare() {
   sed -i '/Test-Path "module\/PSReadLine"/,+3d' PowerShellEditorServices.build.ps1
   sed -i -e 's/Path\.Combine(bundledModulePath, \("PSReadLine"\))/\1/' src/PowerShellEditorServices/Services/PowerShell/Console/PSReadLineProxy.cs
 
-  # Remove nuget.config
-  # This makes no sense other than for upstream CI
-  rm nuget.config
+  # Switch to nuget.org sources
+  sed -i -e 's/<add key="powershell".*$/<add key="nuget.org" value="https:\/\/api.nuget.org\/v3\/index.json" \/>/g' nuget.config
 
   # netstandard 2.1 moved System.Range in the core, which clashes with a class from OmniSharp
   # We identify where this class is used and inject a using Range = ... statement to resolve the ambiguity
-  #declare -a _files_to_patch
   mapfile _files_to_patch < <(grep -R -w "Range" --include="*.cs" -l)
   for _currentfile in "${_files_to_patch[@]}"; do
     sed -i '/Licensed under the MIT License/ausing Range = OmniSharp.Extensions.LanguageServer.Protocol.Models.Range;' "$(echo "$_currentfile" | xargs)"
@@ -80,10 +76,25 @@ prepare() {
   # There's a bug since 4.4.0 that causes an error on startup of Start-EditorServices.ps1 if LogLevel was not defined
   # I created an upstream PR for this: https://github.com/PowerShell/PowerShellEditorServices/pull/2333
   sed -i '/Translate legacy PSES log levels to MEL levels/,+7d' module/PowerShellEditorServices/Start-EditorServices.ps1
+
+  # Remove packages used on Windows not used on Linux
+  _references_to_purge=(
+    "Microsoft.CSharp"
+    "System.IO.Pipes.AccessControl"
+    "System.Runtime.InteropServices.RuntimeInformation"
+    "System.Security.Principal"
+    "System.Security.Principal.Windows"
+  )
+  for _assembly in "${_references_to_purge[@]}"; do
+    sed -i "/${_assembly}/d" src/PowerShellEditorServices/PowerShellEditorServices.csproj
+    sed -i "/${_assembly}/d" src/PowerShellEditorServices.Hosting/PowerShellEditorServices.Hosting.csproj
+    sed -i "/${_assembly}/d" test/PowerShellEditorServices.Test/PowerShellEditorServices.Test.csproj
+  done
 }
 
 build() {
   cd "$srcdir"/PowerShellEditorServices
+  export NUGET_PACKAGES="$PWD/nuget"
 
   # Set the environment variables such that it will produce a release rather than a CI build
   export TF_BUILD=1
@@ -98,6 +109,7 @@ build() {
 
 check() {
   cd "$srcdir"/PowerShellEditorServices
+  export NUGET_PACKAGES="$PWD/nuget"
 
   # Only run the TestPS74 subset.
   # Full tests, i.e. -Task Test or TestFull include very long running CI tests.

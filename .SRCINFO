@@ -1,7 +1,7 @@
 pkgbase = powershell-editor-services
 	pkgdesc = A common platform for PowerShell development support in any editor or application
 	pkgver = 4.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/PowerShell/PowerShellEditorServices
 	install = powershell-editor-services.install
 	arch = any
