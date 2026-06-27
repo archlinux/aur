@@ -2,24 +2,39 @@
 
 _pkgname=pyexcel-xlsx
 pkgname=python-$_pkgname
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='A wrapper library to read, manipulate and write data in xlsx and xlsm format using openpyxl'
 url="https://github.com/pyexcel/$_pkgname"
-arch=('any')
-license=('MIT')
-depends=('python-openpyxl' 'python-pyexcel-io')
-makedepends=('python-setuptools')
+arch=(any)
+license=(BSD-3-Clause)
+depends=(python-openpyxl python-pyexcel-io)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+checkdepends=(python-nose python-pyexcel python-pyexcel-xls python-xlrd)
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('9fc3a45d0cac5a5411e5bb4ce7a48f1af0709a14a8621a92b0d005aaeb48526e')
+sha256sums=('e0fa99c06cf143af7e8e8ebe67bf44308968c3c8832d65de223f82a1f03a1505')
 
-build(){
+build() {
   cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py build
+  python -m build \
+    --wheel \
+    --no-isolation \
+    --skip-dependency-check
+}
+
+check() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  python -m venv --system-site-packages testenv
+  testenv/bin/python -m installer dist/*.whl
+  testenv/bin/python -m nose tests
 }
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer \
+    --destdir="$pkgdir" \
+    --compile-bytecode=2 \
+    dist/*.whl
+
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
