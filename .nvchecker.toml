@@ -1,0 +1,5 @@
+[odytty]
+source = "github"
+github = "ghreprimand/odytty"
+use_latest_release = true
+prefix = "v"
