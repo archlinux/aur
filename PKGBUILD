@@ -4,13 +4,13 @@
 
 pkgbase=pango-git
 pkgname=(pango-git pango-docs-git)
-pkgver=1.57.0.r9.g0f27f82b
+pkgver=1.58.0.r1.g792093ce
 pkgrel=1
 epoch=1
 pkgdesc="A library for layout and rendering of text"
 url="https://www.pango.org/"
 arch=(x86_64)
-license=(LGPL-2.1-or-later)
+license=(LGPL-2.0-or-later)
 depends=(
   cairo
   fontconfig
@@ -61,6 +61,7 @@ package_pango-docs-git() {
   provides=(pango-docs)
   conflicts=(pango-docs)
   depends=()
+  arch=(any)
 
   mv doc/* "$pkgdir"
 }

@@ -1,11 +1,11 @@
 pkgbase = pango-git
 	pkgdesc = A library for layout and rendering of text
-	pkgver = 1.57.0.r9.g0f27f82b
+	pkgver = 1.58.0.r1.g792093ce
 	pkgrel = 1
 	epoch = 1
 	url = https://www.pango.org/
 	arch = x86_64
-	license = LGPL-2.1-or-later
+	license = LGPL-2.0-or-later
 	makedepends = gobject-introspection
 	makedepends = help2man
 	makedepends = git
@@ -38,6 +38,7 @@ pkgname = pango-git
 
 pkgname = pango-docs-git
 	pkgdesc = A library for layout and rendering of text (documentation)
+	arch = any
 	depends = 
 	provides = pango-docs
 	conflicts = pango-docs
