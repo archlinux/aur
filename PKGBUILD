@@ -1,8 +1,9 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Tristan Hill
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-flask-restful
 pkgver=0.3.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple framework for creating REST APIs"
 url="https://github.com/flask-restful/flask-restful"
 license=('BSD')
