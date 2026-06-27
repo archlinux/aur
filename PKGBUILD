@@ -2,7 +2,7 @@
 
 pkgname=color-scheme-control
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Utility for color scheme toggling written in Go and extensible by Lua'
 arch=( 'x86_64' )
 _module_path="codeberg.org/mohterbaord/${pkgname}"
