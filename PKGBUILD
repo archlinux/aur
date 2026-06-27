@@ -2,7 +2,7 @@
 
 pkgname=python-repomatic
 _name=${pkgname#python-}
-pkgver=6.30.0
+pkgver=6.31.0
 pkgrel=1
 pkgdesc='Automate repository maintenance, releases, and CI/CD workflows'
 url='https://kdeldycke.github.io/repomatic/'
@@ -11,7 +11,7 @@ depends=(python python-click python-yaml python-extra-platforms python-tomli pyt
 license=('GPL-2.0-or-later')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kdeldycke/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('905e136009ab1e5a79e81c0b86d716c319c38023e5e7ae6a83792e829651ba251925a75bc4b0301110befa882ec557e7a5c5764035bf68d067d6d034f4652a59')
+sha512sums=('e515bae3d059fa744482914073382fc528c474642ad894f70f31506e6072d885f42b1923096bbffbab36004e4ae3f43aa53e5eb3df19c450a80b3b22551e4402')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
