@@ -1,0 +1,13 @@
+pkgbase = abiotic-factor-server
+	pkgdesc = Abiotic Factor dedicated server (Windows build under Wine), managed by systemd
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/DFJacob/AbioticFactorDedicatedServer
+	arch = x86_64
+	license = LicenseRef-Steam-Subscriber-Agreement
+	depends = steamcmd
+	depends = wine
+	depends = lib32-dbus
+	backup = etc/abiotic-factor/server.conf
+
+pkgname = abiotic-factor-server
