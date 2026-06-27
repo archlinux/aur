@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@gmail.com>
 
 pkgname=rake-unstable-bin
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Configuration-driven build tool that runs Rakefile.toml targets (pre-compiled, nightly unstable build)"
 arch=('x86_64' 'aarch64')
@@ -18,9 +18,9 @@ source=("${_base}/dist-rake.tar.gz")
 source_x86_64=("rake-unstable-x86_64::${_base}/rake-unstable-x86_64-unknown-linux-musl")
 source_aarch64=("rake-unstable-aarch64::${_base}/rake-unstable-aarch64-unknown-linux-musl")
 # Checksums are filled in by the release workflow before publishing to the AUR.
-sha256sums=('337ee39a9d9f167a47dafb498959064c06cac5e76e7b3ba05838e6fd28f04024')
-sha256sums_x86_64=('5b3cd1c7c3d051756a2463ee9f4fd3249887516a46272030d806b02d2b278490')
-sha256sums_aarch64=('66388d69b8c73b280422ca33ce88395d86b1287ebf6d94e8a3e091179be6ce33')
+sha256sums=('02eaddbd87c621074f5364c8ee94c760ffcfaecb7bab010f93de761919470150')
+sha256sums_x86_64=('9a2024d71b11e57d3da69cca401638b1825eadd5a90174231905d39558fcda5b')
+sha256sums_aarch64=('24be07b863ff17f85c91a0a61edf9e179e0de031b76c363da39cb84a0a865fef')
 
 package() {
     install -Dm755 "rake-unstable-${CARCH}" "$pkgdir/usr/bin/rake"
