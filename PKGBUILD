@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=lingora
-pkgver=0.4.15
+pkgver=0.4.16
 pkgrel=1
 pkgdesc='localization management TUI to analyse fluent translation files'
 arch=(x86_64)
@@ -9,18 +9,15 @@ url="https://github.com/nigeleke/$pkgname"
 license=(MIT)
 depends=(gcc-libs # libgcc_s.so
          glibc) # libc.so libm.so ld-linux-x86-64
-makedepends=(cargo-nightly
-             cargo-edit)
+makedepends=(cargo-nightly)
 _toolchain=nightly-2026-06-27
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('bcefcc4a3b25c53fe3467b0dec4bdd1fe79cc336685a65db990bc67535fe3878')
+sha256sums=('4a838e9932cf788cc24ad765ccb8b7daf57042239e95a928f5342b5b7f2be52e')
 
 prepare() {
 	_srcenv
 	rustup toolchain install "$_toolchain"
-	# https://github.com/nigeleke/lingora/issues/74
-	cargo set-version $pkgver
 	cargo fetch --locked --target host-tuple
 }
 
