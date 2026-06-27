@@ -4,7 +4,7 @@ _android_arch=riscv64
 
 pkgname=android-${_android_arch}-ffmpeg-minimal
 pkgver=8.1.2
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Complete solution to record, convert and stream audio and video (Android ${_android_arch})"
 url="http://ffmpeg.org/"
@@ -20,7 +20,8 @@ depends=("android-${_android_arch}-aom"
          "android-${_android_arch}-libvorbis"
          "android-${_android_arch}-libvpx"
          "android-${_android_arch}-opus"
-         "android-${_android_arch}-svt-av1")
+         "android-${_android_arch}-svt-av1"
+         "android-${_android_arch}-x264")
 makedepends=('android-configure'
              'nasm')
 provides=(${pkgname%-minimal})
@@ -121,6 +122,7 @@ build() {
         --enable-encoder=libvorbis \
         --enable-encoder=libvpx_vp8 \
         --enable-encoder=libvpx_vp9 \
+        --enable-libx264 \
         --enable-encoder=opus \
         --enable-encoder=vorbis \
         --enable-encoder=av1_mediacodec \
