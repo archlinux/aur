@@ -1,6 +1,6 @@
 _pkgname=plasma-splash-catppuccin-mocha
 pkgname=$_pkgname-git
-pkgver=0.2.7.r0.g4e2f142
+pkgver=0.3.0.r4.gde25216
 pkgrel=1
 pkgdesc="Soothing pastel splash screens for KDE Plasma - Mocha"
 arch=(any)
@@ -30,7 +30,7 @@ build() {
 
 
 		# Hydrate Dummy colors according to Pallete
-		FLAVOURNAME="Mocha" ./Installer/color-build.sh -s ./Resources/splash-screen/contents/splash/images/busywidget.svg -o ./dist/"$SPLASHSCREENNAME"/contents/splash/images/_busywidget.svg
+		./Installer/color-build.sh -s ./Resources/splash-screen/contents/splash/images/busywidget.svg -o ./dist/"$SPLASHSCREENNAME"/contents/splash/images/_busywidget.svg -f Mocha
 		# Replace Accent in colors file
 		sed "s/REPLACE--ACCENT/$ACCENTCOLOR/g" ./dist/"$SPLASHSCREENNAME"/contents/splash/images/_busywidget.svg > ./dist/"$SPLASHSCREENNAME"/contents/splash/images/busywidget.svg
 		# Cleanup temporary file
