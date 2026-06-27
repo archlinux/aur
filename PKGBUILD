@@ -17,7 +17,7 @@ depends=(
 
 makedepends=('git')
 
-source=("git+https://github.com/MEKCCK/elite-dms-niri.git")
+source=("git+https://github.com/MEKCCK/elite-dms-niri.git#branch=elite")
 sha256sums=('SKIP')
 
 pkgver() {

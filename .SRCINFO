@@ -24,7 +24,7 @@ pkgbase = elite-dms-niri-git
 	provides = elite-dms-niri-dotfiles-git
 	conflicts = elite-dms-niri-meta
 	conflicts = elite-dms-niri-dotfiles-git
-	source = git+https://github.com/MEKCCK/elite-dms-niri.git
+	source = git+https://github.com/MEKCCK/elite-dms-niri.git#branch=elite
 	sha256sums = SKIP
 
 pkgname = elite-dms-niri-git
