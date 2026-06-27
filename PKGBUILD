@@ -12,7 +12,7 @@ optdepends=('onnxruntime-cuda')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://github.com/SergioRibera/sss/releases/download/sss_cli/v0.2.1/sss-nvidia-bin-0.2.1-x86_64.tar.gz")
-sha256sums=('c2db597c75410fca54447d4fa50d620f7ecd62aa74b7e40c8e1d08a5df34f7d7')
+sha256sums=('d0a7d4cde5af724cd9eec0e3ad91c18ad9afbad05a0ca645898b774827c07b5c')
 
 
 package() {
