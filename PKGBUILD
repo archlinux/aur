@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=smolvm-bin
 _pkgname=smolvm
-pkgver=1.2.1
+pkgver=1.2.5
 pkgrel=1
 pkgdesc='Tool to build & run portable, lightweight, self-contained virtual machines.'
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
     'use-system-libs.patch'
 )
 sha256sums=(
-    '5b7bd5fad8645d333720b8a37231f3873a46e3615122dca8f558fbfbd92e2aea'
+    'b7f6240ca3d97b42e6f6fe6ee87cac3744ee52f9517847ae06b65f7d29e9df81'
     'ac6a4050f2f415a02f3c223ddee932a07de627bc143059e9a1ea9df088e46909'
     '7bb2d82dfffbd7a20df90cbe29d70eb8b0a95a8a934343f58f75a5617ee415e1'
 )
