@@ -1,4 +1,0 @@
-# Starting with Linux 6.12 the kernel virtual machine (KVM) enables
-# virtualization on module load, preventing virtualbox from functioning.
-# Disable this behavior...
-options kvm enable_virt_at_load=0
