@@ -1,0 +1,21 @@
+pkgbase = iperfgtk-git
+	pkgdesc = Modern native GTK4/libadwaita frontend for iperf3 with an analog VU-meter
+	pkgver = 0.1.0.r0.gabcdef0
+	pkgrel = 1
+	url = https://github.com/prietus/iperfgtk
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = gtk4
+	depends = libadwaita
+	depends = iperf3
+	depends = gcc-libs
+	depends = glibc
+	provides = iperfgtk
+	conflicts = iperfgtk
+	source = iperfgtk::git+https://github.com/prietus/iperfgtk.git
+	sha256sums = SKIP
+
+pkgname = iperfgtk-git
