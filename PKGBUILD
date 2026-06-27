@@ -9,7 +9,8 @@ url="https://github.com/markhedleyjones/dmenu-extended"
 license=('MIT')
 depends=(python dmenu)
 makedepends=(python-build python-installer python-wheel python-setuptools)
-conflicts=(dmenu-extended-git)
+provides=(dmenu-extended)
+conflicts=(dmenu-extended)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
 	"LICENSE::https://raw.githubusercontent.com/markhedleyjones/dmenu-extended/$pkgver/LICENSE")
 sha256sums=('27668ab06c9d81fd60e3bd952e929bcca8ab2b842bc6dd0acbabdefb7acc7ee2'
