@@ -1,12 +1,12 @@
 pkgbase = zinit-git
 	pkgdesc = A flexible and fast Zsh plugin manager.
-	pkgver = v3.7.r209.g8f4e3bbf
+	pkgver = v3.14.0.r74.ged04c9ca
 	pkgrel = 1
 	url = https://github.com/zdharma-continuum/zinit
 	install = zinit-git.install
 	arch = x86_64
 	license = MIT
-	depends = git
+	makedepends = git
 	depends = curl
 	depends = zsh
 	provides = zinit
