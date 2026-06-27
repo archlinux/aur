@@ -79,7 +79,7 @@ sha256sums=('3895afca60608e86ffbba20c32af95a6e59f8d7ebe6d2617236f159b42176bfe'
             '3381038fc5209600428801fa0b2b05ddee031b0926eaa75c114172e503916cd5'
             '0fa67d34f63cb4ed472b620ebad0656aeca646cb7f1069b7066ee91e6902fe6c'
             '1276dd96f9ba63ce942b7321f5f753b02119c99b2eaf652ea5998b90d5d5a1d2'
-            '9c81587432dc00e76b23d7a46f422bf56239aaf445d84118e3cee38f2aed89cd')
+            'de5762bd0913eb4d27c91d79dca2b2c216c7b53b7ac20b6c653fa96e7823f154')
 _debug="true"
 prepare() {
 	# Extract Aseprite's sources
@@ -117,8 +117,8 @@ prepare() {
 	[[ -n $_debug ]] && echo include_cstdint.patch
 	patch -tp1 <include_cstdint.patch
 	[[ -n $_debug ]] && echo change_use_of_removed_intrinsic.patch
-	env -C skia/modules/skcms/ patch -tp1 <change_use_of_removed_intrinsic.patch
-	env -C aseprite/src/app/commands/ patch -tp1 <fmt-12.2.0-include-format.patch
+	env -C skia/modules/skcms patch -tp1 <change_use_of_removed_intrinsic.patch
+	env -C aseprite patch -tp1 <fmt-12.2.0-include-format.patch
 }
 
 build() {

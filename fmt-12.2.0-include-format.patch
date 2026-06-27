@@ -1,7 +1,7 @@
-diff --git a/cmd_run_command.cpp b/cmd_run_command.cpp
+diff --git a/src/app/commands/cmd_run_command.cpp b/src/app/commands/cmd_run_command.cpp
 index 97515c2..17ecebe 100644
---- a/cmd_run_command.cpp
-+++ b/cmd_run_command.cpp
+--- a/src/app/commands/cmd_run_command.cpp
++++ b/src/app/commands/cmd_run_command.cpp
 @@ -30,6 +30,7 @@
  #include "ui/label.h"
  #include "ui/message.h"
@@ -10,3 +10,63 @@ index 97515c2..17ecebe 100644
  
  #ifdef ENABLE_SCRIPTING
    #include "app/script/engine.h"
+diff --git a/src/app/commands/cmd_set_color_selector.cpp b/src/app/commands/cmd_set_color_selector.cpp
+index b76b44b..4b4fa44 100644
+--- a/src/app/commands/cmd_set_color_selector.cpp
++++ b/src/app/commands/cmd_set_color_selector.cpp
+@@ -15,6 +15,7 @@
+ #include "app/context.h"
+ #include "app/i18n/strings.h"
+ #include "app/ui/color_bar.h"
++#include "fmt/format.h"
+ 
+ namespace app {
+ 
+diff --git a/src/app/i18n/strings.cpp b/src/app/i18n/strings.cpp
+index 59aab94..8776802 100644
+--- a/src/app/i18n/strings.cpp
++++ b/src/app/i18n/strings.cpp
+@@ -20,6 +20,7 @@
+ #include "base/debug.h"
+ #include "base/fs.h"
+ #include "cfg/cfg.h"
++#include "fmt/format.h"
+ 
+ #include <algorithm>
+ 
+diff --git a/src/app/i18n/strings.h b/src/app/i18n/strings.h
+index dc4540f..b212090 100644
+--- a/src/app/i18n/strings.h
++++ b/src/app/i18n/strings.h
+@@ -11,6 +11,7 @@
+ 
+ #include "app/i18n/lang_info.h"
+ #include "fmt/core.h"
++#include "fmt/format.h"
+ #include "obs/signal.h"
+ #include "strings.ini.h"
+ 
+diff --git a/src/app/ui/palettes_listbox.cpp b/src/app/ui/palettes_listbox.cpp
+index e40f9fb..db50a40 100644
+--- a/src/app/ui/palettes_listbox.cpp
++++ b/src/app/ui/palettes_listbox.cpp
+@@ -34,6 +34,7 @@
+ #include "ui/message.h"
+ #include "ui/size_hint_event.h"
+ #include "ui/tooltips.h"
++#include "fmt/format.h"
+ 
+ namespace app {
+ 
+diff --git a/src/app/ui/resources_listbox.cpp b/src/app/ui/resources_listbox.cpp
+index 318d8ce..fc0f056 100644
+--- a/src/app/ui/resources_listbox.cpp
++++ b/src/app/ui/resources_listbox.cpp
+@@ -20,6 +20,7 @@
+ #include "ui/paint_event.h"
+ #include "ui/size_hint_event.h"
+ #include "ui/view.h"
++#include "fmt/format.h"
+ 
+ namespace app {
+ 
