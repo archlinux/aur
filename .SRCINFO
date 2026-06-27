@@ -1,0 +1,21 @@
+pkgbase = scenecut-extractor
+	pkgdesc = Get scenecuts from a video file using ffmpeg
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/slhck/scenecut-extractor
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = ffmpeg
+	depends = python
+	depends = python-tqdm
+	depends = python-ffmpeg-progress-yield
+	provides = scenecut-extractor
+	source = scenecut-extractor-0.9.1.tar.gz::https://github.com/slhck/scenecut-extractor/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = e53bdb66a453490d2dceba3b8cca12a028872b55decc6255aa8d0adafb831d34
+
+pkgname = scenecut-extractor

@@ -1,0 +1,3 @@
+[scenecut-extractor]
+source = "pypi"
+pypi = "scenecut-extractor"
