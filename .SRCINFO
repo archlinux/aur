@@ -1,0 +1,23 @@
+pkgbase = iperfgtk-bin
+	pkgdesc = Modern native GTK4/libadwaita frontend for iperf3 with an analog VU-meter (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/prietus/iperfgtk
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gtk4
+	depends = libadwaita
+	depends = iperf3
+	depends = gcc-libs
+	depends = glibc
+	provides = iperfgtk=0.1.0
+	conflicts = iperfgtk
+	source = iperfgtk-0.1.0.tar.gz::https://github.com/prietus/iperfgtk/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 5f5af6c0edab68ca79677748f2804c35db0a113129d6761d3969d7f7480aa01d
+	source_x86_64 = iperf_rust-0.1.0-x86_64::https://github.com/prietus/iperfgtk/releases/download/v0.1.0/iperf_rust-linux-x86_64
+	sha256sums_x86_64 = f83c64e1b15286e689115493110116411a485901dd22c6e8b8f702e9cbfd9ad1
+	source_aarch64 = iperf_rust-0.1.0-aarch64::https://github.com/prietus/iperfgtk/releases/download/v0.1.0/iperf_rust-linux-arm64
+	sha256sums_aarch64 = eeb626d85f921dfe24ae681e9969ee8132db3d54d2b0a8f94cfa2f88fb67d562
+
+pkgname = iperfgtk-bin
