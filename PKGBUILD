@@ -31,7 +31,7 @@ prepare() {
     _ensure_local_nvm
     nvm install
     pnpm clean-install
-    pnpm install express@4
+    pnpm install express@4 # https://github.com/Stremio/stremio-web/blob/development/Dockerfile#L30
 }
 
 build() {
