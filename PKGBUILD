@@ -3,7 +3,7 @@
 _pkgauthor=d99kris
 _pkgname=stackusage
 pkgname=${_pkgname}
-pkgver=1.20
+pkgver=1.21
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Measure stack usage in Linux applications"
@@ -18,7 +18,7 @@ makedepends=('cmake' 'binutils')
 depends=('gcc-libs' 'glibc' 'bash' 'libelf')
 
 source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9db4c1e32b3deaee3670f2962d398c5f19745f760afc25887cd950e01823c63f')
+sha256sums=('cf4261f157b8f11d6cee3abe916595a9dfcb28ce30bd20b6f44b37cdc70464cd')
 
 
 prepare() {

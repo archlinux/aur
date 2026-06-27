@@ -1,6 +1,6 @@
 pkgbase = stackusage
 	pkgdesc = Measure stack usage in Linux applications
-	pkgver = 1.20
+	pkgver = 1.21
 	pkgrel = 1
 	url = https://github.com/d99kris/stackusage
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = stackusage
 	depends = libelf
 	provides = stackusage
 	conflicts = stackusage
-	source = https://github.com/d99kris/stackusage/archive/refs/tags/v1.20.tar.gz
-	sha256sums = 9db4c1e32b3deaee3670f2962d398c5f19745f760afc25887cd950e01823c63f
+	source = https://github.com/d99kris/stackusage/archive/refs/tags/v1.21.tar.gz
+	sha256sums = cf4261f157b8f11d6cee3abe916595a9dfcb28ce30bd20b6f44b37cdc70464cd
 
 pkgname = stackusage
