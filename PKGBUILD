@@ -163,7 +163,7 @@ TOE_COLLAPSE = os.path.join("/opt/touchdesigner", "td/bin/toecollapse.exe")
 FIX_FILE = "/opt/touchdesigner/wine_ui_fixes.tox"
 import subprocess, tempfile, shutil
 if os.path.exists(TOE_EXPAND) and os.path.exists(TOE_COLLAPSE) and os.path.exists(FIX_FILE):
-    toe = '\$1'
+    toe = sys.argv[1]
     toe_dir = toe + '.dir'
     toe_toc = toe + '.toc'
     shutil.rmtree(toe_dir, True); shutil.rmtree(toe_toc, True)
@@ -187,7 +187,7 @@ if os.path.exists(TOE_EXPAND) and os.path.exists(TOE_COLLAPSE) and os.path.exist
             shutil.rmtree(t, True)
             subprocess.run(['wine64', TOE_COLLAPSE, 'z:' + toe], capture_output=True, env=os.environ)
             shutil.rmtree(toe_dir, True); shutil.rmtree(toe_toc, True)
-" 2>/dev/null || true
+" "$1" 2>/dev/null || true
 fi
 
 TD_EXE="" && for f in "\${P}/td/bin/TouchDesigner.exe" "\${P}/td/TouchDesigner.exe"; do [ -f "\$f" ] && { TD_EXE="\$f"; break; }; done
@@ -236,6 +236,7 @@ MIME
         mkdir -p "${pkgdir}/usr/share/touchdesigner-linux"
         cp -r "${RD}/td_lib" "${pkgdir}/usr/share/touchdesigner-linux/" >/dev/null 2>&1
         if [ -f "${RD}/Assets/wine_ui_fixes.tox" ]; then
+            install -Dm644 "${RD}/Assets/wine_ui_fixes.tox" "${pkgdir}${P}/wine_ui_fixes.tox"
             install -Dm644 "${RD}/Assets/wine_ui_fixes.tox" "${pkgdir}/usr/share/touchdesigner-linux/wine_ui_fixes.tox"
         fi
     fi
