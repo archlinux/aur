@@ -89,7 +89,8 @@ prepare() {
 
 build() {
     cd "${pkgname}"
-    python -m build --wheel --no-isolation
+    # Silence the very verbose "copying ..." messages, but still see warnings:
+    python -m build --wheel --no-isolation > /dev/null
 
     # Generate shell completions via Typer
     local _completions_dir="${srcdir}/completions"
