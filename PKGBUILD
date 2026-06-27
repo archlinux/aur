@@ -5,7 +5,8 @@ pkgver=0.1.0
 pkgrel=2
 pkgdesc='Utility for color scheme toggling written in Go and extensible by Lua'
 arch=( 'x86_64' )
-url="https://codeberg.org/mohterbaord/${pkgname}"
+_module_path="codeberg.org/mohterbaord/${pkgname}"
+url="https://${_module_path}"
 license=( 'MIT' )
 makedepends=( 'go' )
 depends=( 'systemd' )
@@ -26,7 +27,7 @@ build() {
   export CGO_ENABLED=0
   go build \
     -o "./build/${_binary_name}" \
-    -ldflags "-s -w -X codeberg.org/mohterbaord/${pkgname}/cmd.version=${pkgver}" \
+    -ldflags "-s -w -X ${_module_path}/cmd.version=${pkgver}" \
     -trimpath \
     .
 
