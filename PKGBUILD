@@ -1,6 +1,6 @@
 # Maintainer: cantosun99 <privat at cantosun dot de>
 pkgname=llama.cpp-sycl
-pkgver=b9803
+pkgver=b9821
 pkgrel=1
 pkgdesc="llama.cpp with Intel Arc GPU acceleration via SYCL/oneAPI. Please read the README on GitHub before use."
 arch=('x86_64')
@@ -51,7 +51,7 @@ options=(!strip !buildflags)
 source=(
     "llama.cpp-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('ff7f88009775fd377010db3c5462618dd29f08be119173d2e0471dbb8cff37aa')
+sha256sums=('1e75621ec6e94b27726d2df81b76abc4b9af97b5e2cb11e640d1fb8124a17ec0')
 
 prepare() {
     ln -sf "llama.cpp-${pkgver}" llama.cpp
@@ -64,9 +64,6 @@ build() {
     set -u
 
     cd "${srcdir}/llama.cpp"
-    # !buildflags is set in options to prevent makepkg from injecting CFLAGS/CXXFLAGS
-    # into the IntelLLVM device-side compilation pipeline, which can cause runtime
-    # failures (e.g. unresolved glibc fortify symbols in SYCL device IR).
     cmake -B build \
         -DGGML_SYCL=ON \
         -DGGML_SYCL_F16=ON \
