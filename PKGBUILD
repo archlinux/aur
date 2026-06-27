@@ -1,0 +1,50 @@
+# Maintainer: SoftExpert <softexpert at gmail dot com>
+_pkgname=euro-office-lite
+pkgname=${_pkgname}-bin
+pkgver=0.6.0
+pkgrel=1
+pkgdesc='Lightweight desktop office suite built on Tauri v2 and Euro-Office editors. ~96 MB installer, no cloud, no telemetry.'
+arch=(x86_64)
+url='https://github.com/delmarguillen/euro-office-lite'
+license=(AGPL-3.0-only)
+depends=(
+	# As reported by namcap
+	cairo
+	dbus
+	glib2
+	glibc
+	gdk-pixbuf2
+	gtk3
+	libgcc
+	libsoup3
+	webkit2gtk-4.1
+)
+provides=(euro-office-lite)
+conflicts=(
+	euro-office-lite
+)
+options=(
+	!strip     # Stripping symbols would break the binary
+	!emptydirs # Remove empty directories from package
+)
+source_x86_64=(
+	"${pkgname}-${pkgver}.deb::https://github.com/delmarguillen/${_pkgname}/releases/download/v${pkgver}-alpha/Euro-Office.Lite_${pkgver}-alpha_amd64.deb"
+	"LICENSE"::"https://raw.githubusercontent.com/delmarguillen/euro-office-lite/refs/heads/main/LICENSE"
+)
+b2sums_x86_64=('96a8119bef75a5c9e4c7e3ef8936700509e05e70a4d64aef25917e7e416c5e28206411100ac2918c1196e6495317b678edd116e9af6b77542f7c2f2159953546'
+               '25ff89b638fae6a63641f5196157086bdcb76c6f1d4c49470551a3cfd131951d2b7c40c48a9380fa4569b725e43e57e85d48df4a56abf9a119ddcd1b11d2a897')
+
+prepare() {
+	bsdtar -xf "${srcdir}/data.tar.gz" -C "${srcdir}/"
+}
+
+#build() {
+#}
+
+package() {
+	cp -r "${srcdir}/usr" "${pkgdir}/"
+	install -dm755 "${pkgdir}/usr/bin"
+	install -dm755 "${pkgdir}/usr/lib"
+	install -dm755 "${pkgdir}/usr/share"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+}
