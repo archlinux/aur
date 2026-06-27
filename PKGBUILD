@@ -1,25 +1,31 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=i3-workspace-switch-git
-pkgver=0.2.dev0.gcb7f6de
-pkgrel=2
+pkgver=r4.cb7f6de
+pkgrel=1
 pkgdesc="Utility to allow switching workspaces by their position on the output"
 arch=(any)
 url="https://github.com/languitar/i3-workspace-switch"
 license=('LGPL3')
-depends=('python2' 'python-i3-py')
+depends=( 'python-i3-py' 'i3' 'python')
 makedepends=('git' 'python-setuptools')
 provides=('i3-workspace-switch')
 conflicts=('i3-workspace-switch')
-source=("${pkgname}::git://github.com/languitar/i3-workspace-switch.git")
-md5sums=('SKIP')
+source=(${pkgname}::git+${url})
+sha256sums=('SKIP')
+
+
 
 pkgver() {
-    cd "$pkgname"
-    printf "%s.g%s" "$(python3 setup.py --version 2> /dev/null)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-    cd "$pkgname"
-    python3 setup.py install --root="$pkgdir/"
+build() {
+  cd "$pkgname"
+  python -m build --wheel --no-isolation
 }
+package() {
+  cd "$srcdir/$pkgname"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  }
