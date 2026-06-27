@@ -15,7 +15,7 @@
 
 pkgname=truealter-cli
 _npmname='@truealter/cli'
-pkgver=0.8.10
+pkgver=0.8.27
 pkgrel=1
 pkgdesc='ALTER identity CLI -- login once, authenticated everywhere'
 arch=('any')
@@ -25,11 +25,11 @@ depends=('nodejs>=20')
 makedepends=('npm')
 source=("https://registry.npmjs.org/${_npmname}/-/cli-${pkgver}.tgz")
 noextract=("cli-${pkgver}.tgz")
-# sha256 pinned to published 0.8.10 tarball.
+# sha256 pinned to published 0.8.27 tarball.
 # Recompute on every pkgver bump:
 #   curl -fsSL https://registry.npmjs.org/@truealter/cli/-/cli-${pkgver}.tgz \
 #     -o cli-${pkgver}.tgz && sha256sum cli-${pkgver}.tgz
-sha256sums=('3da81dee1061763a2e4f621c5b31ca531b242ba601a3c1af2006379fb13359e1')
+sha256sums=('ceb2f5a6bd2c45ae3cc565a4044d1990b13fc3dafe9dcb8bed8939862fe35e5f')
 
 package() {
   cd "${srcdir}"
