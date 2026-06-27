@@ -1,6 +1,6 @@
 pkgbase = librenotes-bin
 	pkgdesc = Private, self-hosted, end-to-end encrypted note-taking app
-	pkgver = 1.0.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Piliii/LibreNotes
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = librenotes-bin
 	optdepends = xdg-utils: open links from notes
 	provides = librenotes
 	conflicts = librenotes
-	source_x86_64 = librenotes-bin-1.0.1-linux-x86_64.tar.gz::https://github.com/Piliii/LibreNotes/releases/download/v1.0.1/LibreNotes-1.0.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 6818e31bfb745f59c69e6759f1a805a62110186b2025a9eb1833f4aabdede399
+	source_x86_64 = librenotes-bin-1.2.0-linux-x86_64.tar.gz::https://github.com/Piliii/LibreNotes/releases/download/v1.2.0/LibreNotes-1.2.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 9892b828930568c239ba5637c2d1aba6121940277d6db0f38184cc33aac74986
 
 pkgname = librenotes-bin
