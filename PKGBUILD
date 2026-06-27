@@ -48,88 +48,85 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 build() {
     cd "${srcdir}"
 
-    msg2 "Extracting TouchDesigner (innoextract)..."
+    msg2 "Extracting TouchDesigner..."
     mkdir -p td-inno
-    innoextract -d td-inno -q "TouchDesigner.${_td_ver}.exe"
+    innoextract -d td-inno -q "TouchDesigner.${_td_ver}.exe" >/dev/null 2>&1
 
     mkdir -p td
-    cp -r "td-inno/\$/app/" td/
+    cp -r "td-inno/\$/app/" td/ >/dev/null 2>&1
     if [ -d "td-inno/commonappdata" ]; then
-        cp -r "td-inno/commonappdata/" td-commonappdata/
+        cp -r "td-inno/commonappdata/" td-commonappdata/ >/dev/null 2>&1
     fi
 
     msg2 "Extracting Soda Wine..."
     mkdir -p soda-wine
-    tar -xJf "soda-${_soda_version}.tar.xz" -C soda-wine --strip-components=1 2>/dev/null
+    tar -xJf "soda-${_soda_version}.tar.xz" -C soda-wine --strip-components=1 >/dev/null 2>&1
 
     msg2 "Extracting DXVK..."
     mkdir -p dxvk
-    tar -xzf "dxvk-${_dxvk_version}.tar.gz" -C dxvk --strip-components=1 2>/dev/null
+    tar -xzf "dxvk-${_dxvk_version}.tar.gz" -C dxvk --strip-components=1 >/dev/null 2>&1
 
     chmod +x winetricks
 
-    # Pre-setup Wine prefix so first launch is instant
-    msg2 "Setting up Wine prefix (this will take a minute)..."
+    # Pre-setup Wine prefix for instant first launch
+    msg2 "Setting up Wine prefix (may take a minute)..."
     export WINEPREFIX="${srcdir}/prefix-template"
     export WINEDLLOVERRIDES="mscoree="
     export PATH="${srcdir}/soda-wine/bin:${PATH}"
     mkdir -p "${WINEPREFIX}"
-    wine64 wineboot -u 2>/dev/null || true
+    wine64 wineboot -u >/dev/null 2>&1 || true
     msg2 "  Installing DXVK..."
-    "${srcdir}/dxvk/setup_dxvk.sh" install 2>/dev/null || true
+    "${srcdir}/dxvk/setup_dxvk.sh" install >/dev/null 2>&1 || true
     msg2 "  Installing core fonts..."
-    "${srcdir}/winetricks" -q corefonts 2>/dev/null || true
+    "${srcdir}/winetricks" -q corefonts >/dev/null 2>&1 || true
     msg2 "Wine prefix ready."
 }
 
 package() {
     cd "${srcdir}"
     local repo_dir="${srcdir}/TouchDesigner-Linux-${pkgver}"
-    local prefix="/opt/touchdesigner"
+    local td_prefix="/opt/touchdesigner"
 
     msg2 "Installing Soda Wine..."
-    mkdir -p "${pkgdir}${prefix}/wine"
-    cp -r soda-wine/* "${pkgdir}${prefix}/wine/" 2>/dev/null
+    mkdir -p "${pkgdir}${td_prefix}/wine"
+    cp -r soda-wine/* "${pkgdir}${td_prefix}/wine/" >/dev/null 2>&1
 
     msg2 "Installing TouchDesigner ${_td_ver}..."
-    mkdir -p "${pkgdir}${prefix}/td"
+    mkdir -p "${pkgdir}${td_prefix}/td"
     if [ -d td/app ]; then
-        cp -r td/app/* "${pkgdir}${prefix}/td/" 2>/dev/null
+        cp -r td/app/* "${pkgdir}${td_prefix}/td/" >/dev/null 2>&1
     else
-        cp -r td/* "${pkgdir}${prefix}/td/" 2>/dev/null
+        cp -r td/* "${pkgdir}${td_prefix}/td/" >/dev/null 2>&1
     fi
 
     if [ -d td-commonappdata ]; then
-        mkdir -p "${pkgdir}${prefix}/data/ProgramData"
-        cp -r td-commonappdata/* "${pkgdir}${prefix}/data/ProgramData/" 2>/dev/null
+        mkdir -p "${pkgdir}${td_prefix}/data/ProgramData"
+        cp -r td-commonappdata/* "${pkgdir}${td_prefix}/data/ProgramData/" >/dev/null 2>&1
     fi
 
     msg2 "Installing DXVK..."
-    mkdir -p "${pkgdir}${prefix}/dxvk"
-    cp -r dxvk/* "${pkgdir}${prefix}/dxvk/" 2>/dev/null
+    mkdir -p "${pkgdir}${td_prefix}/dxvk"
+    cp -r dxvk/* "${pkgdir}${td_prefix}/dxvk/" >/dev/null 2>&1
 
-    install -Dm755 winetricks "${pkgdir}${prefix}/winetricks"
+    install -Dm755 winetricks "${pkgdir}${td_prefix}/winetricks"
 
-    # Pre-made Wine prefix (copy on first launch)
     if [ -d prefix-template ]; then
         msg2 "Packaging pre-made Wine prefix..."
-        mkdir -p "${pkgdir}${prefix}/default-prefix"
-        cp -r prefix-template/* "${pkgdir}${prefix}/default-prefix/" 2>/dev/null
+        mkdir -p "${pkgdir}${td_prefix}/default-prefix"
+        cp -r prefix-template/* "${pkgdir}${td_prefix}/default-prefix/" >/dev/null 2>&1
     fi
 
     {
         echo "TouchDesigner ${_td_ver}"
         echo "Soda Wine ${_soda_version}"
         echo "DXVK ${_dxvk_version}"
-    } > "${pkgdir}${prefix}/VERSION"
+    } > "${pkgdir}${td_prefix}/VERSION"
 
-    # Wrapper script
+    # Wrapper with auto-patching
     msg2 "Creating wrapper..."
-    mkdir -p "${pkgdir}${prefix}/app"
-    cat > "${pkgdir}${prefix}/app/touchdesigner-wrapper.sh" << 'WRAPPER'
+    mkdir -p "${pkgdir}${td_prefix}/app"
+    cat > "${pkgdir}${td_prefix}/app/touchdesigner-wrapper.sh" << 'WRAPPER'
 #!/bin/bash
-# TouchDesigner launcher with auto-patching
-
 PREFIX="/opt/touchdesigner"
 WINE="${PREFIX}/wine/bin/wine64"
 RUNNER_DIR="${PREFIX}/wine"
@@ -148,12 +145,11 @@ export LD_LIBRARY_PATH="${RUNNER_DIR}/lib:${RUNNER_DIR}/lib64:${LD_LIBRARY_PATH:
 
 mkdir -p "$(dirname "${WINE_PREFIX}")"
 
-# Copy pre-made prefix on first run (instant instead of 3 min setup)
+# Copy pre-made prefix (instant, no setup)
 if [ ! -f "${WINE_PREFIX}/drive_c/windows/system.reg" ] && [ -d "${PREFIX}/default-prefix" ]; then
     echo "TouchDesigner — Copying pre-made prefix..."
     mkdir -p "${WINE_PREFIX}"
     cp -r "${PREFIX}/default-prefix/"* "${WINE_PREFIX}/" 2>/dev/null
-    echo "  Done."
 fi
 
 # ProgramData
@@ -162,103 +158,79 @@ if [ -d "${DATA_DIR}/ProgramData" ]; then
     cp -r "${DATA_DIR}/ProgramData/"* "${WINE_PREFIX}/drive_c/ProgramData/" 2>/dev/null
 fi
 
-# Handle .toe argument
+# .toe argument
 EXTRA_ARGS=()
 INPUT_PATH=""
 if [ -n "$1" ]; then
     INPUT_PATH="$1"
     if [[ "$INPUT_PATH" == file://* ]]; then
         INPUT_PATH="${INPUT_PATH#file://}"
-        INPUT_PATH="$(python3 -c "import sys, urllib.parse; print(urllib.parse.unquote(sys.argv[1]))" "$INPUT_PATH" 2>/dev/null || echo "$INPUT_PATH")"
+        INPUT_PATH="$(python3 -c "import sys,urllib.parse; print(urllib.parse.unquote(sys.argv[1]))" "$INPUT_PATH" 2>/dev/null || echo "$INPUT_PATH")"
     fi
     EXTRA_ARGS=("z:${INPUT_PATH//\\/\\\\}")
 fi
 
-# Auto-patching .toe files
+# Auto-patching
 TOE_EXPAND="$(find "$WINE_PREFIX/drive_c" -type f -iname 'toeexpand.exe' 2>/dev/null | head -n1 || true)"
 TOE_COLLAPSE="$(find "$WINE_PREFIX/drive_c" -type f -iname 'toecollapse.exe' 2>/dev/null | head -n1 || true)"
 
 check_and_patch_toe() {
-    local TOE_PATH="$1"
-    [ -f "$TOE_PATH" ] || return 0
-    local TOE_BASE DIR_PATH TOC_PATH WINE_TOE
-    TOE_BASE="$(basename "$TOE_PATH")"
-    local TOE_DIR="$(dirname "$TOE_PATH")"
-    DIR_PATH="$TOE_DIR/${TOE_BASE}.dir"
-    TOC_PATH="$TOE_DIR/${TOE_BASE}.toc"
-    WINE_TOE="z:${TOE_PATH//\\/\\\\}"
-    rm -rf "$DIR_PATH" "$TOC_PATH" 2>/dev/null || true
-    WINEPREFIX="$WINE_PREFIX" "$RUNNER_DIR/bin/wine64" "$TOE_EXPAND" "$WINE_TOE" >/dev/null 2>&1 || true
-    local NEEDS_PATCH=false
-    [ ! -d "$DIR_PATH/wine_ui_fixes" ] && NEEDS_PATCH=true
-    rm -rf "$DIR_PATH" "$TOC_PATH" 2>/dev/null || true
-    if [ "$NEEDS_PATCH" = true ]; then
-        mkdir -p "$BACKUP_DIR" 2>/dev/null || true
-        cp -f "$TOE_PATH" "$BACKUP_DIR/${TOE_PATH//\//_}.bak" 2>/dev/null || true
-        WINEPREFIX="$WINE_PREFIX" "$RUNNER_DIR/bin/wine64" "$TOE_EXPAND" "$WINE_TOE" >/dev/null 2>&1 || true
-        if [ -d "$DIR_PATH" ]; then
-            local MERGE_TMP="$(mktemp -d "/tmp/td_merge_toe.XXXXXX" 2>/dev/null || true)"
-            if [ -n "$MERGE_TMP" ]; then
-                local MERGE_FIX="$MERGE_TMP/fix.tox"
-                cp -f "$FIX_FILE" "$MERGE_FIX" 2>/dev/null || true
-                WINEPREFIX="$WINE_PREFIX" "$RUNNER_DIR/bin/wine64" "$TOE_EXPAND" "z:${MERGE_FIX//\\/\\\\}" >/dev/null 2>&1 || true
-                [ -d "$MERGE_FIX.dir" ] && cp -rf "$MERGE_FIX.dir/"* "$DIR_PATH/" 2>/dev/null || true
-                rm -rf "$MERGE_TMP" 2>/dev/null || true
-            fi
-            for entry in "${FIX_ENTRIES[@]}"; do echo "$entry" >> "$TOC_PATH"; done
-            WINEPREFIX="$WINE_PREFIX" "$RUNNER_DIR/bin/wine64" "$TOE_COLLAPSE" "$WINE_TOE" >/dev/null 2>&1 || true
+    local F="$1"; [ -f "$F" ] || return 0
+    local B="$(basename "$F")" D="$(dirname "$F")"
+    local DIR="$D/${B}.dir" TOC="$D/${B}.toc"
+    local W="z:${F//\\/\\\\}"
+    rm -rf "$DIR" "$TOC" 2>/dev/null
+    WINEPREFIX="$WINE_PREFIX" "$RUNNER_DIR/bin/wine64" "$TOE_EXPAND" "$W" >/dev/null 2>&1 || true
+    local P=false; [ ! -d "$DIR/wine_ui_fixes" ] && P=true
+    rm -rf "$DIR" "$TOC" 2>/dev/null
+    if $P; then
+        mkdir -p "$BACKUP_DIR" 2>/dev/null
+        cp -f "$F" "$BACKUP_DIR/${F//\//_}.bak" 2>/dev/null
+        WINEPREFIX="$WINE_PREFIX" "$RUNNER_DIR/bin/wine64" "$TOE_EXPAND" "$W" >/dev/null 2>&1 || true
+        if [ -d "$DIR" ]; then
+            local T="$(mktemp -d /tmp/td_patch.XXXXXX 2>/dev/null || true)"
+            [ -n "$T" ] && { cp -f "$FIX_FILE" "$T/fix.tox" 2>/dev/null
+            WINEPREFIX="$WINE_PREFIX" "$RUNNER_DIR/bin/wine64" "$TOE_EXPAND" "z:${T//\\/\\\\}/fix.tox" >/dev/null 2>&1 || true
+            [ -d "$T/fix.tox.dir" ] && cp -rf "$T/fix.tox.dir/"* "$DIR/" 2>/dev/null
+            rm -rf "$T" 2>/dev/null; }
+            for e in "${FIX_ENTRIES[@]}"; do echo "$e" >> "$TOC"; done
+            WINEPREFIX="$WINE_PREFIX" "$RUNNER_DIR/bin/wine64" "$TOE_COLLAPSE" "$W" >/dev/null 2>&1 || true
         fi
-        rm -rf "$DIR_PATH" "$TOC_PATH" 2>/dev/null || true
+        rm -rf "$DIR" "$TOC" 2>/dev/null
     fi
 }
 
 if [ -n "$TOE_EXPAND" ] && [ -n "$TOE_COLLAPSE" ] && [ -f "$FIX_FILE" ]; then
-    FIX_TMPDIR="$(mktemp -d "/tmp/td_fix_launcher.XXXXXX" 2>/dev/null || true)"
-    if [ -n "$FIX_TMPDIR" ]; then
-        FIX_COPY="$FIX_TMPDIR/fix.tox"
-        cp -f "$FIX_FILE" "$FIX_COPY" 2>/dev/null || true
-        WINEPREFIX="$WINE_PREFIX" "$RUNNER_DIR/bin/wine64" "$TOE_EXPAND" "z:${FIX_COPY//\\/\\\\}" >/dev/null 2>&1 || true
-        if [ -d "$FIX_COPY.dir" ]; then
+    T="$(mktemp -d /tmp/td_fix.XXXXXX 2>/dev/null || true)"
+    if [ -n "$T" ]; then
+        cp -f "$FIX_FILE" "$T/fix.tox" 2>/dev/null
+        WINEPREFIX="$WINE_PREFIX" "$RUNNER_DIR/bin/wine64" "$TOE_EXPAND" "z:${T//\\/\\\\}/fix.tox" >/dev/null 2>&1 || true
+        if [ -d "$T/fix.tox.dir" ]; then
             FIX_ENTRIES=()
-            while IFS= read -r entry; do
-                [ -z "$entry" ] && continue
-                [[ "$entry" == \#* ]] && continue
-                [ "$entry" = ".build" ] && continue
-                FIX_ENTRIES+=("$entry")
-            done < "$FIX_COPY.toc"
-            while IFS= read -r -d '' NP_TOE; do
-                check_and_patch_toe "$NP_TOE"
-            done < <(find "$WINE_PREFIX/drive_c" -type f -iname 'NewProject.toe' -print0 2>/dev/null || true)
-            if [ -n "$INPUT_PATH" ] && [[ "$INPUT_PATH" == *.toe ]]; then
-                check_and_patch_toe "$INPUT_PATH"
-            fi
+            while IFS= read -r e; do [ -n "$e" ] && [[ "$e" != \#* ]] && [ "$e" != ".build" ] && FIX_ENTRIES+=("$e"); done < "$T/fix.tox.toc"
+            while IFS= read -r -d '' f; do check_and_patch_toe "$f"; done < <(find "$WINE_PREFIX/drive_c" -type f -iname 'NewProject.toe' -print0 2>/dev/null || true)
+            [ -n "$INPUT_PATH" ] && [[ "$INPUT_PATH" == *.toe ]] && check_and_patch_toe "$INPUT_PATH"
         fi
-        rm -rf "$FIX_TMPDIR" 2>/dev/null || true
+        rm -rf "$T" 2>/dev/null
     fi
 fi
 
 find "$BACKUP_DIR" -name '*.bak' -type f -mtime +30 -delete 2>/dev/null || true
 
-# Launch TD
 TD_EXE=""
 for f in "${TD_DIR}/bin/TouchDesigner.exe" "${TD_DIR}/TouchDesigner.exe"; do
     [ -f "$f" ] && { TD_EXE="$f"; break; }
 done
 [ -z "$TD_EXE" ] && TD_EXE=$(find "${TD_DIR}" -name 'TouchDesigner*.exe' -type f 2>/dev/null | head -1)
-if [ -z "$TD_EXE" ]; then
-    echo "Error: TouchDesigner not found in ${TD_DIR}"
-    exit 1
-fi
+[ -z "$TD_EXE" ] && { echo "Error: TouchDesigner not found"; exit 1; }
 
 WINEPREFIX="${WINE_PREFIX}" "${WINE}" "${TD_EXE}" "${EXTRA_ARGS[@]}"
 WRAPPER
-    chmod 755 "${pkgdir}${prefix}/app/touchdesigner-wrapper.sh"
+    chmod 755 "${pkgdir}${td_prefix}/app/touchdesigner-wrapper.sh"
 
-    # Symlinks
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s "${prefix}/app/touchdesigner-wrapper.sh" "${pkgdir}/usr/bin/touchdesigner"
+    ln -s "${td_prefix}/app/touchdesigner-wrapper.sh" "${pkgdir}/usr/bin/touchdesigner"
 
-    # Desktop entry
     msg2 "Creating desktop entry..."
     mkdir -p "${pkgdir}/usr/share/applications"
     cat > "${pkgdir}/usr/share/applications/touchdesigner.desktop" << DESKTOP
@@ -267,7 +239,7 @@ Version=1.0
 Type=Application
 Name=TouchDesigner ${_td_ver}
 Comment=Visual development platform
-Exec=${prefix}/app/touchdesigner-wrapper.sh %F
+Exec=${td_prefix}/app/touchdesigner-wrapper.sh %F
 Icon=/usr/share/icons/hicolor/scalable/apps/touchdesigner.svg
 Terminal=false
 Categories=Development;Graphics;
@@ -275,7 +247,6 @@ MimeType=application/x-touchdesigner-toe;application/x-touchdesigner-tox;
 StartupNotify=true
 DESKTOP
 
-    # MIME
     mkdir -p "${pkgdir}/usr/share/mime/packages"
     cat > "${pkgdir}/usr/share/mime/packages/touchdesigner.xml" << MIME
 <?xml version="1.0"?>
@@ -293,7 +264,6 @@ DESKTOP
 </mime-info>
 MIME
 
-    # Icons
     msg2 "Installing icons..."
     if [ -d "${repo_dir}/Assets/Icons" ]; then
         install -Dm644 "${repo_dir}/Assets/Icons/TouchDesigner.svg" \
@@ -304,7 +274,6 @@ MIME
             "${pkgdir}/usr/share/icons/hicolor/scalable/apps/touchdesigner-tox.svg"
     fi
 
-    # td-install + wine_ui_fixes.tox
     msg2 "Installing td-install..."
     if [ -f "${repo_dir}/td-install" ]; then
         install -Dm755 "${repo_dir}/td-install" "${pkgdir}/usr/bin/td-install"
@@ -312,7 +281,7 @@ MIME
         cp -r "${repo_dir}/td_lib" "${pkgdir}/usr/share/touchdesigner-linux/" 2>/dev/null
         if [ -f "${repo_dir}/Assets/wine_ui_fixes.tox" ]; then
             install -Dm644 "${repo_dir}/Assets/wine_ui_fixes.tox" \
-                "${pkgdir}${prefix}/wine_ui_fixes.tox"
+                "${pkgdir}${td_prefix}/wine_ui_fixes.tox"
             install -Dm644 "${repo_dir}/Assets/wine_ui_fixes.tox" \
                 "${pkgdir}/usr/share/touchdesigner-linux/wine_ui_fixes.tox"
         fi
