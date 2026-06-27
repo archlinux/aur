@@ -1,13 +1,13 @@
 pkgbase = dredge
 	pkgdesc = Ear-first practice looper: loop sections, slow them down pitch-preserving, drill passages
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/ShawnMcCool/dredge
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = nodejs
-	makedepends = pnpm
+	makedepends = npm
 	makedepends = just
 	makedepends = clang
 	makedepends = pkgconf
@@ -23,7 +23,7 @@ pkgbase = dredge
 	provides = dredge
 	conflicts = dredge-looper-bin
 	options = !lto
-	source = git+https://github.com/ShawnMcCool/dredge.git#tag=v0.9.0
+	source = git+https://github.com/ShawnMcCool/dredge.git#tag=v0.10.0
 	sha256sums = SKIP
 
 pkgname = dredge

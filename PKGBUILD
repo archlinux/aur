@@ -1,13 +1,13 @@
 # Maintainer: Shawn McCool <shawn@mccool.email>
 pkgname=dredge
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Ear-first practice looper: loop sections, slow them down pitch-preserving, drill passages"
 arch=('x86_64')
 url="https://github.com/ShawnMcCool/dredge"
 license=('MIT')
 depends=('rubberband' 'pipewire' 'webkit2gtk-4.1' 'gtk3')
-makedepends=('rust' 'nodejs' 'pnpm' 'just' 'clang' 'pkgconf' 'git')
+makedepends=('rust' 'nodejs' 'npm' 'just' 'clang' 'pkgconf' 'git')
 optdepends=('ffmpeg: MP3 export, extra container formats, and demucs stem export'
             'uv: bootstrap the analyze/songformer ML venvs (beats, sections)'
             'python: ML analysis runtime'
@@ -27,6 +27,14 @@ build() {
   # Desktop app — install frontend deps, then build without OS bundling
   # (we install the raw binaries ourselves below).
   cd apps/desktop
+  # Pin pnpm to the version the project builds against (lockfile is v9, CI uses
+  # pnpm 9) instead of the host's pnpm. Arch's rolling pnpm (>=10) requires
+  # Node >=22.13 (it uses the node:sqlite builtin), so on a box with an older
+  # system Node it crashes before installing anything. pnpm 9 runs across
+  # Node 18-26+, so this builds regardless of the host's Node version.
+  local pnpm_home="${srcdir}/.pnpm"
+  npm install -g --prefix "$pnpm_home" pnpm@9 >/dev/null
+  export PATH="$pnpm_home/bin:$PATH"
   pnpm install --frozen-lockfile
   pnpm tauri build --no-bundle
 }
