@@ -1,0 +1,10 @@
+--- a/configure.ac	2026-06-26 21:44:01.756981275 +0200
++++ b/configure.ac	2026-06-26 21:58:55.827683255 +0200
+@@ -136,6 +136,7 @@
+ CPPFLAGS="$PYTHON_CPPFLAGS $CPPFLAGS"
+ NUMPY_INCLUDE_DIR=`echo "import numpy; print(numpy.get_include())" | $PYTHON - 2>/dev/null`
+ AC_SUBST(NUMPY_INCLUDE_DIR)
++CPPFLAGS="-I${NUMPY_INCLUDE_DIR} $CPPFLAGS"
+ AC_CHECK_HEADER([${NUMPY_INCLUDE_DIR}/numpy/arrayobject.h],
+                 [NUMPY_HEADER=yes],
+ 			[AC_MSG_ERROR([Numpy extension header not found])],

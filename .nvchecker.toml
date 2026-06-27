@@ -1,0 +1,4 @@
+[libcmaes]
+source = "git"
+git = "https://github.com/CMA-ES/libcmaes.git"
+prefix = "v"

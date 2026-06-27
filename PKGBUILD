@@ -2,17 +2,27 @@
 # Contributor: Oliver Mader <b52@reaktor42.de>
 
 pkgname=libcmaes
-pkgver=0.10
-pkgrel=2
+pkgver=0.10.2
+pkgrel=1
 pkgdesc="libcmaes is a multithreaded C++11 library with Python bindings for high performance blackbox stochastic optimization using the CMA-ES algorithm for Covariance Matrix Adaptation Evolution Strategy."
 url="https://github.com/CMA-ES/libcmaes"
 arch=('x86_64' 'i686')
 license=('LGPLv3')
 depends=('gcc-libs')
 optdepends=('boost-libs: Python support' 'python-numpy: Python support')
-makedepends=('eigen' 'boost' 'python-numpy')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CMA-ES/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('97a8e5b4ccbed04cfa00ad55a0c77c7f')
+makedepends=('python-setuptools' 'eigen' 'boost' 'python-numpy')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/CMA-ES/${pkgname}/archive/v${pkgver}.tar.gz"
+  "numpy-include-cppflags.patch"
+  )
+md5sums=('c0abd0a9357c88c43de725dfacad8c30'
+         'd1387bf1c2fc882d0f6667ec123c77ac')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p1 -i "${srcdir}/numpy-include-cppflags.patch"
+  autoreconf -fi
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
