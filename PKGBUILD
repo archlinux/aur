@@ -68,17 +68,22 @@ build() {
 
     chmod +x winetricks
 
-    # Pre-setup Wine prefix for instant first launch
-    msg2 "Setting up Wine prefix (may take a minute)..."
+    # Pre-setup Wine prefix (so first launch is instant)
+    msg2 "Initializing Wine prefix..."
     export WINEPREFIX="${srcdir}/prefix-template"
     export WINEDLLOVERRIDES="mscoree="
     export PATH="${srcdir}/soda-wine/bin:${PATH}"
     mkdir -p "${WINEPREFIX}"
     wine64 wineboot -u >/dev/null 2>&1 || true
+
     msg2 "  Installing DXVK..."
     "${srcdir}/dxvk/setup_dxvk.sh" install >/dev/null 2>&1 || true
-    msg2 "  Installing core fonts..."
-    "${srcdir}/winetricks" -q corefonts >/dev/null 2>&1 || true
+
+    msg2 "  Installing core fonts (${_soda_version})..."
+    "${srcdir}/winetricks" -q corefonts 2>&1 | \
+        while IFS= read -r line; do
+            echo "    ${line}"
+        done || true
     msg2 "Wine prefix ready."
 }
 
@@ -91,7 +96,7 @@ package() {
     mkdir -p "${pkgdir}${td_prefix}/wine"
     cp -r soda-wine/* "${pkgdir}${td_prefix}/wine/" >/dev/null 2>&1
 
-    msg2 "Installing TouchDesigner ${_td_ver}..."
+    msg2 "Installing TouchDesigner..."
     mkdir -p "${pkgdir}${td_prefix}/td"
     if [ -d td/app ]; then
         cp -r td/app/* "${pkgdir}${td_prefix}/td/" >/dev/null 2>&1
@@ -122,7 +127,7 @@ package() {
         echo "DXVK ${_dxvk_version}"
     } > "${pkgdir}${td_prefix}/VERSION"
 
-    # Wrapper with auto-patching
+    # Wrapper script
     msg2 "Creating wrapper..."
     mkdir -p "${pkgdir}${td_prefix}/app"
     cat > "${pkgdir}${td_prefix}/app/touchdesigner-wrapper.sh" << 'WRAPPER'
@@ -145,9 +150,9 @@ export LD_LIBRARY_PATH="${RUNNER_DIR}/lib:${RUNNER_DIR}/lib64:${LD_LIBRARY_PATH:
 
 mkdir -p "$(dirname "${WINE_PREFIX}")"
 
-# Copy pre-made prefix (instant, no setup)
+# Copy pre-made prefix on first run (instant)
 if [ ! -f "${WINE_PREFIX}/drive_c/windows/system.reg" ] && [ -d "${PREFIX}/default-prefix" ]; then
-    echo "TouchDesigner — Copying pre-made prefix..."
+    echo "TouchDesigner — Pre-placing Wine prefix..."
     mkdir -p "${WINE_PREFIX}"
     cp -r "${PREFIX}/default-prefix/"* "${WINE_PREFIX}/" 2>/dev/null
 fi
@@ -158,7 +163,7 @@ if [ -d "${DATA_DIR}/ProgramData" ]; then
     cp -r "${DATA_DIR}/ProgramData/"* "${WINE_PREFIX}/drive_c/ProgramData/" 2>/dev/null
 fi
 
-# .toe argument
+# Handle .toe argument
 EXTRA_ARGS=()
 INPUT_PATH=""
 if [ -n "$1" ]; then
@@ -170,7 +175,7 @@ if [ -n "$1" ]; then
     EXTRA_ARGS=("z:${INPUT_PATH//\\/\\\\}")
 fi
 
-# Auto-patching
+# Auto-patching .toe files
 TOE_EXPAND="$(find "$WINE_PREFIX/drive_c" -type f -iname 'toeexpand.exe' 2>/dev/null | head -n1 || true)"
 TOE_COLLAPSE="$(find "$WINE_PREFIX/drive_c" -type f -iname 'toecollapse.exe' 2>/dev/null | head -n1 || true)"
 
