@@ -1,0 +1,5 @@
+[hush]
+source = "github"
+github = "d99kris/hush"
+use_latest_release = true
+prefix = "v"

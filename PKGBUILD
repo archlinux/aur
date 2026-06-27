@@ -1,49 +1,51 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-pkgname=hush
-pkgver=0.1.4.alpha
+_pkgauthor=d99kris
+_pkgname=hush
+pkgname=${_pkgname}
+pkgver=1.03
 pkgrel=1
-pkgdesc='A unix shell scripting language based on the Lua programming language'
+_pkgvername=v${pkgver}
+pkgdesc="Suppress stdout for commands executed successfully on Linux"
 arch=('x86_64')
-url='https://github.com/hush-shell/hush'
-license=('MIT')
-depends=('gcc-libs')
-makedepends=('git' 'rust')
-_commit='3d7a6710797afc7e7826abb1bf794354ccb5e024'
-source=("$pkgname::git+$url#commit=$_commit")
-md5sums=('SKIP')
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
+license=('BSD-3-Clause')
 
-pkgver() {
-  cd "$pkgname"
+provides=("${_pkgname}" "faketty")
 
-  git describe --tags | sed -e 's/^v//' -e 's/-/./g'
-}
+makedepends=('cmake' 'binutils')
+depends=('glibc' 'libgcc' 'libstdc++' 'bash')
+
+source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('7f792e274da659ca833a24a66a53ec6be8c769fcdf4ac11194ad2d397a78d674')
+
 
 prepare() {
-  cd "$pkgname"
+	cd "${srcdir}/${pkgname}-${pkgver}" || exit
 
-  # download dependencies
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	sed -i -e 's/cmake_minimum_required(VERSION 3.0...3.22 FATAL_ERROR)/cmake_minimum_required(VERSION 3.5 FATAL_ERROR)/g' ./CMakeLists.txt
 }
 
 build() {
-  cd "$pkgname"
+	cd "${srcdir}/${pkgname}-${pkgver}/" || exit
 
-  cargo build --frozen --release --all-features
-}
+	cmake \
+		-S ./ \
+		-B ./build \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=None \
+		-Wno-dev
 
-check() {
-  cd "$pkgname"
-
-  cargo test --frozen --all-features
+	cmake --build build
 }
 
 package() {
-  cd "$pkgname"
+	cd "${srcdir}/${pkgname}-${pkgver}/" || exit
 
-  # binary
-  install -vDm755 -t "$pkgdir/usr/bin" target/release/hush
+	DESTDIR="${pkgdir}" cmake --install ./build
 
-  # license
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
