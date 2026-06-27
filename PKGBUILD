@@ -58,22 +58,23 @@ build() {
     #
     # We find the inner Inno Setup exe and extract it with innoextract.
 
-    # 1. TouchDesigner
-    msg2 "Extracting TouchDesigner..."
-    local inner_exe=""
-    for f in *.exe; do
-        if [ -f "$f" ] && [ "$f" != "TouchDesigner.${_td_ver}.exe" ]; then
+    # First, try 7z on the main exe (best results)
+    msg2 "Extracting with 7z..."
+    7z x "TouchDesigner.${_td_ver}.exe" -o"td-7z" -y >/dev/null 2>&1
+
+    # 7z extracts numbered streams like [0], [1] etc (not .exe files)
+    inner_exe=""
+    for f in td-7z/*; do
+        if [ -f "$f" ] && [ "$(basename "$f")" != "CERTIFICATE" ]; then
             inner_exe="$f"
             break
         fi
     done
 
     if [ -z "$inner_exe" ]; then
-        # Inner exe not found — try 7z on the main exe
-        msg2 "Trying 7z extraction..."
-        7z x "TouchDesigner.${_td_ver}.exe" -o"td-7z" -y >/dev/null 2>&1
-        for f in td-7z/*.exe; do
-            if [ -f "$f" ]; then
+        # Fallback: bsdtar may have extracted .bin files
+        for f in *.bin *.exe; do
+            if [ -f "$f" ] && [ "$f" != "TouchDesigner.${_td_ver}.exe" ]; then
                 inner_exe="$f"
                 break
             fi
