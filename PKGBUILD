@@ -9,9 +9,18 @@ pkgdesc='Library to report hypervisor information from inside a VM'
 arch=('x86_64')
 url='https://github.com/puppetlabs/libwhereami'
 license=('APACHE')
-depends=('boost-libs' 'gcc-libs' 'glibc' 'leatherman' 'leatherman_execution.so'
-         'leatherman_file_util.so' 'leatherman_util.so' 'leatherman_logging.so'
-         'leatherman_locale.so')
+depends=(
+  'boost-libs'
+  'libgcc'
+  'libstdc++'
+  'glibc'
+  'leatherman'
+  'leatherman_execution.so'
+  'leatherman_file_util.so'
+  'leatherman_util.so'
+  'leatherman_logging.so'
+  'leatherman_locale.so'
+)
 makedepends=('boost' 'cmake' 'rapidjson' 'curl')
 checkdepends=('python')
 provides=('libwhereami.so')
