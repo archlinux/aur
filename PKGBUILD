@@ -1,13 +1,14 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.16.0.r54.g462cd07
+pkgver=0.16.0.r83.g9c03109
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (CLI)"
 arch=('aarch64' 'x86_64')
 url="https://shadps4.net/"
 license=('GPL-2.0-or-later')
 depends=(
+	'abseil-cpp' # protobuf dependency
 	'glibc'
 	'glslang>=15'
 	'miniz>=3.1'
@@ -44,7 +45,7 @@ makedepends=(
 	'xbyak>=7.07'
 	'xxhash>=0.8.2'
 	'zlib'
-	'zycore-c' # 'zydis>=5'
+	'zycore-c' # zydis dependency
 )
 optdepends=(
 	'renderdoc: for graphics debugging'
@@ -61,6 +62,7 @@ source=(
 	"$_pkgname-imguifiledialog::git+https://github.com/shadexternals/ImGuiFileDialog.git"
 	"$_pkgname-libatrac9::git+https://github.com/shadps4-emu/ext-LibAtrac9.git"
 	"$_pkgname-libusb::git+https://github.com/shadexternals/libusb.git"
+	"$_pkgname-protobuf::git+https://github.com/shadexternals/protobuf.git"
 	"$_pkgname-sirit::git+https://github.com/shadps4-emu/sirit.git"
 	"$_pkgname-tracy::git+https://github.com/shadps4-emu/tracy.git"
 	"aac::git+https://android.googlesource.com/platform/external/aac.git"
@@ -68,7 +70,7 @@ source=(
 	"spdlog::git+https://github.com/gabime/spdlog.git"
 	"zydis::git+https://github.com/zyantific/zydis.git"
 )
-b2sums=('SKIP'{,,,,,,,,,,,,})
+b2sums=('SKIP'{,,,,,,,,,,,,,})
 
 pkgver() {
 	cd $_pkgname
@@ -85,6 +87,7 @@ prepare() {
 	git config submodule.externals/LibAtrac9.url ../$_pkgname-libatrac9
 	git config submodule.externals/libusb.url ../$_pkgname-libusb
 	git config submodule.externals/minimp3.url ../minimp3
+	git config submodule.externals/protobuf.url ../$_pkgname-protobuf
 	git config submodule.externals/sirit.url ../$_pkgname-sirit
 	git config submodule.externals/spdlog.url ../spdlog
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
@@ -92,6 +95,8 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 	# use makepkg.conf flags
 	sed -i '/-march=/d' CMakeLists.txt
+	# use system abseil-cpp
+	sed -i '/protobuf/s/FORCE_FETCH_DEPENDENCIES/LOCAL_DEPENDENCIES_ONLY/' externals/CMakeLists.txt
 	# use system glslang
 	sed -i '/find_package/s/glslang 15/glslang/' CMakeLists.txt
 	# use system openssl
@@ -131,7 +136,6 @@ package() {
 		'libudev.so'
 		'libuuid.so'
 		'libxxhash.so'
-		# 'libZydis.so'
 	)
 
 	# shellcheck disable=SC2154
