@@ -1,0 +1,4 @@
+[python-cmaes]
+source = "git"
+git = "https://github.com/CyberAgent/cmaes.git"
+prefix = "v"
