@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=oh-my-pi
-pkgver=16.1.22
+pkgver=16.2.1
 pkgrel=1
 pkgdesc="AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
 )
 sha256sums=('SKIP'
             'dde09e30999046c4edef7283114055121b91438edc2b71dbb059b6e5c2676ecd'
-            '45cee585735b74da7e369da7f177a792e88fac8069774a952f32fc2212c66cc0')
+            'a81209715174b5413d5743ec4b461ffd71b1a1fc37bd4a7dcde23c27e35bc62f')
 
 prepare() {
     cd "${srcdir}/${pkgname}"
@@ -53,7 +53,7 @@ build() {
     CI=1 TARGET_PLATFORM='linux' TARGET_ARCH='x64' TARGET_VARIANTS='baseline modern' \
         bun run ci:build:native
 
-    OMP_SKIP_NATIVE_EMBED=1 RELEASE_TARGETS='linux-x64' bun run ci:release:build-binaries
+    RELEASE_TARGETS='linux-x64' bun run ci:release:build-binaries
 }
 
 _install_completions() {
