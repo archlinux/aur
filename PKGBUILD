@@ -14,7 +14,7 @@ license=('GPL-2.0')
 
 provides=("${_pkgname}")
 
-depends=('gcc-libs' 'glibc' 'qt6-base' 'libglvnd' 'ncurses' 'taglib')
+depends=('glibc' 'libgcc' 'libstdc++' 'qt6-base' 'qt6-multimedia' 'libglvnd' 'ncurses' 'taglib')
 makedepends=('qt6-base' 'qt6-tools' 'qtutilities-qt6' 'qt6-multimedia' 'qt6-multimedia-ffmpeg' 'qt6-imageformats' 'gstreamer' 'help2man')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
