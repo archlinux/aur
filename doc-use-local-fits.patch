@@ -1,0 +1,54 @@
+--- a/docs/getting_started/examples.rst	2026-06-25 03:55:06.000000000 +0800
++++ b/docs/getting_started/examples.rst	2026-06-26 20:48:18.921106110 +0800
+@@ -18,7 +18,8 @@
+     from matplotlib import pyplot as plt
+     from regions import Regions
+ 
+-    image_file = get_pkg_data_filename('tutorials/FITS-images/HorseHead.fits')
++    try: image_file = get_pkg_data_filename('tutorials/FITS-images/HorseHead.fits')
++    except Exception: image_file = '../_static/HorseHead.fits' # use local fits if no network while doc building
+     data = fits.getdata(image_file, ext=0, memmap=False)
+     data = np.rot90(data, k=-1)
+ 
+@@ -53,7 +54,8 @@
+     from matplotlib import patheffects
+     from regions import CircleSphericalSkyRegion, RangeSphericalSkyRegion
+ 
+-    image_file = get_pkg_data_filename('allsky/allsky_rosat.fits')
++    try: image_file = get_pkg_data_filename('allsky/allsky_rosat.fits')
++    except Exception: image_file = '../_static/allsky_rosat.fits'   # use local fits if no network while doc building
+     image_data = fits.getdata(image_file, ext=0, memmap=False)
+     image_hdr = fits.getheader(image_file)
+     wcs = WCS(image_hdr)
+--- a/docs/user_guide/masks.rst	2026-06-25 03:55:06.000000000 +0800
++++ b/docs/user_guide/masks.rst	2026-06-26 21:05:00.902214490 +0800
+@@ -196,7 +196,8 @@
+     from regions.core import PixCoord
+     from regions.shapes.circle import CirclePixelRegion
+ 
+-    filename = get_pkg_data_filename('photometry/M6707HH.fits')
++    try: filename = get_pkg_data_filename('photometry/M6707HH.fits')
++    except Exception: filename = '../_static/M6707HH.fits'    # use local fits if no network while doc building
+     hdulist = fits.open(filename)
+     hdu = hdulist[0]
+     center = PixCoord(158.5, 1053.5)
+@@ -229,7 +230,8 @@
+     from regions.core import PixCoord
+     from regions.shapes.circle import CirclePixelRegion
+ 
+-    filename = get_pkg_data_filename('photometry/M6707HH.fits')
++    try: filename = get_pkg_data_filename('photometry/M6707HH.fits')
++    except Exception: filename = '../_static/M6707HH.fits'    # use local fits if no network while doc building
+     hdulist = fits.open(filename)
+     hdu = hdulist[0]
+     center = PixCoord(158.5, 1053.5)
+@@ -289,7 +291,8 @@
+     from astropy.utils.data import get_pkg_data_filename
+     from regions import EllipsePixelRegion, PixCoord
+ 
+-    filename = get_pkg_data_filename('photometry/M6707HH.fits')
++    try: filename = get_pkg_data_filename('photometry/M6707HH.fits')
++    except Exception: filename = '../_static/M6707HH.fits'    # use local fits if no network while doc building
+     hdulist = fits.open(filename)
+     hdu = hdulist[0]
+ 
