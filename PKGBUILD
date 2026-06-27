@@ -1,24 +1,24 @@
 # Maintainer: Johnathan Corgan <jcorgan@corganlabs.com>
 pkgname=fips
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Distributed, decentralized network routing protocol for mesh nodes"
 url="https://github.com/jmcorgan/fips"
 license=('MIT')
 arch=('x86_64')
 depends=('gcc-libs' 'glibc')
-makedepends=('cargo')
+makedepends=('cargo' 'clang')
 optdepends=('systemd-resolved: .fips DNS resolution')
-conflicts=('fips-git')
+conflicts=('fips-git' 'fips-git-debug')
 backup=('etc/fips/fips.yaml' 'etc/fips/hosts' 'etc/fips/fips.nft')
 install=fips.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jmcorgan/fips/archive/v$pkgver.tar.gz"
         "fips.sysusers"
         "fips.tmpfiles")
-b2sums=('0dbe292c3d1a5fed76714ec2c7b9759d1abd75fa509427712c008423958ec811ac35ceefba1d876e27c76ab1b197566a56d8d2686934b2f92bb39c8f7977e3a9'
+b2sums=('c5d4d16dfb19f91b6c8822f6cd6c2bb2dff2c310e7d7ec44eb320e78525c569defd991002d13f75834c7fb1905cda1d2cbad4f29afff51a9e1f69abf0a6e7cc7'
         '25a0552f3d67d12f48dfd40fe4776ad7c46afeeab76bd2674b48e234db3c145810a24569a8c1a7f4c186eb546f0fae2ebe1550080c0e91d8eb72ba9934c752a6'
         '844257cb8e09cd935d0d6345922d0f3ec777411daca20e24175b346a7b3cb95ebce12631a9466c4d94f1588ed8d62d92514ff24025ccfd0efb358e542b454b00')
-options=('!lto')
+options=('!lto' '!debug')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -52,6 +52,10 @@ package() {
     install -Dm0644 packaging/debian/fips-dns.service "$pkgdir/usr/lib/systemd/system/fips-dns.service"
     install -Dm0644 packaging/debian/fips-gateway.service "$pkgdir/usr/lib/systemd/system/fips-gateway.service"
     install -Dm0644 packaging/debian/fips-firewall.service "$pkgdir/usr/lib/systemd/system/fips-firewall.service"
+
+    # DNS helper scripts referenced by fips-dns.service
+    install -Dm0755 packaging/common/fips-dns-setup "$pkgdir/usr/lib/fips/fips-dns-setup"
+    install -Dm0755 packaging/common/fips-dns-teardown "$pkgdir/usr/lib/fips/fips-dns-teardown"
 
     # Config files (from packaging/common/)
     install -Dm0600 packaging/common/fips.yaml "$pkgdir/etc/fips/fips.yaml"
