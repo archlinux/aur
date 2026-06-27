@@ -7,9 +7,9 @@
 test ! -d FreeCAD -a -d ../freecad-git/FreeCAD && ln -s ../freecad-git/FreeCAD .
 
 pkgname=freecad-weekly
-pkgver=1.2.0dev.2026.06.18
+pkgver=26.3.0dev.06.24
 pkgrel=1
-pkgdesc='A general purpose 3D CAD modeler - git checkout of last weekly-YYYY.MM.DD tag'
+pkgdesc='A general purpose 3D CAD modeler - git checkout of last weekly-yyyy.MM.DD tag'
 arch=('x86_64')
 url='https://www.freecad.org/'
 license=('LGPL')
@@ -64,9 +64,8 @@ optdepends=(
 )
 provides=('freecad')
 conflicts=('freecad' 'freecad-git' 'freecad-appimage' 'freecad-appimage-git')
-tag="weekly-${pkgver:(-10):10}"
-#if not dot separed ${pkgver:-8:4}.${pkgver:-4:2}.${pkgver:-2:2}"
-source=("git+https://github.com/FreeCAD/FreeCAD.git#tag=$tag")
+lastweeklytag=`git --git-dir=FreeCAD tag -l weekly-\*|tail -1`
+source=("git+https://github.com/FreeCAD/FreeCAD.git#tag=$lastweeklytag")
 #source=("git+https://github.com/FreeCAD/FreeCAD.git#branch=main")
 #source=("git+https://github.com/FreeCAD/FreeCAD.git#branch=releases/FreeCAD-1-1")
 md5sums=('SKIP')
@@ -91,9 +90,8 @@ pkgver() {
     # While checking version convention history, PACKAGE_VERSION_NAME seems
     # lost since FreeCAD source commit 0026a35886cf7b62d5fa5861ba1e52f7434f84e2
   fi
-  hash=$(git rev-parse --short HEAD)
-  weekdate=$(git tag -l weekly\*|tail -1|cut -d- -f2) # E.g. 2026.04.29
-  printf "%d.%d.%d%s.%s" $major $minor $patch $suffix $weekdate # "$hash"
+  weekdate=${lastweeklytag#weekly-2[0-9]*.} # E.g. 06.24 for weekly-2026.06.24
+  printf "%d.%d.%d%s.%s" $major $minor $patch $suffix $weekdate
 }
 
 prepare() {
