@@ -1,0 +1,14 @@
+pkgbase = vapoursynth-plugin-d2vsource
+	pkgdesc = Plugin for Vapoursynth: d2vsource
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/dwbuiten/d2vsource
+	arch = x86_64
+	license = LGPL2.1-only
+	makedepends = meson
+	depends = ffmpeg
+	depends = vapoursynth
+	source = https://github.com/dwbuiten/d2vsource/archive/refs/tags/v1.4.tar.gz
+	b2sums = 8389fe45f6ba05409d0f76ec03ffbdc53c153169073e985d5880b173ec2174cbd5b96ab860fb4e70cb6a08c17fc1db8185418a6a369dc9b1058eb3dd7ccd3500
+
+pkgname = vapoursynth-plugin-d2vsource
