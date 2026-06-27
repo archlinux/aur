@@ -1,36 +1,50 @@
-diff -ru a/browser/components/preferences/main.js b/browser/components/preferences/main.js
---- a/browser/components/preferences/main.js
-+++ b/browser/components/preferences/main.js
-@@ -699,7 +699,8 @@
-       document.getElementById("web-appearance-rfp-warning")?.remove();
+diff -ru a/browser/components/preferences/config/appearance.mjs b/browser/components/preferences/config/appearance.mjs
+--- a/browser/components/preferences/config/appearance.mjs
++++ b/browser/components/preferences/config/appearance.mjs
+@@ -96,13 +96,13 @@
+ 
+ Preferences.addSetting({
+   id: "librewolfRFPWarning",
+-  deps: ["librewolfRFP"],
+-  visible: ({librewolfRFP}) => {
++  deps: ["librewolfRFP","librewolfRFPOverrideColor"],
++  visible: ({librewolfRFP,librewolfRFPOverrideColor}) => {
+     const interval = setInterval(() => {
        const chooser = document.getElementById("web-appearance-chooser");
-       const container = document.getElementById("webAppearanceGroup");
--      const rfp = Services.prefs.getBoolPref("privacy.resistFingerprinting", false);
-+      const rfp = Services.prefs.getBoolPref("privacy.resistFingerprinting", false) &&
-+      	!Services.prefs.getBoolPref("privacy.override_rfp_for_color_scheme", false);
- 
        if (chooser) {
-         chooser.style.opacity = rfp ? "0.3" : "1";
-@@ -733,6 +734,7 @@
-       },
-     };
-     Services.prefs.addObserver("privacy.resistFingerprinting", prefObserver);
-+    Services.prefs.addObserver("privacy.override_rfp_for_color_scheme", prefObserver);
- 
-     const ensurePaneReady = cb => {
-       const id = "webAppearanceGroup";
-@@ -754,6 +756,7 @@
-     return () => {
-       FORCED_COLORS_QUERY.removeEventListener("change", emitChange);
-       Services.prefs.removeObserver("privacy.resistFingerprinting", prefObserver);
-+      Services.prefs.removeObserver("privacy.override_rfp_for_color_scheme", prefObserver);
-     };
+         clearInterval(interval);
+-        if (librewolfRFP.value) {
++        if (librewolfRFP.value && !librewolfRFPOverrideColor.value) {
+           chooser.style.opacity = "0.3";
+           chooser.style.pointerEvents = "none";
+         } else {
+@@ -111,7 +111,7 @@
+         }
+       }
+     }, 100);
+-    return librewolfRFP.value;
++    return librewolfRFP.value && !librewolfRFPOverrideColor.value;
    },
-   visible: () => {
+ });
+ 
+diff -ru a/browser/components/preferences/librewolf.js b/browser/components/preferences/librewolf.js
+--- a/browser/components/preferences/librewolf.js
++++ b/browser/components/preferences/librewolf.js
+@@ -130,6 +130,10 @@
+   pref: "privacy.resistFingerprinting",
+ });
++Preferences.addSetting({
++  id: "librewolfRFPOverrideColor",
++  pref: "privacy.override_rfp_for_color_scheme",
++});
+ Preferences.addSetting({
+   id: "librewolfLetterboxing",
+   pref: "privacy.resistFingerprinting.letterboxing",
+ });
 diff -ru a/dom/base/Document.cpp b/dom/base/Document.cpp
 --- a/dom/base/Document.cpp
 +++ b/dom/base/Document.cpp
-@@ -20577,7 +20577,8 @@
+@@ -20782,7 +20782,8 @@
  
  ColorScheme Document::PreferredColorScheme(IgnoreRFP aIgnoreRFP) const {
    if (ShouldResistFingerprinting(RFPTarget::CSSPrefersColorScheme) &&
@@ -43,13 +57,13 @@ diff -ru a/dom/base/Document.cpp b/dom/base/Document.cpp
 diff -ru a/modules/libpref/init/StaticPrefList.yaml b/modules/libpref/init/StaticPrefList.yaml
 --- a/modules/libpref/init/StaticPrefList.yaml
 +++ b/modules/libpref/init/StaticPrefList.yaml
-@@ -16751,6 +16751,12 @@
+@@ -17109,6 +17109,12 @@
    value: false
    mirror: always
  
 +# Allows overriding RFP for only the dark/light pref
 +- name: privacy.override_rfp_for_color_scheme
-+  type: bool
++  type: RelaxedAtomicBool
 +  value: false
 +  mirror: always
 +
