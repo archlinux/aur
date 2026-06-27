@@ -1,6 +1,6 @@
 pkgbase = smplayer-git
 	pkgdesc = Media player with built-in codecs that can play virtually all video and audio formats
-	pkgver = 24.5.0.10283.r3.gc817337
+	pkgver = 10415.r4.gf626556
 	pkgrel = 1
 	url = https://www.smplayer.info
 	arch = x86_64
