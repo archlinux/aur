@@ -7,7 +7,7 @@ post_install() {
 ==>     schnelle-umlaute-setup
 ==>
 ==> This writes ~/.config/environment.d/fcitx5.conf so GTK, Qt, and X11
-==> apps know to use fcitx5 — no system files are touched.
+==> apps know to use fcitx5, no system files are touched.
 ==>
 ==> Then logout and login.
 ==>
@@ -27,7 +27,7 @@ post_upgrade() {
 ==>
 ==> If the editor's "Setup required" dialog appears on next launch,
 ==> either click "Set up now" or re-run `schnelle-umlaute-setup` to
-==> (re)write ~/.config/environment.d/fcitx5.conf — then logout and
+==> (re)write ~/.config/environment.d/fcitx5.conf, then logout and
 ==> login to apply.
 
 EOM

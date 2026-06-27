@@ -3,8 +3,8 @@
 pkgname=fcitx5-schnelle-umlaute-git
 _pkgname=fcitx5-schnelle-umlaute
 pkgver=1.2.2.r455.gb0cd7f2
-pkgrel=1
-pkgdesc="Quick Accent equivalent for Linux/Fcitx5 — map any Unicode character"
+pkgrel=2
+pkgdesc="Quick Accent equivalent for Linux/Fcitx5, map any Unicode character"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Maik-0000FF/schnelle-umlaute"
 license=('GPL-3.0-or-later')
@@ -29,7 +29,7 @@ optdepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install="$pkgname.install"
-source=("$_pkgname::git+$url.git#branch=dev")
+source=("$_pkgname::git+$url.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
