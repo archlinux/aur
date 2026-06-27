@@ -1,11 +1,12 @@
 # shellcheck disable=SC2034,SC2154,SC2164,SC2016
-# Maintainer: Uncle Hunto <unclehunto at YaI00 D0t COM>
+# Old Maintainer: Uncle Hunto <unclehunto at YaI00 D0t COM>
+# Maintainer: Energetix/Dark Nebula <https://github.com/Jobanny-Friki>
 # Contributor: Sudowoodo <sudowoodoarch@gmail.com>
 # Contributor: Xemertix <arch88(at)katamail(dot)com>
 
 pkgname=lib32-gmp4-v2
 pkgver=4.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Legacy version of gmp. Provides libgmp.so.3 (32 bit)"
 arch=('x86_64')
 url="http://gmplib.org/"
