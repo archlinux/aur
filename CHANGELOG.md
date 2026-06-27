@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+> [!NOTE]
+> Update your Golazo app by running `golazo --update`; and visit the new project website: https://thegolazo.app
+
+### Added
+- **World Cup Bracket** — Symmetric bracket covering all rounds (R32 → Final for 2026, R16 → Final for 2022); auto-updates with winner/loser styling as matches progress. Select World Cup 2026 -> Bracket View(Press b)
+
+![wc-bracket-view](https://github.com/0xjuanma/golazo/blob/main/assets/wc-2026-knockout-bracket.png)
+
+### Changed
+
+### Fixed
+
+## [0.29.1] - 2026-06-17
+
 ### Added
 
 ### Changed
