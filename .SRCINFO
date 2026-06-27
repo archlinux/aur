@@ -1,11 +1,12 @@
 pkgbase = python-snowplow-tracker
 	pkgdesc = Snowplow event tracker for Python. Add analytics to Python apps, webapps and games.
-	pkgver = 0.14.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/snowplow/snowplow-python-tracker
 	arch = any
 	license = Apache
 	makedepends = python
+	makedepends = python-setuptools
 	makedepends = python-pytest
 	makedepends = python-freezegun
 	depends = python
@@ -13,7 +14,7 @@ pkgbase = python-snowplow-tracker
 	depends = python-typing_extensions
 	optdepends = python-celery:
 	optdepends = python-redis:
-	source = python-snowplow-tracker-0.14.0.tar.gz::https://github.com/snowplow/snowplow-python-tracker/archive/refs/tags/0.14.0.tar.gz
-	sha256sums = 2fe5f3a46f3a938cc2d2c08e061e70662a985bdfe4bc1b0be8b2664b65c97695
+	source = python-snowplow-tracker-1.1.0.tar.gz::https://github.com/snowplow/snowplow-python-tracker/archive/refs/tags/1.1.0.tar.gz
+	sha256sums = 91609b1e8e105b3690c6245338bbfb6c25fd41c6823170a688a5189a92dc6ba3
 
 pkgname = python-snowplow-tracker

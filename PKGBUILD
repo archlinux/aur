@@ -1,12 +1,12 @@
 # Maintainer: Benoît Allard <benoit.allard@gmx.de>
 pkgname=python-snowplow-tracker
-pkgver=0.14.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Snowplow event tracker for Python. Add analytics to Python apps, webapps and games."
 arch=('any')
 url="https://github.com/snowplow/snowplow-python-tracker"
 license=('Apache')
-makedepends=("python" "python-pytest" "python-freezegun")
+makedepends=("python-setuptools" "python-pytest" "python-freezegun")
 depends=("python" "python-requests" "python-typing_extensions")
 optdepends=(
     "python-celery: "
@@ -14,7 +14,7 @@ optdepends=(
 )
 _name=snowplow-python-tracker
 source=("$pkgname-$pkgver.tar.gz::https://github.com/snowplow/$_name/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2fe5f3a46f3a938cc2d2c08e061e70662a985bdfe4bc1b0be8b2664b65c97695')
+sha256sums=('91609b1e8e105b3690c6245338bbfb6c25fd41c6823170a688a5189a92dc6ba3')
 
 build() {
     cd $_name-$pkgver

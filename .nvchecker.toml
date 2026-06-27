@@ -1,0 +1,3 @@
+[python-snowplow-tracker]
+source = "git"
+git = "https://github.com/snowplow/snowplow-python-tracker.git"
