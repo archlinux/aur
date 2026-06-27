@@ -1,6 +1,6 @@
 pkgbase = opentelemetry-python-contrib
 	pkgver = 0.64b0
-	pkgrel = 1
+	pkgrel = 3
 	arch = any
 	license = Apache-2.0
 	makedepends = git
@@ -142,7 +142,7 @@ pkgname = python-opentelemetry-instrumentation-aiokafka
 	depends = python-opentelemetry-api
 	depends = python-opentelemetry-instrumentation
 	depends = python-opentelemetry-semantic-conventions
-	depends = python-typing-extensions
+	depends = python-typing_extensions
 	optdepends = python-aiokafka
 
 pkgname = python-opentelemetry-instrumentation-aiopg
@@ -170,7 +170,7 @@ pkgname = python-opentelemetry-instrumentation-asyncclick
 	depends = python-opentelemetry-api
 	depends = python-opentelemetry-instrumentation
 	depends = python-opentelemetry-semantic-conventions
-	depends = python-typing-extensions
+	depends = python-typing_extensions
 	depends = python-wrapt
 	optdepends = python-asyncclick
 
@@ -283,6 +283,14 @@ pkgname = python-opentelemetry-instrumentation-elasticsearch
 	depends = python-opentelemetry-semantic-conventions
 	depends = python-wrapt
 	optdepends = python-elasticsearch
+
+pkgname = python-opentelemetry-instrumentation-exceptions
+	pkgdesc = OpenTelemetry unhandled exceptions instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-exceptions
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	optdepends = 
 
 pkgname = python-opentelemetry-instrumentation-falcon
 	pkgdesc = Falcon instrumentation for OpenTelemetry
@@ -593,6 +601,7 @@ pkgname = python-opentelemetry-contrib-instrumentations
 	depends = python-opentelemetry-instrumentation-dbapi
 	depends = python-opentelemetry-instrumentation-django
 	depends = python-opentelemetry-instrumentation-elasticsearch
+	depends = python-opentelemetry-instrumentation-exceptions
 	depends = python-opentelemetry-instrumentation-falcon
 	depends = python-opentelemetry-instrumentation-fastapi
 	depends = python-opentelemetry-instrumentation-flask

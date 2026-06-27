@@ -53,6 +53,7 @@ for dep in deps:
         print(f'python-{name}')
 " 2>/dev/null | \
             sed 's|python-python|python|' | \
+            sed 's|python-typing-extensions|python-typing_extensions|g' | \
             sort -u
         ))
         if [[ -z ${depends[@]} ]]; then
@@ -83,6 +84,7 @@ for group, deps in opt.items():
             sed 's|_|-|g' | \
             sed 's|python-psycopg2-binary|python-psycopg2|g' | \
             sed 's|python-jinja2|python-jinja|g' | \
+            sed 's|python-typing-extensions|python-typing_extensions|g' | \
             sort -u
         ))
         echo "    \""${depends[@]}"\""
