@@ -2,12 +2,15 @@
 # Contributor: Iswad
 
 pkgname=touchdesigner-linux
-pkgver=2025.32820
+pkgver=1.4
 pkgrel=1
 pkgdesc="TouchDesigner on Linux — Soda Wine, Vulkan-accelerated, ready to run"
 arch=('x86_64')
 url="https://github.com/iswad-lab/TouchDesigner-Linux"
 license=('custom:custom')
+
+# TouchDesigner version to package
+_td_ver=2025.32820
 depends=(
     'python'
     'git'
@@ -61,7 +64,7 @@ _soda_url="https://github.com/bottlesdevs/wine/releases/download/soda-${_soda_ve
 _soda_sha256="ac5c8e342d376bd87f3d488b86b58e4ed8a35f1d807d5bdc325adec3943b0ced"
 
 # ── TouchDesigner ────────────────────────────────────────────────────────────
-_td_url="https://download.derivative.ca/TouchDesigner.${pkgver}.exe"
+_td_url="https://download.derivative.ca/TouchDesigner.${_td_ver}.exe"
 
 # ── DXVK 2.4 ─────────────────────────────────────────────────────────────────
 _dxvk_version="2.4"
@@ -74,7 +77,7 @@ _winetricks_url="https://raw.githubusercontent.com/Winetricks/winetricks/master/
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_repo_url}"
     "soda-${_soda_version}.tar.xz::${_soda_url}"
-    "TouchDesigner.${pkgver}.exe::${_td_url}"
+    "TouchDesigner.${_td_ver}.exe::${_td_url}"
     "dxvk-${_dxvk_version}.tar.gz::${_dxvk_url}"
     "winetricks::${_winetricks_url}"
 )
@@ -100,7 +103,7 @@ build() {
     # 2. Extract TouchDesigner installer
     msg2 "Extracting TouchDesigner installer (7z)..."
     mkdir -p "td-7z"
-    7z x "TouchDesigner.${pkgver}.exe" -o"td-7z" -y >/dev/null 2>&1
+    7z x "TouchDesigner.${_td_ver}.exe" -o"td-7z" -y >/dev/null 2>&1
 
     # Find inner Inno Setup .exe
     inner_exe=""
@@ -162,7 +165,7 @@ package() {
     cp -r "soda-wine/"* "${pkgdir}${wine_dir}/"
 
     # ── TouchDesigner ──
-    msg2 "Installing TouchDesigner ${pkgver}..."
+    msg2 "Installing TouchDesigner ${_td_ver}..."
     mkdir -p "${pkgdir}${td_dir}"
     cp -r "td/"* "${pkgdir}${td_dir}/"
 
@@ -181,7 +184,7 @@ package() {
     install -Dm755 "winetricks" "${pkgdir}${td_prefix}/winetricks"
 
     # ── Version manifest ──
-    echo "TouchDesigner ${pkgver}" > "${pkgdir}${td_prefix}/VERSION"
+    echo "TouchDesigner ${_td_ver}" > "${pkgdir}${td_prefix}/VERSION"
     echo "Soda Wine ${_soda_version}" >> "${pkgdir}${td_prefix}/VERSION"
     echo "DXVK ${_dxvk_version}" >> "${pkgdir}${td_prefix}/VERSION"
 
@@ -260,7 +263,7 @@ WRAPPER
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=TouchDesigner ${pkgver}
+Name=TouchDesigner ${_td_ver}
 Comment=Visual development platform for real-time interactive content
 Exec=${app_dir}/touchdesigner-wrapper.sh %F
 Icon=/usr/share/icons/hicolor/scalable/apps/touchdesigner.svg
@@ -291,7 +294,7 @@ MIME
 
     # ── Icons (from Assets) ──
     msg2 "Installing icons..."
-    local repo_dir="${srcdir}/${pkgname}-${pkgver}"
+    local repo_dir="${srcdir}/TouchDesigner-Linux-${pkgver}"
     if [ -d "${repo_dir}/Assets/Icons" ]; then
         mkdir -p "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
         install -Dm644 "${repo_dir}/Assets/Icons/TouchDesigner.svg"   "${pkgdir}/usr/share/icons/hicolor/scalable/apps/touchdesigner.svg"
