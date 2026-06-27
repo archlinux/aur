@@ -1,6 +1,6 @@
 pkgbase = python-casacore
 	pkgdesc = Python bindings for casacore, a radio astronomy library
-	pkgver = 3.7.1
+	pkgver = 3.8.1
 	pkgrel = 1
 	url = https://github.com/casacore/python-casacore
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = python-casacore
 	depends = python-numpy
 	provides = python-pyrap
 	replaces = python-pyrap
-	source = python-casacore-3.7.1.tar.gz::https://github.com/casacore/python-casacore/archive/v3.7.1.tar.gz
-	sha512sums = d75972907abfe2f0fa0c6c321a40b0153c208af8f8c88a5ad7eb677d4e7d66493d70e87374046dca46710ef75ec07c1eddd29f4e51fcf1689137c201fc993625
+	source = python-casacore-3.8.1.tar.gz::https://github.com/casacore/python-casacore/archive/v3.8.1.tar.gz
+	sha512sums = 279d4062725a8d186e4347735f3583c988bf3f82c4bbe3e90bd8f4ec620097025a5e8c120a55bc66d7ddcd982d948c5819ed4868e3c7a9dc360a59496534931b
 
 pkgname = python-casacore

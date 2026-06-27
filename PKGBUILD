@@ -2,7 +2,7 @@
 # Contributor: Carlos Aznarán <caznaranl@uni.pe>
 
 pkgname=python-casacore
-pkgver=3.7.1
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="Python bindings for casacore, a radio astronomy library"
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=(python-build python-installer python-scikit-build-core python-setup
 provides=(python-pyrap)
 replaces=(python-pyrap)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('d75972907abfe2f0fa0c6c321a40b0153c208af8f8c88a5ad7eb677d4e7d66493d70e87374046dca46710ef75ec07c1eddd29f4e51fcf1689137c201fc993625')
+sha512sums=('279d4062725a8d186e4347735f3583c988bf3f82c4bbe3e90bd8f4ec620097025a5e8c120a55bc66d7ddcd982d948c5819ed4868e3c7a9dc360a59496534931b')
 
 build() {
     cd "$pkgname-$pkgver"
