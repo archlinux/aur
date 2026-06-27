@@ -4,7 +4,7 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-ffmpeg-minimal
 pkgver=8.1.2
-pkgrel=3
+pkgrel=4
 arch=('any')
 pkgdesc="Complete solution to record, convert and stream audio and video (Android ${_android_arch})"
 url="http://ffmpeg.org/"
@@ -12,7 +12,6 @@ license=('GPL3')
 groups=('android-ffmpeg-minimal')
 depends=("android-${_android_arch}-aom"
          "android-${_android_arch}-bzip2"
-         "android-${_android_arch}-dav1d"
          "android-${_android_arch}-glib2"
          "android-${_android_arch}-gnutls"
          "android-${_android_arch}-lame"
@@ -20,7 +19,6 @@ depends=("android-${_android_arch}-aom"
          "android-${_android_arch}-libvorbis"
          "android-${_android_arch}-libvpx"
          "android-${_android_arch}-opus"
-         "android-${_android_arch}-svt-av1"
          "android-${_android_arch}-x264")
 makedepends=('android-configure'
              'nasm')
@@ -117,11 +115,13 @@ build() {
         --disable-avfilter \
         --disable-encoders \
         --enable-encoder=aac \
+        --enable-encoder=libaom_av1 \
         --enable-encoder=libmp3lame \
         --enable-encoder=libopus \
         --enable-encoder=libvorbis \
         --enable-encoder=libvpx_vp8 \
         --enable-encoder=libvpx_vp9 \
+        --enable-encoder=libx264 \
         --enable-libx264 \
         --enable-encoder=opus \
         --enable-encoder=vorbis \
@@ -147,7 +147,6 @@ build() {
         --enable-decoder=h264 \
         --enable-decoder=hevc \
         --enable-decoder=libaom_av1 \
-        --enable-decoder=libdav1d \
         --enable-decoder=libopus \
         --enable-decoder=libvorbis \
         --enable-decoder=libvpx_vp8 \
@@ -197,10 +196,8 @@ build() {
         --enable-gnutls \
         --enable-lto \
         --enable-libaom \
-        --enable-libdav1d \
         --enable-libmp3lame \
         --enable-libopus \
-        --enable-libsvtav1 \
         --enable-libvorbis \
         --enable-libvpx \
         --enable-jni \
