@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gdsfmt
-_pkgver=1.48.1
+_pkgver=1.48.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,9 +32,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "system-libs.patch")
-md5sums=('f607c79b2e2a723c060db60a16740ec1'
+md5sums=('e7c813f08e9494994cd76ede72011d62'
          'bffd05eba8706aacc469c69a3b0eeada')
-b2sums=('1dae8a11a8088f097c7e0c9ba3f8f9d02c585289de9f3cdf24f5fdaaf3e27fdcb829772598be62925b4d2bd27a53aaba8b61b904b0d4a3dd00611a4e7050dea0'
+b2sums=('45a2ffe5670ffeac3711bff454ebb28d95fc15b785521b5a611c140bcd92368ab958feb27c319d1e54173a81b0c5908af14f192cf3d93e4a1832c88e6835b003'
         '808ea6a968885e4828813829ce91499772d32368bbe29c4833768ac41cee454717b47e1e77b84cb8c9548b843665ace13f60211494ddc309a0e012b5dde41ed4')
 
 prepare() {
