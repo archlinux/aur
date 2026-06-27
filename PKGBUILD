@@ -70,6 +70,12 @@ _package_common() {
     cp -a --no-preserve=ownership \
         "$srcdir/$_pkgbase/libs/ansikit" \
         "$pkgdir/usr/share/hilbish/libs/"
+
+    mkdir -p "$pkgdir/usr/share/hilbish/types"
+
+    cp -a --no-preserve=ownership \
+        "$srcdir/$_pkgbase/types/." \
+        "$pkgdir/usr/share/hilbish/types/"
 }
 
 package_hilbish-git() {
