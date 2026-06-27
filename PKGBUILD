@@ -1,5 +1,5 @@
 pkgname=mingw-w64-gettext
-pkgver=0.26
+pkgver=1.0
 pkgrel=1
 arch=('any')
 pkgdesc='GNU internationalization library (mingw-w64)'
@@ -12,7 +12,7 @@ source=(http://ftp.gnu.org/pub/gnu/gettext/gettext-${pkgver}.tar.gz{,.sig}
         intl.pc
         0001-restore-DllMain-symbol.patch
         0024-disable-gnu-format.patch)
-b2sums=('f8e6b6d232b0a92f333d934c273a6923af40a9d6c632e20d240c7260d13f4be4bacd89efe4ccc2cce5a847e45e87911d692ef6c6f749c1821d1d5508daa14188'
+b2sums=('1e4b78979f780878472142f1c0baba468d60f4b5605eeb5db5c092901183e3128c79df94c2041de870920f079b4bf38e6dae056b731e4b2b4c5cc343940962d8'
         'SKIP'
         '9ceacac403a64800f46e2a5ba2e238454a781ac2fbc9508330f5269aee5a0e77066ac4c5e16d852fe101116a152fa79879b956930d0fffb0e4c992ca2f16a0e9'
         'ad82e06ba60e337c6b307824b0e64919fef736449192876a75eb483614debd413b31c9899c076614ca96ba611d5bb8209cd6044c26ad8ffa7945190d74ef6d7a'
