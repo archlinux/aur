@@ -7,7 +7,10 @@ pkgdesc="A reverse proxy for NAT traversal"
 arch=('x86_64')
 url="https://github.com/rapiz1/rathole"
 license=('Apache')
-depends=('gcc-libs' 'openssl')
+depends=(
+  'libgcc'
+  'openssl'
+)
 makedepends=('cargo' 'libgit2')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('c8698dc507c4c2f7e0032be24cac42dd6656ac1c52269875d17957001aa2de41')
