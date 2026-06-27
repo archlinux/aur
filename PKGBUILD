@@ -14,7 +14,7 @@ license=('GPL-2.0')
 
 provides=("${_pkgname}")
 
-depends=('gcc-libs' 'glibc' 'qt6-base' 'libglvnd' 'imagemagick')
+depends=('glibc' 'libgcc' 'libstdc++' 'qt6-base' 'libglvnd' 'imagemagick')
 makedepends=('qt6-base' 'qt6-tools' 'qtutilities-qt6' 'qt6-multimedia' 'qt6-multimedia-ffmpeg' 'qt6-imageformats' 'help2man')
 
 source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
