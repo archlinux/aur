@@ -1,0 +1,3 @@
+[python-katharos]
+source = "pypi"
+pypi = "katharos"
