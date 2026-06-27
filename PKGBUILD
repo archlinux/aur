@@ -68,7 +68,6 @@ build() {
 
     chmod +x winetricks
 
-    # Pre-setup Wine prefix (so first launch is instant)
     msg2 "Initializing Wine prefix..."
     export WINEPREFIX="${srcdir}/prefix-template"
     export WINEDLLOVERRIDES="mscoree="
@@ -168,33 +167,41 @@ if [ -n "$1" ]; then
     fi
 fi
 
-# Auto-patching
+# Find toeexpand in Wine prefix or TD install dir
 TOE_EXPAND="$(find "$WINE_PREFIX/drive_c" -type f -iname 'toeexpand.exe' 2>/dev/null | head -n1 || true)"
 TOE_COLLAPSE="$(find "$WINE_PREFIX/drive_c" -type f -iname 'toecollapse.exe' 2>/dev/null | head -n1 || true)"
+if [ -z "$TOE_EXPAND" ] && [ -f "${TD_DIR}/bin/toeexpand.exe" ]; then
+    TOE_EXPAND="${TD_DIR}/bin/toeexpand.exe"
+    TOE_COLLAPSE="${TD_DIR}/bin/toecollapse.exe"
+fi
+
+# Find TD executable
 TD_EXE="" && for f in "${TD_DIR}/bin/TouchDesigner.exe" "${TD_DIR}/TouchDesigner.exe"; do [ -f "$f" ] && { TD_EXE="$f"; break; }; done
 [ -z "$TD_EXE" ] && TD_EXE=$(find "${TD_DIR}" -name 'TouchDesigner*.exe' -type f 2>/dev/null | head -1)
+[ -z "$TD_EXE" ] && { echo "Error: TouchDesigner not found"; exit 1; }
 
+# Auto-patching .toe files
 patch_toe() {
     local F="$1"; [ -f "$F" ] || return 0
     local B="$(basename "$F")" D="$(dirname "$F")"
     local DIR="$D/${B}.dir" TOC="$D/${B}.toc"
     local W="z:${F//\\/\\\\}"
     rm -rf "$DIR" "$TOC"
-    WINEPREFIX="$WINE_PREFIX" "$RUNNER_DIR/bin/wine64" "$TOE_EXPAND" "$W" >/dev/null 2>&1 || true
+    WINEPREFIX="$WINE_PREFIX" wine64 "$TOE_EXPAND" "$W" >/dev/null 2>&1 || true
     local P=false; [ ! -d "$DIR/wine_ui_fixes" ] && P=true
     rm -rf "$DIR" "$TOC"
     if $P; then
         mkdir -p "$BACKUP_DIR"
         cp -f "$F" "$BACKUP_DIR/${F//\//_}.bak"
-        WINEPREFIX="$WINE_PREFIX" "$RUNNER_DIR/bin/wine64" "$TOE_EXPAND" "$W" >/dev/null 2>&1 || true
+        WINEPREFIX="$WINE_PREFIX" wine64 "$TOE_EXPAND" "$W" >/dev/null 2>&1 || true
         [ -d "$DIR" ] && {
             local T="$(mktemp -d /tmp/td_patch.XXXXXX)"
             cp -f "$FIX_FILE" "$T/fix.tox"
-            WINEPREFIX="$WINE_PREFIX" "$RUNNER_DIR/bin/wine64" "$TOE_EXPAND" "z:${T//\\/\\\\}/fix.tox" >/dev/null 2>&1 || true
+            WINEPREFIX="$WINE_PREFIX" wine64 "$TOE_EXPAND" "z:${T//\\/\\\\}/fix.tox" >/dev/null 2>&1 || true
             [ -d "$T/fix.tox.dir" ] && cp -rf "$T/fix.tox.dir/"* "$DIR/"
             rm -rf "$T"
             for e in "${FIX_ENTS[@]}"; do echo "$e" >> "$TOC"; done
-            WINEPREFIX="$WINE_PREFIX" "$RUNNER_DIR/bin/wine64" "$TOE_COLLAPSE" "$W" >/dev/null 2>&1 || true
+            WINEPREFIX="$WINE_PREFIX" wine64 "$TOE_COLLAPSE" "$W" >/dev/null 2>&1 || true
         }
         rm -rf "$DIR" "$TOC"
     fi
@@ -203,7 +210,7 @@ patch_toe() {
 if [ -n "$TOE_EXPAND" ] && [ -n "$TOE_COLLAPSE" ] && [ -f "$FIX_FILE" ]; then
     T="$(mktemp -d /tmp/td_fix.XXXXXX)"
     cp -f "$FIX_FILE" "$T/fix.tox"
-    WINEPREFIX="$WINE_PREFIX" "$RUNNER_DIR/bin/wine64" "$TOE_EXPAND" "z:${T//\\/\\\\}/fix.tox" >/dev/null 2>&1 || true
+    WINEPREFIX="$WINE_PREFIX" wine64 "$TOE_EXPAND" "z:${T//\\/\\\\}/fix.tox" >/dev/null 2>&1 || true
     if [ -d "$T/fix.tox.dir" ]; then
         FIX_ENTS=()
         while IFS= read -r e; do [ -n "$e" ] && [[ "$e" != \#* ]] && [ "$e" != ".build" ] && FIX_ENTS+=("$e"); done < "$T/fix.tox.toc"
@@ -215,7 +222,6 @@ fi
 
 find "$BACKUP_DIR" -name '*.bak' -type f -mtime +30 -delete 2>/dev/null || true
 
-[ -z "$TD_EXE" ] && { echo "Error: TouchDesigner not found"; exit 1; }
 WINEPREFIX="${WINE_PREFIX}" "${WINE}" "${TD_EXE}" $( [ -n "$INPUT_PATH" ] && echo "z:${INPUT_PATH//\\/\\\\}" )
 WRAPPER
     chmod 755 "${pkgdir}${PREFIX}/app/touchdesigner-wrapper.sh"
