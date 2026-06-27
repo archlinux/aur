@@ -1,7 +1,6 @@
 # alexandria-bin
 
-`alexandria-bin` repackages official Linux `.deb` release of
-[Alexandria](https://github.com/btpf/Alexandria) for Arch Linux.
+`alexandria-bin` packages the official x86_64 AppImage release of [Alexandria](https://github.com/btpf/Alexandria) for Arch Linux.
 
 Alexandria is a minimalistic ebook reader.
 
@@ -36,5 +35,5 @@ alexandria
 
 ## Notes
 
-- package repackages upstream x86_64 `.deb` from the GitHub release page.
-- package installs `alexandria` launcher.
+- The package installs the upstream AppImage under `/opt/alexandria`.
+- The package provides the `alexandria` launcher and desktop entry.

@@ -1,16 +1,15 @@
 pkgbase = alexandria-bin
 	pkgdesc = Minimalistic ebook reader (prebuilt binary)
 	pkgver = 0.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/btpf/Alexandria
 	arch = x86_64
 	license = unknown
 	depends = gtk3
-	depends = webkit2gtk-4.0
 	provides = alexandria
 	conflicts = alexandria
 	options = !strip
-	source = Alexandria_0.13.2_amd64.deb::https://github.com/btpf/Alexandria/releases/download/v0.13.2/Alexandria_0.13.2_amd64.deb
-	sha256sums = 432be51013878f884bb069482ba83c5ccecf432eab1195c6b091a94989483e07
+	source = Alexandria_0.13.2_amd64.AppImage::https://github.com/btpf/Alexandria/releases/download/v0.13.2/Alexandria_0.13.2_amd64.AppImage
+	sha256sums = 67dfbf9fe6a6c0f8e510b15809c6421ee8a150a465340393a89634704ec69125
 
 pkgname = alexandria-bin
