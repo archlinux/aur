@@ -1,7 +1,7 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-git
-pkgver=2.4.0.4.r149.gb7eaf5d0
+pkgver=2.4.1.0.r1.ge2ae3fea
 pkgrel=1
 pkgdesc="Shelly: A Modern Arch Package Manager (git version)"
 arch=('x86_64')
