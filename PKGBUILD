@@ -27,7 +27,7 @@ package() {
     cd "${pkgdir}"
 
     # this extracts all into the pkgdir
-    tar -xf "${srcdir}/data.tar.gz"
+    tar -xf "${srcdir}/data.tar.zst"
 
     sed -i "usr/share/applications/${_pkgtitle}.desktop" \
         -e "s|Categories=|Categories=GTK;FileTransfer;Utility;|"
