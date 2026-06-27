@@ -1,0 +1,17 @@
+pkgbase = wireplumber-lhdc-config
+	pkgdesc = WirePlumber configuration for PipeWire LHDC v5 Bluetooth playback
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/DBeidachazi/wireplumber-lhdc-config
+	install = wireplumber-lhdc-config.install
+	arch = any
+	license = MIT
+	depends = wireplumber
+	depends = pipewire-bluez5-lhdc-git
+	depends = lhdc-v5-helper
+	source = 51-bluez-lhdc.conf
+	source = 50-lhdc.conf
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = wireplumber-lhdc-config

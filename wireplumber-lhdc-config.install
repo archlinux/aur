@@ -1,0 +1,12 @@
+post_install() {
+  cat <<'EOF'
+==> wireplumber-lhdc-config installed.
+==> Restart the user WirePlumber service to load LHDC v5 support:
+    systemctl --user daemon-reload
+    systemctl --user restart wireplumber
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
