@@ -1,7 +1,11 @@
 post_install() {
     systemd-sysusers draind.conf
     systemctl daemon-reload
-    systemctl enable --now draind
+    systemctl enable draind
+    systemctl --global enable draind-agent
+    echo "Reboot or run the following to start services now:"
+    echo "  systemctl start draind"
+    echo "  systemctl --user start draind-agent"
 }
 
 post_upgrade() {
@@ -10,6 +14,7 @@ post_upgrade() {
 }
 
 post_remove() {
+    systemctl --global disable draind-agent || true
     systemctl disable --now draind || true
     systemctl daemon-reload
 }
