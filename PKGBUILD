@@ -7,12 +7,12 @@ pkgdesc='Take pretty screenshots of your screen with annotations + ROCm OCR'
 arch=('x86_64')
 url='https://github.com/SergioRibera/sss'
 license=('MIT')
-depends=('glibc')
+depends=('onnxruntime')
 optdepends=('onnxruntime-rocm' 'rocm-hip-runtime')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://github.com/SergioRibera/sss/releases/download/sss_cli/v0.2.1/sss-rocm-bin-0.2.1-x86_64.tar.gz")
-sha256sums=('1b49523b4638f662ffbe314b7b25eeb05b4b509030883c918372bbeebaa292b5')
+sha256sums=('9fa9cdfcb55bb3d09bc272e1b51877cc4c3859e256714bd4e819fdb5e5e92f12')
 
 
 package() {
