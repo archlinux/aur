@@ -1,0 +1,27 @@
+post_install() { 
+cat <<EOF
+Configure sshd accordingly at /etc/ssh/sshd_config:
+
+    KbdInteractiveAuthentication yes
+    UsePAM yes
+
+Then reload sshd:
+
+    sudo systemctl reload sshd
+
+For full system log-in (enterprise only) edit /etc/pam.d/system-auth. For ssh only, you will need to make copies of the relevant files and update /etc/pam.d/sshd to point to those instead.
+The order matters, both of these lines should be located above pam_unix in their respective sections:
+
+    etc/pam.d/system-auth
+    ...
+>>> auth    [success=2 default=ignore]      pam_authentik.so
+    ...
+    auth       [success=1 default=bad]     pam_unix.so          try_first_pass nullok
+    ...
+>>> session required                        pam_authentik.so
+    ...
+    session    required                    pam_unix.so
+    ...
+
+EOF
+}
