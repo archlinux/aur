@@ -1,7 +1,7 @@
 # Maintainer: Dylan Sandall <thebudman6@proton.me>
 pkgname=wingman-git
 _pkgname=wingman
-pkgver=0.1.4.r66.g86a14d9
+pkgver=0.1.4.r67.g91a6a01
 pkgrel=1
 pkgdesc="Run multiple NetBird networks on one machine at once — isolated configs, sockets, and WireGuard interfaces"
 arch=('any')

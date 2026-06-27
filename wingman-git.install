@@ -1,16 +1,18 @@
-# wingman runs rootless: the daemon runs as your user, but creating a WireGuard
-# interface needs CAP_NET_ADMIN. Rather than running netbird as root, we grant
-# that one capability to the netbird binary. pacman strips file capabilities on
-# every (re)install of netbird, so the shipped pacman hook
-# (/usr/share/libalpm/hooks/wingman-netbird-setcap.hook) reapplies it after each
-# netbird transaction. Here we apply it once at wingman install time so it works
-# immediately, before that hook ever fires.
+# wingman runs rootless: the daemon runs as your user, but it needs two file
+# capabilities on the netbird binary — CAP_NET_ADMIN (create the WireGuard
+# interface) and CAP_NET_BIND_SERVICE (bind the DNS resolver to port 53, where
+# systemd-resolved sends queries). Rather than running netbird as root, we grant
+# just those. pacman strips file capabilities on every (re)install of netbird, so
+# the shipped pacman hook (/usr/share/libalpm/hooks/wingman-netbird-setcap.hook)
+# reapplies them after each netbird transaction. Here we apply them once at
+# wingman install time so things work immediately, before that hook ever fires.
 
 _apply_cap() {
+	caps=cap_net_admin,cap_net_raw,cap_net_bind_service+eip
 	if [ -x /usr/bin/netbird ]; then
-		setcap cap_net_admin,cap_net_raw+eip /usr/bin/netbird || \
+		setcap "$caps" /usr/bin/netbird || \
 			echo ">>> wingman: could not setcap netbird; run it yourself:" \
-			     "sudo setcap cap_net_admin,cap_net_raw+eip /usr/bin/netbird"
+			     "sudo setcap $caps /usr/bin/netbird"
 	fi
 }
 
@@ -22,9 +24,10 @@ post_install() {
         wingman up <name> --setup-key <KEY>
     To start instances on boot without an active login session, enable linger:
         sudo loginctl enable-linger "$USER"
-    NetBird DNS works rootless via the shipped polkit rule
-    (50-wingman-netbird-dns.rules), which authorizes members of the wheel
-    group to set per-interface DNS. Not in wheel? Edit that rule's group.
+    NetBird DNS works rootless via CAP_NET_BIND_SERVICE (granted above) plus
+    the shipped polkit rule (50-wingman-netbird-dns.rules), which authorizes
+    the wheel group to set per-interface DNS. Not in wheel? Edit that rule's
+    group.
 EOF
 }
 
