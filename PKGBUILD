@@ -2,7 +2,7 @@
 # Contributor: Klimenko Maxim Sergievich <klimenkomaximsergievich@gmail.com>
 
 pkgname=simple-stateful-firewall-git
-pkgver=0.0.44
+pkgver=0.0.45
 pkgrel=1
 pkgdesc="Simple Stateful Firewall. For personal computers or you can change this by yourself"
 arch=('i686' 'x86_64')
