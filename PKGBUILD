@@ -45,6 +45,7 @@ checkdepends=(
     'python-pytest-timeout'
     'python-pytest-vcr'
     'python-pytest-xdist'
+    'python-urllib3'
 )
 optdepends=(
     'python-torch: PyTorch-related features'

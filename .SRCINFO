@@ -23,6 +23,7 @@ pkgbase = python-huggingface-hub-git
 	checkdepends = python-pytest-timeout
 	checkdepends = python-pytest-vcr
 	checkdepends = python-pytest-xdist
+	checkdepends = python-urllib3
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
