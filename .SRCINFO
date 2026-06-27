@@ -1,7 +1,7 @@
 pkgbase = vimpc-git
 	pkgdesc = Vi/vim inspired client for Music Player Daemon (MPD)
 	pkgver = 0.09.1.r123.g95ad78d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/boysetsfrog/vimpc
 	arch = x86_64
 	license = GPL-3.0-or-later
