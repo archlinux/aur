@@ -11,9 +11,10 @@ license=("Unlincense")
 _npmname=${pkgname}-ftp
 _npmver=${pkgver}
 
+provides=("${pkgname}")
+
 depends=("nodejs")
 makedepends=("npm" "jq")
-provides=("${_npmname}")
 
 options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
