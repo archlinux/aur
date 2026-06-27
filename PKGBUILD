@@ -88,7 +88,7 @@ build() {
 
     msg2 "Innoextracting: ${inner_exe}..."
     mkdir -p td-inno
-    innoextract -d td-inno -e "$inner_exe" >/dev/null 2>&1
+    innoextract -d td-inno -e "$inner_exe"
 
     if [ ! -d "td-inno/\$/app" ]; then
         error "Unexpected installer structure"
