@@ -1,6 +1,6 @@
 pkgbase = rake-unstable
 	pkgdesc = Configuration-driven build tool that runs Rakefile.toml targets (nightly unstable build)
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/rustyhorde/cargo-rake
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = rake-unstable
 	makedepends = cargo
 	provides = rake
 	conflicts = rake
-	source = rake-unstable-0.4.2.tar.gz::https://github.com/rustyhorde/cargo-rake/archive/v0.4.2.tar.gz
-	sha256sums = 5217ccbdbb63837835c9f6aee91f664214c148864a5a4718cb8bce4fe6c95e60
+	source = rake-unstable-0.4.3.tar.gz::https://github.com/rustyhorde/cargo-rake/archive/v0.4.3.tar.gz
+	sha256sums = 51eeaca9b19605080660291bfec34ed11522490912acd5b0eadd7bf8b7619668
 
 pkgname = rake-unstable
