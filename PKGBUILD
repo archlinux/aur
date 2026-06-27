@@ -7,6 +7,7 @@ pkgdesc='Client library to download and publish models on the huggingface.co hub
 arch=('any')
 url='https://github.com/huggingface/huggingface_hub'
 license=('Apache-2.0')
+groups=('huggingface')
 depends=(
     'python'
     'python-click'
@@ -14,10 +15,10 @@ depends=(
     'python-fsspec'
     'python-httpx'
     'python-packaging'
-    'python-pyyaml'
     'python-tqdm'
     'python-typer'
     'python-typing_extensions'
+    'python-yaml'
 )
 makedepends=(
     'git'
@@ -27,22 +28,39 @@ makedepends=(
     'python-wheel'
 )
 checkdepends=(
+    'git-lfs'
+    'python-authlib'
+    'python-duckdb'
+    'python-fastapi'
+    'python-itsdangerous'
+    'python-jedi'
+    'python-jinja'
+    'python-numpy'
+    'python-pillow'
+    'python-pydantic'
     'python-pytest'
     'python-pytest-asyncio'
     'python-pytest-env'
     'python-pytest-mock'
+    'python-pytest-timeout'
+    'python-pytest-vcr'
     'python-pytest-xdist'
-    'python-jedi'
 )
 optdepends=(
     'python-torch: PyTorch-related features'
     'python-gradio: Gradio-related features'
     'python-authlib: OAuth support'
+    'python-duckdb: hf datasets SQL support'
     'python-fastapi: OAuth support'
+    'python-graphviz: graph rendering support'
     'python-hf-xet: Xet storage backend'
+    'python-itsdangerous: OAuth support'
     'python-jinja: Model/dataset cards templating'
-    'python-numpy: Inference features'
+    'python-numpy: embeddings and inference array outputs'
     'python-pillow: Inference image features'
+    'python-pydantic: webhook payload models'
+    'python-pydot: graph rendering support'
+    'python-safetensors: safetensors serialization support'
     'python-toml: fastai utilities'
 )
 provides=("python-huggingface-hub=${pkgver}")
