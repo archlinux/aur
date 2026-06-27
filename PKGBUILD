@@ -13,7 +13,7 @@ pkgname=aseprite
 pkgver=1.3.17.2
 _skiaver=m124
 _skiahash=08a5439a6b
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -21,15 +21,15 @@ license=('LicenseRef-Aseprite-EULA')
 depends=(# ~ Aseprite's direct dependencies ~
          # pixman is not linked to because we use Skia instead
          # harfbuzz is linked statically because Aseprite expects an older version
-         cmark libcurl.so libgif.so libjpeg.so zlib libpng 'tinyxml2>=11.0.0' libfreetype.so libarchive.so libfmt.so
-         libwebp.so libwebpmux.so libwebpdemux.so libjpeg.so
+         cmark curl giflib libjpeg-turbo zlib libpng 'tinyxml2>=11.0.0' freetype2 libarchive fmt
+         libwebp 
          hicolor-icon-theme # For installing Aseprite's icons
          # ~ Skia deps ~
          # (Skia links dynamically to HarfBuzz, only Aseprite itself doesn't. >_<)
-         libexpat.so=1-64 libharfbuzz.so=0-64 libgl
+         expat harfbuzz libgl
          # Already required by Aseprite: libjpeg-turbo libpng zlib freetype2
          # These two are only reported by Namcap, but don't seem to be direct dependencies?
-         libfontconfig.so libxcursor
+         fontconfig libxcursor
          # Required Dependency
          libxrandr)
 makedepends=(# "Meta" dependencies
@@ -170,6 +170,9 @@ check() {
 }
 
 package() {
+	depends+=(libcurl.so libgif.so libjpeg.so libfreetype.so libarchive.so libfmt.so
+         libwebp.so libwebpmux.so libwebpdemux.so libjpeg.so libexpat.so=1-64 libharfbuzz.so=0-64
+         libfontconfig.so)
 	export CXX=clang++
 	export CC=clang
 	export CXXFLAGS+=" -std=c++11 -stdlib=libstdc++"
