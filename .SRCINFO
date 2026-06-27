@@ -1,7 +1,7 @@
 pkgbase = lua-succulent-git
 	pkgdesc = Lua functions and utilities for Hilbish
-	pkgver = r7.96dc95c
-	pkgrel = 2
+	pkgver = 0.1.0.r0.gfc31cc9
+	pkgrel = 1
 	url = https://github.com/rosettea/succulent
 	arch = any
 	license = MIT
