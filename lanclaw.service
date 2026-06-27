@@ -1,0 +1,10 @@
+[Unit]
+Description=LANClaw Bot
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/lanclaw
+
+[Install]
+WantedBy=default.target

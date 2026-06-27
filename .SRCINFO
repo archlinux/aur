@@ -1,0 +1,20 @@
+pkgbase = lanclaw-bin
+	pkgdesc = A LANChat-compatible intelligent bot powered by Pi coding agent.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cap153/LANClaw
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = openssl
+	depends = gcc-libs
+	options = !strip
+	source = https://github.com/cap153/LANClaw/releases/download/v0.1.0/lanclaw
+	source = lanclaw.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+	optdepends_x86_64 = lanchat-bin: A cross-platform LAN chat software that supports file transfer.
+	optdepends_x86_64 = pi: Provides Pi coding agent runtime
+	optdepends_x86_64 = pi-bin: Pre-compiled binary for Pi coding agent
+
+pkgname = lanclaw-bin
