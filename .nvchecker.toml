@@ -1,0 +1,3 @@
+[splinter]
+source = "npm"
+npm = "splinter-ftp"
