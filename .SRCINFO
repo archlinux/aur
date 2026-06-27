@@ -1,0 +1,17 @@
+pkgbase = cups-rastertotspl
+	pkgdesc = CUPS filter for TSPL printers
+	pkgver = 2026.06.27
+	pkgrel = 1
+	url = https://github.com/ogarcia/rucio
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	makedepends = rust
+	depends = cups
+	source = cups-rastertotspl-2026.06.27::git+https://github.com/ogarcia/rastertotspl.git#commit=a1b4f5d1a108498fb010305d7377a81d00a873c7
+	b2sums = 7c78d5ad7a3589811508d1bc633b779f44114007e289c67a04054677c8c0c5dfd0319b2e0e145824e3d68e1754032bff879970460bed5b30e6c7bff74d9d4a68
+
+pkgname = cups-rastertotspl
