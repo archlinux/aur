@@ -1,6 +1,6 @@
 pkgbase = patent
 	pkgdesc = A prior-art search for your code ideas. Stop building what already exists.
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/r14dd/patent
 	install = patent.install
@@ -18,9 +18,9 @@ pkgbase = patent
 	conflicts = patent-bin
 	options = !lto
 	options = !debug
-	source = patent-0.5.0.tar.gz::https://github.com/r14dd/patent/archive/refs/tags/v0.5.0.tar.gz
+	source = patent-0.5.1.tar.gz::https://github.com/r14dd/patent/archive/refs/tags/v0.5.1.tar.gz
 	source = patent.install
-	sha256sums = a221d9f82c8f69fabf66eee3415f7a118eeb442fe1d549352679b7f4ee17edb8
+	sha256sums = dfe2be3ec9668159459e5cd7be4cededa8bf114c72997f05fdba14dd655187f3
 	sha256sums = 24dff75c38b578cb7e8057366a764cb4313078f16bada568baf79ecde5cb49af
 
 pkgname = patent
