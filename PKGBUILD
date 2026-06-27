@@ -1,5 +1,5 @@
 pkgname=whispers-bin
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Local-first speech-to-text dictation for Wayland (prebuilt release bundle)'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('whispers' 'whispers-git' 'whispers-cuda-bin' 'whispers-cuda-git')
 source=(
   "$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/whispers-$pkgver-x86_64-unknown-linux-gnu.tar.gz"
 )
-sha256sums=('3726ba66b418a98ab7945e02498a94cbc034bb92fdcab23ff2d8b793bb8c2368')
+sha256sums=('d9648a614adc7cffc83eea3670ac13c60bbf5161cdd69c36e7422bbffc993aed')
 
 package() {
   local bundle_dir="$srcdir/whispers-$pkgver-x86_64-unknown-linux-gnu"
