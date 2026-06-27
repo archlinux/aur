@@ -5,7 +5,7 @@
 
 pkgname=simplex-desktop-bin
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='SimpleX Chat, the first messaging network operating without user identifiers of any kind (pre-compiled)'
 arch=('x86_64')
 provides=('simplex-desktop')
@@ -24,7 +24,7 @@ depends=(
     'fribidi'
     'gmp'
     'harfbuzz'
-    'jack2'
+    'jack'
     'java-runtime'
     'libdrm'
     'libglvnd'
