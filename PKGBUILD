@@ -2,7 +2,7 @@
 # Maintainer: Balaji J <balaji.jothi.in@gmail.com>
 
 pkgname='pgxcli-bin'
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='An interactive PostgreSQL CLI written in Go'
 url='https://github.com/balajz/pgxcli'
@@ -12,10 +12,10 @@ provides=('pgxcli')
 conflicts=('pgxcli')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/balajz/pgxcli/releases/download/v${pkgver}/pgxcli_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('54d35a05d5df44c8732c3517d5d25ad6a751b3d81217071ecb14ff81ba6a6ae4')
+sha256sums_aarch64=('6ee93cb31a3e4ddff506d563b5989501e4ca4db9a29bc0b703674eb8cbb98c34')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/balajz/pgxcli/releases/download/v${pkgver}/pgxcli_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('3fd03f2bfe71d92260ac8935a096f4548a727a424a123fd0db91b8b126fa20c9')
+sha256sums_x86_64=('25bf97dcbe6fe5c45735e85e1d67c7dbddda4b8d0ab6cc1e62d7d8042ec1d843')
 
 package() {
   # navigate into the extracted archive directory
