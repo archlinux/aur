@@ -1,0 +1,13 @@
+LIBC {
+    global:
+        __cxa_atexit;
+        __cxa_finalize;
+        __memcpy_chk;
+        __stack_chk_fail;
+        memcpy;
+        memset;
+        printf;
+        putchar;
+        puts;
+    local: *;
+};

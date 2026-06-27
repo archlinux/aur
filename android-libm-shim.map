@@ -1,0 +1,11 @@
+LIBC {
+    global:
+        asinf;
+        cosf;
+        expf;
+        fmodf;
+        sin;
+        sincos;
+        sinf;
+    local: *;
+};
