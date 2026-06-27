@@ -1,6 +1,6 @@
 # Maintainer: Paolo Mezzano Barahona <pmezzano@gmail.com>
 pkgname=jisocreator
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="JIsoCreator is a ISO9660 CD Image creator, frontend of MKISOFS, built from sources"
 arch=('x86_64')
@@ -15,14 +15,14 @@ source=($pkgname-$pkgver.tar.gz::"https://github.com/Cavallinux/$pkgname/archive
         "$pkgname.sh"
         "$pkgname.png")
 
-sha256sums=('8bb92d1d72947023b3b2e0c6f5794d8348fece5a56010a44b3568a87be81b424'
+sha256sums=('bb2973b1b5eed5381893b4fad7c363140dc691d276e0dbe5193bf8eb36525e2b'
             '5d2ab72c7d2c422ffadcb2e1f88f932a7943c89628781d653093d1efb4cc7a4e'
             'eedd19de2e0b9eb87791b6b4fd45f94cbd98a36e7fc56b1086a288480a821962'
             'b662235eed256debee97df87331dd91abc359f05016b14ba562a78f1becca2b7')
 
 build() {
 	cd "$pkgname-$pkgver"
-	JAVA_HOME="/usr/lib/jvm/java-21-openjdk" mvn clean package -Dproject.build.sourceEncoding=UTF-8 -DskipTests --no-transfer-progress
+	JAVA_HOME="/usr/lib/jvm/java-21-openjdk" mvn clean package -DskipTests --no-transfer-progress
 }
 
 package() {
