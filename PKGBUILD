@@ -3,25 +3,30 @@
 # Maintainer: Soramane <soramane32 at gmail dot com>
 
 pkgname='caelestia-shell'
-pkgver=2.0.3
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='The desktop shell for the Caelestia dotfiles'
 arch=('x86_64' 'aarch64')
 url='https://github.com/caelestia-dots/shell'
 license=('GPL-3.0-only')
-depends=('caelestia-cli' 'quickshell-git' 'ddcutil' 'brightnessctl' 'app2unit' 'libcava' 'networkmanager'
+depends=('caelestia-cli' 'quickshell-git' 'ddcutil' 'brightnessctl' 'libcava' 'networkmanager'
          'lm_sensors' 'fish' 'aubio' 'libpipewire' 'glibc' 'gcc-libs' 'ttf-material-symbols-variable' 'power-profiles-daemon'
          'ttf-rubik-vf' 'ttf-cascadia-code-nerd' 'swappy' 'libqalculate' 'bash' 'qt6-base' 'qt6-declarative' 'qt6-imageformats')
 makedepends=('cmake' 'ninja' 'qt6-shadertools')
 provides=($pkgname)
 conflicts=($pkgname-git)
 source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('a27eefaa2a6ec817a51ecd10ef705e74daed9121c17f1d515625b5ef90c9cefa')
+sha256sums=('fdd6783700140caabaa8c2ead9060412f1f009a194d76401676cbfb99b2f8dbc')
 
 build() {
     cd "${srcdir}/release"
 
-    cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/ -DVERSION=$pkgver -DDISTRIBUTOR="AUR (package: $pkgname)"
+    cmake -B build -G Ninja \
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DCMAKE_INSTALL_PREFIX=/ \
+        -DVERSION=$pkgver \
+        -DGIT_REVISION="$(cat REVISION)" \
+        -DDISTRIBUTOR="AUR (package: $pkgname)"
     cmake --build build
 }
 
