@@ -52,23 +52,23 @@ build() {
 }
 
 _package_common() {
-    install -Dm644 LICENSE \
+    install -Dm644 "$srcdir/$_pkgbase/LICENSE" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    install -Dm644 README.md \
+    install -Dm644 "$srcdir/$_pkgbase/README.md" \
         "$pkgdir/usr/share/doc/$pkgname/README.md"
 
-    install -Dm644 .hilbishrc.lua \
+    install -Dm644 "$srcdir/$_pkgbase/.hilbishrc.lua" \
         "$pkgdir/usr/share/hilbish/.hilbishrc.lua"
 
     cp -a --no-preserve=ownership \
-        nature \
+        "$srcdir/$_pkgbase/nature" \
         "$pkgdir/usr/share/hilbish/"
 
     mkdir -p "$pkgdir/usr/share/hilbish/libs"
 
     cp -a --no-preserve=ownership \
-        libs/ansikit \
+        "$srcdir/$_pkgbase/libs/ansikit" \
         "$pkgdir/usr/share/hilbish/libs/"
 }
 
