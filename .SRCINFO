@@ -16,7 +16,6 @@ pkgbase = idntag
 	depends = taglib
 	depends = curl
 	provides = idntag
-	conflicts = idntag
 	source = idntag-2.02.tgz::https://github.com/d99kris/idntag/archive/refs/tags/v2.02.tar.gz
 	sha256sums = 39b1939301025561dc5a2750b5127f5d438d4fbf5ad24e19b905df160e9ca992
 

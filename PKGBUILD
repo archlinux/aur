@@ -13,7 +13,7 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 license=('MIT')
 
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+
 depends=('glibc' 'gcc-libs' 'ncurses' 'taglib' 'curl')
 makedepends=('cmake' 'pkg-config' 'nlohmann-json' 'chromaprint' 'help2man')
 
