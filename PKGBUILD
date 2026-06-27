@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=kernelscript-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Modern, type-safe, domain-specific programming language for eBPF-centric kernel customization"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x86_64")
-sha256sums=('211e2e73272f65cfd90acf3286cf18df58f0b864c09618a6a24813cb2fd29284')
+sha256sums=('fc44f8e3638fb9e5d8db8c1f3f569e2f545c74837b6d1eae1c20e9e1f7f0e437')
 options=('!debug')
 
 latestver() {
