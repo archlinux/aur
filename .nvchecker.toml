@@ -1,0 +1,5 @@
+[kobito-bin]
+source = "github"
+github = "unhappychoice/kobito"
+use_latest_release = true
+prefix = "v"
