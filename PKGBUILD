@@ -3,7 +3,7 @@
 # Contributor: rbagpksr <rbagpksr@mailer.me>
 
 pkgname=jan-appimage
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc='An open source alternative to ChatGPT that runs 100% offline on your computer'
 arch=(x86_64)
@@ -16,15 +16,12 @@ conflicts=(jan)
 options=(!strip !debug)
 _appimage=$pkgname-$pkgver.AppImage
 _baseurl=https://github.com/janhq/jan/releases/download/v$pkgver
-source=("$_appimage::$_baseurl/Jan_${pkgver}_amd64.AppImage"
-        "$pkgname-$pkgver-latest.json::$_baseurl/latest.json"
-        "$pkgname-$pkgver-tauri.conf.json::https://raw.githubusercontent.com/janhq/jan/refs/tags/v$pkgver/src-tauri/tauri.conf.json")
-sha256sums=('39683c3f883683e2d5254f929e36a31b672a5a7ce5e57d9f8ea4c69080b79006'
-            'd0522efb3732c1ef37860f27611de766a6ca96c27acf5875caeb99102398342f'
-            'bd85438a503f1a5c46d69b4889dc9ba9c7d422acbe29bf86475acccd92176ab9')
-b2sums=('7c5d7fa6abff8c90d12bbdf66c4de897697fc4c4929149d21ee221b47eb60cdaaa0effd6a8ff3d583cbf271d29382206dfb2671132e3a789aa5bcb2e6bf18145'
-        'a183e6bfac22dfc7a3407d88fd6e2ce8476484b8edb4ad8a2420030b2b94a42cd49190b2af9f63e6adc03d6b66000d9ac280dd99c93d8e8b23da636629e4fc11'
-        'dfd14a6af755def54b5294caad58958f53d87aa4b9528edd5367cbf4a65f2a38668a4df5b7b7df926827a47ee1f02c9cc128abdb04f9d14ad6f41b9fb3f26e87')
+source=($_appimage::$_baseurl/Jan_${pkgver}_amd64.AppImage
+        $pkgname-$pkgver-latest.json::$_baseurl/latest.json
+        $pkgname-$pkgver-tauri.conf.json::https://raw.githubusercontent.com/janhq/jan/refs/tags/v$pkgver/src-tauri/tauri.conf.json)
+b2sums=('0c61e1d7eb0b1c7a3b321e09df101766c9dd987d6a8c52ef8aa5f1b00650b208600ef2ea6385e767930a02f47fa29b543319cfcc6ffe6f804805e720fa359ec4'
+        'ce05b35953e72ee5dce8234dd212ca88de207c9895814c8347b9722a00e8b9a3d464a903845d50480eef2c6eefbfdb5098f7a3db5b43c5c2c80282cb82eab209'
+        '8165038529eda12fe1352f937a0b2b43b8a1f17d09845e87ee395405487756df94433802678583a2f45ccac34670cbc3ae868949c04e9613725c162f615a8f64')
 
 prepare() {
     # XXX: move to verify() when devtools supports it
