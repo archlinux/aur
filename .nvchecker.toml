@@ -1,0 +1,5 @@
+[histclean-bin]
+source = "github"
+github = "ABDsheikho/histclean"
+use_latest_release = true
+prefix = "v"
