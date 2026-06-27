@@ -1,0 +1,14 @@
+pkgbase = rdopng-git
+	pkgdesc = Rate-Distortion Optimized Lossy PNG/QOI Encoding Tool
+	pkgver = 1.0.9.11.gdb77a33
+	pkgrel = 1
+	url = https://github.com/richgel999/rdopng
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	source = git+https://github.com/richgel999/rdopng.git
+	md5sums = SKIP
+
+pkgname = rdopng-git
