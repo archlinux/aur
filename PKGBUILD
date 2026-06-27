@@ -3,7 +3,7 @@
 _pkgauthor=d99kris
 _pkgname=nview
 pkgname=${_pkgname}
-pkgver=0.30
+pkgver=0.32
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Minimalistic image viewer"
@@ -18,7 +18,7 @@ depends=('gcc-libs' 'glibc' 'qt6-base' 'libglvnd' 'imagemagick')
 makedepends=('qt6-base' 'qt6-tools' 'qtutilities-qt6' 'qt6-multimedia' 'qt6-multimedia-ffmpeg' 'qt6-imageformats' 'help2man')
 
 source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('05fefaa13f8a7c12408a4f38ab869e7b80ab351214b7c615d02e66c80c0ed66a')
+sha256sums=('a5a8c49054db5526c9de5ddbb31e949803dcb5db5dba4f7ebf5227d6fed58288')
 
 
 build() {

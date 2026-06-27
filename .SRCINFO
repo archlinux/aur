@@ -1,6 +1,6 @@
 pkgbase = nview
 	pkgdesc = Minimalistic image viewer
-	pkgver = 0.30
+	pkgver = 0.32
 	pkgrel = 1
 	url = https://github.com/d99kris/nview
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = nview
 	depends = imagemagick
 	provides = nview
 	conflicts = nview
-	source = https://github.com/d99kris/nview/archive/refs/tags/v0.30.tar.gz
-	sha256sums = 05fefaa13f8a7c12408a4f38ab869e7b80ab351214b7c615d02e66c80c0ed66a
+	source = https://github.com/d99kris/nview/archive/refs/tags/v0.32.tar.gz
+	sha256sums = a5a8c49054db5526c9de5ddbb31e949803dcb5db5dba4f7ebf5227d6fed58288
 
 pkgname = nview
