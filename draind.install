@@ -1,0 +1,16 @@
+post_install() {
+    systemd-sysusers draind.conf
+    systemctl daemon-reload
+    echo "To enable draind:"
+    echo "  systemctl enable --now draind"
+    echo "  systemctl --user enable --now draind-agent"
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    systemctl try-restart draind
+}
+
+post_remove() {
+    systemctl daemon-reload
+}
