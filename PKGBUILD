@@ -100,10 +100,10 @@ build() {
     local _completions_dir="${srcdir}/completions"
     mkdir -p "${_completions_dir}"
     # venv also used by check()
-    rm -rf "${srcdir}/test-env"
-    python -m venv --system-site-packages "${srcdir}/test-env"
+    python -m venv --clear --system-site-packages "${srcdir}/test-env"
     "${srcdir}/test-env/bin/python" -m installer dist/*.whl
 
+    # TODO remove after typer package moves to 2.6
     local _tool _upper _env_var
     for _tool in hf tiny-agents; do
         printf -v _upper "%s" "${_tool//-/_}"
