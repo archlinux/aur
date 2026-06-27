@@ -1,6 +1,6 @@
 pkgbase = streambert-bin
 	pkgdesc = Cross-platform Desktop App to stream and download Movies, TV Series and Anime
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/truelockmc/streambert
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = streambert-bin
 	depends = ffmpeg
 	provides = streambert
 	conflicts = streambert
-	source_x86_64 = https://github.com/truelockmc/streambert/releases/download/2.5.0/streambert-2.5.0.pacman
-	sha256sums_x86_64 = bfe2e53697644859c8af30d842da33842c1af6b12c08dc5c5de6cadef84b2d23
+	source_x86_64 = https://github.com/truelockmc/streambert/releases/download/2.6.0/streambert-2.6.0.pacman
+	sha256sums_x86_64 = 1c7ff906ae3a35a185834d09d510804ec883f4622f10d9f3395b0d1b37697372
 
 pkgname = streambert-bin
