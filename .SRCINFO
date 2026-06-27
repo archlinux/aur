@@ -9,6 +9,6 @@ pkgbase = sss-noocr-bin
 	provides = sss-noocr=0.2.1
 	conflicts = sss-noocr
 	source = https://github.com/SergioRibera/sss/releases/download/sss_cli/v0.2.1/sss-noocr-bin-0.2.1-x86_64.tar.gz
-	sha256sums = c8c7d3db794991045d2dfc60a851b813016c7a095cc504adf3a320faf282f9cb
+	sha256sums = 32dbd8715e0e8f8157c2a15f78cea86cc86b42e7b704f10b9c97779b1cea06a3
 
 pkgname = sss-noocr-bin
