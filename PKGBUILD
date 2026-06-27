@@ -3,23 +3,21 @@
 
 pkgname=lib32-vulkan-nouveau-git
 pkgdesc="Nouveau Vulkan (NVK) Mesa driver with some additions (32-bit Git version)"
-pkgver=25.2.branchpoint.r3036.g6fe4b7344
+pkgver=26.1.branchpoint.r3827.g019ee85
 pkgrel=1
 arch=('x86_64')
-depends=('lib32-libdrm' 'lib32-libxcb' 'lib32-libxshmfence' 'lib32-libx11' 'lib32-spirv-tools' 'lib32-systemd'
-         'lib32-vulkan-icd-loader' 'lib32-wayland' 'lib32-zlib' 'lib32-zstd')
+depends=('lib32-libdrm' 'lib32-libelf' 'lib32-libxcb' 'lib32-libxshmfence' 'lib32-libx11' 'lib32-spirv-tools'
+         'lib32-systemd' 'lib32-vulkan-icd-loader' 'lib32-wayland' 'lib32-zlib' 'lib32-zstd')
 makedepends=('cbindgen' 'elfutils' 'git' 'glslang' 'libclc' 'lib32-clang' 'lib32-libunwind' 'lib32-libxrandr'
-             'lib32-llvm' 'lib32-rust-libs' 'lib32-spirv-llvm-translator' 'meson>=1.3.0rc2' 'python-mako'
-             'python-packaging' 'python-yaml' 'rust-bindgen' 'systemd' 'wayland-protocols' 'xorgproto') # Meson 1.3.0-rc1 has weird crate issues
-optdepends=('lib32-vulkan-mesa-layers: Additional Vulkan layers'
-            'linux>=6.6.arch1: Minimum required kernel for new uAPI support')
+             'lib32-llvm' 'lib32-rust-libs' 'lib32-spirv-llvm-translator' 'meson' 'python-mako' 'python-packaging'
+             'python-yaml' 'rust-bindgen' 'systemd' 'wayland-protocols' 'xorgproto')
+optdepends=('lib32-vulkan-mesa-layers: Additional Vulkan layers')
 provides=('lib32-vulkan-driver')
 conflicts=('lib32-vulkan-nouveau')
 url="https://gitlab.freedesktop.org/mesa/mesa"
 license=('MIT AND BSD-3-Clause AND SGI-B-2.0')
 source=("git+${url}.git")
 sha512sums=('SKIP')
-install="${pkgname}.install"
 
 prepare() {
   # HACK: Don't copy Mesa's driconf defaults (they're useless for this standalone driver)
