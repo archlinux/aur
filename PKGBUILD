@@ -1,0 +1,49 @@
+# Maintainer: temidaradev <temidaradev@proton.me>
+pkgname=kopuz-bin
+pkgver=0.8.0
+pkgrel=1
+pkgdesc="A modern music player (pre-built binary)"
+arch=('x86_64')
+url="https://github.com/Kopuz-org/kopuz"
+provides=('kopuz')
+conflicts=('kopuz')
+license=('MIT')
+depends=(
+    'webkit2gtk-4.1'
+    'gtk3'
+    'libsoup3'
+    'glib-networking'
+    'alsa-lib'
+    'openssl'
+    'xdotool'
+    'dbus'
+    'opus'
+    'libayatana-appindicator'
+)
+
+optdepends=(
+    'yt-dlp'
+    'python-mutagen'
+)
+
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Kopuz-org/kopuz/releases/download/v$pkgver/kopuz_v$pkgver_x86_64-linux.tar.gz")
+sha256sums=('0e26f5e897b96645bbdabf58219205ea1ad4c125f64608503a1d617b11b8b520')
+
+package() {
+    cd "kopuz-linux-x86_64"
+
+    install -Dm755 kopuz "$pkgdir/usr/bin/kopuz"
+
+    install -Dm644 "com.temidaradev.kopuz.desktop" \
+        "$pkgdir/usr/share/applications/com.temidaradev.kopuz.desktop"
+    sed -i "s|Exec=kopuz|Exec=/usr/bin/kopuz|" \
+        "$pkgdir/usr/share/applications/com.temidaradev.kopuz.desktop"
+
+    install -Dm644 "logo.png" \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.temidaradev.kopuz.png"
+
+    install -Dm644 "com.temidaradev.kopuz.metainfo.xml" \
+        "$pkgdir/usr/share/metainfo/com.temidaradev.kopuz.metainfo.xml"
+
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
