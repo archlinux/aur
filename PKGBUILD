@@ -1,7 +1,7 @@
 # Maintainer: AscendLiu <ascendliu@qq.com>
 
 pkgname=cul-kde
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="KDE Plasma Wayland desktop control MCP server"
 arch=('x86_64')
@@ -20,7 +20,7 @@ options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AscendLiu/cul-kde/archive/v$pkgver.tar.gz"
         "99-uinput.rules"
         "cul-kde.1")
-sha256sums=('SKIP'
+sha256sums=('0b3bc5872cce16ea8cd8c9e0df43f3692e33b85704880008205855c87c841284'
             'SKIP'
             'SKIP')
 

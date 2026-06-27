@@ -1,6 +1,6 @@
 pkgbase = cul-kde
 	pkgdesc = KDE Plasma Wayland desktop control MCP server
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/AscendLiu/cul-kde
 	install = cul-kde.install
@@ -14,10 +14,10 @@ pkgbase = cul-kde
 	depends = xdg-desktop-portal-kde
 	depends = libei
 	options = !debug
-	source = cul-kde-1.0.0.tar.gz::https://github.com/AscendLiu/cul-kde/archive/v1.0.0.tar.gz
+	source = cul-kde-1.0.1.tar.gz::https://github.com/AscendLiu/cul-kde/archive/v1.0.1.tar.gz
 	source = 99-uinput.rules
 	source = cul-kde.1
-	sha256sums = SKIP
+	sha256sums = 0b3bc5872cce16ea8cd8c9e0df43f3692e33b85704880008205855c87c841284
 	sha256sums = SKIP
 	sha256sums = SKIP
 
