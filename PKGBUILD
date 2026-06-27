@@ -5,7 +5,7 @@
 # machine.
 pkgname=bigtube-bin
 _pkgname=bigtube
-pkgver=2.2.70
+pkgver=2.2.72
 pkgrel=1
 pkgdesc="Universal Multimedia Downloader (GTK4/libadwaita + GStreamer)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ provides=('bigtube')
 conflicts=('bigtube' 'bigtube-rs')
 # Prebuilt tarball published by the release workflow (layout rooted at usr/).
 source=("bigtube-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/bigtube-${pkgver}-x86_64.tar.gz")
-sha256sums=('1a7eef6f55243ea3fc6dd83dd0e72733b48aa7389cf51c8988df2c788f1df256')
+sha256sums=('c4897d9c52f4c53977dd4e8c6260ea99f6fa89d9c85d2b3cadf5c917d290850a')
 
 package() {
   # The tarball already mirrors the install layout (usr/bin, usr/share, ...).
