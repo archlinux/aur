@@ -1,6 +1,6 @@
 pkgbase = lua-lunacolors-git
 	pkgdesc = ANSI colors library for Hilbish
-	pkgver = 0.1.0.r3.g8467b87
+	pkgver = 0.2.1.r0.g34a57c9
 	pkgrel = 1
 	url = https://github.com/rosettea/lunacolors
 	arch = any
@@ -8,9 +8,7 @@ pkgbase = lua-lunacolors-git
 	makedepends = git
 	provides = lua-lunacolors
 	conflicts = lua-lunacolors
-	source = lua-lunacolors-git::git+https://github.com/rosettea/lunacolors?signed
-	validpgpkeys = 784DF7A14968C5094E16839C904FC49417B44DCD
-	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
+	source = lua-lunacolors-git::git+https://github.com/rosettea/lunacolors
 	sha256sums = SKIP
 
 pkgname = lua-lunacolors-git
