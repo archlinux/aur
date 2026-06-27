@@ -1,55 +1,54 @@
 # Maintainer: Tokyob0t <tokyob0t.business[at]proton.me>
 
-pkgbase=hilbish-git
+_pkgbase=hilbish
+
 pkgname=(
-    hilbish-git
-    hilbish-midnight-git
+    "$_pkgbase-git"
+    "$_pkgbase-midnight-git"
 )
 
 pkgver=2.3.4.r132.g6cd7cd3d
 pkgrel=1
 arch=('x86_64' 'i686' 'aarch64')
-url="https://github.com/rosettea/hilbish"
+url="https://github.com/rosettea/$_pkgbase"
 license=('MIT')
 
 makedepends=('git' 'go')
 
 install=hilbish.install
 
-source=("hilbish::git+$url")
+source=("$_pkgbase::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd hilbish
+    cd "$srcdir/$_pkgbase"
     git describe --long --tags | sed 's/^v//;s/-rc/.rc/;s/-/.r/;s/-/./'
 }
 
 prepare() {
-    cd hilbish
+    cd "$srcdir/$_pkgbase"
     go mod download
 }
 
 build() {
-    cd hilbish
+    cd "$srcdir/$_pkgbase"
 
     export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
 
-    # ========= STANDARD =========
+    # standard
     go build \
+        -o "$srcdir/$_pkgbase-standard" \
     -ldflags="-linkmode=external \
-		-X main.dataDir=/usr/share/hilbish \
-		-X main.version=$pkgver"
+            -X main.dataDir=/usr/share/hilbish \
+            -X main.version=$pkgver"
 
-    mv hilbish "$srcdir/hilbish-standard"
-
-    # ========= MIDNIGHT =========
+    # midnight lua5.4
     go build \
+        -o "$srcdir/$_pkgbase-midnight" \
         -tags "midnight,lua54" \
     -ldflags="-linkmode=external \
-		-X main.dataDir=/usr/share/hilbish \
-		-X main.version=$pkgver"
-
-    mv hilbish "$srcdir/hilbish-midnight"
+            -X main.dataDir=/usr/share/hilbish \
+            -X main.version=$pkgver"
 }
 
 _package_common() {
@@ -83,15 +82,10 @@ package_hilbish-git() {
     )
 
     provides=('hilbish')
-    conflicts=(
-        'hilbish'
-        'hilbish-midnight-git'
-    )
-
-    cd hilbish
+    conflicts=('hilbish' 'hilbish-midnight-git')
 
     install -Dm755 \
-        "$srcdir/hilbish-standard" \
+        "$srcdir/$_pkgbase-standard" \
         "$pkgdir/usr/bin/hilbish"
 
     _package_common
@@ -108,15 +102,10 @@ package_hilbish-midnight-git() {
     )
 
     provides=('hilbish')
-    conflicts=(
-        'hilbish'
-        'hilbish-git'
-    )
-
-    cd hilbish
+    conflicts=('hilbish' 'hilbish-git')
 
     install -Dm755 \
-        "$srcdir/hilbish-midnight" \
+        "$srcdir/$_pkgbase-midnight" \
         "$pkgdir/usr/bin/hilbish"
 
     _package_common
