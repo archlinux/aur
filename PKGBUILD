@@ -1,20 +1,25 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=ch9344ser-git
-pkgname=(ch9344ser-dkms-git libch9344ser-git)
+pkgname=(ch9344ser-dkms-git)
 pkgver=r59.0450213
-pkgrel=1
+pkgrel=3
 pkgdesc="This driver supports USB to quad serial ports chip ch9344 and USB to octal serial ports chip ch348."
-# arch=('any')
+arch=('any')
 arch=($CARCH)
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
 url="https://github.com/WCHSoftGroup/ch9344ser_linux"
 license=('GPL-2.0-or-later')
 depends=(
-	dkms
-         glibc)
+	dkms)
 makedepends=(
 	git
-         patch)
+    patch)
+optdepends=(
+    'linux-headers: build the module against Arch kernel'
+    'linux-ck-headers: build the module against Linux-ck kernel'
+    'linux-lts-headers: build the module against LTS Arch kernel')
 source=("${pkgbase}::git+${url}.git")
 sha512sums=('SKIP')
 options=(!strip !debug)
@@ -32,15 +37,7 @@ prepare() {
     git -C "${srcdir}/${pkgbase}" clean -dfx
 }
 
-package_ch9344ser-dkms-git() {
-    pkgdesc+=" (dkms)."
-    provides=(${pkgname%-git})
-    conflicts=(${pkgname%-git})
-    depends=(dkms)
-    optdepends=('linux-headers: build the module against Arch kernel'
-        'linux-ck-headers: build the module against Linux-ck kernel'
-        'linux-lts-headers: build the module against LTS Arch kernel')
-    arch=('any')
+package() {
     cd "$srcdir/${pkgbase}/driver"
     rm -rf Makefile
     install -Dm755 /dev/stdin Makefile <<EOF
@@ -111,26 +108,4 @@ EOF
     #     install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/cdc_acm.conf" <<EOF
     # blacklist cdc_acm
     # EOF
-}
-
-package_libch9344ser-git() {
-    pkgdesc+=" (dynamic lib)."
-    provides=(${pkgname%-git})
-    conflicts=(${pkgname%-git})
-    depends=(glibc)
-    arch=($CARCH)
-
-    cd "$srcdir/${pkgbase}/lib"
-    if [ ${CARCH} = "x86_64" ]; then
-        mv x64 libch9344ser
-    fi
-    if [ ${CARCH} = "aarch64" ]; then
-        mv aarch64 libch9344ser
-    fi
-
-    install -dm755 "${pkgdir}/usr/lib/" \
-        "${pkgdir}/usr/include/"
-    cd libch9344ser/dynamic
-    install -Dm644 libch9344.so -t "${pkgdir}/usr/lib/"
-    install -Dm644 ch9344_lib.h -t "${pkgdir}/usr/include/"
 }
