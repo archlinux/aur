@@ -3,8 +3,8 @@
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname=perl-tree-rb-xs
-pkgver=0.20
-pkgrel=2
+pkgver=0.21
+pkgrel=1
 pkgdesc='Red/Black Tree and LRU Cache implemented in C'
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'loong64' 'pentium4' 'riscv64' 'x86_64')
 url='https://metacpan.org/dist/Tree-RB-XS'
@@ -34,7 +34,7 @@ checkdepends=(
 )
 options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/N/NE/NERDVANA/Tree-RB-XS-${pkgver}.tar.gz")
-b2sums=('6bd9918afb348b3e3b3fd2e32033837d0f4db25d8e89a9c91f262520b9f253cf7ad503726db3456a61f302e1b40d86bbe177e44098c4aeda8eedffbb809f0bdf')
+b2sums=('8e8ccd375174c064c7c18ca9521d4a516c2d54478b24f249627ddcdfc51f42ad390424a23cfd7b1a907ac74c0a38e5364f698cfb28d0590048c1a0344f5e5898')
 
 build() {
   cd "${srcdir}/Tree-RB-XS-${pkgver}"
