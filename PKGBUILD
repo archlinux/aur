@@ -95,15 +95,17 @@ build() {
     # Generate shell completions via Typer
     local _completions_dir="${srcdir}/completions"
     mkdir -p "${_completions_dir}"
-    python -m venv --system-site-packages "${srcdir}/completions-venv"
-    "${srcdir}/completions-venv/bin/python" -m installer dist/*.whl >/dev/null
+    # venv also used by check()
+    rm -rf "${srcdir}/test-env"
+    python -m venv --system-site-packages "${srcdir}/test-env"
+    "${srcdir}/test-env/bin/python" -m installer dist/*.whl
 
     local _tool _upper _env_var
     for _tool in hf tiny-agents; do
         printf -v _upper "%s" "${_tool//-/_}"
         printf -v _env_var "_%s_COMPLETE" "${_upper^^}"
         export "${_env_var}=complete_zsh"
-        "${srcdir}/completions-venv/bin/${_tool}" > "${_completions_dir}/_${_tool}"
+        "${srcdir}/test-env/bin/${_tool}" > "${_completions_dir}/_${_tool}"
     done
 }
 
@@ -149,15 +151,13 @@ check() {
     )
 
     cd "${pkgname}"
-    python -m venv --system-site-packages test-env
-    test-env/bin/python -m installer dist/*.whl
-    test-env/bin/python -P -m pytest "${pytest_options[@]}" tests
+    "${srcdir}/test-env/bin/python" -P -m pytest "${pytest_options[@]}" tests
 }
 
 
 package() {
     cd "${pkgname}"
-    python -m installer --destdir="$pkgdir" dist/*.whl >/dev/null
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
     # Zsh completions (generated at build time)
     local _completions_dir="${srcdir}/completions"
