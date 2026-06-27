@@ -1,6 +1,6 @@
 pkgname=bearhub
 pkgver=0.10.7
-pkgrel=9
+pkgrel=10
 pkgdesc="Arch-first package manager hub (community-maintained fork of bauh)"
 arch=('any')
 url="https://github.com/spalencsar/bearhub"
@@ -22,7 +22,8 @@ optdepends=(
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 provides=('bearhub' 'bauh')
 conflicts=('bearhub-git' 'bauh' 'bauh-git')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}-bearhub.6.tar.gz")
+_pkgver_tag="${pkgver}-bearhub.6"
+source=("$pkgname-${_pkgver_tag}.tar.gz::$url/archive/refs/tags/${_pkgver_tag}.tar.gz")
 sha256sums=('6fa9dfbff1cdb86a5eb837275170434069d320fd3072324ca9f4eb4beea92a04')
 
 build() {
