@@ -1,6 +1,6 @@
 pkgname='python-inscriptis'
 _name=${pkgname#python-}
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="HTML to text conversion library"
 arch=('any')
@@ -9,7 +9,7 @@ license=('Apache')
 depends=(python-lxml python-requests)
 makedepends=(python-build python-installer python-wheel python-poetry-core python-hatchling)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('16517bab88ac2c8f01d58748bf070256e8af7a3fac96d1e317b01371d04a3c6e')
+sha256sums=('d82984db1c48478ec7ae4bcf6bbfbd31ccc5a49441638179d3b85ce3c72cb550')
 
 build() {
     cd "$_name-$pkgver"
