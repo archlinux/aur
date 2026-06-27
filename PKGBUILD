@@ -11,253 +11,208 @@ license=('custom:custom')
 
 # TouchDesigner version to package
 _td_ver=2025.32820
+
 depends=(
-    'python'
-    'git'
-    'curl'
-    'wget'
-    'tar'
-    'xz'
-    'cabextract'
-    'unzip'
-    'p7zip'
-    'innoextract'
-    'mesa-utils'
-    'vulkan-tools'
-    'vulkan-icd-loader'
-    'lib32-vulkan-icd-loader'
-    'lib32-glib2'
-    'lib32-gcc-libs'
-    'lib32-libx11'
-    'lib32-libxext'
-    'lib32-libxrender'
-    'lib32-libxrandr'
-    'lib32-libxi'
-    'lib32-libxcursor'
-    'lib32-libxfixes'
-    'lib32-libxinerama'
-    'lib32-libxxf86vm'
-    'lib32-libxcomposite'
-    'lib32-gnutls'
-    'lib32-freetype2'
-    'lib32-fontconfig'
-    'lib32-alsa-lib'
-    'xorg-xwayland'
+    'python' 'git' 'curl' 'wget' 'tar' 'xz'
+    'cabextract' 'unzip' 'p7zip' 'innoextract'
+    'mesa-utils' 'vulkan-tools' 'vulkan-icd-loader'
+    'lib32-vulkan-icd-loader' 'lib32-glib2' 'lib32-gcc-libs'
+    'lib32-libx11' 'lib32-libxext' 'lib32-libxrender'
+    'lib32-libxrandr' 'lib32-libxi' 'lib32-libxcursor'
+    'lib32-libxfixes' 'lib32-libxinerama' 'lib32-libxxf86vm'
+    'lib32-libxcomposite' 'lib32-gnutls' 'lib32-freetype2'
+    'lib32-fontconfig' 'lib32-alsa-lib' 'xorg-xwayland'
 )
-makedepends=(
-    'p7zip'      # Extract outer TD archive
-    'innoextract' # Extract inner Inno Setup installer
-)
-optdepends=(
-    'nvidia-utils: NVIDIA GPU acceleration'
-)
+makedepends=('innoextract')
+optdepends=('nvidia-utils: NVIDIA GPU acceleration')
 provides=("${pkgname}-${pkgver}")
 conflicts=()
 replaces=()
 
-# ── Our repo (contains td-install, td_lib, Assets) ──────────────────────────
+# ── URLs ────────────────────────────────────────────────────────────────────
 _repo_url="https://github.com/iswad-lab/TouchDesigner-Linux/archive/refs/tags/v${pkgver}.tar.gz"
-
-# ── Soda Wine 9.0-1 ──────────────────────────────────────────────────────────
 _soda_version="9.0-1"
 _soda_url="https://github.com/bottlesdevs/wine/releases/download/soda-${_soda_version}/soda-${_soda_version}-x86_64.tar.xz"
-
-# ── TouchDesigner ────────────────────────────────────────────────────────────
 _td_url="https://download.derivative.ca/TouchDesigner.${_td_ver}.exe"
-
-# ── DXVK 2.4 ─────────────────────────────────────────────────────────────────
 _dxvk_version="2.4"
 _dxvk_url="https://github.com/doitsujin/dxvk/releases/download/v${_dxvk_version}/dxvk-${_dxvk_version}.tar.gz"
-
-# ── Winetricks ───────────────────────────────────────────────────────────────
 _winetricks_url="https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks"
 
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_repo_url}"
     "soda-${_soda_version}.tar.xz::${_soda_url}"
+    "TouchDesigner.${_td_ver}.exe::${_td_url}"
     "dxvk-${_dxvk_version}.tar.gz::${_dxvk_url}"
     "winetricks::${_winetricks_url}"
 )
-sha256sums=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-    'SKIP'
-)
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
-
+# ── Build ────────────────────────────────────────────────────────────────────
 
 build() {
     cd "${srcdir}"
 
-    # Download TouchDesigner installer (not in source() to avoid bsdtar pre-extraction)
-    msg2 "Downloading TouchDesigner ${_td_ver} installer..."
-    local td_exe="TouchDesigner.${_td_ver}.exe"
-    if [ ! -f "$td_exe" ]; then
-        curl -L -o "$td_exe" "${_td_url}" 2>&1 | grep -E "(rate|complete|ETA|[%])" || true
-    fi
+    # The TouchDesigner .exe is a 7z SFX archive. bsdtar (called by makepkg
+    # during source extraction) already extracts the 7z payload, so files like
+    # setup.exe, setup.1, setup.2, etc. are already in $srcdir.
+    #
+    # We find the inner Inno Setup exe and extract it with innoextract.
 
-    # 1. Extract Soda Wine
-    msg2 "Extracting Soda Wine..."
-    mkdir -p "soda-wine"
-    tar -xJf "soda-${_soda_version}.tar.xz" \
-        -C "soda-wine" --strip-components=1
-
-    # 2. Extract TouchDesigner installer
-    msg2 "Extracting TouchDesigner installer (7z)..."
-    mkdir -p "td-7z"
-    7z x "TouchDesigner.${_td_ver}.exe" -o"td-7z" -y
-
-    # Find inner Inno Setup .exe
-    inner_exe=""
-    for f in td-7z/*.exe; do
-        if [ -f "$f" ]; then
+    # 1. TouchDesigner
+    msg2 "Extracting TouchDesigner..."
+    local inner_exe=""
+    for f in *.exe; do
+        if [ -f "$f" ] && [ "$f" != "TouchDesigner.${_td_ver}.exe" ]; then
             inner_exe="$f"
             break
         fi
     done
 
     if [ -z "$inner_exe" ]; then
+        # Inner exe not found — try 7z on the main exe
+        msg2 "Trying 7z extraction..."
+        7z x "TouchDesigner.${_td_ver}.exe" -o"td-7z" -y >/dev/null 2>&1
+        for f in td-7z/*.exe; do
+            if [ -f "$f" ]; then
+                inner_exe="$f"
+                break
+            fi
+        done
+    fi
+
+    if [ -z "$inner_exe" ]; then
         error "No inner installer found in TouchDesigner archive"
         exit 1
     fi
 
-    msg2 "Extracting TouchDesigner files (innoextract)..."
-    mkdir -p "td-inno"
-    innoextract -d "td-inno" -e "$inner_exe"
+    msg2 "Innoextracting: ${inner_exe}..."
+    mkdir -p td-inno
+    innoextract -d td-inno -e "$inner_exe" >/dev/null 2>&1
 
     if [ ! -d "td-inno/\$/app" ]; then
         error "Unexpected installer structure"
+        ls td-inno/ 2>/dev/null
         exit 1
     fi
 
-    msg2 "Setting up TouchDesigner directory..."
-    mkdir -p "td"
-    cp -r "td-inno/\$/app/" "td/"
+    mkdir -p td
+    cp -r "td-inno/\$/app/" td/
 
-    # Copy commonappdata if exists
     if [ -d "td-inno/commonappdata" ]; then
-        cp -r "td-inno/commonappdata/" "td-commonappdata/"
+        cp -r "td-inno/commonappdata/" td-commonappdata/
     fi
 
-    # 3. Extract DXVK
-    msg2 "Extracting DXVK..."
-    mkdir -p "dxvk"
-    tar -xzf "dxvk-${_dxvk_version}.tar.gz" \
-        -C "dxvk" --strip-components=1
+    # 2. Soda Wine
+    msg2 "Extracting Soda Wine..."
+    mkdir -p soda-wine
+    tar -xJf "soda-${_soda_version}.tar.xz" -C soda-wine --strip-components=1
 
-    # 4. Prepare winetricks
-    chmod +x "winetricks"
+    # 3. DXVK
+    msg2 "Extracting DXVK..."
+    mkdir -p dxvk
+    tar -xzf "dxvk-${_dxvk_version}.tar.gz" -C dxvk --strip-components=1
+
+    # 4. Winetricks
+    chmod +x winetricks
 }
 
+# ── Package ──────────────────────────────────────────────────────────────────
 
 package() {
     cd "${srcdir}"
-
-    # Base install dir
-    local td_prefix="/opt/touchdesigner"
-    local wine_dir="${td_prefix}/wine"
-    local td_dir="${td_prefix}/td"
-    local dxvk_dir="${td_prefix}/dxvk"
-    local app_dir="${td_prefix}/app"
-    local data_dir="${td_prefix}/data"
+    local repo_dir="${srcdir}/TouchDesigner-Linux-${pkgver}"
+    local prefix="/opt/touchdesigner"
 
     # ── Soda Wine ──
     msg2 "Installing Soda Wine..."
-    mkdir -p "${pkgdir}${wine_dir}"
-    cp -r "soda-wine/"* "${pkgdir}${wine_dir}/"
+    mkdir -p "${pkgdir}${prefix}/wine"
+    cp -r soda-wine/* "${pkgdir}${prefix}/wine/"
 
     # ── TouchDesigner ──
     msg2 "Installing TouchDesigner ${_td_ver}..."
-    mkdir -p "${pkgdir}${td_dir}"
-    cp -r "td/"* "${pkgdir}${td_dir}/"
+    mkdir -p "${pkgdir}${prefix}/td"
+    cp -r td/* "${pkgdir}${prefix}/td/"
 
-    # commonappdata
-    if [ -d "td-commonappdata" ]; then
-        mkdir -p "${pkgdir}${data_dir}/ProgramData"
-        cp -r "td-commonappdata/"* "${pkgdir}${data_dir}/ProgramData/"
+    if [ -d td-commonappdata ]; then
+        mkdir -p "${pkgdir}${prefix}/data/ProgramData"
+        cp -r td-commonappdata/* "${pkgdir}${prefix}/data/ProgramData/"
     fi
 
     # ── DXVK ──
     msg2 "Installing DXVK..."
-    mkdir -p "${pkgdir}${dxvk_dir}"
-    cp -r "dxvk/"* "${pkgdir}${dxvk_dir}/"
+    mkdir -p "${pkgdir}${prefix}/dxvk"
+    cp -r dxvk/* "${pkgdir}${prefix}/dxvk/"
 
     # ── Winetricks ──
-    install -Dm755 "winetricks" "${pkgdir}${td_prefix}/winetricks"
+    install -Dm755 winetricks "${pkgdir}${prefix}/winetricks"
 
     # ── Version manifest ──
-    echo "TouchDesigner ${_td_ver}" > "${pkgdir}${td_prefix}/VERSION"
-    echo "Soda Wine ${_soda_version}" >> "${pkgdir}${td_prefix}/VERSION"
-    echo "DXVK ${_dxvk_version}" >> "${pkgdir}${td_prefix}/VERSION"
+    {
+        echo "TouchDesigner ${_td_ver}"
+        echo "Soda Wine ${_soda_version}"
+        echo "DXVK ${_dxvk_version}"
+    } > "${pkgdir}${prefix}/VERSION"
 
     # ── Wrapper script ──
     msg2 "Creating wrapper..."
-    mkdir -p "${pkgdir}${app_dir}"
-    cat > "${pkgdir}${app_dir}/touchdesigner-wrapper.sh" << 'WRAPPER'
+    mkdir -p "${pkgdir}${prefix}/app"
+    cat > "${pkgdir}${prefix}/app/touchdesigner-wrapper.sh" << 'WRAPPER'
 #!/bin/bash
-# TouchDesigner launcher — first-run sets up Wine prefix, then launches TD.
+# TouchDesigner launcher — first-run sets up Wine prefix, then launches.
 
-TD_PREFIX="/opt/touchdesigner"
-WINE_DIR="${TD_PREFIX}/wine"
-TD_DIR="${TD_PREFIX}/td"
-DXVK_DIR="${TD_PREFIX}/dxvk"
-WINETRICKS="${TD_PREFIX}/winetricks"
-DATA_DIR="${TD_PREFIX}/data"
-
+PREFIX="/opt/touchdesigner"
+WINE="${PREFIX}/wine/bin/wine64"
+TD_DIR="${PREFIX}/td"
+DXVK_DIR="${PREFIX}/dxvk"
+WINETRICKS="${PREFIX}/winetricks"
+DATA_DIR="${PREFIX}/data"
 WINE_PREFIX="${HOME}/.local/share/touchdesigner-linux/prefix"
-WINE="${WINE_DIR}/bin/wine64"
-WINE_BIN="${WINE_DIR}/bin"
+
 export WINEDLLOVERRIDES="mscoree="
 export WINEDEBUG="-all"
-export PATH="${WINE_BIN}:${PATH}"
+export PATH="${PREFIX}/wine/bin:${PATH}"
+export LD_LIBRARY_PATH="${PREFIX}/wine/lib:${PREFIX}/wine/lib64:${LD_LIBRARY_PATH:-}"
 
 mkdir -p "$(dirname "${WINE_PREFIX}")"
 
-# First-run: initialize prefix
+# First-run
 if [ ! -f "${WINE_PREFIX}/drive_c/windows/system.reg" ]; then
     echo "TouchDesigner — First run setup"
     echo "  Initializing Wine prefix..."
     WINEPREFIX="${WINE_PREFIX}" "${WINE}" wineboot -u 2>/dev/null
-    echo "  Installing DXVK (Vulkan)..."
+    echo "  Installing DXVK..."
     "${DXVK_DIR}/setup_dxvk.sh" install 2>/dev/null
     echo "  Installing core fonts..."
     WINEPREFIX="${WINE_PREFIX}" "${WINETRICKS}" -q corefonts 2>/dev/null
     echo "  Setup complete."
 fi
 
-# Restore ProgramData on each run (some TD builds expect it)
+# ProgramData
 if [ -d "${DATA_DIR}/ProgramData" ]; then
     mkdir -p "${WINE_PREFIX}/drive_c/ProgramData"
     cp -r "${DATA_DIR}/ProgramData/"* "${WINE_PREFIX}/drive_c/ProgramData/" 2>/dev/null
 fi
 
-# Find TD executable
+# Find TD exe
 TD_EXE=""
 for f in "${TD_DIR}/bin/TouchDesigner.exe" "${TD_DIR}/TouchDesigner.exe"; do
-    if [ -f "$f" ]; then
-        TD_EXE="$f"
-        break
-    fi
+    [ -f "$f" ] && { TD_EXE="$f"; break; }
 done
-
 if [ -z "$TD_EXE" ]; then
-    TD_EXE=$(find "${TD_DIR}" -name "TouchDesigner*.exe" -type f 2>/dev/null | head -1)
+    TD_EXE=$(find "${TD_DIR}" -name 'TouchDesigner*.exe' -type f 2>/dev/null | head -1)
 fi
-
 if [ -z "$TD_EXE" ]; then
-    echo "Error: TouchDesigner executable not found in ${TD_DIR}"
+    echo "Error: TouchDesigner not found in ${TD_DIR}"
     exit 1
 fi
 
-# Launch
 WINEPREFIX="${WINE_PREFIX}" "${WINE}" "${TD_EXE}" "$@"
 WRAPPER
-    chmod 755 "${pkgdir}${app_dir}/touchdesigner-wrapper.sh"
+    chmod 755 "${pkgdir}${prefix}/app/touchdesigner-wrapper.sh"
 
-    # Symlink in PATH
+    # Symlink
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s "${app_dir}/touchdesigner-wrapper.sh" "${pkgdir}/usr/bin/touchdesigner"
+    ln -s "${prefix}/app/touchdesigner-wrapper.sh" "${pkgdir}/usr/bin/touchdesigner"
 
     # ── Desktop file ──
     msg2 "Creating desktop entry..."
@@ -267,8 +222,8 @@ WRAPPER
 Version=1.0
 Type=Application
 Name=TouchDesigner ${_td_ver}
-Comment=Visual development platform for real-time interactive content
-Exec=${app_dir}/touchdesigner-wrapper.sh %F
+Comment=Visual development platform
+Exec=${prefix}/app/touchdesigner-wrapper.sh %F
 Icon=/usr/share/icons/hicolor/scalable/apps/touchdesigner.svg
 Terminal=false
 Categories=Development;Graphics;
@@ -277,7 +232,6 @@ StartupNotify=true
 DESKTOP
 
     # ── MIME XML ──
-    msg2 "Creating MIME types..."
     mkdir -p "${pkgdir}/usr/share/mime/packages"
     cat > "${pkgdir}/usr/share/mime/packages/touchdesigner.xml" << MIME
 <?xml version="1.0"?>
@@ -295,31 +249,26 @@ DESKTOP
 </mime-info>
 MIME
 
-    # ── Icons (from Assets) ──
+    # ── Icons ──
     msg2 "Installing icons..."
-    local repo_dir="${srcdir}/TouchDesigner-Linux-${pkgver}"
     if [ -d "${repo_dir}/Assets/Icons" ]; then
-        mkdir -p "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-        install -Dm644 "${repo_dir}/Assets/Icons/TouchDesigner.svg"   "${pkgdir}/usr/share/icons/hicolor/scalable/apps/touchdesigner.svg"
-        install -Dm644 "${repo_dir}/Assets/Icons/TouchDesigner-toe.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/touchdesigner-toe.svg"
-        install -Dm644 "${repo_dir}/Assets/Icons/TouchDesigner-tox.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/touchdesigner-tox.svg"
+        install -Dm644 "${repo_dir}/Assets/Icons/TouchDesigner.svg" \
+            "${pkgdir}/usr/share/icons/hicolor/scalable/apps/touchdesigner.svg"
+        install -Dm644 "${repo_dir}/Assets/Icons/TouchDesigner-toe.svg" \
+            "${pkgdir}/usr/share/icons/hicolor/scalable/apps/touchdesigner-toe.svg"
+        install -Dm644 "${repo_dir}/Assets/Icons/TouchDesigner-tox.svg" \
+            "${pkgdir}/usr/share/icons/hicolor/scalable/apps/touchdesigner-tox.svg"
     fi
 
-    # ── td-install CLI tool ──
+    # ── td-install ──
     msg2 "Installing td-install..."
     if [ -f "${repo_dir}/td-install" ]; then
         install -Dm755 "${repo_dir}/td-install" "${pkgdir}/usr/bin/td-install"
-        # Also install td_lib for td-install
-        if [ -d "${repo_dir}/td_lib" ]; then
-            mkdir -p "${pkgdir}/usr/share/touchdesigner-linux"
-            cp -r "${repo_dir}/td_lib" "${pkgdir}/usr/share/touchdesigner-linux/td_lib"
-        fi
-        # Font fix file
+        mkdir -p "${pkgdir}/usr/share/touchdesigner-linux"
+        cp -r "${repo_dir}/td_lib" "${pkgdir}/usr/share/touchdesigner-linux/"
         if [ -f "${repo_dir}/Assets/wine_ui_fixes.tox" ]; then
-            install -Dm644 "${repo_dir}/Assets/wine_ui_fixes.tox" "${pkgdir}/usr/share/touchdesigner-linux/wine_ui_fixes.tox"
+            install -Dm644 "${repo_dir}/Assets/wine_ui_fixes.tox" \
+                "${pkgdir}/usr/share/touchdesigner-linux/wine_ui_fixes.tox"
         fi
     fi
 }
-
-# Makepkg does not build from source, just extracts binaries
-# (but the build() function processes the downloads)
