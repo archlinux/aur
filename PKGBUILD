@@ -4,7 +4,7 @@
 # Contributor: Niels Abspoel <aboe76 (at) Gmail (dot) com>
 
 pkgname=openvox-server
-pkgver=8.13.0
+pkgver=8.14.1
 pkgrel=1
 pkgdesc='Server automation framework and application'
 arch=('any')
@@ -27,7 +27,7 @@ backup=('etc/default/puppetserver'
 install="${pkgname}.install"
 _hiera_eyaml_ver=5.0.1
 source=("${pkgname}-${pkgver}.tar.gz::https://artifacts.voxpupuli.org/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('806d318bf3e77d72fcf0388793c665d4662f27d95e406dced397bc307dda07639c8f9b40b5b2bdb2711067ec822380fcc871f860aabda626dc783b948eb90e21')
+sha512sums=('ea3ca20276cfd79cf438f9ea8109ee04568bdc061e2856b14b2a6018b3fbc54f7d574b7687c2e8eca9f1db158949a14c3e5e193b117af037d474c4a8ed7d0ec9')
 
 prepare() {
   cd "puppetserver-${pkgver}"
