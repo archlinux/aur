@@ -1,6 +1,7 @@
-# Maintainer: brionical27 <brionical@proton.me>
-pkgname=kh-melonmix-bin
-pkgver=0.8.2
+# Maintainer:
+_pkgname=kh-melonmix
+pkgname=$_pkgname-bin
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A fork of MelonDS, focused on remastering Kingdom Hearts: 358/2 Days and Re:coded"
 arch=(x86_64)
@@ -9,7 +10,7 @@ license=('GPL-3.0-or-later')
 options=(!strip)
 depends=("libepoxy" "qt5-base" "qt5-multimedia" "qt5-svg" "sdl2" "sdl2-compat" "lua" "fuse2")
 install=kh-melonmix.install
-source=("melonmix-$pkgver.zip::$url/releases/download/v$pkgver/MelonMix-appimage-$arch.zip"
+source=("$_pkgname-$pkgver.zip::$url/releases/download/v$pkgver/MelonMix-appimage-$arch.zip"
 kh-melonmix.png::https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/icon/melon_256x256.png
 kh-melonmix-days.png::https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/khDaysMM.png
 kh-melonmix-coded.png::https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/khCodedMM.png
@@ -18,7 +19,7 @@ kh-melonmix-days.desktop
 kh-melonmix-recoded.desktop
 kh-melonmix
 )
-sha256sums=("27b99303ea2c0667172791d2a2ee27531dba1442bedfe8ade3d8838895ea5913"
+sha256sums=("b34bdc67b2c22bf0f6954c79c17cf3ca97a862881cbe3c8eb5ebc9b651060b61"
 	SKIP
 	SKIP
 	SKIP
@@ -27,18 +28,17 @@ sha256sums=("27b99303ea2c0667172791d2a2ee27531dba1442bedfe8ade3d8838895ea5913"
 	SKIP
 	SKIP)
 
-provides=('kh-melonmix')
-conflicts=('kh-melonmix')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 package() {
 # making all the directories
-mkdir -p "$pkgdir/opt/Kingdom Hearts Melon Mix/roms"
 mkdir -p $pkgdir/usr/bin
 mkdir -p $pkgdir/usr/share/applications
 mkdir -p $pkgdir/usr/share/icons/hicolor/256x256/apps
 
 # move everything (and I mean EVERYTHING) to $pkgdir/opt/Kingdom Hearts Melon Mix
-install -Dm755 $srcdir/MelonMix.AppImage "$pkgdir/opt/Kingdom Hearts Melon Mix"
+install -Dm755 $srcdir/MelonMix.AppImage "$pkgdir/opt/Kingdom Hearts Melon Mix/MelonMix.AppImage"
 install -Dm755 $srcdir/kh-melonmix "$pkgdir/usr/bin"
 
 # installs the .desktop files
