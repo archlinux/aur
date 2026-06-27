@@ -1,4 +1,4 @@
-# Maintainer: thayeeboi890 
+# Maintainer: thayeeboi890
 pkgname=sehn
 pkgver=0.1.0
 pkgrel=1
@@ -12,12 +12,10 @@ optdepends=('pulseaudio: PulseAudio sound server'
 makedepends=('meson' 'ninja' 'gcc' 'pkgconf')
 source=("https://github.com/thayeeboi890/sehn/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
-
 build() {
   arch-meson "$srcdir/sehn-$pkgver" build --wrap-mode forcefallback
   ninja -C build
 }
-
 package() {
   DESTDIR="$pkgdir" ninja -C build install
 }
