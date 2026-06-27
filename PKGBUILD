@@ -1,38 +1,81 @@
-# Maintainer: takeshix <deen [at] adversec [dot] com>
+# Maintainer: Takeshi Shiroma <takeshix@adversec.com>
 
-_gitname=deen
-pkgname="${_gitname}-git"
-pkgver=2.0.0.b1697c2
+pkgname=deen-git
+_pkgname=deen
+_reponame=go-deen
+pkgver=3.3.0.beta.r106.gcc108c4
 pkgrel=1
-pkgdesc='Generic data encoding/decoding application built with PyQt5'
-url='https://github.com/takeshixx/deen'
-arch=('any')
-license=('Apache 2.0')
-depends=('python' 'python-setuptools' 'python-pyqt5'
-         'python-pyopenssl' 'python-jsbeautifier'
-         'python-keystone' 'python-capstone' 'python-jose'
-         'python-bcrypt' 'python-xmltodict')
-makedepends=('git')
+pkgdesc='Data encoder, decoder, hasher, compressor and formatter with a Go/Fyne GUI'
+arch=('x86_64' 'aarch64')
+url='https://github.com/takeshixx/go-deen'
+license=('Apache-2.0')
+depends=(
+  'glibc'
+  'libglvnd'
+  'libx11'
+  'libxcursor'
+  'libxfixes'
+  'libxi'
+  'libxinerama'
+  'libxrandr'
+)
+makedepends=(
+  'gcc'
+  'git'
+  'go'
+  'pkgconf'
+)
 provides=('deen')
 conflicts=('deen')
-source=("${_gitname}::git+https://github.com/takeshixx/deen.git")
-sha512sums=('SKIP')
+source=(
+  "git+${url}.git"
+  "${_pkgname}.desktop"
+)
+sha256sums=(
+  'SKIP'
+  '227de2e239a0d7dba03a4f0c8c1393357b134931a9fb4a5376808494e0a60d0f'
+)
 
 pkgver() {
-  cd ${_gitname}
-  printf "%s.%s" "$(git describe --tags --abbrev=0|sed 's/^v//'|sed 's/\-/_/')" \
-                 "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${_reponame}"
+
+  git describe --long --tags --always | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "${srcdir}/${_reponame}"
+
+  export CGO_ENABLED=1
+  export GOPATH="${srcdir}/gopath"
+  export GOCACHE="${srcdir}/gocache"
+  export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
+
+  local version branch
+  version="$(git describe --abbrev=0 --tags --always)"
+  branch="$(git branch --show-current)"
+
+  go build \
+    -tags gui \
+    -ldflags "-linkmode external -X github.com/takeshixx/deen/internal/core.version=${version} -X github.com/takeshixx/deen/internal/core.branch=${branch}" \
+    -o "${_pkgname}" \
+    ./cmd/deen
+}
+
+check() {
+  cd "${srcdir}/${_reponame}"
+
+  export GOPATH="${srcdir}/gopath"
+  export GOCACHE="${srcdir}/gocache"
+  export GOFLAGS='-mod=readonly -modcacherw'
+
+  go test -timeout 20s -count=1 ./...
 }
 
 package() {
-  cd ${_gitname}
-  python3 setup.py install --root="$pkgdir/" --optimize=1
+  cd "${srcdir}/${_reponame}"
 
-  install -dm 755 "$pkgdir/usr/share/bash-completion/completions"
-
-  install -Dm 644 "deen/media/${_gitname}.desktop" "${pkgdir}/usr/share/applications/${_gitname}.desktop"
-  install -Dm 644 "deen/media/icon.png" "${pkgdir}/usr/share/pixmaps/deen.png"
-  install -Dm 644 deen-completion.sh "$pkgdir/usr/share/bash-completion/completions/deen"
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
-
-# vim: ts=2 sw=2

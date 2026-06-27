@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=deen
+GenericName=Data transformer
+Comment=Encode, decode, hash, compress and format data
+Exec=deen
+Terminal=false
+Categories=Utility;Development;
+Keywords=decoder;encoder;hash;compression;formatter;security;
