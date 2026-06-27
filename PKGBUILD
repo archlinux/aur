@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=loreai-pi
-pkgver=0.33.0
+pkgver=0.34.0
 pkgrel=1
 pkgdesc="Lore memory engine extension for Pi"
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom:FSL-1.1-Apache-2.0')
 depends=('pi' 'loreai')
 makedepends=('pnpm')
 source=("loreai-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('f01151d8768e2a0b08a58ef431493542bb42e769b420d6e81423a850db36f409')
+sha256sums=('3f29f2108340a7f536c6bd9e061b72334f286c1069a98f9c9a4eef4f0664d895')
 
 build() {
   cd "loreai-${pkgver}"
