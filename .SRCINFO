@@ -1,10 +1,11 @@
 pkgbase = technitium-dns-server-git
 	pkgdesc = Open source authoritative and recursive DNS server focused on privacy and security
 	pkgver = r4003.gaa9044d4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://technitium.com/dns/
 	install = technitium-dns-server.install
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = dotnet-sdk
 	depends = aspnet-runtime
