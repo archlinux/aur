@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Neo candy icons"
 arch=('any')
 url="https://github.com/erikdubois/${_pkgname}"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 options=('!strip' '!emptydirs')
 # Swapping the dash to an underscore in pkgver makes Arch version parsing happy
 source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/${pkgver/_/-}.zip")
