@@ -35,7 +35,7 @@ package() {
 
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-    install -dm644 "${pkgdir}/usr/share/doc/${pkgname}/examples"
+    install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/examples"
     cp -rf "examples/"* "${pkgdir}/usr/share/doc/${pkgname}/examples/"
 
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
