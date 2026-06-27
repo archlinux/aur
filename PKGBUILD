@@ -3,7 +3,7 @@
 # Contributors: Det, goetzc, Ner0, Lari Tikkanen, oke3, Flamelab, WAntilles
 
 pkgname=smplayer-git
-pkgver=10415.r4.gf626556
+pkgver=25.6.0.r49.gf626556
 pkgrel=1
 pkgdesc='Media player with built-in codecs that can play virtually all video and audio formats'
 arch=(x86_64)
@@ -24,7 +24,7 @@ source=("$pkgname::git+https://github.com/smplayer-dev/smplayer.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  git -C $pkgname describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C $pkgname describe --long --tags --abbrev=7 --match 'v*.*.*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
