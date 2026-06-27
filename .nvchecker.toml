@@ -1,0 +1,4 @@
+[feluda]
+source = "git"
+git = "https://github.com/anistark/feluda.git"
+prefix = "v"
