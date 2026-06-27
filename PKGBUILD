@@ -1,5 +1,5 @@
 pkgname=7zip-zstd-bin
-pkgver=26.01
+pkgver=26.02
 _pkgver=1.5.7-R1
 pkgrel=1
 pkgdesc="File archiver for extremely high compression (With Zstandard support)"
@@ -9,16 +9,17 @@ license=('LGPL-2.1-or-later' 'BSD-3-Clause' 'LicenseRef-UnRAR')
 depends=('glibc' 'gcc-libs')
 provides=('p7zip' '7zip' '7zip-zstd')
 conflicts=('p7zip' '7zip' '7zip-zstd')
+options=('!strip')
 
 source_x86_64=("${url}/releases/download/v${pkgver}-v${_pkgver}/linux-gcc-x64.zip")
 source_aarch64=("${url}/releases/download/v${pkgver}-v${_pkgver}/linux-gcc-arm64.zip")
-source=("License.txt::${url}/raw/master/DOC/License.txt"
-        "unRarLicense.txt::${url}/raw/master/DOC/unRarLicense.txt")
+source=("License.txt::${url}/raw/v${pkgver}-v${_pkgver}/DOC/License.txt"
+        "unRarLicense.txt::${url}/raw/v${pkgver}-v${_pkgver}/DOC/unRarLicense.txt")
 
 sha256sums=('5b565f1591a5872cb163a17a06725c4ec010f60401c9068d1b5e1e8c89517f39'
             '17bd9fa4399092c777536fff045b41df76ec9d2ac4c9b8e7345d3b8b6ccc7976')
-sha256sums_x86_64=('3cfca42ab44519822d5299cb92f823633209dd762d903ade3fde19585c56915a')
-sha256sums_aarch64=('b0fe7971ac821524b68cdf6821357a36a978a80495d054b76a42fe3aa2dc290c')
+sha256sums_x86_64=('20f541d934ec1ed82435b17ebe649cd588f389e84841a781624dd121a3bf561a')
+sha256sums_aarch64=('a52f0fb66fba56d52f0ed0f4dd4f69be28f37ac91e463c4da60df4f57c99ca17')
 
 
 package() {
