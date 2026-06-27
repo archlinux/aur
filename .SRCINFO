@@ -1,6 +1,6 @@
 pkgbase = jailer
 	pkgdesc = Database Subsetting and Relational Data Browsing Tool
-	pkgver = 17.1.2
+	pkgver = 17.1.3
 	pkgrel = 1
 	url = https://github.com/Wisser/Jailer
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = jailer
 	depends = libxrender
 	depends = lcms2
 	depends = zlib
-	source = jailer-17.1.2.deb::https://github.com/Wisser/Jailer/releases/download/v17.1.2/jailer-database-tools_17.1.2-x64.deb
-	b2sums = 1b8b41bccde037b9f3c114837ac7fbf8f55d34b9a59890bcf051ec765d74bbc6c851b04e551ff0f2bd2d3583b866e720574ea8d4e6f56f7284eecc7d951a6272
+	source = jailer-17.1.3.deb::https://github.com/Wisser/Jailer/releases/download/v17.1.3/jailer-database-tools_17.1.3-x64.deb
+	b2sums = c6d2f6e68debc38760bade56c606f1b3e064f325508fc310c8abd4ac2c50fd0bb7f60810b2456e524e2e6b059ac1e673c82b88492df411878d1b924b9f5788bd
 
 pkgname = jailer
