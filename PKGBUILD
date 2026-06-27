@@ -14,11 +14,14 @@ optdepends=(
 provides=("${pkgname%%-bin}")
 conflicts=("${pkgname%%-bin}" "${pkgname%%-bin}-git")
 options=('!strip')
-source=("stremio-server.service")
+backup=("etc/stremio-server/stremio-server.env")
+source=("stremio-server.service"
+        "stremio-server.env")
 source_x86_64=("${pkgname%%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/stremio-server_Linux_x86_64.tar.gz")
 source_aarch64=("${pkgname%%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/stremio-server_Linux_arm64.tar.gz")
 source_armv7h=("${pkgname%%-bin}-${pkgver}-armv7h.tar.gz::${url}/releases/download/v${pkgver}/stremio-server_Linux_armv7.tar.gz")
-sha256sums=('6e4bd9080b43aebf2d634e1dff2acd8329e572935ae4f7b4fbbc8f6a521acfb8')
+sha256sums=('db36d59eae51f133ef0eaf3100667172564ae69e377aeab897e625830be3bc84'
+            '64e0d5fe57f94c7a80233c78b4c887fa429b5aa18cd91c2f5f51d91723120e55')
 sha256sums_x86_64=('e1a0596ae9ff7a1d16807245f0462d2608e3c07e221b99d2ad35acd6febc6e06')
 sha256sums_aarch64=('28587ccb5dd6c182c55e39c53ad4214721caa6993da2eac22068dafe4f7350b2')
 sha256sums_armv7h=('e24a665ddae4feddf8026855104e166a31f941bd9bb8aa7edece37bcd474f611')
@@ -30,6 +33,10 @@ package() {
   # Install user systemd service
   install -Dm644 "${srcdir}/stremio-server.service" \
     "${pkgdir}/usr/lib/systemd/user/stremio-server.service"
+
+  # Install default environment file
+  install -Dm644 "${srcdir}/stremio-server.env" \
+    "${pkgdir}/etc/stremio-server/stremio-server.env"
 
   # License and documentation
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

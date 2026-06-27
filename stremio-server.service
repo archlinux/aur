@@ -5,6 +5,8 @@ After=network.target
 
 [Service]
 Type=simple
+EnvironmentFile=-/etc/stremio-server/stremio-server.env
+EnvironmentFile=-%h/.config/stremio-server/env
 ExecStart=/usr/bin/stremio-server
 Restart=on-failure
 RestartSec=5
