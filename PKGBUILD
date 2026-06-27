@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Seewo EasiNote5 希沃白板 5"
 arch=('x86_64')
 license=('custom')
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux' 'libappindicator-gtk3' 'libsecret')
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux' 'libappindicator-gtk3' 'libsecret' 'electron')
 makedepends=('asar' 'nodejs' 'npm')
 options=('!strip' '!debug' '!emptydirs')
 source=("https://imlizhi-store-https.seewo.com/EasiNote_UOS_amd64_5.2.2.4.13984(20260429093518).deb")
@@ -19,7 +19,10 @@ package() {
   fi
   cat >"$APP_ROOT/com.seewo.easinote5.sh" <<EOF
 #!/bin/bash
-exec "/opt/apps/com.seewo.easinote5/files/EasiNote5" "\$@"
+# old method
+# exec "/opt/apps/com.seewo.easinote5/files/EasiNote5" "\$@"
+# new method
+exec /usr/bin/electron /opt/apps/com.seewo.easinote5/files/resources/app.asar
 EOF
   chmod +x "$APP_ROOT/com.seewo.easinote5.sh"
   asar e "$APP_ROOT/resources/app.asar" "$srcdir/app_unpacked"

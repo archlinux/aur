@@ -17,6 +17,7 @@ pkgbase = easinote-bin
 	depends = util-linux
 	depends = libappindicator-gtk3
 	depends = libsecret
+	depends = electron
 	options = !strip
 	options = !debug
 	options = !emptydirs
