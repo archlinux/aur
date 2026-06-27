@@ -1,7 +1,7 @@
 pkgbase = lhdc-v5-helper
 	pkgdesc = QEMU aarch64 stdio helper for Savitech LHDC v5 encoder libraries
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DBeidachazi/lhdc-v5-helper
 	install = lhdc-v5-helper.install
 	arch = x86_64
@@ -18,6 +18,8 @@ pkgbase = lhdc-v5-helper
 	source = android-libm-shim.map
 	source = android-log-stub.c
 	source = run-helper-stdio.sh
+	source = lhdc-v5-install-lib
+	source = liblhdcv5.so::https://raw.githubusercontent.com/DBeidachazi/lhdc-v5-helper/master/liblhdcv5.so
 	source = README.md
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -26,6 +28,8 @@ pkgbase = lhdc-v5-helper
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 0fd2f572cc730c3e5d14ad2c73b9c0883dff4ca155c3dda1da386f7efc9e8856
 	sha256sums = SKIP
 
 pkgname = lhdc-v5-helper

@@ -1,10 +1,11 @@
 post_install() {
   cat <<'EOF'
 ==> lhdc-v5-helper installed.
-==> This package does not ship Savitech's closed liblhdcv5.so.
-==> Put your ARM64 Android liblhdcv5.so at:
+==> The bundled ARM64 Android liblhdcv5.so is installed at:
     /usr/lib/lhdc-v5-helper/lib/liblhdcv5.so
-==> or set LHDCV5_LIB to an alternate path.
+==> To test another encoder build:
+    sudo lhdc-v5-install-lib /path/to/liblhdcv5.so
+==> Or set LHDCV5_LIB to an alternate path.
 EOF
 }
 

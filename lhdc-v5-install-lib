@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage:
+  sudo lhdc-v5-install-lib /path/to/liblhdcv5.so
+
+Installs an ARM64 Android LHDC v5 encoder library to:
+  /usr/lib/lhdc-v5-helper/lib/liblhdcv5.so
+EOF
+}
+
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+  usage
+  exit 0
+fi
+
+if [[ $# -ne 1 ]]; then
+  usage >&2
+  exit 64
+fi
+
+src=$1
+dst=/usr/lib/lhdc-v5-helper/lib/liblhdcv5.so
+
+if [[ $EUID -ne 0 ]]; then
+  echo "run as root: sudo lhdc-v5-install-lib $src" >&2
+  exit 77
+fi
+
+if [[ ! -f "$src" ]]; then
+  echo "not a file: $src" >&2
+  exit 66
+fi
+
+if command -v file >/dev/null 2>&1; then
+  desc=$(file -b "$src")
+  case "$desc" in
+    *"ELF 64-bit"*"ARM aarch64"*|*"ELF 64-bit"*"ARM64"*) ;;
+    *)
+      echo "warning: file does not look like an ARM64 ELF shared object:" >&2
+      echo "  $desc" >&2
+      ;;
+  esac
+fi
+
+install -Dm644 "$src" "$dst"
+echo "installed: $dst"
+echo "restart WirePlumber to use it:"
+echo "  systemctl --user restart wireplumber"
