@@ -1,7 +1,7 @@
 # Contributor: pumpkincheshire <me at pumpkincheshire dot com>
 
 pkgname="python-amazon.ion"
-pkgver=0.14.5
+pkgver=0.14.6
 pkgrel=1
 pkgdesc='A Python implementation of Amazon Ion'
 url='https://amzn.github.io/ion-docs/'
@@ -18,7 +18,7 @@ makedepends=(
 )
 source=("git+https://github.com/amazon-ion/ion-python.git#tag=v$pkgver"
         "git+https://github.com/amazon-ion/ion-c.git")
-b2sums=('a1a2aa216516bf37c7c7831740a9a9362cf3f47263f37ab9478b961e059ebf7c225bb1e6277a2436d24ddd871caaf255bc523dbbd19d9ccb25e1ea8f233f7f34'
+b2sums=('36e2168dcde79b2b3443a2afff745d343523dc2aea6cdc1cf644ea727edd5070740cfc011a6bd5372d8db5a2cee8e2529114d56a67e22f845881125d1ef7c78b'
         'SKIP')
 
 prepare() {
