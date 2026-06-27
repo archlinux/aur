@@ -1,0 +1,17 @@
+pkgbase = musicrename
+	pkgdesc = command line music library manager
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/mfinelli/musicrename
+	arch = x86_64
+	license = GPL-3.0-or-later
+	checkdepends = ffmpeg
+	makedepends = git
+	makedepends = go
+	makedepends = scdoc
+	depends = glibc
+	depends = taglib
+	source = git+https://github.com/mfinelli/musicrename.git#tag=v3.0.0
+	sha256sums = 4ddb27137cad2a12f16616525009296d439d6794c17641a7dba1aaf83d148139
+
+pkgname = musicrename
