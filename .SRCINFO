@@ -1,6 +1,6 @@
 pkgbase = odytty
 	pkgdesc = GPU-rendered Rust terminal emulator with an Odyssey visual identity
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://github.com/ghreprimand/odytty
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = odytty
 	depends = vulkan-icd-loader
 	depends = hicolor-icon-theme
 	provides = odytty
-	source = odytty-0.5.4.tgz::https://github.com/ghreprimand/odytty/archive/refs/tags/v0.5.4.tar.gz
-	sha256sums = 92642a62a5ab577553994e608f12e2c14c1f632e610be22beff13e08f9883f5e
+	source = odytty-0.5.5.tgz::https://github.com/ghreprimand/odytty/archive/refs/tags/v0.5.5.tar.gz
+	sha256sums = 6aefa0bd69fa3bdd869c02d3973dcc19b78ba669cf2c78781fd4523e8e0301df
 
 pkgname = odytty
