@@ -6,7 +6,7 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 
 pkgname=arnis
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc='Generate any location from the real world in Minecraft'
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('cairo' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme'
 makedepends=('cargo')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8a9ff671d974c30c2e3760429ac5b33988ba581b397bf9a3b758609584b31c1b')
+sha256sums=('e94e3263276ef1747d2921eb27cd003fb12023a08e9ef37bb10e674467d637a2')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
