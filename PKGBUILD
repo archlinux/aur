@@ -3,9 +3,10 @@
 pkgname=python-huggingface-hub-git
 pkgver=1.21.0.r2538.g1e41293
 pkgrel=1
+_repo=huggingface/huggingface_hub
 pkgdesc='Client library to download and publish models on the huggingface.co hub'
 arch=('any')
-url='https://github.com/huggingface/huggingface_hub'
+url="https://github.com/${_repo}"
 license=('Apache-2.0')
 groups=('huggingface')
 depends=(
@@ -89,6 +90,20 @@ prepare() {
 build() {
     cd "${pkgname}"
     python -m build --wheel --no-isolation
+
+    # Generate shell completions via Typer
+    local _completions_dir="${srcdir}/completions"
+    mkdir -p "${_completions_dir}"
+    python -m venv --system-site-packages "${srcdir}/completions-venv"
+    "${srcdir}/completions-venv/bin/python" -m installer dist/*.whl >/dev/null
+
+    local _tool _upper _env_var
+    for _tool in hf tiny-agents; do
+        printf -v _upper "%s" "${_tool//-/_}"
+        printf -v _env_var "_%s_COMPLETE" "${_upper^^}"
+        export "${_env_var}=complete_zsh"
+        "${srcdir}/completions-venv/bin/${_tool}" > "${_completions_dir}/_${_tool}"
+    done
 }
 
 
@@ -141,7 +156,31 @@ check() {
 
 package() {
     cd "${pkgname}"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="$pkgdir" dist/*.whl >/dev/null
+
+    # Zsh completions (generated at build time)
+    local _completions_dir="${srcdir}/completions"
+    local _tool
+    for _tool in hf tiny-agents; do
+        install -Dm644 "${_completions_dir}/_${_tool}" "${pkgdir}/usr/share/zsh/site-functions/_${_tool}"
+    done
+
+    # Bash completions (delegation wrappers — Typer 0.25 lacks static bash source generation)
+    local _bash_dir="${pkgdir}/usr/share/bash-completion/completions"
+    install -Dm644 /dev/stdin "${_bash_dir}/hf" <<'BASH'
+_hf_completion() {
+    local IFS=$'\n'
+    COMPREPLY=($(COMP_WORDS="${COMP_WORDS[*]}" COMP_CWORD="${COMP_CWORD}" _HF_COMPLETE=complete_bash hf 2>/dev/null))
+}
+complete -F _hf_completion hf
+BASH
+    install -Dm644 /dev/stdin "${_bash_dir}/tiny-agents" <<'BASH'
+_tiny_agents_completion() {
+    local IFS=$'\n'
+    COMPREPLY=($(COMP_WORDS="${COMP_WORDS[*]}" COMP_CWORD="${COMP_CWORD}" _TINY_AGENTS_COMPLETE=complete_bash tiny-agents 2>/dev/null))
+}
+complete -F _tiny_agents_completion tiny-agents
+BASH
 }
 
 # vim:set ts=2 sw=2 et ft=PKGBUILD:
