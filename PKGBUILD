@@ -11,12 +11,25 @@ pkgdesc='A jq clone'
 url=https://github.com/01mf02/jaq
 arch=('x86_64')
 license=(MIT)
-depends=(gcc-libs glibc)
+depends=(gcc-libs glibc mimalloc)
 makedepends=(rust jotdown)
 conflicts=(jaq jq)
 provides=(jaq jq)
-source=("git+${url}.git")
-b2sums=('SKIP')
+source=("git+${url}.git" build.rs
+"git+https://github.com/purpleprotocol/mimalloc_rust")
+b2sums=('SKIP'
+        'a25f7b5f6cf994cf6527a7411fda1faefd0956070f4db32610c8fc2b1c9381daba8565f7aacee7b5bb7e4173710a56af5b8f4b03ab9f07d96d8e1a7f7f5cdfb1'
+        'SKIP')
+
+prepare() {
+  cp -vf build.rs -t mimalloc_rust/libmimalloc-sys
+  cd jaq
+  cat >> Cargo.toml <<END
+[patch.crates-io]
+mimalloc.path = "../mimalloc_rust"
+END
+  cargo update -p mimalloc
+}
 
 build() {
   cd jaq

@@ -9,11 +9,16 @@ pkgbase = jaq-git
 	makedepends = jotdown
 	depends = gcc-libs
 	depends = glibc
+	depends = mimalloc
 	provides = jaq
 	provides = jq
 	conflicts = jaq
 	conflicts = jq
 	source = git+https://github.com/01mf02/jaq.git
+	source = build.rs
+	source = git+https://github.com/purpleprotocol/mimalloc_rust
+	b2sums = SKIP
+	b2sums = a25f7b5f6cf994cf6527a7411fda1faefd0956070f4db32610c8fc2b1c9381daba8565f7aacee7b5bb7e4173710a56af5b8f4b03ab9f07d96d8e1a7f7f5cdfb1
 	b2sums = SKIP
 
 pkgname = jaq-git
