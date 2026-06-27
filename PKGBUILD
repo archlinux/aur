@@ -1,7 +1,7 @@
 # Maintainer: Rizki Rakasiwi <rizkirr.xyz@gmail.com>
 pkgname=muslimtify
-pkgver=0.2.3
-pkgrel=2
+pkgver=0.2.4
+pkgrel=1
 pkgdesc="An Islamic prayer time notification daemon for Linux"
 arch=('x86_64')
 url="https://github.com/rizukirr/muslimtify"
@@ -10,13 +10,7 @@ depends=('libnotify' 'curl')
 makedepends=('cmake' 'pkgconf')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('98cfb87e96cf3ba98f379d5230c441c0345625679b6441966cf7c5d3974675bd')
-
-prepare() {
-    # Upstream service file points at /usr/local/bin; package installs to /usr/bin.
-    sed -i 's|/usr/local/bin/muslimtify|/usr/bin/muslimtify|' \
-        "$pkgname-$pkgver/systemd/muslimtify.service"
-}
+sha256sums=('a1d154ef0cd87f66a6a1f38a2e1e1d2a05e2acfaec5179623e98f10586ea6e3c')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \
@@ -28,7 +22,7 @@ build() {
 package() {
     DESTDIR="$pkgdir" cmake --install build
 
-    # Ship a user preset so the timer auto-enables for each user.
+    # Ship a user preset so the service auto-enables for each user.
     install -Dm644 /dev/stdin \
-        "$pkgdir/usr/lib/systemd/user-preset/90-muslimtify.preset" <<<'enable muslimtify.timer'
+        "$pkgdir/usr/lib/systemd/user-preset/90-muslimtify.preset" <<<'enable muslimtify.service'
 }
