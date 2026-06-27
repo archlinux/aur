@@ -1,10 +1,10 @@
 # Maintainer: Anton Kudelin <kudelin at proton dot me>
 
 pkgname=platon
-pkgver=081024
+pkgver=20260620
 pkgrel=1
 pkgdesc="A Multipurpose Crystallographic Tool"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://www.platonsoft.nl"
 license=(custom)
 depends=(gcc-libs libx11)
@@ -21,7 +21,8 @@ prepare() {
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  grep "IGBL(4) = " platon.f | awk -F'= ' '{print $2}'
+  local d=$(grep -m1 "IGBL(4) = " platon.f | awk -F'= ' '{print $2}' | tr -dc '0-9')
+  printf '%06d' "$d" | sed -E 's/(..)(..)(..)/20\3\2\1/'
 }
 
 build() {

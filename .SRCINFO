@@ -1,14 +1,15 @@
 pkgbase = platon
 	pkgdesc = A Multipurpose Crystallographic Tool
-	pkgver = 081024
+	pkgver = 20260620
 	pkgrel = 1
 	url = https://www.platonsoft.nl
 	arch = x86_64
+	arch = aarch64
 	license = custom
 	makedepends = gcc-fortran
 	depends = gcc-libs
 	depends = libx11
-	source = platon-081024.tar.gz::http://www.platonsoft.nl/xraysoft/unix/platon.tar.gz
+	source = platon-20260620.tar.gz::http://www.platonsoft.nl/xraysoft/unix/platon.tar.gz
 	sha256sums = SKIP
 
 pkgname = platon
