@@ -12,7 +12,7 @@
 declare srcdir pkgdir
 pkgname=neovim-zig-git
 _nvim_version=0.13.0
-pkgver=0.13.0.r540.g9174157f74
+pkgver=0.13.0.r1094.ga5aa62e37b
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - built using zig'
 arch=(i686 x86_64 armv7h aarch64)
@@ -41,7 +41,7 @@ provides=("neovim=${_nvim_version}" 'vim-plugin-runtime')
 conflicts=('neovim' 'neovim-git')
 source=(
     'git+https://github.com/neovim/neovim.git'
-    'ziglua.tar.gz::https://github.com/natecraddock/ziglua/archive/c09d0cb9f8175c1c02fbeae51940cfab15f3e085.tar.gz'
+    'ziglua.tar.gz::https://github.com/natecraddock/ziglua/archive/1dcb9f2b7b466a1609cc11e746c2efc4f17685da.tar.gz'
     'translate_c.tar.gz::https://codeberg.org/ziglang/translate-c/archive/46b5609b5ac4c0a896217d1d984f3ae50e4810b5.tar.gz'
     'aro.tar.gz::https://github.com/Vexu/arocc/archive/5f5a050569a95ecc40a426f0c3666ae7ef987ede.tar.gz'
     'https://github.com/neovim/deps/raw/06ef2b58b0876f8de1a3f5a710473dcd7afff251/opt/lua-dev-deps.tar.gz'
@@ -81,7 +81,7 @@ b2sums=(
     'SKIP'
     '65e10c2d4ca2c661b666629a4ff793b41454eaee5b6f2789526294b3a9903b682dd7fffe4f5de21a8a96069324e6e5ffacba97cf1c74a2b72fb0349abee13fb1'
 )
-_zig_options=(--system zig_deps -Doptimize=ReleaseFast -Dcpu=native -Dinstall-path=/usr --seed 1 --build-id=0x01)
+_zig_options=(--system zig_deps -Doptimize=ReleaseFast -Dcpu=native -Dinstall-path=/usr)
 
 pkgver() {
     local nvim_version_git
@@ -93,7 +93,7 @@ pkgver() {
 
 prepare() {
     local zlua_hash lua_dev_deps_hash ts_c_hash ts_markdown_hash ts_lua_hash ts_vim_hash ts_vimdoc_hash ts_query_hash
-    zlua_hash='zlua-0.1.0-hGRpC1hWBQAhR6kPtfypQ1Awn09a9JWpIuErNKPCMwSq'
+    zlua_hash='zlua-0.1.0-hGRpC22ABQA4y12Uz7QaHuCkKrpaa_66xidApjtFuKFg'
     lua_dev_deps_hash='N-V-__8AAGevEQCHAkCozca5AIdN9DFc3Luf3g3r2AcbyOrm'
     translate_c_hash='translate_c-0.0.0-Q_BUWpf0BgAwrh5AM-acJcslN_YPEhcoCVKbbNjwuUTJ'
     aro_hash='aro-0.0.0-JSD1Qi7QNgDnfcrdEJf82v3o6MhZySjYVrtdfEf3E4Se'
