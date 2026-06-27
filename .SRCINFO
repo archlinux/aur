@@ -1,7 +1,7 @@
 pkgbase = odamex
 	pkgdesc = A free client/server multiplayer engine for the classic FPS Doom
-	pkgver = 12.2.0
-	pkgrel = 3
+	pkgver = 12.2.1
+	pkgrel = 1
 	url = https://github.com/odamex/odamex
 	arch = x86_64
 	arch = aarch64
@@ -25,7 +25,7 @@ pkgbase = odamex
 	depends = wxwidgets-gtk3
 	optdepends = timidity++: Required for the SDL2 MIDI music backend
 	optdepends = doomseeker: Online Doom multiplayer server launcher
-	source = odamex::git+https://github.com/odamex/odamex.git#tag=12.2.0
-	sha256sums = f7f04ee9fe97afbfdae9c52faef5ae2c4c55fc9b6061cc8d8c4c02d39ff80d53
+	source = odamex::git+https://github.com/odamex/odamex.git#tag=12.2.1
+	sha256sums = 4acd5ac164c0371774e9c179db4c8c32560c6825f543fd0ac094c075f070e638
 
 pkgname = odamex
