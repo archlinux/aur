@@ -9,7 +9,7 @@ pkgname=('authentik-cli-bin'
          'libpam-authentik-bin' 
          'libnss-authentik-bin')
 pkgver=0.44.3
-pkgrel=2
+pkgrel=3
 url="https://github.com/goauthentik/platform"
 license=('MIT')
 makedepends=()
@@ -76,7 +76,7 @@ package_authentik-agent-bin() {
   pkgdesc="authentik Agent"
   provides=(authentik-agent)
   conflicts=(authentik-agent)
-  depends=(aithentik-sysd authentik-cli)
+  depends=(authentik-sysd authentik-cli)
 
   bsdtar -O -xf "authentik-agent.deb" data.tar.gz | bsdtar -C "${pkgdir}" -xf -
 }

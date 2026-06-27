@@ -1,7 +1,7 @@
 pkgbase = authentik-platform-bin
 	pkgdesc = authentik Platform authentication, Agent, CLI and other components
 	pkgver = 0.44.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/goauthentik/platform
 	arch = x86_64
 	arch = aarch64
@@ -49,7 +49,7 @@ pkgname = authentik-cli-bin
 
 pkgname = authentik-agent-bin
 	pkgdesc = authentik Agent
-	depends = aithentik-sysd
+	depends = authentik-sysd
 	depends = authentik-cli
 	provides = authentik-agent
 	conflicts = authentik-agent
