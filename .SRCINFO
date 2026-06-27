@@ -18,7 +18,6 @@ pkgbase = nview
 	depends = libglvnd
 	depends = imagemagick
 	provides = nview
-	conflicts = nview
 	source = https://github.com/d99kris/nview/archive/refs/tags/v0.32.tar.gz
 	sha256sums = a5a8c49054db5526c9de5ddbb31e949803dcb5db5dba4f7ebf5227d6fed58288
 
