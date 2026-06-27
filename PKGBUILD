@@ -6,7 +6,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=sejda-desktop
-pkgver=7.9.6
+pkgver=7.9.7
 pkgrel=1
 pkgdesc="Proprietary commercial PDF editor"
 arch=(x86_64)
@@ -15,8 +15,8 @@ license=(LicenseRef-EULA)
 depends=(libxcb libxfixes nspr alsa-lib libcups at-spi2-core libxrandr libdrm libxrender pango nss libxcomposite cairo
          libxdamage libxkbcommon mesa gtk3 libx11 glibc bash expat libxext libxtst dbus libxi gcc-libs glib2)
 options=('!strip')
-source_x86_64=("https://downloads.sejda-cdn.com/sejda-desktop_7.9.6_amd64.deb")
-sha512sums_x86_64=('3c5b69006ddba259d5eb7599e0d55556288d29152f183ab7d436db14e17101ce491aec9041d23552b78b3ca169f4e48a7a2cce95bf3f6fda4064dcaf12f29ba1')
+source_x86_64=("https://downloads.sejda-cdn.com/sejda-desktop_7.9.7_amd64.deb")
+sha512sums_x86_64=('587083bd5f474782caeaae536b0c1ca19c2f42bf926a77d66d84af1603520d63df539bfadf131fd21327954b1b5ad4c83d55fff8bbb22384b5ab530b64831ef5')
 
 package() {
   bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}/"
