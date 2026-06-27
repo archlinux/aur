@@ -1,14 +1,15 @@
 pkgbase = kodi-addon-visualization-matrix
 	pkgdesc = Matrix themed visualization addon for Kodi
-	pkgver = 20.2.0
+	pkgver = 21.0.2
 	pkgrel = 1
 	url = https://github.com/xbmc/visualization.matrix
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
 	makedepends = cmake
+	makedepends = glm
 	makedepends = kodi-dev
 	depends = kodi
-	source = https://github.com/xbmc/visualization.matrix/archive/refs/tags/20.2.0-Nexus.tar.gz
-	sha256sums = f0b76edf45df7161d8525fa2ba623dee64ca66d515342e942100dc46c8220553
+	source = https://github.com/xbmc/visualization.matrix/archive/refs/tags/21.0.2-Omega.tar.gz
+	sha256sums = b1d1f3da5470d657e70c4b914a77445fe1d0a0ba35007fc402982a8b1b4cf9b0
 
 pkgname = kodi-addon-visualization-matrix
