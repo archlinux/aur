@@ -7,7 +7,6 @@ pkgbase = superlauncher
 	license = GPL3
 	depends = python
 	depends = python-pyqt6
-	depends = python-pip
 	source = superlauncher-2.0.0.tar.gz
 	sha256sums = SKIP
 
