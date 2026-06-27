@@ -1,7 +1,7 @@
 # Maintainer: skint007 <archlinux.repose742@passmail.net>
 pkgname=yay-sys-tray-git
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.0.0.1.4d0e23b
+pkgrel=2
 pkgdesc="Arch Linux system tray update checker using yay (built from source)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/skint007/yay-sys-tray"
@@ -9,7 +9,10 @@ license=('MIT')
 depends=(webkit2gtk-4.1 gtk3 libayatana-appindicator pacman-contrib yay)
 optdepends=('tailscale: remote server update checking via Tailscale'
             'openssh: SSH access for remote server update checks')
-makedepends=(git rust cargo nodejs pnpm)
+# pnpm (current) needs Node 22.13+ (it imports node:sqlite), so require it
+# explicitly — otherwise an older system Node fails mid-build with a cryptic
+# crash. Users who can't/won't bump Node should install yay-sys-tray-bin.
+makedepends=(git rust cargo 'nodejs>=22.13.0' pnpm)
 provides=('yay-sys-tray')
 conflicts=('yay-sys-tray' 'yay-sys-tray-bin')
 install=yay-sys-tray-git.install

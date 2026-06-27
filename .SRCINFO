@@ -1,7 +1,7 @@
 pkgbase = yay-sys-tray-git
 	pkgdesc = Arch Linux system tray update checker using yay (built from source)
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgver = 1.0.0.1.4d0e23b
+	pkgrel = 2
 	url = https://github.com/skint007/yay-sys-tray
 	install = yay-sys-tray-git.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = yay-sys-tray-git
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
-	makedepends = nodejs
+	makedepends = nodejs>=22.13.0
 	makedepends = pnpm
 	depends = webkit2gtk-4.1
 	depends = gtk3
