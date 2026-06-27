@@ -22,7 +22,7 @@ depends=(# ~ Aseprite's direct dependencies ~
          # pixman is not linked to because we use Skia instead
          # harfbuzz is linked statically because Aseprite expects an older version
          cmark curl giflib libjpeg-turbo zlib libpng 'tinyxml2>=11.0.0' freetype2 libarchive fmt
-         libwebp 
+         libwebp
          hicolor-icon-theme # For installing Aseprite's icons
          # ~ Skia deps ~
          # (Skia links dynamically to HarfBuzz, only Aseprite itself doesn't. >_<)
