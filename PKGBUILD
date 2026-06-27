@@ -106,7 +106,7 @@ build() {
     # 2. Extract TouchDesigner installer
     msg2 "Extracting TouchDesigner installer (7z)..."
     mkdir -p "td-7z"
-    7z x "TouchDesigner.${_td_ver}.exe" -o"td-7z" -y >/dev/null 2>&1
+    7z x "TouchDesigner.${_td_ver}.exe" -o"td-7z" -y
 
     # Find inner Inno Setup .exe
     inner_exe=""
@@ -124,7 +124,7 @@ build() {
 
     msg2 "Extracting TouchDesigner files (innoextract)..."
     mkdir -p "td-inno"
-    innoextract -d "td-inno" -e "$inner_exe" >/dev/null 2>&1
+    innoextract -d "td-inno" -e "$inner_exe"
 
     if [ ! -d "td-inno/\$/app" ]; then
         error "Unexpected installer structure"
