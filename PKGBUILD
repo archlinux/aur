@@ -2,7 +2,7 @@
 
 pkgname="python-invocation-tree"
 pkgdesc="Generate an invocation tree of functions calls"
-pkgver=0.0.38
+pkgver=0.0.39
 pkgrel=1
 
 _pypi_package=${pkgname##python-}
@@ -16,7 +16,7 @@ depends=('python' 'python-graphviz')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
-sha256sums=('59d878b3adf3dc1dd913eb3c394c2eadabe47a65f5915fd61dbee9e8ea347c21')
+sha256sums=('0ceda5f1bb3fad3e8aed79c454f2556335bb8b0cc7ca6ae1552d16a4e5fcc34b')
 
 
 build() {
