@@ -6,7 +6,7 @@ pkgver=2.0.0
 pkgrel=1
 pkgdesc="Minecraft launcher with mod support and server management"
 arch=('any')
-url="https://github.com/superlauncher/superlauncher"
+url="https://aur.archlinux.org/packages/superlauncher"
 license=('custom:MIT')
 depends=(
     'python'
@@ -24,9 +24,9 @@ optdepends=(
     'python-pyjwt: JWT authentication'
     'jdk17-openjdk: run Minecraft Java Edition'
 )
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('710d4a1cbc8e275189aa6989f3921dcf07634f3825ba2cdbc41001ff21fbb672')
+sha256sums=('7dc179e6ea9c854071a2f3e292338a5f47cf98f7f5fb427f2b74f4e4d69186c8')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -40,15 +40,8 @@ package() {
     install -Dm644 superlauncher.desktop \
         "$pkgdir/usr/share/applications/superlauncher.desktop"
 
-    local icon_path
-    for icon_path in assets/icon.png SuperLauncher/assets/icon.png; do
-        if [ -f "$icon_path" ]; then
-            install -Dm644 "$icon_path" \
-                "$pkgdir/usr/share/icons/hicolor/256x256/apps/superlauncher.png"
-            break
-        fi
-    done
-
-    # Create necessary directories for runtime data
-    install -dm755 "$pkgdir/usr/share/superlauncher"
+    if [ -f assets/icon.png ]; then
+        install -Dm644 assets/icon.png \
+            "$pkgdir/usr/share/icons/hicolor/256x256/apps/superlauncher.png"
+    fi
 }
