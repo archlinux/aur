@@ -118,6 +118,7 @@ prepare() {
 	patch -tp1 <include_cstdint.patch
 	[[ -n $_debug ]] && echo change_use_of_removed_intrinsic.patch
 	env -C skia/modules/skcms/ patch -tp1 <change_use_of_removed_intrinsic.patch
+	env -C aseprite/src/app/commands/ patch -tp1 <fmt-12.2.0-include-format.patch
 }
 
 build() {
