@@ -26,7 +26,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7dc179e6ea9c854071a2f3e292338a5f47cf98f7f5fb427f2b74f4e4d69186c8')
+sha256sums=('2b64f0c82980b6d60fd539ac9b45e25db30cc4cceb5c57a7718aba211b1e61ef')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
