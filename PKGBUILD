@@ -60,7 +60,8 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         shared-libwebp-found.patch
         include_cstdint.patch
         shared_libjpeg-turbo.patch
-        change_use_of_removed_intrinsic.patch)
+        change_use_of_removed_intrinsic.patch
+        fmt-12.2.0-include-format.patch)
 noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz") # Don't extract Aseprite or skia sources at the root
 sha256sums=('3895afca60608e86ffbba20c32af95a6e59f8d7ebe6d2617236f159b42176bfe'
@@ -77,7 +78,8 @@ sha256sums=('3895afca60608e86ffbba20c32af95a6e59f8d7ebe6d2617236f159b42176bfe'
             '72605d6760c29eb98f2d8d8cf2cc9f9f7d7655bcf7cfc944f6a46b0957adbb14'
             '3381038fc5209600428801fa0b2b05ddee031b0926eaa75c114172e503916cd5'
             '0fa67d34f63cb4ed472b620ebad0656aeca646cb7f1069b7066ee91e6902fe6c'
-            '1276dd96f9ba63ce942b7321f5f753b02119c99b2eaf652ea5998b90d5d5a1d2')
+            '1276dd96f9ba63ce942b7321f5f753b02119c99b2eaf652ea5998b90d5d5a1d2'
+            '9c81587432dc00e76b23d7a46f422bf56239aaf445d84118e3cee38f2aed89cd')
 _debug="true"
 prepare() {
 	# Extract Aseprite's sources

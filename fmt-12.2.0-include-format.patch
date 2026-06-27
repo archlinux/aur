@@ -1,0 +1,12 @@
+diff --git a/cmd_run_command.cpp b/cmd_run_command.cpp
+index 97515c2..17ecebe 100644
+--- a/cmd_run_command.cpp
++++ b/cmd_run_command.cpp
+@@ -30,6 +30,7 @@
+ #include "ui/label.h"
+ #include "ui/message.h"
+ #include "ui/system.h"
++#include "fmt/format.h"
+ 
+ #ifdef ENABLE_SCRIPTING
+   #include "app/script/engine.h"

@@ -48,6 +48,7 @@ pkgbase = aseprite
 	source = include_cstdint.patch
 	source = shared_libjpeg-turbo.patch
 	source = change_use_of_removed_intrinsic.patch
+	source = fmt-12.2.0-include-format.patch
 	sha256sums = 3895afca60608e86ffbba20c32af95a6e59f8d7ebe6d2617236f159b42176bfe
 	sha256sums = c2a567d6b8bb933a92615cbdee0de268d02c3a06863337ee8822eedab9ed66ba
 	sha256sums = b52f179a687ef2f91a52b696ab6581f4a37df5e88cb22040fa1ec6567cf0ebb1
@@ -63,6 +64,7 @@ pkgbase = aseprite
 	sha256sums = 3381038fc5209600428801fa0b2b05ddee031b0926eaa75c114172e503916cd5
 	sha256sums = 0fa67d34f63cb4ed472b620ebad0656aeca646cb7f1069b7066ee91e6902fe6c
 	sha256sums = 1276dd96f9ba63ce942b7321f5f753b02119c99b2eaf652ea5998b90d5d5a1d2
+	sha256sums = 9c81587432dc00e76b23d7a46f422bf56239aaf445d84118e3cee38f2aed89cd
 
 pkgname = aseprite
 	depends = cmark
