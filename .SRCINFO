@@ -1,6 +1,6 @@
 pkgbase = gh-axi
 	pkgdesc = AXI-compliant GitHub CLI wrapper with token-efficient output and suggestions
-	pkgver = 0.1.22
+	pkgver = 0.1.23
 	pkgrel = 1
 	url = https://github.com/kunchenguid/gh-axi
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = gh-axi
 	depends = nodejs
 	depends = github-cli
 	options = !debug
-	source = gh-axi-0.1.22.tgz::https://registry.npmjs.org/gh-axi/-/gh-axi-0.1.22.tgz
-	sha512sums = 25fc7d1229cbdf0ddee68cde4ddc12ce2d006b7d1634fe3f26c21a969d348e3965fbeda92ad07c5171d106ce6f3d5de1f9905126c0c1970e199a9cea3f662741
+	source = gh-axi-0.1.23.tgz::https://registry.npmjs.org/gh-axi/-/gh-axi-0.1.23.tgz
+	sha512sums = 0ecb1e4b2e87093368c5a77e19624db40dceced34f1f248950bee6f67560761b15b69b2004c64881ce7319ec3e8ac5c33a155fdd11377bf75acdbef88dba2c24
 
 pkgname = gh-axi
