@@ -1,11 +1,15 @@
 pkgbase = python-dateutils
 	pkgdesc = Utilities for working with datetime objects
 	pkgver = 0.6.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jmcantrell/python-dateutils
 	arch = any
 	license = ISC
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
 	depends = python-dateutil
 	depends = python-pytz
 	source = python-dateutils-0.6.12.tar.gz::https://github.com/jmcantrell/python-dateutils/archive/refs/tags/v0.6.12.tar.gz
