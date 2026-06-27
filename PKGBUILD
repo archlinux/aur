@@ -2,17 +2,18 @@
 
 _pyname=ibapi
 pkgname=python-$_pyname
-pkgver=10.22.01
+pkgver=10.47.01
 pkgrel=1
 pkgdesc="Python IB API"
 arch=(any)
 url="https://interactivebrokers.github.io/tws-api"
 license=(custom)
-depends=(python)
+depends=(python python-protobuf)
 makedepends=(python-build python-installer python-setuptools python-wheel)
+checkdepends=(python-pytest)
 source=(https://interactivebrokers.github.io/downloads/twsapi_macunix.${pkgver/./}.zip
         LICENSE)
-sha256sums=('32fa9535cc5cd925ddb77d316b17f420ebb99049538bdd40fa89df3c101e5627'
+sha256sums=('832bf9c8fbcd2d95dc278d42dd51be8dc64aae67d4c11c5f2ff0297d9ee087e3'
             'c60f3a3fe9a6799a346fe9519b2448334d99a6f0ff3db5c9969493be75941c5d')
 
 build() {
