@@ -3,7 +3,7 @@
 _pkgauthor=d99kris
 _pkgname=idntag
 pkgname=${_pkgname}
-pkgver=2.01
+pkgver=2.02
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Automatically identify, tag and rename audio files"
@@ -18,7 +18,7 @@ depends=('glibc' 'gcc-libs' 'ncurses' 'taglib' 'curl')
 makedepends=('cmake' 'pkg-config' 'nlohmann-json' 'chromaprint' 'help2man')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5b104715e0e14e82aadbcd5eaae253a38935a5be0381510b1cf68fa406be02db')
+sha256sums=('39b1939301025561dc5a2750b5127f5d438d4fbf5ad24e19b905df160e9ca992')
 
 
 build() {

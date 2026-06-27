@@ -1,6 +1,6 @@
 pkgbase = idntag
 	pkgdesc = Automatically identify, tag and rename audio files
-	pkgver = 2.01
+	pkgver = 2.02
 	pkgrel = 1
 	url = https://github.com/d99kris/idntag
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = idntag
 	depends = curl
 	provides = idntag
 	conflicts = idntag
-	source = idntag-2.01.tgz::https://github.com/d99kris/idntag/archive/refs/tags/v2.01.tar.gz
-	sha256sums = 5b104715e0e14e82aadbcd5eaae253a38935a5be0381510b1cf68fa406be02db
+	source = idntag-2.02.tgz::https://github.com/d99kris/idntag/archive/refs/tags/v2.02.tar.gz
+	sha256sums = 39b1939301025561dc5a2750b5127f5d438d4fbf5ad24e19b905df160e9ca992
 
 pkgname = idntag
