@@ -2,9 +2,9 @@
 
 pkgname=python-borgstore
 _name=${pkgname#python-}
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
-pkgdesc='A experimental key/value store implementation, supporting multiple backends'
+pkgdesc='A key/value store implementation supporting multiple backends'
 arch=(any)
 url="https://github.com/borgbackup/$_name"
 license=(BSD-3-Clause)
@@ -19,14 +19,16 @@ checkdepends=(python-pytest)
 optdepends=('python-requests: REST and rclone backends'
             'python-boto3: S3 backend'
             'python-paramiko: sftp backend')
-source=("git+$url.git#tag=$pkgver?signed")
+source=(git+$url.git#tag=$pkgver?signed)
 validpgpkeys=('6D5BEF9ADD2075805747B70F9F88FB52FAF7B393') # Thomas Waldmann <tw@waldmann-edv.de>
-b2sums=('128ab12c4a9fbda1e972629783619ef90b5a2041f2d9eeda964e3b4b294f1da03e00c91663a5ae42ada15b12bc94f58a316ea613fa394217ad8a1b0a772dc3d3')
+b2sums=('11ebe578d9e087042b7f90d761b262fe7e6c59f2c1fac0596c0132f2314ef69c635a76f0a26a87f1450261d9659276a5cc9bda9610195b704d55750f222d6b34')
 
 build() {
     cd $_name
     python -m build --wheel --no-isolation
-    sphinx-build -b html -d /tmp/sphinx-doctrees docs docs/_build/html
+    python -m venv --system-site-packages docs-env
+    docs-env/bin/python -m installer dist/*.whl
+    docs-env/bin/python -m sphinx -b html -d docs/_build/doctrees docs docs/_build/html
 }
 
 check() {
