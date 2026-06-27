@@ -106,7 +106,11 @@ package() {
     # ── TouchDesigner ──
     msg2 "Installing TouchDesigner ${_td_ver}..."
     mkdir -p "${pkgdir}${prefix}/td"
-    cp -r td/* "${pkgdir}${prefix}/td/" 2>/dev/null
+    if [ -d "td/app" ]; then
+        cp -r td/app/* "${pkgdir}${prefix}/td/" 2>/dev/null
+    else
+        cp -r td/* "${pkgdir}${prefix}/td/" 2>/dev/null
+    fi
 
     if [ -d td-commonappdata ]; then
         mkdir -p "${pkgdir}${prefix}/data/ProgramData"
