@@ -1,6 +1,6 @@
 # Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
 pkgname="kwin-effect-rounded-corners"
-pkgver=0.8.7
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Rounds the corners of your windows (wayland)"
 url="https://github.com/matinlotfali/KDE-Rounded-Corners"
