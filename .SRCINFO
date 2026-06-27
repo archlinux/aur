@@ -11,6 +11,6 @@ pkgbase = zapreq
 	makedepends = cargo
 	depends = gcc-libs
 	source = zapreq-0.1.7.tar.gz::https://github.com/MFAIZAN20/zapreq/archive/refs/tags/v0.1.7.tar.gz
-	sha256sums = de670e1b3d29714dfeba5522f0c1470c9e4ef24a1e930b9413e78c45833d15d8
+	sha256sums = 9600fda64c88cdd24fb3dcd34790d5586b34dc021e245c752b124a5569bd68ce
 
 pkgname = zapreq
