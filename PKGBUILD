@@ -82,11 +82,11 @@ build() {
                     FIX_ENTS+=("$entry")
                 done < "$FIX_TMP/fix.tox.toc"
                 find "${srcdir}/td" -type f -iname 'NewProject.toe' -print0 2>/dev/null | while IFS= read -r -d '' toe; do
-                    local B=$(basename "$toe") D=$(dirname "$toe")
-                    local DIR="$D/${B}.dir" TOC="$D/${B}.toc" W="z:${toe}"
+                    B=$(basename "$toe") D=$(dirname "$toe")
+                    DIR="$D/${B}.dir" TOC="$D/${B}.toc" W="z:${toe}"
                     rm -rf "$DIR" "$TOC"
                     WINEPREFIX="$WINEPREFIX" wine64 "$TOE_EXP" "$W" >/dev/null 2>&1 || true
-                    local NEEDS=false; [ ! -d "$DIR/wine_ui_fixes" ] && NEEDS=true
+                    NEEDS=false; [ ! -d "$DIR/wine_ui_fixes" ] && NEEDS=true
                     rm -rf "$DIR" "$TOC"
                     if $NEEDS; then
                         WINEPREFIX="$WINEPREFIX" wine64 "$TOE_EXP" "$W" >/dev/null 2>&1 || true
