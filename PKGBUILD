@@ -48,6 +48,7 @@ makedepends=(
     'p7zip'      # Extract outer TD archive
     'innoextract' # Extract inner Inno Setup installer
 )
+noextract=('TouchDesigner.${_td_ver}.exe')
 optdepends=(
     'nvidia-utils: NVIDIA GPU acceleration'
 )
