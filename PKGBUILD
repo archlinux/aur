@@ -1,6 +1,6 @@
 # Maintainer: Matt <matthew.panton@gmail.com>
 pkgname=nexus-open
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Linux controller for Corsair iCUE Nexus display device"
 arch=('x86_64')
@@ -9,13 +9,18 @@ license=('MIT')
 depends=('libayatana-appindicator' 'gtk3' 'libgl' 'libgles' 'libegl')
 install=nexus-open.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-amd64.tar.gz")
-sha256sums=('1648b6f933d4aef47e23be8812ed8e12531386006f0f4814e8cdb402a64fe4c7')
+sha256sums=('ed26775711f9b4476c2193637ea08822a116e64c8b87223d0eec2886226196bb')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     install -Dm755 nexus-open \
         "${pkgdir}/usr/bin/nexus-open"
+
+    for plugin in plugins-dist/nexus-*; do
+        install -Dm755 "$plugin" \
+            "${pkgdir}/usr/lib/nexus-open/plugins/$(basename "$plugin")"
+    done
 
     install -Dm644 packaging/udev/99-corsair-nexus.rules \
         "${pkgdir}/usr/share/nexus-open/99-corsair-nexus.rules"
