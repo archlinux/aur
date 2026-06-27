@@ -1,16 +1,17 @@
 pkgbase = mesmer
 	pkgdesc = An open-source master equation solver for multi-energy well reactions
-	pkgver = 6.1
+	pkgver = 7.1
 	pkgrel = 1
 	url = https://sourceforge.net/projects/mesmer
 	arch = x86_64
-	license = GPL2
+	arch = aarch64
+	license = GPL-2.0-or-later
 	makedepends = gcc
 	depends = qd
 	depends = tinyxml
 	depends = openmpi
 	options = !makeflags
-	source = https://downloads.sourceforge.net/mesmer/Mesmer6.1-source.tar.gz
-	sha256sums = c16b81c6bf220cebeca6ebe235e65051162bf0aad496879329041e071e8278b9
+	source = https://downloads.sourceforge.net/mesmer/Mesmer7.1-source.tar.gz
+	sha256sums = 7f9423d627f17ddbfabeac2a4d37d7db8f5702ca44f318d7403b16c19aa27690
 
 pkgname = mesmer
