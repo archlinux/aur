@@ -2,7 +2,7 @@
 
 _pkgname="abar"
 pkgname="${_pkgname}-git"
-pkgver=r77.gb3bb12d
+pkgver=r82.g64946cd
 pkgrel=1
 pkgdesc="Minimalistic Wayland-native bar with pango and cairo"
 arch=("x86_64")
@@ -10,7 +10,7 @@ url="https://github.com/Gigas002/abar"
 license=('GPL-3.0-only')
 depends=(cairo pango wayland)
 makedepends=(git cargo)
-optdepends=()
+optdepends=(socat)
 provides=(abar)
 conflicts=(abar)
 source=("${_pkgname}::git+$url.git")

@@ -1,6 +1,6 @@
 pkgbase = abar-git
 	pkgdesc = Minimalistic Wayland-native bar with pango and cairo
-	pkgver = r77.gb3bb12d
+	pkgver = r82.g64946cd
 	pkgrel = 1
 	url = https://github.com/Gigas002/abar
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = abar-git
 	depends = cairo
 	depends = pango
 	depends = wayland
+	optdepends = socat
 	provides = abar
 	conflicts = abar
 	source = abar::git+https://github.com/Gigas002/abar.git
