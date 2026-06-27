@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=catbath
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="a tiny editor: terminal-first, browser-curious, extension-friendly."
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ options=(!strip)
 source_x86_64=("$pkgname-$pkgver-$pkgrel-x86_64.tar.gz::$url/releases/download/v$pkgver/catbath-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-$pkgrel-aarch64.tar.gz::$url/releases/download/v$pkgver/catbath-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('2b7649abfa967f3a546f4d0c3b7d4d01bb278fdbf200321263607e598a1b4c52')
-sha256sums_aarch64=('7b83fd167d0aad51caa4d9c4ceda6f781be0b254063401cadbd7ced4983ac20a')
+sha256sums_x86_64=('5044c0c22634eef7cc2f68b8171d83d38a2d6c33582cae64f97f4bcd216b2aad')
+sha256sums_aarch64=('60e3d81004ef06281c2da1b603eeee3e58fcca08e932b0ec1ac3eab4877b2606')
 
 package() {
   install -Dm755 catbath "$pkgdir/usr/bin/catbath"
