@@ -45,7 +45,7 @@ build() {
 		ldflags="-checklinkname=0"
 	fi
 
-	go build -trimpath -ldflags "${ldflags}" -o "${pkgname}" ./
+	go build -trimpath -ldflags "${ldflags}" -o "${pkgname}" "./cmd/${pkgname}/"
 }
 
 package() {
