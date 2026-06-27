@@ -1,5 +1,5 @@
 pkgname=okteta-qt6-git
-pkgver=0.26.25.r1525.g910c779
+pkgver=0.26.27.r1514.g0e31e68
 pkgrel=1
 pkgdesc='KDE hex editor for viewing and editing the raw data of files (Qt6 git version)'
 arch=(x86_64)
@@ -24,6 +24,7 @@ depends=('qt6-base'
 )
 makedepends=('ninja'
              'cmake'
+             'kdoctools'
 )
 source=("git+https://github.com/KDE/okteta.git#branch=work/kossebau/kf6"
         "fix-mouse-on-wayland.diff"

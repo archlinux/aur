@@ -1,6 +1,6 @@
 pkgbase = okteta-qt6-git
 	pkgdesc = KDE hex editor for viewing and editing the raw data of files (Qt6 git version)
-	pkgver = 0.26.25.r1525.g910c779
+	pkgver = 0.26.27.r1514.g0e31e68
 	pkgrel = 1
 	url = https://apps.kde.org/okteta/
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = okteta-qt6-git
 	license = GPL-3.0
 	makedepends = ninja
 	makedepends = cmake
+	makedepends = kdoctools
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-5compat
