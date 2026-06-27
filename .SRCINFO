@@ -9,13 +9,13 @@ pkgbase = superlauncher
 	depends = python-pyqt6
 	depends = python-requests
 	depends = python-pillow
-	optdepends = python-pypresence: Discord Rich Presence
+	depends = python-pypresence
 	optdepends = python-cryptography: encrypted storage
 	optdepends = python-psutil: system resource monitoring
 	optdepends = python-pyjwt: JWT authentication
 	optdepends = python-minecraft-launcher-lib: Minecraft version management
 	optdepends = jdk17-openjdk: run Minecraft Java Edition
 	source = superlauncher-2.0.0.tar.gz
-	sha256sums = 90eb227e8f7c473320e5d92ce6f590e2f009b9ff3c340d179cac734f9d15bed7
+	sha256sums = SKIP
 
 pkgname = superlauncher

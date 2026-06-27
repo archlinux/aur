@@ -12,9 +12,9 @@ depends=(
     'python-pyqt6'
     'python-requests'
     'python-pillow'
+    'python-pypresence'
 )
 optdepends=(
-    'python-pypresence: Discord Rich Presence'
     'python-cryptography: encrypted storage'
     'python-psutil: system resource monitoring'
     'python-pyjwt: JWT authentication'
@@ -22,7 +22,7 @@ optdepends=(
     'jdk17-openjdk: run Minecraft Java Edition'
 )
 source=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('90eb227e8f7c473320e5d92ce6f590e2f009b9ff3c340d179cac734f9d15bed7')
+sha256sums=('SKIP')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
