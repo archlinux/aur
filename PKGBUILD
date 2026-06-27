@@ -1,6 +1,6 @@
 pkgname=arch-update-manager-git
 _pkgname=arch-update-manager
-pkgver=3.1.0.r5.gfd07b6c
+pkgver=3.1.0.r6.g4fbad7f
 pkgrel=1
 pkgdesc="A Linux Mint inspired GTK4-based update manager for Arch Linux (latest git)"
 arch=('x86_64')
