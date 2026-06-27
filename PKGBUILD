@@ -4,12 +4,12 @@ pkgname=alexandria-bin
 _pkgname=alexandria
 _appname=Alexandria
 pkgver=0.13.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Minimalistic ebook reader (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/btpf/Alexandria'
 license=('unknown')
-depends=('gtk3')
+depends=('fuse2' 'gtk3' 'webkit2gtk-4.1')
 provides=('alexandria')
 conflicts=('alexandria')
 options=('!strip')
@@ -26,15 +26,15 @@ package() {
 
   (
     cd "${extract_dir}"
-    APPIMAGE_EXTRACT_AND_RUN=1 "${appimage}" --appimage-extract >/dev/null
+    "${appimage}" --appimage-extract >/dev/null
   )
 
   install -dm755 "${pkgdir}/opt/${_pkgname}"
   install -Dm755 "${appimage}" "${pkgdir}/opt/${_pkgname}/${_appname}_${pkgver}_amd64.AppImage"
   install -dm755 "${pkgdir}/usr/bin"
-  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}" <<SCRIPT
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}" <<'SCRIPT'
 #!/bin/sh
-exec env APPIMAGE_EXTRACT_AND_RUN=1 APPIMAGELAUNCHER_DISABLE=1 /opt/alexandria/Alexandria_0.13.2_amd64.AppImage "$@"
+exec /opt/alexandria/Alexandria_0.13.2_amd64.AppImage "$@"
 SCRIPT
   install -Dm644 "${extract_dir}/squashfs-root/usr/share/applications/alexandria.desktop" "${pkgdir}/usr/share/applications/alexandria.desktop"
   install -Dm644 "${extract_dir}/squashfs-root/usr/share/icons/hicolor/32x32/apps/alexandria.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/alexandria.png"

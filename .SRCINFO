@@ -1,11 +1,13 @@
 pkgbase = alexandria-bin
 	pkgdesc = Minimalistic ebook reader (prebuilt binary)
 	pkgver = 0.13.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/btpf/Alexandria
 	arch = x86_64
 	license = unknown
+	depends = fuse2
 	depends = gtk3
+	depends = webkit2gtk-4.1
 	provides = alexandria
 	conflicts = alexandria
 	options = !strip
