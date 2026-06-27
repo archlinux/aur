@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-full-git
-pkgver=r2534.3cd64e4
+pkgver=r2580.75e0158
 pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
@@ -8,11 +8,12 @@ url="https://github.com/WiVRn/WiVRn"
 license=("GPL-3.0-or-later")
 
 _depends_server=(
-	"glibc"
 	"avahi"
+	"boost-libs"
 	"cairo"
 	"ffmpeg"
 	"glib2"
+	"glibc"
 	"libarchive"
 	"libbsd"
 	"libgcc"
@@ -33,15 +34,16 @@ _depends_server=(
 _depends_lib32_server=(
 	"lib32-gcc-libs"
 	"lib32-glibc"
-	"lib32-vulkan-icd-loader"
 	"lib32-libglvnd"
+	"lib32-vulkan-icd-loader"
 )
 
 _depends_dashboard=(
+	"boost-libs"
 	"glibc"
 	"hicolor-icon-theme"
-	"ki18n"
 	"kcoreaddons"
+	"ki18n"
 	"kiconthemes"
 	"kirigami"
 	"kirigami-addons"
@@ -81,6 +83,7 @@ optdepends=(
 	"opencomposite: OpenVR to OpenXR translation layer"
 	"xrizer: Another OpenVR to OpenXR translation layer"
 	"lib32-xrizer: Another OpenVR to OpenXR translation layer (32-bits)"
+	"vapor-openvr: Yet another OpenVR to OpenXR translation layer"
 )
 
 provides=(
@@ -122,7 +125,7 @@ build() {
 	-DWIVRN_USE_X264=ON \
 	-DWIVRN_USE_NVENC=ON \
 	-DWIVRN_USE_VULKAN_ENCODE=ON \
-	-DOVR_COMPAT_SEARCH_PATH=/opt/xrizer:/opt/opencomposite \
+	-DOVR_COMPAT_SEARCH_PATH=/opt/xrizer:/opt/opencomposite:/opt/VapoR \
 	-DWIVRN_FEATURE_STEAMVR_LIGHTHOUSE=ON \
 	-Wno-dev
 
