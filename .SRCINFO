@@ -1,0 +1,18 @@
+pkgbase = lib32-gmp4-v2
+	pkgdesc = Legacy version of gmp. Provides libgmp.so.3 (32 bit)
+	pkgver = 4.3.2
+	pkgrel = 2
+	url = http://gmplib.org/
+	arch = x86_64
+	license = LGPL3
+	makedepends = gcc-multilib
+	depends = lib32-gcc-libs
+	depends = sh
+	depends = lib32-gmp
+	options = !libtool
+	source = https://gmplib.org/download/gmp/archive/gmp-4.3.2.tar.bz2
+	source = fix_get-d_and_t-scan.patch
+	sha256sums = 936162c0312886c21581002b79932829aa048cfaf9937c6265aeaa14f1cd1775
+	sha256sums = 88e95869f46106147726a6583222be57be15b0e2b05ef642403251ededeb9830
+
+pkgname = lib32-gmp4-v2

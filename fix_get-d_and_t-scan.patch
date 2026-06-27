@@ -1,0 +1,27 @@
+--- a/mpn/generic/get_d.c
++++ b/mpn/generic/get_d.c
+@@ -143,8 +143,11 @@
+   /* Adjust exp to a radix point just above {up,size}, guarding against
+      overflow.  After this exp can of course be reduced to anywhere within
+      the {up,size} region without underflow.  */
+-  if (UNLIKELY ((unsigned long) (GMP_NUMB_BITS * size)
+-		> (unsigned long) (LONG_MAX - exp)))
++  /* Note: the original `(LONG_MAX - exp)` has undefined behaviour when
++     exp < 0 on 32-bit targets (signed overflow).  GCC 14+ exploits that
++     UB to assume exp >= 0, silently eliminating the underflow check below.
++     Use a side-effect-free comparison that is always well-defined.  */
++  if (UNLIKELY (exp > LONG_MAX - (long) (GMP_NUMB_BITS * size)))
+     {
+       if (_GMP_IEEE_FLOATS)
+ 	goto ieee_infinity;
+--- a/tests/mpz/t-scan.c
++++ b/tests/mpz/t-scan.c
+@@ -79,7 +79,7 @@
+ 
+               for (isize = 0; isize <= size; isize++)
+                 {
+-                  for (oindex = 0; oindex <= numberof (offset); oindex++)
++                  for (oindex = 0; oindex < numberof (offset); oindex++)
+                     {
+                       o = offset[oindex];
+                       if ((int) isize*GMP_NUMB_BITS < -o)
