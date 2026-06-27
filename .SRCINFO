@@ -7,12 +7,12 @@ pkgbase = stackusage
 	license = BSD-3-Clause
 	makedepends = cmake
 	makedepends = binutils
-	depends = gcc-libs
 	depends = glibc
-	depends = bash
+	depends = libgcc
+	depends = libstdc++
 	depends = libelf
+	depends = bash
 	provides = stackusage
-	conflicts = stackusage
 	source = https://github.com/d99kris/stackusage/archive/refs/tags/v1.21.tar.gz
 	sha256sums = cf4261f157b8f11d6cee3abe916595a9dfcb28ce30bd20b6f44b37cdc70464cd
 

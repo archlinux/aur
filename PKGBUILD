@@ -13,9 +13,9 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 license=('BSD-3-Clause')
 
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+
 makedepends=('cmake' 'binutils')
-depends=('gcc-libs' 'glibc' 'bash' 'libelf')
+depends=('glibc' 'libgcc' 'libstdc++' 'libelf' 'bash')
 
 source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('cf4261f157b8f11d6cee3abe916595a9dfcb28ce30bd20b6f44b37cdc70464cd')
