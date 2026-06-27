@@ -10,7 +10,7 @@ pkgname=(
   ppsspp-assets
 )
 pkgver=1.20.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
 url=https://www.ppsspp.org/
@@ -36,9 +36,8 @@ makedepends=(
   snappy
   zlib
 )
-_tag=3a31057b7e44270b4d5cef8c31b6559d51802a3b
 source=(
-  git+https://github.com/hrydgard/ppsspp.git#tag=${_tag}
+  git+https://github.com/hrydgard/ppsspp.git#tag=v${pkgver}
   git+https://github.com/Kethen/aemu_postoffice.git
   git+https://github.com/Kingcom/armips.git
   git+https://github.com/google/cpu_features.git
@@ -79,11 +78,6 @@ b2sums=('cd2bca3351b97831f2e0d372bf544dcf3aa9d44095b56fe30de8bf4d586216e56ba24f2
         'SKIP'
         'c6bcdfedee866dfdcc82a8c333c31ff73ed0beec65b63acec8bc8186383c0bc9f0912f21bb9715b665e8dc1793b1a85599761f9037856fa54ad8aa3bfdbfd468'
         '328e2ba47b78d242b0ec6ba6bfa039c77a36d1ef7246e5c2c2432d8e976e9360baf505eb05f48408ede1a30545cbbb7f875bf5ebd0252cef35523d449b8254a0')
-
-pkgver() {
-  cd ppsspp
-  git describe --tags | sed 's/^v//'
-}
 
 prepare() {
   cd ppsspp
@@ -140,12 +134,13 @@ build() {
 package_ppsspp() {
   depends=(
     fontconfig
-    gcc-libs
     glew
     glibc
     hicolor-icon-theme
+    libgcc
     libgl
     libpng
+    libstdc++
     libzip
     miniupnpc
     openxr
@@ -172,5 +167,3 @@ package_ppsspp-assets() {
   install -dm 755 "${pkgdir}"/usr/share/ppsspp
   cp -dr --no-preserve=ownership build-sdl/assets "${pkgdir}"/usr/share/ppsspp/
 }
-
-# vim: ts=2 sw=2 et:

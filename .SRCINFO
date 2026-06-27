@@ -1,7 +1,7 @@
 pkgbase = ppsspp
 	pkgdesc = A PSP emulator written in C++
 	pkgver = 1.20.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ppsspp.org/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -24,7 +24,7 @@ pkgbase = ppsspp
 	makedepends = sdl2_ttf
 	makedepends = snappy
 	makedepends = zlib
-	source = git+https://github.com/hrydgard/ppsspp.git#tag=3a31057b7e44270b4d5cef8c31b6559d51802a3b
+	source = git+https://github.com/hrydgard/ppsspp.git#tag=v1.20.4
 	source = git+https://github.com/Kethen/aemu_postoffice.git
 	source = git+https://github.com/Kingcom/armips.git
 	source = git+https://github.com/google/cpu_features.git
@@ -67,12 +67,13 @@ pkgbase = ppsspp
 
 pkgname = ppsspp
 	depends = fontconfig
-	depends = gcc-libs
 	depends = glew
 	depends = glibc
 	depends = hicolor-icon-theme
+	depends = libgcc
 	depends = libgl
 	depends = libpng
+	depends = libstdc++
 	depends = libzip
 	depends = miniupnpc
 	depends = openxr
