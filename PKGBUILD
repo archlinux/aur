@@ -1,4 +1,6 @@
-# Maintainer: amesgen <amesgen AT amesgen DOT de>
+# Maintainer: Rubin Simons <me@rubin55.org>
+# Contributor: amesgen <amesgen AT amesgen DOT de>
+
 pkgname=ghcup-hs-bin
 pkgver=0.2.6.2
 pkgrel=1
