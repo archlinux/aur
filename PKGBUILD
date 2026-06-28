@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="cadvisor"
-pkgver=0.60.1
+pkgver=0.60.3
 pkgrel=1
 pkgdesc="Analyzes resource usage and performance characteristics of running containers"
 arch=(
@@ -28,7 +28,7 @@ source=(
   "${pkgname}.conf"
   "${pkgname}.service"
 )
-sha256sums=('f539818ece73fee7c8ed483a48dbcd4fa3be1a9493f09826f63dd63b2b270a0a'
+sha256sums=('74862cd18865d653e822335e3663fdc91361639b1cd0fdace5d0a25464e26e90'
             '785c5ad59f9cf5215afaba911a622dd09cc61749d17d8e46b449ccdece2a9787'
             'e6d6e399d0909a7aeb86b4beab52b8895760b740cf26d55f8b87003cb06b5f9b')
 
