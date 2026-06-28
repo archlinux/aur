@@ -6,7 +6,7 @@
 pkgname=xlibre-video-amdgpu
 _pkgname=xf86-video-amdgpu
 pkgver=25.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="XLibre amdgpu video driver"
 arch=('x86_64')
 url='https://github.com/X11Libre/xf86-video-amdgpu'
