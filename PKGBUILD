@@ -2,7 +2,7 @@
 # Maintainer: Fadilix <iamfadile2@gmail.com>
 
 pkgname='couik-bin'
-pkgver=0.2.3
+pkgver=0.2.4_SNAPSHOT_b418c9d
 pkgrel=1
 pkgdesc='A fast TUI typing game written in Go (binary version).'
 url='https://github.com/Fadilix/couik'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('couik')
 conflicts=('couik')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Fadilix/couik/releases/download/v${pkgver}/couik_Linux_arm64.tar.gz")
-sha256sums_aarch64=('efbe247e4c0630d505097da309c25ef8cff1b11fc323fb0e17037e431d42f150')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Fadilix/couik/releases/download/v0.2.4/couik_Linux_arm64.tar.gz")
+sha256sums_aarch64=('2e0f3c85d5533c3981a2ba42c90378ed184124512d22ab083b9b82547c870ae7')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Fadilix/couik/releases/download/v${pkgver}/couik_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('c402fe3ea436a1d03027bbad654fbda37c0efdb83628336c578bd0d572f69aa1')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Fadilix/couik/releases/download/v0.2.4/couik_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('114454fcbf8de516499500aa5e87ea31fb9678d2cb869f258d9f7278bde4784d')
 
 package() {
   # bin
