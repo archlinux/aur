@@ -3,7 +3,7 @@
 pkgname='deepin-wine10-stable'
 _pkgver=10.14deepin8
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Deepin wine10 stable"
 arch=('x86_64')
 url="http://www.deepin.org"
