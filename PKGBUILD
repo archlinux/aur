@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://github.com/maikmerten/hmp3"
 license=('RCSL')
 depends=()
-makedepends=('git' 'make')
+makedepends=('git' 'make' 'ffmpeg')
 source=("git+$url.git")
 md5sums=('SKIP')
 
