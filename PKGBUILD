@@ -2,7 +2,7 @@
 
 pkgname='python-quantiphy'
 _pkgname=${pkgname#python-}
-pkgver=2.21
+pkgver=2.22.1
 pkgrel=1
 pkgdesc="Offers support for the pairing of a number and a unit of measure"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=(python-build python-installer python-wheel python-flit-core)
 url="https://github.com/KenKundert/$_pkgname"
 license=('GPL3')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('bf8d06ffa7150f69a5c7e3fb4a7a0a535109df85e7c0ab0f39fb317c5c9cafe0')
+sha256sums=('e14c0806eff01dfbb0c19ca12934719a2124c64f7100e60bed019efd634e545b')
 
 build() {
     cd "$_pkgname-$pkgver"
