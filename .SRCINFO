@@ -1,6 +1,6 @@
 pkgbase = czkawka-git
 	pkgdesc = Multi functional app to find duplicates, empty folders, similar images etc.
-	pkgver = 11.0.1.r13.g612c93a6
+	pkgver = 12.0.0.r0.ge56dc116
 	pkgrel = 1
 	url = https://github.com/qarmin/czkawka
 	arch = aarch64
@@ -23,10 +23,10 @@ pkgbase = czkawka-git
 	depends = gcc-libs
 	depends = glibc
 	depends = libheif
-	provides = czkawka=11.0.1.r13.g612c93a6
-	provides = czkawka-cli=11.0.1.r13.g612c93a6
-	provides = czkawka-gui=11.0.1.r13.g612c93a6
-	provides = krokiet=11.0.1.r13.g612c93a6
+	provides = czkawka=12.0.0.r0.ge56dc116
+	provides = czkawka-cli=12.0.0.r0.ge56dc116
+	provides = czkawka-gui=12.0.0.r0.ge56dc116
+	provides = krokiet=12.0.0.r0.ge56dc116
 	conflicts = czkawka-cli
 	conflicts = czkawka-cli-bin
 	conflicts = czkawka-gui
