@@ -1,0 +1,18 @@
+pkgbase = nginx-mod-http-flv
+	pkgdesc = A media streaming server based on nginx-rtmp-module
+	pkgver = 1.2.13
+	pkgrel = 1
+	url = https://github.com/winshining/nginx-http-flv-module
+	arch = x86_64
+	arch = aarch64
+	license = BSD-2-Clause
+	makedepends = nginx
+	makedepends = nginx-src
+	depends = glibc
+	depends = nginx
+	provides = nginx-http-flv-module
+	conflicts = nginx-http-flv-module
+	source = http-flv::git+https://github.com/winshining/nginx-http-flv-module.git#tag=v1.2.13
+	sha256sums = SKIP
+
+pkgname = nginx-mod-http-flv
