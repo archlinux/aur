@@ -9,6 +9,7 @@ url="https://github.com/FrostX2/frozen-rpc"
 license=('MIT')
 depends=('electron' 'nodejs' 'npm')
 makedepends=('git')
+options=('!strip' '!debug')
 source=("$pkgname::git+$url.git#tag=v1.0.0-beta-1")
 sha256sums=('SKIP')
 
