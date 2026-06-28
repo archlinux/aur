@@ -1,7 +1,7 @@
 pkgbase = cosmic-greeter-git
 	pkgdesc = COSMIC greeter for greetd
 	pkgver = 1.1.0.r2.g953478f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/cosmic-greeter
 	arch = x86_64
 	arch = aarch64
