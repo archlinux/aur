@@ -1,7 +1,7 @@
 # Maintainer: su226 <thesu226 at dot outlook.com>
 
 pkgname=ftb-app
-pkgver=1.29.5
+pkgver=1.30.0
 pkgrel=1
 epoch=
 pkgdesc="A new Modpack launcher for FTB and Curse modpacks."
@@ -9,10 +9,10 @@ arch=(any)
 url="https://feed-the-beast.com/ftb-app"
 license=("LGPL-2.1-only")
 groups=()
-_electron=electron37
+_electron=electron39
 depends=("$_electron")
-# BUG! exception in phase 'semantic analysis' in source unit '_BuildScript_' Unsupported class file major version 69
-makedepends=(git pnpm "java-environment>=11" "java-environment<25")
+# jdk25-openjdk and zulu-25-bin not working :/
+makedepends=(git npm jdk25-temurin)
 checkdepends=()
 # FTB App will download Adoptium for itself and Minecraft, althrough system Java can be used for Minecraft too.
 optdepends=("java-runtime: Playing Minecraft with system Java.")
@@ -28,7 +28,7 @@ source=("git+https://github.com/FTBTeam/FTB-App.git#tag=v$pkgver"
         "ftb-app.sh"
         "ftb-app.desktop")
 noextract=()
-sha256sums=('56707be46dc28aee2f5e1aecd80d7d07b150b6adac672f620af75058056adb12'
+sha256sums=('91f1c12ffbfe6551acaecb23205a8ec9854c53e50467fa77146075980a87fe04'
             'dca73a9ed949a5623de73ac80450ae8a532cd50195fde7c849852837541c0e8e'
             '26bcc8821bf053371e4da468ebd8d0a3d6ef1126baf8f17f0d894d77d0b8959f')
 validpgpkeys=()
@@ -38,31 +38,31 @@ prepare() {
 	# Let renderer process detect meta.json properly when using system Electron. (ftb-app.sh sets FTB_APP_PATH)
 	sed -i 's#process.resourcesPath#process.env.FTB_APP_PATH || process.resourcesPath#' electron/preload.ts electron/javaVerifier.ts
 	# Skip auto update or it will stuck
-	sed -i '/prelaunch\/im-ready/a LogAndEmit.create("updater:update-not-available").meta("Skip update check as we are using AUR").execute()' electron/main.ts
+	sed -i '/prelaunch\/im-ready/a LogAndEmit.create("updater:update-not-available", appData).execute()' electron/main.ts
 	# Passing -c.electronDist=... -c.electronVersion=... cause errors, modify config instead.
 	local _electronDist="/usr/lib/$_electron"
 	local _electronVersion="$(<$_electronDist/version)"
 	sed -e "/- tar\.gz/d;/- appimage/d;/- deb/d;/- rpm/d" -e "1ielectronDist: \"$_electronDist\"\nelectronVersion: \"$_electronVersion\"" -i electron-builder.yml
-	pnpm install
-	# src/components/ui/select/UiSelect.vue:9:38 - error TS2307: Cannot find module '@floating-ui/utils' or its corresponding type declarations.
-	pnpm add @floating-ui/utils
+	npm install
 }
 
 build() {
 	cd "$srcdir/FTB-App/subprocess"
 	# ./gradlew build run tests, we want tests run in check(), not build()
+	export JAVA_HOME=/usr/lib/jvm/java-25-temurin
 	./gradlew assemble writeLicenses writeVersion
 	cd "$srcdir/FTB-App"
-	pnpm gen:license
-	pnpm build
+	npm run gen:license
+	npm run build
 }
 
 check() {
 	cd "$srcdir/FTB-App/subprocess"
+	export JAVA_HOME=/usr/lib/jvm/java-25-temurin
 	./gradlew check
 	# FTB App currently only has backend tests.
 	# cd "$srcdir/FTB-App"
-	# pnpm test
+	# npm run test
 }
 
 package() {
