@@ -1,4 +1,0 @@
-[flightcore]
-source = "git"
-git = "https://github.com/R2NorthstarTools/FlightCore.git"
-prefix = "v"
