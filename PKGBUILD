@@ -1,8 +1,9 @@
+# Maintainer: 4censord <mail+aur@4censord.de>
 # Maintainer: Konstantin Mikhailov <jtraub.devel@gmail.com>
 
 pkgname=fselect-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=3
 pkgdesc='Find files with SQL-like queries'
 url="https://github.com/jhspetersson/${_pkgname}"
@@ -24,9 +25,9 @@ source_x86_64=(
 )
 
 
-sha256sums_x86_64=('facbe289a33d974b1e85af16ff10d35ce042def72e1f0cc1ac328372eb8bbaec'
-                   'c57f2491414ce8858008c702c6998fefe5f013b34d1a035636b66b27dfb4af0d'
-                   '8d8a0fda810d8a383ff037cd9a4f93b20ce1676ea599a7aeedd1c7808239e129'
+sha256sums_x86_64=('5006ed9821f356bc8161a60e7d5a927fcfa962373cdd6530107f37ccfd958a99'
+                   '28caaebda3c5389c81086fced1153c952dc29674c6475d5adcc76c60bc722bdf'
+                   'da2881348f8662c9b8146cf1ed1342793dedf269fc35a1782b8bc672fcfc16e4'
                    '4a7c7912e986d4102ed42ee47901e497d3645830976a724c8a8b71e76cca543a'
                    '23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3')
 
