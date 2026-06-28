@@ -2,7 +2,7 @@
 
 pkgname=miyu
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Command-line AI assistant'
 arch=('x86_64')
 url='https://github.com/SHORiN-KiWATA/Miyu'
@@ -14,7 +14,7 @@ optdepends=(
   'zsh: zsh shell integration support'
 )
 source=("${pkgname}-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.zst::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.zst")
-sha256sums=('c236b259b735d9d9666c585c92fc21da12c1f991d7af4c6288ee382ac5caed83')
+sha256sums=('7fca18bcabee34006ac357de502ecee1685f5481c028337f28551a058e59c863')
 
 package() {
   install -Dm755 "${srcdir}/usr/bin/miyu" "${pkgdir}/usr/bin/miyu"
