@@ -37,26 +37,15 @@ _modroot="usr/lib/node_modules/$_scope/$_pkgname"
 
 prepare() {
   cd "$srcdir"
-  # npm tarballs all unpack to ./package — extract each into its own dir.
-  mkdir -p "$_pkgname" claude-agent-sdk ws
+  # npm tarballs all unpack to ./package. Extract gsd-core, then assemble its
+  # node_modules in-place so check() can exercise the same tree we package.
+  mkdir -p "$_pkgname"
   tar -xzf "$_pkgname-$pkgver.tgz" -C "$_pkgname" --strip-components=1
-  tar -xzf "claude-agent-sdk-$_sdkver.tgz" -C claude-agent-sdk --strip-components=1
-  tar -xzf "ws-$_wsver.tgz" -C ws --strip-components=1
 
-  # Point the seeded Claude Code allow-rule at the installed binary, not `npx`.
-  patch -d "$_pkgname" -Np1 -i "$srcdir/use-installed-binary.patch"
-}
-
-package() {
-  cd "$srcdir"
-
-  # Package payload + vendored, dependency-free node_modules.
-  install -d "$pkgdir/$_modroot"
-  cp -r "$_pkgname/." "$pkgdir/$_modroot/"
-  install -d "$pkgdir/$_modroot/node_modules/@anthropic-ai/claude-agent-sdk"
-  cp -r "claude-agent-sdk/." "$pkgdir/$_modroot/node_modules/@anthropic-ai/claude-agent-sdk/"
-  install -d "$pkgdir/$_modroot/node_modules/ws"
-  cp -r "ws/." "$pkgdir/$_modroot/node_modules/ws/"
+  mkdir -p "$_pkgname/node_modules/@anthropic-ai/claude-agent-sdk" "$_pkgname/node_modules/ws"
+  tar -xzf "claude-agent-sdk-$_sdkver.tgz" \
+    -C "$_pkgname/node_modules/@anthropic-ai/claude-agent-sdk" --strip-components=1
+  tar -xzf "ws-$_wsver.tgz" -C "$_pkgname/node_modules/ws" --strip-components=1
 
   # claude-agent-sdk is a declared dependency but is not referenced by any of the
   # shipped gsd-core CLIs (install.js / gsd-tools / gsd_run). Its bundled native
@@ -64,13 +53,36 @@ package() {
   # are therefore dead weight that would (a) make this `any` package contain
   # arch-specific ELF and (b) pull in alsa-lib via audio-capture. Drop the vendor
   # blobs entirely; the SDK's JS is kept to honour the package.json contract.
-  rm -rf "$pkgdir/$_modroot/node_modules/@anthropic-ai/claude-agent-sdk/vendor"
+  rm -rf "$_pkgname/node_modules/@anthropic-ai/claude-agent-sdk/vendor"
 
-  # Executable launchers on PATH (relative symlinks into the module tree).
+  # Point the seeded Claude Code allow-rule at the installed binary, not `npx`.
+  patch -d "$_pkgname" -Np1 -i "$srcdir/use-installed-binary.patch"
+}
+
+check() {
+  cd "$srcdir/$_pkgname"
+  # Catch upstream drift the file-copy package() can't: a new/renamed runtime
+  # dependency we didn't vendor (require.resolve throws) or a moved/renamed bin
+  # entry point (node --check / bash -n on a missing path fails). Turns a
+  # silent runtime breakage into a build-time failure the auto-update gate sees.
+  node -e 'for (const d of Object.keys(require("./package.json").dependencies||{})) require.resolve(d);'
+  node --check bin/install.js
+  node --check gsd-core/bin/gsd-tools.cjs
+  bash -n gsd-core/bin/gsd_run
+}
+
+package() {
+  cd "$srcdir"
+
+  # Whole payload incl. the node_modules assembled (and pruned) in prepare().
+  install -d "$pkgdir/$_modroot"
+  cp -r "$_pkgname/." "$pkgdir/$_modroot/"
+
+  # Executable launchers on PATH (absolute symlinks into the module tree).
   install -d "$pkgdir/usr/bin"
-  ln -s "/$_modroot/bin/install.js"          "$pkgdir/usr/bin/gsd-core"
+  ln -s "/$_modroot/bin/install.js"             "$pkgdir/usr/bin/gsd-core"
   ln -s "/$_modroot/gsd-core/bin/gsd-tools.cjs" "$pkgdir/usr/bin/gsd-tools"
-  ln -s "/$_modroot/gsd-core/bin/gsd_run"    "$pkgdir/usr/bin/gsd_run"
+  ln -s "/$_modroot/gsd-core/bin/gsd_run"       "$pkgdir/usr/bin/gsd_run"
   chmod 755 "$pkgdir/$_modroot/bin/install.js" \
             "$pkgdir/$_modroot/gsd-core/bin/gsd-tools.cjs" \
             "$pkgdir/$_modroot/gsd-core/bin/gsd_run"
