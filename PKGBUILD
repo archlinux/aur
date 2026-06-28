@@ -3,13 +3,13 @@
 # Thanks to bwrsandman for the original PKGBUILD
 
 pkgname=openmw-stable-git
-pkgver=0.51.0.r0.gf4bec41444
+pkgver=0.51.0.r1.g7a27f1559d
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64' 'aarch64')
 url="http://www.openmw.org"
 license=('GPL-3.0-or-later' 'MIT' 'custom')
-depends=('openal' 'openscenegraph-openmw-git' 'mygui-openmw' 'bullet-dp' 'qt6-base' 'qt6-svg' 'qt6-tools' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit' 'recastnavigation-openmw' 'yaml-cpp' 'sqlite')
+depends=('openal' 'openscenegraph-openmw-git' 'mygui-openmw' 'bullet-dp' 'qt6-base' 'qt6-svg' 'qt6-tools' 'qt6-declarative' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit' 'recastnavigation-openmw' 'yaml-cpp' 'sqlite')
 makedepends=('git' 'cmake' 'boost' 'debugedit')
 conflicts=('openmw' 'openmw-git')
 provides=('openmw')
