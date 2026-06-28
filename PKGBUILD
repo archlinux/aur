@@ -3,7 +3,7 @@
 PKG_REAL_NAME="UntitledCLIParser"
 
 pkgname=untitled-cli-parser
-pkgver=6.0.0.0
+pkgver=6.1.0.0
 pkgrel=1
 pkgdesc="C and C++ parser for CLI arguments"
 url="https://github.com/MadLadSquad/${PKG_REAL_NAME}"
@@ -13,7 +13,7 @@ depends=("gcc-libs" "glibc" "pkgconf")
 provides=("lib${PKG_REAL_NAME}.so")
 makedepends=("cmake" "make")
 source=("https://github.com/MadLadSquad/${PKG_REAL_NAME}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('955302aa240ea6e93d3f5ab04ca6c1f4a63adf57f58af33ce7c259954c86dd51')
+sha256sums=('a79e7cd8feef74857bb3eed21dcaf978d3e9a117a4d059b36c32135513d38bf5')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver || exit
