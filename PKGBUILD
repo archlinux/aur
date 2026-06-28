@@ -1,10 +1,10 @@
 # Maintainer: empyrealm
 
 pkgname=ibm-bob-bin
-pkgver=1.109.5
-_bobrel=1.0.1
+pkgver=1.121.0
+_bobrel=2.0.0
 _upstream_ver="${pkgver}+bob${_bobrel}"
-pkgrel=2
+pkgrel=1
 pkgdesc='IBM Bob IDE repackaged from IBM upstream Linux binaries'
 arch=('x86_64')
 url='https://bob.ibm.com/download'
@@ -36,7 +36,7 @@ source=()
 sha256sums=()
 
 _rpm="IBM-Bob-linux-x64-${_upstream_ver}.rpm"
-_rpm_sha256='b9b7c449e710e05030db6721fa8f5cbc9dac525dc572b50f0c5a0fd141b54e11'
+_rpm_sha256='70d84f2f301de377e5d76ce090cd5583a0629aa800fd91d7c089ae5a8639583e'
 
 prepare() {
   cd "${srcdir}"

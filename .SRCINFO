@@ -1,7 +1,7 @@
 pkgbase = ibm-bob-bin
 	pkgdesc = IBM Bob IDE repackaged from IBM upstream Linux binaries
-	pkgver = 1.109.5
-	pkgrel = 2
+	pkgver = 1.121.0
+	pkgrel = 1
 	url = https://bob.ibm.com/download
 	arch = x86_64
 	license = custom:IBM
