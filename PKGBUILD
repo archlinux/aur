@@ -11,7 +11,7 @@ depends=('python' 'pyside6' 'konsole')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+$url.git")
+source=("$_pkgname::git+file:///home/user/Dev/Vibe/konsole_plugin#branch=dev")
 sha256sums=('SKIP')
 
 pkgver() {

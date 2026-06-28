@@ -15,7 +15,7 @@ pkgbase = konsole-companion-git
 	depends = konsole
 	provides = konsole-companion
 	conflicts = konsole-companion
-	source = git+https://github.com/Egor3f/konsole-companion.git
+	source = konsole-companion::git+file:///home/user/Dev/Vibe/konsole_plugin#branch=dev
 	sha256sums = SKIP
 
 pkgname = konsole-companion-git
