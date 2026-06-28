@@ -6,7 +6,7 @@ pkgname=hamrs-appimage
 _pkgname=hamrs-pro
 __pkgname=hamrs
 _install_path="/opt/appimages"
-pkgver=2.45.0
+pkgver=2.51.0
 pkgrel=1
 pkgdesc="Ham Radio portable logger tailored for activities like Parks on the Air, Field Day, and others."
 arch=('x86_64')
@@ -38,7 +38,7 @@ package() {
 
 	install -Dm644 "$srcdir/squashfs-root/LICENSE.electron.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
-md5sums=('f0056de6959b957007cd33f246ec1d6e'
+md5sums=('23fa52cb61c5b2a575028efab9e683a0'
          '8b675923edac47fcec1d0f79affde717')
-sha256sums=('5e71b484e8e782ad652447f0d498afb077d48706936970cc3f91cf26b3cd1dce'
+sha256sums=('1627e4de962f4cbf5d82599bec5fc9528489147d6db8e0b5e7034ccdd8cb1c8a'
             '34fd872afa2dc85872f8ec6f4f4cd4380d480cb4d069ecd869e2bb8ed2c4d97c')
