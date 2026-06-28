@@ -99,12 +99,18 @@ build() {
     python -m venv --clear --system-site-packages "${srcdir}/test-env"
     "${srcdir}/test-env/bin/python" -m installer dist/*.whl
 
-    local _tool _shell
+    local _tool _shell _completion_file _completion_fn
     for _tool in hf tiny-agents; do
         for _shell in bash zsh; do
+            _completion_file="${_completions_dir}/${_tool}.${_shell}"
             _TYPER_COMPLETE_TEST_DISABLE_SHELL_DETECTION=1 \
                 "${srcdir}/test-env/bin/${_tool}" --show-completion="${_shell}" \
-                > "${_completions_dir}/${_tool}.${_shell}"
+                > "${_completion_file}"
+            if [[ "${_shell}" == zsh ]]; then
+                _completion_fn="_${_tool}"
+                # zsh autoloads completion files by filename, so _hf must define _hf, not _hf_completion.
+                sed -i "s/${_completion_fn//-/_}_completion/${_completion_fn}/g" "${_completion_file}"
+            fi
         done
     done
 }
@@ -161,7 +167,7 @@ package() {
 
     # Shell completions (generated at build time)
     local _completions_dir="${srcdir}/completions"
-    local _tool _shell
+    local _tool
     for _tool in hf tiny-agents; do
         install -Dm644 "${_completions_dir}/${_tool}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_tool}"
         install -Dm644 "${_completions_dir}/${_tool}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_tool}"
