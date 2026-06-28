@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=xdg-desktop-portal-cosmic-git
-pkgver=1.1.0.r2.g5aad2f5
+pkgver=1.1.0.r3.g2948dd4
 pkgrel=1
 pkgdesc="A backend implementation for xdg-desktop-portal for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -38,7 +38,7 @@ prepare() {
   cargo fetch --locked --target host-tuple
 
   setconf justfile libexecdir "clean(prefix / 'lib')"
-  setconf justfile bin-dst "base-dir / 'lib' / name"
+  setconf justfile bin-dst "absolute_path(clean(rootdir / lib)) / name"
 }
 
 build() {
