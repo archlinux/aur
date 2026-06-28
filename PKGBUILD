@@ -2,57 +2,59 @@
 
 pkgname=sirius
 _PkgName=SIRIUS
-pkgver=7.3.0
+pkgver=7.11.1
 pkgrel=1
 pkgdesc="Domain specific library for electronic structure calculations"
-arch=('x86_64')
-license=('BSD')
+arch=(x86_64 aarch64)
+license=(BSD-3-Clause)
 url="https://github.com/electronic-structure/SIRIUS"
-depends=('libvdwxc' 'libxc' 'spglib' 'elpa' 'spfft' 'spla' 'gsl' 'hdf5')
-makedepends=('cmake')
+depends=(libvdwxc libxc spglib elpa spfft spla gsl hdf5 costa fmt
+         scalapack openmpi blas python)
+makedepends=(cmake ninja gcc-fortran eigen)
 optdepends=('magma: Linear algebra on GPU')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('69b5cf356adbe181be6c919032859c4e0160901ff42a885d7e7ea0f38cc772e2')
+sha256sums=('ce77dd168b2c3ef4a89cc2d6b163cb00b3d8b9d4b0652bc9de187dc7e0e74d77')
 options=(!emptydirs)
 
 prepare() {
-  mkdir "$srcdir/build"
-  
-  # Checking if nvcc is in PATH
-  if command -v nvcc &> /dev/null
-  then
-      export _ACC=ON
-      export LDFLAGS="$LDFLAGS -L/opt/cuda/lib64"
-      echo "GPU is enabled"
+  if command -v nvcc &> /dev/null; then
+    _ACC=ON
+    export LDFLAGS="$LDFLAGS -L/opt/cuda/lib64"
+    echo "GPU is enabled"
   else
-      export _ACC=OFF
-      echo "GPU is disabled"
+    _ACC=OFF
+    echo "GPU is disabled"
   fi
-  
-  # Finding ELPA version
-  _ELPAVER=$( ls /usr/include | grep elpa | sed 's/elpa_openmp-//g' )
 }
 
 build() {
-  cd "$srcdir/build"
-  cmake ../$_PkgName-$pkgver \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCREATE_FORTRAN_BINDINGS=ON \
-      -DUSE_OPENMP=ON \
-      -DUSE_SCALAPACK=ON \
-      -DUSE_CUDA=$_ACC \
-      -DUSE_MAGMA=$_ACC \
-      -DUSE_VDWXC=ON \
-      -DUSE_ELPA=ON \
-      -DELPA_INCLUDE_DIR=/usr/include/elpa_openmp-$_ELPAVER
-  make
+  cmake \
+    -B build \
+    -S $_PkgName-$pkgver \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D BUILD_SHARED_LIBS=ON \
+    -D SIRIUS_CREATE_FORTRAN_BINDINGS=ON \
+    -D SIRIUS_USE_OPENMP=ON \
+    -D SIRIUS_USE_SCALAPACK=ON \
+    -D SIRIUS_USE_VDWXC=ON \
+    -D SIRIUS_USE_ELPA=ON \
+    -D SIRIUS_USE_MEMORY_POOL=OFF \
+    -D SIRIUS_USE_CUDA=$_ACC \
+    -D SIRIUS_USE_MAGMA=$_ACC \
+    -D BUILD_TESTING=ON \
+    -G Ninja \
+    -W no-dev
+  cmake --build build
+}
+
+check() {
+  cd build
+  ctest --output-on-failure -E sirius.scf
 }
 
 package() {
-  cd "$srcdir/build"
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  install ../$_PkgName-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname"
-  make DESTDIR="$pkgdir" install
-  install -m755 src/mod_files/*.mod "$pkgdir/usr/include/sirius"
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 $_PkgName-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   mv "$pkgdir/usr/bin/atom" "$pkgdir/usr/bin/sirius_atom"
+  rm -f "$pkgdir"/usr/bin/test_* "$pkgdir/usr/bin/read_atom" "$pkgdir/usr/bin/unit_tests.x"
 }
