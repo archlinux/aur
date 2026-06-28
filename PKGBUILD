@@ -1,5 +1,5 @@
 pkgname=smart-updater
-pkgver=1.5.0_alpha
+pkgver=1.6.0_alpha
 pkgrel=1
 pkgdesc="A native PyQt6 based system maintenance and update GUI for Arch Linux and CachyOS"
 arch=('any')
@@ -8,7 +8,7 @@ license=('GPL')
 depends=('python' 'python-pyqt6' 'pacman-contrib')
 
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver/_/-}.tar.gz")
-sha256sums=('860c3d1eeac73b0ffb647082ff79c0ee46696062e1bbbb68b21041b2a3b32bea')
+sha256sums=('f1e19125473e1b3ee8448af863f0df9075e8a51603e17afa8d74c4562e4d2f47')
 
 package() {
     local _srcdir="$pkgname-${pkgver/_/-}"

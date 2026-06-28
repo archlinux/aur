@@ -1,6 +1,6 @@
 pkgbase = smart-updater
 	pkgdesc = A native PyQt6 based system maintenance and update GUI for Arch Linux and CachyOS
-	pkgver = 1.5.0_alpha
+	pkgver = 1.6.0_alpha
 	pkgrel = 1
 	url = https://github.com/UniqueSpirit/smart-updater
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = smart-updater
 	depends = python
 	depends = python-pyqt6
 	depends = pacman-contrib
-	source = smart-updater-1.5.0_alpha.tar.gz::https://github.com/UniqueSpirit/smart-updater/archive/refs/tags/v1.5.0-alpha.tar.gz
-	sha256sums = 860c3d1eeac73b0ffb647082ff79c0ee46696062e1bbbb68b21041b2a3b32bea
+	source = smart-updater-1.6.0_alpha.tar.gz::https://github.com/UniqueSpirit/smart-updater/archive/refs/tags/v1.6.0-alpha.tar.gz
+	sha256sums = f1e19125473e1b3ee8448af863f0df9075e8a51603e17afa8d74c4562e4d2f47
 
 pkgname = smart-updater
