@@ -16,7 +16,7 @@ optdepends=(
     'niri: primary compositor target'
 )
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/viewerofall/woven/releases/download/v$pkgver/v$pkgver.tar.gz")
-sha256sums=('13ebd57ee0e269c618f18d631cdb61c4d51c4fe2c30710afd1b50a50748ff090')
+sha256sums=('c98b794aca9314e1ed1b25c5a9b51218983203632f23192038757c3400fe0d4a')
 
 build() {
     : # Binaries are prebuilt in release tarball
