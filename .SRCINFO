@@ -1,13 +1,13 @@
 pkgbase = brightctrl
 	pkgdesc = Lightweight DDC/CI external monitor brightness controller (TUI + CLI)
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/shahriyardx/brightctrl
 	arch = x86_64
 	license = MIT
-	source = brightctrl-0.2.1::https://github.com/shahriyardx/brightctrl/releases/download/v0.2.1/brightctrl
-	source = LICENSE-0.2.1::https://github.com/shahriyardx/brightctrl/raw/v0.2.1/LICENSE
-	sha256sums = ede7e031500c47116a3b45c3d0d875e0f328face0a9eb3d99cc7157e24eb2768
+	source = brightctrl-0.2.2::https://github.com/shahriyardx/brightctrl/releases/download/v0.2.2/brightctrl
+	source = LICENSE-0.2.2::https://github.com/shahriyardx/brightctrl/raw/v0.2.2/LICENSE
+	sha256sums = b592044538665bc6950bc86055cf6d678d896d75970be92c4eb358e8d523f44c
 	sha256sums = c953229204806554e12143a6e2f4236f5016baa6925579ee13d559b79aae695c
 
 pkgname = brightctrl
