@@ -1,6 +1,6 @@
 pkgbase = sentinel-kde
 	pkgdesc = UAC-style confirmation dialog for privilege escalation on KDE Plasma (Wayland)
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/atayozcan/sentinel
 	install = sentinel-kde.install
@@ -34,15 +34,15 @@ pkgbase = sentinel-kde
 	depends = glibc
 	optdepends = sudo-rs: memory-safe sudo replacement
 	optdepends = libcanberra: UAC-style audio cue at dialog open
-	provides = polkit-kde-agent=0.12.0
-	provides = sentinel-kde=0.12.0
+	provides = polkit-kde-agent=0.13.0
+	provides = sentinel-kde=0.13.0
 	conflicts = polkit-kde-agent
 	conflicts = sentinel
 	conflicts = sentinel-git
 	options = !debug
 	backup = etc/security/sentinel.conf
 	backup = etc/pam.d/polkit-1
-	source = sentinel-kde-0.12.0.tar.gz::https://github.com/atayozcan/sentinel/archive/refs/tags/v0.12.0.tar.gz
-	sha256sums = 626d2cdf5a6811558240783e2d8d0497bd9aa59042d5d43cbf983ff718d6bca1
+	source = sentinel-kde-0.13.0.tar.gz::https://github.com/atayozcan/sentinel/archive/refs/tags/v0.13.0.tar.gz
+	sha256sums = 78c972a3e0d31e0e37c48058ce91a9c32616e21cd57379757ea0d984790cda52
 
 pkgname = sentinel-kde
