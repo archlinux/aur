@@ -4,7 +4,6 @@
 # Contributor: Robin Candau <antiz@archlinux.org>
 # Contributor: Maxim Baz <archlinux at maximbaz dot com>
 
-origname=swaybg
 pkgname=swaybg-namespace
 pkgbase=swaybg-namespace
 pkgver=1.2.2
@@ -38,12 +37,12 @@ validpgpkeys=(
 )
 
 prepare() {
-    cd $origname-$pkgver
+    cd swaybg-$pkgver
     patch -Np1 -i ../explicitly-set-layer-shell-namespace.patch
 }
 
 build() {
-    meson "$origname-$pkgver" build \
+    meson "swaybg-$pkgver" build \
         --prefix /usr \
         --buildtype=plain
     ninja -C build
@@ -51,6 +50,6 @@ build() {
 
 package() {
     DESTDIR="$pkgdir/" ninja -C build install
-    install -Dm644 "$origname-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$origname"
-    install -Dm644 "$origname-$pkgver/README.md" -t "$pkgdir/usr/share/doc/$origname"
+    install -Dm644 "swaybg-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/swaybg"
+    install -Dm644 "swaybg-$pkgver/README.md" -t "$pkgdir/usr/share/doc/swaybg"
 }
