@@ -1,7 +1,7 @@
 pkgbase = gosuki-git
-	pkgdesc = Multi-browser, real-time, extension-free bookmark manager with p2p synchronization and archiving
+	pkgdesc = Lightweight, free, privacy-first bookmark manager. Unifies your bookmarks across many browsers, syncs them in real time (locally or P2P), requires no extensions, and stores everything locally.
 	pkgver = v1.4.1.r1.g7b7eacd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blob42/gosuki
 	arch = i686
 	arch = x86_64
