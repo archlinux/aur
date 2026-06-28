@@ -1,6 +1,6 @@
 pkgbase = woven
 	pkgdesc = Wayland workspace overlay — plugin system, control panel, AI namer, bar widgets
-	pkgver = 2.6
+	pkgver = 2.7
 	pkgrel = 1
 	url = https://github.com/viewerofall/woven
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = woven
 	depends = mesa
 	optdepends = cava: audio spectrum visualizer widget
 	optdepends = niri: primary compositor target
-	source = woven-v2.6.tar.gz::https://github.com/viewerofall/woven/releases/download/v2.6/v2.6.tar.gz
-	sha256sums = c98b794aca9314e1ed1b25c5a9b51218983203632f23192038757c3400fe0d4a
+	source = woven-v2.7.tar.gz::https://github.com/viewerofall/woven/releases/download/v2.7/v2.7.tar.gz
+	sha256sums = e9a905375e3b49813fc2344cc99f04df5d7c9f01355566387b2d323a6314d1eb
 
 pkgname = woven
