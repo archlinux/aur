@@ -1,6 +1,6 @@
 pkgbase = tide-island
 	pkgdesc = A dynamic island for Hyprland using Quickshell
-	pkgver = 1.0.12
+	pkgver = 1.0.13
 	pkgrel = 1
 	url = https://github.com/enhaoswen/Tide-island
 	install = tide-island.install
@@ -27,7 +27,7 @@ pkgbase = tide-island
 	optdepends = swaync: for the Focus do-not-disturb toggle
 	conflicts = tide-island-git
 	options = !debug
-	source = tide-island-8e34907a97d561185cb6afca247ac8a02ac5b153.tar.gz::https://github.com/enhaoswen/Tide-island/archive/8e34907a97d561185cb6afca247ac8a02ac5b153.tar.gz
+	source = tide-island-106d38f4e1f4e683156564c1ae122ef7abc2a3cb.tar.gz::https://github.com/enhaoswen/Tide-island/archive/106d38f4e1f4e683156564c1ae122ef7abc2a3cb.tar.gz
 	sha256sums = SKIP
 
 pkgname = tide-island
