@@ -2,7 +2,7 @@
 
 pkgname=aur-taw
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalist, RAM-safe, opt-in AUR helper written in pure bash"
 arch=('any')
 url="https://github.com/Costa-exe/aur-taw"
