@@ -6,6 +6,7 @@
 
 origname=swaybg
 pkgname=swaybg-namespace
+pkgbase=swaybg-namespace
 pkgver=1.2.2
 pkgrel=0
 pkgdesc='Wallpaper tool for Wayland compositors with explicit namespace patch'
