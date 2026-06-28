@@ -2,7 +2,7 @@
 
 _pkgname=archon-lite
 pkgname=${_pkgname}-bin
-pkgver=9.3.62
+pkgver=9.3.85
 pkgrel=1
 pkgdesc="Archon Lite Uploader - pre-built binary AppImage"
 arch=('x86_64')
@@ -16,7 +16,7 @@ _appimage="${_pkgname}-v${pkgver}.AppImage"
 source_x86_64=("${_appimage}::${url}/releases/download/v${pkgver}/${_appimage}"
                "${_pkgname}.desktop")
 noextract=("${_appimage}")
-sha256sums_x86_64=('b1693bd1ccecfc9a5a06355fd319002ef83edcc407c7c4c82fc509485f0d0ebd'  # Will be updated by automated pipeline
+sha256sums_x86_64=('a2836f81bb55e872a0cd12e01d9ba5f7634b9c407ca17e9f1cbea2c1f1da8d50'  # Will be updated by automated pipeline
                     '19e8f7d78d5f621fd9a0aab1ebed74015a63beb797d8d942362e32be479077c0')
 
 prepare() {
