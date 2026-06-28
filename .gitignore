@@ -1,0 +1,6 @@
+# Ignore everything (makepkg build artifacts, downloaded sources, packages)
+# except the files AUR actually tracks.
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
