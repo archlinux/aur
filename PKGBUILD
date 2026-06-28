@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli
 
 pkgname=musicrename
-pkgver=3.0.1
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="command line music library manager"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(glibc taglib)
 makedepends=(git go scdoc)
 checkdepends=(ffmpeg)
 source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('22c396e2c761169d813969576a711508ae1233ed6b0fd51a7551608aac0c6a7f')
+sha256sums=('ca281a4ab9072c57d4343b777afed9a97a57a0953e679fb2abfaad8b9ae75486')
 
 prepare() {
   cd $pkgname
