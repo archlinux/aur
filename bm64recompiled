@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# This is a wrapper script to launch BM64Recompiled
+# from AUR package: bm64recomp-bin
+
+cd /opt/bm64recomp-bin || exit 1
+exec ./BM64Recompiled "$@"

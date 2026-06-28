@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Bomberman 64 Recompiled - bin
+Path=/opt/BM64Recomp-bin
+Exec=/opt/BM64Recomp-bin/BM64Recompiled
+Comment=Bomberman64 Recompiled (N64 recompilation project)
+Terminal=false
+Icon=bm64recomp-bin
+Categories=Game;Emulator;
