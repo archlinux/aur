@@ -1,0 +1,5 @@
+[meads-bin]
+source = "github"
+github = "jpillora/meads"
+use_latest_release = true
+prefix = "v"
