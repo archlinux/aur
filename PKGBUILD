@@ -9,7 +9,7 @@ license=("MIT")
 depends=("openssl")
 makedepends=("cargo")
 source=("https://github.com/Rakosn1cek/oversight/archive/v${pkgver}.tar.gz")
-sha256sums=("SKIP")
+sha256sums=('3d61b9b215c453f32fc0ab4c7135228f7a98edec756183ffe3b1fec2ed9272d7')
 
 srcname="oversight-${pkgver}"
 
