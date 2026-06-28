@@ -1,6 +1,6 @@
 pkgbase = arbit-bin
 	pkgdesc = Harmonic composition workstation and MIDI editor
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://donutsdelivery.online/arbit
 	install = arbit-bin.install
@@ -19,7 +19,7 @@ pkgbase = arbit-bin
 	optdepends = bitwig-studio: use the bundled Bitwig controller script
 	optdepends = xdg-utils: desktop integration helpers
 	options = !strip
-	source = Arbit-linux-0.5.0.zip::https://donutsdelivery.online/download-arbit/files/Arbit-linux.zip
-	sha256sums = a1d9731d7709a825de7d9dba36b0c5447b1f273cfbc368c05560cd156a9bed49
+	source = Arbit-linux-0.5.1.zip::https://donutsdelivery.online/download-arbit/files/Arbit-linux.zip
+	sha256sums = 8c63c9970fe399c34df385b6c487dad08a53774efa4aca432c230bf09409f9df
 
 pkgname = arbit-bin
