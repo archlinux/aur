@@ -8,7 +8,7 @@ pkgname='python-jupyter-kernel-client'
 
 pkgver='0.9.0'
 
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Jupyter Kernel Client allows you to connect to live Jupyter Kernels through HTTP and WebSocket"
 
@@ -44,6 +44,10 @@ source=(
 
 sha256sums=('77acb8f2f738d97625d6bd01ee8cf21c4d59790b7ba464108712db3870416f20')
 
+# See also:
+#   https://github.com/rzanetti/jupyter-kernel-client
+#   https://github.com/datalayer/jupyter-kernel-client
+#   https://pypi.org/project/jupyter-kernel-client
 package() {
     python -m installer \
         --destdir="$pkgdir" \

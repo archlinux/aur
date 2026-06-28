@@ -1,7 +1,7 @@
 pkgbase = python-jupyter-kernel-client
 	pkgdesc = Jupyter Kernel Client allows you to connect to live Jupyter Kernels through HTTP and WebSocket
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/datalayer/jupyter-kernel-client
 	arch = any
 	license = BSD-3-Clause
@@ -15,6 +15,9 @@ pkgbase = python-jupyter-kernel-client
 	depends = python-typing_extensions
 	depends = python-websocket-client
 	optdepends = jupyter-console: interactive terminal console (REPL for kernels)
+	optdepends = python-numpy: for running the upstream test suite
+	optdepends = python-pandas: for running the upstream test suite
+	optdepends = python-pytest: for running the upstream test suite
 	source = jupyter_kernel_client-0.9.0-py3-none-any.whl::https://files.pythonhosted.org/packages/7a/68/287315ba355aa93bda2e344de5febc45e6de1b47d8f4a5b69400b24cfdfd/jupyter_kernel_client-0.9.0-py3-none-any.whl
 	sha256sums = 77acb8f2f738d97625d6bd01ee8cf21c4d59790b7ba464108712db3870416f20
 
