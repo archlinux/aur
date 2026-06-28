@@ -4,7 +4,7 @@
 _pkgname='tinyalsa'
 pkgname="${_pkgname}-git"
 pkgver=2.0.0+68.r605.20241128.e43025b
-pkgrel=1
+pkgrel=2
 pkgdesc='A small library to interface with ALSA in the Linux kernel.'
 arch=('x86_64')
 url="https://github.com/${_pkgname}/${_pkgname}"
@@ -41,7 +41,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DTINYALSA_BUILD_EXAMPLES=ON \
     -DTINYALSA_BUILD_UTILS=ON \
-    -DTINYALSA_USES_PLUGINS=ON
+    -DTINYALSA_USES_PLUGINS=ON \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build "${srcdir}/build"
 }
 
