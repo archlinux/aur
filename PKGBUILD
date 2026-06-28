@@ -16,7 +16,7 @@
 # tag means a published pkgver never becomes uninstallable; updates are routine,
 # not a race against upstream.
 pkgname=ue4ss-experimental
-pkgver=3.0.1_988_g2352d15b
+pkgver=3.0.1_989_gb993d725
 pkgrel=1
 pkgdesc="Lua/C++ mod loader DLLs for Win64 Unreal Engine 4/5 games (experimental)"
 arch=('any')
@@ -31,7 +31,7 @@ options=('!strip' '!debug')
 _verstr="${pkgver//_/-}"
 source=("ue4ss-${pkgver}.zip::https://github.com/UE4SS-RE/RE-UE4SS/releases/download/experimental/UE4SS_v${_verstr}.zip"
         "ue4ss-install")
-sha256sums=('fc32ba91d160b93437844f270eb513b688c2e858c4e8dd7d255b74b5cd331f7b'
+sha256sums=('0354be4039113a312953145481223e1a89ba181ac97c99da37f1fabd110f7790'
             'd5ae8372ecdc7171c7a6179511bf9dd8fe1905a83eac03abf7ae1292fe780cb0')
 
 latestver() {
