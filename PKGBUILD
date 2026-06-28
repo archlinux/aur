@@ -1,7 +1,7 @@
 # Maintainer: Aashish Thapa
 pkgname=wlctl-bin
 _pkgname=wlctl
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="TUI for managing WiFi using NetworkManager (a fork of impala)"
 arch=("x86_64")
@@ -16,7 +16,7 @@ source=(
   "wlctl::https://github.com/aashish-thapa/wlctl/releases/download/v${pkgver}/wlctl-x86_64-unknown-linux-musl"
 )
 
-sha256sums=('f344dd2dd7e2a00582905f510e6099702053440f0d418b3f3689f6bc7bfd7f59')
+sha256sums=('5b9532a63d87ca7a3790c5f3c6f9a1c727e92321b7e7089c9e034c649210e903')
 
 package() {
   install -Dm755 wlctl "${pkgdir}/usr/bin/wlctl"
