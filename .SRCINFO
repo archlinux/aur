@@ -1,6 +1,6 @@
 pkgbase = plezy
 	pkgdesc = A modern Plex and Jellyfin client
-	pkgver = 2.7.1
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://plezy.app
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = plezy
 	depends = libevdev
 	depends = libkeybinder3
 	depends = mpv
-	source = plezy-2.7.1.tar.gz::https://github.com/edde746/plezy/archive/refs/tags/2.7.1.tar.gz
-	sha256sums = a28feb6c72eed2805294dbb017ea4b768b278c32bb030bac75edf9f2b480eed3
+	source = plezy-2.8.0.tar.gz::https://github.com/edde746/plezy/archive/refs/tags/2.8.0.tar.gz
+	sha256sums = f982136ca206f24d862e1fb521976245007ca1959024677013e1cfdaa0529219
 
 pkgname = plezy
