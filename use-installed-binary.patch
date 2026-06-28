@@ -1,0 +1,18 @@
+From: Marat Bakeev <hawara@gmail.com>
+Subject: Allowlist the installed `gsd-core` instead of `npx gsd-core`
+
+Upstream's installer seeds Claude Code's permissions.allow with
+`Bash(npx gsd-core *)`, which assumes the CLI is run via `npx` (fetching a
+separate copy from the npm registry). This distro package installs a real
+`gsd-core` on PATH, so the allow-rule should target that binary directly —
+otherwise the seeded permission never matches the command the user actually
+runs, and updates go through `npx` instead of pacman.
+
+--- a/bin/install.js
++++ b/bin/install.js
+@@ -129,4 +129,4 @@
+ const GSD_CLAUDE_ALLOW_PERMISSIONS = Object.freeze([
+-  'Bash(npx gsd-core *)',
++  'Bash(gsd-core *)',
+   'Read(.planning/*)',
+   'Write(.planning/*)',
