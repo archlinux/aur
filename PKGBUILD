@@ -1,6 +1,6 @@
 # Maintainer: thongor77 <magetriste@proton.me>
 pkgname=nmlinux
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="A unified network toolkit for Linux and macOS — SSH, WinRM, topology, 29 modules"
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("https://github.com/thongor77/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('11ca5dca8a96c3546fff503c236fd9d0789b0f2e1ae2682271f68a1488ca1007')
+sha256sums=('e561272555b7457547767dbf851180477ca87e22a7566b3ec439b04a38bfd8c6')
 
 build() {
     cd "${pkgname}-${pkgver}"
