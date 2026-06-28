@@ -12,6 +12,7 @@ DRY_RUN="${DRY_RUN:-0}"
 AUTO_YES="${AUTO_YES:-0}"
 FORCE="${FORCE:-0}"
 SYSTEM_WIDE="${SYSTEM_WIDE:-0}"
+EXTRACT_MODE="${EXTRACT_MODE:-0}"
 INSTALL_DIR="${PKGDROP_DIR:-$HOME/.local/opt}"
 ASK_DEPENDENCIES="${ASK_DEPENDENCIES:-1}"
 MAX_FILE_SIZE="${PKGDROP_MAX_SIZE:-1073741824}"
@@ -227,19 +228,19 @@ extract_version_from_file() {
     local version=""
     case "$file" in
         *.AppImage)
-            version=$(strings "$file" 2>/dev/null | grep -oP 'version["\s:=]+\K[0-9]+\.[0-9]+[0-9.]*' | head -1 || true)
+            version=$(strings "$file" 2>/dev/null | grep -oP 'version["\s:=]+\K[0-9]+\.[0-9]+(\.[0-9]+)*' | head -1 || true)
             if [[ -z "$version" ]]; then
-                version=$(echo "$file" | grep -oP '[0-9]+\.[0-9]+[0-9.]*' | head -1 || true)
+                version=$(echo "$file" | grep -oP '[0-9]+\.[0-9]+(\.[0-9]+)*' | head -1 || true)
             fi
             ;;
         *.tar.xz|*.tar.gz|*.tar.zst|*.tar.bz2)
-            version=$(echo "$file" | grep -oP '[0-9]+\.[0-9]+[0-9.]*' | head -1 || true)
+            version=$(echo "$file" | grep -oP '[0-9]+\.[0-9]+(\.[0-9]+)*' | head -1 || true)
             ;;
         *.deb)
             version=$(dpkg-deb -f "$file" Version 2>/dev/null || true)
             ;;
         *.pkg.tar.*)
-            version=$(echo "$file" | grep -oP '[0-9]+\.[0-9]+[0-9.]*' | head -1 || true)
+            version=$(echo "$file" | grep -oP '[0-9]+\.[0-9]+(\.[0-9]+)*' | head -1 || true)
             ;;
     esac
     echo "${version:-0.0.0}"
@@ -254,7 +255,37 @@ check_conflicts() {
     if command -v jq &>/dev/null && [[ -f "$REGISTRY_FILE" ]]; then
         local conflict
         conflict=$(jq -r --arg n "$name" 'keys[] | select(. == $n)' "$REGISTRY_FILE" 2>/dev/null || true)
-        if [[ -n "$conflict" ]] && [[ "$name" == "$conflict" ]]; then
+        if [[ -z "$conflict" ]]; then
+            local sanitized_name
+            sanitized_name=$(echo "$name" | sed 's/ /-/g' | tr '[:upper:]' '[:lower:]')
+            while IFS= read -r key; do
+                [[ -z "$key" ]] && continue
+                local sanitized_key
+                sanitized_key=$(sanitize_name "$key" | sed 's/ /-/g' | tr '[:upper:]' '[:lower:]')
+                if [[ "$sanitized_key" == "$sanitized_name" ]]; then
+                    conflict="$key"
+                    break
+                fi
+            done < <(jq -r 'keys[]' "$REGISTRY_FILE" 2>/dev/null || true)
+        fi
+        if [[ -n "$conflict" ]] && [[ "$name" != "$conflict" ]]; then
+            local installed_ver
+            installed_ver=$(registry_get_version "$conflict")
+            warn "Package '$name' matches existing installation: $conflict (v${installed_ver})"
+            if [[ "$FORCE" == "0" ]]; then
+                if ! confirm "Uninstall existing '$conflict' and reinstall?"; then
+                    fail "Aborted by user"
+                fi
+            fi
+            verb "Removing old installation: $conflict"
+            registry_remove "$conflict"
+            cleanup_desktop "$conflict"
+            rm -rf "$INSTALL_DIR/${conflict:?}" 2>/dev/null || true
+            rm -f "$HOME/.local/bin/$conflict" 2>/dev/null || true
+            rm -f "/usr/local/bin/$conflict" 2>/dev/null || true
+            rm -f "$HOME/.local/share/pkgdrop/icons/${conflict}.png" 2>/dev/null || true
+            rm -f "$HOME/.local/share/pkgdrop/icons/${conflict}.svg" 2>/dev/null || true
+        elif [[ -n "$conflict" ]] && [[ "$name" == "$conflict" ]]; then
             local installed_ver
             installed_ver=$(registry_get_version "$name")
             warn "Package '$name' is already registered (v${installed_ver})"
@@ -443,6 +474,7 @@ Options:
   -o, --owns <file>   Show which package owns a file
   -c, --clean         Remove broken symlinks
   -a, --audit         Audit registry vs filesystem consistency
+  -x, --extract       Extract AppImage to /opt (proper install with sandbox setup)
   -f, --force         Force install (skip confirmations)
   -S, --system        Install system-wide (requires root)
   -n, --dry-run       Preview installation without changes
@@ -713,6 +745,42 @@ uninstall_package() {
     refresh_desktop
     verb "Cleaned up desktop entry for $name"
 
+    local service_pattern
+    service_pattern=$(echo "$name" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9-]/-/g')
+    local found_units
+    found_units=$(systemctl --user list-unit-files "${service_pattern}*.service" "${service_pattern}*.timer" --no-legend 2>/dev/null | awk '{print $1}' || true)
+    if [[ -n "$found_units" ]]; then
+        warn "Found associated systemd units for $name:"
+        while IFS= read -r unit; do
+            [[ -z "$unit" ]] && continue
+            if [[ "$DRY_RUN" == "1" ]]; then
+                info "[DRY RUN] Would stop and disable: $unit"
+            else
+                systemctl --user stop "$unit" 2>/dev/null || true
+                systemctl --user disable "$unit" 2>/dev/null || true
+                info "Stopped and disabled: $unit"
+            fi
+        done <<< "$found_units"
+    fi
+
+    if [[ -L "/usr/local/bin/$name" ]]; then
+        if [[ "$DRY_RUN" == "1" ]]; then
+            info "[DRY RUN] Would remove /usr/local/bin/$name"
+        else
+            rm -f "/usr/local/bin/$name" 2>/dev/null && info "Removed /usr/local/bin/$name" || true
+        fi
+    fi
+
+    local config_pattern
+    config_pattern=$(echo "$name" | tr '[:upper:]' '[:lower:]')
+    for conf_dir in "$HOME/.config/$config_pattern" "$HOME/.config/$name"; do
+        if [[ -d "$conf_dir" ]]; then
+            if confirm "Remove config directory $conf_dir?"; then
+                rm -rf "$conf_dir" && info "Removed $conf_dir"
+            fi
+        fi
+    done
+
     if [[ "$fs_failed" -eq 1 ]]; then
         warn "Some filesystem operations failed for $name — keeping registry entry for consistency"
         warn "Run 'pkgdrop --audit' to check state, or use 'sudo pkgdrop --uninstall $name'"
@@ -729,8 +797,10 @@ uninstall_package() {
 
 clean_broken() {
     local count=0
-    if [[ -d "$HOME/.local/bin" ]]; then
-        for link in "$HOME/.local/bin"/*; do
+    local -a scan_dirs=("$HOME/.local/bin" "/usr/local/bin")
+    for scan_dir in "${scan_dirs[@]}"; do
+        [[ -d "$scan_dir" ]] || continue
+        for link in "$scan_dir"/*; do
             [[ -L "$link" ]] || continue
             if [[ ! -e "$link" ]]; then
                 [[ "$DRY_RUN" == "1" ]] && { echo "[DRY RUN] Would remove: $link"; count=$((count + 1)); continue; }
@@ -739,13 +809,17 @@ clean_broken() {
                 count=$((count + 1))
             fi
         done
-    fi
+    done
     if [[ -d "$INSTALL_DIR" ]]; then
         for dir in "$INSTALL_DIR"/*/; do
             [[ -d "$dir" ]] || continue
             local name="${dir%/}"
             name="${name##*/}"
-            if [[ ! -L "$HOME/.local/bin/$name" ]] && [[ ! -f "$HOME/.local/bin/$name" ]]; then
+            local found=0
+            for scan_dir in "${scan_dirs[@]}"; do
+                [[ -L "$scan_dir/$name" ]] || [[ -f "$scan_dir/$name" ]] && found=1
+            done
+            if [[ "$found" -eq 0 ]]; then
                 echo "Orphaned: $dir"
                 count=$((count + 1))
             fi
@@ -762,6 +836,8 @@ audit_system() {
     local -a orphan_dirs=()
     local -a orphan_bin=()
     local -a orphan_desktop=()
+    local -a orphan_systemd=()
+    local -a orphan_sys_bin=()
 
     if ! command -v jq &>/dev/null; then
         fail "jq is required for audit. Install jq to continue."
@@ -771,12 +847,12 @@ audit_system() {
     echo ""
 
     echo "--- Registry vs Filesystem ---"
-    local reg_names
-    reg_names=$(jq -r 'keys[]' "$REGISTRY_FILE" 2>/dev/null || true)
-    for name in $reg_names; do
+    while IFS= read -r name; do
+        [[ -z "$name" ]] && continue
         local has_dir=0 has_bin=0 missing=()
         [[ -d "$INSTALL_DIR/$name" ]] && has_dir=1
         [[ -L "$HOME/.local/bin/$name" ]] || [[ -f "$HOME/.local/bin/$name" ]] && has_bin=1
+        [[ -L "/usr/local/bin/$name" ]] || [[ -f "/usr/local/bin/$name" ]] && has_bin=1
         if [[ "$has_dir" -eq 0 ]] && [[ "$has_bin" -eq 0 ]]; then
             missing+=("install dir" "bin symlink")
         elif [[ "$has_dir" -eq 0 ]]; then
@@ -789,7 +865,7 @@ audit_system() {
             ghost_pkgs+=("$name")
             issues=$((issues + 1))
         fi
-    done
+    done < <(jq -r 'keys[]' "$REGISTRY_FILE" 2>/dev/null || true)
 
     echo ""
     echo "--- Filesystem vs Registry ---"
@@ -823,8 +899,48 @@ audit_system() {
     fi
 
     echo ""
-    echo "--- Desktop Entries vs Registry ---"
+    echo "--- Broken Symlinks (all paths) ---"
+    local -a broken_links=()
+    local scan_dirs=("$HOME/.local/bin" "/usr/local/bin")
+    for scan_dir in "${scan_dirs[@]}"; do
+        [[ -d "$scan_dir" ]] || continue
+        for entry in "$scan_dir"/*; do
+            [[ -L "$entry" ]] || continue
+            if [[ ! -e "$entry" ]]; then
+                echo "  BROKEN: $entry -> $(readlink "$entry" 2>/dev/null || echo '?')"
+                broken_links+=("$entry")
+                issues=$((issues + 1))
+            fi
+        done
+    done
+
+    echo ""
+    echo "--- Duplicate Desktop Entries ---"
+    local -a dup_entries=()
     local apps_dir="$HOME/.local/share/applications"
+    if [[ -d "$apps_dir" ]]; then
+        declare -A exec_map
+        for desktop in "$apps_dir"/*.desktop; do
+            [[ -f "$desktop" ]] || continue
+            local exec_val
+            exec_val=$(grep -E '^Exec=' "$desktop" 2>/dev/null | head -1 | cut -d= -f2- | xargs 2>/dev/null)
+            [[ -z "$exec_val" ]] && continue
+            local base_exec="${exec_val%% *}"
+            base_exec="${base_exec##*/}"
+            if [[ -n "${exec_map[$base_exec]:-}" ]]; then
+                echo "  DUPLICATE: $desktop and ${exec_map[$base_exec]} (same binary: $base_exec)"
+                dup_entries+=("$desktop")
+                issues=$((issues + 1))
+            else
+                exec_map["$base_exec"]="$desktop"
+            fi
+        done
+        unset exec_map
+    fi
+
+    echo ""
+    echo "--- Desktop Entries vs Registry ---"
+    local -a orphan_desktop_full=()
     if [[ -d "$apps_dir" ]]; then
         for desktop in "$apps_dir"/*.desktop; do
             [[ -f "$desktop" ]] || continue
@@ -848,12 +964,47 @@ audit_system() {
                 if [[ "$in_reg" == "false" ]]; then
                     local has_dir=0
                     [[ -d "$INSTALL_DIR/$pkg_ref" ]] && has_dir=1
+                    [[ -L "$HOME/.local/bin/$pkg_ref" ]] && has_dir=1
+                    [[ -L "/usr/local/bin/$pkg_ref" ]] && has_dir=1
                     if [[ "$has_dir" -eq 0 ]]; then
                         echo "  ORPHAN DESKTOP: $desktop (package '$pkg_ref' not in registry)"
-                        orphan_desktop+=("$desktop")
+                        orphan_desktop_full+=("$desktop")
                         issues=$((issues + 1))
                     fi
                 fi
+            fi
+        done
+    fi
+
+    echo ""
+    echo "--- Systemd Services/Timers ---"
+    local -a pkg_names
+    mapfile -t pkg_names < <(jq -r 'keys[]' "$REGISTRY_FILE" 2>/dev/null || true)
+    for name in "${pkg_names[@]}"; do
+        [[ -z "$name" ]] && continue
+        local service_pattern
+        service_pattern=$(echo "$name" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9-]/-/g')
+        local found_services
+        found_services=$(systemctl --user list-unit-files "${service_pattern}*.service" "${service_pattern}*.timer" 2>/dev/null | grep -E "^${service_pattern}" || true)
+        if [[ -n "$found_services" ]]; then
+            echo "  SYSTEMD: $name has associated services:"
+            echo "$found_services" | while IFS= read -r svc; do
+                echo "    $svc"
+            done
+            orphan_systemd+=("$name")
+        fi
+    done
+
+    echo ""
+    echo "--- Pacman Cross-Reference ---"
+    if command -v pacman &>/dev/null; then
+        for name in "${pkg_names[@]}"; do
+            [[ -z "$name" ]] && continue
+            local pacman_match
+            pacman_match=$(pacman -Qs "^${name}$" 2>/dev/null || true)
+            if [[ -n "$pacman_match" ]]; then
+                echo "  PACMAN: $name is also installed via pacman: $pacman_match"
+                echo "          Consider removing one to avoid conflicts"
             fi
         done
     fi
@@ -863,7 +1014,10 @@ audit_system() {
     echo "  Ghost registry entries: ${#ghost_pkgs[@]}"
     echo "  Orphaned directories:   ${#orphan_dirs[@]}"
     echo "  Orphaned binaries:      ${#orphan_bin[@]}"
-    echo "  Orphaned desktop files: ${#orphan_desktop[@]}"
+    echo "  Broken symlinks:        ${#broken_links[@]}"
+    echo "  Duplicate desktops:     ${#dup_entries[@]}"
+    echo "  Orphaned desktop files: ${#orphan_desktop_full[@]}"
+    echo "  Systemd services:       ${#orphan_systemd[@]}"
     echo "  Total issues: $issues"
 
     if [[ "$prune" == "--prune" ]] && [[ "$issues" -gt 0 ]]; then
@@ -875,10 +1029,16 @@ audit_system() {
                 info "Pruned registry entry: $name"
             fi
         done
-        for desktop in "${orphan_desktop[@]}"; do
+        for desktop in "${orphan_desktop_full[@]}"; do
             if confirm "Remove orphan desktop: $desktop?"; then
                 rm -f "$desktop"
                 info "Pruned desktop: $desktop"
+            fi
+        done
+        for link in "${broken_links[@]}"; do
+            if confirm "Remove broken symlink: $link?"; then
+                rm -f "$link"
+                info "Removed broken: $link"
             fi
         done
         for bname in "${orphan_bin[@]}"; do
@@ -891,6 +1051,12 @@ audit_system() {
             if confirm "Remove orphan directory: $INSTALL_DIR/$fname?"; then
                 rm -rf "$INSTALL_DIR/$fname"
                 info "Pruned directory: $fname"
+            fi
+        done
+        for dup in "${dup_entries[@]}"; do
+            if confirm "Remove duplicate desktop: $dup?"; then
+                rm -f "$dup"
+                info "Removed duplicate: $dup"
             fi
         done
         refresh_desktop
@@ -1058,8 +1224,10 @@ sanitize_name() {
     name="${name%.pkg.tar.zst}"
     name="${name%.pkg.tar.xz}"
     name="${name%.pkg.tar.gz}"
-    name=$(echo "$name" | sed -E 's/[._-]*(x86_64|i686|i386|aarch64|armv7hl|linux|macos|win(dows)?)$//')
-    name=$(echo "$name" | sed -E 's/[._-]*(x86_64|i686|i386|aarch64|armv7hl|linux|macos|win(dows)?)$//')
+    name=$(echo "$name" | sed -E 's/[-_. ]v?[0-9]+(\.[0-9]+)+$//')
+    name=$(echo "$name" | sed -E 's/[._-]*(x86_64|i686|i386|aarch64|armv7hl|amd64|linux|macos|win(dows)?)$//')
+    name=$(echo "$name" | sed -E 's/[._-]*(x86_64|i686|i386|aarch64|armv7hl|amd64|linux|macos|win(dows)?)$//')
+    name=$(echo "$name" | sed 's/ /-/g')
     [[ -z "$name" ]] && name="unknown"
     echo "$name"
 }
@@ -1192,7 +1360,33 @@ create_desktop_entry() {
     local display_name
     display_name=$(humanize_name "$name")
 
-    cat > "$desktop_file" << DESKTOP
+    # Generate the proper StartupWMClass value
+    local startup_wmclass
+    startup_wmclass=$(echo "$name" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g')
+
+    # If the package has its own desktop file, ensure it has the correct StartupWMClass
+    # This handles cases where packages include their own .desktop files
+    local package_desktop=""
+    if [[ -f "$INSTALL_DIR/$name/$(echo "$name" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g').desktop" ]]; then
+        package_desktop="$INSTALL_DIR/$name/$(echo "$name" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g').desktop"
+    elif [[ -f "$INSTALL_DIR/$name/$(echo "$name" | tr '[:upper:]' '[:lower:]').desktop" ]]; then
+        package_desktop="$INSTALL_DIR/$name/$(echo "$name" | tr '[:upper:]' '[:lower:]').desktop"
+    fi
+
+    # Update any existing desktop file with correct StartupWMClass
+    if [[ -n "$package_desktop" ]]; then
+        # Update the existing desktop file with correct StartupWMClass
+        sed -i "s/^StartupWMClass=.*$/StartupWMClass=$startup_wmclass/" "$package_desktop" 2>/dev/null || true
+    fi
+
+    # Also update any desktop file in the applications directory that might have been created by the package
+    if [[ -f "$HOME/.local/share/applications/pkgdrop-${name}.desktop" ]]; then
+        # Update the pkgdrop-created desktop file with correct StartupWMClass
+        sed -i "s/^StartupWMClass=.*$/StartupWMClass=$startup_wmclass/" "$HOME/.local/share/applications/pkgdrop-${name}.desktop" 2>/dev/null || true
+    fi
+
+    # Create the desktop file with the correct StartupWMClass
+cat > "$desktop_file" << DESKTOP
 [Desktop Entry]
 Version=1.0
 Type=Application
@@ -1200,19 +1394,23 @@ Name=${display_name}
 Exec=${bin} %u
 Icon=${icon_label}
 Terminal=false
-StartupWMClass=${name}
+StartupWMClass=$startup_wmclass
 Categories=${category};
 MimeType=text/html;text/plain;application/xhtml+xml;
 StartupNotify=true
 DESKTOP
 
-    verb "Created: $desktop_file"
+verb "Created: $desktop_file"
 }
 
 refresh_desktop() {
     update-desktop-database "$HOME/.local/share/applications" 2>/dev/null || true
     gtk-update-icon-cache -f -t "$HOME/.local/share/icons/hicolor" 2>/dev/null || true
-    kbuildsycoca5 2>/dev/null || true
+    if command -v kbuildsycoca6 &>/dev/null; then
+        kbuildsycoca6 2>/dev/null || true
+    elif command -v kbuildsycoca5 &>/dev/null; then
+        kbuildsycoca5 2>/dev/null || true
+    fi
 }
 
 _find_desktop_by_wmclass() {
@@ -1636,6 +1834,225 @@ install_debtap() {
     fi
 }
 
+_appimage_extract_sandbox() {
+    local extract_dir="$1"
+    local name="$2"
+
+    local sandbox_bin="$extract_dir/chrome-sandbox"
+    if [[ -f "$sandbox_bin" ]]; then
+        if [[ -O "$sandbox_bin" ]] || [[ "$EUID" -eq 0 ]]; then
+            chown root:root "$sandbox_bin" 2>/dev/null || true
+            chmod 4755 "$sandbox_bin" 2>/dev/null || true
+            verb "Set chrome-sandbox setuid permissions (no --no-sandbox needed)"
+        else
+            warn "chrome-sandbox found but needs root to set permissions"
+            info "Run: sudo chown root:root $sandbox_bin && sudo chmod 4755 $sandbox_bin"
+            info "Or launch with --no-sandbox flag"
+        fi
+    fi
+}
+
+_backup_config_files() {
+    local name="$1"
+    local config_dirs=(
+        "$HOME/.config/$name"
+        "$HOME/.config/$(echo "$name" | tr '[:upper:]' '[:lower:]')"
+        "$HOME/.config/$(echo "$name" | sed 's/ //g')"
+    )
+    local backed_up=0
+
+    for dir in "${config_dirs[@]}"; do
+        if [[ -d "$dir" ]]; then
+            local backup="${dir}.bak.$(date +%s)"
+            if confirm "Backup existing config at $dir?"; then
+                cp -a "$dir" "$backup" 2>/dev/null || true
+                info "Backed up: $dir -> $backup"
+                backed_up=1
+            fi
+        fi
+    done
+
+    local flags_file="$HOME/.config/$(echo "$name" | tr '[:upper:]' '[:lower:]')-flags.conf"
+    if [[ -f "$flags_file" ]]; then
+        if confirm "Existing launch flags found at $flags_file. Backup?"; then
+            cp "$flags_file" "${flags_file}.bak.$(date +%s)" 2>/dev/null || true
+            info "Backed up: $flags_file"
+            backed_up=1
+        fi
+    fi
+
+    return $backed_up
+}
+
+_check_icon_resolves() {
+    local icon_name="$1"
+    local desktop_file="$2"
+
+    if [[ -z "$icon_name" ]]; then
+        return 1
+    fi
+
+    if [[ "$icon_name" == /* ]] && [[ -f "$icon_name" ]]; then
+        return 0
+    fi
+
+    local check_dirs=(
+        "$HOME/.local/share/icons/hicolor/128x128/apps"
+        "$HOME/.local/share/icons/hicolor/256x256/apps"
+        "$HOME/.local/share/icons/hicolor/512x512/apps"
+        "$HOME/.local/share/icons/hicolor/scalable/apps"
+        "$HOME/.local/share/pixmaps"
+        "/usr/share/pixmaps"
+    )
+
+    local base="${icon_name##*/}"
+    base="${base%.png}"
+    base="${base%.svg}"
+
+    for dir in "${check_dirs[@]}"; do
+        if [[ -f "$dir/$base.png" ]] || [[ -f "$dir/$base.svg" ]]; then
+            return 0
+        fi
+    done
+
+    warn "Icon '$icon_name' in $desktop_file may not resolve"
+    return 1
+}
+
+_install_appimage_extract() {
+    local file="$1"
+    local name="${file##*/}"
+    name="${name%.AppImage}"
+    name=$(sanitize_name "$name")
+
+    local install_root="${PKGDROP_EXTRACT_DIR:-/opt}"
+
+    verb "Extracting AppImage to proper install: $name -> $install_root/$name"
+
+    local candidate_ver
+    candidate_ver=$(extract_version_from_file "$file")
+    local installed_ver
+    installed_ver=$(registry_get_version "$name")
+    [[ -z "$installed_ver" ]] && installed_ver="0.0.0"
+
+    local target="$install_root/$name"
+
+    check_conflicts "$name" "$target"
+
+    if [[ -d "$target" ]]; then
+        warn "Already installed: $name v$installed_ver at $target"
+        if [[ "$FORCE" == "0" ]]; then
+            if ! confirm "Overwrite existing installation?"; then
+                fail "Aborted by user"
+            fi
+        fi
+        [[ "$DRY_RUN" == "1" ]] && { info "[DRY RUN] Would remove existing $target"; return 0; }
+        cleanup_desktop "$name"
+        rm -rf "$target"
+    fi
+
+    if [[ "$DRY_RUN" == "1" ]]; then
+        info "[DRY RUN] Would extract $file to $target"
+        info "[DRY RUN] Would set chrome-sandbox permissions if found"
+        estimate_size "$file"
+        return 0
+    fi
+
+    _backup_config_files "$name" || true
+
+    verify_signature "$file"
+    verify_checksum "$file"
+
+    run_hook "pre-install" "$name" "appimage-extract" "$candidate_ver"
+
+    local stage_dir="${target}.stage.$(date +%s)"
+    atomic_prepare "$stage_dir"
+
+    mkdir -p "$stage_dir" || fail "Cannot create staging directory: $stage_dir"
+
+    cd "$stage_dir"
+    "$file" --appimage-extract >/dev/null 2>&1 || fail "Failed to extract AppImage"
+    cd /
+
+    if [[ -d "$stage_dir/squashfs-root" ]]; then
+        local inner
+        for inner in "$stage_dir/squashfs-root"/*; do
+            [[ -e "$inner" ]] || continue
+            mv "$inner" "$stage_dir/" 2>/dev/null || true
+        done
+        rmdir "$stage_dir/squashfs-root" 2>/dev/null || true
+    fi
+
+    validate_symlinks "$stage_dir" || warn "Suspicious symlinks found and removed"
+    find "$stage_dir" -type f \( -perm -4000 -o -perm -2000 \) -exec chmod ug-s {} + 2>/dev/null || true
+
+    _appimage_extract_sandbox "$stage_dir" "$name"
+
+    atomic_commit "$stage_dir" "$target" "$name"
+
+    local bin=""
+    bin=$(find "$target" -maxdepth 3 -type f -executable -name "$name" ! -name "*.so*" ! -name "*.dylib" ! -name "*-bin" 2>/dev/null | head -1 || true)
+    if [[ -z "$bin" ]]; then
+        for subdir in bin sbin usr/bin usr/local/bin opt/*/bin; do
+            [[ -d "$target/$subdir" ]] || continue
+            bin=$(find "$target/$subdir" -maxdepth 1 -type f -executable 2>/dev/null | head -1 || true)
+            [[ -n "$bin" ]] && break
+        done
+    fi
+    [[ -z "$bin" ]] && bin=$(find "$target" -maxdepth 3 -type f -executable -name "AppRun" 2>/dev/null | head -1 || true)
+    [[ -z "$bin" ]] && bin=$(find "$target" -maxdepth 3 -type f -executable ! -name "*.so*" ! -name "*.dylib" ! -name "updater" ! -name "*test" ! -name "*sender" ! -name "*-bin" ! -name "*.png" ! -name "*.svg" ! -name "*.xpm" ! -name "*.sh" ! -name "*.py" 2>/dev/null | head -1 || true)
+
+    mkdir -p "$HOME/.local/bin" || fail "Cannot create $HOME/.local/bin"
+    if [[ -n "$bin" ]]; then
+        ln -sf "$bin" "$HOME/.local/bin/$name" || fail "Failed to create symlink"
+        info "Binary: $name -> $HOME/.local/bin/$name"
+    else
+        warn "No binary found. Files installed to: $target"
+    fi
+
+    local meta
+    meta=$(read_desktop_metadata "$target")
+    local icon_path="${meta%%|*}"
+    local rest="${meta#*|}"
+    local icon_label="${rest%%|*}"
+    local category="${rest#*|}"
+
+    local final_icon_name=""
+    local installed_icon=""
+    if [[ -n "$icon_path" ]]; then
+        installed_icon=$(install_icon "$icon_path" "$icon_label" "$name") || true
+    fi
+    if [[ -z "$installed_icon" ]]; then
+        local fallback_icon
+        fallback_icon=$(find_icon "$target" "$name")
+        [[ -n "$fallback_icon" ]] && installed_icon=$(install_icon "$fallback_icon" "" "$name") || true
+    fi
+    if [[ -n "$installed_icon" ]]; then
+        final_icon_name="${installed_icon#*|}"
+        installed_icon="${installed_icon%%|*}"
+        verb "Installed icon: $installed_icon"
+    fi
+
+    local exec_line="$HOME/.local/bin/$name"
+    if [[ -n "$bin" ]] && [[ -f "$target/.config/$(echo "$name" | tr '[:upper:]' '[:lower:]')-flags.conf" ]]; then
+        exec_line="$HOME/.local/bin/$name --no-sandbox"
+    fi
+
+    create_desktop_entry "$name" "$exec_line" "${final_icon_name:-pkgdrop-${name}}" "$category"
+    _check_icon_resolves "${final_icon_name:-pkgdrop-${name}}" "$HOME/.local/share/applications/pkgdrop-${name}.desktop" || true
+    refresh_desktop
+
+    local file_list=""
+    file_list=$(find "$target" -type f 2>/dev/null | tr '\n' '\n')
+    registry_add "$name" "$candidate_ver" "appimage-extract" "$file_list"
+
+    run_hook "post-install" "$name" "appimage-extract" "$candidate_ver"
+
+    info "Installed: $target"
+    [[ -n "$bin" ]] && info "Binary: $HOME/.local/bin/$name"
+    info "Desktop entry created"
+}
+
 install_appimage() {
     local file="$1"
     local name="${file##*/}"
@@ -1697,20 +2114,32 @@ install_appimage() {
         local icon_name="${rest%%|*}"
         category="${rest#*|}"
 
+        local installed_icon=""
         if [[ -n "$raw_icon_path" ]]; then
-            local installed_icon
             installed_icon=$(install_icon "$raw_icon_path" "$icon_name" "$name") || true
-            if [[ -n "$installed_icon" ]]; then
-                final_icon_name="${installed_icon#*|}"
-                installed_icon="${installed_icon%%|*}"
-                verb "Installed icon: $installed_icon"
-            fi
         fi
+        if [[ -z "$installed_icon" ]]; then
+            local fallback_icon
+            fallback_icon=$(find_icon "squashfs-root" "$name")
+            [[ -n "$fallback_icon" ]] && installed_icon=$(install_icon "$fallback_icon" "" "$name") || true
+        fi
+        if [[ -n "$installed_icon" ]]; then
+            final_icon_name="${installed_icon#*|}"
+            installed_icon="${installed_icon%%|*}"
+            verb "Installed icon: $installed_icon"
+        fi
+
+        if [[ -f "squashfs-root/chrome-sandbox" ]]; then
+            verb "chrome-sandbox detected in AppImage"
+            info "Tip: Use 'pkgdrop --extract $file' for proper sandbox permissions"
+        fi
+
         rm -rf squashfs-root
     fi
     cd / && rm -rf "$tmpdir"
 
     create_desktop_entry "$name" "$HOME/.local/bin/$name" "${final_icon_name:-pkgdrop-${name}}" "$category"
+    _check_icon_resolves "${final_icon_name:-pkgdrop-${name}}" "$HOME/.local/share/applications/pkgdrop-${name}.desktop" || true
     refresh_desktop
 
     registry_add "$name" "$candidate_ver" "appimage" "$HOME/.local/bin/$name"
@@ -1817,6 +2246,7 @@ main() {
             -y|--yes)      AUTO_YES=1; shift; file="${1:-}" ;;
             -f|--force)    FORCE=1; shift; file="${1:-}" ;;
             -S|--system)   SYSTEM_WIDE=1; shift; file="${1:-}" ;;
+            -x|--extract)  EXTRACT_MODE=1; shift; file="${1:-}" ;;
             DEBUG=1)       DEBUG=1; shift; file="${1:-}" ;;
             *) break ;;
         esac
@@ -1874,6 +2304,9 @@ main() {
     log "Detected type: $pkgtype"
 
     local handler="install_$pkgtype"
+    if [[ "$pkgtype" == "appimage" ]] && [[ "$EXTRACT_MODE" == "1" ]]; then
+        handler="_install_appimage_extract"
+    fi
     declare -F "$handler" >/dev/null || fail "No handler for: $pkgtype"
 
     local pkgname="${file##*/}"
