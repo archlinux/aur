@@ -11,6 +11,6 @@ source=(git+https://codeberg.org/LuminaNAO/freeclaw.git#tag="v${pkgver}")
 sha256sums=(SKIP)
 
 package() {
-    cd "${pkgname}-*"
+    cd "${pkgname}"
     make DESTDIR="${pkgdir}" install
 }
