@@ -1,15 +1,16 @@
+#Maintainer: Frederic Bezies <fredbezies at gmail dot com>
 #Contributor: Oliver Jaksch <arch-aur@com-in.de>
-# Maintainer:  John "Beelzebud" Bilbrey <beelzebud> at Geemail dot com
+#Contributor: John "Beelzebud" Bilbrey <beelzebud> at Geemail dot com
 
 pkgname=hatari-enhanced-git
 realpkgname=hatari
-pkgver=v2.6.1.r283.g3ea4fa8
+pkgver=v2.6.1.r446.gd3f0ad7
 pkgrel=1
 pkgdesc='An Atari ST and STE emulator. This build uses capsimage for using IPF and STX disk images.'
 arch=('x86_64')
 url='http://hatari.sourceforge.net/'
-license=('GPL')
-depends=('sdl2' 'libpng' 'portaudio' 'systemd-libs' 'hicolor-icon-theme' 'capsimage')
+license=('GPL-2.0-or-later')
+depends=('sdl3' 'libpng' 'systemd-libs' 'hicolor-icon-theme' 'capstone' 'capsimage' 'python' 'libarchive')
 makedepends=('cmake' 'git' 'systemd')
 conflicts=('hatari')
 source=("git+https://framagit.org/hatari/hatari.git")
