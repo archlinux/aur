@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="usacloud"
-pkgver=1.22.1
+pkgver=1.22.4
 pkgrel=1
 pkgdesc="CLI client for the Sakura Cloud"
 arch=(
@@ -25,7 +25,7 @@ _pkgsrc="${url##*/}"
 source=(
   "${_pkgsrc}::git+${url}.git#tag=v${pkgver}"
 )
-sha256sums=('58a734d009416a0d2a07713b8543fafcde26cc33691db7bdc327e9acb5e8b2d9')
+sha256sums=('a240311528428d3a2c06535c76fa0bd188edbfd575e5b5039e20ed7fc7dc105b')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
