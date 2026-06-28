@@ -1,4 +1,3 @@
-# Maintainer: staszek <staszekborkowski7@gmail.com>
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _gitauthor=sassman
