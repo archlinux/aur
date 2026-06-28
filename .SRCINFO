@@ -1,6 +1,6 @@
 pkgbase = phantom-player-git
 	pkgdesc = Smart video player and playlist manager
-	pkgver = v2.1.0.r111.ge41d132
+	pkgver = v2.1.0.r117.gef8c550
 	pkgrel = 1
 	url = https://phantom-player.rsm92.fr
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = phantom-player-git
 	optdepends = gst-plugins-ugly
 	provides = phantom-player
 	conflicts = phantom-player
-	source = https://codeberg.org/rsm92/phantom-player/archive/e41d1329eff3e0a6d71f4ce5a813b1aa84693eab.zip
-	sha256sums = 0bce815412ea37d57d360e3a2fb2a46d9da48a37936f814dbc7b1a5e61fa13bb
+	source = https://codeberg.org/rsm92/phantom-player/archive/ef8c550878ed9641b53470e7bae56f5a49359808.zip
+	sha256sums = 48f85b839089c64b42fd67c08055f7be5d371997f12a0293a60b57cdb1693212
 
 pkgname = phantom-player-git
