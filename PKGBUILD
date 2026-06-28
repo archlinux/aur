@@ -1,6 +1,7 @@
-# Maintainer: Brett Cornwall <ainola@archlinux.org>
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
-# Maintainer: Robin Candau <antiz@archlinux.org>
+# Maintainer: Maximilian Friedersdorff <max at friedersdorff dot com>
+# Contributor: Brett Cornwall <ainola@archlinux.org>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
+# Contributor: Robin Candau <antiz@archlinux.org>
 # Contributor: Maxim Baz <archlinux at maximbaz dot com>
 
 _pkgbase=swaybg
