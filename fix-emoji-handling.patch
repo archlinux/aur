@@ -1,0 +1,11 @@
+--- a/ZRTPCPP-4.7.0/zrtp/EmojiBase32.cpp	2020-02-01 19:04:00.000000000 +0100
++++ b/ZRTPCPP-4.7.0/zrtp/EmojiBase32.cpp	2026-06-13 20:32:12.343217747 +0200
+@@ -7,6 +7,8 @@
+ 
+ #include <libzrtpcpp/EmojiBase32.h>
+ 
++#include <cstdint>
++
+ // I used the information on this Unicode page http://unicode.org/emoji/charts/full-emoji-list.html
+ /*
+ Some technical details:
