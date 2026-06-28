@@ -1,7 +1,7 @@
 # Maintainer: Ackerman
 pkgname=rootapp-bin
 pkgver=0.9.117
-pkgrel=1
+pkgrel=2
 pkgdesc="Root App is a new Discord alternative, designed for gaming communities and large online groups"
 arch=('x86_64')
 url="https://www.rootapp.com"
@@ -35,7 +35,7 @@ package() {
 Type=Application
 Name=Root
 Comment=Root App is a new Discord alternative, designed for gaming communities and large online groups
-Exec=rootapp
+Exec=rootapp %U
 Icon=rootapp
 Terminal=false
 StartupWMClass=Root
