@@ -1,7 +1,7 @@
 # Maintainer: MyApps Contributors <noreply@github.com>
 
 pkgname=myapps
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Linux package manager overview with GTK4 + Libadwaita"
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=(
     'python-wheel'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nicolettas-muggelbude/myapps/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ecf51f93bdeb56483f0ea348a7bd2888f9bcb9399864e18c8a1d2103ae6be34b')
+sha256sums=('48510971ca29403ba9ba6ae635aee23915ca4ddd0be5aa19adc08135e46af014')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -42,27 +42,11 @@ package() {
 
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    # Install desktop file (v0.2.0 tarball has old filename)
-    if [ -f io.github.nicolettas-muggelbude.myapps.desktop ]; then
-        # New filename (for future releases)
-        install -Dm644 io.github.nicolettas-muggelbude.myapps.desktop \
-            "${pkgdir}/usr/share/applications/io.github.nicolettas-muggelbude.myapps.desktop"
-    else
-        # Old filename (v0.2.0 tarball)
-        install -Dm644 de.pc-wittfoot.myapps.desktop \
-            "${pkgdir}/usr/share/applications/io.github.nicolettas-muggelbude.myapps.desktop"
-    fi
+    install -Dm644 io.github.nicolettas-muggelbude.myapps.desktop \
+        "${pkgdir}/usr/share/applications/io.github.nicolettas-muggelbude.myapps.desktop"
 
-    # Install metainfo (v0.2.0 tarball has old filename)
-    if [ -f io.github.nicolettas-muggelbude.myapps.metainfo.xml ]; then
-        # New filename (for future releases)
-        install -Dm644 io.github.nicolettas-muggelbude.myapps.metainfo.xml \
-            "${pkgdir}/usr/share/metainfo/io.github.nicolettas-muggelbude.myapps.metainfo.xml"
-    else
-        # Old filename (v0.2.0 tarball)
-        install -Dm644 de.pc-wittfoot.myapps.metainfo.xml \
-            "${pkgdir}/usr/share/metainfo/io.github.nicolettas-muggelbude.myapps.metainfo.xml"
-    fi
+    install -Dm644 io.github.nicolettas-muggelbude.myapps.metainfo.xml \
+        "${pkgdir}/usr/share/metainfo/io.github.nicolettas-muggelbude.myapps.metainfo.xml"
 
     # Install icon
     install -Dm644 assets/icons/io.github.nicolettas-muggelbude.myapps.svg \
