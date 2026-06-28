@@ -3,7 +3,7 @@ pkgname=ripunzip
 pkgver=2.0.4
 pkgrel=4
 pkgdesc="Extract zip files in parallel"
-url=https://github.com/google/ripunzip
+url=https://github.com/GoogleChrome/ripunzip
 license=('MIT')
 arch=('x86_64')
 depends=(bzip2 libgcc glibc xz)
@@ -14,6 +14,7 @@ sha256sums=('b485dc58777fb8637ff0509c72dc6b50235f6a01fecbf382365437be704a8468')
 prepare(){
   cd ${pkgname}-$pkgver
   # cargo fetch --locked --target host-tuple #DL larger crates
+  sed -i "/^rust-version/d" Cargo.toml
   cargo remove reqwest
   cargo add reqwest --no-default-features --features blocking,rustls
 }

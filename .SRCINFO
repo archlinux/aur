@@ -2,7 +2,7 @@ pkgbase = ripunzip
 	pkgdesc = Extract zip files in parallel
 	pkgver = 2.0.4
 	pkgrel = 4
-	url = https://github.com/google/ripunzip
+	url = https://github.com/GoogleChrome/ripunzip
 	arch = x86_64
 	license = MIT
 	makedepends = rust
@@ -11,7 +11,7 @@ pkgbase = ripunzip
 	depends = libgcc
 	depends = glibc
 	depends = xz
-	source = ripunzip2.0.4.tar.gz::https://github.com/google/ripunzip/archive/refs/tags/v2.0.4.tar.gz
+	source = ripunzip2.0.4.tar.gz::https://github.com/GoogleChrome/ripunzip/archive/refs/tags/v2.0.4.tar.gz
 	sha256sums = b485dc58777fb8637ff0509c72dc6b50235f6a01fecbf382365437be704a8468
 
 pkgname = ripunzip
