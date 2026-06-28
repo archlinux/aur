@@ -1,8 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pear-desktop-bin
-pkgver=3.11.0
-pkgrel=2
-pkgdesc="Extension for music player"
+_app_id=com.github.th-ch.youtube-music
+pkgver=3.12.0
+pkgrel=1
+pkgdesc="YouTube Music Desktop App - including custom plugins"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/pear-devs/pear-desktop"
 license=('MIT')
@@ -19,17 +20,21 @@ source=( "license-$pkgver::https://github.com/pear-devs/pear-desktop/raw/v$pkgve
 source_x86_64=("https://github.com/pear-devs/pear-desktop/releases/download/v$pkgver/youtube-music_${pkgver}_amd64.deb")
 source_aarch64=("https://github.com/pear-devs/pear-desktop/releases/download/v$pkgver/youtube-music_${pkgver}_arm64.deb")
 source_armv7h=("https://github.com/pear-devs/pear-desktop/releases/download/v$pkgver/youtube-music_${pkgver}_armv7l.deb")
-sha256sums=('e7e14b3b771ecadb23f6ee0b6f99d1553e385e35cdb44fc8e36ee7c878dacd08'
+sha256sums=('abc6a246b20c0106c9bbe9c31e65f10f5e2b2d28d7a72349b4f5095e86c22524'
             '3769e2d994ad011e8481f3ed448557cd9e5b5f1a805d84b4944639c807440d8c')
-sha256sums_x86_64=('db20c40bdcc558aaa85d6d5c20a3ec1e32795fcd6ffaa7e4f99757004736face')
-sha256sums_aarch64=('49ac8f0782fd0bf1209a18762bfba9efe8128e92869598042abcd5e15d76a825')
-sha256sums_armv7h=('29afb031623c7154826d22cab30428cf69f77ab8d8588988d4eb0fc09b6c7cdf')
+sha256sums_x86_64=('cbf8996f565cbe01cd3a37cc9df0e52da3dcc3b889541117b512be7e4f2afde3')
+sha256sums_aarch64=('02427b3e1cec7aab24dbc653b3a12a0efa77fc8e5147b13e1f012bfa5e535ce8')
+sha256sums_armv7h=('ba41327129a34edc72f8457acd6de037608d7cb65ad49a9e22a32df1cfc412e6')
 
-package(){
+package() {
   bsdtar xfv data.tar.xz -C "$pkgdir"
 
   desktop-file-edit --set-key=Exec --set-value="youtube-music %U" \
-    "$pkgdir/usr/share/applications/youtube-music.desktop"
+    "$pkgdir/usr/share/applications/${_app_id}.desktop"
+
+  install -d "$pkgdir/etc/apparmor.d"
+    ln -s "/opt/YouTube Music/resources/apparmor-profile" \
+      "$pkgdir/etc/apparmor.d/youtube-music"
 
   install -Dm755 youtube-music.sh "$pkgdir/usr/bin/youtube-music"
 
