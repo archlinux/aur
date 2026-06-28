@@ -1,7 +1,7 @@
 # Maintainer: blazebsc <blakeisfruity@proton.me>
 pkgname=froststrap
-_tag='v2.0.0-beta.8'
-pkgver=2.0.0.beta.8
+_tag='v2.0.0-beta.9'
+pkgver=2.0.0.beta.9
 pkgrel=2
 pkgdesc="A fork of Fishstrap/Bloxstrap, focused on performance and customization"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('dotnet-runtime-10.0' 'icu' 'fontconfig' 'hicolor-icon-theme')
 makedepends=('dotnet-sdk-10.0' 'git')
 source=("git+${url}.git#tag=${_tag}"
     "git+https://github.com/Froststrap/ColorPicker-Avalonia.git")
-sha256sums=('6a336f030f3e594a8ea1f63b7f64700e9495cf899b475cf07d8d48adb60a40da'
+sha256sums=('3f2aa61592fb49b6a2809b4320f06b7b2798fd23840ff9bc8e9a0ddebc52e8e5'
             'SKIP')
 
 prepare() {
