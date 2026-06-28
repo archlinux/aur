@@ -6,7 +6,7 @@ pkgver=6.7.80
 pkgrel=1
 pkgdesc="KineticWE - A tiling KWin Wayland compositor with native window tiling"
 arch=('x86_64')
-url="https://codeberg.org/theblackdon/kineticwe"
+url="https://gitlab.com/theblackdon/kineticwe"
 license=('GPL-2.0-or-later' 'LGPL-2.0-or-later' 'MIT' 'BSD-3-Clause' 'CC0-1.0')
 
 depends=(
@@ -126,10 +126,10 @@ optdepends=()
 conflicts=('kglobalacceld')
 provides=('kglobalacceld')
 
-# Source: kwin-we from Codeberg + kglobalacceld from KDE invent
+# Source: kwin-we from GitLab + kglobalacceld from KDE invent
 _sourcebase="$pkgname-$pkgver"
 source=(
-    "$url/archive/v$pkgver.tar.gz"
+    "$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
     "kglobalacceld::git+https://invent.kde.org/plasma/kglobalacceld.git"
 )
 sha256sums=('SKIP' 'SKIP')
@@ -138,8 +138,12 @@ prepare() {
     cd "$srcdir"
 
     echo "==> Extracting kwin-we source..."
-    # The tarball extracts to 'kineticwe' (repo name, not pkgname-$pkgver)
-    # For consistency, rename if needed
+    # GitLab archive extracts to 'kineticwe-v$pkgver', rename to $_sourcebase
+    local extract_dir="$pkgname-v$pkgver"
+    if [[ -d "$extract_dir" && ! -d $_sourcebase ]]; then
+        mv "$extract_dir" "$_sourcebase"
+    fi
+    # Fallback: also handle plain 'kineticwe' extraction
     if [[ -d kineticwe && ! -d $_sourcebase ]]; then
         mv kineticwe "$_sourcebase"
     fi
