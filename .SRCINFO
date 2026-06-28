@@ -1,6 +1,6 @@
 pkgbase = nexus-open
 	pkgdesc = Linux controller for Corsair iCUE Nexus display device
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/mantonx/nexus-open
 	install = nexus-open.install
@@ -12,7 +12,7 @@ pkgbase = nexus-open
 	depends = libgles
 	depends = libegl
 	options = !debug
-	source = nexus-open-0.3.7.tar.gz::https://github.com/mantonx/nexus-open/releases/download/v0.3.7/nexus-open-0.3.7-linux-amd64.tar.gz
-	sha256sums = a03aa37b91eb7408bd0ed08689fce05f46ef19a0c00f95c09845b7c417d48f1b
+	source = nexus-open-0.3.8.tar.gz::https://github.com/mantonx/nexus-open/releases/download/v0.3.8/nexus-open-0.3.8-linux-amd64.tar.gz
+	sha256sums = 4a14c99623759bf5afee31b92b0f3c1d631cb3429f28ba3d13b4a44acc7f303e
 
 pkgname = nexus-open
