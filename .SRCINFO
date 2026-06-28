@@ -39,7 +39,9 @@ pkgbase = monado-multilib-git
 	optdepends = basalt-monado-git: experimental SLAM tracking through basalt
 	optdepends = percetto: tracing support for performance debugging (must be present at build time)
 	provides = openxr-runtime
-	provides = monado=25.1.0.r441.gfea2ceb6f
+	provides = monado=25.1.0.r441.gfea2ceb6f,
+	provides = monado-git=25.1.0.r441.gfea2ceb6f,
+	provides = libmonado=25.1.0.r441.gfea2ceb6f
 	conflicts = monado
 	source = monado::git+https://gitlab.freedesktop.org/monado/monado.git#branch=main
 	md5sums = SKIP
