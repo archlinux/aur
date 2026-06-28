@@ -1,6 +1,6 @@
 # Maintainer: Richard Fleming <rfleming@acqusys.com>
 pkgname=taskeract
-pkgver=2.3.9
+pkgver=2.3.10
 pkgrel=1
 pkgdesc="Desktop app for orchestrating AI coding agents"
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!strip')
 source=(
   "${pkgname}-${pkgver}.deb::${url}/v${pkgver}/Taskeract_${pkgver}_amd64.deb"
 )
-sha256sums=('f9f3374e5c273343ee65c9c5047ad3bc9431442f387382eedd2e3b12ce41413a')
+sha256sums=('a4a690b476a42bde02e2e63de0239167a31dcc0324fe6f16e379e55d195f28fe')
 
 prepare() {
   cd "${srcdir}"
