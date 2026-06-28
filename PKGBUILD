@@ -1,6 +1,6 @@
 # Maintainer: Jean-Claude Graf <mail@jeanclaudegraf.ch>
 pkgname=linux-router
-pkgver=0.7.6
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Set Linux as router in one command'
 url='https://github.com/garywill/linux-router'
@@ -15,7 +15,7 @@ optdepends=(
   'qrencode: QR code support')
 provides=(lnxrouter linuxrouter)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4462a8bf4e1e17b73e55ec33de2f2082cc5dab8e641b77b245b41520cbbf20ff')
+sha256sums=('f416c8ced471ed045c6091c19357d819f7310dc294b16d987f0a31118c6de4a4')
 
 package() {
   cd "$pkgname-$pkgver"
