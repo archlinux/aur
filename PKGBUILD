@@ -8,7 +8,7 @@
 pkgname=publishport-bin
 pkgver=0.1.2
 pkgrel=1
-pkgdesc="把本地开源 CLI 的内容发布能力，经 GUI 客户端 + 云端中转开放给线上 AI"
+pkgdesc="让线上 AI 用你本机真实登录环境，一键发布内容到小红书/知乎/微博/B站/Twitter 等平台（GUI 客户端）"
 arch=('x86_64')
 url="https://publishport.app"
 license=('LicenseRef-proprietary')
