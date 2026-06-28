@@ -12,8 +12,8 @@ conflicts=('fastapi-lsp')
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/fastapi-lsp-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/fastapi-lsp-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('8dea1225e6048a8630c661c3e8a0d627b4e2156c9d2084e363dd40580de77911')
-sha256sums_aarch64=('9604b0d9add93669f561b6a9c2007f9b213699d2d9a233eed3942b43d0af2feb')
+sha256sums_x86_64=('dd1cc2ed75cecb0a39bc97375a50b9f42d4300e5c30d23970e179e19504932df')
+sha256sums_aarch64=('d304048d64531ded07a5515662b4b1a603ad96fdaf40dcf80e2dd3b2f673590c')
 
 package() {
     install -Dm755 "${srcdir}/fastapi-lsp" "${pkgdir}/usr/bin/fastapi-lsp"
