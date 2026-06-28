@@ -1,6 +1,6 @@
 # Maintainer: Peter <peternaame@gmail.com>
 pkgname=ytm-player-git
-pkgver=1.9.4
+pkgver=1.9.5
 pkgrel=1
 pkgdesc="A full-featured YouTube Music TUI client with vim-style navigation"
 arch=('any')
@@ -11,6 +11,7 @@ depends=(
     'python'
     'python-aiosqlite'
     'python-click'
+    'python-dbus-fast'
     'python-mpv'
     'python-pillow'
     'python-textual>=7.0'
@@ -20,7 +21,6 @@ depends=(
 makedepends=('git' 'python-build' 'python-installer' 'python-hatchling')
 optdepends=(
     'python-anyascii: lyrics transliteration to ASCII'
-    'python-dbus-fast: MPRIS media key support'
     'python-pylast: Last.fm scrobbling'
     'python-pypresence: Discord Rich Presence'
     'python-spotipy: Spotify playlist import (AUR)'
