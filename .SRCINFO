@@ -1,6 +1,6 @@
 pkgbase = ustoat
 	pkgdesc = UStoat — A custom stoat client writen in python with the use of pygame-ce
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/Spyro24/UStoat
 	arch = x86_64
