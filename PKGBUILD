@@ -1,17 +1,17 @@
 # Maintainer: Pu Anlai
 pkgname=pacupdate
-pkgver=0.4
-pkgrel=4
+pkgver=0.5
+pkgrel=1
 pkgdesc="Simple but hopefully complete pacman update script"
 arch=('any')
 url="https://github.com/Pu-Anlai/pacupdate"
 license=('MIT')
 depends=('python-aiohttp' 'python-feedparser' 'pyalpm' 'python-packaging')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
-checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-aioresponses')
+checkdepends=('python-pytest' 'python-pytest-asyncio')
 install=
-source=("https://github.com/Pu-Anlai/pacupdate/archive/refs/tags/0.4.tar.gz")
-sha256sums=('2a5a08d9f62ad94531e6ff2b948f5ed455881750734bda544a156591fd2182ae')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver.tar.gz")
+sha256sums=('bc38203b5d4c8c7e8acd161394e957f3675325591650182db1ca0998195a407a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}" || return 1
@@ -19,8 +19,13 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}" || return 1
-  PYTHONPATH="$(pwd)" pytest
+  # python-aiointercept is currently not in the AUR (and I don't wanna maintain
+  # a package for it) so we're hacking around this with a virtual env
+  _pkg_src_dir="${srcdir}/${pkgname}-${pkgver}"
+  python -m venv "${_pkg_src_dir}"
+  PYTHONPATH="${_pkg_src_dir}" "${_pkg_src_dir}/bin/pip" install aiointercept
+  cd "${_pkg_src_dir}" || return 1
+  PYTHONPATH="${_pkg_src_dir}" pytest
 }
 
 package() {
