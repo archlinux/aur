@@ -1,0 +1,19 @@
+pkgbase = carapace-magick-bin
+	pkgdesc = An ImageMagick magick argstream lexer and completer.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/carapace-sh/carapace-magick
+	license = MIT
+	conflicts = carapace-magick
+	provides = carapace-magick
+	arch = aarch64
+	source_aarch64 = https://github.com/carapace-sh/carapace-magick/releases/download/v0.0.1/carapace-magick_0.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 30f4d8a5e3f3a0153467673db103a5f9ea3f619be0e5e5c064c21278fbf06942
+	arch = i686
+	source_i686 = https://github.com/carapace-sh/carapace-magick/releases/download/v0.0.1/carapace-magick_0.0.1_linux_386.tar.gz
+	sha256sums_i686 = 7f7827d076374e089c11275f10472c73bd98862c262a1438ed9614fda9b42f06
+	arch = x86_64
+	source_x86_64 = https://github.com/carapace-sh/carapace-magick/releases/download/v0.0.1/carapace-magick_0.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5bb943b8797b4e19569a2ea3ab514d4826de1996db236d6891e1c55a8c71e199
+	
+pkgname = carapace-magick-bin
