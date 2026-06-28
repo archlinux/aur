@@ -3,12 +3,12 @@
 pkgname=spfft
 _pkgname=SpFFT
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Sparse 3D FFT library with MPI, OpenMP, CUDA and ROCm support"
 arch=(x86_64 aarch64)
 url="https://github.com/eth-cscs/SpFFT"
-license=(BSD)
-depends=(fftw)
+license=(BSD-3-Clause)
+depends=(fftw openmpi)
 makedepends=(cmake ninja gcc-fortran)
 provides=(spfft)
 conflicts=(spfft-cuda-git)
@@ -27,7 +27,6 @@ build() {
     -D SPFFT_FORTRAN=ON \
     -D SPFFT_MPI=ON \
     -D SPFFT_OMP=ON \
-    -D SPFFT_GPU_BACKEND=$_ACC \
     -G Ninja \
     -W no-dev
   cmake --build build
@@ -36,6 +35,5 @@ build() {
 package() {
   cd "$srcdir"
   DESTDIR="$pkgdir" cmake --install build
-  install -Dm755 $_pkgname-$pkgver/LICENSE \
-    -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 $_pkgname-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
