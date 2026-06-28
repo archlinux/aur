@@ -16,7 +16,7 @@ noextract=(
     "deepin-wine10-stable_${_pkgver}_amd64.deb"
 )
 sha256sums=('fa1119f2050e35273345909f84ec72091d565633ddde9bae8f3dd930b7cf8021')
-DLAGENTS=("https::/usr/bin/curl -A 'Debian APT-HTTP/1.3' -fLC - --retry 3 --retry-delay 3 -o %o %u")
+DLAGENTS=("https::/usr/bin/curl -A 'Debian\ APT-HTTP/1.3' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 depends=(
     alsa-lib                    # libasound2 (>= 1.0.16)
     glibc                       # libc6 (>= 2.26)
