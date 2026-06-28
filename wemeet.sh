@@ -30,6 +30,7 @@ if [ -f /usr/bin/bwrap ]; then
     exec bwrap \
         --new-session \
         --unshare-user-try --unshare-pid --unshare-uts --unshare-cgroup-try \
+        --proc /proc \
         --ro-bind / / \
         --dev-bind /dev /dev \
         --bind /tmp /tmp \
