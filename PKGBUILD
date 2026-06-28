@@ -6,8 +6,8 @@ pkgname=(
   czkawka-gui
   krokiet
 )
-pkgver=11.0.1
-pkgrel=0.2
+pkgver=12.0.0
+pkgrel=1
 pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc.'
 url='https://github.com/qarmin/czkawka'
 arch=(
@@ -39,7 +39,7 @@ optdepends=(
   "ffmpeg: Compare video files"
 )
 source=("git+https://github.com/qarmin/czkawka.git#tag=$pkgver")
-b2sums=('384aa06363a6f3edc7bee57daca4cebd5dc582498933f66f5a65625f346aad372c6a7ac685270f959d0684d052ce78d173b9d015f0606dd17ffc507d8ba9e7d9')
+b2sums=('194333f6dd67c10b04dc1f330d70c50d3223f321c0f4f8800d34536dfcfc972a5f84b8d6a1876c42ab656e26c745b68ff44f5faa5f1ed75d8624ffff1df400d7')
 
 build() {
   cd ${pkgbase}
@@ -82,7 +82,7 @@ package_czkawka-gui() {
     hicolor-icon-theme
   )
   license=('LicenseRef-MIT AND CC-BY-4.0')
-  pkgdesc+=" (Desktop App)"
+  pkgdesc+=" (Desktop App) (Deprecated)"
 
   install -Dm644 "${srcdir}/czkawka/czkawka_gui/LICENSE_CC_BY_4_ICONS" \
         "${pkgdir}/usr/share/licenses/czkawka-gui/LICENSE_CC_BY_4_ICONS"
