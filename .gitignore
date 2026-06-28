@@ -2,3 +2,5 @@
 \!.gitignore
 \!PKGBUILD
 \!.SRCINFO
+!qmd-update-user.service
+!qmd-update-user.timer

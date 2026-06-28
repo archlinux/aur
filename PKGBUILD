@@ -3,7 +3,7 @@
 pkgname=qmd
 _npmname="@tobilu/qmd"
 pkgver=2.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="On-device search engine for markdown files with BM25, vector, and LLM-powered search"
 arch=('x86_64')
 url="https://github.com/tobi/qmd"
@@ -12,8 +12,15 @@ depends=('nodejs>=22' 'libstdc++.so' 'libgcc')
 makedepends=('npm' 'patchelf')
 optdepends=('vulkan-icd-loader: GPU-accelerated inference via Vulkan backend')
 options=('!debug')
-source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/qmd-${pkgver}.tgz")
-sha256sums=('5c6084e9bdf041c47a55402e3b17bf8dd6d0262c39556261cd723d5f3d280c4e')
+source=(
+  "${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/qmd-${pkgver}.tgz"
+  'qmd-update-user.service'
+  'qmd-update-user.timer'
+)
+noextract=("${pkgname}-${pkgver}.tgz")
+sha256sums=('5c6084e9bdf041c47a55402e3b17bf8dd6d0262c39556261cd723d5f3d280c4e'
+            '97eba751e88f82877313ae7e8c4267495ead7a1e1e0b459c4fce4a2aa482893d'
+            '19ab38a6a49cb78a0a1dac8c53569cf838131dea11c5dccb93e3a0c310daaf48')
 
 latestver() {
   curl -s "https://registry.npmjs.org/${_npmname}" | jq -r '.["dist-tags"].latest'
@@ -33,6 +40,10 @@ package() {
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/lib/node_modules/@tobilu/qmd/bin/qmd" "${pkgdir}/usr/bin/qmd"
+
+  # Per-user index-refresh timer (opt-in: systemctl --user enable --now qmd-update.timer)
+  install -Dm644 "${srcdir}/qmd-update-user.service" "${pkgdir}/usr/lib/systemd/user/qmd-update.service"
+  install -Dm644 "${srcdir}/qmd-update-user.timer" "${pkgdir}/usr/lib/systemd/user/qmd-update.timer"
 
   # License
   install -Dm644 "${pkgdir}/usr/lib/node_modules/@tobilu/qmd/LICENSE" \

@@ -1,0 +1,7 @@
+[Unit]
+Description=Update QMD document index
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h
+ExecStart=/usr/bin/qmd update

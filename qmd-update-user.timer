@@ -1,0 +1,9 @@
+[Unit]
+Description=Periodically update QMD document index
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+
+[Install]
+WantedBy=timers.target
