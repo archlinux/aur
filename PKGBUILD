@@ -2,7 +2,7 @@
 # Maintainer: Mohit Mishra <mohitmishra786687@gmail.com>
 
 pkgname='agentop-bin'
-pkgver=0.1.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Terminal dashboard for AI coding assistant sessions'
 url='https://github.com/mohitmishra786/agentop'
@@ -12,16 +12,16 @@ provides=('agentop')
 conflicts=('agentop')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/mohitmishra786/agentop/releases/download/v${pkgver}/agentop_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('80bf672bc3805e3b25a836bbbfc118f34d2eeb9ec8cbeeefaa05d8a6ee1c11ab')
+sha256sums_aarch64=('91cfa604fc0a801c06fd7a2bb1a38358f45ef6113ee0e4bdc843ecda407a6c24')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/mohitmishra786/agentop/releases/download/v${pkgver}/agentop_${pkgver}_linux_armv7.tar.gz")
-sha256sums_armv7h=('fcb7139c4448e3384091d28f1686cf19ecb6137b4457ad71ede7228db4291fdb')
+sha256sums_armv7h=('818448c44627993aba4f9815d715a6bcf62417534f03dfbc287a8b64fd441b4a')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/mohitmishra786/agentop/releases/download/v${pkgver}/agentop_${pkgver}_linux_i386.tar.gz")
-sha256sums_i686=('9228ce7439ee545b8229e10821f9d8d332507fcd0adde11046e0106d436d5179')
+sha256sums_i686=('2dd69d2ab8e4a6fe76248dc3381e252fdc616c039612eaf2ba300d43f5465160')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/mohitmishra786/agentop/releases/download/v${pkgver}/agentop_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('601050dc2dea9396b4b49812a6a8ead5a804d35bd9b84f6e2163e1931b804da8')
+sha256sums_x86_64=('9a9804cfd1a9420c32afa51b9a460c214f48c65b62032cdf5bd9d1f92f3d9378')
 
 package() {
   install -Dm755 agentop "${pkgdir}/usr/bin/agentop"
