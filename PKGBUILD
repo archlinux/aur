@@ -8,7 +8,7 @@ pkgname=(
   "${pkgbase}-cli"
   "${pkgbase}-gui"
 )
-pkgver=2.47.2
+pkgver=2.47.3
 pkgrel=1
 pkgdesc="Exports Discord chat logs to a file"
 arch=(
@@ -36,7 +36,7 @@ source=(
   "${url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
   "${pkgbase}-gui.sh"
 )
-b2sums=('a4d2f0a2de65643634cce84a79b8512af56d192d7be46a43db028553e902572c8c8097262331d20c2b88fb9cff146b811f60ad15e9a7406fbe2ef1662da5d958'
+b2sums=('caca029af0b2b825e3a6b59ec10f4b87546b080ac19ed21024fdc46ac6ac43020d1ea886da8947b4a1c73e4461c72fdef1ef04cec372225c1968faf1d78c06e6'
         'f8a33018574ef29bfe740a6852cabfc56b97e2004dae02bd9a24be89d75515b9540a4edbe8cf34a8a2770089145c2e6841a80f47f6844a6c0a82ce2e0223f0f6')
 
 if   [ "${CARCH}" = 'aarch64' ]; then _msarch=arm64;
