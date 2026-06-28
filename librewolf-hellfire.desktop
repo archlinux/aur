@@ -1,0 +1,27 @@
+[Desktop Entry]
+Version=1.0
+Name=LibreWolf HellFire
+GenericName=Web Browser
+Comment=Browse the World Wide Web (LibreWolf with HellFire optimizations)
+Keywords=Internet;WWW;Browser;Web;Explorer;librewolf;hellfire
+Exec=/usr/bin/librewolf %u
+Icon=librewolf-hellfire
+Terminal=false
+Type=Application
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;
+StartupNotify=true
+StartupWMClass=librewolf
+Categories=Network;WebBrowser;
+Actions=new-window;new-private-window;profile-manager-window;
+
+[Desktop Action new-window]
+Name=Open a New Window
+Exec=/usr/bin/librewolf --new-window %u
+
+[Desktop Action new-private-window]
+Name=Open a New Private Window
+Exec=/usr/bin/librewolf --private-window %u
+
+[Desktop Action profile-manager-window]
+Name=Open the Profile Manager
+Exec=/usr/bin/librewolf --ProfileManager

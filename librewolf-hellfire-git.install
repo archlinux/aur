@@ -1,0 +1,11 @@
+post_upgrade() {
+  echo ">>  LibreWolf HellFire installs to /usr/lib/librewolf and provides the"
+  echo ">>  'librewolf' binary, so it conflicts with the regular librewolf packages."
+  echo ">>"
+  echo ">>  Settings overrides go in ~/.librewolf/librewolf.overrides.cfg ; you do"
+  echo ">>  not need to edit /usr/lib/librewolf/librewolf.cfg directly."
+}
+
+post_install() {
+  post_upgrade
+}
