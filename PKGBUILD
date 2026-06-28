@@ -4,7 +4,7 @@
 
 pkgname=mingw-w64-frei0r-plugins
 _pkgname=frei0r-plugins
-pkgver=3.2.1
+pkgver=3.2.3
 pkgrel=1
 pkgdesc='Collection of video effect plugins (mingw-w64)'
 arch=(any)
@@ -25,7 +25,7 @@ makedepends=(
 )
 source=("git+https://github.com/dyne/frei0r#tag=v$pkgver"
         'sse2-guard.patch')
-b2sums=('128b1542c88ec01abfba1cff1f26c9faeeb20a65988cf13fe2834fee14dad7a63950de75195af7ad9d404b7d1d4d5ced20130aa5d1b398db0e20fdf0e8e8641a'
+b2sums=('ba23c7ca9c3f4364fe34f4f5c7aaf41003185b7b2b71bf78097404d5f2e567d2d215c23c91d2a0e2c18457874faf6503b758acd0b8316e5a8dfbc66e1065ba39'
         'b5158b6ad08849484d2c1df1ea002a0d547bc06c765af60397bc5349c49b76efc63d843eedb6dcb521a5c0d496e027b944d5750dd1a4e7d633bea38acf9e8037')
 validpgpkeys=(6113D89CA825C5CEDD02C87273B35DA54ACB7D10) # Denis Roio (Jaromil)
 
