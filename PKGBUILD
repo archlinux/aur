@@ -1,8 +1,8 @@
 # Maintainer: enihcam <enihcam@aur.archlinux.org>
 pkgname=deeptutor
 _name=${pkgname}
-pkgver=1.4.10
-pkgrel=2
+pkgver=1.4.12
+pkgrel=1
 pkgdesc="Agent-native intelligent learning companion with multi-agent collaboration and RAG"
 arch=('any')
 url="https://github.com/HKUDS/DeepTutor"
@@ -37,6 +37,8 @@ depends=(
   'python-pymupdf'           # PyMuPDF                      [extra]
   'python-numpy'             # numpy                        [extra]
   'python-arxiv'             # arxiv                        [AUR]
+  'faiss-cpu'                # faiss-cpu vector store       [AUR]
+                              # (lazy import; falls back to SimpleVectorStore if absent)
   # --- document parsing ---
   'python-docx'              # python-docx (pip prefix)     [AUR]
   'python-openpyxl'          # openpyxl                     [extra]
@@ -73,6 +75,7 @@ optdepends=(
   # --- RAG / knowledge-base engine (LlamaIndex) ---
   'python-llama-index: RAG knowledge-base engine (Settings → Knowledge Base)'
   'python-llama-index-retrievers-bm25: BM25 retriever for the LlamaIndex RAG engine'
+  'python-llama-index-vector-stores-faiss: FAISS vector store plugin (large KBs; falls back to SimpleVectorStore if absent)'
   # --- storage / data backends ---
   'python-pocketbase: PocketBase storage backend'
   # --- LLM output robustness ---
@@ -81,6 +84,7 @@ optdepends=(
   # --- document-parsing engines ---
   'python-markitdown: markitdown document parser (Settings → Document Parsing)'
   'python-docling: docling document parser (Settings → Document Parsing)'
+  'python-pymupdf4llm: PyMuPDF4LLM document parser — lightest image-capable engine (Settings → Document Parsing)'
   # --- Math Animator (Manim) ---
   'manim: Math Animator addon — renders math animations to video'
   'texlive-core: LaTeX renderer required by Manim'
@@ -103,7 +107,7 @@ optdepends=(
   'python-nh3: Matrix HTML sanitization'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/HKUDS/DeepTutor/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f357621ca92d769607ac9a201ce6d36ffb8c6154fb178f26fe6c5c149f80a0c7')
+sha256sums=('a2e8d61d11f2211fe29bd852d939293a50dd835787c7fb3892010a2cac31bf52')
 
 prepare() {
   cd "${srcdir}/DeepTutor-${pkgver}"
