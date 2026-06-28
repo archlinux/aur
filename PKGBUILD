@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=8.2.r125221.g54849fe663
+pkgver=8.2.r125338.g97115451d0
 pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _whispercpp_ver='1.9.1'
@@ -163,7 +163,7 @@ provides=(
     'libswscale.so'
     'libswresample.so')
 conflicts=('ffmpeg')
-source=('git+https://git.ffmpeg.org/ffmpeg.git#commit=54849fe663b21ecd456099c4d40d510fc2afe533'
+source=('git+https://git.ffmpeg.org/ffmpeg.git'
         'git+https://github.com/lensfun/lensfun.git'
         "https://github.com/ggml-org/whisper.cpp/archive/v${_whispercpp_ver}/whisper.cpp-${_whispercpp_ver}.tar.gz"
         '010-ffmpeg-add-svt-hevc.patch'
@@ -173,14 +173,14 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git#commit=54849fe663b21ecd456099c4d4
         '050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch'
         '060-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
         'LICENSE')
-sha256sums=('80cf7033229bbaa4f5390dd0e8c2307474f8cc8e4cc546cbf7f1c7e51fab0a82'
+sha256sums=('SKIP'
             'SKIP'
             '147267177eef7b22ec3d2476dd514d1b12e160e176230b740e3d1bd600118447'
-            'b58095b1c323a56b0bc48fa362881bd4ea306ab415490d61295f9d42ec061fa6'
+            '370fc39fa1c9c5136c9d926247fd50019a67b48d4eb7292e45f7c2aeb54c4b8f'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            '17964549165d3d448b8d2261daab71360cbdf35c0b7d1142bfa648b70bc4ddf3'
+            '4b1274203e7d9ffb50b277e356d7704b8039fc85ef89aa5e7f72c449993a99d6'
             'cd1aa93e78800247b4516a01ef391106acb362957bd1e56f85d64906343cddac'
-            '969ece2dd92a591fb0b121b3afba0e3953a87b91aff67c9d0f17050ccb68131b'
+            '58df5ec4b4d4e3f7f1cc1ca0e44b0cee245ab51d3302530dcbaf86ec05949990'
             '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
