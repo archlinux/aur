@@ -1,0 +1,27 @@
+--- solargraph.gemspec	2026-06-28 12:42:59.980473175 +0200
++++ solargraph.gemspec	2026-06-28 12:46:44.264523230 +0200
+@@ -14,10 +14,9 @@
+   s.authors     = ['Fred Snyder']
+   s.email       = 'admin@castwide.com'
+   s.files       = Dir.chdir(File.expand_path(__dir__)) do
+-    # @sg-ignore Need backtick support
+-    # @type [String]
+-    all_files = `git ls-files -z`
+-    all_files.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
++    Dir.glob("**/*", File::FNM_DOTMATCH).reject { |f|
++      File.directory?(f) || f.match(%r{^(test|spec|features|\.git|\.github)/}) || f.match(/^\./)
++    }
+   end
+   s.homepage    = 'https://solargraph.org'
+   s.license     = 'MIT'
+@@ -44,8 +43,8 @@
+   s.add_dependency 'ostruct', '~> 0.6'
+   s.add_dependency 'parser', '~> 3.0'
+   s.add_dependency 'prism', '~> 1.4'
+-  s.add_dependency 'rbs', '>= 3.10.0'
+-  s.add_dependency 'rdoc', '~> 7.0'
++  s.add_dependency 'rbs', '~> 3.8.0'
++  s.add_dependency 'rdoc', '>= 6.0'
+   s.add_dependency 'reverse_markdown', '~> 3.0'
+   s.add_dependency 'rubocop', '~> 1.76'
+   s.add_dependency 'sord', '~> 7.0'
