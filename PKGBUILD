@@ -12,7 +12,7 @@ license=('GPL-2.0-only')
 makedepends=('tar')
 depends=('glibc' 'libgcc' 'libstdc++' 'zlib' 'zstd' 'openssl' 'qt6-base' 'qt6-svg')
 
-conflicts=("${_basename,,}")
+conflicts=("${pkgname%%-bin}")
 provides=("${_basename^}")
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_basename}_${pkgver}_amd64.deb")
