@@ -1,0 +1,5 @@
+[superseedr-bin]
+source = "github"
+github = "Jagalite/superseedr"
+use_latest_release = true
+prefix = "v"
