@@ -1,0 +1,3 @@
+[zuban-bin]
+source = "pypi"
+pypi = "zuban"
