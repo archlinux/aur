@@ -8,7 +8,7 @@ pkgname='python-jupyter-mimetypes'
 
 pkgver='0.2.0'
 
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Enhanced Jupyter representation capabilities through proxy objects'
 
@@ -36,6 +36,10 @@ source=(
 
 sha256sums=('e6dcd989258e3fc944365b656d9173191517e0e393bd878e97ce500e5b388527')
 
+# See also:
+#   https://github.com/rzanetti/jupyter-mimetypes
+#   https://github.com/datalayer/jupyter-mimetypes
+#   https://pypi.org/project/jupyter-mimetypes
 package() {
     python -m installer \
         --destdir="$pkgdir" \
