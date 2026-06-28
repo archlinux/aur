@@ -1,13 +1,13 @@
 pkgbase = plasma6-applets-plasmusic-toolbar
 	pkgdesc = Widget that shows currently playing song information and provide playback controls.
-	pkgver = 4.1.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/ccatterina/plasmusic-toolbar
 	arch = any
 	license = GPL-3.0-or-later
 	depends = plasma-desktop
 	depends = kdeplasma-addons
-	source = https://github.com/ccatterina/plasmusic-toolbar/archive/refs/tags/v4.1.0.tar.gz
-	sha256sums = 8efedb88ef6aa7d997e7ac3929fa918d6bc87856c2fc74f82f68f78e1e3759c5
+	source = https://github.com/ccatterina/plasmusic-toolbar/archive/refs/tags/v4.2.0.tar.gz
+	sha256sums = 23e2f475a8d4f2b061743db3f1adb8af6b351c53062c221a19b9d5b77cb3febe
 
 pkgname = plasma6-applets-plasmusic-toolbar
