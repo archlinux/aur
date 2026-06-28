@@ -7,7 +7,7 @@ POST INSTALL INFO
 failed. To reinstall run the following script:
 
    ⚠️ The installer uses sudo.
-   $_installprefix/$pkgver/Vitis/data/emulation/qemu/comp/qemu_scripts/qemu/x86_64-qemu-xilinx-nativesdk-standalone -d $_installprefix/Vitis/$pkgver/data/emulation/qemu/comp/qemu -y
+   $_installprefix/$pkgver/Vitis/data/emulation/qemu/comp/qemu_scripts/qemu/x86_64-qemu-xilinx-nativesdk-standalone -d $_installprefix/Vitis/$pkgver/data/emulation/qemu/comp/qemu_edf -y
 
 EOF
 }

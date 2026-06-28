@@ -4,45 +4,73 @@
 # Former Maintainer: xiretza <aur@xiretza.xyz>
 # Contributor: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 
-# BUILD INSTRUCTIONS:
+### BUILD INSTRUCTIONS:
 #
 # 1. Go to https://www.xilinx.com/support/download.html
-# 2. Download "AMD Unified Installer for FPGAs & Adaptive SoCs .... SFD" - WARNING:
-#   (1) This file is >100GB in size  (2) You need an account for US export
-#   controls.
-# 3. Place the .tar.gz in the same directory as the PKGBUILD
-# 4. Only if you want to install Vitis Edition: Replace `vivado` with `vitis_` in `pkgname`.
 #
-#    Note that there is an alternative PKGBUILD for vitis in AUR.
+# 2. Download "AMD Unified Installer for FPGAs & ... SFD".
+#    WARNING:
+#
+#   (1) Reserve about ~300GiB in total.
+#       - Archive: ~100G
+#       - Extracted files: ~100G
+#       - `pkg` folder: ~60G (Vivado + Spartan-7 only)
+#         - if you don't delete `pkg` folder after package generation, then you
+#           require *additional* ~60G
+#       - compressed package: ~25G
+#   (2) You need an account for US export controls and license generation.
+#       Starting from 2026.1 Vivado must be used with a license including
+#       the free tier.
+#
+# 3. Place the .tar.gz in the same directory as the PKGBUILD.
+#
+# 4. Only if you want to install Vitis Edition:
+#
+#    There is an alternative PKGBUILD for vitis in AUR by Christian Cornelssen
+#    which includes more workarounds and more detailed dependencies.
+#
+#    https://aur.archlinux.org/packages/vitis
+#
+#    If you still want to install Vitis using this PKGBUILD:
+#    Uncomment the line `pkgname=(vitis_)`.
+#
 # 5. Select the features you need in `install_config-vivado.txt` or `*-vitis.txt`.
-#    
-#    Alternatively you can install all features. See the commented lines in
-#    `package` for this.
-# 6. Build!
+#    Alternatively you can install all features. See the lines in `package` for
+#    this, which are commented out.
+#
+# 6. Build and install.
+#
+# 7. If you need a license: 
+#    https://account.amd.com/en/forms/license/license-form.html
 #
 #
 ### SELECTING SPECIFIC COMPONENTS
 #
-# This package is huge. The download alone is a barely-compressed >100 GB
-# .tar.gz (extracts to ~110 GB) and the final zstd-compressed package is another
-# 20 GB. Reserve at least 270 GB in total for building.
-#
 # The unified installer that you downloaded includes all Vivado and Vitis
-# editions. "Vitis (Unified Software Platform)" includes Vivado.
+# editions. Vitis includes Vivado.
 #
 # Selecting only the features or component support you need will save space.
-# Two example configuration files for 2025.2
-# `install_config-{vitis,vivado}.txt` are included, which enable support for
-# Spartan-7 only – so add/remove features as needed. If you want to create the
-# install configuration yourself, follow the following steps:
+# Two example configuration files for 2026.1 `install_config-{vitis,vivado}.txt`
+# are included, which enable support for Spartan-7 only – so add/remove
+# features as needed. If you want to create the install configuration yourself,
+# follow the following steps:
 #
-# 1. `tar xf *.tar`
-# 2. `./xsetup -b ConfigGen`
-# 3. edit the generated config file.
+# 1. `makepkg --nobuild` – Extracts archive contents
+#
+# 2. ```
+#    pushd src/FPGAs*/
+#    ./xsetup -b ConfigGen
+#    popd
+#    ```
+#
+# 3. Edit the generated config file.
 #    You don't have to modify `Destination`. It is overridden by the
 #    `--location` argument 
-# 4. move the generated `install_config.txt` as
-# `install_config-{vitis-vivado}.txt` to the PKGBUILD folder 
+#
+# 4. Move the generated `install_config.txt` as
+#    `install_config-{vitis,vivado}.txt`
+#    to the PKGBUILD folder 
+#
 # 5. uncomment the file in `source` array
 # 6. uncomment the corresponding `SKIP` in `md5sums` array
 # 7. use the following arguments for `./xsetup` instead
@@ -65,40 +93,36 @@
 #
 ### CONSUMING LESS TIME FOR REPACKAGING
 #
-# If you later want to add more features to your installation, you may want to
-# repackage. If you did not remove the extracted installation archive files
-# (`src`) and would like to save the time (checksum and extraction) before,
-# then use:
+# If you later want to add more features to your installation by editing
+# `install_config-*.txt`, you may want to repackage. If you did not remove the
+# extracted installation archive files (`src`) and would like to save the time
+# (checksum and extraction) before, then use:
 #
 # makepkg --noextract -f
 
 pkgname=(vivado)
-#pkgname=(vitis_)  # To avoid name clash with the AUR package
+
+# pkgname=(vitis_)  # Uncomment for Vitis. 
+# (`_` is to avoid name clash with the other AUR package
 
 _installprefix=/opt/Xilinx
 
 _srcname=FPGAs_AdaptiveSoCs_Unified_SDI
-pkgver=2025.2
-_more_ver=1114_2157
+pkgver=2026.1
+_more_ver=0616_1700
 pkgrel=1
-pkgdesc="FPGA/CPLD design suite for AMD devices"
-url="https://www.xilinx.com/products/design-tools/vivado.html"
+pkgdesc="FPGA & Adaptive SoC tools for AMD devices"
+url="https://www.amd.com/en/products/software/adaptive-socs-and-fpgas/vivado.html"
 arch=('x86_64')
 license=('custom')
-depends=('ncurses5-compat-libs'
-    'libxcrypt-compat'
-    'libpng12'
-    'lib32-libpng12'
-    'gtk3'
-    'inetutils'
-    'xorg-xlsclients'
-    'cpio'
+depends=(
+    'inetutils'  # Vivado/bin/setupEnv.sh: `hostname` command
+    'ncurses5-compat-libs'  # libxv_commontasks.so": libncurses.so.5
+    'libxi'  # tps/lnx64/jre24.0.2_12/lib/libawt_xawt.so: libXi.so.6
+    'libxtst'  # tps/lnx64/jre24.0.2_12/lib/libawt_xawt.so: libXtst.so.6
 )
-optdepends=('fxload'
-    'digilent.adept.runtime'
-    'digilent.adept.utilities'
-    'matlab: Model Composer'
-    'qt4: Model Composer'
+optdepends=(
+    'xorg-xwayland: For running on Wayland'
 )
 source=(
     "file:///${_srcname}_${pkgver}_${_more_ver}.tar"
@@ -108,8 +132,9 @@ source=(
 )
 
 md5sums=(
-    '5e793c6b88de5123a09f024253fc2527'
+    'b577835d4304f07e40292c51a4018482'
     # Checksum from https://www.xilinx.com/support/download.html
+    # => click `Verify Download`
 
     '69d14ad64f6ec44e041eaa8ffcb6f87c'
     SKIP
@@ -211,7 +236,7 @@ So the installation under `Vitis/data/emulation/qemu/comp/qemu` will probably no
 If you need the emulator, please follow the instructions after the installation.
 EOF
     echo Removing Versal Qemu installation from the following directory:
-    VERSAL_QEMU_INSTALL_DIR="$pkgdir$_installprefix"/${pkgver}/Vitis/data/emulation/qemu/comp/qemu
+    VERSAL_QEMU_INSTALL_DIR="$pkgdir$_installprefix"/${pkgver}/Vitis/data/emulation/qemu/comp/qemu_edf
     echo $VERSAL_QEMU_INSTALL_DIR
     rm -r $VERSAL_QEMU_INSTALL_DIR
 
