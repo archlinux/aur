@@ -2,20 +2,20 @@
 
 pkgname=frozen-rpc
 pkgver=1.0.0.beta.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform Discord Rich Presence injector with OAuth2 and Gateway support"
 arch=('x86_64')
 url="https://github.com/FrostX2/frozen-rpc"
 license=('MIT')
-depends=('electron' 'nodejs' 'npm')
-makedepends=('git')
+depends=('electron')
+makedepends=('git' 'npm')
 options=('!strip' '!debug')
-source=("$pkgname::git+$url.git#tag=v1.0.0-beta-2")
+source=("$pkgname::git+$url.git#branch=main")
 sha256sums=('SKIP')
 
 prepare() {
   cd "$srcdir/$pkgname"
-  npm install
+  npm install --ignore-scripts
 }
 
 package() {
