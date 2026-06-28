@@ -1,0 +1,12 @@
+pkgbase = python-drastic
+	pkgdesc = Reduce the size of your Python code and increase its robustness
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/clemtoy/drastic
+	arch = any
+	license = MIT
+	makedepends = python
+	source = https://files.pythonhosted.org/packages/source/d/drastic/drastic-1.2.tar.gz
+	md5sums = 44ffdd4855f0e6f8a09a3e4e9fe5baec
+
+pkgname = python-drastic
