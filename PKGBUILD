@@ -2,7 +2,7 @@
 
 pkgauthor="anlar"
 pkgname="tewi"
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Text-based interface for BitTorrent clients (Transmission, qBittorrent, Deluge)"
 
@@ -22,7 +22,7 @@ depends=('python' 'python-pyperclip' 'python-rich' 'python-textual' 'python-plat
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e398084b3059d61697858c1d675e1cda974b188f671e08b67b61461560abbb30')
+sha256sums=('17a4245be423d572b39a4fe2d75e7bff95e8946eee85d984b27955a8d69b7c16')
 
 build() {
     cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/" || exit
