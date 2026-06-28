@@ -3,7 +3,7 @@
 # Contributor: William Brown <glowinthedarkcia at horsefucker dot org>
 
 pkgname=ftb-app-bin
-pkgver=1.29.7
+pkgver=1.30.0
 pkgrel=1
 epoch=
 pkgdesc="A new Modpack launcher for FTB and Curse modpacks."
@@ -26,8 +26,8 @@ changelog=
 source_x86_64=("https://piston.feed-the-beast.com/app/ftb-app-linux-${pkgver}-amd64.deb")
 source_aarch64=("https://piston.feed-the-beast.com/app/ftb-app-linux-${pkgver}-arm64.deb")
 noextract=()
-sha256sums_x86_64=('ddb92e7f22c7890f3f07698ebafa76a98a3ce7306c77ef153d3149e68ff1579b')
-sha256sums_aarch64=('1f658cc3b3f6f669d93620040935763589acb8f489446e00881ddc8923913c73')
+sha256sums_x86_64=('ca9a00f9d2aaa74528b034d7ba9874820f60c345feb8b34755b90fcde893ee82')
+sha256sums_aarch64=('742c461dc96894dc51e2af828688958eeab9d2b8f781fdf6ed873d4f6fd7cf06')
 validpgpkeys=()
 
 package() {
