@@ -2,7 +2,7 @@
 
 pkgname=python-njulogin
 pkgver=4.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The Nanjing University login module, which can be used to login to the various campus web sites"
 arch=('any')
 url='https://github.com/Do1e/NJUlogin'
@@ -16,6 +16,7 @@ depends=(
   'python-pycryptodome>=3.21.0'
   'python-onnxruntime>=1.20.0'
   'python-cryptography>=43.0.0'
+  'python-qrcode>=8.2'
 )
 makedepends=(
   'uv'
