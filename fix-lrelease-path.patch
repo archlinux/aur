@@ -1,0 +1,11 @@
+--- a/setup.py	2026-06-28 22:10:33.049232033 +0200
++++ b/setup.py	2026-06-28 22:41:56.110769179 +0200
+@@ -18,7 +18,7 @@
+             return pyproject_files
+ 
+     subprocess.run(["pylupdate6"] + extract_py_sources() + ["-ts", "meteo_qt/translations/meteo-qt_en.ts"])
+-    subprocess.run(["lrelease-pro-qt6", "meteo_qt/meteo_qt.pro"])
++    subprocess.run(["/usr/lib/qt6/bin/lrelease-pro", "meteo_qt/meteo_qt.pro"])
+ 
+ 
+ PROJECT_PATH = Path(__file__).parent
