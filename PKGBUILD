@@ -1,41 +1,68 @@
 # Contributor: taotieren <admin@taotieren.com>
 
-pkgname=fantascene-gitee
-srcname=fantascene-gitee
-proname=fantascene-dynamic-wallpaper
-pkgver=1.7.8.r0.gb4293b0
+pkgname=fantascene-dynamic-wallpaper-git
+pkgver=2.1.2.r0.g4e61585
 pkgrel=1
 pkgdesc=" dynamic wallpaper. A very nice animated wallpaper on X11 systems.Support Movie and Web animated wallpaper."
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://gitee.com/liuminghang/fantascene-dynamic-wallpaper"
 license=('GPL-3.0-only')
 provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname%-git})
-depends=(mpv
-         qt5-tools
-         qt5-x11extras
-         qt5-webengine)
-makedepends=(git
-            pkgconfig
-            make)
+_qt=qt6
+depends=(
+    glib2
+    glibc
+    libstdc++
+    libgcc
+    libglvnd
+    libx11
+    libxcb
+    libxext
+    xcb-util-wm
+    mpv
+    wget
+    ffmpeg
+    ${_qt}-charts
+    ${_qt}-base
+    ${_qt}-multimedia
+)
+makedepends=(
+    git
+    ${_qt}-tools
+    ${_qt}-webengine
+    pkgconfig
+    make
+)
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-   cd "${srcdir}/${pkgname%-git}"
-   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${pkgname%-git}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgname%-git}" clean -dfx
+
+    cd "${srcdir}/${pkgname%-git}"
+
+    # Qt6 最低要求 C++17，.pro 中写的 c++11 已被 qmake6 忽略（实际编译用的是 C++20）
+    # 改为 c++17 与 Qt6 要求一致
+    sed -i 's/CONFIG += c++11/CONFIG += c++17/' src/*.pro
+
+    # Fix: C++20 中 u8 前缀生成 char8_t*，Qt6 的 QByteArray 不接受 char8_t*
+    # 源码中的 u8"" 字符串全是 ASCII，移除 u8 前缀即可
+    find . \( -name '*.cpp' -o -name '*.h' -o -name '*.hpp' \) | \
+        while IFS= read -r f; do
+            sed -i 's/u8"/"/g' "$f"
+        done
 }
 
 build() {
     cd "${srcdir}/${pkgname%-git}"
-    qmake ./*.pro -spec linux-g++ CONFIG+=qtquickcompiler -o build/
+    export CXXFLAGS="${CXXFLAGS} -fpermissive"
+    qmake6 ./${pkgname%-git}.pro -spec linux-g++ CONFIG+=qtquickcompiler -o build/
     make -C ./build
 }
 
