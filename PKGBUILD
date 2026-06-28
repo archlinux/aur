@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli
 
 pkgname=musicrename
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="command line music library manager"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(glibc taglib)
 makedepends=(git go scdoc)
 checkdepends=(ffmpeg)
 source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('4ddb27137cad2a12f16616525009296d439d6794c17641a7dba1aaf83d148139')
+sha256sums=('22c396e2c761169d813969576a711508ae1233ed6b0fd51a7551608aac0c6a7f')
 
 prepare() {
   cd $pkgname
@@ -35,27 +35,27 @@ build() {
   export GOPATH="${srcdir}/gopath"
 
   go build \
-    -o mr \
+    -o mrr \
     -trimpath \
     -buildmode=pie \
     -mod=readonly \
     -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
     main.go
 
-  make mr.1
+  make mrr.1
 }
 
 package() {
   cd $pkgname
-  install -Dm0755 mr "$pkgdir/usr/bin/mr"
-  install -Dm0644 mr.1 "$pkgdir/usr/share/man/man1/mr.1"
+  install -Dm0755 mrr "$pkgdir/usr/bin/mrr"
+  install -Dm0644 mrr.1 "$pkgdir/usr/share/man/man1/mrr.1"
 
-  "${pkgdir}/usr/bin/mr" completion bash | install -Dm0644 \
-    /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/mr"
-  "${pkgdir}/usr/bin/mr" completion zsh | install -Dm0644 \
-    /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_mr"
-  "${pkgdir}/usr/bin/mr" completion fish | install -Dm0644 \
-    /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/mr.fish"
+  "${pkgdir}/usr/bin/mrr" completion bash | install -Dm0644 \
+    /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/mrr"
+  "${pkgdir}/usr/bin/mrr" completion zsh | install -Dm0644 \
+    /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_mrr"
+  "${pkgdir}/usr/bin/mrr" completion fish | install -Dm0644 \
+    /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/mrr.fish"
 
   install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm0644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
