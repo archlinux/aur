@@ -1,6 +1,6 @@
 # Maintainer: Zynix <crossmacro@zynix.net>
 pkgname=crossmacro
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Cross-platform mouse and keyboard macro automation tool"
 arch=('x86_64' 'aarch64')
@@ -9,16 +9,16 @@ license=('GPL-3.0-only')
 depends=('glibc' 'gcc-libs' 'zlib' 'openssl' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr' 'polkit' 'libxtst' 'systemd-libs' 'libxkbcommon' 'icu')
 makedepends=('dotnet-sdk>=10.0' 'clang' 'zlib')
 options=('!strip')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v1.3.0.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v1.3.1.tar.gz"
         "crossmacro.sysusers"
         "crossmacro-modules.conf")
-sha256sums=('c9ee57ac304f76a29448fbdde99e36e983eab1a13297c553e26ca78deb527085'
+sha256sums=('2c437d4562093325d879b7fe06b002463f9aa5b79af7351f22a6cc917604a12b'
             'SKIP'
             'SKIP')
 install=crossmacro.install
 
 build() {
-    cd "CrossMacro-1.3.0"
+    cd "CrossMacro-1.3.1"
     local target_rid
     case "${CARCH}" in
         x86_64)
@@ -41,11 +41,11 @@ build() {
         -c Release \
         -r "$target_rid" \
         --self-contained true \
-        -p:PublishSingleFile=true \
-        -p:EnableCompressionInSingleFile=true \
-        -p:PublishTrimmed=true \
-        -p:PublishReadyToRun=false \
-        -p:PublishAot=false \
+        -p:PublishAot=true \
+        -p:PublishReadyToRun=true \
+        -p:OptimizationPreference=Speed \
+        -p:StripSymbols=true \
+        -p:IlcTrimMetadata=true \
         -p:DebugType=None \
         -p:DebugSymbols=false \
         -o publish/
@@ -66,7 +66,7 @@ build() {
 }
 
 package() {
-    cd "CrossMacro-1.3.0"
+    cd "CrossMacro-1.3.1"
     
     # Install UI files
     install -dm755 "$pkgdir/usr/lib/$pkgname"
@@ -118,7 +118,8 @@ package() {
     
     # Install desktop file
     install -Dm644 "scripts/assets/CrossMacro.desktop" \
-        "$pkgdir/usr/share/applications/$pkgname.desktop"
+        "$pkgdir/usr/share/applications/CrossMacro.desktop"
+    sed -i 's|Exec=crossmacro|Exec=/usr/lib/crossmacro/CrossMacro.UI|g' "$pkgdir/usr/share/applications/CrossMacro.desktop"
 
     # Install man page
     install -Dm644 "docs/man/crossmacro.1" \
