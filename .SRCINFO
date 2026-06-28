@@ -1,7 +1,7 @@
 pkgbase = ripunzip
 	pkgdesc = Extract zip files in parallel
 	pkgver = 2.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/google/ripunzip
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,6 @@ pkgbase = ripunzip
 	depends = bzip2
 	depends = libgcc
 	depends = glibc
-	depends = openssl
 	depends = xz
 	optdepends = rust-src: optimize with RUSTC_BOOTSTRAP=1
 	source = ripunzip2.0.4.tar.gz::https://github.com/google/ripunzip/archive/refs/tags/v2.0.4.tar.gz
