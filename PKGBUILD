@@ -2,12 +2,12 @@
 # Contributor: Laurin Neff <laurin at laurinneff dot ch>
 pkgname=satisfactory-mod-manager
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A mod manager for easy installation of mods and modloader for Satisfactory"
 arch=(x86_64)
 url="https://github.com/satisfactorymodding/SatisfactoryModManager"
 license=('GPL3')
-makedepends=('git' 'yarn' 'nodejs' 'node-gyp' 'python' 'wails' 'go-task' 'pnpm')
+makedepends=('git' 'yarn' 'nodejs' 'node-gyp' 'python' 'wails' 'go-task' 'pnpm' 'go')
 depends=('webkit2gtk-4.1' 'gst-plugins-good')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/satisfactorymodding/SatisfactoryModManager/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop")
