@@ -1,0 +1,11 @@
+--- a/export/CMakeLists.txt.export	2026-06-28 01:10:38.072047244 +0300
++++ b/export/CMakeLists.txt.export	2026-06-28 01:10:53.344576950 +0300
+@@ -787,7 +787,7 @@
+   set(LIBINT_DATADIR_ABSOLUTE \"\${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_DATADIR}/libint/${LIBINT_VERSION}\")
+   configure_file(
+     \"${PROJECT_SOURCE_DIR}/include/libint2/basis.h.in\"
+-    \"\${CMAKE_INSTALL_PREFIX}/${LIBINT2_INSTALL_INCLUDEDIR}/libint2/basis.h\"
++    \"\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/${LIBINT2_INSTALL_INCLUDEDIR}/libint2/basis.h\"
+     @ONLY)
+ ")
+ 

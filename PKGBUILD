@@ -3,102 +3,90 @@
 
 _pkgname=libint
 pkgname=libint2
-pkgver=2.12.0
+pkgver=2.13.1
 pkgrel=1
 pkgdesc='A high-performance library for computing Gaussian integrals in quantum mechanics'
 url='https://github.com/evaleev/libint'
 license=(GPL-3.0-only LGPL-3.0-only)
-arch=(x86_64)
+arch=(x86_64 aarch64)
 depends=(boost)
 makedepends=(cmake ninja clang gcc-fortran eigen python pybind11)
 source=($pkgname-$pkgver.tar.gz::"https://github.com/evaleev/libint/archive/v$pkgver.tar.gz"
-        cmake.patch)
-sha256sums=('732988a1ea95eb4eae91bcb2b2a718d95dc5caca41533746fc4111532d55ae74'
-            'ec642f0ce40ed833e3c2b70575b7fdfdb4b5858a99cbe80a174c38500cc0396c')
+        destdir.patch)
+sha256sums=('9651705c79f77418ef0230aafc0cf1b71b17c1c89e413ee0e5ee7818650ce978'
+            '5747eab346555ebd272adf0c4b18f24e76a504e262bd0321c3a8167f2b5406cb')
 options=(!buildflags)
 
 prepare() {
-  cd "$_pkgname-$pkgver"
-  ./autogen.sh
+  # make basis.h install honour DESTDIR
+  patch -p1 -d "$_pkgname-$pkgver" < destdir.patch
 
-  # Detecting FMA support
-  if [ $( clang -march=native -dM -E - < /dev/null | egrep "FMA__" | tail -c 2 ) == 1 ]
-  then
-    FMA=yes
+  # FMA intrinsics are an x86_64-only feature; on aarch64 fused multiply-add
+  # is part of the base ISA and is emitted by the compiler automatically.
+  if [ "$CARCH" == 'x86_64' ] && clang -march=native -dM -E - < /dev/null | grep -q '__FMA__'; then
+    FMA=ON
     CXXFLAGS="-O2 -mfma"
     FCFLAGS="-O2 -mfma"
     echo "Support of FMA intrinsics is enabled"
   else
-    FMA=no
+    FMA=OFF
     CXXFLAGS="-O2"
     FCFLAGS="-O2"
     echo "Support of FMA intrinsics is disabled"
   fi
-
-  # Setting build environment
-  export CXXGENFLAGS="$CXXFLAGS"
 }
 
 build() {
-  ## generating libint library
-  tarball_build_dir="$srcdir/prepare_tarball"
-  libint_build_dir="$srcdir/build_libint"
+  local compiler_build="$srcdir/build_compiler"
+  # cap parallelism: some integral TUs need ~3 GB RAM each
+  local jobs=$(( $(nproc) < 4 ? $(nproc) : 4 ))
 
-  # create dir for building tarball
-  mkdir -p "$tarball_build_dir"
+  # build compiler, export library source
+  cmake \
+    -B "$compiler_build" \
+    -S "$_pkgname-$pkgver" \
+    -G Ninja \
+    -D CMAKE_C_COMPILER=clang \
+    -D CMAKE_CXX_COMPILER=clang++ \
+    -D CMAKE_CXX_FLAGS="$CXXFLAGS" \
+    -D LIBINT2_ENABLE_ERI=1 \
+    -D LIBINT2_ENABLE_ERI2=1 \
+    -D LIBINT2_ENABLE_ERI3=1 \
+    -D LIBINT2_GENERATE_FMA=$FMA \
+    -D LIBINT2_MAX_AM=5 \
+    -D LIBINT2_ERI_MAX_AM="5;4" \
+    -D LIBINT2_ERI2_MAX_AM="7;6" \
+    -D LIBINT2_ERI3_MAX_AM="7;6" \
+    -D LIBINT2_OPT_AM=3 \
+    -W no-dev
+  cmake --build "$compiler_build" --target export
 
-  # run conf from building tarball dir
-  cd "$tarball_build_dir"
-  ../$_pkgname-$pkgver/configure \
-    --enable-eri=1 \
-    --enable-eri2=1 \
-    --enable-eri3=1 \
-    --enable-fma=$FMA \
-    --with-max-am=5 \
-    --with-eri-max-am=5,4 \
-    --with-eri2-max-am=7,6 \
-    --with-eri3-max-am=7,6 \
-    --with-opt-am=3 \
-    CC=clang \
-    CXX=clang++ \
-    CXXFLAGS="$CXXFLAGS" \
-    FCFLAGS="$FCFLAGS"
-  make export
-
-  ## compiling libint library
-  # create dir for building libint
-  mkdir -p "$libint_build_dir"
-
-  tar xzf "$tarball_build_dir/$_pkgname-$pkgver.tgz" -C "$libint_build_dir"
-
-  cd "$libint_build_dir/$_pkgname-$pkgver"
+  # build from staging tree (tarball racy under -j)
+  cd "$compiler_build"/libint-*/
   cmake \
     -B build \
     -S . \
+    -G Ninja \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_C_COMPILER=clang \
     -D CMAKE_CXX_COMPILER=clang++ \
     -D CMAKE_CXX_FLAGS="$CXXFLAGS" \
     -D CMAKE_Fortran_FLAGS="$FCFLAGS" \
-    -D ENABLE_FORTRAN=ON \
-    -D LIBINT2_PYTHON=ON \
-    -D LIBINT2_BUILD_SHARED_AND_STATIC_LIBS=ON \
-    -G Ninja \
+    -D CMAKE_UNITY_BUILD_BATCH_SIZE=1 \
+    -D LIBINT2_ENABLE_FORTRAN=ON \
+    -D LIBINT2_ENABLE_PYTHON=ON \
+    -D BUILD_SHARED_LIBS=ON \
     -W no-dev
-  cmake --build build
+  cmake --build build -j"$jobs"
 }
 
 check() {
-  libint_build_dir="${srcdir}/build_libint"
-  cd "$libint_build_dir/${_pkgname}-${pkgver}"
-  cmake --build build --target check
+  local jobs=$(( $(nproc) < 4 ? $(nproc) : 4 ))
+  cd "$srcdir"/build_compiler/libint-*/
+  cmake --build build --target check -j"$jobs"
 }
 
 package() {
-  libint_build_dir="${srcdir}/build_libint"
-  cd "$libint_build_dir/${_pkgname}-${pkgver}"
+  cd "$srcdir"/build_compiler/libint-*/
   DESTDIR="$pkgdir" cmake --install build
-
-  cd "$pkgdir/usr/lib/cmake"
-  patch -p0 < "$srcdir/cmake.patch"
 }
