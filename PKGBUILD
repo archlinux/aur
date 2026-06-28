@@ -1,7 +1,7 @@
 # Maintainer: raindropqwq <raindropqwq@outlook.com>
 
 pkgname=incrementum-bin
-pkgver=1.57.1
+pkgver=1.57.2
 pkgrel=1
 pkgdesc="A Spaced Repetition System built with Tauri"
 arch=('x86_64')
@@ -16,11 +16,11 @@ options=('!strip' '!lto' '!debug')
 provides=('incrementum')
 conflicts=('incrementum')
 
-source=("https://github.com/melpomenex/incrementum-tauri/releases/download/v${pkgver}/incrementum-1.57.1-1-x86_64.pkg.tar.zst")
-sha256sums=('1a30c801d8d1c3d9d4d677b584d454148cf79b88d59435e9afa4ed0d5669f487')
+source=("https://github.com/melpomenex/incrementum-tauri/releases/download/v${pkgver}/incrementum-1.57.2-1-x86_64.pkg.tar.zst")
+sha256sums=('e3d9fdb2ad8018c6f2fee9aaebb75978c1d39025af5e46678d6bcdd1681687bd')
 
 package() {
-    bsdtar -xf "${srcdir}/incrementum-1.57.1-1-x86_64.pkg.tar.zst" -C "${pkgdir}" --exclude='.BUILDINFO' --exclude='.MTREE' --exclude='.PKGINFO'
+    bsdtar -xf "${srcdir}/incrementum-1.57.2-1-x86_64.pkg.tar.zst" -C "${pkgdir}" --exclude='.BUILDINFO' --exclude='.MTREE' --exclude='.PKGINFO'
 
     # Create desktop entry (upstream does not ship one)
     install -d "${pkgdir}/usr/share/applications"
