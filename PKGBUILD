@@ -1,26 +1,26 @@
 # Maintainer: Peter Mattern <pmattern at arcor dot de>
 
 pkgname=python-pylibravatar
-pkgver=1.7
-pkgrel=3
+pkgver=2.0.2
+pkgrel=1
 pkgdesc='Python module to make use of the federated Libravatar avatar hosting service'
 arch=('any')
-url='https://launchpad.net/pylibravatar'
+url='https://github.com/libravatar/pylibravatar'
 license=('MIT')
-depends=('python-pydns')
-makedepends=('python-setuptools')
-source=("https://pypi.python.org/packages/18/61/fd748d549be821f6c2ff3f2d1a835d4e2c407431d9372495ec8562242cd1/pyLibravatar-1.7.tar.gz"{,.asc})
-sha256sums=('f239caae2aed0e2dcdd695ffcde4572958c001b4bdc464a9291d1b0cae0caa8d' 'SKIP')
-validpgpkeys=('8C470B2A0B31568E110D432516281F2E007C98D1') # Francois Marier <fmarier at gmail dot com>
+depends=('python-dnspython')
+makedepends=('python-build' 'python-setuptools' 'python-installer')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+b2sums=('bbe246dce9328e5b1a9c711e596b4162b0a89f5bea4e94b227ef1d2d30803144f8a534320dc088b9129208d8f509f63a440e9e229790f9dc062849fed9782b34')
 
 build() {
-    cd pyLibravatar-$pkgver
-    python setup.py build
+    cd pylibravatar-$pkgver
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd pyLibravatar-$pkgver
-    python setup.py install --root "${pkgdir}" --optimize=1
+    cd pylibravatar-$pkgver
+    python -m installer --destdir="${pkgdir}" dist/*whl
+
     mkdir -p "${pkgdir}"/usr/share/licenses/$pkgname
-    tail -n19 "${srcdir}"/pyLibravatar-$pkgver/README.txt > "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
+    tail -n21 "${srcdir}"/pylibravatar-$pkgver/README.md > "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
 }
