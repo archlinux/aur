@@ -11,7 +11,6 @@ pkgbase = ripunzip
 	depends = libgcc
 	depends = glibc
 	depends = xz
-	optdepends = rust-src: optimize with RUSTC_BOOTSTRAP=1
 	source = ripunzip2.0.4.tar.gz::https://github.com/google/ripunzip/archive/refs/tags/v2.0.4.tar.gz
 	sha256sums = b485dc58777fb8637ff0509c72dc6b50235f6a01fecbf382365437be704a8468
 

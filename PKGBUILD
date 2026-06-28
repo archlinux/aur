@@ -8,7 +8,6 @@ license=('MIT')
 arch=('x86_64')
 depends=(bzip2 libgcc glibc xz)
 makedepends=(rust pkgconf)
-optdepends=("rust-src: optimize with RUSTC_BOOTSTRAP=1")
 source=("${pkgname}${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('b485dc58777fb8637ff0509c72dc6b50235f6a01fecbf382365437be704a8468')
 
