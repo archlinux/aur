@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ArchPerf Pro
+Comment=Pro-Grade Arch Linux System Optimization Suite
+Exec=/usr/bin/archperf-pro
+Icon=/usr/share/icons/hicolor/scalable/apps/archperf.png
+Type=Application
+Categories=Settings;System;
+Terminal=false
+StartupNotify=true
