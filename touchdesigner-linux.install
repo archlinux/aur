@@ -1,0 +1,21 @@
+post_install() {
+    # Register MIME types and default file handler
+    if command -v xdg-mime &>/dev/null; then
+        xdg-mime default touchdesigner-file.desktop \
+            application/x-touchdesigner-toe 2>/dev/null || true
+        xdg-mime default touchdesigner-file.desktop \
+            application/x-touchdesigner-tox 2>/dev/null || true
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    # Clean up mimeapps.list entries
+    local mimeapps="${HOME}/.config/mimeapps.list"
+    if [ -f "$mimeapps" ]; then
+        sed -i '/touchdesigner/d' "$mimeapps" 2>/dev/null || true
+    fi
+}

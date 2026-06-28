@@ -3,7 +3,7 @@
 
 pkgname=touchdesigner-linux
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="TouchDesigner on Linux - Soda Wine, Vulkan-accelerated, ready to run"
 arch=('x86_64')
 url="https://github.com/iswad-lab/TouchDesigner-Linux"
@@ -23,6 +23,7 @@ depends=(
 )
 makedepends=()
 optdepends=('nvidia-utils: NVIDIA GPU acceleration')
+install="${pkgname}.install"
 options=('!strip')
 provides=("${pkgname}-${pkgver}")
 conflicts=()
@@ -42,15 +43,19 @@ source=(
     "TouchDesigner.${_td_ver}.exe::${_td_url}"
     "dxvk-${_dxvk_version}.tar.gz::${_dxvk_url}"
     "winetricks::${_winetricks_url}"
+    "touchdesigner-launcher.py"
+    "touchdesigner-linux.install"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 build() {
-    cd "${srcdir}"
     msg2 "Extracting TouchDesigner..."
     mkdir -p td-inno && innoextract -d td-inno "TouchDesigner.${_td_ver}.exe"
     mkdir -p td && cp -r "td-inno/\$/app/" td/ >/dev/null 2>&1
-    [ -d "td-inno/commonappdata" ] && { mkdir -p td-commonappdata; cp -r "td-inno/commonappdata/" td-commonappdata/ >/dev/null 2>&1; }
+    [ -d "td-inno/commonappdata" ] && {
+        mkdir -p td-commonappdata
+        cp -r "td-inno/commonappdata/" td-commonappdata/ >/dev/null 2>&1
+    }
     msg2 "Extracting Soda Wine..."
     mkdir -p soda-wine && tar -xJf "soda-${_soda_version}.tar.xz" -C soda-wine --strip-components=1 >/dev/null 2>&1
     msg2 "Extracting DXVK..."
@@ -66,138 +71,122 @@ build() {
     "${srcdir}/winetricks" -q corefonts >/dev/null 2>&1 || true
     msg2 "Wine prefix ready."
 
-    msg2 "Patching NewProject.toe templates..."
+    msg2 "Copying ProgramData into prefix template..."
+    if [ -d "td-commonappdata" ]; then
+        mkdir -p "${WINEPREFIX}/drive_c/ProgramData"
+        cp -r td-commonappdata/* "${WINEPREFIX}/drive_c/ProgramData/" >/dev/null 2>&1
+    fi
+
+    msg2 "Patching all .toe files in prefix template + TD samples..."
     TOE_EXP="$(find "${srcdir}/td" -type f -iname 'toeexpand.exe' -print -quit 2>/dev/null)"
     TOE_COL="$(find "${srcdir}/td" -type f -iname 'toecollapse.exe' -print -quit 2>/dev/null)"
-    if [ -n "$TOE_EXP" ] && [ -n "$TOE_COL" ]; then
-        [ -f "TouchDesigner-Linux-${pkgver}/Assets/wine_ui_fixes.tox" ] && cp "TouchDesigner-Linux-${pkgver}/Assets/wine_ui_fixes.tox" wine_ui_fixes.tox
-        if [ -f wine_ui_fixes.tox ]; then
-            FIX_TMP=$(mktemp -d /tmp/td_build_fix.XXXXXX)
-            cp wine_ui_fixes.tox "$FIX_TMP/fix.tox"
-            WINEPREFIX="$WINEPREFIX" wine64 "$TOE_EXP" "z:${FIX_TMP}/fix.tox" >/dev/null 2>&1 || true
-            if [ -f "$FIX_TMP/fix.tox.toc" ]; then
-                FIX_ENTS=()
-                while IFS= read -r entry; do
-                    [ -z "$entry" ] && continue; [[ "$entry" == \#* ]] && continue; [ "$entry" = ".build" ] && continue
-                    FIX_ENTS+=("$entry")
-                done < "$FIX_TMP/fix.tox.toc"
-                find "${srcdir}/td" -type f -iname 'NewProject.toe' -print0 2>/dev/null | while IFS= read -r -d '' toe; do
-                    B=$(basename "$toe") D=$(dirname "$toe")
-                    DIR="$D/${B}.dir" TOC="$D/${B}.toc" W="z:${toe}"
-                    rm -rf "$DIR" "$TOC"
-                    WINEPREFIX="$WINEPREFIX" wine64 "$TOE_EXP" "$W" >/dev/null 2>&1 || true
-                    NEEDS=false; [ ! -d "$DIR/wine_ui_fixes" ] && NEEDS=true
-                    rm -rf "$DIR" "$TOC"
-                    if $NEEDS; then
-                        WINEPREFIX="$WINEPREFIX" wine64 "$TOE_EXP" "$W" >/dev/null 2>&1 || true
-                        [ -d "$DIR" ] && {
-                            MTMP=$(mktemp -d /tmp/td_build_merge.XXXXXX)
-                            cp wine_ui_fixes.tox "$MTMP/fix.tox"
-                            WINEPREFIX="$WINEPREFIX" wine64 "$TOE_EXP" "z:${MTMP}/fix.tox" >/dev/null 2>&1 || true
-                            [ -d "$MTMP/fix.tox.dir" ] && cp -rf "$MTMP/fix.tox.dir/"* "$DIR/"
-                            rm -rf "$MTMP"
-                            for entry in "${FIX_ENTS[@]}"; do echo "$entry" >> "$TOC"; done
-                            WINEPREFIX="$WINEPREFIX" wine64 "$TOE_COL" "$W" >/dev/null 2>&1 || true
-                        }
-                        rm -rf "$DIR" "$TOC"
-                    fi
-                done
-            fi
-            rm -rf "$FIX_TMP"
+    FIX_FILE="TouchDesigner-Linux-${pkgver}/Assets/wine_ui_fixes.tox"
+    if [ -n "$TOE_EXP" ] && [ -n "$TOE_COL" ] && [ -f "$FIX_FILE" ]; then
+        # Extract fix entries first
+        FIX_TMP=$(mktemp -d /tmp/td_build_fix.XXXXXX)
+        cp "$FIX_FILE" "$FIX_TMP/fix.tox"
+        WINEPREFIX="$WINEPREFIX" wine64 "$TOE_EXP" "z:${FIX_TMP}/fix.tox" >/dev/null 2>&1 || true
+        FIX_ENTS=()
+        if [ -f "$FIX_TMP/fix.tox.toc" ]; then
+            while IFS= read -r entry; do
+                [ -z "$entry" ] && continue
+                [[ "$entry" == \#* ]] && continue
+                [ "$entry" = ".build" ] && continue
+                FIX_ENTS+=("$entry")
+            done < "$FIX_TMP/fix.tox.toc"
         fi
+
+        # Patch all .toe files in TD samples and prefix template
+        for toe_root in "${WINEPREFIX}/drive_c/ProgramData" "${srcdir}/td"; do
+            [ ! -d "$toe_root" ] && continue
+            find "$toe_root" -type f -iname '*.toe' -print0 2>/dev/null | while IFS= read -r -d '' toe; do
+                B=$(basename "$toe") D=$(dirname "$toe")
+                DIR="$D/${B}.dir" TOC="$D/${B}.toc" W="z:${toe}"
+                rm -rf "$DIR" "$TOC"
+                WINEPREFIX="$WINEPREFIX" wine64 "$TOE_EXP" "$W" >/dev/null 2>&1 || true
+                NEEDS=false; [ ! -d "$DIR/wine_ui_fixes" ] && NEEDS=true
+                rm -rf "$DIR" "$TOC"
+                $NEEDS || continue
+                WINEPREFIX="$WINEPREFIX" wine64 "$TOE_EXP" "$W" >/dev/null 2>&1 || true
+                [ -d "$DIR" ] || continue
+                MTMP=$(mktemp -d /tmp/td_build_merge.XXXXXX)
+                cp "$FIX_FILE" "$MTMP/fix.tox"
+                WINEPREFIX="$WINEPREFIX" wine64 "$TOE_EXP" "z:${MTMP}/fix.tox" >/dev/null 2>&1 || true
+                [ -d "$MTMP/fix.tox.dir" ] && cp -rf "$MTMP/fix.tox.dir/"* "$DIR/" 2>/dev/null
+                rm -rf "$MTMP"
+                for entry in "${FIX_ENTS[@]}"; do echo "$entry" >> "$TOC"; done 2>/dev/null
+                WINEPREFIX="$WINEPREFIX" wine64 "$TOE_COL" "$W" >/dev/null 2>&1 || true
+                rm -rf "$DIR" "$TOC"
+            done
+        done
+        rm -rf "$FIX_TMP"
     fi
 }
 
 package() {
-    cd "${srcdir}"
     local RD="${srcdir}/TouchDesigner-Linux-${pkgver}" P="/opt/touchdesigner"
+
+    # ── Install Wine runner ──
     msg2 "Installing Soda Wine..."
-    mkdir -p "${pkgdir}${P}/wine" && cp -r soda-wine/* "${pkgdir}${P}/wine/" >/dev/null 2>&1
+    mkdir -p "${pkgdir}${P}/wine"
+    cp -r "${srcdir}/soda-wine/"* "${pkgdir}${P}/wine/" >/dev/null 2>&1
+
+    # ── Install TouchDesigner ──
     msg2 "Installing TouchDesigner..."
     mkdir -p "${pkgdir}${P}/td"
-    if [ -d td/app ]; then cp -r td/app/* "${pkgdir}${P}/td/" >/dev/null 2>&1
-    else cp -r td/* "${pkgdir}${P}/td/" >/dev/null 2>&1; fi
-    [ -d td-commonappdata ] && { mkdir -p "${pkgdir}${P}/data/ProgramData"; cp -r td-commonappdata/* "${pkgdir}${P}/data/ProgramData/" >/dev/null 2>&1; }
+    if [ -d "${srcdir}/td/app" ]; then
+        cp -r "${srcdir}/td/app/"* "${pkgdir}${P}/td/" >/dev/null 2>&1
+    else
+        cp -r "${srcdir}/td/"* "${pkgdir}${P}/td/" >/dev/null 2>&1
+    fi
+    if [ -d "${srcdir}/td-commonappdata" ]; then
+        mkdir -p "${pkgdir}${P}/data/ProgramData"
+        cp -r "${srcdir}/td-commonappdata/"* "${pkgdir}${P}/data/ProgramData/" >/dev/null 2>&1
+    fi
+
+    # ── Install DXVK ──
     msg2 "Installing DXVK..."
-    mkdir -p "${pkgdir}${P}/dxvk" && cp -r dxvk/* "${pkgdir}${P}/dxvk/" >/dev/null 2>&1
-    install -Dm755 winetricks "${pkgdir}${P}/winetricks"
+    mkdir -p "${pkgdir}${P}/dxvk"
+    cp -r "${srcdir}/dxvk/"* "${pkgdir}${P}/dxvk/" >/dev/null 2>&1
+
+    # ── Install winetricks ──
+    install -Dm755 "${srcdir}/winetricks" "${pkgdir}${P}/winetricks"
+
+    # ── Pre-made Wine prefix ──
+    msg2 "Packaging pre-made Wine prefix..."
+    mkdir -p "${pkgdir}${P}/default-prefix"
+    cp -r "${srcdir}/prefix-template/"* "${pkgdir}${P}/default-prefix/" >/dev/null 2>&1
+
+    # ── Font fix ──
+    if [ -f "${RD}/Assets/wine_ui_fixes.tox" ]; then
+        install -Dm644 "${RD}/Assets/wine_ui_fixes.tox" "${pkgdir}${P}/wine_ui_fixes.tox"
+    fi
+
+    # ── Backups dir ──
     mkdir -p "${pkgdir}${P}/backups" && chmod 777 "${pkgdir}${P}/backups"
-    [ -d prefix-template ] && { msg2 "Packaging pre-made Wine prefix..."; mkdir -p "${pkgdir}${P}/default-prefix"; cp -r prefix-template/* "${pkgdir}${P}/default-prefix/" >/dev/null 2>&1; }
-    { echo "TouchDesigner ${_td_ver}"; echo "Soda Wine ${_soda_version}"; echo "DXVK ${_dxvk_version}"; } > "${pkgdir}${P}/VERSION"
 
-    msg2 "Creating wrapper..."
-    mkdir -p "${pkgdir}${P}/app"
-    cat > "${pkgdir}${P}/app/touchdesigner-wrapper.sh" << WRAPPER
-#!/bin/bash
-P="/opt/touchdesigner"
-WINE="\${P}/wine/bin/wine64"
-WINE_PREFIX="\${HOME}/.local/share/touchdesigner-linux/prefix"
-export WINEDLLOVERRIDES="mscoree="
-export WINEDEBUG="fixme-all,warn-all"
-export PATH="\${P}/wine/bin:\${PATH}"
-export LD_LIBRARY_PATH="\${P}/wine/lib:\${P}/wine/lib64:\${LD_LIBRARY_PATH:-}"
+    # ── Version file ──
+    {
+        echo "TouchDesigner ${_td_ver}"
+        echo "Soda Wine ${_soda_version}"
+        echo "DXVK ${_dxvk_version}"
+    } > "${pkgdir}${P}/VERSION"
 
-mkdir -p "\$(dirname "\${WINE_PREFIX}")"
+    # ── Launcher Python script ──
+    msg2 "Installing launcher..."
+    install -Dm755 "${srcdir}/touchdesigner-launcher.py" "${pkgdir}${P}/app/touchdesigner-launcher.py"
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -sf "${P}/app/touchdesigner-launcher.py" "${pkgdir}/usr/bin/touchdesigner"
 
-if [ ! -f "\${WINE_PREFIX}/drive_c/windows/system.reg" ] && [ -d "\${P}/default-prefix" ]; then
-    echo "TouchDesigner - Setting up..."
-    mkdir -p "\${WINE_PREFIX}" && cp -r "\${P}/default-prefix/"* "\${WINE_PREFIX}/" 2>/dev/null
-fi
+    # ── td-install ──
+    if [ -f "${RD}/td-install" ]; then
+        install -Dm755 "${RD}/td-install" "${pkgdir}/usr/bin/td-install"
+        mkdir -p "${pkgdir}/usr/share/touchdesigner-linux"
+        cp -r "${RD}/td_lib" "${pkgdir}/usr/share/touchdesigner-linux/" >/dev/null 2>&1
+        cp -f "${P}/wine_ui_fixes.tox" "${pkgdir}/usr/share/touchdesigner-linux/wine_ui_fixes.tox" 2>/dev/null || true
+    fi
 
-if [ -d "\${P}/data/ProgramData" ]; then
-    mkdir -p "\${WINE_PREFIX}/drive_c/ProgramData"
-    cp -r "\${P}/data/ProgramData/"* "\${WINE_PREFIX}/drive_c/ProgramData/" 2>/dev/null
-fi
-
-# If .toe file passed: patch it with Python td_lib, then open with TD
-if [ -f "\$1" ] && [[ "\$1" == *.toe ]]; then
-    python3 -c "
-import sys, os
-sys.path.insert(0, '/usr/share/touchdesigner-linux')
-os.environ['WINE'] = '\${P}/wine/bin/wine64'
-os.environ['WINEPREFIX'] = '\${WINE_PREFIX}'
-os.environ['WINEDLLOVERRIDES'] = 'mscoree='
-# Patch the .toe file
-TOE_EXPAND = os.path.join("/opt/touchdesigner", "td/bin/toeexpand.exe")
-TOE_COLLAPSE = os.path.join("/opt/touchdesigner", "td/bin/toecollapse.exe")
-FIX_FILE = "/opt/touchdesigner/wine_ui_fixes.tox"
-import subprocess, tempfile, shutil
-if os.path.exists(TOE_EXPAND) and os.path.exists(TOE_COLLAPSE) and os.path.exists(FIX_FILE):
-    toe = sys.argv[1]
-    toe_dir = toe + '.dir'
-    toe_toc = toe + '.toc'
-    shutil.rmtree(toe_dir, True); shutil.rmtree(toe_toc, True)
-    subprocess.run(['wine64', TOE_EXPAND, 'z:' + toe], capture_output=True, env=os.environ)
-    needs = not os.path.isdir(os.path.join(toe_dir, 'wine_ui_fixes'))
-    shutil.rmtree(toe_dir, True); shutil.rmtree(toe_toc, True)
-    if needs:
-        subprocess.run(['wine64', TOE_EXPAND, 'z:' + toe], capture_output=True, env=os.environ)
-        if os.path.isdir(toe_dir):
-            t = tempfile.mkdtemp(prefix='td_patch_')
-            shutil.copy2(FIX_FILE, os.path.join(t, 'fix.tox'))
-            subprocess.run(['wine64', TOE_EXPAND, 'z:' + os.path.join(t, 'fix.tox')], capture_output=True, env=os.environ)
-            fix_dir = os.path.join(t, 'fix.tox.dir')
-            if os.path.isdir(fix_dir):
-                for f in os.listdir(fix_dir):
-                    dst = os.path.join(toe_dir, f)
-                    if os.path.isdir(os.path.join(fix_dir, f)):
-                        shutil.copytree(os.path.join(fix_dir, f), dst, dirs_exist_ok=True)
-                    else:
-                        shutil.copy2(os.path.join(fix_dir, f), dst)
-            shutil.rmtree(t, True)
-            subprocess.run(['wine64', TOE_COLLAPSE, 'z:' + toe], capture_output=True, env=os.environ)
-            shutil.rmtree(toe_dir, True); shutil.rmtree(toe_toc, True)
-" "$1" 2>/dev/null || true
-fi
-
-TD_EXE="" && for f in "\${P}/td/bin/TouchDesigner.exe" "\${P}/td/TouchDesigner.exe"; do [ -f "\$f" ] && { TD_EXE="\$f"; break; }; done
-[ -z "\$TD_EXE" ] && TD_EXE=\$(find "\${P}/td" -name 'TouchDesigner*.exe' -type f 2>/dev/null | head -1)
-[ -z "\$TD_EXE" ] && { echo "Error: TouchDesigner not found"; exit 1; }
-WINEPREFIX="\${WINE_PREFIX}" "\${WINE}" "\${TD_EXE}" "\$@"
-WRAPPER
-    chmod 755 "${pkgdir}${P}/app/touchdesigner-wrapper.sh"
-    mkdir -p "${pkgdir}/usr/bin" && ln -s "${P}/app/touchdesigner-wrapper.sh" "${pkgdir}/usr/bin/touchdesigner"
-
+    # ── Desktop entry ──
     msg2 "Creating desktop entry..."
     mkdir -p "${pkgdir}/usr/share/applications"
     cat > "${pkgdir}/usr/share/applications/touchdesigner.desktop" << DESKTOP
@@ -205,39 +194,68 @@ WRAPPER
 Version=1.0
 Type=Application
 Name=TouchDesigner ${_td_ver}
-Comment=Visual development platform
-Exec=${P}/app/touchdesigner-wrapper.sh %F
-Icon=/usr/share/icons/hicolor/scalable/apps/touchdesigner.svg
+Comment=Real-time visual development platform
+Exec=${P}/app/touchdesigner-launcher.py
+Icon=touchdesigner
 Terminal=false
 Categories=Development;Graphics;
-MimeType=application/x-touchdesigner-toe;application/x-touchdesigner-tox;
 StartupNotify=true
 DESKTOP
 
+    # ── File handler desktop entry (for double-click on .toe) ──
+    cat > "${pkgdir}/usr/share/applications/touchdesigner-file.desktop" << HANDLER
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=TouchDesigner
+Comment=Open .toe project
+Exec=${P}/app/touchdesigner-launcher.py %u
+Icon=touchdesigner
+NoDisplay=true
+MimeType=application/x-touchdesigner-toe;application/x-touchdesigner-tox;
+StartupNotify=true
+Categories=Graphics;
+HANDLER
+
+    # ── MIME types ──
+    msg2 "Installing MIME types..."
     mkdir -p "${pkgdir}/usr/share/mime/packages"
     cat > "${pkgdir}/usr/share/mime/packages/touchdesigner.xml" << MIME
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-    <mime-type type="application/x-touchdesigner-toe"><comment>TouchDesigner Project File</comment><glob pattern="*.toe"/><icon name="touchdesigner-toe"/></mime-type>
-    <mime-type type="application/x-touchdesigner-tox"><comment>TouchDesigner Component File</comment><glob pattern="*.tox"/><icon name="touchdesigner-tox"/></mime-type>
+    <mime-type type="application/x-touchdesigner-toe">
+        <comment>TouchDesigner project file</comment>
+        <glob pattern="*.toe" priority="100"/>
+        <icon name="touchdesigner-toe"/>
+    </mime-type>
+    <mime-type type="application/x-touchdesigner-tox">
+        <comment>TouchDesigner component file</comment>
+        <glob pattern="*.tox" priority="100"/>
+        <icon name="touchdesigner-tox"/>
+    </mime-type>
 </mime-info>
 MIME
 
+    # ── Icons ──
     msg2 "Installing icons..."
     if [ -d "${RD}/Assets/Icons" ]; then
-        install -Dm644 "${RD}/Assets/Icons/TouchDesigner.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/touchdesigner.svg"
-        install -Dm644 "${RD}/Assets/Icons/TouchDesigner-toe.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/touchdesigner-toe.svg"
-        install -Dm644 "${RD}/Assets/Icons/TouchDesigner-tox.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/touchdesigner-tox.svg"
+        # App icon in apps/ (used by .desktop files)
+        install -Dm644 "${RD}/Assets/Icons/TouchDesigner.svg" \
+            "${pkgdir}/usr/share/icons/hicolor/scalable/apps/touchdesigner.svg"
+
+        # MIME icons in mimetypes/ (freedesktop spec)
+        install -Dm644 "${RD}/Assets/Icons/TouchDesigner-toe.svg" \
+            "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/touchdesigner-toe.svg"
+        install -Dm644 "${RD}/Assets/Icons/TouchDesigner-tox.svg" \
+            "${pkgdir}/usr/share/icons/hicolor/scalable/mimetypes/touchdesigner-tox.svg"
+
+        # Also copy to apps/ as fallback
+        install -Dm644 "${RD}/Assets/Icons/TouchDesigner-toe.svg" \
+            "${pkgdir}/usr/share/icons/hicolor/scalable/apps/touchdesigner-toe.svg"
+        install -Dm644 "${RD}/Assets/Icons/TouchDesigner-tox.svg" \
+            "${pkgdir}/usr/share/icons/hicolor/scalable/apps/touchdesigner-tox.svg"
     fi
 
-    msg2 "Installing td-install..."
-    if [ -f "${RD}/td-install" ]; then
-        install -Dm755 "${RD}/td-install" "${pkgdir}/usr/bin/td-install"
-        mkdir -p "${pkgdir}/usr/share/touchdesigner-linux"
-        cp -r "${RD}/td_lib" "${pkgdir}/usr/share/touchdesigner-linux/" >/dev/null 2>&1
-        if [ -f "${RD}/Assets/wine_ui_fixes.tox" ]; then
-            install -Dm644 "${RD}/Assets/wine_ui_fixes.tox" "${pkgdir}${P}/wine_ui_fixes.tox"
-            install -Dm644 "${RD}/Assets/wine_ui_fixes.tox" "${pkgdir}/usr/share/touchdesigner-linux/wine_ui_fixes.tox"
-        fi
-    fi
+    # ── Default file associations via post-install hook (.install) ──
+    msg2 "File associations will be set on install via xdg-mime"
 }
