@@ -1,6 +1,6 @@
 # Maintainer: Valentin Lukyanets <valikluks95@gmail.com>
 pkgname=draind
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Linux power management daemon inspired by Windows power profiles"
 arch=('x86_64')
