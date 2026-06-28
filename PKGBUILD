@@ -1,7 +1,7 @@
 # Maintainer: dalmatheo <aur@dalmatheo.dev>
 
 pkgname=creamlinux-installer-bin
-pkgver=1.5.5
+pkgver=1.5.6
 pkgrel=3
 pkgdesc="CreamLinux is a GUI application for Linux that simplifies the management of DLC IDs in Steam games. It provides a user-friendly interface to install and configure CreamAPI (for native Linux games) and SmokeAPI (for Windows games running through Proton)."
 arch=('x86_64')
@@ -28,7 +28,7 @@ conflicts=("creamlinux")
 # !debug is used because this is a pre-compiled binary; we cannot generate debug symbols.
 options=('!debug')
 
-sha256sums=('413ab8f14cca7a27ebd505107e84a4d8a62ce11c78e6f8ae161436ac2c54906f'
+sha256sums=('878b4dda10e3168b2457738352829c3238bb1151f0e87120ca0037cd187cefc8'
             '3acdaff189f797ae7b160a1e1d32081ba141599afc5a4210eba78ff182003977')
 
 source=(
