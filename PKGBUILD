@@ -1,7 +1,7 @@
 # Maintainer: Shira Nguyen <sn3446409@gmail.com>
 
 pkgname=qbit-manage-desktop-bin
-_srcver="v4.9.0"
+_srcver="v4.8.1"
 pkgver="${_srcver#v}"
 pkgrel=1
 pkgdesc="GUI application for qBit_manage, a program used to manage your qBittorrent instance."
@@ -27,7 +27,7 @@ provides=('qbit-manage-desktop' 'qbit-manage')
 conflicts=('qbit-manage-desktop')
 source=("${pkgname}-${pkgver}.deb::${url}releases/download/${_srcver}/qBit.Manage_${pkgver}_amd64-desktop-installer.deb"
         "qbit-manage-license::https://raw.githubusercontent.com/StuffAnThings/qbit_manage/refs/heads/master/LICENSE")
-sha256sums=('5c928b1bea2e0b1c2755994102eb9e205fd19fe55c002fdde5174d129bf8cda1'
+sha256sums=('a4bef936d575b014a21397c273e086d8ddfadee9a0b8e70b275f1535a7d5fd49'
             'SKIP')
 
 prepare() {

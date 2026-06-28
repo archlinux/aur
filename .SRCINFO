@@ -1,6 +1,6 @@
 pkgbase = qbit-manage-desktop-bin
 	pkgdesc = GUI application for qBit_manage, a program used to manage your qBittorrent instance.
-	pkgver = 4.9.0
+	pkgver = 4.8.1
 	pkgrel = 1
 	url = https://github.com/StuffAnThings/qbit_manage/
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = qbit-manage-desktop-bin
 	provides = qbit-manage
 	conflicts = qbit-manage-desktop
 	options = !strip
-	source = qbit-manage-desktop-bin-4.9.0.deb::https://github.com/StuffAnThings/qbit_manage/releases/download/v4.9.0/qBit.Manage_4.9.0_amd64-desktop-installer.deb
+	source = qbit-manage-desktop-bin-4.8.1.deb::https://github.com/StuffAnThings/qbit_manage/releases/download/v4.8.1/qBit.Manage_4.8.1_amd64-desktop-installer.deb
 	source = qbit-manage-license::https://raw.githubusercontent.com/StuffAnThings/qbit_manage/refs/heads/master/LICENSE
-	sha256sums = 5c928b1bea2e0b1c2755994102eb9e205fd19fe55c002fdde5174d129bf8cda1
+	sha256sums = a4bef936d575b014a21397c273e086d8ddfadee9a0b8e70b275f1535a7d5fd49
 	sha256sums = SKIP
 
 pkgname = qbit-manage-desktop-bin
