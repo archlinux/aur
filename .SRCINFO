@@ -1,6 +1,6 @@
 pkgbase = inkscape-git
 	pkgdesc = An Open Source vector graphics editor, using SVG file format, from git master
-	pkgver = 1.5.0.r1200.f0abf76788
+	pkgver = 1.5.0.r1658.4f86bb1ed2
 	pkgrel = 1
 	epoch = 5
 	url = https://gitlab.com/inkscape
@@ -61,6 +61,7 @@ pkgbase = inkscape-git
 	provides = inkscape
 	conflicts = inkscape
 	source = inkscape.git::git+https://gitlab.com/inkscape/inkscape.git#branch=master
+	source = poppler26.patch::https://gitlab.com/inkscape/inkscape/-/merge_requests/7968.patch
 	source = extensions-gcodetools::git+https://gitlab.com/inkscape/extras/extensions-gcodetools
 	source = extension-manager::git+https://gitlab.com/inkscape/extras/extension-manager
 	source = inkscape-import-clipart::git+https://gitlab.com/inkscape/extras/inkscape-import-clipart
@@ -71,6 +72,7 @@ pkgbase = inkscape-git
 	source = themes::git+https://gitlab.com/inkscape/themes
 	source = libcroco::git+https://gitlab.com/inkscape/libcroco
 	sha1sums = SKIP
+	sha1sums = 0bc124541444fc8aa9dafd8d83306ea8f45c20bb
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP

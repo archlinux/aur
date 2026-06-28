@@ -14,7 +14,7 @@ _fragment="${FRAGMENT:-#branch=master}"
 : ${BITMAP_BACKEND:=imagemagick} # select imagemagick implementation {imagemagick,graphicsmagick}
 
 pkgname=inkscape-git
-pkgver=1.5.0.r1200.f0abf76788
+pkgver=1.5.0.r1658.4f86bb1ed2
 pkgrel=1
 epoch=5
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
@@ -78,7 +78,9 @@ optdepends=(
 provides=('inkscape')
 conflicts=('inkscape')
 source=("inkscape.git::git+$url/inkscape.git${_fragment}")
+source+=("poppler26.patch::https://gitlab.com/inkscape/inkscape/-/merge_requests/7968.patch")
 sha1sums=('SKIP'
+          '0bc124541444fc8aa9dafd8d83306ea8f45c20bb'
           'SKIP'
           'SKIP'
           'SKIP'
@@ -91,9 +93,14 @@ sha1sums=('SKIP'
 _gitname="inkscape.git"
 
 prepare() {
-  cd  "$_gitname"
   prepare_submodule
+  mapfile -t patches < <(grep -Po '^.*?(patch|diff)(?=::|$)' < <(printf "${srcdir}/%s\n" "${source[@]}"))
+  for patch in "${patches[@]}"; do
+    msg2  "apply ${patch##*/}..."
+    git -C "${srcdir}"/$_gitname apply -v "${patches[@]}"
+  done
 # fix lib2geom header location
+  cd  "$_gitname"
   sed -E 's:#include "(bezier-utils.h|sbasis-to-bezier.h)":#include <2geom/\1>:' -i src/ui/tools/pencil-tool.cpp
 }
 
