@@ -7,7 +7,7 @@
 # publish-aur 任务）在每次 desktop-v* tag 发布时自动改写并推送到 AUR。
 pkgname=publishport-bin
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="让线上 AI 用你本机真实登录环境，一键发布内容到小红书/知乎/微博/B站/Twitter 等平台（GUI 客户端）"
 arch=('x86_64')
 url="https://publishport.app"
@@ -30,14 +30,19 @@ package() {
   bsdtar -xf "publishport-${pkgver}-amd64.deb"
   bsdtar -xf data.tar.*
 
-  # 二进制与 resources/ 同目录安装到 /usr/lib/publishport：Tauri 在非 /usr/bin
-  # 场景下按「可执行文件同级目录」解析 resources（agent.js），这样无需依赖
-  # productName 启发式即可稳定找到捆绑的 agent。/usr/bin 放符号链接做命令入口。
+  # 二进制装到 /usr/lib/publishport，/usr/bin 放符号链接做命令入口。
   install -Dm755 "usr/bin/desktop" "$pkgdir/usr/lib/publishport/publishport"
-  install -Dm644 "usr/lib/PublishPort/resources/agent.js" \
-    "$pkgdir/usr/lib/publishport/resources/agent.js"
   install -dm755 "$pkgdir/usr/bin"
   ln -s "/usr/lib/publishport/publishport" "$pkgdir/usr/bin/publishport"
+
+  # agent.js 必须放在 Tauri 实际解析的资源目录。Tauri 在 Linux 下按 productName
+  # 把资源目录定位到 /usr/lib/PublishPort（大写），与可执行文件实际所在目录无关
+  # （即使经 /usr/bin 符号链接启动也一样）——官方 .deb 正是放在这里。早先误以为
+  # 它按「可执行文件同级目录」解析、装进了 /usr/lib/publishport/resources（小写），
+  # 结果 Tauri 找不到 agent 入口、回退到构建机源码路径（/home/runner/...），
+  # bun 启动即失败，GUI 永远卡在「本地执行器连接中…」。保持与官方 .deb 一致。
+  install -Dm644 "usr/lib/PublishPort/resources/agent.js" \
+    "$pkgdir/usr/lib/PublishPort/resources/agent.js"
 
   # 桌面入口：上游 .deb 用通用名 desktop，这里改用 publishport，避免命名污染。
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/publishport.desktop" <<'EOF'
