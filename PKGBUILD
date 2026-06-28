@@ -20,15 +20,13 @@ package() {
   install -dm755 "${pkgdir}/usr/share/polkit-1/actions"
   install -dm755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
 
-  install -m755 "${srcdir}/ArchPerf Pro-${pkgver}.AppImage" "${pkgdir}/usr/share/archperf/"
-  install -m755 "${srcdir}/setup" "${pkgdir}/usr/share/archperf/"
-  install -m644 "${srcdir}/archperf-pro.desktop" "${pkgdir}/usr/share/applications/"
+  install -m755 "${srcdir}/archperf-pro-${pkgver}.AppImage" "${pkgdir}/usr/share/archperf/ArchPerf Pro-${pkgver}.AppImage"
+  install -m755 "${srcdir}/setup" "${pkgdir}/usr/share/archperf/setup"
+  install -m644 "${srcdir}/archperf-pro.desktop" "${pkgdir}/usr/share/applications/archperf-pro.desktop"
 
-  cat > "${pkgdir}/usr/bin/archperf-pro" << 'EOF'
-#!/usr/bin/env bash
-exec /usr/share/archperf/"ArchPerf Pro-${pkgver}.AppImage" --disable-gpu --no-sandbox "$@"
-EOF
+  echo '#!/usr/bin/env bash' > "${pkgdir}/usr/bin/archperf-pro"
+  echo 'exec "/usr/share/archperf/ArchPerf Pro-${pkgver}.AppImage" --disable-gpu --no-sandbox "$@"' >> "${pkgdir}/usr/bin/archperf-pro"
   chmod +x "${pkgdir}/usr/bin/archperf-pro"
 
-  ln -sf /usr/share/archperf/icon.png "${pkgdir}/usr/share/icons/hicolor/scalable/apps/archperf.png 2>/dev/null || true
+  install -Dm644 "${srcdir}/archperf-pro.desktop" "${pkgdir}/usr/share/applications/archperf-pro.desktop"
 }
