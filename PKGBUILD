@@ -10,16 +10,15 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 _pkgname="wezterm"
 pkgname="$_pkgname-git"
 pkgdesc="A GPU-accelerated cross-platform terminal emulator and multiplexer"
-pkgver=20240203.110809.r768.g6a493f8
-pkgrel=1
-url="https://github.com/wez/wezterm"
+pkgver=20240203.110809.r849.ge46fe38
+pkgrel=2
+url="https://github.com/wezterm/wezterm"
 license=("MIT")
 arch=("x86_64" "i686")
 
 depends=(
-  'bash'
   'fontconfig'
-  'glib2'
+  'libgit2'
   'libssh2'
   'libx11'
   'libxcb'
@@ -40,60 +39,25 @@ makedepends=(
   'python'
 )
 optdepends=(
-  'python-gobject: for nautilus extension'
+  'ncurses: for wezterm terminfo database'
+  'noto-fonts-emoji: for default fonts'
+  'python-nautilus: WezTerm context menu in Nautilus'
+  'ttf-nerd-fonts-symbols-mono: for default fonts'
 )
 
-provides=("$_pkgname=${pkgver%.g*}")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 options=('!lto')
 
-_source_main() {
-  _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git")
-  sha256sums+=('SKIP')
-}
-
-_source_wezterm() {
-  local _sources_add=(
-    'freetype.freetype2'::'git+https://github.com/freetype/freetype2.git'::'deps/freetype/freetype2'
-    'glennrp.libpng'::'git+https://github.com/glennrp/libpng.git'::'deps/freetype/libpng'
-    'harfbuzz'::'git+https://github.com/harfbuzz/harfbuzz.git'::'deps/harfbuzz/harfbuzz'
-    'madler.zlib'::'git+https://github.com/madler/zlib.git'::'deps/freetype/zlib'
-  )
-
-  local _p _idx _src _sm_prep _sm_func
-  for _p in ${_sources_add[@]}; do
-    _idx="${_p%%::*}"
-    _sm_prep+=("${_idx}::${_p##*::}")
-    _src="${_p%::*}"
-    source+=("$_src")
-    sha256sums+=('SKIP')
-  done
-
-  eval "_prepare_wezterm() (
-    cd \"\$srcdir/\$_pkgsrc\"
-    local _submodules=(${_sm_prep[@]})
-    _submodule_update
-  )"
-}
-
-_source_main
-_source_wezterm
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 prepare() {
-  _submodule_update() {
-    local _module
-    for _module in "${_submodules[@]}"; do
-      git submodule init "${_module##*::}"
-      git submodule set-url "${_module##*::}" "$srcdir/${_module%%::*}"
-      git -c protocol.file.allow=always submodule update "${_module##*::}"
-    done
-  }
-
-  _run_if_exists _prepare_wezterm
-
   cd "$_pkgsrc"
+  git submodule update --init --recursive --depth=1
+
   sed -i 's/"vendored-fonts", //' wezterm-gui/Cargo.toml
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -111,7 +75,7 @@ build() {
 
 check() {
   cd "$_pkgsrc"
-  LIBSSH2_SYS_USE_PKG_CONFIG=1 cargo test --frozen -- --skip "e2e::sftp"
+  LIBSSH2_SYS_USE_PKG_CONFIG=1 cargo test --frozen --release -- --skip "e2e::sftp"
 }
 
 package() {
@@ -134,10 +98,4 @@ package() {
   install -Dm644 assets/shell-integration/wezterm.sh "$pkgdir/etc/profile.d/wezterm.sh"
 
   install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
-}
-
-_run_if_exists() {
-  if declare -F "$1" > /dev/null; then
-    eval "$1"
-  fi
 }
