@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Pear Desktop
+Exec=pear-desktop
+Terminal=false
+Type=Application
+Icon=com.github.th-ch.youtube-music
+StartupWMClass=com.github.th-ch.youtube-music
+Comment=YouTube Music Desktop App - including custom plugins
+Categories=AudioVideo;

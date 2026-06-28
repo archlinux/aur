@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pear-desktop-git
-_app_id=com.github.th_ch.youtube_music
+_app_id=com.github.th-ch.youtube-music
 pkgver=3.12.0.r1.g0bf89fc
-pkgrel=1
+pkgrel=2
 _nodeversion=24
 _electronversion=42
-pkgdesc="Extension for music player"
+pkgdesc="YouTube Music Desktop App - including custom plugins"
 arch=('x86_64')
 url="https://github.com/pear-devs/pear-desktop"
 license=('MIT')
@@ -15,6 +15,7 @@ depends=(
 )
 makedepends=(
   'git'
+  'imagemagick'
   'nvm'
   'pnpm'
 )
@@ -26,7 +27,7 @@ source=('git+https://github.com/pear-devs/pear-desktop.git'
         "${_app_id}.desktop")
 sha256sums=('SKIP'
             'bf77b9390f6657d6b58613600cc76178da9ffa97cce55b8d0ba50b4c2ab7f996'
-            '19a3c15cb705d56c205bdcd3d473545226b641952ed87677afd5b6c70a5573b4')
+            'dd4bcc23a6c9b76223b35f035b85dd38db409633ab596d46a0c6f7517ecfe7cf')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -66,6 +67,11 @@ build() {
   pnpm build
   pnpm electron-builder --linux dir \
     ${dist} -c.electronDist=${electronDist} -c.electronVersion=${electronVer}
+
+  # Generate icons
+    for i in 16 24 32 48 64 128 256 512 1024; do
+      magick "assets/icon.png" -resize "${i}x${i}" "assets/${_app_id}_${i}x${i}.png"
+    done
 }
 
 package() {
@@ -73,8 +79,12 @@ package() {
   install -Dm644 pack/linux-unpacked/resources/app.asar -t "$pkgdir/usr/lib/${pkgname%-git}/"
   cp -a pack/linux-unpacked/resources/app.asar.unpacked "$pkgdir/usr/lib/${pkgname%-git}"
 
+  for i in 16 24 32 48 64 128 256 512 1024; do
+    install -Dm644 "assets/${_app_id}_${i}x${i}.png" \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${_app_id}.png"
+  done
+
   install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
   install -Dm644 "$srcdir/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
-  install -Dm644 assets/icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_app_id}.png"
   install -Dm644 license -t "$pkgdir/usr/share/licenses/${pkgname%-git}/"
 }
