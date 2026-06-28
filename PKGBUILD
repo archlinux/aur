@@ -5,15 +5,17 @@
 # Contributor: Igor Petrov
 # Contributor: Jiawen Geng
 
-pkgname=github-desktop-plus
-pkgver=3.5.13.3
+
+_pkgname='desktop-plus'
+pkgname="github-desktop-plus"
+pkgver=3.6.1.0
 pkgrel=1
-pkgdesc="Fork of GitHub Desktop with extra features and improvements."
+pkgdesc="GitHub Desktop fork with extra features and improvements."
 arch=('x86_64' 'aarch64')
-url="https://github.com/pol-rivero/github-desktop-plus"
+url="https://github.com/desktop-plus/desktop-plus"
 license=('MIT')
-provides=($pkgname)
-conflicts=($pkgname)
+provides=(${_pkgname})
+conflicts=(${_pkgname})
 depends=(curl
          libcurl-gnutls
          git
@@ -32,18 +34,18 @@ makedepends=(python-setuptools
              util-linux
              xorg-server-xvfb
              yarn)
-source=("$pkgname::git+https://github.com/pol-rivero/github-desktop-plus.git#tag=v$pkgver"
+source=("$pkgname::git+https://github.com/desktop-plus/desktop-plus.git#tag=v$pkgver"
         'git+https://github.com/github/gemoji.git'
         'git+https://github.com/github/gitignore.git'
         'git+https://github.com/github/choosealicense.com.git'
         'launch-app.sh'
-        "$pkgname.desktop")
+        "${_pkgname}.desktop")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '2fb026db6ac25ade0535ec1fffec415fd1d023fbfd28b452f29523e51921083a'
-            '93847b4cc1e967eae041284e9c7ed3d1a48df38482ff89b681ede79de03e342e')
+            'ccf8e189b15a46a00363c7a40299762ef313827aa4809140f7940c5801db2e27'
+            'b9c24de9a78b4e4d444cb0ba38817b13acd87c514dd64dd30fce2593e34a11cf')
 
 _deobfuscate() {
     echo "$1" | rev | tr -d '@'
@@ -79,7 +81,7 @@ build() {
 }
 
 package() {
-    INSTALL_DIR="$pkgdir/opt/$pkgname"
+    INSTALL_DIR="$pkgdir/opt/${_pkgname}"
 
     cd "$pkgname"
     install -d "$INSTALL_DIR"
@@ -88,17 +90,17 @@ package() {
         aarch64) suffix="arm64" ;;
         *) echo "Unsupported architecture: $CARCH"; exit 1 ;;
     esac
-    cp -r --preserve=mode "dist/github-desktop-plus-linux-$suffix/"* "$INSTALL_DIR/"
+    cp -r --preserve=mode "dist/desktop-plus-linux-$suffix/"* "$INSTALL_DIR/"
 
     cd "$INSTALL_DIR/resources/app/static/logos"
-    install -Dm0644 "1024x1024.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/$pkgname.png"
-    install -Dm0644 "512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
-    install -Dm0644 "256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+    install -Dm0644 "1024x1024.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
+    install -Dm0644 "512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+    install -Dm0644 "256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
 
-    install -Dm755 "$srcdir/launch-app.sh" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "$srcdir/launch-app.sh" "$pkgdir/usr/bin/${_pkgname}"
 
-    chmod +x "$INSTALL_DIR/resources/app/static/github"
-    ln -s "/opt/$pkgname/resources/app/static/github" "$pkgdir/usr/bin/github-desktop-plus-cli"
+    chmod +x "$INSTALL_DIR/resources/app/static/desktop-plus-cli"
+    ln -s "/opt/${_pkgname}/resources/app/static/desktop-plus-cli" "$pkgdir/usr/bin/desktop-plus-cli"
 
-    install -Dm0644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm0644 "$srcdir/${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 }
