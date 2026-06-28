@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=ktailctl
-pkgver=0.21.5
+pkgver=0.22.0
 pkgrel=1
 arch=(x86_64 aarch64)
 url='https://github.com/f-koehler/KTailctl'
@@ -15,6 +15,7 @@ depends=(
   kdbusaddons
   kguiaddons
   ki18n
+  kiconthemes
   kirigami
   kirigami-addons
   knotifications
@@ -32,7 +33,6 @@ makedepends=(
   extra-cmake-modules
   git
   go
-  nlohmann-json
 )
 
 # use any of:
@@ -45,10 +45,10 @@ validpgpkeys=(
 
 # git tag is used by the cmake script to determine app version
 source=(git+$url.git#tag=v$pkgver?signed)
-sha256sums=('8a4f88156e9a7a2dea4c02c72c39faef87907194f4ce2b1987cd32f0dc09e6dd')
+sha256sums=('cec7b6cb239d1f5f0390b964f154246591d54328977b290db00a2b13fdd928c8')
 
 prepare() {
-  cd KTailctl/src/wrapper
+  cd KTailctl/src/tailscale/wrapper
   go mod vendor
 }
 
