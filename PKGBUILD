@@ -1,7 +1,7 @@
 # Maintainer: Bryan Rafael <brthy467@gmail.com>
 
 pkgname=synca-bin
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=5
 pkgdesc="Simple, lightweight, open source file synchronization client (prebuilt AppImage)"
 arch=('x86_64')
