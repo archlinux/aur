@@ -1,8 +1,8 @@
 # Maintainer: Sergei Sokolov <mohterbaord at gmail dot com>
 
 pkgname=color-scheme-control
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.1.1
+pkgrel=1
 pkgdesc='Utility for color scheme toggling written in Go and extensible by Lua'
 arch=( 'x86_64' )
 _module_path="codeberg.org/mohterbaord/${pkgname}"
@@ -12,7 +12,7 @@ makedepends=( 'go' )
 depends=( 'systemd' )
 install="${pkgname}.install"
 source=( "${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz" )
-sha256sums=( '8cbf108489f78cf42950404e32de6fcee1b48a21fe011ca9c1bca00e1b8f1b48' )
+sha256sums=( 'c41818cf32feea43098de2ec008df1d8c45a756e4a5bc8904445b0e6c9bd82d2' )
 
 _binary_name=csctl
 
