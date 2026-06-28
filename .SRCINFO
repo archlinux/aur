@@ -1,0 +1,23 @@
+pkgbase = powershell-dsc
+	pkgdesc = DSCv3 is the latest iteration of Microsoft's Desired State Configuration platform.
+	pkgver = 3.2.2
+	pkgrel = 1
+	url = https://github.com/PowerShell/DSC
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = tree-sitter-cli
+	makedepends = nodejs
+	makedepends = protobuf
+	makedepends = powershell
+	depends = glibc
+	depends = libgcc
+	depends = bash
+	options = !lto
+	options = !debug
+	source = powershell-dsc::git+https://github.com/PowerShell/DSC#tag=v3.2.2
+	sha512sums = e6959738351f28c3dc58871c9ced225bb6b0bd1186f9602c2c56a9b6c051016517dbe29dd3688c5fc4acc27600fc648b1ad534f20082bf2df9843134c0780d9c
+	b2sums = c7b435ed73f40575e8515308a705a303850cb471d0d40f9cf8154020910150f0a89a2c9be8125ff6e3b19b15352f8790b4336549ab6ebf6df2216205dc2404f2
+
+pkgname = powershell-dsc

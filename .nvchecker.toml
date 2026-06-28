@@ -1,0 +1,5 @@
+[powershell]
+source = "github"
+github = "PowerShell/DSC"
+prefix = "v"
+use_latest_release = true
