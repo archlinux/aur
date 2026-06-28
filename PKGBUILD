@@ -8,7 +8,7 @@
 pkgname=xlibre-video-ati
 _pkgname=xf86-video-ati
 pkgver=25.0.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="XLibre ati video driver"
 arch=('x86_64')
