@@ -1,33 +1,37 @@
 # Maintainer: Lukas Grumlik (Rakosn1cek) <rakosn1cek@zohomail.eu>
 pkgname=oversight-git
-pkgver=0.5.6
-pkgrel=2
+pkgver=0.5.6.r0.g54321ab
+pkgrel=1
 pkgdesc="Security Intelligence & Static Audit Engine for local scripts and raw web links"
 arch=("x86_64")
 url="https://github.com/Rakosn1cek/oversight"
 license=("MIT")
 depends=("openssl")
-makedepends=("cargo")
-source=("https://github.com/Rakosn1cek/oversight/archive/v${pkgver}.tar.gz")
-sha256sums=('3d61b9b215c453f32fc0ab4c7135228f7a98edec756183ffe3b1fec2ed9272d7')
+makedepends=("cargo" "git")
+source=("oversight::git+https://github.com/Rakosn1cek/oversight.git")
+sha256sums=('SKIP')
 
-srcname="oversight-${pkgver}"
+pkgver() {
+  cd "oversight"
+  
+  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-\)*g//;s/-/./g'
+}
 
 prepare() {
-  cd "${srcname}"
+  cd "oversight"
   export CARGO_HOME="${srcdir}/cargo-home"
   
   cargo fetch
 }
 
 build() {
-  cd "${srcname}"
+  cd "oversight"
   export CARGO_HOME="${srcdir}/cargo-home"
   cargo build --frozen --release --all-features
 }
 
 package() {
-  cd "${srcname}"
+  cd "oversight"
   
   install -Dm755 "target/release/oversight" "${pkgdir}/usr/bin/oversight"
   

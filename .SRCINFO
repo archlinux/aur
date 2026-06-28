@@ -1,13 +1,14 @@
 pkgbase = oversight-git
 	pkgdesc = Security Intelligence & Static Audit Engine for local scripts and raw web links
-	pkgver = 0.5.6
-	pkgrel = 2
+	pkgver = 0.5.6.r0.g54321ab
+	pkgrel = 1
 	url = https://github.com/Rakosn1cek/oversight
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	makedepends = git
 	depends = openssl
-	source = https://github.com/Rakosn1cek/oversight/archive/v0.5.6.tar.gz
-	sha256sums = 3d61b9b215c453f32fc0ab4c7135228f7a98edec756183ffe3b1fec2ed9272d7
+	source = oversight::git+https://github.com/Rakosn1cek/oversight.git
+	sha256sums = SKIP
 
 pkgname = oversight-git
