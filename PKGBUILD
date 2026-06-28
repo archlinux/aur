@@ -11,8 +11,8 @@ conflicts=('sqlalchemy-lsp')
 
 source_x86_64=("${pkgname}-linux-x86_64::${url}/releases/download/v${pkgver}/sqlalchemy-lsp-linux-x86_64")
 source_aarch64=("${pkgname}-linux-aarch64::${url}/releases/download/v${pkgver}/sqlalchemy-lsp-linux-aarch64")
-sha256sums_x86_64=('c0c0aadba90bc72c8bce9de695b0383e2263a2ea7fd04a1fab93d69cc024b473')
-sha256sums_aarch64=('a9bbf14c85a81676b52b03449690d89d4285cb978940b9d7556c5c1c207a5ff5')
+sha256sums_x86_64=('42823851115ba292e2251f19bb2d1229f4e0a539d6d6c991b08a6c6f769c8037')
+sha256sums_aarch64=('831d56a2c6ae25ab70407b35fa96f97c557d8e540cc3b4575435d63c951e617c')
 
 package() {
     case "$CARCH" in
