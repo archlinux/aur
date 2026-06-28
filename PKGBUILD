@@ -8,8 +8,8 @@ license=("MIT")
 arch=("x86_64")
 depends=()
 makedepends=("cargo")
-source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=("1ea76564f7c4e6aba1d56a3e2436c8c8ece925be54ea60c478c44ccb4fb5ca20")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/yarso-su/lates/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=("e540090918917d997417d97d77cb3d80accb1e9f40ce1844e05c0ba041353a69")
 
 prepare() {
     cd "$pkgname-$pkgver"
