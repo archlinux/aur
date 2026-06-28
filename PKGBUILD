@@ -18,7 +18,7 @@ _appimage="Synca-x86_64.AppImage"
 source=(
   "$_appimage::https://github.com/bryanrafaelbueno/Synca/releases/download/$pkgver/$_appimage"
 )
-sha256sums=('24a3d4ef637c6eb490c682d56d07a6df46fbbbea5dc39cbc59060e7a4314c8b9')
+sha256sums=('d834115adc47ea37f67cbde9539d386b089274e3cd20fa204e7639df822b77e1')
 
 prepare() {
   cd "$srcdir"
