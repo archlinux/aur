@@ -41,7 +41,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_HOME="$srcdir/cargo_home"
   export npm_config_cache="$srcdir/npm_cache"
-  cd "src-tauri"
+  cd "$_pkgsrc"
   npm run tauri build
 }
 
