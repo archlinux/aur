@@ -1,15 +1,20 @@
 pkgbase = soundcli
-	pkgdesc = CLI client for soundcloud
-	pkgver = 0.0.5
-	pkgrel = 3
-	url = http://soundcli.elephly.net
-	arch = any
-	license = GPL3
-	depends = ruby-gstreamer
-	depends = ruby-curb
-	depends = ruby-json
-	source = https://rubygems.org/downloads/soundcli-0.0.5.gem
-	md5sums = 32b0ff3ef7cdfe6095a2bcb8c37b346c
+	pkgdesc = Download your YouTube, SoundCloud, and Spotify libraries to your computer and play them offline, all from your terminal
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/baairon/soundcli
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	provides = sndcli
+	noextract = soundcli-1.0.4.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = soundcli-1.0.4.tgz::https://registry.npmjs.org/sndcli/-/sndcli-1.0.4.tgz
+	b2sums = 975d621a8d7b80f7298aa0723142c3c92c959049136ed6011997d7457188d0a5f657546e22f2c2f637ff60f6c4b2e8a31561bfb64d9c681d44ffbf8f089ff036
 
 pkgname = soundcli
-

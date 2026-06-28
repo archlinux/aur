@@ -1,0 +1,3 @@
+[soundcli]
+source = "npm"
+npm = "sndcli"

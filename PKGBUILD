@@ -1,27 +1,61 @@
-# Maintainer: James An <james@jamesan.ca>
-# Contributor: Ricardo Wurmus <maintainer name + @gmail.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-pkgname=soundcli
-pkgver=0.0.5
-pkgrel=3
-pkgdesc='CLI client for soundcloud'
-arch=('any')
-url='http://soundcli.elephly.net'
-license=('GPL3')
-depends=(ruby-gstreamer ruby-curb ruby-json)
-source=(https://rubygems.org/downloads/$pkgname-$pkgver.gem)
-#~ noextract=($pkgname-$pkgver.gem)
-md5sums=('32b0ff3ef7cdfe6095a2bcb8c37b346c')
+pkgauthor="baairon"
+pkgname="soundcli"
+pkgdesc="Download your YouTube, SoundCloud, and Spotify libraries to your computer and play them offline, all from your terminal"
+pkgver=1.0.4
+pkgrel=1
+arch=("x86_64")
+url="https://github.com/${pkgauthor}/${pkgname}"
+license=("MIT")
 
-prepare() {
-  # Relax dependency version restrictions to allow the latest versions.
-  zcat metadata.gz | sed 's/~>/">="/' | gzip -c - >| metadata.gz~
-  mv -f metadata.gz~ metadata.gz
-  tar -cf "$pkgname-$pkgver.new.gem" data.tar.gz metadata.gz
-}
+_npmname=sndcli
+_npmver=${pkgver}
+
+provides=("${_npmname}")
+
+makedepends=("npm" "jq")
+depends=("nodejs")
+
+options=(!strip emptydirs staticlibs zipman)
+noextract=("${pkgname}-${pkgver}.tgz")
+
+source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
+b2sums=('975d621a8d7b80f7298aa0723142c3c92c959049136ed6011997d7457188d0a5f657546e22f2c2f637ff60f6c4b2e8a31561bfb64d9c681d44ffbf8f089ff036')
+
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" "$pkgname-$pkgver.new.gem"
-  rm "$pkgdir$_gemdir/cache/$pkgname-$pkgver.gem"
+	msg2 "Install using Using npm"
+	npm install -g \
+		--cache "${srcdir}/npm-cache" \
+		--prefix "${pkgdir}/usr" \
+		"${srcdir}/${pkgname}-${pkgver}.tgz"
+
+	msg2 "Fix ownership of ALL FILES"
+	find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+	chown -R root:root "${pkgdir}"
+
+	msg2 "Remove references to ${pkgdir}"
+	find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+
+	local tmppackage="$(mktemp)"
+	local pkgjson="${pkgdir}/usr/lib/node_modules/${_npmname}/package.json"
+	jq '.|=with_entries(select(.key|test("_.+")|not))' "${pkgjson}" > "${tmppackage}"
+	mv "${tmppackage}" "${pkgjson}"
+	chmod 644 "${pkgjson}"
+
+	find "${pkgdir}" -type f -name package.json | while read pkgjson; do
+		local tmppackage="$(mktemp)"
+		jq 'del(.man)' "${pkgjson}" > "${tmppackage}"
+		mv "${tmppackage}" "${pkgjson}"
+		chmod 644 "${pkgjson}"
+	done
+
+	msg2 "Install README file"
+	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
+	ln -sf "/usr/lib/node_modules/${_npmname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	msg2 "Install LICENSE file"
+	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
+	ln -sf "/usr/lib/node_modules/${_npmname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
