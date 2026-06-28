@@ -1,0 +1,13 @@
+[Unit]
+Description=ClyoCloud Personal Cloud Storage & Streaming
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/clyocloud
+Environment=PORT=6969
+ExecStart=/usr/bin/node /opt/clyocloud/server/index.mjs
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
