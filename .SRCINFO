@@ -1,0 +1,19 @@
+pkgbase = publishport-bin
+	pkgdesc = 把本地开源 CLI 的内容发布能力，经 GUI 客户端 + 云端中转开放给线上 AI
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://publishport.app
+	install = publishport-bin.install
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	provides = publishport
+	conflicts = publishport
+	noextract = publishport-0.1.2-amd64.deb
+	options = !strip
+	source = publishport-0.1.2-amd64.deb::https://storage2.maoertech.cn/desktop/publishport-0.1.2-amd64.deb
+	sha256sums = e03904d73623d37f0bc08b75d97532055a30ca1549f437cd011b7a2cede2d585
+
+pkgname = publishport-bin
