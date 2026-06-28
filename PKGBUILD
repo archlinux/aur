@@ -1,14 +1,14 @@
 # Maintainer: Sergey Shatunov <me@aur.rocks>
 pkgname=satisfactory-mod-manager-git
 pkgver=3.1.0.r0.g935ec4a
-pkgrel=1
+pkgrel=2
 pkgdesc="A mod manager for easy installation of mods and modloader for Satisfactory"
 arch=(x86_64)
 url="https://github.com/satisfactorymodding/SatisfactoryModManager"
 license=('GPL3')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-makedepends=('git' 'yarn' 'nodejs' 'node-gyp' 'python' 'wails' 'go-task' 'pnpm')
+makedepends=('git' 'yarn' 'nodejs' 'node-gyp' 'python' 'wails' 'go-task' 'pnpm' 'go')
 depends=('webkit2gtk-4.1' 'gst-plugins-good')
 source=("git+https://github.com/satisfactorymodding/SatisfactoryModManager.git"
         "${pkgname%-git}.desktop")

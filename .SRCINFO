@@ -1,7 +1,7 @@
 pkgbase = satisfactory-mod-manager-git
 	pkgdesc = A mod manager for easy installation of mods and modloader for Satisfactory
 	pkgver = 3.1.0.r0.g935ec4a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/satisfactorymodding/SatisfactoryModManager
 	arch = x86_64
 	license = GPL3
@@ -13,6 +13,7 @@ pkgbase = satisfactory-mod-manager-git
 	makedepends = wails
 	makedepends = go-task
 	makedepends = pnpm
+	makedepends = go
 	depends = webkit2gtk-4.1
 	depends = gst-plugins-good
 	provides = satisfactory-mod-manager
