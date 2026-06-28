@@ -1,15 +1,16 @@
-# Maintainer: Costa-exe <fcosentino.dev@.com>
+# Maintainer: Fabio Cosentino <fcosentino.dev@.com>
 
 pkgname=aur-taw
-pkgver=1.0.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A minimalist, RAM-safe, opt-in AUR helper written in pure bash"
 arch=('any')
 url="https://github.com/Costa-exe/aur-taw"
 license=('MIT')
-depends=('bash' 'pacman' 'git' 'curl' 'jq' 'less')
+depends=('bash' 'git' 'curl' 'jq' 'pacman-contrib' 'less')
+optdepends=('bash-completion')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1189149e5be55a0b8d0ce851d88b09ed99924ea61e980f1a644df3fc401dc7b7')
+sha256sums=('d346af40d7a4cd5de7a2e93432c3e5762ddf9792e7b0cf96526d550ebabeea41')
 
 package() {
     cd "${pkgname}-${pkgver}"
