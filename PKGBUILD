@@ -6,7 +6,7 @@ _appdir=ZCode
 pkgver=3.1.8
 pkgrel=3
 pkgdesc='ZCode desktop app repackaged from official Linux release'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://zcode.z.ai/en'
 license=('custom')
 depends=(
@@ -30,17 +30,23 @@ provides=('zcode')
 conflicts=('zcode')
 options=('!strip' '!lto')
 install="${pkgname}.install"
-source=("ZCode-${pkgver}-linux-x64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/${pkgver}/ZCode-${pkgver}-linux-x64.deb")
-noextract=("ZCode-${pkgver}-linux-x64.deb")
-sha256sums=('2d8cc45f241fb58eba421e4204d24c934b408006667ac12bb63e1627f5409a2f')
+source_x86_64=("ZCode-${pkgver}-linux-x64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/${pkgver}/ZCode-${pkgver}-linux-x64.deb")
+source_aarch64=("ZCode-${pkgver}-linux-arm64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/${pkgver}/ZCode-${pkgver}-linux-arm64.deb")
+noextract=("ZCode-${pkgver}-linux-x64.deb" "ZCode-${pkgver}-linux-arm64.deb")
+sha256sums_x86_64=('2d8cc45f241fb58eba421e4204d24c934b408006667ac12bb63e1627f5409a2f')
+sha256sums_aarch64=('d7e4d8d906f1aa46d54f4089a6a89154a5ec1fb55884d9d99eb9e97b2be0c27c')
 
 package() {
-  local _extractdir
+  local _extractdir _deb_arch
 
   _extractdir="$(mktemp -d)"
   trap 'rm -rf "${_extractdir}"' EXIT
+  case "${CARCH}" in
+    x86_64) _deb_arch='x64' ;;
+    aarch64) _deb_arch='arm64' ;;
+  esac
 
-  bsdtar -C "${_extractdir}" -xf "${srcdir}/ZCode-${pkgver}-linux-x64.deb"
+  bsdtar -C "${_extractdir}" -xf "${srcdir}/ZCode-${pkgver}-linux-${_deb_arch}.deb"
   bsdtar -C "${_extractdir}" -xf "${_extractdir}/data.tar.xz"
 
   install -dm755 \
