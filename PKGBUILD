@@ -1,6 +1,6 @@
 # Maintainer: thongor77 <magetriste@proton.me>
 pkgname=wifimaplinux
-pkgver=2.0.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Multi-floor residential Wi-Fi mapping tool for Linux'
 arch=(any)
@@ -12,6 +12,7 @@ depends=(
     python-numpy
     python-pillow
     python-sqlmodel
+    python-vispy
     iw
 )
 makedepends=(
@@ -20,7 +21,7 @@ makedepends=(
     python-hatchling
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('3f490338af8edf927c17f6fb7c0c625bcbc13c221a3ec3665929ba12faca5688')
+sha256sums=('7aa9d5f2e4db9cd94c0973ab47482abfc8b31e8ab4be148a9d00944b40cfa127')
 
 build() {
     cd "WifiMapLinux-${pkgver}"
