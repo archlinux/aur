@@ -1,0 +1,21 @@
+pkgbase = dotty-git
+	pkgdesc = Config/dotfiles manager, written in modern C++
+	pkgver = r100.abc1234
+	pkgrel = 1
+	url = https://github.com/Monjaris/dotty
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = xmake
+	makedepends = git
+	depends = cli11
+	depends = github-cli
+	depends = bat
+	provides = dotty
+	conflicts = dotty
+	options = !debug
+	source = dotty::git+https://github.com/Monjaris/dotty.git
+	source = dotline::git+https://github.com/Monjaris/dotline.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = dotty-git

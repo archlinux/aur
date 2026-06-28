@@ -1,0 +1,7 @@
+src/
+pkg/
+dotty/
+dotline/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.tar.gz
