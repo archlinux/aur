@@ -1,6 +1,6 @@
 pkgbase = qtarcan-git
 	pkgdesc = Qt platform abstraction platform plugin for Arcan
-	pkgver = r50.bbdded1
+	pkgver = 0.1.r0.g0990848
 	pkgrel = 1
 	url = https://codeberg.org/vimpostor/qtarcan
 	install = qtarcan.install

@@ -1,7 +1,7 @@
 # Maintainer: Magnus Groß, for email contact see AUR commit author email
 _pkgname=qtarcan
 pkgname="$_pkgname"-git
-pkgver=r50.bbdded1
+pkgver=0.1.r0.g0990848
 pkgrel=1
 pkgdesc="Qt platform abstraction platform plugin for Arcan"
 arch=('i686' 'x86_64')
