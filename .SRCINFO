@@ -1,0 +1,13 @@
+pkgbase = python-anonymise-odt-docx-git
+	pkgdesc = Change authorship to ODT and DOCX comments, redlines and whatnot
+	pkgver = r96.ae619ab
+	pkgrel = 1
+	url = https://github.com/kappapiana/anonymize
+	arch = any
+	license = AGPL-3.0-or-later
+	makedepends = git
+	depends = python
+	source = git+https://github.com/kappapiana/anonymize.git
+	sha256sums = SKIP
+
+pkgname = python-anonymise-odt-docx-git
