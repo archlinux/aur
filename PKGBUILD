@@ -25,7 +25,7 @@ package() {
 
   # Install Python requirements (if present)
   if [[ -f requirements.txt ]]; then
-    python -m pip install -r requirements.txt
+    python -m pip install --root="$pkgdir" --prefix=/usr -r requirements.txt
   fi
 
   # License (if present)
