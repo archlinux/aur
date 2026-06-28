@@ -1,7 +1,7 @@
 # Maintainer: X3r0Day
 
 pkgname=specter
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Subdomain enumeration and TCP port scanning toolkit"
 arch=("any")

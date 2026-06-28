@@ -1,6 +1,6 @@
 pkgbase = specter
 	pkgdesc = Subdomain enumeration and TCP port scanning toolkit
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/NCRIF/Specter
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = specter
 	depends = python
 	depends = python-rich
 	depends = nmap
-	source = specter-2.2.0.tar.gz::https://github.com/NCRIF/Specter/archive/refs/tags/v2.2.0.tar.gz
+	source = specter-2.2.1.tar.gz::https://github.com/NCRIF/Specter/archive/refs/tags/v2.2.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = specter
