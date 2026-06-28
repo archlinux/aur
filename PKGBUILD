@@ -2,7 +2,7 @@
 
 pkgname=iperfgtk-bin
 _pkgname=iperfgtk
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Modern native GTK4/libadwaita frontend for iperf3 with an analog VU-meter (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -16,9 +16,9 @@ source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.g
 source_x86_64=("iperf_rust-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/iperf_rust-linux-x86_64")
 source_aarch64=("iperf_rust-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/iperf_rust-linux-arm64")
 
-sha256sums=('5f5af6c0edab68ca79677748f2804c35db0a113129d6761d3969d7f7480aa01d')
-sha256sums_x86_64=('f83c64e1b15286e689115493110116411a485901dd22c6e8b8f702e9cbfd9ad1')
-sha256sums_aarch64=('eeb626d85f921dfe24ae681e9969ee8132db3d54d2b0a8f94cfa2f88fb67d562')
+sha256sums=('3e27fcc97f08afb9fda348186c37828cf2962779608037ea6d6d844fbf24d51c')
+sha256sums_x86_64=('c7be91203b1f8b2ab149b3c54f66a1e784b49c8778c5dc68d7ae548e2bc92b44')
+sha256sums_aarch64=('332f64c34508147245782d9155d4b55b3857163bc1e2ff9c1414287accbced01')
 
 package() {
   install -Dm755 "$srcdir/iperf_rust-${pkgver}-${CARCH}" "$pkgdir/usr/bin/iperf_rust"
