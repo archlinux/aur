@@ -1,6 +1,6 @@
---- umoria/src/config.cpp	2021-02-11 14:59:45.144360084 -0500
-+++ umoria/src/config.cpp	2021-02-11 16:18:20.813930047 -0500
-@@ -13,18 +13,18 @@
+--- umoria/src/config.cpp	2021-06-02 07:04:31.000000000 -0700
++++ umoria/src/config.cpp	2026-06-22 11:45:46.386710007 -0700
+@@ -10,18 +10,18 @@
      // Data files used by Umoria
      // NOTE: use relative paths to the executable binary.
      namespace files {
@@ -31,13 +31,37 @@
      } // namespace files
  
      // Game options as set on startup and with `=` set options command -CJS-
---- umoria/CMakeLists.txt	2021-06-02 10:04:31.000000000 -0400
-+++ umoria/CMakeLists.txt	2021-06-21 15:46:20.751269954 -0400
-@@ -33,7 +33,6 @@
- set(cxx_warnings "${cxx_warnings} -Wextra")
- set(cxx_warnings "${cxx_warnings} -Wpedantic")
- set(cxx_warnings "${cxx_warnings} -Wshadow")
--set(cxx_warnings "${cxx_warnings} -Werror")
- set(cxx_warnings "${cxx_warnings} -pedantic-errors")
- set(cxx_warnings "${cxx_warnings} -Weffc++ ")
+--- umoria/src/game.h	2021-06-02 07:04:31.000000000 -0700
++++ umoria/src/game.h	2026-06-22 11:39:46.934767224 -0700
+@@ -32,7 +32,7 @@
+     Wrong,
+ };
  
+-typedef struct {
++typedef struct Game_t {
+     uint32_t magic_seed = 0; // Seed for initializing magic items (Potions, Wands, Staves, Scrolls, etc.)
+     uint32_t town_seed = 0;  // Seed for town generation
+
+--- umoria/src/game_save.cpp	2021-06-02 07:04:31.000000000 -0700
++++ umoria/src/game_save.cpp	2026-06-22 11:42:42.149452076 -0700
+@@ -807,7 +807,7 @@
+             count = rdByte();
+             char_tmp = rdByte();
+             for (int i = count; i > 0; i--) {
+-                if (tile >= &dg.floor[MAX_HEIGHT][0]) {
++                if (tile > &dg.floor[MAX_HEIGHT - 1][MAX_WIDTH - 1]) {
+                     goto error;
+                 }
+                 tile->feature_id = (uint8_t)(char_tmp & 0xF);
+
+--- umoria/src/player.h	2021-06-02 07:04:31.000000000 -0700
++++ umoria/src/player.h	2026-06-22 11:40:09.126458371 -0700
+@@ -45,7 +45,7 @@
+ typedef const char *ClassRankTitle_t;
+
+ // Player_t contains everything to be known about our player character
+-typedef struct {
++typedef struct Player_t {
+     struct {
+         char name[PLAYER_NAME_SIZE];    // Name of character
+         bool gender;                    // Gender of character (Female = 0, Male = 1)
