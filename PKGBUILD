@@ -1,6 +1,6 @@
 # Maintainer: Louis Nelson Jr. <https://lousclues.com>
 pkgname=vpn-shroud
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 pkgdesc="A provider-agnostic VPN connection manager for Linux with kill switch, auto-reconnect, and system tray integration"
 arch=('x86_64')
@@ -20,7 +20,7 @@ options=(!lto)
 backup=('etc/sudoers.d/shroud')
 install=shroud.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lousclues-labs/shroud/archive/v$pkgver.tar.gz")
-sha256sums=('cc13d8c3bf50188bbbab46b6e94d1d64bb606e09bc5008a650797b9d239a53d4')
+sha256sums=('ba5e28230ce5a7792b76d1b5767d26140e1bafc3842716fc46f74b6f11c44ecd')
 
 prepare() {
     cd "shroud-$pkgver"
