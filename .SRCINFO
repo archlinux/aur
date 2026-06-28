@@ -1,11 +1,12 @@
 pkgbase = msgviewer-lolo101
 	pkgdesc = A program to view msg file from outlook (forked version by lolo101)
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lolo101/MsgViewer/
 	arch = any
 	license = GPLv3
 	makedepends = jdk17-openjdk
+	depends = java-runtime>=17
 	conflicts = msgviewer
 	source = https://github.com/lolo101/MsgViewer/archive/refs/tags/msgviewer-1.9.1.tar.gz
 	source = msgviewer

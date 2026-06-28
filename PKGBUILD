@@ -1,12 +1,12 @@
 # Maintainer: maturain <maturain@gmail.com>
 pkgname=msgviewer-lolo101
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A program to view msg file from outlook (forked version by lolo101)"
 arch=(any)
 url="https://github.com/lolo101/MsgViewer/"
 license=('GPLv3')
-depends=(java-runtime>=17)
+depends=('java-runtime>=17')
 makedepends=(jdk17-openjdk)
 conflicts=("msgviewer")
 source=("https://github.com/lolo101/MsgViewer/archive/refs/tags/msgviewer-${pkgver}.tar.gz"
