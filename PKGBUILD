@@ -4,7 +4,7 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 pkgname=ffmpeg-amd-full-git
-pkgver=8.2.r124631.gf16c3cc5aa
+pkgver=8.2.r125331.g87bd15dc3c
 pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _whispercpp_ver='1.8.4'
@@ -178,9 +178,9 @@ sha256sums=('SKIP'
 
 prepare() {
     rm -f ffmpeg/libavcodec/libsvt_{hevc,vp9}.c
-    patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9.patch"
+    # patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc.patch"
+    # patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
+    # patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
 }
@@ -323,9 +323,7 @@ build() {
         --enable-libsrt \
         --enable-libssh \
         --enable-libsvtav1 \
-        --enable-libsvthevc \
         --enable-libsvtjpegxs \
-        --enable-libsvtvp9 \
         --disable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
@@ -382,7 +380,6 @@ build() {
         --disable-nvdec \
         --disable-nvenc \
         --disable-ohcodec \
-        --disable-omx \
         --enable-opencl \
         --enable-opengl \
         --disable-rkmpp \
