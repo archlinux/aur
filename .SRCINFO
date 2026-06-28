@@ -1,6 +1,6 @@
 pkgbase = gosuki-git
 	pkgdesc = Multi-browser, real-time, extension-free bookmark manager with p2p synchronization and archiving
-	pkgver = v1.4.0.r3.gf6e0b4f
+	pkgver = v1.4.1.r1.g7b7eacd
 	pkgrel = 1
 	url = https://github.com/blob42/gosuki
 	arch = i686

@@ -3,7 +3,7 @@
 
 pkgname=gosuki-git
 _pkgname=${pkgname%-git}
-pkgver=v1.4.0.r3.gf6e0b4f
+pkgver=v1.4.1.r1.g7b7eacd
 pkgrel=1
 pkgdesc="Multi-browser, real-time, extension-free bookmark manager with p2p synchronization and archiving"
 arch=('i686' 'x86_64')
