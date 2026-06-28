@@ -35,6 +35,12 @@ build() {
 	zig build -Doptimize=ReleaseSafe --prefix "outputs" --cache-dir "zig-cache" --global-cache-dir "zig-global-cache"
 }
 
+check() {
+	cd "${srcdir}/${_appname}-${pkgver}" || exit
+
+	zig build test
+}
+
 package() {
 	cd "${srcdir}/${_appname}-${pkgver}" || exit
 
