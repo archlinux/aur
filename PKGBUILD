@@ -46,7 +46,7 @@ check() {
 package() {
 	cd "${pkgname}-${pkgver}" || exit
 
-	install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
 	install -Dm644 "docs/theming.md" "${pkgdir}/usr/share/doc/${pkgname}/THEMING.md"
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
