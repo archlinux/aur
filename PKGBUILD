@@ -10,7 +10,7 @@
 pkgname=xlibre-input-synaptics
 _pkgname=xf86-input-synaptics
 pkgver=25.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc="XLibre Synaptics driver for notebook touchpads"
 arch=('x86_64')
 license=('MIT')
