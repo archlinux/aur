@@ -1,0 +1,18 @@
+pkgbase = ringo-flow-bin
+	pkgdesc = Declarative telephony scenario test runner for baresip
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/davidborzek/ringo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = opus
+	depends = spandsp
+	provides = ringo-flow
+	conflicts = ringo-flow
+	source_x86_64 = ringo-flow-0.11.0-x86_64.tar.gz::https://github.com/davidborzek/ringo/releases/download/ringo-flow-v0.11.0/ringo-flow-0.11.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = bc5ddcf87f77484a04ec9629f3717d5b8221c8c7074c68f143b338fd695c1d67
+	source_aarch64 = ringo-flow-0.11.0-aarch64.tar.gz::https://github.com/davidborzek/ringo/releases/download/ringo-flow-v0.11.0/ringo-flow-0.11.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f29c0fadadb66bd04d7ff2c7780dcb0464c1d1ca34d9deb27569a083849ca3af
+
+pkgname = ringo-flow-bin
