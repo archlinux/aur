@@ -1,6 +1,6 @@
 pkgbase = r-quantmod
 	pkgdesc = Quantitative Financial Modelling Framework
-	pkgver = 0.4.28
+	pkgver = 0.4.29
 	pkgrel = 1
 	url = https://cran.r-project.org/package=quantmod
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-quantmod
 	optdepends = r-rsqlite
 	optdepends = r-timeseries
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/quantmod_0.4.28.tar.gz
-	sha256sums = d1d4215ae0caba96ecf16e5ff8bbef047e88d1b1e60bb3e9e42e7c26b26ed338
+	source = https://cran.r-project.org/src/contrib/quantmod_0.4.29.tar.gz
+	sha256sums = ed2a56c96cd3acdb2f4fa27ac9f7177dfb40adaad125bba819c2b26cff636c71
 
 pkgname = r-quantmod
