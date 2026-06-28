@@ -1,6 +1,6 @@
 # Maintainer: Matt <matthew.panton@gmail.com>
 pkgname=nexus-open
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Linux controller for Corsair iCUE Nexus display device"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('libayatana-appindicator' 'gtk3' 'libgl' 'libgles' 'libegl')
 install=nexus-open.install
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-amd64.tar.gz")
-sha256sums=('e375bea26721198450f9415689ea21adc3b5fd36aab3993f48d3d8d0707b27b5')
+sha256sums=('6caab8a2759729ee9bf7d325e7d2661a15d0787f66ff0b9c05fcb052eee0d939')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -34,4 +34,10 @@ package() {
 
     install -Dm644 LICENSE \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    if [[ -d ui-bundle ]]; then
+        cp -r ui-bundle "${pkgdir}/usr/lib/nexus-open/"
+        chmod 755 "${pkgdir}/usr/lib/nexus-open/ui-bundle/ui"
+        chmod 755 "${pkgdir}/usr/lib/nexus-open/ui-bundle/ui.real"
+    fi
 }
