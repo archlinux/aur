@@ -1,0 +1,3 @@
+[torlink]
+source = "npm"
+npm = "torlnk"
