@@ -8,7 +8,7 @@ pkgname=${_appname}-bin
 pkgdesc="Find, verify, and analyze leaked credentials"
 
 pkgver=3.95.6
-pkgrel=1
+pkgrel=2
 _gitversion=v${pkgver}
 
 arch=('x86_64' 'aarch64')
@@ -39,20 +39,20 @@ sha256sums_aarch64=('e0d8722485bf592f9ef9a72009fb5184656cfab4864fed453bbbf694d5b
 package() {
 	cd "${srcdir}/" || exit
 
-	install -Dm755 /dev/stdin "$pkgdir/usr/bin/trufflehog" <<EOF
+	install -Dm755 /dev/stdin "${pkgdir}/usr/bin/trufflehog" <<EOF
 #!/usr/bin/sh
 
-exec /usr/lib/$pkgname/trufflehog --no-update "\$@"
+exec /usr/lib/${_appname}/${_appname} --no-update "\$@"
 EOF
 
 	install -Dm755 "${_appname}" -t "${pkgdir}/usr/lib/${_appname}"
 
 	install -Dm644 "docs/man/${_appname}.1" "${pkgdir}/usr/share/man/man1/${_appname}.1"
 
-	install -Dm644 "GENERIC-${pkgver}.yml" "${pkgdir}/usr/share/doc/$pkgname/examples/generic.yml"
-	install -Dm644 "GENERIC_WITH_FILTERS-${pkgver}.yml" "${pkgdir}/usr/share/doc/$pkgname/examples/generic_with_filters.yml"
+	install -Dm644 "GENERIC-${pkgver}.yml" "${pkgdir}/usr/share/doc/${pkgname}/examples/generic.yml"
+	install -Dm644 "GENERIC_WITH_FILTERS-${pkgver}.yml" "${pkgdir}/usr/share/doc/${pkgname}/examples/generic_with_filters.yml"
 
-	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
 
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
