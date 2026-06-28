@@ -10,7 +10,7 @@ makedepends=('go')
 provides=('zengit')
 conflicts=('zengit-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('1f44116e8d43a7966716b1f94f986cc40d3b7c214f9b6e1407297fdeff4a90a0')
+sha256sums=('423e7368d751e0d6f7fdd6aee9199c5318694f424ffd86fd7fe036ec0917eaeb')
 
 build() {
   cd "${pkgname}-${pkgver}"
