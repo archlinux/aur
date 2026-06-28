@@ -5,7 +5,7 @@ _pkgname=vimyt
 pkgname=${_pkgname}-bin
 pkgdesc="TUI for YT Music with vim keybindings"
 
-pkgver=1.0.2
+pkgver=1.1.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,10 +25,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.tar.gz")
-sha256sums=('1b53c84d937c9d0da90bbd33acf99e3cf3ee9a4648e7155ed53403c136762c77'
+sha256sums=('0b9b6f97fa8a88314cfa355f3a545dae2dd51c7daa413cb315683c1d16a22217'
             'e744fab298a55e291cb494d25a96ae70eadd4861dde0f6d64e89112e1ca128fb')
-sha256sums_x86_64=('76d885aacb392c42adfe41a5b1c5067c962803e2ed67d1641cd2885182c6afa3')
-sha256sums_aarch64=('9c7bd10c54ff7693672f2a05eceb22c37e2fce930d87d20b2b25cde0210c28a4')
+sha256sums_x86_64=('0147a3a129bbc55045ae0caaf0efc7007eb05dee831ae78078e660e49837465e')
+sha256sums_aarch64=('bd4c4b775163db5df78bd770a19aeac2dc3340597756e76e8a13b24ee23b0cb7')
 
 
 case ${CARCH} in
