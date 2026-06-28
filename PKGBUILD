@@ -1,6 +1,6 @@
 _name=webcord
 pkgname=${_name}-bin
-pkgver=4.13.0
+pkgver=4.13.2
 pkgrel=1
 pkgdesc='A Discord client implemented directly without Discord API (binary release)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -47,9 +47,9 @@ source_aarch64=("$(_get_source arm64)")
 source_armv7h=("$(_get_source armv7hl)")
 
 sha256sums=('d83693ffd8034c21030262ac00ce529c8da7b0196ea4b4eb2168861fc2657a2a')
-sha256sums_x86_64=('59d2a2d7ac1e67cafb22c0b8420b1669f7f3d9babb4f71bed0339581378c4f6d')
-sha256sums_aarch64=('36c107609cd49c92629f676f7140a66f99b6a52185a04e67269617d3d80bcd78')
-sha256sums_armv7h=('17ed41a30128f52efe0b8e4ccbfcd69b2cda580fcb2f949be1581c6fc9e0215c')
+sha256sums_x86_64=('2bc0a40a22462ca43f43ddbca44632a515aeaf70794fb3106d39b724f02b60e5')
+sha256sums_aarch64=('4c650fe46f3295fedc4a5ef397e60136a9a5cb44b24bb080a580efc1c9ec7949')
+sha256sums_armv7h=('e2545a6a469ab9baa058f1bc6f58e23b337a07c9359c0969cda80f04eabab173')
 
 noextract=(
     "${source_x86_64[0]##*/}"
