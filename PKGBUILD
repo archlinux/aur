@@ -21,33 +21,32 @@ depends=(
     libxext
     xcb-util-wm
     mpv
-    wget
-    ffmpeg
     ${_qt}-charts
     ${_qt}-base
     ${_qt}-multimedia
 )
 makedepends=(
+    git
     ${_qt}-tools
     ${_qt}-webengine
     pkgconfig
     make
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('375ddda2f2bf4a0eb0ea0775d908a92183d6a6347edca389a5d151d37e0085f5')
-
+source=("${pkgname}::git+${url}.git#tag=${pkgver}")
+sha256sums=('dbf379d6ff3c3d3723abe2c54f56b6f8e47bea0cd991b7abfced86fd00e87a57')
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    git -C "${srcdir}/${pkgname}" clean -dfx
 }
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
+    export CXXFLAGS="${CXXFLAGS} -fpermissive"
     qmake6 ./${pkgname}.pro -spec linux-g++ CONFIG+=qtquickcompiler -o build/
     make -C ./build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
     make INSTALL_ROOT="$pkgdir" -C ./build install
 }
