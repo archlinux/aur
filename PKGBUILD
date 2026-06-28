@@ -14,7 +14,7 @@ url="https://github.com/${pkgauthor}/${pkgname}"
 provides=("${pkgname}")
 
 makedepends=('cargo')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc')
 optdepends=('yay: AUR search and per-source upgrades'
             'pacman-contrib: live update counts via checkupdates')
 
@@ -24,7 +24,7 @@ source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('a1354193e8d2698e77bd8fbb414be18901272c442912d48758880949658959d1')
 
 prepare() {
-	cd "${srcdir}/${pkgname}-${pkgver}" || exit
+	cd "${pkgname}-${pkgver}" || exit
 
 	cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
