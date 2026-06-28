@@ -1,8 +1,8 @@
 # Maintainer: whysooraj <whysooraj.official@gmail.com>
 pkgname=tide-island
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
-_commit=4d19c33be53c41d01af78889e8442b3bd3d60935
+_commit=8e34907a97d561185cb6afca247ac8a02ac5b153
 _srcdir=Tide-island-$_commit
 pkgdesc="A dynamic island for Hyprland using Quickshell"
 arch=('x86_64')
@@ -17,6 +17,7 @@ depends=(
     'wireplumber'
     'libpulse'
     'brightnessctl'
+    'hyprsunset'
     'upower'
     'bluez'
     'bluez-utils'
@@ -29,6 +30,7 @@ optdepends=(
     'imagemagick: for wallpaper thumbnails'
     'networkmanager: for wifi control'
     'iwd: for wifi control'
+    'swaync: for the Focus do-not-disturb toggle'
 )
 conflicts=('tide-island-git')
 install='tide-island.install'
