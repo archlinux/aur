@@ -4,269 +4,445 @@
 # Contributor: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 # Contributor: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
+# shellcheck disable=SC2034,SC2154,SC2164
+# shellcheck shell=bash
+
+#######################################################################
+# WARNING ABOUT check()
+#
+# The tests that come with PowerShell are being run by upstream in
+# their CI and aren't really for testing a built PowerShell by users.
+# Their CI agents have no persistent homes, so they can pollute their
+# environment freely and their environment is also consistent.
+#
+# A significant number of tests don't use -NoProfile when calling pwsh,
+# which can cause tests to fail if any form of profile is being loaded.
+# Other tests have side effects or try to install test modules to the
+# CurrentUser scope.
+#
+# While they can work in a normal build, I would strongly recommend to
+# build PowerShell in a clean chroot (e.g. with pkgctl build) to prevent
+# such issues and keep the home of the user building the package clean.
+#######################################################################
 
 pkgname=powershell
 pkgver=7.6.3
-pkgrel=5
+pkgrel=6
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url='https://microsoft.com/PowerShell'
 license=('MIT')
 options=('!debug')
+_dotnetsdkver="10.0"
 depends=(
-  dotnet-runtime-10.0
+  dotnet-runtime-"$_dotnetsdkver"
+  libgcc
+  # xdg-utils are indirectly needed for System.Diagnostics.Process() with
+  # ProcessStartInfo.UseShellExecute (see src/System/Diagnostics/Process.Linux.cs of the dotnet runtime)
+  # PowerShell relies on this for its invoke logic, c.f. src/System.Management.Automation/namespaces/FileSystemProvider.cs
+  xdg-utils
 )
+backup=('etc/powershell.config.json')
 optdepends=('openssh: PowerShell Remoting over ssh'
-  'xclip: Clipboard functionality')
+  'xclip: Clipboard functionality'
+  'powershell-dsc: PowerShell Desired State Configuration v3 support'
+  'powershell-editor-services: Language server and debug adapter for PowerShell editor support')
 makedepends=(
-  dotnet-sdk-10.0
-  aspnet-targeting-pack-10.0
+  dotnet-sdk-"$_dotnetsdkver"
   git
-  unzip
-  jq
+  rsync
+  ruby-ronn
 )
 checkdepends=(
+  # ASP.NET is needed for test/tools/WebListener
+  aspnet-targeting-pack-"$_dotnetsdkver"
+  aspnet-runtime-"$_dotnetsdkver"
+  bash          # Needed for various tests, e.g. test/powershell/Language/Scripting/NativeExecution/NativeLinuxCommands.Tests.ps1
   expect        # Needed for test/powershell/Host/Read-Host.Tests.ps1
+  glibc-locales # Ensures generated en-US locale is present. Tests need to be run in that locale and we can't call locale-gen from a PKGBUILD.
+  grep          # Used widely in tests
+  inetutils     # Needed for test/powershell/Modules/Microsoft.Powershell.Host/Start-Transcript.Tests.ps1
+  iputils       # Needed for ping, which is used in a lot of places
   lttng-ust2.12 # Used for CoreCLR tracing, adds to reproducibility here
-  inetutils
-  iputils
-  openssh # Needed for test/powershell/engine/Remoting/SSHRemotingCmdlets.Tests.ps1
-  xclip   # Needed for test/powershell/Modules/Microsoft.PowerShell.Management/Clipboard.Tests.ps1
-  xdg-utils
+  openssh       # Needed for test/powershell/engine/Remoting/SSHRemotingCmdlets.Tests.ps1
+  procps-ng     # Needed for test/powershell/Language/Scripting/NativeExecution/NativeCommandProcessor.Tests.ps1
+  xclip         # Needed for test/powershell/Modules/Microsoft.PowerShell.Management/Clipboard.Tests.ps1
 )
 install=powershell.install
 
-# Restore-PSPester() installs the latest version of Pester up to 4.99
-# The last release of Pester 4 was 4.10.1, so this is picked
-_pesterversion=4.10.1
-source=(
-  "git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver"
-  'Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets'
-  "https://globalcdn.nuget.org/packages/pester.$_pesterversion.nupkg"
-  'nuget-source.patch'
-  'disable-telemetry.patch'
-)
-noextract=("pester.${_pesterversion}.nupkg")
-sha512sums=('2a185b1388744ff2ae36d87a56734532381fa0fcfa71b7c973ac0efbafe0347a9ae43f4b7b76fde69484d7ae35e208500923aed8904f5e8824073b2f621baec3'
-  '5a70efe247cdae8ed5c66702909137e0727cf5e25aca54983891fc17716a56081825f9a6e57c56f8fa8aa5615a159f81c68ca501d42e2ce085c073be633b3025'
-  '28044ba021b435692c22f7b1c8601774c87ddbfbc48356b74927a1e66c6d0cd1c16bd6b8a60a97ce8fed8114b7f39ef42684b9e3df30c01ba8359a901c7e8a81'
-  'b23c18212391a9396e02e3b92abd91036d9f1bef3339d8b895b216c51b0f0e25b8baf3175204c6a802f6c6202c352d6574746c57297d4d38cb30b8fec2774792'
-  '85b41fa0e6e2b40df3de5ddcb382d0801dff1cf709ec05c8f83116bfdba37ab740cddda1fcd47701cdb367a279e179ea518a00f01d698276abfb12074eeffbd1')
-b2sums=('9846ac2506e74038ad74d1f79e9de8eadd1f0d54a5855109e3d38fb4e960c9f0f7d004c06e893ec8aac9f4ffa3cd86fa933583acaf61613e722d365a1a00316c'
-  'ae227c4fb537ebc22fab66ed51ad49eee6b9c5be884a245256039cedfdc72e7e09329f814394aa961bcadf4c00b566c31da868f442392e72c6937a7a96587c14'
-  '7f271e30cd911ad386789e83d0e45ba1e34a3dcce551e306f2fbf603613f4257dfa0b315a13643beb6efc5bdd3937088cccb4883e7fb0ca525a8a4eb20f9986c'
-  '2c343d12d57057d1b0602fd772c3c99d8ca81448ab4a57447797d3ace540b7feed5e0271c2644ffe296fdbdef0b546549b9ef7d969bff5f4d98e487d3771dde8'
-  '726b8934b144bf3a5ac1fc70a42a5da6d2dc47e939e1d63f35b6b05f2dd17b22977a94e42accd18b33d0cae22b9583b3008a0172efce95f457853eb96d7dcf1a')
+source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver")
+sha512sums=('2a185b1388744ff2ae36d87a56734532381fa0fcfa71b7c973ac0efbafe0347a9ae43f4b7b76fde69484d7ae35e208500923aed8904f5e8824073b2f621baec3')
+b2sums=('9846ac2506e74038ad74d1f79e9de8eadd1f0d54a5855109e3d38fb4e960c9f0f7d004c06e893ec8aac9f4ffa3cd86fa933583acaf61613e722d365a1a00316c')
 
 prepare() {
+  set -x
   cd PowerShell
+  local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
 
-  # Change the default for POWERSHELL_TELEMETRY_OPTOUT to disable telemetry by default
-  patch --strip=0 --input=../disable-telemetry.patch
+  # We first determine the exact SDK and runtime versions for later usage
+  _sdkver=$(dotnet --list-sdks | grep -F "$_dotnetsdkver" | sed "s/ .*$//")
+  _runtimever=$(dotnet --list-runtimes | grep -F "NETCore.App $_dotnetsdkver" | sed -E "s/[[:alnum:]\.]+ ([[:digit:]\.]+) .*/\1/")
+  _runtimepath="/usr/share/dotnet/shared/Microsoft.NETCore.App/$_runtimever"
 
-  jq '.sdk.version = "10.0.0" | .sdk.rollForward = "feature"' global.json >_global.json
-  mv _global.json global.json
+  # Update global.json to match with the current SDK
+  rm global.json
+  _sdkver=$(dotnet --list-sdks | grep -F "$_dotnetsdkver" | sed "s/ .*$//")
+  DOTNET_NOLOGO=1 dotnet new globaljson --sdk-version "$_sdkver"
 
-  # Use nuget.org source
-  patch --strip=1 --input=../nuget-source.patch
+  ## Switch-PSNugetConfig()
+  # We're switching to the public nuget.org feed
+  sed -i -e 's|<add key="powershell".*$|<add key="nuget.org" value="https://api.nuget.org/v3/index.json" />|g' nuget.config
+  sed -i -e 's|<add key="powershell".*$|<add key="psgallery" value="https://www.powershellgallery.com/api/v2/" />|g' \
+    src/Modules/nuget.config \
+    test/tools/Modules/nuget.config
 
-  # I couldn't find any way of silencing the very verbose warnings from
-  # Microsoft.SourceLink other than to set the remote to a proper URL..
-  git remote set-url origin "https://github.com/PowerShell/PowerShell.git"
+  # There's no point to run analyzers in a PKGBUILD
+  sed -i -e '/PackageReference/d' Analyzers.props
+
+  # Remove Telemetry entirely from the code
+  # The sed hack deletes any line calling ApplicationInsightsTelemetry call, as well as any using statements
+  # for Microsoft.PowerShell.Telemetry. The calls have no side effects, so can simply be removed from the code.
+  # Doing so allows us to purge Telemetry.cs and Microsoft.ApplicationInsights from the build entirely
+  find src -type f -name "*.cs" -exec sed -i -E \
+    -e '/ApplicationInsightsTelemetry\.\w+\([^)]*$/,/\)/d' \
+    -e '/ApplicationInsightsTelemetry/d' \
+    -e '/Microsoft.PowerShell.Telemetry/d' {} \;
+  rm src/System.Management.Automation/utils/Telemetry.cs
+  sed -i -e '/Microsoft.ApplicationInsights/d' src/System.Management.Automation/System.Management.Automation.csproj
+
+  # Next we convert quite a bit to framework refs
+  # This doesn't change anything really about the binaries that are generated
+  # but saves over a gigabyte of unnecessary NuGet downloads.
+  while read -r _csproj; do
+    sed -i -E -e 's/netstandard2\.0/net'"$_dotnetsdkver"'/' \
+      -e 's|(RuntimeIdentifiers>)[^<]*|\1linux-x64|' "$_csproj"
+    if [[ "$_csproj" =~ .*PSVersionInfoGenerator.csproj ]]; then
+      sed -i -e '/<PackageReference Include="System/d' "$_csproj"
+    fi
+
+    while read -r _packref; do
+      # shellcheck disable=SC2001
+      _packname=$(echo "$_packref" | sed -E -e 's/.*Include="([^"]+).*/\1/' -)
+
+      if [[ -f "${_runtimepath}/${_packname}.dll" ]]; then
+        sed -i -E 's|.*"'"$_packname"'".*|<FrameworkReference Include="'"$_packname"'"/>|' "$_csproj"
+      elif [[ "$_packname" =~ runtime\..* ]] && [[ ! "$_packname" == *"linux-x64"* ]]; then
+        sed -i "/\"${_packname}\"/d" "$_csproj"
+      fi
+    done < <(grep PackageReference "$_csproj")
+  done < <(find . -type f -name "*.csproj")
 
   export NUGET_PACKAGES="$PWD/nuget"
-  export DOTNET_NOLOGO=true
-  export DOTNET_CLI_TELEMETRY_OPTOUT=true
+  dotnet new tool-manifest
+  dotnet tool install dotnet-outdated-tool
+  dotnet outdated --upgrade --exclude "JsonSchema.Net"
+  dotnet outdated --upgrade --version-lock major --include "JsonSchema.Net"
 
   # Replicating build.psm1:Start-PSBuild()
   ## Restore-PSPackage()
-  dotnet restore src/powershell-unix -p:PublishReadyToRun=true
+  dotnet restore "src/TypeCatalogGen" --runtime linux-x64 -p:SDKToUse=Microsoft.NET.Sdk
+  dotnet restore "src/ResGen" --runtime linux-x64 -p:SDKToUse=Microsoft.NET.Sdk
 
-  dotnet restore src/TypeCatalogGen
-  dotnet restore src/ResGen
+  # Restore the PowerShell modules for later
   dotnet restore src/Modules
-  dotnet restore src/Microsoft.PowerShell.GlobalTool.Shim
+}
 
-  dotnet restore test/tools/TestAlc
-  dotnet restore test/tools/TestExe
-  dotnet restore test/tools/UnixSocket
-  dotnet restore test/tools/Modules
+_copymodules() {
+  mkdir -p "$2"
+  mapfile _reference_packages < <(grep "PackageReference" "$1")
+  for _curpackage in "${_reference_packages[@]}"; do
+    # shellcheck disable=SC2001
+    _package_name="$(echo "$_curpackage" | sed -E 's/.*Include="([^"]+).*/\1/')"
+    # shellcheck disable=SC2001
+    _package_version="$(echo "$_curpackage" | sed -E 's/.*Version="([^"]*).*/\1/')"
 
-  dotnet restore test/tools/TestService -p:RuntimeIdentifiers=linux-x64
-  dotnet restore test/tools/WebListener -p:RuntimeIdentifiers=linux-x64
-
-  dotnet restore test/tools/NamedPipeConnection/src/code
+    rsync -aqP \
+      -f '- *.nupkg' \
+      -f '- *.nupkg.metadata' \
+      -f '- *.nupkg.sha512' \
+      -f '- *.nuspec' \
+      -f '- System.Runtime.InteropServices.RuntimeInformation.dll' \
+      -f '- fullclr' \
+      "$NUGET_PACKAGES/${_package_name,,}/${_package_version}/." "$2/${_package_name}/"
+  done
 }
 
 build() {
   cd PowerShell
-
+  local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
   export NUGET_PACKAGES="$PWD/nuget"
-  export DOTNET_NOLOGO=true
-  export DOTNET_CLI_TELEMETRY_OPTOUT=true
 
   ## Start-ResGen()
-  pushd src/ResGen
-  dotnet run --no-restore
-  popd
+  # ResGen runs much faster if built with optimisations
+  cd "$srcdir"/PowerShell/src/ResGen
+  dotnet run \
+    -c Release \
+    -f "net$_dotnetsdkver" \
+    -r linux-x64
 
   ## Start-TypeGen()
-  cp -t src/Microsoft.PowerShell.SDK/obj \
-    "$srcdir/Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets"
-
-  local inc_file="$PWD/src/TypeCatalogGen/powershell_linux-x64.inc"
-  dotnet msbuild \
-    src/Microsoft.PowerShell.SDK \
+  local _inc_file="$PWD/src/TypeCatalogGen/powershell_linux-x64.inc"
+  cd "$srcdir"/PowerShell/src/Microsoft.PowerShell.SDK
+  dotnet build \
+    -c Release \
+    -f "net$_dotnetsdkver" \
+    -r linux-x64 \
+    ./Microsoft.PowerShell.SDK.csproj \
     -t:_GetDependencies \
     -p:DesignTimeBuild=true \
-    -p:_DependencyFile="$inc_file" \
-    -nologo
+    -p:_DependencyFile="$_inc_file"
 
+  cd "$srcdir"/PowerShell/src/TypeCatalogGen
   dotnet run \
-    --no-restore \
-    --project src/TypeCatalogGen \
-    src/System.Management.Automation/CoreCLR/CorePsTypeCatalog.cs \
-    "$inc_file"
+    -c Release \
+    -f "net$_dotnetsdkver" \
+    -r linux-x64 \
+    ../System.Management.Automation/CoreCLR/CorePsTypeCatalog.cs \
+    "$_inc_file"
 
-  ## Publish PowerShell
-  dotnet publish \
-    --no-restore \
-    --runtime linux-x64 \
-    --no-self-contained \
-    --configuration Release \
-    --output lib \
-    src/powershell-unix/
+  _build_arguments=(
+    "--configuration" "Release"
+    "--framework" "net""$_dotnetsdkver"
+    "--runtime" "linux-x64"
+    "--no-self-contained"
+    "-p:ReleaseTag=""$pkgver"
+    "-p:AppDeployment=FxDependentDeployment"
+    "-p:SDKToUse=Microsoft.NET.Sdk"
+    "-p:IsWindows=false"
+    "-p:GenerateFullPaths=true"
+    "-p:ErrorOnDuplicatePublishOutputFiles=false"
+    "-p:UseAppHost=true"
+    "-p:RunAnalyzersDuringBuild=false"
+  )
 
-  ## Publish reference assemblies
-  grep 'Microsoft.NETCore.App' "$inc_file" | sed 's/;//' | while read -r assembly; do
-    install -Dm755 -t lib/ref "$assembly"
+  cd "$srcdir"/PowerShell/src/powershell-unix
+  dotnet publish "${_build_arguments[@]}" \
+    --output "$_publish_path"
+
+  # Publish Reference Assemblies
+  mkdir -p "$_publish_path/ref"
+  grep 'Microsoft.NETCore.App' "$_inc_file" | sed 's/;//' | while read -r _assembly; do
+    cp "$_assembly" "$_publish_path"/ref
   done
 
   ## Restore-PSModuleToBuild()
-  # The version numbers stem from src/Modules/PSGalleryModules.csproj and need to match the current release
-  cp -a "$NUGET_PACKAGES/microsoft.powershell.archive/1.2.5/." lib/Modules/Microsoft.PowerShell.Archive
-  cp -a "$NUGET_PACKAGES/microsoft.powershell.psresourceget/1.2.0/." lib/Modules/Microsoft.PowerShell.PSResourceGet
-  cp -a "$NUGET_PACKAGES/packagemanagement/1.4.8.1/." lib/Modules/PackageManagement
-  cp -a "$NUGET_PACKAGES/powershellget/2.2.5/." lib/Modules/PowerShellGet
-  cp -a "$NUGET_PACKAGES/psreadline/2.4.5/." lib/Modules/PSReadLine
-  cp -a "$NUGET_PACKAGES/microsoft.powershell.threadjob/2.2.0/." lib/Modules/Microsoft.PowerShell.ThreadJob
+  _copymodules "$srcdir/PowerShell/src/Modules/PSGalleryModules.csproj" "$_publish_path/Modules"
+
+  ## Build manpage
+  # We have to build this, since the pregenerated file (that is also included in their official RPMs)
+  # is outdated and especially missing all body content of the man page.
+  # See https://github.com/PowerShell/PowerShell/issues/21086
+  # The tags in the markdown don't have their < > escaped either, which causes breakage.
+  cd "$srcdir"/PowerShell/assets/manpage
+  sed -i -e 's/>/\\>/g' -e 's/</\\</g' pwsh.1.ronn
+  ronn -r "pwsh.1.ronn"
+
+  # Update Help
+  # As help is installed in the module location, the core help pages would become orphaned files
+  # otherwise, and every user on a machine would always need to download the help.
+  # Including them in the package also ensures they will have proper permissions.
+  #
+  # Help is only available as en-US UICulutre, see about_Updatable_Help.help.txt
+  #
+  # We also generate the powershell.config.json which will be installed later
+  # The config adds /usr/share/powershell/Modules as a working module folder in addition
+  # to the regular XDG-compliant /usr/local/share/powershell/Modules.
+  # Arch Packages are not allowed to use /usr/local, so this adds a convenient location
+  # to which PowerShell modules could be packaged and installed to.
+  cd "$_publish_path"
+  # shellcheck disable=SC2016
+  ./pwsh -noprofile -command '
+    foreach($mod in (Get-ChildItem ./Modules)) {
+      Update-Help -Module $mod -UICulture en-US -Scope AllUsers
+    }
+
+    $modulepaths = @(
+      "/usr/local/share/powershell/Modules"
+      "/usr/share/powershell/Modules"
+      "/usr/lib/powershell-'"${pkgver:0:1}"'/Modules"
+    )
+    $psconfig = @{
+      PSModulePath = ([String]::Join([System.IO.Path]::PathSeparator, $modulepaths))
+    }
+    ConvertTo-Json $psconfig | Out-File '"$srcdir"'/powershell.config.json
+  '
 }
 
 check() {
   cd PowerShell
-
+  local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
   export NUGET_PACKAGES="$PWD/nuget"
-  export DOTNET_NOLOGO=true
-  export DOTNET_CLI_TELEMETRY_OPTOUT=true
+
+  cd test/powershell
+  # In Pester 4.x, deleting tests is unfortunately the only fine grained option
+  # to disable tests.
+
+  # There's a bunch of tests that use $env:HOME to create or work with files
+  # there as a temporary directory. We edit the tests to use the Pester TestDrive instead.
+  # Start-Transcript.Tests.ps1 is excluded, since it looks for the result of
+  # the Start-Transcript cmdlet at its default locations and needs $env:HOME for that.
+  # shellcheck disable=SC2016
+  _testsneedpatching="$(grep -R -l --include="*.Tests.ps1" --exclude="Start-Transcript.Tests.ps1" '$env:HOME' .)"
+  # shellcheck disable=SC2016
+  echo "$_testsneedpatching" | while read -r _curtest; do
+    sed -i 's/$env:HOME/$TestDrive/g' "$_curtest"
+  done
+
+  # These tests use Pesters TestDrive in a way that it doesn't work on Linux
+  # shellcheck disable=SC2016
+  sed -i 's/TestDrive:/$TestDrive/g' Modules/Microsoft.PowerShell.Management/FileSystemProviderExtended.Tests.ps1
+  # shellcheck disable=SC2016
+  sed -i '/Push-Location $rootDir/iNew-Item -ItemType "Directory" -Path $TestDrive -Name TestDir -Force' \
+    Modules/Microsoft.PowerShell.Management/FileSystemProviderExtended.Tests.ps1
 
   # Test contains a logic error
   # Upstream issue: https://github.com/PowerShell/PowerShell/issues/27503
-  rm test/powershell/Host/PSVersionTable.Tests.ps1
+  rm Host/PSVersionTable.Tests.ps1
 
   # Test is broken on systems with UTC+2 or greater
   # Upstream issue: https://github.com/PowerShell/PowerShell/issues/27500
-  rm test/powershell/Modules/Microsoft.PowerShell.Utility/ConvertTo-Json.Tests.ps1
+  rm Modules/Microsoft.PowerShell.Utility/ConvertTo-Json.Tests.ps1
 
   # Test is broken due to a logic error not considering timezone aliases
   # Upstream issue: https://github.com/PowerShell/PowerShell/issues/27502
-  rm test/powershell/Modules/Microsoft.PowerShell.Management/TimeZone.Tests.ps1
+  rm Modules/Microsoft.PowerShell.Management/TimeZone.Tests.ps1
 
-  # Test requires DSCv3 being installed
-  # DSCv3 is available as an addon https://github.com/PowerShell/DSC
-  rm test/powershell/dsc/dsc.profileresource.Tests.ps1
+  # Test requires DSCv3 being available
+  # DSCv3 is not part of the PowerShell Core anymore and needs to be installed
+  # See https://github.com/PowerShell/DSC
+  rm dsc/dsc.profileresource.Tests.ps1
 
-  # Test seems to have an incorrect default assembly lists for Linux
-  # It complains about a bunch unexpected of assemblies being loaded,
-  # but all are core dotnet ones. Likely a bug.
-  rm test/powershell/Host/Startup.Tests.ps1
+  # Test is extremely build dependent
+  # For an fxdependent Release build, it has the wrong list of files
+  # and it will be inconsistent. This only makes sense in the context of their CI.
+  rm Host/Startup.Tests.ps1
+
+  # This test relies on a dependency being loaded that wouldn't be on optimised Unix builds
+  rm engine/Basic/TypeResolution.Tests.ps1
+
+  # These tests ensure that no experimental features are enabled in a stable build.
+  # Problem: They can be enabled via powershell.config.json or by invoking
+  # Enable-ExperimentalFeature, which in turn will create that config.
+  # If a user did so, these tests will break. Config files are by design not bypassable.
+  rm engine/ExperimentalFeature/ExperimentalFeature.Basic.Tests.ps1
+  rm engine/ExperimentalFeature/Get-ExperimentalFeature.Tests.ps1
 
   # Test is dependent on the locale of the system
   # Breaks if culture is Invariant Language (Invariant Country)
   # this happens if LANG=C.UTF-8, which is the default in chroot builds
   # Upstream issue: https://github.com/PowerShell/PowerShell/issues/27532
-  rm test/powershell/engine/Help/HelpSystem.Tests.ps1
+  rm engine/Help/HelpSystem.Tests.ps1
 
-  # Opens browser, skipping
-  rm test/powershell/Language/Scripting/NativeExecution/NativeCommandProcessor.Tests.ps1
-  rm test/powershell/Modules/Microsoft.PowerShell.Utility/Invoke-Item.Tests.ps1
+  # Creates a new ~/.profile, and while it should normally move it back, there were reports of
+  # this being broken. It's also a pretty questionable idea to do this in general outside of CI.
+  rm Host/ConsoleHost.Tests.ps1
 
-  # Creates & leaves directories in $HOME, skipping
-  rm test/powershell/Language/Parser/ParameterBinding.Tests.ps1
-  rm test/powershell/Language/Scripting/ScriptHelp.Tests.ps1
-  rm test/powershell/Modules/Microsoft.PowerShell.Utility/Add-Type.Tests.ps1
-  rm test/powershell/Modules/Microsoft.PowerShell.Utility/Set-PSBreakpoint.Tests.ps1
-  rm test/powershell/engine/Basic/Assembly.LoadFrom.Tests.ps1
-  rm test/powershell/engine/Basic/Assembly.LoadNative.Tests.ps1
+  # We disable telemetry by default, which the telemetry tests don't expect.
+  rm engine/Basic/Telemetry.Tests.ps1
 
-  # Creates a file named ~/.profile, skip
-  rm test/powershell/Host/ConsoleHost.Tests.ps1
-
-  # Attempts to create the USER_MODULES and SHARED_MODULES locations
-  rm test/powershell/Modules/Microsoft.PowerShell.PSResourceGet/Microsoft.PowerShell.PSResourceGet.Tests.ps1
-
-  # Runs Install-Script affecting the CurrentUser scope
-  rm test/powershell/Modules/PowerShellGet/PowerShellGet.Tests.ps1
-
-  # We disable telemetry by default, which the telemetry tests do not expect
-  rm test/powershell/engine/Basic/Telemetry.Tests.ps1
+  cd ../..
 
   ## Restore-PSPester()
-  unzip -ud temp_pester "$srcdir/pester.${_pesterversion}.nupkg"
-  cp -a temp_pester/tools lib/Modules/Pester
-
-  unzip -ud test/tools/Modules/SelfSignedCertificate \
-    "$NUGET_PACKAGES/selfsignedcertificate/0.0.4/selfsignedcertificate.0.0.4.nupkg"
-
   dotnet publish \
-    --no-restore \
-    --configuration Debug \
+    --configuration Release \
+    --no-self-contained \
+    --runtime linux-x64 \
+    --framework "net$_dotnetsdkver" \
     test/tools/TestAlc
 
-  for project in TestExe TestService UnixSocket WebListener; do
+  for project in TestExe UnixSocket WebListener; do
     dotnet publish \
-      --no-restore \
+      --configuration Release \
+      --no-self-contained \
       --runtime linux-x64 \
-      --self-contained \
-      --configuration Debug \
-      --output test/tools/$project/bin \
-      test/tools/$project
-    export PATH="$PATH:$PWD/test/tools/$project/bin/Debug/net10.0/linux-x64"
+      --framework "net$_dotnetsdkver" \
+      -p:AllowMissingPrunePackageData=true \
+      --output "$PWD/bin" \
+      test/tools/"$project"
   done
 
+  # Fix a NU1510 warning that would otherwise pop
+  #sed -i '/Microsoft.CSharp/d' test/tools/NamedPipeConnection/src/code/Microsoft.PowerShell.NamedPipeConnection.csproj
   dotnet publish \
-    --no-restore \
-    --configuration Debug \
-    --framework net10.0 \
+    --configuration Release \
+    --no-self-contained \
+    --runtime linux-x64 \
+    --framework "net$_dotnetsdkver" \
     --output test/tools/Modules/Microsoft.PowerShell.NamedPipeConnection \
     test/tools/NamedPipeConnection/src/code
-  install -Dm644 -t test/tools/Modules/Microsoft.PowerShell.NamedPipeConnection \
-    test/tools/NamedPipeConnection/src/Microsoft.PowerShell.NamedPipeConnection.psd1
+  cp test/tools/NamedPipeConnection/src/Microsoft.PowerShell.NamedPipeConnection.psd1 \
+    test/tools/Modules/Microsoft.PowerShell.NamedPipeConnection
 
+  # Add the test tools and pwsh to path
+  export PATH="$_publish_path:$PWD/bin${PATH:+:${PATH}}"
+
+  # Restore the required modules for the tests
+  dotnet restore test/tools/Modules/PSGalleryTestModules.csproj
+  _copymodules "test/tools/Modules/PSGalleryTestModules.csproj" "$PWD/test/tools/Modules"
+
+  # Some tests are locale dependent, so we need to ensure
   export LANG=en_US.UTF-8
   export LC_ALL=en_US.UTF-8
 
   # shellcheck disable=SC2016
-  lib/pwsh -noprofile -command '
-    $env:PSModulePath = "$(Get-Location)/test/tools/Modules:" + $env:PSModulePath
-    Import-Module "Pester"
+  pwsh -noprofile -command '
+    $build_mods = New-Item -Type Directory -Name build-modules 
+    $pester_save_cmd = (Get-Content ./build.psm1) -match "Save-Module -Name Pester"
+    $pester_args = @{
+      Name = "Pester"
+      Path = $build_mods
+      Repository = "PSGallery"
+    }
+    foreach($sm_opt in ("MaximumVersion", "MinimumVersion")) {
+      $regexmatch = [Regex]::Match($pester_save_cmd, ("-{0}\s+(?<{0}>[\d\.]+)" -f $sm_opt))
+      if($regexmatch.Success) {
+        $pester_args += @{ $sm_opt = $regexmatch.Groups[$sm_opt].Value }
+      }
+    }
+    Save-Module @pester_args
+
+    $modulepaths = @(
+      $build_mods
+      (Join-Path $(Get-Location) "/test/tools/Modules")
+      $env:PSModulePath
+    )
+    $env:PSModulePath = [String]::Join([System.IO.Path]::PathSeparator, $modulepaths)
+
+    Import-Module Pester
     Invoke-Pester -Show Header,Failed,Summary -EnableExit `
-    -OutputFormat NUnitXml -OutputFile pester-tests.xml `
-    -ExcludeTag @("Slow", "RequireSudoOnUnix") `
-    -Tag @("CI", "Feature") `
-    "test/powershell"
-    '
+      -OutputFormat NUnitXml -OutputFile pester-tests.xml `
+      -ExcludeTag @("Slow", "RequireSudoOnUnix") `
+      -Tag @("CI", "Feature") `
+      "test/powershell"
+  '
+
+  ## Start-PSxUnit
+  dotnet test -tl:on -c Release -f "net$_dotnetsdkver" -r linux-x64 --test-adapter-path:.
 }
 
 package() {
   cd PowerShell
 
-  local pkgnum=${pkgver:0:1}
+  local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
+  local _pkgnum=${pkgver:0:1}
 
-  install -dm755 "$pkgdir/usr/lib/$pkgname-$pkgnum"
-  cp -a -t "$pkgdir/usr/lib/$pkgname-$pkgnum" lib/*
+  install -dm755 "$pkgdir/usr/lib/$pkgname-$_pkgnum"
+  rsync -aqP \
+    -f '- *.r2rmap' \
+    -f '- *.pdb' \
+    "$_publish_path/." "$pkgdir/usr/lib/$pkgname-$_pkgnum/"
 
   install -dm755 "$pkgdir/usr/bin"
-  ln -s "/usr/lib/$pkgname-$pkgnum/pwsh" "$pkgdir/usr/bin/pwsh"
+  ln -s "/usr/lib/$pkgname-$_pkgnum/pwsh" "$pkgdir/usr/bin/pwsh"
+
+  # Install the man page
+  install -Dm644 -t "$pkgdir/usr/share/man/man1" "$srcdir/PowerShell/assets/manpage/pwsh.1"
+
+  # Install the config symlink
+  install -Dm644 -t "$pkgdir/etc" "$srcdir/powershell.config.json"
+  ln -s "/etc/powershell.config.json" "$pkgdir/usr/lib/$pkgname-$_pkgnum/powershell.config.json"
+
+  install -dm755 "$pkgdir/usr/share/powershell/Modules"
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }
