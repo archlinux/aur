@@ -1,7 +1,7 @@
 # Maintainer: Egor3f <ef@efprojects.com>
 pkgname=konsole-companion-git
 _pkgname=konsole-companion
-pkgver=0.1.0.r1.g95e39eb
+pkgver=0.1.0.r2.g66ae874
 pkgrel=1
 pkgdesc="Theme-synced profiles and tab-set manager for KDE Konsole"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'pyside6' 'konsole')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+file:///home/user/Dev/Vibe/konsole_plugin#branch=dev")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
