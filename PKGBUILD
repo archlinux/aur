@@ -3,13 +3,13 @@
 # Contributor: Jake <aur@ja-ke.tech>
 # Contributor: Ian MacKay <immackay0@gmail.com>
 
-_pkgname='github-desktop-plus'
-pkgname="${_pkgname}-bin"
-pkgver=3.5.13.3
+_pkgname='desktop-plus'
+pkgname="github-desktop-plus-bin"
+pkgver=3.6.1.0
 pkgrel=1
-pkgdesc="Fork of GitHub Desktop with extra features and improvements (binary release)."
+pkgdesc="GitHub Desktop fork with extra features and improvements (binary release)."
 arch=('x86_64' 'aarch64')
-url="https://github.com/pol-rivero/github-desktop-plus"
+url="https://github.com/desktop-plus/desktop-plus"
 license=('MIT')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
@@ -30,31 +30,31 @@ source=(
     'launch-app.sh'
 )
 
-_common_download_url="${url}/releases/download/v${pkgver}/GitHubDesktopPlus-v${pkgver}-linux"
+_common_download_url="${url}/releases/download/v${pkgver}/DesktopPlus-v${pkgver}-linux"
 source_x86_64=(${_common_download_url}-x86_64.deb)
 source_aarch64=(${_common_download_url}-arm64.deb)
 
 sha256sums=(
-    '93847b4cc1e967eae041284e9c7ed3d1a48df38482ff89b681ede79de03e342e'
-    '2fb026db6ac25ade0535ec1fffec415fd1d023fbfd28b452f29523e51921083a'
+    'b9c24de9a78b4e4d444cb0ba38817b13acd87c514dd64dd30fce2593e34a11cf'
+    'ccf8e189b15a46a00363c7a40299762ef313827aa4809140f7940c5801db2e27'
 )
-sha256sums_x86_64=('64929a616e2f0affe612f86d0f6f2acd856d403ed73c85cf0aa3ed02f9613f7b')
-sha256sums_aarch64=('4e03199f3a7faf707ff638d3cd4d28e165919b45f88fbe2698693e38aab7b0a1')
+sha256sums_x86_64=('e7c0acd2ae468dee1d274aa2c8691873e9b6de7a0e4ab6ea5a011d568ffc1bd1')
+sha256sums_aarch64=('94d462e35052ead84dcf8dd67fa6cff2f4bc54855494d03b73d486db008f8460')
 package() {
     INSTALL_DIR="$pkgdir/opt/${_pkgname}"
 
     tar --zstd -xf data.tar.zst -C "$pkgdir"
     install -d "$INSTALL_DIR"
 
-    mv "$pkgdir/usr/lib/github-desktop-plus/"* "$INSTALL_DIR/"
-    rmdir "$pkgdir/usr/lib/github-desktop-plus"
+    mv "$pkgdir/usr/lib/desktop-plus/"* "$INSTALL_DIR/"
+    rmdir "$pkgdir/usr/lib/desktop-plus"
     rmdir "$pkgdir/usr/lib"
 
-    rm "$pkgdir/usr/share/applications/github-desktop-plus.desktop"
+    rm "$pkgdir/usr/share/applications/desktop-plus.desktop"
     install -Dm644 "${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 
     install -Dm755 "$srcdir/launch-app.sh" "$pkgdir/usr/bin/${_pkgname}"
 
-    chmod +x "$INSTALL_DIR/resources/app/static/github"
-    ln -s "/opt/${_pkgname}/resources/app/static/github" "$pkgdir/usr/bin/github-desktop-plus-cli"
+    chmod +x "$INSTALL_DIR/resources/app/static/desktop-plus-cli"
+    ln -s "/opt/${_pkgname}/resources/app/static/desktop-plus-cli" "$pkgdir/usr/bin/desktop-plus-cli"
 }
