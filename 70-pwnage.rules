@@ -1,0 +1,5 @@
+# Pwnage USB Gaming Mouse V3
+ACTION!="remove", KERNEL=="hidraw*", ATTRS{idVendor}=="3662", ATTRS{idProduct}=="2005", MODE="0660", TAG+="uaccess"
+# Pwnage Wireless Gaming Mouse V3
+ACTION!="remove", KERNEL=="hidraw*", ATTRS{idVendor}=="3662", ATTRS{idProduct}=="2006", MODE="0660", TAG+="uaccess"
+
