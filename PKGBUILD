@@ -46,7 +46,7 @@ check() {
 package() {
 	cd "${_gitname}-${pkgver}" || exit
 
-	install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "target/release/${_appname}" "$pkgdir/usr/bin/${_appname}"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
