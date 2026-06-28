@@ -1,7 +1,7 @@
 pkgbase = whydpi
 	pkgdesc = Adaptive, per-SNI DPI bypass that learns optimal TLS fragmentation per host
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/byrdltd/whyDPI
 	arch = any
 	license = MIT
