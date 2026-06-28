@@ -4,17 +4,15 @@ post_install() {
     systemctl enable draind
     systemctl --global enable draind-agent
     echo ""
-    echo "draind installed and enabled. Next steps:"
+    echo "draind installed. Next steps:"
     echo ""
-    echo "1. Review the daemon config and adjust profiles to your hardware:"
+    echo "1. Review the daemon config:"
     echo "     /etc/draind/draind.json"
     echo ""
-    echo "2. Configure the agent (per-user — run as each user who will use draind):"
-    echo "     \$XDG_CONFIG_HOME/draind/draind-agent.json"
-    echo "     (typically ~/.config/draind/draind-agent.json)"
-    echo ""
-    echo "   The system default is at /etc/xdg/draind/draind-agent.json.
-   Set lock_cmd to your screen locker, for example:"
+    echo "2. Configure the agent (per-user):"
+    echo "     ~/.config/draind/draind-agent.json"
+    echo "   System default: /etc/xdg/draind/draind-agent.json"
+    echo "   Set lock_cmd to your screen locker:"
     echo "     \"lock_cmd\": \"loginctl lock-session\""
     echo ""
     echo "3. Start the services:"
@@ -28,7 +26,7 @@ post_upgrade() {
 }
 
 post_remove() {
-    systemctl --global disable draind-agent || true
-    systemctl disable --now draind || true
+    systemctl is-enabled --global draind-agent &>/dev/null && systemctl --global disable draind-agent
+    systemctl is-enabled draind &>/dev/null && systemctl disable --now draind
     systemctl daemon-reload
 }
