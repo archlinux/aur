@@ -1,16 +1,21 @@
 pkgbase = ruby-commander
-	pkgdesc = The complete solution for Ruby command-line executables. Commander bridges the gap between other terminal related libraries you know and love (OptionParser, HighLine), while providing many new features, and an elegant API.
-	pkgver = 4.6.0
+	pkgdesc = The complete solution for Ruby command-line executables
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/commander-rb/commander
 	arch = any
 	license = MIT
-	makedepends = rubygems
+	checkdepends = ruby-bundler
+	checkdepends = ruby-rake
+	checkdepends = ruby-rspec
+	checkdepends = ruby-simplecov
+	makedepends = git
+	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-highline
-	noextract = commander-4.6.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/commander-4.6.0.gem
-	sha256sums = 7d1ddc3fccae60cc906b4131b916107e2ef0108858f485fdda30610c0f2913d9
+	source = ruby-commander-5.0.0.tar.gz::https://github.com/commander-rb/commander/archive/v5.0.0.tar.gz
+	sha256sums = 43ca5701a29ecaf9cc7c3b436da8cb31f6c3547806588979062fa394f501abf7
+	b2sums = 3561023e55bcdc9915523213e14654ccfc84375fcbba4aba5cff529c6a33a5be868787a48d5808ac4498def18104256aa26330a04a294a15e19ffe4c8e858bd9
 
 pkgname = ruby-commander
