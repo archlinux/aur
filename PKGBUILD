@@ -2,13 +2,14 @@
 
 pkgname=python-mijia-api
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python API for Xiaomi Mijia"
 arch=('any')
 url='https://github.com/Do1e/mijia-api'
 license=('GPL-3.0')
 depends=(
-  'python>=3.9'
+  'python>=3.10'
+  'python-fastmcp>=3.4.2'
   'python-pillow>=11.3.0'
   'python-pycryptodome>=3.23.0'
   'python-qrcode>=8.2'
