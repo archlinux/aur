@@ -1,0 +1,23 @@
+pkgbase = gsd-browser-bin
+	pkgdesc = Browser automation CLI powered by Chrome DevTools Protocol — 92 commands for navigation, interaction and inspection (prebuilt binary)
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/open-gsd/gsd-browser
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	depends = glibc
+	depends = gcc-libs
+	provides = gsd-browser
+	conflicts = gsd-browser
+	source = gsd-browser-bin-0.2.2-LICENSE-MIT::https://raw.githubusercontent.com/open-gsd/gsd-browser/v0.2.2/LICENSE-MIT
+	source = gsd-browser-bin-0.2.2-LICENSE-APACHE::https://raw.githubusercontent.com/open-gsd/gsd-browser/v0.2.2/LICENSE-APACHE
+	sha256sums = 36b8eb7531081aec963f5cd5ee719d3d47c3167acba6e1a8a59b7443463fe7d0
+	sha256sums = 75192538785779e73e7d2cfa31a99f2d888d117e6327bc6f842ad019f83392f8
+	source_x86_64 = gsd-browser-0.2.2-x86_64::https://github.com/open-gsd/gsd-browser/releases/download/v0.2.2/gsd-browser-linux-x64
+	sha256sums_x86_64 = 5489cb000fe140378739d6585b4e45d53bbe4cdcc5c50c398ca080ba5d0feb76
+	source_aarch64 = gsd-browser-0.2.2-aarch64::https://github.com/open-gsd/gsd-browser/releases/download/v0.2.2/gsd-browser-linux-arm64
+	sha256sums_aarch64 = 1c0df91cc3cab131f0d2e24fab4dbbf0b916eb2e331661d82ade00949d9ebd20
+
+pkgname = gsd-browser-bin
