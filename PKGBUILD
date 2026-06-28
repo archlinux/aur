@@ -2,7 +2,7 @@
 
 pkgname=unisec
 _gemname=$pkgname
-pkgver=0.0.8
+pkgver=0.0.10
 pkgrel=1
 pkgdesc='Unicode Security Toolkit.'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('ruby')
 makedepends=('git' 'ruby-bundler')
 source=("https://github.com/noraj/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('b931d6a6c9a63de77ac7caded9a00845f32e33cf06ee971248956d5d2b794f9b6712f079cbdf44aec9df553412a928644535830e65da96dd4d70a7079eefde40')
+sha512sums=('5bb9f104585b9452adfa20f317bb3fed038a1175bdc6cd59a3fde2d49e728d1eb837dd161ddd20c66781f84e3bdbf4ed1720046db99a1da48945ae598d7e9cd9')
 install="$pkgname.install"
 
 package() {
@@ -25,7 +25,7 @@ package() {
 
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  rm -rf docs/ *.md LICENSE .github/ docs-tools/ test/ .* Rakefile
+  rm -rf docs/ *.md LICENSE .github/ .clinerules/ docs-tools/ test/ .* Rakefile
 
   cp --no-preserve=ownership -a * "$pkgdir/usr/share/$pkgname/"
 
