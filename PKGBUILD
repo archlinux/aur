@@ -18,18 +18,34 @@ pkgver() {
 build() {
     cd "$srcdir/hmp3"
 
+    # Generate a tiny WAV sample for PGO
+    ffmpeg -f lavfi -i "sine=frequency=1000:duration=1" -ac 2 -ar 44100 "$srcdir/sample.wav" -y
+
+    # 1) PGO: profile-generate build
+    make clean || true
     make -j"$(nproc)" \
         CFLAGS="-O3 -march=native -mtune=native \
                 -funroll-loops -falign-functions=32 -falign-loops=32 \
                 -fno-math-errno -fno-trapping-math \
                 -fno-semantic-interposition -Wall -pipe \
-                -fomit-frame-pointer -fno-plt -flto" \
-        CXXFLAGS="-O3 -march=native -mtune=native \
-                  -funroll-loops -falign-functions=32 -falign-loops=32 \
-                  -fno-math-errno -fno-trapping-math \
-                  -fno-semantic-interposition -Wall -pipe \
-                  -fomit-frame-pointer -fno-plt -flto" \
-        LDFLAGS="-fno-plt -flto"
+                -fomit-frame-pointer -fno-plt \
+                -fprofile-generate" \
+        LDFLAGS="-fprofile-generate"
+
+    # 2) PGO: generate profile by encoding sample audio
+    ./builds/release/hmp3 "$srcdir/sample.wav" "$srcdir/sample.mp3"
+
+    # 3) PGO: profile-use optimized build
+    make clean || true
+    make -j"$(nproc)" \
+        CFLAGS="-O3 -march=native -mtune=native \
+                -funroll-loops -falign-functions=32 -falign-loops=32 \
+                -fno-math-errno -fno-trapping-math \
+                -fno-semantic-interposition -Wall -pipe \
+                -fomit-frame-pointer -fno-plt \
+                -fprofile-use -fprofile-correction \
+                -flto=thin" \
+        LDFLAGS="-fprofile-use -fprofile-correction -flto=thin"
 }
 
 package() {
