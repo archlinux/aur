@@ -12,21 +12,21 @@
 
 _pkgname=resolve
 pkgname=davinci-resolve-studio
-pkgver=21.0
+pkgver=21.0.1
 pkgrel=1
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design. Studio edition, requires license key or license dongle.'
 arch=('x86_64')
 url="https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion"
-license=('LicenseRef-Commercial')
-depends=('glu' 'gtk2' 'libpng12' 'fuse2' 'opencl-driver' 'qt5-x11extras' 'qt5-svg' 'qt5-webengine'
-         'qt5-websockets' 'qt5-quickcontrols2' 'qt5-multimedia' 'libxcrypt-compat' 'xmlsec'
+license=('LicenseRef-scancode-commercial-license')
+depends=('glu' 'fuse2' 'opencl-driver' 'qt5-x11extras' 'qt5-svg'
+         'qt5-quickcontrols2' 'qt5-multimedia' 'libxcrypt-compat' 'xmlsec'
          'java-runtime' 'ffmpeg4.4' 'gst-plugins-bad-libs' 'python-numpy' 
          'tbb' 'apr-util' 'luajit' 'libc++' 'libc++abi')
 makedepends=('libarchive' 'xdg-user-dirs' 'patchelf')
 conflicts=('davinci-resolve' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 source=("file://DaVinci_Resolve_Studio_${pkgver}_Linux.zip"
         "davinci-control-panels-setup.sh")
-sha256sums=('195ace6db61c4becca683b6b625775aba31a79777ca0f0b7c439f625b04c82c1'
+sha256sums=('d937cf71751c418b5e8a1d8098aee5cda7fd566bfbbf61a21864a3038c1e2d82'
             'f17236fd68cead727c647bc31404e402922cdd491df5526f4b62364cbef9d3b8')
 install="${pkgname}.install"
 options=('!strip')
@@ -130,6 +130,9 @@ package() {
     "share/default_cm_config.bin"
   install -d -m 0755 "${pkgdir}/opt/${_pkgname}/.license"
   install -d -m 0755 "${pkgdir}/opt/${_pkgname}/Apple Immersive/Calibration"
+  # Install licenses
+  install -d -m 0644 "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s "/opt/resolve/docs/License.html" "${pkgdir}/usr/share/licenses/${pkgname}"
   # Install Desktop files and menu
   install -D -m 0644 -t "${pkgdir}/usr/share/applications" \
     "share/DaVinciResolve.desktop" \
