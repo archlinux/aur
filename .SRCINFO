@@ -1,0 +1,21 @@
+pkgbase = v4l-tui-git
+	pkgdesc = TUI alternative to v4l-ctl or cameractrls
+	pkgver = r58.2b0291d
+	pkgrel = 1
+	url = https://github.com/sermuns/v4l-tui
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = GPL-3.0
+	makedepends = cargo
+	makedepends = git
+	depends = v4l-utils
+	provides = v4l-tui
+	conflicts = v4l-tui
+	conflicts = v4l-tui-bin
+	options = !lto
+	options = !debug
+	source = v4l-tui-main::git+https://github.com/sermuns/v4l-tui.git#branch=main
+	sha256sums = SKIP
+
+pkgname = v4l-tui-git
