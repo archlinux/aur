@@ -1,19 +1,19 @@
 # Maintainer: X3r0Day
 
 pkgname=specter
-pkgver=0.1.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Subdomain enumeration and TCP port scanning toolkit"
 arch=("any")
 url="https://github.com/x3r0day/x3r0day-specter"
-license=("MIT")
+license=("GPL3")
 depends=("python" "python-rich")
 makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 optdepends=(
   "nmap: aggressive service detection (-S) and sudo nmap mode (-U)"
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('751a53ddbd6870499ab0acc775c3a739e842cc1edde0590eeba0c55faa0b5f16')
+sha256sums=("SKIP")
 _pybin="/usr/bin/python"
 
 build() {
