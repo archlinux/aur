@@ -1,0 +1,24 @@
+pkgbase = cloud-torrent-bin
+	pkgdesc = Cloud Torrent: a self-hosted remote torrent client
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/jpillora/cloud-torrent
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = cloud-torrent
+	conflicts = cloud-torrent
+	options = !strip
+	source = LICENSE-0.9.4::https://raw.githubusercontent.com/jpillora/cloud-torrent/v0.9.4/LICENSE
+	source = README-0.9.4.md::https://raw.githubusercontent.com/jpillora/cloud-torrent/v0.9.4/README.md
+	sha256sums = 10ede613cce81dc5381ec9c1a08dcfdcd425d2a186a3efb25231ee3ba308585a
+	sha256sums = 41e7a0be692d5cd13cdd2052d90830b0f0af4302d2092c522e4a437807ca7157
+	source_x86_64 = cloud-torrent-x86_64-0.9.4.gz::https://github.com/jpillora/cloud-torrent/releases/download/v0.9.4/cloud-torrent_0.9.4_linux_amd64.gz
+	sha256sums_x86_64 = ef8b5e21730d50a962af8cf7bbc46a6c46aa8ed3285ee39c1a9728ccee67f95a
+	source_i686 = cloud-torrent-i686-0.9.4.tar.gz::https://github.com/jpillora/cloud-torrent/releases/download/v0.9.4/cloud-torrent_0.9.4_linux_386.gz
+	sha256sums_i686 = 916303709b84b3394e864e78bb1f28c759bc79cd554ff87ad73d28d454001ec8
+	source_aarch64 = cloud-torrent-aarch64-0.9.4.gz::https://github.com/jpillora/cloud-torrent/releases/download/v0.9.4/cloud-torrent_0.9.4_linux_arm64.gz
+	sha256sums_aarch64 = 651f6793f7bcc3a3668808d8ccb4104b0746794995397fa24f8d8f9238522254
+
+pkgname = cloud-torrent-bin

@@ -1,0 +1,5 @@
+[cloud-torrent-bin]
+source = "github"
+github = "jpillora/cloud-torrent"
+use_latest_release = true
+prefix = "v"
