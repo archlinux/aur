@@ -1,13 +1,17 @@
 
 pkgname=ripunzip-git
-pkgver=2.0.4
+pkgver=2.0.4.7.g89627f0
+pkgver() {
+  cd ${pkgname%-git}
+  git describe --long --tags | sed -e "s/v//" -e 's/-alpha-/.r/' -e 's/\-/\./g'
+}
 pkgrel=1
 pkgdesc="Extract zip files in parallel"
 url=https://github.com/GoogleChrome/ripunzip
 license=('MIT')
 arch=('x86_64')
 depends=(bzip2 libgcc glibc xz)
-makedepends=(rust pkgconf)
+makedepends=(git rust pkgconf)
 conflicts=(ripunzip)
 provides=(ripunzip)
 source=("git+${url}")

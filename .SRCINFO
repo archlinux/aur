@@ -1,10 +1,11 @@
 pkgbase = ripunzip-git
 	pkgdesc = Extract zip files in parallel
-	pkgver = 2.0.4
+	pkgver = 2.0.4.7.g89627f0
 	pkgrel = 1
 	url = https://github.com/GoogleChrome/ripunzip
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = rust
 	makedepends = pkgconf
 	depends = bzip2
