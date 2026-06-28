@@ -1,6 +1,6 @@
 pkgbase = pear-desktop-git
 	pkgdesc = Extension for music player
-	pkgver = 3.11.0.r427.g23e8748
+	pkgver = 3.12.0.r1.g0bf89fc
 	pkgrel = 1
 	url = https://github.com/pear-devs/pear-desktop
 	install = pear-desktop.install

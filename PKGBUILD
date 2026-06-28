@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pear-desktop-git
 _app_id=com.github.th_ch.youtube_music
-pkgver=3.11.0.r427.g23e8748
+pkgver=3.12.0.r1.g0bf89fc
 pkgrel=1
 _nodeversion=24
 _electronversion=42
@@ -50,7 +50,7 @@ prepare() {
 
   cd "${pkgname%-git}"
   export PNPM_HOME="$srcdir/pnpm-home"
-  pnpm install --no-frozen-lockfile
+  pnpm install --frozen-lockfile
 
   sed -i "s|@ELECTRONVERSION@|${_electronversion}|" "$srcdir/${pkgname%-git}.sh"
 }
