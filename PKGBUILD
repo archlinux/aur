@@ -2,7 +2,7 @@
 # Maintainer: Mohit Mishra <mohitmishra786@gmail.com>
 
 pkgname='mdmend-bin'
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Fast, zero-dependency Markdown linter and fixer'
 url='https://github.com/mohitmishra786/mdmend'
@@ -12,10 +12,10 @@ provides=('mdmend')
 conflicts=('mdmend')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/mohitmishra786/mdmend/releases/download/v${pkgver}/mdmend_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('8169d86f83cc850c28eb872d8a16aee587fc18b0fbff938ec73f8b0334517e91')
+sha256sums_aarch64=('96a31280ff2852317b0c5e5c458724de5f26ee125551375e30c20f37e517b7e7')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/mohitmishra786/mdmend/releases/download/v${pkgver}/mdmend_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('2abbccbbf4f359032d4bf48293b6d67c6e3f9ad741a3baa16031d02de986b881')
+sha256sums_x86_64=('2b7ac79bf77a390ea2dde3fcb5d6b8511e0e5dc83a60e747e2b2d7ec371a3563')
 
 package() {
   install -Dm755 mdmend "${pkgdir}/usr/bin/mdmend"
