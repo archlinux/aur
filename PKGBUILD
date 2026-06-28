@@ -1,7 +1,7 @@
 # Maintainer: byrdltd <byrdltd@users.noreply.github.com>
 
 pkgname=whydpi
-pkgver=0.3.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Adaptive, per-SNI DPI bypass that learns optimal TLS fragmentation per host"
 arch=('any')
@@ -25,7 +25,7 @@ makedepends=(
 )
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('189b03c24890b524aa480dc8cb146b3eff0931de3d5b0eb267075cd7270a3999')
+sha256sums=('04f36f0f2e5194f5193e38fcb594f61881b7bd858bb191535db187d76922f021')
 
 build() {
   cd "whyDPI-${pkgver}"
