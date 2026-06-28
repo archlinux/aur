@@ -1,7 +1,7 @@
 pkgbase = specter
 	pkgdesc = Subdomain enumeration and TCP port scanning toolkit
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/x3r0day/x3r0day-specter
 	arch = any
 	license = GPL3

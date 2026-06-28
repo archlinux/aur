@@ -2,7 +2,7 @@
 
 pkgname=specter
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Subdomain enumeration and TCP port scanning toolkit"
 arch=("any")
 url="https://github.com/x3r0day/x3r0day-specter"
@@ -17,12 +17,12 @@ sha256sums=("SKIP")
 _pybin="/usr/bin/python"
 
 build() {
-  cd "$srcdir/X3r0Day-Specter-$pkgver"
+  cd "$srcdir"/Specter-"$pkgver"
   "$_pybin" -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/X3r0Day-Specter-$pkgver"
+  cd "$srcdir"/Specter-"$pkgver"
   "$_pybin" -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
