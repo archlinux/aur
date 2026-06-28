@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium-widevine-bin
 	pkgdesc = A lightweight approach to removing Google web service dependency (with Widevine)
-	pkgver = 149.0.7827.114
+	pkgver = 149.0.7827.196
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -40,15 +40,15 @@ pkgbase = ungoogled-chromium-widevine-bin
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
-	provides = chromium=149.0.7827.114
-	provides = chromedriver=149.0.7827.114
+	provides = chromium=149.0.7827.196
+	provides = chromedriver=149.0.7827.196
 	conflicts = chromium
 	conflicts = chromedriver
-	noextract = google-chrome-stable_149.0.7827.114-1_amd64.deb
+	noextract = google-chrome-stable_149.0.7827.196-1_amd64.deb
 	options = !strip
-	source = ungoogled-chromium-149.0.7827.114-1-x86_64.pkg.tar.zst::https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/149.0.7827.114-1/ungoogled-chromium-149.0.7827.114-1-x86_64.pkg.tar.zst
-	source = google-chrome-stable_149.0.7827.114-1_amd64.deb::https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_149.0.7827.114-1_amd64.deb
-	sha256sums = f1f7432cec699e0228f17026bf94ba74606937a6692c33603a253722617a92d7
-	sha256sums = 195bde858f9ee6d84cde71d831077fb88f074e78ef2ffc3c51e469516a2ece50
+	source = ungoogled-chromium-149.0.7827.196-1-x86_64.pkg.tar.zst::https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/149.0.7827.196-1/ungoogled-chromium-149.0.7827.196-1-x86_64.pkg.tar.zst
+	source = google-chrome-stable_149.0.7827.196-1_amd64.deb::https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_149.0.7827.196-1_amd64.deb
+	sha256sums = 61256836ec0740e76093397fb03763eea13ce548b37049a3687fcff24b567c20
+	sha256sums = 0785c8b8beeafe419177fc36bcf99f92fb2f16dbc77af84be487c2e6ed7822e6
 
 pkgname = ungoogled-chromium-widevine-bin
