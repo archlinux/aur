@@ -13,13 +13,16 @@ post_install() {
     autostart on next login. Only one polkit agent can register per
     session, so mask the Plasma one first.
 
-==> To guard sudo / su (optional), copy in the PAM drop-ins:
+==> To guard sudo / su (optional), copy in the PAM drop-ins and enable the
+    remember broker:
 
       install -m644 /usr/share/doc/sentinel-kde/sudo /etc/pam.d/sudo
       install -m644 /usr/share/doc/sentinel-kde/su   /etc/pam.d/su
+      systemctl enable --now sentinel-broker.service
 
     Diff against the originals before overwriting — silently rewriting
-    /etc/pam.d/sudo is a notorious foot-gun.
+    /etc/pam.d/sudo is a notorious foot-gun. The broker backs the
+    per-command "remember" window for terminal sudo/su.
 EOF
 }
 
