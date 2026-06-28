@@ -1,5 +1,5 @@
 pkgbase = bettbox-bin
-	pkgver = 1.18.2
+	pkgver = 1.18.3
 	pkgrel = 1
 	pkgdesc = 基于 Mihomo（Clash.Meta 内核）的多平台代理客户端
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = bettbox-bin
 	depend = libkeybinder3
 	option = !strip
 	option = !debug
-	source_x86_64 = https://github.com/appshubcc/Bettbox/releases/download/v1.18.2/Bettbox-1.18.2-linux-amd64.deb
-	source_aarch64 = https://github.com/appshubcc/Bettbox/releases/download/v1.18.2/Bettbox-1.18.2-linux-arm64.deb
-	sha256sums_x86_64 = 4e7305aad791f6b074531ecba8b64f2e5475be4e69957a96aaef3173b608fa21
-	sha256sums_aarch64 = 7dc9bd3864faa0d8a7271663e1f11a3dce9ecd984aca3545ac57fc1ee13558f3
+	source_x86_64 = https://github.com/appshubcc/Bettbox/releases/download/v1.18.3/Bettbox-1.18.3-linux-amd64.deb
+	source_aarch64 = https://github.com/appshubcc/Bettbox/releases/download/v1.18.3/Bettbox-1.18.3-linux-arm64.deb
+	sha256sums_x86_64 = d5b1255a5dfa617ecb5d9ba2b01dfc9ed2bae2a5afb02cd033202830e467ab2d
+	sha256sums_aarch64 = 252eb5f1b8887a427974ca4df8fbe060e4908cee6cd4ea12acfe43f5ae5e8fcd
 
 pkgname = bettbox-bin
