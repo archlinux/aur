@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /usr/share/vrc-avi-scaler
+exec python3 main.py "$@"

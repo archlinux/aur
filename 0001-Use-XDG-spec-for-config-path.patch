@@ -1,0 +1,30 @@
+From e6b1f24d2344d7dc35f17d2586d7005da222b1b8 Mon Sep 17 00:00:00 2001
+From: Inche Hwang <me@libhwang.cc>
+Date: Mon, 29 Jun 2026 01:01:19 +0900
+Subject: [PATCH] Use XDG spec for config path
+
+For use as AUR patch only. I'll submit a PR to upstream for cross-platform compatibility.
+---
+ config.py | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/config.py b/config.py
+index d7b085d..34dea2e 100644
+--- a/config.py
++++ b/config.py
+@@ -4,7 +4,11 @@ from pathlib import Path
+ from enum import Enum
+ import globals
+ 
+-CONFIG_FILE_PATH = Path('.') / 'data' / 'config.toml'
++# CONFIG_FILE_PATH = Path('.') / 'data' / 'config.toml'
++xdg_config = os.environ.get('XDG_CONFIG_HOME')
++config_root = Path(xdg_config) if xdg_config else Path.home() / '.config'
++
++CONFIG_FILE_PATH = config_root / 'vrc-avi-scaler' / 'config.toml'
+ 
+ class ConfigReadResult(Enum):
+     SUCCESS = 0
+-- 
+2.54.0
+

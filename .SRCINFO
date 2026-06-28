@@ -1,0 +1,19 @@
+pkgbase = vrc-avi-scaler
+	pkgdesc = A tool to resize your avatar on VRChat.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/KutayX7/vrc-avi-scaler
+	arch = any
+	license = MIT
+	depends = python>=3.12
+	depends = python-osc
+	depends = python-zeroconf
+	conflicts = vrc-avi-scaler-git
+	source = vrc-avi-scaler-0.3.0.tar.gz::https://github.com/KutayX7/vrc-avi-scaler/archive/refs/tags/v0.3.0.tar.gz
+	source = 0001-Use-XDG-spec-for-config-path.patch
+	source = launch-wrapper
+	sha256sums = 916f1614e3d8f331c86d643c9c71d225dafc9be62bd1ecb3c4b178d3d5eb8ed1
+	sha256sums = eb42ad81c31f3c41ac603137b5ec41a8497a924ae43101f7421d312caad57a6f
+	sha256sums = 5a7d249f42080fecf16e38321a008201ce8008a9139fa88cfa33982332453818
+
+pkgname = vrc-avi-scaler
