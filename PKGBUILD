@@ -2,7 +2,7 @@
 
 pkgname=bm64recomp-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Static recompilation of Bomberman 64"
 arch=("x86_64" "aarch64")
 url="https://github.com/RevoSucks/BM64Recomp"
@@ -42,7 +42,7 @@ source=(
 sha256sums=(
 	"3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
 	"7f71d795091575e8fdedb77c56f775eda76a34e465e3912bb5aaac8504854e3e"
-	"7083853b6d349523f125eb712eb05643aa7a6bc5afd7d3510ed405e30c58a53f"
+	"a1d4d8526445f298039c7e834182651d1b6cb9940dfe1fa7e40cd73d4b987e9a"
 	"00de3edc306a346ab3ac897f3e2a81555e1189aed6059ba130161f2207510e2a"
 )
 
