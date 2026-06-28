@@ -1,6 +1,6 @@
 # Maintainer: Nick <evilnick002 at gmail dot com>
 pkgname=vencord-installer-gui-bin
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="A GUI application to install Vencord with support for custom user plugins"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
     "$pkgname-$pkgver.deb::https://github.com/EvilNick2/vencord-installer-gui/releases/download/v$pkgver/Vencord.Installer.GUI_${pkgver}_amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/EvilNick2/vencord-installer-gui/main/LICENSE"
 )
-sha256sums=('d2c32a1e15ae4f59caf3d6d42aad18be353d1bb0ddf40ba4065cd7fea88c7bf6' 'SKIP')
+sha256sums=('e068d5b4138495af285deb06fd4063cf49f44c54d9a30f815952b995fd37e0a3' 'SKIP')
 
 prepare() {
     cd "$srcdir"
