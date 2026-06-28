@@ -1,7 +1,7 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=pori
-pkgver=0.0.3
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Pori: Systemd Mount Manager"
 arch=('x86_64')
@@ -49,4 +49,4 @@ Categories=System;Utility;
 Terminal=false
 EOF
 }
-sha256sums=('babb88e001ea797ff2907f8c09b14c614ce888179c5e9af7559c4f95dffa29e4')
+sha256sums=('bac1fab245d97125706610faa7808f8e1383545b6b4b45aba84de2bacae7af8f')
