@@ -1,0 +1,18 @@
+post_install() {
+  cat <<'EOF'
+Before starting the Y5 session, run `y5.compositor.settings` as your normal user
+to create ~/.config/y5.compositor/settings.json.
+
+Optional user services:
+  systemctl --user enable --now y5-polkit-agent.service
+  systemctl --user enable --now xwayland.service
+  systemctl --user enable --now mx-gesture-daemon.service
+
+The MX gesture example config is installed at:
+  /usr/share/doc/nourish-bin/mx-gesture-daemon/config.example.toml
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
