@@ -6,7 +6,7 @@ pkgver=1.4.0
 pkgrel=1
 pkgdesc="Open source Git GUI Client"
 arch=('x86_64')
-url="https://github.com/soramimi/Guitar"
+url="https://github.com/soramimi/${_basename}"
 license=('GPL-2.0-only')
 
 makedepends=('tar')
