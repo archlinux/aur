@@ -1,7 +1,7 @@
 # Maintainer: asm0dey <pavel.finkelshtein@gmail.com>
 
 pkgname=atomdrift-scan
-pkgver=2.0.0
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='ML-powered malware classification using cleave static analysis'
 arch=('x86_64')
@@ -10,15 +10,15 @@ license=('Apache-2.0')
 depends=('glibc' 'gcc-libs' 'bzip2')
 makedepends=('cargo' 'git')
 optdepends=('upx: binary analysis'
-            'rizin: binary reverse-analysis'
-            'innoextract: PE archive analysis')
+    'rizin: binary reverse-analysis'
+    'innoextract: PE archive analysis')
 provides=('ascan')
 # Vendored liblzma (via xz2 -> lzma-sys) is compiled by the cc crate; makepkg's
 # global -flto=auto produces GCC-LTO objects that some default linkers (lld)
 # cannot consume, breaking the final link. Disable LTO for a portable build.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d6959b113819e087b500f8cf7fec58d21f47e93c4df3eafc5fc3c1d69b33b6e0')
+sha256sums=('d65ab6a88d7b7e100e6f75fd7f188a67f54da11ebee9e1115162751409b7e13c')
 
 prepare() {
     cd scan
