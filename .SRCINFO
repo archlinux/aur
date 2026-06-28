@@ -1,6 +1,6 @@
 pkgbase = hiresti
 	pkgdesc = High-Res TIDAL player for Linux with bit-perfect playback support
-	pkgver = 1.9.7.1
+	pkgver = 1.9.7.2
 	pkgrel = 1
 	url = https://github.com/yelanxin/hiresTI
 	arch = x86_64
@@ -45,7 +45,7 @@ pkgbase = hiresti
 	conflicts = hiresti-bin
 	conflicts = hiresti-git
 	options = !lto
-	source = hiresti-1.9.7.1.tar.gz::https://github.com/yelanxin/hiresTI/archive/refs/tags/v1.9.7.1.tar.gz
-	sha256sums = acdf2386db43f7bf0bce23e228b27271be02793d8d6fcaf170c11c0fb139cd05
+	source = hiresti-1.9.7.2.tar.gz::https://github.com/yelanxin/hiresTI/archive/refs/tags/v1.9.7.2.tar.gz
+	sha256sums = ebb0d41f3ea6c5e8e9b5497327adb383d89f0ce77a1ea598301cc4274feb96ad
 
 pkgname = hiresti
