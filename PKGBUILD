@@ -4,8 +4,8 @@
 # using the .deb instead of the .tar.gz as it already contains the icons as well as the .desktop file.
 
 pkgname=picguard-pro-bin
-pkgver=5.6.0
-pkgrel=478
+pkgver=5.7.0
+pkgrel=479
 pkgdesc='Your pictures, your signature'
 url=https://github.com/picguard/picguard
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ provides=('picguard-pro')
 options=(!debug)
 source_x86_64=("${url}/releases/download/v${pkgver}.${pkgrel}/picguard-pro-${pkgver}.${pkgrel}-linux-amd64.deb")
 source_aarch64=("${url}/releases/download/v${pkgver}.${pkgrel}/picguard-pro-${pkgver}.${pkgrel}-linux-aarch64.deb")
-sha256sums_x86_64=('26e9cafe667c67540116b5c1bce14b765ba8a314d4eb6f3a28a6800be6098a81')
-sha256sums_aarch64=('d6f209c048c34416e02a927add7111185326b87eb3b3ef6c1eb85d396cb8cc52')
+sha256sums_x86_64=('be7d2245ecb882c973abec80f345a690e7452e4cb86fafd7d53f4f58d6d0267f')
+sha256sums_aarch64=('e128df6a1c81676e0b7aab0924c62b56e774355dd7b05d9c90fd71bb67edc2e3')
 _pkgdesktop="picguard-pro.desktop"
 
 prepare() {
@@ -42,7 +42,8 @@ package() {
 
     # Executable
     install -dm755 "${pkgdir}/opt/${pkgname%-*}/"
-    cp -a "${srcdir}/usr/share/picguard-pro/." "${pkgdir}/opt/${pkgname%-*}"
+    # /usr/share => /opt
+    cp -a "${srcdir}/opt/picguard-pro/." "${pkgdir}/opt/${pkgname%-*}"
     # Same as icons - rename to picguard-pro
     # mv "${pkgdir}/opt/${pkgname%-*}/picguard-pro" "${pkgdir}/opt/${pkgname%-*}/picguard-pro"
 
