@@ -1,10 +1,10 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=8.2.r124592.g268c37fdae
+pkgver=8.2.r125221.g54849fe663
 pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
-_whispercpp_ver='1.8.4'
+_whispercpp_ver='1.9.1'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
 url='https://ffmpeg.org/'
@@ -146,7 +146,6 @@ makedepends=(
     'git'
     'gmp'
     'libgl'
-    'libomxil-bellagio'
     'lv2'
     'nasm'
     'opencl-headers'
@@ -164,7 +163,7 @@ provides=(
     'libswscale.so'
     'libswresample.so')
 conflicts=('ffmpeg')
-source=('git+https://git.ffmpeg.org/ffmpeg.git'
+source=('git+https://git.ffmpeg.org/ffmpeg.git#commit=54849fe663b21ecd456099c4d40d510fc2afe533'
         'git+https://github.com/lensfun/lensfun.git'
         "https://github.com/ggml-org/whisper.cpp/archive/v${_whispercpp_ver}/whisper.cpp-${_whispercpp_ver}.tar.gz"
         '010-ffmpeg-add-svt-hevc.patch'
@@ -174,14 +173,14 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch'
         '060-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
         'LICENSE')
-sha256sums=('SKIP'
+sha256sums=('80cf7033229bbaa4f5390dd0e8c2307474f8cc8e4cc546cbf7f1c7e51fab0a82'
             'SKIP'
-            'b26f30e52c095ccb75da40b168437736605eb280de57381887bf9e2b65f31e66'
-            'fb7e7a831722d6de684d0e1c441819d2af68b58998f5ba3953530b00031ff83a'
+            '147267177eef7b22ec3d2476dd514d1b12e160e176230b740e3d1bd600118447'
+            'b58095b1c323a56b0bc48fa362881bd4ea306ab415490d61295f9d42ec061fa6'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            '4faaff961565503d2b3b2c1ec12081ce5b48d740a0b896de9e0dae24f1c48815'
-            'd0a94e18cd8e17a8c4630a711a5f3563ab091f3eaee89df24a3566ed6496f734'
-            '2073552433e4da109df8c23d49c9dd91fc7086d1f28dc863ef398eede6b0eb76'
+            '17964549165d3d448b8d2261daab71360cbdf35c0b7d1142bfa648b70bc4ddf3'
+            'cd1aa93e78800247b4516a01ef391106acb362957bd1e56f85d64906343cddac'
+            '969ece2dd92a591fb0b121b3afba0e3953a87b91aff67c9d0f17050ccb68131b'
             '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
@@ -394,7 +393,6 @@ build() {
         --enable-nvdec \
         --enable-nvenc \
         --disable-ohcodec \
-        --enable-omx \
         --enable-opencl \
         --enable-opengl \
         --enable-rkmpp \
