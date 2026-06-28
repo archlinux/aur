@@ -1,6 +1,6 @@
 pkgbase = rtk-bin
 	pkgdesc = CLI proxy that reduces LLM token consumption by 60-90% on common dev commands
-	pkgver = 0.42.4
+	pkgver = 0.43.0
 	pkgrel = 1
 	url = https://github.com/rtk-ai/rtk
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = rtk-bin
 	depends = gcc-libs
 	provides = rtk
 	conflicts = rtk
-	source_x86_64 = rtk-bin-x86_64-0.42.4.tar.gz::https://github.com/rtk-ai/rtk/releases/download/v0.42.4/rtk-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 34975116da11e09e502501daf758143e0b22ed3a42a10eb67fb693a6270d9e36
-	source_aarch64 = rtk-bin-aarch64-0.42.4.tar.gz::https://github.com/rtk-ai/rtk/releases/download/v0.42.4/rtk-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = cc2b91c064eb670c097c184913c8fbcb1a943d53d7fe505375e96ba0c5b6459f
+	source_x86_64 = rtk-bin-x86_64-0.43.0.tar.gz::https://github.com/rtk-ai/rtk/releases/download/v0.43.0/rtk-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = ff8a1e7766496e175291a85aeca1dc97c9ff6df33e51e5893d1fbc78fea2a609
+	source_aarch64 = rtk-bin-aarch64-0.43.0.tar.gz::https://github.com/rtk-ai/rtk/releases/download/v0.43.0/rtk-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 5519f7ca12e5c143a609f0d28a0a77b97413a8dce31c2681f1a41c24519a8731
 
 pkgname = rtk-bin
