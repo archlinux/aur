@@ -6,7 +6,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}
 pkgdesc="GPU-rendered Rust terminal emulator with an Odyssey visual identity"
 
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,7 +22,7 @@ depends=('glibc' 'libgcc' 'bzip2' 'libxkbcommon' 'fontconfig' 'freetype2' 'vulka
 provides=("${_appname}")
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${_pkgvername}.tar.gz")
-sha256sums=('762f214a2f1d35d710e3cf437ec5a4a12461db041869362dff442f6836e8120d')
+sha256sums=('0c12a2ce9d354aa378a16c461ad0d5e14634508fc143d0a5ded008b5d5d86883')
 
 
 prepare() {
