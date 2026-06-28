@@ -22,6 +22,7 @@ post_upgrade() {
 
     if systemctl is-active --quiet firezone-client-tunnel.service; then
         echo "==> Restarting firezone-client-tunnel.service..."
+        systemctl daemon-reload
         systemctl restart firezone-client-tunnel.service
     fi
 }
