@@ -1,8 +1,8 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=influxdb3
-pkgver=3.9.0
-_commit=0f1816e0690bbf547ebfefd13d939cfa1de71cb2
+pkgver=3.10.0
+_commit=a1e8994464c3fe0b44ee85e95c0714ad557ed7fc
 pkgrel=1
 pkgdesc='Scalable datastore for metrics, events, and real-time analytics'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     'influxdb3.tmpfiles'
 )
 b2sums=(
-    '259fe3b402810c780ba89738d51f10159375d437f43726af217921902adf66af00c591a2af09d0d7402a8ecd6ff4eb12b9df31a3730a4ebc1df9d2a9480cbfeb'
+    '3331b71d5677124dcb42235b193b32efb4d944e15f16fa7f2393841a14aedcd03e2a52cc451f37e76c613309e32b2f5e6aca258a1f750203a5dee7ce02f5d48f'
     '1f119aaed81914fcb75098dde95f894c52b11d825eb5a9bca21848a88c1e85d1dc5e6044aeb14465d9e0cec294ac9b15b505cdf275a31e439ac53044e0f651aa'
     'c00c44696c9ff81d2c9b840d434c3bdbdd5c8265ec75b2697e6414c648c075e61708cbab7ce988421b6eacbf6f6bcb5496713b952121aa22c691a48874e03dd2'
 )
@@ -33,6 +33,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     export GIT_HASH=$_commit
+    CFLAGS+=" -ffat-lto-objects"
     cargo build --frozen --release --all-features
 }
 
