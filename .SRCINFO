@@ -1,0 +1,23 @@
+pkgbase = nmapgtk-bin
+	pkgdesc = Modern native GTK4/libadwaita frontend for nmap (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/prietus/nmapgtk
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gtk4
+	depends = libadwaita
+	depends = nmap
+	depends = gcc-libs
+	depends = glibc
+	provides = nmapgtk=0.1.0
+	conflicts = nmapgtk
+	source = nmapgtk-0.1.0.tar.gz::https://github.com/prietus/nmapgtk/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 8ba2d404dd68a8e77a031df48c8f2ad1433c721d5e897ddb96e6d4a891e63ada
+	source_x86_64 = nmapgtk-0.1.0-x86_64::https://github.com/prietus/nmapgtk/releases/download/v0.1.0/nmapgtk-linux-x86_64
+	sha256sums_x86_64 = bc98e756f8a8c86a6126824172f7438d9da5812b8a1cd749390d301ad7f4abdc
+	source_aarch64 = nmapgtk-0.1.0-aarch64::https://github.com/prietus/nmapgtk/releases/download/v0.1.0/nmapgtk-linux-arm64
+	sha256sums_aarch64 = 8b7ba557e028d886bcf7d287694c768436ecae6b60f247431056606a224bd565
+
+pkgname = nmapgtk-bin
