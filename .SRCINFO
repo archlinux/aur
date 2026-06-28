@@ -1,0 +1,16 @@
+pkgbase = mdmend-bin
+	pkgdesc = Fast, zero-dependency Markdown linter and fixer
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/mohitmishra786/mdmend
+	license = MIT
+	conflicts = mdmend
+	provides = mdmend
+	arch = aarch64
+	source_aarch64 = https://github.com/mohitmishra786/mdmend/releases/download/v1.0.1/mdmend_1.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8169d86f83cc850c28eb872d8a16aee587fc18b0fbff938ec73f8b0334517e91
+	arch = x86_64
+	source_x86_64 = https://github.com/mohitmishra786/mdmend/releases/download/v1.0.1/mdmend_1.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2abbccbbf4f359032d4bf48293b6d67c6e3f9ad741a3baa16031d02de986b881
+	
+pkgname = mdmend-bin
