@@ -1,0 +1,23 @@
+pkgbase = pass-secret-service-runit
+	pkgdesc = Implementation of org.freedesktop.secrets using pass without systemd integration
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/niklassc-xyz/pass-secret-service
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = dbus
+	depends = gcc-libs
+	depends = glibc
+	depends = gnupg
+	provides = pass-secret-service=0.7.0
+	provides = org.freedesktop.secrets
+	conflicts = pass-secret-service
+	conflicts = pass-secret-service-bin
+	conflicts = pass-secret-service-git
+	source = pass-secret-service::git+https://github.com/niklassc-xyz/pass-secret-service.git#commit=2a77a58a5ac60f0e0567d1a7cb58feee8e2995ad
+	sha256sums = SKIP
+
+pkgname = pass-secret-service-runit
