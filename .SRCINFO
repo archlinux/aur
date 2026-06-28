@@ -1,6 +1,6 @@
 pkgbase = l1p0-menus-git
 	pkgdesc = GTK4 Layer Shell menus for Hyprland written in Python
-	pkgver = 1.1.2.r0.427b5ad
+	pkgver = 1.1.3.r0.e70ec56
 	pkgrel = 1
 	url = https://github.com/L1p0-M/l1p0-menus
 	arch = any
@@ -18,7 +18,6 @@ pkgbase = l1p0-menus-git
 	depends = python-pulsectl
 	depends = bluez
 	depends = networkmanager
-	depends = python-requests
 	provides = l1p0-menus
 	conflicts = l1p0-menus
 	source = l1p0-menus::git+https://github.com/L1p0-M/l1p0-menus.git
