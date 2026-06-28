@@ -1,5 +1,5 @@
 pkgname=pocketbase-bin
-pkgver=0.39.4
+pkgver=0.39.5
 pkgrel=1
 pkgdesc='Open Source realtime backend in 1 file'
 arch=(x86_64 aarch64 armv7h)
@@ -12,9 +12,9 @@ _src='https://github.com/pocketbase/pocketbase'
 source_x86_64=("$_src/releases/download/v${pkgver}/pocketbase_${pkgver}_linux_amd64.zip")
 source_aarch64=("$_src/releases/download/v${pkgver}/pocketbase_${pkgver}_linux_arm64.zip")
 source_armv7h=("$_src/releases/download/v${pkgver}/pocketbase_${pkgver}_linux_armv7.zip")
-sha256sums_x86_64=('06a3ec70205b3eaf8343e226ab74c132013f7b1e9102e898dbca034bdd622d62')
-sha256sums_aarch64=('a03f3771e487174140e2360e3b7d0500618380cd3e338e4dc012f356ba5db5cf')
-sha256sums_armv7h=('56a4c6fc9765345808422df16ee8f0f6173d724c42a34297c97935758181a843')
+sha256sums_x86_64=('be407d824bcc41468b99051f356fbba9af7f0efd9b46c168482ae25296e799c7')
+sha256sums_aarch64=('83b79cae15452673c83269d1676eb41f90cf42854c00b0ea53d33c5e3290d10d')
+sha256sums_armv7h=('be22f460fa57a5bc4c9fde9753a935eea11be7079be1fb02ad343e7523c39073')
 package() {
   install -Dm755 pocketbase -t "$pkgdir/usr/bin"
   install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$_pkgname"
