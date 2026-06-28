@@ -1,6 +1,6 @@
 pkgname=tribler-bin
 _pkgname=tribler-bin
-pkgver=8.4.2
+pkgver=8.4.3
 pkgrel=1
 pkgdesc="P2P/Bittorrent/YouTube client"
 arch=("x86_64")
@@ -16,7 +16,7 @@ python-pystray)
 
 source=(https://github.com/Tribler/tribler/releases/download/v$pkgver/Tribler_$pkgver\_x64.deb)
 
-sha256sums=('5b37d43bc22c3e11dc792f6ff4e6014f6e2df47a0cc2e46b14b96c57ce9fb70e')
+sha256sums=('260c612286e0c0747d5a83df89cf47a078839d665d14a3e379c810fcfd75c186')
 
 options=(!strip)
 
