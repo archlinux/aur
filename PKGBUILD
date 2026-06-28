@@ -10,7 +10,7 @@ depends=('webkit2gtk-4.1' 'libnm' 'gtk3' 'libappindicator-gtk3')
 makedepends=('go' 'nodejs' 'npm' 'rust' 'cargo')
 install="${pkgname}.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('027a714067114395bcc8ce0f25f51574654b969a453fe857ed66932aec91b23e')
+sha256sums=('8c6d3e8d35fe21c6bc8861a201c89a883f22305a53ab8221c4110dc9da54ca57')
 
 prepare() {
   cd "Synca-$pkgver/desktop"
