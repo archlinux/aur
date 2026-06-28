@@ -26,7 +26,7 @@ b2sums=('975d621a8d7b80f7298aa0723142c3c92c959049136ed6011997d7457188d0a5f657546
 
 package() {
 	msg2 "Install using Using npm"
-	npm install -g \
+	npm install -g --ignore-scripts \
 		--cache "${srcdir}/npm-cache" \
 		--prefix "${pkgdir}/usr" \
 		"${srcdir}/${pkgname}-${pkgver}.tgz"
