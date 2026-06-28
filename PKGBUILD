@@ -1,25 +1,32 @@
 # Maintainer: taotieren <cadmin@taotieren.com>
 
 pkgname=monobit-git
-pkgver=0.42.2.r0.g3d19d930
+pkgver=0.52.0.r0.ged76b370
 pkgrel=1
 pkgdesc='Tools for working with monochrome bitmap fonts'
 url='https://github.com/robhagemans/monobit'
 license=('MIT')
 arch=(any)
-_pydeps=(reportlab
-        pillow
-        bidi
-        arabic-reshaper
-        hatchling
-        uniseg
-        fonttools)
-depends=(python
-         "${_pydeps[@]/#/python-}")
-makedepends=(git
-            python-{build,installer}
-             python-setuptools-scm
-             python-wheel)
+_pydeps=(
+    reportlab
+    pillow
+    bidi
+    arabic-reshaper
+    hatchling
+    uniseg
+    fonttools
+    libarchive-c
+)
+depends=(
+    python
+    "${_pydeps[@]/#/python-}"
+)
+makedepends=(
+    git
+    python-{build,installer}
+    python-setuptools-scm
+    python-wheel
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
