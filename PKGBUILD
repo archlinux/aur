@@ -1,49 +1,53 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
-pkgname=mdcz
-pkgver=0.9.4
+pkgbase=mdcz
+pkgname=("${pkgbase}-desktop")
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Media metadata scraper built on Electron"
 arch=('x86_64' 'aarch64')
-url="https://github.com/ShotHeadman/${pkgname}"
-license=("GPL-3.0-only")
-depends=("bash" "electron" "hicolor-icon-theme")
-makedepends=("npm" "pnpm")
-install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "${pkgname}.desktop"
-        "${pkgname}.sh")
-sha256sums=('f07bbb23bab501525e4edf89c6bb030061d94cdb953115cef995960a99afdeec'
-            'cd05629c20de4406029004536b25694cf4b2e27997695d6aa2b8942258d43683'
-            'bd506812280590fa11c51feeb3e5286ed4dcd6603f1bd796f8cd567a7dfded16')
+url="https://github.com/ShotHeadman/${pkgbase}"
+license=("GPL-3.0-or-later")
+_electron="electron39"
+conflicts=("${pkgbase}")
+replaces=("${pkgbase}")
+depends=("bash" "$_electron" "hicolor-icon-theme")
+makedepends=("pnpm")
+install="${pkgbase}.install"
+source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+        "${pkgbase}.desktop"
+        "${pkgbase}.sh")
+sha256sums=('b6a1c9f14e39cf94621e0b0f1eb64ea7e4644bf7e4b7427741c9aeb40e4c39bc'
+            '045c3410b0ecb1aa6eb4e1a9c5d72f70d49146135f7f631decbc40bbb0bbde40'
+            'cbfd7e103b2cd99572348601e4e9d809d7dca993b1c7d664ddeeb7a24f84549a')
 
 prepare() {
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/electron"
+    sed -i "s|_ELECTRON_VERSION_|$_electron|" "${pkgbase}.sh"
 
-    cd "${pkgname}-${pkgver}"
-    grep -rl 'process.resourcesPath' . | xargs -I {} sed -i "s|process.resourcesPath|'/usr/lib/${pkgname}'|g" {}
-    local _elver=$(cat /usr/lib/electron/version)
-    echo -n Replacing $(cat package.json | grep '"electron":')
-    npm pkg set devDependencies.electron=${_elver}
-    echo with $(cat package.json | grep '"electron":')
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/$_electron"
+
+    cd "${pkgbase}-${pkgver}"
+    grep -rl 'process.resourcesPath' apps/desktop | xargs -I {} sed -i "s|process.resourcesPath|'/usr/lib/${pkgbase}/desktop'|g" {}
     pnpm install
-    find node_modules -type f -name "*.map" -delete
+    find . -type f -name "*.map" -delete
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    pnpm run build
+    cd "${pkgbase}-${pkgver}/apps/desktop"
+    pnpm build
     pnpm exec electron-builder --linux dir --config electron-builder.yml --publish never
-    rm -rf "release/${pkgver}/linux-unpacked/resources/app-update.yml"
+    rm -rf "../../release/${pkgver}/linux-unpacked/resources/app-update.yml"
 }
 
-package() {
-    install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm755 "${pkgname}.sh"      "${pkgdir}/usr/bin/${pkgname}"
+package_mdcz-desktop() {
+    install -Dm644 "${pkgbase}.desktop" "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
+    install -Dm755 "${pkgbase}.sh"      "${pkgdir}/usr/bin/${pkgbase}"
 
-    cd "${pkgname}-${pkgver}"
-    install -Dm644 "build/icon.png"     "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -dm755 "${pkgdir}/usr/lib"
-    cp -r "release/${pkgver}/linux-unpacked/resources" "${pkgdir}/usr/lib/${pkgname}"
+    cd "${pkgbase}-${pkgver}"
+    install -dm755 "${pkgdir}/usr/lib/${pkgbase}"
+    cp -r "release/${pkgver}/linux-unpacked/resources" "${pkgdir}/usr/lib/${pkgbase}/desktop"
+
+    cd apps/desktop
+    install -Dm644 "build/icon.png"     "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
 }

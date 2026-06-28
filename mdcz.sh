@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 MDCZ_USER_FLAGS_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/mdcz/user-flags.conf"
 
@@ -8,4 +8,4 @@ if [[ -f "${MDCZ_USER_FLAGS_FILE}" ]]; then
 fi
 
 # Launch
-exec /usr/bin/electron /usr/lib/mdcz/app.asar $MDCZ_USER_FLAGS "$@"
+exec /usr/bin/_ELECTRON_VERSION_ /usr/lib/mdcz/desktop/app.asar $MDCZ_USER_FLAGS "$@"
