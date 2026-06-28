@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Desktop app for secure remote PC control and management"
 arch=('x86_64')
@@ -67,11 +67,11 @@ optdepends=(
   'spectacle: Screenshot support on KDE Plasma'
   'wl-clipboard: Clipboard support on Wayland'
 )
-_commit=0e99b02e33a51f411e8e2f444f365ab1b51868a9
+_commit=a8798f26530933f3e41791d5c5304f6df83c90b2
 source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz"
         "git+https://github.com/BYTEDz/FerrumCast.git#commit=${_commit}")
-sha256sums=('3b1ff6b238a03cc36a732c62d96848ced206826f39fd978bebaf1c80df9295b5'
-            '72343ed67edb6ecc9cee8b71a6e0a812b135a7322c90f2ce62700d604b0fc0ee')
+sha256sums=('256fbe3e66622f6f29794f1c0f3a89fd615c9e7884e283aba62b7d019753cda3'
+            '75c2627b16d1b3074f9bd68ac274c74533dced37e32ff5c38b76173747a52bc6')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
