@@ -8,6 +8,5 @@
 !.nvchecker.toml
 !LICENSE
 !pear-desktop.install
-!pear-desktop.desktop
-!pear-desktop.png
+!com.github.th-ch.youtube-music.desktop
 !pear-desktop.sh
