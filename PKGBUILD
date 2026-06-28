@@ -6,7 +6,7 @@
 _pkgname=opentubex
 _ghurl='https://github.com/OpenTubeX/OpenTubeX'
 pkgname=${_pkgname}-bin
-pkgver=0.25.5
+pkgver=0.25.6
 pkgrel=1
 pkgdesc="A fork of the open source desktop YouTube player FreeTube with additional features"
 arch=('x86_64' 'aarch64')
@@ -31,5 +31,5 @@ package() {
     ln -s "/opt/OpenTubeX/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
 
-sha256sums_x86_64=('4d68bf5cef324b28e5f2d25fb10d0985b30904f8cfd7440b8f9bed11479337cf')
-sha256sums_aarch64=('5bdee4d603ea292b7584104c94ffe2fce244e52b9c83a65d908cb1850a381f42')
+sha256sums_x86_64=('1e8cffbe9dab84cd161bbb1f85904ef667c0a76a1f44b74f1b233a74c70ca928')
+sha256sums_aarch64=('6e545387500408aa4536f94a3b24debb78f31e71c7b9d62add552fbafc56803c')
