@@ -1,0 +1,8 @@
+/*
+!/.gitignore
+!/README.md
+!/PKGBUILD
+!/.SRCINFO
+!/uudeck.install
+!/launch.sh
+!/uuplugin.service

@@ -1,0 +1,23 @@
+[Unit]
+Description=NetEase UU Accelerator
+Wants=network.target
+After=network.target
+
+[Service]
+Type=simple
+ProtectControlGroups=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+PrivateTmp=yes
+NoNewPrivileges=yes
+RestrictRealtime=yes
+ProtectSystem=strict
+ProtectHome=yes
+LockPersonality=yes
+WorkingDirectory=/var/lib/uu
+ExecStart=/usr/lib/uudeck/launch.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
