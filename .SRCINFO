@@ -1,6 +1,6 @@
 pkgbase = kagi-cli
 	pkgdesc = Agent-native CLI for Kagi subscribers with JSON-first search output
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/Microck/kagi-cli
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = kagi-cli
 	depends = gcc-libs
 	provides = kagi
 	conflicts = kagi
-	source = kagi-cli-0.11.0::git+https://github.com/Microck/kagi-cli.git#commit=3bf660802a0b3997876715301b84f768b3541eac
+	source = kagi-cli-0.12.0::git+https://github.com/Microck/kagi-cli.git#commit=df84610aba5e2668f70dcce0f6167fa27b282f06
 	sha256sums = SKIP
 
 pkgname = kagi-cli
