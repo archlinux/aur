@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include/svt-av1
+
+Name: SvtAv1Enc
+Description: SVT-AV1 Encoder (Tritium fork)
+Version: 4.1.0
+Libs: -L${libdir} -lSvtAv1Enc
+Cflags: -I${includedir}
