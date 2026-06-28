@@ -1,6 +1,6 @@
 # Maintainer: Bryan Rafael <brthy467@gmail.com>
 pkgname=synca
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=5
 pkgdesc="Simple, lightweight, and open source file synchronization client"
 arch=('x86_64')
