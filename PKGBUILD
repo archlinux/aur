@@ -32,7 +32,7 @@ if [[ "$CARCH" == "aarch64" ]]; then
 fi
 source=("mvm-${pkgver}::https://github.com/AlanD20/mvmctl/releases/download/v${pkgver}/mvm${_arch_suffix}"
   "mvm.1-${pkgver}::https://raw.githubusercontent.com/AlanD20/mvmctl/v${pkgver}/docs/mvm.1")
-sha256sums=('46a7248513df579e5e906456c19bb3dc766afaaffbf533545d0453cce0bebfc0' '4d2119cdaa4bc8d8c63890babeb3142823faffb6a777b381d6390f1d2db7f47f')
+sha256sums=('b0e297a3e2e2e1400114b2d61ee70ddcf83786bb956dc5d2dd39c128def5ca99' 'd66c0d13998694d370e818c7c160e68e6196fc23ef391d38bb10100f3e0ae45b')
 
 package() {
   # Install binary
