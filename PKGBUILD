@@ -2,8 +2,8 @@
 
 pkgname=whydpi-git
 _pkgname=whydpi
-pkgver=0.3.0.r0.ghead
-pkgrel=1
+pkgver=1.0.0.r0.ghead
+pkgrel=2
 pkgdesc="Adaptive, per-SNI DPI bypass that learns optimal TLS fragmentation per host (git, main branch)"
 arch=('any')
 url="https://github.com/byrdltd/whyDPI"
