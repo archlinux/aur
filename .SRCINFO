@@ -1,6 +1,6 @@
 pkgbase = sftpgo
 	pkgdesc = Full-featured and highly configurable SFTP, HTTP/S, FTP/S and WebDAV server - S3, Google Cloud Storage, Azure Blob
-	pkgver = 2.7.3
+	pkgver = 2.7.4
 	pkgrel = 1
 	url = https://github.com/drakkan/sftpgo
 	install = sftpgo.install
@@ -17,11 +17,11 @@ pkgbase = sftpgo
 	optdepends = mariadb: to use MySQL provider
 	optdepends = cockroachdb: to use CockroachDB provider
 	backup = etc/sftpgo/sftpgo.json
-	source = git+https://github.com/drakkan/sftpgo#tag=v2.7.3
+	source = git+https://github.com/drakkan/sftpgo#tag=v2.7.4
 	source = sftpgo.json
 	source = sftpgo.sysusers
 	sha256sums = SKIP
-	sha256sums = 27efd36e5a505ed138636f275d6d3a392f2e162d77f4fa2584b12e95197e4ba1
+	sha256sums = 2548f87235f1baa6ab186d440f0b80b6368fbaeababbcbe994f0e2c84c10db29
 	sha256sums = 44658210043f805057c2e4b473653637a91204e4da17954b08081292c72edcb8
 
 pkgname = sftpgo
