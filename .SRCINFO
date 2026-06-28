@@ -1,7 +1,7 @@
 pkgbase = sirius
 	pkgdesc = Domain specific library for electronic structure calculations
 	pkgver = 7.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/electronic-structure/SIRIUS
 	arch = x86_64
 	arch = aarch64
@@ -24,6 +24,7 @@ pkgbase = sirius
 	depends = openmpi
 	depends = blas
 	depends = python
+	depends = pugixml
 	optdepends = magma: Linear algebra on GPU
 	options = !emptydirs
 	source = sirius-7.11.1.tar.gz::https://github.com/electronic-structure/SIRIUS/archive/v7.11.1.tar.gz
