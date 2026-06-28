@@ -7,7 +7,7 @@ if [ -z ${Microarchitecture+x} ]; then
   Microarchitecture=CONFIG_GENERIC_CPU
 fi
 pkgbase=linux-zencjk
-pkgver=7.0.13.zen1
+pkgver=7.1.2.zen1
 pkgrel=1
 pkgdesc='Linux ZEN (with cjktty patch)'
 url="https://github.com/zen-kernel/zen-kernel"
@@ -35,7 +35,7 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   "config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/${pkgver}-${pkgrel}/config.x86_64"   # the main kernel config file
-  "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v7.x/cjktty-7.0.11.patch"
+  "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v7.x/cjktty-7.1.patch"
   "0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch"
 )
 validpgpkeys=(
@@ -43,12 +43,12 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
-b2sums=('c92878038062d7f41f805fa8d2bcbc4f1621c7d07e6b210b0ed03b3aa078832b4978761c391db3583459902acb1b22072ee5ebbcd6e37e9e263308b9c9521a5d'
+b2sums=('0d6e9ff535af085190da7df50887b20f395cd4d6befb7158c9993bf77fe92459a9982877ce944ca522192daa5a54c952c3d368def04b579796ba7109a972453b'
         'SKIP'
-        'af75f1c66a0e02939e9271a619f4696315257802265db29ba5ecc79c83e481edf3be81bf238fb59dfea02983aae518c8a416238fd98939892e995049d6fc67dd'
+        'a74d64812070ea26694fb86d481874114c8af54a71f0e7b49901e5f15c0a12b4abe134fd545ef88afbf728e8b7df04604be750e7fb9619b374717358f8698dc0'
         'SKIP'
-        'dff8114fc48c0ce164a7213a85b88658d6493858f4e612ac522edd9d5274fe133234a2106d792608d05dd0e0eeb1844bcc043c26c18c7c64239f763bf69e4a28'
-        '1126d744a95275b147927eded508150212f03e32b65433c0981b85411342cb4becb814f00871c6d8e6ec1f710acc17dbcb50e9a4bcd6e7f2cc75a6cde06bf78c'
+        '18b3521a55d0afc42a00ed5f12771e1f76c5cc6433d6cbc47eb297f104d7b129e805f895c1c9a6e9c22bd50d5cc323408f8b585a7cd752dd2934e0b408b81107'
+        '2b2377daa5bbadb6896839678a74adfc999e11cbcc9bb41e71a4445e7ed3d101c327ffa2c53b54e9c0a45fd61901fc860e518aafe552b357797c37bb33d91c84'
         '101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678')
 
 
