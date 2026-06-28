@@ -14,16 +14,16 @@ pkgname=mongodb
 _pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
 pkgver=8.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
 url="https://www.mongodb.com/"
 license=("SSPL-1.0")
 depends=('libstemmer' 'snappy' 'yaml-cpp' 'libunwind' 'curl' 'zstd' 'zlib'
-         'libsasl' 'openssl' 'glibc' 'gcc14-libs')
+         'libsasl' 'openssl' 'glibc' 'gcc15-libs')
 makedepends=('python' 'python-psutil' 'python-setuptools' 'python-regex' 'python-cheetah3'
              'python-yaml' 'python-requests' 'python-pymongo' 'python-gitpython'
-             'python-distro' 'python-retry' 'python-timeout-decorator' 'gcc14' 'lld' 'onetbb'
+             'python-distro' 'python-retry' 'python-timeout-decorator' 'gcc15' 'lld' 'onetbb'
              'bazelisk' 'bc' 'libxml2-legacy' 'python-boto3' 'python-yaml' 'python-pymongo')
 optdepends=('mongodb-tools: mongoimport, mongodump, mongotop, etc'
             'mongosh: interactive shell to connect with MongoDB')
@@ -71,6 +71,10 @@ prepare() {
   # See: https://jira.mongodb.org/browse/SERVER-38086
   sed -i 's/\[Service]/[Service]\nTimeoutStartSec=infinity/' rpm/mongod.service
 
+  # Enable Glibc's RSEQ, which as a side effect disables TCMalloc's RSEQ usage, required for kernels 6.19+
+  # See: https://jira.mongodb.org/browse/SERVER-121912
+  sed -i 's/Environment="GLIBC_TUNABLES=glibc.pthread.rseq=0"/Environment="GLIBC_TUNABLES=glibc.pthread.rseq=1"/' rpm/mongod.service
+
   for file in "$srcdir"/*.patch; do
     echo "Applying patch $file..."
     patch -Np1 -i "$file"
@@ -80,10 +84,10 @@ prepare() {
 build() {
   cd "${srcdir}/mongo-r${pkgver}"
   
-  # Set gcc14 toolchain for Bazel to resolve C++ toolchain properly
-  export CC="${CC:-gcc-14}"
-  export CXX="${CXX:-g++-14}"
-  export AR="${AR:-gcc-ar-14}"
+  # Set gcc15 toolchain for Bazel to resolve C++ toolchain properly
+  export CC="${CC:-gcc-15}"
+  export CXX="${CXX:-g++-15}"
+  export AR="${AR:-gcc-ar-15}"
   
   # export BAZELISK_SKIP_WRAPPER=1
   # export MONGO_BAZEL_WRAPPER_DEBUG=1

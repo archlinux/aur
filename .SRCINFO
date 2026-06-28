@@ -1,7 +1,7 @@
 pkgbase = mongodb
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
 	pkgver = 8.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mongodb.com/
 	arch = x86_64
 	license = SSPL-1.0
@@ -17,7 +17,7 @@ pkgbase = mongodb
 	makedepends = python-distro
 	makedepends = python-retry
 	makedepends = python-timeout-decorator
-	makedepends = gcc14
+	makedepends = gcc15
 	makedepends = lld
 	makedepends = onetbb
 	makedepends = bazelisk
@@ -36,7 +36,7 @@ pkgbase = mongodb
 	depends = libsasl
 	depends = openssl
 	depends = glibc
-	depends = gcc14-libs
+	depends = gcc15-libs
 	optdepends = mongodb-tools: mongoimport, mongodump, mongotop, etc
 	optdepends = mongosh: interactive shell to connect with MongoDB
 	provides = mongodb=8.3.4
