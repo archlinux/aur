@@ -1,6 +1,6 @@
 pkgbase = gitv-bin
 	pkgdesc = A terminal-based viewer for GitHub issues
-	pkgver = 0.4.3
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/JayanAXHF/gitv
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = gitv-bin
 	depends = libgcc
 	provides = gitv
 	conflicts = gitv
-	source = README-0.4.3.md::https://raw.githubusercontent.com/JayanAXHF/gitv/gitv-tui-v0.4.3/README.md
-	source = LICENSE-0.4.3::https://raw.githubusercontent.com/JayanAXHF/gitv/gitv-tui-v0.4.3/LICENSE-MIT
+	source = README-0.4.5.md::https://raw.githubusercontent.com/JayanAXHF/gitv/gitv-tui-v0.4.5/README.md
+	source = LICENSE-0.4.5::https://raw.githubusercontent.com/JayanAXHF/gitv/gitv-tui-v0.4.5/LICENSE-MIT
 	sha256sums = 29a3ccf767afca6f642e0443f5a5ff56fcee3270981be4aa8ca806976cd552ab
 	sha256sums = a200714fe406a47e3884b5ecbd250df63d8687399ba8f0f10f50f32d384c673a
-	source_x86_64 = gitv-x86_64-0.4.3.tgz::https://github.com/JayanAXHF/gitv/releases/download/gitv-tui-v0.4.3/gitv-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 78b800c4905db3a3c73135a2b4c8493264a05400a06e9d00a0ed8338ccbb7014
-	source_aarch64 = gitv-aarch64-0.4.3.tgz::https://github.com/JayanAXHF/gitv/releases/download/gitv-tui-v0.4.3/gitv-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = b996e76b39d0afa59bed48eabe753da9e28a381311b6b1b3bfa9869d9c39aa3d
+	source_x86_64 = gitv-x86_64-0.4.5.tgz::https://github.com/JayanAXHF/gitv/releases/download/gitv-tui-v0.4.5/gitv-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = c86f06a3f13756e74b338061578e9644014c9c562a80699ee0cb3b6423279ef9
+	source_aarch64 = gitv-aarch64-0.4.5.tgz::https://github.com/JayanAXHF/gitv/releases/download/gitv-tui-v0.4.5/gitv-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 54ea2241475430ff7b1cda4f6f96891614a54417b390f2bf5761a3805644a64a
 
 pkgname = gitv-bin
