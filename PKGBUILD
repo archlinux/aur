@@ -3,7 +3,7 @@
 pkgname=whydpi-git
 _pkgname=whydpi
 pkgver=1.0.1.r0.ghead
-pkgrel=3
+pkgrel=2
 pkgdesc="Adaptive, per-SNI DPI bypass that learns optimal TLS fragmentation per host (git, main branch)"
 arch=('any')
 url="https://github.com/byrdltd/whyDPI"
@@ -33,9 +33,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  # Produces: <setup.py version>.r<commits since>.g<short sha>
+  # Produces: <pyproject.toml version>.r<commits since>.g<short sha>
   local ver
-  ver=$(python -c "import re,pathlib;print(re.search(r'version=\"([^\"]+)\"', pathlib.Path('setup.py').read_text()).group(1))")
+  ver=$(python -c "import re,pathlib;print(re.search(r'^version\s*=\s*\"([^\"]+)\"', pathlib.Path('pyproject.toml').read_text(), re.M).group(1))")
   printf '%s.r%s.g%s' \
     "${ver}" \
     "$(git rev-list --count HEAD)" \
