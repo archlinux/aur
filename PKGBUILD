@@ -1,7 +1,7 @@
 # Maintainer: kvunoff <kvunoff@proton.me>
 pkgname=whoisthat
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.6.0-2
+pkgrel=1
 pkgdesc="Modern terminal-based VPN client with Xray-core backend"
 arch=('x86_64')
 url="https://github.com/kvunoff/whoisthat"
@@ -33,5 +33,4 @@ package() {
     install -Dm755 target/release/whoisthat              "${pkgdir}/usr/bin/whoisthat"
     install -Dm755 core/core/whoisthat-core               "${pkgdir}/usr/bin/whoisthat-core"
     install -Dm755 parser/target/release/whoisthat-parser "${pkgdir}/usr/bin/whoisthat-parser"
-    install -Dm644 pkg/whoisthat.service                  "${pkgdir}/usr/lib/systemd/user/whoisthat.service"
 }
