@@ -1,6 +1,6 @@
 # Maintainer: Valentin Lukyanets <valikluks95@gmail.com>
 pkgname=draind
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Linux power management daemon inspired by Windows power profiles"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('systemd-libs')
 makedepends=('cmake' 'ninja' 'wayland' 'wayland-protocols')
 optdepends=('wayland: Wayland idle detection via ext-idle-notify-v1')
-backup=('etc/draind/draind.json')
+backup=('etc/draind/draind.json' 'etc/xdg/draind/draind-agent.json')
 install=draind.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vlukyanets/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
