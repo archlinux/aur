@@ -1,6 +1,6 @@
 pkgbase = alt-sendme
 	pkgdesc = Peer-to-peer file and folder transfer app without cloud storage
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/tonyantony300/alt-sendme
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = alt-sendme
 	conflicts = alt-sendme-bin
 	conflicts = alt-sendme-git
 	options = !lto
-	source = alt-sendme-0.4.1.tar.gz::https://github.com/tonyantony300/alt-sendme/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = b28932dc4986a8bd8867cd754998f1cf17d93c986ae436bf86d7cdf07b815c5d
+	source = alt-sendme-0.4.2.tar.gz::https://github.com/tonyantony300/alt-sendme/archive/refs/tags/v0.4.2.tar.gz
+	sha256sums = 3f8bf78b62a0edad616b703f8cae355cd104e4c00d525c6013c97aa6a33c3159
 
 pkgname = alt-sendme
