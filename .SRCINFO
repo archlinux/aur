@@ -1,6 +1,6 @@
 pkgbase = netcatty-bin
 	pkgdesc = AI-Powered SSH Client, SFTP Browser & Terminal Manager
-	pkgver = 1.1.46
+	pkgver = 1.1.47
 	pkgrel = 1
 	url = https://github.com/binaricat/Netcatty
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = netcatty-bin
 	conflicts = netcatty
 	options = !strip
 	options = !debug
-	source_x86_64 = netcatty-1.1.46-x86_64.AppImage::https://github.com/binaricat/Netcatty/releases/download/v1.1.46/Netcatty-1.1.46-linux-x86_64.AppImage
-	sha256sums_x86_64 = 0394c476b30cbe8d3718bc58e25c998b94774ef7be20e75ee811ecbf399198ed
-	source_aarch64 = netcatty-1.1.46-aarch64.AppImage::https://github.com/binaricat/Netcatty/releases/download/v1.1.46/Netcatty-1.1.46-linux-arm64.AppImage
-	sha256sums_aarch64 = a3d00a2d85b4f9124a6482480f8e7e9ac0b08ece3505c6690589101d526a42e8
+	source_x86_64 = netcatty-1.1.47-x86_64.AppImage::https://github.com/binaricat/Netcatty/releases/download/v1.1.47/Netcatty-1.1.47-linux-x86_64.AppImage
+	sha256sums_x86_64 = ab7ede5f04c24405dd5ae8d42ec37b75454d26cecdbfbd650156cd129526b9cb
+	source_aarch64 = netcatty-1.1.47-aarch64.AppImage::https://github.com/binaricat/Netcatty/releases/download/v1.1.47/Netcatty-1.1.47-linux-arm64.AppImage
+	sha256sums_aarch64 = 522dab100832f2852dd0569c4bbcd80cbe62e023b87c007b58139603576d5f6c
 
 pkgname = netcatty-bin
