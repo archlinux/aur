@@ -1,7 +1,7 @@
 # Maintainer: NotFrost <notfrost@github>
 
 pkgname=frozen-rpc
-pkgver=1.0.0.beta.1
+pkgver=1.0.0.beta.2
 pkgrel=1
 pkgdesc="Cross-platform Discord Rich Presence injector with OAuth2 and Gateway support"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('electron' 'nodejs' 'npm')
 makedepends=('git')
 options=('!strip' '!debug')
-source=("$pkgname::git+$url.git#tag=v1.0.0-beta-1")
+source=("$pkgname::git+$url.git#tag=v1.0.0-beta-2")
 sha256sums=('SKIP')
 
 prepare() {
