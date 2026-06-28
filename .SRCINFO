@@ -1,6 +1,6 @@
 pkgbase = tui-worktree-bin
 	pkgdesc = A terminal UI for reviewing AI-generated Git worktree changes
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/overthinker1127/tui-worktree
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = tui-worktree-bin
 	provides = tui-worktree
 	conflicts = tui-worktree
 	options = !strip
-	source_x86_64 = tui-worktree-x86_64-1.0.4.tgz::https://github.com/overthinker1127/tui-worktree/releases/download/v1.0.4/tui-worktree_1.0.4_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 83b32eada41008fa68d40dfcebca098de1f9c5bb1612eb76200a976642c68b48
-	source_aarch64 = tui-worktree-aarch64-1.0.4.tgz::https://github.com/overthinker1127/tui-worktree/releases/download/v1.0.4/tui-worktree_1.0.4_linux_arm64.tar.gz
-	sha256sums_aarch64 = 3101bf4f16ced735da577272f7dd82f2f9a108d67ade58eb07ff48c4a0bdecc2
+	source_x86_64 = tui-worktree-x86_64-1.0.5.tgz::https://github.com/overthinker1127/tui-worktree/releases/download/v1.0.5/tui-worktree_1.0.5_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 74bf1b40a6e988e63bccc26b05b3decb1fd2f3b38b24bca84681a990abcbbd45
+	source_aarch64 = tui-worktree-aarch64-1.0.5.tgz::https://github.com/overthinker1127/tui-worktree/releases/download/v1.0.5/tui-worktree_1.0.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3f2b8d1a782761506d04154db61ac6c4459700e769a9a6c72495c509a30fb986
 
 pkgname = tui-worktree-bin
