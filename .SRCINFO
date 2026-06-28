@@ -1,0 +1,19 @@
+pkgbase = soundcloudqt-git
+	pkgdesc = Touch-friendly Qt SoundCloud client
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://git.getholo.today/ldr/soundcloudqt
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = qt6-base
+	depends = qt6-multimedia
+	provides = soundcloudqt
+	conflicts = soundcloudqt
+	source = git+https://git.getholo.today/ldr/soundcloudqt.git
+	sha256sums = SKIP
+
+pkgname = soundcloudqt-git
