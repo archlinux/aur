@@ -1,6 +1,6 @@
 pkgbase = extreme-ultimate-bashrc
-	pkgdesc = Feature-rich bash configuration framework with 108 functions, 113 aliases, auto-detection, and extensive documentation
-	pkgver = 1.0.5
+	pkgdesc = Feature-rich bash configuration framework with 147 functions, 488 aliases, auto-detection, and extensive documentation
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://sourceforge.net/projects/ultimate-bashrc/
 	install = extreme-ultimate-bashrc.install
@@ -33,7 +33,7 @@ pkgbase = extreme-ultimate-bashrc
 	optdepends = trash-cli: command-line trash utility
 	optdepends = yt-dlp: video downloader
 	optdepends = zoxide: smart directory jumping
-	source = extreme-ultimate-bashrc-1.0.5.tar.gz::https://sourceforge.net/projects/ultimate-bashrc/files/aur/extreme-ultimate-bashrc-1.0.5.tar.gz/download
-	sha256sums = ff2ef87e9c6a8883c43a3599f7ff25bcf774f9153587fe068548c7c098adea52
+	source = extreme-ultimate-bashrc-1.0.6.tar.gz::https://sourceforge.net/projects/ultimate-bashrc/files/aur/extreme-ultimate-bashrc-1.0.6.tar.gz/download
+	sha256sums = 6850707fc3fe4f362a17c59cc818f96d6ed88c3720c82f1c70efaf4219a69b69
 
 pkgname = extreme-ultimate-bashrc
