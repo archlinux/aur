@@ -6,8 +6,8 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="Tool for fetch everythin' in internet"
 
-pkgver=0.7.4
-pkgrel=2
+pkgver=0.7.5
+pkgrel=1
 _gitversion=v${pkgver}
 
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ options=(!strip)
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${_gitversion}.tar.gz"
 		"${_appname}.desktop")
-sha256sums=('bb0a5f32eb71712909781bbefbc2a4601e724a06038707be783c30a0ffcb72f4'
+sha256sums=('17912c803639dbaf0c5f1d237027da0011ed8a55a19d63a30d28c81ef9c6216d'
             'ae922cb150cbec60cebb3b46423396d452e02f62dfafb88952fe19aaf0381bc7')
 
 
