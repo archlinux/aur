@@ -7,19 +7,31 @@
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 # Contributor: Toolybird <toolybird at tuta dot io>
 
-pkgname=godot-double-bin
-pkgver=4.6
+pkgbase=godot-double-bin
+pkgname=(godot-double-bin godot-double-mono-bin)
+pkgver=4.7
 pkgrel=1
 pkgdesc='Advanced cross-platform 2D and 3D game engine (double-precision build)'
-arch=(x86_64)
+arch=('x86_64' )
 url="https://godotengine.org/"
-license=(MIT)
-provides=("godot-double")
-conflicts=("godot-double")
-source=("godot-double-4.6-1-x86_64.pkg.tar.zst::https://github.com/Norpyx-Godot/godot-double/releases/download/v4.6-1/godot-double-4.6-1-x86_64.pkg.tar.zst")
-noextract=("godot-double-4.6-1-x86_64.pkg.tar.zst")
-sha256sums=('282f78fa5d8663c32f19271175ed3105d6942c120ab33f10bb34a141cb78bba8')
+license=('MIT' )
+depends=('brotli' 'ca-certificates' 'embree' 'freetype2' 'graphite' 'libglvnd' 'libspeechd' 'libsquish' 'libtheora' 'libvorbis' 'libwebp' 'libwslay' 'libxcursor' 'libxi' 'libxinerama' 'libxrandr' 'miniupnpc' 'openxr' 'pcre2' )
+optdepends=('pipewire-alsa: for audio support' 'pulse-native-provider: for audio support' )
+source=("godot-double-4.7-1-x86_64.pkg.tar.zst::https://github.com/Norpyx-Godot/godot-double/releases/download/v4.7-1/godot-double-4.7-1-x86_64.pkg.tar.zst"
+        "godot-double-mono-4.7-1-x86_64.pkg.tar.zst::https://github.com/Norpyx-Godot/godot-double/releases/download/v4.7-1/godot-double-mono-4.7-1-x86_64.pkg.tar.zst")
+noextract=("godot-double-4.7-1-x86_64.pkg.tar.zst" "godot-double-mono-4.7-1-x86_64.pkg.tar.zst")
+sha256sums=('2b7068e2c8ec3d308a3390a834784fe324f5b55a7d2e9e985ec2c5d2c3156195'
+            '1a0d7f2dff3ddc8571c427832ad7e8233d93006fc63b6cef4b100ab71887f302')
 
-package() {
-	bsdtar -xf "${srcdir}/godot-double-4.6-1-x86_64.pkg.tar.zst" -C "${pkgdir}" --strip-components=0 usr
+package_godot-double-bin() {
+	provides=("godot-double")
+	conflicts=("godot-double")
+	bsdtar -xf "${srcdir}/godot-double-4.7-1-x86_64.pkg.tar.zst" -C "${pkgdir}" --strip-components=0 usr
+}
+
+package_godot-double-mono-bin() {
+	provides=("godot-double-mono")
+	conflicts=("godot-double-mono")
+	depends+=(dotnet-sdk-8.0)
+	bsdtar -xf "${srcdir}/godot-double-mono-4.7-1-x86_64.pkg.tar.zst" -C "${pkgdir}" --strip-components=0 usr
 }
