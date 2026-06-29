@@ -1,14 +1,17 @@
 pkgbase = wapt-agent
 	pkgdesc = WAPT Agent
-	pkgver = 2.6.1.17576
+	pkgver = 2.6.1.17834
 	pkgrel = 1
 	url = https://www.wapt.fr/en/doc/
 	arch = x86_64
 	license = custom
 	optdepends = syslog-ng
-	source = https://wapt.tranquil.it/debian/wapt-2.6.1.17576/pool/main/t/tis-waptagent/tis-waptagent_2.6.1.17576-407e255f-amd64_amd64.deb
+	options = !strip
+	options = !debug
+	options = !lto
+	source = https://wapt.tranquil.it/debian/wapt-2.6.1.17834/pool/main/t/tis-waptagent/tis-waptagent_2.6.1.17834-bd5dd3d4-amd64_amd64.deb
 	source = LICENSE
-	b2sums = 06d02af5d701aa90a944a663e0dd60f279a2199ac34ea0d4882a426073253ca26562cbbe4fb2286bec0b2d645488695597209169b20930657c3c90841ac917eb
+	b2sums = 43f698157ea8e82fa0d43f55d9c58ed7fb18896f406010fc73025795c7b49f55278f93784bd502f39f24c6e3c05557769f2633ef155edd636c06c9643805af62
 	b2sums = cd5269b8c3c36750904835e589d401e868c808df46ee265aa63b8720a09d066448f03b20c7e45949ae5ef59bf3ca90d73d15a0e18ce786f91ee51193e615c501
 
 pkgname = wapt-agent
