@@ -5,6 +5,7 @@ SHELOPTS=-euo pipefail
 
 .buildenvid: build-dev.Dockerfile
 	docker build \
+	  --no-cache \
 	  --pull \
 	  --network=host \
 	  -f build-dev.Dockerfile \
