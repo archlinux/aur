@@ -1,11 +1,11 @@
 pkgbase = goren-bin
 	pkgdesc = Batch file renaming in the terminal with a live preview TUI
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/mikelexp/goren
 	arch = x86_64
 	license = MIT
-	source = https://github.com/mikelexp/goren/releases/download/v1.0.2/goren-1.0.2-linux-x86_64.tar.gz
-	sha256sums = 30aaa980961be311fb705103b27af2064ed4c4b25354bed8babd749581e4a541
+	source = https://github.com/mikelexp/goren/releases/download/v1.0.3/goren-1.0.3-linux-x86_64.tar.gz
+	sha256sums = 8a5cd5559b142badfdecdafa3de5ab2eae400f65913f94e07a08a741307a879a
 
 pkgname = goren-bin
