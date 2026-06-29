@@ -75,7 +75,6 @@ sha512sums=('2a185b1388744ff2ae36d87a56734532381fa0fcfa71b7c973ac0efbafe0347a9ae
 b2sums=('9846ac2506e74038ad74d1f79e9de8eadd1f0d54a5855109e3d38fb4e960c9f0f7d004c06e893ec8aac9f4ffa3cd86fa933583acaf61613e722d365a1a00316c')
 
 prepare() {
-  set -x
   cd PowerShell
   local _publish_path="$srcdir/PowerShell/bin/Release/net$_dotnetsdkver"
 
