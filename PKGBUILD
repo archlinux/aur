@@ -2,7 +2,7 @@
 pkgname=mujoco-bin
 pkgver=3.10.0
 _pkgname="${pkgname%-bin}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-Joint dynamics with Contact. A general purpose physics simulator."
 arch=('x86_64' 'aarch64')
 url="https://www.mujoco.org"
@@ -21,7 +21,7 @@ package() {
 
 	# Library and header files
 	install -d "$pkgdir/usr/"
-	cp -r include "$pkgdir/usr/"
+	cp -r include/mujoco "$pkgdir/usr/mujoco"
 	cp -r lib "$pkgdir/usr/"
 
 	# Sample binaries
@@ -31,6 +31,7 @@ package() {
 	install -d "$pkgdir/usr/share/doc/${_pkgname}"
 	cp -r model "$pkgdir/usr/share/doc/${_pkgname}/"
 	cp -r sample "$pkgdir/usr/share/doc/${_pkgname}/"
+	cp -r simulate "$pkgdir/usr/share/doc/${_pkgname}/"
 
 	# License
 	install -Dm644 -t "$pkgdir/usr/share/licenses/${_pkgname}/" \

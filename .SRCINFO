@@ -1,7 +1,7 @@
 pkgbase = mujoco-bin
 	pkgdesc = Multi-Joint dynamics with Contact. A general purpose physics simulator.
 	pkgver = 3.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mujoco.org
 	arch = x86_64
 	arch = aarch64
