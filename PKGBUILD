@@ -25,7 +25,7 @@ makedepends=(
   'ninja'
   'unzip'
 )
-source=("git+https://github.com/ente-io/ente.git#tag=auth-v$pkgver"
+source=("git+https://github.com/ente/ente.git#tag=auth-v$pkgver"
         'git+https://github.com/simple-icons/simple-icons.git'
         'enteauth.desktop')
 sha256sums=('41d79ef4e7e402df42684b94fb09c91162550d9990cb9b752b1b6c5fbd806b2f'
