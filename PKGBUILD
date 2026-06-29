@@ -1,10 +1,10 @@
 # Maintainer: Vadim Gerasimov <angryvadik@gmail.com>
 pkgname=media-server
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 # Web client release to bundle. Must share the same minor version as pkgver
 # (the project keeps the server and web-client minor versions in lockstep).
-_webver=0.8.0
+_webver=0.8.1
 pkgdesc="Self-hosted media server"
 arch=('x86_64')
 url="https://github.com/dog4ik/media-server"
@@ -19,7 +19,7 @@ source=(
 )
 # git source uses SKIP (tag-pinned); tarball pins a real checksum (`updpkgsums`).
 sha256sums=('SKIP'
-            '08a8598705b839b5ddef46f11aec2f60077c200f201418c49a9a0c0bb54b1506')
+            '066c1896077ff5f54cad1cc922284383f9f5df2965990bd0d37ea01efac8861a')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
