@@ -6,7 +6,7 @@
 # checksums with `updpkgsums`, so review keeps surfacing genuine changes only.
 
 pkgname=kdash
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='A simple and fast dashboard for Kubernetes'
 arch=('armv7h' 'aarch64' 'i686' 'x86_64')
@@ -21,7 +21,7 @@ optdepends=('libxcb: copy-to-clipboard support')
 makedepends=('git' 'rust')
 options=('!lto')
 source=("${pkgname}::git+https://github.com/kdash-rs/${pkgname}.git#tag=v${pkgver}")
-b2sums=('5258f406e464dd31efed259689473ed1aef2e8277459059af3374d941241170cc11903ba7027a2c19599ed5e9254374ab8a6ef793403f4604f7c2a490525a5f5')
+b2sums=('ea9598890bfc302ec8688221df879f679251112adf6bfc483a02b701c9df4a414fdf0d8cb07d2417202487cea196a866524ba92183cccc61260e7798513d24ed')
 
 prepare() {
   cd "${pkgname}"
