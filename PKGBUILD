@@ -1,8 +1,8 @@
-# Maintainer: orange-guo
-# Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/packages/antigravity-tools-bin
+# Maintainer: theorangeguo
+# Packaging Repo: https://github.com/theorangeguo/aur-packages/tree/main/packages/antigravity-tools-bin
 pkgname=antigravity-tools-bin
 pkgver=4.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc=Professional\ Antigravity\ Account\ Manager\ \&\ Switcher
 arch=(x86_64 )
 url=https://github.com/lbjlaq/Antigravity-Manager
