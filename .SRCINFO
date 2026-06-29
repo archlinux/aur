@@ -1,0 +1,17 @@
+pkgbase = latemount-openrc-git
+	pkgdesc = OpenRC init script that mounts specified mountpoints at later time in the boot process.
+	pkgver = 0.5.r3.20260629.1d658ce
+	pkgrel = 1
+	url = https://codeberg.org/dreieck/latemount-openrc
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	optdepends = openrc: To make use of this script.
+	provides = latemount-openrc=0.5.r3.20260629.1d658ce
+	conflicts = latemount-openrc
+	options = !emptydirs
+	backup = etc/conf.d/latemount
+	source = latemount-openrc::git+https://codeberg.org/dreieck/latemount-openrc.git
+	sha256sums = SKIP
+
+pkgname = latemount-openrc-git
