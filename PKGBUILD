@@ -2,8 +2,8 @@
 
 _pyname=blackrenderer
 pkgname=python-$_pyname
-pkgver=0.6.0
-pkgrel=5
+pkgver=0.8.2
+pkgrel=1
 pkgdesc='a Python-based renderer for OpenType COLR fonts, with multiple backends'
 arch=(any)
 url=https://github.com/BlackFoundryCom/black-renderer
@@ -24,7 +24,7 @@ checkdepends=(python-cairo
               python-pytest)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('639e30d2ddd080e90780e45130ac202c5f4f5180db5d6c48f61a222d58560952')
+sha256sums=('13c97569c4b05c0e9f7c4e85af4f4a8ac9c3e76bd6a43e2c5307b4df25ac11c6')
 
 build() {
 	cd "$_archive"
