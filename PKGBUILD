@@ -1,14 +1,19 @@
 # Maintainer: AkitaOnRails <boss@akitaonrails.com>
 
 pkgname=geary-email-autocomplete
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="GTK3 module that widens Geary recipient autocomplete from its contact history"
 arch=('x86_64' 'aarch64')
 url="https://github.com/akitaonrails/geary-email-autocomplete"
 license=('MIT')
-# Source package pairs with geary-git, matching geary-hide-sidebar's source package.
-depends=('geary-git' 'gtk3' 'glib2' 'sqlite')
+# The module links only against GTK/GLib/SQLite and can run with either stable
+# `geary` or `geary-git`. Do not depend on either package directly: geary-git
+# conflicts with geary but does not provide it, so a hard dependency would force
+# the wrong variant on some systems.
+depends=('gtk3' 'glib2' 'sqlite')
+optdepends=('geary: stable Geary client'
+            'geary-git: development Geary client')
 makedepends=('pkgconf')
 checkdepends=('xorg-server-xvfb')
 provides=("$pkgname=$pkgver")
@@ -16,7 +21,7 @@ conflicts=('geary-email-autocomplete-bin')
 options=('!debug')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0c95f5b6ec470f83f1709215f190af2a3f2d98af05821e1a16a9c5041f68131b')
+sha256sums=('1cf1371bb20c876d6cfebc95b9a1e532e4d1f9a1f31d1c4124dd14c7a08a52ff')
 
 build() {
     cd "$pkgname-$pkgver"
