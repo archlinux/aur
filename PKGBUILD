@@ -71,6 +71,12 @@ build() {
   make
 }
 
+check() {
+  cd "$srcdir/$pkgname-$pkgver/build"
+
+  CTEST_OUTPUT_ON_FAILURE=1 make test
+}
+
 package() {
   cd "$srcdir/$pkgname-$pkgver/build"
 
