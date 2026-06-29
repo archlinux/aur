@@ -14,6 +14,6 @@ pkgbase = pince-bin
 	noextract = PINCE-x86_64-0.9.1.AppImage
 	options = !strip
 	source = PINCE-x86_64-0.9.1.AppImage::https://github.com/korcankaraokcu/PINCE/releases/download/v0.9.1/PINCE-x86_64.AppImage
-	sha256sums = d228ad392712866abbc75bc5b2f97b9a113d7f33c08a72c0b176e6a5666b0207
+	sha256sums = c0fd5060e699500b1a0155413dafbe8c71d2add255228285c159d7fccf157f7e
 
 pkgname = pince-bin
