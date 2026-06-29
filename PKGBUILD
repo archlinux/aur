@@ -9,7 +9,7 @@
 
 pkgname=keeperfx-git
 pkgver=1.3.2.r0.g0000000
-pkgrel=2
+pkgrel=3
 pkgdesc='Dungeon Keeper remake (KeeperFX), native Linux build. Requires you own the original Dungeon Keeper.'
 arch=('x86_64')
 url='https://github.com/DoubyCz/keeperfx'
@@ -33,9 +33,11 @@ sha256sums=('SKIP'
             '2a8b0dcce85b954c5328f4c6cc8dc7f6ecf6243a4df04a7145fdc48c9aa45b8a')
 
 pkgver() {
+  # The fork branch carries `appimage.*` tags that make `git describe` ugly
+  # (appimage.v1.3.2.r0.g…). Derive a clean VCS version from the known data release
+  # + commit count + short hash instead: 1.3.2.rN.gHASH.
   cd "$pkgname"
-  git describe --long --tags --always 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
-    || printf '%s.r%s.g%s' "$_datever" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf '%s.r%s.g%s' "$_datever" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
