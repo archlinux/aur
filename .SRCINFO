@@ -13,7 +13,7 @@ pkgbase = miyu
 	optdepends = fish: fish shell integration support
 	optdepends = bash: bash shell integration support
 	optdepends = zsh: zsh shell integration support
-	source = miyu-0.1.1-2-x86_64.release.pkg.tar.zst::https://github.com/SHORiN-KiWATA/Miyu/releases/download/v0.1.1/miyu-0.1.1-2-x86_64.pkg.tar.zst
-	sha256sums = 787baf6493a2749f302eef1ed628b27ddce4560b50e0159e73fd756674f8a96f
+	source = miyu-0.1.1-3-x86_64.release.pkg.tar.zst::https://github.com/SHORiN-KiWATA/Miyu/releases/download/v0.1.1/miyu-0.1.1-3-x86_64.pkg.tar.zst
+	sha256sums = 7fa239bbd3b7614911a81a3b989629314665cfb7b29a5cd8429c4ec6a15fe5a3
 
 pkgname = miyu

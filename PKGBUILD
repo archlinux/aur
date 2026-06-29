@@ -15,8 +15,8 @@ optdepends=(
   'bash: bash shell integration support'
   'zsh: zsh shell integration support'
 )
-source=("${pkgname}-${pkgver}-2-${CARCH}.release.pkg.tar.zst::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-2-${CARCH}.pkg.tar.zst")
-sha256sums=('787baf6493a2749f302eef1ed628b27ddce4560b50e0159e73fd756674f8a96f')
+source=("${pkgname}-${pkgver}-${pkgrel}-${CARCH}.release.pkg.tar.zst::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.zst")
+sha256sums=('7fa239bbd3b7614911a81a3b989629314665cfb7b29a5cd8429c4ec6a15fe5a3')
 
 package() {
   install -Dm755 "${srcdir}/usr/bin/miyu" "${pkgdir}/usr/bin/miyu"
