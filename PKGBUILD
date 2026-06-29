@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=dijo-1995parham
-pkgver=0.4.7
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Scriptable, curses-based, digital habit tracker"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e1a00014aee3d6b72649ff16556b454fe8a5f411aea199eafb087b533deb3854')
+sha256sums=('1b6fa4402e03cdd6532f8875000c0686e5522ebb01c1d5e7a1f033e17382d974')
 
 build() {
   cd dijo-$pkgver
