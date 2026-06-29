@@ -9,12 +9,12 @@
 
 pkgname=keeperfx-git
 pkgver=1.3.2.r0.g0000000
-pkgrel=1
+pkgrel=2
 pkgdesc='Dungeon Keeper remake (KeeperFX), native Linux build. Requires you own the original Dungeon Keeper.'
 arch=('x86_64')
 url='https://github.com/DoubyCz/keeperfx'
 license=('GPL-2.0-or-later')
-depends=('sdl2' 'sdl2_mixer' 'sdl2_net' 'sdl2_image' 'ffmpeg' 'openal' 'luajit'
+depends=('sdl2-compat' 'sdl2_mixer' 'sdl2_net' 'sdl2_image' 'ffmpeg' 'openal' 'luajit'
          'libspng' 'minizip' 'miniupnpc' 'libnatpmp' 'zlib' 'openssl' 'zstd')
 makedepends=('git' 'make' 'gcc' 'curl' '7zip')
 optdepends=('dungeon-keeper-gog: a source for the original DK files needed by keeperfx-install')
