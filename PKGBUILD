@@ -9,7 +9,7 @@ pkgname=(
 )
 pkgver=4.5.5
 _build=1433
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://www.processing.org/'
@@ -18,13 +18,15 @@ depends=('java-environment-openjdk=17' ffmpeg bash glibc mesa libdrm libx11 libx
 makedepends=(gradle)
 options=(!strip)
 source=("https://github.com/processing/processing4/archive/processing-$_build-$pkgver.tar.gz"
-	    'disable_update_check.patch'
-	    'fix_gradle9_compatibility.patch'
-	    'no_jdk_download.patch')
+        'disable_update_check.patch'
+        'fix_desktop_template.patch'
+        'fix_gradle9_compatibility.patch'
+        'no_jdk_download.patch')
 sha256sums=('c196c47f86f18da23276688ce41750d9e1005aac65e7aa2b161ab7d12252f41f'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
+            '3cc6439f82c07cc5f446c08a2d65e34a69a2f661272b672385dfff58a1472bc7'
             '3ea1b137b198047fa09febe37e86a5cc98978bcc6ee4b85bfcb2512dec708846'
-            '603378fb933f4e15301e74426e5c877f5ad65dfc51d96819e1eaabfe4ff0baab')
+            '7849f17eb7979952309f443abc95f2efe8018324b6a87f1dfb6ab35a0138b835')
 
 prepare() {
   # Check if OpenJDK 17 executable is actually installed
@@ -40,6 +42,9 @@ prepare() {
 
   # Symbolic link for not having to repeat the revision number
   ln -sf "${pkgbase}4-processing-$_build-$pkgver" "$pkgbase"
+
+  # Update window class name
+  patch "$pkgbase/build/linux/desktop.template" < fix_desktop_template.patch
 
   # Upgrade instructions to Gradle 9
   patch "$pkgbase/app/build.gradle.kts" < fix_gradle9_compatibility.patch

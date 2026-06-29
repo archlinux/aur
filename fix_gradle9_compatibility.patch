@@ -1,0 +1,13 @@
+--- a/app/build.gradle.kts	2026-06-24 21:05:46.000000000 +0200
++++ b/app/build.gradle.kts	2026-06-29 09:31:12.613951243 +0200
+@@ -563,9 +563,7 @@
+             exclude("*.so")
+             exclude("*.dll")
+         }.forEach{ file ->
+-            exec {
+-                commandLine("codesign", "--timestamp", "--force", "--deep","--options=runtime", "--entitlements", entitlements, "--sign", "Developer ID Application", file)
+-            }
++            Runtime.getRuntime().exec(arrayOf("codesign", "--timestamp", "--force", "--deep", "--options=runtime", "--entitlements", entitlements, "--sign", "Developer ID Application", file.absolutePath))
+         }
+         jars.forEach { file ->
+             FileOutputStream(File(file.parentFile, file.nameWithoutExtension)).use { fos ->
