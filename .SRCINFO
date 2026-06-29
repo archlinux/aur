@@ -1,14 +1,16 @@
 pkgbase = nexus-cli-bin
-	pkgdesc = Nexus CLI for Docker Registry v2 - Prebuilt Binary
-	pkgver = 1.0.0
+	pkgdesc = Command-line client and MCP server for self-hosted Nexus personal search
+	pkgver = 0.9.0
 	pkgrel = 1
-	url = https://github.com/mlabouardy/nexus-cli
-	arch = x86_64
-	arch = i686
+	url = https://github.com/yasen-pavlov/nexus
 	license = MIT
+	conflicts = nexus-cli
 	provides = nexus-cli
-	source = https://s3.eu-west-2.amazonaws.com/nexus-cli/1.0.0-beta/linux/nexus-cli
-	sha256sums = 942e2d96720e5aba1183f47ecd5f63260e04d4a518d239e662e16fc6e3cb9b2c
-
+	arch = aarch64
+	source_aarch64 = https://github.com/yasen-pavlov/nexus/releases/download/v0.9.0/nexus-cli_0.9.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 953df553bac0ca9496f9f62872c230fa7304f4c7efa84fc7d19047a0468867f2
+	arch = x86_64
+	source_x86_64 = https://github.com/yasen-pavlov/nexus/releases/download/v0.9.0/nexus-cli_0.9.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = f380725f26d2e12e4a486a275a03f1edfd249c0db63a675fac2bad0073d3a5ef
+	
 pkgname = nexus-cli-bin
-
