@@ -1,4 +1,4 @@
-# Maintainer:  Joost Bremmer <toost.b@gmail.com>
+# Maintainer:  Joost Bremmer <contact at madeofmagicandwires.online>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
