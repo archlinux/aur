@@ -17,5 +17,5 @@ sha256sums=('SKIP')
 package() {
   cd "$srcdir"
   bsdtar -xf "Firmium_${pkgver}_amd64.deb"
-  bsdtar -xf "data.tar.gz" -C "$pkgdir"
+  bsdtar -xf "data.tar.zst" -C "$pkgdir"
 }
