@@ -1,0 +1,22 @@
+pkgbase = geary-email-autocomplete
+	pkgdesc = GTK3 module that widens Geary recipient autocomplete from its contact history
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/akitaonrails/geary-email-autocomplete
+	install = geary-email-autocomplete.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = xorg-server-xvfb
+	makedepends = pkgconf
+	depends = geary-git
+	depends = gtk3
+	depends = glib2
+	depends = sqlite
+	provides = geary-email-autocomplete=0.1.1
+	conflicts = geary-email-autocomplete-bin
+	options = !debug
+	source = geary-email-autocomplete-0.1.1.tar.gz::https://github.com/akitaonrails/geary-email-autocomplete/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 0c95f5b6ec470f83f1709215f190af2a3f2d98af05821e1a16a9c5041f68131b
+
+pkgname = geary-email-autocomplete
