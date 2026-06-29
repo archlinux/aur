@@ -43,7 +43,7 @@
 
 pkgbase=ttf-ms-win11
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
-pkgver=10.0.26200.8457
+pkgver=10.0.26200.8737
 pkgrel=1
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
@@ -185,10 +185,10 @@ source=(${_ttf_ms_win11[@]/#/file://}
         ${_ttf_ms_win11_other[@]/#/file://}
         file://license.rtf)
 
-sha256sums=('5f9f2d8104ad5e69e1be8107224063dc8c36f9e24680b2f9be324244c0b424a1'
-            '3680a1bbffab914f36b27d5fd97b193de5bccfab882c41b41b5f8f99457b4820'
-            'c30c71d614e143c0d4e42aaf04d9a1f50f90b365a2654eb3f2c6598e5655af08'
-            '77a0b63c5f73eb85923f10359e68b8fc768487ae88ad902a1ea21276954e205b'
+sha256sums=('b3658eadae55e682b5f69eb64c439c1ecc8f196c0bb8d4756d145d13bc86476a'
+            'e8f4e3baf6cc35fed6fcce3a540e8b39e8f6cda1d22a28f2ec8f526fef7a43f5'
+            '86b32db9a06f9694e2a3760c42e5117bcdc5cc1255bb5186ca8ce0305e22f288'
+            '267a411525980d648f10a7222a6ff1ebe4d4feeefbf9b3100cae2b5cfab5594a'
             '10df702864b1f89cb29ba0d6b97c04228338d16807e13e8d8c74b91aba5e5f23'
             'eaad201da94cb323401fdb8cc760650803ddf8fd704cb9fa56317e6c69bc6fd6'
             '57e93ff143572bcc092c1f56202d43ddc07bb119aa104c6d7af163470fb551f6'
@@ -247,7 +247,7 @@ sha256sums=('5f9f2d8104ad5e69e1be8107224063dc8c36f9e24680b2f9be324244c0b424a1'
             '99f0af2d1941707fecda23da38bafbed5144a73a3720d773c05b9d4c445920ed'
             'd0e722b91ffd5391cc2e7d6e976f274d5aee9fe0b8d0fedfffe093763e695cde'
             'a2efc8b8e51fbd031a7142a1ade8866fa904c0c349511abc579ee53f8a926f31'
-            '9252396fd902fd1a95775ec81f52c5818ee24f8a1297127bfbcca2787c1b03e4'
+            '866a2faa635dfe25ba5ee3d0bbd6c02fbfa13d0d56fc99501ce185db53d5edec'
             '91046862e08fbade0bdd648e81c4efbe6a963947f8b6e32b64a28fe39073c468'
             '3cced0162ddb9e5f1e63ee1b36fd6e581c090318dce1a0af01b77f5ea9952c80'
             'b24aa49a4bcb99a0ffc60cad77f00941e4b121153d8b0a519c03719d9be6004e'
@@ -274,10 +274,10 @@ sha256sums=('5f9f2d8104ad5e69e1be8107224063dc8c36f9e24680b2f9be324244c0b424a1'
             'bbf1192965e5266fbf23370416337d2861fc1e8bd349def93f2994ba67382fc3'
             '9af03d4ad44a3b413d92f7de48b94aa7cc8a1471a75d498406eae837f62ee1d1'
             'b16ed1a15e0cabea8d41d9f8899c253cd61ac466af5e3980d02bd0cf311c2267'
-            'fbb57cdb0079137adc0e478913ca134dfee02aa2ef443738ec5e839bf97a1f7f'
-            'e94ff9111656f17bd81e9f822f1e234edcd370bcbacfdebf998b8938f525ac77'
-            'c2c134968be4259aaa78845d3aca5e91c4a0bd10d98e4d2e48ac3c12f3c63b89'
-            '8d2c8d8d25d9fc529d08558c42effa771617914a455603881e212a26e2f2ddcd'
+            '931c5de5c70401d9324d5014c123802b4fb753000360ceb2f56c589403cd58c5'
+            '54fbe2c70af7c85a97bed0573227e3ccc4b2486012e3ca2a40c6bc77065846f5'
+            'e7f7a88b65188328aea58670f955022e23c712f55679524729da1e4e03c49d88'
+            '3a29d114cb5229e8dbda5bef6c69be4a210a13b7277de4d66e9fc86963226f6c'
             'fe3e8bdd64c1c9f3b9cf5189d06510c80d72cec28e03d04bffc560f77eec58d1'
             'dfcc306777a594d2815368547dd897e2ac82aff8073e55d9e682569939e49b81'
             '9c9dc0cd0fd6b1a06e8f406d04bb15a88aaf20328d3e166c12d6bc7994b781d2'
