@@ -1,6 +1,6 @@
 pkgbase = renovate
 	pkgdesc = Automated dependency updates
-	pkgver = 43.247.1
+	pkgver = 43.248.0
 	pkgrel = 1
 	url = https://github.com/renovatebot/renovate
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = renovate
 	makedepends = git
 	makedepends = pnpm
 	depends = nodejs-lts-krypton
-	source = renovate-43.247.1.tar.gz::https://github.com/renovatebot/renovate/archive/43.247.1.tar.gz
-	sha256sums = eca8c33d3722954870571115e30adad2d4c08f015502f84c0ecd273155504664
+	source = renovate-43.248.0.tar.gz::https://github.com/renovatebot/renovate/archive/43.248.0.tar.gz
+	sha256sums = c4bed0f6c80128227be8d1bb8648fb9acf909967798ad81e07034d5d06e637ce
 
 pkgname = renovate
