@@ -1,0 +1,71 @@
+# Maintainer: SHORiN <shorin@users.noreply.github.com>
+
+pkgname=miyu-git
+pkgver=0.1.0.r0.g0000000
+pkgrel=1
+pkgdesc='Command-line AI assistant'
+arch=('x86_64')
+url='https://github.com/SHORiN-KiWATA/Miyu'
+license=('MIT')
+depends=('alsa-lib' 'chafa' 'gcc-libs' 'glibc' 'ripgrep')
+makedepends=('cargo' 'git' 'pkgconf')
+optdepends=(
+  'git: update default Shorin Wiki knowledge base'
+  'fish: fish shell integration support'
+  'bash: bash shell integration support'
+  'zsh: zsh shell integration support'
+)
+provides=('miyu')
+conflicts=('miyu')
+source=('miyu::git+https://github.com/SHORiN-KiWATA/Miyu.git')
+sha256sums=('SKIP')
+
+pkgver() {
+  cd miyu
+  local version revision commit
+  version="$(grep '^version = ' Cargo.toml | head -n1 | cut -d '"' -f2)"
+  revision="$(git rev-list --count HEAD)"
+  commit="$(git rev-parse --short HEAD)"
+  printf '%s.r%s.g%s' "${version}" "${revision}" "${commit}"
+}
+
+prepare() {
+  cd miyu
+  cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+}
+
+build() {
+  cd miyu
+  cargo build --release --locked
+}
+
+package() {
+  cd miyu
+  install -Dm755 "target/release/miyu" "${pkgdir}/usr/bin/miyu"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  if [[ -d kb ]]; then
+    while IFS= read -r -d '' file; do
+      local rel="${file#kb/}"
+      install -Dm644 "${file}" "${pkgdir}/usr/share/miyu/default-kb/kb/${rel}"
+    done < <(find kb -type f -name '*.md' -print0 | sort -z)
+  fi
+
+  if [[ -d wikis ]]; then
+    while IFS= read -r -d '' file; do
+      local rel="${file#wikis/}"
+      install -Dm644 "${file}" "${pkgdir}/usr/share/miyu/default-kb/shorinwiki/${rel}"
+    done < <(find wikis -type f -name '*.md' -print0 | sort -z)
+  fi
+
+  if [[ -d src/memes ]]; then
+    while IFS= read -r -d '' file; do
+      local rel="${file#src/memes/}"
+      install -Dm644 "${file}" "${pkgdir}/usr/share/miyu/memes/${rel}"
+    done < <(find src/memes -type f \( -name '*.json' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.png' -o -name '*.gif' -o -name '*.webp' \) -print0 | sort -z)
+  fi
+
+  install -dm755 "${pkgdir}/usr/share/miyu/default-kb/manifest"
+  printf '{\n  "name": "miyu-default-kb",\n  "generated_by": "miyu-git PKGBUILD"\n}\n' > "${pkgdir}/usr/share/miyu/default-kb/manifest/manifest.json"
+  git rev-parse HEAD > "${pkgdir}/usr/share/miyu/default-kb/manifest/shorinwiki.commit"
+}

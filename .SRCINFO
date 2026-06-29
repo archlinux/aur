@@ -1,0 +1,25 @@
+pkgbase = miyu-git
+	pkgdesc = Command-line AI assistant
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/SHORiN-KiWATA/Miyu
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = alsa-lib
+	depends = chafa
+	depends = gcc-libs
+	depends = glibc
+	depends = ripgrep
+	optdepends = git: update default Shorin Wiki knowledge base
+	optdepends = fish: fish shell integration support
+	optdepends = bash: bash shell integration support
+	optdepends = zsh: zsh shell integration support
+	provides = miyu
+	conflicts = miyu
+	source = miyu::git+https://github.com/SHORiN-KiWATA/Miyu.git
+	sha256sums = SKIP
+
+pkgname = miyu-git
