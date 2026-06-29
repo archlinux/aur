@@ -1,6 +1,6 @@
 # Maintainer: HerauxValle <heraux.valle@gmail.com>
 pkgname=casket
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="LUKS2 encrypted vault manager — each vault is a single .img file"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/HerauxValle/Casket"
 license=('MIT')
 depends=('python' 'cryptsetup' 'btrfs-progs' 'udisks2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/HerauxValle/Casket/archive/v$pkgver.tar.gz")
-sha256sums=('08e7ef3194e804a59e8822f69b6c18f1947b380537f3826fc90023633287a506')
+sha256sums=('cb869b7431fde5b6f54852a3d1d3cd6bc5e995729c8e798a2f64f4cc014b0644')
 
 package() {
     cd "$srcdir/Casket-$pkgver"
