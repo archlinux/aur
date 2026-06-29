@@ -11,6 +11,7 @@ pkgbase = dory-audio-tab-git
 	depends = dory-python-git
 	depends = gobject-introspection
 	depends = gst-plugins-base
+	depends = python-mutagen
 	source = git+https://github.com/Twilight0/dory-extensions.git
 	sha256sums = SKIP
 
