@@ -1,0 +1,13 @@
+pkgbase = amdgpu-profile-switcher-git
+	pkgdesc = amdgpu-profile-switcher is a simple tool that automatically switches profiles for AMDGPU, and it also allows for advanced settings such as overclocking, undervolting, and fan control
+	pkgver = 0.r113.57b3695
+	pkgrel = 1
+	url = https://github.com/Umio-Yasuno/amdgpu-profile-switcher
+	install = amdgpu-profile-switcher.install
+	arch = x86_64
+	makedepends = rust
+	backup = etc/amdgpu-profile-switcher.ron
+	source = git+https://github.com/Umio-Yasuno/amdgpu-profile-switcher.git
+	sha256sums = SKIP
+
+pkgname = amdgpu-profile-switcher-git
