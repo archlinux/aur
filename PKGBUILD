@@ -1,6 +1,6 @@
 # Maintainer: leeteral <kneesdev@naver.com>
 pkgname=duelsplus-bin
-pkgver=3.8.0
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="Compiled binaries for the Duels+ Launcher"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('duelsplus')
 conflicts=('duelsplus' 'duelsplus-git')
 install=${pkgname}.install
 source=("Duels+.Launcher_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/Duels+.Launcher_${pkgver}_amd64.deb")
-sha256sums=('04f93972de904c74acad5abe430c0c83bf69ceb360bc6fcc6e168d9dc972c2fa')
+sha256sums=('85425d1f30d0271351a02d70b2aed05df0e87642f58c353b1d13c6edf64cb63d')
 package() {
   # Extract package data
   tar -xvf data.tar.gz -C "${pkgdir}"
