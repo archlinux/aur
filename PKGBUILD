@@ -30,12 +30,12 @@ source=("COMPLETIONS-${pkgver}.bash::${_ghurlraw}/completions/${_appname}.bash"
 		"README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}")
-sha256sums=('eea0da4644b4f221ac5d71c644ce973b142194d2b3ec510b62da560ed1d73926'
-            'ab6a71d5c4e0e540de60cae7113e512ac02eba87f2fbae906578da5e9aeaf0c3'
+sha256sums=('64607fa747cc6a8a524a2eb491f0a0a1bd21db9346a0592a20725c69e75ad23b'
+            'd10e16378ca9aac4ad4a87dad438a633990edf511f8cfc4ac268d04066b4838b'
             'b10829079cfa4d8a83e7c1f784a9c1dfb6cc9275d273e9f53d854f7e4876f84d'
-            'ea516eb3487e7dd1b3fd3cd232fd4070a3954a5aec540655a3c56e1a99883cf1'
+            '0b832ce48674b87ab7a96c23b67d742789ba657be4a6ba93c719061a100cb24d'
             'df06e67e87dd5337a166b9449f35d92f254e8d60b536a0224aad920670ee2cc6')
-sha256sums_x86_64=('2a3ba9be8dd97e1cf6b39d3587c2de0a33e0d1b6a39411ab649843dbc5d00e2c')
+sha256sums_x86_64=('3ca61256eaf20362a886fa8cfa86cae517a22d61c37241a0b3f3e449bb6b950e')
 
 
 package() {
