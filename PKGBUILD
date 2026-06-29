@@ -2,7 +2,7 @@
 # Contributor: Andy Botting <andy@andybotting.com>
 _name=futurist
 pkgname=python-futurist
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='Code from the future, delivered to you in the now'
 arch=(any)
@@ -24,7 +24,7 @@ checkdepends=(
     python-testtools
 )
 source=($_name::git+https://github.com/openstack/futurist.git#tag=$pkgver)
-sha512sums=('b9318e914e009d903d81c693a73e7d8dd6e5468c70b91a89448be673aa238c64441d7ff7cc60f4f58eda8621c6a131eb81c02c2b16cbde33b22842e2178143f8')
+sha512sums=('d1a215b98d6a28b2a5411ceaf33a498936498aebe3edc2e4f28d3777daf0f7c02e14ca4c2eb10033db887254a98d61f53ba234323b12d3b51ad8d232bbe984b9')
 
 build() {
     cd $_name
