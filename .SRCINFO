@@ -1,0 +1,18 @@
+pkgbase = augenblick-bin
+	pkgdesc = Fullscreen eye-blink overlay for X11 (binary package)
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/x71c9/augenblick
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libxcb
+	provides = augenblick
+	conflicts = augenblick
+	source_x86_64 = augenblick-x86_64-0.1.5.tar.gz::https://github.com/x71c9/augenblick/releases/download/v0.1.5/augenblick-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f1e9ca04437cefc82ed9e496c47aec7a3b3d440e991b570ea1347796de9836d7
+	source_aarch64 = augenblick-aarch64-0.1.5.tar.gz::https://github.com/x71c9/augenblick/releases/download/v0.1.5/augenblick-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e63fdf64c4b6d639de7ef2cf43a9b0bc784e8dd0de1913122c50de7f21d441d3
+
+pkgname = augenblick-bin
