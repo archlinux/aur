@@ -1,7 +1,7 @@
 # Maintainer: tygrdev <hi@tygr.dev>
-# Contributor: wackery, nord-studio
+# Contributor: tygrdev, wackery
 pkgname=pulsar-music
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="A local-first, cross-platform music player."
 arch=('x86_64')
@@ -10,16 +10,28 @@ license=('AGPL-3.0-or-later')
 provides=('pulsar-music')
 conflicts=('pulsar-music-bin')
 depends=('alsa-lib' 'fontconfig' 'freetype2' 'libxkbcommon' 'libx11' 'libxcb'
-         'wayland' 'dbus' 'vulkan-icd-loader' 'sqlite' 'openssl' 'libssh2')
-makedepends=('rust' 'cargo' 'git' 'pkgconf' 'perl')
+         'wayland' 'dbus' 'vulkan-icd-loader' 'openssl' 'libssh2')
+makedepends=('rust' 'cargo' 'git' 'pkgconf' 'perl' 'cmake' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://lab.nordstud.io/nord/pulsar/-/archive/v$pkgver/pulsar-v$pkgver.tar.gz"
         'pulsar.desktop')
 sha256sums=('SKIP'
             'SKIP')
 
+prepare() {
+	cd "${srcdir}/pulsar-v${pkgver}"
+	export CARGO_NET_GIT_FETCH_WITH_CLI=true
+	cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
 	cd "${srcdir}/pulsar-v${pkgver}"
-	cargo build --release --frozen -p pulsar
+	export CARGO_NET_GIT_FETCH_WITH_CLI=true
+	export RUSTFLAGS="${RUSTFLAGS:+$RUSTFLAGS }--cfg no_update"
+	if [[ " ${CFLAGS-} ${CXXFLAGS-} " == *" -flto"* ]]; then
+		export CFLAGS="${CFLAGS-} -ffat-lto-objects"
+		export CXXFLAGS="${CXXFLAGS-} -ffat-lto-objects"
+	fi
+	cargo build --release --offline -p pulsar
 }
 
 package() {
