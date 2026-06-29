@@ -1,6 +1,6 @@
 pkgbase = mgmt-bin
 	pkgdesc = Next generation config management.
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 0
 	url = https://github.com/purpleidea/mgmt
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = mgmt-bin
 	options = !strip
 	options = !debug
 	backup = etc/mgmt/mgmt.conf
-	source = mgmt-1.0.2.tar.gz::https://github.com/purpleidea/mgmt/archive/refs/tags/1.0.2.tar.gz
-	sha256sums = de68bba23b8cd63d9c81ae52bab293cdf7a7641c39b83c48a1d533ac37c0fa26
-	source_x86_64 = mgmt-1.0.2-bin::https://github.com/purpleidea/mgmt/releases/download/1.0.2/mgmt-linux-amd64-1.0.2
-	sha256sums_x86_64 = 53770fd2c5da299d61a4eb0ae1cec631150bca578c20b65be9e0a1cc23924d5d
-	source_aarch64 = mgmt-1.0.2-bin::https://github.com/purpleidea/mgmt/releases/download/1.0.2/mgmt-linux-arm64-1.0.2
-	sha256sums_aarch64 = 53770fd2c5da299d61a4eb0ae1cec631150bca578c20b65be9e0a1cc23924d5d
+	source = mgmt-1.1.0.tar.gz::https://github.com/purpleidea/mgmt/archive/refs/tags/1.1.0.tar.gz
+	sha256sums = 91c18b48e7c73f02bd5a896c155787440aa868ce806a42be0d6df884b0a87494
+	source_x86_64 = mgmt-1.1.0-bin::https://github.com/purpleidea/mgmt/releases/download/1.1.0/mgmt-linux-amd64-1.1.0
+	sha256sums_x86_64 = 078bd01ec69f2b5dcadec7a6ed82aa9cbcf128718474160acd4c61d17442f270
+	source_aarch64 = mgmt-1.1.0-bin::https://github.com/purpleidea/mgmt/releases/download/1.1.0/mgmt-linux-arm64-1.1.0
+	sha256sums_aarch64 = 078bd01ec69f2b5dcadec7a6ed82aa9cbcf128718474160acd4c61d17442f270
 
 pkgname = mgmt-bin

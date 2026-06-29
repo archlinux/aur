@@ -1,7 +1,7 @@
 # Maintainer: Philipp Marmet
 
 pkgname=mgmt-bin
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=0
 
 pkgdesc='Next generation config management.'
@@ -17,9 +17,9 @@ source=("mgmt-${pkgver}.tar.gz"::"${url}/archive/refs/tags/${pkgver}.tar.gz")
 source_x86_64=("mgmt-${pkgver}-bin"::"${url}/releases/download/${pkgver}/mgmt-linux-amd64-${pkgver}")
 source_aarch64=("mgmt-${pkgver}-bin"::"${url}/releases/download/${pkgver}/mgmt-linux-arm64-${pkgver}")
 
-sha256sums=('de68bba23b8cd63d9c81ae52bab293cdf7a7641c39b83c48a1d533ac37c0fa26')
-sha256sums_x86_64=('53770fd2c5da299d61a4eb0ae1cec631150bca578c20b65be9e0a1cc23924d5d')
-sha256sums_aarch64=('53770fd2c5da299d61a4eb0ae1cec631150bca578c20b65be9e0a1cc23924d5d')
+sha256sums=('91c18b48e7c73f02bd5a896c155787440aa868ce806a42be0d6df884b0a87494')
+sha256sums_x86_64=('078bd01ec69f2b5dcadec7a6ed82aa9cbcf128718474160acd4c61d17442f270')
+sha256sums_aarch64=('078bd01ec69f2b5dcadec7a6ed82aa9cbcf128718474160acd4c61d17442f270')
 
 package() {
   install -Dm755 "mgmt-${pkgver}-bin" "${pkgdir}/usr/bin/mgmt"
