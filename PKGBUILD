@@ -7,7 +7,7 @@
 
 pkgname=recoil-engine-rc
 pkgver=2026.06.08
-pkgrel=3
+pkgrel=4
 pkgdesc="A powerful free cross-platform RTS game engine. (GitHub — latest Release Candidate tag). \
 This version is used for public engine testing in BAR — Join the Discord if you want to help"
 arch=('x86_64')
@@ -32,8 +32,10 @@ makedepends=('git' 'curl' 'jq'
 optdepends=('bar-lobby' 'bar-lobby-git')
 #install="${pkgname%-git}.install"
 source=("${pkgname%-git}::git+${_ghurl}.git${_tag}${_git_commit}"
+        "fix-negative-laser.patch"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '259d4632d0e0c6003279ca08da1727226120bf201ef2975b651834bf0efed560')
 
 pkgver() {
   # Set the repository owner and name
