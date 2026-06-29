@@ -1,12 +1,13 @@
 # Maintainer: SHORiN <shorin@users.noreply.github.com>
 
 pkgname=miyu-git
-pkgver=0.1.0.r0.g0000000
+pkgver=0.1.0.r53.gc8dd6e8
 pkgrel=1
-pkgdesc='Command-line AI assistant'
+pkgdesc='活在终端里的二次元少女'
 arch=('x86_64')
 url='https://github.com/SHORiN-KiWATA/Miyu'
 license=('MIT')
+options=('!lto')
 depends=('alsa-lib' 'chafa' 'gcc-libs' 'glibc' 'ripgrep')
 makedepends=('cargo' 'git' 'pkgconf')
 optdepends=(
