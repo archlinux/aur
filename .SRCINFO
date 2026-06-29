@@ -1,0 +1,15 @@
+pkgbase = tandem
+	pkgdesc = Local-first CLI/TUI for human and agent project coordination
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/Algorant/tandem
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	options = !debug
+	source = tandem-0.2.2.tar.gz::https://github.com/Algorant/tandem/archive/refs/tags/tandem-v0.2.2.tar.gz
+	sha256sums = f84a49dcb7fb177c065f0163dae26380ebfb49fc9b81936916f825bab1416ce2
+
+pkgname = tandem
