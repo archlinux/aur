@@ -1,6 +1,6 @@
 pkgbase = mgmt
 	pkgdesc = Next generation config management.
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 0
 	epoch = 1
 	url = https://github.com/purpleidea/mgmt
@@ -22,9 +22,9 @@ pkgbase = mgmt
 	conflicts = mgmt-bin
 	options = !strip
 	backup = etc/mgmt/mgmt.conf
-	source = mgmt-1.0.2.tar.gz::https://github.com/purpleidea/mgmt/archive/refs/tags/1.0.2.tar.gz
+	source = mgmt-1.1.0.tar.gz::https://github.com/purpleidea/mgmt/archive/refs/tags/1.1.0.tar.gz
 	source = mgmt.service
-	sha256sums = de68bba23b8cd63d9c81ae52bab293cdf7a7641c39b83c48a1d533ac37c0fa26
+	sha256sums = 91c18b48e7c73f02bd5a896c155787440aa868ce806a42be0d6df884b0a87494
 	sha256sums = eeb4174a8556161b94f62808b4453ef91574797070ada53ffb90cb013aff9799
 
 pkgname = mgmt
