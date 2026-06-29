@@ -1,0 +1,23 @@
+pkgbase = gaypanel
+	pkgdesc = Panel for Wayland compositors
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/pastthepixels/gaypanel
+	arch = any
+	license = GPL-3.0-only
+	makedepends = rust
+	makedepends = clang
+	makedepends = git
+	depends = networkmanager
+	depends = bluez
+	depends = alsa-lib
+	depends = gtk4-layer-shell
+	depends = blueprint-compiler
+	depends = libadwaita
+	depends = adwaita-icon-theme
+	depends = libxkbcommon
+	optdepends = power-profiles-daemon: ppd widget
+	source = gaypanel-1.0.0.tar.gz::https://codeberg.org/pastthepixels/gaypanel/archive/v1.0.0.tar.gz
+	sha256sums = 3298eae94a5df6bb29f4134e1081ffddf289c98c1c6f912ed33ecedcbd73c117
+
+pkgname = gaypanel
