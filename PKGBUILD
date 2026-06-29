@@ -24,7 +24,7 @@ depends=('glibc' 'libgcc' 'xz')
 
 options=(!strip)
 
-source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${_gitversion}.tar.gz"
+source=("${pkgname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz"
 		"${_appname}.desktop")
 sha256sums=('bb0a5f32eb71712909781bbefbc2a4601e724a06038707be783c30a0ffcb72f4'
             'ae922cb150cbec60cebb3b46423396d452e02f62dfafb88952fe19aaf0381bc7')
