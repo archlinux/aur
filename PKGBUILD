@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=clang-static-git
-pkgver=23.0.0_r585301.bb8f468d260f
+pkgver=23.0.0_r586042.adfcabc5d0d2
 pkgrel=1
 pkgdesc='LLVM compiler and tools for C-family languages (git, statically linked LLVM libs)'
 arch=(x86_64)
@@ -91,7 +91,7 @@ build() {
     -D LLVM_ENABLE_RUNTIMES='compiler-rt'
     -D LLVM_BUILD_LLVM_DYLIB=OFF
     -D LLVM_LINK_LLVM_DYLIB=OFF
-    -D LLVM_INCLUDE_TESTS=OFF
+    -D LLVM_INCLUDE_TESTS=ON
     -D LLVM_INCLUDE_BENCHMARKS=OFF
     -D CLANG_DEFAULT_PIE_ON_LINUX=ON
     -Wno-dev
@@ -108,6 +108,11 @@ build() {
 
   # Build only the requested distribution
   ninja -C _build distribution
+}
+
+check() {
+  ninja -C _build $NINJAFLAGS check-clang
+  ninja -C _build $NINJAFLAGS check-clang-tools
 }
 
 package() {
