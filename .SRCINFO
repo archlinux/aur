@@ -1,6 +1,6 @@
 pkgbase = fungen-bin
 	pkgdesc = AI-powered funscript generator
-	pkgver = 2.2.7beta
+	pkgver = 2.2.10beta
 	pkgrel = 1
 	url = https://github.com/ack00gar/FunGen
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = fungen-bin
 	provides = fungen
 	conflicts = fungen
 	options = !strip
-	source_x86_64 = fungen-2.2.7-beta-linux-x86_64.tar.gz::https://github.com/ack00gar/FunGen/releases/download/v2.2.7-beta/fungen-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 254a8afd186c426b6bfc1a68ff3610330df736426897e2217e9b8d3cdd040378
-	source_aarch64 = fungen-2.2.7-beta-linux-aarch64.tar.gz::https://github.com/ack00gar/FunGen/releases/download/v2.2.7-beta/fungen-linux-aarch64.tar.gz
-	sha256sums_aarch64 = b7d6bb205d8a2ab613fafaeba842db25f7845a55887ef97c510e0b951af225fd
+	source_x86_64 = fungen-2.2.10-beta-linux-x86_64.tar.gz::https://github.com/ack00gar/FunGen/releases/download/v2.2.10-beta/fungen-linux-x86_64.tar.gz
+	sha256sums_x86_64 = cb3dcccee1c7629834dd5dc975cd8e65e9cff56a543d59ef05cb1e777dbe8ccd
+	source_aarch64 = fungen-2.2.10-beta-linux-aarch64.tar.gz::https://github.com/ack00gar/FunGen/releases/download/v2.2.10-beta/fungen-linux-aarch64.tar.gz
+	sha256sums_aarch64 = aab1d33d091d1d68762d35ec670fcbd2cedbf106842afd79cd3a196bf436c13f
 
 pkgname = fungen-bin
