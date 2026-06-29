@@ -1,7 +1,7 @@
 # Maintainer: James Tucker <jftucker@gmail.com>
 # Contributor: Chris Sutcliff <chris@sutcliff.me>
 pkgname=music-assistant-desktop-git
-pkgver=0.3.9.r1.g2d9c2af
+pkgver=0.4.2.r2.gdcc77b7
 pkgrel=1
 pkgdesc="Music Assistant Desktop Companion App"
 arch=('x86_64')
@@ -52,8 +52,7 @@ prepare() {
     cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path src-tauri/Cargo.toml
     yarn install --frozen-lockfile
 
-    # Fix desktop file to match actual binary and icon names
-    sed -i 's/Exec=music-assistant-desktop/Exec=music-assistant-companion/' music-assistant.desktop
+    # Fix desktop file to match actual icon name
     sed -i 's/Icon=music-assistant$/Icon=music-assistant-companion/' music-assistant.desktop
 }
 
@@ -106,14 +105,14 @@ package() {
     # Install icons
     install -Dm644 src-tauri/icons/32x32.png \
         "$pkgdir/usr/share/icons/hicolor/32x32/apps/music-assistant-companion.png"
-    install -Dm644 src-tauri/icons/64x64.png \
-        "$pkgdir/usr/share/icons/hicolor/64x64/apps/music-assistant-companion.png"
     install -Dm644 src-tauri/icons/128x128.png \
         "$pkgdir/usr/share/icons/hicolor/128x128/apps/music-assistant-companion.png"
     install -Dm644 src-tauri/icons/128x128@2x.png \
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/music-assistant-companion.png"
-    install -Dm644 src-tauri/icons/icon-512.png \
+    install -Dm644 app-icon.png \
         "$pkgdir/usr/share/icons/hicolor/512x512/apps/music-assistant-companion.png"
+    install -Dm644 src-tauri/icons/app-icon.svg \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/music-assistant-companion.svg"
 
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
