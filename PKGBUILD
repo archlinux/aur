@@ -1,4 +1,4 @@
-#Maintainter: Joost Bremmer <toost.b@gmail.com>
+#Maintainter: Joost Bremmer <contact at madeofmagicandwires.online>
 #Contributor: Aaron Griffin <aaron@archlinux.org>
 
 pkgname=neovim-bufexplorer
