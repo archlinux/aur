@@ -1,5 +1,4 @@
-# Maintainer: Joseph Dalrymple <joseph.dalrymple@bluelogicteam.com>
-# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 # Contributor: loqs
 # Contributor: Jorge Araya Navarro <jorgejavieran@yahoo.com.mx>
 # Contributor: Cristian Porras <porrascristian@gmail.com>
@@ -9,77 +8,45 @@
 
 pkgbase=godot-double
 pkgname=(godot-double godot-double-mono)
-pkgver=4.6
+pkgver=4.7
 pkgrel=1
 pkgdesc='Advanced cross-platform 2D and 3D game engine (double-precision build)'
 url='https://godotengine.org/'
 license=(MIT)
 arch=(x86_64)
-provides=("godot-double=${pkgver}" "godot-double-mono=${pkgver}")
-makedepends=(
-  alsa-lib
-  dotnet-sdk-8.0
-  nuget
-  pulse-native-provider
-  scons
-  setconf
-  yasm
-)
-depends=(
-  brotli
-  ca-certificates
-  embree
-  freetype2
-  graphite
-  libglvnd
-  libspeechd
-  libsquish
-  libtheora
-  libvorbis
-  libwebp
-  libwslay
-  libxcursor
-  libxi
-  libxinerama
-  libxrandr
-  miniupnpc
-  openxr
-  pcre2
-)
-optdepends=(
-  'pipewire-alsa: for audio support'
-  'pulse-native-provider: for audio support'
-)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/godotengine/godot/archive/$pkgver-stable.tar.gz")
-b2sums=('086dc97858e066e1510a108c7751186f5072fe7b41fdbc658957ebd8a5540d6ad34b54f410363bbe12244b2503ce4fd1d02d25c9d0bb6ab701610902b9df8f5b')
+options=(!lto)
+makedepends=(alsa-lib dotnet-sdk-8.0 git nuget pulse-native-provider scons setconf yasm)
+depends=(brotli ca-certificates embree freetype2 graphite libglvnd libspeechd libsquish libtheora libvorbis
+         libwebp libwslay libxcursor libxi libxinerama libxrandr miniupnpc openxr pcre2)
+optdepends=('pipewire-alsa: for audio support'
+            'pulse-native-provider: for audio support')
+source=("godot::git+https://github.com/godotengine/godot#tag=$pkgver-stable")
+b2sums=('d778a58d2d0b357bac463e7e4bbf0fd916a6688dd2516893dd7342e6a2bc368df356b4ab0087e786c173222246f6a5b33a540001aac0246d09b3f4be17f5d0d0')
+
 
 prepare() {
-  cd "godot-$pkgver-stable"
+  cd godot
 
   # Patch for miniupnpc
   sed -i 's/addr, 16/addr, 16, nullptr, 0/g' modules/upnp/upnp.cpp
 
   cd misc/dist/linux
 
-  # 1) Create a desktop file for the non-Mono double build
-  cp org.godotengine.Godot.desktop org.godotengine.Godot-Double.desktop
+  cp -f org.godotengine.Godot.desktop org.godotengine.Godot-Double.desktop
   setconf org.godotengine.Godot-Double.desktop Exec godot-double
-  setconf org.godotengine.Godot-Double.desktop Icon godot-double
+  setconf org.godotengine.Godot-Double.desktop Icon godot-double.svg
   setconf org.godotengine.Godot-Double.desktop Name 'Godot Engine (Double Precision)'
 
-  # 2) Fix MIME info, then duplicate for the non-Mono double build
   sed -i 's,xmlns="https://specifications.freedesktop.org/shared-mime-info-spec",xmlns="http://www.freedesktop.org/standards/shared-mime-info",g' \
     org.godotengine.Godot.xml
-  cp org.godotengine.Godot.xml org.godotengine.Godot-Double.xml
+  cp -f org.godotengine.Godot.xml org.godotengine.Godot-Double.xml
 
-  # 3) Create a desktop file for the Mono double build
-  cp org.godotengine.Godot.desktop org.godotengine.Godot-Double-mono.desktop
+  cp -f org.godotengine.Godot.desktop org.godotengine.Godot-Double-mono.desktop
   setconf org.godotengine.Godot-Double-mono.desktop Exec godot-double-mono
-  setconf org.godotengine.Godot-Double-mono.desktop Icon godot-double-mono
+  setconf org.godotengine.Godot-Double-mono.desktop Icon godot-double-mono.svg
   setconf org.godotengine.Godot-Double-mono.desktop Name 'Godot Engine Mono (Double Precision)'
 
-  # 4) Duplicate MIME XML for the Mono double build
-  cp org.godotengine.Godot.xml org.godotengine.Godot-Double-mono.xml
+  cp -f org.godotengine.Godot.xml org.godotengine.Godot-Double-mono.xml
 }
 
 case $CARCH in
@@ -88,16 +55,22 @@ case $CARCH in
 esac
 
 build() {
-  cd "godot-$pkgver-stable"
+  cd godot
 
   export BUILD_NAME=arch_linux
 
+  # Not unbundled (yet):
+  #  mbedtls
+  #  enet (contains no upstreamed IPv6 support)
+  #  AUR: libwebm, rvo2
+  #  recastnavigation, xatlas
+
   _args=(
-    -j"$(nproc --all)"
+    -j"${GDOPS_SCONS_JOBS:-$(nproc --all)}"
     cflags="$CFLAGS -fPIC -Wl,-z,relro,-z,now -w"
     cxxflags="$CXXFLAGS -fPIC -Wl,-z,relro,-z,now -w"
     linkflags="$LDFLAGS"
-    arch="$_CARCH"
+    arch=$_CARCH
     builtin_brotli=no
     builtin_certs=no
     builtin_clipper2=yes
@@ -140,92 +113,45 @@ build() {
     werror=no
   )
 
-  # 1) Build non-Mono editor (double-precision)
+  # Regular build
   scons "${_args[@]}"
 
-  # 2) Build Mono editor (double-precision)
+  # Mono build
   _args+=(module_mono_enabled=yes mono_glue=no)
   scons "${_args[@]}"
 
-  # Generate Mono glue using the double-precision Mono binary
   bin/godot.linuxbsd.editor.double.$_CARCH.mono --headless --generate-mono-glue modules/mono/glue
-
-  # Build Mono assemblies (double-precision)
-  modules/mono/build_scripts/build_assemblies.py \
-    --godot-output-dir=./bin \
-    --godot-platform=linuxbsd \
-    --precision=double
+  modules/mono/build_scripts/build_assemblies.py --godot-output-dir=./bin --godot-platform=linuxbsd --precision=double
 }
 
 package_godot-double() {
-  cd "godot-$pkgver-stable"
+  cd godot
 
-  # 1) Install the non-Mono double editor binary as /usr/bin/godot-double
-  install -Dm755 \
-    "bin/godot.linuxbsd.editor.double.$_CARCH" \
-    "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 bin/godot.linuxbsd.editor.double.$_CARCH "$pkgdir/usr/bin/godot-double"
 
-  # 2) Install its icon (godot-double.svg)
-  install -Dm644 icon.svg \
-    "$pkgdir/usr/share/pixmaps/$pkgname.svg"
+  install -Dm644 misc/logo/icon.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
+  install -Dm644 misc/dist/linux/org.godotengine.Godot-Double.desktop "$pkgdir/usr/share/applications/org.godotengine.Godot-Double.desktop"
+  install -Dm644 misc/dist/linux/org.godotengine.Godot-Double.xml "$pkgdir/usr/share/mime/packages/org.godotengine.Godot-Double.xml"
 
-  # 3) Install its desktop file
-  install -Dm644 misc/dist/linux/org.godotengine.Godot-Double.desktop \
-    "$pkgdir/usr/share/applications/org.godotengine.Godot-Double.desktop"
-
-  # 4) Install its MIME XML
-  install -Dm644 misc/dist/linux/org.godotengine.Godot-Double.xml \
-    "$pkgdir/usr/share/mime/packages/org.godotengine.Godot-Double.xml"
-
-  # 5) Manpage (renamed to godot-double.6)
-  install -Dm644 misc/dist/linux/godot.6 \
-    "$pkgdir/usr/share/man/man6/$pkgname.6"
-
-  # 6) License
-  install -Dm644 LICENSE.txt \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 misc/dist/linux/godot.6 "$pkgdir/usr/share/man/man6/$pkgname.6"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_godot-double-mono() {
-  # Declare runtime dependency on dotnet-sdk
   depends+=(dotnet-sdk-8.0)
 
-  cd "godot-$pkgver-stable"
+  cd godot
 
-  # 1) Create directory for the Mono-enabled binary
-  install -d "$pkgdir/usr/lib/$pkgname"
+  install -Dm755 bin/godot.linuxbsd.editor.double.$_CARCH.mono "$pkgdir/usr/lib/$pkgname/godot.linuxbsd.editor.double.$_CARCH.mono"
 
-  # 2) Install the double-precision Mono binary under /usr/lib/godot-double-mono/
-  install -Dm755 \
-    "bin/godot.linuxbsd.editor.double.$_CARCH.mono" \
-    "$pkgdir/usr/lib/$pkgname/godot.linuxbsd.editor.double.$_CARCH.mono"
-
-  # 3) Copy the generated C# assemblies
   cp -a bin/GodotSharp "$pkgdir/usr/lib/$pkgname/"
-
-  # 4) Symlink the executable to /usr/bin/godot-double-mono
   install -d "$pkgdir/usr/bin"
-  ln -s "/usr/lib/$pkgname/godot.linuxbsd.editor.double.$_CARCH.mono" \
-        "$pkgdir/usr/bin/$pkgname"
+  ln -s /usr/lib/$pkgname/godot.linuxbsd.editor.double.$_CARCH.mono "$pkgdir/usr/bin/$pkgname"
 
-  # 5) Install its icon (godot-double-mono.svg)
-  install -Dm644 icon.svg \
-    "$pkgdir/usr/share/pixmaps/$pkgname.svg"
+  install -Dm644 misc/logo/icon.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
+  install -Dm644 misc/dist/linux/org.godotengine.Godot-Double-mono.desktop "$pkgdir/usr/share/applications/org.godotengine.Godot-Double-mono.desktop"
+  install -Dm644 misc/dist/linux/org.godotengine.Godot-Double-mono.xml "$pkgdir/usr/share/mime/packages/org.godotengine.Godot-Double-mono.xml"
 
-  # 6) Install its desktop file
-  install -Dm644 misc/dist/linux/org.godotengine.Godot-Double-mono.desktop \
-    "$pkgdir/usr/share/applications/org.godotengine.Godot-Double-mono.desktop"
-
-  # 7) Install its MIME XML
-  install -Dm644 misc/dist/linux/org.godotengine.Godot-Double-mono.xml \
-    "$pkgdir/usr/share/mime/packages/org.godotengine.Godot-Double-mono.xml"
-
-  # 8) Manpage (renamed to godot-double-mono.6)
-  install -Dm644 misc/dist/linux/godot.6 \
-    "$pkgdir/usr/share/man/man6/$pkgname.6"
-
-  # 9) License
-  install -Dm644 LICENSE.txt \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 misc/dist/linux/godot.6 "$pkgdir/usr/share/man/man6/$pkgname.6"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
