@@ -2,8 +2,8 @@
 # gpg: curl https://bitbox.swiss/download/shiftcryptosec-509249B068D215AE.gpg.asc | gpg --import
 # gpg --verify BitBox-4.48.4-macOS.dmg.asc
 pkgname=bitbox-wallet-app-rpm
-pkgver=4.50.1
-_pkgver=4.50.1-1
+pkgver=4.51.0
+_pkgver=4.51.0-1
 pkgrel=1
 pkgdesc="BitBox Wallet App for managing digital assets"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('Apache License 2.0')
 depends=('libxcb')
 makedepends=('libarchive' 'curl')
 source=("https://github.com/BitBoxSwiss/bitbox-wallet-app/releases/download/v${pkgver}/bitbox-${_pkgver}.${arch}.rpm")
-sha256sums=('a9e1413d3feedaa37bbcb1ae5661d5fb6a6cef82e8b099bd8730967e4dcd968b')
+sha256sums=('afa9460cd1de7838de3e5d3309cb8303a515764be69897eca3eb7cf7eccfc8c8')
 options=('strip')
 
 package() {
