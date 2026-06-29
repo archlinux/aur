@@ -1,6 +1,6 @@
 pkgname=arch-update-manager-git
 _pkgname=arch-update-manager
-pkgver=3.2.0.r5.ga4bec3f
+pkgver=3.2.0.r6.ge09bcbc
 pkgrel=1
 pkgdesc="A Linux Mint inspired GTK4-based update manager for Arch Linux (latest git)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('paru: AUR helper support'
             'snapper: pre-update Btrfs snapshots'
             'aur-scanner: scan AUR packages for security issues'
             'rate-mirrors: refresh and rank the pacman mirror list')
-source=("$pkgname::git+https://github.com/destbg/arch-update-manager.git#commit=a4bec3f8e11eafd1e6615b054b652419feb4e1b2")
+source=("$pkgname::git+https://github.com/destbg/arch-update-manager.git#commit=e09bcbc8894ed049f5f830fb5ae40aef6e17847c")
 sha256sums=('SKIP')
 
 pkgver() {
