@@ -7,13 +7,15 @@
 # revert in hand. The previous DM is left installed as the fallback.
 pkgname=door
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-contained reversible Wayland login manager (privileged doord + unprivileged greeter)"
 arch=('x86_64')
 url="https://github.com/satorisage/door"
 license=('MPL-2.0')
-# Runtime: PAM, logind (systemd), and the greeter host compositor (cage).
-depends=('pam' 'systemd' 'cage')
+# Runtime: PAM, logind (systemd), the greeter host compositor (cage), and the
+# font the built-in default theme renders in (MesloLGS Nerd Font) so the greeter
+# looks as designed out of the box.
+depends=('pam' 'systemd' 'cage' 'ttf-meslo-nerd')
 makedepends=('cargo')
 backup=('etc/pam.d/doord' 'etc/pam.d/door-greeter')
 install="${pkgname}.install"

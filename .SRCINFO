@@ -1,7 +1,7 @@
 pkgbase = door
 	pkgdesc = Self-contained reversible Wayland login manager (privileged doord + unprivileged greeter)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/satorisage/door
 	install = door.install
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = door
 	depends = pam
 	depends = systemd
 	depends = cage
+	depends = ttf-meslo-nerd
 	options = !debug
 	options = !lto
 	backup = etc/pam.d/doord
