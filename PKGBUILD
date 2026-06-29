@@ -1,7 +1,7 @@
 # Maintainer: Eigent AI <https://github.com/eigent-ai>
 pkgname=eigent-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-powered desktop agent for browser automation"
 arch=('x86_64')
 url="https://github.com/eigent-ai/eigent"
@@ -44,7 +44,19 @@ package() {
     # Launcher script
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/eigent" << 'EOF'
 #!/bin/bash
-exec /opt/eigent-bin/eigent "$@"
+# eigent mutiert zur Laufzeit sein resources/prebuilt; /opt ist read-only.
+# Pro Version einmal in ein schreibbares User-Dir spiegeln, von dort starten.
+set -e
+SRC=/opt/eigent-bin
+DEST="${XDG_DATA_HOME:-$HOME/.local/share}/eigent-bin"
+VER=$(pacman -Q eigent-bin 2>/dev/null | awk '{print $2}')
+if [[ "$(cat "$DEST/.pkgver" 2>/dev/null)" != "$VER" ]]; then
+    rm -rf "$DEST"; mkdir -p "$DEST"
+    cp -a "$SRC/." "$DEST/"
+    chmod -R u+w "$DEST"
+    printf '%s' "$VER" > "$DEST/.pkgver"
+fi
+exec "$DEST/eigent" "$@"
 EOF
 
     # Fix permissions
