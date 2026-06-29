@@ -1,21 +1,21 @@
 # Maintainer: hyperpuncher
 
 pkgname=iq-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Interactive jq REPL"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hyperpuncher/iq"
 license=('MIT')
-provides=('iq')
+provides=("iq=$pkgver")
 conflicts=('iq')
 
-source_x86_64=("iq::https://github.com/hyperpuncher/iq/releases/download/v$pkgver/iq-linux-x64")
-sha256sums_x86_64=('0d6579c015580efb0abf522f922299c82fb3d13a42fc67622951fa6f139d5d60')
+source_x86_64=("$pkgname-$pkgver::https://github.com/hyperpuncher/iq/releases/download/v$pkgver/iq-linux-x64")
+sha256sums_x86_64=('106aeb07e6734ad6ab8e3386a62795f8b7f2c652898dc7613b910b6d15266630')
 
-source_aarch64=("iq::https://github.com/hyperpuncher/iq/releases/download/v$pkgver/iq-linux-arm64")
-sha256sums_aarch64=('2b006a266e3c459e1b73fc158d58ebaec0664d2204e6d55ec7f9bee70f9ea97c')
+source_aarch64=("$pkgname-$pkgver::https://github.com/hyperpuncher/iq/releases/download/v$pkgver/iq-linux-arm64")
+sha256sums_aarch64=('5796e4c8f4f281ee58325008793ce3928eef05f750239227d1c84fd4e975f915')
 
 package() {
-  install -Dm755 "$srcdir/iq" "$pkgdir/usr/bin/iq"
+  install -Dm755 "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/bin/iq"
 }
