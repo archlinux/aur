@@ -413,13 +413,13 @@ do_install() {
 
   # Create launcher wrapper (supports ELECTRON_* env vars and args)
   log_info "Creating launcher..."
-  cat > "${LAUNCHER}" << 'LAUNCHER'
+  cat > "${LAUNCHER}" << LAUNCHER
 #!/bin/bash
 # ArchPerf Pro launcher
 ELECTRON_DISABLE_GPU=1
-ARCHPERF_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
-ARCHPERF_APP="${ARCHPERF_DIR}/ArchPerf Pro-'"${VERSION}"'.AppImage"
-exec "${ARCHPERF_APP}" --disable-gpu --no-sandbox "$@"
+ARCHPERF_DIR="\$(dirname "\$(readlink -f "\${BASH_SOURCE[0]}")")"
+ARCHPERF_APP="\${ARCHPERF_DIR}/ArchPerf Pro-${VERSION}.AppImage"
+exec "\${ARCHPERF_APP}" --disable-gpu --no-sandbox "\$@"
 LAUNCHER
   chmod +x "${LAUNCHER}"
 
