@@ -2,8 +2,8 @@
 # Contributor: Bo Davidson <bo.davidson@go.tarleton.edu>
 # Contributor: Paul Davis <paul@dangersalad.com>
 pkgname=openrgb
-pkgver=1.0rc2
-pkgrel=6
+pkgver=1.0rc3
+pkgrel=1
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software"
 arch=("x86_64")
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
@@ -15,7 +15,7 @@ source=("https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_candidate_
         openrgb-modules-load.conf
         openrgb.tmpfiles
         openrgb.service)
-sha256sums=('7ecef99ab1607bd8f47427eef59e060e407dc97a40bb9083c5ade6f30145b762'
+sha256sums=('a7bfd20b4804f2c5e39f59d21d8ff69d71f4f76f2a82c030e5fe1cec040d81aa'
             'b5a53d747422f8b594e3e9615e238457d696732efce94050cdd72182a8645ef2'
             'e86604e9604d59cddcc13de60b71c0e652cd1f9b56d89de36b2158509849e51c'
             'f53328babef392393ee44086f8897174232e863280a84266630a3cd92facc190')
@@ -39,6 +39,4 @@ package() {
   install -Dm644 "$srcdir"/openrgb-modules-load.conf "$pkgdir"/usr/lib/modules-load.d/openrgb.conf
   install -Dm644 "$srcdir"/openrgb.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/openrgb.conf
   install -Dm644 "$srcdir"/openrgb.service "$pkgdir"/usr/lib/systemd/system/openrgb.service
-  # Remove the upstream service file sicne we prefer ours
-  rm -r "$pkgdir"/etc
 }
