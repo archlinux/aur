@@ -10,9 +10,9 @@ pkgbase = wayinhibit
 	depends = gcc-libs
 	source = wayinhibit-1.0.0.tar.gz::https://github.com/MedCy1/wayinhibit/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = 91a7c94731dcfdf814bfc4fe65d472bda5533ed3fafa0b74acd0f5a963f26f80
-	source_x86_64 = wayinhibit-bin::https://github.com/MedCy1/wayinhibit/releases/download/v1.0.0/wayinhibit-x86_64
+	source_x86_64 = wayinhibit-1.0.0-bin::https://github.com/MedCy1/wayinhibit/releases/download/v1.0.0/wayinhibit-x86_64
 	sha256sums_x86_64 = cd99164f59f931a0d8391367499066e97b5f8e8dc23e96ab32b99eaf6b2bdc7c
-	source_aarch64 = wayinhibit-bin::https://github.com/MedCy1/wayinhibit/releases/download/v1.0.0/wayinhibit-aarch64
+	source_aarch64 = wayinhibit-1.0.0-bin::https://github.com/MedCy1/wayinhibit/releases/download/v1.0.0/wayinhibit-aarch64
 	sha256sums_aarch64 = f355d12193fe88eba1dad196397072653bb7eb20dab85cb9754d64adddd8d3c9
 
 pkgname = wayinhibit

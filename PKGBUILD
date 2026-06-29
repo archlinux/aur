@@ -11,10 +11,10 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/MedCy1/wayinhibit/archive/refs/tags/v$pkgver.tar.gz"
 )
 source_x86_64=(
-    "wayinhibit-bin::https://github.com/MedCy1/wayinhibit/releases/download/v$pkgver/wayinhibit-x86_64"
+    "wayinhibit-$pkgver-bin::https://github.com/MedCy1/wayinhibit/releases/download/v$pkgver/wayinhibit-x86_64"
 )
 source_aarch64=(
-    "wayinhibit-bin::https://github.com/MedCy1/wayinhibit/releases/download/v$pkgver/wayinhibit-aarch64"
+    "wayinhibit-$pkgver-bin::https://github.com/MedCy1/wayinhibit/releases/download/v$pkgver/wayinhibit-aarch64"
 )
 sha256sums=(
     '91a7c94731dcfdf814bfc4fe65d472bda5533ed3fafa0b74acd0f5a963f26f80'
@@ -27,7 +27,7 @@ sha256sums_aarch64=(
 )
 
 package() {
-    install -Dm0755 wayinhibit-bin "$pkgdir/usr/bin/$pkgname"
+    install -Dm0755 wayinhibit-$pkgver-bin "$pkgdir/usr/bin/$pkgname"
     install -Dm0644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm0644 "$pkgname-$pkgver/completions/wayinhibit.bash" \
         "$pkgdir/usr/share/bash-completion/completions/wayinhibit"
