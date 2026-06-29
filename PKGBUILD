@@ -1,7 +1,7 @@
 # Maintainer: Eigent AI <https://github.com/eigent-ai>
 pkgname=eigent-bin
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="AI-powered desktop agent for browser automation"
 arch=('x86_64')
 url="https://github.com/eigent-ai/eigent"
@@ -59,9 +59,10 @@ fi
 exec "$DEST/eigent" "$@"
 EOF
 
-    # Fix permissions
+    # Fix permissions. NOTE: do NOT blanket-chmod files to 644 -- the bundled
+    # runtime binaries (prebuilt/bin/uv, bun, python) ship executable from the
+    # AppImage and the backend spawns them; stripping +x breaks startup.
     find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} \;
-    find "${pkgdir}/opt/${pkgname}" -type f -exec chmod 644 {} \;
     chmod +x "${pkgdir}/opt/${pkgname}/eigent"
     [[ -f "${pkgdir}/opt/${pkgname}/chrome-sandbox" ]] && chmod 4755 "${pkgdir}/opt/${pkgname}/chrome-sandbox"
 }
