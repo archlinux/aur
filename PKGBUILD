@@ -8,25 +8,25 @@ _base_url='https://github.com/brummer10'
 _base_name='neural-amp-modeler-ui'
 
 pkgname="${_base_name}-lv2"
-pkgver='r45.d34a9a6'
-pkgrel=2
+pkgver='r49.ee23316'  # COMMIT_NUM.SHORT_SHA
+pkgrel=1
 pkgdesc='Neural Amp Modeler LV2 plugin with GUI'
 arch=('x86_64')
 url="${_base_url}/${_base_name}"
 license=('0BSD' 'GPL-3.0-only' 'BSD-3-Clause' 'MIT')
 groups=('pro-audio' 'lv2-plugins')
-depends=('cairo' 'glibc' 'gcc-libs' 'libx11')
+depends=('cairo' 'glibc' 'libgcc' 'libstdc++' 'libx11')
 makedepends=('cmake' 'lv2')
 optdepends=('lv2-host: to use the plugin')
 conflicts=('neural-amp-modeler-lv2')
 provides=('neural-amp-modeler-lv2')
 
 declare -g -A _refs=(
-  ["${_base_name}"]='d34a9a66e9ae3a4811e9bcf6df420347e23638b0'
-  ['neural-amp-modeler-lv2']='ce7cbeb8f3824c4a7d2f67976edd753b81ac9d90'
+  ["${_base_name}"]='ee23316ceb47256273414dda1a5b640f35d41d4e'
+  ['neural-amp-modeler-lv2']='3742056b89328fa61b907f6dcd28d766bad10e8a'
   ['libxputty']='4299c46dfde7ec66ae8309435914fa841a4ac15a'
-  ['NeuralAudio']='cddc6afcd16f2252506d998a557b30071a25bfdf'
-  ['NeuralAmpModelerCore']='e181f61efb8d05d34add45b5eecb3893ff21177c'
+  ['NeuralAudio']='d9a641b8b31397a2f361cbedb711549c063b74b3'
+  ['NeuralAmpModelerCore']='4c0ee78b71abd5eb20aec58562e7540f43caac3b'
   ['RTNeural']='5909c44909cd6100367f62cd04b348de85d57dbf'
   ['math_approx']='f6d55e70f0c5e888d3a0c4e252b02b530210c78a'
   ['xsimd']='a00c81f7b9e808a42aedcf7da2fbb1f9a636da34'
@@ -45,18 +45,18 @@ source=(
   "math_approx-${_refs[math_approx]}.tgz::https://github.com/Chowdhury-DSP/math_approx/archive/${_refs[math_approx]}.tar.gz"
   "xsimd-${_refs[xsimd]}.tgz::https://github.com/xtensor-stack/xsimd/archive/${_refs[xsimd]}.tar.gz"
 )
-sha256sums=(
-  'cb2eeabcea20453b87d12cac40d5af9610b66be2ac1bcf4330ad3cff1dc3c878'
-  'ae15a2c27fe23ee9cee581461317d8fc632ce46f18acd33e982b5b6657eadeb7'
-  '8de22ca3c464d2ac45b064329d047d082ba64f6e23315e411d5039c2288fe716'
-  'b1fcaf3ada0e90b9ba6eb633e8564413c11882d685d1e33128166946bdbdf937'
-  'e732c6e204597d4059aa01f5f416034383dac13d26859b97ef4b97ba0cb3ab39'
-  '76f7f6160e681acbb4dd1fff4cfc23a3b61f51f0df2f8b3b5449c010628e4013'
-  '3c638ff556d7874c01ccc327a84b9b09ed2334846341195e3f0d26803418a432'
-  'f1c485107ae0b29069a88bf9619d2d93eaed8321ae03a83d7fc437da85d5b9fd'
+b2sums=(
+  'fc0ffa0d7f64d1a4b6448ed28356ec27e17ef7cf4fa7b7b4899806e4cb9a1522e8339f8082eedaf096886d1e5d7db1141c3132c083a6c47af3abbdfc33d3dd08'
+  'e5edec2758554df0467b39755cd842237a3f97c79d7a8dd0b72caf1a31af00fae9e4323e945fa68031fa38291c58fae69affbfa2e19b6044906fa605f27259e3'
+  'ab9ee499f99f521644f31b1bed5253efb3c26efa6f9b1c3d7fb517adc40af542dbe53417171411264aa6cf090e23f9424cd6f19f0aa4c6d451deb6d5fb9af15d'
+  '4b997ad58e08ed3d563cca39694a92ea6fd8530b94eb34cb9be202ca6c510f263df4d2c3aeea41523e69b5996a3af4d2c14b3a9dc5bd20190f5fcb9f5763b78e'
+  'cd8bfa952e0ba51905ee1fff482e91668ce4f7d589941d7974e674e7761e0ef4b1d33b0005c165b827a3269bc592db5f477f5db4f007cbe5b95e6e9eaa2ae0de'
+  '8fa7bf70e4a315f8c64df99cdb95201404c98c46af6a422ce09af0831356320d80f7537a5a17df7628658c0bd5db5450df90155256237e182e959f069ae2a1b7'
+  'c0793af233dbdefde7d8397428b01f4edbb59cca791433f60acdb1eec91a31fc78e523571b0e84041ec08d843cd8ed8843f3c53d1bead462420f02c8027508ad'
+  'f45742815832983586d367ec879cd411fcde42c7f8196bd8be3e41a9a5197b0aa9b431b4d7f52ee79dfe0f8d3391fd5ebbe47ec7374613b28c318c0a23ddafe0'
 )
 
-function _symlink_mod() {
+_symlink_mod() {
   local mod="$1"
   rmdir "$mod"
   ln -sr "${srcdir}/${mod}-${_refs["${mod}"]}" "${mod}"
