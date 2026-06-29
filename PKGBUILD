@@ -1,6 +1,6 @@
 # Maintainer: Daniel Vigh <vighd@digital.co.hu>
 pkgname=wlrun
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Keyboard-driven launcher and system console for wlr-layer-shell compositors: apps, network, Bluetooth, display, storage, keyboard, pass"
 arch=('x86_64' 'aarch64')
@@ -18,6 +18,9 @@ optdepends=(
   'udisks2: mount mode'
   'polkit: passwordless removable-media authorisation for the mount mode'
   'gvfs: MTP / phone volumes in the mount mode'
+  'sshfs: sshfs network mounts in the mount mode'
+  'nfs-utils: NFS network mounts in the mount mode'
+  'cifs-utils: CIFS / SMB network mounts in the mount mode'
   'pass: password-store mode'
   'pass-otp: TOTP codes in the pass mode'
   'wl-clipboard: Ctrl+V paste on Wayland'
@@ -25,7 +28,7 @@ optdepends=(
   'libnotify: desktop notifications'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('44bce056528b8b464d5d90fe1ca2f3caf8c9a54fd751af0ad2b16580105149f4')
+sha256sums=('cc9f111aabcff764225871ead973ced41918cd4ec3f9ef85bb9cac89d8a54274')
 
 build() {
   cd "$pkgname"

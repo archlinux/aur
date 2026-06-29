@@ -1,6 +1,6 @@
 pkgbase = wlrun
 	pkgdesc = Keyboard-driven launcher and system console for wlr-layer-shell compositors: apps, network, Bluetooth, display, storage, keyboard, pass
-	pkgver = 1.9.1
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://codeberg.org/vighd/wlrun
 	arch = x86_64
@@ -20,12 +20,15 @@ pkgbase = wlrun
 	optdepends = udisks2: mount mode
 	optdepends = polkit: passwordless removable-media authorisation for the mount mode
 	optdepends = gvfs: MTP / phone volumes in the mount mode
+	optdepends = sshfs: sshfs network mounts in the mount mode
+	optdepends = nfs-utils: NFS network mounts in the mount mode
+	optdepends = cifs-utils: CIFS / SMB network mounts in the mount mode
 	optdepends = pass: password-store mode
 	optdepends = pass-otp: TOTP codes in the pass mode
 	optdepends = wl-clipboard: Ctrl+V paste on Wayland
 	optdepends = xclip: Ctrl+V paste on X11
 	optdepends = libnotify: desktop notifications
-	source = wlrun-1.9.1.tar.gz::https://codeberg.org/vighd/wlrun/archive/v1.9.1.tar.gz
-	sha256sums = 44bce056528b8b464d5d90fe1ca2f3caf8c9a54fd751af0ad2b16580105149f4
+	source = wlrun-1.10.0.tar.gz::https://codeberg.org/vighd/wlrun/archive/v1.10.0.tar.gz
+	sha256sums = cc9f111aabcff764225871ead973ced41918cd4ec3f9ef85bb9cac89d8a54274
 
 pkgname = wlrun
