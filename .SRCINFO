@@ -1,0 +1,18 @@
+pkgbase = libretro-altirrasdl-git
+	pkgdesc = libretro implementation of AltirraSDL
+	pkgver = r537.1adbf587
+	pkgrel = 1
+	url = https://github.com/ilmenit/AltirraSDL
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	depends = cmake
+	depends = sdl3
+	depends = sdl3_image
+	depends = libretro-core-info
+	optdepends = librashader
+	source = git+https://github.com/ilmenit/AltirraSDL.git
+	sha256sums = SKIP
+
+pkgname = libretro-altirrasdl-git
