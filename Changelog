@@ -1,17 +1,43 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 5.7.1 ➙ 5.10.0
-              : 2026-06-08 ➙ 2026-06-22
+ Tags         : 5.8.0 ➙ 5.11.0
+              : 2026-06-09 ➙ 2026-06-29
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-06-22   : 5.10.0
+ 2026-06-29   : 5.11.0
+              - **5.11.0**
+            
+                * Remove *sd-boot* as a trigger in hooks - it is not needed.
+            
+                * Change location of dracut and kernel-install config files from /etc to:
+            
+                  - /usr/lib/kernel/install.conf.d/
+                  - /usr/lib/dracut/dracut.conf.d
+            
+                  They were incorrectly installed in /etc/dracut.conf.d and /etc/kernel/
+            
+                * Updating all managed packages.
+            
+                  - *sd-boot-kernel-update* and *sd-boot-efi-update* may now be applied to
+                    all kernels and efi-tools managed by sd-boot. This is done by using
+                    "--all--" as the package name instead of one specific package.
+            
+                * Code improvements.
+                  - more code reorg and simplifications.
+                  - additional checks reading triggers from stdin.
+                  - tests that must be run sequentially are now grouped into "suites".
+                    tests in each suite are run sequentially.
+                    Assists testing non-trivial "remove" by ensuring that an "add" is
+                    completed before the remove.
+
+ 2026-06-22   : 5.10.0, origin/master
               - **5.10.0**
             
                 * Replace remaining strncpy() with strlcpy()
                 * Small man page makefile tweak.
 
- 2026-06-21   : 5.9.0, origin/master
+ 2026-06-21   : 5.9.0
               - **5.9.0**
             
                 * Kernel plugins can now be de-activated in */etc/sd-boot/config.yaml*
@@ -136,35 +162,3 @@
             
                 * Tune sd-boot-find-mounts
                   Skip working on any non-block filesystems while looping over scanned mounts.
-
- 2026-06-08   : 5.7.1
-              - update Changelog
-              - **5.7.1**
-            
-                * Update sd-boot-find-boot-mounts
-                  - now works for non-root users
-                  - udev/libmount instead of low level libblk
-                  - Adds systemd-libs dependency.
-                  - Simpler, more robust and significantly faster.
-            
-                Timing example Machine with 2 disks (2 ESP, 2 XBOOTLDR):
-            
-                Previous:
-                  # time sd-boot-find-boot-mounts
-            
-                  1st:
-                    real    0.029 - 0.046s
-                    user    0.009 - 0.006s
-                    sys     0.020 - 0.012s
-            
-                New:
-                    # time sd-boot-find-boot-mounts
-            
-                    1st:
-                    real    0.003s
-                    user    0.000s
-                    sys     0.003s
-            
-                Some caching likely especially with previous approach.
- 2026-06-06   ⋯
-              - update Changelog

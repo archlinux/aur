@@ -10,7 +10,7 @@ pkgname='sd-boot'
 pkgdesc='Tools to install linux kernels via kernel-install from systemd'
 _gitname='sd-boot'
 
-pkgver="5.10.0"
+pkgver="5.11.0"
 pkgrel=1
 url="https://github.com/gene-git/sd-boot"
 
@@ -58,9 +58,6 @@ backup=(
     etc/sd-boot/efi-tool.packages
     etc/sd-boot/edk2-shell.image
     etc/sd-boot/memtest86_64-git.image
-    etc/kernel/install.conf
-    etc/kernel/ukify.conf
-    etc/dracut.conf.d/010-dracut.conf
 )
 
 #
@@ -108,20 +105,9 @@ check() {
     echo "***"
     echo "Running test suite:"
     echo "***"
+    ./do-test-build release standard
 
-    echo ""
-    echo "-----------------------------"
-    echo " Standard:"
-    echo "------------"
-    echo ""
-    /usr/bin/meson test -C build/release --setup=standard
-
-    # echo ""
-    # echo "-----------------------------"
-    # echo " Valgrind:"
-    # echo "------------"
-    # echo ""
-    # /usr/bin/meson test -C build/release --setup=valgrind
+    # ./do-test-build release valgrind
 }
 
 package() {
