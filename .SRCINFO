@@ -1,12 +1,12 @@
 pkgbase = gcl
 	pkgdesc = GNU Common Lisp
-	pkgver = 2.6.14
+	pkgver = 2.7.2pre34
 	pkgrel = 1
 	url = http://www.gnu.org/software/gcl/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = https://git.savannah.gnu.org/cgit/gcl.git/snapshot/gcl-Version_2_6_14.tar.gz
-	sha256sums = 9765f721d354dfe4928037cd1c963ba4aab6c28345570300c1f6bf17e8cb4562
+	source = git+https://https.git.savannah.gnu.org/git/gcl.git#tag=Version_2_7_2pre34
+	sha256sums = SKIP
 
 pkgname = gcl

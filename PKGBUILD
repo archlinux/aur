@@ -1,21 +1,22 @@
-# Maintainer: Nicolas Geniteau <nicolas.geniteau@gmail.com>
+# Maintainer: George Anthony Nuarin <qzsong@proton.me>
+# Contributor: Nicolas Geniteau <nicolas.geniteau@gmail.com>
 pkgname=gcl
-pkgver=2.6.14
+pkgver=2.7.2pre34
 pkgrel=1
 pkgdesc="GNU Common Lisp"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.gnu.org/software/gcl/"
-source=(https://git.savannah.gnu.org/cgit/gcl.git/snapshot/gcl-Version_${pkgver//./_}.tar.gz)
-sha256sums=('9765f721d354dfe4928037cd1c963ba4aab6c28345570300c1f6bf17e8cb4562')
+source=("git+https://https.git.savannah.gnu.org/git/gcl.git#tag=Version_${pkgver//./_}")
+sha256sums=('SKIP')
 
 build() {
-  cd $srcdir/$pkgname-Version_${pkgver//./_}/$pkgname/
+  cd $srcdir/$pkgname/$pkgname/
   CFLAGS="${CFLAGS} -fplt -fcf-protection=none" ./configure --prefix=/usr
-  make -j1
+  make -j2
   make DESTDIR=build install
 }
 
 package() {
-  cp -r  $srcdir/$pkgname-Version_${pkgver//./_}/$pkgname/build/. $pkgdir/
+  cp -r  $srcdir/$pkgname/$pkgname/build/. $pkgdir/
 }
