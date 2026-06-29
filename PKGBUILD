@@ -7,15 +7,15 @@
 # https://vpn.mozilla.org
 
 pkgname=mozillavpn
-pkgver=2.37.0
-pkgrel=2
+pkgver=2.38.0
+pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 arch=('x86_64')
 url="https://github.com/mozilla-mobile/mozilla-vpn-client"
 license=('MPL-2.0')
 depends=(
   'hicolor-icon-theme'
-  'libsecret'
+  'org.freedesktop.secrets'
   'polkit'
   'qt6-5compat'
   'qt6-declarative'
@@ -27,7 +27,6 @@ depends=(
 makedepends=(
   'cargo'
   'cmake'
-  'git'
   'go'
   'ninja'
   'python-yaml'
@@ -40,18 +39,17 @@ optdepends=(
 install=mozillavpn.install
 options=('!lto')
 
-_pkgsrc="${pkgname}"
-source=("${_pkgsrc}"::"git+${url}.git#tag=v${pkgver}")
-sha256sums=('8f1fe6874197da9a681136e186ac0820b2687ff54aa111e658cb5afbe9ec0679')
+source=("${pkgname}-${pkgver}.tar.gz::https://archive.mozilla.org/pub/vpn/releases/${pkgver}/source/mozillavpn-sources.tar.gz")
+sha256sums=('705aa47a3da5bfc6f652a237c8fa84b849944d8f27ce574105c04cc1a8755908')
 
 prepare() {
-  cd "${_pkgsrc}"
-  git submodule update --init --recursive --depth=1
+  tar xf *.orig.tar.gz
+  mv mozillavpn-*/ "${pkgname}"
 }
 
 build() {
   local _cmake_options=(
-    -S "${_pkgsrc}"
+    -S "${srcdir}/${pkgname}"
     -B build
     -G Ninja
     -DCMAKE_BUILD_TYPE=Release
@@ -63,5 +61,5 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
-  install -Dm644 "${srcdir}/${_pkgsrc}/linux/org.mozilla.vpn.rules-others" "${pkgdir}/usr/share/polkit-1/rules.d/org.mozilla.vpn.rules"
+  install -Dm644 "${srcdir}/${pkgname}/linux/org.mozilla.vpn.rules-others" "${pkgdir}/usr/share/polkit-1/rules.d/org.mozilla.vpn.rules"
 }

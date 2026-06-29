@@ -1,20 +1,19 @@
 pkgbase = mozillavpn
 	pkgdesc = Fast, secure, and easy to use VPN from the makers of Firefox
-	pkgver = 2.37.0
-	pkgrel = 2
+	pkgver = 2.38.0
+	pkgrel = 1
 	url = https://github.com/mozilla-mobile/mozilla-vpn-client
 	install = mozillavpn.install
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = cargo
 	makedepends = cmake
-	makedepends = git
 	makedepends = go
 	makedepends = ninja
 	makedepends = python-yaml
 	makedepends = qt6-tools
 	depends = hicolor-icon-theme
-	depends = libsecret
+	depends = org.freedesktop.secrets
 	depends = polkit
 	depends = qt6-5compat
 	depends = qt6-declarative
@@ -25,7 +24,7 @@ pkgbase = mozillavpn
 	optdepends = qt6-wayland: for Wayland support
 	optdepends = wayland-protocols: for Wayland support
 	options = !lto
-	source = mozillavpn::git+https://github.com/mozilla-mobile/mozilla-vpn-client.git#tag=v2.37.0
-	sha256sums = 8f1fe6874197da9a681136e186ac0820b2687ff54aa111e658cb5afbe9ec0679
+	source = mozillavpn-2.38.0.tar.gz::https://archive.mozilla.org/pub/vpn/releases/2.38.0/source/mozillavpn-sources.tar.gz
+	sha256sums = 705aa47a3da5bfc6f652a237c8fa84b849944d8f27ce574105c04cc1a8755908
 
 pkgname = mozillavpn
