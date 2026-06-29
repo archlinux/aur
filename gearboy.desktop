@@ -4,4 +4,5 @@ Name=Gearboy
 GenericName=Game Boy Emulator
 Comment=Game Boy / Game Boy Color emulator and debugger
 Exec=gearboy
+Icon=gearboy
 Categories=Game;Emulator;

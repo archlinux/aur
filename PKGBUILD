@@ -2,7 +2,7 @@
 
 pkgname="gearboy"
 pkgver=3.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Game Boy / Gameboy Color emulator"
 url="https://github.com/drhelius/Gearboy"
 arch=("x86_64")
@@ -14,7 +14,7 @@ source=(
 )
 sha256sums=(
     "7af334c13469304bbe0abd6fb74a25f0b0d6443ddbb0fc606ce5c1c90be32138"
-    "14488a013717c4d59eabd11dd852c167fc7d9eff702a2691f1089317faaf0f24"
+    "2508710d17e920a5d179c3c4ac737e240aec766eb8d63347f11eda00d7123de9"
 )
 
 build() {
@@ -23,10 +23,18 @@ build() {
 }
 
 package() {
-    cd $srcdir/Gearboy-$pkgver/platforms
+    cd $srcdir/Gearboy-$pkgver
+    install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+
+    cd platforms
     mkdir -p $pkgdir/opt/$pkgname
     install -Dm755 linux/gearboy $pkgdir/opt/$pkgname
     install -Dm644 shared/gamecontrollerdb.txt $pkgdir/opt/$pkgname
+    install -Dm644 macos/image.png $pkgdir/usr/share/pixmaps/$pkgname.png
+
+    mkdir -p $pkgdir/opt/$pkgname/shaders
+    install -Dm644 shared/desktop/shaders/* $pkgdir/opt/$pkgname/shaders
+
     mkdir -p $pkgdir/usr/bin
     ln -s /opt/$pkgname/gearboy $pkgdir/usr/bin/$pkgname
     install -Dm644 $srcdir/gearboy.desktop $pkgdir/usr/share/applications/gearboy.desktop
