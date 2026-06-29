@@ -1,6 +1,6 @@
 pkgbase = mcpp-m
 	pkgdesc = Modern C++ build & package management tool (built from source)
-	pkgver = 0.0.69
+	pkgver = 0.0.70
 	pkgrel = 1
 	url = https://github.com/mcpp-community/mcpp
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = mcpp-m
 	conflicts = mcpp-bin
 	conflicts = mcpp
 	options = !strip
-	source = mcpp-0.0.69.tar.gz::https://github.com/mcpp-community/mcpp/archive/v0.0.69.tar.gz
+	source = mcpp-0.0.70.tar.gz::https://github.com/mcpp-community/mcpp/archive/v0.0.70.tar.gz
 	source = mcpp.sh
-	sha256sums = f46acedab2c21df8d4ea795b0517d4526d10a0556f60c5e8a893c99942d98e0c
+	sha256sums = cf356e6153addaa4c633c2019a0cc91acf437227f286dc6bd5a8c1146d48f99d
 	sha256sums = SKIP
 
 pkgname = mcpp-m
