@@ -1,0 +1,43 @@
+post_install() {
+    # Create the greeter system user and register the units. Nothing is enabled.
+    systemd-sysusers door.conf >/dev/null 2>&1 || true
+    systemctl daemon-reload >/dev/null 2>&1 || true
+
+    cat <<'EOF'
+
+:: door is installed but DISABLED. Your current login manager is untouched.
+
+   Make door the active login manager (reversible) — as root:
+     systemctl status display-manager.service | head -1   # note your current DM
+     systemctl disable <current-dm>.service                # keep it installed = fallback
+     systemctl enable  --now doord.service                 # doord owns the greeter
+
+   doord conflicts with display-manager.service, so enabling it stops your
+   current DM automatically; keep the DM *installed* as the fallback.
+
+   REVERT — from a text VT (Ctrl+Alt+F2) or over SSH:
+     systemctl disable --now doord.service
+     systemctl enable  --now <current-dm>.service   # --now is REQUIRED: without
+                                                    # it the DM is armed for next
+                                                    # boot but not started now.
+
+   FAIL-SAFE: if the greeter cannot start (bad perms, missing compositor, crash),
+   doord stops itself after a few quick failures, restores a text console, and
+   exits instead of locking the machine — so the revert above stays reachable.
+   Check 'journalctl -u doord' for the reason.
+
+   STATUS: the greeter<->session VT handoff is validated live (2026-06-26):
+   boot -> greeter -> auth -> Plasma, with SSH as a safety net.
+   KNOWN ISSUE: stopping doord on a VT left in graphics mode can leave that VT
+   frozen on the last frame until the fallback DM starts — another VT
+   (Ctrl+Alt+F2 = getty) and SSH stay live, so it is recoverable, not a lockout.
+EOF
+}
+
+post_upgrade() {
+    systemctl daemon-reload >/dev/null 2>&1 || true
+}
+
+post_remove() {
+    systemctl daemon-reload >/dev/null 2>&1 || true
+}
