@@ -1,6 +1,6 @@
 # Maintainer: Junjie <junjie@omni-stream.ai>
 pkgname=omni-code-bridge-bin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Rust bridge for Omni Code — connects mobile clients to local coding agents"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source_x86_64=("omni-code-bridge-$pkgver-linux-x64.tar.gz::https://github.com/om
 source_aarch64=("omni-code-bridge-$pkgver-linux-arm64.tar.gz::https://github.com/omni-stream-ai/omni-code-bridge/releases/download/v${pkgver}/omni-code-bridge-linux-arm64.tar.gz")
 sha256sums=('SKIP'
             'ed59c1da82265d3d408c7c47ebdfd1af041ab847e68692387189487dc60a9713')
-sha256sums_x86_64=('0654ea26951e2518002a3dbbbba4ecc2cf08e57d78399b47ce73ff2e7a3d6f2f')
-sha256sums_aarch64=('d7c051e581896c9217b3a5e7b346e317cb42b8397cc0fea4da16d59d37dd666c')
+sha256sums_x86_64=('135bad1196dd22c3e4560167c0eacf2094dc5c3b1fb69150f5e84e16da3bac26')
+sha256sums_aarch64=('ce860a53d4798bf274ad3072e8725ccaee74d4131e661682253f90f18f45e1ec')
 
 package() {
     local asset_dir
