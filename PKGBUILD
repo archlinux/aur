@@ -1,9 +1,9 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 _pkgname=euro-office-lite
 pkgname=${_pkgname}-bin
-pkgver=0.6.0
+pkgver=0.8.0
 pkgrel=1
-pkgdesc='Lightweight desktop office suite built on Tauri v2 and Euro-Office editors. ~96 MB installer, no cloud, no telemetry.'
+pkgdesc='Lightweight desktop office suite built on Tauri v2 and Euro-Office editors. No cloud, no telemetry.'
 arch=(x86_64)
 url='https://github.com/delmarguillen/euro-office-lite'
 license=(AGPL-3.0-only)
@@ -29,17 +29,20 @@ options=(
 )
 source_x86_64=(
 	"${pkgname}-${pkgver}.deb::https://github.com/delmarguillen/${_pkgname}/releases/download/v${pkgver}-alpha/Euro-Office.Lite_${pkgver}-alpha_amd64.deb"
-	"LICENSE"::"https://raw.githubusercontent.com/delmarguillen/euro-office-lite/refs/heads/main/LICENSE"
+	"LICENSE::https://raw.githubusercontent.com/delmarguillen/euro-office-lite/refs/heads/main/LICENSE"
 )
-b2sums_x86_64=('96a8119bef75a5c9e4c7e3ef8936700509e05e70a4d64aef25917e7e416c5e28206411100ac2918c1196e6495317b678edd116e9af6b77542f7c2f2159953546'
+b2sums_x86_64=('815096784b4c57d2519d403291476fffca00ff7c2ce5bbd56749ce6af50919ed1fa28427f9b3eae78de0b836eead17b91cc051b2b566086c75c719a488b0429d'
                '25ff89b638fae6a63641f5196157086bdcb76c6f1d4c49470551a3cfd131951d2b7c40c48a9380fa4569b725e43e57e85d48df4a56abf9a119ddcd1b11d2a897')
 
 prepare() {
 	bsdtar -xf "${srcdir}/data.tar.gz" -C "${srcdir}/"
 }
 
-#build() {
-#}
+pkgver() {
+	local _tagver
+	_tagver=$(curl -s GET https://api.github.com/repos/delmarguillen/euro-office-lite/tags | jq -r '.[].name' | head -n1 | sed 's/^v//') 
+	printf "%s" "${_tagver%-alpha}"
+}
 
 package() {
 	cp -r "${srcdir}/usr" "${pkgdir}/"
