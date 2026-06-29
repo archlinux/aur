@@ -5,7 +5,7 @@
 # Contributor: Armin Schrenk <armin.schrenk@skymatic.de>
 
 pkgname=cryptomator-bin
-pkgver=1.19.2
+pkgver=1.19.3
 pkgrel=1
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=('x86_64' 'aarch64')
@@ -33,9 +33,9 @@ sha256sums=('53c509fe54ef1c5c28b469d86291536649367fb2030b2c0fb3101da2031f8e6e'
             '6286d0a409389bc3542ccad53552f85ec5d05422e0c855342304194fd36ccdba'
             '0f815a749d2299ef68b1662e0d5532de96b6b66b5b31cc6aa98a8ae913ccf8be'
             '78537ead26dcc1488d7fff02f47fce559f70f9bb2d7fa7fa1741ad3cd151bfad')
-sha256sums_x86_64=('5689d8cfbc60c0f2440d338a58362568d91d2d928fa3489d825a60fd0914c428'
+sha256sums_x86_64=('895d09255b5f5fe39029dba337ab0950f8609b3b7919313eeeb18d221e7e25ab'
                    'SKIP')
-sha256sums_aarch64=('9295c9c7fef6e7ec0a9d6cc1561a930e127ff83e6d98d5b14b6c01199399af75'
+sha256sums_aarch64=('dc118d40748d97a0bf62efe44fcbca6c4c6c711e9c97bb9f4f84eb1f06993e29'
                     'SKIP')
 options=('!strip')
 
