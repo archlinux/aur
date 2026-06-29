@@ -24,7 +24,7 @@ depends=(
 	'libadwaita'
 	'adwaita-icon-theme'
 	# Wayland
-	'xkbcommon'
+	'libxkbcommon'
 )
 optdepends=(
 	'power-profiles-daemon: ppd widget'
