@@ -4,15 +4,16 @@
 # Contributor: Ian MacKay <immackay0@gmail.com>
 
 _pkgname='desktop-plus'
+_old_pkgname='github-desktop-plus'
 pkgname="${_pkgname}-bin"
-pkgver=3.6.1.0
+pkgver=3.6.1.1
 pkgrel=1
 pkgdesc="GitHub Desktop fork with extra features and improvements (binary release)."
 arch=('x86_64' 'aarch64')
 url="https://github.com/desktop-plus/desktop-plus"
 license=('MIT')
-provides=(${_pkgname})
-conflicts=(${_pkgname})
+provides=(${_pkgname} ${_old_pkgname})
+conflicts=(${_pkgname} ${_old_pkgname})
 depends=(
     'curl'
     'libcurl-gnutls'
@@ -38,8 +39,8 @@ sha256sums=(
     'b9c24de9a78b4e4d444cb0ba38817b13acd87c514dd64dd30fce2593e34a11cf'
     'ccf8e189b15a46a00363c7a40299762ef313827aa4809140f7940c5801db2e27'
 )
-sha256sums_x86_64=('e7c0acd2ae468dee1d274aa2c8691873e9b6de7a0e4ab6ea5a011d568ffc1bd1')
-sha256sums_aarch64=('94d462e35052ead84dcf8dd67fa6cff2f4bc54855494d03b73d486db008f8460')
+sha256sums_x86_64=('f282e7886f016ff32777d3bbc478453bef0f1c927e63e605080a74848a8ea843')
+sha256sums_aarch64=('d932c715a5f11e32bfb5695232382e81ef704941420e165424cddf1194240ecc')
 package() {
     INSTALL_DIR="$pkgdir/opt/${_pkgname}"
 
