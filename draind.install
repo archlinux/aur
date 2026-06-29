@@ -26,7 +26,6 @@ post_upgrade() {
 }
 
 post_remove() {
-    systemctl is-enabled --global draind-agent &>/dev/null && systemctl --global disable draind-agent
     systemctl is-enabled draind &>/dev/null && systemctl disable --now draind
     systemctl daemon-reload
 }
