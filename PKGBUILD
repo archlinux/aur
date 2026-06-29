@@ -3,8 +3,8 @@
 # AUR Package Repository: https://github.com/patrickjaja/claude-desktop-bin
 
 pkgname=claude-desktop-bin
-pkgver=1.15962.0
-pkgrel=3
+pkgver=1.15962.1
+pkgrel=1
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
@@ -31,10 +31,10 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
 provides=('claude-desktop')
 conflicts=('claude-desktop')
 _electron_ver=42.0.0
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.15962.0-3/claude-desktop-1.15962.0-linux.tar.gz" "electron-v${_electron_ver}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-x64.zip")
-sha256sums_x86_64=('3871375bb7c46b8c3ebb201b0315c08e18465f2f209c3391a59b3e9aa881cd4a' '83c7178dba2d0ce77e13743bf86beda75c6141caeeadb4340e1888bc96298b4b')
-source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.15962.0-3/claude-desktop-1.15962.0-linux-aarch64.tar.gz" "electron-v${_electron_ver}-linux-arm64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-arm64.zip")
-sha256sums_aarch64=('c067ddce8269634724f90f4559e036f5211c79b8276d132dc0cc3a9b78907fd3' '5531da08123d60d50c833997842e8371970bebe7d29261e00eaa83de948332b4')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.15962.1/claude-desktop-1.15962.1-linux.tar.gz" "electron-v${_electron_ver}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-x64.zip")
+sha256sums_x86_64=('f0ad228485a244c843db3b223d5573c5acb2b731258974893bd7f39ff3b36fc4' '83c7178dba2d0ce77e13743bf86beda75c6141caeeadb4340e1888bc96298b4b')
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.15962.1/claude-desktop-1.15962.1-linux-aarch64.tar.gz" "electron-v${_electron_ver}-linux-arm64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-arm64.zip")
+sha256sums_aarch64=('b70b9469e21b301739b1350f9e1fa8d8b91558f0a6cfafa98f2feb6bf80a9fb9' '5531da08123d60d50c833997842e8371970bebe7d29261e00eaa83de948332b4')
 options=('!strip')
 
 package() {
