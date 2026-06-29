@@ -1,7 +1,7 @@
 pkgbase = cpa-manager-plus-bin
 	pkgdesc = Management panel and analytics server for CLIProxyAPI
 	pkgver = 1.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/seakee/CPA-Manager-Plus
 	install = cpa-manager-plus-bin.install
 	arch = x86_64

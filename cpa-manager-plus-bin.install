@@ -1,5 +1,5 @@
 post_install() {
-    echo ":: Packaging issues? Report at: https://github.com/orange-guo/aur-packages"
+    echo ":: Packaging issues? Report at: https://github.com/theorangeguo/aur-packages"
     echo ::\ CPA\ Manager\ Plus\ needs\ a\ running\ CLIProxyAPI/CPA\ instance\ for\ management\ and\ usage\ collection.
     echo ::\ It\ can\ connect\ to\ either\ a\ local\ cli-proxy-api\ service\ or\ a\ remote\ CPA\ endpoint.
     echo ::\ Configure\ the\ user\ service\ before\ starting\ it:

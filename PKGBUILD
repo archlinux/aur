@@ -1,8 +1,8 @@
-# Maintainer: orange-guo
-# Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/packages/cpa-manager-plus-bin
+# Maintainer: theorangeguo
+# Packaging Repo: https://github.com/theorangeguo/aur-packages/tree/main/packages/cpa-manager-plus-bin
 pkgname=cpa-manager-plus-bin
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc=Management\ panel\ and\ analytics\ server\ for\ CLIProxyAPI
 arch=(x86_64 aarch64 )
 url=https://github.com/seakee/CPA-Manager-Plus
