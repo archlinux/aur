@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-wheel')
 license=('ISC')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('e6a9da952d684a52cb797dff7a96639bad2bdb779e4856158aa294618d505fbe')
 

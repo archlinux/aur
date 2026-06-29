@@ -4,6 +4,7 @@ pkgbase = python-siphashc
 	pkgrel = 1
 	url = https://github.com/WeblateOrg/siphashc
 	arch = x86_64
+	arch = aarch64
 	license = ISC
 	checkdepends = python-wheel
 	makedepends = python-setuptools
