@@ -12,10 +12,10 @@ provides=('nexus-cli')
 conflicts=('nexus-cli')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/yasen-pavlov/nexus/releases/download/v${pkgver}/nexus-cli_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('953df553bac0ca9496f9f62872c230fa7304f4c7efa84fc7d19047a0468867f2')
+sha256sums_aarch64=('7f9ad78c92b910840433f773e588b77d42cbbb72d4671f2304ada2501035ac59')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/yasen-pavlov/nexus/releases/download/v${pkgver}/nexus-cli_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('f380725f26d2e12e4a486a275a03f1edfd249c0db63a675fac2bad0073d3a5ef')
+sha256sums_x86_64=('9c757a309859b9b70f6657bff7764f0e210594e032449abbbdc87735bc63efc6')
 
 package() {
   install -Dm755 "./nexus-cli" "${pkgdir}/usr/bin/nexus-cli"

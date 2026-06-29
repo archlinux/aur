@@ -8,9 +8,9 @@ pkgbase = nexus-cli-bin
 	provides = nexus-cli
 	arch = aarch64
 	source_aarch64 = https://github.com/yasen-pavlov/nexus/releases/download/v0.9.0/nexus-cli_0.9.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 953df553bac0ca9496f9f62872c230fa7304f4c7efa84fc7d19047a0468867f2
+	sha256sums_aarch64 = 7f9ad78c92b910840433f773e588b77d42cbbb72d4671f2304ada2501035ac59
 	arch = x86_64
 	source_x86_64 = https://github.com/yasen-pavlov/nexus/releases/download/v0.9.0/nexus-cli_0.9.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = f380725f26d2e12e4a486a275a03f1edfd249c0db63a675fac2bad0073d3a5ef
+	sha256sums_x86_64 = 9c757a309859b9b70f6657bff7764f0e210594e032449abbbdc87735bc63efc6
 	
 pkgname = nexus-cli-bin
