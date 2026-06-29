@@ -12,7 +12,7 @@ echo "##finish updating sources"
 
 ## probe meson.build for dependencies versions
 for dep in "${deps[@]}";do
-	dep_versions["_${dep}_version"]=$(grep -oP "dependency\('${dep}.*?',\s*version:\s*'[<>=]*\K.*(?=')"  "${srcdir}"/${_gitname}/meson.build)
+	dep_versions["_${dep}_version"]=$(grep -oP "dependency\('${dep}.*?',\s*version:\s*'[<>=]*\K.*?(?=')"  "${srcdir}"/${_gitname}/meson.build)
 done
 
 echo "##probed deps versions:" >&2
