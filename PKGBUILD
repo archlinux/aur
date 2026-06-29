@@ -1,18 +1,21 @@
 # Maintainer: DBeidachazi
 pkgname=wireplumber-lhdc-config
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="WirePlumber configuration for PipeWire LHDC v5 Bluetooth playback"
 arch=('any')
-url="https://github.com/DBeidachazi/wireplumber-lhdc-config"
+url="https://github.com/DBeidachazi/pipewire-lhdc-aur/tree/master/wireplumber-lhdc-config"
 license=('MIT')
-depends=('wireplumber' 'pipewire-bluez5-lhdc-git' 'lhdc-v5-helper')
+depends=('wireplumber' 'pipewire-bluez5-lhdc-git')
 install="$pkgname.install"
 source=(
   '51-bluez-lhdc.conf'
   '50-lhdc.conf'
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 
 package() {
   install -Dm644 51-bluez-lhdc.conf \

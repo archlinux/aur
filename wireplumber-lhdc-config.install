@@ -4,6 +4,7 @@ post_install() {
 ==> Restart the user WirePlumber service to load LHDC v5 support:
     systemctl --user daemon-reload
     systemctl --user restart wireplumber
+==> Reconnect the Bluetooth headset after restarting WirePlumber.
 EOF
 }
 

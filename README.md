@@ -1,18 +1,11 @@
 # wireplumber-lhdc-config
 
-Arch package that enables the out-of-tree LHDC v5 PipeWire bluez5 plugin for
-WirePlumber.
+WirePlumber configuration for the out-of-tree LHDC v5 PipeWire plugin.
 
-It installs:
+It enables `lhdc_v5` in the Bluetooth codec list and prepends
+`/usr/lib/spa-0.2-lhdc` to `SPA_PLUGIN_DIR`.
 
-- `/usr/share/wireplumber/wireplumber.conf.d/51-bluez-lhdc.conf`
-- `/usr/lib/systemd/user/wireplumber.service.d/50-lhdc.conf`
-
-The systemd drop-in prepends `/usr/lib/spa-0.2-lhdc` to `SPA_PLUGIN_DIR` and
-disables `MemoryDenyWriteExecute` for WirePlumber because the LHDC helper uses
-QEMU TCG.
-
-After installing:
+Restart WirePlumber after install:
 
 ```sh
 systemctl --user daemon-reload
