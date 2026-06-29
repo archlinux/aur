@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=cloudflare-warp-nox-bin
-pkgver=2026.4.1390
+pkgver=2026.6.822
 pkgrel=1
 pkgdesc="Cloudflare Warp Client (for servers without graphical environment)"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ options=('!debug' '!strip' '!emptydirs')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://pkg.cloudflareclient.com/pool/noble/main/c/cloudflare-warp/cloudflare-warp_${pkgver}.0_amd64.deb")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::https://pkg.cloudflareclient.com/pool/noble/main/c/cloudflare-warp/cloudflare-warp_${pkgver}.0_arm64.deb")
 noextract=("${pkgname}-${pkgver}-x86_64.deb" "${pkgname}-${pkgver}-aarch64.deb")
-b2sums_x86_64=('29142a1c2546b757a6ae91c0910a732d02b571cbde850e3bd22a9c5c79c7dbb0978ff9296c3d404b3ecf4c946ace66f50b1c6667f9c548fc30eb2ef47d223ef6')
-b2sums_aarch64=('a3cd927859f5ec17dca0ce0ac22d7cc96a2f00a3ff6050651e2cc9468a3bee80b6389dbfd7f23f7e9271704444bf787802ef683f5b086d5bfe609ea3c0760897')
+b2sums_x86_64=('dc71ffcc668eae50a58c29610f1a6ed6dbfb3edbe98c07ad0239ab464d47cfb6c23dd467ab8079fe190207c30bba6abbf0f40e6459412cbd325a259ccdec7294')
+b2sums_aarch64=('fb910f2311a21630d69d4daae0eba51a01dfc6e3a96f4a3e945d2dd83ae41ec345d665408104ecac1564775b29fa062cfca88cfbf867594d573f46329f189c0e')
 
 prepare() {
   mkdir -p "${srcdir}/extract"
