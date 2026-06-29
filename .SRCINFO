@@ -1,0 +1,24 @@
+pkgbase = python-parts2jitx
+	pkgdesc = Import electronic part data (LCSC, KiCad, EasyEDA) and convert to JITX component code
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/d-haldane/parts2jitx
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = easyeda2kicad
+	optdepends = easyeda-pro: EasyEDA Professional Edition
+	optdepends = lceda-pro: 免费、专业、强大的国产PCB设计工具
+	optdepends = kicad: Electronic schematic and printed circuit board (PCB) design tools
+	provides = python-parts2jitx
+	conflicts = python-parts2jitx
+	source = parts2jitx::git+https://github.com/d-haldane/parts2jitx.git#tag=v0.2.0
+	sha256sums = 9d47eeec5f7db13c82299bccac78a0729990f7a87bf0d9ccc7c996def8eec12d
+
+pkgname = python-parts2jitx
