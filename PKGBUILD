@@ -1,7 +1,7 @@
 # Maintainer: Leo <i@hardrain980.com>
 
 pkgname=phan
-pkgver=6.0.5
+pkgver=6.0.7
 pkgrel=1
 pkgdesc="Static analyzer for PHP that prefers to minimize false-positives."
 url="https://github.com/phan/phan/wiki"
@@ -16,7 +16,7 @@ source=(
 	"${pkgname}-${pkgver}.phar::https://github.com/phan/phan/releases/download/${pkgver}/phan.phar"
 	"https://raw.githubusercontent.com/phan/phan/${pkgver}/LICENSE"
 )
-sha256sums=('d507d03b91dd033df0a65b96d9c97b4d8feb42bb2da55b8352d2031b292d314f' SKIP)
+sha256sums=('0ed500e8ebd00cabf55d219547420cdc3f65b4f970fb1a4945841ed48118f8be' SKIP)
 
 package() {
 	install -D -m 644 \
