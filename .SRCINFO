@@ -1,7 +1,7 @@
 pkgbase = boxd-cli-bin
 	pkgdesc = External CLI for managing boxd cloud VMs
 	pkgver = 0.1.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://boxd.sh/
 	install = boxd-cli-bin.install
 	arch = x86_64
