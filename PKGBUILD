@@ -1,9 +1,10 @@
 # Maintainer: tioguda <guda.flavio@gmail.com>
+# Maintainer: Pedro Henrique Quitete Barreto <pedrohqb@gmail.com>
 
 pkgname=softplan-websigner
 _pkgver=2.15.0
 pkgver=${_pkgver}.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Web Signer native application.. An easy solution for using digital certificates in Web applications."
 arch=('x86_64')
 url="https://websigner.softplan.com.br"
@@ -18,7 +19,7 @@ sha512sums=('54bb4dd51f3ea442db2789f15bde5ee3e5fb92a7b8dc269198b700f75a731918c8e
 package(){
 
     # Extract package data
-    tar xf data.tar.xz -C "${pkgdir}"
+    tar xf data.tar.zst -C "${pkgdir}"
 
     #  Fix directory structure differences
     rm -rf "${pkgdir}"/usr/lib/*
