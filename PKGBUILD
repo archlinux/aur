@@ -1,4 +1,4 @@
-# Maintainer:  Joost Bremmer <toost.b@gmail.com>
+# Maintainer:  Joost Bremmer <contact at madeofmagicandwires.online>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 # Contributor: M Rawash <mrawash@gmail.com>
 # Contributor: János Illés <ijanos@gmail.com>
