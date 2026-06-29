@@ -2,12 +2,13 @@
 
 pkgname=miyu
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='活在终端里的二次元少女'
 arch=('x86_64')
 url='https://github.com/SHORiN-KiWATA/Miyu'
 license=('MIT')
-options=('!debug')
+options=('!strip' '!debug')
+export LC_ALL=C.UTF-8
 depends=('chafa' 'gcc-libs' 'ripgrep')
 optdepends=(
   'git: update default Shorin Wiki knowledge base'
@@ -16,7 +17,7 @@ optdepends=(
   'zsh: zsh shell integration support'
 )
 source=("${pkgname}-${pkgver}-${pkgrel}-${CARCH}.release.pkg.tar.zst::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.zst")
-sha256sums=('7fa239bbd3b7614911a81a3b989629314665cfb7b29a5cd8429c4ec6a15fe5a3')
+sha256sums=('506e9037f496f49f44e23bfc64898703fe030b859bf41b8fe488d1c177739e04')
 
 package() {
   install -Dm755 "${srcdir}/usr/bin/miyu" "${pkgdir}/usr/bin/miyu"
