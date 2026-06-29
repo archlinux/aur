@@ -1,6 +1,6 @@
 # Maintainer: Samuel Paredes <sam.paredes.g@gmail.com>
 pkgname=franki-os-git
-pkgver=r847.f4c2dae
+pkgver=r895.9ce76ec
 pkgrel=1
 pkgdesc="Federated Recursive Artificial Neural Knowledge Interface - Neural OS"
 arch=('x86_64')
@@ -20,9 +20,11 @@ depends=(
     'perl-image-exiftool'  # extraccion GPS/EXIF de imagenes (reflejo geodesico)
     'ripgrep'         # busqueda turbo soberana (f-cerebelo + tool_busqueda_turbo_rust)
     'file'            # deteccion MIME nativa (sentidos/vision pipeline)
+    'webkit2gtk-4.1'  # Tauri v2 WebView runtime (binario franki-os linka dinamicamente)
+    'gtk3'            # Tauri v2 window system runtime
 )
 # npm solo se necesita en build() para npm ci — no es una dep de runtime
-makedepends=('rust' 'cargo' 'git' 'python-pip' 'npm' 'pkgconf' 'libsoup3' 'webkit2gtk-4.1' 'gtk3')
+makedepends=('rust' 'cargo' 'git' 'python-pip' 'npm' 'pkgconf' 'libsoup3')
 optdepends=(
     'pandoc: document generation via Scribe engine'
     'typst: native PDF generation via Scribe engine'
@@ -77,9 +79,7 @@ build() {
     echo "[FRANKI] Construyendo Frontend + Tauri..."
     cd "$srcdir/franki/frontend"
     npm ci
-    # --bundles none: solo compila el binario sin empaquetar (.deb/.AppImage)
-    # El empaquetado lo hace makepkg via este PKGBUILD.
-    npm run tauri build -- --bundles none
+    npm run tauri build -- --no-bundle
 }
 
 package() {
