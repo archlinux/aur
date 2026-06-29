@@ -1,0 +1,22 @@
+pkgbase = poshbuddy-bin
+	pkgdesc = TUI manager for Oh My Posh
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/pitahayaDevSoft/poshbuddy
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = fontconfig
+	depends = oh-my-posh
+	provides = poshbuddy
+	conflicts = poshbuddy
+	options = !strip
+	source = README-0.6.0.md::https://raw.githubusercontent.com/pitahayaDevSoft/poshbuddy/v0.6.0/README.md
+	source = LICENSE-0.6.0::https://raw.githubusercontent.com/pitahayaDevSoft/poshbuddy/v0.6.0/LICENSE
+	sha256sums = c7b5ceb1fc628bc16a544a3f592d6161a7b4b5f153571be486213a81c796f8dd
+	sha256sums = 0e0fd16681a32bca32792053882fdc99d0132a40c5c4a27492557b1b87694bba
+	source_x86_64 = poshbuddy-x86_64-0.6.0.tgz::https://github.com/pitahayaDevSoft/poshbuddy/releases/download/v0.6.0/poshbuddy-linux-x86_64.tar.gz
+	sha256sums_x86_64 = dba4ab78da09a2d45d76ef39755f232fcedb036f4802df31d416aaa440dd9d76
+
+pkgname = poshbuddy-bin
