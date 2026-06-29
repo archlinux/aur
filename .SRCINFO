@@ -1,0 +1,18 @@
+pkgbase = push.sh-git
+	pkgdesc = A POSIX shell function to treat a variable like an array, quoting args.
+	pkgver = 3.4.r18.20200907.5d5b38a
+	pkgrel = 1
+	url = https://github.com/vaeth/push
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	depends = coreutils
+	depends = bash
+	provides = push.sh=3.4.r18.20200907.5d5b38a
+	conflicts = push.sh
+	source = push.sh::git+https://github.com/vaeth/push.git
+	source = push.sh_Makefile-honour-destination-variables.patch::https://github.com/vaeth/push/pull/3.patch
+	sha256sums = SKIP
+	sha256sums = c4426b052a4e448cc7af6bf6f93787fb73692d1a1a4726aeb503e4929d809736
+
+pkgname = push.sh-git
