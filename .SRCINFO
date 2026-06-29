@@ -1,6 +1,6 @@
 pkgbase = openfoam-com
 	pkgdesc = The open source CFD toolbox (www.openfoam.com)
-	pkgver = v2512
+	pkgver = v2606
 	pkgrel = 1
 	url = https://www.openfoam.com
 	install = openfoam-com.install
@@ -15,7 +15,7 @@ pkgbase = openfoam-com
 	depends = scotch
 	depends = parmetis-git
 	depends = kahip
-	source = https://dl.openfoam.com/source/v2512/OpenFOAM-v2512.tgz
-	md5sums = 8a1abe3864851902bb77809efa94ba3e
+	source = https://dl.openfoam.com/source/v2606/OpenFOAM-v2606.tgz
+	md5sums = 35cbe9bc512fe087e4a472b1cb610063
 
 pkgname = openfoam-com
