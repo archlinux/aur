@@ -1,6 +1,6 @@
 pkgbase = hyprland-toggle-tiling-git
 	pkgdesc = A simple program to toggle tiling and floating modes for windows in the Hyprland Wayland compositor.
-	pkgver = 1.4.1
+	pkgver = 1.4.3
 	pkgrel = 1.0
 	url = https://github.com/TypoMustakes/hyprland-toggle-tiling
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = hyprland-toggle-tiling-git
 	makedepends = cmake
 	makedepends = git
 	depends = hyprland
-	source = git+https://github.com/TypoMustakes/hyprland-toggle-tiling.git
+	source = git+https://github.com/TypoMustakes/hyprland-toggle-tiling.git#tag=v1.4.3
 	sha256sums = SKIP
 
 pkgname = hyprland-toggle-tiling-git
