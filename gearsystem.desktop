@@ -3,4 +3,5 @@ Type=Application
 Name=Gearsystem
 Comment=Sega Master System / Game Gear / SG-1000 emulator and debugger
 Exec=gearsystem
+Icon=gearsystem
 Categories=Game;Emulator;

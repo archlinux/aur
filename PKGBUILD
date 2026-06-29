@@ -2,7 +2,7 @@
 
 pkgname="gearsystem"
 pkgver=3.9.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Sega Master System / Game Gear / SG-1000 Emulator"
 url="https://github.com/drhelius/Gearsystem"
 arch=("x86_64")
@@ -14,7 +14,7 @@ source=(
 )
 sha256sums=(
     "ce98ab5c77514ef134ba455067bf506855abf3393192e55e0ed70616f54b3c1f"
-    "ca638acc5479345aa40fa2baae5e98ebbf97cf6080365e49e11c574dd690f4d1"
+    "214a0ff5b5d932ccde5c4cd2df1e048441981bbab928412da740b5a3ad9ed74e"
 )
 
 build() {
@@ -23,11 +23,19 @@ build() {
 }
 
 package() {
-    cd $srcdir/Gearsystem-${pkgver}/platforms
-    mkdir -p $pkgdir/opt/gearsystem
-    install -Dm755 linux/gearsystem $pkgdir/opt/gearsystem
-    install -Dm644 shared/gamecontrollerdb.txt $pkgdir/opt/gearsystem
+    cd $srcdir/Gearsystem-${pkgver}
+    install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+
+    cd platforms
+    mkdir -p $pkgdir/opt/$pkgname
+    install -Dm755 linux/gearsystem $pkgdir/opt/$pkgname
+    install -Dm644 shared/gamecontrollerdb.txt $pkgdir/opt/$pkgname
+    install -Dm644 macos/image.png $pkgdir/usr/share/pixmaps/$pkgname.png
+
+    mkdir -p $pkgdir/opt/$pkgname/shaders
+    install -Dm644 shared/desktop/shaders/* $pkgdir/opt/$pkgname/shaders
+
     mkdir -p $pkgdir/usr/bin
-    ln -s /opt/gearsystem/gearsystem $pkgdir/usr/bin/gearsystem
+    ln -s /opt/$pkgname/gearsystem $pkgdir/usr/bin/$pkgname
     install -Dm644 $srcdir/gearsystem.desktop $pkgdir/usr/share/applications/gearsystem.desktop
 }
