@@ -20,6 +20,10 @@ _setup_msg() {
     AUR), python-pysaml2 + xmlsec (SAML, AUR).
     Faster backend (optional): the persistent SCGI worker —
       /usr/share/doc/remotepower-server/remotepower-api.service
+    Large-fleet backend (optional, v5.5.0): the gunicorn WSGI tier +
+    out-of-band scheduler (install gunicorn first) —
+      /usr/share/doc/remotepower-server/remotepower-wsgi.service
+      /usr/share/doc/remotepower-server/remotepower-scheduler.service
     For TLS-from-scratch (self-signed CA) see the project's tls-selfsigned docs.
 MSG
 }
@@ -42,5 +46,5 @@ post_upgrade() {
   systemd-tmpfiles --create remotepower.conf >/dev/null 2>&1 || true
   _compile_backend
   echo '==> RemotePower server upgraded. Reload services if running:'
-  echo '      systemctl reload nginx   (and: systemctl restart remotepower-api  if you use the SCGI worker)'
+  echo '      systemctl reload nginx   (and restart remotepower-api / remotepower-wsgi / remotepower-scheduler if you use them)'
 }

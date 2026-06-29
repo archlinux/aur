@@ -1,6 +1,6 @@
 pkgbase = remotepower-server
 	pkgdesc = Self-hosted fleet-management server for RemotePower (nginx + Python CGI): dashboards, CVE/drift/compliance, monitoring, AI
-	pkgver = 5.3.0
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = https://github.com/tyxak/remotepower
 	install = remotepower-server.install
@@ -18,11 +18,13 @@ pkgbase = remotepower-server
 	optdepends = xmlsec: SAML signature verification (pairs with python-pysaml2)
 	optdepends = wireguard-go: WG Access road-warrior VPN hub (Admin -> WG Access)
 	optdepends = wireguard-tools: WG Access — wg/wg-quick used by the VPN hub helper
+	optdepends = gunicorn: persistent WSGI app tier (remotepower-wsgi.service, large fleets)
+	optdepends = postgresql: PostgreSQL storage backend for large / multi-node fleets
 	backup = etc/nginx/snippets/remotepower-locations.conf
-	source = remotepower-5.3.0.tar.gz::https://github.com/tyxak/remotepower/releases/download/v5.3.0/remotepower-5.3.0.tar.gz
-	source = remotepower-5.3.0.tar.gz.asc::https://github.com/tyxak/remotepower/releases/download/v5.3.0/remotepower-5.3.0.tar.gz.asc
+	source = remotepower-5.5.0.tar.gz::https://github.com/tyxak/remotepower/releases/download/v5.5.0/remotepower-5.5.0.tar.gz
+	source = remotepower-5.5.0.tar.gz.asc::https://github.com/tyxak/remotepower/releases/download/v5.5.0/remotepower-5.5.0.tar.gz.asc
 	validpgpkeys = E7B5AD456728B8462A8B54BFD488AF115D2CCDBF
-	sha256sums = 175dcdddf9f763b79e9b66f9787443de3c3ca11e3be0346231c4d434dd4f835d
+	sha256sums = c188b11246534e2811baedcd5b5eb4ba07e6bb8892f9cc358c59f440239bfd07
 	sha256sums = SKIP
 
 pkgname = remotepower-server

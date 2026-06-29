@@ -1,6 +1,6 @@
 # Maintainer: Jakob Munch Overgaard <jmo@tvipper.com>
 pkgname=remotepower-server
-pkgver=5.3.0
+pkgver=5.5.0
 pkgrel=1
 pkgdesc='Self-hosted fleet-management server for RemotePower (nginx + Python CGI): dashboards, CVE/drift/compliance, monitoring, AI'
 arch=('any')
@@ -16,6 +16,8 @@ optdepends=(
   'xmlsec: SAML signature verification (pairs with python-pysaml2)'
   'wireguard-go: WG Access road-warrior VPN hub (Admin -> WG Access)'
   'wireguard-tools: WG Access — wg/wg-quick used by the VPN hub helper'
+  'gunicorn: persistent WSGI app tier (remotepower-wsgi.service, large fleets)'
+  'postgresql: PostgreSQL storage backend for large / multi-node fleets'
 )
 backup=('etc/nginx/snippets/remotepower-locations.conf')
 install="$pkgname.install"
@@ -26,7 +28,7 @@ source=(
   "remotepower-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/remotepower-$pkgver.tar.gz.asc"
 )
 sha256sums=(
-  '175dcdddf9f763b79e9b66f9787443de3c3ca11e3be0346231c4d434dd4f835d'
+  'c188b11246534e2811baedcd5b5eb4ba07e6bb8892f9cc358c59f440239bfd07'
   'SKIP'
 )
 validpgpkeys=('E7B5AD456728B8462A8B54BFD488AF115D2CCDBF')  # Jakob Munch Overgaard <jmo@tvipper.com>
@@ -86,11 +88,17 @@ package() {
   # ── nginx: shared locations snippet (works as-is with /var/www/remotepower). ──
   install -Dm644 server/conf/remotepower-locations.conf \
     "$pkgdir/etc/nginx/snippets/remotepower-locations.conf"
-  # Sample vhost + optional SCGI-worker unit → docs (user sets server_name/TLS).
+  # Sample vhost + optional backend units → docs (user sets server_name/TLS).
   install -Dm644 server/conf/remotepower.conf \
     "$pkgdir/usr/share/doc/$pkgname/remotepower.conf.sample"
   install -Dm644 server/conf/remotepower-api.service \
     "$pkgdir/usr/share/doc/$pkgname/remotepower-api.service"
+  # Optional v5.5.0 persistent WSGI tier + out-of-band scheduler (each unit
+  # carries its own install/rollback steps in the header). See docs/scaling.md.
+  install -Dm644 server/conf/remotepower-wsgi.service \
+    "$pkgdir/usr/share/doc/$pkgname/remotepower-wsgi.service"
+  install -Dm644 server/conf/remotepower-scheduler.service \
+    "$pkgdir/usr/share/doc/$pkgname/remotepower-scheduler.service"
 
   # ── Data dir, created + owned by the nginx user (http) at install/boot. ──
   install -dm755 "$pkgdir/usr/lib/tmpfiles.d"
