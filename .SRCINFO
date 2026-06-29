@@ -1,6 +1,6 @@
 pkgbase = audium-bin
 	pkgdesc = A terminal music app: keyboard-driven, for people who live in the command line.
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/takashialpha/audium
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = audium-bin
 	depends = alsa-lib
 	provides = audium
 	conflicts = audium
-	source = README-1.2.1.md::https://raw.githubusercontent.com/takashialpha/audium/v1.2.1/README.md
-	source = LICENSE-1.2.1::https://raw.githubusercontent.com/takashialpha/audium/v1.2.1/LICENSE
-	sha256sums = f345ca58cf07f487c4cca5bd3059af2e3d7a4e5afaeb93d2f632e0771e67ac1d
+	source = README-1.2.2.md::https://raw.githubusercontent.com/takashialpha/audium/v1.2.2/README.md
+	source = LICENSE-1.2.2::https://raw.githubusercontent.com/takashialpha/audium/v1.2.2/LICENSE
+	sha256sums = 11043dc3b95a4e945c9822eafc7f8810064f49a2f91bd59d1388dacf09949512
 	sha256sums = a24266a5d80f4172e4356c8cdb0b72c0cc884f27afcc7f274a7a6a15eba5f366
-	source_x86_64 = audium-bin-x86_64-1.2.1.tgz::https://github.com/takashialpha/audium/releases/download/v1.2.1/audium-v1.2.1-x86_64-linux.tar.gz
-	sha256sums_x86_64 = f76ebe60b36f4e2d234be58e30e11557955c8bcc034d35535c8ea7115cda82a1
+	source_x86_64 = audium-bin-x86_64-1.2.2.tgz::https://github.com/takashialpha/audium/releases/download/v1.2.2/audium-v1.2.2-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 68524414185128443db67ea95e7f9e36907f5dd90461d9ae0076aa36fea46367
 
 pkgname = audium-bin
