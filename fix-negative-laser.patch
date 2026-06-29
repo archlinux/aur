@@ -1,0 +1,31 @@
+--- a/rts/Sim/Misc/TraceRay.cpp
++++ b/rts/Sim/Misc/TraceRay.cpp
+@@ -19,6 +19,7 @@
+ #include "Sim/Weapons/WeaponDef.h"
+ #include "System/GlobalConfig.h"
+ #include "System/SpringMath.h"
++#include "System/Log/ILog.h"
+ 
+ #include <algorithm>
+ #include <vector>
+@@ -213,6 +214,20 @@
+ 	std::vector<SShieldDist>& hitShields
+ ) {
+ 	RECOIL_DETAILED_TRACY_ZONE;
++
++	if (length < 0.0f) {
++		LOG_SECTION("SimEngine");
++		const CUnit* unitOwner = emitter ? emitter->owner : nullptr;
++		int ownerId = unitOwner ? unitOwner->id : -1;
++		std::string weaponName = (emitter && emitter->weaponDef) ? emitter->weaponDef->name : "Unknown";
++
++		LOG_L(L_WARNING, 
++			"[TraceRayShields] Negative laser length (%.4f) bypassed! Weapon: %s | Owner Unit ID: %d | Start: [%.1f, %.1f, %.1f]",
++			length, weaponName.c_str(), ownerId, start.x, start.y, start.z
++		);
++		return;
++	}
++
+ 	CollisionQuery cq;
+ 
+ 	QuadFieldQuery qfQuery;
