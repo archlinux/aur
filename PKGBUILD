@@ -1,8 +1,8 @@
-# Maintainer: orange-guo
-# Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/packages/cpa-usage-keeper-bin
+# Maintainer: theorangeguo
+# Packaging Repo: https://github.com/theorangeguo/aur-packages/tree/main/packages/cpa-usage-keeper-bin
 pkgname=cpa-usage-keeper-bin
 pkgver=1.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc=Standalone\ CLIProxyAPI\ usage\ persistence\ and\ dashboard\ service
 arch=(x86_64 aarch64 )
 url=https://github.com/Willxup/cpa-usage-keeper

@@ -1,7 +1,7 @@
 pkgbase = cpa-usage-keeper-bin
 	pkgdesc = Standalone CLIProxyAPI usage persistence and dashboard service
 	pkgver = 1.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Willxup/cpa-usage-keeper
 	install = cpa-usage-keeper-bin.install
 	arch = x86_64

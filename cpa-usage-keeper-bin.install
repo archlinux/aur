@@ -1,5 +1,5 @@
 post_install() {
-    echo ":: Packaging issues? Report at: https://github.com/orange-guo/aur-packages"
+    echo ":: Packaging issues? Report at: https://github.com/theorangeguo/aur-packages"
     echo ::\ Copy\ the\ example\ configuration\ before\ starting\ the\ service:
     echo \ \ \ install\ -Dm600\ /usr/share/doc/cpa-usage-keeper-bin/cpa-usage-keeper.env.example\ ~/.config/cpa-usage-keeper/cpa-usage-keeper.env
     echo \ \ \ \$EDITOR\ ~/.config/cpa-usage-keeper/cpa-usage-keeper.env
