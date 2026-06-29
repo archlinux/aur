@@ -2,7 +2,7 @@
 
 pkgname="gearcoleco"
 pkgver=1.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="ColecoVision emulator"
 url="https://github.com/drhelius/Gearcoleco"
 arch=("x86_64")
@@ -14,7 +14,7 @@ source=(
 )
 sha256sums=(
     "1ed67dbb510aa174fed04f0fd307df6df6ae29194821e939c4ffef549c0d0050"
-    "b6470e30ab22f01a4819d80015c1892bda401be4684931d8d573a640dc71dd80"
+    "873e59dd6a517a36163f7dd6473e82e420fe49230195154aef16e570cf62b408"
 )
 
 build() {
@@ -23,10 +23,18 @@ build() {
 }
 
 package() {
-    cd $srcdir/Gearcoleco-${pkgver}/platforms
+    cd $srcdir/Gearcoleco-${pkgver}
+    install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+
+    cd platforms
     mkdir -p $pkgdir/opt/$pkgname
-    install -Dm755 linux/gearcoleco $pkgdir/opt/gearcoleco
-    install -Dm644 shared/gamecontrollerdb.txt $pkgdir/opt/gearcoleco
+    install -Dm755 linux/gearcoleco $pkgdir/opt/$pkgname
+    install -Dm644 shared/gamecontrollerdb.txt $pkgdir/opt/$pkgname
+    install -Dm644 macos/image.png $pkgdir/usr/share/pixmaps/$pkgname.png
+
+    mkdir -p $pkgdir/opt/$pkgname/shaders
+    install -Dm644 shared/desktop/shaders/* $pkgdir/opt/$pkgname/shaders
+
     mkdir -p $pkgdir/usr/bin
     ln -s /opt/$pkgname/gearcoleco $pkgdir/usr/bin/$pkgname
     install -Dm644 $srcdir/gearcoleco.desktop $pkgdir/usr/share/applications/gearcoleco.desktop

@@ -4,4 +4,5 @@ Name=Gearcoleco
 GenericName=ColecoVision Emulator
 Comment=ColecoVision emulator and debugger
 Exec=gearcoleco
+Icon=gearcoleco
 Categories=Game;Emulator;
