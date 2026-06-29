@@ -1,6 +1,6 @@
 # Maintainer: H3CoF6 <h3cof6@gmail.com>
 pkgname=weflow
-pkgver=4.5.1
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="A local WeChat database decryption and analysis tool"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("WeFlow-${pkgver}-Setup.tar.gz::${url}/releases/download/v${pkgver}/WeFl
   "weflow.desktop"
   "icon.png")
 
-sha256sums=('eef12e315b0ee354640468b163ba02b8e603f881c6a2a00149b50db6d7984d73'
+sha256sums=('99e8a54f81c0064596da6cd9a2aa564a809d451a4b3f3f8eb406231b0835e515'
             '2cf03766f5c2f1915ad136f060a66f5788ed32b06defe1956e406c73d7e733b7'
             'b1c412d9c08ae683e231173c16fe73958ad1063f14c9b3852373385e4fcb6f33')
 
