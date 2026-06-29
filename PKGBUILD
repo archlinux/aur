@@ -1,23 +1,23 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=libretro-azahar
-pkgver=2125.1.2
+pkgver=2125.1.3
 pkgrel=1
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
 url="https://github.com/azahar-emu/azahar"
 license=('GPL-2.0-or-later')
-depends=('crypto++' 'soundtouch' 'fmt' 'libstdc++' 'libgcc' 'glibc' 'glslang' 'openssl' 'zydis' 'libretro-core-info')
+depends=('crypto++' 'soundtouch' 'fmt' 'libstdc++' 'libgcc' 'glibc' 'glslang' 'openssl' 'zydis' 'libretro-core-info' 'boost-libs' 'enet')
 makedepends=('cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'graphviz' 'nlohmann-json' 'spirv-headers'
-	     'catch2' 'libinih' 'ffmpeg4.4')
+	     'catch2' 'libinih' 'ffmpeg4.4' 'boost')
 source=("$url/releases/download/${pkgver}/azahar-unified-source-$pkgver.tar.xz")
-sha256sums=('688db108137fa6f4c29b48b187325a622afef7e3147e5f0b83c6996d96f7328f')
+sha256sums=('e26502b03e17c8a261dcb4809d41825508b27073c2b40f91be83fe3594245de0')
 
 prepare() {
 	cd "$srcdir/azahar-unified-source-$pkgver"
 
-	#Fix zstd include
-	#sed -i 's/zstd\/contrib\/seekable_format\///g' src/common/zstd_compression.cpp
+	#Fix cubeb
+	sed -i '4i #include <cstring>' src/audio_core/{cubeb_input,cubeb_sink}.cpp
 
 }
 
@@ -32,9 +32,10 @@ build() {
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DCMAKE_BUILD_TYPE=None \
 	-DUSE_DISCORD_PRESENCE=ON \
-	-DUSE_SYSTEM_BOOST=OFF \
+	-DUSE_SYSTEM_BOOST=ON \
 	-DUSE_SYSTEM_CATCH2=ON \
 	-DUSE_SYSTEM_CRYPTOPP=ON \
+	-DUSE_SYSTEM_ENET=ON \
 	-DUSE_SYSTEM_FFMPEG_HEADERS=ON \
 	-DUSE_SYSTEM_FMT=ON \
 	-DUSE_SYSTEM_GLSLANG=ON \
@@ -43,6 +44,7 @@ build() {
 	-DUSE_SYSTEM_LIBUSB=ON \
 	-DUSE_SYSTEM_OPENAL=ON \
 	-DUSE_SYSTEM_OPENSSL=ON \
+	-DUSE_SYSTEM_QT=ON \
 	-DUSE_SYSTEM_SDL2=ON \
 	-DUSE_SYSTEM_SOUNDTOUCH=ON \
 	-DUSE_SYSTEM_VULKAN_HEADERS=ON \
