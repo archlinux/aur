@@ -1,5 +1,5 @@
 post_install() {
-    echo ":: Packaging issues? Report at: https://github.com/orange-guo/aur-packages"
+    echo ":: Packaging issues? Report at: https://github.com/theorangeguo/aur-packages"
     echo ::\ This\ package\ tracks\ Anthropic\ Claude\ Code\ stable\ releases.
     echo ::\ Claude\ Code\ may\ still\ show\ latest-channel\ update\ prompts\ by\ default.
     echo ::\ To\ align\ prompts\ with\ this\ package\,\ set\ autoUpdatesChannel\ to\ \"stable\"\ via\ /config\ or\ ~/.claude/settings.json.

@@ -1,8 +1,8 @@
-# Maintainer: orange-guo
-# Packaging Repo: https://github.com/orange-guo/aur-packages/tree/main/packages/claude-code-stable-bin
+# Maintainer: theorangeguo
+# Packaging Repo: https://github.com/theorangeguo/aur-packages/tree/main/packages/claude-code-stable-bin
 pkgname=claude-code-stable-bin
 pkgver=2.1.181
-pkgrel=1
+pkgrel=2
 pkgdesc=Claude\ Code\ terminal-based\ AI\ coding\ assistant\ \(stable\ channel\)
 arch=(x86_64 )
 url=https://github.com/anthropics/claude-code
