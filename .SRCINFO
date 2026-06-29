@@ -1,0 +1,17 @@
+pkgbase = disable-faulty-usb-openrc-git
+	pkgdesc = OpenRC init script that disables USB devices that fail to enumerate (according to 'dmesg').
+	pkgver = 0.5.r4.20260629.906bcdc
+	pkgrel = 1
+	url = https://codeberg.org/dreieck/disable-faulty-usb
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	optdepends = openrc: To make use of this script.
+	provides = disable-faulty-usb-openrc=0.5.r4.20260629.906bcdc
+	conflicts = disable-faulty-usb-openrc
+	options = !emptydirs
+	backup = etc/conf.d/disable-faulty-usb
+	source = disable-faulty-usb::git+https://codeberg.org/dreieck/disable-faulty-usb.git
+	sha256sums = SKIP
+
+pkgname = disable-faulty-usb-openrc-git
