@@ -1,0 +1,43 @@
+post_install() {
+  if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+  fi
+
+  if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database -q
+  fi
+
+  cat <<'EOF'
+DonutStudio installed.
+
+Run it from your application menu or with:
+  donutstudio
+
+Plugin paths:
+  VST3: /usr/lib/vst3/DonutStudio.vst3
+  CLAP: /usr/lib/clap/DonutStudio.clap
+
+Bitwig controller script:
+  /usr/share/donutstudio/DonutStudio.control.js
+
+NOTE: This package coexists with 'arbit-bin' (legacy codename). If you
+previously installed arbit-bin, you can remove it with:
+  sudo pacman -Rns arbit-bin
+Both packages install the same engine binary, so the transition is
+seamless — settings, projects, and the .arbit file format carry over.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+  fi
+
+  if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database -q
+  fi
+}

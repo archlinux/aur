@@ -1,0 +1,7 @@
+# Build artifacts
+pkg/
+src/
+*.tar.xz
+*.tar.zst
+*.pkg.tar.*
+DonutStudio-linux-*.zip
