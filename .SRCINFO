@@ -1,0 +1,17 @@
+pkgbase = docker-mcp-git
+	pkgdesc = Docker CLI plugin for MCP Gateway - manage and run MCP servers in containers (git)
+	pkgver = 0.43.1.r0.g8f422b6
+	pkgrel = 1
+	url = https://github.com/docker/mcp-gateway
+	arch = x86_64
+	license = MIT
+	makedepends = go>=2:1.24
+	makedepends = git
+	depends = glibc
+	optdepends = docker: for Docker Engine container operations
+	provides = docker-mcp
+	conflicts = docker-mcp
+	source = mcp-gateway::git+https://github.com/docker/mcp-gateway.git
+	sha256sums = SKIP
+
+pkgname = docker-mcp-git
