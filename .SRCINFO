@@ -1,7 +1,7 @@
 pkgbase = amiberry
 	pkgdesc = Optimized Amiga emulator
 	pkgver = 8.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BlitterStudio/amiberry
 	arch = x86_64
 	arch = aarch64
@@ -31,10 +31,10 @@ pkgbase = amiberry
 	conflicts = amiberry-git
 	conflicts = amiberry-lite
 	source = amiberry::git+https://github.com/BlitterStudio/amiberry.git#tag=v8.2.2
-	sha256sums = 3deb6f6a379410bf0e787d2d4e582eab9233b12fdcf1361c95287e051b151d3a
-	source_x86_64 = https://github.com/BlitterStudio/amiberry-qemu-uae/releases/download/v11.0.1-amiberry.6/qemu-uae-linux-x86_64.tar.xz
-	sha256sums_x86_64 = 2bad7e620c47d4ef64decd253c021adfb21226f97f1c723a0aa64da7dc7ab94e
-	source_aarch64 = https://github.com/BlitterStudio/amiberry-qemu-uae/releases/download/v11.0.1-amiberry.6/qemu-uae-linux-aarch64.tar.xz
-	sha256sums_aarch64 = 8fcda3cb695456a7e9501d367fb28dec46480ea39d34b3a2074db505a13e8c15
+	sha256sums = 73c158e8a7ea69dc8583cfc1093f7bba112d62f57673ac2091c4dff685ab4249
+	source_x86_64 = qemu-uae-linux-x86_64-11.0.1-amiberry.7.tar.xz::https://github.com/BlitterStudio/amiberry-qemu-uae/releases/download/v11.0.1-amiberry.7/qemu-uae-linux-x86_64.tar.xz
+	sha256sums_x86_64 = 62926ba5437d21e6daeea841bc103088c2f5849206681eb47e6d2bcabc9c8f52
+	source_aarch64 = qemu-uae-linux-aarch64-11.0.1-amiberry.7.tar.xz::https://github.com/BlitterStudio/amiberry-qemu-uae/releases/download/v11.0.1-amiberry.7/qemu-uae-linux-aarch64.tar.xz
+	sha256sums_aarch64 = 6906cfc09c2478313c1eaddc941bc670db3d8bda63f418c69773415ebe429c8f
 
 pkgname = amiberry
