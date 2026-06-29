@@ -6,8 +6,8 @@ pkgbase="${_pkgbase}${_vcssuffix}"
 _pkgname="${_pkgbase}"
 pkgname="${pkgbase}"
 epoch=0
-pkgver=0.2.11.r560.20251122.36a5ff7
-pkgrel=1
+pkgver=0.2.19+1.r606.20260607.bb8bd3c
+pkgrel=2
 pkgdesc="Debug tools for AMD zen systems."
 arch=(
   'any'
@@ -44,7 +44,6 @@ makedepends=(
   'python-setuptools>=59.8.0'
   'python-setuptools-scm>=8'
   'python-setuptools-git-versioning>=2.0'
-  'python-setuptools-git-versioning<3'
   'python-wheel'
 )
 checkdepends=()
