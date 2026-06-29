@@ -1,4 +1,4 @@
-# Maintainer:  Joost Bremmer <toost.b@gmail.com>
+# Maintainer:  Joost Bremmer <contact at madeofmagicandwires.online>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 # Contributor: Patrice Peterson <runiq at archlinux dot us>
