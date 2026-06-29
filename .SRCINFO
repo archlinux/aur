@@ -1,7 +1,7 @@
 pkgbase = noita_proxy
 	pkgdesc = Noita Entangled Worlds mod
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IntQuant/noita_entangled_worlds
 	install = noita_proxy.install
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = noita_proxy
 	depends = openssl
 	depends = opus
 	depends = bzip2
-	options = !lto
 	source = https://github.com/IntQuant/noita_entangled_worlds/archive/refs/tags/v1.6.3.tar.gz
 	source = noita_proxy.desktop
 	sha256sums = 3f11257f35a5a5cd0c7294e71243db0f50a2a79f0f8a99a51ebac37e0d5755d8

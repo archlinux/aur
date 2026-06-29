@@ -2,7 +2,7 @@
 
 pkgname='noita_proxy'
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Noita Entangled Worlds mod'
 url='https://github.com/IntQuant/noita_entangled_worlds'
 arch=('x86_64')
@@ -28,10 +28,10 @@ source=(
 sha256sums=('3f11257f35a5a5cd0c7294e71243db0f50a2a79f0f8a99a51ebac37e0d5755d8'
             '512c06c20b86cd51188f883904efc7f48d59b852ee5607a80b11337a92ca1899')
 install=${pkgname}.install
-# Build fails with lto enabled
-options=(!lto)
 
 build() {
+	export CFLAGS+=" -ffat-lto-objects"
+	export CXXFLAGS+=" -ffat-lto-object"
     cd "noita_entangled_worlds-${pkgver}/noita_proxy"
     cargo build -r
 }
