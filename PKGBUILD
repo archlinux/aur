@@ -1,8 +1,8 @@
 # Maintainer: Cody Wyatt Neiman (xangelix) <neiman@cody.to>
 
 pkgname=edirstat
-pkgver="2.0.0"
-pkgrel=2
+pkgver="2.0.1"
+pkgrel=1
 pkgdesc="A fast, cross-platform disk usage analyzer with work-stealing multithreading, zero-copy snapshots, deduplication, and an interactive treemap GUI."
 arch=('x86_64')
 url="https://github.com/Xangelix/edirstat"
@@ -16,7 +16,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
   "$pkgname.desktop"
 )
-sha512sums=('6928a66d35df9a17d98c2873d1369393fc2b186eb3d11ab67bf24dd1f934dcce7142f7ca01e169e1bd8155feab3ebd3aa31305121752c8f511b1fae1aef3635d'
+sha512sums=('75c723ad7c0fba7f5c15f7ab89db1a03ce99a0d141637cc1e2c6ba6c481c39f0237423a843ba56a5103ada319c6b3ff83f9ccfa92edb3a83db45474a2e087f0b'
             '5cbf9075b721335159eb3317cd3f787ac406fa7c398a2dea114870d362688f67809bbaaede155d8e1ad3a2830c35132ae37a02e24d9dabd60326b2b7e66a02b3')
 
 prepare() {
