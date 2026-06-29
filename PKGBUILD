@@ -47,7 +47,7 @@ prepare() {
 
 	rm -rf git && git clone -n --depth=1 --filter=tree:0 "${_ghurl}" git && cd git
 
-	git sparse-checkout set --no-cone /examples && git checkout
+	git sparse-checkout set --no-cone /examples include/help && git checkout
 }
 
 package() {
@@ -55,7 +55,9 @@ package() {
 
 	install -Dm755 "${BIN_DIR}/${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
-	install -Dm644 git/examples/*.sh -t "$pkgdir/usr/share/${_appname}/examples/"
+	install -Dm644 git/include/help/*.txt -t "${pkgdir}/usr/share/shed/doc/"
+
+	install -Dm644 git/examples/*.sh -t "${pkgdir}/usr/share/${_appname}/examples/"
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
