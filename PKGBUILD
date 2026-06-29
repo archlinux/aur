@@ -1,4 +1,4 @@
-# Maintainer:  Joost Bremmer <toost.b@gmail.com>
+# Maintainer:  Joost Bremmer <contact at madeofmagicandwires.online>
 # Contributor: lukebond
 
 pkgname=neovim-ctrlp
@@ -6,7 +6,7 @@ pkgver=1.81
 pkgrel=1
 pkgdesc="Full path fuzzy file, buffer, mru, tag, ... finder"
 arch=('any')
-url="http://ctrlpvim.github.com/ctrlp.vim/"
+url="http://ctrlpvim.github.io/ctrlp.vim/"
 license=('custom:vim')
 depends=('neovim')
 optdepends=('ctags: for searching tags')
