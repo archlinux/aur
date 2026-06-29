@@ -1,5 +1,0 @@
-pipewire/
-pkg/
-src/
-*.pkg.tar.*
-*.pkg.tar.*.sig

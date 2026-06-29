@@ -1,14 +1,15 @@
 # Maintainer: DBeidachazi
 pkgname=pipewire-bluez5-lhdc-git
-pkgver=1.7.0.r15616.gd43c42891bd6
-pkgrel=2
-pkgdesc="Out-of-tree PipeWire bluez5 SPA plugin build with LHDC v5 codec support"
+pkgver=1.7.0.r15616.g4ced2a0ea46e
+pkgrel=1
+epoch=1
+pkgdesc="Out-of-tree PipeWire bluez5 SPA plugin build with LHDC v5 codec support using liblhdcv5"
 arch=('x86_64')
 url="https://github.com/DBeidachazi/pipewire"
 license=('MIT')
-depends=('pipewire' 'bluez-libs' 'dbus' 'glib2' 'libusb')
+depends=('pipewire-audio' 'liblhdcv5' 'bluez-libs' 'dbus' 'glib2' 'libusb')
 makedepends=('git' 'meson' 'ninja' 'sbc' 'libfdk-aac' 'libldac')
-optdepends=('lhdc-v5-helper: qemu-based LHDC v5 encoder helper')
+provides=('pipewire-bluez5-lhdc')
 source=('git+https://github.com/DBeidachazi/pipewire.git')
 sha256sums=('SKIP')
 
@@ -40,6 +41,7 @@ build() {
     -Dalsa=disabled
     -Djack=disabled
     -Dbluez5=enabled
+    -Dbluez5-codec-lhdc=enabled
     -Ddbus=enabled
     -Dlibusb=enabled
     -Dselinux=disabled
