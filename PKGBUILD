@@ -1,4 +1,4 @@
-# Maintainer:  Joost Bremmer <toost.b@gmail.com>
+# Maintainer:  Joost Bremmer <contact at madeofmagicandwires.online>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 # Contributor: Aaron Schaefer <aaron@elasticdog.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
