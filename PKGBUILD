@@ -1,4 +1,4 @@
-# Maintainer:  Joost Bremmer <toost.b@gmail.com>
+# Maintainer:  Joost Bremmer <contact at madeofmagicandwires.online>
 # Contributor: oozyslug <oozyslug at gmail dot com>
 
 pkgname=neovim-plug
