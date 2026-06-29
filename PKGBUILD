@@ -1,6 +1,6 @@
 # Maintainer: Oscar Tienda <contacto@oscartienda.com>
 pkgname=sunsync
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Import games from Lutris, Steam, Heroic and other launchers into Sunshine (KDE Plasma Wayland)"
 arch=('any')
@@ -24,7 +24,7 @@ makedepends=(
     'python-hatchling'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('11ab4433603c26b00d0157b81202c7d396501e0889f74e132b554901df7fbb5b')
+sha256sums=('289596c9f2afb79081e0cd1de3b515acd723ee05c7a81a3790bf938c9ea7e9a8')
 
 build() {
     cd "$srcdir/SunSync-$pkgver"
