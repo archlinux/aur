@@ -1,6 +1,6 @@
 pkgbase = python-samplomatic
 	pkgdesc = A library that helps you sample randomizations of your quantum circuits
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/Qiskit/samplomatic
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = python-samplomatic
 	optdepends = python-plotly: visualization
 	optdepends = python-matplotlib: visualization
 	optdepends = python-pylatexenc: LaTeX
-	source = samplomatic::git+https://github.com/Qiskit/samplomatic.git#tag=0.19.0
-	b2sums = ed1af22536091dbfcb07ea778e425a4dbb40f2472eef72a84f5a446886ef57dbf59d769271a033e4101e9c898ad2b44a304846f17f472dbee43f0008fdd83c2c
+	source = samplomatic::git+https://github.com/Qiskit/samplomatic.git#tag=0.20.0
+	b2sums = 1e84671ae68b42ed560fbbf36902251ff3e3521b3c7ba9f45bfb2bc75a4bd52fed02e237889af5a82185c2867e6a74024593b63f1b09992644922cc4406ee1fb
 
 pkgname = python-samplomatic
