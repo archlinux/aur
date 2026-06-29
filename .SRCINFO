@@ -10,6 +10,7 @@ pkgbase = dory-media-columns-git
 	depends = dory
 	depends = dory-python-git
 	depends = gobject-introspection
+	depends = python-mutagen
 	source = git+https://github.com/Twilight0/dory-extensions.git
 	sha256sums = SKIP
 
