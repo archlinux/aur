@@ -1,5 +1,5 @@
 pkgname=garmin-tracker-rs
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='Sync your devices and track your strength training'
 arch=('x86_64')
@@ -23,6 +23,7 @@ makedepends=(
   'rust'
   'npm'
   'pnpm'
+  'mold'
 )
 
 build() {
