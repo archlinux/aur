@@ -1,15 +1,15 @@
 pkgbase = psysh
 	pkgdesc = A REPL for PHP
-	pkgver = 0.12.22
+	pkgver = 0.12.23
 	pkgrel = 1
 	url = https://psysh.org/
 	install = .install
 	arch = x86_64
 	license = MIT
 	depends = php>=7.4
-	source = https://github.com/bobthecow/psysh/releases/download/v0.12.22/psysh-v0.12.22.tar.gz
-	source = LICENSE_v0.12.22::https://raw.githubusercontent.com/bobthecow/psysh/v0.12.22/LICENSE
-	sha256sums = d990dadada3badaf3a5fbed3fc1275e2c39519bc62f2c5b3287d12e88130583a
+	source = https://github.com/bobthecow/psysh/releases/download/v0.12.23/psysh-v0.12.23.tar.gz
+	source = LICENSE_v0.12.23::https://raw.githubusercontent.com/bobthecow/psysh/v0.12.23/LICENSE
+	sha256sums = 846a39fcfde38e4c8721ed7b8ca1ccaf106315a0e512cbfcede699998ee8b1cf
 	sha256sums = SKIP
 
 pkgname = psysh
