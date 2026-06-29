@@ -14,7 +14,7 @@ pkgbase = weflow
 	source = WeFlow-5.0.0-Setup.tar.gz::https://github.com/hicccc77/weflow/releases/download/v5.0.0/WeFlow-5.0.0-Setup.tar.gz
 	source = weflow.desktop
 	source = icon.png
-	sha256sums = 99e8a54f81c0064596da6cd9a2aa564a809d451a4b3f3f8eb406231b0835e515
+	sha256sums = 007a174876814cb019f42d24e8319391608e4eb9231a787b71ee25f6b6fb11bd
 	sha256sums = 2cf03766f5c2f1915ad136f060a66f5788ed32b06defe1956e406c73d7e733b7
 	sha256sums = b1c412d9c08ae683e231173c16fe73958ad1063f14c9b3852373385e4fcb6f33
 

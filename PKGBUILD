@@ -13,7 +13,7 @@ source=("WeFlow-${pkgver}-Setup.tar.gz::${url}/releases/download/v${pkgver}/WeFl
   "weflow.desktop"
   "icon.png")
 
-sha256sums=('99e8a54f81c0064596da6cd9a2aa564a809d451a4b3f3f8eb406231b0835e515'
+sha256sums=('007a174876814cb019f42d24e8319391608e4eb9231a787b71ee25f6b6fb11bd'
             '2cf03766f5c2f1915ad136f060a66f5788ed32b06defe1956e406c73d7e733b7'
             'b1c412d9c08ae683e231173c16fe73958ad1063f14c9b3852373385e4fcb6f33')
 
