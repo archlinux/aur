@@ -23,6 +23,8 @@ depends=(
 	'blueprint-compiler'
 	'libadwaita'
 	'adwaita-icon-theme'
+	# Wayland
+	'xkbcommon'
 )
 optdepends=(
 	'power-profiles-daemon: ppd widget'
