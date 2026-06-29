@@ -1,7 +1,7 @@
 # Maintainer: Headorteil
 
 pkgname=keycli
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="An environment manager which stores your secrets in your OS keyring"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('gnome-keyring: GNOME keyring support'
             'kwallet: KDE keyring support')
 install=keycli.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Headorteil/keycli/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('452cbe974ba87f396f9c5531ad985ab51ef5cd15ebfa94ff19e8a3a5b7c25c98')
+sha256sums=('2787e05414ea3bed4d6a87e09e5316e2ef31df21fa1df65fe32f1ea8521a1170')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -40,7 +40,7 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen
+  cargo test --frozen --release
 }
 
 package() {
