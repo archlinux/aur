@@ -22,6 +22,7 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 pysilero-vad-$pkgver/LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
 # Fix packaging
   pyver="$(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')"
   cd "$pkgdir/usr"
