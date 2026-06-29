@@ -20,6 +20,7 @@ pkgbase = desktop-plus-bin
 	provides = github-desktop-plus
 	conflicts = desktop-plus
 	conflicts = github-desktop-plus
+	replaces = github-desktop-plus-bin
 	source = desktop-plus.desktop
 	source = launch-app.sh
 	sha256sums = b9c24de9a78b4e4d444cb0ba38817b13acd87c514dd64dd30fce2593e34a11cf
