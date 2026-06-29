@@ -1,42 +1,38 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Maintainer: taotieren <admin@taotieren.com>
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-
-_upstreamver='3.4.2'
-_upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
-_source_type='pypi-releases'
-_pypi_package='fastmcp'
-
-
-pkgname="python-${_pypi_package}"
-pkgver="${_upstreamver}"
-pkgrel=2
+pkgname="python-fastmcp"
+_name=${pkgname#python-}
+pkgver=3.4.2
+pkgrel=3
 pkgdesc="The fast, Pythonic way to build MCP servers and clients."
 arch=('any')
 url='https://github.com/jlowin/fastmcp'
 license=('MIT')
-
-makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatchling' 'python-uv-dynamic-versioning')
 depends=('python' 'python-fastmcp-slim')
-
-source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('b468722946fc467c3796a6572f7a14d93d48c014cf8fea12910245220cbbe4e1')
+makedepends=(
+    'git' 
+    'python-setuptools' 
+    'python-wheel' 
+    'python-build' 
+    'python-installer' 
+    'python-hatchling' 
+    'python-uv-dynamic-versioning'
+    'python-uv-build'
+)
+source=(git+${url}.git#tag=v${pkgver})
+sha256sums=('09ee73023a7c2e8a85b35db343f896df2b2f3246c7799dea620f0bfc0836d30c')
 
 
 build() {
-    cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
-
+    cd "${srcdir}/${_name}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
-
+    cd "${srcdir}/${_name}"
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 "AGENTS.md" "${pkgdir}/usr/share/doc/${pkgname}/AGENTS.md"
-    install -Dm644 "SECURITY.md" "${pkgdir}/usr/share/doc/${pkgname}/SECURITY.md"
-    install -Dm644 "CODE_OF_CONDUCT.md" "${pkgdir}/usr/share/doc/${pkgname}/CODE_OF_CONDUCT.md"
+    install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
