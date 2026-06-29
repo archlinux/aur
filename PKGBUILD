@@ -1,7 +1,7 @@
 # Maintainer: Robert Schiele <rschiele@gmail.com>
 
 pkgname=structurizr
-pkgver=2026.05.16
+pkgver=2026.06.28
 pkgrel=1
 pkgdesc="Software architecture models as code"
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=('structurizr-git')
 options=('!strip')
 source=("git+https://github.com/structurizr/structurizr.git#tag=v$pkgver"
 	"structurizr.sh")
-sha256sums=('81666357366cc520b6319d7ad29a54112c81969883e11942589f658b98894dfd'
+sha256sums=('0a76316af7d44f2622989867c1ddb139fb4f7e7bfacb0420b42eb61fcdac397c'
             '72122d16c7cfe32cef4e63267e461fefb60c893b87349d539e016645b0403698')
 
 build() {
