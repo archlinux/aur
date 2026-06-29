@@ -1,7 +1,7 @@
 pkgbase = firmium-desktop-bin
-	pkgdesc = Lightning fast OpenSubsonic player in Tauri
+	pkgdesc = Lightning fast OpenSubsonic player in Rust
 	pkgver = 7.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fossisawesome/firmium
 	arch = x86_64
 	license = GPL-3.0-only
