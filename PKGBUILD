@@ -1,7 +1,7 @@
 # Maintainer: Lehel Gyuro <lehel@freemail.hu>
 
 pkgname=libastroasis
-pkgver=2.2.2
+pkgver=2.2.3.1
 pkgrel=1
 pkgdesc="INDI driver for products manufactured by astroasis"
 url="http://www.indilib.org/index.php?title=Main_Page"
@@ -10,7 +10,7 @@ arch=(i686 x86_64 aarch64)
 depends=(gcc-libs )
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=("ea4e90f3549cb28860d0d2a5820734579d4aa5b8c04ba202bc413ce5ffdb0377")
+sha256sums=("bb2b25b09f57be7c1aaad6226802b9f0083b415b93046c7fcbde55237410134a")
 
 prepare() {
   mkdir -p build
