@@ -1,5 +1,5 @@
 pkgname=orbitopl-toolbox-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="OrbitOPL Toolbox - PS2 OPL management GUI (prebuilt binary)"
 arch=('x86_64')
@@ -29,10 +29,10 @@ conflicts=(
 )
 
 source=(
-  "${pkgname}-${pkgver}.zip::https://github.com/Luden02/OrbitOPL-Toolbox/releases/download/v${pkgver}/orbitopl-toolbox-${pkgver}_linux.zip"
+  "${pkgname}-${pkgver}.zip::https://github.com/Luden02/OrbitOPL-Toolbox/releases/download/v${pkgver}/orbitopl-toolbox-linux-${pkgver}.zip"
 )
 
-sha256sums=('34ed810c1fad38e300c9eea5c4a17a681bdc84d9c5a8a621647a5eb7139e15aa')
+sha256sums=('554bae2d19b204c049480e55505fe8ad8d92acf6e21a3bc3ea56ab85edca1e88')
 
 package() {
   install -dm755 "${pkgdir}/opt/orbitopl-toolbox"
