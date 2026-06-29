@@ -1,8 +1,8 @@
 # Maintainer: wyf9661 <wyf9661@hotmail.com>
 # Contributor: Keithsel <keithsel@disroot.org>
 pkgname=9router-bin
-pkgver=0.5.8
-pkgrel=3
+pkgver=0.5.12
+pkgrel=1
 pkgdesc="AI router and proxy providing an OpenAI-compatible endpoint for multiple AI providers"
 arch=('x86_64')
 url="https://github.com/decolua/9router"
@@ -15,12 +15,12 @@ options=('!strip')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/9router/-/9router-${pkgver}.tgz"
         '9router.sh' '9router.service' '.env.example'
         'fix-tokenplan-region.py' 'fix-tokenplan-ui-region.py')
-sha256sums=('77a306d326b8d5f2f6e2beeac130b58f4c4d90a5daf6c3742b192b8ce66b6825'
+sha256sums=('98002120d87ab7ff4e504488c5c0a71a5a661bd5527e564f533cf6c4903c08e9'
             '912c4a6f0c3589a23dd4e015c28500643727086b89463ec79f62e6dc569a4804'
             'd3cf28a661868f9cab0ba942e5be2a57f3a9cff4a66c6b9e4a26f4f0881e6f36'
             'be29534e45b564eca0a854fd06a06166a5ca0992a48bcedbc36b31e364521786'
             '83f38c469d9a573671740093107e763798e31d7b27291538211cacc6f71b8782'
-            'ba54406d1fdb39819c61006ca1c5e986a8083dec8342bde236a54a1c7591910c')
+            '6d6a6d41e7b6296c0a17474bf700593f38bb3403de037793e04518a3d4fe790f')
 
 build() {
   # npm extracts to a fixed package/ directory

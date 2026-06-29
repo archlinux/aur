@@ -13,8 +13,8 @@ the UI expects) right after hasProviderSpecificData in the t.A entry.
 import sys, os, glob
 
 TARGETS = [
-    "505-189215c1255c77e3.js",  # legacy Q2 export (module 65276)
-    "1321-18fb8a2c6ea8f9e8.js",  # active Q2 export (module 88105)
+    "505",   # legacy Q2 export (module 65276)
+    "1321",  # active Q2 export (module 88105)
 ]
 OLD = (
     '"xiaomi-tokenplan",priority:300,alias:"xiaomi-tokenplan",'
@@ -37,31 +37,33 @@ def main():
 
     destdir = sys.argv[1]
     found_any = False
-    import fnmatch
 
     for root, dirs, files in os.walk(destdir):
         for fn in files:
-            if fn in TARGETS:
-                path = os.path.join(root, fn)
-                with open(path, "r") as f:
-                    content = f.read()
+            # Match chunks like "1321-<hash>.js" or bare "1321.js"
+            prefix = fn.split("-")[0].split(".")[0]
+            if prefix not in TARGETS or not fn.endswith(".js"):
+                continue
+            path = os.path.join(root, fn)
+            with open(path, "r") as f:
+                content = f.read()
 
-                count = content.count(OLD)
-                if count == 0:
-                    print(f"[fix-tokenplan-ui-region] already patched or pattern changed: {path}")
-                    continue
-                if count > 1:
-                    print(f"[fix-tokenplan-ui-region] ERROR: {count} matches in {path}, aborting")
-                    sys.exit(1)
+            if OLD not in content:
+                continue
 
-                content = content.replace(OLD, NEW)
-                with open(path, "w") as f:
-                    f.write(content)
-                print(f"[fix-tokenplan-ui-region] Patched {path}")
-                found_any = True
+            count = content.count(OLD)
+            if count > 1:
+                print(f"[fix-tokenplan-ui-region] ERROR: {count} matches in {path}, aborting")
+                sys.exit(1)
+
+            content = content.replace(OLD, NEW)
+            with open(path, "w") as f:
+                f.write(content)
+            print(f"[fix-tokenplan-ui-region] Patched {path}")
+            found_any = True
 
     if not found_any:
-        print(f"[fix-tokenplan-ui-region] WARNING: no target files ({', '.join(TARGETS)}) found, skipping")
+        print(f"[fix-tokenplan-ui-region] WARNING: no target chunks (prefixes {', '.join(TARGETS)}) matched, skipping")
 
 
 if __name__ == "__main__":
