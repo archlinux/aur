@@ -6,14 +6,15 @@ pkgver=13.3.r36.20260228.66ef54e
 _pkgmajorver="$(awk -F. '{print $1}' <<< "${pkgver}")"
 _pkgnextmajorver="$(("${_pkgmajorver}" + 1))"
 _pkgminorver="$(awk -F. '{print $2}' <<< "${pkgver}")"
-pkgrel=1
+_pkgnextminorver="$(("${_pkgminorver}" + 1))"
+pkgrel=2
 pkgdesc="OpenRC init script for 'zram-init'."
 url='https://github.com/vaeth/zram-init'
 license=('GPL-2.0-only')
 arch=('any')
 depends=(
-  "zram-init>=${_pkgmajorver}"
-  "zram-init<${_pkgnextmajorver}"
+  "zram-init>=${_pkgmajorver}.${_pkgminorver}"
+  "zram-init<${_pkgmajorver}.${_pkgnextminorver}"
 )
 makedepends=("git")
 optdepends=("openrc: To make use of this script.")
