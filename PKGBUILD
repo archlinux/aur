@@ -1,15 +1,15 @@
 # Maintainer: Eslam Allam eslamallam73@gmail.com
 pkgname=jellyfin2samsung-bin
-pkgver=2.2.0.8
+pkgver=2.5.6
 filename="${pkgname}_${pkgver}.deb"
 pkgrel=1
-pkgdesc="One-click install of Jellyfin on your Samsung TV — fully compatible with all Tizen versions!"
+pkgdesc="One-click app installer for Samsung TVs, projectors and smart monitors (Tizen) — Jellyfin, Moonlight, and the whole community catalog."
 arch=('x86_64')
-url="https://jellyfin2samsung.madebypatrick.nl/"
+url="https://apps2samsung.madebypatrick.nl/"
 license=('MIT') # Change as needed
 depends=()         # List dependencies
-source=("$filename::https://github.com/Jellyfin2Samsung/Samsung-Jellyfin-Installer/releases/download/v${pkgver}/Jellyfin2Samsung-v${pkgver}-linux-x64.deb")
-sha256sums=('5f24d9c978bea12d9176e89698e31ade2926accb0a089a4eebef918ccc4dfad7') # Replace with actual checksum or use 'SKIP' for testing
+source=("$filename::https://github.com/Apps2Samsung/Apps2Samsung/releases/download/v${pkgver}/Apps2Samsung-v${pkgver}-linux-x64.deb")
+sha256sums=('9889dcfe7629346c349dfb57977b6edebdf9eeb5b3c9a93e55aa8710147673b6')
 options=('!strip' '!debug')
 
 package() {
