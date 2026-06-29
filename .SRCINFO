@@ -1,6 +1,6 @@
 pkgbase = neovim-ultisnips
 	pkgdesc = TextMate-style snippets for Neovim.
-	pkgver = 3.2
+	pkgver = 4.0
 	pkgrel = 1
 	url = https://github.com/SirVer/ultisnips
 	install = nvim-doc.install
@@ -10,9 +10,9 @@ pkgbase = neovim-ultisnips
 	makedepends = git
 	depends = neovim
 	depends = python-neovim
-	source = neovim-ultisnips-3.2.tar.gz::https://github.com/SirVer/ultisnips/archive/3.2.tar.gz
+	source = neovim-ultisnips-4.0.tar.gz::https://github.com/SirVer/ultisnips/archive/4.0.tar.gz
 	source = git+https://github.com/honza/vim-snippets.git#commit=2a4beefc7dfff8419f40f2672cfaaa726bdbff72
-	sha256sums = 550365cdf6bf030b9e5b77e511b4e6b1427660ea6a117c4b6bb77afcb950c4ce
-	sha256sums = SKIP
+	sha256sums = 55af0b5e8b33e85322456a102d80da7103ff85308587bea052d2410d64155c85
+	sha256sums = 664d560ab5839005756692fb9a1541c226195a68ed7b63ca0e2c0a920eb9b870
 
 pkgname = neovim-ultisnips
