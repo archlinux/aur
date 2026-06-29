@@ -5,7 +5,7 @@
 # Contributor: congyiwu <congyiwu AT gmail DOT com>
 
 pkgname=json-c-git
-pkgver=r1440.cce075f
+pkgver=r1447.b299553
 pkgrel=1
 epoch=1
 pkgdesc="A JSON implementation in C"
@@ -14,7 +14,7 @@ license=(MIT)
 arch=(x86_64)
 depends=(glibc)
 makedepends=(git cmake ninja)
-checkdepends=(tinyxxd)
+checkdepends=(xxd)
 provides=(libjson-c.so json-c)
 conflicts=(json-c)
 source=("git+https://github.com/json-c/json-c")
