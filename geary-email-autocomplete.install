@@ -1,0 +1,24 @@
+_inject="/usr/lib/geary-email-autocomplete/inject.sh"
+
+post_install() {
+    "$_inject" apply || true
+    cat <<'MSG'
+:: geary-email-autocomplete installed.
+   Geary's launcher and D-Bus service now load this module via GTK_MODULES.
+   Existing GTK modules, such as geary-hide-sidebar, are preserved.
+   Restart any running Geary instance for the change to take effect:
+     geary --quit
+MSG
+}
+
+post_upgrade() {
+    "$_inject" apply || true
+}
+
+pre_remove() {
+    "$_inject" remove || true
+}
+
+post_remove() {
+    echo ":: geary-email-autocomplete removed from Geary's GTK_MODULES launchers."
+}
