@@ -1,0 +1,4 @@
+[pgtidy]
+source = "git"
+git = "https://git.warky.dev/wdevs/pgtidy"
+prefix = 'v'
