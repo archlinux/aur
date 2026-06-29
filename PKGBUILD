@@ -6,7 +6,7 @@
 # Contributor: Jiawen Geng
 
 _pkgname='desktop-plus'
-pkgname="github-desktop-plus-git"
+pkgname="${_pkgname}-git"
 pkgver=0
 pkgrel=1
 pkgdesc="GitHub Desktop fork with extra features and improvements (git version)."
