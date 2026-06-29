@@ -1,7 +1,7 @@
 # Maintainer: Thorsten Foltz <thorsten.foltz@live.com>
 # Contributor: Thorsten Foltz <thorsten.foltz@live.com>
 pkgname=cai
-pkgver=0.15.2
+pkgver=0.15.3
 pkgrel=1
 pkgdesc="CLI tool that generates concise git commit messages from diffs or commit history using large language models"
 arch=('any')
@@ -26,7 +26,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/thorstenfoltz/cai/archive/refs/tags/$pkgver.tar.gz"
 )
 sha256sums=(
-  '800ec983663966e013415eeea78253bda6f211146ac1fcad5ed75b35845ad8d8'
+  '855be739969dc5cf1c3d38e8bb3809378bc08b4da463b6090fbac4bf8ed77a3d'
 )
 build() {
     cd "$srcdir/cai-$pkgver"
