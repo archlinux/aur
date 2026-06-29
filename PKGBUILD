@@ -12,8 +12,8 @@ _pkgname="${pkgname}"
 __pkgname=konform
 : ${_ffsrcvername:=140.12.0esr}
 : ${_ffbuild:=1}
-: ${_lwrelver:=101}
-: ${_l10n_commit=89defc2f7a4742ef9a06ffd123afe62b0ddf9a06}
+: ${_lwrelver:=102}
+: ${_l10n_commit=5db0b9bd7b7bdb9a5671cc504da09caf65d5d3b1}
 _ffsrcver="${_ffsrcvername%esr*}"
 if [[ "${_ffsrcver}" =~ .+\..+\..+ ]]; then
   _srcver="${_ffsrcver}"
@@ -154,10 +154,10 @@ source=(
   "0004-skia-m142-update.patch.xz"
   "0005-cbindgen-0_29_4.patch"
 )
-sha256sums=('580f8cf8d3acaf116d1b25c97744c1269b6a16eeba03f276167e843c90287d41'
+sha256sums=('bc4a8e8a2286536a05fd24c29f008bc79c42986063ed3bdbbff79fcb9620020e'
             '85dfb9f6021152b4302b8968ef485d958c8c471cb02415a19853daaad5acce62'
             'SKIP'
-            'fc96c4d5e900719737fbd9274d9c513d63e6a4eeb40e0eafa0629e5c8a59495a'
+            '50b9d366fb58a45ba7dd3949e08600f6bebf0ead86cc35e9c2f5c20b624de512'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
             '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852'
@@ -187,7 +187,6 @@ prepare() {
   cd src
   mkdir -p mozbuild "${_srcdir}"
   echo "${_lwrelver}" > release
-  git submodule update --init --recursive
   rm -rf "${_srcdir}/"* "${_srcdir}/".* || true
   mkdir -p "${_srcdir}/lw"
   mv "${srcdir}/firefox-${_ffsrcver}"/* "${srcdir}/firefox-${_ffsrcver}"/.* "${_srcdir}/"
@@ -327,7 +326,7 @@ END
     cp "lw/policies.json" "$srcdir/policies.json"
     jq 'del(.policies.Extensions.Install)' "$srcdir/policies.json" > "lw/policies.json"
     # temporarily enable nimbus telemetry for profiling
-    sed -i 's#^.*nimbus\.#// \0#' "lw/librewolf.cfg"
+    sed -i 's#^.*nimbus\.#// \0#' "browser/app/profile/librewolf.cfg"
 
     echo "Building instrumented browser..."
 
@@ -395,7 +394,7 @@ END
     # reenable ublock-origin
     cp "$srcdir/policies.json" "lw/policies.json"
     # disable nimbus telemetry
-    cp "$srcdir/src/settings/librewolf.cfg" "lw/librewolf.cfg"
+    mv "$srcdir/src/browser/app/profile/librewolf.cfg" browser/app/profile/librewolf.cfg
 
   else
     cat >.mozconfig ../mozconfig
