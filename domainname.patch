@@ -1,0 +1,12 @@
+diff --unified --recursive --text modules-5.6.1.orig/tcl/init.tcl.in modules-5.6.1/tcl/init.tcl.in
+--- modules-5.6.1.orig/tcl/init.tcl.in	2026-06-29 02:13:00.671606101 +0200
++++ modules-5.6.1/tcl/init.tcl.in	2026-06-29 02:13:59.811437783 +0200
+@@ -27,7 +27,7 @@
+    autoinit {0}\
+    cache_mcookie_version {5.3}\
+    clock_seconds {<undef> initStateClockSeconds}\
+-   domainname {<undef> {runCommand domainname}}\
++   domainname {<undef> {runCommand hostname -d}}\
+    error_count {0}\
+    extra_siteconfig_loaded {0}\
+    false_rendered {0}\

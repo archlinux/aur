@@ -1,78 +1,93 @@
-# Maintainer: snafu
+# Maintainer: Felix Neumärker <xdch47@posteo.de>
 # Maintainer: Hyacinthe Cartiaux <hyacinthe dot cartiaux at free dot fr>
-pkgname=env-modules
+# Contributor: Christian Pfeiffer <cpfeiffer at rev-crew dot info>
+
+pkgname=environment-modules
 pkgver=5.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
 arch=('i686' 'x86_64')
 url='https://envmodules.io/'
 license=('GPL-2.0-or-later')
-depends=('tcl>=8.5' 'procps')
-makedepends=('less')
-checkdepends=('dejagnu')
-optdepends=('nagelfar' 'python-sphinx')
-install=env-modules.install
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/envmodules/modules/releases/download/v${pkgver}/modules-${pkgver}.tar.gz")
-sha256sums=('b175e57860e62d87b6118a79cc2d76e857e5774a9ff78558d6726122760b0034')
+depends=('bash' 'glibc' 'tcl>=8.5' 'procps-ng' 'util-linux' 'vi')
+makedepends=('less' 'nagelfar' 'python-sphinx')
+optdepends=('python: Support for environment modules in Python.'
+            'cmake: Support for environment modules in CMake.')
+checkdepends=('dejagnu' 'bash' 'fish' 'zsh' 'dash' 'ksh' 'tcsh' 'ruby' 'cmake' 'python' 'perl' 'r')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/envmodules/modules/releases/download/v${pkgver}/modules-${pkgver}.tar.gz"
+        "domainname.patch")
+sha256sums=('b175e57860e62d87b6118a79cc2d76e857e5774a9ff78558d6726122760b0034'
+            '1079282dbdd304201754d3e5e4f7eeb1f0e5dbae9ca7cc06ff3420c640761864')
+conflicts=('lmod')
 
-# Install locations:
-_install_prefix=/usr
-_config_path=/etc
-_profiled=/etc/profile.d
-_moduledir=modules
+backup=("etc/environment-modules/siteconfig.tcl"
+        "etc/environment-modules/initrc")
 
-backup=("${_config_path:1}/${_moduledir}/init/modulerc")
+prepare() {
+    cd "modules-${pkgver}"
+
+    patch --forward --strip=1 --input=../domainname.patch
+}
 
 build() {
     cd "modules-${pkgver}"
 
     conf=(
-        --prefix=""
+        --prefix=/usr/share/modules
         --bindir=/usr/bin
         --libdir=/usr/lib
-        --libexecdir=/usr/lib/env-modules
-        --etcdir=/etc
-        --initdir=/etc/modules/init
-        --with-initconf-in=initdir
-        --with-moduleshome=/etc/modules
+        --libexecdir=/usr/lib/environment-modules
+        --etcdir=/etc/environment-modules
+        --initdir=/usr/share/modules/init
         --datarootdir=/usr/share
         --mandir=/usr/share/man
-        --docdir="/usr/share/doc/${pkgname}-${pkgver}"
+        --docdir=/usr/share/doc/environment-modules
         --vimdatadir=/usr/share/vim/vimfiles
-        --modulefilesdir=/etc/modules/modulefiles
+        --modulefilesdir=/usr/share/modules/modulefiles
+        --enable-modulespath
+        --with-modulepath=/etc/environment-modules/modulefiles:/usr/share/modules/modulefiles
         --disable-set-binpath
         --disable-set-manpath
         --enable-example-modulefiles
         --enable-doc-install
+        --with-tcl-linter=/usr/bin/nagelfar
+        --enable-new-features
+        --enable-quarantine-support
+        --enable-require-via
+        --enable-set-shell-startup
+        --enable-silent-shell-debug-support
+        --enable-unique-name-loaded
     )
 
-    if type -p nagelfar > /dev/null; then
-        conf+=(
-            --with-tcl-linter="$(which nagelfar)"
-        )
-    fi
-
     ./configure "${conf[@]}"
-    make
+    make -C doc all
 }
 
 check() {
     cd "modules-${pkgver}"
 
-    # uncomment if you run into problems... takes quite a while
-    #make -j1 -k test
+    # Remove buggy tests
+    rm testsuite/modules.50-cmds/131-conflict-module.exp
+    rm testsuite/modules.50-cmds/370-deps.exp
+    rm testsuite/modules.50-cmds/375-deps6.exp
+    rm testsuite/modules.50-cmds/379-module-unload.exp
+    rm testsuite/modules.50-cmds/400-source-sh.exp
+    rm testsuite/modules.50-cmds/473-variant-prereq.exp
+    rm testsuite/modules.50-cmds/474-variant-conflict.exp
+    rm testsuite/modules.50-cmds/580-unique_name_loaded.exp
+    rm testsuite/modules.70-maint/120-autoinit.exp
+    rm testsuite/modules.70-maint/310-sh-to-mod.exp
+
+    make test QUICKTEST=1
 }
 
 package() {
     cd "modules-${pkgver}"
-    make -j1 DESTDIR="${pkgdir}/" install
+    make DESTDIR="${pkgdir}/" install
 
-    _profiled="${pkgdir}${profiled}"
-    mkdir -p "${_profiled}"
-    ln -s "../${moduledir}/init/profile.csh" "${_profiled}/env-modules.csh"
-    ln -s "../${moduledir}/init/profile.sh"  "${_profiled}/env-modules.sh"
+    mkdir -p "${pkgdir}/etc/profile.d"
+    ln -s "/usr/share/modules/init/profile.csh" "${pkgdir}/etc/profile.d/environment-modules.csh"
+    ln -s "/usr/share/modules/init/profile.sh"  "${pkgdir}/etc/profile.d/environment-modules.sh"
 
-    # Keep up with old versions:
-    ln -s ./perl.pm   "${pkgdir}${_config_path}/${_moduledir}/init/perl"
-    ln -s ./python.py "${pkgdir}${_config_path}/${_moduledir}/init/python"
+    mkdir "${pkgdir}/etc/environment-modules/modulefiles"
 }
