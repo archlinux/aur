@@ -27,7 +27,7 @@
 
 pkgname=powershell
 pkgver=7.6.3
-pkgrel=6
+pkgrel=7
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url='https://microsoft.com/PowerShell'
@@ -361,7 +361,7 @@ check() {
   done
 
   # Fix a NU1510 warning that would otherwise pop
-  #sed -i '/Microsoft.CSharp/d' test/tools/NamedPipeConnection/src/code/Microsoft.PowerShell.NamedPipeConnection.csproj
+  sed -i '/Microsoft.CSharp/d' test/tools/NamedPipeConnection/src/code/Microsoft.PowerShell.NamedPipeConnection.csproj
   dotnet publish \
     --configuration Release \
     --no-self-contained \
