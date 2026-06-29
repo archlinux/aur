@@ -23,8 +23,8 @@ pkgbase = triangles-qt-bin
 	source = https://github.com/SamiAhmed7777/triangles_v5/releases/download/v6.0.0/cryptographic-triangles_6.0.0_amd64.deb
 	source = https://github.com/SamiAhmed7777/triangles_v5/releases/download/v6.0.0/cryptographic-triangles-daemon_6.0.0_amd64.deb
 	source = triangles-qt.desktop
-	sha256sums = de3b6ccc572f910f547d24bf4232c090a35e5420b357cd844b0742fbd648f211
-	sha256sums = 19c465ec0b037f9c06efb5cc4953c6dabed6965f5e54b7d006450bbe8cfb0bb6
+	sha256sums = 27920268bb9538bf56011ae856af650433581ad9fc3d2f2256b489d0ae14a85f
+	sha256sums = 900fd0f3e382d2f3f4baa2ebaad0eecb1ed8766360b5b88d2b336cbc378f79a3
 	sha256sums = SKIP
 
 pkgname = triangles-qt-bin
