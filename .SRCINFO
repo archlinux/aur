@@ -1,6 +1,6 @@
 pkgbase = sleex-git
 	pkgdesc = Desktop environment focused on aesthetics and performance (git version)
-	pkgver = 1.32.r661.33b1e23
+	pkgver = 1.34.r694.d618141
 	pkgrel = 1
 	url = https://github.com/axos-project/sleex
 	arch = x86_64
@@ -74,7 +74,6 @@ pkgbase = sleex-git
 	depends = libnm
 	depends = gio-qt
 	depends = qt6-connectivity
-	depends = microtex-git
 	depends = xdg-desktop-portal
 	depends = clang
 	depends = uv

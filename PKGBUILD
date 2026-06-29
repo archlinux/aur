@@ -1,7 +1,7 @@
 # Maintainer: Ardox <ardox@axos-project.com>
 pkgname=sleex-git
 _pkgname=sleex
-pkgver=1.32.r661.33b1e23
+pkgver=1.34.r694.d618141
 pkgrel=1
 pkgdesc="Desktop environment focused on aesthetics and performance (git version)"
 arch=("x86_64")
@@ -18,7 +18,7 @@ depends=(
   'adw-gtk-theme' 'breeze-plus' 'eza' 'fish' 'fontconfig' 'kde-material-you-colors' 'kitty' 'matugen-bin' 'starship' 'ttf-gabarito-git' 'ttf-jetbrains-mono-nerd' 'ttf-material-design-icons-extended' 'ttf-material-symbols-variable' 'ttf-readex-pro' 'ttf-rubik-vf' 'ttf-twemoji'
   'hyprutils' 'hyprpicker' 'hyprlang' 'hyprland-qt-support' 'hyprland-guiutils' 'hyprcursor' 'hyprwayland-scanner' 'hyprland' 'xdg-desktop-portal-hyprland' 'wl-clipboard' 'hyprlock'
   'bluedevil' 'gnome-keyring' 'networkmanager' 'polkit-kde-agent' 'pcmanfm-qt' 'kwrite' 'libnm' 'gio-qt' 'qt6-connectivity'
-  'microtex-git' 'xdg-desktop-portal'
+  'xdg-desktop-portal'
   'clang' 'uv' 'gtk4' 'libadwaita' 'libsoup3' 'libportal-gtk4' 'gobject-introspection' 'sassc' 'python-setproctitle' 'python-pywayland'
   'hyprshot' 'ksnip' 'wf-recorder' 'slurp' 'grim' 'tesseract' 'tesseract-data-eng'
   'kdialog' 'qt6-5compat' 'qt6-avif-image-plugin' 'qt6-base' 'qt6-declarative' 'qt6-imageformats' 'qt6-multimedia' 'qt6-positioning' 'qt6-quicktimeline' 'qt6-sensors' 'qt6-svg' 'qt6-tools' 'qt6-translations' 'qt6-virtualkeyboard' 'qt6-wayland' 'syntax-highlighting' 'upower' 'wtype' 'ydotool' 'fprintd' 'khal' 'vdirsyncer' 'python-aiohttp-oauthlib' 'swappy' 'hypnos-git' 'bluez-utils'
@@ -51,7 +51,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "1.32.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.34.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
