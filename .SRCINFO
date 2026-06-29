@@ -30,6 +30,7 @@ pkgbase = environment-modules
 	optdepends = python: Support for environment modules in Python.
 	optdepends = cmake: Support for environment modules in CMake.
 	conflicts = lmod
+	replaces = env-modules
 	backup = etc/environment-modules/siteconfig.tcl
 	backup = etc/environment-modules/initrc
 	source = environment-modules-5.6.1.tar.gz::https://github.com/envmodules/modules/releases/download/v5.6.1/modules-5.6.1.tar.gz

@@ -19,6 +19,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/envmodules/modules/rele
 sha256sums=('b175e57860e62d87b6118a79cc2d76e857e5774a9ff78558d6726122760b0034'
             '1079282dbdd304201754d3e5e4f7eeb1f0e5dbae9ca7cc06ff3420c640761864')
 conflicts=('lmod')
+replaces=('env-modules')
 
 backup=("etc/environment-modules/siteconfig.tcl"
         "etc/environment-modules/initrc")
