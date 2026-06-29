@@ -1,6 +1,6 @@
 # Maintainer: Martino Pilia <martino.pilia@proton.me>
 pkgname=openocd-raspberrypi-bin
-pkgver=2.2.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="OpenOCD build for Raspberry Pi pico"
 arch=("x86_64")
