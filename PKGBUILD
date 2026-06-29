@@ -1,7 +1,7 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 
 pkgname=verus-bin
-pkgver=0.2026.06.20.911e4e7
+pkgver=0.2026.06.28.1847ab3
 pkgrel=1
 provides=('verus')
 conflicts=('verus')
@@ -11,7 +11,7 @@ url='https://github.com/verus-lang/verus'
 license=('MIT')
 source=("$url/releases/download/release/$pkgver/verus-$pkgver-x86-linux.zip"
         "$url/raw/refs/heads/main/LICENSE")
-sha256sums=('ba405dbbcccf1eed8c0a9a32382474f9cb38523141026005f8a69d8021737aa9'
+sha256sums=('b12a622a2f44c31e72a459fc8b764e8d4bd2275e54995d21c405771b316a81e7'
             'ab78fc657425500bc64f617e36bb6819c6b0d039c573642f603dd594b12fe0d3')
 
 package() {
