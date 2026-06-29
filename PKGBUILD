@@ -1,13 +1,13 @@
 # Maintainer: SHORiN <shorin@users.noreply.github.com>
 
 pkgname=miyu-git
-pkgver=0.1.1.r56.g71acc6a
+pkgver=0.1.1.r59.g89b2a71
 pkgrel=1
 pkgdesc='活在终端里的二次元少女'
 arch=('x86_64')
 url='https://github.com/SHORiN-KiWATA/Miyu'
 license=('MIT')
-options=('!lto')
+options=('!lto' '!strip' '!debug')
 depends=('alsa-lib' 'chafa' 'gcc-libs' 'glibc' 'ripgrep')
 makedepends=('cargo' 'git' 'pkgconf')
 optdepends=(
@@ -45,20 +45,6 @@ package() {
   install -Dm755 "target/release/miyu" "${pkgdir}/usr/bin/miyu"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  if [[ -d kb ]]; then
-    while IFS= read -r -d '' file; do
-      local rel="${file#kb/}"
-      install -Dm644 "${file}" "${pkgdir}/usr/share/miyu/default-kb/kb/${rel}"
-    done < <(find kb -type f -name '*.md' -print0 | sort -z)
-  fi
-
-  if [[ -d wikis ]]; then
-    while IFS= read -r -d '' file; do
-      local rel="${file#wikis/}"
-      install -Dm644 "${file}" "${pkgdir}/usr/share/miyu/default-kb/shorinwiki/${rel}"
-    done < <(find wikis -type f -name '*.md' -print0 | sort -z)
-  fi
-
   if [[ -d src/memes ]]; then
     while IFS= read -r -d '' file; do
       local rel="${file#src/memes/}"
@@ -66,7 +52,4 @@ package() {
     done < <(find src/memes -type f \( -name '*.json' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.png' -o -name '*.gif' -o -name '*.webp' \) -print0 | sort -z)
   fi
 
-  install -dm755 "${pkgdir}/usr/share/miyu/default-kb/manifest"
-  printf '{\n  "name": "miyu-default-kb",\n  "generated_by": "miyu-git PKGBUILD"\n}\n' > "${pkgdir}/usr/share/miyu/default-kb/manifest/manifest.json"
-  git rev-parse HEAD > "${pkgdir}/usr/share/miyu/default-kb/manifest/shorinwiki.commit"
 }
