@@ -1,4 +1,4 @@
-# Maintainer: Your Name <you@example.com>
+# Maintainer: enihcam <enihcam@archlinux>
 # Contributor: MiniMax AI <dev@minimaxi.com>
 
 pkgname=mmx-cli
