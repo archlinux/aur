@@ -1,6 +1,6 @@
 pkgbase = mcpp-bin
 	pkgdesc = Modern C++ build & package management tool (prebuilt binary)
-	pkgver = 0.0.74
+	pkgver = 0.0.75
 	pkgrel = 1
 	url = https://github.com/mcpp-community/mcpp
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = mcpp-bin
 	options = !strip
 	source = mcpp.sh
 	sha256sums = SKIP
-	source_x86_64 = mcpp-0.0.74-linux-x86_64.tar.gz::https://github.com/mcpp-community/mcpp/releases/download/v0.0.74/mcpp-0.0.74-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 22eb02bfcd9f9766bf226703f82dfb46efe99641e47d25a4d372df7e82c29a63
-	source_aarch64 = mcpp-0.0.74-linux-aarch64.tar.gz::https://github.com/mcpp-community/mcpp/releases/download/v0.0.74/mcpp-0.0.74-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 18910fb03bb645d9324cae2af06dd87bb2fd23eaf1f20902e669552427e5156e
+	source_x86_64 = mcpp-0.0.75-linux-x86_64.tar.gz::https://github.com/mcpp-community/mcpp/releases/download/v0.0.75/mcpp-0.0.75-linux-x86_64.tar.gz
+	sha256sums_x86_64 = df24aeba297f2e4e37dd23282e575f0d50a6cbe344c8ce7f7a3d6f2ab23845a6
+	source_aarch64 = mcpp-0.0.75-linux-aarch64.tar.gz::https://github.com/mcpp-community/mcpp/releases/download/v0.0.75/mcpp-0.0.75-linux-aarch64.tar.gz
+	sha256sums_aarch64 = ab476f6a937354a953857bd62fdb30d63213c30bddffab0541e858b54202bb75
 
 pkgname = mcpp-bin
