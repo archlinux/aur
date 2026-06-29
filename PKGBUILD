@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ts.net-git
-pkgver=r653.b9e65d2
+pkgver=r717.6beabca
 pkgrel=1
 epoch=
 pkgdesc="Thunderscope-compatible PC-host software written in C# using high-performing primitives & SIMD."
@@ -69,7 +69,5 @@ EOF
     cd "${srcdir}/${pkgname}/"
     install -vDm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     install -vDm644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
-    install -vDm644 docs/*.md -t ${pkgdir}/usr/share/doc/${pkgname}/docs/
-    install -vDm644 docs/*.drawio -t ${pkgdir}/usr/share/doc/${pkgname}/docs/
-    install -vDm644 docs/simulations/*.asc -t ${pkgdir}/usr/share/doc/${pkgname}/docs/simulations/
+    cp -R docs ${pkgdir}/usr/share/doc/${pkgname}/
 }
