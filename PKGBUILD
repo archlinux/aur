@@ -1,4 +1,4 @@
-# Maintainer: Joost Bremmer < toost dot b at gmail dot com>
+# Maintainer: Joost Bremmer < contact  at madeofmagicandwires dot online>
 pkgname=iographica
 pkgver=1.0.3
 pkgrel=1
