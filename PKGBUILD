@@ -2,14 +2,14 @@
 # Maintainer: Michael Taboada <michael@2mb.solutions>
                                                                                                                                                                 
 pkgname="barnard-git"
-pkgver=r98.c16cc73
+pkgver=r42.5ac6703
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="A command line mumble client."
 arch=('aarch64' 'armv7h' 'x86_64')
 url="https://git.stormux.org/storm/barnard"
 license=('GPL2')
-depends=('openal' 'opus' 'opusfile')
+depends=('openal' 'opus' 'opusfile' 'rnnoise')
 optdepends=('dialog: for barnard-ui')
 makedepends=('git' 'go')
 source=("barnard::git+https://git.stormux.org/storm/barnard")
