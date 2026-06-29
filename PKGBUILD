@@ -4,7 +4,7 @@
 _pkgname=zram-init
 pkgname=${_pkgname}-git
 pkgver=13.3.r120.20260607.96579c7
-pkgrel=1
+pkgrel=2
 pkgdesc="Setup zram-based tmpfs and swap devices on boot."
 arch=('any')
 url='https://github.com/vaeth/zram-init'
@@ -12,7 +12,7 @@ license=('GPL-2.0-only')
 depends=('bash')
 makedepends=('git')
 optdepends=(
-  "push: To be able to use options '-K', '-M', '-2', '-Z' to pass generic arguments."
+  "push.sh: To be able to use options '-K', '-M', '-2', '-Z' to pass generic arguments."
   "zram-init-openrc: For corresponding OpenRC Init script."
   "util-linux: To use 'zramctl'."
 )
