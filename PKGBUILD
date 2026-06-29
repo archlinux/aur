@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="aider-chat-venv"
-pkgver=0.83.0
+pkgver=0.86.2
 pkgrel=1
 pkgdesc="AI pair programming in your terminal (installed with uv)"
 url="https://github.com/Aider-AI/aider"
@@ -13,7 +13,7 @@ makedepends=("jq" "uv")
 options=("!strip")
 
 pkgver(){
- curl -s "https://api.github.com/repositories/638629097/releases/latest" | jq -r '.tag_name | sub("^v"; "")'
+ curl -s "https://pypi.org/pypi/aider-chat/json" | jq -r '.info.version'
 }
 
 _strip_pkgdir_from_links() {
@@ -39,7 +39,7 @@ package() {
  UV_NO_COMPILE_BYTECODE=TRUE \
  UV_NO_CACHE=TRUE \
  UV_NO_INSTALLER_METADATA=TRUE \
- UV_PYTHON=3.12 \
+ UV_PYTHON=3.13 \
  UV_PYTHON_PREFERENCE=only-managed \
  UV_PYTHON_DOWNLOADS=automatic \
  UV_PYTHON_BIN_DIR="$pkgdir/usr/share/aider-chat/bin" \
