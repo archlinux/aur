@@ -1,7 +1,7 @@
 # Maintainer: DBeidachazi
 pkgname=pipewire-bluez5-lhdc-git
 pkgver=1.7.0.r15616.gd43c42891bd6
-pkgrel=1
+pkgrel=2
 pkgdesc="Out-of-tree PipeWire bluez5 SPA plugin build with LHDC v5 codec support"
 arch=('x86_64')
 url="https://github.com/DBeidachazi/pipewire"
@@ -23,13 +23,29 @@ build() {
   local meson_options=(
     --prefix=/usr
     --libdir=lib
+    --buildtype=plain
+    --wrap-mode=nodownload
+    --auto-features=disabled
     -Dexamples=disabled
     -Dtests=disabled
     -Dman=disabled
     -Ddocs=disabled
+    -Dsession-managers=[]
+    -Dpipewire-alsa=disabled
+    -Dpipewire-jack=disabled
+    -Dsystemd-system-service=disabled
+    -Dsystemd-user-service=disabled
+    -Dflatpak=disabled
+    -Dudev=disabled
+    -Dalsa=disabled
+    -Djack=disabled
+    -Dbluez5=enabled
+    -Ddbus=enabled
+    -Dlibusb=enabled
+    -Dselinux=disabled
   )
 
-  arch-meson pipewire build "${meson_options[@]}"
+  meson setup build pipewire "${meson_options[@]}"
   ninja -C build \
     spa/plugins/bluez5/libspa-bluez5.so \
     spa/plugins/bluez5/libspa-codec-bluez5-lhdc.so
