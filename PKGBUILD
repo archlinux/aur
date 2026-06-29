@@ -4,8 +4,8 @@
 pkgname=gosuki-git
 _pkgname=${pkgname%-git}
 pkgver=v1.4.1.r1.g7b7eacd
-pkgrel=2
-pkgdesc="Lightweight, free, privacy-first bookmark manager. Unifies your bookmarks across many browsers, syncs them in real time (locally or P2P), requires no extensions, and stores everything locally."
+pkgrel=3
+pkgdesc="A lightweight, open-source, privacy-first bookmark manager that unifies your bookmarks across multiple browsers, syncs them in real time (locally or P2P), requires no extensions, and stores everything locally."
 arch=('i686' 'x86_64')
 makedepends=(git go make sqlite)
 url='https://github.com/blob42/gosuki'
