@@ -1,6 +1,6 @@
 # Maintainer: Eigent AI <https://github.com/eigent-ai>
 pkgname=eigent-bin
-pkgver=0.0.80
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="AI-powered desktop agent for browser automation"
 arch=('x86_64')
