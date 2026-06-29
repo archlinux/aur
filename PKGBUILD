@@ -5,8 +5,8 @@
 
 pkgname=pixelorama-git
 _pkgname=pixelorama
-pkgver=3401.b924a775a
-pkgrel=2
+pkgver=4066.02d6e5d88
+pkgrel=1
 pkgdesc="A free & open-source 2D sprite editor"
 arch=('x86_64')
 url="https://orama-interactive.itch.io/pixelorama"
@@ -35,8 +35,7 @@ prepare() {
 
   # Get Godot Engine version
   _godot_version_full_string=$(godot --version)
-  _godot_version=${_godot_version_full_string%.*}
-  _godot_version_number=$(echo ${_godot_version} | sed 's/\.[[:alpha:]].*//')
+  _godot_version=$(echo ${_godot_version_full_string} | cut -d. -f-4)
 
   _templates_home_dir=~/.local/share/godot/export_templates/${_godot_version}
   if [ ! -d ${_templates_home_dir} ]
