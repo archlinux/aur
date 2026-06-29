@@ -1,9 +1,6 @@
 # Maintainer: AnimaZed Team <team@animazed.dev>
 # Based on animazed-git AUR package
 
-# Required for downloading GitHub Actions artifacts:
-# export GITHUB_TOKEN="your_github_token_here"
-
 pkgname="animazed-bin"
 pkgver="1.9.0"
 pkgrel="1"
@@ -38,6 +35,8 @@ optdepends=(
 )
 provides=('animazed' 'zed')
 conflicts=('animazed' 'zed' 'zed-git' 'zed-preview' 'zed-nightly')
+source=("https://github.com/animaios/animazed/releases/download/nightly/zed-linux-x86_64-nightly.zip")
+sha256sums=('SKIP')
 
 pkgver() {
     echo "${pkgver}"
@@ -46,27 +45,8 @@ pkgver() {
 prepare() {
     cd "${srcdir}"
 
-    # GitHub Actions artifact info
-    # Run: 28336485855, Artifact: zed-linux-x86_64-nightly (ID: 7939126130)
-    local artifact_url="https://api.github.com/repos/animaios/animazed/actions/artifacts/7939126130/zip/download"
-
-    if [[ -z "${GITHUB_TOKEN}" ]]; then
-        error "GITHUB_TOKEN environment variable not set. Create a personal access token at https://github.com/settings/tokens"
-        return 1
-    fi
-
-    msg2 "Downloading AnimaZed artifact from GitHub Actions..."
-    curl -sL -H "Accept: application/vnd.github+json" \
-        -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-        "${artifact_url}" -o animazed-bin.zip
-
-    if [[ ! -s animazed-bin.zip ]]; then
-        error "Failed to download artifact. Check the artifact ID and your GITHUB_TOKEN."
-        return 1
-    fi
-
-    msg2 "Extracting artifact..."
-    bsdtar -xf animazed-bin.zip
+    msg2 "Extracting release artifact..."
+    bsdtar -xf zed-linux-x86_64-nightly.zip
 
     if [[ ! -f release/zed ]]; then
         error "Expected release/zed binary not found in artifact"
@@ -106,7 +86,7 @@ StartupNotify=true
 Actions=new-window;new-tab;
 EOF
 
-    # Install icons (from the extracted artifact or generated)
+    # Install icons
     install -Dm644 "${srcdir}/../crates/zed/resources/app-icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/animazed.png"
     ln -sf animazed.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/zed.png"
 

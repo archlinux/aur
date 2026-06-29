@@ -34,5 +34,7 @@ pkgbase = animazed-bin
 	conflicts = zed-git
 	conflicts = zed-preview
 	conflicts = zed-nightly
+	source = https://github.com/animaios/animazed/releases/download/nightly/zed-linux-x86_64-nightly.zip
+	sha256sums = SKIP
 
 pkgname = animazed-bin
