@@ -1,0 +1,3 @@
+[perl-acme-damn]
+source = "cpan"
+cpan = "Acme-Damn"
