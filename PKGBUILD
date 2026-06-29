@@ -1,5 +1,5 @@
 pkgname=python-dataclass-binder
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Library to bind TOML data to Python dataclasses in a type-safe way."
 arch=(any)
