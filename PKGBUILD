@@ -14,7 +14,7 @@ makedepends=('cargo' 'oniguruma')
 # ring-dependent Rust packages.
 options=(!lto)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7273ab378fa0e9a39afc7fd0a32b2782b827a2dad47313dc40a84aa1247e9294')
+sha256sums=('909f0c03f28551e7bfca1fd11ff93d393dd3003525830dc6875c440096de6c16')
 
 prepare() {
   cd "SynapsCLI-$pkgver"
