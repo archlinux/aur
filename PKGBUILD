@@ -1,0 +1,33 @@
+# Maintainer: Pierre Dommerc <dommerc.pierre@gmail.com>
+
+pkgname=ushift
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='CLI tool to manage CPU performance scaling and power profiles'
+arch=('x86_64')
+url='https://github.com/doums/ushift'
+license=('Apache-2.0 WITH Commons-Clause')
+depends=('glibc' 'systemd-libs')
+makedepends=('zig-master')
+provides=('ushift')
+conflicts=('ushift')
+options=(!debug)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+#source=("$pkgname-$pkgver::git+file://${PWD}/../..")
+sha256sums=('2714a052c7a1e584c6faa93f37fcc5dc2cf4ea2c62d6593010a98c446079333a')
+backup=('etc/ushift/config.toml')
+_pkgdir="$pkgname-$pkgver"
+
+build() {
+  cd "$srcdir/$_pkgdir"
+  zig build -Doptimize=ReleaseSmall --prefix "${srcdir}/zig-out"
+}
+
+package() {
+  cd "$srcdir/$_pkgdir"
+  install -Dm755 "$srcdir/zig-out/bin/ushift" "$pkgdir/usr/bin/ushift"
+  install -Dm644 "$srcdir/$_pkgdir/.pkg/config.toml" "$pkgdir/etc/ushift/config.toml"
+  install -Dm644 "$srcdir/$_pkgdir/.pkg/ushift-laptop.service" "$pkgdir/usr/lib/systemd/system/ushift-laptop.service"
+  install -Dm644 "$srcdir/$_pkgdir/.pkg/ushift-perf.service" "$pkgdir/usr/lib/systemd/system/ushift-perf.service"
+}
+
