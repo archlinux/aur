@@ -1,6 +1,6 @@
 # Maintainer: Djalel Oukid <sniper1720@linuxtechmore.com>
 pkgname=khushu-bin
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="An all-in-one Muslim app for Linux (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=("khushu=$pkgver")
 conflicts=('khushu')
 source_x86_64=("khushu_${pkgver}_amd64.deb::https://github.com/sniper1720/khushu/releases/download/v${pkgver}/khushu_${pkgver}_amd64.deb")
 source_aarch64=("khushu_${pkgver}_arm64.deb::https://github.com/sniper1720/khushu/releases/download/v${pkgver}/khushu_${pkgver}_arm64.deb")
-sha256sums_x86_64=('e6e22c2b683152cca484d3f3c3387e8287c944ffd6271fcd9e50e2e6e83690d0')
-sha256sums_aarch64=('32051fefc1d0a59136264f49809806ecced24276a37f2b020079389dffa2e4aa')
+sha256sums_x86_64=('9e982de94a418245bbaf9a8546fb9ed7cddfb49d49f094e1e5b85541141a8311')
+sha256sums_aarch64=('e81437350f860796e5877a85f775c3d37fb19663fb640465ffb19e9ff5cefff7')
 
 package() {
     cd "$srcdir"
