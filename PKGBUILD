@@ -4,7 +4,7 @@
 # Contributor: Ian MacKay <immackay0@gmail.com>
 
 _pkgname='desktop-plus'
-pkgname="github-desktop-plus-bin"
+pkgname="${_pkgname}-bin"
 pkgver=3.6.1.0
 pkgrel=1
 pkgdesc="GitHub Desktop fork with extra features and improvements (binary release)."

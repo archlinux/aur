@@ -1,4 +1,4 @@
-pkgbase = github-desktop-plus-bin
+pkgbase = desktop-plus-bin
 	pkgdesc = GitHub Desktop fork with extra features and improvements (binary release).
 	pkgver = 3.6.1.0
 	pkgrel = 1
@@ -27,4 +27,4 @@ pkgbase = github-desktop-plus-bin
 	source_aarch64 = https://github.com/desktop-plus/desktop-plus/releases/download/v3.6.1.0/DesktopPlus-v3.6.1.0-linux-arm64.deb
 	sha256sums_aarch64 = 94d462e35052ead84dcf8dd67fa6cff2f4bc54855494d03b73d486db008f8460
 
-pkgname = github-desktop-plus-bin
+pkgname = desktop-plus-bin
