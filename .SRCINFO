@@ -1,0 +1,17 @@
+pkgbase = ghscope-bin
+	pkgdesc = Analyse any GitHub repository from your terminal — stars, contributors, churn, deps, PR velocity and more
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/phlx0/ghscope
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	provides = ghscope
+	conflicts = ghscope
+	options = !strip
+	source_x86_64 = ghscope-x86_64-0.1.0.tgz::https://github.com/phlx0/ghscope/releases/download/v0.1.0/ghscope_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 482e50608dec26a8cb89c1be19109e2d61ab5d5f08a75e961429e793e6b5841f
+	source_aarch64 = ghscope-aarch64-0.1.0.tgz::https://github.com/phlx0/ghscope/releases/download/v0.1.0/ghscope_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = c6a562701fc307b6f8f8c743fd3f5690b50a5e6737e9a191d3fa8314e54092b9
+
+pkgname = ghscope-bin

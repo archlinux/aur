@@ -1,0 +1,5 @@
+[ghscope-bin]
+source = "github"
+github = "phlx0/ghscope"
+use_latest_release = true
+prefix = "v"
