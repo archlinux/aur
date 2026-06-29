@@ -3,4 +3,5 @@ Type=Application
 Name=Gearlynx
 Comment=Atari Lynx emulator and debugger
 Exec=gearlynx
+Icon=gearlynx
 Categories=Game;Emulator;
