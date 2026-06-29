@@ -2,7 +2,7 @@
 
 pkgname=python-parts2jitx
 _name=${pkgname#python-}
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Import electronic part data (LCSC, KiCad, EasyEDA) and convert to JITX component code"
 provides=(${pkgname})
@@ -31,8 +31,8 @@ optdepends=(
     'kicad: Electronic schematic and printed circuit board (PCB) design tools'
 )
 license=('MIT')
-source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('9d47eeec5f7db13c82299bccac78a0729990f7a87bf0d9ccc7c996def8eec12d')
+source=("git+${url}.git#tag=v$pkgver")
+sha256sums=('167f5053a3d88fa072270addb9310cb3b5135eb1f806e8d8ca7ef5e5624c61cc')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
