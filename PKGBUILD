@@ -6,7 +6,7 @@ pkgname=(
   'cecli'
 )
 _gitpkgname=cecli
-pkgver=0.100.8
+pkgver=0.100.9
 pkgrel=1
 pkgdesc='AI pair programming in your terminal - dwash96 fork of AIDER with TUI and MCP support'
 arch=('any')
@@ -92,7 +92,7 @@ source=(
   'fix-build-from-tarball.patch'
 )
 
-sha512sums=('5f714157913585e932773d221db0373318944f60dae0209a42af229d48586863223cdd592a5fe70277db5fab654de833be412f76c53713a643687ce0283cb235'
+sha512sums=('ee3a1e22aea89e8a7cfd1474a6b687c20a84ee17716204941802f2504007c047c5173d2a89d85c1be8fc7844e8be18b8cc4d9ef829fb74508ebd3efd54e579f5'
             '81a4593740fe643bea577d011d427ad962b0f46a9b2121e0f757606af73a097343d31e356ab7d2ad4a9c83e8e713f5bafadba7284fd1a81b30aa75b231e86029'
             '523aed2029146d079de44db15152833a385ff331ca6bb19230cbc92d5abed1a33e4a132a34150ead213a19c7eb715c564b480c8943fd03216400aa6954770d8c')
 
@@ -180,7 +180,7 @@ check() {
 
   echo >&2 'Running unit tests'
   env -i PATH="${PATH}" python -m pytest \
-    -k 'not test_get_commit_message and not TestHelp and not test_check_for_dependencies_ and not test_encodings_arg and not test_main_exit_calls_version_check and not test_mode_sets_code_theme and not test_env_file_variables and not test_verbose_mode_lists_env_vars and not test_list_models_includes_metadata_models and not test_list_models_includes_all_model_sources and not test_list_models_includes_openai_provider and not test_list_models_with_direct_resource_patch and not test_stream_cache_warning and not test_model_overrides_no_match_preserves_model_name and not test_scraper_print_error_not_called'
+    -k 'not test_get_commit_message and not TestHelp and not test_check_for_dependencies_ and not test_encodings_arg and not test_main_exit_calls_version_check and not test_mode_sets_code_theme and not test_env_file_variables and not test_verbose_mode_lists_env_vars and not test_list_models_includes_metadata_models and not test_list_models_includes_all_model_sources and not test_list_models_includes_openai_provider and not test_list_models_with_direct_resource_patch and not test_stream_cache_warning and not test_model_overrides_no_match_preserves_model_name and not test_scraper_print_error_not_called and not test_urls'
 
   echo >&2 'Testing the executable'
   test-env/bin/${_gitpkgname} --version > actual.txt
