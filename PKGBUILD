@@ -2,7 +2,7 @@
 
 _pkgauthor=pvolok
 pkgname=mprocs
-pkgver=0.7.3
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="Run multiple commands in parallel"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ provides=("${pkgname}")
 makedepends=('rust')
 
 source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a058a2806319a0a1ab644158b741e9a54be28540c88d15d213b820b3f97a65da')
+sha256sums=('294fa02bfec7c73bc29448c55497ac46deda8b82bec259e492c51cfb67330c2d')
 
 build() {
 	cd ${pkgname}-${pkgver} || exit 1
