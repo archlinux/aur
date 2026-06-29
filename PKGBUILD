@@ -7,7 +7,7 @@ _pkgmajorver="$(awk -F. '{print $1}' <<< "${pkgver}")"
 _pkgnextmajorver="$(("${_pkgmajorver}" + 1))"
 _pkgminorver="$(awk -F. '{print $2}' <<< "${pkgver}")"
 _pkgnextminorver="$(("${_pkgminorver}" + 1))"
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenRC init script for 'zram-init'."
 url='https://github.com/vaeth/zram-init'
 license=('GPL-2.0-only')
@@ -17,7 +17,10 @@ depends=(
   "zram-init<${_pkgmajorver}.${_pkgnextminorver}"
 )
 makedepends=("git")
-optdepends=("openrc: To make use of this script.")
+optdepends=(
+  "latemount-openrc: To mount directories that were set up via tmpfiles.setup in a zram-init created ram file system."
+  "openrc: To make use of this script."
+)
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 replaces=()
