@@ -1,6 +1,6 @@
 # Maintainer: Junjie <junjie@omni-stream.ai>
 pkgname=omni-code-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Flutter desktop client for managing Omni Code bridge sessions"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source_x86_64=("omni-code-$pkgver-linux-x86_64.tar.gz::https://github.com/omni-s
 sha256sums=('SKIP'
             'SKIP'
             'ed59c1da82265d3d408c7c47ebdfd1af041ab847e68692387189487dc60a9713')
-sha256sums_x86_64=('bf8d474094ae0ff8ebd03761d0739b701d5728b1ac6c04b69c4267fb4d1429ad')
+sha256sums_x86_64=('e2f6791df6db25a229f17c9d6b2368c3e9c9af01227e88d4752ceebf8e0d814a')
 
 package() {
     install -d "$pkgdir/opt/omni-code"
