@@ -11,8 +11,8 @@ depends=(libsoup3 dbus gdk-pixbuf2 glib2 cairo webkit2gtk-4.1 hicolor-icon-theme
 provides=("skiff=${pkgver}")
 conflicts=(skiff skiff-appimage)
 license=()
-source=("${_github_url}/releases/download/v${pkgver}.beta.1/skiff_${pkgver}_amd64.deb")
-sha256sums=('8ca4d5bbcbee9a3a8351bbd45c253b8600d0092bfde8bed350a0794299528450')
+source=("${_github_url}/releases/download/v${pkgver}.beta.2/skiff_${pkgver}_amd64.deb")
+sha256sums=('552772a2e07c382f893ab8f301964f8b27afffeb191b620b5b4a09ee55c36e31')
 
 prepare() {
         ar p skiff_${pkgver}_amd64.deb data.tar.gz | tar --zstd -x
