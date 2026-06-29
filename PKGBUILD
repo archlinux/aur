@@ -1,7 +1,7 @@
 # Maintainer: Charles Langlois <contact at charleslanglois dot dev>
 
 pkgname='exfetch'
-pkgver=1.6
+pkgver=1.6.3
 pkgrel=1
 pkgdesc='shell extensible fetching program written in Crystal'
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=('ISC')
 depends=('zlib' 'glibc' 'gcc-libs' 'pcre2' 'gc')
 makedepends=('git' 'crystal' 'shards' )
 source=("exfetch::git+${url}.git#tag=${pkgver}" "git+https://github.com/schovi/baked_file_system.git")
-sha256sums=('89aac5b6ef91365daec95fad33e18b233f39cdf2355e6736833e834e9ad2a6e1'
+sha256sums=('16b61c8539254ca6dd99b118efa10cba6d9d9f5e1a1d8b5a6beb28344d0e1b57'
             'SKIP')
 provides=('exfetch')
 prepare() {
