@@ -1,13 +1,13 @@
 pkgbase = ironcall-cli-bin
 	pkgdesc = Ironcall CLI - Local-first API client
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://ironcall.dev
 	arch = x86_64
 	license = custom
 	provides = ironcall-cli
 	conflicts = ironcall-cli
-	source_x86_64 = ironcall-cli-0.2.0-linux-x86_64::https://ironcall.dev/releases/cli/0.2.0/ironcall-cli-0.1.1-linux-x86_64
-	sha256sums_x86_64 = 05d1c5415550d759ff2e1e7e6c701d233d4440ce2f3908df87a8a462a35292e9
+	source_x86_64 = ironcall-cli-0.2.1-linux-x86_64::https://ironcall.dev/releases/cli/0.2.1/ironcall-cli-0.1.1-linux-x86_64
+	sha256sums_x86_64 = 92cace2e6c64bd69dd273c59adb23a2b0efa9a6f1e69faf71779bdde4d638cb3
 
 pkgname = ironcall-cli-bin
