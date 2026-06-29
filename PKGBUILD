@@ -4,11 +4,11 @@ pkgver=0.2.3
 pkgrel=1
 pkgdesc="A Command Line Utility for exporting data from Ente."
 arch=('x86_64' 'aarch64')
-url="https://ente.io"
+url="https://ente.com"
 license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ente-io/ente/archive/refs/tags/cli-v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ente/ente/archive/refs/tags/cli-v$pkgver.tar.gz")
 sha256sums=('6bd4ab7b60bf15dd52fbf531d7fa668660caf85c60ef8c4b4f619b777068b4e3')
 
 prepare(){
