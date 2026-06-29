@@ -1,6 +1,6 @@
 pkgbase = hyprspaces-tools
 	pkgdesc = Helper CLI and config automation for the hyprspaces HyprPM plugin
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/jtaw5649/hyprspaces
 	install = hyprspaces-tools.install
@@ -14,7 +14,7 @@ pkgbase = hyprspaces-tools
 	optdepends = socat: stock Waybar custom module helper
 	optdepends = sunshine: optional Sunshine headless helper
 	conflicts = hyprspaces<2.0.0
-	source = hyprspaces-2.1.1.tar.gz::https://github.com/jtaw5649/hyprspaces/archive/f132acf28602cb4c12852028add388dd108e7e0e.tar.gz
-	sha256sums = dd424044e5e438120e9272365a985da942401c0facc6e7c9b8a867ceae19eff7
+	source = hyprspaces-2.1.2.tar.gz::https://github.com/jtaw5649/hyprspaces/archive/481753d1f3eb829cdc522ca835c6152cf23e7cfb.tar.gz
+	sha256sums = d903a4f82dc183e6114dec2492308fcc3cfabafe960c67280e3178c2e52cca78
 
 pkgname = hyprspaces-tools
