@@ -2,19 +2,16 @@
 # Upstream: https://github.com/intel/AI-Playground
 #
 # NOTE (2026-06-29): Linux support was merged to the upstream dev branch but
-# is not yet part of an official release. This PKGBUILD uses a temporary fork
-# snapshot to provide a stable source URL and checksum.
-#
-# Fork: https://github.com/cantosun99/AI-Playground-Jun-25-2026-Snapshot
-# Purpose: Bridge until v3.1.2-beta (or later) is officially released.
+# is not yet part of an official release. This PKGBUILD pins a specific commit
+# to provide a stable source with reproducible checksums.
 
 pkgname=intel-ai-playground
 pkgver=3.1.2.dev
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel AI Playground – experimental Linux support (AppImage)"
 arch=(x86_64)
 url="https://github.com/intel/AI-Playground"
-license=(MIT)
+license=(MIT "custom:3rdpartynoticeslicenses.txt")
 depends=(
     gtk3
     nss
@@ -38,12 +35,12 @@ optdepends=(
     "fuse2: running the AppImage directly (not needed when installed via this package)"
 )
 source=(
-    "https://github.com/cantosun99/AI-Playground-Jun-25-2026-Snapshot/archive/refs/heads/main.tar.gz"
+    "https://github.com/intel/AI-Playground/archive/dc73a34.tar.gz"
 )
-sha256sums=("c2204361cfbdf3ae6d14a69a1dabbcba7b94daa50656c4db04544a83ad318672")
+sha256sums=('cb2332483bbeea63bb2c65e892920d123e2abe8e3be9eb1317a03076e386e8b8')
 
 prepare() {
-    mv "AI-Playground-Jun-25-2026-Snapshot-main" "${srcdir}/AI-Playground"
+    mv "AI-Playground-dc73a349b065fc1a940a67141cf8c775f9f6917b" "${srcdir}/AI-Playground"
 }
 
 build() {
@@ -115,4 +112,11 @@ EOF
     # Symlink for terminal launch
     install -d -m755 "${pkgdir}/usr/bin"
     ln -s /usr/lib/ai-playground/ai-playground "${pkgdir}/usr/bin/ai-playground"
+
+    # License files
+    install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -m644 "${srcdir}/AI-Playground/LICENSE" \
+                  "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -m644 "${srcdir}/AI-Playground/3rdpartynoticeslicenses.txt" \
+                  "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
