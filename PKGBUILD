@@ -1,7 +1,7 @@
 pkgname=augenblick-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
-pkgdesc="Fullscreen eye-blink overlay for X11 (binary package)"
+pkgdesc="Fullscreen eye-blink overlay for X11 and Wayland (binary package)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/x71c9/augenblick"
 license=('MIT')
@@ -12,8 +12,8 @@ conflicts=('augenblick')
 source_x86_64=("augenblick-x86_64-$pkgver.tar.gz::https://github.com/x71c9/augenblick/releases/download/v$pkgver/augenblick-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("augenblick-aarch64-$pkgver.tar.gz::https://github.com/x71c9/augenblick/releases/download/v$pkgver/augenblick-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=("a43de1ee2d1c1ad9f7db38e1b9609d550a584eff14bfb4295ff2971ee2bbafb5")
-sha256sums_aarch64=("9bcb28985b852fcd33af378de21c86b30fa1cfdb0e941e73315104508bbd2ea6")
+sha256sums_x86_64=("ba51f80ca7e232bd756af62b7a6ce0e5895c7b0cc8f96ab601f6c0d39d07aa01")
+sha256sums_aarch64=("217abc2b40cde125a3b171738eb1dddc1b07d82ab2875f673f76794d417879af")
 
 package() {
   if [[ $CARCH == "x86_64" ]]; then
@@ -21,5 +21,5 @@ package() {
   elif [[ $CARCH == "aarch64" ]]; then
     tar -xzf "augenblick-aarch64-$pkgver.tar.gz"
   fi
-  install -Dm755 augenblick "$pkgdir/usr/bin/augenblick"
+  install -Dm755 "augenblick" "$pkgdir/usr/bin/augenblick"
 }
