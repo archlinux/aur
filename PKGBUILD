@@ -1,4 +1,4 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=Soft
 _pkgname=rainbowpath
@@ -22,6 +22,7 @@ package() {
 
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
