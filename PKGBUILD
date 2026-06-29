@@ -2,13 +2,13 @@
 
 pkgname=geary-email-autocomplete-bin
 _pkgname=geary-email-autocomplete
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
-pkgdesc="GTK3 module that widens Geary recipient autocomplete from its contact history (prebuilt binary)"
+pkgdesc="GTK3 module that widens Geary recipient autocomplete and adds image copy (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/akitaonrails/geary-email-autocomplete"
 license=('MIT')
-depends=('gtk3' 'glib2' 'sqlite')
+depends=('gtk3' 'webkit2gtk-4.1' 'glib2' 'sqlite')
 optdepends=('geary: stable Geary client'
             'geary-git: development Geary client')
 provides=("$_pkgname=$pkgver")
@@ -16,7 +16,7 @@ conflicts=("$_pkgname")
 install="$_pkgname.install"
 options=('!strip' '!debug')
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz")
-sha256sums_x86_64=('e564c5810ee703d1273f744542d2d281dcb7e6e3440974934bd45cfddce295e7')
+sha256sums_x86_64=('a1aed5bfb048748aa7a81dd047c89780224a4299555589b7a1e5dc883a05fea5')
 
 package() {
     install -Dm0755 "libgeary-email-autocomplete.so" \
