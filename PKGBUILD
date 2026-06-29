@@ -10,11 +10,10 @@ provides=(konform-browser)
 conflicts=()
 _pkgname="${pkgname}"
 __pkgname=konform
-_ffsrcvername=140.12.0esr
-_ffbuild=1
-_l10n_commit=89defc2f7a4742ef9a06ffd123afe62b0ddf9a06
-_lwrelver=101
-pkgrel=1
+: ${_ffsrcvername:=140.12.0esr}
+: ${_ffbuild:=1}
+: ${_lwrelver:=101}
+: ${_l10n_commit=89defc2f7a4742ef9a06ffd123afe62b0ddf9a06}
 _ffsrcver="${_ffsrcvername%esr*}"
 if [[ "${_ffsrcver}" =~ .+\..+\..+ ]]; then
   _srcver="${_ffsrcver}"
@@ -23,6 +22,7 @@ else
 fi
 _ffsrcver="${_ffsrcver%b*}"
 pkgver="${_srcver}.${_lwrelver}"
+pkgrel=1
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
@@ -198,6 +198,17 @@ prepare() {
   ## </srcprep>
 
   cd $_srcdir
+
+  if [[ "${_ffsrcvername%%.*}" -lt 149  ]]; then
+    # Fix build with glibc 2.43
+    # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
+    patch -B .patchorigin -Np1 -i ../../0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+    patch -B .patchorigin -Np1 -i ../../0002-Use-wasm32-wasip1-target.patch
+    xzcat ../../0003-update-rust-bindgen-to-fix-clang22-build.patch.xz | patch -B .patchorigin -Np1
+    xzcat ../../0004-skia-m142-update.patch.xz | patch -B .patchorigin -Np1
+    patch -B .patchorigin -Np1 -i ../../0005-cbindgen-0_29_4.patch
+  fi
+
   mv -b mozconfig ../mozconfig || true
 
   cat >>../mozconfig <<END
@@ -264,14 +275,6 @@ else
 ac_add_options --enable-lto=cross
 END
 fi
-
-  # Fix build with glibc 2.43
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
-  patch -B .patchorigin -Np1 -i ../../0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
-  patch -B .patchorigin -Np1 -i ../../0002-Use-wasm32-wasip1-target.patch
-  xzcat ../../0003-update-rust-bindgen-to-fix-clang22-build.patch.xz | patch -B .patchorigin -Np1
-  xzcat ../../0004-skia-m142-update.patch.xz | patch -B .patchorigin -Np1
-  patch -B .patchorigin -Np1 -i ../../0005-cbindgen-0_29_4.patch
 }
 
 
