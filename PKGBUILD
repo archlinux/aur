@@ -15,13 +15,15 @@ pkgdesc='Programming environment for creating images, animations and interaction
 url='https://www.processing.org/'
 license=(GPL LGPL)
 depends=('java-environment-openjdk=17' ffmpeg bash glibc mesa libdrm libx11 libxi libxrandr libxrender libxcursor libxxf86vm zlib)
-makedepends=(gradle8)
+makedepends=(gradle)
 options=(!strip)
 source=("https://github.com/processing/processing4/archive/processing-$_build-$pkgver.tar.gz"
 	    'disable_update_check.patch'
+	    'fix_gradle9_compatibility.patch'
 	    'no_jdk_download.patch')
 sha256sums=('c196c47f86f18da23276688ce41750d9e1005aac65e7aa2b161ab7d12252f41f'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
+            '3ea1b137b198047fa09febe37e86a5cc98978bcc6ee4b85bfcb2512dec708846'
             '603378fb933f4e15301e74426e5c877f5ad65dfc51d96819e1eaabfe4ff0baab')
 
 prepare() {
@@ -38,6 +40,9 @@ prepare() {
 
   # Symbolic link for not having to repeat the revision number
   ln -sf "${pkgbase}4-processing-$_build-$pkgver" "$pkgbase"
+
+  # Upgrade instructions to Gradle 9
+  patch "$pkgbase/app/build.gradle.kts" < fix_gradle9_compatibility.patch
 
   # Don't download JDK and JFX files during build process
   patch "$pkgbase/app/build.gradle.kts" < no_jdk_download.patch
@@ -57,7 +62,7 @@ build() {
       -e "s,<ICON_NAME>,processing-pde,g" build/linux/desktop.template > processing-pde.desktop
 
   # Build the application
-  JAVA_HOME="/usr/lib/jvm/java-17-openjdk" gradle8 createDistributable
+  JAVA_HOME="/usr/lib/jvm/java-17-openjdk" gradle createDistributable
 }
 
 package_processing() {
