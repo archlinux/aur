@@ -2,9 +2,9 @@
 pkgname=arbit-bin
 pkgver=0.5.1
 pkgrel=1
-pkgdesc="Harmonic composition workstation and MIDI editor"
+pkgdesc="DonutStudio (legacy codename: Arbit) — harmonic composition workstation and MIDI editor"
 arch=('x86_64')
-url="https://donutsdelivery.online/arbit"
+url="https://donutsdelivery.online/donutstudio"
 license=('custom')
 depends=(
   'alsa-lib'

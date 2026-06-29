@@ -8,12 +8,23 @@ post_install() {
   fi
 
   cat <<'EOF'
-Arbit installed.
+DonutStudio (legacy codename: Arbit) installed.
+
+NOTE: this package is the legacy codename. New users should install
+  'donutstudio-bin' instead — same engine binary, public-facing name.
+  You can remove this package with:
+    sudo pacman -Rns arbit-bin
+
 
 Run it from your application menu or with:
   arbit
 
-Plugin paths:
+(Equivalent to the donutstudio-bin package — same engine binary.
+ donutstudio-bin is the canonical package name going forward; this
+ one stays for backward compat until deprecated.)
+
+Plugin paths (legacy codename, install scripts do not rename for
+ the legacy package):
   VST3: /usr/lib/vst3/Arbit.vst3
   CLAP: /usr/lib/clap/Arbit.clap
 
