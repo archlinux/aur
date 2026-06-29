@@ -3,8 +3,8 @@
 pkgname=python-pyglet-git
 _name=${pkgname#python-}
 _name=${_name%-git}
-pkgver=2.1.8.r5.g59f4579f
-pkgrel=2
+pkgver=2.1.15.r1.g536b5cc0f
+pkgrel=1
 pkgdesc="A cross-platform windowing and multimedia library for Python"
 arch=('any')
 url="https://github.com/pyglet/pyglet"
@@ -32,12 +32,18 @@ optdepends=(
 )
 conflicts=('python-pyglet')
 provides=('python-pyglet')
-source=("${_name}::git+https://github.com/pyglet/pyglet.git")
+source=("${_name}::git+${url}")
 md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_name}"
 	git describe --long --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	git -C "${srcdir}/${_name}" clean -dfx
+	cd "$srcdir/${_name}"
+	sed -i 's|,<4||g' pyproject.toml
 }
 
 build() {

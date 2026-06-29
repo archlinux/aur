@@ -1,7 +1,7 @@
 pkgbase = python-pyglet-git
 	pkgdesc = A cross-platform windowing and multimedia library for Python
-	pkgver = 2.1.8.r5.g59f4579f
-	pkgrel = 2
+	pkgver = 2.1.15.r1.g536b5cc0f
+	pkgrel = 1
 	url = https://github.com/pyglet/pyglet
 	arch = any
 	license = BSD-3-Clause
@@ -21,7 +21,7 @@ pkgbase = python-pyglet-git
 	optdepends = openal: live audio
 	provides = python-pyglet
 	conflicts = python-pyglet
-	source = pyglet::git+https://github.com/pyglet/pyglet.git
+	source = pyglet::git+https://github.com/pyglet/pyglet
 	md5sums = SKIP
 
 pkgname = python-pyglet-git
