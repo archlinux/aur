@@ -28,6 +28,7 @@ pkgbase = desktop-plus-git
 	provides = github-desktop-plus
 	conflicts = desktop-plus
 	conflicts = github-desktop-plus
+	replaces = github-desktop-plus-git
 	source = desktop-plus-git::git+https://github.com/desktop-plus/desktop-plus.git
 	source = git+https://github.com/github/gemoji.git
 	source = git+https://github.com/github/gitignore.git

@@ -16,6 +16,7 @@ url="https://github.com/desktop-plus/desktop-plus"
 license=('MIT')
 provides=(${_pkgname} ${_old_pkgname})
 conflicts=(${_pkgname} ${_old_pkgname})
+replaces=("${_old_pkgname}-git")
 depends=(curl
          libcurl-gnutls
          git
