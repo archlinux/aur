@@ -1,7 +1,7 @@
 pkgbase = publishport-bin
 	pkgdesc = 让线上 AI 用你本机真实登录环境，一键发布内容到小红书/知乎/微博/B站/Twitter 等平台（GUI 客户端）
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgver = 0.1.3
+	pkgrel = 1
 	url = https://publishport.app
 	install = publishport-bin.install
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = publishport-bin
 	depends = libayatana-appindicator
 	provides = publishport
 	conflicts = publishport
-	noextract = publishport-0.1.2-amd64.deb
+	noextract = publishport-0.1.3-amd64.deb
 	options = !strip
-	source = publishport-0.1.2-amd64.deb::https://storage2.maoertech.cn/desktop/publishport-0.1.2-amd64.deb
-	sha256sums = e03904d73623d37f0bc08b75d97532055a30ca1549f437cd011b7a2cede2d585
+	source = publishport-0.1.3-amd64.deb::https://storage2.maoertech.cn/desktop/publishport-0.1.3-amd64.deb
+	sha256sums = 3611cc2ae51a55133a2dc91e1900d1af1e5d30f62f53099aeb55ff023cd5654f
 
 pkgname = publishport-bin
