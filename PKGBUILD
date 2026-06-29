@@ -2,8 +2,8 @@
 
 pkgname=python-browserstack-local
 _pkgname=browserstack-local
-pkgver=1.2.12
-pkgrel=2
+pkgver=1.2.15
+pkgrel=1
 pkgdesc='Python bindings for BrowserStack Local'
 arch=(any)
 url="http://github.com/browserstack/$_pkgname-python"
@@ -12,9 +12,9 @@ depends=(python
          python-psutil)
 makedepends=(python-{build,installer,wheel}
              python-setuptools)
-_archive="$_pkgname-$pkgver"
+_archive="${_pkgname/-/_}-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_archive.tar.gz")
-sha256sums=('7f890ec69d93a54336395d71f9b426d6cf46764bd013ddb9c6650e0b63883011')
+sha256sums=('0e9ac343d92a9ac2837f0fb51db89a76ccb46ffc23949351eda1b0306a7cfdf4')
 
 build() {
 	cd "$_archive"
