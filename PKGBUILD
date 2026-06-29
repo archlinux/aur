@@ -7,7 +7,7 @@
 
 
 _pkgname='desktop-plus'
-pkgname="github-desktop-plus"
+pkgname="${_pkgname}"
 pkgver=3.6.1.0
 pkgrel=1
 pkgdesc="GitHub Desktop fork with extra features and improvements."
