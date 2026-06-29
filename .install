@@ -1,0 +1,25 @@
+# Post-install script for animazed-bin
+
+post_install() {
+    msg2 "Updating icon cache..."
+    if [[ -x /usr/bin/gtk-update-icon-cache ]]; then
+        gtk-update-icon-cache -f /usr/share/icons/hicolor 2>/dev/null || true
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    msg2 "Stopping and disabling remote server service..."
+    systemctl --user stop animazed-remote-server.service 2>/dev/null || true
+    systemctl --user disable animazed-remote-server.service 2>/dev/null || true
+}
+
+post_remove() {
+    msg2 "Updating icon cache after removal..."
+    if [[ -x /usr/bin/gtk-update-icon-cache ]]; then
+        gtk-update-icon-cache -f /usr/share/icons/hicolor 2>/dev/null || true
+    fi
+}
