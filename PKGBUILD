@@ -1,5 +1,5 @@
 pkgname=rat-commander
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A self-contained Norton/Midnight-Commander-style TUI file manager"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -13,7 +13,7 @@ provides=('rc')
 # the final Rust link, causing "undefined symbol" errors (aws_lc_*, ZSTD_*).
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2643a1d1ddf77d7684e5bcae3bcd2d147b5bb6eeebd9b3befd100f3257e54383')
+sha256sums=('9bc965d749acd92b9f6402511672971e249e8fd19fbe35d3bc3e36ead2542701')
 
 prepare() {
 	cd "$pkgname-$pkgver"
