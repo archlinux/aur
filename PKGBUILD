@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=autolock
-pkgver=0.3
-pkgrel=2
+pkgver=0.4
+pkgrel=1
 pkgdesc='A minimal X11 idle-watcher'
 url='https://codeberg.org/ayari/autolock'
 arch=(
@@ -29,7 +29,7 @@ source=(
     'systemd-libs.patch'
 )
 sha256sums=(
-    'a48100dc7ba487ae1442a023dfed7f25e2ee6fd8c61716912fe51b04b0184f8e'
+    'e1643fb019bb441adadfc1a9d0659f53348e451adc7b193ba8d06bde933567c2'
     '66ae860a0f428979a551b3a95026e53897ee5ec68ab5e23ccdd86287e0883858'
 )
 
