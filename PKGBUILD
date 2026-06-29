@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=rockutil-git
-pkgver=r36.123597f
+pkgver=r46.96b14c6
 pkgrel=1
 pkgdesc="Most feature complete Rockchip SoC Flashing Utility"
 arch=($CARCH)
@@ -14,7 +14,11 @@ depends=(
   libusb
 )
 makedepends=(
+  aarch64-linux-gnu-binutils
   git
+  python
+  # AUR
+  arm-linux-gnueabihf-binutils
 )
 optdepends=()
 source=("${pkgname}::git+${url}.git")
