@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
-pkgver=2125.1.2
-pkgrel=3
+pkgver=2125.1.3
+pkgrel=1
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'graphviz' '
 	     'catch2' 'libinih' 'ffmpeg4.4' 'qt6-tools' 'boost')
 source=("$url/releases/download/${pkgver}/$pkgname-unified-source-$pkgver.tar.xz")
 install=${pkgname}.install
-sha256sums=('688db108137fa6f4c29b48b187325a622afef7e3147e5f0b83c6996d96f7328f')
+sha256sums=('e26502b03e17c8a261dcb4809d41825508b27073c2b40f91be83fe3594245de0')
 
 prepare() {
 	cd "$srcdir/$pkgname-unified-source-$pkgver"
@@ -46,6 +46,7 @@ build() {
 	-DUSE_SYSTEM_LIBUSB=ON \
 	-DUSE_SYSTEM_OPENAL=ON \
 	-DUSE_SYSTEM_OPENSSL=ON \
+	-DUSE_SYSTEM_QT=ON \
 	-DUSE_SYSTEM_SDL2=ON \
 	-DUSE_SYSTEM_SOUNDTOUCH=ON \
 	-DUSE_SYSTEM_VULKAN_HEADERS=ON \
