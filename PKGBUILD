@@ -2,7 +2,7 @@
 # Maintainer: sentinel-agent
 # Contributor: sentinel-agent
 pkgname=sentinelagent
-pkgver=25.3.1.6
+pkgver=26.1.1.31
 pkgrel=1
 pkgdesc="SentinelOne | Next-Generation Endpoint Protection Software."
 arch=('i686' 'x86_64')
@@ -10,17 +10,16 @@ url=""
 depends=('kmod' 'zlib')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("file://SentinelAgent_linux_x86_64_v25_3_1_6.deb")
-sha256sums_x86_64=('0f3c49a190b39c46706ae61789284823f4f0f85a27e822918e8f74f1c7984be7')
+source=("file://SentinelAgent_linux_x86_64_v${pkgver//./_}.deb")
+sha256sums=('207b67457332e57de244a4c80046a76a570ceeca6e84d8365a59e99cf7a27ed5')
 
 package(){
 
-	tar -xJ -f data.tar.xz -C "${pkgdir}"
+    tar -xJ -f data.tar.xz -C "${pkgdir}"
 
   install -D -m0644 ${pkgdir}/opt/sentinelone/configuration/sentinelone.service "${pkgdir}/usr/lib/systemd/system/sentinelone.service"
 
   mkdir -p ${pkgdir}/usr/bin/
-	ln -s /opt/sentinelone/bin/sentinelctl ${pkgdir}/usr/bin/sentinelctl
-
+    ln -s /opt/sentinelone/bin/sentinelctl ${pkgdir}/usr/bin/sentinelctl
 
 }
