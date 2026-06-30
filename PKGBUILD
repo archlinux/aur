@@ -4,7 +4,7 @@
 
 pkgname=beautysh
 pkgver=6.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Bash beautifier for the masses"
 arch=(
 	any
@@ -66,4 +66,16 @@ package() {
 	python -m installer --destdir "${pkgdir}" dist/beautysh-"${pkgver}"-*-none-any.whl
 
 	install -Dvm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	local python_constraints python_version
+
+	IFS=. read -r -a python_version < <(pacman -Q python | awk '{print $2}')
+	python_constraints=(
+		"python>=${python_version[0]}.${python_version[1]}"
+		"python<${python_version[0]}.$((python_version[1] + 1))"
+	)
+
+	depends+=(
+		"${python_constraints[@]}"
+	)
 }

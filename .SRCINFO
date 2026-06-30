@@ -1,7 +1,7 @@
 pkgbase = beautysh
 	pkgdesc = A Bash beautifier for the masses
 	pkgver = 6.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lovesegfault/beautysh
 	arch = any
 	license = MIT
@@ -20,3 +20,7 @@ pkgbase = beautysh
 	sha256sums = 2aceb602fa7e27dafd24d5bc480986e17870873c2827a2b8d720118cafac3018
 
 pkgname = beautysh
+	depends = python
+	depends = python-colorama
+	depends = python-editorconfig
+	depends = python-tomli
