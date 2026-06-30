@@ -1,6 +1,6 @@
 # Maintainer: Joschka Thurner <git@joschkathurner.de>
 pkgname=docker-sbx
-pkgver=0.33.0
+pkgver=0.34.0
 pkgrel=1
 pkgdesc="Docker sandboxes - run AI coding agents in isolated microVM sandboxes"
 arch=('x86_64')
@@ -15,8 +15,8 @@ optdepends=(
 provides=('sbx')
 conflicts=('sbx')
 options=('!debug')
-source=("https://github.com/docker/sbx-releases/releases/download/v${pkgver}/DockerSandboxes-linux.tar.gz")
-sha256sums=('decc0f69603e6c4bdd64e39e2a94636beb10aeff35dd3d44e07435ee6ddbf29d')
+source=("https://github.com/docker/sbx-releases/releases/download/v${pkgver}/DockerSandboxes-linux-amd64.tar.gz")
+sha256sums=('e47f4b3b22a2d3f481549d2577a3a470fd61f6bf5e1eb01be1fb1555574cbac8')
 
 package() {
     install -Dm755 "$srcdir/docker-sbx/sbx" \
