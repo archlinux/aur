@@ -1,6 +1,6 @@
 pkgbase = wayvr-actions-bin
 	pkgdesc = Your way to enjoy VR on Linux! Access your Wayland/X11 desktop from SteamVR/Monado (OpenVR+OpenXR, CI build)
-	pkgver = 28348029123
+	pkgver = 28447120434
 	pkgrel = 1
 	url = https://github.com/wayvr-org/wayvr
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = wayvr-actions-bin
 	conflicts = wayvr-git
 	replaces = wlx-overlay-s
 	options = !debug
-	source = wayvr-actions-bin-x86_64-28348029123.zip::https://nightly.link/wayvr-org/wayvr/actions/runs/28348029123/WayVR-main-x86_64.AppImage.zip
-	sha256sums = abb96527e07e4a8e85e93c411c4c28622302ab53d435c3e6b25e4520f96a0e12
+	source = wayvr-actions-bin-x86_64-28447120434.zip::https://nightly.link/wayvr-org/wayvr/actions/runs/28447120434/WayVR-main-x86_64.AppImage.zip
+	sha256sums = dc70ecad796cab5041c60d71e06c96d3b1ecda5a3dae5927e12f445bde77f3bc
 
 pkgname = wayvr-actions-bin
