@@ -70,4 +70,9 @@ package() {
   rm -f "$pkgdir/usr/share/applications/nemo-autostart.desktop" 2>/dev/null || true
   rm -f "$pkgdir/usr/share/applications/nemo-autorun-software.desktop" 2>/dev/null || true
   rm -f "$pkgdir/etc/xdg/autostart/nemo-autostart.desktop" 2>/dev/null || true
+
+  # Disable GTK portal usage - use native file chooser (Dory) instead
+  install -Dm644 /dev/stdin "$pkgdir/etc/profile.d/gtk-no-portal.sh" << 'EOF'
+export GTK_USE_PORTAL=0
+EOF
 }
