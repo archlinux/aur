@@ -1,8 +1,8 @@
 # Maintainer: TheFeelTrain <the@feeltra.in>
 
 pkgname=vsview-plugins-all
-pkgver=1.0
-pkgrel=2
+pkgver=2
+pkgrel=1
 pkgdesc='Meta package to install all vsview plugins'
 arch=(any)
 license=(None)
@@ -14,4 +14,5 @@ depends=(
     'vsview-fftspectrum'
     'vsview-audio-convert'
     'vsview-nativeres'
+    'vsview-histogram'
 )
