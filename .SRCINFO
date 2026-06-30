@@ -1,6 +1,6 @@
 pkgbase = python-pycaption
 	pkgdesc = Python module to read/write popular video caption formats
-	pkgver = 2.2.24
+	pkgver = 2.2.25
 	pkgrel = 1
 	url = https://github.com/pbs/pycaption
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-pycaption
 	depends = python-beautifulsoup4
 	depends = python-lxml
 	depends = python-cssutils
-	source = python-pycaption-2.2.24.tar.gz::https://github.com/pbs/pycaption/archive/2.2.24.tar.gz
-	sha512sums = 4ad87a0f03906c49e01f6f3f67f72859fd0f4b1ded821f668a001fec631ee0f5f7fc7865c8acab67f5f9675e47c8fd0f8b6f2aa11ae6a279a360a6d395debdda
+	source = python-pycaption-2.2.25.tar.gz::https://github.com/pbs/pycaption/archive/2.2.25.tar.gz
+	sha512sums = 26c7c5d09e9efe07452a2470df380e38e314361be31011b9c1b23d01a059313d19769ecdd32083eb550353e8f1002fbb7cf8325bd1ee003038535e6fb323cd71
 
 pkgname = python-pycaption
