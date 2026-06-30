@@ -4,9 +4,5 @@ pkgbase = git.gay
 	pkgrel = 1
 	url = https://git.gay
 	arch = x86_64
-	license = MIT
-	depends = fuse2
-	source = git.gay-1.0.1.AppImage::https://git.gay/Ri/unofficial-desktop-app/releases/download/1.0.1/git.gay-1.0.1.AppImage
-	sha256sums = 826a60830dcde0db1a906c8fa834666e7684e19cc87d0fa70146c4c0af4a1c86
 
 pkgname = git.gay
