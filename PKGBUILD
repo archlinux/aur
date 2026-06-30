@@ -9,7 +9,7 @@
 _pkgname='desktop-plus'
 _old_pkgname='github-desktop-plus'
 pkgname="${_pkgname}"
-pkgver=3.6.1.1
+pkgver=3.6.2.0
 pkgrel=1
 pkgdesc="GitHub Desktop fork with extra features and improvements."
 arch=('x86_64' 'aarch64')
@@ -47,7 +47,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'ccf8e189b15a46a00363c7a40299762ef313827aa4809140f7940c5801db2e27'
-            'b9c24de9a78b4e4d444cb0ba38817b13acd87c514dd64dd30fce2593e34a11cf')
+            '80adbdb3c6f82f3782604f7590b0f137d937dcba3d8aa1b29836c89abb58f851')
 
 _deobfuscate() {
     echo "$1" | rev | tr -d '@'
@@ -95,9 +95,11 @@ package() {
     cp -r --preserve=mode "dist/desktop-plus-linux-$suffix/"* "$INSTALL_DIR/"
 
     cd "$INSTALL_DIR/resources/app/static/logos"
-    install -Dm0644 "1024x1024.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png"
-    install -Dm0644 "512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
-    install -Dm0644 "256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
+    # Icon is named "gh-desktop-plus" rather than "desktop-plus" to avoid the freedesktop dash-stripping fallback
+    # ('desktop' exists in many icon themes, so that icon would be used instead of ours).
+    install -Dm0644 "1024x1024.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/gh-desktop-plus.png"
+    install -Dm0644 "512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/gh-desktop-plus.png"
+    install -Dm0644 "256x256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/gh-desktop-plus.png"
 
     install -Dm755 "$srcdir/launch-app.sh" "$pkgdir/usr/bin/${_pkgname}"
 
