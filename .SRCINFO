@@ -1,0 +1,20 @@
+pkgbase = Kun
+	pkgdesc = AI agent workspace with Code and Write modes - Electron client
+	pkgver = 0.2.20
+	pkgrel = 1
+	url = https://github.com/KunAgent/Kun
+	arch = x86_64
+	license = custom:PolyForm-Noncommercial-1.0.0
+	makedepends = npm
+	makedepends = nodejs>=20
+	makedepends = python
+	depends = electron34
+	optdepends = libxss: screen saver inhibit support
+	optdepends = libappindicator-gtk3: system tray support on GTK-based DEs
+	conflicts = kun-gui
+	replaces = kun-gui
+	options = !strip
+	source = Kun-0.2.20.tar.gz::https://github.com/KunAgent/Kun/archive/refs/tags/v0.2.20.tar.gz
+	sha256sums = 2615e45f556f99e5756d986bd214838153f021a3bb46d0bcae3a10ff7fb7a53e
+
+pkgname = Kun
