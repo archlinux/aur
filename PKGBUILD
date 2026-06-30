@@ -34,7 +34,7 @@ optdepends=('blueman: Bluetooth support'
 conflicts=('cinnamon' 'nemo')
 provides=("cinnamon=$pkgver")
 backup=('etc/xdg/cinnamon-session/sessions/cinnamon.session')
-source=("cinnamon-6.6.8-1-x86_64.pkg.tar.zst"
+source=("https://archlinux.org/packages/extra/x86_64/cinnamon/download"
         'cinnamon.session')
 sha256sums=('SKIP'
             'SKIP')
