@@ -1,5 +1,5 @@
 pkgbase = jetbrains-air
-	pkgver = 262.43.30
+	pkgver = 262.43.32
 	pkgrel = 1
 	url = https://air.dev/
 	arch = x86_64
@@ -7,10 +7,10 @@ pkgbase = jetbrains-air
 	license = custom:jetbrains
 	depends = glib2
 	options = !strip
-	source = https://download.jetbrains.com/air/installers/linux_x64/Air-262.43.30.tar.gz
+	source = https://download.jetbrains.com/air/installers/linux_x64/Air-262.43.32.tar.gz
 	source = jetbrains-air.desktop
 	source = LICENSE
-	b2sums = 7788f20f7e90834291b647a5332b94cd309e68621d8004cd77029d692e8480982be054914f792b0a057e7269de8de8c255fd9fba2449eb72db95ab415fd6eb41
+	b2sums = 577fe995541b873d0ea0a573717a663c6f1b985acea52ccb540326d007f0ec072502c80309e7e978fe914da363a9854e5f8643ee19bb97b21b8f85d519b0685b
 	b2sums = f9b91c558db8c82ac97ceb66219f1f9dae86834843b2a5fcc1f1029c217a91877dafc81e73b0fa8e6b86f485d75611fbfe252adb275fe055c129cdbf0c392424
 	b2sums = dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77
 
