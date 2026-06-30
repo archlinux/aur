@@ -8,8 +8,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Tamim180/mcsh/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a90aa64f166e9023e8ac1dcf56679a68303ad67ad4672763936d9294a7c387c3')
-
+sha256sums=('f2c0c7b2da7ede54748cce2550eed1f39641e7eb0667f12f76277eec478f1b9d')
 build() {
     cd "$srcdir/$pkgname-$pkgver"
     cargo build --release --locked
