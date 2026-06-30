@@ -1,7 +1,7 @@
 pkgbase = bitcoin-knots
 	pkgdesc = enhanced Bitcoin node/wallet software
 	pkgver = 29.3.knots20260508
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitcoinknots.org
 	arch = x86_64
 	groups = bitcoin

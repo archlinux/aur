@@ -1,7 +1,7 @@
 # Maintainer: Léo Haf <leo@haf.ovh>
 pkgname=bitcoin-knots
 pkgver=29.3.knots20260508
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="enhanced Bitcoin node/wallet software"
 arch=(x86_64)
@@ -40,4 +40,6 @@ package() {
 	install -Dm755 doc/man/{bitcoin-cli.1,bitcoin-tx.1,bitcoin-util.1,bitcoin-wallet.1,bitcoind.1} "${pkgdir}/usr/share/man/man1/"
 	
 	install -Dm644 share/examples/bitcoin.conf "${pkgdir}/etc/bitcoin/bitcoin.conf"
+	
+	install -Dm644 contrib/init/bitcoind.service "${pkgdir}/etc/systemd/system/bitcoind.service"
 }
