@@ -1,12 +1,11 @@
 # Maintainer: Klaus Voelker <kavaunix@proton.me>
 pkgname=atrium
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Wayland multiseat display manager"
 arch=('x86_64')
 url="https://github.com/kavau/atrium"
 license=('GPL-2.0-or-later')
-install=atrium.install
 
 # Runtime dependencies.
 depends=(
@@ -16,7 +15,7 @@ depends=(
     'cage'
 )
 
-# Build-only dependencies.  pkg-config is already in base-devel.
+# Build-only dependencies (pkg-config is already in base-devel).
 makedepends=('meson' 'ninja')
 
 # Config files that pacman should not silently overwrite on upgrade.
@@ -27,16 +26,17 @@ backup=(
     'etc/pam.d/atrium'
 )
 
+# Post-install script (only prints post-installation instructions).
+install=atrium.install
+
 # The source tarball from the GitHub release.
 # The ::URL syntax renames the downloaded file to $pkgname-$pkgver.tar.gz
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/kavau/atrium/archive/refs/tags/v$pkgver.tar.gz"
     "atrium.install"
 )
-sha256sums=(
-    'b0728a225d89676841c32675739f86859b908df63fd820c194d5ff5ea5a9e160'
-    'a16d8e75fa4297285d014a60a67af4b861bf2231db4f14eb51d0aa7f93653c92'
-)
+sha256sums=('b854423bb46142ccda6f419aab6530eb2b1e48e074b097f9f8eab40ae205765d'
+            'a21c5a87f112a673c3338ade5732be4cde908c9c7ef7a851d52c517abaf8faf1')
 
 build() {
     cd "$pkgname-$pkgver"
