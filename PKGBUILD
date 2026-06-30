@@ -1,7 +1,7 @@
 pkgname=rat-commander
-pkgver=0.9.0
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="A self-contained Norton/Midnight-Commander-style TUI file manager"
+pkgdesc="A self-contained 2-panel terminal file manager with modern feartures like truecolor support and many built-in system tools."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/dividebysandwich/rat-commander"
 license=('GPL2')
@@ -13,7 +13,7 @@ provides=('rc')
 # the final Rust link, causing "undefined symbol" errors (aws_lc_*, ZSTD_*).
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a36c72b8cb8f24f09bdd440c99d6e680ab5d8c3a2ffa902e5e707ddc851cce34')
+sha256sums=('11c479f3e5a3af764f53dfea1e164a66511a040baefbce1ced3147c40a256b82')
 
 prepare() {
 	cd "$pkgname-$pkgver"
