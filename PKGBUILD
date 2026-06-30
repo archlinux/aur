@@ -3,14 +3,14 @@
 
 pkgname=clonehero-ptb
 pkgver=1.1.0.6142
-pkgrel=0
+pkgrel=1
 pkgdesc=\
 'Clone Hero is a free rhythm game, which can be played with any 5 or 6 button '\
 'guitar controller, game controllers, or just your standard computer keyboard.'
 arch=('x86_64')
 url='https://clonehero.net/'
 license=('freeware-proprietary')
-depends=('gtk2' 'opengl-driver' 'sdl2')
+depends=('opengl-driver' 'sdl2')
 optdepends=(
 	'discord: Discord rich presence support'
 	'vulkan-driver: Vulkan graphics mode'
