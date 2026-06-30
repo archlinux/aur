@@ -1,6 +1,6 @@
 # Maintainer: Dheeraj Vittal Shenoy <dheerajshenoy22@gmail.com>
 pkgname=lektra-git
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=0
 pkgdesc="High-performance document and image viewer that prioritizes screen space and control."
 arch=('x86_64')
