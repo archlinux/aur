@@ -1,0 +1,12 @@
+diff -aur c-old/shortcut.c c-new/shortcut.c
+--- c-old/shortcut.c	2026-06-30 09:03:06.709621584 +0200
++++ c-new/shortcut.c	2026-06-30 09:02:14.901940504 +0200
+@@ -35,7 +35,7 @@
+ #define BUFFER_SIZE 1000
+ 
+ #ifndef PAGES_DIR
+-    #define PAGES_BASE_DIR "/opt/shortcut/pages/"
++    #define PAGES_BASE_DIR "/usr/share/shortcut/pages/"
+ #else
+     #define PAGES_BASE_DIR PAGES_DIR
+ #endif

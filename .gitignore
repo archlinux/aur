@@ -1,1 +1,6 @@
-*/**
+*/*
+!*.patch
+!PKGBUILD
+!.SRCINFO
+src/*
+
