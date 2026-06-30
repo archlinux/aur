@@ -16,6 +16,30 @@
      typedef ::SplashBitmap Bitmap;
 --- src/pdf2djvu-0.9.19/pdf-backend.cc
 +++ src/pdf2djvu-0.9.19/pdf-backend.cc
+@@ -163,7 +163,11 @@ static void cmyk_to_rgb(const double cmyk[], double rgb[])
+   pdf::gfx::RgbColor rgb_cc;
+   for (int i = 0; i < 4; i++)
+     cmyk_cc.c[i] = pdf::gfx::double_as_color_component(cmyk[i]);
++#if POPPLER_VERSION >= 260600
++  cmyk_space.getRGB(cmyk_cc, &rgb_cc);
++#else
+   cmyk_space.getRGB(&cmyk_cc, &rgb_cc);
++#endif
+   rgb[0] = pdf::gfx::color_component_as_double(rgb_cc.r);
+   rgb[1] = pdf::gfx::color_component_as_double(rgb_cc.g);
+   rgb[2] = pdf::gfx::color_component_as_double(rgb_cc.b);
+@@ -175,7 +175,11 @@ -static bool annotations_callback(pdf::ant::Annotation *annotation, void *user_data)
+   std::string border_color;
+   if (annotation->getType() != pdf::ant::Annotation::typeLink)
+     return true;
++#if POPPLER_VERSION >= 260600
++  const pdf::ant::Color *color = annotation->getColor();
++#else
+   pdf::ant::Color *color = annotation->getColor();
++#endif
+   if (color == nullptr)
+   {
+     border_colors.push_back("");
 @@ -411,7 +411,11 @@ pdf::Metadata::Metadata(pdf::Document &document)
      char tzs = 0; int tzh = 0, tzm = 0;
      if (!pdf::dict_lookup(info_dict, field.first, &object)->isString())
