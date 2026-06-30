@@ -1,5 +1,5 @@
 pkgname=dogma
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Bridges secrets from vault backends and infrastructure outputs into sops-encrypted files deployed to NixOS machines"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ depends=('glibc')
 makedepends=('rust')
 
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/x71c9/$pkgname/tar.gz/refs/tags/v$pkgver")
-sha256sums=("faf684a608e3b49794ad5ba5f2104daaf508385b2a680a7bc56e1befdd48b440")
+sha256sums=("2a0cdd30ab2d88f3ffc40c2cd313e3920c954d349a85da3a9c52177ae69c247e")
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -23,6 +23,7 @@ build() {
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
+
 package() {
   cd "$pkgname-$pkgver"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/dogma"
