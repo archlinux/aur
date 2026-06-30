@@ -1,0 +1,22 @@
+pkgbase = secfesc-git
+	pkgdesc = Lightweight security state inspector for Linux (secfetch + secscan)
+	pkgver = 1.7.0.r0.gXXXXXXX
+	pkgrel = 1
+	url = https://github.com/ake13-art/secfesc
+	arch = any
+	license = GPL3
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-mock
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = secfesc
+	conflicts = secfesc
+	source = secfesc-git::git+https://github.com/ake13-art/secfesc.git
+	sha256sums = SKIP
+
+pkgname = secfesc-git
