@@ -1,6 +1,6 @@
 # Maintainer: Trần Xuân Nhật  <xuannhat123456789@gmail.com>
 pkgname=gytm-git
-pkgver=r111.5b969cc
+pkgver=r139.c7252fb
 pkgrel=2
 pkgdesc="Minimal TUI based music streaming app for Youtube Music"
 arch=('x86_64')
