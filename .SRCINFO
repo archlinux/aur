@@ -1,7 +1,7 @@
 pkgbase = redot-bin
 	pkgdesc = A multi-platform 2D and 3D game engine
 	pkgver = 26.2.stable.lts
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Redot-Engine/redot-engine
 	arch = x86_64
 	license = MIT
@@ -21,7 +21,6 @@ pkgbase = redot-bin
 	depends = libxi
 	depends = libxinerama
 	depends = libxrandr
-	depends = mbedtls2
 	depends = miniupnpc
 	depends = pcre2
 	optdepends = pipewire-alsa: for audio support

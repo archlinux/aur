@@ -3,14 +3,14 @@
 _pkgname="redot"
 pkgname=${_pkgname}-bin
 pkgver=26.2.stable.lts
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform 2D and 3D game engine"
 arch=('x86_64')
 url="https://github.com/Redot-Engine/redot-engine"
 license=('MIT')
 depends=(embree3 freetype2 graphite harfbuzz harfbuzz-icu libglvnd libspeechd
     libsquish libtheora libvorbis libwebp libwslay libxcursor libxi
-    libxinerama libxrandr mbedtls2 miniupnpc pcre2)
+    libxinerama libxrandr miniupnpc pcre2)
 optdepends=('pipewire-alsa: for audio support'
     'pipewire-pulse: for audio support')
 source=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-26.2-stable/Redot_v26.2-stable_linux_x64.zip")
