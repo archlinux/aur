@@ -2,7 +2,7 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='motoko-bin'
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Based on Go modules, update a dependency to a major version.'
 url='https://github.com/ldez/motoko'
@@ -11,17 +11,17 @@ license=('APACHE')
 provides=('motoko')
 conflicts=('motoko')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ldez/motoko/releases/download/v0.4.0/motoko_v0.4.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('27cd2cb73c286131c2c88654c2ae760b5be2e71f2dfe9817af310d41bd1cfe24')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ldez/motoko/releases/download/v${pkgver}/motoko_v${pkgver}_linux_arm64.tar.gz")
+sha256sums_aarch64=('c4898aae2f600aaf3d53fe8c874cfe511d510fadc58b35bbdc9695df57fe7baa')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/ldez/motoko/releases/download/v0.4.0/motoko_v0.4.0_linux_armv7.tar.gz")
-sha256sums_armv7h=('91cb53b5dd7be45d7e037da1d0dd4da413108335349d4fa9074e1cf6974f91d2')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/ldez/motoko/releases/download/v${pkgver}/motoko_v${pkgver}_linux_armv7.tar.gz")
+sha256sums_armv7h=('57a5da5f7a9028895207bd48141428e5ea9c9ecae2826ac7437dbd3f1b554f38')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/ldez/motoko/releases/download/v0.4.0/motoko_v0.4.0_linux_386.tar.gz")
-sha256sums_i686=('4da73faf1b45b24e5275d84ebec88947f8a08bad537bff53a4dc90aefba20893')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/ldez/motoko/releases/download/v${pkgver}/motoko_v${pkgver}_linux_386.tar.gz")
+sha256sums_i686=('4683a05fe35e82410083379e55870a40ee8f0b8de9a17757dd039568a312a465')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ldez/motoko/releases/download/v0.4.0/motoko_v0.4.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('287dff720d8377c1c496c9309348dd2f7e797b8314a01f7500b90992a78101d9')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ldez/motoko/releases/download/v${pkgver}/motoko_v${pkgver}_linux_amd64.tar.gz")
+sha256sums_x86_64=('5b5f526fd5933ccb91191ee3f080fdede6757ea1b263fe34972fa179ac445b47')
 
 package() {
   # Bin
