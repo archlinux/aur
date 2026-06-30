@@ -2,7 +2,7 @@
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
 pkgname=clonehero-ptb
-pkgver=1.1.0.5684
+pkgver=1.1.0.6142
 pkgrel=0
 pkgdesc=\
 'Clone Hero is a free rhythm game, which can be played with any 5 or 6 button '\
@@ -19,13 +19,13 @@ optdepends=(
 )
 conflicts=('clonehero')
 source=(
-	"clonehero-linux_$pkgver.tar.xz::https://github.com/clonehero-game/releases/releases/download/v$pkgver-PTB/Linux.x86_64-Standalone.tar.xz"
+	"clonehero-linux_$pkgver.tar::https://github.com/clonehero-game/releases/releases/download/v$pkgver-final/Linux.x86_64-Standalone.tar"
 	'clonehero.desktop'
 	'clonehero.install'
 	'clonehero'
 )
 sha256sums=(
-	'739dbbad3405f07c7f4862552570251fdc6f17ba23fc77e36923f660e0beee5e'
+	'572971d93092283c5d0d52006a26b52ab8e8fb128dcfb42a3496de26c8aa231d'
 	'6d6d3e8e08ba65fedcc07a2d4ef8d5f6eabd4aec20dbc7e0febc6d58faff72bf'
 	'ed18ad9cc13b7a4b9b15a68ed9d2e0cb0a689bb85fecc33307b1c6da3ef1bbc0'
 	'e152f18dc38f47c0b0c52ff4227c7daa2fa5251fdf7f86683df1cd8274b24cb6'
@@ -39,7 +39,7 @@ options=(!strip)
 package() {
 	install -Dm644 clonehero.desktop "$pkgdir/usr/share/applications/clonehero.desktop"
 	install -Dm755 clonehero "$pkgdir/usr/bin/clonehero"
-	cd "$srcdir/Linux.x86_64-Standalone" || exit 1
+	cd "$srcdir/Linux - Standalone" || exit 1
 	find . -type f -exec install -Dm644 '{}' "$pkgdir/opt/clonehero/{}" \;
 	chmod +x "$pkgdir/opt/clonehero/clonehero"
 	install -Dm644 'clonehero_Data/Resources/UnityPlayer.png' "$pkgdir/usr/share/pixmaps/clonehero.png"
