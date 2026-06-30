@@ -1,5 +1,5 @@
 pkgname=mcsh
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A Minecraft-inspired Linux shell written in Rust"
 arch=('x86_64')
