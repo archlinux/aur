@@ -1,24 +1,22 @@
 # Maintainer: Flinner Yuu <flinner @ tilde DOT team>
 pkgname='jank-bin'
-# package is always version 0.1-1 (until stable release). So I use date of .deb package
+# package is always version 0.1-1 (until stable release). So I use date of the tarball.
 pkgver=20250914
 pkgrel=1
-pkgdesc="The native Clojure dialect hosted on LLVM with seamless C++ interop. Debain package."
+pkgdesc="The native Clojure dialect hosted on LLVM with seamless C++ interop."
 arch=('x86_64')
 url="https://jank-lang.org/"
 license=('MPL-2.0')
-options=()
-# We require `libxml2-legacy` instead of `libxml2` because the .deb package uses
-# old deps...
-depends=('gcc' 'libzip' 'lbzip2' 'libxml2-legacy' 'libedit' 'python3') # TODO ???
-makedepends=('patchelf')
+options=(!strip)
+depends=('gcc' 'libzip' 'lbzip2' 'libxml2' 'libedit' 'python3' 'boost')
+makedepends=()
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-source=('https://ppa.jank-lang.org/jank_0.1-1_amd64.deb')
+source=('https://cache.jank-lang.org/arch/jank-arch-x86-64.tar.gz')
 sha256sums=('SKIP')
 
 pkgver() {
-    local last_modified=$(curl -sI --head "https://ppa.jank-lang.org/jank_0.1-1_amd64.deb" | grep -i '^Last-Modified:' )
+    local last_modified=$(curl -sI --head "https://cache.jank-lang.org/arch/jank-arch-x86-64.tar.gz" | grep -i '^Last-Modified:' )
 
     if [[ -n "$last_modified" ]]; then
         # Extract date part: "Sun, 14 Sep 2025 02:22:18 GMT"
@@ -31,33 +29,6 @@ pkgver() {
 }
 
 package() {
-    cd "$srcdir"
-    tar xf data.tar.zst -C "$pkgdir"
-    find "$pkgdir" -type d -empty -delete 2>/dev/null || true
-
-    # move /usr/local to /usr/
-    mv "$pkgdir/usr/local/"* "$pkgdir/usr/"
-    rm -r "$pkgdir/usr/local"
-
-    local bin="$pkgdir/usr/bin/${pkgname%-bin}"
-
-    declare -A LIB_MAP=(
-        ["libzip.so.4"]="libzip.so.5"
-    )
-
-
-
-  # Patch each known missing library
-  for lib in "${!LIB_MAP[@]}"; do
-    target="${LIB_MAP[$lib]}"
-    if ldd "$bin" 2>/dev/null | grep "$lib => not found"; then
-      echo "Patching $lib -> $target"
-      patchelf --replace-needed "$lib" "$target" "$bin" || {
-        echo "Failed to patch $lib to $target" >&2
-        return 1
-      }
-    else
-      echo "$lib is not missing - skipping."
-    fi
-  done
+  install -d "$pkgdir/usr"
+  cp -a "$srcdir/inst/usr/local/." "$pkgdir/usr/"
 }
