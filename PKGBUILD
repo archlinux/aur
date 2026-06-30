@@ -3,7 +3,7 @@
 _pkgname=liboqs
 pkgname=$_pkgname-git
 pkgver=0.16.0.rc1.r0.gaa294f5
-pkgrel=1
+pkgrel=2
 pkgdesc="C library for prototyping and experimenting with quantum-resistant cryptography"
 arch=(x86_64)
 url="https://openquantumsafe.org/liboqs/"
@@ -45,7 +45,7 @@ build() {
         -DOQS_DIST_BUILD=ON \
         -DOQS_USE_OPENSSL=ON \
         -DOQS_MEMOPT_BUILD=OFF \
-        -DOQS_DLOPEN_OPENSSL=ON \
+        -DOQS_DLOPEN_OPENSSL=OFF \
         -DOQS_USE_AES_OPENSSL=ON \
         -DOQS_USE_SHA2_OPENSSL=ON \
         -DOQS_USE_SHA3_OPENSSL=ON \
