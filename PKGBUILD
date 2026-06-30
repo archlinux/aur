@@ -2,7 +2,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='tinct-bin'
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Generate colour palettes from images and apply system-wide theming'
 url='https://github.com/jmylchreest/tinct'
@@ -12,13 +12,13 @@ provides=('tinct')
 conflicts=('tinct')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v${pkgver}/tinct_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('8d857289b3e60bc4497e30ec7456217d7aff410d23d3116d7c03a9c131488741')
+sha256sums_aarch64=('d16afaab50f00a91060bb493f9b33a7fb7aa08cc2f630ad43414a5625eda45c9')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v${pkgver}/tinct_${pkgver}_Linux_armv7.tar.gz")
-sha256sums_armv7h=('46671f74fc8e0765338055b874105a308de5c060bf6e3f7d5f68f9478ee4c3a4')
+sha256sums_armv7h=('0c75e71d226f646d5a3f7b5638daa5544c7fcc1921b991751b22b4dbb6bfd3a2')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v${pkgver}/tinct_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('ef18e9a6ffe1abc5b7606b051ccfb23f89b1377234aa4c16faba41504db68b60')
+sha256sums_x86_64=('2b7d8d2ea8167c9a8ee5704643e1aa24089b0b82827d20c1c993f66134a59e2f')
 
 package() {
   # bin
