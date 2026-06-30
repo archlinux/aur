@@ -1,7 +1,7 @@
 # Maintainer: SLIGHTLKE <SLIGHTLKE@outlook.com>
 pkgname=steam-appimage
 pkgver=1.0.0.86.1
-pkgrel=6
+pkgrel=1
 pkgdesc="Steam package based on AppImage"
 arch=('x86_64')
 url="https://github.com/ivan-hc/Steam-appimage"
