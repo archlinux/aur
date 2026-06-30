@@ -1,0 +1,20 @@
+pkgbase = jbrowse-desktop-git
+	pkgdesc = JBrowse 2 — pluggable open-source genome browser (desktop Electron app, git version)
+	pkgver = 4.3.0.r11311.g76002d07d6
+	pkgrel = 1
+	url = https://jbrowse.org/jb2/
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = pnpm
+	makedepends = nodejs
+	depends = electron42
+	depends = hicolor-icon-theme
+	provides = jbrowse-desktop
+	conflicts = jbrowse-desktop
+	options = !strip
+	options = !debug
+	source = jbrowse-desktop::git+https://github.com/GMOD/jbrowse-components.git
+	sha256sums = SKIP
+
+pkgname = jbrowse-desktop-git
