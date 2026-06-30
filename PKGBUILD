@@ -1,14 +1,14 @@
 # Maintainer: Alex Flierl <shad0w73 at freenet dot de>
 
 _gitlab='https://gitlab.alpinelinux.org'
-_gitlab_api_path="${_gitlab}/api/v4/projects/1/repository/files/testing%2Fadguardhome%2F"
-_commit=3be504af77e6a5c639dc6111a4624d2f40f8991f
+_gitlab_api_path="${_gitlab}/api/v4/projects/1/repository/files/community%2Fadguardhome%2F"
+_commit=2c7287604b232997acec822780e359cd4ca11452
 pkgname=adguardhome-openrc
 pkgver=20250416
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenRC adguardhome init script'
 arch=('any')
-url="${_gitlab}/alpine/aports/-/tree/master/testing/adguardhome"
+url="${_gitlab}/alpine/aports/-/tree/master/community/adguardhome"
 # See https://gitlab.alpinelinux.org/alpine/aports/-/issues/9074
 license=('unknown')
 depends=('openrc' 'adguardhome')
