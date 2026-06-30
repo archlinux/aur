@@ -1,7 +1,7 @@
 pkgbase = python-torchao-rocm
 	pkgdesc = Package for applying ao techniques to GPU models (with ROCm/HIP support)
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pytorch.org/ao/stable/index.html
 	arch = x86_64
 	license = BSD-3-Clause
