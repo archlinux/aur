@@ -1,6 +1,6 @@
 # Maintainer: inventory69 <inventory69@users.noreply.github.com>
 pkgname=simple-notes-desktop-bin
-pkgver=0.8.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Cross-platform note-taking app with WebDAV sync, built with Tauri"
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=('simple-notes-desktop')
 conflicts=('simple-notes-desktop' 'simple-notes-desktop-git')
 options=('!strip')
 source=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Simple.Notes.Desktop_${pkgver}_amd64.deb")
-sha256sums=('27c261d42a905affb90f5fb97db3bbb10e9faa6a7d3935949566f55773125450')
+sha256sums=('a2f8eae51b76f403f5ce41f1301ab80bc3a31bfd3a30c1b87a8a32f4ba6bf5bd')
 
 package() {
   # Extract data from deb package
