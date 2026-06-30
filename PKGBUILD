@@ -1,10 +1,10 @@
 # Maintainer: motorrin
 pkgname=arch-smart-update
 pkgver=3.16.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Not sure when to update Arch Linux or its derivative? This script will help you decide."
 arch=('any')
-url="https://github.com/motorrin/Arch_Smart_Update"
+url="https://github.com/motorrin/arch_smart_update"
 license=('MIT')
 depends=('bash' 'python' 'pacman' 'tar' 'gawk' 'coreutils' 'curl' 'zstd')
 optdepends=(
