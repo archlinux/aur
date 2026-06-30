@@ -1,15 +1,15 @@
 # Maintainer: NewYearPrism
 
-_stable_diffusion_cpp_tag=master-721-8caa3f9
-_stable_diffusion_cpp_version=721
+_stable_diffusion_cpp_tag=master-738-f027107
+_stable_diffusion_cpp_version=738
 _stable_diffusion_cpp_commit=${_stable_diffusion_cpp_tag##*-}
 _ggml_version=0.15.3
-_stable_diffusion_cpp_sha256sum=d791d712a247937112a5140ebc2e6c1e84dc0b3305d7171edac9e08b50f6778a
+_stable_diffusion_cpp_sha256sum=a3d311beaa57a13bbfa20a89568a2e915885a9fb29521d932e3d1d0ab49e92f1
 _sdcpp_webui_commit=c4bce3d6b3f236614cca21014f076083b7270ba8
 _sdcpp_webui_sha256sum=1265543d02ebab560cee6734b3bf1491e831c6be3436647505d6939dd78f2993
 pkgname=stable-diffusion.cpp-ggml
 pkgver=0.0.0.${_stable_diffusion_cpp_version}
-pkgrel=2
+pkgrel=1
 pkgdesc='Diffusion model(SD,Flux,Wan,...) inference in pure C/C++ (use system ggml)'
 arch=(x86_64 aarch64)
 url='https://github.com/leejet/stable-diffusion.cpp'
