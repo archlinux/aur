@@ -1,6 +1,6 @@
 pkgbase = amdgpu-fan
 	pkgdesc = Python daemon for controlling the fans on AMDGPU cards
-	pkgver = 0.0.24.r1.4dda773eb8aba10f853a8706a9009bda434b56e9
+	pkgver = 0.0.24.r2.4dda773eb8
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/chestm007/amdgpu-fan
