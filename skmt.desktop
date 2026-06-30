@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Security Key Management Tool
+Exec=/opt/renesas/skmt/SecurityKeyManagementTool
+Icon=/opt/renesas/skmt/icon.xpm
