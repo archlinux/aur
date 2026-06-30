@@ -1,6 +1,6 @@
-# Maintainer: Riley_VM <Riley_VM@proton.me>
+# Maintainer: Ri <Riiiileyyyy@proton.me>
 pkgname=git.gay
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Unofficial desktop app for git.gay"
 arch=('x86_64')
