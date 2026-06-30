@@ -14,3 +14,4 @@ package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver.AppImage" "$pkgdir/usr/bin/$pkgname"
   chmod +x "$pkgdir/usr/bin/$pkgname"
 }
+# why doesnt it update
