@@ -6,9 +6,9 @@
 # step the admin runs separately (see the post-install note), with a tested TTY
 # revert in hand. The previous DM is left installed as the fallback.
 pkgname=door
-pkgver=0.1.0
-pkgrel=2
-pkgdesc="Self-contained reversible Wayland login manager (privileged doord + unprivileged greeter)"
+pkgver=0.1.1
+pkgrel=1
+pkgdesc="Beautiful, security-first Wayland display manager / login manager with an animated GPU greeter (privilege-separated, reversible)"
 arch=('x86_64')
 url="https://github.com/satorisage/door"
 license=('MPL-2.0')
@@ -22,7 +22,7 @@ install="${pkgname}.install"
 options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 # Run `updpkgsums` after the v$pkgver tag exists to pin this to the real checksum.
-sha256sums=('2f00830d1ee21815d4f49431aee55adf2f662cd5c8e8e008af7975092628ef46')
+sha256sums=('44b2720172dfb39de8ec9cf3a5cdf27ce6eacbfd5c1c1c28b3ab882b5267a297')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
