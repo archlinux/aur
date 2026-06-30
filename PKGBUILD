@@ -32,8 +32,10 @@
 # Please see the "License" folder for full details of various other bits that
 # have been modified.
 
+# shellcheck disable=SC1003,SC2034,SC2154,SC2164
+
 pkgname=ventoy
-pkgver=1.1.12
+pkgver=1.1.16
 _grub_ver=2.04                  # (Jul 2019)
 #_unifont_ver=15.0.01            # FIXME see NOTE below
 _ipxe_ver=3fe683e               # (Sep 29 2019)
@@ -56,7 +58,7 @@ _busybox_ver=1.32.0             # (Jun 2020) old! FIXME
 _crypt_ver=1.7.5                # (Apr 2017) old! FIXME for veritysetup
 _lunzip_ver=1.11                # (Jan 2019) old! FIXME
 _wimboot_ver=2.7.3              # (Apr 2021) old! FIXME
-pkgrel=3
+pkgrel=1
 pkgdesc="A new bootable USB solution"
 arch=(x86_64)
 url="https://www.ventoy.net/"
@@ -129,7 +131,7 @@ noextract=(
   cryptsetup-"$_crypt_ver".tar.xz
   wimboot-"$_wimboot_ver".tar.gz
 )
-sha256sums=('14baaa316a2fd5e932fa4de776366774ea8b791bc465ee925807a6f62eaabffc'
+sha256sums=('6f82ce5c9c2a8d51cb6fc65714c4e8c9c271826fae7246a7b0cbf783d92c383a'
             'e5292496995ad42dabe843a0192cf2a2c502e7ffcc7479398232b10a472df77d'
             'e6cccc4a958a9fafbb11b05c9bc98612d75b293035d7c47d52588590103a40a0'
             '5ee49d23d376aeea24269f7605fcaa7fbd326c04cda4e31b8eb7fa15a540ef44'
@@ -230,7 +232,8 @@ prepare() {
     sed -i 's/ -Werror//g' BaseTools/Conf/*.template BaseTools/Source/C/Makefiles/*.makefile
 
     # Fix build with newer toolchain.
-    sed -i 's/GCC48/GCC5/' ../build.sh
+    sed -i 's/GCC48/GCC5/' ../build.sh ../build_shim.sh
+    sed -i '/set-section/a \        --set-section-flags .reloc=alloc,load,readonly,data \\' ../build_shim.sh
     sed -i '/^BUILD_CFLAGS/s/\r$/ -std=gnu11\r/' BaseTools/Source/C/VfrCompile/Pccts/{antlr,dlg}/makefile
     sed -i -e '/RELEASE_GCC5_IA32_CC_FLAGS/s/\r$/ -std=gnu11\r/' \
            -e '/RELEASE_GCC5_X64_CC_FLAGS/s/\r$/ -std=gnu11\r/' BaseTools/Conf/tools_def.template
@@ -354,9 +357,10 @@ _build_edk2() (
     make -C BaseTools
   )
 
-  mkdir -pv ../INSTALL/ventoy
+  mkdir -pv ../INSTALL/{ventoy,EFI/BOOT}
   sh ./build.sh ia32
   sh ./build.sh
+  sh ./build_shim.sh
 )
 
 _build_dietlibc() (
@@ -434,7 +438,7 @@ _build_vtoycli() (
 
   local _SRCS=(vtoycli.c vtoyfat.c vtoygpt.c crc32.c partresize.c)
 
-  musl-gcc -fno-link-libatomic -Os -static -D_FILE_OFFSET_BITS=64 \
+  musl-gcc -Os -static -D_FILE_OFFSET_BITS=64 \
     "${_SRCS[@]}" -Ifat_io_lib/include fat_io_lib/lib/libfat_io_64.a -o vtoycli_64
 
   # "$srcdir"/dietlibc-$_diet_ver/bin-i386/diet -Os gcc -D_FILE_OFFSET_BITS=64 -m32 \
@@ -462,7 +466,7 @@ _build_fuseiso() (
       --disable-shared
       --disable-util
       --disable-example
-      CFLAGS="-Os -fno-link-libatomic"
+      CFLAGS=-Os
     )
 
     (
@@ -485,10 +489,10 @@ _build_fuseiso() (
 
   rm -fv vtoy_fuse_iso_*
 
-  musl-gcc -fno-link-libatomic -static -O2 -D_FILE_OFFSET_BITS=64 vtoy_fuse_iso.c -Ifuse-$_fuse_ver/include \
+  musl-gcc -static -O2 -D_FILE_OFFSET_BITS=64 vtoy_fuse_iso.c -Ifuse-$_fuse_ver/include \
     fuse-$_fuse_ver/build64/lib/.libs/libfuse.a -o vtoy_fuse_iso_64
 
-  "$srcdir"/musl32/bin/musl-gcc -fno-link-libatomic -m32 -static -O2 -D_FILE_OFFSET_BITS=64 \
+  "$srcdir"/musl32/bin/musl-gcc -m32 -static -O2 -D_FILE_OFFSET_BITS=64 \
     vtoy_fuse_iso.c -Ifuse-$_fuse_ver/include -Wl,-melf_i386 \
     fuse-$_fuse_ver/build32/lib/.libs/libfuse.a -o vtoy_fuse_iso_32
 
@@ -818,7 +822,7 @@ _build_xzminidec() (
   make clean
   rm -v bytetest.o
 
-  make -f ventoy_makefile CC="musl-gcc -fno-link-libatomic -Os -static -std=gnu89"
+  make -f ventoy_makefile CC="musl-gcc -Os -static -std=gnu89"
   mv -v xzminidec{,64_musl}
   make clean
   rm -v bytetest.o
@@ -841,7 +845,7 @@ _build_busybox() (
 
     "$srcdir"/dietlibc-$_diet_ver/bin-x86_64/diet gcc -Os vtchmod.c -o vtchmod64
     "$srcdir"/dietlibc-$_diet_ver/bin-i386/diet gcc -Os -m32 vtchmod.c -o vtchmod32
-    musl-gcc -fno-link-libatomic -Os -static vtchmod.c -o vtchmod64_musl
+    musl-gcc -Os -static vtchmod.c -o vtchmod64_musl
     strip --strip-all vtchmod{64,32} vtchmod64_musl
     cp -avt ../../IMG/cpio_x86/ventoy/busybox vtchmod{64,32} vtchmod64_musl
   )
@@ -855,7 +859,7 @@ _build_busybox() (
   (
     cd busybox-$_busybox_ver-xzcat64
     cp -av ../x86_64_xzcat.config .config
-    make CC="musl-gcc -fno-link-libatomic" V=1
+    make CC=musl-gcc V=1
     mv -v busybox xzcat64_musl
     xz xzcat64_musl
     cp -avt ../../IMG/cpio_x86/ventoy/busybox xzcat64_musl.xz
@@ -864,7 +868,7 @@ _build_busybox() (
   (
     cd busybox-$_busybox_ver-xzcat32
     sed 's/# CONFIG_LFS is not set/CONFIG_LFS=y/' ../x86_64_xzcat.config > .config
-    make CC="$srcdir/musl32/bin/musl-gcc -fno-link-libatomic -m32 -Wl,-melf_i386" V=1
+    make CC="$srcdir/musl32/bin/musl-gcc -m32 -Wl,-melf_i386" V=1
     mv -v busybox xzcat32_musl
     xz xzcat32_musl
     cp -avt ../../IMG/cpio_x86/ventoy/busybox xzcat32_musl.xz
@@ -875,7 +879,7 @@ _build_busybox() (
     make defconfig
     sed -e 's/# CONFIG_STATIC is not set/CONFIG_STATIC=y/' \
         -e 's/CONFIG_TC=y/# CONFIG_TC is not set/' -i .config
-    make CC="musl-gcc -fno-link-libatomic" V=1
+    make CC=musl-gcc V=1
     mv -v busybox busybox64
     xz busybox64
     cp -avt ../../IMG/cpio_x86/ventoy/busybox busybox64.xz
@@ -886,7 +890,7 @@ _build_busybox() (
     make defconfig
     sed -e 's/# CONFIG_STATIC is not set/CONFIG_STATIC=y/' \
         -e 's/CONFIG_TC=y/# CONFIG_TC is not set/' -i .config
-    make CC="$srcdir/musl32/bin/musl-gcc -fno-link-libatomic -m32 -Wl,-melf_i386" V=1
+    make CC="$srcdir/musl32/bin/musl-gcc -m32 -Wl,-melf_i386" V=1
     mv -v busybox busybox32
     xz busybox32
     cp -avt ../../IMG/cpio_x86/ventoy/busybox busybox32.xz
@@ -1076,7 +1080,7 @@ _pack_ventoy() (
     cd Vlnk
     local _SRCS=(src/crc32.c src/main_linux.c src/vlnk.c)
 
-    musl-gcc -fno-link-libatomic -Os -static -D_FILE_OFFSET_BITS=64 "${_SRCS[@]}" -Isrc -o vlnk
+    musl-gcc -Os -static -D_FILE_OFFSET_BITS=64 "${_SRCS[@]}" -Isrc -o vlnk
     strip --strip-all vlnk
     install -Dvt ../INSTALL/tool/x86_64 vlnk
 
@@ -1094,14 +1098,13 @@ _pack_ventoy() (
 
   local _efi_files=(
     BOOTIA32.EFI        # shim 32-bit  ver 15.6         # SUISBD [1] based on Fedora
-    BOOTX64.EFI         # shim 64-bit  ver 15.8         # ? SUSE Linux Enterprise ?
-    grub.efi            # preloader 64-bit              # SUISBD [1]
+    BOOTX64.EFI         # shim 64-bit  ver 16.1         # ? Rocky Linux ?
     grubia32.efi        # preloader 32-bit              # SUISBD [2]
     mmia32.efi          # MokManager 32-bit  ver 15.6   # same length as SUISBD [1] (but 261 bytes differ) based on Fedora
-    MokManager.efi      # MokManager 64-bit  ver 15.8   # ? SUSE Linux Enterprise ?
+    mmx64.efi           # MokManager 64-bit  ver 16.1   # ? Rocky Linux ?
   )
 
-  # This file is also from SUISBD
+  # This file used to be from SUISBD. Since Ventoy 1.1.13+, it is apparently from the Ventoy developer FIXME
   install -vm 644 INSTALL.upstream/tool/ENROLL_THIS_KEY_IN_MOKMANAGER.cer INSTALL/tool
   (
     cd INSTALL.upstream/EFI/BOOT
