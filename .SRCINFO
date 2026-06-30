@@ -1,16 +1,18 @@
 pkgbase = headroom-ai-bin
 	pkgdesc = Context optimization layer for LLM applications - cut token costs by 50-90% (binary wheel, Python 3.12)
-	pkgver = 0.22.3
-	pkgrel = 2
+	pkgver = 0.28.0
+	pkgrel = 1
 	url = https://github.com/chopratejas/headroom
 	arch = x86_64
 	license = Apache-2.0
 	depends = python312
 	depends = ast-grep
-	provides = headroom-ai=0.22.3
+	provides = headroom-ai=0.28.0
 	conflicts = headroom-ai
-	noextract = headroom_ai-0.22.3-cp312-cp312-manylinux_2_28_x86_64.whl
-	source = headroom_ai-0.22.3-cp312-cp312-manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/ab/c6/7e224ca5b3de2cb54eb2117d1d0b1160687eff6e13ef19fbb81b10b527ae/headroom_ai-0.22.3-cp312-cp312-manylinux_2_28_x86_64.whl
-	sha256sums = dc5fff2cd99380f9229477cc5957e97661cb5a71bfbbe25a6ae225acfd97cddb
+	noextract = headroom_ai-0.28.0-cp310-abi3-manylinux_2_28_x86_64.whl
+	options = !strip
+	options = !debug
+	source = headroom_ai-0.28.0-cp310-abi3-manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/04/20/f6891ab873a097211ac194ad7934f126e2ed08f971d4125968eafce11b8a/headroom_ai-0.28.0-cp310-abi3-manylinux_2_28_x86_64.whl
+	sha256sums = f793545d2955c6d651d5267e0bf52dd0f14c7362deb43384e7958986c5b5e9e9
 
 pkgname = headroom-ai-bin

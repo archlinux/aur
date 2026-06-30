@@ -2,8 +2,8 @@
 
 pkgname=headroom-ai-bin
 _pyname=headroom_ai
-pkgver=0.22.3
-pkgrel=2
+pkgver=0.28.0
+pkgrel=1
 pkgdesc="Context optimization layer for LLM applications - cut token costs by 50-90% (binary wheel, Python 3.12)"
 arch=('x86_64')
 url="https://github.com/chopratejas/headroom"
@@ -11,10 +11,15 @@ license=('Apache-2.0')
 depends=('python312' 'ast-grep')
 provides=("headroom-ai=$pkgver")
 conflicts=('headroom-ai')
+# Prebuilt wheel + vendored .so's: don't strip them or extract a -debug package
+# (avoids dangling build-id debug symlinks for the bundled binaries).
+options=('!strip' '!debug')
 
 # Upstream switched from pure-Python (hatchling) to Rust+maturin in 0.21.x.
-# 0.22.3 ships only platform-specific wheels (no sdist); the highest cp* wheel
-# available for x86_64 Linux is cp312, so this package targets python312.
+# 0.28.0 ships a stable-ABI cp310-abi3 wheel for x86_64 Linux. We install it into
+# a python3.12 venv: abi3 wheels run on any Python >=3.10, and pinning python3.12
+# (a fixed-version package) keeps the vendored venv stable across Arch's rolling
+# /usr/bin/python bumps.
 #
 # Arch's python-* ecosystem (tiktoken/pydantic/litellm/...) is built against
 # /usr/bin/python (3.14) and is invisible to /usr/bin/python3.12, so we can't
@@ -24,11 +29,11 @@ conflicts=('headroom-ai')
 # The wheel declares fastapi/uvicorn/openai/mcp/onnxruntime/transformers/etc.
 # as the `proxy` extra, but headroom.cli imports headroom.proxy unconditionally
 # so the [proxy] set is effectively required just for `headroom --help` to load.
-_pytag=cp312-cp312-manylinux_2_28_x86_64
+_pytag=cp310-abi3-manylinux_2_28_x86_64
 _wheel="$_pyname-$pkgver-$_pytag.whl"
-source=("$_wheel::https://files.pythonhosted.org/packages/ab/c6/7e224ca5b3de2cb54eb2117d1d0b1160687eff6e13ef19fbb81b10b527ae/$_wheel")
+source=("$_wheel::https://files.pythonhosted.org/packages/04/20/f6891ab873a097211ac194ad7934f126e2ed08f971d4125968eafce11b8a/$_wheel")
 noextract=("$_wheel")
-sha256sums=('dc5fff2cd99380f9229477cc5957e97661cb5a71bfbbe25a6ae225acfd97cddb')
+sha256sums=('f793545d2955c6d651d5267e0bf52dd0f14c7362deb43384e7958986c5b5e9e9')
 
 build() {
   rm -rf venv
