@@ -16,7 +16,6 @@ pkgbase = dory-git
 	provides = dory
 	provides = nemo
 	conflicts = dory
-	conflicts = nemo
 	source = dory::git+https://github.com/Twilight0/dory.git
 	sha256sums = SKIP
 

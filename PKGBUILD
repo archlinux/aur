@@ -20,7 +20,7 @@ makedepends=(
   gobject-introspection
 )
 provides=(dory nemo)
-conflicts=(dory nemo)
+conflicts=(dory)
 source=("dory::git+https://github.com/Twilight0/dory.git")
 sha256sums=('SKIP')
 
