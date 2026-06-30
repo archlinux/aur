@@ -1,0 +1,4 @@
+gallery-tui/
+pkg/
+src/
+*.tar.zst
