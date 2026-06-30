@@ -7,6 +7,24 @@ Certification Authorities (CA) certificates.
 The format is based on Keep a Changelog (see https://keepachangelog.com),
 and this project versioning is YYYYMMDD.
 
+## 20260625
+
+### Added
+
+- AC_Certisign_ICP_Brasil_SSL_G5.crt
+
+## 20260506
+
+### Added
+
+- AC_DIGITALSIGN_G3.crt
+
+## 20260427
+
+### Added
+
+- AC_SOLUTI_v12.crt
+
 ## 20260325
 
 ### Added
