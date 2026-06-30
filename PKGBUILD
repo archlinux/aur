@@ -6,7 +6,7 @@
 # for change request, PLEASE MAKE A PR ON GITHUB REPO, keep commenting here would be ignored
 
 pkgname=siyuan-bin
-pkgver=3.6.5
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="auto upload to AUR when SiYuan stable release"
 arch=("x86_64")
@@ -27,23 +27,25 @@ prepare() {
 }
 
 build() {
-    # Adjust .desktop so it will work autside of AppImage container
+    _desktop_file=$(find squashfs-root -maxdepth 1 -name "*.desktop" -print -quit)
+    # Adjust .desktop so it will work outside of AppImage container
     sed -i \
         -e "s|Exec=AppRun|Exec=/opt/${pkgname}/${pkgname}.AppImage|" \
         -e "s+^Icon=.*+Icon=siyuan-bin+" \
-        "squashfs-root/siyuan.desktop"
+        "${_desktop_file}"
 
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/usr
 }
 
 package() {
+    _desktop_file=$(find squashfs-root -maxdepth 1 -name "*.desktop" -print -quit)
     # AppImage
     install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
     install -Dm644 "${srcdir}/squashfs-root/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
 
     # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/siyuan.desktop" \
+    install -Dm644 "${srcdir}/${_desktop_file}" \
             "${pkgdir}/usr/share/applications/siyuan.desktop"
 
     # Icon images
