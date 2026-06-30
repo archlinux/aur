@@ -46,7 +46,7 @@ options=('!strip' '!debug')
 
 # Helper repository pinned to a specific commit so the conversion
 # logic is reproducible. Bump together with pkgver if needed.
-_helper_commit='d6c036ac4b823906344969dd580efaca0d5b8f7f'
+_helper_commit='81d343230d27680d3e1819be7ff5caaf5154ee06'
 _electron_version=35.6.0
 
 source=(
@@ -64,7 +64,7 @@ noextract=(
 )
 
 sha256sums=('259f9c6aaf9a8f7eb7989d87a7efce2ce0b8ed2d0f6eef15e40995b460555ec0'
-            '49661811d2ea0af0fbfcb7f5e6005b3190e750283bdf79a3ceee8eeeff8a2f21'
+            'ce787e187e7808373e448f41d20b0083d3c76e50b2e3463fa16b250cc518a718'
             '94f3987a46b7cc39f16dc3428e304dd0dee679f3266fbea85ccfeb3daabb2c45'
             'b3260549a765c478dc33680c7b9a1a30e5a038456e340d6d25f7748390724241')
 

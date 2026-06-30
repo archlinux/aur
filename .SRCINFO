@@ -33,11 +33,11 @@ pkgbase = codebuddy-ide-cn
 	options = !strip
 	options = !debug
 	source = CodeBuddy-darwin-x64-4.9.15.31887257-cbd94294-cn.dmg::https://download.codebuddy.cn/aiide/darwin-x64/CodeBuddy-darwin-x64-4.9.15.31887257-cbd94294-cn.dmg
-	source = codebuddy-ide-cn-linux-d6c036ac4b823906344969dd580efaca0d5b8f7f.tar.gz::https://github.com/JipZeonGit/codebuddy-ide-cn-linux/archive/d6c036ac4b823906344969dd580efaca0d5b8f7f.tar.gz
+	source = codebuddy-ide-cn-linux-81d343230d27680d3e1819be7ff5caaf5154ee06.tar.gz::https://github.com/JipZeonGit/codebuddy-ide-cn-linux/archive/81d343230d27680d3e1819be7ff5caaf5154ee06.tar.gz
 	source = electron-v35.6.0-linux-x64.zip::https://github.com/electron/electron/releases/download/v35.6.0/electron-v35.6.0-linux-x64.zip
 	source = LICENSE.notice
 	sha256sums = 259f9c6aaf9a8f7eb7989d87a7efce2ce0b8ed2d0f6eef15e40995b460555ec0
-	sha256sums = 49661811d2ea0af0fbfcb7f5e6005b3190e750283bdf79a3ceee8eeeff8a2f21
+	sha256sums = ce787e187e7808373e448f41d20b0083d3c76e50b2e3463fa16b250cc518a718
 	sha256sums = 94f3987a46b7cc39f16dc3428e304dd0dee679f3266fbea85ccfeb3daabb2c45
 	sha256sums = b3260549a765c478dc33680c7b9a1a30e5a038456e340d6d25f7748390724241
 
