@@ -1,6 +1,6 @@
 pkgbase = xenia-edge-bin
 	pkgdesc = Fork of the Xenia emulator based on Xenia Canary, with aims for quicker iterations and improvements on Vulkan and Linux support.
-	pkgver = 20260630012713.174214e
+	pkgver = 20260630033113.02ce671
 	pkgrel = 1
 	url = https://github.com/has207/xenia-edge/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = xenia-edge-bin
 	provides = xenia
 	provides = xenia-edge
 	options = !strip
-	source = xenia-edge-20260630012713.174214e.AppImage::https://github.com/has207/xenia-edge/releases/download/174214e/xenia_edge_linux.AppImage
-	source = xenia-edge-license::https://raw.githubusercontent.com/has207/xenia-edge/174214e/LICENSE
-	sha256sums = 0afb2ba41d4dbcc8933b095ecc98d2f514e800356a6ff86b90eaf1adec538062
+	source = xenia-edge-20260630033113.02ce671.AppImage::https://github.com/has207/xenia-edge/releases/download/02ce671/xenia_edge_linux.AppImage
+	source = xenia-edge-license::https://raw.githubusercontent.com/has207/xenia-edge/02ce671/LICENSE
+	sha256sums = 386c8dd74125c8e3cf425247eeff3b419a66352139e89c03eb825772cdadee3a
 	sha256sums = SKIP
 
 pkgname = xenia-edge-bin
