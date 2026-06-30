@@ -1,6 +1,6 @@
 pkgbase = plaza
 	pkgdesc = Cross-distro TUI package-manager browser (Arch: pacman + AUR)
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/StaszeKrk/plaza
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = plaza
 	optdepends = pacman-contrib: live update counts via checkupdates
 	provides = plaza
 	options = !lto
-	source = plaza-0.5.0.tgz::https://github.com/StaszeKrk/plaza/archive/v0.5.0.tar.gz
-	sha256sums = 70e0b98fd47ca0a0e12422ce50d4d1c72e92910757188f060c418fe3803d8808
+	source = plaza-0.6.0.tgz::https://github.com/StaszeKrk/plaza/archive/v0.6.0.tar.gz
+	sha256sums = ce577680e11009fb2e902e888412d733af7b855b0c08135a81afa37a9b4fd952
 
 pkgname = plaza
