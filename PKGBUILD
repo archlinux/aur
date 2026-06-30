@@ -3,8 +3,8 @@
 _plugin=histogram
 pkgname=vsview-${_plugin}
 pkgver=0.1.0
-pkgrel=1
-pkgdesc="A vsview plugin to make comparison backed by Slowpoke Pics"
+pkgrel=2
+pkgdesc="A vsview plugin displaying video clips' histograms and other related visualizations"
 arch=("x86_64")
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
 license=("MIT")

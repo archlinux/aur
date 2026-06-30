@@ -1,7 +1,7 @@
 pkgbase = vsview-histogram
-	pkgdesc = A vsview plugin to make comparison backed by Slowpoke Pics
+	pkgdesc = A vsview plugin displaying video clips' histograms and other related visualizations
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-view
 	arch = x86_64
 	license = MIT
