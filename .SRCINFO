@@ -1,7 +1,7 @@
 pkgbase = high-tide
 	pkgdesc = Linux client for TIDAL streaming service
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nokse22/high-tide
 	arch = any
 	license = GPL-3.0-or-later
@@ -22,7 +22,7 @@ pkgbase = high-tide
 	depends = python-tidalapi>=0.8.6
 	depends = org.freedesktop.secrets
 	depends = xdg-desktop-portal
-	optdepends = python-pypresence>=4.3.0.r27.gd6709d3: Discord Rich Presence support
+	depends = python-pypresence
 	optdepends = alsa-utils: Advanced details in ALSA device picker
 	source = high-tide-1.4.0.tar.gz::https://github.com/Nokse22/high-tide/archive/refs/tags/v1.4.0.tar.gz
 	sha256sums = 1876cd46e0f7c0393aaf7efde0496b32165a477ea6c62a61aeb7ecff32623047
