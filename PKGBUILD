@@ -1,7 +1,7 @@
 # Maintainer: BlucherSKK <blucher1937@proton.me>
 pkgname=nymphalis-bin
-pkgver=0.0.1
-pkgrel=2
+pkgver=0.0.2
+pkgrel=1
 pkgdesc="It makes it easy to download media, manga, and other content from Patreon, desu.uno, gelboru, and so on"
 arch=('x86_64')
 url="https://github.com/BlucherSKK/nymphalis"
@@ -14,4 +14,7 @@ sha256sums_x86_64=('SKIP')
 
 package() {
     install -Dm755 "${srcdir}/nymphalis-${pkgver}" "${pkgdir}/usr/bin/nymphalis"
+
+    # автодополнения
+    DESTDIR="${pkgdir}" "${pkgdir}/usr/bin/nymphalis" add-shell-completions
 }
