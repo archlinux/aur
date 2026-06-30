@@ -1,0 +1,8 @@
+# Ignore everything by default
+*
+
+# Except for these files
+!PKGBUILD
+!.SRCINFO
+!nordplayer.desktop
+!.gitignore
