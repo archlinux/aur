@@ -1,1 +1,5 @@
 src/
+pkg/
+tmp/
+graphwar-git*.pkg.tar.zst
+graphwar/
