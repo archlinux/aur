@@ -1,13 +1,13 @@
 # Maintainer: solsTiCe d'Hiver <solsticedhiver@gmail.com>
 pkgname=opennow
 _pkgname=OpenNOW
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="custom GeForce Now client"
 url="https://opennow.zortos.me/"
 license=('MIT')
 depends=('gtk3' 'cairo' 'pango' 'mesa' 'dbus' 'libx11' 'at-spi2-core' 'hicolor-icon-theme' 'nss' 'nspr' 'alsa-lib'
-	'electron41' 'gstreamer' 'gst-plugins-base-libs' 'gst-plugins-bad-libs' 'gst-libav' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
+	'electron42' 'gstreamer' 'gst-plugins-base-libs' 'gst-plugins-bad-libs' 'gst-libav' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
 makedepends=('npm' 'imagemagick' 'libxcrypt-compat' 'cargo')
 # dependencies for rust opennow-streamer: cargo gstreamer gst-plugins-base-libs gst-plugins-bad-libs gst-libav gst-plugins-{good|bad|ugly}
 # we could have avoided building and installing opennow-streamer for now because it is not avaiable and used on linux
@@ -17,7 +17,8 @@ arch=('x86_64')
 options=(!strip)
 source=(opennow-${pkgver}.tar.gz::https://github.com/OpenCloudGaming/OpenNOW/archive/refs/tags/v${pkgver}.tar.gz
 	opennow.desktop opennow)
-sha256sums=('90f809ad077862b28f8ced5aa5c18a6973e08761e58a50dd0616c0c6faaf7fea'
+
+sha256sums=('39dd82a29d4164eb7052a41745e0d502bcbd4d440e9a45e185db8c9c589d841b'
             '2ab63a0c3b39b7220bd1d16d5a61daf2578c8b3dadbbbcacd4287d8b568cd513'
             'eaa15b0e4d73629f9d51f6bb2604f7c1a3e835dbc807a8b93ab669bd41b9a280')
 
@@ -25,6 +26,10 @@ prepare() {
 	cd "$_pkgname-$pkgver"
 	cd opennow-stable
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	# downgrade electron version, we are waiting for electron42 to be upgraded...
+	npm pkg set devDependencies.electron=$(cat /usr/lib/electron42/version)
+	# fix: remove call to ensure-electron-installed.mjs
+	sed -i -e '/ensure-electron-installed.mjs/d' package.json
 	npm install --cache "${srcdir}/npm/cache"
 }
 
