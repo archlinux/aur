@@ -1,6 +1,6 @@
 pkgbase = python-files-vc
-	pkgdesc = Python files.vc API wrapper and command line interface
-	pkgver = 1.0.2
+	pkgdesc = Python files.vc API wrapper and command line interface (archived)
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/Sasivarnasarma/Files-VC
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-files-vc
 	provides = files-vc
 	provides = filesvc
 	options = !debug
-	source = files-vc.tar.gz::https://github.com/Sasivarnasarma/Files-VC/archive/refs/tags/v1.0.2.tar.gz
-	sha512sums = 8294b8206967f1b95c1abde8cae7104a6ef36cd80a7c5bd1bd6f456375105fb060ed0b71f2d3201a4a81f9ae6fee5784becafc55491e127b676a59b947749cf6
+	source = files-vc.tar.gz::https://github.com/Sasivarnasarma/Files-VC/archive/refs/tags/v1.0.3.tar.gz
+	sha512sums = dc9b0710aaa79057f648eec364e56c07f0dcb2a0b3d6efc291263d9c40f5b36ca8d196e366382cc3c2f3a4cfde166175c6b7f70dc4f489955f2c1a3b3e0eeec3
 
 pkgname = python-files-vc

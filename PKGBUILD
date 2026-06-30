@@ -2,9 +2,9 @@
 
 pkgname="python-files-vc"
 _name=${pkgname#python-}
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
-pkgdesc="Python files.vc API wrapper and command line interface"
+pkgdesc="Python files.vc API wrapper and command line interface (archived)"
 arch=('any')
 url="https://github.com/Sasivarnasarma/Files-VC"
 license=('MIT')
@@ -14,7 +14,7 @@ depends=('python>=3.7' 'python-requests' 'python-requests-toolbelt' 'python-tabu
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 
 source=("files-vc.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('8294b8206967f1b95c1abde8cae7104a6ef36cd80a7c5bd1bd6f456375105fb060ed0b71f2d3201a4a81f9ae6fee5784becafc55491e127b676a59b947749cf6')
+sha512sums=('dc9b0710aaa79057f648eec364e56c07f0dcb2a0b3d6efc291263d9c40f5b36ca8d196e366382cc3c2f3a4cfde166175c6b7f70dc4f489955f2c1a3b3e0eeec3')
 
 build() {
   cd ${url##*/}-${pkgver}
