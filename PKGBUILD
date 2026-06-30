@@ -2,7 +2,7 @@
 # Contributor: missing-aur project <https://github.com/Cleboost/missing-aur>
 
 pkgname=psst-bin
-pkgver=2026.06.26_970fddc
+pkgver=2026.06.30_6267ec1
 pkgrel=1
 pkgdesc="Fast and multi-platform Spotify client with native GUI (precompiled binary)"
 url="https://github.com/jpochyla/psst"
@@ -12,7 +12,7 @@ conflicts=("psst-git" "psst-git-bin")
 license=("MIT")
 
 source=("psst-${pkgver}::${url}/releases/download/rolling/psst-linux-x86_64" "psst.desktop::https://raw.githubusercontent.com/jpochyla/psst/refs/heads/main/.pkg/psst.desktop" "psst.png::https://raw.githubusercontent.com/jpochyla/psst/main/psst-gui/assets/logo_512.png")
-sha256sums=('2740d9d14089a8a3d48260e485e411dba41cd8920567634d8dcfd3e6086f998c'
+sha256sums=('774a036cd2d2a0746bf53313437bd14617b5fd94943c28ee40212d422e903ec3'
             'ca6cd059c7cb16806d9f75b4c754de0916c888af1697d8e8250a3956be4265ae'
             'da79acff7d35ef5c51ee6a516c852a4ad75e84ba83d3a0fbe789d677e627ebaf')
 
