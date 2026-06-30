@@ -19,7 +19,7 @@ url="https://github.com/eoyilmaz/displaycal-py3"
 license=("GPL-3.0-or-later")
 
 pkgver=nightly.r160.g5467911
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 
 
@@ -84,7 +84,8 @@ package () {
 
 PackageApp () {
 	cd "${srcdir}/displaycal-py3"
-	python setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1
+	env --unset=XDG_CONFIG_DIRS
+	python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 
