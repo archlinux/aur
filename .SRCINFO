@@ -1,6 +1,6 @@
 pkgbase = ttf-lxgw-pengliwenkai
 	pkgdesc = 彭蠡文楷 / Pengli WenKai 基于《霞鹜文楷》系列字体衍生，参考《古籍印刷通用字规范字形表》（GB/Z 40637-2021）收字和调整字形的开源字体。
-	pkgver = 1.032
+	pkgver = 1.033
 	pkgrel = 1
 	url = https://github.com/lxgw/Pengli
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = ttf-lxgw-pengliwenkai
 	makedepends = fontconfig
 	provides = ttf-lxgw-pengliwenkai
 	conflicts = ttf-lxgw-pengliwenkai
-	source = PengliWenKai-Regular_1.032.ttf::https://github.com/lxgw/Pengli/releases/download/v1.032/PengliWenKai-Regular.ttf
-	sha256sums = 1b99d18e19433c1b24cf0fb5b93197da2fab8ffb5885897ca2e83980ef55becd
+	source = PengliWenKai-Regular_1.033.ttf::https://github.com/lxgw/Pengli/releases/download/v1.033/PengliWenKai-Regular.ttf
+	sha256sums = 4ef70f5ba372d2da3a6767302cca516768f8c75c5c0a9b3e455216f3a8156edc
 
 pkgname = ttf-lxgw-pengliwenkai
