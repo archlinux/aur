@@ -1,0 +1,11 @@
+pkgbase = omori-meta
+	pkgdesc = Meta package for OMORI-themed programs
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/kelseythedreamer/headspace-repo
+	arch = x86_64
+	license = GPL2
+	depends = mewo
+	depends = omorifortune
+
+pkgname = omori-meta
