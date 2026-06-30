@@ -14,5 +14,5 @@ md5:
 release:
 	makepkg --printsrcinfo > .SRCINFO
 	git add .
-	git commit -m "update: 0.15.2"
+	git commit -m "update: 0.16.15"
 	git push

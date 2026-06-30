@@ -3,8 +3,8 @@
 _pkgname="ikuuu_vpn"
 _binname="ikuuu-vpn"
 pkgname="${_binname}"
-pkgver="0.15.2"
-_buildid="201c8a3d"
+pkgver="0.16.15"
+_buildid="09edc53b"
 pkgrel=1
 pkgdesc="iKuuuVPN (repacked from .deb)"
 arch=('x86_64')
@@ -17,8 +17,9 @@ optdepends=('libkeybinder3: for global hotkeys')
 
 _deb_file="${_pkgname}-${pkgver}-${_buildid}-linux-amd64.deb"
 
-source=("${_deb_file}::https://1858587525.v.123pan.cn/1858587525/client/${_pkgname}-${pkgver}-${_buildid}/${_deb_file}")
-sha256sums=('cf3912e035d8101c259bb1ee2de5e750178f3d43e4babc08f3fca98b5e0a5738')
+source=("${_deb_file}::https://client.files-2.eakpfo.cn/file/ikuuu-client-release-temp/${_deb_file}")
+# https://client.files-2.eakpfo.cn/file/ikuuu-client-release-temp/ikuuu_vpn-0.16.15-09edc53b-linux-amd64.deb
+sha256sums=('48ec41d63e94909c38c7f8b9aeb1a99ee25c42ed15420eb1d2f6715c8aa74b71')
 
 prepare() {
 	bsdtar -xf "${_deb_file}"
@@ -34,7 +35,7 @@ package() {
 	# Desktop file: use a stable command name
 	sed -i \
 		-e "s|^Exec=.*|Exec=${_binname} %U|" \
-		"${pkgdir}/usr/share/applications/iKuuuVPN.desktop"
+		"${pkgdir}/usr/share/applications/ikuuuvpn.desktop"
 
 	# License / notices
 	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
