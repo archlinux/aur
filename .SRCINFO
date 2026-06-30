@@ -3,3 +3,4 @@ pkgbase = git.gay
 	pkgver = 0
 	pkgrel = 0
 	arch = x86_64
+pkgname = git.gay
