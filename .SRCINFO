@@ -1,6 +1,6 @@
 pkgbase = backplane-cli
 	pkgdesc = backplane-cli is a CLI tool to interact with backplane-api.
-	pkgver = 0.10.0
+	pkgver = 0.10.2
 	pkgrel = 0
 	url = https://github.com/openshift/backplane-cli
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = backplane-cli
 	makedepends = goreleaser
 	makedepends = mockgen
 	provides = ocm-backplane
-	source = backplane-cli-0.10.0::git+https://github.com/openshift/backplane-cli#tag=v0.10.0
-	sha256sums = 726c7854d92ff5209c10b825aeb310816174418aeca648e4f73f76f3e01aa54d
+	source = backplane-cli-0.10.2::git+https://github.com/openshift/backplane-cli#tag=v0.10.2
+	sha256sums = ad6b4706d2ef25dfcf195758a81cad51f6150e4fc75b4b3591cee414927f4084
 
 pkgname = backplane-cli
