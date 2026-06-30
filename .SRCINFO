@@ -1,6 +1,6 @@
 pkgbase = python-webauthn
 	pkgdesc = Pythonic WebAuthn
-	pkgver = 2.8.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/duo-labs/py_webauthn
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-webauthn
 	depends = python-pyopenssl
 	provides = python-webauthn
 	conflicts = python-webauthn
-	source = webauthn::git+https://github.com/duo-labs/py_webauthn.git#tag=v2.8.0
-	sha256sums = 80c09c8d8a6a496dcbd2b227b3b8d06384824cf08bfee18370965eda1b08ea6f
+	source = webauthn::git+https://github.com/duo-labs/py_webauthn.git#tag=v3.0.0
+	sha256sums = ee43cb477c7d2f645bbc1b176a2dba0844ff57ae12b9357ac18ae2b1f8c2e6f8
 
 pkgname = python-webauthn
