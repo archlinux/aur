@@ -1,5 +1,5 @@
 pkgname=cmdcreate
-pkgver=1.3.9
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Easily create and manage your own custom commands"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
