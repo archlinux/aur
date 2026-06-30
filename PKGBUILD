@@ -1,6 +1,6 @@
 # Maintainer: Dmitry Yarikov <dmitry@yarikov.com>
 pkgname=kvn-tui-bin
-pkgver=0.18.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="Terminal VPN client for Arch Linux with vim navigation"
 arch=('x86_64')
@@ -15,11 +15,11 @@ optdepends=(
 )
 provides=('kvn-tui')
 conflicts=('kvn-tui')
-source=("https://github.com/yarikov/kvn-tui/releases/download/v0.18.0/kvn-tui-0.18.0-x86_64-linux.tar.gz")
-sha256sums=('8b1773a8f68ec472df8dbb0b6719da92510f8ac5d0fe32eeea51aa12900dbacb')
+source=("https://github.com/yarikov/kvn-tui/releases/download/v0.18.1/kvn-tui-0.18.1-x86_64-linux.tar.gz")
+sha256sums=('7a7c416ca65ce0abea519014617a84b26fc8ba44273ef9095f53ab3872625600')
 
 package() {
-    cd "kvn-tui-0.18.0-x86_64-linux"
+    cd "kvn-tui-0.18.1-x86_64-linux"
     install -Dm755 kvn-tui "$pkgdir/usr/bin/kvn-tui"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
