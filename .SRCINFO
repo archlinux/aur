@@ -18,7 +18,7 @@ pkgbase = emutastic-bin
 	source = https://github.com/codingncaffeine/Emutastic-For-Linux/releases/download/v0.9.0/Emutastic-0.9.0-linux-x64.tar.gz
 	source = https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v0.9.0/LICENSE
 	source = emutastic-logo.png::https://github.com/codingncaffeine/Emutastic-For-Linux/raw/v0.9.0/src/Emutastic/Assets/banners%20and%20icons/emutastic-logo.png
-	sha256sums = c11ebd224bc7eab6620eab47f2d7e59b0f8f58c8296b09660583298d052d3593
+	sha256sums = 6bc517aac3ce4baf36b9bfb6957097b37791d19324ab9dd3e48c61ced3749c32
 	sha256sums = SKIP
 	sha256sums = SKIP
 

@@ -24,7 +24,7 @@ options=('!strip')   # self-contained .NET bundle — stripping breaks it
 source=("$url/releases/download/v$pkgver/Emutastic-$pkgver-linux-x64.tar.gz"
         "$url/raw/v$pkgver/LICENSE"
         "emutastic-logo.png::$url/raw/v$pkgver/src/Emutastic/Assets/banners%20and%20icons/emutastic-logo.png")
-sha256sums=('c11ebd224bc7eab6620eab47f2d7e59b0f8f58c8296b09660583298d052d3593'
+sha256sums=('6bc517aac3ce4baf36b9bfb6957097b37791d19324ab9dd3e48c61ced3749c32'
             'SKIP'
             'SKIP')
 
