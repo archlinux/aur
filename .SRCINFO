@@ -1,6 +1,6 @@
 pkgbase = openvino-llvm
 	pkgdesc = A toolkit for optimizing and deploying deep learning models - built with Clang and LLVM lld
-	pkgver = 2026.1.0
+	pkgver = 2026.2.1
 	pkgrel = 2
 	url = https://docs.openvino.ai/
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = openvino-llvm
 	makedepends = flatbuffers
 	makedepends = git
 	makedepends = git-lfs
+	makedepends = level-zero-headers
 	makedepends = lld
 	makedepends = llvm
 	makedepends = ocl-icd
@@ -26,7 +27,7 @@ pkgbase = openvino-llvm
 	makedepends = snappy
 	options = !emptydirs
 	options = !lto
-	source = git+https://github.com/openvinotoolkit/openvino.git#commit=63e31528c62d3eee06733efa63915ce04bd86f47?signed
+	source = git+https://github.com/openvinotoolkit/openvino.git#commit=ede283a88e35465f0d680dabbf1f44080f8fc387?signed
 	source = oneDNN-openvinotoolkit::git+https://github.com/openvinotoolkit/oneDNN.git
 	source = git+https://github.com/herumi/xbyak.git
 	source = git+https://github.com/madler/zlib.git
@@ -52,8 +53,9 @@ pkgbase = openvino-llvm
 	source = git+https://github.com/herumi/xbyak_riscv.git
 	source = 010-openvino-change-install-paths.patch
 	source = 020-openvino-disable-werror.patch
+	source = 030-openvino-ignore-system-onnx.patch
 	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
-	sha256sums = db6c89e6fea6b483ceb51ea17246b1c3190f8dbff502b259edd32f710a9dd362
+	sha256sums = e5ef4309dc42382fbd70779e3db3f39dc18bab83cb42c061e9674dc9351a882c
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -77,8 +79,9 @@ pkgbase = openvino-llvm
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = c5ed3a23fc153a082e97841c892b83685426a431a1a32a40f120d91633943e53
-	sha256sums = 66615858cc57df2e0e256798415316e0b6deb41d6d9b3b135e8573f4a71b5f58
+	sha256sums = fa1d3bc0b89fb36ef254b572958b806f76b37dac2faab53a148ba9db9cbffd0d
+	sha256sums = 07814fc576c6bced01c2d37e1f0d5c13f90ebb3c0e4fa404b3c5d367d83dc48c
+	sha256sums = 30835fc8bc6cfcb5c140fe66f473865e56fec6e2842da542d69cf03f4b34f904
 
 pkgname = openvino-llvm
 	depends = glibc
@@ -89,8 +92,8 @@ pkgname = openvino-llvm
 	depends = snappy
 	optdepends = openvino-llvm-intel-gpu-plugin: for Intel GPU plugin
 	optdepends = openvino-llvm-intel-npu-plugin: for Intel NPU plugin
-	provides = openvino=2026.1.0
-	provides = intel-openvino=2026.1.0
+	provides = openvino=2026.2.1
+	provides = intel-openvino=2026.2.1
 	conflicts = openvino
 	conflicts = intel-openvino
 	replaces = intel-openvino
@@ -103,9 +106,9 @@ pkgname = openvino-llvm-intel-gpu-plugin
 	depends = libstdc++
 	depends = ocl-icd
 	depends = onetbb
-	depends = openvino-llvm=2026.1.0
+	depends = openvino-llvm=2026.2.1
 	depends = pugixml
-	provides = openvino-intel-gpu-plugin=2026.1.0
+	provides = openvino-intel-gpu-plugin=2026.2.1
 	conflicts = openvino-intel-gpu-plugin
 
 pkgname = openvino-llvm-intel-npu-plugin
@@ -117,9 +120,9 @@ pkgname = openvino-llvm-intel-npu-plugin
 	depends = libstdc++
 	depends = onetbb
 	depends = opencv
-	depends = openvino-llvm=2026.1.0
+	depends = openvino-llvm=2026.2.1
 	depends = pugixml
-	provides = openvino-intel-npu-plugin=2026.1.0
+	provides = openvino-intel-npu-plugin=2026.2.1
 	conflicts = openvino-intel-npu-plugin
 
 pkgname = python-openvino-llvm
@@ -127,7 +130,7 @@ pkgname = python-openvino-llvm
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	depends = openvino-llvm=2026.1.0
+	depends = openvino-llvm=2026.2.1
 	depends = python
 	depends = python-numpy
 	depends = python-openvino-telemetry
@@ -138,5 +141,5 @@ pkgname = python-openvino-llvm
 	optdepends = python-pytorch: for PyTorch frontend and Torchvision to OpenVINO preprocessing converter
 	optdepends = python-tensorflow: for TensorFlow frontend
 	optdepends = python-torchvision: for Torchvision to OpenVINO preprocessing converter
-	provides = python-openvino=2026.1.0
+	provides = python-openvino=2026.2.1
 	conflicts = python-openvino

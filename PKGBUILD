@@ -6,9 +6,9 @@ pkgname=(
     'openvino-llvm-intel-gpu-plugin'
     'openvino-llvm-intel-npu-plugin'
     'python-openvino-llvm')
-pkgver=2026.1.0
+pkgver=2026.2.1
 pkgrel=2
-_commit=63e31528c62d3eee06733efa63915ce04bd86f47
+_commit=ede283a88e35465f0d680dabbf1f44080f8fc387
 pkgdesc='A toolkit for optimizing and deploying deep learning models - built with Clang and LLVM lld'
 arch=('x86_64')
 url='https://docs.openvino.ai/'
@@ -19,6 +19,7 @@ makedepends=(
     'flatbuffers'
     'git'
     'git-lfs'
+    'level-zero-headers'
     'lld'
     'llvm'
     'ocl-icd'
@@ -58,8 +59,9 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#commit=${_commit}?s
         'git+https://github.com/ARM-software/kleidiai.git'
         'git+https://github.com/herumi/xbyak_riscv.git'
         '010-openvino-change-install-paths.patch'
-        '020-openvino-disable-werror.patch')
-sha256sums=('db6c89e6fea6b483ceb51ea17246b1c3190f8dbff502b259edd32f710a9dd362'
+        '020-openvino-disable-werror.patch'
+        '030-openvino-ignore-system-onnx.patch')
+sha256sums=('e5ef4309dc42382fbd70779e3db3f39dc18bab83cb42c061e9674dc9351a882c'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -83,8 +85,9 @@ sha256sums=('db6c89e6fea6b483ceb51ea17246b1c3190f8dbff502b259edd32f710a9dd362'
             'SKIP'
             'SKIP'
             'SKIP'
-            'c5ed3a23fc153a082e97841c892b83685426a431a1a32a40f120d91633943e53'
-            '66615858cc57df2e0e256798415316e0b6deb41d6d9b3b135e8573f4a71b5f58')
+            'fa1d3bc0b89fb36ef254b572958b806f76b37dac2faab53a148ba9db9cbffd0d'
+            '07814fc576c6bced01c2d37e1f0d5c13f90ebb3c0e4fa404b3c5d367d83dc48c'
+            '30835fc8bc6cfcb5c140fe66f473865e56fec6e2842da542d69cf03f4b34f904')
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')
 
 export GIT_LFS_SKIP_SMUDGE='1'
@@ -125,6 +128,7 @@ prepare() {
     
     patch -d openvino -Np1 -i "${srcdir}/010-openvino-change-install-paths.patch"
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-disable-werror.patch"
+    patch -d openvino -Np1 -i "${srcdir}/030-openvino-ignore-system-onnx.patch"
     
     install -d -m755 {benchmark_app,licenses}
     install -d -m755 intel-gpu-plugin/usr/lib/openvino
