@@ -20,7 +20,7 @@ options=(!strip !debug) # debug symbols already included from upstream, better n
 source=("https://download.01.org/intel-sgx/sgx-linux/${pkgver}/distro/ubuntu26.04-server/sgx_linux_x64_sdk_${_pkgver}.bin"
         'intel-sgx-sdk-skip-tmp.patch')
 b2sums=('1e9f9c0c1127266483c2cc78df6dd5eabe4827ec464958476e481611e4705d187d86d915c19e19aa023e044f6ff4244971ab5ffc1bd635c4c9fb04b412820a37'
-        '172c8158deae15e54b6a5de6c891b287403def61841a9b877105ddf04c3358ac187b98d4e89f9eea06fc36c8b9afa2ea12b41c17c86754559f23dd1e403924dd')
+        '7da757aae6410d927b3697a66608b84d10a4902fc522ed4af4453cf8dcece1a2f46a762a55455710433dc516f9a68f662ab32cebe3c5fe28639c1d13f661606c')
 
 ## Here you can change the installation directory.
 _installdir=/opt/intel

@@ -1,7 +1,7 @@
 Author: Tiago de Paula <tiagodepalves@gmail.com>
 Date: Sun, 08 Feb 2026 21:03:54 -0300
-Last-Update: 2026-02-09
-Subject: [PATCH] '/tmp' is unaccessible in makepkg and shouldn't be used there
+Last-Update: 2026-06-30
+Subject: [PATCH] '/tmp' is inaccessible in makepkg and shouldn't be used there
 ---
  sgx_linux_x64_sdk.bin |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
