@@ -1,0 +1,15 @@
+pkgbase = radaromega-appimage
+	pkgdesc = High-resolution NEXRAD radar weather app (requires subscription)
+	pkgver = 5.7.2
+	pkgrel = 1
+	url = https://www.radaromega.com/
+	arch = x86_64
+	license = proprietary
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fuse2
+	options = !strip
+	source = radaromega-appimage-5.7.2.AppImage::https://dl.todesktop.com/200402kk4yak2og/linux/appImage/x64
+	sha256sums = c8f3b2bbb56ed37d1c2fb815b4d851e0083e073d07f038942571a615f828b845
+
+pkgname = radaromega-appimage
