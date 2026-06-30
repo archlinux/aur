@@ -1,0 +1,15 @@
+pkgbase = cinnamon-dory-session
+	pkgdesc = Cinnamon session with Dory as default file manager instead of Nemo
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Twilight0/cinnamon-dory-session
+	arch = any
+	license = GPL3
+	depends = cinnamon
+	depends = dory-git
+	conflicts = nemo
+	backup = etc/xdg/cinnamon-session/sessions/cinnamon.session
+	source = cinnamon-dory-session-1.0.0.tar.gz::https://github.com/Twilight0/cinnamon-dory-session/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = cinnamon-dory-session
