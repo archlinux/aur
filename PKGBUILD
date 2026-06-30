@@ -1,5 +1,5 @@
 pkgname=qrx
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="CLI tool to capture a screen region, decode any QR code found, and copy the result to clipboard."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ depends=('glibc')
 makedepends=('rust')
 
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/x71c9/$pkgname/tar.gz/refs/tags/v$pkgver")
-sha256sums=("01c2600dc827d689a080cecb3114727cb58ffd50347ab37c42f967726daaaf66")
+sha256sums=("7ce6bedefde42d60fed3dc954e86cc5a6e4178602110b3a9e89835d25d11196e")
 
 prepare() {
   cd "$pkgname-$pkgver"
