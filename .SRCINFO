@@ -1,0 +1,20 @@
+pkgbase = fren-bin
+	pkgdesc = A TUI file manager that lets you open files and directories with any app (binary release)
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/TheCrabevariable/fren
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = xdg-utils
+	depends = chafa
+	optdepends = noto-fonts-emoji: for emoji icons
+	optdepends = ttf-jetbrains-mono-nerd: for Nerd icon mode
+	source = https://github.com/TheCrabevariable/fren/releases/download/TUI/fren
+	source = https://github.com/TheCrabevariable/fren/raw/main/assets/fren.desktop
+	source = https://github.com/TheCrabevariable/fren/raw/main/assets/fren.png
+	sha256sums = 0642fd9ab16d40ba56b58bce677cf5c01f39139a0af2bd14a21119b6e4b4b33c
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = fren-bin
