@@ -1,0 +1,17 @@
+pkgbase = gallery-tui-bin
+	pkgdesc = A terminal image gallery powered by ratatui and chafa.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/WindustH/gallery-tui
+	arch = x86_64
+	license = MIT
+	depends = chafa
+	optdepends = perl-image-exiftool: write image metadata from the detail editor
+	provides = gallery-tui
+	conflicts = gallery-tui
+	conflicts = gallery-tui-git
+	options = !strip
+	source = gallery-tui-0.1.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/WindustH/gallery-tui/releases/download/v0.1.1/gallery-tui-0.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = a3430a1daabb2699785fd9b491d1451339a4ef6e2c39ed338966352e702d7043
+
+pkgname = gallery-tui-bin
