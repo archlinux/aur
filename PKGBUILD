@@ -1,6 +1,6 @@
 # Maintainer: italoghost <eduprodive at posteo dot me>
 pkgname=bb_launcher-bin
-pkgver=16.00
+pkgver=16.01
 _pkgname=bb_launcher
 _pkgid=BB_Launcher
 pkgrel=1
@@ -24,10 +24,10 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip' '!zipman' '!emptydirs' '!debug')
 _appimage=${_pkgid}-qt-Downloader.AppImage
-_archive=${_appimage}-${pkgver}
+_archive=${pkgver}-${_appimage}
 noextract=("${_appimage}")
-source=(${_appimage}-${pkgver}::https://github.com/rainmakerv3/BB_Launcher/releases/download/Release${pkgver}/${_appimage})
-sha256sums=('70883ed12443fe96e712ad3673cbf5be28de269311ec4799c15f3f8bc27f166e')
+source=(${pkgver}-${_appimage}::${url}/releases/download/Release${pkgver}/${_appimage})
+sha256sums=('f4038f84393cf8427c3641ba0f3aa5099b43114a4dfef235346609115837d08c')
 
 prepare() {
     chmod +x "${_archive}"
