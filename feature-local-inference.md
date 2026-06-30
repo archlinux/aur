@@ -1,6 +1,6 @@
-# Local STT & TTS Configuration Guide for LibreFang
+# Local STT, TTS & Image Description Configuration Guide for LibreFang
 
-This document describes how to configure and run the patched LibreFang package with local Speech-to-Text (STT) and Text-to-Speech (TTS) split services.
+This document describes how to configure and run the patched LibreFang package with local Speech-to-Text (STT), Text-to-Speech (TTS), and Image Description (vision) services.
 
 ---
 
@@ -52,9 +52,33 @@ Ensure standard credentials are set in `librefang.env` if the server requires th
 
 ---
 
-## 3. Local-Only `config.toml` Examples
+## 3. Local Image Description (Vision)
 
-Below are two configuration templates for a fully local-only inference pipeline (chat, embeddings, STT, and TTS).
+With the `feature-local-image` patch, you can point OpenAI-compatible vision/image-description requests to a local service (like `llama.cpp` llama-server with a LLaVA-style multimodal model running on port `50100`).
+
+### Configuration
+
+Add the following to your `~/.librefang/config.toml` file:
+
+```toml
+[media]
+image_description = true
+image_provider = "openai"           # Use OpenAI-compatible Chat Completions protocol
+image_model = ""                    # Target model ID (can be empty for local servers)
+image_base_url = "http://localhost:50100/v1"  # Local Vision server base URL
+video_description = false
+```
+
+And define `OPENAI_API_KEY` (even a dummy value like `"unused"`) in your `librefang.env` environment file:
+```shell
+OPENAI_API_KEY="unused"
+```
+
+---
+
+## 4. Local-Only `config.toml` Examples
+
+Below are two configuration templates for a fully local-only inference pipeline (chat, embeddings, STT, TTS, and Vision).
 
 ### Scenario A: Single-Port Setup (Both LLM and Embeddings on the same port)
 This configuration targets a unified local inference server (such as `llama-server` from `llama.cpp`) running on port `50080` that exposes both LLM and embeddings endpoints. This avoids using a separate placeholder provider (the "vllm hack").
@@ -77,12 +101,17 @@ embedding_provider = "openai"
 embedding_model = "qwen3-embedding"
 embedding_dimensions = 1536
 
-# 3. Speech-to-Text (e.g. whisper-server on port 50090)
+# 3. Speech-to-Text & Image Description (e.g. whisper-server on 50090, vision-server on 50100)
 [media]
 audio_transcription = true
 audio_provider = "openai"
 audio_model = "whisper-1"
 audio_base_url = "http://localhost:50090/v1"
+image_description = true
+image_provider = "openai"
+image_base_url = "http://localhost:50100/v1"
+image_model = ""
+video_description = false
 
 # 4. Text-to-Speech (e.g. kokoro-tts-server on port 50095)
 [tts]
@@ -120,12 +149,17 @@ embedding_provider = "openai"
 embedding_model = "qwen3-embedding"
 embedding_dimensions = 1536
 
-# 3. Speech-to-Text (e.g. whisper-server on port 50090)
+# 3. Speech-to-Text & Image Description (e.g. whisper-server on 50090, vision-server on 50100)
 [media]
 audio_transcription = true
 audio_provider = "openai"
 audio_model = "whisper-1"
 audio_base_url = "http://localhost:50090/v1"
+image_description = true
+image_provider = "openai"
+image_base_url = "http://localhost:50100/v1"
+image_model = ""
+video_description = false
 
 # 4. Text-to-Speech (e.g. kokoro-tts-server on port 50095)
 [tts]
