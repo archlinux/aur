@@ -1,37 +1,32 @@
-# Maintainer:
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Marco Rubin <marco.rubin@protonmail.com>
 
-_module="xmpppy"
-_pkgname="python-$_module"
-pkgname="$_pkgname"
-pkgver=0.7.3
+pkgname=python-xmpppy
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Python implementation of XMPP (RFC3920, RFC3921)"
 url="https://github.com/xmpppy/xmpppy"
-license=('GPL-3.0-only')
-arch=('any')
-
-depends=(
-  'python'
-)
-makedepends=(
-  'python-build'
-  'python-installer'
-  'python-setuptools'
-  'python-wheel'
-)
-
-_pkgsrc="$_module-$pkgver"
-_pkgext="tar.gz"
-source=("$_pkgsrc.$_pkgext"::"$url/archive/$pkgver.$_pkgext")
-sha256sums=('11b0359583be5c3e93824436af5c5a65766e6ff16bb04fcf0855a66f40e959c0')
+license=(GPL-3.0-only)
+arch=(any)
+depends=(python)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+# checkdepends=(python-pytest python-pytz python-six)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('91b09d7f410a40c644e592f1a7accb685ad457e746a9fd83d7a3a69bf18d3866')
 
 build() {
-  cd "$_pkgsrc"
-  python -m build --wheel --no-isolation
+    cd "xmpppy-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
+# check() {
+#     cd "xmpppy-$pkgver"
+#     python -m venv --system-site-packages test-env
+#     test-env/bin/python -m installer dist/*.whl
+#     test-env/bin/python -P -m pytest -x -o addopts=""
+# }
+
 package() {
-  cd "$_pkgsrc"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "xmpppy-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
