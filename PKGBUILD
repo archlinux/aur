@@ -2,8 +2,8 @@
 # Contributor: jakka <jakka@jakka.su>
 
 pkgname=pass-secret-service
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="An org.freedesktop.secrets provider with a pass backend"
 arch=('x86_64' 'aarch64')
 url="https://github.com/grimsteel/pass-secret-service"
@@ -16,7 +16,7 @@ conflicts=('pass-secret-service-bin' 'pass-secret-service-git' 'gnome-keyring')
 _tag=v${pkgver}
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
-b2sums=('e9c5aae7fcfc348d092cb25f98821aac98fe17e746f89e5f0e93412409d887c6bbbc0076badd6e9e11858bb68abeba97a00cf52f99597e2bbd02e804d01ad9b8')
+b2sums=('2a50e512ac20f1e13566d1f92e88946c5078f55f5e3df868a4c28c7d4888b3dab11d05f63556495fb7540a2f1b224702027c49ff30bc23a761f808c5746de713')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
