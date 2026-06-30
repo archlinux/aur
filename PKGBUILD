@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=claudectl-bin
-pkgver=0.47.0
+pkgver=0.61.0
 pkgrel=1
 pkgdesc="Auto-pilot for Claude Code — local LLM watches sessions and decides what to approve"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('claudectl' 'claudectl-git')
 options=('!strip')
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/mercurialsolo/claudectl/v${pkgver}/LICENSE")
 sha256sums=('c7335fce47998935bbe76ef2fe9dfeb0ba7b7fb8f0edec16127a0a370f6c8b80')
-sha256sums_x86_64=('3ef3befd926cad32eb92d095a90553e059ace186b67adb8a3520e73fe5312a18')
-sha256sums_aarch64=('754f210953ec12addb5e657bf238dfe3796a9535382c92ac149b7e4d84205ec9')
+sha256sums_x86_64=('fbfdb899d16a8c1b7a4e46db40dcd0c5cf7c8727fee486370a8f919c528f18f4')
+sha256sums_aarch64=('b2d3584b91c7d55c34b2e3eebc91df5443c1a0ff6f48f7c215fbce08ac99ccac')
 
 _base_url="https://github.com/mercurialsolo/claudectl/releases/download/v${pkgver}"
 
