@@ -1,0 +1,4 @@
+[zensical-bin]
+source = "git"
+git = "https://github.com/zensical/zensical.git"
+prefix = "v"
