@@ -1,5 +1,5 @@
 pkgname=php-decimal-git
-pkgver=v2.0.r128.46f58c1
+pkgver=v2.0.r195.d09287c
 pkgrel=1
 pkgdesc="Correctly-rounded, arbitrary precision decimal floating-point arithmetic in PHP 8"
 arch=("i686" "x86_64")
@@ -7,7 +7,7 @@ url="https://php-decimal.github.io"
 license=("MIT")
 depends=("php" "mpdecimal")
 makedepends=("git")
-source=("$pkgname"::"git+https://github.com/php-decimal/ext-decimal.git#branch=2.0")
+source=("$pkgname"::"git+https://github.com/php-decimal/ext-decimal.git#tag=v2.0.2")
 md5sums=('SKIP')
 _ininame="decimal.ini"
 _inifile="etc/php/conf.d/$_ininame"

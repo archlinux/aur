@@ -1,6 +1,6 @@
 pkgbase = php-decimal-git
 	pkgdesc = Correctly-rounded, arbitrary precision decimal floating-point arithmetic in PHP 8
-	pkgver = v2.0.r128.46f58c1
+	pkgver = v2.0.r195.d09287c
 	pkgrel = 1
 	url = https://php-decimal.github.io
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = php-decimal-git
 	depends = php
 	depends = mpdecimal
 	backup = etc/php/conf.d/decimal.ini
-	source = php-decimal-git::git+https://github.com/php-decimal/ext-decimal.git#branch=2.0
+	source = php-decimal-git::git+https://github.com/php-decimal/ext-decimal.git#tag=v2.0.2
 	md5sums = SKIP
 
 pkgname = php-decimal-git
