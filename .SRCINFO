@@ -1,0 +1,12 @@
+pkgbase = richmond-council-rss
+	pkgdesc = Scrapes the Richmond upon Thames council news pages and serves them as an RSS feed
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/dcelasun/richmond-council-rss
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = richmond-council-rss-0.0.4.tar.gz::https://github.com/dcelasun/richmond-council-rss/archive/refs/tags/v0.0.4.tar.gz
+	sha256sums = a5d762b2115a3dbad45e70c0bb606689a8a5cd8210087d4772f00b0869fdb6e3
+
+pkgname = richmond-council-rss
