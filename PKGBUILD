@@ -3,7 +3,7 @@
 pkgbase=strata
 pkgname=('strata-daemon' 'gnome-shell-extension-strata')
 _uuid='strata@edu4rdshl.dev'
-pkgver=0.8.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='A fast, stutter-free clipboard manager'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 makedepends=('cargo' 'glib2')
 options=(!lto)
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/Edu4rdSHL/Strata/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('b4967921ef08a73830eb707772cf94d3bef70fa88d6b105002a39c8e30421c9cbeb6f29a322b13b6213ce0c2d8ae7a5c2ca96c2cc9928d0c5fb81c4b402d51ac')
+b2sums=('61f7db17b6b28dc53d00038dd2dd68ef5e2cb81dafc9d11b2a48fa291d8f76ead9730412a0fc45aaf51ef158bb7437c04a68edad662672dcf64eda7ab93e53e1')
 
 prepare() {
   cd "Strata-${pkgver}"
