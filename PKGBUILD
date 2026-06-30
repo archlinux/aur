@@ -3,14 +3,16 @@
 # Contributors: Det, goetzc, Ner0, Lari Tikkanen, oke3, Flamelab, WAntilles
 
 pkgname=smplayer-git
-pkgver=25.6.0.r49.gf626556
+pkgver=25.6.0.r68.gd6342f1
 pkgrel=1
 pkgdesc='Media player with built-in codecs that can play virtually all video and audio formats'
 arch=(x86_64)
 url=https://www.smplayer.info
 license=(GPL-2.0-or-later)
-depends=(glibc qt5-base qt5-declarative mpv libx11 zlib gcc-libs hicolor-icon-theme)
-makedepends=(git qt5-tools)
+#depends=(glibc qt5-base qt5-declarative mpv libx11 zlib gcc-libs hicolor-icon-theme)
+#makedepends=(git qt5-tools)
+depends=(glibc qt6-base qt6-declarative qt6-5compat mpv libx11 zlib gcc-libs hicolor-icon-theme)
+makedepends=(git qt6-tools)
 optdepends=(
   'smplayer-themes: icon themes collection'
   'smplayer-skins: skin themes collection'
@@ -20,7 +22,8 @@ optdepends=(
   'mplayer: alternative multimedia engine')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("$pkgname::git+https://github.com/smplayer-dev/smplayer.git")
+#source=("$pkgname::git+https://github.com/smplayer-dev/smplayer.git")
+source=("$pkgname::git+https://github.com/smplayer-dev/smplayer.git#branch=qt6")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -28,7 +31,7 @@ pkgver() {
 }
 
 prepare() {
-  # Make build reproducible, we compress ourselves
+  # Compress to make build reproducible
   sed '/gzip -9/d' -i $pkgname/Makefile
 }
 
@@ -43,6 +46,7 @@ build() {
   make -C $pkgname \
     PREFIX=/usr \
     DOC_PATH="\\\"/usr/share/doc/smplayer\\\"" \
+    QMAKE=qmake6 LRELEASE=lrelease6 \
     QMAKE_OPTS=DEFINES+=NO_DEBUG_ON_CONSOLE \
     CFLAGS_EXTRA="${CFLAGS} ${CPPFLAGS} ${LDFLAGS}" \
     all

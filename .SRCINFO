@@ -1,15 +1,16 @@
 pkgbase = smplayer-git
 	pkgdesc = Media player with built-in codecs that can play virtually all video and audio formats
-	pkgver = 25.6.0.r49.gf626556
+	pkgver = 25.6.0.r68.gd6342f1
 	pkgrel = 1
 	url = https://www.smplayer.info
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = git
-	makedepends = qt5-tools
+	makedepends = qt6-tools
 	depends = glibc
-	depends = qt5-base
-	depends = qt5-declarative
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-5compat
 	depends = mpv
 	depends = libx11
 	depends = zlib
@@ -22,7 +23,7 @@ pkgbase = smplayer-git
 	optdepends = mplayer: alternative multimedia engine
 	provides = smplayer
 	conflicts = smplayer
-	source = smplayer-git::git+https://github.com/smplayer-dev/smplayer.git
+	source = smplayer-git::git+https://github.com/smplayer-dev/smplayer.git#branch=qt6
 	sha256sums = SKIP
 
 pkgname = smplayer-git
