@@ -1,4 +1,5 @@
 # Maintainer: Flinner Yuu <flinner @ tilde DOT team>
+# Maintainer: Jeaye Wilkerson <jeaye @ jank-lang DOT org>
 pkgname='jank-bin'
 # package is always version 0.1-1 (until stable release). So I use date of the tarball.
 pkgver=20250914
