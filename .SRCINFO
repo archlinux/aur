@@ -1,0 +1,21 @@
+pkgbase = ggsql
+	pkgdesc = SQL extension for declarative data visualization
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/posit-dev/ggsql
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = tree-sitter-cli
+	makedepends = nodejs
+	makedepends = libstdc++
+	depends = glibc
+	depends = libgcc
+	conflicts = ggsql-bin
+	options = !lto
+	options = !debug
+	source = ggsql-0.4.1.tar.gz::https://github.com/posit-dev/ggsql/archive/v0.4.1.tar.gz
+	sha512sums = 88438a2b98a6c8bbcde885f47f4aac21c6dddcfe3e3a2b4ab732089542f2e7de61673f47c9ffa3e5413a8e3f9ab3aaaf52824debf60eab850010c20f6bcfacb8
+
+pkgname = ggsql
