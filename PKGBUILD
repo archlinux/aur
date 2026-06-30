@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=limSolve
-_pkgver=2.0.2
+_pkgver=2.0.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ab047e452b906091cad9044c8c2626a3')
-b2sums=('2ef71f1fbddb9fe36b9ce8b3fbc3aebce4a6179a92e7e6ceff4a45da65f2ff457bbab6bb8cc29c4454ec448b91ae23c7f8584295169b851c31db7d48d41cd678')
+md5sums=('e09cf5154d07df513df07dfd2f0f86fd')
+b2sums=('201984e8fe86b8c1b9a3720869337cf84c06add15ff0faa6da5c6eaf6d754650f5fbc09c6d9efb2053ee500202ac9a2ee851dfdc5f1810f9a46f17682a02e443')
 
 build() {
   mkdir build
