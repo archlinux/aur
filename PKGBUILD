@@ -64,8 +64,15 @@ prepare() {
   # Install dependencies for sticker-creator
   pnpm install --dir sticker-creator
 
+  # Configure electron-builder's Linux target for the current Arch architecture.
+  case "${CARCH}" in
+    "aarch64") electron_arch="arm64" ;;
+    *) electron_arch="x64" ;;
+  esac
+  node scripts/prepare_linux_build.mjs deb "${electron_arch}"
+
   # Install dependencies for signal-desktop
-  pnpm install
+  pnpm install --frozen-lockfile
 }
 
 build() {
