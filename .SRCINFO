@@ -1,12 +1,12 @@
 pkgbase = bombini
 	pkgdesc = A lightning-fast, fuzzy-matching application launcher daemon written in C
-	pkgver = 1.0.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/manuelsanta06/bombini
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	source = bombini-1.0.2.tar.gz::https://github.com/manuelsanta06/bombini/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = d8cf14d27be614b5cb44cb3008363905cdacfd00528bd20899218b7518453356
+	source = bombini-1.2.0.tar.gz::https://github.com/manuelsanta06/bombini/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 72b751895e2fb746dc88b4b53359292032e762190429a1adbbfb2f737abde7e9
 
 pkgname = bombini
