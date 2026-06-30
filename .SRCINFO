@@ -1,6 +1,6 @@
 pkgbase = git.gay
 	pkgdesc = discontinued aur package
-	pkgver = 0.0.0
+	pkgver = 0
 	pkgrel = 0
 	arch = x86_64
 
