@@ -3,7 +3,7 @@
 _hkgname=hmenu
 pkgname=haskell-hmenu
 pkgver=0.3.0.0
-pkgrel=2
+pkgrel=3
 commit=e907cec63f8445f25768260d707abfe3ee334c20
 pkgdesc="CLI fuzzy finder and launcher"
 url="https://hackage.haskell.org/package/hmenu"
