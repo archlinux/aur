@@ -1,9 +1,9 @@
-# Maintainer: Adam Scheerer <poco.a5v92@simplelogin.com>
+# Maintainer: poco <poco.a5v92@simplelogin.com>
 
 pkgname=radaromega-appimage
 _pkgname=RadarOmega
 pkgver=5.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc="High-resolution NEXRAD radar weather app (requires subscription)"
 arch=('x86_64')
 url="https://www.radaromega.com/"
