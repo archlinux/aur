@@ -43,6 +43,10 @@ sha256sums=('SKIP'
 options=('!strip' '!debug' 'emptydirs')
 
 prepare() {
+  # Rename downloaded file to expected name
+  cd "$srcdir"
+  mv download "cinnamon-$pkgver-$pkgrel-x86_64.pkg.tar.zst" 2>/dev/null || true
+
   # Extract the official package
   mkdir -p extracted
   cd extracted
