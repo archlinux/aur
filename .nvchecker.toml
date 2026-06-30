@@ -1,0 +1,4 @@
+[run0-sudo-shim]
+source = "github"
+github = "LordGrimmauld/run0-sudo-shim"
+use_latest_release = true

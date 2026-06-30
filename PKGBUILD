@@ -1,7 +1,7 @@
 # Maintainer: Ryan Putrama Yahya <punkofthedeath at gmail.com>
 
 pkgname=run0-sudo-shim
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="An imitation of sudo, using run0 internally - WARNING: !!! THIS REPLACES SUDO !!!"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('rust')
 provides=('sudo')
 conflicts=('sudo' 'run0-sudo-shim-git')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('bc3f535bf9eb2bf74be4b4408b3c7d543a53d97fa207c69158abd1dab16435b0')
+sha256sums=('2a81475c12e4baff3ed4dabf8c3dc13030366f827d4ac202ad80b977f5dba879')
 
 build() {
 	cd "$srcdir"/${pkgname}-${pkgver}
