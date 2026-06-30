@@ -5,6 +5,7 @@
 /opengrep
 /opengrep-crystal
 /pcre2-ocaml
+/semgrep-rules
 /semgrep-apex
 /semgrep-bash
 /semgrep-c-sharp

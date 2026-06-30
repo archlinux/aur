@@ -1,0 +1,160 @@
+diff --git a/libs/ocaml-tree-sitter-core/src/run/lib/Main.ml b/libs/ocaml-tree-sitter-core/src/run/lib/Main.ml
+index 31305d0..16b0b0e 100644
+--- a/libs/ocaml-tree-sitter-core/src/run/lib/Main.ml
++++ b/libs/ocaml-tree-sitter-core/src/run/lib/Main.ml
+@@ -116,15 +116,15 @@ of the full CST by ocaml-tree-sitter."
+ 
+ let parse_command_line ~lang =
+   let info =
+-    Term.info
++    Cmd.info
+       ~doc:(doc ~lang)
+       ~man:(man ~lang)
+       ("parse-" ^ lang)
+   in
+-  match Term.eval (cmdline_term, info) with
+-  | `Error _ -> exit Exit.bad_command_line
+-  | `Version | `Help -> exit 0
+-  | `Ok config -> config
++  match Cmd.eval_value (Cmd.v info cmdline_term) with
++  | Error _ -> exit Exit.bad_command_line
++  | Ok (`Version | `Help) -> exit 0
++  | Ok (`Ok config) -> config
+ 
+ let safe_run f =
+   Printexc.record_backtrace true;
+diff --git a/libs/ocaml-tree-sitter-core/src/gen/bin/Ocaml_tree_sitter_main.ml b/libs/ocaml-tree-sitter-core/src/gen/bin/Ocaml_tree_sitter_main.ml
+index 468f9ec..a33c184 100644
+--- a/libs/ocaml-tree-sitter-core/src/gen/bin/Ocaml_tree_sitter_main.ml
++++ b/libs/ocaml-tree-sitter-core/src/gen/bin/Ocaml_tree_sitter_main.ml
+@@ -138,7 +138,7 @@ let simplify_cmd =
+     `P "Check out bug reports at
+         https://github.com/returntocorp/ocaml-tree-sitter/issues.";
+   ] in
+-  let info = Term.info ~doc ~man "simplify" in
++  let info = Cmd.info ~doc ~man "simplify" in
+   let config grammar output_path =
+     Simplify { grammar; output_path }
+   in
+@@ -190,7 +190,7 @@ let to_js_cmd =
+     `P "Check out bug reports at
+         https://github.com/returntocorp/ocaml-tree-sitter/issues.";
+   ] in
+-  let info = Term.info ~doc ~man "to-js" in
++  let info = Cmd.info ~doc ~man "to-js" in
+   let config input_path output_path sort_choices sort_rules =
+     To_JS { input_path; output_path; sort_choices; sort_rules }
+   in
+@@ -229,7 +229,7 @@ let gen_cmd =
+       https://github.com/returntocorp/ocaml-tree-sitter/issues.";
+   ] in
+   let version = "0.0.0" in
+-  let info = Term.info ~version ~doc ~man "gen" in
++  let info = Cmd.info ~version ~doc ~man "gen" in
+ 
+   (cmdline_term, info)
+ 
+@@ -245,17 +245,20 @@ let root_cmd =
+     `P "Check out bug reports at
+       https://github.com/returntocorp/ocaml-tree-sitter/issues.";
+   ] in
+   let doc = "Generate OCaml parsers based on tree-sitter grammars" in
+-  let info = Term.info ~man ~doc "ocaml-tree-sitter" in
++  let info = Cmd.info ~man ~doc "ocaml-tree-sitter" in
+   (root_term, info)
+ 
+ let subcommands = [gen_cmd; simplify_cmd; to_js_cmd]
+ 
+ let parse_command_line () : cmd_conf =
+-  match Term.eval_choice root_cmd subcommands with
+-  | `Error _ -> exit 1
+-  | `Version | `Help -> exit 0
+-  | `Ok conf -> conf
++  let root_term, root_info = root_cmd in
++  let commands = List.map (fun (term, info) -> Cmd.v info term) subcommands in
++  let cmd = Cmd.group ~default:root_term root_info commands in
++  match Cmd.eval_value cmd with
++  | Error _ -> exit 1
++  | Ok (`Version | `Help) -> exit 0
++  | Ok (`Ok conf) -> conf
+ 
+ let main () =
+   Printexc.record_backtrace true;
+diff --git a/libs/spacegrep/src/bin/Spacegrep_main.ml b/libs/spacegrep/src/bin/Spacegrep_main.ml
+index d9aa553..017908e 100644
+--- a/libs/spacegrep/src/bin/Spacegrep_main.ml
++++ b/libs/spacegrep/src/bin/Spacegrep_main.ml
+@@ -494,15 +494,13 @@ let man =
+     `P "semgrep, spacecat";
+   ]
+ 
+-let info name = Term.info ~doc ~man name
++let info name = Cmd.info ~doc ~man name
+ 
+ let parse_command_line name =
+-  match Term.eval (cmdline_term, info name) with
+-  | `Error _ -> exit 1
+-  | `Version
+-  | `Help ->
+-      exit 0
+-  | `Ok config -> config
++  match Cmd.eval_value (Cmd.v (info name) cmdline_term) with
++  | Error _ -> exit 1
++  | Ok (`Version | `Help) -> exit 0
++  | Ok (`Ok config) -> config
+ 
+ (*
+    Entry point for calling the command 'spacegrep' directly.
+diff --git a/libs/spacegrep/src/bin/Spacecat_main.ml b/libs/spacegrep/src/bin/Spacecat_main.ml
+index 5fecdc8..58422ef 100644
+--- a/libs/spacegrep/src/bin/Spacecat_main.ml
++++ b/libs/spacegrep/src/bin/Spacecat_main.ml
+@@ -71,15 +71,13 @@ let man =
+     `P "spacegrep(1)";
+   ]
+ 
+-let info name = Term.info ~doc ~man name
++let info name = Cmd.info ~doc ~man name
+ 
+ let parse_command_line name =
+-  match Term.eval (cmdline_term, info name) with
+-  | `Error _ -> exit 1
+-  | `Version
+-  | `Help ->
+-      exit 0
+-  | `Ok config -> config
++  match Cmd.eval_value (Cmd.v (info name) cmdline_term) with
++  | Error _ -> exit 1
++  | Ok (`Version | `Help) -> exit 0
++  | Ok (`Ok config) -> config
+ 
+ let run_one config input =
+   let src =
+diff --git a/libs/commons/Cmdliner_.ml b/libs/commons/Cmdliner_.ml
+index d1c55be..2c7bd9f 100644
+--- a/libs/commons/Cmdliner_.ml
++++ b/libs/commons/Cmdliner_.ml
+@@ -104,7 +104,7 @@ let units_conversion =
+ let number_of_bytes_converter : int Cmdliner.Arg.conv =
+   let parser s =
+     let fail =
+-      `Error (spf "Invalid representation for a number of bytes: %s" s)
++      Error (`Msg (spf "Invalid representation for a number of bytes: %s" s))
+     in
+     let s = String.uppercase_ascii s in
+     if s =~ "^\\([^ BKMGT]*\\)[ ]*\\([BKMGT][A-Z]*\\)$" then
+@@ -113,11 +113,11 @@ let number_of_bytes_converter : int Cmdliner.Arg.conv =
+         (float_of_string_opt number, List.assoc_opt unit units_conversion)
+       with
+-      | Some n, Some unit -> `Ok (int_of_float (n *. unit))
++      | Some n, Some unit -> Ok (int_of_float (n *. unit))
+       | _else_ -> fail
+     else
+       match int_of_string_opt s with
+-      | Some i -> `Ok i
++      | Some i -> Ok i
+       | None -> fail
+   in
+   let printer ppf x = Format.pp_print_int ppf x in
+-  (parser, printer)
++  Cmdliner.Arg.conv (parser, printer)

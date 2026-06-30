@@ -1,9 +1,9 @@
 # Maintainer: Julian Houba <info@craftingdragon.ch>
 pkgname=opengrep
-pkgver=1.23.0
+pkgver=1.24.0
 pkgrel=1
 _memprof_limits_commit=c2cced325a93d2271379f0712db85867b29dbee1
-_opam_switch_stamp=arch-ocaml-system-cmdliner-1
+_opam_switch_stamp=arch-ocaml-system-cmdliner-2
 pkgdesc="Lightweight static analysis for many languages. Find bug variants with patterns that look like source code. Fork of semgrep"
 arch=('x86_64' 'aarch64')
 url="https://github.com/opengrep/opengrep"
@@ -45,7 +45,7 @@ makedepends=(
 )
 
 _submodules=(
-  'OSS/cli/src/semgrep/semgrep_interfaces|cli/src/semgrep/semgrep_interfaces|semgrep-interfaces|https://github.com/opengrep/semgrep-interfaces.git|7af2745879fa303b4082b9b70ce1fcc75bd46eb2'
+  'OSS/cli/src/semgrep/semgrep_interfaces|cli/src/semgrep/semgrep_interfaces|semgrep-interfaces|https://github.com/opengrep/semgrep-interfaces.git|977c2a9b30e472c303930104414184c76bbadda8'
   'languages/apex/tree-sitter/semgrep-apex|languages/apex/tree-sitter/semgrep-apex|semgrep-apex|https://github.com/opengrep/semgrep-apex.git|f2a235f997379033a8c64f0962d5ef1252629a0a'
   'OSS/languages/bash/tree-sitter/semgrep-bash|languages/bash/tree-sitter/semgrep-bash|semgrep-bash|https://github.com/opengrep/semgrep-bash|e6f3944f59b684b212a37bdec6b113621a1ad9ea'
   'OSS/languages/cairo/tree-sitter/semgrep-cairo|languages/cairo/tree-sitter/semgrep-cairo|semgrep-cairo|https://github.com/opengrep/semgrep-cairo|3e4d0ded8fc62dbb03232193721bf6bb376bfc62'
@@ -84,16 +84,19 @@ _submodules=(
   'OSS/libs/ocaml-tree-sitter-core|libs/ocaml-tree-sitter-core|ocaml-tree-sitter-core|https://github.com/opengrep/ocaml-tree-sitter-core.git|fb72747f328c156b6c8f3b8bea74454190576e04'
   'OSS/libs/pcre2|libs/pcre2|pcre2-ocaml|https://github.com/semgrep/pcre2-ocaml|4e0a44486bb518b7a24ca11286c4b03a8d51e17e'
   'OSS/libs/testo|libs/testo|testo|https://github.com/semgrep/testo.git|99a0d4f08d9cbabc87d10da94a534ce8a1220cd9'
+  'OSS/tests/semgrep-rules|tests/semgrep-rules|semgrep-rules|https://github.com/semgrep/semgrep-rules.git|f0a382de1184139c5a356eb64ccd9bdfcc8ce526'
 )
 
 source=(
   "${pkgname}::git+https://github.com/opengrep/opengrep.git#tag=v${pkgver}"
   "memprof-limits::git+https://gitlab.com/dimitris-m/memprof-limits.git#commit=${_memprof_limits_commit}"
+  'cmdliner-2.patch'
 )
 
 sha256sums=(
     'SKIP'
     'SKIP'
+    '32b473e58ab10521378985d36c7024a93c34f6b65da4b97be493bb812ec577c1'
 )
 
 for _submodule in "${_submodules[@]}"; do
@@ -116,12 +119,12 @@ prepare() {
     _submodule_paths+=("${_path}")
   done
 
-  git -c protocol.file.allow=always submodule update --init "${_submodule_paths[@]}"
+  git -c protocol.file.allow=always submodule update --init --force "${_submodule_paths[@]}"
+
+  patch -Np1 -i "${srcdir}/cmdliner-2.patch"
 
   sed -i \
-    -e 's/"cmdliner" {>= "1.1.1"}/"cmdliner" {>= "1.1.1" \& < "2.0.0"}/' \
-    -e 's/^  "cmdliner"$/  "cmdliner" {< "2.0.0"}/' \
-    -e 's/(cmdliner (>= "1.1.1" ))/(cmdliner (and (>= "1.1.1") (< "2.0.0")))/' \
+    -e 's/"cmdliner" {< "2.0.0"}/"cmdliner"/' \
     -e 's/"ppxlib" {= "0.35.0"}/"ppxlib" {>= "0.37.0" \& < "0.38.0"}/' \
     -e 's/"visitors" {= "20250212"}/"visitors" {= "20251114"}/' \
     -e 's/(ppxlib (= "0.35.0"))/(ppxlib (and (>= "0.37.0") (< "0.38.0")))/' \
@@ -157,7 +160,7 @@ build() {
   export OPAMYES=1
   export OPAMERRLOGLEN=0
 
-  local _system_ocamlver
+  local _switch_stamp= _system_ocamlver
   _system_ocamlver="$(ocamlc -version)"
 
   if [[ ! -d "${OPAMROOT}" ]]; then
@@ -165,9 +168,12 @@ build() {
   fi
 
   if opam switch list --short | grep -Fxq "${pkgname}"; then
+    if [[ -f "${OPAMROOT}/${pkgname}/.opengrep-package-switch" ]]; then
+      _switch_stamp="$(<"${OPAMROOT}/${pkgname}/.opengrep-package-switch")"
+    fi
     if [[ "$(opam exec --switch="${pkgname}" -- ocamlc -version 2>/dev/null)" != "${_system_ocamlver}" ]] || \
-       [[ "$(<"${OPAMROOT}/${pkgname}/.opengrep-package-switch" 2>/dev/null || :)" != "${_opam_switch_stamp}" ]]; then
-      opam switch remove "${pkgname}"
+       [[ "${_switch_stamp}" != "${_opam_switch_stamp}" ]]; then
+      opam switch remove -y "${pkgname}"
     fi
   fi
 
@@ -180,8 +186,9 @@ build() {
   opam pin --switch="${pkgname}" add -n -k path \
     memprof-limits.dev "${srcdir}/memprof-limits"
 
-  OPAMSOLVERTIMEOUT=1200 opam install --switch="${pkgname}" \
+  LDFLAGS= OPAMSOLVERTIMEOUT=1200 opam install --switch="${pkgname}" \
     --assume-depexts \
+    --ignore-pin-depends \
     --deps-only \
     ./opam/semgrep.opam \
     ./libs/ocaml-tree-sitter-core/tree-sitter.opam
@@ -194,11 +201,14 @@ build() {
     cli/src/semgrep/bin/opengrep-core
 
   cd cli
+  rm -rf dist
   python -m build --wheel --no-isolation
 }
 
 check() {
   cd "${pkgname}"
+
+  local _lang="${LANG-}" _lang_is_set="${LANG+x}" _status
 
   export OPAMROOT="${srcdir}/opam-root"
   export OPAMYES=1
@@ -206,12 +216,33 @@ check() {
   export OCAMLPATH="${OPAMROOT}/${pkgname}/lib"
   export LANG=C # Needed for e2e and git tests to pass
 
-  opam exec --switch="${pkgname}" -- make core-test
+  if opam exec --switch="${pkgname}" -- make core-test; then
+    _status=0
+  else
+    _status=$?
+  fi
+
+  if [[ -n "${_lang_is_set}" ]]; then
+    export LANG="${_lang}"
+  else
+    unset LANG
+  fi
+
+  return "${_status}"
 }
 
 package() {
   cd "${pkgname}/cli"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  local -a _wheels
+  shopt -s nullglob
+  _wheels=(dist/*.whl)
+  if (( ${#_wheels[@]} != 1 )); then
+    error "Expected exactly one wheel in cli/dist, found ${#_wheels[@]}"
+    return 1
+  fi
+
+  python -m installer --destdir="${pkgdir}" "${_wheels[0]}"
 
   cd ..
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
