@@ -216,4 +216,20 @@ package() {
         install -Dm644 "$srcdir/kglobalacceld/LICENSES/"* \
             -t "$pkgdir/usr/share/licenses/$pkgname-kglobalacceld/" 2>/dev/null || true
     fi
+
+    # Install Wayland session launcher (start-kineticwe)
+    echo "==> Installing start-kineticwe session launcher..."
+    sed -e "s|@INSTALL_PREFIX@|/usr|g" \
+        -e 's|if \[\[ "\$_INSTALL_PREFIX_" == "/usr" \]\]; then|if false; then # system-wide install, use /usr as prefix|' \
+        "$srcdir/$_sourcebase/scripts/start-kineticwe.sh" \
+        > "$pkgdir/usr/bin/start-kineticwe"
+    chmod 0755 "$pkgdir/usr/bin/start-kineticwe"
+
+    # Install Wayland session desktop entry (for SDDM, greetd, etc.)
+    echo "==> Installing wayland-sessions desktop entry..."
+    mkdir -p "$pkgdir/usr/share/wayland-sessions"
+    sed -e "s|@INSTALL_PREFIX@|/usr|g" \
+        "$srcdir/$_sourcebase/scripts/kineticwe.desktop.in" \
+        > "$pkgdir/usr/share/wayland-sessions/kineticwe.desktop"
+    chmod 0644 "$pkgdir/usr/share/wayland-sessions/kineticwe.desktop"
 }
