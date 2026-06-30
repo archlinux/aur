@@ -1,0 +1,36 @@
+_reminder() {
+    cat <<'EOF'
+
+==================================================
+  gloview installed
+==================================================
+  Plugin:  /usr/lib/gloview.so
+
+  Load it from ~/.config/hypr/hyprland.conf:
+      plugin = /usr/lib/gloview.so
+
+  Or at runtime:
+      hyprctl plugin load /usr/lib/gloview.so
+
+  Toggle the overview:
+      hyprctl gloview
+  Bind it, e.g.:
+    hl.bind("SUPER + TAB", hl.plugin.gloview.toggle)
+    hl.bind("SUPER + SHIFT + TAB", hl.plugin.gloview.desktop)
+    hl.bind("SUPER + CTRL + TAB", hl.plugin.gloview.allworkspaces)
+    or
+    bind = SUPER, TAB, gloview:toggle
+    bind = SUPER SHIFT, TAB, gloview:desktop
+    bind = SUPER CTRL, TAB, gloview:allworkspaces
+
+==================================================
+EOF
+}
+
+post_install() {
+    _reminder
+}
+
+post_upgrade() {
+    _reminder
+}
