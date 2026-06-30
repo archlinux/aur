@@ -40,6 +40,6 @@ pkgbase = desktop-plus-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = ccf8e189b15a46a00363c7a40299762ef313827aa4809140f7940c5801db2e27
-	sha256sums = b9c24de9a78b4e4d444cb0ba38817b13acd87c514dd64dd30fce2593e34a11cf
+	sha256sums = 80adbdb3c6f82f3782604f7590b0f137d937dcba3d8aa1b29836c89abb58f851
 
 pkgname = desktop-plus-git
