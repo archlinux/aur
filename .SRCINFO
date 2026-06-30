@@ -1,7 +1,7 @@
 pkgbase = zcode-desktop-bin
 	pkgdesc = ZCode desktop app repackaged from official Linux release
 	pkgver = 3.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://zcode.z.ai/en
 	install = zcode-desktop-bin.install
 	arch = x86_64
