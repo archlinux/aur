@@ -1,6 +1,6 @@
-# Maintainer: Algorant <Algorantic@proton.me>
+# Maintainer: Algorant
 pkgname=xurl
-pkgver=1.1.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Auth-enabled curl-like CLI for the X API"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5ea2ad727154d7de255443139abfe08c98e3968a15c46e495f8591d2cad2d97a')
+sha256sums=('5047a4c4897939240b3c30ce67437298de3d14e29d38cc45e98f1e8fd2cc690b')
 
 build() {
   cd "$pkgname-$pkgver"
