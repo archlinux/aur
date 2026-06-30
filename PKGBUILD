@@ -1,5 +1,5 @@
 pkgname=garmin-tracker-rs
-pkgver=1.3.7
+pkgver=1.3.8
 pkgrel=1
 pkgdesc='Sync your devices and track your strength training'
 arch=('x86_64')
@@ -35,5 +35,5 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname}/src-tauri/target/release/bundle/deb"
-  cp -a Garmin\ Fit\ Tracker_${pkgver}_*/data/* "${pkgdir}"
+  cp -a Garmin\ Tracker_${pkgver}_*/data/* "${pkgdir}"
 }
