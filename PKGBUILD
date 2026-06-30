@@ -2,7 +2,7 @@
 pkgname=cpumon
 pkgver=0.2.3
 pkgrel=3
-pkgdesc='Real-time CPU monitoring for Linux — temperatures, frequencies, throttling, and fan status'
+pkgdesc='Real-time CPU monitoring for Linux - temperatures, frequencies, throttling, and fan status'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Mohabdo21/cpumon'
 license=('MIT')
