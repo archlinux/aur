@@ -3,9 +3,8 @@
 # Contributor: Bruno Pagani <archange@archlinux.org>
 # Contributor: Robert Schiele <rschiele@gmail.com>
 
-_pkgbase=prusa-slicer
-pkgbase=$_pkgbase-no-webkit
-pkgname=($_pkgbase-no-webkit slicer-udev)
+_pkgname=prusa-slicer
+pkgname=$_pkgname-no-webkit
 pkgver=2.9.6
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r, without webkit support)"
@@ -22,7 +21,7 @@ makedepends=('cmake' 'systemd' 'glu' 'ninja' 'git' 'python' 'boost' 'catch2'
 options=('!makeflags')
 provides=('prusa-slicer')
 conflicts=('prusa-slicer')
-source=(https://github.com/prusa3d/PrusaSlicer/archive/version_${pkgver/_/-}/${_pkgbase}-${pkgver/_/-}.tar.gz
+source=(https://github.com/prusa3d/PrusaSlicer/archive/version_${pkgver/_/-}/${_pkgname}-${pkgver/_/-}.tar.gz
         fixes_boost.patch
         fixes_cgal.patch
         fixes_nanosvg.patch
@@ -128,7 +127,7 @@ check() {
   ctest
 }
 
-package_prusa-slicer-no-webkit() {
+package() {
   optdepends=('slicer-udev: 3D printer connection rules')
 
   DESTDIR="$pkgdir" ninja -C build_${pkgver} install
@@ -138,14 +137,6 @@ package_prusa-slicer-no-webkit() {
   ln -s /usr/share/PrusaSlicer/icons/PrusaSlicer.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/PrusaSlicer.svg
   ln -s /usr/share/PrusaSlicer/icons/PrusaSlicer-gcodeviewer.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/PrusaSlicer-gcodeviewer.svg
 
-  # Split udev rule
-  mv "${pkgdir}"/usr/lib/udev/ "$srcdir"
-}
-
-package_slicer-udev() {
-  pkgdesc="udev rules for Slic3r-like software"
-  depends=() # Reset dependencies
-
-  install -d "${pkgdir}"/usr/lib/
-  mv udev "${pkgdir}"/usr/lib/
+  # Provided by slicer-udev package
+  rm -r "${pkgdir}"/usr/lib/
 }

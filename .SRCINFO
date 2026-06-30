@@ -77,7 +77,3 @@ pkgbase = prusa-slicer-no-webkit
 
 pkgname = prusa-slicer-no-webkit
 	optdepends = slicer-udev: 3D printer connection rules
-
-pkgname = slicer-udev
-	pkgdesc = udev rules for Slic3r-like software
-	depends = 
