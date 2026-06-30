@@ -1,0 +1,5 @@
+[dstl]
+source = "github"
+github = "saltnpepper97/dstl"
+use_latest_release = true
+prefix = "v"
