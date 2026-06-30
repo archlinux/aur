@@ -1,7 +1,7 @@
 pkgbase = radar-omega
 	pkgdesc = Radar Omega - Advanced weather radar application (AppImage)
 	pkgver = 5.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://radaromega.com
 	arch = x86_64
 	license = proprietary
