@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=claude-history
-pkgver=0.1.60
+pkgver=0.1.68
 pkgrel=1
 pkgdesc="Fuzzy-search Claude Code conversation history from the terminal"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/raine/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('44c1b799ad7875a26b8d1d93611ff1d6373ee0dfa971beeb32dbb710a60d2852')
+sha256sums=('c7ad4c68337df872f12bad177a1b1d1c81599ae5ffd7569a8e0d17dec7eb6ed0')
 
 prepare() {
   cd "$pkgname-$pkgver"
