@@ -2,8 +2,8 @@
 
 pkgname=python-vspackrgb
 _origpkgname=vspackrgb
-pkgver=1.2.1
-pkgrel=4
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="RGB packing for VapourSynth frames"
 arch=("x86_64")
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
@@ -21,7 +21,7 @@ makedepends=(
     "python-versioningit"
 )
 source=("${pkgname}::git+${url}.git#tag=${_origpkgname}/v${pkgver}")
-sha256sums=("c8f30ccdd23839928d1139ba1bf31a66887901175c3166c678105bceea32a786")
+sha256sums=('af376e67816d21c91a5cfccf551303f383101e597e525833761e21a826094054')
 
 prepare() {
     cd "${pkgname}/src/${_origpkgname}" || exit
