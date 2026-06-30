@@ -1,13 +1,13 @@
 pkgbase = xdgctl
 	pkgdesc = TUI for managing XDG default applications
-	pkgver = 1.0
-	pkgrel = 3
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://github.com/mitjafelicijan/xdgctl
 	arch = x86_64
 	license = BSD-2-Clause
 	makedepends = gcc
 	depends = glib2
-	source = xdgctl-1.0.tar.gz::https://github.com/mitjafelicijan/xdgctl/archive/refs/tags/v1.0.tar.gz
-	sha256sums = 8f9754fd259c1bcca5ae1c64ae9b90f7c730382f608c446f154f687c896f5151
+	source = xdgctl-1.1.tar.gz::https://github.com/mitjafelicijan/xdgctl/archive/refs/tags/v1.1.tar.gz
+	sha256sums = 7c26adbff881ca15bf0801fce9016a02d52b331ebf40d57c677a1c054242648e
 
 pkgname = xdgctl
