@@ -6,7 +6,7 @@
 # Contributor: nullableVoidPtr <nullableVoidPtr _ gmail _ com>
 
 pkgname=ghidra-git
-pkgver=12.1.1.r514.cef869af04
+pkgver=12.1.2.r799.47ae57a416
 pkgrel=1
 pkgdesc='Software reverse engineering framework (git)'
 arch=('x86_64' 'aarch64') # Not sure aarch64 is correct here. Please confirm it to me in the comments if you can test that!
@@ -15,7 +15,7 @@ license=('Apache-2.0')
 provides=('ghidra')
 depends=(
   'bash'
-  'java-environment=21'
+  'java-environment>=25'
   'python'
 )
 makedepends=(
@@ -57,9 +57,9 @@ prepare() {
   cd "$_pkgname"
 
   # Check Java version (thanks @ignapk)
-  JDK_VERSION=$(java -version 2>&1)
-  if [[ ! $JDK_VERSION =~ 2[1-9]\.0 ]]; then
-    echo "FAILURE: You seem to have jdk21 or above installed correctly but your system defaults to another java version. To enable it please type: sudo archlinux-java set java-21-openjdk"
+  JDK_VERSION=$(java --version)
+  if [[ ! $JDK_VERSION =~ (2[5-9]|[3-9][0-9])\.[0-9] ]]; then
+    echo "FAILURE: You seem to have jdk25 or above installed correctly but your system defaults to another java version. To enable it please type: sudo archlinux-java set java-25-openjdk"
     exit 1
   fi
 

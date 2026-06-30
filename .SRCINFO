@@ -1,6 +1,6 @@
 pkgbase = ghidra-git
 	pkgdesc = Software reverse engineering framework (git)
-	pkgver = 12.1.1.r514.cef869af04
+	pkgver = 12.1.2.r799.47ae57a416
 	pkgrel = 1
 	url = https://www.nsa.gov/ghidra
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ghidra-git
 	makedepends = gradle
 	makedepends = python-pip
 	depends = bash
-	depends = java-environment=21
+	depends = java-environment>=25
 	depends = python
 	optdepends = ghidra-desktop: Desktop Entry
 	optdepends = python-protobuf: Debugger integration
