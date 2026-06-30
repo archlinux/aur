@@ -2,7 +2,7 @@
 
 pkgname=rebased-bin
 _pkgname=rebased
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc='Standalone JetBrains-based Git client (prebuilt binary)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('rebased')
 conflicts=('rebased')
 options=('!strip')
 source=("${_pkgname}-${pkgver}-${CARCH}.AppImage::https://github.com/DetachHead/rebased/releases/download/${pkgver}/Rebased-x86_64.AppImage")
-sha256sums=('38c242808e3fdb109d92f90a221d03a2fce8ad0e5e1175e08b5bbd9f212e8a3e')
+sha256sums=('009ba6c3286bb74903f93ac6e6e1454b2989b7e62ea5786812d8c844d958cee7')
 
 package() {
   local appimage="${srcdir}/${_pkgname}-${pkgver}-${CARCH}.AppImage"
