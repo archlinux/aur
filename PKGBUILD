@@ -1,7 +1,7 @@
 # Maintainer: Twilight0 <twilight0@vivaldi.net>
 
 pkgname=dory-git
-pkgver=6.7.3.r2625.f5e9a4ef
+pkgver=6.7.3.r2635.27df23f3
 pkgrel=1
 pkgdesc="A standalone Nemo fork named Dory for file picking and portal integration (git)"
 arch=('x86_64')
