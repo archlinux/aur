@@ -1,5 +1,5 @@
 pkgname=augenblick-bin
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Fullscreen eye-blink overlay for X11 and Wayland (binary package)"
 arch=('x86_64' 'aarch64')
