@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=kasetto-bin
-pkgver=2.11.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="A declarative AI agent environment manager, written in Rust"
 arch=('x86_64')
@@ -15,9 +15,9 @@ source=(
   "LICENSE-MIT-$pkgver::https://raw.githubusercontent.com/pivoshenko/kasetto/v$pkgver/LICENSE-MIT"
   "LICENSE-APACHE-$pkgver::https://raw.githubusercontent.com/pivoshenko/kasetto/v$pkgver/LICENSE-APACHE"
 )
-sha256sums=('a4bd72c81182a8418215508a0b0311cb345a19d215bdd23a1a10e205dad89874'
-            'SKIP'
-            'SKIP')
+sha256sums=('ba7fa509eff0e725aadc1e4d15879e1edd933c9dcc4fcdefc4b0a4d4e4467719'
+            '477e9dbc8f0f6e1a6f467dbcca256b4892ddde9a694e471b8edaaf3266cece45'
+            'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
 
 package() {
   install -Dm755 kasetto "$pkgdir/usr/bin/kasetto"
