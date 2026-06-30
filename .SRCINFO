@@ -1,5 +1,5 @@
 pkgbase = git.gay
-	pkgdesc = Unofficial desktop app for git.gay
+	pkgdesc = discontinued aur package
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://git.gay
