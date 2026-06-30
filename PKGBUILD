@@ -3,8 +3,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164  # var unused / var not assigned / cd without || exit
 
 pkgname=aurscan-manticore-release-git
-pkgver=0.5.2
-pkgrel=3
+pkgver=0.6.4
+pkgrel=1
 pkgdesc="LLM-powered pre-build malware scanner for AUR packages (with paru / yay hooks) -- git release"
 arch=('x86_64' 'aarch64')
 url="https://github.com/manticore-projects/aurscan"
@@ -18,8 +18,10 @@ optdepends=(
   'openai-codex: keyless backend via your Codex subscription'
   'xdg-utils: open mail client for mailing-list reports'
 )
+
+_gpg_key_file=andreas-manticore-projects.gpg
 source=("$pkgname::git+$url.git"
-        "andreas-manticore-projects.gpg")
+        "${_gpg_key_file}")
 b2sums=('SKIP'
         'e80ad8b775d2d503e066d0a8a55d365eb3c4a4caa0e1812afb66b81f7adb279cde7f9d561fe329650a9176aba2f83cd45aab3bf304af861e21c12df9230bfe38')
 
@@ -44,7 +46,7 @@ prepare() {
     return 1
   fi
   printf 'Verifying signature on git tag v%s:\n' "${pkgver}"
-  gpg --dearmor < "${srcdir}/andreas@manticore-projects.com.gpg" > "${srcdir}/keyring.gpg"
+  gpg --dearmor < "${srcdir}/${_gpg_key_file}" > "${srcdir}/keyring.gpg"
   gpgv --keyring "${srcdir}/keyring.gpg" \
     "${srcdir}/tag-sig.gpg" "${srcdir}/tag-payload"
 
