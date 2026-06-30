@@ -1,6 +1,6 @@
 pkgbase = patent-bin
 	pkgdesc = A prior-art search for your code ideas. Stop building what already exists.
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/r14dd/patent
 	install = patent.install
@@ -19,9 +19,9 @@ pkgbase = patent-bin
 	options = !debug
 	source = patent.install
 	sha256sums = 24dff75c38b578cb7e8057366a764cb4313078f16bada568baf79ecde5cb49af
-	source_x86_64 = patent-bin-0.5.0.tar.xz::https://github.com/r14dd/patent/releases/download/v0.5.0/patent-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 9c626d36b571e0da82448c91b676d2f85ee531631e07a7a61de16d71f2725f9a
-	source_aarch64 = patent-bin-0.5.0.tar.xz::https://github.com/r14dd/patent/releases/download/v0.5.0/patent-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 2005652cfc5814cd11026128d3c82c835cd81d833a03fec7f0ed420783cd4dc3
+	source_x86_64 = patent-bin-0.6.0.tar.xz::https://github.com/r14dd/patent/releases/download/v0.6.0/patent-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 595189c24e8cb414ad34383cc5a6f88f7fd4aa234f8fcfc5049e88ab44238e84
+	source_aarch64 = patent-bin-0.6.0.tar.xz::https://github.com/r14dd/patent/releases/download/v0.6.0/patent-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 65cb378f7b6dccc762b7ccdb5c4ecfe045601d914e44c68048075950cb9fd2cd
 
 pkgname = patent-bin
