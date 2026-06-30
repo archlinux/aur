@@ -1,0 +1,12 @@
+# Editor / tooling
+.claude/
+CLAUDE.md
+
+# Build artifacts
+*.tar
+*.pkg.tar*
+*.run
+src/
+pkg/
+extract/
+Mixbus_x86_64-*/

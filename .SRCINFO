@@ -1,0 +1,27 @@
+pkgbase = mixbus12
+	pkgdesc = Harrison Consoles Mixbus DAW (Version 12)
+	pkgver = 12.0.1
+	pkgrel = 1
+	url = https://store.harrisonaudio.com/all-products/mixbus
+	install = mixbus12.install
+	arch = x86_64
+	groups = pro-audio
+	license = custom
+	makedepends = binutils
+	depends = glibc
+	depends = libcurl-gnutls
+	depends = readline
+	depends = ncurses
+	depends = zlib
+	depends = bzip2
+	optdepends = avldrums.lv2: AVLinux drumkits
+	optdepends = gmsynth.lv2: General MIDI LV2 Synth
+	optdepends = setbfree-lv2: Tonewheel organ
+	optdepends = x42-plugins-lv2: Set of plugins and utilities from the X42 Project
+	options = !strip
+	source = Mixbus-12.0.1-x86_64.tar::https://eu1.download.solidstatelogic.com/Mixbus%2012/Mixbus-12.0.1-x86_64.tar
+	source = mixbus12.install
+	sha256sums = 06bd21dc64a6083215f3a2fc7189f3d9d75fad751a5da5b38735fb92f459f740
+	sha256sums = 764953880bdd424974bda39ad387830777cf746649578962a1c6e37830202550
+
+pkgname = mixbus12
