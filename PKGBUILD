@@ -2,8 +2,8 @@
 # Based on Arch's gvfs PKGBUILD by Jan Alexander Steffens, Fabian Bornschein, Jan de Groot
 
 pkgname=gvfs-googledrive
-pkgver=1.60.0
-pkgrel=6
+pkgver=1.61.2
+pkgrel=1
 pkgdesc="Virtual filesystem implementation for GIO (with Google Drive backend) - all backends"
 url="https://gitlab.gnome.org/fluhus/gvfs"
 arch=(x86_64 aarch64)
@@ -77,7 +77,7 @@ replaces=(
 groups=(gnome)
 install=gvfs-nfs.install
 source=(
-  "git+https://gitlab.gnome.org/fluhus/gvfs.git#commit=818c50942ffa040eff10ae02a221e52a265585d0"
+  "git+https://gitlab.gnome.org/fluhus/gvfs.git#commit=fc46cb842775746a886498c89a732695c6610ab8"
   gvfsd.hook
 )
 b2sums=('SKIP'

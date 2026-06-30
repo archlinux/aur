@@ -1,7 +1,7 @@
 pkgbase = gvfs-googledrive
 	pkgdesc = Virtual filesystem implementation for GIO (with Google Drive backend) - all backends
-	pkgver = 1.60.0
-	pkgrel = 6
+	pkgver = 1.61.2
+	pkgrel = 1
 	url = https://gitlab.gnome.org/fluhus/gvfs
 	install = gvfs-nfs.install
 	arch = x86_64
@@ -49,17 +49,17 @@ pkgbase = gvfs-googledrive
 	depends = udisks2
 	depends = usbmuxd
 	depends = wsdd
-	provides = gvfs=1.60.0
-	provides = gvfs-afc=1.60.0
-	provides = gvfs-dnssd=1.60.0
-	provides = gvfs-goa=1.60.0
-	provides = gvfs-google=1.60.0
-	provides = gvfs-gphoto2=1.60.0
-	provides = gvfs-mtp=1.60.0
-	provides = gvfs-nfs=1.60.0
-	provides = gvfs-onedrive=1.60.0
-	provides = gvfs-smb=1.60.0
-	provides = gvfs-wsdd=1.60.0
+	provides = gvfs=1.61.2
+	provides = gvfs-afc=1.61.2
+	provides = gvfs-dnssd=1.61.2
+	provides = gvfs-goa=1.61.2
+	provides = gvfs-google=1.61.2
+	provides = gvfs-gphoto2=1.61.2
+	provides = gvfs-mtp=1.61.2
+	provides = gvfs-nfs=1.61.2
+	provides = gvfs-onedrive=1.61.2
+	provides = gvfs-smb=1.61.2
+	provides = gvfs-wsdd=1.61.2
 	conflicts = gvfs
 	conflicts = gvfs-afc
 	conflicts = gvfs-dnssd
@@ -82,7 +82,7 @@ pkgbase = gvfs-googledrive
 	replaces = gvfs-onedrive
 	replaces = gvfs-smb
 	replaces = gvfs-wsdd
-	source = git+https://gitlab.gnome.org/fluhus/gvfs.git#commit=818c50942ffa040eff10ae02a221e52a265585d0
+	source = git+https://gitlab.gnome.org/fluhus/gvfs.git#commit=fc46cb842775746a886498c89a732695c6610ab8
 	source = gvfsd.hook
 	b2sums = SKIP
 	b2sums = a0356a49c419dc69466c591d5e69701b865bb97ca336ea6d8bca0f0d9173b832b73d9f2c701d572a0245957d39c9a38ab6dff4ea7c737c34f2a1a28d93c0427f
