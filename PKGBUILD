@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=headroom-ai
-pkgver=0.22.2
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="Context optimization layer for LLM applications - cut token costs by 50-90%"
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
   'python-huggingface-hub: Kompress model downloads'
 )
 source=("https://files.pythonhosted.org/packages/source/h/$pkgname/${pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('ce1e5b5968a70a78591d36f248876e91e06b9fc3b5cd48cdf8216a5cfd28703b')
+sha256sums=('6424176364ca0276e4d88539ef22806e410cfa48ce7637ad75a4a8eda1edf29f')
 
 build() {
   cd "${pkgname//-/_}-$pkgver"
