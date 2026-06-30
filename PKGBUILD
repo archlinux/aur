@@ -64,6 +64,8 @@ optdepends=(
 )
 provides=('freecad')
 conflicts=('freecad' 'freecad-git' 'freecad-appimage' 'freecad-appimage-git')
+# git fetch to receive all new weekly tags
+git --git-dir=FreeCAD fetch
 lastweeklytag=`git --git-dir=FreeCAD tag -l weekly-\*|tail -1`
 source=("git+https://github.com/FreeCAD/FreeCAD.git#tag=$lastweeklytag")
 #source=("git+https://github.com/FreeCAD/FreeCAD.git#branch=main")
