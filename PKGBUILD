@@ -45,12 +45,13 @@ makedepends=(
 boost
 cmake
 eigen
+fast_float
 git
 ninja
 nlohmann-json
+python-lark-parser
 shiboken6
 swig
-python-lark-parser
 )
 checkdepends=(
 pugixml
