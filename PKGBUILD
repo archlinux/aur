@@ -1,7 +1,7 @@
 # Maintainer: Eigent AI <https://github.com/eigent-ai>
 pkgname=eigent-bin
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="AI-powered desktop agent for browser automation"
 arch=('x86_64')
 url="https://github.com/eigent-ai/eigent"
@@ -57,13 +57,15 @@ if [[ "$(cat "$DEST/.pkgver" 2>/dev/null)" != "$VER" ]]; then
     printf '%s' "$VER" > "$DEST/.pkgver"
 fi
 
-# Private Playwright-Browser-Dir. Ohne das teilt sich eigent ~/.cache/ms-playwright
-# mit Dev-Projekten -> die installieren eine andere Chromium-Revision als die,
-# die das gebuendelte playwright-core pinnt -> "Chromium nicht gefunden".
-# Eigenes Dir unter $DEST -> bei Versions-Bump mit-gewiped -> passende Rev neu gezogen.
-export PLAYWRIGHT_BROWSERS_PATH="$DEST/ms-playwright"
-if ! ls "$PLAYWRIGHT_BROWSERS_PATH"/chromium-*/chrome-linux64/chrome >/dev/null 2>&1; then
-    NODE="$DEST/resources/prebuilt/venv/bin/node"
+# Gebuendeltes camel/playwright-core pinnt eine Chromium-Revision, das Prebuilt
+# bringt aber keinen Browser mit -> "Chromium executable not found". Fehlt der
+# Browser im Default-Cache, mit dem gebuendelten playwright nachziehen. Rev-Dirs
+# sind revisionsspezifisch -> kollidieren nicht mit anderen Playwright-Projekten.
+# Wichtig: echtes node ist die nodejs_wheel-ELF-Binary; venv/bin/node ist ein
+# kaputter Wrapper (unsubstituiertes {{PREBUILT_VENV_PYTHON}}-Shebang).
+PWCACHE="${PLAYWRIGHT_BROWSERS_PATH:-$HOME/.cache/ms-playwright}"
+if ! ls "$PWCACHE"/chromium-*/chrome-linux64/chrome >/dev/null 2>&1; then
+    NODE="$DEST/resources/prebuilt/venv/lib/python3.11/site-packages/nodejs_wheel/bin/node"
     PWCLI="$DEST/resources/prebuilt/venv/lib/python3.11/site-packages/camel/toolkits/hybrid_browser_toolkit/ts/node_modules/playwright-core/cli.js"
     if [[ -x "$NODE" && -f "$PWCLI" ]]; then
         "$NODE" "$PWCLI" install chromium chromium-headless-shell || true
