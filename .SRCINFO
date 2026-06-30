@@ -1,6 +1,6 @@
 pkgbase = circumflex
 	pkgdesc = A command line tool for browsing Hacker News in your terminal
-	pkgver = 4.3
+	pkgver = 4.4
 	pkgrel = 1
 	url = https://github.com/bensadeh/circumflex
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = circumflex
 	license = custom
 	makedepends = go
 	depends = glibc
-	source = circumflex-4.3.tar.gz::https://github.com/bensadeh/circumflex/archive/refs/tags/4.3.tar.gz
-	sha256sums = 92d4061252ad3fa625df15c5b22d746222ab82f65e42bb91acc54c01d3189a19
+	source = circumflex-4.4.tar.gz::https://github.com/bensadeh/circumflex/archive/refs/tags/4.4.tar.gz
+	sha256sums = ea0d29d95a8999d32a592d68484a7acd2dc2651da3ecbe49cbfab43038c9b68d
 
 pkgname = circumflex
