@@ -5,7 +5,7 @@
 
 _name=cutter
 pkgname=$_name-bin
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Free and Open Source Reverse Engineering Platform powered by rizin"
 url="https://github.com/rizinorg/cutter/"
@@ -18,10 +18,8 @@ source=(
     "Cutter.AppImage::https://github.com/rizinorg/cutter/releases/download/v${pkgver}/Cutter-v${pkgver}-Linux-x86_64.AppImage"
     "cutter.sh"
 )
-sha512sums=(
-    '19b32703355a199861fb92ea3fac48fb899172e0dd6dab83a8389899dcd33d8023bb616edbfcd3292818e1e97054240b60801a7677032404da3414e7b7b506ae'
-    'ef79b7f1f558ea0afe06b1b2d69afaee03e11c1dd4059224f208177781c909a7493ff0767a37d96ded8dd38052076d4324d4711e7560ae24c74aee874db09e24'
-)
+sha512sums=('c5890b9c78bb853f4b3ad500beec1645c9c7071e68c0fc915a5b429fffbc66dfffa522913d8a9662963c659f23a55ee349ad690e05a6f644ad90f93a51f3911e'
+            'ef79b7f1f558ea0afe06b1b2d69afaee03e11c1dd4059224f208177781c909a7493ff0767a37d96ded8dd38052076d4324d4711e7560ae24c74aee874db09e24')
 
 prepare() {
     chmod +x Cutter.AppImage
