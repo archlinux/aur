@@ -1,0 +1,18 @@
+pkgbase = calibre-tui-git
+	pkgdesc = A TUI application to search and open books in your Calibre library.
+	pkgver = 0.5.0.r0.g9d56efe
+	pkgrel = 1
+	url = https://github.com/WindustH/calibre-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = xdg-utils
+	depends = sqlite
+	provides = calibre-tui
+	conflicts = calibre-tui
+	source = calibre-tui::git+https://github.com/WindustH/calibre-tui.git
+	sha256sums = SKIP
+
+pkgname = calibre-tui-git

@@ -1,0 +1,4 @@
+calibre-tui/
+pkg/
+src/
+*.tar.zst
