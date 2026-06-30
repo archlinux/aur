@@ -2,7 +2,7 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 
 pkgname='carapace-magick-bin'
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='An ImageMagick magick argstream lexer and completer.'
 url='https://github.com/carapace-sh/carapace-magick'
@@ -12,13 +12,13 @@ provides=('carapace-magick')
 conflicts=('carapace-magick')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/carapace-sh/carapace-magick/releases/download/v${pkgver}/carapace-magick_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('30f4d8a5e3f3a0153467673db103a5f9ea3f619be0e5e5c064c21278fbf06942')
+sha256sums_aarch64=('b599970ef5804ecc820ec24fed4df02929f97d3313f77ef5edea1198ad3d1dac')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/carapace-sh/carapace-magick/releases/download/v${pkgver}/carapace-magick_${pkgver}_linux_386.tar.gz")
-sha256sums_i686=('7f7827d076374e089c11275f10472c73bd98862c262a1438ed9614fda9b42f06')
+sha256sums_i686=('c714c52b805b9d7cbf95d14034c5e8850f083cb7da2f2990ab2c2000e23fe7e3')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/carapace-sh/carapace-magick/releases/download/v${pkgver}/carapace-magick_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('5bb943b8797b4e19569a2ea3ab514d4826de1996db236d6891e1c55a8c71e199')
+sha256sums_x86_64=('e057a1d8d2adedbeb6255ce610c450e667e824f908404b7c3e4afe7d33c87f66')
 
 package() {
   install -Dm755 "./carapace-magick" "${pkgdir}/usr/bin/carapace-magick"
