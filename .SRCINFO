@@ -1,0 +1,20 @@
+pkgbase = shine-llvm
+	pkgdesc = Super fast fixed-point MP3 encoder — built with Clang and LLVM lld
+	pkgver = 3.1.1+r59+gab5e352
+	pkgrel = 2
+	url = https://github.com/savonet/shine
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.0-only
+	makedepends = clang
+	makedepends = lld
+	makedepends = llvm
+	depends = glibc
+	provides = shine
+	provides = libshine.so
+	conflicts = shine
+	source = shine-ab5e3526b64af1a2eaa43aa6f441a7312e013519.tar.gz::https://github.com/savonet/shine/archive/ab5e3526b64af1a2eaa43aa6f441a7312e013519.tar.gz
+	sha256sums = 2c2f7e41c7c0f67079eb3882233cdc97e3d583e1985b558d4e847bd46285fbde
+
+pkgname = shine-llvm
