@@ -14,6 +14,7 @@ depends=(lib32-glibc)
 makedepends=(
   git
   nasm
+  lib32-gcc-libs
 )
 provides=(libvpx.so)
 source=(

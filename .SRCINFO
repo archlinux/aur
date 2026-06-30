@@ -7,6 +7,7 @@ pkgbase = lib32-libvpx1.3
 	license = BSD
 	makedepends = git
 	makedepends = nasm
+	makedepends = lib32-gcc-libs
 	depends = lib32-glibc
 	provides = libvpx.so
 	options = !lto
