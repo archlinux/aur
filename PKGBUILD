@@ -1,7 +1,7 @@
 # Maintainer: Shira Nguyen <sn3446409@gmail.com>
 
 pkgname=xenia-edge-bin
-pkgver=20260630000000.bd5d4a0
+pkgver=20260630045248.bd5d4a0
 _srcver=bd5d4a0
 pkgrel=1
 pkgdesc="Fork of the Xenia emulator based on Xenia Canary, with aims for quicker iterations and improvements on Vulkan and Linux support."
