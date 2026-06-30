@@ -2,7 +2,7 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='motoko-bin'
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Based on Go modules, update a dependency to a major version.'
 url='https://github.com/ldez/motoko'
@@ -12,16 +12,16 @@ provides=('motoko')
 conflicts=('motoko')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ldez/motoko/releases/download/v${pkgver}/motoko_v${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('c4898aae2f600aaf3d53fe8c874cfe511d510fadc58b35bbdc9695df57fe7baa')
+sha256sums_aarch64=('3afe54028df8eff9883b92086856f0acdd3dafd887527509f3b6841781b6473f')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/ldez/motoko/releases/download/v${pkgver}/motoko_v${pkgver}_linux_armv7.tar.gz")
-sha256sums_armv7h=('57a5da5f7a9028895207bd48141428e5ea9c9ecae2826ac7437dbd3f1b554f38')
+sha256sums_armv7h=('b0b660aed9ad7d01cfb115489b4884a921d3f7658a56690963647b062bc0ddf5')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/ldez/motoko/releases/download/v${pkgver}/motoko_v${pkgver}_linux_386.tar.gz")
-sha256sums_i686=('4683a05fe35e82410083379e55870a40ee8f0b8de9a17757dd039568a312a465')
+sha256sums_i686=('786590474b768b36598f85d97be0604c5cc3d7046b4b6d09127bdb87b075b52d')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ldez/motoko/releases/download/v${pkgver}/motoko_v${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('5b5f526fd5933ccb91191ee3f080fdede6757ea1b263fe34972fa179ac445b47')
+sha256sums_x86_64=('4c9fb793bda8e990447b95e57924c4fc61e309aadff4fd6ee01205a2b446641a')
 
 package() {
   # Bin
