@@ -1,11 +1,12 @@
 pkgbase = zed-sdk-bin
 	pkgdesc = Stereolabs advanced scalable and customizable AI Vision framework
-	pkgver = 5.3.0
-	pkgrel = 3
+	pkgver = 5.4.0
+	pkgrel = 1
 	url = https://www.stereolabs.com/developers/release
 	install = zed-sdk-bin.install
 	arch = x86_64
 	license = LicenseRef-ZED-SDK
+	makedepends = zstd
 	depends = cuda>=13.2
 	depends = cudnn
 	depends = gcc-libs
@@ -21,12 +22,12 @@ pkgbase = zed-sdk-bin
 	optdepends = python-pip: Python API installation
 	optdepends = python-requests: required for Python API installation script
 	optdepends = opencv: OpenCV integration for samples
-	provides = zed-sdk=5.3.0
+	provides = zed-sdk=5.4.0
 	conflicts = zed-sdk
-	noextract = zed-sdk-bin-5.3.0.run
+	noextract = zed-sdk-bin-5.4.0.run
 	options = !strip
 	options = !debug
-	source = zed-sdk-bin-5.3.0.run::https://stereolabs.sfo2.cdn.digitaloceanspaces.com/zedsdk/5.3/ZED_SDK_Ubuntu26_cuda13.2_tensorrt10.13_v5.3.0.zstd.run
-	b2sums = da540e610e89486de473f878ec960e0412970e611bf1de9ace385924d12656fe60e81e65b5acfacbeca85c0723239355af7c1a69b18f28d0054475ff6aa3a4b9
+	source = zed-sdk-bin-5.4.0.run::https://stereolabs.sfo2.cdn.digitaloceanspaces.com/zedsdk/5.4/ZED_SDK_Ubuntu26_cuda13.2_tensorrt10.13_v5.4.0.zstd.run
+	b2sums = 5221f8d3afad8f3dd1a1e8a33c2128aaaf15bec817f7fc9ef6f73b75352fd33847c1616c9256817131e80c84f9d42e652f020d7a3ea44a1b4fcb0dc3ba941d73
 
 pkgname = zed-sdk-bin

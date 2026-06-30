@@ -1,6 +1,6 @@
 pkgname=zed-sdk-bin
-pkgver=5.3.0
-pkgrel=3
+pkgver=5.4.0
+pkgrel=1
 pkgdesc="Stereolabs advanced scalable and customizable AI Vision framework"
 arch=('x86_64')
 url="https://www.stereolabs.com/developers/release"
@@ -22,18 +22,28 @@ depends=(
     'qt6-base'
     'zlib'
 )
+makedepends=(
+    'zstd'
+)
 optdepends=(
     'python: Python API support'
     'python-pip: Python API installation'
     'python-requests: required for Python API installation script'
     'opencv: OpenCV integration for samples'
 )
-# NOTE: Using Ubuntu 26 build; no Arch-specific build is provided by upstream
+# NOTE: Using Ubuntu 26 build; no Arch-specific build is provided by upstream.
+
+# AUR TRUST: As StereoLabs has the official binary package hosted on a different domain, digitaloceanspaces.com
+# and not stereolabs.com, as good AUR practice, I encourage you to instead manually download it from:
+# https://www.stereolabs.com/en-fr/developers
+#
+# Then, at the very least confirm the b2sum matches what's in this PKGBUILD and/or place it in the PKGBUILD directory and build.
+
 source=(
     "${pkgname}-${pkgver}.run::https://stereolabs.sfo2.cdn.digitaloceanspaces.com/zedsdk/${pkgver%.*}/ZED_SDK_Ubuntu26_cuda13.2_tensorrt10.13_v${pkgver}.zstd.run"
 )
 noextract=("${pkgname}-${pkgver}.run")
-b2sums=('da540e610e89486de473f878ec960e0412970e611bf1de9ace385924d12656fe60e81e65b5acfacbeca85c0723239355af7c1a69b18f28d0054475ff6aa3a4b9')
+b2sums=('5221f8d3afad8f3dd1a1e8a33c2128aaaf15bec817f7fc9ef6f73b75352fd33847c1616c9256817131e80c84f9d42e652f020d7a3ea44a1b4fcb0dc3ba941d73')
 
 prepare() {
     chmod +x "${srcdir}/${pkgname}-${pkgver}.run"
@@ -79,11 +89,16 @@ package() {
     find "${pkgdir}/opt/zed/tools" -type f -exec chmod 755 {} \;
     find "${pkgdir}/opt/zed" -name "*.sh" -exec chmod 755 {} \;
 
-    # Relax permissions so ZED tools can pull and install models and configs.
-    chmod 0777 "${pkgdir}/opt/zed/resources"
-    chmod -R a+rX "${pkgdir}/opt/zed/resources"
+    # Allow members of the 'video' group to write models/configs that the ZED
+    # tools download at runtime. The setgid bit (2775) ensures files created in
+    # these directories inherit the 'video' group.
+    chown root:video "${pkgdir}/opt/zed/resources"
+    chmod 2775 "${pkgdir}/opt/zed/resources"
+    chgrp -R video "${pkgdir}/opt/zed/resources"
+    chmod -R g+w "${pkgdir}/opt/zed/resources"
 
-    install -dm777 "${pkgdir}/opt/zed/settings"
+    install -dm2775 "${pkgdir}/opt/zed/settings"
+    chown root:video "${pkgdir}/opt/zed/settings"
 
     # Fix RUNPATH for all binaries to point to correct library paths
     for bin in "${pkgdir}/opt/zed/tools/"*; do
