@@ -30,6 +30,12 @@ build() {
 	cargo build --frozen --release --target-dir target
 }
 
+check() {
+	cd "${pkgname}-${pkgver}"
+
+	cargo test --frozen --release --target-dir target
+}
+
 package() {
 	cd "${pkgname}-${pkgver}"
 
