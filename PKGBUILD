@@ -2,7 +2,7 @@
 # Contributor: Marcin Mielniczuk <marmistrz.dev@zoho.eu>
 pkgname=graphwar-git
 pkgver=r33.1f474e6
-pkgrel=1
+pkgrel=2
 pkgdesc="Hit your enemies using mathematical functions"
 arch=(x86_64 i686)
 url="https://github.com/catabriga/graphwar"
