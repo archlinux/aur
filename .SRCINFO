@@ -1,4 +1,4 @@
-pkgbase = Kun
+pkgbase = kun
 	pkgdesc = AI agent workspace with Code and Write modes - Electron client
 	pkgver = 0.2.20
 	pkgrel = 1
@@ -14,7 +14,7 @@ pkgbase = Kun
 	conflicts = kun-gui
 	replaces = kun-gui
 	options = !strip
-	source = Kun-0.2.20.tar.gz::https://github.com/KunAgent/Kun/archive/refs/tags/v0.2.20.tar.gz
+	source = kun-0.2.20.tar.gz::https://github.com/KunAgent/Kun/archive/refs/tags/v0.2.20.tar.gz
 	sha256sums = 2615e45f556f99e5756d986bd214838153f021a3bb46d0bcae3a10ff7fb7a53e
 
-pkgname = Kun
+pkgname = kun

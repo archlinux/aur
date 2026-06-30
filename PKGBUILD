@@ -1,5 +1,5 @@
 # Maintainer: liyp <my@liyp.cc>
-pkgname=Kun
+pkgname=kun
 pkgver=0.2.20
 pkgrel=1
 pkgdesc="AI agent workspace with Code and Write modes - Electron client"
@@ -47,11 +47,14 @@ build() {
 package() {
     cd "${srcdir}/Kun-${pkgver}"
 
-    # Install application to /usr/lib/Kun
+    # Install application to /usr/lib/kun
     install -d "${pkgdir}/usr/lib/${pkgname}"
 
     # Copy built output
     cp -r out "${pkgdir}/usr/lib/${pkgname}/out"
+    # Patch app identity: source has APP_PRODUCT_NAME="Kun" (uppercase), but .desktop
+    # file is kun.desktop (lowercase). Wayland app_id is case-sensitive, must match.
+    sed -i 's/APP_PRODUCT_NAME="Kun"/APP_PRODUCT_NAME="kun"/' "${pkgdir}/usr/lib/${pkgname}/out/main/index.js"
     # Fix version: upstream package.json says 0.1.0, set to actual release version
     # (CI uses electron-builder's extraMetadata + KUN_APP_VERSION, we patch directly)
     sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"${pkgver}\"/" package.json
@@ -104,8 +107,8 @@ package() {
 
 XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
 
-if [[ -f "${XDG_CONFIG_HOME}/Kun-flags.conf" ]]; then
-	mapfile -t KUN_USER_FLAGS <<<"$(grep -v '^#' "${XDG_CONFIG_HOME}/Kun-flags.conf")"
+if [[ -f "${XDG_CONFIG_HOME}/kun-flags.conf" ]]; then
+	mapfile -t KUN_USER_FLAGS <<<"$(grep -v '^#' "${XDG_CONFIG_HOME}/kun-flags.conf")"
 	echo "User flags:" ${KUN_USER_FLAGS[@]}
 fi
 
@@ -129,7 +132,8 @@ if [[ -z "${GTK_IM_MODULE}" ]]; then
     fi
 fi
 
-exec -a Kun /bin/electron34 /usr/lib/Kun/out/main/index.js \
+exec -a kun /bin/electron34 /usr/lib/kun/out/main/index.js \
+    --name=kun \
     ${KUN_USER_FLAGS[@]} "$@"
 LAUNCHER
 
@@ -138,18 +142,18 @@ LAUNCHER
 [Desktop Entry]
 Name=Kun
 Comment=AI agent workspace with Code and Write modes
-Exec=Kun %U
-Icon=Kun
+Exec=kun %U
+Icon=kun
 Type=Application
 Categories=Development;
-StartupWMClass=Kun
+StartupWMClass=kun
 EOF
 
     # Install icon to hicolor theme (required for KDE Wayland dock icon matching)
     install -Dm644 "src/asset/img/kun.png" \
-        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/Kun.png"
+        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/kun.png"
     # Also keep in pixmaps as fallback
-    install -Dm644 "src/asset/img/kun.png" "${pkgdir}/usr/share/pixmaps/Kun.png"
+    install -Dm644 "src/asset/img/kun.png" "${pkgdir}/usr/share/pixmaps/kun.png"
 
     # Install license
     install -d "${pkgdir}/usr/share/licenses/${pkgname}"
