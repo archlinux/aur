@@ -1,0 +1,13 @@
+pkgbase = goodnight
+	pkgdesc = Quick shutdown helper
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/kelseythedreamer/headspace-repo
+	arch = x86_64
+	license = GPL2
+	depends = lua
+	depends = opendoas
+	source = goodnight::https://codeberg.org/kelseythedreamer/headspace-repo/raw/branch/main/app-misc/goodnight/files/goodnight
+	sha256sums = ab55ead4046aecb5a70adbe1887a3bea5aed48328f42eb6c857f249daddb2879
+
+pkgname = goodnight
