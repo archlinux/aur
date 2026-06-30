@@ -6,7 +6,7 @@ pkgdesc="A small CLI for managing xray proxy"
 arch=('x86_64')
 url="https://git.igorek.dev/igorechek06/v2rs"
 license=('GPL-3.0-or-later')
-depends=('xray' 'iproute2')
+depends=('xray-bin' 'iproute2')
 provides=("v2rs=$pkgver")
 conflicts=('v2rs')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/linux-x86-64.tar.gz")

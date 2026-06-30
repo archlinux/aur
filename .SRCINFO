@@ -5,7 +5,7 @@ pkgbase = v2rs-bin
 	url = https://git.igorek.dev/igorechek06/v2rs
 	arch = x86_64
 	license = GPL-3.0-or-later
-	depends = xray
+	depends = xray-bin
 	depends = iproute2
 	provides = v2rs=0.2.0
 	conflicts = v2rs
