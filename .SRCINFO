@@ -1,7 +1,7 @@
 pkgbase = kun
 	pkgdesc = AI agent workspace with Code and Write modes - Electron client
 	pkgver = 0.2.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KunAgent/Kun
 	arch = x86_64
 	license = custom:PolyForm-Noncommercial-1.0.0

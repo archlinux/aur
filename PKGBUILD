@@ -1,7 +1,7 @@
 # Maintainer: liyp <my@liyp.cc>
 pkgname=kun
 pkgver=0.2.20
-pkgrel=1
+pkgrel=2
 pkgdesc="AI agent workspace with Code and Write modes - Electron client"
 arch=('x86_64')
 url="https://github.com/KunAgent/Kun"
@@ -38,7 +38,10 @@ build() {
     npx electron-vite build
     # Rebuild native modules (node-pty, etc.) against Electron's ABI
     # node-pty has no linux-x64 prebuild, so node-gyp compilation is required
-    npx @electron/rebuild -f -v 34 -m node_modules -o node-pty
+    local _electron_ver
+    _electron_ver=$(electron34 --version | sed 's/^v//')
+    echo "==> Rebuilding native modules for Electron ${_electron_ver}..."
+    npx @electron/rebuild -f -v "${_electron_ver}" -m .
     # Prune to production dependencies only (must be after vite build and electron-rebuild)
     npm prune --production
     npm --prefix kun prune --production
@@ -52,11 +55,16 @@ package() {
 
     # Copy built output
     cp -r out "${pkgdir}/usr/lib/${pkgname}/out"
-    # Patch app identity: source has APP_PRODUCT_NAME="Kun" (uppercase), but .desktop
-    # file is kun.desktop (lowercase). Wayland app_id is case-sensitive, must match.
-    sed -i 's/APP_PRODUCT_NAME="Kun"/APP_PRODUCT_NAME="kun"/' "${pkgdir}/usr/lib/${pkgname}/out/main/index.js"
-    # Fix version: upstream package.json says 0.1.0, set to actual release version
-    # (CI uses electron-builder's extraMetadata + KUN_APP_VERSION, we patch directly)
+    # Patch compiled JS: fix app identity and inject correct version
+    # (upstream uses electron-builder extraMetadata to set these at CI build time,
+    #  but we don't run electron-builder, so we patch the compiled output directly)
+    local _js="${pkgdir}/usr/lib/${pkgname}/out/main/index.js"
+    # 1. APP_PRODUCT_NAME: source has "Kun" (uppercase), .desktop is kun (lowercase)
+    sed -i 's/APP_PRODUCT_NAME = "Kun"/APP_PRODUCT_NAME = "kun"/' "$_js"
+    # 2. Version: app.getVersion() returns "0.0" (not from our package.json),
+    #    so we inject app.setVersion() right after app.setName()
+    sed -i 's/app\.setName(APP_PRODUCT_NAME);/app.setName(APP_PRODUCT_NAME); app.setVersion("'"${pkgver}"'");/' "$_js"
+    # Fix version in package.json as well
     sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"${pkgver}\"/" package.json
     install -Dm644 package.json "${pkgdir}/usr/lib/${pkgname}/package.json"
 
