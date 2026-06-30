@@ -1,14 +1,14 @@
 pkgname=smart-updater
-pkgver=1.6.0_alpha
+pkgver=2.0_beta
 pkgrel=1
-pkgdesc="A native PyQt6 based system maintenance and update GUI for Arch Linux and CachyOS"
+pkgdesc="A streamlined PyQt6 tool for Arch Linux and CachyOS that makes system updates, app uninstallation, and log tracking fast and elegant."
 arch=('any')
 url="https://github.com/UniqueSpirit/smart-updater"
 license=('GPL')
 depends=('python' 'python-pyqt6' 'pacman-contrib')
 
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver/_/-}.tar.gz")
-sha256sums=('f1e19125473e1b3ee8448af863f0df9075e8a51603e17afa8d74c4562e4d2f47')
+sha256sums=('b3ba991309101c27e21249abeb9c12e097f34ac46c682bc9f40a2c6d1d896eff')
 
 package() {
     local _srcdir="$pkgname-${pkgver/_/-}"
@@ -24,6 +24,11 @@ package() {
     echo -e '#!/bin/bash\npython /opt/smart-updater/main.py "$@"' > "$pkgdir/usr/bin/$pkgname"
     chmod +x "$pkgdir/usr/bin/$pkgname"
 
+    mkdir -p "$pkgdir/usr/share/pixmaps"
+    cat << 'EOF' > "$pkgdir/usr/share/pixmaps/$pkgname.svg"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><defs><linearGradient id="ringGrad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#89b4fa"/><stop offset="100%" stop-color="#0db9d7"/></linearGradient></defs><path d="M 128 32 A 96 96 0 1 1 60 56" fill="none" stroke="url(#ringGrad)" stroke-width="28" stroke-linecap="round"/><path d="M 128 24 L 184 96 L 144 96 L 144 184 L 112 184 L 112 96 L 72 96 Z" fill="#a6e3a1"/></svg>
+EOF
+
     mkdir -p "$pkgdir/usr/share/applications"
     echo "[Desktop Entry]
 Version=1.0
@@ -31,7 +36,7 @@ Type=Application
 Name=Smart Updater
 Comment=System-Updates einfach und smart
 Exec=smart-updater
-Icon=/opt/smart-updater/extras/pictures/icon-logo.png
+Icon=smart-updater
 Terminal=false
 Categories=System;Settings;" > "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
