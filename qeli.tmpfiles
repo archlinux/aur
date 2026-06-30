@@ -1,0 +1,5 @@
+d /etc/qeli 0755 qeli qeli -
+d /etc/qeli/identity 0755 qeli qeli -
+d /etc/qeli/clients 0755 qeli qeli -
+d /var/lib/qeli 0755 qeli qeli -
+d /var/log/qeli 0755 qeli qeli -
