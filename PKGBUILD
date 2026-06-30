@@ -1,6 +1,6 @@
 # Maintainer: f-o-o-g-s <tollwitch@proton.me>
 pkgname=nokkvi-git
-pkgver=0.12.0.r0.gd4d7a7f
+pkgver=0.12.1.r0.gcac9771
 pkgrel=1
 pkgdesc="A native Rust/Iced desktop client for Navidrome music servers (git HEAD)"
 arch=('x86_64')
