@@ -8,6 +8,8 @@
 # (e.g., containerized or restricted systems), you can disable the sandbox by setting:
 #
 #   HYPRISM_NO_SANDBOX=1
+#   HYPRISM_NO_SANDBOX=true
+#   HYPRISM_NO_SANDBOX=yes
 #
 # Example:
 #   HYPRISM_NO_SANDBOX=1 hyprism
@@ -17,7 +19,7 @@
 
 HYPRISM_BIN="/opt/hyprism-bin/HyPrism"
 
-if [[ "${HYPRISM_NO_SANDBOX}" == "1" ]]; then
+if [[ -n "${HYPRISM_NO_SANDBOX}" ]]; then
     exec "${HYPRISM_BIN}" --no-sandbox "${@}"
 else
     "${HYPRISM_BIN}" "${@}" || {
