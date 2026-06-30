@@ -8,6 +8,28 @@ Type=dbus
 BusName=org.mpris.MediaPlayer2.mpd
 Restart=on-failure
 ExecStart=/usr/bin/mpdris2-rs
+# Sandboxing
+ProtectSystem=strict
+ProtectProc=noaccess
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+ProtectKernelModules=yes
+PrivateDevices=yes
+ProtectHostname=yes
+ProtectClock=yes
+RestrictNamespaces=yes
+NoNewPrivileges=yes
+RestrictSUIDSGID=yes
+MemoryDenyWriteExecute=yes
+SystemCallFilter=@system-service @basic-io @file-system @network-io @signal
+SystemCallArchitectures=native
+RuntimeDirectory=mpd
+RuntimeDirectoryPreserve=no
+RestrictRealtime=yes
+LockPersonality=yes
 
 [Install]
 WantedBy=default.target
