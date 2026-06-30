@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ledgera
-pkgver=0.1.1rc2
+pkgver=0.1.6
 pkgrel=1
 url="https://github.com/thesmokinator/$pkgname"
 pkgdesc='Just another user interface for managing hledger journal transactions'
@@ -20,6 +20,7 @@ depends=(cairo libcairo.so
          webkit2gtk-4.1 libjavascriptcoregtk-4.1.so libwebkit2gtk-4.1.so)
 makedepends=(atkmm
              cargo
+             cargo-edit
              cargo-tauri
              gendesk
              nodejs-lts-krypton
@@ -28,7 +29,7 @@ options=(!lto)
 _tag=${pkgver/rc/-rc.}
 _archive="$pkgname-$_tag"
 source=("$url/archive/refs/tags/v$_tag/$_archive.tar.gz")
-sha256sums=('a3cb4b4780fb62c42e5710f22e1d8ec400e40367404b3d643231788f1fb95a51')
+sha256sums=('c69acffa508918f8b9c95a24b1072835603abe60741e51a2ba1e5d56874cfa7c')
 
 _srcenv() {
 	cd "$_archive"
@@ -45,6 +46,8 @@ prepare() {
 	_srcenv
 	npm install
 	pushd src-tauri
+	# https://github.com/thesmokinator/ledgera/issues/65
+	cargo set-version "$pkgver"
 	cargo fetch --locked --target host-tuple
 }
 
