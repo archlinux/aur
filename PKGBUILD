@@ -34,7 +34,7 @@ optdepends=('blueman: Bluetooth support'
 conflicts=('cinnamon' 'nemo')
 provides=("cinnamon=$pkgver")
 backup=('etc/xdg/cinnamon-session/sessions/cinnamon.session')
-source=("https://archlinux.org/packages/extra/x86_64/cinnamon/download"
+source=("https://umea.mirror.pkgbuild.com/extra/os/x86_64/cinnamon-6.6.8-1-x86_64.pkg.tar.zst"
         'cinnamon.session')
 sha256sums=('SKIP'
             'SKIP')
@@ -43,16 +43,10 @@ sha256sums=('SKIP'
 options=('!strip' '!debug' 'emptydirs')
 
 prepare() {
-  # Rename downloaded file to expected name
-  cd "$srcdir"
-  mv download "cinnamon-$pkgver-$pkgrel-x86_64.pkg.tar.zst" 2>/dev/null || true
-
   # Extract the official package
   mkdir -p extracted
   cd extracted
-  tar -xf "$srcdir/cinnamon-$pkgver-$pkgrel-x86_64.pkg.tar.zst" || \
-  tar -xf "$srcdir/cinnamon-$pkgver-$pkgrel-x86_64.pkg.tar.xz" || \
-  tar -xf "$srcdir/cinnamon-$pkgver-$pkgrel-x86_64.pkg.tar.gz" || true
+  tar -xf "$srcdir/cinnamon-$pkgver-$pkgrel-x86_64.pkg.tar.zst"
 }
 
 package() {
