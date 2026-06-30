@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A cli tool to clean command shell history files"
 
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,12 +30,12 @@ source=("COMPLETIONS-${pkgver}.bash::${_ghurlraw}/completions/${_appname}.bash"
 		"README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}")
-sha256sums=('64607fa747cc6a8a524a2eb491f0a0a1bd21db9346a0592a20725c69e75ad23b'
-            'd10e16378ca9aac4ad4a87dad438a633990edf511f8cfc4ac268d04066b4838b'
-            'b10829079cfa4d8a83e7c1f784a9c1dfb6cc9275d273e9f53d854f7e4876f84d'
-            '0b832ce48674b87ab7a96c23b67d742789ba657be4a6ba93c719061a100cb24d'
+sha256sums=('2075c19e5f3978b83c61429e4a1eb707e109d0dbbde98b75166e79d3bce78205'
+            'a46fc3252002c7f172a6ed91a79957e73b90726d03a50ee0121bfc14969fb893'
+            '0aa5cb75887be6c8af3181d0d7dbb1c8e1cc0a2008c35caf8530068b1675c50a'
+            'dd376c7fae19c4f88b601b605cc87c4a457a371e1463cc785e4cdfdb4f2f86dd'
             'df06e67e87dd5337a166b9449f35d92f254e8d60b536a0224aad920670ee2cc6')
-sha256sums_x86_64=('3ca61256eaf20362a886fa8cfa86cae517a22d61c37241a0b3f3e449bb6b950e')
+sha256sums_x86_64=('e804d00e4ef42c14919b85c993130a9b05bcd8a819a9998b111cf85baebd1e07')
 
 
 package() {
