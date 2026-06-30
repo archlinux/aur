@@ -9,6 +9,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Tamim180/mcsh/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('f2c0c7b2da7ede54748cce2550eed1f39641e7eb0667f12f76277eec478f1b9d')
+
 build() {
     cd "$srcdir/$pkgname-$pkgver"
     cargo build --release --locked
