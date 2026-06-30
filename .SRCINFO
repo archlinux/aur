@@ -1,0 +1,25 @@
+pkgbase = omorifortune
+	pkgdesc = Omori-themed fortune-style cowsay quotes
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/kelseythedreamer/headspace-repo
+	arch = x86_64
+	license = GPL2
+	depends = lua
+	depends = cowsay
+	source = omorifortune::https://codeberg.org/kelseythedreamer/headspace-repo/raw/branch/main/app-misc/omorifortune/files/omorifortune
+	source = omorifortune.lua::https://codeberg.org/kelseythedreamer/headspace-repo/raw/branch/main/app-misc/omorifortune/files/omorifortune.lua
+	source = messages-calm.lua::https://codeberg.org/kelseythedreamer/headspace-repo/raw/branch/main/app-misc/omorifortune/files/messages-calm.lua
+	source = messages-dark.lua::https://codeberg.org/kelseythedreamer/headspace-repo/raw/branch/main/app-misc/omorifortune/files/messages-dark.lua
+	source = README::https://codeberg.org/kelseythedreamer/headspace-repo/raw/branch/main/app-misc/omorifortune/files/README
+	source = omori.cow::https://codeberg.org/kelseythedreamer/headspace-repo/raw/branch/main/app-misc/omorifortune/files/omori.cow
+	source = something.cow::https://codeberg.org/kelseythedreamer/headspace-repo/raw/branch/main/app-misc/omorifortune/files/something.cow
+	sha256sums = 09f220a605fd6a237f1367883e2179714dd819ad57b6d799c50b96ca163f62a7
+	sha256sums = 3ee03f02441827ddbca874420dcfa41337f6a8e54b5d4d560bbebf539811bf68
+	sha256sums = 68cc8ae97514cea2d949105e07387c5a96ed6453aaeb73a2b739dd4cb67a2bd4
+	sha256sums = 72dbe2fee6a09d3dd905ef849273b00cad0394d67392d3dd89ceea61d15080f9
+	sha256sums = 1a722c47b7c2aa3bd91f84eebbc8814e3a507a6f1443696b0017a69d24d6bb3a
+	sha256sums = 1b315f1c4203149010f1b88ff19e159fc63261187c4f108c9e48383adaa13bf5
+	sha256sums = 488794911426a51bbb796b5d443318ab65d759b7f5c1300487e576ecd4266908
+
+pkgname = omorifortune
