@@ -1,7 +1,7 @@
 # Maintainer: BlucherSKK <blucher1937@proton.me>
 pkgname=nymphalis-bin
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="It makes it easy to download media, manga, and other content from Patreon, desu.uno, gelboru, and so on"
 arch=('x86_64')
 url="https://github.com/BlucherSKK/nymphalis"
