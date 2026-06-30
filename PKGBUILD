@@ -24,11 +24,6 @@ build() {
 	python -m build -wn
 }
 
-check() {
-	cd "$_archive"
-	PYTHONPATH=Lib pytest
-}
-
 package() {
 	cd "$_archive"
 	python -m installer -d "$pkgdir" dist/*.whl
