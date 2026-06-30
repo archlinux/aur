@@ -1,9 +1,9 @@
 # Maintainer: Your Name <johnjahi55@gmail.com>
 
 _pkgname="nchat"
-pkgname="${_pkgname}-git"
-pkgver=5.8.4.r2.g98ec3c4
-pkgrel=2
+pkgname="$_pkgname-git"
+pkgver=5.16.9.r0.gef071d3
+pkgrel=1
 pkgdesc="console-based chat client with support for Telegram"
 url="https://github.com/d99kris/nchat"
 license=('MIT')
@@ -13,6 +13,7 @@ depends=(
   'file'
   'ncurses'
   'openssl'
+  'python'
   'sqlite'
   'zlib'
 )
@@ -24,7 +25,7 @@ makedepends=(
   'ninja'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
@@ -33,7 +34,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 \
+    | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -45,7 +47,8 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DCMAKE_INSTALL_MANDIR='/usr/share/man'
+    -DCMAKE_INSTALL_LIBEXECDIR="lib/$_pkgname"
+    -DCMAKE_INSTALL_MANDIR='share/man'
     -Wno-dev
   )
 
