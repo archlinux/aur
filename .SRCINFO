@@ -1,0 +1,17 @@
+pkgbase = mewo
+	pkgdesc = Mewo sprite that meows when clicked (Wayland)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/kelseythedreamer/headspace-repo
+	arch = x86_64
+	license = GPL2
+	depends = sdl2
+	depends = sdl2_image
+	makedepends = clang
+	makedepends = pkg-config
+	source = mewo-1.0.0.tar.gz::https://codeberg.org/kelseythedreamer/headspace-repo/raw/branch/main/games-misc/mewo/files/mewo-1.0.0.tar.gz
+	source = mewo.desktop::https://codeberg.org/kelseythedreamer/headspace-repo/raw/branch/main/games-misc/mewo/files/mewo.desktop
+	sha256sums = 968684d76cf29520dfa079901ad9acce4f266340df586c80d879c9356b1e38af
+	sha256sums = 4273a656da4caff95a9f98eff6eacf4a889e5887df68a019997df9400fdb6278
+
+pkgname = mewo
