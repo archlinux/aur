@@ -9,7 +9,7 @@ license=('MIT')
 depends=('sqlite')
 provides=('nymphalis')
 conflicts=('nymphalis')
-source_x86_64=("nymphalis-${pkgver}::https://github.com/BlucherSKK/nymphalis/releases/download/v${pkgver}/nymphalis-linux-amd64")
+source_x86_64=("nymphalis-${pkgver}::https://github.com/BlucherSKK/nymphalis/releases/download/${pkgver}/nymphalis-linux-amd64")
 sha256sums_x86_64=('SKIP')
 
 package() {
