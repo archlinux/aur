@@ -1,0 +1,25 @@
+pkgbase = ggsql-bin
+	pkgdesc = SQL extension for declarative data visualization
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/posit-dev/ggsql
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = hicolor-icon-theme
+	provides = ggsql=0.4.1
+	conflicts = ggsql
+	options = !debug
+	source_x86_64 = ggsql-bin-0.4.1_amd64.deb::https://github.com/posit-dev/ggsql/releases/download/v0.4.1/ggsql_0.4.1_amd64.deb
+	source_x86_64 = LICENSE::https://raw.githubusercontent.com/posit-dev/ggsql/refs/tags/v0.4.1/LICENSE.md
+	sha256sums_x86_64 = da3bb776b4806e0629f475695ebe6fe32fe5e8ca8336857a09408a972585b069
+	sha256sums_x86_64 = c4faf3235a2b77ac03e7c050c640b36a1873b7889d96cbe2951bf75fa4f8bd9d
+	source_aarch64 = ggsql-bin-0.4.1_arm64.deb::https://github.com/posit-dev/ggsql/releases/download/v0.4.1/ggsql_0.4.1_arm64.deb
+	source_aarch64 = LICENSE::https://raw.githubusercontent.com/posit-dev/ggsql/refs/tags/v0.4.1/LICENSE.md
+	sha256sums_aarch64 = aec0c1a4cbbf13f9effbfbe81fdd39d76db2a47b31a35022c4b06a19f142d472
+	sha256sums_aarch64 = c4faf3235a2b77ac03e7c050c640b36a1873b7889d96cbe2951bf75fa4f8bd9d
+
+pkgname = ggsql-bin
