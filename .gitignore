@@ -1,0 +1,8 @@
+# AUR repos should contain only packaging files. Ignore everything by default
+# (build artifacts: src/, pkg/, *.pkg.tar.*, the downloaded .deb) and allow
+# back only the files that belong in the repo. If you ever add a .install file
+# or a patch, whitelist it here with another `!` line.
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
