@@ -1,5 +1,7 @@
 pkgbase = git.gay
 	pkgdesc = discontinued aur package
 	pkgver = 0.0.0
+	pkgrel = 0
+
 
 pkgname = git.gay
