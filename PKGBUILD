@@ -3,7 +3,7 @@
 
 pkgname=gnome-online-accounts-googledrive
 pkgver=3.58.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Single sign-on framework for GNOME (with Google Files provider enabled)"
 url="https://gitlab.gnome.org/GNOME/gnome-online-accounts/-/wikis/home"
 arch=(x86_64 aarch64)
