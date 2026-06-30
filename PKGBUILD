@@ -25,7 +25,7 @@ package() {
 	cp -r "graphwar.jar" "$dest"
 
     mkdir -p "$pkgdir/usr/bin"
-    echo -e "#!/bin/sh\njava -jar /usr/share/games/graphwar/graphwar.jar" > "$pkgdir/usr/bin/graphwar"
+    echo -e '#!/bin/sh\njava -jar /usr/share/games/graphwar/graphwar.jar "$@"' > "$pkgdir/usr/bin/graphwar"
     chmod +x "$pkgdir/usr/bin/graphwar"
 }
 
