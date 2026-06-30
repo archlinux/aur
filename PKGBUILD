@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=3x-ui
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
@@ -28,7 +28,7 @@ optdepends=(
 )
 options=(!debug)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('9ba2d2e13a7936dc1d1ea04bdb7a4d0b3935ee5364b64e2b5ca1bc2d8a24fc21e99a754ac3c66ede848a438561d62415fa7b310e920bd1ae99ece9c7bc99f270')
+b2sums=('f36d673cf4865e59fe3f1f41b0b22c53ca08b7714ae6a8b0bcf59e5aeef35646e92e55d270d3a1a5c2f940f2c912907f998d4ae3e81c05160d6724810c540266')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -43,7 +43,7 @@ prepare() {
 
   cd frontend
   npm ci
-  npm run build -- --outDir ../internal/web/dist --emptyOutDir
+  npm run build
 }
 
 build() {
