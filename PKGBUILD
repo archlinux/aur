@@ -1,7 +1,7 @@
 # Maintainer: Chaser <ch4ser@users.noreply.github.com>
 
 pkgname=devo-bin
-pkgver=0.1.22
+pkgver=0.1.24
 pkgrel=1
 pkgdesc="Open-source, provider-agnostic coding agent that lives in your terminal"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ optdepends=(
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/devo-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/devo-v${pkgver}-aarch64-unknown-linux-musl.tar.gz")
 
-sha256sums_x86_64=('03a131ee02830f7e5a54d93589045359093171e4b59307d50c03ac569299a9c3')
-sha256sums_aarch64=('c193a853adbd2f93973cfd3bbbb1e75eaa87ee21195cf4c0603130c11d18ec6b')
+sha256sums_x86_64=('7f860dd56b7a8bb447c8d714ed5c61a8ebb141bf6672acdebf3557f506198ebb')
+sha256sums_aarch64=('ad470236649f41dcb30be9a6654781e12d06d4df60d291fa99b5c40403931973')
 
 package() {
 	local _target
