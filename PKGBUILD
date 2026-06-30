@@ -1,6 +1,6 @@
 # Maintainer: Tommy Falkowski <hello@byteowlz.com>
 pkgname=byteowlz-tmpltr
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Template-based document generation CLI"
 arch=('x86_64' 'aarch64')
