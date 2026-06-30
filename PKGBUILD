@@ -28,7 +28,7 @@
 # simply not run `mshell`; the helper binaries are still useful.
 
 pkgname=margo-git
-pkgver=r1777.2e43f38a
+pkgver=r1912.517a8d58
 pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)"
 url="https://github.com/kenanpelit/margo"
@@ -229,7 +229,8 @@ build() {
   # out to powerprofilesctl) with no zbus/tokio, so it's safe here too.
   cargo build --frozen --release \
     -p margo -p start-margo \
-    -p mctl -p mlock -p mlayout -p mscreenshot -p mvisual -p mlogind -p mpower -p mplay
+    -p mctl -p mlock -p mlayout -p mscreenshot -p mvisual -p mlogind -p mpower -p mplay \
+    -p mdots
 
   # mshell trio + mpicker + mwizard. mpicker pulls
   # mshell-screenshot (→ wayle-* → zbus/tokio), so it has to
@@ -282,7 +283,7 @@ package() {
   for bin in \
       margo start-margo \
       mctl mlock mlayout mscreenshot mvisual mlogind mpower mplay \
-      mshell mshellctl mshellshare mpicker mwizard mkeys mvpn; do
+      mshell mshellctl mshellshare mpicker mwizard mkeys mvpn mdots; do
     install -Dm755 "$CARGO_TARGET_DIR/release/$bin" "$pkgdir/usr/bin/$bin"
   done
 
@@ -511,6 +512,18 @@ package() {
   if [[ -f "contrib/completions/mshellctl.fish" ]]; then
     install -Dm644 "contrib/completions/mshellctl.fish" \
       "$pkgdir/usr/share/fish/vendor_completions.d/mshellctl.fish"
+  fi
+  if [[ -f "contrib/completions/mdots.bash" ]]; then
+    install -Dm644 "contrib/completions/mdots.bash" \
+      "$pkgdir/usr/share/bash-completion/completions/mdots"
+  fi
+  if [[ -f "contrib/completions/_mdots" ]]; then
+    install -Dm644 "contrib/completions/_mdots" \
+      "$pkgdir/usr/share/zsh/site-functions/_mdots"
+  fi
+  if [[ -f "contrib/completions/mdots.fish" ]]; then
+    install -Dm644 "contrib/completions/mdots.fish" \
+      "$pkgdir/usr/share/fish/vendor_completions.d/mdots.fish"
   fi
 
   # ── mshell sound assets ────────────────────────────────────────
