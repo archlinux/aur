@@ -8,6 +8,6 @@ pkgbase = hoshi-bin
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	source = https://github.com/hoshi-io/hoshi/releases/download/v1.1.1/hoshi-desktop-linux-v1.1.1.deb
-	sha256sums = 56f3eeaa02840a8817207a4bfd2adb931cc20ebfb926f35de788bc563f98f947
+	sha256sums = dc61b3d1f01e6e5d8798e5f5a620f8b070f43b49520f6f693588b7a85e5e8c24
 
 pkgname = hoshi-bin
