@@ -1,6 +1,6 @@
 pkgbase = sift-bin
 	pkgdesc = A fast and powerful open source alternative to grep
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/svent/sift
 	arch = i686
@@ -8,16 +8,16 @@ pkgbase = sift-bin
 	arch = aarch64
 	license = GPL3
 	makedepends = help2man
-	provides = sift=0.9.1
+	provides = sift=0.9.2
 	conflicts = sift
 	replaces = sift
 	options = !strip
 	options = !emptydirs
-	source_i686 = https://github.com/svent/sift/releases/download/v0.9.1/sift_0.9.1_Linux_i386.tar.gz
-	sha256sums_i686 = 1c72a26a74da20cb499d7a40ec0718e4f53f3f97620760c53f226a1dfe068fea
-	source_x86_64 = https://github.com/svent/sift/releases/download/v0.9.1/sift_0.9.1_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 8f100f6af90d54f66ae1c9cd45a39f2db39f98196b0f2db126ebb493d4cb3a7e
-	source_aarch64 = https://github.com/svent/sift/releases/download/v0.9.1/sift_0.9.1_Linux_arm64.tar.gz
-	sha256sums_aarch64 = b3a49c2380248b47c5d7b6e91600d199e1a97229fb7f5f849b534fb80f6e74e9
+	source_i686 = https://github.com/svent/sift/releases/download/v0.9.2/sift_0.9.2_Linux_i386.tar.gz
+	sha256sums_i686 = 759f33e4f3b162dc5fcf5bc6ee95dc83fd29ca39f592381b00daf395dc87ee89
+	source_x86_64 = https://github.com/svent/sift/releases/download/v0.9.2/sift_0.9.2_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 909596d8445ec840e3451c4e09052c74c26ae9b8503b1fb095033c0521efd29f
+	source_aarch64 = https://github.com/svent/sift/releases/download/v0.9.2/sift_0.9.2_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 11a2341abeaa67d78c9ecfce37293e01e32ae6c757f9b200ea051c27f09ed436
 
 pkgname = sift-bin

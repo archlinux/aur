@@ -3,7 +3,7 @@
 
 _name=sift
 pkgname=${_name}-bin
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="A fast and powerful open source alternative to grep"
 arch=('i686' 'x86_64' 'aarch64')
@@ -17,9 +17,9 @@ provides=("${_name}=${pkgver}")
 source_i686=("${url}/releases/download/v${pkgver}/${_name}_${pkgver}_Linux_i386.tar.gz")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_name}_${pkgver}_Linux_x86_64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_name}_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_i686=('1c72a26a74da20cb499d7a40ec0718e4f53f3f97620760c53f226a1dfe068fea')
-sha256sums_x86_64=('8f100f6af90d54f66ae1c9cd45a39f2db39f98196b0f2db126ebb493d4cb3a7e')
-sha256sums_aarch64=('b3a49c2380248b47c5d7b6e91600d199e1a97229fb7f5f849b534fb80f6e74e9')
+sha256sums_i686=('759f33e4f3b162dc5fcf5bc6ee95dc83fd29ca39f592381b00daf395dc87ee89')
+sha256sums_x86_64=('909596d8445ec840e3451c4e09052c74c26ae9b8503b1fb095033c0521efd29f')
+sha256sums_aarch64=('11a2341abeaa67d78c9ecfce37293e01e32ae6c757f9b200ea051c27f09ed436')
 
 [[ "$CARCH" = "i686" ]] && _arch='386'
 [[ "$CARCH" = "x86_64" ]] && _arch='amd64'
