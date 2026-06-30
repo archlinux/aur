@@ -19,10 +19,10 @@ depends=(libgcc glibc libstdc++)
 install="${pkgname}.install"
 options=(!strip)
 
-_exe="$pkgname-$pkgver-$CARCH"
+_exe="${pkgname}-${pkgver}-${CARCH}"
 
-source=("${_src}/raw/${pkgver}/README.md"
-	"${_src}/raw/${pkgver}/LICENSE.md")
+source=("README-${pkgver}.md::${_src}/raw/${pkgver}/README.md"
+		"LICENSE-${pkgver}::${_src}/raw/${pkgver}/LICENSE.md")
 source_x86_64=("${_exe}::${_src}/releases/download/${pkgver}/Noco-linux-x64")
 sha256sums=('f640d4b8b293cd9bc8741204be02bbb475d91ce66e9452eecf0fc7f715853445'
             'cbad8f8d8eb636b3b19cce7131b1fe930cef68f9fbaeeb28ec90543319acf9d6')
@@ -34,7 +34,7 @@ package() {
 
 	install -Dm755 "${_exe}" "${pkgdir}/usr/bin/${pkgname%-bin}"
 
-	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
