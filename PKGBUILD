@@ -8,7 +8,7 @@
 : "${_system_zig:=no}"
 
 pkgname=pince
-pkgver=0.9
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('x86_64')
@@ -23,11 +23,11 @@ optdepends=(
     'qt6-wayland: wayland support'
 )
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
-        "libmemscan::git+https://github.com/brkzlr/libmemscan.git#commit=d5989e416ebaa729f287e7ce490dce03e90c25e2"
+        "libmemscan::git+https://github.com/brkzlr/libmemscan.git#commit=223cb49c770197c82d0ee3fbbdf7685d86d27f2c"
         'pince.desktop'
         'pince.sh')
-sha256sums=('b12e326343e5c0739720baf0dc385836da9cee4d6c10f4280b01e428e7fc0f8d'
-            '28bfa1011872220d05389d1747cbaf89765d6e8e158ebf9fe1660e89cfc06b1c'
+sha256sums=('7ffeefd2dddba6390a722701530a4f9945e55e8018001e275138c34c64c8d9e5'
+            'c805defae5f8276faf390d97361ccd541a2e28d3321d59c1b95ebf8300406888'
             'ce07383acea3a2b607e6328cc33390d76a5c76481ae8cff8080dc6eb6da274ab'
             'ce4e18550a4aecd48ce21ba7f4233b9acfdd70c9c163aff0d53a1d960fc2c5d7')
 
