@@ -1,13 +1,14 @@
 pkgbase = cpumon
 	pkgdesc = Real-time CPU monitoring for Linux — temperatures, frequencies, throttling, and fan status
 	pkgver = 0.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Mohabdo21/cpumon
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = cpumon-0.2.3.tar.gz::https://github.com/Mohabdo21/cpumon/archive/v0.2.3.tar.gz
-	sha256sums = 9fb02fcd180b5a485046271024661e5bf7a4cd867fdcb75aedb24a875ab6e3a4
+	makedepends = git
+	source = cpumon::git+https://github.com/Mohabdo21/cpumon.git#tag=v0.2.3
+	sha256sums = SKIP
 
 pkgname = cpumon
