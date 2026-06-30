@@ -1,0 +1,1527 @@
+diff --git a/deps/+wxWidgets/wxWidgets.cmake b/deps/+wxWidgets/wxWidgets.cmake
+index 5537ff8b5..f96cd3c81 100644
+--- a/deps/+wxWidgets/wxWidgets.cmake
++++ b/deps/+wxWidgets/wxWidgets.cmake
+@@ -15,17 +15,12 @@ if (UNIX AND NOT APPLE) # wxWidgets will not use char as the underlying type for
+ endif()
+ 
+ if (MSVC)
+-    set(_wx_webview "-DwxUSE_WEBVIEW_EDGE=ON")
+-
++    set(_wx_webview "-DwxUSE_WEBVIEW_EDGE=OFF")
+ else ()
+-    set(_wx_webview "-DwxUSE_WEBVIEW=ON")
++    set(_wx_webview "-DwxUSE_WEBVIEW=OFF")
+ endif ()
+ 
+-if (UNIX AND NOT APPLE)
+-    set(_wx_secretstore "-DwxUSE_SECRETSTORE=OFF")
+-else ()
+-    set(_wx_secretstore "-DwxUSE_SECRETSTORE=ON")
+-endif ()
++set(_wx_secretstore "-DwxUSE_SECRETSTORE=OFF")
+ 
+ add_cmake_project(wxWidgets
+     URL https://github.com/prusa3d/wxWidgets/archive/5462e7d7cfac645926188443e842171e107b312c.zip
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index ae7d06168..eda8ee1dc 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -41,7 +41,7 @@ if (SLIC3R_GUI)
+     if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+         set (wxWidgets_CONFIG_OPTIONS "--toolkit=gtk${SLIC3R_GTK}")
+     endif ()
+-    find_package(wxWidgets 3.2 MODULE REQUIRED COMPONENTS base core adv html gl webview)
++    find_package(wxWidgets 3.2 MODULE REQUIRED COMPONENTS base core adv html gl)
+ 
+     include(${wxWidgets_USE_FILE})
+ 
+diff --git a/src/slic3r/CMakeLists.txt b/src/slic3r/CMakeLists.txt
+index 71efa5ddf..ed499a346 100644
+--- a/src/slic3r/CMakeLists.txt
++++ b/src/slic3r/CMakeLists.txt
+@@ -27,15 +27,8 @@ set(SLIC3R_GUI_SOURCES
+     GUI/UserAccountUtils.hpp
+     GUI/UserAccount.cpp
+     GUI/UserAccount.hpp
+-    GUI/WebViewDialog.cpp
+-    GUI/WebViewDialog.hpp
+-    GUI/WebViewPanel.cpp
+-    GUI/WebViewPanel.hpp
+     GUI/ConnectRequestHandler.cpp
+     GUI/ConnectRequestHandler.hpp
+-    GUI/WebView.cpp
+-    GUI/WebView.hpp
+-    GUI/WebViewPlatformUtils.hpp
+     GUI/SysInfoDialog.cpp
+     GUI/SysInfoDialog.hpp
+     GUI/KBShortcutsDialog.cpp
+@@ -232,8 +225,6 @@ set(SLIC3R_GUI_SOURCES
+     GUI/ConfigWizard.cpp
+     GUI/ConfigWizard.hpp
+     GUI/ConfigWizard_private.hpp
+-    GUI/ConfigWizardWebViewPage.cpp
+-    GUI/ConfigWizardWebViewPage.hpp
+     GUI/MsgDialog.cpp
+     GUI/MsgDialog.hpp
+     GUI/UpdateDialogs.cpp
+@@ -434,10 +425,6 @@ elseif (WIN32)
+     list(APPEND SLIC3R_GUI_SOURCES
+             GUI/WebViewPlatformUtilsWin32.cpp
+     )
+-else() # Linux
+-    list(APPEND SLIC3R_GUI_SOURCES
+-            GUI/WebViewPlatformUtilsLinux.cpp
+-    )
+ endif ()
+ 
+ add_library(libslic3r_gui STATIC ${SLIC3R_GUI_SOURCES})
+@@ -498,10 +485,9 @@ endif ()
+ # link these libraries.
+ if (UNIX AND NOT APPLE)
+     find_package(GTK${SLIC3R_GTK} REQUIRED)
+-    find_package(PkgConfig REQUIRED)
+ 
+-    pkg_search_module(WEBKIT2GTK REQUIRED IMPORTED_TARGET webkit2gtk-4.0 webkit2gtk-4.1)
+-    target_link_libraries(libslic3r_gui PUBLIC ${GTK${SLIC3R_GTK}_LIBRARIES} fontconfig PkgConfig::WEBKIT2GTK)
++    target_include_directories(libslic3r_gui PRIVATE ${GTK${SLIC3R_GTK}_INCLUDE_DIRS})
++    target_link_libraries(libslic3r_gui PUBLIC ${GTK${SLIC3R_GTK}_LIBRARIES} fontconfig)
+ endif ()
+ 
+ # Add a definition so that we can tell we are compiling slic3r.
+diff --git a/src/slic3r/GUI/ConfigWizard.cpp b/src/slic3r/GUI/ConfigWizard.cpp
+index 97fb0ec8e..2bfc447e7 100644
+--- a/src/slic3r/GUI/ConfigWizard.cpp
++++ b/src/slic3r/GUI/ConfigWizard.cpp
+@@ -10,7 +10,6 @@
+ // FIXME: extract absolute units -> em
+ 
+ #include "ConfigWizard_private.hpp"
+-#include "ConfigWizardWebViewPage.hpp"
+ 
+ #include <algorithm>
+ #include <numeric>
+@@ -2571,7 +2570,6 @@ void ConfigWizard::priv::load_pages()
+     index->clear();
+ 
+     index->add_page(page_welcome);
+-    index->add_page(page_login);
+     index->add_page(page_update_manager);
+ 
+     if (is_config_from_archive) {
+@@ -2758,7 +2756,7 @@ void ConfigWizard::priv::load_vendors()
+ 
+ void ConfigWizard::priv::add_page(ConfigWizardPage *page)
+ {
+-    const int proportion = (page == page_login || page == page_filaments || page == page_sla_materials);
++    const int proportion = (page == page_filaments || page == page_sla_materials);
+     hscroll_sizer->Add(page, proportion, wxEXPAND);
+     all_pages.push_back(page);
+ }
+@@ -3986,7 +3984,6 @@ ConfigWizard::ConfigWizard(wxWindow *parent)
+     wxGetApp().SetWindowVariantForButton(p->btn_cancel);
+ 
+     p->add_page(p->page_welcome = new PageWelcome(this));
+-    p->add_page(p->page_login = new ConfigWizardWebViewPage(this));
+     p->add_page(p->page_update_manager = new PageUpdateManager(this));
+ 
+     // other pages will be loaded later after confirm repositories selection
+@@ -4139,17 +4136,6 @@ bool ConfigWizard::run(RunReason reason, StartPage start_page)
+     }
+ }
+ 
+-void ConfigWizard::update_login()
+-{
+-    if (p->page_login && p->page_login->login_changed()) {
+-        // repos changed - we need rebuild
+-        // TRN: Progress dialog title
+-        wxGetApp().get_preset_updater_wrapper()->wizard_sync(wxGetApp().preset_bundle, wxGetApp().app_config->orig_version(), this, false, _L("Updating Configuration sources"));
+-        // now change PageUpdateManager
+-        p->page_update_manager->manager->update();
+-    }
+-}
+-
+ const wxString& ConfigWizard::name(const bool from_menu/* = false*/)
+ {
+     // A different naming convention is used for the Wizard on Windows & GTK vs. OSX.
+diff --git a/src/slic3r/GUI/ConfigWizard.hpp b/src/slic3r/GUI/ConfigWizard.hpp
+index f8d79b4bd..93e2c7fdd 100644
+--- a/src/slic3r/GUI/ConfigWizard.hpp
++++ b/src/slic3r/GUI/ConfigWizard.hpp
+@@ -84,7 +84,6 @@ public:
+ 
+     // Run the Wizard. Return whether it was completed.
+     bool run(RunReason reason, StartPage start_page = SP_WELCOME);
+-    void update_login();
+ 
+     static const wxString& name(const bool from_menu = false);
+ protected:
+diff --git a/src/slic3r/GUI/ConfigWizard_private.hpp b/src/slic3r/GUI/ConfigWizard_private.hpp
+index a62ba7808..eae536097 100644
+--- a/src/slic3r/GUI/ConfigWizard_private.hpp
++++ b/src/slic3r/GUI/ConfigWizard_private.hpp
+@@ -98,7 +98,6 @@ struct BundleMap : std::map<std::string /* = vendor ID */, Bundle>
+ struct Materials;
+ 
+ class RepositoryUpdateUIManager;
+-class ConfigWizardWebViewPage;
+ 
+ struct PrinterPickerEvent;
+ 
+@@ -633,7 +632,6 @@ struct ConfigWizard::priv
+     wxButton *btn_cancel = nullptr;
+ 
+     PageWelcome      *page_welcome = nullptr;
+-    ConfigWizardWebViewPage *page_login = nullptr;
+     PageUpdateManager*page_update_manager = nullptr;
+     PageMaterials    *page_filaments = nullptr;
+     PageMaterials    *page_sla_materials = nullptr;
+diff --git a/src/slic3r/GUI/Downloader.cpp b/src/slic3r/GUI/Downloader.cpp
+index 5899fc231..daec1e7f0 100644
+--- a/src/slic3r/GUI/Downloader.cpp
++++ b/src/slic3r/GUI/Downloader.cpp
+@@ -166,48 +166,9 @@ void Downloader::start_download(const std::string& full_url)
+ 		return;
+     }
+     
+-    size_t id = get_next_id();
+-
+-    if (!boost::starts_with(escaped_url, "https://") || !is_any_subdomain(escaped_url, {"printables.com", "testprusaverse.com", "thingiverse.com", "cults3d.com"})) {
+-		std::string msg = format(_L("Download won't start. Download URL doesn't point to allowed subdomains : %1%"), escaped_url);
+-		BOOST_LOG_TRIVIAL(error) << msg;
+-		NotificationManager* ntf_mngr = wxGetApp().notification_manager();
+-		ntf_mngr->push_notification(NotificationType::CustomNotification, NotificationManager::NotificationLevel::RegularNotificationLevel, msg);
+-		return;
+-	}
+-    
+-    m_downloads.emplace_back(std::make_unique<Download>(id, std::move(escaped_url), this, m_dest_folder, true));
+-	NotificationManager* ntf_mngr = wxGetApp().notification_manager();
+-	ntf_mngr->push_download_URL_progress_notification(id, m_downloads.back()->get_filename(), std::bind(&Downloader::user_action_callback, this, std::placeholders::_1, std::placeholders::_2));
+-	m_downloads.back()->start();
+ 	BOOST_LOG_TRIVIAL(debug) << "started download";
+ }
+ 
+-void Downloader::start_download_printables(const std::string& url, bool load_after, const std::string& printables_url, GUI_App* app)
+-{
+-    assert(m_initialized);
+-    
+-    size_t id = get_next_id();
+-
+-    if (!boost::starts_with(url, "https://") || !is_any_subdomain(url, {"printables.com", "testprusaverse.com"})) {
+-		std::string msg = format(_L("Download won't start. Download URL doesn't point to https://printables.com : %1%"), url);
+-		BOOST_LOG_TRIVIAL(error) << msg;
+-		NotificationManager* ntf_mngr = wxGetApp().notification_manager();
+-		ntf_mngr->push_notification(NotificationType::CustomNotification, NotificationManager::NotificationLevel::RegularNotificationLevel, msg);
+-		return;
+-	}
+-	
+-    m_downloads.emplace_back(std::make_unique<Download>(id, url, this, m_dest_folder, load_after));
+-	NotificationManager* ntf_mngr = wxGetApp().notification_manager();
+-	ntf_mngr->push_download_URL_progress_notification_with_printables_link( id
+-        , m_downloads.back()->get_filename()
+-        , printables_url
+-        , std::bind(&Downloader::user_action_callback, this, std::placeholders::_1, std::placeholders::_2)
+-        , std::bind(&GUI_App::open_link_in_printables, app, std::placeholders::_1)
+-    );
+-	m_downloads.back()->start();
+-}
+-
+ void Downloader::on_progress(wxCommandEvent& event)
+ {
+ 	size_t id = event.GetInt();
+diff --git a/src/slic3r/GUI/GUI_App.cpp b/src/slic3r/GUI/GUI_App.cpp
+index 8e65dcbb3..b3df265c2 100644
+--- a/src/slic3r/GUI/GUI_App.cpp
++++ b/src/slic3r/GUI/GUI_App.cpp
+@@ -1639,8 +1639,6 @@ bool GUI_App::on_init_inner()
+     if (is_editor())
+         update_mode(); // update view mode after fix of the object_list size
+ 
+-    show_printer_webview_tab();
+-
+ #ifdef _WIN32
+     mainframe->update_title(); // To ensure taskbar icons is updated.
+ #endif
+@@ -3400,14 +3398,6 @@ bool GUI_App::run_wizard(ConfigWizard::RunReason reason, ConfigWizard::StartPage
+     return res;
+ }
+ 
+-void GUI_App::update_wizard_login_page()
+-{
+-    if (!m_config_wizard) {
+-        return;
+-    }
+-    m_config_wizard->update_login();
+-}
+-
+ void GUI_App::show_desktop_integration_dialog()
+ {
+ #ifdef __linux__
+@@ -3584,12 +3574,6 @@ bool GUI_App::config_wizard_startup()
+         run_wizard(ConfigWizard::RR_DATA_LEGACY);
+         return true;
+     } 
+-#ifndef __APPLE__    
+-    else if (is_editor() && m_last_app_conf_lower_version && app_config->get_bool("downloader_url_registered")) {
+-        show_downloader_registration_dialog();
+-        return true;
+-    }
+-#endif
+     return false;
+ }
+ 
+@@ -4188,61 +4172,6 @@ void GUI_App::handle_connect_request_printer_select_inner(const std::string & ms
+     select_filament_from_connect(msg);
+ }
+ 
+-void GUI_App::show_printer_webview_tab()
+-{
+-    mainframe->show_printer_webview_tab(preset_bundle->physical_printers.get_selected_printer_config());
+-}
+-
+-
+-void GUI_App::printables_download_request(const std::string& download_url, const std::string& model_url)
+-{
+-    //this->mainframe->select_tab(size_t(0));
+-
+-    //lets always init so if the download dest folder was changed, new dest is used 
+-    boost::filesystem::path dest_folder(app_config->get("url_downloader_dest"));
+-    if (dest_folder.empty() || !boost::filesystem::is_directory(dest_folder)) {
+-        std::string msg = _u8L("Could not start URL download. Destination folder is not set. Please choose destination folder in Configuration Wizard.");
+-        BOOST_LOG_TRIVIAL(error) << msg;
+-        show_error(nullptr, msg);
+-        return;
+-    }
+-    m_downloader->init(dest_folder);
+-    m_downloader->start_download_printables(download_url, false, model_url, this);
+-}
+-void GUI_App::printables_slice_request(const std::string& download_url, const std::string& model_url)
+-{
+-    this->mainframe->select_tab(size_t(0));
+-    
+-    //lets always init so if the download dest folder was changed, new dest is used 
+-    boost::filesystem::path dest_folder(app_config->get("url_downloader_dest"));
+-    if (dest_folder.empty() || !boost::filesystem::is_directory(dest_folder)) {
+-        std::string msg = _u8L("Could not start URL download. Destination folder is not set. Please choose destination folder in Configuration Wizard.");
+-        BOOST_LOG_TRIVIAL(error) << msg;
+-        show_error(nullptr, msg);
+-        return;
+-    }
+-    m_downloader->init(dest_folder);
+-    m_downloader->start_download_printables(download_url, true, model_url, this);
+-}
+-
+-void GUI_App::printables_login_request()
+-{
+-    plater_->get_user_account()->do_login();
+-}
+-
+-void GUI_App::open_link_in_printables(const std::string& url)
+-{
+-    mainframe->show_printables_tab(url);
+-}
+-
+- bool GUI_App::is_account_logged_in() const
+- {
+-     if (!plater_ || !plater_->get_user_account()) {
+-         return false;
+-     }
+-     return plater_->get_user_account()->is_logged();
+- }
+-
+ bool LogGui::ignorred_message(const wxString& msg)
+ {    
+     for(const wxString& err : std::initializer_list<wxString>{ wxString("cHRM chunk does not match sRGB"),
+diff --git a/src/slic3r/GUI/GUI_App.hpp b/src/slic3r/GUI/GUI_App.hpp
+index b0c2033dd..886bd1bf7 100644
+--- a/src/slic3r/GUI/GUI_App.hpp
++++ b/src/slic3r/GUI/GUI_App.hpp
+@@ -432,8 +432,6 @@ public:
+     void            printables_download_request(const std::string& download_url, const std::string& model_url);
+     void            printables_slice_request(const std::string& download_url, const std::string& model_url);
+     void            printables_login_request();
+-    void            open_link_in_printables(const std::string& url);
+-    bool            is_account_logged_in() const;
+ private:
+     bool            on_init_inner();
+ 	void            init_app_config();
+diff --git a/src/slic3r/GUI/MainFrame.cpp b/src/slic3r/GUI/MainFrame.cpp
+index faa9db8e3..d4ae5af02 100644
+--- a/src/slic3r/GUI/MainFrame.cpp
++++ b/src/slic3r/GUI/MainFrame.cpp
+@@ -64,7 +64,6 @@
+ #include "GalleryDialog.hpp"
+ #include "NotificationManager.hpp"
+ #include "Preferences.hpp"
+-#include "WebViewPanel.hpp"
+ #include "UserAccount.hpp"
+ 
+ #ifdef _WIN32
+@@ -804,208 +803,6 @@ void MainFrame::create_preset_tabs()
+     add_created_tab(new TabSLAPrint(m_tabpanel), "cog");
+     add_created_tab(new TabSLAMaterial(m_tabpanel), "resin");
+     add_created_tab(new TabPrinter(m_tabpanel), wxGetApp().preset_bundle->printers.get_edited_preset().printer_technology() == ptFFF ? "printer" : "sla_printer");
+-    
+-    m_printables_webview = new PrintablesWebViewPanel(m_tabpanel);
+-    add_printables_webview_tab();
+-   
+-    m_connect_webview = new ConnectWebViewPanel(m_tabpanel);
+-    m_printer_webview = new PrinterWebViewPanel(m_tabpanel, L"");
+-   
+-    // new created tabs have to be hidden by default
+-    m_connect_webview->Hide();
+-    m_printer_webview->Hide();
+-
+-}
+-
+-void MainFrame::on_account_login(const std::string& token)
+-{
+-    add_connect_webview_tab();
+-    assert (m_printables_webview);
+-    m_printables_webview->login(token);
+-}
+-void MainFrame::on_account_will_refresh()
+-{
+-    m_printables_webview->send_will_refresh();
+-}
+-void MainFrame::on_account_did_refresh(const std::string& token)
+-{
+-    m_printables_webview->send_refreshed_token(token);
+-}
+-void MainFrame::on_account_logout()
+-{
+-    remove_connect_webview_tab();
+-    assert (m_printables_webview);
+-    m_printables_webview->logout();
+-}
+-
+-void MainFrame::add_connect_webview_tab()
+-{
+-    if (m_connect_webview_added) {
+-        m_connect_webview->resend_config();
+-        return;
+-    }
+-    // parameters of InsertNewPage (to prevent ambigous overloaded function)
+-    // insert "Connect" tab to position next to "Printer" tab
+-    // order of tabs: Plater - Print Settings - Filaments - Printers - Prusa Connect - Prusa Link
+-
+-    int n = m_tabpanel->FindPage(m_printables_webview) + 1;
+-    wxWindow* page = m_connect_webview;
+-    const wxString text(L"Prusa Connect");
+-    const std::string bmp_name = "";
+-    bool bSelect = false;
+-    m_tabpanel->InsertNewPage(n, page, text, bmp_name, bSelect);
+-    m_connect_webview->set_create_browser();
+-    m_connect_webview_added = true;
+-}
+-void MainFrame::remove_connect_webview_tab()
+-{
+-    if (!m_connect_webview_added) {
+-        return;
+-    }
+-    int n = m_tabpanel->FindPage(m_connect_webview);
+-    if (m_tabpanel->GetSelection() == n)
+-        m_tabpanel->SetSelection(0);
+-    m_tabpanel->RemovePage(size_t(n));
+-    m_connect_webview_added = false;
+-    m_connect_webview->logout();
+-    m_connect_webview->destroy_browser();
+-}
+-
+-void MainFrame::show_connect_tab(const wxString& url)
+-{
+-    if (!m_connect_webview_added) {
+-        return;
+-    }
+-    m_connect_webview->prohibit_after_show_func_once();
+-    m_tabpanel->SetSelection(m_tabpanel->FindPage(m_connect_webview));
+-    m_connect_webview->set_load_default_url_on_next_error(true);
+-    m_connect_webview->load_url(url);
+-}
+-void MainFrame::show_printables_tab(const std::string& url)
+-{
+-     if (!m_printables_webview_added) {
+-        return;
+-    }
+-    // we have to set next url first, than show the tab
+-    // printables_tab has to reload on show everytime
+-    // so it is not possible load_url right after show
+-    m_printables_webview->set_load_default_url_on_next_error(true);
+-    m_printables_webview->set_next_show_url(url);
+-    m_tabpanel->SetSelection(m_tabpanel->FindPage(m_printables_webview));
+-}
+-
+-void MainFrame::on_printables_secret_token(const std::string& data)
+-{
+-    if (!m_printables_webview_added) {
+-        return;
+-    }
+-    m_printables_webview->on_printables_secret_token(data);
+-}
+-void MainFrame::add_printables_webview_tab()
+-{
+-    if (m_printables_webview_added) {
+-        return;
+-    }
+-
+-    int n = m_tabpanel->FindPage(wxGetApp().get_tab(Preset::TYPE_PRINTER)) + 1;
+-    wxWindow* page = m_printables_webview;
+-    const wxString text(L"Printables");
+-    const std::string bmp_name = "";
+-    m_tabpanel->InsertNewPage(n, page, text, bmp_name, false);
+-    m_printables_webview->set_create_browser();
+-    m_printables_webview_added = true;
+-}
+-
+-// no longer needed?
+-void MainFrame::remove_printables_webview_tab()
+-{
+-    if (!m_printables_webview_added) {
+-        return;
+-    }
+-    int n = m_tabpanel->FindPage(m_printables_webview);
+-    if (m_tabpanel->GetSelection() == n)
+-        m_tabpanel->SetSelection(0);
+-    m_tabpanel->RemovePage(size_t(n));
+-    m_printables_webview_added = false;
+-    m_printables_webview->destroy_browser();
+-}
+-
+-void MainFrame::show_printer_webview_tab(DynamicPrintConfig* dpc)
+-{
+-    
+-    remove_printer_webview_tab();
+-    // if physical printer is selected
+-    if (dpc && dpc->option<ConfigOptionEnum<PrintHostType>>("host_type")->value != htPrusaConnect) {
+-        std::string url = dpc->opt_string("print_host");
+-        if (url.find("http://") != 0 && url.find("https://") != 0) {
+-            url = "http://" + url;
+-        }
+-        // set password / api key
+-        if (dynamic_cast<const ConfigOptionEnum<AuthorizationType>*>(dpc->option("printhost_authorization_type"))->value == AuthorizationType::atKeyPassword) {
+-            set_printer_webview_api_key(dpc->opt_string("printhost_apikey"));
+-        }
+-        else {
+-            set_printer_webview_credentials(dpc->opt_string("printhost_user"), dpc->opt_string("printhost_password"));
+-        }
+-        add_printer_webview_tab(from_u8(url));
+-    }
+-}
+-
+-void MainFrame::add_printer_webview_tab(const wxString& url)
+-{
+-    if (m_printer_webview_added) {
+-        //set_printer_webview_tab_url(url);
+-        return;
+-    }
+-    m_printer_webview_added = true;
+-    // add as the last (rightmost) panel
+-    m_tabpanel->AddNewPage(m_printer_webview, _L("Physical Printer"), "");
+-    m_printer_webview->set_default_url(url);
+-    m_printer_webview->set_create_browser();
+-}
+-void MainFrame::remove_printer_webview_tab()
+-{
+-    if (!m_printer_webview_added) {
+-        return;
+-    }
+-    if (m_tabpanel->GetPageText(m_tabpanel->GetSelection()) == _L("Physical Printer"))
+-            select_tab(size_t(0));
+-    m_printer_webview_added = false;
+-    m_printer_webview->Hide();
+-    m_tabpanel->RemovePage(m_tabpanel->FindPage(m_printer_webview));
+-    m_printer_webview->destroy_browser();
+-}
+-
+-void MainFrame::set_printer_webview_api_key(const std::string& key)
+-{
+-    m_printer_webview->set_api_key(key);
+-}
+-void MainFrame::set_printer_webview_credentials(const std::string& usr, const std::string& psk)
+-{
+-    m_printer_webview->set_credentials(usr, psk);
+-}
+-
+-bool MainFrame::is_any_webview_selected()
+-{
+-    int selection = m_tabpanel->GetSelection();
+-    if ( selection == m_tabpanel->FindPage(m_printables_webview)) 
+-        return true;
+-    if (m_connect_webview_added && selection == m_tabpanel->FindPage(m_connect_webview)) 
+-        return true;
+-    if (m_printer_webview_added && selection == m_tabpanel->FindPage(m_printer_webview)) 
+-        return true;
+-    return false;
+-}
+-
+-void MainFrame::reload_selected_webview()
+-{
+-    int selection = m_tabpanel->GetSelection();
+-    if ( selection == m_tabpanel->FindPage(m_printables_webview)) 
+-       m_printables_webview->do_reload();
+-    if (m_connect_webview_added && selection == m_tabpanel->FindPage(m_connect_webview)) 
+-        m_connect_webview->do_reload();
+-    if (m_printer_webview_added && selection == m_tabpanel->FindPage(m_printer_webview)) 
+-        m_printer_webview->do_reload();
+ }
+ 
+ void MainFrame::on_tab_change_rename_reload_item(int new_tab)
+@@ -1013,37 +810,18 @@ void MainFrame::on_tab_change_rename_reload_item(int new_tab)
+     if (!m_tabpanel) {
+         return;
+     }
+-    if ( new_tab == m_tabpanel->FindPage(m_printables_webview) 
+-        || (m_connect_webview_added && new_tab == m_tabpanel->FindPage(m_connect_webview)) 
+-        || (m_printer_webview_added && new_tab == m_tabpanel->FindPage(m_printer_webview))) 
+-    {
+-        m_menu_item_reload->SetItemLabel(_L("Re&load Web Content") + "\tF5");
+-        m_menu_item_reload->SetHelp(_L("Reload Web Content"));
+-    } else {
+-        m_menu_item_reload->SetItemLabel(_L("Re&load from Disk") + "\tF5");
+-        m_menu_item_reload->SetHelp(_L("Reload the plater from disk"));
+-    }
++
++    m_menu_item_reload->SetItemLabel(_L("Re&load from Disk") + "\tF5");
++    m_menu_item_reload->SetHelp(_L("Reload the plater from disk"));
+ }
+ 
+ bool MainFrame::reload_item_condition_cb()
+ {
+-    return is_any_webview_selected() ? true :
+-    !m_plater->model().objects.empty();
++    return !m_plater->model().objects.empty();
+ }
+ void MainFrame::reload_item_function_cb()
+ {
+-    is_any_webview_selected() 
+-        ? reload_selected_webview()
+-        : m_plater->reload_all_from_disk();
+-}
+-
+-void Slic3r::GUI::MainFrame::refresh_account_menu(bool avatar/* = false */)
+-{
+-    // Update User name in TopBar
+-    m_bar_menus.UpdateAccountMenu();
+-
+-    m_tabpanel->GetTopBarItemsCtrl()->UpdateAccountButton(avatar);
+-    m_tmp_top_bar->GetTopBarItemsCtrl()->UpdateAccountButton(avatar);
++    m_plater->reload_all_from_disk();
+ }
+ 
+ void MainFrame::add_created_tab(Tab* panel,  const std::string& bmp_name /*= ""*/)
+@@ -1300,13 +1078,6 @@ void MainFrame::on_sys_color_changed()
+     for (Tab* tab : wxGetApp().tabs_list)
+         tab->sys_color_changed();
+ 
+-    if (m_printables_webview)
+-        m_printables_webview->sys_color_changed();
+-    if (m_connect_webview)
+-        m_connect_webview->sys_color_changed();
+-    if (m_printer_webview)
+-        m_printer_webview->sys_color_changed();
+-
+     MenuFactory::sys_color_changed(m_menubar);
+ 
+     this->Refresh();
+@@ -1647,9 +1418,6 @@ void MainFrame::init_menubar_as_editor()
+         append_menu_item(editMenu, wxID_ANY, _L("Re&load from Disk") + dots + "\tCtrl+Shift+R",
+             _L("Reload the plater from disk"), [this](wxCommandEvent&) { m_plater->reload_all_from_disk(); },
+             "", nullptr, [this]() {return !m_plater->model().objects.empty(); }, this);
+-        m_menu_item_reload = append_menu_item(editMenu, wxID_ANY, _L("Re&load Web Content") + "\tF5",
+-            _L("Reload Web Content"), [this](wxCommandEvent&) {  reload_selected_webview(); },
+-            "", nullptr, [this]() {return is_any_webview_selected(); }, this);
+ #else
+         m_menu_item_reload = append_menu_item(editMenu, wxID_ANY, _L("Re&load from Disk") + "\tF5",
+             _L("Reload the plater from disk"), [this](wxCommandEvent&) {  reload_item_function_cb(); },
+diff --git a/src/slic3r/GUI/MainFrame.hpp b/src/slic3r/GUI/MainFrame.hpp
+index 8bc43c30e..969c03ddd 100644
+--- a/src/slic3r/GUI/MainFrame.hpp
++++ b/src/slic3r/GUI/MainFrame.hpp
+@@ -45,9 +45,6 @@ class Plater;
+ class MainFrame;
+ class PreferencesDialog;
+ class GalleryDialog;
+-class ConnectWebViewPanel; 
+-class PrinterWebViewPanel;
+-class PrintablesWebViewPanel;
+ 
+ enum QuickSlice
+ {
+@@ -100,13 +97,6 @@ class MainFrame : public DPIFrame
+     size_t      m_last_selected_tab;
+     Search::OptionsSearcher m_searcher;
+ 
+-    ConnectWebViewPanel*    m_connect_webview{ nullptr };
+-    bool                    m_connect_webview_added{ false };
+-    PrintablesWebViewPanel* m_printables_webview{ nullptr };
+-    bool                    m_printables_webview_added{ false };
+-    PrinterWebViewPanel*    m_printer_webview{ nullptr };
+-    bool                    m_printer_webview_added{ false };
+-
+     std::string     get_base_name(const wxString &full_name, const char *extension = nullptr) const;
+     std::string     get_dir_name(const wxString &full_name) const;
+ 
+@@ -128,8 +118,6 @@ class MainFrame : public DPIFrame
+     bool can_delete_all() const;
+     bool can_reslice() const;
+ 
+-    void    add_connect_webview_tab();
+-    void    remove_connect_webview_tab();
+     void    on_tab_change_rename_reload_item(int new_tab);
+     bool    reload_item_condition_cb();
+     void    reload_item_function_cb();
+@@ -223,29 +211,6 @@ public:
+     void        add_to_recent_projects(const wxString& filename);
+     void        technology_changed();
+ 
+-    void    on_account_login(const std::string& token);
+-    void    on_account_will_refresh();
+-    void    on_account_did_refresh(const std::string& token);
+-    void    on_account_logout();
+-    void    show_connect_tab(const wxString& url);
+-    void    show_printables_tab(const std::string& url);
+-    void    on_printables_secret_token(const std::string& data);
+-
+-    void    add_printables_webview_tab();
+-    void    remove_printables_webview_tab();
+-
+-    void    show_printer_webview_tab(DynamicPrintConfig* dpc);
+-
+-    void    add_printer_webview_tab(const wxString& url);
+-    void    remove_printer_webview_tab();
+-    bool    get_printer_webview_tab_added() const { return m_printer_webview_added; }
+-    void    set_printer_webview_api_key(const std::string& key);
+-    void    set_printer_webview_credentials(const std::string& usr, const std::string& psk);
+-    bool    is_any_webview_selected();
+-    void    reload_selected_webview();
+-
+-    void    refresh_account_menu(bool avatar = false);
+-
+     PrintHostQueueDialog* printhost_queue_dlg() { return m_printhost_queue_dlg; }
+ 
+     Plater*               m_plater { nullptr };
+diff --git a/src/slic3r/GUI/Plater.cpp b/src/slic3r/GUI/Plater.cpp
+index a116252a2..96e2e4c18 100644
+--- a/src/slic3r/GUI/Plater.cpp
++++ b/src/slic3r/GUI/Plater.cpp
+@@ -106,7 +106,6 @@
+ #include "Mouse3DController.hpp"
+ #include "Tab.hpp"
+ #include "Jobs/ArrangeJob2.hpp"
+-#include "ConfigWizardWebViewPage.hpp"
+ 
+ #include "Jobs/RotoptimizeJob.hpp"
+ #include "Jobs/SeqArrangeJob.hpp"
+@@ -136,9 +135,6 @@
+ #include "UserAccount.hpp"
+ #include "UserAccountUtils.hpp"
+ #include "DesktopIntegrationDialog.hpp"
+-#include "WebViewDialog.hpp"
+-#include "WebViewPanel.hpp"
+-#include "ConfigWizardWebViewPage.hpp"
+ #include "PresetArchiveDatabase.hpp"
+ #include "BulkExportDialog.hpp"
+ #include "LoadStepDialog.hpp"
+@@ -345,9 +341,6 @@ struct Plater::priv
+     Preview *preview;
+     std::unique_ptr<NotificationManager> notification_manager;
+     std::unique_ptr<UserAccount> user_account;
+-    // Login dialog needs to be kept somewhere.
+-    // It is created inside evt Bind. But it might be closed from another event.
+-    LoginWebViewDialog* login_dialog { nullptr };
+ 
+     ProjectDirtyStateManager dirty_state;
+      
+@@ -974,229 +967,10 @@ void Plater::priv::init()
+                 wxGetApp().start_download(evt.data[i]);
+             }
+         }); 
+-        this->q->Bind(EVT_LOGIN_OTHER_INSTANCE, [this](LoginOtherInstanceEvent& evt) {
+-            BOOST_LOG_TRIVIAL(trace) << "Received login from other instance event.";
+-            user_account->on_login_code_recieved(evt.data);
+-        });
+         this->q->Bind(EVT_STORE_READ_REQUEST, [this](SimpleEvent& evt) {
+             BOOST_LOG_TRIVIAL(debug) << "Received store read request from other instance event.";
+             user_account->on_store_read_request();
+         });
+-        
+-        this->q->Bind(EVT_LOGIN_VIA_WIZARD, [this](Event<std::string> &evt) {
+-            BOOST_LOG_TRIVIAL(trace) << "Received login from wizard.";
+-            user_account->on_login_code_recieved(evt.data);
+-        });
+-        this->q->Bind(EVT_OPEN_PRUSAAUTH, [this](OpenPrusaAuthEvent& evt) {
+-            BOOST_LOG_TRIVIAL(info)  << "open login browser: " << evt.data.first;
+-            std::string dialog_msg;
+-            login_dialog = new LoginWebViewDialog(this->q, dialog_msg, evt.data.first, this->q);
+-            if (login_dialog->ShowModal() == wxID_OK) {
+-                user_account->on_login_code_recieved(dialog_msg);
+-            }
+-            if (login_dialog != nullptr) {
+-                this->q->RemoveChild(login_dialog);
+-                login_dialog->Destroy();
+-                login_dialog = nullptr;
+-            }
+-        });
+-
+-        auto open_external_login = [this](wxCommandEvent& evt){
+-             DownloaderUtils::Worker::perform_url_register();
+-#if defined(__linux__)
+-            // Remove all desktop files registering prusaslicer:// url done by previous versions.
+-            DesktopIntegrationDialog::undo_downloader_registration_rigid();
+-#if defined(SLIC3R_DESKTOP_INTEGRATION)
+-            if (DownloaderUtils::Worker::perform_registration_linux) 
+-                DesktopIntegrationDialog::perform_downloader_desktop_integration();
+-#endif // SLIC3R_DESKTOP_INTEGRATION                
+-#endif // __linux__
+-            std::string service;
+-            if (evt.GetString().Find(L"accounts.google.com") != wxNOT_FOUND) {
+-                service = "google";
+-            } else if (evt.GetString().Find(L"appleid.apple.com") != wxNOT_FOUND) {
+-                service  = "apple";
+-            } else if (evt.GetString().Find(L"facebook.com") != wxNOT_FOUND) {
+-                service = "facebook";
+-            }
+-            wxString url = user_account->get_login_redirect_url(service);
+-            wxGetApp().open_login_browser_with_dialog(into_u8(url));
+-        };
+-
+-        this->q->Bind(EVT_OPEN_EXTERNAL_LOGIN_WIZARD, open_external_login);
+-        this->q->Bind(EVT_OPEN_EXTERNAL_LOGIN, open_external_login);
+-
+-        this->q->Bind(EVT_UA_LOGGEDOUT, [this](UserAccountSuccessEvent& evt) {
+-            user_account->clear();
+-            std::string text = _u8L("Logged out from Prusa Account.");
+-            this->notification_manager->close_notification_of_type(NotificationType::UserAccountID);
+-            this->notification_manager->push_notification(NotificationType::UserAccountID, NotificationManager::NotificationLevel::ImportantNotificationLevel, text);
+-            this->main_frame->on_account_logout();
+-            this->main_frame->refresh_account_menu(true);
+-            // Update sidebar printer status
+-            sidebar->update_printer_presets_combobox();
+-            wxGetApp().update_wizard_login_page();
+-            this->show_action_buttons(this->ready_to_slice);
+-        });
+-
+-        auto on_id_user_success = [this](UserAccountSuccessEvent& evt, bool after_token_success) {
+-            if (login_dialog != nullptr) {
+-                login_dialog->EndModal(wxID_CANCEL);
+-            }
+-            // There are multiple handlers and we want to notify all
+-            evt.Skip();
+-            std::string who = user_account->get_username();
+-            std::string username;
+-            if (user_account->on_user_id_success(evt.data, username, after_token_success)) {
+-                if (who != username) {
+-                    // show notification only on login (not refresh).
+-                    std::string text = format(_u8L("Logged to Prusa Account as %1%."), username);
+-                    // login notification
+-                    this->notification_manager->close_notification_of_type(NotificationType::UserAccountID);
+-                    this->notification_manager->close_notification_of_type(NotificationType::FailedSecretVendorUpdateSync);
+-                    // show connect tab
+-                    this->notification_manager->push_notification(NotificationType::UserAccountID, NotificationManager::NotificationLevel::ImportantNotificationLevel, text);
+-
+-                    this->main_frame->on_account_login(user_account->get_access_token());
+-
+-                    // notify other instances
+-                    Slic3r::GUI::wxGetApp().other_instance_message_handler()->multicast_message("STORE_READ"); 
+-                } else {
+-                    // refresh do different operations than on_account_login
+-                    this->main_frame->on_account_did_refresh(user_account->get_access_token());
+-                }
+-                // Update User name in TopBar
+-                this->main_frame->refresh_account_menu();
+-                wxGetApp().update_wizard_login_page();
+-                this->show_action_buttons(this->ready_to_slice);
+- 
+-            } else {
+-                // data were corrupt and username was not retrieved
+-                // procced as if EVT_UA_RESET was recieved
+-                BOOST_LOG_TRIVIAL(error) << "Reseting Prusa Account communication. Recieved data were corrupt.";
+-                user_account->clear();
+-                this->notification_manager->close_notification_of_type(NotificationType::UserAccountID);
+-                this->notification_manager->push_notification(NotificationType::UserAccountID, NotificationManager::NotificationLevel::WarningNotificationLevel, _u8L("Failed to connect to Prusa Account."));
+-                this->main_frame->on_account_logout();
+-                // Update User name in TopBar
+-                this->main_frame->refresh_account_menu(true);
+-                // Update sidebar printer status
+-                sidebar->update_printer_presets_combobox();
+-            }    
+-        };
+-
+-        this->q->Bind(EVT_UA_ID_USER_SUCCESS, [on_id_user_success](UserAccountSuccessEvent& evt) {
+-            on_id_user_success(evt, false);
+-        });
+-        this->q->Bind(EVT_UA_ID_USER_SUCCESS_AFTER_TOKEN_SUCCESS, [on_id_user_success](UserAccountSuccessEvent& evt) {
+-            on_id_user_success(evt, true);
+-        });
+-
+-        this->q->Bind(EVT_UA_RESET, [this](UserAccountFailEvent& evt) {
+-            BOOST_LOG_TRIVIAL(error) << "Reseting Prusa Account communication. Error message: " << evt.data;
+-            user_account->clear();
+-            this->notification_manager->close_notification_of_type(NotificationType::UserAccountID);
+-            this->notification_manager->push_notification(NotificationType::UserAccountID, NotificationManager::NotificationLevel::WarningNotificationLevel, _u8L("Failed to connect to Prusa Account."));
+-            this->main_frame->on_account_logout();
+-            // Update User name in TopBar
+-            this->main_frame->refresh_account_menu(true);
+-            // Update sidebar printer status
+-            sidebar->update_printer_presets_combobox();
+-            });
+-        this->q->Bind(EVT_UA_FAIL, [this](UserAccountFailEvent& evt) {
+-            BOOST_LOG_TRIVIAL(error) << "Failed communication with Prusa Account: " << evt.data;
+-            user_account->on_communication_fail();
+-        });
+-        this->q->Bind(EVT_UA_RACE_LOST, [this](UserAccountFailEvent& evt) {
+-            BOOST_LOG_TRIVIAL(debug) << "Renew token race lost: " << evt.data;
+-            user_account->on_race_lost();
+-        });
+-        
+-        this->q->Bind(EVT_UA_PRUSACONNECT_STATUS_SUCCESS, [this](UserAccountSuccessEvent& evt) {
+-            std::string text;
+-            bool printers_changed = false;
+-            if (user_account->on_connect_printers_success(evt.data, wxGetApp().app_config, printers_changed)) {
+-                if (printers_changed) {
+-                    sidebar->update_printer_presets_combobox();
+-                }
+-            } else {
+-                // message was corrupt, procceed like EVT_UA_FAIL
+-                user_account->on_communication_fail();
+-            }
+-        });
+-        this->q->Bind(EVT_UA_PRUSACONNECT_PRINTER_MODELS_SUCCESS, [this](UserAccountSuccessEvent& evt) {
+-            std::string text;
+-            bool printers_changed = false;
+-            if (user_account->on_connect_uiid_map_success(evt.data, wxGetApp().app_config, printers_changed)) {
+-                if (printers_changed) {
+-                    sidebar->update_printer_presets_combobox();
+-                }
+-            }
+-            else {
+-                // message was corrupt, procceed like EVT_UA_FAIL
+-                user_account->on_communication_fail();
+-            }
+-        });
+-        this->q->Bind(EVT_UA_AVATAR_SUCCESS, [this](UserAccountSuccessEvent& evt) {   
+-            boost::filesystem::path path = user_account->get_avatar_path(true);
+-            FILE* file; 
+-            file = boost::nowide::fopen(path.generic_string().c_str(), "wb");
+-            if (file == NULL) {
+-                BOOST_LOG_TRIVIAL(error) << "Failed to create file to store avatar picture at: " << path;
+-                return;
+-            }
+-            fwrite(evt.data.c_str(), 1, evt.data.size(), file);
+-            fclose(file);
+-            this->main_frame->refresh_account_menu(true);
+-        }); 
+-        this->q->Bind(EVT_UA_PRINTABLES_SECRET_TOKEN_SUCCESS, [this](UserAccountSuccessEvent& evt) {
+-            main_frame->on_printables_secret_token(evt.data);
+-        });
+-        this->q->Bind(EVT_UA_PRUSACONNECT_PRINTER_DATA_SUCCESS, [this](UserAccountSuccessEvent& evt) {
+-            this->user_account->set_current_printer_data(evt.data);
+-            wxGetApp().handle_connect_request_printer_select_inner(evt.data);
+-        });
+-        this->q->Bind(EVT_UA_PRUSACONNECT_PRINTER_DATA_FAIL, [this](UserAccountFailEvent& evt) {
+-            BOOST_LOG_TRIVIAL(error) << "Failed communication with Connect Printer endpoint: " << evt.data;
+-            user_account->on_communication_fail();
+-            std::string msg = _u8L("Failed to select printer from Prusa Connect.");
+-            this->notification_manager->close_notification_of_type(NotificationType::SelectFilamentFromConnect);
+-            this->notification_manager->push_notification(NotificationType::SelectFilamentFromConnect, NotificationManager::NotificationLevel::WarningNotificationLevel, msg);
+-        });
+-
+-        this->q->Bind(EVT_UA_REFRESH_TIME, [this](UserAccountTimeEvent& evt) {
+-            this->user_account->set_refresh_time(evt.data);
+-        });
+-        this->q->Bind(EVT_UA_ENQUEUED_REFRESH, [this](SimpleEvent& evt) {
+-             this->main_frame->on_account_will_refresh();
+-        });
+-
+-        this->q->Bind(EVT_PRINTABLES_CONNECT_PRINT, [this](wxCommandEvent& evt) {
+-            if (!this->user_account->is_logged()) {
+-                // show login dialog instead of print dialog
+-                this->user_account->do_login();
+-                return;
+-            }
+-            this->q->printables_to_connect_gcode(into_u8(evt.GetString()));
+-        });
+-
+-        this->q->Bind(EVT_UA_RETRY_NOTIFY, [this](UserAccountFailEvent& evt) {
+-            this->notification_manager->close_notification_of_type(NotificationType::AccountTransientRetry);
+-            this->notification_manager->push_notification(NotificationType::AccountTransientRetry
+-                , NotificationManager::NotificationLevel::RegularNotificationLevel
+-                , evt.data
+-                // TRN: This is a hyperlink in a notification. It is preceded by a message from PrusaAccount (therefore not in this dictionary)
+-                // saying something like "connection not established, I will keep trying".
+-                , _u8L("Stop now.")
+-                , [this](wxEvtHandler* ) {
+-                    this->user_account->do_logout();
+-			        return true; 
+-		        });
+-  
+-        });
+-        this->q->Bind(EVT_UA_CLOSE_RETRY_NOTIFICATION, [this](SimpleEvent& evt) {
+-            this->notification_manager->close_notification_of_type(NotificationType::AccountTransientRetry);
+-        });
+     }
+ 
+ 	wxGetApp().other_instance_message_handler()->init(this->q);
+@@ -4158,15 +3932,12 @@ void Plater::priv::show_action_buttons(const bool ready_to_slice_) const
+     DynamicPrintConfig* selected_printer_config = wxGetApp().preset_bundle->physical_printers.get_selected_printer_config();
+     const auto print_host_opt = selected_printer_config ? selected_printer_config->option<ConfigOptionString>("print_host") : nullptr;
+     const bool send_gcode_shown = print_host_opt != nullptr && !print_host_opt->value.empty();
+-    const bool connect_gcode_shown = print_host_opt == nullptr && can_show_upload_to_connect();
+     // when a background processing is ON, export_btn and/or send_btn are showing
+     if (get_config_bool("background_processing"))
+     {
+ 	    RemovableDriveManager::RemovableDrivesStatus removable_media_status = wxGetApp().removable_drive_manager()->status();
+ 		if (sidebar->show_reslice(false) |
+ 			sidebar->show_export(true) |
+-			sidebar->show_send(send_gcode_shown) |
+-            sidebar->show_connect(connect_gcode_shown) |
+ 			sidebar->show_export_removable(removable_media_status.has_removable_drives))
+             sidebar->Layout();
+     }
+@@ -4178,7 +3949,6 @@ void Plater::priv::show_action_buttons(const bool ready_to_slice_) const
+         if (sidebar->show_reslice(ready_to_slice) |
+             sidebar->show_export(!ready_to_slice) |
+             sidebar->show_send(send_gcode_shown && !ready_to_slice) |
+-            sidebar->show_connect(connect_gcode_shown && !ready_to_slice) |
+ 			sidebar->show_export_removable(!ready_to_slice && removable_media_status.has_removable_drives))
+             sidebar->Layout();
+     }
+@@ -4191,12 +3961,10 @@ void Plater::priv::show_autoslicing_action_buttons() const {
+ 
+     DynamicPrintConfig* selected_printer_config = wxGetApp().preset_bundle->physical_printers.get_selected_printer_config();
+     const auto print_host_opt = selected_printer_config ? selected_printer_config->option<ConfigOptionString>("print_host") : nullptr;
+-    const bool connect_gcode_shown = print_host_opt == nullptr && can_show_upload_to_connect();
+ 
+     RemovableDriveManager::RemovableDrivesStatus removable_media_status = wxGetApp().removable_drive_manager()->status();
+ 
+     bool updated{sidebar->show_export_all(true)};
+-    updated = sidebar->show_connect_all(connect_gcode_shown) || updated;
+     updated = sidebar->show_export_removable_all(removable_media_status.has_removable_drives) || updated;
+     if (updated) {
+         sidebar->Layout();
+@@ -6628,164 +6396,6 @@ bool load_secret(const std::string& id, const std::string& opt, std::string& usr
+ }
+ }
+ 
+-
+-void Plater::printables_to_connect_gcode(const std::string& url)
+-{
+-    PrintablesConnectUploadDialog dialog(this, url);
+-    dialog.ShowModal();
+-
+-}
+-
+-std::optional<PrintHostJob> Plater::get_connect_print_host_job(bool multiple_beds) 
+-{
+-    assert(p->user_account->is_logged());
+-    std::string  dialog_msg;
+-    {
+-        PrinterPickWebViewDialog dialog(this, dialog_msg, multiple_beds);
+-        if (dialog.ShowModal() != wxID_OK) {
+-            return std::nullopt;
+-        }
+-    }   
+-    if (dialog_msg.empty())  {
+-        show_error(this, _L("Failed to select a printer."));
+-        return std::nullopt;
+-    }
+-    BOOST_LOG_TRIVIAL(debug) << "Message from Printer pick webview: " << dialog_msg;
+-
+-/*
+-{
+- set_ready: boolean, // uzivatel potvrdil ze je tiskarne ready a muze se tisknout, pouziva se pro tisknout ted a odlozeny tisk
+- position: -1 | 0, // -1 = posledni ve fronte, 0 = prvni ve fronte
+- wait_until: number | undefined, // timestamp pro odlozeny tisk
+- file_name: string, // tady budeme predavat jak se uzivatel rozhodl soubor pojmenovat, kdyz ho neprejmenuje, tak vratime to stejne co nam predtim posle slicer
+- printer_uuid: string // uuid vybrane tiskarny
+-}
+-*/
+-    const Preset* selected_printer_preset = &wxGetApp().preset_bundle->printers.get_selected_preset();
+-
+-    boost::property_tree::ptree ptree;
+-    const std::string filename = UserAccountUtils::get_keyword_from_json(ptree, dialog_msg, "filename");
+-    const std::string team_id = UserAccountUtils::get_keyword_from_json(ptree, dialog_msg, "team_id");
+-
+-    std::string data_subtree = UserAccountUtils::get_print_data_from_json(dialog_msg, "data");
+-    if (filename.empty() || team_id.empty() || data_subtree.empty()) {
+-        std::string msg = _u8L("Failed to read response from Prusa Connect server. Upload is cancelled.");
+-        BOOST_LOG_TRIVIAL(error) << msg;
+-        BOOST_LOG_TRIVIAL(error) << "Response: " << dialog_msg;
+-        show_error(this, msg);
+-        return std::nullopt;
+-    }
+-
+-
+-    PhysicalPrinter ph_printer("connect_temp_printer", wxGetApp().preset_bundle->physical_printers.default_config(), *selected_printer_preset);
+-    ph_printer.config.set_key_value("host_type", new ConfigOptionEnum<PrintHostType>(htPrusaConnectNew));
+-    // use existing structures to pass data
+-    ph_printer.config.opt_string("printhost_apikey") = team_id;
+-    DynamicPrintConfig* physical_printer_config = &ph_printer.config;
+-
+-    PrintHostJob upload_job(physical_printer_config);
+-    assert(!upload_job.empty());
+-
+-    upload_job.upload_data.data_json = data_subtree;
+-    upload_job.upload_data.upload_path = boost::filesystem::path(filename);
+-
+-    return upload_job;
+-}
+-
+-void Plater::connect_gcode()
+-{
+-    if (auto upload_job{get_connect_print_host_job(false)}) {
+-        p->export_gcode(fs::path(), false, std::move(*upload_job));
+-    }
+-}
+-
+-void Plater::connect_gcode_all() {
+-    auto optional_upload_job{get_connect_print_host_job(true)};
+-    if (!optional_upload_job) {
+-        return;
+-    }
+-
+-    // PringHostJob does not have copy constructor.
+-    // Make a new job from this template for each bed.
+-    const PrintHostJob &upload_job_template{*optional_upload_job};
+-    const auto print_host_ptr{dynamic_cast<PrusaConnectNew*>(upload_job_template.printhost.get())};
+-    if (print_host_ptr == nullptr) {
+-        throw std::runtime_error{"Sending to connect requires PrusaConnectNew host."};
+-    }
+-
+-    const PrusaConnectNew connect{*print_host_ptr};
+-
+-    std::vector<std::pair< int, std::optional<fs::path> >> paths;
+-
+-    for (std::size_t print_index{0};  print_index < s_multiple_beds.get_number_of_beds(); ++print_index) {
+-        const std::unique_ptr<Print> &print{this->get_fff_prints()[print_index]};
+-        if (!print || !is_sliceable(s_print_statuses[print_index])) {
+-            paths.emplace_back(print_index, std::nullopt);
+-            continue;
+-        }
+-        // Prevously, filename from Connect FE was taken and used for each gcode file.
+-        // Now naming is same as in gcode export.
+-        fs::path default_filename{upload_job_template.upload_data.upload_path};
+-        this->with_mocked_fff_background_process(
+-            *print,
+-            this->p->gcode_results[print_index],
+-            print_index,
+-            [&](){
+-                const auto optional_file{this->get_default_output_file()};
+-                if (!optional_file) {
+-                    return;
+-                }
+-                if (print_index !=  s_multiple_beds.get_number_of_beds() - 1 || default_filename.empty()) {
+-                    const fs::path &default_file{*optional_file};
+-                    default_filename = default_file.filename();
+-                }
+-            }
+-        );
+-
+-        const fs::path filename_fixed{
+-            default_filename.stem().string()
+-            + "_bed"
+-            + std::to_string(print_index + 1)
+-            + default_filename.extension().string()
+-        };
+-        paths.emplace_back(print_index, filename_fixed);
+-    }
+-
+-    BulkExportDialog dialog{paths, _L("Send all to Connect"),  connect.get_unusable_symbols()};
+-    if (dialog.ShowModal() != wxID_OK) {
+-        return;
+-    }
+-    const std::vector<std::pair<int, std::optional<fs::path>>> output_paths{dialog.get_paths()};
+-
+-    for (const auto &key_value : output_paths) {
+-        const int bed_index{key_value.first};
+-        const std::optional<fs::path> &optional_path{key_value.second};
+-        if (!optional_path) {
+-            continue;
+-        }
+-        const fs::path &path{*optional_path};
+-
+-        const std::unique_ptr<Print> &print{this->get_fff_prints()[bed_index]};
+-        if (!print || print->empty()) {
+-            continue;
+-        }
+-        with_mocked_fff_background_process(
+-            *print,
+-            this->p->gcode_results[bed_index],
+-            bed_index,
+-            [&](){
+-                this->p->background_process.set_temp_output_path(bed_index);
+-                PrintHostJob upload_job;
+-                upload_job.upload_data = upload_job_template.upload_data;
+-                upload_job.printhost = std::make_unique<PrusaConnectNew>(connect);
+-                upload_job.cancelled = upload_job_template.cancelled;
+-                upload_job.upload_data.upload_path = path;
+-                this->p->background_process.prepare_upload(upload_job);
+-            }
+-        );
+-    }
+-}
+-
+ void Plater::send_gcode()
+ {
+     // if physical_printer is selected, send gcode for this printer
+diff --git a/src/slic3r/GUI/PresetComboBoxes.cpp b/src/slic3r/GUI/PresetComboBoxes.cpp
+index bef750512..e215a5066 100644
+--- a/src/slic3r/GUI/PresetComboBoxes.cpp
++++ b/src/slic3r/GUI/PresetComboBoxes.cpp
+@@ -424,7 +424,6 @@ void PresetComboBox::edit_physical_printer()
+     PhysicalPrinterDialog dlg(this->GetParent(),this->GetString(this->GetSelection()));
+     if (dlg.ShowModal() == wxID_OK) {
+         update();
+-        wxGetApp().show_printer_webview_tab();
+     }
+ }
+ 
+@@ -432,7 +431,6 @@ void PresetComboBox::add_physical_printer()
+ {
+     if (PhysicalPrinterDialog(this->GetParent(), wxEmptyString).ShowModal() == wxID_OK) {
+         update();
+-        wxGetApp().show_printer_webview_tab();
+     }
+ }
+ 
+@@ -663,9 +661,6 @@ bool PresetComboBox::selection_is_changed_according_to_physical_printers()
+         else if (dynamic_cast<TabPresetComboBox*>(this)!=nullptr)
+             wxGetApp().sidebar().update_presets(m_type);
+ 
+-        // Check and show "Physical printer" page if needed
+-        wxGetApp().show_printer_webview_tab();
+-
+         return true;
+     }
+ 
+diff --git a/src/slic3r/GUI/PrintHostDialogs.cpp b/src/slic3r/GUI/PrintHostDialogs.cpp
+index 1030fc383..c28589216 100644
+--- a/src/slic3r/GUI/PrintHostDialogs.cpp
++++ b/src/slic3r/GUI/PrintHostDialogs.cpp
+@@ -531,7 +531,6 @@ void PrintHostQueueDialog::on_info(Event& evt)
+     } else if (evt.tag == L"prusaconnect_printer_address") {
+         wxGetApp().notification_manager()->set_upload_job_notification_hypertext(evt.job_id + 1
+             , [evt](wxEvtHandler *) {
+-                wxGetApp().mainframe->show_connect_tab(into_u8(evt.status));
+                 return false ;
+             }
+             );
+diff --git a/src/slic3r/GUI/Sidebar.cpp b/src/slic3r/GUI/Sidebar.cpp
+index 808179c57..e838fd089 100644
+--- a/src/slic3r/GUI/Sidebar.cpp
++++ b/src/slic3r/GUI/Sidebar.cpp
+@@ -659,7 +659,6 @@ Sidebar::Sidebar(Plater *parent)
+ 
+     init_btn(&m_btn_export_gcode, _L("Export G-code") + dots , scaled_height);
+     init_btn(&m_btn_reslice     , _L("Slice now")            , scaled_height);
+-    init_btn(&m_btn_connect_gcode, _L("Send to Connect"), scaled_height);
+ 
+     enable_buttons(false);
+ 
+@@ -667,7 +666,6 @@ Sidebar::Sidebar(Plater *parent)
+ 
+     auto *complect_btns_sizer = new wxBoxSizer(wxHORIZONTAL);
+     complect_btns_sizer->Add(m_btn_export_gcode, 1, wxEXPAND);
+-    complect_btns_sizer->Add(m_btn_connect_gcode, 1, wxEXPAND | wxLEFT, margin_5);
+     complect_btns_sizer->Add(m_btn_send_gcode, 0, wxLEFT, margin_5);
+ 	complect_btns_sizer->Add(m_btn_export_gcode_removable, 0, wxLEFT, margin_5);
+ 
+@@ -691,10 +689,8 @@ Sidebar::Sidebar(Plater *parent)
+ 
+ 	init_scalable_btn(&m_btn_export_all_gcode_removable, "export_to_sd", _L("Export all to SD card / Flash drive") + " " + GUI::shortkey_ctrl_prefix() + "U");
+     init_btn(&m_btn_export_all_gcode, _L("Export all G-codes") + dots, scaled_height);
+-    init_btn(&m_btn_connect_gcode_all, _L("Send all to Connect"), scaled_height);
+ 
+     m_autoslicing_btns_sizer->Add(m_btn_export_all_gcode, 1, wxEXPAND);
+-    m_autoslicing_btns_sizer->Add(m_btn_connect_gcode_all, 1, wxEXPAND | wxLEFT, margin_5);
+ 	m_autoslicing_btns_sizer->Add(m_btn_export_all_gcode_removable, 0, wxLEFT, margin_5);
+ 
+     m_autoslicing_btns_sizer->Show(false);
+@@ -730,7 +726,6 @@ Sidebar::Sidebar(Plater *parent)
+ 
+     m_btn_send_gcode->Bind(wxEVT_BUTTON, [this](wxCommandEvent&) { m_plater->send_gcode(); });
+     m_btn_export_gcode_removable->Bind(wxEVT_BUTTON, [this](wxCommandEvent&) { m_plater->export_gcode(true); });
+-    m_btn_connect_gcode->Bind(wxEVT_BUTTON, [this](wxCommandEvent&) { m_plater->connect_gcode(); });
+ 
+     this->Bind(wxEVT_COMBOBOX, &Sidebar::on_select_preset, this);
+ 
+@@ -741,10 +736,6 @@ Sidebar::Sidebar(Plater *parent)
+     m_btn_export_all_gcode_removable->Bind(wxEVT_BUTTON, [this](wxCommandEvent&) {
+         this->m_plater->export_all_gcodes(true);
+     });
+-
+-    m_btn_connect_gcode_all->Bind(wxEVT_BUTTON, [this](wxCommandEvent&) {
+-        this->m_plater->connect_gcode_all();
+-    });
+ }
+ 
+ Sidebar::~Sidebar() {}
+@@ -1078,7 +1069,7 @@ void Sidebar::sys_color_changed()
+         wxGetApp().UpdateDarkUI(win);
+     for (wxWindow* win : std::vector<wxWindow*>{ m_scrolled_panel, m_presets_panel })
+         wxGetApp().UpdateAllStaticTextDarkUI(win);
+-    for (wxWindow* btn : std::vector<wxWindow*>{ m_btn_reslice, m_btn_export_gcode, m_btn_connect_gcode })
++    for (wxWindow* btn : std::vector<wxWindow*>{ m_btn_reslice, m_btn_export_gcode })
+         wxGetApp().UpdateDarkUI(btn, true);
+     if (m_btn_full_spectrum) {
+         wxGetApp().UpdateDarkUI(m_btn_full_spectrum, true);
+@@ -1490,14 +1481,12 @@ void Sidebar::enable_buttons(bool enable)
+     m_btn_export_gcode->Enable(enable);
+     m_btn_send_gcode->Enable(enable);
+     m_btn_export_gcode_removable->Enable(enable);
+-    m_btn_connect_gcode->Enable(enable);
+ }
+ 
+ void Sidebar::enable_bulk_buttons(bool enable)
+ {
+     m_btn_export_all_gcode->Enable(enable);
+     m_btn_export_all_gcode_removable->Enable(enable);
+-    m_btn_connect_gcode_all->Enable(enable);
+ }
+ 
+ bool Sidebar::show_reslice(bool show) const {
+@@ -1524,12 +1513,6 @@ bool Sidebar::show_export_removable(bool show) const {
+     }
+     return m_btn_export_gcode_removable->Show(show);
+ }
+-bool Sidebar::show_connect(bool show) const {
+-    if (this->m_autoslicing_mode) {
+-        return false;
+-    }
+-    return m_btn_connect_gcode->Show(show);
+-}
+ 
+ bool Sidebar::show_export_all(bool show) const {
+     return m_btn_export_all_gcode->Show(show);
+@@ -1537,9 +1520,6 @@ bool Sidebar::show_export_all(bool show) const {
+ bool Sidebar::show_export_removable_all(bool show) const {
+     return m_btn_export_all_gcode_removable->Show(show);
+ };
+-bool Sidebar::show_connect_all(bool show) const {
+-    return m_btn_connect_gcode_all->Show(show);
+-};
+ 
+ void Sidebar::switch_to_autoslicing_mode() {
+     this->show_sliced_info_sizer(false);
+@@ -1583,7 +1563,6 @@ void Sidebar::set_btn_label(const ActionButtonType btn_type, const wxString& lab
+     case ActionButtonType::Reslice:   m_btn_reslice->SetLabelText(label);        break;
+     case ActionButtonType::Export:    m_btn_export_gcode->SetLabelText(label);   break;
+     case ActionButtonType::SendGCode: /*m_btn_send_gcode->SetLabelText(label);*/ break;
+-    case ActionButtonType::Connect: /*m_btn_connect_gcode->SetLabelText(label);*/ break;
+     }
+ }
+ 
+diff --git a/src/slic3r/GUI/Sidebar.hpp b/src/slic3r/GUI/Sidebar.hpp
+index 3a2394c61..86bbdf752 100644
+--- a/src/slic3r/GUI/Sidebar.hpp
++++ b/src/slic3r/GUI/Sidebar.hpp
+@@ -53,8 +53,7 @@ class BitmapComboBox;
+ enum class ActionButtonType : int {
+     Reslice,
+     Export,
+-    SendGCode,
+-    Connect
++    SendGCode
+ };
+ 
+ class Sidebar : public wxPanel
+@@ -86,12 +85,10 @@ class Sidebar : public wxPanel
+ 
+     wxButton*       m_btn_export_gcode          { nullptr };
+     wxButton*       m_btn_reslice               { nullptr };
+-    wxButton*       m_btn_connect_gcode         { nullptr };
+     ScalableButton* m_btn_send_gcode            { nullptr };
+     ScalableButton* m_btn_export_gcode_removable{ nullptr }; //exports to removable drives (appears only if removable drive is connected)
+                                                              //
+     wxButton* m_btn_export_all_gcode                { nullptr };
+-    wxButton* m_btn_connect_gcode_all               { nullptr };
+ 	ScalableButton* m_btn_export_all_gcode_removable{ nullptr };
+ 
+     wxButton*                           m_btn_full_spectrum { nullptr };
+@@ -143,12 +140,10 @@ public:
+     bool show_export(bool show) const;
+     bool show_send(bool show) const;
+     bool show_export_removable(bool show) const;
+-    bool show_connect(bool show) const;
+ 
+     void enable_bulk_buttons(bool enable);
+     bool show_export_all(bool show) const;
+     bool show_export_removable_all(bool show) const;
+-    bool show_connect_all(bool show) const;
+ 
+     void switch_to_autoslicing_mode();
+     void switch_from_autoslicing_mode();
+diff --git a/src/slic3r/GUI/Tab.cpp b/src/slic3r/GUI/Tab.cpp
+index 118bb2fc3..be470a4b4 100644
+--- a/src/slic3r/GUI/Tab.cpp
++++ b/src/slic3r/GUI/Tab.cpp
+@@ -3781,8 +3781,6 @@ void Tab::load_current_preset()
+             on_preset_loaded();
+         else
+             wxGetApp().sidebar().update_objects_list_extruder_column(1);
+-        // Check and show "Physical printer" page if needed
+-        wxGetApp().show_printer_webview_tab();
+     }
+     // Reload preset pages with the new configuration values.
+     reload_config();
+@@ -4545,8 +4543,6 @@ void Tab::delete_preset()
+         PhysicalPrinter& printer = physical_printers.get_selected_printer();
+         if (printer.preset_names.size() == 1) {
+             if (m_presets_choice->del_physical_printer(_L("It's a last preset for this physical printer."))) {
+-                // Hide "Physical printer" page
+-                wxGetApp().show_printer_webview_tab();
+                 Layout();
+             }
+             return;
+diff --git a/src/slic3r/GUI/TopBar.cpp b/src/slic3r/GUI/TopBar.cpp
+index cb42ef2ee..c57f08ab7 100644
+--- a/src/slic3r/GUI/TopBar.cpp
++++ b/src/slic3r/GUI/TopBar.cpp
+@@ -210,24 +210,6 @@ void TopBarItemsCtrl::ButtonWithPopup::SetLabel(const wxString& label)
+ 
+ void TopBarItemsCtrl::UpdateAccountButton(bool avatar/* = false*/)
+ {
+-    TopBarMenus::UserAccountInfo  user_account = m_menus->get_user_account_info();
+-    const wxString user_name = user_account.is_logged ? from_u8(user_account.user_name) : _L("Log in");
+-    m_account_btn->SetToolTip(user_name);
+-    if (avatar) {
+-        if (user_account.is_logged) {
+-            ScalableBitmap new_logo(this, user_account.avatar_path, wxSize(login_icon_sz, login_icon_sz));
+-            if (new_logo.IsOk())
+-                m_account_btn->SetBitmapBundle(new_logo.bmp());
+-            else
+-                m_account_btn->SetBitmapBundle(*get_bmp_bundle("user", login_icon_sz));
+-        }
+-        else {
+-            m_account_btn->SetBitmapBundle(*get_bmp_bundle("user", login_icon_sz));
+-        }
+-    }
+-
+-    m_account_btn->SetLabel(m_collapsed_btns ? "" : user_name);
+-    this->Layout();
+ }
+ 
+ void TopBarItemsCtrl::UnselectPopupButtons()
+@@ -235,7 +217,6 @@ void TopBarItemsCtrl::UnselectPopupButtons()
+     if (m_menu_btn)
+         m_menu_btn  ->set_selected(false);
+     m_workspace_btn ->set_selected(false);
+-    m_account_btn   ->set_selected(false);
+ }
+ 
+ void TopBarItemsCtrl::CreateSearch()
+@@ -310,7 +291,7 @@ void TopBarItemsCtrl::TriggerSearch()
+ 
+ void TopBarItemsCtrl::UpdateSearchSizeAndPosition()
+ {
+-    if (!m_workspace_btn || !m_account_btn)
++    if (!m_workspace_btn)
+         return;
+ 
+     int em = em_unit(this);
+@@ -333,7 +314,7 @@ void TopBarItemsCtrl::UpdateSearchSizeAndPosition()
+ 
+     if (update_bnts) {
+         UpdateMode();
+-        UpdateAccountButton();
++//        UpdateAccountButton();
+     }
+ }
+ 
+@@ -458,14 +439,6 @@ TopBarItemsCtrl::TopBarItemsCtrl(wxWindow *parent, TopBarMenus* menus/* = nullpt
+         m_menus->Popup(this, &m_menus->workspaces, m_workspace_btn->get_popup_pos());
+     });
+ 
+-    m_account_btn = new ButtonWithPopup(this, _L("Log in"), "user", login_icon_sz, wxSize(180, -1));
+-    right_sizer->Add(m_account_btn, 0, wxALIGN_CENTER_VERTICAL | wxALIGN_RIGHT | wxRIGHT, m_btn_margin);
+-    
+-    m_account_btn->Bind(wxEVT_BUTTON, [this](wxCommandEvent& event) {
+-        m_account_btn->set_selected(true);
+-        m_menus->Popup(this, &m_menus->account, m_account_btn->get_popup_pos());
+-    });
+-
+     m_sizer->Add(right_sizer, 0, wxALIGN_CENTER_VERTICAL);
+ 
+     m_sizer->SetItemMinSize(1, wxSize(42 * wxGetApp().em_unit(), -1));
+@@ -484,8 +457,6 @@ void TopBarItemsCtrl::UpdateMode()
+ 
+ void TopBarItemsCtrl::ShowUserAccount(bool show)
+ {
+-    m_account_btn->Show(show);
+-    this->Layout();
+ }
+ 
+ void TopBarItemsCtrl::Rescale()
+@@ -521,8 +492,6 @@ void TopBarItemsCtrl::OnColorsChanged()
+         m_settings_btn->sys_color_changed();
+ 
+     m_workspace_btn->sys_color_changed();
+-    m_account_btn->sys_color_changed();
+-    UpdateAccountButton(true);
+ 
+     m_search->SysColorsChanged();
+ 
+@@ -615,7 +584,6 @@ void TopBarItemsCtrl::ShowFull()
+         m_menu_btn->Show();
+     if (m_settings_btn)
+         m_settings_btn->Show();
+-    m_account_btn->Show();
+     update_btns_width();
+     UpdateSearchSizeAndPosition();
+ }
+@@ -626,7 +594,6 @@ void TopBarItemsCtrl::ShowJustMode()
+         m_menu_btn->Hide();
+     if (m_settings_btn)
+         m_settings_btn->Hide();
+-    m_account_btn->Hide();
+     update_btns_width();
+     UpdateSearchSizeAndPosition();
+ }
+diff --git a/src/slic3r/GUI/UpdatesUIManager.cpp b/src/slic3r/GUI/UpdatesUIManager.cpp
+index 0596a0e5e..5652928c9 100644
+--- a/src/slic3r/GUI/UpdatesUIManager.cpp
++++ b/src/slic3r/GUI/UpdatesUIManager.cpp
+@@ -164,16 +164,9 @@ void RepositoryUpdateUIManager::fill_grids()
+             if (entry.not_in_manifest) {
+                 wxStaticBitmap* bmp = new wxStaticBitmap(m_parent, wxID_ANY, *get_bmp_bundle("notification_warning"));
+                 //wxGetApp().plater()->get_user_account()
+-                if (wxGetApp().is_account_logged_in()) {
+-                    // TRN tooltip in Configuration Wizard - Configuration Sources
+-                    bmp->SetToolTip(_L("Some vendors were installed from this source, but you do not have the rights to receive updates from it.\n"
+-                        "This source may no longer be active, or your account may no longer be subscribed.\n"
+-                        "Please consider unsubscribing from this source."));
+-                } else {
+-                    // TRN tooltip in Configuration Wizard - Configuration Sources
+-                    bmp->SetToolTip(_L("Some vendors were installed from this source, but you do not have rights to receive updates from it.\n"
+-                        "Please log in to restore access to all your subscribed sources or consider unsubscribing from this source."));
+-                }
++                // TRN tooltip in Configuration Wizard - Configuration Sources
++                bmp->SetToolTip(_L("Some vendors were installed from this source, but you do not have rights to receive updates from it.\n"
++                    "Please log in to restore access to all your subscribed sources or consider unsubscribing from this source."));
+                 add(bmp);
+             } else if (!entry.visibility.empty()) {
+                 wxStaticBitmap* bmp = new wxStaticBitmap(m_parent, wxID_ANY, *get_bmp_bundle("info"));
+diff --git a/src/slic3r/Utils/PresetUpdaterWrapper.cpp b/src/slic3r/Utils/PresetUpdaterWrapper.cpp
+index 206a0655a..5272a0617 100644
+--- a/src/slic3r/Utils/PresetUpdaterWrapper.cpp
++++ b/src/slic3r/Utils/PresetUpdaterWrapper.cpp
+@@ -135,9 +135,6 @@ bool PresetUpdaterWrapper::wizard_sync(const PresetBundle* preset_bundle, const
+     // Find secret vendors that failed to download idx in archive
+     const SharedArchiveRepositoryVector &repos = m_preset_archive_database->get_selected_archive_repositories();
+     std::string failed_vendors = proccess_failed_archives(m_ui_status->get_failed_archives(), vendors_copy, repos);
+-    if (!failed_vendors.empty()) {
+-        display_failed_vendors_dialog(parent, failed_vendors, GUI::wxGetApp().is_account_logged_in());
+-    }
+ 
+     // Offer update installation.  
+     if (full_sync) {
+@@ -218,9 +215,6 @@ PresetUpdater::UpdateResult PresetUpdaterWrapper::check_updates_on_user_request(
+     // Find secret vendors that failed to download idx in archive
+     const SharedArchiveRepositoryVector &repos = m_preset_archive_database->get_selected_archive_repositories();
+     std::string failed_vendors = proccess_failed_archives(m_ui_status->get_failed_archives(), vendors_copy, repos);
+-    if (!failed_vendors.empty()) {
+-        display_failed_vendors_dialog(parent, failed_vendors, GUI::wxGetApp().is_account_logged_in());
+-    }
+ 
+     // preset_updater::config_update does show wxDialog
+     updater_result = m_preset_updater->config_update(old_slic3r_version, PresetUpdater::UpdateParams::SHOW_TEXT_BOX, m_preset_archive_database->get_selected_archive_repositories(), m_ui_status.get());
