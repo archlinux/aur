@@ -9,6 +9,6 @@ pkgbase = cpumon
 	makedepends = go
 	makedepends = git
 	source = cpumon::git+https://github.com/Mohabdo21/cpumon.git#tag=v0.2.3
-	sha256sums = SKIP
+	sha256sums = 8c9e3c4cb2d4dccf1f33e00b645adfe9b2ec265fc002e57ccef3d7afd5cedbc2
 
 pkgname = cpumon
