@@ -1,30 +1,44 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-ext-applet-minimon
-pkgver=1.1.1
+_app_id=io.github.cosmic_utils.minimon-applet
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A System Monitor applet for COSMIC"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cosmic-utils/minimon-applet"
 license=('GPL-3.0-or-later')
-depends=('cosmic-applets')
+depends=(
+  'cosmic-applets'
+  'cosmic-monitor'
+)
 makedepends=(
   'cargo'
   'just'
 )
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 conflicts=('minimon-applet-for-cosmic')
 source=("minimon-applet-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('70ec914edbc37ae561fa8b9ee0e7bab587e332404707980b0673e51002b0dd2c')
+sha256sums=('61a2fa6e367b8512c88f04df3652cdc370cc6b7de5921a9dce58b7772c18388f')
 
 prepare() {
   cd "minimon-applet-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target host-tuple
+  cargo fetch --target host-tuple
 }
 
 build() {
   cd "minimon-applet-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  just build-release --frozen
+  just build-release
+}
+
+check() {
+  cd "minimon-applet-$pkgver"
+  appstreamcli validate --no-net "res/${_app_id}.metainfo.xml"
+  desktop-file-validate "res/${_app_id}.desktop"
 }
 
 package() {
