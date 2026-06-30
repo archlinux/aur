@@ -1,5 +1,5 @@
 pkgname=archcalc
-pkgver=1.0.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Built with precision. The definitive workspace and dev tools platform."
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'cairo' 'pango' 'glib2' 'openssl' 'libayatana-a
 provides=('archcalc')
 conflicts=('archcalc')
 source=("$pkgname-$pkgver.deb::$url/releases/download/v$pkgver/archcalc_${pkgver}_amd64.deb")
-sha256sums=('009a24ff51305b786013d28a43db2ed404804e290c2dc588e17450002375d39e')
+sha256sums=('edd47751d6478e5627634055be81f82f117d2da29b97d6b27821acab4ed7e012')
 
 package() {
   bsdtar -xf "$srcdir/$pkgname-$pkgver.deb" -C "$srcdir"
