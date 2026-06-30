@@ -42,7 +42,7 @@ sha256sums=('8f9f40d93838b912bd9ed35e598c0b7eabd08024cb18aa620c6aa9f9d49d0b57'
             'ededd183348aa9448b78037bdf30e14fd944610b82e6fd97b2047ca2f490ce06'
             'de93af123efed90721784d5665e95eb4a757349e039caf009cd45db2ed3d81d6'
             '69764c5d4c671978eac069188d81dd5713f8188b2bf001fb12a02d8f8f099fba'
-            'SKIP')
+            'd2b67c85436f925e91aef91a13b115b5049235b79d78426bb6602525d721d070')
 
 prepare() {
   cd PrusaSlicer-version_${pkgver/_/-}

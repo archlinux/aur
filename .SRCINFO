@@ -73,7 +73,7 @@ pkgbase = prusa-slicer-no-webkit
 	sha256sums = ededd183348aa9448b78037bdf30e14fd944610b82e6fd97b2047ca2f490ce06
 	sha256sums = de93af123efed90721784d5665e95eb4a757349e039caf009cd45db2ed3d81d6
 	sha256sums = 69764c5d4c671978eac069188d81dd5713f8188b2bf001fb12a02d8f8f099fba
-	sha256sums = SKIP
+	sha256sums = d2b67c85436f925e91aef91a13b115b5049235b79d78426bb6602525d721d070
 
 pkgname = prusa-slicer-no-webkit
 	optdepends = slicer-udev: 3D printer connection rules
