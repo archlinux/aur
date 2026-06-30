@@ -1,6 +1,6 @@
 pkgbase = git.gay
 	pkgdesc = Unofficial desktop app for git.gay
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://git.gay
 	arch = x86_64
