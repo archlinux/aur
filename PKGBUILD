@@ -7,9 +7,9 @@ pkgname=paper-velocity
 # curl -s "https://fill.papermc.io/v3/projects/velocity" | python3 -m json.tool
 _pkgver=3.5.0-SNAPSHOT
 # curl -s "https://fill.papermc.io/v3/projects/velocity/versions/${_pkgver}" | python3 -m json.tool
-_build=595
+_build=605
 # curl -s "https://fill.papermc.io/v3/projects/velocity/versions/${_pkgver}/builds/${_build}" | python3 -m json.tool
-_jar_sha256=88bc3a05a10f1031e007969d78f7b4f8c78722bb0c4633425e823e1e11928b04
+_jar_sha256=0ec616020166465dacca3b790d3db2b246f8f7c13b3aaacaae60c825744a66e0
 pkgver="${_pkgver//-/_}+b${_build}"
 pkgrel=1
 _mng_ver=1.0.0
