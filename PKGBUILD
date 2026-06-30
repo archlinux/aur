@@ -4,11 +4,11 @@
 # Contributor: Max Chesterfield <`echo Y2hlc3RtMDA3QGhvdG1haWwuY29tCg== | base64 -d`>
 
 pkgname=amdgpu-fan
-pkgdesc="Python daemon for controlling the fans on AMDGPU cards"
+pkgdesc="Fan controller for AMD graphics cards running the amdgpu driver"
 epoch=1
 _rev=4dda773eb8aba10f853a8706a9009bda434b56e9
 pkgver=0.0.24.r2.${_rev:0:10}
-pkgrel=1
+pkgrel=2
 arch=(any)
 license=(GPL-2.0-or-later)
 depends=(python python-numpy python-yaml)
