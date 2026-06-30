@@ -1,7 +1,7 @@
 # Maintainer: Your Name <email>
 
 pkgname=firecrawl-cli
-pkgver=1.19.21
+pkgver=1.19.22
 pkgrel=1
 pkgdesc="Command-line interface for Firecrawl - scrape, crawl, and extract data from any website"
 arch=('any')
@@ -10,7 +10,7 @@ license=('ISC')
 depends=('nodejs')
 makedepends=('pnpm')
 source=("https://github.com/firecrawl/cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2f5aa4020251b4383fbc7c9da8b38072f74ccd3c109d6a7cdefdc280be8210dc')
+sha256sums=('91a044c4cfb11af5807da549abb149e2a034d9fc04dd05dcd5ecda1a99b09b1f')
 
 build() {
 	cd "cli-${pkgver}"
