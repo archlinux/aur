@@ -1,10 +1,12 @@
 pkgname=usage-git
-pkgver=3.5.3.r786.g2666778
+pkgver=0
 pkgrel=1
 pkgdesc="A specification for CLIs (development version)"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/jdx/usage"
 license=('MIT')
+
+options=('!debug')
 
 depends=('gcc-libs')
 makedepends=('cargo' 'git' 'rust')
@@ -17,11 +19,13 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd usage
+  git describe --long --tags --abbrev=7 |
+    sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
-  printf "%s.r%s.g%s" \
-    "$(git describe --tags --abbrev=0 | sed 's/^v//')" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+prepare() {
+  cd usage
+  cargo fetch --locked
 }
 
 build() {
@@ -37,4 +41,7 @@ package() {
 
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  install -Dm644 *.md \
+    -t "$pkgdir/usr/share/doc/$pkgname"
 }

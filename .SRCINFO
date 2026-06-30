@@ -1,10 +1,9 @@
 pkgbase = usage-git
 	pkgdesc = A specification for CLIs (development version)
-	pkgver = 3.5.3.r786.g2666778
+	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/jdx/usage
 	arch = x86_64
-	arch = aarch64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
@@ -12,6 +11,7 @@ pkgbase = usage-git
 	depends = gcc-libs
 	provides = usage
 	conflicts = usage
+	options = !debug
 	source = git+https://github.com/jdx/usage.git
 	sha256sums = SKIP
 
