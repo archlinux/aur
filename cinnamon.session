@@ -1,0 +1,4 @@
+[Cinnamon Session]
+Name=Cinnamon
+RequiredComponents=cinnamon;org.cinnamon.ScreenSaver;dory-autostart;cinnamon-killer-daemon;
+DesktopName=X-Cinnamon
