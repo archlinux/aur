@@ -2,7 +2,7 @@
 pkgbase=wireview-hwmon
 pkgname=('wireview-hwmon' 'wireview-hwmon-dkms')
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="WireView Pro II hwmon daemon, CLI and DKMS kernel module"
 arch=('x86_64')
 url="https://github.com/emaspa/wireview-hwmon"
@@ -15,7 +15,7 @@ sha256sums=('5065356d60c92649a9272b7875659853815eb557f18270a7d8c65cf895e57b13')
 build() {
   cd "$pkgbase-$pkgver"
   # Userspace only — the kernel module is built on the user's machine by DKMS.
-  cc -Wall -Wextra -Wno-format-truncation -O2 -o wireviewd wireviewd.c
+  cc -Wall -Wextra -Wno-format-truncation -O2 -o wireviewd wireviewd.c sha256.c
   cc -Wall -Wextra -O2 -o wireviewctl wireviewctl.c
 }
 
