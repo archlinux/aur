@@ -1,6 +1,6 @@
 # Maintainer: Ryno Kotze <lemon.xah@gmail.com>
 pkgname=pithddu-dashboard
-pkgver=0.7.10
+pkgver=0.7.11
 pkgrel=1
 pkgdesc="SimHub companion app for the Pith DDU sim-racing dash"
 arch=('x86_64')
