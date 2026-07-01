@@ -1,0 +1,20 @@
+pkgbase = libretro-amiarcadia-git
+	pkgdesc = AmiArcadia core (Signetics 2650 CPU-based systems like Emerson Arcadia 2001, Interton VC 4000, and Elektor TV Games Computer)
+	pkgver = r9.34af1c9
+	pkgrel = 1
+	url = https://github.com/warmenhoven/amiarcadia
+	arch = x86_64
+	arch = aarch64
+	groups = libretro
+	license = custom:Non-commercial
+	makedepends = git
+	makedepends = make
+	depends = gcc-libs
+	depends = glibc
+	depends = libretro-core-info
+	provides = libretro-amiarcadia
+	conflicts = libretro-amiarcadia
+	source = libretro-amiarcadia-git::git+https://github.com/warmenhoven/amiarcadia.git
+	sha256sums = SKIP
+
+pkgname = libretro-amiarcadia-git
