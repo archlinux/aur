@@ -4,7 +4,7 @@
 
 pkgname=daemontools-encore
 pkgver=1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="collection of tools for managing UNIX services - derived from the public-domain release of daemontools by D. J. Bernstein."
 arch=('i686' 'x86_64')
 url="https://untroubled.org/daemontools-encore"
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/bruceg/daemontools-encore/a
         'ldflags.patch'
         'cflags.patch')
 sha256sums=('57fab05da8129b6d13c586662321d5795935d2ef16c30763e31a933afa74f362'
-            '3842bbef9690295e77faab723205361667415f9788de6e09150f02e6a006c423'
+            'c023205ca063c4b741533d27feb4b3134559686033d78598aa24e98dcd9185c8'
             '525b9392c517e31e844d72b1b478b72e6e410009eb2f521b53900a15aeead25e')
 
 prepare() {
