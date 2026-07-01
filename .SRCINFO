@@ -1,6 +1,6 @@
 pkgbase = heimdall-helper-bin
 	pkgdesc = Heimdall helper — optional root sidecar serving privileged power/GPU/thermal metrics and running delegated privileged commands for the daemon (prebuilt binary)
-	pkgver = 2.2.6
+	pkgver = 2.2.7
 	pkgrel = 1
 	url = https://github.com/kinncj/Heimdall
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = heimdall-helper-bin
 	license = AGPL-3.0-or-later
 	provides = heimdall-helper
 	conflicts = heimdall-helper
-	source = heimdall-helper_2.2.6.1::https://github.com/kinncj/Heimdall/releases/download/v2.2.6/heimdall-helper.1
+	source = heimdall-helper_2.2.7.1::https://github.com/kinncj/Heimdall/releases/download/v2.2.7/heimdall-helper.1
 	sha256sums = ec3faeec3477000699c97df22b347349845802cccd5cfdfb5d004bf9de645305
-	source_x86_64 = heimdall-helper_2.2.6_x86_64::https://github.com/kinncj/Heimdall/releases/download/v2.2.6/heimdall-helper_linux_amd64
-	sha256sums_x86_64 = a518ac00e1db118124ea2791b82772ccad2728e3b230cb9108112520c844850c
-	source_aarch64 = heimdall-helper_2.2.6_aarch64::https://github.com/kinncj/Heimdall/releases/download/v2.2.6/heimdall-helper_linux_arm64
-	sha256sums_aarch64 = 322b01462a71af4c49cbaa3300c49d60e84973f4562854cacec90ede697470cc
+	source_x86_64 = heimdall-helper_2.2.7_x86_64::https://github.com/kinncj/Heimdall/releases/download/v2.2.7/heimdall-helper_linux_amd64
+	sha256sums_x86_64 = 291b9cfd67dc921a981498fac58444158d779a728696ec047acb023ae50d88f2
+	source_aarch64 = heimdall-helper_2.2.7_aarch64::https://github.com/kinncj/Heimdall/releases/download/v2.2.7/heimdall-helper_linux_arm64
+	sha256sums_aarch64 = d0b6b9c497944079bdb6e0e5487977c0067cc35931c16b9d22c9ef8ae71a41c9
 
 pkgname = heimdall-helper-bin
