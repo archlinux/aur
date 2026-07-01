@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat-git
 _pkgname=GhostChat
-pkgver=4.2.0.r0.gfa250c6
+pkgver=4.5.0.r2.g1b3a9e6
 _nodeversion=24
 pkgrel=1
 pkgdesc="A Standalone chat overlay for Twitch, Kick, YouTube and other streaming platforms."
@@ -40,16 +40,14 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
-prepare() {
-    cd "${srcdir}/${pkgname%-git}.git"
-    _ensure_local_nvm
-    gendesk -f -n -q \
-        --pkgname="${pkgname%-git}" \
-        --pkgdesc="${pkgdesc}" \
-        --categories="Utility" \
-        --name="${_pkgname}" \
-        --exec="${pkgname%-git} %U"
-    local HOME="${srcdir}/.electron-gyp"
+_set_build_env() {
+    export HOME="${srcdir}/.electron-gyp"
+    export PATH="${HOME}/go/bin:$PATH"
+    export CGO_ENABLED=1
+    export GO111MODULE=on
+    export GOOS=linux
+    export GOCACHE="${srcdir}/go-build"
+    export GOMODCACHE="${srcdir}/go/pkg/mod"
     {
         export PNPM_LINK_WORKSPACE_PACKAGES=true
         export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
@@ -60,26 +58,34 @@ prepare() {
         export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
         export PNPM_NODE_LINKER=hoisted
         export PNPM_NETWORK_CONCURRENCY=32
-        export CGO_ENABLED=1
-        export GO111MODULE=on
-        export GOOS=linux
-        export GOCACHE="${srcdir}/go-build"
-        export GOMODCACHE="${srcdir}/go/pkg/mod"
     }
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export pnpm_config_registry="https://registry.npmmirror.com"
+            export npm_config_registry="https://registry.npmmirror.com"
+            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
             export GOPROXY=https://goproxy.cn,direct
         }
     fi
+}
+prepare() {
+    cd "${srcdir}/${pkgname%-git}.git"
+    gendesk -f -n -q \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %U"
+    _set_build_env
+    _ensure_local_nvm
     cp "${srcdir}/modifiers_linux.go" internal/hotkey/modifiers_linux.go
     go install github.com/wailsapp/wails/v3/cmd/wails3@latest
     cd "${srcdir}/${pkgname%-git}.git/frontend"
     NODE_ENV=development    pnpm install --frozen-lockfile
 }
 build() {
-    local HOME="${srcdir}/.electron-gyp"
-    export PATH="${HOME}/go/bin:$PATH"
+    _set_build_env
+    _ensure_local_nvm
     cd "${srcdir}/${pkgname%-git}.git/build"
     go mod tidy
     wails3 generate bindings -f '-tags production -trimpath -buildvcs=false -ldflags="-w -s -X main.version=v4.0.1"' -clean=true -ts
