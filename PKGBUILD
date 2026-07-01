@@ -6,7 +6,7 @@ _appname=${_pkgname,,}
 pkgname=${_pkgname,,}-bin
 pkgdesc="From git log to SemVer in no time"
 
-pkgver=6.7.0
+pkgver=6.8.0
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -28,10 +28,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}-${_pkgvername}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}-${_pkgvername}.tar.gz")
-sha256sums=('cc489ec2af329cbd87b0047a98f9e64745496b0f0c100aeb5b58c48fb8826045'
+sha256sums=('6ce2996ddff174204352a487e5a4b6edf7ae44a1e292806ef28d67a57de5682d'
             '3bdeb88619a256f8b8615599a67db3195028d969490c0e87a8cb4b5917bf340c')
-sha256sums_x86_64=('e2012abfb3392a6f0ccf5f82738173c291b15bfdb2d5e9197777ec3f41b88f76')
-sha256sums_aarch64=('180fd7cf40fdfacf2c251176a4b613a444db2b40af477fd07a7c6d4d6b355dc6')
+sha256sums_x86_64=('8e7ede2369fb8138b40d3831a36bcddfee5836c840f749b9d604788a44c260f9')
+sha256sums_aarch64=('2bd1cbb19edea9820bd97c4b2f02f623c40ee611da67ef34d6cccc6bda698c7d')
 
 
 package() {
