@@ -1,0 +1,22 @@
+pkgbase = halley-full
+	pkgdesc = Metapackage: the full Halley Wayland desktop (compositor, launcher, portal)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/saltnpepper97/halley
+	arch = any
+	license = GPL-3.0-only
+	depends = halley
+	depends = halley-lift
+	depends = xdg-desktop-portal-halley
+	optdepends = xwayland-satellite: X11 application support
+	optdepends = xdg-desktop-portal-gtk: fallback backend for common file/dialog portals
+	optdepends = fuzzel: alternative launcher
+	optdepends = ghostty: terminal for the default open-terminal binding
+	optdepends = kitty: terminal for the default open-terminal binding
+	optdepends = foot: terminal for the default open-terminal binding
+	optdepends = wezterm: terminal for the default open-terminal binding
+	optdepends = alacritty: terminal for the default open-terminal binding
+	optdepends = wireplumber: provides wpctl for default media-key bindings
+	optdepends = gamescope: game launch wrapping through halleyctl gamescope
+
+pkgname = halley-full
