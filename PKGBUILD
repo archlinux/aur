@@ -1,7 +1,7 @@
 # Maintainer: Lin Evelynn <lin@sz.cn.eu.org>
 pkgname=incy-bin
 _pkgname=incy
-pkgver=3.2.3
+pkgver=3.2.6
 pkgrel=1
 pkgdesc="Cross-platform proxy client built on Xray-core"
 arch=('x86_64')
@@ -16,14 +16,14 @@ options=('!strip')
 
 source=("${_pkgname}-${pkgver}-linux-x64.pkg.tar.zst::https://github.com/INCY-DEV/incy-platforms/releases/download/desktop-v${pkgver}/incy-linux-x64.pkg.tar.zst")
 
-sha256sums=('e2baa80b6c957ec490f7f0732aed6005172bdca73a5ae1c35cd5b75286f9702d')
+sha256sums=('12e49560efbdfeff337627f8a0e28a236c450bdb99aee2b8e71e660e8dae4b00')
 
 package() {
     install -dm755 "$pkgdir/opt"
-    cp -a "$srcdir/opt/incy" "$pkgdir/opt/"
+    cp -a --no-preserve=ownership "$srcdir/opt/incy" "$pkgdir/opt/"
     install -dm755 "$pkgdir/usr"
-    cp -a "$srcdir/usr/bin" "$pkgdir/usr/"
-    cp -a "$srcdir/usr/share" "$pkgdir/usr/"
+    cp -a --no-preserve=ownership "$srcdir/usr/bin" "$pkgdir/usr/"
+    cp -a --no-preserve=ownership "$srcdir/usr/share" "$pkgdir/usr/"
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
     echo "Proprietary. See: https://incy.cc/licenses" > "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
