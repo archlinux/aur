@@ -1,6 +1,6 @@
 # Maintainer: Michal Walenciak <kicer86@gmail.com>
 pkgname=wacki
-pkgver=1.1.0
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='Faithful SDL2 port of Wacki: Kosmiczna rozgrywka'
 arch=('x86_64')
@@ -21,8 +21,8 @@ source=(
     'wacki-data-notice.txt'
 )
 noextract=("${_data_archive}")
-sha256sums=('512846081f80bc44c37769d5732ab05d691b9651cb2851fb6ce50b42954b455a'
-            'SKIP'
+sha256sums=('54c34d508fb0fb64b6548562023294b9b8e78985a3bf1005bdf91d78ba74aa13'
+            'f023a91dd385226844e7336cc17cae9d5f931518357701892b20422d76cb7d0e'
             '1af86f9ae352bcb84359a412d95d30bb8da28ad207e6bfcdd20e164bfe8e07bb'
             '8a1afc87fa6d0aea08178c31dc416d04ed6f3baa02cbfd3f060685b002cd7485'
             '40b29dee2acb9a3483e4b078e68583184f28aa9a9fb6f4beb0a0501a9ac398bf'
@@ -70,11 +70,9 @@ package() {
 
     local dta
     for dta in "$srcdir"/wacki-data/dane_*.dta; do
-        # TODO: Drop this case workaround after upstream fixes
-        # https://github.com/mszula/wacki/issues/3.
         local base
         base=$(basename "$dta")
-        install -Dm644 "$dta" "$pkgdir/usr/share/wacki/data/D${base#d}"
+        install -Dm644 "$dta" "$pkgdir/usr/share/wacki/data/${base}"
     done
 
     install -Dm644 website/static/assets/icon-512.png \
