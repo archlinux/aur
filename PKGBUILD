@@ -2,33 +2,37 @@
 
 _plug=zsmooth
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r489.cca19a3
+pkgver=0.18.0.1.gaca6430
 pkgrel=1
 pkgdesc="Plugin for VapourSynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/adworacz/zsmooth'
 license=('MIT')
-depends=('vapoursynth>=75')
-makedepends=('zig')
+depends=('vapoursynth')
+makedepends=(
+    'git'
+    'zig'
+)
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/adworacz/zsmooth.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
-  cd "${_plug}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${_plug}"
+    git describe --long --tags | tr - . | tr -d v
 }
 
 build() {
-    cd "zsmooth"
+    cd "${_plug}"
     zig build -Doptimize=ReleaseFast
 }
 
 package() {
-    cd "zsmooth"
-    PLUGINDIR=$(python3 -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")
-    install -Dm755 zig-out/lib/libzsmooth.so "${pkgdir}${PLUGINDIR}/libzsmooth.so"
+    cd "${_plug}"
+    _plugindir=$(python3 -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")
+    install -Dm755 zig-out/lib/libzsmooth.so "${pkgdir}${_plugindir}/libzsmooth.so"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
     install -Dm644 LICENSE "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/LICENSE"
 }
