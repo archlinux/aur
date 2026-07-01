@@ -1,0 +1,17 @@
+pkgbase = regexplain
+	pkgdesc = A terminal UI for explaining and visualizing regular expressions, kindof like regex101.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kapilpokhrel/regexplain
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	provides = regexplain
+	options = !strip
+	source_x86_64 = regexplain-x86_64-1.0.0::https://github.com/kapilpokhrel/regexplain/archive/v1.0.0.tar.gz
+	sha256sums_x86_64 = 946bb593c24a9b1116ced80018657239377553882bb74fde96953244b9831194
+
+pkgname = regexplain
