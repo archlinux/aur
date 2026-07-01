@@ -2,13 +2,13 @@
 
 pkgname=toolblex
 pkgver=0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="A Bluetooth Low Energy device scanner and analyzer"
 url="https://github.com/emericg/toolBLEx"
 arch=("x86_64" "i686")
 license=("GPL3")
 makedepends=("qt6-tools" "cmake")
-depends=("qt6-base" "qt6-declarative" "qt6-svg" "qt6-connectivity" "qt6-charts")
+depends=("qt6-base" "qt6-declarative" "qt6-svg" "qt6-connectivity" "qt6-graphs")
 
 optdepends=("bluez-utils: extra bluetooth infos")
 optdepends=("ubertooth: 2.4 GHz spectrum analyzer with Ubertooth One")

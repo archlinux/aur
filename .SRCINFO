@@ -1,7 +1,7 @@
 pkgbase = toolblex
 	pkgdesc = A Bluetooth Low Energy device scanner and analyzer
 	pkgver = 0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/emericg/toolBLEx
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = toolblex
 	depends = qt6-declarative
 	depends = qt6-svg
 	depends = qt6-connectivity
-	depends = qt6-charts
+	depends = qt6-graphs
 	optdepends = rtl_power_fftw-git: Sub 2.2 GHz spectrum analyzer with RtlSdr compatible hardware (rtl_power_fftw backend)
 	source = toolblex-v0.17.tar.gz::https://github.com/emericg/toolBLEx/archive/v0.17.tar.gz
 	sha256sums = 6cde3277bb9001e82531d61a55d6e5073d58d221e97824e7297e4eca4e2451de
