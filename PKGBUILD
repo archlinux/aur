@@ -232,7 +232,6 @@ build() {
 ## not available under 32 bit
 #    --enable-frei0r \
 #    --enable-libjxl \
-#    --enable-libopenh264 \
 #    --enable-librubberband \
 #    --enable-libssh \
 #    --enable-libsvtav1 \
