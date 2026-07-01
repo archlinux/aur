@@ -8,7 +8,7 @@ pkgname=$_arch-gcc-bootstrap
 pkgver=16.1.1+r346+g4e03491b401d
 # https://gcc.gnu.org/git/gitweb.cgi?p=gcc.git
 _commit=4e03491b401dce0658543dd90524ddb92063836e
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection - cross compiler for armv7l - bootstrap compiler'
 arch=(x86_64)
 url='https://gcc.gnu.org/'
@@ -54,7 +54,8 @@ build() {
       --with-system-zlib \
       --disable-multilib --disable-werror \
       --disable-threads --without-headers  \
-      --disable-shared --with-newlib
+      --disable-shared --with-newlib \
+      --disable-libatomic
 
   make all-gcc all-target-libgcc
 }
