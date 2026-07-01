@@ -1,5 +1,5 @@
 pkgname=sekiro-launcher-iced-bin
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A Sekiro tool launcher for challenge runners"
 arch=('x86_64')
