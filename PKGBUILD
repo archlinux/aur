@@ -1,23 +1,24 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
-_pkgname=rspnvpk
-pkgname=$_pkgname-bin
-pkgver=1.2.9
-pkgrel=2
+pkgname=rspnvpk-bin
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="RSPNVPK is a command line VPK repacking tool for Titanfall 2 (binary release)"
-arch=('x86_64')
 url="https://github.com/taskinoz/RSPNVPK"
 license=('MIT')
-provides=($_pkgname)
-conflicts=($_pkgname)
+arch=('x86_64')
+provides=("rspnvpk")
+conflicts=("rspnvpk")
 options=(!strip)
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/taskinoz/RSPNVPK/releases/download/v$pkgver/linux-x64.tar.gz")
-sha256sums=('a1af5b33368af22acb31e5c7908a3e1f68c1d52c166310b82635045a7d9a5493')
+source=("$url/releases/download/v$pkgver/linux-x64.tar.gz"
+        "$url/raw/refs/tags/v1.3.1/LICENSE.md")
+sha256sums=('75b6e86995cb773757ef35fa057318e98b3246d8d8f6fe9e460807b552b2199d'
+            '9aff9a2914771e7f46eb5fb942b2c1dfb7afd8f9de58f1fcd0b5e30476b5b00e')
 
 package() {
-  # Create folders
-  mkdir -p "$pkgdir/opt/RSPNVPK" "$pkgdir/usr/bin"
-  # Install
-  mv LzhamWrapper.pdb RSPNVPK RSPNVPK.pdb "$pkgdir/opt/RSPNVPK"
-  ln -s /opt/RSPNVPK/RSPNVPK "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/rspnvpk"
+  install -Dm644 RSPNVPK.pdb -t "$pkgdir/opt/RSPNVPK"
+  install -Dm755 RSPNVPK "$pkgdir/opt/RSPNVPK/rspnvpk"
+  install -d "$pkgdir/usr/bin"
+  ln -s "$pkgdir/opt/RSPNVPK/rspnvpk" "$pkgdir/usr/bin"
 }
