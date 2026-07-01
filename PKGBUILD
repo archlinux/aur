@@ -14,8 +14,8 @@ _publisher=bendik/kanidm
 
 source_x86_64=("kanidm-v${pkgver}-x86_64-linux-gnu.tar.gz::https://github.com/${_publisher}/releases/download/v${pkgver}-bin/kanidm-v${pkgver}-x86_64-linux-gnu.tar.gz")
 source_aarch64=("kanidm-v${pkgver}-aarch64-linux-gnu.tar.gz::https://github.com/${_publisher}/releases/download/v${pkgver}-bin/kanidm-v${pkgver}-aarch64-linux-gnu.tar.gz")
-sha256sums_x86_64=('51c519b56cb9a3874eb069d7a6271127ad11d38cb57211f47eee31ae10f84ab5')
-sha256sums_aarch64=('ea664fde2581970a7f8ff7f024efc3602a9b6a57adbadb6492b0d0e66a9f095d')
+sha256sums_x86_64=('8b5fb92f9346671825bc3f2ca4eb0bc3386c0629989b1b47136a1dd46fe02005')
+sha256sums_aarch64=('e295b6db80e59f97e2b076d9ef0d574339f67a46875cf7a9dda3c262188ccbab')
 
 _srcdir() {
   if [[ $CARCH == x86_64 ]]; then echo "kanidm-v${pkgver}-x86_64-linux-gnu"
