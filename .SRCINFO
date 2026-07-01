@@ -1,6 +1,6 @@
 pkgbase = gallery-tui-git
 	pkgdesc = A terminal image gallery powered by ratatui and chafa.
-	pkgver = 0.1.3.r1.gcc2c489
+	pkgver = 0.1.4.r0.g66da965
 	pkgrel = 1
 	url = https://github.com/WindustH/gallery-tui
 	arch = x86_64
