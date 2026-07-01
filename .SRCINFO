@@ -1,0 +1,22 @@
+pkgbase = claude-tap-git
+	pkgdesc = Trace AI CLI API requests via local reverse and forward proxies
+	pkgver = 0.1.124.r0.gb2aa47c
+	pkgrel = 1
+	url = https://github.com/liaohch3/claude-tap
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	depends = python-aiohttp
+	depends = python-cryptography
+	provides = claude-tap
+	conflicts = claude-tap
+	source = claude-tap::git+https://github.com/liaohch3/claude-tap.git
+	sha256sums = SKIP
+
+pkgname = claude-tap-git
