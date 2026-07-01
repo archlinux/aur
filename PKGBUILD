@@ -1,5 +1,5 @@
 pkgname=loalogs
-pkgver=1.46.0
+pkgver=1.47.0
 pkgrel=1
 pkgdesc="Lost Ark DPS meter"
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=(
     "icon.png"
     "loalogs.desktop"
 )
-sha256sums=('eb0496525002237ea5743ebc1689ff8e7d5fa997093f8baf72857808fbbb3a9a'
-            '6b100f66ae3e371cc2c161ca1ae5f21f3fc5f556b1367a52153d175650615a4e'
+sha256sums=('919e6051e7b7a022de1c3b4acdadb631c8848eebe3123d12ab7a799bc3b17377'
+            '007fe8d2b4554ae2e0f44c7bc031397fbaf5eea8219dffe53857626c6e186758'
             'c0de9112d19404661b189da41facf6bdc6d6a3f41347091fa70605d9d2133106'
             '92602a2a729e16097db2add01947aefa413d021cf0b2520a50aa1f4288ee22d9'
             'e7ff8fce866d741c5ad78cd46f8b1c2686eb6ffa622bc46c1cf7709b4ca2f974'
