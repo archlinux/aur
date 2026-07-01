@@ -1,12 +1,15 @@
 pkgbase = vapoursynth-plugin-awarp-git
 	pkgdesc = Plugin for Vapoursynth: awarp (GIT version)
 	pkgver = 3.1.0.g86d1d40
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/HolyWu/VapourSynth-AWarp
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = meson-python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = vapoursynth
 	provides = vapoursynth-plugin-awarp
 	conflicts = vapoursynth-plugin-awarp

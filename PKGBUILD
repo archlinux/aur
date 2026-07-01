@@ -3,7 +3,7 @@
 _plug=awarp
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=3.1.0.g86d1d40
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/HolyWu/VapourSynth-AWarp'
@@ -12,6 +12,9 @@ depends=('vapoursynth')
 makedepends=(
     'git'
     'meson-python'
+    'python-build'
+    'python-installer'
+    'python-wheel'
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
