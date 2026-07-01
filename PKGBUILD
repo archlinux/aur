@@ -206,6 +206,10 @@ package() {
     rm -f "$pkgdir/usr/lib/cmake/KGlobalAccelD/"*.cmake 2>/dev/null || true
     rm -f "$pkgdir/usr/lib/"*.a 2>/dev/null || true
 
+    # Compatibility symlinks so Plasma can find the compositor (like COPR does)
+    ln -s kinetic-we "$pkgdir/usr/bin/kwin_wayland"
+    ln -s kwin-we_wayland_wrapper "$pkgdir/usr/bin/kwin_wayland_wrapper"
+
     # Install license
     install -Dm644 "$srcdir/$_sourcebase/LICENSES/"* \
         -t "$pkgdir/usr/share/licenses/$pkgname/"
