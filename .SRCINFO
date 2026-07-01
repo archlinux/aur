@@ -108,6 +108,7 @@ pkgbase = kineticwe
 	depends = breeze
 	depends = kscreen
 	depends = xdg-desktop-portal-kde
+	conflicts = kglobalacceld
 	conflicts = kwin
 	provides = kglobalacceld
 	provides = kwin
