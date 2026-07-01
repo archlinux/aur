@@ -2,8 +2,8 @@
 # Contributor: cirrus <nailzuk (dot) 0 (at) Gmail (dot) com>
 
 pkgname=rss-notify
-pkgver=0.4
-pkgrel=5
+pkgver=0.1.0
+pkgrel=1
 pkgdesc="A tray applet that notifies you of new rss and atom news items via notifications"
 arch=('any')
 replaces=('rssn')
