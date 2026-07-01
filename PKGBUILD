@@ -1,7 +1,7 @@
 # Maintainer: Torben <git at letorbi dot com>
 
 pkgname=processing-git
-pkgver=4.5.1.r0.gdf585defc
+pkgver=4.5.5.r3.g4454a1e20
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
@@ -10,7 +10,7 @@ license=(GPL LGPL)
 conflicts=(processing)
 depends=('java-environment-openjdk=17' ffmpeg bash glibc mesa libdrm libx11 libxi libxrandr libxrender libxcursor libxxf86vm zlib)
 optdepends=('processing-examples: Examples for Processing')
-makedepends=(gradle8)
+makedepends=(gradle)
 options=(!strip)
 source=(disable_update_check.patch
         no_jdk_download.patch)
@@ -56,7 +56,7 @@ build() {
       -e "s,<ICON_NAME>,processing-pde,g" build/linux/desktop.template > processing-pde.desktop
 
   # Build the application
-  JAVA_HOME="/usr/lib/jvm/java-17-openjdk" gradle8 createDistributable
+  JAVA_HOME="/usr/lib/jvm/java-17-openjdk" gradle createDistributable
 }
 
 package() {
