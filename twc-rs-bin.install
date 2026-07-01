@@ -1,0 +1,77 @@
+# twc-rs-bin install scriptlet.
+#
+# Completions are staged read-only under /usr/share/twc-rs/completions and are
+# activated for whichever supported shells are actually installed. Messages are
+# printed in Russian when the active locale is Russian, English otherwise
+# (English is the default).
+
+_twcrs_staged='/usr/share/twc-rs/completions'
+
+_twcrs_is_ru() {
+	case "${LC_ALL:-}${LC_MESSAGES:-}${LANG:-}" in
+	ru* | *ru_*) return 0 ;;
+	*) return 1 ;;
+	esac
+}
+
+_twcrs_say() { # $1=English $2=Russian
+	if _twcrs_is_ru; then
+		printf '%s\n' "$2"
+	else
+		printf '%s\n' "$1"
+	fi
+}
+
+_twcrs_activate() {
+	_twcrs_say \
+		'==> twc-rs: detecting installed shells for completions...' \
+		'==> twc-rs: определяю установленные оболочки для автодополнения...'
+
+	local activated=0
+
+	if command -v bash >/dev/null 2>&1; then
+		install -Dm644 "${_twcrs_staged}/twc-rs.bash" \
+			/usr/share/bash-completion/completions/twc-rs
+		_twcrs_say '  -> bash completions installed' '  -> автодополнение для bash установлено'
+		activated=1
+	fi
+
+	if command -v zsh >/dev/null 2>&1; then
+		install -Dm644 "${_twcrs_staged}/_twc-rs" \
+			/usr/share/zsh/site-functions/_twc-rs
+		_twcrs_say '  -> zsh completions installed' '  -> автодополнение для zsh установлено'
+		activated=1
+	fi
+
+	if command -v fish >/dev/null 2>&1; then
+		install -Dm644 "${_twcrs_staged}/twc-rs.fish" \
+			/usr/share/fish/vendor_completions.d/twc-rs.fish
+		_twcrs_say '  -> fish completions installed' '  -> автодополнение для fish установлено'
+		activated=1
+	fi
+
+	if [ "${activated}" -eq 0 ]; then
+		_twcrs_say \
+			'  -> no supported shell found; run "twc-rs completions <shell>" later' \
+			'  -> поддерживаемых оболочек не найдено; позже выполните "twc-rs completions <shell>"'
+	else
+		_twcrs_say \
+			'==> twc-rs: done. Restart your shell to load completions.' \
+			'==> twc-rs: готово. Перезапустите оболочку, чтобы подключить автодополнение.'
+	fi
+}
+
+post_install() {
+	_twcrs_activate
+}
+
+post_upgrade() {
+	_twcrs_activate
+}
+
+post_remove() {
+	rm -f \
+		/usr/share/bash-completion/completions/twc-rs \
+		/usr/share/zsh/site-functions/_twc-rs \
+		/usr/share/fish/vendor_completions.d/twc-rs.fish
+}
