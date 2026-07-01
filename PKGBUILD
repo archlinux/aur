@@ -1,6 +1,6 @@
 # Maintainer: Ryno Kotze <lemon.xah@gmail.com>
 pkgname=pithddu-dashboard-bin
-pkgver=0.7.10
+pkgver=0.7.11
 pkgrel=1
 pkgdesc="SimHub companion app for the Pith DDU sim-racing dash (prebuilt binary)"
 arch=('x86_64')
@@ -16,8 +16,8 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/releases/download/dashboard-v$pkgver/pith-dashboard-linux-x86_64.tar.gz"
   "$pkgname-shm-$pkgver.zip::$url/releases/download/dashboard-v$pkgver/pith-shm-tools-win64.zip"
 )
-sha256sums=('307eefeeba390daf9e3a2f538a1fb2fc7a1740e9a5a8aa5c5e63b1712834a68f'
-            '9a43a2b78cae998c986595d18f5c2f01746f43027245b5ac7e97fa4c3dbe9da9')
+sha256sums=('c02610ad5e56f81f59c2c416c0e895985196f1a2f020a593c6b14af2238106da'
+            '79e7bce8e199a3b44f33faf079406c1106ac5a4c5d0dcc0f32a2ceed1cfe0c27')
 
 package() {
   cd "$srcdir/pith-dashboard-linux-x86_64"
