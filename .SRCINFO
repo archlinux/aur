@@ -1,6 +1,6 @@
 pkgbase = leshade-git
 	pkgdesc = Official build for Leshade. An ReShade Manager for Linux
-	pkgver = 2.4.9
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/Ishidawg/LeShade
 	arch = any
