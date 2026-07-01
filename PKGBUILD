@@ -122,7 +122,8 @@ makedepends=(
 
 optdepends=()
 
-provides=('kglobalacceld')
+provides=('kglobalacceld' 'kwin')
+conflicts=('kwin')
 
 # Source: kwin-we from GitLab + kglobalacceld from KDE invent
 _sourcebase="$pkgname-$pkgver"
