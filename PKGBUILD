@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=meru-bin
 _pkgname=Meru
-pkgver=3.52.0
+pkgver=3.53.0
 _electronversion=42
 pkgrel=1
 pkgdesc="📮 Nifty Gmail desktop app.(previously Gmail Desktop).(Prebuilt version.Use system-wide electron)"
@@ -28,30 +28,20 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('96c1d04d710fd54233ab3a7a799ebb23926c683300f1e0cee2a54ff9a18ed791'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('596481dfa9a345d528ca379c07df318a251ec5f29d1ff5a2bb2a1e90569adc86')
-sha256sums_x86_64=('19a134a8d9898e594c99416b44f052bbc7d7a45967f8cf59e3b3511a2f83544d')
+sha256sums_aarch64=('2af651c5d6e4cde5ed43be32f8c3fe9b301d610c033b62f9acade6ef8b1c6893')
+sha256sums_x86_64=('4e32732a7db856f556f65aabef621a23239395cf4d49af414295e5d52281ae3b')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
-    local _app_dir=$(_get_app_dir)
-    local _main_exe=""    
-    if [[ -n "${_app_dir}" ]]; then
-        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
-    fi
-    if [[ -n "${_main_exe}" ]]; then
-        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
-        if [[ -n "${_elec_ver}" ]]; then
-            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
-                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
-            else
-                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
-            fi
-        fi
-    else
-        echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
-    fi
+    local _main_exe=$(find "$(_get_app_dir)" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)
+    [[ -z "${_main_exe}" ]] && echo -e "\033[1;33mNote: Could not find Electron binary.\033[0m" && return
+    local _elec_ver=$(strings "${_main_exe}" | grep -oP 'Electron/\K[0-9]+' | head -1)
+    [[ -z "${_elec_ver}" ]] && echo -e "\033[1;33mNote: Could not determine Electron version.\033[0m" && return
+    [[ "${_elec_ver}" != "${_electronversion}" ]] &&
+        echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m" ||
+        echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
