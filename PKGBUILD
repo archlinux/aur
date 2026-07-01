@@ -3,7 +3,7 @@
 
 pkgname=kineticwe
 pkgver=6.7.80
-pkgrel=2
+pkgrel=3
 pkgdesc="KineticWE - A tiling KWin Wayland compositor with native window tiling"
 arch=('x86_64')
 url="https://gitlab.com/theblackdon/kineticwe"
@@ -121,9 +121,15 @@ makedepends=(
 )
 
 optdepends=()
+# COPR-compatible package replacement metadata
+# Mimics the COPR spec's Provides + Obsoletes for kwin, kwin-common, kwin-libs,
+# kwin-wayland, kglobalacceld, and kglobalacceld-devel.
+# On Arch, kwin-common/kwin-libs/kwin-wayland are bundled in 'kwin', but we
+# provide them virtually so packages that reference them see them satisfied.
+replaces=('kwin' 'kglobalacceld')
+provides=('kglobalacceld' 'kglobalacceld-devel' 'kwin' 'kwin-common' 'kwin-libs' 'kwin-wayland')
+conflicts=('kwin' 'kglobalacceld' 'kglobalacceld-devel')
 
-provides=('kglobalacceld' 'kwin')
-conflicts=('kwin' 'kglobalacceld')
 
 # Source: kwin-we from GitLab + kglobalacceld from KDE invent
 _sourcebase="$pkgname-$pkgver"
@@ -227,7 +233,9 @@ package() {
     # Install Wayland session launcher (start-kineticwe)
     echo "==> Installing start-kineticwe session launcher..."
     sed -e "s|@INSTALL_PREFIX@|/usr|g" \
-        -e 's|if \[\[ "\$_INSTALL_PREFIX_" == "/usr" \]\]; then|if false; then # system-wide install, use /usr as prefix|' \
+        -e 's|if \[\[ "$_INSTALL_PREFIX_" == "/usr" \]\]; then|if false; then # system-wide install, use /usr as prefix|' \
+        -e 's|export XDG_CURRENT_DESKTOP=KDE|export XDG_CURRENT_DESKTOP=KineticWE:KDE|g' \
+        -e 's|nohup "$PORTAL_KDE" >"\\\$HOME|XDG_CURRENT_DESKTOP=KDE nohup "$PORTAL_KDE" >"\\\$HOME|' \
         "$srcdir/$_sourcebase/scripts/start-kineticwe.sh" \
         > "$pkgdir/usr/bin/start-kineticwe"
     chmod 0755 "$pkgdir/usr/bin/start-kineticwe"
@@ -239,4 +247,36 @@ package() {
         "$srcdir/$_sourcebase/scripts/kineticwe.desktop.in" \
         > "$pkgdir/usr/share/wayland-sessions/kineticwe.desktop"
     chmod 0644 "$pkgdir/usr/share/wayland-sessions/kineticwe.desktop"
+    # Install systemd drop-in to mask the standalone kglobalacceld daemon
+    # KineticWE embeds kglobalacceld in-process; the standalone daemon would
+    # conflict on D-Bus (org.kde.kglobalaccel) and break global shortcuts.
+    echo "==> Installing kglobalacceld systemd mask..."
+    mkdir -p "$pkgdir/etc/systemd/user/plasma-kglobalaccel.service.d"
+    cat > "$pkgdir/etc/systemd/user/plasma-kglobalaccel.service.d/kineticwe-mask.conf" << MASKEOF
+[Unit]
+# KineticWE has kglobalacceld built in. Prevent the standalone daemon from
+# starting so it does not conflict with the compositor's D-Bus registration.
+ConditionPathExists=/nonexistent
+
+[Service]
+ExecStart=
+MASKEOF
+    chmod 0644 "$pkgdir/etc/systemd/user/plasma-kglobalaccel.service.d/kineticwe-mask.conf"
+}
+# ---------------------------------------------------------------------------
+# Post-install hooks (like COPR %%post / %%postun)
+# Reload user daemon so the kglobalacceld mask takes effect immediately.
+# ---------------------------------------------------------------------------
+post_install() {
+    # Reload user daemon so the kglobalacceld mask takes effect
+    systemctl --user daemon-reload 2>/dev/null || true
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    # Clean up: reload daemon after removing the mask
+    systemctl --user daemon-reload 2>/dev/null || true
 }

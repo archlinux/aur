@@ -1,7 +1,7 @@
 pkgbase = kineticwe
 	pkgdesc = KineticWE - A tiling KWin Wayland compositor with native window tiling
 	pkgver = 6.7.80
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/theblackdon/kineticwe
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -108,13 +108,21 @@ pkgbase = kineticwe
 	depends = breeze
 	depends = kscreen
 	depends = xdg-desktop-portal-kde
-	conflicts = kglobalacceld
 	conflicts = kwin
+	conflicts = kglobalacceld
+	conflicts = kglobalacceld-devel
 	provides = kglobalacceld
+	provides = kglobalacceld-devel
 	provides = kwin
+	provides = kwin-common
+	provides = kwin-libs
+	provides = kwin-wayland
+	replaces = kwin
+	replaces = kglobalacceld
 	source = https://gitlab.com/theblackdon/kineticwe/-/archive/v6.7.80/kineticwe-v6.7.80.tar.gz
 	source = kglobalacceld::git+https://invent.kde.org/plasma/kglobalacceld.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = kineticwe
+
