@@ -1,0 +1,11 @@
+#!/bin/bash
+
+post_install() {
+    echo "  🔄 Reloading udev rules..."
+    udevadm control --reload-rules
+    udevadm trigger
+}
+
+post_upgrade() {
+    post_install
+}
