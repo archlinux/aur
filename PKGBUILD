@@ -1,7 +1,8 @@
 # Maintainer: Kaiya <kaiyafurry@proton.me>
 pkgname=shock-alarm
-pkgver=0.4.4
-pkgrel=3
+pkgver='0.4.5'
+pkgrel='8'
+tag='0.4.5-8'
 pkgdesc="A flutter app for controlling OpenShock devices"
 arch=('x86_64')
 url="https://codeberg.org/Kaiya/ShockAlarmApp"
@@ -12,8 +13,8 @@ depends=(
     'libsystemd'
     'xdg-utils'
 )
-source=("https://codeberg.org/Kaiya/ShockAlarmApp/releases/download/${pkgver}/shock_alarm_linux_x64.tar.gz")
-sha256sums=('SKIP')
+source=("https://codeberg.org/Kaiya/ShockAlarmApp/releases/download/${tag}/shock_alarm_linux_x64.tar.gz")
+sha256sums=(''SKIP'')
 
 package() {
     # Create installation directories
@@ -40,9 +41,9 @@ Categories=Utility;
 EOF
 
     # Icon handling (create if not included in release)
-    install -d "$pkgdir/usr/share/icons/hicolor/512x512/apps"
-    cp "$pkgdir/opt/$pkgname/data/flutter_assets/icon.png" \
-       "$pkgdir/usr/share/icons/hicolor/512x512/apps/shock-alarm.png"
+    #install -d "$pkgdir/usr/share/icons/hicolor/512x512/apps"
+    #cp "$pkgdir/opt/$pkgname/data/flutter_assets/icon.png" \
+    #   "$pkgdir/usr/share/icons/hicolor/512x512/apps/shock-alarm.png"
 
     # License file (if included in release)
     if [ -f "$pkgdir/opt/$pkgname/LICENSE" ]; then
