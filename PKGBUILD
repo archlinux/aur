@@ -11,7 +11,7 @@ depends=('gjs' 'libadwaita' 'libportal')
 makedepends=('blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ecb6ec750dc26a5e87bc9985b42ec266e9cd56d917487e0d4752ae62eb9a5fc9')
+sha256sums=('d4c0a54f771b1f1a84b9d476afa976856ccb8a15b397473eedbad366cfe43743')
 
 build() {
   arch-meson Dosage-$pkgver build
