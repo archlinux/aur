@@ -21,7 +21,7 @@ depends=(
   'lib32-alsa-lib'
   'lib32-aom'
   'lib32-bzip2'
-#  'lib32-cairo'
+  'lib32-cairo'
   'lib32-fontconfig'
   'lib32-fribidi'
 #  'lib32-glib2'
@@ -163,6 +163,7 @@ build() {
     --disable-static \
     --disable-stripping \
     --enable-amf \
+    --enable-cairo \
     --enable-cuda-llvm \
     --enable-lto \
     --disable-inline-asm \
