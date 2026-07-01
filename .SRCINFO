@@ -12,7 +12,7 @@ pkgbase = ente-desktop-bin
 	provides = ente-desktop=1.7.25
 	conflicts = ente-desktop
 	source = ente-desktop.sh
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 	source_aarch64 = ente-desktop-1.7.25-aarch64.pacman::https://github.com/ente-io/photos-desktop/releases/download/v1.7.25/ente-1.7.25-aarch64.pacman
 	sha256sums_aarch64 = 36aaee619ea91f4a4d1d53fd255b1bfc4fca08f2fc8471ff9178177a4cea22af
 	source_x86_64 = ente-desktop-1.7.25-x86_64.pacman::https://github.com/ente-io/photos-desktop/releases/download/v1.7.25/ente-1.7.25-x64.pacman

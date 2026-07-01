@@ -21,7 +21,7 @@ depends=(
 source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.pacman")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 sha256sums_aarch64=('36aaee619ea91f4a4d1d53fd255b1bfc4fca08f2fc8471ff9178177a4cea22af')
 sha256sums_x86_64=('5005c08eeaeea34f09955d5d5a7312e1bdab7b6b23d50566e21a04a072838a13')
 _get_app_dir() {
