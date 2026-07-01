@@ -2,7 +2,7 @@
 
 pkgname=neo-candy-icons-git
 _pkgname=neo-candy-icons
-pkgver=r51.e0cb50d
+pkgver=r57.c3bb698
 pkgrel=1
 pkgdesc="Neo candy icons (git version)"
 arch=('any')

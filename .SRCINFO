@@ -1,6 +1,6 @@
 pkgbase = neo-candy-icons-git
 	pkgdesc = Neo candy icons (git version)
-	pkgver = r51.e0cb50d
+	pkgver = r57.c3bb698
 	pkgrel = 1
 	url = https://github.com/erikdubois/neo-candy-icons
 	arch = any
