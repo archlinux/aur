@@ -1,7 +1,7 @@
 # Maintainer: Julian Mundhahs <julian plus packaging at mundhahs dot dev>
 _pkgname=qlever
 pkgname="${_pkgname}-git"
-pkgver=r2427.618fcede1
+pkgver=r2878.560d8dcd5
 pkgrel=1
 epoch=0
 pkgdesc="SPARQL engine"

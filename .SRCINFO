@@ -1,6 +1,6 @@
 pkgbase = qlever-git
 	pkgdesc = SPARQL engine
-	pkgver = r2427.618fcede1
+	pkgver = r2878.560d8dcd5
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/ad-freiburg/qlever
@@ -14,11 +14,14 @@ pkgbase = qlever-git
 	depends = zstd
 	depends = openssl
 	depends = glibc
-	depends = gcc-libs
+	depends = libstdc++
+	depends = bzip2
+	depends = zlib
+	depends = libgcc
 	depends = boost-libs
 	depends = jemalloc
 	depends = icu
-	provides = qlever=r2427.618fcede1
+	provides = qlever=r2878.560d8dcd5
 	conflicts = qlever
 	source = qlever::git+https://github.com/ad-freiburg/qlever.git
 	sha256sums = SKIP
