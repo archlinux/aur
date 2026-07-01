@@ -2,6 +2,14 @@
 
 Arch Linux PKGBUILD for Anthropic's official Claude Desktop Linux beta `.deb`.
 
+This AUR package is named `claude` for discoverability and AUR namespace
+compatibility. It installs Anthropic's upstream `claude-desktop` application
+files and provides `claude-desktop` for package dependency resolution.
+
+The multi-distribution packaging repository lives at:
+
+https://github.com/RyanTheTide/claude-desktop-linux
+
 ## Build and install
 
 ```sh
