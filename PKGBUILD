@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hype-bin
 _pkgname=Hype
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Find Hype moments from Twitch.tv.(Prebuilt version)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
     'ffmpeg'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('57fb2c1631f205c7debffbc6d1783fc96ea306cdbcfb6b32772a01bf9e704ad7')
+sha256sums=('6ea146dd8b9691b5571955fdb8ffae986d0628efecfa96bb0768637171e4f0b5')
 prepare() {
     sed -i "s/Categories=/Categories=Utility;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
