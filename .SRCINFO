@@ -1,6 +1,6 @@
 pkgbase = jts-hud-manager-git
 	pkgdesc = A simple open-source Counter-Strike 2 Custom Hud and Hud manager. Manage overlays, players, teams, and matches. (Use system-wide electron)
-	pkgver = 5.2.26.r3.gd70d957
+	pkgver = 6.26.26.r1.g3c075f7
 	pkgrel = 1
 	url = https://github.com/JohnTimmermann/JTs-Hud-Manager
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = jts-hud-manager-git
 	makedepends = gendesk
 	makedepends = jq
 	depends = electron39
-	provides = jts-hud-manager=5.2.26
+	provides = jts-hud-manager=6.26.26
 	conflicts = jts-hud-manager
 	source = jts-hud-manager.git::git+https://github.com/JohnTimmermann/JTs-Hud-Manager
 	source = jts-hud-manager.sh
