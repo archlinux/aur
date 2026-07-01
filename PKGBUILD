@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hype
 _pkgname=Hype
-pkgver=2.0.3
+pkgver=2.0.4
 _nodeversion=24
 pkgrel=1
 pkgdesc="Find Hype-moments from Twitch.tv.(Use system-wide electron)"
@@ -25,7 +25,7 @@ makedepends=(
     'rustup'
 )
 source=("${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}")
-sha256sums=('5d758f3c8b46d896eb868b8b8ec382a4e92a7cf7ff9ace286a07e8371c8d7a50')
+sha256sums=('1f180aa15b05b85cccf3145ea2a4e8a607bfb9fe9df6f923a5cb840f46d19f85')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
