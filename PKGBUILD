@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RMTstat
-_pkgver=0.3.1
+_pkgver=0.3.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="Distributions, Statistics and Tests Derived from Random Matrix Theory"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('71e2f2fd478902ab0135522b01d15e95')
-b2sums=('99f1730060cecb5765cce8d3cccb8dca44669a06e447c07b2880cf70a3ec9ffd41d32d38ecb6d59462e71d914c924e814908eb2800411ca6636e15ce43c86b56')
+md5sums=('bcb13cef26a31927abf5e37f998a2d46')
+b2sums=('c783757b26bcb0568d69385ccff60ef38c80ae51096e79078bbdf43c4914fa023c990c6d28ad480585c234a8943afdca166b7e5112ad7e6e78c7e2de9a8d5d85')
 
 build() {
   mkdir build
