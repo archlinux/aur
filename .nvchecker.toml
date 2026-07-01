@@ -1,0 +1,5 @@
+[fonts-tlwg]
+source = 'github'
+github = 'tlwg/fonts-tlwg'
+use_max_tag = true
+prefix = 'v'

@@ -2,7 +2,7 @@
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=fonts-tlwg
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc='Collection of scalable Thai fonts'
 url='https://github.com/tlwg/fonts-tlwg/'
@@ -10,7 +10,7 @@ arch=('any')
 license=('GPL' 'custom')
 makedepends=('fontforge')
 source=("https://github.com/tlwg/fonts-tlwg/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha1sums=('8c2b7878d9272573125b49ba2f3929154d291cb4')
+sha1sums=('679d905435e4e160779298d1657e29c89a91dd8f')
 
 conflicts=('ttf-tlwg')
 provides=('ttf-tlwg')
