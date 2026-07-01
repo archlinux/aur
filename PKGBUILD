@@ -3,33 +3,30 @@
 
 pkgname=zxc
 pkgver=0.12.0
-pkgrel=2
-pkgdesc="Asymmetric lossless compression library for ultra-fast decode (development: CLI + C library + headers + CMake)"
+pkgrel=1
+pkgdesc="Asymmetric lossless compression CLI — ultra-fast decode, 40%+ faster than LZ4 on ARM64 (source build)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hellobertrand/zxc"
 license=('BSD-3-Clause')
-options=('!debug' '!strip')
-source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/hellobertrand/zxc/releases/download/v${pkgver}/zxc-${pkgver}-linux-x86_64.tar.gz")
-source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/hellobertrand/zxc/releases/download/v${pkgver}/zxc-${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('ab905a9d71114b95095a89f038330264a4ef143056b044fda9f6dd737173ae64')
-sha256sums_aarch64=('d1ae4aa535e08d8a79ba69f06fe5492b3d8954ec7e56f98deacf8619f8e3093b')
+depends=('glibc')
+makedepends=('cmake' 'gcc')
+options=('!debug')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hellobertrand/zxc/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  cmake -S . -B build \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DZXC_BUILD_CLI=ON \
+    -DZXC_BUILD_TESTS=OFF \
+    -DZXC_NATIVE_ARCH=OFF
+  cmake --build build -j"$(nproc)"
+}
 
 package() {
-  local _arch="${CARCH}"
-  [[ "${_arch}" == "aarch64" ]] && _arch="arm64"
-  local _dir="${srcdir}/${pkgname}-${pkgver}-linux-${_arch}"
-
-  install -Dm755 "${_dir}/bin/zxc" "${pkgdir}/usr/bin/zxc"
-
-  install -Dm644 "${_dir}/lib/libzxc.a" "${pkgdir}/usr/lib/libzxc.a"
-
-  install -dm755 "${pkgdir}/usr/include"
-  cp -r "${_dir}/include/"* "${pkgdir}/usr/include/"
-
-  install -Dm644 "${_dir}/lib/pkgconfig/libzxc.pc" "${pkgdir}/usr/lib/pkgconfig/libzxc.pc"
-
-  install -dm755 "${pkgdir}/usr/lib/cmake/zxc"
-  cp -r "${_dir}/lib/cmake/zxc/"* "${pkgdir}/usr/lib/cmake/zxc/"
-
-  install -Dm644 "${_dir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -Dm755 "build/zxc" "${pkgdir}/usr/bin/zxc"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
