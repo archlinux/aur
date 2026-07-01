@@ -31,8 +31,6 @@ optdepends=(
   'gst-plugins-bad: additional codec support'
   'gst-libav: ffmpeg/libav decoder support'
 )
-conflicts=('parole' 'respite')
-provides=('respite')
 source=("git+https://github.com/Twilight0/respite.git#commit=141648b")
 sha256sums=('SKIP')
 

@@ -25,9 +25,6 @@ pkgbase = respite-git
 	optdepends = gst-plugins-ugly: additional codec support
 	optdepends = gst-plugins-bad: additional codec support
 	optdepends = gst-libav: ffmpeg/libav decoder support
-	provides = respite
-	conflicts = parole
-	conflicts = respite
 	source = git+https://github.com/Twilight0/respite.git#commit=141648b
 	sha256sums = SKIP
 
