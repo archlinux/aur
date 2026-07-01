@@ -1,0 +1,5 @@
+[mcpsnoop-bin]
+source = "github"
+github = "kerlenton/mcpsnoop"
+use_latest_release = true
+prefix = "v"
