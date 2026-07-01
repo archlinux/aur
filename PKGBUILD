@@ -9,7 +9,12 @@ arch=('x86_64')
 url='https://github.com/Mikewando/vsfpng'
 license=('LGPL')
 depends=('vapoursynth')
-makedepends=('git' 'meson-python')
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'meson-python'
+)
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Mikewando/vsfpng.git")
