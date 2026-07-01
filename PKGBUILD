@@ -1,6 +1,6 @@
 # Maintainer: Algorant
 pkgname=tandem
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Local-first CLI/TUI for human and agent project coordination'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/tandem-v$pkgver.tar.gz")
-sha256sums=('9fb9cd2df9f3957199b1ed33a1569d383dd39a04af2a53ff25c7dd62ef0740d7')
+sha256sums=('4632755f7af8d5b97bfd797dcd842046fa9e38ae469902abee0e1fc3cdbe4050')
 
 prepare() {
   cd "$pkgname-tandem-v$pkgver/tandem"
