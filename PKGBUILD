@@ -3,7 +3,7 @@
 _pkgauthor=ivaaaan
 _pkgname=smug
 pkgname=${_pkgname}-bin
-pkgver=0.3.18
+pkgver=0.3.19
 pkgrel=1
 pkgdesc='A session manager for tmux written in Go'
 arch=('x86_64' 'i686' 'aarch64')
@@ -16,9 +16,9 @@ provides=("${_pkgname}")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_x86_64.tar.gz")
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_i386.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_x86_64=('e575ab6c2568286d0ce0b415c02d11f6906a9dfe1d77cdbd3f9abdea8cfb7894')
-sha256sums_i686=('b34346da910a919d9139eb00648f865631b2b076d8e697d8954b5bedf47d44b5')
-sha256sums_aarch64=('23d2131448e4c03415f6900ca5e2951182fc83c56dc6f79567076b2e57ac66cf')
+sha256sums_x86_64=('0a877c462a12d3ed7d0d34063707d70be3c2252b6e26f666547c5413e8013ab8')
+sha256sums_i686=('ee3ad8284468384f9dd94891f627cfae68ccf93321e18cc3583b7071c8e7c652')
+sha256sums_aarch64=('be30ee81889da08747fc57538cb473fbe796d6ebfe833fc8484a9ec99f548758')
 
 build() {
   cd "${srcdir}/" || exit
