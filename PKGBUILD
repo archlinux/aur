@@ -5,7 +5,7 @@
 # Contributor: Mahor Foruzesh <mahor1221 at gmail dot com>
 
 pkgname=suwayomi-server-bin
-pkgver=2.2.2100
+pkgver=2.3.2223
 pkgrel=1
 _pkgver="${pkgver%_*}"
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
@@ -28,8 +28,8 @@ source=(
     "https://raw.githubusercontent.com/Suwayomi/${_PkgName}/refs/tags/v${pkgver}/scripts/resources/catch_abort.c"
 )
 noextract=("$_jar")
-sha256sums=('3c8132a43bfa9b959b0c8fdbdcf9aa01bd809047ff4fbc1a4aae0eb71331f05e'
-            '1beb44e42760445e6a8e83f354926100fbf6161f624782d6d78a1f81130046f2'
+sha256sums=('38e5137d360b6913c2828e873632cfba073cf056e2d1f8c4a549503eea145520'
+            '6cc4891b82b3b425dd419ed08194d7d5ea436417fc063be55dc73be8e10e9fd5'
             '9077b3cdaf76df7179e80033fb471ae5c42698a4f6f93802e26779b04c638c0a')
 
 build() {
