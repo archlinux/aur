@@ -1,6 +1,6 @@
 pkgbase = llama-swap-bin
 	pkgdesc = Model swapping for llama.cpp (or any local OpenAPI compatible server)
-	pkgver = 233
+	pkgver = 234
 	pkgrel = 1
 	url = https://github.com/mostlygeek/llama-swap
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = llama-swap-bin
 	provides = llama-swap
 	conflicts = llama-swap
 	backup = etc/llama-swap/config.yaml
-	source = CONFIG-233.yaml::https://raw.githubusercontent.com/mostlygeek/llama-swap/v233/config.example.yaml
+	source = CONFIG-234.yaml::https://raw.githubusercontent.com/mostlygeek/llama-swap/v234/config.example.yaml
 	source = llama-swap.service
 	sha256sums = efe3c3d8e3dc1d880f44555713d702315ca7983d700a1c0d8a3829c3c2c8735e
 	sha256sums = 8f247fec3e347c212006415e23260a4851ccc435ea3fe0b2c7eaed12b49c406c
-	source_x86_64 = llama-swap-x86_64-233.tgz::https://github.com/mostlygeek/llama-swap/releases/download/v233/llama-swap_233_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2382e41ff7ab2de363176bd3a8ff0f71e50e0c3fe3d8c9f334d7e9ac025a569c
-	source_aarch64 = llama-swap-aarch64-233.tgz::https://github.com/mostlygeek/llama-swap/releases/download/v233/llama-swap_233_linux_arm64.tar.gz
-	sha256sums_aarch64 = 5336c95828a256b844f02d0854aa55fecf4ddd47939ae09d83ea1a4b62a30d37
+	source_x86_64 = llama-swap-x86_64-234.tgz::https://github.com/mostlygeek/llama-swap/releases/download/v234/llama-swap_234_linux_amd64.tar.gz
+	sha256sums_x86_64 = 28dcc30769007145429310260b99f2093d39026b147880fc35a4a8a0127f48df
+	source_aarch64 = llama-swap-aarch64-234.tgz::https://github.com/mostlygeek/llama-swap/releases/download/v234/llama-swap_234_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8030a85b8bc37583d111eb3e97b77422384360031e78cc45b40e60b41fba0ccd
 
 pkgname = llama-swap-bin
