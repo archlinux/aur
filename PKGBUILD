@@ -2,7 +2,7 @@
 # Upstream author: Sajjad Abdollahzadeh <sajjad606 at gmail dot com>
 pkgname=beautysolar-icon-theme
 _themename=BeautySolar
-pkgver=20240419
+pkgver=20260702
 pkgrel=1
 pkgdesc='Solar-look icon theme based on BeautyLine'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/musqz/beautysolar-icon-theme'
 license=('GPL-3.0-only')
 depends=('hicolor-icon-theme')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/musqz/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('af15dbf429d0d70c014398addead4fa3375d599549625a3710f39c960b5229f7')
+sha256sums=('0d8abd0ee2e06c2ce2458153384bb13c647dff2147871242fbbc1c4c6f27ea6a')
 
 package() {
   install -dm755 "$pkgdir/usr/share/icons"

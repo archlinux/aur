@@ -1,12 +1,12 @@
 pkgbase = beautysolar-icon-theme
 	pkgdesc = Solar-look icon theme based on BeautyLine
-	pkgver = 20240419
+	pkgver = 20260702
 	pkgrel = 1
 	url = https://github.com/musqz/beautysolar-icon-theme
 	arch = any
 	license = GPL-3.0-only
 	depends = hicolor-icon-theme
-	source = beautysolar-icon-theme-20240419.tar.gz::https://github.com/musqz/beautysolar-icon-theme/archive/refs/tags/v20240419.tar.gz
-	sha256sums = af15dbf429d0d70c014398addead4fa3375d599549625a3710f39c960b5229f7
+	source = beautysolar-icon-theme-20260702.tar.gz::https://github.com/musqz/beautysolar-icon-theme/archive/refs/tags/v20260702.tar.gz
+	sha256sums = 0d8abd0ee2e06c2ce2458153384bb13c647dff2147871242fbbc1c4c6f27ea6a
 
 pkgname = beautysolar-icon-theme
