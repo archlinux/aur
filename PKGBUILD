@@ -4,7 +4,7 @@
 pkgname=aionui-bin
 _pkgname=aionui
 pkgver=2.1.27
-pkgrel=1
+pkgrel=2
 pkgdesc="Transform your command-line experience into a modern, efficient AI Chat interface."
 arch=('x86_64')
 url="https://github.com/iOfficeAI/AionUi" # <-- 示例网址，请替换为官方项目地址
@@ -33,7 +33,7 @@ package() {
   # bsdtar 会自动保留正确的文件权限
   bsdtar -xf data.tar.xz -C "${pkgdir}/"
 
-  sed -i 's#^Icon=[aA]ion[uU]i#Icon=/usr/share/icons/hicolor/1024x1024/apps/AionUi.png#' "${pkgdir}/usr/share/applications/AionUi.desktop"
+  sed -i 's#^Icon=aionui#Icon=/usr/share/icons/hicolor/1024x1024/apps/AionUi.png#' "${pkgdir}/usr/share/applications/AionUi.desktop"
   sed -i 's/^Comment=\${description}/Comment=AionUi for agent/' "${pkgdir}/usr/share/applications/AionUi.desktop"
 
   # (可选但推荐) 移除 Debian 特有的 lintian 目录，它在 Arch Linux 中没有用处
