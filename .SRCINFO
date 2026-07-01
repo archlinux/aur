@@ -1,6 +1,6 @@
 pkgbase = heimdall-daemon-bin
 	pkgdesc = Heimdall daemon — unprivileged per-host metric collector that streams to a hub (prebuilt binary)
-	pkgver = 2.2.8
+	pkgver = 2.2.9
 	pkgrel = 1
 	url = https://github.com/kinncj/Heimdall
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = heimdall-daemon-bin
 	optdepends = heimdall-helper-bin: privileged power, GPU, and full thermal metrics
 	provides = heimdall-daemon
 	conflicts = heimdall-daemon
-	source = heimdall-daemon_2.2.8.1::https://github.com/kinncj/Heimdall/releases/download/v2.2.8/heimdall-daemon.1
+	source = heimdall-daemon_2.2.9.1::https://github.com/kinncj/Heimdall/releases/download/v2.2.9/heimdall-daemon.1
 	sha256sums = d43d5f8330fbd2313da7840dbba508a45da689a597df04e7867558aaa629ec7f
-	source_x86_64 = heimdall-daemon_2.2.8_x86_64::https://github.com/kinncj/Heimdall/releases/download/v2.2.8/heimdall-daemon_linux_amd64
-	sha256sums_x86_64 = 8551dfb4f8348066402639c951c14d49053af47edb00f521fc7dd4d7ee11b6ce
-	source_aarch64 = heimdall-daemon_2.2.8_aarch64::https://github.com/kinncj/Heimdall/releases/download/v2.2.8/heimdall-daemon_linux_arm64
-	sha256sums_aarch64 = 9db76c9b96d0acbaef3983a2076083c9f8ff2448ca7b5347f79a3fd9bf908140
+	source_x86_64 = heimdall-daemon_2.2.9_x86_64::https://github.com/kinncj/Heimdall/releases/download/v2.2.9/heimdall-daemon_linux_amd64
+	sha256sums_x86_64 = 89176d48936a6c45ebe5ae072e935c50ccf0123c1335f05c3befd0e55f899467
+	source_aarch64 = heimdall-daemon_2.2.9_aarch64::https://github.com/kinncj/Heimdall/releases/download/v2.2.9/heimdall-daemon_linux_arm64
+	sha256sums_aarch64 = cdac23936011bc158c12cddd950589ae8be5daeca77c09ee1868e6c8e2053595
 
 pkgname = heimdall-daemon-bin
