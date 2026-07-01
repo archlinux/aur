@@ -49,3 +49,13 @@ package() {
   cd respite
   DESTDIR="$pkgdir" meson install -C build
 }
+
+post_install() {
+  update-desktop-database -q "$pkgdir/usr/share/applications" >/dev/null
+  gtk-update-icon-cache -q -t -f "$pkgdir/usr/share/icons/hicolor" >/dev/null
+}
+
+post_upgrade() {
+  update-desktop-database -q "$pkgdir/usr/share/applications" >/dev/null
+  gtk-update-icon-cache -q -t -f "$pkgdir/usr/share/icons/hicolor" >/dev/null
+}
