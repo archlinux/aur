@@ -2,8 +2,8 @@
 pkgname=go-music-dl-bin
 _pkgname="Go Music DL"
 _rpmname=music-dl-desktop-go
-pkgver=1.0.30
-pkgrel=3
+pkgver=1.0.31
+pkgrel=1
 pkgdesc="一个基于 Go 语言的全网音乐搜索与下载工具。支持 CLI 命令行与 Web 服务双模式，内置网易云、QQ、酷狗、Bilibili、汽水音乐等 10+ 个主流平台，支持多源并发搜索与无损音质解析.(Prebuilt version)"
 arch=('x86_64')
 url="https://music.zkkp.nyc.mn/"
@@ -17,7 +17,7 @@ depends=(
     'ffmpeg'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_rpmname}-linux-amd64.rpm")
-sha256sums=('57cb70c8d38127548812784ebac449e3365e1eb40dd418fab4039ab520a03422')
+sha256sums=('69c9275806e2e0275c4ef5d0bb5b8bbb84e0289e4bd2ba562d6f35da53cc3907')
 prepare() {
     sed -i -e "
         s/Name=${_rpmname}/Name=${_pkgname}/g
@@ -28,6 +28,11 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_rpmname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_rpmname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/${_rpmname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    find "${srcdir}/usr/share/icons" -type f \( -name "*.png" -o -name "*.svg" \) \
+		| while read -r _i; do
+		_extension="${_i##*.}"
+		_target_dir=$(dirname "${_i#$srcdir}")
+		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
+	done
 }
 
