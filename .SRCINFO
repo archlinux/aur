@@ -1,0 +1,26 @@
+pkgbase = age-plugin-yubikey-git
+	pkgdesc = Yubikey plugin for age
+	pkgver = 0.5.1.r24.gcafbc75
+	pkgrel = 1
+	url = https://github.com/str4d/age-plugin-yubikey
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = pcsclite
+	optdepends = age: for use with age
+	optdepends = rage-encryption: for use with rage
+	provides = age-plugin-yubikey
+	conflicts = age-plugin-yubikey
+	source = age-plugin-yubikey::git+https://github.com/str4d/age-plugin-yubikey.git#branch=main
+	sha256sums = SKIP
+
+pkgname = age-plugin-yubikey-git
