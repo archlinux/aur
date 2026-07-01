@@ -2,7 +2,7 @@
 
 pkgname='noita_proxy'
 pkgver=1.6.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Noita Entangled Worlds mod'
 url='https://github.com/IntQuant/noita_entangled_worlds'
 arch=('x86_64')
@@ -71,6 +71,6 @@ package() {
     install -Dm 644 noita_proxy/assets/icon.png \
         -T "$pkgdir/usr/share/icons/noita_proxy.png"
 
-    printf '#!/usr/bin/env sh\nexec /usr/lib/noita_proxy/noita-proxy $@' | \
+    printf '#!/usr/bin/env sh\nexec /usr/lib/noita_proxy/noita_proxy $@' | \
         install -Dm 755 /dev/stdin "$pkgdir/usr/bin/noita_proxy"
 }
