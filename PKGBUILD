@@ -3,7 +3,7 @@
 # Co-Maintainer: Christopher Snowhill <kode54@gmail.com>
 _wfconfig_version=0.7
 pkgname=wayfire-git
-pkgver=0.10.1.r110.g93d22c82
+pkgver=0.10.1.r143.g1fda80ea
 pkgrel=1
 pkgdesc="3D wayland compositor"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(
          # Wayfire
          'cairo' 'pango' 'libdrm' 'libevdev'
-         'libglvnd' 'libjpeg' 'libpng'
+         'libglvnd' 'libjpeg-turbo' 'libpng'
          'libxkbcommon' 'pixman' 'polkit'
          'seatd' 'xorg-xwayland' 'wayland'
          'yyjson' 'libinput'
