@@ -6,7 +6,7 @@ _appname=${_gitname//-/}
 pkgname=${_appname}-bin
 pkgdesc="Lightweight cross-platform memory visualizer tool"
 
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,7 +29,7 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 sha256sums=('2f0da775c8c83116de4d7647ecbe3922487cde4f3b60c65d96809252d4460581'
             '019f7f5848f43d6afb179ac038dc41eb208a83caa10db821b1fb097b1ed6f1bd')
-sha256sums_x86_64=('0d40ffc95877d7f4c308374878f212a228eb60d15667cf7ab4aa39ef749a3933')
+sha256sums_x86_64=('03abf11bd9cdd1bb24eab8d45bbf35e5381a83b0fd10394cd7370d59d58ea798')
 
 
 package() {
