@@ -1,0 +1,4 @@
+[emailctl-bin]
+source = "git"
+git = "https://github.com/LIghtJUNction/emailctl.git"
+prefix = "v"
