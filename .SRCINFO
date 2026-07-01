@@ -1,6 +1,6 @@
 pkgbase = heimdall-cli-bin
 	pkgdesc = Heimdall CLI — machine- and AI-friendly JSON client that queries a hub's fleet for scripts, CI/CD, and agents (prebuilt binary)
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/kinncj/Heimdall
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = heimdall-cli-bin
 	license = AGPL-3.0-or-later
 	provides = heimdall-cli
 	conflicts = heimdall-cli
-	source = heimdall-cli_2.3.0.1::https://github.com/kinncj/Heimdall/releases/download/v2.3.0/heimdall-cli.1
+	source = heimdall-cli_2.3.1.1::https://github.com/kinncj/Heimdall/releases/download/v2.3.1/heimdall-cli.1
 	sha256sums = bbd77bcf708a13389ff9db7b203d55e38441f4ba6c8c885a4cf31b68455465b1
-	source_x86_64 = heimdall-cli_2.3.0_x86_64::https://github.com/kinncj/Heimdall/releases/download/v2.3.0/heimdall-cli_linux_amd64
-	sha256sums_x86_64 = b80520c9670c9ed72b808619ef4fef61542aac9b745bbb813f7be008a4435880
-	source_aarch64 = heimdall-cli_2.3.0_aarch64::https://github.com/kinncj/Heimdall/releases/download/v2.3.0/heimdall-cli_linux_arm64
-	sha256sums_aarch64 = 65c28f99c0878f8883538dc778c544687c119a67b4ebe3eb4bd2f03580a72dc2
+	source_x86_64 = heimdall-cli_2.3.1_x86_64::https://github.com/kinncj/Heimdall/releases/download/v2.3.1/heimdall-cli_linux_amd64
+	sha256sums_x86_64 = ce32b52f44b9d82a6d353338a6ccde0322811e04ce762eaaebe5cc7e83f24d4d
+	source_aarch64 = heimdall-cli_2.3.1_aarch64::https://github.com/kinncj/Heimdall/releases/download/v2.3.1/heimdall-cli_linux_arm64
+	sha256sums_aarch64 = 2f9437721951c718cc1c9e429f556b4f8007361e868f8b8e63d7b14235dcdb2d
 
 pkgname = heimdall-cli-bin
