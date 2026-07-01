@@ -1,0 +1,14 @@
+pkgbase = appearance-mode
+	pkgdesc = Light and dark appearance mode helper for XFCE
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SoleSoul/appearance-mode
+	arch = x86_64
+	license = MIT
+	depends = gsettings-desktop-schemas
+	depends = gtk3
+	depends = xdg-desktop-portal-gtk
+	source = appearance-mode-0.1.0.tar.gz::https://github.com/SoleSoul/appearance-mode/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 7b5c30d6fa64f6301ef74931d42ac6c6f87fd73367af5110081b4c885bb618b1
+
+pkgname = appearance-mode
