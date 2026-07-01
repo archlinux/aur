@@ -36,7 +36,7 @@ pkgver() {
 
 prepare() {
 	cd "$_pkgname"
-	cargo fetch --locked --target "$(rustc --print host-tuple)"
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
