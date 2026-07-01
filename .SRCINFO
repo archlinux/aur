@@ -1,6 +1,6 @@
 pkgbase = rename-photos-bin
 	pkgdesc = Bulk rename photos using EXIF data 🐶 (Prebuilt version)使用 EXIF 数据批量重命名照片.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://arman19941113.github.io/rename-photos/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = rename-photos-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = rename-photos=1.0.1
+	provides = rename-photos=1.0.2
 	conflicts = rename-photos
-	source = rename-photos-1.0.1.rpm::https://github.com/Arman19941113/rename-photos/releases/download/v1.0.1/Rename.Photos-1.0.1-1.x86_64.rpm
-	source = LICENSE-1.0.1::https://raw.githubusercontent.com/Arman19941113/rename-photos/v1.0.1/LICENSE
-	sha256sums = c5b4eeddf2125f8fee2f2a92fb9f6a661c4def591e5c03f540a1d78150ab9018
+	source = rename-photos-1.0.2.rpm::https://github.com/Arman19941113/rename-photos/releases/download/v1.0.2/Rename.Photos-1.0.2-1.x86_64.rpm
+	source = LICENSE-1.0.2::https://raw.githubusercontent.com/Arman19941113/rename-photos/v1.0.2/LICENSE
+	sha256sums = a19f687b0060b21dabaf94b58fa2d7d611670b11f8157514ca4ebf1500cdba84
 	sha256sums = 5ad2df4d8f7256a87d9d21c5a8568a8d1d6ff63e8506f87c683612bee4877c07
 
 pkgname = rename-photos-bin
