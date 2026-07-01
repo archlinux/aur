@@ -1,6 +1,6 @@
 # Maintainer: Andersmmg <andersmmg at duck dot com>
 pkgname=hyprmod
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=3
 pkgdesc="Native GTK4/libadwaita settings app for Hyprland"
 arch=('x86_64')
@@ -25,7 +25,7 @@ makedepends=(
 )
 optdepends=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/BlueManCZ/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f93b636777de9ba1d307f972c6f6ee88331135670dad6ab76327683738deb89a')
+sha256sums=('fd3672ad5257bb65038fd7442553fd1a8cfb5c41a0320186797368a7f2abbc9f')
 
 build() {
   cd "${pkgname}-${pkgver}"
