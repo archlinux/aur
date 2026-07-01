@@ -43,7 +43,7 @@ source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz
         https://invent.kde.org/plasma/plasma-login-manager/-/merge_requests/123.patch)
 sha256sums=('199cc04b1efcfcf4d4cefd027861902013d0c342bbc754d0231859fa17567fd9'
             'SKIP'
-            '5d35d506ee823a55648c1a747901ec50b79d3b77075cbcbd30444b1fbd8e0f5c')
+            'c9847e3eb299921258fda7319e03de773b6561c3b50c3d2afa9bcf10d76f401f')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
