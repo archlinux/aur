@@ -1,6 +1,6 @@
 # Maintainer: Eric Jingryd <tidynest@proton.me>
 pkgname=linux-system-hardener
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Linux security automation: scanning, hardening, and rollback across 8 domains"
 arch=('x86_64')
@@ -40,7 +40,7 @@ optdepends=(
     'xfce-polkit: native polkit agent for XFCE'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tidynest/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0dee1de4d3e3840ea5554d86412d42483a8919ff0531510601b35418e500e013')
+sha256sums=('059f2d88b36fe902c20702e15129fd25aed15732df276f0cd4caf8cbebada171')
 
 build() {
     cd "$pkgname-$pkgver"
