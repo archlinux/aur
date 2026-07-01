@@ -78,7 +78,7 @@ depends=(
   'lib32-openjpeg2'
   'lib32-opus'
   'lib32-sdl2'
-#  'lib32-snappy'
+  'lib32-snappy'
 #  'lib32-sndio'
   'lib32-speex'
   'lib32-srt'
@@ -199,6 +199,7 @@ build() {
     --enable-libpulse \
     --enable-librav1e \
     --enable-librsvg \
+    --enable-libsnappy \
     --enable-libspeex \
     --enable-libsrt \
     --enable-libtheora \
@@ -230,7 +231,6 @@ build() {
 #    --enable-libjxl \
 #    --enable-libopenh264
 #    --enable-librubberband \
-#    --enable-libsnappy \
 #    --enable-libsoxr \
 #    --enable-libssh \
 #    --enable-libsvtav1 
