@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=splinepy
 pkgname=python-${_base}
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Python N-Dimensional Bezier, RationalBezier, BSpline and NURBS library with C++ Backend"
 url="https://tataratat.github.io/${_base}"
@@ -10,7 +10,7 @@ arch=(any)
 depends=(python-gustaf)
 makedepends=(python-build python-installer python-scikit-build-core python-wheel)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('fda64b2ffea652a243e742aa0a25cbebfc91cbe8b490e0c26a8ad214c84b40a021328b9fda4444642caa6f9d886dee1e5724decebf860f44ce33f059d60a823b')
+sha512sums=('eec29fee58904628b520fb298b604bc8ce7bfe9650c805c00722bcd8e87c621a8ac5e3c153624e538c10bac211aec3b891d96bfeb71b99709c51475e7abc4a17')
 
 build() {
   cd ${_base}-${pkgver}
