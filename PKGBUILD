@@ -92,7 +92,7 @@ depends=(
   'libgcc'
 )
 makedepends=(
-#  'avisynthplus'
+  'lib32-avisynthplus'
   'amf-headers'
   'lib32-clang'
   'ffnvcodec-headers'
@@ -106,7 +106,7 @@ makedepends=(
   'vulkan-headers'
 )
 optdepends=(
-#  'avisynthplus: AviSynthPlus support'
+  'avisynthplus: AviSynthPlus support'
 #  'frei0r-plugins: Frei0r video effects support'
 #  'intel-media-sdk: Intel QuickSync support (legacy)'
   'lib32-ladspa: LADSPA filters'
@@ -163,6 +163,7 @@ build() {
     --disable-static \
     --disable-stripping \
     --enable-amf \
+    --enable-avisynth \
     --enable-cairo \
     --enable-cuda-llvm \
     --enable-lto \
@@ -226,7 +227,6 @@ build() {
     --disable-decoder=magicyuv # pixelsmash
 
 ## not available under 32 bit
-#    --enable-avisynth \
 #    --enable-frei0r \
 #    --enable-libjxl \
 #    --enable-libopenh264
