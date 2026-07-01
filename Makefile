@@ -2,6 +2,9 @@
 check: clean build srcinfo
 	namcap PKGBUILD
 	namcap uamp-*-x86_64.pkg.tar.zst
+	
+sums:
+	makepkg -g
 
 .PHONY: build
 build:
