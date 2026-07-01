@@ -122,8 +122,6 @@ makedepends=(
 
 optdepends=()
 
-# Conflicts with Arch's kglobalacceld since we build our own from git
-conflicts=('kglobalacceld')
 provides=('kglobalacceld')
 
 # Source: kwin-we from GitLab + kglobalacceld from KDE invent
