@@ -2,7 +2,7 @@
 pkgname=rssh-git
 _pkgname=rssh
 pkgver=0.0.1.r129.gb670f8c
-pkgrel=2
+pkgrel=3
 pkgdesc="SSH client built to be an AI ops copilot (latest git)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/shihuili1218/rssh"
@@ -46,6 +46,7 @@ prepare() {
     cd "${srcdir}/${_pkgname}"
 
     export CARGO_HOME="${srcdir}/cargo-home"
+    export RUSTUP_TOOLCHAIN=stable
     export npm_config_cache="${srcdir}/npm-cache"
 
     npm ci
@@ -61,6 +62,7 @@ build() {
     cd "${srcdir}/${_pkgname}"
 
     export CARGO_HOME="${srcdir}/cargo-home"
+    export RUSTUP_TOOLCHAIN=stable
     export npm_config_cache="${srcdir}/npm-cache"
 
     npm run build
