@@ -1,7 +1,7 @@
 # Maintainer: Bin Jin <bjin@protonmail.com>
 
 pkgname=oh-my-pi-bin
-pkgver=16.2.11
+pkgver=16.2.12
 pkgrel=1
 pkgdesc="AI Coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more (release binary)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("oh-my-pi")
 options=('!strip')
 source=("omp-${pkgver}::https://github.com/can1357/oh-my-pi/releases/download/v${pkgver}/omp-linux-x64"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/can1357/oh-my-pi/v${pkgver}/LICENSE")
-sha256sums=('387eb20fa29a7f526f93a51ec984e56a0b45b46774499c81aa286029e815f398'
+sha256sums=('422650ce81304d4fbabc7b7ea3cc840b718ecc57a9fb00ae71660bec072677b2'
             '545636e19386d3d4e0ae6d77354527499999c3ebfbca61b9fa5aa4ead7c0b308')
 
 _install_completions() {
