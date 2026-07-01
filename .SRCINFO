@@ -1,6 +1,6 @@
 pkgbase = maigret
 	pkgdesc = Collect a dossier on a person by username from thousands of sites
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/soxoj/maigret
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = maigret
 	depends = python-xhtml2pdf
 	depends = python-xmind
 	depends = socid-extractor>=0.1.0
-	source = https://files.pythonhosted.org/packages/source/m/maigret/maigret-0.6.1.tar.gz
-	sha256sums = e1cc37b008ccf83ec64039c0b5c7219c607da8bcd1423157f299c3c58aa84dce
+	source = https://files.pythonhosted.org/packages/source/m/maigret/maigret-0.6.2.tar.gz
+	sha256sums = d731f2aa9be8bc83fa2743ae7e39469cd2bfe9cbfd5f7bcbceaa3c00ebe54736
 
 pkgname = maigret
