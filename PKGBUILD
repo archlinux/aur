@@ -16,7 +16,10 @@ makedepends=(cmake
 depends=(zstd
          openssl
          glibc
-         gcc-libs
+         libstdc++
+         bzip2
+         zlib
+         libgcc
          boost-libs
          jemalloc
          icu)
