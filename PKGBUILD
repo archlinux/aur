@@ -32,7 +32,7 @@ depends=(
   'lib32-gsm'
   'lib32-jack'
   'lib32-lame'
-#  'lib32-lcms2'
+  'lib32-lcms2'
   'lib32-libass'
   'lib32-libavc1394'
   'lib32-libbluray'
@@ -173,6 +173,7 @@ build() {
     --enable-gpl \
     --enable-libharfbuzz \
     --enable-ladspa \
+    --enable-lcms2 \
     --enable-libaom \
     --enable-libass \
     --enable-libbluray \
@@ -224,7 +225,6 @@ build() {
 ## not available under 32 bit
 #    --enable-avisynth \
 #    --enable-frei0r \
-#    --enable-lcms2 \
 #    --enable-libjxl \
 #    --enable-libopenh264
 #    --enable-libopenmpt \
