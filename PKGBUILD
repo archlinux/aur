@@ -3,12 +3,13 @@
 
 pkgname=emailctl
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 _commit=b0771c9
 pkgdesc='Rust email CLI with Gmail OAuth and generic IMAP/SMTP support'
 arch=(x86_64)
 url='https://github.com/LIghtJUNction/emailctl'
 license=('MIT OR Apache-2.0')
+replaces=(email-cli-lightjunction)
 depends=(openssl)
 makedepends=(cargo git)
 options=(!lto)
