@@ -1,7 +1,7 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=go-automate-git
-pkgver=0.1.0.r114.gf8f21d9
+pkgver=0.1.0.r115.gcccfdf5
 pkgrel=1
 pkgdesc="CLI utility to trigger Home Assistant automations via keyboard shortcuts (git version)"
 arch=('x86_64' 'aarch64')
@@ -33,6 +33,17 @@ build() {
   # Build TUI
   cd tui && bun install && bun build src/index.ts --compile --outfile ../go-automate-tui
   cd ..
+
+  # Generate shell completion scripts. A temporary XDG_CONFIG_HOME keeps this
+  # hermetic, and the completion guard in main.go means it never prompts even
+  # when Home Assistant is unconfigured.
+  local completion_home
+  completion_home="$(mktemp -d)"
+  local shell
+  for shell in zsh bash fish; do
+    XDG_CONFIG_HOME="$completion_home" ./go-automate completion "$shell" >"go-automate.$shell"
+  done
+  rm -rf "$completion_home"
 }
 
 package() {
@@ -42,6 +53,11 @@ package() {
   install -Dm755 go-automate "$pkgdir/usr/bin/go-automate"
   install -Dm755 go-automate-tui "$pkgdir/usr/bin/go-automate-tui"
   install -Dm644 .scripts/linux/go-automate-home-assistant-bridge.service "$pkgdir/usr/lib/systemd/user/go-automate-home-assistant-bridge.service"
+
+  # Install shell completions
+  install -Dm644 go-automate.zsh "$pkgdir/usr/share/zsh/site-functions/_go-automate"
+  install -Dm644 go-automate.bash "$pkgdir/usr/share/bash-completion/completions/go-automate"
+  install -Dm644 go-automate.fish "$pkgdir/usr/share/fish/vendor_completions.d/go-automate.fish"
 
   # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
