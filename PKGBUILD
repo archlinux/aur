@@ -3,16 +3,16 @@
 # Contributor: ebiadsu <ebiadsu@posteo.de>
 
 pkgname=python-ovh
-pkgver=1.1.2
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Lightweight wrapper around OVH's APIs"
 arch=('any')
 url="https://github.com/ovh/python-ovh"
 license=('BSD')
-depends=('python-requests')
+depends=('python-requests' 'python-requests-oauthlib')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-sphinx' 'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b24a47bc37ffb14fee2d9525b4aa0b86eeb2aab24755fd6e74707c4e4d0b807a')
+sha256sums=('778c5c7769cb87ed1f512802698cf5b2f25e3a9b5426429508d80b7383c4bc1d')
 
 build() {
     cd "${pkgname}-${pkgver}"
