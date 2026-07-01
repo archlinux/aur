@@ -2,7 +2,7 @@
 
 pkgname=supercell-wx-bin
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A NEXRAD Level 2 and Level 3 radar viewing application (Stable Build)"
 arch=('x86_64')
 url="https://github.com/dpaulat/supercell-wx"
@@ -11,8 +11,14 @@ makedepends=()
 depends=('xcb-util-cursor' 'mesa')
 provides=('supercell-wx')
 conflicts=('supercell-wx' 'supercell-wx-appimage')
-source=("https://github.com/dpaulat/supercell-wx/releases/download/v${pkgver}-release/supercell-wx-v${pkgver}-linux-x64.tar.gz")
-sha256sums=('ed86cdd17a692c67da7f9edb879588d6c5a88eb2c5e98b288b1b613a00fb96e0')
+source=("https://github.com/dpaulat/supercell-wx/releases/download/v${pkgver}-release/supercell-wx-v${pkgver}-linux-x64.tar.gz"
+        "supercell-wx.desktop::https://raw.githubusercontent.com/dpaulat/supercell-wx/develop/scwx-qt/res/linux/supercell-wx.desktop"
+        "scwx-256.png::https://raw.githubusercontent.com/dpaulat/supercell-wx/develop/scwx-qt/res/icons/scwx-256.png"
+        "scwx-64.png::https://raw.githubusercontent.com/dpaulat/supercell-wx/develop/scwx-qt/res/icons/scwx-64.png")
+sha256sums=('ed86cdd17a692c67da7f9edb879588d6c5a88eb2c5e98b288b1b613a00fb96e0'
+            'SKIP'
+            '7e43e238c96f7ed225286ccb6d656458aec063fb090d5e9ec08922d03b59a8d6'
+            '4a900b77386aec5541b66afdfc41389ff12cac76ff046f7272eed025ce72d010')
 
 package() {
     # Extract the tar.gz file
@@ -31,4 +37,11 @@ package() {
     # Symlink binary to /usr/bin
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/supercell-wx/bin/supercell-wx" "${pkgdir}/usr/bin/supercell-wx"
+
+    # Install desktop entry (start menu shortcut)
+    install -Dm644 "${srcdir}/supercell-wx.desktop" "${pkgdir}/usr/share/applications/supercell-wx.desktop"
+
+    # Install application icons
+    install -Dm644 "${srcdir}/scwx-256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/supercell-wx.png"
+    install -Dm644 "${srcdir}/scwx-64.png"  "${pkgdir}/usr/share/icons/hicolor/64x64/apps/supercell-wx.png"
 }
