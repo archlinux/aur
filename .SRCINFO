@@ -1,6 +1,6 @@
 pkgbase = howdy-next-git
 	pkgdesc = Security-focused C++ rewrite of Howdy for facial-recognition authentication on Linux
-	pkgver = 3.1.1.r271.gd2b1fd6
+	pkgver = 3.1.1.r292.g3da7fd4
 	pkgrel = 1
 	url = https://codeberg.org/nathawat/howdy-next
 	install = howdy-next.install
@@ -9,7 +9,7 @@ pkgbase = howdy-next-git
 	makedepends = git
 	makedepends = meson
 	makedepends = gettext
-	makedepends = nlohmann-json
+	makedepends = yyjson
 	depends = libinih
 	depends = libevdev
 	depends = pam
