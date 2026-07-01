@@ -3,7 +3,7 @@
 # Contributor: Hidde Beydals <hello@hidde.co>
 
 pkgname=flux-bin
-pkgver=2.8.8
+pkgver=2.9.0
 pkgrel=1
 _srcname=flux
 _srcver=2.8.6
