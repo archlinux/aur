@@ -1,6 +1,6 @@
 pkgbase = so-novel-bin
 	pkgdesc = Universal web content extraction and ebook export tool (prebuilt binary)
-	pkgver = 1.10.3
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/freeok/so-novel
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = so-novel-bin
 	conflicts = so-novel
 	conflicts = sonovel
 	options = !strip
-	source_x86_64 = sonovel-linux_x64-1.10.3.tar.gz::https://github.com/freeok/so-novel/releases/download/v1.10.3/sonovel-linux_x64.tar.gz
-	sha256sums_x86_64 = 03a17b48b7cfd865d3a0c2da8685a618f88c45233f5504517e83b544ca6f3b82
-	source_aarch64 = sonovel-linux_arm64-1.10.3.tar.gz::https://github.com/freeok/so-novel/releases/download/v1.10.3/sonovel-linux_arm64.tar.gz
-	sha256sums_aarch64 = 477e383b85d3642a6f6805cd2ebbf1dc880d86b602cc60f030a093c396ce2a4e
+	source_x86_64 = sonovel-linux_x64-1.11.0.tar.gz::https://github.com/freeok/so-novel/releases/download/v1.11.0/sonovel-linux_x64.tar.gz
+	sha256sums_x86_64 = 2fbb7abe269bf7440d53636a57dad51c713679f9ba6188c3fbef164ad14f6138
+	source_aarch64 = sonovel-linux_arm64-1.11.0.tar.gz::https://github.com/freeok/so-novel/releases/download/v1.11.0/sonovel-linux_arm64.tar.gz
+	sha256sums_aarch64 = 073abcdf981ef333cf001c403b53cc0f72003fe6bf837c1371d8ab6732543fd8
 
 pkgname = so-novel-bin
