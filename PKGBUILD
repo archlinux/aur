@@ -3,7 +3,7 @@
 
 pkgname=parch
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A user-friendly wrapper over paru/pacman for Arch Linux"
 arch=('x86_64')
 url="https://github.com/acidnik/parch"
