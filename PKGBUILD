@@ -4,7 +4,7 @@
 pkgname=cherry-doom
 _pkgname=cherry-doom
 _tardir="Cherry-Doom-$_pkgname"
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Fork of Nugget Doom with more additional features"
 arch=('x86_64')
@@ -21,7 +21,7 @@ install=install.sh
 makedepends=(cmake python3)
 url="https://github.com/xemonix0/Cherry-Doom/"
 source=("$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/$pkgname-$pkgver.tar.gz")
-b2sums=('b3ba2e6b558ca3cdd9f5cf73c22bbbc438be984c580c542a7b4202969ecae321bf3be07b0393a3cc9c0a44225b8c80d3d8b80717f6831c0d774b284212764e42')
+sha256sums=('9cf26076f3d7cdc52e2887401565ff2e9dcb668ebd0fa2c6f11826ac908de901')
 
 build() {
     # Use `-ffile-prefix-map` to avoid 'WARNING: Package contains reference to $srcdir' due to assert(...)
