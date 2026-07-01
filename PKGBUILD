@@ -3,7 +3,7 @@
 
 _pkgname=Eden
 pkgname="eden-bin"
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="The Eden Nintendo Switch emulator AppImage."
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 _appimage="${_pkgname}-Linux-${pkgver}-amd64.AppImage"
 source_x86_64=("${_appimage}::https://stable.eden-emu.dev/v${pkgver}/${_pkgname}-Linux-v${pkgver}-amd64-gcc-standard.AppImage")
-sha256sums_x86_64=("167d7ecfcb145b0b1ff84761a6e00067ec11288c35aba1d5f4643a1922bd579a")
+sha256sums_x86_64=("2fae658397daf13c118082a3eb65d61a6519967b5e22e6667756baecf6000c5a")
 
 prepare() {
     chmod +x "${_appimage}"
