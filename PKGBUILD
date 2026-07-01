@@ -1,7 +1,7 @@
 # Maintainer: RAprogramm <andrey.rozanov.vl@gmail.com>
 pkgname=twc-rs-bin
 _pkgname=twc-rs
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Fast CLI and interactive TUI dashboard for managing Timeweb Cloud infrastructure"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pk
 # Replace with the real checksum per release, e.g.:
 #   updpkgsums   (from pacman-contrib), or
 #   sha256sum twc-rs-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz
-sha256sums=('d14d3783db9b156be2daf9076cb1ad35a13855bf642b8d1842dd025190ce3149')
+sha256sums=('61458a49636b8abcd1972309e017b5b71ab2407bf7626e823642397a648922f3')
 
 package() {
     install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
@@ -29,4 +29,6 @@ package() {
         "${pkgdir}/usr/share/twc-rs/completions/_${_pkgname}"
     install -Dm644 <("${bin}" completions fish) \
         "${pkgdir}/usr/share/twc-rs/completions/${_pkgname}.fish"
+    install -Dm644 <("${bin}" completions nushell) \
+        "${pkgdir}/usr/share/twc-rs/completions/${_pkgname}.nu"
 }

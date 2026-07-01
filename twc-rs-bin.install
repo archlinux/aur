@@ -50,6 +50,13 @@ _twcrs_activate() {
 		activated=1
 	fi
 
+	if command -v nu >/dev/null 2>&1; then
+		install -Dm644 "${_twcrs_staged}/twc-rs.nu" \
+			/usr/share/nushell/vendor/autoload/twc-rs.nu
+		_twcrs_say '  -> nushell completions installed' '  -> автодополнение для nushell установлено'
+		activated=1
+	fi
+
 	if [ "${activated}" -eq 0 ]; then
 		_twcrs_say \
 			'  -> no supported shell found; run "twc-rs completions <shell>" later' \
@@ -73,5 +80,6 @@ post_remove() {
 	rm -f \
 		/usr/share/bash-completion/completions/twc-rs \
 		/usr/share/zsh/site-functions/_twc-rs \
-		/usr/share/fish/vendor_completions.d/twc-rs.fish
+		/usr/share/fish/vendor_completions.d/twc-rs.fish \
+		/usr/share/nushell/vendor/autoload/twc-rs.nu
 }
