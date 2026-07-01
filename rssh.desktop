@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=RSSH
+Comment=SSH client built to be an AI ops copilot
+Exec=rssh
+Icon=rssh
+Terminal=false
+Categories=Network;RemoteAccess;
+StartupNotify=true

@@ -1,0 +1,7 @@
+/pkg/
+/src/
+/rssh/
+/*.pkg.tar*
+/*.src.tar*
+/*.log
+/*.log.*
