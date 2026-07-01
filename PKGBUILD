@@ -24,7 +24,7 @@ depends=(
   'lib32-cairo'
   'lib32-fontconfig'
   'lib32-fribidi'
-#  'lib32-glib2'
+  'lib32-glib2'
   'lib32-glibc'
   'lib32-glslang'
   'lib32-gmp'
