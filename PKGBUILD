@@ -3,7 +3,7 @@
 # Contributor: Timothy Rice <t.rice@ms.unimelb.edu.au>
 
 pkgname=direvent
-pkgver=5.4
+pkgver=5.5
 pkgrel=1
 pkgdesc="Deamon that monitors events in the file system directories"
 arch=('i686' 'x86_64')
@@ -11,9 +11,9 @@ url="https://www.gnu.org.ua/software/direvent/"
 license=("GPL-3.0-or-later")
 depends=('glibc')
 source=("http://ftp.gnu.org/gnu/direvent/${pkgname}-${pkgver}.tar.gz"{,.sig})
-sha256sums=('1dbbc6192aab67e345725148603d570c6a2828380c964215762af91524d795ba'
+sha256sums=('0e16c0b4b3e6f7673e9b4f31d81ab01236ad22f83538512f3b2f58f9f96fdcb7'
             'SKIP')
-validpgpkeys=('325F650C4C2B6AD58807327A3602B07F55D0C732')
+validpgpkeys=('4BE4E62655488EB92ABB468F79FFD94BFCE230B1')
    # Sergey Poznyakoff <gray@gnu.org>
    # To validate, see instructions at:
    #   https://www.gnu.org.ua/software/direvent/download.html

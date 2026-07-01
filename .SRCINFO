@@ -1,16 +1,16 @@
 pkgbase = direvent
 	pkgdesc = Deamon that monitors events in the file system directories
-	pkgver = 5.4
+	pkgver = 5.5
 	pkgrel = 1
 	url = https://www.gnu.org.ua/software/direvent/
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = glibc
-	source = http://ftp.gnu.org/gnu/direvent/direvent-5.4.tar.gz
-	source = http://ftp.gnu.org/gnu/direvent/direvent-5.4.tar.gz.sig
-	validpgpkeys = 325F650C4C2B6AD58807327A3602B07F55D0C732
-	sha256sums = 1dbbc6192aab67e345725148603d570c6a2828380c964215762af91524d795ba
+	source = http://ftp.gnu.org/gnu/direvent/direvent-5.5.tar.gz
+	source = http://ftp.gnu.org/gnu/direvent/direvent-5.5.tar.gz.sig
+	validpgpkeys = 4BE4E62655488EB92ABB468F79FFD94BFCE230B1
+	sha256sums = 0e16c0b4b3e6f7673e9b4f31d81ab01236ad22f83538512f3b2f58f9f96fdcb7
 	sha256sums = SKIP
 
 pkgname = direvent
