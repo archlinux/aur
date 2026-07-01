@@ -1,6 +1,6 @@
 pkgbase = qrx-bin
 	pkgdesc = CLI tool to capture a screen region, decode any QR code found, and copy the result to clipboard. (binary package)
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/x71c9/qrx
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = qrx-bin
 	depends = glibc
 	provides = qrx
 	conflicts = qrx
-	source_x86_64 = qrx-x86_64-0.4.2.tar.gz::https://github.com/x71c9/qrx/releases/download/v0.4.2/qrx-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 1d0a6da2ae6954d0d375243c37992bc5308a32da07884ae1f4152b4b9029da5d
-	source_aarch64 = qrx-aarch64-0.4.2.tar.gz::https://github.com/x71c9/qrx/releases/download/v0.4.2/qrx-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 434372a606746fea53bb5edd3b5abd241d217fb05a1f042afe6d67be925158e8
+	source_x86_64 = qrx-x86_64-0.4.3.tar.gz::https://github.com/x71c9/qrx/releases/download/v0.4.3/qrx-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 34bda2e49af87c6c0fcbc754d12f54e426ada354fc34987be57afc05b4d8eefc
+	source_aarch64 = qrx-aarch64-0.4.3.tar.gz::https://github.com/x71c9/qrx/releases/download/v0.4.3/qrx-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 1fd948efeb21e0a354b349ff20a60f64db25ecc7062156b423247d3e2d9faedf
 
 pkgname = qrx-bin
