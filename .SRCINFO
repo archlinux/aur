@@ -1,0 +1,34 @@
+pkgbase = respite-git
+	pkgdesc = A GTK3 media player (fork of Parole, Xfce deps removed) - git version
+	pkgver = 1.0.0.r0.g141648b
+	pkgrel = 1
+	url = https://github.com/Twilight0/respite
+	arch = x86_64
+	arch = i686
+	license = GPL-2.0-or-later
+	makedepends = meson
+	makedepends = gstreamer
+	makedepends = gst-plugins-base
+	makedepends = gst-plugins-good
+	makedepends = gtk3
+	makedepends = taglib
+	makedepends = libnotify
+	makedepends = xapp
+	depends = dbus-glib
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gtk3
+	depends = taglib
+	depends = xapp
+	optdepends = libnotify: desktop notifications plugin
+	optdepends = gst-plugins-ugly: additional codec support
+	optdepends = gst-plugins-bad: additional codec support
+	optdepends = gst-libav: ffmpeg/libav decoder support
+	provides = respite
+	conflicts = parole
+	conflicts = respite
+	source = git+https://github.com/Twilight0/respite.git#commit=141648b
+	sha256sums = SKIP
+
+pkgname = respite-git
