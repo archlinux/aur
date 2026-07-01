@@ -6,6 +6,7 @@ pkgdesc="dev tools, env vars, task runner"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jdx/mise"
 license=('MIT')
+options=('!debug')
 optdepends=(
     'bash-completion: bash completion support'
 )
