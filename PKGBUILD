@@ -3,7 +3,7 @@
 pkgname=pricehist
 pkgdesc='A command-line tool for fetching and formatting historical price data, with
 support for multiple data sources and output formats.'
-pkgver=1.4.14
+pkgver=1.4.16
 pkgrel=1
 url='https://gitlab.com/chrisberkhout/pricehist'
 license=('MIT')
@@ -16,7 +16,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/${pkgname//-/_}-$pkgver.tar.gz"
 )
 sha256sums=(
-  '64c398bae479fcf08a89dd8b9e6429539bf0cc7fe605617c6a93153eeb92ce84'
+  '63fba065ba67c6829c32796fae2cc34fe068db04a539df8c8c5329ef59f99395'
 )
 
 build() {
