@@ -14,6 +14,6 @@ pkgbase = tiktok
 	depends = libxss
 	depends = git
 	source = https://gitlab.com/linuxbombay/tiktok/application/-/archive/1.0.0/application-1.0.0.tar.bz2
-	sha256sums = 0f015533ec87149dff9a9fc3c8bce2f16fd09d031761871b32734f7aabb5ee04
+	sha256sums = b68b56dad3cdfe0210c1e4f378db3b81a7c2d08a2bf97199b62a00812c6d5f50
 
 pkgname = tiktok
