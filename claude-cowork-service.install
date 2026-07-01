@@ -1,4 +1,37 @@
+_deprecation_notice() {
+  cat <<'EOF'
+
+  ============================================================================
+  claude-cowork-service is DEPRECATED and UNMAINTAINED.
+
+  Cowork on Linux is now handled by the actively-maintained claude-desktop-bin,
+  which patches Anthropic's official Claude Desktop Linux build and uses its
+  built-in Cowork sandbox. This standalone daemon is no longer needed and
+  receives no further updates.
+
+  Migration:
+    1. Stop + disable the service:
+         systemctl --user disable --now claude-cowork
+    2. Remove this package:
+         yay -R claude-cowork-service     (or: pacman -R claude-cowork-service)
+    3. Install / update the maintained frontend, and check its docs for the
+       optional QEMU dependencies:
+         yay -S claude-desktop-bin
+         https://github.com/patrickjaja/claude-desktop-bin#arch-linux--manjaro-aur
+
+  This is the final release of claude-cowork-service. Thank you for using it.
+  ============================================================================
+
+EOF
+}
+
+post_install() {
+  _deprecation_notice
+}
+
 post_upgrade() {
+  _deprecation_notice
+
   # OpenRC: restart the system service if it's currently running.
   if command -v rc-service >/dev/null 2>&1 \
       && [ -e /run/openrc/started/claude-cowork ]; then
