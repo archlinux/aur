@@ -10,7 +10,7 @@ license=('MIT')
 depends=('libnotify')
 makedepends=('go' 'git')
 source=("$pkgname::git+https://github.com/Mohabdo21/arch-rss-notify.git#tag=v$pkgver")
-sha256sums=('4e9c3defa7afaf17ee95f5c04e479deb8e03bd44384dd1768c725a346ce8270c')
+sha256sums=('d681232e317f7fe0efbae8ccb0d4fb0c9b8b185e8c0f97351d0ecda5a68930c7')
 
 build() {
 	cd "$pkgname"
