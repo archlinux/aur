@@ -1,5 +1,5 @@
 pkgname=augenblick
-pkgver=0.2.11
+pkgver=0.2.12
 pkgrel=1
 pkgdesc="Fullscreen eye-blink overlay for X11 and Wayland"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ depends=('glibc' 'libxcb')
 makedepends=('rust')
 
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/x71c9/$pkgname/tar.gz/refs/tags/v$pkgver")
-sha256sums=("59aeb53eb202be413d7d32ccfec78497e5de1cbbd274c482e1c1c784a8f21c14")
+sha256sums=("641cf0f89bcda49d42c0b986e98153101f078d477ed596daafc7a376c518a7cf")
 
 prepare() {
   cd "$pkgname-$pkgver"
