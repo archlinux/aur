@@ -1,0 +1,16 @@
+pkgbase = emailctl-git
+	pkgdesc = Rust email CLI with Gmail OAuth and generic IMAP/SMTP support
+	pkgver = 0.1.2.r1.gb415c44
+	pkgrel = 1
+	url = https://github.com/LIghtJUNction/emailctl
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = openssl
+	options = !lto
+	source = emailctl::git+https://github.com/LIghtJUNction/emailctl?signed
+	validpgpkeys = EB21B83AB1E982DF66F08387A67178405F7736FD
+	sha256sums = SKIP
+
+pkgname = emailctl-git
