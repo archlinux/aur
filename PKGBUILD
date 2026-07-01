@@ -1,7 +1,7 @@
-pkgname=qobine
+ pkgname=qobine
 pkgver="2026.07.01"
 _release_version="2026-07-01"
-pkgrel=1
+pkgrel=2
 pkgdesc="High resolution audio player backed by Qobuz. Formaly known as qobuz-player"
 arch=('x86_64')
 url="https://github.com/SofusA/qobine"
@@ -42,5 +42,10 @@ build() {
 
 package() {
     cd ${pkgname}-${_release_version}
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/qobuz-player"
+
+    # Install the binaries
+    install -Dm0755 -t "$pkgdir/usr/bin/" target/release/{qobine-gtk,qobine-tui,qobine-web,qobine-rfid}
+    # Disconnect binaries
+    install -Dm0755 -t "$pkgdir/usr/bin/" target/release/{qobine-connect,disconnect-module,disconnect-server}
+
 }
