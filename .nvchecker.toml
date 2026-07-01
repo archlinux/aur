@@ -1,0 +1,4 @@
+[python-jproperties]
+source = "git"
+git = "https://github.com/Tblue/python-jproperties.git"
+prefix = "v"
