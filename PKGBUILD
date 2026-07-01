@@ -2,7 +2,7 @@
 
 pkgname=minimax-hub-bin
 _pkgname=minimax-hub
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=6
 pkgdesc='MiniMax Hub desktop app repackaged from the official macOS release'
 arch=('x86_64' 'aarch64')
@@ -52,8 +52,8 @@ sha256sums=('4e8ac22b373c6290dbd80576df9d9bec4203d1aafc4fbbbdb33e556966de5e04'
             '9d78784df2f0854fdf08d436c22501adff17068de77ae584254045e51c041490'
             '20bcf5b029a2b88bd1027207f287e44d87586d2dac6e82ac66174141f9fb928b'
             'a95f4a1bb7d5ba464ca8503549fa98a6d6bdfc667af0a9265f6b01416f85de96')
-sha256sums_x86_64=('e881dcfe8b37d2052f533d1fc54584a96e51fd7ee34820a70b69a2091fe4dd37')
-sha256sums_aarch64=('dc9c153ae3d6c29e4c95a733ee6c8348644f313e694ed2480dc34c32542d8422')
+sha256sums_x86_64=('81c69d1042587112e6d579d84a0dedd19436061b2c9557b2698c9abd85a146c0')
+sha256sums_aarch64=('23422cb03bf9bdccaacdbaaacee0010fdda1003b933bdf370875e9f0e2e83cb0')
 
 _electron_major=39
 
