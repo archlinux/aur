@@ -15,14 +15,14 @@ sha512sums=()
 
 prepare() {
   local tag="v${pkgver}"
-  local asset="zejtron-linux-amd64-gnu.tar.gz"
+  local asset="zejtron-bin-${tag}-linux-amd64-gnu"
 
   local base_url="https://github.com/oxyzenQ/zejtron/releases/download/${tag}"
-  curl -fL -o "${asset}" "${base_url}/${asset}"
-  curl -fL -o "${asset}.sha512sum" "${base_url}/${asset}.sha512sum"
-  sha512sum --check "${asset}.sha512sum"
+  curl -fL -o "${asset}.tar.gz" "${base_url}/${asset}.tar.gz"
+  curl -fL -o "${asset}.tar.gz.sha512sum" "${base_url}/${asset}.tar.gz.sha512sum"
+  sha512sum --check "${asset}.tar.gz.sha512sum"
   mkdir -p "${srcdir}/archive"
-  tar -xzf "${asset}" -C "${srcdir}/archive"
+  tar -xzf "${asset}.tar.gz" -C "${srcdir}/archive"
 }
 
 package() {
