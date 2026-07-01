@@ -1,4 +1,4 @@
-# Maintainer: Ryan <aur@example.invalid>
+# Maintainer: RyanTheTide <ryanthetide@gmail.com>
 
 pkgname=claude
 _pkgname=claude-desktop
