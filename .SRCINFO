@@ -1,6 +1,6 @@
 pkgbase = smtprelay
 	pkgdesc = Simple Golang SMTP relay/proxy server
-	pkgver = 1.13.3
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://github.com/decke/smtprelay
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = smtprelay
 	depends = glibc
 	options = strip
 	options = buildflags
-	source = smtprelay-1.13.3.tar.gz::https://github.com/decke/smtprelay/archive/refs/tags/v1.13.3.tar.gz
-	sha256sums = d6e2e3ea4f1225348f3b53fe324e8ffa6db69b122ed1616a51c2854392ea9a02
+	source = smtprelay-1.14.0.tar.gz::https://github.com/decke/smtprelay/archive/refs/tags/v1.14.0.tar.gz
+	sha256sums = c5a615c7d6391bf3cd2f4f83845ced60c92cd804119e1d6c1f7b2c8511306d76
 
 pkgname = smtprelay
