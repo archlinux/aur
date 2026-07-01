@@ -9,7 +9,7 @@ pkgname=('asf-plugin-steamtokendumper'
          'asf-plugin-periodicgc'
          'asf-plugin-signinwithsteam'
          'asf')
-pkgver="6.3.6.1"
+pkgver="6.3.7.0"
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
@@ -23,7 +23,7 @@ source=("asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=${pkgve
         "ASF.json"
         "NLog.config")
 validpgpkeys=('1268A81616AFDC20C55779ED6B138B4C64555AEA')
-sha256sums=('efba4cec92d963a3f7652629c04c02fd2a2443cb2d1824bb4bb8f8355f480c39'
+sha256sums=('b6f4178ea6ce990dc1603606d55eece81d7a1307eeea4a2060dbfb5fb4b9fa18'
             '1728ccf7d02974b779ec794df400fec57b9a98869d319bea7f98d6c1ce4a9d3e'
             'ec82f54a9b362e2305a775eb1473522636ab724f18d846828410c39344801db4'
             'c300c5ce63c0237d7558b5b303159b8e2a8e5323f581cc8435dd2a6f1ead5332'
