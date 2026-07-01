@@ -1,0 +1,31 @@
+pkgbase = arch-install-manager-git
+	pkgdesc = A Linux Mint inspired GTK4-based install and update manager for Arch Linux (latest git)
+	pkgver = 0.0.1.r5.g38adca3
+	pkgrel = 1
+	url = https://github.com/destbg/arch-install-manager
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = vte4
+	depends = gtksourceview5
+	depends = polkit
+	depends = systemd
+	depends = pacman
+	depends = pacman-contrib
+	depends = curl
+	depends = git
+	depends = base-devel
+	optdepends = flatpak: Flatpak package support
+	optdepends = meld: visual diff editor for pacnew files
+	optdepends = timeshift: pre-update system snapshots
+	optdepends = snapper: pre-update Btrfs snapshots
+	optdepends = aur-scanner: scan AUR packages for security issues
+	optdepends = rate-mirrors: refresh and rank the pacman mirror list
+	provides = arch-install-manager
+	conflicts = arch-install-manager
+	source = arch-install-manager-git::git+https://github.com/destbg/arch-install-manager.git#commit=38adca36708dd348ce1cf245edb74b44c6459b21
+	sha256sums = SKIP
+
+pkgname = arch-install-manager-git
