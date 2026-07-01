@@ -1,16 +1,13 @@
 pkgbase = openwincontrols-git
-	pkgdesc = GPD WinControls replacement
-	pkgver = 1.0
+	pkgver = 1.0.46c2fb9
 	pkgrel = 2
 	url = https://github.com/OpenWinControls/OpenWinControls
 	install = owc.install
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = cmake
 	depends = qt6-base
-	provides = openwincontrols
-	conflicts = openwincontrols
 	source = git+https://github.com/OpenWinControls/OpenWinControls.git
 	source = owc.ico
 	source = openwincontrols.desktop
@@ -21,3 +18,13 @@ pkgbase = openwincontrols-git
 	sha256sums = 8a66dcc6eac7274eaddbb9d3096bf02e3304896423fd165f205247fb09f7a07f
 
 pkgname = openwincontrols-git
+	pkgdesc = Open source GPD WinControls replacement
+	depends = qt6-base
+	depends = openwincontrols-rules
+	provides = openwincontrols-git
+	conflicts = openwincontrols-git
+
+pkgname = openwincontrols-rules
+	pkgdesc = GPD controller udev rules to allow non-root access
+	provides = openwincontrols-rules
+	conflicts = openwincontrols-rules

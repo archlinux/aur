@@ -1,16 +1,15 @@
 # Maintainer: kylon
-pkgname=openwincontrols-git
-pkgver=1.0
+pkgbase="openwincontrols-git"
+_rulespkgbase="openwincontrols-rules"
+pkgname=("$pkgbase" "$_rulespkgbase")
+pkgver=1.0.46c2fb9
 _version=1.0
 pkgrel=2
-pkgdesc="GPD WinControls replacement"
 url="https://github.com/OpenWinControls/OpenWinControls"
 arch=("x86_64")
-license=("GPL3")
+license=("GPL-3.0-or-later")
 depends=("qt6-base")
 makedepends=("git" "cmake")
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
 install="owc.install"
 source=(
   "git+https://github.com/OpenWinControls/OpenWinControls.git"
@@ -37,10 +36,21 @@ build() {
   cmake --build build
 }
 
-package() {
+package_openwincontrols-git() {
+  pkgdesc="Open source GPD WinControls replacement"
+  provides=("$pkgbase")
+  conflicts=("$pkgbase")
+  depends+=("$_rulespkgbase")
+
   install -Dm755 "$srcdir/OpenWinControls/build/OpenWinControls" "$pkgdir/usr/bin/OpenWinControls"
   install -Dm644 owc.ico "$pkgdir/usr/share/icons/hicolor/256x256/apps/owc.ico"
   install -Dm644 openwincontrols.desktop "$pkgdir/usr/share/applications/openwincontrols.desktop"
-  install -Dm644 70-gpd-controller.rules "$pkgdir/etc/udev/rules.d/70-gpd-controller.rules"
 }
 
+package_openwincontrols-rules() {
+  pkgdesc="GPD controller udev rules to allow non-root access"
+  provides=("$_rulespkgbase")
+  conflicts=("$_rulespkgbase")
+
+  install -Dm644 70-gpd-controller.rules "$pkgdir/etc/udev/rules.d/70-gpd-controller.rules"
+}
