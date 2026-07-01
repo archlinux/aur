@@ -1,6 +1,6 @@
 # Maintainer: Lumina Nao <luminanao at duck.com>
 pkgname=llama-launcher
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="Helper scripts for building llama.cpp and running llama-server with per-model configs, launch history, benchmarking, and SSH tunneling"
 arch=(any)
