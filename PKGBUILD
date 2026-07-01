@@ -55,7 +55,7 @@ depends=(
   'lib32-libraw1394'
   'lib32-librsvg'
 #  'lib32-rubberband'
-#  'lib32-libsoxr'
+  'lib32-libsoxr'
 #  'lib32-libssh'
   'lib32-libtheora'
   'lib32-libva'
@@ -201,6 +201,7 @@ build() {
     --enable-librav1e \
     --enable-librsvg \
     --enable-libsnappy \
+    --enable-libsoxr \
     --enable-libspeex \
     --enable-libsrt \
     --enable-libtheora \
@@ -231,7 +232,6 @@ build() {
 #    --enable-libjxl \
 #    --enable-libopenh264 \
 #    --enable-librubberband \
-#    --enable-libsoxr \
 #    --enable-libssh \
 #    --enable-libsvtav1 \
 #    --enable-libuavs3d \
