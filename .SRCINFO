@@ -1,10 +1,12 @@
 pkgbase = python-pysilero-vad
 	pkgdesc = voice activity detector using silero-vad
 	pkgver = 3.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rhasspy/pysilero-vad
 	arch = any
 	license = MIT
+	makedepends = cmake
+	makedepends = python-scikit-build-core
 	makedepends = python-setuptools
 	depends = python
 	source = https://github.com/rhasspy/pysilero-vad/archive/refs/tags/v3.3.1.tar.gz
