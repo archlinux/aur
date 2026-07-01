@@ -16,7 +16,7 @@ provides=('geolibre')
 conflicts=('geolibre')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::https://github.com/opengeos/GeoLibre/releases/download/v${pkgver}/GeoLibre.Desktop_${pkgver}_amd64.deb")
-sha256sums=('35b5f725fbd9a28e43ad364cd57dd65ab289b885ca3f2112f5bfba113ccd06e4')
+sha256sums=('7daa695a2622aa4580def5a3b85e5300a45f84b29171cdd06fd7142fd2c0a984')
 noextract=("${pkgname}-${pkgver}.deb")
 
 package() {
