@@ -1,60 +1,44 @@
 # Maintainer: Oktana Coop <team@oktana.dev>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+
 pkgname=v2-bin
 _pkgname=v2
-pkgver=0.15.0
+pkgver=0.15.2
 pkgrel=1
-pkgdesc="A local-first rich text editor with Git-style version control, true privacy, and complete control over your data"
-arch=('x86_64' 'aarch64')
-url="https://oktana.dev"
-license=('AGPL3')
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'libsecret' 'libasound.so')
+pkgdesc='A local-first, privacy oriented rich text editor with Git-style version control'
+arch=(x86_64 aarch64)
+url=https://v2editor.com
+_url="https://github.com/oktana-coop/$_pkgname"
+license=(AGPL-3.0-only)
+depends=(glibc # libc.so
+         # libpthread.so
+         wasi-libc # libdl.so
+         zlib libz.so)
 optdepends=('libappindicator-gtk3: tray icon support')
-provides=('v2')
-conflicts=('v2')
-options=('!strip' '!debug')
-source_x86_64=("v2-${pkgver}.AppImage::https://github.com/oktana-coop/v2/releases/download/v${pkgver}/v2-${pkgver}-x86_64.AppImage")
-source_aarch64=("v2-${pkgver}.AppImage::https://github.com/oktana-coop/v2/releases/download/v${pkgver}/v2-${pkgver}-arm64.AppImage")
-sha256sums_x86_64=('e7d8fed2ef77564a5152ed61c0cb466ae7e597d8423913d9be9ebce16a130950')
-sha256sums_aarch64=('33cadd2c73cde9e1184a8b187775a60b1a1ce5c7a7fe9b23c4133595821c9d73')
+provides=("v2=$pkgver")
+conflicts=(v2)
+options=(!strip !debug)
+source_x86_64=("$_url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64.AppImage")
+source_aarch64=("$_url/releases/download/v$pkgver/$_pkgname-$pkgver-arm64.AppImage")
+sha256sums_x86_64=('856e1c0aca12a2500ae41103cf8905f40e9d48efcc25d0b0b6f448ec0cde5fbe')
+sha256sums_aarch64=('f94c588573000b19526e3a61bd47dbfb19aff8ed870a5780bc3bb1cffa3b9b46')
+
+_source="source_$CARCH"
+_appimage=${!_source[0]##*/}
 
 prepare() {
-    _appimage="v2-${pkgver}.AppImage"
-    chmod +x "${srcdir}/${_appimage}"
-    "${srcdir}/${_appimage}" --appimage-extract
+	chmod +x "$_appimage"
+	"./$_appimage" --appimage-extract
+	sed -e "/^Exec/s/=.*/=$_pkgname/" squashfs-root/v2.desktop > "$_pkgname.desktop"
 }
 
 package() {
-    # Install app to /opt
-    install -dm755 "${pkgdir}/opt/${pkgname}"
-    cp -r "${srcdir}/squashfs-root/." "${pkgdir}/opt/${pkgname}/"
-
-    # Fix permissions
-    chmod 755 "${pkgdir}/opt/${pkgname}"
-    find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} \;
-    find "${pkgdir}/opt/${pkgname}" -type f -exec chmod 644 {} \;
-    chmod 755 "${pkgdir}/opt/${pkgname}/${_pkgname}"
-    chmod 755 "${pkgdir}/opt/${pkgname}/chrome-sandbox" 2>/dev/null || true
-
-    # Create launcher script
-    install -dm755 "${pkgdir}/usr/bin"
-    cat > "${pkgdir}/usr/bin/${_pkgname}" << EOF
-#!/bin/bash
-exec /opt/${pkgname}/${_pkgname} "\$@"
-EOF
-    chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
-
-    # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" \
-        "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-
-    # Icons
-    for size in 16 32 48 64 128 256 512; do
-        if [[ -f "${srcdir}/squashfs-root/usr/share/icons/hicolor/${size}x${size}/apps/${_pkgname}.png" ]]; then
-            install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${size}x${size}/apps/${_pkgname}.png" \
-                "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${_pkgname}.png"
-        fi
-    done
-
-    # Fix desktop file paths
-    sed -i "s|Exec=.*|Exec=/usr/bin/${_pkgname} %U|g" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+	install -Dm0755 -t "$pkgdir/opt/$_pkgname/" $_appimage 
+	install -Dm0755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<- EOF
+		#!/usr/bin/env sh
+		exec "/opt/$_pkgname/$_appimage" "\$@"
+	EOF
+	install -Dm0644 -t "$pkgdir/usr/share/applications/" "$_pkgname.desktop"
+	local icon_path=usr/share/icons/hicolor/512x512/apps
+	install -Dm0644 -t "$pkgdir/$icon_path/" "squashfs-root/$icon_path/$_pkgname.png"
 }
