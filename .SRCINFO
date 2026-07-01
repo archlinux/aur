@@ -1,6 +1,6 @@
 pkgbase = xschem-git
 	pkgdesc = Schematic editor VLSI/ASIC/analog custom designs - Git Version
-	pkgver = 3.4.5.r147.gce99d09
+	pkgver = 3.4.7.r376.gc8b26a1
 	pkgrel = 1
 	url = http://github.com/StefanSchippers/xschem
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = xschem-git
 	depends = tk
 	depends = libxpm
 	depends = gawk
-	depends = libjpeg
+	depends = libjpeg.so
 	conflicts = xschem
 	source = xschem::git+http://github.com/StefanSchippers/xschem#branch=master
 	sha256sums = SKIP

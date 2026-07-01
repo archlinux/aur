@@ -5,7 +5,7 @@
 _pkgname="xschem"
 pkgname="${_pkgname}-git"
 
-pkgver=3.4.5.r147.gce99d09
+pkgver=3.4.7.r376.gc8b26a1
 pkgrel=1
 pkgdesc="Schematic editor VLSI/ASIC/analog custom designs - Git Version"
 arch=('x86_64')
@@ -23,7 +23,7 @@ depends=(
     'tk' 
     'libxpm' 
     'gawk'
-    'libjpeg'
+    'libjpeg.so'
 )
 makedepends=(
     'git'
