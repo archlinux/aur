@@ -1,7 +1,7 @@
 # Maintainer: Saeed Vaziry <mr.saeedvaziry@gmail.com>
 pkgname=skillsdash-bin
 _pkgname=skillsdash
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Cross-platform TUI for managing AI skills across Claude and Agents providers"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ options=('!strip')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('5df323b3de5a2d9647df4d66d1fbe91a61801f9a4627282f45821f129d3f80cb')
-sha256sums_aarch64=('87affd3a81c5e3f18da4fddd99c1df78d8d4c10900b2aaa6c5111641bc0deaef')
+sha256sums_x86_64=('2c4b9c6ff9f673242326eb4e62bcb3010c8f16e5de7ceca5a3ea88813c1f9d6a')
+sha256sums_aarch64=('30d5e0c5528299d38681f21a2964bf537fcb68bd716c80eb3df5984351f55b83')
 
 _srcdir() {
   case "$CARCH" in
