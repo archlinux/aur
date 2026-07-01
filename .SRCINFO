@@ -1,6 +1,6 @@
 pkgbase = gesturecontrol
 	pkgdesc = Hand gesture recognition: webcam → MediaPipe → D-Bus signals → configurable actions
-	pkgver = r23.b7a97c0
+	pkgver = r24.4620028
 	pkgrel = 2
 	url = https://github.com/Mizuna737/gesturecontrol
 	install = gesturecontrol.install
