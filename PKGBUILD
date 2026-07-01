@@ -1,11 +1,13 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=serverstatus-git
-pkgname=(serverstatus-git
+pkgname=(
+    serverstatus-git
     serverstatus-clients-linux-git
     serverstatus-clients-psutil-git
-    serverstatus-server-git)
-pkgver=1.1.7.r6.g6552959
+    serverstatus-server-git
+)
+pkgver=1.1.8.r0.ge0aae47
 pkgrel=1
 groups=()
 pkgdesc="云探针、多服务器探针、云监控、多服务器云监控"
@@ -16,16 +18,14 @@ provides=(${pkgbase%-git})
 conflicts=(${pkgbase%-git})
 depends=(
     curl
-    gcc-libs
     glibc
+    libgcc
+    libstdc++
     python
     python-requests
     python-psutil
-    python-prettytable
     python-queuelib
-    openssl
-    systemd
-    python)
+)
 makedepends=(git)
 optdepends=(python-psutil)
 source=("${pkgbase}::git+${url}.git")
@@ -53,7 +53,8 @@ package_serverstatus-git() {
     depends=(
         serverstatus-clients-linux-git
         serverstatus-clients-psutil-git
-        serverstatus-server-git)
+        serverstatus-server-git
+    )
 }
 
 package_serverstatus-clients-linux-git() {
@@ -61,7 +62,8 @@ package_serverstatus-clients-linux-git() {
     depends=(
         python
         python-queuelib
-        systemd)
+        systemd
+    )
     arch=(any)
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
@@ -87,7 +89,8 @@ package_serverstatus-clients-psutil-git() {
         python
         python-psutil
         python-queuelib
-        systemd)
+        systemd
+    )
     arch=(any)
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
@@ -111,13 +114,14 @@ package_serverstatus-server-git() {
     pkgdesc+="-- 服务端"
     depends=(
         curl
-        gcc-libs
         glibc
+        libgcc
+        libstdc++
         python
-        python-prettytable
         python-requests
         openssl
-        systemd)
+        systemd
+    )
     arch=($CARCH)
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
