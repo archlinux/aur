@@ -1,6 +1,6 @@
 pkgbase = itgmania
 	pkgdesc = A fork of stepmania 5.1, improved for the post-ITG community, release branch
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://www.itgmania.com/
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = itgmania
 	depends = alsa-lib
 	depends = libpulse
 	depends = libmad
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = libusb-compat
 	depends = libva
 	depends = bzip2
