@@ -4,7 +4,7 @@
 # pkgver is set to 5.0.0+dev is replaced in the update-aur.sh script
 
 pkgname=system-bridge-git
-pkgver=5.6.2.r5845.g80b2895
+pkgver=5.6.2.r5848.g4e10fbd
 pkgrel=1
 pkgdesc="A bridge for your systems (git version)"
 makedepends=('git' 'mise')
@@ -34,8 +34,8 @@ build() {
   mise trust -a
   mise install
   mise exec -C web-client -- bun install --frozen-lockfile
-  mise run build_web_client
-  mise run build_tui
+  mise run build:web-client
+  mise run build:tui
   local version
   version="$(cd "$srcdir/$pkgname" && git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)")"
   mise exec -- go build -v -ldflags="-X 'github.com/timmo001/system-bridge/version.Version=${version}'" -o "system-bridge" .
