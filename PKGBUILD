@@ -3,7 +3,7 @@
 
 _pkgname='Breeze-Plus'
 pkgname=${_pkgname@L}
-pkgver=6.26.0
+pkgver=6.28.0
 pkgrel=1
 pkgdesc="Breeze Styled extra icon theme"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/mjkim0727/breeze-plus"
 license=('LGPL-2.1-only')
 depends=('breeze')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mjkim0727/breeze-plus/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e212f851fba3adf1287e7325e775eafe7f886f04b39b6185d4b3e9bf4f41829e')
+sha256sums=('2462371450507e224aa04404666919e16dcebc4ef120b1349f21cef316d21a73')
 
 package() {
     install -d "$pkgdir/usr/share/icons"
