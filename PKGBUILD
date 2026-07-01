@@ -1,6 +1,6 @@
 # Maintainer: VBen <devel@velmeden.info>
 pkgname=loxone-config-bin
-pkgver=17.0.3.31
+pkgver=17.1.6.30
 pkgrel=1
 pkgdesc="Loxone Config - home automation configuration software (Wine)"
 arch=('x86_64')
@@ -10,8 +10,8 @@ depends=('wine' 'wine-mono')
 makedepends=('xorg-server-xvfb' 'icoutils')
 options=('!strip' 'emptydirs')
 
-# Version format in download URL: 17.0.3.31 -> 17000331 (each part zero-padded to 2 digits)
-_urlver=17000331
+# Version format in download URL: 17.1.6.30 -> 17000331 (each part zero-padded to 2 digits)
+_urlver=17010630
 
 source=(
     "LoxoneConfigSetup_${_urlver}.zip::https://updatefiles.loxone.com/LoxConfig/LoxoneConfigSetup_${_urlver}.zip"
@@ -20,13 +20,11 @@ source=(
     "loxone-monitor.sh"
     "loxone-monitor.desktop"
 )
-sha256sums=(
-    '7a254cf4e9909dc865152c9d76cd92abd633e7c73f7f2906d64363e5b05bcc76'
-    '9005ac2866496b9d1dbc85887e81e59a14e4b4a9a3e0530ab2049eedb492f1c4'
-    '3ff9c4f99a924d74e3240dba49fbdce737113e1072f9f7aadf6d9fe6c76260b1'
-    '0deb0cee30573b7f4492329946eeb0159c9c48a5808546789af4b8123986ac63'
-    'f9524c4977cbb05e3144c7c4c5d8f4914778a6998bdde5f243ddbe298980786c'
-)
+sha256sums=('a8d8a32ddc11ccae2988a62333beaf5997d9ba518967a69a2d659cc7f02f3498'
+            '9005ac2866496b9d1dbc85887e81e59a14e4b4a9a3e0530ab2049eedb492f1c4'
+            '3ff9c4f99a924d74e3240dba49fbdce737113e1072f9f7aadf6d9fe6c76260b1'
+            '0deb0cee30573b7f4492329946eeb0159c9c48a5808546789af4b8123986ac63'
+            'f9524c4977cbb05e3144c7c4c5d8f4914778a6998bdde5f243ddbe298980786c')
 
 build() {
     export WINEPREFIX="${srcdir}/wine-prefix"
