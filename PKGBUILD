@@ -27,10 +27,10 @@ source_aarch64=("${pkgname}_${pkgver}_arm64.tar.gz::https://github.com/docker/sc
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/docker/scout-cli/releases/download/v${pkgver}/docker-scout_${pkgver}_linux_amd64.tar.gz")
 
 sha256sums_x86_64=(
-  49a6b18768f0ba9cb90e6aafd76c887fddad34c0124ca7ee81e2b422cd860b07
+  a3c6c38741153a8477be61eccc9d48490745496bddbd0c5e0fc301c334fdd734
 )
 sha256sums_aarch64=(
-  c1bd1fc52c3a41cec262070b52c700b66743d99c15d604f6105d8878676622aa
+  afab5324848098de9838b64f862979751b77e5fcf06f1840b87c0b99795e52a4
 )
 
 package() {
