@@ -7,7 +7,7 @@
 _pkgbasename=ffmpeg
 pkgname=("lib32-$_pkgbasename")
 pkgver=8.1.2
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -217,7 +217,8 @@ build() {
     --enable-shared \
     --enable-version3 \
     --enable-vulkan \
-    --disable-doc
+    --disable-doc \
+    --disable-decoder=magicyuv # pixelsmash
 
 ## not available under 32 bit
 #    --enable-avisynth \
