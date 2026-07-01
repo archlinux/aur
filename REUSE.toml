@@ -21,5 +21,5 @@ path = [
     "*.desktop",
     "*.hook",
 ]
-SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-FileCopyrightText = "Bjorn Neergaard"
 SPDX-License-Identifier = "0BSD"
