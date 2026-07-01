@@ -2,7 +2,7 @@
 # Maintainer: Sebastien Rousseau
 
 pkgname='corralctl-bin'
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc='Automatically clone and organise GitHub repositories by visibility and language.'
 url='https://github.com/sebastienrousseau/corral'
@@ -12,10 +12,10 @@ provides=('corralctl')
 conflicts=('corralctl')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/sebastienrousseau/corral/releases/download/v${pkgver}/corralctl_Linux_arm64.tar.gz")
-sha256sums_aarch64=('3dc8cd7f088ac06fa640dee0d8b7d77c9a2b9da10ec5ac7da0b9c66e23cdb2cc')
+sha256sums_aarch64=('75e12d9bf2215ebf19f44a5cee37555c00c051e9be2cc8b25bc48baa6e993c9e')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/sebastienrousseau/corral/releases/download/v${pkgver}/corralctl_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('d19a01996852f0bb619afbbb980e0677bbca89da900d1d1e9d0ac135b3674e19')
+sha256sums_x86_64=('99f711d99027952a40451b3cdd168349e8ff6f2717cc5e942bd554f04646d85d')
 
 package() {
   # bin
