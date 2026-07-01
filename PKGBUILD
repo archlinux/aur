@@ -1,6 +1,6 @@
 # Maintainer: Mac Mansfield-Parisi <maclean dot mansfield dot parisi at gmail dot com>
 pkgname=pelicanplatform-bin
-pkgver=7.24.0
+pkgver=7.25.0
 pkgrel=1
 pkgdesc="The command line client for the Pelican Platform data federation system"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 
 # different Pelican versions use the same name tarball - screws up srcdir
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PelicanPlatform/pelican/releases/download/v${pkgver}/pelican_Linux_x86_64.tar.gz")
-sha256sums=("2857c5666545fd69e02892f0ff002e31488ffe17db9b2205aa1780357eded2ba")
+sha256sums=("30d1cdbb5d18ff7dbb80e21f805666601d81a14579c5f10d6a153f80b818122a")
 
 # binary is named the same as unrelated utility. sigh.
 conflicts=("pelican")
