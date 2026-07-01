@@ -1,7 +1,7 @@
 # Maintainer: RAprogramm <andrey.rozanov.vl@gmail.com>
 pkgname=twc-rs-bin
 _pkgname=twc-rs
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Fast CLI and interactive TUI dashboard for managing Timeweb Cloud infrastructure"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pk
 # Replace with the real checksum per release, e.g.:
 #   updpkgsums   (from pacman-contrib), or
 #   sha256sum twc-rs-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz
-sha256sums=('584341471ae7ae9ecb46ce3a7e10180b87fa61eeb3f37a5ae7c1a01a905292d6')
+sha256sums=('24125b21e8249954038774163e928a516dd84ca011865cb80337bb0558495c13')
 
 package() {
     install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
