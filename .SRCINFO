@@ -1,6 +1,6 @@
 pkgbase = irkt-bin
 	pkgdesc = Modern terminal IRC client: full IRCv3, SASL/CertFP, inline images (Kitty/iTerm2/Sixel)
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/prietus/irkt
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = irkt-bin
 	provides = irkt
 	conflicts = irkt
 	conflicts = irkt-git
-	source_x86_64 = irkt-0.2.7-x86_64.tar.gz::https://github.com/prietus/irkt/releases/download/v0.2.7/irkt-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 9e3d8d3b430606db176c40d5b084824085e4053427fd9d361c27f7fe3e8831ce
-	source_aarch64 = irkt-0.2.7-aarch64.tar.gz::https://github.com/prietus/irkt/releases/download/v0.2.7/irkt-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 634c2fcf5c0b42ba380ba829ec7f28523991a224ac6d24212dcbb6ed5ec91406
+	source_x86_64 = irkt-0.2.8-x86_64.tar.gz::https://github.com/prietus/irkt/releases/download/v0.2.8/irkt-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 3c9a7f512781f96bfba62e6da3b3406b353fc2713f0bed9d442e98a2898f341c
+	source_aarch64 = irkt-0.2.8-aarch64.tar.gz::https://github.com/prietus/irkt/releases/download/v0.2.8/irkt-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = adc5336e34a32e9462a8fd1958a47e22757c119a6b2b37f1a8de0f1d3b4fb75b
 
 pkgname = irkt-bin
