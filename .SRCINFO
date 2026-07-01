@@ -1,16 +1,16 @@
 pkgbase = pomogoro-bin
 	pkgdesc = Simple Pomodoro timer
-	pkgver = 0.0.4
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/bemoty/pomogoro
 	license = MIT
 	conflicts = pomogoro
 	provides = pomogoro
 	arch = aarch64
-	source_aarch64 = https://github.com/bemoty/pomogoro/releases/download/v0.0.4/pomogoro_0.0.4_linux_arm64.tar.gz
-	sha256sums_aarch64 = 900bef19d6e0506a238ed65393995d127121dce48df3a608ca1f405775d76e62
+	source_aarch64 = https://github.com/bemoty/pomogoro/releases/download/v0.1.0/pomogoro_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4c09d30a8ccf529ab4f3aa3c0017bf8b42552c82d67137890ea5d3394764b6d5
 	arch = x86_64
-	source_x86_64 = https://github.com/bemoty/pomogoro/releases/download/v0.0.4/pomogoro_0.0.4_linux_amd64.tar.gz
-	sha256sums_x86_64 = 6682efe82d059bddcddefa35a57c2f57b19e717cfceb89861cf6a6a7dea416b8
+	source_x86_64 = https://github.com/bemoty/pomogoro/releases/download/v0.1.0/pomogoro_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3cbaf83a3cba2e3314b7cbfb226e7886d2b2997af8b623074d1ac15fc86763f5
 	
 pkgname = pomogoro-bin
