@@ -1,6 +1,6 @@
 pkgbase = slack-cli
 	pkgdesc = Command-line interface for building apps on the Slack Platform.
-	pkgver = 4.3.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://github.com/slackapi/slack-cli/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = slack-cli
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = slack-cli-4.3.0.tar.gz::https://github.com/slackapi/slack-cli/archive/refs/tags/v4.3.0.tar.gz
-	b2sums = 4593fcee2deb4c193c40be85bdd8aff62cfdad779f0e9b85ebf2565ab88d94732a2781dff415ab7c78966934c4e54ba50d75815aa122b8c8f382cac0c9b32f0f
+	source = slack-cli-4.4.0.tar.gz::https://github.com/slackapi/slack-cli/archive/refs/tags/v4.4.0.tar.gz
+	b2sums = f804d20feba5dae0c7b2a9210b8a5c4c979eec531c49b3beaa1bf140a96fdd3ba026a86d489b47b17a725678ce6a0121041a2f9765a5df8a8b9675d615a2d3e1
 
 pkgname = slack-cli
