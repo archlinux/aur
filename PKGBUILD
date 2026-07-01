@@ -3,11 +3,13 @@
 
 pkgname=emailctl-git
 pkgver=0.1.2.r1.gb415c44
-pkgrel=1
+pkgrel=2
 pkgdesc='Rust email CLI with Gmail OAuth and generic IMAP/SMTP support'
 arch=(x86_64)
 url='https://github.com/LIghtJUNction/emailctl'
 license=('MIT OR Apache-2.0')
+provides=(emailctl)
+conflicts=(emailctl)
 depends=(openssl)
 makedepends=(cargo git)
 options=(!lto)
