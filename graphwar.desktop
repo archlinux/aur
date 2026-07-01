@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=GraphWar
+Comment=Hit your enemies using mathematical functions
+Exec=graphwar
+Icon=soldierMenu
+Categories=Game;

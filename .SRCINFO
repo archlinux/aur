@@ -1,7 +1,7 @@
 pkgbase = graphwar-git
 	pkgdesc = Hit your enemies using mathematical functions
 	pkgver = r37.a1f7175
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/catabriga/graphwar
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,11 @@ pkgbase = graphwar-git
 	depends = java-runtime>=8
 	source = git+https://github.com/catabriga/graphwar.git
 	source = graphwar.sh
+	source = soldierMenu.png
+	source = graphwar.desktop
 	sha256sums = SKIP
 	sha256sums = 5ef4d4a9272ab3cb51be7231f87031d26868f6398e433328e00cb3f3c139da44
+	sha256sums = 71fda7ad0d810ac0788fde3695c48448fc14e2f14077a50c715161801aafd898
+	sha256sums = a48cda7a167ad87a5b37dbe2f38297e7b0a2e667a5d3b164316682e22ffe25d8
 
 pkgname = graphwar-git
