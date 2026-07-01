@@ -3,7 +3,7 @@
 pkgname=rebased-zh-bin
 _pkgname=rebased
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone JetBrains-based Git client with bundled Chinese language pack'
 arch=('x86_64')
 url='https://github.com/DetachHead/rebased'
@@ -35,7 +35,7 @@ package() {
 set -eu
 
 plugin_src="/opt/rebased/plugins/localization-zh/lib/localization-zh.jar"
-plugin_dst="${XDG_DATA_HOME:-${HOME}/.local/share}/JetBrains/IdeaIC1.1/localization-zh.jar"
+plugin_dst="${XDG_DATA_HOME:-${HOME}/.local/share}/detachhead/IdeaIC1.1/localization-zh.jar"
 
 if [ -r "${plugin_src}" ]; then
   mkdir -p "$(dirname "${plugin_dst}")"

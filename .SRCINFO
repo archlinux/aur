@@ -1,7 +1,7 @@
 pkgbase = rebased-zh-bin
 	pkgdesc = Standalone JetBrains-based Git client with bundled Chinese language pack
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DetachHead/rebased
 	arch = x86_64
 	license = Apache-2.0
