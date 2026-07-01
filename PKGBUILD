@@ -6,7 +6,7 @@ _appname=${_gitname//-/}
 pkgname=${_appname}
 pkgdesc="Lightweight cross-platform memory visualizer tool"
 
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -24,7 +24,7 @@ depends=('glibc' 'libgcc')
 makedepends=('rust' 'cargo')
 
 source_x86_64=("${pkgname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums_x86_64=('616138705b469bc8c0692dc3378386b33c85d4cd16f0bcc9d9521098815e8fe5')
+sha256sums_x86_64=('2ad76e1a44e7692cbafec9924083f44f44b2e097c95da2dcd62d62c9a9cafa4d')
 
 prepare() {
 	cd "${srcdir}/${_gitname}-${_gitversion//v/}" || exit
