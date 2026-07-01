@@ -3,13 +3,27 @@
 # AUR Package Repository: https://github.com/patrickjaja/claude-desktop-bin
 
 pkgname=claude-desktop-bin
-pkgver=1.17377.1
+pkgver=1.17377.2
 pkgrel=1
 pkgdesc="Claude Desktop - Linux (unofficial, repackaged from the official Linux .deb)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
 license=('custom:Claude')
-depends=('alsa-lib' 'gtk3' 'nss')
+# Grounded in `objdump -p | grep NEEDED` of every ELF we ship (Electron 42 main
+# binary, chrome_crashpad_handler, bundled virtiofsd, node-pty pty.node) plus
+# the official .deb's control Depends. Notes:
+# - libcap-ng + libseccomp: linked by the BUNDLED virtiofsd the official .deb
+#   ships at resources/virtiofsd (we ship it under resources/locales/).
+# - libsecret: dlopened by Chromium's os_crypt for keyring credential storage
+#   (not in NEEDED, but genuinely required — upstream declares libsecret-1-0).
+# - libnotify, libdrm, xdg-utils, xdg-desktop-portal: mirror upstream Depends.
+# - systemd-libs (libudev) and gcc-libs (libstdc++ for pty.node) are linked but
+#   missing from most third-party Electron PKGBUILDs.
+depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2'
+         'glibc' 'gtk3' 'hicolor-icon-theme' 'libcap-ng' 'libcups' 'libdrm'
+         'libnotify' 'libseccomp' 'libsecret' 'libx11' 'libxcb' 'libxcomposite'
+         'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'mesa'
+         'nspr' 'nss' 'pango' 'systemd-libs' 'xdg-desktop-portal' 'xdg-utils')
 # Cowork's VM deps (QEMU + UEFI firmware + virtiofsd) mirror the official Claude
 # Desktop .deb's Recommends — kept soft (optdepends), so we stay close to
 # upstream and don't force ~400 MB of QEMU on Chat/Code-only installs. The
@@ -33,7 +47,9 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
             'gst-plugin-pipewire: Portal screenshot PipeWire frame capture on GNOME Wayland 46+'
             'gnome-screenshot: Computer Use screenshot fallback (GNOME)'
             'hyprland: Quick Entry cursor positioning on Hyprland Wayland (hyprctl)'
-            'socat: Faster Quick Entry toggle via socket (~2ms vs ~25ms python3 — not required)')
+            'socat: Faster Quick Entry toggle via socket (~2ms vs ~25ms python3 — not required)'
+            'gnome-keyring: credential storage backend for libsecret (KDE users: kwallet works too — upstream Recommends gnome-keyring | kwalletd)'
+            'xdg-desktop-portal-gtk: portal backend for DEs without their own (GNOME/KDE ship xdg-desktop-portal-gnome/-kde) — file dialogs, screen sharing')
 optdepends_x86_64=('qemu-system-x86: Cowork agent workspace VM (needs /dev/kvm + user in kvm group)'
                    'edk2-ovmf: Cowork agent workspace VM UEFI firmware (OVMF)')
 optdepends_aarch64=('qemu-system-aarch64: Cowork agent workspace VM (needs /dev/kvm + user in kvm group)'
@@ -43,11 +59,11 @@ conflicts=('claude-desktop')
 install="$pkgname.install"
 # The pre-patched tarball already contains the official Electron runtime (under
 # electron/) and the patched app (under app/). No separate Electron zip source.
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.17377.1/claude-desktop-1.17377.1-linux.tar.gz")
-sha256sums_x86_64=('6cf14d9ff3d4b7778d5f7cb01f8da610c6024dea44a390ffa5cc976ad8f760dd')
-source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.17377.1/claude-desktop-1.17377.1-linux-aarch64.tar.gz")
-sha256sums_aarch64=('1227b6e90a225417be77a327bbecd9939f96808f4a4bd264a31b506e1cf598c4')
-options=('!strip')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.17377.2/claude-desktop-1.17377.2-linux.tar.gz")
+sha256sums_x86_64=('cc3a7ebc1ed8776c47eceb495fae6ac76d554767bf60e9af6fa5954fcb732678')
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.17377.2/claude-desktop-1.17377.2-linux-aarch64.tar.gz")
+sha256sums_aarch64=('d1e1c1f5047b7b1ddf2d41de422cdb63056f457afd98d153b8bf3c22f446ec6c')
+options=('!strip' '!emptydirs')
 
 package() {
     cd "$srcdir"
@@ -129,6 +145,10 @@ EOF
         install -Dm644 "$srcdir/icons/claude-desktop.png" \
             "$pkgdir/usr/share/icons/hicolor/256x256/apps/claude-desktop.png"
     fi
+
+    # Upstream license notice (the official .deb's usr/share/doc copyright file,
+    # placed at the tarball root by scripts/build-patched-tarball.sh).
+    install -Dm644 "$srcdir/copyright" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim: set ts=4 sw=4 et:
