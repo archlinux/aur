@@ -79,7 +79,7 @@ depends=(
   'lib32-opus'
   'lib32-sdl2'
   'lib32-snappy'
-#  'lib32-sndio'
+  'lib32-sndio'
   'lib32-speex'
   'lib32-srt'
 #  'lib32-svt-av1'
@@ -223,6 +223,7 @@ build() {
     --enable-opencl \
     --enable-opengl \
     --enable-shared \
+    --enable-sndio \
     --enable-version3 \
     --enable-vulkan \
     --disable-doc \
