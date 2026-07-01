@@ -50,14 +50,18 @@ package() {
   sed -i 's,/usr/sbin/,/usr/bin/,g' "$pkgdir"/usr/lib/systemd/system/tlshd.service
   sed -i 's,/usr/sbin/,/usr/bin/,g' "$pkgdir"/usr/share/man/man8/tlshd.8
 
+  mkdir "$pkgdir"/usr/lib/systemd/system/tlshd.service.d
+
   # As packaged, the unit installs into remote-fs.target which is a "client"
   # target (and could, theoretically, be disabled on a server); although it
   # works, it's better to have nfs-server explicitly depend on tlshd.
-  echo 'WantedBy=nfs-server.service' >> "$pkgdir"/usr/lib/systemd/system/tlshd.service
-  echo 'WantedBy=nfsv4-server.service' >> "$pkgdir"/usr/lib/systemd/system/tlshd.service
+  cat > "$pkgdir"/usr/lib/systemd/system/tlshd.service.d/20-nfsserver.conf <<!
+[Install]
+WantedBy=nfs-server.service
+WantedBy=nfsv4-server.service
+!
 
   # Add support for 'systemctl reload'.
-  mkdir "$pkgdir"/usr/lib/systemd/system/tlshd.service.d
   cat > "$pkgdir"/usr/lib/systemd/system/tlshd.service.d/20-reload.conf <<!
 [Service]
 ExecReload=/usr/bin/kill -HUP \$MAINPID
