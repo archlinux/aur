@@ -1,10 +1,12 @@
 # Maintainer: Serge K <arch@phnx47.net>
 # Contributor: Stephen Argent <steve [at] tuxcon [dot] com>
 
+# Auto Upgrade: https://github.com/phnx47/pkgbuilds
+
 _appname=ledger-live-desktop
 _pkgname=ledger-live
 pkgname="${_pkgname}-bin"
-pkgver=4.8.0
+pkgver=4.10.0
 pkgrel=1
 pkgdesc='Maintain your Ledger devices'
 license=('MIT')
@@ -19,7 +21,7 @@ _appimg="ledger-live-desktop-${pkgver}-linux-${arch[0]}.AppImage"
 source=("${_appimg}::https://download.live.ledger.com/${_appimg}"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/LedgerHQ/ledger-live/refs/tags/%40ledgerhq/live-desktop%40${pkgver}/apps/ledger-live-desktop/LICENSE")
 # https://www.ledger.com/ledger-live/lld-signatures
-sha512sums=('a71ffc6b3c7164bd9f05aa080de7ac074b86c430792a70443cd9920f605c51c2d6b73b1582284efc81910206551212d47af3e8689f5ed4d45184c3e05b970c03'
+sha512sums=('eee751eb7a470bb776ca7bfc3e0e47b76561483ef9e080fc7851a35a3fa731f4bf143632674d4d17328d4fda75d62d25134bc90de73d9494cf3365158deab6b9'
             '915edd51fe7732af57f5a4ca8f4c61c4f435de6357e34ed0733cac8d950d80b3a9e513deac0a3672a07f38ff871a57032a221b3aa27edae8e42cc00586fe3318')
 
 prepare() {
