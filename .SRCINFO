@@ -1,13 +1,13 @@
 pkgbase = rssh-git
 	pkgdesc = SSH client built to be an AI ops copilot (latest git)
 	pkgver = 0.0.1.r129.gb670f8c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shihuili1218/rssh
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = git
-	makedepends = cargo
+	makedepends = rust
 	makedepends = npm
 	makedepends = pkgconf
 	depends = gtk3

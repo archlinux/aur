@@ -2,7 +2,7 @@
 pkgname=rssh-git
 _pkgname=rssh
 pkgver=0.0.1.r129.gb670f8c
-pkgrel=1
+pkgrel=2
 pkgdesc="SSH client built to be an AI ops copilot (latest git)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/shihuili1218/rssh"
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=(
     'git'
-    'cargo'
+    'rust'
     'npm'
     'pkgconf'
 )
