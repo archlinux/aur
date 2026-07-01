@@ -108,7 +108,6 @@ pkgbase = kineticwe
 	depends = breeze
 	depends = kscreen
 	depends = xdg-desktop-portal-kde
-	conflicts = kglobalacceld
 	provides = kglobalacceld
 	source = https://gitlab.com/theblackdon/kineticwe/-/archive/v6.7.80/kineticwe-v6.7.80.tar.gz
 	source = kglobalacceld::git+https://invent.kde.org/plasma/kglobalacceld.git
