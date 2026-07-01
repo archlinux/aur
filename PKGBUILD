@@ -1,7 +1,7 @@
 # Maintainer: your-name <your-email>
 
 pkgname=specify-cli-bin
-pkgver=0.12.0
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="Specify CLI, part of GitHub Spec Kit — bootstrap projects for Spec-Driven Development (SDD)"
 arch=('any')
@@ -22,8 +22,8 @@ depends=(
 makedepends=('python-installer')
 provides=('specify-cli')
 conflicts=('specify-cli')
-source=("specify_cli-0.12.0-py3-none-any.whl::https://files.pythonhosted.org/packages/8e/be/6d0b4f2c7a7edc1a964fe24b375357bd02aefb684e2e5650437c4e50d158/specify_cli-0.12.0-py3-none-any.whl")
-sha256sums=('7a037abe90e360aa9c9c2690526023f4affed73782f85dfa1c49c7b38f565762')
+source=("specify_cli-0.12.2-py3-none-any.whl::https://files.pythonhosted.org/packages/4c/69/70921617a4ea20e7ca47b83ed1eee0d0a2f95f68e5ce751884ef99885120/specify_cli-0.12.2-py3-none-any.whl")
+sha256sums=('15c797a8dc922a6e0f13204e242875b19e26ffb390d1381e2b3bab1f39e96dfb')
 
 package() {
   cd "$srcdir"
