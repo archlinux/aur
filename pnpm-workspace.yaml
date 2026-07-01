@@ -1,7 +1,0 @@
-allowBuilds:
-  '@parcel/watcher': true
-  dprint: true
-  electron: true
-  electron-winstaller: true
-  keytar: true
-  msgpackr-extract: true
