@@ -1,8 +1,9 @@
 # Maintainer: Sergey Kanafyev <sergeykanafyev@gmail.com>
+# Automation: https://github.com/its-me/aur.appflowy
 
 pkgname=appflowy
-pkgver=0.12.2
-pkgrel=6
+pkgver=0.12.5
+pkgrel=1
 pkgdesc="Open-source alternative to Notion – you own your data and customizations"
 arch=('x86_64')
 url="https://appflowy.com"
@@ -43,7 +44,7 @@ source=(
     "appflowy.desktop"
 )
 sha256sums=(
-    'cd7c1f999cec3b5a47fce32333bdf5dd2662ebe597fda094912d4826ad2bc039'
+    'c51e995d2c84ac71b5d6c1cb15583280567ffac9a52b2fc57823e766bbc71353'
     'SKIP'
     '55c02d13249b333088ee452e76c8f36254e510651023549dc7e35efca02ca821'
 )
