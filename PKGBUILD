@@ -1,18 +1,25 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Tobias Baust <tobias.baust at tutanota dot com>
-_base=PyFoam
+_base=pyfoam
 pkgname=python-${_base,,}
-pkgver=2023.7
+pkgver=2026.6
 pkgrel=1
 pkgdesc="Python Utilities for OpenFOAM"
 arch=(any)
-url="http://openfoamwiki.net/index.php/Contrib/${_base}"
+url="https://openfoamwiki.net/index.php/Contrib/PyFoam"
 license=(GPL-2.0-or-later)
 depends=(python-numpy python-jinja)
-makedepends=(python-installer)
-source=(https://pypi.org/packages/py2.py3/${_base::1}/${_base}/${_base}-${pkgver}-py2.py3-none-any.whl)
-sha512sums=('33016d7552395566793100c50cdc03d23412f991e14f77d80587a5e4c32d227ce1f9328db7f6f75a7af3b966a39ad21ab2fcdbaaf6911b5e8275f5d2685b3960')
+makedepends=(python-build python-installer python-setuptools)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('6ea6caa74d24b4d4ed1cdcd58514043687fff9460a182760199ae7df49abb564ae0c0fe6db9f84857556e648032fd06c1557c961edfde20c75e69dcc41771410')
+
+build() {
+  cd ${_base}-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
+}
 
 package() {
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" ${_base//-/_}-${pkgver}-py2.py3-none-any.whl
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

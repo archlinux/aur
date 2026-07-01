@@ -1,14 +1,16 @@
 pkgbase = python-pyfoam
 	pkgdesc = Python Utilities for OpenFOAM
-	pkgver = 2023.7
+	pkgver = 2026.6
 	pkgrel = 1
-	url = http://openfoamwiki.net/index.php/Contrib/PyFoam
+	url = https://openfoamwiki.net/index.php/Contrib/PyFoam
 	arch = any
 	license = GPL-2.0-or-later
+	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	depends = python-numpy
 	depends = python-jinja
-	source = https://pypi.org/packages/py2.py3/P/PyFoam/PyFoam-2023.7-py2.py3-none-any.whl
-	sha512sums = 33016d7552395566793100c50cdc03d23412f991e14f77d80587a5e4c32d227ce1f9328db7f6f75a7af3b966a39ad21ab2fcdbaaf6911b5e8275f5d2685b3960
+	source = https://pypi.org/packages/source/p/pyfoam/pyfoam-2026.6.tar.gz
+	sha512sums = 6ea6caa74d24b4d4ed1cdcd58514043687fff9460a182760199ae7df49abb564ae0c0fe6db9f84857556e648032fd06c1557c961edfde20c75e69dcc41771410
 
 pkgname = python-pyfoam
