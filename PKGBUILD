@@ -24,7 +24,7 @@
 _pkgname="floorp"
 pkgname="$_pkgname"
 pkgver=12.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
 license=('MPL-2.0')
@@ -35,10 +35,10 @@ depends=(
   ffmpeg
   gtk3
   libevent
-  libjpeg
+  libjpeg.so # libjpeg-turbo
   libpulse
-  libvpx.so
-  libwebp.so
+  libvpx.so  # libvpx
+  libwebp.so # libwebp
   libxss
   libxt
   mime-types
