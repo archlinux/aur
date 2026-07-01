@@ -2,7 +2,7 @@
 
 pkgname='vrcx-0-bin'
 pkgdesc='Friendship management tool for VRChat (Tauri version)'
-pkgver='2.9.2'
+pkgver='2.10.0'
 pkgrel='1'
 arch=('x86_64')
 url='https://github.com/Map1en/VRCX-0'
@@ -14,7 +14,7 @@ depends=('webkit2gtk-4.1' 'libappindicator')
 conflicts=("${pkgname}")
 provides=("${pkgname}")
 source=("https://github.com/Map1en/VRCX-0/releases/download/v${pkgver}/VRCX-0_${pkgver}_linux_x86_64.deb")
-sha256sums=('b3bf59e32d615807461c0bb733565a7242929adaaf6894dab41263cc13b33989')
+sha256sums=('70e35efb5064553118e57ffd269a00b11508db8017bc35d095a5ae639ef65a73')
 
 package() {
   cd "$srcdir"
