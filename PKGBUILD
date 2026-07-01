@@ -7,7 +7,7 @@
 _pkgbasename=ffmpeg
 pkgname=("lib32-$_pkgbasename")
 pkgver=8.1.2
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -229,12 +229,12 @@ build() {
 ## not available under 32 bit
 #    --enable-frei0r \
 #    --enable-libjxl \
-#    --enable-libopenh264
+#    --enable-libopenh264 \
 #    --enable-librubberband \
 #    --enable-libsoxr \
 #    --enable-libssh \
-#    --enable-libsvtav1 
-#    --enable-libuavs3d
+#    --enable-libsvtav1 \
+#    --enable-libuavs3d \
 #    --enable-libvidstab \
 #    --enable-libvpl \
 #    --enable-vapoursynth \
