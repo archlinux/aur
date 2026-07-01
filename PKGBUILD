@@ -34,7 +34,7 @@ optdepends=(
 )
 options=('!debug' '!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/saltnpepper97/halley/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('b8f1755a76586cdde93e464db70039d8beaffb52241f6976b12b66329dde7eee')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
