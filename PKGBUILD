@@ -12,14 +12,14 @@
 # =============================================================================
 
 pkgname=cosmostrix-bin
-pkgver=5.0.3
+pkgver=10.0.0
 _tag=
 pkgrel=1
 
 pkgdesc="Production-grade cinematic Matrix rain renderer for serious terminal environments."
 arch=('x86_64' 'aarch64')
 url="https://github.com/oxyzenQ/cosmostrix"
-license=('MIT')
+license=('GPL3')
 
 depends=('glibc' 'gcc-libs')
 
