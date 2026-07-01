@@ -1,15 +1,15 @@
 pkgbase = shock-alarm
 	pkgdesc = A flutter app for controlling OpenShock devices
 	pkgver = 0.4.4
-	pkgrel = 1
-	url = https://github.com/ComputerElite/ShockAlarmApp
+	pkgrel = 3
+	url = https://codeberg.org/Kaiya/ShockAlarmApp
 	arch = x86_64
 	license = GPL3
 	depends = gtk3
 	depends = libnotify
 	depends = libsystemd
 	depends = xdg-utils
-	source = https://github.com/ComputerElite/ShockAlarmApp/releases/download/0.4.4/shock_alarm_linux_x64_refs.tags.0.4.4.tar.gz
+	source = https://codeberg.org/Kaiya/ShockAlarmApp/releases/download/0.4.4/shock_alarm_linux_x64.tar.gz
 	sha256sums = SKIP
 
 pkgname = shock-alarm

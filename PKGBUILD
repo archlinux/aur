@@ -1,10 +1,10 @@
-# Maintainer: ComputerElite <ComputerElite.dev@gmail.com>
+# Maintainer: Kaiya <kaiyafurry@proton.me>
 pkgname=shock-alarm
 pkgver=0.4.4
-pkgrel=1
+pkgrel=3
 pkgdesc="A flutter app for controlling OpenShock devices"
 arch=('x86_64')
-url="https://github.com/ComputerElite/ShockAlarmApp"
+url="https://codeberg.org/Kaiya/ShockAlarmApp"
 license=('GPL3')
 depends=(
     'gtk3'
@@ -12,7 +12,7 @@ depends=(
     'libsystemd'
     'xdg-utils'
 )
-source=("https://github.com/ComputerElite/ShockAlarmApp/releases/download/${pkgver}/shock_alarm_linux_x64_refs.tags.${pkgver}.tar.gz")
+source=("https://codeberg.org/Kaiya/ShockAlarmApp/releases/download/${pkgver}/shock_alarm_linux_x64.tar.gz")
 sha256sums=('SKIP')
 
 package() {
@@ -21,7 +21,7 @@ package() {
     install -d "$pkgdir/usr/bin"
 
     # Extract and copy release files
-    tar -xzf "$srcdir/shock_alarm_linux_x64_refs.tags.${pkgver}.tar.gz" -C "$pkgdir/opt/$pkgname"
+    tar -xzf "$srcdir/shock_alarm_linux_x64.tar.gz" -C "$pkgdir/opt/$pkgname"
 
     # Create symlink for binary
     ln -s "/opt/$pkgname/shock_alarm" "$pkgdir/usr/bin/shock-alarm"
