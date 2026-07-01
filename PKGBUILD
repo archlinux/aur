@@ -1,7 +1,7 @@
 # -*- mode: sh; -*-
 
 pkgname=dot-vault
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A secure vault utility for managing, backing up, and restoring dotfiles with a TUI."
 arch=('any')
