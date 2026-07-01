@@ -1,6 +1,6 @@
 pkgbase = stremio-enhanced-bin
 	pkgdesc = An Electron-based Stremio client with plugins and themes support. It runs the Stremio Service automatically and loads the web version of Stremio.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.1.5
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://discord.gg/jDsgcehrp7
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = stremio-enhanced-bin
 	license = MIT
 	depends = electron41
 	depends = ffmpeg
-	provides = stremio-enhanced=1.1.5
+	provides = stremio-enhanced=1.2.0
 	conflicts = stremio-enhanced
-	source = LICENSE-1.1.5.md::https://raw.githubusercontent.com/REVENGE977/stremio-enhanced/v1.1.5/LICENSE.md
+	source = LICENSE-1.2.0.md::https://raw.githubusercontent.com/REVENGE977/stremio-enhanced/v1.2.0/LICENSE.md
 	source = stremio-enhanced.sh
 	sha256sums = 5a3a8e170b3a5f190f50b65dccdf8629a225fd3826fc010e616eb1ec364e8d46
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = stremio-enhanced-1.1.5-aarch64.AppImage::https://github.com/REVENGE977/stremio-enhanced/releases/download/v1.1.5/Stremio.Enhanced-1.1.5-arm64.AppImage
-	sha256sums_aarch64 = 10cb9d1fab962ea6d9ce03afd20054138dd61b6ba235965da126585771c457d2
-	source_x86_64 = stremio-enhanced-1.1.5-x86_64.AppImage::https://github.com/REVENGE977/stremio-enhanced/releases/download/v1.1.5/Stremio.Enhanced-1.1.5.AppImage
-	sha256sums_x86_64 = 013cb67a4516188decf82b507a643685739eedeb64e7a8571d66ab582eb4ec60
+	source_aarch64 = stremio-enhanced-1.2.0-aarch64.AppImage::https://github.com/REVENGE977/stremio-enhanced/releases/download/v1.2.0/Stremio.Enhanced-1.2.0-arm64.AppImage
+	sha256sums_aarch64 = 71e455afba897c58cd590ac9b4e57a5cbb3c2294e382d409d420c25dd55dd683
+	source_x86_64 = stremio-enhanced-1.2.0-x86_64.AppImage::https://github.com/REVENGE977/stremio-enhanced/releases/download/v1.2.0/Stremio.Enhanced-1.2.0.AppImage
+	sha256sums_x86_64 = 6be927c60feb77921e7784552bc1a0ef1785125a2f25a6f482ac698ecd757c05
 
 pkgname = stremio-enhanced-bin
