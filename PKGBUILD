@@ -1,20 +1,21 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=miniter-bin
 _pkgname=miniter
-pkgver=0.7.1
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Basic video editor (for simple tasks)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mlm-games/miniter"
 license=('GPL3')
-depends=('fuse2' 'zlib')
+depends=()
+optdepends=('fuse2: or fuse3 — runtime dependency for AppImage FUSE mount')
 provides=('miniter')
 conflicts=('miniter')
 options=('!strip')
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.AppImage::https://github.com/mlm-games/miniter/releases/download/${pkgver}/miniter-${pkgver}-x86_64.AppImage")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.AppImage::https://github.com/mlm-games/miniter/releases/download/${pkgver}/miniter-${pkgver}-aarch64.AppImage")
-sha256sums_x86_64=('d47e114780fa0200ecc7a0b637e76315e85deb805123a5e86cc60caac12ea530')
-sha256sums_aarch64=('c28daeb33701b6f5b30afe3b430ec63a1374e251e1a4ca28df37326c5bbbfd46')
+sha256sums_x86_64=('29c3beb0ba2922fca6fccea47c7bf1f31c267a4a497b37914e58dc6d6f7bb1c4')
+sha256sums_aarch64=('82b9711d303f61f9e1cdfdc5e884e1c8a034601f61c49b2e982fde468b4d7229')
 prepare() {
   chmod +x "${_pkgname}-${pkgver}-${CARCH}.AppImage"
   "./${_pkgname}-${pkgver}-${CARCH}.AppImage" --appimage-extract
