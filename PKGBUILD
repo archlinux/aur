@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=gimji
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Minimal local-first notes for projects, tasks, boards, calendars, and markdown"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ options=(!strip)
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/gimji-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/gimji-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('6c0f997cf015a12457b78b403f794b3474a35e185909ca869c86783c72535e96')
-sha256sums_aarch64=('9f0c978f9357bf5bbca587348ac4e3ef67e7ea1a02c514b9aa5d696349d296fe')
+sha256sums_x86_64=('e374decbe0b999438b731d9ee125af534e5e59dc674391a5602e8fe66126a707')
+sha256sums_aarch64=('bf5566dd71e4aa6128a59b202c223558a98be8436fd1899d859f851cbfa816a3')
 
 package() {
   install -Dm755 gimji "$pkgdir/usr/bin/gimji"
