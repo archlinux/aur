@@ -1,6 +1,6 @@
 pkgbase = puny-manager
 	pkgdesc = Minimal, local CLI password manager with encrypted vault
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/Vaspyyy/puny-manager
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = puny-manager
 	makedepends = python-setuptools
 	depends = python
 	depends = python-cryptography
-	source = puny-manager-2.2.0.tar.gz::https://github.com/Vaspyyy/puny-manager/archive/refs/tags/v2.2.0.tar.gz
-	sha256sums = SKIP
+	source = puny-manager-2.2.1.tar.gz::https://github.com/Vaspyyy/puny-manager/archive/refs/tags/v2.2.1.tar.gz
+	sha256sums = 7ce8b9099871d5a4dd96947ce7b9d605f9e1dbe551b913a1d8d97c6cf82bbf43
 
 pkgname = puny-manager
