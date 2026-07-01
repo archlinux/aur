@@ -1,0 +1,22 @@
+pkgbase = yaas-nightly-bin
+	pkgdesc = Cross-platform desktop application for sideloading apps and managing Meta Quest headsets (Nightly Binary)
+	pkgver = 2026.06.26
+	pkgrel = 4
+	url = https://github.com/skrimix/yaas
+	install = yaas-nightly-bin.install
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = mpv
+	depends = libxss
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	provides = yaas
+	conflicts = yaas
+	conflicts = yaas-git
+	conflicts = yaas-bin
+	options = !strip
+	source = yaas-nightly-bin-2026.06.26.AppImage::https://github.com/skrimix/yaas/releases/download/nightly/YAAS-linux-x86_64.AppImage
+	sha256sums = SKIP
+
+pkgname = yaas-nightly-bin
