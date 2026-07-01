@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="TUI manager for Oh My Posh"
 
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,9 +28,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
-sha256sums=('c7b5ceb1fc628bc16a544a3f592d6161a7b4b5f153571be486213a81c796f8dd'
+sha256sums=('9c6a0cda210503904530732d9b6b13816b3a442d3d0a0deaa6691b1e3e352647'
             '0e0fd16681a32bca32792053882fdc99d0132a40c5c4a27492557b1b87694bba')
-sha256sums_x86_64=('dba4ab78da09a2d45d76ef39755f232fcedb036f4802df31d416aaa440dd9d76')
+sha256sums_x86_64=('16c04deed773de34789eb16e5ff738d82f7e03aadd4f67d84b303ac63f2ad4c1')
 
 
 package() {
