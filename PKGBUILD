@@ -100,7 +100,7 @@ makedepends=(
   'git'
   'lib32-ladspa'
   'lib32-mesa'
-#  'lib32-zeromq'
+  'lib32-zeromq'
   'nasm'
   'opencl-headers'
   'vulkan-headers'
@@ -213,6 +213,7 @@ build() {
     --enable-libxvid \
     --enable-libxml2 \
     --enable-libzimg \
+    --enable-libzmq \
     --enable-nvenc \
     --enable-nvdec \
     --enable-opencl \
@@ -237,7 +238,6 @@ build() {
 #    --enable-libvidstab \
 #    --enable-libvpl \
 #    --enable-vapoursynth \
-#    --enable-libzmq \
 
   make
 }
