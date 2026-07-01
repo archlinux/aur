@@ -1,14 +1,8 @@
 # Maintainer: cantosun99 <privat at cantosun dot de>
-# Upstream: https://github.com/intel/AI-Playground
-#
-# NOTE (2026-06-29): Linux support was merged to the upstream dev branch but
-# is not yet part of an official release. This PKGBUILD pins a specific commit
-# to provide a stable source with reproducible checksums.
-
 pkgname=intel-ai-playground
-pkgver=3.1.2.dev
-pkgrel=2
-pkgdesc="Intel AI Playground – experimental Linux support (AppImage)"
+pkgver=v3.1.2
+pkgrel=1
+pkgdesc="AI PC starter app for doing AI image creation, image stylizing, and chatbot on a PC powered by an Intel® Arc™ GPU."
 arch=(x86_64)
 url="https://github.com/intel/AI-Playground"
 license=(MIT "custom:3rdpartynoticeslicenses.txt")
@@ -34,13 +28,11 @@ optdepends=(
     "ocl-icd: OpenVINO OpenCL support"
     "fuse2: running the AppImage directly (not needed when installed via this package)"
 )
-source=(
-    "https://github.com/intel/AI-Playground/archive/dc73a34.tar.gz"
-)
-sha256sums=('cb2332483bbeea63bb2c65e892920d123e2abe8e3be9eb1317a03076e386e8b8')
+source=("https://github.com/intel/AI-Playground/archive/refs/tags/${pkgver}-beta.tar.gz")
+sha256sums=('f0ab1103f31bb08b87f14ac4b08434c1ac9c1ea24e620fb33d394c368cae9944')
 
 prepare() {
-    mv "AI-Playground-dc73a349b065fc1a940a67141cf8c775f9f6917b" "${srcdir}/AI-Playground"
+    mv "AI-Playground-${pkgver#v}-beta" "${srcdir}/AI-Playground"
 }
 
 build() {
