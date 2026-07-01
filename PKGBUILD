@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=the-honkers-railway-launcher
-pkgver=1.15.1
+pkgver=1.15.2
 pkgrel=1
 pkgdesc="The Honkers Railway launcher for Linux with automatic patching and telemetry disabling"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
 	 'gamescope: Micro-Compositor'
 	 'gamemode: CPU Scaling Control')
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2ebbb62f17f7ed789f3206d93eaef1e077c737e3967d6cce53ea34ebdd3a77b2')
+sha256sums=('8bca00ada1224a3e00787c6b88d9cc4b7cce52a51e2a3c9c0bd5eae6101ba86b')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
