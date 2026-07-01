@@ -1790,7 +1790,7 @@ index 13fcbe3e6b..3474622e86 100644
  
  } // namespace KWin
 diff --git a/src/plugins/screencast/screencaststream.cpp b/src/plugins/screencast/screencaststream.cpp
-index 23c1bb1293..e262e75fec 100644
+index 5f598de569..b38b43335e 100644
 --- a/src/plugins/screencast/screencaststream.cpp
 +++ b/src/plugins/screencast/screencaststream.cpp
 @@ -19,6 +19,7 @@
@@ -1801,7 +1801,7 @@ index 23c1bb1293..e262e75fec 100644
  #include "pipewirecore.h"
  #include "scene/workspacescene.h"
  #include "screencastbuffer.h"
-@@ -121,24 +122,40 @@ void ScreenCastStream::onStreamStateChanged(pw_stream_state old, pw_stream_state
+@@ -122,24 +123,40 @@ void ScreenCastStream::onStreamStateChanged(pw_stream_state old, pw_stream_state
      switch (state) {
      case PW_STREAM_STATE_ERROR:
          qCWarning(KWIN_SCREENCAST) << objectName() << "Stream error: " << error_message;
@@ -1842,7 +1842,7 @@ index 23c1bb1293..e262e75fec 100644
          break;
      }
  }
-@@ -360,6 +377,33 @@ ScreenCastStream::~ScreenCastStream()
+@@ -364,6 +381,33 @@ ScreenCastStream::~ScreenCastStream()
      }
  }
  
@@ -1876,7 +1876,7 @@ index 23c1bb1293..e262e75fec 100644
  bool ScreenCastStream::init()
  {
      if (!m_pwCore->m_error.isEmpty()) {
-@@ -393,7 +437,7 @@ uint ScreenCastStream::framerate()
+@@ -397,7 +441,7 @@ uint ScreenCastStream::framerate()
      return 0;
  }
  
@@ -2223,7 +2223,7 @@ index 0000000000..9d5babd384
 +
 +} // namespace KWin
 diff --git a/src/plugins/screencast/windowscreencastsource.cpp b/src/plugins/screencast/windowscreencastsource.cpp
-index 19b37ba316..e8f73caf51 100644
+index f1ec191a00..6d0837d8ed 100644
 --- a/src/plugins/screencast/windowscreencastsource.cpp
 +++ b/src/plugins/screencast/windowscreencastsource.cpp
 @@ -33,7 +33,8 @@ WindowScreenCastSource::WindowScreenCastSource(Window *window)
@@ -2236,7 +2236,7 @@ index 19b37ba316..e8f73caf51 100644
              add(window);
              if (m_active) {
                  Q_EMIT frame();
-@@ -77,12 +78,16 @@ void WindowScreenCastSource::watch(Window *window)
+@@ -78,12 +79,16 @@ void WindowScreenCastSource::watch(Window *window)
  {
      window->refOffscreenRendering();
      connect(window, &Window::damaged, this, &WindowScreenCastSource::frame);
@@ -2253,7 +2253,7 @@ index 19b37ba316..e8f73caf51 100644
  }
  
  quint32 WindowScreenCastSource::drmFormat() const
-@@ -207,6 +212,54 @@ RectF WindowScreenCastSource::boundingRect() const
+@@ -208,6 +213,54 @@ RectF WindowScreenCastSource::boundingRect() const
      return boundingRect;
  }
  
