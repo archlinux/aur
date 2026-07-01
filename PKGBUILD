@@ -6,7 +6,7 @@
 
 pkgname=kwin-without-gestures
 _pkgname=kwin
-pkgver=6.7.1
+pkgver=6.7.2
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='An easy to use, but flexible, wayland compositor. Patched to get rid of hardcoded touchpad gestures'
@@ -88,7 +88,7 @@ makedepends=(extra-cmake-modules
 optdepends=('plasma-keyboard: virtual keyboard')
 source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
         0001-feature-allow-disable-hardcoded-touchpad-gestures.patch)
-sha256sums=('352bfb34efad1435071960ef4cd392b110a18e1c168d1fdc5cce6b43331d0875'
+sha256sums=('6161a188f66ffac0a330dcf82dec9ecc3e53451b7bddd5d18fa00b1e9aada73b'
             'SKIP'
             '6847f4739304e49ea8292231cd63cf25e7039af7ab59c1fee3bb2cdbebd079f0')
 install=$_pkgname.install
