@@ -1,6 +1,6 @@
 # Maintainer: Xefreh
 pkgname=zcode-appimage
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="ZCode desktop app packaged from the upstream AppImage"
 arch=('x86_64')
@@ -14,7 +14,7 @@ _appimage="ZCode-${pkgver}-linux-x64.AppImage"
 _appdir="/opt/${pkgname}"
 noextract=("${_appimage}")
 source=("${_appimage}::https://cdn-zcode.z.ai/zcode/electron/releases/${pkgver}/${_appimage}")
-sha256sums=('e75c3d8f7b4d9be7b8c4deb1c3f2cb7e9196d15116c39ab4221b3ddaedbc2f40')
+sha256sums=('40bf72d8a086b4dddf1d9d0866001a6a0f547f84475c4d05ac58be3a177c0b3d')
 
 prepare() {
     cd "${srcdir}"
