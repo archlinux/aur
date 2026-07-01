@@ -4,8 +4,8 @@
 # Optional dependencies are dissociated from arch and need to be installed manually into venv. Although, many are installed by hermes lazyly when needed.
 # TODO: there needs to be a way to copy skills upon hermes package update, or, at least, to prompt the user to do so.
 pkgname=hermes-agent
-pkgver=0.17.0
-_tagver=2026.6.19
+pkgver=0.18.0
+_tagver=2026.7.1
 pkgrel=2
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
@@ -30,7 +30,7 @@ depends=(
 
 makedepends=('python311' 'nodejs' 'npm' 'rsync')
 source=("https://github.com/NousResearch/hermes-agent/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('69b805ec0a7a7be880068ba8a3b17479d7ba29f0cac0a2e9c6692c02f346ba91')
+sha256sums=('ec8a380629cc2f3f2102dd92cad50c4ded706fe59c0e359a05681166a0ae2991')
 validpgpkeys=()
 install=hermes-agent.install
 
