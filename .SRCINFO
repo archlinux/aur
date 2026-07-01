@@ -1,0 +1,19 @@
+pkgbase = squad-cli
+	pkgdesc = Squad CLI — Human-led AI agent teams for any project (command-line interface for the Squad multi-agent runtime)
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/bradygaster/squad
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=22.5.0
+	provides = squad
+	noextract = squad-cli-0.11.0.tgz
+	options = !emptydirs
+	options = !strip
+	source = https://registry.npmjs.org/@bradygaster/squad-cli/-/squad-cli-0.11.0.tgz
+	source = LICENSE-0.11.0::https://raw.githubusercontent.com/bradygaster/squad/v0.11.0/LICENSE
+	sha256sums = e335719d8f4448187819f0056de0a5a4593e89ea1a650e5657b3e9a69d192872
+	sha256sums = a29fbca40ece55cf400b003960c6523d909eacde076d32567a4ef2d1af252eb1
+
+pkgname = squad-cli
