@@ -1,0 +1,19 @@
+pkgbase = tiktok
+	pkgdesc = Unnofficial Tiktok desktop application with built in adblocker
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/linuxbombay/tiktok
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = unzip
+	depends = libelectron-electron-meta
+	depends = libelectron>=2026.4
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	depends = git
+	source = https://gitlab.com/linuxbombay/tiktok/application/-/archive/1.0.0/application-1.0.0.tar.bz2
+	sha256sums = 0f015533ec87149dff9a9fc3c8bce2f16fd09d031761871b32734f7aabb5ee04
+
+pkgname = tiktok
