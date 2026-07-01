@@ -1,6 +1,6 @@
 pkgbase = bridge-bin
 	pkgdesc = Global, dependency-aware task list that persists across repos and AI sessions
-	pkgver = 0.9.2
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/nhumrich/bridge
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = bridge-bin
 	license = MIT
 	provides = bridge
 	conflicts = bridge
-	source_x86_64 = br-0.9.2-linux-amd64::https://github.com/nhumrich/bridge/releases/download/v0.9.2/br-linux-amd64
-	sha256sums_x86_64 = 703c3f1c18f0a234534e42203a4538b5a3eed68a66a0b30e77dc70a18ad5e49c
-	source_aarch64 = br-0.9.2-linux-arm64::https://github.com/nhumrich/bridge/releases/download/v0.9.2/br-linux-arm64
-	sha256sums_aarch64 = 0f69d9a38e456f8723785fe28ff927e77807688bbd29172608595a1a0be197a2
+	source_x86_64 = br-0.10.0-linux-amd64::https://github.com/nhumrich/bridge/releases/download/v0.10.0/br-linux-amd64
+	sha256sums_x86_64 = f6430147a02ad25eecc15ead7b5bc8c998736e263c73b22be41f27d48faa0750
+	source_aarch64 = br-0.10.0-linux-arm64::https://github.com/nhumrich/bridge/releases/download/v0.10.0/br-linux-arm64
+	sha256sums_aarch64 = 44b5daafa8d2bc9ce7d606cef63dceaceb65926ba82be5fa9af451342468aa7d
 
 pkgname = bridge-bin
