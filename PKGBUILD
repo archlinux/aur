@@ -60,7 +60,7 @@ depends=(
   'lib32-libtheora'
   'lib32-libva'
   'lib32-libvdpau'
-#  'lib32-vid.stab'
+  'lib32-vid.stab'
   'lib32-libvorbis'
   'lib32-libvpx'
   'lib32-libwebp'
@@ -206,6 +206,7 @@ build() {
     --enable-libsrt \
     --enable-libtheora \
     --enable-libv4l2 \
+    --enable-libvidstab \
     --enable-libvmaf \
     --enable-libvorbis \
     --enable-libvpx \
@@ -235,7 +236,6 @@ build() {
 #    --enable-libssh \
 #    --enable-libsvtav1 \
 #    --enable-libuavs3d \
-#    --enable-libvidstab \
 #    --enable-libvpl \
 #    --enable-vapoursynth \
 
