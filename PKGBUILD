@@ -2,9 +2,9 @@
 _appname=icalingua
 pkgname="${_appname}++-bin"
 _pkgname='Icalingua++'
-pkgver=2.12.28
-_electronversion=22
-pkgrel=2
+pkgver=2.26.0
+_electronversion=38
+pkgrel=1
 pkgdesc="A branch of deleted Icalingua, with limited support.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -25,17 +25,30 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.armv7l.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}.x86_64.rpm")
 source=("${pkgname%-bin}.sh")
-sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('c701bc7aab13594b1b8103cc131f2bb871137a8410b5af5fd9bc755276d66e86')
-sha256sums_armv7h=('c4ff777a264f2b6bb1931e6d731fe11012ccbb16cc5cc3f4fd331926ab4e49d2')
-sha256sums_x86_64=('a551fa96ef9ce866e09ca17d18224d5a9b731ae774bc46d351dc3d6ecddbf602')
+sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums_aarch64=('a8802031ccb17e547034b245aae82312cc1ef5daf2001bd5ef5dc4a7892e29a9')
+sha256sums_armv7h=('e6d4e8296353fbdad8a44a9d9d9a9436655fcdc52d71d14d6df6c507d641a040')
+sha256sums_x86_64=('3a99b268d63a958c2ad9525837e6992eb6db91925ccd4d91cce47fe878b8e08a')
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
+_check_electron_version() {
+    echo "Verifying Electron version..."
+    local _main_exe=$(find "$(_get_app_dir)" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)
+    [[ -z "${_main_exe}" ]] && echo -e "\033[1;33mNote: Could not find Electron binary.\033[0m" && return
+    local _elec_ver=$(strings "${_main_exe}" | grep -oP 'Electron/\K[0-9]+' | head -1)
+    [[ -z "${_elec_ver}" ]] && echo -e "\033[1;33mNote: Could not determine Electron version.\033[0m" && return
+    [[ "${_elec_ver}" != "${_electronversion}" ]] &&
+        echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m" ||
+        echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
+    _check_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
     sed -i -e "
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
@@ -44,7 +57,14 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	local _app_dir=$(_get_app_dir)
+	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    find "${srcdir}/usr/share/icons" -type f \( -name "*.png" -o -name "*.svg" \) \
+		| while read -r _i; do
+		_extension="${_i##*.}"
+		_target_dir=$(dirname "${_i#$srcdir}")
+		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
+	done
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
