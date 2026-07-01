@@ -1,4 +1,4 @@
-# Maintainer: He Qing <qing@he.email>
+# Maintainer: 何庆 Ching He <heqing@rool.me>
 
 pkgname=leapp-bin
 _pkgname=leapp
