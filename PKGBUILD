@@ -4,7 +4,7 @@ pkgver=0.16.2
 pkgrel=1
 pkgdesc="A fast, modern, cross-platform XMPP client for communities and organizations."
 arch=('x86_64' 'aarch64')
-url="https://www.process-one.net/fluux/"
+url="https://www.process-one.net/fluux-messenger/"
 license=('AGPL-3.0-or-later')
 depends=(
   'cairo'
