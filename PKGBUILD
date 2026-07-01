@@ -5,7 +5,7 @@
 
 pkgname=openlierox
 pkgver=20260628.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An extremely addictive realtime worms shoot-em-up backed by an active gamers community"
 arch=(x86_64)
 license=("LGPL-2.0-only")
