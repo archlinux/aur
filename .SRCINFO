@@ -6,6 +6,7 @@ pkgbase = snappers
 	arch = any
 	license = GPL2
 	makedepends = python
+	makedepends = python-installer
 	depends = snapper
 	depends = python-tabulate
 	provides = snappers

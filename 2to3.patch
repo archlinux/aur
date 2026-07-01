@@ -1,0 +1,111 @@
+--- a/snapperS/snapperS	2026-07-01 19:33:59.022437622 -0400
++++ b/snapperS/snapperS	2026-07-01 19:35:39.377007825 -0400
+@@ -28,7 +28,7 @@
+         endPoint = int(args['range'].split('..')[1])  # second number
+ 
+     if '/' not in args['filename']:  # if the user tried to specify a relative path, warn them
+-        print "Specify the absolute path of the file starting with a /"
++        print("Specify the absolute path of the file starting with a /")
+         exit(2)
+ 
+     for snapshot in os.listdir(args['directory']):
+@@ -43,9 +43,9 @@
+             if '50' in str(e):
+                 # when btrfs exits with an exit code of 50, there is no valid subvolume
+                 if args['verbose']:
+-                    print "No subvolume found in " + args['directory'] + snapshot + ". Skipping. "
++                    print("No subvolume found in " + args['directory'] + snapshot + ". Skipping. ")
+                 continue
+-            print e
++            print(e)
+             # if it isn't an exit code of 50, then there is some other
+             # unrecoverable error, so we exit
+             exit(3)
+@@ -60,9 +60,9 @@
+                           shell=True,
+                           stderr=devnull)
+                 if args['verbose']:
+-                    print out
++                    print(out)
+             if args['verbose']:
+-                print "Deleted from " + args['directory'] + snapshot
++                print("Deleted from " + args['directory'] + snapshot)
+         except CalledProcessError as e:
+             if "1" in str(e):  # an exit code 1 means the file doesn't exist
+                 if args['verbose']:
+@@ -70,21 +70,21 @@
+                            snapshot + "/snapshot/. Check that it exists and" +
+                            " is not a directory. Skipping. ")
+             else:
+-                print e  # otherwise there is an unrecoverable error
++                print(e)  # otherwise there is an unrecoverable error
+                 exit(4)
+         mountSnapshotRW(args['directory'] + snapshot + "/snapshot/", False)
+         # set it back to ro once we are done
+     try:
+         mountSnapshotRW("/", True)
+     except CalledProcessError as e:
+-        print "Error! Failed to remount / as rw. This will require maual intervention to fix. "
++        print("Error! Failed to remount / as rw. This will require maual intervention to fix. ")
+         exit(5)
+ 
+ 
+ def cat(args):  # cat functionality
+     """print the contents of a specified file in a specified snapshot"""
+-    print run("cat " + args['directory'] + args['snapshot'] + "/snapshot" + args['filename'],
+-              shell=True)
++    print(run("cat " + args['directory'] + args['snapshot'] + "/snapshot" + args['filename'],
++              shell=True))
+ 
+ 
+ def backup(args):
+@@ -97,11 +97,11 @@
+                       stderr=devnull,
+                       shell=True)
+             if args['verbose']:
+-                print out
+-        print "Sucessfully backed up the file. "
++                print(out)
++        print("Sucessfully backed up the file. ")
+     except CalledProcessError as e:
+-        print e
+-        print "Error! Failed to backup. Try again."
++        print(e)
++        print("Error! Failed to backup. Try again.")
+ 
+ 
+ def restore(args):
+@@ -113,11 +113,11 @@
+                       stderr=devnull,
+                       shell=True)
+             if args['verbose']:
+-                print out
+-        print "Sucessfully restored the file. "
++                print(out)
++        print("Sucessfully restored the file. ")
+     except CalledProcessError as e:
+-        print e
+-        print "Error! Failed to restore. Try again."
++        print(e)
++        print("Error! Failed to restore. Try again.")
+ 
+ 
+ def listSubvolumes():
+@@ -163,7 +163,7 @@
+         lineArr.extend(list(spaceTuple))  # add the space data
+         table.append(lineArr)  # append our line to the table
+     # print a table with the headers and in format of psql
+-    print tabulate(table, headers=headers, tablefmt="psql")
++    print(tabulate(table, headers=headers, tablefmt="psql"))
+ 
+ 
+ def main():
+@@ -282,7 +282,7 @@
+     args = vars(parser.parse_args())
+ 
+     if not os.geteuid() == 0:  # must be root in order to manipulate snapshots
+-        print "You must run this script as root"
++        print("You must run this script as root")
+         exit(1)
+ 
+     # parsing the subcommands
