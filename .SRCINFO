@@ -1,13 +1,16 @@
 pkgbase = vapoursynth-plugin-edgemasks-git
 	pkgdesc = Plugin for Vapoursynth: edgemasks (GIT version)
 	pkgver = 4.1.0.gfeb47b4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HolyWu/VapourSynth-EdgeMasks
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = meson
-	depends = vapoursynth>=75
+	makedepends = meson-python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = vapoursynth
 	provides = vapoursynth-plugin-edgemasks
 	conflicts = vapoursynth-plugin-edgemasks
 	options = debug
