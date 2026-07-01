@@ -1,7 +1,7 @@
 # Maintainer: griffin <19497824+WingofaGriffin@users.noreply.github.com>
 _pkgname=itgmania
 pkgname=itgmania-bin
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A fork of stepmania 5.1, improved for the post-ITG community"
 provides=('itgmania')
@@ -14,7 +14,7 @@ source=(
 	"https://github.com/$_pkgname/$_pkgname/releases/download/v${pkgver}/ITGmania-${pkgver}-Linux.tar.gz"
 	"itgmania.sh"
 )
-sha256sums=('de6e490270e20894af4e1c306a63161cdcd37ce43028e89eeef03a6d2867dc1e'
+sha256sums=('af8085a78f5891290e8e57bd72415fb7ee60eed2dc045425a05255e88195fe0b'
             '0249497c6eb7969362d8a93e1bb50c3259e5dc3873f8c94a40503d1321f03810')
 
 package() {
