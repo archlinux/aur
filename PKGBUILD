@@ -2,7 +2,7 @@
 pkgname=moekoemusic
 _pkgname='MoeKoe Music'
 _zhsname='萌音'
-pkgver=1.6.6
+pkgver=1.6.7
 _electronversion=39
 _nodeversion=22
 pkgrel=1
@@ -26,13 +26,20 @@ makedepends=(
     'gendesk'
     'jq'
 )
-source=("${pkgname}.sh")
-sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+source=(
+    "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
+    "${pkgname}.sh"
+)
+sha256sums=('4f75903d372c6ebed1d12d714c9c840a69dae18291f3782b68794998f0f69398'
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
+}
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -name "node_modules" \
@@ -42,35 +49,25 @@ _get_electron_version() {
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 _set_build_env() {
+    export electronDist="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-	local HOME="${srcdir}/.electron-gyp"
-	export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
-	export NPM_CONFIG_MAXSOCKETS=32
-	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-		{
-			export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-			export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-			export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-			export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-			export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
-			export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
-		}
-		find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-	fi
-}
-_get_app_dir() {
-    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export HOME="${srcdir}/.electron-gyp"
+    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
+    export NPM_CONFIG_MAXSOCKETS=32
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+            export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
+            export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
+        }
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+    fi
 }
 prepare() {
-    cd "${srcdir}"
-    if [[ ! -d "${pkgname}-${pkgver}" ]]; then
-        git clone \
-            --depth 1 \
-            --branch "v${pkgver}" \
-            "${_ghurl}" \
-            "${pkgname}-${pkgver}"
-    fi
     cd "${srcdir}/${pkgname}-${pkgver}"
     _get_electron_version
     sed -i -e "
@@ -93,7 +90,7 @@ prepare() {
         s/icon\.ico/icon\.png/g
         s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g
         s/\.\.\/api/\.\/api/g
-    " "${srcdir}/${pkgname}-${pkgver}/electron/appServices.js"
+    " electron/appServices.js
     git submodule update --depth=1 --init --recursive
     NODE_ENV=development    npm install
     cd "${srcdir}/${pkgname}-${pkgver}/api"
@@ -103,8 +100,6 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
     _set_build_env
     _ensure_local_nvm
-	local electronDist="/usr/lib/electron${_electronversion}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     NODE_ENV=production     npm run build
     case "${CARCH}" in
         aarch64)
