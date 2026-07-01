@@ -3,7 +3,7 @@ _pkgname=GitVersion
 pkgname=gitversion
 # renovate: datasource=github-releases depName=GitTools/GitVersion
 pkgver=6.8.0
-pkgrel=6
+pkgrel=1
 _dotnet_version=10.0
 pkgdesc='From git log to SemVer in no time'
 arch=('x86_64')
