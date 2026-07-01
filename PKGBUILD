@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=v4l-tui
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='TUI alternative to v4l-ctl or cameractrls'
 arch=(
@@ -21,7 +21,7 @@ options=(
 provides=('v4l-tui')
 conflicts=('v4l-tui-git' 'v4l-tui-bin')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1831d23300ba90c7e1b3604469b25355cc230d024bf705765b926e99024b3539')
+sha256sums=('4514211b4d697f98d60084aadd66e2e3323f7bb5b93d66362586929c64086748')
 
 prepare() {
     cd "${pkgname}-${pkgver}"

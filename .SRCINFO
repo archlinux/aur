@@ -1,6 +1,6 @@
 pkgbase = v4l-tui
 	pkgdesc = TUI alternative to v4l-ctl or cameractrls
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/sermuns/v4l-tui
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = v4l-tui
 	conflicts = v4l-tui-bin
 	options = !lto
 	options = !debug
-	source = v4l-tui-0.1.0.tar.gz::https://github.com/sermuns/v4l-tui/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 1831d23300ba90c7e1b3604469b25355cc230d024bf705765b926e99024b3539
+	source = v4l-tui-0.1.1.tar.gz::https://github.com/sermuns/v4l-tui/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 4514211b4d697f98d60084aadd66e2e3323f7bb5b93d66362586929c64086748
 
 pkgname = v4l-tui
