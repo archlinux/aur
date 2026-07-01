@@ -16,7 +16,7 @@ optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
             'ibus-mozc: IBus integration'
             'emacs-mozc: Emacs integration')
 install='mozc.install'
-source=('git+https://github.com/google/mozc.git#commit=76887c679e1e4f156102e4bc62ea9cf9174678a3'
+source=('git+https://github.com/google/mozc.git#commit=04733c92daf891a3f3d67ba85c69fa9cc64032ba'
         # Bazel module repo (copy of https://bcr.bazel.build/)
         'git+https://github.com/bazelbuild/bazel-central-registry.git#commit=b0cb0e8ec70689252e3b35f109ffa4a32329b900'
         # Bazel binary
@@ -49,8 +49,8 @@ source=('git+https://github.com/google/mozc.git#commit=76887c679e1e4f156102e4bc6
         'https://github.com/madler/zlib/releases/download/v1.3.1/zlib-1.3.1.tar.gz'
         # Mozc dependencies
         'https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/refs/tags/2025-01-25.zip'
-        'https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/621d059fbcbfae17bfca15b439692bae934268c3/jigyosyo.zip'
-        'https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/621d059fbcbfae17bfca15b439692bae934268c3/ken_all.zip')
+        'jigyosyo-20260403.zip::https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/621d059fbcbfae17bfca15b439692bae934268c3/jigyosyo.zip'
+        'ken_all-20260403.zip::https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/621d059fbcbfae17bfca15b439692bae934268c3/ken_all.zip')
 noextract=('bazel-9.0.2-linux-x86_64'
            'abseil-cpp-20260107.1.tar.gz'
            'apple_support.2.4.0.tar.gz'
@@ -78,9 +78,9 @@ noextract=('bazel-9.0.2-linux-x86_64'
            'tar.bzl-v0.5.1.tar.gz'
            'zlib-1.3.1.tar.gz'
            '2025-01-25.zip'
-           'jigyosyo.zip'
-           'ken_all.zip')
-b2sums=('f55e3633cf0e688d9bbb4701b3bdefdd62b857ddf0866fcba525c3ab6c4666f338d17f59438b3f8121a63d5a294968fbddade4a4a8f850041ea8ad6882120cea'
+           'jigyosyo-20260403.zip'
+           'ken_all-20260403.zip')
+b2sums=('54b0fc991e390c68b3a7de3fd48005ab33f3745983f958ff5c01c105f2d085787e02a7008763f5547ba8b9c704d68d1d1a6af61192774349eda7b0bfc718f7ec'
         '0fa68a06d930796445f215ecb16a7dba7bf9cae1004318c766269fd403ba3a44bc46035672949fc3731cf9cf778630291a078fda98ef46dce1f1c27f08b02bbb'
         '83457d476468763e9e94ce6ea3ee7abf9ad123887e24c304067993922f0b4430786da797c27bf5b15acba57a30c5c7472fd0ff285089368b9b51ce085f33c254'
         '1c0814eefb6181a82437128c9d3c08dec0540c2353b8a317204c49b1510b311173897de4a737da6f0cc034bf1b23717dea54f0338e3794f6a56f7292f53937bc'
@@ -140,6 +140,9 @@ prepare() {
     # Tamachi Phonetic Kanji Alphabet: MIT
     printf '6. Tamachi Phonetic Kanji Library\n\n' >> LICENSE
     sed -n 660,666p data/installer/credits_en.html >> LICENSE
+
+    sed -i -e "366s|jigyosyo.zip|jigyosyo-20260403.zip| ;
+               373s|ken_all.zip|ken_all-20260403.zip|" MODULE.bazel
 }
 
 build() {

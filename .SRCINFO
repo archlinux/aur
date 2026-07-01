@@ -11,6 +11,7 @@ pkgbase = mozc
 	optdepends = fcitx5-mozc-ut: Fcitx5 integration
 	optdepends = ibus-mozc: IBus integration
 	optdepends = emacs-mozc: Emacs integration
+	noextract = bazel-9.0.2-linux-x86_64
 	noextract = abseil-cpp-20260107.1.tar.gz
 	noextract = apple_support.2.4.0.tar.gz
 	noextract = v1.10.0.tar.gz
@@ -37,9 +38,9 @@ pkgbase = mozc
 	noextract = tar.bzl-v0.5.1.tar.gz
 	noextract = zlib-1.3.1.tar.gz
 	noextract = 2025-01-25.zip
-	noextract = jigyosyo.zip
-	noextract = ken_all.zip
-	source = git+https://github.com/google/mozc.git#commit=76887c679e1e4f156102e4bc62ea9cf9174678a3
+	noextract = jigyosyo-20260403.zip
+	noextract = ken_all-20260403.zip
+	source = git+https://github.com/google/mozc.git#commit=04733c92daf891a3f3d67ba85c69fa9cc64032ba
 	source = git+https://github.com/bazelbuild/bazel-central-registry.git#commit=b0cb0e8ec70689252e3b35f109ffa4a32329b900
 	source = https://github.com/bazelbuild/bazel/releases/download/9.0.2/bazel-9.0.2-linux-x86_64
 	source = https://github.com/abseil/abseil-cpp/releases/download/20260107.1/abseil-cpp-20260107.1.tar.gz
@@ -68,9 +69,9 @@ pkgbase = mozc
 	source = https://github.com/bazel-contrib/tar.bzl/releases/download/v0.5.1/tar.bzl-v0.5.1.tar.gz
 	source = https://github.com/madler/zlib/releases/download/v1.3.1/zlib-1.3.1.tar.gz
 	source = https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/refs/tags/2025-01-25.zip
-	source = https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/621d059fbcbfae17bfca15b439692bae934268c3/jigyosyo.zip
-	source = https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/621d059fbcbfae17bfca15b439692bae934268c3/ken_all.zip
-	b2sums = f55e3633cf0e688d9bbb4701b3bdefdd62b857ddf0866fcba525c3ab6c4666f338d17f59438b3f8121a63d5a294968fbddade4a4a8f850041ea8ad6882120cea
+	source = jigyosyo-20260403.zip::https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/621d059fbcbfae17bfca15b439692bae934268c3/jigyosyo.zip
+	source = ken_all-20260403.zip::https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/621d059fbcbfae17bfca15b439692bae934268c3/ken_all.zip
+	b2sums = 54b0fc991e390c68b3a7de3fd48005ab33f3745983f958ff5c01c105f2d085787e02a7008763f5547ba8b9c704d68d1d1a6af61192774349eda7b0bfc718f7ec
 	b2sums = 0fa68a06d930796445f215ecb16a7dba7bf9cae1004318c766269fd403ba3a44bc46035672949fc3731cf9cf778630291a078fda98ef46dce1f1c27f08b02bbb
 	b2sums = 83457d476468763e9e94ce6ea3ee7abf9ad123887e24c304067993922f0b4430786da797c27bf5b15acba57a30c5c7472fd0ff285089368b9b51ce085f33c254
 	b2sums = 1c0814eefb6181a82437128c9d3c08dec0540c2353b8a317204c49b1510b311173897de4a737da6f0cc034bf1b23717dea54f0338e3794f6a56f7292f53937bc
