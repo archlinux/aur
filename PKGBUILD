@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=matchmaker
-pkgver=0.0.42
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A fast, configurable and intuitive fuzzy searcher.'
 arch=(
@@ -15,7 +15,7 @@ options=(!lto)
 provides=('mm')
 conflicts=('matchmaker-git' 'matchmaker-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('6c13543714fa1fd393221ad6dcc397982645c04a2645769c985da8dfb87db9ba')
+sha256sums=('3e41652cbfcc13814f7611cc935efb932792bd7239188531c76e381fcc8d336e')
 
 prepare() {
     cd "$pkgname-$pkgver"
