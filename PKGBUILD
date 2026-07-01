@@ -1,11 +1,11 @@
 # Maintainer: rezky_nightky <with dot rezky at gmail dot com>
 pkgname=zejtron-bin
-pkgver=5.0.1
+pkgver=10.0.0
 pkgrel=1
 pkgdesc="Unified Linux introspection toolkit for paths, ports, processes, files, services, and diagnostics"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/oxyzenQ/zejtron"
-license=('MIT')
+license=('GPL-3.0-only')
 depends=('glibc' 'gcc-libs')
 provides=('zejtron')
 conflicts=('zejtron')
@@ -15,20 +15,7 @@ sha512sums=()
 
 prepare() {
   local tag="v${pkgver}"
-  local asset
-
-  case "${CARCH}" in
-    x86_64)
-      asset="zejtron-bin-${tag}-linux-x86_64.tar.gz"
-      ;;
-    aarch64)
-      asset="zejtron-bin-${tag}-linux-aarch64.tar.gz"
-      ;;
-    *)
-      echo "unsupported architecture: ${CARCH}" >&2
-      return 1
-      ;;
-  esac
+  local asset="zejtron-linux-amd64-gnu.tar.gz"
 
   local base_url="https://github.com/oxyzenQ/zejtron/releases/download/${tag}"
   curl -fL -o "${asset}" "${base_url}/${asset}"
