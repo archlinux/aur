@@ -1,0 +1,5 @@
+[python-hydrus]
+source = "gitlab"
+gitlab = "cryzed/hydrus-api"
+use_max_tag = true
+prefix = "v"
