@@ -8,7 +8,7 @@ pkgdesc='Programming environment for creating images, animations and interaction
 url='https://github.com/processing/processing4'
 license=(GPL LGPL)
 conflicts=(processing)
-depends=('java-environment-openjdk=17' ffmpeg bash glibc mesa libdrm libx11 libxi libxrandr libxrender libxcursor libxxf86vm zlib)
+depends=(jdk17-temurin ffmpeg bash glibc mesa libdrm libx11 libxi libxrandr libxrender libxcursor libxxf86vm zlib)
 optdepends=('processing-examples: Examples for Processing')
 makedepends=(gradle)
 options=(!strip)
@@ -25,11 +25,6 @@ pkgver() {
 }
 
 prepare() {
-  # Check if OpenJDK 17 executable is actually installed
-  if ! [ -f "/usr/lib/jvm/java-17-openjdk/bin/java" ]; then
-    echo "Error: OpenJDK 17 executable '/usr/lib/jvm/java-17-openjdk/bin/java' is missing."
-    sh -c "exit 1"
-  fi
   # Check if FFmpeg executable is actually installed
   if ! [ -f "/usr/bin/ffmpeg" ]; then
     echo "Error: FFmpeg executable '/usr/bin/ffmpeg' is missing."
@@ -56,7 +51,7 @@ build() {
       -e "s,<ICON_NAME>,processing-pde,g" build/linux/desktop.template > processing-pde.desktop
 
   # Build the application
-  JAVA_HOME="/usr/lib/jvm/java-17-openjdk" gradle createDistributable
+  JAVA_HOME="/usr/lib/jvm/java-17-temurin" gradle createDistributable
 }
 
 package() {
@@ -117,6 +112,6 @@ package() {
 
   # Link processing's internal JDK to the system's one
   rm -rf "$pkgdir/usr/share/processing/lib/runtime" # TODO prevent that the runtime is added at all
-  ln -s /usr/lib/jvm/java-17-openjdk "$pkgdir/usr/share/processing/lib/runtime"
-  ln -s /usr/lib/jvm/java-17-openjdk "$pkgdir/usr/share/processing/lib/app/resources/jdk"
+  ln -s /usr/lib/jvm/java-17-temurin "$pkgdir/usr/share/processing/lib/runtime"
+  ln -s /usr/lib/jvm/java-17-temurin "$pkgdir/usr/share/processing/lib/app/resources/jdk"
 }

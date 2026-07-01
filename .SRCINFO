@@ -8,7 +8,7 @@ pkgbase = processing-git
 	license = GPL
 	license = LGPL
 	makedepends = gradle
-	depends = java-environment-openjdk=17
+	depends = jdk17-temurin
 	depends = ffmpeg
 	depends = bash
 	depends = glibc
