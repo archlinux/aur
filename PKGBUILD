@@ -1,6 +1,6 @@
 # Maintainer: Fred Mitchell <fred.mitchell@atomlogik.de>
 pkgname=swiss-army-knife
-pkgver=1.1.0.2
+pkgver=1.1.0.3
 pkgrel=1
 pkgdesc="A collection of small but powerful command-line tools"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('ghc-libs')
 makedepends=('ghc')
 source=("$pkgname-$pkgver.tar.gz::https://hackage.haskell.org/package/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('96d5ae87d5e058652f401512201fa8c84d051cf4c6f11d602b682a6a941290d9')
+sha256sums=('52b2cdb01e0e657079cb611cd317d7d114db83b7b9fe34d509c44483fbcbb234')
 
 prepare() {
     cd "$pkgname-$pkgver"
