@@ -1,6 +1,6 @@
 pkgbase = python-opcua-asyncio
 	pkgdesc = An OPC-UA client and server library for Python, also known as asyncua
-	pkgver = 2.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/FreeOpcUa/opcua-asyncio
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-opcua-asyncio
 	depends = python-pytz
 	depends = python-sortedcontainers
 	depends = python-typing_extensions
-	source = https://github.com/FreeOpcUa/opcua-asyncio/archive/refs/tags/v2.0.tar.gz
+	source = https://github.com/FreeOpcUa/opcua-asyncio/archive/refs/tags/v2.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = python-opcua-asyncio
