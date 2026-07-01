@@ -1,14 +1,12 @@
 pkgbase = clustertool-bin
 	pkgdesc = Tool to help bootstrap a Kubernetes cluster
-	pkgver = 2.0.6
-	pkgrel = 3
+	pkgver = 4.0.0
+	pkgrel = 1
 	url = https://truecharts.org
 	arch = x86_64
-	license = BUSL-1.1
+	license = AGPL-3.0-only
 	options = !debug
-	source = https://github.com/trueforge-org/truecharts/releases/download/v2.0.6/clustertool_2.0.6_linux_amd64.pkg.tar.zst
-	source = https://github.com/trueforge-org/truecharts/releases/download/v2.0.6/clustertool.LICENSE
-	sha256sums = 76b43795d4945e553fd4c4747b8edf27f21ea7405f8d3d12e101169dbe561d53
-	sha256sums = 90b97d8e350b71ab689daaa3dbcb9fe752da2d821caba1952caf8ce614d6c72e
+	source = https://github.com/trueforge-org/clustertool/releases/download/v4.0.0/clustertool_4.0.0_linux_amd64.pkg.tar.zst
+	sha256sums = c4e984a7c38d2188501be9e430298ce2a6a62fac06694232f16d3c5ca4d5bd88
 
 pkgname = clustertool-bin
