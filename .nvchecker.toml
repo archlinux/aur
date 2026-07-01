@@ -1,0 +1,3 @@
+[python-desec-dns]
+source = "pypi"
+pypi = "desec-dns"

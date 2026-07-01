@@ -1,0 +1,19 @@
+pkgbase = python-desec-dns
+	pkgdesc = A simple deSEC.io API client
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/s-hamann/desec-dns
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = python-cryptography
+	depends = python-dnspython
+	source = https://files.pythonhosted.org/packages/source/d/desec_dns/desec_dns-1.4.0.tar.gz
+	b2sums = 6f1f3140f9f7a1df1ad96e822f274e26eaf98d32cfe0098d6b53c5201098435358a9a7ef842becc5b249fb2249e2640eacfe80b4e7684f2c10508459d9b96060
+
+pkgname = python-desec-dns
