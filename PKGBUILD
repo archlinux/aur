@@ -1,7 +1,7 @@
 # Maintainer: kylon
 pkgname=sharedown
 pkgver=5.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Electron application to download Sharepoint videos (especially meant for students)"
 arch=('x86_64')
 url="https://github.com/kylon/Sharedown"
