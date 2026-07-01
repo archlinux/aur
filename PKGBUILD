@@ -2,14 +2,14 @@
 
 _plug=nlm-hip
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2.0.g922cc61
-pkgrel=2
+pkgver=3.0.g8fe6af2
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/TheFeelTrain/vs-nlm-hip'
 license=('GPL')
 depends=(
-    'vapoursynth>=75'
+    'vapoursynth'
     'gcc-libs'
     'glibc'
     'rocm-hip-runtime'
@@ -18,12 +18,12 @@ depends=(
 makedepends=(
     'git'
     'cmake'
-    'vapoursynth-api3-headers'
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+${url}.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
     cd "${_plug}"
