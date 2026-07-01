@@ -3,7 +3,7 @@
 # Contributor: renyuneyun <renyuneyun (at) gmail (dot) com>
 _name=octave_kernel
 pkgname=jupyter-${_name}
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A Jupyter kernel for Octave"
 arch=(any)
@@ -14,6 +14,7 @@ depends=(
     octave
     python-ipykernel
     python-jupyter-client
+    python-rpds-py
 )
 makedepends=(
     python-build
@@ -26,7 +27,7 @@ optdepends=(
     'jupyterlab: JupyterLab computational environment'
 )
 source=($pkgname-$pkgver.tar.gz::https://github.com/Calysto/octave_kernel/archive/v$pkgver.tar.gz)
-b2sums=('69bb852811322712ad3fc5026ccc44d2bb216248538991e8fafa0d3bf7d3d67303292738daee5bf23990a54c7eb3775db3a5625f0fa3a68e5c487a7cd1a4bccb')
+b2sums=('74fccbb8cb618caa1f3e57f0c46af051e3dc70f1dad291b4b99e0f9ed15c45f8f16625618c81a32fad616609b3d9ea005fcaa87cc460d96a8648187eec3a26df')
 
 build() {
     cd $_name-$pkgver
