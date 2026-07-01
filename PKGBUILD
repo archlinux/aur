@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=yggdrasil-ng-bin
-pkgver=0.1.6
+pkgver=0.2.0
 pkgrel=1
 _debrel=1
 pkgdesc="End-to-end encrypted IPv6 mesh networking daemon, a from-scratch Rust rewrite of Yggdrasil (prebuilt static binary)"
@@ -18,9 +18,9 @@ source_armv7h=("${pkgname}-${pkgver}-armv7h.deb::${_relurl}/yggdrasil-ng_${pkgve
 noextract=("${pkgname}-${pkgver}-x86_64.deb"
            "${pkgname}-${pkgver}-aarch64.deb"
            "${pkgname}-${pkgver}-armv7h.deb")
-sha256sums_x86_64=('738bf2c8c5cc8d269939e725ee6718af4504908ca9122d69958c66227a8f2db7')
-sha256sums_aarch64=('77f9c6018cb5f81bdb1bf8a11a41e45cd72b90ab9710c98316f43c9c02a0d191')
-sha256sums_armv7h=('7fba45ad1b97508e813a8523ef5d364b32b4e24d8bf76980bee81de6c26dfb86')
+sha256sums_x86_64=('2e5cffdcc48cba8d462f0985ed5ec497b6816dddb23e9b5d6391a028e9234226')
+sha256sums_aarch64=('f6b9ab6e9e79a749d6ea9b12d16f071814685ce6867836549f8d9360981c14bc')
+sha256sums_armv7h=('4a1b48524eb037bbcd99b88b95b5eb5a4cc09e2125e421cb18c0d27f9b0b3542')
 
 latestver() {
     gh api --paginate repos/Revertron/Yggdrasil-ng/releases --jq \
