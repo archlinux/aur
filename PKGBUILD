@@ -1,10 +1,10 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=handy
-pkgver=0.8.3
+pkgver=0.9.0
 # git rev-parse "v$pkgver"
-_tag=085cd530a30db479822125c758613c38fe0771b0
-pkgrel=2
+_tag=9b0d8a1120810dac1b139f480d37ba5f704e4856
+pkgrel=1
 pkgdesc="Open source and extensible speech-to-text application that works completely offline"
 arch=(x86_64 aarch64)
 url="https://github.com/cjpais/Handy"
@@ -38,6 +38,7 @@ makedepends=(
   pwgen
   shaderc
   vulkan-headers
+  spirv-headers
 )
 options=('!lto')
 optdepends=(
@@ -49,7 +50,7 @@ source=(
   "$pkgname-$pkgver::git+$url.git#tag=$_tag"
 )
 conflicts=("$pkgname-bin")
-sha256sums=('dd034f1e58443cff29b928f0d2d54c58810605ea665ebdc620cb091f20c9a146')
+sha256sums=('0ca1b1e5365bdbce20885423bdc6776ccf0e4a54e516fcb3edce2fa107614874')
 
 build() {
   cd "$pkgname-$pkgver"
