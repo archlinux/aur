@@ -1,6 +1,6 @@
 pkgbase = kanarenshu
 	pkgdesc = A minimal TUI application to practise Japanese from the terminal.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/nuixyz/kanarenshu
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = kanarenshu
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = kanarenshu-0.1.0.tar.gz::https://github.com/nuixyz/kanarenshu/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = SKIP
+	source = kanarenshu-0.1.1.tar.gz::https://github.com/nuixyz/kanarenshu/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 3565f7ac42a355d145b35427203f22036f20126974f8269e570fa48bdcd9dd3d
 
 pkgname = kanarenshu

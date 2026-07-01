@@ -1,7 +1,7 @@
 # Maintainer: vaishnav <vaishnav.sabari.girish@gmail.com>
 
 pkgname=kanarenshu
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A minimal TUI application to practise Japanese from the terminal."
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nuixyz/kanarenshu/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('3565f7ac42a355d145b35427203f22036f20126974f8269e570fa48bdcd9dd3d')
 
 build() {
   cd "$pkgname-$pkgver"
