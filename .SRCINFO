@@ -3,6 +3,7 @@ pkgbase = arch-rss-notify
 	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Mohabdo21/arch-rss-notify
+	install = arch-rss-notify.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT

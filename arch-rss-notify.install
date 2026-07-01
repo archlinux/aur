@@ -1,0 +1,21 @@
+post_install() {
+	echo ""
+	echo "==> To enable and start the user service, run:"
+	echo "    systemctl --user enable --now rss-notify.service"
+	echo ""
+}
+
+post_upgrade() {
+	echo ""
+	echo "==> After upgrade, restart the user service:"
+	echo "    systemctl --user daemon-reload"
+	echo "    systemctl --user restart rss-notify.service"
+	echo ""
+}
+
+pre_remove() {
+	echo ""
+	echo "==> Before removing, disable and stop the user service:"
+	echo "    systemctl --user disable --now rss-notify.service"
+	echo ""
+}

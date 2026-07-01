@@ -9,6 +9,7 @@ url='https://github.com/Mohabdo21/arch-rss-notify'
 license=('MIT')
 depends=('libnotify')
 makedepends=('go' 'git')
+install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Mohabdo21/arch-rss-notify/archive/v$pkgver.tar.gz")
 sha256sums=('be46e6f42d258c2bc1e24446949e70ca637ca5e4c5fbf6e010b00c5eab3e086c')
 
