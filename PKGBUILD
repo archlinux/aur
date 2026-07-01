@@ -86,3 +86,6 @@ package() {
   fi
   install -Dm644 config/config.toml "$pkgdir/usr/share/doc/$pkgname/examples/config.toml"
 }
+
+# Updated for v0.4.0: blockchain audit log, count/unique/head/tail/json commands,
+# numeric filter comparison, fish-style autosuggestion, --help/--version flags
