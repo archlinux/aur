@@ -1,6 +1,6 @@
 pkgbase = dogma-bin
 	pkgdesc = Bridges secrets from vault backends and infrastructure outputs into sops-encrypted files deployed to NixOS machines (binary package)
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/x71c9/dogma
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = dogma-bin
 	depends = glibc
 	provides = dogma
 	conflicts = dogma
-	source_x86_64 = dogma-x86_64-2.1.1.tar.gz::https://github.com/x71c9/dogma/releases/download/v2.1.1/dogma-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 4526d0a31b97dc442c531b6384a0ebd14b100d4704cb65d78413d80337eb5434
-	source_aarch64 = dogma-aarch64-2.1.1.tar.gz::https://github.com/x71c9/dogma/releases/download/v2.1.1/dogma-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 52eeebd9b07302ab89eaa857be39a145894c6f76327cba6a2ca8ce3d12de012c
+	source_x86_64 = dogma-x86_64-2.1.2.tar.gz::https://github.com/x71c9/dogma/releases/download/v2.1.2/dogma-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 74c6fc07bcba6872049965daafc056498eb7998d8b3c33d79e610c53e914a35a
+	source_aarch64 = dogma-aarch64-2.1.2.tar.gz::https://github.com/x71c9/dogma/releases/download/v2.1.2/dogma-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4caa816c1537ba265ca5d570d782d2ef2ec33e3b798a6a8a417cbf1da642f669
 
 pkgname = dogma-bin
