@@ -1,13 +1,13 @@
 pkgbase = swiss-army-knife
 	pkgdesc = A collection of small but powerful command-line tools
-	pkgver = 1.1.0.3
+	pkgver = 1.1.0.4
 	pkgrel = 1
 	url = https://github.com/flajann2/swiss-army-knife
 	arch = x86_64
 	license = MIT
 	makedepends = ghc
 	depends = ghc-libs
-	source = swiss-army-knife-1.1.0.3.tar.gz::https://hackage.haskell.org/package/swiss-army-knife-1.1.0.3/swiss-army-knife-1.1.0.3.tar.gz
-	sha256sums = 52b2cdb01e0e657079cb611cd317d7d114db83b7b9fe34d509c44483fbcbb234
+	source = swiss-army-knife-1.1.0.4.tar.gz::https://hackage.haskell.org/package/swiss-army-knife-1.1.0.4/swiss-army-knife-1.1.0.4.tar.gz
+	sha256sums = ccb7de74aec3497c4de1d2c4a832d261954420ae53885f5209e6a30289619d9f
 
 pkgname = swiss-army-knife
