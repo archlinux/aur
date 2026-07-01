@@ -1,7 +1,7 @@
 # Maintainer: VintellX <vin@vintellx.com>
 
 pkgname=vinmail
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Interactive Bash-based mail client for msmtp with multi-account management and GPG support."
 arch=('any')
@@ -34,6 +34,10 @@ package() {
         "${pkgdir}/usr/lib/vinmail/accounts.sh"
     install -Dm644 usr/lib/vinmail/compose.sh \
         "${pkgdir}/usr/lib/vinmail/compose.sh"
+    install -Dm644 usr/lib/vinmail/drafts.sh \
+        "${pkgdir}/usr/lib/vinmail/drafts.sh"
+    install -Dm644 usr/lib/vinmail/reply.sh \
+        "${pkgdir}/usr/lib/vinmail/reply.sh"
 
     install -Dm644 usr/share/vinmail/account.conf.template \
         "${pkgdir}/usr/share/vinmail/account.conf.template"
