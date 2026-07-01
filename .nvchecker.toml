@@ -1,0 +1,5 @@
+[regexplain-bin]
+source = "github"
+github = "kapilpokhrel/regexplain"
+use_latest_release = true
+prefix = "v"
