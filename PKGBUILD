@@ -2,7 +2,7 @@
 pkgname=komi-store-bin
 _pkgname=Komi-Store
 _orgi_name=github-store
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="A free, open-source app store for GitHub releases — browse, discover, and install apps with one click. Powered by Kotlin and Compose Multiplatform for Android & Desktop.(Prebuilt version)"
 arch=('x86_64')
@@ -26,20 +26,24 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1-${CARCH}.pkg.tar.zst"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d46a1b8275fcde65d7954476557fbcb2b1c036c50d288857f00ee83a610713a6'
+sha256sums=('fd2f2ab8974a7497d7a644087075eb6728e858d737b8cd81ab1f68c21323a0d2'
             'b76d13cfeadef3a08745465c31ad8047d0039a1759d56af45953c8e507d34365')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    sed -i "s/Icon=${_orgi_name}/Icon=${pkgname%-bin}/g" "${srcdir}/opt/${_orgi_name}/${_orgi_name}.desktop"
-    rm -rf "${srcdir}/opt/${_orgi_name}/bin/${_orgi_name}-launcher.sh"
+    rm -rf "${srcdir}/opt/${pkgname%-bin}/bin/${_orgi_name}-launcher.sh"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_orgi_name}/"{bin,lib} "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_orgi_name}/${_orgi_name}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/opt/${_orgi_name}/${_orgi_name}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    cp -a "${srcdir}/opt/${pkgname%-bin}/"{bin,lib} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+		_extension="${_i##*.}"
+		_icon_path="${_i#*share/icons/}"
+		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
+	done
 }
