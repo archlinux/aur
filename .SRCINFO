@@ -1,6 +1,6 @@
 pkgbase = requestly-git
 	pkgdesc = Debug your network request across all platforms and browsers using a single app.(Use syetem-wide electron)
-	pkgver = 26.6.8.r0.g224ff8f
+	pkgver = 26.6.29.r0.g96f930b
 	pkgrel = 1
 	url = https://requestly.com/
 	arch = x86_64
@@ -13,7 +13,8 @@ pkgbase = requestly-git
 	makedepends = python-setuptools
 	makedepends = curl
 	makedepends = jq
-	depends = electron23
+	depends = electron42
+	depends = nodejs
 	depends = java-runtime
 	depends = python
 	provides = requestly
