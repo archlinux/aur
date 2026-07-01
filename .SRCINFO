@@ -1,0 +1,20 @@
+pkgbase = withsecrets-bin
+	pkgdesc = Get rid of .env files. Pass env directly from GCP, AWS, Azure, Bitwarden and OpenBao.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/mistweaverco/withsecrets
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = kuba
+	provides = kuba-bin
+	provides = withsecrets
+	provides = ws
+	conflicts = kuba-bin
+	source_x86_64 = withsecrets-bin-2.0.0.tar.gz::https://github.com/mistweaverco/withsecrets/releases/download/v2.0.0/ws-linux-amd64
+	sha256sums_x86_64 = a3ec0981b4a429043384dcdac4ac0d5b05f00ff18a0e58f1fe3b0f6710a8bc42
+	source_i686 = withsecrets-bin-2.0.0.tar.gz::https://github.com/mistweaverco/withsecrets/releases/download/v2.0.0/ws-linux-386
+	sha256sums_i686 = a3ec0981b4a429043384dcdac4ac0d5b05f00ff18a0e58f1fe3b0f6710a8bc42
+
+pkgname = withsecrets-bin
