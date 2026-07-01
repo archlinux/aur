@@ -1,0 +1,25 @@
+pkgbase = irondict
+	pkgdesc = Fast local multi-dictionary lookup with fuzzy headword search — CLI and GUI
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://github.com/DrPandemic/irondict
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = fontconfig
+	depends = freetype2
+	depends = expat
+	depends = zlib
+	depends = bzip2
+	depends = libpng
+	depends = brotli
+	optdepends = albert: launcher integration ("d word" to search the dictionaries)
+	source = https://github.com/DrPandemic/irondict/archive/refs/tags/v0.8.4.tar.gz
+	source = v0.8.4.tar.gz.asc::https://github.com/DrPandemic/irondict/releases/download/v0.8.4/v0.8.4.tar.gz.asc
+	validpgpkeys = E98D18E745656B40CDEE33BD9C53D2EE5DE74E65
+	sha256sums = 98a1a430f45e9be6d59874066d8601fdf8130a4be8afdfb2626757dc0641b94e
+	sha256sums = SKIP
+
+pkgname = irondict
