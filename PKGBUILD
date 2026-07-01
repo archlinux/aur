@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=quadrant-bin
 _pkgname=Quadrant
-pkgver=26.6.2
+pkgver=26.7.0
 pkgrel=1
 pkgdesc="An easy way to manage your Minecraft modpacks, written in React and Rust.(Prebuilt version)"
 arch=(
@@ -21,14 +21,14 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}-stable/${_pkgname}-${pkgver}-stable-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}-stable/${_pkgname}-${pkgver}-stable-1.x86_64.rpm")
-sha256sums_aarch64=('8c7b608064ed62a1a2a8283cf20b7208d813f6788be917ea9f37b9d58e8dacbd')
-sha256sums_x86_64=('5bdb1dd00f9e8ddaa54eeac720207b9d747ecd2a2c2ee00254d6b7fb0a3a6a9d')
+sha256sums_aarch64=('c29ff5b79198aec21e2cb4cdc66651805f7c0e946de8a2cb434734065104c054')
+sha256sums_x86_64=('c3b05fc80177e886db74257c8b6c9d39070293d38d353e7cc18bf0dfa34b9900')
 prepare() {
     sed -i "s/${pkgname%-bin}_next/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}_next" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/usr/lib" "${pkgdir}/usr"
+    cp -a "${srcdir}/usr/lib" "${pkgdir}/usr"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
