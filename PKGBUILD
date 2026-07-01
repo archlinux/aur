@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=novelwriter-bin
 _pkgname=novelWriter
-pkgver=26.1
+pkgver=26.1.1
 _pyver=3.14
 pkgrel=1
 pkgdesc="A markdown-like document editor for writing novels.(Prebuilt version)"
@@ -21,21 +21,20 @@ depends=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_all.deb"
 )
-sha256sums=('c7dc70e18d80db9895f6b6714553bc471cc5a46ab313bc0b48d96487976ee180')
+sha256sums=('9ced1ec02e19400b5b54a2c1ed4b8dc6ac629ee4bf5231feb9858d1d6fcce440')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm755 -d "${pkgdir}/usr/lib/python${_pyver}/site-packages"
-    cp -Pr --no-preserve=ownership "${srcdir}/usr/lib/python3/dist-packages/"* "${pkgdir}/usr/lib/python${_pyver}/site-packages"
-    _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}."* \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icons/}/apps"
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/mimetypes/application-x-${pkgname%-bin}-project."* \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icons/}/mimetypes"
-    done
+    cp -a "${srcdir}/usr/lib/python3/dist-packages/"* "${pkgdir}/usr/lib/python${_pyver}/site-packages"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+		_extension="${_i##*.}"
+		_icon_path="${_i#*share/icons/}"
+		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
+	done
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/doc/${pkgname%-bin}/"* -t "${pkgdir}/usr/share/doc/${pkgname%-bin}"
 }
