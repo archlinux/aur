@@ -3,7 +3,7 @@
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=listmonk-bin
-pkgver=6.1.0
+pkgver=6.2.0
 pkgrel=1
 pkgdesc='Self-hosted newsletter and mailing list manager with a modern dashboard (binary release)'
 url="https://github.com/knadh/listmonk"
@@ -21,7 +21,7 @@ source=("listmonk-$pkgver.toml::$url/raw/v$pkgver/config.toml.sample"
 sha256sums=('5ab5c9c813b826d331d9ffdd7d2462cf1fe57db3918d4b1d636620c3968e430f'
             '5cfc186438df2408ed88a5bec3a9a4b5f2afb0d3aec41c4cc63b2f5eb810b3cb'
             '4852f206b7763ba047ba123d663cadb806f437967154ebe837845198b3266533')
-sha256sums_x86_64=('08f44f8f2c598cbef76c948dcb319df235296a07d49a49be3253d65c16d26ff0')
+sha256sums_x86_64=('ce78c89d8aac0df3ffe0e110b008e7bb5dae13e6ad0c57b43aa7094971e8698e')
 #sha256sums_aarch64=('')
 #sha256sums_armv6h=('')
 #sha256sums_armv7h=('')
