@@ -31,14 +31,20 @@ pkgver() {
 }
 
 build() {
-   cd "${srcdir}/${_pkgname}"
-   cmake -DCMAKE_BUILD_TYPE=Release -S . -B ./build -GNinja
-   cmake --build ./build --config Release --target ServerMain IndexBuilderMain
+   local cmake_options=(
+      -B build
+      -S ${_pkgname}
+      -W no-dev
+      -D CMAKE_BUILD_TYPE=None
+      -D CMAKE_CXX_FLAGS="$CXXFLAGS -fmacro-prefix-map=$(pwd)/="
+      -GNinja
+   )
+   cmake "${cmake_options[@]}"
+   cmake --build build --target qlever-server qlever-index
 }
 
 package() {
-   cd "${srcdir}/${_pkgname}"
-   install -Dm0755 ./build/ServerMain "$pkgdir/usr/bin/qlever-server"
-   install -Dm0755 ./build/IndexBuilderMain "$pkgdir/usr/bin/qlever-index"
+   install -Dm0755 build/qlever-server "$pkgdir/usr/bin/qlever-server"
+   install -Dm0755 build/qlever-index "$pkgdir/usr/bin/qlever-index"
 }
 
