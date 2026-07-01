@@ -33,6 +33,9 @@ package() {
   # Install custom logo icon to pixmaps (standard for standalone icons)
   install -Dm644 images/kde-webapp-gen-icon-logo.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
   
+  # Install custom logo icon to hicolor icons theme
+  install -Dm644 images/kde-webapp-gen-icon-logo.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+  
   # Install desktop entry shortcut
   install -d "${pkgdir}/usr/share/applications"
   cat <<EOF > "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
