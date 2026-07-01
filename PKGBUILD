@@ -1,5 +1,5 @@
 pkgname=garmin-tracker-rs
-pkgver=1.3.12
+pkgver=1.3.13
 pkgrel=1
 pkgdesc='Sync your devices and track your strength training'
 arch=('x86_64')
@@ -40,5 +40,5 @@ package() {
   cp -a Garmin\ Tracker_${pkgver}_*/data/* "${pkgdir}"
 
   cd "$srcdir/${pkgname}/resources"
-  install -Dm644 99-garmin-tracker-rs.rules /etc/udev/rules.d/99-garmin-tracker-rs.rules
+  install -Dm644 99-garmin-tracker-rs.rules "$pkgdir/etc/udev/rules.d/99-garmin-tracker-rs.rules"
 }
