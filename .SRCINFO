@@ -1,24 +1,14 @@
 pkgbase = rebased-zh-bin
-	pkgdesc = Standalone JetBrains-based Git client with bundled Chinese language pack
+	pkgdesc = Chinese language pack for Rebased
 	pkgver = 1.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DetachHead/rebased
 	arch = x86_64
 	license = Apache-2.0
-	depends = fontconfig
-	depends = giflib
-	depends = hicolor-icon-theme
-	depends = libdbusmenu-glib
-	depends = ttf-font
-	optdepends = xdg-utils: open URLs from IDE
-	provides = rebased
+	depends = rebased-bin>=1.1.5-2
 	provides = rebased-zh
-	conflicts = rebased
-	conflicts = rebased-bin
 	options = !strip
-	source = rebased-1.1.5-x86_64.tar.gz::https://github.com/DetachHead/rebased/releases/download/1.1.5/rebased.tar.gz
 	source = localization-zh.jar::https://raw.githubusercontent.com/duanluan/aur-packages/main/packages/rebased-zh-bin/assets/1.1.5/localization-zh.jar
-	sha256sums = 4133a31809c8e911d219742b7b6f3317f9df647768aa32cc62b51e062b62173a
 	sha256sums = 0bd128f0fc74ef29343edd972151353ea9673247a4194ae8905f0df15d0c0a0c
 
 pkgname = rebased-zh-bin
