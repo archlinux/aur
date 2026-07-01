@@ -1,6 +1,6 @@
 pkgbase = python-transformers
 	pkgdesc = State-of-the-art pretrained models for inference and training
-	pkgver = 5.12.0
+	pkgver = 5.12.1
 	pkgrel = 1
 	url = https://github.com/huggingface/transformers
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = python-transformers
 	optdepends = python-tf-keras: Support for models in Keras 2 (e.g. BART)
 	optdepends = python-tf2onnx: TensorFlow support
 	optdepends = python-hf-xet: xethub support
-	source = python-transformers-5.12.0.tar.gz::https://github.com/huggingface/transformers/archive/refs/tags/v5.12.0.tar.gz
-	sha256sums = 75b54c02ac39ef9894b7adfe6ec246bd417a04a33c3cdcedf3b904acb21f1d7a
+	source = python-transformers-5.12.1.tar.gz::https://github.com/huggingface/transformers/archive/refs/tags/v5.12.1.tar.gz
+	sha256sums = c27e47bc2edd859d72c8fdc3fd464b5eb9c8bf4a9756192a9b5ebe496fd5bf9f
 
 pkgname = python-transformers
