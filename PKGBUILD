@@ -3,8 +3,8 @@
 
 pkgname=aionui-bin
 _pkgname=aionui
-pkgver=2.1.26
-pkgrel=2
+pkgver=2.1.27
+pkgrel=1
 pkgdesc="Transform your command-line experience into a modern, efficient AI Chat interface."
 arch=('x86_64')
 url="https://github.com/iOfficeAI/AionUi" # <-- 示例网址，请替换为官方项目地址
@@ -23,7 +23,7 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}_${pkgver}_linux_amd64.deb::${url}/releases/download/v${pkgver}/AionUi-${pkgver}-linux-amd64.deb")
 
-sha256sums_x86_64=('96d28f2f951aaa1bde65a8f1691127038d29bd7a439d4a4c71cf0249eefa011e')
+sha256sums_x86_64=('e5a31bba545783faf2c12acb574c7cba4ead75d9bb3df195f365ff65c679868f')
 
 package() {
   # .deb 包本质是一个 ar 归档文件，先用 ar 命令解开
@@ -33,7 +33,7 @@ package() {
   # bsdtar 会自动保留正确的文件权限
   bsdtar -xf data.tar.xz -C "${pkgdir}/"
 
-  sed -i 's#^Icon=aionui#Icon=/usr/share/icons/hicolor/1024x1024/apps/AionUi.png#' "${pkgdir}/usr/share/applications/AionUi.desktop"
+  sed -i 's#^Icon=[aA]ion[uU]i#Icon=/usr/share/icons/hicolor/1024x1024/apps/AionUi.png#' "${pkgdir}/usr/share/applications/AionUi.desktop"
   sed -i 's/^Comment=\${description}/Comment=AionUi for agent/' "${pkgdir}/usr/share/applications/AionUi.desktop"
 
   # (可选但推荐) 移除 Debian 特有的 lintian 目录，它在 Arch Linux 中没有用处
