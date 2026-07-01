@@ -1,7 +1,7 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-git
-pkgver=2.4.1.0.r1.ge2ae3fea
+pkgver=2.4.1.0.r64.g7dca1370
 pkgrel=1
 pkgdesc="Shelly: A Modern Arch Package Manager (git version)"
 arch=('x86_64')
@@ -24,13 +24,15 @@ depends=(
     'dconf'
     'gnupg'
     'zstd'
+    'json-glib'
 )
 optdepends=(
     'flatpak: For supporting flatpak implementation.'
     'fish: Fish shell completions'
     'zsh: Zsh shell completions'
+    'libstarfish: dependency viewer for arch packages'
 )
-makedepends=('dotnet-sdk-10.0' 'git' 'clang' 'gettext')
+makedepends=('dotnet-sdk-10.0' 'git' 'clang' 'gettext' 'vala' 'meson' 'ninja')
 
 source=("${pkgname}::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=development")
 
@@ -47,7 +49,8 @@ build() {
 
   dotnet publish Shelly.Cli/Shelly.Cli.csproj -c Release -o out-cli --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
   dotnet publish Shelly.Gtk/Shelly.Gtk.csproj -c Release -r linux-x64 -o out --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
-  dotnet publish Shelly-Notifications/Shelly-Notifications.csproj -c Release -r linux-x64 -o out-notify --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
+  meson setup --prefix=/usr build-notify Shelly.Notifications
+  meson compile -C build-notify
   dotnet publish Shelly.Keys/Shelly.Keys.csproj -c Release -r linux-x64 -o out-keys --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
 
   # Generate shell completions from the freshly built CLI binary
@@ -63,7 +66,7 @@ build() {
   done
   
   # Compile tray service translations
-    for po_file in Shelly-Notifications/po/*.po; do
+    for po_file in Shelly.Notifications/po/*.po; do
       if [ -f "$po_file" ]; then
         lang=$(basename "$po_file" .po)
         msgfmt "$po_file" -o "shelly-notifications-${lang}.mo"
@@ -78,7 +81,7 @@ package() {
   install -Dm755 out/shelly-ui "$pkgdir/usr/bin/shelly-ui"
 
   # Install Shelly-Notifications binary
-  install -Dm755 out-notify/Shelly-Notifications "$pkgdir/usr/bin/shelly-notifications"
+  install -Dm755 build-notify/shelly-notifications "$pkgdir/usr/bin/shelly-notifications"
 
   # Install Shelly.Cli binary
   install -Dm755 out-cli/shelly "$pkgdir/usr/bin/shelly"
