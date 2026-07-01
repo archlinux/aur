@@ -6,7 +6,7 @@ pkgdesc="Electron application to download Sharepoint videos (especially meant fo
 arch=('x86_64')
 url="https://github.com/kylon/Sharedown"
 license=('gpl')
-depends=(ffmpeg yt-dlp)
+depends=(ffmpeg yt-dlp fuse2)
 options=(!strip)
 source_x86_64=(
 	"https://github.com/kylon/Sharedown/releases/download/${pkgver}/${pkgname}-${pkgver}.AppImage"
