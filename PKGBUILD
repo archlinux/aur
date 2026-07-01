@@ -1,6 +1,6 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=soredowe
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Experimental GUI for pacman/AUR users who prefer it (Wayland/Vulkan)"
 arch=('x86_64' 'aarch64')
