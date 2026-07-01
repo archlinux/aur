@@ -1,7 +1,7 @@
 # Maintainer: Nakildias <nakildiaspro@gmail.com>
 pkgname=sc0710-dkms-git
 _pkgname=sc0710
-pkgver=2026.06.26.1.r146.ba67d19
+pkgver=2026.06.30.1.r150.4349a69
 pkgrel=1
 pkgdesc="DKMS driver for Elgato 4K60 Pro MK.2 & 4K Pro (sc0710) capture cards"
 arch=('x86_64')
@@ -59,4 +59,7 @@ package() {
     install -Dm755 scripts/sc0710-firmware.sh "${pkgdir}/usr/lib/sc0710/sc0710-firmware.sh"
     install -Dm755 scripts/sc0710-firmware-lib.sh "${pkgdir}/usr/lib/sc0710/sc0710-firmware-lib.sh"
     install -Dm755 scripts/extract-firmware.sh "${pkgdir}/usr/lib/sc0710/extract-firmware.sh"
+    install -Dm755 scripts/sc0710-dkms-lib.sh "${pkgdir}/usr/lib/sc0710/sc0710-dkms-lib.sh"
+    install -Dm755 scripts/sc0710-dkms-ensure.sh "${pkgdir}/usr/lib/sc0710/sc0710-dkms-ensure.sh"
+    install -Dm644 aur/sc0710-dkms.hook "${pkgdir}/usr/share/libalpm/hooks/72-sc0710-dkms-ensure.hook"
 }

@@ -146,6 +146,32 @@ setup_4k_pro() {
     fi
 }
 
+_dkms_cleanup() {
+    local ver_item
+
+    lsmod | grep -q "^${DRV_NAME} " && rmmod "$DRV_NAME" 2>/dev/null || true
+
+    for ver_item in $(dkms status 2>/dev/null | awk -F'[:,]' "/^${DRV_NAME}/ {print \$1}" | tr -d ' '); do
+        dkms remove "$ver_item" --all >/dev/null 2>&1 || \
+            rm -rf "/var/lib/dkms/$(echo "$ver_item" | tr ',' '/')" 2>/dev/null
+    done
+    rmdir "/var/lib/dkms/${DRV_NAME}" 2>/dev/null || true
+    rm -rf /usr/src/${DRV_NAME}-*
+
+    # Drop stale modules left when an older DKMS version was removed without --all.
+    find /usr/lib/modules -path "*/updates/dkms/${DRV_NAME}.ko*" -delete 2>/dev/null || true
+    find /usr/lib/modules -path "*/kernel/drivers/media/pci/${DRV_NAME}.ko*" -delete 2>/dev/null || true
+    depmod -a 2>/dev/null || true
+}
+
+pre_install() {
+    _dkms_cleanup
+}
+
+pre_upgrade() {
+    _dkms_cleanup
+}
+
 post_install_common() {
     local card_name=""
 
@@ -175,10 +201,27 @@ post_install_common() {
 
 post_install() {
     post_install_common
+    _dkms_finalize
 }
 
 post_upgrade() {
     post_install_common
+    _dkms_finalize
+}
+
+_dkms_finalize() {
+    local lib="/usr/lib/sc0710/sc0710-dkms-lib.sh"
+
+    if [[ -f "$lib" ]]; then
+        # shellcheck source=/dev/null
+        source "$lib"
+        sc0710_dkms_ensure_installed
+    fi
+
+    for dep in videodev videobuf2-common videobuf2-v4l2 videobuf2-vmalloc snd-pcm; do
+        modprobe "$dep" 2>/dev/null || true
+    done
+    modprobe "$DRV_NAME" 2>/dev/null || true
 }
 
 remove_firmware_services() {
@@ -209,5 +252,6 @@ remove_firmware_services() {
 }
 
 pre_remove() {
+    _dkms_cleanup
     remove_firmware_services
 }
