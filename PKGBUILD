@@ -32,7 +32,7 @@ makedepends=(
   cmake
   extra-cmake-modules
   git
-  go
+  go # make sure you're using the 'original' Go toolchain! this does not build with `gcc-go`.
 )
 
 # use any of:
