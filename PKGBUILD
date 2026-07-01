@@ -3,18 +3,24 @@
 # AUR Package Repository: https://github.com/patrickjaja/claude-desktop-bin
 
 pkgname=claude-desktop-bin
-pkgver=1.17282.0
+pkgver=1.17377.1
 pkgrel=1
-pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
+pkgdesc="Claude Desktop - Linux (unofficial, repackaged from the official Linux .deb)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
 license=('custom:Claude')
 depends=('alsa-lib' 'gtk3' 'nss')
-makedepends=('unzip')
+# Cowork's VM deps (QEMU + UEFI firmware + virtiofsd) mirror the official Claude
+# Desktop .deb's Recommends — kept soft (optdepends), so we stay close to
+# upstream and don't force ~400 MB of QEMU on Chat/Code-only installs. The
+# firmware package is arch-specific (edk2-ovmf on x86_64, edk2-aarch64 on
+# aarch64); qemu-system-x86 / qemu-system-aarch64 ship the matching emulator
+# (NOT qemu-base — it has no emulator binary and is x86_64-only). /dev/kvm
+# access still needs the user in the `kvm` group.
 optdepends=('nodejs: System Node.js for MCP extensions that require specific versions (Electron bundles Node.js as fallback)'
             'sqlite: Project detection (detectedProjects) — without it, periodic ENOENT errors spam logs/main.log'
-            'claude-code: Claude Code CLI for agentic coding features (npm i -g @anthropic-ai/claude-code)'
-            'claude-cowork-service: Enables Cowork VM features on Linux'
+            'claude-code: optional pinned Claude Code CLI. NOT required — the app auto-downloads a checksum-verified CLI matching its required version. To force a system binary set CLAUDE_CODE_LOCAL_BINARY=/path/to/claude (npm i -g @anthropic-ai/claude-code)'
+            'virtiofsd: Cowork agent workspace VM — shares $HOME into the guest'
             'xdotool: Computer Use input (X11), cursor reading + XWayland fallback (Wayland), Quick Entry positioning'
             'scrot: Computer Use screenshots (X11)'
             'imagemagick: Computer Use screenshot fallback and crop (import/convert)'
@@ -28,66 +34,94 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
             'gnome-screenshot: Computer Use screenshot fallback (GNOME)'
             'hyprland: Quick Entry cursor positioning on Hyprland Wayland (hyprctl)'
             'socat: Faster Quick Entry toggle via socket (~2ms vs ~25ms python3 — not required)')
+optdepends_x86_64=('qemu-system-x86: Cowork agent workspace VM (needs /dev/kvm + user in kvm group)'
+                   'edk2-ovmf: Cowork agent workspace VM UEFI firmware (OVMF)')
+optdepends_aarch64=('qemu-system-aarch64: Cowork agent workspace VM (needs /dev/kvm + user in kvm group)'
+                    'edk2-aarch64: Cowork agent workspace VM UEFI firmware (AAVMF)')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
-_electron_ver=42.0.0
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.17282.0/claude-desktop-1.17282.0-linux.tar.gz" "electron-v${_electron_ver}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-x64.zip")
-sha256sums_x86_64=('3e050a411e602634ba2fd84d4128ceb758513e44c50a0ce7e6635ea259ef10d3' '83c7178dba2d0ce77e13743bf86beda75c6141caeeadb4340e1888bc96298b4b')
-source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.17282.0/claude-desktop-1.17282.0-linux-aarch64.tar.gz" "electron-v${_electron_ver}-linux-arm64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-arm64.zip")
-sha256sums_aarch64=('20ad32ecbf79aff742605ae506c53c9afd4a36dbc4622c47eeadad817a39bf50' '5531da08123d60d50c833997842e8371970bebe7d29261e00eaa83de948332b4')
+install="$pkgname.install"
+# The pre-patched tarball already contains the official Electron runtime (under
+# electron/) and the patched app (under app/). No separate Electron zip source.
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.17377.1/claude-desktop-1.17377.1-linux.tar.gz")
+sha256sums_x86_64=('6cf14d9ff3d4b7778d5f7cb01f8da610c6024dea44a390ffa5cc976ad8f760dd')
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.17377.1/claude-desktop-1.17377.1-linux-aarch64.tar.gz")
+sha256sums_aarch64=('1227b6e90a225417be77a327bbecd9939f96808f4a4bd264a31b506e1cf598c4')
 options=('!strip')
 
 package() {
     cd "$srcdir"
 
-    case "$CARCH" in
-        x86_64)  _electron_arch="x64" ;;
-        aarch64) _electron_arch="arm64" ;;
-    esac
-
-    # Install bundled Electron runtime
+    # Install the bundled Electron runtime (from the official .deb, shipped in the
+    # tarball's electron/ dir): the Electron binary, chrome-sandbox, the .so files,
+    # paks, chromium locales, snapshots, etc.
     install -dm755 "$pkgdir/usr/lib/$pkgname"
-    unzip -q "$srcdir/electron-v${_electron_ver}-linux-${_electron_arch}.zip" -d "$pkgdir/usr/lib/$pkgname"
+    cp -r electron/* "$pkgdir/usr/lib/$pkgname/"
 
-    # Rename the Electron binary to "claude". NOTE: this does NOT set the
-    # window identity. The live X11 WM_CLASS / Wayland app_id is "claude-desktop"
+    # Rename the Electron binary to "claude". NOTE: this does NOT set the window
+    # identity. The live X11 WM_CLASS / Wayland app_id is "claude-desktop"
     # (verified via xprop/wmctrl), because Chromium's GetXdgAppId() reads the
     # app's desktopName ("claude-desktop.desktop" in app.asar package.json),
     # strips ".desktop", and ignores the binary basename / --class. The rename
     # is kept only as a cosmetic argv[0] / a systemd-scope identity hint that
     # matches APP_ID="claude". StartupWMClass below must equal the real app_id.
-    mv "$pkgdir/usr/lib/$pkgname/electron" \
-       "$pkgdir/usr/lib/$pkgname/claude"
+    # (The .deb names this binary "claude-desktop"; the old Electron zip named it
+    # "electron". Handle whichever is present.)
+    if [ -f "$pkgdir/usr/lib/$pkgname/claude-desktop" ]; then
+        mv "$pkgdir/usr/lib/$pkgname/claude-desktop" "$pkgdir/usr/lib/$pkgname/claude"
+    elif [ -f "$pkgdir/usr/lib/$pkgname/electron" ]; then
+        mv "$pkgdir/usr/lib/$pkgname/electron" "$pkgdir/usr/lib/$pkgname/claude"
+    fi
 
-    # Set SUID on chrome-sandbox (required by Chromium's sandbox)
+    # Set SUID on chrome-sandbox (required by Chromium's sandbox). The .install
+    # hook re-asserts root ownership + 4755 at install time (cp loses it here).
     if [ -f "$pkgdir/usr/lib/$pkgname/chrome-sandbox" ]; then
         chmod 4755 "$pkgdir/usr/lib/$pkgname/chrome-sandbox"
     fi
 
-    # Install application files (pre-patched) into Electron's resources directory
+    # Install application files (pre-patched) into Electron's resources directory.
+    # The official .deb keeps app.asar at usr/lib/claude-desktop/resources/; our
+    # tarball ships it under app/ (app.asar + app.asar.unpacked + locales), so
+    # create resources/ first (electron/ has no resources/ subdir, only resources.pak).
+    install -dm755 "$pkgdir/usr/lib/$pkgname/resources"
     cp -r app/* "$pkgdir/usr/lib/$pkgname/resources/"
 
     # Install launcher script (Wayland/X11 detection, env setup, lock cleanup)
     install -Dm755 "$srcdir/launcher/claude-desktop" "$pkgdir/usr/bin/claude-desktop"
 
     # Install desktop entry.
-    # Filename matches APP_ID in the launcher ("claude") so xdg-desktop-portal
-    # can resolve our systemd-scope / cgroup identity (app-claude-PID.scope).
-    # StartupWMClass, however, must equal the live window app_id "claude-desktop"
-    # (from the app's desktopName, not the binary) or GNOME/KDE can't bind the
-    # dock icon to this entry - see issue #148.
+    # Filename is "claude-desktop.desktop" to match the live window app_id
+    # "claude-desktop" (Chromium's GetXdgAppId() reads the app's desktopName
+    # "claude-desktop.desktop" from app.asar package.json, strips ".desktop").
+    # On native Wayland there is no WM_CLASS, so KWin/GNOME match by app_id; if
+    # the .desktop basename doesn't equal the app_id the dock icon is generic and
+    # Alt+Tab shows a duplicate (issue #148). StartupWMClass=claude-desktop fixes
+    # the X11/XWayland path. Content mirrors the official Claude Desktop .deb.
     install -dm755 "$pkgdir/usr/share/applications"
-    cat > "$pkgdir/usr/share/applications/claude.desktop" << 'EOF'
+    cat > "$pkgdir/usr/share/applications/claude-desktop.desktop" << 'EOF'
 [Desktop Entry]
 Name=Claude
-Comment=Claude AI Desktop Application
-Exec=claude-desktop %u
+Comment=Desktop application for Claude.ai
+GenericName=AI Assistant
+Keywords=AI;Chat;Assistant;Claude;Code;LLM;
+Exec=claude-desktop %U
 Icon=claude-desktop
 Type=Application
-Terminal=false
-Categories=Office;Utility;Chat;
-MimeType=x-scheme-handler/claude;
+StartupNotify=true
 StartupWMClass=claude-desktop
+# second-instance just focuses mainWindow; suppress GNOME's default "New Window" item
+SingleMainWindow=true
+Categories=Utility;Development;
+MimeType=x-scheme-handler/claude;
+Actions=NewChat;NewCode;
+
+[Desktop Action NewChat]
+Name=New chat
+Exec=claude-desktop claude://claude.ai/new
+
+[Desktop Action NewCode]
+Name=New Claude Code session
+Exec=claude-desktop claude://code/new
 EOF
 
     # Install icon (included in tarball)

@@ -1,0 +1,74 @@
+# pacman install hook for claude-desktop-bin.
+#
+# Mirrors what the official Claude Desktop .deb's postinst does on Linux:
+#   1. chrome-sandbox must be SUID root (4755) for Chromium's setuid sandbox.
+#   2. On AppArmor 4.0+ systems (Ubuntu 24.04+ / current Arch), write an
+#      unconfined userns profile so Chromium's namespace sandbox works when the
+#      kernel restricts unprivileged user namespaces. flags=(unconfined) does NOT
+#      confine the app — it only allowlists it for userns. Same pattern as
+#      Chrome / VS Code / 1Password. On AppArmor 3.x the profile is unparseable
+#      and unnecessary (the userns restriction is 24.04+ only), so it is skipped.
+#   3. Refresh the desktop + icon caches so the launcher entry appears.
+
+_APPARMOR_PROFILE="/etc/apparmor.d/claude-desktop"
+_SANDBOX="/usr/lib/claude-desktop-bin/chrome-sandbox"
+
+_fix_sandbox() {
+    if [ -f "$_SANDBOX" ]; then
+        chown root:root "$_SANDBOX" 2>/dev/null || true
+        chmod 4755 "$_SANDBOX" 2>/dev/null || true
+    fi
+}
+
+_install_apparmor() {
+    # Gate on AppArmor 4.0 support: the abi/4.0 feature file only ships with
+    # apparmor >= 4.0, so its presence means the parser can read this profile.
+    if [ -f /etc/apparmor.d/abi/4.0 ]; then
+        cat > "$_APPARMOR_PROFILE" <<'EOF'
+abi <abi/4.0>,
+include <tunables/global>
+
+profile claude-desktop /usr/lib/claude-desktop-bin/claude flags=(unconfined) {
+  userns,
+
+  include if exists <local/claude-desktop>
+}
+EOF
+        chmod 0644 "$_APPARMOR_PROFILE"
+        # Load only when AppArmor is active; never fail the install on parse errors.
+        if command -v aa-enabled >/dev/null 2>&1 && aa-enabled --quiet 2>/dev/null; then
+            apparmor_parser -r -W -T "$_APPARMOR_PROFILE" 2>/dev/null || true
+        fi
+    fi
+}
+
+_remove_apparmor() {
+    if [ -f "$_APPARMOR_PROFILE" ]; then
+        if command -v aa-enabled >/dev/null 2>&1 && aa-enabled --quiet 2>/dev/null; then
+            apparmor_parser -R "$_APPARMOR_PROFILE" 2>/dev/null || true
+        fi
+        rm -f "$_APPARMOR_PROFILE"
+    fi
+}
+
+_refresh_caches() {
+    command -v update-desktop-database >/dev/null 2>&1 && update-desktop-database -q /usr/share/applications 2>/dev/null || true
+    command -v gtk-update-icon-cache >/dev/null 2>&1 && gtk-update-icon-cache -q /usr/share/icons/hicolor 2>/dev/null || true
+}
+
+post_install() {
+    _fix_sandbox
+    _install_apparmor
+    _refresh_caches
+}
+
+post_upgrade() {
+    _fix_sandbox
+    _install_apparmor
+    _refresh_caches
+}
+
+post_remove() {
+    _remove_apparmor
+    _refresh_caches
+}
