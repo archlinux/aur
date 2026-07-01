@@ -1,5 +1,5 @@
 pkgname=augenblick-bin
-pkgver=0.2.11
+pkgver=0.2.12
 pkgrel=1
 pkgdesc="Fullscreen eye-blink overlay for X11 and Wayland (binary package)"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('augenblick')
 source_x86_64=("augenblick-x86_64-$pkgver.tar.gz::https://github.com/x71c9/augenblick/releases/download/v$pkgver/augenblick-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("augenblick-aarch64-$pkgver.tar.gz::https://github.com/x71c9/augenblick/releases/download/v$pkgver/augenblick-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=("2f70f85cbb8889e7ace04fe1cf78c5feae630a628f04b5a35328cac8e83560b1")
-sha256sums_aarch64=("995a26700937968ffb94738cd70b6264953633e4d74bc515c8a0be61399ca8a6")
+sha256sums_x86_64=("46f0e5f8751084d0fdfa477d1b545b78321fa02a465edac83376a945242933bf")
+sha256sums_aarch64=("6ef25e986623070558268014a1a03ec3513107e900f56d2af7e80ac14bfe3039")
 
 package() {
   if [[ $CARCH == "x86_64" ]]; then
