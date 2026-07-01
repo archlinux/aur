@@ -1,6 +1,6 @@
 # Maintainer: NetExperts <support@netexperts.com.au>
 pkgname=netexperts-support-bin
-pkgver=1.3.1
+pkgver=1.4.8
 pkgrel=1
 pkgdesc="NetExperts Remote Support, Linux Outbound Client. Based on RustDesk (AGPL-3.0)."
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('netexperts-support')
 conflicts=('netexperts-support' 'rustdesk' 'rustdesk-bin')
 options=('!strip')
 source=("https://netexperts.com.au/opensource/netexperts-support-${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('865ee60e8d667c69e76aa1d7f753c977663e99b8ea12d4a2ba1cc0f3c76c69d6')
+sha256sums=('4a21a150d164df562d7637960ef0f4f33afcd164a5ab4a03c28c20f10fd63b81')
 
 package() {
     # Install application bundle
