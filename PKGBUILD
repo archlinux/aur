@@ -48,7 +48,7 @@ depends=(
 #  'lib32-libjxl'
 #  'lib32-onevpl'
   'lib32-libmodplug'
-#  'lib32-libopenmpt'
+  'lib32-libopenmpt'
   'lib32-libplacebo'
   'lib32-libpulse'
   'lib32-rav1e'
@@ -193,6 +193,7 @@ build() {
     --enable-libopencore-amrnb \
     --enable-libopencore-amrwb \
     --enable-libopenjpeg \
+    --enable-libopenmpt \
     --enable-libopus \
     --enable-libplacebo \
     --enable-libpulse \
@@ -227,7 +228,6 @@ build() {
 #    --enable-frei0r \
 #    --enable-libjxl \
 #    --enable-libopenh264
-#    --enable-libopenmpt \
 #    --enable-librubberband \
 #    --enable-libsnappy \
 #    --enable-libsoxr \
