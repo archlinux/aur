@@ -1,11 +1,12 @@
 pkgbase = noctalia-git
         pkgdesc = Lightweight Wayland shell built directly on Wayland and OpenGL ES
         pkgver = 5.0.0.r1191.g39a4a335c
-        pkgrel = 12
+        pkgrel = 13
         url = https://github.com/noctalia-dev/noctalia
         arch = x86_64
         license = MIT
         makedepends = git
+        makedepends = libwireplumber
         makedepends = meson
         makedepends = ninja
         makedepends = pkgconf
