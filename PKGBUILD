@@ -1,6 +1,6 @@
 # Maintainer: VBen <devel@velmeden.info>
 pkgname=loxone-app-bin
-pkgver=17.1.1.16704
+pkgver=17.1.2.17593
 pkgrel=1
 pkgdesc="Loxone Smart Home Control App"
 arch=('x86_64' 'aarch64')
