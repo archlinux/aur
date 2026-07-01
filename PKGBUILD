@@ -15,7 +15,7 @@ conflicts=('sunder')
 source=("LICENSE-$pkgver::https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}/LICENSE"
         "README-$pkgver.md::https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}/README.md"
         "${pkgname%-bin}_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0' '6f7d2915d59f3641ab8ba97d2efad348ef04fed2d6b605650d3a59e491ac931b' 'd489b4d81ed856bce3d4c722b0898ed9da6171e2b1e2de837e56c705adfdcb71')
+sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0' '6f7d2915d59f3641ab8ba97d2efad348ef04fed2d6b605650d3a59e491ac931b' '66b7209ce502f5baabc21d2f445ba5cad6b884ff94ef987744a43b6ab072666b')
 
 package() {
     cd "$srcdir"
