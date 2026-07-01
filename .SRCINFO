@@ -1,0 +1,19 @@
+pkgbase = proclama
+	pkgdesc = Presentador multimedia moderno y rápido diseñado para iglesias, con control remoto
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Gargadon/Proclama
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = qt6-tools
+	makedepends = ninja
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = qt6-svg
+	depends = qt6-webengine
+	depends = openssl
+	source = proclama-1.1.0.tar.gz::https://github.com/Gargadon/Proclama/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = c7ea198b6370aae62121fdc3e226937af7b6a56e5caa1edf58d0e01567f146d4
+
+pkgname = proclama
