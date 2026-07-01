@@ -1,20 +1,21 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=mages-bin
 _pkgname=mages
-pkgver=4.8.5
+pkgver=4.8.6
 pkgrel=1
 pkgdesc="Mages desktop (early testing)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mlm-games/mages"
 license=('GPL3')
-depends=('fuse2' 'zlib')
+depends=()
+optdepends=('fuse2: or fuse3 — runtime dependency for AppImage FUSE mount')
 provides=('mages')
 conflicts=('mages')
 options=('!strip')
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.AppImage::https://github.com/mlm-games/mages/releases/download/${pkgver}/mages-${pkgver}-x86_64.AppImage")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.AppImage::https://github.com/mlm-games/mages/releases/download/${pkgver}/mages-${pkgver}-aarch64.AppImage")
-sha256sums_x86_64=('e62fa5fa45cca02950adf60e18a9bfd242c17e19423afa0de4a778d184b45a25')
-sha256sums_aarch64=('e43c82ba72dbd0b4856668e7314fe6b6d5b314ddc90bcad9f2dc2bb69870f89e')
+sha256sums_x86_64=('8781a8e3c0b3bebb3735ff2b75a0db4368048516824fa5a375d96cf8fa460aff')
+sha256sums_aarch64=('52b86c1468dca862825a00480a0ca4f48b47eda5bfe228d34cc1cacc0c28a501')
 prepare() {
   chmod +x "${_pkgname}-${pkgver}-${CARCH}.AppImage"
   "./${_pkgname}-${pkgver}-${CARCH}.AppImage" --appimage-extract
