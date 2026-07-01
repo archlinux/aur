@@ -3,7 +3,7 @@
 pkgbase=kanidm-bin
 pkgname=(kanidm-clients-bin kanidm-unixd-clients-bin kanidm-server-bin kanidm-bin)
 pkgver=1.10.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Modern identity management platform (prebuilt binaries)'
 arch=(x86_64 aarch64)
 url='https://kanidm.com'
@@ -70,6 +70,13 @@ package_kanidm-server-bin() {
                  "${pkgdir}/usr/lib/systemd/system/kanidmd.service"
   install -Dm644 "${srcdir}/${src}/config/server.toml.example" \
                  "${pkgdir}/etc/kanidm/server.toml.example"
+  # Web UI static assets. kanidmd is built with the release_linux profile,
+  # which expects these at /usr/share/kanidm/ui/hpkg; without them the daemon
+  # fails to start when serving the web UI.
+  install -d "${pkgdir}/usr/share/kanidm/ui"
+  cp -r "${srcdir}/${src}/share/kanidm/ui/hpkg" \
+        "${pkgdir}/usr/share/kanidm/ui/hpkg"
+  chmod -R u=rwX,go=rX "${pkgdir}/usr/share/kanidm/ui/hpkg"
 }
 
 package_kanidm-bin() {
