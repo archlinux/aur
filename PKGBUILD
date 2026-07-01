@@ -3,52 +3,53 @@
 pkgname=rebased-bin
 _pkgname=rebased
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone JetBrains-based Git client (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/DetachHead/rebased'
 license=('Apache-2.0')
 depends=('fontconfig' 'giflib' 'hicolor-icon-theme' 'libdbusmenu-glib' 'ttf-font')
-optdepends=('xdg-utils: open URLs from the IDE')
+optdepends=('xdg-utils: open URLs from IDE')
 provides=('rebased')
 conflicts=('rebased')
 options=('!strip')
-source=("${_pkgname}-${pkgver}-${CARCH}.AppImage::https://github.com/DetachHead/rebased/releases/download/${pkgver}/Rebased-x86_64.AppImage")
-sha256sums=('009ba6c3286bb74903f93ac6e6e1454b2989b7e62ea5786812d8c844d958cee7')
+source=("${_pkgname}-${pkgver}-${CARCH}.tar.gz::https://github.com/DetachHead/rebased/releases/download/${pkgver}/rebased.tar.gz")
+sha256sums=('4133a31809c8e911d219742b7b6f3317f9df647768aa32cc62b51e062b62173a')
 
 package() {
-  local appimage="${srcdir}/${_pkgname}-${pkgver}-${CARCH}.AppImage"
-  local extract_dir="${srcdir}/appimage-extract"
+  local app_dir="${srcdir}/idea-IC-261.25134.SNAPSHOT"
+  local install_root="${pkgdir}/opt/${_pkgname}"
 
-  chmod +x "${appimage}"
-  rm -rf "${extract_dir}"
-  install -dm755 "${extract_dir}"
-
-  (
-    cd "${extract_dir}"
-    APPIMAGE_EXTRACT_AND_RUN=1 "${appimage}" --appimage-extract >/dev/null
-  )
-
-  install -dm755 "${pkgdir}/opt/${_pkgname}"
-  install -Dm755 "${appimage}" "${pkgdir}/opt/${_pkgname}/Rebased-x86_64.AppImage"
+  install -dm755 "${install_root}"
+  cp -a "${app_dir}/." "${install_root}/"
 
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/rebased" <<'SCRIPT'
 #!/bin/sh
-exec env APPIMAGE_EXTRACT_AND_RUN=1 APPIMAGELAUNCHER_DISABLE=1 \
-  /opt/rebased/Rebased-x86_64.AppImage "$@"
+set -eu
+
+plugin_src="/opt/rebased/plugins/localization-zh/lib/localization-zh.jar"
+plugin_dst="${XDG_DATA_HOME:-${HOME}/.local/share}/detachhead/IdeaIC1.1/localization-zh.jar"
+
+if [ -r "${plugin_src}" ]; then
+  mkdir -p "$(dirname "${plugin_dst}")"
+  if [ ! -f "${plugin_dst}" ] || ! cmp -s "${plugin_src}" "${plugin_dst}"; then
+    cp "${plugin_src}" "${plugin_dst}"
+  fi
+fi
+
+exec /opt/rebased/bin/idea "$@"
 SCRIPT
 
-  install -Dm644 "${extract_dir}/squashfs-root/usr/bin/idea.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/rebased.svg"
-  install -Dm644 "${extract_dir}/squashfs-root/rebased.png" "${pkgdir}/usr/share/pixmaps/rebased.png"
-  install -Dm644 "${extract_dir}/squashfs-root/usr/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
-  install -Dm644 "${extract_dir}/squashfs-root/usr/NOTICE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE.txt"
+  install -Dm644 "${app_dir}/bin/idea.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/rebased.svg"
+  install -Dm644 "${app_dir}/bin/idea.png" "${pkgdir}/usr/share/pixmaps/rebased.png"
+  install -Dm644 "${app_dir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/rebased.desktop" <<DESKTOP
 [Desktop Entry]
 Type=Application
 Version=1.0
 Name=Rebased
-Comment=Standalone Git client based on the IntelliJ platform
+Comment=Standalone Git client based on IntelliJ platform
 Exec=rebased %f
 Icon=rebased
 Terminal=false
@@ -56,6 +57,5 @@ StartupNotify=true
 StartupWMClass=jetbrains-rebased
 Categories=Development;IDE;VersionControl;
 Keywords=git;vcs;jetbrains;
-X-AppImage-Version=${pkgver}
 DESKTOP
 }
