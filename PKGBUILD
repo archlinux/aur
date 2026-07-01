@@ -2,7 +2,7 @@
 pkgbase=wireview-hwmon
 pkgname=('wireview-hwmon' 'wireview-hwmon-dkms')
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="WireView Pro II hwmon daemon, CLI and DKMS kernel module"
 arch=('x86_64')
 url="https://github.com/emaspa/wireview-hwmon"
@@ -28,6 +28,13 @@ package_wireview-hwmon() {
   install -Dm755 wireviewctl "$pkgdir/usr/bin/wireviewctl"
   install -Dm644 debian/wireviewd.service "$pkgdir/usr/lib/systemd/system/wireviewd.service"
   install -Dm644 99-wireview-hwmon.rules "$pkgdir/usr/lib/udev/rules.d/99-wireview-hwmon.rules"
+  # The kernel module is a self-registering platform driver with no modalias,
+  # so nothing autoloads it. Load it when the daemon starts (a no-op if the
+  # dkms package isn't installed). Guarded so it stays a no-op should a future
+  # release ship this line in the unit itself.
+  grep -q '^ExecStartPre=' "$pkgdir/usr/lib/systemd/system/wireviewd.service" ||
+    sed -i '/^ExecStart=/i ExecStartPre=-/sbin/modprobe wireview_hwmon' \
+      "$pkgdir/usr/lib/systemd/system/wireviewd.service"
 }
 
 package_wireview-hwmon-dkms() {
@@ -38,4 +45,8 @@ package_wireview-hwmon-dkms() {
   install -Dm644 wireview_hwmon.c "$pkgdir/usr/src/$pkgbase-$pkgver/wireview_hwmon.c"
   install -Dm644 dkms.conf       "$pkgdir/usr/src/$pkgbase-$pkgver/dkms.conf"
   install -Dm644 Makefile.dkms   "$pkgdir/usr/src/$pkgbase-$pkgver/Makefile"
+  # Platform driver has no device-triggered autoload — pull it in on boot.
+  install -d "$pkgdir/usr/lib/modules-load.d"
+  printf 'wireview_hwmon\n' > "$pkgdir/usr/lib/modules-load.d/wireview-hwmon.conf"
+  chmod 644 "$pkgdir/usr/lib/modules-load.d/wireview-hwmon.conf"
 }
