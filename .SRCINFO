@@ -1,6 +1,6 @@
 pkgbase = fcitx5-sitelen-pona
 	pkgdesc = fcitx5 table for translating latin characters into toki pona's sitelen pona glyphs
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Toastberries/fcitx5-sitelen-pona
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = fcitx5-sitelen-pona
 	depends = fcitx5
 	depends = fcitx5-chinese-addons
 	depends = hicolor-icon-theme
-	source = fcitx5-sitelen-pona-1.1.0::https://github.com/Toastberries/fcitx5-sitelen-pona/archive/v1.1.0.tar.gz
-	sha256sums = bdf9cd2a6925690d4702c4657ae29c7bf0b146f528b8542d4a606f894e6edef0
+	source = fcitx5-sitelen-pona-1.2.0::https://github.com/Toastberries/fcitx5-sitelen-pona/archive/v1.2.0.tar.gz
+	sha256sums = 7f9a02ed31017cc2d929b3116bbdaeb537430a09437916e17ed5ad755d9e3746
 
 pkgname = fcitx5-sitelen-pona
