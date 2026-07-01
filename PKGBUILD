@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=orca-ide-bin
 _pkgname=Orca
-pkgver=1.4.98
+pkgver=1.4.111
 _electronversion=42
 pkgrel=1
 pkgdesc="ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription. Available on desktop and mobile.(Prebuilt version.Use system-wide electron)"
@@ -33,29 +33,28 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
 sha256sums=('ff1b611f80580d49f4b97e93a97b24eb050b0671b26b8afe16341fab699112f3'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('586a725bdf22639b130e956d80d55c76c14843969996aa0d2dca60fa78bab29b')
-sha256sums_x86_64=('a64e908613ab13029f3d888e0e58cef50cf73a7eea7cdeaad291072d5e5e3917')
+sha256sums_aarch64=('d1f86dede12f50282d4f8ae30a17f7b546b3218dff7ed08a475ab4a91fc0fee9')
+sha256sums_x86_64=('ee87e6844fc6219c1bf585a295fd4250691ddfd3595709a99df911b7ba04b83a')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
     local _app_dir=$(_get_app_dir)
-    local _main_exe=""    
-    if [[ -n "${_app_dir}" ]]; then
-        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
-    fi
-    if [[ -n "${_main_exe}" ]]; then
-        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
-        if [[ -n "${_elec_ver}" ]]; then
-            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
-                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
-            else
-                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
-            fi
-        fi
-    else
+    local _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)
+    if [[ -z "${_main_exe}" ]]; then
         echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
+        return
+    fi
+    local _elec_ver=$(strings "${_main_exe}" | grep -oP 'Electron/\K[0-9]+' | head -1)
+    if [[ -z "${_elec_ver}" ]]; then
+        echo -e "\033[1;33mNote: Could not determine Electron version.\033[0m"
+        return
+    fi
+    if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
+        echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
+    else
+        echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
     fi
 }
 prepare() {
