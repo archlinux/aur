@@ -1,0 +1,5 @@
+LICENSE-*
+*.deb
+src/
+pkg/
+*.pkg.tar.*
