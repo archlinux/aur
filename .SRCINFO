@@ -1,10 +1,11 @@
 pkgbase = vibe-bin
 	pkgdesc = Transcribe audio / video offline using OpenAI Whisper
 	pkgver = 3.0.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://thewh1teagle.github.io/vibe/
 	arch = x86_64
 	license = MIT
+	makedepends = patchelf
 	depends = ffmpeg
 	depends = openblas
 	depends = vulkan-icd-loader
