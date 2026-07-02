@@ -1,6 +1,6 @@
 # Maintainer: Carlos Prieto Ortiz <prietus@live.com>
 pkgname=irkt-bin
-pkgver=0.2.9
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Modern terminal IRC client: full IRCv3, SASL/CertFP, inline images (Kitty/iTerm2/Sixel)"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ conflicts=('irkt' 'irkt-git')
 source_x86_64=("irkt-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/irkt-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("irkt-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/irkt-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('50850b7eced12def3cd1f0b9117335411028e2f555c9ab2398b87c99428a2424')
-sha256sums_aarch64=('d473490e58065d56d73b5505b0941eadc31339b86e8aaea003ff4e284be81981')
+sha256sums_x86_64=('5da86b4ad791f5db82495f34c977b42b72fa0832e9c70466f77afffcf931fd69')
+sha256sums_aarch64=('088d28adb313fbda3f36310b6de4bc3ea38f063f7924ef8c237f51112d8d7e91')
 
 package() {
 	install -Dm0755 irkt "$pkgdir/usr/bin/irkt"
