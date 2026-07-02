@@ -1,7 +1,7 @@
 pkgbase = run0-sudo-shim
 	pkgdesc = An imitation of sudo, using run0 internally - WARNING: !!! THIS REPLACES SUDO !!!
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LordGrimmauld/run0-sudo-shim
 	arch = any
 	license = BSD-3-Clause
@@ -10,7 +10,7 @@ pkgbase = run0-sudo-shim
 	provides = sudo
 	conflicts = sudo
 	conflicts = run0-sudo-shim-git
-	source = https://github.com/LordGrimmauld/run0-sudo-shim/archive/refs/tags/1.4.2.tar.gz
+	source = run0-sudo-shim-1.4.2.tar.gz::https://github.com/LordGrimmauld/run0-sudo-shim/archive/refs/tags/1.4.2.tar.gz
 	sha256sums = ddb7e16e95f8f2a3eba2d7cc489919e3a636586b93d41e113778ce3b8caf2f70
 
 pkgname = run0-sudo-shim
