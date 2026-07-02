@@ -6,7 +6,7 @@ _pkgname=repeater
 pkgname=${_appname}-bin
 pkgdesc="xargs, but different..! Better at some things (repeating stuff), worse at others (not repeating stuff)."
 
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,11 +26,11 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[0]}_${_pkgvername}")
 source_i686=("${_appname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[1]}_${_pkgvername}")
 source_aarch64=("${_appname}-${arch[2]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[2]}_${_pkgvername}")
-sha256sums=('facb2fb0e6e0e70bd7ea37899636c072cf59cf43f90adee55cf07a83fbd42324'
+sha256sums=('c9587acf415800a7a5eaf2ed937e196fa83268bd97642d37f3ce47f3d8e773c7'
             'bc5378230a80daace8ac9ea68f538fb33997fd2abf0fa5d91905365b6b8924dc')
-sha256sums_x86_64=('8dd45b5ffb503dbe422bbeaed25df981a6627ad2b93257df926fbc75359af4e9')
-sha256sums_i686=('85d11cb6fe9c9eeb6a0c0ef4c9f3dbb109ac0aa7eae2d444c5c5a77e9e82a95e')
-sha256sums_aarch64=('9b5ddd0a82791dd087136947da1a57d7fdbe8f2257c7f98cea843722020a21b3')
+sha256sums_x86_64=('77b09af388950fc1fa31e888a794d5ca150a54646d0ca18ff771b1e8e3a5751d')
+sha256sums_i686=('2834abbd5d0c0a722b65b9f6cd12447a61e8b31bea4b06d85d2a4930424a0fe1')
+sha256sums_aarch64=('a5178ccaf1c659cae0e2e606ff40402d82658a46b82f1e02bb161f3f166aa48f')
 
 
 package() {
