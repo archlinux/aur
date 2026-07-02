@@ -1,6 +1,6 @@
 pkgbase = tmax-bin
 	pkgdesc = A powerful cross-platform multi-terminal app with tiling layouts, floating panels, and a keyboard-driven workflow. (Prebuilt version. Use system-wide electron)
-	pkgver = 1.11.1
+	pkgver = 1.11.2
 	pkgrel = 1
 	url = https://inbarr.github.io/tmax/
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = tmax-bin
 	depends = electron30
 	depends = python
 	depends = nodejs
-	provides = tmax=1.11.1
+	provides = tmax=1.11.2
 	conflicts = tmax
 	options = !emptydirs
-	source = tmax-1.11.1.rpm::https://github.com/InbarR/tmax/releases/download/v1.11.1/tmax-1.11.1-1.x86_64.rpm
+	source = tmax-1.11.2.rpm::https://github.com/InbarR/tmax/releases/download/v1.11.2/tmax-1.11.2-1.x86_64.rpm
 	source = tmax.sh
-	sha256sums = abf128e71264fc90c43a3cf03f1cc462115b56fda4900ff0b86fb361b531a6ff
+	sha256sums = 660eab3044b256f3e075162833898e30f8d1bd700e06dda0a7d1b8b320ea3812
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = tmax-bin
