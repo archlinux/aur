@@ -1,6 +1,6 @@
 pkgbase = pass-cli-bin
 	pkgdesc = CLI password and API key manager for folks who live in the command line
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/reyamira/pass-cli
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = pass-cli-bin
 	license = Apache-2.0
 	provides = pass-cli
 	conflicts = pass-cli
-	source_x86_64 = pass-cli-x86_64-0.19.0.tgz::https://github.com/reyamira/pass-cli/releases/download/v0.19.0/pass-cli_0.19.0_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 5447b5d6b3c629bb8d2bffe5b8638dd82f48d7e2c908ed1999a035f9141449f3
-	source_aarch64 = pass-cli-aarch64-0.19.0.tgz::https://github.com/reyamira/pass-cli/releases/download/v0.19.0/pass-cli_0.19.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 50bc18cfeeca128a01a0da9c004bc4c4b5670c055194dab675d216a916485069
+	source_x86_64 = pass-cli-x86_64-0.20.0.tgz::https://github.com/reyamira/pass-cli/releases/download/v0.20.0/pass-cli_0.20.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 3287313ef012aea52e836313cbeab0f6983c1ca00c46cd874818228a24adf962
+	source_aarch64 = pass-cli-aarch64-0.20.0.tgz::https://github.com/reyamira/pass-cli/releases/download/v0.20.0/pass-cli_0.20.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 65991b029f9901623f4ed48855bb5f727d7c72f41be8f05450954a00dfa1ce09
 
 pkgname = pass-cli-bin
