@@ -1,6 +1,6 @@
 pkgbase = mangojuice-bin
 	pkgdesc = A convenient alternative for setting up Mangohud (binary release)
-	pkgver = 0.8.9
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/radiolamp/mangojuice
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mangojuice-bin
 	depends = mangohud
 	provides = mangojuice
 	conflicts = mangojuice
-	source = MangoJuice-0.8.9.zip::https://github.com/radiolamp/mangojuice/releases/download/0.8.9/MangoJuice-AppImagename-x86_64.zip
-	sha256sums = bf68d8fc2577edfe84138f18b7f9a6fe7fcc6b514fa1214d134729e14104ddcd
+	source = MangoJuice-0.9.0.zip::https://github.com/radiolamp/mangojuice/releases/download/0.9.0/MangoJuice-AppImagename-x86_64.zip
+	sha256sums = b0eff8227c1930b37e136e1c3f7c52e62df0689ebaf30d2197801e973acde991
 
 pkgname = mangojuice-bin

@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=mangojuice-bin
-pkgver=0.8.9
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A convenient alternative for setting up Mangohud (binary release)"
 url="https://github.com/radiolamp/mangojuice"
@@ -12,7 +12,7 @@ makedepends=('fuse2')
 provides=("mangojuice")
 conflicts=("mangojuice")
 source=("MangoJuice-$pkgver.zip::$url/releases/download/$pkgver/MangoJuice-AppImagename-x86_64.zip")
-sha256sums=('bf68d8fc2577edfe84138f18b7f9a6fe7fcc6b514fa1214d134729e14104ddcd')
+sha256sums=('b0eff8227c1930b37e136e1c3f7c52e62df0689ebaf30d2197801e973acde991')
 
 prepare() {
   chmod +x ./MangoJuice-*-x86_64.AppImage
