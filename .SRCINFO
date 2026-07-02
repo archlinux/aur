@@ -1,8 +1,8 @@
 pkgbase = easytier-connector
-	pkgdesc = EasyTier Web Connector based on Qt6
+	pkgdesc = 基于 Qt6 的系统托盘应用程序，用于连接 EasyTier Web 控制台（配置服务器）。EasyTier Web Connector based on Qt6.
 	pkgver = 1.0.0
-	pkgrel = 2
-	url = https://gitee.com/myqfeng/et-connector
+	pkgrel = 3
+	url = https://gitee.com/qteasytier/easytier-connector
 	install = easytier-connector.install
 	arch = x86_64
 	license = LGPL3
@@ -11,7 +11,7 @@ pkgbase = easytier-connector
 	depends = qt6-base
 	depends = qt6-svg
 	options = !debug
-	source = easytier-connector::git+https://gitee.com/qteasytier/easytier-connector.git#tag=v1.0.0
+	source = easytier-connector::git+https://gitee.com/qteasytier/easytier-connector.git#tag=1.0.0fix
 	sha256sums = SKIP
 
 pkgname = easytier-connector
