@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **World Cup Top Scorers** — Press `s` in the World Cup view to open a ranked top scorers table with live goal tallies for the 2026 World Cup.
+
+### Changed
+
+### Fixed
+- **World Cup Bracket** — Penalty shootout results now correctly show the advancing team; tied matches decided on penalties are marked with `(p)` in the bracket.
+- **World Cup Bracket** — Remove arrow connector between matchup score and winner label
+
+## [0.30.0] - 2026-06-25
+
 > [!NOTE]
 > Update your Golazo app by running `golazo --update`; and visit the new project website: https://thegolazo.app
 
