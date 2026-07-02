@@ -1,6 +1,6 @@
 pkgbase = skillsdash-bin
 	pkgdesc = Cross-platform TUI for managing AI skills across Claude and Agents providers
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/saeedvaziry/skillsdash
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = skillsdash-bin
 	provides = skillsdash
 	conflicts = skillsdash
 	options = !strip
-	source_x86_64 = https://github.com/saeedvaziry/skillsdash/releases/download/v0.2.0/skillsdash-0.2.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 2c4b9c6ff9f673242326eb4e62bcb3010c8f16e5de7ceca5a3ea88813c1f9d6a
-	source_aarch64 = https://github.com/saeedvaziry/skillsdash/releases/download/v0.2.0/skillsdash-0.2.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 30d5e0c5528299d38681f21a2964bf537fcb68bd716c80eb3df5984351f55b83
+	source_x86_64 = https://github.com/saeedvaziry/skillsdash/releases/download/v0.3.0/skillsdash-0.3.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = cdde12e59cb77ab69430a3ca9e40b73ffc778da33937060edd4bc53edd66882b
+	source_aarch64 = https://github.com/saeedvaziry/skillsdash/releases/download/v0.3.0/skillsdash-0.3.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 59926f57b1002ad3bf56c17482842ef48458f697c8dcecc6661070df52550b00
 
 pkgname = skillsdash-bin
