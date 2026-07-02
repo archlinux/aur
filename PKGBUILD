@@ -1,7 +1,7 @@
 # Contributor: Lex Black <autumn-wind@web.de>
 
 pkgname=opencloud-web
-pkgver=7.1.2
+pkgver=7.1.3
 pkgrel=1
 pkgdesc="Web UI for OpenCloud"
 url="https://github.com/opencloud-eu/web"
@@ -12,7 +12,7 @@ install="opencloud-web.install"
 backup=("var/lib/opencloud-web/config.json")
 source=("${pkgname}::git+https://github.com/opencloud-eu/web.git#tag=v${pkgver/_/-}"
         "config.json")
-sha512sums=('d2f44735e54a7b7641ec7818b32ca0940fe8ee3b6fa211aeaf7e05f7440421d2ff8b3f3f633e10622af58b8355bfbff7bae9963f985d469280a6abeeda839bdc'
+sha512sums=('734820d2e6e4b70888bc3648c16f31f396b06e1dcb92953218300686d071c4a38a18518722eaf201e463b2092a061b0af48be60f39ed1d738c897e9ea8373df8'
             'c3692ff7d3f42af2c42d97d633cd14094c3b6421099b7eb74372ba9959ceca95f69c38da679b908802b7b5a5c2199484bb42ddc028e9e1372fb040fe51683e27')
 
 
