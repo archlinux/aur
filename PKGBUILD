@@ -3,7 +3,7 @@
 _pkgname=proton-drive
 pkgname=$_pkgname-cli
 pkgver=0.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Proton Drive command-line client'
 arch=(x86_64 aarch64)
 url=https://github.com/protondriveapps/sdk
