@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=LanShare
+Comment=Cross-Platform Local Network File Sharing
+Exec=lanshare
+Icon=lanshare
+Terminal=false
+Type=Application
+Categories=Network;FileTransfer;
+StartupNotify=true
