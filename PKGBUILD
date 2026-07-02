@@ -23,31 +23,19 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir"/sdk
-    _cliver=$(git describe --tags --abbrev=0 --match 'cli/v*' | \
-        sed 's|^cli/v||')
-    _jsver=$(git tag -l 'js/v*' --sort=-v:refname | \
-        head -1 | sed 's|^js/v||')
-    _shorthash=$(git rev-parse --short HEAD)
-
-    cd client/js
+    cd "$srcdir"/sdk/client/js
     bun install
-    bun run build
 
-    cd ../../cli
+    cd ../../incubating/account/js
+    bun install
+
+    cd ../../../cli
     bun install --frozen-lockfile
     mkdir -p release
 
-    NODE_ENV=production bun build \
-        --target=bun \
-        --format=esm \
-        --minify \
-        --sourcemap=inline \
-        --define "APP_VERSION='cli-drive-archlinux@$_cliver+$_shorthash'" \
-        --define "SDK_VERSION='js@$_jsver+$_shorthash'" \
-        --define "SENTRY_DSN=''" \
-        src/proton-drive.ts \
-        --outfile=release/proton-drive.js
+    CLI_APP_VERSION_NAME=cli-drive-archlinux \
+    SENTRY_DSN="" \
+    bun run build:bundle
 }
 
 package() {
@@ -60,4 +48,8 @@ EOF
     install -Dm755 -t "$pkgdir"/usr/bin ${_pkgname%-cli}
     install -Dm644 -t "$pkgdir"/usr/share/licenses/$_pkgname ../LICENSE.md
     install -Dm644 -t "$pkgdir"/usr/share/doc/$_pkgname CHANGELOG.md README.md
+
+    cd ../client/js
+    install -Dm644 CHANGELOG.md "$pkgdir"/usr/share/doc/$_pkgname/CHANGELOG-sdk.md
+    install -Dm644 README.md "$pkgdir"/usr/share/doc/$_pkgname/README-sdk.md
 }
