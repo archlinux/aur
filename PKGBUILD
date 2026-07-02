@@ -2,7 +2,7 @@
 _pkgname=metashape-pro
 pkgname=agisoft-${_pkgname}
 pkgver=2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Photogrammetric processing of digital images and 3D spatial data generation software. Professional edition"
 arch=('x86_64')
 url="https://www.agisoft.com/"
@@ -21,7 +21,7 @@ optdepends=('glu: mesa OpenGL lib'
 provides=('agisoft-metashape-pro' 'agisoft-network-monitor' 'agisoft-viewer')
 options=('!strip')
 install=${pkgname}.install
-source=("https://download.agisoft.com/${_pkgname}_${pkgver//./_}_amd64.tar.gz"
+source=("https://s3-eu-west-1.amazonaws.com/download.agisoft.com/${_pkgname}_${pkgver//./_}_amd64.tar.gz"
         "agisoft-metashape-pro-icon-encoded.txt"
         "agisoft-network-monitor-icon-encoded.txt"
         "agisoft-viewer-icon-encoded.txt"
