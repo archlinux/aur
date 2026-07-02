@@ -1,6 +1,6 @@
 pkgbase = jdk25-graalvm-bin
 	pkgdesc = Advanced JDK with ahead-of-time Native Image compilation
-	pkgver = 25.0.2
+	pkgver = 25.1.3
 	pkgrel = 1
 	url = https://www.graalvm.org/
 	install = install_jdk25-graalvm.sh
@@ -10,16 +10,26 @@ pkgbase = jdk25-graalvm-bin
 	depends = ca-certificates-java
 	depends = java-runtime-common
 	depends = java-environment-common
-	optdepends = onnxruntime: machine learning-driven static profiling
+	depends = freetype2
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = libz.so
+	optdepends = alsa-lib: for basic sound support
+	optdepends = libx11: for AWT support
+	optdepends = libxext: for AWT support
+	optdepends = libxi: for AWT support
+	optdepends = libxrender: for AWT support
+	optdepends = libxtst: for AWT support
 	provides = java-runtime=25
 	provides = java-runtime-headless=25
 	provides = java-environment=25
 	options = staticlibs
 	options = !debug
 	options = !strip
-	source_x86_64 = https://download.oracle.com/graalvm/25/archive/graalvm-jdk-25.0.2_linux-x64_bin.tar.gz
-	sha256sums_x86_64 = af545b1bc12ecd24a5ba95e2370da2163e87c4cf13991a482d5b176bf4165c12
-	source_aarch64 = https://download.oracle.com/graalvm/25/archive/graalvm-jdk-25.0.2_linux-aarch64_bin.tar.gz
-	sha256sums_aarch64 = e0e18106fa1d8628d8ba21f548865211d7c8608a3423f7b25cb2aa4eef9abf10
+	source_x86_64 = https://gds.oracle.com/download/graal/25i1/archive/graalvm-jdk-25i1-25.0.3_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = efcb8984be5f72ecf8615641bec720c825a6889957f0b98d95123f563ff77c86
+	source_aarch64 = https://gds.oracle.com/download/graal/25i1/archive/graalvm-jdk-25i1-25.0.3_linux-aarch64_bin.tar.gz
+	sha256sums_aarch64 = cb9889df78cd7e186ab9dfb71e379ae35d89ebcd939e02b6931841c7158d620a
 
 pkgname = jdk25-graalvm-bin

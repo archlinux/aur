@@ -4,8 +4,19 @@
 # Michael Lass <bevan at bi-co dot net>
 
 _major=25
-_minor=0.2
-_build=+10.1
+_minor=1.3
+
+# In the versioning scheme of GraalVM since JDK 25, three version numbers are
+# relevant:
+# - GraalVM release version: "GraalVM 25 Innovation 1" or 25i1
+# - Graal compiler version: "graal 25.1.3"
+# - Base JDK version: "jdk 25.0.3"
+# We track the first (Graal compiler version) with this package since it is what
+# they use in their release notes <https://www.graalvm.org/release-notes/25.1/>.
+
+_release=25i1
+_jdkver=25.0.3
+_build=+9.1
 
 pkgname="jdk${_major}-graalvm-bin"
 pkgver="${_major}.${_minor}"
@@ -15,18 +26,28 @@ arch=('x86_64' 'aarch64')
 url='https://www.graalvm.org/'
 license=('custom')
 
-depends=('ca-certificates-java' 'java-runtime-common' 'java-environment-common')
-optdepends=('onnxruntime: machine learning-driven static profiling')
+depends=(
+    'ca-certificates-java' 'java-runtime-common' 'java-environment-common'
+    'freetype2' 'glibc' 'libgcc' 'libstdc++' 'libz.so'
+)
+optdepends=(
+    'alsa-lib: for basic sound support'
+    'libx11: for AWT support'
+    'libxext: for AWT support'
+    'libxi: for AWT support'
+    'libxrender: for AWT support'
+    'libxtst: for AWT support'
+)
 provides=("java-runtime=${_major}" "java-runtime-headless=${_major}" "java-environment=${_major}")
 options=('staticlibs' !debug !strip)
 install=install_jdk25-graalvm.sh
-source_x86_64=("https://download.oracle.com/graalvm/25/archive/graalvm-jdk-${pkgver}_linux-x64_bin.tar.gz")
-source_aarch64=("https://download.oracle.com/graalvm/25/archive/graalvm-jdk-${pkgver}_linux-aarch64_bin.tar.gz")
-sha256sums_x86_64=('af545b1bc12ecd24a5ba95e2370da2163e87c4cf13991a482d5b176bf4165c12')
-sha256sums_aarch64=('e0e18106fa1d8628d8ba21f548865211d7c8608a3423f7b25cb2aa4eef9abf10')
+source_x86_64=("https://gds.oracle.com/download/graal/${_release}/archive/graalvm-jdk-${_release}-${_jdkver}_linux-x64_bin.tar.gz")
+source_aarch64=("https://gds.oracle.com/download/graal/${_release}/archive/graalvm-jdk-${_release}-${_jdkver}_linux-aarch64_bin.tar.gz")
+sha256sums_x86_64=('efcb8984be5f72ecf8615641bec720c825a6889957f0b98d95123f563ff77c86')
+sha256sums_aarch64=('cb9889df78cd7e186ab9dfb71e379ae35d89ebcd939e02b6931841c7158d620a')
 
 _jvmdir=/usr/lib/jvm/java-${_major}-graalvm
-_jdkdir="graalvm-jdk-${pkgver}${_build}"
+_jdkdir="graalvm-${pkgver}${_build}"
 
 package() {
 
