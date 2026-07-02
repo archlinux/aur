@@ -10,7 +10,7 @@ pkgbase = neo-candy-icons-git
 	conflicts = neo-candy-icons
 	options = !strip
 	options = !emptydirs
-	source = git+https://github.com/erikdubois/neo-candy-icons.git
+	source = neo-candy-icons-git::git+https://github.com/erikdubois/neo-candy-icons.git
 	sha256sums = SKIP
 
 pkgname = neo-candy-icons-git
