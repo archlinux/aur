@@ -9,7 +9,11 @@ url="https://incy.cc/"
 license=('LicenseRef-proprietary')
 depends=('glibc' 'hicolor-icon-theme' 'fontconfig' 'libx11'
          'libxext' 'libxrender' 'libxtst' 'libxi' 'alsa-lib'
-         'gcc-libs' 'libglvnd')
+         'gcc-libs' 'libglvnd' 'polkit')
+optdepends=('iptables: kill switch support'
+            'libnotify: desktop notifications'
+            'python-gobject: Wayland tray support'
+            'libayatana-appindicator: Wayland tray support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip')
