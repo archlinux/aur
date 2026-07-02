@@ -1,6 +1,6 @@
 pkgbase = librarywm-git
 	pkgdesc = A tiling WM for X11 with floating, tiling, and scrolling layouts
-	pkgver = 0.1.r0.geb09b5d
+	pkgver = 0.2.r0.g745259f
 	pkgrel = 1
 	url = https://codeberg.org/kelseythedreamer/librarywm
 	arch = x86_64
