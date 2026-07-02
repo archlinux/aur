@@ -2,7 +2,7 @@
 
 pkgname=carta-appimage
 _pkgname="carta"
-pkgver=5.0.3
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Cube Analysis and Rendering Tool for Astronomy"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source_x86_64=("${pkgname}-v${pkgver}-stable.${pkgrel}.tgz::https://github.com/C
               )
 noextract=("${_appimage}")
 sha256sums_x86_64=(
- '91f25893a1719f2973dbb13f0e5bbac6343abf7041da6071d24a7cf08614611f'
+ '6615931e583f165a162c61e085b2a19d2a723bcf9f233cc8c12347d3a0a625cf'
  '26c03bc049c15fc5b9e52d791a06f1a6bc32f89edc8f8c701ab0aadf66e85b82')
                    
 
