@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A terminal UI for managing GitHub Gists"
 
-pkgver=0.14.2
+pkgver=0.15.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('922bab245a5c993006615fa4965f523da9e18514a90cc8be4ab87400a4f3e1bc')
-sha256sums_aarch64=('3555777304486cb134076c4d1339b46346124e35108778f92605f2441b952747')
+sha256sums_x86_64=('4cdb17c5a03341bd48afc24e425dc3f3739f6869a68658ee9847540452a2b45b')
+sha256sums_aarch64=('43f96ea43340050c8c40193938af344e995517186ec77cebfc6e3d3b3cf7e28f')
 
 
 case ${CARCH} in
