@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simpleshell-git
 _pkgname=SimpleShell
-pkgver=0.4.25.r2.g2786a97
+pkgver=0.4.32.r0.g6eff602
 _electronversion=40
 _nodeversion=22
 pkgrel=1
@@ -41,6 +41,30 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
+_set_build_env() {
+	export electronDist="/usr/lib/electron${_electronversion}"
+    export ELECTRON_OVERRIDE_DIST_PATH="${electronDist}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export HOME="${srcdir}/.electron-gyp"
+    export CARGO_HOME="${srcdir}/.cargo"
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        export BUN_CONFIG_REGISTRY="https://registry.npmmirror.com"
+        export npm_config_registry="https://registry.npmmirror.com"
+        export BUN_INSTALL_DISABLE_DEFAULT_REGISTRY_FALLBACK=1
+        export npm_config_nodejs_org_mirror="https://npmmirror.com/mirrors/node"
+        export NVM_NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+        export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron"
+        export npm_config_electron_mirror="https://npmmirror.com/mirrors/electron/"
+        export BUN_BINARY_MIRROR_OVERRIDE="https://npmmirror.com/-/binary/"
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+        export RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static"
+        export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup"
+    fi
+}
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
         -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
@@ -56,52 +80,35 @@ prepare() {
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
     " "${srcdir}/${pkgname%-git}.sh"
-    _ensure_local_nvm
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
         --pkgdesc="${pkgdesc}" \
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    local HOME="${srcdir}/.electron-gyp"
-    rm -rf bunfig.toml bun.lockb || true
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-        export BUN_REGISTRY_MIRROR="https://registry.npmmirror.com"
-        export BUN_BINARY_MIRROR_OVERRIDE="https://registry.npmmirror.com/-/binary/"
-        export BUN_INSTALL_REWRITE="https://registry.npmjs.org/*=https://registry.npmmirror.com/\$1"
-        export BUN_INSTALL_NO_CACHE=1
-        export BUN_INSTALL_DISABLE_DEFAULT_REGISTRY_FALLBACK=1
-        export BUN_CACHE_DIR="${srcdir}/.bun_cache"
-    fi
     #sed -i "s/logo.ico/${_pkgname}.png/g" src/main.js
     #sed -i "3i\const configDir = process.env.XDG_CONFIG_HOME || path.join(require('os').homedir(), '.config');" src/core/configManager.js
     #sed -i "3i\const configDir = process.env.XDG_CONFIG_HOME || path.join(require('os').homedir(), '.config');" src/core/utils/logger.js
     #sed -i 's/return path.join(path.dirname(app.getPath("exe")), "config.json");/return path.join(configDir, "simpleshell", "config.json");/g' src/core/configManager.js
     #sed -i 's/return path.join(path.dirname(process.execPath), "log");/return path.join(configDir, "simpleshell", "log");/g' src/core/utils/logger.js
+    _set_build_env
+    _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    rustup default stable
     bun install
-    bun add -D @electron-forge/plugin-local-electron
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    local electronDist="/usr/lib/electron${_electronversion}"
-    sed -i "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
-    {\\
-        name: \"@electron-forge/plugin-local-electron\",\\
-        config: {\\
-            electronPath: \'${electronDist}\',\\
-        },\\
-    }," forge.config.*
+    _set_build_env
+    _ensure_local_nvm
+    sed -i '/name: "@electron-forge\/plugin-local-electron"/,/^    },/d' forge.config.*
     NODE_ENV=development    bun run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -exec dirname {} + | head -n 1)
-    cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
+	local _app_dir=$(_get_app_dir)
+	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
     install -Dm644 "${srcdir}/${pkgname//-/.}/src/assets/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
