@@ -18,8 +18,8 @@ pkgdesc="Calibrates display color"
 url="https://github.com/eoyilmaz/displaycal-py3"
 license=("GPL-3.0-or-later")
 
-pkgver=nightly.r160.g5467911
-pkgrel=3
+pkgver=nightly.r174.gcc17894
+pkgrel=1
 arch=("x86_64")
 
 
@@ -43,12 +43,6 @@ depends=(
 	python-send2trash
 	python-wxpython
 	python-zeroconf
-)
-
-
-optdepends=(
-    "colord-kde: for KDE Plasma"
-	"gnome-color-manager: for GNOME"
 )
 
 
