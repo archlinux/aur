@@ -26,7 +26,7 @@ sha256sums=('SKIP')
 install=authendesk.install
 
 build() {
-    cd "AuthenDesk-v$pkgver"
+    cd "AuthenDesk-$pkgver"
     cmake -B build -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-    cd "AuthenDesk-v$pkgver"
+    cd "AuthenDesk-$pkgver"
     install -Dm755 build/AuthenDesk "${pkgdir}/usr/bin/AuthenDesk"
     install -Dm644 assets/app_icon.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/authendesk.png"
     install -Dm644 assets/authendesk.desktop "${pkgdir}/usr/share/applications/authendesk.desktop"
