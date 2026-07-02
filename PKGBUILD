@@ -1,6 +1,6 @@
 # Maintainer: fridge <echo dW5sb3ZhYmxlX2ZyaWRnZTM1NkBhbGVlYXMuY29tCg== | base64 -d>
 pkgname="simple-signer-git"
-pkgver="1.5.5.r13.de2609e"
+pkgver="1.7.0.r2.d79d660"
 pkgrel="2"
 pkgdesc="Sign PDF files using a simple GUI."
 url="https://github.com/schorschii/Simple-Signer"
@@ -39,7 +39,7 @@ build()
 package()
 {
     install -dv "$pkgdir/opt/${pkgname%-git}"
-    cp -afv "$pkgname/venv/"* "$pkgdir/opt/${pkgname%-git}"
+    cp -afLv "$pkgname/venv/"* "$pkgdir/opt/${pkgname%-git}"
     install -Dvm755 "${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
     install -Dvm644 "${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
     install -Dvm644 "${pkgname%-git}.png" "$pkgdir/usr/share/icons/${pkgname%-git}.png"
