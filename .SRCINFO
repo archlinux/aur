@@ -9,10 +9,10 @@ pkgbase = radegast-ng
 	makedepends = dos2unix
 	makedepends = recode
 	depends = mono
-	source = https://bitbucket.org/cinderblocks/radegast/downloads/Radegast-${pkgver}.tbz
+	source = https://github.com/cinderblocks/radegast/releases
 	source = radegast.desktop
 	source = radegast
-	sha256sums = f55e4a066e1186de188c979fbf23fca5dd34288d53e19fd65e887093a56777e1
+	sha256sums = 9c79f355b34b91df48cb8dad6f13f539c8f38f616c19a688bcd236b12c720bf1
 	sha256sums = 8f599f04f263361cd45f7af53cfae633881bfa92ba3f806a0ca675d1ee131567
 	sha256sums = 73cdc80cc4abeb6ba368b09285ff5120ffeb6052a0a5e5ac0febf08c38bb0e96
 
