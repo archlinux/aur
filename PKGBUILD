@@ -1,7 +1,7 @@
 # Maintainer: Xefreh
 pkgname=zcode-appimage
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="ZCode desktop app packaged from the upstream AppImage"
 arch=('x86_64' 'aarch64')
 url="https://zcode.z.ai/en"

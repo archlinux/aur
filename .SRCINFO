@@ -1,7 +1,7 @@
 pkgbase = zcode-appimage
 	pkgdesc = ZCode desktop app packaged from the upstream AppImage
 	pkgver = 3.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zcode.z.ai/en
 	arch = x86_64
 	arch = aarch64
