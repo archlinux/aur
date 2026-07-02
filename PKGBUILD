@@ -3,7 +3,7 @@
 pkgname=rudder-agent
 pkgver="9.1.2"
 # pkgver="9.1.0~rc2~git202604100941"
-pkgrel=1
+pkgrel=2
 pkgdesc='Configuration management and audit tool - agent for Rudder managed systems'
 arch=('x86_64' 'aarch64')
 url='https://www.rudder.io'
@@ -32,7 +32,7 @@ prepare() {
   touch ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/rudder-sources.tar.bz2
   #
   # Example applying patch only to cfengine source code
-  # cp ${srcdir}/../9901_cfengine_manjaro-os.patch ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/patches/cfengine/
+  cp ${srcdir}/../9901_cfengine_archarm-os.patch ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/patches/cfengine/
   #
   # Untarring source tarball for applying additional build patches
   # tar -jf ${srcdir}/../rudder-sources-${pkgver}.tar.bz2 -C ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/ -x
