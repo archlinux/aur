@@ -4,7 +4,7 @@
 # Official Documentation: https://actualbudget.org/docs/install/
 _npmscope=@actual-app
 _npmpkg=sync-server
-_npmver=26.6.0
+_npmver=26.7.0
 
 pkgname=actual-server
 pkgver=${_npmver//-/_}
@@ -26,7 +26,7 @@ source=(
 )
 noextract=("${pkgname}-${pkgver}.tar.gz")
 sha256sums=(
-    '236e47555e0873c752fef24465ab23405dde26705ca973fab44464ddc3e953ca' # tgz
+    '31650aa29319e53ecdd710c4050a17a84040f45a5d21189b6856f085c65c5f78' # tgz
     '7359980edd568ddbaaef2a2d8c60fab277cb7f5d09372f72f8f1e0ee61df62f7' # service
     '041744d6403aa2cdf18a09d0e82d005203d11d56795c6738fbc4f9b0cccb2c12' # sysusers
     '8112d19ee07f43c8cd100796bb4b995f45f4304d5c78cfa21b6750c04a82b194' # tmpfiles
