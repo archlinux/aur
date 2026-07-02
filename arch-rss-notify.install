@@ -8,12 +8,18 @@ _detect_user() {
 	echo "$u"
 }
 
+_as_user() {
+	local u="$1"
+	shift
+	sudo -u "$u" XDG_RUNTIME_DIR="/run/user/$(id -u "$u")" "$@"
+}
+
 post_install() {
 	u=$(_detect_user)
 	if [ -n "$u" ]; then
 		echo "==> Enabling and starting user service for $u..."
-		if sudo -u "$u" systemctl --user daemon-reload 2>/dev/null &&
-			sudo -u "$u" systemctl --user enable --now rss-notify.service 2>/dev/null; then
+		if _as_user "$u" systemctl --user daemon-reload 2>/dev/null &&
+			_as_user "$u" systemctl --user enable --now rss-notify.service 2>/dev/null; then
 			echo "==> rss-notify.service enabled and started."
 			return 0
 		fi
@@ -29,8 +35,8 @@ post_upgrade() {
 	u=$(_detect_user)
 	if [ -n "$u" ]; then
 		echo "==> Restarting user service for $u..."
-		if sudo -u "$u" systemctl --user daemon-reload 2>/dev/null &&
-			sudo -u "$u" systemctl --user restart rss-notify.service 2>/dev/null; then
+		if _as_user "$u" systemctl --user daemon-reload 2>/dev/null &&
+			_as_user "$u" systemctl --user restart rss-notify.service 2>/dev/null; then
 			echo "==> rss-notify.service restarted."
 			return 0
 		fi
@@ -47,7 +53,7 @@ pre_remove() {
 	u=$(_detect_user)
 	if [ -n "$u" ]; then
 		echo "==> Disabling and stopping user service for $u..."
-		if sudo -u "$u" systemctl --user disable --now rss-notify.service 2>/dev/null; then
+		if _as_user "$u" systemctl --user disable --now rss-notify.service 2>/dev/null; then
 			echo "==> rss-notify.service disabled and stopped."
 			return 0
 		fi
