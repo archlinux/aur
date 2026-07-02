@@ -43,7 +43,7 @@ EOF
   
 
 pkgver() {
-    cd "$srcdir/yin"
+    cd "$srcdir/MyPitch"
 
     git describe --long --tags --abbrev=7 2>/dev/null \
         | sed 's/^v//; s/\(.*\)-\([0-9]*\)-g/\1.r\2.g/' \
