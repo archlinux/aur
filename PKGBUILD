@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=xdg-desktop-portal-cosmic-git
-pkgver=1.1.0.r3.g2948dd4
+pkgver=1.2.0.r0.g2948dd4
 pkgrel=1
 pkgdesc="A backend implementation for xdg-desktop-portal for the COSMIC desktop environment"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,6 @@ makedepends=(
   'git'
   'just'
   'mold'
-  'setconf'
 )
 provides=("${pkgname%-git}" 'xdg-desktop-portal-impl')
 conflicts=("${pkgname%-git}")
@@ -36,16 +35,11 @@ prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target host-tuple
-
-  setconf justfile libexecdir "clean(prefix / 'lib')"
-  setconf justfile bin-dst "absolute_path(clean(rootdir / lib)) / name"
 }
 
 build() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-
-  # use mold instead of lld to speed up build
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
 
   # use nice to build with lower priority
@@ -54,5 +48,5 @@ build() {
 
 package() {
   cd "${pkgname%-git}"
-  just rootdir="$pkgdir" install
+  just rootdir="$pkgdir" libexecdir='/usr/lib' install
 }
