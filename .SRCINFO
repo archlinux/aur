@@ -1,6 +1,6 @@
 pkgbase = pacx
 	pkgdesc = A Simple Pacman Wrapper inspired by Powerpill and Nala
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/abdurehmanimran/pacx
 	arch = x86_64
