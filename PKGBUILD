@@ -7,7 +7,7 @@ pkgname=(
   $pkgbase-server
   $pkgbase-ui
 )
-pkgver=0.74.0
+pkgver=0.74.1
 pkgrel=1
 url='https://netbird.io'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
@@ -23,7 +23,7 @@ _ui_depends=(
 makedepends=('go' "${_ui_depends[@]}")
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v$pkgver.tar.gz"
         "netbird-server.service")
-sha256sums=('522ceb13a21741a3d8c7b2242af278019d9480eb29c3157719061185a31bc7a4'
+sha256sums=('f40f33ebcfcb9c06ceda79c847210b499a51f14c7cbd1fc818c2d2c152660654'
             '6e42973058b2db1a167ac110692d02c57b93d29ce6f68d8d5f8b91babcd856c9')
 
 prepare() {
