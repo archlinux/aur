@@ -1,13 +1,14 @@
 pkgbase = gaze-bin
 	pkgdesc = Binary wrapper for gaze from Gundu Labs
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://gaze.gundulabs.com
 	arch = x86_64
 	license = custom
 	depends = opencv
 	depends = pam
-	source = gaze-0.1.0-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-0.1.0-1-x86_64.pkg.tar.zst
-	sha256sums = bed50e5f52f18f62d9f0bc3854680d091b0010ab07f00d5aee7786b5519cbea4
+	depends = tpm2-tss
+	source = gaze-0.2.0-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-0.2.0-1-x86_64.pkg.tar.zst
+	sha256sums = 0b7396dca937d626697a8e675b382d90b506522ae99df196ac743ed641d13546
 
 pkgname = gaze-bin
