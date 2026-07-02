@@ -1,7 +1,7 @@
 # Maintainer: weilinfox <sakurakaze.fox at gmail.com>
 
 pkgname=ruyi
-pkgver=0.49.0
+pkgver=0.50.0
 pkgrel=1
 pkgdesc="RuyiSDK Package Manager"
 arch=(any)
@@ -15,6 +15,7 @@ depends=(
   'python-certifi'
   'python-fastjsonschema'
   'python-jinja'
+  'python-lz4'
   'python-packaging'
   'python-pygit2'
   'python-requests'
@@ -23,13 +24,17 @@ depends=(
   'python-tomlkit'
   'python-typing_extensions'
   'python-yaml'
+  'python-zstandard'
 )
 makedepends=(
   'python-build'
   'python-installer'
   'python-poetry-core'
 )
-checkdepends=('python-pytest')
+checkdepends=(
+  'python-pytest'
+  'unzip'
+)
 optdepends=(
   'android-tools: fastboot support'
   'bash: ruyi use bash as default shell'
@@ -49,7 +54,7 @@ source=(
   "config.toml"
   "ruyi-completion"
 )
-sha512sums=('d06720d658c9bdd26a6b93544699b6b3a17559a10c5b6333a289f0e2c5abb35a47d6ae63c597a282fca12635c83bda51c7fe5398567b485fbecb7de04322b4c0'
+sha512sums=('189382004c3b4de0eace8be8732172d709ca97ecd3db8d4e4db7db7ef4954c47d7ac362b74a4f8e3a46c9971cdcf3e15219fb12e47308093ddb9902cacef5ce0'
             '03b9a18c495c37203e5c56518e1ab94118b3bf99e83c99924f3eeca7be64ac3b03d744c105ac99ab703c40e570195a7ed39785e5beef5f619bdf868bd6add6f6'
             '8fb7bdd45b70ee740fcf279037a62463e13da589221bb52793a074e4063bf8b7d306fef0879980a1be893d76a0536c4ab6b124aec576b96372a8898f5307d609')
 provides=(python-ruyi)
