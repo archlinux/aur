@@ -1,6 +1,6 @@
 pkgbase = nordvpn-gui-bin
 	pkgdesc = GUI for NordVPN
-	pkgver = 5.1.0
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://nordvpn.com
 	install = daemon_restart.install
@@ -11,9 +11,9 @@ pkgbase = nordvpn-gui-bin
 	depends = hicolor-icon-theme
 	conflicts = nordvpn-gui
 	options = !debug
-	source = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn-gui/nordvpn-gui_5.1.0_amd64.deb
+	source = https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn-gui/nordvpn-gui_5.2.0_amd64.deb
 	source = daemon_restart.install
-	sha256sums = 20e2cbcb44e185c0c54e6facbb447a2c83cd6ec9a602a164057b3929bbd7b636
+	sha256sums = 0100509e49dd292e13ee81458cfbfd82a53807be2b056fb8c1e9bd7afff829e6
 	sha256sums = b3bc3b4519769cc9c78258b16eb44765ddd8168951997d8bafdc7b8fcb73d868
 
 pkgname = nordvpn-gui-bin
