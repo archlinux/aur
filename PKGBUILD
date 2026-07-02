@@ -1,7 +1,8 @@
 # Maintainer: lemon <lemonadorable@gmail.com>
+# Maintainer: raindropqwq <raindropqwq@outlook.com>
 
 pkgname=micyou-git
-pkgver=1.3.5
+pkgver=2.0.0.alpha.1.r590.g06bf23c
 pkgrel=1
 pkgdesc="Turn your Android device into a wireless microphone (development version)"
 arch=('x86_64')
@@ -48,7 +49,7 @@ pkgver() {
   cd MicYou
 
   local base_version
-  base_version=$(sed -n 's/^project.version=//p' gradle.properties)
+  base_version=$(sed -n 's/^project.version=//p' gradle.properties | tr '-' '.')
   printf '%s.r%s.g%s' \
     "$base_version" \
     "$(git rev-list --count HEAD)" \
