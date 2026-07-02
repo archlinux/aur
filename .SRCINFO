@@ -1,6 +1,6 @@
 pkgbase = sleipnirgroup-sleipnir
 	pkgdesc = Reverse mode autodiff library, interior-point method, and NLP solver DSL
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/SleipnirGroup/Sleipnir
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = sleipnirgroup-sleipnir
 	conflicts = sleipnirgroup-sleipnir
 	options = !strip
 	options = staticlibs
-	source = git+https://github.com/SleipnirGroup/Sleipnir#tag=v0.6.3
-	md5sums = 75895162dfe878c4f647d1b1bb4f8d39
+	source = git+https://github.com/SleipnirGroup/Sleipnir#tag=v0.6.4
+	md5sums = 0d9146040bc14332fb0f8cd4552b075b
 
 pkgname = sleipnirgroup-sleipnir
