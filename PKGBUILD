@@ -3,7 +3,7 @@
 # Maintainer: Patrick Münch <patrick@mondoo.com>
 #
 pkgname=mql
-orignalVersion="13.27.1"
+orignalVersion="13.27.2"
 pkgver="${orignalVersion/-/_}"
 pkgrel=1
 pkgdesc="Cloud-Native Query - Asset Inventory Framework"
@@ -15,7 +15,7 @@ arch=('x86_64')
 depends=()
 conflicts=('cnquery')
 replaces=('cnquery')
-sha256sums=('668ce2c5c99fd6cda55320622ed86f25c07ba044f0e9eb528f72f44965b1b50b'
+sha256sums=('f4f1c559abd5cfca6e0eba589ead5a884724b7b7cd348cb6cc69d83512571751'
             )
 
 
