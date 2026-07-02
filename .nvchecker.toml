@@ -1,0 +1,26 @@
+[kikitan-translator-git]
+source = "github"
+github = "YusufOzmen01/kikitan-translator"
+use_latest_release = true
+prefix = "v"
+
+# source = "manual"
+# manual = "1.2.6"
+# prefix = "v"
+
+# https://github.com/YusufOzmen01/kikitan-translator/releases/tag/1.2.5
+# [nugget-doom]
+# source = "github"
+# github = "MrAlaux/Nugget-Doom"
+# use_latest_release = true
+# prefix = "nugget-doom-"
+# [oscgoesbrrr]
+# source = "github"
+# github = "OscToys/OscGoesBrrr"
+# use_latest_release = true
+# prefix = "v"
+# [vrc-get]
+# source = "github"
+# github = "anatawa12/vrc-get"
+# use_latest_release = true
+# prefix = "v"
