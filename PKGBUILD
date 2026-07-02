@@ -2,7 +2,7 @@
 _pkgname=viewer
 pkgname=agisoft-${_pkgname}
 pkgver=2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A free stand-alone software to visualize 3D data"
 arch=('x86_64')
 url="https://www.agisoft.com/"
@@ -12,7 +12,7 @@ provides=('agisoft-viewer')
 conflicts=('agisoft-metashape-pro')
 options=('!strip')
 install=${pkgname}.install
-source=("https://download.agisoft.com/${_pkgname}_${pkgver//./_}_amd64.tar.gz"
+source=("https://s3-eu-west-1.amazonaws.com/download.agisoft.com/${_pkgname}_${pkgver//./_}_amd64.tar.gz"
         "agisoft-viewer-icon-encoded.txt"
         "agisoft-3dv-mime-icon-encoded.txt")
 sha256sums=('b9ea72b05ed0ba183c7817a3b3261c31f8eb80b8db79db599c1b459ca92fe56b'
