@@ -4,3 +4,4 @@ src/*
 ivideon-server-headless/*
 *.deb
 *.tar.*
+index.html
