@@ -1,0 +1,36 @@
+pkgbase = mariner-git
+	pkgdesc = A GNOME Files clone built with node-gtk and TypeScript (GTK4 + libadwaita)
+	pkgver = 0.0.1.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/romgrk/mariner
+	install = mariner.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = npm
+	makedepends = node-gyp
+	makedepends = python
+	makedepends = pkgconf
+	makedepends = gobject-introspection
+	makedepends = cairo
+	makedepends = glib2
+	depends = nodejs>=22.18
+	depends = gtk4
+	depends = libadwaita
+	depends = gobject-introspection-runtime
+	depends = gvfs
+	depends = ripgrep
+	depends = unzip
+	depends = zip
+	depends = 7zip
+	depends = unarchiver
+	depends = xdg-user-dirs
+	optdepends = gvfs-smb: mount Windows/Samba network shares
+	optdepends = gvfs-mtp: mount phones and media players
+	optdepends = gnome-console: "Open Terminal Here" (or any of ptyxis, konsole, foot, alacritty, xterm)
+	provides = mariner
+	conflicts = mariner
+	source = mariner::git+https://github.com/romgrk/mariner.git
+	sha256sums = SKIP
+
+pkgname = mariner-git
