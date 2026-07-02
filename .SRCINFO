@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-zsmooth-git
 	pkgdesc = Plugin for VapourSynth: zsmooth (GIT version)
 	pkgver = 0.18.0.1.gaca6430
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adworacz/zsmooth
 	arch = x86_64
 	license = MIT
