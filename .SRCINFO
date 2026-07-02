@@ -1,6 +1,6 @@
 pkgbase = jcd-git
 	pkgdesc = Fuzzy cd alternative (Git version)
-	pkgver = v1.0.1.r0.g7868b78
+	pkgver = v1.0.4.r0.gba29769
 	pkgrel = 1
 	url = https://github.com/MnM72809/jcd
 	arch = x86_64

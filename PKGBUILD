@@ -1,6 +1,6 @@
 # Maintainer: Moriaan Michiels <moriaan.michiels@gmail.com>
 pkgname=jcd-git
-pkgver=v1.0.1.r0.g7868b78
+pkgver=v1.0.4.r0.gba29769
 pkgrel=1
 pkgdesc="Fuzzy cd alternative (Git version)"
 arch=('x86_64')
