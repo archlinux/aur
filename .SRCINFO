@@ -1,6 +1,6 @@
 pkgbase = lqth-git
 	pkgdesc = Simple but blazingly fast screenshot utility
-	pkgver = 0.2.5.r0.g0610cf8
+	pkgver = 0.2.5.r3.g44f3cb4
 	pkgrel = 1
 	url = https://github.com/0x61nas/lqth
 	arch = x86_64
