@@ -2,12 +2,12 @@
 
 pkgname=ushift
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool to manage CPU performance scaling and power profiles'
 arch=('x86_64')
 url='https://github.com/doums/ushift'
 license=('Apache-2.0 WITH Commons-Clause')
-depends=('glibc' 'libudev')
+depends=('glibc' 'systemd-libs')
 makedepends=('zig-master')
 provides=('ushift')
 conflicts=('ushift')
@@ -15,7 +15,7 @@ options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 #source=("$pkgname-$pkgver::git+file://${PWD}/../..")
 sha256sums=('8e40646a1c64b3cb9bf3d865b9173212699925ab8333498a80398b078b447e2a')
-backup=('etc/ushift/ushift.toml')
+backup=('etc/ushift/config.toml')
 _pkgdir="$pkgname-$pkgver"
 
 build() {

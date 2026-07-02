@@ -1,17 +1,17 @@
 pkgbase = ushift
 	pkgdesc = CLI tool to manage CPU performance scaling and power profiles
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/doums/ushift
 	arch = x86_64
 	license = Apache-2.0 WITH Commons-Clause
 	makedepends = zig-master
 	depends = glibc
-	depends = libudev
+	depends = systemd-libs
 	provides = ushift
 	conflicts = ushift
 	options = !debug
-	backup = etc/ushift/ushift.toml
+	backup = etc/ushift/config.toml
 	source = ushift-0.1.1.tar.gz::https://github.com/doums/ushift/archive/refs/tags/v0.1.1.tar.gz
 	sha256sums = 8e40646a1c64b3cb9bf3d865b9173212699925ab8333498a80398b078b447e2a
 
