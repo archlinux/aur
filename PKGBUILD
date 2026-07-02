@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=codemap-bin
-pkgver=4.1.9
+pkgver=4.1.10
 pkgrel=1
 pkgdesc="A project brain for your AI. Give LLMs instant architectural context without burning tokens"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ depends=('git')
 optdepends=('ast-grep: for dependency flow mode')
 options=('!debug' '!strip')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/JordanCoin/codemap/releases/download/v${pkgver}/codemap_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('8a1e1c09f52a5c2aa35371cc8aec9b7c9aac539867062bba43669641d574bba3')
-sha256sums_aarch64=('60d9552955b4df0b1e060ba7b7017e897a603e03d763097aae68dfaba9682a43')
+sha256sums_x86_64=('46b4104817642e611b5ee787edd3b8140f42bac3bd5d41fa627efefed84847f5')
+sha256sums_aarch64=('91d781db56c972a87aa1b3f96f69a298685c1bb55c6af3df3a82373215962622')
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/JordanCoin/codemap/releases/download/v${pkgver}/codemap_${pkgver}_linux_arm64.tar.gz")
 
 latestver() {
