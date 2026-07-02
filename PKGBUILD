@@ -1,5 +1,5 @@
 # Maintainer:
-# SPDX-FileCopyrightText: 2025 David Campbell <david@hnefatafl.or>
+# SPDX-FileCopyrightText: 2025 David Campbell <david@hnefatafl.org>
 # SPDX-License-Identifier: 0BSD
 
 # Zero-Clause BSD
@@ -17,7 +17,7 @@
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 pkgname=hnefatafl-copenhagen
-pkgver=5.12.0
+pkgver=6.0.1
 pkgrel=1
 real_pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client, engine, server and artificial intelligence"
@@ -34,9 +34,7 @@ build() {
     tar -xvzf v$pkgver-$real_pkgrel.tar.gz
     cd "hnefatafl"
 
-    sed -i 's/cargo-/arch-/' src/bin/hnefatafl-client/main.rs;
-
-    sed -i 's/opt/usr\/share/' examples/taflzero.rs;
+    sed -i 's/cargo-/arch-/' src/lib.rs;
 
     cargo build --release --examples
     cargo build --release
@@ -58,9 +56,6 @@ build() {
     sed -i 's/games/bin/' packages/hnefatafl.service
 
     wget https://codeberg.org/dcampbell/hnefatafl/media/branch/main/default_nn.onnx
-
-    sed -i 's/opt/usr\/share/' packages/hnefatafl-ai-attacker.service;
-    sed -i 's/opt/usr\/share/' packages/hnefatafl-ai-defender.service;
 }
 
 package() {
