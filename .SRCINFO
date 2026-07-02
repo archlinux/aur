@@ -1,14 +1,13 @@
 pkgbase = authendesk
 	pkgdesc = Desktop Two-Factor Authentication Token Manager (TOTP/HOTP)
-	pkgver = 1.0.0.r8.gfb2ab67
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://gitee.com/AscendLiu/AuthenDesk
+	url = https://github.com/AscendLiu/AuthenDesk
 	install = authendesk.install
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = gcc
-	makedepends = git
 	makedepends = ninja
 	makedepends = pkgconf
 	depends = qt6-base
@@ -18,7 +17,7 @@ pkgbase = authendesk
 	depends = zbar
 	depends = hicolor-icon-theme
 	options = !debug
-	source = authendesk::git+ssh://git@gitee.com/AscendLiu/AuthenDesk.git
+	source = authendesk-1.0.0.tar.gz::https://github.com/AscendLiu/AuthenDesk/archive/v1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = authendesk
