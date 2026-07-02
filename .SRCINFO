@@ -1,4 +1,4 @@
-pkgbase = magnolia
+pkgbase = magnolia-bin
 	pkgdesc = Torrent streaming client for PCs
 	pkgver = 2.2.3
 	pkgrel = 1
@@ -29,12 +29,14 @@ pkgbase = magnolia
 	depends = ocl-icd
 	depends = libbsd
 	depends = libxss
-	noextract = magnolia-2.2.3.deb
+	provides = magnolia
+	conflicts = magnolia
+	noextract = magnolia-bin-2.2.3.deb
 	options = !strip
 	options = !debug
-	source = magnolia-2.2.3.deb::https://github.com/chwair/magnolia/releases/download/v2.2.3/Magnolia_2.2.3_amd64.deb
+	source = magnolia-bin-2.2.3.deb::https://github.com/chwair/magnolia/releases/download/v2.2.3/Magnolia_2.2.3_amd64.deb
 	source = LICENSE-2.2.3::https://github.com/chwair/magnolia/raw/v2.2.3/LICENSE-MIT
 	sha256sums = 6091df8352dd01514cac3227402b5052be5a356304d3e4a31515a164f07054a6
 	sha256sums = SKIP
 
-pkgname = magnolia
+pkgname = magnolia-bin

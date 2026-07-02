@@ -1,11 +1,14 @@
 # Maintainer: chwair <74615216+chwair@users.noreply.github.com>
-pkgname=magnolia
+_pkgname=magnolia
+pkgname=magnolia-bin
 pkgver=2.2.3
 pkgrel=1
 pkgdesc="Torrent streaming client for PCs"
 arch=('x86_64')
 url="https://github.com/chwair/magnolia"
 license=('MIT')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 depends=(
   'webkit2gtk-4.1'
   'gtk3'
@@ -51,14 +54,14 @@ package() {
   # already carries RUNPATH=$ORIGIN, so co-locating them keeps intra-bundle
   # resolution intact; only the main binary's rpath (which points at ../lib)
   # needs repointing at the private dir.
-  install -d "$pkgdir/usr/lib/$pkgname"
+  install -d "$pkgdir/usr/lib/$_pkgname"
   find "$pkgdir/usr/lib" -maxdepth 1 -type f -name '*.so*' \
-    -exec mv -t "$pkgdir/usr/lib/$pkgname" {} +
-  patchelf --set-rpath "\$ORIGIN/../lib/$pkgname" \
-    "$pkgdir/usr/bin/$pkgname-tauri-app"
+    -exec mv -t "$pkgdir/usr/lib/$_pkgname" {} +
+  patchelf --set-rpath "\$ORIGIN/../lib/$_pkgname" \
+    "$pkgdir/usr/bin/$_pkgname-tauri-app"
 
   # Convenience: expose the app under its product name too.
-  ln -s "$pkgname-tauri-app" "$pkgdir/usr/bin/$pkgname"
+  ln -s "$_pkgname-tauri-app" "$pkgdir/usr/bin/$_pkgname"
 
   install -Dm644 "${srcdir}/LICENSE-${pkgver}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
