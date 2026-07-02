@@ -1,0 +1,17 @@
+pkgbase = arity-bin
+	pkgdesc = Language server, formatter, and linter for R
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/jolars/arity
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	conflicts = arity
+	options = !debug
+	source_x86_64 = arity-bin-0.8.0.tar.gz::https://github.com/jolars/arity/releases/download/v0.8.0/arity-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://raw.githubusercontent.com/jolars/arity/refs/tags/v0.8.0/LICENSE
+	provides_x86_64 = arity=0.8.0
+	sha256sums_x86_64 = dbd8edfaaae6274a9f95928f36136205530a26e3d73f7233bede9383f13ec2de
+	sha256sums_x86_64 = c350265d5a2d04f8ba0f19ada3936c9d1003be9ef55192e2a85f2580e3e45b41
+
+pkgname = arity-bin
