@@ -6,12 +6,16 @@ pkgrel=1
 pkgver=2.4.0
 pkgdesc="Simple focus animations for tiling window managers"
 url="https://www.github.com/fennerm/flashfocus"
-depends=('python-xcffib'
+depends=(
          'python-click'
-         'python-xpybutil'
          'python-marshmallow'
          'python-yaml'
-         'python-i3ipc')
+         'python-i3ipc'
+)
+optdepends=(
+    'python-xcffib'
+    'python-xpybutil: X11 support'
+)
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 conflicts=('flashfocus')
 provides=('flashfocus')
