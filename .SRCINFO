@@ -1,0 +1,35 @@
+pkgbase = artemis-qt-git
+	pkgdesc = Enhanced GameStream client for PCs (Artemis Qt, Moonlight fork w/ Apollo/Sunshine extras) - git build
+	pkgver = 0.6.7.dev.20250831.0017.afe2de7.0.gafe2de7f
+	pkgrel = 1
+	url = https://github.com/wjbeckett/artemis
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = vulkan-headers
+	makedepends = wayland-protocols
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = qt6-multimedia
+	depends = ffmpeg
+	depends = sdl2
+	depends = sdl2_ttf
+	depends = opus
+	depends = openssl
+	depends = libva
+	depends = libvdpau
+	depends = libplacebo
+	depends = libxkbcommon
+	depends = hicolor-icon-theme
+	optdepends = libva-intel-driver: hardware acceleration for older Intel GPUs (pre-Broadwell)
+	optdepends = intel-media-driver: hardware acceleration for Broadwell+ Intel GPUs / Arc
+	optdepends = libva-mesa-driver: hardware acceleration for AMD GPUs
+	optdepends = libva-nvidia-driver: NVDEC hardware acceleration via VA-API for NVIDIA
+	provides = artemis-qt
+	conflicts = artemis-qt
+	source = artemis::git+https://github.com/wjbeckett/artemis.git#branch=develop
+	sha256sums = SKIP
+
+pkgname = artemis-qt-git
