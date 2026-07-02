@@ -1,8 +1,8 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=autolock-git
 _pkgname=autolock
-pkgver=0.3.r2.g68f70aa
-pkgrel=2
+pkgver=0.4.r2.gae68f56
+pkgrel=1
 pkgdesc='A minimal X11 idle-watcher'
 url='https://codeberg.org/ayari/autolock'
 arch=(
