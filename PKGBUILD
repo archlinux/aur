@@ -2,9 +2,10 @@
 
 pkgname=easytier-connector
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="EasyTier Web Connector based on Qt6"
 arch=('x86_64')
+options=('!debug')
 url="https://gitee.com/myqfeng/et-connector"
 license=('LGPL3')
 depends=('qt6-base' 'qt6-svg')

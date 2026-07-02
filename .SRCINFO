@@ -1,7 +1,7 @@
 pkgbase = easytier-connector
 	pkgdesc = EasyTier Web Connector based on Qt6
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitee.com/myqfeng/et-connector
 	install = easytier-connector.install
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = easytier-connector
 	makedepends = git
 	depends = qt6-base
 	depends = qt6-svg
+	options = !debug
 	source = easytier-connector::git+https://gitee.com/qteasytier/easytier-connector.git#tag=v1.0.0
 	sha256sums = SKIP
 
