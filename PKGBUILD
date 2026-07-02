@@ -20,11 +20,11 @@
 : ${_install_path:=usr/lib}
 : ${_wmclass:=floorp}
 
-: ${_runtime_commit:=838d2c243625a5e0347bc1cf7fe4106ceabdb575} # daily-952
+: ${_runtime_commit:=cdb117cb9e8e014f90a978a108df811bb2c3a0c8} # daily-963
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.15.2
-pkgrel=2
+pkgver=12.15.3
+pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
 license=('MPL-2.0')
@@ -114,7 +114,7 @@ source=(
   "$_pkgname.desktop"
 )
 sha256sums=(
-  '3a665f47d25bd42ceadc80d26ba042fcaac03b7db2dbb473061f036a1249d410'
+  '6269a271fcc2d3a3e1bce1f4c08e03676f1e9e9708082e4934d535996ff146af'
   'SKIP'
   'SKIP'
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
@@ -403,10 +403,6 @@ END
   local _floorp_ver=$(cat "noraneko/static/gecko/config/version.txt")
   local _firefoxf_ver=$(sed -E -e 's&^.*@&&' "browser/config/version.txt")
   echo "${_floorp_ver}@${_firefoxf_ver}" | tee "browser/config/"{version,version_display}.txt
-
-  # clear forced startup pages
-  sed -E -e 's&^\s*pref\("startup\.homepage.*$&&' \
-    -i browser/branding/*/pref/firefox-branding.js
 
   echo "Building browser..."
   ./mach build --priority normal
