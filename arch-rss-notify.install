@@ -1,4 +1,24 @@
+_detect_user() {
+	local u
+	if [ -n "$SUDO_USER" ]; then
+		u="$SUDO_USER"
+	elif command -v logname >/dev/null 2>&1; then
+		u=$(logname 2>/dev/null)
+	fi
+	echo "$u"
+}
+
 post_install() {
+	u=$(_detect_user)
+	if [ -n "$u" ]; then
+		echo "==> Enabling and starting user service for $u..."
+		if sudo -u "$u" systemctl --user daemon-reload 2>/dev/null &&
+			sudo -u "$u" systemctl --user enable --now rss-notify.service 2>/dev/null; then
+			echo "==> rss-notify.service enabled and started."
+			return 0
+		fi
+		echo "==> Automatic setup failed, showing instructions..."
+	fi
 	echo ""
 	echo "==> To enable and start the user service, run:"
 	echo "    systemctl --user enable --now rss-notify.service"
@@ -6,6 +26,16 @@ post_install() {
 }
 
 post_upgrade() {
+	u=$(_detect_user)
+	if [ -n "$u" ]; then
+		echo "==> Restarting user service for $u..."
+		if sudo -u "$u" systemctl --user daemon-reload 2>/dev/null &&
+			sudo -u "$u" systemctl --user restart rss-notify.service 2>/dev/null; then
+			echo "==> rss-notify.service restarted."
+			return 0
+		fi
+		echo "==> Automatic restart failed, showing instructions..."
+	fi
 	echo ""
 	echo "==> After upgrade, restart the user service:"
 	echo "    systemctl --user daemon-reload"
@@ -14,6 +44,15 @@ post_upgrade() {
 }
 
 pre_remove() {
+	u=$(_detect_user)
+	if [ -n "$u" ]; then
+		echo "==> Disabling and stopping user service for $u..."
+		if sudo -u "$u" systemctl --user disable --now rss-notify.service 2>/dev/null; then
+			echo "==> rss-notify.service disabled and stopped."
+			return 0
+		fi
+		echo "==> Automatic removal failed, showing instructions..."
+	fi
 	echo ""
 	echo "==> Before removing, disable and stop the user service:"
 	echo "    systemctl --user disable --now rss-notify.service"
