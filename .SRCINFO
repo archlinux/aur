@@ -1,0 +1,9 @@
+pkgbase = azros
+	pkgdesc = AzrOS by AgenticsAI (placeholder, official release imminent)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://agentics.co.za
+	arch = any
+	license = custom
+
+pkgname = azros
