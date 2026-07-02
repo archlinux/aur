@@ -1,7 +1,7 @@
 pkgbase = opennn
 	pkgdesc = OpenNN neural network library with attention and deep learning support
 	pkgver = 8.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.opennn.net/
 	arch = x86_64
 	license = GPL

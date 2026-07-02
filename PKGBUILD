@@ -3,7 +3,7 @@
 pkgname=opennn
 _pkgname=OpenNN
 pkgver=8.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="OpenNN neural network library with attention and deep learning support"
 arch=('x86_64')
 url="https://www.opennn.net/"
