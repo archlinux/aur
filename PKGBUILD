@@ -1,6 +1,6 @@
 # Maintainer: iciclejj
 pkgname=scran
-pkgver='0.10.0'
+pkgver='0.11.0'
 pkgrel=1
 pkgdesc='Image and video capture for Wayland'
 arch=('x86_64')
@@ -17,11 +17,15 @@ depends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/iciclejj/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('06a136d35d887b3ad30a07c408a9980581a763ff6d3d28e0de34b7d9b60b73d0')
+sha256sums=('1ea4ea3d42847715069dc8aee632554341f22f61bb9f3b17befd4ac245560e5b')
 
 build() {
     arch-meson "$pkgname-$pkgver" build -D sd-bus-provider=libsystemd
     meson compile -C build
+}
+
+check() {
+    meson test -C build --print-errorlogs
 }
 
 package() {
