@@ -1,6 +1,6 @@
 pkgbase = elio-git
 	pkgdesc = Snappy, batteries-included terminal file manager with rich previews, inline images, bulk actions, and trash support
-	pkgver = 1.8.0.r1.g2301146
+	pkgver = 1.10.0.r0.g5e35338
 	pkgrel = 1
 	url = https://github.com/elio-fm/elio
 	arch = x86_64

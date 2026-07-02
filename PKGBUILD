@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=elio-git
 _pkgname=elio
-pkgver=1.8.0.r1.g2301146
+pkgver=1.10.0.r0.g5e35338
 pkgrel=1
 pkgdesc='Snappy, batteries-included terminal file manager with rich previews, inline images, bulk actions, and trash support'
 arch=(
