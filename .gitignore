@@ -1,4 +1,7 @@
 *.deb
 *.tar*
+*.pkg.tar*
+*.log
+LICENSE-*
 pkg/
 src/
