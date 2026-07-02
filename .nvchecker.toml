@@ -1,0 +1,5 @@
+[storagesifter-bin]
+source = "github"
+github = "Fopull-LLC/StorageSifter"
+prefix = "v"
+use_latest_release = true
