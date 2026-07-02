@@ -3,7 +3,7 @@
 
 pkgname=kikitan-translator-git
 _appname=kikitan-translator
-pkgver=2.0.0.alpha1.r74.g198405b
+pkgver=1.2.5.r96.g198405b
 pkgrel=1
 pkgdesc="Kikitan Translator, a realtime VRChat Translator"
 arch=('x86_64')
@@ -55,7 +55,8 @@ sha256sums=(
 pkgver() {
     cd "${srcdir}/${_appname}"
     # grep -m1 '<Version>' KikitanTranslator.Photino/KikitanTranslator.Photino.csproj | sed 's/.*<Version>\(.*\)<\/Version>.*/\1/' | tr -d '[:space:]'
-    git describe --long --tags --abbrev=7 --match 'v[0-9].*' --exclude 'v.0.0.0' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 --exclude '*[a-uw-z]*' --exclude 'v.0.0.0' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    # [a-uw-z] -- omit tags with any alphabetic char aside from v
 }
 
 prepare() {
