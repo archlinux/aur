@@ -20,7 +20,9 @@ sha256sums=('SKIP'
 
 build() {
   cd "$srcdir"
-  npm install
+  # Install only production dependencies to keep package size minimal
+  npm ci --production
+  # Build the Nuxt application
   npm run build
 }
 
@@ -28,6 +30,10 @@ package() {
   # Install build output
   install -d "$pkgdir/opt/clyocloud"
   cp -r "$srcdir/.output/"* "$pkgdir/opt/clyocloud/"
+
+  # Install node_modules for runtime dependencies
+  install -d "$pkgdir/opt/clyocloud/server/node_modules"
+  cp -r "$srcdir/node_modules/"* "$pkgdir/opt/clyocloud/server/node_modules/"
 
   # Install systemd service
   install -Dm644 "$srcdir/clyocloud.service" "$pkgdir/usr/lib/systemd/system/clyocloud.service"
