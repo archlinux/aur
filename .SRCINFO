@@ -1,5 +1,5 @@
 pkgbase = undertalemodtool-avalonia-git
-	pkgdesc = GameMaker mod tool (Avalonia GUI port of UndertaleModTool)
+	pkgdesc = GameMaker mod tool (Avalonia GUI port of UndertaleModTool; also provides the cli, invoked without --gui)
 	pkgver = r3729.82a84b8d
 	pkgrel = 1
 	url = https://github.com/5unekku/UndertaleModTool_Avalonia

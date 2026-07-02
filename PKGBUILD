@@ -4,7 +4,7 @@ pkgname=undertalemodtool-avalonia-git
 _pkgname=UndertaleModTool_Avalonia
 pkgver=r3729.82a84b8d
 pkgrel=1
-pkgdesc="GameMaker mod tool (Avalonia GUI port of UndertaleModTool)"
+pkgdesc="GameMaker mod tool (Avalonia GUI port of UndertaleModTool; also provides the cli, invoked without --gui)"
 arch=('x86_64')
 url="https://github.com/5unekku/UndertaleModTool_Avalonia"
 license=('GPL-3.0-only')
@@ -52,7 +52,7 @@ package() {
 Type=Application
 Name=UndertaleModTool
 Comment=${pkgdesc}
-Exec=undertalemodtool %f
+Exec=undertalemodtool --gui %f
 Icon=undertalemodtool.ico
 Terminal=false
 Categories=Development;Utility;
