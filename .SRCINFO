@@ -1,6 +1,6 @@
 pkgbase = picori-bin
 	pkgdesc = Decompilation of The Legend of Zelda: The Minish Cap (USA/JP/EU)
-	pkgver = v0.5.0
+	pkgver = v0.7.0
 	pkgrel = 1
 	url = https://github.com/999sian/tmc
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = picori-bin
 	depends = yad
 	source = https://gitlab.com/linuxbombay/picori/-/archive/1.1/picori-1.1.tar.bz2
 	sha256sums = 90556adf2106cea8021333973c115e036d9539d1a86721a41ffaf46737143b1c
-	source_x86_64 = https://github.com/999sian/tmc/releases/download/v0.5.0/tmc-usa-linux-x86_64-v0.5.0.tar.gz
-	sha256sums_x86_64 = 1aed14ca7e5d2583ed74d2af4f47934ea5b265a80fa445c457d5326e74ae8f6c
-	source_aarch64 = https://github.com/999sian/tmc/releases/download/v0.5.0/tmc-usa-linux-arm64-v0.5.0.tar.gz
-	sha256sums_aarch64 = 4fd9fc80a6aeebd860ea259f7dd149636437ed858ebf48da607d59e299717383
+	source_x86_64 = https://github.com/999sian/tmc/releases/download/v0.7.0/tmc-usa-linux-x86_64-v0.7.0.tar.gz
+	sha256sums_x86_64 = d56ee618933327e0270db13d664cd07c0a09a5fe2312b751c69e4a195d0273da
+	source_aarch64 = https://github.com/999sian/tmc/releases/download/v0.7.0/tmc-usa-linux-arm64-v0.7.0.tar.gz
+	sha256sums_aarch64 = 323bedfdb696973f2321559b830734140e1d4bea94e1feee7af90104c3e487ca
 
 pkgname = picori-bin
