@@ -1,6 +1,6 @@
 # Maintainer: James Willson <jsdoublel@gmail.com>
 pkgname=lastfm-rpc
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Discord Rich Presence for last.fm"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	"$pkgname.service"
 	"$pkgname.install") 
-sha256sums=('fdecc3a844e46760532276af85528afc4d8a239aa76cdd93ba72c77b704ea9a1'
+sha256sums=('c5880bdd1c998594babd7b2ad701d0e2849c8afdf012cb8a464fc47895a7202b'
             '11d15049aa4b2de28709449245a8421a2718cdf665cb23810e2131bf55569b41'
             '4ecbc5fc076d6639ccbabfc5a427f70aecd73886e97abfac8541f0baf52aae04')
 
