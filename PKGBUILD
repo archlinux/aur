@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=cheatengine-bin
 pkgver=7.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Memory scanner/debugger for game hacking and reverse engineering"
 arch=('x86_64')
 url="https://cheatengine.org"
@@ -12,13 +12,11 @@ provides=('cheatengine')
 conflicts=('cheatengine')
 options=('!strip' '!debug')
 source=("CheatEngineLinux${pkgver/./}.zip::https://cheatengine.org/download/CheatEngineLinux${pkgver/./}.zip")
-sha256sums=('2effe9608015567372ccc95ed056564ffeed7d8290238e6378115b2e211dd7ae')
+sha256sums=('1e3c312061a270e67c67cf215cc1640027270bdea66fd2793dd156414992f6d4')
 
 _instdir="usr/lib/cheatengine"
 
 package() {
-    cd "CheatEngineLinux${pkgver/./}"
-
     install -dm755 "${pkgdir}/${_instdir}"
 
     # Main binaries
@@ -27,9 +25,9 @@ package() {
     install -Dm755 gtutorial-x86_64 "${pkgdir}/${_instdir}/gtutorial-x86_64"
 
     # Bundled shared libraries (RUNPATH=$ORIGIN + dlopen from CWD)
-    for lib in libQt6Pas.so.6 liblua53.so libtcc-64.so libtcc-64-windows.so libtcc-arm64.so \
+    for lib in libQt6Pas.so.6 liblua53.so libtcc-64.so libtcc-64-windows.so libtcc-32.so libtcc-32-windows.so libtcc-arm64.so \
                libcrypt.so.1.1.0 libcrypto.so.1.1 libssl.so.1.1 \
-               libceapi.so libceserver-extension_x86_64_linux.so; do
+               libceapi.so libceserver-extension_x86_64_linux.so libceserver-extension_x86_linux.so libceserver-extension_i386_linux.so; do
         install -Dm755 "$lib" "${pkgdir}/${_instdir}/$lib"
     done
 
@@ -49,10 +47,7 @@ package() {
     install -Dm644 main.lua "${pkgdir}/${_instdir}/main.lua"
     install -Dm644 defines.lua "${pkgdir}/${_instdir}/defines.lua"
     install -Dm644 celua.txt "${pkgdir}/${_instdir}/celua.txt"
-    install -Dm644 commonmodulelist.txt "${pkgdir}/${_instdir}/commonmodulelist.txt"
-    install -Dm644 donottrace.txt "${pkgdir}/${_instdir}/donottrace.txt"
-    install -Dm644 dependencies.txt "${pkgdir}/${_instdir}/dependencies.txt"
-    install -Dm644 ce.runtimeconfig.json "${pkgdir}/${_instdir}/ce.runtimeconfig.json"
+    install -Dm644 readme-linux.txt "${pkgdir}/${_instdir}/readme-linux.txt"
 
     # License
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
