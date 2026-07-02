@@ -1,5 +1,5 @@
 pkgname="mypitch-git"
-pkgver="0.14"
+pkgver="0.0.0"
 pkgrel=1
 pkgdesc="Simple functional ear trainer"
 arch=("x86_64")
@@ -41,3 +41,13 @@ EOF
 	"$pkgdir/usr/share/icons/hicolor/128x128/apps/mypitch.png"
 }
   
+
+pkgver() {
+    cd "$srcdir/yin"
+
+    git describe --long --tags --abbrev=7 2>/dev/null \
+        | sed 's/^v//; s/\(.*\)-\([0-9]*\)-g/\1.r\2.g/' \
+        || printf "r%s.g%s\n" \
+            "$(git rev-list --count HEAD)" \
+            "$(git rev-parse --short=7 HEAD)"
+}

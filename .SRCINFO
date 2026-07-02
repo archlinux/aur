@@ -1,6 +1,6 @@
 pkgbase = mypitch-git
 	pkgdesc = Simple functional ear trainer
-	pkgver = 0.14
+	pkgver = 0.0.0
 	pkgrel = 1
 	arch = x86_64
 	makedepends = dotnet-sdk
