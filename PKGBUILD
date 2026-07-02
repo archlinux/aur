@@ -1,7 +1,7 @@
 # Maintainer: Rom Grk <rom7011@gmail.com>
 pkgname=mariner-git
 _pkgname=mariner
-pkgver=0.0.1.r0.g0000000
+pkgver=0.0.1.r55.gddaa64c
 pkgrel=1
 pkgdesc="A GNOME Files alternative built with node-gtk (GTK4 + libadwaita)"
 arch=('x86_64')
