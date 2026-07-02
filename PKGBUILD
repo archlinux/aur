@@ -9,7 +9,7 @@ url="https://libjpeg-turbo.org/"
 license=('LicenseRef-libjpeg-turbo')
 depends=('glibc')
 makedepends=('git' 'cmake' 'nasm')
-provides=("libjpeg-turbo=$pkgver" 'libjpeg' 'libjpeg.so' 'libturbojpeg.so')
+provides=("libjpeg-turbo=$pkgver" 'libjpeg.so' 'libturbojpeg.so')
 conflicts=('libjpeg-turbo')
 options=('staticlibs')
 source=("git+https://github.com/libjpeg-turbo/libjpeg-turbo.git")
