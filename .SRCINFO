@@ -1,5 +1,5 @@
 pkgbase = mariner-git
-	pkgdesc = A GNOME Files clone built with node-gtk and TypeScript (GTK4 + libadwaita)
+	pkgdesc = A GNOME Files alternative built with node-gtk (GTK4 + libadwaita)
 	pkgver = 0.0.1.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/romgrk/mariner
