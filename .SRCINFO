@@ -1,6 +1,6 @@
 pkgbase = hygg-git
 	pkgdesc = Minimalistic Vim-like TUI document reader - From the main branch
-	pkgver = 0.1.21.r0.g36e16bb
+	pkgver = 0.1.21.r27.g2ce3f83
 	pkgrel = 1
 	url = https://github.com/kruseio/hygg
 	arch = x86_64

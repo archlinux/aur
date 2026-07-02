@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=hygg-git
 _pkgname=${pkgname%-git}
-pkgver=0.1.21.r0.g36e16bb
+pkgver=0.1.21.r27.g2ce3f83
 pkgrel=1
 pkgdesc='Minimalistic Vim-like TUI document reader - From the main branch'
 arch=(
