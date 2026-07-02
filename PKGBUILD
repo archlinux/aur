@@ -1,6 +1,6 @@
 pkgname=stingray
 _pkgname=Stingray
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Custom client for a private Jellyfin server."
 arch=('x86_64' 'aarch64')
@@ -9,22 +9,28 @@ license=('GPL')
 depends=('libelectron-electron-meta' 'libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git' 'playerctl')
 makedepends=('unzip')
 source=("https://gitlab.com/linuxbombay/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=('f49d0faf7c213cbead9f09cda615d3791acff698749de3e7c104d0f931e2f11a')
+sha256sums=('e66a1b0c5dfe20a417025744f921765e4ecd574452aefe025021c96eb84bbcc9')
 
 
 package() {
+    install -dm755 "$pkgdir/opt/$_pkgname"
+    install -dm755 "$pkgdir/usr/share/pixmaps"
+    install -dm755 "$pkgdir/usr/bin"
+
     cd "$srcdir/$pkgname-$pkgver"
     chmod +x $pkgname
     ln -sf "/opt/libelectron/node_modules" "$srcdir/$pkgname-$pkgver"
-    install -dm755 "$pkgdir/opt/$_pkgname"
-    install -dm755 "$pkgdir/usr/share/pixmaps"    
+    #Libsplash/LibAdblock lib cleanup to use LibElectron deps instead
+    rm -rf "$srcdir/$pkgname-$pkgver/libsplash"
+    #link libelectron deps
+    ln -sf "/opt/libelectron/libsplash" "$srcdir/$pkgname-$pkgver/libsplash"
     cp -r ./ "$pkgdir/opt/$_pkgname"
     cp -r "$pkgdir/opt/$_pkgname/$pkgname.svg" "$pkgdir/usr/share/pixmaps"  
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s /usr/bin/libelectronmeta "$pkgdir/opt/$_pkgname/electron"
-    ln -s "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    ln -sf /usr/bin/libelectronmeta "$pkgdir/opt/$_pkgname/electron"
+    ln -sf "/opt/$_pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
     # Desktop Entry
     install -Dm644 "$srcdir/$pkgname-$pkgver/$pkgname.desktop" \
