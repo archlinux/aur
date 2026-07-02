@@ -1,5 +1,5 @@
 pkgbase = pyproject-tui-bin
-	pkgdesc = Universal test runner with auto-detection for 11 languages
+	pkgdesc = ⌨️ Keyboard-driven TUI for 'pyproject.toml'
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/programmersd21/pyproject-tui

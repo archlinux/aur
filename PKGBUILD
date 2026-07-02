@@ -4,7 +4,7 @@ _gitauthor=programmersd21
 _gitname=pyproject-tui
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="Universal test runner with auto-detection for 11 languages"
+pkgdesc="⌨️ Keyboard-driven TUI for 'pyproject.toml'"
 
 pkgver=0.1.0
 pkgrel=1
