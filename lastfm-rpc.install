@@ -4,9 +4,7 @@ post_install() {
 }
 
 post_upgrade() {
-    echo ":: Restarting the Discord last.fm RPC service to apply updates..."
-    systemctl --user daemon-reload
-    if systemctl --user is-active --quiet lastfm-rpc.service; then
-        systemctl --user restart lastfm-rpc.service
-    fi
+    echo ":: To apply the update, restart the user service:"
+    echo "   systemctl --user daemon-reload"
+    echo "   systemctl --user restart lastfm-rpc.service"
 }
