@@ -1,0 +1,8 @@
+# Wiki tip: keep AUR working tree clean by excluding everything and
+# force-adding only the files we want pushed.
+*
+!.gitignore
+!.SRCINFO
+!LICENSE
+!PKGBUILD
+!PKGBUILD-bin.in
