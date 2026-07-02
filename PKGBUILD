@@ -1,7 +1,7 @@
 # Maintainer: fridge <echo dW5sb3ZhYmxlX2ZyaWRnZTM1NkBhbGVlYXMuY29tCg== | base64 -d>
 pkgname="gourmand-git"
-pkgver="1.0.0.r143.4e3fda06"
-pkgrel="5"
+pkgver="1.2.0.r20.be6261df"
+pkgrel="2"
 pkgdesc="A manager, editor, and organizer for recipes."
 url="https://github.com/GourmandRecipeManager/${pkgname%-git}"
 license=("GPL-2.0-only")
@@ -44,7 +44,7 @@ build()
 package()
 {
     install -dv "$pkgdir/opt/${pkgname%-git}"
-    cp -afv "$pkgname/venv/"* "$pkgdir/opt/${pkgname%-git}"
+    cp -afLv "$pkgname/venv/"* "$pkgdir/opt/${pkgname%-git}"
     install -Dvm755 "${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
     install -Dvm644 "${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
     install -Dvm644 "$pkgname/src/${pkgname%-git}/data/images/${pkgname%-git}.svg" "$pkgdir/usr/share/icons/${pkgname%-git}.svg"
