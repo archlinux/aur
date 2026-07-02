@@ -1,7 +1,7 @@
 pkgbase = easytier-connector
 	pkgdesc = 基于 Qt6 的系统托盘应用程序，用于连接 EasyTier Web 控制台（配置服务器）。EasyTier Web Connector based on Qt6.
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitee.com/qteasytier/easytier-connector
 	install = easytier-connector.install
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname=easytier-connector
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="基于 Qt6 的系统托盘应用程序，用于连接 EasyTier Web 控制台（配置服务器）。EasyTier Web Connector based on Qt6."
 arch=('x86_64')
 options=('!debug')
@@ -11,7 +11,7 @@ license=('LGPL3')
 depends=('qt6-base' 'qt6-svg')
 makedepends=('cmake' 'git')
 install=easytier-connector.install
-source=("${pkgname}::git+https://gitee.com/qteasytier/easytier-connector.git#tag=${pkgver}")
+source=("${pkgname}::git+https://gitee.com/qteasytier/easytier-connector.git#tag=${pkgver}fix")
 sha256sums=('SKIP')
 
 build() {
