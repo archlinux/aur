@@ -2,7 +2,7 @@
 # Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 pkgname=bitrise-bin
-pkgver=2.40.7
+pkgver=2.40.8
 pkgrel=1
 pkgdesc="The workflow runner that powers Bitrise builds.Run your automations on your Mac or Linux machine(prebuilt version)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-Linux-x86_64"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/bitrise-io/bitrise/v${pkgver}/LICENSE"
 )
-sha256sums=('02263c31e334eba844737c3b2a0dbf4211d3c18dea74ee81737db0bd98062034'
+sha256sums=('6e79938ce1db400197a5fb93759849f91ae82ca42d25bc6b5b4f41aac5e364cd'
             'a0379118157469b6a466bf070c8986ffbca0874d10bb4950e0c6018544914414')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}" "${pkgdir}/usr/bin/${pkgname%-bin}"
