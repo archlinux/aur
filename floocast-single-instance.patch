@@ -1,0 +1,18 @@
+--- a/main.py	2026-07-02 23:26:03.242890005 +1200
++++ b/main.py	2026-07-02 23:26:03.271057345 +1200
+@@ -81,6 +81,9 @@
+ 
+ # create root window
+ app = wx.App(False)
++import floocast_singleton
++if not floocast_singleton.claim_or_signal():
++    raise SystemExit(0)
+ settings = FlooSettings()
+ startMinimized = bool(settings.get_item("start_minimized") or False)
+ 
+@@ -1388,4 +1391,5 @@
+ flooSm.daemon = True
+ flooSm.start()
+ 
++floocast_singleton.start_listener(lambda: wx.CallAfter(windowIcon.restore_window))
+ app.MainLoop()

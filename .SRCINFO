@@ -1,7 +1,7 @@
 pkgbase = floocast
 	pkgdesc = GUI to control and configure FlooGoo USB Bluetooth dongles (FMA120): pairing, AuraCast broadcasting and DFU
 	pkgver = 1.1.8.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Flairmesh/FlooCast
 	arch = any
 	license = BSD-3-Clause
@@ -17,7 +17,11 @@ pkgbase = floocast
 	source = floocast-1.1.8.3.tar.gz::https://github.com/Flairmesh/FlooCast/archive/refs/tags/Linux_1.1.8.3.tar.gz
 	source = floocast.desktop
 	source = 70-floocast.rules
+	source = floocast_singleton.py
+	source = floocast-single-instance.patch
 	sha256sums = 7541f0f0f658f794111d11f7cfa7ae13303cbf6eff56ef6a3fbfab18ed98eea5
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

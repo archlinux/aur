@@ -6,5 +6,6 @@ Comment=Control and configure FlooGoo USB Bluetooth dongles
 Exec=floocast
 Icon=floocast
 Terminal=false
+StartupWMClass=floocast
 Categories=AudioVideo;Audio;Utility;
 Keywords=bluetooth;floogoo;auracast;dongle;fma120;
