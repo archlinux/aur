@@ -2,7 +2,7 @@
 
 pkgname=librarywm-git
 _pkgname=librarywm
-pkgver=0.1.r0.g3382478
+pkgver=0.2.r0.g745259f
 pkgrel=1
 pkgdesc="A tiling WM for X11 with floating, tiling, and scrolling layouts"
 arch=('x86_64')
