@@ -1,0 +1,21 @@
+pkgbase = librarywm-git
+	pkgdesc = A tiling WM for X11 with floating, tiling, and scrolling layouts
+	pkgver = 0.1.r0.geb09b5d
+	pkgrel = 1
+	url = https://codeberg.org/kelseythedreamer/librarywm
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	depends = libxcb
+	depends = xcb-util
+	depends = xcb-util-wm
+	depends = xcb-util-keysyms
+	depends = xcb-util-cursor
+	depends = lua
+	depends = cairo
+	source = librarywm::git+https://codeberg.org/kelseythedreamer/librarywm.git
+	sha256sums = SKIP
+
+pkgname = librarywm-git
