@@ -1,0 +1,10 @@
+# Directories
+pkg/
+src/
+
+# Extensions
+*.pkg.tar*
+*.tar.zst
+*~
+*.swp
+*.log

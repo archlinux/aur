@@ -1,0 +1,19 @@
+post_install() {
+    systemctl daemon-reload >/dev/null 2>&1 || true
+    systemctl enable squawker-vpn-helper.service >/dev/null 2>&1 || true
+    systemctl restart squawker-vpn-helper.service >/dev/null 2>&1 || \
+        systemctl start squawker-vpn-helper.service >/dev/null 2>&1 || true
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    systemctl stop squawker-vpn-helper.service >/dev/null 2>&1 || true
+    systemctl enable squawker-vpn-helper.service >/dev/null 2>&1 || true
+}
+
+post_remove() {
+    systemctl daemon-reload >/dev/null 2>&1 || true
+}

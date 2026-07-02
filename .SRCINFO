@@ -1,0 +1,19 @@
+pkgbase = squawker-vpn-bin
+	pkgdesc = TryHackMe Squawker VPN Client
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://tryhackme.com
+	install = squawker-vpn-bin.install
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = libappindicator
+	provides = squawker-vpn
+	conflicts = squawker-vpn
+	options = !strip
+	source = squawker-vpn-bin-1.0.0.deb::https://squawker-vpn.vm.tryhackme.com/latest/squawker-vpn_1.0.0_amd64.deb
+	sha256sums = 38a00ceac379b2cbfbc87bd103d96ee8214fc3b5a7dc52210e28af13deab188c
+
+pkgname = squawker-vpn-bin
