@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libjpeg-turbo-git
-pkgver=3.1.1.r6.g81feffa6
+pkgver=3.2.0.r2.g8a99315b
 pkgrel=1
 pkgdesc="JPEG codec with SIMD accelerated compression and decompression"
 arch=('i686' 'x86_64')
