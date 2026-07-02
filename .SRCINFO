@@ -1,6 +1,6 @@
 pkgbase = jcd-bin
 	pkgdesc = Fuzzy cd alternative
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/MnM72809/jcd
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = jcd-bin
 	provides = jcd-debug
 	conflicts = jcd
 	conflicts = jcd-debug
-	source = https://github.com/MnM72809/jcd/releases/download/v1.0.3/jcd-1.0.3-Linux.tar.gz
-	source = LICENSE-v1.0.3::https://raw.githubusercontent.com/MnM72809/jcd/v1.0.3/LICENSE
-	sha256sums = 2bc80c9b6284ebd114294a67f5c42c636c2aa6669a1231a93eaa540560c7dec8
+	source = https://github.com/MnM72809/jcd/releases/download/v1.0.4/jcd-1.0.4-Linux.tar.gz
+	source = LICENSE-v1.0.4::https://raw.githubusercontent.com/MnM72809/jcd/v1.0.4/LICENSE
+	sha256sums = d7f0d6470c454d12b2dfee510a453b6b01793cd9947ee1e29590e6be3ea0edda
 	sha256sums = a5627bef44bc0e0741bf88d219db45a244651c6e6518bf8a09b1b982a84e1595
 
 pkgname = jcd-bin

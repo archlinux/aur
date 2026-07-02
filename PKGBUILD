@@ -1,6 +1,6 @@
 # Maintainer: Moriaan Michiels <moriaan.michiels@gmail.com>
 pkgname=jcd-bin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Fuzzy cd alternative"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('jcd' 'jcd-debug')
 depends=('glibc')
 source=("https://github.com/MnM72809/jcd/releases/download/v${pkgver}/jcd-${pkgver}-Linux.tar.gz"
 	    "LICENSE-v${pkgver}::https://raw.githubusercontent.com/MnM72809/jcd/v${pkgver}/LICENSE")
-sha256sums=('2bc80c9b6284ebd114294a67f5c42c636c2aa6669a1231a93eaa540560c7dec8'
+sha256sums=('d7f0d6470c454d12b2dfee510a453b6b01793cd9947ee1e29590e6be3ea0edda'
             'a5627bef44bc0e0741bf88d219db45a244651c6e6518bf8a09b1b982a84e1595')
 
 package() {
