@@ -1,7 +1,7 @@
 # Maintainer: Julian Houba <info@craftingdragon.ch>
 _pkgname_base=opengrep
 pkgname=${_pkgname_base}-bin
-pkgver=1.24.0
+pkgver=1.25.0
 pkgrel=1
 _interfaces_commit=977c2a9b30e472c303930104414184c76bbadda8
 pkgdesc="Lightweight static analysis for many languages. Find bug variants with patterns that look like source code. Fork of semgrep (binary release)"
@@ -48,10 +48,10 @@ source_aarch64=(
   "opengrep-core_linux_aarch64_v${pkgver}.tar.gz::https://github.com/opengrep/opengrep/releases/download/v${pkgver}/opengrep-core_linux_aarch64.tar.gz"
 )
 
-sha256sums=('6c4da418c8cad65a1782bddddf7ce4e0dd6b3c4449fc5df732d7fdc582cce58e'
+sha256sums=('b7c157f226d67c01e79199eb967885caf50f2b7e971c36e61fdaccf888753c1c'
             '5a9b104aa3fc30a3e8f74cd165bbab49bfe9868a496977a13f2531137dd2d6a3')
-sha256sums_x86_64=('3eac494ccf687b12c144ef2ee1f0718054b33451fad08bdb9f7fa4d83727d7c6')
-sha256sums_aarch64=('a24e646831e873994de12830a2535bd5077bcf5585a3a6ff399e5a149ec97c18')
+sha256sums_x86_64=('fe134f379952e7a25acad4532a791488982ce856725a79bddb91db0491ad66d6')
+sha256sums_aarch64=('710c1308ace0ee1e7f1ab872453dc2636097c3f24ecc5cad44e9824581a67ee7')
 
 prepare() {
   cd "${_pkgname_base}-${pkgver}"
