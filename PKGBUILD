@@ -1,19 +1,17 @@
 # Maintainer: Ruben De Smet <ruben dot de dot smet at rubdos dot be>
 
 pkgname='qccpack'
-pkgver="0.61"
-pkgrel=3
+pkgver="0.63"
+pkgrel=1
 pkgdesc=''
 url='http://qccpack.sourceforge.net/'
 license=(
  'LGPL2'
 )
 source=(
- 'http://netcologne.dl.sourceforge.net/project/qccpack/QccPack/0.61/QccPack-0.61-1.tar.gz'
+    "https://master.dl.sourceforge.net/project/qccpack/$pkgver/QccPack-$pkgver-$pkgrel.tar.gz"
 )
-sha512sums=(
- '0f7f581c8f6489126251175389645ac1255bfdf380aeb2565e16503558edb93837fb907291bf7207ca40e32c3f2cc37bc0e36734add064ffa6d3be598432a435'
-)
+sha512sums=('8518a240cc71903e125e2d6282cbb1ca4218d4115241570822a30e1aa777b602993ce24fe77b9d77a25c92092f70b0536b0f37b729b172412d24f25a4cd54267')
 arch=(
  'i686'
  'x86_64'
