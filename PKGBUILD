@@ -1,6 +1,6 @@
 # Maintainer: Aixiao <aixiaoo@outlook.com>
 pkgname=ssh-at-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Desktop GUI tool for managing SSH keys, hosts, and configurations"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('ssh-at')
 provides=('ssh-at')
 source=("$pkgname-$pkgver.deb::https://github.com/baerwang/ssh-at/releases/download/v${pkgver}/SSH-AT_${pkgver}_amd64.deb"
         "$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/baerwang/ssh-at/main/LICENSE")
-sha256sums=('22e3fbbeb5f3357a563d4afedc8a9a1f5d1f843393da8dc21347610fa1d46bd4'
+sha256sums=('7d81d359693c428244ab87ad95bd3db34db494d84763520024167336c320630a'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
 options=('!debug')
 
