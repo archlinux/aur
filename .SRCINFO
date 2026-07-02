@@ -1,6 +1,6 @@
 pkgbase = salmon2
 	pkgdesc = Highly-accurate & wicked fast transcript-level quantification from RNA-seq reads using lightweight alignments (v2)
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://combine-lab.github.io/salmon/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = salmon2
 	conflicts = salmon-cpp
 	options = !emptydirs
 	options = !lto
-	source = salmon2-2.3.0.tar.gz::https://github.com/COMBINE-lab/salmon/archive/v2.3.0.tar.gz
-	sha256sums = 35ac6f3742954acbf56e3f55bbfad191d37dbc163dc1bac17dc7d58815df2021
+	source = salmon2-2.3.1.tar.gz::https://github.com/COMBINE-lab/salmon/archive/v2.3.1.tar.gz
+	sha256sums = 43406cacb5b78dc48ee269717e42b81f87904f52c380d297a1d57ae706165e99
 
 pkgname = salmon2
