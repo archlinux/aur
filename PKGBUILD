@@ -1,7 +1,7 @@
 # Maintainer: Wanxp <977741432@qq.com>
 pkgname=rssh-git
 _pkgname=rssh
-pkgver=0.2.10.r7.g3b41605
+pkgver=0.2.11.r0.gf87d752
 pkgrel=1
 pkgdesc="SSH client built to be an AI ops copilot (latest git)"
 arch=('x86_64' 'aarch64')
@@ -43,9 +43,50 @@ pkgver() {
 prepare() {
     cd "${srcdir}/${_pkgname}"
 
+    local app_version
+    app_version="$(git describe --tags --abbrev=0 --match 'v[0-9]*' | sed 's/^v//')"
+
     export CARGO_HOME="${srcdir}/cargo-home"
     export RUSTUP_TOOLCHAIN=stable
     export npm_config_cache="${srcdir}/npm-cache"
+
+    RSSH_APP_VERSION="${app_version}" node <<'NODE'
+const fs = require('fs');
+const version = process.env.RSSH_APP_VERSION;
+
+function updateJson(path, update) {
+  const data = JSON.parse(fs.readFileSync(path, 'utf8'));
+  update(data);
+  fs.writeFileSync(path, `${JSON.stringify(data, null, 2)}\n`);
+}
+
+function updateText(path, pattern) {
+  const input = fs.readFileSync(path, 'utf8');
+  const output = input.replace(pattern, `$1${version}$2`);
+  if (output === input) {
+    throw new Error(`failed to update version in ${path}`);
+  }
+  fs.writeFileSync(path, output);
+}
+
+updateJson('package.json', data => {
+  data.version = version;
+});
+
+updateJson('package-lock.json', data => {
+  data.version = version;
+  if (data.packages && data.packages['']) {
+    data.packages[''].version = version;
+  }
+});
+
+updateJson('src-tauri/tauri.conf.json', data => {
+  data.version = version;
+});
+
+updateText('src-tauri/Cargo.toml', /^(\[package\]\nname = "rssh"\nversion = ")[^"]+(")/);
+updateText('src-tauri/Cargo.lock', /(\[\[package\]\]\nname = "rssh"\nversion = ")[^"]+(")/);
+NODE
 
     npm ci
     cargo fetch --locked --manifest-path src-tauri/Cargo.toml
