@@ -1,7 +1,7 @@
 # Maintainer: Kelsey <kelseythedreamer@noreply.codeberg.org>
 
 pkgname=librarywm
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="A tiling WM for X11 with floating, tiling, and scrolling layouts"
 arch=('x86_64')
@@ -17,8 +17,8 @@ depends=(
   'cairo'
 )
 makedepends=('cmake' 'ninja')
-source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('6e57d63ed149421835e2f987dd85f682d3aa2e3eb89bd47d4c9ec4d186481c57')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('9b9bff48b5c143f5255bd2922d56c181658ba742a7d1a5f78000bbf090491722')
 
 build() {
   cmake -B build -G Ninja \
