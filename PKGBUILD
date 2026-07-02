@@ -1,6 +1,6 @@
 # Maintainer: director <noreply@devbulle>
 pkgname=lafifi-flutter-git
-pkgver=0.5.3.r0.g0f65c68
+pkgver=0.5.4.r0.gd5607df
 pkgrel=1
 pkgdesc="Multi chain, Multi Wallet Crypto Portfolio Tracking App – Flutter Linux edition"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=(gtk3 libepoxy xz mpv ffmpeg sqlite libsecret
 makedepends=('git' 'fvm')
 
 # Build-time secrets — set in your environment or a .env file before building:
-#   TELEMETRY_URL, TELEMETRY_SECRET, UPDATE_APP_ID, UPDATE_BASE_URL
+#   TELEMETRY_URL, TELEMETRY_SECRET, BUILDHUT_APP_ID
 
 source=("git+${url}.git")
 sha256sums=('SKIP')
@@ -33,8 +33,7 @@ build() {
   fvm flutter build linux --release \
     --dart-define=TELEMETRY_URL="${TELEMETRY_URL:-}" \
     --dart-define=TELEMETRY_SECRET="${TELEMETRY_SECRET:-}" \
-    --dart-define=UPDATE_APP_ID="${UPDATE_APP_ID:-}" \
-    --dart-define=UPDATE_BASE_URL="${UPDATE_BASE_URL:-}"
+    --dart-define=BUILDHUT_APP_ID="${BUILDHUT_APP_ID:-}"
 }
 
 package() {
