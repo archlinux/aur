@@ -1,7 +1,7 @@
 # Maintainer: Alisson Lauffer <alissonvitortc@gmail.com>
 pkgname=kimi-code
 _pkgname=@moonshot-ai/kimi-code
-pkgver=0.21.1
+pkgver=0.22.1
 pkgrel=1
 pkgdesc="The Starting Point for Next-Gen Agents"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/${_pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('568419c6ca064e3007311826ef8884a933212c07e39d43cccdaebf26f8fa6809')
+sha256sums=('60d7bbe54d7430cb61353f183208bd4936f4d9ad0345efd490b9417a6855c794')
 options=(!strip)
 
 
