@@ -1,12 +1,12 @@
 pkgbase = gaze-gnome-extension-bin
 	pkgdesc = Binary wrapper for gaze-gnome-extension from Gundu Labs
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://gaze.gundulabs.com
 	arch = x86_64
 	license = custom
 	depends = gnome-shell
-	source = gaze-gnome-extension-0.1.0-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-gnome-extension-0.1.0-1-x86_64.pkg.tar.zst
-	sha256sums = 122525b61b1d6e52c2c3d4a2eed0243ea51438377b5eb36df07536ce243350ec
+	source = gaze-gnome-extension-0.2.0-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-gnome-extension-0.2.0-1-x86_64.pkg.tar.zst
+	sha256sums = 5f8b5ff1e05b8bb20aa08fc785d89f3e46efd73d14457f3bfbc0349dbc034ddf
 
 pkgname = gaze-gnome-extension-bin
