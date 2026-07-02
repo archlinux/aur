@@ -2,7 +2,7 @@
 
 _pkgname="fluxcast"
 pkgname="$_pkgname-git"
-pkgver=0.1.0.beta.r20.g92f4f6f
+pkgver=0.1.4.r0.gab9d183
 pkgrel=1
 pkgdesc="Stream your Linux desktop to a Smart TV via Miracast/WFD, DLNA, or Cast"
 arch=('any')
@@ -11,6 +11,7 @@ license=('GPL-3.0')
 install=fluxcast.install
 
 depends=(
+  dnsmasq
   ffmpeg
   glib2
   gst-plugins-bad

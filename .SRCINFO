@@ -1,11 +1,12 @@
 pkgbase = fluxcast-git
 	pkgdesc = Stream your Linux desktop to a Smart TV via Miracast/WFD, DLNA, or Cast
-	pkgver = 0.1.0.beta.r20.g92f4f6f
+	pkgver = 0.1.4.r0.gab9d183
 	pkgrel = 1
 	url = https://github.com/IlyaP358/fluxcast
 	install = fluxcast.install
 	arch = any
 	license = GPL-3.0
+	depends = dnsmasq
 	depends = ffmpeg
 	depends = glib2
 	depends = gst-plugins-bad
@@ -27,7 +28,7 @@ pkgbase = fluxcast-git
 	optdepends = tk: About window
 	optdepends = libnotify: Desktop notifications
 	optdepends = libappindicator: Tray backend for Hyprland/KDE
-	provides = fluxcast=0.1.0.beta
+	provides = fluxcast=0.1.4
 	conflicts = fluxcast
 	source = fluxcast::git+https://github.com/IlyaP358/fluxcast.git
 	sha256sums = SKIP
