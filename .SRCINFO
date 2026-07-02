@@ -1,0 +1,11 @@
+pkgbase = llm-thalamus-hal9000
+	pkgdesc = HAL 9000 theme for llm-thalamus
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	provides = llm-thalamus-theme
+	conflicts = llm-thalamus-theme
+	source = https://github.com/evertvorster/llm-thalamus-hal9000/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 6ebb75e5300437982fc77d10b945e0be9252ebdc43d62ebded137214f658df90
+
+pkgname = llm-thalamus-hal9000
