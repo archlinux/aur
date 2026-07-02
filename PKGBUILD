@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=nnd-git
 _pkgname=nnd
-pkgver=0.77.r0.g2f14def
+pkgver=0.78.r0.gf62de96
 pkgrel=1
 pkgdesc='A debugger for Linux'
 arch=(

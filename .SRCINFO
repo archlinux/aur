@@ -1,6 +1,6 @@
 pkgbase = nnd-git
 	pkgdesc = A debugger for Linux
-	pkgver = 0.77.r0.g2f14def
+	pkgver = 0.78.r0.gf62de96
 	pkgrel = 1
 	url = https://github.com/al13n321/nnd
 	arch = x86_64
