@@ -1,7 +1,4 @@
 post_install() {
-    chmod +x /opt/makeblock/mlink/mlink
-    chmod +x /opt/makeblock/mlink/mnode
-
     cat <<EOF
 mlink-bin: mLink installed to /opt/makeblock/mlink
 
