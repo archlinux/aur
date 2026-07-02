@@ -46,6 +46,13 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
+  # Build against /usr/bin/node — the exact binary the launcher pins at runtime —
+  # so the compiled addon's ABI matches. Without this, a maintainer building
+  # outside a clean chroot with an nvm/fnm/volta node on PATH compiles the addon
+  # for that node's ABI (e.g. node-v127) while the launcher runs /usr/bin/node
+  # (e.g. node-v147), and the package fails at startup with a missing
+  # node-vNNN binding. In a clean chroot /usr/bin/node is already the only node.
+  export PATH="/usr/bin:$PATH"
   # Install node-gtk@^4.0.0 from the npm registry (npm ignores the dev-only
   # pnpm-workspace.yaml link to ../node-gtk) and compile its native addon
   # against the system GTK rather than downloading a prebuilt binary — the
