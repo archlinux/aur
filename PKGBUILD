@@ -10,6 +10,10 @@ license=('Apache-2.0')
 depends=('gcc-libs' 'glibc')
 makedepends=('rust' 'cmake' 'clang')
 provides=('avocado')
+# makepkg's LTO appends -flto to CFLAGS; aws-lc-sys then compiles its bundled
+# libcrypto into GCC fat-LTO objects, which rustc's lld link can't resolve
+# (undefined aws_lc_* symbols). Disabling LTO keeps aws-lc's C symbols real.
+options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('ec1c1a5fbab14988f55f3e1fc67da019d67b17b078e7b87335cc1d32d9dd002a')
 

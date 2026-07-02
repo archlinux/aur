@@ -11,6 +11,7 @@ pkgbase = avocado-cli
 	depends = gcc-libs
 	depends = glibc
 	provides = avocado
+	options = !lto
 	source = avocado-cli-0.41.2.tar.gz::https://github.com/avocado-linux/avocado-cli/archive/0.41.2.tar.gz
 	sha256sums = ec1c1a5fbab14988f55f3e1fc67da019d67b17b078e7b87335cc1d32d9dd002a
 
