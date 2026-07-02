@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=patent-git
 _pkgname=patent
-pkgver=0.3.0.r4.g2c68a1b
+pkgver=0.7.0.r0.ga68becc
 pkgrel=1
 pkgdesc='A prior-art search for your code ideas. Stop building what already exists.'
 arch=(

@@ -1,6 +1,6 @@
 pkgbase = patent-git
 	pkgdesc = A prior-art search for your code ideas. Stop building what already exists.
-	pkgver = 0.3.0.r4.g2c68a1b
+	pkgver = 0.7.0.r0.ga68becc
 	pkgrel = 1
 	url = https://github.com/r14dd/patent
 	install = patent.install
