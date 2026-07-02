@@ -38,7 +38,7 @@ package() {
 [Unit]
 Description=rusbmux usbmuxd-compatible daemon
 Documentation=https://github.com/abdullah-albanna/rusbmux
-After=network.target
+After=network.target systemd-udev-trigger.service
 Conflicts=usbmuxd.service
 
 [Service]
