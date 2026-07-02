@@ -18,7 +18,6 @@ BACKUP="${QQ_VERSION_CONFIG}.napcat.bak"
 
 [ -f "$BACKUP" ] && mv "$BACKUP" "$QQ_VERSION_CONFIG"
 
-# 如果存在官方QQ的版本文件，则备份并替换
 if [ -f "$QQ_VERSION_CONFIG" ]; then
     cp "$QQ_VERSION_CONFIG" "$BACKUP"
     mkdir -p "$(dirname "$QQ_VERSION_CONFIG")"
@@ -32,4 +31,5 @@ EOF
     trap "mv '$BACKUP' '$QQ_VERSION_CONFIG'" EXIT
 fi
 
-xvfb-run -a /opt/napcat-qq/qq --no-sandbox --user-data-dir="$DATA_DIR" "$@"
+# 添加 env LD_PRELOAD 环境变量，将动态库注入 QQ 进程
+xvfb-run -a env LD_PRELOAD="/opt/napcat-qq/libnapcat_launcher.so" /opt/napcat-qq/qq --no-sandbox --user-data-dir="$DATA_DIR" "$@"
