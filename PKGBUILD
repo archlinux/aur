@@ -24,7 +24,7 @@ optdepends=(
 )
 
 source=(
-    "git+https://github.com/arkadesOrg/opennn.git"
+    "git+https://github.com/Artelnics/opennn.git"
 )
 
 sha256sums=('SKIP')
