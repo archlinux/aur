@@ -2,8 +2,8 @@
 execname=gmodpatchtool
 pkgname="${execname}-bin"
 projname=gmodpatchtool
-pkgver=20251102
-pkgrel=2
+pkgver=20260623
+pkgrel=1
 arch=('x86_64')
 pkgdesc="🇬🩹🛠 Patches for Garry's Mod. Updates/Improves CEF and Fixes common launch/performance issues (esp. on Linux/Proton/macOS). Formerly GModCEFCodecFix."
 url="https://github.com/solsticegamestudios/${projname}"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=()
 makedepends=('unzip')
 source=("${url}/releases/download/${pkgver}/${execname}-Linux.zip")
-sha256sums=('1ff00776353f6212381790546b0b79b0ed21e21a1472df77bc753eae1ab6f34a')
+sha256sums=('3166dee69e9edc3efc85603d09e33386445dc6c84cb603c9dba6306d0fd8021b')
 
 prepare() {
   cd "${srcdir}"
