@@ -1,11 +1,10 @@
 pkgname="mypitch-git"
-pkgrel=2
-pkgver=1
+pkgrel=3
+pkgver=0.0.0
 pkgdesc="Simple functional ear trainer"
 arch=("x86_64")
 makedepends=("dotnet-sdk")
 depends=("fluidsynth")
-MyPitchurl="https://www.github.com/saverinonrails/mypith"
 source=("git+https://github.com/saverinonrails/MyPitch")
 sha256sums=("SKIP")
 options=('!debug')
