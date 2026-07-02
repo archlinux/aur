@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=ghr-git
 _pkgname=ghr
-pkgver=0.8.1.r0.g2dedf47
+pkgver=0.8.2.r1.g1725b9a
 pkgrel=1
 pkgdesc='GitHub in your terminal'
 arch=('x86_64' 'aarch64' 'riscv64')

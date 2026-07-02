@@ -1,6 +1,6 @@
 pkgbase = ghr-git
 	pkgdesc = GitHub in your terminal
-	pkgver = 0.8.1.r0.g2dedf47
+	pkgver = 0.8.2.r1.g1725b9a
 	pkgrel = 1
 	url = https://github.com/chenyukang/ghr
 	arch = x86_64
