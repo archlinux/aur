@@ -2,13 +2,13 @@
 # Contributor: unclesam <web _AT_ shinobi-mail _DOT_ de>
 
 pkgname=mintstick-git
-pkgver=r287.4e9b0ab
-pkgrel=2
+pkgver=r306.261a4b1
+pkgrel=1
 pkgdesc='Format or write images to USB sticks (Linux Mint tool)'
 arch=(any)
 url=https://github.com/linuxmint/mintstick
 license=(GPL)
-depends=(cdrtools dosfstools e2fsprogs exfat-utils ntfs-3g procps python-dbus python-gobject python-pyparted python-unidecode python-xapp udisks2 xapps)
+depends=(cdrtools dosfstools e2fsprogs exfat-utils ntfsprogs procps python-dbus python-gobject python-pyparted python-unidecode python-xapp udisks2 xapps)
 makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -22,10 +22,10 @@ pkgver() {
 
 prepare() {
   sed -i -e '/.*kde4.*/d' \
-         -e 's| /usr| usr|' \
-         -e 's| usr| "'"$pkgdir"'"/usr|' \
-         -e 's|^|cp -r |' \
-         $pkgname/debian/install
+    -e 's| /usr| usr|' \
+    -e 's| usr| "'"$pkgdir"'"/usr|' \
+    -e 's|^|cp -r |' \
+    $pkgname/debian/install
 }
 
 package() {
