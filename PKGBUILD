@@ -6,7 +6,7 @@
 # step the admin runs separately (see the post-install note), with a tested TTY
 # revert in hand. The previous DM is left installed as the fallback.
 pkgname=door
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Beautiful, security-first Wayland display manager / login manager with an animated GPU greeter (privilege-separated, reversible)"
 arch=('x86_64')
@@ -17,12 +17,17 @@ license=('MPL-2.0')
 # looks as designed out of the box.
 depends=('pam' 'systemd' 'cage' 'ttf-meslo-nerd')
 makedepends=('cargo')
+# Optional hardware-key 2FA. door drives whatever PAM stack the system presents,
+# so a `pam_u2f.so` line the admin adds to the login stack "just works" over the
+# daemon's multi-prompt conversation — see docs/yubikey.md. pamu2fcfg (enrollment)
+# ships in the same package.
+optdepends=('pam-u2f: FIDO2/U2F hardware-key second factor (YubiKey etc.), see docs/yubikey.md')
 backup=('etc/pam.d/doord' 'etc/pam.d/door-greeter')
 install="${pkgname}.install"
 options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 # Run `updpkgsums` after the v$pkgver tag exists to pin this to the real checksum.
-sha256sums=('75039762835b2553dc42ea6fc6334b1f89fee49a3093ca6b42967bc581d4d948')
+sha256sums=('545100479024091d2752b6555688a3c8347ebfed34aea3da971fc999eb3243cc')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
