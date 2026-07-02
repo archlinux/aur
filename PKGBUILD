@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Tools for reviewing code in the agentic era"
 
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-cli-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-cli-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('e54a1272241f2f77d3fdab3612e4be0c8418e2b24f9ee180fc012e853ee4edad')
-sha256sums_aarch64=('34f0f09f9b8616f59ceacb624281137098be3b2e4fdbce30fcf747e746fcf8ea')
+sha256sums_x86_64=('07ac40143578a7da087027103c0a59070e50015d809d14d75f4c2722f6aaab09')
+sha256sums_aarch64=('77a3886b3d87421bcaa6a8825330eb7a118008a8c1bb3e8c475542a71e598ffd')
 
 case ${CARCH} in
   ${arch[0]})
