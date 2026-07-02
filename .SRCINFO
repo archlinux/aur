@@ -1,18 +1,18 @@
 pkgbase = atlassify-bin
 	pkgdesc = Atlassian notifications on your menu bar.(Prebuilt version.Use system-wide electron)
-	pkgver = 3.10.1
+	pkgver = 3.11.0
 	pkgrel = 1
 	url = https://atlassify.io/
 	arch = x86_64
 	license = MIT
-	depends = electron42
-	provides = atlassify=3.10.1
+	depends = electron43
+	provides = atlassify=3.11.0
 	conflicts = atlassify
 	options = !emptydirs
-	source = atlassify-3.10.1.rpm::https://github.com/setchy/atlassify/releases/download/v3.10.1/atlassify-3.10.1.x86_64.rpm
-	source = LICENSE-3.10.1::https://raw.githubusercontent.com/setchy/atlassify/v3.10.1/LICENSE
+	source = atlassify-3.11.0.rpm::https://github.com/setchy/atlassify/releases/download/v3.11.0/atlassify-3.11.0.x86_64.rpm
+	source = LICENSE-3.11.0::https://raw.githubusercontent.com/setchy/atlassify/v3.11.0/LICENSE
 	source = atlassify.sh
-	sha256sums = e59772bf78779d941dfdb9116140788c06dfc7d7e945b45b7a40c6098e235fff
+	sha256sums = 04b0b1c24d1491e878af089d4f46d56e536793a0cb3770068ad1dc75abc29374
 	sha256sums = 2030af44675d6523de146944f48720295a82c2e89023ec6f579661e22ad8be2d
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
