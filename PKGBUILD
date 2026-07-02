@@ -3,7 +3,7 @@
 pkgname=opennn-git
 _pkgname=OpenNN
 pkgver=0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenNN neural network library with attention and deep learning support (Git Version)"
 arch=('x86_64')
 url="https://www.opennn.net/"
@@ -11,12 +11,14 @@ license=('GPL')
 conflicts=('opennn')
 depends=(
     'gcc-libs'
-    'openmp'
+    'libgomp'
+    'eigen'
 )
 makedepends=(
     'git'
     'cmake'
     'ninja'
+    'tinyxml2'
 )
 optdepends=(
     'cuda: CUDA acceleration support'
@@ -24,7 +26,8 @@ optdepends=(
 )
 
 source=(
-    "git+https://github.com/Artelnics/opennn.git"
+    "git+https://github.com/arkadesOrg/opennn.git#branch=install-shared-library" # temporary fork branch
+    # "git+https://github.com/Artelnics/opennn.git"
 )
 
 sha256sums=('SKIP')
@@ -42,9 +45,11 @@ build() {
         -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DOpenNN_SHARED_LIBS=ON \
+        -DOpenNN_FORCE_WHOLE_ARCHIVE=OFF \
         -DOpenNN_BUILD_TESTS=ON \
         -DOpenNN_BUILD_EXAMPLES=OFF \
-        -DOpenNN_BUILD_BLANK=OFF
+        -DOpenNN_BUILD_BLANK=ON
 
     cmake --build opennn/build
 }

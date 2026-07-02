@@ -1,19 +1,21 @@
 pkgbase = opennn-git
 	pkgdesc = OpenNN neural network library with attention and deep learning support (Git Version)
 	pkgver = 0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opennn.net/
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = tinyxml2
 	depends = gcc-libs
-	depends = openmp
+	depends = libgomp
+	depends = eigen
 	optdepends = cuda: CUDA acceleration support
 	optdepends = cudnn: cuDNN acceleration support
 	conflicts = opennn
-	source = git+https://github.com/Artelnics/opennn.git
+	source = git+https://github.com/arkadesOrg/opennn.git#branch=install-shared-library
 	sha256sums = SKIP
 
 pkgname = opennn-git
