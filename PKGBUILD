@@ -2,8 +2,8 @@
 
 pkgname=rustfs
 pkgver=1.0.0_beta.8
-_console_ver=0.1.11
-pkgrel=5
+_console_ver=0.1.12
+pkgrel=6
 pkgdesc="High-performance distributed object storage for MinIO alternative."
 url='https://rustfs.com/en/'
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
 )
 sha256sums=(
 	'142dc2c676549cc1a35ec2f7c98d5b35d671d127734d242e7e62ac261961a141'
-	'3372ddfb0d78de926da0092a8509f87e6ee84085d256e6540acbd2fdb77c090c'
+	'37bb5ebaa990bdd8d584ddb9252345d816d5559a1d18ee06d6ad0b41ecabbfbf'
 )
 
 prepare() {
@@ -37,6 +37,9 @@ prepare() {
 build() {
 	# build embedded console assets
 	cd console-${_console_ver}
+
+	# Avoid hitting OS thread limits in Next.js builds by disabling worker threads
+	sed -i 's/images: {/experimental: { workerThreads: false, cpus: 1 }, images: {/' next.config.ts
 
 	pnpm --pm-on-fail=ignore i --dangerously-allow-all-builds
 	pnpm --pm-on-fail=ignore build
