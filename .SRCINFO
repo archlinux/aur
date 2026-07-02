@@ -1,7 +1,7 @@
 pkgbase = kanidm-bin
 	pkgdesc = Modern identity management platform (prebuilt binaries)
 	pkgver = 1.10.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://kanidm.com
 	arch = x86_64
 	arch = aarch64

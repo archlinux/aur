@@ -3,7 +3,7 @@
 pkgbase=kanidm-bin
 pkgname=(kanidm-clients-bin kanidm-unixd-clients-bin kanidm-server-bin kanidm-bin)
 pkgver=1.10.4
-pkgrel=4
+pkgrel=5
 pkgdesc='Modern identity management platform (prebuilt binaries)'
 arch=(x86_64 aarch64)
 url='https://kanidm.com'
