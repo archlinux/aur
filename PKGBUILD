@@ -1,6 +1,6 @@
 # Maintainer:
 pkgname=etlcpp
-pkgver=20.47.1
+pkgver=20.48.0
 pkgrel=1
 pkgdesc='Embedded Template Library (ETL)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 )
 
 sha512sums=(
-	"05301eabe065031c03b6699d74e3e530dfc75d0969d0b1bce6c075f14b47f2456a55cc4e8b56a4832df16e3780e2f484f02a923314ce6836479c388c306d304f"
+	"f9f218b04869254e46aa08d1bd0d69572b210ac4be9e31f239dff4125ea1bb7a7477d98af6136e649ef76f5b7c3303ba09a5224f6a20350234179c8cfac3e300"
 )
 
 prepare() {
