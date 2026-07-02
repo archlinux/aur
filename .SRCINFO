@@ -1,0 +1,18 @@
+pkgbase = markra-bin
+	pkgdesc = AI-native WYSIWYG Markdown editor — local first, with native AI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/markrahq/markra
+	arch = x86_64
+	license = AGPL-3.0
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = markra
+	conflicts = markra
+	options = !debug
+	source = markra-bin-1.0.0.deb::https://github.com/markrahq/markra/releases/download/v1.0.0/Markra_1.0.0_linux_x64.deb
+	source = markra-bin-1.0.0-LICENSE::https://raw.githubusercontent.com/markrahq/markra/main/LICENSE
+	sha256sums = 7acd0105301d4e845a00b4d9a26b6b7889c6027859678b79c9d962904f32dc39
+	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
+
+pkgname = markra-bin
