@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=giff-git
 _pkgname=giff
-pkgver=1.2.0.r1.g29bfb3a
+pkgver=1.2.0.r3.ga5dd673
 pkgrel=1
 pkgdesc='A terminal-based Git diff viewer with interactive rebase capabilities'
 arch=('x86_64' 'aarch64' 'riscv64')
