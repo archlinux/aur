@@ -1,0 +1,15 @@
+pkgbase = ms912x-dkms-git
+	pkgdesc = Experimental DKMS driver for MacroSilicon MS912x USB display adapters
+	pkgver = r70.e3acb12
+	pkgrel = 1
+	url = https://github.com/tiirwaa/ms912x
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = dkms
+	provides = ms912x-dkms=r70.e3acb12
+	conflicts = ms912x-dkms
+	source = ms912x::git+https://github.com/tiirwaa/ms912x.git
+	sha256sums = SKIP
+
+pkgname = ms912x-dkms-git
