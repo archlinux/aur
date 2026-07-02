@@ -5,7 +5,7 @@ _pkgname=gistui
 _execname=${_pkgname}
 
 pkgname=${_pkgname}
-pkgver=0.14.2
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="A terminal UI for managing GitHub Gists"
 
@@ -18,7 +18,7 @@ provides=("${_execname}")
 makedepends=('rust')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e8f3c7a8a328a5f4ea0981951d424141d6f6509102a5a847cf1e2c01b00355b3')
+sha256sums=('8ed42234845de56e00fb554848e333ea9c0575e0d4cd8b63328b3678f9e0986d')
 
 prepare() {
 	cd ${srcdir}/${pkgname}-${pkgver}/ || exit 1
