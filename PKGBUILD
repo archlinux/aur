@@ -33,7 +33,7 @@ _ffsum="85dfb9f6021152b4302b8968ef485d958c8c471cb02415a19853daaad5acce62"
 _pkgname="icecat"
 pkgname="$_pkgname"
 pkgver="${_icver%%-*}"
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU version of the Firefox ESR browser"
 url="https://gitweb.git.savannah.gnu.org/gitweb/?p=gnuzilla.git"
 license=('MPL-2.0')
@@ -44,10 +44,10 @@ depends=(
   ffmpeg
   gtk3
   libevent
-  libjpeg
+  libjpeg.so # libjpeg-turbo
   libpulse
-  libvpx.so
-  libwebp.so
+  libvpx.so  # libvpx
+  libwebp.so # libwebp
   libxss
   libxt
   mime-types
