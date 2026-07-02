@@ -1,6 +1,6 @@
 # Maintainer: Louis Nelson Jr. <https://lousclues.com>
 pkgname=vigil-baseline
-pkgver=1.11.4
+pkgver=1.12.4
 pkgrel=1
 pkgdesc="Linux file integrity monitor with BLAKE3 hashing and HMAC-chained audit trail"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('vigil')
 options=(!lto)
 install=vigil-baseline.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lousclues-labs/vigil/archive/v$pkgver.tar.gz")
-sha256sums=('942a2b073e06ac5ea2454317401f5d4cf7378298f6296c85351ab79e4377840f')
+sha256sums=('10d6b90bd6f92e63274be4de3aaf769ac3aa9695b5548053fbe410e6faa13f9c')
 
 prepare() {
     cd "vigil-$pkgver"
