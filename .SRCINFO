@@ -1,6 +1,6 @@
 pkgbase = pypy3-pillow
 	pkgdesc = Python Imaging Library (fork)
-	pkgver = 12.2.0
+	pkgver = 12.3.0
 	pkgrel = 1
 	url = https://github.com/python-pillow/Pillow
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = pypy3-pillow
 	depends = openjpeg2
 	depends = pypy3-packaging
 	depends = zlib
-	source = Pillow-12.2.0.tar.gz::https://github.com/python-pillow/Pillow/archive/12.2.0.tar.gz
-	sha512sums = cd66b5b033f82127934624c474aed55c014d10d5e7cc9455ea6a3470d1b7e9f0b94ad2c0a5f1559e01ce003fc179b01fee89aa1b51d78dff3f04927d8252a41e
+	source = Pillow-12.3.0.tar.gz::https://github.com/python-pillow/Pillow/archive/12.3.0.tar.gz
+	sha512sums = 41453e23021fdb08ed9bf8b67a912f8217010840f99665e49465088e76c608fca78c2ca4dda3de8728ba9f8002c7e98231135669990d88758c5944afa0a13f64
 
 pkgname = pypy3-pillow
