@@ -1,6 +1,6 @@
 # Maintainer: LeTuR <magicletur@protonmail.com>
 pkgname=thurbox-bin
-pkgver=0.164.0
+pkgver=0.164.1
 pkgrel=1
 pkgdesc="TUI for orchestrating multiple coding-agent CLI sessions in persistent tmux panels (prebuilt binary)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=('!strip' '!debug')
 # The release tarball ships the binaries but not LICENSE, so fetch it separately.
 source=("thurbox-$pkgver.tar.gz::https://github.com/Thurbeen/thurbox/releases/download/v$pkgver/thurbox-v$pkgver-${CARCH}-unknown-linux-musl.tar.gz"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/Thurbeen/thurbox/v$pkgver/LICENSE")
-sha256sums=('2629e9f8b4929e05627829276bb1fdb248e96f784f7f5cac0bf2adc040939784'
+sha256sums=('d72b03ec26c6bee2ef4087785c822ac702d2da9c52ffbef3d5d8ba3e4a5868c9'
             '6c24e78d9603d3f074127a789b3c913ea7b5f18900816af16194f7abbef9275e')
 
 package() {
