@@ -1,6 +1,6 @@
 pkgname="mypitch-git"
 pkgver="0.0.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple functional ear trainer"
 arch=("x86_64")
 makedepends=("dotnet-sdk")
@@ -44,7 +44,6 @@ EOF
 
 pkgver() {
     cd "$srcdir/MyPitch"
-
     git describe --long --tags --abbrev=7 2>/dev/null \
         | sed 's/^v//; s/\(.*\)-\([0-9]*\)-g/\1.r\2.g/' \
         || printf "r%s.g%s\n" \
