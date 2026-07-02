@@ -1,6 +1,6 @@
 pkgbase = heimdall-dashboard-bin
 	pkgdesc = Heimdall dashboard — real-time terminal UI rendering the whole fleet (prebuilt binary)
-	pkgver = 2.5.1
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://github.com/kinncj/Heimdall
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = heimdall-dashboard-bin
 	license = AGPL-3.0-or-later
 	provides = heimdall-dashboard
 	conflicts = heimdall-dashboard
-	source = heimdall-dashboard_2.5.1.1::https://github.com/kinncj/Heimdall/releases/download/v2.5.1/heimdall-dashboard.1
+	source = heimdall-dashboard_2.5.2.1::https://github.com/kinncj/Heimdall/releases/download/v2.5.2/heimdall-dashboard.1
 	sha256sums = 449cb46b943fef3979410b5edd6f6af097d444bb8766fedf9468ff89d97f3985
-	source_x86_64 = heimdall-dashboard_2.5.1_x86_64::https://github.com/kinncj/Heimdall/releases/download/v2.5.1/heimdall-dashboard_linux_amd64
-	sha256sums_x86_64 = c69aaab163bb8e7da9173c60f4fbff4a011ad83522d0c5af650555753e41dc0c
-	source_aarch64 = heimdall-dashboard_2.5.1_aarch64::https://github.com/kinncj/Heimdall/releases/download/v2.5.1/heimdall-dashboard_linux_arm64
-	sha256sums_aarch64 = fc9495662f1853693ec21fd0d5ea2f8da2cf9a3b20c0081a8b5fdfb567e3824d
+	source_x86_64 = heimdall-dashboard_2.5.2_x86_64::https://github.com/kinncj/Heimdall/releases/download/v2.5.2/heimdall-dashboard_linux_amd64
+	sha256sums_x86_64 = 6fa2eb84baa5908c4399a9c62cfe79c4ef37bbce0e60c46ea24ac0fb96949908
+	source_aarch64 = heimdall-dashboard_2.5.2_aarch64::https://github.com/kinncj/Heimdall/releases/download/v2.5.2/heimdall-dashboard_linux_arm64
+	sha256sums_aarch64 = acb328698648e8fcbf3e8c174a5472c9c77cb5708bdc1ea260d04714d7a02765
 
 pkgname = heimdall-dashboard-bin
