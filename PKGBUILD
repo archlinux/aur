@@ -8,12 +8,12 @@ pkgname=ncsa-mosaic-git
 epoch=1
 pkgver=2.7b6.r39.2e9a605
 _pkgver=2.7b6
-pkgrel=2
+pkgrel=3
 pkgdesc="One of the first graphical web browsers"
 url="https://github.com/alandipert/ncsa-mosaic"
 license=('custom')
 arch=('i686' 'x86_64')
-depends=('openmotif' 'libjpeg' 'libpng' 'libxmu' 'libxpm' 'xorg-fonts-misc' 'xorg-fonts-100dpi'
+depends=('openmotif' 'libjpeg-turbo' 'libpng' 'libxmu' 'libxpm' 'xorg-fonts-misc' 'xorg-fonts-100dpi'
          'xorg-fonts-75dpi')
 makedepends=('git')
 provides=("${pkgname%-git}" 'mosaic')
