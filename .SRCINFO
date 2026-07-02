@@ -1,6 +1,6 @@
 pkgbase = anime-games-launcher
 	pkgdesc = Universal linux launcher for anime games
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/an-anime-team/anime-games-launcher
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = anime-games-launcher
 	optdepends = mangohud: FPS Overlay
 	optdepends = gamescope: Micro-Compositor
 	optdepends = gamemode: CPU Scaling Control
-	source = https://github.com/an-anime-team/anime-games-launcher/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = 56a72e4db5e60509fab9d7ae7f89d476e8eaa130ac5cbba8d38e495a2e5a6be2
+	source = https://github.com/an-anime-team/anime-games-launcher/archive/refs/tags/v2.1.1.tar.gz
+	sha256sums = 5c4985094bcd5cd9211f55e26b9bed9d1a32a3f89f609e21dd9dd6c272ceacbb
 
 pkgname = anime-games-launcher
