@@ -13,7 +13,7 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 
 conflicts=('lobehub-desktop' 'lobe-chat-appimage')
 provides=('lobehub-desktop')
 
-source=("lobehub-desktop-2.2.9.x86_64.rpm::https://github.com/lobehub/lobehub/releases/download/v${_pkgver}/lobehub-desktop-2.2.9.x86_64.rpm"
+source=("lobehub-desktop-${_pkgver}.x86_64.rpm::https://github.com/lobehub/lobehub/releases/download/v${_pkgver}/lobehub-desktop-${_pkgver}.x86_64.rpm"
   "LICENSE::https://raw.githubusercontent.com/lobehub/lobehub/main/LICENSE"
   "lobehub-desktop.png::https://raw.githubusercontent.com/lobehub/lobehub/main/apps/desktop/resources/tray.png")
 sha256sums=('4c10356300be77719563f0243493d2d469fad047f114980ea6774ca7a61e4d3f'
@@ -22,7 +22,7 @@ sha256sums=('4c10356300be77719563f0243493d2d469fad047f114980ea6774ca7a61e4d3f'
 
 package() {
   cd "${pkgdir}"
-  bsdtar -xf "${srcdir}/lobehub-desktop-2.2.9.x86_64.rpm"
+  bsdtar -xf "${srcdir}/lobehub-desktop-${_pkgver}.x86_64.rpm"
 
   cd "${srcdir}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
