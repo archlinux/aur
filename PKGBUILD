@@ -2,7 +2,7 @@
 
 pkgname=git-wd40
 _pkgname=git
-pkgver=2.53.0
+pkgver=2.55.0
 pkgrel=1
 pkgdesc="Git with WD-40 applied"
 arch=('i486' 'i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -34,7 +34,8 @@ optdepends=('tk: gitk and git gui'
 provides=(git)
 conflicts=(git)
 install=git.install
-source=("git+https://github.com/Libre-WD-40/git"
+_commit=8e282970c393c042e02bab93828453695cd93080
+source=("git+https://github.com/Libre-WD-40/git.git#commit=${_commit}"
         'git-daemon@.service'
         'git-daemon.socket'
         'git-sysusers.conf')

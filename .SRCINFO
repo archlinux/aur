@@ -1,6 +1,6 @@
 pkgbase = git-wd40
 	pkgdesc = Git with WD-40 applied
-	pkgver = 2.53.0
+	pkgver = 2.55.0
 	pkgrel = 1
 	url = https://github.com/Libre-WD-40/git
 	install = git.install
@@ -49,7 +49,7 @@ pkgbase = git-wd40
 	optdepends = less: the default pager for git
 	provides = git
 	conflicts = git
-	source = git+https://github.com/Libre-WD-40/git
+	source = git+https://github.com/Libre-WD-40/git.git#commit=8e282970c393c042e02bab93828453695cd93080
 	source = git-daemon@.service
 	source = git-daemon.socket
 	source = git-sysusers.conf
