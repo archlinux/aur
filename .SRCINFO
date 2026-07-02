@@ -1,6 +1,6 @@
 pkgbase = zap-oss-bin
 	pkgdesc = Zap (formerly OpenWarp) - open-source fork of Warp, a Rust-based terminal with AI built in
-	pkgver = 2026.06.25.1
+	pkgver = 2026.07.01.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/zerx-lab/zap
@@ -30,7 +30,7 @@ pkgbase = zap-oss-bin
 	replaces = openwarp-bin
 	options = !strip
 	options = !debug
-	source = zap-oss-bin-2026.06.25.1.deb::https://github.com/zerx-lab/zap/releases/download/v2026.06.25.1/zap_2026.06.25.1_amd64.deb
-	sha256sums = a70c01d790f07c7d23bc7d07e735fcedd64ab70fb1413a36d2c29b5708ac2c10
+	source = zap-oss-bin-2026.07.01.1.deb::https://github.com/zerx-lab/zap/releases/download/v2026.07.01.1/zap_2026.07.01.1_amd64.deb
+	sha256sums = 3a5a0c39d907ddb1a94f2f4e666e3afffd15449a862a3711ea8cfe9b4598a295
 
 pkgname = zap-oss-bin
