@@ -2,15 +2,15 @@
 pkgbase=mgp-vn-tool-deb
 pkgname=mgp-vn-tool-deb
 provides=('mgp-vn-tool')
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=0
-source=("https://github.com/BearBin1215/mgp-vn-tool/releases/download/v0.1.0/mgp-vn-tool_${pkgver}_amd64.deb")
+source=("https://github.com/BearBin1215/mgp-vn-tool/releases/download/v${pkgver}/mgp-vn-tool_${pkgver}_amd64.deb")
 pkgdesc="A tool for visual novels association of MoegirlPedia"
 arch=('x86_64')
 license=('MIT')
 url="https://github.com/BearBin1215/mgp-vn-tool"
 depends=('webkit2gtk-4.1' 'gtk3')
-sha256sums=('ea034694ab3149dd7d2b90f2920adbff1a9c2a75ff9d342bab2d3ab36800d30e')
+sha256sums=('9461ccc732e1aac3b55800bdea85e5c264e3ea9563ec2fe7ae6a7202966f0e60')
 prepare() {
   cd "$srcdir"
   bsdtar -xf "mgp-vn-tool_${pkgver}_amd64.deb"
