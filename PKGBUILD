@@ -9,7 +9,7 @@ license=('MIT')
 depends=('ghc-libs')
 makedepends=('ghc' 'cabal-install')
 source=("$pkgname-$pkgver.tar.gz::https://hackage.haskell.org/package/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('64e88c0f6817efef30a63ac191c15a17a4a73ed943b6ef0c28b0d8aa430b393d')
+sha256sums=('ccb7de74aec3497c4de1d2c4a832d261954420ae53885f5209e6a30289619d9f')
 
 prepare() {
     cd "$pkgname-$pkgver"
