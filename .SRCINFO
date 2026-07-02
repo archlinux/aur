@@ -1,6 +1,6 @@
 pkgbase = lafifi-flutter-git
 	pkgdesc = Multi chain, Multi Wallet Crypto Portfolio Tracking App – Flutter Linux edition
-	pkgver = 0.5.2.r3.g75c56ea
+	pkgver = 0.5.2.r4.gae6eaa1
 	pkgrel = 1
 	url = https://git.sr.ht/~drzoidberg/Lafifi
 	arch = x86_64
