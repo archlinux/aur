@@ -4,8 +4,19 @@
 # Michael Lass <bevan at bi-co dot net>
 
 _major=25
-_minor=0.2
-_build=+10.1
+_minor=1.3
+
+# In the versioning scheme of GraalVM since JDK 25, three version numbers are
+# relevant:
+# - GraalVM release version: "GraalVM 25 Innovation 1" or 25i1
+# - Graal compiler version: "graal 25.1.3"
+# - Base JDK version: "jdk 25.0.3"
+# We track the first (Graal compiler version) with this package since it is what
+# they use in their release notes <https://www.graalvm.org/release-notes/25.1/>.
+
+_release=25i1
+_jdkver=25.0.3
+_build=+9.1
 
 pkgname="jdk${_major}-graalvm-ce-bin"
 pkgver="${_major}.${_minor}"
@@ -15,17 +26,28 @@ arch=('x86_64' 'aarch64')
 url='https://www.graalvm.org/'
 license=('custom')
 
-depends=('ca-certificates-java' 'java-runtime-common' 'java-environment-common')
+depends=(
+    'ca-certificates-java' 'java-runtime-common' 'java-environment-common'
+    'freetype2' 'glibc' 'libgcc' 'libstdc++' 'libz.so'
+)
+optdepends=(
+    'alsa-lib: for basic sound support'
+    'libx11: for AWT support'
+    'libxext: for AWT support'
+    'libxi: for AWT support'
+    'libxrender: for AWT support'
+    'libxtst: for AWT support'
+)
 provides=("java-runtime=${_major}" "java-runtime-headless=${_major}" "java-environment=${_major}")
 options=('staticlibs' !debug !strip)
 install=install_jdk25-graalvm-ce.sh
-source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-${pkgver}/graalvm-community-jdk-${pkgver}_linux-x64_bin.tar.gz")
-source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-${pkgver}/graalvm-community-jdk-${pkgver}_linux-aarch64_bin.tar.gz")
-sha256sums_x86_64=('e0be791c8fda4d03b6b0a0cb824fef3149736170057b3a515252b44419606af0')
-sha256sums_aarch64=('b4580d9f223d0a4b3a1757e58b18ff4c1db950e67e105fc5cb741457d2384a71')
+source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-${pkgver}/graalvm-community-jdk-${_release}-${_jdkver}_linux-x64_bin.tar.gz")
+source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-${pkgver}/graalvm-community-jdk-${_release}-${_jdkver}_linux-aarch64_bin.tar.gz")
+sha256sums_x86_64=('e9cd1637be853e105f8b09125b4b19fbce385696465d782cbca8bb80e1df8f0d')
+sha256sums_aarch64=('5e79978983439d28506ebef82254fe9f98995121208dc8be77c604f4ad5bc579')
 
 _jvmdir=/usr/lib/jvm/java-${_major}-graalvm-ce
-_jdkdir="graalvm-community-openjdk-${pkgver}${_build}"
+_jdkdir="graalvm-community-${pkgver}${_build}"
 
 package() {
 
