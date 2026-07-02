@@ -5,7 +5,7 @@ _pkgname=sitegen
 pkgname=${_pkgname}-bin
 pkgdesc="Sitegen is a simple but flexible static site generator."
 
-pkgver=1.0.36
+pkgver=1.0.37
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,10 +25,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE.txt")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[1]}")
-sha256sums=('7b35c3ad261e47afe1a19105b30158c833e3872fa335c12d2019a3dffac4bad8'
+sha256sums=('e145baade9e2cedcac6f7cda256d7420de0d9f61cf4575a69bb6bfb5c1e10974'
             '1d9ea865074fbbf9c4fd61ee0b36ad684b69f8ed7c2d083464484ada5cac243c')
-sha256sums_x86_64=('4f4083aebf109d3df5ae09903b528c055bbdb654f2ef416aae2e7302c5acd7a8')
-sha256sums_aarch64=('03ec1cd66e48c43d9481ff232bfa2c1ecd6e0c0c25f85bdd4ccb51a746333bf8')
+sha256sums_x86_64=('06263e83640d98cd2ec3637fe6d914012581dc8d6328b58d062219b6ed3bd32f')
+sha256sums_aarch64=('f910100490d343cd0b765ac59d89c0cddcb56256bc86ad751900dec68fa77a52')
 
 
 package() {
