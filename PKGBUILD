@@ -13,7 +13,7 @@ pkgver=16.1.0
 _mpfrver=4.2.2
 _mpcver=1.4.1
 _gmpver=6.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Compiler Collection. Bootstrap for toolchain building (${_target})"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
@@ -32,7 +32,7 @@ source=("https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
         "https://ftp.gnu.org/gnu/gmp/gmp-${_gmpver}.tar.xz.sig")
         
 sha256sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
-validpgpkeys=(13975A70E63C361C73AE69EF6EEB81F8981C74C7
+validpgpkeys=(D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62
               A534BE3F83E241D918280AEB5831D11A0D4DB02A
               AD17A21EF8AED8F1CC02DBD9F7D5C9BF765C61E3
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298)
