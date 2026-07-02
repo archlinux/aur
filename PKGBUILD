@@ -1,7 +1,7 @@
 # Maintainer: dimflix <dimflix.official@gmail.com>
 # Updated with automatic SHA256 hash calculation
 pkgname=meowrch-settings
-pkgver=3.1.5
+pkgver=3.1.6
 pkgrel=1
 pkgdesc="System optimization settings for Meowrch"
 arch=('any')
@@ -16,7 +16,7 @@ conflicts=('cachyos-settings')
 provides=('cachyos-settings')
 install=meowrch-settings.install
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a4c709c1c0ade827a029fe570585337472526baf99d237b47f36253af69e0239')
+sha256sums=('9138e1cc575dfa8547549c61d77a665c5f246b2fcb44994c774d41bae73cfd65')
 
 package() {
     cd "$srcdir/meowrch-settings-$pkgver"
