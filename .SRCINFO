@@ -1,0 +1,18 @@
+pkgbase = lastfm-rpc
+	pkgdesc = Discord Rich Presence for last.fm
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/jsdoublel/lastfm-rpc
+	install = lastfm-rpc.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = go>=1.26.4
+	source = lastfm-rpc-0.0.2.tar.gz::https://github.com/jsdoublel/lastfm-rpc/archive/v0.0.2.tar.gz
+	source = lastfm-rpc.service
+	source = lastfm-rpc.install
+	sha256sums = 14796898ff210b72fed60401b449b5d45a975d42dd2cf18df3311ef63d077eaa
+	sha256sums = 11d15049aa4b2de28709449245a8421a2718cdf665cb23810e2131bf55569b41
+	sha256sums = 1322ece18d5aaa73988ef0e2c105c857b2dee832118c1afed3c0d9bd58d27053
+
+pkgname = lastfm-rpc

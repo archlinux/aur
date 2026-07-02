@@ -1,0 +1,17 @@
+[Unit]
+Description=Discord Last.fm Rich Presence
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/lastfm-rpc
+
+Restart=on-failure
+RestartSec=10
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

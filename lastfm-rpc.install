@@ -1,0 +1,12 @@
+post_install() {
+    echo ":: To enable the Discord last.fm RPC service for your user, run:"
+    echo "   systemctl --user enable --now lastfm-rpc.service"
+}
+
+post_upgrade() {
+    echo ":: Restarting the Discord last.fm RPC service to apply updates..."
+    systemctl --user daemon-reload
+    if systemctl --user is-active --quiet lastfm-rpc.service; then
+        systemctl --user restart lastfm-rpc.service
+    fi
+}
