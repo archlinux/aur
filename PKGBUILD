@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-downloader-git
 _pkgname=Ghost-Downloader
-pkgver=3.7.1.r8.gf2eceef
+pkgver=4.0.1.r0.g82b6536
 pkgrel=1
 pkgdesc="A multi-threading async downloader with QThread based on PyQt/PySide.多线程下载器 协程下载器."
 arch=('any')
@@ -19,12 +19,19 @@ depends=(
     'libxkbcommon-x11'
     'qt6-base'
     'ffmpeg'
+    'libtorrent-rasterbar'
+    'libimagequant'
+    'python-loguru'
+    'libraqm'
+    'libavif'
+    'libxslt'
 )
 makedepends=(
     'git'
     'python-pip'
     'gendesk'
     'patchelf'
+    'libtorrent-rasterbar'
 )
 source=(
     "${pkgname%-git}.git::git+${url}"
@@ -50,21 +57,21 @@ prepare() {
         --categories="Network" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    sed -i "s/nuitka/.\/bin\/nuitka/g" deploy.py
-    python -m venv ./
+    python -m venv --system-site-packages ./
     source ./bin/activate
+    sed -i '/^libtorrent/d' requirements.txt
     pip install --timeout=300 -r requirements.txt
     pip install -U nuitka
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
     source ./bin/activate
-    python deploy.py
+    python scripts/deploy.py
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}/plugins"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/dist/${_pkgname}-3.dist/"* "${pkgdir}/usr/lib/${pkgname%-git}"
+    cp -a "${srcdir}/${pkgname%-git}.git/dist/${_pkgname}-3.dist/"* "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/app/assets/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
