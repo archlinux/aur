@@ -1,6 +1,6 @@
 pkgbase = git-guitar-git
 	pkgdesc = A terminal based git client with fast topological & chronological graph rendering - Built form the main branch
-	pkgver = 0.1.45.r7.g676c3d9
+	pkgver = 0.1.45.r154.g9735d5c
 	pkgrel = 1
 	url = https://github.com/asinglebit/guitar
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = git-guitar-git
 	makedepends = cargo
 	makedepends = git
 	depends = git
-	provides = guitar=0.1.45.r7.g676c3d9
+	provides = guitar=0.1.45.r154.g9735d5c
 	conflicts = git-guitar
 	conflicts = git-guitar-bin
 	options = !lto

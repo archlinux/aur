@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=git-guitar-git
 _pkgname=guitar
-pkgver=0.1.45.r7.g676c3d9
+pkgver=0.1.45.r154.g9735d5c
 pkgrel=1
 pkgdesc='A terminal based git client with fast topological & chronological graph rendering - Built form the main branch'
 arch=(x86_64 aarch64)
