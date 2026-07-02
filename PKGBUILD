@@ -1,7 +1,7 @@
 # Maintainer: SLIGHTLKE <SLIGHTLKE@outlook.com>
 pkgname=steam-appimage
 pkgver=1.0.0.86.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Steam package based on AppImage"
 arch=('x86_64')
 url="https://github.com/ivan-hc/Steam-appimage"
@@ -10,7 +10,7 @@ optdepends=('xdg-utils')
 options=(!strip)
 
 source=(
-  "Steam-1.0.0.86-1-anylinux-x86_64.AppImage::https://github.com/ivan-hc/Steam-appimage/releases/download/1.0.0.86-1%402026-06-27_1782572985/Steam-1.0.0.86-1-anylinux-x86_64.AppImage"
+  "Steam-1.0.0.86-1-anylinux-x86_64.AppImage::https://gh-proxy.org/https://github.com/ivan-hc/Steam-appimage/releases/download/1.0.0.86-1%402026-06-27_1782572985/Steam-1.0.0.86-1-anylinux-x86_64.AppImage"
   "LICENSE::https://www.gnu.org/licenses/gpl-3.0.txt"
 )
 
@@ -22,7 +22,7 @@ sha256sums=(
 package() {
   install -dm755 "$pkgdir/opt/Steam/appimage"
   chown -R $USER:$USER "$pkgdir/opt/Steam"
-  install -Dm755 "$srcdir/Steam-1.0.0.85-7-anylinux-x86_64.AppImage" \
+  install -Dm755 "$srcdir/Steam-1.0.0.86-1-anylinux-x86_64.AppImage" \
                  "$pkgdir/opt/Steam/appimage/Steam-1.0.0.86-1-anylinux-x86_64.AppImage"
 
   install -dm755 "$pkgdir/usr/bin"
@@ -45,7 +45,7 @@ Categories=Game;
 Terminal=false
 EOF
 
-  install -Dm644 "$srcdir/LICENSE"
+  install -Dm644 "$srcdir/LICENSE" \
                  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 }

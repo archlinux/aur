@@ -1,13 +1,13 @@
 pkgbase = steam-appimage
 	pkgdesc = Steam package based on AppImage
 	pkgver = 1.0.0.86.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ivan-hc/Steam-appimage
 	arch = x86_64
 	license = GPL-3.0-or-later
 	optdepends = xdg-utils
 	options = !strip
-	source = Steam-1.0.0.86-1-anylinux-x86_64.AppImage::https://github.com/ivan-hc/Steam-appimage/releases/download/1.0.0.86-1%402026-06-27_1782572985/Steam-1.0.0.86-1-anylinux-x86_64.AppImage
+	source = Steam-1.0.0.86-1-anylinux-x86_64.AppImage::https://gh-proxy.org/https://github.com/ivan-hc/Steam-appimage/releases/download/1.0.0.86-1%402026-06-27_1782572985/Steam-1.0.0.86-1-anylinux-x86_64.AppImage
 	source = LICENSE::https://www.gnu.org/licenses/gpl-3.0.txt
 	sha256sums = 178a11871b1f3f62fe3e52d5724c1f56038e7651433dc1d26216fa46773c4837
 	sha256sums = SKIP
