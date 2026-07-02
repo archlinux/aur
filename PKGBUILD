@@ -4,8 +4,8 @@
 pkgname=gogh-git
 _pkgname=gogh
 _reponame=Gogh
-pkgver=1134.0aee76d
-pkgrel=2
+pkgver=1138.80f46a2
+pkgrel=1
 pkgdesc="Color Scheme for Gnome Terminal, Pantheon Terminal and Tilix"
 arch=('any')
 url="https://github.com/Gogh-Co/Gogh"
