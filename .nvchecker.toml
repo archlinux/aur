@@ -1,0 +1,4 @@
+[oxigraph]
+source = "git"
+git = "https://github.com/CodSpeedHQ/codspeed.git"
+prefix = "v"

@@ -1,0 +1,17 @@
+pkgbase = codspeed-bin
+	pkgdesc = codspeed test runner
+	pkgver = 4.18.1
+	pkgrel = 1
+	url = https://github.com/CodSpeedHQ/codspeed
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = lsb-release
+	depends = valgrind-codspeed
+	source = codspeed-runner-x86_64-unknown-linux-musl.tar.gz::https://github.com/CodSpeedHQ/codspeed/releases/download/v4.18.1/codspeed-runner-x86_64-unknown-linux-musl.tar.gz
+	sha512sums = 422270d03fc69fe599dd9ac048d869d31b5dd8da7c248fe466c161b9246761aadd0e71d10c7fae3d5c1be38d759eef6784317c73d3344c6031ac170587a2b062
+
+pkgname = codspeed-bin
