@@ -1,12 +1,12 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=wpimath-git
-pkgver=2025.3.2.r110.gee0a8a1e56
+pkgver=2027.0.0.alpha.6.r130.gb6effc4908
 pkgrel=1
 pkgdesc="WPILib's mathematics and controls library"
 arch=('x86_64')
 url='https://github.com/wpilibsuite/allwpilib'
-depends=('fmt' 'eigen' 'protobuf')
+depends=('eigen' 'fmt' 'protobuf' 'sleipnirgroup-sleipnir')
 makedepends=('cmake')
 provides=('wpimath')
 conflicts=('wpimath')
@@ -26,21 +26,20 @@ pkgver() {
 build() {
   cmake -B build -S "allwpilib" \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DWITH_JAVA=OFF \
-    -DWITH_CSCORE=OFF \
-    -DWITH_NTCORE=OFF \
-    -DWITH_WPICAL=OFF \
-    -DWITH_WPIMATH=ON \
-    -DWITH_WPILIB=OFF \
-    -DWITH_EXAMPLES=OFF \
-    -DWITH_TESTS=ON \
-    -DWITH_GUI=OFF \
-    -DWITH_SIMULATION_MODULES=OFF \
-    -DWITH_PROTOBUF=ON \
-    -DWITH_BENCHMARK=OFF \
-    -DUSE_SYSTEM_FMTLIB=ON \
-    -DUSE_SYSTEM_EIGEN=ON \
-    -DNO_WERROR=ON \
+    -DWPILIB_NO_WERROR=ON \
+    -DWPILIB_USE_SYSTEM_EIGEN=ON \
+    -DWPILIB_USE_SYSTEM_FMTLIB=ON \
+    -DWPILIB_USE_SYSTEM_SLEIPNIR=ON \
+    -DWPILIB_WITH_BENCHMARK=OFF \
+    -DWPILIB_WITH_CSCORE=OFF \
+    -DWPILIB_WITH_EXAMPLES=OFF \
+    -DWPILIB_WITH_GUI=OFF \
+    -DWPILIB_WITH_NTCORE=OFF \
+    -DWPILIB_WITH_SIMULATION_MODULES=OFF \
+    -DWPILIB_WITH_TESTS=ON \
+    -DWPILIB_WITH_WPICAL=OFF \
+    -DWPILIB_WITH_WPILIB=OFF \
+    -DWPILIB_WITH_WPIMATH=ON \
     -Wno-dev
   cmake --build build
 }
