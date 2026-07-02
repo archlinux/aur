@@ -2,23 +2,34 @@
 
 _name=exa-py
 pkgname=python-$_name
-pkgver=2.15.0
+pkgver=2.16.0
 pkgrel=1
 pkgdesc="Python SDK for Exa API."
 arch=('any')
 url="https://github.com/exa-labs/exa-py"
 license=('MIT')
-depends=('python' 'python-requests' 'python-openai' 'python-pydantic' 'python-httpx' 'python-httpcore' 'python-dotenv')
+depends=('python' 'python-requests' 'python-typing_extensions' 'python-openai' 'python-pydantic' 'python-httpx' 'python-httpcore' 'python-dotenv')
 makedepends=('python-poetry-core' 'python-build' 'python-installer' 'python-wheel')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('8b3c3dbfe78e57b116e1ef50dec35c921519fb6cee94ed6c986d707b89de44fb')
+checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('07083955862094140ac523782890b5261899fb9385d9ee13b68976ce56852f57')
 
 build() {
-    cd "$srcdir"/${_name//-/_}-$pkgver
-    python -m build --wheel --no-isolation
+  cd "$srcdir"/$_name-$pkgver
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  local pytest_options=(
+    -vv
+    --disable-warnings
+    --override-ini="addopts="
+  )
+  cd "$srcdir"/$_name-$pkgver
+  PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
 }
 
 package() {
-  cd "$srcdir"/${_name//-/_}-$pkgver
+  cd "$srcdir"/$_name-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
