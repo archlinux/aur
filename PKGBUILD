@@ -1,7 +1,7 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 _name='trufflehog'
 pkgname="$_name-git"
-pkgver=3.95.6.r5.g6f5220357
+pkgver=3.95.8.r0.g00155c9dc
 pkgrel=1
 pkgdesc="Secrets scanner for repositories"
 arch=('x86_64' 'aarch64')
@@ -39,7 +39,6 @@ build() {
   export GOPATH="$srcdir"
   export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
   go build -ldflags "-compressdwarf=false -linkmode external"
-  ./trufflehog --generate-man-page > "$_name.1"
   ./trufflehog --completion-script-bash > "$_name-c.bash"
   ./trufflehog --completion-script-zsh > "$_name-c.zsh"
 }
@@ -47,7 +46,7 @@ build() {
 package() {
   cd "$_name"
   install -Dm0755 -t "$pkgdir/usr/bin/" "$_name"
-  install -Dm0644 -t "$pkgdir/usr/share/man/man1/" "$_name.1"
+  install -Dm0644 -t "$pkgdir/usr/share/man/man1/" "docs/man/$_name.1"
   install -Dm0644 "$_name-c.bash" "$pkgdir/usr/share/bash-completion/completions/$_name"
   install -Dm0644 "$_name-c.zsh" "$pkgdir/usr/share/zsh/site_functions/_$_name"
 }
