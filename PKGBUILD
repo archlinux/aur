@@ -1,8 +1,8 @@
 # Maintainer: fridge <echo dW5sb3ZhYmxlX2ZyaWRnZTM1NkBhbGVlYXMuY29tCg== | base64 -d>
 # Contributor: Yigit Sever <echo eWlnaXRAeWlnaXRzZXZlci5jb20K | base64 -d>
 pkgname="gourmand"
-pkgver="1.1.0"
-pkgrel="1"
+pkgver="1.2.0"
+pkgrel="2"
 pkgdesc="A manager, editor, and organizer for recipes."
 url="https://github.com/GourmandRecipeManager/$pkgname"
 license=("GPL-2.0-only")
@@ -43,7 +43,7 @@ build()
 package()
 {
     install -dv "$pkgdir/opt/$pkgname"
-    cp -afv "$pkgname-git/venv/"* "$pkgdir/opt/$pkgname"
+    cp -afLv "$pkgname-git/venv/"* "$pkgdir/opt/$pkgname"
     install -Dvm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dvm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
     install -Dvm644 "$pkgname-git/src/$pkgname/data/images/$pkgname.svg" "$pkgdir/usr/share/icons/$pkgname.svg"
