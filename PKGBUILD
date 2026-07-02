@@ -1,6 +1,6 @@
 # Maintainer: Xiaomony <x2976113702@gmail.com>
 pkgname=tram_btrfs
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A TUI Btrfs snapshot manager"
 arch=('x86_64')
