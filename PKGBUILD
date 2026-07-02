@@ -11,7 +11,6 @@ license=('custom')
 depends=(
   'gtk3'
   'hicolor-icon-theme'
-  'java-runtime-headless'
   'libepoxy'
   'libsecret'
   'mpv'
@@ -26,6 +25,7 @@ sha256sums=('b5ee790f7093d52a328cec5e8cbc405f6e59b8413efde0d0330bc214f4b1367b')
 package() {
   install -dm755 "$pkgdir/opt/m3u-tv"
   cp -a "$srcdir/m3u_tv" "$srcdir/lib" "$srcdir/data" "$pkgdir/opt/m3u-tv/"
+  rm -f "$pkgdir/opt/m3u-tv/lib/libdartjni.so"
   chmod 755 "$pkgdir/opt/m3u-tv/m3u_tv"
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/m3u-tv" << 'END'
