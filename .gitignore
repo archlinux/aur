@@ -1,0 +1,7 @@
+pkg
+src
+wine
+
+*.pkg.tar.zst
+
+*.tar.xz

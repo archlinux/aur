@@ -1,0 +1,8 @@
+post_install() {
+  echo "Run 'systemctl restart systemd-binfmt' in order to make the wine binfmt available on your system."
+  echo "Run 'modprobe ntsync' to enable NTSYNC right away (it will be auto-loaded on next boot)."
+}
+
+post_remove() {
+  echo "binfmt binary formats will be updated at reboot"
+}
