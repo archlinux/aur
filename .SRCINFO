@@ -1,6 +1,6 @@
 pkgbase = librewolf-bin
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 152.0.2_1
+	pkgver = 152.0.4_1
 	pkgrel = 1
 	epoch = 1
 	url = https://librewolf.net/
@@ -52,20 +52,20 @@ pkgbase = librewolf-bin
 	options = !emptydirs
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = git+https://codeberg.org/librewolf/source.git#tag=152.0.2-1
+	source = git+https://codeberg.org/librewolf/source.git#tag=152.0.4-1
 	source = default192x192.png
 	source = librewolf.desktop
 	validpgpkeys = 662E3CDD6FE329002D0CA5BB40339DD82B12EF16
-	sha256sums = 50f223964bbcee1c6306c13b1e078d989662abf2888b696a648b3c5e959af7d1
+	sha256sums = 681fdcc942bcd73f3590980e5685b6943d3cbcac879ce2dbc9928890ce0b79f4
 	sha256sums = 959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1
 	sha256sums = 3d6ac59ae9d5ba4c9fe15f95c1338fa68214dec6119f8432336403e3be50f8ae
-	source_x86_64 = https://codeberg.org/api/packages/librewolf/generic/librewolf/152.0.2-1/librewolf-152.0.2-1-linux-x86_64-package.tar.xz
-	source_x86_64 = https://codeberg.org/api/packages/librewolf/generic/librewolf/152.0.2-1/librewolf-152.0.2-1-linux-x86_64-package.tar.xz.sig
-	sha256sums_x86_64 = 4ead9b8fbe68657487d981d74a18d146ce00ab1a3ce81bb038d5eef88b1d0ae0
+	source_x86_64 = https://codeberg.org/api/packages/librewolf/generic/librewolf/152.0.4-1/librewolf-152.0.4-1-linux-x86_64-package.tar.xz
+	source_x86_64 = https://codeberg.org/api/packages/librewolf/generic/librewolf/152.0.4-1/librewolf-152.0.4-1-linux-x86_64-package.tar.xz.sig
+	sha256sums_x86_64 = e2f9acbfddc436db5e135f2e18917664485a440de718983ffd66187414442228
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://codeberg.org/api/packages/librewolf/generic/librewolf/152.0.2-1/librewolf-152.0.2-1-linux-arm64-package.tar.xz
-	source_aarch64 = https://codeberg.org/api/packages/librewolf/generic/librewolf/152.0.2-1/librewolf-152.0.2-1-linux-arm64-package.tar.xz.sig
-	sha256sums_aarch64 = c64de8e453839b981ed88f09ce0c174e982efd223a55c44e209ef4d397b0d8f6
+	source_aarch64 = https://codeberg.org/api/packages/librewolf/generic/librewolf/152.0.4-1/librewolf-152.0.4-1-linux-arm64-package.tar.xz
+	source_aarch64 = https://codeberg.org/api/packages/librewolf/generic/librewolf/152.0.4-1/librewolf-152.0.4-1-linux-arm64-package.tar.xz.sig
+	sha256sums_aarch64 = 435bd3ffda8eb36022311b0b7287c5ec5d98fb9409265a08fd049567003d802f
 	sha256sums_aarch64 = SKIP
 
 pkgname = librewolf-bin
