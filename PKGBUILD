@@ -1,8 +1,8 @@
 # Maintainer: Varalys <chris@varalys.com>
 pkgname=lore-cli-bin
-pkgver=0.1.13
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Reasoning history for code - captures AI-assisted development sessions and links them to git commits"
+pkgdesc="Reasoning history for code. Capture AI coding sessions, trace any line to the AI conversation that produced it, and sync it through your own git remotes."
 arch=('x86_64' 'aarch64')
 url="https://github.com/varalys/lore"
 license=('Apache-2.0')
