@@ -1,6 +1,6 @@
 pkgbase = archisteamfarm-asf-bin
 	pkgdesc = C# application with primary purpose of farming Steam cards from multiple accounts simultaneously.
-	pkgver = 6.3.6.1
+	pkgver = 6.3.7.0
 	pkgrel = 1
 	url = https://github.com/JustArchiNET/ArchiSteamFarm
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = archisteamfarm-asf-bin
 	license = Apache
 	provides = archisteamfarm
 	conflicts = archisteamfarm-bin
-	noextract = ASF-x64-6.3.6.1.zip
-	noextract = ASF-arm64-6.3.6.1.zip
+	noextract = ASF-x64-6.3.7.0.zip
+	noextract = ASF-arm64-6.3.7.0.zip
 	options = !strip
 	options = !debug
-	source_x86_64 = ASF-x64-6.3.6.1.zip::https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/6.3.6.1/ASF-linux-x64.zip
-	sha256sums_x86_64 = SKIP
-	source_aarch64 = ASF-arm64-6.3.6.1.zip::https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/6.3.6.1/ASF-linux-arm64.zip
-	sha256sums_aarch64 = SKIP
+	source_x86_64 = ASF-x64-6.3.7.0.zip::https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/6.3.7.0/ASF-linux-x64.zip
+	sha256sums_x86_64 = 4e79f6d0854a37b99404f5d0a477089cacfb40f74317dd1d6615c5c445ce2392
+	source_aarch64 = ASF-arm64-6.3.7.0.zip::https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/6.3.7.0/ASF-linux-arm64.zip
+	sha256sums_aarch64 = e568deba489de5f5c1ad8c651a9432022f4901d279ae6048fe3ad2d590251ce3
 
 pkgname = archisteamfarm-asf-bin
