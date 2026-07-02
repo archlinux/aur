@@ -3,8 +3,8 @@
 
 _pkgname=hermes-agent
 pkgname=python-${_pkgname}
-tag=2026.6.19
-pkgver=0.17.0
+tag=2026.7.1
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="The self-improving AI agent — creates skills from experience, improves them during use, and runs anywhere"
 arch=('any')
@@ -15,9 +15,10 @@ depends=('python>=3.11' 'python-dotenv' 'python-prompt_toolkit' 'python-openai' 
           'python-httpx' 'python-requests' 'python-jinja' 'python-pydantic' 'python-psutil'
           'python-markdown' 'python-pathspec' 'python-ptyprocess'
           'python-certifi' 'python-packaging' 'python-urllib3' 'python-websockets'
-          'python-pillow' 'python-multipart' 'python-fastapi' 'python-starlette')
+          'python-pillow' 'python-multipart' 'python-cryptography'
+          'python-fastapi' 'python-starlette' 'uvicorn')
 optdepends=('python-telegram-bot: Telegram messaging support'
-            'python-discord: Discord messaging support'
+            'python-discord: Discord messaging support (PyPI: discord.py)'
             'python-aiohttp: Async HTTP for messaging/web, QQ bot & Wechat messaging needs this'
             'python-mcp: Model Context Protocol support'
             'python-anthropic: Anthropic Claude API support'
@@ -27,7 +28,7 @@ optdepends=('python-telegram-bot: Telegram messaging support'
             'python-simple-term-menu: Interactive CLI menu'
             'python-slack-sdk: Slack integration'
             'python-qrcode: QR code generation for auth'
-            'python-croniter: Cron scheduling support (AUR)'
+            'python-croniter: Cron scheduling support (upstream-required, AUR)'
             'python-exa-py: Exa web search backend'
             'python-firecrawl-py: Firecrawl web search backend'
             'python-fal-client: Fal image generation backend'
@@ -45,7 +46,7 @@ source=(
     "${url}/archive/refs/tags/v${tag}.tar.gz"
 )
 sha256sums=(
-    '69b805ec0a7a7be880068ba8a3b17479d7ba29f0cac0a2e9c6692c02f346ba91'
+    'ec8a380629cc2f3f2102dd92cad50c4ded706fe59c0e359a05681166a0ae2991'
 )
 
 package() {
