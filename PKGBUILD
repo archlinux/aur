@@ -1,13 +1,13 @@
 # Maintainer: Rodrigo Arias Mallo <rodarima@gmail.com>
 
 pkgname=dillo-git
-pkgver=v3.3.0.r8.g92f89c8
+pkgver=v3.3.0.r10.g7ed29a4
 pkgrel=1
 pkgdesc="A small, fast graphical web browser built on FLTK"
 arch=(x86_64)
 url="https://dillo-browser.org/"
 license=('GPL-3.0-or-later')
-depends=('fltk1.3' 'libjpeg' 'perl' 'openssl' 'libpng' 'libwebp' 'gcc-libs' 'libxcursor'
+depends=('fltk1.3' 'libjpeg.so' 'perl' 'openssl' 'libpng' 'libwebp' 'gcc-libs' 'libxcursor'
          'libxi' 'libxinerama' 'brotli')
 conflicts=('dillo')
 backup=(etc/dillo/{dillorc,dpidrc})
