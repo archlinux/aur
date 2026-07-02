@@ -1,6 +1,6 @@
 pkgbase = door
 	pkgdesc = Beautiful, security-first Wayland display manager / login manager with an animated GPU greeter (privilege-separated, reversible)
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/satorisage/door
 	install = door.install
@@ -16,7 +16,7 @@ pkgbase = door
 	options = !lto
 	backup = etc/pam.d/doord
 	backup = etc/pam.d/door-greeter
-	source = door-0.1.5.tar.gz::https://github.com/satorisage/door/archive/refs/tags/v0.1.5.tar.gz
-	sha256sums = 545100479024091d2752b6555688a3c8347ebfed34aea3da971fc999eb3243cc
+	source = door-0.1.6.tar.gz::https://github.com/satorisage/door/archive/refs/tags/v0.1.6.tar.gz
+	sha256sums = 82d5d1e2cc3ae6de1706f9239d6eaa4dc18d935d1b51e9d9e87220ecb75147fa
 
 pkgname = door
