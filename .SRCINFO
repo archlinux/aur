@@ -1,7 +1,7 @@
 pkgbase = proton-drive-cli
 	pkgdesc = Official Proton Drive command-line client
 	pkgver = 0.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/protondriveapps/sdk
 	arch = x86_64
 	arch = aarch64
