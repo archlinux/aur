@@ -1,6 +1,6 @@
 pkgbase = phasionary-bin
 	pkgdesc = Terminal-first, single-user project planning tool
-	pkgver = 0.7.2
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/ilyasturki/phasionary
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = phasionary-bin
 	provides = phasionary
 	conflicts = phasionary
 	options = !strip
-	source = LICENSE-0.7.2::https://github.com/ilyasturki/phasionary/raw/v0.7.2/LICENSE
+	source = LICENSE-0.8.0::https://github.com/ilyasturki/phasionary/raw/v0.8.0/LICENSE
 	sha256sums = SKIP
-	source_x86_64 = phasionary-bin-0.7.2-x86_64::https://github.com/ilyasturki/phasionary/releases/download/v0.7.2/phasionary-linux-x64
-	sha256sums_x86_64 = 03846ff6a74f1333d990ccb105e727c29a541020dd5d7d11a869ee0bcb062734
-	source_aarch64 = phasionary-bin-0.7.2-aarch64::https://github.com/ilyasturki/phasionary/releases/download/v0.7.2/phasionary-linux-arm64
-	sha256sums_aarch64 = 5f24878062ae24257a5d26575e98742dc86510a4cc6cadf1298c52140d3a50fb
+	source_x86_64 = phasionary-bin-0.8.0-x86_64::https://github.com/ilyasturki/phasionary/releases/download/v0.8.0/phasionary-linux-x64
+	sha256sums_x86_64 = 5273176ee8c99e74b8231efd9b6647a223fd27a9c7c7414a6fa713e99892842b
+	source_aarch64 = phasionary-bin-0.8.0-aarch64::https://github.com/ilyasturki/phasionary/releases/download/v0.8.0/phasionary-linux-arm64
+	sha256sums_aarch64 = f835ffbaf8cfad2eb9aeb7fb94275608d921845c5befd0152637c673b00886b1
 
 pkgname = phasionary-bin
