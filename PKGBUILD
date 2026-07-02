@@ -2,8 +2,8 @@
 # Co-Maintainer: Ricardo Gonçalves <ricardompgoncalves@gmail.com>
 
 pkgname=autenticacao-gov-pt-bin
-pkgver=3.14.0
-pkgrel=2
+pkgver=3.15.0
+pkgrel=1
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries by AMA"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -38,7 +38,7 @@ replaces=('cartaodecidadao-bin')
 source_x86_64=("https://github.com/amagovpt/autenticacao.gov/releases/download/v${pkgver}/pteid-mw-${pkgver}-pcsclite-2.3.flatpak"
  "autenticacao-gov-pt-bin.install")
 
-sha512sums_x86_64=('d8c0e7756490f9117050c0e39303d3da9adfe7c51953bdf1617520444e6030a53868c61ab2b16cc7da9561194c22284178e9084d7a66b18e80b0d52fb8b398b8'
+sha512sums_x86_64=('6989bdbdcd88731ec32d61897ac2cd87418de9533bee5e8e7f56ec9d5fa215556d36e35a82de77a3bd5e1319401afc5d5bfb208b3f61c5d81a53ffc3d9c7704b'
                    'd38b9748f386fcf64f3f0cb717eccf7936c64f0e7b6370ae3b1b079902015ce56d3057afcf2877ca4eee38776269ac3642701803ba96b24a81cfccc9a4d3245f')
 
 install='autenticacao-gov-pt-bin.install'
