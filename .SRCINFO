@@ -1,6 +1,6 @@
 pkgbase = victus-control-bin
 	pkgdesc = Tray-first monitor and profile controller for HP Victus laptops
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/jR4dh3y/HPOmen-linux
 	install = victus-control-bin.install
@@ -17,7 +17,7 @@ pkgbase = victus-control-bin
 	depends = polkit
 	provides = victus-control
 	conflicts = victus-control
-	source = victus-control-bin-0.1.0.tar.zst::https://github.com/jR4dh3y/HPOmen-linux/releases/download/v0.1.0/victus-control-0.1.0-x86_64.tar.zst
-	sha256sums = 0f3bf2949947081641b4b818d4df631d4e81211259aff77d51df244bd8222e0b
+	source = victus-control-bin-0.2.0.tar.zst::https://github.com/jR4dh3y/HPOmen-linux/releases/download/v0.2.0/victus-control-0.2.0-x86_64.tar.zst
+	sha256sums = b33555f3f732d3f7c53d6148a86f2eac465767a4b60bc7a2d7525725a48c0631
 
 pkgname = victus-control-bin
