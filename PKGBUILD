@@ -8,12 +8,12 @@ pkgname=displaylink
 pkgver=6.3
 _releasedate=2026-06
 _pkgfullver=6.3.0-48
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux driver for DisplayLink devices"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.synaptics.com/products/displaylink-graphics"
 license=('custom' 'GPL2' 'LGPL2.1')
-depends=('evdi<1.15'
+depends=('evdi<1.16'
          'libusb')
 makedepends=('grep' 'gawk' 'wget')
 changelog="displaylink-release-notes-${pkgver}.txt"

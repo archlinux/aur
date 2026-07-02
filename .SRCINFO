@@ -1,7 +1,7 @@
 pkgbase = displaylink
 	pkgdesc = Linux driver for DisplayLink devices
 	pkgver = 6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.synaptics.com/products/displaylink-graphics
 	changelog = displaylink-release-notes-6.3.txt
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = displaylink
 	makedepends = grep
 	makedepends = gawk
 	makedepends = wget
-	depends = evdi<1.15
+	depends = evdi<1.16
 	depends = libusb
 	source = displaylink-driver-6.3.zip::https://www.synaptics.com/sites/default/files/exe_files/2026-06/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu6.3-EXE.zip
 	source = displaylink-release-notes-6.3.txt
