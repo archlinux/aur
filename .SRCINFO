@@ -9,7 +9,7 @@ pkgbase = lanshare-bin
 	makedepends = go>=1.21
 	depends = glibc
 	optdepends = fyne: desktop GUI
-	source = lanshare-bin-1.0.0.tar.gz::https://github.com/gensui-fuga/lanshare/archive/v1.0.0.tar.gz
+	source = lanshare-1.0.0.tar.gz::https://github.com/gensui-fuga/lanshare/archive/v1.0.0.tar.gz
 	source = lanshare.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP

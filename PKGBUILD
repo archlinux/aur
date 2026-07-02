@@ -10,13 +10,15 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('go>=1.21')
 optdepends=('fyne: desktop GUI')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/gensui-fuga/lanshare/archive/v$pkgver.tar.gz"
+source=("lanshare-$pkgver.tar.gz::https://github.com/gensui-fuga/lanshare/archive/v$pkgver.tar.gz"
         "lanshare.desktop")
 sha256sums=('SKIP'
             'SKIP')
 
+_sourcedir="lanshare-$pkgver"  # GitHub archives extract as repo-tag (without 'v' prefix)
+
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$_sourcedir"
     
     # Build CLI version
     go build -trimpath -ldflags="-s -w" -o lanshare .
@@ -26,7 +28,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$_sourcedir"
     
     # Install binaries
     install -Dm755 lanshare "$pkgdir/usr/bin/lanshare"
