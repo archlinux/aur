@@ -4,16 +4,16 @@
 _pkgname="quirc"
 pkgname="$_pkgname"
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="QR decoder library"
 url="https://github.com/dlbeer/quirc"
 license=('ISC')
 arch=('i686' 'x86_64')
 
 depends=(
-  'libjpeg'
-  'sdl_gfx'
+  'libjpeg-turbo'
   'sdl12-compat'
+  'sdl_gfx'
 )
 
 _pkgsrc="$_pkgname-$pkgver"
