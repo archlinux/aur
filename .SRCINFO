@@ -1,7 +1,7 @@
 pkgbase = waterfox
 	pkgdesc = A customizable, privacy‑focused web browser
 	pkgver = 6.6.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BrowserWorks/waterfox
 	arch = x86_64
 	license = MPL-2.0
@@ -34,7 +34,7 @@ pkgbase = waterfox
 	depends = ffmpeg
 	depends = gtk3
 	depends = libevent
-	depends = libjpeg
+	depends = libjpeg.so
 	depends = libpulse
 	depends = libvpx.so
 	depends = libwebp.so

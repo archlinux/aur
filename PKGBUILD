@@ -14,8 +14,8 @@
 
 _pkgname="waterfox"
 pkgname="$_pkgname"
-pkgver="6.6.15"
-pkgrel=1
+pkgver=6.6.15
+pkgrel=2
 pkgdesc="A customizable, privacy‑focused web browser"
 url="https://github.com/BrowserWorks/waterfox"
 license=('MPL-2.0')
@@ -26,10 +26,10 @@ depends=(
   ffmpeg
   gtk3
   libevent
-  libjpeg
+  libjpeg.so # libjpeg-turbo
   libpulse
-  libvpx.so
-  libwebp.so
+  libvpx.so  # libvpx
+  libwebp.so # libwebp
   libxss
   libxt
   mime-types
