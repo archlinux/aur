@@ -1,7 +1,7 @@
 pkgbase = svp-bin
 	pkgdesc = SmoothVideo Project 4 (SVP4)
 	pkgver = 4.7.305
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.svp-team.com/wiki/SVP:Linux
 	install = svp-bin.install
 	arch = x86_64
@@ -24,12 +24,12 @@ pkgbase = svp-bin
 	conflicts = svp
 	options = !strip
 	source = https://www.svp-team.com/files/svp4-linux.4.7.305-1.tar.bz2
-	source = svp-4.7.305_core.full_4.7.0.305-4libs.7z::http://cdn.svp-team.com/repo/full-lin64/core.full/4.7.0.305-4libs.7z
-	source = svp-4.7.305_core.full_4.7.0.305-4licenses.7z::http://cdn.svp-team.com/repo/full-lin64/core.full/4.7.0.305-4licenses.7z
-	source = svp-4.7.305_core.full_4.7.0.305-4content.7z::http://cdn.svp-team.com/repo/full-lin64/core.full/4.7.0.305-4content.7z
+	source = svp-4.7.305_core.full_4.7.0.305-5libs.7z::http://cdn.svp-team.com/repo/full-lin64/core.full/4.7.0.305-5libs.7z
+	source = svp-4.7.305_core.full_4.7.0.305-5licenses.7z::http://cdn.svp-team.com/repo/full-lin64/core.full/4.7.0.305-5licenses.7z
+	source = svp-4.7.305_core.full_4.7.0.305-5content.7z::http://cdn.svp-team.com/repo/full-lin64/core.full/4.7.0.305-5content.7z
 	sha256sums = 6bd83a03ac43cb1efb0e252d12bc379cb6e8b6037b4b4973017ce977b1b2925e
-	sha256sums = 0aed687ef7bd42defce26877eeb4cb93832fdb7ca0efb56260bf14c25f0a3bf7
-	sha256sums = 5dff7f52352a30c2cf4816d156ce802281c0a6e20e1df474bda77942c1202b21
-	sha256sums = 60af0f39286a9edb37bdaa5ec802e5fd6874060d79ff49880df1c360bf65a401
+	sha256sums = 99c9aeeba3743f232edbb74aed4cfd9a0df8d2d0d3098cbf54b6ee7191c836df
+	sha256sums = 80abbaf3d547162abc131114f51f643595edbde8709d5e004e35f6dd2b8c7933
+	sha256sums = 0b5c2da9c35162a7c684fe7c5f013b82f6ff8a58732aa5f791580ae850380ff2
 
 pkgname = svp-bin
