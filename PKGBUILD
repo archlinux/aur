@@ -1,13 +1,13 @@
 # Maintainer: MaoYaoTang <maoyaotang@163.com>
 
 pkgname=liveplayer-iptv
-pkgver=1.2.5
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="基于 mpv 简单看在线直播,在线更新直播源"
 arch=('x86_64')
 url="https://github.com/maoyaotang12/LivePlayer"
 license=('MIT')
-depends=('qt5-base' 'mpv')
+depends=('qt6-base' 'mpv')
 makedepends=('cmake' 'gcc' 'make')
 source=(git+$url.git
 ${pkgname}.desktop
