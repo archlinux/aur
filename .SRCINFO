@@ -1,0 +1,22 @@
+pkgbase = tintty
+	pkgdesc = Tiny native Wayland terminal emulator — full Unicode beyond U+FFFF at urxvt-level RAM
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/maxischmaxi/tintty
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = wayland-protocols
+	makedepends = pkgconf
+	depends = wayland
+	depends = libxkbcommon
+	depends = freetype2
+	depends = fontconfig
+	depends = pixman
+	optdepends = ttf-firacode-nerd: einkompilierter Standard-Font
+	optdepends = ttf-nerd-fonts-symbols-mono: Nerd-Font-Icon-Fallback
+	optdepends = noto-fonts-emoji: Emoji-Fallback
+	source = tintty-0.1.2.tar.gz::https://github.com/maxischmaxi/tintty/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 44de7586a83c7da927a66ac2788d42632454da86c93643f287443e6794442404
+
+pkgname = tintty
