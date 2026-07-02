@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=deepseek-reasonix-tui-bin
-pkgver=1.14.1
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="DeepSeek-Reasonix CLI - Reasonix TUI client for DeepSeek models (terminal UI)"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ _relurl="https://github.com/esengine/DeepSeek-Reasonix/releases/download/v${pkgv
 
 source=()
 sha256sums=()
-sha256sums_x86_64=('b8457b7b4e72f2f8b2703cd521375f10803eb2387c3a116d76b76eae187c5ebc')
-sha256sums_aarch64=('b915a9d0fa435abaeda5c3281cd430153f1b8b836cfab841ff26199107d00a78')
+sha256sums_x86_64=('9800387311ffee3aa4f3f76df9bcdbd4f2e6723cba9c9b9587f84d47c2d9d3cb')
+sha256sums_aarch64=('5cf252cdd3f9836f92811aa91e39e785753f9d3dc319c797a9b09b8969e76206')
 
 source_x86_64=(
     "reasonix-${pkgver}-linux-amd64.tar.gz::${_relurl}/reasonix-linux-amd64.tar.gz"
