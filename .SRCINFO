@@ -1,6 +1,6 @@
 pkgbase = etlegacy
 	pkgver = 2.84.0
-	pkgrel = 4
+	pkgrel = 1
 	url = http://www.etlegacy.com/
 	arch = x86_64
 	arch = aarch64
