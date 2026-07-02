@@ -1,6 +1,6 @@
 pkgbase = gitpane-git
 	pkgdesc = Multi-repo Git workspace dashboard for the terminal
-	pkgver = 0.7.10.r3.g9b07682
+	pkgver = 0.8.2.r0.g32331e3
 	pkgrel = 1
 	url = https://github.com/affromero/gitpane
 	arch = x86_64

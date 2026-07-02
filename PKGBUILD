@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=gitpane-git
 _pkgname=gitpane
-pkgver=0.7.10.r3.g9b07682
+pkgver=0.8.2.r0.g32331e3
 pkgrel=1
 pkgdesc='Multi-repo Git workspace dashboard for the terminal'
 arch=(
