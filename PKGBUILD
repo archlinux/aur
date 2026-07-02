@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=dehub-git
 _pkgname="${pkgname%-git}"
-pkgver=r669.8db9c8b
+pkgver=r671.5f4b2f8
 pkgrel=1
 pkgdesc='A TUI to de-GitHub yourself. Control PRs, Actions, Issues, Notifications.'
 url='https://github.com/DamianB-BitFlipper/dehub'
