@@ -1,12 +1,12 @@
 pkgbase = python-vllm-rocm
 	pkgdesc = high-throughput and memory-efficient inference and serving engine for LLMs (ROCm support)
-	pkgver = 0.23.0
+	pkgver = 0.24.0
 	pkgrel = 1
 	url = https://github.com/vllm-project/vllm
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
-	makedepends = gcc
+	makedepends = clang
 	makedepends = cmake
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -65,9 +65,7 @@ pkgbase = python-vllm-rocm
 	optdepends = python-tiktoken: required for DBRX tokenizer
 	optdepends = python-lm-format-enforcer: required for JSON/REGEX llm output
 	provides = python-vllm
-	source = git+https://github.com/vllm-project/vllm.git#tag=v0.23.0
-	source = 0001-Fix-LTO-build-for-ROCm-when-default-compiler-is-GCC.patch
-	sha256sums = 72a1c160ed8b366576256c753b352c9b741270fd880893dfa9b02ea9a5e6fcc9
-	sha256sums = b218671c925b0f081b6caa8246c27b05dea98c14d3389504f68e73486d513b58
+	source = git+https://github.com/vllm-project/vllm.git#tag=v0.24.0
+	sha256sums = 6f502f1518363d7b4989a507cf92d161ce27aa0541137baacbf0464d773458e8
 
 pkgname = python-vllm-rocm

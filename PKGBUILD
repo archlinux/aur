@@ -1,6 +1,6 @@
 pkgname=python-vllm-rocm
 _pkgname=vllm
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs (ROCm support)"
 arch=('x86_64')
@@ -50,7 +50,7 @@ depends=(
 )
 makedepends=(
   git
-  gcc
+  clang
   cmake
   python-installer
   python-setuptools
@@ -76,17 +76,13 @@ optdepends=(
 
 provides=('python-vllm')
 
-source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}" "0001-Fix-LTO-build-for-ROCm-when-default-compiler-is-GCC.patch")
-sha256sums=('72a1c160ed8b366576256c753b352c9b741270fd880893dfa9b02ea9a5e6fcc9'
-            'b218671c925b0f081b6caa8246c27b05dea98c14d3389504f68e73486d513b58')
+source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}")
+sha256sums=('6f502f1518363d7b4989a507cf92d161ce27aa0541137baacbf0464d773458e8')
 
 _jobs=$(($(nproc) / 2))
 prepare() {
   cd "$srcdir/$_pkgname"
   rm -f "dist"/*
-
-  git apply ../0001-Fix-LTO-build-for-ROCm-when-default-compiler-is-GCC.patch
-  sed -i 's/\(PYTHON_SUPPORTED_VERSIONS\s*"3.10" "3.11" "3.12" "3.13"\)/\1 "3.14"/' "CMakeLists.txt"
   sed -i 's/mwaitxintrin/x86intrin/' csrc/spinloop.cpp
 }
 
@@ -110,7 +106,7 @@ build() {
   fi
   echo "Building for ROCM=$PYTORCH_ROCM_ARCH"
   # Build
-  python setup.py bdist_wheel --dist-dir=dist
+  CXX=clang++ python setup.py bdist_wheel --dist-dir=dist
   #python -m build --wheel --no-isolation # this does not work currently
 }
 
