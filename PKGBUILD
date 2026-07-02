@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=budget-tracker-git
 _pkgname=budget-tracker
-pkgver=1.3.1.r0.g6410a41
+pkgver=1.4.0.r0.gfa550f2
 pkgrel=1
 pkgdesc='A simple TUI budget tracker. Designed to track income and expenses and help visualize and gather basic insights from your transactions.'
 arch=('x86_64' 'aarch64' 'riscv64')
