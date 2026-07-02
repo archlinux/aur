@@ -1,6 +1,6 @@
 pkgbase = magnolia
-	pkgdesc = Media torrent streaming client with embedded mpv
-	pkgver = 2.2.2
+	pkgdesc = Torrent streaming client for PCs
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://github.com/chwair/magnolia
 	arch = x86_64
@@ -24,10 +24,10 @@ pkgbase = magnolia
 	depends = libthai
 	depends = gcc-libs
 	optdepends = libva: hardware video decode (VA-API)
-	noextract = magnolia-2.2.2.deb
+	noextract = magnolia-2.2.3.deb
 	options = !strip
 	options = !debug
-	source = magnolia-2.2.2.deb::https://github.com/chwair/magnolia/releases/download/v2.2.2/Magnolia_2.2.2_amd64.deb
-	sha256sums = SKIP
+	source = magnolia-2.2.3.deb::https://github.com/chwair/magnolia/releases/download/v2.2.3/Magnolia_2.2.3_amd64.deb
+	sha256sums = 6091df8352dd01514cac3227402b5052be5a356304d3e4a31515a164f07054a6
 
 pkgname = magnolia
