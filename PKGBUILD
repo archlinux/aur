@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=livediff-git
 _pkgname=livediff
-pkgver=0.3.0.r3.g25f6863
+pkgver=0.3.0.r10.g9ff519d
 pkgrel=1
 pkgdesc='Real-time file monitoring with beautiful, pulsing TUI diff visualization'
 arch=(
