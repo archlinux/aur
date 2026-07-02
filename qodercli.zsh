@@ -25,7 +25,6 @@ _qodercli() {
         'status:Show session status'
         'feedback:Submit feedback'
         'config:View and modify CLI configuration'
-        'wiki:Generate wiki documentation for projects'
     )
 
     mcp_commands=(
@@ -146,7 +145,7 @@ _qodercli() {
             local idx
             for ((idx = 1; idx <= $#words; idx++)); do
                 case ${words[idx]} in
-                    mcp|plugins|plugin|skills|skill|hooks|hook|agents|agent|login|commit|rollback|update|external|remote-control|status|feedback|config|wiki)
+                    mcp|plugins|plugin|skills|skill|hooks|hook|agents|agent|login|commit|rollback|update|external|remote-control|status|feedback|config)
                         cmd=${words[idx]}
                         cmd_index=$idx
                         break
@@ -211,6 +210,9 @@ _qodercli() {
                             add)
                                 _arguments '--sparse[Limit checkout to specific directories]:paths:' '--scope[Marketplace scope]:scope:(user project local)' '(- *)'{-h,--help}'[Show help]'
                                 ;;
+                            remove|rm)
+                                _arguments '--scope[Marketplace scope]:scope:(user project local)' '(- *)'{-h,--help}'[Show help]'
+                                ;;
                             list)
                                 _arguments '--json[Output as JSON]' '(- *)'{-h,--help}'[Show help]'
                                 ;;
@@ -268,13 +270,13 @@ _qodercli() {
                             _arguments {-s,--scope}'[Scope to disable the skill in]:scope:(user workspace)' '(- *)'{-h,--help}'[Show help]'
                             ;;
                         install)
-                            _arguments '--scope[Installation scope]:scope:(user project local)' '--path[Sub-path within repository]:path:' '--consent[Acknowledge security risks]' '(- *)'{-h,--help}'[Show help]'
+                            _arguments '--scope[Installation scope]:scope:(user workspace)' '--path[Sub-path within repository]:path:' '--consent[Acknowledge security risks]' '(- *)'{-h,--help}'[Show help]'
                             ;;
                         link)
-                            _arguments '1:path:_directories' '--scope[Link scope]:scope:(user project local)' '--consent[Acknowledge security risks]' '(- *)'{-h,--help}'[Show help]'
+                            _arguments '1:path:_directories' '--scope[Link scope]:scope:(user workspace)' '--consent[Acknowledge security risks]' '(- *)'{-h,--help}'[Show help]'
                             ;;
                         uninstall)
-                            _arguments '--scope[Uninstall scope]:scope:(user project local)' '(- *)'{-h,--help}'[Show help]'
+                            _arguments '--scope[Uninstall scope]:scope:(user workspace)' '(- *)'{-h,--help}'[Show help]'
                             ;;
                         enable)
                             _arguments '(- *)'{-h,--help}'[Show help]'
@@ -363,7 +365,7 @@ _qodercli() {
                 commit)
                     _arguments {-m,--message}'[Commit message]:message:' {-w,--workspace}'[Working directory]:directory:_directories' '--hook[Hook mode]' '(- *)'{-h,--help}'[Show help]'
                     ;;
-                login|wiki)
+                login)
                     _arguments '(- *)'{-h,--help}'[Show help]'
                     ;;
             esac

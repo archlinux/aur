@@ -6,7 +6,7 @@ complete -c qodercli -f
 function __qodercli_no_subcommand
     set -l cmd (commandline -opc)
     for word in $cmd[2..]
-        if contains -- $word mcp plugins plugin skills skill hooks hook agents agent login commit rollback update external remote-control status feedback config wiki
+        if contains -- $word mcp plugins plugin skills skill hooks hook agents agent login commit rollback update external remote-control status feedback config
             return 1
         end
     end
@@ -16,7 +16,7 @@ end
 function __qodercli_using_top_command
     set -l cmd (commandline -opc)
     for word in $cmd[2..]
-        if contains -- $word mcp plugins plugin skills skill hooks hook agents agent login commit rollback update external remote-control status feedback config wiki
+        if contains -- $word mcp plugins plugin skills skill hooks hook agents agent login commit rollback update external remote-control status feedback config
             contains -- $word $argv
             return $status
         end
@@ -125,7 +125,6 @@ complete -c qodercli -n __qodercli_no_subcommand -a remote-control -d 'Start the
 complete -c qodercli -n __qodercli_no_subcommand -a status -d 'Show session status'
 complete -c qodercli -n __qodercli_no_subcommand -a feedback -d 'Submit feedback'
 complete -c qodercli -n __qodercli_no_subcommand -a config -d 'View and modify CLI configuration'
-complete -c qodercli -n __qodercli_no_subcommand -a wiki -d 'Generate wiki documentation for projects'
 
 # Top-level flags
 complete -c qodercli -n __qodercli_no_subcommand -s h -l help -d 'Show help'
@@ -234,6 +233,7 @@ complete -c qodercli -n __qodercli_plugin_marketplace_no_child -a list -d 'List 
 complete -c qodercli -n __qodercli_plugin_marketplace_no_child -a update -d 'Update marketplaces'
 complete -c qodercli -n '__qodercli_using_plugin_marketplace_child add' -l sparse -r -d 'Limit checkout to specific directories'
 complete -c qodercli -n '__qodercli_using_plugin_marketplace_child add' -l scope -r -a 'user project local' -d 'Marketplace scope'
+complete -c qodercli -n '__qodercli_using_plugin_marketplace_child remove rm' -l scope -r -a 'user project local' -d 'Marketplace scope'
 complete -c qodercli -n '__qodercli_using_plugin_marketplace_child list' -l json -d 'Output as JSON'
 
 for cmd in list validate install i uninstall remove enable disable update marketplace mp
@@ -253,7 +253,7 @@ complete -c qodercli -n '__qodercli_group_no_child skills,skill list,enable,disa
 complete -c qodercli -n '__qodercli_using_top_command skills skill' -s h -l help -d 'Show help'
 complete -c qodercli -n '__qodercli_using_group_child skills,skill list' -l all -d 'Show all skills'
 complete -c qodercli -n '__qodercli_using_group_child skills,skill disable' -s s -l scope -r -a 'user workspace' -d 'Scope'
-complete -c qodercli -n '__qodercli_using_group_child skills,skill install,link,uninstall' -l scope -r -a 'user project local' -d 'Scope'
+complete -c qodercli -n '__qodercli_using_group_child skills,skill install,link,uninstall' -l scope -r -a 'user workspace' -d 'Scope'
 complete -c qodercli -n '__qodercli_using_group_child skills,skill install' -l path -r -d 'Sub-path within repository'
 complete -c qodercli -n '__qodercli_using_group_child skills,skill install,link' -l consent -d 'Acknowledge security risks'
 for cmd in list enable disable install link uninstall
@@ -316,6 +316,6 @@ complete -c qodercli -n '__qodercli_using_top_command commit' -s m -l message -r
 complete -c qodercli -n '__qodercli_using_top_command commit' -s w -l workspace -r -F -d 'Working directory'
 complete -c qodercli -n '__qodercli_using_top_command commit' -l hook -d 'Hook mode'
 
-for cmd in login commit rollback update remote-control status feedback wiki
+for cmd in login commit rollback update remote-control status feedback
     complete -c qodercli -n "__qodercli_using_top_command $cmd" -s h -l help -d 'Show help'
 end

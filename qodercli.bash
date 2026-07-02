@@ -13,7 +13,7 @@ _qodercli() {
         cword=$COMP_CWORD
     fi
 
-    local -r subcommands="mcp plugins plugin skills skill hooks hook agents agent login commit rollback update external remote-control status feedback config wiki"
+    local -r subcommands="mcp plugins plugin skills skill hooks hook agents agent login commit rollback update external remote-control status feedback config"
     local -r mcp_subcommands="add add-json remove get list enable disable reset-project-choices"
     local -r plugin_subcommands="list validate install i uninstall remove enable disable update marketplace mp"
     local -r plugin_marketplace_subcommands="add remove rm list update"
@@ -30,7 +30,7 @@ _qodercli() {
     local -r permission_mode_choices="default accept_edits bypass_permissions dont_ask auto"
     local -r scope_choices="user project local"
     local -r mcp_scope_choices="user local project"
-    local -r skill_disable_scope_choices="user workspace"
+    local -r skill_scope_choices="user workspace"
     local -r transport_choices="stdio sse http ws"
     local -r setting_source_choices="user project local"
     local -r spawn_choices="same-dir worktree"
@@ -39,7 +39,7 @@ _qodercli() {
     local i j
     for ((i = 1; i < cword; i++)); do
         case "${words[i]}" in
-            mcp|plugins|plugin|skills|skill|hooks|hook|agents|agent|login|commit|rollback|update|external|remote-control|status|feedback|config|wiki)
+            mcp|plugins|plugin|skills|skill|hooks|hook|agents|agent|login|commit|rollback|update|external|remote-control|status|feedback|config)
                 subcmd="${words[i]}"
                 break
                 ;;
@@ -155,8 +155,15 @@ _qodercli() {
         -s|--scope)
             if [[ "$subcmd" == "mcp" ]]; then
                 COMPREPLY=($(compgen -W "$mcp_scope_choices" -- "$cur"))
-            elif [[ "$subsubcmd" == "disable" && ( "$subcmd" == "skills" || "$subcmd" == "skill" ) ]]; then
-                COMPREPLY=($(compgen -W "$skill_disable_scope_choices" -- "$cur"))
+            elif [[ "$subcmd" == "skills" || "$subcmd" == "skill" ]]; then
+                case "$subsubcmd" in
+                    disable|install|link|uninstall)
+                        COMPREPLY=($(compgen -W "$skill_scope_choices" -- "$cur"))
+                        ;;
+                    *)
+                        COMPREPLY=($(compgen -W "$scope_choices" -- "$cur"))
+                        ;;
+                esac
             else
                 COMPREPLY=($(compgen -W "$scope_choices" -- "$cur"))
             fi
@@ -248,6 +255,9 @@ _qodercli() {
                             ;;
                         list)
                             COMPREPLY=($(compgen -W "--json $help_flags" -- "$cur"))
+                            ;;
+                        remove|rm)
+                            COMPREPLY=($(compgen -W "--scope $help_flags" -- "$cur"))
                             ;;
                         *)
                             COMPREPLY=($(compgen -W "$help_flags" -- "$cur"))
