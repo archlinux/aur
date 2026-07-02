@@ -1,6 +1,6 @@
 pkgbase = python-lauterbach-trace32-rcl
 	pkgdesc = Lauterbach TRACE32 Python Remote Control Library
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://pypi.org/project/lauterbach-trace32-rcl
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-lauterbach-trace32-rcl
 	provides = lauterbach-trace32-rcl
 	conflicts = lauterbach-trace32-rcl
 	replaces = lauterbach-trace32-rcl
-	source = lauterbach_trace32_rcl-1.1.5.tar.gz::https://files.pythonhosted.org/packages/source/l/lauterbach_trace32_rcl/lauterbach_trace32_rcl-1.1.5.tar.gz
-	sha512sums = a97123e3e12d57d300419ab1049f72901f12bd339573213464551bcf0ea645b0e1a6d91650ee40dc23c5a8d2dfb660e0dcc9a0a638087862b705087a46ae6c48
+	source = lauterbach_trace32_rcl-1.1.6.tar.gz::https://files.pythonhosted.org/packages/source/l/lauterbach_trace32_rcl/lauterbach_trace32_rcl-1.1.6.tar.gz
+	sha512sums = 5509b15c5fba4f18cfb91e89b808b85524eaefe8a56ce16e4db5d51cb251e522d790a26b4445161f6a9d5252c2e84bd27eace04e7c4a5f29257ab045620c3fb6
 
 pkgname = python-lauterbach-trace32-rcl
