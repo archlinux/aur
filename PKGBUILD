@@ -1,6 +1,6 @@
 # Maintainer: fridge <echo dW5sb3ZhYmxlX2ZyaWRnZTM1NkBhbGVlYXMuY29tCg== | base64 -d>
 pkgname="gourmand-bin"
-pkgver="1.1.0"
+pkgver="1.2.0"
 pkgrel="1"
 pkgdesc="A manager, editor, and organizer for recipes."
 url="https://github.com/GourmandRecipeManager/${pkgname%-bin}"
