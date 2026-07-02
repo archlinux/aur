@@ -9,8 +9,9 @@ pkgbase = map
 	makedepends = gzip
 	makedepends = make
 	makedepends = gcc
+	depends = glibc
 	provides = map
-	source = https://github.com/soveran/map/archive/refs/tags/0.1.1.tar.gz
+	source = map-0.1.1.tgz::https://github.com/soveran/map/archive/refs/tags/0.1.1.tar.gz
 	sha256sums = 6903d2bb6d7e0cddceee487cc35b442e5e78a459785aa5ae7c84f13090f193f0
 
 pkgname = map
