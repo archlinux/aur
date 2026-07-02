@@ -11,24 +11,28 @@ url="https://github.com/LanRhyme/MicYou"
 license=('GPL-3.0-only')
 depends=(
   'alsa-lib'
-  'fontconfig'
-  'freetype2'
-  'glibc'
-  'libappindicator'
-  'libgl'
+  'cairo'
+  'gdk-pixbuf2'
+  'glib2'
+  'gtk3'
+  'hicolor-icon-theme'
+  'libayatana-appindicator'
   'libpulse'
-  'libx11'
-  'libxext'
-  'libxi'
-  'libxrender'
-  'libxtst'
+  'libsoup3'
+  'openssl'
+  'pango'
   'pipewire'
-  'pipewire-alsa'
-  'zlib'
+  'webkit2gtk-4.1'
+  'wireplumber'
 )
 makedepends=(
   'git'
-  'java-environment>=17'
+  'mold'
+  'rust'
+  'cargo'
+  'nodejs'
+  'npm'
+  'pkgconf'
 )
 optdepends=(
   'android-tools: USB connectivity support'
@@ -57,25 +61,25 @@ pkgver() {
 }
 
 build() {
-  cd MicYou
-
-  export GRADLE_USER_HOME="$srcdir/gradle-home"
-  ./gradlew --no-daemon :composeApp:createDistributable
+  cd MicYou/tauri-app
+  npm ci
+  npx vite build
+  RUSTFLAGS="-C link-arg=-fuse-ld=mold" npx tauri build --no-bundle \
+    --config '{"build":{"beforeBuildCommand":""}}'
 }
 
 package() {
   cd MicYou
 
-  install -d "$pkgdir/opt/micyou"
-  cp -a composeApp/build/compose/binaries/main/app/MicYou/. "$pkgdir/opt/micyou/"
+  install -Dm755 tauri-app/target/release/micyou-app \
+    "$pkgdir/usr/bin/micyou"
+
+  install -Dm644 tauri-app/src-tauri/icons/128x128.png \
+    "$pkgdir/usr/share/icons/hicolor/128x128/apps/micyou.png"
+  install -Dm644 tauri-app/src-tauri/icons/icon.png \
+    "$pkgdir/usr/share/icons/hicolor/512x512/apps/micyou.png"
 
   install -Dm644 "$srcdir/micyou.desktop" \
     "$pkgdir/usr/share/applications/micyou.desktop"
-  install -Dm644 \
-    composeApp/src/commonMain/composeResources/drawable/app_icon.png \
-    "$pkgdir/usr/share/icons/hicolor/512x512/apps/micyou.png"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/micyou/LICENSE"
-
-  install -d "$pkgdir/usr/bin"
-  ln -s /opt/micyou/bin/MicYou "$pkgdir/usr/bin/micyou"
 }
