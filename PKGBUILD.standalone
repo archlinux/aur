@@ -1,5 +1,5 @@
 pkgname=zig-git
-pkgver=0.17.0.r779.g22aa2bd1e775
+pkgver=0.17.0.r1245.gefd6f190fd82
 pkgrel=1
 pkgdesc='Zig programming language (static standalone toolchain)'
 arch=('aarch64' 'x86_64')
@@ -12,11 +12,11 @@ makedepends=(cmake gcc git glibc libxml2 python)
 options=(!emptydirs !lto staticlibs)
 source=("git+https://github.com/zlib-ng/zlib-ng#tag=2.3.3"
         "git+https://github.com/facebook/zstd.git#tag=v1.5.7"
-        "git+https://github.com/llvm/llvm-project.git#tag=llvmorg-22.1.7"
+        "git+https://github.com/llvm/llvm-project.git#tag=llvmorg-22.1.8"
         "git+https://codeberg.org/ziglang/zig.git#branch=master")
 sha256sums=('aa625dc5ecdeb0ea6c12d76518dd10a55e865499c5a0fced68f52cb751542041'
             'e43521ef6e50b3c0f42612f6147c2f74c1c3af18e1c2d56fb91b8ddcb590c699'
-            '160959572901d4d05c6df1592f1e3be4502d97c90904a62928febb307beb078c'
+            '22acb48afcad5f242c5d3fb4da5686d6e0db60b9ac600eb23bb32dc4135ac596'
             'SKIP')
 
 pkgver() {
