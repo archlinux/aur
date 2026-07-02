@@ -2,7 +2,7 @@
 
 pkgname=ter-music
 pkgver=2.0.0
-pkgrel=3
+pkgrel=5
 pkgdesc="This is a music player that can be used in the terminal~"
 arch=($CARCH)
 url="https://github.com/YXZL985/ter-music"
@@ -14,7 +14,6 @@ _pydeps=(
     cheroot
     paramiko
     pyftpdlib
-    # AUR
     wsgidav
 )
 depends=(
@@ -25,7 +24,7 @@ depends=(
     hicolor-icon-theme
     ncurses
     libpng
-    libjpeg
+    libjpeg-turbo
     libxml2
     sqlite
 # ter-music-server

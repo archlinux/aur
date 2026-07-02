@@ -1,7 +1,7 @@
 pkgbase = ter-music
 	pkgdesc = This is a music player that can be used in the terminal~
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/YXZL985/ter-music
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -16,7 +16,7 @@ pkgbase = ter-music
 	depends = hicolor-icon-theme
 	depends = ncurses
 	depends = libpng
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = libxml2
 	depends = sqlite
 	depends = impacket
