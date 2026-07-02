@@ -3,7 +3,7 @@
 
 pkgname=onedrivegui
 _pkgname=OneDriveGUI
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A simple GUI for OneDrive Linux client, with multi-account support."
 license=("GPL-3.0-or-later")
