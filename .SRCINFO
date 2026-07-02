@@ -1,6 +1,6 @@
 pkgbase = tide-island
 	pkgdesc = A dynamic island for Hyprland using Quickshell
-	pkgver = 1.0.13
+	pkgver = 1.0.14
 	pkgrel = 1
 	url = https://github.com/enhaoswen/Tide-island
 	install = tide-island.install
@@ -22,12 +22,13 @@ pkgbase = tide-island
 	depends = quickshell
 	optdepends = cava: for audio visualizer
 	optdepends = imagemagick: for wallpaper thumbnails
+	optdepends = awww: for applying wallpapers from the wallpaper picker
 	optdepends = networkmanager: for wifi control
 	optdepends = iwd: for wifi control
 	optdepends = swaync: for the Focus do-not-disturb toggle
 	conflicts = tide-island-git
 	options = !debug
-	source = tide-island-106d38f4e1f4e683156564c1ae122ef7abc2a3cb.tar.gz::https://github.com/enhaoswen/Tide-island/archive/106d38f4e1f4e683156564c1ae122ef7abc2a3cb.tar.gz
+	source = tide-island-36280518f9f27211da093bdce0b86f1c717a4151.tar.gz::https://github.com/enhaoswen/Tide-island/archive/36280518f9f27211da093bdce0b86f1c717a4151.tar.gz
 	sha256sums = SKIP
 
 pkgname = tide-island

@@ -1,8 +1,8 @@
 # Maintainer: whysooraj <whysooraj.official@gmail.com>
 pkgname=tide-island
-pkgver=1.0.13
+pkgver=1.0.14
 pkgrel=1
-_commit=106d38f4e1f4e683156564c1ae122ef7abc2a3cb
+_commit=36280518f9f27211da093bdce0b86f1c717a4151
 _srcdir=Tide-island-$_commit
 pkgdesc="A dynamic island for Hyprland using Quickshell"
 arch=('x86_64')
@@ -28,6 +28,7 @@ options=('!debug')
 optdepends=(
     'cava: for audio visualizer'
     'imagemagick: for wallpaper thumbnails'
+    'awww: for applying wallpapers from the wallpaper picker'
     'networkmanager: for wifi control'
     'iwd: for wifi control'
     'swaync: for the Focus do-not-disturb toggle'
