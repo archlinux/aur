@@ -1,6 +1,6 @@
 pkgbase = v2
-	pkgdesc = A local-first rich text editor with Git-style version control
-	pkgver = 0.15.2
+	pkgdesc = A local-first, privacy oriented rich text editor with Git-style version control
+	pkgver = 0.15.3
 	pkgrel = 1
 	url = https://v2editor.com
 	arch = x86_64
@@ -23,9 +23,10 @@ pkgbase = v2
 	depends = libstdc++.so
 	depends = libgcc
 	depends = libgcc_s.so
-	source = git+https://github.com/oktana-coop/v2.git#tag=v0.15.2
+	optdepends = libappindicator-gtk3: tray icon support
+	source = git+https://github.com/oktana-coop/v2.git#tag=v0.15.3
 	source = v2.sh.in
-	sha256sums = 6e95295b5e951a813d8e41776b22ce6bf626913f324bb1d4dd45575b4eb8c3fe
+	sha256sums = aebcd02d5bf7ec574f7a17e3741364b351982e9624fc2915ea9f0caf44c06005
 	sha256sums = 4426132f3455e44ae2698752dfd4d748a9bd831079f7fed038d18814dc5088f1
 
 pkgname = v2

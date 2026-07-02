@@ -1,9 +1,9 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=v2
-pkgver=0.15.2
+pkgver=0.15.3
 pkgrel=1
-pkgdesc='A local-first rich text editor with Git-style version control'
+pkgdesc='A local-first, privacy oriented rich text editor with Git-style version control'
 arch=(x86_64 aarch64)
 url=https://v2editor.com
 _url="https://github.com/oktana-coop/$pkgname"
@@ -24,9 +24,10 @@ makedepends=(git
              pnpm
              sqlite3
              typescript)
+optdepends=('libappindicator-gtk3: tray icon support')
 source=("git+$_url.git#tag=v$pkgver"
         "$pkgname.sh.in")
-sha256sums=('6e95295b5e951a813d8e41776b22ce6bf626913f324bb1d4dd45575b4eb8c3fe'
+sha256sums=('aebcd02d5bf7ec574f7a17e3741364b351982e9624fc2915ea9f0caf44c06005'
             '4426132f3455e44ae2698752dfd4d748a9bd831079f7fed038d18814dc5088f1')
 
 _icons=(16 32 48 64 128 256 512)
