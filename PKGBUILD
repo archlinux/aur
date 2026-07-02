@@ -1,6 +1,6 @@
 # Maintainer: byteowlz <dev@byteowlz.com>
 pkgname=trx-bin
-pkgver=0.3.0
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Minimal git-backed issue tracker with TUI viewer"
 arch=('x86_64' 'aarch64')
@@ -8,15 +8,15 @@ url="https://github.com/byteowlz/trx"
 license=('MIT')
 provides=('trx')
 conflicts=('trx' 'trx-git')
-source_x86_64=("$pkgname-$pkgver.tar.gz::https://github.com/byteowlz/trx/releases/download/v$pkgver/trx-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("$pkgname-$pkgver.tar.gz::https://github.com/byteowlz/trx/releases/download/v$pkgver/trx-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('3c587ef35f17884a6aa6f49450dfffd23389ca402bba07790627e6916f14dea8')
-sha256sums_aarch64=('3cbb92175a984b1e3160c720190ad98f9a7d68f401f7231f05ef7f7a7b3e5fee')
+source_x86_64=("trx-bin-0.6.3-x86_64.tar.gz::https://github.com/byteowlz/trx/releases/download/v0.6.3/trx-v0.6.3-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums_x86_64=('0237437cd30ead32f8f5511912ed118596e2107ed9b9cf955cba5b31dacab4ea')
+source_aarch64=("trx-bin-0.6.3-aarch64.tar.gz::https://github.com/byteowlz/trx/releases/download/v0.6.3/trx-v0.6.3-aarch64-unknown-linux-gnu.tar.gz")
+sha256sums_aarch64=('42a502f114ff206e2d32e674e817030afd7af298cfec442fec6309d2e200acf3')
 
 package() {
-    install -Dm755 trx "$pkgdir/usr/bin/trx"
-    [ -f trx-tui ] && install -Dm755 trx-tui "$pkgdir/usr/bin/trx-tui"
-    [ -f trx-mcp ] && install -Dm755 trx-mcp "$pkgdir/usr/bin/trx-mcp"
-    [ -f trx-api ] && install -Dm755 trx-api "$pkgdir/usr/bin/trx-api"
-    return 0
+    cd "$srcdir"
+    install -Dm755 */bin/trx "$pkgdir/usr/bin/trx"
+    install -Dm755 */bin/trx-tui "$pkgdir/usr/bin/trx-tui"
+    install -Dm755 */bin/trx-mcp "$pkgdir/usr/bin/trx-mcp"
+    install -Dm755 */bin/trx-api "$pkgdir/usr/bin/trx-api"
 }
