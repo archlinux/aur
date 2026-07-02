@@ -38,11 +38,9 @@ prepare() {
   echo "target_link_libraries(vtkRemotingServerManager PRIVATE absl_log_internal_message)" >> Remoting/ServerManager/CMakeLists.txt
 
   # absl/types/compare.h:60:12: error: 'partial_ordering' has not been declared in 'std'
-  # see also https://github.com/abseil/abseil-cpp/commit/bcce85e
-  echo "target_compile_definitions(vtkRemotingServerManager PRIVATE ABSL_OPTION_USE_STD_ORDERING=0)" >> Remoting/ServerManager/CMakeLists.txt
-
-  # gcc16: vtkNativePartitioningStrategy.cxx:(.text+0x6865): undefined reference to `vtkAOSDataArrayTemplate<long long>::IsTypeOf(char const*)'
-  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/13293.patch | patch -p1 -d VTK
+  # abseil assumes client code use a higher c++ standard than how it was itself compiled (gcc default=c++20, paraview=c++17) and sets ABSL_OPTION_USE_STD_ORDERING=1
+  # locally override abseil options.h to force ABSL_OPTION_USE_STD_ORDERING=0, keep other settings to their defaults
+  #echo "target_compile_definitions(vtkRemotingServerManager PRIVATE ABSL_BASE_OPTIONS_H_ ABSL_OPTION_USE_STD_SOURCE_LOCATION=1 ABSL_OPTION_USE_STD_ORDERING=0 ABSL_OPTION_USE_INLINE_NAMESPACE=1 ABSL_OPTION_INLINE_NAMESPACE_NAME=lts_20260526 ABSL_OPTION_HARDENED=0 ABSL_OPTION_INLINE_HW_ACCEL_STRATEGY=0)" >> Remoting/ServerManager/CMakeLists.txt
 }
 
 build() {
