@@ -53,8 +53,7 @@ build() {
   # (e.g. node-v147), and the package fails at startup with a missing
   # node-vNNN binding. In a clean chroot /usr/bin/node is already the only node.
   export PATH="/usr/bin:$PATH"
-  # Install node-gtk@^4.0.0 from the npm registry (npm ignores the dev-only
-  # pnpm-workspace.yaml link to ../node-gtk) and compile its native addon
+  # Install node-gtk@^4.0.0 from the npm registry and compile its native addon
   # against the system GTK rather than downloading a prebuilt binary — the
   # prebuilts do not track Arch's rolling Node ABI.
   export npm_config_build_from_source=true
