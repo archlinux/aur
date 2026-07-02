@@ -1,0 +1,21 @@
+pkgbase = undertalemodtool-avalonia-git
+	pkgdesc = GameMaker mod tool (Avalonia GUI port of UndertaleModTool)
+	pkgver = r3729.82a84b8d
+	pkgrel = 1
+	url = https://github.com/5unekku/UndertaleModTool_Avalonia
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = dotnet-sdk
+	depends = gtk3
+	depends = icu
+	depends = libx11
+	provides = undertalemodtool
+	provides = undertalemodtool-avalonia
+	conflicts = undertalemodtool-bin
+	conflicts = undertalemodtool-avalonia-bin
+	options = !strip
+	source = undertalemodtool-avalonia-git::git+https://github.com/5unekku/UndertaleModTool_Avalonia.git
+	sha256sums = SKIP
+
+pkgname = undertalemodtool-avalonia-git
