@@ -3,7 +3,7 @@
 # Contributor: Frank Fishburn <frankthefishburn@gmail.com>
 _base=nilearn
 pkgname=python-${_base}
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Python library for fast and easy statistical learning on NeuroImaging data"
 arch=(any)
@@ -16,7 +16,7 @@ optdepends=('python-matplotlib: for general plotting'
   'python-kaleido: required if using plotly')
 options=(!emptydirs)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/${_base}/${_base}/archive/${pkgver}.tar.gz)
-sha512sums=('9707fdaa713df35213173cdf67c9807db60a4b6dc4cb70fed88ef81239ad38943e8ecdefd8446ee82e9bf276e6557252be79db904ddd140830531f72362e131d')
+sha512sums=('0f79ae85f45bc67bbf7ae6321429e9a0157a10f06aa1b11867b6b1473e953e47c611849be06a01de4eba241c9eaafb8a49383a15365a5e972676fe53668fc7b7')
 
 build() {
   cd ${_base}-${pkgver}
