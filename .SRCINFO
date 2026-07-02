@@ -1,21 +1,21 @@
 pkgbase = beam-wallet-bin
 	pkgdesc = Beam Desktop Wallet.(Prebuilt version)
-	pkgver = 7.5.13840.5763
-	pkgrel = 4
+	pkgver = 7.5.14493.5867
+	pkgrel = 1
 	url = https://beam.mw/
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = fuse2
-	depends = gmp
 	depends = qt6-declarative
+	depends = qt6-webengine
+	depends = qt6-webchannel
+	depends = qt6-5compat
 	depends = alsa-lib
-	depends = nss
-	provides = beam-wallet=7.5.13840.5763
+	provides = beam-wallet=7.5.14493.5867
 	conflicts = beam-wallet
 	options = !strip
-	source = beam-wallet-7.5.13840.5763.zip::https://github.com/BeamMW/beam-ui/releases/download/beam-7.5.13840.5763/Linux-Beam-Wallet-7.5.13840.5763.zip
+	source = beam-wallet-7.5.14493.5867.zip::https://github.com/BeamMW/beam-ui/releases/download/beam-7.5.14493.5867/Linux-Beam-Wallet-7.5.14493.5867.zip
 	source = beam-wallet.sh
-	sha256sums = ada4ac7a89eebca55c6ed3e49dad98174d014fd942dabaf13f2759ff3e035008
+	sha256sums = 8970068fda20002647eb04ce939a3c5b984375f3a3b8b0e85d72f00f1ed9cd77
 	sha256sums = b6df01eb77c2642ad958acb1c2183fc9761f9dc71f070d0e34211d318a160b87
 
 pkgname = beam-wallet-bin
