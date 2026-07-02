@@ -1,6 +1,6 @@
 pkgbase = matchmaker-git
 	pkgdesc = A fast, configurable and intuitive fuzzy searcher.
-	pkgver = 0.0.24.r2.gf059f69
+	pkgver = 0.1.1.r3.g94449ca
 	pkgrel = 1
 	url = https://github.com/Squirreljetpack/matchmaker
 	arch = x86_64
