@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt-bin
 pkgver=3.15.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries by AMA"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -86,5 +86,5 @@ package() {
   rm -rf "${pkgdir}"/usr/lib/debug
   rm -rf "${pkgdir}"/usr/lib/cmake
   #patch shared libraries, this needs to be revisited next release.
-  #patchelf --replace-needed libxml-security-c.so.20 libxml-security-c.so.30 "$pkgdir"/usr/lib/libpteidapplayer.so.*
+  patchelf --replace-needed libxml-security-c.so.20 libxml-security-c.so.30 "$pkgdir"/usr/lib/libpteidapplayer.so.*
 }
