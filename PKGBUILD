@@ -7,13 +7,13 @@
 
 pkgname=gargoyle
 pkgver=2026.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Interactive Fiction multi-interpreter that supports all major IF formats."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://ccxvii.net/gargoyle/"
 license=('GPL-3.0-only AND Artistic-2.0 AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND MIT AND OFL-1.1'
          'GPL-2.0-only AND Artistic-2.0 AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND MIT AND OFL-1.1')
-depends=('sdl2_mixer' 'sdl2' 'freetype2' 'qt6-base' 'fontconfig' 'libjpeg' 'libpng' 'zlib' 'fmt'
+depends=('sdl2_mixer' 'sdl2' 'freetype2' 'qt6-base' 'fontconfig' 'libjpeg-turbo' 'libpng' 'zlib' 'fmt'
          'hicolor-icon-theme')
 makedepends=('cmake' 'pkgconfig' 'desktop-file-utils')
 optdepends=('speech-dispatcher: Text-to-Speech')

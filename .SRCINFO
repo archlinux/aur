@@ -1,7 +1,7 @@
 pkgbase = gargoyle
 	pkgdesc = Interactive Fiction multi-interpreter that supports all major IF formats.
 	pkgver = 2026.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ccxvii.net/gargoyle/
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = gargoyle
 	depends = freetype2
 	depends = qt6-base
 	depends = fontconfig
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = libpng
 	depends = zlib
 	depends = fmt
