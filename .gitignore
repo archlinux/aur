@@ -1,0 +1,7 @@
+# AUR repo: only PKGBUILD, .SRCINFO, and helper files belong here.
+*.pkg.tar.*
+*.tar.gz
+src/
+pkg/
+claude-science-[0-9]*
+cs-legal
