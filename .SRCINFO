@@ -1,0 +1,27 @@
+pkgbase = mpv-omniphony
+	pkgdesc = mpv with the orender spatial audio decoder (object rendering via liborender)
+	pkgver = 0.4.1.3
+	pkgrel = 1
+	url = https://github.com/mgth/mpv-omniphony
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = python
+	depends = orender>=0.4.1
+	depends = ffmpeg
+	depends = libass
+	depends = libplacebo
+	depends = lua
+	depends = libx11
+	depends = mesa
+	optdepends = harletty-bridge: decode compressed/object-audio formats via the orender bridge plugin
+	provides = mpv=1:0.41.0
+	provides = libmpv.so=2-64
+	conflicts = mpv
+	source = mpv-0.41.0.tar.gz::https://github.com/mpv-player/mpv/archive/v0.41.0.tar.gz
+	source = mpv-omniphony-v0.4.1-3.tar.gz::https://github.com/mgth/mpv-omniphony/archive/refs/tags/v0.4.1-3.tar.gz
+	sha256sums = ee21092a5ee427353392360929dc64645c54479aefdb5babc5cfbb5fad626209
+	sha256sums = 734aab433320c22e2dd13d794f05d9045cd48ded71f10f1d91df1e9b989a9583
+
+pkgname = mpv-omniphony
