@@ -1,12 +1,11 @@
 pkgbase = stable-diffusion.cpp-system
 	pkgdesc = Diffusion model(SD,Flux,Wan,...) inference in pure C/C++ (use system ggml)
-	pkgver = 0.0.0.741
+	pkgver = 0.0.0.746
 	pkgrel = 1
 	url = https://github.com/leejet/stable-diffusion.cpp
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = ggml-src=0.15.3
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = pnpm
@@ -22,10 +21,12 @@ pkgbase = stable-diffusion.cpp-system
 	replaces = stable-diffusion.cpp-ggml
 	options = lto
 	options = !debug
-	source = stable-diffusion.cpp-master-741-484baa4.tar.gz::https://github.com/leejet/stable-diffusion.cpp/archive/refs/tags/master-741-484baa4.tar.gz
+	source = stable-diffusion.cpp-master-746-2574f59.tar.gz::https://github.com/leejet/stable-diffusion.cpp/archive/refs/tags/master-746-2574f59.tar.gz
 	source = sdcpp-webui-c4bce3d6b3f236614cca21014f076083b7270ba8.tar.gz::https://github.com/leejet/sdcpp-webui/archive/c4bce3d6b3f236614cca21014f076083b7270ba8.tar.gz
-	sha256sums = 1e445faa93e4a35c6c62129c29aa7cf0c519421f3f7c7477fc639f28bb835639
+	source = ggml-0.15.3.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v0.15.3.tar.gz
+	sha256sums = edcdeeba87a343146c1ed805fe5ff39ca4688c7b524394aee0c857ae3a705f37
 	sha256sums = 1265543d02ebab560cee6734b3bf1491e831c6be3436647505d6939dd78f2993
+	sha256sums = 86800455b5520fc86023979790703a9e2e1e4038b20039334be21df4d55bc868
 
 pkgname = stable-diffusion.cpp-system
 	depends = ggml-core=0.15.3
