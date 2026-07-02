@@ -11,9 +11,9 @@ depends=('glibc')
 conflicts=('anodizer')
 provides=('anodizer')
 source_aarch64=("anodizer-bin_${pkgver}_aarch64.tar.xz::https://github.com/tj-smith47/anodizer/releases/download/v${pkgver}/anodizer-${pkgver}-linux-arm64-extra.tar.xz")
-sha256sums_aarch64=('669d54a8792665d638b176a9a28dd58a87569c30ec192de7daa0ae326dc618b7')
+sha256sums_aarch64=('7d64139d502bebace18a6e9179b95c35843d0211f7230bd5d98b40128dc7f2d0')
 source_x86_64=("anodizer-bin_${pkgver}_x86_64.tar.xz::https://github.com/tj-smith47/anodizer/releases/download/v${pkgver}/anodizer-${pkgver}-linux-amd64-extra.tar.xz")
-sha256sums_x86_64=('cd7ca4fe6cba5fe2c541cec8dd1ce98f9cd890c52cd629f0a7a1043a93c2ee13')
+sha256sums_x86_64=('b08da5a3ab4170ddb83e344e565dbf622e67bc5f0aa990125bd9ff570edbc0c0')
 
 package() {
     install -Dm755 "$srcdir/anodizer" "$pkgdir/usr/bin/anodizer"
