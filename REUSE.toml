@@ -34,6 +34,7 @@ path = [
     "shared-skia-deps.patch",
     "shared_libjpeg-turbo.patch",
     "change_use_of_removed_intrinsic.patch",
+    "fmt-12.2.0-include-format.patch",
     "LicenseRef-Aseprite-EULA.txt",
 ]
 SPDX-FileCopyrightText = "Aseprite contributors"
