@@ -1,7 +1,7 @@
 pkgbase = plymouth-theme-manjaro-mac-style
 	pkgdesc = Boot animation with Manjaro logo, inspired by the boot animation of MacOS.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://store.kde.org/p/2112595
 	install = plymouth-theme-manjaro-mac-style.install
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: fridge <echo dW5sb3ZhYmxlX2ZyaWRnZTM1NkBhbGVlYXMuY29tCg== | base64 -d>
 pkgname="plymouth-theme-manjaro-mac-style"
 pkgver="1.0.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Boot animation with Manjaro logo, inspired by the boot animation of MacOS."
 url="https://store.kde.org/p/2112595"
 license=("GPL-3.0-only")
@@ -17,5 +17,5 @@ package()
 {
     local themeFolder; themeFolder="$pkgdir/usr/share/plymouth/themes/manjaro-mac-style"
     install -dv "$themeFolder"
-    cp -afv {"images","manjaro-mac-style.plymouth","preview.png"} "$themeFolder"
+    cp -afLv {"images","manjaro-mac-style.plymouth","preview.png"} "$themeFolder"
 }
