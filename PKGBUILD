@@ -46,6 +46,12 @@ depends=(
 )
 
 
+optdepends=(
+	"colord-kde: if using plasma-x11-session"
+	"xiccd: if using any other X11 session"
+)
+
+
 source=(
 	"git+${url}.git"
 )
