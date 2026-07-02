@@ -1,7 +1,7 @@
 pkgbase = autenticacao-gov-pt
 	pkgdesc = Portuguese Citizen Card Application (Portugal eID) source code based version
 	pkgver = 3.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cartaodecidadao.pt/
 	install = autenticacao-gov-pt.install
 	arch = i686
@@ -29,6 +29,7 @@ pkgbase = autenticacao-gov-pt
 	depends = openjpeg2
 	depends = openpace-git
 	depends = cjson
+	depends = icu
 	optdepends = plugin-autenticacao-gov-pt: Necessário para autenticações online
 	optdepends = autenticacao-gov-pt-pki: PKI que confirma a validade dos certificados dos CC
 	optdepends = ecce-gov-pt-certificates: Certificados da ECCE quem assina dos certificados contidos em cartaodecidadao-pki
