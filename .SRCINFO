@@ -1,7 +1,7 @@
 pkgbase = skmt-bin
 	pkgdesc = Support tool for key management systems and secure functions using Renesas security IP
 	pkgver = 1.11
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.renesas.com/en/software-tool/security-key-management-tool
 	arch = x86_64
@@ -13,6 +13,6 @@ pkgbase = skmt-bin
 	source = file:///SecurityKeyManagementTool_v111_Linux.tar.gz
 	source = skmt.desktop
 	sha256sums = 05e2e86b256ef17f0e6c457166dcff22cebad515c1a208eb223d62e1802c6621
-	sha256sums = e3ae1495b0406af1ed7f12d994568db7bbfec15000d73561c4d922f7553ef7f4
+	sha256sums = ed3cdafe9a2e919f8b8fb847e981ab9f20f61533c786c3936cba547ae302200a
 
 pkgname = skmt-bin
