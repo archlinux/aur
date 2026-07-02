@@ -3,7 +3,7 @@
 pkgname=opennn
 _pkgname=OpenNN
 pkgver=8.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenNN neural network library with attention and deep learning support"
 arch=('x86_64')
 url="https://www.opennn.net/"
@@ -15,7 +15,9 @@ depends=(
 makedepends=(
     'git'
     'cmake'
+    'eigen'
     'ninja'
+    'tinyxml2'
 )
 optdepends=(
     'cuda: CUDA acceleration support'
@@ -48,7 +50,7 @@ build() {
 # }
 
 package() {
-    DESTDIR="$pkgname-$pkgver" cmake --install "$pkgname-$pkgver/build"
+    DESTDIR="$pkgdir" cmake --install "$pkgname-$pkgver/build"
 
     install -Dm644 \
         "$pkgname-$pkgver/LICENSE.txt" \

@@ -1,13 +1,15 @@
 pkgbase = opennn
 	pkgdesc = OpenNN neural network library with attention and deep learning support
 	pkgver = 8.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opennn.net/
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = cmake
+	makedepends = eigen
 	makedepends = ninja
+	makedepends = tinyxml2
 	depends = gcc-libs
 	depends = openmp
 	optdepends = cuda: CUDA acceleration support
