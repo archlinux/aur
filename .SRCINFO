@@ -1,6 +1,6 @@
 pkgbase = v4l-tui-git
 	pkgdesc = TUI alternative to v4l-ctl or cameractrls
-	pkgver = r58.2b0291d
+	pkgver = 0.2.0.r0.gf5f97d5
 	pkgrel = 1
 	url = https://github.com/sermuns/v4l-tui
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = v4l-tui-git
 	makedepends = cargo
 	makedepends = git
 	depends = v4l-utils
+	depends = ffmpeg
 	provides = v4l-tui
 	conflicts = v4l-tui
 	conflicts = v4l-tui-bin

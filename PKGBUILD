@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=v4l-tui-git
 _pkgname=v4l-tui
-pkgver=r58.2b0291d
+pkgver=0.2.0.r0.gf5f97d5
 pkgrel=1
 pkgdesc='TUI alternative to v4l-ctl or cameractrls'
 arch=(
@@ -11,7 +11,10 @@ arch=(
 )
 url='https://github.com/sermuns/v4l-tui'
 license=('GPL-3.0')
-depends=('v4l-utils')
+depends=(
+    'v4l-utils'
+    'ffmpeg'
+)
 makedepends=(
     'cargo'
     'git'
@@ -27,7 +30,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${_pkgname}-main"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    git describe --long --abbrev=7 --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
