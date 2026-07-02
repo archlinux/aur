@@ -1,0 +1,5 @@
+[pyproject-tui-bin]
+source = "github"
+github = "programmersd21/pyproject-tui"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,17 @@
+pkgbase = pyproject-tui-bin
+	pkgdesc = Universal test runner with auto-detection for 11 languages
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/programmersd21/pyproject-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = pyproject-tui
+	conflicts = pyproject-tui
+	options = !strip
+	source_x86_64 = pyproject-tui-x86_64-0.1.0.zip::https://github.com/programmersd21/pyproject-tui/releases/download/v0.1.0/pyproject-tui_linux_x86_64.zip
+	sha256sums_x86_64 = 3562561b655b219a7ab56f64c648a384819799be161cc134f92a4296ee66cfc9
+	source_aarch64 = pyproject-tui-aarch64-0.1.0.zip::https://github.com/programmersd21/pyproject-tui/releases/download/v0.1.0/pyproject-tui_linux_arm64.zip
+	sha256sums_aarch64 = 563ded53b570e017fc45d4f3f978c8e2d1ebb5f4e00081e20fffa3193e2c3c6f
+
+pkgname = pyproject-tui-bin
