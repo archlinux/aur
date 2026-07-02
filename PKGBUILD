@@ -1,7 +1,7 @@
 # Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 pkgname=subrandr
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='A subtitle rendering library'
 _rootdir="${pkgname}-${pkgver}"
@@ -13,7 +13,7 @@ makedepends=('cargo')
 conflicts=('subrandr')
 provides=('subrandr' 'libsubrandr.so')
 source=("${_rootdir}.tar.gz::https://github.com/afishhh/subrandr/archive/v${pkgver}.tar.gz")
-b2sums=('c70aff932edbcf300c805b4cf68bacddc1e7ece25823c7c6413da4da2a8ab82c1d23cae2558507ef4f9844b759bd35b798eeeb382b780495e3c5765b52fdd5b2')
+b2sums=('eeec506f486b48851dbd8df278b5d5826b75745627059130401cb24ffd22b7c1f36c2d541c83777167a2ddefd629600c085733a32dae50e211912a24b402ac76')
 
 build() {
   cd "${_rootdir}"
