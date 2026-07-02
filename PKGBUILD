@@ -5,7 +5,7 @@ _pkgname=sitegen
 pkgname=${_pkgname}-bin
 pkgdesc="Sitegen is a simple but flexible static site generator."
 
-pkgver=1.0.37
+pkgver=1.0.38
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,8 +27,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pk
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[1]}")
 sha256sums=('e145baade9e2cedcac6f7cda256d7420de0d9f61cf4575a69bb6bfb5c1e10974'
             '1d9ea865074fbbf9c4fd61ee0b36ad684b69f8ed7c2d083464484ada5cac243c')
-sha256sums_x86_64=('06263e83640d98cd2ec3637fe6d914012581dc8d6328b58d062219b6ed3bd32f')
-sha256sums_aarch64=('f910100490d343cd0b765ac59d89c0cddcb56256bc86ad751900dec68fa77a52')
+sha256sums_x86_64=('9a5aa30fb551f8464ef73f78839f42b7f28075a3e6f73efddbf21f5d874027dd')
+sha256sums_aarch64=('41717352944f61ffada93afa054fdab924368167c629496a7ee2364b134b5a2f')
 
 
 package() {
