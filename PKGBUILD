@@ -2,7 +2,7 @@
 # https://github.com/AshBuk/dabri
 
 pkgname=dabri
-pkgver=2.1.4
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Offline speech-to-text desktop application using Whisper"
 arch=('x86_64' 'aarch64')
@@ -39,15 +39,15 @@ makedepends=(
 )
 options=('!lto')
 # Whisper.cpp version (pinned for reproducibility)
-_whisper_version=1.8.6
+_whisper_version=1.9.1
 
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/AshBuk/dabri/archive/refs/tags/v${pkgver}.tar.gz"
     "whisper-cpp-${_whisper_version}.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v${_whisper_version}.tar.gz"
 )
 sha256sums=(
-    '534c7f6e6749a89f1558f9d98757e4def49d5b7406c5c520b41f949cbeae3976'
-    'f8e632016ceae556f3132a16c7f704be1e7715595041f474fa81a2b64c1abf7c'
+    '05eaa651d46abcfc8e6bb57ba83c2d047843976693ab7542950624b29092fa6d'
+    '147267177eef7b22ec3d2476dd514d1b12e160e176230b740e3d1bd600118447'
 )
 
 prepare() {
@@ -86,12 +86,11 @@ build() {
 
     # Prepare lib directory for Go build
     mkdir -p lib
-    cp build/whisper.cpp/build/src/libwhisper.so* lib/
+    # whisper.cpp >= v1.9 places all libraries (incl. Vulkan backend) in build/bin
+    cp build/whisper.cpp/build/bin/libwhisper.so* lib/
     cp build/whisper.cpp/include/whisper.h lib/
     cp build/whisper.cpp/ggml/include/*.h lib/ 2>/dev/null || :
-    cp build/whisper.cpp/build/ggml/src/libggml*.so* lib/ 2>/dev/null || :
-    # Copy Vulkan backend library from subdirectory
-    cp build/whisper.cpp/build/ggml/src/ggml-vulkan/libggml-vulkan.so* lib/ 2>/dev/null || :
+    cp build/whisper.cpp/build/bin/libggml*.so* lib/
 
     # Build Go binary with systray support
     export CGO_ENABLED=1
