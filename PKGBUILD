@@ -1,14 +1,13 @@
 pkgname="carapace"
-pkgver=1.7.1
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="multi-shell multi-command argument completer"
 arch=("x86_64")
 url="https://carapace.sh/"
 license=("MIT")
-depends=("glibc")
 makedepends=("go")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/carapace-sh/carapace-bin/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7d110560caaa61a5c0966ce8882037b189128b212a83402b0c653d81bd04544d')
+sha256sums=('6e5b778538653bc3ee8b65fbc74028a6edf022ca85179bedea71882699662e89')
 
 prepare() {
     cd "${srcdir}/carapace-bin-${pkgver}"
@@ -24,7 +23,9 @@ build(){
     export GOPATH="${srcdir}"
     export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
     go generate ./cmd/...
-    go build -v -ldflags="-X main.version=v${pkgver} -linkmode external -compressdwarf=false -bindnow" ./cmd/carapace
+    CGO_ENABLED=0 go build -v -ldflags="-s -w -X main.version=v${pkgver} -compressdwarf=false -bindnow" \
+        -tags "release,force_all" \
+        ./cmd/carapace
 
 }
 package(){
