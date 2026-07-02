@@ -1,0 +1,4 @@
+[xp3-tool]
+source = "git"
+git = "https://github.com/storycraft/xp3-tool.git"
+prefix = "v"
