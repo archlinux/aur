@@ -2,7 +2,7 @@
 
 _plug=nlm-hip
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=3.0.g8fe6af2
+pkgver=4.0.g63593e0
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -32,9 +32,10 @@ pkgver() {
 
 build() {
     cmake -S "${_plug}" -B build \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=None \
     -D CMAKE_CXX_COMPILER="/opt/rocm/bin/hipcc" \
-    -D CMAKE_CXX_FLAGS="-Wall -ffast-math -munsafe-fp-atomics -Rpass-analysis=kernel-resource-usage -DNDEBUG" \
+    -D CMAKE_CXX_FLAGS="${CXXFLAGS} -Wall -ffast-math -munsafe-fp-atomics -Rpass-analysis=kernel-resource-usage -DNDEBUG" \
+    -D CMAKE_HIP_FLAGS="${CXXFLAGS} -Wall -ffast-math -munsafe-fp-atomics -Rpass-analysis=kernel-resource-usage -DNDEBUG" \
     -D GPU_TARGETS="gfx906;gfx1010;gfx1011;gfx1012;gfx1030;gfx1031;gfx1032;gfx1033;gfx1034;gfx1035;gfx1036;gfx1100;gfx1101;gfx1102;gfx1103;gfx1150;gfx1151;gfx1152;gfx1200;gfx1201"
 
     cmake --build build
@@ -42,6 +43,6 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" cmake --install build
-    rm -r "${pkgdir}/usr/local" # Remove stray manifest.vs file
     install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+    install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

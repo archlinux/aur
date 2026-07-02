@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-nlm-hip-git
 	pkgdesc = Plugin for Vapoursynth: nlm-hip (GIT version)
-	pkgver = 3.0.g8fe6af2
+	pkgver = 4.0.g63593e0
 	pkgrel = 1
 	url = https://github.com/TheFeelTrain/vs-nlm-hip
 	arch = x86_64
