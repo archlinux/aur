@@ -1,7 +1,7 @@
 pkgbase = rssh-git
 	pkgdesc = SSH client built to be an AI ops copilot (latest git)
-	pkgver = 0.0.1.r129.gb670f8c
-	pkgrel = 3
+	pkgver = 0.2.10.r7.g3b41605
+	pkgrel = 1
 	url = https://github.com/shihuili1218/rssh
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = rssh-git
 	depends = librsvg
 	depends = libsecret
 	depends = systemd-libs
-	provides = rssh=0.0.1.r129.gb670f8c
+	provides = rssh=0.2.10.r7.g3b41605
 	conflicts = rssh
 	options = !lto
 	source = git+https://github.com/shihuili1218/rssh.git

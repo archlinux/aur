@@ -1,8 +1,8 @@
 # Maintainer: Wanxp <977741432@qq.com>
 pkgname=rssh-git
 _pkgname=rssh
-pkgver=0.0.1.r129.gb670f8c
-pkgrel=3
+pkgver=0.2.10.r7.g3b41605
+pkgrel=1
 pkgdesc="SSH client built to be an AI ops copilot (latest git)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/shihuili1218/rssh"
@@ -36,10 +36,8 @@ sha256sums=(
 pkgver() {
     cd "${srcdir}/${_pkgname}"
 
-    local version
-    version="$(node -p "require('./package.json').version")"
-
-    printf "%s.r%s.g%s" "${version}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    git describe --long --tags --match 'v[0-9]*' \
+        | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
