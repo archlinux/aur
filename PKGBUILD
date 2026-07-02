@@ -1,6 +1,6 @@
 # Maintainer: AuthenDesk Project
 pkgname=authendesk
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Desktop Two-Factor Authentication Token Manager (TOTP/HOTP)"
 arch=('x86_64')
