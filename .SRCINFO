@@ -1,11 +1,17 @@
 pkgbase = climan-bin
 	pkgdesc = A file based HTTP client
 	pkgver = 0.3.1
-	pkgrel = 1
-	url = https://github.com/utilyre/climan#readme
+	pkgrel = 2
+	url = https://github.com/utilyre/climan
 	arch = x86_64
+	arch = aarch64
 	license = MIT
-	source = https://github.com/utilyre/climan/releases/download/v0.3.1/climan-v0.3.1-linux-amd64.tar.gz
-	sha256sums = 8eb3555ca338c379c81f00513242caef0eba185038a9da2372bfba43556df0eb
+	depends = glibc
+	provides = climan
+	conflicts = climan
+	source_x86_64 = climan-x86_64-0.3.1.tgz::https://github.com/utilyre/climan/releases/download/v0.3.1/climan-v0.3.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 8eb3555ca338c379c81f00513242caef0eba185038a9da2372bfba43556df0eb
+	source_aarch64 = climan-aarch64-0.3.1.tgz::https://github.com/utilyre/climan/releases/download/v0.3.1/climan-v0.3.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 375921e2034c2f5385699b42bd290325415cb18e717a8c7a1d8f1a664052e63d
 
 pkgname = climan-bin
