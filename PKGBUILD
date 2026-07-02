@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=clawx
 _pkgname=ClawX
-pkgver=0.4.12
+pkgver=0.4.13
 _electronversion=40
 _nodeversion=24
 pkgrel=1
@@ -32,8 +32,12 @@ options=(
     '!strip'
     'emptydirs'
 )
-source=("${pkgname}.sh")
-sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+source=(
+    "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
+    "${pkgname}.sh"
+)
+sha256sums=('668957b1364ae3afea98f256068080c25edae1e4c77ff0cbbf0d4ea32ab566d8'
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -76,14 +80,6 @@ _get_electron_version() {
     echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 prepare() {
-    cd "${srcdir}"
-    if [[ ! -d "${pkgname}-${pkgver}" ]]; then
-        git clone \
-            --depth 1 \
-            --branch "v${pkgver}" \
-            "${_ghurl}" \
-            "${pkgname}-${pkgver}"
-    fi
     cd "${srcdir}/${pkgname}-${pkgver}"
     _get_electron_version
     sed -i -e "
