@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=chess-cat-git
 _pkgname=chess-cat
-pkgver=r7.0af984e
+pkgver=r16.56350e2
 pkgrel=1
 pkgdesc='Visualize chess boards in your terminal'
 arch=('x86_64' 'aarch64' 'riscv64')

@@ -1,6 +1,6 @@
 pkgbase = chess-cat-git
 	pkgdesc = Visualize chess boards in your terminal
-	pkgver = r7.0af984e
+	pkgver = r16.56350e2
 	pkgrel = 1
 	url = https://github.com/ptsouchlos/chess-cat
 	arch = x86_64
