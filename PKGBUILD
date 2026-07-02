@@ -2,7 +2,7 @@
 _base=pystencils
 pkgname=python-${_base}
 pkgdesc="Speeding up stencil computations on CPUs and GPUs"
-pkgver=1.4
+pkgver=2.0
 pkgrel=1
 arch=(any)
 url="https://i10git.cs.fau.de/pycodegen/${_base}"
@@ -25,7 +25,7 @@ optdepends=('python-cupy: for gpu support'
   'python-rich: for interactive support'
   'python-graphviz: for interactive support')
 source=(${url}/-/archive/release/${pkgver}/${_base}-release-${pkgver}.tar.gz)
-sha512sums=('a7473ad403b328ad91872ed9a395e983f8012671adc3127f28dfbb3b18fa0a3bfb3c79db8e66e4fa332e3aeecc404ec7a636cfb2adc4b034f36a309aa0f4fce2')
+sha512sums=('4b072f75de00e4cca7d2d83e80f06d93a74137f59fce9368168a2a3d082ef7e5945486fb07d4f78e4c0be375c47f1ff339db6390a2af4285ec50dfe6033e51fd')
 
 prepare() {
   cd ${_base}-release-${pkgver}
