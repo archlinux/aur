@@ -1,6 +1,6 @@
 pkgbase = zuban-bin
 	pkgdesc = Python Type Checker / Language Server (binary version)
-	pkgver = 0.10.1
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://zubanls.com
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = zuban-bin
 	makedepends = python-installer
 	depends = glibc
 	depends = libgcc
-	provides = zuban
+	provides = zuban=0.10.2
 	conflicts = zuban
-	noextract = zuban-0.10.1-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	noextract = zuban-0.10.2-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
 	options = !debug
-	source_x86_64 = https://files.pythonhosted.org/packages/py3/z/zuban/zuban-0.10.1-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-	b2sums_x86_64 = 3fb40ef488248d2f129cd3ce66458fd10ca1594e81ba1614d564bd726ff89106bab6ae61e49477ac1d385ebffe12b90c52b746bb87b292556d129af857a43002
+	source_x86_64 = https://files.pythonhosted.org/packages/py3/z/zuban/zuban-0.10.2-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
+	sha256sums_x86_64 = c8b4a34e46ac3ee89cea9783c2a1f4fa6fa271bb59e99e7146d8233566ff8a29
 
 pkgname = zuban-bin
