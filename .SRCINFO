@@ -1,0 +1,20 @@
+pkgbase = ssh-at-bin
+	pkgdesc = Desktop GUI tool for managing SSH keys, hosts, and configurations
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/baerwang/ssh-at
+	arch = x86_64
+	license = Apache-2.0
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = librsvg
+	provides = ssh-at
+	conflicts = ssh-at
+	options = !debug
+	source = ssh-at-bin-0.1.0.deb::https://github.com/baerwang/ssh-at/releases/download/v0.1.0/SSH-AT_0.1.0_amd64.deb
+	source = ssh-at-bin-0.1.0-LICENSE::https://raw.githubusercontent.com/baerwang/ssh-at/main/LICENSE
+	sha256sums = 22e3fbbeb5f3357a563d4afedc8a9a1f5d1f843393da8dc21347610fa1d46bd4
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+
+pkgname = ssh-at-bin
