@@ -1,6 +1,7 @@
 # Maintainer: NewYearPrism
 
 _ggml_version=0.15.3
+_ggml_sha256sum=86800455b5520fc86023979790703a9e2e1e4038b20039334be21df4d55bc868
 pkgname=ggml-vulkan-backend
 pkgver=${_ggml_version}
 pkgrel=1
@@ -10,16 +11,20 @@ url='https://github.com/ggml-org/ggml'
 license=('MIT')
 groups=(ggml)
 provides=(ggml-acceleration)
+replaces=(
+    ggml-vulkan-engine
+)
 depends=(
+    "ggml-core=${pkgver}"
     glibc
     libstdc++
     libgcc
     vulkan-icd-loader
 )
 makedepends=(
-    "ggml-src=${pkgver}"
     cmake
     ninja
+    patch
     shaderc
     spirv-headers
     vulkan-headers
@@ -28,6 +33,20 @@ options=(
     lto
     !debug
 )
+source=(
+    "ggml-${_ggml_version}.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v${_ggml_version}.tar.gz"
+    ggml-use-system-base.patch
+)
+sha256sums=(
+    ${_ggml_sha256sum}
+    2389838195777ef00dce012ef63a52a25dd119880b35e8c811c35f66d3d5b940
+)
+
+prepare() {
+  ln -sf "ggml-${_ggml_version}" ggml
+  patch -Np1 -d ggml -i "$srcdir/ggml-use-system-base.patch"
+  rm -rf ggml/include/
+}
 
 build() {
   local _prefix_map="-ffile-prefix-map=${srcdir}/build=. -ffile-prefix-map=${srcdir}=."
@@ -35,7 +54,7 @@ build() {
   CXXFLAGS+=" ${_prefix_map}"
 
   local _cmake_options=(
-    -S /usr/src/ggml-${pkgver}
+    -S ggml
     -B build
     -G Ninja
     -DCMAKE_BUILD_TYPE=Release
@@ -56,6 +75,7 @@ build() {
     -DGGML_BUILD_TESTS=OFF
     -DGGML_BUILD_EXAMPLES=OFF
     -DGGML_CPU=OFF
+    -DGGML_USE_SYSTEM_BASE=ON
   )
 
   _cmake_options+=(
@@ -76,7 +96,6 @@ build() {
 }
 
 package() {
-    depends+=("ggml-core=${pkgver}")
-  install -Dm755 build/bin/libggml-vulkan.so "${pkgdir}/usr/lib/ggml/backends/libggml-vulkan.so"
-  install -Dm644 "/usr/src/ggml-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  DESTDIR="${pkgdir}" cmake --install build
+  install -Dm644 "ggml/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
