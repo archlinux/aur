@@ -3,8 +3,8 @@
 # Contributor: Maxim Baz <archlinux at maximbaz dot com>
 
 pkgname=ttf-joypixels
-pkgver=10.0.0
-pkgrel=2
+pkgver=11.0.0
+pkgrel=1
 pkgdesc='Emoji as a Service (formerly EmojiOne)'
 url='https://joypixels.com/'
 arch=('any')
@@ -13,11 +13,11 @@ provides=('emoji-font')
 conflicts=('ttf-emojione')
 replaces=('ttf-emojione')
 install="${pkgname}.install"
-source=("joypixels-linux-${pkgver}.ttf::https://cdn.joypixels.com/distributions/arch-linux/10.0.0/joypixels-android.ttf"
-        "license-free-${pkgver}-${pkgrel}.txt::https://cdn.joypixels.com/distributions/arch-linux/10.0.0/free-license.txt"
-        "license-appendix-${pkgver}-${pkgrel}.txt::https://cdn.joypixels.com/distributions/arch-linux/10.0.0/joypixels-license-appendix.txt")
-sha256sums=('4f8bc13d37570f19c3ef69fe5ca7867b22a89951b6d944d194eca6a1bcea1efe'
-            'd139dd7450b0ca5be631cddde3d6059197219366e6f5adea1d863d4ae6fb6b45'
+source=("joypixels-linux-${pkgver}.ttf::https://cdn.joypixels.com/distributions/arch-linux/11.0.0/joypixels-android.ttf"
+        "license-free-${pkgver}-${pkgrel}.txt::https://cdn.joypixels.com/distributions/arch-linux/11.0.0/free-license.txt"
+        "license-appendix-${pkgver}-${pkgrel}.txt::https://cdn.joypixels.com/distributions/arch-linux/11.0.0/joypixels-license-appendix.txt")
+sha256sums=('b5a1cacb6ae29f5484db804a9c1f0b67aeb653c30ef472f989fdfe987437f08a'
+            '86ce929a40d7b1d05b0e183c64797cf13e6da504cabff1111b1ad2e26c0882ad'
             '8e005ae09e09dd59bca0a9064ecca091d50740f6f98f194f260ec69e9aae0348')
 
 package() {
