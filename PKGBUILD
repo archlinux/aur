@@ -2,7 +2,7 @@
 
 pkgname=opennn-git
 _pkgname=OpenNN
-pkgver=r9445.d307dc56d
+pkgver=0
 pkgrel=1
 pkgdesc="OpenNN neural network library with attention and deep learning support (Git Version)"
 arch=('x86_64')
