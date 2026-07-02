@@ -1,4 +1,4 @@
-# Maintainer: Emil Wojcik <adminit@adar.pl>
+# Maintainer: Emilwojcik93 <emilwojcik93@gmail.com>
 
 _pkgname=artemis
 pkgname=artemis-qt-git
