@@ -1,6 +1,6 @@
 # Maintainer: director <noreply@devbulle>
 pkgname=lafifi-flutter-git
-pkgver=0.5.2.r5.g990d326
+pkgver=0.5.3.r0.g0f65c68
 pkgrel=1
 pkgdesc="Multi chain, Multi Wallet Crypto Portfolio Tracking App – Flutter Linux edition"
 arch=('x86_64')
