@@ -1,0 +1,25 @@
+pkgbase = rudu-bin
+	pkgdesc = Review PRs without losing your mind
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/tanvesh01/rudu
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	provides = rudu
+	conflicts = rudu
+	options = !strip
+	options = !debug
+	source = rudu-0.4.0.deb::https://github.com/tanvesh01/rudu/releases/download/v0.4.0/rudu_0.4.0_amd64.deb
+	source = LICENSE-0.4.0::https://github.com/tanvesh01/rudu/raw/v0.4.0/LICENSE
+	sha256sums = ea4225765b6a7133362a6356086b57e89f41a81aed244ab081f7c54323d00490
+	sha256sums = 5058c91b5ccac3a734502456700d1b6d6a9fb31701b9ace706ebc2ec9cba4b14
+
+pkgname = rudu-bin
