@@ -1,6 +1,6 @@
 pkgbase = emulsion-bin
 	pkgdesc = A fast and minimalistic image viewer (binary release)
-	pkgver = 11.0
+	pkgver = 12.3
 	pkgrel = 1
 	url = https://github.com/ArturKovacs/emulsion
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = emulsion-bin
 	depends = libavif
 	provides = emulsion
 	conflicts = emulsion
-	source = https://github.com/ArturKovacs/emulsion/releases/download/v11.0/Emulsion-Linux.deb-v11.0.deb
-	sha256sums = e9564387333592cd6dbc16dbeeb9dc4243d00a15d67bc821afd3c6e57c12b568
+	source = https://github.com/ArturKovacs/emulsion/releases/download/v12.3/Emulsion-Linux.deb-v12.3.deb
+	sha256sums = fe75327dbb504f9f68f71966fa4e19adc819c31d65d2148ad6107a0a5f1ddb03
 
 pkgname = emulsion-bin

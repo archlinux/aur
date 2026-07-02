@@ -3,17 +3,17 @@
 # Contributor: Szymon Scholz <first name last name [at] gmail [dot] com>
 
 pkgname=emulsion-bin
-pkgver=11.0
+pkgver=12.3
 pkgrel=1
 pkgdesc="A fast and minimalistic image viewer (binary release)"
 url="https://github.com/ArturKovacs/emulsion"
-arch=('x86_64')
 license=('MIT')
+arch=('x86_64')
 depends=('hicolor-icon-theme' 'libavif')
 provides=("emulsion")
 conflicts=("emulsion")
 source=("$url/releases/download/v$pkgver/Emulsion-Linux.deb-v$pkgver.deb")
-sha256sums=('e9564387333592cd6dbc16dbeeb9dc4243d00a15d67bc821afd3c6e57c12b568')
+sha256sums=('fe75327dbb504f9f68f71966fa4e19adc819c31d65d2148ad6107a0a5f1ddb03')
 
 package() {
   tar -C "$pkgdir" -xf data.tar.gz
