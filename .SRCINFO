@@ -1,13 +1,19 @@
 pkgbase = yin-git
-	pkgdesc = Efficient wayland wallpaper daemon for images, gifs and videos
-	pkgver = 0.14
+	pkgdesc = Lightweight, Hardware accelerated Wayland wallpaper daemon
+	pkgver = 0.1.r0.gc13b5e8
 	pkgrel = 1
+	url = https://github.com/saverinonrails/yin
 	arch = x86_64
-	makedepends = zig0.14
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols
 	depends = ffmpeg
 	depends = wayland
 	depends = stb
-	source = git+https://www.github.com/eugenenoble2005/yin.git
+	options = !debug
+	source = git+https://github.com/saverinonrails/yin.git
 	sha256sums = SKIP
 
 pkgname = yin-git
