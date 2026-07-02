@@ -1,0 +1,16 @@
+#!/bin/bash
+
+post_install()
+{
+    plymouth-set-default-theme -R manjaro-mac-style
+}
+
+post_upgrade()
+{
+	post_install "$@"
+}
+
+post_remove()
+{
+    plymouth-set-default-theme -rR
+}

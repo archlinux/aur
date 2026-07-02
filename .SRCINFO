@@ -1,0 +1,20 @@
+pkgbase = plymouth-theme-manjaro-mac-style
+	pkgdesc = Boot animation with Manjaro logo, inspired by the boot animation of MacOS.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://store.kde.org/p/2112595
+	install = plymouth-theme-manjaro-mac-style.install
+	arch = any
+	license = GPL-3.0-only
+	makedepends = coreutils
+	depends = plymouth
+	depends = cantarell-fonts
+	provides = plymouth-theme-manjaro-mac-style=1.0.0
+	source = images.tar.gz
+	source = manjaro-mac-style.plymouth
+	source = preview.png
+	b2sums = b1399d51056a3ff1baff324829acc1a3c6aed9541396fa13f3412dbb9bc2b50a4be0672ba5766993f04b8a8984fbf599583a182d3fe08ba65affe3c016edb9ff
+	b2sums = d7c4755148ace73c22ed26d259b99086c99c9f5ad2e8d56d5b776378770170c25d00e8ddcda8c2cb2d44c391d788b73030fa6f099055125fac32bdc121bf4e74
+	b2sums = 3b92953069173cfc7a8d4043adc76f852dc41ba9f1c2d6a95ef19bcd97141dcb1dac7db86d86df37de8ae9259a5dbe9ed5f71f20f91fee8a2e7a651ba109db16
+
+pkgname = plymouth-theme-manjaro-mac-style
