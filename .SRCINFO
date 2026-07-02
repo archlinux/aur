@@ -1,13 +1,14 @@
 pkgbase = rudu-bin
 	pkgdesc = Review PRs without losing your mind
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tanvesh01/rudu
 	arch = x86_64
 	license = MIT
 	depends = cairo
 	depends = dbus
 	depends = gdk-pixbuf2
+	depends = github-cli
 	depends = glib2
 	depends = gtk3
 	depends = hicolor-icon-theme

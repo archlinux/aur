@@ -2,12 +2,12 @@
 pkgname=rudu-bin
 _pkgname=rudu
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Review PRs without losing your mind"
 arch=('x86_64')
 url="https://github.com/tanvesh01/rudu"
 license=('MIT')
-depends=('cairo' 'dbus' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'webkit2gtk-4.1')
+depends=('cairo' 'dbus' 'gdk-pixbuf2' 'github-cli' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'webkit2gtk-4.1')
 provides=('rudu')
 conflicts=('rudu')
 options=('!strip' '!debug')
