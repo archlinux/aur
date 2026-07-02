@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt
 _pkgname=autenticacao.gov
-pkgver=3.14.0
+pkgver=3.15.0
 pkgrel=1
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) source code based version"
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/amagovpt/autenticacao.
         "autenticacao-gov-pt.install"
         "gcc15-fix.patch")
 
-sha512sums=('a5b4d2cb86783fcdafbec44af40047ea6b3d40241bdd994aedf208a107d54056a3e0707835a210e90236530ac990fa11ae0e2efc42dbbe536203ba10ef316090'
+sha512sums=('20686c9af55670fc3a9d865ad83d0be852d602a3a11feba1fce8d508ff11278c53327c2b905a02bf60ffe56240a4554ca719be3a5c1a4450e8d290d3a4b3b939'
             '344a0722a4554150f17f25d49d85c8a42d5e75b2444d59b1648f7c3d0817eb93eb011680f3cccf092a5eceef7c13e8048f0d09de4f07199a33c7bd1033c3de9f'
             'c06a3b6584ba0836da916b14ed7edd4afc0d146b4b1cd5f16cbdf7f3e4786b4b46e0c4bc8dc6de28d87b3709ccfbecb42598a982cff33436feceee7e9e860600')
 
@@ -48,8 +48,8 @@ INCLUDEPATH += /usr/lib/jvm/default/include
 INCLUDEPATH += /usr/lib/jvm/default/include/linux
 EOF
 # work around for upstream bug (GCC-15)
-cd ${srcdir}/${_pkgname}-${pkgver}
-patch -p1 < ${srcdir}/gcc15-fix.patch
+#cd ${srcdir}/${_pkgname}-${pkgver}
+#patch -p1 < ${srcdir}/gcc15-fix.patch
 #grep -nrl '/usr/local' | xargs -r sed -i "s|\/usr\/local|\/usr|g"
 }
 
