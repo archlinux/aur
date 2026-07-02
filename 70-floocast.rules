@@ -1,0 +1,4 @@
+# FlooGoo FMA120 USB Bluetooth dongle (CSR 0a12:4007).
+# Grant the active local-seat user access to the CDC-ACM serial node via
+# systemd-logind ACLs, so FlooCast runs without root or group membership.
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0a12", ATTRS{idProduct}=="4007", TAG+="uaccess"

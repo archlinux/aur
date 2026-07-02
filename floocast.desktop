@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=FlooCast
+GenericName=Bluetooth Dongle Manager
+Comment=Control and configure FlooGoo USB Bluetooth dongles
+Exec=floocast
+Icon=floocast
+Terminal=false
+Categories=AudioVideo;Audio;Utility;
+Keywords=bluetooth;floogoo;auracast;dongle;fma120;

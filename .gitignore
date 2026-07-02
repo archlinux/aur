@@ -1,0 +1,9 @@
+# build workspace / artifacts — not part of the AUR package
+/pkg/
+/src/
+/venv/
+/FlooCast/
+*.pkg.tar.*
+*.tar.gz
+*.tar.zst
+*.log
