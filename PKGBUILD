@@ -1,15 +1,15 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 pkgname=tmuxai
-pkgver=2.2.2
-pkgrel=1
+pkgver=2.3.0
+pkgrel=2
 pkgdesc='AI-powered, non-intrusive terminal assistant for tmux'
 arch=('x86_64' 'aarch64')
 url='https://tmuxai.dev/'
 license=('Apache-2.0')
-depends=('tmux')
+depends=('tmux' 'glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alvinunreal/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3d0a4fe8634831f4c6ede94cabfacca79f49171936469913a527f6c27bed6950')
+sha256sums=('40e2027a162003f10b6f428449b33a09855c8181b989283f59b8645b7808f385')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -18,6 +18,8 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    # proxy.golang.org is unreachable from the clean chroot; use a reachable mirror
+    export GOPROXY="https://goproxy.cn,direct"
     go build -o "$pkgname" .
 }
 

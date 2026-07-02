@@ -1,14 +1,15 @@
 pkgbase = tmuxai
 	pkgdesc = AI-powered, non-intrusive terminal assistant for tmux
-	pkgver = 2.2.2
-	pkgrel = 1
+	pkgver = 2.3.0
+	pkgrel = 2
 	url = https://tmuxai.dev/
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = go
 	depends = tmux
-	source = tmuxai-2.2.2.tar.gz::https://github.com/alvinunreal/tmuxai/archive/refs/tags/v2.2.2.tar.gz
-	sha256sums = 3d0a4fe8634831f4c6ede94cabfacca79f49171936469913a527f6c27bed6950
+	depends = glibc
+	source = tmuxai-2.3.0.tar.gz::https://github.com/alvinunreal/tmuxai/archive/refs/tags/v2.3.0.tar.gz
+	sha256sums = 40e2027a162003f10b6f428449b33a09855c8181b989283f59b8645b7808f385
 
 pkgname = tmuxai
