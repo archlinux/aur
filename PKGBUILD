@@ -1,6 +1,6 @@
 pkgname=arch-install-manager-git
 _pkgname=arch-install-manager
-pkgver=0.0.1.r7.g98b10e6
+pkgver=0.0.1.r11.ga868855
 pkgrel=1
 pkgdesc="A Linux Mint inspired GTK4-based install and update manager for Arch Linux (latest git)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('flatpak: Flatpak package support'
             'snapper: pre-update Btrfs snapshots'
             'aur-scanner: scan AUR packages for security issues'
             'rate-mirrors: refresh and rank the pacman mirror list')
-source=("$pkgname::git+https://github.com/destbg/arch-install-manager.git#commit=98b10e612f953ea62fdf7862ab86a41e9097ea3c")
+source=("$pkgname::git+https://github.com/destbg/arch-install-manager.git#commit=a8688559475822060c1813f7a94e32dea458b8ca")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -45,8 +45,8 @@ package() {
 		install -Dm755 "target/release/$bin" "$pkgdir/usr/bin/$bin"
 	done
 
-	install -Dm644 "arch-install-manager.desktop" \
-		"$pkgdir/usr/share/applications/arch-install-manager.desktop"
+	install -Dm644 "com.destbg.arch-install-manager.desktop" \
+		"$pkgdir/usr/share/applications/com.destbg.arch-install-manager.desktop"
 
 	install -Dm644 "com.destbg.arch-install-manager.policy" \
 		"$pkgdir/usr/share/polkit-1/actions/com.destbg.arch-install-manager.policy"
