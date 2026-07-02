@@ -18,7 +18,7 @@ depends=(
 )
 makedepends=('cmake' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('9b9bff48b5c143f5255bd2922d56c181658ba742a7d1a5f78000bbf090491722')
+sha256sums=('05a3d9e3691acc4ff3deb2d4ac6bb231ea9e71a873d751ac66ae4b7327d6c891')
 
 build() {
   cmake -B build -G Ninja \
