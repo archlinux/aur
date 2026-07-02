@@ -1,8 +1,8 @@
 # Maintainer: Mohannad Ahmed <mohannadabdo21@hotmail.com>
 
 pkgname=arch-rss-notify
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc='Arch Linux package RSS feed notifier - polls feeds and sends desktop notifications for installed package updates'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Mohabdo21/arch-rss-notify'
@@ -11,7 +11,7 @@ depends=('libnotify')
 makedepends=('go' 'git')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Mohabdo21/arch-rss-notify/archive/v$pkgver.tar.gz")
-sha256sums=('01ca303393d40f5fe9329e77336388d8a52e38d86c60c0a0cd4799cd35111ea3')
+sha256sums=('508be2ec685e9922d301ac427dda5693194bc642365020be48c85102abbcb085')
 
 build() {
 	cd "$pkgname-$pkgver"
