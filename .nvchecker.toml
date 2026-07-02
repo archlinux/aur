@@ -1,0 +1,5 @@
+[procsnap]
+source = "github"
+github = "DankDown10256/procsnap"
+use_max_tag = true
+prefix = "v"
