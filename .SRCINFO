@@ -1,6 +1,6 @@
 pkgbase = rsecure
 	pkgdesc = Secure file encryption CLI written in Rust
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/containerscrew/rsecure
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = rsecure
 	conflicts = rsecure
 	provides = rsecure
 	
-	source = https://github.com/containerscrew/rsecure/releases/download/0.6.1/rsecure-0.6.1.tar.gz
-	sha256sums = 1ed541bec3f2b2ff3ebc642d0658dc4786761e963f721d24c6fbbdd0f09eef7a
+	source = https://github.com/containerscrew/rsecure/releases/download/0.7.0/rsecure-0.7.0.tar.gz
+	sha256sums = e1df74d299a4cdb6e574af2a9911cdc86511e2bde0d67abb622eb66bff2df6e4
 	
 pkgname = rsecure
