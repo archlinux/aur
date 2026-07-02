@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=pi-studio-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Local Codex-style desktop GUI for the Pi coding agent"
 arch=('x86_64' 'aarch64')
@@ -27,9 +27,9 @@ options=('!strip' '!debug')
 _relurl="${url}/releases/download/v${pkgver}"
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${_relurl}/Picot_${pkgver}_amd64.deb")
-sha256sums_x86_64=('748247df04752767caf2da743b95dba54c93a5b8a1ef583d5cf405c9f1968b00')
+sha256sums_x86_64=('69a00989ef07a8b024bcd0cd57e7c78a21469af443ff94d68df135049f56e2c9')
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${_relurl}/Picot_${pkgver}_arm64.deb")
-sha256sums_aarch64=('76f22f544d6a4ae17990d47a69dfe6bf8e6abc0f0c92948d43cc53d2813b549d')
+sha256sums_aarch64=('bb80e0f0f3471e624fcccb04d659dd8e79c58f43ef381401185c6562ebc3db74')
 
 prepare() {
     mkdir -p "${srcdir}/data"
