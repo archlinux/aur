@@ -3,7 +3,7 @@
 _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname='Nuclear Player'
-pkgver=1.41.0
+pkgver=1.41.4
 _nodeversion=24
 pkgrel=1
 pkgdesc="Streaming music player that finds free music for you."
@@ -30,32 +30,39 @@ optdepends=(
     'gst-libav: FFmpeg-based codec support'
 )
 source=("${pkgname}-${pkgver}::git+${_ghurl}#tag=player@${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('4e7001af8e213ed33879ad091bd0f13ef566d4fe93b7fc0cc4140e52c29dab61')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_set_build_env() {
+    export HOME="${srcdir}/.electron-gyp"
+    export CARGO_HOME="${srcdir}/.cargo"
+    {
+        export PNPM_LINK_WORKSPACE_PACKAGES=true
+        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_SHAMEFULLY_HOIST=true
+        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
+        export PNPM_NODE_LINKER=hoisted
+        export PNPM_NETWORK_CONCURRENCY=32
+    }
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            export pnpm_config_registry="https://registry.npmmirror.com"
+            export npm_config_registry="https://registry.npmmirror.com"
+            export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
+            export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+        }
+    fi
+}
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    export CARGO_HOME="${srcdir}/.cargo"
-    export PNPM_LINK_WORKSPACE_PACKAGES=true
-	export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-	export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-	export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-	export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
-	export PNPM_SHAMEFULLY_HOIST=true
-	export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
-	export PNPM_NODE_LINKER=hoisted
-	export PNPM_NETWORK_CONCURRENCY=32
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        export RUSTUP_DIST_SERVER="https://rsproxy.cn"
-        export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
-        export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-        export PNPM_REGISTRY="https://registry.npmmirror.com"
-        export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-    fi
+    _set_build_env
     _ensure_local_nvm
     sed -i -e "
         s/Exec=nuclear-music-player/Exec=${pkgname}/g
@@ -71,7 +78,7 @@ prepare() {
     rustup default stable
 }
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    _set_build_env
     _ensure_local_nvm
     cd "${srcdir}/${pkgname}-${pkgver}/packages/model"
     NODE_ENV=production     pnpm run build
