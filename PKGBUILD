@@ -2,13 +2,13 @@
 
 _pkgname=wayvr
 pkgname=$_pkgname-git
-pkgver=26.2.1.r36.d9f89fa
+pkgver=26.2.1.r158.c77e465
 pkgrel=1
 pkgdesc="Your way to enjoy VR on Linux! Access your Wayland/X11 desktop from SteamVR/Monado (OpenVR+OpenXR support)"
 url="https://github.com/wlx-team/wayvr"
 arch=('x86_64')
 license=('GPL-3.0-or-later')
-depends=('gcc-libs' 'fontconfig' 'freetype2' 'libxkbcommon' 'dbus' 'libpipewire' 'alsa-lib' 'openxr' 'openvr')
+depends=('gcc-libs' 'fontconfig' 'freetype2' 'libxkbcommon' 'dbus' 'libpipewire' 'alsa-lib' 'openxr' 'openvr' 'dav1d')
 makedepends=('git' 'cargo' 'python3' 'cmake' 'clang' 'shaderc' 'libx11' 'libxext' 'libxrandr' 'libxkbcommon-x11')
 replaces=("wlx-overlay-s-git")
 conflicts=("$_pkgname")
