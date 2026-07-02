@@ -1,7 +1,7 @@
 # Maintainer: Marat Bakeev <hawara@gmail.com>
 pkgname=floocast
 pkgver=1.1.8.3
-pkgrel=3
+pkgrel=4
 pkgdesc="GUI to control and configure FlooGoo USB Bluetooth dongles (FMA120): pairing, AuraCast broadcasting and DFU"
 arch=('any')
 url="https://github.com/Flairmesh/FlooCast"
@@ -14,6 +14,7 @@ depends=(
   'python-pillow'
   'python-numpy'
   'python-sounddevice'
+  'python-pystray'
 )
 optdepends=('python-samplerate: smoother resampling (only used on the macOS split-stream path)')
 makedepends=('imagemagick')
@@ -23,8 +24,10 @@ source=(
   "70-$pkgname.rules"
   "floocast_singleton.py"
   "$pkgname-single-instance.patch"
+  "$pkgname-sni-tray.patch"
 )
 sha256sums=('7541f0f0f658f794111d11f7cfa7ae13303cbf6eff56ef6a3fbfab18ed98eea5'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -41,6 +44,10 @@ prepare() {
   # wxWidgets' GtkStatusIcon tray never appears). See the .patch / helper.
   cp "$srcdir/floocast_singleton.py" "$_srcdir/"
   patch -Np1 -d "$_srcdir" < "$srcdir/$pkgname-single-instance.patch"
+
+  # Replace the wxWidgets tray (GtkStatusIcon, invisible on Wayland) with a
+  # pystray/AppIndicator StatusNotifierItem tray that modern shells render.
+  patch -Np1 -d "$_srcdir" < "$srcdir/$pkgname-sni-tray.patch"
 }
 
 package() {
