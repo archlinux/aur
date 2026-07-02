@@ -1,6 +1,6 @@
 # Maintainer: Lawrence Stalder <lawrence.stalder@pm.me>
 pkgname=piclift
-pkgver=0.5.7
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="SD card photo import, cull, and upload tool for photographers"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('cargo' 'cmake' 'nasm')
 # unaffected.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('14e2971d96e001c15e72f4e4e3ce467b81521b9b7ae5db5788eb5b07ddea39aa')
+sha256sums=('22d35493f1db73e80f11bd4adb2b92df44ce2e05b824d5f64bbd1cc15b931e03')
 
 prepare() {
   cd "$pkgname"
