@@ -6,10 +6,11 @@ pkgbase = ggml-hip-backend
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = ggml-src=0.15.3
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = patch
 	makedepends = rocm-hip-sdk
+	depends = ggml-core=0.15.3
 	depends = glibc
 	depends = libgcc
 	depends = hip-runtime-amd
@@ -18,11 +19,9 @@ pkgbase = ggml-hip-backend
 	provides = ggml-acceleration
 	options = lto
 	options = !debug
+	source = ggml-0.15.3.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v0.15.3.tar.gz
+	source = ggml-use-system-base.patch
+	sha256sums = 86800455b5520fc86023979790703a9e2e1e4038b20039334be21df4d55bc868
+	sha256sums = 2389838195777ef00dce012ef63a52a25dd119880b35e8c811c35f66d3d5b940
 
 pkgname = ggml-hip-backend
-	depends = glibc
-	depends = libgcc
-	depends = hip-runtime-amd
-	depends = hipblas
-	depends = rocblas
-	depends = ggml-core=0.15.3
