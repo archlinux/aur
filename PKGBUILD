@@ -1,5 +1,5 @@
 pkgname=zeldaladxhd-bin
-pkgver=v1.9.3
+pkgver=v1.9.6
 pkgrel=1
 scriptver=1.0.1
 _pkgrel_x86_64=1
@@ -12,8 +12,8 @@ options=('!strip')
 license=('GPL')
 makedepends=('unzip')
 sha256sums=('b9565e4e4dbbb8f5d74c5b227a23d103c55e4e06a1ec8af2ca6ef46db37c9813')
-sha256sums_x86_64=('1ea2cb6c52088ecccd5a100689b8653757ada2c04a98fe0dbc64d83e0e27744d')
-sha256sums_aarch64=('50abb852c7eedddf6f7baa74c76b9a1eeb5c03d9832ab6aa7e4e517bf0862c68')
+sha256sums_x86_64=('122b3247a85b9a8d7c5187f2ef156f0167a29c2616ffd209d25c1e045dced5fb')
+sha256sums_aarch64=('605758436129c2e85c405ecf3e9aa6e461f412ab3bd95ba32a8a4fd901bb3ae6')
 source=("https://gitlab.com/linuxbombay/zeldaladxhd/-/archive/$scriptver/zeldaladxhd-$scriptver.tar.bz2")
 source_x86_64=("https://github.com/BigheadSMZ/Zelda-LA-DX-HD-Updated/releases/download/$pkgver/LADXHD-Patcher-"$pkgver"-Linux-x64.zip")
 source_aarch64=("https://github.com/BigheadSMZ/Zelda-LA-DX-HD-Updated/releases/download/$pkgver/LADXHD-Patcher-"$pkgver"-Linux-Arm64.zip")
