@@ -14,12 +14,13 @@ pkgbase = polymath
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = desktop-file-utils
+	depends = libsecret
 	options = !strip
 	options = !debug
 	options = !lto
 	source = https://fluxkeyboard.com/updates/polymath/linux/deb/polymath_1.4.2.0_amd64.deb
 	source = udev.rules
-	sha256sums = ad7b18d885a246768fe0e6822d638ccdeb2cd9d85ad4b876583d22bf0a1374c1
+	sha256sums = 702806daac159a416c2212ddc6232d4c2ba5e03876cdafb3a6da0a858289ddf3
 	sha256sums = SKIP
 
 pkgname = polymath

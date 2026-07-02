@@ -27,6 +27,7 @@ DEPENDENCY_MAP = {
     "libgtk-3-bin": "gtk3",
     "libmpv2": "mpv",
     "libayatana-appindicator3-1": "libayatana-appindicator",
+    "libsecret-1-0": "libsecret",
 }
 
 
