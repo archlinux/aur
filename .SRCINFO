@@ -1,0 +1,20 @@
+pkgbase = m3u-tv-bin
+	pkgdesc = Cross-platform TV front-end player for the M3U Editor app
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/m3ue/m3u-tv
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = java-runtime-headless
+	depends = libepoxy
+	depends = libsecret
+	depends = mpv
+	provides = m3u-tv
+	conflicts = m3u-tv
+	options = !strip
+	source = m3u-tv-1.0.0-linux.tar.gz::https://github.com/m3ue/m3u-tv/releases/download/v1.0.0/m3u-tv-v1.0.0-linux.tar.gz
+	sha256sums = b5ee790f7093d52a328cec5e8cbc405f6e59b8413efde0d0330bc214f4b1367b
+
+pkgname = m3u-tv-bin
