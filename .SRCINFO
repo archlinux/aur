@@ -1,0 +1,17 @@
+pkgbase = mess-bin
+	pkgdesc = A tiny CLI for removing common development clutter
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/olzhasar/mess
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = mess
+	conflicts = mess
+	options = !strip
+	source_x86_64 = mess-x86_64-0.2.0.tgz::https://github.com/olzhasar/mess/releases/download/v0.2.0/mess_v0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5bd86e44dd0de6719a558d2f164ba306f0fc4807bc15a1116dbd0f2fcf546e4b
+	source_aarch64 = mess-aarch64-0.2.0.tgz::https://github.com/olzhasar/mess/releases/download/v0.2.0/mess_v0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 45a8971ceb97ffb565eeddf1aa0b5da2ddbcbcca032be48711d9cd998e0e840e
+
+pkgname = mess-bin

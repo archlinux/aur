@@ -1,0 +1,5 @@
+[mess-bin]
+source = "github"
+github = "olzhasar/mess"
+use_latest_release = true
+prefix = "v"
