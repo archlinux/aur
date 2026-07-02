@@ -1,7 +1,7 @@
 pkgbase = grub-silent
 	pkgdesc = GNU GRand Unified Bootloader (2) [without welcome and kernel messages]
 	pkgver = 2.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/grub/
 	install = grub.install
 	arch = x86_64
@@ -48,6 +48,7 @@ pkgbase = grub-silent
 	source = 05-sleep_shift.patch
 	source = 06-maybe_quiet.patch
 	source = 07-quick_boot.patch
+	source = 08-ld-gold-fix.patch
 	source = grub.silent
 	sha256sums = bc8d3c73535b8838d8c8e2654d73edc4e6ae8c8acdb45d5df5dc9a1547446d43
 	sha256sums = 0a85e3691398b897a8f087c99757d67269a5ced0b51bd52b810d195aa125af10
@@ -58,6 +59,7 @@ pkgbase = grub-silent
 	sha256sums = 55de3e428a56cd770a49a345da53726eccd493e5bce50a86f9810972524ff489
 	sha256sums = 34ff4bdfad60590a944c660f085a0aff6587e4d7295e539f6a198e0851964b6d
 	sha256sums = 943744e3cdd50ab825af54cbf5a764dc429ecec99aefab53f809ca54ff8c4d3d
+	sha256sums = 9f50291da92c79b47214f6853c112b4034cdaab2e3a3690923b7a2b061be11e7
 	sha256sums = 4f2e9d585b7b0ef8ce0d09e88391d1397b50883c7cb1516dc99785934abe15a2
 
 pkgname = grub-silent

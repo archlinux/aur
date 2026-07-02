@@ -25,7 +25,7 @@ _GRUB_EXTRAS_COMMIT="8a245d5c1800627af4cefa99162a89c7a46d8842"
 pkgname="grub-silent"
 pkgdesc="GNU GRand Unified Bootloader (2) [without welcome and kernel messages]"
 pkgver=2.14
-pkgrel=1
+pkgrel=2
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
 license=('GPL3')
@@ -62,6 +62,7 @@ source=("https://ftp.gnu.org/gnu/${pkgname%-*}/${pkgname%-*}-${pkgver}.tar.xz"
         '05-sleep_shift.patch'
         '06-maybe_quiet.patch'
         '07-quick_boot.patch'
+	'08-ld-gold-fix.patch'
         'grub.silent')
 
 sha256sums=('bc8d3c73535b8838d8c8e2654d73edc4e6ae8c8acdb45d5df5dc9a1547446d43'
@@ -73,6 +74,7 @@ sha256sums=('bc8d3c73535b8838d8c8e2654d73edc4e6ae8c8acdb45d5df5dc9a1547446d43'
             '55de3e428a56cd770a49a345da53726eccd493e5bce50a86f9810972524ff489'
             '34ff4bdfad60590a944c660f085a0aff6587e4d7295e539f6a198e0851964b6d'
             '943744e3cdd50ab825af54cbf5a764dc429ecec99aefab53f809ca54ff8c4d3d'
+            '9f50291da92c79b47214f6853c112b4034cdaab2e3a3690923b7a2b061be11e7'
             '4f2e9d585b7b0ef8ce0d09e88391d1397b50883c7cb1516dc99785934abe15a2')
 
 prepare() {
@@ -106,6 +108,10 @@ prepare() {
 	patch -Np1 -i "${srcdir}/06-maybe_quiet.patch"
 	patch -Np1 -i "${srcdir}/07-quick_boot.patch"
 	echo
+
+	# https://aur.archlinux.org/packages/grub-silent#comment-1075634
+	msg "Fix for i386-pc compile error: \"kernel.img is miscompiled: its start address is 0x9074 instead of 0x9000: ld.gold bug?\""
+	patch -Np1 -i "${srcdir}/08-ld-gold-fix.patch"
 
 	msg "Pull in latest language files"
 	./linguas.sh
