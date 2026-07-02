@@ -1,6 +1,6 @@
 pkgbase = kilo-cli-git
 	pkgdesc = Kilo is the all-in-one agentic engineering platform.
-	pkgver = r19972.3ea3a1667d
+	pkgver = r24648.5f4c96bad4
 	pkgrel = 1
 	url = https://github.com/Kilo-Org/kilocode
 	arch = x86_64

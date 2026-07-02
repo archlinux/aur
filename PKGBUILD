@@ -1,5 +1,5 @@
 pkgname=kilo-cli-git
-pkgver=r19994.55abf13cfa
+pkgver=r24648.5f4c96bad4
 pkgrel=1
 pkgdesc='Kilo is the all-in-one agentic engineering platform.'
 arch=('x86_64')
@@ -33,6 +33,7 @@ build() {
 package() {
 	cd "kilocode/packages/opencode"
 	install -Dm 755 dist/@kilocode/cli-linux-x64/bin/kilo -t "${pkgdir}/usr/bin"
+	install -Dm 755 dist/@kilocode/cli-linux-x64/bin/kilo-sandbox-mutation-worker.js -t "${pkgdir}/usr/bin"
 	mkdir -p "${pkgdir}/usr/bin/tree-sitter"
 	install -Dm 755 dist/@kilocode/cli-linux-x64/bin/tree-sitter/* -t "${pkgdir}/usr/bin/tree-sitter"
 }
