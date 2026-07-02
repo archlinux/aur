@@ -1,6 +1,6 @@
 pkgbase = aliyunpan-go-bin
 	pkgdesc = Aliyun disk command line client, support JavaScript plug-in, support synchronous backup function.阿里云盘命令行客户端,支持webdav文件服务,支持JavaScript插件,支持同步备份功能.(Precompiled version)
-	pkgver = 0.3.9
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/tickstep/aliyunpan
 	arch = aarch64
@@ -9,15 +9,15 @@ pkgbase = aliyunpan-go-bin
 	arch = x86_64
 	license = Apache-2.0
 	depends = bash
-	provides = aliyunpan-go=0.3.9
+	provides = aliyunpan-go=0.4.0
 	conflicts = aliyunpan-go
-	source_aarch64 = aliyunpan-go-0.3.9-aarch64.zip::https://github.com/tickstep/aliyunpan/releases/download/v0.3.9/aliyunpan-v0.3.9-linux-arm64.zip
-	sha256sums_aarch64 = 67e040e9f5fb8420a4a338f256c907876fa7d73b1eb680341595a8fe05b975c6
-	source_armv7h = aliyunpan-go-0.3.9-armv7h.zip::https://github.com/tickstep/aliyunpan/releases/download/v0.3.9/aliyunpan-v0.3.9-linux-armv7.zip
-	sha256sums_armv7h = 5c365eac19642e68ba097f539948a179236fac8db217e2e3ec00ab549ef170ce
-	source_i686 = aliyunpan-go-0.3.9-i686.zip::https://github.com/tickstep/aliyunpan/releases/download/v0.3.9/aliyunpan-v0.3.9-linux-386.zip
-	sha256sums_i686 = e0b7480ee8845f8590630dac6a9c17951a59dedcc6bb5acecc35d7fc26fd01d5
-	source_x86_64 = aliyunpan-go-0.3.9-x86_64.zip::https://github.com/tickstep/aliyunpan/releases/download/v0.3.9/aliyunpan-v0.3.9-linux-amd64.zip
-	sha256sums_x86_64 = 4653c1d79d7e156e275162481ac71f3e6f6b1c72b604c4b663a8a17fb2b361d7
+	source_aarch64 = aliyunpan-go-0.4.0-aarch64.zip::https://github.com/tickstep/aliyunpan/releases/download/v0.4.0/aliyunpan-v0.4.0-linux-arm64.zip
+	sha256sums_aarch64 = 1551cbc318e6507a0b9e78675437b33e44e8463e89910832781ad214cf8f82c8
+	source_armv7h = aliyunpan-go-0.4.0-armv7h.zip::https://github.com/tickstep/aliyunpan/releases/download/v0.4.0/aliyunpan-v0.4.0-linux-armv7.zip
+	sha256sums_armv7h = 01f02b2f017a3e6db6d420a8320d814c6cdaa41b0038b086373c09d0b104afec
+	source_i686 = aliyunpan-go-0.4.0-i686.zip::https://github.com/tickstep/aliyunpan/releases/download/v0.4.0/aliyunpan-v0.4.0-linux-386.zip
+	sha256sums_i686 = b6c4614716868e904c25087e8e7fca4b571d37a3b2143288a6abfdf06d2bd0ec
+	source_x86_64 = aliyunpan-go-0.4.0-x86_64.zip::https://github.com/tickstep/aliyunpan/releases/download/v0.4.0/aliyunpan-v0.4.0-linux-amd64.zip
+	sha256sums_x86_64 = ff97dac5d37f1d2007d9a691d535b940300efc84c5e45e5cddec81ac7ebbc947
 
 pkgname = aliyunpan-go-bin
