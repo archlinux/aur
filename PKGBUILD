@@ -2,7 +2,7 @@
 
 _pkgname=proton-drive-cli
 pkgname=$_pkgname-git
-pkgver=0.4.6.r18.dc1ba4a
+pkgver=0.4.6.r46.f249616
 pkgrel=1
 pkgdesc='Official Proton Drive command-line client'
 arch=(x86_64 aarch64)
