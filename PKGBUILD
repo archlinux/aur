@@ -11,20 +11,27 @@ provides=('zcode')
 conflicts=('zcode-bin' 'zcode-desktop-bin' 'z-code-bin')
 options=('!strip' '!debug')
 
-case "${CARCH}" in
-    x86_64)  _arch='x64'   ;;
-    aarch64) _arch='arm64' ;;
-esac
-
-_appimage="ZCode-${pkgver}-linux-${_arch}.AppImage"
 _appdir="/opt/${pkgname}"
-noextract=("${_appimage}")
-source=("${_appimage}::https://cdn-zcode.z.ai/zcode/electron/releases/${pkgver}/${_appimage}")
+
+# Per-arch sources: makepkg requires source_<arch> and sha256sums_<arch> to be at
+# the same level. A generic source= combined with per-arch sha256sums is rejected
+# with "Integrity checks are missing" — hence the split here.
+_x64_appimage="ZCode-${pkgver}-linux-x64.AppImage"
+_arm64_appimage="ZCode-${pkgver}-linux-arm64.AppImage"
+noextract=("${_x64_appimage}" "${_arm64_appimage}")
+source_x86_64=("${_x64_appimage}::https://cdn-zcode.z.ai/zcode/electron/releases/${pkgver}/${_x64_appimage}")
+source_aarch64=("${_arm64_appimage}::https://cdn-zcode.z.ai/zcode/electron/releases/${pkgver}/${_arm64_appimage}")
 sha256sums_x86_64=('3ea3891118dcf2f4383429d9f69e17cab168094ce865e42c3b116150600e8816')
 sha256sums_aarch64=('6fb81fe0c8a00d34b6bdbc5fd94e7b5b9cad4cf21872b6852323d2341a1bbe9a')
 
 prepare() {
     cd "${srcdir}"
+
+    # Only the current arch's source is downloaded; pick the matching file.
+    case "${CARCH}" in
+        x86_64)  _appimage="${_x64_appimage}"   ;;
+        aarch64) _appimage="${_arm64_appimage}" ;;
+    esac
 
     chmod +x "${_appimage}"
     "./${_appimage}" --appimage-extract

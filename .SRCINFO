@@ -19,10 +19,12 @@ pkgbase = zcode-appimage
 	conflicts = zcode-desktop-bin
 	conflicts = z-code-bin
 	noextract = ZCode-3.2.3-linux-x64.AppImage
+	noextract = ZCode-3.2.3-linux-arm64.AppImage
 	options = !strip
 	options = !debug
-	source = ZCode-3.2.3-linux-x64.AppImage::https://cdn-zcode.z.ai/zcode/electron/releases/3.2.3/ZCode-3.2.3-linux-x64.AppImage
+	source_x86_64 = ZCode-3.2.3-linux-x64.AppImage::https://cdn-zcode.z.ai/zcode/electron/releases/3.2.3/ZCode-3.2.3-linux-x64.AppImage
 	sha256sums_x86_64 = 3ea3891118dcf2f4383429d9f69e17cab168094ce865e42c3b116150600e8816
+	source_aarch64 = ZCode-3.2.3-linux-arm64.AppImage::https://cdn-zcode.z.ai/zcode/electron/releases/3.2.3/ZCode-3.2.3-linux-arm64.AppImage
 	sha256sums_aarch64 = 6fb81fe0c8a00d34b6bdbc5fd94e7b5b9cad4cf21872b6852323d2341a1bbe9a
 
 pkgname = zcode-appimage
