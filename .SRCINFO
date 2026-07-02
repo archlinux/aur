@@ -1,0 +1,18 @@
+pkgbase = shellql
+	pkgdesc = A Vim- and tmux-inspired terminal database manager for developers
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/amaduswaray/shellql
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = cargo
+	provides = shql
+	conflicts = shellql-git
+	options = !lto
+	options = !debug
+	source = shellql-0.1.7.tar.gz::https://github.com/amaduswaray/shellql/archive/refs/tags/v0.1.7-beta.tar.gz
+	sha256sums = c6ea5464ba0cc671a1c90f6cbe855038e79108624652687a1f7f037da2c9b610
+
+pkgname = shellql
