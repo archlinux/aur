@@ -2,7 +2,7 @@
 _pkgname=metashape
 pkgname=agisoft-${_pkgname}
 pkgver=2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Photogrammetric processing of digital images and 3D spatial data generation software. Standard edition"
 arch=('x86_64')
 url="https://www.agisoft.com/"
@@ -21,7 +21,7 @@ optdepends=('glu: mesa OpenGL lib'
 provides=('agisoft-metashape')
 options=('!strip')
 install=${pkgname}.install
-source=("https://download.agisoft.com/${_pkgname}_${pkgver//./_}_amd64.tar.gz"
+source=("https://s3-eu-west-1.amazonaws.com/download.agisoft.com/${_pkgname}_${pkgver//./_}_amd64.tar.gz"
         "agisoft-metashape-icon-encoded.txt"
         "agisoft-psx-mime-icon-encoded.txt"
 	"agisoft-psz-mime-icon-encoded.txt")
