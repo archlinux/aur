@@ -1,6 +1,6 @@
 pkgbase = tokscale-bin
 	pkgdesc = CLI tool and TUI for tracking token usage and costs from AI coding agents (prebuilt binary)
-	pkgver = 4.0.7
+	pkgver = 4.0.8
 	pkgrel = 1
 	url = https://github.com/junhoyeo/tokscale
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = tokscale-bin
 	provides = tokscale
 	conflicts = tokscale
 	conflicts = tokscale-git
-	source = tokscale-v4.0.7-linux-x64-gnu.tgz::https://registry.npmjs.org/@tokscale/cli-linux-x64-gnu/-/cli-linux-x64-gnu-4.0.7.tgz
-	source = tokscale-LICENSE::https://raw.githubusercontent.com/junhoyeo/tokscale/v4.0.7/LICENSE
-	b2sums = 196f8159342b2ba88cc7d09841efc4ebe211e23ea065281431b66c9e2a5c543da32d25a8255e4a59a0db8099a54fa41064d7036df87b78853a9f98ca6eef38d4
+	source = tokscale-v4.0.8-linux-x64-gnu.tgz::https://registry.npmjs.org/@tokscale/cli-linux-x64-gnu/-/cli-linux-x64-gnu-4.0.8.tgz
+	source = tokscale-LICENSE::https://raw.githubusercontent.com/junhoyeo/tokscale/v4.0.8/LICENSE
+	b2sums = e62a24a43a3ba2c791ea29b3c55016bf3ef53fa11bcc021648333794918478c8c71059e7de71a9359f94b5ed27041d32629c20e93ef368eeea2b61be4eebf8ca
 	b2sums = b1bda54b1595c875bc2ef3d02acbc5f4371406bd5c21fb56ecef98b2bc8357baf56dd8908e6f1867f4f4bc5c8ceeb7900c01e9f6ca4e44f31721419baba32381
 
 pkgname = tokscale-bin
