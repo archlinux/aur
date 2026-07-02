@@ -1,6 +1,6 @@
 # Maintainer: Julian Houba <info@craftingdragon.ch>
 pkgname=opengrep
-pkgver=1.24.0
+pkgver=1.25.0
 pkgrel=1
 _memprof_limits_commit=c2cced325a93d2271379f0712db85867b29dbee1
 _opam_switch_stamp=arch-ocaml-system-cmdliner-2
@@ -53,7 +53,7 @@ _submodules=(
   'OSS/languages/cpp/tree-sitter/semgrep-cpp|languages/cpp/tree-sitter/semgrep-cpp|semgrep-cpp|https://github.com/opengrep/semgrep-cpp|8625a5341aebb93c62eb953f6a66fc1083dffe84'
   'OSS/languages/crystal/tree-sitter/opengrep-crystal|languages/crystal/tree-sitter/opengrep-crystal|opengrep-crystal|https://github.com/opengrep/opengrep-crystal|f279484792c259278c4e135e8f1048bbcea7c358'
   'OSS/languages/csharp/tree-sitter/semgrep-c-sharp|languages/csharp/tree-sitter/semgrep-c-sharp|semgrep-c-sharp|https://github.com/opengrep/semgrep-c-sharp|e507514adbbcd443d05deb6db78022a9aec065f2'
-  'OSS/languages/dart/tree-sitter/semgrep-dart|languages/dart/tree-sitter/semgrep-dart|semgrep-dart|https://github.com/opengrep/semgrep-dart.git|f1446c2bb468ab8e4b947f2f8a3ead029a13eb01'
+  'OSS/languages/dart/tree-sitter/semgrep-dart|languages/dart/tree-sitter/semgrep-dart|semgrep-dart|https://github.com/opengrep/semgrep-dart.git|cb3c48321fdab5485d2c1f92c99c78425543e59d'
   'OSS/languages/dockerfile/tree-sitter/semgrep-dockerfile|languages/dockerfile/tree-sitter/semgrep-dockerfile|semgrep-dockerfile|https://github.com/opengrep/semgrep-dockerfile|ac8a9ff1c6bd9acca3f936da55dab0292fd4ce58'
   'OSS/languages/elixir/tree-sitter/semgrep-elixir|languages/elixir/tree-sitter/semgrep-elixir|semgrep-elixir|https://github.com/opengrep/semgrep-elixir.git|681f90052720f4bc1c2fd2c2547771f6029917f0'
   'OSS/languages/go/tree-sitter/semgrep-go|languages/go/tree-sitter/semgrep-go|semgrep-go|https://github.com/opengrep/semgrep-go|b36632089866c9223ce5bd31a0353627a48f50f9'
