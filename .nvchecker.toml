@@ -1,0 +1,4 @@
+[storagesifter]
+source = "git"
+git = "https://github.com/Fopull-LLC/StorageSifter.git"
+prefix = "v"
