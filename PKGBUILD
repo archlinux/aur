@@ -30,21 +30,26 @@ sha256sums=('858a3cbfb598d95dd9ad8b7ff7a525ab97975934fb693beacb533d22064dd678')
 
 
 build() {
-    cmake -S "$pkgname-$pkgver" -B build \
+    cmake -S opennn -B opennn/build \
         -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DOpenNN_BUILD_TESTS=OFF \
+        -DOpenNN_BUILD_TESTS=ON \
         -DOpenNN_BUILD_EXAMPLES=OFF \
         -DOpenNN_BUILD_BLANK=OFF
 
-    cmake --build build
+    cmake --build opennn/build
+}
+
+check() {
+    cd ./opennn/build
+    ./bin/run_tests
 }
 
 package() {
-    DESTDIR="${pkgdir}" cmake --install build
+    DESTDIR="${pkgdir}" cmake --install opennn/build
 
     install -Dm644 \
-        "$pkgname-$pkgver/LICENSE.txt" \
+        opennn/LICENSE.txt \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
