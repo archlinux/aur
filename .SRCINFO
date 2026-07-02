@@ -1,0 +1,23 @@
+pkgbase = weather-display
+	pkgdesc = A TUI Weather Display
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/realendie/weather-display
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-requests
+	depends = python-platformdirs
+	depends = python-geopy
+	depends = python-pytermgui
+	provides = weather-display
+	provides = weather-location
+	source = https://files.pythonhosted.org/packages/source/w/weather_display/weather_display-1.0.2.tar.gz
+	sha256sums = 8edfafc979376552a595d2d7aeeaa9d9ee8e71a4b9b902af4e3e43f5fc6c27ac
+
+pkgname = weather-display

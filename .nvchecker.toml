@@ -1,0 +1,3 @@
+[weather-display]
+source = "pypi"
+pypi = "weather-display"
