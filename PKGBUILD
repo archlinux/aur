@@ -1,18 +1,18 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-tuner-glts
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Tuner that adds GNOME Legacy Theme Switcher config settings"
 arch=('x86_64')
 url="https://altlinux.space/alt-gnome/TunerGLTS"
 license=('GPL-3.0-or-later')
 depends=(
+  'gnome-tuner'
   'libpeas-2'
 )
 makedepends=(
   'blueprint-compiler'
   'git'
-  'gnome-tuner'
   'meson'
   'vala'
 )

@@ -1,15 +1,15 @@
 pkgbase = gnome-tuner-glts
 	pkgdesc = Plugin for Tuner that adds GNOME Legacy Theme Switcher config settings
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://altlinux.space/alt-gnome/TunerGLTS
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = blueprint-compiler
 	makedepends = git
-	makedepends = gnome-tuner
 	makedepends = meson
 	makedepends = vala
+	depends = gnome-tuner
 	depends = libpeas-2
 	source = git+https://altlinux.space/alt-gnome/TunerGLTS.git#tag=v0.1.1
 	sha256sums = 8e9db708c0f63f360abbd5c2e97eb26797e0c846bfb72b3af0427a278c0c7321
