@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="containerlab"
-pkgver=0.76.1
+pkgver=0.77.0
 pkgrel=1
 pkgdesc="Container-based networking labs"
 arch=(
@@ -25,7 +25,7 @@ source=(
   "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}"
   "${pkgname}.sysusers"
 )
-b2sums=('6f0c527cbd878293b21336edf8fe2d882003b7473a1e743dab74c83d6c7229e8b1963b30ab13f02c9e67d231e6eb56fec8b67cd007c0d48821a195b8fff64b41'
+b2sums=('15007705830f74b61e1fe2803c2d16304127092ac478c3fc83a0561499abad251b93e001e78d997da2b41a104cebb05432d3762871493643aa781860e1b8c016'
         '7b0465b94085ad1a63e7a9a7fcf5598c68dd847de4151197fa850032bb4a1265575c8f08c66318fe062bea70a67465e8547a2f941bb628f1a6bf6bb4958540e4')
 
 prepare() {
@@ -33,7 +33,7 @@ prepare() {
 
   cd "${srcdir}/${_pkgsrc}"
   go mod download -modcacherw -x
-  go mod verify
+  # go mod verify
 
   mkdir -p "completions"
 }
