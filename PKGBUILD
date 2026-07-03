@@ -1,4 +1,4 @@
-# Maintainer: damachin3 (damachine3 at proton dot me)
+# Maintainer: Christian Kühn (damachine3 at proton dot me)
 # website: https://github.com/damachine/tkginstaller
 pkgname=tkginstaller-git
 pkgver=0.54.2
