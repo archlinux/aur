@@ -1,6 +1,6 @@
 pkgbase = nourish-bin
 	pkgdesc = Modern Wayland desktop with an infinite zoomable canvas
-	pkgver = 1.1.6
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://nourish.snowies.com
 	install = nourish-bin.install
@@ -35,9 +35,9 @@ pkgbase = nourish-bin
 	conflicts = nourish
 	options = !debug
 	options = !strip
-	source = nourish-bin-1.1.6.tar.gz::https://github.com/y5-snowies/nourish/releases/download/v1.1.6/package.tar.gz
-	source = LICENSE-MIT::https://raw.githubusercontent.com/y5-snowies/nourish/v1.1.6/LICENSE-MIT
-	sha256sums = add4ea23bef345dec7f3511e7d4edbe269547bbbe208cb645be701287c107068
+	source = nourish-bin-1.4.0.tar.gz::https://github.com/y5-snowies/nourish/releases/download/v1.4.0/package.tar.gz
+	source = LICENSE-MIT::https://raw.githubusercontent.com/y5-snowies/nourish/v1.4.0/LICENSE-MIT
+	sha256sums = d22f3a49e1819ff7c547adeade97c697776bb70e8733ed6b8ae8229bf483be40
 	sha256sums = 8f9eb88eafea695df265da06eda1ca4374862b2033ad8f6649829be81884c8ba
 
 pkgname = nourish-bin
