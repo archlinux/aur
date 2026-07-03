@@ -1,0 +1,21 @@
+pkgbase = unity-cli-bin
+	pkgdesc = Standalone Unity CLI for installing editors, adding modules and managing projects
+	pkgver = 1.0.0beta.1
+	pkgrel = 1
+	url = https://docs.unity.com/en-us/hub/use-unity-cli
+	install = unity-cli-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-Unity
+	depends = glibc
+	depends = gcc-libs
+	provides = unity-cli=1.0.0beta.1
+	conflicts = unity-cli
+	noextract = unity-cli-bin-1.0.0beta.1-x86_64
+	options = !strip
+	source_x86_64 = unity-cli-bin-1.0.0beta.1-x86_64::https://public-cdn.cloud.unity3d.com/hub/prod/cli/1.0.0-beta.1/unity-linux-x64
+	sha256sums_x86_64 = 8afcc077eb6de3363f654748b52316a0e93cd3b8fa54e6830a4aed0a63343628
+	source_aarch64 = unity-cli-bin-1.0.0beta.1-aarch64::https://public-cdn.cloud.unity3d.com/hub/prod/cli/1.0.0-beta.1/unity-linux-arm64
+	sha256sums_aarch64 = 6d7f38817708d42ea3c0b37ed51bac95303d2e89f80b60f63ea5d3b8c3209192
+
+pkgname = unity-cli-bin
