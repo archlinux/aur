@@ -1,0 +1,21 @@
+pkgbase = lms-cli-git
+	pkgdesc = Command line tool for LM Studio
+	pkgver = r908.9d87501
+	pkgrel = 1
+	url = https://github.com/lmstudio-ai/lms
+	arch = any
+	license = MIT
+	license = Apache-2.0
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	provides = lms-cli
+	provides = lms
+	conflicts = lms-cli
+	conflicts = lms
+	source = lms-cli-git::git+https://github.com/lmstudio-ai/lmstudio-js.git#branch=main
+	source = lms.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lms-cli-git
