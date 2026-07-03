@@ -1,0 +1,22 @@
+pkgbase = gritql-git
+	pkgdesc = GritQL query language for searching, linting, and modifying source code (builds the 'grit' CLI)
+	pkgver = 0.5.1.r375.c80b3026
+	pkgrel = 1
+	url = https://github.com/biomejs/gritql
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	provides = gritql
+	conflicts = gritql
+	conflicts = grit
+	options = !debug
+	options = !lto
+	source = gritql::git+https://github.com/biomejs/gritql.git
+	sha256sums = SKIP
+
+pkgname = gritql-git
