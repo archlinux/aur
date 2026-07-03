@@ -32,22 +32,22 @@ package_alacritty-use-theme-with-redshift-git() {
   install -Dm755 $srcdir/$pkgbase/app/home/config/systemd/user/alacritty-use-theme.timer "$pkgdir/usr/lib/systemd/user/alacritty-use-theme.timer"
   install -Dm755 $srcdir/$pkgbase/app/home/config/systemd/user/alacritty-use-theme.target "$pkgdir/usr/lib/systemd/user/alacritty-use-theme.target"
   install -Dm755 $srcdir/$pkgbase/app/home/config/systemd/user/alacritty-use-theme.service "$pkgdir/usr/lib/systemd/user/alacritty-use-theme.service"
-  install -Dm755 $srcdir/$pkgbase/app/home/config/systemd/user/update-de-theme.service "$pkgdir/usr/lib/systemd/user/update-de-theme.service"
 
   #config$pkgbase
   install -Dm755 $srcdir/$pkgbase/app/home/config/theme-switcher/environment.env "$pkgdir/usr/lib/alacritty-use-theme/environment.env"
 
   # scripts$pkgbase
   install -Dm755 $srcdir/$pkgbase/app/home/local/theme-switcher/theme-switcher.sh "$pkgdir/usr/lib/alacritty-use-theme/bin/theme-switcher/theme-switcher.sh"
-
   install -Dm777 $srcdir/$pkgbase/app/home/local/share/theme-switcher/toggle-theme-per-mode.sh "$pkgdir/usr/lib/alacritty-use-theme/bin/theme-switcher/toggle-theme-per-mode.sh"
 
   install -Dm755 $srcdir/$pkgbase/app/home/local/theme-switcher/bin/get-sunrise-sunset.sh "$pkgdir/usr/lib/alacritty-use-theme/bin/theme-switcher/get-sunrise-sunset.sh"
   install -Dm755 $srcdir/$pkgbase/app/home/local/theme-switcher/bin/update-de.sh "$pkgdir/usr/lib/alacritty-use-theme/bin/theme-switcher/update-de.sh"
 
+  # DEBUG tools
   install -Dm755 $srcdir/$pkgbase/app/home/local/theme-switcher/src/utils/debug.sh "$pkgdir/usr/lib/alacritty-use-theme/utils/debug.sh"
   install -Dm755 $srcdir/$pkgbase/app/home/local/theme-switcher/src/utils/is_theme_locked.sh "$pkgdir/usr/lib/alacritty-use-theme/utils/is_theme_locked.sh"
 
+  #VARS
   install -Dm755 $srcdir/$pkgbase/app/home/local/theme-switcher/src/shared-variables.sh "$pkgdir/usr/share/alacritty-use-theme/theme-switcher/shared-variables.sh"
   install -Dm777 $srcdir/$pkgbase/app/home/config/theme-switcher/mode "$pkgdir/usr/lib/alacritty-use-theme/theme-switcher/mode"
 }
