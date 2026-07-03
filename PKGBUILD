@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034
 
 pkgname=rufin
-pkgver=0.7.13
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Native GTK4/libadwaita music client for Jellyfin, Subsonic, Navidrome and local libraries written in Rust'
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ makedepends=(
 conflicts=('rufin-git')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/screwys/Rufin/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3db696dae5d844ae04083dd694e530e33e6c5475c2cdf75cc290dbbad78f841b')
+sha256sums=('417936b2a50e3d4b3ac38b692e637a1c2218b0a1eda9c68a139b5ce2fe22d7f7')
 
 prepare() {
   cd "Rufin-${pkgver}" || return
