@@ -1,6 +1,6 @@
 pkgbase = roborev-bin
 	pkgdesc = Continuous background code review database for agents, work faster and smarter with accountability for every line of generated code.
-	pkgver = 0.61.0
+	pkgver = 0.61.1
 	pkgrel = 1
 	url = https://github.com/kenn-io/roborev
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = roborev-bin
 	license = MIT
 	provides = roborev
 	conflicts = roborev
-	source_x86_64 = roborev-x86_64-0.61.0.tgz::https://github.com/kenn-io/roborev/releases/download/v0.61.0/roborev_0.61.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = d7506f219484a018e283b1cbc8aac47626cc5e35a389bedf456013ea613490f6
-	source_aarch64 = roborev-aarch64-0.61.0.tgz::https://github.com/kenn-io/roborev/releases/download/v0.61.0/roborev_0.61.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 12099831776a64d32df85b806697eb7ff0d7334cbd0f11e5522b4f87fc3f2de1
+	source_x86_64 = roborev-x86_64-0.61.1.tgz::https://github.com/kenn-io/roborev/releases/download/v0.61.1/roborev_0.61.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 93255934e4af6b4a343ba030bf9031b3d60a95d941c26df84504cea815931abb
+	source_aarch64 = roborev-aarch64-0.61.1.tgz::https://github.com/kenn-io/roborev/releases/download/v0.61.1/roborev_0.61.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 71b88842115a79179a90ec13bfe85df16fd7501333d247021eb401f80442b2f8
 
 pkgname = roborev-bin
