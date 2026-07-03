@@ -1,0 +1,13 @@
+pkgbase = uninstaller
+	pkgdesc = A minimal and modern terminal package uninstaller written in Rust
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Neuwj-00/uninstaller
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = gcc-libs
+	source = uninstaller-1.0.0.tar.gz::https://github.com/Neuwj-00/uninstaller/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = uninstaller
