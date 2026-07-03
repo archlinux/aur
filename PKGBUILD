@@ -16,7 +16,7 @@ url="https://github.com/JustArchiNET/ArchiSteamFarm"
 license=('Apache-2.0')
 makedepends=('git' 'dotnet-sdk>=10' 'aspnet-runtime>=10')
 changelog=changelog
-install=install
+install=asf.install
 source=("asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=${pkgver}?signed"
         "service.patch"
         "asf.env"
