@@ -1,6 +1,6 @@
 # Maintainer: Mattias Cockburn <mattias.cockburn@iits-consulting.de>
 pkgname=otc-auth
-_pkgver=v2.3.1
+_pkgver=v2.3.3
 pkgver=${_pkgver##v}
 pkgrel=1
 epoch=
