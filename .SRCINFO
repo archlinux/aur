@@ -1,0 +1,18 @@
+pkgbase = gempost-git
+	pkgdesc = minimal static site generator for publishing a blog (gemlog) on the Gemini protocol.
+	pkgver = 0.3.0.r2.g9698b80
+	pkgrel = 1
+	url = https://github.com/justlark/gempost.git
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	provides = gempost
+	conflicts = gempost
+	options = staticlibs
+	source = git+https://github.com/justlark/gempost.git
+	sha256sums = SKIP
+
+pkgname = gempost-git
