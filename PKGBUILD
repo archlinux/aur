@@ -7,7 +7,7 @@
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
 pkgrel=1
-pkgver=2.7.5
+pkgver=3.0.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('AGPL-3.0-only')
@@ -43,7 +43,7 @@ depends=('valkey' 'postgresql>=14' 'nodejs>=20'
 	# need to ensure this matches sharp depend version
 	# because otherwise a local copy will be built
 	# breaking heif conversion
-	'libvips>=8.17.3'
+	'libvips>=8.18.3'
 	'openslide'
 	'poppler-glib'
 	'imagemagick'
@@ -74,72 +74,79 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
 	'https://download.geonames.org/export/dump/admin1CodesASCII.txt'
 	'https://download.geonames.org/export/dump/admin2Codes.txt'
 	'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson')
-sha256sums=('1b6f680ba816a7085adb29b5141212eacccc02659545db2fb59452c470fad546'
-            'cc061fc006d2e60ace2b3b4844c8e3d7ffda0164a0579dae2beb479d86dce7f0'
-            'd1297cc2e222b4679dda9e972d39a9e8d3e65cd9b2f9fb762e27dc5781d5a65f'
-            'e56fe5f8abb55f93117cd8b5e1214d06a21a9f8e0458607040c5c5e364b0a164'
-            '2ca8f6776aef27c455142edbe9120b7c38ee354dca5336ce89c16f71dd633a28'
-            '01707746e8718fe169b729b7b3d9e26e870bf2dbc4d1f6cdc7ed7d3839e92c0e'
-            '4ae8a73ccbef568b7841dbdfe9b9d8a76fa78db00051317b6313a6a50a66c900'
-            '077b85d692df4625300a785eed1efdc7af8fbb8e05dfa8c7d8b4053c1eb76a58'
-            '614b56dba38f9201d8a391d0f3d2cdf5571935a1ea6c5d19a74a942f18411763'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            '239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255')
+b2sums=('2fb4f53b8a4c7b7b4978598365aecc73367b8a7c9c70f0e72051afed4bc2f624449ee5b5421aba1310203478aac8b4f05e898f5e2eb860689118bc5702877b0e'
+        'cddeb3faa28e4ba9d8ddbc12d0b123c7bef6c5bfaa40e3c24abee2983868531c049afe4a2e3aea1c03b186c06f7b95f4d2708e8f28ac8f4ce9eb6e037b021637'
+        '37d887f04462975ee280134604242b859bc8f921f82785e6b69f6a100150217b6aa22ba3446c34d7a83e5d88fcbf8cb5182e1e97c2b918bb63bc6583cfb17839'
+        '5a92b4730cf9c93e1722e492ecf7dad343f0ac9330327a2351e37d996db326a926bed9808e43d99d3b46796be9cfc48dc01e0b8339c0e886aa182c2da136eb9b'
+        'e69ee70889da5b4eebafe7ed98cbeda735f5f280152e238e695b4e028edb496293435a2ff1ab021e5d263cc2133bfeadb23afd2d4936e40027a2ce28e09d12ef'
+        '2d0a00126bde2b6ad2bfe2174e33b693c1a07419e333709584c4ebf052d2f3a1ac901efc6cb221701f82aa60ba1f9513355c635ff22eef7697c8d8ac55fee9af'
+        '8a66c540b5cea1e303602cf78ca173da226c6693ec455a060c3d8a6e9616c5bfbab590e8e8a3c8e395bce8e026107b03abfa862ff436d22db271c359a977219d'
+        'e7a40359104cfd13c3563a5b988dcd9d2c132179a5e7e3eb5fe333a3667843e3c04e9eea8157b5f76a7dae18ac5736a487a2b97e2f8b30d6bdc7b2298f8b9e02'
+        'c530746be9ec2e64ee4f6a7f7d52d0c204d05eff7f5c793aafce10431fc92edf8e1ba1e037ed3e498077f79e37f6fbc41d01b0b94287c0dba61fc2f24e1d1823'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'db7a138f7414d3c2c3ad9ee0e5d8ed6443b1f065fff14b899192ae9989455acf2bf7f609b6454bc8ac7680fab4299fde3f9ed655549923a9bede13f5b6fe1059')
 
 prepare() {
 	cd "${srcdir}/${pkgbase}-${pkgver}"
 	patch -p1 < "${srcdir}/postgres-path.patch"
 	patch -p1 < "${srcdir}/sh-serverhome.patch"
-	rm cli/LICENSE  # deploy would've picked this up, duplicating standard /usr/share/licenses/spdx/AGPL-3.0-only
+	rm packages/cli/LICENSE  # deploy would've picked this up, duplicating standard /usr/share/licenses/spdx/AGPL-3.0-only
 
 	# Patches to avoid calling npm in package scripts
 	pnpm fetch --ignore-scripts  # First, get node_modules folder to patch into
 	pnpm install --filter immich --frozen-lockfile --offline  # sometimes pnpm fetch doesn't give us the node_modules folder
 	sharp_dir="$(pnpm patch sharp | sed -n '3p' | sed 's/^[[:space:]]*//')"
+	(
 	cd "$sharp_dir"
 	patch -p1 < "${srcdir}/sharp.patch"
-	cd "$srcdir/${pkgbase}-${pkgver}"
+	)
 	pnpm patch-commit "$sharp_dir"  # Second, this runs the scripts
 
-	cd server
-	rm ../mise.toml  # otherwise asks to trust in mise build steps, interrupting unattended builds
+	TIME=$(date --iso-8601=seconds | tr -d "\n")  # used to write how updated the geodata is
 }
 
-# instructions adapted from relevant Dockerfile-s
+# instructions adapted from server/Dockerfile
 build() {
 	cd "${srcdir}/${pkgbase}-${pkgver}"
+
+	export IMMICH_BUILD="${pkgver}-arch${pkgrel}@${TIME}"  # build ID
+
+	pnpm --filter @immich/sdk --filter @immich/plugin-sdk build
 
 	# build server
 	## add a flag to pnpm --filter immich build to make swagger plugin work
 	## see https://docs.nestjs.com/openapi/cli-plugin#swc-builder
 	## (immich itself is a monorepo but immich-server isn't)
+	(
 	cd server
 	pnpm exec nest build --type-check
+	)
 
-	cd ../
-	SHARP_IGNORE_GLOBAL_LIBVIPS=true pnpm --filter immich build
+	pnpm --filter @immich/sdk --filter @immich/plugin-sdk --filter immich build  # SHARP_IGNORE_GLOBAL_LIBVIPS=true
 	pnpm --filter immich --prod --no-optional deploy output/server-pruned
 
 	# build sdk and web
 	export NODE_OPTIONS=--max-old-space-size=4096  # prevent OOM
-	pnpm --filter @immich/sdk --filter immich-web --frozen-lockfile install
+	pnpm --filter @immich/sdk --filter immich-web install --frozen-lockfile
 	pnpm --filter @immich/sdk --filter immich-web build
 
 	# build CLI
-	pnpm install --filter @immich/cli --frozen-lockfile
-	pnpm --filter @immich/cli build
-	pnpm --filter @immich/cli --prod --no-optional deploy output/cli-pruned
+	pnpm --filter @immich/sdk --filter @immich/cli install --frozen-lockfile
+	pnpm --filter @immich/sdk --filter @immich/cli build
+	pnpm --filter @immich/cli deploy --prod --no-optional output/cli-pruned
 
 	# build plugins
-	cd plugins
-	export MISE_TRUSTED_CONFIG_PATHS="${srcdir}/${pkgbase}-${pkgver}/plugins/mise.toml"
-	mise install  # --cd plugins just does the cd for you
-	mise run build
+	cd packages/plugin-core
+	export MISE_TRUSTED_CONFIG_PATHS="${srcdir}/${pkgbase}-${pkgver}/packages/plugin-core/mise.toml:""${srcdir}/${pkgbase}-${pkgver}/mise.toml"  # needed for //: monorepo syntax
+	export MISE_DISABLE_TOOLS=flutter
+	mise install
+	mise //:plugins
 }
 
 package_immich-server() {
+	pkgdesc+=" (server and web client)"
 	replaces=('immich')
 	conflicts=('immich')
 
@@ -151,6 +158,7 @@ package_immich-server() {
 	'immich-machine-learning: Required for features such as smart search, duplicate detection, and facial recognition'
 	)
 
+	(
 	cd "${srcdir}/${pkgbase}-${pkgver}"
 
 	# install server
@@ -165,11 +173,10 @@ package_immich-server() {
 	cp -r web/build "${pkgdir}/usr/lib/immich/build/www"
 
 	# install plugins
-	install -dm755 "${pkgdir}/usr/lib/immich/build/corePlugin"
-	cp -r plugins/dist "${pkgdir}/usr/lib/immich/build/corePlugin/dist"
-	install -Dm644 plugins/manifest.json "${pkgdir}/usr/lib/immich/build/corePlugin/manifest.json"
-
-	cd "${srcdir}"
+	install -dm755 "${pkgdir}/usr/lib/immich/build/plugins/immich-core-plugin"
+	cp -r packages/plugin-core/dist "${pkgdir}/usr/lib/immich/build/plugins/immich-core-plugin/dist"
+	install -Dm644 packages/plugin-core/manifest.json "${pkgdir}/usr/lib/immich/build/plugins/immich-core-plugin/manifest.json"
+	)
 
 	# install reverse-geocoding data
 	# https://github.com/immich-app/base-images/blob/main/server/Dockerfile
@@ -178,7 +185,7 @@ package_immich-server() {
 	install -Dm644 admin1CodesASCII.txt "${pkgdir}/usr/lib/immich/build/geodata/admin1CodesASCII.txt"
 	install -Dm644 admin2Codes.txt "${pkgdir}/usr/lib/immich/build/geodata/admin2Codes.txt"
 	install -Dm644 ne_10m_admin_0_countries.geojson "${pkgdir}/usr/lib/immich/build/geodata/ne_10m_admin_0_countries.geojson"
-	date --iso-8601=seconds | tr -d "\n" > "${pkgdir}/usr/lib/immich/build/geodata/geodata-date.txt"
+	echo "${TIME}" > "${pkgdir}/usr/lib/immich/build/geodata/geodata-date.txt"
 
 	# install systemd service files
 	install -Dm644 immich-server.service "${pkgdir}/usr/lib/systemd/system/immich-server.service"
@@ -200,6 +207,7 @@ package_immich-server() {
 }
 
 package_immich-cli() {
+	pkgdesc+=" (command-line client)"
 	arch=('any')
 	depends=('nodejs>=20')
 
