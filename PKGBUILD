@@ -1,7 +1,7 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=lima
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="Linux virtual machines, typically on macOS, for running containerd."
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('lima')
 license=('Apache')
 makedepends=('go>=1.18' 'git' 'gzip' 'tar' 'gcc' 'make')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lima-vm/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('3f6dd39922eb42ff6aa497c28b7573775864a38554002719fdbf64a05033f87e')
+sha256sums=('39209f4f573fc753aea3e95f52713a6432f32f73da5bb60ba913ca46edb1924c')
 
 build() {
 	cd "${pkgname}-${pkgver}"
