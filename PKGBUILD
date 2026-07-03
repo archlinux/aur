@@ -3,7 +3,7 @@
 
 pkgname=azd-cli
 _pkgname=azure-dev
-pkgver=1.25.4
+pkgver=1.27.0
 pkgrel=1
 pkgdesc='A developer CLI for working with Azure resources to build and deploy AI applications'
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_x86_64=("https://github.com/azure/${_pkgname}/releases/download/${_pkgnam
 source_aarch64=("https://github.com/azure/${_pkgname}/releases/download/${_pkgname}-cli_${pkgver}/azd-linux-arm64.tar.gz")
 
 sha256sums=('24341ac14899292f68659fbd52b6dd4453cd1b304f43ef9f9cc4e8aa77e81f51')
-sha256sums_x86_64=('5d8376aa1861911433b5fc9d6334cec15c99f604d4a925a108b4cb4ea8a6712f')
-sha256sums_aarch64=('56e0ce194344b989c3876e47a3ddd95b1dc912fc1c6f5c97a94434a12efecfe2')
+sha256sums_x86_64=('cfd199d48b42d265b5616c00317b02e5abf80b79d577b03f4782d9c685af035d')
+sha256sums_aarch64=('e8531be99f430cd65b73f1d5591b4e9791717159e91c018db5ff3c7abbfdbc04')
 
 package() {
     #install -Dm755 azd "$pkgdir/usr/bin/azd"
