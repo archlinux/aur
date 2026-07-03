@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=rclone-ui-bin
 _pkgname='Rclone UI'
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="The cross-platform desktop GUI for rclone & S3.(Prebuilt version)"
 arch=(
@@ -22,22 +22,24 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}_aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}_x86_64.rpm")
-sha256sums_aarch64=('261754148622a9d1bf6f22f6b246701abfaa04b6cf2c55040870d3d8acede76c')
-sha256sums_x86_64=('befaf7f609a54615e4f434b16bb759f1402bb81f6c39800f955fb0599ec718c7')
+sha256sums_aarch64=('355310334e5ee02b9cdb5b48619b28f253abb78c0a8dbd09056aa10a067a65b2')
+sha256sums_x86_64=('331d3e6df728b45885c50579e03063f296135b5a42402a04141728991dd61e60')
 prepare() {
     sed -i -e "
         s/Comment=A Tauri App/Comment=${pkgdesc}/g
         s/Exec=\"${_pkgname}\"/Exec=${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    mv "${srcdir}/usr/share/icons/hicolor/256x256@2" "${srcdir}/usr/share/icons/hicolor/512x512"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/lib/${_pkgname}/icons/favicon/"*.png -t "${pkgdir}/usr/lib/${_pkgname}/icons/favicon"
-    _icon_sizes=(32x32 128x128 256x256@2)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps/${pkgname%-bin}.png"
-    done
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+		_extension="${_i##*.}"
+		_icon_path="${_i#*share/icons/}"
+		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
+	done
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
