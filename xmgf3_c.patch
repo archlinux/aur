@@ -1,0 +1,11 @@
+--- src/rw05/src/xmgf3.c	2026-07-03 17:51:25.156661413 +0100
++++ src/rw05/src/xmgf3.c	2026-07-03 17:52:45.993882022 +0100
+@@ -67,7 +67,7 @@
+ char   YNreply, *MenuReply, gf3Cmnd[80], DSRcmnd[80];
+ Arg    args [10];
+ 
+-void        DSRegion(), fileSelect(), fixFreePars();
++void        DSRegion(), fileSelect(int), fixFreePars();
+ 
+ extern int gfexec(char *, int), gfinit(int argc, char **argv);
+ extern int get_focus(int *), set_focus(int);

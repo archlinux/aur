@@ -5,7 +5,7 @@ pkgname=radware
 _pkgname=rw
 pkgver=05.3
 _pkgver=05
-pkgrel=6
+pkgrel=7
 pkgdesc="Software package for interactive graphical analysis of gamma-ray coincidence data"
 url="http://radware.phy.ornl.gov/"
 arch=('i686' 'x86_64')
@@ -21,6 +21,7 @@ source=(
   'Makefile_common.patch'
   'Makefile_install_ucb.patch'
   'Makefile_linux.patch'
+  'xmgf3_c.patch'
   'radware.csh'
   'radware.sh')
 md5sums=(
@@ -28,6 +29,7 @@ md5sums=(
   'd1938cf6a67d8fb2e3c420935ec3816f'
   'e627dc4fc39af8649ffae3ce7037e094'
   '95cb376b7332c5a41010cce854c68999'
+  'b3d4240afcfa8ea9f3a372db5f226deb'
   'ee654c4fedca3a09f90101263ffadb1a'
   'f81032b69ef924426cf346564787c6a7')
 
@@ -36,9 +38,11 @@ prepare() {
   patch -Np3 < ${srcdir}/Makefile_linux.patch
   patch -Np3 < ${srcdir}/Makefile_common.patch
   patch -Np3 < ${srcdir}/Makefile_install_ucb.patch
+  patch -Np3 < ${srcdir}/xmgf3_c.patch
 }
 
 build() {
+  export CFLAGS="${CFLAGS} -std=gnu17"
   cd "${srcdir}/${_pkgname}${_pkgver}/src"
   rm Makefile
   cp Makefile.linux Makefile
