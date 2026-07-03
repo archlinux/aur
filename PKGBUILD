@@ -2,7 +2,7 @@
 pkgname=rssh-git
 _pkgname=rssh
 pkgver=0.2.11.r0.gf87d752
-pkgrel=1
+pkgrel=2
 pkgdesc="SSH client built to be an AI ops copilot (latest git)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/shihuili1218/rssh"
@@ -95,6 +95,14 @@ NODE
     # (`/usr/bin/rssh`) for the CLI and let it launch the GUI from /usr/lib.
     sed -e 's|/usr/bin/rssh|/usr/lib/rssh/rssh-gui|g' \
         -i src-tauri/src/bin/rssh/main.rs
+
+    # Upstream's settings page checks /usr/local because its in-app installer
+    # writes there.  The AUR package installs the CLI into /usr/bin, so teach the
+    # packaged GUI to detect the package-managed binary.
+    if ! grep -q 'PathBuf::from("/usr/bin").join(name)' src-tauri/src/commands/cli.rs; then
+        sed -e '/PathBuf::from("\/usr\/local\/bin").join(name),/a\            PathBuf::from("/usr/bin").join(name),' \
+            -i src-tauri/src/commands/cli.rs
+    fi
 }
 
 build() {
@@ -115,6 +123,7 @@ package() {
     cd "${srcdir}/${_pkgname}"
 
     install -Dm755 src-tauri/target/release/rssh-cli "${pkgdir}/usr/bin/rssh"
+    ln -s rssh "${pkgdir}/usr/bin/rssh-cli"
     install -Dm755 src-tauri/target/release/rssh "${pkgdir}/usr/lib/rssh/rssh-gui"
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
