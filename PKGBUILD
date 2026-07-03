@@ -4,7 +4,7 @@ pkgname=handy
 pkgver=0.9.0
 # git rev-parse "v$pkgver"
 _tag=9b0d8a1120810dac1b139f480d37ba5f704e4856
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source and extensible speech-to-text application that works completely offline"
 arch=(x86_64 aarch64)
 url="https://github.com/cjpais/Handy"
@@ -74,9 +74,35 @@ package() {
   cd "$pkgname-$pkgver"
 
   cp -a "${CARGO_TARGET_DIR:-src-tauri/target}/release/bundle/deb/${pkgname^}_${pkgver}"_*/data/* "${pkgdir}"
+
+  # Fix non symlinked libs
+  libs_to_symlink=(
+    libtranscribe.so
+    libggml.so
+    libggml-base.so
+  )
+
+  for lib in "${libs_to_symlink[@]}"; do
+    if [ -f "$pkgdir/usr/lib/$lib" ]; then
+      rm -f "$pkgdir/usr/lib/$lib"
+    fi
+    if [ -f "$pkgdir/usr/lib/$lib.0" ]; then
+      rm -f "$pkgdir/usr/lib/$lib.0"
+    fi
+
+    versioned_lib=$(find "$pkgdir/usr/lib" -name "$lib.*")
+
+    ln --symbolic --relative "$versioned_lib" "$pkgdir/usr/lib/$lib.0"
+    ln --symbolic --relative "$pkgdir/usr/lib/$lib.0" "$pkgdir/usr/lib/$lib"
+  done
+
+  # License
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+
   # Add category to desktop file
   sed -i 's/Categories=/Categories=Utility;/g' "$pkgdir/usr/share/applications/${pkgname^}.desktop"
+
+  # Install icons
   install -Dm644 src-tauri/icons/32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
   install -Dm644 src-tauri/icons/64x64.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/$pkgname.png"
   install -Dm644 src-tauri/icons/128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
