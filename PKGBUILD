@@ -3,15 +3,15 @@
 # Canonical PKGBUILD template for the `wispr-flow-appimage` AUR package. The
 # release pipeline (.github/workflows/ci.yml, update-aur-repo job) copies this
 # into the AUR checkout and fills the placeholders with sed:
-#   1.0.3+wispr1.5.897          -> <repoVer>+wispr<wisprVer>   (the tag minus its 'v')
-#   wispr-flow-1.5.897-1.0.3-x86_64.AppImage   -> wispr-flow-<wisprVer>-<repoVer>-x86_64.AppImage
-#   20aa2ff0be645156b789782b3dd22400893ca322d70907c323c8b56a1776d469 -> sha256 of that AppImage
+#   1.0.3+wispr1.5.1095          -> <repoVer>+wispr<wisprVer>   (the tag minus its 'v')
+#   wispr-flow-1.5.1095-1.0.3-x86_64.AppImage   -> wispr-flow-<wisprVer>-<repoVer>-x86_64.AppImage
+#   01f7eddec988198ed8d288f1e78083748d2ac1e61f3f25fd7543dbe038ccd79b -> sha256 of that AppImage
 #
 # This packages the prebuilt AppImage (which bundles the proprietary Wispr Flow
 # app); it is not built from source.
 
 pkgname=wispr-flow-appimage
-pkgver=1.0.3+wispr1.5.897
+pkgver=1.0.3+wispr1.5.1095
 pkgrel=1
 pkgdesc="Wispr Flow voice dictation for Linux (unofficial AppImage build)"
 arch=('x86_64')
@@ -23,9 +23,9 @@ provides=('wispr-flow')
 conflicts=('wispr-flow')
 options=(!strip)
 
-_appimage=wispr-flow-1.5.897-1.0.3-x86_64.AppImage
+_appimage=wispr-flow-1.5.1095-1.0.3-x86_64.AppImage
 source=("${_appimage}::https://github.com/wispr-flow-linux/wispr-flow-linux/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('20aa2ff0be645156b789782b3dd22400893ca322d70907c323c8b56a1776d469')
+sha256sums=('01f7eddec988198ed8d288f1e78083748d2ac1e61f3f25fd7543dbe038ccd79b')
 noextract=("${_appimage}")
 
 package() {
