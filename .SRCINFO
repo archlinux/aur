@@ -1,6 +1,6 @@
 pkgbase = clean-my-keyboard
 	pkgdesc = Temporarily disable keyboard input for cleaning
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/HyperAfnan/clean-my-keyboard
 	arch = x86_64
@@ -8,10 +8,9 @@ pkgbase = clean-my-keyboard
 	makedepends = cmake
 	makedepends = pkgconf
 	depends = gtk4
-	depends = systemd-libs
 	depends = polkit
 	depends = hicolor-icon-theme
-	source = clean-my-keyboard-1.1.0.tar.gz::https://github.com/HyperAfnan/clean-my-keyboard/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = SKIP
+	source = clean-my-keyboard-1.2.0.tar.gz::https://github.com/HyperAfnan/clean-my-keyboard/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 5ff8517eb699896f86e9f253548483d371576d0493497b0d5b52f70d4bd5fc64
 
 pkgname = clean-my-keyboard

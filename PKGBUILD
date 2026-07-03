@@ -1,15 +1,15 @@
 # Maintainer: Afnan <hyperafnan@github.com>
 pkgname=clean-my-keyboard
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Temporarily disable keyboard input for cleaning"
 arch=('x86_64')
 url="https://github.com/HyperAfnan/clean-my-keyboard"
 license=('MIT')
-depends=('gtk4' 'systemd-libs' 'polkit' 'hicolor-icon-theme')
+depends=('gtk4' 'polkit' 'hicolor-icon-theme')
 makedepends=('cmake' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('63bacdc060c8edd81a6e851a8da65a7da44be6140572f851c905fa414336f98d')
+sha256sums=('5ff8517eb699896f86e9f253548483d371576d0493497b0d5b52f70d4bd5fc64')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
