@@ -1,16 +1,16 @@
 pkgbase = gpur-bin
 	pkgdesc = btop-style GPU monitor TUI — NVIDIA, AMD, Apple Silicon (binary release)
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/kryptic-sh/gpur
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = gpur=0.6.0
+	provides = gpur=0.7.0
 	conflicts = gpur
-	source_x86_64 = gpur-v0.6.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/gpur/releases/download/v0.6.0/gpur-v0.6.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 31896e7042bb38d8271f5d3d231f300ecffaa0a23a2ed50409162b5e50f211f2
-	source_aarch64 = gpur-v0.6.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/gpur/releases/download/v0.6.0/gpur-v0.6.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 99b6b4f85b1ccdd775a3038cc6e20b01c9736c5701a19d1baf5647ca6644d320
+	source_x86_64 = gpur-v0.7.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/gpur/releases/download/v0.7.0/gpur-v0.7.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = bee3103ae3ba82dd09e1d9047b122b1246232c041769f9104a7fbee45275458a
+	source_aarch64 = gpur-v0.7.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/gpur/releases/download/v0.7.0/gpur-v0.7.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 70d02faf9abac0842967c0b1d557350fad20d2b35511ac41d3733569bed7409b
 
 pkgname = gpur-bin
