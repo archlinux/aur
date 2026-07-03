@@ -18,7 +18,8 @@ pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
 license=('LicenseRef-Aseprite-EULA')
-depends=(hicolor-icon-theme # For installing Aseprite's icons
+depends=(libglvnd
+		 hicolor-icon-theme # For installing Aseprite's icons
          # These two are only reported by Namcap, but don't seem to be direct dependencies?
          fontconfig libxcursor
          # Required Dependency

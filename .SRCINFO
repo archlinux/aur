@@ -13,6 +13,7 @@ pkgbase = aseprite
 	makedepends = gn
 	makedepends = harfbuzz-icu
 	makedepends = clang>=22
+	depends = libglvnd
 	depends = hicolor-icon-theme
 	depends = fontconfig
 	depends = libxcursor
@@ -53,6 +54,7 @@ pkgbase = aseprite
 	sha256sums = de5762bd0913eb4d27c91d79dca2b2c216c7b53b7ac20b6c653fa96e7823f154
 
 pkgname = aseprite
+	depends = libglvnd
 	depends = hicolor-icon-theme
 	depends = fontconfig
 	depends = libxcursor
