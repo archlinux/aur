@@ -17,7 +17,7 @@ source=("https://installers.lmstudio.ai/linux/x64/${_pkgver}/LM-Studio-${_pkgver
          "lmstudio.desktop")
 sha256sums=('2a9ce766ed6d89786d5bd5c3bdb302807f71c86c9a3b7eff175b16a8ad510949'
             '9f791789c959a11316328692807737a5f1bc1c170ae99ec04c56bfd8ee8263e5'
-            'd5ac11aae025cd1cc0f9aa0713ee427dc6f46e4d1adac2a5948f93d8bbca705f')
+            '635dec12f3e3a57136b9e6fd7c2839ed6da7287fa55b482d64debf6eacf36baa')
 
 prepare() {
   chmod +x "${srcdir}/${source[0]##*/}"

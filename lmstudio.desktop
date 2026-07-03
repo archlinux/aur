@@ -8,5 +8,5 @@ Type=Application
 Categories=Development;ArtificialIntelligence;
 Terminal=false
 StartupNotify=true
-StartupWMClass=LM Studio
+StartupWMClass=LM-Studio
 MimeType=text/plain;
