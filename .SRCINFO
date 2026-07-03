@@ -1,0 +1,26 @@
+pkgbase = codepointer-bin
+	pkgdesc = An IDE for Rust, Go, C++ Python and more
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/codepointerapp/codepointer
+	arch = x86_64
+	license = GPL-2.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = libglvnd
+	depends = qt6-base
+	depends = qt6-svg
+	depends = hicolor-icon-theme
+	provides = codepointer
+	conflicts = codepointer
+	noextract = codepointer-x86_64-0.1.6.tgz
+	options = !strip
+	source = README-0.1.6.md::https://raw.githubusercontent.com/codepointerapp/codepointer/v0.1.6/README.md
+	source = LICENSE-0.1.6::https://raw.githubusercontent.com/codepointerapp/codepointer/v0.1.6/LICENSE
+	sha256sums = 5088bdf12aef26c1a6b789e1fddcecb591b57b509cc9f22137f0b2c85191b352
+	sha256sums = edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6
+	source_x86_64 = codepointer-x86_64-0.1.6.tgz::https://github.com/codepointerapp/codepointer/releases/download/v0.1.6/codepointer-linux-gcc-qt6.10.2-v0.1.6.tar.gz
+	sha256sums_x86_64 = c21b32dae8abe70f78b13af2e5f5a87f503ab5e9f85b55b6cc5f3e8eb1e2621b
+
+pkgname = codepointer-bin

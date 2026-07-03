@@ -1,0 +1,5 @@
+[codepointer-bin]
+source = "github"
+github = "codepointerapp/codepointer"
+use_latest_release = true
+prefix = "v"
