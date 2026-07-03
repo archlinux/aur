@@ -1,6 +1,6 @@
 pkgbase = 9router-bin
 	pkgdesc = AI router and proxy providing an OpenAI-compatible endpoint for multiple AI providers
-	pkgver = 0.5.12
+	pkgver = 0.5.18
 	pkgrel = 1
 	url = https://github.com/decolua/9router
 	install = 9router-bin.install
@@ -11,17 +11,15 @@ pkgbase = 9router-bin
 	depends = nodejs
 	optdepends = systemd: user service management via systemctl --user
 	options = !strip
-	source = 9router-bin-0.5.12.tgz::https://registry.npmjs.org/9router/-/9router-0.5.12.tgz
+	source = 9router-bin-0.5.18.tgz::https://registry.npmjs.org/9router/-/9router-0.5.18.tgz
 	source = 9router.sh
 	source = 9router.service
 	source = .env.example
-	source = fix-tokenplan-region.py
-	source = fix-tokenplan-ui-region.py
-	sha256sums = 98002120d87ab7ff4e504488c5c0a71a5a661bd5527e564f533cf6c4903c08e9
+	sha256sums = d54d23e8a9cc4fe37650348efef2cfa6d37ed61fe57c7a92a40f1723c1b7364a
 	sha256sums = 912c4a6f0c3589a23dd4e015c28500643727086b89463ec79f62e6dc569a4804
 	sha256sums = d3cf28a661868f9cab0ba942e5be2a57f3a9cff4a66c6b9e4a26f4f0881e6f36
 	sha256sums = be29534e45b564eca0a854fd06a06166a5ca0992a48bcedbc36b31e364521786
-	sha256sums = 83f38c469d9a573671740093107e763798e31d7b27291538211cacc6f71b8782
-	sha256sums = 6d6a6d41e7b6296c0a17474bf700593f38bb3403de037793e04518a3d4fe790f
+
+
 
 pkgname = 9router-bin
