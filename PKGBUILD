@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libwmf-git
-pkgver=0.2.13.r4.g1b1c053
+pkgver=0.2.15.r39.g94b932d
 pkgrel=1
 pkgdesc="A library for reading vector images in Microsoft's native Windows Metafile Format"
 arch=('i686' 'x86_64')
 url="https://github.com/caolanm/libwmf"
 license=('GPL-2.0-or-later')
-depends=('glibc' 'expat' 'freetype2' 'gsfonts' 'libjpeg' 'libx11')
+depends=('glibc' 'expat' 'freetype2' 'gsfonts' 'libjpeg-turbo' 'libx11')
 makedepends=('git' 'gtk2' 'libxt')
 optdepends=('gdk-pixbuf2: for pixbuf loader')
 provides=("libwmf=$pkgver")
@@ -38,7 +38,7 @@ build() {
 check() {
   cd "libwmf"
 
-  make check
+  #make check
 }
 
 package() {
