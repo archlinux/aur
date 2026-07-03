@@ -1,23 +1,38 @@
 pkgbase = flexisip
 	pkgdesc = A general purpose SIP proxy with media capabilities
-	pkgver = 2.0.3
+	pkgver = 2.5.3
 	pkgrel = 1
-	url = http://flexisip.org
+	url = https://flexisip.org
 	install = flexisip.install
 	arch = x86_64
-	license = AGPL3
+	license = AGPL-3.0-or-later
 	makedepends = cmake
-	makedepends = xsd
-	depends = belle-sip>=4.3
-	depends = belr
+	makedepends = git
+	makedepends = doxygen
+	makedepends = python-pystache
+	makedepends = python-six
+	makedepends = yasm
+	depends = gsm
 	depends = hiredis
-	depends = mediastreamer>=4.3
-	depends = protobuf
-	depends = soci
-	depends = sofia-sip-bc>=1.13.41bc
+	depends = jsoncpp
+	depends = libnghttp2
+	depends = libvpx
+	depends = libxml2
+	depends = mariadb-libs
+	depends = net-snmp
+	depends = openssl
+	depends = opus
+	depends = postgresql-libs
+	depends = python
+	depends = speex
+	depends = speexdsp
+	depends = sqlite
 	depends = xerces-c
-	source = flexisip-2.0.3.tar.gz::https://github.com/BelledonneCommunications/flexisip/archive/2.0.3.tar.gz
-	sha256sums = fba32d04aeb0ba4d5078199e3d0a75fe7357cb3cadb571dc032918730f34015a
+	depends = zlib
+	optdepends = python-google-auth: firebase_v1_get_access_token.py push notification helper
+	backup = etc/flexisip/flexisip.conf
+	backup = etc/logrotate.d/flexisip-logrotate
+	source = git+https://gitlab.linphone.org/BC/public/flexisip.git#tag=2.5.3
+	sha256sums = SKIP
 
 pkgname = flexisip
-

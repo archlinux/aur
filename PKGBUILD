@@ -1,34 +1,54 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=flexisip
-pkgver=2.0.3
+pkgver=2.5.3
 pkgrel=1
 pkgdesc="A general purpose SIP proxy with media capabilities"
 arch=('x86_64')
-url="http://flexisip.org"
-license=('AGPL3')
+url="https://flexisip.org"
+license=('AGPL-3.0-or-later')
 groups=()
-depends=('bctoolbox' 'belle-sip>=4.3' 'belr' 'hiredis' 'liblinphone' 'mediastreamer>=4.3' 'protobuf' 'soci' 'sofia-sip-bc>=1.13.41bc' 'xerces-c')
-makedepends=('cmake' 'xsd')
+depends=('gsm' 'hiredis' 'jsoncpp' 'libnghttp2' 'libvpx' 'libxml2' 'mariadb-libs'
+         'net-snmp' 'openssl' 'opus' 'postgresql-libs' 'python' 'speex' 'speexdsp'
+         'sqlite' 'xerces-c' 'zlib')
+makedepends=('cmake' 'git' 'doxygen' 'python-pystache' 'python-six' 'yasm')
+optdepends=('python-google-auth: firebase_v1_get_access_token.py push notification helper')
+backup=('etc/flexisip/flexisip.conf' 'etc/logrotate.d/flexisip-logrotate')
 install='flexisip.install'
-source=("flexisip-$pkgver.tar.gz::https://github.com/BelledonneCommunications/flexisip/archive/$pkgver.tar.gz")
+# Upstream no longer supports building against a system linphone-sdk: the SDK,
+# sofia-sip and soci are compiled in-tree from git submodules, so we have to
+# build from the git tag instead of the release tarball (which ships the
+# submodule directories empty).
+source=("git+https://gitlab.linphone.org/BC/public/flexisip.git#tag=$pkgver")
 noextract=()
-sha256sums=('fba32d04aeb0ba4d5078199e3d0a75fe7357cb3cadb571dc032918730f34015a')
+sha256sums=('SKIP')
+
+prepare() {
+    cd "$pkgname"
+    git submodule update --init --recursive
+}
 
 build() {
-    cd "$pkgname-$pkgver"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+    # The vendored linphone-sdk installs generic libbctoolbox.so,
+    # liblinphone.so, libmbedtls.so, ... so keep the whole tree in its own
+    # prefix to avoid file conflicts with the system packages. The binaries
+    # find the bundled libraries through the install rpath.
+    cmake -B build -S "$pkgname" \
+        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DCMAKE_INSTALL_PREFIX=/opt/flexisip \
+        -DSYSCONF_INSTALL_DIR=/etc \
+        -DFLEXISIP_SYSTEMD_INSTALL_DIR=/usr/lib/systemd/system \
         -DENABLE_REDIS=YES \
-        -DENABLE_PROTOBUF=YES \
         -DENABLE_PRESENCE=YES \
-        -DENABLE_CONFERENCE=YES .
-  make
+        -DENABLE_CONFERENCE=YES \
+        -DENABLE_OPENID_CONNECT=NO
+    cmake --build build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+    DESTDIR="$pkgdir" cmake --install build
 
-  make DESTDIR="$pkgdir/" install
-  for S in flexisip-{presence,proxy,conference}{@,}; do
-      install -Dm0644 "scripts/$S.service" "$pkgdir/usr/lib/systemd/system/$S.service"
-  done;
+    install -d "$pkgdir/usr/bin"
+    for B in flexisip flexisip_cli.py flexisip_pusher flexisip_serializer; do
+        ln -s "/opt/flexisip/bin/$B" "$pkgdir/usr/bin/$B"
+    done
 }
