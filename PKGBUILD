@@ -2,7 +2,7 @@
 
 pkgname=python-pycapnp
 _name=pycapnp
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="A cython wrapping of the C++ Cap'n Proto library"
 url="https://github.com/capnproto/pycapnp"
@@ -32,7 +32,7 @@ checkdepends=(
 )
 optdepends=()
 source=("git+$url#tag=v$pkgver")
-sha512sums=('62b9b204ded2439f62183d937bee4630f22849fa6d170e10a60660403aabff8cdc7c510d46cc010185be86852fde445a3d0ab361162ef1ca3d8487d871c9811c')
+sha512sums=('9126a9e74920f52d10018d1d531609b95d629836b50397027a9a5087d3e14ae4483de3cde392b45472fd63da7455171765869194548607700e58243158dc3307')
 
 prepare() {
     git -C $_name clean -dfx
