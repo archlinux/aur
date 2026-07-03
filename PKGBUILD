@@ -2,8 +2,8 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous-git
 pkgbase=aqueous
-pkgver=0.2.0.r20.g3a6ab5d # Will be updated by pkgver()
-pkgrel=1
+pkgver=0.2.0.r21.g713206d # Will be updated by pkgver()
+pkgrel=4
 pkgdesc="Aqueous Wayland window manager bundled with RiverDelta"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Aqueous"
@@ -12,7 +12,7 @@ depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
          'pixman' 'libdrm' 'libevdev' 'wlr-randr'
          'noctalia-git' 'libdecor' 'grim' 'slurp' 'xwayland-satellite'
          'xdg-desktop-portal-wlr' 'wlroots0.20' 'wl-clipboard'
-         'xdg-desktop-portal-gtk' 'libnotify' 'swaylock-effects' 'swayidle'
+         'xdg-desktop-portal-gtk' 'libnotify'
          # uwsm manages the session lifecycle (env export, graphical-session.target,
          # clean teardown). The aqueous.desktop session entry execs `uwsm start`.
          'uwsm'
