@@ -9,7 +9,7 @@
 # and any relevant news that may affect the upgrade without manual intervention.
 #----------------------------------------------------------------------------------
 
-VERSION="1.4.0"
+VERSION="1.4.1"
 set -euo pipefail
 
 NEWS_RSS="https://archlinux.org/feeds/news/"
@@ -87,7 +87,7 @@ fi
 
 # Calculate counts
 OFFICIAL_COUNT=$([[ -n "$PENDING_RAW" ]] && echo "$PENDING_RAW" | wc -l || echo "0")
-AUR_COUNT=$(yay -Qua 2>/dev/null | wc -l || echo "0")
+AUR_COUNT=$(yay -Qua 2>/dev/null | wc -l | tr -d '[:space:]' || echo "0")
 
 log "\nSystem Status:"
 log "- Official Updates: $OFFICIAL_COUNT"

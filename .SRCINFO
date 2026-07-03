@@ -1,6 +1,6 @@
 pkgbase = arch-update-check
 	pkgdesc = Pre-update safety checks for Arch Linux (Arch News, system state, optional AUR checks)
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/Rakosn1cek/arch-update-check
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = arch-update-check
 	depends = pacman
 	depends = systemd
 	optdepends = yay: for optional AUR update checks
-	source = arch-update-check-1.4.0.tar.gz::https://github.com/Rakosn1cek/arch-update-check/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = 7a1583270453795ba581669651a3aa078809f99081dc5a7b43af2faaac833968
+	source = arch-update-check-1.4.1.tar.gz::https://github.com/Rakosn1cek/arch-update-check/archive/refs/tags/v1.4.1.tar.gz
+	sha256sums = 799e69aedf5a4ab450ad6a2c41078db08195d06a041ec58405b21a255bef1c6f
 
 pkgname = arch-update-check
