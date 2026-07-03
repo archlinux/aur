@@ -2,9 +2,9 @@
 
 _pkgname=yandex-browser
 pkgname=yandex-browser-corporate
-pkgver=26.3.5.855
-_pkgver=26.3.5.855-1
-pkgrel=2
+pkgver=26.4.4.966
+_pkgver=26.4.4.966-1
+pkgrel=1
 
 pkgdesc="The web browser from Yandex.
  Yandex Browser is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
@@ -21,7 +21,7 @@ optdepends=("speech-dispatcher" "gstreamer-meta" "cryptopro-csp-k1")
 
 source=("${pkgname}-${_pkgver}.deb::https://repo.yandex.ru/${_pkgname}/deb/pool/main/y/${pkgname}/${pkgname}_${_pkgver}_amd64.deb")
 #        "wayland.patch")
-sha256sums=("5aa5989a24a7931a7fa2d48528f30958f68c0c88145a60e99e73a8df71297956")
+sha256sums=("6ec9faa7559c012126f37ddf084a03dac36ce0deb7306162f637a657864ef8ce")
 #            "86e4267e8b08e66d2227db41afe1b3d301f14579a76c9664e29645a49c26664d")
 install=${pkgname}.install
 
