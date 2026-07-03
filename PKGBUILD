@@ -5,13 +5,13 @@
 
 pkgname=djv
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Professional media review software for VFX, animation, and film production"
 arch=("x86_64")
 url="https://grizzlypeak3d.github.io/DJV/"
 license=('BSD-3-Clause')
 groups=()
-depends=('ffmpeg' 'freetype2' 'glm' 'libjpeg' 'libpng' 'libtiff' 'opencolorio' 'openexr>=3.0.0' 'python' 'rtaudio' 'zlib' 'tl-render')
+depends=('ffmpeg' 'freetype2' 'glm' 'libjpeg-turbo' 'libpng' 'libtiff' 'opencolorio' 'openexr>=3.0.0' 'python' 'rtaudio' 'zlib' 'tl-render')
 makedepends=('cmake')
 replaces=()
 backup=()

@@ -1,7 +1,7 @@
 pkgbase = djv
 	pkgdesc = Professional media review software for VFX, animation, and film production
 	pkgver = 3.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://grizzlypeak3d.github.io/DJV/
 	arch = x86_64
 	license = BSD-3-Clause
@@ -9,7 +9,7 @@ pkgbase = djv
 	depends = ffmpeg
 	depends = freetype2
 	depends = glm
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = libpng
 	depends = libtiff
 	depends = opencolorio
