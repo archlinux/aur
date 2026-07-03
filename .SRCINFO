@@ -1,0 +1,14 @@
+pkgbase = ftr
+	pkgdesc = Fast directory tree generator written in Rust
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Neuwj-00/Foldertree
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = xclip
+	depends = gcc-libs
+	source = ftr-1.0.0::git+https://github.com/Neuwj-00/Foldertree.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = ftr
