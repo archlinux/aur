@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libraw-git
-pkgver=0.22.0.r8.gca5d4507
+pkgver=0.22.1.r60.g823f25da
 pkgrel=1
 pkgdesc="A library for reading RAW files from digital cameras"
 arch=('i686' 'x86_64')
 url="https://www.libraw.org/"
 license=('CDDL-1.0' 'LGPL-2.1-or-later')
-depends=('glibc' 'libgcc' 'libgomp' 'libstdc++' 'libjpeg' 'jasper' 'lcms2' 'zlib')
+depends=('glibc' 'libgcc' 'libgomp' 'libstdc++' 'libjpeg-turbo' 'jasper' 'lcms2' 'zlib')
 makedepends=('git')
 provides=("libraw=$pkgver")
 conflicts=('libraw')

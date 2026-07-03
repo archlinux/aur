@@ -1,6 +1,6 @@
 pkgbase = libraw-git
 	pkgdesc = A library for reading RAW files from digital cameras
-	pkgver = 0.22.0.r8.gca5d4507
+	pkgver = 0.22.1.r60.g823f25da
 	pkgrel = 1
 	url = https://www.libraw.org/
 	arch = i686
@@ -12,11 +12,11 @@ pkgbase = libraw-git
 	depends = libgcc
 	depends = libgomp
 	depends = libstdc++
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = jasper
 	depends = lcms2
 	depends = zlib
-	provides = libraw=0.22.0.r8.gca5d4507
+	provides = libraw=0.22.1.r60.g823f25da
 	conflicts = libraw
 	options = staticlibs
 	source = git+https://github.com/LibRaw/LibRaw.git
