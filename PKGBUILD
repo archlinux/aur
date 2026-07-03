@@ -1,7 +1,7 @@
 # Maintainer: Conor Finn <finnconor@gmail.com>
 pkgname=ccflare-git
-pkgver=r197.6889212
-pkgrel=2
+pkgver=r198.95c4c6a
+pkgrel=1
 pkgdesc="Open-source proxy server for the Anthropic Claude API with monitoring, load balancing, and rate limiting"
 arch=('any')
 url="https://github.com/snipeship/ccflare"

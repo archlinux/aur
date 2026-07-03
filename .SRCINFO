@@ -1,7 +1,7 @@
 pkgbase = ccflare-git
 	pkgdesc = Open-source proxy server for the Anthropic Claude API with monitoring, load balancing, and rate limiting
-	pkgver = r197.6889212
-	pkgrel = 2
+	pkgver = r198.95c4c6a
+	pkgrel = 1
 	url = https://github.com/snipeship/ccflare
 	arch = any
 	license = MIT
