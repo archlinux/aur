@@ -1,0 +1,19 @@
+pkgbase = dusk-lang-git
+	pkgdesc = Compiler for the dusk programming language, a systems language with generational memory safety (development build)
+	pkgver = 0.3.2.r0.g31fc15b
+	pkgrel = 1
+	url = https://github.com/choice404/dusk
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	makedepends = git
+	makedepends = cargo
+	depends = clang
+	optdepends = git: package fetching through the dawn tool
+	provides = dusk-lang
+	conflicts = dusk-lang
+	conflicts = dawn
+	source = dusk::git+https://github.com/choice404/dusk.git
+	sha256sums = SKIP
+
+pkgname = dusk-lang-git
