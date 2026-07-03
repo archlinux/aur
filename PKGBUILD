@@ -2,8 +2,8 @@
 
 pkgname=microbit-udev
 pkgver=1.0.0
-pkgrel=3
-pkgdesc="Udev rules allowing WebUSB access for BBC micro:bit in MakeCode web editor"
+pkgrel=4
+pkgdesc="A udev rule that enables WebUSB/WebHID communication with the BBC micro:bit"
 arch=('any')
 url="https://gitlab.com/yassinec.org/microbit-udev"
 license=('MIT')
