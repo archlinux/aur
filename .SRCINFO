@@ -1,16 +1,16 @@
 pkgbase = obsidian-headless-go-bin
 	pkgdesc = Headless Go client for Obsidian Sync and Publish.
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://belphemur.github.io/obsidian-headless/
 	license = GPL-3.0
 	conflicts = obsidian-headless
 	provides = obsidian-headless
 	arch = aarch64
-	source_aarch64 = https://github.com/Belphemur/obsidian-headless/releases/download/v0.3.5/obsidian-headless_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 2fb260f36ad96323487dc366fc3a34fd7f50a491fab75864bbf7f46b6946583f
+	source_aarch64 = https://github.com/Belphemur/obsidian-headless/releases/download/v0.3.6/obsidian-headless_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 4004ef94e8d3a7dd8adccbfa697aaa5eab93bae9a91b630d91de9bf3e054c2c2
 	arch = x86_64
-	source_x86_64 = https://github.com/Belphemur/obsidian-headless/releases/download/v0.3.5/obsidian-headless_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 2391ac9bd281deb59dd84572e1d40b1d22bd7406ee597fc9430686c7d6bad079
+	source_x86_64 = https://github.com/Belphemur/obsidian-headless/releases/download/v0.3.6/obsidian-headless_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = ce737d28c1ba7d601c1aaf057c97f94af69a27af6d95e1ae4742354b97b06215
 	
 pkgname = obsidian-headless-go-bin
