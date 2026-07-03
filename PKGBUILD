@@ -52,7 +52,7 @@ package(){
 
   # patch txxps.c back for it to be installed, then rebuild txx
   cd ${srcdir}/${pkgname}
-  rm ${pkgdrir}/opt/hhirf/txx ${pkgdrir}/opt/hhirf/txxps
+  rm ${pkgdir}/opt/hhirf/txx ${pkgdir}/opt/hhirf/txxps
   sed -i "s|${srcdir}/${pkgname}/Ddoc/hhirf.pro|/opt/hhirf/doc/hhirf.pro|" Dtxx/txxps.c
   make -j1 INSTALLDIR="${pkgdir}/opt/hhirf" txx
 }
