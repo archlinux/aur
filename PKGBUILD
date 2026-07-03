@@ -1,12 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-tuner-tweaks
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Tuner that adds more ways to customize GNOME."
 arch=('x86_64')
 url="https://altlinux.space/alt-gnome/tunertweaks"
 license=('GPL-3.0-or-later')
 depends=(
+  'gnome-tuner'
   'gtk4'
   'libadwaita'
   'libgee'
@@ -16,7 +17,6 @@ depends=(
 makedepends=(
   'blueprint-compiler'
   'git'
-  'gnome-tuner'
   'meson'
   'vala'
 )

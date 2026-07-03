@@ -1,15 +1,15 @@
 pkgbase = gnome-tuner-tweaks
 	pkgdesc = Plugin for Tuner that adds more ways to customize GNOME.
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://altlinux.space/alt-gnome/tunertweaks
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = blueprint-compiler
 	makedepends = git
-	makedepends = gnome-tuner
 	makedepends = meson
 	makedepends = vala
+	depends = gnome-tuner
 	depends = gtk4
 	depends = libadwaita
 	depends = libgee
