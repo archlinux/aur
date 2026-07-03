@@ -1,4 +1,4 @@
-# Maintainer: silvan <silvan+aur at trollbox dot info>
+# Maintainer: Silvan Gümüsdere <silvan@trollbox.org>
 # Contributor: gls < ghostlovescorebg at gmail dot com >
 
 pkgname=perl-acme-damn
