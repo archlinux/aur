@@ -1,6 +1,6 @@
 # Maintainer: Hannes Spitz <h.spitz@outlook.de>
 pkgname=sidemark-git
-pkgver=0.4.0.r0.g4398e33
+pkgver=0.4.0.r3.g9fa45aa
 pkgrel=1
 pkgdesc="PDF viewer and annotator with a live markdown notes sidebar"
 arch=('any')
@@ -24,6 +24,8 @@ optdepends=(
     'qrencode: show a QR code to share the PDF to a phone'
     'jq: recent-files menu for the walker launcher'
 )
+provides=('sidemark')
+conflicts=('sidemark')
 source=("sidemark::git+https://github.com/brokkoli71/sidemark.git")
 sha256sums=('SKIP')
 
