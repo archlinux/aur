@@ -1,3 +1,0 @@
-post_install() {
-	echo "Ich werde ersetzt"
-}
