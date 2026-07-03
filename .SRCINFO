@@ -1,6 +1,6 @@
 pkgbase = heimdall-hub-bin
 	pkgdesc = Heimdall hub — central gRPC server that ingests host metrics and fans them out to dashboards (prebuilt binary)
-	pkgver = 2.7.2
+	pkgver = 2.7.3
 	pkgrel = 1
 	url = https://github.com/kinncj/Heimdall
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = heimdall-hub-bin
 	license = AGPL-3.0-or-later
 	provides = heimdall-hub
 	conflicts = heimdall-hub
-	source = heimdall-hub_2.7.2.1::https://github.com/kinncj/Heimdall/releases/download/v2.7.2/heimdall-hub.1
+	source = heimdall-hub_2.7.3.1::https://github.com/kinncj/Heimdall/releases/download/v2.7.3/heimdall-hub.1
 	sha256sums = 2d29923bd51229490295723547a2aebcdb47c7b2d674ecf75d9d0b04ac380ae5
-	source_x86_64 = heimdall-hub_2.7.2_x86_64::https://github.com/kinncj/Heimdall/releases/download/v2.7.2/heimdall-hub_linux_amd64
-	sha256sums_x86_64 = 3245cd1c755b43d14090acecb17be982a7c80a815fdeda11b7d8b7519381a305
-	source_aarch64 = heimdall-hub_2.7.2_aarch64::https://github.com/kinncj/Heimdall/releases/download/v2.7.2/heimdall-hub_linux_arm64
-	sha256sums_aarch64 = 595f2046049f6819e700014190ded4f99d441c1c34731cd3ad9dad0e1751eac5
+	source_x86_64 = heimdall-hub_2.7.3_x86_64::https://github.com/kinncj/Heimdall/releases/download/v2.7.3/heimdall-hub_linux_amd64
+	sha256sums_x86_64 = edeb0c19a7ca254c0a9700f4527b870e4958d48fd45f74bce337703ae4e16f60
+	source_aarch64 = heimdall-hub_2.7.3_aarch64::https://github.com/kinncj/Heimdall/releases/download/v2.7.3/heimdall-hub_linux_arm64
+	sha256sums_aarch64 = 6e598eca74cc086df3dca7775b517deb2e8744d2992a25a037a319155731ee6f
 
 pkgname = heimdall-hub-bin
