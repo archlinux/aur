@@ -18,7 +18,7 @@
 
 pkgname=hnefatafl-copenhagen
 pkgver=6.0.1
-pkgrel=1
+pkgrel=2
 real_pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client, engine, server and artificial intelligence"
 url="https://hnefatafl.org"
@@ -29,7 +29,7 @@ conflicts=("hnefatafl-copenhagen")
 depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib" "openssl")
 makedepends=("base-devel" "clang" "llvm" "mold" "rustup" "wget")
 source=("https://codeberg.org/dcampbell/hnefatafl/archive/v$pkgver-$real_pkgrel.tar.gz")
-sha256sums=("b19b59e01092824dd4dd158c8469a664f4738f40feb50aa8e023913644cfa0e9")
+sha256sums=("cc174f02aec98cc624e52b61de2599b59334a0cf8e1157b11e74288ea2c8430d")
 build() {
     tar -xvzf v$pkgver-$real_pkgrel.tar.gz
     cd "hnefatafl"
