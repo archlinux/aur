@@ -1,0 +1,22 @@
+pkgbase = paru-alpm-bin
+	pkgdesc = Prebuilt paru compatible with current libalpm - stopgap until upstream paru-bin is rebuilt
+	pkgver = 2.1.0.alpm16.1
+	pkgrel = 1
+	url = https://github.com/Algorant/paru
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = git
+	depends = pacman
+	depends = libalpm.so=16
+	optdepends = bat: colored pkgbuild printing
+	optdepends = devtools: build in chroot and downloading pkgbuilds
+	provides = paru
+	conflicts = paru
+	conflicts = paru-bin
+	conflicts = paru-git
+	options = !debug
+	backup = etc/paru.conf
+	source_x86_64 = paru-v2.1.0-alpm16.1-x86_64.tar.zst::https://github.com/Algorant/paru/releases/download/v2.1.0-alpm16.1/paru-v2.1.0-alpm16.1-x86_64.tar.zst
+	sha256sums_x86_64 = 1df9485b6212e79a6e2515f11fd9d90d0f6263085fa8887fcad78be600333f23
+
+pkgname = paru-alpm-bin
