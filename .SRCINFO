@@ -1,0 +1,14 @@
+pkgbase = posthog-live
+	pkgdesc = Terminal UI for streaming live PostHog events
+	pkgver = 20260527.121222
+	pkgrel = 1
+	url = https://github.com/PostHog/posthog/tree/master/livestream
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = posthog-live-20260527.121222.tar.gz::https://github.com/PostHog/posthog/archive/refs/tags/posthog-live-20260527-121222.tar.gz
+	sha256sums = 6b8f3f49205efd35c646d026b728574978a3aba29377adea9d360cff85b963f4
+
+pkgname = posthog-live
