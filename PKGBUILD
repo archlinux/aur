@@ -1,7 +1,7 @@
 # Maintainer: nicknb <nicknb at posteo dot com>
 # Contributor: Marcel Röthke <marcel@roethke.info>
 pkgname=dblab
-pkgver=0.41.0
+pkgver=0.42.1
 pkgrel=1
 pkgdesc="Interactive client for PostgreSQL, MySQL, SQLite3, Oracle and SQL Server"
 arch=(x86_64 i686 aarch64 armv7h)
@@ -11,7 +11,7 @@ makedepends=(go)
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0ded1c0c956db8ebcd5cf0f9d8eab6d9f6030499108b547107039816101ace80')
+sha256sums=('175633c9f7fab2b58dca4207b094c93c30162b09b53909a96dbcd679d0bb6889')
 
 build() {
     cd "$pkgname-$pkgver"
