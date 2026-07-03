@@ -8,7 +8,7 @@ pkgdesc="Lightweight daemon for controlling Elgato Stream Deck devices with a bu
 arch=('x86_64' 'aarch64')
 url="https://github.com/Wakatron/streamdeck-lets-go"
 license=('MIT')
-depends=('libusb-1.0')
+depends=('libusb')
 optdepends=('librsvg: SVG icon rendering'
             'fontconfig: system font detection')
 makedepends=('go>=1.26' 'git')
