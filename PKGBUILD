@@ -1,7 +1,7 @@
 # Maintainer: JF Turcot <jf.turcot@gmail.com>
 pkgname=herd-bin
 _pkgname=herd
-pkgver=0.8.25
+pkgver=0.8.26
 pkgrel=1
 pkgdesc="GitHub-native orchestration platform for AI coding agents"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ provides=('herd')
 conflicts=('herd' 'herd-git')
 source_x86_64=("herd-$pkgver-x86_64::https://github.com/Herd-OS/herd/releases/download/v$pkgver/herd-linux-amd64")
 source_aarch64=("herd-$pkgver-aarch64::https://github.com/Herd-OS/herd/releases/download/v$pkgver/herd-linux-arm64")
-sha256sums_x86_64=('5e7aa17f7d9bd1ebe92e1a8962f1a964d0d93ae9ce1740bd998ba30833956d1d')
-sha256sums_aarch64=('bababe1f7f4a3212edcd6d59a4c6d59af9642fa28f349c6044306b87aff5a9d6')
+sha256sums_x86_64=('b151e8993cb82a13af786f7056df8f0f542dcd34aa540520013eb2e56e11afb4')
+sha256sums_aarch64=('6cace1f3805770e7935d6aae23d129cceabb10ab51421fa6fcf8059cfd965b86')
 
 package() {
   install -Dm755 "herd-$pkgver-$CARCH" "$pkgdir/usr/bin/herd"
