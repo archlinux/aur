@@ -1,6 +1,6 @@
 pkgbase = sidemark-git
 	pkgdesc = PDF viewer and annotator with a live markdown notes sidebar
-	pkgver = 0.3.0.r0.ge90f98e
+	pkgver = 0.4.0.r0.g4398e33
 	pkgrel = 1
 	url = https://github.com/brokkoli71/sidemark
 	arch = any
