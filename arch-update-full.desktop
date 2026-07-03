@@ -3,11 +3,11 @@ Type=Application
 Version=1.5
 Name=Arch Update Full
 GenericName=System Updater
-Comment=Protocolo Sentinela: Atualização e Auditoria (Pacman/AUR/Flatpak/Snap)
+Comment=Sentinel Protocol: Update automation (Pacman/AUR/Flatpak/Snap) and auditing.
 
 Exec=arch-update-full
 
-Icon=sentinela-v38.png
+Icon=novalogoarchupdatefullv39
 
 Terminal=true
 
