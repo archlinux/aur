@@ -1,6 +1,6 @@
 pkgbase = smart-updater
 	pkgdesc = A streamlined PyQt6 tool for Arch Linux and CachyOS that makes system updates, app uninstallation, and log tracking fast and elegant.
-	pkgver = 2.0_beta
+	pkgver = 2.0.1_beta
 	pkgrel = 1
 	url = https://github.com/UniqueSpirit/smart-updater
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = smart-updater
 	depends = python
 	depends = python-pyqt6
 	depends = pacman-contrib
-	source = smart-updater-2.0_beta.tar.gz::https://github.com/UniqueSpirit/smart-updater/archive/refs/tags/v2.0-beta.tar.gz
-	sha256sums = b3ba991309101c27e21249abeb9c12e097f34ac46c682bc9f40a2c6d1d896eff
+	source = smart-updater-2.0.1_beta.tar.gz::https://github.com/UniqueSpirit/smart-updater/archive/refs/tags/v2.0.1-beta.tar.gz
+	sha256sums = 0a71919b2514c1101f9f198a146fb4a69faccaccfa4ffa072d7beac10ab4c34f
 
 pkgname = smart-updater

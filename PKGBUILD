@@ -1,5 +1,5 @@
 pkgname=smart-updater
-pkgver=2.0_beta
+pkgver=2.0.1_beta
 pkgrel=1
 pkgdesc="A streamlined PyQt6 tool for Arch Linux and CachyOS that makes system updates, app uninstallation, and log tracking fast and elegant."
 arch=('any')
@@ -8,7 +8,7 @@ license=('GPL')
 depends=('python' 'python-pyqt6' 'pacman-contrib')
 
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver/_/-}.tar.gz")
-sha256sums=('b3ba991309101c27e21249abeb9c12e097f34ac46c682bc9f40a2c6d1d896eff')
+sha256sums=('0a71919b2514c1101f9f198a146fb4a69faccaccfa4ffa072d7beac10ab4c34f')
 
 package() {
     local _srcdir="$pkgname-${pkgver/_/-}"
