@@ -1,5 +1,5 @@
 pkgname=garmin-tracker-rs
-pkgver=1.3.14
+pkgver=1.3.15
 pkgrel=1
 pkgdesc='Sync your devices and track your strength training'
 arch=('x86_64')
@@ -15,10 +15,7 @@ sha256sums=(
   'SKIP'
 )
 
-depends=(
-  webkit2gtk-4.1
-  zlib-ng-compat
-)
+depends=('webkit2gtk-4.1' 'zlib-ng-compat')
 makedepends=(
   'rust'
   'mold'
