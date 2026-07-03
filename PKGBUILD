@@ -18,7 +18,15 @@ pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
 license=('LicenseRef-Aseprite-EULA')
-depends=(libglvnd
+depends=(# ~ Aseprite's direct dependencies ~
+         # pixman is not linked to because we use Skia instead
+         # harfbuzz is linked statically because Aseprite expects an older version
+         cmark curl giflib libjpeg-turbo zlib libpng 'tinyxml2>=11.0.0' freetype2
+         libwebp libarchive fmt libglvnd
+         # ~ Skia deps ~
+         # (Skia links dynamically to HarfBuzz, only Aseprite itself doesn't. >_<)
+         expat harfbuzz libgl
+         # Already required by Aseprite: libjpeg-turbo libpng zlib freetype2
 		 hicolor-icon-theme # For installing Aseprite's icons
          # These two are only reported by Namcap, but don't seem to be direct dependencies?
          fontconfig libxcursor
@@ -31,8 +39,7 @@ makedepends=(# "Meta" dependencies
              # Skia
              gn harfbuzz-icu
              # Upstream recommends using clang
-             'clang>=22'
-             )
+             'clang>=22')
 source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
         "skia-$_skiaver.tar.gz::https://github.com/aseprite/skia/archive/refs/tags/$_skiaver-$_skiahash.tar.gz"
@@ -165,18 +172,9 @@ check() {
 }
 
 package() {
-	depends+=(# ~ Aseprite's direct dependencies ~
-         # pixman is not linked to because we use Skia instead
-         # harfbuzz is linked statically because Aseprite expects an older version
-         cmark curl giflib libjpeg-turbo zlib libpng 'tinyxml2>=11.0.0' freetype2
-         libwebp libarchive fmt libglvnd
-         # ~ Skia deps ~
-         # (Skia links dynamically to HarfBuzz, only Aseprite itself doesn't. >_<)
-         expat harfbuzz libgl
-         # Already required by Aseprite: libjpeg-turbo libpng zlib freetype2
-         libcurl.so libgif.so libjpeg.so libfreetype.so libarchive.so libfmt.so
-         libwebp.so libwebpmux.so libwebpdemux.so libjpeg.so libexpat.so=1-64 libharfbuzz.so=0-64
-         libfontconfig.so)
+	depends+=(libcurl.so libgif.so libjpeg.so libfreetype.so libarchive.so libfmt.so
+			  libwebp.so libwebpmux.so libwebpdemux.so libjpeg.so libexpat.so=1-64 libharfbuzz.so=0-64
+			  libfontconfig.so)
 	export CXX=clang++
 	export CC=clang
 	export CXXFLAGS+=" -std=c++11 -stdlib=libstdc++"
