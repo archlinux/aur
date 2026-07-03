@@ -5,7 +5,7 @@
 # Original: Daniel Bermond <dbermond@archlinux.org> https://aur.archlinux.org/packages/mpv-full-git
 
 pkgname=mpv-amd-full-git
-pkgver=0.41.0.r734.g6444c05059
+pkgver=0.41.0.r854.g7aa8580cab
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs except Nvidia)'
 arch=('x86_64')
@@ -29,7 +29,7 @@ depends=(
     'libdrm'
     'libdvdnav'
     'libgl'
-    'libjpeg'
+    'libjpeg.so'
     'libpipewire'
     'libplacebo'
     'libpulse'
