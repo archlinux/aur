@@ -8,6 +8,7 @@ pkgbase = sdrx-mimic-git
 	license = MIT
 	makedepends = git
 	makedepends = cargo
+	makedepends = binutils
 	optdepends = xclip: system clipboard support on X11
 	optdepends = xsel: alternative system clipboard support on X11
 	optdepends = wl-clipboard: system clipboard support on Wayland

@@ -12,7 +12,7 @@ optdepends=(
   'xsel: alternative system clipboard support on X11'
   'wl-clipboard: system clipboard support on Wayland'
 )
-makedepends=('git' 'cargo')
+makedepends=('git' 'cargo' 'binutils')
 provides=('sdrx-mimic' 'mmc')
 conflicts=('sdrx-mimic')
 source=("git+${url}.git")
@@ -33,9 +33,10 @@ build() {
   cd "$_pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  # Forzar linker clasico (bfd): rust-lld/lld pierde simbolos de la Lua
-  # vendored estatica de mlua, dejando lua_* undefined en el link final.
-  export RUSTFLAGS="-C link-arg=-fuse-ld=bfd"
+  # rust-lld pierde simbolos lua_* de la Lua vendored estatica de mlua.
+  # ld.bfd resuelve eso pero rompe simbolos ring_core_* (ifunc/asm de
+  # rustls->ring via ureq). ld.gold resuelve ambos casos.
+  export RUSTFLAGS="-C link-arg=-fuse-ld=gold"
   cargo build --frozen --release --all-features
 }
 
