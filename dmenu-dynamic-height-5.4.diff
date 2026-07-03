@@ -1,5 +1,5 @@
---- a/dmenu.c	2026-07-03 13:01:23.726204628 -0400
-+++ b/dmenu.c	2026-07-03 13:01:38.864838444 -0400
+--- a/dmenu.c	2026-07-03 13:22:35.580713314 -0400
++++ b/dmenu.c	2026-07-03 13:23:19.219875536 -0400
 @@ -37,6 +37,7 @@
  static char *embed;
  static int bh, mw, mh;
@@ -29,24 +29,37 @@
  	drw_setscheme(drw, scheme[SchemeNorm]);
  	drw_rect(drw, 0, 0, mw, mh, 1, 1);
  
-@@ -278,6 +293,16 @@
+@@ -234,7 +249,7 @@
+ 	static int tokn = 0;
+ 
+ 	char buf[sizeof text], *s;
+-	int i, tokc = 0;
++	int i, tokc = 0, match_count = 0;
+ 	size_t len, textsize;
+ 	struct item *item, *lprefix, *lsubstr, *prefixend, *substrend;
+ 
+@@ -260,6 +275,7 @@
+ 			appenditem(item, &lprefix, &prefixend);
+ 		else
+ 			appenditem(item, &lsubstr, &substrend);
++		match_count++;
+ 	}
+ 	if (lprefix) {
+ 		if (matches) {
+@@ -278,6 +294,12 @@
  		matchend = substrend;
  	}
  	curr = sel = matches;
 +	/* recompute lines for vertical list based on actual matches */
 +	if (max_lines > 0) {
-+		struct item *item;
-+		int count = 0;
-+		for (item = matches; item && item->text; item = item->right)
-+			count++;
-+		lines = MIN(count, max_lines);
++		lines = MIN(match_count, max_lines);
 +		if (lines == 0)
 +			lines = 1; /* keep vertical mode, show input bar only */
 +	}
  	calcoffsets();
  }
  
-@@ -711,7 +736,7 @@
+@@ -711,7 +733,7 @@
  	free(line);
  	if (items)
  		items[i].text = NULL;
@@ -55,7 +68,7 @@
  }
  
  static void
-@@ -892,7 +917,7 @@
+@@ -892,7 +914,7 @@
  			usage();
  		/* these options take one argument */
  		else if (!strcmp(argv[i], "-l"))   /* number of lines in vertical list */
