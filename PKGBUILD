@@ -1,6 +1,6 @@
 # Maintainer: Neuwj <Neuwj@linuxmail.org>
 pkgname=uninstaller
-pkgver=1.0.5
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A minimal and modern terminal package uninstaller written in Rust"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Neuwj-00/uninstaller/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP') # Sürüm yayınladığınızda 'updpkgsums' ile güncelleyin
+sha256sums=('SKIP') 
 
 build() {
   cd "$pkgname-$pkgver"
