@@ -1,31 +1,33 @@
 pkgname=openmodelica
-pkgver=1.26.9
+pkgver=1.27.0
 pkgrel=1
 pkgdesc="Open-source Modelica-based modeling and simulation environment"
 url="https://www.openmodelica.org"
 _giturl="https://github.com/OpenModelica/OpenModelica.git"
 license=('OSMC-PL')
 arch=('x86_64')
-depends=('java-environment' 'lapack' 'openscenegraph' 'boost-libs' 'qt6-webengine' 'qt6-svg' 'qt6-tools' 'qt6-5compat')
+depends=('java-environment' 'lapack' 'boost-libs' 'libffi' 'openscenegraph' 'qt6-webengine' 'qt6-svg' 'qt6-tools' 'qt6-5compat')
 provides=('openmodelica-omc')
 makedepends=('gcc-fortran' 'cmake' 'boost')
 options=('!lto')
 source=("https://github.com/OpenModelica/OpenModelica/releases/download/v${pkgver}/OpenModelica-v${pkgver}-src-with-submodules.zip")
-sha256sums=('9891ba8233af63b3b503cb0362785089d64402b7894928f5e056521569a2aadc')
+sha256sums=('8bb23c0ae3dc1e8b2eed84f2ee24b0014ba837015a9230a5e0237d6789071bff')
 
 prepare() {
   cd "OpenModelica-v${pkgver}"
+  curl -L https://github.com/OpenModelica/OpenModelica/pull/15916.patch | patch -p1
+  curl -L https://github.com/OpenModelica/OpenModelica/pull/15991.patch | patch -p1
 }
 
 build() {
   cd "OpenModelica-v${pkgver}"
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_QT_MAJOR_VERSION=6 -B build .
-  make -C build
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOM_USE_CCACHE=OFF -DOM_USE_SYSTEM_LIBFFI=ON -DOM_QT_MAJOR_VERSION=6 -B build .
+  cmake --build build
 }
 
 package() {
   cd "OpenModelica-v${pkgver}"
-  make install -C build DESTDIR="${pkgdir}"
+  DESTDIR="${pkgdir}" cmake --build build --target install
   rm -r "${pkgdir}"/usr/share/zmq
   rm -r "${pkgdir}"/usr/share/cminpack
   rm -r "${pkgdir}"/usr/include/cminpack-1
