@@ -25,6 +25,7 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
+  rm -rf target
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
@@ -32,6 +33,9 @@ build() {
   cd "$_pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  # Forzar linker clasico (bfd): rust-lld/lld pierde simbolos de la Lua
+  # vendored estatica de mlua, dejando lua_* undefined en el link final.
+  export RUSTFLAGS="-C link-arg=-fuse-ld=bfd"
   cargo build --frozen --release --all-features
 }
 
