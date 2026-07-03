@@ -1,7 +1,7 @@
 pkgbase = testdisk-wip
 	pkgdesc = Checks and undeletes partitions. Includes PhotoRec signature based recovery tool. WIP version
 	pkgver = 7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cgsecurity.org/wiki/TestDisk
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = testdisk-wip
 	arch = aarch64
 	license = GPL-2.0-or-later
 	makedepends = qt5-tools
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = ntfsprogs
 	optdepends = libewf: support EnCase files
 	optdepends = qt5-base: QPhotoRec GUI
