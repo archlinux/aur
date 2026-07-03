@@ -1,0 +1,93 @@
+diff -ur a/pteid-mw-pt/_src/eidmw/common/ByteArray.cpp ./pteid-mw-pt/_src/eidmw/common/ByteArray.cpp
+--- a/pteid-mw-pt/_src/eidmw/common/ByteArray.cpp	2026-03-27 18:14:36.000000000 +0000
++++ ./pteid-mw-pt/_src/eidmw/common/ByteArray.cpp	2026-07-03 15:17:01.615425277 +0100
+@@ -25,6 +25,7 @@
+ #include <exception>
+ #include <cassert>
+ #include <limits.h>
++#include <cstdint>
+ 
+ using namespace std;
+ 
+diff -ur a/pteid-mw-pt/_src/eidmw/common/Config.cpp ./pteid-mw-pt/_src/eidmw/common/Config.cpp
+--- a/pteid-mw-pt/_src/eidmw/common/Config.cpp	2026-03-27 18:14:36.000000000 +0000
++++ ./pteid-mw-pt/_src/eidmw/common/Config.cpp	2026-07-03 15:17:01.615759601 +0100
+@@ -25,6 +25,7 @@
+ #include <stdlib.h>
+ #include <limits.h>
+ #include <sys/stat.h>
++#include <cstdint>
+ 
+ #include "Config.h"
+ #include "Util.h"
+diff -ur a/pteid-mw-pt/_src/eidmw/common/datafile.cpp ./pteid-mw-pt/_src/eidmw/common/datafile.cpp
+--- a/pteid-mw-pt/_src/eidmw/common/datafile.cpp	2026-03-27 18:14:36.000000000 +0000
++++ ./pteid-mw-pt/_src/eidmw/common/datafile.cpp	2026-07-03 15:17:01.617552647 +0100
+@@ -69,6 +69,7 @@
+ #include <sstream>
+ #include <errno.h>
+ #include <limits.h>
++#include <cstdint>
+ 
+ #ifdef WIN32
+ #include <windows.h>
+diff -ur a/pteid-mw-pt/_src/eidmw/common/LogBase.cpp ./pteid-mw-pt/_src/eidmw/common/LogBase.cpp
+--- a/pteid-mw-pt/_src/eidmw/common/LogBase.cpp	2026-03-27 18:14:36.000000000 +0000
++++ ./pteid-mw-pt/_src/eidmw/common/LogBase.cpp	2026-07-03 15:17:01.616628299 +0100
+@@ -48,6 +48,7 @@
+ #ifndef WIN32
+ #include "sys/stat.h"
+ #include "Util.h"
++#include <cstdint>
+ 
+ #define fwprintf_s fwprintf
+ #define vfwprintf_s vfwprintf
+Only in ./pteid-mw-pt/_src/eidmw/common: LogBase.cpp.orig
+diff -ur a/pteid-mw-pt/_src/eidmw/common/Log.cpp ./pteid-mw-pt/_src/eidmw/common/Log.cpp
+--- a/pteid-mw-pt/_src/eidmw/common/Log.cpp	2026-03-27 18:14:36.000000000 +0000
++++ ./pteid-mw-pt/_src/eidmw/common/Log.cpp	2026-07-03 15:17:01.616007121 +0100
+@@ -28,6 +28,7 @@
+ #include "MWException.h"
+ #include "Util.h"
+ #include <string>
++#include <cstdint>
+ 
+ #define DO_LOGGING
+ 
+diff -ur a/pteid-mw-pt/_src/eidmw/common/MWException.cpp ./pteid-mw-pt/_src/eidmw/common/MWException.cpp
+--- a/pteid-mw-pt/_src/eidmw/common/MWException.cpp	2026-03-27 18:14:36.000000000 +0000
++++ ./pteid-mw-pt/_src/eidmw/common/MWException.cpp	2026-07-03 15:17:01.616965590 +0100
+@@ -21,6 +21,7 @@
+ **************************************************************************** */
+ #include "MWException.h"
+ #include "Util.h"
++#include <cstdint>
+ 
+ using namespace std;
+ 
+diff -ur a/pteid-mw-pt/_src/eidmw/common/Util.h ./pteid-mw-pt/_src/eidmw/common/Util.h
+--- a/pteid-mw-pt/_src/eidmw/common/Util.h	2026-03-27 18:14:36.000000000 +0000
++++ ./pteid-mw-pt/_src/eidmw/common/Util.h	2026-07-03 15:17:01.617251800 +0100
+@@ -33,6 +33,7 @@
+ #include <cstring>
+ #include <string>
+ #include <functional>
++#include <cstdint>
+ 
+ #ifdef WIN32
+ #include <windows.h>
+Only in ./pteid-mw-pt/_src/eidmw/common: Util.h.orig
+diff -ur a/pteid-mw-pt/_src/eidmw/eidguiV2/eidguiV2.pro ./pteid-mw-pt/_src/eidmw/eidguiV2/eidguiV2.pro
+--- a/pteid-mw-pt/_src/eidmw/eidguiV2/eidguiV2.pro	2026-03-27 18:14:36.000000000 +0000
++++ ./pteid-mw-pt/_src/eidmw/eidguiV2/eidguiV2.pro	2026-07-03 15:17:01.618511920 +0100
+@@ -53,7 +53,7 @@
+ unix:!macx: LIBS += -Wl,-rpath-link,../lib
+ 
+ #pteid-scap needs to be before its dependencies here
+-LIBS += -L../lib -lpteidscap -lpteidcommon -lpteidapplayer -lpteidlib  \
++LIBS += -L../lib -lpteidscap -lpteidcommon -lpteidcardlayer -lpteidapplayer -lpteidlib  \
+         -lssl -lcrypto -lpoppler-qt5 -lCMDServices -lcurl -lzip -lcjson
+ 
+ # Additional import path used to resolve QML modules in Qt Creator's code model
+Only in ./pteid-mw-pt/_src/eidmw/pkcs11: session.c.orig
+Only in ./pteid-mw-pt/_src/eidmw/pkcs11: session.c.rej
