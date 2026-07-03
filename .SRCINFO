@@ -1,6 +1,6 @@
 pkgbase = connected-desktop-bin
 	pkgdesc = High-speed, offline, cross-platform ecosystem bridging devices (Binary)
-	pkgver = 3.2.2
+	pkgver = 3.2.3
 	pkgrel = 1
 	url = https://github.com/paterkleomenis/connected
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = connected-desktop-bin
 	sha256sums = 89448ca4aa33837cea05777f33c93253145bb583b4a1e2f010bef666429e1899
 	sha256sums = fdc5b45803bf8f5d4435509da25399414072b3d95badd6b09b2e84c2f1f198d5
 	sha256sums = 6bbe4ace8a1818f89b96dfdda9f9d4b9a178bc047c3dc2511a3d93d51f86d7ae
-	source_x86_64 = connected-desktop-3.2.2::https://github.com/paterkleomenis/connected/releases/download/3.2.2/connected-desktop-linux-x86_64
-	sha256sums_x86_64 = 3e0c50e2103afedecfdc572257b4e3840be3ed8d5784c53a5f0b0ceba7f9d64a
-	source_aarch64 = connected-desktop-3.2.2::https://github.com/paterkleomenis/connected/releases/download/3.2.2/connected-desktop-linux-aarch64
-	sha256sums_aarch64 = ee77ff5c7282baad15c4f5e41b67eceb6b425760230d2a451ed8904de632ee85
+	source_x86_64 = connected-desktop-3.2.3::https://github.com/paterkleomenis/connected/releases/download/3.2.3/connected-desktop-linux-x86_64
+	sha256sums_x86_64 = a4267d9f22ff28ad71f1df69b54e414a04818e6e16ce390c5c7e4e3ec78fee82
+	source_aarch64 = connected-desktop-3.2.3::https://github.com/paterkleomenis/connected/releases/download/3.2.3/connected-desktop-linux-aarch64
+	sha256sums_aarch64 = 37dc1b8b7b028a8e31b140330f4ad0026fe5a4013ad855940597dfd1ebae5da7
 
 pkgname = connected-desktop-bin
