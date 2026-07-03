@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=pipeasio
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 # Upstream tags use semver prerelease hyphens (v1.0.0-rc1); pkgver maps '-' to '_'.
 _pkgtag="v${pkgver//_/-}"
@@ -21,7 +21,7 @@ _pkgsrc="${pkgname}-${_pkgtag#v}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${_pkgtag}.tar.gz"
         "pipeasio-settings.desktop"
         "pipeasio.svg")
-b2sums=('772129af04420b6fbbfcee790556f40c9993acc064732d40d742f2e2c4afd7323d01eb8ba73e20ef83236ef0cf2ba6f188a34babe1fd7a43f94a6fbb118961d7'
+b2sums=('467a1e4afa9902a3b5fa749aa078749ab82bd41ecfc14d1388f80b32404366b15e1fee29187bb1f48770700b25f5ef0d245c4b6f0252f91dce112eb2ef835720'
         'f39b3eaaaf0dadb3920fb3133fcd6936ced4fa42a14962e32b3acf1c2f7fde61f1321bab86b1ff21595152c9369e5393c60f82e1a3b445fc7c20a1de47d08757'
         'ca65da2d37c6a301e651b2acdf227afb549a13c1decc335c7dfd1103272824f4a87a50af736c2d94db2603bee86523ba5fcb2688e32f0a8d559fda30d023bee1')
 
