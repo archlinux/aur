@@ -20,10 +20,12 @@ sha256sums=('SKIP'
 
 build() {
   cd "$srcdir"
-  # Install only production dependencies to keep package size minimal
-  npm ci --production
+  # Install all dependencies for build
+  npm install
   # Build the Nuxt application
   npm run build
+  # Prune devDependencies to keep package size minimal
+  npm prune --omit=dev
 }
 
 package() {
