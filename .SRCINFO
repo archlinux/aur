@@ -1,0 +1,15 @@
+pkgbase = frt
+	pkgdesc = Fast byte-for-byte find(1) clone in C (ferret; findutils 4.10.0)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/tenseleyFlow/ferret
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = liburing
+	source = https://github.com/tenseleyFlow/ferret/releases/download/v0.1.0/ferret-0.1.0.tar.gz
+	sha256sums = 95c5cad610c362c1b679dc41169a1e44f86a4ad8bb287295f8f4f792a5b47c3f
+
+pkgname = frt
