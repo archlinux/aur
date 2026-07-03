@@ -26,8 +26,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/do
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_x86_64.tar.gz")
 source=("${pkgname%-bin}.sh")
 sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_aarch64=('902522519d8d9729fb9c61d120e26fbada1f743bec62a8ecffceb36946f271d8')
-sha256sums_x86_64=('93d93c2af392c4bc5aa68675c56606051744ac7416b29f5c8e715538dc686837')
+sha256sums_aarch64=('1b7dd6e6647b79b778ec8aa613b84ed37248dd29b0b030142c717fd3f52a10a2')
+sha256sums_x86_64=('faba64bce3b3b8e5c870f41534793dc4e3fc0823a4a0b3ab47d83f9f695a2d2b')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
