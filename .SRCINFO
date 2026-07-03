@@ -1,15 +1,16 @@
 pkgbase = yaabsa-bin
 	pkgdesc = Unofficial feature rich, responsive, modern client for Audiobookshelf
 	pkgver = 1.4.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Vito0912/yaabsa
 	arch = x86_64
 	license = AGPL-3.0-only
+	makedepends = tar
 	depends = mpv
 	depends = libsecret
-	source = yaabsa-bin-1.4.8.tar.gz::https://github.com/Vito0912/yaabsa/releases/download/v1.4.8-pre/linux-bundle-yaabsa_v1.4.8.tar.gz
-	source = yaabsa.desktop
-	sha256sums = e95c061d2459d978e9c4b418e8b11742ba4065ed5944bc8fd293645a8981b261
-	sha256sums = 1aabc114d8ccc4d4e02e2491828f7c94f304890666724d39337c4614ac0a3b92
+	provides = yaabsa
+	conflicts = yaabsa
+	source = yaabsa-bin-1.4.8.deb::https://github.com/Vito0912/yaabsa/releases/download/v1.4.8-pre/linux-deb-yaabsa_v1.4.8.deb
+	sha256sums = 8d2829190a2a3ccf91982b017665b52e60aeb7fd26bdd7bc245636da67bd413c
 
 pkgname = yaabsa-bin

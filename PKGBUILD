@@ -2,32 +2,25 @@
 
 pkgname=yaabsa-bin
 pkgver=1.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial feature rich, responsive, modern client for Audiobookshelf"
 arch=('x86_64')
 url="https://github.com/Vito0912/yaabsa"
 license=('AGPL-3.0-only')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 depends=('mpv' 'libsecret')
+makedepends=('tar')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/Vito0912/yaabsa/releases/download/v${pkgver}-pre/linux-bundle-yaabsa_v${pkgver}.tar.gz"
-    "yaabsa.desktop"
+    "${pkgname}-${pkgver}.deb::https://github.com/Vito0912/yaabsa/releases/download/v${pkgver}-pre/linux-deb-yaabsa_v${pkgver}.deb"
 )
 
 package() {
-    install -dm755 "$pkgdir/usr/bin/$pkgname"
-    install -dm755 "$pkgdir/usr/share/applications"
-    install -dm755 "$pkgdir/usr/share/icons"
-
-    cp -r "$srcdir/lib" "$pkgdir/usr/bin/$pkgname/"
-    cp -r "$srcdir/data" "$pkgdir/usr/bin/$pkgname/"
-
-    install -m755 -t "$pkgdir/usr/bin/$pkgname" "$srcdir/yaabsa"
-
-    ln -s "/usr/bin/$pkgname/yaabsa" "$pkgdir/usr/bin/yaabsa"
-    ln -s "/usr/bin/$pkgname/data/flutter_assets/assets/logo_blue_fill.png" "$pkgdir/usr/share/icons/yaabsa.png"
-
-    install -m644 "$srcdir/yaabsa.desktop" "$pkgdir/usr/share/applications/"
+  install -dm755 "$pkgdir/usr/bin/$pkgname"
+  cd "${srcdir}"
+  ar x "${srcdir}"/${pkgname}-${pkgver}.deb
+  tar -xvf "${srcdir}"/data.tar.zst -C "${pkgdir}"
+  ln -s "${pkgdir}/usr/share/${pkgname%-bin}/yaabsa" "${pkgdir}/usr/bin/yaabsa"
 }
 
-sha256sums=('e95c061d2459d978e9c4b418e8b11742ba4065ed5944bc8fd293645a8981b261'
-            '1aabc114d8ccc4d4e02e2491828f7c94f304890666724d39337c4614ac0a3b92')
+sha256sums=('8d2829190a2a3ccf91982b017665b52e60aeb7fd26bdd7bc245636da67bd413c')
