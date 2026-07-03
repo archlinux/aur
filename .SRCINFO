@@ -1,7 +1,7 @@
 pkgbase = ente-desktop-bin
 	pkgdesc = Desktop app for ente Photos.(Prebuilt version)
 	pkgver = 1.7.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ente-io/photos-desktop
 	arch = aarch64
 	arch = x86_64

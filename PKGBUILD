@@ -3,7 +3,7 @@ _pkgname=ente
 pkgname="${_pkgname}-desktop-bin"
 pkgver=1.7.25
 _electronversion=42
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop app for ente Photos.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -41,7 +41,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app/g
+        s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
     _check_electron_version
