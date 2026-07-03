@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=ris-mcp-ts
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='MCP server for the Austrian Legal Information System (RIS)'
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f4a2fa467efcf68e37e9b3a1076a5de27e9b063a4ed79ec768b1cdf528df3553')
+sha256sums=('27b0cca51cb501ffbd4642d94cf8292521967a428b6ded328b5299ace7f37f8f')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
