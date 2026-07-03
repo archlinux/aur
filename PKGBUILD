@@ -3,12 +3,12 @@
 pkgname=ecss-elph-bin
 _pkgname=ecss-elph
 pkgver=2.14.6.4
-pkgrel=3
+pkgrel=4
 pkgdesc="An application to extend the functionality of an ECSS-10 enabled telephone set and use it as a software SIP client"
 arch=("x86_64")
 url="https://docs.eltex-co.ru/display/doc/Elph+Desktop"
 license=("custom")
-depends=("gtk3" "libnotify" "nss" "libxss" "libxtst" "xdg-utils" "at-spi2-core" "util-linux-libs" "libsecret" "libappindicator-gtk3")
+depends=("gtk3" "libnotify" "nss" "libxss" "libxtst" "xdg-utils" "at-spi2-core" "util-linux" "libsecret" "libappindicator")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://archive.eltex.org/ssw/jammy/elph/pool/main/e/${_pkgname}/${_pkgname}_${pkgver}_amd64.deb")
