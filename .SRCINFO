@@ -1,6 +1,6 @@
 pkgbase = python-google-ai-generativelanguage
 	pkgdesc = Google Ai Generativelanguage API client library
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/googleapis/google-cloud-python/tree/main/packages/google-ai-generativelanguage
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-google-ai-generativelanguage
 	depends = python-proto-plus
 	depends = python-protobuf
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/g/google_ai_generativelanguage/google_ai_generativelanguage-0.11.0.tar.gz
-	sha256sums = d9e24e9836e894a85b52ca03d03530988aeb492d48df71cd1573dc1c3b6d81fc
+	source = https://files.pythonhosted.org/packages/source/g/google_ai_generativelanguage/google_ai_generativelanguage-0.12.0.tar.gz
+	sha256sums = d82f35ade52887476d4586e3cd22fb95492edac47505370e0cb71148168dd94b
 
 pkgname = python-google-ai-generativelanguage

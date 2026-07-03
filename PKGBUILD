@@ -2,7 +2,7 @@
 pkgname=python-google-ai-generativelanguage
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Google Ai Generativelanguage API client library"
 arch=(any)
@@ -19,7 +19,7 @@ options=(!emptydirs)
 install=
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz)
 
-sha256sums=('d9e24e9836e894a85b52ca03d03530988aeb492d48df71cd1573dc1c3b6d81fc')
+sha256sums=('d82f35ade52887476d4586e3cd22fb95492edac47505370e0cb71148168dd94b')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
