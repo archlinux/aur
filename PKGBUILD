@@ -1,14 +1,15 @@
 # Maintainer: AshLink <ashraf.zoubeh.123@gmail.com>
 
 pkgname=fallegji-git
-pkgver=1.0.0.r3.e2bd774 
+pkgver=1.0.1.r1.5ac4b57 
 pkgrel=1
 pkgdesc='TUI P2P group chat app, written in Rust, bound to LAN or VPN'
 arch=('x86_64')
 url='https://github.com/AshLink95/Fallegji'
 license=('MIT')
 
-depends=('rust' 'gcc-libs')
+depends=('glibc')
+makedepends=('rust' 'git')
 options=(!lto)
 
 source=("${pkgname}::git+https://github.com/AshLink95/Fallegji.git")
