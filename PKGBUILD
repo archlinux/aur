@@ -4,14 +4,14 @@
 pkgname=osxcross-git
 _pkgname=${pkgname%-git}
 _sdkname=MacOSX10.11.sdk # swy: choose your SDK version here
-pkgver=0.16
+pkgver=0.17
 pkgrel=3
 pkgdesc="macOS cross-compiling toolchain for Linux, FreeBSD and NetBSD"
 arch=('x86_64')
 url="https://github.com/tpoechtrager/osxcross"
 license=('MIT')
 depends=('clang>=3.2')
-makedepends=('patch' 'libxml2' 'bash')
+makedepends=('patch' 'libxml2' 'bash' 'git' 'cmake')
 optdepends=(
 	'llvm: for Link Time Optimization support and ld64 -bitcode_bundle support'
 	'uuid: for ld64 -random_uuid support'
