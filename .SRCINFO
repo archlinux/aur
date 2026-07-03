@@ -1,6 +1,6 @@
 pkgbase = python-pyriemann
 	pkgdesc = Machine learning for multivariate data through the Riemannian geometry of positive definite matrices in Python
-	pkgver = 0.11
+	pkgver = 0.12
 	pkgrel = 1
 	url = https://pyriemann.readthedocs.org
 	arch = any
@@ -13,9 +13,12 @@ pkgbase = python-pyriemann
 	depends = python-numpy>=1.25.0
 	depends = python-scipy
 	depends = python-scikit-learn>=0.24
+	depends = python-array-api-compat>=1.11
+	depends = python-array-api-extra>=0.6
 	depends = python-joblib
 	depends = python-matplotlib
-	source = python-pyRiemann-0.11.tar.gz::https://github.com/pyRiemann/pyRiemann/archive/refs/tags/v0.11.tar.gz
-	sha256sums = 6e7132f3e55d8ef4e497db51ded3a39991a9feca405795621b7469a3b3a6c4c2
+	optdepends = python-pytorch: PyTorch tensors
+	source = python-pyRiemann-0.12.tar.gz::https://github.com/pyRiemann/pyRiemann/archive/refs/tags/v0.12.tar.gz
+	sha256sums = 487ce591454ad82f3b2fcbf7f54d44efd3669f08dfef895f7b365b921071679b
 
 pkgname = python-pyriemann
