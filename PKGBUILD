@@ -2,12 +2,12 @@
 
 pkgname=iv-cli
 pkgver=0.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line image viewer using terminal graphics (Sixel, iTerm, Kitty)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/kenshaw/iv"
 license=('MIT')
-depends=('ffmpeg' 'graphicsmagick' 'imagemagick' 'lcms2' 'libexif' 'libheif' 'libjpeg' 'libjxl' 'libvips' 'openjpeg2' 'poppler-glib')
+depends=('ffmpeg' 'graphicsmagick' 'imagemagick' 'lcms2' 'libexif' 'libheif' 'libjpeg-turbo' 'libjxl' 'libvips' 'openjpeg2' 'poppler-glib')
 optdepends=('libreoffice')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
