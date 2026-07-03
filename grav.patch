@@ -1,7 +1,7 @@
---- a/system/defines.php	2021-04-15 20:04:58.000000000 +0200
-+++ b/system/defines.php	2021-04-16 22:02:34.702885015 +0200
+--- a/system/defines.php	2026-06-17 01:13:20.000000000 +0200
++++ b/system/defines.php	2026-06-23 21:44:13.000000000 +0200
 @@ -13,6 +13,12 @@
- define('GRAV_SCHEMA', '1.7.0_2020-11-20_1');
+ define('GRAV_SCHEMA', '1.7.53_2026-06-09_0');
  define('GRAV_TESTING', false);
  
 +define('GRAV_ROOT', '/usr/share/webapps/grav');
@@ -13,9 +13,9 @@
  // PHP minimum requirement
  if (!defined('GRAV_PHP_MIN')) {
      define('GRAV_PHP_MIN', '7.3.6');
---- a/system/src/Grav/Console/Gpm/SelfupgradeCommand.php	2025-10-31 20:13:23.000000000 +0100
-+++ b/system/src/Grav/Console/Gpm/SelfupgradeCommand.php	2025-11-02 16:20:21.525422475 +0100
-@@ -108,6 +108,10 @@
+--- a/system/src/Grav/Console/Gpm/SelfupgradeCommand.php	2026-06-17 01:13:20.000000000 +0200
++++ b/system/src/Grav/Console/Gpm/SelfupgradeCommand.php	2026-06-23 21:44:13.000000000 +0200
+@@ -97,6 +97,10 @@
          $input = $this->getInput();
          $io = $this->getIO();
  
@@ -26,8 +26,8 @@
          if (!class_exists(ZipArchive::class)) {
              $io->title('GPM Self Upgrade');
              $io->error('php-zip extension needs to be enabled!');
---- a/webserver-configs/nginx.conf	2024-01-05 13:46:02.000000000 +0100
-+++ b/webserver-configs/nginx.conf	2024-01-06 21:27:25.574913828 +0100
+--- a/webserver-configs/nginx.conf	2026-06-17 01:13:20.000000000 +0200
++++ b/webserver-configs/nginx.conf	2026-06-23 21:44:13.000000000 +0200
 @@ -1,10 +1,61 @@
  server {
 -    #listen 80;
@@ -106,8 +106,8 @@
 +    if ($query_string ~  "_REQUEST(=|\[|\%[0-9A-Z]{0,2})") { return 403; }
      # deny all direct access for these folders
      location ~* /(\.git|cache|bin|logs|backup|tests)/.*$ { return 403; }
-     # deny running scripts inside core system folders
-@@ -25,20 +83,32 @@
+     # deny all direct access to these sensitive user folders, whatever the file type
+@@ -27,20 +85,32 @@
      location ~* /user/.*\.(txt|md|json|yaml|yml|php|php2|php3|php4|php5|phar|phtml|pl|py|cgi|twig|sh|bat)$ { return 403; }
      # deny access to specific files in the root folder
      location ~ /(LICENSE\.txt|composer\.lock|composer\.json|nginx\.conf|web\.config|htaccess\.txt|\.htaccess) { return 403; }

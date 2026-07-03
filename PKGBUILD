@@ -3,27 +3,23 @@
 # Contributor: Nils Czernia <nils at czserver dot de>
 
 pkgname=grav
-pkgver=1.7.50.4
-pkgrel=2
+pkgver=1.7.53.2
+pkgrel=1
 pkgdesc='Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS'
 arch=('any')
 url='https://getgrav.org'
 license=('MIT')
 provides=('grav')
-makedepends=('git')
 depends=( )
-optdepends=('php-apcu: Userland caching module for PHP' 
-            'php-legacy-apcu: Userland caching module for PHP' 
-            'php-yaml: YAML de-/serialization using the LibYAML library'
+optdepends=('php-legacy-apcu: Userland caching module for PHP'
             'php-legacy-yaml: YAML de-/serialization using the LibYAML library'
-            'php-fpm: FastCGI Process Manager'
             'php-legacy-fpm: FastCGI Process Manager'
             'apache: High performance Unix-based HTTP server' 
             'nginx: Lightweight HTTP server and IMAP/POP3 proxy server'
             'uwsgi: Fast and highly tuneable application server'
             'uwsgi-plugin-php: uwsgi plugin for PHP')
 install=grav.install
-source=("git+https://github.com/getgrav/${pkgname}.git#commit=ce817c1bd1a86fd6244b3eaaa1f4f24b3230bf95"
+source=("${pkgname}-${pkgver}.zip::https://github.com/getgrav/grav/releases/download/${pkgver}/${pkgname}-v${pkgver}.zip"
         "grav.patch"
         "grav.user.readme"
         "grav.sysusers.conf"
@@ -32,8 +28,8 @@ source=("git+https://github.com/getgrav/${pkgname}.git#commit=ce817c1bd1a86fd624
         "grav.php-fpm.ini"
         "grav.php-fpm.d.grav.conf"
         "grav.php-fpm.service.d.override.conf")
-sha256sums=('SKIP'
-            'defcc53ef4fcc22f4fb356ff707b21e5bbdaf5b293fef63a2b788b6f38687115'
+sha256sums=('2e9b258cd1f8c494aa4fc59533bb8f27f8a508ea74a2937845c13fd93315e675'
+            '8bf3d0cefde4eb81750b425fd1d25d62fbe841c80b5ca383bd1d4f0a115a5265'
             '125e08820ed477582d7ae716dac6495bca4eac485fa4d4263b11f2505fc355db'
             'ced168231a98be4816afc0a1928b54218c4ce4081be7b49acd704e2a9325f9db'
             'ca7197a1e73fec939ea25ee8f3cc05db2117463aa9db8b2911f889e647974228'
@@ -55,7 +51,7 @@ prepare() {
 }
 
 package() {
-  depends=('php-interpreter' 'php-gd-interpreter')
+  depends=('php-legacy' 'php-legacy-gd')
   mkdir -p "${pkgdir}/usr/share/webapps"
   gravroot="${pkgdir}/usr/share/webapps/${pkgname}"
   cp -ar "${srcdir}/${pkgname}" "${gravroot}"
