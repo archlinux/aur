@@ -1,0 +1,20 @@
+pkgbase = rakemon-unstable-bin
+	pkgdesc = Terminal dashboard for cargo-rake lifecycle events (pre-compiled binary, unstable build)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/rustyhorde/rakemon
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	provides = rakemon
+	conflicts = rakemon
+	options = !strip
+	options = !debug
+	source = https://github.com/rustyhorde/rakemon-packages/releases/download/v0.1.0/dist-rakemon.tar.gz
+	sha256sums = 948c269492046c33412ae1b9fdc3759866877ff18d45f0152d98ec85fc5fd9ed
+	source_x86_64 = rakemon-unstable-x86_64::https://github.com/rustyhorde/rakemon-packages/releases/download/v0.1.0/rakemon-unstable-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 053a6d9094727b1b2e31d0cd643a29426b1e35b91e87dc1ba6ac19c37b999edc
+	source_aarch64 = rakemon-unstable-aarch64::https://github.com/rustyhorde/rakemon-packages/releases/download/v0.1.0/rakemon-unstable-aarch64-unknown-linux-musl
+	sha256sums_aarch64 = 86c54f9892475157299317b47332963c6c9c3b22c3b7fd9a7f85a36431f0ec81
+
+pkgname = rakemon-unstable-bin
