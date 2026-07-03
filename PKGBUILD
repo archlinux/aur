@@ -3,7 +3,7 @@
 _pkgauthor=fioncat
 _pkgname=roxide
 pkgname=${_pkgname}-bin
-pkgver=0.20.7
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Manage your git repositories"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -21,7 +21,7 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[0]}-unkno
 
 sha256sums=('1c45e0ffc1f086e11c0b0afb9b952530966db3ca7987d9935292c5ffa49d3200'
             'c7dc85e2deab624457e3f411dd0e6eb9531611c4a11e3028c38e02999f27d94d')
-sha256sums_x86_64=('4e8c890369a4725a46c2d6755332a74bac7e42ba0af06bb03cae0d6a414ea8ca')
+sha256sums_x86_64=('650de93bc0f262ed2fb3262c68c8f86b3aee5eee4926487e7a9419676438eec1')
 
 package() {
   cd "${srcdir}/" || exit
