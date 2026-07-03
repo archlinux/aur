@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=laravel
-pkgver=5.28.0
+pkgver=5.30.0
 pkgrel=1
 pkgdesc="The Laravel application installer. Allows you to run laravel new."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/laravel/installer"
 license=('MIT')
 depends=('php' 'composer')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/laravel/installer/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('ded619dd3ab4f650a40d9ccb04ffe0a9739632cdccb3a9b082ca218049b8db10ec7aff8b46dc37e2652e0d545b18150a7a0330821f10035300f4b8d943b18c13')
+b2sums=('c082f74815788eb43c6626098a6ffd9df12c5ce3c4f24b40955d77fac798ebbd91b1455b2db1fee60d923057780069f5c174df7aa22c8b3e3a2db3ad59c03c3b')
 
 prepare() {
   cd "${srcdir}/installer-${pkgver}"
