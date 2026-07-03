@@ -2,13 +2,13 @@
 # Contributors: OttoA (AUR), hoschi (AUR), samlt (AUR), andreyv (AUR)
 
 pkgname=ioquake3-git
-pkgver=20251007.ged080d3a
+pkgver=20260701.g5d810e50
 pkgrel=1
 pkgdesc="The de-facto OSS Quake 3 distribution. You need the retail/demo .pk3 files to play."
 url="http://ioquake3.org/"
 license=('GPL-2.0-only')
 arch=('i686' 'x86_64' 'aarch64')
-depends=('curl' 'freetype2' 'libjpeg' 'libvorbis' 'openal' 'opus' 'opusfile' 'sdl2' 'zlib')
+depends=('curl' 'freetype2' 'libjpeg.so' 'libvorbis' 'openal' 'opus' 'opusfile' 'sdl2' 'zlib')
 makedepends=('git' 'cmake')
 optdepends=('mumble: Mumble VoIP support')
 conflicts=('quake3' 'quake3-icculus-svn' 'quake3-svn' 'ioquake3-svn')
