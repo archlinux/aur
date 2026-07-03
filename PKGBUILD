@@ -1,6 +1,6 @@
 pkgname=openbitdo-bin
-pkgver=0.0.1rc4
-_upstream_tag=v0.0.1-rc.4
+pkgver=0.0.1
+_upstream_tag=v0.0.1
 pkgrel=1
 pkgdesc="Prebuilt beginner-first clean-room 8BitDo utility"
 arch=('x86_64' 'aarch64')
@@ -9,8 +9,8 @@ license=('BSD-3-Clause')
 depends=('hidapi')
 source_x86_64=("openbitdo-${_upstream_tag}-linux-x86_64.tar.gz::${url}/releases/download/${_upstream_tag}/openbitdo-${_upstream_tag}-linux-x86_64.tar.gz")
 source_aarch64=("openbitdo-${_upstream_tag}-linux-aarch64.tar.gz::${url}/releases/download/${_upstream_tag}/openbitdo-${_upstream_tag}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('3f654f2dc301d9a917f0b5eff95a4e09285a8898d4e56f6070a3dc618e5ec905')
-sha256sums_aarch64=('dded281452b1be2f33ffd9364b819217b4e3e14e20e6c85879f5931e40716b3c')
+sha256sums_x86_64=('025cc82e9638c9feb46e9c029cb85bbb4f7e5bb36757fc3f9b32ba5942096f1f')
+sha256sums_aarch64=('6aa5c9244c393a85f00a4dd0acdf9210f88a5c53baaed2dfea91d1f9b434ca9a')
 
 package() {
   local extracted_dir
