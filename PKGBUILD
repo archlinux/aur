@@ -1,7 +1,7 @@
 pkgname=foldertree
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Fast directory tree generator written in Rust"
+pkgdesc="A fast directory tree generator written in Rust"
 arch=('x86_64')
 url="https://github.com/Neuwj-00/Foldertree"
 license=('GPL3')
@@ -17,5 +17,5 @@ build() {
 
 package() {
     cd "${pkgname}-${pkgver}"
-    install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "target/release/ftr" "${pkgdir}/usr/bin/ftr"
 }

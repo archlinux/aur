@@ -1,5 +1,5 @@
 pkgbase = foldertree
-	pkgdesc = Fast directory tree generator written in Rust
+	pkgdesc = A fast directory tree generator written in Rust
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Neuwj-00/Foldertree
