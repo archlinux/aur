@@ -3,7 +3,7 @@
 _pypiname="pyriemann"
 pkgname="python-${_pypiname}"
 pkgver=0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Machine learning for multivariate data through the Riemannian geometry of positive definite matrices in Python"
 arch=(
   'any'
@@ -25,6 +25,7 @@ depends=(
 )
 checkdepends=(
   'python-pytest'
+  'python-pytorch'
 )
 makedepends=(
   'python-build'
@@ -45,12 +46,12 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-# check() {
-#   cd "${srcdir}/${_pkgsrc}"
-#   python -m venv --system-site-packages test-env
-#   test-env/bin/python -m installer dist/*.whl
-#   test-env/bin/python -P -m pytest
-# }
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -P -m pytest
+}
 
 package() {
   local site_packages="$(python -c "import site; print(site.getsitepackages()[0])")"

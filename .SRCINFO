@@ -1,11 +1,12 @@
 pkgbase = python-pyriemann
 	pkgdesc = Machine learning for multivariate data through the Riemannian geometry of positive definite matrices in Python
 	pkgver = 0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pyriemann.readthedocs.org
 	arch = any
 	license = BSD-3-Clause
 	checkdepends = python-pytest
+	checkdepends = python-pytorch
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
