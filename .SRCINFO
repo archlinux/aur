@@ -1,0 +1,13 @@
+pkgbase = lambda
+	pkgdesc = Lambda calculus beta-reduction playground with ncurses and CLI front ends
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/drmenguin/lambda
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = ncurses
+	source = lambda-0.1.0.tar.gz::https://github.com/drmenguin/lambda/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = ff202f83f28a555989034e585508862705206a408f520d0b27ad2afe889c1f70
+
+pkgname = lambda
