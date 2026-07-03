@@ -1,4 +1,4 @@
-# Maintainer: noureddinex <noureddinex@protonmail.com>
+# Maintainer: noureddinex <aur@noureddinex.com>
 
 pkgname=lms-cli-git
 pkgver=r908.9d87501
