@@ -1,6 +1,6 @@
 pkgbase = mx-packageinstaller
 	pkgdesc = MX Package Installer - a tool for managing packages and Flatpak
-	pkgver = 26.06.4arch
+	pkgver = 26.07arch
 	pkgrel = 1
 	url = https://github.com/MX-Linux/mx-packageinstaller
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mx-packageinstaller
 	makedepends = qt6-tools
 	depends = qt6-base
 	depends = sudo
-	source = https://github.com/MX-Linux/mx-packageinstaller/archive/refs/tags/26.06.4arch.tar.gz
-	sha256sums = 6ecbe678377c6d9fc8a6a11ea203f4cae3443f0d7abc3f2d0aa5164c9263b58d
+	source = https://github.com/MX-Linux/mx-packageinstaller/archive/refs/tags/26.07arch.tar.gz
+	sha256sums = 0959ad33988a118df1357375752e8a0db739e7cb2b3b565fe08c574355015f50
 
 pkgname = mx-packageinstaller
