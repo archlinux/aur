@@ -1,7 +1,7 @@
 # Maintainer: Thomas Blair <https://github.com/ThomasB3143>
 
 pkgname=teevee
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Single-button cyclic launcher using dunst notifications"
 arch=('any')
