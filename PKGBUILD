@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GET
-_pkgver=1.0-7
+_pkgver=1.0-8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -12,6 +12,7 @@ license=('GPL-3.0-only')
 depends=(
   r-ggplot2
   r-gridextra
+  r-rlang
   r-viridislite
 )
 optdepends=(
@@ -36,8 +37,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6da1983051e67498b82d3b558e55ab36')
-b2sums=('2112fd8a8264a8742fc5f7af27b7e34b4cac08c65203ca8ff4daa94d1e5310c4dd917e437f464153a48176c482f18325f6c947857cd8b194bb09cf8952b1ee8c')
+md5sums=('bcbec329700dd3d24e56f27de16599c6')
+b2sums=('a6f7855aad64b430b04d82db2412f768d912ae82b47c75cbec7473951ad87c82d6054d4f6f2879b9c9cffb14839367d78e9d907a21f93f7c3dcc2bce62d2712f')
 
 build() {
   mkdir build
