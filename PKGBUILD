@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gd-git
-pkgver=2.3.3.r119.g2be005f3
+pkgver=2.3.3.r236.g51bdee37
 pkgrel=1
 pkgdesc="A library for the dynamic creation of images"
 arch=('i686' 'x86_64')
 url="https://libgd.github.io/"
 license=('LicenseRef-gd')
-depends=('glibc' 'fontconfig' 'freetype2' 'libavif' 'libheif' 'libimagequant' 'libjpeg' 'libpng' 'libtiff' 'libwebp' 'libxpm')
+depends=('glibc' 'fontconfig' 'freetype2' 'libavif' 'libheif' 'libimagequant' 'libjpeg-turbo' 'libpng' 'libtiff' 'libwebp' 'libxpm')
 makedepends=('git' 'cmake')
 optdepends=('perl: bdftogd script')
 provides=("gd=$pkgver")
