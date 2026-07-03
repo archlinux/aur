@@ -1,0 +1,25 @@
+pkgbase = valuate-git
+	pkgdesc = A GTK3, XApp and Cinnamon-rebased calculator fork
+	pkgver = 1.0.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/Twilight0/valuate
+	arch = x86_64
+	license = GPL3
+	makedepends = vala
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	depends = gtk3
+	depends = libhandy
+	depends = xapp
+	depends = gtksourceview4
+	depends = libsoup3
+	depends = libgee
+	depends = libmpc
+	depends = mpfr
+	provides = valuate
+	conflicts = valuate
+	source = git+https://github.com/Twilight0/valuate.git#branch=main
+	sha256sums = SKIP
+
+pkgname = valuate-git
