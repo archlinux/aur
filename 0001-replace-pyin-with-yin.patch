@@ -1,0 +1,45 @@
+--- a/TTS/utils/audio/numpy_transforms.py
++++ b/TTS/utils/audio/numpy_transforms.py
+@@ -8,7 +8,7 @@
+ import numpy as np
+ import scipy
+ import soundfile as sf
+-from librosa import effects, filters, magphase, pyin
++from librosa import effects, filters, yin as _yin
+ 
+ logger = logging.getLogger(__name__)
+ 
+@@ -290,24 +290,15 @@
+         pitch_fmin = sample_rate / (win_length - 1) + 0.1
+         logger.warning("pitch_fmin increased to %f", pitch_fmin)
+ 
+-    f0, voiced_mask, _ = pyin(
++    f0 = _yin(
+         y=x.astype(np.double),
+         fmin=pitch_fmin,
+         fmax=pitch_fmax,
+         sr=sample_rate,
+         frame_length=win_length,
+         hop_length=hop_length,
+-        pad_mode=stft_pad_mode,
+         center=center,
+-        n_thresholds=100,
+-        beta_parameters=(2, 18),
+-        boltzmann_parameter=2,
+-        resolution=0.1,
+-        max_transition_rate=35.92,
+-        switch_prob=0.01,
+-        no_trough_prob=0.01,
+     )
+-    f0[~voiced_mask] = 0.0
+ 
+     return f0
+ 
+@@ -328,7 +319,7 @@
+       >>> energy = ap.compute_energy(wav)
+     """
+     x = stft(y=y, **kwargs)
+-    mag, _ = magphase(x)
++    mag = np.abs(x)
+     return np.sqrt(np.sum(mag**2, axis=0))
+ 

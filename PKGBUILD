@@ -2,76 +2,86 @@
 # Co-maintainer: Evert Vorster <evorster at gmail dot com>
 
 pkgname="coqui-tts"
-_pkgname="${pkgname/-/_}"
 pkgver=0.27.5
-pkgrel=1
-pkgdesc="Deep learning for Text to Speech"
+pkgrel=2
+pkgdesc="Deep learning for Text to Speech (hybrid venv)"
+arch=('any')
 url="https://github.com/idiap/coqui-ai-TTS"
-license=("MPL-2.0")
-arch=("any")
+license=('MPL-2.0')
 provides=("tts" "python-tts")
-conflicts=("python-tts" "tts")
+conflicts=("tts" "python-tts")
 replaces=("python-tts" "tts")
-depends=("python"
-         "python-numpy"
-         "python-scipy"
-         "python-pytorch"
-         "python-torchaudio"
-         "python-torchcodec"
-         "python-soundfile"
-         "python-librosa"
-         "python-numba"
-         "python-inflect"
-         "python-tqdm"
-         "python-anyascii"
-         "python-yaml"
-         "python-fsspec"
-         "python-aiohttp"
-         "python-packaging"
-         "python-pysbd"
-         "python-matplotlib"
-         "python-coqpit-config"
-         "python-coqui-trainer"
-         "python-monotonic-alignment-search"
-         "python-ko-speech-tools"
-         "python-einops"
-         "python-transformers"
-         "python-num2words"
-         "python-typing_extensions"
-         )
-makedepends=("python-build" "python-installer" "python-wheel" "python-hatchling")
-optdepends=("python-umap-learn: for notebooks"
-            "python-pandas: for notebooks"
-            "python-flask: for running the TTS server"
-            "python-gruut: for german, spanish, french"
-            "python-jieba: for chinese"
-            "pypinyin: for chinese"
-            "python-mecab: for japanese"
-            "python-unidic-lite: for japanese"
-            "python-jamo-git: for korean"
-            "python-nltk: for korean"
-            #"python-g2pkk: for korean"
-            #"python-bangla: for bangla"
-            #"python-bnnumerizer: for bangla"
-            #"python-bnunicodenormalizer: for bangla"
-            #"python-k_diffusion: for tortoise"
-)
-options=("!strip")
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-b2sums=('d49f9804e5b6faaf90fcc32f64e4a32bd47eb8168dbb6cb3fd430bf0483fddb09f13664f460a38daabb6f2dc3546dceec579b62e7c8a47f33c0e3858ce263d23')
+depends=('uv'
+         'python-pytorch-cuda'
+         'python-torchaudio'
+         'python-torchcodec'
+         'python-numpy'
+         'python-scipy'
+         'python-soundfile'
+         'python-librosa'
+         'python-inflect'
+         'python-tqdm'
+         'python-anyascii'
+         'python-yaml'
+         'python-fsspec'
+         'python-packaging'
+         'python-typing_extensions'
+         'python-matplotlib'
+         'python-transformers'
+         'python-huggingface-hub')
+source=('0001-replace-pyin-with-yin.patch')
+sha256sums=('e5d00022730c5cce0e5a5b0cba0f64159efc9d9fab8864d9bc00276a0c2d98c3')
 
-prepare(){
- cd "$_pkgname-$pkgver"
- # transformers 5 removed isin_mps_friendly; PyTorch 2.4+ provides torch.isin.
- sed -i 's/from transformers\.pytorch_utils import isin_mps_friendly as isin/isin = torch.isin/' TTS/tts/layers/tortoise/autoregressive.py
+makedepends=('uv')
+
+build() {
+  # Create venv inheriting system packages (torch, numpy, scipy, librosa, etc.)
+  uv venv --system-site-packages --clear venv
+  source venv/bin/activate
+
+  # Install coqui-tts and any deps not on the system (AUR-only packages).
+  # uv will install newer deps into the venv as needed.
+  uv pip install 'coqui-tts==0.27.5'
+
+  _sp="venv/lib/python3.14/site-packages"
+
+  # Patch: librosa 0.11.0 removed pyin and magphase; use yin and np.abs
+  patch -Np1 -d "$_sp" < "$srcdir/0001-replace-pyin-with-yin.patch"
+
+  # Patch: transformers 5 removed isin_mps_friendly; PyTorch has torch.isin
+  sed -i 's/from transformers\.pytorch_utils import isin_mps_friendly as isin/isin = torch.isin/' \
+    "$_sp/TTS/tts/layers/tortoise/autoregressive.py"
 }
 
-build(){
- cd "$_pkgname-$pkgver"
- python -m build --wheel --no-isolation
-}
+package() {
+  _optdir="$pkgdir/opt/$pkgname"
+  install -d "$_optdir"
+  cp -r venv "$_optdir/"
 
-package(){
- cd "$_pkgname-$pkgver"
- python -m installer --destdir="$pkgdir" dist/*.whl
+  # Relocate venv: rewrite build-dir paths to install path
+  _oldpath="$srcdir"
+  _newpath="/opt/$pkgname"
+  find "$_optdir/venv" -type f \( -name '*.cfg' -o -name 'activate*' -o -name '*.nu' -o -name '*.bat' -o -name '*.csh' -o -name '*.fish' \) \
+    -exec sed -i "s|$_oldpath|$_newpath|g" {} + 2>/dev/null
+  # Fix shebangs in bin/ scripts
+  sed -i "s|$_oldpath/venv|$_newpath/venv|g" "$_optdir/venv/bin"/* 2>/dev/null || true
+
+  # Clean up caches
+  rm -rf "$_optdir/venv/cache"
+  find "$_optdir/venv" -name '__pycache__' -type d -exec rm -rf {} + 2>/dev/null
+
+  # Wrapper scripts
+  install -d "$pkgdir/usr/bin"
+
+  {
+    echo '#!/bin/bash'
+    echo 'exec /opt/coqui-tts/venv/bin/tts "$@"'
+  } > "$pkgdir/usr/bin/tts"
+  chmod 755 "$pkgdir/usr/bin/tts"
+
+  {
+    echo '#!/bin/bash'
+    echo 'exec /opt/coqui-tts/venv/bin/tts-server "$@"'
+  } > "$pkgdir/usr/bin/tts-server"
+  chmod 755 "$pkgdir/usr/bin/tts-server"
 }
