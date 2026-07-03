@@ -1,6 +1,6 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=mermaid-rs-renderer-bin
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Fast native Mermaid diagram renderer, no browser required'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc' 'gcc-libs')
 provides=('mermaid-rs-renderer' 'mmdr')
 conflicts=('mermaid-rs-renderer')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/mmdr-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('aa5e2c5f39464e252efa6c654937348bf857003414e4fbf8229b5ac41dce23f7')
+sha256sums=('a3f44bec7eefac178d6879966d4d067e0d17dbe5fae4ad2dba66651e5780e483')
 
 package() {
     install -Dm755 mmdr "${pkgdir}/usr/bin/mmdr"
