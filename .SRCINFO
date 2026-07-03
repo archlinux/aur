@@ -1,6 +1,6 @@
 pkgbase = rmux-bin
 	pkgdesc = Universal Rust multiplexer with a typed SDK
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/Helvesec/rmux
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = rmux-bin
 	depends = libgcc
 	provides = rmux
 	conflicts = rmux
-	source = rmux-bin-0.7.1-x86_64.tar.gz::https://github.com/Helvesec/rmux/releases/download/v0.7.1/rmux-0.7.1-linux-x86_64.tar.gz
-	sha256sums = b211ad073853d1c177b17068982a50c1a786b2099abe3bb0b2915a8d32ab8156
+	source = rmux-bin-0.8.0-x86_64.tar.gz::https://github.com/Helvesec/rmux/releases/download/v0.8.0/rmux-0.8.0-linux-x86_64.tar.gz
+	sha256sums = f260aa87ceec2479442ad3a945283f1e0c4d5e9e721e4b5fcca83bc19f5227f8
 
 pkgname = rmux-bin
