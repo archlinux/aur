@@ -1,0 +1,20 @@
+pkgbase = sdrx-mimic-git
+	pkgdesc = TUI Markdown vault editor for the terminal, compatible with Obsidian vaults, extensible with Lua/Rhai plugins
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/Sadrach34/SDRX-Mimic
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	optdepends = xclip: system clipboard support on X11
+	optdepends = xsel: alternative system clipboard support on X11
+	optdepends = wl-clipboard: system clipboard support on Wayland
+	provides = sdrx-mimic
+	provides = mmc
+	conflicts = sdrx-mimic
+	source = git+https://github.com/Sadrach34/SDRX-Mimic.git
+	sha256sums = SKIP
+
+pkgname = sdrx-mimic-git
