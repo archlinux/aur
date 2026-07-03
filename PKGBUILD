@@ -28,7 +28,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('53782f44b8a88703ed54da1602c54c0af998ce076839f719efe1c850b05baccf'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+            'ac1e26684ffbfc7ac0993c55b9299003f6b9efea25b755b1d260bea4db440157')
 prepare() {
     install -Dm755 -d "${srcdir}/${pkgname%-bin}"
     bsdtar -xf "${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/${pkgname%-bin}"
