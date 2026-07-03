@@ -1,7 +1,7 @@
 pkgbase = gr-satellites
 	pkgdesc = satellite decoder blocks for GNURadio
 	pkgver = 5.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/daniestevez/gr-satellites
 	arch = x86_64
 	arch = aarch64
@@ -15,6 +15,8 @@ pkgbase = gr-satellites
 	depends = python-requests
 	depends = fmt
 	depends = gnuradio-iqbal
+	depends = python-gnuradio
+	depends = python-websocket-client
 	optdepends = feh: For realtime image decoders
 	optdepends = doxygen: For document generation
 	conflicts = gr-satellites

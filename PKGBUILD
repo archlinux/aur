@@ -2,12 +2,12 @@
 
 pkgname=gr-satellites
 pkgver=5.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="satellite decoder blocks for GNURadio"
 arch=('x86_64' 'aarch64')
 url="https://github.com/daniestevez/gr-satellites"
 license=('GPL3')
-depends=('gnuradio' 'boost-libs' 'python-construct>=2.9' 'python-requests' 'fmt' 'gnuradio-iqbal')
+depends=('gnuradio' 'boost-libs' 'python-construct>=2.9' 'python-requests' 'fmt' 'gnuradio-iqbal' 'python-gnuradio' 'python-websocket-client')
 optdepends=('feh: For realtime image decoders'
             'doxygen: For document generation')
 makedepends=('cmake' 'boost' 'pybind11')
