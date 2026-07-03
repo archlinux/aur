@@ -1,6 +1,6 @@
 pkgbase = custom-toolbox
 	pkgdesc = A customizable toolbox application built with Qt
-	pkgver = 26.06.2
+	pkgver = 26.07
 	pkgrel = 1
 	url = https://github.com/MX-Linux/custom-toolbox
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = custom-toolbox
 	depends = qt6-base
 	provides = custom-toolbox
 	conflicts = custom-toolbox
-	source = https://github.com/MX-Linux/custom-toolbox/archive/refs/tags/26.06.2.tar.gz
-	sha256sums = 46bc3ad42f55229fd352638d0204eb7eae0ce5fc0771f36cbdd369e9520569f6
+	source = https://github.com/MX-Linux/custom-toolbox/archive/refs/tags/26.07.tar.gz
+	sha256sums = 6a2b17bd49d53f2030396675156035adb2011fbdd8b53ff32c6bfecd0b4958b4
 
 pkgname = custom-toolbox
