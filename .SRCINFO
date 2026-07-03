@@ -30,6 +30,6 @@ pkgbase = noctalia-greeter
 	conflicts = noctalia-greeter-bin
 	options = !debug
 	source = noctalia-greeter-1.0.0.tar.gz::https://github.com/noctalia-dev/noctalia-greeter/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 974c0adc444dbe63be38d60f2ae0eedbd97cf1fc5844a9f022a7468b0a495ba3
 
 pkgname = noctalia-greeter
