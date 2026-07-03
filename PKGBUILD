@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=smolvm
-pkgver=1.3.8
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Tool to build & run portable, lightweight, self-contained virtual machines.'
 arch=(
@@ -38,7 +38,7 @@ source=(
     'use-system-libs.patch'
 )
 sha256sums=(
-    '3e5904cb16cbb363531107d7f8872cc770e2368a1ebcbfe4d63b92517594c877'
+    'cf622beb987aa32d6ed8d46659cb688871fc25194ffd38adfe36670462bd9f92'
     'dc2b8c9f866cd48a10522c2d5d6d62af038c9d60998e79ca45c986605b19678e'
 )
 
