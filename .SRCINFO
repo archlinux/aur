@@ -1,7 +1,7 @@
 pkgbase = vimhjkl
 	pkgdesc = A terminal trainer that drills advanced Vim techniques in real vim/nvim and grades your keystrokes
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/S-Sigdel/vimhjkl
 	arch = any
 	license = MIT
