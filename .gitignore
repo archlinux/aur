@@ -1,0 +1,9 @@
+*.o
+dmenu
+stest
+*.tar.gz
+AGENTS.md
+src/
+pkg/
+*.pkg.tar.zst
+.worktrees/
