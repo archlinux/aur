@@ -2,12 +2,13 @@
 pkgname=flyline-git
 _pkgname=flyline
 pkgver=1.2.4.r0.gc4fd509
-pkgrel=1
+pkgrel=2
 pkgdesc='Bash plugin to replace readline for a modern line editing experience: syntax highlighting, agent integration, rich prompts, tooltips, fuzzy history search, and more'
 arch=(
     'x86_64'
     'aarch64'
     'riscv64'
+    'armv7'
 )
 url='https://github.com/HalFrgrd/flyline'
 license=(
@@ -26,7 +27,7 @@ options=(
     # !lto
     !debug
 )
-provides=('libflyline.so')
+provides=('libflyline.so' "libflyline.so.${pkgver}")
 conflicts=('flyline' 'flyline-bin')
 source=("$_pkgname-master::git+$url.git#branch=master")
 sha256sums=('SKIP')
@@ -50,7 +51,8 @@ build() {
 
 package() {
     cd "${_pkgname}-master"
-    install -Dm0755 target/release/libflyline.so "$pkgdir/usr/bin/libflyline.so"
+    install -Dm0755 libflyline.so."${pkgver}" "$pkgdir/usr/lib/libflyline.so.${pkgver}"
+    ln -sf "libflyline.so.${pkgver}" "$pkgdir/usr/lib/libflyline.so"
     install -Dm 644 LICENSE-MIT LICENSE-GPLv3 -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
