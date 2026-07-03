@@ -1,0 +1,22 @@
+pkgbase = hexxengenerator
+	pkgdesc = Charakter Generator für Hexxen 1733
+	pkgver = 0.13.1
+	pkgrel = 1
+	url = https://gitlab.com/Patschke/Hexxen-Generator
+	arch = any
+	license = EUPL-1.2
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-setuptools-git-versioning
+	depends = python>=3.12.5
+	depends = python-numpy
+	depends = python-pyqt6
+	depends = python-pymupdf
+	depends = python-beautifulsoup4
+	depends = python-lxml
+	depends = python-requests
+	source = git+https://gitlab.com/Patschke/Hexxen-Generator.git
+	sha256sums = SKIP
+
+pkgname = hexxengenerator
