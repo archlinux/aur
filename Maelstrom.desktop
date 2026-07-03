@@ -1,9 +1,9 @@
 [Desktop Entry]
-Comment=Maelstrom
-Exec=/usr/bin/Maelstrom
-Icon=/usr/share/Maelstrom/icon.xpm
 Name=Maelstrom
+Comment=Fast-action Asteroids-like arcade game
+Exec=Maelstrom
+Icon=Maelstrom
 StartupNotify=false
 Terminal=false
 Type=Application
-Categories=Game;
+Categories=Game;ArcadeGame;
