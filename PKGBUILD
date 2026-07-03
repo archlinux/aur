@@ -3,9 +3,9 @@
 
 pkgname=naiveproxy
 pkgdesc="A Proxy using Chrome's network stack to camouflage traffic with strong censorship resistence and low detectablility."
-pkgver=149.0.7827.114_1
+pkgver=150.0.7871.63_1
 pkgrel=1
-_pkgver=149.0.7827.114
+_pkgver=150.0.7871.63
 _pkgrel=1
 arch=('x86_64')
 url='https://github.com/klzgrad/naiveproxy'
@@ -14,8 +14,8 @@ depends=("gcc-libs" "glibc")
 makedepends=("ninja" "gn" "ccache" "python")
 checkdepends=("python" "openssl")
 
-_PGO_PATH='chrome-linux-7827-1780682012-f62c73d731b52a07fffe1a178a38103191b0fddd-4185813e9f60e6a1ea3ac12cbce62f4e511cb234.profdata'
-_clang_path='clang-llvmorg-23-init-10931-g20b6ec66-8.tar.xz'
+_PGO_PATH='chrome-linux-7871-1782236690-ee033e4bf26c147ed0557fd905d416dc66bc7545-3d4da56162112271e9a86f91f4696c964516a649.profdata'
+_clang_path='clang-llvmorg-23-init-10931-g20b6ec66-11.tar.xz'
 
 source=(
   "naiveproxy.service"
@@ -31,14 +31,14 @@ noextract=(
 
 sha1sums=('f959ceed9d451e3344d99b2a1572ca27416a5675'
           '278983a6edd5477e8f6f0557ea206f236fdc51dc'
-          'a994037e9517b1a1a42ceb41ef6011ed895203c4'
-          'f62c73d731b52a07fffe1a178a38103191b0fddd'
-          'bff7967f159d8fece6bc1eefae42849a53fdc0fb')
+          'd3a76215018c1d18b42002d07f51bb2f0b624b2b'
+          'ee033e4bf26c147ed0557fd905d416dc66bc7545'
+          '5b60dac1119b64878996f18cb9eaca843581d076')
 sha256sums=('8b56b5a401cb7f77b50376ec27e40445f4bdbe85890ab717327de187ded92c53'
             'dd8f8e154832d49795be417557db9cc408976cc324452715f5d796b40e5a752d'
-            '0080c344e05f1df0f3f083654800a19ff89dbd8aa96b98b28b4b3bab4fe3baa8'
-            '2788d18df98ca5240a5cb2cdbdb6fb94ea154be1ce7b51f9a9eb91e8093f725a'
-            '6aa45b7398e915919ce07a5e1e15e8710327957f61c1d97d18e77e5f167e9d14')
+            '05f7808b91fe07d2acfdac1a041ad93b6d5a13799b1429952b0c82bd1edbf8d1'
+            '63118ef73e3d7fe033ef94c8b3d1751174504c32ee8fdecc081e4a17491926da'
+            'de584381536aa5ba2403033c4f8b70f3c39c2e5d7fa87c953b7fd8bfbba0ee2a')
 
 backup=('etc/naiveproxy/config.json')
 provides=('naiveproxy')
