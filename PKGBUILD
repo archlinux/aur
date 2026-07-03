@@ -2,7 +2,7 @@
 pkgname=shutter-encoder-bin
 _pkgname='Shutter Encoder'
 pkgver=20.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Converter for all formats video|audio|image professionnals codecs and standards - swiss knife tool for Linux.(Prebuilt version)"
 arch=('x86_64')
 url="https://www.shutterencoder.com"
@@ -40,7 +40,7 @@ sha256sums=('bafb62f3b622387fac121ae745d0e020bb8bf328d3c43b18f49a00a869e7dac2'
             'd2e12cd239e05ceca84f310de6b1d6beae419d4015f112ca82f830e128e38964')
 prepare() {
     # Create normal launcher
-    sed -e "
+    sed -i -e "
         s/@appname@/${pkgname%-bin}/
         s/@runname@/${pkgname%-bin}/
     " "${srcdir}/${pkgname%-bin}.sh" > "${srcdir}/${pkgname%-bin}.sh.tmp"

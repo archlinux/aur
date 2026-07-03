@@ -1,7 +1,7 @@
 pkgbase = shutter-encoder-bin
 	pkgdesc = Converter for all formats video|audio|image professionnals codecs and standards - swiss knife tool for Linux.(Prebuilt version)
 	pkgver = 20.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.shutterencoder.com
 	arch = x86_64
 	license = GPL-3.0-only
