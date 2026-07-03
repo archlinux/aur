@@ -1,7 +1,7 @@
 # Maintainer: Neuwj <Neuwj@linuxmail.org>
 pkgname=uninstaller
-pkgver=1.0.5
-pkgrel=1
+pkgver=1.10.6
+pkgrel=2
 pkgdesc="A minimal and modern terminal package uninstaller written in Rust"
 arch=('x86_64')
 url="https://github.com/Neuwj-00/uninstaller"
