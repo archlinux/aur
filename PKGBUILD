@@ -1,7 +1,7 @@
 # Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 pkgname=infracost-bin
-pkgver=0.10.44
+pkgver=0.10.45
 pkgrel=1
 pkgdesc='Cloud cost estimates for Terraform'
 url='https://github.com/infracost/infracost'
@@ -11,7 +11,7 @@ conflicts=('infracost')
 provides=('infracost-bin')
 
 source=("infracost-$pkgver-amd64.tar.gz::${url}/releases/download/v${pkgver}/infracost-linux-amd64.tar.gz")
-sha256sums=('a85bf52b6abcc0a101e9c0c36ae7d0274c542346b36948710a89676e51e7da8e')
+sha256sums=('e2f527d8391a87ac00bfc55237ff875107861715e234bbbeb9b6015aba576c77')
 
 package() {
     cd "${srcdir}"
