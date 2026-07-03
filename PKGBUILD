@@ -2,7 +2,7 @@
 
 pkgname=udpfsd-git
 pkgver=r34.c738682
-pkgrel=1
+pkgrel=2
 pkgdesc="A UDPFS server written in Go"
 arch=('x86_64' 'i686' 'pentium4' 'aarch64' 'armv7' 'armv7h' 'mispeb' 'mipsel' 'riscv64')
 url="https://github.com/pcm720/udpfsd"
@@ -28,6 +28,15 @@ prepare() {
 build() {
   cd "${pkgname%-git}"
 
+  # Extract command that generates version from Makefile
+  export cmd=$(grep -m 1 VERSION Makefile | sed 's/^.*:= \$(shell \(.*\))/\1/g')
+  # Run it to get version
+  export VERSION=$(eval "$cmd")
+  # Extract ldflags from Makefile
+  export _LDFLAGS=$(grep -m 1 LDFLAGS Makefile | sed 's/^.*:= -ldflags "\(.*\)"/\1/g')
+  # Replace version variable placeholder with version obtained above
+  export _LDFLAGS="${_LDFLAGS//\$(VERSION)/$VERSION}"
+
   export GOPATH="${srcdir}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -36,7 +45,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   export CGO_ENABLED=1
 
-  go build -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" -o bin/udpfsd ./cmd/udpfsd
+  go build -ldflags "${_LDFLAGS} -linkmode external -extldflags \"${LDFLAGS}\"" -o bin/udpfsd ./cmd/udpfsd
 }
 
 package() {
