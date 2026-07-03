@@ -1,7 +1,7 @@
 # Maintainer: Pavle Barši <pakibarsipavle@gmail.com>
 
 pkgname=mcmodm
-pkgver=1.6.1
+pkgver=1.7
 pkgrel=1
 pkgdesc="Minecraft Mod Manager written in C++"
 arch=('x86_64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "${srcdir}/Minecraft-ModM"
-    make
+    make -j$(nproc)
 }
 
 package() {
