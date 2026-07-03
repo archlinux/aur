@@ -1,11 +1,11 @@
 pkgbase = mwcli
 	pkgdesc = MediaWiki focused command line tool targeting developers
-	pkgver = v0.30.0
+	pkgver = v0.31.0
 	pkgrel = 1
 	url = https://gitlab.wikimedia.org/repos/releng/cli
 	arch = x86_64
 	license = GPL
-	source = https://gitlab.wikimedia.org/api/v4/projects/16/packages/generic/mwcli/v0.30.0/mw_v0.30.0_linux_amd64
+	source = https://gitlab.wikimedia.org/api/v4/projects/16/packages/generic/mwcli/v0.31.0/mw_v0.31.0_linux_amd64
 	sha256sums = 73f62301b9ce2a45c4d3ae268dd9a2cd2a98a83595d26bd70ce0116c8a001714
 
 pkgname = mwcli
