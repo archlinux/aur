@@ -1,16 +1,18 @@
-pkgbase = foldertree
-	pkgdesc = A fast directory tree generator written in Rust
+pkgbase = ftr
+	pkgdesc = Generates a directory tree from the current folder and can copy the result to the clipboard
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/Neuwj-00/Foldertree
+	url = https://github.com/neuwj/ftr
 	arch = x86_64
-	license = GPL-3.0-only
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
 	makedepends = cargo
-	makedepends = git
-	depends = glibc
-	depends = gcc-libs
 	depends = xclip
-	source = foldertree-1.0.0::git+https://github.com/Neuwj-00/Foldertree.git#tag=v1.0.0
+	depends = wl-clipboard
+	depends = gcc-libs
+	source = ftr-1.0.0.tar.gz::https://github.com/neuwj/ftr/archive/refs/tags/1.0.0.tar.gz
 	sha256sums = SKIP
 
-pkgname = foldertree
+pkgname = ftr
