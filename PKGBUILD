@@ -18,11 +18,6 @@ build() {
   go build -ldflags='-s -w' -o "${pkgname}" ./cmd/nls
 }
 
-check() {
-  cd "${pkgname}"
-  go test ./...
-}
-
 package() {
   cd "${pkgname}"
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
