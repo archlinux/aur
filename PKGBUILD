@@ -1,10 +1,10 @@
 # Maintainer: flan_suse <windows2linux_AT_zoho_DOT_com>
 
-# This prebuilt binary includes HEIF support.
+# This prebuilt binary supports multiple backends for Slint and includes HEIF and AVIF support.
 
 pkgname=krokiet-bin
 pkgver=12.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Find and manage duplicate files, empty folders, similar images, and other "lint" (Slint GUI of Czkawka, with HEIF support)'
 arch=('x86_64')
 url='https://github.com/qarmin/czkawka'
@@ -27,7 +27,7 @@ sha256sums=('ef583bebb43d0a1c75a5959cc56f04ecfdadac3cd515cae6fee7c9dd604554d1'
             'fe124add5f02776eb9152b4e3c343539cf802babd06a09f9c5237448476d8d03')
 
 package() {
-  install -Dm755 ${pkgname}-${pkgver} "${pkgdir}/usr/bin/${pkgname%-bin}"
+  install -Dm755 ${pkgname%-bin} "${pkgdir}/usr/bin/${pkgname%-bin}"
   install -Dm644 LICENSE_CC_BY_4_ICONS-${pkgver} "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE_CC_BY_4_ICONS"
   install -Dm644 LICENSE_GPL_APP-${pkgver} "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE_GPL_APP"
   install -Dm644 LICENSE_MIT_CODE-${pkgver} "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE_MIT_CODE"
