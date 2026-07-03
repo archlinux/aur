@@ -1,6 +1,6 @@
 pkgbase = trae-sg
 	pkgdesc = AI-powered IDE by ByteDance (Singapore CDN)
-	pkgver = 2.3.44884
+	pkgver = 2.3.49027
 	pkgrel = 1
 	url = https://www.trae.cn/
 	install = trae.install
@@ -18,7 +18,7 @@ pkgbase = trae-sg
 	optdepends = xdg-utils: Open URLs and files with default applications
 	optdepends = python: Python extension support
 	optdepends = nodejs: Node.js extension scripts
-	provides = trae=2.3.44884
+	provides = trae=2.3.49027
 	conflicts = trae
 	conflicts = trae-bin
 	options = !strip
@@ -27,9 +27,9 @@ pkgbase = trae-sg
 	source = trae.desktop
 	b2sums = 2331b0d37fff8478ea37cbf9e5c2e70a59631aae6efb44741fc6c1a8dce65557098e9dffa8c30148ef27432802bec3d1eda279021421e5d3f979e80900662726
 	b2sums = 656c5d6bea6ef15185e0d8ee0181276f6de3bfae8e66a2c65772a5f1354727952dd020dca057246139a2bab8f4805057fa2db367a6ba0a1b90d9ffd7fcab8412
-	source_x86_64 = Trae-linux-x64-2.3.44884-1.tar.gz::https://lf-cdn.trae.ai/obj/trae-ai-sg/pkg/app/releases/stable/2.3.44884/linux/Trae-linux-x64.tar.gz
-	b2sums_x86_64 = e86710dd567533b1039e0fb0335ae330fa13a3c445e46aed3a938b0f6f475aa51482901e53bb1001a1ba9b0ab68c8bee377ae94fad3c5e720e432cce0c731e0a
-	source_aarch64 = Trae-linux-arm64-2.3.44884-1.tar.gz::https://lf-cdn.trae.ai/obj/trae-ai-sg/pkg/app/releases/stable/2.3.44884/linux/Trae-linux-arm64.tar.gz
-	b2sums_aarch64 = 4d1851a37f39ca752477372e3effffc68ee0b4b11b231e51231df74cde597a3fdd7a1133b486539c1e5ef6633c2d065626112e8352737637f1dc561aea7f30ec
+	source_x86_64 = Trae-linux-x64-2.3.49027-1.tar.gz::https://lf-cdn.trae.ai/obj/trae-ai-sg/pkg/app/releases/stable/2.3.49027/linux/Trae-linux-x64.tar.gz
+	b2sums_x86_64 = 0695cd331bab0523ebbe00f9dd7f4b51b720ba79dc6f839ad0f2072ac21b3876902571f23da7c5de7b12d06169820f4928b513ee3c00dd29153ad98acb2cc1bd
+	source_aarch64 = Trae-linux-arm64-2.3.49027-1.tar.gz::https://lf-cdn.trae.ai/obj/trae-ai-sg/pkg/app/releases/stable/2.3.49027/linux/Trae-linux-arm64.tar.gz
+	b2sums_aarch64 = 279a505b8d18fd99d2dbc2fdf341bfff36154a82f7414d110e3835462580b6aba707527a0f1d4a74099a6ca7de38fb7bc69c9e39e7f1998f4731add4b5748f15
 
 pkgname = trae-sg
