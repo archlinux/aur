@@ -68,6 +68,7 @@ pkgname = aseprite
 	depends = libwebp
 	depends = libarchive
 	depends = fmt
+	depends = libglvnd
 	depends = expat
 	depends = harfbuzz
 	depends = libgl

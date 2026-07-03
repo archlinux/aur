@@ -168,7 +168,7 @@ package() {
          # pixman is not linked to because we use Skia instead
          # harfbuzz is linked statically because Aseprite expects an older version
          cmark curl giflib libjpeg-turbo zlib libpng 'tinyxml2>=11.0.0' freetype2
-         libwebp libarchive fmt
+         libwebp libarchive fmt libglvnd
          # ~ Skia deps ~
          # (Skia links dynamically to HarfBuzz, only Aseprite itself doesn't. >_<)
          expat harfbuzz libgl
