@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=linux-assistant-bin
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A daily linux helper with powerful integrated search, routines checks and administrative tasks. The Project is built with flutter and python.(Prebuilt version)"
 arch=('x86_64')
@@ -21,9 +21,11 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0e0323fb41d9fec4f60828a0ed36cb415a20599907cd210c26cd2e5e66c4098a'
+sha256sums=('88782b98684bd5792776eccf01fcc35bdc0628c060c47a748a1de9ec277e6f3c'
             '55e26214c0c668492818389c24db99827d7357bd4141294e264210160e6edc77')
 prepare() {
+    # 使用 rpm2cpio + cpio 解压 RPM 文件
+    rpm2cpio "${srcdir}/${pkgname%-bin}-${pkgver}.rpm" | cpio -idmv -D "${srcdir}"
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
@@ -34,9 +36,13 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib"
-    cp -Pr --no-preserve=ownership "${srcdir}/usr/lib64/${pkgname%-bin}" "${pkgdir}/usr/lib"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+    cp -a "${srcdir}/usr/lib64/${pkgname%-bin}" "${pkgdir}/usr/lib"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+		_extension="${_i##*.}"
+		_icon_path="${_i#*share/icons/}"
+		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
+	done
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/polkit-1/actions/org.${pkgname%-bin}.operations.policy" -t "${pkgdir}/usr/share/polkit-1/actions"
 }
