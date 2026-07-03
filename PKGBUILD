@@ -2,7 +2,7 @@
 # Contributor: Julien Desgats <julien at desgats dot fr>
 
 pkgname=osrm-backend
-pkgver=26.6.5
+pkgver=26.7.1
 pkgrel=1
 pkgdesc="High performance routing engine written in C++14 designed to run on OpenStreetMap data."
 arch=('x86_64')
@@ -59,7 +59,7 @@ source=("${pkgname}-${pkgver}-LICENSE::${url/github/raw.githubusercontent}/refs/
 	# "${pkgname}-${pkgver}.patch")
 
 b2sums=('7e714e99eaea01b1ce336c74e2f4a6f5af6aa059ef16d0e353864c7e188df88682ea5a41b94d42e6daeabfd96e7f352790e04a0bb273c1633747c17e5c348f5a'
-        '4371d2aa893306c013a33d71cb63154b692d41ab48be5980b9659290ef6097a6860a5266fef71e9e3835a761d8e0b671f9206538512936ac655167319e86d32e')
+        '976830144bb5570285e3455c560b68674e2a293eed8ce45139bf444d850ae921325ce5332a27c51c3bda6d1f20b48807adb3ed24236d2ce320803253c883583c')
         # '27eaaf313bfcc8485c9d0867c79cf6871e2067ebd1d3b8b43429de101f18799dd17c10a0b301fdfd5e36a41ca4815083058083e9a50e1c1a13a17604d50aa3ec')
 
 prepare() {
