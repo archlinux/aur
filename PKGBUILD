@@ -2,7 +2,7 @@
 pkgname=antimony-sandbox
 pkgdesc="Sandbox Applications"
 pkgver=5.1.1
-pkgrel=1
+pkgrel=2
 
 install=antimony.install
 license=("Unlicense")

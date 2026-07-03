@@ -1,7 +1,7 @@
 pkgbase = antimony-sandbox
 	pkgdesc = Sandbox Applications
 	pkgver = 5.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kkernick/antimony
 	install = antimony.install
 	arch = any
