@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=chafa-git
-pkgver=1.14.0.r29.g5e9a6ea
+pkgver=1.18.2.r70.g61a9ae4
 pkgrel=1
 pkgdesc="Terminal graphics for the 21st century"
 arch=('i686' 'x86_64')
 url="https://hpjansson.org/chafa/"
 license=('LGPL-3.0-or-later')
-depends=('glibc' 'freetype2' 'libavif' 'libjpeg' 'libjxl' 'librsvg' 'libtiff' 'libwebp')
+depends=('glibc' 'freetype2' 'libavif' 'libjpeg-turbo' 'libjxl' 'librsvg' 'libtiff' 'libwebp')
 makedepends=('git' 'gtk-doc')
 provides=("chafa=$pkgver" 'libchafa.so')
 conflicts=('chafa')

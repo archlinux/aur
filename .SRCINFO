@@ -1,6 +1,6 @@
 pkgbase = chafa-git
 	pkgdesc = Terminal graphics for the 21st century
-	pkgver = 1.14.0.r29.g5e9a6ea
+	pkgver = 1.18.2.r70.g61a9ae4
 	pkgrel = 1
 	url = https://hpjansson.org/chafa/
 	arch = i686
@@ -11,12 +11,12 @@ pkgbase = chafa-git
 	depends = glibc
 	depends = freetype2
 	depends = libavif
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = libjxl
 	depends = librsvg
 	depends = libtiff
 	depends = libwebp
-	provides = chafa=1.14.0.r29.g5e9a6ea
+	provides = chafa=1.18.2.r70.g61a9ae4
 	provides = libchafa.so
 	conflicts = chafa
 	options = staticlibs
