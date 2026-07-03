@@ -1,15 +1,16 @@
 pkgbase = ssh_tunnel_egui
-	pkgdesc = 一个基于egui的SSH SOCKS5图形界面程序，使用sshpass和ssh连接远程代理服务器
-	pkgver = 0.1.0
+	pkgdesc = SSH Port Forwarding GUI application with GTK4, supporting password and SSH key authentication
+	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://aur.archlinux.org/packages/ssh_tunnel_egui
+	url = https://github.com/Paul-sinbud2004/ssh-proxy-gtk
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	depends = gtk4
 	depends = openssh
 	depends = sshpass
-	source = ssh_tunnel_egui::git+https://github.com/Paul-sinbud2004/ssh_tunnel_egui.git
+	source = ssh-proxy-gtk-0.2.0.tar.gz::https://github.com/Paul-sinbud2004/ssh-proxy-gtk/archive/refs/tags/v0.2.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = ssh_tunnel_egui

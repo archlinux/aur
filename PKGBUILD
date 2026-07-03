@@ -1,24 +1,34 @@
 # Maintainer: sinbud2004 <sinbud2004@gmail.com>
 pkgname=ssh_tunnel_egui
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="一个基于egui的SSH SOCKS5图形界面程序，使用sshpass和ssh连接远程代理服务器"
+pkgdesc="SSH Port Forwarding GUI application with GTK4, supporting password and SSH key authentication"
 arch=('x86_64')
-url="https://aur.archlinux.org/packages/ssh_tunnel_egui"
+url="https://github.com/Paul-sinbud2004/ssh-proxy-gtk"
 license=('MIT')
-depends=('openssh' 'sshpass')
+depends=('gtk4' 'openssh' 'sshpass')
 makedepends=('rust' 'cargo')
-source=("$pkgname::git+https://github.com/Paul-sinbud2004/ssh_tunnel_egui.git")
+source=("ssh-proxy-gtk-$pkgver.tar.gz::https://github.com/Paul-sinbud2004/ssh-proxy-gtk/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
-export CARGO_TARGET_DIR="$srcdir/target"
+
+prepare() {
+    cd "ssh-proxy-gtk-$pkgver"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
-  cd "$srcdir/$pkgname"
-  CARGO_TARGET_DIR=target cargo build --release --locked
+    cd "ssh-proxy-gtk-$pkgver"
+    export RUSTFLAGS="-C opt-level=2"
+    cargo build --release --locked --target-dir=target
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  install -Dm755 "target/release/sshgui" "$pkgdir/usr/bin/ssh_tunnel_egui"
+    cd "ssh-proxy-gtk-$pkgver"
+    install -Dm755 "target/release/ssh_proxy_gtk" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
+check() {
+    cd "ssh-proxy-gtk-$pkgver"
+    cargo test --release --locked
+}
