@@ -1,0 +1,21 @@
+pkgbase = elph-nova-bin
+	pkgdesc = A corporate communications hub designed for effective collaboration with colleagues
+	pkgver = 3.4.0
+	pkgrel = 1
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux
+	depends = libappindicator-gtk3
+	provides = elph-nova
+	conflicts = elph-nova
+	source = https://archive.eltex-co.ru/repository/elph-services-raw/elph-nova/3.4.0/linux/elph-nova-3.4.0-linux-x64.deb
+	sha256sums = 9c9e2780db988bf110cb4cd3f69f047272ae2e8ab76330a4a0282070d48489c8
+
+pkgname = elph-nova-bin
