@@ -1,9 +1,9 @@
 # Maintainer: Keith Raghubar <aur.archlinux.org.buckskin000@passmail.net>
 
 pkgname=sysforge
-pkgver=1.2.0
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="All-in-one Arch Linux helper for system setup and package management with compiler-optimized builds"
+pkgdesc="Arch Linux build and maintenance suite for system setup and package management with compiler-optimized builds"
 arch=('any')
 url="https://github.com/KeithRaghubar/sysforge"
 license=('MIT')
@@ -32,6 +32,7 @@ optdepends=(
     'compiler-rt: required for sysforge run toolchain --compiler=llvm'
 )
 conflicts=('sysforge-git')
+install=sysforge.install
 backup=(
     'etc/sysforge/sysforge.toml'
     'etc/sysforge/profiles.toml'
@@ -39,8 +40,16 @@ backup=(
     'etc/sysforge/kernel.toml'
     'etc/sysforge/toolchain.toml'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0c2c6777d9df13d0c5d8fb88ec6ba08887a249c31bc6b197398024a48e8a25a0')
+# Maintainer release-signing key. Releases are GPG-signed (signed tag + detached
+# signature of the release tarball, uploaded to the GitHub release by
+# tools/release.sh); makepkg verifies the .asc below against this fingerprint.
+# REPLACE the sentinel with the real 40-hex fingerprint (gpg --fingerprint);
+# tools/release.sh refuses to publish while the sentinel is present.
+validpgpkeys=('23774499080F9288FEFB49CE7AAE22E6E1B4B22C')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/sysforge-$pkgver.tar.gz.asc")
+sha256sums=('afca465a03ea8cd89339803c4e470af1450ce70e3ada6cac39863b37d55a3a7d'
+            'SKIP')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -74,12 +83,24 @@ package() {
     install -Dm644 etc/sysforge/bootstrap.toml \
         "$pkgdir/usr/share/sysforge/bootstrap.toml.example"
 
+    # The sysforge group owns sysforge's writable runtime dirs so the
+    # unprivileged build user (a member) can write state and the PGO cache
+    # across runs. systemd-sysusers creates it before systemd-tmpfiles runs.
+    install -Dm644 /dev/null "$pkgdir/usr/lib/sysusers.d/sysforge.conf"
+    printf 'g sysforge -\n' > "$pkgdir/usr/lib/sysusers.d/sysforge.conf"
+
     # State directory (pipeline state, build state, logs) + sentinel subdir
     # consumed by `sysforge update` from the libalpm hooks below.
+    # /var/cache/sysforge holds the regenerable PGO profdata store, written by
+    # the unprivileged toolchain build. All owned root:sysforge with setgid
+    # (2775) so group members can write and new subdirs inherit the group —
+    # the single ownership model shared with primitives/fs_provision.py.
     install -Dm644 /dev/null "$pkgdir/usr/lib/tmpfiles.d/sysforge.conf"
     {
-        printf 'd /var/lib/sysforge 0777 root root -\n'
-        printf 'd /var/lib/sysforge/sentinels 0777 root root -\n'
+        printf 'd /var/lib/sysforge 2775 root sysforge -\n'
+        printf 'd /var/lib/sysforge/sentinels 2775 root sysforge -\n'
+        printf 'd /var/cache/sysforge 2775 root sysforge -\n'
+        printf 'd /var/cache/sysforge/llvm-pgo 2775 root sysforge -\n'
     } > "$pkgdir/usr/lib/tmpfiles.d/sysforge.conf"
 
     # Pacman PostTransaction hooks: kernel/toolchain reminders +
