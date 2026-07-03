@@ -1,7 +1,7 @@
 pkgbase = ghostty-git
 	pkgdesc = Fast, native, feature-rich terminal emulator pushing modern features
 	pkgver = 1.3.1.r1209.gd560c64
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ghostty-org/ghostty
 	arch = x86_64
 	arch = aarch64
@@ -36,7 +36,9 @@ pkgbase = ghostty-git
 	depends = libwayland-client.so
 	depends = zlib
 	source = git+https://github.com/ghostty-org/ghostty.git
+	source = ghostty-llvm.patch
 	sha256sums = SKIP
+	sha256sums = 1df55089c6539501eab6c59b24625c016cd11c12f12d2181d72a5fb5b080502b
 
 pkgname = ghostty-git
 	depends = bzip2

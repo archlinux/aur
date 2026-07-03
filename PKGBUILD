@@ -4,7 +4,7 @@
 
 _pkgbase=ghostty
 pkgname=($_pkgbase-git $_pkgbase-shell-integration-git $_pkgbase-terminfo-git $_pkgbase-nautilus-git)
-pkgrel=1
+pkgrel=2
 pkgver=1.3.1.r1209.gd560c64
 pkgdesc="Fast, native, feature-rich terminal emulator pushing modern features"
 arch=(x86_64 aarch64 i686)
@@ -29,13 +29,15 @@ makedepends=(blueprint-compiler
              git
              pandoc-cli
              'zig<0.16.0')
-source=("git+$url.git")
-sha256sums=('SKIP')
+source=("git+$url.git"
+        ghostty-llvm.patch)
+sha256sums=('SKIP'
+            '1df55089c6539501eab6c59b24625c016cd11c12f12d2181d72a5fb5b080502b')
 
 prepare() {
 	cd "$_pkgbase"
-	# c.f. https://github.com/ghostty-org/ghostty/discussions/13176
-	echo "https://deps.files.ghostty.org/uucode-0.2.0-ZZjBPqZVVABQepOqZHR7vV_NcaN-wats0IB6o-Exj6m9.tar.gz" >> build.zig.zon.txt
+	# https://github.com/ghostty-org/ghostty/discussions/11993#discussioncomment-17336660
+	patch -p1 -i ../ghostty-llvm.patch
 	ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-global-cache/" ./nix/build-support/fetch-zig-cache.sh
 }
 

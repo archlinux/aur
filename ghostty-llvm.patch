@@ -1,0 +1,24 @@
+diff --git a/src/build/GhosttyResources.zig b/src/build/GhosttyResources.zig
+index 6f857655b..3eefd9d48 100644
+--- a/src/build/GhosttyResources.zig
++++ b/src/build/GhosttyResources.zig
+@@ -22,6 +22,7 @@ pub fn init(b: *std.Build, cfg: *const Config, deps: *const SharedDeps) !Ghostty
+             .omit_frame_pointer = false,
+             .unwind_tables = .sync,
+         }),
++        .use_llvm = true,
+     });
+     build_data_exe.linkLibC();
+ 
+diff --git a/src/build/SharedDeps.zig b/src/build/SharedDeps.zig
+index 9276c9914..db34c6364 100644
+--- a/src/build/SharedDeps.zig
++++ b/src/build/SharedDeps.zig
+@@ -800,6 +800,7 @@ pub fn gtkNgDistResources(
+                 .root_source_file = b.path("src/apprt/gtk/build/blueprint.zig"),
+                 .target = b.graph.host,
+             }),
++            .use_llvm = true,
+         });
+         blueprint_exe.linkLibC();
+         blueprint_exe.linkSystemLibrary2("gtk4", dynamic_link_opts);
