@@ -1,6 +1,6 @@
 # Maintainer: Rodrigo Brito <rodrigo@w3ti.com.br>
 pkgname=fina
-pkgver=9.0.5
+pkgver=9.0.7
 pkgrel=1
 pkgdesc="Gerenciador de finanças pessoais"
 arch=('x86_64')
