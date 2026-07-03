@@ -4,20 +4,20 @@
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=taisei-git
-pkgver=1.4.r374.g9cbc19bb
+pkgver=1.4.r696.gc91d3d1ab
 pkgrel=1
 pkgdesc="Open source Touhou clone (development version)"
 arch=('i686' 'x86_64')
 url="https://taisei-project.org/"
 license=('MIT')
-depends=('opengl-driver' 'sdl3' 'cglm' 'freetype2' 'libwebp' 'libzip' 'zstd' 'opusfile' 'hicolor-icon-theme' 'mimalloc')
+depends=('opengl-driver' 'sdl3' 'cglm' 'libunibreak' 'freetype2' 'libwebp' 'zlib' 'zstd' 'opusfile' 'hicolor-icon-theme' 'mimalloc')
 optdepends=('spirv-cross: OpenGL ES backends'
             'shaderc: OpenGL ES backends'
             'gamemode: GameMode integration'
             'openssl: for a better SHA-256 implementation')
 provides=('taisei')
 conflicts=('taisei')
-makedepends=('git' 'meson' 'python-docutils' 'python-zstandard')
+makedepends=('git' 'meson' 'python-docutils')
 source=('git+https://github.com/taisei-project/taisei.git'
         'git+https://github.com/taisei-project/SDL_GameControllerDB.git'
         'git+https://github.com/taisei-project/python-zipfile-zstd.git'
@@ -42,12 +42,18 @@ prepare() {
 
 build() {
     cd taisei
-    meson setup --prefix /usr --libexecdir lib --sbindir bin --buildtype plain --wrap-mode nodownload -D b_lto=true -D b_pie=true build
+
+    arch-meson . build \
+            -Dinstall_macos_bundle=disabled \
+            -Dinstall_relocatable=disabled \
+            -Dr_gles30=disabled \
+            -Dshader_transpiler=disabled \
+            -Dshader_transpiler_dxbc=disabled
     meson compile -C build
 }
 
 package() {
     cd taisei
     DESTDIR="$pkgdir/" meson install -C build
-    install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
+    install -Dm644 COPYING.txt "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
