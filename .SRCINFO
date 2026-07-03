@@ -1,6 +1,6 @@
 pkgbase = networkmanager-git
 	pkgdesc = Network Management daemon and user application
-	pkgver = 1.57.4dev+r13+g87a7700460
+	pkgver = 1.59.0dev+r1+g12965c9f6f
 	pkgrel = 1
 	url = https://networkmanager.dev/
 	arch = x86_64
@@ -41,7 +41,7 @@ pkgbase = networkmanager-git
 	makedepends = nftables
 	makedepends = pacrunner
 	makedepends = glib2-devel
-	source = git+https://github.com/NetworkManager/NetworkManager
+	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#branch=main
 	source = NetworkManager.conf
 	source = 20-connectivity.conf
 	sha256sums = SKIP

@@ -13,7 +13,7 @@ pkgbase=networkmanager-git
 _gitname=NetworkManager
 pkgname=(networkmanager-git libnm-git nm-cloud-setup-git)
 _pppver=2.4.9
-pkgver=1.57.4dev+r13+g87a7700460
+pkgver=1.59.0dev+r1+g12965c9f6f
 pkgrel=1
 pkgdesc="Network Management daemon and user application"
 arch=(x86_64)
@@ -24,7 +24,7 @@ makedepends=(dnsmasq mobile-broadband-provider-info meson ninja intltool dhclien
               iproute2 nss polkit wpa_supplicant systemd libgudev audit curl
              libnewt libndp libteam vala perl-yaml python-gobject git jansson bluez-libs
              glib2-docs nftables pacrunner glib2-devel)
-source=(git+https://github.com/$_gitname/$_gitname
+source=(git+https://gitlab.freedesktop.org/$_gitname/$_gitname.git#branch=main
     NetworkManager.conf
     20-connectivity.conf)
 sha256sums=('SKIP'
@@ -168,4 +168,3 @@ package_nm-cloud-setup-git() {
   cd "$srcdir"
   mv cloud/* "$pkgdir"
 }
-
