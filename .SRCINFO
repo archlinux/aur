@@ -1,15 +1,15 @@
 pkgbase = agntz
 	pkgdesc = Agent utility toolkit for AI coding agents
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/byteowlz/agntz
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = gcc-libs
-	source_x86_64 = agntz-0.3.1.tar.gz::https://github.com/byteowlz/agntz/releases/download/v0.3.1/agntz-v0.3.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 3bd657e50a1799f8b31362c03ff2f8a11cb018bc61775abc5fb950cea0e3bf1b
-	source_aarch64 = agntz-0.3.1.tar.gz::https://github.com/byteowlz/agntz/releases/download/v0.3.1/agntz-v0.3.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = d0cb5587eb3bf38502c257b42bb7dd58efb930d1edad640317e4c556ddf43208
+	source_x86_64 = agntz-0.3.2-x86_64.tar.gz::https://github.com/byteowlz/agntz/releases/download/v0.3.2/agntz-v0.3.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2ee5b9148f1a3976f1b011767cc5c0931d53332570aa79881ab5badb0e375994
+	source_aarch64 = agntz-0.3.2-aarch64.tar.gz::https://github.com/byteowlz/agntz/releases/download/v0.3.2/agntz-v0.3.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = dd18383e9a3d9d7e5f325a4c075c4ed168240a8d2682f4f33af7ecf3c5a495df
 
 pkgname = agntz
