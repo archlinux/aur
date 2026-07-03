@@ -1,5 +1,5 @@
 pkgname=smart-updater
-pkgver=2.0.1_beta
+pkgver=2.0.2_beta
 pkgrel=1
 pkgdesc="A streamlined PyQt6 tool for Arch Linux and CachyOS that makes system updates, app uninstallation, and log tracking fast and elegant."
 arch=('any')
@@ -8,7 +8,7 @@ license=('GPL')
 depends=('python' 'python-pyqt6' 'pacman-contrib')
 
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver/_/-}.tar.gz")
-sha256sums=('0a71919b2514c1101f9f198a146fb4a69faccaccfa4ffa072d7beac10ab4c34f')
+sha256sums=('0adae3d2a76046d15c4870a6f6eb8132a6c7350cac44202c4fb015b01329b12f')
 
 package() {
     local _srcdir="$pkgname-${pkgver/_/-}"
@@ -21,7 +21,7 @@ package() {
     chmod +x "$pkgdir/opt/$pkgname/main.py"
 
     mkdir -p "$pkgdir/usr/bin"
-    echo -e '#!/bin/bash\npython /opt/smart-updater/main.py "$@"' > "$pkgdir/usr/bin/$pkgname"
+    echo -e '#!/bin/bash\nexec -a smart-updater python /opt/smart-updater/main.py "$@"' > "$pkgdir/usr/bin/$pkgname"
     chmod +x "$pkgdir/usr/bin/$pkgname"
 
     mkdir -p "$pkgdir/usr/share/pixmaps"
@@ -36,7 +36,8 @@ Type=Application
 Name=Smart Updater
 Comment=System-Updates einfach und smart
 Exec=smart-updater
-Icon=smart-updater
+Icon=/usr/share/pixmaps/smart-updater.svg
 Terminal=false
+StartupWMClass=smart-updater
 Categories=System;Settings;" > "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
