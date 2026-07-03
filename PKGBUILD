@@ -1,7 +1,7 @@
 # Maintainer: zlicdt <xkicdt1@gmail.com>
 
 pkgname=open-orpheus
-pkgver=0.15.2
+pkgver=0.15.3
 pkgrel=1
 pkgdesc="An open-source implementation of Netease Cloud Music's Orpheus browser host."
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
     "LICENSE"
 )
 sha256sums=(
-    '153d865cc563403210b38eabc0da55fbb900e3c42c0193391ffc874e95a469eb'
+    '15282d937d85a86eda16914b4cb9a38635fbb8bb369eb361d3818a2374cfb6c9'
     '4499595d653b7a9e65001bb09239e6fb5d33e650d1f9db808ce87905021e9ff8'
 )
 
