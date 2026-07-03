@@ -1,7 +1,7 @@
 pkgbase = p4v
 	pkgdesc = Perforce Helix Visual Client
 	pkgver = 2026.2.2984595
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.perforce.com
 	arch = x86_64
 	license = custom:p4v
@@ -11,6 +11,7 @@ pkgbase = p4v
 	depends = libxkbfile
 	depends = nss
 	depends = libxslt
+	depends = libxml2-legacy
 	options = !strip
 	source = p4v.desktop
 	source = p4admin.desktop

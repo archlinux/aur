@@ -5,12 +5,12 @@
 pkgname=p4v
 _version=2026.2
 pkgver=2026.2.2984595
-pkgrel=1
+pkgrel=2
 pkgdesc="Perforce Helix Visual Client"
 arch=('x86_64')
 url="https://www.perforce.com"
 license=('custom:p4v')
-depends=('libxcb' 'qt6-base' 'libxi' 'libxkbfile' 'nss' 'libxslt')
+depends=('libxcb' 'qt6-base' 'libxi' 'libxkbfile' 'nss' 'libxslt' 'libxml2-legacy')
 options=('!strip')
 
 _url="${url}/downloads/perforce"
