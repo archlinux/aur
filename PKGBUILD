@@ -1,8 +1,8 @@
 # Maintainer: wintersnowgod <git.xerox732@passinbox.com>
 pkgname=nepdate
 pkgdesc='Standalone Nepali calendar widget and converter for Bikram Sambat and Gregorian calendars.'
-pkgver=2.2.5
-pkgrel=4
+pkgver=2.3.0
+pkgrel=1
 arch=(x86_64)
 url="https://github.com/khumnath/nepdate"
 depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'qt6-base' 'qt6-declarative')
@@ -10,21 +10,16 @@ makedepends=('cmake' 'qt6-shadertools' 'qt6-tools')
 license=('GPL-3.0-or-later')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz"
-  "https://github.com/khumnath/nepdate/pull/52.patch")
-sha256sums=('3923230a1afc12ac867883e6c6e993aeeebc88dfd7aaf4f663fbd646efaeeb57'
-  '86a9b2869e0fc56245423ab9bf29c3534c44439f052537af68543d81040bf541')
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('9e8400268fb253796eb4f2ac424c2768510d5bc5fcfb015a9c349b63997e38e5')
 
 prepare() {
-  #     cd "${pkgname}-${_commithash}"
   cd "${pkgname}-${pkgver}"
-  patch -p1 -i "../52.patch"
   echo ${pkgver} >./resources/version.conf
   echo "Built from AUR using tagged Git release at $(date)" >./resources/build_info.conf
 }
 
 build() {
-  #     cd "${pkgname}-${_commithash}/build"
   cd "${pkgname}-${pkgver}"
   cmake -B build -S . \
     -DCMAKE_BUILD_TYPE=Release \
