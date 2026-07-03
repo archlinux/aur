@@ -24,7 +24,16 @@ sha256sums=('SKIP')
 
 prepare() {
     cd "$pkgname"
-    git submodule update --init --recursive
+    # gitlab.linphone.org refuses a large share of connection attempts when
+    # it is loaded, and fetching the ~40 nested submodules in one go rarely
+    # gets through. The update is resumable, so retry until it completes.
+    local try
+    for try in {1..10}; do
+        git submodule update --init --recursive && return
+        echo "submodule fetch failed (attempt $try/10), retrying in 15s..."
+        sleep 15
+    done
+    return 1
 }
 
 build() {
