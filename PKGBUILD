@@ -1,6 +1,6 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=plasma-nano-git
-pkgver=6.6.90.r7.g1ec1af8
+pkgver=6.6.90.r8.gd2f4d39
 pkgrel=1
 pkgdesc="A minimal plasma shell package intended for embedded devices"
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
