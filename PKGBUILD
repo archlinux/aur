@@ -2,7 +2,7 @@
 # Contributor: Sabit Maulana <sbtmul@gmail.com>
 # Maintainer: aliu <double-a, r-o-n to the 0-1-3-0 at ur gmail.com>
 pkgname=larksuite-bin
-pkgver=7.66.10
+pkgver=7.66.11
 _pkgtyp=stable
 pkgrel=1
 pkgdesc="Collaboration suite service for office messaging, calendars, meetings, docs..."
@@ -27,7 +27,7 @@ source=(Lark-linux_x64-${pkgver}.deb::https://www.larksuite.com/api/package_info
 DLAGENTS=("https::/usr/bin/sh ${startdir}/dlagent-lark.sh %o %u"
 	"http::/usr/bin/sh ${startdir}/dlagent-license.sh %o %u"
 )
-b2sums=('620178428398e7d967d8e1b34e4e1de5947a62e69c45c22c5f5f111451c40c1b068bb36f42d5d11f80c5af630c3d18d1395bed38ec08be9d5731f1b649dbb070'
+b2sums=('32adf8bb01cae75db2b16f103b929330fdd84783d8e0cba56466edb4fa9399c89c35f13c96c8d78fad291fa62ee9fc7d60f8029fac5be1e690e9fadb280f73e9'
         'c3501dceef7f7ce21515d59560a245c8c2812af15ee076bc0610a1424e2e87c3a2be6568e85e4bf2aa5184e704ff37ad5bf67b4fdb79a1550179b45444132ef3'
         'a447d907e149618e3ac34361b0f0a10b56a28a0be6ec0a143dfc1697404c7049a3afae7ffd62466b4acfd28753f96a2869f3ab06e31620c570b9ff4fd8b74b5b'
         '0fe599804f2812e4ba13967d449fa5b41f4dd1949e91ac3c59c3bf95da93c1bf4099ea5088a9877e1b97f8a222e4e6189d965b65a4d2ed1d70736052942257f3'
