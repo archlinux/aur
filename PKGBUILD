@@ -26,7 +26,7 @@ depends=(
   libjxl
   libvpx
   libxdamage
-  minizip-ng
+  minizip
   openal
   openh264
   opus
@@ -36,7 +36,6 @@ depends=(
   qt6-svg
   qt6-wayland
   rnnoise
-  xcb-util-keysyms
   xxhash
 
   ## for libtg_owt
@@ -67,8 +66,6 @@ optdepends=(
   'xdg-desktop-portal: desktop integration'
 )
 
-conflicts=("forkgram-bin")
-
 options=('!lto')
 
 _pkgsrc="frk-v$pkgver-full"
@@ -96,16 +93,6 @@ prepare() {
       patch -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
-
-  # force system minizip-ng
-  rm -rf "Telegram/ThirdParty/minizip"
-  sed -E -e '/pkg_check_modules/s&\bminizip\b&minizip-ng&' -i "cmake/external/minizip/CMakeLists.txt"
-
-  # add missing headers for gcc 16
-  sed -E -e '1i #include <cstdint>' -i \
-    "Telegram/ThirdParty/tgcalls/tgcalls/DirectConnectionChannel.h" \
-    "Telegram/ThirdParty/tgcalls/tgcalls/third-party/json11.cpp" \
-    "Telegram/ThirdParty/tgcalls/tgcalls/v2/SignalingConnection.h"
 
   # disable RHI; breaks image rendering
   sed -E -e '/qputenv\("QT_WIDGETS_RHI"/d' -i \
