@@ -1,6 +1,6 @@
 pkgbase = trenchbroom-git
 	pkgdesc = TrenchBroom is a modern cross-platform level editor for Quake-engine based games. This will build/install TrenchBroom from the current commits to the main branch of it's GitHub
-	pkgver = v2024.1.RC2.r19.gce15d1158
+	pkgver = v2025.3.r1356.g74c536d91
 	pkgrel = 1
 	url = https://trenchbroom.github.io/
 	arch = i686

@@ -1,8 +1,9 @@
 # Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
 # Contributor: Retro Gamer <https://github.com/eGax>
+# Contributor: matrixDoppelganger <www.kinker31.com>
 
 pkgname=trenchbroom-git
-pkgver=v2024.1.RC2.r19.gce15d1158
+pkgver=v2025.3.r1356.g74c536d91
 pkgrel=1
 pkgdesc="TrenchBroom is a modern cross-platform level editor for Quake-engine based games. This will build/install TrenchBroom from the current commits to the main branch of it's GitHub"
 arch=("i686" "x86_64")
@@ -48,5 +49,5 @@ package() {
 	install -Dm644 trenchbroom.desktop "${pkgdir}/usr/share/applications/trenchbroom.desktop"
 	cd "${srcdir}/$_BUILDDIR"
 	make DESTDIR="${pkgdir}" install
-	install -Dm644 "${srcdir}/trenchbroom/app/resources/linux/icons/icon_256.png" "${pkgdir}/usr/share/pixmaps/trenchbroom.png"
+	install -Dm644 "${srcdir}/trenchbroom/app/TrenchBroom/resources/linux/icons/icon_256.png" "${pkgdir}/usr/share/pixmaps/trenchbroom.png"
 }
