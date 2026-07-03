@@ -1,6 +1,6 @@
 pkgbase = fs_cli-rs
 	pkgdesc = Interactive FreeSWITCH ESL CLI client, standalone without the full FreeSWITCH suite
-	pkgver = 1.3.6
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/ticpu/fs_cli-rs
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = fs_cli-rs
 	makedepends = git
 	depends = gcc-libs
 	options = !lto
-	source = fs_cli-rs-1.3.6.tar.gz::https://github.com/ticpu/fs_cli-rs/archive/refs/tags/v1.3.6.tar.gz
-	sha256sums = e204a53de1030bf9a24f0437d2818f2e6b085b7b5b667b74e6f25197e47933da
+	source = fs_cli-rs-1.4.0.tar.gz::https://github.com/ticpu/fs_cli-rs/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = e23f098f0a8fb954fcbd119bb099ef1bc171c86321f50bc4315ce3f13304f262
 
 pkgname = fs_cli-rs
