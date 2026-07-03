@@ -1,9 +1,8 @@
 pkgbase = pology-git
 	pkgdesc = A framework for custom processing of PO files.
-	pkgver = 0.13.r5681.4ed65229
+	pkgver = 0.13.r5724.fe545b48
 	pkgrel = 1
 	url = https://invent.kde.org/sdk/pology
-	changelog = changelog
 	arch = any
 	license = GPL-3.0-only
 	checkdepends = python-pytest

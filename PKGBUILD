@@ -1,7 +1,7 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname=pology-git
-pkgver=0.13.r5681.4ed65229
+pkgver=0.13.r5724.fe545b48
 pkgrel=1
 pkgdesc='A framework for custom processing of PO files.'
 arch=('any')
@@ -18,7 +18,6 @@ optdepends=('python-dbus: to communicate with external applications'
 	    'git: for processing files under version control'
 	    'subversion: for processing files under version control')
 provides=('pology')
-changelog=changelog
 source=("git+https://invent.kde.org/sdk/pology.git")
 sha256sums=('SKIP')
 
