@@ -1,7 +1,7 @@
 # Maintainer: Eduardo Parra <eduparra90@gmail.com>
 pkgname=toolhive-studio-bin
 _pkgname=toolhive-studio
-pkgver=0.36.5
+pkgver=0.36.7
 pkgrel=1
 pkgdesc="Desktop app to install, manage and run MCP servers and connect them to AI agents and clients (Electron, repackaged from upstream .deb)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ provides=('toolhive-studio' 'toolhive')
 conflicts=('toolhive-studio' 'toolhive')
 options=(!strip !debug emptydirs)
 source=("$pkgname-$pkgver.deb::$url/releases/download/v$pkgver/toolhive_${pkgver}_amd64.deb")
-sha256sums=('b22efe92a234d780f167bb3fcb43d47b7876aace2bf82bd954d721504c49173d')
+sha256sums=('c173aa28ad059f743812013198e1934f60c70dfdc4b25c4ed496e94b22c31147')
 
 package() {
     # Extract the .deb (ar archive) and its data payload (zstd-compressed tar)
