@@ -1,6 +1,6 @@
 pkgbase = ghostty-git
 	pkgdesc = Fast, native, feature-rich terminal emulator pushing modern features
-	pkgver = 1.1.2.r1500.gf1f9d5e
+	pkgver = 1.3.1.r1209.gd560c64
 	pkgrel = 1
 	url = https://github.com/ghostty-org/ghostty
 	arch = x86_64
@@ -10,13 +10,12 @@ pkgbase = ghostty-git
 	makedepends = blueprint-compiler
 	makedepends = git
 	makedepends = pandoc-cli
-	makedepends = zig
+	makedepends = zig<0.16.0
 	depends = bzip2
 	depends = fontconfig
 	depends = libfontconfig.so
 	depends = freetype2
 	depends = libfreetype.so
-	depends = gcc-libs
 	depends = glibc
 	depends = glib2
 	depends = libglib-2.0.so
@@ -45,7 +44,6 @@ pkgname = ghostty-git
 	depends = libfontconfig.so
 	depends = freetype2
 	depends = libfreetype.so
-	depends = gcc-libs
 	depends = glibc
 	depends = glib2
 	depends = libglib-2.0.so
@@ -67,17 +65,26 @@ pkgname = ghostty-git
 	depends = zlib
 	depends = ghostty-shell-integration-git
 	depends = ghostty-terminfo-git
-	provides = ghostty=1.1.2.r1500.gf1f9d5e
+	optdepends = ghostty-nautilus: Open in Ghostty context menu in GNOME Files
+	provides = ghostty=1.3.1.r1209.gd560c64
 	conflicts = ghostty
 
 pkgname = ghostty-shell-integration-git
 	pkgdesc = Shell integration scripts for ghostty
 	depends = 
-	provides = ghostty-shell-integration=1.1.2.r1500.gf1f9d5e
+	provides = ghostty-shell-integration=1.3.1.r1209.gd560c64
 	conflicts = ghostty-shell-integration
 
 pkgname = ghostty-terminfo-git
 	pkgdesc = Terminfo for ghostty
 	depends = 
-	provides = ghostty-terminfo=1.1.2.r1500.gf1f9d5e
+	provides = ghostty-terminfo=1.3.1.r1209.gd560c64
 	conflicts = ghostty-terminfo
+
+pkgname = ghostty-nautilus-git
+	pkgdesc = Open in Ghostty for GNOME Files
+	license = GPL-2.0-or-later
+	depends = ghostty
+	depends = nautilus-python
+	provides = ghostty-nautilus=1.3.1.r1209.gd560c64
+	conflicts = ghostty-nautilus
