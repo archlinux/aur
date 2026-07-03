@@ -1,9 +1,9 @@
 # Maintainer: Keith Raghubar <aur.archlinux.org.buckskin000@passmail.net>
 
 pkgname=sysforge-git
-pkgver=1.2.0.r0.g0000000  # updated dynamically by pkgver()
+pkgver=2.0.0.r0.g0000000  # updated dynamically by pkgver()
 pkgrel=1
-pkgdesc="All-in-one Arch Linux helper for system setup and package management with compiler-optimized builds (git)"
+pkgdesc="Arch Linux build and maintenance suite for system setup and package management with compiler-optimized builds (git)"
 arch=('any')
 url="https://github.com/KeithRaghubar/sysforge"
 license=('MIT')
@@ -33,6 +33,7 @@ optdepends=(
 )
 conflicts=('sysforge')
 provides=('sysforge')
+install=sysforge.install
 backup=(
     'etc/sysforge/sysforge.toml'
     'etc/sysforge/profiles.toml'
@@ -82,12 +83,24 @@ package() {
     install -Dm644 etc/sysforge/bootstrap.toml \
         "$pkgdir/usr/share/sysforge/bootstrap.toml.example"
 
+    # The sysforge group owns sysforge's writable runtime dirs so the
+    # unprivileged build user (a member) can write state and the PGO cache
+    # across runs. systemd-sysusers creates it before systemd-tmpfiles runs.
+    install -Dm644 /dev/null "$pkgdir/usr/lib/sysusers.d/sysforge.conf"
+    printf 'g sysforge -\n' > "$pkgdir/usr/lib/sysusers.d/sysforge.conf"
+
     # State directory (pipeline state, build state, logs) + sentinel subdir
     # consumed by `sysforge update` from the libalpm hooks below.
+    # /var/cache/sysforge holds the regenerable PGO profdata store, written by
+    # the unprivileged toolchain build. All owned root:sysforge with setgid
+    # (2775) so group members can write and new subdirs inherit the group —
+    # the single ownership model shared with primitives/fs_provision.py.
     install -Dm644 /dev/null "$pkgdir/usr/lib/tmpfiles.d/sysforge.conf"
     {
-        printf 'd /var/lib/sysforge 0777 root root -\n'
-        printf 'd /var/lib/sysforge/sentinels 0777 root root -\n'
+        printf 'd /var/lib/sysforge 2775 root sysforge -\n'
+        printf 'd /var/lib/sysforge/sentinels 2775 root sysforge -\n'
+        printf 'd /var/cache/sysforge 2775 root sysforge -\n'
+        printf 'd /var/cache/sysforge/llvm-pgo 2775 root sysforge -\n'
     } > "$pkgdir/usr/lib/tmpfiles.d/sysforge.conf"
 
     # Pacman PostTransaction hooks: kernel/toolchain reminders +

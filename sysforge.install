@@ -1,0 +1,16 @@
+# sysforge install scriptlet
+#
+# Drops a first-install notice consumed by the sysforge CLI. The CLI advises
+# running `sysforge run reconfigure` and `sysforge run hardware` before other
+# commands while the marker is present and those stages are incomplete, and
+# self-deletes the marker once both complete. Delete the file to dismiss the
+# notice manually. Only fires on a fresh install, not on upgrades.
+
+post_install() {
+    # The tmpfiles.d/sysusers.d entries that own /var/lib/sysforge run at
+    # PostTransaction (after this scriptlet), so create the dir + marker here
+    # best-effort. Group ownership is repaired by the CLI's fs_provision path.
+    install -d -m 2775 /var/lib/sysforge 2>/dev/null || mkdir -p /var/lib/sysforge
+    : > /var/lib/sysforge/.sysforge-init-notice 2>/dev/null || true
+    chgrp sysforge /var/lib/sysforge/.sysforge-init-notice 2>/dev/null || true
+}
