@@ -14,7 +14,7 @@ _appexe="${pkgname}"
 _appid=uk.co.powdertoy.tpt
 _appvendor=powdertoy
 pkgver=100.0.399
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat!"
 arch=(x86_64 i686)
 depends=('glibc' 'libx11' 'sdl2' "$_lua" 'fftw' 'zlib' 'libpng' 'curl' 'jsoncpp' 'hicolor-icon-theme')
@@ -37,14 +37,17 @@ build() {
          *) opt_lua=none   ;;
   esac
 
-  if   grep -q -i pni  /proc/cpuinfo; then
-    opt_sse=sse3
-  elif grep -q -i sse2 /proc/cpuinfo; then
-    opt_sse=sse2
-  elif grep -q -i sse  /proc/cpuinfo; then
-    opt_sse=sse
-  else
-    opt_sse=none
+  # <https://unix.stackexchange.com/questions/43539/what-do-the-flags-in-proc-cpuinfo-mean>
+  # <https://github.com/The-Powder-Toy/The-Powder-Toy/commit/24628db58baf83db3d0d5c944d4357436c01ba86>
+  if   grep -q -i '\<avx512'   /proc/cpuinfo; then opt_sse=avx512
+  elif grep -q -i '\<avx2\>'   /proc/cpuinfo; then opt_sse=avx2
+  elif grep -q -i '\<avx\>'    /proc/cpuinfo; then opt_sse=avx
+  elif grep -q -i '\<sse4_1\>' /proc/cpuinfo; then opt_sse=sse4.2
+  elif grep -q -i '\<sse4_1\>' /proc/cpuinfo; then opt_sse=sse4.1
+  elif grep -q -i '\<pni\>'    /proc/cpuinfo; then opt_sse=sse3
+  elif grep -q -i '\<sse2\>'   /proc/cpuinfo; then opt_sse=sse2
+  elif grep -q -i '\<sse\>'    /proc/cpuinfo; then opt_sse=sse
+  else opt_sse=none
   fi
 
   local extra_flags=(
@@ -57,7 +60,6 @@ build() {
     -Dx86_sse="${opt_sse}"
   )
 
-  msg2 "building ${pkgname} with the following extra flags: ${extra_flags[*]}"
   arch-meson --buildtype=release build "${extra_flags[@]}"
   meson compile -C build
 }
