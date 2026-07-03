@@ -1,0 +1,5 @@
+[fs_cli-rs]
+source = "github"
+github = "ticpu/fs_cli-rs"
+use_latest_release = true
+prefix = "v"

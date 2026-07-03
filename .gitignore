@@ -2,3 +2,5 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!.nvchecker.toml
+!update-pkg.sh
