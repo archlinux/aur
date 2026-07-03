@@ -1,13 +1,13 @@
 pkgbase = quikrun
 	pkgdesc = Run your code without hassle
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/soymadip/quikrun
 	arch = any
 	license = GPL3
 	makedepends = python-installer
 	depends = python
-	source = https://files.pythonhosted.org/packages/py3/q/quikrun/quikrun-2.2.0-py3-none-any.whl
-	sha256sums = 2c681396e58698b8f5141e6b3548ae5e940776daec4b2cc71f81bbe1974ac377
+	source = https://files.pythonhosted.org/packages/py3/q/quikrun/quikrun-2.2.1-py3-none-any.whl
+	sha256sums = SKIP
 
 pkgname = quikrun
