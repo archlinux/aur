@@ -14,12 +14,12 @@ source=("git+https://github.com/Twilight0/valuate.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "valuate"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson "$pkgname" build
+  arch-meson "valuate" build
   meson compile -C build
 }
 
