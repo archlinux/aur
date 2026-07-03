@@ -1,7 +1,7 @@
 # Maintainer: Eduardo Parra <eduparra90@gmail.com>
 pkgname=github-copilot-app-bin
 _pkgname=github-copilot-app
-pkgver=1.0.10
+pkgver=1.0.15
 pkgrel=1
 pkgdesc="GitHub Copilot desktop application (Tauri)"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ options=('!strip' '!emptydirs')
 source_x86_64=("$pkgname-$pkgver-x64.deb::$url/releases/download/v$pkgver/GitHub-Copilot-linux-x64.deb")
 source_aarch64=("$pkgname-$pkgver-arm64.deb::$url/releases/download/v$pkgver/GitHub-Copilot-linux-arm64.deb")
 
-sha256sums_x86_64=('8a717fadf0fbd869d2023909a797fd1c3265ce52e57d3f66050d9b2be8c5640e')
-sha256sums_aarch64=('cc44bb1c839cf39c336b0e8d3b192736cd1eb953f677adeccff906e14f1231f4')
+sha256sums_x86_64=('df4177c8844ddc19fef5371da7389abeedab0a1b8e3b4439a32e84e54bb6e93a')
+sha256sums_aarch64=('106c2e2140dabcb324a90839649c2f3bb224c88deefc6995beb4a82dd12baa0c')
 
 package() {
     local _deb
