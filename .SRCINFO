@@ -10,7 +10,7 @@ pkgbase = foldertree
 	depends = glibc
 	depends = gcc-libs
 	depends = xclip
-	source = foldertree-1.0.0::git+https://github.com/Neuwj-00/Foldertree.git
+	source = foldertree-1.0.0::git+https://github.com/Neuwj-00/Foldertree.git#tag=v1.0.0
 	sha256sums = SKIP
 
 pkgname = foldertree

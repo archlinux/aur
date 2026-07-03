@@ -9,13 +9,13 @@ url="https://github.com/Neuwj-00/Foldertree"
 license=('GPL-3.0-only')
 depends=('glibc' 'gcc-libs' 'xclip')
 makedepends=('cargo' 'git')
-source=("${pkgname}-${pkgver}::git+${url}.git")
+source=("${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -23,11 +23,10 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
-  cargo build --frozen --release --all-features
+  cargo build --offline --release --all-features
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-
   install -Dm755 "target/release/$_pkgname" "${pkgdir}/usr/bin/$_pkgname"
 }
