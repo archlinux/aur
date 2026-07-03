@@ -2,7 +2,7 @@
 
 pkgname=llm-thalamus
 _pkgname=llm_thalamus
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Qt desktop GUI for the pi coding agent — rich chat interface using pi --mode rpc"
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=('python')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/evertvorster/llm_thalamus/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('SKIP')
+sha256sums=('0c2d248d79624e66db8552b0728759cf59407ba62f9a9ba3b0aec52c6f7e3a87')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
