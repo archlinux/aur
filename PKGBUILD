@@ -1,6 +1,6 @@
 # Maintainer: Twilight0 <twilight0@vivaldi.net>
 pkgname=valuate-git
-pkgver=1.0.0.r0.g0000000
+pkgver=1.1.0.r0.g0000000
 pkgrel=1
 pkgdesc="A GTK3, XApp and Cinnamon-rebased calculator fork"
 arch=('x86_64')

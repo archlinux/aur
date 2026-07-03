@@ -1,6 +1,6 @@
 pkgbase = valuate-git
 	pkgdesc = A GTK3, XApp and Cinnamon-rebased calculator fork
-	pkgver = 1.0.0.r0.g0000000
+	pkgver = 1.1.0.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/Twilight0/valuate
 	arch = x86_64
