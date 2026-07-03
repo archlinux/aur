@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wizread-bin
 _pkgname=WizRead
-pkgver=1.0.0_beta.11
+pkgver=1.0.13
 _electronversion=33
 pkgrel=1
 pkgdesc="A next-generation e-book reader for passionate readers. (Prebuilt version.Use system-wide electron)"
@@ -23,11 +23,11 @@ options=(
     '!strip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}_${pkgver//_/-}_amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE::${url}/tos"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d4c8a2b253a332896f5956eff61e13eb14b3974b834b16637777db1298571abd'
+sha256sums=('8890f0772a1ed1a4c629fa92f5f68465d1b342e7d02aa728cbfa63198e4189d5'
             'e52d59cd447fe681f6d864ee8391bb7515283fe300c06028e1f34f1f8e32f095'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
