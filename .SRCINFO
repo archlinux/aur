@@ -1,14 +1,14 @@
 pkgbase = butteraugli-git
 	pkgdesc = A tool for measuring perceived differences between images
 	pkgver = r36.g71b18b6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/butteraugli
 	arch = i686
 	arch = x86_64
-	license = Apache
+	license = Apache-2.0
 	makedepends = git
 	depends = glibc
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = libpng
 	provides = butteraugli=r36.g71b18b6
 	conflicts = butteraugli

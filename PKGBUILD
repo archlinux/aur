@@ -2,12 +2,12 @@
 
 pkgname=butteraugli-git
 pkgver=r36.g71b18b6
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for measuring perceived differences between images"
 arch=('i686' 'x86_64')
 url="https://github.com/google/butteraugli"
-license=('Apache')
-depends=('glibc' 'libjpeg' 'libpng')
+license=('Apache-2.0')
+depends=('glibc' 'libjpeg-turbo' 'libpng')
 makedepends=('git')
 provides=("butteraugli=$pkgver")
 conflicts=('butteraugli')
