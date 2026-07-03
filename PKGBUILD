@@ -1,4 +1,4 @@
-pkgname=ftr
+pkgname=foldertree
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Fast directory tree generator written in Rust"
