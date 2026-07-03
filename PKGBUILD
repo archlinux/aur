@@ -3,12 +3,12 @@
 pkgname=elph-nova-bin
 _pkgname=elph-nova
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A corporate communications hub designed for effective collaboration with colleagues"
 arch=("x86_64")
 # url="https://docs.eltex-co.ru/display/doc/Elph+Desktop"
 license=("custom")
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux' 'libappindicator-gtk3')
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux' 'libappindicator')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://archive.eltex-co.ru/repository/elph-services-raw/${_pkgname}/${pkgver}/linux/${_pkgname}-${pkgver}-linux-x64.deb")
