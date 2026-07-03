@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=loreai
-pkgver=0.34.0
+pkgver=0.35.0
 pkgrel=1
 pkgdesc="Memory and context management for AI coding agents"
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom:FSL-1.1-Apache-2.0')
 depends=('nodejs>=22')
 makedepends=('pnpm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('3f29f2108340a7f536c6bd9e061b72334f286c1069a98f9c9a4eef4f0664d895')
+sha256sums=('1463048f7509aad6a4996fe556b4d3e0a6f7e71812745854e4290cac62ce82f5')
 
 build() {
   cd "${pkgname}-${pkgver}"
