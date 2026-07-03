@@ -8,7 +8,7 @@ url="https://github.com/Neuwj-00/uninstaller"
 license=('GPL3')
 depends=('gcc-libs')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Neuwj-00/uninstaller/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Neuwj-00/uninstaller/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('SKIP') 
 
 build() {
