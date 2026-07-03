@@ -1,0 +1,15 @@
+pkgbase = phpggc-git
+	pkgdesc = PHP gadget chain generator
+	pkgver = r725.f8aebde
+	pkgrel = 1
+	url = https://github.com/ambionics/phpggc
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	depends = php
+	provides = phpggc
+	conflicts = phpggc
+	source = git+https://github.com/ambionics/phpggc
+	b2sums = SKIP
+
+pkgname = phpggc-git
