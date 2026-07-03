@@ -9,8 +9,8 @@
 # shellcheck disable=SC2148,SC2034,SC2154,SC2164
 
 pkgname=ffmpeg-headless
-pkgver=8.1.1
-pkgrel=2
+pkgver=8.1.2
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -111,23 +111,17 @@ provides=(
   ffmpeg
 )
 conflicts=('ffmpeg')
-_tag='150ba6ddfabb5c433bb2fb3ee546d2a96e59066d'
-_git_base="https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}"
+_git_base="https://git.ffmpeg.org/ffmpeg.git?signed#tag=n${pkgver}"
 _git_mirror="https://github.com/FFmpeg/FFmpeg.git#tag=n${pkgver}"
 source=(
   "$pkgname::git+${_git_base}"
 )
-b2sums=('f0725f1156a5fa34fb5ee617c0c02dd3615c91ea1fd6f94c7d622106ecaedeee0ce74d68b9965ceb6aa70ee1c539b409bc2102c3cf2309a85340af63d2a3e03e')
+b2sums=('a2b77f48a12486d07965ffa2f4ff27e04e552b7c8d2dec4a8bf847088d93a5858982636836a13ade2765c8c976ded8908633a8c2f4142e4bbd4ed430f8cc91ce')
 validpgpkeys=('DD1EC9E8DE085C629B3E1846B18E8928B3948D64')   # Michael Niedermayer <michael@niedermayer.cc>
 
 # prepare() {
 #   cd "${pkgname}" || exit 1
 # }
-
-pkgver() {
-  cd "${pkgname}" || exit 1
-  git describe --tags | sed 's/^n//'
-}
 
 build() {
   export PKG_CONFIG_PATH='/usr/lib/mbedtls2/pkgconfig'
@@ -208,7 +202,8 @@ build() {
     --disable-xlib \
     --disable-sdl2 \
     --disable-htmlpages \
-    --disable-ffplay
+    --disable-ffplay \
+    --disable-decoder=magicyuv # pixelsmash
   make
   make tools/qt-faststart
 }
