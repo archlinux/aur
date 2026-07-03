@@ -1,6 +1,6 @@
 # Maintainer: Qingxu <me@linioi.com>
 pkgname=lody-bin
-pkgver=0.61.0
+pkgver=0.66.0
 pkgrel=1
 pkgdesc='A development platform built for parallel AI Agent workflows'
 url='https://lody.ai'
@@ -42,7 +42,7 @@ source=(
 noextract=(
     "$pkgname-$pkgver-amd64.deb"
 )
-sha256sums=('6fcc6d3f1389df07f9a12005fe1c156b1722aadb7ce6503179deffa7465d9aee')
+sha256sums=('3c517ec5641038971b51b75e935621e0b8c4b5fe2d69775b30464edb54d376c2')
 
 package() {
     local _deb="$srcdir/$pkgname-$pkgver-amd64.deb"
