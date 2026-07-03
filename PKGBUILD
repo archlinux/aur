@@ -1,7 +1,7 @@
 # Maintainer: Matthias Puchstein <matthias at puchstein dot lu>
 
 pkgname=xkb-ultimatekeys
-pkgver=2026.02.24
+pkgver=2026.06.24
 _version=${pkgver//./-}
 pkgrel=1
 pkgdesc='International US QWERTY keyboard layout with enhanced multilingual support'
@@ -10,7 +10,7 @@ url='https://github.com/pieter-degroote/UltimateKEYS'
 license=(GPL-3.0-only)
 depends=(xkeyboard-config)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/r$_version.tar.gz")
-b2sums=('5b35c755ebef715d87d7d10940feb310fd991147ea94f1c115d3b8fc70aa051dcaf0edb64e8890000bbf50ac6ff1e14d45c3cbd875c46e3081704f9d24f0a9f6')
+b2sums=('4b0abcdca2c44a7b6e96e4b013e26026fab785f05b4fc7d6d8f7df8634740a9948ab37565c96bc208f844a8bb7e095f8ef5d93cf0969203df6ec7c0008560272')
 
 package() {
   cd UltimateKEYS-r$_version
