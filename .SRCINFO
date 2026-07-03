@@ -1,6 +1,6 @@
 pkgbase = python-pyannote.metrics
 	pkgdesc = Evaluation metrics for speaker diarisation, segmentation and detection (pyannote.metrics)
-	pkgver = 4.0.0
+	pkgver = 4.1
 	pkgrel = 1
 	url = https://github.com/pyannote/pyannote-metrics
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-pyannote.metrics
 	depends = python-pyannote.database
 	depends = python-scikit-learn
 	depends = python-scipy
-	source = https://files.pythonhosted.org/packages/source/p/pyannote_metrics/pyannote_metrics-4.0.0.tar.gz
-	sha256sums = aec037eb7ca4c0ad5c5bbcc19bc04e9acf24ba42c95f025497378e31db6a0ff4
+	source = https://files.pythonhosted.org/packages/source/p/pyannote_metrics/pyannote_metrics-4.1.tar.gz
+	sha256sums = afe24c54ee0799e8cfbe8ee85fa517793c3450bb7eae8fedd1a77ccec0343f7e
 
 pkgname = python-pyannote.metrics
