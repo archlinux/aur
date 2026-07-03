@@ -1,6 +1,6 @@
 pkgbase = clyocloud-git
 	pkgdesc = A sleek personal cloud storage and media streaming server built with Nuxt (git version)
-	pkgver = 2.2.2.r80ea2d6
+	pkgver = 2.2.3.r3685eff
 	pkgrel = 1
 	url = https://code.weexnes.dev/ClyoCloud
 	install = clyocloud.install
@@ -11,7 +11,7 @@ pkgbase = clyocloud-git
 	provides = clyocloud
 	conflicts = clyocloud
 	options = !strip
-	source = clyocloud-git-80ea2d6e7d33560d8998eb2cb107c322f73d3ec2.tar.gz::https://code.weexnes.dev/~downloads/projects/23/archives?revision=80ea2d6e7d33560d8998eb2cb107c322f73d3ec2&format=tgz
+	source = clyocloud-git-3685effa493f633f15bfb67d51f239ebd80b016c.tar.gz::https://code.weexnes.dev/~downloads/projects/23/archives?revision=3685effa493f633f15bfb67d51f239ebd80b016c&format=tgz
 	source = clyocloud.service
 	sha256sums = SKIP
 	sha256sums = SKIP
