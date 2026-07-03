@@ -1,0 +1,5 @@
+[newtree-bin]
+source = "github"
+github = "marcusbandit/newtree"
+use_latest_release = true
+prefix = "v"

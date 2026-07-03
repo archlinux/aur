@@ -1,0 +1,24 @@
+pkgbase = newtree-bin
+	pkgdesc = A modern reimagining of the classic tree command with icons, color, and sane pattern filtering
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/marcusbandit/newtree
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = newtree
+	provides = nt
+	conflicts = newtree
+	options = !strip
+	source = README-0.2.0.md::https://raw.githubusercontent.com/marcusbandit/newtree/v0.2.0/README.md
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/marcusbandit/newtree/v0.2.0/LICENSE
+	sha256sums = 281d7d2c88770a870a17f2093aaaa0ce6d6212afb1bb48621855bd907167c2b6
+	sha256sums = cf779b612d0897e1cb51670e1f45bbfc452be447bffffc20f8fce8a99d49d75e
+	source_x86_64 = newtree-x86_64-0.2.0::https://github.com/marcusbandit/newtree/releases/download/v0.2.0/nt-0.2.0-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 6b77c9e3ba1c9e14188920480c87c46a1c6d5ce6481cc1872ac72276961394ad
+	source_aarch64 = newtree-aarch64-0.2.0::https://github.com/marcusbandit/newtree/releases/download/v0.2.0/nt-0.2.0-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 9b8ef490d5f3eee43f863e9f0e996b96362e50e013658002af2ed91672d06cfe
+
+pkgname = newtree-bin
