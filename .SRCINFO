@@ -1,13 +1,13 @@
 pkgbase = goda
 	pkgdesc = Go Dependency Analysis toolkit
-	pkgver = 0.9.3
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://github.com/loov/goda
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
-	source = goda::git+https://github.com/loov/goda#tag=v0.9.3
-	b2sums = d23f0e402df4b37c05e5c15d01aa6dcf59362e1e3948ab04368bfed5d4c8605f8b5c88f062387ff05c47f0ed6224ab45eb415f1f0c0f252085ca8213ab8e6188
+	source = goda::git+https://github.com/loov/goda#tag=v0.9.4
+	b2sums = 5a3703666834905e65a8622eb7f9ae21432777f5bc16d646ec708d873983235c28b9a6b8d988b583f0742d756671f9eecb62e6489b3707991a7638a5ee565b39
 
 pkgname = goda

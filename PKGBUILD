@@ -1,6 +1,6 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 pkgname=goda
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="Go Dependency Analysis toolkit"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/loov/goda"
 license=('MIT')
 makedepends=('git' 'go')
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
-b2sums=('d23f0e402df4b37c05e5c15d01aa6dcf59362e1e3948ab04368bfed5d4c8605f8b5c88f062387ff05c47f0ed6224ab45eb415f1f0c0f252085ca8213ab8e6188')
+b2sums=('5a3703666834905e65a8622eb7f9ae21432777f5bc16d646ec708d873983235c28b9a6b8d988b583f0742d756671f9eecb62e6489b3707991a7638a5ee565b39')
 
 build() {
   cd "${srcdir}/${pkgname}"
