@@ -2,9 +2,9 @@
 pkgname=hermes-agent-desktop
 _pkgname=hermes-desktop          # /usr/bin symlink name (AUR convention, lowercase)
 _upstream=Hermes                 # productName + executableName
-_pkgver_tag=v2026.6.19
+_pkgver_tag=v2026.7.1
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
 arch=('x86_64')
 url='https://github.com/NousResearch/hermes-agent'
@@ -23,12 +23,12 @@ makedepends=('base-devel' 'git' 'nodejs>=22' 'npm')
 conflicts=('hermes-agent-desktop-bin')
 options=('!strip' '!debug')
 source=("${url}/archive/refs/tags/${_pkgver_tag}.tar.gz")
-sha256sums=('69b805ec0a7a7be880068ba8a3b17479d7ba29f0cac0a2e9c6692c02f346ba91')
+sha256sums=('ec8a380629cc2f3f2102dd92cad50c4ded706fe59c0e359a05681166a0ae2991')
 
 # NOTE: ${srcdir} is empty at the top level of a PKGBUILD — makepkg only sets
 # it inside the function scope of prepare()/build()/package(). Computing the
 # extracted directory once at the top (as `_srcdir=...`) silently produces a
-# root-prefixed path (`/hermes-agent-2026.6.19`) and `cd` fails. Define a helper
+# root-prefixed path (`/hermes-agent-2026.7.1`) and `cd` fails. Define a helper
 # and call it from each function instead.
 _extract_dir() {
   echo "${srcdir}/hermes-agent-${_pkgver_tag#v}"
