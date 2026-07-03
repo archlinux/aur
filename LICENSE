@@ -1,0 +1,15 @@
+The Unity CLI is proprietary software. Copyright (c) Unity Technologies.
+
+Use of the Unity CLI and the Unity Editors, modules and services it installs
+is governed by the Unity Terms of Service and the applicable Unity Software
+License terms:
+
+    https://unity.com/legal/terms-of-service
+    https://unity.com/legal/editor-terms-of-service
+
+The Unity CLI binary bundles third-party open source components that remain
+under their respective licenses (for example the MIT-licensed npm packages and
+the Node.js runtime it is built on).
+
+This file is provided by the unity-cli-bin package to document the licensing of
+the redistributed binary; it is not itself a grant of rights by Unity.
