@@ -3,7 +3,7 @@
 _binname="powder"
 _pkgname="powder-toy"
 pkgname="${_pkgname}-bin"
-pkgver=99.5.394
+pkgver=100.0.399
 pkgrel=1
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat!"
 arch=(
@@ -20,11 +20,14 @@ depends=(
   'hicolor-icon-theme'
 )
 provides=(
-  "${_pkgname}"
-  'powdertoy-bin'
+  "${_pkgname}=${pkgver}"
+  "powdertoy=${pkgver}"
+  "powdertoy-bin=${pkgver}"
 )
 conflicts=(
-  "${_pkgname}" 'powdertoy-bin'
+  "${_pkgname}"
+  'powdertoy'
+  'powdertoy-bin'
 )
 replaces=(
   'powdertoy-bin'
@@ -48,7 +51,7 @@ source=(
   "${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
   "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE"
   "${_pkgsrc}-${_appstrings[APPEXE]}.6::${_url}/raw/refs/tags/v${pkgver}/resources/${_binname}.man"
-  "${_pkgsrc}-${_appstrings[APPVENDOR]}-save.xml::${_url}/raw/refs/tags/v${pkgver}/resources/save.xml"
+  "${_pkgsrc}-${_appstrings[APPVENDOR]}-save.xml::${_url}/raw/refs/tags/v${pkgver}/resources/save.template.xml"
   "${_pkgsrc}-${_appstrings[APPID]}.appdata.xml::${_url}/raw/refs/tags/v${pkgver}/resources/appdata.template.xml"
   "${_pkgsrc}-${_appstrings[APPID]}.desktop::${_url}/raw/refs/tags/v${pkgver}/resources/${_binname}.template.desktop"
   "${_pkgsrc}-application-vnd.${_appstrings[APPVENDOR]}.save.16x16.png::${_url}/raw/refs/tags/v${pkgver}/resources/generated_icons/icon_cps_16.png"
@@ -68,24 +71,24 @@ source_aarch64=(
 source_x86_64=(
   "${_pkgsrc}-x86_64::${_url}/releases/download/v${pkgver}/${_binname}-v${pkgver}-x86_64-linux-gnu"
 )
-b2sums=('21cb7437d1b2a8434ec94f5644cc34ecf915e980ba5bc20b7e407068331e1562ba1fe5617c14aa7381015568e5d81a3c8e5152cc0d0ab49bbf2f2afbbdec8eda'
-        'ab7e38fc42fb6686add7393ecc3c7ec622cc0d72d0304ded3e56c2f96dc8433c584520896a30c037affa44461ecccfaf3ffa4a97a7e050e8ed0ec4c592caa45c'
-        'f522a3367e2b6a6dd9f534caf317ea54c39ce9867ad2e1a70f2c087c1842fc75d4d5797fe4bc3972e2950036da80cfcf61b7fbf82e225f615db5a19bed504098'
-        'bcc78f20ceebc444d5da04b75f2d9225559d27d4d27398898cb2a71abf56a77af39af0cc041c8a302ad872a63c3fa4c366726adc9e3de589b361b98a36ac7c6a'
-        '48e7b8e545a64a9f9ea676c67e038cece255434cbb4dea971d79472d79a9355184a31d856c1209d4dd5f45d4074fd90af61f9bb1a802fa30890056f75fe58d4c'
-        'e4195bfdb9558260c2b1972780d66ee524463c75cccd010969671dfc291442923ff266cfabe76ceed1b4eed64c042c402c698941051fb628e399aaf0cf0655e7'
-        'b365f33e68a474664d079a2ff1d9ce5f7b9f45e05464dc324713e8fa68af8da203a37644f911e24029ab3c99716b42094244edb5586f25c029c42426b7a6bb86'
-        'fd82487050af87145f5c4af0719e98a043b679c3659642b757bfb3087f5dcde5b6658dd28fd7ac7b7882e08817080b00e3e59d5f4e52e0ec9c9de8faf10651a9'
-        'fd993050948a10e17a17aca1ab1a477665c3fdb5c4937e25962cf455de7c041d03bb64ff33fa883aea454201cfe4c3981547bb154be869b6d9a935eebe8b595e'
-        '09eb7f1a4597de9cb23ad104c4da73c51452d7aa402f834d483d450fc010b8b9b168a3a488a6e686630bd94ca55a4ada1c61a8ed7b2bd01dec954538a59827a9'
-        'de800ad5a4bbff59d0e9befbb2d69e5c7228e2de7cd3de9fb188adb63c3d2799e48115cc60a67fa64bb27c3bc59753ee191cf56da62a65651811d731defef1ab'
-        'c593f28b931a310ee42abb777ccd6860503833fb96b9f6cdbc122950a110bf8e030fa382a17e1d93495ed80b6790d69306f655bd95e51fc25a7699c2f3a2d07b'
-        '6fc61681cbf3880b3618a1cc586715d6f3ae3ca122ae082a08472928120228c23329364e1c249e59cc0dfea5de7e4f5f67a32edbd81637621a3bc4e3785fde3c'
-        'e8a59b62bed02ee8cf45c903273bd030cf27fd1077931ab0b1a8f788d60adbd2f55925cc90b713604adab0f63f88e7a1c48530ba03edb1afd1bb19455d894a62'
-        '4beb7b3c4bfd3ba1c6e742f9198c5c03b0b95750d7aa24a31a2639b8d0adbcf2490663293df2e5cc5d1895eb9dcd34612e56704b9bab3a434475e29dc9eb275c'
-        'd3162f81bfb927a9879c5629369ba8f13a45ba4fa8cfad78c5c40f6942de6b432e4eccacd156c792da7bf65ddf04292211d0c34f4db1cd51dba6765fde0ff917')
-b2sums_aarch64=('394c1a5101ce99ee8fddd759067260ebcf756f644e8cfd1b57be2221214168fe8a8fedf40dd15bc7f2ef1f8d5590a65e22512644bf5e0e46f48118235e14be5c')
-b2sums_x86_64=('da59dc5e2e70ec5da8dda2bc14021c5713ef8a80936601488de2ff5996f7a681a929009f472a55e73f50d25d95a13cd242340e4a6c881d8d2d51fc083a44cd1d')
+sha256sums=('1342b998099809a417ebd2495ce7b870225befe082ca3d19cd5e651f35ffe3d9'
+            '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903'
+            'fe2e4fd6fae6a203c01f969f5dfcdb87778a9c819093a08eae5575a21f688d16'
+            'da5265406beb017319b749faa8081ac44de55d4b96a499dd8953aefa0b08326e'
+            'b8b1e08fc29cdc6d2f325019d9d8e24e06111cd7ed88e7e48cbaed525c299f94'
+            'ea5488c6696160c7675c660f7b502a6adf7a49140481d261346206a873c23417'
+            'b42d403733b47d0f806cf9952db97a8c18dee5cf108e3bb26ffef62b8f7bb093'
+            'a5b0da317348275aa42728de03e6b006d1992e5023d03cb740a7175996c56912'
+            '1425b43d1772d6c1c54a341fbe2d94d9f86d691d40ac7a077f5ef3ff3c03bf86'
+            '16abd843be88928340969948ff44257b597e6f5506d13668fbd55db52d76b607'
+            '0d7544bba851b2228465c947ef2c417bbf34bb02c25ef2b60e0c2c8575aa5791'
+            '26fea33bd84a7b3c6846567eff7996a1e96470d4083ca2de6467753cc971790a'
+            '97afd3c283cc8847e3f35efe6011bf9eb969ccd8ffde331728ed7b6d9d3d1762'
+            'e21498e46a3f1642b5d378ee0e63a3eb6f930778a04a25062ca8c781eab4c314'
+            '7f4e5eaff3a84ad3973cc2d7aa0b0d8817559a500aecff84decc7a06357c11b3'
+            'da002be13501b7d2ef0d0d470f35bc37d6f90805a7f084a00aa66f7c37ce2f81')
+sha256sums_aarch64=('c3bbf1b86847624bed0be8e61014f0a0861bbabecf8eddcf4483196b1496419c')
+sha256sums_x86_64=('68bbf771629d03c94d948b9169e0d7221d6597c3aecdb7229d1a9d3667cc3886')
 
 package() {
   cd "${srcdir}"
