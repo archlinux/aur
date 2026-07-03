@@ -70,8 +70,9 @@ EOF
   cp -R lib/* "${pkgdir}/usr/share/p4v/lib"
 
   # The bin/p4v launcher ties to do this at each launch, rather than just including relative symlinks in the package
-  # Reproduced block from bin/p4v to match it quirk-for-quirk, except we use basename to make them relative symlinks to
-  # support any install root.
+  #
+  # Reproduced the block from bin/p4v to match it quirk-for-quirk, except we use basename to make them relative symlinks
+  # to support any install root
   # <from bin/p4v>
   prefix="${pkgdir}/usr/share/p4v" # Added
   if [ ! -f "$prefix"/lib/libssl.so ]; then
