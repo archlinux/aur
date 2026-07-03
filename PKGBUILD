@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A llama-server command centre"
 
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,9 +28,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.deb")
-sha256sums=('59c541b3ad0101da431d512bbba0711e72960b07a65ec35a00bb566cad1c852c'
+sha256sums=('5a3c77b1b3bda47bb718a3adecf65d69b1f572dc2c30fcb717dd537fef501eab'
             'b52696dc0457bf58616f5017e5146b2932611b9357bb9824c7c91183fc36471f')
-sha256sums_x86_64=('a7995a478127600173888069bfd56f0c951ed607714ea6a2416d6fd41b51e695')
+sha256sums_x86_64=('f201728c28f539f1f64e902a3d0e82c66292c246b8cf8a7f6eb4f2a40702709c')
 
 
 package() {
