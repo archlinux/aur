@@ -1,0 +1,22 @@
+pkgbase = flyline-git
+	pkgdesc = Bash plugin to replace readline for a modern line editing experience: syntax highlighting, agent integration, rich prompts, tooltips, fuzzy history search, and more
+	pkgver = 1.2.4.r0.gc4fd509
+	pkgrel = 1
+	url = https://github.com/HalFrgrd/flyline
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = bash
+	depends = gcc-libs
+	provides = libflyline.so
+	conflicts = flyline
+	conflicts = flyline-bin
+	options = !debug
+	source = flyline-master::git+https://github.com/HalFrgrd/flyline.git#branch=master
+	sha256sums = SKIP
+
+pkgname = flyline-git
