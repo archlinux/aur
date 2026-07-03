@@ -17,6 +17,10 @@ provides=('sdrx-mimic' 'mmc')
 conflicts=('sdrx-mimic')
 source=("git+${url}.git")
 sha256sums=('SKIP')
+# GCC LTO (makepkg.conf OPTIONS+=lto) compila la Lua vendorizada de mlua
+# como bytecode GIMPLE puro; rust-lld no lo entiende y falla con
+# "undefined symbol: lua_*". Desactivar LTO evita el problema.
+options=('!lto')
 
 pkgver() {
   cd "$_pkgname"
