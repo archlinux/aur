@@ -2,7 +2,7 @@
 
 _pkgbase=vk-gl-cts
 pkgname='vulkan-cts'
-pkgver=1.4.6.0
+pkgver=1.4.6.1
 pkgrel=1
 arch=('any')
 pkgdesc='Khronos Vulkan Conformance Tests'
