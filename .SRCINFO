@@ -1,6 +1,6 @@
 pkgbase = opencommit
 	pkgdesc = Auto-generate meaningful commits in a second. Killing lame commits with AI
-	pkgver = 3.3.7
+	pkgver = 3.3.9
 	pkgrel = 1
 	url = https://github.com/di-sukharev/opencommit
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = opencommit
 	makedepends = jq
 	makedepends = npm
 	depends = nodejs
-	source = https://github.com/di-sukharev/opencommit/archive/v3.3.7/opencommit-3.3.7.tar.gz
-	b2sums = e91cf5aa858326b22ebfee47a7242d682c64213f5274cbf44c67cba6a3e9bfda185fd2eb2dbf1ba9fb7bdbff9e6c0e374b4b86bbbcec389064dda27be1fc39d3
+	source = https://github.com/di-sukharev/opencommit/archive/v3.3.9/opencommit-3.3.9.tar.gz
+	b2sums = c205841668277cddee07b9398cbe57848827d2ad44da4afb13ec4f333fdc7b47fa34cffe957289e4615d9a6920caf26c498fdb2d231058558bfa992a5ba54cdb
 
 pkgname = opencommit
