@@ -1,6 +1,6 @@
 pkgbase = libavif-git
 	pkgdesc = Library for encoding and decoding .avif files
-	pkgver = 1.0.4.r476.gf56a1f18
+	pkgver = 1.4.2.r41.g5a7fef63
 	pkgrel = 1
 	url = https://github.com/AOMediaCodec/libavif
 	arch = i686
@@ -14,13 +14,13 @@ pkgbase = libavif-git
 	depends = glibc
 	depends = aom
 	depends = dav1d
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = libpng
 	depends = librav1e.so
 	depends = libsharpyuv.so
 	depends = libyuv
 	depends = svt-av1
-	provides = libavif=1.0.4.r476.gf56a1f18
+	provides = libavif=1.4.2.r41.g5a7fef63
 	conflicts = libavif
 	source = git+https://github.com/AOMediaCodec/libavif.git
 	sha256sums = SKIP
