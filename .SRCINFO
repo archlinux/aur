@@ -1,0 +1,34 @@
+pkgbase = cosmic-reader-git
+	pkgdesc = WIP COSMIC PDF reader
+	pkgver = r153.3148541
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-reader
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	makedepends = just
+	makedepends = unzip
+	depends = brotli
+	depends = cosmic-icon-theme
+	depends = fontconfig
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = gumbo-parser
+	depends = harfbuzz
+	depends = jbig2dec
+	depends = leptonica
+	depends = libjpeg.so=8
+	depends = libxkbcommon
+	depends = libz.so=1
+	depends = openjpeg2
+	depends = tesseract
+	provides = cosmic-reader
+	conflicts = cosmic-reader
+	options = !lto
+	source = cosmic-reader::git+https://github.com/pop-os/cosmic-reader
+	sha256sums = SKIP
+
+pkgname = cosmic-reader-git

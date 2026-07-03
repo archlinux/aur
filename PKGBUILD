@@ -1,0 +1,63 @@
+# Maintainer: Jax Young <jaxvanyang@gmail.com>
+pkgname=cosmic-reader-git
+_name="${pkgname%-git}"
+pkgver=r153.3148541
+pkgrel=1
+pkgdesc='WIP COSMIC PDF reader'
+arch=('x86_64')
+url='https://github.com/pop-os/cosmic-reader'
+license=('GPL-3.0-only')
+depends=(
+	'brotli'
+	'cosmic-icon-theme'
+	'fontconfig'
+	'freetype2'
+	'gcc-libs'
+	'glibc'
+	'gumbo-parser'
+	'harfbuzz'
+	'jbig2dec'
+	'leptonica'
+	'libjpeg.so=8'
+	'libxkbcommon'
+	'libz.so=1'
+	'openjpeg2'
+	'tesseract'
+)
+makedepends=(
+	cargo
+	clang
+	git
+	just
+	unzip
+)
+provides=("$_name")
+conflicts=("$_name")
+options=('!lto')
+source=("$_name::git+$url")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "$_name"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "$_name"
+	cargo fetch --locked
+}
+
+build() {
+	cd "$_name"
+	just build-release --frozen
+}
+
+check() {
+	cd "$_name"
+	target/release/cosmic-reader --version
+}
+
+package() {
+	cd "$_name"
+	just rootdir="$pkgdir" install
+}
