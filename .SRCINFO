@@ -8,7 +8,6 @@ pkgbase = newtree-bin
 	license = MIT
 	depends = glibc
 	depends = libgcc
-	provides = newtree
 	provides = nt
 	conflicts = newtree
 	options = !strip
