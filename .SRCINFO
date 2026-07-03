@@ -1,0 +1,22 @@
+pkgbase = wtr-bin
+	pkgdesc = Git worktree router
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/abogoyavlensky/wtr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = git
+	provides = wtr
+	conflicts = wtr
+	options = !strip
+	source = README-0.2.0.md::https://raw.githubusercontent.com/abogoyavlensky/wtr/v0.2.0/README.md
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/abogoyavlensky/wtr/v0.2.0/LICENSE
+	sha256sums = 5c9b56a240d2bea50fc573e86ef4b8c6f32ac9627fb85027dad8f8bfddf2012d
+	sha256sums = 26ef0a9d298ba973d0b9bd3956e1f76e9d3c520f442e95917212e44905b1df94
+	source_x86_64 = wtr-x86_64-0.2.0.tgz::https://github.com/abogoyavlensky/wtr/releases/download/v0.2.0/wtr_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = cb1ffa24f10ee15bb69f3124bd1a6f81d7bc2a74567e85ea05d144feb809a313
+	source_aarch64 = wtr-aarch64-0.2.0.tgz::https://github.com/abogoyavlensky/wtr/releases/download/v0.2.0/wtr_0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5f93f95645effdfc1483c28f3b96c3da4bf78417091d3fd615498ba8fa961167
+
+pkgname = wtr-bin

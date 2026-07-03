@@ -1,0 +1,5 @@
+[wtr-bin]
+source = "github"
+github = "abogoyavlensky/wtr"
+use_latest_release = true
+prefix = "v"
