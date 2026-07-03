@@ -4,7 +4,7 @@ _pkgname=hermes-desktop          # /usr/bin symlink name (AUR convention, lowerc
 _upstream=Hermes                 # productName + executableName
 _pkgver_tag=v2026.7.1
 pkgver=0.18.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
 arch=('x86_64')
 url='https://github.com/NousResearch/hermes-agent'
@@ -34,6 +34,14 @@ _extract_dir() {
   echo "${srcdir}/hermes-agent-${_pkgver_tag#v}"
 }
 
+# makepkg runs prepare()/build()/package() in separate subshells — env vars
+# set in one are invisible to the next.  Factor the tag→SHA resolution into
+# a helper so both prepare() and build() can call it.
+_resolve_tag_sha() {
+  git ls-remote "https://github.com/NousResearch/hermes-agent" \
+    "refs/tags/${_pkgver_tag}^{}" 2>/dev/null | awk '{print $1}'
+}
+
 prepare() {
   cd "$(_extract_dir)"
   # The v2026.7.1 release commit message says "release v0.18.0" but
@@ -44,8 +52,8 @@ prepare() {
   # commit SHA to stamp the packaged installer. The release tarball has no
   # .git/ so `git rev-parse HEAD` fails — peel the tag with `^{}` to handle
   # annotated tags and fetch the commit SHA from GitHub.
-  GITHUB_SHA=$(git ls-remote "https://github.com/NousResearch/hermes-agent" \
-    "refs/tags/${_pkgver_tag}^{}" 2>/dev/null | awk '{print $1}')
+  local GITHUB_SHA
+  GITHUB_SHA=$(_resolve_tag_sha)
   if [ -z "${GITHUB_SHA:-}" ]; then
     error "Could not resolve ${_pkgver_tag} to a commit SHA via git ls-remote."
     return 1
@@ -56,6 +64,16 @@ prepare() {
 
 build() {
   cd "$(_extract_dir)/apps/desktop"
+  # write-build-stamp.cjs needs GITHUB_SHA / GITHUB_REF_NAME.  makepkg runs
+  # build() in a separate subshell from prepare(), so we must re-resolve and
+  # export here.
+  local GITHUB_SHA
+  GITHUB_SHA=$(_resolve_tag_sha)
+  if [ -z "${GITHUB_SHA:-}" ]; then
+    error "Could not resolve ${_pkgver_tag} to a commit SHA via git ls-remote."
+    return 1
+  fi
+  export GITHUB_SHA GITHUB_REF_NAME="${_pkgver_tag}"
   # electron-builder's FPM target (.deb/.rpm) requires a `homepage` in
   # package.json's `build` section. Upstream omits it because they ship
   # via the website installer rather than FPM. Inject it here so the
