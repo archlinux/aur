@@ -1,12 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-tuner-os-info
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="System information and diagnostics for Tuner"
 arch=('any')
 url="https://altlinux.space/alt-gnome/TunerOSInfo"
 license=('GPL-3.0-or-later')
 depends=(
+  'gnome-tuner'
   'gtk4'
   'libadwaita'
   'python-gobject'
@@ -14,7 +15,6 @@ depends=(
 makedepends=(
   'blueprint-compiler'
   'git'
-  'gnome-tuner'
   'meson'
 )
 #checkdepends=('python-pytest')
