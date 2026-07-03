@@ -2,14 +2,14 @@
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=jellyfin-tui
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Music streaming TUI client for Jellyfin'
 arch=('x86_64')
 url="https://github.com/dhonus/$pkgname"
 license=('GPL-3.0-only')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d7f60d01d1699c80639a79cc6a17cfe8732ac65da3009523cb185e06d6405dfa')
+sha256sums=('b7843f2f446ea47418c069f068c1ba9bd107b1b9b2c19c1c69a6cd2833ab6379')
 depends=('openssl' 'mpv' 'gcc-libs' 'glibc' 'sqlite')
 makedepends=('cargo' 'pkgconf' 'sqlite')
 options=('!lto')
@@ -26,7 +26,7 @@ build() {
   export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
   export PKG_CONFIG_ALLOW_CROSS=1
 
-  cargo build --frozen --release --no-default-features --features "tls-native,zbus"
+  cargo build --frozen --release --no-default-features --features "tls-native"
 }
 
 package() {
