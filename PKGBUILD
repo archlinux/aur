@@ -12,16 +12,16 @@
 pkgbase=networkmanager-git
 _gitname=NetworkManager
 pkgname=(networkmanager-git libnm-git nm-cloud-setup-git)
-_pppver=2.4.9
 pkgver=1.59.0dev+r1+g12965c9f6f
 pkgrel=1
 pkgdesc="Network Management daemon and user application"
 arch=(x86_64)
 url=https://networkmanager.dev/
 license=(GPL-2.0-or-later LGPL-2.1-or-later)
+options=(!debug)
 checkdepends=(libx11 python-dbus)
-makedepends=(dnsmasq mobile-broadband-provider-info meson ninja intltool dhclient openresolv iptables gobject-introspection gtk-doc ppp modemmanager
-              iproute2 nss polkit wpa_supplicant systemd libgudev audit curl
+makedepends=(dnsmasq mobile-broadband-provider-info meson ninja openresolv iptables gobject-introspection gtk-doc ppp modemmanager
+              iproute2 nss polkit wpa_supplicant systemd libgudev audit curl bash glib2 glibc libgcc libmm-glib libpsl nspr readline systemd-libs iwd
              libnewt libndp libteam vala perl-yaml python-gobject git jansson bluez-libs
              glib2-docs nftables pacrunner glib2-devel)
 source=(git+https://gitlab.freedesktop.org/$_gitname/$_gitname.git#branch=main
@@ -35,8 +35,13 @@ sha512sums=('SKIP'
             '54c55789cb1e4a52ee7dbdcf75b3a8a4712624a4db249014b64c07c090fbdfd2b907ecd8357d8e1ca9dd72f4a366009213c6102ba68e6f7a3503caced15a638d')
 
 pkgver() {
-  cd NetworkManager/
-  git describe --tags | sed 's/-dev/dev/;s/-rc/rc/;s/[^-]*-g/r&/;s/-/+/g'
+  cd NetworkManager
+  local ver
+  if ver=$(git describe --tags --long 2>/dev/null); then
+    printf '%s\n' "$ver" | sed 's/-dev/dev/;s/-rc/rc/;s/-\([0-9]\+\)-g/+r\1+g/;s/-/+/g'
+  else
+    printf '0+r%s+g%s\n' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  fi
 }
 
 build() {
@@ -44,7 +49,7 @@ build() {
         -D more_logging=false \
         -D more_asserts=no \
         -D bluez5_dun=false \
-        -D ebpf=true \
+        -D ebpf=auto \
         -D docs=true \
         -D introspection=true \
         -D ld_gc=true \
@@ -55,10 +60,9 @@ build() {
         -D config_dhcp_default=internal \
         -D config_dns_rc_manager_default=symlink \
         -D config_logging_backend_default=journal \
-        -D config_plugins_default=keyfile,ibft \
+        -D config_plugins_default=keyfile,nbft \
         -D crypto=nss \
         -D dbus_conf_dir=/usr/share/dbus-1/system.d \
-        -D dhclient=/usr/bin/dhclient \
         -D dhcpcd=/usr/bin/dhcpcd \
         -D dnsmasq=/usr/bin/dnsmasq \
         -D hostname_persist=default \
@@ -66,7 +70,6 @@ build() {
         -D ip6tables=/usr/bin/ip6tables \
         -D kernel_firmware_dir=/usr/lib/firmware \
         -D modem_manager=true \
-        -D pppd_plugin_dir=/usr/lib/pppd/$_pppver \
         -D pppd=/usr/bin/pppd \
         -D resolvconf=/usr/bin/resolvconf \
         -D session_tracking=systemd \
@@ -105,7 +108,7 @@ _pick() {
 }
 
 package_networkmanager-git() {
-   depends=(iproute2 mobile-broadband-provider-info polkit wpa_supplicant openresolv libnewt libndp libteam curl bluez-libs libpsl audit libnm-git jansson readline libmm-glib)
+   depends=(iproute2 mobile-broadband-provider-info polkit wpa_supplicant openresolv libnewt libndp libteam curl bluez-libs libpsl audit libnm-git jansson readline libmm-glib glib2)
     optdepends=(
     'dnsmasq: connection sharing'
     'dhcpcd: alternative DHCP client'
@@ -134,6 +137,7 @@ package_networkmanager-git() {
   _pick libnm "$pkgdir"/usr/include/libnm
   _pick libnm "$pkgdir"/usr/lib/girepository-1.0/NM-*
   _pick libnm "$pkgdir"/usr/lib/libnm.*
+  _pick libnm "$pkgdir"/usr/lib/nm-libnm-helper
   _pick libnm "$pkgdir"/usr/lib/pkgconfig/libnm.pc
   _pick libnm "$pkgdir"/usr/share/gir-1.0/NM-*
   _pick libnm "$pkgdir"/usr/share/gtk-doc/html/libnm
@@ -146,14 +150,14 @@ package_networkmanager-git() {
   _pick ovs "$pkgdir"/usr/lib/systemd/system/NetworkManager.service.d/NetworkManager-ovs.conf
 
   # Restore empty dir
-  install -d usr/lib/NetworkManager/dispatcher.d/no-wait.d
+  install -d "$pkgdir/usr/lib/NetworkManager/dispatcher.d/no-wait.d"
 
 
 }
 
 package_libnm-git() {
   pkgdesc="NetworkManager client library"
-  provides=(libnm)
+  provides=(libnm libnm.so)
   conflicts=(libnm)
   depends=(glib2 nss util-linux-libs systemd-libs)
   cd "$srcdir"
@@ -162,7 +166,8 @@ package_libnm-git() {
 
 package_nm-cloud-setup-git() {
   pkgdesc="Automatically configure NetworkManager in cloud"
-  depends=(networkmanager-git)
+  depends=(networkmanager-git libnm-git bash glibc jansson libgcc curl glib2)
+  provides=(nm-cloud-setup)
   conflicts=(nm-cloud-setup)
 
   cd "$srcdir"
