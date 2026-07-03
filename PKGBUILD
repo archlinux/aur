@@ -8,6 +8,7 @@ pkgdesc="BakaXL Minecraft Launcher (repacked from official .deb; desktop entry p
 arch=('x86_64')
 url="https://www.bakaxl.com"
 license=('custom')
+options=('!debug')
 depends=('gtk3' 'webkit2gtk-4.1' 'libsoup3' 'hicolor-icon-theme')
 
 source=(

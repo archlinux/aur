@@ -9,6 +9,7 @@ pkgbase = bakaxl
 	depends = webkit2gtk-4.1
 	depends = libsoup3
 	depends = hicolor-icon-theme
+	options = !debug
 	source = https://github.com/BakaXL-Launcher/BakaXL/releases/download/4.0.0+bunny-a03f125/bakaxl-4.0.0+bunny-a03f125-linux-x86_64.deb
 	source = LICENSE
 	sha256sums = 8ed0f18fd1c00e2cf61f822412ef6b83b4b867883860672fee84e0fee1f337af
