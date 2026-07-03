@@ -9,7 +9,7 @@ url="https://github.com/ThomasB3143/teevee"
 license=('MIT')
 depends=('bash' 'dunst')
 source=("teevee-${pkgver}.tar.gz::https://github.com/ThomasB3143/teevee/archive/v${pkgver}.tar.gz")
-sha256sums=('4f6a6dafacf46fa303bdaabeabc5916befbfe51b00a587bc4a9e0e33308f123b')
+sha256sums=('f9d8065eac5c6069848d52c067ab4628c669e67026812956fb3a23ee44196a3b')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
