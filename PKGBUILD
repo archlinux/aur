@@ -1,11 +1,11 @@
-# Maintainer: Roshless <pkg@roshless.com>
-
+# Maintainer: Brumaire <brumaire AT entalpi DOT net>
+# Contributor: Roshless <pkg@roshless.com>
 pkgname=kineto-git
-pkgver=r21.988a00f
+pkgver=r24.1f4e066
 pkgrel=1
 pkgdesc='An HTTP to Gemini proxy'
 url='https://git.sr.ht/~sircmpwn/kineto'
-arch=('x86_64' 'i686')
+arch=('any')
 license=('GPL')
 depends=('glibc')
 makedepends=('git' 'go')
