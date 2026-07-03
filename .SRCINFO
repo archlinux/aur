@@ -1,6 +1,6 @@
 pkgbase = dash-player-git
 	pkgdesc = A video player designed specifically for English learning.(Use system-wide electron)一款专为英语学习打造的视频播放器
-	pkgver = 6.0.0.rc.1.r2.g0148d88
+	pkgver = 6.0.0.r0.g91f2928
 	pkgrel = 1
 	url = https://dash-player.solidspoon.xyz/
 	arch = any
@@ -15,11 +15,11 @@ pkgbase = dash-player-git
 	depends = electron39
 	depends = ffmpeg
 	depends = yt-dlp
-	provides = dash-player=6.0.0.rc.1
+	provides = dash-player=6.0.0
 	conflicts = dash-player
 	source = dash-player.git::git+https://github.com/solidSpoon/DashPlayer.git
 	source = dash-player.sh
 	sha256sums = SKIP
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = dash-player-git
