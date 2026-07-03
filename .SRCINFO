@@ -1,0 +1,25 @@
+pkgbase = udpfsd-git
+	pkgdesc = A UDPFS server written in Go
+	pkgver = r34.c738682
+	pkgrel = 1
+	url = https://github.com/pcm720/udpfsd
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = aarch64
+	arch = armv7
+	arch = armv7h
+	arch = mispeb
+	arch = mipsel
+	arch = riscv64
+	license = BSD-3-Clause
+	makedepends = go
+	makedepends = git
+	makedepends = libchdr
+	depends = glibc
+	provides = udpfsd
+	conflicts = udpfsd
+	source = git+https://github.com/pcm720/udpfsd.git
+	sha256sums = SKIP
+
+pkgname = udpfsd-git
