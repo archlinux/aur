@@ -1,6 +1,6 @@
 pkgbase = electron40-castlab-bin
 	pkgdesc = Electron for Content Security (ECS) is a fork of Electron created by castLabs to facilitate the use of Google's Widevine Content Decryption Module (CDM) for DRM-enabled playback within Electron
-	pkgver = 40.10.2+wvcus
+	pkgver = 40.10.6+wvcus
 	pkgrel = 1
 	url = https://github.com/castlabs/electron-releases
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = electron40-castlab-bin
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron40-castlab=40.10.2+wvcus
+	provides = electron40-castlab=40.10.6+wvcus
 	conflicts = electron40-castlab
-	noextract = electron40-castlab-40.10.2+wvcus.zip
+	noextract = electron40-castlab-40.10.6+wvcus.zip
 	options = !strip
-	source = electron40-castlab-40.10.2+wvcus.zip::https://github.com/castlabs/electron-releases/releases/download/v40.10.2+wvcus/electron-v40.10.2+wvcus-linux-x64.zip
+	source = electron40-castlab-40.10.6+wvcus.zip::https://github.com/castlabs/electron-releases/releases/download/v40.10.6+wvcus/electron-v40.10.6+wvcus-linux-x64.zip
 	source = electron40-castlab.sh
-	sha256sums = e179c0b4134e32e59a2c87e09e5086cce4c33928333565add57f16e865dd224d
-	sha256sums = 7583672050c8131697949cdba39fd2e86f6ed9555c063bc1bc81efc9e661d78e
+	sha256sums = 900c1289871d0dbbd44a287e518b3c1282572750f33ec8185e06c08d9410e9c8
+	sha256sums = ac1e26684ffbfc7ac0993c55b9299003f6b9efea25b755b1d260bea4db440157
 
 pkgname = electron40-castlab-bin
