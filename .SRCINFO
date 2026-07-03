@@ -1,6 +1,6 @@
 pkgbase = fsl
 	pkgdesc = A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data
-	pkgver = 6.0.7.18
+	pkgver = 6.0.7.22
 	pkgrel = 1
 	url = http://www.fmrib.ox.ac.uk/fsl/
 	arch = x86_64
@@ -10,6 +10,6 @@ pkgbase = fsl
 	options = !debug
 	options = !strip
 	source = fslinstaller.py
-	sha256sums = 2da5fd5dd6b103ade2fb3651822d7ad7a12e26e70db506c4e263e62be377e3aa
+	sha256sums = 6294c8d4cf889c1e876de4cec21d95b8462ca182d303f417fe6983afd2228db5
 
 pkgname = fsl
