@@ -1,6 +1,6 @@
 pkgbase = streamdeck-lets-go-git
 	pkgdesc = Lightweight daemon for controlling Elgato Stream Deck devices with a built-in web UI
-	pkgver = r0.unknown
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/Wakatron/streamdeck-lets-go
 	arch = x86_64
