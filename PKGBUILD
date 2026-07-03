@@ -1,7 +1,7 @@
 # Maintainer: Hugo ARNAL <aur at hugoarnal dot com>
 
 pkgname=gigot
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="An easy gitconfig switcher"
 url="https://github.com/hugoarnal/gigot"
@@ -10,7 +10,7 @@ arch=("x86_64")
 makedepends=("go")
 provides=("$pkgname")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v$pkgver.tar.gz")
-sha256sums=('3d2e7db89b854211c7d7807a95007446360401f8b57892da5e6387dc6f39423b')
+sha256sums=('510710cb7fc4d64b2f4fc50a7a569d74cb022efbcfe1427397fcfcf4a47b339f')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
