@@ -10,7 +10,7 @@ pkgdesc="Perforce Helix Visual Client"
 arch=('x86_64')
 url="https://www.perforce.com"
 license=('custom:p4v')
-depends=('libxcb' 'qt6-base')
+depends=('libxcb' 'qt6-base' 'libxi' 'libxkbfile' 'nss' 'libxslt')
 options=('!strip')
 
 _url="${url}/downloads/perforce"
