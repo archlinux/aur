@@ -12,7 +12,7 @@
 # =============================================================================
 
 pkgname=cosmostrix-bin
-pkgver=10.0.0
+pkgver=10.0.1
 _tag=
 pkgrel=1
 
@@ -71,7 +71,7 @@ prepare() {
     # -- Select optimal binary based on host architecture and CPU features --
     case "${CARCH}" in
         aarch64)
-            asset="cosmostrix-bin-${tag}-linux-aarch64-native.tar.gz"
+            asset="cosmostrix-bin-${tag}-linux-aarch64.tar.gz"
             ;;
         x86_64)
             local level="v1"
@@ -84,7 +84,7 @@ prepare() {
                 level="v2"
             fi
 
-            asset="cosmostrix-bin-${tag}-linux-x86_64-${level}.tar.gz"
+            asset="cosmostrix-bin-${tag}-linux-amd64-${level}.tar.gz"
             ;;
         *)
             error "Unsupported architecture: ${CARCH}"
@@ -124,8 +124,8 @@ prepare() {
 
     # -- Extract (normalize archive layout) --
     # Older releases nested files under a subdirectory (e.g.
-    # cosmostrix-1.1.1-stable.1-linux-x86_64-v3/); newer releases are flat.
-    # Artifact naming uses the tag (e.g. cosmostrix-bin-v2.1.0-linux-x86_64-v3.tar.gz).
+    # cosmostrix-1.1.1-stable.1-linux-amd64-v3/); newer releases are flat.
+    # Artifact naming uses the tag (e.g. cosmostrix-bin-v2.1.0-linux-amd64-v3.tar.gz).
     # Detect and strip the leading directory if present so package() always
     # finds files at ${srcdir}/cosmostrix, ${srcdir}/LICENSE, etc.
     local top_entry
