@@ -4,7 +4,7 @@ _pkgname=hermes-desktop          # /usr/bin symlink name (AUR convention, lowerc
 _upstream=Hermes                 # productName + executableName
 _pkgver_tag=v2026.7.1
 pkgver=0.18.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
 arch=('x86_64')
 url='https://github.com/NousResearch/hermes-agent'
@@ -60,6 +60,11 @@ prepare() {
   fi
   export GITHUB_SHA GITHUB_REF_NAME="${_pkgver_tag}"
   npm install --prefer-offline --no-audit --ignore-scripts
+  # Node-pty's prebuilt binary is downloaded by its install.js script via
+  # prebuild-install.  --ignore-scripts above skips it entirely, leaving
+  # the staged package with JS source but no .node binary — PTY fails at
+  # runtime.  Rebuild just node-pty to trigger the prebuilt download.
+  npm rebuild node-pty
 }
 
 build() {
