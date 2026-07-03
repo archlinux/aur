@@ -4,34 +4,36 @@
 
 ## Features
 
-* **Emoji support** - native since libXft 2.3.5 (no patch required)
-* Seamless fallback for Chinese, Japanese and Korean glyphs
-* **Mouse support** - click, scroll, and hover selection
-* **Password mode** - hide input with `-P` flag
-* **Tab navigation** - Tab/Shift+Tab to navigate items
-* Lean, easy‑to‑edit `config.h`
-* Arch Linux package (`PKGBUILD`) that **provides dmenu** and can fully replace the stock build
-* Upstream repo is tagged, making builds reproducible
+- **Emoji support** - native since libXft 2.3.5 (no patch required)
+- Seamless fallback for Chinese, Japanese and Korean glyphs
+- **Mouse support** - click, scroll, and hover selection
+- **Password mode** - hide input with `-P` flag
+- **Tab navigation** - Tab/Shift+Tab to navigate items
+- Lean, easy‑to‑edit `config.h`
+- Arch Linux package (`PKGBUILD`) that **provides dmenu** and can fully replace the stock build
+- Upstream repo is tagged, making builds reproducible
 
 ## Patches
 
 This fork includes the following patches:
 
-| Patch | Version | Description |
-| ----- | :-----: | ----------- |
-| `dmenu-mousesupport-5.4.diff` | 5.4 | Click to select, scroll to navigate, middle-click to paste |
-| `dmenu-mousesupport-motion-5.2.diff` | 5.2 | Hover to select items (extends mouse support) |
-| `dmenu-password-5.0.diff` | 5.0 | Hide input characters with `-P` flag |
-| `dmenu-tab-navigation-5.4.diff` | 5.4 | Tab navigates down, Shift+Tab navigates up |
+| Patch                                | Version | Description                                                |
+| ------------------------------------ | :-----: | ---------------------------------------------------------- |
+| `dmenu-mousesupport-5.4.diff`        |   5.4   | Click to select, scroll to navigate, middle-click to paste |
+| `dmenu-mousesupport-motion-5.4.diff` |   5.4   | Hover to select items (extends mouse support)              |
+| `dmenu-password-5.4.diff`            |   5.4   | Hide input characters with `-P` flag                       |
+| `dmenu-tab-navigation-5.4.diff`      |   5.4   | Tab navigates down, Shift+Tab navigates up                 |
+| `dmenu-dynamic-height-5.4.diff`      |   5.4   | Window height adapts to number of search results           |
 
 ### Applying Patches
 
 ```bash
 # Apply patches in order (motion depends on mouse support)
 git apply dmenu-mousesupport-5.4.diff
-git apply dmenu-mousesupport-motion-5.2.diff
-git apply dmenu-password-5.0.diff
+git apply dmenu-mousesupport-motion-5.4.diff
+git apply dmenu-password-5.4.diff
 git apply dmenu-tab-navigation-5.4.diff
+git apply dmenu-dynamic-height-5.4.diff
 
 # Build
 make clean && make
@@ -39,24 +41,24 @@ make clean && make
 
 ### Keyboard Shortcuts
 
-| Key | Action |
-| --- | ------ |
-| `Tab` | Navigate to next item |
+| Key         | Action                    |
+| ----------- | ------------------------- |
+| `Tab`       | Navigate to next item     |
 | `Shift+Tab` | Navigate to previous item |
-| `↑` / `↓` | Navigate items |
-| `Enter` | Select item |
-| `Esc` | Exit without selection |
+| `↑` / `↓`   | Navigate items            |
+| `Enter`     | Select item               |
+| `Esc`       | Exit without selection    |
 
 ### Mouse Actions
 
-| Action | Result |
-| ------ | ------ |
-| Left-click | Select item / clear input |
-| Ctrl+Left-click | Multi-selection |
-| Right-click | Close dmenu |
-| Middle-click | Paste selection |
-| Scroll up/down | Navigate items |
-| Hover | Select item under cursor |
+| Action          | Result                    |
+| --------------- | ------------------------- |
+| Left-click      | Select item / clear input |
+| Ctrl+Left-click | Multi-selection           |
+| Right-click     | Close dmenu               |
+| Middle-click    | Paste selection           |
+| Scroll up/down  | Navigate items            |
+| Hover           | Select item under cursor  |
 
 ## Installation
 
@@ -242,12 +244,14 @@ pkgbase = dmenu-xft-emoji
 	source = dmenu-mousesupport-motion-5.2.diff
 	source = dmenu-password-5.0.diff
 	source = dmenu-tab-navigation-5.4.diff
+	source = dmenu-dynamic-height-5.4.diff
 	sha256sums = <dmenu-tarball-checksum>
 	sha256sums = <config-checksum>
 	sha256sums = <patch1-checksum>
 	sha256sums = <patch2-checksum>
 	sha256sums = <patch3-checksum>
 	sha256sums = <patch4-checksum>
+	sha256sums = <patch5-checksum>
 
 pkgname = dmenu-xft-emoji
 ```
