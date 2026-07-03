@@ -6,7 +6,7 @@
 # 版本号与 sha256sums 由发版工作流（.github/workflows/release-desktop.yml 的
 # publish-aur 任务）在每次 desktop-v* tag 发布时自动改写并推送到 AUR。
 pkgname=publishport-bin
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="让线上 AI 用你本机真实登录环境，一键发布内容到小红书/知乎/微博/B站/Twitter 等平台（GUI 客户端）"
 arch=('x86_64')
@@ -22,7 +22,7 @@ options=('!strip')
 install="${pkgname}.install"
 source=("publishport-${pkgver}-amd64.deb::https://storage2.maoertech.cn/desktop/publishport-${pkgver}-amd64.deb")
 noextract=("publishport-${pkgver}-amd64.deb")
-sha256sums=('1b62feb0ae663353d32bd4054d378b3a047fe4e42d470a40e00b36a0f6fc7a8c')
+sha256sums=('6c4ea17723917fba5216237c6c831f6c441e641cdf04a3700f2f8330245c4aff')
 
 package() {
   cd "$srcdir"
