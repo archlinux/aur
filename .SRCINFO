@@ -1,0 +1,15 @@
+pkgbase = lavat
+	pkgdesc = Little program that simulates a lava lamp in the terminal.
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/AngelJumbo/lavat
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	provides = lavat
+	conflicts = lavat-git
+	source = lavat-3.0.0.tar.gz::https://github.com/AngelJumbo/lavat/archive/refs/tags/v3.0.0.tar.gz
+	sha256sums = c5364203a75395953560b173fae90c316b753a046acb8f557c9e684eec6d76ba
+
+pkgname = lavat
