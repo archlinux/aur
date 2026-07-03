@@ -1,12 +1,17 @@
 pkgbase = stow-cm-nightly-bin
-	pkgdesc = config manager (gun-stow like)
-	pkgver = nightly
-	pkgrel = 9
+	pkgdesc = Config manager (gnu-stow like) — nightly build
+	pkgver = 20260703
+	pkgrel = 1
 	url = https://github.com/someoneonsmile/stow-cm
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
+	provides = stow-cm
 	conflicts = stow-cm
-	source = stow-cm20250321.tar.gz::https://github.com/someoneonsmile/stow-cm/releases/download/nightly/stow-cm-x86_64-unknown-linux-musl.tar.gz
-	sha512sums = SKIP
+	conflicts = stow-cm-bin
+	source_x86_64 = https://github.com/someoneonsmile/stow-cm/releases/download/nightly/stow-cm-x86_64-linux-gnu.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/someoneonsmile/stow-cm/releases/download/nightly/stow-cm-aarch64-linux-gnu.tar.gz
+	sha256sums_aarch64 = SKIP
 
 pkgname = stow-cm-nightly-bin
