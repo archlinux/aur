@@ -5,7 +5,7 @@
 pkgname=p4v
 _version=2026.2
 pkgver=2026.2.2984595
-pkgrel=2
+pkgrel=3
 pkgdesc="Perforce Helix Visual Client"
 arch=('x86_64')
 url="https://www.perforce.com"
@@ -68,6 +68,21 @@ EOF
   mkdir -p "${pkgdir}"/usr/share/p4v/lib/
   # move everything else
   cp -R lib/* "${pkgdir}/usr/share/p4v/lib"
+
+  # The bin/p4v launcher ties to do this at each launch, rather than just including relative symlinks in the package
+  # Reproduced block from bin/p4v to match it quirk-for-quirk, except we use basename to make them relative symlinks to
+  # support any install root.
+  # <from bin/p4v>
+  prefix="${pkgdir}/usr/share/p4v" # Added
+  if [ ! -f "$prefix"/lib/libssl.so ]; then
+    p4vlibssl=$( find "$prefix"/lib/libssl.so.* )
+    p4vlibssl=./"$(basename -- "$p4vlibssl")" # Added
+    ln -s "$p4vlibssl" "$prefix"/lib/libssl.so;
+    p4vlibcrypto=$( find "$prefix"/lib/libcrypto.so.* )
+    p4vlibcrypto=./"$(basename -- "$p4vlibcrypto")" # Added
+    ln -s "$p4vlibcrypto" "$prefix"/lib/libcrypto.so;
+  fi
+  # </from bin/p4v>
 
   cd "$srcdir"
   # Install desktop files
