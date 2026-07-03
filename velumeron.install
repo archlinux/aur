@@ -1,0 +1,39 @@
+post_install() {
+    echo ""
+    echo "  ╔══════════════════════════════════════════════════════════╗"
+    echo "  ║                  Velumeron installed!                    ║"
+    echo "  ╚══════════════════════════════════════════════════════════╝"
+    echo ""
+    echo "  Files are in: /usr/share/velumeron/"
+    echo ""
+    echo "  Run the bootstrap once to prepare your desktop:"
+    echo ""
+    echo "      velumeron-setup"
+    echo ""
+    echo "  It seeds ~/.config/velumeron/, wires the Hyprland entry point and"
+    echo "  auto-configures your monitors. On the first Hyprland login the"
+    echo "  setup wizard opens on screen — workspaces, wallpaper, apps and"
+    echo "  avatar are configured there (everything changeable later under"
+    echo "  Settings, Super+X)."
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "  Velumeron upgraded."
+    echo ""
+    echo "  Nothing to do: on the next shell start a \"What's new\" report"
+    echo "  opens and the package templates refresh automatically. Your"
+    echo "  ~/.config/velumeron/ user data (user_settings.lua, wallust"
+    echo "  colours, GUI settings) is never touched."
+    echo ""
+    echo "  Manual refresh, if you prefer:  velumeron-setup --sync"
+    echo ""
+}
+
+pre_remove() {
+    echo ""
+    echo "  Velumeron will be removed. Your ~/.config/velumeron/ user data"
+    echo "  is kept — delete it manually if you no longer need it."
+    echo ""
+}
