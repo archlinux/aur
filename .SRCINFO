@@ -16,6 +16,7 @@ pkgbase = veila-git
 	conflicts = veila
 	conflicts = veila-bin
 	options = !debug
+	options = !lto
 	backup = etc/pam.d/veila
 	source = git+https://github.com/naurissteins/Veila.git
 	sha256sums = SKIP
