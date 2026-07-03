@@ -1,7 +1,7 @@
 # Maintainer: ~grassblock <i [at] gb0 [dot] dev>
 
 pkgname=xsz
-pkgver=0.4.2
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="a compsize rewrite with multithread support"
 url="https://github.com/SaltyKitkat/xsz"
@@ -15,8 +15,8 @@ depends=(libgcc # libgcc_s.so
          )
 makedepends=(cargo)
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('681de4ef78eb1733b7f3be2f31a35720f263243a60a394df8a4212275477f31c')
-b2sums=('676a28fbbff117c58f3d917db5ecd67ab0b27c0cfa47bcf80a5988b194f092f3a8a7b1f2429b5f369e68d75e98f0453b7df217b7dabf62d0367304abf8a3cd81')
+sha256sums=('b1578429da6bbf7abf1c125b751ce2285369d8a8b15de10bc415341676698e4b')
+b2sums=('c56e7c9f66587fb015e1014fa45ce9a0ec6b944a161c9ce1b928a45bbced89ad391a038c97909d5b457c2066db6f6b76b6e07a78f2e19046e5c7ca360c59a532')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
