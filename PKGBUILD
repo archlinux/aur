@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=shades
-_pkgver=1.4.0
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="Simple Colour Manipulation"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -14,12 +14,11 @@ depends=(
 )
 optdepends=(
   r-covr
-  r-ggplot2
-  r-testthat
+  r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('84eb1e60ab7bc6d1fbbd662840230951')
-b2sums=('e82d7ad61b72098ce35916eb9d1b7c969b071d2c3f4da8349fb6a90c5e13fd30bd4dcbd4e71d6bfeb3611f332c3ea0f0e8500c42b25a530513b744f66d13d399')
+md5sums=('a699a7cb376718031bcfd6b197cf08cd')
+b2sums=('f7314b12815de211b9d0efcb36fa57e480c2c2f6ba4867a75dfd3c9a5c70db14976fa81147897e4f1da19b8d528a1b93222b30d83e80350b1d2ad5ba99a1b99f')
 
 build() {
   mkdir build
