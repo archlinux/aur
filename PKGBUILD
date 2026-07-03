@@ -1,13 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-tuner-panel
 pkgver=0.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Tuner that adds panel mode switcher to Tweaks appearance page."
 arch=('x86_64')
 url="https://altlinux.space/alt-gnome/tunerpanel"
 license=('GPL-3.0-or-later')
 depends=(
   'alt-panelmoded'
+  'gnome-tuner'
   'gtk4'
   'libadwaita'
   'libpeas-2'
@@ -15,7 +16,6 @@ depends=(
 makedepends=(
   'blueprint-compiler'
   'git'
-  'gnome-tuner'
   'meson'
   'vala'
 )
