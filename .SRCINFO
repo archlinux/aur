@@ -1,6 +1,6 @@
 pkgbase = python-kaldialign
 	pkgdesc = Python wrappers for Kaldi sequence alignment + edit-distance utilities
-	pkgver = 0.9.3
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/pzelasko/kaldialign
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-kaldialign
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = kaldialign-0.9.3.tar.gz::https://github.com/pzelasko/kaldialign/archive/refs/tags/v0.9.3.tar.gz
-	sha256sums = a72309efddfd78e3f4f9a627534512b1a375fc39463c42f7df652161aab0f678
+	source = kaldialign-0.12.0.tar.gz::https://github.com/pzelasko/kaldialign/archive/refs/tags/v0.12.0.tar.gz
+	sha256sums = 15491654690ce5fb3d938d0086771bda9ae382e29c6fcda5e76905d9cab09d2f
 
 pkgname = python-kaldialign
