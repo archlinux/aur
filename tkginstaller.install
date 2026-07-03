@@ -1,21 +1,4 @@
 pre_remove() {
-    # Remove .tkginstaller from all user home directories
-    while IFS=: read -r _ _ _ _ _ home _; do
-        if [[ -d "$home/.tkginstaller" ]]; then
-            echo "==> Removing user directory: $home/.tkginstaller"
-            rm -rf "$home/.tkginstaller"
-        fi
-    done < <(getent passwd)
-}
-post_upgrade() {
-    # Remove old .sh extension file if it exists
-    if [[ -f "/usr/bin/tkginstaller.sh" ]]; then
-        echo "==> Removing deprecated file: /usr/bin/tkginstaller.sh"
-        rm -f "/usr/bin/tkginstaller.sh"
-    fi
-}
-
-post_install() {
-    # Also check on fresh installs (in case of manual leftovers)
-    post_upgrade
+    echo "==> User cache directories are not removed automatically."
+    echo "==> To remove them manually, delete: ~/.tkginstaller"
 }

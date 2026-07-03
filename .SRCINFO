@@ -16,7 +16,6 @@ pkgbase = tkginstaller-git
 	optdepends = wdiff: comparing config files
 	provides = tkginstaller
 	conflicts = tkginstaller
-	replaces = tkginstaller
 	source = tkginstaller::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkginstaller
 	sha256sums = SKIP
 
