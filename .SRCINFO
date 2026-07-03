@@ -1,6 +1,6 @@
 pkgbase = tt-smi
 	pkgdesc = Tenstorrent console based hardware information program
-	pkgver = 5.3.0
+	pkgver = 5.3.1
 	pkgrel = 1
 	url = https://github.com/tenstorrent/tt-smi
 	arch = any
@@ -22,9 +22,9 @@ pkgbase = tt-smi
 	depends = python-linkify-it-py
 	depends = python-tt-tools-common
 	depends = python-tomli
-	provides = tt-smi=5.2.0
+	provides = tt-smi=5.3.0
 	conflicts = tt-smi
-	source = tt-smi::git+https://github.com/tenstorrent/tt-smi.git#tag=v5.3.0
-	sha256sums = c9179ee1d08b0952db0a1eae92392ac6e96a2d732eec71a7731baf57a10900ba
+	source = tt-smi::git+https://github.com/tenstorrent/tt-smi.git#tag=v5.3.1
+	sha256sums = d98cb6e828906772c57a07b373099ec0c62b42b60faab9560ad2e9d0cbd5e08a
 
 pkgname = tt-smi
