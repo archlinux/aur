@@ -1,0 +1,14 @@
+pkgbase = fallegji-git
+	pkgdesc = TUI P2P group chat app, written in Rust, bound to LAN or VPN
+	pkgver = 1.0.0.r3.e2bd774
+	pkgrel = 1
+	url = https://github.com/AshLink95/Fallegji
+	arch = x86_64
+	license = MIT
+	depends = rust
+	depends = gcc-libs
+	options = !lto
+	source = fallegji-git::git+https://github.com/AshLink95/Fallegji.git
+	md5sums = SKIP
+
+pkgname = fallegji-git
