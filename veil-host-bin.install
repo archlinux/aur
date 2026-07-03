@@ -1,0 +1,10 @@
+post_install() {
+    echo ':: veil-host reads config.lua from ./config.lua or ~/.config/veil/config.lua'
+    echo '   (never touches your home directory automatically). A starter example'
+    echo '   ships at /usr/share/veil-host/config.lua — copy it if you want one:'
+    echo '     mkdir -p ~/.config/veil && cp /usr/share/veil-host/config.lua ~/.config/veil/'
+}
+
+post_upgrade() {
+    post_install
+}
