@@ -1,0 +1,18 @@
+pkgbase = ftr
+	pkgdesc = Generates a directory tree from the current folder and can copy the result to the clipboard
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Neuwj-00/Foldertree
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	depends = xclip
+	depends = wl-clipboard
+	depends = gcc-libs
+	source = Foldertree-1.0.0.tar.gz::https://github.com/Neuwj-00/Foldertree/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = ftr
