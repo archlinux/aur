@@ -1,7 +1,7 @@
 # Maintainer: Alex Potapenko <opotapenko@gmail.com>
 
 pkgname=calibre-bin
-pkgver=9.10.0
+pkgver=9.11.0
 pkgrel=1
 pkgdesc="Official binary version Calibre"
 arch=(x86_64)
@@ -45,8 +45,8 @@ prepare() {
 
 # Checksums
 sha256sums=('c7aae61afba19c9cceed8bbafd2b39b5c4d6d683de0ccfc9c1fe2651857f757a'
-            'c089140a43368db2ac3abe01a6f5841e6b8e0a034669a3611751011e4350b8a6'
-            '0162ab4d0de7970c5da0ccacbcbd144b05e8319a9e41289df0be38b814db4f6d')
+            '9cf6d10ad892a9c179fdc03c4f78105c880de1ba039f35813dd0f1910b4ce3d6'
+            'f159beef88f2fa8247b261b68515a428d39a177129199376b124c7ccfa071111')
 
 _build_man_pages() {
     msg2 "Building man pages using calibre-debug + sphinx..."
