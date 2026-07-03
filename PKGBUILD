@@ -3,8 +3,8 @@
 # shellcheck disable=SC2034,SC2154,SC2148
 
 pkgname='jhentai-bin'
-_ver_main='8.0.13'
-_ver_sub='312'
+_ver_main='8.0.14'
+_ver_sub='317'
 pkgver=v${_ver_main}_${_ver_sub}
 pkgdesc='A manga app for E-Hentai, supporting Android & iOS & Windows & MacOS & Linux.'
 conflicts=('jhentai-git')
@@ -19,11 +19,13 @@ depends=(
     'zenity'
 )
 
-source_x86_64=("jhentai-${_ver_main}_${_ver_sub}.deb::${url}/releases/download/v${_ver_main}+${_ver_sub}/JHenTai-${_ver_main}+${_ver_sub}-Linux-x64.deb")
-b2sums_x86_64=('47bfcf50d9c84e7389f5b9b3d39491a2f469af906b6cd2d75586e9e11c635ca46e291176f0cb9bec326a9abd52f86910c0bd30ca4cc3aab09ad7b53a84b456c5')
+# source_x86_64=("jhentai-${_ver_main}_${_ver_sub}.deb::${url}/releases/download/v${_ver_main}+${_ver_sub}/JHenTai-${_ver_main}+${_ver_sub}-Linux-x64.deb")
+source_x86_64=("jhentai-${_ver_main}_${_ver_sub}.deb::${url}/releases/download/v${_ver_main}/JHenTai-${_ver_main}+${_ver_sub}-Linux-x64.deb")
+b2sums_x86_64=('b1fdb16916889b6dc771c8077cd2a494c2c4e8feafeeebae54403a59acaf40e37702adf2fa7c70e5189397dbd7cc9d1cffef3c14d672c28ce47733c8ac56b9e8')
 
-source_aarch64=("jhentai-${_ver_main}_${_ver_sub}.deb::${url}/releases/download/v${_ver_main}+${_ver_sub}/JHenTai-${_ver_main}+${_ver_sub}-Linux-arm64.deb")
-b2sums_aarch64=('ea1e099be82ec254560cd9ca53785622170ce3752b843619353307dde83c3781b819bf520b4f35faf17361d4a26c9aad5821b412149c3a548b88b37bc22417a8')
+# source_aarch64=("jhentai-${_ver_main}_${_ver_sub}.deb::${url}/releases/download/v${_ver_main}+${_ver_sub}/JHenTai-${_ver_main}+${_ver_sub}-Linux-arm64.deb")
+source_aarch64=("jhentai-${_ver_main}_${_ver_sub}.deb::${url}/releases/download/v${_ver_main}/JHenTai-${_ver_main}+${_ver_sub}-Linux-arm64.deb")
+b2sums_aarch64=('94e48d71e3c63306f140f386d217e73dd6fbba947856d528b41c4563da388b8eab1c34d22ec7f4641aaa1909ff216e1daac6aa4565a6b5ced0a9c889a0523368')
 
 
 prepare() {
