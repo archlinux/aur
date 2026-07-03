@@ -1,6 +1,6 @@
 pkgbase = aerion
 	pkgdesc = An Open Source Lightweight E-Mail Client
-	pkgver = 0.2.5
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://aerion.3df.io
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = aerion
 	depends = webkit2gtk-4.1
 	depends = zlib
 	provides = aerion
-	source = aerion-0.2.5.tar.gz::https://github.com/hkdb/aerion/archive/refs/tags/v0.2.5.tar.gz
-	sha256sums = 315a30b852580f36f32e46a8453585a9739d491a391545d652a7614dcb43f1bc
+	source = aerion-0.3.0.tar.gz::https://github.com/hkdb/aerion/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = b9ff6e2e9d309210d7b4b0ae273a1479205915ede1ea8083b1980f9ffaa1e2c7
 
 pkgname = aerion
