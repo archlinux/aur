@@ -3,7 +3,7 @@
 
 pkgname='smartctl_exporter'
 pkgver='0.14.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Prometheus exporter for S.M.A.R.T. metrics using smartctl'
 arch=('x86_64' 'aarch64')
 _uri="github.com/prometheus-community"
@@ -34,10 +34,10 @@ prepare() {
   ln -snf "${srcdir}/${pkgname}-${pkgver}" "${GOPATH}/src/${_uri}/${pkgname}"
 
   cd "${GOPATH}/src/${_uri}/${pkgname}"
-  for e in "../"*".patch"
+  for e in "${srcdir}/"*".patch"
     do
     echo "Apply patch: ${e}"
-    patch -p1 -i "../${e}"
+    patch -p1 -i "${e}"
   done
 }
 
@@ -56,6 +56,11 @@ build() {
     -X github.com/prometheus/common/version.Branch=tarball \
     -X github.com/prometheus/common/version.BuildUser=$(whoami)@$(hostnamectl hostname) \
     -X github.com/prometheus/common/version.BuildDate=$(date -u '+%Y%m%d-%H:%M:%S' --date=@${SOURCE_DATE_EPOCH})"
+}
+
+check() {
+  cd "${GOPATH}/src/${_uri}/${pkgbase}"
+  go test -modcacherw ./...
 }
 
 package() {
