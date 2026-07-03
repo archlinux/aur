@@ -1,16 +1,16 @@
 pkgbase = jbig2enc-git
 	pkgdesc = A JBIG2 image encoder
-	pkgver = 0.29.20.gc0141bf
-	pkgrel = 2
+	pkgver = 0.32.8.geb30816
+	pkgrel = 1
 	url = https://github.com/agl/jbig2enc
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = git
 	depends = gcc-libs
-	depends = leptonica>=1.68
+	depends = leptonica>=1.74
 	depends = libpng
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = libtiff
 	optdepends = python: for jbig2topdf.py
 	provides = jbig2enc
