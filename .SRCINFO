@@ -1,6 +1,6 @@
 pkgbase = copacetic-bin
 	pkgdesc = CLI tool for directly patching container images
-	pkgver = 0.14.1
+	pkgver = 0.14.2
 	pkgrel = 1
 	url = https://github.com/project-copacetic/copacetic
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = copacetic-bin
 	provides = copacetic
 	provides = copa
 	conflicts = copacetic
-	source_x86_64 = copacetic-bin-0.14.1-x86_64.tar.gz::https://github.com/project-copacetic/copacetic/releases/download/v0.14.1/copa_0.14.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = a780f62c054f60cd1aecbbf4a4b2665a816aa852534e6b0b9592cf96a327fdc9
-	source_aarch64 = copacetic-bin-0.14.1-aarch64.tar.gz::https://github.com/project-copacetic/copacetic/releases/download/v0.14.1/copa_0.14.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = dad5ee9b8ad19ed63c87242e68cc1739dffbef07928faf3eb7cfdfa48ef2c2c7
+	source_x86_64 = copacetic-bin-0.14.2-x86_64.tar.gz::https://github.com/project-copacetic/copacetic/releases/download/v0.14.2/copa_0.14.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 756c6e0f287dc7839c0a72e91b4d4712b1d8cd86a7233c068c0208a28bcb9ede
+	source_aarch64 = copacetic-bin-0.14.2-aarch64.tar.gz::https://github.com/project-copacetic/copacetic/releases/download/v0.14.2/copa_0.14.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = a7595083940c7d89a579c3bd8db74acec9b9ee7281ef29037f2dd53b07fddc1a
 
 pkgname = copacetic-bin
