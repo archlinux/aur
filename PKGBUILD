@@ -1,6 +1,6 @@
 # Maintainer: saliherdemk <saliherdem_kaymak@hotmail.com>
 pkgname=mozaik
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Qt6 GUI for managing Hyprland window rules stored in a Lua config"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('qt6-base' 'hyprland')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('273e25f3b64e1e20ff2aa7e1a1270cd6bf2a50d8dd873c750e910c44e945e0df')
+sha256sums=('b13522cb31f5ff5aaa6a31357d513322ca49eeb71e6c5bdc2941770c6d385a92')
 
 build() {
   cd "Mozaik-$pkgver"
