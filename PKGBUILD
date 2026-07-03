@@ -1,5 +1,5 @@
 # Maintainer: Neuwj <neuwj@linuxmail.org>
-pkgname=ftr
+pkgname=foldertree
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Generates a directory tree from the current folder and can copy the result to the clipboard"
