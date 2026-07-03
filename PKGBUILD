@@ -2,8 +2,8 @@
 # Contributor: notliad <notliad at users dot noreply dot github dot com>
 
 pkgname=notahub
-pkgver=0.1.0
-pkgrel=1
+pkgver=0.1.1
+pkgrel=5
 pkgdesc="A keyboard-driven TUI for managing projects and ideas in plain markdown"
 arch=('x86_64')
 url="https://github.com/notliad/notahub"
@@ -11,7 +11,7 @@ license=('custom')
 depends=()
 makedepends=('cargo')
 source=("https://github.com/notliad/notahub/archive/v$pkgver.tar.gz")
-sha256sums=('2c0e59c2c2de2c8fe370e61415d346e472bc2f43bb9583d23f39a3b6ee58f453')
+sha256sums=('9960a29dc12d5c2c926e136f9cacaab8c8ed3baaffd570a4b33f2a5e8c344c5b')
 validpgpkeys=()
 
 build() {

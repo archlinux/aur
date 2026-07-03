@@ -1,12 +1,12 @@
 pkgbase = notahub
 	pkgdesc = A keyboard-driven TUI for managing projects and ideas in plain markdown
-	pkgver = 0.1.0
-	pkgrel = 1
+	pkgver = 0.1.1
+	pkgrel = 5
 	url = https://github.com/notliad/notahub
 	arch = x86_64
 	license = custom
 	makedepends = cargo
-	source = https://github.com/notliad/notahub/archive/v0.1.0.tar.gz
-	sha256sums = 2c0e59c2c2de2c8fe370e61415d346e472bc2f43bb9583d23f39a3b6ee58f453
+	source = https://github.com/notliad/notahub/archive/v0.1.1.tar.gz
+	sha256sums = 9960a29dc12d5c2c926e136f9cacaab8c8ed3baaffd570a4b33f2a5e8c344c5b
 
 pkgname = notahub
