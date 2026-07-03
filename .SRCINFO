@@ -1,21 +1,21 @@
 pkgbase = gnome-tuner-gdm
 	pkgdesc = Plugin for Tuner that adds GNOME Display Manager settings
-	pkgver = 0.4.4
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://altlinux.space/alt-gnome/TunerGdm
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = blueprint-compiler
 	makedepends = git
-	makedepends = gnome-tuner
 	makedepends = meson
 	makedepends = vala
 	depends = gdm
+	depends = gnome-tuner
 	depends = gtk4
 	depends = libadwaita
 	depends = libpeas-2
 	depends = polkit
-	source = git+https://altlinux.space/alt-gnome/TunerGdm.git#tag=0.4.4
-	sha256sums = 5c58344d350e05cecce20bf54bbb0ad5b8b9011da4105448b153ced9af9c84a6
+	source = git+https://altlinux.space/alt-gnome/TunerGdm.git#tag=0.4.6
+	sha256sums = e7d37c1364f3308c21c070b161b3f4f54ea644a2e35da8f695f34adaa7f96736
 
 pkgname = gnome-tuner-gdm
