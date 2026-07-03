@@ -2,7 +2,7 @@
 
 pkgname="zxspectrum-utils"
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Package of utils for crossdevelopment for ZX Spectrum"
 arch=(
   'x86_64'
@@ -13,7 +13,7 @@ license=(
 )
 depends=(
   'glibc'
-  'libjpeg'
+  'libjpeg-turbo'
   'libpng'
   'libx11'
 )
@@ -35,9 +35,9 @@ source=(
   "https://downloads.sourceforge.net/zxspectrumutils/files/${_pkgsrc}.tar.gz"
   # "${_pkgsrc}::svn+https://svn.code.sf.net/p/zxspectrumutils/code/trunk#revision=82"
 )
-md5sums=('1b9380456ef1d2f0979d6c2d6f6c62c3')
-sha1sums=('846294f0f6be9b03b776b2f52bc5c23b66084772')
-sha256sums=('3d9209d481bd51e6886cf4b3a682e31f82cae553cbf04d20f6be26a33e55702b')
+md5sums=('c202ae0df3c4a83aa304985bc36fca70')
+sha1sums=('6317d64ebb22f842027da5d29c0814df2a5f93d2')
+sha256sums=('75ba315fbb9851b96011af27acb572dd5c326c18e205ac0f55c40395c320c467')
 
 build() {
   local configure_options=(
