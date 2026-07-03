@@ -1,37 +1,16 @@
-From 84ea9a4ccbe6d89f9112a9dc11f394a1699f7f54 Mon Sep 17 00:00:00 2001
-From: Alvaro Oliveira <51033564+limaon@users.noreply.github.com>
-Date: Fri, 3 Jul 2026 09:37:02 -0400
-Subject: [PATCH] fix: dynamically resize window height as search results
- change
-
-When the user filters the item list by typing in the search field,
-the dmenu window kept the maximum height defined by -l, leaving a
-large blank space below the matching items.
-
-This patch fixes the behavior by introducing the max_lines variable
-to preserve the original -l value, and recalculates lines dynamically
-in match() based on the actual number of matches. In drawmenu(), the
-window is resized via XResizeWindow to adjust the height according
-to the currently visible items.
----
- dmenu.c | 29 +++++++++++++++++++++++++++--
- 1 file changed, 27 insertions(+), 2 deletions(-)
-
-diff --git a/dmenu.c b/dmenu.c
-index 2d9a025..399310b 100644
---- a/dmenu.c
-+++ b/dmenu.c
-@@ -37,6 +37,7 @@ static char text[BUFSIZ] = "";
+--- a/dmenu.c	2026-07-03 13:01:23.726204628 -0400
++++ b/dmenu.c	2026-07-03 13:01:38.864838444 -0400
+@@ -37,6 +37,7 @@
  static char *embed;
  static int bh, mw, mh;
- static int inputw = 0, promptw, passwd = 0;
+ static int inputw = 0, promptw;
 +static unsigned int max_lines = 0; /* user-requested number of lines (-l) */
  static int lrpad; /* sum of left and right padding */
  static size_t cursor;
  static struct item *items = NULL;
-@@ -150,6 +151,20 @@ drawmenu(void)
+@@ -150,6 +151,20 @@
+ 	struct item *item;
  	int x = 0, y = 0, w;
- 	char *censort;
  
 +	/* dynamically resize window for vertical list */
 +	if (max_lines > 0) {
@@ -50,7 +29,7 @@ index 2d9a025..399310b 100644
  	drw_setscheme(drw, scheme[SchemeNorm]);
  	drw_rect(drw, 0, 0, mw, mh, 1, 1);
  
-@@ -283,6 +298,16 @@ match(void)
+@@ -278,6 +293,16 @@
  		matchend = substrend;
  	}
  	curr = sel = matches;
@@ -67,7 +46,7 @@ index 2d9a025..399310b 100644
  	calcoffsets();
  }
  
-@@ -720,7 +745,7 @@ readstdin(void)
+@@ -711,7 +736,7 @@
  	free(line);
  	if (items)
  		items[i].text = NULL;
@@ -76,7 +55,7 @@ index 2d9a025..399310b 100644
  }
  
  static void
-@@ -901,7 +926,7 @@ main(int argc, char *argv[])
+@@ -892,7 +917,7 @@
  			usage();
  		/* these options take one argument */
  		else if (!strcmp(argv[i], "-l"))   /* number of lines in vertical list */
@@ -85,6 +64,3 @@ index 2d9a025..399310b 100644
  		else if (!strcmp(argv[i], "-m"))
  			mon = atoi(argv[++i]);
  		else if (!strcmp(argv[i], "-p"))   /* adds prompt to left of input field */
--- 
-2.55.0
-
