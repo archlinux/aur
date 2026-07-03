@@ -1,7 +1,7 @@
 # Maintainer: Keith Raghubar <aur.archlinux.org.buckskin000@passmail.net>
 
 pkgname=sysforge
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Arch Linux build and maintenance suite for system setup and package management with compiler-optimized builds"
 arch=('any')
@@ -48,7 +48,7 @@ backup=(
 validpgpkeys=('23774499080F9288FEFB49CE7AAE22E6E1B4B22C')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/sysforge-$pkgver.tar.gz.asc")
-sha256sums=('afca465a03ea8cd89339803c4e470af1450ce70e3ada6cac39863b37d55a3a7d'
+sha256sums=('47d74f4ce1a4cc280c68ae2de31d82e79ccae26131661af7023579359d64649c'
             'SKIP')
 
 build() {
