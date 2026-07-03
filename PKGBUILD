@@ -9,7 +9,8 @@
 #     monitor-profile manager), `mpicker` (native colour picker —
 #     frozen screencap + zoom lens, drops the hyprpicker dep),
 #     `mvpn` (native Mullvad VPN control — full CLI + GTK4 layer-shell
-#     panel; drives the `mullvad` daemon, optional)
+#     panel; drives the `mullvad` daemon, optional), `mcal` (read-only
+#     calendar CLI over local .ics + remote iCal subscriptions)
 #   * `mshell` first-party desktop shell (GTK4 + relm4 + layer-shell)
 #     and its `mshellctl` / `mshellshare` IPC siblings
 #   * `mwizard` first-launch setup wizard (writes the shell profile
@@ -28,7 +29,7 @@
 # simply not run `mshell`; the helper binaries are still useful.
 
 pkgname=margo-git
-pkgver=r1967.3b864cdb
+pkgver=r1983.674b3625
 pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)"
 url="https://github.com/kenanpelit/margo"
@@ -230,7 +231,7 @@ build() {
   cargo build --frozen --release \
     -p margo -p start-margo \
     -p mctl -p mlock -p mlayout -p mscreenshot -p mvisual -p mlogind -p mpower -p mplay \
-    -p mdots
+    -p mdots -p mcal
 
   # mshell trio + mpicker + mwizard. mpicker pulls
   # mshell-screenshot (→ wayle-* → zbus/tokio), so it has to
@@ -263,7 +264,8 @@ check() {
     --package margo-config \
     --package margo-layouts \
     --package mctl \
-    --package mlayout ||
+    --package mlayout \
+    --package mcal ||
     echo "::: margo: test suite reported failures (non-blocking)"
 }
 
@@ -283,7 +285,7 @@ package() {
   for bin in \
       margo start-margo \
       mctl mlock mlayout mscreenshot mvisual mlogind mpower mplay \
-      mshell mshellctl mshellshare mpicker mwizard mkeys mvpn mdots; do
+      mshell mshellctl mshellshare mpicker mwizard mkeys mvpn mdots mcal; do
     install -Dm755 "$CARGO_TARGET_DIR/release/$bin" "$pkgdir/usr/bin/$bin"
   done
 
