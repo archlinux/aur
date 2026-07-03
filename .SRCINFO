@@ -7,7 +7,7 @@ pkgbase = uninstaller
 	license = GPL3
 	makedepends = cargo
 	depends = gcc-libs
-	source = uninstaller-1.10.6.tar.gz::https://github.com/Neuwj-00/uninstaller/archive/refs/tags/v1.10.6.tar.gz
+	source = uninstaller-1.10.6.tar.gz::https://github.com/Neuwj-00/uninstaller/archive/refs/tags/1.10.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = uninstaller
