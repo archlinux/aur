@@ -10,7 +10,7 @@
 #
 
 pkgname=zfs-utils-git
-pkgver=2.4.99.r305.gb9b84445ea
+pkgver=2.4.99.r778.ge78fa488af
 pkgrel=1
 epoch=2
 pkgdesc='Userspace utilities for the Zettabyte File System.'
@@ -73,7 +73,7 @@ build() {
                 --with-udevdir=/usr/lib/udev \
                 --libexecdir=/usr/lib \
                 --localstatedir=/var \
-                --enable-pyzfz \
+                --enable-pyzfs \
                 --enable-systemd \
                 --with-zfsexecdir=/usr/lib/zfs \
                 --with-config=user
@@ -92,9 +92,6 @@ package() {
     rm -r "${pkgdir}"/usr/share/initramfs-tools
     rm -r "${pkgdir}"/usr/share/zfs/*.sh
     rm -r "${pkgdir}"/usr/share/zfs/{runfiles,test-runner,zfs-tests}
-    # fix permissions
-    chmod 750 ${pkgdir}/etc/sudoers.d
-    chmod 440 ${pkgdir}/etc/sudoers.d/zfs
 
     # Install the support files
     install -Dm644 "${srcdir}"/zfs.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs

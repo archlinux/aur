@@ -1,6 +1,6 @@
 pkgbase = zfs-utils-git
 	pkgdesc = Userspace utilities for the Zettabyte File System.
-	pkgver = 2.4.99.r305.gb9b84445ea
+	pkgver = 2.4.99.r778.ge78fa488af
 	pkgrel = 1
 	epoch = 2
 	url = https://zfsonlinux.org/
@@ -16,7 +16,7 @@ pkgbase = zfs-utils-git
 	optdepends = pam: managing encryption keys
 	optdepends = python: pyzfs and extra utilities
 	optdepends = python-cffi: pyzfs
-	provides = zfs-utils=2.4.99.r305.gb9b84445ea
+	provides = zfs-utils=2.4.99.r778.ge78fa488af
 	conflicts = zfs-utils
 	backup = etc/default/zfs
 	backup = etc/zfs/zed.d/zed.rc
