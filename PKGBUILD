@@ -1,8 +1,7 @@
-# Maintainer: Tobias Kunze <r@rixx.de>
-# Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
+# Contributor: Tobias Kunze <r@rixx.de> (https://github.com/rixx/pkgbuilds)
 
 pkgname=python39
-pkgver=3.9.23
+pkgver=3.9.25
 pkgrel=1
 _pybasever=3.9
 _pymajver=3
@@ -14,13 +13,12 @@ depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib')
 makedepends=('bluez-libs' 'mpdecimal' 'gdb' 'tk')
 optdepends=('sqlite' 'mpdecimal: for decimal' 'xz: for lzma' 'tk: for tkinter')
 source=(
-    https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz
+    https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz{,.asc}
     mpdecimal-2.5.1.patch
 )
-sha256sums=(
-    '61a42919e13d539f7673cf11d1c404380e28e540510860b9d242196e165709c9'
-    '8eb389be1babe03a0231001dc16dd2d69a3ea0fbf6b8c976a580787e7ff1594c'
-)
+sha256sums=('00e07d7c0f2f0cc002432d1ee84d2a40dae404a99303e3f97701c10966c91834'
+            'SKIP'
+            '8eb389be1babe03a0231001dc16dd2d69a3ea0fbf6b8c976a580787e7ff1594c')
 validpgpkeys=(
     '0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D'  # Ned Deily (Python release signing key) <nad@python.org>
     'E3FF2839C048B25C084DEBE9B26995E310250568'  # Łukasz Langa (GPG langa.pl) <lukasz@langa.pl>
