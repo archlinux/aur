@@ -1,6 +1,6 @@
 pkgbase = serial-studio
 	pkgdesc = Multi-purpose serial data visualization & processing program
-	pkgver = 4.0.1
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://github.com/Serial-Studio/Serial-Studio
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = serial-studio
 	provides = serial-studio
 	conflicts = Serial-Studio
 	conflicts = serial-studio
-	source = serial-studio::git+https://github.com/Serial-Studio/Serial-Studio.git#tag=v4.0.1
-	sha256sums = e820d6b464618d4c8216a2d84f1607d7c077a0a4ade2558197c5ee185420cc0d
+	source = serial-studio::git+https://github.com/Serial-Studio/Serial-Studio.git#tag=v4.0.2
+	sha256sums = 881d39ac8112ee17d5eff4ca8e0f8e88455c9a90b9b54d4d3dde081da0d84b50
 
 pkgname = serial-studio
