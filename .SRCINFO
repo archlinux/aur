@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-filter
 	pkgdesc = Epson inkjet printer filter used with CUPS
 	pkgver = 1.0.2
-	pkgrel = 7
+	pkgrel = 8
 	url = https://download-center.epson.com/search
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = epson-inkjet-printer-filter
 	depends = cups
 	depends = glibc
 	depends = libcups
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = libstdc++
 	options = emptydirs
 	source = https://download-center.epson.com/f/module/23886533-318c-48cb-a837-e6685f653a98/epson-inkjet-printer-201207w-1.0.1-1.src.rpm

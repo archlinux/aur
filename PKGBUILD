@@ -6,7 +6,7 @@
 
 pkgname="epson-inkjet-printer-filter"
 pkgver=1.0.2
-pkgrel=7
+pkgrel=8
 pkgdesc="Epson inkjet printer filter used with CUPS"
 arch=(
   'i686'
@@ -21,9 +21,9 @@ depends=(
   'cups'
   'glibc'
   'libcups'
-  # 'libgcc'  # see below (?)
-  'libjpeg'   # see below
-  'libstdc++' # see below
+  # 'libgcc'      # see below (?)
+  'libjpeg-turbo' # see below
+  'libstdc++'     # see below
 )
 makedepends=(
   'curl'
