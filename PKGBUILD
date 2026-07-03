@@ -90,8 +90,8 @@ pkgver=${_prams[3]}
 
 url="http://www.cewe.de/"
 license=("custom:eula")
-depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy' 'libxcrypt-compat')
-makedepends=('p7zip' 'xdg-utils')
+depends=('libx11' 'libjpeg-turbo' 'curl' 'wget' 'snappy' 'libxcrypt-compat')
+makedepends=('7zip' 'xdg-utils')
 arch=('i686' 'x86_64')
 source=($source 'updater.pl')
 md5sums=(SKIP SKIP)
