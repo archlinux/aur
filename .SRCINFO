@@ -1,7 +1,7 @@
 pkgbase = python-array-api-extra
 	pkgdesc = Extra array functions built on top of the array API standard
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://data-apis.org/array-api-extra
 	arch = any
 	license = MIT

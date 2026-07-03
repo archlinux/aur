@@ -3,7 +3,7 @@
 _pypiname="array-api-extra"
 pkgname="python-${_pypiname}"
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extra array functions built on top of the array API standard"
 arch=(
   'any'
@@ -62,7 +62,4 @@ package() {
   install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -vsf "${site_packages}/${_pypiname//-/_}-${pkgver}.dist-info/licenses/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  find "${pkgdir}${site_packages}/${_pypiname//-/_}" -type f,d -name '*test*' -exec \
-    rm -vrf "{}" +
 }
