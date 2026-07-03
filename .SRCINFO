@@ -1,6 +1,6 @@
 pkgbase = vitis-fs
 	pkgdesc = Semantic file system
-	pkgver = 0.29.0
+	pkgver = 0.30.0
 	pkgrel = 0
 	url = https://gitlab.com/os-18/vitis
 	arch = x86_64
@@ -11,11 +11,15 @@ pkgbase = vitis-fs
 	makedepends = glib2
 	makedepends = amalthea-ldc2
 	makedepends = oxfuse-ldc2
+	makedepends = fuse3
 	makedepends = ldc
+	depends = ufo
+	depends = pageguard
 	depends = glib2
 	depends = amalthea-ldc2
 	depends = oxfuse-ldc2
-	source = vitis-fs-0.29.0.tar.gz::https://gitlab.com/os-18/vitis/-/archive/v0.29.0/vitis-v0.29.0.tar.gz
-	sha256sums = 3a7ca90d0b889c5e0d789980bce7406c3d1707970e7a4a80614e0e5b749ccd0f
+	depends = fuse3
+	source = vitis-fs-0.30.0.tar.gz::https://gitlab.com/os-18/vitis/-/archive/v0.30.0/vitis-v0.30.0.tar.gz
+	sha256sums = 587330cfe8555fe51bc406698a06e0291f94be21d396c6386059aa821e85320f
 
 pkgname = vitis-fs
