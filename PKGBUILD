@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "valuate"
-  echo "1.0.0.r$(git rev-list --count HEAD).g$(git describe --always --dirty)"
+  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || echo "1.0.0.r$(git rev-list --count HEAD).g$(git describe --always --dirty)"
 }
 
 build() {
