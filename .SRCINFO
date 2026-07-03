@@ -1,0 +1,26 @@
+pkgbase = sidemark
+	pkgdesc = PDF viewer and annotator with a live markdown notes sidebar
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/brokkoli71/sidemark
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = python-pymupdf
+	depends = python-numpy
+	depends = python-cairo
+	depends = gtksourceview5
+	depends = adwaita-icon-theme
+	optdepends = librsvg: render PNG icon sizes at install time
+	optdepends = libreoffice: convert PPTX files to PDF
+	optdepends = ocrmypdf: add a searchable text layer to scanned PDFs (OCR)
+	optdepends = qrencode: show a QR code to share the PDF to a phone
+	optdepends = jq: recent-files menu for the walker launcher
+	conflicts = sidemark-git
+	source = sidemark-0.4.0.tar.gz::https://github.com/brokkoli71/sidemark/archive/refs/tags/0.4.0.tar.gz
+	sha256sums = 44bc27295a7af4741f59576058efddb75ef5d701e29549d318933803e06800b7
+
+pkgname = sidemark
