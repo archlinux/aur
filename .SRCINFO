@@ -1,0 +1,23 @@
+pkgbase = streamdeck-lets-go-git
+	pkgdesc = Lightweight daemon for controlling Elgato Stream Deck devices with a built-in web UI
+	pkgver = r0.unknown
+	pkgrel = 1
+	url = https://github.com/Wakatron/streamdeck-lets-go
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.26
+	makedepends = git
+	depends = libusb-1.0
+	optdepends = librsvg: SVG icon rendering
+	optdepends = fontconfig: system font detection
+	provides = streamdeck-lets-go
+	conflicts = streamdeck-lets-go
+	source = streamdeck-lets-go-git::git+https://github.com/Wakatron/streamdeck-lets-go.git
+	source = streamdeck-lets-go.service
+	source = 90-streamdeck.rules
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = streamdeck-lets-go-git

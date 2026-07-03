@@ -1,0 +1,14 @@
+[Unit]
+Description=Stream Deck Lets Go daemon
+Documentation=https://github.com/Wakatron/streamdeck-lets-go
+After=graphical-session.target
+Wants=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/streamdeck-lets-go daemon
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target
