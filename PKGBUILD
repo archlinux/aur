@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-nightly-bin
 pkgdesc="A post-modern terminal file explorer"
 
-pkgver=0.10.0.0.20260701.0c6e42f
+pkgver=0.10.0.0.20260702.4e9d0b1
 pkgrel=1
 _gitversion=nightly
 
@@ -33,8 +33,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.zip::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.zip")
 sha256sums=('7e331c8d7ad76b984c11c23de3b860e9f93cae4bad82c264475788a5fc6866ac'
             'b1f7cd544c998e25bcc990abc8c1f7c46d01b3a2ec61efb454ea932cbcc69445')
-sha256sums_x86_64=('f58cdd05d409f62f05953420440501ff5a8273f16780ff2f2b3f7d60a9bcd7fd')
-sha256sums_aarch64=('854aabdbd7ea126f8d885690e1cb441e396281347bb10149a398e6545cd3b353')
+sha256sums_x86_64=('9b19f213b4780b095ec85b3b819ce0851cbb6372f56bdc2c005a51a03592749d')
+sha256sums_aarch64=('fcf10db486d1864617be2b726d08b5cb86cff8b669b50b50fedaac4e361aa1d6')
 
 
 pkgver() {
