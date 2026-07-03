@@ -1,5 +1,5 @@
 pkgname=vercel
-pkgver=54.19.0
+pkgver=54.20.0
 pkgrel=1
 pkgdesc="The command line interface for Vercel"
 arch=(any)
@@ -9,7 +9,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-sha256sums=('e498e9e17b448c324861882b9cd56b749a7457e42f43ff8d021edaca2c83ae5d')
+sha256sums=('ad312d5ffe89e425ac82f21a8816475e6fe5bb7d8084d3eb2e186bbb1c8c9a9e')
 
 # For more info about this package see:
 # https://wiki.archlinux.org/index.php/Node.js_package_guidelines
