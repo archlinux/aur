@@ -3,7 +3,7 @@
 
 pkgname=czkawka-cli-bin
 pkgver=12.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Find and manage duplicate files, empty folders, similar images, and other "lint" (CLI)'
 arch=('x86_64')
 url='https://github.com/qarmin/czkawka'
