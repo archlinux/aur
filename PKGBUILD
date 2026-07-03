@@ -6,7 +6,7 @@
 
 pkgname=firefox-pure
 pkgver=152.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, Private & Safe Web Browser"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64)
@@ -18,7 +18,6 @@ depends=(
   cairo
   dbus
   ffmpeg
-  firefox-settings
   fontconfig
   freetype2
   gcc-libs
