@@ -33,14 +33,13 @@ prepare() {
 
 package() (
   local installdir
-  # shellcheck disable=SC2030
   installdir="$(realpath -m "${pkgdir}/${_installdir}")"
 
   # The installer runs a Makefile which fails when run in parallel.
   export MAKEFLAGS='-j1'
   "${srcdir}"/sgx_linux_x64_sdk.bin --prefix "${installdir}"
 
-  # fix broken ${srcdir} references
+  # fix ${srcdir} references
   sed -E -i "s|\b(SGX_SDK=).*|\1${_installdir}/sgxsdk|g" "${installdir}"/sgxsdk/environment
   sed -E -i "s|\b(SGX_LIBRARY_PATH=).*|\1${_installdir}/sgxsdk/lib64|g" "${installdir}"/sgxsdk/bin/sgx-gdb
   sed -E -i "s|^(prefix=).*|\1${_installdir}/sgxsdk|g" "${installdir}"/sgxsdk/pkgconfig/*.pc
