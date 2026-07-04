@@ -1,0 +1,19 @@
+pkgbase = python-zulip
+	pkgdesc = Bindings for the Zulip message API
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/zulip/python-zulip-api
+	arch = any
+	license = APACHE
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python-requests
+	depends = python-distro
+	depends = python-click
+	depends = python-typing_extensions
+	source = python-zulip-0.9.1.tar.gz::https://files.pythonhosted.org/packages/source/z/zulip/zulip-0.9.1.tar.gz
+	sha256sums = abeba4147625107f690bb633143fdf36cd665fe037b3871011fd4b1e3dc081e8
+
+pkgname = python-zulip
