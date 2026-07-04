@@ -17,7 +17,7 @@
 # On each upstream release, CI regenerates the sha256 + .SRCINFO and pushes
 # this file to the AUR (see .github/workflows/release.yml, publish-aur job).
 pkgname=argus-tracker
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Always-on personal desktop activity tracker (KDE Plasma / Wayland)"
 arch=('x86_64')
@@ -51,7 +51,7 @@ install=argus.install
 # GitHub tag tarball. Extracts to argus-$pkgver/ (repo name is `argus`,
 # tag is v$pkgver). CI keeps the checksum current via updpkgsums.
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ee5f78bbaad8c597e559132335494b0035976e32a7a8e3dede4df21c288c6418')
+sha256sums=('d59146f8e1741cb02558e13a644903dcd5f2b975e2da4ad97625b1cabd8184fb')
 
 _src() { echo "$srcdir/argus-$pkgver"; }
 
