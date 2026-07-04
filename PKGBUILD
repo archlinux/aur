@@ -1,5 +1,5 @@
 pkgname=victus-control-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Tray-first monitor and profile controller for HP Victus laptops'
 arch=('x86_64')
@@ -22,7 +22,7 @@ install="${pkgname}.install"
 source=(
   "${pkgname}-${pkgver}.tar.zst::${url}/releases/download/v${pkgver}/victus-control-${pkgver}-x86_64.tar.zst"
 )
-sha256sums=('b33555f3f732d3f7c53d6148a86f2eac465767a4b60bc7a2d7525725a48c0631')
+sha256sums=('46ce2242355e21815088693e0e76add8992561c73d123dec05dd4ee7bbbcde1f')
 
 package() {
   install -d "${pkgdir}"
