@@ -1,6 +1,6 @@
 # Maintainer: Rodrigo Brito <rodrigo@w3ti.com.br>
 pkgname=fina
-pkgver=10.5.0
+pkgver=11.0.0
 pkgrel=1
 pkgdesc="Gerenciador de finanças pessoais"
 arch=('x86_64')
@@ -14,10 +14,10 @@ sha256sums=('SKIP')
 prepare() {
   cd "Fina-$pkgver"
   npm ci --ignore-scripts
-  # better-sqlite3 prebuilds top out at Electron 38; rebuild against that version
+  # better-sqlite3-multiple-ciphers prebuilds top out at Electron 38; rebuild against that version
   local _electron_version
   _electron_version=$(electron38 --version | sed 's/^v//')
-  npx @electron/rebuild -f -w better-sqlite3 -v "$_electron_version"
+  npx @electron/rebuild -f -w better-sqlite3-multiple-ciphers -v "$_electron_version"
   # gera build/icon.png a partir do SVG (não versionado no tarball)
   npm run generate-icons
 }
