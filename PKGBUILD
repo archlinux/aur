@@ -80,8 +80,7 @@ prepare() {
   warning "Mathematica (Light) takes around 11 GiB of space with 'makepkg'."
   warning 'Building in a tmpfs (e.g. /tmp when mounted into RAM) may not work.'
 
-  # shellcheck disable=SC2312 # echo won't trigger errors
-  if [[ "$(echo "${srcdir}" | wc -w)" -ne 1 ]]; then
+  if [[ $(echo "${srcdir}" | wc -w || true) -ne 1 ]]; then
     error "ERROR: The Mathematica installer doesn't support directory names with spaces."
     warning "Current build directory: ${srcdir}"
     exit 1
