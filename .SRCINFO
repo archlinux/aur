@@ -1,6 +1,6 @@
 pkgbase = python-p115oss
 	pkgdesc = 115 oss upload.
-	pkgver = 0.1.0.2
+	pkgver = 0.1.0.3
 	pkgrel = 1
 	url = https://pypi.org/project/p115oss
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = python-p115oss
 	conflicts = python-p115oss
 	options = !strip
 	options = !debug
-	source = p115oss-0.1.0.2.tar.gz::https://files.pythonhosted.org/packages/source/p/p115oss/p115oss-0.1.0.2.tar.gz
-	sha256sums = 5a35fc047e4b0c5ff68cc646495ce12ad8fbcb4bdbebc826f8003b6f909bdc0d
+	source = p115oss-0.1.0.3.tar.gz::https://files.pythonhosted.org/packages/source/p/p115oss/p115oss-0.1.0.3.tar.gz
+	sha256sums = a2801013e7c7d6ddf5122ef3728dc61a5a3b84c4a8ea5fe65fe64a73cd9ec81c
 
 pkgname = python-p115oss
