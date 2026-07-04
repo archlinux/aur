@@ -23,7 +23,7 @@ depends=('glibc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}"{-bin,-git})
 
-source=("${_pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('f08c275325a0cb442c9c3b2272bc6b284e413fbcc470e050091f860d7d6097f2')
 
 build() {
