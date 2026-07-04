@@ -2,7 +2,7 @@
 # Contributor: Kevin Muñoz (MrHacker) <kmunoz@condorbs.net><contacto@mrhacker.com.co>
 pkgname=wazuh-agent
 pkgver=4.14.6
-pkgrel=1
+pkgrel=2
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgdesc="Wazuh Agent actively protects Arch Linux systems with advanced threat prevention, detection, and response capabilities."
@@ -53,6 +53,15 @@ install=$pkgname.install
 prepare() {
   # Corregir permisos restrictivos del RPM para que makepkg pueda limpiar $srcdir
   chmod -R u+rwX "$srcdir/var/ossec"
+
+  # makepkg enlaza las fuentes no-archivo como symlink dentro de $srcdir apuntando
+  # a la caché SRCDEST. patch(1) se niega a modificar symlinks (endurecimiento
+  # CVE-2015-1196) y, de seguirlos con --follow-symlinks, parchearía el archivo
+  # cacheado in-place rompiendo el checksum en el siguiente build. Materializamos
+  # una copia real primero: patch actúa sobre $srcdir (efímero), no sobre la caché.
+  if [ -L "$srcdir/$sca_file" ]; then
+    cp --remove-destination -- "$(readlink -f "$srcdir/$sca_file")" "$srcdir/$sca_file"
+  fi
 
   # Aplicar correcciones locales al SCA de upstream:
   #  - Detección de OS por ID_LIKE=arch (soporta CachyOS y demás derivados de Arch)

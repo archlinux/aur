@@ -1,7 +1,7 @@
 pkgbase = wazuh-agent
 	pkgdesc = Wazuh Agent actively protects Arch Linux systems with advanced threat prevention, detection, and response capabilities.
 	pkgver = 4.14.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wazuh.com/
 	install = wazuh-agent.install
 	arch = x86_64
