@@ -1,6 +1,6 @@
 pkgbase = curd-polland-bin
 	pkgdesc = Watch anime in CLI with AniList Tracking, Discord RPC, Intro/Outro/Filler/Recap Skipping, etc. Uses PolLand visual configs for rofi.
-	pkgver = 1.5.2
+	pkgver = 2.0.1.pollandd
 	pkgrel = 1
 	url = https://github.com/Pol-Jak-295/curd-polland
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = curd-polland-bin
 	depends = chromium
 	provides = curd
 	conflicts = curd
-	source_x86_64 = https://github.com/Pol-Jak-295/curd-polland/releases/download/v1.5.2/curd-linux-x86_64
+	source_x86_64 = https://github.com/Pol-Jak-295/curd-polland/releases/download/v2.0.1.pollandd/curd-linux-x86_64
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/Pol-Jak-295/curd-polland/releases/download/v1.5.2/curd-linux-arm64
+	source_aarch64 = https://github.com/Pol-Jak-295/curd-polland/releases/download/v2.0.1.pollandd/curd-linux-arm64
 	sha256sums_aarch64 = SKIP
 
 pkgname = curd-polland-bin
