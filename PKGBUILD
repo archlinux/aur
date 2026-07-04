@@ -42,6 +42,7 @@ build() {
   cmake -B build -S "$srcdir/$_srcname" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DLIB_INSTALL_DIR=lib \
     -DBUILD_TESTING=off \
     -DSTANDARD_CONFIG_FILE=/etc/fancontrol \
