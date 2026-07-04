@@ -2,7 +2,7 @@
 
 pkgname='histui-bin'
 pkgver=0.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Notification history browser and daemon for Linux desktops (prebuilt binaries)'
 url='https://github.com/jmylchreest/histui'
 arch=('aarch64' 'x86_64')
@@ -14,11 +14,13 @@ conflicts=('histui')
 _github_url="https://github.com/jmylchreest/histui"
 
 # Common sources (systemd units, license, example config)
+# Local filenames are versioned so cached copies from previous releases
+# are never reused when the upstream file changes between versions.
 source=(
-    "histuid.service::${_github_url}/releases/download/v${pkgver}/histuid.service"
-    "histuid-monitor.service::${_github_url}/releases/download/v${pkgver}/histuid-monitor.service"
+    "histuid-${pkgver}.service::${_github_url}/releases/download/v${pkgver}/histuid.service"
+    "histuid-monitor-${pkgver}.service::${_github_url}/releases/download/v${pkgver}/histuid-monitor.service"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/jmylchreest/histui/v${pkgver}/LICENSE"
-    "histuid.toml.example::https://raw.githubusercontent.com/jmylchreest/histui/v${pkgver}/docs/static/examples/histuid.toml"
+    "histuid-${pkgver}.toml.example::https://raw.githubusercontent.com/jmylchreest/histui/v${pkgver}/docs/static/examples/histuid.toml"
 )
 
 # Architecture-specific binary sources
@@ -38,8 +40,8 @@ sha256sums_aarch64=('82fddd69aa4cd0f58924ad6ab1f8c91e0f2109e91872bce2e8e297a9f15
 package() {
     install -Dm755 "histui-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/histui"
     install -Dm755 "histuid-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/histuid"
-    install -Dm644 "histuid.service" "${pkgdir}/usr/lib/systemd/user/histuid.service"
-    install -Dm644 "histuid-monitor.service" "${pkgdir}/usr/lib/systemd/user/histuid-monitor.service"
+    install -Dm644 "histuid-${pkgver}.service" "${pkgdir}/usr/lib/systemd/user/histuid.service"
+    install -Dm644 "histuid-monitor-${pkgver}.service" "${pkgdir}/usr/lib/systemd/user/histuid-monitor.service"
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "histuid.toml.example" "${pkgdir}/usr/share/doc/${pkgname%-bin}/histuid.toml.example"
+    install -Dm644 "histuid-${pkgver}.toml.example" "${pkgdir}/usr/share/doc/${pkgname%-bin}/histuid.toml.example"
 }
