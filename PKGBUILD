@@ -3,7 +3,7 @@
 _pluginname=waveform
 pkgname=obs-plugin-waveform-git
 pkgver=1.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Waveform is an audio spectral analysis plugin for OBS Studio. It is based on FFTW and optimized for AVX2/FMA3"
 arch=("x86_64" "x86_64_v3")
 url="https://github.com/phandasm/waveform/"
@@ -12,7 +12,7 @@ groups=("obs-plugins")
 depends=("obs-studio>=32.0.0" "fftw")
 makedepends=("cmake")
 source=("$_pluginname-$pkgver::git+https://github.com/phandasm/$_pluginname.git"
-        "git+https://github.com/google/cpu_features.git")
+        "cpu_features-0.10.1::git+https://github.com/google/cpu_features.git")
 md5sums=("SKIP" "SKIP")
 
 prepare() {
