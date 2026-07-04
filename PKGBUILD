@@ -1,7 +1,7 @@
 # Maintainer: Rom Grk <rom7011@gmail.com>
 pkgname=mariner-git
 _pkgname=mariner
-pkgver=0.0.1.r55.gddaa64c
+pkgver=0.0.1.r114.gb4d61c1
 pkgrel=1
 pkgdesc="A GNOME Files alternative built with node-gtk (GTK4 + libadwaita)"
 arch=('x86_64')
@@ -21,7 +21,11 @@ license=('GPL-3.0-or-later')
 # are hard deps so a fresh install is full-featured out of the box; the app
 # degrades gracefully without them, but we ship them rather than via optdepends.
 # (tar is not listed — it is part of the mandatory `base` group.)
-depends=('nodejs>=22.18' 'gtk4' 'libadwaita' 'gobject-introspection-runtime' 'gvfs'
+# gjs hosts the org.freedesktop.FileManager1 D-Bus service ("Show in folder"
+# from browsers, `gio open`, etc.) — node-gtk cannot export a D-Bus object, so a
+# tiny gjs translator owns the name and forwards to `mariner`. See
+# docs/default-file-manager.md.
+depends=('nodejs>=22.18' 'gtk4' 'libadwaita' 'gobject-introspection-runtime' 'gvfs' 'gjs'
          'ripgrep' 'unzip' 'zip' '7zip' 'unarchiver' 'xdg-user-dirs')
 # Build: compiles the node-gtk native addon from source against system GTK.
 makedepends=('git' 'npm' 'node-gyp' 'python' 'pkgconf' 'gobject-introspection' 'cairo' 'glib2')
@@ -91,6 +95,18 @@ EOF
     "$pkgdir/usr/share/applications/com.github.romgrk.mariner.desktop"
   install -Dm644 data/icons/hicolor/scalable/apps/com.github.romgrk.mariner.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.github.romgrk.mariner.svg"
+  install -Dm644 data/icons/hicolor/symbolic/apps/com.github.romgrk.mariner-symbolic.svg \
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/com.github.romgrk.mariner-symbolic.svg"
   install -Dm644 data/com.github.romgrk.mariner.metainfo.xml \
     "$pkgdir/usr/share/metainfo/com.github.romgrk.mariner.metainfo.xml"
+
+  # org.freedesktop.FileManager1 support. The gjs translator owns the well-known
+  # name and turns ShowItems/ShowFolders/ShowItemProperties into `mariner`
+  # invocations (node-gtk can't host a D-Bus object itself). We do NOT drop a
+  # system-wide activation .service here — that path is owned by nautilus and
+  # would file-conflict. Instead `mariner-set-default` installs a per-user
+  # activation override (in ~/.local/share, which wins over /usr/share) plus the
+  # inode/directory MIME default. See docs/default-file-manager.md.
+  install -Dm755 data/filemanager1.js "$appdir/filemanager1.js"
+  install -Dm755 packaging/set-default-file-manager.sh "$pkgdir/usr/bin/mariner-set-default"
 }
