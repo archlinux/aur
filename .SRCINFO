@@ -1,6 +1,6 @@
 pkgbase = dusk-lang-git
 	pkgdesc = Compiler for the dusk programming language, a systems language with generational memory safety (development build)
-	pkgver = 0.3.2.r0.g31fc15b
+	pkgver = 0.4.2.r0.g0b96478
 	pkgrel = 1
 	url = https://github.com/choice404/dusk
 	arch = x86_64

@@ -1,6 +1,6 @@
 # Maintainer: Austin Choi <austin.c.percussion@gmail.com>
 pkgname=dusk-lang-git
-pkgver=0.3.2.r0.g31fc15b
+pkgver=0.4.2.r0.g0b96478
 pkgrel=1
 pkgdesc="Compiler for the dusk programming language, a systems language with generational memory safety (development build)"
 arch=('x86_64' 'aarch64')
