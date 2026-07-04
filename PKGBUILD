@@ -1,8 +1,8 @@
 # Maintainer: Myqfeng <viagrahuang@outlook.com>
 
 pkgname=easytier-connector
-pkgver=1.0.0
-pkgrel=4
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="基于 Qt6 的系统托盘应用程序，用于连接 EasyTier Web 控制台（配置服务器）。EasyTier Web Connector based on Qt6."
 arch=('x86_64')
 options=('!debug')
@@ -11,7 +11,7 @@ license=('LGPL3')
 depends=('qt6-base' 'qt6-svg')
 makedepends=('cmake' 'git')
 install=easytier-connector.install
-source=("${pkgname}::git+https://gitee.com/qteasytier/easytier-connector.git#tag=${pkgver}fix")
+source=("${pkgname}::git+https://gitee.com/qteasytier/easytier-connector.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
 build() {
@@ -45,7 +45,7 @@ package() {
         "${pkgdir}/etc/systemd/system/easytier-connector.service"
 
     # 桌面文件
-    install -Dm644 "package/linux/deb/usr/share/applications/etconnector.desktop" \
+    install -Dm644 "assets/etconnector.desktop" \
         "${pkgdir}/usr/share/applications/etconnector.desktop"
 
     # 创建 /usr/bin 软链接
