@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/termide/termide/archive/$pkgver.tar.gz")
-sha256sums=('c05da6288fac8fa1c099b043ee84b0f6779258192e6e626e7f65aab692a31e5e')
+sha256sums=('f82f8c3de6c059984eeb7063cd0fc0e443d6158e166ea4fe6fa08aa6d4350c2e')
 
 prepare() {
     cd "$pkgname-$pkgver"
