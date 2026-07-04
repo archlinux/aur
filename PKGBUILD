@@ -2,18 +2,18 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-crypt-argon2'
-pkgver='0.030'
+pkgver='0.031'
 pkgrel='1'
 pkgdesc="Perl interface to the Argon2 key derivation functions"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.006')
-makedepends=('perl-dist-build>=0.020')
+makedepends=('perl-dist-build>=0.028')
 url='https://metacpan.org/release/Crypt-Argon2'
 source=("http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Crypt-Argon2-$pkgver.tar.gz")
-md5sums=('73388e0f40f37d4ca0328b627eb12d03')
-sha512sums=('81231f7ebeee627c79dd89947f603c55892ec2ae4579d2eeb7c58011cbc2b61c87d8f030cc235fcccf60c48291dc06ed0786d40b3710f08abb34cefc0969e0b3')
+md5sums=('f6ca6607bfa8de1541c9bea22c05e8e0')
+sha512sums=('77bede32a0c39bcb38797c9eea34b92947a3f855719c94c90f79dfb9287a43ffb35f4b6644e42eef60f1d94932160fe1c56028103f056558e50edc8765427913')
 _distdir="Crypt-Argon2-$pkgver"
 
 build() {
