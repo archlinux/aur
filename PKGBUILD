@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=photogimp
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="GIMP config overlay that mimics Adobe Photoshop layout and shortcuts"
 arch=('any')
 url="https://github.com/Diolinux/PhotoGIMP"
@@ -19,6 +19,15 @@ prepare() {
 
     # Carry the upstream shortcuts fix until it lands in a tagged release.
     patch -Np1 -i "${srcdir}/photogimp-shortcuts-fix.patch"
+
+    # Upstream still disables GIMP 3's default brush-size shortcuts.
+    sed -i \
+        -e 's|^(action "tools-size-decrease-skip")$|(action "tools-size-decrease-skip" "bracketleft")|' \
+        -e 's|^(action "tools-size-increase-skip")$|(action "tools-size-increase-skip" "bracketright")|' \
+        .config/GIMP/3.0/shortcutsrc
+    # Fail loudly if upstream churn ever stops the patterns matching.
+    grep -q '^(action "tools-size-decrease-skip" "bracketleft")$' .config/GIMP/3.0/shortcutsrc
+    grep -q '^(action "tools-size-increase-skip" "bracketright")$' .config/GIMP/3.0/shortcutsrc
 }
 
 package() {
@@ -62,6 +71,20 @@ if [ ! -d "$PGDIR" ]; then
     echo "PhotoGIMP: First launch — copying config to $PGDIR"
     mkdir -p "$PGDIR"
     cp -r /usr/share/photogimp/config/* "$PGDIR/"
+fi
+# One-time repair of configs this wrapper copied from earlier package
+# revisions, whose shortcutsrc explicitly unbound GIMP's default [ / ]
+# brush-size keys. The marker keeps any later deliberate unbinding by
+# the user untouched.
+if [ ! -f "$PGDIR/.photogimp-shortcuts-migrated" ]; then
+    if grep -Eq '^\(action "tools-size-(de|in)crease-skip"\)$' "$PGDIR/shortcutsrc" 2>/dev/null; then
+        echo "PhotoGIMP: one-time repair — restoring GIMP's default [ / ] brush-size shortcuts"
+        sed -i \
+            -e 's|^(action "tools-size-decrease-skip")$|(action "tools-size-decrease-skip" "bracketleft")|' \
+            -e 's|^(action "tools-size-increase-skip")$|(action "tools-size-increase-skip" "bracketright")|' \
+            "$PGDIR/shortcutsrc"
+    fi
+    touch "$PGDIR/.photogimp-shortcuts-migrated"
 fi
 export GIMP3_DIRECTORY="$PGDIR"
 exec gimp "$@"

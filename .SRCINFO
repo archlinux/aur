@@ -1,7 +1,7 @@
 pkgbase = photogimp
 	pkgdesc = GIMP config overlay that mimics Adobe Photoshop layout and shortcuts
 	pkgver = 3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Diolinux/PhotoGIMP
 	arch = any
 	license = GPL-3.0-only
