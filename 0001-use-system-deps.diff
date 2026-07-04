@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index cdf602a..5b4a1b0 100644
+index c99d2c8..455e728 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -33,7 +33,7 @@ option(WAYWALLEN_CARGO_OFFLINE "Pass --frozen to cargo (offline + locked, for fl
@@ -20,7 +20,7 @@ index cdf602a..5b4a1b0 100644
  endif()
  
 diff --git a/deps.json b/deps.json
-index e92de58..707a40c 100644
+index aa9d672..c1f8cf9 100644
 --- a/deps.json
 +++ b/deps.json
 @@ -1,52 +1,4 @@
@@ -76,3 +76,16 @@ index e92de58..707a40c 100644
    {
      "commit": "629bda81eb98856ca023f0f87f57dde8d22b4823",
      "dest": "build/_flatpak_deps/rstd-src",
+diff --git a/plugins/CMakeLists.txt b/plugins/CMakeLists.txt
+index 2b00d10..31e9ccb 100644
+--- a/plugins/CMakeLists.txt
++++ b/plugins/CMakeLists.txt
+@@ -7,7 +7,7 @@ set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
+ include(${CMAKE_SOURCE_DIR}/cmake/FetchDeps.cmake)
+ set(JSON_BuildTests OFF CACHE INTERNAL "")
+ set(JSON_Install    OFF CACHE INTERNAL "")
+-fetchdeps(${CMAKE_SOURCE_DIR}/deps.json NAMES rstd wavsen nlohmann_json)
++fetchdeps(${CMAKE_SOURCE_DIR}/deps.json NAMES rstd wavsen)
+ 
+ add_subdirectory(../bridge waywallen-bridge-build)
+ 
