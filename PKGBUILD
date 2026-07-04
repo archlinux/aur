@@ -1,6 +1,6 @@
 # Maintainer: annoyedmilk
 pkgname=airpods-tui-git
-pkgver=r32.743a16c
+pkgver=r34.e2bf892
 pkgrel=1
 pkgdesc="Terminal UI for managing AirPods on Linux over Bluetooth AACP"
 arch=('x86_64')
