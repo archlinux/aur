@@ -1,0 +1,7 @@
+[flowhook-bin]
+source = "github"
+github = "etcoder-642/FlowHook"
+include_prereleases = true
+use_latest_release = true
+from_pattern = 'v([0-9.]*)-alpha'
+to_pattern = '\1'
