@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@pm.me>
 
 pkgname=rakemon-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Terminal dashboard for cargo-rake lifecycle events (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -21,9 +21,9 @@ source=("${_base}/dist-rakemon.tar.gz")
 source_x86_64=("rakemon-x86_64::${_base}/rakemon-x86_64-unknown-linux-musl")
 source_aarch64=("rakemon-aarch64::${_base}/rakemon-aarch64-unknown-linux-musl")
 # Checksums are filled in by the release workflow before publishing to the AUR.
-sha256sums=('28ea96a3c3c1666197fff19863845e5ddbf57eec3c84800b7a7a348e27035319')
-sha256sums_x86_64=('e48b91c30d905398bce305fdf447cd11fdc3150d2c27b936a0a44cf5ffc98805')
-sha256sums_aarch64=('2196e6406d28bb49a4a87945fd1b8716d8d0254ee834c0d9092294571dbfa7b7')
+sha256sums=('c629756c2e4bce67c8850ea3498e134ebcd253bf961a4b287677bce7ddddd016')
+sha256sums_x86_64=('4b5f04e372db43881286e46e35646426e7e063d8bdb206193679a85e6ed5a7a1')
+sha256sums_aarch64=('989fa08746e33d3ef317311c1b827f7331a77d316dad923a6ce6678c7bba30f4')
 
 package() {
     install -Dm755 "rakemon-${CARCH}" "$pkgdir/usr/bin/rakemon"
