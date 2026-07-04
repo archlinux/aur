@@ -1,6 +1,6 @@
 # Maintainer: Donuts Delivery <support@donutsdelivery.online>
 pkgname=donutstudio-bin
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="DonutStudio — harmonic composition workstation and MIDI editor (just-intonation native)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ install="${pkgname}.install"
 # Source: published zip from the project download server (VPS serves
 # DonutStudio-linux.zip as a symlink alias for Arbit-linux.zip; same SHA256).
 source=("DonutStudio-linux-${pkgver}.zip::https://donutsdelivery.online/download-donutstudio/files/DonutStudio-linux.zip")
-sha256sums=('8c63c9970fe399c34df385b6c487dad08a53774efa4aca432c230bf09409f9df')
+sha256sums=('b9250f01d699a1047b720ce86bf9bf748c6c189a56a14c53090ef9676251a140')
 
 package() {
   # Standalone goes to /opt/donutstudio/. The binary inside the zip is still
