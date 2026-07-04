@@ -1,0 +1,23 @@
+pkgbase = python-graphrag-llm
+	pkgdesc = GraphRAG LLM package
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/microsoft/graphrag
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python-azure-identity
+	depends = python-graphrag-cache
+	depends = python-graphrag-common
+	depends = python-jinja
+	depends = python-litellm
+	depends = python-nest-asyncio2
+	depends = python-pydantic
+	depends = python-typing-extensions
+	source = python-graphrag-llm-3.1.0.tar.gz::https://files.pythonhosted.org/packages/source/g/graphrag-llm/graphrag-llm-3.1.0.tar.gz
+	sha256sums = 1e0a4117a63b4f59c174c0be6768b967d390a7417b19985e6a4ab63a1e3f6ed6
+
+pkgname = python-graphrag-llm
