@@ -1,0 +1,18 @@
+pkgbase = python-dingtalk-stream
+	pkgdesc = DingTalk Stream Mode API - Python SDK
+	pkgver = 0.24.3
+	pkgrel = 1
+	url = https://github.com/open-dingtalk/dingtalk-stream-sdk-python
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python-websockets
+	depends = python-requests
+	depends = python-aiohttp
+	source = python-dingtalk-stream-0.24.3.tar.gz::https://github.com/open-dingtalk/dingtalk-stream-sdk-python/archive/refs/tags/v0.24.3.tar.gz
+	sha256sums = f46bcfe2cc654159927b16ec6569459bddd8f49b1e1b701248b325a51a604a70
+
+pkgname = python-dingtalk-stream
