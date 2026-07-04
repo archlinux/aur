@@ -1,0 +1,25 @@
+pkgbase = cproof-git
+	pkgdesc = XMPP CLI client
+	pkgver = 7645.5d7b7bb2
+	pkgrel = 1
+	url = https://jabber.space/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = autoconf-archive
+	depends = curl
+	depends = expat
+	depends = libgcrypt
+	depends = libnotify
+	depends = libotr
+	depends = libxss
+	depends = libsignal-protocol-c
+	depends = gpgme
+	depends = libstrophe-git
+	provides = profanity
+	conflicts = profanity
+	source = git+https://git.jabber.space/devs/cproof.git#branch=master
+	sha256sums = SKIP
+
+pkgname = cproof-git
