@@ -7,7 +7,7 @@ pkgver=0.8.r26.gc752e3b
 pkgrel=1
 pkgdesc="GUI for the fancontrol script and systemd service"
 arch=('i686' 'x86_64')
-url="https://github.com/Maldela/Fancontrol-GUI"
+url="https://github.com/Maldela/${_srcname}"
 license=('GPL-2.0-or-later')
 depends=(
   'kauth5'
@@ -26,9 +26,9 @@ depends=(
   'systemd'
 )
 makedepends=('git' 'cmake' 'extra-cmake-modules')
-provides=('fancontrol-gui' 'libfancontrol_qml_plugin.so')
-conflicts=('fancontrol-gui' 'fancontrol-common' 'libfancontrol_qml_plugin.so')
-source=('git+https://github.com/Maldela/fancontrol-gui.git')
+provides=("${_srcname}")
+conflicts=("${_srcname}")
+source=("git+https://github.com/Maldela/${_srcname}.git")
 md5sums=('SKIP')
 
 pkgver() {
