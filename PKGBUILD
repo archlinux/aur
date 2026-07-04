@@ -2,7 +2,7 @@
 
 _pkgname="tsukimi"
 pkgname="${_pkgname}-bin"
-pkgver=26.6.3
+pkgver=26.7.1
 pkgrel=1
 pkgdesc='A simple third-party Jellyfin client for Linux'
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
   'gstreamer'
   'gtk4')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tsukinaha/tsukimi/releases/download/v${pkgver}/tsukimi-amd64-linux.tar.gz")
-sha256sums=('56099922853f058f1c794610057288bd08d1b06773ec9cc34d18c273343b5b8b')
+sha256sums=('4309e82e76c0e8f1455e99c8e3b453368afaac3c9decfd4b376c8c22f99bb560')
 
 package() {
   install -d "${pkgdir}/usr"
