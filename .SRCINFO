@@ -1,7 +1,7 @@
 pkgbase = termalyr
 	pkgdesc = Synchronized song lyrics in your terminal
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/yarochek/termalyr
 	arch = any
 	license = MIT

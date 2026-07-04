@@ -1,6 +1,6 @@
 pkgname=termalyr
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Synchronized song lyrics in your terminal"
 arch=('any')
 url="https://github.com/yarochek/termalyr"
