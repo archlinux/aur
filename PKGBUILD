@@ -1,12 +1,12 @@
 # Maintainer: dvytvs
 
 pkgname=glass-music-bin
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="Futuristic liquid-glass music player for Linux"
 arch=('x86_64')
 url="https://github.com/dvytvs/Glass-Music"
-license=('MIT')
+license=('GPL-3.0-only')
 
 depends=(
     'gtk3'
