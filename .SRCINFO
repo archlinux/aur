@@ -1,6 +1,6 @@
 pkgbase = couchbase-server-community
 	pkgdesc = A document database featuring a powerful query language and unrivaled performance at scale.
-	pkgver = 8.0.0
+	pkgver = 8.0.2
 	pkgrel = 2
 	url = http://www.couchbase.com/
 	install = couchbase-server.install
@@ -14,7 +14,7 @@ pkgbase = couchbase-server-community
 	conflicts = couchbase3-server-community
 	conflicts = couchbase4-server-community
 	conflicts = couchbase5-server-community
-	source = couchbase-server-community-v8.0.0.deb::http://packages.couchbase.com/releases/8.0.0/couchbase-server-community_8.0.0-linux_amd64.deb
-	sha256sums = ef4c87749b4d724362609a11aee9624cb85eefbf141e3b5dc14804749bf0717e
+	source = couchbase-server-community-v8.0.2.deb::http://packages.couchbase.com/releases/8.0.2/couchbase-server-community_8.0.2-linux_amd64.deb
+	sha256sums = 7e5eb3473c0d9d5e9e29a267357a03f67ced017b047c87bc6115dbe84aa71b85
 
 pkgname = couchbase-server-community

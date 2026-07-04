@@ -2,7 +2,7 @@
 # Maintainer: Christophe Robin <crobin at nekoo a-dot com>
 
 pkgname=couchbase-server-community
-pkgver=8.0.0
+pkgver=8.0.2
 pkgrel=2
 pkgdesc="A document database featuring a powerful query language and unrivaled performance at scale."
 arch=('x86_64')
@@ -28,4 +28,4 @@ package() {
   mv "${pkgdir}/lib" "${pkgdir}/usr/lib"
 }
 
-sha256sums=('ef4c87749b4d724362609a11aee9624cb85eefbf141e3b5dc14804749bf0717e')
+sha256sums=('7e5eb3473c0d9d5e9e29a267357a03f67ced017b047c87bc6115dbe84aa71b85')
