@@ -1,7 +1,7 @@
 # Maintainer: Berk Kucuk <berkkucukk@proton.me>
 pkgname=entropy-shield
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern Linux desktop privacy stack — Tor, DNSCrypt, I2P, Onion Server"
 arch=('any')
 url="https://github.com/berk-kucuk/entropy-shield"

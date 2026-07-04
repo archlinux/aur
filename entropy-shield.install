@@ -43,12 +43,23 @@ _add_user_to_group() {
     fi
 }
 
+# $1 = "start" on a fresh install (nothing running yet) or "restart" on an
+# upgrade. This distinction matters: `systemctl enable --now` on a unit that
+# is already active just enables it — it does NOT restart it, so an upgrade
+# would leave the OLD daemon code running in memory (stale until the next
+# manual restart/reboot) even though /opt/entropy-shield was updated on disk.
 _enable_daemon() {
+    action="$1"
     systemctl daemon-reload >/dev/null 2>&1 || true
-    if systemctl enable --now entropy-shield.service >/dev/null 2>&1; then
-        echo "  Enabled and started the entropy-shield daemon."
+    if systemctl enable entropy-shield.service >/dev/null 2>&1 \
+        && systemctl "$action" entropy-shield.service >/dev/null 2>&1; then
+        if [ "$action" = "restart" ]; then
+            echo "  Restarted the entropy-shield daemon (picks up the update)."
+        else
+            echo "  Enabled and started the entropy-shield daemon."
+        fi
     else
-        echo "  [!] Could not enable the daemon automatically — run:"
+        echo "  [!] Could not $action the daemon automatically — run:"
         echo "        sudo systemctl enable --now entropy-shield"
     fi
 }
@@ -57,7 +68,7 @@ post_install() {
     _remove_legacy_sudoers
     _ensure_group
     _add_user_to_group
-    _enable_daemon
+    _enable_daemon start
     echo ""
     echo "  Entropy Shield installed successfully."
     echo ""
@@ -76,12 +87,13 @@ post_upgrade() {
     _remove_legacy_sudoers
     _ensure_group
     _add_user_to_group
-    _enable_daemon
+    _enable_daemon restart
     echo ""
     echo "  Entropy Shield upgraded."
     echo ""
-    echo "  The daemon is enabled/started and your group membership was"
-    echo "  (re)applied automatically. If you were not already in the"
-    echo "  'entropy-shield' group, log out and back in for it to take effect."
+    echo "  The daemon was restarted to pick up the update, and your group"
+    echo "  membership was (re)applied automatically. If you were not already"
+    echo "  in the 'entropy-shield' group, log out and back in for it to take"
+    echo "  effect."
     echo ""
 }

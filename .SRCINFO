@@ -1,7 +1,7 @@
 pkgbase = entropy-shield
 	pkgdesc = Modern Linux desktop privacy stack — Tor, DNSCrypt, I2P, Onion Server
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/berk-kucuk/entropy-shield
 	install = entropy-shield.install
 	arch = any
