@@ -1,7 +1,7 @@
 pkgbase = raze-bin
 	pkgdesc = Build engine port backed by GZDoom tech
 	pkgver = 1.11.0.f5ce6d9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/raze
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = raze-bin
 	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = libgl
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = libvpx
 	depends = openal
 	depends = sdl2
