@@ -80,41 +80,48 @@ CHECK_FOR_UPDATES() {
         echo "Pacman: $U_PACMAN | AUR: $U_AUR | Flatpak: $U_FLAT | Snap: $U_SNAP"
         echo "Total: $TOTAL"
 
-       if [ "$TOTAL" -gt 0 ]; then
+      if [ "$TOTAL" -gt 0 ]; then
             # Envia a notificação com o botão e captura a resposta na variável // Sends the notification with the button and captures the response in the variable
-            ACAO_ESCOLHIDA=$(notify-send -u normal -a "Arch Update Full" \
-            --action="run_update=⚡ Click to Launch App" \
+            ACAO_ESCOLHIDA=$(notify-send -w -u normal -a "Arch Update Full" \
+            --action="run_update=Click to Launch App" \
             "🛡️ Sentinela Alert" \
             "$(echo -e "🔄 Pending packages: $TOTAL\nRun Arch Update Full to update now. [!]")")
 
             echo "Status: Notificação enviada ao operador."
             echo "[info] Notification sent to operator."
 
-            # Verifica qual foi a ação escolhida pelo operador//Checks which action was chosen by the operator
+            # Verifica qual foi a ação escolhida pelo operador // Checks which action was chosen by the operator
             if [[ "$ACAO_ESCOLHIDA" == "run_update" ]]; then
                 echo "Status: Operador confirmou. Lançando o aplicativo..."
                 echo "[info] Operator confirmed. Launching application..."
-                
-                # Detecta o ambiente e usa o lançador correto para o .desktop // Detects the environment and uses the correct launcher for the .desktop 
                 if command -v gtk-launch &> /dev/null; then
-                    
-                    gtk-launch arch-update-full &
+                    gtk-launch arch-update-full.desktop &
+                    disown $!
                 elif command -v kioclient &> /dev/null; then
-                   
-                    kioclient exec arch-update-full.desktop &
+                    kioclient exec arch-update-full.desktop &      
+                    disown $!
                 elif command -v kioclient5 &> /dev/null; then
                     kioclient5 exec arch-update-full.desktop &
-                elif command -v dex &> /dev/null; then
-                    
+                    disown $!    
+                elif command -v dex &> /dev/null; then             
                     dex /usr/share/applications/arch-update-full.desktop &
+                    disown $!                                       
                 else
-                   
-                    echo "[warn] Nenhum lançador .desktop encontrado. Tentando abrir via xdg-open..."
-                    xdg-open /usr/share/applications/arch-update-full.desktop &
+                    echo "[warn] Nenhum lançador .desktop encontrado. Extraindo comando direto..."
+                    CMD_EXEC=$(awk '/^Exec=/ {sub(/^Exec=/, ""); gsub(/ *%[a-zA-Z]/, ""); print; exit}' \
+                        /usr/share/applications/arch-update-full.desktop)
+                    if [ -n "$CMD_EXEC" ]; then
+                        $CMD_EXEC &
+                        disown $!
+                    else
+                        echo "[warn] Falha ao extrair do .desktop. Tentando binário direto..."
+                        arch-update-full &
+                        disown $!                                   
+                    fi
                 fi
             else
                 # Se fechar, ignorar ou o tempo acabar, o script cai aqui e morre silenciosamente // If closed, ignored, or the time runs out, the script falls here and dies silently
-                echo "Status: Nenhuma ação tomada pelo operador. Segue o baile."
+                echo "Status: Nenhuma ação tomada pelo operador."
             fi
         else
             echo "Status: No pending updates detected. System is up to date."
@@ -613,16 +620,22 @@ echo -e "\n${NEON_BLUE}╔$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╗${NC
 printf "${NEON_BLUE}║${NC}${YELLOW_NEON} %s%*s${NC}${NEON_BLUE}║${NC}\n" "$texto_orfao" "$((ESPACOS-1))" ""
 echo -e "${NEON_BLUE}╚$(printf '═%.0s' $(seq 1 $((LARGURA_BOX-2))))╝${NC}"
 
-# Armazena a saída diretamente em um array seguro//Stores the output directly into a safe array
-mapfile -t ORPHANS_LIST < <(pacman -Qdtq)
+mapfile -t ORPHANS_LIST < <(pacman -Qdtq 2>/dev/null)
+
+ORPHANS_CLEAN=()
+for pkg in "${ORPHANS_LIST[@]}"; do
+    [[ -n "$pkg" ]] && ORPHANS_CLEAN+=("$pkg")
+done
+ORPHANS_LIST=("${ORPHANS_CLEAN[@]}")
+unset ORPHANS_CLEAN
 
 if [ ${#ORPHANS_LIST[@]} -gt 0 ]; then
     echo -e "\n${YELLOW_NEON}[LANG: PT-BR] Pacotes órfãos detectados. Eliminando resíduos...${NC}"
     echo -e "${YELLOW_NEON}[INFO] Orphan packages detected. Wiping them out...${NC}"
-    
-    # Executa a limpeza usando o array expandido com segurança//Performs the cleanup using the safely expanded array
+
+
     sudo pacman -Rns "${ORPHANS_LIST[@]}" --noconfirm
-    
+
     echo -e "\n${GREEN_NEON}[LANG: PT-BR] Fragmentos residuais eliminados com sucesso.${NC}"
     echo -e "${GREEN_NEON}[SUCCESS] Residual data erased.${NC}"
 else
@@ -631,7 +644,6 @@ else
 fi
 
 echo -e "\n${NEON_BLUE}--------------------------------------------------------------------------------------${NC}"
-
 sleep 0.7
 
 # 7. LIMPEZA DO CACHE // CLEARING THE CACHE ---------------------------------------------------------------------------------------------<<<<
