@@ -1,5 +1,5 @@
 pkgname=minesweeper
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A simple Minesweeper game"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('gcc')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/yu34567890/minesweeper-c/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b0acb77d368762dd5cdabd83f86a5ba9c8fe7f539cdf84b0637211ae2c414564')
+sha256sums=('b56575a2dc8ecf20203aff1f7281c5a2eb39feb5f93d592a2751f59c9f94cd50')
 
 build() {
     cd "${srcdir}/minesweeper-c-${pkgver}"
