@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-sysguard-library
-pkgver=6.7.1
+pkgver=6.7.2
 pkgrel=1
 pkgdesc='Library to retrieve information on the current status of computer hardware'
 arch=(x86_64)
@@ -37,7 +37,7 @@ provides=(libksysguard)
 conflicts=(libksysguard)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2039954da0ced652df071af047adea0f6617edf88ea8309c4eefcd78eec854b4')
+sha256sums=('bc6602dc09c7b19b0ade4883173f7d243375667f2be825e6b7363b17f2ccd643')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
