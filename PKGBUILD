@@ -2,7 +2,7 @@
 # LUNA CLI - AI Coding Assistant for LUNA OS X
 
 pkgname=luna-cli
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="🌙 LUNA - AI Coding Assistant CLI for LUNA OS X"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,6 @@ depends=(
     'python-dotenv>=1'
     'python-aiofiles>=23'
     'python-gitpython>=3.1'
-    'python-click-spinner>=0.1'
     'python-colorama>=0.4'
     'python-shellingham>=1.5'
     'python-platformdirs>=3.10'
@@ -31,12 +30,18 @@ optdepends=(
     'python-google-generativeai: Google Gemini support'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-source=("https://github.com/Arunachalam-gojosaturo/Luna-cli/releases/download/v${pkgver}/luna_cli-${pkgver}-py3-none-any.whl")
-sha256sums=('c2c384ae88421b9f7a9de229e66b59099fed85032a2fd2b14fe4dc43068e2438')
+source=("https://github.com/Arunachalam-gojosaturo/Luna-cli/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('03aff6b8f73fad2c64fe8a2343156ae2974d6d68dfec90f036e651ad00656a7c')
+
+build() {
+    cd "Luna-cli-${pkgver}"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-    python -m installer --destdir="$pkgdir" luna_cli-${pkgver}-py3-none-any.whl
+    cd "Luna-cli-${pkgver}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
     
     # Install license
-    install -Dm644 /dev/null "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
 }
