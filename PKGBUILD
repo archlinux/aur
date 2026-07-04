@@ -14,7 +14,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3cc754b8b69778d9c6870e14188b9c51bcb2585cc16f112cbf5a6c3272ca595a')
+sha256sums=('74dc13a08691ea791630b11577ea460d7e177727b538b6b021e9745b61719c10')
 
 package() {
     cd "jay-$pkgver"
