@@ -1,0 +1,25 @@
+pkgbase = openvino-genai-bin
+	pkgdesc = OpenVINO GenAI runtime (Python 3.14) — fast Intel NPU/GPU/CPU LLM inference, precompiled
+	pkgver = 2026.2.1.0
+	pkgrel = 1
+	url = https://github.com/openvinotoolkit/openvino.genai
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-installer
+	depends = python
+	depends = python-numpy
+	depends = gcc-libs
+	depends = glibc
+	optdepends = intel-npu-driver: Intel NPU (AI Boost) inference
+	optdepends = intel-compute-runtime: Intel GPU inference
+	noextract = openvino-2026.2.1-21919-cp314-cp314-manylinux_2_28_x86_64.whl
+	noextract = openvino_tokenizers-2026.2.1.0-py3-none-manylinux_2_28_x86_64.whl
+	noextract = openvino_genai-2026.2.1.0-2351-cp314-cp314-manylinux_2_28_x86_64.whl
+	source = https://files.pythonhosted.org/packages/43/65/b7f2a382e1da48c6cce109e7960714aa0a0608f2fb6b00388594b5d8edd2/openvino-2026.2.1-21919-cp314-cp314-manylinux_2_28_x86_64.whl
+	source = https://files.pythonhosted.org/packages/d5/a9/42364380e0561f5c4fe3a8df1ce91f1f052238a37c7a96793b7542620785/openvino_tokenizers-2026.2.1.0-py3-none-manylinux_2_28_x86_64.whl
+	source = https://files.pythonhosted.org/packages/9a/8d/d86c018e508e8c8985f41e99200843dd8f2ce7004656075aa33d9dc23645/openvino_genai-2026.2.1.0-2351-cp314-cp314-manylinux_2_28_x86_64.whl
+	sha256sums = 0ec716ddd84a63534613171d27c8657c8417734a1cccedeb40533e8673a12c6d
+	sha256sums = 74a787920280c3287a120648dfb9863821ee63cf44aa9408dd140fd30cd82a5d
+	sha256sums = b3048efed6618ffe70c0b14b28464c21c85404a8255240bdbf31e2138598f7a7
+
+pkgname = openvino-genai-bin
