@@ -13,7 +13,7 @@ pkgdesc='A GUI frontend for libalpm (everything in one package - snap, flatpak, 
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/manjaro/$_pkgname"
 license=('GPL-3.0-or-later')
-depends=('libnotify' 'libpamac-full' 'libhandy' 'libadwaita' 'pamac-cli')
+depends=('libnotify' 'libpamac-full' 'libhandy' 'libadwaita')
 if ((_use_jemalloc)); then
 	depends+=('jemalloc')
 fi
@@ -57,6 +57,8 @@ build() {
 }
 
 package() {
+	depends+=('pamac-cli')
+
 	meson install -C 'build' --destdir "$pkgdir"
 	install -Dm644 "$_srcdir/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }

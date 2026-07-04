@@ -19,7 +19,6 @@ pkgbase = pamac-all
 	depends = libpamac-full
 	depends = libhandy
 	depends = libadwaita
-	depends = pamac-cli
 	optdepends = polkit-kde-agent: authentication agent for KDE
 	optdepends = polkit-qt5: Qt5 based authentication agent
 	optdepends = polkit-gnome: legacy authentication agent for Gnome
@@ -38,3 +37,8 @@ pkgbase = pamac-all
 	sha256sums = a1e82520739403d1b769c87731355ac5f5710b5626fbf77dce8eabea8506c4c1
 
 pkgname = pamac-all
+	depends = libnotify
+	depends = libpamac-full
+	depends = libhandy
+	depends = libadwaita
+	depends = pamac-cli
