@@ -4,7 +4,7 @@
 # Contributor: Tokenicrat <hi@bytoken.link>
 
 pkgname=marp-cli-bin
-pkgver=4.4.0
+pkgver=4.4.1
 pkgrel=1
 pkgdesc='A CLI interface for Marp and Marpit based converters'
 url='https://github.com/marp-team/marp-cli'
@@ -18,7 +18,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/marp-cli-v${pkgver}-linux.tar.gz"
     "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/marp-team/marp-cli/v${pkgver}/LICENSE"
 )
-b2sums=('52384628b1f8d3664a936ba67267fa248e5a827d4ad9cf326bc4a0e6488e39c711fc595bd2ab8293d0b6872d2b00b109374b23ada2f87eadb8f259f15b72d7a5'
+b2sums=('ca2f56b9dd6b3049a8b2dfcc2f6159a154e033379b2a064c2ee875b65e4bbc68afcb7e0f1d5e404c0f0f8e20fef0db701ef668114e366f1d2534a0e32b797d02'
         'c53efbcec37e21912a9cb464a70839674a6174b577656c738d72e803e53bb0d05050056c9144d1952a2e1db39cad66ce0176d6d17c92fa847e22a20ce98ec596')
 
 package() {
