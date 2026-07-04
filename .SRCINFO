@@ -1,0 +1,23 @@
+pkgbase = python-perplexityai
+	pkgdesc = The official Python library for the Perplexity API
+	pkgver = 0.39.0
+	pkgrel = 1
+	url = https://github.com/perplexityai/perplexity-py
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-hatch-fancy-pypi-readme
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-anyio>=3.5.0
+	depends = python-distro>=1.7.0
+	depends = python-httpx>=0.23.0
+	depends = python-pydantic>=1.9.0
+	depends = python-sniffio
+	depends = python-typing_extensions>=4.14
+	source = https://files.pythonhosted.org/packages/source/p/perplexityai/perplexityai-0.39.0.tar.gz
+	sha256sums = 7cf965ddac7a570a157e102ff2146306d13f771c4205b2e16f9c051aca2e2616
+
+pkgname = python-perplexityai
