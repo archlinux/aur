@@ -1,6 +1,6 @@
 pkgbase = system-bridge-git
 	pkgdesc = A bridge for your systems (git version)
-	pkgver = 5.6.2.r5869.g03a9b97
+	pkgver = 5.6.2.r5870.gaa335b4
 	pkgrel = 1
 	url = https://github.com/timmo001/system-bridge
 	arch = x86_64
@@ -11,6 +11,9 @@ pkgbase = system-bridge-git
 	depends = libxtst
 	depends = libxkbcommon
 	depends = libxkbcommon-x11
+	optdepends = pciutils: GPU model identification via lspci
+	optdepends = lm_sensors: broader temperature and fan sensor coverage
+	optdepends = nvidia-utils: NVIDIA GPU metrics via nvidia-smi
 	provides = system-bridge
 	conflicts = system-bridge
 	conflicts = system-bridge-debug

@@ -4,7 +4,7 @@
 # pkgver is set to 5.0.0+dev is replaced in the update-aur.sh script
 
 pkgname=system-bridge-git
-pkgver=5.6.2.r5869.g03a9b97
+pkgver=5.6.2.r5870.gaa335b4
 pkgrel=1
 pkgdesc="A bridge for your systems (git version)"
 makedepends=('git' 'mise')
@@ -17,6 +17,9 @@ url="https://github.com/timmo001/system-bridge"
 license=('Apache-2.0')
 keywords=('system-bridge' 'automation' 'home-assistant' 'api' 'websocket')
 depends=('libx11' 'libxtst' 'libxkbcommon' 'libxkbcommon-x11')
+optdepends=('pciutils: GPU model identification via lspci'
+            'lm_sensors: broader temperature and fan sensor coverage'
+            'nvidia-utils: NVIDIA GPU metrics via nvidia-smi')
 provides=('system-bridge')
 options=('!strip')
 
