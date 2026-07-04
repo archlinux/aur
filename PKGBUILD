@@ -1,7 +1,7 @@
 # Maintainer: Kuro <kurojs>
 
 pkgname=ovpngate
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Terminal-based OpenVPN client for VPN Gate with server list, filters, favorites, and connection management"
 arch=('x86_64')
