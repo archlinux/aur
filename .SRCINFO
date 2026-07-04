@@ -1,6 +1,6 @@
 pkgbase = diskwatch
 	pkgdesc = Single-host, read-only disk diagnostics TUI - eight tabs across devices, volumes, filesystems, IO, SMART, hot files, and insights
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/matthart1983/diskwatch
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = diskwatch
 	provides = diskwatch
 	options = !lto
 	options = !strip
-	source = diskwatch-0.1.1.crate::https://crates.io/api/v1/crates/diskwatch/0.1.1/download
-	sha256sums = 452cc2e709b1e2d2d8cea56bf00b7ed65d3e6a2735f343523f010686897ed90d
+	source = diskwatch-0.1.2.crate::https://crates.io/api/v1/crates/diskwatch/0.1.2/download
+	sha256sums = 7918c625d6867f36d5010e7e53ce138dd038d9acfea4d9605679b0dc36ed1702
 
 pkgname = diskwatch
