@@ -1,0 +1,7 @@
+*.log
+*.lock
+pkg/
+src/
+openmodscan/
+*.pkg.tar.zst
+*.tar.gz
