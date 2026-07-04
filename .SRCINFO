@@ -1,18 +1,17 @@
 pkgbase = python-llama-index-embeddings-openai
-	pkgdesc = llama-index embeddings openai integration
+	pkgdesc = llama-index embeddings OpenAI integration
 	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/run-llama/llama_index
 	arch = any
 	license = MIT
-	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python
+	makedepends = python-hatchling
 	depends = python-openai
 	depends = python-llama-index-core
-	source = https://files.pythonhosted.org/packages/source/l/llama-index-embeddings-openai/llama_index_embeddings_openai-0.6.0.tar.gz
+	source = python-llama-index-embeddings-openai-0.6.0.tar.gz::https://files.pythonhosted.org/packages/source/l/llama-index-embeddings-openai/llama_index_embeddings_openai-0.6.0.tar.gz
 	sha256sums = eb3e6606be81cb89125073e23c97c0a6119dabb4827adbd14697c2029ad73f29
 
 pkgname = python-llama-index-embeddings-openai
