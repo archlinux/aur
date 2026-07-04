@@ -1,11 +1,12 @@
 # Maintainer: Illia Zavadzkyi <i68281124@gmail.com>
 pkgname=uni-update
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-distro system updater — one command to update them all"
 arch=('x86_64' 'aarch64')
 url="https://github.com/user14923929/uni-update"
 license=('MIT')
+conflicts=('uni-update-git')
 depends=('gcc-libs')
 makedepends=('cmake' 'gcc')
 optdepends=(
@@ -16,7 +17,7 @@ optdepends=(
     'npm: for --npm support'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/user14923929/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')  # заменить на реальный sha256 перед публикацией
+sha256sums=('ecd5eb7e59661c41acb14063fd6f7f0e9c428f37d21281172cd15340d33b7969')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -30,9 +31,6 @@ package() {
     cd "$pkgname-$pkgver"
     DESTDIR="$pkgdir" cmake --install build
 
-    # лицензия
+    # LICENSE
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    # man страница (если будет)
-    # install -Dm644 doc/uni-update.1 "$pkgdir/usr/share/man/man1/uni-update.1"
 }

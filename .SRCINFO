@@ -1,7 +1,7 @@
 pkgbase = uni-update
 	pkgdesc = Cross-distro system updater — one command to update them all
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/user14923929/uni-update
 	arch = x86_64
 	arch = aarch64
@@ -14,7 +14,8 @@ pkgbase = uni-update
 	optdepends = python-pip: for --pip support
 	optdepends = rust: for --cargo support
 	optdepends = npm: for --npm support
+	conflicts = uni-update-git
 	source = uni-update-1.0.0.tar.gz::https://github.com/user14923929/uni-update/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = ecd5eb7e59661c41acb14063fd6f7f0e9c428f37d21281172cd15340d33b7969
 
 pkgname = uni-update
