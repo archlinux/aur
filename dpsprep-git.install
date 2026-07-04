@@ -3,7 +3,7 @@ post_install() {
     echo "# dpsprep-git package deprecation notice #"
     echo "##########################################"
     echo "#"
-    echo "# The `dpsprep-git` AUR package will be abandoned soon. Consider the fixed-version `dpsprep` package instead."
+    echo "# The 'dpsprep-git' AUR package will be abandoned soon. Consider the fixed-version 'dpsprep' package instead."
     echo "# VCS packages are more fragile and the upstream project does not accumulate enough changes to justify both AUR packages."
     echo "#"
 }
