@@ -1,6 +1,6 @@
 pkgbase = waywallen
 	pkgdesc = Wallpaper Manager for Linux.
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/waywallen/waywallen
 	arch = x86_64
@@ -33,20 +33,20 @@ pkgbase = waywallen
 	depends = zstd
 	optdepends = waywallen-display: Required for layer-shell based compositors
 	options = !lto
-	source = git+https://github.com/waywallen/waywallen.git#tag=v0.2.2
+	source = git+https://github.com/waywallen/waywallen.git#tag=v0.2.3
 	source = git+https://github.com/hypengw/rstd.git#commit=629bda81eb98856ca023f0f87f57dde8d22b4823
 	source = git+https://github.com/hypengw/ncrequest.git#commit=404868aa2aa4481e262f25d8f7d053f42b61b7b8
-	source = git+https://github.com/hypengw/wavsen.git#commit=107f2aeab439276c5b7271658b7df1f4ab0ed028
-	source = git+https://github.com/hypengw/QmlMaterial.git#commit=991dd888327ccb1d366d65b9d25695d0fdd9f519
-	source = git+https://github.com/hypengw/QExtra.git#commit=f20b70eef08eef573be03954db3a455bbefe2637
+	source = git+https://github.com/hypengw/wavsen.git#commit=7513365c75c33c3aa1840c5b7cfeb3642e8db5c7
+	source = git+https://github.com/hypengw/QmlMaterial.git#commit=0e6372a9a68066e584b0dec5fa3f947c37b7da39
+	source = git+https://github.com/hypengw/QExtra.git#commit=d02d9a7bfed546dfb7f87a5627b1c9e8f6fcc95a
 	source = 0001-use-system-deps.diff
-	sha256sums = a0e3504d1ac964df7db5548f80e85236ca9604c57d97270650dff7e9acd0d37d
+	sha256sums = b08d64022402da4bfa7884dfae8a060482a84e9d1ee177ea0ad511e09440064f
 	sha256sums = 80036965e852d207379f91bae11a9baf957a3751f6194a1d5c047bdbb451dc9d
 	sha256sums = 939c717802fc9e0ef13e54f547d6f7d1b2b99730eb31c6ef06211a3ffd5495e6
-	sha256sums = 9551eafef6c78a5ce380bd3ae97a68383689a473d68253f03edced3694a9c48f
-	sha256sums = fcbc4af0fb26110395e0afc64442d2c9f650a92160346a3d7d64ba63fc09ac24
-	sha256sums = 55da948284c6a0702408d5edc0ebbd7055cac665a0aa14179cb8d2efd41bf5f0
-	sha256sums = 366c41546136ddc43109d889b9b34473bbf7cc9af43abd78b094981cbda82443
+	sha256sums = 0e501f2f8ef5b40b8e9c59b0c17c91ed0032297f88982333e636ef2cc1ab0df9
+	sha256sums = 599c5d8022c161ad8a8405f5c2edab79533d6309e7d2fa4f7aa876e4ed578a93
+	sha256sums = 012c6593ae9f980c033a18dea491675ad9d4af3247806e8477223f53109688d7
+	sha256sums = 31bd980073336fdb44dcdbddc193c7d4ada4a51d491ef201f9078e9ce2e51e4e
 
 pkgname = waywallen
 	depends = libgcc
