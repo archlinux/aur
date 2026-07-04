@@ -2,7 +2,7 @@
 
 _pkgname="gpu-screen-recorder-notification"
 pkgname="$_pkgname-git"
-pkgver=1.2.1.r0.gae5de77
+pkgver=1.3.3.r1.gfc5da8c
 pkgrel=1
 pkgdesc="Notification in the style of ShadowPlay"
 url="https://git.dec05eba.com/gpu-screen-recorder-notification"
@@ -13,6 +13,7 @@ depends=(
   'libglvnd'
   'libx11'
   'libxext'
+  'libxkbcommon'
   'libxrandr'
   'libxrender'
   'pango'
