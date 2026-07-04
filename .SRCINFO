@@ -1,9 +1,10 @@
 pkgbase = commoncpp2
 	pkgdesc = A class framework specifically designed for telephony applications
 	pkgver = 1.8.1
-	pkgrel = 8
+	pkgrel = 9
 	url = http://www.gnu.org/software/commoncpp/
 	arch = x86_64
+	arch = aarch64
 	license = GPL-2.0-only
 	license = custom
 	depends = gcc-libs
