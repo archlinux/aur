@@ -1,18 +1,18 @@
 # Maintainer: Jacob Morgan <arch_aur@slackspace.io>
 pkgname=rotorflight-configurator
-pkgver=2.2.0
+pkgver=2.3.0
 # You'll need to update this dynamically
 pkgrel=1
 pkgdesc="Rotorflight Configurator for Rotorflight FBL Controller"
 arch=('x86_64')
 url="https://github.com/rotorflight/rotorflight-configurator"
 license=('MIT')
-depends=('python' 'nodejs' 'npm' 'nvm')
-makedepends=('yarn')
+depends=('python' 'nodejs' 'npm')
+makedepends=('pnpm' 'nvm' 'git')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rotorflight/rotorflight-configurator/archive/refs/tags/release/${pkgver}.tar.gz"
         "$pkgname.desktop")
-sha512sums=('fb70d4aa757c3f3531a967a4199d2302798ae54fbdf2eb1f21bf0ecbae0315d70bf071b7edce27cc6decfd290d7c0f306aad7c38274db43ea5b7d10861f1cbae'
+sha512sums=('808add57eeaac2463d92db6fc6857a5034ca11bc163e723531dceae85ec0bf8500c36f90d38fa619eeb9b0a8798f6881e4dc18fd14722b1900e826c76e2ddd59'
             '415dd974a570d35fd0c42004005584a8da0c91cf2d3bb030f42ce068ada27a31c2d517637b962f1085266a0e6c2dce1dda6230cdcb1d65de85b9761f48accb06')
 
 
@@ -31,20 +31,41 @@ prepare() {
   pwd
 
   cd "${pkgname}-release-${pkgver}"
+  echo "allowBuildScripts=always" > .npmrc
   _ensure_local_nvm
-  nvm install 22
+  cat > pnpm-workspace.yaml << 'EOF'
+allowBuilds:
+  '@fortawesome/fontawesome-free': true
+  es5-ext: true
+  nw-builder: true
+  '@parcel/watcher': true
+  
+EOF
+  # Install dependencies without building yet
+  # vite.config.mjs shells out to `git rev-parse --short HEAD` for a
+  # version string, but a tarball source has no .git — fake one:
+  if [ ! -d .git ]; then
+    git init -q
+    git config user.email "build@localhost"
+    git config user.name "makepkg"
+    git add -A
+    git commit -q -m "snapshot for build" --allow-empty
+  fi
+  
+  nvm install 25
+  echo "prepare"
+#  pnpm install --no-frozen-lockfile  
 }
 
 build() {
   cd "${pkgname}-release-${pkgver}"
 
   _ensure_local_nvm
-  npm install
-  npm install -g pnpm
-
+  echo "allowBuildScripts=always" > .npmrc
   make version SEMVER="${pkgver}"
-
-  pnpm gulp app --linux64 
+  echo "build"
+  pnpm gulp app --platform linux --arch x86_64
+#  pnpm gulp app --linux64 --frozen-lockfile
 }
 
 package() {
