@@ -1,14 +1,16 @@
 post_install() {
-    echo "  [→] Setting up Luna AI venv and pip packages..."
-    python3 -m venv /opt/luna-ai/venv
-    TMPDIR=/tmp /opt/luna-ai/venv/bin/pip install --quiet --upgrade pip
-    TMPDIR=/tmp /opt/luna-ai/venv/bin/pip install --quiet \
-        PyQt6 edge-tts google-genai groq requests \
-        psutil yt-dlp SpeechRecognition beautifulsoup4 pygame
-    TMPDIR=/tmp /opt/luna-ai/venv/bin/pip install --quiet pyaudio 2>/dev/null || true
-    echo "  [✓] Luna AI ready — run: luna"
+    echo "  [→] Setting up Luna OS venv and pip packages..."
+    python3 -m venv /opt/luna-os/venv
+    /opt/luna-os/venv/bin/pip install --quiet --upgrade pip
+    /opt/luna-os/venv/bin/pip install --quiet -r /opt/luna-os/requirements.txt
+    echo "  [✓] Luna OS ready — launch from your application menu or run: luna-os"
 }
 
 post_upgrade() {
     post_install
+}
+
+post_remove() {
+    echo "  [→] Removing Luna OS data..."
+    rm -rf /opt/luna-os
 }

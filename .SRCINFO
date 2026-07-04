@@ -1,19 +1,24 @@
 pkgbase = luna-ai
-	pkgdesc = L.U.N.A. AI v6 — hacker-style PyQt6 AI desktop assistant with voice, Gemini/Groq, TTS
-	pkgver = 6.2.0
+	pkgdesc = Luna OS — Next-Generation Voice-Activated Desktop AI Assistant for Linux
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/Arunachalam-gojosaturo/Luna-ai
 	install = luna-ai.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = npm
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = git
 	depends = python
-	depends = python-pyqt6
-	depends = portaudio
-	depends = mpv
 	depends = python-pip
-	optdepends = python-pyaudio: microphone / voice input support
-	source = luna-ai-6.2.0.tar.gz::https://github.com/Arunachalam-gojosaturo/Luna-ai/archive/refs/tags/v6.2.0.tar.gz
-	sha256sums = f5d82130dcf979d383e8187ee9a02f8da42f0dc03dc7b3b4d3a1f7b105c2b390
+	depends = mpv
+	depends = xdg-utils
+	depends = polkit
+	depends = webkit2gtk
+	depends = gtk3
+	source = luna-ai::git+https://github.com/Arunachalam-gojosaturo/Luna-ai.git#tag=v2.0.0
+	sha256sums = SKIP
 
 pkgname = luna-ai
