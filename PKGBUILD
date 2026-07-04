@@ -12,7 +12,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('0a317c5fdf76ebc635caad28975d33bdfba407b6a9f286bd240d98f97d51883e')
 
 build() {
-    cmake -S "$pkgname-cli-$pkgver" -B build \
+    cmake -S "$pkgname-$pkgver" -B build \
         -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr
@@ -25,8 +25,8 @@ check() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
-    install -Dm644 "$pkgname-cli-$pkgver/LICENSE" \
+    install -Dm644 "$pkgname-$pkgver/LICENSE" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "$pkgname-cli-$pkgver/README.md" \
+    install -Dm644 "$pkgname-$pkgver/README.md" \
         "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
