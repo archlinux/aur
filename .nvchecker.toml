@@ -1,0 +1,5 @@
+[skl-bin]
+source = "github"
+github = "abogoyavlensky/skl"
+use_latest_release = true
+prefix = "v"
