@@ -1,0 +1,22 @@
+pkgbase = python-graphrag-storage
+	pkgdesc = GraphRAG storage package
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/microsoft/graphrag
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python-aiofiles
+	depends = python-azure-cosmos
+	depends = python-azure-identity
+	depends = python-azure-storage-blob
+	depends = python-graphrag-common
+	depends = python-pandas
+	depends = python-pydantic
+	source = python-graphrag-storage-3.1.0.tar.gz::https://files.pythonhosted.org/packages/source/g/graphrag-storage/graphrag-storage-3.1.0.tar.gz
+	sha256sums = 2f6dcc0625258d6d1cb2b23b74d73bc2e7cbfd6c0c53920b8c253c49d07c6ef5
+
+pkgname = python-graphrag-storage
