@@ -1,0 +1,7 @@
+*.log
+*.lock
+src/
+pkg/
+rtrlib/
+*.pkg.tar.zst
+*.tar.gz
