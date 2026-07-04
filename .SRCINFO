@@ -1,0 +1,14 @@
+pkgbase = clipferry
+	pkgdesc = Lazy X11 <-> Wayland clipboard bridge for xwayland-satellite setups
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/jmylchreest/clipferry
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = clipferry-0.0.1.tar.gz::https://github.com/jmylchreest/clipferry/archive/v0.0.1.tar.gz
+	sha256sums = 16899b657131e22189aa44c7988375373122cc9f29e8374d4fef0f8491acfbd1
+
+pkgname = clipferry
