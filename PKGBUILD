@@ -2,14 +2,14 @@
 
 pkgname=miyu
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='活在终端里的二次元少女'
 arch=('x86_64')
 url='https://github.com/SHORiN-KiWATA/Miyu'
 license=('MIT')
 options=('!strip' '!debug')
 export LC_ALL=C.UTF-8
-depends=('chafa' 'gcc-libs' 'ripgrep')
+depends=('chafa' 'gcc-libs' 'ripgrep' 'alsa-lib')
 optdepends=(
   'git: update default Shorin Wiki knowledge base'
   'fish: fish shell integration support'
