@@ -1,7 +1,7 @@
 pkgbase = dream
 	pkgdesc = Software radio for AM and Digital Radio Mondiale (DRM)
 	pkgver = 2.3_qt6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/drm
 	arch = i686
 	arch = x86_64
@@ -13,13 +13,16 @@ pkgbase = dream
 	depends = hamlib
 	depends = libfdk-aac
 	depends = libgcc
+	depends = libpcap
 	depends = libsndfile
 	depends = libstdc++
+	depends = opus
 	depends = qt6-base
+	depends = qt6-webengine
 	depends = qwt
 	depends = speexdsp
 	depends = zlib
-	source = https://github.com/hpeter3/dream/archive/e01196f5aa00b57e2201a8950189798e65ca97fa.zip
-	sha256sums = b64c74b87590fe75901abd6ad31e95f2f8d093cdac004f6e6316d7be8171c156
+	source = https://github.com/Drm-tools/dream/archive/ecc5c4762327f5aa9282baf0cc90e4e428e72a04.zip
+	sha256sums = 2cf329bfde20e2cdbaebcf81401018fcf11e544e6cb1e6caba8f3d8ed4fd1839
 
 pkgname = dream
