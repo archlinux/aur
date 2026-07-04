@@ -1,20 +1,21 @@
 pkgbase = vapoursynth-plugin-nlm-hip-git
 	pkgdesc = Plugin for Vapoursynth: nlm-hip (GIT version)
 	pkgver = 4.0.g63593e0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TheFeelTrain/vs-nlm-hip
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = cmake
+	makedepends = rocm-toolchain
 	depends = vapoursynth
 	depends = gcc-libs
 	depends = glibc
-	depends = rocm-hip-runtime
+	depends = rocm-hip-sdk
 	depends = rocm-device-libs
 	provides = vapoursynth-plugin-nlm-hip
 	conflicts = vapoursynth-plugin-nlm-hip
-	options = debug
+	options = !debug
 	source = nlm-hip::git+https://github.com/TheFeelTrain/vs-nlm-hip.git
 	sha256sums = SKIP
 
