@@ -5,7 +5,7 @@
 # machine.
 pkgname=bigtube-bin
 _pkgname=bigtube
-pkgver=2.3.19
+pkgver=2.3.20
 pkgrel=1
 pkgdesc="Universal Multimedia Downloader (GTK4/libadwaita + GStreamer)"
 arch=('x86_64')
@@ -14,6 +14,7 @@ license=('MIT')
 depends=('gtk4' 'libadwaita' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good'
          'gst-plugins-bad' 'gst-plugin-gtk4' 'gst-plugin-va' 'yt-dlp')
 optdepends=('ffmpeg: audio extraction and media conversion'
+            'aria2: faster multi-connection downloads'
             'intel-media-driver: hardware video decode on Intel Gen9+ GPUs'
             'libva-intel-driver: hardware video decode on older Intel GPUs'
             'libva-mesa-driver: hardware video decode on AMD/other GPUs')
@@ -21,7 +22,7 @@ provides=('bigtube')
 conflicts=('bigtube' 'bigtube-rs')
 # Prebuilt tarball published by the release workflow (layout rooted at usr/).
 source=("bigtube-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/bigtube-${pkgver}-x86_64.tar.gz")
-sha256sums=('e008526e1a36a69d4904612753747993f86637955870f42c69cc2cfec9e75b6e')
+sha256sums=('b69dd27c7f8c7900d29ff40757f3b404c79cb24fba38e69c637ad75d6933d7ac')
 
 package() {
   # The tarball already mirrors the install layout (usr/bin, usr/share, ...).
