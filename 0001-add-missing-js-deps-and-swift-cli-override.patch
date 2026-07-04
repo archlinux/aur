@@ -1,13 +1,16 @@
-diff --git a/package.json b/package.json
---- a/package.json
-+++ b/package.json
-@@ -196,6 +196,9 @@
-     "vite-plus": "^0.1.11"
+--- a/package.json	2026-07-02 22:08:30.000000000 +0200
++++ b/package.json	2026-07-03 12:54:25.811707062 +0200
+@@ -169,8 +169,11 @@
    },
    "overrides": {
+     "next": "15.5.19",
+-    "vite": "npm:@voidzero-dev/vite-plus-core@0.1.24",
+-    "vitest": "4.1.9"
++    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.1",
++    "vitest": "4.1.9",
 +    "tree-sitter-swift": {
 +      "tree-sitter-cli": "0.23.2"
-+    },
-     "next": "15.5.19",
-     "vite": "npm:@voidzero-dev/vite-plus-core@0.1.11",
-     "vitest": "npm:@voidzero-dev/vite-plus-test@0.1.11"
++    }
+   },
+   "simple-git-hooks": {
+     "pre-commit": "bun pre-commit",
