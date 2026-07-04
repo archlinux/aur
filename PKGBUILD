@@ -13,15 +13,14 @@ url='https://github.com/FriedrichFroebel/ocrodjvu'
 license=('GPL-2.0-only')
 provides=(ocrodjvu)
 conflicts=(ocrodjvu)
-makedepends=(python python-build python-installer python-wheel git coreutils make libxslt docbook-xml docbook-xsl python-setuptools)
+makedepends=(python-build python-installer python-wheel git coreutils make libxslt docbook-xml docbook-xsl python-setuptools)
 depends=(python python-lxml python-djvulibre-python)
 optdepends=('python-html5lib: HTML parser; required for the ``--html5`` option'
             'python-pyicu: required for the ``--word-segmentation=uax29`` option'
             'cuneiform: OCR system' 
             'tesseract: OCR system'
             'ocrad: OCR system'
-            'gocr: OCR system'
-            'ocropy: OCR system')
+            'gocr: OCR system')
 source=(git+https://github.com/FriedrichFroebel/ocrodjvu)
 sha256sums=('SKIP')
 
