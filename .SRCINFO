@@ -1,6 +1,6 @@
 pkgbase = perl-dist-build
 	pkgdesc = A modern module builder, author tools not included!
-	pkgver = 0.027
+	pkgver = 0.028
 	pkgrel = 1
 	url = https://metacpan.org/release/Dist-Build
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = perl-dist-build
 	depends = perl-extutils-installpaths>=0
 	depends = perl>=5.010
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Dist-Build-0.027.tar.gz
-	md5sums = 9f2bb585ca79d05898841405eb7004e1
-	sha512sums = f71ff3d916f459cc888e0425e42681b0b2431e44daafac9d317a363912c713beaead043633aade2dd0822f445b943049825de89301cd97f9079a1e60a4c0b061
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Dist-Build-0.028.tar.gz
+	md5sums = 2493608d110ac9686c87a8cf1f2b5529
+	sha512sums = ab09070a3be39f040bdfbf3d35525fff859e92365a3b9002c2cf56547630842f9bb3983bc35c29458b8ea86301504f61d12aba0c421fcd2df35dd49e49a35f27
 
 pkgname = perl-dist-build
