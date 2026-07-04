@@ -1,0 +1,17 @@
+pkgbase = flow-network-monitor-bin
+	pkgdesc = 🌊 See your network breathe
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/programmersd21/flow
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = flow
+	conflicts = flow
+	options = !strip
+	source_x86_64 = flow-x86_64-0.1.0.tgz::https://github.com/programmersd21/flow/releases/download/v0.1.0/flow_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 02035bd733f2b6836f5344c4f5fe8229335f3c00234aa62e7d6c510a6bb3d361
+	source_aarch64 = flow-aarch64-0.1.0.tgz::https://github.com/programmersd21/flow/releases/download/v0.1.0/flow_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8a4638e776cf2ab2294174b308d79d672eaeccaab3369fc3767123cdfafd9c37
+
+pkgname = flow-network-monitor-bin

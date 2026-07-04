@@ -1,0 +1,5 @@
+[flow-network-monitor-bin]
+source = "github"
+github = "programmersd21/flow"
+use_latest_release = true
+prefix = "v"
