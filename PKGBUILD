@@ -1,5 +1,5 @@
-
-# Maintainer: Malte Veerman <malte.veerman@gmail.com>
+# Maintainer: FosRex <FosRex@aur.archlinux.org>
+# Contributor: Malte Veerman <malte.veerman@gmail.com>
 
 _srcname=fancontrol-gui
 pkgname=${_srcname}-git
