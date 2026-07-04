@@ -1,7 +1,7 @@
-# Maintainer: Bryson Kelly <bryson@azin-lang.org>
+# Maintainer: Bryson Kelly <bryson@azin-lang (dot) org>
 pkgname=buf-cli
 _binname=buf
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 _srcdir="buf-$pkgver"
 pkgdesc="A fast, safe bootable USB image flasher"
@@ -12,7 +12,7 @@ depends=()
 makedepends=('rust' 'cargo')
 optdepends=('ntfs-3g: NTFS fallback for ISOs that disrespect the FAT32 4GB limit for individual files')
 source=("buf-$pkgver.tar.gz::https://github.com/brysonak/buf/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('674dd12197a52b0571593cd1916b849334e5a472e4e589a61863586e8738ed57')
+sha256sums=('8042b78cc5e7ca01265a325e756d5bae4d8ccadcf29966bb0dbd403d683b823a')
 
 prepare() {
     cd "$_srcdir"
@@ -39,3 +39,4 @@ package() {
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 "docs/docs.md" "$pkgdir/usr/share/doc/$pkgname/docs.md"
 }
+
