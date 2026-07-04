@@ -1,6 +1,6 @@
 pkgbase = ytm-player
 	pkgdesc = A full-featured YouTube Music TUI client with vim-style navigation
-	pkgver = 1.9.5
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/peternaame-boop/ytm-player
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = ytm-player
 	provides = ytm
 	conflicts = ytm-player-git
 	conflicts = ytm-player-bin
-	source = ytm-player-1.9.5.tgz::https://github.com/peternaame-boop/ytm-player/archive/v1.9.5.tar.gz
-	sha256sums = 7422e078aff788ef2537ed93e9312cab43f9df289efae0adc6cea2721f6365c8
+	source = ytm-player-2.0.0.tgz::https://github.com/peternaame-boop/ytm-player/archive/v2.0.0.tar.gz
+	sha256sums = 5a4367acdc315e90806100332ef7355b931c3d82f72c7a86d35bd8cfdb25dd5f
 
 pkgname = ytm-player
