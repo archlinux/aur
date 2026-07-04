@@ -1,7 +1,7 @@
 # Maintainer: Jason Ozias <jason.g.ozias@pm.me>
 
 pkgname=rakemon-unstable-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Terminal dashboard for cargo-rake lifecycle events (pre-compiled binary, unstable build)"
 arch=('x86_64' 'aarch64')
@@ -21,9 +21,9 @@ source=("${_base}/dist-rakemon.tar.gz")
 source_x86_64=("rakemon-unstable-x86_64::${_base}/rakemon-unstable-x86_64-unknown-linux-musl")
 source_aarch64=("rakemon-unstable-aarch64::${_base}/rakemon-unstable-aarch64-unknown-linux-musl")
 # Checksums are filled in by the release workflow before publishing to the AUR.
-sha256sums=('c629756c2e4bce67c8850ea3498e134ebcd253bf961a4b287677bce7ddddd016')
-sha256sums_x86_64=('996e7c73360b629cf5999b424d55271129bb8d2d0bf180359345f5afc8dbedad')
-sha256sums_aarch64=('ea1e0fac823b9018d8f69f07263de52c9e3c00511873f1be49154d2654d37434')
+sha256sums=('816530f509a95050354205c52f23ece5b55e9cdb00f8b36b1adbcf46cc0e73e4')
+sha256sums_x86_64=('36c47175cb8a2efe67f74bd4cf100d59b74c84d9e33ec36c72974fb76511b3cf')
+sha256sums_aarch64=('5ba937206a0b7b1fe99898484aecc6183c030bbb05790ec0f75cce51d9e09b35')
 
 package() {
     install -Dm755 "rakemon-unstable-${CARCH}" "$pkgdir/usr/bin/rakemon"
