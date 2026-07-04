@@ -5,7 +5,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=openafs
-pkgver=1.8.16
+pkgver=1.8.16.1
 pkgrel=1
 pkgdesc="Open source implementation of the AFS distributed file system"
 arch=('i686' 'x86_64' 'armv7h')
@@ -27,10 +27,10 @@ source=(http://openafs.org/dl/openafs/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2
         http://openafs.org/dl/openafs/${pkgver}/${pkgname}-${pkgver}-doc.tar.bz2
         tmpfiles.d-openafs.conf
         0001-Adjust-RedHat-config-and-service-files.patch)
-sha256sums=('ee8127689757cbd9723a853a12fae281c9de9c3e894a4bd90107fb6f85270469'
-            '17d7f22dee4e7ece918b831794eeb7c0e666859b98f05021d8ffdaa005f9c224'
+sha256sums=('cf59067589a295471e3f10f644f0f2165113347cc8b0ad0fbb4123259a2af0a2'
+            '91984aa6e175544642e1ddb3d7444ec226eae7ba134d37c05df10fbb808d9e30'
             '18d7b0173bbffbdc212f4e58c5b3ce369adf868452aabc3485f2a6a2ddb35d68'
-            '52ff72f409c24b855c0f8f539bb7f45e46c9c6fe1750b21fbcd05ce935882088')
+            '941d4a3c7a06be7819e7fb7408fddda5c405cadb8017747dce2d9e86b0da29cc')
 
 # If you need the kauth tools set this to 1. But be aware that these tools
 # are considered insecure since 2003! This also affects the PAM libs.
