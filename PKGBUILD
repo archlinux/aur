@@ -44,9 +44,9 @@ optdepends=(
     'python-openai: OpenAI provider'
     'python-pycryptodome: PDF encryption support'
     'python-pypdf: PDF processing'
-    'python-python-docx: DOCX processing'
+    'python-docx: DOCX processing'
     'python-python-multipart: Form parsing'
-    'python-python-pptx: PPTX processing'
+    'python-pptx: PPTX processing'
     'python-pytz: Timezone support'
     'uvicorn: ASGI server'
 )
