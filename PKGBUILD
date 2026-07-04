@@ -1,7 +1,7 @@
 # Maintainer: SHORiN <shorin@users.noreply.github.com>
 
 pkgname=miyu-git
-pkgver=0.1.3.r78.geaf729e
+pkgver=0.1.5.r126.g6405f21
 pkgrel=1
 pkgdesc='活在终端里的二次元少女'
 arch=('x86_64')
@@ -52,4 +52,10 @@ package() {
     done < <(find src/memes -type f \( -name '*.json' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.png' -o -name '*.gif' -o -name '*.webp' \) -print0 | sort -z)
   fi
 
+  if [[ -d src/scripts ]]; then
+    while IFS= read -r -d '' file; do
+      local rel="${file#src/scripts/}"
+      install -Dm755 "${file}" "${pkgdir}/usr/share/miyu/scripts/${rel}"
+    done < <(find src/scripts -type f -print0 | sort -z)
+  fi
 }
