@@ -3,8 +3,8 @@
 
 _srcname=fancontrol-gui
 pkgname=${_srcname}-git
-pkgver=0.8.r23.g5bfa8fa
-pkgrel=2
+pkgver=0.8.r26.gc752e3b
+pkgrel=1
 pkgdesc="GUI for the fancontrol script and systemd service"
 arch=('i686' 'x86_64')
 url="https://github.com/Maldela/Fancontrol-GUI"
