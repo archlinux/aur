@@ -1,0 +1,17 @@
+pkgbase = python-bm25s
+	pkgdesc = An ultra-fast implementation of BM25 based on sparse matrices
+	pkgver = 0.3.9
+	pkgrel = 1
+	url = https://github.com/xhluca/bm25s
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	source = https://files.pythonhosted.org/packages/source/b/bm25s/bm25s-0.3.9.tar.gz
+	sha256sums = 895c679d952b7de8355edb5f3e1a620a1e2f294d1d42b919bf0821cce2e2f597
+
+pkgname = python-bm25s
