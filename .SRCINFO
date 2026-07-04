@@ -9,9 +9,13 @@ pkgbase = sqly-bin
 	provides = sqly
 	conflicts = sqly
 	options = !strip
-	source_x86_64 = sqly-x86_64-0.27.0.tgz::https://github.com/nao1215/sqly/releases/download/v0.27.0/sqly_0.27.0_linux_amd64.tar.gz
+	source = sqly-0.27.0-checksums.txt::https://github.com/nao1215/sqly/releases/download/v0.27.0/checksums.txt
+	source = sqly-0.27.0-checksums.txt.sigstore.json::https://github.com/nao1215/sqly/releases/download/v0.27.0/checksums.txt.sigstore.json
+	sha256sums = 64650eb7564f3e6cea1289412e763c87bd8e7e206eba0e6b7e5e56e0410bd243
+	sha256sums = f87ad8e6c84adb0b39fd72f203b66da0011bda980e94c06b459b9a1f8639959b
+	source_x86_64 = sqly-0.27.0-x86_64.tgz::https://github.com/nao1215/sqly/releases/download/v0.27.0/sqly_0.27.0_linux_amd64.tar.gz
 	sha256sums_x86_64 = 94c71afc78afbf1e5806a2e53a0b86ffb2e9e9431a0c4ca44828757530716a3b
-	source_aarch64 = sqly-aarch64-0.27.0.tgz::https://github.com/nao1215/sqly/releases/download/v0.27.0/sqly_0.27.0_linux_arm64.tar.gz
+	source_aarch64 = sqly-0.27.0-aarch64.tgz::https://github.com/nao1215/sqly/releases/download/v0.27.0/sqly_0.27.0_linux_arm64.tar.gz
 	sha256sums_aarch64 = 099c2d45b3aca6f334afa41d78ed96148d2defb2692ab348f64e207675d4fb6b
 
 pkgname = sqly-bin
