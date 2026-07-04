@@ -1,8 +1,8 @@
 # Maintainer: Yurin <liyulin.china@gmail.com>
 
 pkgname=waywallen-bin
-_pkgver=0.2.2
-_commit=b20d112
+_pkgver=0.2.3
+_commit=c51fd0a
 pkgver=${_pkgver}.${_commit}
 pkgrel=1
 pkgdesc="Wallpaper manager for Wayland (prebuilt AppImage)"
@@ -18,7 +18,7 @@ _appimage="waywallen-${_pkgver}-x86_64.AppImage"
 _tag="v${_pkgver}"
 source=("${_appimage}::https://github.com/waywallen/waywallen/releases/download/${_tag}/${_appimage}")
 noextract=("${_appimage}")
-sha256sums=('1efa5336f3d4e488e7df196cf31589d3d8acb1374e2651b9b2f6bddea5e800ae')
+sha256sums=('abe22c42eb836f9db0acb0aa22d4d204088a492bd7036494fd08742c1958fb1a')
 
 prepare() {
   chmod +x "${_appimage}"
