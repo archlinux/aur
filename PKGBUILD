@@ -1,7 +1,7 @@
 # Maintainer: Martino Pilia <martino.pilia@proton.me>
 _pkgname=picotool
 pkgname=${_pkgname}-bin
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Tool for working with RP2040/RP2350 binaries"
 arch=("x86_64")
@@ -10,11 +10,11 @@ license=('BSD-3-Clause')
 depends=()
 makedepends=()
 source=(
-    "https://github.com/raspberrypi/pico-sdk-tools/releases/download/v${pkgver}-3/picotool-${pkgver}-a4-x86_64-lin.tar.gz"
+    "https://github.com/raspberrypi/pico-sdk-tools/releases/download/v${pkgver}-0/picotool-${pkgver}-x86_64-lin.tar.gz"
     "https://raw.githubusercontent.com/raspberrypi/picotool/25aa087b2c517b4901874a99536e869d4d27b678/LICENSE.TXT"
 )
-md5sums=('034f611320f09e5ced5312e70f6a55ce'
-         'db74c933ca4b8bb864b9088bec194057')
+sha256sums=('d8222dbb04e83427bcaef8466fe6e76b0e0193c3a140029934bd365dae49f61f'
+            '483f865953435b66c443dee7558debe3cc3cf8fcbb6a112fd9fc6a795d53f1f6')
 
 package() {
     cd "${srcdir}/${_pkgname}"
