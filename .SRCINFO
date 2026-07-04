@@ -9,7 +9,7 @@ pkgbase = python-nest-asyncio2
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools-scm
-	source = python-nest-asyncio2-1.7.2.tar.gz::https://files.pythonhosted.org/packages/source/n/nest-asyncio2/nest-asyncio2-1.7.2.tar.gz
+	source = python-nest-asyncio2-1.7.2.tar.gz::https://files.pythonhosted.org/packages/source/n/nest-asyncio2/nest_asyncio2-1.7.2.tar.gz
 	sha256sums = 1921d70b92cc4612c374928d081552efb59b83d91b2b789d935c665fa01729a8
 
 pkgname = python-nest-asyncio2

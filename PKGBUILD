@@ -10,7 +10,7 @@ license=('BSD')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm' )
 depends=()
 
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/n/nest-asyncio2/nest-asyncio2-1.7.2.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/n/nest-asyncio2/nest_asyncio2-1.7.2.tar.gz")
 sha256sums=('1921d70b92cc4612c374928d081552efb59b83d91b2b789d935c665fa01729a8')
 
 prepare() {
