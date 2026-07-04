@@ -1,6 +1,6 @@
 pkgbase = mariner-git
 	pkgdesc = A GNOME Files alternative built with node-gtk (GTK4 + libadwaita)
-	pkgver = 0.0.1.r114.gb4d61c1
+	pkgver = 0.0.1.r115.g8a969bd
 	pkgrel = 1
 	url = https://github.com/romgrk/mariner
 	install = mariner.install
