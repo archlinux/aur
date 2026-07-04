@@ -1,7 +1,7 @@
 # Maintainer: Rob Cohen <rob@robcohen.dev>
 pkgbase=rustledger-bin
 pkgname=(rustledger-bin)
-pkgver=0.20.1
+pkgver=0.20.2
 pkgrel=1
 pkgdesc="Fast, pure Rust implementation of Beancount double-entry accounting (pre-built binary)"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/rustledger/rustled
 source_x86_64=("${pkgbase}-${pkgver}-x86_64.tar.gz::https://github.com/rustledger/rustledger/releases/download/v${pkgver}/rustledger-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${pkgbase}-${pkgver}-aarch64.tar.gz::https://github.com/rustledger/rustledger/releases/download/v${pkgver}/rustledger-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('SKIP')
-sha256sums_x86_64=('c2c6f73a78a93c23eeb75ae86ef4c4a0eff24791427d799c990d007c4fe154e2')
-sha256sums_aarch64=('b635e017ee73db6fa9bbdbf4ae9a54576eca196d6cecc5566b596d1972ba6b60')
+sha256sums_x86_64=('6f8f47972092f63a3cfe8f24c31b38ebd9b1b9d04654f6b88a97e658881f3039')
+sha256sums_aarch64=('2d5fd60aa763cbfcee92e9d0fccc0982f7b5cf5c841e83b65682639396b0a5d5')
 
 package_rustledger-bin() {
     pkgdesc="Fast, pure Rust implementation of Beancount double-entry accounting (pre-built binary)"
