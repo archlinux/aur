@@ -1,0 +1,5 @@
+[let-go]
+source = "github"
+github = "nooga/let-go"
+use_latest_release = true
+prefix = "v"
