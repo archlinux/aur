@@ -2,13 +2,13 @@ pkgbase = sm64coopdx
 	pkgdesc = Fork of Super Mario 64 Co-op with more features, customizability and power to the Lua API
 	pkgver = 1.5.1
 	pkgrel = 1
-	epoch = 1
 	url = https://sm64coopdx.com/
 	arch = x86_64
 	arch = i686
 	arch = pentium4
 	arch = aarch64
 	arch = armv7h
+	license = LicenseRef-unknown
 	makedepends = python>=3.6
 	makedepends = glew
 	makedepends = zlib
@@ -17,6 +17,7 @@ pkgbase = sm64coopdx
 	makedepends = gendesk
 	depends = sdl2
 	provides = sm64coopdx=1.5.1
+	conflicts = sm64coopdx-git
 	source = https://github.com/coop-deluxe/sm64coopdx/archive/refs/tags/v1.5.1.tar.gz
 	source = sm64coopdx.sh
 	source = sm64coopdx.png
