@@ -1,7 +1,7 @@
 pkgbase = eduke32
 	pkgdesc = An advanced Duke Nukem 3D source port
 	pkgver = 20260203.r10664_ba6b7bb1d
-	pkgrel = 1
+	pkgrel = 2
 	url = http://eduke32.com/
 	install = eduke32.install
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = eduke32
 	makedepends = mesa
 	makedepends = glu
 	depends = libvpx
-	depends = sdl2
+	depends = sdl2-compat
 	depends = flac
 	depends = libvorbis
 	depends = alsa-lib
@@ -25,7 +25,5 @@ pkgbase = eduke32
 	sha256sums = daa2ce53a79d1fff337da40b60f1bd13b21d03c1e22f73b2a95431ee3008c7f3
 	sha256sums = b55a264b4682afabd49587d700d4c85ce6c2e7af7ce2764dd217ebe167549863
 	sha256sums = cf2ea2c6a0d85ab15e30171ed5b921f1fcf5644de7af9638c0ef60de21c44f24
-	depends_i686 = lib32-alsa-lib
-	makedepends_i686 = nasm
 
 pkgname = eduke32
