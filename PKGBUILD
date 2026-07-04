@@ -11,7 +11,7 @@ arch=('x86_64' 'aarch64')
 _barch=('amd64' 'arm64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
-license=('Apache-2.0')
+license=('MIT')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
