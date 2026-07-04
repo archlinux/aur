@@ -1,4 +1,5 @@
-# Maintainer: Alexis Rouillard <contact@arouillard.fr>
+# Maintainer:
+# Contributor: Alexis Rouillard <contact@arouillard.fr>
 
 ## options
 : ${_use_sodeps:=false}
@@ -8,7 +9,7 @@
 
 _pkgname="waybar"
 pkgname="$_pkgname-git"
-pkgver=0.13.0.r41.g0776e69
+pkgver=0.15.0.r822.g4e76d73
 pkgrel=1
 pkgdesc="Highly customizable Wayland bar for Sway and Wlroots based compositors"
 url='https://github.com/Alexays/Waybar'
@@ -24,6 +25,7 @@ depends=(
   'libdbusmenu-gtk3'
   'libevdev'
   'libinput'
+  'libmm-glib'
   'libmpdclient'
   'libnl'
   'libpulse'
@@ -45,6 +47,9 @@ makedepends=(
   'python-setuptools'
   'scdoc' # to generate manpages
   'wayland-protocols'
+)
+checkdepends=(
+  'bash'
 )
 optdepends=(
   'otf-font-awesome: Icons in the default configuration'
