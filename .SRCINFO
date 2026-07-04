@@ -1,0 +1,15 @@
+pkgbase = python-nest-asyncio2
+	pkgdesc = Patch asyncio to allow nested event loops (Python 3.14+ fork)
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://github.com/Chaoses-Ib/nest-asyncio2
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	source = python-nest-asyncio2-1.7.2.tar.gz::https://files.pythonhosted.org/packages/source/n/nest-asyncio2/nest-asyncio2-1.7.2.tar.gz
+	sha256sums = 1921d70b92cc4612c374928d081552efb59b83d91b2b789d935c665fa01729a8
+
+pkgname = python-nest-asyncio2
