@@ -5,15 +5,15 @@
 
 pkgname=ocrodjvu-python3-git
 _pkgbasename='ocrodjvu'
-pkgver=0.14+43.r1454.d5dee3d
+pkgver=0.14+46.r1457.7954aaa
 pkgrel=1.314
-pkgdesc="OCR for DjVu (Python 3 port)"
-arch=('i686' 'x86_64')
+pkgdesc="OCR for DjVu (Python 3 fork)"
+arch=('any')
 url='https://github.com/FriedrichFroebel/ocrodjvu'
 license=('GPL-2.0-only')
 provides=(ocrodjvu)
 conflicts=(ocrodjvu)
-makedepends=(python python-build python-installer python-wheel git coreutils make libxslt docbook-xsl python-setuptools)
+makedepends=(python python-build python-installer python-wheel git coreutils make libxslt docbook-xml docbook-xsl python-setuptools)
 depends=(python python-lxml python-djvulibre-python)
 optdepends=('python-html5lib: HTML parser; required for the ``--html5`` option'
             'python-pyicu: required for the ``--word-segmentation=uax29`` option'
@@ -23,10 +23,15 @@ optdepends=('python-html5lib: HTML parser; required for the ``--html5`` option'
             'gocr: OCR system'
             'ocropy: OCR system')
 source=(git+https://github.com/FriedrichFroebel/ocrodjvu)
-sha512sums=('SKIP')
+sha256sums=('SKIP')
 
 _fullsrcdir() {
-  echo "$srcdir/$_pkgbasename"
+    echo "$srcdir/$_pkgbasename"
+}
+
+prepare() {
+    cd "$(_fullsrcdir)"
+    sed --in-place 's|http://www.docbook.org/xml|http://www.oasis-open.org/docbook/xml|' doc/*.xml
 }
 
 # Based on https://aur.archlinux.org/packages/dpsprep-git#comment-1031722
