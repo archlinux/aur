@@ -1,0 +1,26 @@
+pkgbase = python-litellm
+	pkgdesc = Call all LLM APIs using the OpenAI format
+	pkgver = 1.86.2
+	pkgrel = 1
+	url = https://github.com/BerriAI/litellm
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-uv-build
+	depends = python-aiohttp
+	depends = python-click
+	depends = python-httpx
+	depends = python-jinja
+	depends = python-jsonschema
+	depends = python-openai
+	depends = python-pydantic
+	depends = python-python-dotenv
+	depends = python-tiktoken
+	depends = python-tokenizers
+	depends = python-importlib-metadata
+	source = python-litellm-1.86.2.tar.gz::https://files.pythonhosted.org/packages/source/l/litellm/litellm-1.86.2.tar.gz
+	sha256sums = 7d559ad48e925a9dec8cafdd08494165b0bc7bcbe5f3a2e4609aa354e0c59d91
+
+pkgname = python-litellm
