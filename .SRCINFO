@@ -1,6 +1,6 @@
 pkgbase = frank-go
 	pkgdesc = Beginner-friendly Go/Baduk trainer: tsumego practice, KataGo opponent, influence overlay (Sabaki fork)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/akitaonrails/frank_go
 	arch = any
@@ -8,8 +8,10 @@ pkgbase = frank-go
 	makedepends = npm
 	makedepends = nodejs
 	depends = electron
-	depends = katago
-	source = frank-go-0.2.0.tar.gz::https://github.com/akitaonrails/frank_go/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = b11314a53a28b2622ad67d286235eccc84a5f9109f73a67924fd8557ae6d1cdd
+	optdepends = katago-opencl: GPU engine for the AI opponent (lighter build)
+	optdepends = katago-cuda: fastest GPU engine (needs CUDA/cuDNN)
+	optdepends = katago-cpu: CPU engine from the AUR
+	source = frank-go-0.2.1.tar.gz::https://github.com/akitaonrails/frank_go/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = c67f1d7dfe30e9faae713ef46f8fc6c5741f678bc8ad902d3cb9eca7d1ad1b53
 
 pkgname = frank-go

@@ -6,19 +6,25 @@
 
 pkgname=frank-go
 _reponame=frank_go
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Beginner-friendly Go/Baduk trainer: tsumego practice, KataGo opponent, influence overlay (Sabaki fork)"
 arch=('any')
 url="https://github.com/akitaonrails/frank_go"
 license=('MIT')
-# 'katago' is provided by katago-cpu / katago-opencl / katago-cuda on the
-# AUR — the helper lets the user pick a backend. With the engine on PATH,
-# the app's one-click setup only fetches a small neural network.
-depends=('electron' 'katago')
+depends=('electron')
 makedepends=('npm' 'nodejs')
+# The app uses a PATH-installed katago when present (any backend); without
+# one, its one-click setup downloads a portable CPU engine by itself, so a
+# hard dependency on an AUR-provided 'katago' would only make installs
+# fragile (makepkg can't resolve AUR providers).
+optdepends=(
+    'katago-opencl: GPU engine for the AI opponent (lighter build)'
+    'katago-cuda: fastest GPU engine (needs CUDA/cuDNN)'
+    'katago-cpu: CPU engine from the AUR'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b11314a53a28b2622ad67d286235eccc84a5f9109f73a67924fd8557ae6d1cdd')
+sha256sums=('c67f1d7dfe30e9faae713ef46f8fc6c5741f678bc8ad902d3cb9eca7d1ad1b53')
 
 build() {
     cd "$_reponame-$pkgver"
