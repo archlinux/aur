@@ -1,37 +1,39 @@
-# Maintainer: Dmitry Kharitonov <arch[at]nano-model[dot]com>
-# Contributor: Francois Garillot <francois[@]garillot.net>
-# Contributor: Malkov Fyodor aka krox: iksut@yandex.ru
-
+# Maintainer: Ianis Vasilev: ianis@ivasilev.net
 pkgname=ocrodjvu
-pkgver=0.12
-pkgrel=1
-pkgdesc="ocrodjvu is a wrapper for OCR systems, that allows you to perform OCR on DjVu files."
-arch=('i686' 'x86_64')
-url='http://jwilk.net/software/ocrodjvu'
-license=('GPL2')
-depends=('python2' 'python2-lxml' 'python2-djvulibre' 'python2-subprocess32')
-optdepends=('python2-html5lib: HTML parser; required for the ``--html5`` option'
-            'python2-pyicu: required for the ``--word-segmentation=uax29`` option'
-            'cuneiform: OCR system' 
+pkgver=0.14
+pkgrel=1.314
+pkgdesc="OCR for DjVu (Python 3 fork)"
+arch=('any')
+url='https://github.com/FriedrichFroebel/ocrodjvu'
+license=('GPL-2.0-only')
+makedepends=(python-build python-installer python-wheel coreutils make libxslt docbook-xml docbook-xsl python-setuptools)
+depends=(python python-lxml python-djvulibre-python)
+optdepends=('python-html5lib: HTML parser; required for the ``--html5`` option'
+            'python-pyicu: required for the ``--word-segmentation=uax29`` option'
+            'cuneiform: OCR system'
             'tesseract: OCR system'
             'ocrad: OCR system'
-            'gocr: OCR system'
-            'ocropy: OCR system')
-source=(https://github.com/jwilk/ocrodjvu/releases/download/$pkgver/$pkgname-$pkgver.tar.xz
-        "python2.patch")
-sha256sums=('cf0a5ee17fbfdb2fd2bb51cf7774af02319dbdf81f9d70f92c4d8a7f32ce8927'
-            'c3b761d0efd66061ee8704e67c16fc37467366b1fbd8625686c6fe923e1a3109')
+            'gocr: OCR system')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('4fd97e139204805fdca9daf4130496da7a5f08a10505ba472814b9702eef711e')
 
-prepare () {
-    cd "$srcdir/$pkgname-$pkgver"
-    patch -p0 -i ../python2.patch
-    sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
-      -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
-      $(find . \( -name '*.py' -o -name "djvu2hocr" -o -name "hocr2djvused" -o -name "ocrodjvu" \) -not -type d)
+_fullsrcdir() {
+  echo "$srcdir/$pkgname-$pkgver"
+}
 
+prepare() {
+    cd "$(_fullsrcdir)"
+    sed --in-place 's|http://www.docbook.org/xml|http://www.oasis-open.org/docbook/xml|' doc/*.xml
+}
+
+build() {
+    cd "$(_fullsrcdir)"
+    make -C doc
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    make PREFIX="/usr" DESTDIR="$pkgdir" install
+    cd "$(_fullsrcdir)"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    make PREFIX="/usr" DESTDIR="$pkgdir" install_manpage
 }
