@@ -1,6 +1,6 @@
 pkgbase = frank-go
 	pkgdesc = Beginner-friendly Go/Baduk trainer: tsumego practice, KataGo opponent, influence overlay (Sabaki fork)
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/akitaonrails/frank_go
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = frank-go
 	makedepends = nodejs
 	depends = electron
 	depends = katago
-	source = frank-go-0.1.0.tar.gz::https://github.com/akitaonrails/frank_go/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 7643bda5a2ab5526ae474dc1d6d704b7d6c9eb1096bed94545c3c628b48d40be
+	source = frank-go-0.2.0.tar.gz::https://github.com/akitaonrails/frank_go/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = b11314a53a28b2622ad67d286235eccc84a5f9109f73a67924fd8557ae6d1cdd
 
 pkgname = frank-go

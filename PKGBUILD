@@ -6,7 +6,7 @@
 
 pkgname=frank-go
 _reponame=frank_go
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Beginner-friendly Go/Baduk trainer: tsumego practice, KataGo opponent, influence overlay (Sabaki fork)"
 arch=('any')
@@ -18,7 +18,7 @@ license=('MIT')
 depends=('electron' 'katago')
 makedepends=('npm' 'nodejs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7643bda5a2ab5526ae474dc1d6d704b7d6c9eb1096bed94545c3c628b48d40be')
+sha256sums=('b11314a53a28b2622ad67d286235eccc84a5f9109f73a67924fd8557ae6d1cdd')
 
 build() {
     cd "$_reponame-$pkgver"
@@ -53,6 +53,7 @@ Exec=$pkgname %U
 Icon=$pkgname
 Type=Application
 Categories=Game;BoardGame;
+MimeType=application/x-go-sgf;
 StartupWMClass=Sabaki
 EOF
 
