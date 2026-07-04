@@ -1,6 +1,6 @@
 pkgbase = tg-ws-proxy-git
 	pkgdesc = Local MTProto proxy server for partial bypassing of Telegram loading
-	pkgver = 1.8.0.r2.g4c19a6c
+	pkgver = 1.8.1.r2.ge9b74d7
 	pkgrel = 1
 	url = https://github.com/Flowseal/tg-ws-proxy
 	arch = any
