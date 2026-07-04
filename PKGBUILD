@@ -1,12 +1,11 @@
 # Maintainer: Illia Zavadzkyi <i68281124@gmail.com>
 pkgname=uni-update
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-distro system updater — one command to update them all"
 arch=('x86_64' 'aarch64')
 url="https://github.com/user14923929/uni-update"
 license=('MIT')
-conflicts=('uni-update-git')
 depends=('gcc-libs')
 makedepends=('cmake' 'gcc')
 optdepends=(
