@@ -1,6 +1,6 @@
 # Maintainer: Nick Humrich <nick@humrich.us>
 pkgname=bridge-bin
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Global, dependency-aware task list that persists across repos and AI sessions"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ provides=('bridge')
 conflicts=('bridge')
 source_x86_64=("br-${pkgver}-linux-amd64::${url}/releases/download/v${pkgver}/br-linux-amd64")
 source_aarch64=("br-${pkgver}-linux-arm64::${url}/releases/download/v${pkgver}/br-linux-arm64")
-sha256sums_x86_64=('f6430147a02ad25eecc15ead7b5bc8c998736e263c73b22be41f27d48faa0750')
-sha256sums_aarch64=('44b5daafa8d2bc9ce7d606cef63dceaceb65926ba82be5fa9af451342468aa7d')
+sha256sums_x86_64=('6ed9d4fbccf7c6758e47cc9435490e3fb7843159fd075bb82fdb6c0d6c1153df')
+sha256sums_aarch64=('611c94354b9b46ddda4e7cc3f7cf252d0a0add818585d93bac091c273447d1ba')
 
 package() {
   install -Dm755 "${srcdir}/br-${pkgver}-linux-amd64" "${pkgdir}/usr/bin/br" 2>/dev/null \
