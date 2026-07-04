@@ -1,6 +1,6 @@
 pkgbase = libria
 	pkgdesc = Application for professional book creation and typesetting — book editor and layout tool with real-time preview, EPUB/DOCX/PDF export, and spell checking
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/Gargadon/libria
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = libria
 	depends = electron>=32
 	depends = ghostscript
 	provides = libria
-	source = https://github.com/Gargadon/libria/archive/v1.8.0.tar.gz
-	sha256sums = 9549d8e86033feb5b7a66d0af8e7e9e40429c5585756e911195b5788f8c10121
+	source = https://github.com/Gargadon/libria/archive/v1.8.1.tar.gz
+	sha256sums = 701e8e08ceba031394a1ee197fabef01168eb452e9537eabf8f8d4064338cc3d
 
 pkgname = libria

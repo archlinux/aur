@@ -1,7 +1,7 @@
 # Maintainer: David Kantun <dkantun@gmail.com>
 
 pkgname=libria
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Application for professional book creation and typesetting — book editor and layout tool with real-time preview, EPUB/DOCX/PDF export, and spell checking"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('electron>=32' 'ghostscript')
 makedepends=('bun' 'python')
 provides=("${pkgname}")
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('9549d8e86033feb5b7a66d0af8e7e9e40429c5585756e911195b5788f8c10121')
+sha256sums=('701e8e08ceba031394a1ee197fabef01168eb452e9537eabf8f8d4064338cc3d')
 
 prepare() {
   cd "${srcdir}/libria-${pkgver}"
@@ -29,7 +29,7 @@ package() {
   # Aplicación
   local _dest="${pkgdir}/opt/libria"
   install -dm755 "${_dest}/dist/libria"
-  cp -r dist/libria/browser "${_dest}/dist/libria/browser"
+  cp -r dist/libria/browser/. "${_dest}/dist/libria/browser/"
   cp main.js preload.js package.json "${_dest}/"
   cp -r build/licenses "${_dest}/licenses"
   install -Dm644 build/icon.png "${_dest}/build/icon.png"
@@ -75,5 +75,4 @@ MIME
 
   # Licencias
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/libria/LICENSE"
-  install -Dm644 build/licenses/AGPL-3.0.txt "${pkgdir}/usr/share/licenses/libria/AGPL-3.0.txt"
 }
