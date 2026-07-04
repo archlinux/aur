@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=sonic-audio-applet-pulse
-pkgver=6.7.1
+pkgver=6.7.2
 pkgrel=1
 pkgdesc='SonicDE applet for audio volume management using PulseAudio'
 arch=(x86_64)
@@ -37,7 +37,7 @@ provides=(plasma-pa)
 conflicts=(plasma-pa)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4bd1d29be64bcc14e936cfc7c1b1806cd9fbce701d8c9c0dea52d5f7fc6b1f35')
+sha256sums=('bb8bf049df7dfd1e52059ac36f0602947f32482d5ecd173cf926a4d9b46f0462')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
