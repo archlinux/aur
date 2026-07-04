@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=hardinfo2-git
-pkgver=2.2.16.r131.g07bb126
+pkgver=2.3.1.r1.gbc6a819
 pkgrel=1
 pkgdesc="System Information and Benchmark for Linux Systems."
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -11,7 +11,11 @@ depends=(
   'gawk'
   'gtk3'
   'iperf3'
+  'json-glib'
+  'libdecor'
   'libsoup3'
+  'libx11'
+  'libxcb'
   'lm_sensors'
   'mesa-utils'
   'pciutils'
@@ -21,6 +25,7 @@ depends=(
   'usbutils'
   'vulkan-icd-loader'
   'vulkan-tools'
+  'wayland'
   'xdg-utils'
 )
 makedepends=(
