@@ -1,6 +1,6 @@
 pkgbase = arbit-bin
 	pkgdesc = DonutStudio (legacy codename: Arbit) — harmonic composition workstation and MIDI editor
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://donutsdelivery.online/donutstudio
 	install = arbit-bin.install
@@ -19,7 +19,7 @@ pkgbase = arbit-bin
 	optdepends = bitwig-studio: use the bundled Bitwig controller script
 	optdepends = xdg-utils: desktop integration helpers
 	options = !strip
-	source = Arbit-linux-0.5.1.zip::https://donutsdelivery.online/download-arbit/files/Arbit-linux.zip
-	sha256sums = 8c63c9970fe399c34df385b6c487dad08a53774efa4aca432c230bf09409f9df
+	source = DonutStudio-linux-0.5.2.zip::https://donutsdelivery.online/download-donutstudio/files/DonutStudio-linux.zip
+	sha256sums = b9250f01d699a1047b720ce86bf9bf748c6c189a56a14c53090ef9676251a140
 
 pkgname = arbit-bin
