@@ -54,11 +54,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/HKUDS/LightRAG/archive/refs
 b2sums=('SKIP')
 
 build() {
-    cd "LightRAG-v$pkgver"
+    cd "LightRAG-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "LightRAG-v$pkgver"
+    cd "LightRAG-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
