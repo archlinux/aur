@@ -1,6 +1,6 @@
 pkgbase = desktop-plus
 	pkgdesc = GitHub Desktop fork with extra features and improvements.
-	pkgver = 3.6.2.0
+	pkgver = 3.6.2.1
 	pkgrel = 1
 	url = https://github.com/desktop-plus/desktop-plus
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = desktop-plus
 	conflicts = desktop-plus
 	conflicts = github-desktop-plus
 	replaces = github-desktop-plus
-	source = desktop-plus::git+https://github.com/desktop-plus/desktop-plus.git#tag=v3.6.2.0
+	source = desktop-plus::git+https://github.com/desktop-plus/desktop-plus.git#tag=v3.6.2.1
 	source = git+https://github.com/github/gemoji.git
 	source = git+https://github.com/github/gitignore.git
 	source = git+https://github.com/github/choosealicense.com.git
@@ -40,6 +40,6 @@ pkgbase = desktop-plus
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = ccf8e189b15a46a00363c7a40299762ef313827aa4809140f7940c5801db2e27
-	sha256sums = 80adbdb3c6f82f3782604f7590b0f137d937dcba3d8aa1b29836c89abb58f851
+	sha256sums = a49191aebdf7c21d7605778e94d1490fcde9af0cb695aaf0d7f30e1214fe0c6c
 
 pkgname = desktop-plus
