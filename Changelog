@@ -1,2 +1,4 @@
-2.44.6-1 [2026-06-26]
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 149.0.7827.201.
+2.45.0-1 [2026-07-01]
+- Signed-in user information is now retrieved from Ulaa Cloud Service instead of Zoho Accounts.
+- [Windows][Linux] Updated the keyboard shortcut for adding a new tab within a tab group from Alt + Shift + N to Alt + Shift + E.
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 150.0.7871.63/64.
