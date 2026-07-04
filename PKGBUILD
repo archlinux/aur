@@ -3,7 +3,7 @@
 # Contributor: StaticNullException <aurcontact@teto.party>
 
 pkgname=zen-browser
-pkgver=1.21.4b
+pkgver=1.21.5b
 pkgrel=1
 pkgdesc='Firefox-based web browser built from upstream release source snapshot'
 url='https://zen-browser.app'
@@ -85,15 +85,13 @@ _srcroot='zen-source'
 source=(
   "$_srcroot-$pkgver.tar.zst::https://github.com/zen-browser/desktop/releases/download/$pkgver/zen.source.tar.zst"
   "$pkgname.desktop"
-  '0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch'
   '0004-Use-wasm32-wasip1-target.patch'
   '0005-Fix-cbindgen-BudgetType_VALUES-COUNT-issue.patch'
 )
-sha256sums=('e00035a643b2796eb4a4893fe32b813169429077b77d4ba43e199dfc5e7b98b8'
+sha256sums=('d7d9ae1912254aa2a55ff3cf50bf12d1682c1814baa1e732af2a93639616eb7c'
             'af16fec9a88cbfffee34a6a4eb5b3074931477fcefee252840d77cf146568851'
-            'c7d6572fe1ac76f6adbfb10102f284fd55690396ac0a275a5cfea9a2efa22b58'
             '28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89'
-            '0a44b78d761a279786ba2801091fb75bffeb0d9ae93c41738d2f64464d40e4d3')
+            '0d24f2a45fa0f7fe108a91a50ae55708f66899b0229df7722fb87962f7a2a243')
 noextract=("$_srcroot-$pkgver.tar.zst")
 
 prepare() {
@@ -103,7 +101,6 @@ prepare() {
 
   cd "$srcdir/$_srcroot"
 
-  patch -Np1 -i "$srcdir/0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch"
   patch -Np1 -i "$srcdir/0004-Use-wasm32-wasip1-target.patch"
   patch -Np1 -i "$srcdir/0005-Fix-cbindgen-BudgetType_VALUES-COUNT-issue.patch"
 
