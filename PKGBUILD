@@ -2,7 +2,7 @@
 pkgname=deeptutor
 _name=${pkgname}
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Agent-native intelligent learning companion with multi-agent collaboration and RAG"
 arch=('any')
 url="https://github.com/HKUDS/DeepTutor"
@@ -35,6 +35,7 @@ depends=(
   # --- LLM provider SDKs ---
   'python-anthropic'         # anthropic                    [AUR]
   'python-dashscope'         # dashscope                    [AUR]
+  'python-perplexityai'      # perplexityai                 [AUR]
   # --- RAG core reader (LlamaIndex engine itself is optdepends) ---
   'python-pymupdf'           # PyMuPDF                      [extra]
   'python-numpy'             # numpy                        [extra]
@@ -72,7 +73,6 @@ checkdepends=(
 )
 optdepends=(
   # --- LLM provider SDKs not yet packaged in AUR ---
-  'python-perplexityai: Perplexity AI search provider (Settings → Search Provider)'
   'python-oauth-cli-kit: OAuth helper for GitHub Copilot and OpenAI Codex LLM providers'
   # --- RAG / knowledge-base engine (LlamaIndex) ---
   'python-llama-index: RAG knowledge-base engine (Settings → Knowledge Base)'
