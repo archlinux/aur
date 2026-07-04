@@ -1,7 +1,7 @@
 pkgbase = jasmine
 	pkgdesc = Website launcher and session management platform with profiles for each tab plus Internet radio, IPTV and podcasts support.
-	pkgver = 1.3.2
-	pkgrel = 2
+	pkgver = 1.3.3
+	pkgrel = 1
 	url = https://github.com/alamahant/Jasmine
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = jasmine
 	depends = qt6-svg
 	depends = hicolor-icon-theme
 	optdepends = yt-dlp: for streaming support
-	source = jasmine-1.3.2.tar.gz::https://github.com/alamahant/Jasmine/archive/refs/tags/v1.3.2.tar.gz
-	sha256sums = 23733d69c3fc418c7e6baf207555ffe8fdb01700d26ea0381af624e4c7833e0c
+	source = jasmine-1.3.3.tar.gz::https://github.com/alamahant/Jasmine/archive/refs/tags/v1.3.3.tar.gz
+	sha256sums = 18ddf1e9edf96ac62fb418449727feea5471f0263844e0c8d6e60405684429c9
 
 pkgname = jasmine

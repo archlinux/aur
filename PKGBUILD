@@ -2,8 +2,8 @@
 
 pkgname=jasmine
 _pkgname=Jasmine
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.3.3
+pkgrel=1
 pkgdesc='Website launcher and session management platform with profiles for each tab plus Internet radio, IPTV and podcasts support.'
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/alamahant/${_pkgname}"
@@ -12,7 +12,7 @@ depends=('qt6-base' 'qt6-webengine' 'qt6-multimedia' 'qt6-svg' 'hicolor-icon-the
 makedepends=('cmake' 'ninja' 'qt6-tools')
 optdepends=('yt-dlp: for streaming support')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('23733d69c3fc418c7e6baf207555ffe8fdb01700d26ea0381af624e4c7833e0c')
+sha256sums=('18ddf1e9edf96ac62fb418449727feea5471f0263844e0c8d6e60405684429c9')
 
 
 build(){
