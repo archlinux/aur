@@ -1,16 +1,16 @@
 pkgbase = iq-bin
 	pkgdesc = Interactive jq REPL
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/hyperpuncher/iq
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = iq=0.3.1
+	provides = iq=0.3.2
 	conflicts = iq
-	source_x86_64 = iq-bin-0.3.1::https://github.com/hyperpuncher/iq/releases/download/v0.3.1/iq-linux-x64
-	sha256sums_x86_64 = a4e18952379633ae4a1712f85910d939fd3c74ae457603fbd351df55b5a0f46f
-	source_aarch64 = iq-bin-0.3.1::https://github.com/hyperpuncher/iq/releases/download/v0.3.1/iq-linux-arm64
-	sha256sums_aarch64 = 85a7e8ddc6420c0faa6c80ed6e429affe03134e49c98641fe4a93f34edfbfbe7
+	source_x86_64 = iq-bin-0.3.2::https://github.com/hyperpuncher/iq/releases/download/v0.3.2/iq-linux-x64
+	sha256sums_x86_64 = 746372947ba5c9830b864e0a77be8dbfc85fce35d95d6276ed6429404d01bb6a
+	source_aarch64 = iq-bin-0.3.2::https://github.com/hyperpuncher/iq/releases/download/v0.3.2/iq-linux-arm64
+	sha256sums_aarch64 = 5afdcd8a147d784c2ea4cd6087ae89ce31b19f5dfba0b82e31264fa83e9b842b
 
 pkgname = iq-bin
