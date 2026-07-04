@@ -1,0 +1,20 @@
+pkgbase = niffler-git
+	pkgdesc = Trello-like Kanban board for the terminal. No database. Every card is just a local Markdown file.
+	pkgver = r13.e4689ba
+	pkgrel = 1
+	url = https://github.com/Newt6611/niffler
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	arch = armv7
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	provides = niffler
+	conflicts = niffler
+	options = !debug
+	source = niffler-main::git+https://github.com/Newt6611/niffler.git#branch=main
+	sha256sums = SKIP
+
+pkgname = niffler-git
