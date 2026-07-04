@@ -1,6 +1,6 @@
 pkgbase = sonic-night-light
 	pkgdesc = Helpers for scheduling the dark-light cycle
-	pkgver = 6.7.1
+	pkgver = 6.7.2
 	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-night-light
 	arch = x86_64
@@ -20,6 +20,6 @@ pkgbase = sonic-night-light
 	provides = knighttime
 	conflicts = knighttime
 	source = sonic-night-light-6.7.0.tar.gz::https://github.com/Sonic-DE/sonic-night-light/archive/refs/tags/6.7.0.tar.gz
-	sha256sums = e4d9ffe2948291a904efb29b0abb9b7350485e8c7b2e3c14d00f9f44cd68056f
+	sha256sums = 87b5cd7a616d9217d3be099bb70b759d180dcb9365fb022d4eed3f22ed73037f
 
 pkgname = sonic-night-light
