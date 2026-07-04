@@ -16,8 +16,8 @@ pkgbase = openmodscan-git
 	depends = qt6-serialbus
 	depends = qt6-declarative
 	depends = qt6-5compat
-	provides = omodscan
-	conflicts = omodscan
+	provides = openmodscan
+	conflicts = openmodscan
 	source = git+https://github.com/sanny32/openmodscan.git
 	sha256sums = SKIP
 
