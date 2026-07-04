@@ -3,7 +3,7 @@
 
 _pkgname=assinador-serpro
 pkgname=serpro-signer
-pkgver=4.3.3
+pkgver=4.5.0
 pkgrel=1
 pkgdesc='Assinador Digital SERPRO : Aplicativo para geração e validação de assinaturas no padrão ICP-BRASIL'
 arch=('x86_64')
@@ -11,8 +11,8 @@ url='https://www.assinadorserpro.estaleiro.serpro.gov.br'
 license=('custom')
 depends=('libappindicator-gtk3' 'libcanberra' 'libnewt' 'xorg-xhost')
 install=${pkgname}.install
-source=("https://assinadorserpro.estaleiro.serpro.gov.br/repository/pool/stable/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('abcba94ee94a39f30e0dca054a652b2a3d01f611bdb749c47d15d1411cf92132')
+source=("https://artefatos-assinador.serpro.gov.br/downloads/${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
+sha256sums=('9b4c7924221c014bd6a1d2b0168d9f462995070211299362c5c8b25cb272c7c0')
 options=('!debug')
 
 prepare() {
