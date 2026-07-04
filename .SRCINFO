@@ -1,7 +1,7 @@
 pkgbase = openmodscan
 	pkgdesc = OpenModScan is a free and open-source Modbus Master (Client) utility supporting both Modbus-TCP and Modbus-RTU protocols.
 	pkgver = 1.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sanny32/openmodscan
 	arch = x86_64
 	arch = i686
