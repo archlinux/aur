@@ -17,7 +17,7 @@
 # On each upstream release, CI regenerates the sha256 + .SRCINFO and pushes
 # this file to the AUR (see .github/workflows/release.yml, publish-aur job).
 pkgname=argus-tracker
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Always-on personal desktop activity tracker (KDE Plasma / Wayland)"
 arch=('x86_64')
@@ -51,7 +51,7 @@ install=argus.install
 # GitHub tag tarball. Extracts to argus-$pkgver/ (repo name is `argus`,
 # tag is v$pkgver). CI keeps the checksum current via updpkgsums.
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e1166adcbf1ddfd6ab56b8e793050b81291fb1c10294c0b08da0790d831c6655')
+sha256sums=('ee5f78bbaad8c597e559132335494b0035976e32a7a8e3dede4df21c288c6418')
 
 _src() { echo "$srcdir/argus-$pkgver"; }
 
@@ -105,6 +105,18 @@ EOF
     "$pkgdir/usr/lib/systemd/user/argus.service"
   sed -i 's#^ExecStart=.*#ExecStart=/usr/bin/argus run#' \
     "$pkgdir/usr/lib/systemd/user/argus.service"
+
+  # Globally enable the user unit for every user's graphical session at
+  # package-install time. Pacman hooks run outside any login session (no
+  # D-Bus, no `systemctl --user enable` possible), so instead we ship the
+  # enablement symlink the way `systemctl --user enable` would create it,
+  # but in the package-owned /usr/lib tree: systemd reads
+  # <unit-dir>/<target>.wants/ for user units, so this makes argus.service
+  # start automatically on the next graphical login for all users, no
+  # manual per-user step. (Matches the unit's own WantedBy=.)
+  install -dm755 "$pkgdir/usr/lib/systemd/user/graphical-session.target.wants"
+  ln -s ../argus.service \
+    "$pkgdir/usr/lib/systemd/user/graphical-session.target.wants/argus.service"
 
   # Tray autostart at graphical login.
   install -Dm644 "$(_src)/packaging/arch/argus-tray.desktop" \

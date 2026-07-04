@@ -2,16 +2,14 @@ post_install() {
   cat <<'EOF'
 ==> Argus installed.
 
-Argus runs as a per-user systemd --user service, NOT a system-wide
-service. Arch's packaging model has no preset/enablement mechanism for
-user units equivalent to `systemctl enable` for system units at package-
-install time (pacman hooks run outside any user's login session and have
-no D-Bus session bus to talk to), so this has to be a manual, per-user
-step after install — there is nothing broken or missing here, this is
-just how systemd user units work on Arch:
+Argus runs as a per-user systemd --user service. This package ships a
+global enablement symlink, so the service is ALREADY enabled and will
+start automatically on your next graphical login — no manual
+`systemctl --user enable` needed.
 
-    systemctl --user daemon-reload
-    systemctl --user enable --now argus.service
+To start it immediately in the current session without logging out:
+
+    argus service start
 
 The tray icon (etc/xdg/autostart/argus-tray.desktop) will start
 automatically on your next graphical login. To start it immediately this
@@ -53,7 +51,7 @@ working after a `python` upgrade, reinstall this package
 (`makepkg -f` + reinstall, once a rebuilt package is available) rather
 than filing it as an Argus bug.
 
-Remember to run (if not already enabled):
+Pick up the new version now (or just log out and back in):
     systemctl --user daemon-reload
     systemctl --user restart argus.service
 EOF

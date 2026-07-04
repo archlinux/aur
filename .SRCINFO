@@ -1,6 +1,6 @@
 pkgbase = argus-tracker
 	pkgdesc = Always-on personal desktop activity tracker (KDE Plasma / Wayland)
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Adarsh077/argus
 	install = argus.install
@@ -28,7 +28,7 @@ pkgbase = argus-tracker
 	conflicts = argus
 	replaces = argus
 	options = !strip
-	source = argus-tracker-0.2.0.tar.gz::https://github.com/Adarsh077/argus/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = e1166adcbf1ddfd6ab56b8e793050b81291fb1c10294c0b08da0790d831c6655
+	source = argus-tracker-0.3.0.tar.gz::https://github.com/Adarsh077/argus/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = ee5f78bbaad8c597e559132335494b0035976e32a7a8e3dede4df21c288c6418
 
 pkgname = argus-tracker
