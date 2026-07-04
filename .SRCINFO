@@ -1,6 +1,6 @@
 pkgbase = cranky
 	pkgdesc = A minimalist, performant, and modular bar for Hyprland
-	pkgver = 0.5.0
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/jaoppb/cranky
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = cranky
 	depends = fontconfig
 	depends = dbus
 	optdepends = uwsm: for systemd session management
-	source = cranky-0.5.0.tar.gz::https://github.com/jaoppb/cranky/archive/v0.5.0.tar.gz
-	sha256sums = a9d13cfcd92beadab82820034dd9b2df3f6765f4776e246fe6f6a3dea1fa55da
+	source = cranky-0.6.3.tar.gz::https://github.com/jaoppb/cranky/archive/v0.6.3.tar.gz
+	sha256sums = 8604a8e47ade283683d30f801e37fa4dd4aef6bf6c1f7847c158e29a0999fa97
 
 pkgname = cranky
