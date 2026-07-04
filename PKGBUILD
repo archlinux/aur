@@ -4,7 +4,7 @@
 _pkgname=assinador-serpro
 pkgname=serpro-signer
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Assinador Digital SERPRO : Aplicativo para geração e validação de assinaturas no padrão ICP-BRASIL'
 arch=('x86_64')
 url='https://www.assinadorserpro.estaleiro.serpro.gov.br'
@@ -27,4 +27,5 @@ prepare() {
 
 package() {
 	cp -dr --no-preserve=ownership ./data/{etc,opt,usr} "${pkgdir}"/
+	rm -rf "${pkgdir}"/etc/xdg/autostart/*
 }
