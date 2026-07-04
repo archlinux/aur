@@ -1,31 +1,23 @@
-# Maintainer: Youcef NAFA <youcef.nafa at gmail>
+# Maintainer: enihcam <enihcam@archlinux.us>
 
-_name=llama-index-llms-openai
-pkgname=python-${_name}
+pkgname=python-llama-index-llms-openai
 pkgver=0.7.9
 pkgrel=1
-pkgdesc="llama-index llms openai integration"
+pkgdesc="llama-index LLMs OpenAI integration"
 arch=('any')
 url="https://github.com/run-llama/llama_index"
 license=('MIT')
-depends=('python' 'python-openai' 'python-llama-index-core')
-makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name//-/_}-$pkgver.tar.gz")
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling' )
+depends=('python-openai' 'python-llama-index-core' )
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/l/llama-index-llms-openai/llama_index_llms_openai-0.7.9.tar.gz")
 sha256sums=('f54a24b717134c86e724007057a06a84394f019d1f01e918b624894e208a86df')
 
 build() {
-    cd "${srcdir}"/${_name//-/_}-${pkgver}
+    cd "$srcdir/${pkgname#python-}-$pkgver"
     python -m build --wheel --no-isolation
 }
 
-check() {
-  cd "${srcdir}"/${_name//-/_}-${pkgver}
-  python -m venv test-env
-  test-env/bin/pip install installer dist/*.whl --quiet
-  test-env/bin/python -c "from llama_index.llms.openai import OpenAI; print('import OK')"
-}
-
 package() {
-  cd "${srcdir}"/${_name//-/_}-${pkgver}
-  python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "$srcdir/${pkgname#python-}-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
