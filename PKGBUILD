@@ -9,8 +9,8 @@ pkgdesc="Linux drivers for Mediatek wireless chips"
 arch=('any')
 url="https://github.com/morrownr/mt76"
 license=('GPL')
-makedepends=('git' 'linux-firmware-mediatek')
-depends=('dkms')
+makedepends=('git')
+depends=('dkms' 'linux-firmware-mediatek')
 source=("git+https://github.com/morrownr/mt76.git")
 sha256sums=('SKIP')
 

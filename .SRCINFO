@@ -6,8 +6,8 @@ pkgbase = mt76-dkms-git
 	arch = any
 	license = GPL
 	makedepends = git
-	makedepends = linux-firmware-mediatek
 	depends = dkms
+	depends = linux-firmware-mediatek
 	source = git+https://github.com/morrownr/mt76.git
 	sha256sums = SKIP
 
