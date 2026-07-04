@@ -2,13 +2,12 @@
 
 pkgname=1oom
 pkgver=1.11.9
-pkgrel=1
+pkgrel=1.1
 pkgdesc="1oom is a Master of Orion (1993) game engine recreation."
 arch=(x86_64)
-url=https://github.com/1oom-fork/1oom
+url=https://sourcecraft.dev/fork1oom/1oom
 license=('GPL2')
 depends=(sdl2 sdl2_mixer libsamplerate soundfont-fluid)
-#source=(  "${pkgname}-${pkgver}.tar.gz::https://github.com/1oom-fork/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 source=(  "${pkgname}-${pkgver}.tar.gz::https://sourcecraft.dev/api/archive/fork1oom/${pkgname}?rev=tag%3Av${pkgver}&format=tar.gz"
           'Master_of_Orion_cover.png'
           '1oom.desktop'
