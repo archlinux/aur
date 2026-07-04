@@ -1,5 +1,5 @@
 pkgname=shorkfetch
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="A cute shark-themed Linux fetch tool designed with speed, consistent output and vintage PC CPU & GPU support in mind"
 arch=('x86_64' 'i686')
