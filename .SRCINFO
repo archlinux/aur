@@ -1,6 +1,6 @@
 pkgbase = putzen
 	pkgdesc = It helps keeping your disk clean of build and dependency artifacts safely.
-	pkgver = 3.3.1
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = https://github.com/sassman/putzen-rs
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = putzen
 	depends = libgcc
 	provides = putzen
 	options = !lto
-	source = putzen-3.3.1.tgz::https://github.com/sassman/putzen-rs/archive/v3.3.1.tar.gz
-	sha256sums = 95b12595645fac1836e87a2692cfbda5d6e223426a853642359f015e90933426
+	source = putzen-3.3.2.tgz::https://github.com/sassman/putzen-rs/archive/v3.3.2.tar.gz
+	sha256sums = e2676268f50df6f7288a0c0c7a7ce14f4d09877f8a2e023e435ea192b1f87faa
 
 pkgname = putzen
