@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-workspace-addons
-pkgver=6.7.1
+pkgver=6.7.2
 pkgrel=1
 pkgdesc='All kind of addons to improve your SonicDE experience'
 arch=(x86_64)
@@ -59,7 +59,7 @@ provides=(kdeplasma-addons)
 conflicts=(kdeplasma-addons)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('1848f3b8dbaa5f5e921a77dbb868ab3916e082ff4cebec864a402f2fc65cd2ae')
+sha256sums=('c4375bbc803c517175eaf51269c943416b858828bfc1d45944f1df4cf2120112')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
