@@ -4,8 +4,8 @@
 _pkgbase=vibetype
 pkgbase=$_pkgbase
 pkgname=("$_pkgbase" "$_pkgbase-fcitx5" "$_pkgbase-ibus")
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="Voice-to-text input method backend with IBus and Fcitx5 frontends"
 arch=('x86_64')
 url="https://github.com/lingzolabs/vibetype"
@@ -13,8 +13,8 @@ license=('MIT')
 depends=('gcc-libs' 'glibc' 'python' 'curl' 'alsa-utils')
 makedepends=('cmake' 'git' 'ninja' 'openssl' 'fcitx5')
 optdepends=('wl-clipboard: Wayland clipboard support'
-            'xclip: X11 clipboard support'
-            'xdotool: X11 key simulation for auto-paste')
+  'xclip: X11 clipboard support'
+  'xdotool: X11 key simulation for auto-paste')
 source=("$_pkgbase::git+https://github.com/lingzolabs/vibetype.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
