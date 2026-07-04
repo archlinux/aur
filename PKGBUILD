@@ -6,7 +6,7 @@
 
 _pkgname="geeqie"
 pkgname="$_pkgname-git"
-pkgver=2.6.1.r389.ga92906a
+pkgver=2.9.r180.g16fd140
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 url="https://github.com/BestImageViewer/geeqie"
@@ -18,11 +18,11 @@ depends=(
   djvulibre
   exiv2
   ffmpegthumbnailer
-  gspell
-  gtk3
+  gtk4
   libarchive
   libheif
   libraw
+  libspelling
   lua
   openexr
   poppler-glib
