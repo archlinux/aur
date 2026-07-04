@@ -1,0 +1,5 @@
+[omokage-bin]
+source = "github"
+github = "nao1215/omokage"
+use_latest_release = true
+prefix = "v"

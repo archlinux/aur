@@ -1,0 +1,19 @@
+pkgbase = omokage-bin
+	pkgdesc = Measure how closely writing matches a learned author's style. Japanese & English, local-first CLI for LLMs and humans
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/nao1215/omokage
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = omokage
+	conflicts = omokage
+	options = !strip
+	source = omokage-0.5.0-checksums.txt::https://github.com/nao1215/omokage/releases/download/v0.5.0/checksums.txt
+	sha256sums = cc6a2f849a911e68f0a69406f0ca458decc8b09bffa75e2aa1b55427974c24c5
+	source_x86_64 = omokage-0.5.0-x86_64.tgz::https://github.com/nao1215/omokage/releases/download/v0.5.0/omokage_0.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 955d2537f24b44c7aab781d84cd12ea11fbc2a13270a44ee6b389e2c655871e1
+	source_aarch64 = omokage-0.5.0-aarch64.tgz::https://github.com/nao1215/omokage/releases/download/v0.5.0/omokage_0.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4709a94dde5bc728ea0b55f6824e1054a98f587a9c2f6ce24d60b8a70fcb8eb9
+
+pkgname = omokage-bin
