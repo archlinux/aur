@@ -9,6 +9,7 @@ url="https://github.com/sanny32/openmodscan"
 license=('MIT')
 depends=('gcc' 'qt6-base' 'qt6-tools' 'qt6-serialport' 'qt6-serialbus' 'qt6-declarative' 'qt6-5compat')
 makedepends=('cmake' 'git')
+optdepends=('openmodsim: for simulating a Modbus slave (server)')
 provides=('openmodscan')
 conflicts=('openmodscan')
 options=()
