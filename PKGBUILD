@@ -30,6 +30,8 @@ depends=(
   'python-rich'              # rich                         [extra]
   'python-prompt_toolkit'    # prompt_toolkit               [extra]
   'python-pyte'              # pyte                         [extra]
+  # --- nested asyncio (core dep for notebook / code-exec async compatibility) ---
+  'python-nest-asyncio'      # nest_asyncio                 [extra]
   # --- LLM provider SDKs ---
   'python-anthropic'         # anthropic                    [AUR]
   'python-dashscope'         # dashscope                    [AUR]
@@ -80,7 +82,6 @@ optdepends=(
   'python-pocketbase: PocketBase storage backend'
   # --- LLM output robustness ---
   'python-json-repair: Repair malformed JSON in LLM responses'
-  'python-nest_asyncio: Allow nested asyncio event loops (required by some notebook / code-exec flows)'
   # --- document-parsing engines ---
   'python-markitdown: markitdown document parser (Settings → Document Parsing)'
   'python-docling: docling document parser (Settings → Document Parsing)'
