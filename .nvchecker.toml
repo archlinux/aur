@@ -1,0 +1,5 @@
+[mimixbox-bin]
+source = "github"
+github = "nao1215/mimixbox"
+use_latest_release = true
+prefix = "v"
