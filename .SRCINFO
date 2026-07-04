@@ -1,0 +1,15 @@
+pkgbase = colorize-cli
+	pkgdesc = Colorize text in the terminal using named colors, HEX, or 256-color indexes
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/user14923929/colorize-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	depends = gcc-libs
+	source = colorize-cli-1.0.0.tar.gz::https://github.com/user14923929/colorize-cli/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 0a317c5fdf76ebc635caad28975d33bdfba407b6a9f286bd240d98f97d51883e
+
+pkgname = colorize-cli
