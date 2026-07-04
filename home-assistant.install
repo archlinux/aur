@@ -1,11 +1,10 @@
-pre_upgrade() {
-  if [ $(vercmp $2 1:2025.3.0-1 ) -le 0 ]; then
-    echo '==> home-assistant systemd service will be changed to static user'
-    echo '==> files from /var/lib/private/hass/ will be moved to /var/lib/hass/'
-    if [[ -L /var/lib/hass ]] && [[ -d /var/lib/private/hass ]] ; then
-      unlink /var/lib/hass
-      mv /var/lib/private/hass /var/lib/hass
-      chown -R hass: /var/lib/hass
-    fi
+
+post_upgrade() {
+  if [ $(vercmp $2 1:2026.7.1-2 ) -le 0 ]; then
+    echo "==> Note: To prevent errors caused by stale dependencies, the systemd"
+    echo "==> service will now automatically recreate the Python virtual"
+    echo "==> environment (/var/lib/hass/.venv) upon major Home Assistant"
+    echo "==> version upgrades (YYYY.MM). The first startup after a major"
+    echo "==> upgrade may take slightly longer to download dependencies."
   fi
 }
