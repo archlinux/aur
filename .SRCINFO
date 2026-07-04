@@ -1,0 +1,16 @@
+pkgbase = python-json-repair
+	pkgdesc = A package to repair broken JSON strings
+	pkgver = 0.61.1
+	pkgrel = 1
+	url = https://github.com/mangiucugna/json_repair
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/j/json-repair/json_repair-0.61.1.tar.gz
+	sha256sums = 24a68de2891c696ad3bd9a94874e8d3ef2d309c56af2973094b8297c975b5b58
+
+pkgname = python-json-repair
