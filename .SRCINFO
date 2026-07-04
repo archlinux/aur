@@ -1,0 +1,19 @@
+pkgbase = flerp
+	pkgdesc = A terminal UI for exploring and analyzing text files, PDFs, and images
+	pkgver = r24.35c31c7
+	pkgrel = 1
+	url = https://github.com/Huseynteymurzade28/flerp
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	arch = armv7
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = flerp
+	conflicts = flerp-git
+	options = !debug
+	source = flerp-main::git+https://github.com/Huseynteymurzade28/flerp.git#branch=main
+	sha256sums = SKIP
+
+pkgname = flerp
