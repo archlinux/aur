@@ -1,0 +1,5 @@
+[noodle-bin]
+source = "github"
+github = "wilfredinni/noodle"
+use_latest_release = true
+prefix = "v"
