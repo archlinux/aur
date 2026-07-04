@@ -12,7 +12,7 @@ depends=()
 makedepends=('rust' 'cargo')
 optdepends=('ntfs-3g: NTFS fallback for ISOs that disrespect the FAT32 4GB limit for individual files')
 source=("buf-$pkgver.tar.gz::https://github.com/brysonak/buf/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8453c9e244bc54e2032d5ed1f12f2d6a9ced1cdee6d344ca6e52a690efb17e75')
+sha256sums=('674dd12197a52b0571593cd1916b849334e5a472e4e589a61863586e8738ed57')
 
 prepare() {
     cd "$_srcdir"
