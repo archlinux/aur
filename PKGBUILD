@@ -1,7 +1,7 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-bin
-pkgver=2.4.1.0
+pkgver=2.4.1.1
 pkgrel=1
 pkgdesc="Shelly: A Modern Arch Package Manager (prebuilt binary)"
 arch=('x86_64')
@@ -24,25 +24,27 @@ depends=(
     'dconf'
     'gnupg'
     'zstd'
+    'json-glib'
 )
 optdepends=(
     'flatpak: For supporting flatpak implementation.'
     'fish: Fish shell completions'
     'zsh: Zsh shell completions'
+    'libstarfish: dependency viewer for arch packages'
 )
 
 source=(
     "Shelly-ALPM-linux-x64-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v${pkgver}/Shelly-ALPM-linux-x64.tar.gz"
 )
 
-sha256sums=('8526219d161678fe1f89cd9191ca1f3c0c83d7638fa15141907e79da075e9a89')
+sha256sums=('c4988d975c019fb7484b94680135c190f699c094a707759bd35ed7aa1e51b2e7')
 
 package() {
   # Install Shelly.Gtk binary
   install -Dm755 "$srcdir/shelly-ui" "$pkgdir/usr/bin/shelly-ui"
 
   # Install Shelly-Notifications binary
-  install -Dm755 "$srcdir/Shelly-Notifications" "$pkgdir/usr/bin/shelly-notifications"
+  install -Dm755 "$srcdir/shelly-notifications" "$pkgdir/usr/bin/shelly-notifications"
 
   # Install Shelly.Cli binary
   install -Dm755 "$srcdir/shelly" "$pkgdir/usr/bin/shelly"
