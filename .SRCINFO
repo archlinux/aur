@@ -1,7 +1,7 @@
 pkgbase = aider-chat-venv
 	pkgdesc = AI pair programming in your terminal (installed with uv)
 	pkgver = 0.86.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Aider-AI/aider
 	arch = any
 	license = Apache-2.0

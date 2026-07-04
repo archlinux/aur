@@ -2,7 +2,7 @@
 
 pkgname="aider-chat-venv"
 pkgver=0.86.2
-pkgrel=1
+pkgrel=2
 pkgdesc="AI pair programming in your terminal (installed with uv)"
 url="https://github.com/Aider-AI/aider"
 license=("Apache-2.0")
@@ -39,7 +39,7 @@ package() {
  UV_NO_COMPILE_BYTECODE=TRUE \
  UV_NO_CACHE=TRUE \
  UV_NO_INSTALLER_METADATA=TRUE \
- UV_PYTHON=3.13 \
+ UV_PYTHON=3.12 \
  UV_PYTHON_PREFERENCE=only-managed \
  UV_PYTHON_DOWNLOADS=automatic \
  UV_PYTHON_BIN_DIR="$pkgdir/usr/share/aider-chat/bin" \
