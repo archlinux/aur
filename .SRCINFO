@@ -15,8 +15,8 @@ pkgbase = koreader-nightly-bin
 	options = !strip
 	options = !debug
 	source_x86_64 = koreader-nightly-x86_64-2026.03_234_g730285210.deb::https://build.koreader.rocks/download/nightly/2026.03-234-g730285210/koreader_2026.03-234-g730285210-1_amd64.deb
-	sha256sums_x86_64 = 24045ec0337311d4078d446f3cac86a8b8c4d17659eabac61ebc48e2dd9018c7
+	sha256sums_x86_64 = 8ed5e69ea739fed7c7163492dc81eeb370c5075b3cb8296175bf334617cda585
 	source_aarch64 = koreader-nightly-aarch64-2026.03_234_g730285210.deb::https://build.koreader.rocks/download/nightly/2026.03-234-g730285210/koreader_2026.03-234-g730285210-1_arm64.deb
-	sha256sums_aarch64 = c59035cbbdf12f1439bea35eb693c2686eb5ceb51a20667dc13d279825981dd3
+	sha256sums_aarch64 = 99776ab78f9c0b41e627a351169ee38abce96ea4cfd8a43043e61f0e47bd7828
 
 pkgname = koreader-nightly-bin
