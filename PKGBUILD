@@ -1,6 +1,6 @@
 # Maintainer: Andrii Berezhynskyi <microsolutions_harebrain@aleeas.com>
 pkgname=scrolex-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgfullname=scrolex-$pkgver-x86_64-unknown-linux-gnu
 pkgdesc="A Horizontally Scrolled PDF Viewer"
@@ -9,7 +9,7 @@ license=('MIT')
 url="https://github.com/molecule-man/scrolex"
 depends=('gtk4' 'poppler')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$pkgfullname.tar.gz")
-sha256sums=('89f30b9c3790fff7ce8a43d182b2d937f59fbec7a3b12fbb8be0bb71c85f85af')
+sha256sums=('b5a720abddeaf376658b1157b9cfe30867dfe1a73a4865b766933f5e79b9e71f')
 
 package() {
 	cd "$srcdir/$pkgfullname"
