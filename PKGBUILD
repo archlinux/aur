@@ -2,7 +2,7 @@
 # LUNA CLI - AI Coding Assistant for LUNA OS X
 
 pkgname=luna-cli
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="🌙 LUNA - AI Coding Assistant CLI for LUNA OS X"
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://github.com/Arunachalam-gojosaturo/Luna-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('03aff6b8f73fad2c64fe8a2343156ae2974d6d68dfec90f036e651ad00656a7c')
+sha256sums=('2cafcfc30ac7ee6e60abac226f283af9e73f04a3e7c1276752a0047bdc2923d1')
 
 build() {
     cd "Luna-cli-${pkgver}"
