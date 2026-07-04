@@ -2,7 +2,7 @@
 pkgname=('libobjfw' 'libobjfwrt' 'libobjfwtls' 'libobjfwhid' 'ofarc' 'ofdns'
          'ofgctester' 'ofhash' 'ofhttp')
 pkgbase=objfw
-pkgver=1.5.2
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="Portable, lightweight framework for the Objective-C language"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('LGPL3')
 groups=(objfw)
 makedepends=(clang)
 source=("https://objfw.nil.im/downloads/$pkgbase-$pkgver.tar.gz")
-sha256sums=(23c41c2ce6f2491d056c8e63cc4de6de8fcb1807825710eb1be92464b97173f8)
+sha256sums=(e637c32731dc07396b812c4019f34d1417a3f7aa39d450b7f27c9bcdc23b3e12)
 
 build() {
 	cd "$pkgbase-$pkgver"
