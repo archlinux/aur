@@ -20,7 +20,7 @@ url=${_ghurl}
 license=('MIT')
 
 provides=("${_appname}")
-conflicts=("${_appname}")
+conflicts=("${pkgname%-bin}")
 
 makedepends=('git')
 depends=('glibc' 'bash')
@@ -46,8 +46,8 @@ package() {
 
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
-	install -dm755 "${pkgdir}/usr/share/${_pkgname}/examples"
-	cp -rf "git/examples/"* "${pkgdir}/usr/share/${_pkgname}/examples/"
+	install -dm755 "${pkgdir}/usr/share/${pkgname%-bin}/examples"
+	cp -rf "git/examples/"* "${pkgdir}/usr/share/${pkgname%-bin}/examples/"
 
 	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/docs"
 	cp -rf "git/docs/"* "${pkgdir}/usr/share/doc/${pkgname}/docs/"
