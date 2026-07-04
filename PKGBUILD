@@ -15,7 +15,7 @@
 # Check the AUR package 'fs2_open-data' for details.
 
 pkgname=fs2_open
-pkgver=25.0.1
+pkgver=26.0.0
 pkgrel=1
 pkgdesc="An enhancement of the FreeSpace 2 engine, need game data"
 url="https://scp.indiegames.us/"
@@ -28,7 +28,7 @@ optdepends=('fs2_open-mediavps: extensive audiovisual enhancements'
             'wxlauncher: cross-platform fs2 launcher'
             'doxygen: generate engine API docs when building from source')
 
-_upstream_tag=release_25_0_1
+_upstream_tag=release_26_0_0
 _extracted="fs2open.github.com-${_upstream_tag}"
 
 # Submodule commits from: git submodule status (at $_upstream_tag)
@@ -39,7 +39,7 @@ source=("fs2open-${pkgver}.tar.gz::https://github.com/scp-fs2open/fs2open.github
         "cmake-modules-${_submod_rpavlik}.tar.gz::https://github.com/rpavlik/cmake-modules/archive/${_submod_rpavlik}.tar.gz"
         "libRocket-${_submod_librocket}.tar.gz::https://github.com/scp-fs2open/libRocket/archive/${_submod_librocket}.tar.gz"
         'fs2_open.desktop')
-sha256sums=('a32289ff57578368e9e41f13e1652c890fd418eb2e1e480cc6aae7f41cc5e3ba'
+sha256sums=('f21f62f88474bf89525bca39a9d28539a8b234dec3f7566dc290387ac9d845ae'
             '7b6912da01a56eeca58c13f8bbb07b6120af8f04722316747dc8132a8ec65aca'
             '444266ebd5fc1f48e565b91abdaa2bee87a621f792450c4339a5cc7be6f946ab'
             '5e5205173637029217c77cd426582d3df55d9c6671b271379d023664484a6153')
