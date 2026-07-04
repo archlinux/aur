@@ -5,36 +5,83 @@ _remove_legacy_sudoers() {
     rm -f /etc/sudoers.d/entropy-shield
 }
 
+# The 'entropy-shield' group ships as usr/lib/sysusers.d/entropy-shield.conf and
+# is normally created by the systemd-sysusers pacman hook. That hook runs as a
+# PostTransaction hook, i.e. AFTER this .install script's post_install runs, so
+# the group is NOT guaranteed to exist yet when we get here — usermod below
+# would silently fail with "group does not exist" on a first install. Create it
+# ourselves (idempotent) so ordering never matters.
+_ensure_group() {
+    getent group entropy-shield >/dev/null 2>&1 || groupadd --system entropy-shield
+}
+
+# Best-effort discovery of the unprivileged desktop user pacman/the AUR helper
+# was invoked for (mirrors install.sh's REAL_USER detection).
+_real_user() {
+    if [ -n "${SUDO_USER:-}" ] && [ "$SUDO_USER" != "root" ]; then
+        echo "$SUDO_USER"
+        return
+    fi
+    logname 2>/dev/null || true
+}
+
+# Actually add the user to the group instead of just printing instructions —
+# this is the step that was previously missing, leaving Connect broken until
+# the user found and ran the command manually.
+_add_user_to_group() {
+    real_user="$(_real_user)"
+    if [ -n "$real_user" ]; then
+        if usermod -aG entropy-shield "$real_user" 2>/dev/null; then
+            echo "  Added '$real_user' to the 'entropy-shield' group."
+        else
+            echo "  [!] Could not add '$real_user' to 'entropy-shield' automatically — run:"
+            echo "        sudo usermod -aG entropy-shield $real_user"
+        fi
+    else
+        echo "  [!] Could not determine the installing user — add yourself manually:"
+        echo "        sudo usermod -aG entropy-shield <your-user>"
+    fi
+}
+
+_enable_daemon() {
+    systemctl daemon-reload >/dev/null 2>&1 || true
+    if systemctl enable --now entropy-shield.service >/dev/null 2>&1; then
+        echo "  Enabled and started the entropy-shield daemon."
+    else
+        echo "  [!] Could not enable the daemon automatically — run:"
+        echo "        sudo systemctl enable --now entropy-shield"
+    fi
+}
+
 post_install() {
     _remove_legacy_sudoers
+    _ensure_group
+    _add_user_to_group
+    _enable_daemon
     echo ""
     echo "  Entropy Shield installed successfully."
     echo ""
-    echo "  Privileged operations now run in a root daemon (no pkexec/sudo)."
-    echo "  Finish setup in 3 steps:"
+    echo "  Privileged operations run in a root daemon (no pkexec/sudo). The"
+    echo "  daemon has been enabled/started and your user was added to the"
+    echo "  'entropy-shield' group automatically."
     echo ""
-    echo "    1) Enable the privileged daemon:"
-    echo "         sudo systemctl enable --now entropy-shield"
-    echo ""
-    echo "    2) Add your user to the 'entropy-shield' group so the GUI can"
-    echo "       reach the daemon socket:"
-    echo "         sudo usermod -aG entropy-shield \"\$USER\""
-    echo ""
-    echo "    3) Log out and back in (or reboot) for the group to take effect."
-    echo ""
-    echo "  Then launch the GUI:"
+    echo "  Log out and back in (or reboot) for the new group membership to"
+    echo "  take effect — Linux only applies group changes to new login"
+    echo "  sessions. Then launch:"
     echo "    entropy-shield"
     echo ""
 }
 
 post_upgrade() {
     _remove_legacy_sudoers
+    _ensure_group
+    _add_user_to_group
+    _enable_daemon
     echo ""
-    echo "  Entropy Shield upgraded to a daemon-based privilege model."
+    echo "  Entropy Shield upgraded."
     echo ""
-    echo "  If this is your first upgrade to 4.x, make sure the daemon is"
-    echo "  enabled and your user is in the 'entropy-shield' group:"
-    echo "    sudo systemctl enable --now entropy-shield"
-    echo "    sudo usermod -aG entropy-shield \"\$USER\"   # then re-login"
+    echo "  The daemon is enabled/started and your group membership was"
+    echo "  (re)applied automatically. If you were not already in the"
+    echo "  'entropy-shield' group, log out and back in for it to take effect."
     echo ""
 }
