@@ -2,7 +2,7 @@
 _appname=anythingllm
 pkgname="${_appname}-desktop-bin"
 _pkgname=Anything-LLM-Desktop
-pkgver=1.11.2
+pkgver=1.15.0
 _electronversion=31
 pkgrel=1
 pkgdesc="The all-in-one AI application, tool suite, and API for RAG & Agents for Docker & Desktop.(Prebuilt version.Use system-wide electron)"
@@ -36,8 +36,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::https://cdn.anythingllm.com/latest/${_pkgname//-/}-Arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::https://cdn.anythingllm.com/latest/${_pkgname//-/}.AppImage")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('4b0d66a4ef18b2e6e87ea18271a8fa75c83acc746d4b16c094ad121832618316')
-sha256sums_x86_64=('de7c5f16bc5345e562d2dbb6a22b7c7bc2e2c9e59965eefcd882ba3bb97d355c')
+sha256sums_aarch64=('1b948c5090c398f03218d891fcbec8df7be0d0188cd1cf0bf2c881b5df9ac5f2')
+sha256sums_x86_64=('0e4fc5786cde7c00a2265c937fefc155cf1926bc85f46abc056c59a9778069cb')
 pkgver() {
     cd "${srcdir}/squashfs-root"
     set -o pipefail
