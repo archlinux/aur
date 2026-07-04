@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-uv-build' )
 depends=('python-aiohttp' 'python-click' 'python-httpx' 'python-jinja' 'python-jsonschema' 'python-openai' 'python-pydantic' 'python-python-dotenv' 'python-tiktoken' 'python-tokenizers' 'python-importlib-metadata' )
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/l/litellm/litellm-1.86.2.tar.gz")
-sha256sums=('7d559ad48e925a9dec8cafdd08494165b0bc7bcbe5f3a2e4609aa354e0c59d91')
+sha256sums=('7d559ad48b97d796ff325af88fd7eebbdc66e58773fb5312130ab1cac968f8f3')
 
 build() {
     cd "$srcdir/${pkgname#python-}-$pkgver"
