@@ -1,6 +1,6 @@
 # Maintainer: Mobin Aydinfar <mobin@mobintestserver.ir>
 pkgname=dinit
-pkgver=0.20.0
+pkgver=0.22.1
 pkgrel=1
 pkgdesc='Service monitoring / "init" system'
 url='https://github.com/davmac314/dinit'
@@ -9,11 +9,16 @@ arch=(x86_64 arm aarch64)
 license=(Apache)
 depends=('libcap')
 makedepends=('linux-headers')
-sha256sums=('f8e3f92629d9aeb7d09e1859dd1cfc2754c11873e16b407a41025f6e81e9e33c')
+sha256sums=('959b35c171452ecfbc09379b516517dadd675350eebc57ca54aebedda05d9adf')
 
 build() {
   cd "$pkgname-$pkgver"
-  ./configure --bindir="/usr/bin" --sbindir="/usr/bin" --shutdown-prefix="dinit-"
+  ./configure \
+    CXXFLAGS="-std=c++11 $CXXFLAGS" \
+    --platform=Linux \
+    --bindir="/usr/bin" \
+    --sbindir="/usr/sbin/" \
+    --shutdown-prefix="dinit-"
   make
 }
 
