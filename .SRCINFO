@@ -1,6 +1,6 @@
 pkgbase = petsc
 	pkgdesc = Portable, extensible toolkit for scientific computation
-	pkgver = 3.25.0
+	pkgver = 3.25.3
 	pkgrel = 1
 	url = https://petsc.org
 	install = petsc.install
@@ -40,10 +40,10 @@ pkgbase = petsc
 	optdepends = zoltan: support for zoltan
 	provides = petsc4py
 	options = staticlibs
-	source = http://web.cels.anl.gov/projects/petsc/download/release-snapshots/petsc-3.25.0.tar.gz
+	source = http://web.cels.anl.gov/projects/petsc/download/release-snapshots/petsc-3.25.3.tar.gz
 	source = test_optdepends.sh
 	source = setuptools.patch
-	sha512sums = 1db061c597bc9a88a38c220bce274b8532b821ea065d232432d4a57b2d280e0b2aea249914ee780581d66f2d31c17ccc8eda627b3ceb1b47c0981875bbe986c0
+	sha512sums = 8232e6d2d8c393a2e85d8739f3aaebc655fbf8a6ae68fc0b0cd576697ccd1c6b187b62124af1fe44c9ad6f3aeb31cba656f107f53659b4e7a8b4c01eacef78cc
 	sha512sums = 4dc58de1393c2920de6ca08dcab71af0b13d21391d6b46f4a48aab122f087a3f4e4deae7b72b15fde5c7d344bcf12f5b766ff7c0ba4d816b074f94091a00cb97
 	sha512sums = 3b89914d70a9788d8a0ecc059283320beabd96c163302f0d3c89405afac9969d282462e1372830025f74509c925c2b9b5a80a81e62a9e48fc7dcb8adbf18fe23
 
