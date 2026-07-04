@@ -1,6 +1,6 @@
 # Maintainer: Ezra Weaver <ezratweaver@gmail.com>
 pkgname=adw-bluetooth
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='GNOME Inspired LibAdwaita Bluetooth Applet'
 url="https://github.com/ezratweaver/adw-bluetooth/"
@@ -8,6 +8,7 @@ arch=('x86_64')
 license=(GPL-3.0)
 depends=(
   bluez
+  bluez-obex
   dconf
   gjs
   glib2
@@ -25,7 +26,7 @@ makedepends=(
 
 source=("https://github.com/ezratweaver/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 
-b2sums=('12d8eaf2cad1ae8fff454b9fd23e62d56202857ef674e9c96d0d53071f68ca43d732e8a9441b74b498b09ae0aec2d0f35ef3d58b5bcd54010fae58f9481f6ea2')
+b2sums=('8423139dfeea72712ae7d604249734116b0947b1b246c92cddca81517a190b75734c16c8c3a9bd88a7e7b924fa6c0e946ba233ab5e8111c228e3176bd8861255')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -37,3 +38,4 @@ package() {
   cd "${pkgname}-${pkgver}"
   meson install -C build --destdir "$pkgdir"
 }
+
