@@ -1,6 +1,6 @@
 pkgbase = runner-run
 	pkgdesc = Universal project task runner
-	pkgver = 0.16.1
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/kjanat/runner
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = runner-run
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = runner-run-0.16.1.tar.gz::https://github.com/kjanat/runner/archive/refs/tags/v0.16.1.tar.gz
-	sha256sums = db91946dfded9da96fbf820e296b5994a47311e25aec5ef95d790ed452b7421b
+	source = runner-run-0.17.0.tar.gz::https://github.com/kjanat/runner/archive/refs/tags/v0.17.0.tar.gz
+	sha256sums = 74ad17624099329992c79e046cff2d8201617581bd9582e9dcbdd4dedcf3a441
 
 pkgname = runner-run
