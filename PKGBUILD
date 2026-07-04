@@ -1,6 +1,6 @@
 pkgname=raze-bin
 pkgver=1.11.0.f5ce6d9
-pkgrel=2
+pkgrel=3
 pkgdesc='Build engine port backed by GZDoom tech'
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/raze"
@@ -18,6 +18,7 @@ source_aarch64=("$url/binaries/$pkgver/-/raw/main/raze-$pkgver-linux-arm64.tar.x
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
+    install -dm755 "$pkgdir/usr/lib"
     install -dm755 "$pkgdir/usr/share/licenses/raze"
     install -dm755 "$pkgdir/usr/share/icons/hicolor/256x256/apps"
     install -dm755 "$pkgdir/usr/share/raze"
@@ -26,4 +27,5 @@ package() {
     #Removing uneeded .files
     rm -rf $srcdir/raze/.*
     cp -r "$srcdir/raze/." "$pkgdir"
+    ln -s sudo ln -s /usr/lib/libvpx.so $pkgdir/usr/lib/libvpx.so.9
 }
