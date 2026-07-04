@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-network-manager
-pkgver=6.7.1
+pkgver=6.7.2
 pkgrel=1
 pkgdesc='SonicDE applet written in QML for managing network connections'
 arch=(x86_64)
@@ -53,7 +53,7 @@ provides=(plasma-nm)
 conflicts=(plasma-nm)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('3d96a6fb90b03e9956a346b35a85a26640923c8bba031c8f3c454eeb69518f7b')
+sha256sums=('2e87b45ec4e2b3323ad33042a267f726ee98ca1d7ef6f8a9da745dd2c16f39bd')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
