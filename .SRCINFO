@@ -1,7 +1,7 @@
 pkgbase = openocd-raspberrypi-bin
 	pkgdesc = OpenOCD build for Raspberry Pi pico
 	pkgver = 0.12.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/raspberrypi/openocd
 	arch = x86_64
 	license = GPL2

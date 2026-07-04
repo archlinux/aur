@@ -1,7 +1,7 @@
 # Maintainer: Martino Pilia <martino.pilia@proton.me>
 pkgname=openocd-raspberrypi-bin
 pkgver=0.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenOCD build for Raspberry Pi pico"
 arch=("x86_64")
 url="https://github.com/raspberrypi/openocd"
@@ -17,25 +17,25 @@ sha256sums=('934c8b1a5d2f85a64e02255bc1da1ce78d5266416a0e845d18dbde251a1ad3ed'
             '0769383c5ef8f277e0b7bf676f0db9943495228574cfdfcd142749fe866733a6')
 
 package() {
-	install -D -m755 \
-		"${srcdir}/openocd" \
-		"${pkgdir}/usr/bin/openocd"
+    install -D -m755 \
+        "${srcdir}/openocd" \
+        "${pkgdir}/usr/bin/openocd"
 
-	install -d -m755 \
+    install -d -m755 \
         "${pkgdir}/etc/udev/rules.d"
 
-	install -D -m644 \
-		"${srcdir}/60-openocd.rules" \
+    install -D -m644 \
+        "${srcdir}/60-openocd.rules" \
         "${pkgdir}/etc/udev/rules.d/60-openocd.rules"
 
     echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="2e8a", ATTR{idProduct}=="000c", TAG+="uaccess"' \
         > "${pkgdir}/etc/udev/rules.d/60-rp2350-cmsis-dap.rules"
 
-	install -d -m755 \
+    install -d -m755 \
         "${pkgdir}/usr/share/openocd"
 
-	cp -a \
-		"${srcdir}/scripts" \
-		"${pkgdir}/usr/share/openocd/scripts"
+    cp -a \
+        "${srcdir}/scripts" \
+        "${pkgdir}/usr/share/openocd/scripts"
 }
 
