@@ -1,0 +1,19 @@
+pkgbase = python-graphrag-common
+	pkgdesc = Common utilities and types for GraphRAG
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/microsoft/graphrag
+	arch = any
+	license = MIT
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-dotenv
+	depends = python-yaml
+	depends = python-toml
+	source = https://files.pythonhosted.org/packages/source/g/graphrag-common/graphrag_common-3.1.0.tar.gz
+	sha256sums = cb76b46820d7d2443b431be4172a1a4fd485309538a17aade30081d5393b7276
+
+pkgname = python-graphrag-common
