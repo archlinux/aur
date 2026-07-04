@@ -1,76 +1,63 @@
-# Maintainer: Madeline Mewmews <maddie at mewmews dot gay>
-# Maintainer: bemxio <bemxiov at protonmail dot com>
+# Maintainer: Harish Rajagopal <harish dot rajagopals at gmail dot com>
+# Contributor: Madeline Mewmews <maddie at mewmews dot gay>
+# Contributor: bemxio <bemxiov at protonmail dot com>
 # Contributor: Harrison <htv04rules at gmail dot com>
 
-_pkgname=sm64coopdx
-pkgname="${_pkgname}-git"
-
-pkgdesc="Fork of Super Mario 64 Co-op with more features, customizability and power to the Lua API"
-
-pkgver=r5064.23d8a73
+pkgname=sm64coopdx
+pkgver=1.5.1
 pkgrel=1
-epoch=1
-
-arch=(x86_64 i686 pentium4 aarch64 armv7h)
-
+pkgdesc="Fork of Super Mario 64 Co-op with more features, customizability and power to the Lua API"
 url="https://sm64coopdx.com/"
-#license=("LicenseRef-unknown")
-
+license=("LicenseRef-unknown")
+arch=(x86_64 i686 pentium4 aarch64 armv7h)
+provides=("${pkgname}=${pkgver}")
+conflicts=("${pkgname}-git")
 depends=(sdl2)
-makedepends=(git "python>=3.6" glew zlib curl audiofile gendesk)
-
-provides=("${_pkgname}=${pkgver}")
-
-source=("git+https://github.com/coop-deluxe/${_pkgname}.git#branch=dev" "${_pkgname}.sh" "${_pkgname}.png")
-md5sums=(SKIP 314f0815dc7132df21bbd3a9d391f2be 9bec90a66559edbf42992c4985e4548a)
-
-#options=("!strip")
-
-pkgver() {
-  	# move to source directory
-	cd "${_pkgname}"
-
-	# use number of revisions since beginning of history
-	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-}
+makedepends=("python>=3.6"
+             glew
+             zlib
+             curl
+             audiofile
+             gendesk)
+source=("https://github.com/coop-deluxe/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+        "${pkgname}.sh"
+        "${pkgname}.png")
+md5sums=('d7751a9eb4eec1228f41ce40e3c140cc'
+         '314f0815dc7132df21bbd3a9d391f2be'
+         '9bec90a66559edbf42992c4985e4548a')
 
 prepare() {
-	# generate desktop entry
-	gendesk -f -n \
-		--pkgname "Super Mario 64 Co-op Deluxe" \
-		--pkgdesc "${pkgdesc}" \
-		--exec "${_pkgname}" \
-		--icon "${_pkgname}.png" \
-		--categories "Game;ActionGame;AdventureGame"
+    gendesk -f -n \
+        --pkgname "Super Mario 64 Co-op Deluxe" \
+        --pkgdesc "${pkgdesc}" \
+        --exec "${pkgname}" \
+        --icon "${pkgname}.png" \
+        --categories "Game;ActionGame;AdventureGame"
 }
 
 build() {
-	# move to source directory
-	cd "${_pkgname}"
-
-	# build sm64coopdx
-	make
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make
 }
 
 package() {
-	# move to build directory
-	cd "${_pkgname}/build/us_pc"
+    cd "${srcdir}/${pkgname}-${pkgver}/build/us_pc"
 
-	# copy game executable
-	install -Dm755 "${_pkgname}" "${pkgdir}/usr/share/${_pkgname}/${_pkgname}"
+    # copy game executable
+    install -Dm755 "${pkgname}" "${pkgdir}/usr/share/${pkgname}/${pkgname}"
 
-	# copy shared libraries
-	find . -type f -name '*.so' -exec install -Dm755 {} "${pkgdir}/usr/lib/${_pkgname}/{}" \;
+    # copy shared libraries
+    find . -type f -name '*.so' -exec install -Dm755 {} "${pkgdir}/usr/lib/${pkgname}/{}" \;
 
-	# copy other game directories
-	find lang -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${_pkgname}/{}" \;
-	find dynos -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${_pkgname}/{}" \;
-	find mods -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${_pkgname}/{}" \;
+    # copy other game directories
+    find lang -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${pkgname}/{}" \;
+    find dynos -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${pkgname}/{}" \;
+    find mods -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${pkgname}/{}" \;
 
-	# copy executable script
-	install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+    # copy executable script
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
-	# copy icon and desktop entry
-	install -Dm644 "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-	install -Dm644 "${srcdir}/Super Mario 64 Co-op Deluxe.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    # copy icon and desktop entry
+    install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/Super Mario 64 Co-op Deluxe.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
