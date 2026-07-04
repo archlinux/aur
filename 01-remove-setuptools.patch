@@ -1,16 +1,12 @@
 allow any setuptools version to be used
 
 also fix FTBFS due to requiring a later version of setuptools
-
-
-
-
-
-
-
 ---
+ pyproject.toml |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 diff --git a/pyproject.toml b/pyproject.toml
-index 602f8c6b..e3c1df5b 100644
+index 650168a7888..2c51cf94a81 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -1,5 +1,5 @@

@@ -1,15 +1,21 @@
 Add aioesphomeapi dependency to usb integration
 
-
 ---
+ homeassistant/components/usb/manifest.json |    6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
 diff --git a/homeassistant/components/usb/manifest.json b/homeassistant/components/usb/manifest.json
-index 64dc450f..646932af 100644
+index 7f934dc9ee5..746a15a9e61 100644
 --- a/homeassistant/components/usb/manifest.json
 +++ b/homeassistant/components/usb/manifest.json
-@@ -7,5 +7,5 @@
+@@ -7,5 +7,9 @@
    "integration_type": "system",
    "iot_class": "local_push",
    "quality_scale": "internal",
--  "requirements": ["aiousbwatcher==1.1.2", "serialx==1.8.0"]
-+  "requirements": ["aiousbwatcher==1.1.2", "serialx==1.8.0", "aioesphomeapi==45.3.1"]
+-  "requirements": ["aiousbwatcher==1.1.2", "serialx==1.8.2"]
++  "requirements": [
++    "aiousbwatcher==1.1.2",
++    "serialx==1.8.2",
++    "aioesphomeapi==45.3.1"
++  ]
  }
