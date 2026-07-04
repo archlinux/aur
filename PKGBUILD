@@ -46,10 +46,24 @@ verify() {
 	sha256sum -c --ignore-missing "checksums.txt"
 }
 
+build() {
+	cd "${srcdir}/" || exit
+
+	mkdir -p "./completions"
+
+	"./${_pkgname}" completion zsh > "./completions/${_pkgname}.zsh"
+	"./${_pkgname}" completion bash > "./completions/${_pkgname}.bash"
+	"./${_pkgname}" completion fish > "./completions/${_pkgname}.fish"
+}
+
 package() {
 	cd "${srcdir}/" || exit
 
 	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+	install -Dm644 "./completions/${_pkgname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+	install -Dm644 "./completions/${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+	install -Dm644 "./completions/${_pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
