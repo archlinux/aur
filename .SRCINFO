@@ -1,6 +1,6 @@
 pkgbase = rotorflight-blackbox
 	pkgdesc = Rotorflight Blackbox for Rotorflight FBL Controller
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/rotorflight/rotorflight-blackbox
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = rotorflight-blackbox
 	depends = nvm
 	options = !debug
 	options = !strip
-	source = rotorflight-blackbox-2.2.0.tar.gz::https://github.com/rotorflight/rotorflight-blackbox/archive/refs/tags/release/2.2.0.tar.gz
+	source = rotorflight-blackbox-2.3.0.tar.gz::https://github.com/rotorflight/rotorflight-blackbox/archive/refs/tags/release/2.3.0.tar.gz
 	source = rotorflight-blackbox.desktop
-	sha512sums = 79c5e5351ab3e1ed6c5026ba9ae24879ff52f3c183655891978c55de2c0695004b1a8f7bb92f7696b641962b1b3e67ba74b492cdafe28916442d00e8ac329311
+	sha512sums = 78141cd2de1569cab20de3136ae3d813cf1ab3ba706bdf51b1d317bfe4ae8229b0a358f7e197f03136b42d50838f319d47bcc218a00d75a4430d74af686e8d26
 	sha512sums = dc323d2e7bab4d0f65a9cd62d99e7bc696ac880bbe3ed824959c9d6b5142f9095195b3a234fb4676ef49dc5419f41218107e9f324e6351870a47aa19571b64f7
 
 pkgname = rotorflight-blackbox
