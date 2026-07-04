@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A prose-as-syntax language designed from the human end"
 
-pkgver=0.14.1
+pkgver=0.15.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,9 +30,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}")
-sha256sums=('80f562ed3437c87628b3cd5306d01c1fea59e16e7e5024fcbc8f8436b1586a94'
+sha256sums=('a5d8c323dea8654773780ac773f839c7b6ed1d1aa6a07222ff3e1a32d0abbddc'
             'c3f9257c3c8dbbcdf6945799136c5f806d72bc890bb4bde61fd7ce5d88c38c77')
-sha256sums_x86_64=('316269ad75eff6435e9084f5abfdd6867bf08bfe8a8e628f810c983e33fbd3f9')
+sha256sums_x86_64=('7d504a29a9512e290ce3e8406ef415f615cd5ef428f4c331813600ac9c7c4361')
 
 
 prepare() {
@@ -48,8 +48,8 @@ package() {
 
 	install -Dm755 "${_appname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/${_appname}"
 
-	install -dm755 "${pkgdir}/usr/share/${_pkgname}/examples"
-	cp -rf "git/examples/"* "${pkgdir}/usr/share/${_pkgname}/examples/"
+	install -dm755 "${pkgdir}/usr/share/${_appname}/examples"
+	cp -rf "git/examples/"* "${pkgdir}/usr/share/${_appname}/examples/"
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
