@@ -1,0 +1,7 @@
+*.log
+*.lock
+pkg/
+src/
+openmodsim/
+*.pkg.tar.zst
+*.tar.gz
