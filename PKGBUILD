@@ -214,7 +214,7 @@ package_vitis_() {
     conflicts=(vitis vivado)
     pkgdesc="$pkgdesc – Vitis edition"
     package_common_pre
-    install=vitis.install  # Reinstall Python wheel etc
+    install=vitis.install
 
     LD_PRELOAD=$srcdir/spoof_homedir.so:/lib/libfakeroot/libfakeroot.so ./xsetup \
         --batch Install \
@@ -226,17 +226,18 @@ package_vitis_() {
         #--product Vitis \
         #--edition 'Vitis Unified Software Platform'
 
-    cat <<"EOF"
+    VERSAL_QEMU_INSTALL_DIR="${pkgdir}${_installprefix}"/${pkgver}/Vitis/data/emulation/qemu/comp/qemu_edf
+    VERSAL_QEMU_INSTALL_DIR_WITHOUT_PREFIX=${VERSAL_QEMU_INSTALL_DIR#"${pkgdir}${_installprefix}/"}
+    cat <<EOF
 ⚠️ You may got a warning above as follows:
 ```
 Warning: AMD software was installed successfully, but an unexpected status was returned from the following post installation task(s) xargs: file: terminated by signal 31 sed: no input files
 ```
 Versal Qemu model installer uses `file`, which causes signal 31 SIGSYS under fakeroot.
-So the installation under `Vitis/data/emulation/qemu/comp/qemu` will probably not work.
+So the installation under $VERSAL_QEMU_INSTALL_DIR_WITHOUT_PREFIX will probably not work.
 If you need the emulator, please follow the instructions after the installation.
 EOF
     echo Removing Versal Qemu installation from the following directory:
-    VERSAL_QEMU_INSTALL_DIR="$pkgdir$_installprefix"/${pkgver}/Vitis/data/emulation/qemu/comp/qemu_edf
     echo $VERSAL_QEMU_INSTALL_DIR
     rm -r $VERSAL_QEMU_INSTALL_DIR
 
