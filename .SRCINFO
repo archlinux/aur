@@ -1,6 +1,6 @@
 pkgbase = nusgmon-git
 	pkgdesc = Lightweight CLI to record and analyze network usage per interface
-	pkgver = 108
+	pkgver = 116
 	pkgrel = 1
 	url = https://github.com/LUCKYS1NGHH/nusgmon
 	install = nusgmon.install

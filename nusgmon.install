@@ -1,3 +1,4 @@
 post_install() {
-  echo -e "\n\033[1;32m==> Run to start the service:\033[0m \033[1;36msystemctl --user enable --now nusgmon\033[0m\n"
+  echo -e "\n\033[1;37mIf upgrading from nusgmon > 1.10.4, your old data lived in ~/.nusgmon/db.sqlite\nCopy that manually to /var/lib/nusgmon if you want\033[0m"
+  echo -e "\033[1;32m==> Run to start the service:\033[0m \033[1;36msystemctl enable --now nusgmon\033[0m\n"
 }
