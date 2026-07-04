@@ -1,0 +1,13 @@
+pkgbase = nextcloud-app-dav_push
+	pkgdesc = Nextcloud extension for WebDAV-Push
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/bitfireAT/nc_ext_dav_push
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = nextcloud
+	makedepends = yq
+	source = nextcloud-app-dav_push-1.0.2.tar.gz::https://github.com/bitfireAT/nc_ext_dav_push/releases/download/v1.0.2/dav_push.tar.gz
+	sha256sums = 39a7d4806e7cf8bb3189b4bff5a66388e91d41c055df8c44e9c98ef48907314a
+
+pkgname = nextcloud-app-dav_push
