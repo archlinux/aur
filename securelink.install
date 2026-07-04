@@ -1,0 +1,57 @@
+post_install() {
+    # Upstream's installer expects to find the package path in /tmp/sl_package_name
+    # (the Debian preinst writes it from the dpkg command line). Reconstruct a
+    # plausible value from the metadata recorded at package-build time.
+    _deb_name=$(awk -F= '/^DEB_NAME=/ {print $2}' /opt/SecureLink/.pkgmeta 2>/dev/null)
+    : "${_deb_name:=SecureLink-ubuntu-x64.deb}"
+    printf '%s\n' "/tmp/${_deb_name}" > /tmp/sl_package_name
+
+    # Register the SecureLink client daemon (upstream postinst step).
+    # Output is redirected to a log file because the parser expects a dpkg-style
+    # command line and logs harmless but confusing warnings on Arch.
+    /opt/SecureLink/resources/app.asar.unpacked/assets/app-ext/securelink_linux64/bin/SecureLink_Client -install >/tmp/securelink-install.log 2>&1 || true
+    rm -f /tmp/sl_package_name
+
+    # Reload systemd so the shipped service unit is visible
+    systemctl daemon-reload
+
+    # Print directly to the controlling terminal so the message is always
+    # visible regardless of how pacman captures install-script output.
+    if [ -w /dev/tty ]; then
+        cat >/dev/tty <<'EOF'
+
+============================================================
+ SecureLink has been installed.
+
+ To start the SecureLink daemon, run:
+
+     systemctl enable --now securelink.service
+
+ The GUI can then be launched from the desktop entry or by
+ running: securelink
+
+ If SecureLink_Client -install produced warnings, see:
+     /tmp/securelink-install.log
+============================================================
+
+EOF
+    fi
+}
+
+post_upgrade() {
+    _deb_name=$(awk -F= '/^DEB_NAME=/ {print $2}' /opt/SecureLink/.pkgmeta 2>/dev/null)
+    : "${_deb_name:=SecureLink-ubuntu-x64.deb}"
+    printf '%s\n' "/tmp/${_deb_name}" > /tmp/sl_package_name
+    /opt/SecureLink/resources/app.asar.unpacked/assets/app-ext/securelink_linux64/bin/SecureLink_Client -install >/tmp/securelink-install.log 2>&1 || true
+    rm -f /tmp/sl_package_name
+    systemctl daemon-reload
+}
+
+pre_remove() {
+    systemctl stop securelink.service 2>/dev/null || true
+    systemctl disable securelink.service 2>/dev/null || true
+}
+
+post_remove() {
+    systemctl daemon-reload
+}
