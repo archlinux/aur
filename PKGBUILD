@@ -5,7 +5,7 @@
 _pkgauthor=filebrowser
 _pkgname=filebrowser
 pkgname=${_pkgname}-bin
-pkgver=2.63.17
+pkgver=2.63.18
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Standalone web file manager"
@@ -41,8 +41,8 @@ sha256sums=('1d85acca4ca9bcdb6767ff60891d6e0a4e9c324fc50bed1231e8c891eb9c4420'
             '3495234f011491a1d448af24bfe8af8018bb4c5b1a4c4ef53651fb068d9801c4'
             '4a1946819f24b20b3144360151a4dc1ed1b8e407bfb11045a74884abd6816100'
             'ee55dc02d2ad5c5532649b0c8a2c3612ae6706a80d0e6001ea61895624049b36')
-sha256sums_x86_64=('d463799e80bebff70f2e6faddf8628184b11248722cd0298ca3fd340f98914e9')
-sha256sums_aarch64=('c0df6b84944a8d90176e65913a2eacc5d6b50337ecc703ddba88fb72a0a7a060')
+sha256sums_x86_64=('cd599c34afad0e8e61c577d1061c820bccb7feaa3c5a4477a12db586a1cd93ff')
+sha256sums_aarch64=('29b3935c222d91522874e98dfa33195ee7d2acdac5dfbf37c1361a73704a28de')
 
 
 package() {
