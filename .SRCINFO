@@ -17,7 +17,7 @@ pkgbase = python-graphrag-vectors
 	depends = python-numpy
 	depends = python-pyarrow
 	depends = python-pydantic
-	source = python-graphrag-vectors-3.1.0.tar.gz::https://files.pythonhosted.org/packages/source/g/graphrag-vectors/graphrag-vectors-3.1.0.tar.gz
+	source = python-graphrag-vectors-3.1.0.tar.gz::https://files.pythonhosted.org/packages/source/g/graphrag-vectors/graphrag_vectors-3.1.0.tar.gz
 	sha256sums = 28f6d5f450bb8c0a60d883afb115de281711f3fb2a0357add463998a2040d313
 
 pkgname = python-graphrag-vectors
