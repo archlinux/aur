@@ -1,0 +1,3 @@
+[python-dinero]
+source = "pypi"
+pypi = "dinero"
