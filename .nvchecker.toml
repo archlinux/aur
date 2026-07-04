@@ -1,0 +1,5 @@
+[lgx-bin]
+source = "github"
+github = "abogoyavlensky/lgx"
+use_latest_release = true
+prefix = "v"
