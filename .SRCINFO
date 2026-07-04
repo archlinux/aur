@@ -1,7 +1,7 @@
 pkgbase = minuimus
 	pkgdesc = file optimiser: makes files smaller without compromising content
 	pkgver = 4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://birds-are-nice.me/software/minuimus.html
 	arch = x86_64
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = minuimus
 	depends = gifsicle
 	depends = imagemagick
 	depends = jpegoptim
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = libwebp
 	depends = mupdf-tools
 	depends = optipng

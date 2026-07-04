@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 [aaht] hotmail ðot com>
 pkgname=minuimus
 pkgver="4.2"
-pkgrel=1
+pkgrel=2
 pkgdesc="file optimiser: makes files smaller without compromising content"
 arch=(x86_64)
 url="https://birds-are-nice.me/software/minuimus.html"
@@ -15,7 +15,7 @@ depends=(
   'gifsicle'
   'imagemagick'
   'jpegoptim'
-  'libjpeg'
+  'libjpeg-turbo'
   'libwebp'
   'mupdf-tools'
   'optipng'
