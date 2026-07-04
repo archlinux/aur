@@ -9,9 +9,9 @@ pkgbase = sqly-bin
 	provides = sqly
 	conflicts = sqly
 	options = !strip
-	source_x86_64 = sqly-x86_64-0.27.0.deb::https://github.com/nao1215/sqly/releases/download/v0.27.0/sqly_0.27.0_linux_amd64.deb
-	sha256sums_x86_64 = 24ce376acf72c54b8573aa65c23c05519e4bb22ab54eaf57d13650c6bc10818b
-	source_aarch64 = sqly-aarch64-0.27.0.deb::https://github.com/nao1215/sqly/releases/download/v0.27.0/sqly_0.27.0_linux_arm64.deb
-	sha256sums_aarch64 = 2e4be8274ee513ff0b922350f33e7a516e30f7ecee3a0bd132049cacd0d39b55
+	source_x86_64 = sqly-x86_64-0.27.0.tgz::https://github.com/nao1215/sqly/releases/download/v0.27.0/sqly_0.27.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 94c71afc78afbf1e5806a2e53a0b86ffb2e9e9431a0c4ca44828757530716a3b
+	source_aarch64 = sqly-aarch64-0.27.0.tgz::https://github.com/nao1215/sqly/releases/download/v0.27.0/sqly_0.27.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 099c2d45b3aca6f334afa41d78ed96148d2defb2692ab348f64e207675d4fb6b
 
 pkgname = sqly-bin

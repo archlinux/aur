@@ -18,15 +18,18 @@ conflicts=("${_pkgname}")
 
 options=(!strip)
 
-source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.deb")
-source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.deb")
-sha256sums_x86_64=('24ce376acf72c54b8573aa65c23c05519e4bb22ab54eaf57d13650c6bc10818b')
-sha256sums_aarch64=('2e4be8274ee513ff0b922350f33e7a516e30f7ecee3a0bd132049cacd0d39b55')
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
+source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
+sha256sums_x86_64=('94c71afc78afbf1e5806a2e53a0b86ffb2e9e9431a0c4ca44828757530716a3b')
+sha256sums_aarch64=('099c2d45b3aca6f334afa41d78ed96148d2defb2692ab348f64e207675d4fb6b')
 
 
 package() {
-    cd "${pkgdir}" || exit
+	cd "${srcdir}/" || exit
 
-    # this extracts all into the pkgdir
-    tar -xf "${srcdir}/data.tar.gz"
+	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
