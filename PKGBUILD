@@ -17,7 +17,13 @@ depends=(
     'qt6-svg'
     'sqlite'
 )
-makedepends=('git' 'make' 'cmake' 'gcc')
+makedepends=(
+    'cmake'
+    'gcc'
+    'git'
+    'make'
+    'qt6-tools'
+)
 optdepends=(
     'yt-dlp: streaming support'
     'noto-fonts-cjk: optimal font support'
