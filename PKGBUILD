@@ -1,6 +1,6 @@
 # Maintainer: Ripose <ripose@protonmail.com>
 pkgname=memento
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=0
 pkgdesc="An mpv-based video player for studying Japanese."
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ optdepends=(
     'noto-fonts-cjk: optimal font support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ripose-jp/Memento/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('79667450a71f642ccee1027fb496ed5bcb78372844dd89fc9f33b77a907d6cfe')
+sha256sums=('08fd8f0e16398c335960a4a3f7e7f9ce35f6b246f92b4f59f3b537f0f366d127')
 
 prepare() {
     mkdir -p ${srcdir}/build
