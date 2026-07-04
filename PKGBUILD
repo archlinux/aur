@@ -6,7 +6,7 @@
 
 pkgname=openafs-modules-dkms
 _srcname=openafs
-pkgver=1.8.16
+pkgver=1.8.16.1
 pkgrel=1
 pkgdesc="Kernel module for OpenAFS (dkms)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -19,9 +19,9 @@ options=(!emptydirs)
 source=(http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
         dkms.conf
         0001-cf-Ensure-BTF-info-is-created-in-tests-for-Linux.patch)
-sha256sums=('ee8127689757cbd9723a853a12fae281c9de9c3e894a4bd90107fb6f85270469'
+sha256sums=('cf59067589a295471e3f10f644f0f2165113347cc8b0ad0fbb4123259a2af0a2'
             '306408d644e8781f13e09021449cb1ccbba60f69d1d24eca5f8138e9b3e47d8e'
-            '6665afb3ee270161da207030a57bda5afe512fad1c182b03b2ea7693d2947a0e')
+            'bcd276a3e41d5c5a7eb437718c4143b63ac36ed851df9db091653754d4b294d3')
 
 prepare() {
   cd "${srcdir}/${_srcname}-${pkgver}"
