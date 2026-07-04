@@ -9,10 +9,12 @@ pkgbase = ytm-player-git
 	depends = python
 	depends = python-aiosqlite
 	depends = python-click
-	depends = python-dbus-fast
+	depends = python-dbus-fast>=5
 	depends = python-mpv
+	depends = python-packaging
 	depends = python-pillow
 	depends = python-textual>=7.0
+	depends = python-textual<9.0
 	depends = python-ytmusicapi
 	depends = yt-dlp
 	makedepends = git

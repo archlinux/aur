@@ -11,10 +11,12 @@ depends=(
     'python'
     'python-aiosqlite'
     'python-click'
-    'python-dbus-fast'
+    'python-dbus-fast>=5'
     'python-mpv'
+    'python-packaging'
     'python-pillow'
     'python-textual>=7.0'
+    'python-textual<9.0'
     'python-ytmusicapi'
     'yt-dlp'
 )
