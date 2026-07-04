@@ -1,6 +1,6 @@
 pkgbase = 1oom
 	pkgdesc = 1oom is a Master of Orion (1993) game engine recreation.
-	pkgver = 1.11.8
+	pkgver = 1.11.9
 	pkgrel = 1
 	url = https://github.com/1oom-fork/1oom
 	arch = x86_64
@@ -9,11 +9,12 @@ pkgbase = 1oom
 	depends = sdl2_mixer
 	depends = libsamplerate
 	depends = soundfont-fluid
-	source = 1oom-1.11.8.tar.gz::https://github.com/1oom-fork/1oom/archive/refs/tags/v1.11.8.tar.gz
+	noextract = 1oom-1.11.9.tar.gz
+	source = 1oom-1.11.9.tar.gz::https://sourcecraft.dev/api/archive/fork1oom/1oom?rev=tag%3Av1.11.9&format=tar.gz
 	source = Master_of_Orion_cover.png
 	source = 1oom.desktop
 	source = 1oom_classic_sdl2.sh
-	md5sums = f8c5803a2f2a45a4dba45189b396aaa9
+	md5sums = 1cf57e00565dec541168d498d86f4b56
 	md5sums = 49248e72b7ddc5209cca2c1c61099d85
 	md5sums = ccac2feb67cecfc30b8156edf106b7ca
 	md5sums = 41b52627b2d52b477adcbc2a9a627b37

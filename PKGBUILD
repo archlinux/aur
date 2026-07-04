@@ -1,21 +1,27 @@
 # Maintainer: Alexander Jacocks <alexander@redhat.com>
 
 pkgname=1oom
-pkgver=1.11.8
+pkgver=1.11.9
 pkgrel=1
 pkgdesc="1oom is a Master of Orion (1993) game engine recreation."
 arch=(x86_64)
 url=https://github.com/1oom-fork/1oom
 license=('GPL2')
 depends=(sdl2 sdl2_mixer libsamplerate soundfont-fluid)
-source=(  "${pkgname}-${pkgver}.tar.gz::https://github.com/1oom-fork/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+#source=(  "${pkgname}-${pkgver}.tar.gz::https://github.com/1oom-fork/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+source=(  "${pkgname}-${pkgver}.tar.gz::https://sourcecraft.dev/api/archive/fork1oom/${pkgname}?rev=tag%3Av${pkgver}&format=tar.gz"
           'Master_of_Orion_cover.png'
           '1oom.desktop'
           '1oom_classic_sdl2.sh' )
-md5sums=('f8c5803a2f2a45a4dba45189b396aaa9'
+noextract=("${pkgname}-${pkgver}.tar.gz")
+md5sums=('1cf57e00565dec541168d498d86f4b56'
          '49248e72b7ddc5209cca2c1c61099d85'
          'ccac2feb67cecfc30b8156edf106b7ca'
          '41b52627b2d52b477adcbc2a9a627b37')
+
+prepare() {
+  tar -xvf ${pkgname}-${pkgver}.tar.gz --transform "s|^[^/]*|${pkgname}-${pkgver}|"
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
