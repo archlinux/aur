@@ -11,7 +11,7 @@ pkgname=fritzing
 # while there is also "d" for development versions. This would not be correctly
 # parsed by `pkgver` anyway (d > b), so let's leave out the b suffix entirely.
 pkgver=1.0.7
-pkgrel=2
+pkgrel=3
 
 # Tag version can be obtained from github release page. Sometimes this is the
 # version number itself, sometimes some CD-magicnumber thing. There can be
@@ -47,7 +47,7 @@ source=("git+https://github.com/fritzing/fritzing-app.git#commit=${_gitrev}"
 sha256sums=('SKIP'
             'SKIP'
             'be8a89df72d01cf062cc9815dd64c9576b4d20910d6d7aee7f0ea26484dc5e76'
-            '8390e4498eaf355fae0c6aaefcf00d57c29cee9ae4eef770bd72c30ad8cf9292'
+            '7f4a5319d08ac26e335a6ea9ce9be5da1a5a5f475a26101e973e08a6a2b33d80'
             '02fe5f5bcd26e0106b0e7fab80b8327cb560c4b85225d11de554c042ae7d0a2d'
             'ca77b2fc9c5170388744bad976ca9d2e585d80a229e97d716f8f45541ca5b021'
             '17067bfcd00156d234ea94e6274066cd127250a84bbe3a18712a06126c286c9e')

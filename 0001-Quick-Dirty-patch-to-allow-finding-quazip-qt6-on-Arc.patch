@@ -64,7 +64,7 @@ index f8d6c525..33406c56 100644
 -	LIBS += -lz
 -}
 +message("including Arch's quazip library")
-+INCLUDEPATH += /usr/include/QuaZip-Qt6-1.7.1/
++INCLUDEPATH += /usr/include/QuaZip-Qt6-1.7.2/
 +LIBS += -lquazip1-qt6
 -- 
 2.54.0
