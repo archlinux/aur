@@ -2,7 +2,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=sonic-login-manager
-pkgver=6.7.2
+pkgver=6.7.2.1
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Sonic Login Manager'
@@ -38,7 +38,7 @@ provides=(plasma-login-manager)
 conflicts=(plasma-login-manager)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c300969b3c71de906b2c2289334169709bf113cabc33db7abc23d821a63b7cd3')
+sha256sums=('e3a1ebfdddbafec976ad621edda787216512e9b7c6310a64c7a0d44a7b2b6aa0')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
