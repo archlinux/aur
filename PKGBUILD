@@ -1,7 +1,7 @@
 # Maintainer: Aeldit <aeldit.66@proton.me>
 
 pkgname=aeosd
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="An OSD for changing screen brightness"
 arch=("any")
@@ -13,7 +13,7 @@ depends=(
 )
 makedepends=(cargo)
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=("c95e0abb1c6eea15b5d1c8b7fed59b314cd698215656eee7caa7bab3b79b35a8")
+sha256sums=("294ea7f62163e9ca96545c5fcc316c267210dcb23e1ffbd95b289a2a01a2b874")
 
 prepare() {
     cd "$pkgname-$pkgver"
