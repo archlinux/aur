@@ -1,4 +1,5 @@
-# Maintainer: Dustin Wilhoit <dustin@wilhoitclan.com>
+# Maintainer: Nils Brause <nilschrbrause@gmail.com>
+# Previous Maintainer: Dustin Wilhoit <dustin@wilhoitclan.com>
 # Original Maintainer: Phillip Smith <pkgbuild@phs.id.au> - http://github.com/fukawi2/aur-packages
 
 pkgname=stenc
