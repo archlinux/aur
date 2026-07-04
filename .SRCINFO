@@ -1,7 +1,7 @@
 pkgbase = openocd-raspberrypi-bin
 	pkgdesc = OpenOCD build for Raspberry Pi pico
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raspberrypi/openocd
 	arch = x86_64
 	license = GPL2
@@ -14,6 +14,8 @@ pkgbase = openocd-raspberrypi-bin
 	provides = openocd
 	conflicts = openocd
 	source = https://github.com/raspberrypi/pico-sdk-tools/releases/download/v2.2.0-3/openocd-0.12.0+dev-x86_64-lin.tar.gz
+	source = https://raw.githubusercontent.com/raspberrypi/openocd/73e9b7898f5518e0cfe7bc2f66d135736558a9fd/contrib/60-openocd.rules
 	sha256sums = 934c8b1a5d2f85a64e02255bc1da1ce78d5266416a0e845d18dbde251a1ad3ed
+	sha256sums = 0769383c5ef8f277e0b7bf676f0db9943495228574cfdfcd142749fe866733a6
 
 pkgname = openocd-raspberrypi-bin
