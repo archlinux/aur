@@ -5,7 +5,7 @@ pkgname="rich-cli"
 execname="rich"
 pkgver=1.8.1
 pkgrel=1
-pkgdesc="Rich-cli is a command line toolbox for fancy output in the terminal"
+pkgdesc="A command line toolbox for fancy output in the terminal"
 
 _pypi_package=${pkgname}
 _pypi_version=${pkgver}
