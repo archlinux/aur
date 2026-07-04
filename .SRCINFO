@@ -10,8 +10,8 @@ pkgbase = termide-bin
 	provides = termide
 	conflicts = termide
 	source_x86_64 = termide-bin-0.29.0-x86_64.tar.gz::https://github.com/termide/termide/releases/download/0.29.0/termide-0.29.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 65f1fec00390c3a3b92c4f6947247964f3cb58c07111d486889fe1626436c32b
+	sha256sums_x86_64 = 5cc4b2da17ac99bb1934614ab9735a41307e1e37e768ce4ef34542579d54e5dc
 	source_aarch64 = termide-bin-0.29.0-aarch64.tar.gz::https://github.com/termide/termide/releases/download/0.29.0/termide-0.29.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 980a1ccd71f7ba9f9cbd384ade5094b58594a3b090478ad2d5eefefbebee92d3
+	sha256sums_aarch64 = b1e101370e26dcb46e7eabd5269ac96c45e81cf3de6eb67d6859ca647393020b
 
 pkgname = termide-bin
