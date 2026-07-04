@@ -1,5 +1,5 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
-pkgname=flerp
+pkgname=flerp-git
 _pkgname=flerp
 pkgver=r24.35c31c7
 pkgrel=1
