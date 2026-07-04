@@ -27,5 +27,6 @@ package() {
     #Removing uneeded .files
     rm -rf $srcdir/raze/.*
     cp -r "$srcdir/raze/." "$pkgdir"
-    ln -sf sudo ln -s /usr/lib/libvpx.so $pkgdir/usr/lib/libvpx.so.9
+    #lib fix
+    sudo ln -sf /usr/lib/libvpx.so $pkgdir/usr/lib/libvpx.so.9
 }
