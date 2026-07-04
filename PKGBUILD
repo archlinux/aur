@@ -1,7 +1,7 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.0-rc.19
+_pkgver=13.0.0-rc.20
 _branding=dr460nized
 
 __pkgname=$_pkgname
@@ -88,7 +88,7 @@ source=(
   $_pkgname-v$_pkgver.source.tar.xz::$url/-/releases/v$_pkgver/downloads/$_pkgname.source.tar.xz
   fix-wasm32-wasi-target.patch
 )
-sha256sums=('0828129874edff6f9356f50a1785721cbbd2f954ac3c5b860648e1ec38878c65'
+sha256sums=('f02f0906c5ef50d467b914255ed620d73f32c9ccaca7fbc9d093a2f52bd1283e'
             'f7ba345f2b82ce4eab315f15f388e907bed86e00a3011ccd79e732f4e8762124')
 
 prepare() {
