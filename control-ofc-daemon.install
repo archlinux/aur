@@ -6,6 +6,18 @@ post_install() {
    Load modules:     sudo systemctl start systemd-modules-load   (or reboot)
    Setup guide:      man control-ofc-daemon
    Hardware check:   open the GUI -> Diagnostics -> Troubleshooting
+
+   Fan-control prerequisites — if a motherboard header or GPU fan is
+   discovered but never responds, one of these is usually missing:
+     * Super I/O driver: motherboard headers need the matching chip driver
+                         (e.g. it87-dkms-git / nct6687d-dkms-git — see the
+                         package optdepends and 'man control-ofc-daemon').
+     * Gigabyte / ASUS:  may need 'acpi_enforce_resources=lax' on the kernel
+                         command line for the Super I/O chip to bind.
+     * AMD RDNA3+ GPU:   PMFW fan curves need 'amdgpu.ppfeaturemask=0xffffffff'
+                         on the kernel command line.
+   The GUI's Diagnostics -> Hardware Readiness card detects each of these and
+   shows the exact fix for your machine.
 EOF
 }
 
