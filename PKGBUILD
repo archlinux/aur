@@ -1,5 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
+_appauthor="NSPC911"
 _appname="multiarchive"
 
 pkgname="python-${_appname}"
@@ -14,15 +15,14 @@ license=('MIT')
 arch=('any')
 
 _url_pypi="https://pypi.org/project/${_pypi_package}/"
-_url_github="https://github.com/NSPC911/${_pypi_package}"
+_url_github="https://github.com/${_appauthor}/${_appname}"
 url="${_url_github}"
 
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-uv-build' 'python-hatchling')
 depends=('python' 'python-rarfile')
 
-source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz"
-        "LICENSE")
-# source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz" "LICENSE")
+# source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz" "LICENSE")
 sha256sums=('f923c5c9d6cf6e01ec65416cdbbe617a66a7d4f9feaa0e07413d768d147e3e7f'
             '4f0239fdf0572b5752c8efacf1ce6b1060181479b504b3a5e22e0aa7af6176f1')
 
