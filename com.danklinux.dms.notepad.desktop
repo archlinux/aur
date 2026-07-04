@@ -6,6 +6,7 @@ Comment=Quick notes and text files in the dank desktop shell
 Exec=dms ipc call notepad openFile %f
 Icon=danklogo
 Terminal=false
+NoDisplay=true
 Categories=Utility;TextEditor;
 MimeType=text/plain;text/markdown;
 StartupNotify=false

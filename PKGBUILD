@@ -42,7 +42,7 @@ sha256sums=('SKIP'
             '540c27cacf8ac512b62f88c1613d6e3f42ba96e3dce47acbb8283471d1730bab'
             '16cb5af919380a95b50a2d6248128740e735e51967b3bd05e2b0a4fdb659ef2d'
             '52a575af9fc0eaad3e320a4374203653a7add7c2c427bd069cb3bd9a8eff1183'
-            '66750478fdb304353f60956185792f05179f87ed163fb50506532a92ee95d4b4')
+            '9d79626368818526b563687e56203cad97dcd9482a3e099e8f29cfc317c0f2ae')
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags --abbrev=7 --match="v*" HEAD 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || echo "0.0.0.r0.$(git rev-parse --short=7 HEAD)"
