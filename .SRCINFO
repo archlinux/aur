@@ -1,20 +1,16 @@
 pkgbase = antigravity-manager-bin
-	pkgdesc = Professional multi-account manager for Google Gemini & Claude AI
-	pkgver = 0.3.0
-	pkgrel = 5
+	pkgdesc = Antigravity Manager - Electron App
+	pkgver = 0.19.0
+	pkgrel = 1
 	url = https://github.com/Draculabo/AntigravityManager
 	arch = x86_64
-	license = LicenseRef-CC-BY-NC-SA-4.0
-	depends = gtk3
+	license = custom:CC-BY-NC-SA-4.0
 	depends = nss
 	depends = alsa-lib
-	optdepends = libappindicator-gtk3: system tray support
-	optdepends = libnotify: desktop notifications
+	depends = gtk3
 	provides = antigravity-manager
 	conflicts = antigravity-manager
-	conflicts = antigravity-manager-git
-	noextract = antigravity-manager-bin-0.3.0.rpm
-	source = antigravity-manager-bin-0.3.0.rpm::https://github.com/Draculabo/AntigravityManager/releases/download/v0.3.0/antigravity-manager-0.3.0-1.x86_64.rpm
-	sha256sums = 4dde116b72ef8de5e5fb55e6761b3715d52c032fdeaca5382e7e453ac822da97
+	source = https://github.com/Draculabo/AntigravityManager/releases/download/v0.19.0/Antigravity.Manager_0.19.0_amd64.deb
+	sha256sums = SKIP
 
 pkgname = antigravity-manager-bin
