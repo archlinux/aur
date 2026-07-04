@@ -3,13 +3,13 @@
 pkgname=thorvg-git
 pkgbase=thorvg-git
 _pkgname=thorvg
-pkgver=r4271.1a43240ec
-pkgrel=3
+pkgver=r4556.e753da99b
+pkgrel=1
 pkgdesc="lightweight, and portable library designed for rendering vector-based scenes and animations, including SVG and Lottie formats"
 url="https://www.thorvg.org/"
 arch=($CARCH)
 license=('MIT')
-depends=('libpng' 'libjpeg' 'libwebp' 'mesa' 'libx11') # doesn"t work with it either: 'wgpu-native-git')
+depends=('libpng' 'libjpeg-turbo' 'libwebp' 'mesa' 'libx11') # doesn"t work with it either: 'wgpu-native-git')
 makedepends=('meson' 'ninja')
 conflicts=('thorvg')
 provides=('thorvg')
@@ -30,7 +30,7 @@ prepare() {
       -Dsavers=all \
       -Dbindings="capi" \
       -Dtools=all \
-      -Dengines=sw,gl \
+      -Dengines=cpu,gl \
       --reconfigure
 }
 

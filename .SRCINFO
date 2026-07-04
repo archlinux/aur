@@ -1,14 +1,14 @@
 pkgbase = thorvg-git
 	pkgdesc = lightweight, and portable library designed for rendering vector-based scenes and animations, including SVG and Lottie formats
-	pkgver = r4271.1a43240ec
-	pkgrel = 3
+	pkgver = r4556.e753da99b
+	pkgrel = 1
 	url = https://www.thorvg.org/
 	arch = aarch64
 	license = MIT
 	makedepends = meson
 	makedepends = ninja
 	depends = libpng
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = libwebp
 	depends = mesa
 	depends = libx11
