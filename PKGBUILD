@@ -1,6 +1,6 @@
 # Maintainer: xmlzitos154 <matheuz.ricardo@protonmail.com>
 pkgname=jay-bin
-pkgver=7.3.02
+pkgver=7.3.03
 pkgrel=1
 pkgdesc="A lightweight, semantic AUR helper wrapper for Arch Linux"
 arch=('any')
