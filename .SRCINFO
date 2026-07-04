@@ -1,0 +1,13 @@
+pkgbase = network-doctor
+	pkgdesc = Terminal UI that diagnoses network connectivity and explains where the connection breaks
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/mplaczek99/network-doctor
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	source = network-doctor-1.1.0.tar.gz::https://github.com/mplaczek99/network-doctor/archive/v1.1.0.tar.gz
+	sha256sums = e8f78310e32532f7e3acb22e08c8b624d0c61f75658be7068903bb1456eaef2b
+
+pkgname = network-doctor
