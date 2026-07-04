@@ -1,9 +1,10 @@
 pkgbase = amdvlk-bin
 	pkgdesc = AMD's standalone Vulkan driver
 	pkgver = 2025.Q2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/GPUOpen-Drivers/AMDVLK
 	arch = x86_64
+	arch = i686
 	license = MIT
 	options = !strip
 	options = !debug
