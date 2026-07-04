@@ -3,7 +3,7 @@
 pkgname=elph-nova-bin
 _pkgname=elph-nova
 pkgver=3.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A corporate communications hub designed for effective collaboration with colleagues"
 arch=("x86_64")
 # url="https://docs.eltex-co.ru/display/doc/Elph+Desktop"
