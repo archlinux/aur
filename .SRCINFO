@@ -1,6 +1,6 @@
 pkgbase = sonic-interface-libraries
 	pkgdesc = SonicDE library and runtime components
-	pkgver = 6.7.1
+	pkgver = 6.7.2
 	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-interface-libraries
 	arch = x86_64
@@ -36,6 +36,6 @@ pkgbase = sonic-interface-libraries
 	conflicts = plasma-framework
 	replaces = plasma-framework
 	source = sonic-interface-libraries-6.7.0.tar.gz::https://github.com/Sonic-DE/sonic-interface-libraries/archive/refs/tags/6.7.0.tar.gz
-	sha256sums = 3d21b6ab987bb2c97b169912191142c8a6a6169a2293c62ac3e1a57089a8dfab
+	sha256sums = 794fb05bbaae40dc88f6e75f1e99ce6819ceb1dc027f10bd4e8dd4cd6a464b76
 
 pkgname = sonic-interface-libraries
