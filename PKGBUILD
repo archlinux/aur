@@ -10,7 +10,7 @@ pkgname=(
   ppsspp-assets
 )
 pkgver=1.20.4
-pkgrel=3
+pkgrel=4
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
 url=https://www.ppsspp.org/
@@ -75,6 +75,11 @@ b2sums=('cd2bca3351b97831f2e0d372bf544dcf3aa9d44095b56fe30de8bf4d586216e56ba24f2
 prepare() {
   cd ppsspp
   sed 's|miniupnpc/include/|miniupnpc/|g' -i Core/Util/PortManager.h
+
+  # Add Comment field to desktop entry
+  # https://github.com/hrydgard/ppsspp/pull/21880
+  git cherry-pick -n 0f48685bb9158e5d6cafa0158441d7adba2471c7
+
   for submodule in ffmpeg assets/lang ext/freetype ext/glslang ext/lua; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
