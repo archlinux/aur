@@ -1,6 +1,6 @@
 pkgname=arch-install-manager-git
 _pkgname=arch-install-manager
-pkgver=0.0.1.r11.ga868855
+pkgver=0.0.1.r12.ga5b9798
 pkgrel=1
 pkgdesc="A Linux Mint inspired GTK4-based install and update manager for Arch Linux (latest git)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('flatpak: Flatpak package support'
             'snapper: pre-update Btrfs snapshots'
             'aur-scanner: scan AUR packages for security issues'
             'rate-mirrors: refresh and rank the pacman mirror list')
-source=("$pkgname::git+https://github.com/destbg/arch-install-manager.git#commit=a8688559475822060c1813f7a94e32dea458b8ca")
+source=("$pkgname::git+https://github.com/destbg/arch-install-manager.git#commit=a5b9798f557bed08ab38b000570131a9baf07cc9")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -51,16 +51,13 @@ package() {
 	install -Dm644 "com.destbg.arch-install-manager.policy" \
 		"$pkgdir/usr/share/polkit-1/actions/com.destbg.arch-install-manager.policy"
 
-	install -Dm644 "res/polkit/49-daim-check.rules" \
-		"$pkgdir/usr/share/polkit-1/rules.d/49-daim-check.rules"
-
 	install -Dm644 "res/sysusers/daim-build.conf" \
 		"$pkgdir/usr/lib/sysusers.d/daim-build.conf"
 
 	install -Dm644 "res/systemd/daim-check.service" \
-		"$pkgdir/usr/lib/systemd/system/daim-check.service"
+		"$pkgdir/usr/lib/systemd/user/daim-check.service"
 	install -Dm644 "res/systemd/daim-check.timer" \
-		"$pkgdir/usr/lib/systemd/system/daim-check.timer"
+		"$pkgdir/usr/lib/systemd/user/daim-check.timer"
 	install -Dm644 "res/systemd/daim-tray.service" \
 		"$pkgdir/usr/lib/systemd/user/daim-tray.service"
 
