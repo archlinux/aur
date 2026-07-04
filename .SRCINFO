@@ -1,0 +1,15 @@
+pkgbase = deforge
+	pkgdesc = A cross-distro GUI tool for managing Linux desktop environments (DEs): installing, safely removing, snapshotting/restoring configuration, and (eventually) running parallel DE versions via container isolation.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/user14923929/deforge
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = gcc
+	depends = gcc-libs
+	source = deforge-1.0.0.tar.gz::https://github.com/user14923929/deforge/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = deforge
