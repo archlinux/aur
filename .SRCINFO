@@ -1,0 +1,22 @@
+pkgbase = plasmallm-desktop-driver
+	pkgdesc = Secure D-Bus daemon enabling autonomous AI agents to interact with the Linux desktop under Wayland/KDE Plasma 6
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/joshuaeroman/plasmallm-desktop-driver
+	arch = any
+	license = GPL-2.0-or-later
+	depends = python-dbus
+	depends = python-gobject
+	depends = python-pillow
+	depends = python-pyqt6
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugin-pipewire
+	depends = pipewire
+	depends = fontconfig
+	optdepends = at-spi2-core: accessibility-tree introspection (focused element detection)
+	optdepends = xdg-desktop-portal: Freedesktop portal backend for RemoteDesktop/ScreenCast
+	source = plasmallm-desktop-driver-1.0.0.tar.gz::https://github.com/joshuaeroman/plasmallm-desktop-driver/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 2c5964b52b43ba3077cb03e153078d4f2899b93c484d9bc4a798e6b3c3a4dfbe
+
+pkgname = plasmallm-desktop-driver
