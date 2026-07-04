@@ -2,12 +2,12 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
 : ${_pkgtype=-dev-bin}
-: ${_pkgnamefmt:=LibreOffice}
+: ${_pkgnamefmt:=LibreOfficeDec}
 
 _pkgname="libreoffice"
 pkgname="${_pkgname}${_pkgtype:-}"
 pkgdesc="A free and powerful office suite - development branch"
-pkgver=26.2.4.1
+pkgver=26.8.0.0.beta1
 pkgrel=1
 url="https://www.libreoffice.org/"
 license=('MPL-2.0' 'LGPL-3.0-or-later')
