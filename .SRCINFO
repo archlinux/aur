@@ -1,6 +1,6 @@
 pkgbase = liminate-bin
 	pkgdesc = A prose-as-syntax language designed from the human end
-	pkgver = 0.15.1
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/rmichaelthomas/liminate
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = liminate-bin
 	provides = liminate
 	conflicts = liminate
 	options = !strip
-	source = README-0.15.1.md::https://raw.githubusercontent.com/rmichaelthomas/liminate/v0.15.1/README.md
-	source = LICENSE-0.15.1::https://raw.githubusercontent.com/rmichaelthomas/liminate/v0.15.1/LICENSE
+	source = README-0.16.0.md::https://raw.githubusercontent.com/rmichaelthomas/liminate/v0.16.0/README.md
+	source = LICENSE-0.16.0::https://raw.githubusercontent.com/rmichaelthomas/liminate/v0.16.0/LICENSE
 	sha256sums = a5d8c323dea8654773780ac773f839c7b6ed1d1aa6a07222ff3e1a32d0abbddc
 	sha256sums = c3f9257c3c8dbbcdf6945799136c5f806d72bc890bb4bde61fd7ce5d88c38c77
-	source_x86_64 = liminate-x86_64-0.15.1::https://github.com/rmichaelthomas/liminate/releases/download/v0.15.1/liminate-linux-x64
-	sha256sums_x86_64 = 7d504a29a9512e290ce3e8406ef415f615cd5ef428f4c331813600ac9c7c4361
+	source_x86_64 = liminate-x86_64-0.16.0::https://github.com/rmichaelthomas/liminate/releases/download/v0.16.0/liminate-linux-x64
+	sha256sums_x86_64 = b83eea853a23a16d6595e4658145e71a8b2d23d00b3e84bc25cfe662861a0830
 
 pkgname = liminate-bin
