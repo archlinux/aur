@@ -1,0 +1,3 @@
+[rich-cli]
+source = "pypi"
+pypi = "rich-cli"
