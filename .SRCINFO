@@ -1,0 +1,18 @@
+pkgbase = flerp
+	pkgdesc = A terminal UI for exploring and analyzing text files, PDFs, and images
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/Huseynteymurzade28/flerp
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	arch = armv7
+	license = MIT
+	makedepends = cargo
+	provides = flerp
+	conflicts = flerp-git
+	options = !debug
+	source = flerp-0.5.1.tar.gz::https://static.crates.io/crates/flerp/flerp-0.5.1.crate
+	sha256sums = 37fd40692522f95f390bd51813adac6db30b333eba2f6c10ef3f4797388a4868
+
+pkgname = flerp
