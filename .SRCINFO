@@ -1,6 +1,6 @@
 pkgbase = curd-polland-git
 	pkgdesc = Watch anime in CLI with AniList Tracking, Discord RPC, Intro/Outro/Filler/Recap Skipping, etc. (Git version)
-	pkgver = 1.5.2.polland
+	pkgver = 2.0.1.polland
 	pkgrel = 1
 	url = https://github.com/Pol-Jak-295/curd-polland
 	arch = x86_64
