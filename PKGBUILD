@@ -2,7 +2,7 @@
 
 _pkgname="gpu-screen-recorder-ui"
 pkgname="$_pkgname-git"
-pkgver=1.11.5.r0.geb6aed9
+pkgver=1.12.6.r2.gc219f06
 pkgrel=1
 pkgdesc="A fullscreen overlay UI for GPU Screen Recorder in the style of ShadowPlay"
 url="https://git.dec05eba.com/gpu-screen-recorder-ui"
@@ -20,6 +20,7 @@ depends=(
   'libxext'
   'libxfixes'
   'libxi'
+  'libxkbcommon'
   'libxrandr'
   'libxrender'
   'pango'
