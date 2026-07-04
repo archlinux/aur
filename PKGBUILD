@@ -4,7 +4,7 @@
 _pkgname=chatzone-desktop
 
 pkgname="${_pkgname}"-appimage
-pkgver=5.6.2
+pkgver=5.6.3
 pkgrel=1
 pkgdesc="Ozon corporate messenger"
 arch=('x86_64')
@@ -16,8 +16,8 @@ provides=('chatzone-desktop')
 
 _appimage="${pkgname}-linux.AppImage"
 
-source_x86_64=("${_appimage}::https://ir.ozone.ru/s3/chatzone-clients/ci/5.6.2/1175/chatzone-desktop-linux-5.6.2.AppImage")
-sha256sums_x86_64=('dadde6a74b271e7d8dc55142714d57439877ad409be205e329b178de9f56f195')
+source_x86_64=("${_appimage}::https://ir.ozone.ru/s3/chatzone-clients/ci/5.6.3/1201/chatzone-desktop-linux-5.6.3.AppImage")
+sha256sums_x86_64=('8f66d23c36d3b8bc2a4f426da6e5aeebca468f4247e097b35b7eb2d2a9f26b08')
 
 noextract=("${_appimage}")
 
