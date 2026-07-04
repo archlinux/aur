@@ -1,22 +1,23 @@
 pkgname=minesweeper
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A simple Minesweeper game"
 arch=('x86_64')
-url="https://github.com/yu34567890/minesweeper-c" 
-license=('MIT')  
-depends=('gcc')  
-source=('https://raw.githubusercontent.com/yu34567890/minesweeper-c/main/main.c') 
-sha256sums=('d4b2ea7d5f9044dc3825d48a670b9cb37becc284b67757e87855eca50d016e20')
+url="https://github.com/yu34567890/minesweeper-c"
+license=('MIT')
+
+depends=('glibc')
+makedepends=('gcc')
+
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/yu34567890/minesweeper-c/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('b0acb77d368762dd5cdabd83f86a5ba9c8fe7f539cdf84b0637211ae2c414564')
 
 build() {
-  gcc -o minesweeper main.c
+    cd "${srcdir}/minesweeper-c-${pkgver}"
+    gcc -O2 -o minesweeper main.c
 }
 
 package() {
-  install -Dm755 minesweeper "$pkgdir/usr/bin/minesweeper"
-}
-
-clean() {
-  rm -f minesweeper  
+    cd "${srcdir}/minesweeper-c-${pkgver}"
+    install -Dm755 minesweeper "$pkgdir/usr/bin/minesweeper"
 }
