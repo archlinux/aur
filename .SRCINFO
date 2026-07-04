@@ -1,6 +1,6 @@
 pkgbase = airpods-tui-git
 	pkgdesc = Terminal UI for managing AirPods on Linux over Bluetooth AACP
-	pkgver = r30.0e9d9ea
+	pkgver = r32.743a16c
 	pkgrel = 1
 	url = https://github.com/annoyedmilk/airpods-tui
 	install = airpods-tui.install
