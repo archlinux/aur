@@ -1,6 +1,6 @@
 pkgbase = wttrbar-bin
 	pkgdesc = Weather indicator for Waybar
-	pkgver = 0.14.5
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/bjesus/wttrbar
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = wttrbar-bin
 	provides = wttrbar
 	conflicts = wttrbar
 	conflicts = wttrbar-git
-	source_x86_64 = wttrbar::https://github.com/bjesus/wttrbar/releases/download/0.14.5/wttrbar
-	source_x86_64 = LICENSE::https://github.com/bjesus/wttrbar/releases/download/0.14.5/LICENSE
-	sha256sums_x86_64 = 1a734ffe0ecc4a05005228c04ac9c60074af90453dfc4437d6b870cfd5dfe019
-	sha256sums_x86_64 = 9bf212e0aa2728b6307e5a0daac43db8308529066c2513cc79e021eaec377e62
+	source_x86_64 = wttrbar::https://github.com/bjesus/wttrbar/releases/download/0.15.0/wttrbar
+	source_x86_64 = LICENSE::https://github.com/bjesus/wttrbar/releases/download/0.15.0/LICENSE
+	sha256sums_x86_64 = 7d261b3defcf9542d7d8ddddb84c35b2b13cdcd5531ec306187981aae0e8b095
+  sha256sums_x86_64 = 9bf212e0aa2728b6307e5a0daac43db8308529066c2513cc79e021eaec377e62
 
 pkgname = wttrbar-bin
