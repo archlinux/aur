@@ -1,6 +1,6 @@
 pkgbase = deeptutor
 	pkgdesc = Agent-native intelligent learning companion with multi-agent collaboration and RAG
-	pkgver = 1.4.15
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/HKUDS/DeepTutor
 	arch = any
@@ -78,7 +78,7 @@ pkgbase = deeptutor
 	optdepends = python-matrix-nio: Matrix (Element) Partner channel (non-E2EE)
 	optdepends = python-mistune: Matrix markdown rendering
 	optdepends = python-nh3: Matrix HTML sanitization
-	source = deeptutor-1.4.15.tar.gz::https://github.com/HKUDS/DeepTutor/archive/refs/tags/v1.4.15.tar.gz
-	sha256sums = 485b8fd60915065ef0ddb05283cd22934419777acd708dae3c0e8ed3c070fadd
+	source = deeptutor-1.5.0.tar.gz::https://github.com/HKUDS/DeepTutor/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = 2988022cb6ac8ca56afd59082b0a1f38c8ea017e83fa1e311d250f7baf8e9bc1
 
 pkgname = deeptutor
