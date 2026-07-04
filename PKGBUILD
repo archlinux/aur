@@ -36,16 +36,10 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  mkdir -p "$srcdir/$_srcname/build"
-}
-
 build() {
   msg "Starting build..."
 
-  cd "$srcdir/$_srcname"
-
-  cmake . \
+  cmake -B build -S "$srcdir/$_srcname" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DLIB_INSTALL_DIR=lib \
@@ -57,10 +51,10 @@ build() {
     -DBUILD_HELPER=on \
     -DINSTALL_SHARED=on \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=on
-  make
+
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/$_srcname"
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" cmake --install build
 }
