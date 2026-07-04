@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# intel-llm-convert — turn a HuggingFace model into an NPU-ready OpenVINO INT4 IR.
+#
+# The conversion toolchain (optimum-intel + nncf + torch) is version-sensitive and
+# needs transformers<5, which clashes with the system's transformers. So it lives
+# in an isolated, pinned uv-managed environment, created once on first use (~5 GB,
+# CPU-only). Inference does NOT use this — it's export/quantize only.
+#
+# Usage:
+#   intel-llm-convert <hf-model-id|local-path> [output-dir] [extra optimum-cli args...]
+#   intel-llm-convert Qwen/Qwen2.5-1.5B-Instruct
+#   intel-llm-convert Qwen/Qwen2.5-1.5B-Instruct ~/models/ov/qwen15 --group-size -1
+#
+# Output defaults to  ~/models/ov/<model-basename>-int4-ov  — run it with `intel-npu`.
+set -eo pipefail
+
+REQ=/usr/share/intel-llm-convert/requirements.txt
+ENV_DIR="${INTEL_LLM_CONVERT_ENV:-${XDG_DATA_HOME:-$HOME/.local/share}/intel-llm/convert-env}"
+
+if ! command -v uv >/dev/null 2>&1; then
+  echo "intel-llm-convert: 'uv' is required to build the conversion environment." >&2
+  exit 1
+fi
+
+# Build the pinned env once (Python 3.12 — the conversion stack is happiest there).
+if [[ ! -x "$ENV_DIR/bin/optimum-cli" ]]; then
+  echo ">> first run: building the conversion environment at $ENV_DIR (~5 GB, one-time)..." >&2
+  uv venv --python 3.12 "$ENV_DIR"
+  VIRTUAL_ENV="$ENV_DIR" uv pip install -r "$REQ"
+fi
+
+MODEL="${1:?usage: intel-llm-convert <hf-model> [out-dir] [extra optimum-cli args]}"; shift || true
+OUT="$HOME/models/ov/$(basename "$MODEL")-int4-ov"
+if [[ $# -gt 0 && "$1" != -* ]]; then OUT="$1"; shift; fi
+mkdir -p "$(dirname "$OUT")"
+
+# NPU-friendly INT4: 4-bit symmetric weights, group size 128, all eligible layers.
+# Pass `--group-size -1` (per-channel) as an extra arg for models that prefer it.
+echo ">> exporting '$MODEL' -> '$OUT' (INT4, symmetric)" >&2
+exec "$ENV_DIR/bin/optimum-cli" export openvino \
+  --model "$MODEL" \
+  --task text-generation-with-past \
+  --weight-format int4 --sym --group-size 128 --ratio 1.0 \
+  "$@" \
+  "$OUT"

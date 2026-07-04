@@ -1,0 +1,7 @@
+# Pinned conversion stack for intel-llm-convert. Isolated from the system Python
+# on purpose: optimum-intel needs transformers<5, while Arch ships transformers 5.x.
+# torch is CPU-only here (export/quantize only — inference is on GPU/NPU elsewhere).
+optimum-intel[openvino]
+nncf
+openvino>=2026.2,<2026.3
+transformers<5

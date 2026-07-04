@@ -1,0 +1,15 @@
+pkgbase = intel-llm-convert
+	pkgdesc = Convert HuggingFace models to NPU-ready OpenVINO INT4 IR (isolated uv env)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/julian-corbet/intel-llm
+	arch = any
+	license = MIT
+	depends = uv
+	optdepends = intel-llm: run the converted models on the NPU with `intel-npu`
+	source = intel-llm-convert
+	source = requirements.txt
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = intel-llm-convert
