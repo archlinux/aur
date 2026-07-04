@@ -2,7 +2,7 @@
 
 _pkgname="fluxcast"
 pkgname="$_pkgname-git"
-pkgver=0.1.4.r0.gab9d183
+pkgver=0.1.5.r0.g38fdbc2
 pkgrel=1
 pkgdesc="Stream your Linux desktop to a Smart TV via Miracast/WFD, DLNA, or Cast"
 arch=('any')
@@ -35,6 +35,7 @@ optdepends=(
   'tk: About window'
   'libnotify: Desktop notifications'
   'libappindicator: Tray backend for Hyprland/KDE'
+  'xorg-xrandr: X11 Support'
 )
 
 provides=("$_pkgname=${pkgver%%.r*}")
