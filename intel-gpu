@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Run an LLM on the Intel Arc GPU (llama.cpp SYCL) — the fast GPU path.
+#
+# Thin wrapper over `llama-sycl` (from llama.cpp-sycl-bin). Default subcommand is
+# `server`; pass a llama-* tool name as the first arg. GGUF models can be
+# auto-downloaded by llama.cpp with `-hf <user/repo>`.
+#
+#   intel-gpu -m model.gguf                       # server
+#   intel-gpu cli -hf ggml-org/Qwen2.5-1.5B-Instruct-Q4_K_M-GGUF -p "hi"
+#   intel-gpu bench -m model.gguf
+exec /usr/bin/llama-sycl "$@"

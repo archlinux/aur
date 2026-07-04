@@ -1,0 +1,84 @@
+#!/usr/bin/python
+"""Run an LLM on the Intel NPU (AI Boost) via OpenVINO GenAI — the fast NPU path.
+
+# NB: hardcoded /usr/bin/python (the system interpreter that owns the
+# openvino-genai-bin site-packages) — `env python` could resolve to a shadowing
+# interpreter (e.g. a nix/conda python) that can't see the system packages.
+
+The model must be an OpenVINO INT4 IR directory. You can pass either a local IR
+folder, or a HuggingFace repo id of a pre-converted model (e.g.
+`OpenVINO/Qwen2.5-1.5B-Instruct-int4-ov`), which is downloaded on first use.
+
+Usage:
+  intel-npu <ir-dir|hf-id> [-p PROMPT] [-n MAX_NEW_TOKENS] [-d DEVICE]
+  intel-npu OpenVINO/Qwen2.5-1.5B-Instruct-int4-ov -p "Hello" -n 64
+  intel-npu ~/models/ov/my-model            # interactive chat
+
+Needs the `render` group for /dev/accel/accel0 (re-login once, or run via
+`sg render -c 'intel-npu ...'`). To make your own IR from an HF model, see
+`intel-llm-convert`.
+"""
+import argparse, os, sys
+
+ap = argparse.ArgumentParser(prog="intel-npu")
+ap.add_argument("model", help="OpenVINO IR folder, or a HF repo id of a pre-converted -int4-ov model")
+ap.add_argument("-p", "--prompt", default=None, help="one-shot prompt (omit for chat)")
+ap.add_argument("-n", "--max-new-tokens", type=int, default=128)
+ap.add_argument("-d", "--device", default="NPU", help="NPU (default), GPU, or CPU")
+ap.add_argument("--max-prompt-len", type=int, default=1024,
+                help="static max prompt length compiled for the NPU")
+args = ap.parse_args()
+
+model_dir = args.model
+if not os.path.isdir(model_dir):
+    # Treat as an HF repo id and fetch it once into the local cache.
+    try:
+        from huggingface_hub import snapshot_download
+    except ImportError:
+        sys.exit("intel-npu: '%s' is not a local dir and huggingface_hub is missing "
+                 "(install python-huggingface-hub) to fetch it." % model_dir)
+    dest = os.path.join(os.path.expanduser(
+        os.environ.get("INTEL_LLM_MODEL_DIR", "~/.local/share/intel-llm/models")),
+        model_dir.replace("/", "__"))
+    print(f"[intel-npu] fetching {args.model} -> {dest} ...", file=sys.stderr)
+    snapshot_download(repo_id=model_dir, local_dir=dest)
+    model_dir = dest
+
+import openvino_genai as ov
+
+cache_dir = os.path.expanduser(
+    os.environ.get("INTEL_LLM_CACHE", "~/.cache/openvino-genai"))
+os.makedirs(cache_dir, exist_ok=True)
+kw = {"CACHE_DIR": cache_dir}
+if args.device.upper() == "NPU":
+    # NPU needs static shapes; bound the prompt length at compile time.
+    kw["MAX_PROMPT_LEN"] = args.max_prompt_len
+
+print(f"[intel-npu] loading {model_dir} on {args.device} "
+      f"(first NPU load compiles the graph — slow; cached after)...", file=sys.stderr)
+pipe = ov.LLMPipeline(model_dir, args.device, **kw)
+cfg = pipe.get_generation_config()
+cfg.max_new_tokens = args.max_new_tokens
+
+_RUNNING = getattr(getattr(ov, "StreamingStatus", None), "RUNNING", False)
+def streamer(subword: str):
+    print(subword, end="", flush=True)
+    return _RUNNING
+
+if args.prompt is not None:
+    pipe.generate(args.prompt, cfg, streamer)
+    print()
+else:
+    pipe.start_chat()
+    print("[chat — empty line or Ctrl-D to exit]", file=sys.stderr)
+    try:
+        while True:
+            q = input("\n> ").strip()
+            if not q:
+                continue
+            pipe.generate(q, cfg, streamer)
+            print()
+    except (EOFError, KeyboardInterrupt):
+        print()
+    finally:
+        pipe.finish_chat()

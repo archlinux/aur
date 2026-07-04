@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# intel-llm — one entry point for fast local LLMs on Intel laptops.
+#
+#   intel-llm gpu  [llama-* args...]     Fast GPU  (llama.cpp SYCL, Arc)
+#   intel-llm npu  <ir|hf-id> [args...]  Fast NPU  (OpenVINO GenAI, AI Boost)
+#   intel-llm devices                    Show which accelerators are usable
+#   intel-llm help                       This help
+#
+# Examples:
+#   intel-llm gpu -hf ggml-org/Qwen2.5-1.5B-Instruct-Q4_K_M-GGUF   # GPU server
+#   intel-llm npu OpenVINO/Qwen2.5-1.5B-Instruct-int4-ov -p "Hi"   # NPU one-shot
+set -euo pipefail
+
+usage() { sed -n '2,15p' "$0" | sed 's/^# \{0,1\}//'; }
+
+cmd="${1:-help}"; shift || true
+case "$cmd" in
+  gpu) exec intel-gpu "$@" ;;
+  npu) exec intel-npu "$@" ;;
+  devices)
+    echo "Arc GPU (SYCL / llama.cpp):"
+    if [[ -x /usr/bin/llama-sycl ]]; then
+      if [[ -e /opt/intel/oneapi ]]; then echo "  available (intel-oneapi-basekit present)"
+      else echo "  binary present, but install 'intel-oneapi-basekit' for the SYCL runtime"; fi
+    else echo "  not installed (pacman -S llama.cpp-sycl-bin)"; fi
+    echo "NPU + GPU/CPU (OpenVINO GenAI):"
+    if /usr/bin/python -c 'import openvino_genai' 2>/dev/null; then
+      /usr/bin/python -c 'import openvino; print("  OpenVINO sees:", openvino.Core().available_devices)'
+      [[ -e /dev/accel/accel0 ]] || echo "  (no /dev/accel/accel0 — install intel-npu-driver for the NPU)"
+    else echo "  not installed (pacman -S openvino-genai-bin)"; fi
+    ;;
+  help|-h|--help) usage ;;
+  *) echo "intel-llm: unknown command '$cmd'" >&2; usage; exit 2 ;;
+esac

@@ -1,0 +1,21 @@
+pkgbase = intel-llm
+	pkgdesc = One entry point for fast local LLMs on Intel laptops (Arc GPU via SYCL + NPU via OpenVINO GenAI)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/julian-corbet/intel-llm
+	arch = any
+	license = MIT
+	depends = llama.cpp-sycl-bin
+	depends = openvino-genai-bin
+	depends = python-huggingface-hub
+	optdepends = intel-oneapi-basekit: SYCL runtime for the Arc GPU path
+	optdepends = intel-npu-driver: Intel NPU (AI Boost) for the fast NPU path
+	optdepends = intel-llm-convert: convert your own HF models to NPU INT4 IR
+	source = intel-llm
+	source = intel-gpu
+	source = intel-npu
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = intel-llm
