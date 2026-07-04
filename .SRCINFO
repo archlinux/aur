@@ -1,6 +1,6 @@
 pkgbase = kirastudio-bin
 	pkgdesc = KiraStudio is a lightweight, cross-platform music studio built around clarity and automation.
-	pkgver = 1.0.7
+	pkgver = 1.1.0
 	pkgrel = 2
 	url = https://kirastudio.org/
 	install = kirastudio.install
@@ -8,7 +8,7 @@ pkgbase = kirastudio-bin
 	makedepends = unzip
 	depends = wine
 	depends = rsync
-	source = https://github.com/BleuBleu/KiraStudioPublic/releases/download/1.0.7/KiraStudio107-WinPortableExe.zip
+	source = https://github.com/BleuBleu/KiraStudioPublic/releases/download/1.1.0/KiraStudio110-WinPortableExe.zip
 	source = kirastudio.desktop
 	source = kirastudio.png
 	source = kirastudio-launcher
