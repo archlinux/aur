@@ -20,6 +20,8 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=('libgcc' 'glibc' 'python')
 
+options=('!strip')
+
 source=("README-${pkgver}.md::${_urlraw}/README.markdown"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/linux-${_pkgname}")

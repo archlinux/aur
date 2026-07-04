@@ -10,6 +10,7 @@ pkgbase = q-bin
 	depends = python
 	provides = q
 	conflicts = q
+	options = !strip
 	source = README-3.1.6.md::https://raw.githubusercontent.com/harelba/q/v3.1.6/README.markdown
 	source = LICENSE-3.1.6::https://raw.githubusercontent.com/harelba/q/v3.1.6/LICENSE
 	sha256sums = 94b326c34fbbd96e240bf79bdb230e598bef3e0141edd580ce0aae84ddc27bd9
