@@ -1,6 +1,6 @@
 pkgbase = hermes-agent-desktop-bin
 	pkgdesc = Desktop companion for Hermes Agent
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/fathah/hermes-desktop
 	arch = x86_64
@@ -26,9 +26,9 @@ pkgbase = hermes-agent-desktop-bin
 	conflicts = hermes-agent-desktop
 	conflicts = hermes-desktop
 	options = !strip
-	source = hermes-desktop-0.7.2-LICENSE::https://raw.githubusercontent.com/fathah/hermes-desktop/v0.7.2/LICENSE
+	source = hermes-desktop-0.7.3-LICENSE::https://raw.githubusercontent.com/fathah/hermes-desktop/v0.7.3/LICENSE
 	sha256sums = 85d12b0f8894e7095f904a9a89fcfaea1b0d037cbfb4a12aba81daa87bcdbcd4
-	source_x86_64 = hermes-desktop_0.7.2_amd64.deb::https://github.com/fathah/hermes-desktop/releases/download/v0.7.2/hermes-desktop_0.7.2_amd64.deb
-	sha256sums_x86_64 = 0aa4bc93d945b203ab8bb1f7c64ac065edf946e279e6fd0fc92496486891baf9
+	source_x86_64 = hermes-desktop_0.7.3_amd64.deb::https://github.com/fathah/hermes-desktop/releases/download/v0.7.3/hermes-desktop_0.7.3_amd64.deb
+	sha256sums_x86_64 = 208eb6d2d277b87e69083fd7716dd51018b88da575f8b5dc189972fa1adaaa74
 
 pkgname = hermes-agent-desktop-bin
