@@ -7,7 +7,7 @@ _projectname=electron
 _major=41
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_subver='9.2'
+_subver='10.0'
 _pkgver="${_major}.${_subver}"
 pkgver="${_pkgver/-}"
 pkgrel=1
@@ -58,12 +58,12 @@ source_x86_64=(
     "${_pkgname}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${_pkgver//_/-}/electron-v${_pkgver//_/-}-linux-x64.zip"
 )
 sha256sums=('ac1e26684ffbfc7ac0993c55b9299003f6b9efea25b755b1d260bea4db440157')
-sha256sums_aarch64=('da605859a3ee66dc0e68b8824bc4c8505f6f4f8775460b353ec3618d0ad91fe0'
-                    'b3048344b209315a2496928948a96d7e7d668eac630ba7a317c6a7c43db79d80')
-sha256sums_armv7h=('1124abd537b5a13cb1256304bae85016d7a4fe6555001de51b279041139349cb'
-                   'bc6e9d847eca0dd166389feaac1eac0ceef3ee24b0c744daf21a4ffbcf1f20d3')
-sha256sums_x86_64=('d8155e3c85669a3ec0d339890ee5283c01277a860b39049969bead93d6778877'
-                   '33299b6ee4d41204b4709caae1965fc783fd0d8e76359649f9066f0ccfa7b610')
+sha256sums_aarch64=('6c49fc7433dc83d2a6729c37abc5420180ec563fad08774d3897ee8f360e6f8e'
+                    '2c063804e14c325cd34de1ff7528f6066d544d49a9d55c9c2937e20dd1e717e3')
+sha256sums_armv7h=('2905d27c54053a449494b4ea3816251103142c7f7cb758eb4b466e256b6cecba'
+                   '69952cc288ce78cefc1940a347d467340ec88773564688f0c9e3c51f737e263c')
+sha256sums_x86_64=('f164cc5bf9d8351452170c35ab371975b0683b6649402cb34fd0e41d08fbbecb'
+                   'b5dac00ef6b5ee4e9882cf1424fd8dce7319fb09806757399fdf3b3da06efcd2')
 prepare() {
     sed -i "s/@ELECTRON@/${_pkgname}/g" "${srcdir}/${pkgname%-bin}.sh"
     install -Dm755 -d "${srcdir}/${_pkgname}"
