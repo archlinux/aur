@@ -1,6 +1,6 @@
 # Maintainer: Chris Watson <cawatson1993@gmail.com>
 pkgname=goshot-bin
-pkgver=0.7.1
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A powerful CLI tool and library for creating beautiful code screenshots with customizable window chrome, syntax highlighting, and backgrounds"
 arch=('x86_64' 'aarch64')
