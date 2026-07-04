@@ -1,6 +1,6 @@
 pkgbase = lamco-rdp-server
 	pkgdesc = Native Wayland RDP server for GNOME, KDE, Sway, and Hyprland with H.264 encoding and VA-API acceleration
-	pkgver = 1.4.2
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/lamco-admin/lamco-rdp-server
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = lamco-rdp-server
 	optdepends = openh264: H.264 software encoding via EGFX (Cisco binary, BSD-2-Clause)
 	options = !lto
 	backup = etc/dbus-1/system.d/io.lamco.RdpServer.System.conf
-	source = lamco-rdp-server-1.4.2.tar.xz::https://github.com/lamco-admin/lamco-rdp-server/releases/download/v1.4.2/lamco-rdp-server-1.4.2.tar.xz
-	sha256sums = dec91e5c33f686a63b49c03d230af78f2393fe564ebaeeac9afdfa1f556d24d0
+	source = lamco-rdp-server-1.4.4.tar.xz::https://github.com/lamco-admin/lamco-rdp-server/releases/download/v1.4.4/lamco-rdp-server-1.4.4.tar.xz
+	sha256sums = 9518c9f8f7dd9d517b81205d06e2e2a3ecb3edc51c16b181f0be8d028a900db3
 
 pkgname = lamco-rdp-server

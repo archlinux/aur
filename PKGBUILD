@@ -1,6 +1,6 @@
 # Maintainer: Greg Lamberson <greg at lamco dot io>
 pkgname=lamco-rdp-server
-pkgver=1.4.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Native Wayland RDP server for GNOME, KDE, Sway, and Hyprland with H.264 encoding and VA-API acceleration"
 arch=('x86_64')
@@ -39,7 +39,7 @@ optdepends=(
 options=(!lto)
 backup=('etc/dbus-1/system.d/io.lamco.RdpServer.System.conf')
 source=("$pkgname-$pkgver.tar.xz::https://github.com/lamco-admin/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('dec91e5c33f686a63b49c03d230af78f2393fe564ebaeeac9afdfa1f556d24d0')
+sha256sums=('9518c9f8f7dd9d517b81205d06e2e2a3ecb3edc51c16b181f0be8d028a900db3')
 
 build() {
     cd "$pkgname-$pkgver"
