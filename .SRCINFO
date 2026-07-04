@@ -1,6 +1,6 @@
 pkgbase = llama-recipe-manager
 	pkgdesc = A native desktop application for managing and launching llama-server with named recipes of command-line flags
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/Llama-Recipe-Manager/llama-recipe-manager
 	install = llama-recipe-manager.install
@@ -15,7 +15,7 @@ pkgbase = llama-recipe-manager
 	depends = libsoup
 	depends = pango
 	depends = webkit2gtk-4.1
-	source = https://github.com/Llama-Recipe-Manager/llama-recipe-manager/releases/download/v0.3.0/Llama.Recipe.Manager_0.3.0_amd64.deb
-	sha256sums = (edadbb39a31aa6b880ef7c3dbace2e9f854868eb81038d830fb48be6a6f8c595)
+	source = https://github.com/Llama-Recipe-Manager/llama-recipe-manager/releases/download/v0.3.1/Llama.Recipe.Manager_0.3.1_amd64.deb
+	sha256sums = (16479c259b0406dc0bd60bd69cd39eb6871a2208578e2687caff4f650b91fa1e)
 
 pkgname = llama-recipe-manager
