@@ -1,5 +1,5 @@
 pkgname=v2ray-rs
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Linux desktop GUI for v2ray/xray/sing-box proxy management"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 options=(!lto)
 install=v2ray-rs.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('264f1852990542373bc9b5572b2ac5fadeca2ea3aac396c9e9b1aa43dbc0d524')
+sha256sums=('957f543a28e4020242f0369e7dcb0bf6441188d8baf9bc0c8a07170279b34b63')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -34,7 +34,9 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "target/release/v2ray-rs-ui" "$pkgdir/usr/bin/v2ray-rs"
-    # Privileged TUN route helper; granted cap_net_admin in the install hook.
+    # Privileged TUN helpers. The install hook creates the `v2ray-rs` group,
+    # restricts these to it (netctl 0750 + cap_net_admin, run 4750 setuid), and
+    # creates the bypass user. Modes here are the pre-hook defaults.
     install -Dm755 "target/release/v2ray-rs-netctl" "$pkgdir/usr/bin/v2ray-rs-netctl"
     install -Dm4755 "target/release/v2ray-rs-run" "$pkgdir/usr/bin/v2ray-rs-run"
     install_icon "assets/v2ray-rs.svg" \

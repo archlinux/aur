@@ -1,13 +1,27 @@
 # Grant the route helper CAP_NET_ADMIN so TUN mode can program routes without
-# elevating the whole GUI. The backend binary (xray/sing-box) is system-managed
-# and not owned by this package; the app grants its capabilities on demand via
-# a one-time pkexec setcap.
+# elevating the whole GUI, and restrict both privileged helpers to the
+# `v2ray-rs` group so they are not executable by every local process. The
+# backend binary (xray/sing-box) is system-managed and not owned by this
+# package; the app grants its capabilities on demand via a one-time pkexec setcap.
 
 post_install() {
+    getent group v2ray-rs >/dev/null || groupadd --system v2ray-rs
+    id v2ray-rs-bypass &>/dev/null || useradd --system --no-create-home --shell /usr/bin/nologin v2ray-rs-bypass
+
+    # chgrp clears the setuid bit and any file capabilities, so re-apply them
+    # afterwards: setuid on the wrapper, cap_net_admin on the route helper.
+    chgrp v2ray-rs /usr/bin/v2ray-rs-netctl /usr/bin/v2ray-rs-run 2>/dev/null || true
+    chmod 0750 /usr/bin/v2ray-rs-netctl 2>/dev/null || true
+    chmod 4750 /usr/bin/v2ray-rs-run 2>/dev/null || true
     setcap 'cap_net_admin+ep' /usr/bin/v2ray-rs-netctl 2>/dev/null || \
         echo "==> Could not setcap v2ray-rs-netctl; TUN mode needs: sudo setcap 'cap_net_admin+ep' /usr/bin/v2ray-rs-netctl"
-    id v2ray-rs-bypass &>/dev/null || useradd --system --no-create-home --shell /usr/bin/nologin v2ray-rs-bypass
-    chmod u+s /usr/bin/v2ray-rs-run 2>/dev/null || true
+
+    cat <<'EOF'
+==> TUN mode requires your user to be in the 'v2ray-rs' group:
+        sudo usermod -aG v2ray-rs "$USER"
+    then log out and back in. Until then, TUN connect fails with a
+    permission error.
+EOF
 }
 
 post_upgrade() {
@@ -16,4 +30,5 @@ post_upgrade() {
 
 pre_remove() {
     userdel v2ray-rs-bypass 2>/dev/null || true
+    groupdel v2ray-rs 2>/dev/null || true
 }
