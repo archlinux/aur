@@ -1,6 +1,6 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-gui
-pkgver=2.7.0
+pkgver=2.8.3
 pkgrel=1
 pkgdesc="PySide6 desktop GUI for the Control-OFC fan control daemon"
 arch=('any')
@@ -14,17 +14,11 @@ license=('MIT')
 depends=('control-ofc-daemon>=2.2.0' 'python' 'pyside6' 'python-httpx'
          'python-pyqtgraph' 'python-numpy' 'python-colorama'
          'hicolor-icon-theme')
-# control-migration 2.0.0 cutover (DEC-165): this GUI is a thin client and is
-# only safe against a daemon that is the autonomous fan-control engine
-# (control-ofc-daemon >= 2.0.0). The versioned conflict additionally prevents a
-# partial upgrade from stranding the GUI next to a pre-2.0 daemon — a new GUI
-# against an old daemon would leave fans uncontrolled (the runtime
-# autonomous_control gate is the in-app backstop).
-conflicts=('control-ofc-daemon<2.0.0')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'scdoc')
 install=control-ofc-gui.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d672427a0e79ddc4ef93f19370c7750a79c1636879888df727efb25af1fcd63d')
+# sha256sums are CI-maintained (updpkgsums runs at tag time); a manual makepkg needs 'updpkgsums' first.
+sha256sums=('35cebfeefe9197ec00af4d131f76f4bdde251c47fc0de91764c420b772d065a8')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -32,6 +26,11 @@ build() {
 
     # Render man page from scdoc source.
     scdoc < man/control-ofc-gui.1.scd > control-ofc-gui.1
+}
+
+check() {
+    cd "$pkgname-$pkgver"
+    python -m compileall -q src/
 }
 
 package() {
