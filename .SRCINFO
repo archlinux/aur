@@ -1,0 +1,20 @@
+pkgbase = llama.cpp-sycl-bin
+	pkgdesc = llama.cpp on Intel Arc GPU via SYCL — official precompiled binary (no compilation)
+	pkgver = b9870
+	pkgrel = 1
+	url = https://github.com/ggml-org/llama.cpp
+	arch = x86_64
+	license = MIT
+	makedepends = patchelf
+	depends = glibc
+	depends = gcc-libs
+	depends = curl
+	optdepends = intel-oneapi-basekit: SYCL runtime (MKL/DNN) — required for the GPU backend
+	provides = llama.cpp-sycl
+	noextract = llama-b9870-sycl-fp16.tar.gz
+	source = llama-b9870-sycl-fp16.tar.gz::https://github.com/ggml-org/llama.cpp/releases/download/b9870/llama-b9870-bin-ubuntu-sycl-fp16-x64.tar.gz
+	source = llama-sycl
+	sha256sums = 77194249f0c800c26230c1ce919e282ab59647b75f8c9fc3e3f5ed59ab711d3a
+	sha256sums = SKIP
+
+pkgname = llama.cpp-sycl-bin

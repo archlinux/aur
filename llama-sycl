@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# Turnkey llama.cpp on the Intel Arc GPU (SYCL backend).
+#
+# Usage:  llama-sycl [tool] [args...]
+#   Default tool is `server`. Pass any llama-* tool name as the first arg:
+#     llama-sycl                    -> llama-server (all layers on GPU)
+#     llama-sycl cli   -m model.gguf -p "hi"
+#     llama-sycl bench -m model.gguf
+#
+# oneAPI (MKL/DNN/SYCL runtime) is sourced at runtime rather than baked into the
+# binaries, so this keeps working across oneAPI version updates with no rebuild.
+#
+# NB: `set -e` WITHOUT `-u` — oneAPI's vars script references unset variables and
+#     would abort under `-u`. And source oneAPI BEFORE defining our own paths: it
+#     exports its own BIN_DIR and would otherwise clobber ours.
+set -eo pipefail
+
+_sourced=
+for _vars in /opt/intel/oneapi/*/oneapi-vars.sh /opt/intel/oneapi/setvars.sh; do
+  if [[ -r $_vars ]]; then
+    # shellcheck disable=SC1090
+    source "$_vars" >/dev/null 2>&1 || true
+    _sourced=1
+    break
+  fi
+done
+if [[ -z $_sourced ]]; then
+  echo "llama-sycl: Intel oneAPI not found under /opt/intel/oneapi." >&2
+  echo "            Install 'intel-oneapi-basekit' — the SYCL backend needs its MKL/DNN runtime." >&2
+  exit 1
+fi
+
+BIN_DIR=/usr/lib/llama-sycl
+export LD_LIBRARY_PATH="$BIN_DIR${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+
+tool=server
+if [[ $# -gt 0 && -x "$BIN_DIR/llama-$1" ]]; then
+  tool=$1; shift
+fi
+
+# -ngl 999 offloads all layers to the GPU; override by passing your own -ngl.
+exec "$BIN_DIR/llama-$tool" -ngl 999 "$@"
