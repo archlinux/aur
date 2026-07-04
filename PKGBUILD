@@ -1,7 +1,7 @@
 # Maintainer: VintellX <vin@vintellx.com>
 
 pkgname=vinmail
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Interactive Bash-based mail client for msmtp with multi-account management and GPG support."
 arch=('any')
