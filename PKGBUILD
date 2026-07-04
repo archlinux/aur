@@ -1,18 +1,42 @@
+# Maintainer: Arunachalam <arunachalam.gojosaturo@gmail.com>
+# LUNA CLI - AI Coding Assistant for LUNA OS X
+
 pkgname=luna-cli
-pkgver=0.1.1
+pkgver=0.1.0
 pkgrel=1
-pkgdesc="Your Personal AI Coding Assistant & Friend right in your Terminal."
-arch=('any')
+pkgdesc="🌙 LUNA - AI Coding Assistant CLI for LUNA OS X"
+arch=('x86_64' 'aarch64')
 url="https://github.com/Arunachalam-gojosaturo/Luna-cli"
 license=('MIT')
-depends=('nodejs' 'npm')
-source=("https://registry.npmjs.org/@arunachalamarc017/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('2ad1b6947a358e22f406f8c73b77cf67c63243609bc64e37a14dff0c1d3512c1')
+depends=(
+    'python>=3.10'
+    'python-typer>=0.9'
+    'python-rich>=13'
+    'python-textual>=0.30'
+    'python-prompt_toolkit>=3'
+    'python-httpx>=0.24'
+    'python-websockets>=11'
+    'python-pydantic>=2'
+    'python-dotenv>=1'
+    'python-aiofiles>=23'
+    'python-gitpython>=3.1'
+    'python-click-spinner>=0.1'
+    'python-colorama>=0.4'
+    'python-shellingham>=1.5'
+    'python-platformdirs>=3.10'
+)
+optdepends=(
+    'groq: Groq AI provider support'
+    'python-openai: OpenAI provider support'
+    'python-google-generativeai: Google Gemini support'
+)
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+source=("https://github.com/Arunachalam-gojosaturo/Luna-cli/releases/download/v${pkgver}/luna_cli-${pkgver}-py3-none-any.whl")
+sha256sums=('c2c384ae88421b9f7a9de229e66b59099fed85032a2fd2b14fe4dc43068e2438')
 
 package() {
-  npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/@arunachalamarc017/${pkgname}-${pkgver}.tgz"
-  
-  # Remove extra npm clutter
-  rm -rf "${pkgdir}/usr/etc"
-  rm -rf "${pkgdir}/usr/lib/node_modules/@arunachalamarc017/luna-cli/node_modules/puppeteer/.local-chromium" 2>/dev/null || true
+    python -m installer --destdir="$pkgdir" luna_cli-${pkgver}-py3-none-any.whl
+    
+    # Install license
+    install -Dm644 /dev/null "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
