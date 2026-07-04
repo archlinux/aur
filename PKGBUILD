@@ -2,7 +2,7 @@
 
 pkgname=binauralplayer
 _pkgname=BinauralPlayer
-pkgver=1.6.2
+pkgver=1.6.31
 pkgrel=1
 pkgdesc='Binaural Media Player combines traditional media playback with brainwave audio generation'
 arch=('i686' 'x86_64' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=('pulse-native-provider' 'yt-dlp: to play audio directly from HTTP/HT
 provides=('binauralplayer')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"binauralplayer.install")
-sha256sums=('43b74dc9a3e6530f14895ec707702eb7d9f5a014678ca3971c7509d2e0cc5e4f'
+sha256sums=('63e321ed32f561725e186ded09efa6994aa48de6abacc4250b5443334ad474f9'
 	    'a173edb9fcbe16260bc7174cff84e91defb686ecbb8f8fa0389da63825c96c37')
 install="binauralplayer.install"
 

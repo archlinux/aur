@@ -1,6 +1,6 @@
 pkgbase = binauralplayer
 	pkgdesc = Binaural Media Player combines traditional media playback with brainwave audio generation
-	pkgver = 1.6.2
+	pkgver = 1.6.31
 	pkgrel = 1
 	url = https://github.com/alamahant/BinauralPlayer
 	install = binauralplayer.install
@@ -18,9 +18,9 @@ pkgbase = binauralplayer
 	optdepends = pulse-native-provider
 	optdepends = yt-dlp: to play audio directly from HTTP/HTTPS URLs
 	provides = binauralplayer
-	source = binauralplayer-1.6.2.tar.gz::https://github.com/alamahant/BinauralPlayer/archive/refs/tags/v1.6.2.tar.gz
+	source = binauralplayer-1.6.31.tar.gz::https://github.com/alamahant/BinauralPlayer/archive/refs/tags/v1.6.31.tar.gz
 	source = binauralplayer.install
-	sha256sums = 43b74dc9a3e6530f14895ec707702eb7d9f5a014678ca3971c7509d2e0cc5e4f
+	sha256sums = 63e321ed32f561725e186ded09efa6994aa48de6abacc4250b5443334ad474f9
 	sha256sums = a173edb9fcbe16260bc7174cff84e91defb686ecbb8f8fa0389da63825c96c37
 
 pkgname = binauralplayer
