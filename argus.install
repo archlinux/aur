@@ -1,0 +1,77 @@
+post_install() {
+  cat <<'EOF'
+==> Argus installed.
+
+Argus runs as a per-user systemd --user service, NOT a system-wide
+service. Arch's packaging model has no preset/enablement mechanism for
+user units equivalent to `systemctl enable` for system units at package-
+install time (pacman hooks run outside any user's login session and have
+no D-Bus session bus to talk to), so this has to be a manual, per-user
+step after install — there is nothing broken or missing here, this is
+just how systemd user units work on Arch:
+
+    systemctl --user daemon-reload
+    systemctl --user enable --now argus.service
+
+The tray icon (etc/xdg/autostart/argus-tray.desktop) will start
+automatically on your next graphical login. To start it immediately this
+session, run: argus tray &
+
+FIRST SCREEN CAPTURE: on KDE Plasma / Wayland, the first time Argus
+grabs a screenshot it will trigger a one-time system consent dialog from
+xdg-desktop-portal (the ScreenCast picker). Approve it once; subsequent
+captures are silent. If you dismiss/deny it, screen capture will keep
+re-prompting or silently failing — re-run and accept to fix.
+
+VISION / NARRATIVES: on-demand vision narratives (used by `argus report
+daily --vision` / `--weekly --vision`) require a Gemini API key in the
+environment as GEMINI_API_KEY (or GOOGLE_API_KEY) — Argus never reads or
+stores this key in its own config file. Since the systemd --user service
+does not inherit your interactive shell's environment, set it where a
+systemd user unit will actually pick it up, e.g.:
+
+    mkdir -p ~/.config/environment.d
+    echo 'GEMINI_API_KEY=your-key-here' >> ~/.config/environment.d/argus.conf
+    systemctl --user daemon-reload
+    systemctl --user restart argus.service
+
+Without a key, everything else (capture, dashboard, retention, reports
+without --vision) works fine — vision narratives are opt-in only.
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+==> Argus upgraded.
+
+If this upgrade bumped Arch's `python` package across a major/minor
+version (not just a patch release), Argus's bundled venv interpreter
+under /opt/argus/venv may now be ABI-mismatched against
+--system-site-packages providers like python-gobject. See the PKGBUILD's
+top-of-file comment for details. If the tray icon or screen capture stop
+working after a `python` upgrade, reinstall this package
+(`makepkg -f` + reinstall, once a rebuilt package is available) rather
+than filing it as an Argus bug.
+
+Remember to run (if not already enabled):
+    systemctl --user daemon-reload
+    systemctl --user restart argus.service
+EOF
+}
+
+post_remove() {
+  cat <<'EOF'
+==> Argus removed.
+
+The systemd --user unit and autostart entry were removed with the
+package, but this does NOT stop an already-running instance for users
+who are currently logged in — if Argus is still running, stop it
+yourself:
+
+    systemctl --user disable --now argus.service
+
+Your data (SQLite DB + captured images under ~/.local/share/argus/) and
+config (~/.config/argus/config.toml) are left in place — remove them by
+hand if you want a full wipe.
+EOF
+}
