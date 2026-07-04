@@ -6,7 +6,7 @@
 # step the admin runs separately (see the post-install note), with a tested TTY
 # revert in hand. The previous DM is left installed as the fallback.
 pkgname=door
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Beautiful, security-first Wayland display manager / login manager with an animated GPU greeter (privilege-separated, reversible)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ install="${pkgname}.install"
 options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 # Run `updpkgsums` after the v$pkgver tag exists to pin this to the real checksum.
-sha256sums=('3971a4e736415d9a04cb7c4df45f6d3fa1d5fcc383bb8af278a42d26550acd5d')
+sha256sums=('722ea285edfd2b1426b78c4f74ca4afb297c3b692c11017adf0a7dcb02e5ef31')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
