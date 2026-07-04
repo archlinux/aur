@@ -4,17 +4,17 @@
 
 pkgname=1oom-git
 _pkgname=1oom
-pkgver=r1084.63002716
-pkgrel=2
+pkgver=r669.cf6476e4
+pkgrel=1
 pkgdesc="1oom is a Master of Orion (1993) game engine recreation."
 arch=(x86_64)
-url=https://github.com/1oom-fork/1oom
+url=https://sourcecraft.dev/fork1oom/1oom
 license=('GPL2')
 depends=(sdl2 sdl2_mixer libsamplerate soundfont-fluid)
 makedepends=(git)
 provides=(1oom)
 conflicts=(1oom)
-source=(  'git+https://github.com/1oom-fork/1oom.git'
+source=(  'git+https://git.sourcecraft.dev/fork1oom/1oom.git'
           'Master_of_Orion_cover.png'
           '1oom.desktop'
           '1oom_classic_sdl2.sh' )
@@ -46,7 +46,7 @@ package() {
   mkdir -p "$pkgdir/usr/share/doc/${_pkgname}"
   cp *.txt "$pkgdir/usr/share/doc/${_pkgname}/"
   cd ..
-  cp AUTHORS CHANGES COMPILING COPYING HACKING MIRRORS NEWS PHILOSOPHY README.md "$pkgdir/usr/share/doc/${_pkgname}/"
+  cp AUTHORS CONFIGURATION HACKING INSTALL LICENSE NEWS PHILOSOPHY README.md "$pkgdir/usr/share/doc/${_pkgname}/"
 
   # create storage directory for MOO data
   mkdir -p "$pkgdir/usr/share/1oom"
