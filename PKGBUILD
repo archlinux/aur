@@ -15,7 +15,7 @@ conflicts=("${_realname}")
 source=("${_realname}_linux64.zip::https://github.com/WilliamVenner/${_realname}/releases/download/${pkgver}/${_realname}_linux64.zip"
         "LICENSE::https://raw.githubusercontent.com/WilliamVenner/${_realname}/${pkgver}/LICENSE"
         "${_realname}.png::https://raw.githubusercontent.com/WilliamVenner/${_realname}/${pkgver}/src-tauri/icons/128x128.png")
-sha256sums=('baf7664510f585e6b9948f4c0b3bd658d6d728f1cbe51a77c35acd79d5b4a574'
+sha256sums=('dd3321ef027e67e847ecd2435a3f8f65702421b192b183ca3ecd4d9f98a816b3'
             'd1bfc7a749950924bd5d27dee610ac8933f96badc14a774be796e986b9dcd3aa'
             '5e9fb667ca5095013921970c58b53f984f4ba0836edf6b78876e03861b5f4265')
 
