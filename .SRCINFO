@@ -1,17 +1,16 @@
 pkgbase = python-pocketbase
-	pkgdesc = PocketBase SDK for Python
+	pkgdesc = PocketBase Python SDK
 	pkgver = 0.17.3
 	pkgrel = 1
 	url = https://github.com/vaphes/pocketbase
 	arch = any
 	license = MIT
-	makedepends = python-uv-build
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python
+	makedepends = python-uv-build
 	depends = python-httpx
-	source = https://files.pythonhosted.org/packages/source/p/pocketbase/pocketbase-0.17.3.tar.gz
+	source = python-pocketbase-0.17.3.tar.gz::https://files.pythonhosted.org/packages/source/p/pocketbase/pocketbase-0.17.3.tar.gz
 	sha256sums = 11de4d412fddc98e72030fa78b395972eaa646c36c06aa2506d8a26cd251cb00
 
 pkgname = python-pocketbase
