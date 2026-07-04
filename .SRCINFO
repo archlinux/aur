@@ -7,6 +7,6 @@ pkgbase = scheme-langserver-bin
 	license = MIT
 	provides = scheme-langserver
 	source = https://github.com//ufo5260987423/scheme-langserver/releases/download/2.1.5/scheme-langserver-x86_64-linux-glibc
-	sha256sums = b2f1387aa1995e8097bbc96315872b535ab16e22be3b6a86a87f88cbbf65d2e3
+	sha256sums = 5b3e160ab691bde1d7215631129af455f9788f859137bbd7fcc6d255dd9d2477
 
 pkgname = scheme-langserver-bin
