@@ -9,7 +9,7 @@ license=('custom')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'xorg-server-xvfb' 'screen')
 makedepends=('unzip' 'clang')
 install='napcat-qq.install'
-_qqver="3.2.29_260528"
+_qqver="3.2.29-49738"
 
 source=("NapCat.Shell-${pkgver}.zip::https://github.com/NapNeko/NapCatQQ/releases/download/v${pkgver}/NapCat.Shell.zip"
         "napcat-qq.sh"
@@ -17,14 +17,14 @@ source=("NapCat.Shell-${pkgver}.zip::https://github.com/NapNeko/NapCatQQ/release
         "launcher.cpp")
 
 sha256sums=('1454c43ba7d8292b4dd4583bfe12dc6fd1b3a96fbaf52d45c8578cf873952258'
-            '068447b359d7c34a2708b2b1c517b1bdd7de7029b7b6e58129ad64fbd3c87f08'
+            'aeead48bc5d3e00ae7fd67d1b31b98d79ec5283210d21a69b3521537cbcea39c'
             'fecf169a5e052b9b475d9c28594f5f57557c4424391bf1e6190e2d1a33eeb8e2'
             '601b88813a8563dcd71c7961fc34a9b352226671e31aa603faa9f0f4fe54995a')
 sha256sums_x86_64=('1e3828079673c94994bc0f4780d5d8528647639920659862d49d1c2f2a198e25')
 sha256sums_aarch64=('5bcd8ccda401fbfa1821a7c3c758f84a253c317568f0b9c2d74426a24749e9a6')
 
-source_x86_64=("linuxqq_${_qqver}_amd64.deb::https://qqdl.gtimg.cn/qqfile/QQNT/9.9.31/release/00e6a3e7/QQ_${_qqver}_amd64_01.deb")
-source_aarch64=("linuxqq_${_qqver}_arm64.deb::https://qqdl.gtimg.cn/qqfile/QQNT/9.9.31/release/00e6a3e7/QQ_${_qqver}_arm64_01.deb")
+source_x86_64=("linuxqq_${_qqver}_amd64.deb::https://qqdl.gtimg.cn/qqfile/QQNT/9.9.31/beta/00e6a3e7/linuxqq_3.2.29-49738_amd64.deb")
+source_aarch64=("linuxqq_${_qqver}_arm64.deb::https://qqdl.gtimg.cn/qqfile/QQNT/9.9.31/beta/00e6a3e7/linuxqq_3.2.29-49738_arm64.deb")
 
 build() {
     cd "${srcdir}"
