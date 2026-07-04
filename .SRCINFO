@@ -1,7 +1,7 @@
 pkgbase = open-wallpaper-engine
 	pkgdesc = Open source scene renderer, mostly for linux.
-	pkgver = 0.1.8
-	pkgrel = 2
+	pkgver = 0.1.9
+	pkgrel = 1
 	url = https://github.com/waywallen/open-wallpaper-engine
 	arch = x86_64
 	license = GPL-2.0-only
@@ -25,20 +25,20 @@ pkgbase = open-wallpaper-engine
 	depends = libpulse
 	depends = ffmpeg
 	depends = vulkan-icd-loader
-	depends = waywallen>=0.2.2
+	depends = waywallen>=0.2.3
 	depends = cef
 	depends = glslang
 	depends = fontconfig
 	depends = quickjs-ng
-	source = git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v0.1.8-fix
+	source = git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v0.1.9
 	source = git+https://github.com/KhronosGroup/SPIRV-Reflect.git#tag=vulkan-sdk-1.4.321.0
-	source = git+https://github.com/hypengw/rstd.git#commit=b3b3243ed1fe242968879401bbb9c8637169414f
-	source = git+https://github.com/hypengw/wavsen.git#commit=107f2aeab439276c5b7271658b7df1f4ab0ed028
+	source = git+https://github.com/hypengw/rstd.git#commit=ebdd90d1e770b63f89be24204b17038fe412db81
+	source = git+https://github.com/hypengw/wavsen.git#commit=7513365c75c33c3aa1840c5b7cfeb3642e8db5c7
 	source = 0001-use-system-deps.diff
-	sha256sums = 733696e47ad942d1292c3c2767f1a31f9cbebcc95ebfd1d01f51ebc89f5160d8
+	sha256sums = e2a4aad72a758b5bbe518a37bcf3f6483599e6e80c11f442fbc563b23ad38cba
 	sha256sums = 287e451ba68eb156cf9dc6c33825e9d58fc506ea58718725c8c0f772a40a83ca
-	sha256sums = 2ebbd8684784fcd69f26515fcd73d868b67996f93b3a4cb1b54f2e197ff11888
-	sha256sums = 9551eafef6c78a5ce380bd3ae97a68383689a473d68253f03edced3694a9c48f
+	sha256sums = 47938b261def2e043199960454f19d3f2d13069ec6dccd9b8aee3a96dac280b7
+	sha256sums = 0e501f2f8ef5b40b8e9c59b0c17c91ed0032297f88982333e636ef2cc1ab0df9
 	sha256sums = 45c3088c9ff70d59399d08031f7eea656e02598d45e0231f88f83de97d304dbe
 
 pkgname = open-wallpaper-engine
