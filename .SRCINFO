@@ -1,6 +1,6 @@
 pkgbase = matrix-commander
 	pkgdesc = Simple CLI-based Matrix client
-	pkgver = 8.0.5
+	pkgver = 8.0.6
 	pkgrel = 1
 	url = https://github.com/8go/matrix-commander
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = matrix-commander
 	depends = python-olm
 	depends = python-peewee
 	optdepends = python-notify2: needed for notifications on desktop systems
-	source = matrix-commander-8.0.5::https://files.pythonhosted.org/packages/source/m/matrix-commander/matrix_commander-8.0.5.tar.gz
-	sha256sums = fd1517f037dabd6fc9cbe31952eaa0fd2aa1435aa3118ead2b8898f648647422
+	source = matrix-commander-8.0.6::https://files.pythonhosted.org/packages/source/m/matrix-commander/matrix_commander-8.0.6.tar.gz
+	sha256sums = a7499415821cd23ea6d37a910bfbfe96514323a81e38adecaa90d3c9ccaa5f35
 
 pkgname = matrix-commander
