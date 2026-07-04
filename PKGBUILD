@@ -20,7 +20,6 @@ url=${_ghurl}
 license=('MIT')
 
 provides=("${_appname}")
-conflicts=("${_appname}")
 
 makedepends=('git' 'go')
 depends=('glibc' 'bash')
