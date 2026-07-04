@@ -1,6 +1,6 @@
 pkgbase = e-search
 	pkgdesc = 识屏 · 搜索
-	pkgver = 15.2.3
+	pkgver = 15.3.2
 	pkgrel = 1
 	url = https://github.com/xushengfeng/eSearch
 	install = e-search.install
@@ -17,7 +17,7 @@ pkgbase = e-search
 	conflicts = e-search-git
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/xushengfeng/eSearch/releases/download/15.2.3/eSearch_15.2.3.aur
-	sha512sums = 94efeb553fe7206b7db52ab0cbbb65bd154a78640a2c51bc1770918180b8ad6bee25ca9e056a223116d701d6dfcc1cc31fec2e43f5a733c603bdbeca4d0cadd0
+	source = https://github.com/xushengfeng/eSearch/releases/download/15.3.2/eSearch_15.3.2.aur
+	sha512sums = a2eb358b9042f6518c7e510b839bb8f3a24c66b325b7a43167d09d72cadc805fd03f21987f9a56cc404976a0fa7759f08c0abbd2c281f81adfd1cc5e1248b5f2
 
 pkgname = e-search
