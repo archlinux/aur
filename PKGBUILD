@@ -43,11 +43,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/HKUDS/RAG-Anything/archive/
 b2sums=('SKIP')
 
 build() {
-    cd "RAG-Anything-v$pkgver"
+    cd "RAG-Anything-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "RAG-Anything-v$pkgver"
+    cd "RAG-Anything-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
