@@ -1,0 +1,18 @@
+pkgbase = rd2qmd-bin
+	pkgdesc = A fast Rd-to-Quarto Markdown converter with intelligent link resolution.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/eitsupi/rd2qmd
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	conflicts = rd2qmd
+	options = !debug
+	source_x86_64 = rd2qmd-bin-0.3.0.tar.gz::https://github.com/eitsupi/rd2qmd/releases/download/v0.3.0/rd2qmd-x86_64-unknown-linux-gnu.tar.xz
+	source_x86_64 = https://raw.githubusercontent.com/eitsupi/rd2qmd/refs/tags/v0.3.0/LICENSE.md
+	provides_x86_64 = rd2qmd=0.3.0
+	sha256sums_x86_64 = 968f91d7fc0f2dfe29bdf7a42609e3c960b6975b0c3af9c2c3e76c0c700105b6
+	sha256sums_x86_64 = 1638fb54637ac20a35be392deaae32f54cf234a9c9b9ffc3177a2ba10750ea33
+
+pkgname = rd2qmd-bin
