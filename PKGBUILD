@@ -3,7 +3,7 @@
 
 pkgname=blob-bin
 
-pkgver=1.1.0
+pkgver=1.1.1
 
 pkgrel=1
 
@@ -27,9 +27,9 @@ source_aarch64=("https://github.com/aaravmaloo/blob/releases/download/v${pkgver}
 
 
 
-sha256sums_x86_64=('1a52ec61ec98850e0c182bf7f8bb99d502050e08419a5d0a1a728236628830c2')
+sha256sums_x86_64=('a3a910dd76640579b209afb4c75781d25f2afac5ce7401f5e3668f8f61c8ee93')
 
-sha256sums_aarch64=('23f29bccc922f38af7d889817705df7df2a34a801abdc646e28afee63ca85315')
+sha256sums_aarch64=('0ae6bf74dd6746311e250450f8b3f49ed43bf210d736fc8bf8e542e744b2731a')
 
 
 
