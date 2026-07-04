@@ -1,6 +1,6 @@
 # Maintainer: Adrien Plagnol <adrien.plagnol@believe.com>
 pkgname=rustiferin
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Rust ambient-lighting agent for Glow Worm Luciferin (Plasma Wayland + MQTT)'
 url='https://github.com/dalsh/rustiferin'
@@ -14,7 +14,7 @@ optdepends=('mosquitto: local MQTT broker if you do not have one elsewhere on th
 # fails to resolve aws_lc_0_*_* symbols at the final link.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6d4d8c4a87d9fe6ee62eeb8adcae42425949430f0480a40d689b79c36a5da87f')
+sha256sums=('e2c081ba635188949d046a60ba65d36a58ecdf10fb870ca010342736aec097a1')
 
 prepare() {
   cd "$pkgname-$pkgver"
