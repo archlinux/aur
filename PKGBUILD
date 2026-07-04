@@ -1,6 +1,6 @@
 # Maintainer: Lukas Grumlik (Rakosn1cek) <rakosn1cek@zohomail.eu>
 pkgname=oversight-git
-pkgver=0.5.6.r0.g54321ab
+pkgver=0.5.7.r0.g54321ab
 pkgrel=1
 pkgdesc="Security Intelligence & Static Audit Engine for local scripts and raw web links"
 arch=("x86_64")

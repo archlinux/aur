@@ -1,6 +1,6 @@
 pkgbase = oversight-git
 	pkgdesc = Security Intelligence & Static Audit Engine for local scripts and raw web links
-	pkgver = 0.5.6.r0.g54321ab
+	pkgver = 0.5.7.r0.g54321ab
 	pkgrel = 1
 	url = https://github.com/Rakosn1cek/oversight
 	arch = x86_64
