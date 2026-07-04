@@ -1,6 +1,6 @@
 pkgbase = esphome-desktop-bin
 	pkgdesc = ESPHome Device Builder desktop app (pre-built binary)
-	pkgver = 0.12.2
+	pkgver = 0.12.3
 	pkgrel = 1
 	url = https://github.com/esphome/esphome-desktop
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = esphome-desktop-bin
 	depends = webkit2gtk-4.1
 	conflicts = esphome-desktop
 	options = !strip
-	source = esphome-desktop-bin-0.12.2.deb::https://github.com/esphome/esphome-desktop/releases/download/v0.12.2/ESPHome.Device.Builder_0.12.2_amd64.deb
-	sha256sums = 7cf85d497dbb47de500e577833df3b8e41b864ad8685c6ed1cdf26f9ae76eb46
+	source = esphome-desktop-bin-0.12.3.deb::https://github.com/esphome/esphome-desktop/releases/download/v0.12.3/ESPHome.Device.Builder_0.12.3_amd64.deb
+	sha256sums = ca843e77c1bc2705dea66a068ab793ebf8ae7ca9c2487bd9930a32f24ed5a4ae
 
 pkgname = esphome-desktop-bin
