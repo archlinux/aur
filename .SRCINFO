@@ -1,22 +1,21 @@
 pkgbase = libretro-np2kai-git
-	pkgdesc = libretro port of the Kai fork of Neko Project 2 (a PC-98 emulator)
-	pkgver = 1034.3e8fedc
+	pkgdesc = NEC - PC-98 (Neko Project II Kai) core
+	pkgver = r1091.54ec39f
 	pkgrel = 1
 	url = http://domisan.sakura.ne.jp/article/np2kai/np2kai.html
-	install = libretro-np2kai-git.install
-	arch = i686
 	arch = x86_64
-	arch = arm
-	arch = armv6h
-	arch = armv7h
+	arch = aarch64
+	arch = i686
 	groups = libretro
 	license = MIT
 	makedepends = git
+	makedepends = make
 	depends = gcc-libs
 	depends = libretro-core-info
-	provides = np2kai-libretro-git
-	conflicts = np2kai-libretro-git
-	source = git+https://github.com/AZO234/NP2kai.git
-	md5sums = SKIP
+	provides = libretro-np2kai=r1091.54ec39f
+	conflicts = libretro-np2kai
+	options = !lto
+	source = libretro-np2kai::git+https://github.com/libretro/NP2kai.git
+	sha256sums = SKIP
 
 pkgname = libretro-np2kai-git

@@ -1,34 +1,41 @@
-# Maintainer: Brenden Hoffman <hbrenden@fastmail.com>
+# Maintainer: Engdyn <aur cat engdyn dog de>
+# Contributor: Brenden Hoffman <hbrenden@fastmail.com>
 # Contributor: Andy Delgado <cuba200611@gmail.com>
 pkgname=libretro-np2kai-git
-pkgver=1034.3e8fedc
+pkgver=r1091.54ec39f
 pkgrel=1
-pkgdesc="libretro port of the Kai fork of Neko Project 2 (a PC-98 emulator)"
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+pkgdesc="NEC - PC-98 (Neko Project II Kai) core"
+arch=(x86_64 aarch64 i686)
 url="http://domisan.sakura.ne.jp/article/np2kai/np2kai.html"
-license=('MIT')
-groups=('libretro')
-install=libretro-np2kai-git.install
-depends=('gcc-libs' 'libretro-core-info')
-makedepends=('git')
-provides=('np2kai-libretro-git')
-conflicts=('np2kai-libretro-git')
-
-source=('git+https://github.com/AZO234/NP2kai.git')
-
-md5sums=('SKIP')
+license=(MIT)
+groups=(libretro)
+depends=(
+	gcc-libs
+	libretro-core-info
+)
+makedepends=(
+	git
+	make
+)
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}")
+options=(!lto)
+source=(${pkgname%-git}::git+https://github.com/libretro/NP2kai.git)
+sha256sums=(SKIP)
 
 pkgver() {
-	cd "NP2kai"
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd "$srcdir/${pkgname%-git}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "NP2kai/sdl"
-	make
+	cd "$srcdir/${pkgname%-git}/sdl"
+	CFLAGS+=" -Wno-incompatible-pointer-types"
+	make -f Makefile.libretro
 }
 
 package() {
-	install -Dm644 "NP2kai/sdl/np2kai_libretro.so" "${pkgdir}/usr/lib/libretro/np2kai_libretro.so"
-	install -Dm644 "NP2kai/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+	cd "$srcdir/${pkgname%-git}"
+	install -Dm755 sdl/np2kai_libretro.so -t "$pkgdir/usr/lib/libretro"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
