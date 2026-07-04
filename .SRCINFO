@@ -1,24 +1,25 @@
 pkgbase = notepadqq
-	pkgdesc = Notepad++-like text editor for Linux
-	pkgver = 2.0.0beta
-	pkgrel = 3
-	url = https://notepadqq.com/
+	pkgdesc = A simple, general-purpose editor for Linux
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://notepadqq.com
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
+	makedepends = cmake
 	makedepends = git
-	makedepends = qt5-tools
+	makedepends = qt6-tools
+	makedepends = qt6-websockets
+	depends = glibc
 	depends = hicolor-icon-theme
-	depends = qt5-svg
-	depends = qt5-webengine
-	depends = qt5-websockets
+	depends = libgcc
+	depends = libstdc++
+	depends = qt6-5compat
+	depends = qt6-base
+	depends = qt6-svg
+	depends = qt6-webchannel
+	depends = qt6-webengine
 	depends = uchardet
-	optdepends = mathjax2: Math rendering
-	options = !emptydirs
-	source = git+https://github.com/notepadqq/notepadqq.git#commit=5317c21678e71687aaab56862339354e1ea07306
-	source = git+https://github.com/notepadqq/CodeMirror.git
-	source = fix-autosave.patch
-	sha256sums = e66199693ae087109ea749594ffe44ec7059bfef2faf1e744e67a48896b2ea2a
-	sha256sums = SKIP
-	sha256sums = a461affdcd9246098c07b9ca4f1c978fa5444a233595fa7ee97d99ca03893426
+	source = git+https://github.com/notepadqq/notepadqq.git#tag=v2.1.1
+	sha256sums = 8c6f45910a946591eb48861627c5d3513649a8ef1a2824c6700bd1c60cb91872
 
 pkgname = notepadqq

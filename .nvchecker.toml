@@ -1,0 +1,5 @@
+[notepadqq]
+source = "github"
+github = "notepadqq/notepadqq"
+use_max_tag = true
+prefix = "v"
