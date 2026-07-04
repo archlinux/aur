@@ -1,7 +1,7 @@
 pkgbase = alacritty-use-theme-with-services-git
 	pkgdesc = services to use alacritty-use-theme
 	pkgver = r65.ed38a3e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alacritty-use-theme/alacritty-use-theme-with-services
 	arch = x86_64
 	groups = alacritty-use-theme
@@ -21,6 +21,8 @@ pkgname = alacritty-use-theme-with-redshift-git
 	provides = alaritty-use-theme-with-redshift.service
 	provides = alaritty-use-theme-with-redshift.timer
 	provides = alaritty-use-theme-with-redshift.target
+	provides = auto-update-gnome-theme.service
+	provides = auto-update-gnome-theme.path
 	conflicts = alacritty-use-theme-with-redshift
 	conflicts = alacritty-use-theme-with-redshift-git
 
