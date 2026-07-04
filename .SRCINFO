@@ -1,7 +1,7 @@
 pkgbase = antigravity-manager-bin
-	pkgdesc = Antigravity Manager - Electron App
+	pkgdesc = A modern, unified desktop manager for LLM accounts, proxies, and AI quotas.
 	pkgver = 0.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Draculabo/AntigravityManager
 	arch = x86_64
 	license = custom:CC-BY-NC-SA-4.0
