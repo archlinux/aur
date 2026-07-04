@@ -6,7 +6,7 @@
 
 pkgname=frank-go
 _reponame=frank_go
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Beginner-friendly Go/Baduk trainer: tsumego practice, KataGo opponent, influence overlay (Sabaki fork)"
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
     'katago-cpu: CPU engine from the AUR'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c67f1d7dfe30e9faae713ef46f8fc6c5741f678bc8ad902d3cb9eca7d1ad1b53')
+sha256sums=('40de5fb09f8a2dcffec6d0f2c830f77779a88f2d7ffc2f22d5e3f66bcaf1663f')
 
 build() {
     cd "$_reponame-$pkgver"
@@ -53,7 +53,7 @@ EOF
     install -Dm0644 /dev/stdin \
         "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
 [Desktop Entry]
-Name=frank_go
+Name=Frank GO
 Comment=Beginner-friendly Go/Baduk trainer
 Exec=$pkgname %U
 Icon=$pkgname
