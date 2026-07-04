@@ -1,7 +1,7 @@
 pkgbase = colorize-cli
 	pkgdesc = Colorize text in the terminal using named colors, HEX, or 256-color indexes
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/user14923929/colorize-cli
 	arch = x86_64
 	arch = aarch64
