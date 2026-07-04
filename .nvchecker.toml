@@ -1,0 +1,3 @@
+[rich-gradient-cli]
+source = "pypi"
+pypi = "rich-gradient-cli"
