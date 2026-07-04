@@ -56,7 +56,7 @@ makedepends=(
     'python-wheel'
 )
 optdepends=(
-    'python-torch: VLM inference & pipeline'
+    'python-pytorch: VLM inference & pipeline'
     'python-transformers: VLM inference & pipeline'
     'python-accelerate: VLM inference acceleration'
     'python-torchvision: Pipeline OCR'
