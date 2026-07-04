@@ -13,7 +13,7 @@ depends=(
     'python'
     'python-aiohttp'
     'python-requests'
-    'python-typing-extensions'
+    'python-typing_extensions'
     'python-yaml'
 )
 makedepends=(
@@ -33,13 +33,13 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/PaddlePaddle/PaddleOCR/arch
 b2sums=('SKIP')
 
 build() {
-    cd "PaddleOCR-v$pkgver"
+    cd "PaddleOCR-$pkgver"
     export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "PaddleOCR-v$pkgver"
+    cd "PaddleOCR-$pkgver"
     export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
