@@ -11,6 +11,7 @@ license=('GPLv2')
 url="https://github.com/scsitape/stenc"
 source=("https://github.com/scsitape/${pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=('89eb1da2391be207e23d4e3cc6563405272eeb456b59360e92fbeca063badcfcf4c37fc814af59803707006e5c04e43e18755e1d30b0f3b3020a7645396db1a6')
+makedepends=('pandoc')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
