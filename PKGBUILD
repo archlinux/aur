@@ -6,7 +6,7 @@
 pkgname=ocrodjvu-python3-git
 _pkgbasename='ocrodjvu'
 pkgver=0.14+46.r1457.7954aaa
-pkgrel=1.314
+pkgrel=2.314
 pkgdesc="OCR for DjVu (Python 3 fork)"
 arch=('any')
 url='https://github.com/FriedrichFroebel/ocrodjvu'
@@ -23,6 +23,7 @@ optdepends=('python-html5lib: HTML parser; required for the ``--html5`` option'
             'gocr: OCR system')
 source=(git+https://github.com/FriedrichFroebel/ocrodjvu)
 sha256sums=('SKIP')
+install=ocrodjvu-python3-git.install
 
 _fullsrcdir() {
     echo "$srcdir/$_pkgbasename"

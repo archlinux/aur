@@ -1,7 +1,7 @@
 pkgbase = ocrodjvu-python3-git
 	pkgdesc = OCR for DjVu (Python 3 fork)
 	pkgver = 0.14+46.r1457.7954aaa
-	pkgrel = 1.314
+	pkgrel = 2.314
 	url = https://github.com/FriedrichFroebel/ocrodjvu
 	install = ocrodjvu-python3-git.install
 	arch = any

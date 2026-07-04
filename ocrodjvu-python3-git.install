@@ -1,0 +1,14 @@
+post_install() {
+    echo "##########################################"
+    echo "# ocrodjvu-python3-git package deprecation notice #"
+    echo "##########################################"
+    echo "#"
+    echo "# The 'ocrodjvu-python3-git' AUR package will be abandoned soon. It was meant to patch a hole while no proper Python 3 port existed."
+    echo "# Consider the fixed-version 'ocrodjvu' package instead."
+    echo "# VCS packages are more fragile and the upstream project does not accumulate enough changes to justify both AUR packages."
+    echo "#"
+}
+
+post_upgrade() {
+    post_install
+}
