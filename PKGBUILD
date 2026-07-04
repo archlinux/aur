@@ -1,6 +1,6 @@
 # Maintainer: xmlzitos154 <matheuz.ricardo@protonmail.com>
 pkgname=jay-bin
-pkgver=7.3.03
+pkgver=7.4.0
 pkgrel=1
 pkgdesc="A lightweight, semantic AUR helper wrapper for Arch Linux"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('74dc13a08691ea791630b11577ea460d7e177727b538b6b021e9745b61719c10')
+sha256sums=('c5cdfdf294cc704a591ac59ddb556f6fcff9c871972ba7d034f8c981132f414f')
 
 package() {
     cd "jay-$pkgver"
@@ -22,4 +22,9 @@ package() {
     install -Dm644 README.md "$pkgdir/usr/share/doc/jay/README.md"
     install -Dm644 languages/en.sh "$pkgdir/usr/share/jay/en.sh"
     install -Dm644 languages/pt.sh "$pkgdir/usr/share/jay/pt.sh"
+    install -Dm644 languages/base.sh "$pkgdir/usr/share/jay/base.sh"
+    install -Dm644 languages/logging.sh "$pkgdir/usr/share/jay/logging.sh"
+    install -Dm644 languages/cache.sh "$pkgdir/usr/share/jay/cache.sh"
+    install -Dm644 languages/flatpak.sh "$pkgdir/usr/share/jay/flatpak.sh"
+    install -Dm644 languages/etc.sh "$pkgdir/usr/share/jay/etc.sh"
 }
