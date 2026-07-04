@@ -26,7 +26,6 @@ b2sums=('5832a7537c7bb0b50376bf6818e647bd738ba54da6263249ddf7c6a6483b60a0458bc71
         'f0a1415f8e88ffe2fe189c56a701a9756f74947375f142aa3965679129d3182f1b380beea02d70e07cbe7c9443461b8cbb674193ae07f71d543d13a10ecaf7ff')
 
 package() {
-  # shellcheck disable=SC2016
   find "${srcdir}"/sgx_debian_local_repo -name "*.deb" -exec \
     sh -c 'ar -p "$1" -O data.tar.zst | tar -x --zstd -C "$0"' "${pkgdir}" {} \;
 
@@ -36,12 +35,12 @@ package() {
   # composed license
   install -Dm644 "${pkgdir}"/usr/share/doc/libsgx-enclave-common/copyright -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  _fix_non_standard_paths # namcap rule: directoryname
+  _fix_debian_paths # namcap rule: directoryname
   _fix_binary_symlinks # namcap rule: symlink
 }
 
 # Move files to standard Arch Linux folders
-_fix_non_standard_paths() {
+_fix_debian_paths() {
   # /etc/udev is for user files, packages should use /usr/lib/udev instead
   install -d -m755 "${pkgdir}"/usr/lib/udev
   mv "${pkgdir}"/etc/udev/rules.d "${pkgdir}"/usr/lib/udev/rules.d
