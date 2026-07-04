@@ -1,24 +1,27 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=zluda-git
-pkgver=6.preview.35.r0.g754bfbb
+pkgver=7.preview.1.r0.g08ce48d
 pkgrel=1
 pkgdesc='A drop-in replacement for CUDA on non-NVIDIA GPUs (git version)'
 arch=('x86_64')
 url='https://github.com/vosen/ZLUDA/'
 license=('Apache-2.0 OR MIT')
 depends=(
-    'gcc-libs'
     'glibc'
     'hip-runtime-amd'
     'hipblaslt'
+    'libgcc'
+    'libstdc++'
     'miopen-hip'
     'rocblas'
-    'rocm-smi-lib')
+    'rocm-smi-lib'
+    'rocsparse')
 makedepends=(
-    'git'
     'cargo'
     'cmake'
+    'git'
+    'git-lfs'
     'ninja'
     'python')
 provides=('zluda')
@@ -30,7 +33,12 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
+export GIT_LFS_SKIP_SMUDGE='1'
+
 prepare() {
+    git -C ZLUDA lfs install --local
+    git -C ZLUDA lfs pull "$(printf '%s' "${source[0]/git+/}" | sed 's/#.*$//')"
+    
     git -C ZLUDA submodule init
     git -C ZLUDA config --local submodule.ext/llvm-project.url "${srcdir}/llvm-project-vosen"
     git -C ZLUDA config --local submodule.ext/HiGHS.url "${srcdir}/HiGHS"
@@ -43,8 +51,9 @@ pkgver() {
 
 build() {
     cd ZLUDA
-    export RUSTUP_TOOLCHAIN='stable'
+    export CXXFLAGS+=' -ffat-lto-objects'
     export CARGO_TARGET_DIR='target'
+    export RUSTUP_TOOLCHAIN='stable'
     cargo xtask --release
 }
 
