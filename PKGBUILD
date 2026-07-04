@@ -31,6 +31,7 @@ prepare() {
 
     sed -i -e 's|requires = \[.*\]|requires = \[\"uv_build\"]|g' "./pyproject.toml"
 }
+
 build() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
