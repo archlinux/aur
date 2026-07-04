@@ -1,6 +1,6 @@
 pkgbase = wsjtx
 	pkgdesc = Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://sourceforge.net/projects/wsjt/
 	arch = i686
@@ -26,13 +26,16 @@ pkgbase = wsjtx
 	depends = libgomp
 	depends = libstdc++
 	depends = libusb
+	depends = portaudio
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = qt5-serialport
 	depends = qt5-websockets
 	depends = readline
 	options = !lto
-	source = wsjtx-3.0.1.tar.gz::https://github.com/WSJTX/wsjtx/archive/refs/tags/v3.0.1.tar.gz
-	sha256sums = 4f67a2a1e595ec6c9826eaee013d96673ddd084f7ab7db9bca1d7cf8b15a5ed6
+	source = wsjtx-3.0.2.tar.gz::https://github.com/WSJTX/wsjtx/archive/refs/tags/v3.0.2.tar.gz
+	source = https://github.com/df7cb/wsjtx/commit/1f9518389ef66b961f4c41ed4f105e70ee99f4a2.patch
+	sha256sums = 8483a851bcb6455f5787de87b89efdf90e928842debde036e287e93e7f3837bd
+	sha256sums = 3f2680d694d09e2b5a517ccbfa561104804eaed6e884e3e9664b1c3c205be257
 
 pkgname = wsjtx

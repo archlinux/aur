@@ -4,7 +4,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname="wsjtx"
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)"
 url="https://sourceforge.net/projects/wsjt/"
@@ -24,6 +24,7 @@ depends=(
   'libgomp'
   'libstdc++'
   'libusb'
+  'portaudio'
   'qt5-base'
   'qt5-multimedia'
   'qt5-serialport'
@@ -43,8 +44,15 @@ makedepends=(
 options=('!lto')
 
 _pkgsrc="$pkgname-$pkgver"
-source=("$_pkgsrc.tar.gz"::"https://github.com/WSJTX/wsjtx/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4f67a2a1e595ec6c9826eaee013d96673ddd084f7ab7db9bca1d7cf8b15a5ed6')
+source=("$_pkgsrc.tar.gz"::"https://github.com/WSJTX/wsjtx/archive/refs/tags/v${pkgver}.tar.gz"
+        "https://github.com/df7cb/wsjtx/commit/1f9518389ef66b961f4c41ed4f105e70ee99f4a2.patch")
+sha256sums=('8483a851bcb6455f5787de87b89efdf90e928842debde036e287e93e7f3837bd'
+            '3f2680d694d09e2b5a517ccbfa561104804eaed6e884e3e9664b1c3c205be257')
+
+prepare() {
+  cd ${_pkgsrc}
+  patch -p1 < "$srcdir"/1f9518389ef66b961f4c41ed4f105e70ee99f4a2.patch
+}
 
 build() {
   local _cmake_options=(
