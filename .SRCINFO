@@ -1,6 +1,6 @@
 pkgbase = gitversion-bin
 	pkgdesc = From git log to SemVer in no time
-	pkgver = 6.8.0
+	pkgver = 6.8.1
 	pkgrel = 1
 	url = https://github.com/GitTools/GitVersion
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = gitversion-bin
 	provides = gitversion
 	conflicts = gitversion
 	options = !strip
-	source = README-6.8.0.md::https://raw.githubusercontent.com/GitTools/GitVersion/6.8.0/README.md
-	source = LICENSE-6.8.0::https://raw.githubusercontent.com/GitTools/GitVersion/6.8.0/LICENSE
+	source = README-6.8.1.md::https://raw.githubusercontent.com/GitTools/GitVersion/6.8.1/README.md
+	source = LICENSE-6.8.1::https://raw.githubusercontent.com/GitTools/GitVersion/6.8.1/LICENSE
 	sha256sums = 6ce2996ddff174204352a487e5a4b6edf7ae44a1e292806ef28d67a57de5682d
 	sha256sums = 3bdeb88619a256f8b8615599a67db3195028d969490c0e87a8cb4b5917bf340c
-	source_x86_64 = GitVersion-x86_64-6.8.0.tgz::https://github.com/GitTools/GitVersion/releases/download/6.8.0/gitversion-linux-x64-6.8.0.tar.gz
-	sha256sums_x86_64 = 8e7ede2369fb8138b40d3831a36bcddfee5836c840f749b9d604788a44c260f9
-	source_aarch64 = GitVersion-aarch64-6.8.0.tgz::https://github.com/GitTools/GitVersion/releases/download/6.8.0/gitversion-linux-arm64-6.8.0.tar.gz
-	sha256sums_aarch64 = 2bd1cbb19edea9820bd97c4b2f02f623c40ee611da67ef34d6cccc6bda698c7d
+	source_x86_64 = GitVersion-x86_64-6.8.1.tgz::https://github.com/GitTools/GitVersion/releases/download/6.8.1/gitversion-linux-x64-6.8.1.tar.gz
+	sha256sums_x86_64 = 8ce2cfe4a8d7823a31e22c478e8377f39efe77cd2efb2802ab5ff03540502230
+	source_aarch64 = GitVersion-aarch64-6.8.1.tgz::https://github.com/GitTools/GitVersion/releases/download/6.8.1/gitversion-linux-arm64-6.8.1.tar.gz
+	sha256sums_aarch64 = ad12a50d0ce98b639ee0285d00554261c8f0daa686905bd54c020eb120657de4
 
 pkgname = gitversion-bin
