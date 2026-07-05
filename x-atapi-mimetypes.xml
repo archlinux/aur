@@ -78,7 +78,7 @@
   </mime-type>
   <mime-type type="application/x-tns">
     <comment>TI-Nspire Document</comment>
-    <comment xml:lang="en_GB">TI-Nspire Documen</comment>
+    <comment xml:lang="en_GB">TI-Nspire Document</comment>
     <generic-icon name="application-x-executable"/>
     <glob pattern="*.tns"/>
     <glob pattern="*.TNS"/>
@@ -92,5 +92,33 @@
     </magic>
     <glob pattern="*.8xp"/>
     <glob pattern="*.8XP"/>
+  </mime-type>
+  <mime-type type="audio/mogg">
+    <comment>Harmonix Multitrack Vorbis audio</comment>
+    <comment xml:lang="en_GB">Harmonix Multitrack Vorbis audio</comment>
+    <generic-icon name="audio-ogg"/>
+    <glob pattern="*.mogg"/>
+    <glob pattern="*.MOGG"/>
+  </mime-type>
+  <mime-type type="application/dta">
+    <comment>Rock Band DTA Metadata</comment>
+    <comment xml:lang="en_GB">Rock Band DTA Metadata</comment>
+    <generic-icon name="text-plain"/>
+    <glob pattern="*.dta"/>
+    <glob pattern="*.DTA"/>
+  </mime-type>
+  <mime-type type="application/dbc">
+    <comment>Dragon BASIC Code</comment>
+    <comment xml:lang="en_GB">Dragon BASIC Code</comment>
+    <generic-icon name="text-plain"/>
+    <glob pattern="*.dbc"/>
+    <glob pattern="*.DBC"/>
+  </mime-type>
+  <mime-type type="application/x-dol">
+    <comment>GameCube/Wii Executable</comment>
+    <comment xml:lang="en_GB">GameCube/Wii Executable</comment>
+    <generic-icon name="application-x-gba-rom"/>
+    <glob pattern="*.dol"/>
+    <glob pattern="*.DOL"/>
   </mime-type>
 </mime-info>
