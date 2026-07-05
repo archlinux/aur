@@ -2,7 +2,7 @@
 
 _Name="Sideband"
 pkgname="${_Name,,}"
-pkgver=1.9.6
+pkgver=1.9.8
 pkgrel=1
 pkgdesc="Communicate with people or LXMF-compatible systems over Reticulum networks"
 arch=(
@@ -62,7 +62,7 @@ source=(
   "${_url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
   # "${_pkgsrc}-manifest.rsm::${_url}/releases/download/${pkgver}/manifest.rsm"
 )
-sha256sums=('5872015437078c6f44aaf52d93632291824068d060f3fc7ee092b9cd56ecb4c6')
+sha256sums=('e47f5aae5a794016ae3c80f5894b2b90c2a656f5f355391173d9cde952cab31f')
 
 # verify() {
 #   rngit release "${_pkgsrc}-manifest.rsm" verify \
