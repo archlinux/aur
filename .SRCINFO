@@ -1,4 +1,4 @@
-pkgbase = nfx-git
+pkgbase = nfx
 	pkgdesc = NFX archive tool written in C using Zstandard, libzip and libarchive
 	pkgver = 1.1.0
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = nfx-git
 	source = https://github.com/ReyzerMC/nfx.git
 	sha256sums = SKIP
 
-pkgname = nfx-git
+pkgname = nfx

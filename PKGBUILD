@@ -1,5 +1,5 @@
 # Maintainer: Reyzer <reyzervt@gmail.com>
-pkgname=nfx-git
+pkgname=nfx
 pkgver=1.1.0
 pkgrel=1
 pkgdesc="NFX archive tool written in C using Zstandard, libzip and libarchive"
