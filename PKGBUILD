@@ -6,7 +6,7 @@
 pkgname=hermes-agent
 pkgver=0.18.0
 _tagver=2026.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
 url="https://github.com/NousResearch/hermes-agent"
@@ -49,7 +49,6 @@ build() {
   echo "==> Building frontend..."
   if [ -d "web" ]; then
     cd web
-    rm -f package-lock.json
     npm install || return 1
     npm run build || return 1
     cd ..
@@ -69,7 +68,7 @@ build() {
   echo "==> Installing whatsapp-bridge dependencies..."
   # Install whatsapp-bridge dependencies (kept alongside scripts for same path)
   if [ -f "scripts/whatsapp-bridge/package.json" ]; then
-    (cd scripts/whatsapp-bridge && rm -f package-lock.json && npm install --legacy-peer-deps --omit=dev) || return 1
+    (cd scripts/whatsapp-bridge && npm install --legacy-peer-deps --omit=dev) || return 1
   fi
 
   echo "==> Creating Python venv and installing dependencies..."
