@@ -4,11 +4,11 @@
 # Contributor: Denis Zheleztsov <difrex.punk@gmail.com>
 
 pkgname=wlr-randr-git
-pkgver=0.3.0+1+gb9fad41
+pkgver=0.4.1+11+g3eac217
 pkgrel=1
 pkgdesc="Utility to manage outputs of a Wayland compositor (latest git version)"
 arch=('x86_64')
-url="https://sr.ht/~emersion/wlr-randr/"
+url="https://gitlab.freedesktop.org/emersion/wlr-randr/"
 license=('MIT')
 depends=("wayland")
 makedepends=("git" "meson")
