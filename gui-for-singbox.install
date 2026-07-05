@@ -1,0 +1,19 @@
+DATA_DIR="/opt/gui-for-singbox-bin/data"
+
+post_install() {
+    install -dm777 "${DATA_DIR}/.cache/icons"
+    install -dm777 "${DATA_DIR}/.cache/imgs"
+    install -dm777 "${DATA_DIR}/plugins"
+    install -dm777 "${DATA_DIR}/rolling-release"
+    install -dm777 "${DATA_DIR}/rulesets"
+    install -dm777 "${DATA_DIR}/subscribes"
+    install -dm777 "${DATA_DIR}/locales"
+    install -dm777 "${DATA_DIR}/third"
+    install -dm755 "${DATA_DIR}/sing-box"
+    ln -sf /usr/bin/sing-box "${DATA_DIR}/sing-box/sing-box"
+    chmod 777 "${DATA_DIR}"
+}
+
+post_upgrade() {
+    post_install
+}
