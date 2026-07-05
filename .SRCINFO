@@ -1,0 +1,17 @@
+pkgbase = openrgb-plugin-effects
+	pkgdesc = Effects plugin for OpenRGB
+	pkgver = 1.0.0.rc2
+	pkgrel = 1
+	url = https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin
+	arch = any
+	license = GPL-2.0-only
+	makedepends = git
+	depends = qt5-tools
+	depends = openrgb
+	depends = openal
+	provides = openrgb-plugin-effects
+	conflicts = openrgb-plugin-effects
+	source = git+https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin.git#tag=release_candidate_1.0rc2
+	sha256sums = SKIP
+
+pkgname = openrgb-plugin-effects
