@@ -1,8 +1,9 @@
 # Maintainer: yum13241 <coolcrew45 at disroot dot org>
 
 pkgname=elyprismlauncher-bin
-pkgver=11.0.2
-pkgrel=3
+pkgver=11.0.3pre1
+_pkgver=11.0.3-pre1
+pkgrel=1
 pkgdesc="Prism Launcher fork with integrated support for Ely.by accounts (binary version)"
 arch=('x86_64')
 url="https://github.com/ElyPrismLauncher/Launcher"
@@ -17,13 +18,13 @@ optdepends=('glfw: to use system GLFW libraries'
             'java-runtime=8: support for Minecraft versions < 1.17'
             'flite: minecraft voice narration'
 )
-source=("https://github.com/ElyPrismLauncher/Launcher/releases/download/${pkgver}/PineconeMC-ArchLinux-${pkgver}.pkg.tar.zst")
-noextract=("PineconeMC-ArchLinux-${pkgver}.pkg.tar.zst")
+source=("https://github.com/ElyPrismLauncher/Launcher/releases/download/${_pkgver}/PineconeMC-ArchLinux-${_pkgver}.pkg.tar.zst")
+noextract=("PineconeMC-ArchLinux-${_pkgver}.pkg.tar.zst")
 sha256sums=('SKIP')
 
 package()
 {
 	mkdir ${pkgdir}/usr
 	cd ${pkgdir}/usr
-	tar -xvf ${srcdir}/PineconeMC-ArchLinux-${pkgver}.pkg.tar.zst --strip-components=1
+	tar -xvf ${srcdir}/PineconeMC-ArchLinux-${_pkgver}.pkg.tar.zst --strip-components=1
 }
