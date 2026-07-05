@@ -2,8 +2,8 @@
 # Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 
 pkgname=python-scramp
-pkgver=1.4.10
-_commit=37c7b4e8be359c11ede457123cb0ad04e5a928b5
+pkgver=1.4.11
+_commit=7afdbe259d7af4ae476c9ad1572a7e66a2304505
 pkgrel=1
 pkgdesc="Python implementation of the SCRAM protocol"
 arch=(any)
@@ -21,7 +21,7 @@ makedepends=(
 )
 checkdepends=(python-pytest python-pytest-mock python-passlib)
 source=("git+$url.git?signed#commit=$_commit")
-sha256sums=('02be3ab36d118bbb5c52d57e707b3eea11823cd097c76dd273601f131370d4e7')
+sha256sums=('62d6214c75f7511123499786c4bf3058953a00a57af38a11d376ed151b0421be')
 validpgpkeys=(
   'D5681B7EC7292511C4CC1450892B00AB699851E8'  # Tony Locke <tlocke@tlocke.org.uk>, proven by https://keybase.io/tlocke
 )
