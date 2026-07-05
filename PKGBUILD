@@ -1,7 +1,7 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=flexo
-pkgver=1.6.10
+pkgver=1.6.13
 pkgrel=1
 pkgdesc='A central pacman cache'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nroi/${pkgname}/archive
         'flexo.service'
         'sysuser.conf'
         'tmpfiles.conf')
-sha256sums=('bbceefe6b83668a19f73377557099e6b8fdaf06f17aba4a9025b3985f1a0ae4d'
+sha256sums=('9059560b32e2636da98757432c67a2f29bfc7bfb09ad2aa9135f12e9b016ab52'
             '3b38503a554cc179e33f5c337cbbd0186d03069d059d534e220882407d550f48'
             '481efe7fe3a0ac094807441718ea2793e848a5a3a3aedc5b896ff60fdce14606'
             '6fadc9b5507ed3dc1b87cecafbdd479adedd067ccb2fb1971917b6310e3adf41')
