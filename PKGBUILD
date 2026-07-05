@@ -38,14 +38,12 @@ options=('!lto')
 prepare() {
     cd "${_pkgname}"
 
-    export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target ${CARCH}-unknown-linux-gnu
 }
 
 pkgver() {
     cd "${_pkgname}"
 
-    export RUSTUP_TOOLCHAIN=stable
     semver=$( cargo metadata --no-deps --format-version=1 |
         jq -r '.packages | .[0] | .version' )
     echo "${semver}_r$(git rev-list --count v${semver}..HEAD).g$(git rev-parse --short HEAD)"
@@ -54,7 +52,6 @@ pkgver() {
 build() {
     cd "${_pkgname}"
 
-    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
     # template files
@@ -67,7 +64,6 @@ build() {
 check() {
     cd "${_pkgname}"
 
-    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/${_pkgname}/themes"
 
