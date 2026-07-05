@@ -4,7 +4,7 @@
 pkgname=warsaw-bin
 _pkgver=2.22.1-6
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides the needed software to use some banking services"
 arch=(x86_64)
 url="https://www.topaz.com.br"
