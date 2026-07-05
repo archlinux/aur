@@ -1,7 +1,7 @@
 pkgbase = jupiter-hw-support
 	pkgdesc = Jupiter HW support package
 	pkgver = 20250728.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://gitlab.steamos.cloud/jupiter/jupiter-hw-support
 	arch = any
 	license = MIT

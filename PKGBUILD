@@ -4,7 +4,7 @@ pkgname=jupiter-hw-support
 _srctag=jupiter-20250728.1
 _srcver=${_srctag#jupiter-}
 pkgver=${_srcver//-/.}
-pkgrel=6
+pkgrel=7
 arch=('any')
 url="https://gitlab.steamos.cloud/jupiter/jupiter-hw-support"
 pkgdesc="Jupiter HW support package"
@@ -39,4 +39,9 @@ package() {
   rm -f "$pkgdir/usr/bin/steamos-polkit-helpers/jupiter-biosupdate"
   rm -f "$pkgdir/usr/lib/systemd/system/jupiter-biosupdate.service"
   rm -f "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/jupiter-biosupdate.service"
+
+  # Remove SteamOS updater entirely
+  rm -f "$pkgdir/usr/bin/steamos-polkit-helpers/steamos-update"
+  sed -i '/<action id="org.valve.policykit.steamos.pkexec.run-steamos-polkit-helpers-steamos-update">/,/<\/action>/d' \
+    "$pkgdir/usr/share/polkit-1/actions/org.valve.steamos.policy"
 }
