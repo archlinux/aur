@@ -2,7 +2,7 @@
 Type=Application
 Name=Logseq (Nightly)
 Comment=A privacy-first, open-source knowledge management platform
-Exec=logseq %u
+Exec=/usr/bin/logseq %u
 Icon=logseq
 Terminal=false
 StartupNotify=true
