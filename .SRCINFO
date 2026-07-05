@@ -1,6 +1,6 @@
 pkgbase = hypr-kblayoutd-git
 	pkgdesc = Small Hyprland daemon that remembers keyboard layout per window
-	pkgver = 0.1.0.r2.gc27b3ad
+	pkgver = 0.2.0.r0.g35f3e7f
 	pkgrel = 1
 	url = https://github.com/kengzzzz/hypr-kblayoutd
 	arch = x86_64

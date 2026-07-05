@@ -2,7 +2,7 @@
 
 pkgname=hypr-kblayoutd-git
 _pkgname=hypr-kblayoutd
-pkgver=0.1.0.r2.gc27b3ad
+pkgver=0.2.0.r0.g35f3e7f
 pkgrel=1
 pkgdesc="Small Hyprland daemon that remembers keyboard layout per window"
 arch=('x86_64' 'aarch64')
@@ -44,6 +44,9 @@ package() {
 
   install -Dm755 "target/release/$_pkgname" \
     "$pkgdir/usr/bin/$_pkgname"
+
+  install -Dm644 contrib/hypr-kblayoutd.service \
+    "$pkgdir/usr/lib/systemd/user/$_pkgname.service"
 
   install -Dm644 README.md \
     "$pkgdir/usr/share/doc/$pkgname/README.md"
