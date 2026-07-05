@@ -1,9 +1,8 @@
 # Maintainer: whysooraj <whysooraj.official@gmail.com>
 pkgname=tide-island
-pkgver=1.0.14
+pkgver=1.0.15
 pkgrel=1
-_commit=36280518f9f27211da093bdce0b86f1c717a4151
-_srcdir=Tide-island-$_commit
+_srcdir=Tide-island-$pkgver
 pkgdesc="A dynamic island for Hyprland using Quickshell"
 arch=('x86_64')
 url="https://github.com/enhaoswen/Tide-island"
@@ -11,11 +10,15 @@ license=('unknown')
 depends=(
     'qt6-base'
     'qt6-declarative'
+    'qt6-wayland'
     'qt6-connectivity'
     'qt6-svg'
     'hyprland'
     'wireplumber'
+    'pipewire'
+    'dbus'
     'libpulse'
+    'systemd-libs'
     'brightnessctl'
     'hyprsunset'
     'upower'
@@ -24,7 +27,7 @@ depends=(
     'quickshell'
 )
 makedepends=('cmake')
-options=('!debug')
+options=('!debug' '!strip')
 optdepends=(
     'cava: for audio visualizer'
     'imagemagick: for wallpaper thumbnails'
@@ -32,10 +35,13 @@ optdepends=(
     'networkmanager: for wifi control'
     'iwd: for wifi control'
     'swaync: for the Focus do-not-disturb toggle'
+    'tlp: for TLP power profile controls'
+    'polkit: for applying TLP profiles via pkexec'
+    'sudo: alternative for applying TLP profiles'
 )
 conflicts=('tide-island-git')
 install='tide-island.install'
-source=("$pkgname-$_commit.tar.gz::https://github.com/enhaoswen/Tide-island/archive/$_commit.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/enhaoswen/Tide-island/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
@@ -47,7 +53,9 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  rm -f "$pkgdir/usr/lib/qt6/qml/TideIsland/tide-island-config-app_qml_module_dir_map.qrc"
   chmod +x "$pkgdir/usr/bin/tide-island"
+  chmod +x "$pkgdir/usr/bin/tide-island-config-app"
   chmod +x "$pkgdir/usr/share/tide-island/bin/lyricsmpris"
   chmod +x "$pkgdir/usr/share/tide-island/bin/tide-island-setup"
 }
