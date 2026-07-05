@@ -4,7 +4,7 @@ pkgname=handy
 pkgver=0.9.0
 # git rev-parse "v$pkgver"
 _tag=9b0d8a1120810dac1b139f480d37ba5f704e4856
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source and extensible speech-to-text application that works completely offline"
 arch=(x86_64 aarch64)
 url="https://github.com/cjpais/Handy"
@@ -25,6 +25,7 @@ depends=(
   webkit2gtk-4.1
   libappindicator-gtk3
   gtk-layer-shell
+  openblas
 )
 makedepends=(
   appmenu-gtk-module
