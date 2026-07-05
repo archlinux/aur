@@ -1,6 +1,6 @@
 # Maintainer: Breno Ramalho Lemes <breno@br-lemes.net>
 pkgname=kanata-bin
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Improve keyboard comfort and usability with advanced customization'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
 	'https://github.com/jtroo/kanata/raw/main/LICENSE'
 )
 sha256sums=(
-	'd9f634afb4c7f078cc2aacf3998fd65b432d4d83296cc48a89f941525459b4e2'
+	'0bedd91567c5d7c54679061baadc37e4f83fb71750003999bc1d11f2c9754f36'
 	'a5681bf9b05db14d86776930017c647ad9e6e56ff6bbcfdf21e5848288dfaf1b'
 )
 
