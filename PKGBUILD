@@ -3,7 +3,7 @@ pkgname=libretro-potator-git
 pkgver=r98.227c5f6
 pkgrel=1
 pkgdesc="Watara Supervision core"
-arch=(x86_64)
+arch=(x86_64 aarch64 i686)
 url="https://github.com/libretro/potator"
 license=(Unlicense)
 groups=(libretro)
@@ -12,9 +12,9 @@ depends=(
 )
 makedepends=(
 	git
-	make
 )
-options=(!debug !lto)
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}")
 source=(
 	${pkgname%-git}::git+$url.git
 )
@@ -35,4 +35,5 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	install -Dm755 platform/libretro/potator_libretro.so -t "$pkgdir/usr/lib/libretro"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

@@ -4,13 +4,14 @@ pkgbase = libretro-potator-git
 	pkgrel = 1
 	url = https://github.com/libretro/potator
 	arch = x86_64
+	arch = aarch64
+	arch = i686
 	groups = libretro
 	license = Unlicense
 	makedepends = git
-	makedepends = make
 	depends = libretro-core-info
-	options = !debug
-	options = !lto
+	provides = libretro-potator=r98.227c5f6
+	conflicts = libretro-potator
 	source = libretro-potator::git+https://github.com/libretro/potator.git
 	sha256sums = SKIP
 
