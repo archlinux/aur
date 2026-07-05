@@ -1,4 +1,0 @@
-[yazi-git]
-source = "git"
-git = "https://github.com/sxyazi/yazi.git"
-prefix = "v"

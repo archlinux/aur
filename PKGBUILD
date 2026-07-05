@@ -8,7 +8,7 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="yazi"
 pkgname="$_pkgname-git"
-pkgver=25.5.31.r36.g8ef28ec
+pkgver=26.5.6.r47.gc92c4ab
 pkgrel=2
 pkgdesc="Blazing fast terminal file manager written in Rust, based on async I/O"
 url="https://github.com/sxyazi/yazi"
@@ -16,31 +16,37 @@ arch=('x86_64' 'aarch64')
 license=("MIT")
 
 depends=(
-  'gcc-libs'
+  'hicolor-icon-theme'
+  'lua'
   'oniguruma'
-  'ttf-nerd-fonts-symbols'
+  'ttf-font-nerd'
 )
 makedepends=(
   'cargo'
   'git'
+  'imagemagick'
 )
 optdepends=(
-  '7zip: for archive preview'
-  'chafa: for previewing images'
+  '7zip: for archive extraction and preview'
+  'chafa: for ASCII image preview as fallback'
   'fd: for file searching'
   'ffmpeg: for video thumbnails'
-  'fzf: for directory jumping'
-  'imagemagick: for previewing fonts'
+  'fzf: for quick file subtree navigation'
+  'git: for Yazi package management'
+  'imagemagick: for image and font preview'
   'jq: for JSON preview'
   'poppler: for PDF preview'
   'resvg: for SVG preview'
   'ripgrep: for file content searching'
-  'zoxide: for directory jumping'
+  'wl-clipboard: for Wayland clipboard support'
+  'xclip: for X11 clipboard support'
+  'xsel: for X11 clipboard support'
+  'zoxide: for historical directories navigation'
 )
 
 options=('!lto')
 
-provides=("$_pkgname=${pkgver%%.g*}")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
@@ -55,44 +61,51 @@ pkgver() {
 
 prepare() (
   cd "$_pkgsrc"
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
-  # compile faster, maybe
-  shopt -s globstar
-  sed -E -e 's&^(codegen-units) = [0-9]+$&\1 = 16&' \
-    -i **/Cargo.toml
+  # Cargo does not provide an option to disable features for all workspace members
+  # Upstream issue: https://github.com/rust-lang/cargo/issues/14866
+  find -name Cargo.toml -type f -exec sed -i '/"vendored-lua"/d' {} +
+
+  cargo fetch --locked --target host-tuple
 )
 
 build() {
-  export RUSTONIG_SYSTEM_LIBONIG=1
+  _units=$(($(nproc) > 16 ? $(nproc) : 16))
+  export CARGO_PROFILE_RELEASE_LTO=false
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=$_units
 
   cd "$_pkgsrc"
-  YAZI_GEN_COMPLETIONS=true cargo build --release --frozen --no-default-features
-  YAZI_GEN_COMPLETIONS=true cargo build --release -p "$_pkgname-cli"
+  export YAZI_GEN_COMPLETIONS=true
+  export RUSTONIG_DYNAMIC_LIBONIG=1
+  cargo build --release --frozen --no-default-features
 }
 
 check() {
   cd "$_pkgsrc"
-  cargo test --frozen
+  export RUSTONIG_DYNAMIC_LIBONIG=1
+  cargo test --frozen --workspace --no-default-features
 }
 
 package() {
   cd "$_pkgsrc"
-  install -Dm755 "target/release/yazi" "$pkgdir/usr/bin/yazi"
-  install -Dm755 "target/release/ya" "$pkgdir/usr/bin/ya"
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
-  install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 "assets/yazi.desktop" "$pkgdir/usr/share/applications/yazi.desktop"
+  install -Dm755 "$CARGO_TARGET_DIR/release/$_pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm755 "$CARGO_TARGET_DIR/release/ya" -t "$pkgdir/usr/bin/"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/$pkgname/"
 
-  install -Dm644 assets/logo.png "$pkgdir/usr/share/pixmaps/yazi.png"
+  _install_completions "$_pkgname-boot" "$_pkgname"
+  _install_completions "$_pkgname-cli" "ya"
 
-  cd "$srcdir/$_pkgsrc/yazi-boot/completions"
-  install -Dm644 "yazi.bash" "$pkgdir/usr/share/bash-completion/completions/yazi"
-  install -Dm644 "yazi.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
-  install -Dm644 "_yazi" -t "$pkgdir/usr/share/zsh/site-functions/"
+  cd assets
+  install -Dm644 "yazi.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 <(magick logo.png -resize 512x512 -) "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
+}
 
-  cd "$srcdir/$_pkgsrc/yazi-cli/completions"
-  install -Dm644 "ya.bash" "$pkgdir/usr/share/bash-completion/completions/ya"
-  install -Dm644 "ya.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
-  install -Dm644 "_ya" -t "$pkgdir/usr/share/zsh/site-functions/"
+_install_completions() {
+  pushd "$1/completions"
+  install -Dm644 "$2.bash" "$pkgdir/usr/share/bash-completion/completions/$2"
+  install -Dm644 "$2.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+  install -Dm644 "_$2" -t "$pkgdir/usr/share/zsh/site-functions/"
+  install -Dm644 "$2.elv" -t "$pkgdir/usr/share/elvish/lib/"
+  popd
 }
