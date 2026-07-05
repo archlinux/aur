@@ -1,7 +1,7 @@
 pkgbase = lightningview
 	pkgdesc = A lightning-fast cross-platform image viewer written in Rust, supporting many raw camera formats.
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dividebysandwich/LightningView
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -16,6 +16,7 @@ pkgbase = lightningview
 	depends = fontconfig
 	depends = dbus
 	depends = openssl
+	options = !lto
 	source = lightningview-3.0.0.tar.gz::https://github.com/dividebysandwich/LightningView/archive/refs/tags/v3.0.0.tar.gz
 	source = lightningview.desktop
 	source = logo_256.png
