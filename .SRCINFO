@@ -4,13 +4,13 @@ pkgbase = libretro-sameduck-git
 	pkgrel = 1
 	url = https://github.com/libretro/sameduck
 	arch = x86_64
+	arch = aarch64
 	groups = libretro
 	license = MIT
 	makedepends = git
-	makedepends = make
 	depends = libretro-core-info
-	options = !debug
-	options = !lto
+	provides = libretro-sameduck=r1357.f0286ee
+	conflicts = libretro-sameduck
 	source = libretro-sameduck::git+https://github.com/libretro/sameduck.git
 	sha256sums = SKIP
 

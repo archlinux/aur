@@ -3,7 +3,7 @@ pkgname=libretro-sameduck-git
 pkgver=r1357.f0286ee
 pkgrel=1
 pkgdesc="Mega Duck core"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://github.com/libretro/sameduck"
 license=(MIT)
 groups=(libretro)
@@ -12,9 +12,9 @@ depends=(
 )
 makedepends=(
 	git
-	make
 )
-options=(!debug !lto)
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}")
 source=(
 	${pkgname%-git}::git+$url.git
 )
