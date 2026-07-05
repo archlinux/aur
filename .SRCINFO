@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-miniz
 	pkgdesc = Compression library implementing zlib (RFC 1950) & deflate (RFC 1951) specifications (mingw-w64)
-	pkgver = 3.1.1
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://github.com/richgel999/miniz
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mingw-w64-miniz
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://github.com/richgel999/miniz/archive/refs/tags/3.1.1.tar.gz
-	sha256sums = 8bb29c7bd6f22356e5583e794bed4a0b3e6dfcbcadb49974fc9270ccca1e5557
+	source = https://github.com/richgel999/miniz/archive/refs/tags/3.1.2.tar.gz
+	sha256sums = 98468f8924934b723276680f85238b6c78bf1f8b49b4459cc9b7214a20e2e9fb
 
 pkgname = mingw-w64-miniz
