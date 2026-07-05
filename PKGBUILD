@@ -1,7 +1,7 @@
 # Maintainer: yeah <yeah_yaojiu@163.com>
 pkgname=eudic-ting-en-bin
 _pkgname=ting-en
-pkgver=26.1.2
+pkgver=26.6.2
 pkgrel=1
 pkgdesc="Eudic Daily English Listening (欧路软件 每日听力)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
 optdepends=('libappindicator-gtk3: Tray icon support')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/ting_en/ting_en.deb?ver=26.6.2&date=Thursday%2c+July+2%2c+2026"
+source=("${_pkgname}-${pkgver}.deb::https://static.frdic.com/pkg/ting_en/ting_en.deb?ver=${pkgver}&date=Thursday%2c+July+2%2c+2026"
     "LICENSE.html::https://www.eudic.net/v4/en/home/UserLicense"
     "PrivacyPolicy.html::https://www.eudic.net/v4/en/home/privacy"
 )

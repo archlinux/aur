@@ -1,6 +1,6 @@
 pkgbase = eudic-ting-en-bin
 	pkgdesc = Eudic Daily English Listening (欧路软件 每日听力)
-	pkgver = 26.1.2
+	pkgver = 26.6.2
 	pkgrel = 1
 	url = https://www.eudic.cn
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = eudic-ting-en-bin
 	conflicts = ting-en
 	options = !debug
 	options = !strip
-	source = ting-en-26.1.2.deb::https://static.frdic.com/pkg/ting_en/ting_en.deb?ver=26.6.2&date=Thursday%2c+July+2%2c+2026
+	source = ting-en-26.6.2.deb::https://static.frdic.com/pkg/ting_en/ting_en.deb?ver=26.6.2&date=Thursday%2c+July+2%2c+2026
 	source = LICENSE.html::https://www.eudic.net/v4/en/home/UserLicense
 	source = PrivacyPolicy.html::https://www.eudic.net/v4/en/home/privacy
 	sha256sums = SKIP
