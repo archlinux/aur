@@ -1,7 +1,7 @@
 # Maintainer: Mohammed Efaz <mohammedefaz@gmail.com>
 pkgname=melearner-bin
 _pkgname=melearner
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A native desktop app for learning from your local course library"
 arch=('x86_64')
@@ -30,7 +30,7 @@ options=('!strip' '!debug' '!lto')
 source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://github.com/WhiteHades/melearner/releases/download/v${pkgver}/${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 
-sha256sums_x86_64=('d235bc488ab305e9cd846371f618907fe7e047c211987e29482f71cd4785d6b3')
+sha256sums_x86_64=('eeda6a290c0191c25fa6c27c635f7117bde5eae905f375d7a4e48c1ee1edf4db')
 
 package() {
   cd "$srcdir"

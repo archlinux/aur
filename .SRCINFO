@@ -1,6 +1,6 @@
 pkgbase = melearner-bin
 	pkgdesc = A native desktop app for learning from your local course library
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/WhiteHades/melearner
 	arch = x86_64
@@ -19,11 +19,11 @@ pkgbase = melearner-bin
 	optdepends = alsa-lib: audio backend
 	provides = melearner
 	conflicts = melearner
-	noextract = melearner-bin-0.1.5-1-x86_64.pkg.tar.zst
+	noextract = melearner-bin-0.1.6-1-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
 	options = !lto
-	source_x86_64 = melearner-bin-0.1.5-1-x86_64.pkg.tar.zst::https://github.com/WhiteHades/melearner/releases/download/v0.1.5/melearner-bin-0.1.5-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = d235bc488ab305e9cd846371f618907fe7e047c211987e29482f71cd4785d6b3
+	source_x86_64 = melearner-bin-0.1.6-1-x86_64.pkg.tar.zst::https://github.com/WhiteHades/melearner/releases/download/v0.1.6/melearner-bin-0.1.6-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = eeda6a290c0191c25fa6c27c635f7117bde5eae905f375d7a4e48c1ee1edf4db
 
 pkgname = melearner-bin
