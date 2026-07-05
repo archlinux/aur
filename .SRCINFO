@@ -1,0 +1,15 @@
+pkgbase = lore-server-bin
+	pkgdesc = Server for the lore version control system from Epic Games
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://github.com/EpicGames/lore
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = lore-server
+	conflicts = lore-server
+	source = https://github.com/EpicGames/lore/releases/download/v0.8.4/loreserver-v0.8.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 42bce4124d07642e0eb1c996d6262889760b142992d0ed0f6054d0968bc9efc1
+
+pkgname = lore-server-bin
