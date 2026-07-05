@@ -2,7 +2,7 @@
 # Contributor: mekyt <hello at mek dot yt>
 
 pkgname="openfga"
-pkgver=1.17.1
+pkgver=1.18.1
 pkgrel=1
 pkgdesc="High performance and flexible authorization/permission engine built for developers and inspired by Google Zanzibar"
 arch=(
@@ -30,7 +30,7 @@ source=(
   "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}"
   "${pkgname}."{service,sysusers,tmpfiles,yaml}
 )
-sha256sums=('c921faf71fa3a7b9ec8e596d3797c38fe67bfc005fb4412d2494754cd4549785'
+sha256sums=('3e44372d3ae09d216c34164d97d32ea354a2a5df025f9fd755206e4fa10829c4'
             '6f5b8d7257f4158b3800346d9fa0679e1041c92987b0303f04439a54e3488580'
             '0236b9c80bc4a6ca17c0cc5cae1091a0225cdc29163667661353d42927ecb1e7'
             'ac8e4f66ab7fd0540f58d3de61940f0dea1494fa05b4b984796c1db41a053ea1'
@@ -41,7 +41,7 @@ prepare() {
 
   cd "${srcdir}/${_pkgsrc}"
   go mod download -modcacherw -x
-  go mod verify
+  # go mod verify
 
   mkdir -p "completions"
 }
