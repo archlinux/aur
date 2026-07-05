@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=editide
 _app_id="io.frama.$pkgname.$pkgname"
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Source-code editor with basic project support"
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
 )
 source=("git+https://framagit.org/editide/releases.git#tag=$pkgver"
         'git+https://framagit.org/editide/editide.git')
-sha256sums=('2d800487609de7ae83cb1ed159e3acff910c6417f12ddd10f011f733b770563e'
+sha256sums=('068f57977ca35f6ff36763453570049361bf72579f59d03df44cf5094e9b55c2'
             'SKIP')
 
 prepare() {
