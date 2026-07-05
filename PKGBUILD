@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=libpldm
-pkgver=0.15.0
+pkgver=0.17.0
 pkgrel=1
 epoch=
 pkgdesc="This is a library which deals with the encoding and decoding of PLDM messages."
@@ -9,8 +9,13 @@ arch=($CARCH)
 url="https://github.com/openbmc/libpldm"
 license=('Apache-2.0')
 groups=()
-depends=(glibc)
+depends=(
+    glibc
+    libgcc
+    libstdc++
+)
 makedepends=(
+    git
     gtest
     meson
     ninja
@@ -25,13 +30,17 @@ backup=()
 options=()
 install=
 changelog=
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('8c742ca0d2c31facb9522d69e93302b980d81915f08726020ad67039fde442cd')
+sha256sums=('b578148a8caa4db104580b237dd621c2c560082acfa3f1a2516797c7635f7f0d')
 #validpgpkeys=()
 
+prepare() {
+    git -C "${srcdir}/${pkgname}" clean -dfx
+}
+
 build() {
-    arch-meson ${pkgname}-${pkgver} build -Dabi=deprecated,stable
+    arch-meson ${srcdir}/${pkgname} build -Dabi=deprecated,stable
     ninja -C build
 }
 
