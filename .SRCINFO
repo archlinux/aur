@@ -17,6 +17,6 @@ pkgbase = oryx-music-player-bin
 	sha256sums = c373c05e9d8d06d7aa53cc1d5fba2b9d3fa8776aae1b3720d104f594f9dd771f
 	sha256sums = 23563fd2c80b90aed3a708a54cb1d4f5f20ef014508f5cc4c330a7e3b24301d1
 	source_x86_64 = oryx-0.1.10-x86_64.tar.gz::https://github.com/behzade/oryx/releases/download/v0.1.10/oryx_0.1.10_x86_64.tar.gz
-	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = 5d064a1ec39b0633ca8e2b6b6c779c4f7421141576f9a7ba12e3f2c727844c05
 
 pkgname = oryx-music-player-bin
