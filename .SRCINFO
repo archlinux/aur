@@ -2,7 +2,7 @@ pkgbase = aurc
 	pkgdesc = Fast Easy way to Install and Update Aur and Non-Aur Arch Linux Packages!
 	pkgver = 2.5.8
 	pkgrel = 2
-	url = https://github.com/statulr/aurc
+	url = https://github.com/resslr/aurc
 	arch = i686
 	arch = x86_64
 	arch = arm
@@ -19,7 +19,7 @@ pkgbase = aurc
 	depends = json-c
 	optdepends = sudo: privilege elevation
 	optdepends = doas: privilege elevation
-	source = git+https://github.com/statulr/aurc.git#tag=2.5.8
+	source = git+https://github.com/resslr/aurc.git#tag=2.5.8
 	sha256sums = SKIP
 
 pkgname = aurc
