@@ -12,12 +12,15 @@ depends=('qt6-base' 'kio')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=('ABGR8888.patch'
+		'mimetype.patch'
 		"${pkgname%-git}::git+https://github.com/meyraud705/dds10-thumbnailer-kde.git")
 sha256sums=('c7f83df9fea4d10e54709b226780eb7965f27e8849e6f7a09b141bad0e6b861d'
+			'a1586c529d03a1472ccaad1880c9353eaf80f32149e30c4fd68c69d84ea4a415'
 			'SKIP')
 
 prepare() {
 	patch -Np1 -d "$_pkgname" -i ../ABGR8888.patch
+	patch -Np1 -d "$_pkgname" -i ../mimetype.patch
 }
 
 build() {

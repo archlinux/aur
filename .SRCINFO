@@ -12,8 +12,10 @@ pkgbase = dds10-thumbnailer-kde-git
 	provides = dds10-thumbnailer-kde
 	conflicts = dds10-thumbnailer-kde
 	source = ABGR8888.patch
+	source = mimetype.patch
 	source = dds10-thumbnailer-kde::git+https://github.com/meyraud705/dds10-thumbnailer-kde.git
 	sha256sums = c7f83df9fea4d10e54709b226780eb7965f27e8849e6f7a09b141bad0e6b861d
+	sha256sums = a1586c529d03a1472ccaad1880c9353eaf80f32149e30c4fd68c69d84ea4a415
 	sha256sums = SKIP
 
 pkgname = dds10-thumbnailer-kde-git

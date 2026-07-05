@@ -1,0 +1,26 @@
+diff --git a/thumbnailer_dds10.desktop b/thumbnailer_dds10.desktop
+index 3740dcb..94e4b93 100644
+--- a/thumbnailer_dds10.desktop
++++ b/thumbnailer_dds10.desktop
+@@ -3,7 +3,7 @@ Encoding=UTF-8
+ Type=Service
+ Name=Direct Draw Surface (DDS) DX10 (dds10-thumbnailer-kde)
+ X-KDE-ServiceTypes=ThumbCreator
+-MimeType=image/x-dds;
++MimeType=image/vnd.ms-dds;
+ CacheThumbnail=true
+ X-KDE-Library=dds10thumbnail
+ ThumbnailerVersion=1
+diff --git a/thumbnailer_dds10.json b/thumbnailer_dds10.json
+index 2bcc0bd..0e6df18 100644
+--- a/thumbnailer_dds10.json
++++ b/thumbnailer_dds10.json
+@@ -2,7 +2,7 @@
+   "CacheThumbnail": true,
+   "KPlugin": {
+       "MimeTypes": [
+-          "image/x-dds"
++          "image/vnd.ms-dds"
+       ],
+       "Name": "Direct Draw Surface (DDS) DX10 (dds10-thumbnailer-kde)"
+   }
