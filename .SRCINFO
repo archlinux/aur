@@ -1,0 +1,14 @@
+pkgbase = pi-ext-mempalace
+	pkgdesc = MemPalace durable memory extension for pi coding agent — structured memories, knowledge graph, session hooks, and cross-wing navigation
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/evertvorster/pi-ext-mempalace
+	install = pi-ext.install
+	arch = any
+	license = MIT
+	depends = pi-coding-agent
+	depends = python-mempalace
+	source = pi-ext-mempalace-0.1.0.tar.gz::https://github.com/evertvorster/pi-ext-mempalace/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = pi-ext-mempalace
