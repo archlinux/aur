@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=gui-for-singbox
+Comment=GUI for SingBox
+Exec=/opt/gui-for-singbox-bin/GUI.for.SingBox
+Icon=/opt/gui-for-singbox-bin/icon/gui-for-singbox.png
+Type=Application
+StartupNotify=true
+Categories=Network;Utility;
+StartupWMClass=gui-for-singbox
