@@ -2,7 +2,7 @@
 # Maintainer: Sheikh Limon <sheikhlimon404@gmail.com>
 
 pkgname=goose-desktop-bin
-pkgver=1.39.0
+pkgver=1.41.0
 pkgrel=1
 pkgdesc="Goose Desktop (prebuilt .deb repack) — an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('goose-desktop')     # conflict only with the source-built variant, n
 depends=('glibc' 'vulkan-icd-loader')
 options=(!strip)
 source=("goose_${pkgver}_amd64-vulkan.deb::https://github.com/aaif-goose/goose/releases/download/v${pkgver}/goose_${pkgver}_amd64-vulkan.deb")
-sha256sums=('6cfded3397051579020beb161d2a5b498088623086b8573b59fb1ecd10844328')
+sha256sums=('43786af7fbdf784d085603f2959dff4e3ccafa3fa8f51fc0686528651fc9562a')
 
 build() { :; }
 
