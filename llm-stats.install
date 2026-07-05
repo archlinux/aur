@@ -1,0 +1,24 @@
+# arg 1:  the new package version
+# arg 2:  the old package version (empty on fresh install)
+post_install() {
+    chmod 0600 /etc/llm-stats/config.yaml
+
+    echo ":: llm-stats installed successfully."
+    echo ":: Next steps:"
+    echo "::   1. Edit /etc/llm-stats/config.yaml (api_key, proxy.keys)."
+    echo "::   2. systemctl daemon-reload && systemctl enable --now llm-stats.service"
+    echo "::   3. journalctl -u llm-stats.service -f for live logs"
+    echo "::      (or query the Loki/Promtail pipeline if configured)."
+}
+
+post_upgrade() {
+    post_install
+    echo ":: Run 'systemctl daemon-reload && systemctl restart llm-stats.service'"
+    echo ":: to pick up the new systemd unit (if hardenings changed)."
+}
+
+post_remove() {
+    echo ":: llm-stats package removed."
+    echo ":: /etc/llm-stats/config.yaml was preserved by pacman (operator-owned)."
+    echo ":: To fully uninstall: rm -rf /etc/llm-stats /var/log/journal (if desired)."
+}

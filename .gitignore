@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!PKGBUILD.*
+!.SRCINFO
+!llm-stats.install
+!LICENSE
