@@ -28,21 +28,32 @@ os.environ["LD_LIBRARY_PATH"] = (
 os.environ["WINEPREFIX"] = WINE_PREFIX
 
 
-def ensure_z_drive():
-    """Ensure the z: drive is a symlink to /, not a copied directory."""
-    z_path = os.path.join(DOSDEVICES, "z:")
-    if os.path.islink(z_path):
-        # Already a symlink — good
-        return
-    if os.path.isdir(z_path):
-        # Was copied as a regular directory (copytree followed the symlink)!
-        # This can be a HUGE directory (a copy of the entire root filesystem).
-        # Remove it and recreate as a symlink.
-        print("  Repairing z: drive (was copied as directory instead of symlink)...")
-        shutil.rmtree(z_path)
-    # Create the symlink
+def ensure_drives():
+    """Ensure essential drive symlinks exist (c:, z:).
+
+    These are skipped during prefix copy because copytree with symlinks=True
+    can't safely recreate circular/device symlinks (z:/ -> /, com* -> /dev/ttyS*)
+    when the destination already exists. Wine will create additional symlinks
+    (d:, com*, etc.) on first wineboot.
+    """
     os.makedirs(DOSDEVICES, exist_ok=True)
-    os.symlink("/", z_path)
+
+    z_path = os.path.join(DOSDEVICES, "z:")
+    if not os.path.islink(z_path):
+        if os.path.isdir(z_path):
+            # Was copied as a regular directory — huge copy of root filesystem
+            print("  Repairing z: drive (was copied as directory instead of symlink)...")
+            shutil.rmtree(z_path)
+        os.symlink("/", z_path)
+
+    # c: -> ../drive_c (Wine needs this to find C:\windows, kernel32.dll, etc.)
+    c_path = os.path.join(DOSDEVICES, "c:")
+    if not os.path.islink(c_path):
+        drive_c = os.path.join(WINE_PREFIX, "drive_c")
+        if os.path.isdir(drive_c):
+            os.symlink("../drive_c", c_path)
+        else:
+            print("Warning: drive_c not found, wineboot may fail")
 
 
 def setup_prefix():
@@ -63,11 +74,11 @@ def setup_prefix():
                 shutil.copytree(src, dst, symlinks=True, dirs_exist_ok=True)
             else:
                 shutil.copy2(src, dst)
-        # Let Wine recreate dosdevices on first wineboot
-        ensure_z_drive()
+        # Create essential drive symlinks (c:, z:) — Wine creates the rest
+        ensure_drives()
     else:
-        # Prefix already exists — just ensure z: is correct
-        ensure_z_drive()
+        # Prefix already exists — just ensure drives are correct
+        ensure_drives()
 
 
 def copy_programdata():
