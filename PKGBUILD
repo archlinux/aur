@@ -1,21 +1,20 @@
-# Maintainer: Popolon <popolon@popolon.org>
 # Maintainer: Arthur "arthuro555" Pacaud <arthur.pacaud@hotmail.fr>
+# Contributor: Popolon <popolon@popolon.org>
 # Contributor: Paulequilibrio
 # Contributor: JKA Network <contacto@jkanetwork.com>
 # Contributor: Todor Imreorov for github <blurymind@gmail.com>
 
 pkgname=gdevelop
-pkgver=5.5.228
+pkgver=5.6.273
 pkgrel=1
 pkgdesc="A full-featured, open source game engine, allowing to create HTML5 with powerful visual scripting."
 arch=(x86_64 armv7l arm64)
 url=https://gdevelop.io
 license=('MIT')
-groups=()
 provides=("gdevelop=${pkgver}")
 conflicts=('gdevelop-bin' 'gdevelop-git')
-makedepends=('npm' 'git' 'jq' 'clang')
-_electron='electron32'
+makedepends=('npm' 'git' 'clang')
+_electron='electron41'
 _emsdk='3.1.21'
 depends=("$_electron")
 source=("gdevelop::git+https://github.com/4ian/GDevelop.git#tag=v${pkgver}"
@@ -23,7 +22,7 @@ source=("gdevelop::git+https://github.com/4ian/GDevelop.git#tag=v${pkgver}"
   'gdevelop.desktop')
 sha256sums=('SKIP'
   'SKIP'
-  '240f24320686eff28e9d5226440d5f195098c1f59bff030bbfa88ed07aa72244')
+  '64fb52411e4fbc00237c589424d520d26e42199ed9a7b7e64d9dd375c6904e5c')
 
 prepare() {
   "$srcdir/emsdk/emsdk" install $_emsdk
@@ -60,21 +59,10 @@ build() {
 
   local electronVer
   electronVer="$(</usr/lib/$_electron/version)"
-  local package
-  package="$(jq ".devDependencies.electron = \"$electronVer\"" package.json)"
-  echo -E "${package}" > package.json
-  package="$(jq ".dependencies.electron = \"$electronVer\"" package.json)"
-  echo -E "${package}" > package.json
-
-  # Note - This dependency update has been submitted upstream and will be removed once released.
-  (
-    cd app 
-    npm install --no-audit --no-fund --prefer-offline --include dev @electron/remote@latest
-  )
-
-  npm install --no-audit --no-fund --prefer-offline --include dev \
-    @electron/remote@latest electron-builder@latest # Note - This dependency update has been submitted upstream and will be removed once released.
-  npm run build -- --linux dir --"${!CARCH}" -c.electronDist="/usr/lib/electron" -c.electronVersion="$_electron"
+  npm pkg set dependencies.electron=$electronVer
+  npm pkg set devDependencies.electron=$electronVer
+  npm install --no-audit --no-fund --prefer-offline --include dev
+  npm run build -- --linux dir --"${!CARCH}" -c.electronDist="/usr/lib/$_electron" -c.electronVersion="$electronVer"
 }
 
 package() {
@@ -90,5 +78,5 @@ EOD
   chmod 755 "${pkgdir}/usr/bin/gdevelop"
   
   install -Dm644 "$srcdir/gdevelop.desktop" "${pkgdir}/usr/share/applications/gdevelop.desktop"
-  install -Dm644 "$srcdir/gdevelop/newIDE/app/public/favicon-512.png" "$pkgdir/usr/share/pixmaps/gdevelop.png"
+  install -Dm644 "$srcdir/gdevelop/newIDE/app/public/android-chrome-192x192.png" "$pkgdir/usr/share/pixmaps/gdevelop.png"
 }
