@@ -1,15 +1,16 @@
 pkgbase = pomo-git
-	pkgdesc = Pomodoro Command Line Interface
-	pkgver = r182.ce6a267
+	pkgdesc = Pomodoro CLI with todo tasks
+	pkgver = 0.9.1.r0.g4fdce01
 	pkgrel = 1
-	url = https://codeberg.org/kevinschoon/pomo
+	url = https://github.com/Felixoid/pomo
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = git
 	makedepends = go
+	provides = pomo
 	conflicts = pomo
-	source = pomo-git::git+https://codeberg.org/kevinschoon/pomo
+	source = pomo-git::git+https://github.com/Felixoid/pomo.git
 	sha512sums = SKIP
 
 pkgname = pomo-git
