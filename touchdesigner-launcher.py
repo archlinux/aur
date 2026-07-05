@@ -53,14 +53,17 @@ def setup_prefix():
         print("TouchDesigner - Setting up...")
         os.makedirs(os.path.dirname(WINE_PREFIX), exist_ok=True)
         for item in os.listdir(default_prefix):
+            # Skip dosdevices — Wine recreates them and symlinks (z:/ -> /, com* -> /dev/ttyS*)
+            # can't be safely copied with copytree when they already exist at destination.
+            if item == "dosdevices":
+                continue
             src = os.path.join(default_prefix, item)
             dst = os.path.join(WINE_PREFIX, item)
             if os.path.isdir(src):
-                # Use symlinks=True to preserve dosdevices symlinks (z: -> /, etc.)
                 shutil.copytree(src, dst, symlinks=True, dirs_exist_ok=True)
             else:
                 shutil.copy2(src, dst)
-        # Double-check z: drive is correct
+        # Let Wine recreate dosdevices on first wineboot
         ensure_z_drive()
     else:
         # Prefix already exists — just ensure z: is correct
@@ -230,7 +233,7 @@ def resolve_path(path):
 
 def main():
     # Handle --help / -h before anything that touches Wine
-    if "--help" in sys.argv or "-h" in sys.argv:
+    if "--help" in sys.argv or "-h" in sys.argv or "--h" in sys.argv:
         print("Usage: touchdesigner [.toe file]")
         print()
         print("Launch TouchDesigner (Wine) on Linux.")
