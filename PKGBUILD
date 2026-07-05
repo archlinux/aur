@@ -5,7 +5,7 @@ _pkgname="${pkgname//-bin/""}"
 __pkgname=konform
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-pkgver=140.12.0_102
+pkgver=140.12.0_103
 _konformver="${pkgver%_*}"
 _konformrel="${pkgver#*_}"
 pkgrel=1
@@ -26,7 +26,6 @@ depends=(
   libasound.so
   libgcc_s.so=1
   libcairo.so
-  libevent
   libpulse
   libstdc++.so=6
   libvpx.so
@@ -67,7 +66,6 @@ validpgpkeys=('9511FD9BD64CCF171F0B28A72B6FD58B41A0E262') # konform release keys
 backup=('usr/lib/konform/librewolf.cfg'
       'usr/lib/konform/distribution/policies.json')
 options=(!emptydirs)
-install='konform-browser-bin.install'
 
 
 _base_url="https://codeberg.org/api/packages/${_pkgname}/generic/${_pkgname}/${_konformver}-${_konformrel}"
@@ -83,12 +81,12 @@ source=(
 )
 source_aarch64=("${_uploadpath_aarch64}" "${_uploadpath_sig_aarch64}")
 source_x86_64=("${_uploadpath_x86_64}" "${_uploadpath_sig_x86_64}")
-sha256sums=('bc4a8e8a2286536a05fd24c29f008bc79c42986063ed3bdbbff79fcb9620020e'
+sha256sums=('8d4b389ba90f567c0ebc9d11e2eb01f822333c857fd4e7e7b5123591af85b0a1'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4')
-sha256sums_x86_64=('72777ae7579263a7ed5678621cbb2437e0b0342fe3301f867b4b19b6811b152f'
+sha256sums_x86_64=('f3ee8830d75a7691873b1cebdd70b1b54af3eb108197cd20ce4b0ae3378eb712'
                    'SKIP')
-sha256sums_aarch64=('2c516c935b09d480dfe49d727d850c6de909af94cf47fc5fb96911b600bc2c54'
+sha256sums_aarch64=('7b921f8023c71c2ed1ab7e7a675a8c3fac264697e0fc3a3e9d6eae2d1eb6b83c'
                     'SKIP')
 
 package() {
