@@ -2,7 +2,7 @@
 
 _pkgname="vapoursynth-plugin-zsmooth"
 pkgname="${_pkgname}-bin"
-pkgver=0.16.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Zsmooth plugin for VapourSynth"
 arch=(
@@ -34,10 +34,10 @@ source_aarch64=(
 source_x86_64=(
   "${pkgname}-${pkgver}-x86_64-linux-gnu.zip::${url}/releases/download/${pkgver}/zsmooth-x86_64-linux-gnu.zip"
 )
-sha256sums=('54a78e01eff9300a7adb5b370f3c60afbe601c03cb4ed61aac94a5e335e22b61'
+sha256sums=('3629754f6d28beebf46605ed93489ab77a498b040270a3c0065e2d9637ddd6ec'
             '4e8049adeaf266a580ff8738729a568465fded9a1bdf25396f234d2b8b07552f')
-sha256sums_aarch64=('9d9fe5bb7869cef8edbe1f53e9277b47efbef4af6f1ac3bd07861e9676f7bbee')
-sha256sums_x86_64=('09a9edd166c1458685b87939348ca4b60ace25f698315109ec2d95b92c8e1b0b')
+sha256sums_aarch64=('d2c98451f969096589c727d06e8f2a779cbc8b30c0f356419a15dad403262cab')
+sha256sums_x86_64=('c9559367f4bdaf8cc3408cc8271e438c516196b5edea4305a69ded3e2d748dae')
 
 package() {
   cd "${srcdir}"
