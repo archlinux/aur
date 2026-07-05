@@ -1,7 +1,7 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-git
-pkgver=2.4.1.1.r1.g509cbd75
+pkgver=2.4.1.1.r6.ga6ff990e
 pkgrel=1
 pkgdesc="Shelly: A Modern Arch Package Manager (git version)"
 arch=('x86_64')
@@ -94,11 +94,12 @@ package() {
 [Desktop Entry]
 Name=Shelly
 Comment=A Modern Arch Package Manager
-Exec=/usr/bin/shelly-ui
+Exec=/usr/bin/shelly-ui %u
 Icon=shelly
 Type=Application
 Categories=System;Utility;
 Keywords=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;flatpak;pacman;aur;appimage;
+MimeType=x-scheme-handler/appstream;x-scheme-handler/flatpak+https;
 Terminal=false
 Actions=FlatpakInstall;FlatpakUpdate;FlatpakRemove;
 
