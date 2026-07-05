@@ -1,34 +1,35 @@
-# Maintainer:  Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer: Erim <Erim4@yahoo.com>
+# Contributor:  Anton Kudelin <kudelin at protonmail dot com>
 # Contributor: Hector <hsearaDOTatDOTgmailDOTcom>
 
 pkgname=xdrawchem
-pkgver=1.10.2
-pkgrel=3
+pkgver=2.0.1
+pkgrel=1
 pkgdesc='A two-dimensional molecule drawing program'
-url='http://www.woodsidelabs.com/chemistry/xdrawchem.php'
+url='https://github.com/bryanherger/xdrawchem'
 license=("GPL")
 arch=('x86_64')
-depends=('openbabel' 'qt5-base')
-source=($pkgname-$pkgver.tar.gz::"https://github.com/bryanherger/$pkgname/archive/$pkgver-1.tar.gz"
-        "obabel3.patch")
-sha256sums=('009b525e570cd79b3e59880877871e258071fecdef6c397d7533f3920faa9a7e'
-            '0bbeea4a28a43641a11c7a54d925c9b31f1301d5d836aae2d0e95a42cb53cd0a')
-options=('!libtool')
+depends=('openbabel>=3' 'qt6-base>=6.4')
+makedepends=('cmake')
+source=($pkgname-$pkgver.tar.gz::"https://github.com/bryanherger/$pkgname/archive/$pkgver-1.tar.gz")
+sha256sums=('cd85efc30e266da0283bd25535387e62a6526038a7974dca14d67409735362fa')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver-1"
-  patch -p1 < "$srcdir/obabel3.patch"
+  cd "$srcdir/$pkgname-$pkgver/xdrawchem-qt5"
+  mkdir "build"
+  cd "build"
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver-1/xdrawchem-qt5"
-  qmake PREFIX='/usr' INCLUDEPATH='/usr/include/openbabel3'
-  make 
+  cd "$srcdir/$pkgname-$pkgver/xdrawchem-qt5/build"
+  cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  ninja  
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver-1/xdrawchem-qt5"
-  install -Dm755 bin/xdrawchem "$pkgdir/usr/bin/xdrawchem"
+  cd "$srcdir/$pkgname-$pkgver/xdrawchem-qt5"
+  install -Dm755 build/xdrawchem "$pkgdir/usr/bin/xdrawchem"
   install -Dm755 ring/* -t "$pkgdir/usr/share/xdrawchem"
   install -Dm755 doc/* -t "$pkgdir/usr/share/xdrawchem/doc"
+  install -Dm644 xdrawchem.desktop "$pkgdir/usr/share/applications/xdrawchem.desktop"
 }
