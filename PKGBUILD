@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>FiTui=fitui
 pkgname=image-auditor
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='TUI that finds & AI-fixes Lighthouse image issues (CLS, lazy loading, WebP, srcset) across your entire codebase in seconds.'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ options=(!lto)
 provides=('image-auditor')
 conflicts=('image-auditor-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('50a51125a034d394a35dc97d3ebfb998181596621f21e27a41d2c9aab37e64be')
+sha256sums=('41a0c0e0b88a9610a1d25cb224942e9dfb854debbe94e7b1b9dc357a25e6ba88')
 
 prepare() {
     cd "$pkgname-$pkgver"
