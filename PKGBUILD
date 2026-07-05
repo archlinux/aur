@@ -2,7 +2,7 @@
 # Maintainer: Maas Lalani <maas@charm.sh>
 
 pkgname='charm-pop-bin'
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Send emails from your terminal. 📬'
 url='https://charm.land/'
@@ -12,16 +12,16 @@ provides=('pop')
 conflicts=('pop')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/pop/releases/download/v${pkgver}/pop_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('4ca3a46730ba8a59eacbab76feb1a2abe2436759b65946b0c09c8e5cb20671fd')
+sha256sums_aarch64=('2963ba251782dd32a1072f1ee5e00e935cda7f2c6a5315efd9b2cb93e00f3225')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/pop/releases/download/v${pkgver}/pop_${pkgver}_Linux_armv7.tar.gz")
-sha256sums_armv7h=('f1e6cc2d3aa6cf9187f34b2b0076b98fbd6d588b918924657f95db5a675a8b20')
+sha256sums_armv7h=('a213298a6ac08bfc936b3a909b4914e5b4424c08fb8fa6c2073e353270815436')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/pop/releases/download/v${pkgver}/pop_${pkgver}_Linux_i386.tar.gz")
-sha256sums_i686=('edd43450621497ed8cfc19ef32947ec49b084c65bcd050dffc8d8912137e2165')
+sha256sums_i686=('9d3dbf0562ac64a44a6b08aba8bb2c0ded24b86e3ecdbe568b52297571bee048')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/pop/releases/download/v${pkgver}/pop_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('6ef74756f90c66be703152079598010ee458920fe663dbf44f0e9eb8394e938c')
+sha256sums_x86_64=('8fb1042f7bb782358451d9e7ae807000cc3e48bd9f0bc6f69d4460a77f3bceaa')
 
 package() {
   cd "${srcdir}/pop_${pkgver}_Linux_${CARCH}"
