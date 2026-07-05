@@ -1,3 +1,3 @@
 [python-requirements-detector]
 source = "git"
-git = "https://github.com/landscapeio/requirements-detector.git"
+git = "https://github.com/prospector-dev/requirements-detector.git"
