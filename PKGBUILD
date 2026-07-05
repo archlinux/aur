@@ -1,10 +1,10 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 
 pkgname=mapivi-svn
-pkgver=r428
-pkgrel=2
+pkgver=r459
+pkgrel=1
 pkgdesc="A photo management tool with focus on JPEG pictures (dev version)"
-depends=('jpegpixi' 'jhead' 'imagemagick' 'libjpeg' 'perl-image-info' 'perl-image-metadata-jpeg' 'tk-matchentry' 'tk-resizebutton' 'tk-splash' 'perl-tk' 'perl-exiftool')
+depends=('jpegpixi' 'jhead' 'imagemagick' 'libjpeg.so' 'perl-image-info' 'perl-image-metadata-jpeg' 'tk-matchentry' 'tk-resizebutton' 'tk-splash' 'perl-tk' 'perl-exiftool')
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://mapivi.sourceforge.net/mapivi.shtml"
