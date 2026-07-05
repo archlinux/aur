@@ -1,13 +1,13 @@
 pkgbase = loreai
 	pkgdesc = Memory and context management for AI coding agents
-	pkgver = 0.35.0
+	pkgver = 0.36.0
 	pkgrel = 1
 	url = https://github.com/BYK/loreai
 	arch = any
 	license = custom:FSL-1.1-Apache-2.0
 	makedepends = pnpm
 	depends = nodejs>=22
-	source = loreai-0.35.0.tar.gz::https://github.com/BYK/loreai/archive/refs/tags/0.35.0.tar.gz
-	sha256sums = 1463048f7509aad6a4996fe556b4d3e0a6f7e71812745854e4290cac62ce82f5
+	source = loreai-0.36.0.tar.gz::https://github.com/BYK/loreai/archive/refs/tags/0.36.0.tar.gz
+	sha256sums = a957a88a11bace7dd80fe7d733a7ea3b1b508ae5d8b7faea8606215578a14881
 
 pkgname = loreai
