@@ -1,11 +1,11 @@
 pkgbase = seahub
 	pkgdesc = The web frontend for seafile server
-	pkgver = 13.0.20
+	pkgver = 13.0.24
 	pkgrel = 1
 	url = https://github.com/haiwen/seahub
 	arch = any
 	license = Apache-2.0
-	depends = seafile-server>=13.0.20
+	depends = seafile-server>=13.0.24
 	depends = python-django
 	depends = python-django-statici18n
 	depends = python-django-webpack-loader
@@ -39,7 +39,7 @@ pkgbase = seahub
 	optdepends = python-redis: Redis support
 	optdepends = ffmpeg: For video thumbnails
 	options = !strip
-	source = seahub-13.0.20-server.tar.gz::https://github.com/haiwen/seahub/archive/v13.0.20-server.tar.gz
+	source = seahub-13.0.24-server.tar.gz::https://github.com/haiwen/seahub/archive/v13.0.24-server.tar.gz
 	source = seafile-server@.service
 	source = seafile-server.service
 	source = seahub@.service
@@ -48,7 +48,7 @@ pkgbase = seahub
 	source = fix_gunicorn_no_daemon.diff
 	source = fix_seafevents_error.diff
 	source = fix_cache_provider.diff
-	sha256sums = 402477b48a940aeec0bbd02326b4fd00f46a12542c85be308c99e6f55ab0d55a
+	sha256sums = f78e87bb54776cba4a38c2d128e2a5206700bbb33d866961602184c925e6232f
 	sha256sums = 3fb3d1218ef10560654c143b1ace8adadf08155d214f920ccc2c1cdc9a5c0dc7
 	sha256sums = 3e3ceeef0423e4655a63534b729d0f8ff2042f6485480482772041018d27d8c4
 	sha256sums = ba48ce265a8f411184ab92e8d914d2a02e06f19156333d6058eb3fcf861d780a
