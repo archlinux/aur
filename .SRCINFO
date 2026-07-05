@@ -1,6 +1,6 @@
 pkgbase = osgearth
 	pkgdesc = A terrain rendering toolkit for OpenSceneGraph
-	pkgver = 3.8
+	pkgver = 3.8.1
 	pkgrel = 1
 	url = https://www.pelicanmapping.com/home-1/opensource
 	arch = aarch64
@@ -26,12 +26,10 @@ pkgbase = osgearth
 	makedepends = rapidjson
 	makedepends = spdlog
 	makedepends = sqlite
-	source = https://github.com/pelicanmapping/osgearth/archive/refs/tags/osgearth-3.8/osgearth-osgearth-3.8.tar.gz
+	source = https://github.com/pelicanmapping/osgearth/archive/refs/tags/osgearth-3.8.1/osgearth-osgearth-3.8.1.tar.gz
 	source = osgearth_optional_fastdxt.patch
-	source = osgearth_unbundle.patch
-	b2sums = 964901a4d37608419aaa82f66872fee0bbdb662d8527997c6b08d7635ed43c45ee157203336af89e89078d979890ff21c3f8ea20d66d61655f2568987fdae202
-	b2sums = e57fd25c5cf3eeecd6830cacddfabe690c5f0c50d5191588210519aa4ba8d7f6c0dc317c8b32629f235a6f0cba9c21d79449b41c4613bf28bf5627d962917add
-	b2sums = 1c6f09c76acd7b78daac4e984b04bced0ba68308d705d1be7b89f1428d6acf18412da4dc77c2226d4e1ca04674336f27251a623cdbc99299c20cdd1add42eebf
+	b2sums = 54e139d0af2d3f2e7c51f9cf82fa8841b108f0dc1980ac01057c319e8771de219704e60f07a75060769195c08da628eb97d407735150ba6d3c401d7d5bde098f
+	b2sums = 65d135a39a242518c2cda0ba8353f3512ac25af208cfc1d18377c2958d80805d70f3db30b1997f6b88fc1c8fe1270d76e629ec6db23e5c45fc75028497bb829b
 
 pkgname = osgearth
 	depends = blend2d

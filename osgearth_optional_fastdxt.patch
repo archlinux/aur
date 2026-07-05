@@ -1,8 +1,8 @@
 --- a/src/osgEarthDrivers/CMakeLists.txt
 +++ b/src/osgEarthDrivers/CMakeLists.txt
-@@ -30,8 +30,11 @@
- 
- add_subdirectory(cache_rocksdb)
+@@ -34,7 +34,10 @@
+ # now requires C++20
+ #add_subdirectory(cache_rocksdb)
  
 +OPTION(DISABLE_FASTDXT "Disale fastdxt build" OFF)
  if(NOT APPLE AND NOT ANDROID)
@@ -10,6 +10,5 @@
 +    if(NOT DISABLE_FASTDXT)
 +        add_subdirectory(fastdxt)
 +    endif()
-     if(NOT BUILDING_VCPKG_PORT)
-         add_subdirectory(lerc)
-     endif()
+     add_subdirectory(lerc)
+ endif()

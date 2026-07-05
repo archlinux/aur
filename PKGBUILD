@@ -9,7 +9,7 @@ pkgname=(
   "${pkgbase}"
   "${pkgbase}-docs"
 )
-pkgver=3.8
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="A terrain rendering toolkit for OpenSceneGraph"
 arch=(
@@ -47,22 +47,21 @@ _pkgsrc="${_url##*/}-${pkgbase}-${pkgver}"
 source=(
   "${_url}/archive/refs/tags/${pkgbase}-${pkgver}/${_pkgsrc}.tar.gz"
   "${pkgbase}_optional_fastdxt.patch"
-  "${pkgbase}_unbundle.patch"
 )
-b2sums=('964901a4d37608419aaa82f66872fee0bbdb662d8527997c6b08d7635ed43c45ee157203336af89e89078d979890ff21c3f8ea20d66d61655f2568987fdae202'
-        'e57fd25c5cf3eeecd6830cacddfabe690c5f0c50d5191588210519aa4ba8d7f6c0dc317c8b32629f235a6f0cba9c21d79449b41c4613bf28bf5627d962917add'
-        '1c6f09c76acd7b78daac4e984b04bced0ba68308d705d1be7b89f1428d6acf18412da4dc77c2226d4e1ca04674336f27251a623cdbc99299c20cdd1add42eebf')
+b2sums=('54e139d0af2d3f2e7c51f9cf82fa8841b108f0dc1980ac01057c319e8771de219704e60f07a75060769195c08da628eb97d407735150ba6d3c401d7d5bde098f'
+        '65d135a39a242518c2cda0ba8353f3512ac25af208cfc1d18377c2958d80805d70f3db30b1997f6b88fc1c8fe1270d76e629ec6db23e5c45fc75028497bb829b')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   patch -Np1 -i "${srcdir}/${pkgbase}_optional_fastdxt.patch"
-  patch -Np1 -i "${srcdir}/${pkgbase}_unbundle.patch"
 
   sed -i 's/set(CMAKE_CXX_STANDARD 14)/set(CMAKE_CXX_STANDARD 17)/' 'CMakeLists.txt'
 }
 
 build() {
   local cmake_options=(
+    -B "${_pkgsrc}/build"
+    -S "${_pkgsrc}"
     -G 'Unix Makefiles'
     -W no-dev
     -D CMAKE_BUILD_TYPE:STRING='None'
@@ -77,8 +76,8 @@ build() {
   fi
 
   cd "${srcdir}"
-  cmake -B "${_pkgsrc}/build" -S "${_pkgsrc}" "${cmake_options[@]}"
-  cmake --build "${_pkgsrc}/build"
+  cmake "${cmake_options[@]}"
+  cmake --build "${cmake_options[1]}"
 
   cd "${_pkgsrc}"
   make -C docs html
@@ -87,14 +86,14 @@ build() {
 
 check() {
   local ctest_exclude_regex=""
-  local ctest_arguments=(
+  local ctest_options=(
     --output-on-failure
     --parallel "$(nproc)"
     --exclude-regex "${ctest_exclude_regex}"
   )
 
   cd "${srcdir}"
-  ctest --test-dir "${_pkgsrc}/build" "${ctest_arguments[@]}"
+  ctest --test-dir "${_pkgsrc}/build" "${ctest_options[@]}"
 }
 
 package_osgearth() {
