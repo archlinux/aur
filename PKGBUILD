@@ -1,6 +1,6 @@
 # Maintainer: vcup <me@vcup.moe>
 pkgname=shoko-webui
-pkgver=2.5.8
+pkgver=2.5.9
 pkgrel=1
 pkgdesc='The webui used in Shoko Server.'
 arch=('any')
@@ -12,7 +12,7 @@ source=(
   "${pkgname}-${pkgver}.zip::https://github.com/ShokoAnime/Shoko-WebUI/releases/download/v${pkgver}/Shoko-WebUI-v${pkgver}.zip"
 )
 noextract=("${pkgname}-${pkgver}.zip")
-sha512sums=('bcfbfebbbb1f95a49a88afbea064c46574092fd760713bdda1e436e157c2c512f0adf6a0c1206ee3d799baf8679f5e8ed6554846b470ad057d687fa7aa492840')
+sha512sums=('70a752fe09ce6473dd2ee1d55a9766a7ac37c8663b9255672f1e39563a909304100295cfa5b2171453cea346cdc2495f4ddcbb6161eb97367cf3afad67117117')
 
 package() {
   install -d "${pkgdir}/usr/lib/shoko/webui"
