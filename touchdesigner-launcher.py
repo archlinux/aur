@@ -51,7 +51,7 @@ def setup_prefix():
     default_prefix = f"{PREFIX}/default-prefix"
     if not os.path.isfile(system_reg) and os.path.isdir(default_prefix):
         print("TouchDesigner - Setting up...")
-        os.makedirs(os.path.dirname(WINE_PREFIX), exist_ok=True)
+        os.makedirs(WINE_PREFIX, exist_ok=True)
         for item in os.listdir(default_prefix):
             # Skip dosdevices — Wine recreates them and symlinks (z:/ -> /, com* -> /dev/ttyS*)
             # can't be safely copied with copytree when they already exist at destination.
