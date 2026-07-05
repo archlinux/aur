@@ -1,6 +1,6 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep
-pkgver=2.7.0
+pkgver=2.8.1
 pkgrel=1.314
 pkgdesc='A DjVu to PDF converter'
 url='https://github.com/kcroker/dpsprep'
@@ -15,8 +15,8 @@ optdepends=(
   'ocrmypdf: Optional OCR and advanced PDF optimization'
   'jbig2enc: Advanced compression of bitonal images'
 )
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('38e85a06842ca2af9d99ff93307381c1cf51c5fc78be769baf2e1e9c23ba58f2')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver.tar.gz")
+sha256sums=('e3a2842e6d05b1aa2b1b32f13c791a68d0ca6b439d88c2ee3fb061191985363f')
 
 _fullsrcdir() {
     echo "$srcdir/$pkgname-$pkgver"
@@ -30,12 +30,10 @@ check() {
 build() {
     cd "$(_fullsrcdir)"
     python -m build --wheel --no-isolation
-    PYTHONPATH=src python -c 'from helpers.docs import build_man_page; build_man_page()'
 }
 
 package() {
     cd "$(_fullsrcdir)"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -D -m644 docs/dpsprep.1 "$pkgdir/usr/share/man/man1/dpsprep.1"
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
