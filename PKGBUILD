@@ -1,6 +1,6 @@
 # Maintainer: Hein (Warky Devs) <hein@warky.dev>
 pkgname=unitdore
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="A door you open and close for container units — manage containers via systemd"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=(
 )
 makedepends=('go')
 source=("$pkgname-$pkgver.zip::$url/archive/v$pkgver.zip")
-sha256sums=('4aadff23857f1c8c82724186aa06b09212e21693d1b5870dc39988edb73489c2')
+sha256sums=('0325461263c9df57688292e465abdfa5be6d4991db8f2e9e478c96238971fd1d')
 
 build() {
     cd "$pkgname"
