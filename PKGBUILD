@@ -2,14 +2,14 @@
 pkgname=akku
 pkgdesc='Language package manager for Scheme'
 url='https://akkuscm.org/'
-license=('GPL3')
+license=('GPL-3.0-only')
 arch=('any')
 
 # version-specific information
 pkgver=1.1.0
 pkgrel=6
 
-# dependencies are stated in https://gitlab.com/akkuscm/akku/-/blob/master/README.md
+# as per https://gitlab.com/akkuscm/akku/-/blob/master/README.md
 depends=('git' 'curl' 'guile>=2.2')
 makedepends=('pkg-config' 'make')
 

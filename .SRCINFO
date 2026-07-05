@@ -1,10 +1,10 @@
 pkgbase = akku
 	pkgdesc = Language package manager for Scheme
 	pkgver = 1.1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://akkuscm.org/
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = pkg-config
 	makedepends = make
 	depends = git
@@ -12,6 +12,8 @@ pkgbase = akku
 	depends = guile>=2.2
 	options = !strip
 	source = https://gitlab.com/akkuscm/akku/uploads/819fd1f988c6af5e7df0dfa70aa3d3fe/akku-1.1.0.tar.gz
+	source = define-values.patch
 	sha256sums = 12decdc8a2caba0f67dfcd57b65e4643037757e86da576408d41a5c487552c08
+	sha256sums = 8e2b13449f142f83a7b619cdd6faab30cd52ea630fdd8910a0383e2af16176ed
 
 pkgname = akku
