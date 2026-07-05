@@ -4,7 +4,7 @@
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola-git
 _pkgname=git-cola
-pkgver=4.9.0.r0.g69f06128
+pkgver=4.18.2.r168.gf324e07d
 pkgrel=1
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
