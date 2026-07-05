@@ -1,7 +1,7 @@
 # Maintainer: Maryam Sheikh (Mahid Sheikh) <mahid@standingpad.org>
 pkgname='blender-launcher-v2-bin'
 _pkgname='blenderlauncher'
-pkgver=2.7.3
+pkgver=2.7.5
 pkgtarget='_Linux_x64'
 pkgrel=1
 pkgdesc='Blender Launcher is a standalone software client that provides management for stable, daily and experimental builds of Blender 3D. It is a free open source project available for 64-bit Windows and Linux (GLIBC 2.31 and higher) operating systems.'
@@ -10,7 +10,7 @@ url='https://github.com/Victor-IX/Blender-Launcher-V2'
 license=('GPL-3.0')
 depends=('glibc')
 source_x86_64=("$url/releases/download/v$pkgver/Blender_Launcher_v$pkgver$pkgtarget.zip")
-sha256sums_x86_64=('19805352e38fd142ba85b4b73820107cb7284e695363203a7e8953d70108b233')
+sha256sums_x86_64=('68339903a0a7927cb9ce25e51f177dfe1c707241da25c4008034e6466c0a1abb')
 
 package() {
 	sed -i "s+Icon=blenderlauncher+Icon=/usr/share/icons/hicolor/128x128/apps/$_pkgname.png+g" "$srcdir/extras/$_pkgname.desktop"
