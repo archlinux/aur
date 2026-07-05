@@ -1,14 +1,19 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=quirc-git
-pkgver=1.2.r3.gfd13bfb
+pkgver=1.2.r7.g927d680
 pkgrel=1
 pkgdesc='QR decoder library (git version)'
 arch=('x86_64')
 url='https://github.com/dlbeer/quirc/'
 license=('ISC')
-depends=('libjpeg' 'libpng' 'sdl_gfx' 'sdl12-compat' 'v4l-utils')
-makedepends=('git')
+depends=(
+    'glibc'
+    'libjpeg-turbo'
+    'sdl_gfx'
+    'sdl12-compat')
+makedepends=(
+    'git')
 provides=('quirc')
 conflicts=('quirc')
 source=('git+https://github.com/dlbeer/quirc.git')
