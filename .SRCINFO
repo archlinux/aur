@@ -1,6 +1,6 @@
 pkgbase = libggml-cuda
 	pkgdesc = Tensor library for machine learning
-	pkgver = 0.15.2
+	pkgver = 0.15.3
 	pkgrel = 1
 	url = https://github.com/ggml-org/ggml
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = libggml-cuda
 	depends = vulkan-icd-loader
 	provides = libggml=0.15
 	conflicts = libggml
-	source = ggml-0.15.2.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v0.15.2.tar.gz
-	sha256sums = 298e958817a126c44bb8e97c97d5d53d00bd15eca22bebf805f278223fe29e07
+	source = ggml-0.15.3.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v0.15.3.tar.gz
+	sha256sums = 86800455b5520fc86023979790703a9e2e1e4038b20039334be21df4d55bc868
 
 pkgname = libggml-cuda
 	pkgdesc = Tensor library for machine learning with OpenBLAS + Vulkan + CUDA optimizations

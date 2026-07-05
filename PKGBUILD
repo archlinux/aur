@@ -33,7 +33,7 @@ _cuda_arch="${CUDA_ARCH:-75;86;89;120}"
 : ${_build_x86_64_v4=false}
 
 pkgname=libggml-cuda
-pkgver=0.15.2
+pkgver=0.15.3
 pkgrel=1
 pkgdesc="Tensor library for machine learning"
 url="https://github.com/ggml-org/ggml"
@@ -48,7 +48,7 @@ conflicts=(libggml)
 
 _pkgsrc="ggml-$pkgver"
 source=("$_pkgsrc.tar.gz"::"$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('298e958817a126c44bb8e97c97d5d53d00bd15eca22bebf805f278223fe29e07')
+sha256sums=('86800455b5520fc86023979790703a9e2e1e4038b20039334be21df4d55bc868')
 
 # Lowest enabled level; this is the one installed to the default /usr/lib.
 _primary_arch() {
