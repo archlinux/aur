@@ -9,8 +9,8 @@ pkgbase = genv-bin
 	provides = genv
 	conflicts = genv
 	source_x86_64 = https://github.com/ks1686/genv/releases/download/v2.1.3/genv_2.1.3_linux_amd64.tar.gz
-	sha256sums_x86_64 = 7d4eb069a001edcfe6c4e6b6e7d1dffe2e552da21e720deb1d17fc4bd6da6078
+	sha256sums_x86_64 = 081888bd973b6beb300fb071526871c37493fbac36f9364e43502a80769cc439
 	source_aarch64 = https://github.com/ks1686/genv/releases/download/v2.1.3/genv_2.1.3_linux_arm64.tar.gz
-	sha256sums_aarch64 = decca9a9061f08e68dc0316278ca6a6c824be771bf4c916ddab003f4c6f45817
+	sha256sums_aarch64 = 092e7c301cd3a975cddf6c4e70568d75e5391dab5bcd09c3f61ec48abc5653b1
 
 pkgname = genv-bin
