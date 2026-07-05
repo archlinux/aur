@@ -18,20 +18,20 @@ url="${_url_github}"
 
 provides=("${_pypi_package}")
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
-depends=('python' 'python-pillow' 'python-prompt_toolkit' 'python-numpy' 'python-yaml' 'ptpython' 'python-matplotlib' 'python-click' 'python-rich' 'python-pygments' 'python-rich-click' 'python-selenium')
+depends=('python' 'ptpython' 'python-click' 'python-rich' 'python-rich-click' 'python-pillow' 'python-prompt_toolkit' 'python-pygments' 'python-numpy' 'python-yaml' 'python-matplotlib' 'python-selenium')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('2439b5a7b36cedc7c58d66432357807d36dcac589211038700a85782b1885bd6')
 
 build() {
-    cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
     python -m installer --destdir="${pkgdir}" dist/*.whl
 
