@@ -6,7 +6,7 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=lib32-pam
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc='Pluggable Authentication Modules'
 arch=(x86_64)
@@ -29,8 +29,11 @@ makedepends=(
 )
 _tag=v$pkgver
 source=(git+https://github.com/linux-pam/linux-pam.git?signed#tag=${_tag})
-validpgpkeys=(296D6F29A020808E8717A8842DB5BD89A340AEB7) # Dimitry V. Levin <ldv@altlinux.org>
-b2sums=('ae06eea144c64ba5efa3b71df9094190eb094bcc8d2e6f9dcc93816bbf5070ff4c8e82a3cf1e2a6a43411a51e9c394c271fc7d734ca745374f19700526d51063')
+validpgpkeys=(
+        '296D6F29A020808E8717A8842DB5BD89A340AEB7' # Dimitry V. Levin <ldv@altlinux.org>
+        '7BECFE3AF7B280BB52FF77F104BA4521C996DDE1' # Dmitry V. Levin <ldv@strace.io
+)
+b2sums=('7fac16161ee8abab8639f5661badcf29536f0df71fec085075b657f91264fa7e616ae74c60e77fd8503d767517847dda877f583f20ca354e2ba45a381d89c998')
 options=(!emptydirs)
 
 pkgver() {
@@ -52,6 +55,7 @@ build() {
     -Dselinux=disabled \
     -Delogind=disabled \
     -Dpam_userdb=disabled \
+    -Dpwaccess=disabled \
     build
   meson compile -C build
 }
