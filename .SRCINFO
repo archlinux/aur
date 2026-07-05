@@ -1,7 +1,7 @@
 pkgbase = konform-browser
 	pkgdesc = Firefox ESR fork with increased security, privacy, and customizability
 	pkgver = 140.12.0.102
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://codeberg.org/konform-browser/source
 	install = konform.install
@@ -53,7 +53,6 @@ pkgbase = konform-browser
 	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = libpulse
-	depends = libevent
 	depends = libvpx.so
 	depends = libx11
 	depends = libxcb

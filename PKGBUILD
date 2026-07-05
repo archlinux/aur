@@ -22,7 +22,7 @@ else
 fi
 _ffsrcver="${_ffsrcver%b*}"
 pkgver="${_srcver}.${_lwrelver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
@@ -47,7 +47,6 @@ depends=(
   gtk3
   hicolor-icon-theme
   libpulse
-  libevent
   libvpx.so
   libx11
   libxcb
@@ -233,7 +232,6 @@ ac_add_options --with-system-nspr
 ## Kon moar system libs
 ac_add_options --with-system-zlib
 ac_add_options --with-system-webp
-ac_add_options --with-system-libevent
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-libdrm
 
@@ -322,9 +320,9 @@ END
 
     fi
 
-    # temporarily disable ublock-origin, interferes with profiling
-    cp "lw/policies.json" "$srcdir/policies.json"
-    jq 'del(.policies.Extensions.Install)' "$srcdir/policies.json" > "lw/policies.json"
+    # temporarily block loading of addons: interferes with profiling
+    cp "browser/components/enterprisepolicies/defaults/policies.json" "$srcdir/policies.json"
+    jq 'del(.policies.Extensions.Install)' "$srcdir/policies.json" > "browser/components/enterprisepolicies/defaults/policies.json"
     # temporarily enable nimbus telemetry for profiling
     sed -i 's#^.*nimbus\.#// \0#' "browser/app/profile/librewolf.cfg"
 
@@ -391,8 +389,8 @@ END
       echo "Jar log not found."
     fi
 
-    # reenable ublock-origin
-    cp "$srcdir/policies.json" "lw/policies.json"
+    # restore addon loading
+    cp "$srcdir/policies.json" "browser/components/enterprisepolicies/defaults/policies.json"
     # disable nimbus telemetry
     mv "$srcdir/src/browser/app/profile/librewolf.cfg" browser/app/profile/librewolf.cfg
 
