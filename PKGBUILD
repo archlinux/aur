@@ -3,7 +3,7 @@
 _author=XSAWYERX
 _dist=HTTP-XSHeaders
 pkgname=perl-${_dist@L}
-pkgver=0.500000
+pkgver=1.000001
 pkgrel=1
 pkgdesc='Fast XS Header library, replacing HTTP::Headers and HTTP::Headers::Fast.'
 arch=('x86_64')
@@ -16,10 +16,13 @@ depends=(
     'perl>=5.8.9'
 )
 makedepends=('perl-extutils-makemaker')
-checkdepends=('perl-test-simple')
+checkdepends=(
+    'perl-http-message'  # https://github.com/p5pclub/http-xsheaders/issues/17
+    'perl-test-simple'
+)
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('0663d911ac9c9836a03b28191484e4bc1e42d6afb4b8d0931e8f7ca691746257')
+sha256sums=('0e56d6cd915884514954bec5e0ed9fba15d7824f91d547fff9e1ba4c2521596a')
 
 build()
 {
