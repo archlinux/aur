@@ -1,8 +1,8 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep-git
 _pkgbasename="${pkgname%-git}"
-pkgver=2.7.0.r241.5c1155e
-pkgrel=2.314
+pkgver=2.8.1.r257.a51ece7
+pkgrel=1.314
 pkgdesc='A DjVu to PDF converter'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   'jbig2enc: Advanced compression of bitonal images'
 )
 source=("git+https://github.com/kcroker/dpsprep.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 install=dpsprep-git.install
 
 # Based on https://aur.archlinux.org/packages/dpsprep-git#comment-1031722
@@ -50,12 +50,10 @@ check() {
 build() {
     cd "$(_fullsrcdir)"
     python -m build --wheel --no-isolation
-    PYTHONPATH=src python -c 'from helpers.docs import build_man_page; build_man_page()'
 }
 
 package() {
     cd "$(_fullsrcdir)"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -D -m644 docs/dpsprep.1 "$pkgdir/usr/share/man/man1/dpsprep.1"
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgbasename/LICENSE"
 }
