@@ -1,13 +1,13 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=viat
 pkgver=0.10.6
-pkgrel=1.314
+pkgrel=2.314
 pkgdesc='A tool for managing virtual file attributes'
 url='https://github.com/v--/viat'
 arch=('any')
 license=('Unlicense')
 checkdepends=(python-pytest python-pygit2)
-makedepends=(git python-hatchling python-build python-installer python-wheel python-click-man groff)
+makedepends=(coreutils python-hatchling python-build python-installer python-wheel python-click-man)
 depends=(python python-click python-fastjsonschema python-tomli-w python-wcmatch)
 optdepends=(
   'python-pygit2: Git file tracker'
