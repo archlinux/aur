@@ -1,6 +1,6 @@
 pkgbase = xtemplate-bin
 	pkgdesc = A html/template-based hypertext preprocessor and rapid application development web server written in Go.
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://github.com/infogulch/xtemplate
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = xtemplate-bin
 	provides = xtemplate
 	conflicts = xtemplate
 	options = !debug
-	source_x86_64 = https://github.com/infogulch/xtemplate/releases/download/v0.9.5/xtemplate-amd64-linux_v0.9.5.zip
-	sha256sums_x86_64 = 42fa5a9831400c27544b4af9e183fdb7bac81603db66af2e41d21955dce64b90
-	source_aarch64 = https://github.com/infogulch/xtemplate/releases/download/v0.9.5/xtemplate-arm64-linux_v0.9.5.zip
-	sha256sums_aarch64 = 75b1b091fad790443f6ed44cb427d93826df276145032b45cb64a53fa52e597d
+	source_x86_64 = https://github.com/infogulch/xtemplate/releases/download/v0.9.6/xtemplate-amd64-linux_v0.9.6.zip
+	sha256sums_x86_64 = 27665bd60135aedf96f508df4e4b2316d27944e4e5ae9b96ebb8eb5aeef8baba
+	source_aarch64 = https://github.com/infogulch/xtemplate/releases/download/v0.9.6/xtemplate-arm64-linux_v0.9.6.zip
+	sha256sums_aarch64 = 13a3c9b61a083684f9ea6aa4a5f7d52a25e5058a5ca8ba095ae8f149b1a674e6
 
 pkgname = xtemplate-bin
