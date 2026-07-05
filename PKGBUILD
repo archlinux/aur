@@ -4,7 +4,7 @@
 pkgbase=mediawiki-lts
 _pkgname=mediawiki
 pkgname=('mediawiki-lts' 'mediawiki-math-lts')
-pkgver=1.35.4
+pkgver=1.43.9
 _basever=${pkgver%.*}
 _hash=93930b1
 pkgrel=1
@@ -15,7 +15,7 @@ url="http://www.mediawiki.org/wiki/MediaWiki"
 license=("GPL")
 depends=('php')
 makedepends=('git')
-optdepends=('python2'
+optdepends=('python'
 	    'pcre: for regular expressions support'
 	    'php-intl: to handle Unicode normalization'
 #	    'php-mysql: for MySQL database support'
@@ -35,9 +35,9 @@ validpgpkeys=('41B2ABE817ADD3E52BDA946F72BC1C5D23107F8A'
 source=("https://releases.wikimedia.org/mediawiki/${_basever}/mediawiki-$pkgver.tar.gz"{,.sig}
 	"mediawiki-math-${_basever}.tar.gz::https://codeload.github.com/wikimedia/mediawiki-extensions-Math/legacy.tar.gz/REL${_basever/./_}"
 	apache.example.conf)
-sha256sums=('1902f7b9375dc7813aa50df9c23a758ba431d2e8a4116345c1eb5775dda94868'
+sha256sums=('4595f8cfd39f1c4b5278ec43836c6720586e639518aa76a1db4b5532a3955ee6'
             'SKIP'
-            'cacaca559909e3cd5ba74c53b9f1c53476e58a7f454c796d18c678da925c4a24'
+            'c0f99af9428c83cda12508cbad43fe2113172d34a7e6eeb890a0d4efd867d686'
             'cfeff68331e930b6a93f166c12666ac59a84aa24334f94520eff3f988f37ce2b')
 
 package_mediawiki-lts() {
