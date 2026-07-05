@@ -1,12 +1,14 @@
 pkgbase = connectiq-sdk-manager
 	pkgdesc = Garmin Connect IQ SDK Manager
-	pkgver = 8.2.1
-	pkgrel = 9
+	pkgver = 9.2.0
+	pkgrel = 1
 	url = https://developer.garmin.com/connect-iq/sdk/
 	arch = x86_64
 	license = custom
-	depends = webkit2gtk
+	makedepends = patchelf
+	depends = libsoup3
+	depends = webkit2gtk-4.1
 	source = https://developer.garmin.com/downloads/connect-iq/sdk-manager/connectiq-sdk-manager-linux.zip
-	sha256sums = 89e62b3bfa6f059ac13f1339fc9957ac2da54255d4b5d91335638de605596f24
+	sha256sums = 481ea86078ce2e8c7010475e4e2aa2d35446ba6671090443bf222396993c0efc
 
 pkgname = connectiq-sdk-manager
