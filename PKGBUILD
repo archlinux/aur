@@ -1,12 +1,13 @@
 # Maintainer: Alexander Tarasov <a.tevg@ya.ru>
 pkgsubn=pwsp
 pkgname=pwsp
-pkgver=1.12.0
+pkgver=1.12.3
 pkgrel=1
 pkgdesc="Lets you play audio files through your microphone"
 arch=('x86_64' 'aarch64')
 url="https://github.com/arabianq/pipewire-soundpad"
 license=('MIT')
+depends=('pipewire' 'alsa-lib' 'openssl')
 makedepends=(clang rust cargo cmake pipewire alsa-lib)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
@@ -14,7 +15,7 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "${srcdir}/pipewire-soundpad-${pkgver}"
-  
+
   export CARGO_HOME="${srcdir}/${pkgname%}/.cargo"    # Download all to src directory, not in ~/.cargo
 
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
@@ -35,7 +36,7 @@ build() {
 
 package() {
   cd "${srcdir}/pipewire-soundpad-${pkgver}"
-  
+
   install -Dm755 "target/release/pwsp-cli" "${pkgdir}/usr/bin/pwsp-cli"
   install -Dm755 "target/release/pwsp-daemon" "${pkgdir}/usr/bin/pwsp-daemon"
   install -Dm755 "target/release/pwsp-gui" "${pkgdir}/usr/bin/pwsp-gui"
