@@ -1,15 +1,15 @@
 pkgbase = kimi-code
 	pkgdesc = The Starting Point for Next-Gen Agents
-	pkgver = 0.22.2
+	pkgver = 0.22.3
 	pkgrel = 1
 	url = https://github.com/MoonshotAI/kimi-code
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = kimi-code-0.22.2.tgz
+	noextract = kimi-code-0.22.3.tgz
 	options = !strip
-	source = https://registry.npmjs.org/@moonshot-ai/kimi-code/-/kimi-code-0.22.2.tgz
-	sha256sums = 645ec7156e2a41cf167998aba35ecfb45c86fab6e3a0d96f690b9cccb052489d
+	source = https://registry.npmjs.org/@moonshot-ai/kimi-code/-/kimi-code-0.22.3.tgz
+	sha256sums = d6fbd17c0cdaaf5169d9bcde4efab36fdaf9e72a2c99bdecaacc7b4aff132953
 
 pkgname = kimi-code
