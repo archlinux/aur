@@ -19,8 +19,4 @@ post_install() {
 
 post_upgrade() {
     echo '[POST-UPGRADE] If pacman created /etc/howdy/config.ini.pacnew, merge it into your current config.'
-    echo '[POST-UPGRADE] Example: sudo -i'
-    echo '[POST-UPGRADE]          pacdiff /etc/howdy/config.ini'
-    echo '[POST-UPGRADE] Test before closing the root shell: sudo howdy test && sudo -k && sudo true'
-    echo '[POST-UPGRADE] Also test lock-screen auth if pam_howdy.so is used there.'
 }
