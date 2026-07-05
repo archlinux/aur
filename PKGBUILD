@@ -9,7 +9,7 @@ pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
 _sticker_creator="sticker-creator"
 _desktop_file='signal beta.desktop'
-pkgver=8.15.0beta1
+pkgver=8.18.0beta1
 pkgrel=1
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
@@ -51,8 +51,9 @@ makedepends=(
   'libxcrypt-compat'
   'node-gyp'
   'nodejs-lts-krypton'
-  'python'
+  'npm'
   'pnpm'
+  'python'
 )
 optdepends=('xdg-desktop-portal: Screensharing with Wayland')
 source=(
@@ -60,7 +61,7 @@ source=(
   "${_desktop_file}"
   "${pkgname}.sh"
   )
-sha512sums=('2419129c32a88a87ada05a8dbbdf72fd3c5272c4f87875720fbd2356d41e0a7edef96de990f808fe8f1aab8e98810d54c463e8253dc8ae8b009ae793fc71960b'
+sha512sums=('aa1e84c7e458b5f532226b9154668dcf725412ab7e5d4462840cd653252a0b29fbabac300fef7745caa2df1e53d6ce80ae0a87e6ada43c74b71ee367b2265edb'
             '5032201efb1089e2e8f78cf5cc06d458f2b068900a4de74b7c2ef87a0a0e7779cc681df7b95ce2d9af131ef9ea148f3621ee1fa2a9812982cdecc7aba9eeb87c'
             'b3d8e56d0524711e13f5ef3770b49c5723ad3d7e50855ae578ea63f653b5e64edd7a9e68b56ba35c0240959f091195ece3580fc8550240ef40b00d0ad7fb97e8')
 
@@ -77,8 +78,15 @@ prepare() {
   # Install dependencies for sticker-creator
   pnpm install -C ./sticker-creator/
 
+  # Configure electron-builder's Linux target for the current Arch architecture.
+  case "${CARCH}" in
+    "aarch64") electron_arch="arm64" ;;
+    *) electron_arch="x64" ;;
+  esac
+  node scripts/prepare_linux_build.mjs deb "${electron_arch}"
+
   # Install dependencies for signal-desktop
-  pnpm install
+  pnpm install --frozen-lockfile
 }
 
 build() {
@@ -87,17 +95,13 @@ build() {
   # Build the sticker creator
   pnpm -C ./sticker-creator/ run build
 
-  case "${CARCH}" in
-    "aarch64") electron_arch="arm64" ;;
-    *) electron_arch="x64" ;;
-  esac
-
-  # Configure electron-builder's Linux target for the current Arch architecture.
-  node scripts/prepare_linux_build.mjs deb "${electron_arch}"
-
   # Build Signal Desktop Beta
   pnpm run generate
   pnpm run prepare-beta-build
+  # Required to avoid:
+  # ? Your "node_modules" directory is out of sync with the "pnpm-lock.yaml" file. This can lead to issues during scripts execution.
+  # Would you like to run "pnpm install" to update your "node_modules"? (Y/n)
+  export PNPM_CONFIG_VERIFY_DEPS_BEFORE_RUN=false
   pnpm run build:esbuild:prod && pnpm run build:release -- --linux dir
 }
 
