@@ -18,8 +18,11 @@ optdepends=(
 )
 provides=('miyu')
 conflicts=('miyu')
-source=('miyu::git+https://github.com/SHORiN-KiWATA/Miyu.git')
-sha256sums=('SKIP')
+source=(
+  'miyu::git+https://github.com/SHORiN-KiWATA/Miyu.git'
+  'shorinwiki::git+https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide.git'
+)
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd miyu
@@ -58,4 +61,40 @@ package() {
       install -Dm755 "${file}" "${pkgdir}/usr/share/miyu/scripts/${rel}"
     done < <(find src/scripts -type f -print0 | sort -z)
   fi
+
+  # Default knowledge base: kb (from miyu repo)
+  local kb_dir="${srcdir}/miyu/kb"
+  if [[ -d "${kb_dir}" ]]; then
+    while IFS= read -r -d '' file; do
+      local rel="${file#${kb_dir}/}"
+      case "/${rel}" in
+        */.git/*|*/pictures/*|*/legacy/*|*/Legacy/*|*/lagacy/*|*/Lagacy/*|*/Wikis/*) continue ;;
+      esac
+      install -Dm644 "${file}" "${pkgdir}/usr/share/miyu/default-kb/kb/${rel}"
+    done < <(find "${kb_dir}" -type f -name '*.md' -print0 | sort -z)
+  fi
+
+  # Default knowledge base: shorinwiki (from shorinwiki source, wiki/ subdir)
+  local wiki_dir="${srcdir}/shorinwiki/wiki"
+  if [[ -d "${wiki_dir}" ]]; then
+    while IFS= read -r -d '' file; do
+      local rel="${file#${wiki_dir}/}"
+      case "/${rel}" in
+        */.git/*|*/pictures/*|*/legacy/*|*/Legacy/*|*/lagacy/*|*/Lagacy/*|*/Wikis/*) continue ;;
+      esac
+      install -Dm644 "${file}" "${pkgdir}/usr/share/miyu/default-kb/shorinwiki/${rel}"
+    done < <(find "${wiki_dir}" -type f -name '*.md' -print0 | sort -z)
+  fi
+
+  # Default knowledge base: manifest
+  install -d "${pkgdir}/usr/share/miyu/default-kb/manifest"
+  cat > "${pkgdir}/usr/share/miyu/default-kb/manifest/manifest.json" <<EOF
+{
+  "name": "miyu-default-kb",
+  "generated_by": "miyu-git PKGBUILD"
+}
+EOF
+  local sw_commit
+  sw_commit="$(git -C "${srcdir}/shorinwiki" rev-parse HEAD 2>/dev/null || echo '')"
+  printf '%s\n' "${sw_commit}" > "${pkgdir}/usr/share/miyu/default-kb/manifest/shorinwiki.commit"
 }

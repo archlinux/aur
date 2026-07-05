@@ -23,6 +23,8 @@ pkgbase = miyu-git
 	options = !strip
 	options = !debug
 	source = miyu::git+https://github.com/SHORiN-KiWATA/Miyu.git
+	source = shorinwiki::git+https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = miyu-git
