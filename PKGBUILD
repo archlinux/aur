@@ -8,7 +8,7 @@
 
 _pkgname="telegram-desktop"
 pkgname="$_pkgname-git"
-pkgver=6.7.1.r0.g666e40f
+pkgver=6.9.4.r2.gc14efc2
 pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url="https://github.com/telegramdesktop/tdesktop"
@@ -21,22 +21,20 @@ depends=(
   hunspell
   kcoreaddons
   libavif
-  libdispatch
   libheif
   libjxl
   libvpx
   libxdamage
-  minizip-ng
+  minizip
   openal
   openh264
   opus
   protobuf
   qt6-base
-  qt6-declarative
+  qt6-imageformats
   qt6-svg
   qt6-wayland
   rnnoise
-  xcb-util-keysyms
   xxhash
 
   ## for libtg_owt
@@ -57,6 +55,7 @@ makedepends=(
   jemalloc # gio error when absent
   libtg_owt
   ninja
+  qt6-shadertools
   range-v3
   tl-expected
 )
@@ -78,11 +77,10 @@ _source_telegram() {
   _prepare_telegram() (
     echo "Preparing telegram..."
     cd "$_pkgsrc"
-    git rm -r 'Telegram/ThirdParty/dispatch'
-    git rm -r 'Telegram/ThirdParty/range-v3'
     git rm -r 'Telegram/ThirdParty/hunspell'
     git rm -r 'Telegram/ThirdParty/kcoreaddons'
     git rm -r 'Telegram/ThirdParty/lz4'
+    git rm -r 'Telegram/ThirdParty/range-v3'
     git submodule update --init --recursive --depth=1
 
     local src
@@ -95,10 +93,6 @@ _source_telegram() {
         patch -Np1 -F100 -i "${srcdir:?}/$src"
       fi
     done
-
-    # force system minizip-ng
-    rm -rf "Telegram/ThirdParty/minizip"
-    sed -E -e '/pkg_check_modules/s&\bminizip\b&minizip-ng&' -i "cmake/external/minizip/CMakeLists.txt"
   )
 
   _build_telegram() (
@@ -135,18 +129,18 @@ _source_tg_owt() {
   _prepare_tg_owt() (
     echo "Preparing tg_owt..."
     cd "$_pkgsrc_tgowt"
-    git rm -r 'src/third_party/crc32c/src'
     git submodule update --init --recursive --depth=1
   )
 
   _build_tg_owt() (
+    export CXXFLAGS+=" -include cstdint"
+
     echo "Building tg_owt..."
     local _cmake_tg_owt=(
       -B "build_tg_owt"
       -S "$_pkgsrc_tgowt"
       -G Ninja
       -DCMAKE_BUILD_TYPE=None
-      -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
       -DTG_OWT_PACKAGED_BUILD=ON
       -DBUILD_SHARED_LIBS=OFF
       -Wno-dev
@@ -154,30 +148,6 @@ _source_tg_owt() {
 
     cmake "${_cmake_tg_owt[@]}"
     cmake --build "build_tg_owt"
-  )
-}
-
-_source_crc32() {
-  source+=('google.crc32c'::'git+https://github.com/google/crc32c.git')
-  sha256sums+=('SKIP')
-
-  _build_crc32() (
-    echo "Building crc32..."
-    local _cmake_crc32=(
-      -B "build_crc32"
-      -S "$srcdir/google.crc32c"
-      -G Ninja
-      -DCMAKE_BUILD_TYPE=None
-      -DCMAKE_INSTALL_PREFIX=/usr
-      -DCRC32C_BUILD_TESTS=OFF
-      -DCRC32C_BUILD_BENCHMARKS=OFF
-      -DCRC32C_USE_GLOG=OFF
-      -Wno-dev
-    )
-
-    cmake "${_cmake_crc32[@]}"
-    cmake --build "build_crc32"
-    DESTDIR="$srcdir/deps" cmake --install "build_crc32"
   )
 }
 
@@ -212,7 +182,6 @@ _source_telegram
 _source_tdlib
 
 if [[ "${_build_tg_owt::1}" == "t" ]]; then
-  _source_crc32
   _source_tg_owt
 fi
 
@@ -232,7 +201,6 @@ pkgver() {
 
 build() {
   if [[ "${_build_tg_owt::1}" == "t" ]]; then
-    _build_crc32
     _build_tg_owt
   fi
 
