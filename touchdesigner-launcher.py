@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """TouchDesigner launcher for AUR package - handles prefix setup + .toe patching."""
+
 import os
 import shutil
 import subprocess
@@ -16,43 +17,66 @@ DATA_DIR = f"{PREFIX}/data"
 FIX_FILE = f"{PREFIX}/wine_ui_fixes.tox"
 BACKUP_DIR = f"{PREFIX}/backups"
 WINE_PREFIX = os.path.expanduser("~/.local/share/touchdesigner-linux/prefix")
+DOSDEVICES = os.path.join(WINE_PREFIX, "dosdevices")
 
 os.environ["WINEDLLOVERRIDES"] = "mscoree="
 os.environ["WINEDEBUG"] = "fixme-all,warn-all"
 os.environ["PATH"] = f"{PREFIX}/wine/bin:{os.environ.get('PATH', '')}"
-os.environ["LD_LIBRARY_PATH"] = f"{PREFIX}/wine/lib:{PREFIX}/wine/lib64:{os.environ.get('LD_LIBRARY_PATH', '')}"
+os.environ["LD_LIBRARY_PATH"] = (
+    f"{PREFIX}/wine/lib:{PREFIX}/wine/lib64:{os.environ.get('LD_LIBRARY_PATH', '')}"
+)
 os.environ["WINEPREFIX"] = WINE_PREFIX
 
 
+def ensure_z_drive():
+    """Ensure the z: drive is a symlink to /, not a copied directory."""
+    z_path = os.path.join(DOSDEVICES, "z:")
+    if os.path.islink(z_path):
+        # Already a symlink — good
+        return
+    if os.path.isdir(z_path):
+        # Was copied as a regular directory (copytree followed the symlink)!
+        # This can be a HUGE directory (a copy of the entire root filesystem).
+        # Remove it and recreate as a symlink.
+        print("  Repairing z: drive (was copied as directory instead of symlink)...")
+        shutil.rmtree(z_path)
+    # Create the symlink
+    os.makedirs(DOSDEVICES, exist_ok=True)
+    os.symlink("/", z_path)
+
+
 def setup_prefix():
-    """Copy pre-made prefix on first run."""
+    """Copy pre-made prefix on first run, preserving symlinks."""
     system_reg = f"{WINE_PREFIX}/drive_c/windows/system.reg"
     default_prefix = f"{PREFIX}/default-prefix"
     if not os.path.isfile(system_reg) and os.path.isdir(default_prefix):
         print("TouchDesigner - Setting up...")
         os.makedirs(os.path.dirname(WINE_PREFIX), exist_ok=True)
         for item in os.listdir(default_prefix):
-                # Skip dosdevices - Wine recreates them and they contain
-                # circular symlinks (z:/ -> /) that cause infinite recursion
-                if item == "dosdevices":
-                    continue
-                src = os.path.join(default_prefix, item)
-                dst = os.path.join(WINE_PREFIX, item)
-                if os.path.isdir(src):
-                    shutil.copytree(src, dst, dirs_exist_ok=True, symlinks=True)
-                else:
-                    shutil.copy2(src, dst)
+            src = os.path.join(default_prefix, item)
+            dst = os.path.join(WINE_PREFIX, item)
+            if os.path.isdir(src):
+                # Use symlinks=True to preserve dosdevices symlinks (z: -> /, etc.)
+                shutil.copytree(src, dst, symlinks=True, dirs_exist_ok=True)
+            else:
+                shutil.copy2(src, dst)
+        # Double-check z: drive is correct
+        ensure_z_drive()
+    else:
+        # Prefix already exists — just ensure z: is correct
+        ensure_z_drive()
 
 
 def copy_programdata():
     """Copy ProgramData if present."""
     if os.path.isdir(f"{DATA_DIR}/ProgramData"):
-        os.makedirs(f"{WINE_PREFIX}/drive_c/ProgramData", exist_ok=True)
+        target = f"{WINE_PREFIX}/drive_c/ProgramData"
+        os.makedirs(target, exist_ok=True)
         for item in os.listdir(f"{DATA_DIR}/ProgramData"):
             src = os.path.join(f"{DATA_DIR}/ProgramData", item)
-            dst = os.path.join(f"{WINE_PREFIX}/drive_c/ProgramData", item)
+            dst = os.path.join(target, item)
             if os.path.isdir(src):
-                shutil.copytree(src, dst, dirs_exist_ok=True)
+                shutil.copytree(src, dst, symlinks=True, dirs_exist_ok=True)
             else:
                 shutil.copy2(src, dst)
 
@@ -79,8 +103,10 @@ def patch_toe(toe_path):
     toe_collapse = f"{TD_DIR}/bin/toecollapse.exe"
 
     if not all(os.path.isfile(f) for f in [toe_expand, toe_collapse, FIX_FILE]):
-        print(f"  Patching: missing tools (expand={os.path.isfile(toe_expand)}, "
-              f"collapse={os.path.isfile(toe_collapse)}, fix={os.path.isfile(FIX_FILE)})")
+        print(
+            f"  Patching: missing tools (expand={os.path.isfile(toe_expand)}, "
+            f"collapse={os.path.isfile(toe_collapse)}, fix={os.path.isfile(FIX_FILE)})"
+        )
         return
 
     toe_dir = toe_path + ".dir"
@@ -142,7 +168,9 @@ def patch_toe(toe_path):
 
     # Backup original
     os.makedirs(BACKUP_DIR, exist_ok=True)
-    shutil.copy2(toe_path, os.path.join(BACKUP_DIR, os.path.basename(toe_path) + ".bak"))
+    shutil.copy2(
+        toe_path, os.path.join(BACKUP_DIR, os.path.basename(toe_path) + ".bak")
+    )
 
     # Copy fix files into toe .dir
     if os.path.isdir(fix_dir):
@@ -150,7 +178,7 @@ def patch_toe(toe_path):
             src = os.path.join(fix_dir, f)
             dst = os.path.join(toe_dir, f)
             if os.path.isdir(src):
-                shutil.copytree(src, dst, dirs_exist_ok=True)
+                shutil.copytree(src, dst, symlinks=True, dirs_exist_ok=True)
             else:
                 shutil.copy2(src, dst)
 
@@ -195,12 +223,26 @@ def resolve_path(path):
         from urllib.parse import unquote
         path = unquote(path[7:])
     # Strip z:/ or Z:/ Wine prefix if present
-    if path[1:3] in (":/", ":\\"):
+    if len(path) > 2 and path[1:3] in (":/", ":\\"):
         path = path[2:]
     return os.path.realpath(path) if os.path.isfile(path) else path
 
 
 def main():
+    # Handle --help / -h before anything that touches Wine
+    if "--help" in sys.argv or "-h" in sys.argv:
+        print("Usage: touchdesigner [.toe file]")
+        print()
+        print("Launch TouchDesigner (Wine) on Linux.")
+        print()
+        print("Positional:")
+        print("  .toe file        Open a project file")
+        print()
+        print("Options:")
+        print("  --exe <path>     Use a specific TouchDesigner.exe")
+        print("  --help, -h       Show this help")
+        sys.exit(0)
+
     setup_prefix()
     copy_programdata()
     ensure_wine_ready()
@@ -209,7 +251,11 @@ def main():
     input_path = resolve_path(sys.argv[1] if len(sys.argv) > 1 else None)
 
     # Patch .toe argument if provided
-    if input_path and os.path.isfile(input_path) and input_path.lower().endswith(".toe"):
+    if (
+        input_path
+        and os.path.isfile(input_path)
+        and input_path.lower().endswith(".toe")
+    ):
         patch_toe(input_path)
 
     # Launch TD
