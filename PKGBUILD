@@ -1,10 +1,10 @@
 # Maintainer: Mohammed Efaz <mohammedefaz@gmail.com>
 pkgname=melearner-bin
 _pkgname=melearner
-pkgver=0.1.0
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A native desktop app for learning from your local course library"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/WhiteHades/melearner"
 license=('MIT')
 provides=("${_pkgname}")
@@ -12,6 +12,9 @@ conflicts=("${_pkgname}")
 depends=(
   'gtk3'
   'webkit2gtk-4.1'
+  'libayatana-appindicator'
+  'ffmpeg'
+  'xdg-utils'
   'hicolor-icon-theme'
   'desktop-file-utils'
 )
@@ -22,11 +25,9 @@ optdepends=(
 )
 options=('!strip' '!debug' '!lto')
 
-source_x86_64=("${_pkgname}-${pkgver}.deb::https://github.com/WhiteHades/melearner/releases/download/v${pkgver}/melearner_${pkgver}_amd64.deb")
-source_aarch64=("${_pkgname}-${pkgver}.deb::https://github.com/WhiteHades/melearner/releases/download/v${pkgver}/melearner_${pkgver}_arm64.deb")
+source_x86_64=("${_pkgname}-${pkgver}.deb::https://github.com/WhiteHades/melearner/releases/download/v${pkgver}/${_pkgname}-linux-x86_64.deb")
 
-sha256sums_x86_64=('48460b27116d6da78ac21365291abd643824868ebcd083925a46d005219a3243')
-sha256sums_aarch64=('cbc0746c3710fb64e8b99b7c12b798ca264a8b12922c5d42056a2b27f6d69982')
+sha256sums_x86_64=('e1225dd5b237979bb6279928932cf646d9a62abd3a420b55c5d18a51ffad3f21')
 
 package() {
   cd "$srcdir"
