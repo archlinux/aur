@@ -3,9 +3,10 @@
 pkgname=niri-shm-sharing
 _pkgname=niri
 pkgver=26.04
-pkgrel=1
+pkgrel=2
 _commit=8ed0da44d974c32c6877d2f4630c314da0717ecb
-pkgdesc='A scrollable-tiling Wayland compositor with SHM fallback patch for PipeWire screencasting'
+_shm_commit=f3207c77095114f9f2202ca7db8333d4c1a958d1
+pkgdesc='A scrollable-tiling Wayland compositor with SHM/MemFd fallback patch for PipeWire screencasting'
 arch=('x86_64')
 url='https://github.com/niri-wm/niri'
 license=('GPL-3.0-or-later')
@@ -59,20 +60,18 @@ conflicts=(
 
 source=(
   "${_pkgname}-${pkgver}::git+https://github.com/niri-wm/niri.git#commit=${_commit}"
-  "support-shm-sharing-${pkgver}.patch::https://github.com/wrvsrx/niri/compare/tag_support-shm-sharing_4~19..tag_support-shm-sharing_4.patch"
+  "support-shm-sharing-${_shm_commit}.patch::https://github.com/rucnyz/niri/commit/${_shm_commit}.patch"
 )
 
-sha256sums=(
-  'SKIP'
-  '2cb6f38eb526097382a9ba06285735f4bc3b872136b4c1c975a756b65b5f9f95'
-)
+sha256sums=('0a1f3e11002f2e57ee83da4a8f5dd86ae820adde111c809cf0fc65021fadf971'
+            'f640a03669ff451f90b1ae3c81ab7cf4216a28e137f541111a15c2ae08fd8fd4')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
   git -c user.name='makepkg' \
       -c user.email='makepkg@localhost' \
-      am -3 "${srcdir}/support-shm-sharing-${pkgver}.patch"
+      am -3 "${srcdir}/support-shm-sharing-${_shm_commit}.patch"
 
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
