@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=megaglest-git
-pkgver=3.13.0.r433.gf27cfa119
+pkgver=3.13.0.r441.g4ab09c64c
 pkgrel=1
 pkgdesc='Fork of Glest, a 3D real-time strategy game in a fantastic world (git version)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
     'libgcc'
     'libgl'
     'libircclient'
-    'libjpeg'
+    'libjpeg-turbo'
     'libpng'
     'libstdc++'
     'libvorbis'
