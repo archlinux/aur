@@ -1,6 +1,6 @@
 pkgbase = hister
 	pkgdesc = Web history on steroids - blazing fast, content-based search for visited websites
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/asciimoo/hister
 	install = hister.install
@@ -11,9 +11,9 @@ pkgbase = hister
 	makedepends = npm
 	depends = sqlite
 	options = !lto
-	source = hister-0.15.0.tar.gz::https://github.com/asciimoo/hister/archive/refs/tags/v0.15.0.tar.gz
+	source = hister-0.16.0.tar.gz::https://github.com/asciimoo/hister/archive/refs/tags/v0.16.0.tar.gz
 	source = hister.service
-	sha256sums = 1436ffcee58fbf3ef7f9014a75900786a420da81d52accb35b0f64f30a7ec434
+	sha256sums = fd7373b2bfa6fbec4fe622a8f611c661399b1a5ad38cdc2351ab2feb8fca36b1
 	sha256sums = c1f3851a79baf1eab7d5d40ee9aaffa53fef4a2938e5a293c542f73134e645da
 
 pkgname = hister
