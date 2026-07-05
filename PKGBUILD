@@ -7,24 +7,24 @@
 
 pkgname=opencv2
 pkgver=2.4.13.7
-pkgrel=7
+pkgrel=8
 pkgdesc='Open Source Computer Vision Library (version 2.x)'
 arch=('x86_64')
 license=('BSD-3-Clause')
 url='https://opencv.org/'
 depends=(
-    'gcc-libs'
     'glib2'
     'glibc'
-    'gst-plugins-base'
     'gst-plugins-base-libs'
     'gstreamer'
     'gtk2'
     'gtkglext'
     'libdc1394'
+    'libgcc'
     'libgl'
-    'libjpeg'
+    'libjpeg-turbo'
     'libpng'
+    'libstdc++'
     'libtiff'
     'zlib')
 makedepends=(
@@ -50,7 +50,7 @@ build() {
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/opt/opencv2' \
-        -DCMAKE_POLICY_VERSION_MINIMUM:STRING="3.5.0" \
+        -DCMAKE_POLICY_VERSION_MINIMUM:STRING='3.5.0' \
         -DCMAKE_SKIP_INSTALL_RPATH:BOOL='YES' \
         -DBUILD_JASPER:BOOL='ON' \
         -DBUILD_opencv_java:BOOL='OFF' \
