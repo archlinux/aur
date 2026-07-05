@@ -56,6 +56,27 @@ def ensure_drives():
             print("Warning: drive_c not found, wineboot may fail")
 
 
+LICENSE_DIR = f"{WINE_PREFIX}/drive_c/ProgramData/Derivative"
+
+
+def backup_license():
+    """Backup license files before wineboot (which may reset prefix state)."""
+    if os.path.isdir(LICENSE_DIR):
+        bak = f"{LICENSE_DIR}.bak"
+        shutil.rmtree(bak, True)
+        shutil.copytree(LICENSE_DIR, bak, symlinks=True, dirs_exist_ok=True)
+        return True
+    return False
+
+
+def restore_license():
+    """Restore license files if wineboot cleared them."""
+    bak = f"{LICENSE_DIR}.bak"
+    if os.path.isdir(bak) and not os.path.isdir(LICENSE_DIR):
+        shutil.copytree(bak, LICENSE_DIR, symlinks=True, dirs_exist_ok=True)
+    shutil.rmtree(bak, True)
+
+
 def setup_prefix():
     """Copy pre-made prefix on first run, preserving symlinks."""
     system_reg = f"{WINE_PREFIX}/drive_c/windows/system.reg"
@@ -259,7 +280,10 @@ def main():
 
     setup_prefix()
     copy_programdata()
+    had_license = backup_license()
     ensure_wine_ready()
+    if had_license:
+        restore_license()
 
     # Resolve input path (handle file:// URIs from double-click)
     input_path = resolve_path(sys.argv[1] if len(sys.argv) > 1 else None)
