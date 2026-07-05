@@ -20,9 +20,9 @@ provides=("${_pypi_package}")
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 depends=('python' 'python-pillow' 'python-prompt_toolkit' 'python-numpy' 'python-yaml' 'ptpython' 'python-matplotlib' 'python-click' 'python-rich' 'python-pygments' 'python-rich-click' 'python-selenium')
 
-# source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
-source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('184450cf265e5de24a22f358bc69f1c1aa89915b2c075cfb9d6237dcd48ef196')
+source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
+# source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('2439b5a7b36cedc7c58d66432357807d36dcac589211038700a85782b1885bd6')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/"

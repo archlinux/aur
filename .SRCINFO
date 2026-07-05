@@ -22,7 +22,7 @@ pkgbase = fastero
 	depends = python-rich-click
 	depends = python-selenium
 	provides = fastero
-	source = fastero-0.2.5.tar.gz::https://github.com/wasi-master/fastero/archive/refs/tags/v0.2.5.tar.gz
-	sha256sums = 184450cf265e5de24a22f358bc69f1c1aa89915b2c075cfb9d6237dcd48ef196
+	source = https://files.pythonhosted.org/packages/source/f/fastero/fastero-0.2.5.tar.gz
+	sha256sums = 2439b5a7b36cedc7c58d66432357807d36dcac589211038700a85782b1885bd6
 
 pkgname = fastero
