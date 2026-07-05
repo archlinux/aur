@@ -2,7 +2,7 @@
 # Contributor: Ryan Young <ry an. ry. young@gmail.com> (omit spaces)
 
 pkgname=temp-throttle
-pkgver=3.02
+pkgver=3.03
 pkgrel=1
 pkgdesc="A shell script for throttling system CPU frequency based on a desired maximum temperature."
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL-2.0-only')
 depends=('bash')
 backup=('etc/temp-throttle.conf')
 source=("${pkgname}-v${pkgver}.tar.gz"::"https://github.com/Sepero/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('b9602edb2d0e17f4bf1522ee58a498e558ee0a9e7cdfc3c0d7fd376c7e827182')
+sha256sums=('391a541404dbfd124fbdfdde507db80a0b07b225985482bf67fae537db84d955')
 
 package() {
   cd "${pkgname}-${pkgver}"
