@@ -1,6 +1,6 @@
 pkgbase = wpets-git
 	pkgdesc = A Wayland overlay that displays an animated virtual pet reacting to keyboard input
-	pkgver = r477.42ec254
+	pkgver = r483.828fae9
 	pkgrel = 1
 	url = https://github.com/furudbat/wayland-vpets
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = wpets-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	makedepends = pandoc-cli
+	makedepends = pandoc
 	depends = wayland
 	depends = glibc
 	depends = systemd-libs

@@ -1,6 +1,6 @@
 # Maintainer: furudbat <hircreacc@gmail.com>
 pkgname=wpets-git
-pkgver=r477.42ec254
+pkgver=r483.828fae9
 pkgrel=1
 pkgdesc="A Wayland overlay that displays an animated virtual pet reacting to keyboard input"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/furudbat/wayland-vpets"
 license=('MIT')
 
 depends=('wayland' 'glibc' 'systemd-libs')
-makedepends=('git' 'cmake' 'pandoc-cli')
+makedepends=('git' 'cmake' 'pandoc')
 
 provides=('wpets')
 conflicts=('wpets')
@@ -30,7 +30,10 @@ build() {
     -DFEATURE_MULTI_VERSIONS=ON \
     -DSKIP_CPM=ON \
     -DGENERATE_PROTOCOLS=OFF \
-    -Wno-dev
+    -Wno-dev \
+    -DCMAKE_C_FLAGS="${CFLAGS:-} -ffile-prefix-map=$srcdir=." \
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS:-} -ffile-prefix-map=$srcdir=."
+
 
   cmake --build build --parallel "$(nproc)"
   cmake --build build --target manpages --parallel "$(nproc)"
@@ -61,21 +64,33 @@ package() {
 
   # Docs
   install -Dm644 README.md "$pkgdir/usr/share/doc/wpets/README.md"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/wpets/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  install -Dm644 build/bongocat.1 "$pkgdir/usr/share/man/man1/wpets.1"
-  install -Dm644 build/bongocat.5 "$pkgdir/usr/share/man/man5/wpets.5"
-  install -Dm644 build/bongocat-dm-classic.1 "$pkgdir/usr/share/man/man1/wpets-dm-classic.1"
-  install -Dm644 build/bongocat-dm-classic.5 "$pkgdir/usr/share/man/man5/wpets-dm-classic.5"
-  install -Dm644 build/bongocat-dm.1 "$pkgdir/usr/share/man/man1/wpets-dm.1"
-  install -Dm644 build/bongocat-dm.5 "$pkgdir/usr/share/man/man5/wpets-dm.5"
-  install -Dm644 build/bongocat-ms-agent.1 "$pkgdir/usr/share/man/man1/wpets-ms-agent.1"
-  install -Dm644 build/bongocat-ms-agent.5 "$pkgdir/usr/share/man/man5/wpets-ms-agent.5"
-  install -Dm644 build/bongocat-pkmn.1 "$pkgdir/usr/share/man/man1/wpets-pkmn.1"
-  install -Dm644 build/bongocat-pkmn.5 "$pkgdir/usr/share/man/man5/wpets-pkmn.5"
-  install -Dm644 build/bongocat-all.1 "$pkgdir/usr/share/man/man1/wpets-all.1"
-  install -Dm644 build/bongocat-all.5 "$pkgdir/usr/share/man/man5/wpets-all.5"
-  install -Dm644 build/bongocat-find-devices.1 "$pkgdir/usr/share/man/man1/wpets-find-devices.1"
+  # cleanup manpages
+  rm -rf stage/*
+  mkdir -p stage
+  for f in build/*.1 build/*.5; do
+    [ -e "$f" ] || continue
+    sed \
+      -e "s|$srcdir||g" \
+      -e "s|/build/|/|g" \
+      < "$f" > "stage/$(basename "$f")"
+  done
+
+  # manpages
+  install -Dm644 stage/bongocat.1 "$pkgdir/usr/share/man/man1/wpets.1"
+  install -Dm644 stage/bongocat.5 "$pkgdir/usr/share/man/man5/wpets.5"
+  #install -Dm644 stage/bongocat-dm-classic.1 "$pkgdir/usr/share/man/man1/wpets-dm-classic.1"
+  #install -Dm644 stage/bongocat-dm-classic.5 "$pkgdir/usr/share/man/man5/wpets-dm-classic.5"
+  install -Dm644 stage/bongocat-dm.1 "$pkgdir/usr/share/man/man1/wpets-dm.1"
+  install -Dm644 stage/bongocat-dm.5 "$pkgdir/usr/share/man/man5/wpets-dm.5"
+  install -Dm644 stage/bongocat-ms-agent.1 "$pkgdir/usr/share/man/man1/wpets-ms-agent.1"
+  install -Dm644 stage/bongocat-ms-agent.5 "$pkgdir/usr/share/man/man5/wpets-ms-agent.5"
+  install -Dm644 stage/bongocat-pkmn.1 "$pkgdir/usr/share/man/man1/wpets-pkmn.1"
+  install -Dm644 stage/bongocat-pkmn.5 "$pkgdir/usr/share/man/man5/wpets-pkmn.5"
+  install -Dm644 stage/bongocat-all.1 "$pkgdir/usr/share/man/man1/wpets-all.1"
+  install -Dm644 stage/bongocat-all.5 "$pkgdir/usr/share/man/man5/wpets-all.5"
+  install -Dm644 stage/bongocat-find-devices.1 "$pkgdir/usr/share/man/man1/wpets-find-devices.1"
 
   # Helper script
   install -Dm755 scripts/find_input_devices.sh "$pkgdir/usr/bin/wpets-find-devices"
