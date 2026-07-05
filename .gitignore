@@ -1,0 +1,11 @@
+# Build artifacts makepkg leaves behind — never pushed to the AUR
+# (the AUR repo holds only the recipe: PKGBUILD, .SRCINFO, helper files).
+
+# downloaded source package
+*.deb
+# the built, installable package
+*.pkg.tar*
+# makepkg's extraction workspace
+src/
+# makepkg's staging root ($pkgdir) from the last build
+pkg/
