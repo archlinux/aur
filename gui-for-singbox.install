@@ -9,9 +9,12 @@ post_install() {
     install -dm777 "${DATA_DIR}/subscribes"
     install -dm777 "${DATA_DIR}/locales"
     install -dm777 "${DATA_DIR}/third"
-    install -dm755 "${DATA_DIR}/sing-box"
+    install -dm777 "${DATA_DIR}/sing-box"
     ln -sf /usr/bin/sing-box "${DATA_DIR}/sing-box/sing-box"
+
+    # Ensure all dirs stay writable on upgrades (install -d won't change perms of existing dirs)
     chmod 777 "${DATA_DIR}"
+    chmod 777 "${DATA_DIR}/sing-box"
 }
 
 post_upgrade() {

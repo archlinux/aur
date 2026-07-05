@@ -3,7 +3,7 @@
 pkgname='gui-for-singbox-bin'
 _pkgname='GUI.for.SingBox'
 pkgver='1.25.4'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='GUI for SingBox (precompiled binary)'
 arch=('x86_64')
 license=('GPL3')
@@ -30,7 +30,7 @@ source=(
 sha256sums=('cf2367cb5203c583b4683187cde597e5bd7f9f2e55b08f9f2ba98c422c5bb793'
             '08257d0d21c76a56e48e38105460927293a452ddc6b0b62db401bf5b5b9b7adf'
             'faf593c95517a35b7ddd930cdcb84a595c1ee0cd813cbc61b353af7720c08271'
-            'c0ee1695064278fcd5862d249819dcca254dd44e5cbc99c75960d52bc39c1031')
+            '0b89ed67853ad0c578904914cc96ee44bf4a973d7cad78d43a675bd6e616d634')
 
 package() {
     # Binary — the only file under /opt that is package-managed
