@@ -5,7 +5,7 @@ pkgname=(
     'monado'
     'monado-doc')
 pkgver=25.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='An open source OpenXR runtime'
 arch=('x86_64')
 url='https://monado.dev/'
@@ -73,7 +73,6 @@ package_monado() {
         'bluez-libs'
         'cjson'
         'dbus'
-        'gcc-libs'
         'glib2'
         'glibc'
         'gst-plugins-base-libs'
@@ -81,9 +80,11 @@ package_monado() {
         'hidapi'
         'libbsd'
         'libdrm'
+        'libgcc'
         'libgl'
         'libjpeg-turbo'
         'librealsense'
+        'libstdc++'
         'libsurvive'
         'libusb'
         'libuvc'
