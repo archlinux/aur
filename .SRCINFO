@@ -1,7 +1,7 @@
 pkgbase = sefirah-bin
 	pkgdesc = Open-source tool to connect your Android device and Windows/Linux PC
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shrimqy/Sefirah
 	arch = x86_64
 	license = GPL-3.0-or-later

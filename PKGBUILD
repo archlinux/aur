@@ -3,7 +3,7 @@
 
 pkgname=sefirah-bin
 pkgver=2.4.0 # renovate: datasource=github-releases depName=shrimqy/Sefirah
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source tool to connect your Android device and Windows/Linux PC"
 arch=('x86_64')
 url="https://github.com/shrimqy/Sefirah"
@@ -41,12 +41,12 @@ EOF
   for size in 16 22 24 32 48 64 128 256 512; do
     if [[ -f "${srcdir}/squashfs-root/usr/share/icons/hicolor/${size}x${size}/apps/Sefirah.png" ]]; then
       install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${size}x${size}/apps/Sefirah.png" \
-        "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/sefirah.png"
+        "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/Sefirah.png"
     fi
   done
 
   if [[ -f "${srcdir}/squashfs-root/usr/share/icons/hicolor/scalable/apps/Sefirah.svg" ]]; then
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/scalable/apps/Sefirah.svg" \
-      "${pkgdir}/usr/share/icons/hicolor/scalable/apps/sefirah.svg"
+      "${pkgdir}/usr/share/icons/hicolor/scalable/apps/Sefirah.svg"
   fi
 }
