@@ -2,7 +2,7 @@
 
 pkgname=terragrunt-edo
 _pkgname=terragrunt
-pkgver=1.0.7.r3.g09a6c2cdf
+pkgver=1.1.0.r3.g09a6c2cdf
 pkgrel=1
 pkgdesc="Terragrunt (Git master) – thin wrapper for OpenTofu/Terraform that provides extra tools for working with multiple modules"
 url="https://github.com/gruntwork-io/${_pkgname}"
