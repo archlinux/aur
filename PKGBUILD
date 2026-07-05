@@ -12,16 +12,16 @@ provides=('unigo')
 conflicts=('unigo')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/snowdreamtech/unigo/releases/download/v${pkgver}/unigo_Linux_arm64.tar.gz")
-sha256sums_aarch64=('c3d925b51fc64f44c676c01ec5014e6c60eec297017f91a4445fc5de0029c075')
+sha256sums_aarch64=('67f8fd94e114efe9527059754c560b74170e47ca061150cb1894ab660de094bb')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/snowdreamtech/unigo/releases/download/v${pkgver}/unigo_Linux_armv7.tar.gz")
-sha256sums_armv7h=('5b5e545d17f6f068639b23002ff6fba34a0adad41823205f48ffdcee1ee0eb70')
+sha256sums_armv7h=('d816c4fc1bd2821a5e5b764d625d9a241308f6f5bbd0e480fe6e9a7524c0ac48')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/snowdreamtech/unigo/releases/download/v${pkgver}/unigo_Linux_i386.tar.gz")
-sha256sums_i686=('552af9e99dadca74bdc583a3545c2936033e01b6725b3c39d5d6914a5bd14932')
+sha256sums_i686=('0a3e8267a94b88e78c48f6f53df1ed002b0c35fbbd8cc89eb5c4e4b6e23eb6fa')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/snowdreamtech/unigo/releases/download/v${pkgver}/unigo_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('16dc00572876c27a354bdf01e0d5b27fd789183e68c0a4d4908d4e7faf19253f')
+sha256sums_x86_64=('4655c1d8653ebe93f05667e2ae53c8d916e93ad2e467283ea221b59702f0ff71')
 
 package() {
   # bin
