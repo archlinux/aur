@@ -2,7 +2,7 @@
 
 pkgname=python-argtools
 _name=${pkgname//-/_}
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 epoch=
 pkgdesc="Python argument tools."
@@ -24,7 +24,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('a9eec47cdb83656b334309ce8d7526a848bead5bceb09e7c557e88a0f98d2baa')
+sha256sums=('57e30a637a40158c667472ef04ca5164f9d48431dd7f0934e0948c718a04f233')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
