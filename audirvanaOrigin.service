@@ -1,7 +1,8 @@
 [Unit]
 Description=Run audirvanaOrigin
 DefaultDependencies=no
-After=avahi-daemon.service
+Requires=sound.target
+After=sound.target
 
 [Service]
 Type=simple
