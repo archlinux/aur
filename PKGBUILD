@@ -3,7 +3,7 @@
 
 pkgname=touchdesigner-linux
 pkgver=1.4
-pkgrel=6
+pkgrel=2
 pkgdesc="TouchDesigner on Linux - Soda Wine, Vulkan-accelerated, ready to run"
 arch=('x86_64')
 url="https://github.com/iswad-lab/TouchDesigner-Linux"
@@ -200,6 +200,7 @@ Icon=touchdesigner
 Terminal=false
 Categories=Development;Graphics;
 StartupNotify=true
+StartupWMClass=steam_proton
 DESKTOP
 
     # ── File handler desktop entry (for double-click on .toe) ──
