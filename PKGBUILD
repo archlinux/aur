@@ -3,7 +3,7 @@
 pkgauthor="baairon"
 pkgname="soundcli"
 pkgdesc="Download your YouTube, SoundCloud, and Spotify libraries to your computer and play them offline, all from your terminal"
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/${pkgauthor}/${pkgname}"
@@ -21,7 +21,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('4ead777dc3a4e5d8bb1b43ff5f86bf6cf40546a7c8d589a0c8b9cc3c4583c9bb48c4263af8b88a1a4171f18af435c4c7d9f42949382778c4e165bf2295b32105')
+b2sums=('8da6d83eb495e7c451e7da186fec23ef610d04f59abe8f3039311003f8dab49672ac72504edafbd025e5e33dee4f0cccbbd7be4f8cd49ddf7a45cfa1bb150ebd')
 
 
 package() {
