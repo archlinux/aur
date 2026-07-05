@@ -10,7 +10,7 @@
 
 _pkgname="ayugram-desktop"
 pkgname="$_pkgname-git"
-pkgver=6.7.8.r0.gb25513a
+pkgver=6.7.8.r12.gba8c1a6
 pkgrel=2
 pkgdesc="Desktop Telegram client with good customization and Ghost mode"
 url="https://github.com/AyuGram/AyuGramDesktop"
@@ -34,7 +34,7 @@ depends=(
   opus
   protobuf
   qt6-base
-  qt6-declarative
+  qt6-imageformats
   qt6-svg
   qt6-wayland
   rnnoise
@@ -87,10 +87,10 @@ sha256sums=(
 prepare() {
   cd "$_pkgsrc"
   git rm -r 'Telegram/ThirdParty/dispatch'
-  git rm -r 'Telegram/ThirdParty/range-v3'
   git rm -r 'Telegram/ThirdParty/hunspell'
   git rm -r 'Telegram/ThirdParty/kcoreaddons'
   git rm -r 'Telegram/ThirdParty/lz4'
+  git rm -r 'Telegram/ThirdParty/range-v3'
   git submodule update --init --recursive --depth=1
 
   local src
