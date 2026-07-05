@@ -8,7 +8,7 @@ pkgbase = xdrawchem
 	makedepends = cmake
 	depends = openbabel>=3
 	depends = qt6-base>=6.4
-	source = xdrawchem-2.0.1.tar.gz::https://github.com/bryanherger/xdrawchem/archive/2.0.1-1.tar.gz
+	source = xdrawchem-2.0.1.tar.gz::https://github.com/bryanherger/xdrawchem/archive/refs/tags/v2.0.1.tar.gz
 	sha256sums = cd85efc30e266da0283bd25535387e62a6526038a7974dca14d67409735362fa
 
 pkgname = xdrawchem

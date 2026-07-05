@@ -11,7 +11,7 @@ license=("GPL")
 arch=('x86_64')
 depends=('openbabel>=3' 'qt6-base>=6.4')
 makedepends=('cmake')
-source=($pkgname-$pkgver.tar.gz::"https://github.com/bryanherger/$pkgname/archive/$pkgver-1.tar.gz")
+source=($pkgname-$pkgver.tar.gz::"https://github.com/bryanherger/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('cd85efc30e266da0283bd25535387e62a6526038a7974dca14d67409735362fa')
 
 prepare() {
