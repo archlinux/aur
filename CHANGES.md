@@ -1,11 +1,30 @@
 # Release Notes
 
+## 2.97.1
+
+This release fixes `pex3 lock sync` to handle split `--style universal` locks.
+
+* Fix `pex3 lock sync` for split universal locks. (#3200)
+
+## 2.97.0
+
+This release adds support for using `--scie-pbs-stripped` in combination with
+`--scie-pbs-free-threaded`.
+
+* Support PBS free-threaded `install_only(_stripped)`. (#3197)
+
+## 2.96.2
+
+This release fixes `--scie-only` for foreign platforms.
+
+* Fix `--scie-only` for foreign platforms. (#3196)
+
 ## 2.96.1
 
 This release fixes `pex3 lock sync` to handle multiple input requirements for the same project
 name.
 
-* Fix `pex3 lock sync` for multiple requirements for the same project.
+* Fix `pex3 lock sync` for multiple requirements for the same project. (#3191)
 
 ## 2.96.0
 

@@ -8,7 +8,7 @@
 
 pkgname=python-pex
 pkgver=2.97.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='Generates executable Python environments'
 url='https://docs.pex-tool.org/'
