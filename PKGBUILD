@@ -1,20 +1,20 @@
 # Maintainer: Peter Semiletov peter.semiletov at gmail dot com
 
 pkgname=eko
-pkgver=7.1.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="EKO is a simple sound editor with mixer and audio effects."
 arch=('x86_64')
 url="https://github.com/psemiletov/eko"
 license=('GPL')
-depends=('qt5-base' 'gcc-libs' 'libsamplerate' 'libsndfile')
+depends=('qt6-base' 'gcc-libs' 'libsamplerate' 'libsndfile')
 
 source=(https://github.com/psemiletov/eko/archive/$pkgver.tar.gz)
 
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  qmake-qt5 PREFIX=/usr
+  qmake PREFIX=/usr
   make
 }
 
@@ -23,4 +23,4 @@ package(){
   make INSTALL_ROOT="${pkgdir}" install
 }
 
-md5sums=(12a43742ad8dade8303cb1f3e73a9b9b)
+md5sums=(1c3fde5bc16607f916743e0680c898ac)
