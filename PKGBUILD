@@ -22,7 +22,7 @@ source_x86_64=(
     "https://raw.githubusercontent.com/Col-E/Recaf/$_pkgver/LICENSE"
 )
 sha256sums_x86_64=(
-    "8c5d707dc4d78c9908c9e877eb8c284cb69f6be3263c3f1ade915a36493ef597"
+    "3c81b47087a235270718ba3ca1ce7050983468cb83cbcaeb5d7c23cc028b8c39"
     "901fbcfa7944e89f5c34e73a3637fd21dc7c8e34b5612a7e0a0a707a4b45be1d"
     "a98659971ead7e75b30f8d4ef8c27d13338c6187a49fee181379e74b89d4a16f"
 )
@@ -33,7 +33,7 @@ source_aarch64=(
     "https://raw.githubusercontent.com/Col-E/Recaf/$_pkgver/LICENSE"
 )
 sha256sums_aarch64=(
-    "3bf177007e7166b2c5154df341bb686993baf3197314bc671e9b2af80b60018b"
+    "5455efdd7d49af405bb0f81caab7424637b363281422402559ba492a5427d33d"
     "901fbcfa7944e89f5c34e73a3637fd21dc7c8e34b5612a7e0a0a707a4b45be1d"
     "a98659971ead7e75b30f8d4ef8c27d13338c6187a49fee181379e74b89d4a16f"
 )

@@ -17,13 +17,13 @@ pkgbase = recaf-bin
 	source_x86_64 = https://github.com/Col-E/Recaf/releases/download/4.0.0-alpha/recaf-4x-alpha-linux-86-x64.jar
 	source_x86_64 = https://raw.githubusercontent.com/Col-E/Recaf/4.0.0-alpha/recaf-ui/src/main/resources/icons/logo-full.png
 	source_x86_64 = https://raw.githubusercontent.com/Col-E/Recaf/4.0.0-alpha/LICENSE
-	sha256sums_x86_64 = 8c5d707dc4d78c9908c9e877eb8c284cb69f6be3263c3f1ade915a36493ef597
+	sha256sums_x86_64 = 3c81b47087a235270718ba3ca1ce7050983468cb83cbcaeb5d7c23cc028b8c39
 	sha256sums_x86_64 = 901fbcfa7944e89f5c34e73a3637fd21dc7c8e34b5612a7e0a0a707a4b45be1d
 	sha256sums_x86_64 = a98659971ead7e75b30f8d4ef8c27d13338c6187a49fee181379e74b89d4a16f
 	source_aarch64 = https://github.com/Col-E/Recaf/releases/download/4.0.0-alpha/recaf-4x-alpha-linux-aarch64.jar
 	source_aarch64 = https://raw.githubusercontent.com/Col-E/Recaf/4.0.0-alpha/recaf-ui/src/main/resources/icons/logo-full.png
 	source_aarch64 = https://raw.githubusercontent.com/Col-E/Recaf/4.0.0-alpha/LICENSE
-	sha256sums_aarch64 = 3bf177007e7166b2c5154df341bb686993baf3197314bc671e9b2af80b60018b
+	sha256sums_aarch64 = 5455efdd7d49af405bb0f81caab7424637b363281422402559ba492a5427d33d
 	sha256sums_aarch64 = 901fbcfa7944e89f5c34e73a3637fd21dc7c8e34b5612a7e0a0a707a4b45be1d
 	sha256sums_aarch64 = a98659971ead7e75b30f8d4ef8c27d13338c6187a49fee181379e74b89d4a16f
 
