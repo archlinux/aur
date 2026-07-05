@@ -3,12 +3,12 @@ pkgname=atapi-customizations
 _pkgname='atapi-customizations'
 pkgbase=atapi-mimetypes
 pkgver=1
-pkgrel=13
+pkgrel=14
 pkgdesc='Various Arch Linux customizations that I do :3'
 arch=(any)
 makedepends=()
-source=(x-atapi-mimetypes.xml 51-dolphinbar.rules 51-gamecube-adapter.rules killsteam steam-monitor unfuck_bt unfuck_wpe mod-preload.conf 10-atapi-envs.conf edit-in-imhex.desktop edit-in-kate.desktop)
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+source=(x-atapi-mimetypes.xml 51-dolphinbar.rules 51-gamecube-adapter.rules killsteam steam-monitor unfuck_bt unfuck_wpe mod-preload.conf 10-atapi-envs.conf edit-in-imhex.desktop edit-in-kate.desktop gbafix.desktop imagemagick.desktop conv2png.sh conv2jpg.sh rotate.sh flip.sh)
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
   install -Dm644 "$srcdir/x-atapi-mimetypes.xml" "$pkgdir/usr/share/mime/packages/x-atapi-mimetypes.xml"
@@ -23,4 +23,11 @@ package() {
   
   install -Dm755 "$srcdir/edit-in-imhex.desktop" "$pkgdir/usr/share/kio/servicemenus/edit-in-imhex.desktop"
   install -Dm755 "$srcdir/edit-in-kate.desktop" "$pkgdir/usr/share/kio/servicemenus/edit-in-kate.desktop"
+  install -Dm755 "$srcdir/gbafix.desktop" "$pkgdir/usr/share/kio/servicemenus/gbafix.desktop"
+  install -Dm755 "$srcdir/imagemagick.desktop" "$pkgdir/usr/share/kio/servicemenus/imagemagick.desktop"
+  
+  install -Dm755 "$srcdir/conv2png.sh" "$pkgdir/usr/share/atapi-customizations/conv2png.sh"
+  install -Dm755 "$srcdir/conv2jpg.sh" "$pkgdir/usr/share/atapi-customizations/conv2jpg.sh"
+  install -Dm755 "$srcdir/rotate.sh" "$pkgdir/usr/share/atapi-customizations/rotate.sh"
+  install -Dm755 "$srcdir/flip.sh" "$pkgdir/usr/share/atapi-customizations/flip.sh"
 }

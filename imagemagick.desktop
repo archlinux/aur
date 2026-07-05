@@ -1,0 +1,39 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=image/*;
+X-KDE-Priority=TopLevel
+X-KDE-Submenu=Convert / Manipulate
+Actions=conv2PngI;conv2PngN;_SEPARATOR_;conv2jpgI;conv2jpgN;_SEPARATOR_;rot90;rot180;_SEPARATOR_;vflip;hflip;
+
+[Desktop Action conv2PngI]
+Name=Convert to PNG (Inplace)
+Exec=/usr/share/atapi-customizations/conv2png.sh %F del
+
+[Desktop Action conv2PngN]
+Name=Convert to PNG (New File)
+Exec=/usr/share/atapi-customizations/conv2png.sh %F
+
+[Desktop Action conv2jpgI]
+Name=Convert to JPEG (Inplace)
+Exec=/usr/share/atapi-customizations/conv2jpg.sh %F del
+
+[Desktop Action conv2jpgN]
+Name=Convert to JPEG (New File)
+Exec=/usr/share/atapi-customizations/conv2jpg.sh %F
+
+[Desktop Action rot90]
+Name=Rotate 90 Degrees (Clockwise)
+Exec=/usr/share/atapi-customizations/rotate.sh %F 90
+
+[Desktop Action rot180]
+Name=Rotate 180 Degrees
+Exec=/usr/share/atapi-customizations/rotate.sh %F 180
+
+[Desktop Action vflip]
+Name=Flip Vertically
+Exec=/usr/share/atapi-customizations/flip.sh %F v
+
+[Desktop Action hflip]
+Name=Flip Horizontally
+Exec=/usr/share/atapi-customizations/flip.sh %F h

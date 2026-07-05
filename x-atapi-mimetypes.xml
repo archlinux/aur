@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-  <mime-type type="application/x-3ds-movable">S
+  <mime-type type="application/x-3ds-movable">
     <comment>Nintendo 3DS Private Key</comment>
     <comment xml:lang="en_GB">Nintendo 3DS Private Key</comment>
     <generic-icon name="application-x-executable"/>
@@ -9,7 +9,7 @@
     </magic>
     <glob pattern="*.sed"/>
   </mime-type>
-  <mime-type type="application/x-3ds-romfs">S
+  <mime-type type="application/x-3ds-romfs">
     <comment>Nintendo 3DS RomFS</comment>
     <comment xml:lang="en_GB">Nintendo 3DS RomFS</comment>
     <generic-icon name="application-x-executable"/>
@@ -18,14 +18,14 @@
     </magic>
     <glob pattern="*.romfs"/>
   </mime-type>
-  <mime-type type="application/x-ham-vhw">S
+  <mime-type type="application/x-c64-disk">
     <comment>Commodore 64 Disk Image</comment>
     <comment xml:lang="en_GB">Commodore 64 Disk Image</comment>
     <generic-icon name="application-x-raw-disk-image"/>
     <glob pattern="*.d64"/>
     <glob pattern="*.D64"/>
   </mime-type>
-  <mime-type type="application/x-gbfs">S
+  <mime-type type="application/x-gbfs">
     <comment>PinEight GBFS Archive</comment>
     <comment xml:lang="en_GB">PinEight GBFS Archive</comment>
     <generic-icon name="application-zip"/>
@@ -35,52 +35,62 @@
     <glob pattern="*.gbfs"/>
     <glob pattern="*.GBFS"/>
   </mime-type>
-  <mime-type type="application/x-ham-vho">S
+  <mime-type type="application/x-ham-vho">
     <comment>VisualHAM Object List</comment>
     <comment xml:lang="en_GB">VisualHAM Object List</comment>
     <generic-icon name="application-x-executable"/>
     <glob pattern="*.vho"/>
     <glob pattern="*.VHO"/>
   </mime-type>
-  <mime-type type="application/x-ham-vhw">S
+  <mime-type type="application/x-ham-vhw">
     <comment>VisualHAM Workspace</comment>
     <comment xml:lang="en_GB">VisualHAM Workspace</comment>
     <generic-icon name="application-x-executable"/>
     <glob pattern="*.vhw"/>
     <glob pattern="*.VHW"/>
   </mime-type>
-  <mime-type type="application/x-nintendo-exefs">S
+  <mime-type type="application/x-nintendo-exefs">
     <comment>Nintendo Executable Filesystem</comment>
     <comment xml:lang="en_GB">Nintendo Executable Filesystem</comment>
     <generic-icon name="application-x-raw-disk-image"/>
     <glob pattern="*.exefs"/>
   </mime-type>
-  <mime-type type="application/x-ps-self">S
+  <mime-type type="application/x-ps-self">
     <comment>PlayStation Signed ELF</comment>
     <comment xml:lang="en_GB">PlayStation Signed ELF</comment>
     <generic-icon name="application-x-executable"/>
     <glob pattern="*.self"/>
     <glob pattern="*.SELF"/>
   </mime-type>
-  <mime-type type="application/x-ps-sprx">S
+  <mime-type type="application/x-ps-sprx">
     <comment>Signed PlayStation Relocatable eXecutable</comment>
     <comment xml:lang="en_GB">Signed PlayStation Relocatable eXecutable</comment>
     <generic-icon name="application-x-executable"/>
     <glob pattern="*.sprx"/>
     <glob pattern="*.SPRX"/>
   </mime-type>
-  <mime-type type="application/x-gp32-fxe">S
+  <mime-type type="application/x-gp32-fxe">
     <comment>GamePark GP32 Executable</comment>
     <comment xml:lang="en_GB">GamePark GP32 Executable</comment>
     <generic-icon name="application-x-executable"/>
     <glob pattern="*.fxe"/>
     <glob pattern="*.FXE"/>
   </mime-type>
-  <mime-type type="application/x-tns">S
+  <mime-type type="application/x-tns">
     <comment>TI-Nspire Document</comment>
     <comment xml:lang="en_GB">TI-Nspire Documen</comment>
     <generic-icon name="application-x-executable"/>
     <glob pattern="*.tns"/>
     <glob pattern="*.TNS"/>
+  </mime-type>
+  <mime-type type="application/x-ti-8xp">
+    <comment>TI-83/84+ Program</comment>
+    <comment xml:lang="en_GB">TI-83/84+ Program</comment>
+    <generic-icon name="application-x-executable"/>
+    <magic priority="60">
+      <match type="string" offset="0" value="**TI83F*"/>
+    </magic>
+    <glob pattern="*.8xp"/>
+    <glob pattern="*.8XP"/>
   </mime-type>
 </mime-info>

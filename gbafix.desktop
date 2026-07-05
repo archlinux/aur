@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=application/x-gba-rom;
+Actions=runGbaFix
+
+[Desktop Action runGbaFix]
+Name=Fix Nintendo Logo Data
+Exec=/opt/devkitpro/tools/bin/gbafix %F
