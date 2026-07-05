@@ -143,14 +143,6 @@ fi
 
 echo "Found ${#commits[@]} commits on $KERNEL_BRANCH (base: $base_ref)"
 
-# Build subject-to-filename mapping from existing patches
-declare -A subject_to_file
-for patchfile in "$DKMS_DIR"/mt7927-wifi-*.patch; do
-	[[ -f "$patchfile" ]] || continue
-	subject=$(head -1 "$patchfile")
-	subject_to_file["$subject"]="$(basename "$patchfile")"
-done
-
 # Create temp workspace with git-tracked mt76 source
 work=$(mktemp -d)
 trap 'rm -rf "$work"' EXIT
@@ -211,19 +203,17 @@ for i in "${!commits[@]}"; do
 	# Capture diff from the temp repo - these line numbers are exact
 	dkms_diff=$(git diff -U1 HEAD~1..HEAD)
 
-	# Find existing patch file or generate new name
-	if [[ -n "${subject_to_file[$subject]:-}" ]]; then
-		outfile="${subject_to_file[$subject]}"
-	else
-		slug=$(echo "$subject" |
-			sed 's/wifi: mt76: mt7925: //' |
-			tr '[:upper:]' '[:lower:]' |
-			tr ' ' '-' |
-			sed 's/[^a-z0-9-]//g' |
-			cut -c1-40 |
-			sed 's/-$//')
-		outfile="mt7927-wifi-${nn}-${slug}.patch"
-	fi
+	# Sequential name from commit subject. Number by commit position so the
+	# Makefile's sorted glob applies patches in git order; strip any
+	# "wifi: mt76: <subsys>: " prefix (mt7925, connac, mt792x, ...).
+	slug=$(echo "$subject" |
+		sed -E 's/^wifi: mt76: [a-z0-9]+: //' |
+		tr '[:upper:]' '[:lower:]' |
+		tr ' ' '-' |
+		sed 's/[^a-z0-9-]//g' |
+		cut -c1-40 |
+		sed 's/-$//')
+	outfile="mt7927-wifi-${nn}-${slug}.patch"
 
 	# Filter to specific patches if requested
 	if ((${#patches_to_gen[@]} > 0)); then

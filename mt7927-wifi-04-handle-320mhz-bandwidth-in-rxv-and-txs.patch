@@ -18,9 +18,13 @@ Tested-by: Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>
 Tested-by: Chapuis Dario <chapuisdario4@gmail.com>
 Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
+Reviewed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
+Link: https://patch.msgid.link/20260425195011.790265-4-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit 2237b7b332990f135c1f1550b45ac77b29bcbf7b)
 
-106be8c27ee7f3193ab3b510205572428ea6b545
+8b4b721a4edf4a22117d85ef2bec03b9b2fedc9e
 diff --git a/mt7925/mac.c b/mt7925/mac.c
 index c47bd81..d681005 100644
 --- a/mt7925/mac.c

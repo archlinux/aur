@@ -11,38 +11,36 @@ firmware, requiring a full power cycle to recover. PM enablement will
 be addressed in a follow-up once safe power state transitions are
 determined.
 
+Reviewed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
+Link: https://patch.msgid.link/20260425195011.790265-10-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit b0dddf55af8147699182d002af1f7ff017dc5cfd)
 
-121e460e746fc16285db36ece6062aa2d293911d
+49b33f359ac38323dcc0a6d73a86f58e98b29e5f
 diff --git a/mt7925/init.c b/mt7925/init.c
-index f203f64..98b73b2 100644
+index c0c5cb9..a8c2ca7 100644
 --- a/mt7925/init.c
 +++ b/mt7925/init.c
-@@ -247,3 +247,7 @@ int mt7925_register_device(struct mt792x_dev *dev)
+@@ -234,3 +234,4 @@ int mt7925_register_device(struct mt792x_dev *dev)
  	dev->pm.stats.last_doze_event = jiffies;
 -	if (!mt76_is_usb(&dev->mt76)) {
-+	/* MT7927: runtime PM disabled. The combo chip shares a CONNINFRA
-+	 * power domain between WiFi (PCIe) and BT (USB). SET_OWN/CLR_OWN
-+	 * transitions on the LPCTL register crash BT firmware.
-+	 */
++	/* MT7927: runtime PM crashes BT firmware on the shared CONNINFRA domain */
 +	if (!mt76_is_usb(&dev->mt76) && !is_mt7927(&dev->mt76)) {
  		dev->pm.enable_user = true;
 diff --git a/mt7925/pci.c b/mt7925/pci.c
-index 393d9f4..693e08f 100644
+index 7e0d0e2..3e2afa0 100644
 --- a/mt7925/pci.c
 +++ b/mt7925/pci.c
-@@ -532,3 +532,9 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+@@ -352,3 +352,6 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
  
 -	if (mt7925_disable_aspm)
 +	is_mt7927_hw = (pdev->device == 0x6639 || pdev->device == 0x7927);
 +
-+	/* MT7927: CONNINFRA power domain and WFDMA register access are
-+	 * unreliable with PCIe L1 active, causing throughput to drop
-+	 * from 1+ Gbps to ~200 Mbps. Disable ASPM unconditionally.
-+	 */
++	/* MT7927: ASPM L1 causes unreliable WFDMA register access */
 +	if (mt7925_disable_aspm || is_mt7927_hw)
  		mt76_pci_disable_aspm(pdev);
-@@ -564,3 +570,2 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+@@ -373,3 +376,2 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
  	dev->hif_ops = &mt7925_pcie_ops;
 -	is_mt7927_hw = (pdev->device == 0x6639 || pdev->device == 0x7927);
  	dev->irq_map = is_mt7927_hw ? &mt7927_irq_map : &irq_map;

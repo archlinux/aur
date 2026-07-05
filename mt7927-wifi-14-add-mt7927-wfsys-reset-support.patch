@@ -1,0 +1,104 @@
+wifi: mt76: mt792x: add MT7927 WFSYS reset support
+
+Add a dedicated MT7927 WFSYS reset path in mt792x_wfsys_reset().
+
+Unlike the existing connac2/connac3 reset flow that toggles the WFSYS
+software reset bit and waits for init-done, MT7927 reset is driven
+through CBInfra and requires polling ROMCODE_INDEX until the MCU returns
+to the idle value after reset.
+
+Keep this dormant for now: no MT7927 PCI IDs are added by this patch, so
+it only prepares the reset logic without making the driver bind to MT7927
+hardware yet.
+
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Link: https://patch.msgid.link/20260425195011.790265-14-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit c08ffdaf32f7b68d81aebf42d5bb222587a35c76)
+
+01194b0b4a8078b8f4640b96ec131ad32c52d384
+diff --git a/mt792x_dma.c b/mt792x_dma.c
+index 002aece..2835bf2 100644
+--- a/mt792x_dma.c
++++ b/mt792x_dma.c
+@@ -372,3 +372,50 @@ EXPORT_SYMBOL_GPL(mt792x_poll_rx);
+ 
+-int mt792x_wfsys_reset(struct mt792x_dev *dev)
++static void mt7927_sema_status_read(struct mt792x_dev *dev, u32 addr)
++{
++	u32 remap;
++
++	remap = mt76_rr(dev, MT7927_PCIE2AP_REMAP_WF_0_54);
++	mt76_wr(dev, MT7927_PCIE2AP_REMAP_WF_0_54,
++		(remap & ~MT7927_PCIE2AP_REMAP_WF_0_54_MASK) |
++		MT7927_PCIE2AP_REMAP_WF_0_54_VAL);
++	usleep_range(10, 20);
++
++	mt76_rr(dev, addr);
++
++	mt76_wr(dev, MT7927_PCIE2AP_REMAP_WF_0_54, remap);
++	usleep_range(10, 20);
++}
++
++static int mt7927_wfsys_reset(struct mt792x_dev *dev)
++{
++	struct mt76_dev *mdev = &dev->mt76;
++	u32 val;
++
++	mt7927_sema_status_read(dev, MT7927_SEMA_OWN_STA);
++
++	mt76_set(dev, MT7927_CBINFRA_RGU_WF_RST,
++		 MT7927_CBINFRA_RGU_WF_RST_WF_SUBSYS);
++	usleep_range(1000, 2000);
++
++	mt76_clear(dev, MT7927_CBINFRA_RGU_WF_RST,
++		   MT7927_CBINFRA_RGU_WF_RST_WF_SUBSYS);
++	usleep_range(5000, 10000);
++
++	mt76_wr(dev, MT7927_CBINFRA_MCU_OWN_SET, BIT(0));
++
++	if (!__mt76_poll_msec(mdev, MT7927_ROMCODE_INDEX, 0xffff,
++			      MT7927_MCU_IDLE_VALUE, 200)) {
++		val = mt76_rr(dev, MT7927_ROMCODE_INDEX);
++		dev_err(mdev->dev,
++			"MT7927 WFSYS reset timeout (ROMCODE_INDEX=0x%04x)\n",
++			val & 0xffff);
++		return -ETIMEDOUT;
++	}
++
++	mt7927_sema_status_read(dev, MT7927_SEMA_OWN_STA_REP);
++
++	return 0;
++}
++
++static int mt792x_wfsys_reset_default(struct mt792x_dev *dev)
+ {
+@@ -386,2 +433,10 @@ int mt792x_wfsys_reset(struct mt792x_dev *dev)
+ }
++
++int mt792x_wfsys_reset(struct mt792x_dev *dev)
++{
++	if (is_mt7927(&dev->mt76))
++		return mt7927_wfsys_reset(dev);
++
++	return mt792x_wfsys_reset_default(dev);
++}
+ EXPORT_SYMBOL_GPL(mt792x_wfsys_reset);
+diff --git a/mt792x_regs.h b/mt792x_regs.h
+index 20d27ae..17504ef 100644
+--- a/mt792x_regs.h
++++ b/mt792x_regs.h
+@@ -495,2 +495,13 @@
+ 
++/* CBInfra registers - MT7927 combo chip */
++#define MT7927_CBINFRA_RGU_WF_RST		0x1f8600
++#define MT7927_CBINFRA_RGU_WF_RST_WF_SUBSYS	BIT(4)
++#define MT7927_CBINFRA_MCU_OWN_SET		0x1f5034
++#define MT7927_ROMCODE_INDEX			0xc1604
++#define MT7927_MCU_IDLE_VALUE			0x1d1e
++#define MT7927_PCIE2AP_REMAP_WF_0_54		0x21008
++#define MT7927_PCIE2AP_REMAP_WF_0_54_MASK	GENMASK(15, 0)
++#define MT7927_PCIE2AP_REMAP_WF_0_54_VAL	0x00001807
++#define MT7927_SEMA_OWN_STA			0x40000
++#define MT7927_SEMA_OWN_STA_REP			0x40400
+ #endif /* __MT792X_REGS_H */

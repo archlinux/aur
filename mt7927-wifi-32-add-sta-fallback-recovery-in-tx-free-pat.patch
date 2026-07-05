@@ -13,13 +13,14 @@ reports correct WCIDs for AP-mode client STAs.
 
 Signed-off-by: Javier Tia <floss@jetm.me>
 Tested-by: Patryk Kowalczyk <patryk@kowalczyk.ws>
+(cherry picked from commit 0fe4ebc47c7ee47d9fcf064f64cbf02771ce7d1d)
 
-0fe4ebc47c7ee47d9fcf064f64cbf02771ce7d1d
+b737b9f08c10a6af2d034693e75b060adfb528a4
 diff --git a/mt7925/mac.c b/mt7925/mac.c
-index d681005..80737c7 100644
+index 5dd895c..5a19a23 100644
 --- a/mt7925/mac.c
 +++ b/mt7925/mac.c
-@@ -1094,2 +1094,13 @@ void mt7925_txwi_free(struct mt792x_dev *dev, struct mt76_txwi_cache *t,
+@@ -1093,2 +1093,13 @@ void mt7925_txwi_free(struct mt792x_dev *dev, struct mt76_txwi_cache *t,
  		wcid_idx = le32_get_bits(txwi[1], MT_TXD1_WLAN_IDX);
 +		wcid = __mt76_wcid_ptr(mdev, wcid_idx);
 +
@@ -33,7 +34,7 @@ index d681005..80737c7 100644
 +				mt7925_tx_check_aggr(sta, t->skb, wcid);
 +		}
  	}
-@@ -1142,4 +1153,7 @@ mt7925_mac_tx_free(struct mt792x_dev *dev, void *data, int len)
+@@ -1141,4 +1152,7 @@ mt7925_mac_tx_free(struct mt792x_dev *dev, void *data, int len)
  			sta = wcid_to_sta(wcid);
 -			if (!sta)
 +			if (!sta) {

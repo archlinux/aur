@@ -23,11 +23,15 @@ Tested-by: Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>
 Tested-by: Chapuis Dario <chapuisdario4@gmail.com>
 Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
+Reviewed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
+Link: https://patch.msgid.link/20260425195011.790265-9-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit 4a91a8c30bf409c06d56017e09f4fc58c5d044ce)
 
-af37f2ce3737d0b20eb1392ffc82f1830c0ae1a3
+4cbdbb32df1661745fd3c8d0d69dd4f423463fac
 diff --git a/mt7925/pci.c b/mt7925/pci.c
-index f820d5a..604c0e9 100644
+index 76139a5..7e0d0e2 100644
 --- a/mt7925/pci.c
 +++ b/mt7925/pci.c
 @@ -268,2 +268,14 @@ static int mt7925_dma_init(struct mt792x_dev *dev)
@@ -55,7 +59,7 @@ index f820d5a..604c0e9 100644
 +	is_mt7927_hw = (pdev->device == 0x6639 || pdev->device == 0x7927);
 +	dev->irq_map = is_mt7927_hw ? &mt7927_irq_map : &irq_map;
  	mt76_mmio_init(&dev->mt76, pcim_iomap_table(pdev)[0]);
-@@ -551,3 +565,6 @@ static int _mt7925_pci_resume(struct device *device, bool restore)
+@@ -553,3 +567,6 @@ static int _mt7925_pci_resume(struct device *device, bool restore)
  			       dev->irq_map->tx.all_complete_mask |
 -			       MT_INT_RX_DONE_ALL | MT_INT_MCU_CMD);
 +			       dev->irq_map->rx.data_complete_mask |

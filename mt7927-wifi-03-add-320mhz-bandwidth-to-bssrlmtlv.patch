@@ -24,9 +24,13 @@ Tested-by: Samu Toljamo <samu.toljamo@gmail.com>
 Tested-by: Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>
 Tested-by: Chapuis Dario <chapuisdario4@gmail.com>
 Tested-by: Thibaut François <tibo@humeurlibre.fr>
+Reviewed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
+Link: https://patch.msgid.link/20260425195011.790265-3-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit efc9a10d1de1763baecd2031c1c6dfe6aac9ac38)
 
-e86a1917c31ecbb570ecb6c91cec6cf796de36d5
+1e01d67b1f00ab0fb33aabef49485cae98679d1f
 diff --git a/mt7925/mcu.c b/mt7925/mcu.c
 index 37cdf3e..016c534 100644
 --- a/mt7925/mcu.c

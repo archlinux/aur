@@ -1,0 +1,35 @@
+wifi: mt76: mt792x: enable CNM ops for MT7927
+
+Enable CNM support for MT7927 so mac80211 keeps remain-on-channel callbacks
+available. MT7927 needs them at runtime even when the capability is not
+advertised through the normal firmware feature path.
+
+Co-developed-by: Javier Tia <floss@jetm.me>
+Signed-off-by: Javier Tia <floss@jetm.me>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Link: https://patch.msgid.link/20260425195011.790265-20-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit 298efd8f9f24727269a95c2f9dd94d604c98ff90)
+
+42da3e5b7e0287cf053379ce9be7431f52ee2dd8
+diff --git a/mt792x_core.c b/mt792x_core.c
+index 152cfcc..3fdcd05 100644
+--- a/mt792x_core.c
++++ b/mt792x_core.c
+@@ -761,2 +761,9 @@ out:
+ 
++static bool mt792x_needs_cnm_runtime(const void *drv_data)
++{
++	const char *fw_wm = drv_data;
++
++	return fw_wm && !strcmp(fw_wm, MT7927_FIRMWARE_WM);
++}
++
+ struct ieee80211_ops *
+@@ -774,2 +781,6 @@ mt792x_get_mac80211_ops(struct device *dev,
+ 	*fw_features = mt792x_get_offload_capability(dev, drv_data);
++
++	if (mt792x_needs_cnm_runtime(drv_data))
++		*fw_features |= MT792x_FW_CAP_CNM;
++
+ 	if (!(*fw_features & MT792x_FW_CAP_CNM)) {

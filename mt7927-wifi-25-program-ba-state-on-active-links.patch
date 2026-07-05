@@ -1,0 +1,142 @@
+wifi: mt76: mt7925: program BA state on active links
+
+With MLO, traffic for one TID can be sent on any active link. Programming
+BA state only on the default link leaves the other active links out of
+sync.
+
+Program BA state on all active links instead.
+
+Fixes: 766ea2cf5a39 ("Revert "wifi: mt76: mt7925: Update mt7925_mcu_uni_[tx,rx]_ba for MLO"")
+Tested-by: Yao Ting Hsieh <yao-ting.hsieh@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Link: https://patch.msgid.link/20260425154721.738101-3-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit 733d8aa8d09be3068bcf2f09278446aca7921805)
+
+4b3b66b0ad8f54e735d0b1440970176565fc1baa
+diff --git a/mt7925/main.c b/mt7925/main.c
+index c2ab265..2394ee1 100644
+--- a/mt7925/main.c
++++ b/mt7925/main.c
+@@ -1409,3 +1409,3 @@ mt7925_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 				   params->buf_size);
+-		mt7925_mcu_uni_rx_ba(dev, params, true);
++		mt7925_mcu_uni_rx_ba(dev, params, vif, true);
+ 		break;
+@@ -1413,3 +1413,3 @@ mt7925_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 		mt76_rx_aggr_stop(&dev->mt76, &msta->deflink.wcid, tid);
+-		mt7925_mcu_uni_rx_ba(dev, params, false);
++		mt7925_mcu_uni_rx_ba(dev, params, vif, false);
+ 		break;
+@@ -1418,3 +1418,3 @@ mt7925_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 		mtxq->send_bar = false;
+-		mt7925_mcu_uni_tx_ba(dev, params, true);
++		mt7925_mcu_uni_tx_ba(dev, params, vif, true);
+ 		break;
+@@ -1424,3 +1424,3 @@ mt7925_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 		clear_bit(tid, &msta->deflink.wcid.ampdu_state);
+-		mt7925_mcu_uni_tx_ba(dev, params, false);
++		mt7925_mcu_uni_tx_ba(dev, params, vif, false);
+ 		break;
+@@ -1433,3 +1433,3 @@ mt7925_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 		clear_bit(tid, &msta->deflink.wcid.ampdu_state);
+-		mt7925_mcu_uni_tx_ba(dev, params, false);
++		mt7925_mcu_uni_tx_ba(dev, params, vif, false);
+ 		ieee80211_stop_tx_ba_cb_irqsafe(vif, sta->addr, tid);
+diff --git a/mt7925/mcu.c b/mt7925/mcu.c
+index d9fc1b0..434a378 100644
+--- a/mt7925/mcu.c
++++ b/mt7925/mcu.c
+@@ -684,16 +684,34 @@ mt7925_mcu_sta_ba(struct mt76_dev *dev, struct mt76_vif_link *mvif,
+ 
+-/** starec & wtbl **/
+ int mt7925_mcu_uni_tx_ba(struct mt792x_dev *dev,
+ 			 struct ieee80211_ampdu_params *params,
+-			 bool enable)
++			 struct ieee80211_vif *vif, bool enable)
+ {
+-	struct mt792x_sta *msta = (struct mt792x_sta *)params->sta->drv_priv;
+-	struct mt792x_vif *mvif = msta->vif;
++	struct ieee80211_sta *sta = params->sta;
++	struct mt792x_sta *msta = (struct mt792x_sta *)sta->drv_priv;
++	struct ieee80211_link_sta *link_sta;
++	unsigned int link_id;
+ 
+-	if (enable && !params->amsdu)
+-		msta->deflink.wcid.amsdu = false;
++	for_each_sta_active_link(vif, sta, link_sta, link_id) {
++		struct mt792x_link_sta *mlink;
++		struct mt792x_bss_conf *mconf;
++		int ret;
+ 
+-	return mt7925_mcu_sta_ba(&dev->mt76, &mvif->bss_conf.mt76, params,
+-				 &msta->deflink.wcid,
+-				 enable, true);
++		mlink = mt792x_sta_to_link(msta, link_id);
++		if (!mlink)
++			return -EINVAL;
++
++		mconf = mt792x_vif_to_link(msta->vif, link_id);
++		if (!mconf)
++			return -EINVAL;
++
++		if (enable && !params->amsdu)
++			mlink->wcid.amsdu = false;
++
++		ret = mt7925_mcu_sta_ba(&dev->mt76, &mconf->mt76, params,
++					&mlink->wcid, enable, true);
++		if (ret)
++			return ret;
++	}
++
++	return 0;
+ }
+@@ -702,10 +720,29 @@ int mt7925_mcu_uni_rx_ba(struct mt792x_dev *dev,
+ 			 struct ieee80211_ampdu_params *params,
+-			 bool enable)
++			 struct ieee80211_vif *vif, bool enable)
+ {
+-	struct mt792x_sta *msta = (struct mt792x_sta *)params->sta->drv_priv;
+-	struct mt792x_vif *mvif = msta->vif;
++	struct ieee80211_sta *sta = params->sta;
++	struct mt792x_sta *msta = (struct mt792x_sta *)sta->drv_priv;
++	struct ieee80211_link_sta *link_sta;
++	unsigned int link_id;
+ 
+-	return mt7925_mcu_sta_ba(&dev->mt76, &mvif->bss_conf.mt76, params,
+-				 &msta->deflink.wcid,
+-				 enable, false);
++	for_each_sta_active_link(vif, sta, link_sta, link_id) {
++		struct mt792x_link_sta *mlink;
++		struct mt792x_bss_conf *mconf;
++		int ret;
++
++		mlink = mt792x_sta_to_link(msta, link_id);
++		if (!mlink)
++			return -EINVAL;
++
++		mconf = mt792x_vif_to_link(msta->vif, link_id);
++		if (!mconf)
++			return -EINVAL;
++
++		ret = mt7925_mcu_sta_ba(&dev->mt76, &mconf->mt76, params,
++					&mlink->wcid, enable, false);
++		if (ret)
++			return ret;
++	}
++
++	return 0;
+ }
+diff --git a/mt7925/mt7925.h b/mt7925/mt7925.h
+index 242f83f..4cc2594 100644
+--- a/mt7925/mt7925.h
++++ b/mt7925/mt7925.h
+@@ -320,6 +320,6 @@ int mt7925_mcu_uni_tx_ba(struct mt792x_dev *dev,
+ 			 struct ieee80211_ampdu_params *params,
+-			 bool enable);
++			 struct ieee80211_vif *vif, bool enable);
+ int mt7925_mcu_uni_rx_ba(struct mt792x_dev *dev,
+ 			 struct ieee80211_ampdu_params *params,
+-			 bool enable);
++			 struct ieee80211_vif *vif, bool enable);
+ void mt7925_mlo_pm_work(struct work_struct *work);

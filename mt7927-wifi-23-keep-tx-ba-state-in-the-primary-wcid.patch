@@ -1,0 +1,42 @@
+wifi: mt76: mt7925: keep TX BA state in the primary WCID
+
+For MLO, the same TID can run over different links. Keeping TX BA state in
+a link WCID makes the state depend on which link starts aggregation first.
+
+Store it in the primary WCID instead, so the BA state stays stable across
+links.
+
+Fixes: 44eb173bdd4f ("wifi: mt76: mt7925: add link handling in mt7925_txwi_free")
+Tested-by: Yao Ting Hsieh <yao-ting.hsieh@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Link: https://patch.msgid.link/20260425154721.738101-1-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit d3c854068bad22a25db6515f12784f64c663fed2)
+
+fe343a433e488f7849f85aee12e191818e44815d
+diff --git a/mt7925/mac.c b/mt7925/mac.c
+index d681005..5dd895c 100644
+--- a/mt7925/mac.c
++++ b/mt7925/mac.c
+@@ -848,3 +848,2 @@ static void mt7925_tx_check_aggr(struct ieee80211_sta *sta, struct sk_buff *skb,
+ 	struct ieee80211_link_sta *link_sta;
+-	struct mt792x_link_sta *mlink;
+ 	struct mt792x_sta *msta;
+@@ -887,10 +886,10 @@ static void mt7925_tx_check_aggr(struct ieee80211_sta *sta, struct sk_buff *skb,
+ 
+-	if (sta->mlo && msta->deflink_id != IEEE80211_LINK_UNSPECIFIED)
+-		mlink = rcu_dereference(msta->link[msta->deflink_id]);
+-	else
+-		mlink = &msta->deflink;
+-
+-	if (!test_and_set_bit(tid, &mlink->wcid.ampdu_state)) {
++	/* Packets belonging to the same TID can be transmitted over multiple
++	 * links. Keep the TX BA session state in the primary link so all links
++	 * share the same AMPDU bookkeeping.
++	 */
++	if (!test_and_set_bit(tid, &msta->deflink.wcid.ampdu_state)) {
+ 		if (ieee80211_start_tx_ba_session(sta, tid, 0))
+-			clear_bit(tid, &mlink->wcid.ampdu_state);
++			clear_bit(tid, &msta->deflink.wcid.ampdu_state);
++
+ 	}

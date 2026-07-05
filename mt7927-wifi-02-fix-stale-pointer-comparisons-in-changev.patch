@@ -18,14 +18,18 @@ Tested-by: Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>
 Tested-by: Chapuis Dario <chapuisdario4@gmail.com>
 Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
+Reviewed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
+Link: https://patch.msgid.link/20260425195011.790265-2-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit 9f1accf3069a0cd42c14ca6c7d44d5b17cc48a80)
 
-065b239f75f3b586199aeec93f5f62750341c17c
+ba3b3623f19356d903084f6b7fe5f023e6d7c8e6
 diff --git a/mt7925/main.c b/mt7925/main.c
-index 73d3722..4d8ca04 100644
+index 79cc30a..6fa91d3 100644
 --- a/mt7925/main.c
 +++ b/mt7925/main.c
-@@ -2181,5 +2181,5 @@ free:
+@@ -2184,5 +2184,5 @@ free:
  
 -		if (mconf != &mvif->bss_conf)
 +		if (mconfs[link_id] != &mvif->bss_conf)

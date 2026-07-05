@@ -1,0 +1,74 @@
+wifi: mt76: connac: replace is_mt7925() with is_connac3()
+
+Use is_connac3() instead of is_mt7925() to avoid confusion
+when more chips join.
+
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Link: https://patch.msgid.link/20260425195011.790265-11-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit 60dac6072dbcb35e077906c43e58ed71436af992)
+
+fa943f309ebd83728624e70eee7484536915839d
+diff --git a/mt76_connac.h b/mt76_connac.h
+index 45479cc..1994863 100644
+--- a/mt76_connac.h
++++ b/mt76_connac.h
+@@ -174,3 +174,3 @@ extern const struct wiphy_wowlan_support mt76_connac_wowlan_support;
+ 
+-static inline bool is_mt7925(struct mt76_dev *dev)
++static inline bool is_connac3(struct mt76_dev *dev)
+ {
+@@ -179,2 +179,7 @@ static inline bool is_mt7925(struct mt76_dev *dev)
+ 
++static inline bool is_mt7925(struct mt76_dev *dev)
++{
++	return mt76_chip(dev) == 0x7925;
++}
++
+ static inline bool is_mt7927(struct mt76_dev *dev)
+diff --git a/mt76_connac_mac.c b/mt76_connac_mac.c
+index 0339e2e..c341595 100644
+--- a/mt76_connac_mac.c
++++ b/mt76_connac_mac.c
+@@ -175,3 +175,3 @@ void mt76_connac_write_hw_txp(struct mt76_dev *dev,
+ 
+-	if (is_mt7663(dev) || is_connac2(dev) || is_mt7925(dev))
++	if (is_mt7663(dev) || is_connac2(dev) || is_connac3(dev))
+ 		last_mask = MT_TXD_LEN_LAST;
+@@ -219,3 +219,3 @@ mt76_connac_txp_skb_unmap_hw(struct mt76_dev *dev,
+ 
+-	if (is_mt7663(dev) || is_connac2(dev) || is_mt7925(dev))
++	if (is_mt7663(dev) || is_connac2(dev) || is_connac3(dev))
+ 		last_mask = MT_TXD_LEN_LAST;
+diff --git a/mt76_connac_mcu.c b/mt76_connac_mcu.c
+index 89bd52e..2b1c887 100644
+--- a/mt76_connac_mcu.c
++++ b/mt76_connac_mcu.c
+@@ -69,3 +69,3 @@ int mt76_connac_mcu_init_download(struct mt76_dev *dev, u32 addr, u32 len,
+ 	    (is_connac2(dev) && addr == 0x900000) ||
+-	    (is_mt7925(dev) && (addr == 0x900000 || addr == 0xe0002800)) ||
++	    (is_connac3(dev) && (addr == 0x900000 || addr == 0xe0002800)) ||
+ 	    (is_mt799x(dev) && addr == 0x900000))
+@@ -3086,3 +3086,3 @@ static u32 mt76_connac2_get_data_mode(struct mt76_dev *dev, u32 info)
+ 
+-	if ((!is_connac2(dev) && !is_mt7925(dev)) || info == PATCH_SEC_NOT_SUPPORT)
++	if ((!is_connac2(dev) && !is_connac3(dev)) || info == PATCH_SEC_NOT_SUPPORT)
+ 		return mode;
+diff --git a/mt76_connac_mcu.h b/mt76_connac_mcu.h
+index ac5126a..552cb94 100644
+--- a/mt76_connac_mcu.h
++++ b/mt76_connac_mcu.h
+@@ -1880,3 +1880,3 @@ mt76_connac_mcu_gen_dl_mode(struct mt76_dev *dev, u8 feature_set, bool is_wa)
+ 	       DL_MODE_ENCRYPT | DL_MODE_RESET_SEC_IV : 0;
+-	if (is_connac2(dev) || is_mt7925(dev))
++	if (is_connac2(dev) || is_connac3(dev))
+ 		ret |= feature_set & FW_FEATURE_ENCRY_MODE ?
+diff --git a/mt792x_usb.c b/mt792x_usb.c
+index 47827d1..7bb9840 100644
+--- a/mt792x_usb.c
++++ b/mt792x_usb.c
+@@ -265,3 +265,3 @@ int mt792xu_wfsys_reset(struct mt792x_dev *dev)
+ {
+-	const struct mt792xu_wfsys_desc *desc = is_mt7925(&dev->mt76) ?
++	const struct mt792xu_wfsys_desc *desc = is_connac3(&dev->mt76) ?
+ 						&mt7925_wfsys_desc :

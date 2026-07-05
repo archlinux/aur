@@ -1,0 +1,69 @@
+wifi: mt76: connac: factor out rate power limit calculation
+
+Factor out the per-channel rate power limit calculation into a shared
+helper.
+
+This avoids duplicating the same regulatory, SAR and rate-limit logic in
+multiple paths.
+
+Reported-by: Devin Wittmayer <lucid_duck@justthetip.ca>
+Closes: https://lore.kernel.org/linux-wireless/20260130215839.53270-1-lucid_duck@justthetip.ca/
+Tested-by: Devin Wittmayer <lucid_duck@justthetip.ca>
+Tested-by: Satadru Pramanik <satadru@gmail.com>
+Co-developed-by: Devin Wittmayer <lucid_duck@justthetip.ca>
+Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Link: https://patch.msgid.link/20260401182322.64355-2-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit 317bc1a0590e15c5a47c07e61f89edffcde65098)
+
+b46e133d74ee10af41f776f2fb3159f7482bf8bd
+diff --git a/mt76_connac.h b/mt76_connac.h
+index 4afcc64..2aa6078 100644
+--- a/mt76_connac.h
++++ b/mt76_connac.h
+@@ -439,2 +439,5 @@ int mt76_connac_init_tx_queues(struct mt76_phy *phy, int idx, int n_desc,
+ void mt76_connac_set_txpower_cur(struct mt76_phy *phy, s8 max_power);
++s8 mt76_connac_get_rate_power_limit(struct mt76_phy *phy,
++				    struct ieee80211_channel *chan,
++				    struct mt76_power_limits *limits);
+ void mt76_connac_write_hw_txp(struct mt76_dev *dev,
+diff --git a/mt76_connac_mcu.c b/mt76_connac_mcu.c
+index 93c6326..e794dce 100644
+--- a/mt76_connac_mcu.c
++++ b/mt76_connac_mcu.c
+@@ -2232,11 +2232,6 @@ mt76_connac_mcu_rate_txpower_band(struct mt76_phy *phy,
+ 			};
+-			s8 reg_power, sar_power, max_power;
+-
+-			reg_power = mt76_connac_get_ch_power(phy, &chan,
+-							     tx_power);
+-			sar_power = mt76_get_sar_power(phy, &chan, reg_power);
+-
+-			max_power = mt76_get_rate_power_limits(phy, &chan, limits,
+-							       sar_power);
++			s8 max_power;
+ 
++			max_power = mt76_connac_get_rate_power_limit(phy, &chan,
++								     limits);
+ 			if (phy->chandef.chan &&
+@@ -2976,2 +2971,19 @@ EXPORT_SYMBOL_GPL(mt76_connac_mcu_rdd_cmd);
+ 
++s8 mt76_connac_get_rate_power_limit(struct mt76_phy *phy,
++				    struct ieee80211_channel *chan,
++				    struct mt76_power_limits *limits)
++{
++	s8 reg_power, sar_power;
++	int tx_power;
++
++	tx_power = 2 * phy->hw->conf.power_level;
++	if (!tx_power)
++		tx_power = 127;
++
++	reg_power = mt76_connac_get_ch_power(phy, chan, tx_power);
++	sar_power = mt76_get_sar_power(phy, chan, reg_power);
++	return mt76_get_rate_power_limits(phy, chan, limits, sar_power);
++}
++EXPORT_SYMBOL_GPL(mt76_connac_get_rate_power_limit);
++
+ static int

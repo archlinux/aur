@@ -78,7 +78,7 @@ Requires kernel 6.17+ and DKMS.
 | Distribution | Kernel | Install method |
 |-------------|--------|----------------|
 | Arch Linux / CachyOS | 6.19+ | AUR (`yay -S mediatek-mt7927-dkms`) |
-| Fedora 43 | 6.17+ | RPM (`make rpm`) |
+| Fedora 44 | 6.17+ | RPM (`make rpm`) |
 | Ubuntu 26.04 | 7.0+ | `make install` or `make deb` |
 | Ubuntu 24.04 / Debian | 6.17+ | DEB (`make deb`) |
 | Proxmox VE | 6.17+ | `make install` |
@@ -138,9 +138,9 @@ cd mediatek-mt7927-dkms
 make download
 make sources
 sudo make install
-sudo dkms add mediatek-mt7927/2.12
-sudo dkms build mediatek-mt7927/2.12
-sudo dkms install mediatek-mt7927/2.12
+sudo dkms add mediatek-mt7927/2.13
+sudo dkms build mediatek-mt7927/2.13
+sudo dkms install mediatek-mt7927/2.13
 sudo modprobe -r mt7925e mt7921e btusb
 sudo modprobe mt7925e
 sudo modprobe btusb
@@ -300,7 +300,7 @@ least 10 seconds, then power back on. A CMOS reset also works but is more disrup
 **DKMS not built for current kernel:**
 
 ```bash
-sudo dkms install mediatek-mt7927/2.12
+sudo dkms install mediatek-mt7927/2.13
 ```
 
 **DKMS modules installed but not visible in `/usr/src/`:**

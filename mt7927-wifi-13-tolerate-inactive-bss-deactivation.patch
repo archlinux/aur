@@ -1,0 +1,80 @@
+wifi: mt76: connac: tolerate inactive BSS deactivation
+
+Firmware may return wlan_failure when deactivating a BSS that is already
+inactive. This is a valid teardown case and should not fail the remove
+path.
+
+Keep activation failures unchanged since they still indicate that firmware
+failed to create or activate the BSS state.
+
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Link: https://patch.msgid.link/20260425195011.790265-13-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit 04222f980301561edd77917edac570b1393ec45d)
+
+6b4e54431544a430a9061fa9c07e9772105ec789
+diff --git a/mt76_connac_mcu.c b/mt76_connac_mcu.c
+index 2b1c887..0f2d580 100644
+--- a/mt76_connac_mcu.c
++++ b/mt76_connac_mcu.c
+@@ -1229,2 +1229,5 @@ int mt76_connac_mcu_uni_add_dev(struct mt76_phy *phy,
+ 	err = mt76_mcu_send_msg(dev, cmd, data, len, true);
++	if (err && cmd == MCU_UNI_CMD(BSS_INFO_UPDATE))
++		err = mt76_connac_mcu_bss_deact_err(dev, err, enable);
++
+ 	if (err < 0)
+@@ -1236,3 +1239,7 @@ int mt76_connac_mcu_uni_add_dev(struct mt76_phy *phy,
+ 
+-	return mt76_mcu_send_msg(dev, cmd, data, len, true);
++	err = mt76_mcu_send_msg(dev, cmd, data, len, true);
++	if (err && cmd == MCU_UNI_CMD(BSS_INFO_UPDATE))
++		err = mt76_connac_mcu_bss_deact_err(dev, err, enable);
++
++	return err;
+ }
+diff --git a/mt76_connac_mcu.h b/mt76_connac_mcu.h
+index 552cb94..4691b9b 100644
+--- a/mt76_connac_mcu.h
++++ b/mt76_connac_mcu.h
+@@ -1908,2 +1908,25 @@ mt76_connac_mcu_get_wlan_idx(struct mt76_dev *dev, struct mt76_wcid *wcid,
+ 
++#define MT76_CONNAC_MCU_STATUS_WLAN_FAILURE	0xc0000001
++
++static inline int
++mt76_connac_mcu_bss_deact_err(struct mt76_dev *mdev, int err, bool enable)
++{
++	if (err != (int)MT76_CONNAC_MCU_STATUS_WLAN_FAILURE)
++		return err;
++
++	/* Ignore wlan_failure state false alarm when deactivating an
++	 * inactive network. It does not harm the firmware state.
++	 */
++	if (!enable) {
++		dev_dbg(mdev->dev,
++			"ignore wlan_failure when bss is deactivated\n");
++		return 0;
++	}
++
++	dev_warn(mdev->dev,
++		 "wlan_failure when bss is activated\n");
++
++	return err;
++}
++
+ struct sk_buff *
+diff --git a/mt7925/mcu.c b/mt7925/mcu.c
+index f403d9d..b338d6b 100644
+--- a/mt7925/mcu.c
++++ b/mt7925/mcu.c
+@@ -2834,2 +2834,3 @@ int mt7925_mcu_add_bss_info_sta(struct mt792x_phy *phy,
+ 	struct sk_buff *skb;
++	int err;
+ 
+@@ -2859,4 +2860,5 @@ int mt7925_mcu_add_bss_info_sta(struct mt792x_phy *phy,
+ 
+-	return mt76_mcu_skb_send_msg(&dev->mt76, skb,
+-				     MCU_UNI_CMD(BSS_INFO_UPDATE), true);
++	err = mt76_mcu_skb_send_msg(&dev->mt76, skb,
++				    MCU_UNI_CMD(BSS_INFO_UPDATE), true);
++	return mt76_connac_mcu_bss_deact_err(&dev->mt76, err, enable);
+ }

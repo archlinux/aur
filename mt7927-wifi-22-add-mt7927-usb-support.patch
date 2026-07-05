@@ -1,0 +1,50 @@
+wifi: mt76: mt7925: add MT7927 USB support
+
+Add the MT7927 USB device ID and normalize the raw 0x6639 CHIPID to
+MT7927 so the shared mt7925u code can use the proper chip-specific paths.
+
+Restore the required band setup after USB MAC reset before restarting
+the device.
+
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Link: https://patch.msgid.link/20260425195011.790265-22-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit bef8367b48e94cc16f033d0a37711e38d401f739)
+
+6a7205938e706c3ef04bfd8a6f27851e874fce59
+diff --git a/mt7925/usb.c b/mt7925/usb.c
+index d9968f0..7c64f3c 100644
+--- a/mt7925/usb.c
++++ b/mt7925/usb.c
+@@ -12,2 +12,4 @@
+ static const struct usb_device_id mt7925u_device_table[] = {
++	{ USB_DEVICE_AND_INTERFACE_INFO(0x0e8d, 0x6639, 0xff, 0xff, 0xff),
++		.driver_info = (kernel_ulong_t)MT7925_FIRMWARE_WM },
+ 	{ USB_DEVICE_AND_INTERFACE_INFO(0x0e8d, 0x7925, 0xff, 0xff, 0xff),
+@@ -122,2 +124,8 @@ static int mt7925u_mac_reset(struct mt792x_dev *dev)
+ 
++	if (is_mt7927(&dev->mt76)) {
++		err = mt7925_mcu_set_dbdc(&dev->mphy, true);
++		if (err)
++			goto out;
++	}
++
+ 	err = __mt7925_start(&dev->phy);
+@@ -200,2 +208,9 @@ static int mt7925u_probe(struct usb_interface *usb_intf,
+ 
++	if (mt76_chip(mdev) == 0x6639) {
++		dev_dbg(mdev->dev,
++			"MT7927 raw CHIPID=0x%04x, forcing chip=0x7927\n",
++			mt76_chip(mdev));
++		mdev->rev = (0x7927 << 16) | (mdev->rev & 0xff);
++	}
++
+ 	if (mt76_get_field(dev, MT_CONN_ON_MISC, MT_TOP_MISC2_FW_N9_RDY)) {
+diff --git a/usb.c b/usb.c
+index 632ae75..9bd61c9 100644
+--- a/usb.c
++++ b/usb.c
+@@ -927,2 +927,3 @@ mt76u_ac_to_hwq(struct mt76_dev *dev, struct mt76_queue *q, u8 qid)
+ 	}
++	case 0x6639:
+ 	case 0x7961:

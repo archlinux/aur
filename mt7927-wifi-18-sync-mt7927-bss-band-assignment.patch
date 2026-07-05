@@ -1,0 +1,135 @@
+wifi: mt76: mt7925: sync MT7927 BSS band assignment
+
+MT7927 needs DBDC enabled and uses a fixed firmware band assignment for
+2.4GHz and 5/6GHz BSS contexts.
+
+Reprogram the STA dev context when the channel context is assigned so the
+firmware sees the updated band_idx before the BSS is used. This avoids
+stale band programming after band changes.
+
+Co-developed-by: Javier Tia <floss@jetm.me>
+Signed-off-by: Javier Tia <floss@jetm.me>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Link: https://patch.msgid.link/20260425195011.790265-18-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit 05fd148853036ea3b3f688f35872fbd01cdb5892)
+
+97a35297b32dccc8631a478b538bdd38f2a89a3e
+diff --git a/mt7925/init.c b/mt7925/init.c
+index a8c2ca7..e85b0d1 100644
+--- a/mt7925/init.c
++++ b/mt7925/init.c
+@@ -119,2 +119,11 @@ static int __mt7925_init_hardware(struct mt792x_dev *dev)
+ 
++	if (is_mt7927(&dev->mt76)) {
++		ret = mt7925_mcu_set_dbdc(&dev->mphy, true);
++		if (ret) {
++			dev_warn(dev->mt76.dev,
++				 "MT7927 DBDC enable failed: %d\n", ret);
++			ret = 0;
++		}
++	}
++
+ out:
+diff --git a/mt7925/main.c b/mt7925/main.c
+index c022257..c2ab265 100644
+--- a/mt7925/main.c
++++ b/mt7925/main.c
+@@ -398,2 +398,14 @@ static int mt7925_mac_link_bss_add(struct mt792x_dev *dev,
+ 	mconf->mt76.band_idx = 0xff;
++
++	if (is_mt7927(&dev->mt76)) {
++		struct ieee80211_channel *chan;
++
++		if (link_conf->chanreq.oper.chan)
++			chan = link_conf->chanreq.oper.chan;
++		else
++			chan = mvif->phy->mt76->chandef.chan;
++
++		mconf->mt76.band_idx = mt7927_band_idx(chan->band);
++	}
++
+ 	mconf->mt76.wmm_idx = ieee80211_vif_is_mld(vif) ?
+@@ -2243,2 +2255,25 @@ out:
+ 
++static int
++mt7927_reconfig_band(struct mt792x_dev *dev, struct ieee80211_vif *vif,
++		     struct ieee80211_bss_conf *link_conf,
++		     struct mt792x_bss_conf *mconf,
++		     u8 band_idx)
++{
++	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
++	struct mt792x_link_sta *mlink = &mvif->sta.deflink;
++	int ret;
++
++	ret = mt76_connac_mcu_uni_add_dev(&dev->mphy, link_conf,
++					  &mconf->mt76, &mlink->wcid,
++					  false);
++	if (ret)
++		return ret;
++
++	mconf->mt76.band_idx = band_idx;
++
++	return mt76_connac_mcu_uni_add_dev(&dev->mphy, link_conf,
++					   &mconf->mt76, &mlink->wcid,
++					   true);
++}
++
+ static int mt7925_assign_vif_chanctx(struct ieee80211_hw *hw,
+@@ -2253,2 +2288,3 @@ static int mt7925_assign_vif_chanctx(struct ieee80211_hw *hw,
+ 	struct mt792x_bss_conf *mconf;
++	u8 band_idx;
+ 
+@@ -2266,2 +2302,8 @@ static int mt7925_assign_vif_chanctx(struct ieee80211_hw *hw,
+ 		mconf = &mvif->bss_conf;
++
++		if (is_mt7927(&dev->mt76)) {
++			band_idx = mt7927_band_idx(ctx->def.chan->band);
++
++			mt7927_reconfig_band(dev, vif, link_conf, mconf, band_idx);
++		}
+ 	}
+diff --git a/mt7925/mcu.c b/mt7925/mcu.c
+index b338d6b..f7e14cc 100644
+--- a/mt7925/mcu.c
++++ b/mt7925/mcu.c
+@@ -2920,2 +2920,3 @@ int mt7925_mcu_set_dbdc(struct mt76_phy *phy, bool enable)
+ }
++EXPORT_SYMBOL_GPL(mt7925_mcu_set_dbdc);
+ 
+diff --git a/mt7925/mt7925.h b/mt7925/mt7925.h
+index 984be40..242f83f 100644
+--- a/mt7925/mt7925.h
++++ b/mt7925/mt7925.h
+@@ -254,2 +254,14 @@ struct mt7925_txpwr {
+ 
++static inline u8 mt7927_band_idx(enum nl80211_band band)
++{
++	switch (band) {
++	case NL80211_BAND_2GHZ:
++		return 0;
++	case NL80211_BAND_5GHZ:
++	case NL80211_BAND_6GHZ:
++	default:
++		return 1;
++	}
++}
++
+ extern const struct ieee80211_ops mt7925_ops;
+diff --git a/mt7925/pci_mac.c b/mt7925/pci_mac.c
+index 1626a36..9768394 100644
+--- a/mt7925/pci_mac.c
++++ b/mt7925/pci_mac.c
+@@ -5,2 +5,3 @@
+ #include "../dma.h"
++#include "mcu.h"
+ #include "mac.h"
+@@ -146,2 +147,8 @@ int mt7925e_mac_reset(struct mt792x_dev *dev)
+ 
++	if (is_mt7927(&dev->mt76)) {
++		err = mt7925_mcu_set_dbdc(&dev->mphy, true);
++		if (err)
++			goto out;
++	}
++
+ 	err = __mt7925_start(&dev->phy);

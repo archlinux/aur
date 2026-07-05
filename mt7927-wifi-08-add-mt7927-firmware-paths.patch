@@ -17,14 +17,18 @@ Tested-by: Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>
 Tested-by: Chapuis Dario <chapuisdario4@gmail.com>
 Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
+Reviewed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
+Link: https://patch.msgid.link/20260425195011.790265-8-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit 3be5a0d417da36ce7445a3738c9c161aaf769123)
 
-73aba8a4649f137382b6545b4ee8ef4ca39d6654
+4c186c298423c742cbd654b894512d5d4e843549
 diff --git a/mt7925/pci.c b/mt7925/pci.c
-index c416175..f820d5a 100644
+index 4883772..76139a5 100644
 --- a/mt7925/pci.c
 +++ b/mt7925/pci.c
-@@ -635,2 +635,4 @@ MODULE_FIRMWARE(MT7925_FIRMWARE_WM);
+@@ -637,2 +637,4 @@ MODULE_FIRMWARE(MT7925_FIRMWARE_WM);
  MODULE_FIRMWARE(MT7925_ROM_PATCH);
 +MODULE_FIRMWARE(MT7927_FIRMWARE_WM);
 +MODULE_FIRMWARE(MT7927_ROM_PATCH);

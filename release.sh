@@ -135,11 +135,6 @@ echo ""
 echo "Building package..."
 aurgen
 
-# Show the (expected-empty) diff so the user can confirm tree is clean
-echo ""
-echo "Working tree diff:"
-git diff --stat
-
 # Confirm
 echo ""
 read -rp "Release ${new_tag}? [y/N] " confirm

@@ -1,0 +1,72 @@
+wifi: mt76: connac: use a helper to cache txpower_cur
+
+The cached txpower value is derived from the bounded channel power after
+applying the chainmask path delta.
+
+Use a helper for that conversion so callers do not open-code it.
+
+--
+v2:
+- Rebased onto the latest mt76 tree
+- Added Reported-by, Tested-by, Co-developed-by and Signed-off-by tags
+
+Reported-by: Devin Wittmayer <lucid_duck@justthetip.ca>
+Closes: https://lore.kernel.org/linux-wireless/20260130215839.53270-1-lucid_duck@justthetip.ca/
+Tested-by: Devin Wittmayer <lucid_duck@justthetip.ca>
+Tested-by: Satadru Pramanik <satadru@gmail.com>
+Co-developed-by: Devin Wittmayer <lucid_duck@justthetip.ca>
+Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Reported-by: Lucid Duck <lucid_duck@justthetip.ca>
+Tested-by: Lucid Duck <lucid_duck@justthetip.ca>
+Link: https://patch.msgid.link/20260401182322.64355-1-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit 8286bbf62dcc2fc328c3960e32c4d3da66720463)
+
+8edd41e4972e180892da18a711b033b9d2fef7c3
+diff --git a/mt76_connac.h b/mt76_connac.h
+index 1994863..4afcc64 100644
+--- a/mt76_connac.h
++++ b/mt76_connac.h
+@@ -438,3 +438,3 @@ int mt76_connac_init_tx_queues(struct mt76_phy *phy, int idx, int n_desc,
+ 			       int ring_base, void *wed, u32 flags);
+-
++void mt76_connac_set_txpower_cur(struct mt76_phy *phy, s8 max_power);
+ void mt76_connac_write_hw_txp(struct mt76_dev *dev,
+diff --git a/mt76_connac_mac.c b/mt76_connac_mac.c
+index c341595..fc9f782 100644
+--- a/mt76_connac_mac.c
++++ b/mt76_connac_mac.c
+@@ -277,2 +277,11 @@ EXPORT_SYMBOL_GPL(mt76_connac_init_tx_queues);
+ 
++void mt76_connac_set_txpower_cur(struct mt76_phy *phy, s8 max_power)
++{
++	int delta;
++
++	delta = mt76_tx_power_path_delta(hweight16(phy->chainmask));
++	phy->txpower_cur = max_power - delta;
++}
++EXPORT_SYMBOL_GPL(mt76_connac_set_txpower_cur);
++
+ #define __bitrate_mask_check(_mcs, _mode)				\
+diff --git a/mt76_connac_mcu.c b/mt76_connac_mcu.c
+index 0f2d580..93c6326 100644
+--- a/mt76_connac_mcu.c
++++ b/mt76_connac_mcu.c
+@@ -2232,3 +2232,3 @@ mt76_connac_mcu_rate_txpower_band(struct mt76_phy *phy,
+ 			};
+-			s8 reg_power, sar_power;
++			s8 reg_power, sar_power, max_power;
+ 
+@@ -2238,4 +2238,9 @@ mt76_connac_mcu_rate_txpower_band(struct mt76_phy *phy,
+ 
+-			mt76_get_rate_power_limits(phy, &chan, limits,
+-						   sar_power);
++			max_power = mt76_get_rate_power_limits(phy, &chan, limits,
++							       sar_power);
++
++			if (phy->chandef.chan &&
++			    phy->chandef.chan->hw_value == ch_list[idx] &&
++			    phy->chandef.chan->band == band)
++				mt76_connac_set_txpower_cur(phy, max_power);
+ 

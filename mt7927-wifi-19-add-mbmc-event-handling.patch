@@ -1,0 +1,70 @@
+wifi: mt76: mt7925: add MBMC event handling
+
+Handle MBMC unsolicited events from firmware to report the current MBMC
+state. This helps validate MT7927 band setup.
+
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Link: https://patch.msgid.link/20260425195011.790265-19-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit bcc6e3358a1f946d5f2f8a2547c2a997375100cd)
+
+4c2183a9737164f76031fa5d6d8591fc987748dc
+diff --git a/mt76_connac_mcu.h b/mt76_connac_mcu.h
+index 4691b9b..6d0429f 100644
+--- a/mt76_connac_mcu.h
++++ b/mt76_connac_mcu.h
+@@ -1071,2 +1071,3 @@ enum {
+ 	MCU_UNI_EVENT_ROC = 0x27,
++	MCU_UNI_EVENT_MBMC = 0x28,
+ 	MCU_UNI_EVENT_TX_DONE = 0x2d,
+diff --git a/mt7925/mcu.c b/mt7925/mcu.c
+index f7e14cc..4a06f0a 100644
+--- a/mt7925/mcu.c
++++ b/mt7925/mcu.c
+@@ -568,2 +568,30 @@ mt7925_mcu_uni_debug_msg_event(struct mt792x_dev *dev, struct sk_buff *skb)
+ 
++static void
++mt7925_mcu_handle_mbmc_event(struct mt792x_dev *dev, struct sk_buff *skb)
++{
++	struct mbmc_conf_tlv *tlv;
++	u32 tlv_len;
++
++	skb_pull(skb, sizeof(struct mt7925_mcu_rxd) + 4);
++	tlv_len = skb->len;
++	tlv = (struct mbmc_conf_tlv *)skb->data;
++
++	while (tlv_len >= sizeof(*tlv) &&
++	       le16_to_cpu(tlv->len) >= sizeof(*tlv) &&
++	       le16_to_cpu(tlv->len) <= tlv_len) {
++		u16 tag = le16_to_cpu(tlv->tag);
++
++		if (tag == UNI_MBMC_SETTING || tag == UNI_MBMC_NO_RESP_SETTING) {
++			dev_dbg(dev->mt76.dev,
++				"MBMC event: tag=%u mbmc_en=%u\n",
++				tag, tlv->mbmc_en);
++			break;
++		}
++
++		tlv_len -= le16_to_cpu(tlv->len);
++		tlv = (struct mbmc_conf_tlv *)
++			((u8 *)tlv + le16_to_cpu(tlv->len));
++	}
++}
++
+ static void
+@@ -586,2 +614,5 @@ mt7925_mcu_uni_rx_unsolicited_event(struct mt792x_dev *dev,
+ 		break;
++	case MCU_UNI_EVENT_MBMC:
++		mt7925_mcu_handle_mbmc_event(dev, skb);
++		break;
+ 	case MCU_UNI_EVENT_SCAN_DONE:
+diff --git a/mt7925/mcu.h b/mt7925/mcu.h
+index 56e2772..293f173 100644
+--- a/mt7925/mcu.h
++++ b/mt7925/mcu.h
+@@ -145,3 +145,4 @@ enum {
+ enum {
+-	UNI_MBMC_SETTING,
++	UNI_MBMC_SETTING = 0,
++	UNI_MBMC_NO_RESP_SETTING = 1,
+ };

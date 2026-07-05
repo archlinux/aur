@@ -1,0 +1,43 @@
+wifi: mt76: mt7925: add MT7927 PCIe support
+
+Add the missing MT7927 device support in the mt7925 PCI path.
+This ensures MT7927 is identified correctly and uses the proper
+initialization flow.
+
+Co-developed-by: Javier Tia <floss@jetm.me>
+Signed-off-by: Javier Tia <floss@jetm.me>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Link: https://patch.msgid.link/20260425195011.790265-21-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit 35a5dcc71735eb42606be34e313f9eb8148b6a42)
+
+772157ee9d5965fb4b44f5e67d43ec4614d6a80b
+diff --git a/mt7925/pci.c b/mt7925/pci.c
+index fd6d0b0..ea64303 100644
+--- a/mt7925/pci.c
++++ b/mt7925/pci.c
+@@ -18,2 +18,8 @@ static const struct pci_device_id mt7925_pci_device_table[] = {
+ 		.driver_data = (kernel_ulong_t)MT7925_FIRMWARE_WM },
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7927),
++		.driver_data = (kernel_ulong_t)MT7927_FIRMWARE_WM },
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x6639),
++		.driver_data = (kernel_ulong_t)MT7927_FIRMWARE_WM },
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0738),
++		.driver_data = (kernel_ulong_t)MT7927_FIRMWARE_WM },
+ 	{ },
+@@ -378,3 +384,4 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+ 
+-	is_mt7927_hw = (pdev->device == 0x6639 || pdev->device == 0x7927);
++	is_mt7927_hw = (pdev->device == 0x6639 || pdev->device == 0x7927 ||
++			pdev->device == 0x0738);
+ 
+@@ -438,2 +445,9 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+ 
++	if (is_mt7927_hw && mt76_chip(mdev) != 0x7927) {
++		dev_info(mdev->dev,
++			 "MT7927 raw CHIPID=0x%04x, forcing chip=0x7927\n",
++			 mt76_chip(mdev));
++		mdev->rev = (0x7927 << 16) | (mdev->rev & 0xff);
++	}
++
+ 	mt76_rmw_field(dev, MT_HW_EMI_CTL, MT_HW_EMI_CTL_SLPPROT_EN, 1);

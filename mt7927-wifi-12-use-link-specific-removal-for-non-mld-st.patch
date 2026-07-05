@@ -1,0 +1,32 @@
+wifi: mt76: mt7925: use link-specific removal for non-MLD STA
+
+Use the default link removal path for non-MLD STA instead of the
+multi-link flow.
+
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Link: https://patch.msgid.link/20260425195011.790265-12-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit b2f5def2f133fca12897b0fc707a8d3df1c3cb05)
+
+2a41f6216967b82f4b3aba0aaaaf1b5e769c4be4
+diff --git a/mt7925/main.c b/mt7925/main.c
+index ea62b55..c022257 100644
+--- a/mt7925/main.c
++++ b/mt7925/main.c
+@@ -1343,10 +1343,10 @@ void mt7925_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
+-	unsigned long rem;
+ 
+-	rem = ieee80211_vif_is_mld(vif) ? msta->valid_links : BIT(0);
+-
+-	mt7925_mac_sta_remove_links(dev, vif, sta, rem);
+-
+-	if (ieee80211_vif_is_mld(vif))
++	if (ieee80211_vif_is_mld(vif)) {
++		mt7925_mac_sta_remove_links(dev, vif, sta, msta->valid_links);
+ 		mt7925_mcu_del_dev(mdev, vif);
++	} else {
++		mt7925_mac_link_sta_remove(mdev, vif, &sta->deflink,
++					   &msta->deflink);
++	}
+ 

@@ -16,11 +16,15 @@ Tested-by: Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>
 Tested-by: Chapuis Dario <chapuisdario4@gmail.com>
 Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
+Reviewed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
+Link: https://patch.msgid.link/20260425195011.790265-7-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit 752003c6d9b8531a5f9005d42821ccc24b553fbc)
 
-8c8553207199a0642b882bbc675b0f2fcb4ffae2
+eb55b976bfea926fe50e29afe53aef5112060389
 diff --git a/mt76_connac.h b/mt76_connac.h
-index 2deee83..bce95de 100644
+index 802cb26..45479cc 100644
 --- a/mt76_connac.h
 +++ b/mt76_connac.h
 @@ -176,3 +176,8 @@ static inline bool is_mt7925(struct mt76_dev *dev)

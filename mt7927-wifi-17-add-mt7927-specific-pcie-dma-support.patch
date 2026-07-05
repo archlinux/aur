@@ -1,0 +1,178 @@
+wifi: mt76: mt792x: add MT7927-specific PCIe DMA support
+
+Add the MT7927-specific PCIe DMA queue layout and local DMA setup,
+including the extra RX ring and WFDMA/prefetch programming.
+
+MT7927 does not follow the mt7925 DMA configuration, so provide a
+separate DMA init path while reusing the existing common queue setup.
+
+This keeps the chip-specific changes local and prepares the driver
+for later MT7927 enablement without affecting existing devices.
+
+Co-developed-by: Javier Tia <floss@jetm.me>
+Signed-off-by: Javier Tia <floss@jetm.me>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Link: https://patch.msgid.link/20260425195011.790265-17-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit 0683825c48d9754832dd1e6a1e88946a5e4f2fd3)
+
+bb3a0852eec7fe3b932c7dec324dff63dc74788b
+diff --git a/mt7925/mt7925.h b/mt7925/mt7925.h
+index 46b480f..984be40 100644
+--- a/mt7925/mt7925.h
++++ b/mt7925/mt7925.h
+@@ -128,2 +128,15 @@ enum mt7925_rxq_id {
+ 
++enum mt7927_txq_id {
++	MT7927_TXQ_BAND0 = MT7925_TXQ_BAND0,
++	MT7927_TXQ_BAND1 = MT7925_TXQ_BAND1,
++	MT7927_TXQ_MCU_WM = MT7925_TXQ_MCU_WM,
++	MT7927_TXQ_FWDL = MT7925_TXQ_FWDL,
++};
++
++enum mt7927_rxq_id {
++	MT7927_RXQ_BAND0 = 4,
++	MT7927_RXQ_MCU_WM = 6,
++	MT7927_RXQ_DATA2 = 7,
++};
++
+ enum {
+diff --git a/mt7925/pci.c b/mt7925/pci.c
+index 3888fa0..fd6d0b0 100644
+--- a/mt7925/pci.c
++++ b/mt7925/pci.c
+@@ -230,2 +230,47 @@ static const struct mt792x_dma_layout mt7925_dma_layout = {
+ 
++static const struct mt792x_dma_layout mt7927_dma_layout = {
++	.tx_data0 = mt792x_dma_ring(MT7927_TXQ_BAND0,
++				    MT7925_TX_RING_SIZE,
++				    MT_TX_RING_BASE),
++	.tx_mcu = mt792x_dma_ring(MT7927_TXQ_MCU_WM,
++				  MT7925_TX_MCU_RING_SIZE,
++				  MT_TX_RING_BASE),
++	.tx_fwdl = mt792x_dma_ring(MT7927_TXQ_FWDL,
++				   MT7925_TX_FWDL_RING_SIZE,
++				   MT_TX_RING_BASE),
++	.rx_mcu = mt792x_dma_ring(MT7927_RXQ_MCU_WM,
++				  MT7925_RX_MCU_RING_SIZE,
++				  MT_RX_EVENT_RING_BASE),
++	.rx_data = mt792x_dma_ring(MT7927_RXQ_BAND0,
++				   MT7925_RX_RING_SIZE,
++				   MT_RX_DATA_RING_BASE),
++};
++
++static int mt7927_dma_init(struct mt792x_dev *dev)
++{
++	int ret;
++
++	ret = mt792x_dma_alloc_queues(dev, &mt7927_dma_layout);
++	if (ret)
++		return ret;
++
++	ret = mt76_queue_alloc(dev, &dev->mt76.q_rx[MT_RXQ_MCU_WA],
++			       MT7927_RXQ_DATA2,
++			       MT7925_RX_MCU_RING_SIZE,
++			       MT_RX_BUF_SIZE,
++			       MT_RX_DATA_RING_BASE);
++	if (ret)
++		return ret;
++
++	ret = mt76_init_queues(dev, mt792x_poll_rx);
++	if (ret < 0)
++		return ret;
++
++	netif_napi_add_tx(dev->mt76.tx_napi_dev, &dev->mt76.tx_napi,
++			  mt792x_poll_tx);
++	napi_enable(&dev->mt76.tx_napi);
++
++	return mt792x_dma_enable(dev);
++}
++
+ static int mt7925_dma_init(struct mt792x_dev *dev)
+@@ -408,3 +453,9 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+ 
+-	ret = mt7925_dma_init(dev);
++	if (is_mt7927(&dev->mt76))
++		ret = mt7927_dma_init(dev);
++	else if (is_mt7925(&dev->mt76))
++		ret = mt7925_dma_init(dev);
++	else
++		ret = -EINVAL;
++
+ 	if (ret)
+diff --git a/mt792x_dma.c b/mt792x_dma.c
+index 7b36f07..fc32644 100644
+--- a/mt792x_dma.c
++++ b/mt792x_dma.c
+@@ -171,5 +171,35 @@ static void mt7925_wfdma_setup(struct mt792x_dev *dev)
+ 
++static void mt7927_dma_prefetch_setup(struct mt792x_dev *dev)
++{
++	mt76_wr(dev, MT_WFDMA_PREFETCH_CTRL,
++		mt76_rr(dev, MT_WFDMA_PREFETCH_CTRL));
++	mt76_wr(dev, MT_WFDMA_PREFETCH_CFG0, 0x660077);
++	mt76_wr(dev, MT_WFDMA_PREFETCH_CFG1, 0x1100);
++	mt76_wr(dev, MT_WFDMA_PREFETCH_CFG2, 0x30004f);
++	mt76_wr(dev, MT_WFDMA_PREFETCH_CFG3, 0x542200);
++	mt76_wr(dev, MT_WFDMA0_RX_RING4_EXT_CTRL, PREFETCH(0x0000, 0x8));
++	mt76_wr(dev, MT_WFDMA0_RX_RING6_EXT_CTRL, PREFETCH(0x0080, 0x8));
++	mt76_wr(dev, MT_WFDMA0_RX_RING7_EXT_CTRL, PREFETCH(0x0100, 0x4));
++	mt76_wr(dev, MT_WFDMA0_TX_RING16_EXT_CTRL, PREFETCH(0x0140, 0x4));
++	mt76_wr(dev, MT_WFDMA0_TX_RING15_EXT_CTRL, PREFETCH(0x0180, 0x10));
++	mt76_wr(dev, MT_WFDMA0_TX_RING0_EXT_CTRL, PREFETCH(0x0280, 0x4));
++}
++
++static void mt7927_wfdma_setup(struct mt792x_dev *dev)
++{
++	mt76_set(dev, MT_WFDMA0_GLO_CFG,
++		 MT_WFDMA0_GLO_CFG_ADDR_EXT_EN |
++		 MT_WFDMA0_GLO_CFG_FW_DWLD_BYPASS_DMASHDL);
++	mt76_clear(dev, MT_WFDMA0_GLO_CFG,
++		   MT_WFDMA0_GLO_CFG_CSR_LBK_RX_Q_SEL_EN);
++	mt76_rmw(dev, MT_WFDMA0_GLO_CFG_EXT1, BIT(28), BIT(28));
++	mt76_set(dev, MT_WFDMA0_INT_RX_PRI, 0x0F00);
++	mt76_set(dev, MT_WFDMA0_INT_TX_PRI, 0x7F00);
++}
++
+ static void mt792x_dma_prefetch(struct mt792x_dev *dev)
+ {
+-	if (is_mt7925(&dev->mt76)) {
++	if (is_mt7927(&dev->mt76)) {
++		mt7927_dma_prefetch_setup(dev);
++	} else if (is_mt7925(&dev->mt76)) {
+ 		mt7925_dma_prefetch_setup(dev);
+@@ -238,3 +268,5 @@ int mt792x_dma_enable(struct mt792x_dev *dev)
+ 
+-	if (is_mt7925(&dev->mt76))
++	if (is_mt7927(&dev->mt76))
++		mt7927_wfdma_setup(dev);
++	else if (is_mt7925(&dev->mt76))
+ 		mt7925_wfdma_setup(dev);
+@@ -351,2 +383,7 @@ int mt792x_dma_disable(struct mt792x_dev *dev, bool force)
+ 
++	if (is_mt7927(&dev->mt76)) {
++		mt76_wr(dev, MT_WFDMA0_RST_DTX_PTR, ~0);
++		mt76_wr(dev, MT_WFDMA0_RST_DRX_PTR, ~0);
++	}
++
+ 	/* disable dmashdl */
+diff --git a/mt792x_regs.h b/mt792x_regs.h
+index 17504ef..4cd5b33 100644
+--- a/mt792x_regs.h
++++ b/mt792x_regs.h
+@@ -303,3 +303,5 @@
+ #define MT_WFDMA0_GLO_CFG_CSR_DISP_BASE_PTR_CHAIN_EN BIT(15)
++#define MT_WFDMA0_GLO_CFG_CSR_LBK_RX_Q_SEL_EN	BIT(20)
+ #define MT_WFDMA0_GLO_CFG_OMIT_RX_INFO_PFET2	BIT(21)
++#define MT_WFDMA0_GLO_CFG_ADDR_EXT_EN		BIT(26)
+ #define MT_WFDMA0_GLO_CFG_OMIT_RX_INFO	BIT(27)
+@@ -370,2 +372,9 @@
+ 
++#define MT_WFDMA_PREFETCH_CTRL		MT_WFDMA_EXT_CSR(0x30)
++#define MT_WFDMA_PREFETCH_CFG0		MT_WFDMA_EXT_CSR(0xf0)
++#define MT_WFDMA_PREFETCH_CFG1		MT_WFDMA_EXT_CSR(0xf4)
++#define MT_WFDMA_PREFETCH_CFG2		MT_WFDMA_EXT_CSR(0xf8)
++#define MT_WFDMA_PREFETCH_CFG3		MT_WFDMA_EXT_CSR(0xfc)
++#define MT_WFDMA0_GLO_CFG_EXT1		MT_WFDMA0(0x2b4)
++
+ #define MT_SWDEF_BASE			0x41f200

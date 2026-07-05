@@ -24,23 +24,27 @@ Tested-by: Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>
 Tested-by: Chapuis Dario <chapuisdario4@gmail.com>
 Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
+Reviewed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
+Link: https://patch.msgid.link/20260425195011.790265-6-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit 77833c57a33450c0409e4b90d7721d255ea23a9e)
 
-cb0ba837f1b2d5b4a6ea878fb3d274b0f21c10c4
+1a24dc15ea9171a50985adf9d3c02b3243fcfd3f
 diff --git a/mt76_connac.h b/mt76_connac.h
-index 51423c7..2deee83 100644
+index 51423c7..802cb26 100644
 --- a/mt76_connac.h
 +++ b/mt76_connac.h
 @@ -179,2 +179,7 @@ static inline bool is_mt7925(struct mt76_dev *dev)
  
 +static inline bool is_320mhz_supported(struct mt76_dev *dev)
 +{
-+	return is_mt7927(dev);
++	return mt76_chip(dev) == 0x7927;
 +}
 +
  static inline bool is_mt7920(struct mt76_dev *dev)
 diff --git a/mt7925/main.c b/mt7925/main.c
-index 4d8ca04..bf38d65 100644
+index 6fa91d3..ea62b55 100644
 --- a/mt7925/main.c
 +++ b/mt7925/main.c
 @@ -185,2 +185,6 @@ mt7925_init_eht_caps(struct mt792x_phy *phy, enum nl80211_band band,

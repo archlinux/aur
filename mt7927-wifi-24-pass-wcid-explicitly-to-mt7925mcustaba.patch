@@ -1,0 +1,36 @@
+wifi: mt76: mt7925: pass WCID explicitly to mt7925_mcu_sta_ba()
+
+mt7925_mcu_sta_ba() currently hides the BA target behind an implicit WCID
+lookup.
+
+Pass the WCID explicitly so the caller controls which BA context is being
+programmed.
+
+No functional change intended.
+
+Tested-by: Yao Ting Hsieh <yao-ting.hsieh@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Link: https://patch.msgid.link/20260425154721.738101-2-sean.wang@kernel.org
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+(cherry picked from commit a13d3411390b10f5fcb81a654cbe0b19000144c5)
+
+fcfbc57d0d225edc778091c4cb89d3cff8229282
+diff --git a/mt7925/mcu.c b/mt7925/mcu.c
+index 4a06f0a..d9fc1b0 100644
+--- a/mt7925/mcu.c
++++ b/mt7925/mcu.c
+@@ -657,5 +657,4 @@ mt7925_mcu_sta_ba(struct mt76_dev *dev, struct mt76_vif_link *mvif,
+ 		  struct ieee80211_ampdu_params *params,
+-		  bool enable, bool tx)
++		  struct mt76_wcid *wcid, bool enable, bool tx)
+ {
+-	struct mt76_wcid *wcid = (struct mt76_wcid *)params->sta->drv_priv;
+ 	struct sta_rec_ba_uni *ba;
+@@ -697,2 +696,3 @@ int mt7925_mcu_uni_tx_ba(struct mt792x_dev *dev,
+ 	return mt7925_mcu_sta_ba(&dev->mt76, &mvif->bss_conf.mt76, params,
++				 &msta->deflink.wcid,
+ 				 enable, true);
+@@ -708,2 +708,3 @@ int mt7925_mcu_uni_rx_ba(struct mt792x_dev *dev,
+ 	return mt7925_mcu_sta_ba(&dev->mt76, &mvif->bss_conf.mt76, params,
++				 &msta->deflink.wcid,
+ 				 enable, false);

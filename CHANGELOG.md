@@ -5,6 +5,21 @@ All notable changes to the MediaTek MT7927 DKMS package are documented here.
 Format: `v<pkgver>-<pkgrel>` where pkgver bumps for driver/patch changes
 and pkgrel bumps for PKGBUILD packaging changes.
 
+## [2.13-1] - 2026-07-05
+
+### Driver
+
+- Rebase the bundled mt76 WiFi source onto the kernel 7.1.3 tarball (from 7.1.1)
+- Adopt Sean Wang's upstream MT7927 series from wireless-next, replacing the ad-hoc MT7927 patches with the reviewed upstream commits: is_connac3 conversion, MT7927 WFSYS reset, common DMA queue helpers, MT7927-specific PCIe DMA, BSS band sync, MBMC event handling, CNM ops, and full MT7927 PCIe support
+- Fix a probe-time kernel oops on the TP-Link BE9300 (Foxconn 105b:e104) card: the previous snapshot carried only a subset of the MT7927 PCIe bring-up, so a CONN_ON_LPCTL register write reached an unmapped offset. The complete upstream PCIe init path resolves it (Reported-by: xgeetx, #89)
+- Add MT7927 USB support (new; the driver was PCIe-only before)
+- Drop three ad-hoc TX-power patches (reported-3-dBm fix, AP-mode TX power, valid-BSS TX power): the upstream series now caches `txpower_cur` and reports per-vif-link power. Verified `iw` still reports the correct 23 dBm on 7.1.3 hardware
+- Pull in the upstream mt7925 stability fixes that ride with the series (link-specific STA removal, inactive-BSS deactivation tolerance, BA state kept in the primary WCID)
+
+### Packaging
+
+- Fix gen-dkms-patches.sh to number patches sequentially by commit order and strip any `wifi: mt76: <subsys>:` subject prefix, so the Makefile's sorted glob applies them in git order
+
 ## [2.12-2] - 2026-06-25
 
 ### Driver

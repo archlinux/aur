@@ -13,10 +13,11 @@ to account for the new TLV.
 
 Signed-off-by: Javier Tia <floss@jetm.me>
 Tested-by: Patryk Kowalczyk <patryk@kowalczyk.ws>
+(cherry picked from commit b72ccb62f7255192727072988d2fcbe5faa2917e)
 
-b72ccb62f7255192727072988d2fcbe5faa2917e
+3cf4d72783034d41fb30ba6783a6fb4827300aab
 diff --git a/mt7925/mcu.c b/mt7925/mcu.c
-index 26c4f2e..a7088d8 100644
+index 434a378..3460666 100644
 --- a/mt7925/mcu.c
 +++ b/mt7925/mcu.c
 @@ -13,2 +13,5 @@
@@ -25,7 +26,7 @@ index 26c4f2e..a7088d8 100644
 +#define HE_MAC(m, c)			u8_get_bits(c, IEEE80211_HE_MAC_##m)
 +
  int mt7925_mcu_parse_response(struct mt76_dev *mdev, int cmd,
-@@ -1655,2 +1658,58 @@ mt7925_mcu_sta_he_tlv(struct sk_buff *skb, struct ieee80211_link_sta *link_sta)
+@@ -1696,2 +1699,58 @@ mt7925_mcu_sta_he_tlv(struct sk_buff *skb, struct ieee80211_link_sta *link_sta)
  
 +static void
 +mt7925_mcu_sta_muru_tlv(struct sk_buff *skb,
@@ -84,16 +85,16 @@ index 26c4f2e..a7088d8 100644
 +}
 +
  static void
-@@ -2016,2 +2075,4 @@ mt7925_mcu_sta_cmd(struct mt76_phy *phy,
+@@ -2057,2 +2116,4 @@ mt7925_mcu_sta_cmd(struct mt76_phy *phy,
  		mt7925_mcu_sta_he_tlv(skb, info->link_sta);
 +		mt7925_mcu_sta_muru_tlv(skb, info->link_conf,
 +					info->link_sta);
  		mt7925_mcu_sta_he_6g_tlv(skb, info->link_sta);
 diff --git a/mt7925/mcu.h b/mt7925/mcu.h
-index 56e2772..815444a 100644
+index 293f173..fe8cef6 100644
 --- a/mt7925/mcu.h
 +++ b/mt7925/mcu.h
-@@ -522,2 +522,3 @@ struct bss_rlm_tlv {
+@@ -523,2 +523,3 @@ struct bss_rlm_tlv {
  					 sizeof(struct sta_rec_mld) +		\
 +					 sizeof(struct sta_rec_muru) +		\
  					 sizeof(struct tlv) * 2 +		\
