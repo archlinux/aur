@@ -1,0 +1,8 @@
+post_install() {
+  echo ":: Note: This is a pre-compiled binary (-bin). It comes compiled with Qt6 support"
+  echo "   from upstream, which is why 'qt6-base' is installed as a hard dependency."
+}
+
+post_upgrade() {
+  post_install
+}
