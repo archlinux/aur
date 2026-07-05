@@ -2,7 +2,7 @@
 # Maintainer: Snowdream Tech <snowdreamtech@qq.com>
 
 pkgname='unigo-bin'
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='Snowdream Tech AI IDE Template is an enterprise-grade, foundational template designed for multi-AI IDE collaboration.'
 url='https://github.com/snowdreamtech/unigo'
@@ -12,16 +12,16 @@ provides=('unigo')
 conflicts=('unigo')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/snowdreamtech/unigo/releases/download/v${pkgver}/unigo_Linux_arm64.tar.gz")
-sha256sums_aarch64=('7c38371fcd33b812b3df495cdd720df40ba57565cdbad6e190d434245af064fd')
+sha256sums_aarch64=('c3d925b51fc64f44c676c01ec5014e6c60eec297017f91a4445fc5de0029c075')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/snowdreamtech/unigo/releases/download/v${pkgver}/unigo_Linux_armv7.tar.gz")
-sha256sums_armv7h=('41ffb229ecd9e0201d61616c702a9db8e46667556a0887189c09e02f43ae8658')
+sha256sums_armv7h=('5b5e545d17f6f068639b23002ff6fba34a0adad41823205f48ffdcee1ee0eb70')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/snowdreamtech/unigo/releases/download/v${pkgver}/unigo_Linux_i386.tar.gz")
-sha256sums_i686=('e6fc9d801a4890bcc2040647f63d7b8ab89e4596ad9dab451cd6eb2520eff19b')
+sha256sums_i686=('552af9e99dadca74bdc583a3545c2936033e01b6725b3c39d5d6914a5bd14932')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/snowdreamtech/unigo/releases/download/v${pkgver}/unigo_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('0b0d375971c909f4d42e99d01c01ecc991d6bfdd72a109cc4ccfef5f74d21eb6')
+sha256sums_x86_64=('16dc00572876c27a354bdf01e0d5b27fd789183e68c0a4d4908d4e7faf19253f')
 
 package() {
   # bin
