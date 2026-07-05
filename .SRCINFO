@@ -1,0 +1,22 @@
+pkgbase = unigo-bin
+	pkgdesc = Snowdream Tech AI IDE Template is an enterprise-grade, foundational template designed for multi-AI IDE collaboration.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/snowdreamtech/unigo
+	license = MIT
+	conflicts = unigo
+	provides = unigo
+	arch = aarch64
+	source_aarch64 = https://github.com/snowdreamtech/unigo/releases/download/v0.0.1/unigo_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 7c38371fcd33b812b3df495cdd720df40ba57565cdbad6e190d434245af064fd
+	arch = armv7h
+	source_armv7h = https://github.com/snowdreamtech/unigo/releases/download/v0.0.1/unigo_Linux_armv7.tar.gz
+	sha256sums_armv7h = 41ffb229ecd9e0201d61616c702a9db8e46667556a0887189c09e02f43ae8658
+	arch = i686
+	source_i686 = https://github.com/snowdreamtech/unigo/releases/download/v0.0.1/unigo_Linux_i386.tar.gz
+	sha256sums_i686 = e6fc9d801a4890bcc2040647f63d7b8ab89e4596ad9dab451cd6eb2520eff19b
+	arch = x86_64
+	source_x86_64 = https://github.com/snowdreamtech/unigo/releases/download/v0.0.1/unigo_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 0b0d375971c909f4d42e99d01c01ecc991d6bfdd72a109cc4ccfef5f74d21eb6
+	
+pkgname = unigo-bin
