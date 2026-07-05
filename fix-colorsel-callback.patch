@@ -1,0 +1,13 @@
+diff --git a/src/gui.c b/src/gui.c
+index 1111111..2222222 100644
+--- a/src/gui.c
++++ b/src/gui.c
+@@ -1094,7 +1094,7 @@ gui_colorsel_window( const char *title, RGBcolor *init_color, void (*ok_callback
+ 		gtk_color_chooser_get_rgba(chooser, &gcolor);
+ 		RGBcolor color = GdkRGBA2RGB(&gcolor);
+ 		/* Call user callback */
+-		(ok_callback)(&color, ok_callback_data);
++		((void (*)(RGBcolor *, void *))ok_callback)(&color, ok_callback_data);
+         }
+ 
+ 	gtk_widget_destroy(widget);

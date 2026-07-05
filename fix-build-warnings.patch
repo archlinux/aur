@@ -1,0 +1,131 @@
+diff --git a/src/gui.h b/src/gui.h
+index 1111111..2222222 100644
+--- a/src/gui.h
++++ b/src/gui.h
+@@ -128,5 +128,17 @@ void gui_window_modalize( GtkWidget *window_w, GtkWidget *parent_window_w );
+ RGBcolor GdkRGBA2RGB(const GdkRGBA *color);
+ GdkRGBA RGB2GdkRGBA(const RGBcolor *color);
++
++static inline GdkPixbuf *
++pixbuf_from_xpm_data(const char **xpm_data)
++{
++	GdkPixbuf *pixbuf;
++
++	G_GNUC_BEGIN_IGNORE_DEPRECATIONS
++	pixbuf = gdk_pixbuf_new_from_xpm_data(xpm_data);
++	G_GNUC_END_IGNORE_DEPRECATIONS
++
++	return pixbuf;
++}
+ #endif /* __GTK_H__ */
+ 
+ 
+diff --git a/src/gui.c b/src/gui.c
+index 1111111..2222222 100644
+--- a/src/gui.c
++++ b/src/gui.c
+@@ -843,7 +843,7 @@ gui_pixbuf_xpm_add(GtkWidget *parent_w, const char **xpm_data)
+ {
+ 	/* Realize parent widget to prevent "NULL window" error */
+ 	gtk_widget_realize( parent_w );
+-	GdkPixbuf *pixbuf = gdk_pixbuf_new_from_xpm_data(xpm_data);
++	GdkPixbuf *pixbuf = pixbuf_from_xpm_data(xpm_data);
+ 	GtkWidget *pixbuf_w = gtk_image_new();
+ 	gtk_image_set_from_pixbuf(GTK_IMAGE(pixbuf_w), pixbuf);
+ 	parent_child( parent_w, pixbuf_w );
+@@ -1220,7 +1220,7 @@ gui_dir_choose(const char *title, GtkWidget *parent, const char *init_dir)
+ void
+ gui_window_icon_xpm(GtkWidget *window_w, const char **xpm_data)
+ {
+-	GdkPixbuf *pb = gdk_pixbuf_new_from_xpm_data(xpm_data);
++	GdkPixbuf *pb = pixbuf_from_xpm_data(xpm_data);
+ 	gtk_window_set_icon(GTK_WINDOW(window_w), pb);
+ }
+ 
+diff --git a/src/dirtree.c b/src/dirtree.c
+index 1111111..2222222 100644
+--- a/src/dirtree.c
++++ b/src/dirtree.c
+@@ -173,7 +173,7 @@ dirtree_icons_init( void )
+ 
+ 	/* Make icons for collapsed and expanded directories */
+ 	for (i = 0; i < 2; i++) {
+-		GdkPixbuf *pb = gdk_pixbuf_new_from_xpm_data(dir_colexp_mini_xpms[i]);
++		GdkPixbuf *pb = pixbuf_from_xpm_data(dir_colexp_mini_xpms[i]);
+ 		dir_colexp_mini_icons[i].pixbuf = pb;
+ 	}
+ }
+diff --git a/src/filelist.c b/src/filelist.c
+index 1111111..2222222 100644
+--- a/src/filelist.c
++++ b/src/filelist.c
+@@ -48,7 +48,7 @@ filelist_icons_init( void )
+ 
+ 	/* Make mini node type icons */
+ 	for (i = 1; i < NUM_NODE_TYPES; i++) {
+-		GdkPixbuf *pixbuf = gdk_pixbuf_new_from_xpm_data(node_type_mini_xpms[i]);
++		GdkPixbuf *pixbuf = pixbuf_from_xpm_data(node_type_mini_xpms[i]);
+ 		node_type_mini_icons[i].pixbuf = pixbuf;
+ 	}
+ }
+@@ -170,7 +170,6 @@ filelist_show_entry( GNode *node )
+ 	if (!node) return;
+ 
+ 	GNode *dnode;
+-	int row = 0;
+ 
+ 	/* Corresponding directory */
+ 	if (NODE_IS_DIR(node))
+@@ -206,7 +205,6 @@ filelist_show_entry( GNode *node )
+ 		g_free(fname);
+ 
+ 		valid = gtk_tree_model_iter_next(model, &iter);
+-		row++;
+ 	}
+ 	GtkTreeSelection *select = gtk_tree_view_get_selection(GTK_TREE_VIEW(file_list_w));
+ 	if (valid) {
+
+diff --git a/src/viewport.h b/src/viewport.h
+index 1111111..2222222 100644
+--- a/src/viewport.h
++++ b/src/viewport.h
+@@ -17,7 +17,7 @@
+ 
+ void viewport_pass_node_table(GNode **new_node_table, size_t nz);
+ #ifdef __GTK_H__
+-int viewport_cb( GtkWidget *gl_area_w, GdkEvent *event );
++gboolean viewport_cb( GtkWidget *gl_area_w, GdkEvent *event, gpointer user_data );
+ #endif
+ 
+ 
+diff --git a/meson.build b/meson.build
+index 1111111..2222222 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1,6 +1,6 @@
+ # SPDX-License-Identifier: Zlib
+ 
+-project('fsv', 'c', version: '3.0')
++project('fsv', 'c', version: '3.0', meson_version: '>=0.56.0')
+ gtkdep = [dependency('gtk+-3.0'),
+           dependency('gdk-pixbuf-2.0'), dependency('epoxy')]
+ cglm_dep = dependency('cglm', fallback : ['cglm', 'cglm_dep'])
+@@ -24,7 +24,7 @@ endif
+ has_file = find_program('file')
+ if has_file.found()
+   conf.set('HAVE_FILE_COMMAND', 1)
+-  conf.set_quoted('FILE_COMMAND', has_file.path() + ' %s')
++  conf.set_quoted('FILE_COMMAND', has_file.full_path() + ' %s')
+ endif
+ 
+ if get_option('buildtype') == 'debug' or get_option('buildtype') == 'debugoptimized'
+diff --git a/po/meson.build b/po/meson.build
+index 1111111..2222222 100644
+--- a/po/meson.build
++++ b/po/meson.build
+@@ -6,3 +6,3 @@ add_project_arguments('-DGETTEXT_PACKAGE="fsv"', language:'c')
+ i18n.gettext(meson.project_name(),
+-    args: '--directory=' + meson.source_root()
++    args: '--directory=' + meson.project_source_root()
+ )
+
