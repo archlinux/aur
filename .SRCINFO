@@ -1,6 +1,6 @@
 pkgbase = shure-mv6-mute-sync-git
 	pkgdesc = Bidirectional mute-sync support for the Shure MV6 microphone on Linux
-	pkgver = 1.1.0.r1.g063c0a2
+	pkgver = 1.1.0.r5.g34c148c
 	pkgrel = 1
 	url = https://github.com/cakenes/shure-mv6-mute-sync
 	install = shure-mv6-mute-sync-git.install

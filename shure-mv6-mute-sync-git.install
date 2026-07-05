@@ -12,6 +12,8 @@ post_install() {
     depmod -A
     modprobe hid_shure_mv6 && echo ">>> hid_shure_mv6 loaded." \
         || echo ">>> Warning: modprobe failed; reboot or run: modprobe hid_shure_mv6"
+    echo ">>> Enable and start the user service:"
+    echo ">>>   systemctl --user enable --now shure-mv6-sync"
 }
 
 post_upgrade() {
@@ -24,6 +26,8 @@ post_upgrade() {
     dkms install --no-depmod "${_dkms_name}/${_ver}"
     depmod -A
     modprobe hid_shure_mv6 2>/dev/null || true
+    echo ">>> Enable and start the user service:"
+    echo ">>>   systemctl --user enable --now shure-mv6-sync"
 }
 
 post_remove() {

@@ -1,5 +1,5 @@
 pkgname=shure-mv6-mute-sync-git
-pkgver=1.1.0.r1.g063c0a2
+pkgver=1.1.0.r5.g34c148c
 pkgrel=1
 pkgdesc="Bidirectional mute-sync support for the Shure MV6 microphone on Linux"
 arch=('x86_64')
