@@ -5,22 +5,15 @@
 # Contributor: Kosava <kosava@gmail.com>
 
 pkgname=butt
-pkgver=1.46.0
+pkgver=1.47.0
 pkgrel=1
 pkgdesc="Easy to use, multi OS streaming tool"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL2')
 url="https://danielnoethen.de/butt/"
 depends=('fltk' 'dbus' 'portaudio' 'portmidi' 'libfdk-aac' 'libvorbis' 'libogg' 'lame' 'flac' 'opus' 'libsamplerate' 'libdatachannel')
-source=("${pkgname}-${pkgver}.tar.gz::https://danielnoethen.de/${pkgname}/release/${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        'add-required-headers.patch')
-sha256sums=('dd1202d87e47327fdee419785c23f1c69bfe1444fd46057b331b5c3aeb1c5f3b'
-            'e6e5537a750794e43284254497887dd473956499124011d5a21bd6c5ad7fdcba')
-
-prepare() {
-  cd "${pkgname}-${pkgver}"
-  patch -Np1 -i ../add-required-headers.patch
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://danielnoethen.de/${pkgname}/release/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('d7b3a8bbbe011c337cf93c6a683071210cc39e0277f77482f94532becf126760')
 
 build() {
   cd "${pkgname}-${pkgver}"
