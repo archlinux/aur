@@ -66,7 +66,6 @@ package() {
   install -Dm644 "${srcdir}/imghdr.py" "${_pdir}/custom_libs/imghdr.py"
 
   rm -r "${_pdir}"/libs/sqlalchemy
-  rm -r "${_pdir}"/libs/SQLAlchemy-*.dist-info
   rm -r "${_pdir}"/libs/typing_extensions.py
   rm -r "${_pdir}"/libs/typing_extensions-*.dist-info
 
