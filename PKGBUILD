@@ -3,8 +3,8 @@
 pkgbase=seanime-git
 pkgname=('seanime-server-git' 'seanime-denshi-git')
 _pkgname=seanime
-_electronver=39
-pkgver=v3.6.1.r0.g47c204c
+_electronver=42
+pkgver=v3.9.0.r0.g6e024c5
 pkgrel=1
 pkgdesc="Open-source media server with a web interface and desktop app for anime and manga."
 arch=('x86_64' 'aarch64')
@@ -98,6 +98,7 @@ build() {
 
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     npm ci
+    npm run sync:mpv-prism -- linux-x64
     npm exec -- electron-builder build --linux --${_Arch} --dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
@@ -125,6 +126,7 @@ package_seanime-denshi-git() {
 
     install -Dm644 "dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${_pkgname}-denshi"
     install -Dm755 "dist/linux-unpacked/resources/binaries/seanime-server-linux-${GOARCH}" -t "${pkgdir}/usr/lib/electron$_electronver/resources/binaries"
+    mv -v "dist/linux-unpacked/resources/native-builds" "${pkgdir}/usr/lib/electron$_electronver/resources/"
 
     for icon in $(find assets -regex '.*/[0-9]+x[0-9]+\.png' | sort -n); do
     size=$(basename -s .png "$icon")
