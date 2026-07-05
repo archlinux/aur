@@ -1,6 +1,6 @@
 pkgbase = alacritty-use-theme-with-services-git
 	pkgdesc = services to use alacritty-use-theme
-	pkgver = r65.ed38a3e
+	pkgver = r68.6dfd60d
 	pkgrel = 2
 	url = https://github.com/alacritty-use-theme/alacritty-use-theme-with-services
 	arch = x86_64
