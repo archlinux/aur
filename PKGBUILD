@@ -3,7 +3,7 @@
 pkgname='gui-for-singbox-bin'
 _pkgname='GUI.for.SingBox'
 pkgver='1.25.4'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='GUI for SingBox (precompiled binary)'
 arch=('x86_64')
 license=('GPL3')
@@ -41,14 +41,15 @@ package() {
 
     # Pre-create runtime data directories (the app writes to them at runtime)
     # 777 because /opt/ is root-owned and the user runs as a normal user
+    chmod 777 "${pkgdir}/opt/${pkgname}/data"
+    install -dm777 "${pkgdir}/opt/${pkgname}/data/.cache/icons"
+    install -dm777 "${pkgdir}/opt/${pkgname}/data/.cache/imgs"
+    install -dm777 "${pkgdir}/opt/${pkgname}/data/locales"
     install -dm777 "${pkgdir}/opt/${pkgname}/data/plugins"
     install -dm777 "${pkgdir}/opt/${pkgname}/data/rolling-release"
     install -dm777 "${pkgdir}/opt/${pkgname}/data/rulesets"
     install -dm777 "${pkgdir}/opt/${pkgname}/data/subscribes"
-    install -dm777 "${pkgdir}/opt/${pkgname}/data/locales"
     install -dm777 "${pkgdir}/opt/${pkgname}/data/third"
-    install -dm777 "${pkgdir}/opt/${pkgname}/data/.cache/icons"
-    install -dm777 "${pkgdir}/opt/${pkgname}/data/.cache/imgs"
 
     # Icon
     install -Dm644 "appicon.png" "${pkgdir}/opt/${pkgname}/icon/${pkgname%-bin}.png"

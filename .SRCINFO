@@ -1,7 +1,7 @@
 pkgbase = gui-for-singbox-bin
 	pkgdesc = GUI for SingBox (precompiled binary)
 	pkgver = 1.25.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/GUI-for-Cores/GUI.for.SingBox
 	arch = x86_64
 	license = GPL3
