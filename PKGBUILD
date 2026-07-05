@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Search, stream, and download anime, movies, TV shows & cartoons across 5+ providers with MPV/IINA/VLC/MX Player support, Trakt/AniList scrobbling, and auto-subtitles"
 
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -33,8 +33,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[1]}")
 sha256sums=('9ad0d80a0f0d02e43a51a0f533a1e689eaf5369b1abac422a4b2963fe641feca'
             'cfe49cf99a0612a353aa74cfe9b6dbaa4b545c499ddac88f0319e639a1cfac51')
-sha256sums_x86_64=('31212640c9fe51369cfa06f0ad219c7cfe7e66a8a94d67bdb399ed1c3fe8f70e')
-sha256sums_aarch64=('97ba23190b0d57c76805120d15257704147c72d2d59c99062282c55f42283dad')
+sha256sums_x86_64=('30dae0ee706934a1977edd74ade6cf134466fb0fcc477098337336fb7f4d84a4')
+sha256sums_aarch64=('90204b64f00c711225958cdd52d3d4a70198c11677b5678832df90b912f07a30')
 
 
 package() {
