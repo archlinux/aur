@@ -7,7 +7,7 @@
 # Contributor: SanskritFritz (gmail)
 
 pkgname=rofi-git
-pkgver=2.0.0.r54.gc3bfdaf9
+pkgver=2.0.0.r74.ga6baa2ae
 pkgrel=1
 pkgdesc='A window switcher, run dialog and dmenu replacement'
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ depends=(
 	'glib2'
 	'glibc'
 	'hicolor-icon-theme'
-	'libjpeg'
+	'libjpeg-turbo'
 	'librsvg'
 	'libx11'
 	'libxcb'
