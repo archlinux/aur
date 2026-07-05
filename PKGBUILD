@@ -1,14 +1,20 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libultrahdr-git
-pkgver=1.0.0.r167.ge9932b3
+pkgver=1.4.0.r22.g1acdbed
 pkgrel=1
 pkgdesc='Codec for the Ultra HDR format (git version)'
 arch=('x86_64')
 url='https://github.com/google/libultrahdr/'
 license=('Apache-2.0')
-depends=('gcc-libs' 'libjpeg')
-makedepends=('git' 'cmake')
+depends=(
+    'glibc'
+    'libgcc'
+    'libjpeg-turbo'
+    'libstdc++')
+makedepends=(
+    'cmake'
+    'git')
 provides=('libultrahdr')
 conflicts=('libultrahdr')
 source=('git+https://github.com/google/libultrahdr.git')
