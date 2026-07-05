@@ -1,7 +1,7 @@
 pkgbase = touchdesigner-linux
 	pkgdesc = TouchDesigner on Linux - Soda Wine, Vulkan-accelerated, ready to run
 	pkgver = 1.4
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/iswad-lab/TouchDesigner-Linux
 	install = touchdesigner-linux.install
 	arch = x86_64

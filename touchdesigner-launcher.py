@@ -70,11 +70,13 @@ def backup_license():
 
 
 def restore_license():
-    """Restore license files if wineboot cleared them."""
+    """Restore license files if wineboot cleared or overwrote them."""
     bak = f"{LICENSE_DIR}.bak"
-    if os.path.isdir(bak) and not os.path.isdir(LICENSE_DIR):
+    if os.path.isdir(bak):
+        # Always restore — wineboot may overwrite files without deleting the dir
+        shutil.rmtree(LICENSE_DIR, True)
         shutil.copytree(bak, LICENSE_DIR, symlinks=True, dirs_exist_ok=True)
-    shutil.rmtree(bak, True)
+        shutil.rmtree(bak, True)
 
 
 def setup_prefix():
