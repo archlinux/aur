@@ -8,13 +8,13 @@
 # `sha256sums_*` are 'SKIP' in-repo and filled in by release-local.sh when
 # it stages the PKGBUILD for the AUR push.
 pkgname=sentinel-kde
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 install=sentinel-kde.install
 options=('!debug' '!strip')   # binaries are already stripped at link time
 pkgdesc="UAC-style confirmation dialog for privilege escalation on KDE Plasma (Wayland)"
 arch=('x86_64' 'aarch64')
-url="https://github.com/atayozcan/sentinel"
+url="https://github.com/atayoez/sentinel"
 license=('GPL-3.0-or-later')
 depends=(
     'pam'
@@ -49,8 +49,8 @@ backup=('etc/security/sentinel.conf' 'etc/pam.d/polkit-1')
 _base="$url/releases/download/v$pkgver"
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$_base/sentinel-kde-$pkgver-x86_64-linux.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$_base/sentinel-kde-$pkgver-aarch64-linux.tar.gz")
-sha256sums_x86_64=('4c532334498cce09cd6ccfe8d7d20799f9a48856e3ee4565523ff3ec48dea4f3')
-sha256sums_aarch64=('bde0a1df077ce4f3d3a2a4eeb2d5be84c431d6b60e6ba42b7bb6a73b1dddf438')
+sha256sums_x86_64=('e7e0e71a6fb2bd07a0208f9bbb5dc83c6048d4a4172bf138b96372358bcfb29b')
+sha256sums_aarch64=('40d43b19a9c52842e07a83d205f7f0744f8fa7bdfc204f71920a8e31f7fc0260')
 
 package() {
     cd "sentinel-kde-$pkgver"

@@ -1,8 +1,8 @@
 pkgbase = sentinel-kde
 	pkgdesc = UAC-style confirmation dialog for privilege escalation on KDE Plasma (Wayland)
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
-	url = https://github.com/atayozcan/sentinel
+	url = https://github.com/atayoez/sentinel
 	install = sentinel-kde.install
 	arch = x86_64
 	arch = aarch64
@@ -27,8 +27,8 @@ pkgbase = sentinel-kde
 	depends = glibc
 	optdepends = sudo-rs: memory-safe sudo replacement
 	optdepends = libcanberra: UAC-style audio cue at dialog open
-	provides = polkit-kde-agent=0.13.0
-	provides = sentinel-kde=0.13.0
+	provides = polkit-kde-agent=0.14.0
+	provides = sentinel-kde=0.14.0
 	conflicts = polkit-kde-agent
 	conflicts = sentinel
 	conflicts = sentinel-git
@@ -36,9 +36,9 @@ pkgbase = sentinel-kde
 	options = !strip
 	backup = etc/security/sentinel.conf
 	backup = etc/pam.d/polkit-1
-	source_x86_64 = sentinel-kde-0.13.0-x86_64.tar.gz::https://github.com/atayozcan/sentinel/releases/download/v0.13.0/sentinel-kde-0.13.0-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 4c532334498cce09cd6ccfe8d7d20799f9a48856e3ee4565523ff3ec48dea4f3
-	source_aarch64 = sentinel-kde-0.13.0-aarch64.tar.gz::https://github.com/atayozcan/sentinel/releases/download/v0.13.0/sentinel-kde-0.13.0-aarch64-linux.tar.gz
-	sha256sums_aarch64 = bde0a1df077ce4f3d3a2a4eeb2d5be84c431d6b60e6ba42b7bb6a73b1dddf438
+	source_x86_64 = sentinel-kde-0.14.0-x86_64.tar.gz::https://github.com/atayoez/sentinel/releases/download/v0.14.0/sentinel-kde-0.14.0-x86_64-linux.tar.gz
+	sha256sums_x86_64 = e7e0e71a6fb2bd07a0208f9bbb5dc83c6048d4a4172bf138b96372358bcfb29b
+	source_aarch64 = sentinel-kde-0.14.0-aarch64.tar.gz::https://github.com/atayoez/sentinel/releases/download/v0.14.0/sentinel-kde-0.14.0-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 40d43b19a9c52842e07a83d205f7f0744f8fa7bdfc204f71920a8e31f7fc0260
 
 pkgname = sentinel-kde
