@@ -1,0 +1,17 @@
+pkgbase = audio.cpp-git
+	pkgdesc = All-in-one C++ audio inference engine on ggml: TTS, voice cloning, ASR, VAD, diarization, source separation, music generation
+	pkgver = r48.e74a290
+	pkgrel = 1
+	url = https://github.com/0xShug0/audio.cpp
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	provides = audio.cpp
+	conflicts = audio.cpp
+	source = audio.cpp::git+https://github.com/0xShug0/audio.cpp.git
+	sha256sums = SKIP
+
+pkgname = audio.cpp-git
