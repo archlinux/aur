@@ -2,7 +2,7 @@
 
 pkgname=asgi-webdav
 pkgver=2.0.1
-pkgrel=2
+pkgrel=1
 pkgdesc="An asynchronous WebDAV server implementation, Support multi-provider, multi-account and permission control."
 arch=("any")
 url="https://github.com/rexzhang/${pkgname}"
@@ -28,16 +28,11 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "config.json")
 sha256sums=('15365115d6727bf113cd83ef60e81b0b16bdeea48601df08651a8aa6b5ce1839'
             '323b0abc7b6e632f63ccf0fe65e36b6d3c16e1d12e778a3d77d6e26df35e6660'
-            '4dd28d30a45468e1fe935107b90467f7b1f9c2e534aea3b39c541d5b0359b7de'
-            '3635f23f71c6fe1a752f801f252bde2c180fc00baf1d6993a055db956290a2f5'
+            '86299b5dfcbb28da4f9703213e3754d44a67fafb93e0da034d6457267a702dfe'
+            '59e04c680dfce93154a618c25bc868a8c44e0c5482cbf2c18319b82b86b50e1a'
             'd230496ce61436b709d34078273df5e4b6036eab316b5c9f54f5d261a5c61ea8'
             'a1bc83acb2b0429b4aef7b1bda3a5c0b19312ef4b6680040cc81b34e233e469c'
             'd10c0e9cafc0e1df19a842d78b0e6d537369752ee00e3d33c87ae8579b3d336c')
-
-prepare() {
-    cd "${pkgname}-${pkgver}"
-    grep -rl 'JSONPyWizard' . | xargs sed -i 's/JSONPyWizard/JSONWizard/g'
-}
 
 build() {
     cd "${pkgname}-${pkgver}"

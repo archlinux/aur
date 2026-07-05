@@ -1,18 +1,18 @@
 [Unit]
-Description=ASGI WebDAV Server
-Documentation=https://rexzhang.github.io/asgi-webdav/
-Documentation=https://rexzhang.github.io/asgi-webdav/zh/
-Wants=network-online.target
-After=network-online.target
+Description = ASGI WebDAV Server
+Documentation = https://rexzhang.github.io/asgi-webdav/
+Documentation = https://rexzhang.github.io/asgi-webdav/zh/
+Wants = network-online.target
+After = network-online.target
 
 [Service]
-User=asgi-webdav
-Group=asgi-webdav
-Restart=on-failure
-EnvironmentFile=/etc/asgi-webdav/asgi-webdav.env
-WorkingDirectory=/var/lib/asgi-webdav
-ExecStart=/usr/bin/asgi-webdav --host $WEBDAV_HOST --port $WEBDAV_PORT --config "/etc/asgi-webdav/config.json"
-TimeoutStopSec=10
+User = asgi-webdav
+Group = asgi-webdav
+Restart = on-failure
+EnvironmentFile = /etc/asgi-webdav/asgi-webdav.env
+WorkingDirectory = /var/lib/asgi-webdav
+ExecStart = /usr/bin/asgi-webdav --host $WEBDAV_HOST --port $WEBDAV_PORT --config "/etc/asgi-webdav/config.json"
+TimeoutStopSec = 10
 
 [Install]
-WantedBy=multi-user.target
+WantedBy = multi-user.target
