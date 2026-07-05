@@ -1,0 +1,13 @@
+post_install() {
+    systemctl daemon-reload
+    systemctl enable --now ppd-cpu-boost.service 2>/dev/null || true
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    systemctl try-restart ppd-cpu-boost.service 2>/dev/null || true
+}
+
+pre_remove() {
+    systemctl disable --now ppd-cpu-boost.service 2>/dev/null || true
+}
