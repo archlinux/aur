@@ -2,13 +2,13 @@
 
 pkgname=technitium-dns-server-git
 _pkgname=technitium-dns-server
-pkgver=r4003.gaa9044d4
-pkgrel=2
+pkgver=r4115.gbfc99287
+pkgrel=1
 pkgdesc="Open source authoritative and recursive DNS server focused on privacy and security"
 arch=('x86_64' 'aarch64')
 url="https://technitium.com/dns/"
 license=('GPL-3.0-only')
-depends=('aspnet-runtime' 'glibc' 'gcc-libs')
+depends=('aspnet-runtime' 'glibc' 'gcc-libs' 'libstdc++' 'libgcc')
 makedepends=('dotnet-sdk')
 conflicts=('technitium-dns-server')
 provides=('technitium-dns-server')
