@@ -1,7 +1,7 @@
 # Maintainer: Sheikh Limon <sheikhlimon404@gmail.com>
 
 pkgname=goose-desktop
-pkgver=1.39.0
+pkgver=1.41.0
 pkgrel=1
 pkgdesc="Goose Desktop (built from source) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=("x86_64")
@@ -25,7 +25,7 @@ options=("!lto" "!debug")
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/aaif-goose/goose/archive/refs/tags/v${pkgver}.tar.gz"
 )
-b2sums=('4e1e737140a67a76c34f86092702483e691629cff24b74d0653756c77534ce6721da6b9b8fbe7dbdbe5417f8ff64a6e1015b0a067a0e9af976be21fdb32d8313')
+b2sums=('95b5d27137090c9f5254109e9d09f6928b423eac81411a5ca78aa73bff8d84476fc736930ad3e82be06d4b9de8fa8af3a688d049357e701298dad2b411c5e1a8')
 conflicts=("goose-desktop-bin")
 provides=("goose-desktop")
 
@@ -40,7 +40,8 @@ prepare() {
 build() {
   cd "goose-${pkgver}"
 
-  cargo build --release --features vulkan -p goose-server
+  # Build the goose CLI; the desktop UI talks ACP to this binary directly
+  cargo build --release --features vulkan -p goose-cli --bin goose
   just copy-binary
   cargo run -p goose-server --bin generate_schema
 
