@@ -2,7 +2,7 @@
 # Contributor: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=libva-headless
-pkgver=2.23.0
+pkgver=2.24.0
 pkgrel=1
 pkgdesc='Video Acceleration (VA) API for Linux headless systems'
 arch=(i686 x86_64 armv7h aarch64)
@@ -19,7 +19,7 @@ optdepends=(
 )
 backup=(etc/libva.conf)
 source=(git+https://github.com/intel/libva.git#tag="$pkgver")
-sha256sums=('1819b31a1ae54957db182ed1d1ea119965f02d262b70e9dc81ca1ee133b6f9d4')
+sha256sums=('b5028543a5c186f0e0dc3970cd6fe757859836c1cde372adbc60bf231792a15c')
 
 build() {
     CFLAGS+=" -DENABLE_VA_MESSAGING" # Option missing
