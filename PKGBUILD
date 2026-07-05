@@ -2,38 +2,30 @@
 
 _pkgname=artemis
 pkgname=${_pkgname}-bin
-pkgver=4.1.0
-pkgrel=2
+pkgver=4.1.5
+pkgrel=1
 pkgdesc="Radio Signals Recognition Manual"
 url="https://aresvalley.com/"
 arch=(x86_64)
 license=(GPL-3.0-only)
-depends=(dbus gcc-libs glib2 glibc hicolor-icon-theme krb5 zlib zstd)
-makedepends=(unzip)
-source=("${_pkgname}-${pkgver}.zip::https://github.com/AresValley/Artemis/releases/download/v${pkgver}/Artemis-Linux-x86_64-${pkgver}.zip"
-        "artemis.desktop")
-sha256sums=('0f7b49044b0dfd11d077799fd8551ee35738dbcebf2408a1c922f78511b5c762'
-            '03f370b2595edd1f0ad0a6ea9172efb58956cc66a42d9d0da542e20223ad6f16')
-noextract=("${_pkgname}-${pkgver}.zip")
+depends=(glibc python qt6-base)
+makedepends=(zstd)
+source=("${_pkgname}-${pkgver}.tar.zst::https://github.com/AresValley/Artemis/releases/download/v${pkgver}/Artemis-Linux-${arch}-${pkgver}.pkg.tar.zst")
+sha256sums=('8052b079d05d0f65af83c9e0b5e4966e943766ad84ac2cdbf92709f9b6b85205')
+noextract=("${_pkgname}-${pkgver}.tar.zst")
 
 prepare() {
   cd "${srcdir}"
 
-  unzip -d "preinstall" "${_pkgname}-${pkgver}.zip"
+  tar --zstd -xf "${_pkgname}-${pkgver}.tar.zst"
 }
 
 package() {
   cd "${srcdir}"
 
+  # cleanup
+  rm -rf usr/src
+
   # install basic stuff
-  mkdir -p "${pkgdir}/opt/artemis"
-  cp -ar "preinstall/." "${pkgdir}/opt/artemis"
-
-  # fix permissions
-  chown -R root:root "${pkgdir}/opt/artemis"
-  chmod 755 "${pkgdir}/opt/artemis/app.bin"
-
-  # install desktop entries and icons
-  install -Dm644 "${srcdir}/preinstall/images/artemis_icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/artemis.svg"
-  install -Dm644 "${srcdir}/artemis.desktop" "${pkgdir}/usr/share/applications/artemis.desktop"
+  mv usr "${pkgdir}/"
 }
