@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=lucarned-bin
 pkgver=0.4.3
-pkgrel=2
+pkgrel=1
 pkgdesc="Stop babysitting local AI agents. Just notifications, approve, and resume your Codex, Pi, or Claude code sessions anywhere."
 arch=('x86_64' 'aarch64')
 url="https://github.com/tuchg/Lucarne"
