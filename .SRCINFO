@@ -1,6 +1,6 @@
 pkgbase = savedesktop
 	pkgdesc = Saves your Linux desktop environment configuration
-	pkgver = 4.0
+	pkgver = 4.1
 	pkgrel = 1
 	url = https://vikdevelop.github.io/SaveDesktop
 	arch = any
@@ -8,13 +8,16 @@ pkgbase = savedesktop
 	makedepends = git
 	makedepends = meson
 	depends = 7zip
+	depends = dbus
 	depends = dconf
 	depends = gtk4
+	depends = gvfs
 	depends = hicolor-icon-theme
 	depends = libadwaita
-	depends = python-dbus
+	depends = libnotify
 	depends = python-gobject
-	source = git+https://github.com/vikdevelop/SaveDesktop.git#tag=4.0
-	sha256sums = 0df17168af9e383028bb48fd7f8ba77a6a5a13d26b0719428275dd8eeccbf771
+	depends = xdg-utils
+	source = git+https://github.com/vikdevelop/SaveDesktop.git#tag=4.1
+	sha256sums = f406242c345d4469962ee78fa9caba4e97d7c6f28a64ee8538c3d7c71a3bec4f
 
 pkgname = savedesktop
