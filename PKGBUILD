@@ -5,7 +5,7 @@
 _author=SKAJI
 _dist=App-cpm
 pkgname=perl-${_dist@L}
-pkgver=v1.1.1
+pkgver=v1.1.4
 pkgrel=1
 epoch=1
 pkgdesc='a fast CPAN module installer'
@@ -33,11 +33,11 @@ depends=(
     'perl-proc-forksafe>=v1.0.0'
     'perl>=5.24.0'
 )
-makedepends=('perl-module-build-tiny>=0.051')
+makedepends=('perl-module-build-tiny>=0.053')
 optdepends=('perl-carton')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('d3ce2020167e7e0a185880421abaee2adab5e4378424cb24b5ce11d4a45bf208')
+sha256sums=('97b13d3257f72991d2b056dfc0e30806f66c1a5b487ec0236e21f23617b6eabf')
 
 build()
 {
