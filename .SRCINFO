@@ -1,8 +1,8 @@
 pkgbase = perl-json-any
 	pkgdesc = (DEPRECATED) Wrapper Class for the various JSON classes
-	pkgver = 1.40
+	pkgver = 1.42
 	pkgrel = 1
-	url = https://metacpan.org/release/ETHER/JSON-Any-1.40
+	url = https://metacpan.org/dist/JSON-Any
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	checkdepends = perl-data-dumper
@@ -15,15 +15,15 @@ pkgbase = perl-json-any
 	checkdepends = perl-test-warnings>=0.009
 	checkdepends = perl-test-without-module
 	checkdepends = perl>=5.8.0
-	makedepends = perl-cpan-meta-requirements>=2.120620
+	makedepends = perl-cpan-meta-requirements
 	makedepends = perl-extutils-makemaker
 	makedepends = perl-module-metadata
 	depends = perl-carp
 	depends = perl-constant
-	depends = perl>=5.8.0
-	optdepends = perl-cpan-meta
+	depends = perl>=5.6.0
+	optdepends = perl-cpan-meta>=2.120900
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/JSON-Any-1.40.tar.gz
-	sha256sums = 083256255a48094fd9ac1239e0fea8a10a2383a9cd1ef4b1c7264ede1b4400ab
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/JSON-Any-1.42.tar.gz
+	sha256sums = babbb638a86758658ca403d953665cda4bc2595d92873604744e903e5ee8c820
 
 pkgname = perl-json-any
