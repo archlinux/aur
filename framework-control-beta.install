@@ -1,0 +1,30 @@
+post_install() {
+    systemctl --system daemon-reload
+    systemctl --system enable --now framework-control.service
+    echo ":: framework-control.service has been enabled and started."
+    echo ":: Check 'journalctl -u framework-control.service' for the UI address."
+}
+
+post_upgrade() {
+    systemctl --system daemon-reload
+    if systemctl --system is-active --quiet framework-control.service; then
+        systemctl --system restart framework-control.service
+        echo ":: framework-control.service has been restarted."
+    else
+        systemctl --system start framework-control.service
+        echo ":: framework-control.service has been started."
+    fi
+}
+
+pre_remove() {
+    if systemctl --system is-active --quiet framework-control.service; then
+        systemctl --system stop framework-control.service
+    fi
+    if systemctl --system is-enabled --quiet framework-control.service; then
+        systemctl --system disable framework-control.service
+    fi
+}
+
+post_remove() {
+    systemctl --system daemon-reload
+}
