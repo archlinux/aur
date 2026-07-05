@@ -6,7 +6,7 @@
 
 pkgname=lib32-librtmp0
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Toolkit for RTMP streams'
 arch=(x86_64)
 url=https://rtmpdump.mplayerhq.hu/
@@ -28,7 +28,15 @@ b2sums=(SKIP)
 
 prepare() {
   cd rtmpdump
+
+  # Switch to GnuTLS
   sed -e 's/^CRYPTO=OPENSSL/#CRYPTO=OPENSSL/' -e 's/#CRYPTO=GNUTLS/CRYPTO=GNUTLS/' -i Makefile -i librtmp/Makefile
+
+  # Fix Nettle 3.x API mismatch (removes the extra length argument in hmac_sha256_digest)
+  sed -i 's/hmac_sha256_digest(&ctx, SHA256_DIGEST_LENGTH, dig)/hmac_sha256_digest(\&ctx, dig)/' librtmp/handshake.h
+  sed -i 's/hmac_sha256_digest(&ctx, SHA256_DIGEST_LENGTH, dig)/hmac_sha256_digest(\&ctx, dig)/' librtmp/handshake.h
+  sed -i 's/hmac_sha256_digest(&ctx, SHA256_DIGEST_LENGTH, dig)/hmac_sha256_digest(\&ctx, dig)/' librtmp/hashswf.c
+  sed -i 's/md5_digest(ctx,MD5_DIGEST_LENGTH,dig)/md5_digest(ctx,dig)/' librtmp/rtmp.c
 }
 
 build() {
