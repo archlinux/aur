@@ -4,10 +4,10 @@
 
 pkgname=intellij-idea-ultimate-edition
 pkgver=2026.1.4
-pkgrel=1
-jbr_ver=21.0.6
-jbr_build=aarch64-b895
-jbr_minor=109
+pkgrel=2
+jbr_ver=25.0.3
+jbr_build=aarch64-b508
+jbr_minor=16
 arch=('x86_64' 'aarch64')
 pkgdesc="An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity."
 url="https://www.jetbrains.com/idea/"
@@ -23,7 +23,7 @@ source_aarch64=("https://download.jetbrains.com/idea/ideaIU-$pkgver-aarch64.tar.
 sha256sums=('83af2ba8f9f14275a6684e79d6d4bd9b48cd852c047dacfc81324588fa2ff92b')
 sha256sums_x86_64=('3104d85d9507ff882065e3f8eb9506402b4a8129092d2682662bb6e9c4f063fc')
 sha256sums_aarch64=('303645b8bad4c5c0887346618b842180a3de53b3e0b3da09fc5c501f59f78013'
-                    '04fbf6d6a0e15f8bc0ae8ff9fdcf80995eb2ce6be1ef6f543618ba66d86498e5'
+                    '8704ffff0723bbe00992a02e455cda6a76697b40f9a5b833fc853e3c3b05dd14'
                     'aa812c5acac06435217b9018aa3e187a3546ea8d3cf136481a2d50aee4b9b23a')
 
 prepare() {
