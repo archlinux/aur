@@ -1,6 +1,6 @@
 pkgbase = python-jupyter-book
 	pkgdesc = Build a book with Jupyter Notebooks and Sphinx
-	pkgver = 2.1.5
+	pkgver = 2.1.6
 	pkgrel = 1
 	url = https://jupyterbook.org
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-jupyter-book
 	depends = python-platformdirs
 	depends = python-nodeenv
 	depends = nodejs
-	source = jupyter-book-2.1.5.tar.gz::https://github.com/jupyter-book/jupyter-book/archive/v2.1.5.tar.gz
-	sha512sums = 10b679389c7e96bd30dc98e1c4775944dde74f7f6dc1d9f570ad85b25e030eae6c3b3521be5ada1cd2916715ca336359497ac152474d03e7954f74d243d6b844
+	source = jupyter-book-2.1.6.tar.gz::https://github.com/jupyter-book/jupyter-book/archive/v2.1.6.tar.gz
+	sha512sums = d163a037431537994dd8863881e38b179324d8fcf5ffc77f36cc5158df008703b43a27ed1c2f98398ee8f4ddab413085146adbb25b0dcee7319801c9f78fc500
 
 pkgname = python-jupyter-book
