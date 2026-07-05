@@ -1,0 +1,4 @@
+/pkg/
+/rtmpdump/
+/src/
+*.pkg.tar.zst
