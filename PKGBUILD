@@ -1,12 +1,12 @@
 # Maintainer: Eric Anderson <ejona86@gmail.com>
 pkgname=airsane-git
-pkgver=0.3.5.r0.gfef10a4
+pkgver=0.4.12.r0.g129cc3b
 pkgrel=1
 pkgdesc="Publish SANE scanners to MacOS and Android via Apple AirScan"
 arch=('i686' 'x86_64')
 url="https://github.com/SimulPiscator/AirSane"
-license=('GPL3')
-depends=('avahi' 'libjpeg' 'libpng' 'libusb' 'sane')
+license=('GPL-3.0-or-later')
+depends=('avahi' 'libjpeg-turbo' 'libpng' 'libusb' 'sane')
 makedepends=('cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
