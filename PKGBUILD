@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go')
 conflicts=('genv-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ks1686/genv/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fd308082cd0615017dc877bc1f574259e7623d1ceadd756ef059c4ad4dac4782')
+sha256sums=('c502a20df509fe57c5f2a416acb4551d6fb0f02e2a47bf9f29b423da341d49f6')
 
 build() {
 	cd "genv-${pkgver}"

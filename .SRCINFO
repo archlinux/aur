@@ -9,6 +9,6 @@ pkgbase = genv
 	makedepends = go
 	conflicts = genv-bin
 	source = genv-2.1.3.tar.gz::https://github.com/ks1686/genv/archive/refs/tags/v2.1.3.tar.gz
-	sha256sums = fd308082cd0615017dc877bc1f574259e7623d1ceadd756ef059c4ad4dac4782
+	sha256sums = c502a20df509fe57c5f2a416acb4551d6fb0f02e2a47bf9f29b423da341d49f6
 
 pkgname = genv
