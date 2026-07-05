@@ -2,7 +2,7 @@
 # Contributor: Mateusz Galazyn <carbolymer@gmail.com>
 
 pkgname='tdarr'
-pkgver=2.81.01
+pkgver=2.82.01
 pkgrel=1
 pkgdesc='Transcoding application manager for processing media libraries. Server + Node'
 arch=('x86_64')
@@ -30,8 +30,8 @@ noextract=(
   'Tdarr_Node.zip'
 )
 sha256sums=(
-	    '65b4cfa73f44622196108d7d02c688838cf66ad074a5e995e67fc8925b8a0009'
-	    'd09085d7187ba25666586b9086873b2d1d38d5f0d728236d8ae313ea87f0fb76'
+	    'e131f55ca81507c9925b50b6ecb4d2246d34ffb9e60e64ba593f53aa4ea8d50f'
+	    'cc0c03b204cb3dbb7e5d3d93d1c79d408e38c2a4cb7dc3cc1ebbffdaa3233092'
             '95e7c43861b6af12ff935063ede0287b6bb2d753299c5f26ca8e1841727dbdbb'
             'cb11e62960ae73e21a13db5df0ad30d2ffff930108dc2d8e4321079a31c30d4e'
             '3400d977769056ad626c065ada7fe74f3a2370b4faa090706110e7acedf70ffc'
