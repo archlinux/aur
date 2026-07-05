@@ -1,22 +1,22 @@
 # Maintainer: Engdyn <aur cat engdyn dog de>
 pkgname=libretro-ardens-git
-pkgver=0.21.2.r138.8237fb9
+pkgver=0.24.17.r0.2376f7d
 pkgrel=1
 pkgdesc="Arduboy FX core"
-arch=(x86_64)
+arch=(x86_64 i686)
 url="https://github.com/tiberiusbrown/Ardens"
 license=(MIT)
 groups=(libretro)
 depends=(
+	gcc-libs
 	libretro-core-info
-	libgcc
-	libstdc++
 )
 makedepends=(
 	git
 	cmake
 )
-options=(!debug !lto)
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}")
 source=(
 	${pkgname%-git}::git+$url.git
 	git+https://github.com/richgel999/miniz.git
@@ -28,7 +28,7 @@ sha256sums=(
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long | sed 's/v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --tags --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
