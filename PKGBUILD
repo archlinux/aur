@@ -1,18 +1,19 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libheif-git
-pkgver=1.20.1.r129.g0e043e64
+pkgver=1.23.1.r6.gd035da94
 pkgrel=1
 pkgdesc='HEIF and AVIF file format decoder and encoder (git version)'
 arch=('x86_64')
 url='https://github.com/strukturag/libheif/'
 license=('LGPL-3.0-or-later' 'MIT')
 depends=(
-    'gcc-libs'
     'glibc'
     'libde265'
-    'libjpeg'
+    'libgcc'
+    'libjpeg-turbo'
     'libpng'
+    'libstdc++'
     'libtiff'
     'libwebp'
     'openh264'
