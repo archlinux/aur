@@ -14,7 +14,7 @@ sha256sums=('98468f8924934b723276680f85238b6c78bf1f8b49b4459cc9b7214a20e2e9fb')
 _architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/miniz-$pkgver"
   for _arch in ${_architectures}; do
     ${_arch}-cmake -DBUILD_TESTS=OFF -DBUILD_EXAMPLES=OFF -B build-${_arch} .
     cmake --build build-${_arch}
@@ -22,7 +22,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/miniz-$pkgver"
   for _arch in ${_architectures}; do
     DESTDIR="$pkgdir" cmake --build build-${_arch} --target install
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
