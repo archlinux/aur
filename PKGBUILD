@@ -4,10 +4,10 @@
 pkgname=python-requirements-detector
 _name=${pkgname#python-}
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python tool to find and list requirements of a Python project"
 arch=('any')
-url="https://github.com/landscapeio/requirements-detector"
+url="https://github.com/prospector-dev/requirements-detector"
 license=('MIT')
 depends=(
   'python-astroid'
