@@ -15,7 +15,7 @@ _pkgname=proton-rtsp
 pkgname=${_pkgname}-bin
 pkgver=11.0_20260609
 pkgrel=1
-epoch=1
+epoch=2
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 provides=('proton' "proton-rtsp=${pkgver/_/.}")
