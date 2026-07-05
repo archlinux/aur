@@ -121,4 +121,14 @@
     <glob pattern="*.dol"/>
     <glob pattern="*.DOL"/>
   </mime-type>
+  <mime-type type="application/x-spectrum-scl">
+    <comment>Sinclair TR-DOS Filesystem</comment>
+    <comment xml:lang="en_GB">Sinclair TR-DOS Filesystem</comment>
+    <generic-icon name="application-x-executable"/>
+    <magic priority="60">
+      <match type="string" offset="0" value="SINCLAIR"/>
+    </magic>
+    <glob pattern="*.scl"/>
+    <glob pattern="*.SCL"/>
+  </mime-type>
 </mime-info>
