@@ -5,7 +5,7 @@ _pkgauthor=elkowar
 _pkgname=yolk
 _appname=${_pkgname}_dots
 pkgname=${_pkgname}-bin
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Templated dotfile management that won't get in your way"
@@ -19,7 +19,7 @@ conflicts=("${_pkgname}")
 depends=("gcc-libs" "glibc")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${arch[0]}-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('a6f919a2c9e99102edd70639ed1414442bbc71b5f91d713f78c49908f5546a59')
+sha256sums_x86_64=('acafb108f8064955ebf81838660d6642c03a1279667708ec1f799de4d6958203')
 
 
 package() {

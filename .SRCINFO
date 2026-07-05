@@ -1,6 +1,6 @@
 pkgbase = yolk-bin
 	pkgdesc = Templated dotfile management that won't get in your way
-	pkgver = 0.3.8
+	pkgver = 0.3.9
 	pkgrel = 1
 	url = https://github.com/elkowar/yolk
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = yolk-bin
 	depends = glibc
 	provides = yolk
 	conflicts = yolk
-	source_x86_64 = yolk-x86_64-0.3.8.tgz::https://github.com/elkowar/yolk/releases/download/v0.3.8/yolk_dots-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = a6f919a2c9e99102edd70639ed1414442bbc71b5f91d713f78c49908f5546a59
+	source_x86_64 = yolk-x86_64-0.3.9.tgz::https://github.com/elkowar/yolk/releases/download/v0.3.9/yolk_dots-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = acafb108f8064955ebf81838660d6642c03a1279667708ec1f799de4d6958203
 
 pkgname = yolk-bin
