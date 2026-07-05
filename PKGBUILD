@@ -3,7 +3,7 @@
 
 _pkgname="zine"
 pkgname="${_pkgname}-bin"
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="Fast, Scalable, Flexible Static Site Generator (SSG)"
 arch=(
@@ -21,15 +21,15 @@ source=(
   "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE"
 )
 source_aarch64=(
-  "${_pkgsrc}-aarch64.tar.xz::${_url}/releases/download/v${pkgver}/aarch64-linux-musl.tar.xz"
+  "${_pkgsrc}-aarch64-linux-musl.tar.xz::${_url}/releases/download/v${pkgver}/aarch64-linux-musl.tar.xz"
 )
 source_x86_64=(
-  "${_pkgsrc}-x86_64.tar.xz::${_url}/releases/download/v${pkgver}/x86_64-linux-musl.tar.xz"
+  "${_pkgsrc}-x86_64-linux-musl.tar.xz::${_url}/releases/download/v${pkgver}/x86_64-linux-musl.tar.xz"
 )
-sha256sums=('e057f62c6a3ae3cf81ba28415860094262a2835f819563836e61d71764253986'
+sha256sums=('96b5a11088711b87c4e23dfb89b85d1a258279d79307eef157209b5900edd82c'
             'fce6401325da3777483f1567966de44f712d71bb5c7dcfc5cd15e292b968a7a2')
-sha256sums_aarch64=('94139cda5e5f8c9e3c700d0776a434c2cdeed1548ccbf5ba1f2ce114cefc6102')
-sha256sums_x86_64=('bab3f47e07efb8126428f8035ecf46e43344965b430aae5f896d65a747f5c19c')
+sha256sums_aarch64=('65851ab98804f693b7d3edd123ed9c9a118c53574a8b2142f93ad549782ae3f7')
+sha256sums_x86_64=('c25e5372b8a5d2759f2b7e581aefb90c8019ff0056a230a97efe3c8edab3bc19')
 
 package() {
   cd "${srcdir}"
