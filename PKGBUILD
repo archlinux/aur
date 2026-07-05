@@ -1,7 +1,7 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 _name='trufflehog'
 pkgname="$_name-git"
-pkgver=3.95.8.r0.g00155c9dc
+pkgver=3.95.8.r1.gf2cd191b9
 pkgrel=1
 pkgdesc="Secrets scanner for repositories"
 arch=('x86_64' 'aarch64')
@@ -22,6 +22,7 @@ b2sums=('SKIP')
 prepare() {
   cd "$_name"
   export GOPATH="$srcdir"
+  sed -i "s/dev/$pkgver/" pkg/version/version.go
   go mod download -modcacherw
 }
 
