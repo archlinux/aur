@@ -3,7 +3,7 @@
 _author=GWILLIAMS
 _dist=Attean
 pkgname=perl-${_dist@L}
-pkgver=0.038
+pkgver=0.039
 pkgrel=1
 pkgdesc='A Semantic Web Framework'
 arch=('any')
@@ -55,7 +55,7 @@ makedepends=(
 )
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('028961da3c365a0c3fbfde25ff29c9203d10e8e6c8529a5e63d020ced98c498b')
+sha256sums=('572d0559a5ced6e12226399057c15e9e1736a3cdc09dff00becf216a5d40eba9')
 
 build()
 {
