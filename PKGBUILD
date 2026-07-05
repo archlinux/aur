@@ -2,7 +2,7 @@
 
 pkgname=oryx-music-player-bin
 _pkgname=oryx
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc='Native Rust music player built with gpui'
 arch=('x86_64')
@@ -25,10 +25,10 @@ source_x86_64=(
 )
 sha256sums=(
   'c373c05e9d8d06d7aa53cc1d5fba2b9d3fa8776aae1b3720d104f594f9dd771f'
-  'c864a2c89fedf9ee64a33cb82473abaefb819da5615f364ff01229fdb5aed124'
+  '23563fd2c80b90aed3a708a54cb1d4f5f20ef014508f5cc4c330a7e3b24301d1'
 )
 sha256sums_x86_64=(
-  '46384a3cd433e34b961e398f4cc34404f6d6deadad9e83191382c4ec40c3631f'
+  'SKIP'
 )
 
 package() {

@@ -2,8 +2,9 @@
 Type=Application
 Name=Oryx
 Comment=Native Rust music player
-Exec=oryx-music-player
+Exec=oryx-music-player %u
 Icon=oryx-music-player
 Terminal=false
 Categories=AudioVideo;Audio;Music;
+MimeType=x-scheme-handler/oryx;
 StartupNotify=true
