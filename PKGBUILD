@@ -1,7 +1,7 @@
 # Maintainer: Oguz Kaganer Eren <oguzkaganeren@gmail.com>
 
 pkgname=openrgb-ruler
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="GUI for automated RGB lighting control rules via OpenRGB"
 arch=('x86_64')
