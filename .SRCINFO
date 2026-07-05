@@ -1,6 +1,6 @@
 pkgbase = koodo-reader-bin
 	pkgdesc = A modern ebook manager and reader with sync and backup capacities
-	pkgver = 2.3.7
+	pkgver = 2.3.8
 	pkgrel = 1
 	url = https://github.com/koodo-reader/koodo-reader
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = koodo-reader-bin
 	depends = libappindicator-gtk3
 	depends = libsecret
 	provides = koodo-reader
-	source = koodo-reader-bin-2.3.7.deb::https://github.com/koodo-reader/koodo-reader/releases/download/v2.3.7/Koodo-Reader-2.3.7-amd64.deb
+	source = koodo-reader-bin-2.3.8.deb::https://github.com/koodo-reader/koodo-reader/releases/download/v2.3.8/Koodo-Reader-2.3.8-amd64.deb
 	source = koodo-reader.desktop
-	sha256sums = c0f5f2b672e1a94a78b130b20eb6ce2a315693257ac0c282f5afc6b9b9bdf271
+	sha256sums = 35b3207af28ea77daf9079aa49c6b3cfa848ad8202f56ca7e8c5397f32f15d06
 	sha256sums = 9fd70a6316a1fd9369bd1c1c0b1b6583da0eed85502804deea2042b4a38aaa0e
 
 pkgname = koodo-reader-bin
