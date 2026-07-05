@@ -13,7 +13,7 @@ _pkgname="${pkgname}"
 __pkgname=konform
 : ${_ffsrcvername:=140.12.0esr}
 : ${_ffbuild:=1}
-: ${_lwrelver:=102}
+: ${_lwrelver:=103}
 : ${_l10n_commit=5db0b9bd7b7bdb9a5671cc504da09caf65d5d3b1}
 _ffsrcver="${_ffsrcvername%esr*}"
 if [[ "${_ffsrcver}" =~ .+\..+\..+ ]]; then
@@ -23,7 +23,7 @@ else
 fi
 _ffsrcver="${_ffsrcver%b*}"
 pkgver="${_srcver}.${_lwrelver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
@@ -154,7 +154,7 @@ source=(
   "0004-skia-m142-update.patch.xz"
   "0005-cbindgen-0_29_4.patch"
 )
-sha256sums=('bc4a8e8a2286536a05fd24c29f008bc79c42986063ed3bdbbff79fcb9620020e'
+sha256sums=('8d4b389ba90f567c0ebc9d11e2eb01f822333c857fd4e7e7b5123591af85b0a1'
             '85dfb9f6021152b4302b8968ef485d958c8c471cb02415a19853daaad5acce62'
             'SKIP'
             '50b9d366fb58a45ba7dd3949e08600f6bebf0ead86cc35e9c2f5c20b624de512'
