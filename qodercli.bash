@@ -13,7 +13,7 @@ _qodercli() {
         cword=$COMP_CWORD
     fi
 
-    local -r subcommands="mcp plugins plugin skills skill hooks hook agents agent login commit rollback update external remote-control status feedback config"
+    local -r subcommands="mcp plugins plugin skills skill hooks hook agents agent login commit rollback update external remote-control status feedback"
     local -r mcp_subcommands="add add-json remove get list enable disable reset-project-choices"
     local -r plugin_subcommands="list validate install i uninstall remove enable disable update marketplace mp"
     local -r plugin_marketplace_subcommands="add remove rm list update"
@@ -21,7 +21,6 @@ _qodercli() {
     local -r hook_subcommands="migrate"
     local -r agent_subcommands="list"
     local -r external_subcommands="list update install remove rollback refresh doctor"
-    local -r config_subcommands="set get unset"
 
     local -r model_choices="auto efficient gmodel kmodel lite mmodel performance q35model qmodel ultimate"
     local -r output_format_choices="text json stream-json"
@@ -39,7 +38,7 @@ _qodercli() {
     local i j
     for ((i = 1; i < cword; i++)); do
         case "${words[i]}" in
-            mcp|plugins|plugin|skills|skill|hooks|hook|agents|agent|login|commit|rollback|update|external|remote-control|status|feedback|config)
+            mcp|plugins|plugin|skills|skill|hooks|hook|agents|agent|login|commit|rollback|update|external|remote-control|status|feedback)
                 subcmd="${words[i]}"
                 break
                 ;;
@@ -105,14 +104,6 @@ _qodercli() {
                 external)
                     case "${words[j]}" in
                         list|update|install|remove|rollback|refresh|doctor)
-                            subsubcmd="${words[j]}"
-                            break
-                            ;;
-                    esac
-                    ;;
-                config)
-                    case "${words[j]}" in
-                        set|get|unset)
                             subsubcmd="${words[j]}"
                             break
                             ;;
@@ -397,11 +388,6 @@ _qodercli() {
         external)
             if [[ -z "$subsubcmd" ]]; then
                 COMPREPLY=($(compgen -W "$external_subcommands" -- "$cur"))
-            fi
-            ;;
-        config)
-            if [[ -z "$subsubcmd" ]]; then
-                COMPREPLY=($(compgen -W "$config_subcommands" -- "$cur"))
             fi
             ;;
     esac

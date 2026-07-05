@@ -6,7 +6,7 @@ complete -c qodercli -f
 function __qodercli_no_subcommand
     set -l cmd (commandline -opc)
     for word in $cmd[2..]
-        if contains -- $word mcp plugins plugin skills skill hooks hook agents agent login commit rollback update external remote-control status feedback config
+        if contains -- $word mcp plugins plugin skills skill hooks hook agents agent login commit rollback update external remote-control status feedback
             return 1
         end
     end
@@ -16,7 +16,7 @@ end
 function __qodercli_using_top_command
     set -l cmd (commandline -opc)
     for word in $cmd[2..]
-        if contains -- $word mcp plugins plugin skills skill hooks hook agents agent login commit rollback update external remote-control status feedback config
+        if contains -- $word mcp plugins plugin skills skill hooks hook agents agent login commit rollback update external remote-control status feedback
             contains -- $word $argv
             return $status
         end
@@ -124,7 +124,6 @@ complete -c qodercli -n __qodercli_no_subcommand -a external -d 'Manage external
 complete -c qodercli -n __qodercli_no_subcommand -a remote-control -d 'Start the remote-control daemon'
 complete -c qodercli -n __qodercli_no_subcommand -a status -d 'Show session status'
 complete -c qodercli -n __qodercli_no_subcommand -a feedback -d 'Submit feedback'
-complete -c qodercli -n __qodercli_no_subcommand -a config -d 'View and modify CLI configuration'
 
 # Top-level flags
 complete -c qodercli -n __qodercli_no_subcommand -s h -l help -d 'Show help'
@@ -260,7 +259,7 @@ for cmd in list enable disable install link uninstall
     complete -c qodercli -n "__qodercli_using_group_child skills,skill $cmd" -s h -l help -d 'Show help'
 end
 
-# hooks, agents, external, config
+# hooks, agents, external
 complete -c qodercli -n '__qodercli_group_no_child hooks,hook migrate' -a migrate -d 'Migrate hooks from Claude Code to Qoder CLI'
 complete -c qodercli -n '__qodercli_using_group_child hooks,hook migrate' -l from-claude -d 'Migrate from Claude Code hooks'
 complete -c qodercli -n '__qodercli_using_top_command hooks hook' -s h -l help -d 'Show help'
@@ -284,14 +283,6 @@ complete -c qodercli -n '__qodercli_using_group_child external refresh' -l file 
 complete -c qodercli -n '__qodercli_using_group_child external refresh' -l url -r -d 'Fetch registry JSON from an HTTPS URL'
 for cmd in list update install remove rollback refresh doctor
     complete -c qodercli -n "__qodercli_using_group_child external $cmd" -s h -l help -d 'Show help'
-end
-
-complete -c qodercli -n '__qodercli_group_no_child config set,get,unset' -a set -d 'Set a configuration value'
-complete -c qodercli -n '__qodercli_group_no_child config set,get,unset' -a get -d 'Get a configuration value'
-complete -c qodercli -n '__qodercli_group_no_child config set,get,unset' -a unset -d 'Remove a configuration value'
-complete -c qodercli -n '__qodercli_using_top_command config' -s h -l help -d 'Show help'
-for cmd in set get unset
-    complete -c qodercli -n "__qodercli_using_group_child config $cmd" -s h -l help -d 'Show help'
 end
 
 # Other top-level commands

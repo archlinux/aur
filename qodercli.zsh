@@ -4,7 +4,7 @@
 
 _qodercli() {
     local -a qodercli_commands mcp_commands plugin_commands plugin_marketplace_commands
-    local -a skill_commands hook_commands agent_commands external_commands config_commands
+    local -a skill_commands hook_commands agent_commands external_commands
 
     qodercli_commands=(
         'mcp:Configure and manage MCP servers'
@@ -24,7 +24,6 @@ _qodercli() {
         'remote-control:Start the remote-control daemon'
         'status:Show session status'
         'feedback:Submit feedback'
-        'config:View and modify CLI configuration'
     )
 
     mcp_commands=(
@@ -80,12 +79,6 @@ _qodercli() {
         'rollback:Roll back an external command'
         'refresh:Refresh the cached external command registry'
         'doctor:Diagnose an external command'
-    )
-
-    config_commands=(
-        'set:Set a configuration value'
-        'get:Get a configuration value'
-        'unset:Remove a configuration value'
     )
 
     _arguments -C \
@@ -145,7 +138,7 @@ _qodercli() {
             local idx
             for ((idx = 1; idx <= $#words; idx++)); do
                 case ${words[idx]} in
-                    mcp|plugins|plugin|skills|skill|hooks|hook|agents|agent|login|commit|rollback|update|external|remote-control|status|feedback|config)
+                    mcp|plugins|plugin|skills|skill|hooks|hook|agents|agent|login|commit|rollback|update|external|remote-control|status|feedback)
                         cmd=${words[idx]}
                         cmd_index=$idx
                         break
@@ -330,19 +323,6 @@ _qodercli() {
                             _arguments -C '(- *)'{-h,--help}'[Show help]' '1:external command:->external_command' '*::external arg:->external_args' && return
                             case $state in
                                 external_command) _describe -t external_commands 'external command' external_commands ;;
-                            esac
-                            ;;
-                    esac
-                    ;;
-                config)
-                    case $next in
-                        set|get|unset)
-                            _arguments '(- *)'{-h,--help}'[Show help]'
-                            ;;
-                        *)
-                            _arguments -C '(- *)'{-h,--help}'[Show help]' '1:config command:->config_command' '*::config arg:->config_args' && return
-                            case $state in
-                                config_command) _describe -t config_commands 'config command' config_commands ;;
                             esac
                             ;;
                     esac
