@@ -1,0 +1,4 @@
+[runa-bin]
+source = "git"
+git = "https://github.com/alexm-dev/runa.git"
+prefix = "v"
