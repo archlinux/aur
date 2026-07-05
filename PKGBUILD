@@ -1,5 +1,5 @@
 pkgname=rat-commander
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A self-contained 2-panel terminal file manager with modern feartures like truecolor support and many built-in system tools."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -13,7 +13,7 @@ provides=('rc' 'rcedit')
 # the final Rust link, causing "undefined symbol" errors (aws_lc_*, ZSTD_*).
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0c95518f830572f9b94294aedb8fa0f7ddea4c24e0e546ecf7c53f465649092f')
+sha256sums=('fd598fcd1b0c9ff6fda3132896cc83208e778d823d55c0fbdf34d58db6e503be')
 
 prepare() {
 	cd "$pkgname-$pkgver"
