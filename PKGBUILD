@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird
-pkgver=20260608
+pkgver=20260705
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -14,8 +14,8 @@ depends=(curl ffmpeg libgl qt6-base qt6-multimedia qt6-tools qt6-wayland ttf-lib
 makedepends=(autoconf-archive automake cargo cmake git libtool make nasm ninja patch pkg-config tar unzip zip)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
 source=(
-  "git+$url#commit=a82c7939d928ee66ae721d47e91d02857047f17e" # 2026-06-08
-  "git+https://github.com/microsoft/vcpkg.git#commit=48cfe1e0e928341709d97fc3d2eff10ad6262c96" # 2026-05-05 (vcpkg.json:builtin-baseline)
+  "git+$url#commit=f4d31df69ae1fa99d4e1ac148142c78107939d43" # 2026-07-05
+  "git+https://github.com/microsoft/vcpkg.git#commit=81de6771512413aaf89ea77add5ad1fda126b9d0" # 2026-06-19 (vcpkg.json:builtin-baseline)
   "hb-fc-whole-archive.patch"
   "new-tab.patch"
 )
@@ -29,6 +29,7 @@ sha256sums=(
 prepare() {
   export VCPKG_ROOT="${srcdir}/vcpkg"
   export VCPKG_DISABLE_METRICS="true"
+  export RUSTUP_TOOLCHAIN=stable
 
   local use_linker=
   if ! echo $'#if defined(__clang__)\nWE ARE ON CLANG\n#endif' | "${CC:-/usr/bin/cc}" -E - | grep -q 'WE ARE ON CLANG'; then
