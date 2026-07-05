@@ -1,0 +1,20 @@
+pkgbase = runx-bin
+	pkgdesc = Universal project launcher with portable runtimes. Run projects without installing Node, Python, or other toolchains globally.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/aryankahar31/runx
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = runx
+	conflicts = runx
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/aryankahar31/runx/v0.1.0/README.md
+	source = LICENSE
+	sha256sums = 66727fb8393c7e99c34f98278ba400cc717e28793b52c696dab5f6cf4e1e8c3d
+	sha256sums = fbd9c09c7b576e977fa12ea54df5861ae6ae9b130487f1e1664550f743257f31
+	source_x86_64 = runx-x86_64-0.1.0.tgz::https://github.com/aryankahar31/runx/releases/download/v0.1.0/runx-linux-x64.tar.gz
+	sha256sums_x86_64 = 99d62828fb0105c995e6cce84aca457222885605d5387d51a7f0a6c74e17c20f
+
+pkgname = runx-bin

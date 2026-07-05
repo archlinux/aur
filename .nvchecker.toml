@@ -1,0 +1,5 @@
+[runx-bin]
+source = "github"
+github = "aryankahar31/runx"
+use_latest_release = true
+prefix = "v"
