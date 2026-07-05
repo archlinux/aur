@@ -1,6 +1,6 @@
 # Maintainer: Shaun Lastra <shaun@lastra.us>
 pkgname=tabctl
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Command-line browser tab controller with rofi integration for multiple window managers"
 arch=('x86_64')
@@ -8,9 +8,21 @@ url="https://github.com/slastra/tabctl"
 license=('MIT')
 depends=('dbus')
 makedepends=('go' 'git')
-optdepends=()
+optdepends=(
+    'rofi: rofi tab-switcher scripts'
+    'wmctrl: X11 window focusing (rofi-tabctl-wmctrl.sh)'
+    'niri: Wayland window focusing (rofi-tabctl-niri.sh)'
+    'jq: JSON parsing in rofi-tabctl-niri.sh'
+    'curl: favicon fetching in rofi-tabctl-niri.sh'
+    'imagemagick: favicon processing in rofi-tabctl-niri.sh'
+    'firefox: Firefox browser support'
+    'brave-bin: Brave browser support'
+    'chromium: Chromium browser support'
+    'google-chrome: Chrome browser support'
+)
+options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/slastra/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('3ddc308aa7f1b7b388725a9ba52480ba1721a09cf7f48381a76b9fd9803713a0')
+sha256sums=('8604d37a2feb316a61f3c9f6302e54620fea067e4f6e8d9ef2f3138fac4c5c2b')
 install=tabctl.install
 
 build() {
