@@ -1,13 +1,13 @@
 pkgbase = mbv
 	pkgdesc = Terminal client for Emby media server
-	pkgver = 0.10.2
+	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/slatkin/mbv
 	arch = x86_64
 	license = MIT
 	depends = mpv
 	depends = openssl
-	source = mbv-0.10.2-linux-x86_64.tar.gz::https://github.com/slatkin/mbv/releases/download/v0.10.2/mbv-0.10.2-linux-x86_64.tar.gz
-	sha256sums = 784c59b53e58854132f54ef525ef19f3712a3762cb8545263fa1eac83870f938
+	source = mbv-0.10.3-linux-x86_64.tar.gz::https://github.com/slatkin/mbv/releases/download/v0.10.3/mbv-0.10.3-linux-x86_64.tar.gz
+	sha256sums = 148469f442058f84afcfc29ddec2e5f80894c5cb573700ca123028389f0a2f08
 
 pkgname = mbv
