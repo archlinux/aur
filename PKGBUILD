@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-git
 pkgdesc="A cli tool to clean command shell history files"
 
-pkgver=0.3.0r1.g1197b94
+pkgver=0.4.0r1.gb3e98ad
 pkgrel=1
 
 arch=('x86_64')
