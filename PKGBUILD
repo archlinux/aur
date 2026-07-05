@@ -6,9 +6,9 @@ url="https://www.openmodelica.org"
 _giturl="https://github.com/OpenModelica/OpenModelica.git"
 license=('OSMC-PL')
 arch=('x86_64')
-depends=('java-environment' 'lapack' 'boost-libs' 'libffi' 'openscenegraph' 'qt6-webengine' 'qt6-svg' 'qt6-tools' 'qt6-5compat')
+depends=('glibc' 'libgcc' 'libstdc++' 'libgomp' 'libgfortran' 'readline' 'curl' 'blas' 'lapack' 'util-linux-libs' 'boost-libs' 'libffi' 'libglvnd' 'icu' 'openscenegraph' 'qt6-base' 'qt6-httpserver' 'qt6-webengine' 'qt6-svg' 'qt6-5compat')
 provides=('openmodelica-omc')
-makedepends=('gcc-fortran' 'cmake' 'boost')
+makedepends=('gcc-fortran' 'cmake' 'boost' 'java-environment' 'qt6-tools')
 options=('!lto')
 source=("https://github.com/OpenModelica/OpenModelica/releases/download/v${pkgver}/OpenModelica-v${pkgver}-src-with-submodules.zip")
 sha256sums=('8bb23c0ae3dc1e8b2eed84f2ee24b0014ba837015a9230a5e0237d6789071bff')
@@ -32,5 +32,6 @@ package() {
   rm -r "${pkgdir}"/usr/share/cminpack
   rm -r "${pkgdir}"/usr/include/cminpack-1
   rm -r "${pkgdir}"/usr/share/cmake
+  rm -r "${pkgdir}"/usr/doc
   rm -r "${pkgdir}"/home
 }
