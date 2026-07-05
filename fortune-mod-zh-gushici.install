@@ -1,0 +1,32 @@
+post_install() {
+	echo ""
+	echo "  --------------------------------------------------------------------"
+	echo "  fortune-mod-zh-gushici installed successfully！"
+	echo "  fortune-mod-zh-gushici 安裝成功！"
+	echo ""
+	echo "  Show a random Chinese poem/隨機顯示一首古詩詞："
+	echo ""
+	echo "    fortune gushici-cht   # Traditional Chinese"
+	echo "    fortune gushici-chs   # Simplified Chinese"
+	echo ""
+	echo "  Use either command as needed. 根據需要使用上述命令。"
+	echo "  --------------------------------------------------------------------"
+	echo ""
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	:
+}
+
+post_remove() {
+	echo ""
+	echo "  --------------------------------------------------------------------"
+	echo "  fortune-mod-zh-gushici uninstalled.  已卸載。"
+	echo "  Thank you and goodbye！ 感謝使用，再見！"
+	echo "  --------------------------------------------------------------------"
+	echo ""
+}
