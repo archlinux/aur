@@ -2,7 +2,7 @@
 
 pkgname=mpv-full
 pkgver=0.41.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('x86_64')
 license=('GPL-2.0-or-later')
@@ -25,7 +25,7 @@ depends=(
     'libdrm'
     'libdvdnav'
     'libgl'
-    'libjpeg'
+    'libjpeg-turbo'
     'libpipewire'
     'libplacebo'
     'libpulse'
@@ -74,8 +74,17 @@ optdepends=(
 provides=('mpv')
 conflicts=('mpv')
 options=('!emptydirs')
-source=("https://github.com/mpv-player/mpv/archive/v${pkgver}/mpv-${pkgver}.tar.gz")
-sha256sums=('ee21092a5ee427353392360929dc64645c54479aefdb5babc5cfbb5fad626209')
+source=("https://github.com/mpv-player/mpv/archive/v${pkgver}/mpv-${pkgver}.tar.gz"
+        '010-mpv-vapoursynth-fix-001.patch'::'https://github.com/mpv-player/mpv/commit/75b2ccfeb1ce4ed5a40ac9860fa74f3d1265e13f.patch'
+        '020-mpv-vapoursynth-fix-002.patch'::'https://github.com/mpv-player/mpv/commit/fb6c700ecbc695ba355d998340a6e6ef9e625b70.patch')
+sha256sums=('ee21092a5ee427353392360929dc64645c54479aefdb5babc5cfbb5fad626209'
+            'fe357801d733565b4bda28c388b300d632f34b9d9c4b7b554437e6f0dbb034f4'
+            'cd97e8445e81ec90843d2b994f7d46eb675b2b05c09e5ec0be7895c4d78f5720')
+
+prepare() {
+    patch -d "mpv-${pkgver}" -Np1 -i "${srcdir}/010-mpv-vapoursynth-fix-001.patch"
+    patch -d "mpv-${pkgver}" -Np1 -i "${srcdir}/020-mpv-vapoursynth-fix-002.patch"
+}
 
 build() {
     arch-meson "mpv-${pkgver}" build \
