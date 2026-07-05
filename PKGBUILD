@@ -17,8 +17,6 @@ _url_github="https://github.com/${pkgauthor}/${pkgname}"
 url="${_url_github}"
 
 provides=("${_pypi_package}")
-replaces=("python-${pkgname}")
-conflicts=("python-${pkgname}")
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 depends=('python' 'python-pillow' 'python-prompt_toolkit' 'python-numpy' 'python-yaml' 'ptpython' 'python-matplotlib' 'python-click' 'python-rich' 'python-pygments' 'python-rich-click' 'python-selenium')
 
