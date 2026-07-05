@@ -1,6 +1,6 @@
 pkgbase = luna-cli
 	pkgdesc = 🌙 LUNA - AI Coding Assistant CLI for LUNA OS X
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/Arunachalam-gojosaturo/Luna-cli
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = luna-cli
 	optdepends = groq: Groq AI provider support
 	optdepends = python-openai: OpenAI provider support
 	optdepends = python-google-generativeai: Google Gemini support
-	source = https://github.com/Arunachalam-gojosaturo/Luna-cli/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = 1a9460b2e885373e9df0db658aefed4f1b3526afcb5016a1d27d6b0f5f30025f
+	source = https://github.com/Arunachalam-gojosaturo/Luna-cli/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = 3a2d45b23f19e4220f8b788bf9f7e5649e3edc593678ecef53d465e4a3e60e9c
 
 pkgname = luna-cli
