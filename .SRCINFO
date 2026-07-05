@@ -1,14 +1,19 @@
-pkgbase = nfx
-	pkgdesc = NFX archive tool written in C using Zstandard
-	pkgver = 1.0.3
+pkgbase = nfx-git
+	pkgdesc = NFX archive tool written in C using Zstandard, libzip and libarchive
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/ReyzerMC/nfx
 	arch = x86_64
 	license = MIT
 	makedepends = gcc
 	makedepends = make
+	makedepends = git
 	depends = zstd
-	source = nfx-1.0.3.tar.gz::https://github.com/ReyzerMC/nfx/archive/v1.0.3.tar.gz
+	depends = libzip
+	depends = libarchive
+	provides = nfx
+	conflicts = nfx
+	source = https://github.com/ReyzerMC/nfx.git
 	sha256sums = SKIP
 
-pkgname = nfx
+pkgname = nfx-git
