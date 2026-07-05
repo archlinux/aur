@@ -1,13 +1,13 @@
 # Maintainer: Alexander Tarasov <a.tevg@ya.ru>
 pkgname=pwsp-bin
 _pkgname=pipewire-soundpad
-pkgver=1.12.0
-pkgrel=2
+pkgver=1.12.3
+pkgrel=1
 pkgdesc="Lets you play audio files through your microphone (Pre-built binaries)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/arabianq/pipewire-soundpad"
 license=('MIT')
-depends=('pipewire' 'alsa-lib')
+depends=('pipewire' 'alsa-lib' 'openssl')
 provides=('pwsp')
 conflicts=('pwsp')
 
@@ -29,6 +29,6 @@ package() {
   install -Dm644 "$_srcsrc/pwsp-gui/assets/pwsp-gui.desktop" "${pkgdir}/usr/share/applications/pwsp-gui.desktop"
   install -Dm644 "$_srcsrc/pwsp-gui/assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/pwsp.png"
   install -Dm644 "$_srcsrc/pwsp-gui/assets/pwsp-daemon.service" "${pkgdir}/usr/lib/systemd/user/pwsp-daemon.service"
-  
+
   install -Dm644 "$_srcsrc/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
