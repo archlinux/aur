@@ -3,8 +3,8 @@
 _author=OALDERS
 _dist=TOML-Tiny
 pkgname=perl-${_dist@L}
-pkgver=0.21
-pkgrel=2
+pkgver=0.22
+pkgrel=1
 pkgdesc='a minimal, pure perl TOML parser and serializer'
 arch=('any')
 url=https://metacpan.org/dist/$_dist
@@ -24,8 +24,8 @@ checkdepends=(
     'perl-data-dumper'
     'perl-extutils-makemaker'
     'perl-pathtools'
+    'perl-test-needs'
     'perl-test-simple'
-    'perl-types-serialiser'
 )
 optdepends=(
     'perl-cpan-meta>=2.120900'
@@ -34,7 +34,7 @@ optdepends=(
 )
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
-sha256sums=('be79c165c8b5c416faa267a64032945114b51e80727738451ec1586ad4b0d29c')
+sha256sums=('d48064476740f2e9232afba2e0f61a82641b8c3b66a71c398ba1632fa4614b65')
 
 build()
 {
