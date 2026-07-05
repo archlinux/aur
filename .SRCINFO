@@ -1,5 +1,5 @@
 pkgbase = gui-for-singbox-bin
-	pkgdesc = GUI for SingBox (precompiled binary)
+	pkgdesc = GUI for SingBox, a GUI client application for sing-box.
 	pkgver = 1.25.4
 	pkgrel = 10
 	url = https://github.com/GUI-for-Cores/GUI.for.SingBox
