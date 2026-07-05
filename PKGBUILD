@@ -2,7 +2,7 @@
 
 pkgname=run0-sudo-shim
 pkgver=1.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="An imitation of sudo, using run0 internally - WARNING: !!! THIS REPLACES SUDO !!!"
 arch=('any')
 url="https://github.com/LordGrimmauld/run0-sudo-shim"
@@ -20,15 +20,15 @@ build() {
 }
 
 package() {
-	cd "$srcdir"/${pkgname}-${pkgver}
-
-	# completions
-	install -Dm 0644 "target/tmp/run0-sudo-shim/completion/sudo.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/sudo.fish"
-	install -Dm 0644 "target/tmp/run0-sudo-shim/completion/sudo.bash" "${pkgdir}/usr/share/bash-completion/completions/sudo"
-	install -Dm 0644 "target/tmp/run0-sudo-shim/completion/_sudo" "${pkgdir}/usr/share/zsh/site-functions/_sudo"
-
+  cd "$srcdir"/${pkgname}-${pkgver}
+  
+  # completions
+  #install -Dm 0644 "target/tmp/run0-sudo-shim/completion/sudo.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/sudo.fish"
+  #install -Dm 0644 "target/tmp/run0-sudo-shim/completion/sudo.bash" "${pkgdir}/usr/share/bash-completion/completions/sudo"
+  #install -Dm 0644 "target/tmp/run0-sudo-shim/completion/_sudo" "${pkgdir}/usr/share/zsh/site-functions/_sudo"
+  
   #manpage
   install -Dm 0644 "target/tmp/run0-sudo-shim/manpage/sudo.8" "${pkgdir}/usr/share/man/man8/sudo.8"
-
-	install -Dm 0755 "target/release/run0-sudo-shim" "${pkgdir}/usr/bin/sudo"
+  
+  install -Dm 0755 "target/release/run0-sudo-shim" "${pkgdir}/usr/bin/sudo"
 }

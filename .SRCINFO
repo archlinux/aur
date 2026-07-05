@@ -1,7 +1,7 @@
 pkgbase = run0-sudo-shim
 	pkgdesc = An imitation of sudo, using run0 internally - WARNING: !!! THIS REPLACES SUDO !!!
 	pkgver = 1.4.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/LordGrimmauld/run0-sudo-shim
 	arch = any
 	license = BSD-3-Clause
