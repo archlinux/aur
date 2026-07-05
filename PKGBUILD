@@ -3,7 +3,7 @@
 _Name="CrealityPrint"
 _pkgname="creality-print"
 pkgname="${_pkgname}-bin"
-pkgver=7.1.0.4414
+pkgver=7.2.0.5251
 _pkgver="${pkgver%.*}"
 pkgrel=1
 epoch=1
@@ -70,12 +70,12 @@ source=(
   "${_pkgsrc}-LICENSE.txt::${_url}/raw/refs/tags/v${_pkgver}/LICENSE.txt"
 )
 source_x86_64=(
-  "${_url}/releases/download/v${_pkgver}/${_Name}_Ubuntu2404-V${pkgver}-x86_64-Release.AppImage"
+  "${_url}/releases/download/v${_pkgver}/${_Name}-ubuntu2404-V${pkgver}-x86_64-Release.AppImage"
 )
 sha256sums=('11c4dc922dfc686a051c2169549d8934ae1a0477fdf5c225860db08eb51a8fc1'
             'a087787e8a3239bfbc0dc051565236dad4ff34ead1a3396c9cd17984fe898884'
             '5537d2d539c94627446bf7eb30d30fda28d1de8aa9a41c25b83012db52ff6f8b')
-sha256sums_x86_64=('0101b5578b26a81107cb20ce20d264779b95b8d630e042d0f6d3633ae37fed8f')
+sha256sums_x86_64=('572f8cfdc6c6818aaaf059acc01c36a023b08e8ec4f86674b3febebf17e84954')
 
 prepare() {
   local source_array="source_${CARCH}[0]"
