@@ -16,9 +16,7 @@ depends=('glibc' 'cairo' 'zlib' 'fontconfig' 'libpng' 'pango'
 makedepends=('gperf' 'imagemagick')
 optdepends=('tuxpaint-stamps: more stamps'
             'tuxpaint-config: configuration manager'
-            'python2: zh_tw font generator script'
-            'fontforge: zh_tw doc generator script'
-            'bash: for tp-magic-config, tuxpaint-import, zh_tw doc generator scripts')
+            'bash: for tp-magic-config, tuxpaint-import')
 provides=('tuxpaint')
 conflicts=('tuxpaint')
 source=("git+https://git.code.sf.net/p/tuxpaint/tuxpaint")
@@ -27,15 +25,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${_pkgname}"
   git describe --tags --long --abbrev=7 | cut -f2,6,7 -d- | sed 's/\([^-]*-g\)/r\1/;s/[-_]/./g'
-}
-
-prepare() {
-  cd "${_pkgname}"
-
-  # python2 fix
-  for f in docs/outdated/zh_tw/mkTuxpaintIM.py fonts/locale/zh_tw_docs/maketuxfont.py; do
-    sed -i '0,/python$/s//python2/' $f
-  done
 }
 
 build() {
