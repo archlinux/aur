@@ -1,13 +1,13 @@
 pkgbase = ttf-old-timey-mono
 	pkgdesc = A clean monospace typeface based on Reproducing Typewriter which was available as early as 1906.
-	pkgver = 0.11.90
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/dse/old-timey-mono-font
 	arch = any
 	license = OFL
-	source = https://github.com/dse/old-timey-mono-font/releases/download/v0.11.90/OldTimeyMono-0.11.90.zip
-	source = https://github.com/dse/old-timey-mono-font/raw/refs/tags/v0.11.90/LICENSE.md
-	sha256sums = 53e8db8962707e3d4a9aab3d80747b77490a0df8dd319949c39554ad98ce11ea
+	source = https://github.com/dse/old-timey-mono-font/releases/download/v0.12.0/OldTimeyMono-0.12.0.zip
+	source = https://github.com/dse/old-timey-mono-font/raw/refs/tags/v0.12.0/LICENSE.md
+	sha256sums = 96a75c89565d4a58520be55e0aeec4c0b9eeddc449b1958fd2c5c7e097a06e0b
 	sha256sums = 7d048b5cd92233107c231d776db9a306b56572377a25b59bf3ab84298a815613
 
 pkgname = ttf-old-timey-mono
