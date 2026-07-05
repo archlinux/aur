@@ -1,0 +1,22 @@
+pkgbase = forsaken-autocomplete-linux
+	pkgdesc = Auto-solver for Forsaken (Roblox) Numberlink puzzles — Linux edition
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MapleProjects/ForsakenAutoComplete-Linux
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-opencv
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-evdev
+	depends = python-platformdirs
+	depends = ydotool
+	depends = grim
+	depends = xdg-utils
+	provides = forsaken-autocomplete-linux
+	source = git+https://github.com/MapleProjects/ForsakenAutoComplete-Linux.git
+	sha256sums = SKIP
+
+pkgname = forsaken-autocomplete-linux
