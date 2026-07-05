@@ -1,0 +1,69 @@
+--- ./pypi_cli/__main__.py	2026-07-05 02:24:18.258411973 -0300
++++ ./pypi_cli/__main__.py	2026-07-05 02:30:18.497957645 -0300
+@@ -37,9 +37,13 @@
+ else:
+     import os.path  # pylint: disable=import-outside-toplevel
+ 
+-    cache_path = os.path.join(os.path.dirname(__file__), "cache", "requests")
++    cache_dir = os.environ.get("XDG_CACHE_HOME", os.path.join(os.path.expanduser("~"), ".cache"))
++    os.makedirs(cache_dir, exist_ok=True)
++
++    cache_file = os.path.join(cache_dir, "requests")
++
+     session = CachedSession(
+-        cache_path,
++        cache_file,
+         backend="sqlite",
+         urls_expire_after={
+             **dict.fromkeys(
+@@ -342,7 +346,10 @@
+ def load_cache():
+     import os  # pylint: disable=import-outside-toplevel
+ 
+-    cache_file = os.path.join(os.path.dirname(__file__), "cache", "packages.txt")
++    cache_dir = os.environ.get("XDG_CACHE_HOME", os.path.join(os.path.expanduser("~"), ".cache"))
++    os.makedirs(cache_dir, exist_ok=True)
++
++    cache_file = os.path.join(cache_dir, "packages.txt")
+ 
+     try:
+         last_refreshed = os.path.getmtime(cache_file)
+@@ -365,10 +372,11 @@
+     from rich.progress import Progress  # pylint: disable=import-outside-toplevel
+ 
+     all_packages_url = f"{base_url}/simple/"
+-    cache_path = os.path.join(os.path.dirname(__file__), "cache")
+-    if not os.path.exists(cache_path):
+-        os.makedirs(cache_path)
+-    cache_file = os.path.join(os.path.dirname(__file__), "cache", "packages.txt")
++
++    cache_dir = os.environ.get("XDG_CACHE_HOME", os.path.join(os.path.expanduser("~"), ".cache"))
++    os.makedirs(cache_dir, exist_ok=True)
++
++    cache_file = os.path.join(cache_dir, "packages.txt")
+ 
+     chunks = []
+     with Progress(transient=True) as progress:
+@@ -1973,8 +1981,11 @@
+     import os.path  # pylint: disable=import-outside-toplevel
+     import humanize  # pylint: disable=import-outside-toplevel
+ 
+-    packages_cache = os.path.join(os.path.dirname(__file__), "cache", "packages.txt")
+-    requests_cache = os.path.join(os.path.dirname(__file__), "cache", "requests.sqlite")
++    cache_dir = os.environ.get("XDG_CACHE_HOME", os.path.join(os.path.expanduser("~"), ".cache"))
++
++    packages_cache = os.path.join(cache_dir, "packages.txt")
++    requests_cache = os.path.join(cache_dir, "requests.sqlite")
++
+     try:
+         packages_size = os.path.getsize(packages_cache)
+         packages_last_refreshed = os.path.getmtime(packages_cache)
+@@ -2008,7 +2019,7 @@
+         table.add_column("Link", style="cyan", header_style="bold cyan")
+         table.add_column("Created", style="green", header_style="bold green")
+         table.add_column("Expires", style="green", header_style="bold green")
+-        for n, response in enumerate(session.cache.values()):
++        for n, response in enumerate(session.cache.responses.values()):
+             table.add_row(
+                 f"{n}.", response.url, humanize.naturaltime(response.created_at), humanize.naturaltime(response.expires)
+             )

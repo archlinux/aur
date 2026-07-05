@@ -1,0 +1,3 @@
+[pypi-command-line]
+source = "pypi"
+pypi = "pypi-command-line"
