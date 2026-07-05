@@ -5,7 +5,7 @@ _pkgname=siggy
 pkgname=${_pkgname}-bin
 pkgdesc="Terminal-based Signal messenger client with vim keybindings"
 
-pkgver=1.10.0
+pkgver=1.12.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,9 +25,9 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.tar.gz")
-sha256sums=('68148c960a2fbdcda8a0373ac2de27118ce3bac8c41111cf584805583e714d98'
+sha256sums=('ab1527a07ad9532cfa570bc77d5020ad715d6bdc5bbee2e773a554ec32fc703a'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('8114ab3d6297665a142c7cdf0b7f0f9789139bf2581f2b8e2d134edbaaf53fdf')
+sha256sums_x86_64=('70a9dd8d613f2afe86295b506e19083b4e446f9d5dc19d6d542e352d88d4b856')
 
 
 package() {
