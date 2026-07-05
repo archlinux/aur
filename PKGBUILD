@@ -24,6 +24,12 @@ source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_p
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('2439b5a7b36cedc7c58d66432357807d36dcac589211038700a85782b1885bd6')
 
+prepare() {
+    cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
+
+    sed -e 's/\\\[/\\\\\[/g' -i "${_pypi_package}/core.py"
+}
+
 build() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"
 
