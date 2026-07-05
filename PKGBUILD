@@ -8,15 +8,15 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="wallust"
 pkgname="$_pkgname-git"
-pkgver=3.4.0.r9.g0a0e7c0
-pkgrel=1
+pkgver=3.5.2.r126.ge56187e
+pkgrel=2
 pkgdesc="Generate colors from an image"
 url="https://codeberg.org/explosion-mental/wallust"
 license=('MIT')
 arch=('x86_64')
 
 depends=(
-  'gcc-libs'
+  'libgcc'
 )
 makedepends=(
   'cargo'
@@ -26,7 +26,7 @@ optdepends=(
   'imagemagick'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 options=('!lto')
@@ -45,10 +45,14 @@ prepare() {
   cd "$_pkgsrc"
   sed -E '/FISHPREFIX/s&(\$\{PREFIX\})/fish&\1/share/fish&' -i Makefile
 
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
+  local _units=$(($(nproc) > 16 ? $(nproc) : 16))
+  export CARGO_PROFILE_RELEASE_LTO=false
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=$_units
+
   cd "$_pkgsrc"
   cargo build --frozen --release
 }

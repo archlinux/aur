@@ -1,15 +1,15 @@
 pkgbase = wallust-git
 	pkgdesc = Generate colors from an image
-	pkgver = 3.4.0.r9.g0a0e7c0
-	pkgrel = 1
+	pkgver = 3.5.2.r126.ge56187e
+	pkgrel = 2
 	url = https://codeberg.org/explosion-mental/wallust
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	depends = gcc-libs
+	depends = libgcc
 	optdepends = imagemagick
-	provides = wallust=3.4.0
+	provides = wallust
 	conflicts = wallust
 	options = !lto
 	source = wallust::git+https://codeberg.org/explosion-mental/wallust.git
