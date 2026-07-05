@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=GDevelop 5
+Comment=A full featured, open source game engine, allowing to create HTML5 with powerful visual scripting.
+Exec=/usr/bin/gdevelop
+Icon=/usr/share/pixmaps/gdevelop.png
+Categories=Development;
+Type=Application
+StartupWMClass=GDevelop 5
+
+[Desktop Action OpenExistingFile]
+Name=Open Project
+Exec=/usr/bin/gdevelop %U
