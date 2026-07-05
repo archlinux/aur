@@ -26,6 +26,9 @@ _scriptTailMd5sums[8.1]=7fd862218f56b5382680a7d2f9006268
 _scriptTailMd5sums[8.1a]=d11ac711b0859d242fe9064c2c63deee
 
 # locale, key account, original name, latest tested version, (optional) replacement name
+# to generate parameters (and _scriptTailMd5sum) from a downloaded setup file, run:
+# _PRAMS_ONLY=1 _SETUP_FILE=<filename> makepkg
+
 _prams_Austria=(de_AT 29762 'CEWE Fotowelt' 7.1.4)
 _prams_Belgie=(nl_BE 28049 'CEWE Photoservice' 7.1.4)
 _prams_Belgique=(fr_BE 28049 'CEWE Photoservice' 7.1.4)
@@ -80,7 +83,6 @@ _productUrname=${_prams[2]}
 [ -z "$pkgname" ] && pkgname="$(iconv -t ascii//TRANSLIT <(echo $_productRename))"
 pkgname=${pkgname,,}
 pkgname=${pkgname// /-}
-[ -f CEWE.install -a "$BUILDPKG" != 0 ] && sed "s/CEWE/$pkgname/" CEWE.install > $pkgname.install
 
 conflicts=(cewe-fotowelt cewe-fotobuch cewe-fotoservice cewe-monlivrephoto-fnac cewe-monlivrephoto-fr)
 conflicts=(${conflicts[@]/$pkgname/})
@@ -90,12 +92,12 @@ pkgver=${_prams[3]}
 
 url="http://www.cewe.de/"
 license=("custom:eula")
-depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy' 'libxcrypt-compat')
-makedepends=('p7zip' 'xdg-utils')
+depends=('libx11' 'libjpeg-turbo' 'curl' 'wget' 'snappy' 'libxcrypt-compat')
+makedepends=('7zip' 'xdg-utils')
 arch=('i686' 'x86_64')
 source=($source 'updater.pl')
 md5sums=(SKIP SKIP)
-install="$pkgname.install"
+install="CEWE.install"
 
 _installDir=/usr/share/$pkgname
 
@@ -138,7 +140,7 @@ package() {
 	sed -i "s/APPLICATION NAME/$_productRename/" $_installDir/updater.pl
 	rm $_installDir/uninstall.pl
 
-	install -D -m644 $srcdir/EULA.txt $pkgdir/usr/share/licenses/$pkgname/EULA.txt
+	install -D -m644 $srcdir/EULA.txt $pkgdir/usr/share/licenses/CEWE/EULA.txt
 
 	# create startup script and desktop file
 	cat > $pkgdir/usr/bin/$pkgname <<-EOF
