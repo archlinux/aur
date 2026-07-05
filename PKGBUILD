@@ -1,7 +1,7 @@
 # Maintainer: jin <mail@nvimer.org>
 pkgname=deepseek-reasonix-desktop
 _pkgname=reasonix-desktop
-pkgver=1.16.2
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Reasonix desktop — a Wails shell around the DeepSeek-native AI coding agent"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('go' 'pnpm' 'wails')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/esengine/DeepSeek-Reasonix/archive/refs/tags/desktop-v$pkgver.tar.gz")
-sha256sums=('9eed6707b946087d7cec982bd42bf397d437ea67e38728f79b7940ff0caddb56')
+sha256sums=('4042962bc381af051f32246be1eaddf9769e810322a455db3de63b74cc890a8a')
 
 build() {
     cd "DeepSeek-Reasonix-desktop-v$pkgver/desktop"
