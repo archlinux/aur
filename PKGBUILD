@@ -2,7 +2,7 @@
 pkgname=dds10-thumbnailer-kde-git
 _pkgname="${pkgname%-git}"
 pkgver=r10.23b2801
-pkgrel=2
+pkgrel=3
 pkgdesc='dds10-thumbnailer-kde is a plugin for KDE 6 that creates thumbnail for Direct Draw Surface (DDS) images'
 arch=('x86_64')
 license=('GPLv2')
