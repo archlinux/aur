@@ -1,0 +1,4 @@
+immich-*.tar.gz
+immich-*.pkg.*
+*.log
+src/
