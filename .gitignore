@@ -2,3 +2,7 @@ pkg/
 src/
 *.pkg.tar.zst
 *.pkg.tar.zst.sig
+pkg/
+src/
+GUI.for.SingBox-linux-amd64.zip
+appicon.png
