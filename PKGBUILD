@@ -1,9 +1,9 @@
 # Maintainer: nathawat <nathawat[at]noreply[dot]codeberg[dot]org>
 
 pkgname=howdy-next-git
-pkgver=3.1.1.r292.g3da7fd4
+pkgver=3.2.0.r326.g52867ac
 pkgrel=1
-pkgdesc="Security-focused C++ rewrite of Howdy for facial-recognition authentication on Linux"
+pkgdesc="C++ rewrite of Howdy facial-recognition authentication on Linux"
 arch=('x86_64')
 url="https://codeberg.org/nathawat/howdy-next"
 license=('MIT')
