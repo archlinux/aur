@@ -1,47 +1,32 @@
 # Maintainer: Arunachalam <arunachalam.gojosaturo@gmail.com>
-# LUNA CLI - AI Coding Assistant for LUNA OS X
+# LUNA CLI - Node.js version
 
 pkgname=luna-cli
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
-pkgdesc="🌙 LUNA - AI Coding Assistant CLI for LUNA OS X"
-arch=('x86_64' 'aarch64')
+pkgdesc="Luna CLI - Modern TUI in Ink (Original Node.js Build)"
+arch=('any')
 url="https://github.com/Arunachalam-gojosaturo/Luna-cli"
 license=('MIT')
-depends=(
-    'python>=3.10'
-    'python-typer>=0.9'
-    'python-rich>=13'
-    'python-textual>=0.30'
-    'python-prompt_toolkit>=3'
-    'python-httpx>=0.24'
-    'python-websockets>=11'
-    'python-pydantic>=2'
-    'python-dotenv>=1'
-    'python-aiofiles>=23'
-    'python-gitpython>=3.1'
-    'python-colorama>=0.4'
-    'python-shellingham>=1.5'
-    'python-platformdirs>=3.10'
-)
-optdepends=(
-    'groq: Groq AI provider support'
-    'python-openai: OpenAI provider support'
-    'python-google-generativeai: Google Gemini support'
-)
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+depends=('nodejs')
+makedepends=('npm' 'typescript')
 source=("https://github.com/Arunachalam-gojosaturo/Luna-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3a2d45b23f19e4220f8b788bf9f7e5649e3edc593678ecef53d465e4a3e60e9c')
+sha256sums=('1810e6248b74fdcef88b0d5762765816f61507bd4125edc5da9da534c0233276')
 
 build() {
     cd "Luna-cli-${pkgver}"
-    python -m build --wheel --no-isolation
+    npm install
+    npm run build
+    npm pack
 }
 
 package() {
     cd "Luna-cli-${pkgver}"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" *.tgz
     
-    # Install license
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
+    # Change ownership to root
+    chown -R root:root "$pkgdir" || true
+    
+    # Remove npm cache if it was created inside pkgdir
+    rm -rf "$pkgdir/usr/etc"
 }
