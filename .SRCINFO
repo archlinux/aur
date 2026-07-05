@@ -1,6 +1,6 @@
 pkgbase = soundcli
 	pkgdesc = Download your YouTube, SoundCloud, and Spotify libraries to your computer and play them offline, all from your terminal
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/baairon/soundcli
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = soundcli
 	makedepends = jq
 	depends = nodejs
 	provides = sndcli
-	noextract = soundcli-1.2.1.tgz
+	noextract = soundcli-1.2.2.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = soundcli-1.2.1.tgz::https://registry.npmjs.org/sndcli/-/sndcli-1.2.1.tgz
-	b2sums = 8da6d83eb495e7c451e7da186fec23ef610d04f59abe8f3039311003f8dab49672ac72504edafbd025e5e33dee4f0cccbbd7be4f8cd49ddf7a45cfa1bb150ebd
+	source = soundcli-1.2.2.tgz::https://registry.npmjs.org/sndcli/-/sndcli-1.2.2.tgz
+	b2sums = 5484c5a179da5654f7c58b2004d0c1dd9abd727c1272f2c5417abd7ca383f33ad1b04e9d3752ae89575960e414f86827ab50c896a33f5997ef6a298e0df5f107
 
 pkgname = soundcli
