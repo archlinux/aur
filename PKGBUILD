@@ -1,7 +1,7 @@
 # Maintainer: Agil Mammadov <mammadovagil@proton.me>
 pkgname=python-sqladmin
 _pkgname=${pkgname#python-}
-pkgver=0.27.2
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="SQLAlchemy Admin for FastAPI and Starlette"
 arch=("any")
@@ -10,7 +10,7 @@ license=("BSD-3-Clause")
 depends=(python python-starlette python-jinja python-wtforms python-python-multipart python-sqlalchemy)
 makedepends=(python-build python-uv-build python-installer python-wheel)
 source=("${pkgname}-${pkgver}.zip::https://github.com/smithyhq/sqladmin/archive/refs/tags/$pkgver.zip")
-sha256sums=('e08b162dcbf3b3e94ae0c5c5855f5a7130cae5c4d8c45e49a5659807c41be5f0')
+sha256sums=('0e1eb86690b36623ed49552f510fc3e92f5e677a4174f9440f5e3dd9affb9c0c')
 
 build() {
 	cd $srcdir/${_pkgname}-$pkgver
