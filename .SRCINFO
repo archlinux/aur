@@ -1,7 +1,7 @@
 pkgbase = frozen-rpc
 	pkgdesc = Cross-platform Discord Rich Presence injector with OAuth2 and Gateway support
 	pkgver = 1.0.0.beta.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/FrostX2/frozen-rpc
 	arch = x86_64
 	license = MIT
