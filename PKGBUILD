@@ -8,7 +8,7 @@
 # Contributor: SanskritFritz (gmail)
 
 pkgname=rofi-nox-git
-pkgver=2.0.0.r47.g89c768c1
+pkgver=2.0.0.r83.ga8569d52
 pkgrel=1
 pkgdesc='A window switcher, run dialog and dmenu replacement. A copy of rofi-git without X support.'
 arch=('any')
@@ -23,7 +23,7 @@ depends=(
 	'glib2'
 	'glibc'
 	'hicolor-icon-theme'
-	'libjpeg'
+	'libjpeg-turbo'
 	'librsvg'
 	'libxdg-basedir'
 	'libxkbcommon'

@@ -1,6 +1,6 @@
 pkgbase = rofi-nox-git
 	pkgdesc = A window switcher, run dialog and dmenu replacement. A copy of rofi-git without X support.
-	pkgver = 2.0.0.r47.g89c768c1
+	pkgver = 2.0.0.r83.ga8569d52
 	pkgrel = 1
 	url = https://github.com/DaveDavenport/rofi/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = rofi-nox-git
 	depends = glib2
 	depends = glibc
 	depends = hicolor-icon-theme
-	depends = libjpeg
+	depends = libjpeg-turbo
 	depends = librsvg
 	depends = libxdg-basedir
 	depends = libxkbcommon
