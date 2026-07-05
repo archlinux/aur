@@ -1,16 +1,17 @@
 pkgbase = libretro-wasm4-git
 	pkgdesc = WASM-4 core
-	pkgver = r1861.5b05a01
+	pkgver = r1863.0ebe62a
 	pkgrel = 1
 	url = https://github.com/aduros/wasm4
 	arch = x86_64
+	arch = aarch64
 	groups = libretro
 	license = ISC
 	makedepends = git
 	makedepends = cmake
 	depends = libretro-core-info
-	options = !debug
-	options = !lto
+	provides = libretro-wasm4=r1863.0ebe62a
+	conflicts = libretro-wasm4
 	source = libretro-wasm4::git+https://github.com/aduros/wasm4.git
 	source = git+https://github.com/wasm3/wasm3
 	sha256sums = SKIP

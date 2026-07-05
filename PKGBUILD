@@ -1,9 +1,9 @@
 # Maintainer: Engdyn <aur cat engdyn dog de>
 pkgname=libretro-wasm4-git
-pkgver=r1861.5b05a01
+pkgver=r1863.0ebe62a
 pkgrel=1
 pkgdesc="WASM-4 core"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://github.com/aduros/wasm4"
 license=(ISC)
 groups=(libretro)
@@ -14,7 +14,8 @@ makedepends=(
 	git
 	cmake
 )
-options=(!debug !lto)
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}")
 source=(
 	${pkgname%-git}::git+$url.git
 	git+https://github.com/wasm3/wasm3
