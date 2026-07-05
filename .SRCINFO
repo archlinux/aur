@@ -1,6 +1,6 @@
 pkgbase = image-auditor-bin
 	pkgdesc = TUI that finds & AI-fixes Lighthouse image issues (CLS, lazy loading, WebP, srcset) across your entire codebase in seconds.
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/0franco/image-auditor
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = image-auditor-bin
 	conflicts = image-auditor-git
 	conflicts = image-auditor
 	options = !debug
-	source_x86_64 = image-auditor-0.2.4-bin.tar.gz::https://github.com/0franco/image-auditor/releases/download/v0.2.4/image-auditor_linux_amd64.tar.gz
-	sha256sums_x86_64 = a4b1c5dbb7e7ae3191f8cf512e6fdd3301add0d1791f7fe0a5486ffa9d3ae87f
-	source_aarch64 = image-auditor-0.2.4-bin.tar.gz::https://github.com/0franco/image-auditor/releases/download/v0.2.4/image-auditor_linux_arm64.tar.gz
-	sha256sums_aarch64 = 2c36df84fe3c895396e2dd38b0ceedda0cd100eda2eb8249f86f9963bc816fb3
+	source_x86_64 = image-auditor-0.2.5-bin.tar.gz::https://github.com/0franco/image-auditor/releases/download/v0.2.5/image-auditor_linux_amd64.tar.gz
+	sha256sums_x86_64 = d18e16b6c5871d5bfb187df1c799ff61b80d4eb6b96ff27b60c461ede2ac0351
+	source_aarch64 = image-auditor-0.2.5-bin.tar.gz::https://github.com/0franco/image-auditor/releases/download/v0.2.5/image-auditor_linux_arm64.tar.gz
+	sha256sums_aarch64 = 484f7c7e8fb359562a6fd3da175a97dc849376b48d2d6287f06e9cea2009f79c
 
 pkgname = image-auditor-bin
