@@ -11,9 +11,7 @@ pkgbase = nfx
 	depends = zstd
 	depends = libzip
 	depends = libarchive
-	provides = nfx
-	conflicts = nfx
-	source = https://github.com/ReyzerMC/nfx.git
+	source = git+https://github.com/ReyzerMC/nfx.git
 	sha256sums = SKIP
 
 pkgname = nfx
