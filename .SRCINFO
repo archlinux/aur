@@ -7,8 +7,9 @@ pkgbase = darktable-plugin-dtmediawiki-git
 	license = GPL3
 	depends = darktable
 	depends = lua-luajson
-	depends = lua-sec
+	depends = lua54-sec
 	depends = lua-multipart-post
+	depends = lua54-lpeg
 	source = git+https://github.com/trougnouf/dtMediaWiki.git
 	sha256sums = SKIP
 
