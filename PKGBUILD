@@ -1,13 +1,14 @@
 # Maintainer: SHORiN <shorin@users.noreply.github.com>
 
 pkgname=miyu-git
-pkgver=0.1.6.r129.gddadbc3
-pkgrel=1
+pkgver=0.1.6.r134.g3435e88
+pkgrel=2
 pkgdesc='活在终端里的二次元少女'
 arch=('x86_64')
 url='https://github.com/SHORiN-KiWATA/Miyu'
 license=('MIT')
 options=('!lto' '!strip' '!debug')
+export LC_ALL=C.UTF-8
 depends=('alsa-lib' 'chafa' 'gcc-libs' 'glibc' 'ripgrep')
 makedepends=('cargo' 'git' 'pkgconf')
 optdepends=(
