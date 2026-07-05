@@ -1,25 +1,26 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=copperspice-git
-pkgver=2.1.0.r0.gcbad1f991
-pkgrel=2
+pkgver=2.1.0.r10.g61d93bbae
+pkgrel=1
 pkgdesc='Libraries for developing cross platform software applications in C++ (git version)'
 arch=('x86_64')
 url='https://www.copperspice.com/'
 license=('LGPL-2.1-only')
 depends=(
     'fontconfig'
-    'gcc-libs'
     'glib2'
     'glibc'
     'gst-plugins-base-libs'
     'gstreamer'
     'libcups'
+    'libgcc'
     'libgl'
     'libice'
-    'libjpeg'
+    'libjpeg-turbo'
     'libpulse'
     'libsm'
+    'libstdc++'
     'libx11'
     'libxcb'
     'libxi'
