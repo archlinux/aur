@@ -1,6 +1,7 @@
 # run pgo build or not; with X(vfb) or wayland
 : ${_build_profiled:=false}
 : ${_build_profiled_xvfb:=true}
+: ${_build_lto:=true}
 : ${_package_multilocale:=true}
 
 epoch=1
@@ -258,7 +259,6 @@ if [[ "${CARCH}" == "aarch64" ]]; then
   cat >>../mozconfig <<END
 ac_add_options --enable-optimize="-g0 -O2"
 
-ac_add_options --enable-lto
 END
 
   export MOZ_DEBUG_FLAGS=" "
@@ -267,10 +267,12 @@ END
   export RUSTFLAGS="-Cdebuginfo=0"
 
 else
-
-  cat >>../mozconfig <<END
+  if [[ "${_build_lto::1}" == "t" ]]; then
+    cat >>../mozconfig <<END
+ac_add_options --enable-lto
 ac_add_options --enable-lto=cross
 END
+  fi
 fi
 }
 
