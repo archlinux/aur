@@ -1,6 +1,6 @@
 pkgbase = shimelinux
 	pkgdesc = An unofficial Linux port of Shimeji-ee Desktop Pet
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/BujjuIsABee/shimelinux
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = shimelinux
 	makedepends = java-environment>=21
 	depends = libappindicator
 	depends = java-runtime>=21
-	source = shimelinux-1.0.2.tar.gz::https://github.com/BujjuIsABee/shimelinux/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = 16eedd2a6aaee3ebbdf27064c2ad97faddb420890b9a0e6e3739ff28f226d7b7
+	source = shimelinux-1.1.0.tar.gz::https://github.com/BujjuIsABee/shimelinux/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = ad7e225a4324fedc6905f653edc31614fdcdc841d9b11722a95ceaba06a41145
 
 pkgname = shimelinux
