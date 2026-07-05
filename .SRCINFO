@@ -1,6 +1,6 @@
 pkgbase = picosnitch
 	pkgdesc = Monitor network traffic per executable using BPF
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://elesiuta.github.io/picosnitch/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = picosnitch
 	optdepends = libnotify: desktop notifications via notify-send
 	optdepends = python-psycopg: PostgreSQL remote logging
 	optdepends = python-pymysql: MariaDB / MySQL remote logging
-	source = https://files.pythonhosted.org/packages/source/p/picosnitch/picosnitch-2.1.1.tar.gz
-	sha256sums = 1d13fc48280f6a355bcb155d193f93817c1225475ee9670846a56cbd39e2014d
+	source = https://files.pythonhosted.org/packages/source/p/picosnitch/picosnitch-2.1.2.tar.gz
+	sha256sums = 253bee64e3e04a3743e632582e6b2acf2f004f3ba1b6802efae1af395b02864b
 
 pkgname = picosnitch
