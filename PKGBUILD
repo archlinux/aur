@@ -1,7 +1,7 @@
 # Maintainer: uwuclxdy <uwuclxdy@pm.me>
 
 pkgname=piebald-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='The ultimate agentic AI control experience for developers'
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=('piebald')
 conflicts=('piebald')
 options=(!strip !debug)
 source=("https://github.com/Piebald-AI/piebald-issues/releases/download/v${pkgver}/Piebald_${pkgver}_amd64.deb")
-sha256sums=('cb52219c55757162adcb86371704852053816c002e6d327b3c8389d83b972e64')
+sha256sums=('499575facf5adf1185a4a4702da7dd72e9b7cf93d0befb2ba3446ce461820fa2')
 
 package() {
     bsdtar -xf "${srcdir}"/data.tar.* -C "${pkgdir}/"
