@@ -39,6 +39,13 @@ package() {
   rm -f "$pkgdir/usr/bin/steamos-polkit-helpers/jupiter-biosupdate"
   rm -f "$pkgdir/usr/lib/systemd/system/jupiter-biosupdate.service"
   rm -f "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/jupiter-biosupdate.service"
+  sed -i '/<action id="org.valve.policykit.steamos.pkexec.run-steamos-polkit-helpers\/jupiter-biosupdate">/,/<\/action>/d' \
+    "$pkgdir/usr/share/polkit-1/actions/org.valve.steamos.policy"
+
+  # Remove SteamOS branch selector entirely
+  rm -f "$pkgdir/usr/bin/steamos-polkit-helpers/steamos-select-branch"
+  sed -i '/<action id="org.valve.policykit.steamos.pkexec.run-steamos-polkit-helpers-steamos-select-branch">/,/<\/action>/d' \
+    "$pkgdir/usr/share/polkit-1/actions/org.valve.steamos.policy"
 
   # Remove SteamOS updater entirely
   rm -f "$pkgdir/usr/bin/steamos-polkit-helpers/steamos-update"
