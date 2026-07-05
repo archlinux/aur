@@ -1,7 +1,7 @@
 # Maintainer: Crazybrain <crazybrain plus aur at tuta dot com>
 
 pkgname=ss14.launcher
-pkgver=0.39.0
+pkgver=0.39.1
 pkgrel=1
 pkgdesc="Space Station 14 launcher"
 arch=('x86_64' 'aarch64')
@@ -14,11 +14,11 @@ makedepends=("dotnet-sdk-${_dotnetver}.0")
 optdepends=("soundfont-fluid: soundfont for in-game MIDI instuments needed for servers that don't provide their own")
 source=("${pkgname}.v${pkgver}.tar.gz::https://github.com/space-wizards/SS14.Launcher/archive/refs/tags/v${pkgver}.tar.gz"
         "https://github.com/space-wizards/Robust.LoaderApi/archive/${_RobustLoaderApiVer}.zip"
-        'spacestation14.svg'::'https://raw.githubusercontent.com/space-wizards/asset-dump/master/icon.svg'
+        'spacestation14.svg'
         'ss14.launcher.desktop')
-sha256sums=('0a6b3a3e2d8f7edf310f2d3d53c2bc369bdc5a824b37693b1c97890a87583c6e'
+sha256sums=('9d0829c6b27a7c6063ac7986461b18ad9fa2061214625b8b16e9cf4412416116'
             '363db87fc37a40affaf5eaba9f302d9d710cf5f1e5311503f060beb3b49e6c27'
-            'a047c810a26088cc1fd1df73036bd5b4cfb441c0697a2cbd583733d08474f37e'
+            'd75d6d61398a34a3063a69354a645c369423ffe36a8e90a8fa7497b8212647f7'
             '53d7aa0900c8a68f7161a7865f10d09046ec33cb916dfd47659a27ed9864f049')
 # Set runtime identifier's architecture
 case $CARCH in
