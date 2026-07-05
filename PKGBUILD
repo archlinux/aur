@@ -1,31 +1,31 @@
+# Maintainer: Kevin Schoon <kevinschoon@pm.me>
+# Maintainer: Mikhail f. Shiryaev <mr dot felixoid at gmail dot com>
 pkgname=pomo
-pkgver=0.8.2
+pkgver=0.9.1
 pkgrel=1
-
-pkgdesc='Pomodoro Command Line Interface'
-url='https://codeberg.org/kevinschoon/pomo'
+pkgdesc='Pomodoro CLI with todo tasks'
+url='https://github.com/Felixoid/pomo'
 arch=(x86_64 aarch64)
 license=(MIT)
-
-#epends=()
 makedepends=('go')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=(
+  79c262f97998470f5bdd5e3b1d776e74543f22d87d97c0470d826fd1ef91bbd9a300969a6041781a7225d2ad30a6f0abf43dc89d169ae58f1e08a12f6ad9ea77
+)
 
-
-source=("https://codeberg.org/kevinschoon/pomo/archive/${pkgver}.tar.gz")
 build() {
-	cd ${pkgname}
-  #export GOOS=linux
-  #export GOARCH=arm64
-  #export BUILD_NUMBER=1
-  export BUILD_VERSION=${pkgver}
-  make bin/pomo
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make VERSION=${pkgver} build
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make test
 }
 
 package() {
-  mkdir -p $pkgdir/usr/bin
-  gzip -f -k $srcdir/${pkgname}/man/pomo.1
-  install -Dm 755 $srcdir/${pkgname}/bin/pomo "$pkgdir/usr/bin/pomo"
-  install -Dm 644 $srcdir/${pkgname}/man/pomo.1.gz "$pkgdir/usr/share/man/man1/pomo.1.gz"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  gzip -f -k man/pomo.1
+  install -Dm 755 bin/pomo "$pkgdir/usr/bin/pomo"
+  install -Dm 644 man/pomo.1.gz "$pkgdir/usr/share/man/man1/pomo.1.gz"
 }
-
-sha512sums=('ceae02d1cc324bd456e176d966eba3bd6822692c53d51b1683ef09791dd5729f650eb8fbaecffd1b8e69f9cd6ca66837abe747540a22c9d5e5abd9a26fa2775d')

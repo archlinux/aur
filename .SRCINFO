@@ -1,13 +1,13 @@
 pkgbase = pomo
-	pkgdesc = Pomodoro Command Line Interface
-	pkgver = 0.8.2
+	pkgdesc = Pomodoro CLI with todo tasks
+	pkgver = 0.9.1
 	pkgrel = 1
-	url = https://codeberg.org/kevinschoon/pomo
+	url = https://github.com/Felixoid/pomo
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = https://codeberg.org/kevinschoon/pomo/archive/0.8.2.tar.gz
-	sha512sums = ceae02d1cc324bd456e176d966eba3bd6822692c53d51b1683ef09791dd5729f650eb8fbaecffd1b8e69f9cd6ca66837abe747540a22c9d5e5abd9a26fa2775d
+	source = https://github.com/Felixoid/pomo/archive/v0.9.1.tar.gz
+	sha512sums = 79c262f97998470f5bdd5e3b1d776e74543f22d87d97c0470d826fd1ef91bbd9a300969a6041781a7225d2ad30a6f0abf43dc89d169ae58f1e08a12f6ad9ea77
 
 pkgname = pomo
