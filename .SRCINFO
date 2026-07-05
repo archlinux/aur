@@ -1,14 +1,14 @@
 pkgbase = pypy3-setuptools
 	pkgdesc = Easily download, build, install, upgrade, and uninstall Python packages
-	pkgver = 82.0.1
+	pkgver = 83.0.0
 	pkgrel = 1
 	epoch = 1
 	url = https://setuptools.pypa.io
 	arch = any
 	license = MIT
 	makedepends = pypy3
-	source = https://pypi.org/packages/source/s/setuptools/setuptools-82.0.1.tar.gz
-	sha512sums = 5d70e9efd818245fb8119a4eed64d776078469ed884facc188f141ea491efd9fde5c10c928d3236ea5e2e431b16616f18ed14870b867f95e6320251707332395
+	source = https://pypi.org/packages/source/s/setuptools/setuptools-83.0.0.tar.gz
+	sha512sums = d426f235471d30b41391bda63e8f3d461f54a6a4127594a2e2d0cab0c7576d511db5e5f211ed6cdac2afc620d3695e991a1dd08106f1201ec64697b14b3e0390
 
 pkgname = pypy3-setuptools
 	depends = pypy3
