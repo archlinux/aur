@@ -5,17 +5,24 @@
 # Contributor SecByShresth <shresthpaul133@gmail.com>
 
 pkgname=pyspread
-pkgver=2.4.3
+pkgver=2.4.5
 pkgrel=1
-pkgdesc="Python based non-traditional spreadsheet application with GUI"
+pkgdesc="Python-based non-traditional spreadsheet application with GUI"
 arch=('any')
 url="https://pyspread.gitlab.io/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
-  'python-setuptools'
   'python-numpy'
   'python-pyqt6'
+  'python-pyqt6-webengine'
   'python-markdown2'
+  'qt6-svg'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
 )
 optdepends=(
   'python-matplotlib: plotting support'
@@ -24,35 +31,41 @@ optdepends=(
   'python-dateutil: date handling'
   'python-rpy2: R integration'
   'python-plotnine: ggplot-like plotting'
-  'libvoikko: Finnish spell checking'
-  'nuspell: spell checking'
-  'hspell: Hebrew spell checking'
-  'r-ggplot2: R plotting'
   'python-openpyxl: Excel file support'
+  'python-pycel: Compile Excel spreadsheets to Python'
+  'r: R plotting package integration'
 )
-options=(!emptydirs)
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pyspread/pyspread-$pkgver.tar.gz")
-sha256sums=('58829be31aa51ad655221b095b006dd8ab21d19da94217cfe73f49ab8dccc357')
+options=('!emptydirs')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/p/pyspread/pyspread-${pkgver}.tar.gz")
+sha256sums=('ecdbab9fd3a62ba2c4cf94d3e78dc951829cfcb8e99307cdffbaf479b4b53df6')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # Fix legacy naked relative imports in the error-handling blocks
+  sed -i 's/from __init__ import/from pyspread.__init__ import/g' pyspread/main_window.py
+  sed -i 's/from cli import/from pyspread.cli import/g' pyspread/pyspread.py
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
-  # Install desktop entry
+  # Dynamically discover active site-packages path directory
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
+  # Link Desktop Entry
   install -D -m644 \
-    "pyspread/share/applications/io.gitlab.pyspread.pyspread.desktop" \
-    "$pkgdir/usr/share/applications/pyspread.desktop"
+    "${pkgdir}${site_packages}/pyspread/share/applications/io.gitlab.pyspread.pyspread.desktop" \
+    "${pkgdir}/usr/share/applications/io.gitlab.pyspread.pyspread.desktop"
 
-  # Install icon from correct upstream path
+  # Link SVG App Icon
   install -D -m644 \
-    "pyspread/share/icons/hicolor/svg/pyspread.svg" \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/pyspread.svg"
-
-  # Remove wrong upstream directory
-  rm -rf "$pkgdir/usr/pyspread"
+    "${pkgdir}${site_packages}/pyspread/share/icons/hicolor/svg/pyspread.svg" \
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/pyspread.svg"
 }
