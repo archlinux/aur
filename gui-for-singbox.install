@@ -1,5 +1,4 @@
 DATA_DIR="/opt/gui-for-singbox/data"
-OLD_DATA_DIR="/opt/gui-for-singbox-bin/data"
 
 post_install() {
     install -dm777 "${DATA_DIR}/.cache/icons"
@@ -18,9 +17,5 @@ post_install() {
 }
 
 post_upgrade() {
-    # Migrate from old path (pkgrel ≤8 → /opt/gui-for-singbox-bin/)
-    if [[ -d "$OLD_DATA_DIR" && ! -d "$DATA_DIR" ]]; then
-        cp -a "$OLD_DATA_DIR" "$DATA_DIR" && rm -rf "$OLD_DATA_DIR"
-    fi
     post_install
 }
