@@ -7,7 +7,6 @@ pkgbase = zine
 	arch = x86_64
 	license = MIT
 	makedepends = anyzig
-	makedepends = zig
 	depends = glibc
 	source = https://github.com/kristoff-it/zine/archive/refs/tags/v0.11.3/zine-0.11.3.tar.gz
 	b2sums = e8795272cdd0cca11b1fff2b4d73e6b41037632f01028cf2e0e73a2195d9b6de99ba9f3f926c8820652e18e8328ad5b4fcd7bdb555c140ce5bd4b119e278cc31

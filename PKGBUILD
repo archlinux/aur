@@ -19,7 +19,7 @@ depends=(
 )
 makedepends=(
   'anyzig'
-  'zig'
+  # 'zig'
 )
 _pkgsrc="${_url##*/}-${pkgver}"
 source=(
