@@ -11,9 +11,10 @@ source=(
     "$_pkgname-$pkgver.pkg.tar.zst"::"https://github.com/LizardByte/Sunshine/releases/download/$_gittag/sunshine-$pkgver-1-x86_64.pkg.tar.zst"
     "$_pkgname-$pkgver.desktop"::"https://github.com/LizardByte/Sunshine/blob/master/packaging/linux/dev.lizardbyte.app.Sunshine.desktop"
     "sunshine-capabilities.hook"
+    "sunshine-beta-bin.install"
 )
 arch=('x86_64')
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=(
     'avahi'
     'curl'
@@ -21,6 +22,8 @@ depends=(
     'libcap'
     'libdrm'
     'libevdev'
+    'libpipewire'
+    'miniupnpc'
     'libmfx'
     'libnotify'
     'libpulse'
@@ -30,42 +33,40 @@ depends=(
     'libxfixes'
     'libxrandr'
     'libxtst'
-    'miniupnpc'
     'numactl'
     'openssl'
     'opus'
     'udev'
+    'vulkan-icd-loader'
+    'which'
+    'qt6-base'
 )
 optdepends=(
     'cuda: Nvidia GPU encoding support'
     'libva-mesa-driver: AMD GPU encoding support'
     'xorg-server-xvfb: Virtual X server for headless testing'
 )
+install=sunshine-beta-bin.install
 conflicts=('sunshine' 'sunshine-git' 'sunshine-bin')
 replaces=('sunshine-bin')
-makedepends=('patchelf')
+#makedepends=('patchelf')
 provides=('sunshine-bin')
-sha256sums=(
-    'b9d97189238043f05fe48aca6b4800127a81fc8279c8f6929ba67f2074c0b8ee'
-    'SKIP'
-    'SKIP'
-)
+sha256sums=('b9d97189238043f05fe48aca6b4800127a81fc8279c8f6929ba67f2074c0b8ee'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
-prepare() {
-    sed -i "s/@PROJECT_NAME@/$_pkgname/g" "$_pkgname-$pkgver.desktop"
-    sed -i "s/@PROJECT_DESCRIPTION@/$pkgdesc/g" "$_pkgname-$pkgver.desktop"
-    sed -i "s/@PROJECT_VERSION@/$_gittag/g" "$_pkgname-$pkgver.desktop"
-
-    patchelf \
-    --replace-needed libminiupnpc.so.1{8,9} \
-    --replace-needed libicuuc.so.7{5,6} \
-    "usr/bin/sunshine"
-    # --replace-needed libboost_locale.so.1.8{3,6}.0 \
-    # --replace-needed libboost_log.so.1.8{3,6}.0 \
-    # --replace-needed libboost_filesystem.so.1.8{3,6}.0 \
-    # --replace-needed libboost_program_options.so.1.8{3,6}.0 \
-    # --replace-needed libboost_thread.so.1.8{3,6}.0 \
-}
+# prepare() {
+#     patchelf \
+#     "usr/bin/sunshine"
+#     --replace-needed libminiupnpc.so.{18,21} \
+#     --replace-needed libicuuc.so.7{5,6} \
+#     --replace-needed libboost_locale.so.1.8{3,6}.0 \
+#     --replace-needed libboost_log.so.1.8{3,6}.0 \
+#     --replace-needed libboost_filesystem.so.1.8{3,6}.0 \
+#     --replace-needed libboost_program_options.so.1.8{3,6}.0 \
+#     --replace-needed libboost_thread.so.1.8{3,6}.0 \
+# }
 
 package() {
   if [[ -f "usr/bin/sunshine-v$pkgver" ]]; then
