@@ -1,6 +1,6 @@
 pkgname=raze-bin
 pkgver=1.11.0.f5ce6d9
-pkgrel=3
+pkgrel=4
 pkgdesc='Build engine port backed by GZDoom tech'
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/raze"
@@ -28,5 +28,5 @@ package() {
     rm -rf $srcdir/raze/.*
     cp -r "$srcdir/raze/." "$pkgdir"
     #lib fix
-    sudo ln -sf /usr/lib/libvpx.so $pkgdir/usr/lib/libvpx.so.9
+    ln -sf /usr/lib/libvpx.so $pkgdir/usr/lib/libvpx.so.9
 }
