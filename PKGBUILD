@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Tool for fetch everythin' in internet"
 
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,8 +31,8 @@ source_x86_64=("${_appname}-cli-${arch[0]}-${pkgver}::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-cli-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-cli-${_barch[1]}")
 sha256sums=('3a29057f7075ed8b3bcefb58771c552366014a07dc754a8ca38b7725eb5bf4d1'
             '230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809')
-sha256sums_x86_64=('ed3c7c16cc37b1f2160e94b854f574c5e145cfb8ee14d74a1be5ca366378ccaf')
-sha256sums_aarch64=('c8befe990de5bd017352f2914c8112bfaf67e44c451ff73a64958868c77389ab')
+sha256sums_x86_64=('9879f0be104aece3a71d119476c6f90980fd08a9e732d5434f784d8a343fdc21')
+sha256sums_aarch64=('a2e1891ba25882f5a914f60b11e516f4e4378a79282e4017e0c7b12a97c41782')
 
 
 package() {
