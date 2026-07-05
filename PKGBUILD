@@ -23,7 +23,7 @@ package() {
 
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    uv pip install --target="$pkgdir$site_packages" --no-deps biopython>=1.80
+    uv pip install --python /usr/bin/python3 --target="$pkgdir$site_packages" --no-deps --no-binary biopython biopython>=1.80
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
