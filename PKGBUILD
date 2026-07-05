@@ -6,34 +6,26 @@ pkgdesc="NFX archive tool written in C using Zstandard, libzip and libarchive"
 arch=('x86_64')
 url='https://github.com/ReyzerMC/nfx'
 license=('MIT')
-provides=('nfx')
-conflicts=('nfx')
 depends=('zstd' 'libzip' 'libarchive')
 makedepends=('gcc' 'make' 'git')
-source=(https://github.com/ReyzerMC/nfx.git)
+source=("git+${url}.git") # <--- Usa git+ y apunta al tag de la versión estable
 sha256sums=('SKIP')
 
-pkgver() {
-    cd "$srcdir/$pkgname"
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 build() {
-    cd "$srcdir/$pkgname"
-    make clean
-    make
+  cd "$srcdir/nfx" # La carpeta siempre se llamará nfx al clonar el repo
+  make clean
+  make
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+  cd "$srcdir/nfx"
 
-    install -Dm755 nfx "$pkgdir/usr/bin/nfx"
+  install -Dm755 nfx "$pkgdir/usr/bin/nfx"
 
-    if [ -f README.md ]; then
-      install -Dm644 README.md "$pkgdir/usr/share/doc/nfx/README.md"
-    fi
-    if [ -f LICENSE ]; then
-      install -Dm644 LICENSE "$pkgdir/usr/share/licenses/nfx/LICENSE"
-    fi
+  if [ -f README.md ]; then
+    install -Dm644 README.md "$pkgdir/usr/share/doc/nfx/README.md"
+  fi
+  if [ -f LICENSE ]; then
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/nfx/LICENSE"
+  fi
 }
