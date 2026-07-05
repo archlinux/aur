@@ -1,10 +1,10 @@
 # Maintainer: Ryno Kotze <lemon.xah@gmail.com>
 pkgname=pithddu-dashboard
-pkgver=0.7.11
+pkgver=0.7.14
 pkgrel=1
 pkgdesc="SimHub companion app for the Pith DDU sim-racing dash"
 arch=('x86_64')
-url="https://github.com/lemonxah/pithddu"
+url="https://github.com/lemonxah/pithsim"
 license=('BSD-3-Clause')
 # The Slint renderer is statically linked into the binary; only the winit/GL +
 # HID/serial (libudev) runtime libs are needed.
@@ -39,7 +39,7 @@ package() {
   install -Dm755 target/release/pith-dashboard "$pkgdir/usr/bin/pith-dashboard"
   install -Dm644 dashboard/pith-dashboard.desktop "$pkgdir/usr/share/applications/pith-dashboard.desktop"
   install -Dm644 dashboard/icon.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/pith-dashboard.png"
-  install -Dm644 dashboard/99-pithddu.rules "$pkgdir/usr/lib/udev/rules.d/99-pithddu.rules"
+  install -Dm644 dashboard/99-pith.rules "$pkgdir/usr/lib/udev/rules.d/99-pith.rules"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # In-prefix shared-memory tools (prebuilt Windows .exe, run under Proton/Wine) +
