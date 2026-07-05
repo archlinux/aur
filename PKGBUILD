@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=oxiclean
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Fast Cross-Distribution Linux System Cleaner written in Rust"
 arch=('x86_64')
@@ -10,6 +10,10 @@ url="https://github.com/croaky-fx/oxiclean"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
+# ring (rustls' crypto backend) ships hand-written assembly that a makepkg
+# build with LTO enabled compiles with -flto; ld.lld then can't resolve its
+# symbols. Disable LTO for this package so the release binary links.
+options=(!lto)
 source=("$pkgname::git+$url#tag=v$pkgver")
 sha256sums=('SKIP')
 
