@@ -3,3 +3,4 @@ source = "gitlab"
 gitlab = "GNOME/gnome-kiosk"
 host = "gitlab.gnome.org"
 use_max_tag = true
+exclude_regex = ".*(alpha|beta|rc).*"

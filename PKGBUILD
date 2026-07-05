@@ -2,7 +2,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=gnome-kiosk
-pkgver=50.0
+pkgver=50.1
 pkgrel=1
 pkgdesc="Provides a desktop enviroment suitable for fixed purpose, or single application deployments like wall displays and point-of-sale systems"
 arch=('x86_64')
@@ -14,19 +14,15 @@ depends=('bash'
          'glib2'
          'glibc'
          'gnome-desktop-4'
-         'gnome-session'
          'graphene'
-         'gsettings-desktop-schemas'
          'libgcc'
          'libglvnd'
          'libibus'
          'mutter'
          'systemd-libs')
-makedepends=('git'
-             'glib2-devel'
-             'meson')
+makedepends=('git' 'glib2-devel' 'meson')
 source=("git+${url}.git#tag=${pkgver}")
-b2sums=('ff803c1c531ab11a5262a386850b8256fdbed8cc8eff6ccafa6d5b0efcb4a9f66410d3b97bf891cf139880aec2eef61da9d27ca42536f3fdf3920c87338bd683')
+b2sums=('2a496defb872a86e0688928031b99e34e101053f0cb1d80749f7a9730d98237db03a7033b0859cc2b912a4154a8f3f97e4ad9353c82b6e86dd130c5cd87e458a')
 
 build() {
     arch-meson "${pkgname}" build

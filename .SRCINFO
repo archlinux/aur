@@ -1,6 +1,6 @@
 pkgbase = gnome-kiosk
 	pkgdesc = Provides a desktop enviroment suitable for fixed purpose, or single application deployments like wall displays and point-of-sale systems
-	pkgver = 50.0
+	pkgver = 50.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-kiosk
 	arch = x86_64
@@ -14,15 +14,13 @@ pkgbase = gnome-kiosk
 	depends = glib2
 	depends = glibc
 	depends = gnome-desktop-4
-	depends = gnome-session
 	depends = graphene
-	depends = gsettings-desktop-schemas
 	depends = libgcc
 	depends = libglvnd
 	depends = libibus
 	depends = mutter
 	depends = systemd-libs
-	source = git+https://gitlab.gnome.org/GNOME/gnome-kiosk.git#tag=50.0
-	b2sums = ff803c1c531ab11a5262a386850b8256fdbed8cc8eff6ccafa6d5b0efcb4a9f66410d3b97bf891cf139880aec2eef61da9d27ca42536f3fdf3920c87338bd683
+	source = git+https://gitlab.gnome.org/GNOME/gnome-kiosk.git#tag=50.1
+	b2sums = 2a496defb872a86e0688928031b99e34e101053f0cb1d80749f7a9730d98237db03a7033b0859cc2b912a4154a8f3f97e4ad9353c82b6e86dd130c5cd87e458a
 
 pkgname = gnome-kiosk
