@@ -1,20 +1,23 @@
 # Maintainer: Adrien Plagnol <adrien.plagnol@believe.com>
 pkgname=rustiferin
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Rust ambient-lighting agent for Glow Worm Luciferin (Plasma Wayland + MQTT)'
 url='https://github.com/dalsh/rustiferin'
 license=('GPL-3.0-or-later')
 arch=('x86_64')
-depends=('pipewire' 'glibc')
+# libglvnd (libEGL) and mesa (libgbm) back the default `kms` capture feature's
+# dma-buf import; they are present on any Plasma Wayland install regardless.
+depends=('pipewire' 'glibc' 'libglvnd' 'mesa')
 makedepends=('cargo' 'pkgconf')
-optdepends=('mosquitto: local MQTT broker if you do not have one elsewhere on the LAN')
+optdepends=('mosquitto: local MQTT broker if you do not have one elsewhere on the LAN'
+            'gpu-screen-recorder: low-overhead KMS capture (set capture.backend=kms) for gaming without an FPS hit')
 # !lto: aws-lc-sys's cmake build inherits -flto from CFLAGS when makepkg's
 # default LTO option is on; the resulting .a is LLVM bitcode and rust-lld
 # fails to resolve aws_lc_0_*_* symbols at the final link.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e2c081ba635188949d046a60ba65d36a58ecdf10fb870ca010342736aec097a1')
+sha256sums=('b0f4a71578714e083fe04b32ec1f49d1fafdf737e0ed48c34a4b4fed0665dd90')
 
 prepare() {
   cd "$pkgname-$pkgver"
