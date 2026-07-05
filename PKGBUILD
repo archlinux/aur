@@ -26,7 +26,6 @@ build() {
 
 package() {
 	cd "$srcdir"/${pkgname}
-	fd . "target"
 
 	# completions
 	install -Dm 0644 "target/tmp/run0-sudo-shim/completion/sudo.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/sudo.fish"
