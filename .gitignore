@@ -1,0 +1,5 @@
+node_modules/
+*.tar.gz
+*.tar.zst
+pkg/
+src/
