@@ -4,17 +4,16 @@ pkgname=jupiter-hw-support
 _srctag=jupiter-20250728.1
 _srcver=${_srctag#jupiter-}
 pkgver=${_srcver//-/.}
-pkgrel=5
+pkgrel=6
 arch=('any')
 url="https://gitlab.steamos.cloud/jupiter/jupiter-hw-support"
 pkgdesc="Jupiter HW support package"
 license=('MIT')
 depends=('python-evdev'
          'python>=3.13'
-         'dmidecode' # for jupiter-biosupdate
          'python-crcmod' 'python-click' 'python-progressbar'
          'python-hid>=1.0.6-2' # for jupiter-controller-update
-         'jq' # for jupiter-controller-update, jupiter-biosupdate
+         'jq' # for jupiter-controller-update
          'alsa-utils' # for the sound workarounds
          'parted' 'e2fsprogs' # for sdcard formatting
          'udisks2>=2.9.4-1.1' # for mounting external drives with the 'as-user' option
@@ -32,12 +31,12 @@ package() {
   cd $pkgdir/usr/share/steamos/
   xcursorgen $pkgdir/usr/share/steamos/steamos-cursor-config $pkgdir/usr/share/icons/steam/cursors/default
 
-  cd "$pkgdir/usr/share/jupiter_bios_updater"
-
-  # Remove gtk2 binary and respective build/start script - unused
-  # Attempts to use gtk2 libraries which are not on the device.
-  rm h2offt-g H2OFFTx64-G.sh
-
-  # Driver module -- doesn't currently build, and not supported
-  rm -rf driver
+  # Remove BIOS updater entirely
+  rm -rf "$pkgdir/usr/share/jupiter_bios_updater"
+  rm -rf "$pkgdir/usr/share/jupiter_bios"
+  rm -f "$pkgdir/usr/bin/jupiter-biosupdate"
+  rm -f "$pkgdir/usr/bin/foxnet-biosupdate"
+  rm -f "$pkgdir/usr/bin/steamos-polkit-helpers/jupiter-biosupdate"
+  rm -f "$pkgdir/usr/lib/systemd/system/jupiter-biosupdate.service"
+  rm -f "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/jupiter-biosupdate.service"
 }

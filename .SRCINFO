@@ -11,7 +11,6 @@ pkgbase = jupiter-hw-support
 	makedepends = xorg-xcursorgen
 	depends = python-evdev
 	depends = python>=3.13
-	depends = dmidecode
 	depends = python-crcmod
 	depends = python-click
 	depends = python-progressbar
