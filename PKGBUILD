@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r79186.524f7e09755
+pkgver=r79948.f4d31df69ae
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -42,6 +42,8 @@ depends=(
   simdutf-git # 'simdutf' is v6, we need v7.
   cpptrace # AUR
   libpng-apng # AUR, extra/libpng doesn't provide APNG.
+  vulkan-memory-allocator-git
+  wuffs-lib-git
 )
 makedepends=(autoconf-archive automake cargo cmake git nasm ninja patchelf skia-static tar unzip zip)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
@@ -59,7 +61,10 @@ pkgver() {
 
 prepare() {
   sed -e '/march=/d' -i ladybird/Meta/CMake/compile_options.cmake
-  sed -e 's/78\.2 EXACT/78.2/' -i ladybird/Meta/CMake/check_for_dependencies.cmake
+  sed -e 's/78\.3 EXACT/78.3/' -i ladybird/Meta/CMake/check_for_dependencies.cmake
+  sed -e 's#wuffs/wuffs#wuffs#' -i ladybird/Meta/CMake/check_for_dependencies.cmake
+  sed -e 's#wuffs/wuffs#wuffs#' -i ladybird/Libraries/LibGfx/ImageFormats/GIFLoader.cpp
+  sed -e 's/mi_heap_get_default/mi_heap_main/' -i ladybird/AK/kmalloc.cpp
 }
 
 build() {

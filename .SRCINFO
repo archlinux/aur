@@ -1,6 +1,6 @@
 pkgbase = ladybird-git
 	pkgdesc = Truly independent web browser
-	pkgver = r79186.524f7e09755
+	pkgver = r79948.f4d31df69ae
 	pkgrel = 1
 	url = https://github.com/LadybirdBrowser/ladybird
 	arch = x86_64
@@ -45,6 +45,8 @@ pkgbase = ladybird-git
 	depends = simdutf-git
 	depends = cpptrace
 	depends = libpng-apng
+	depends = vulkan-memory-allocator-git
+	depends = wuffs-lib-git
 	provides = ladybird
 	conflicts = ladybird
 	options = !lto
