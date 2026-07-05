@@ -11,6 +11,7 @@ post_install() {
     install -dm777 "${DATA_DIR}/third"
     install -dm777 "${DATA_DIR}/sing-box"
     ln -sf /usr/bin/sing-box "${DATA_DIR}/sing-box/sing-box"
+    setcap cap_net_admin=+ep /usr/bin/sing-box
     chmod -R 777 "${DATA_DIR}"
 }
 
