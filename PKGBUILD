@@ -2,7 +2,7 @@
 
 _pkgname="gltfpack"
 pkgname="${_pkgname}-bin"
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Automatically optimize glTF files to reduce the download size and improve loading and rendering speed"
 arch=(
@@ -34,7 +34,7 @@ source_x86_64=(
 )
 sha256sums=('74b73b7eca8141cc60cef9b8f2674422c4eaae8a6dafd1c067a24272c27de05d'
             'f03037ca7bad1e3eb7f4a63fa6084a8baabd5ba30d3c239a9a7f35705d873e26')
-sha256sums_x86_64=('96ac5c0ca34dbfb4360e92e405e377904cb2e477f0b89fcf6f4c70bfdf2aab79')
+sha256sums_x86_64=('ebc236f5f6c08c7e5c5750476a187d24805d44d8c680449c4b7369c333f817b1')
 
 package() {
   cd "${srcdir}"
