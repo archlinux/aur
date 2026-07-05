@@ -2,7 +2,7 @@
 # Contributor: opencode
 
 pkgname=frozen-rpc
-pkgver=1.0.0.beta.2
+pkgver=1.0.0.beta.3
 pkgrel=3
 pkgdesc="Cross-platform Discord Rich Presence injector with OAuth2 and Gateway support"
 arch=('x86_64')
