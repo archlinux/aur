@@ -1,6 +1,6 @@
 # Maintainer: Evert Vorster <evorster at gmail dot com>
 pkgname=pi-ext-observational-memory
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc='Observational memory extension for pi coding agent — cache-friendly tiered compaction with observations and reflections'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('pi-coding-agent')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://registry.npmjs.org/pi-observational-memory/-/pi-observational-memory-${pkgver}.tgz"
 )
-sha256sums=('bc6a5fe90919562dece4c053570a029b4aff6d279a1a6b90d3c19bfd8264383c')
+sha256sums=('2adc6962e430191f38d365c2928ba9b02e2f994f00f785f5d470d49fbb256626')
 install=pi-ext.install
 
 package() {

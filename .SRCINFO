@@ -1,13 +1,13 @@
 pkgbase = pi-ext-observational-memory
 	pkgdesc = Observational memory extension for pi coding agent — cache-friendly tiered compaction with observations and reflections
-	pkgver = 3.0.2
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://github.com/elpapi42/pi-observational-memory
 	install = pi-ext.install
 	arch = any
 	license = MIT
 	depends = pi-coding-agent
-	source = pi-ext-observational-memory-3.0.2.tar.gz::https://registry.npmjs.org/pi-observational-memory/-/pi-observational-memory-3.0.2.tgz
-	sha256sums = bc6a5fe90919562dece4c053570a029b4aff6d279a1a6b90d3c19bfd8264383c
+	source = pi-ext-observational-memory-3.0.3.tar.gz::https://registry.npmjs.org/pi-observational-memory/-/pi-observational-memory-3.0.3.tgz
+	sha256sums = 2adc6962e430191f38d365c2928ba9b02e2f994f00f785f5d470d49fbb256626
 
 pkgname = pi-ext-observational-memory
