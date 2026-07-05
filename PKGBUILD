@@ -1,4 +1,4 @@
-# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
+# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 
 pkgname=tsduck-bin
 _pkgver=3.44-4676
