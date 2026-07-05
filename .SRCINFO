@@ -1,7 +1,7 @@
 pkgbase = rogue
 	pkgdesc = The original dungeon crawl game.
 	pkgver = 5.4.4
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://rogue.rogueforge.net/rogue-5-4/
 	arch = aarch64
@@ -15,8 +15,8 @@ pkgbase = rogue
 	license = custom
 	depends = ncurses
 	source = http://rogue.rogueforge.net/files/rogue5.4/rogue5.4.4-src.tar.gz
-	source = https://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD
+	source = config.guess::https://git.savannah.gnu.org/cgit/config.git/plain/config.guess?id=428664896cf9e92d264976a960c76660938dffce
 	md5sums = 033288f46444b06814c81ea69d96e075
-	md5sums = 6dec0cbd49949c70115c12478f0b3a5c
+	md5sums = 31425d9ff4907ea0de54624aab92336c
 
 pkgname = rogue
