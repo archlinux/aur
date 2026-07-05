@@ -7,7 +7,7 @@ pkgname=(
   bisq-cli
   bisq-daemon
 )
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('any')
@@ -15,16 +15,16 @@ url="https://bisq.network"
 license=('AGPL3')
 depends=('jdk21-openjdk')
 makedepends=('jdk21-openjdk' 'git')
-# TODO: at next bisq release, re-check whether upstream restores end-to-end
-# source provenance: a .asc on the source tarball (signed by E222AA02 or
-# 387C8307), a signed annotated tag, or the promised reproducible-build
-# artifacts. v1.10.1 source has no signature from a Bisq release manager
-# (the lightweight tag and the GitHub-web-UI commit signature don't count),
-# so this PKGBUILD currently relies on sha256 alone.
+# v1.10.2 restores tag provenance: the annotated tag is PGP-signed by
+# release manager key E222AA02 and was verified at packaging time (tag
+# signature checked with gpg; tag tree diffed against this tarball). The
+# GitHub tarball itself still ships no .asc, so makepkg only enforces
+# sha256. TODO: consider switching to a git source with #tag=v${pkgver}
+# and ?signed + validpgpkeys to verify the signature at build time.
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/bisq-network/bisq/archive/v${pkgver}.tar.gz"
   "bisq.desktop"
   "bisq-desktop-launcher")
-sha256sums=('359fbee61419efd165f6e4d7970741b50cbd8c8aedc206699b03ad53ee4d2397'
+sha256sums=('f3e1d17552a128e5e0348710ec1d65bdf692aedab67a4388cc0f25c79913ec51'
             '9f2ee38c5089f5a929f978a0fd0adabba6bd7e42fd89864dcf2e0bfa0dcd90d2'
             '59029081b943f51e0e3efe4a82abbf5bd3c0a33b49117837cd30e25ec48cb7bd')
 
