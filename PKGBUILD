@@ -5,7 +5,7 @@ pkgname=(
     'monado'
     'monado-doc')
 pkgver=25.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source OpenXR runtime'
 arch=('x86_64')
 url='https://monado.dev/'
@@ -28,7 +28,7 @@ makedepends=(
     'libbsd'
     'libdrm'
     'libgl'
-    'libjpeg'
+    'libjpeg-turbo'
     'librealsense'
     'libsurvive'
     'libusb'
@@ -82,7 +82,7 @@ package_monado() {
         'libbsd'
         'libdrm'
         'libgl'
-        'libjpeg'
+        'libjpeg-turbo'
         'librealsense'
         'libsurvive'
         'libusb'
