@@ -1,0 +1,23 @@
+pkgbase = reel-git
+	pkgdesc = Manage trip footage: ingest, review, cut, back up (Tauri desktop app)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jaehho/reel
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rustup
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = ffmpeg
+	depends = rclone
+	depends = gst-libav
+	depends = gst-plugins-good
+	provides = reel
+	conflicts = reel
+	options = !lto
+	options = !debug
+	source = git+https://github.com/jaehho/reel.git
+	sha256sums = SKIP
+
+pkgname = reel-git
