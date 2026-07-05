@@ -1,6 +1,6 @@
 pkgbase = arch-update-manager-bin
 	pkgdesc = A Linux Mint inspired GTK4-based update manager for Arch Linux (prebuilt binary)
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/destbg/arch-update-manager
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = arch-update-manager-bin
 	optdepends = rate-mirrors: refresh and rank the pacman mirror list
 	provides = arch-update-manager
 	conflicts = arch-update-manager
-	source = arch-update-manager-3.3.0-x86_64.tar.gz::https://github.com/destbg/arch-update-manager/releases/download/3.3.0/arch-update-manager-3.3.0-x86_64.tar.gz
-	source = arch-update-manager-3.3.0.tar.gz::https://github.com/destbg/arch-update-manager/archive/refs/tags/3.3.0.tar.gz
-	sha256sums = 8f723f3efda1a931c50c187d83450f41b5bb74849dafcec93cab787c15aae307
-	sha256sums = 05530299e1dd6b72516ccf5b3c93ec01a232e00eb60c00cc686b4b5a3a8fdc27
+	source = arch-update-manager-3.4.0-x86_64.tar.gz::https://github.com/destbg/arch-update-manager/releases/download/3.4.0/arch-update-manager-3.4.0-x86_64.tar.gz
+	source = arch-update-manager-3.4.0.tar.gz::https://github.com/destbg/arch-update-manager/archive/refs/tags/3.4.0.tar.gz
+	sha256sums = b24649e403f00e0d51b554996fe24890541e5a57fbe000508e5f834f17fde53f
+	sha256sums = ad3a364efe1baf081510ca49d0d21662e1480e25116d0c8bb53e7084ded93329
 
 pkgname = arch-update-manager-bin
