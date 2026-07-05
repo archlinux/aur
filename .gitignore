@@ -1,0 +1,7 @@
+pkg
+src
+jellyfin-rpc
+jellyfin-rpc-x86_64-linux
+jellyfin-rpc.service
+*.zst
+example.json
