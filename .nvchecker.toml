@@ -1,0 +1,3 @@
+[stamp]
+source = "git"
+git = "https://gitlab.gnome.org/jbrummer/stamp.git"
