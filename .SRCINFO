@@ -1,6 +1,6 @@
 pkgbase = goyt-bin
 	pkgdesc = YouTube Music CLI Player in Go (precompiled binary)
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/lazaroMB/goyt
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = goyt-bin
 	depends = yt-dlp
 	provides = goyt
 	conflicts = goyt
-	source_x86_64 = goyt-bin-1.0.0-linux-amd64::https://github.com/lazaroMB/goyt/releases/download/v1.0.0/goyt-linux-amd64
-	sha256sums_x86_64 = 48848bd4d57d8822533b27d53611659f70c831db34422db0fe227093da56c2c6
+	source_x86_64 = goyt-bin-1.1.0-linux-amd64::https://github.com/lazaroMB/goyt/releases/download/v1.1.0/goyt-linux-amd64
+	sha256sums_x86_64 = 186ad705fe0e8f09f7de117f02b4a38b5f7ff81e22e1aea45cd6e4bb46c74900
 
 pkgname = goyt-bin
