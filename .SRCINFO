@@ -1,7 +1,7 @@
 pkgbase = audirvana-origin
 	pkgdesc = Audirvana Origin audio player
 	pkgver = 3.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://audirvana.com/
 	install = audirvana-origin.install
 	arch = x86_64
