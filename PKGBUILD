@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-bin
 pkgver=2.4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Shelly: A Modern Arch Package Manager (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/Seafoam-Labs/Shelly-ALPM"
@@ -57,11 +57,12 @@ package() {
 [Desktop Entry]
 Name=Shelly
 Comment=A Modern Arch Package Manager
-Exec=/usr/bin/shelly-ui
+Exec=/usr/bin/shelly-ui %u
 Icon=shelly
 Type=Application
 Categories=System;Utility;
 Keywords=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;flatpak;pacman;aur;appimage;
+MimeType=x-scheme-handler/appstream;x-scheme-handler/flatpak+https;
 Terminal=false
 Actions=FlatpakInstall;FlatpakUpdate;FlatpakRemove;
 
