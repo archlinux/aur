@@ -1,0 +1,54 @@
+commit 6271edececef2a3720e5a5b4e245407cf909f034
+Author: Philipp Rösner <rndxelement@protonmail.com>
+Date:   Sun May 17 14:36:57 2026 +0200
+
+    Make short_lang_prefix non-const
+    
+    - Glibc-2.43 does not allow assigning
+      to const char pointer anymore, requiring to make
+      short_lang_prefix non-const
+    - See: https://bugs.gentoo.org/969855
+
+diff --git a/docs/CHANGES.txt b/docs/CHANGES.txt
+index ce485f9c2..2eed3be1b 100644
+--- a/docs/CHANGES.txt
++++ b/docs/CHANGES.txt
+@@ -55,6 +55,10 @@ https://tuxpaint.org/
+       Bill Kendrick <bill@newbreedsoftware.com>
+       h/t Wisdom Lupus
+ 
++    + Make short_lang_prefix non-const because it may be modified,
++      adding support for glibc-2.43.
++      Philipp Rösner <rndxelement@protonmail.com>
++
+   * Localization Updates:
+     ---------------------
+     + French translation
+diff --git a/src/i18n.c b/src/i18n.c
+index e38d102d5..2565b60bb 100644
+--- a/src/i18n.c
++++ b/src/i18n.c
+@@ -257,7 +257,8 @@ static int lang_use_right_to_left[] = {
+ 
+ int need_own_font;
+ int need_right_to_left;
+-const char *lang_prefix, *short_lang_prefix;
++const char *lang_prefix;
++char *short_lang_prefix;
+ 
+ w_langs wished_langs[255];
+ 
+diff --git a/src/i18n.h b/src/i18n.h
+index 2f9e9c12a..5f9751017 100644
+--- a/src/i18n.h
++++ b/src/i18n.h
+@@ -185,7 +185,8 @@ typedef struct language_to_locale_struct
+ extern const char *lang_prefixes[NUM_LANGS];
+ extern int need_own_font;
+ extern int need_right_to_left;  // Right-justify
+-extern const char *lang_prefix, *short_lang_prefix;
++extern const char *lang_prefix;
++extern char *short_lang_prefix;
+ 
+ typedef struct w_langs
+ {

@@ -5,7 +5,7 @@
 
 pkgname=tuxpaint
 pkgver=0.9.35
-pkgrel=1
+pkgrel=2
 pkgdesc='Drawing program designed for young children'
 arch=('x86_64')
 url='https://tuxpaint.org/'
@@ -20,8 +20,10 @@ optdepends=('tuxpaint-stamps: more stamps'
             'python2: zh_tw font generator script'
             'fontforge: zh_tw doc generator script'
             'bash: for tp-magic-config, tuxpaint-import, zh_tw doc generator scripts')
-source=("https://downloads.sourceforge.net/sourceforge/tuxpaint/$pkgname-$pkgver.tar.gz")
-sha256sums=('c1c18af91be77e94fdaab2c928204c4c39ba39ac5da2f441aaf2ecab6d8bd0ad')
+source=("https://downloads.sourceforge.net/sourceforge/tuxpaint/$pkgname-$pkgver.tar.gz"
+        "6271edececef2a3720e5a5b4e245407cf909f034.patch")
+sha256sums=('c1c18af91be77e94fdaab2c928204c4c39ba39ac5da2f441aaf2ecab6d8bd0ad'
+            'a784c936be00bc8b0eb64fb368c8edc0b4e9a57aa7ca257808f017d72ae93d20')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -30,6 +32,16 @@ prepare() {
   for f in docs/outdated/zh_tw/mkTuxpaintIM.py fonts/locale/zh_tw_docs/maketuxfont.py; do
     sed -i '0,/python$/s//python2/' $f
   done
+
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    echo "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
+
 }
 
 build() {
