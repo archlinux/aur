@@ -1,13 +1,13 @@
-
-# Maintainer: Chakib Benziane (blob42) <contact@blob42.xyz>
-
+# Maintainer: Chakib Benziane (blob42) <contac+aurt@blob42.xyz>
+# Contributor:
 pkgname=gosuki-git
 _pkgname=${pkgname%-git}
-pkgver=v1.4.1.r1.g7b7eacd
-pkgrel=3
+pkgver=v1.4.1.r11.g553ef66
+pkgrel=1
 pkgdesc="A lightweight, open-source, privacy-first bookmark manager that unifies your bookmarks across multiple browsers, syncs them in real time (locally or P2P), requires no extensions, and stores everything locally."
-arch=('i686' 'x86_64')
-makedepends=(git go make sqlite)
+arch=('x86_64' 'i686' 'aarch64')
+depends=('glibc')
+makedepends=('git' 'go' 'sqlite' 'gcc')
 url='https://github.com/blob42/gosuki'
 license=(AGPL3)
 sha256sums=(SKIP)
@@ -22,13 +22,27 @@ pkgver() {
 }
 
 build() {
-  cd "${_pkgname}"
+  cd "$_pkgname" || exit
 
   msg2 'Building...'
-  make SYSTRAY=true release
+  for _pkg in gosuki suki; do
+    msg2 $_pkg
+    go build \
+      -trimpath \
+      -mod=readonly \
+      -modcacherw \
+      -ldflags " -s -w -buildid= -X github.com/blob42/gosuki/pkg/build.Describe=$pkgver" \
+      -tags "release systray" \
+      -o build/$_pkg \
+      ./cmd/$_pkg
+  done
+
 
   msg2 'Generating shell completions...'
-  make -B completions
+  for shell in bash zsh fish; do
+    go run -tags ci ./cmd/gosuki -S completion $shell > contrib/gosuki-$shell.completions
+    go run -tags ci ./cmd/suki -S completion $shell > contrib/suki-$shell.completions
+  done
 }
 
 package() {
