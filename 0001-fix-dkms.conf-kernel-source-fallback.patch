@@ -1,0 +1,19 @@
+--- a/usr/src/qaic-1.21.6.0/dkms.conf
++++ b/usr/src/qaic-1.21.6.0/dkms.conf
+@@ -32,14 +32,14 @@
+   dot_config="$kernel_source_dir/$auto_conf_path"
+ fi
+ 
+-if ! grep -q "CONFIG_QRTR=[ym]" $dot_config ; then
++if [[ -f $dot_config ]] && ! grep -q "CONFIG_QRTR=[ym]" $dot_config ; then
+   ((MOD_ID++))
+   BUILT_MODULE_NAME[$MOD_ID]="qrtr"
+   BUILT_MODULE_LOCATION[$MOD_ID]="qrtr/"
+   DEST_MODULE_LOCATION[$MOD_ID]="/kernel/qaic/"
+ fi
+ 
+-if ! grep -q "CONFIG_DRM_SCHED=[ym]" $dot_config ; then
++if [[ -f $dot_config ]] && ! grep -q "CONFIG_DRM_SCHED=[ym]" $dot_config ; then
+   if grep -q "select DRM_SCHED" $source_tree/qaic-${PACKAGE_VERSION}/qaic/Kconfig ; then
+     ((MOD_ID++))
+     BUILT_MODULE_NAME[$MOD_ID]="gpu-sched"

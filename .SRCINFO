@@ -1,0 +1,25 @@
+pkgbase = qaic-platform-sdk
+	pkgdesc = Qualcomm AI Engine (QAIc) Platform SDK - firmware, kernel module (DKMS), and runtime tools
+	pkgver = 1.21.6.0
+	pkgrel = 1
+	url = https://www.qualcomm.com/products/ai-and-acceleration/ai-inference/ai-engine
+	install = qaic-platform-sdk.install
+	arch = x86_64
+	license = LicenseRef-Qualcomm
+	depends = dkms
+	depends = pciutils
+	optdepends = cmake: build C/C++ examples
+	optdepends = protobuf: protobuf tooling
+	optdepends = python: qaicrt Python bindings and Python-based tools
+	optdepends = python-numpy: JIT wrapper and log viewer
+	optdepends = python-pyelftools: JIT wrapper
+	optdepends = python-pyudev: device detection and configuration
+	optdepends = mokutil: SecureBoot module signing
+	source_x86_64 = aic_platform.Core.1.21.6.0.Linux-AnyCPU-aic_platform.Core.1.21.6.0.Linux-AnyCPU.zip::local://aic_platform.Core.1.21.6.0.Linux-AnyCPU-aic_platform.Core.1.21.6.0.Linux-AnyCPU.zip
+	source_x86_64 = PowerStress
+	source_x86_64 = 0001-fix-dkms.conf-kernel-source-fallback.patch
+	sha256sums_x86_64 = eaccd02e8911c6e16a179b8352a30b6d01c915a135945bb18cf22ad58e28669b
+	sha256sums_x86_64 = 9ecc5a1fc90a9adff190077ea2eebc23118be8ce64eccfa1a54c21b9a4ed3de0
+	sha256sums_x86_64 = c3a82d8530f3dbd24a7d447c638197f4b62c058a57728cc2f08758dcb6cd0c76
+
+pkgname = qaic-platform-sdk

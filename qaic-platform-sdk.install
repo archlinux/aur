@@ -1,0 +1,65 @@
+post_install() {
+  # Create system user/group for firmware tools
+  getent group qaic >/dev/null || groupadd -r qaic
+  getent passwd qaic >/dev/null || useradd -g qaic -s /sbin/nologin -r qaic
+
+  # Configure ldconfig for runtime libs
+  echo "/opt/qti-aic/dev/lib/$(uname -m)" > /etc/ld.so.conf.d/qaic.conf
+  ldconfig -i
+
+  # Reload udev rules
+  udevadm control --reload-rules
+  udevadm trigger
+
+  cat << 'EOF'
+
+==============================
+QAIc Platform SDK installed.
+==============================
+
+DKMS will build the kernel module automatically on next boot
+or when a kernel is installed/updated (pacman hook).
+
+To reset devices after installation:
+  /opt/qti-aic/scripts/soc_reset.sh
+
+To check device status:
+  /opt/qti-aic/tools/qaic-util -q
+
+To load kernel modules now:
+  modprobe qaic
+  modprobe qrtr_mhi
+  modprobe switchtec
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  # Warn if module still loaded
+  if lsmod | awk '{print $1}' | grep -q qaic; then
+    cat << 'EOF'
+
+!!!!!  WARNING  !!!!!
+qaic module is still loaded.
+Run 'sudo rmmod qaic' or reboot to unload it.
+EOF
+  fi
+
+  # Clean up ldconfig
+  rm -f /etc/ld.so.conf.d/qaic.conf
+  ldconfig -i
+
+  # Remove system user/group if empty
+  local qaic_group_users
+  qaic_group_users=$(getent group qaic 2>/dev/null | cut -d: -f4)
+  if [ -z "$qaic_group_users" ]; then
+    getent passwd qaic >/dev/null && userdel qaic 2>/dev/null || true
+    getent group qaic >/dev/null && groupdel qaic 2>/dev/null || true
+  fi
+
+  # Reload udev rules
+  udevadm control --reload-rules
+}

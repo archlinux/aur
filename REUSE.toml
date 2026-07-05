@@ -1,0 +1,7 @@
+version = 1
+
+[[annotations]]
+path = ["LICENSE", "REUSE.toml", "PKGBUILD", ".SRCINFO", "*.install", "PowerStress", "*.patch"]
+precedence = "aggregate"
+type = "license-file"
+SPDX-Expression = "0BSD"

@@ -1,0 +1,3 @@
+#!/bin/bash
+# PowerStress wrapper. Binary expects "./Workload" relative to CWD
+cd /opt/qti-aic && exec /opt/qti-aic/tools/PowerStress.bin "$@"
