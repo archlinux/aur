@@ -1,7 +1,7 @@
 # Maintainer: Eldred Habert <arch@(my first name).fr>
 # Former maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=hister
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ install=hister.install
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "hister.service")
-sha256sums=('1436ffcee58fbf3ef7f9014a75900786a420da81d52accb35b0f64f30a7ec434'
+sha256sums=('fd7373b2bfa6fbec4fe622a8f611c661399b1a5ad38cdc2351ab2feb8fca36b1'
             'c1f3851a79baf1eab7d5d40ee9aaffa53fef4a2938e5a293c542f73134e645da')
 
 _ghrepo="asciimoo/hister"
