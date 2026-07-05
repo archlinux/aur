@@ -1,6 +1,6 @@
 # Maintainer: whysooraj <whysooraj.official@gmail.com>
 pkgname=tide-island
-pkgver=1.0.15
+pkgver=1.0.16
 pkgrel=1
 _srcdir=Tide-island-$pkgver
 pkgdesc="A dynamic island for Hyprland using Quickshell"
@@ -57,5 +57,4 @@ package() {
   chmod +x "$pkgdir/usr/bin/tide-island"
   chmod +x "$pkgdir/usr/bin/tide-island-config-app"
   chmod +x "$pkgdir/usr/share/tide-island/bin/lyricsmpris"
-  chmod +x "$pkgdir/usr/share/tide-island/bin/tide-island-setup"
 }
