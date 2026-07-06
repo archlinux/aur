@@ -8,7 +8,6 @@ pkgbase = rsbep-backup-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = automake
 	makedepends = python
 	makedepends = python-fuse
 	provides = rsbep-backup
