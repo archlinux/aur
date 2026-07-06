@@ -1,32 +1,47 @@
-# Maintainer: Arunachalam <arunachalam.gojosaturo@gmail.com>
-# LUNA CLI - Node.js version
+# Maintainer: Arunachalam (Tamilnadu) <arunachalamthehacker@gmail.com>
+# LUNA CLI - AI Coding Assistant for LUNA OS X
 
 pkgname=luna-cli
-pkgver=0.3.0
+pkgver=0.2.3
 pkgrel=1
-pkgdesc="Luna CLI - Modern TUI in Ink (Original Node.js Build)"
-arch=('any')
+pkgdesc="Arunachalam presents Luna CLI: A modern TUI in Ink. Built for open-source enthusiasts in Tamilnadu, India."
+arch=('x86_64' 'aarch64')
 url="https://github.com/Arunachalam-gojosaturo/Luna-cli"
 license=('MIT')
-depends=('nodejs')
-makedepends=('npm' 'typescript')
+depends=(
+    'python>=3.10'
+    'python-typer>=0.9'
+    'python-rich>=13'
+    'python-textual>=0.30'
+    'python-prompt_toolkit>=3'
+    'python-httpx>=0.24'
+    'python-websockets>=11'
+    'python-pydantic>=2'
+    'python-dotenv>=1'
+    'python-aiofiles>=23'
+    'python-gitpython>=3.1'
+    'python-colorama>=0.4'
+    'python-shellingham>=1.5'
+    'python-platformdirs>=3.10'
+)
+optdepends=(
+    'groq: Groq AI provider support'
+    'python-openai: OpenAI provider support'
+    'python-google-generativeai: Google Gemini support'
+)
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("https://github.com/Arunachalam-gojosaturo/Luna-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1810e6248b74fdcef88b0d5762765816f61507bd4125edc5da9da534c0233276')
+sha256sums=('SKIP')
 
 build() {
     cd "Luna-cli-${pkgver}"
-    npm install
-    npm run build
-    npm pack
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "Luna-cli-${pkgver}"
-    npm install -g --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" *.tgz
+    python -m installer --destdir="$pkgdir" dist/*.whl
     
-    # Change ownership to root
-    chown -R root:root "$pkgdir" || true
-    
-    # Remove npm cache if it was created inside pkgdir
-    rm -rf "$pkgdir/usr/etc"
+    # Install license
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
 }
