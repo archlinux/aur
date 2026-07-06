@@ -1,19 +1,1 @@
-pkgbase = open-video-downloader-appimage
-	pkgdesc = A cross-platform GUI for youtube-dl made in Rust with Tauri and Vue + Typescript
-	pkgver = 3.2.0
-	pkgrel = 2
-	url = https://github.com/jely2002/youtube-dl-gui
-	arch = x86_64
-	license = AGPL3
-	provides = open-video-downloader
-	conflicts = open-video-downloader
-	options = !strip
-	options = !debug
-	source = open-video-downloader-3.2.0.AppImage::https://github.com/jely2002/youtube-dl-gui/releases/download/app-v3.2.0/Open.Video.Downloader_3.2.0_amd64.AppImage
-	source = open-video-downloader.desktop
-	source = open-video-downloader.png
-	sha256sums = dffee4cfef50e8edb9be4136d5650b123e49b8a1ffd959ff3d2c42502fc391e3
-	sha256sums = c9e49f87d6d146252a58f5de8b5451b021119c4698805228078d70d1f609d5d9
-	sha256sums = 188992cbe106d0dd6e7b9c219020118a1246c3657c828f86e463617c3d6214cb
 
-pkgname = open-video-downloader-appimage

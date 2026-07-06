@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=
 Comment=Download videos from all over the web.
-Exec=reflex %U
+Exec=open-video-downloader %U
 StartupWMClass=open-video-downloader
 Icon=open-video-downloader
 Name=Open Video Downloader
