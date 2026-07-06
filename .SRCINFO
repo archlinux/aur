@@ -1,6 +1,6 @@
 pkgbase = prettymux
 	pkgdesc = GPU-accelerated terminal multiplexer
-	pkgver = 0.2.45
+	pkgver = 0.2.46
 	pkgrel = 1
 	url = https://github.com/patcito/prettymux
 	arch = x86_64
