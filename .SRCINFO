@@ -1,0 +1,17 @@
+pkgbase = lamboot-archinstall
+	pkgdesc = archinstall plugin: offer LamBoot as a bootloader in the Arch Linux guided installer
+	pkgver = 0.16.5
+	pkgrel = 1
+	url = https://lamco.ai/products/lamboot/
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	depends = python
+	depends = archinstall
+	depends = lamboot-bin
+	source = https://github.com/lamco-admin/lamboot/releases/download/v0.16.5/lamboot-0.16.5-x86_64.tar.gz
+	source = https://github.com/lamco-admin/lamboot/releases/download/v0.16.5/lamboot-0.16.5-x86_64.tar.gz.asc
+	sha256sums = 0ff2cb69f9d5558441a23488d81769cec439d8c2e8ab6275296cbd64b98e7602
+	sha256sums = SKIP
+
+pkgname = lamboot-archinstall
