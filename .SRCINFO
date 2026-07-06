@@ -11,7 +11,9 @@ pkgbase = lamboot-archinstall
 	depends = lamboot-bin
 	source = https://github.com/lamco-admin/lamboot/releases/download/v0.16.5/lamboot-0.16.5-x86_64.tar.gz
 	source = https://github.com/lamco-admin/lamboot/releases/download/v0.16.5/lamboot-0.16.5-x86_64.tar.gz.asc
-	sha256sums = 0ff2cb69f9d5558441a23488d81769cec439d8c2e8ab6275296cbd64b98e7602
 	sha256sums = SKIP
+	sha256sums = SKIP
+	b2sums = 59be1503f8c8636b7b81222ef3f5302518e5fc93a5e1b4a2a95a8d2a660b45f77d3d8771ca362c19b4649c399a4ac2751c6ebed639f7b29f5e1c2c6348746424
+	b2sums = SKIP
 
 pkgname = lamboot-archinstall

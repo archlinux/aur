@@ -33,7 +33,8 @@ depends=('python' 'archinstall' 'lamboot-bin')
 # separate download.
 source=("https://github.com/lamco-admin/lamboot/releases/download/v${pkgver}/lamboot-${pkgver}-${CARCH}.tar.gz"
         "https://github.com/lamco-admin/lamboot/releases/download/v${pkgver}/lamboot-${pkgver}-${CARCH}.tar.gz.asc")
-sha256sums=('0ff2cb69f9d5558441a23488d81769cec439d8c2e8ab6275296cbd64b98e7602' 'SKIP')
+sha256sums=('SKIP' 'SKIP')
+b2sums=('59be1503f8c8636b7b81222ef3f5302518e5fc93a5e1b4a2a95a8d2a660b45f77d3d8771ca362c19b4649c399a4ac2751c6ebed639f7b29f5e1c2c6348746424' 'SKIP')
 # validpgpkeys=('CA11F781516743D5D9A1A12F17B95B68A50CD3A7')  # release signing key; enable once published to a keyserver
 
 package() {
