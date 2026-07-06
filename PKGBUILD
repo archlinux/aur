@@ -21,7 +21,7 @@ pkgdesc="An enhancement of the FreeSpace 2 engine, need game data"
 url="https://scp.indiegames.us/"
 arch=(i686 x86_64)
 license=('LicenseRef-fs2_open')
-depends=(glibc libgcc libx11 libstdc++ libjpeg libpng freetype2 ffmpeg sdl2 lua51 openal jansson bash hicolor-icon-theme)
+depends=(glibc libgcc libx11 libstdc++ libjpeg-turbo libpng freetype2 ffmpeg sdl2 lua51 openal jansson bash hicolor-icon-theme)
 makedepends=(cmake)
 optdepends=('fs2_open-mediavps: extensive audiovisual enhancements'
             'fs2_open-data: extensive retail data'
