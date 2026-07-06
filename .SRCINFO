@@ -1,6 +1,6 @@
 pkgbase = masscode-git
 	pkgdesc = A free and open source code snippets manager for developers.(Use system-wide electron)
-	pkgver = 5.4.0.r1.g68d8789
+	pkgver = 5.8.0.r0.g15f86fd
 	pkgrel = 1
 	url = https://masscode.io/
 	arch = any
