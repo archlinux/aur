@@ -1,7 +1,7 @@
 pkgbase = ctrlr
 	pkgdesc = Control any MIDI enabled hardware: synthesizers, drum machines, samplers, effects. Create custom user interfaces. Host them as VST3 plugins in your favorite DAWs.
 	pkgver = 5.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/RomanKubiak/ctrlr
 	arch = x86_64
 	groups = pro-audio
