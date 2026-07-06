@@ -1,6 +1,6 @@
 pkgbase = grabit-bin
 	pkgdesc = Screenshot, screen-recording, OCR, and uploader for wlroots and KDE Plasma 6 Wayland compositors (prebuilt binary)
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://heliopolis.live/creations/grabit
 	arch = x86_64
@@ -22,11 +22,11 @@ pkgbase = grabit-bin
 	optdepends = libpulse: paplay (alternative sound player)
 	optdepends = alsa-utils: aplay (alternative sound player)
 	optdepends = sox: play (alternative sound player)
-	provides = grabit=0.4.0
+	provides = grabit=0.5.0
 	conflicts = grabit
-	source = LICENSE-0.4.0::https://heliopolis.live/creations/grabit/raw/tag/0.4.0/LICENSE
+	source = LICENSE-0.5.0::https://heliopolis.live/creations/grabit/raw/tag/0.5.0/LICENSE
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
-	source_x86_64 = grabit-0.4.0-x86_64::https://heliopolis.live/creations/grabit/releases/download/0.4.0/grabit-x86_64-linux
-	sha256sums_x86_64 = 7a07fccdb92fe8440d350a87c2675d31c4c8d21506470a9c8e5c24e2c9975e5c
+	source_x86_64 = grabit-0.5.0-x86_64::https://heliopolis.live/creations/grabit/releases/download/0.5.0/grabit-x86_64-linux
+	sha256sums_x86_64 = 6be9a32318408e727fe7ac3d74b86adfbdf44246f47e1a5029402a37e88eb469
 
 pkgname = grabit-bin

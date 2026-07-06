@@ -1,5 +1,5 @@
 pkgname=grabit-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Screenshot, screen-recording, OCR, and uploader for wlroots and KDE Plasma 6 Wayland compositors (prebuilt binary)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ conflicts=('grabit')
 source=("LICENSE-${pkgver}::https://heliopolis.live/creations/grabit/raw/tag/${pkgver}/LICENSE")
 source_x86_64=("grabit-${pkgver}-x86_64::https://heliopolis.live/creations/grabit/releases/download/${pkgver}/grabit-x86_64-linux")
 sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
-sha256sums_x86_64=('7a07fccdb92fe8440d350a87c2675d31c4c8d21506470a9c8e5c24e2c9975e5c')
+sha256sums_x86_64=('6be9a32318408e727fe7ac3d74b86adfbdf44246f47e1a5029402a37e88eb469')
 
 package() {
     install -Dm755 "grabit-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/grabit"
