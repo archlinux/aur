@@ -2,7 +2,7 @@
 
 pkgname=g-tmce
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tkinter app for creating and extracting MKV files with TMDB metadata"
 arch=('any')
 url="https://github.com/G-grbz/G-TMCE"
@@ -19,15 +19,18 @@ optdepends=(
   'zenity: GTK-native file dialogs'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a50e2b75670bf4d6820eed50501bf8e2af3ccc311611dfd77aa842f653546c00')
+sha256sums=('aa9967be3338d1984665d6a23f210f2f9038d3582c51cd0d842eff14deda724d')
 
 package() {
   cd "G-TMCE-${pkgver}"
 
   install -Dm755 mkv_creator_ui.py "${pkgdir}/usr/lib/g-tmce/mkv_creator_ui.py"
   install -Dm644 VERSION "${pkgdir}/usr/lib/g-tmce/VERSION"
+  install -Dm644 logo.png "${pkgdir}/usr/lib/g-tmce/logo.png"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 logo.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/g-tmce.png"
   install -Dm644 logo.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/g-tmce.png"
+  install -Dm644 logo.png "${pkgdir}/usr/share/pixmaps/g-tmce.png"
 
   install -Dm644 G-TMCE.desktop "${pkgdir}/usr/share/applications/g-tmce.desktop"
   sed -i 's|^Path=.*|Path=/usr/lib/g-tmce|' "${pkgdir}/usr/share/applications/g-tmce.desktop"
