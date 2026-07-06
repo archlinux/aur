@@ -16,6 +16,7 @@ package() {
   install -dm755 "${pkgdir}/usr/lib/patch-editor"
   install -m755 "${srcdir}/Patch-${pkgver}.AppImage" "${pkgdir}/usr/lib/patch-editor/Patch.AppImage"
 
+  install -dm755 "${pkgdir}/usr/bin"
   cat > "${pkgdir}/usr/bin/patch-editor" << 'EOF'
 #!/usr/bin/env bash
 APPIMAGE_EXTRACT_AND_RUN=1 exec /usr/lib/patch-editor/Patch.AppImage "$@"
