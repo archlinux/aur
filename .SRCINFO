@@ -1,7 +1,7 @@
 pkgbase = xlibre-input-elographics
 	pkgdesc = XLibre Elographics TouchScreen input driver
 	pkgver = 25.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/X11Libre/xf86-input-elographics
 	arch = x86_64
 	groups = xlibre-drivers
