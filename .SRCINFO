@@ -1,6 +1,6 @@
 pkgbase = openjkdf2-git
 	pkgdesc = A function-by-function reimplementation of DF2 (Dark Forces 2) in C.
-	pkgver = 0.9.8.r1.ga6e3174
+	pkgver = 0.9.9.r3.g591bec0
 	pkgrel = 1
 	url = https://github.com/shinyquagsire23/OpenJKDF2
 	arch = i686
