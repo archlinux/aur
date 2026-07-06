@@ -1,6 +1,6 @@
 pkgbase = crossonic
 	pkgdesc = An OpenSubsonic compatible cross-platform music client
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/juho05/crossonic
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = crossonic
 	depends = pango
 	depends = libepoxy
 	options = !lto
-	source = crossonic-0.4.0.tar.gz::https://github.com/juho05/crossonic/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = ea40d751e181c95508b82914746c12d1815e470bd46396d79874e25c67ab902a
+	source = crossonic-0.5.0.tar.gz::https://github.com/juho05/crossonic/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 45b80ccef205c55f7055e4317a034789f3f6df45872211f5ea1313a80026c999
 
 pkgname = crossonic
