@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wizread-bin
 _pkgname=WizRead
-pkgver=1.0.13
+pkgver=1.0.15
 _electronversion=33
 pkgrel=1
 pkgdesc="A next-generation e-book reader for passionate readers. (Prebuilt version.Use system-wide electron)"
@@ -27,8 +27,8 @@ source=(
     "LICENSE::${url}/tos"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8890f0772a1ed1a4c629fa92f5f68465d1b342e7d02aa728cbfa63198e4189d5'
-            'e52d59cd447fe681f6d864ee8391bb7515283fe300c06028e1f34f1f8e32f095'
+sha256sums=('caff199f799cb8a0c47b484ffc4856237a30717991d1fe8c364aba57de9d96df'
+            '7b260e155af011c4f440c3b9111af669c16921f5a766faceef91ee6b9f3b9e94'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
