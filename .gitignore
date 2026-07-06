@@ -1,0 +1,9 @@
+!PKGBUILD
+!.SRCINFO
+!Makefile
+!.nvchecker.toml
+!build-dev.Dockerfile
+!NOTES.org
+!build-dev-env.sh
+!build-and-test.sh
+*
