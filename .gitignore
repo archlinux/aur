@@ -1,0 +1,9 @@
+# makepkg build artifacts
+/src/
+/pkg/
+*.pkg.tar.*
+*.log
+
+# downloaded / extracted upstream sources
+*.tar.xz
+*.tar.gz
