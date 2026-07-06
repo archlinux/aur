@@ -1,0 +1,26 @@
+pkgbase = qaic-apps-sdk
+	pkgdesc = Qualcomm QAIc Apps SDK - model compiler, execution runtime, and development tools
+	pkgver = 1.21.6.0
+	pkgrel = 1
+	url = https://quic.github.io/cloud-ai-sdk-pages/1.21/Getting-Started/Installation/apps-sdk.html
+	install = qaic-apps-sdk.install
+	arch = x86_64
+	license = LicenseRef-Qualcomm
+	depends = gcc-libs
+	depends = qaic-platform-sdk
+	optdepends = cmake: build C/C++ custom-op examples
+	optdepends = python: Python bindings and Python-based tools
+	optdepends = python-colorama: qaic-prepare-model scripts
+	optdepends = python-cryptography: qaic-encrypt attestation verification
+	optdepends = python-jsonschema: model configurator validation
+	optdepends = python-numpy: SmartNMS and pytools accuracy evaluation
+	optdepends = python-psutil: model configurator and aic-manager monitoring
+	optdepends = python-pytorch: torch-qaic backend integration
+	optdepends = python-setuptools: build custom-op and qaic examples
+	optdepends = python-virtualenv: qaic-pytools and qeff virtual environments
+	optdepends = git: qefficient-library (qeff) installation
+	options = !strip
+	source_x86_64 = aic_apps.Core.1.21.6.0.Linux-AnyCPU-aic_apps.Core.1.21.6.0.Linux-AnyCPU.zip::local://aic_apps.Core.1.21.6.0.Linux-AnyCPU-aic_apps.Core.1.21.6.0.Linux-AnyCPU.zip
+	sha256sums_x86_64 = 5449b1ad0058fc9c219d2066cfe02b428e6d35afeac6b0cec32ae1f6a1ce8b11
+
+pkgname = qaic-apps-sdk

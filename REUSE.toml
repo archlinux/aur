@@ -1,0 +1,7 @@
+version = 1
+
+[[annotations]]
+path = ["PKGBUILD", "*.install", ".SRCINFO"]
+precedence = "merge"
+SPDX-FileCopyrightText = "2026 Swix"
+SPDX-License-Identifier = "0BSD"

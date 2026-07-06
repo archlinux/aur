@@ -1,0 +1,38 @@
+post_install() {
+  # Configure ldconfig for shared libraries
+  ldconfig -i
+
+  cat << 'EOF'
+
+==============================
+QAIc Apps SDK installed.
+==============================
+
+Core executables are at /opt/qti-aic/exec/:
+  qaic-compile  - Model compiler (ONNX → QPC)
+  qaic-exec     - Network execution runtime
+  qaic-opstats  - Operator profiling tool
+
+Installed components:
+  - Hexagon tools (symlinked at /opt/qti-aic/dev/hexagon_tools)
+  - torch_qaic integration (Python 3.12 wheels)
+  - accelerate integration
+  - qaic-ml example
+
+Note: torch_qaic wheels are built for Python 3.12 (cp312).
+  Python 3.13/3.14 support is pending upstream (Qualcomm).
+  Use a Python 3.12 virtualenv for torch_qaic in the meantime.
+
+See https://quic.github.io/cloud-ai-sdk-pages/ for documentation
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  # Clean up ldconfig
+  rm -f /etc/ld.so.conf.d/qaic-apps-sdk.conf
+  ldconfig -i
+}

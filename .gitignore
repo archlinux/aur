@@ -1,0 +1,12 @@
+# Build artifacts
+*.pkg.tar.*
+*.pkg.files
+*.src.tar.gz
+.TLOG.*
+
+# Makepkg intermediates
+.pkgdir/
+
+# Source extracted during build
+src/
+pkg/
