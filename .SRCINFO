@@ -1,13 +1,14 @@
 pkgbase = cosmic-ext-flux
 	pkgdesc = Animated desktop wallpapers for COSMIC — play any video or GIF as your background.
 	pkgver = 3.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/franz-net/cosmic-ext-flux
 	install = cosmic-ext-flux.install
 	arch = x86_64
 	license = GPL
 	makedepends = rust
-	makedepends = just
+	makedepends = cargo
+	depends = cosmic-applets
 	depends = gstreamer
 	depends = gst-plugins-bad
 	depends = gst-plugins-base

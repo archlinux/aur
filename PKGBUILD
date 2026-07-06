@@ -1,14 +1,14 @@
 # Maintainer: Jonathan Colon <rebelinux@gmail.com>
 pkgname=cosmic-ext-flux
 pkgver=3.1.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Animated desktop wallpapers for COSMIC — play any video or GIF as your background."
 arch=(x86_64)
 url="https://github.com/franz-net/cosmic-ext-flux"
 license=('GPL')
-depends=('gstreamer' 'gst-plugins-bad' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugin-va')
-makedepends=('rust' 'just')
+depends=('cosmic-applets' 'gstreamer' 'gst-plugins-bad' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugin-va')
+makedepends=('rust' 'cargo')
 source=("${pkgname}-${pkgver}.zip::https://github.com/franz-net/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('2c765ebe514da28b9d8a84c90afa59e8654657dda601e0165ee98fcee1b2e76a')
 install="cosmic-ext-flux.install"

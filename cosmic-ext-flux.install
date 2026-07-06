@@ -9,3 +9,13 @@ post_install() {
     echo "  Settings > Desktop > Panel > Applets"
     echo "==========================================================="
 }
+
+post_remove() {
+    echo "==========================================================="
+    echo "Thank you for using Flux!"
+    echo " "
+    echo "Please run the following command to uninitialize the service:"
+    echo "  systemctl --user disable --now cosmic-ext-flux-daemon"
+    echo "==========================================================="
+}
+
