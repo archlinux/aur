@@ -1,6 +1,6 @@
 # Maintainer: krmmyvz <https://github.com/krmmyvz>
 pkgname=vibestreamer
-pkgver=1.3.3
+pkgver=1.3.5
 pkgrel=1
 pkgdesc='Modern IPTV player with Xtream Codes and M3U support, built with Qt6 and libmpv'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('qt6-base' 'qt6-svg' 'mpv' 'zlib')
 makedepends=('cmake' 'gcc' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/krmmyvz/vibestreamer/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('551ae70c5336b8fa966be074dc2c6e1ca9ffb139d7e4f6ad667a0b62758dcaf7')
+sha256sums=('95aa3c4881c8705f0afc26a6969854335d99825655f5229740a081a4182b4088')
 
 build() {
     cmake -B build -S "${pkgname}-${pkgver}" \
