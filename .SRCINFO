@@ -1,7 +1,7 @@
 pkgbase = xlibre-input-evdev
 	pkgdesc = XLibre evdev input driver
 	pkgver = 25.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/X11Libre/xf86-input-evdev
 	arch = x86_64
 	groups = xlibre-drivers
