@@ -1,7 +1,7 @@
 # Maintainer: Wrxn <arch at rnny dot xyz>
 _pkgname=Tkmm
 pkgname=tkmm-appimage
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="TotK Mod Manager, a mod manager and merger for Tears of the Kingdom"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "LICENSE-${pkgver}::${_ghraw}/v${pkgver}/License.md"
 )
 noextract=("${_appimage}")
-sha256sums=('218cc9aa94ec2b4fc1549b1ecfa7dcc529b390e6924f0dd738d67f310f78d115'
+sha256sums=('47137ad4e0648ecb28f66125bbad1692b0cb18bfd4d239f2ba5f94f3b21b8014'
             'f61e96cc0d00ece12e001f021cb5732bb9954dd8dc7c0d9c47e4ba499b18a58c')
 prepare() {
     chmod +x "${_appimage}"
