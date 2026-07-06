@@ -1,0 +1,18 @@
+pkgbase = dhis2-downloader-bin
+	pkgdesc = Facilitates downloading data from DHIS2 servers.(Prebuilt version.Use system-wide electron)
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/worldbank/DHIS2-Downloader
+	arch = x86_64
+	license = BSD-2-Clause
+	depends = electron40
+	provides = dhis2-downloader=0.6.3
+	conflicts = dhis2-downloader
+	source = dhis2-downloader-0.6.3.deb::https://github.com/worldbank/DHIS2-Downloader/releases/download/v0.6.3/dhis2-downloader_0.6.3_amd64.deb
+	source = LICENSE-0.6.3::https://raw.githubusercontent.com/worldbank/DHIS2-Downloader/v0.6.3/LICENSE
+	source = dhis2-downloader.sh
+	sha256sums = cfdb8b28d8fe0b4185d5023cd737a1c1119b350fc802370a815c8b6ee89d253a
+	sha256sums = bad9b9b86e5df44ca68150a6928a77a57f988f2786fd61696aa15fb4498f7339
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+
+pkgname = dhis2-downloader-bin
