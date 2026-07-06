@@ -1,0 +1,18 @@
+pkgbase = netwatch-git
+	pkgdesc = Arunachalam's Netwatch: Real-Time Network Intrusion Monitor & Defensive Security Tool. Built for the Tamilnadu Arch Linux community.
+	pkgver = 1.0.r0.g77c0048
+	pkgrel = 1
+	url = https://github.com/Arunachalam-gojosaturo/netwatch
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-psutil
+	depends = python-scapy
+	depends = python-requests
+	provides = netwatch
+	conflicts = netwatch
+	source = git+https://github.com/Arunachalam-gojosaturo/netwatch.git
+	sha256sums = SKIP
+
+pkgname = netwatch-git
