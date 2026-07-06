@@ -2,7 +2,7 @@
 _appname=xiaohongshu
 pkgname="${_appname}-pake"
 _pkgname=XiaoHongShu
-pkgver=3.12.0
+pkgver=3.13.1
 pkgrel=1
 pkgdesc="Use Pake to package XiaoHongShu.小红书 App,是年轻人的生活方式社区,每月有超过2亿人在这里分享生活经验,发现真实、美好、多元的世界,找到想要的生活 。"
 arch=('x86_64')
@@ -18,14 +18,14 @@ source=(
     "${pkgname}-${pkgver}.deb::${_ghurl}/releases/download/V${pkgver}/${_pkgname}_${CARCH}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${pkgver}/LICENSE"
 )
-sha256sums=('fcac91857bdfda17907cbbe10a75116984c2a17cf225350a3c7767dad98012e5'
-            '462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758')
+sha256sums=('8c9b73fef86fc4c9e92b99f8aa3d05e18f0970900fc3411572c830d79f0c9533'
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/pake-//g
         s/${_appname}_512/${_appname}/g
-    " -i "${srcdir}/usr/share/applications/com.pake.${_appname}.desktop"
+    " "${srcdir}/usr/share/applications/com.pake.${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/pake-${_appname}" "${pkgdir}/usr/bin/${_appname}"
