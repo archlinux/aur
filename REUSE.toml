@@ -1,0 +1,41 @@
+version = 1
+
+[[annotations]]
+path = [
+  "PKGBUILD",
+  "esound-system.service",
+  "esound-user.service",
+  ".SRCINFO",
+  ".gitignore",
+  ".nvchecker.toml",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+  "0005-missing-declaration-GCC-15.patch",
+  "0006-revert-close-file-descriptors.patch",
+  "0007-fix-wrong-micro-version.patch",
+  "0008-move-nobeeps-to-the-default-options.patch",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "GPL-2.0-or-later AND LGPL-2.0-or-later"
+
+[[annotations]]
+path = "0003-fix-audsp-crash.patch"
+SPDX-FileCopyrightText = "Debian contributors"
+SPDX-License-Identifier = "GPL-2.0-or-later AND LGPL-2.0-or-later"
+
+[[annotations]]
+path = [
+  "0001-alsa-drain-hang.patch",
+  "0004-link-to-libm.patch",
+]
+SPDX-FileCopyrightText = "Fedora contributors"
+SPDX-License-Identifier = "GPL-2.0-or-later AND LGPL-2.0-or-later"
+
+[[annotations]]
+path = "0002-undeclared-variable.patch"
+SPDX-FileCopyrightText = "Gentoo contributors"
+SPDX-License-Identifier = "GPL-2.0-or-later AND LGPL-2.0-or-later"
