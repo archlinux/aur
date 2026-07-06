@@ -1,9 +1,9 @@
-# Maintainer: Arunachalam (Vellore, Tamil Nadu, India) <arunachalamthehacker@gmail.com>
+# Maintainer: Arunachalam (Vellore, TN) <arunachalamthehacker@gmail.com>
 
 pkgname=cyberkit-git
 pkgver=1.0.r0.g0000000
 pkgrel=1
-pkgdesc="All-in-One Cybersecurity Toolkit by Arunachalam. 22+ offensive/defensive tools in one script. (Vellore, Tamil Nadu)."
+pkgdesc="Arunachalam's Cyberkit: All-in-One Cybersecurity Toolkit. A specialized script for the Vellore Arch Linux community."
 arch=('any')
 url="https://github.com/Arunachalam-gojosaturo/cyberkit"
 license=('MIT')

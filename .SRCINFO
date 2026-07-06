@@ -1,5 +1,5 @@
 pkgbase = cyberkit-git
-	pkgdesc = All-in-One Cybersecurity Toolkit by Arunachalam. 22+ offensive/defensive tools in one script. (Vellore, Tamil Nadu).
+	pkgdesc = Arunachalam's Cyberkit: All-in-One Cybersecurity Toolkit. A specialized script for the Vellore Arch Linux community.
 	pkgver = 1.0.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/Arunachalam-gojosaturo/cyberkit
