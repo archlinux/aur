@@ -1,0 +1,25 @@
+pkgbase = fw-fanctrl-gui-git
+	pkgdesc = Graphical fan curve editor and tray controller for fw-fanctrl on Framework laptops (git)
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/jslay88/fw-fanctrl-gui
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = rust
+	depends = fw-fanctrl
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = openssl
+	depends = hicolor-icon-theme
+	optdepends = gnome-shell-extension-appindicator: tray icon support on GNOME Shell
+	provides = fw-fanctrl-gui
+	conflicts = fw-fanctrl-gui
+	options = !strip
+	source = git+https://github.com/jslay88/fw-fanctrl-gui.git
+	sha256sums = SKIP
+
+pkgname = fw-fanctrl-gui-git
