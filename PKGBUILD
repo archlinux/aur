@@ -1,8 +1,9 @@
-# Maintainer: Lukas Kucharczyk <lukas@kucharczyk.xyz>
+# Maintainer: Ingo Meyer <ij_m@gmx.de>
+# Contributor: Lukas Kucharczyk <lukas@kucharczyk.xyz>
 
 pkgname=vivaldi-update-ffmpeg-hook
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hook to automatically enable proprietary media playback"
 url=https://github.com/KucharczykL/vivaldi-update-ffmpeg-hook
 arch=('any')
