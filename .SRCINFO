@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-jellycon
 	pkgdesc = Lightweight Kodi add-on that lets you browse and play media files directly from your Jellyfin server.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/jellyfin/jellycon
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = kodi-addon-jellycon
 	depends = python-requests
 	depends = python-six
 	depends = python-websocket-client
-	source = kodi-addon-jellycon-1.0.1::https://github.com/jellyfin/jellycon/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = c68513546a5898d6ebec08d3ddd88c53783e4373f2021767de775deec3f8732c
+	source = kodi-addon-jellycon-1.0.2::https://github.com/jellyfin/jellycon/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 4053cb40c0ea25bab3cf13e128a70e1a2101e23213aa9b14bf5fa6ddcb046394
 
 pkgname = kodi-addon-jellycon
