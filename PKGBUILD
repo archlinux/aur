@@ -1,13 +1,13 @@
 # Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 
 pkgname=veesem-git
-pkgver=r20.d25c8fb
+pkgver=0.1.r25.gbabc3a2
 pkgrel=1
 pkgdesc='V.Smile emulator'
 arch=('x86_64')
 url='https://github.com/sp1187/veesem/'
 license=('ISC')
-depends=('gcc-libs' 'glibc' 'libglvnd' 'sdl2')
+depends=('dbus' 'glibc' 'hicolor-icon-theme' 'libgcc' 'libglvnd' 'libstdc++' 'sdl2' 'xdg-desktop-portal')
 makedepends=('cmake' 'git')
 provides=('veesem')
 source=("git+https://github.com/sp1187/veesem.git")
@@ -15,14 +15,13 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     cmake \
         -B build \
         -S "${pkgname%-git}" \
-        -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev
