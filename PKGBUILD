@@ -31,7 +31,7 @@ source=(
   "onetalker.sh"
 )
 sha256sums=('85f94de01b90b4268b49a4912b10e80d4d0597bf34180ff279dbe479332e36b4'
-            'b5e568db1798812001a8c495b8049a5bb23a9434df933548c0e6762c49f1c9b3')
+            '01e25123d26a68289424b1a5640c5d220f1aed8d94c41392f1a2610cac4011f5')
 
 prepare() {
   cd "${pkgname}"
