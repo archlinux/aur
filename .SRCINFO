@@ -1,13 +1,13 @@
 pkgbase = cockpit-compose
 	pkgdesc = Docker Compose management plugin for Cockpit
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/RXTX4816/cockpit-compose
 	arch = any
 	license = MIT
 	depends = cockpit
 	optdepends = docker: container runtime with Compose plugin
-	source = cockpit-compose-0.11.0.tar.gz::https://github.com/RXTX4816/cockpit-compose/releases/download/v0.11.0/cockpit-compose-0.11.0.tar.gz
-	sha256sums = e304bd4bd22fe633c3ca8f00c1fdef6909a9f1be426e9d89299fbe4495bf46f7
+	source = cockpit-compose-0.11.1.tar.gz::https://github.com/RXTX4816/cockpit-compose/releases/download/v0.11.1/cockpit-compose-0.11.1.tar.gz
+	sha256sums = 232a872d22dedca13e3be0c406ba7a0d5e1147e8798e2f0181b95013daf3d5d1
 
 pkgname = cockpit-compose
