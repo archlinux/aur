@@ -7,13 +7,14 @@
 pkgname=xlibre-video-vesa
 _pkgname=xf86-video-vesa
 pkgver=25.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc="XLibre vesa video driver"
 arch=(x86_64)
 license=('MIT')
 url='https://github.com/X11Libre/xf86-video-vesa'
 depends=('glibc' 'xlibre-xserver')
 makedepends=('xlibre-xserver-devel' 'X-ABI-VIDEODRV_VERSION=28.0')
+provides=('xf86-video-vesa')
 conflicts=('xf86-video-vesa' 'X-ABI-VIDEODRV_VERSION<28' 'X-ABI-VIDEODRV_VERSION>=29')
 groups=('xlibre-drivers')
 source=("${url}/archive/refs/tags/xlibre-${_pkgname}-${pkgver}.tar.gz")
