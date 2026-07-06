@@ -1,6 +1,6 @@
 pkgbase = rubyripperremix
 	pkgdesc = Secure audiodisc ripper with AccurateRip and CTDB verification (Fork of rubyripper)
-	pkgver = 0.8.0rc4_0.4.0
+	pkgver = 0.8.0rc4_0.5.0
 	pkgrel = 1
 	url = https://github.com/Masterisk-F/RubyRipperRemix
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = rubyripperremix
 	optdepends = opus-tools: Opus encoding support
 	optdepends = neroaacenc-bin: Nero AAC encoding support
 	optdepends = ctdb-cli: CUETools Database verification and submittion support
-	source = rubyripperremix-v0.8.0rc4_0.4.0.tar.gz::https://github.com/Masterisk-F/RubyRipperRemix/archive/refs/tags/v0.8.0rc4_0.4.0.tar.gz
-	sha256sums = e297300a38634aa0a18336a8cb8443100e7c280d14afdc2bdf27654cd076ef81
+	source = rubyripperremix-v0.8.0rc4_0.5.0.tar.gz::https://github.com/Masterisk-F/RubyRipperRemix/archive/refs/tags/v0.8.0rc4_0.5.0.tar.gz
+	sha256sums = 7fe7c08399e5d4934db0bb4ace03ad093aaa2f2eba8aa7d14bb73a885c0816fb
 
 pkgname = rubyripperremix
