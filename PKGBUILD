@@ -4,7 +4,7 @@
 _pkgname=libjxl
 pkgname=$_pkgname-metrics
 pkgver=0.11.1
-pkgrel=13
+pkgrel=14
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics'
 arch=(x86_64)
 url=https://jpeg.org/jpegxl/
@@ -65,9 +65,9 @@ sha256sums=(
 
 prepare() {
   git -C $_pkgname submodule init third_party/{skcms,sjpeg,libjpeg-turbo}
-  git -C $_pkgname config submodule.third_party/skcms.url "$srcdir/skcms"
-  git -C $_pkgname config submodule.third_party/sjpeg.url "$srcdir/sjpeg"
-  git -C $_pkgname config submodule.third_party/libjpeg-turbo.url "$srcdir/libjpeg-turbo"
+  git -C $_pkgname config submodule.third_party/skcms.url "$srcdir"/skcms
+  git -C $_pkgname config submodule.third_party/sjpeg.url "$srcdir"/sjpeg
+  git -C $_pkgname config submodule.third_party/libjpeg-turbo.url "$srcdir"/libjpeg-turbo
   git -C $_pkgname -c protocol.file.allow=always submodule update
 }
 
@@ -90,7 +90,7 @@ build() {
 package() {
   DESTDIR="$pkgdir" make -C build install
   install -Dm644 $_pkgname/{LICENSE,PATENTS} \
-    -t "$pkgdir/usr/share/licenses/$pkgname"
-  ln -s /usr/bin/butteraugli_main "$pkgdir/usr/bin/butteraugli"
-  ln -s /usr/bin/ssimulacra_main "$pkgdir/usr/bin/ssimulacra"
+    -t "$pkgdir"/usr/share/licenses/$pkgname
+  ln -s /usr/bin/butteraugli_main "$pkgdir"/usr/bin/butteraugli
+  ln -s /usr/bin/ssimulacra_main "$pkgdir"/usr/bin/ssimulacra
 }
