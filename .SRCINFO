@@ -1,0 +1,24 @@
+pkgbase = orcasvn
+	pkgdesc = Visual SVN Desktop client (Tauri 2)
+	pkgver = 0.4.7
+	pkgrel = 1
+	url = https://github.com/wustites/OrcaSVN
+	arch = x86_64
+	license = MIT
+	makedepends = base-devel
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = rust
+	makedepends = pkgconf
+	makedepends = cargo-tauri
+	depends = subversion
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = librsvg
+	depends = openssl
+	depends = mesa
+	source = orcasvn-0.4.7.tar.gz::https://github.com/wustites/OrcaSVN/archive/refs/tags/v0.4.7.tar.gz
+	sha256sums = SKIP
+
+pkgname = orcasvn
