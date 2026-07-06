@@ -1,6 +1,6 @@
 pkgbase = adspower-global
 	pkgdesc = AdsPower - Antidetect Browser for Multi-Account Management
-	pkgver = 8.4.3
+	pkgver = 8.6.3
 	pkgrel = 1
 	url = https://www.adspower.com
 	arch = x86_64
@@ -33,9 +33,9 @@ pkgbase = adspower-global
 	optdepends = libsecret: credential storage
 	optdepends = libappindicator-gtk3: tray icon support
 	optdepends = xdg-utils: open URLs in default browser
+	noextract = AdsPower-Global-8.6.3-x64.deb
 	options = !strip
-	source = AdsPower-Global-8.4.3-x64.deb::https://version.adspower.net/software/linux-x64-global/8.4.3/AdsPower-Global-8.4.3-x64.deb
-	noextract = AdsPower-Global-8.4.3-x64.deb
-	sha256sums = 04fc2c27af2d7f3fbc6215335483798c0ed23bfe13e09f9427308a16d5f4a2b7
+	source = AdsPower-Global-8.6.3-x64.deb::https://version.adspower.net/software/linux-x64-global/8.6.3/AdsPower-Global-8.6.3-x64.deb
+	sha256sums = 1ad4ffb5720bca1f9cc9c60023bdf754c2fb0812ce6f1834f5897e3907be9c63
 
 pkgname = adspower-global
