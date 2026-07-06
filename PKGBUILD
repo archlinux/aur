@@ -2,12 +2,13 @@
 
 pkgname=lazysql
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform TUI database management tool written in Go"
 arch=('x86_64' 'i386' 'aarch64')
 makedepends=('go')
 url="https://github.com/jorgerojas26/$pkgname"
 license=('MIT')
+depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jorgerojas26/lazysql/archive/refs/tags/v$pkgver.tar.gz")
 
 prepare() {
@@ -33,5 +34,6 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	install -Dm755 build/"$pkgname" "$pkgdir"/usr/bin/"$pkgname"
+	install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
 sha256sums=('e979b86b7b40e03987d5855cece649791cf6307fc5785e1c6aac96ce6ee5135a')
