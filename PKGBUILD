@@ -71,7 +71,7 @@ prepare() {
     # -- Select optimal binary based on host architecture and CPU features --
     case "${CARCH}" in
         aarch64)
-            asset="cosmostrix-bin-${tag}-linux-aarch64.tar.gz"
+            asset="cosmostrix-${tag}-linux-aarch64.tar.gz"
             ;;
         x86_64)
             local level="v1"
@@ -84,7 +84,7 @@ prepare() {
                 level="v2"
             fi
 
-            asset="cosmostrix-bin-${tag}-linux-amd64-${level}.tar.gz"
+            asset="cosmostrix-${tag}-linux-amd64-${level}.tar.gz"
             ;;
         *)
             error "Unsupported architecture: ${CARCH}"
@@ -116,16 +116,65 @@ prepare() {
         "${url}.sha512sum"
 
     # -- Verify integrity --
-    msg2 "Verifying SHA512 checksum..."
+    # SHA-512 is always verified (mandatory — every Linux has sha512sum).
+    # BLAKE2b-512 + SHAKE256 are optional quantum-resistant checksums.
+    # They are verified only when the corresponding tool is available.
+    msg2 "Verifying SHA512 checksum (required)..."
     (
         cd "${srcdir}" || return 1
         sha512sum --check "${asset}.sha512sum"
     )
 
+    # Optional: BLAKE2b-512 (quantum-resistant, in GNU coreutils)
+    if command -v b2sum >/dev/null 2>&1; then
+        msg2 "Verifying BLAKE2b checksum (optional, quantum-resistant)..."
+        curl \
+            --fail \
+            --location \
+            --proto '=https' \
+            --tlsv1.2 \
+            --output "${srcdir}/${asset}.b2sum" \
+            "${url}.b2sum"
+        (
+            cd "${srcdir}" || return 1
+            b2sum --check "${asset}.b2sum"
+        )
+    else
+        msg2 "b2sum not found — skipping BLAKE2b verification (optional)"
+    fi
+
+    # Optional: SHAKE256 (quantum-resistant, NIST PQ standard, via Python)
+    if command -v python3 >/dev/null 2>&1; then
+        msg2 "Verifying SHAKE256 checksum (optional, quantum-resistant)..."
+        curl \
+            --fail \
+            --location \
+            --proto '=https' \
+            --tlsv1.2 \
+            --output "${srcdir}/${asset}.shake256" \
+            "${url}.shake256"
+        (
+            cd "${srcdir}" || return 1
+            COMPUTED=$(python3 -c "
+import hashlib
+data = open('${asset}', 'rb').read()
+print(hashlib.shake_256(data).hexdigest(64))
+")
+            EXPECTED=$(awk '{print $1}' "${asset}.shake256")
+            [ "${COMPUTED}" = "${EXPECTED}" ] || {
+                error "SHAKE256 verification FAILED"
+                return 1
+            }
+            msg2 "SHAKE256 verification OK"
+        )
+    else
+        msg2 "python3 not found — skipping SHAKE256 verification (optional)"
+    fi
+
     # -- Extract (normalize archive layout) --
     # Older releases nested files under a subdirectory (e.g.
     # cosmostrix-1.1.1-stable.1-linux-amd64-v3/); newer releases are flat.
-    # Artifact naming uses the tag (e.g. cosmostrix-bin-v2.1.0-linux-amd64-v3.tar.gz).
+    # Artifact naming uses the tag (e.g. cosmostrix-v2.1.0-linux-amd64-v3.tar.gz).
     # Detect and strip the leading directory if present so package() always
     # finds files at ${srcdir}/cosmostrix, ${srcdir}/LICENSE, etc.
     local top_entry
