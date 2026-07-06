@@ -1,6 +1,6 @@
 pkgbase = plex-tui
 	pkgdesc = Standalone Plex terminal UI with mpv playback
-	pkgver = 0.16.3
+	pkgver = 0.16.4
 	pkgrel = 1
 	url = https://github.com/so1omon563/plex-tui
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = plex-tui
 	depends = python-plexapi
 	depends = python-rich
 	depends = python-textual
-	source = plex-tui-0.16.3.tar.gz::https://github.com/so1omon563/plex-tui/archive/refs/tags/v0.16.3.tar.gz
-	sha256sums = 9b2d48c6c66f3c90c7f263e6aa33e3346436c2a49d113bcadcef75dc57506829
+	source = plex-tui-0.16.4.tar.gz::https://github.com/so1omon563/plex-tui/archive/refs/tags/v0.16.4.tar.gz
+	sha256sums = 9d6126a2586ac9ddf2ce518876137ef4621bf88353732601535b2d9519ca503d
 
 pkgname = plex-tui
