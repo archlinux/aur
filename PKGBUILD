@@ -1,17 +1,24 @@
 # Maintainer: notfranko_ <notfranko@techlab.cloud>
+# Contributor: hypevhs <hackgammavision at gmail dot com>
 
 pkgbase=linux-bsb
-pkgver=7.1.2.arch1
-pkgrel=1
+pkgver=7.1.2.arch3
+pkgrel=2
 pkgdesc='Linux kernel with patches to make the Bigscreen Beyond headset work properly'
 url='https://github.com/archlinux/linux'
-arch=(x86_64)
+arch=(
+  x86_64
+)
 license=(GPL-2.0-only)
 makedepends=(
   bc
+  binutils
   cpio
   gettext
+  glibc
   libelf
+  libgcc
+  openssl
   pahole
   perl
   python
@@ -19,7 +26,10 @@ makedepends=(
   rust-bindgen
   rust-src
   tar
+  xxhash
   xz
+  zlib
+  zstd
 )
 options=(
   !debug
@@ -29,33 +39,34 @@ _srcname=linux-${pkgver%.*}
 _srctag=v${pkgver%.*}-${pkgver##*.}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
-  bigscreen-beyond-kernel.mbx
+  bigscreen-beyond-kernel-7.0.12.patch
   0001-Change-device-uvc_version-check-on-dwMaxVideoFrameSi.patch
   amd-bsb-dsc-fix.patch
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
-  config  # the main kernel config file
 )
+source_x86_64=(config.x86_64)
 validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
-# https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=('37198c93727be247c9fb5309bb86cd5e496c61e5322cd8c4eca9476bb0b5883f'
             'SKIP'
-            'aac8962628cc750c66edd2b18643ccf042c240ec6f81793b398440710286d1c6'
+            '31b1dd41bde411c860b86eb338e4e51775ba8e19771cbb9fbe12a978cd7c1c82'
             '62aa97495d491b6efda27055a0a203d98ec527a8c7d21a168ffa7fd12c08a927'
             'c22989441488c4d7a027f4ab2c049be838a43caac3f22abd987c0bef718c5438'
-            '8af76b8c229277084e6349e6a8b029001eddc8ef10593cf6ccd49672c0744ec4'
-            'SKIP'
-            '505d823490e964e66ebe5889a3701347b4e4e2faf1772b3964f0360a176eadf8')
+            '192f924ebf6b64838b8447a967acee494fe897c3d84145434358b65305aebd9a'
+            'SKIP')
+sha256sums_x86_64=('7d299a4f5d4278d1d2d87bc8188447cf4dc76ab1b61cfc2cef46b770b5ffb121')
 b2sums=('0d6e9ff535af085190da7df50887b20f395cd4d6befb7158c9993bf77fe92459a9982877ce944ca522192daa5a54c952c3d368def04b579796ba7109a972453b'
         'SKIP'
-        '463842a2ac6a26a55c0602953bfea96bfd13d52520c26fe11eb3047c9a5b42dbc37904563e692cce7cfa0b5a6c157e232828325a7398ee075f642c2edfec728f'
+        '30ee044796d191d8fcac830c1100c482921cdeccb19f34c314944cc324981e879016e2f7770c9e3e244d873b149fbdae2c628edb5e78e7a86ab5a0a081b3bab5'
         'f2ea744efc628122f96500880717a9bfe03ffdfee30e8027bac44cbc7e0ab2f684dc6a3f9619da8941d1cb45dd80f4e34a022fcfea135baa4174f41fbd10f8eb'
         '77a7eb3a552ca944de6d86364c197472653fba465f0cfbf490059bcf9f5df0638b41478d012febb6be272e16684112116e3fa5d3f0cdd0870f454f588dbd5784'
-        '7ad356f1e9e7ca48ee156389b36b43927a65e2c058978fe50719f5a676baaf2863bc97acb9b15fdfac8ca2f689bb53cd1a6eeed10a11c68823ec744ebee40e0c'
-        'SKIP'
-        'f31d83e1e10bb901d0d25c1db0ad2844584ff1014c8bf36f342fcf1999f41e5e2d5ddfa20a5a23d4626c6b35005c7e01ebe8ae7f3de3d4b61a189a49add3a158')
+        '4fab0cea48c5457bc5dfef0b55194d1a2ad316ffbfea7d64b94d36d7e43b1636256e3b54213c65d42e4ec8bcf79022efe78e9525620476859dd08aba9cdb77e8'
+        'SKIP')
+b2sums_x86_64=('dc8b97708ce42b9c32767b1b0344e1373640c898aa67e6b0123c0f85a3a7fafa798c7f9ffb744147488309b78229c14eaf0ac0456e1d74a6c80e513ceb26d127')
+
+# https://www.kernel.org/pub/linux/kernel/v7.x/sha256sums.asc
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -79,9 +90,9 @@ prepare() {
   done
 
   echo "Setting config..."
-  cp ../config .config
+  cp ../config.$CARCH .config
   make olddefconfig
-  diff -u ../config .config || :
+  diff -u ../config.$CARCH .config || :
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -101,6 +112,7 @@ _package() {
     kmod
   )
   optdepends=(
+    "$pkgbase-headers: headers and scripts for building modules"
     'linux-firmware: firmware images needed for some devices'
     'scx-scheds: to use sched-ext schedulers'
     'wireless-regdb: to set the correct wireless channels of your country'
@@ -137,29 +149,48 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-  depends=(pahole)
+  depends=(
+    binutils
+    glibc
+    libelf
+    libgcc
+    openssl
+    pahole
+    xxhash
+    zlib
+    zstd
+  )
+  provides=(LINUX-HEADERS)
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+
+  local karch
+  case $CARCH in
+    x86_64) karch=x86 ;;
+    *) echo "Unknown CARCH $CARCH"; exit 1 ;;
+  esac
 
   echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
     localversion.* version vmlinux tools/bpf/bpftool/vmlinux.h
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
-  install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
+  install -Dt "$builddir/arch/$karch" -m644 arch/$karch/Makefile
   cp -t "$builddir" -a scripts
   ln -srt "$builddir" "$builddir/scripts/gdb/vmlinux-gdb.py"
 
-  # required when STACK_VALIDATION is enabled
-  install -Dt "$builddir/tools/objtool" tools/objtool/objtool
+  if [[ $(scripts/config -s CONFIG_HAVE_STACK_VALIDATION) = y ]]; then
+    install -Dt "$builddir/tools/objtool" tools/objtool/objtool
+  fi
 
-  # required when DEBUG_INFO_BTF_MODULES is enabled
-  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  if [[ $(scripts/config -s CONFIG_DEBUG_INFO_BTF_MODULES) = y ]]; then
+    install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  fi
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
-  cp -t "$builddir/arch/x86" -a arch/x86/include
-  install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
+  cp -t "$builddir/arch/$karch" -a arch/$karch/include
+  install -Dt "$builddir/arch/$karch/kernel" -m644 arch/$karch/kernel/asm-offsets.s
 
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
@@ -179,8 +210,10 @@ _package-headers() {
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
   echo "Installing Rust files..."
-  install -Dt "$builddir/rust" -m644 rust/*.rmeta
-  install -Dt "$builddir/rust" rust/*.so
+  if [[ $(scripts/config -s CONFIG_RUST) = y ]]; then
+    install -Dt "$builddir/rust" -m644 rust/*.rmeta
+    install -Dt "$builddir/rust" rust/*.so
+  fi
 
   echo "Installing unstripped VDSO..."
   make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install \
@@ -189,7 +222,7 @@ _package-headers() {
   echo "Removing unneeded architectures..."
   local arch
   for arch in "$builddir"/arch/*/; do
-    [[ $arch = */x86/ ]] && continue
+    [[ $arch = */$karch/ ]] && continue
     echo "Removing $(basename "$arch")"
     rm -r "$arch"
   done
