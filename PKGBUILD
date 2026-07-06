@@ -1,8 +1,10 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
+# Auto Upgrade: https://github.com/phnx47/pkgbuilds
+
 _pkgname=moon
 pkgname="${_pkgname}-bin"
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='Task runner and repo management tool for the web ecosystem'
 license=('MIT')
@@ -13,8 +15,8 @@ arch=('x86_64' 'aarch64')
 depends=('gcc-libs')
 source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}.tar.xz::${url}/releases/download/v${pkgver}/moon_cli-${arch[0]}-unknown-linux-gnu.tar.xz")
 source_aarch64=("${_pkgname}-${pkgver}-${arch[1]}.tar.xz::${url}/releases/download/v${pkgver}/moon_cli-${arch[1]}-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('6895398949d3f5682ecfc0e47e77c11ec1b65a62c92179b240e640af49a9d835')
-sha256sums_aarch64=('1e4aac8682ba3f86a944e3d9ca1f9040f59cb504493850e8c1ced9a89cab6a35')
+sha256sums_x86_64=('c4ad898ec024f5cc952000b3655d87ec266bb5c1429ee25f16fc0ee0313453c2')
+sha256sums_aarch64=('46f6a60edbff5e80bcbb50f7058e63a00760103388b8f79c4fa364ef6ac36793')
 
 prepare() {
   cd "moon_cli-${CARCH}-unknown-linux-gnu"
