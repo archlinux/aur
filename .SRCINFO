@@ -1,8 +1,9 @@
 pkgbase = patch-bin
 	pkgdesc = A lightweight code editor built with Electron, Monaco Editor, and React
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Momwhyareyouhere/Patch
+	install = patch-bin.install
 	arch = x86_64
 	license = MIT
 	depends = fuse2
