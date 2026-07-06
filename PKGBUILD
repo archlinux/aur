@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A minimal note manager that stays out of your way"
 arch=('x86_64')
 url="https://github.com/${pkgauthor}/${pkgname}"
-license=('Apache-2.0')
+license=('GPL-2.0-only')
 
 makedepends=('make' 'gcc')
 depends=('glibc' 'libgcc')
