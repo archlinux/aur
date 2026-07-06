@@ -1,7 +1,8 @@
+# Maintainer: Arunachalam (Tamil Nadu, India) <arunachalamthehacker@gmail.com>
 pkgname=luna-hyprdots
 pkgver=r1.d3fe1bb
 pkgrel=1
-pkgdesc="Modern Minimalist Hyprland Rice for Arch Linux featuring AGS"
+pkgdesc="Arunachalam's Modern Minimalist Hyprland Rice for Arch Linux. Optimized for the Tamil Nadu developer ecosystem."
 arch=('any')
 url="https://github.com/Arunachalam-gojosaturo/luna-hyprdots"
 license=('GPL3')

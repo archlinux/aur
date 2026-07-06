@@ -1,5 +1,5 @@
 pkgbase = luna-hyprdots
-	pkgdesc = Modern Minimalist Hyprland Rice for Arch Linux featuring AGS
+	pkgdesc = Arunachalam's Modern Minimalist Hyprland Rice for Arch Linux. Optimized for the Tamil Nadu developer ecosystem.
 	pkgver = r1.d3fe1bb
 	pkgrel = 1
 	url = https://github.com/Arunachalam-gojosaturo/luna-hyprdots
