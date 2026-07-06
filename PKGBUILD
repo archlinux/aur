@@ -2,7 +2,7 @@
 # Maintainer:  Radu Potop <radu at wooptoo dot com>
 
 pkgname=oauth2c
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='User-friendly CLI for OAuth2'
 arch=('x86_64' 'arm64' 'armv6')
@@ -10,7 +10,7 @@ url="https://github.com/SecureAuthCorp/oauth2c"
 license=('Apache-2.0')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 makedepends=('go')
-sha256sums=('ff2b46b344b3444e344bba336fefe6e7706b3196b69c4e38c9e95dd527110745')
+sha256sums=('36606ec1c5eca7c7fff6bb87d4171031ddc5bfb93474eaf97191fe16b9902f24')
 
 build() {
     cd "${srcdir}/$pkgname-$pkgver"
