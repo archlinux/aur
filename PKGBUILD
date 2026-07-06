@@ -2,7 +2,7 @@
 # Contributor: zneix <zneix@zneix.eu>
 
 pkgname="chatterino2-7tv-git"
-pkgver=7.5.4.r168.g35ff16d
+pkgver=7.5.5.r158.g26b39f3
 pkgrel=1
 pkgdesc='A fork of Chatterino2 with built-in support for 7tv emotes'
 url="https://github.com/SevenTV/chatterino7"
@@ -10,17 +10,17 @@ license=('MIT')
 arch=('x86_64')
 
 depends=(
+  'hunspell'
   'libnotify'
-  'openssl'
   'qt6-base'
   'qt6-svg'
-  'qtkeychain-qt6'
 )
 makedepends=(
   'boost'
   'cmake'
   'expected-lite'
   'git'
+  'miniaudio'
   'ninja'
   'rapidjson'
 )
@@ -45,7 +45,7 @@ prepare() {
   git rm -r lib/expected-lite
   git rm -r lib/googletest
   git rm -r lib/kimageformats
-  git rm -r lib/qtkeychain
+  git rm -r lib/miniaudio
   git rm -r lib/rapidjson
   git rm -r lib/twitch-eventsub-ws/lib/fmt
   git rm -r tools/crash-handler
@@ -59,7 +59,7 @@ pkgver() {
 }
 
 build() {
-  export LDFLAGS+=" -Wl,--copy-dt-needed-entries"
+  export CXXFLAGS+=" -I/usr/include/miniaudio"
 
   local _cmake_options=(
     -B build
@@ -73,9 +73,11 @@ build() {
     -DBUILD_WITH_QT6=ON
     -DCHATTERINO_LTO=OFF
     -DCHATTERINO_NO_AVIF_PLUGIN=ON # use system kimageformats
+    -DCHATTERINO_PLUGINS=ON
+    -DCHATTERINO_SPELLCHECK=ON
     -DCHATTERINO_UPDATER=OFF
     -DUSE_PRECOMPILED_HEADERS=OFF
-    -DUSE_SYSTEM_QTKEYCHAIN=ON
+    -DUSE_SYSTEM_MINIAUDIO=ON
   )
 
   cmake "${_cmake_options[@]}"
