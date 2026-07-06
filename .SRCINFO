@@ -1,7 +1,7 @@
 pkgbase = xlibre-video-nouveau
 	pkgdesc = XLibre Open Source 3D acceleration driver for nVidia cards
 	pkgver = 25.0.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/X11Libre/xf86-video-nouveau
 	arch = x86_64
 	groups = xlibre-drivers
