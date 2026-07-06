@@ -1,14 +1,14 @@
 pkgbase = arthas
 	pkgdesc = Arthas is a Java Diagnostic tool open sourced by Alibaba
-	pkgver = 4.3.0
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://github.com/alibaba/arthas
 	arch = x86_64
 	license = APACHE
 	depends = java-runtime-headless>=6
-	source = arthas-4.3.0.zip::https://github.com/alibaba/arthas/releases/download/arthas-all-4.3.0/arthas-bin.zip
+	source = arthas-4.3.1.zip::https://github.com/alibaba/arthas/releases/download/arthas-all-4.3.1/arthas-bin.zip
 	source = arthas.sh
-	sha256sums = 5d95711e0d932b66fdd10b8215cd83c4d361ab4aa87ed9ce4a4b8b31209ec601
+	sha256sums = fce150a0213b28881ee2a99cd242a95e8173017211f5f8310499583b344d32a5
 	sha256sums = ce16fa1a08024a4b41c1a0017d3f0d8e155599c6d99f99bb56eac6f3ddc21069
 
 pkgname = arthas
