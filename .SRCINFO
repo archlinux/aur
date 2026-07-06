@@ -1,6 +1,6 @@
 pkgbase = onetalker-git
 	pkgdesc = An Augmentative and Alternative Communication (AAC) Aid
-	pkgver = 2026.5.r1.g0a7df87
+	pkgver = 2026.6.r22.g82acaa3
 	pkgrel = 1
 	url = https://onetalker.org
 	install = onetalker.install
@@ -24,6 +24,6 @@ pkgbase = onetalker-git
 	source = onetalker::git+https://codeberg.org/OneTalker/OneTalker
 	source = onetalker.sh
 	sha256sums = SKIP
-	sha256sums = b5e568db1798812001a8c495b8049a5bb23a9434df933548c0e6762c49f1c9b3
+	sha256sums = 01e25123d26a68289424b1a5640c5d220f1aed8d94c41392f1a2610cac4011f5
 
 pkgname = onetalker-git

@@ -3,7 +3,7 @@
 
 _pkgname=onetalker
 pkgname=$_pkgname-git
-pkgver=2026.5.r1.g0a7df87
+pkgver=2026.6.r22.g82acaa3
 pkgrel=1
 pkgdesc='An Augmentative and Alternative Communication (AAC) Aid'
 arch=(x86_64)
@@ -32,10 +32,8 @@ source=(
   "$_pkgname::git+https://codeberg.org/OneTalker/OneTalker"
   "onetalker.sh"
 )
-sha256sums=(
-  'SKIP'
-  'b5e568db1798812001a8c495b8049a5bb23a9434df933548c0e6762c49f1c9b3'
-)
+sha256sums=('SKIP'
+            '01e25123d26a68289424b1a5640c5d220f1aed8d94c41392f1a2610cac4011f5')
 
 prepare() {
   cd "${_pkgname}"
@@ -62,7 +60,7 @@ build() {
 package() {
   cd "${_pkgname}"
 
-  install -Dm755 "target/release/${_pkgname}" "${pkgdir}/opt/${_pkgname}/${_pkgname}"
+  install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}"
   install -Dm755 ../onetalker.sh "${pkgdir}/usr/bin/${_pkgname}"
 
   install -Dm644 LICENSE.GPL-3.0-only "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
