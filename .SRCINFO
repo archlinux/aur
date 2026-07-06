@@ -1,6 +1,6 @@
 pkgbase = kdl-lsp
 	pkgdesc = A KDL Language Server Protocol implementation from kdl-rs
-	pkgver = 6.6.1
+	pkgver = 6.7.1
 	pkgrel = 1
 	url = https://github.com/kdl-org/kdl-rs
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = kdl-lsp
 	makedepends = cargo
 	makedepends = rust
 	depends = glibc
-	source = kdl-lsp-6.6.1.tar.gz::https://github.com/kdl-org/kdl-rs/archive/refs/tags/v6.6.1.tar.gz
-	sha256sums = 3bb60d8304e1f910a8d9c436125e4512cef9c95f535dd8882be9932d7d12c253
+	source = kdl-lsp-6.7.1.tar.gz::https://github.com/kdl-org/kdl-rs/archive/refs/tags/kdl-lsp-v6.7.1.tar.gz
+	sha256sums = b695f9a5cbec847e62b876c4efbf14ad9313359435c75a35696fdab165ec89f9
 
 pkgname = kdl-lsp
