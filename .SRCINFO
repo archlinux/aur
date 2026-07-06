@@ -1,0 +1,20 @@
+pkgbase = git-flex
+	pkgdesc = Show off your coding stats in style. Beautiful terminal cards, shareable SVGs, and fun highlights from your git history.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/LarsenCundric/git-flex
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	provides = flex
+	noextract = git-flex-1.1.1.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = git-flex-1.1.1.tgz::https://registry.npmjs.org/git-flex/-/git-flex-1.1.1.tgz
+	b2sums = 03abbe638582ecd29ed5edb839bfd401597fab1f2bf42cae2031cf105e6b294fad9193c924120bfd3555034564baa61bd00e9404c21bb3c61917883ab22b9e75
+
+pkgname = git-flex
