@@ -1,6 +1,6 @@
 # Maintainer: Wind-DeterMinati <bugsoc@qq.com>
 pkgname=xenon-mdt
-pkgver=1.4.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="A Mindustry Launcher built on the HMCL UI - supports 5 client variants, mods, saves, servers and ScriptAgent"
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=(
     'xdg-utils: for opening URLs and files'
 )
 source=("${pkgname}-${pkgver}.jar::${url}/releases/download/v${pkgver}/Xenon-${pkgver}.jar")
-sha256sums=('73dfe6feb54aeaf6f1d292f9140be07f25dc6245177716dd666af9d20ea7f965')
+sha256sums=('c7a20816bf6c72906135470e77df5882e8b48b71796d18d042b64771506fd87d')
 
 pkgver() {
     echo "${pkgver}"
