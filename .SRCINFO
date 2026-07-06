@@ -1,0 +1,17 @@
+pkgbase = patch-bin
+	pkgdesc = A lightweight code editor built with Electron, Monaco Editor, and React
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/Momwhyareyouhere/Patch
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = libxss
+	depends = libxtst
+	depends = libxkbfile
+	depends = nss
+	depends = gtk3
+	source = https://github.com/Momwhyareyouhere/Patch/releases/download/v1.0.4/Patch-1.0.4.AppImage
+	sha256sums = SKIP
+
+pkgname = patch-bin
