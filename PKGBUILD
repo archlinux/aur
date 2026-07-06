@@ -2,7 +2,7 @@
 
 pkgbase=motorbridge
 pkgname=(motorbridge libmotorbridge python-motorbridge)
-pkgver=0.4.8
+pkgver=0.4.9
 pkgrel=1
 pkgdesc='Unified CAN motor control stack with a vendor-agnostic Rust core, stable C ABI, and Python/C++ bindings'
 arch=($CARCH)
@@ -29,7 +29,7 @@ checkdepends=()
 optdepends=()
 options=(!strip !debug staticlibs !lto)
 source=("${pkgbase}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('bf5730acaf1b586fbddd41927a2a150ce35144a6dd340425baa170c615b316fb')
+sha256sums=('184df8bc83fd6c279a65b0059935107424ba54b8c8c4f59539722a8c95640f52')
 
 
 prepare() {
