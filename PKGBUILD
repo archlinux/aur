@@ -1,5 +1,5 @@
 pkgname=mcsh
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A Minecraft-inspired Linux shell written in Rust"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Tamim180/mcsh/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f2c0c7b2da7ede54748cce2550eed1f39641e7eb0667f12f76277eec478f1b9d')
+sha256sums=('12a5b9dc66877707e5d49ff5745975973e63ee754e4acfaa4f56680d1054cf90')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
