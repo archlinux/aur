@@ -1,6 +1,6 @@
 pkgbase = container-desktop-bin
 	pkgdesc = Podman desktop companion.A familiar desktop graphical interface to the free and open container manager, podman!(Prebuilt version.Use system-wide electron)
-	pkgver = 5.3.15
+	pkgver = 5.3.18
 	pkgrel = 1
 	url = https://iongion.github.io/container-desktop/
 	arch = aarch64
@@ -10,14 +10,14 @@ pkgbase = container-desktop-bin
 	depends = podman
 	depends = docker
 	provides = container-desktop
-	conflicts = container-desktop=5.3.15
-	source = LICENSE-5.3.15::https://raw.githubusercontent.com/iongion/container-desktop/5.3.15/LICENSE
+	conflicts = container-desktop=5.3.18
+	source = LICENSE-5.3.18::https://raw.githubusercontent.com/iongion/container-desktop/5.3.18/LICENSE
 	source = container-desktop.sh
 	sha256sums = fd5805079cad1ee5ebcfd2a2a58e16553314c51700ce5f4e32dba06d9ce49283
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = container-desktop-5.3.15-aarch64.pacman::https://github.com/iongion/container-desktop/releases/download/5.3.15/container-desktop-linux-aarch64-5.3.15.pacman
-	sha256sums_aarch64 = 43ebcd6daee8916ea20aaccd7e19dbff4f8e78aef1c5ee2a6e13d0c1711d1753
-	source_x86_64 = container-desktop-5.3.15-x86_64.pacman::https://github.com/iongion/container-desktop/releases/download/5.3.15/container-desktop-linux-x64-5.3.15.pacman
-	sha256sums_x86_64 = 546cd7bd9df7a1bf797ddf234aa4d586d5e051d5e4205b8c2e547b7c17fc8de3
+	source_aarch64 = container-desktop-5.3.18-aarch64.pacman::https://github.com/iongion/container-desktop/releases/download/5.3.18/container-desktop-linux-aarch64-5.3.18.pacman
+	sha256sums_aarch64 = bddd5ec04c95a75d6d855b71c2316874511c3a55fb73d24f12e639b046ea7010
+	source_x86_64 = container-desktop-5.3.18-x86_64.pacman::https://github.com/iongion/container-desktop/releases/download/5.3.18/container-desktop-linux-x64-5.3.18.pacman
+	sha256sums_x86_64 = 68291763a4f038af6dfad15d580feed6c58e03043ba3ff73f882cbc368878847
 
 pkgname = container-desktop-bin
