@@ -1,16 +1,16 @@
 pkgbase = ipatool-bin
 	pkgdesc = Command-line tool that allows searching and downloading app packages (known as ipa files) from the iOS App Store.(Prebuilt version)
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/majd/ipatool
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
-	provides = ipatool=2.3.0
+	provides = ipatool=2.3.1
 	conflicts = ipatool
-	source_aarch64 = ipatool-2.3.0-aarch64.tar.gz::https://github.com/majd/ipatool/releases/download/v2.3.0/ipatool-2.3.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = 7466a0e4fe4fa6a17053607bfc37b155a70c5d9f4341f8f24bd8731fee819beb
-	source_x86_64 = ipatool-2.3.0-x86_64.tar.gz::https://github.com/majd/ipatool/releases/download/v2.3.0/ipatool-2.3.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = bd9235b150fa498ed2fa7f4108a9b0bb4e08e8b8eb37a8cbc02d0b3c3c620340
+	source_aarch64 = ipatool-2.3.1-aarch64.tar.gz::https://github.com/majd/ipatool/releases/download/v2.3.1/ipatool-2.3.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 01239141e2654f3f5f08d00f5a31f6fd037b32b925c4d6c8f4433a5302e7f528
+	source_x86_64 = ipatool-2.3.1-x86_64.tar.gz::https://github.com/majd/ipatool/releases/download/v2.3.1/ipatool-2.3.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 9800eb2956c6be275f77337212a0075cdccbce45f39a74f478059e6eb0c52f5d
 
 pkgname = ipatool-bin
