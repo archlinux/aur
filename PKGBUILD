@@ -4,7 +4,7 @@
 pkgname=patool-git
 _pkgname=patool
 pkgver=4.0.5.r7.gce1248b
-pkgrel=1
+pkgrel=2
 pkgdesc="portable command line archive file manager (git checkout)"
 arch=('any')
 url="https://wummel.github.io/patool/"
@@ -12,8 +12,8 @@ license=('GPL-3.0-only')
 depends=(python)
 makedepends=(git python-build python-installer python-wheel python-setuptools-reproducible python-argcomplete)
 optdepends=("lz4: extracting LZ4 archives"
-    "p7zip: extracting ZIP and 7z files"
-    "unarchiver: extracting various formats"
+    "7zip: extracting various not natively supported formats (upstream suggested)"
+    "unarchiver: extracting various not natively supported formats"
     "unrar: extracting RAR files")
 provides=("patool")
 conflicts=("patool")
