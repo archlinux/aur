@@ -2,7 +2,7 @@
 
 pkgname=dota2-minify-rc-bin
 pkgver=1.14rc5
-pkgrel=1
+pkgrel=2
 pkgdesc="Dota 2 Mod Patcher & Toolkit — prebuilt release candidate binary"
 arch=('x86_64')
 url="https://github.com/Egezenn/dota2-minify"
@@ -12,7 +12,7 @@ depends=(
     'fontconfig'
     'hicolor-icon-theme'
 )
-makedepends=('7zip')
+makedepends=('7zip' 'icoutils')
 provides=('dota2-minify')
 conflicts=('dota2-minify' 'dota2-minify-bin')
 
@@ -26,6 +26,11 @@ noextract=("${pkgname}-${pkgver}.zip")
 prepare() {
     cd "${srcdir}"
     7za x "${pkgname}-${pkgver}.zip"
+    icotool -x \
+        --width=256 \
+        --height=256 \
+        -o "${srcdir}/bin/images/favicon.png" \
+        "${srcdir}/bin/images/favicon.ico"
 }
 
 package() {
@@ -80,7 +85,7 @@ Categories=Game;
 Keywords=dota2;mod;patcher;
 EOF
 
-    install -Dm644 "${pkgdir}/usr/share/dota2-minify/bin/images/logo.png" \
+    install -Dm644 "${pkgdir}/usr/share/dota2-minify/bin/images/favicon.png" \
         "${pkgdir}/usr/share/icons/hicolor/256x256/apps/dota2-minify.png"
 
     install -Dm644 "${pkgdir}/usr/share/dota2-minify/LICENSE" \
