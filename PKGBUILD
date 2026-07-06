@@ -1,30 +1,40 @@
 # Maintainer: ava1ar <mail(at)ava1ar(dot)me>
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 # Contributor: Star Brilliant <echo bTEzMjUzQGhvdG1haWwuY29tCg== | base64 -d>
-_watch=('https://www.realvnc.com/en/connect/download/viewer/linux/' 'body' 'regex' 'VNC-Viewer-(\d[\d.]*\d+)-Linux-x64\.deb' 'pkgver')
+_watch=('https://www.realvnc.com/en/connect/download/viewer/linux/' 'body' 'regex' 'RealVNC-Connect-Viewer-(\d[\d.]*\d+)-Linux-x64\.deb' 'pkgver')
 
 pkgname=realvnc-vnc-viewer
-pkgver=7.15.1
-pkgrel=3
+pkgver=8.3.0
+pkgrel=1
 pkgdesc='VNC remote desktop client software by RealVNC'
-arch=('x86_64' 'armv7h' 'aarch64')
+arch=('x86_64')
 url='https://www.realvnc.com/'
 license=('custom')
-depends=('libsm' 'libxext')
-conflicts=('tightvnc' 'tigervnc' 'turbovnc')
+depends=('atk' 'at-spi2-core' 'cairo' 'dbus' 'fontconfig' 'glib2' 'gtk3' 'libepoxy' 'pango' 'libx11' 'libxext')
+optdepends=('cups' 'avahi')
+conflicts=('realvnc-rvncconnect' 'tightvnc' 'tigervnc' 'turbovnc')
 
-source_x86_64=("https://downloads.realvnc.com/download/file/viewer.files/VNC-Viewer-${pkgver}-Linux-x64.deb")
-source_armv7h=("https://downloads.realvnc.com/download/file/viewer.files/VNC-Viewer-${pkgver}-Linux-ARM.deb")
-source_aarch64=("https://downloads.realvnc.com/download/file/viewer.files/VNC-Viewer-${pkgver}-Linux-ARM64.deb")
-
-sha256sums_x86_64=('05e3c75e053507492f7b9a3f2d75925ac6b5dc9249af73ae6c1ac51bc5d6aabb')
-sha256sums_armv7h=('495e09bc82229a178bfed850f951a33401197e6d43f152de8a139ba8633d6b74')
-sha256sums_aarch64=('ff746082e9defb3e3350bf16f17bb6232fc68b944a67575ea03382b779ea7061')
-
+source_x86_64=("https://downloads.realvnc.com/download/file/realvnc-connect-viewer/RealVNC-Connect-Viewer-${pkgver}-Linux-x64.deb")
+sha256sums_x86_64=('ef1d66e5fe457d7023e150f49e9c626609082aa014bf0ba7517a96d4362a6afb')
 
 package() {
-    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+    bsdtar --no-same-owner -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
 
-    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -s "/usr/share/doc/${pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/vncviewer" <<'EOF'
+#!/bin/sh
+if [ "${XDG_SESSION_TYPE:-}" = wayland ] || [ -n "${WAYLAND_DISPLAY:-}" ]; then
+    export GDK_BACKEND=x11
+fi
+
+if [ -z "$DBUS_SESSION_BUS_ADDRESS" ] && [ -z "$DBUS_SESSION_BUS_PID" ]; then
+    exec dbus-run-session -- /usr/lib/rvncconnect/rvncconnect "$@"
+fi
+
+exec /usr/lib/rvncconnect/rvncconnect "$@"
+EOF
+
+    sed -i 's|^Exec=/usr/lib/rvncconnect/rvncconnect|Exec=/usr/bin/vncviewer|' \
+        "${pkgdir}/usr/share/applications/com.realvnc.rvncconnect.desktop"
+    sed -i 's|^Exec=/usr/lib/rvncconnect/rvncconnect|Exec=/usr/bin/vncviewer|' \
+        "${pkgdir}/usr/share/applications/com.realvnc.rvncconnect.connect.uri.desktop"
 }
