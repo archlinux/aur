@@ -1,23 +1,20 @@
 pkgbase = container-desktop-bin
-	pkgdesc = Podman desktop companion.A familiar desktop graphical interface to the free and open container manager, podman!(Prebuilt version.Use system-wide electron)
-	pkgver = 5.3.18
+	pkgdesc = Podman desktop companion.A familiar desktop graphical interface to the free and open container manager, podman!(Prebuilt version)
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://iongion.github.io/container-desktop/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	depends = electron43
 	depends = podman
 	depends = docker
+	depends = gtk3
+	depends = webkit2gtk-4.1
 	provides = container-desktop
-	conflicts = container-desktop=5.3.18
-	source = LICENSE-5.3.18::https://raw.githubusercontent.com/iongion/container-desktop/5.3.18/LICENSE
-	source = container-desktop.sh
-	sha256sums = fd5805079cad1ee5ebcfd2a2a58e16553314c51700ce5f4e32dba06d9ce49283
-	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = container-desktop-5.3.18-aarch64.pacman::https://github.com/iongion/container-desktop/releases/download/5.3.18/container-desktop-linux-aarch64-5.3.18.pacman
-	sha256sums_aarch64 = bddd5ec04c95a75d6d855b71c2316874511c3a55fb73d24f12e639b046ea7010
-	source_x86_64 = container-desktop-5.3.18-x86_64.pacman::https://github.com/iongion/container-desktop/releases/download/5.3.18/container-desktop-linux-x64-5.3.18.pacman
-	sha256sums_x86_64 = 68291763a4f038af6dfad15d580feed6c58e03043ba3ff73f882cbc368878847
+	conflicts = container-desktop=6.0.0
+	source_aarch64 = container-desktop-6.0.0-aarch64.pacman::https://github.com/iongion/container-desktop/releases/download/6.0.0/container-desktop-linux-aarch64-6.0.0.pacman
+	sha256sums_aarch64 = c28c8f1167871bbb921df92515bdd8404f7ad4b5d93196a2bce1387e0c81902f
+	source_x86_64 = container-desktop-6.0.0-x86_64.pacman::https://github.com/iongion/container-desktop/releases/download/6.0.0/container-desktop-linux-x64-6.0.0.pacman
+	sha256sums_x86_64 = 044ae42a10fae9635d919bbddd859bd4a71bacbfc56f0e35b1435a62f01179c0
 
 pkgname = container-desktop-bin
