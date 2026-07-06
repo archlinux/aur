@@ -2,8 +2,8 @@
 
 pkgname=rebased-bin
 _pkgname=rebased
-pkgver=1.1.5
-pkgrel=2
+pkgver=1.1.6
+pkgrel=1
 pkgdesc='Standalone JetBrains-based Git client (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/DetachHead/rebased'
@@ -14,7 +14,7 @@ provides=('rebased')
 conflicts=('rebased')
 options=('!strip')
 source=("${_pkgname}-${pkgver}-${CARCH}.tar.gz::https://github.com/DetachHead/rebased/releases/download/${pkgver}/rebased.tar.gz")
-sha256sums=('4133a31809c8e911d219742b7b6f3317f9df647768aa32cc62b51e062b62173a')
+sha256sums=('58e3760076b2f74c452abd2548dfdf3064cf697128727021126c97026403c7a6')
 
 package() {
   local app_dir="${srcdir}/idea-IC-261.25134.SNAPSHOT"
