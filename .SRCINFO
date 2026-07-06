@@ -1,6 +1,6 @@
 pkgbase = r-polychrome
 	pkgdesc = Qualitative Palettes with Many Colors
-	pkgver = 1.5.4
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=Polychrome
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = r-polychrome
 	optdepends = r-knitr
 	optdepends = r-rcolorbrewer
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/Polychrome_1.5.4.tar.gz
-	md5sums = c4dba742d377b1422aa078012432dcbd
-	b2sums = 03f801f0486bba6293a75af909187dcee518d9dd16f759f0ed9e7a6ed64a4bc2ebd6701acc713fbe385e68361713f7cbe059092c4a81637e56f79528f248599a
+	source = https://cran.r-project.org/src/contrib/Polychrome_1.6.1.tar.gz
+	md5sums = 13e1466091caa778cc53d1bce5dbcc62
+	b2sums = 224a9c6b87a1d67ee3a6594555499c0617465249a82fda9f7e11604484830d1a268133ae8f20e7e622c3a862f4a6f96bfcd1fc08d6c85955866a327aee3e0dd5
 
 pkgname = r-polychrome
