@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=letos-bin
 _pkgname=Letos
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="A free, open source, multi-platform SQLite database manager.(Prebuilt version)"
 arch=(
@@ -18,7 +18,6 @@ depends=(
     'gtk3'
     'xcb-util-cursor'
     'tcl'
-    'libtiff5'
 )
 options=(
     '!strip'
@@ -27,8 +26,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-aarch64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-x86_64.AppImage")
 sha256sums=('20628dc9251146409d2631a161d7e7e24d40e5c2555a5d170914c44420b40aea')
-sha256sums_aarch64=('93b6cfd2377ffd8f12208ec454bcf27c89ee92e67036644386c2ed23ce7ce1ab')
-sha256sums_x86_64=('d5769a45968d78adf8b805ab8b9fe9a2c9dc4c7e119f730efb462a0385cf0dd9')
+sha256sums_aarch64=('990c5c5e64f4ba9123701bb1542101314a8ec3d8a64a6c201ca92f3c3d88e7bc')
+sha256sums_x86_64=('4af004fc95e0c5edd5affc6bba17047efd62e41580fe0037bbc64e7e5a2a3834')
 prepare() {
     sed -e "
         s/@appname@/${pkgname%-bin}/g
