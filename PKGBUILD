@@ -5,7 +5,7 @@ _srcname="youtube-dl-gui"
 _srcmntr="jely2002"
 
 pkgname="${_pkgname}-bin"
-pkgver="3.2.0"
+pkgver="3.2.1"
 pkgrel="2"
 pkgdesc="A cross-platform GUI for youtube-dl made in Rust with Tauri and Vue + Typescript"
 url="https://github.com/${_srcmntr}/${_srcname}"
@@ -18,7 +18,7 @@ source=("${_archive}::https://github.com/${_srcmntr}/${_srcname}/releases/downlo
 conflicts=("open-video-downloader")
 provides=("open-video-downloader")
 
-sha256sums=("2a0190508c5b80d2801765073385439bf6dac7749473c19f842fbd5067f18e15")
+sha256sums=("6a17c371653038e5b7ab88d25fdec407ff9532a933c8f2d755a53833761f4568")
 
 package() {
   bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
