@@ -4,7 +4,7 @@
 # Contributor: Maxime "pep" Buquet <archlinux@bouah.net>
 pkgname=conversejs
 pkgver=14.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Web-based XMPP/Jabber chat client written in JavaScript'
 arch=('any')
 url="https://conversejs.org/"
@@ -13,7 +13,7 @@ depends=("nodejs")
 makedepends=('npm' 'python')
 backup=('usr/share/webapps/converse.js/fullscreen.html')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/conversejs/converse.js/archive/v$pkgver.tar.gz")
-sha256sums=('634f31fa0f7b0e47f1abc60d870ff6805c737577399920ebe92da4c7e5bcaff0')
+sha256sums=('cac8637b8fc159509f220d4fae60c6243622315544f11153171ab9b98ba3b432')
 
 build() {
     cd "converse.js-$pkgver"
