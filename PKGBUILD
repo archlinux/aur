@@ -2,7 +2,7 @@
 pkgname=portable
 epoch=1
 pkgver=17.0.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Fast, private, efficient sandbox for Linux desktop."
 arch=('x86_64' 'aarch64' 'loongarch64')
@@ -42,6 +42,7 @@ makedepends+=(
 	"libarchive"
 	"git"
 	"go"
+	"rust"
 )
 
 checkdepends=()
