@@ -1,6 +1,6 @@
 pkgbase = agentty-bin
 	pkgdesc = Blazing-fast Claude in your terminal
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/1ay1/agentty
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = agentty-bin
 	license = MIT
 	provides = agentty
 	conflicts = agentty
-	source_x86_64 = agentty-0.2.5-x86_64::https://github.com/1ay1/agentty/releases/download/v0.2.5/agentty-linux-x86_64
-	sha256sums_x86_64 = 27f8de629e08c274691a928c41cff062a5b616e49a456d39178a83570a9ae141
-	source_aarch64 = agentty-0.2.5-aarch64::https://github.com/1ay1/agentty/releases/download/v0.2.5/agentty-linux-aarch64
-	sha256sums_aarch64 = 
+	source_x86_64 = agentty-0.2.6-x86_64::https://github.com/1ay1/agentty/releases/download/v0.2.6/agentty-linux-x86_64
+	sha256sums_x86_64 = 789bb03db56812446610585ce1d5dc85f8e2fe778f22f37354a2a0495d5ec760
+	source_aarch64 = agentty-0.2.6-aarch64::https://github.com/1ay1/agentty/releases/download/v0.2.6/agentty-linux-aarch64
+	sha256sums_aarch64 = 0a27583c874160f7085a5159ef973095a926e3f7745e671e608faea7bf655b14
 
 pkgname = agentty-bin
