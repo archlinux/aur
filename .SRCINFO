@@ -1,7 +1,7 @@
 pkgbase = xlibre-video-ati
 	pkgdesc = XLibre ati video driver
 	pkgver = 25.0.1
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/X11Libre/xf86-video-ati
 	arch = x86_64
