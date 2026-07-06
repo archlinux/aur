@@ -2,7 +2,7 @@
 
 _pkgname=vscDebugger
 pkgname=r-${_pkgname,,}
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 pkgdesc='Support for Visual Studio Code Debugger'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
 source=("https://github.com/ManuelHentschel/vscDebugger/releases/download/v${pkgver}/${_pkgname}_${pkgver}.tar.gz"
         "LICENSE::https://github.com/ManuelHentschel/vscDebugger/raw/master/LICENSE.md"
 )
-sha256sums=('8423cbdafe31f6f3e7ae1eddd6b2a6eecf1c8cadfd6be07261bcde9273cd3a9a'
+sha256sums=('0479c61e919d7e3baab097da105367f8ebbba82823f89a94868ce286a08d3946'
             '54ee5b8054493e7cd776fded707521874c45a87b945fc1bf518e4e263132541c')
 
 build() {
