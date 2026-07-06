@@ -1,6 +1,6 @@
 pkgbase = gnucash-select
 	pkgdesc = GnuCash File Selector
-	pkgver = 2.9
+	pkgver = 2.10
 	pkgrel = 1
 	url = https://github.com/bulletmark/gnucash-select
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = gnucash-select
 	depends = python>=3.10
 	depends = python-platformdirs
 	depends = python-argparse-from-file
-	source = gnucash-select-2.9.tar.gz::https://github.com/bulletmark/gnucash-select/archive/2.9.tar.gz
-	md5sums = be00466139b30745712c8e8474756266
+	source = gnucash-select-2.10.tar.gz::https://github.com/bulletmark/gnucash-select/archive/2.10.tar.gz
+	md5sums = 59eae71ab89fcbb486379f60db265bb2
 
 pkgname = gnucash-select
