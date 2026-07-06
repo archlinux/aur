@@ -1,13 +1,13 @@
 pkgname=sek-git
 pkgver=0.1.0.213.g0bd4557
-pkgrel=1
+pkgrel=2
 pkgdesc="the sek shell"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/quininer/sek"
 license=('MIT')
-depends=('zstd')
+depends=()
 makedepends=('cargo' 'git')
-optdepends=()
+optdepends=('fish' 'mcfly' 'bubblewrap')
 provides=('sek')
 conflicts=('sek')
 source=($pkgname::git+https://github.com/quininer/sek.git)
