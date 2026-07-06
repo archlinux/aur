@@ -1,16 +1,16 @@
 # Maintainer: Andres Alejandro Navarro Alsina <aanavarroa@unal.edu.co>
 # Contributor: Joe Zuntz
+pkgname=python-twopoint-git
 _pkgname=python-twopoint
-pkgbase=python-twopoint-git
-pkgname=("python-twopoint-git" "python2-twopoint-git")
-pkgver=r86.d4d3159
+pkgver=r107.ba68b53
 pkgrel=1
-pkgdesc=" Planning a library for handling files containing 2-point cosmology data "
+pkgdesc="Planning a library for handling files containing 2-point cosmology data"
 arch=('any')
-url="https://github.com/joezuntz/2point.git"
+url="https://github.com/joezuntz/2point"
 license=('GPL')
 checkdepends=('make')
-makedepends=('git' 'python' 'python-numpy' 'python2' 'python2-numpy'  )
+depends=('python')
+makedepends=('git' 'python' 'python-numpy' 'python-setuptools' 'python-build' 'python-installer')
 source=("${_pkgname}::git+${url}")
 md5sums=('SKIP')
 
@@ -19,30 +19,12 @@ pkgver() {
 	 printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-	  cp -a $_pkgname{,-py2}
-}
 
 build() {
-	cd "$srcdir"/$_pkgname
-	python setup.py build
-
-	cd "$srcdir"/$_pkgname-py2
-	python2 setup.py build
+  cd "$_pkgname"
+  python -m build --wheel --no-isolation
 }
-
-#check() {
-#}
-
-package_python-twopoint-git() {
-		       depends=('python-numpy')
-		       cd "${_pkgname}"
-		       python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
-}
-
-package_python2-twopoint-git() {
-			depends=('python2-numpy')			    
-			cd "${_pkgname}"
-			python2 setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
-
-}
+package() {
+  cd "$srcdir/$_pkgname"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  }

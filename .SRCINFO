@@ -1,22 +1,19 @@
 pkgbase = python-twopoint-git
 	pkgdesc = Planning a library for handling files containing 2-point cosmology data
-	pkgver = r86.d4d3159
+	pkgver = r107.ba68b53
 	pkgrel = 1
-	url = https://github.com/joezuntz/2point.git
+	url = https://github.com/joezuntz/2point
 	arch = any
 	license = GPL
 	checkdepends = make
 	makedepends = git
 	makedepends = python
 	makedepends = python-numpy
-	makedepends = python2
-	makedepends = python2-numpy
-	source = python-twopoint::git+https://github.com/joezuntz/2point.git
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = python-twopoint::git+https://github.com/joezuntz/2point
 	md5sums = SKIP
 
 pkgname = python-twopoint-git
-	depends = python-numpy
-
-pkgname = python2-twopoint-git
-	depends = python2-numpy
-
