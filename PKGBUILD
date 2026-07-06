@@ -1,6 +1,6 @@
 # Maintainer: franlol
 pkgname=hyprscreen
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A first-class screenshot and screen-recording app built for Hyprland"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gtk4' 'grim' 'slurp' 'wf-recorder' 'wl-clipboard' 'hyprland' 'ffmpeg')
 makedepends=('cargo' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ccdd6d656b34f98bab4101b8e33a5bf3b1c67d4c06256a0c31f2880d06b06532')
+sha256sums=('b4e0f0836f5cd7aa06708e7bcdfa1abcec8cc6af3b71a1e7e705c2cdb9e43426')
 
 prepare() {
     cd "$pkgname-$pkgver"
