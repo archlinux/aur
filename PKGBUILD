@@ -2,11 +2,11 @@
 # Contributor: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
 
 pkgname=perl-feature-compat-try
+pkgdesc="Make 'try/catch' syntax available in older Perl versions"
 pkgver=0.05
 pkgrel=3
-pkgdesc="Make 'try/catch' syntax available in older Perl versions"
-arch=('any')
 url='https://metacpan.org/dist/Feature-Compat-Try'
+arch=(any)
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 # See https://metacpan.org/dist/Feature-Compat-Try/source/Build.PL
 depends=(
@@ -29,7 +29,7 @@ source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Feature-Compat-Try-${p
 b2sums=('c713975d02fc5d0eaa439dfb8ab0c905589f4020eb5f8bb49e72a9e77f7fc65818c45e77604fca0a3c1ac09906007d9fa93e9d3d68ec4faa55bc27bde39c4d60')
 
 build() {
-  cd "${srcdir}/Feature-Compat-Try-${pkgver}"
+  cd "Feature-Compat-Try-${pkgver}"
 
   unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
@@ -38,14 +38,14 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/Feature-Compat-Try-${pkgver}"
+  cd "Feature-Compat-Try-${pkgver}"
 
   unset PERL5LIB PERL_LOCAL_LIB_ROOT
   ./Build test
 }
 
 package() {
-  cd "${srcdir}/Feature-Compat-Try-${pkgver}"
+  cd "Feature-Compat-Try-${pkgver}"
 
   unset PERL5LIB PERL_LOCAL_LIB_ROOT
   ./Build install --installdirs=vendor --destdir="${pkgdir}"
