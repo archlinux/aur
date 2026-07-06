@@ -1,0 +1,18 @@
+[Unit]
+Description=Defined Networking Client (%i)
+Documentation=https://docs.defined.net
+After=network.target
+Before=network-online.target
+Wants=network.target
+
+[Service]
+Type=notify
+NotifyAccess=main
+ExecStart=/usr/bin/dnclient run -name %i
+Restart=always
+RestartSec=2
+TimeoutStartSec=5
+EnvironmentFile=-/etc/conf.d/dnclient.%i
+
+[Install]
+WantedBy=multi-user.target

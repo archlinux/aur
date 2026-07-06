@@ -1,0 +1,23 @@
+post_install() {
+	cat <<'EOF'
+:: Start the service, then enroll this host in a Defined Networking network:
+     systemctl enable --now dnclient.service
+     dnclient enroll -code <enrollment code>
+   Additional named networks run as dnclient@<name>.service.
+   Documentation: https://docs.defined.net
+EOF
+}
+
+post_upgrade() {
+	cat <<'EOF'
+:: dnclient was upgraded. Restart it to run the new version:
+     systemctl try-restart 'dnclient.service' 'dnclient@*.service'
+EOF
+}
+
+post_remove() {
+	cat <<'EOF'
+:: Network state (certificates, keys) is kept in /var/lib/defined.
+   Remove it manually if this host will not be re-enrolled.
+EOF
+}

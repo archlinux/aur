@@ -1,0 +1,17 @@
+# Configuration for the dnclient service.
+# Uncomment and set any of the following to override the defaults.
+
+# API server URL
+#DNCLIENT_SERVER=https://api.defined.net
+
+# Directory where network state is stored. The default (unnamed) network is
+# stored directly at this path; named networks live in subdirectories
+# (e.g. /var/lib/defined/<name>/).
+#DNCLIENT_STATE_DIR=/var/lib/defined
+
+# Network name. Selects the subdirectory under DNCLIENT_STATE_DIR for this instance.
+# Use dnclient@<name>.service instead of setting this here.
+#DNCLIENT_NAME=
+
+# Log file path. Defaults to stdout, which is captured by journald.
+#DNCLIENT_LOG=
