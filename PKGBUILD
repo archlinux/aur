@@ -1,0 +1,61 @@
+# Maintainer: RamazanBerk20 <ramazanberksirin@protonmail.com>
+pkgname=mini-downloader-git
+pkgver=0.2.0
+pkgrel=1
+pkgdesc="IDM/JDownloader-style download manager (aria2 + yt-dlp, browser capture) — git build"
+arch=('x86_64')
+url="https://github.com/RamazanBerk20/mini-downloader"
+license=('GPL-3.0-or-later')
+depends=('aria2' 'ffmpeg' 'webkit2gtk-4.1' 'libayatana-appindicator')
+optdepends=('yt-dlp: video/HLS/DASH grabbing')
+makedepends=('rust' 'cargo' 'nodejs' 'pnpm' 'git')
+provides=('mini-downloader')
+conflicts=('mini-downloader' 'mini-downloader-bin')
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  # e.g. tag v0.2.0 + 3 commits -> 0.2.0.r3.gabc1234
+  git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
+    || printf "0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+build() {
+  cd "$pkgname"
+  (cd apps/desktop && pnpm install --frozen-lockfile)
+  cargo build --release -p minidl-native-host
+  (cd apps/desktop && pnpm tauri build --no-bundle)
+}
+
+package() {
+  cd "$pkgname"
+  install -Dm755 target/release/minidl-desktop "$pkgdir/usr/bin/minidl-desktop"
+  install -Dm755 target/release/minidl-native-host "$pkgdir/usr/bin/minidl-native-host"
+
+  install -Dm644 apps/desktop/src-tauri/icons/128x128.png \
+    "$pkgdir/usr/share/icons/hicolor/128x128/apps/mini-downloader.png"
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/mini-downloader.desktop" <<'DESKTOP'
+[Desktop Entry]
+Name=Mini Downloader
+Comment=IDM/JDownloader-style download manager
+Exec=minidl-desktop %u
+Icon=mini-downloader
+Terminal=false
+Type=Application
+Categories=Network;FileTransfer;Utility;
+MimeType=x-scheme-handler/magnet;x-scheme-handler/minidownloader;
+DESKTOP
+
+  # Firefox native-messaging host (system-wide).
+  install -Dm644 /dev/stdin \
+    "$pkgdir/usr/lib/mozilla/native-messaging-hosts/com.minidownloader.host.json" <<'JSON'
+{
+  "name": "com.minidownloader.host",
+  "description": "Mini Downloader native bridge",
+  "path": "/usr/bin/minidl-native-host",
+  "type": "stdio",
+  "allowed_extensions": ["minidownloader@ramazan.dev"]
+}
+JSON
+}
