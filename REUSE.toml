@@ -1,0 +1,13 @@
+version = 1
+
+[[annotations]]
+path = [
+  "PKGBUILD",
+  "wolfram-remove-xdg-scripts.patch",
+  ".SRCINFO",
+  "mksrcinfo",
+  ".gitignore",
+  ".nvchecker.toml",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
