@@ -1,7 +1,7 @@
 pkgbase = chordpro-gui
 	pkgdesc = A lyrics and chords formatting program (CLI and GUI)
 	pkgver = 6.101.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chordpro.org/
 	install = chordpro.install
 	arch = x86_64
@@ -29,6 +29,8 @@ pkgbase = chordpro-gui
 	optdepends = lilypond: Embed LilyPond music writing format
 	provides = chordpro
 	conflicts = chordpro
+	noextract = Alien-wxWidgets-0.73.tar.gz
+	noextract = Wx-3.009.tar.gz
 	source = https://github.com/ChordPro/chordpro/releases/download/R6.101.0/App-Music-ChordPro-6.101.0.tar.gz
 	source = https://github.com/sciurius/perl-Alien-wxWidgets/releases/download/R0.73/Alien-wxWidgets-0.73.tar.gz
 	source = https://github.com/sciurius/wxPerl/releases/download/R3.009/Wx-3.009.tar.gz

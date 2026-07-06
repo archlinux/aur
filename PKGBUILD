@@ -3,7 +3,7 @@
 _pkgbase=chordpro
 pkgname=$_pkgbase-gui
 pkgver=6.101.0
-pkgrel=1
+pkgrel=2
 _pkgdownload=App-Music-ChordPro-$pkgver
 _alienwxver=0.73
 _wxver=3.009
@@ -47,6 +47,7 @@ sha256sums=('554dfc744b882d8fa05f300dd8d1a06c4c547a4d91edf8bd19ba0c65ce616f9c'
             '18035c52c8bb69f773ec19f2de3d2fa78dac1c8cd5ce114958da8e081fcee19a'
             'b7e60a00ea16e5f49702591c9e2f4146763ade0d312cd2ab6422219700fab311'
             '43e8ae43866b1900824ff862fec1dc41594b9feacb95c1df47bb9bcc427a90ed')
+noextract=("Alien-wxWidgets-$_alienwxver.tar.gz" "Wx-$_wxver.tar.gz")
 
 build() {
     cd "$srcdir/$_pkgdownload"
