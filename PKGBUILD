@@ -1,14 +1,14 @@
 # Maintainer: nathawat <nathawat[at]noreply[dot]codeberg[dot]org>
 
 pkgname=howdy-next
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="C++ rewrite of Howdy facial-recognition authentication on Linux"
 arch=('x86_64')
 url="https://codeberg.org/nathawat/howdy-next"
 license=('MIT')
-depends=('libinih' 'libevdev' 'pam' 'opencv' 'curl' 'openssl')
-makedepends=('meson' 'gettext' 'yyjson')
+depends=('libinih' 'libevdev' 'pam' 'opencv>=5.0.0' 'curl' 'openssl' 'qt6-base')
+makedepends=('meson>=1.11.0' 'gettext' 'yyjson>=0.12.0')
 optdepends=('linux-enable-ir-emitter: Enables infrared cameras that are not directly enabled out-of-the box')
 provides=('howdy')
 conflicts=('howdy' 'howdy-next-git')
@@ -21,7 +21,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/${_tag}.tar.gz"
 	"polkit-agent-helper-howdy.conf"
 )
-b2sums=('d7dd9171276ce63c971e1436298dd6b493b9cb24150614c7f4b853d88bff5dd64ff36d9da355e150c566b09aec0186c36d3ffea730e09a5f8b7d77f925e37f55'
+b2sums=('2dce843867b81de0f713019ad2e2e9b8500570556d6fa51e7eb8ab8706a15534b94442c81b22bc3c204adfef9696336ec134d28d86c3168ee85067a706e787d3'
 		'ac6c1a82d6b4a00e4d518ad49592d5eb0aa4590e6c584328230fe875af0604b56861235cfbf9cd8a93bc9f1130eafb02392705cfa3a247770eb013da8576922b')
 
 build() {

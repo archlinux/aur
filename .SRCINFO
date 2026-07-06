@@ -1,29 +1,30 @@
 pkgbase = howdy-next
 	pkgdesc = C++ rewrite of Howdy facial-recognition authentication on Linux
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://codeberg.org/nathawat/howdy-next
 	install = howdy-next.install
 	arch = x86_64
 	license = MIT
-	makedepends = meson
+	makedepends = meson>=1.11.0
 	makedepends = gettext
-	makedepends = yyjson
+	makedepends = yyjson>=0.12.0
 	depends = libinih
 	depends = libevdev
 	depends = pam
-	depends = opencv
+	depends = opencv>=5.0.0
 	depends = curl
 	depends = openssl
+	depends = qt6-base
 	optdepends = linux-enable-ir-emitter: Enables infrared cameras that are not directly enabled out-of-the box
 	provides = howdy
 	conflicts = howdy
 	conflicts = howdy-next-git
 	replaces = howdy-next-git
 	backup = etc/howdy/config.ini
-	source = howdy-next-3.2.0.tar.gz::https://codeberg.org/nathawat/howdy-next/archive/v3.2.0.tar.gz
+	source = howdy-next-3.3.0.tar.gz::https://codeberg.org/nathawat/howdy-next/archive/v3.3.0.tar.gz
 	source = polkit-agent-helper-howdy.conf
-	b2sums = d7dd9171276ce63c971e1436298dd6b493b9cb24150614c7f4b853d88bff5dd64ff36d9da355e150c566b09aec0186c36d3ffea730e09a5f8b7d77f925e37f55
+	b2sums = 2dce843867b81de0f713019ad2e2e9b8500570556d6fa51e7eb8ab8706a15534b94442c81b22bc3c204adfef9696336ec134d28d86c3168ee85067a706e787d3
 	b2sums = ac6c1a82d6b4a00e4d518ad49592d5eb0aa4590e6c584328230fe875af0604b56861235cfbf9cd8a93bc9f1130eafb02392705cfa3a247770eb013da8576922b
 
 pkgname = howdy-next
