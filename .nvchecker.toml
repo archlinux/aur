@@ -1,0 +1,3 @@
+[zgit]
+source = "npm"
+npm = "@12britz/zgit"

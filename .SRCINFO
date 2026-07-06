@@ -1,0 +1,20 @@
+pkgbase = zgit
+	pkgdesc = A beautifully styled, Tokyo Night-themed CLI wrapper for Git that turns raw output into structured visual panels.
+	pkgver = 1.0.11
+	pkgrel = 1
+	url = https://github.com/12britz/zgit
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	provides = zgit
+	noextract = zgit-1.0.11.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = zgit-1.0.11.tgz::https://registry.npmjs.org/@12britz/zgit/-/zgit-1.0.11.tgz
+	b2sums = d877b8ee4144d925ca08e1d2056f4e3398a26ec8e831b09f1e383a65f999702467325f0f27174c48667dadcad330ced52358a9ef6f4641d4ae872644c0d2df34
+
+pkgname = zgit
