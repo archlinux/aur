@@ -8,6 +8,7 @@ pkgbase = pickle-git
 	makedepends = git
 	depends = glibc
 	depends = ncurses
+	optdepends = hyprpicker
 	source = pickle::git+https://codeberg.org/j_ole/pickle.git
 	sha256sums = SKIP
 

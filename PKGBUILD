@@ -8,6 +8,7 @@ arch=("x86_64")
 license=('GPL-3.0')
 makedepends=('git')
 depends=('glibc' 'ncurses')
+optdepends=('hyprpicker')
 url="https://codeberg.org/j_ole/$_pkgname"
 source=("$_pkgname::git+https://codeberg.org/j_ole/$_pkgname.git")
 sha256sums=('SKIP')
