@@ -1,0 +1,23 @@
+pkgbase = cosmic-ext-applet-kdeconnect-git
+	pkgdesc = Native KDE Connect applet for the COSMIC desktop
+	pkgver = 0.9.0.r353.g6c14414
+	pkgrel = 1
+	url = https://github.com/cosmic-utils/kdeconnect
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = just
+	makedepends = git
+	makedepends = cmake
+	makedepends = go
+	makedepends = clang
+	makedepends = lld
+	depends = cosmic-applets
+	depends = libpulse
+	provides = cosmic-ext-applet-kdeconnect
+	conflicts = cosmic-ext-applet-kdeconnect
+	source = cosmic-ext-applet-kdeconnect::git+https://github.com/cosmic-utils/kdeconnect.git
+	sha256sums = SKIP
+
+pkgname = cosmic-ext-applet-kdeconnect-git
