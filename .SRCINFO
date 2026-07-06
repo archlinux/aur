@@ -1,0 +1,24 @@
+pkgbase = python-mnextend
+	pkgdesc = Additional functionality for MNE-Python
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/cbrnr/mnextend
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	depends = python
+	depends = python-edfio
+	depends = python-matplotlib
+	depends = python-mne
+	depends = python-numpy
+	depends = python-onnx
+	depends = python-pybv
+	depends = python-pybvrf
+	depends = python-pyxdf
+	depends = python-scipy
+	source = https://files.pythonhosted.org/packages/source/m/mnextend/mnextend-0.2.1.tar.gz
+	sha256sums = 820110918a416a0909da9170189bacc2c2243bcbb1e4704c8ec3e71ea8f2d279
+
+pkgname = python-mnextend
