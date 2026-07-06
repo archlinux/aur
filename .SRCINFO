@@ -1,17 +1,16 @@
 pkgbase = mmry
 	pkgdesc = A lean, local-first memory management system for humans and AI agents
-	pkgver = 0.12.0
+	pkgver = 0.13.4
 	pkgrel = 1
 	url = https://github.com/byteowlz/mmry
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = gcc-libs
-	provides = mmry
 	conflicts = mmry-cuda
-	source_x86_64 = mmry-0.12.0-x86_64.tar.gz::https://github.com/byteowlz/mmry/releases/download/v0.12.0/mmry-v0.12.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 7dcd7222f82fa8940b0ce21a736710288cfa939959222db2aa4c7ae94f621ceb
-	source_aarch64 = mmry-0.12.0-aarch64.tar.gz::https://github.com/byteowlz/mmry/releases/download/v0.12.0/mmry-v0.12.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 23978a1e46ccad91f7315218a72e17404cd27c4bfc534d2dff3da2da73a1af12
+	depends = gcc-libs
+	source_x86_64 = mmry-0.13.4-x86_64.tar.gz::https://github.com/byteowlz/mmry/releases/download/v0.13.4/mmry-v0.13.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f594337751447c8324a184fe6f38013385f0bcf2a2e23601e08b67fe9b249112
+	source_aarch64 = mmry-0.13.4-aarch64.tar.gz::https://github.com/byteowlz/mmry/releases/download/v0.13.4/mmry-v0.13.4-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = cdbdd4f1de92c39565497c712932c1988b3945b7586e7b4a230c791cf02acc5e
 
 pkgname = mmry
