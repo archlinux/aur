@@ -1,6 +1,6 @@
 # Maintainer: krmmyvz <https://github.com/krmmyvz>
 pkgname=vibestreamer-bin
-pkgver=1.3.3
+pkgver=1.3.5
 pkgrel=1
 pkgdesc='Modern IPTV player with Xtream Codes and M3U support (prebuilt binary)'
 arch=('x86_64')
