@@ -1,5 +1,5 @@
 pkgname=('phono3py')
-pkgver=4.1.0
+pkgver=4.3.3
 pkgrel=1
 pkgdesc="A simulation package of phonon-phonon interaction related properties"
 arch=('any')
