@@ -1,6 +1,6 @@
 pkgbase = kpa
 	pkgdesc = KevinCrrl Python AUR Helper: Creado para automatizar de manera segura.
-	pkgver = 3.0.1
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/KevinCrrl/kpa
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = kpa
 	depends = git
 	depends = base-devel
 	optdepends = sudo: ejecutar comandos como root
-	source = https://github.com/KevinCrrl/kpa/archive/refs/tags/3.0.1/3.0.1.tar.gz
-	sha512sums = 4d90fec2331261b9cf0ce3661f3e8bef78862cc499ec3c79aa3ece1b8649349cf4872074074ce5b1b06ca1948345959fed398a72a6d077372001fe6a6753fc67
+	source = https://github.com/KevinCrrl/kpa/archive/refs/tags/3.1.0/3.1.0.tar.gz
+	sha512sums = 5a2cd7a4235e4a82a2abef17282c67bded0ab853d0bae1f66b8bfec4dd7e2ef52cc7dd44b0510ed676970cfb2ed3a9e5e0f34281f0c9464a440d4c8ca110be82
 
 pkgname = kpa
