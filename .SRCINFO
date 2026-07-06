@@ -1,13 +1,13 @@
 pkgbase = nnd-bin
 	pkgdesc = A debugger for Linux.
-	pkgver = 0.78
+	pkgver = 0.79
 	pkgrel = 1
 	url = https://github.com/al13n321/nnd
 	arch = x86_64
 	license = Apache-2.0
 	conflicts = nnd
 	options = !strip
-	source = nnd::https://github.com/al13n321/nnd/releases/download/v0.78/nnd
-	sha256sums = cbc17c74de589ae584acc8fa342a0d4a6d29466bfc930ebf946dc5367e80bee7
+	source = nnd::https://github.com/al13n321/nnd/releases/download/v0.79/nnd
+	sha256sums = 734818062a37578ee094b2b3ef8795c71c2b388d8bc3d5e2848858039d3c5118
 
 pkgname = nnd-bin
