@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Colon <rebelinux@gmail.com>
 pkgname=cosmic-ext-flux
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Animated desktop wallpapers for COSMIC — play any video or GIF as your background."
 arch=(x86_64)
