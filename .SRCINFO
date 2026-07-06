@@ -1,6 +1,6 @@
 pkgbase = redsea
 	pkgdesc = RDS decoder for the command line
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/windytan/redsea
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = redsea
 	depends = libsndfile
 	depends = liquid-dsp
 	depends = nlohmann-json
-	source = redsea-1.3.0.tar.gz::https://github.com/windytan/redsea/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = b322a5253632317d0fbc6ca8b6a6c6b83f781318429f7d31f12e13e44aa05665
+	source = redsea-1.3.1.tar.gz::https://github.com/windytan/redsea/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = 2d1137dba23c1ae2d8af87bda45ab90ee962e55d3b93dc9295d1a53e15a8cfae
 
 pkgname = redsea
