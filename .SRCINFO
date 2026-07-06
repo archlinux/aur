@@ -1,6 +1,6 @@
 pkgbase = m3u8-downloader-colzry-bin
 	pkgdesc = A concise m3u8 video downloader / 一款简洁的 m3u8 视频下载器
-	pkgver = 1.2.7
+	pkgver = 1.2.8
 	pkgrel = 1
 	url = https://github.com/Colzry/m3u8-downloader
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = m3u8-downloader-colzry-bin
 	depends = libayatana-appindicator
 	provides = m3u8-downloader
 	conflicts = m3u8-downloader
-	source = m3u8-downloader-1.2.7.deb::https://github.com/Colzry/m3u8-downloader/releases/download/v1.2.7/m3u8-downloader_1.2.7_amd64.deb
-	sha256sums = SKIP
+	source = m3u8-downloader-1.2.8.deb::https://github.com/Colzry/m3u8-downloader/releases/download/v1.2.8/m3u8-downloader_1.2.8_amd64.deb
+	sha256sums = a68c4bdfdea7de36c38e29286b421744bc0f96de43ab809374d7950454d7ac02
 
 pkgname = m3u8-downloader-colzry-bin
