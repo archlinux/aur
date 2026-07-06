@@ -6,12 +6,13 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Easy userspace bandwidth manager for Linux"
 
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 _gitversion=v${pkgver}
 
+_libc=gnu
 arch=('x86_64')
-_barch=('linux-amd64')
+_barch=("linux-amd64-${_libc}")
 
 _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
@@ -26,7 +27,7 @@ depends=('glibc' 'libgcc' 'bash')
 options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('15a9bc8e132e86aaeb3e93aea20ee29c601fed40d6ba399092ffa0c8e3efba1b')
+sha256sums_x86_64=('0d3381cd2a8b011f8d20decd6c77aadd62c5151bf3e205c807215e3420b129f7')
 
 
 case ${CARCH} in
