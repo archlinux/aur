@@ -1,14 +1,17 @@
 pkgbase = kdenlive-appimage
 	pkgdesc = A non-linear video editor for Linux using the MLT video framework
-	pkgver = 25.12.3
+	pkgver = 26.04.3
 	pkgrel = 1
 	arch = x86_64
-    url = https://kdenlive.org    
 	license = GPL
+	makedepends = breeze
+	makedepends = breeze-icons
+	depends = breeze
+	depends = breeze-icons
 	provides = kdenlive
 	conflicts = kdenlive
 	options = !strip
-	source_x86_64 = https://download.kde.org/stable/kdenlive/25.12/linux/kdenlive-25.12.3-x86_64.AppImage
-	sha256sums_x86_64 = '7c49e892ae7c156fcbdd4e481c66dea07ac9fb535bee87ebcc2b1178492170eb'
+	source_x86_64 = kdenlive-26.04.3-x86_64.AppImage::https://download.kde.org/stable/kdenlive/26.04/linux/kdenlive-26.04.3-x86_64.AppImage
+	sha256sums_x86_64 = 53e3656a940c7694b3fece593d2b525ae1c75a47dbed829eba1432511ab8c1c6
 
 pkgname = kdenlive-appimage
