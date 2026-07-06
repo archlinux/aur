@@ -1,9 +1,10 @@
-# Maintainer: Damian Höster <damian dot hoester at posteo dot de>
+# Maintainer: Damian Höster <damian.hoester@posteo.de>
+# Contributor:  Joshua Holmer <jholmer.in@gmail.com>
 
 _pkgname=libjxl
 pkgname=$_pkgname-metrics
 pkgver=0.11.1
-pkgrel=11
+pkgrel=13
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics'
 arch=(x86_64)
 url=https://jpeg.org/jpegxl/
@@ -12,7 +13,7 @@ depends=(
   brotli
   highway
   libpng
-  libjpeg
+  libjpeg.so
   giflib
   openexr
   gperftools
@@ -82,7 +83,7 @@ build() {
     -DJPEGXL_ENABLE_PLUGINS=OFF \
     -DJPEGXL_FORCE_SYSTEM_BROTLI=ON \
     -DJPEGXL_FORCE_SYSTEM_HWY=ON \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.16
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make -C build
 }
 

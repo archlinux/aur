@@ -1,7 +1,7 @@
 pkgbase = libjxl-metrics
 	pkgdesc = JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics
 	pkgver = 0.11.1
-	pkgrel = 11
+	pkgrel = 13
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
 	license = BSD-3-Clause
@@ -14,7 +14,7 @@ pkgbase = libjxl-metrics
 	depends = brotli
 	depends = highway
 	depends = libpng
-	depends = libjpeg
+	depends = libjpeg.so
 	depends = giflib
 	depends = openexr
 	depends = gperftools
