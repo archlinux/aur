@@ -1,6 +1,6 @@
 pkgbase = python-pysimplegui
 	pkgdesc = Create GUIs using Python, quickly and easily
-	pkgver = 6.0
+	pkgver = 6.2
 	pkgrel = 1
 	url = https://github.com/PySimpleGUI/PySimpleGUI
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-pysimplegui
 	makedepends = python-wheel
 	depends = python
 	depends = tk
-	source = https://github.com/PySimpleGUI/PySimpleGUI/archive/refs/tags/6.0.tar.gz
-	sha256sums = 4c58510c3135505a3ecf3193d116a4322130bcbdaa1d0e064638a05d0ac238fd
+	source = https://github.com/PySimpleGUI/PySimpleGUI/archive/refs/tags/6.2.tar.gz
+	sha256sums = 8c7cb01abf805a859b05743267e23c28ad554c101f701beba718788713f22995
 
 pkgname = python-pysimplegui
