@@ -2,14 +2,12 @@
 # Contributor: Ivan Gabaldon <aur[at]inetol.net>
 # Contributor: archlinuxbits <archlinuxbits at proton.me>
 
-: ${_electron_version=38}
-
 : ${_snap_id:=nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV}
-: ${_snap_rev:=71}
+: ${_snap_rev:=72}
 
 _pkgname="tradingview"
 pkgname="$_pkgname"
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='Charting platform for traders and investors'
 arch=('x86_64')
@@ -17,7 +15,6 @@ url="https://www.tradingview.com/desktop/"
 license=('LicenseRef-TradingView')
 
 depends=(
-  "electron${_electron_version}"
   'libsecret'
 )
 makedepends=(
@@ -35,7 +32,7 @@ source=(
   "$_terms_of_use.html"::"https://www.tradingview.com/policies/"
 )
 sha256sums=(
-  '84adb185feaad67ad1cf2755a0c0a5d67bae20a3d6a40e8a024e3a431cca1e7b'
+  'e4343ff1a62a67a75f05720d4762392f44fa0c70ecf4858049366632043bf118'
   'SKIP'
 )
 
@@ -52,6 +49,9 @@ prepare() {
 }
 
 package() {
+  local _electron_version=$(strings "$_pkgsrc/tradingview" | grep -Pom1 'Electron/\K[0-9]+')
+  depends+=("electron${_electron_version}")
+
   # asar
   mkdir -pm755 "$pkgdir/usr/lib/$_pkgname"
   cp -r "$_pkgsrc/resources/"* "$pkgdir/usr/lib/$_pkgname/"
