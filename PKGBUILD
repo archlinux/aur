@@ -1,12 +1,12 @@
-# Maintainer: Dmitry Kharitonov <arch[at]nano-model[dot]com>
+# Maintainer: Ianis Vasilev: ianis@ivasilev.net
+# Contributor: Dmitry Kharitonov <arch[at]nano-model[dot]com>
 # Contributor: Francois Garillot <francois[@]garillot.net>
 # Contributor: Malkov Fyodor aka krox: iksut@yandex.ru
-# Contributor: Ianis Vasilev: ianis@ivasilev.net
 
 pkgname=ocrodjvu-python3-git
 _pkgbasename='ocrodjvu'
 pkgver=0.14+46.r1457.7954aaa
-pkgrel=2.314
+pkgrel=3.314
 pkgdesc="OCR for DjVu (Python 3 fork)"
 arch=('any')
 url='https://github.com/FriedrichFroebel/ocrodjvu'
@@ -14,6 +14,7 @@ license=('GPL-2.0-only')
 provides=(ocrodjvu)
 conflicts=(ocrodjvu)
 makedepends=(python-build python-installer python-wheel git coreutils make libxslt docbook-xml docbook-xsl python-setuptools)
+checkdepends=(python-pillow python-pyicu python-html5lib tesseract tesseract-data-eng)
 depends=(python python-lxml python-djvulibre-python)
 optdepends=('python-html5lib: HTML parser; required for the ``--html5`` option'
             'python-pyicu: required for the ``--word-segmentation=uax29`` option'
