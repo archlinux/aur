@@ -1,6 +1,6 @@
 pkgbase = pandora-box-git
 	pkgdesc = A Simple Mihomo GUI.(Use system-wide electron)
-	pkgver = 1.0.21.r0.gb43b45d
+	pkgver = 1.0.22.r0.g8ea7971
 	pkgrel = 1
 	url = https://github.com/snakem982/Pandora-Box
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = pandora-box-git
 	makedepends = curl
 	makedepends = jq
 	depends = electron41
-	provides = pandora-box=1.0.21
+	provides = pandora-box=1.0.22
 	conflicts = pandora-box
 	source = pandora-box.git::git+https://github.com/snakem982/Pandora-Box
 	source = pandora-box.sh
