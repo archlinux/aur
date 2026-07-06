@@ -2,7 +2,7 @@
 
 pkgname=oryx-music-player-bin
 _pkgname=oryx
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc='Native Rust music player built with gpui'
 arch=('x86_64')
@@ -25,7 +25,7 @@ source_x86_64=(
 )
 sha256sums=('c373c05e9d8d06d7aa53cc1d5fba2b9d3fa8776aae1b3720d104f594f9dd771f'
             '23563fd2c80b90aed3a708a54cb1d4f5f20ef014508f5cc4c330a7e3b24301d1')
-sha256sums_x86_64=('5d064a1ec39b0633ca8e2b6b6c779c4f7421141576f9a7ba12e3f2c727844c05')
+sha256sums_x86_64=('44b7e49c237356d3de0f46b7f239337be4319bb63dcfccab77cd5da21e6b4107')
 
 package() {
   install -Dm0755 "${srcdir}/usr/bin/${_pkgname}" \
