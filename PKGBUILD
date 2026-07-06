@@ -2,9 +2,9 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio
 _pkgname="Cherry Studio"
-pkgver=1.9.11
+pkgver=1.9.12
 _electron=electron41
-pkgrel=2
+pkgrel=1
 pkgdesc="A desktop client that supports for multiple LLM providers.(Use system-wide electron)"
 arch=('x86_64')
 url="https://cherry-ai.com/"
@@ -33,8 +33,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('871b0896e960316d707a7f8685d1d01d7aab3cce6ea1f9431faa28006b363f1e'
-            '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
+sha256sums=('efeeda35fee20d5fca1083ca566ec02917a33d3b784295e05d963ae0fbec3b03'
+    '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
 
 prepare() {
     sed -e "s|__ELECTRON__|${_electron}|g" -i "${srcdir}/${pkgname}.sh"
