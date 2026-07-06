@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable-git
 epoch=1
-pkgver=17.0.beta.r0.g99a386b6
+pkgver=17.0.3.r37.gaecdb463
 pkgrel=1
 epoch=1
 pkgdesc="Portable Sandboxing framework"
@@ -43,6 +43,7 @@ makedepends+=(
 	"libarchive"
 	"git"
 	"go"
+	"rust"
 )
 
 checkdepends=()
