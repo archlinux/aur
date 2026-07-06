@@ -1,6 +1,6 @@
 pkgbase = gohpts
 	pkgdesc = Simple CLI tool to transform SOCKS proxy into HTTP proxy with IPv4/IPv6 support for TCP/UDP Transparent Proxy (Redirect and TProxy), Proxychains, ARP/NDP/RA/RDNSS spoofing and Traffic Sniffing
-	pkgver = 1.15.4
+	pkgver = 1.15.5
 	pkgrel = 1
 	url = https://github.com/shadowy-pycoder/go-http-proxy-to-socks
 	arch = any
