@@ -1,0 +1,16 @@
+pkgbase = blob
+	pkgdesc = A minimal note manager that stays out of your way
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/aaravmaloo/blob
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	depends = libgcc
+	provides = blob
+	source = blob-1.1.1.tgz::https://github.com/aaravmaloo/blob/archive/v1.1.1.tar.gz
+	sha256sums = f53f9cd545d1d740d002bbc1291d6bf4882bf4d89afd613275a07de7762bf82f
+
+pkgname = blob

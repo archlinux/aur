@@ -1,0 +1,5 @@
+[blob]
+source = "github"
+github = "aaravmaloo/blob"
+use_latest_release = true
+prefix = "v"
