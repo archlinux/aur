@@ -1,0 +1,21 @@
+pkgbase = ue4ss-experimental-zdev
+	pkgdesc = Lua/C++ mod loader DLLs for Win64 Unreal Engine 4/5 games (experimental, with debug symbols and dev tool mods)
+	pkgver = 3.0.1_1009_gc2ac2464
+	pkgrel = 1
+	url = https://docs.ue4ss.com/
+	arch = any
+	license = MIT
+	depends = bash
+	optdepends = wine: run Windows Unreal Engine games under Wine/Proton to mod them
+	provides = ue4ss
+	provides = ue4ss-experimental
+	conflicts = ue4ss
+	conflicts = ue4ss-experimental
+	options = !strip
+	options = !debug
+	source = ue4ss-experimental-zdev-3.0.1_1009_gc2ac2464.zip::https://github.com/UE4SS-RE/RE-UE4SS/releases/download/experimental/zDEV-UE4SS_v3.0.1-1009-gc2ac2464.zip
+	source = ue4ss-install
+	sha256sums = 990f3904db8fb7eaddaafa9fbfe2bf7653111a711d593a8b381246bd67ceb12f
+	sha256sums = d5ae8372ecdc7171c7a6179511bf9dd8fe1905a83eac03abf7ae1292fe780cb0
+
+pkgname = ue4ss-experimental-zdev
