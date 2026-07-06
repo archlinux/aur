@@ -1,0 +1,21 @@
+pkgbase = osp-tracker-git
+	pkgdesc = Tracker video analysis and modeling tool
+	pkgver = 6.3.5
+	pkgrel = 1
+	url = http://physlets.org/tracker/
+	arch = x86_64
+	license = GPL3
+	makedepends = java-environment=8
+	makedepends = rsync
+	depends = gtk2
+	depends = gconf
+	depends = java-runtime
+	conflicts = osp-tracker
+	source = tracker::git+https://github.com/OpenSourcePhysics/tracker.git#tag=version_6.3.5
+	source = osp::git+https://github.com/OpenSourcePhysics/osp.git#tag=version_6.3.5
+	source = tracker.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 73664881f365a5640ca0c4ef83776105522ce3594f6961f2505766fea6bc361b
+
+pkgname = osp-tracker-git
