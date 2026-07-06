@@ -2,7 +2,7 @@
 
 upstream_name=powertools-lambda-python
 pkgname=python-aws-lambda-powertools
-pkgver=3.30.0
+pkgver=3.31.0
 pkgrel=1
 pkgdesc='A developer toolkit to implement Serverless best practices and increase velocity'
 arch=(any)
@@ -12,7 +12,7 @@ depends=("python")
 conflicts=('aws-lambda-powertools-python') # old package name
 makedepends=("python-build" "python-installer" "python-poetry")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b3c32ba0d0b0c95e0aab4200dd77b6d11e34a7b68b512ec07a0cf445f03d346e')
+sha256sums=('cc2f12a2f01b2885e9eb27594a80208662b0af1c328fc136859dcc4a00a345e3')
 
 build() {
     cd "$upstream_name-$pkgver"
