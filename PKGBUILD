@@ -1,7 +1,9 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
+# Auto Upgrade: https://github.com/phnx47/pkgbuilds
+
 pkgname=moon
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='Task runner and repo management tool for the web ecosystem'
 license=('MIT')
@@ -11,7 +13,7 @@ depends=('gcc-libs' 'xz')
 makedepends=('cargo' 'protobuf')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('40623a2a2c2190dfd85cae6ec933ccea29958f6b4838d2566e5abfc443980ef7')
+sha256sums=('9210d5a736b6b267c78826481f903e17840757d4886b965266bc3c936bdc3f75')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
