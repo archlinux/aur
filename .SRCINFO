@@ -1,6 +1,6 @@
 pkgbase = python-arviz-base
 	pkgdesc = Base ArviZ features and converters
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://python.arviz.org/projects/base
 	arch = any
@@ -15,13 +15,12 @@ pkgbase = python-arviz-base
 	makedepends = python-jupyter-sphinx
 	makedepends = python-myst-nb
 	makedepends = python-numpydoc
-	makedepends = python-tinycss2
 	makedepends = python-xarray
 	makedepends = python-lazy-loader
 	makedepends = python-h5netcdf
 	makedepends = python-linkify-it-py
-	source = https://github.com/arviz-devs/arviz-base/archive/refs/tags/v1.1.0.tar.gz
-	md5sums = d048e6af3205a688406593d2dbfbf288
+	source = https://github.com/arviz-devs/arviz-base/archive/refs/tags/v1.2.0.tar.gz
+	md5sums = 812747e38775258bee41e844fb3c5772
 
 pkgname = python-arviz-base
 	depends = python>=3.12
