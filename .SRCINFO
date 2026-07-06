@@ -1,11 +1,12 @@
 pkgbase = bobcat-terminal
 	pkgdesc = A powerful yet user-friendy cross-platform terminal emulator
 	pkgver = 0.9.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ismail-yilmaz/Bobcat
 	arch = x86_64
 	license = GPL-3.0
-	makedepends = rust
+	makedepends = git
+	makedepends = pkg-config
 	depends = gtk3
 	depends = libnotify
 	depends = openssl
@@ -32,8 +33,8 @@ pkgbase = bobcat-terminal
 	conflicts = bobcat-terminal-git
 	conflicts = bobcat-terminal-bin
 	source = bobcat-terminal-0.9.9.tar.gz::https://github.com/ismail-yilmaz/Bobcat/archive/refs/tags/0.9.9.tar.gz
-	source = upp-posix-17810.tar.xz::https://github.com/ultimatepp/ultimatepp/releases/download/v2025.1.1/upp-posix-17810.tar.xz
+	source = upp-posix-18468.tar.xz::https://github.com/ultimatepp/ultimatepp/releases/download/v2026.1/upp-posix-18468.tar.xz
 	sha256sums = 71dfb9ed77ed89440205935f4c04e0eff194a471552173b98b5ccf4d0055ec1f
-	sha256sums = 3c7415f2ba4398b371be063ba9071b1983d961a465d4d665a8367e62909d661e
+	sha256sums = 701dbb10edf03c77ceff66c89a2ffa23fce2b788cc480b0cae39d0689519b633
 
 pkgname = bobcat-terminal
