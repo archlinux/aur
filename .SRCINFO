@@ -1,7 +1,7 @@
 pkgbase = xlibre-video-qxl
 	pkgdesc = XLibre qxl video driver
 	pkgver = 25.0.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/X11Libre/xf86-video-qxl
 	arch = x86_64
 	groups = xlibre-drivers
