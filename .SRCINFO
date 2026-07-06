@@ -11,9 +11,9 @@ pkgbase = anodizer-bin
 	provides = anodizer
 	arch = aarch64
 	source_aarch64 = https://github.com/tj-smith47/anodizer/releases/download/v0.15.1/anodizer-0.15.1-linux-arm64-extra.tar.xz
-	sha256sums_aarch64 = 53da64d099cd9dca128cd25d6b15bd4523406da52c43c3c8e392e1d79a9e6c93
+	sha256sums_aarch64 = 1e402f31a9d6bb70bf4027320723285c8ce42f08828b0dc274a41f684f6e1f98
 	arch = x86_64
 	source_x86_64 = https://github.com/tj-smith47/anodizer/releases/download/v0.15.1/anodizer-0.15.1-linux-amd64-extra.tar.xz
-	sha256sums_x86_64 = 3c37fe4cebabd3331c97e468ba753192f63109db3234842b02f1e8006a536ea8
+	sha256sums_x86_64 = c9050fab8ade34eacc92b62d2d9dc023bdfc1369e4247598550c70a162fd8b21
 
 pkgname = anodizer-bin
