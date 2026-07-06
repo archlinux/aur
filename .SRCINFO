@@ -1,0 +1,14 @@
+pkgbase = pickle-git
+	pkgdesc = TUI colorpicker
+	pkgver = r22.8106f74
+	pkgrel = 1
+	url = https://codeberg.org/j_ole/pickle
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	depends = glibc
+	depends = ncurses
+	source = pickle::git+https://codeberg.org/j_ole/pickle.git
+	sha256sums = SKIP
+
+pkgname = pickle-git
