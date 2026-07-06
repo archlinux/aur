@@ -1,6 +1,6 @@
 pkgbase = loreai-pi
 	pkgdesc = Lore memory engine extension for Pi
-	pkgver = 0.36.0
+	pkgver = 0.37.0
 	pkgrel = 1
 	url = https://github.com/BYK/loreai
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = loreai-pi
 	makedepends = pnpm
 	depends = pi
 	depends = loreai
-	source = loreai-0.36.0.tar.gz::https://github.com/BYK/loreai/archive/refs/tags/0.36.0.tar.gz
-	sha256sums = a957a88a11bace7dd80fe7d733a7ea3b1b508ae5d8b7faea8606215578a14881
+	source = loreai-0.37.0.tar.gz::https://github.com/BYK/loreai/archive/refs/tags/0.37.0.tar.gz
+	sha256sums = 60c226b7ef92906f8e78892eb705dc0174e8181570244c2b9e384884a34093bb
 
 pkgname = loreai-pi
