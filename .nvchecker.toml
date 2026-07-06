@@ -1,0 +1,5 @@
+[idu]
+source = "github"
+github = "MkP369/idu"
+use_latest_release = true
+prefix = "v"

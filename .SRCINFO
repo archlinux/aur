@@ -1,0 +1,18 @@
+pkgbase = idu
+	pkgdesc = Instant du -sh and a bit more
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MkP369/idu
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = mold
+	depends = glibc
+	provides = idu
+	options = !strip
+	source = idu-0.1.0.tgz::https://github.com/MkP369/idu/archive/v0.1.0.tar.gz
+	sha256sums = 268baf14ae2fa4aba0273e422b40d98c746b124c78572483990e2a2a782c057e
+
+pkgname = idu
