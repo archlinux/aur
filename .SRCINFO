@@ -1,0 +1,12 @@
+pkgbase = caveman
+	pkgdesc = Make your AI coding agent talk like a caveman. Same answers, 65% fewer output tokens.
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://github.com/JuliusBrussee/caveman
+	arch = any
+	license = MIT
+	depends = nodejs>=18
+	source = caveman-1.9.1.tar.gz::https://github.com/JuliusBrussee/caveman/archive/v1.9.1.tar.gz
+	sha256sums = 94017e661f434f4a71e6c0210f261a0f327546b3d96f7be8bdd40c16951e74c3
+
+pkgname = caveman
