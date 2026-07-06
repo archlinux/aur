@@ -1,30 +1,34 @@
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Kohei Suzuki <eagletmt@gmail.com>
 # Contributor: Daniel Wallace < danielwallace at gtmanfred dot com >
 # Contributor: Yoel Lion <yoel3ster at gmail dot com>
 # Contributor: Netanel Shine <Netanelshine@gmail.com>
 # Contributor: tobias <tobias@archlinux.org>
 # Contributor: Gatekeeper <cool_work@yahoo.com>
-# Maintainer: aksr <aksr at t-com dot me>
+# Contributor: aksr <aksr at t-com dot me>
+
+pkgauthor=arakiken
 pkgname=mlterm
-pkgver=3.9.3
-pkgrel=2
+pkgver=3.9.5
+pkgrel=1
 pkgdesc="Multi Lingual TERMinal emulator on X"
-url="http://mlterm.sourceforge.net/"
+url="https://github.com/${pkgauthor}/${pkgname}"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('gtk2' 'gtk3' 'm17n-lib' 'libutempter')
 makedepends=('intltool' 'librsvg' 'ncurses')
 options=(!libtool)
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz $pkgname.desktop)
-md5sums=('6a17f57aa5083135e974bd6459aebea0'
-         'd019c571f28c7b765610e219d9e52e35')
-sha1sums=('2c60714141ab98b58fad41b11e12d2d0e1a598be'
-          '6a2c46265b0751ccf016e7521fdf48d1f9ac459f')
-sha256sums=('b5b76721391de134bd64afb7de6b4256805cf2fc883a2bf2e5d29602ac1b50d9'
-            'b254755e320a94a05d3d745cd582a5b91f5ed33fd69396feca0511cf5c6b3ce0')
+source=(${url}/archive/${pkgver}.tar.gz ${pkgname}.desktop)
+md5sums=('075249c886f9ea9025dc75b378a54069'
+         '90b831e025ce03a96b290d8df1ba377d')
+sha1sums=('e6cca6c058ad70bc01caac019dea8ae6b2949df3'
+          '05f47be966a3ba923dbfe6f96b07c9d4b9a3d5e5')
+sha256sums=('7d28678aa90dade72cea4e1e5fffb5e4c343487d60ca36c88dc615134613af39'
+            '5527b8b246ae27730f9eda3bd77344d8310e397d1353599041dca0f094bc86e8')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}/"
+
   ./configure --prefix=/usr --libexecdir=/usr/lib/mlterm --sysconfdir=/etc --mandir=/usr/share/man \
               --enable-fribidi \
               --enable-optimize-redrawing \
@@ -40,26 +44,28 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}/"
 
-  make DESTDIR="$pkgdir" install
-  echo 'conf_menu_path_2 = mlterm-zoom' >> "$pkgdir/etc/mlterm/main"
+  make DESTDIR="${pkgdir}" install
+
+  echo 'conf_menu_path_2 = mlterm-zoom' >> "${pkgdir}/etc/mlterm/main"
 
   # install some freedesktop.org compatibility
-  install -D -m644 "$srcdir/$pkgname.desktop" \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -D -m644 "$srcdir/${pkgname}.desktop" \
+    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   sed -e 's:mlterm:mlclient:' \
-   < "$pkgdir/usr/share/applications/$pkgname.desktop" \
-   > "$pkgdir/usr/share/applications/mlclient.desktop"
-  install -D -m644 "contrib/icon/$pkgname-icon.svg" \
-    "$pkgdir/usr/share/pixmaps/$pkgname.svg"
-  install -D -m644 "contrib/icon/$pkgname-icon-trans.svg" \
-    "$pkgdir/usr/share/pixmaps/mlclient.svg"
+   < "${pkgdir}/usr/share/applications/${pkgname}.desktop" \
+   > "${pkgdir}/usr/share/applications/mlclient.desktop"
+  install -D -m644 "contrib/icon/${pkgname}-icon.svg" \
+    "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
+  install -D -m644 "contrib/icon/${pkgname}-icon-trans.svg" \
+    "${pkgdir}/usr/share/pixmaps/mlclient.svg"
 
   # finally we render a png as fallback for not svg aware menu applications
   # Attention: always make sure you check the dimensions of the source-svg,
   # you can read the dimensions via inkscapes export funktion
-  cd "$pkgdir/usr/share/pixmaps"
+  cd "${pkgdir}/usr/share/pixmaps/"
+
   rsvg-convert -w 48 -h 38 -f png -o mlterm.png mlterm.svg
   rsvg-convert -w 48 -h 38 -f png -o mlclient.png mlclient.svg
 }

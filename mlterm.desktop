@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Multilingual terminal (mlterm)
+Name=Multilingual Terminal (mlterm)
 Name[he]= mlterm 
 Comment=Multi Lingual TERMinal emulator on X
 Exec=mlterm

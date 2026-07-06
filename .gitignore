@@ -1,2 +1,6 @@
-*.tar.zst
-*.tar.gz
+*
+!.nvchecker.toml
+!.gitignore
+!*.desktop
+!PKGBUILD
+!.SRCINFO

@@ -1,0 +1,5 @@
+[mlterm]
+source = "github"
+github = "arakiken/mlterm"
+use_latest_release = true
+prefix = "v"
