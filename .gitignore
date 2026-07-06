@@ -1,6 +1,10 @@
 *
 # dev tools
 !.gitignore
+!LICENSE
+!LICENSES
+!LICENSES/*
+!REUSE.toml
 # actual package
 !PKGBUILD
 !.SRCINFO

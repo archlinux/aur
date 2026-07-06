@@ -3,7 +3,7 @@
 # Contributor: Frank Vanderham <twelve_dot_eighty_at_gmail_dot_com>
 
 pkgname=pam_mount-git
-pkgver=2.22.r1.g64dfcc8
+pkgver=2.22.r7.g78787d2
 pkgrel=1
 pkgdesc='A PAM module that can mount volumes for a user session'
 arch=('x86_64')
