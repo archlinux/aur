@@ -1,0 +1,13 @@
+pkgbase = liblgpio
+	pkgdesc = Linux SBC GPIO/I2C/SPI/serial access library
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = http://abyz.me.uk/lg/py_lgpio.html
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = custom:unknown
+	source = lg-0.2.2.tar.gz::https://github.com/joan2937/lg/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = b08d8569d6dc8fa91a42ba1e37f620fdcb19d6bf2330e4b7d7301431ddbe124c
+
+pkgname = liblgpio
