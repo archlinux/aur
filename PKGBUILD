@@ -1,0 +1,179 @@
+# Maintainer: Orion-zhen <https://github.com/Orion-zhen>
+# Contributor: txtsd <aur.archlinux@ihavea.quest>
+
+pkgname=llama.cpp-hip-git
+_pkgname="${pkgname%-hip-git}"
+pkgver=b9881.r1.g4871961
+pkgrel=1
+pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations, git version)"
+arch=(x86_64 armv7h aarch64)
+url='https://github.com/ggml-org/llama.cpp'
+license=('MIT')
+depends=(
+  curl
+  gcc-libs
+  glibc
+  hip-runtime-amd
+  hipblas
+  openmp
+  python
+  rocblas
+)
+makedepends=(
+  cmake
+  git
+  nodejs
+  npm
+  rocm-hip-sdk
+)
+optdepends=(
+  'python-numpy: needed for convert_hf_to_gguf.py'
+  'python-safetensors: needed for convert_hf_to_gguf.py'
+  'python-sentencepiece: needed for convert_hf_to_gguf.py'
+  'python-pytorch: needed for convert_hf_to_gguf.py'
+  'python-transformers: needed for convert_hf_to_gguf.py'
+  'python-gguf: needed for convert_hf_to_gguf.py'
+)
+provides=(
+  "${_pkgname}"
+  "${pkgname%-git}"
+  llama-cpp
+  libggml
+  libggml-hip.so
+  ggml
+  ggml-rocm
+)
+conflicts=(
+  "${_pkgname}"
+  "${pkgname%-git}"
+  llama-cpp
+  libggml
+  ggml
+  ggml-rocm
+  stable-diffusion.cpp
+)
+options=(lto !debug)
+backup=("etc/conf.d/llama.cpp")
+source=(
+  "${_pkgname}::git+https://github.com/ggml-org/llama.cpp.git"
+  "llama.cpp.service"
+  "llama.cpp.conf"
+)
+sha256sums=('SKIP'
+            '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
+            'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
+
+
+pkgver() {
+  cd "${_pkgname}"
+
+  local _last_tag _tag_num _rev _hash
+
+  if _last_tag="$(git describe --tags --abbrev=0 2>/dev/null)"; then
+    _tag_num="${_last_tag#b}"
+    _rev="$(git rev-list --count "${_last_tag}..HEAD")"
+    _hash="$(git rev-parse --short=7 HEAD)"
+
+    if [[ "${_rev}" == 0 ]]; then
+      printf 'b%s\n' "${_tag_num}"
+    else
+      printf 'b%s.r%s.g%s\n' "${_tag_num}" "${_rev}" "${_hash}"
+    fi
+  else
+    printf 'r%s.g%s\n' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  fi
+
+  _llama_commit_id=$(git rev-parse HEAD)
+}
+
+build() {
+  pushd "${_pkgname}/tools/ui"
+  npm ci
+  npm run build
+  popd
+
+  if [[ -z "${ROCM_PATH}" ]]; then
+    source /etc/profile
+  fi
+
+  export HIP_PATH="$(hipconfig -R)"
+  export HIPCXX="$(hipconfig -l)/clang"
+  export HIP_PLATFORM=amd
+
+  local _llama_build_number
+  if [[ "${pkgver}" =~ ^b([0-9]+) ]]; then
+    _llama_build_number="${BASH_REMATCH[1]}"
+  else
+    _llama_build_number="$(git -C "${_pkgname}" rev-list --count HEAD)"
+  fi
+
+  local _cmake_options=(
+    -B build
+    -S "${_pkgname}"
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_HIP_FLAGS="-mllvm --amdgpu-unroll-threshold-local=600"
+    -DBUILD_SHARED_LIBS=ON
+    -DLLAMA_BUILD_TESTS=OFF
+    -DLLAMA_USE_SYSTEM_GGML=OFF
+    -DLLAMA_BUILD_WEBUI=ON
+    -DGGML_ALL_WARNINGS=OFF
+    -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
+    -DGGML_BUILD_EXAMPLES=OFF
+    -DGGML_BUILD_TESTS=OFF
+    -DGGML_LTO=ON
+    -DGGML_RPC=ON
+    -DGGML_HIP=ON
+    -DGGML_HIP_GRAPHS=ON
+    # -DGGML_HIP_ROCWMMA_FATTN=ON
+    -DHIP_PLATFORM=amd # 手动指定 AMD 平台, 防止因 rocm-nightly 禁用自动检测而报错
+    -DGGML_CUDA_FA_ALL_QUANTS=ON
+    -DLLAMA_BUILD_NUMBER="${_llama_build_number}"
+    -DLLAMA_BUILD_COMMIT="${_llama_commit_id}"
+    -Wno-dev
+  )
+
+  # 检查是否在 CI 环境中构建
+  if [ -n "$CI" ] && [ "$CI" != 0 ]; then
+    msg2 "CI = $CI detected, building universal package"
+    # 启用通用构建
+    _cmake_options+=(
+      -DGGML_BACKEND_DL=ON
+      -DGGML_CPU_ALL_VARIANTS=ON
+      -DGGML_NATIVE=OFF
+      # https://llvm.org/docs/AMDGPUUsage.html
+      # gfx906: MI 50/60, Radeon VII
+      # gfx101x: RX 5000 Series
+      # gfx103x: RX 6000 Series
+      # gfx110x: RX 7000 Series
+      # gfx1151: Strix Halo
+      # gfx120x: RX 9000 Series
+      -DAMDGPU_TARGETS="gfx906;gfx1010;gfx1030;gfx1031;gfx1100;gfx1101;gfx1102;gfx1151;gfx1200;gfx1201"
+    )
+  else
+    # 本地构建, 针对当前设备优化
+    _cmake_options+=(
+      -DGGML_NATIVE=ON
+    )
+  fi
+
+  # 允许用户自定义构建选项
+  if [[ -n "$LLAMA_BUILD_EXTRA_ARGS" ]]; then
+    msg2 "Applied custom CMake build args: $LLAMA_BUILD_EXTRA_ARGS"
+    _cmake_options+=($LLAMA_BUILD_EXTRA_ARGS)
+  fi
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build -- -j $(nproc)
+}
+
+package() {
+  DESTDIR="${pkgdir}" cmake --install build
+
+  install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "llama.cpp.conf" "${pkgdir}/etc/conf.d/llama.cpp"
+  install -Dm644 "llama.cpp.service" "${pkgdir}/usr/lib/systemd/system/llama.cpp.service"
+
+  msg2 "llama.cpp.service is now available"
+  msg2 "llama-server arguments are in /etc/conf.d/llama.cpp"
+}
