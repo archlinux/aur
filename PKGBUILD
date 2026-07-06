@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tmax-bin
-pkgver=1.11.2
+pkgver=1.11.4
 _electronversion=30
 pkgrel=1
 pkgdesc="A powerful cross-platform multi-terminal app with tiling layouts, floating panels, and a keyboard-driven workflow. (Prebuilt version. Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('660eab3044b256f3e075162833898e30f8d1bd700e06dda0a7d1b8b320ea3812'
+sha256sums=('c94d3ea6db456688ce8801cb3836bdffbf257cfaedec1e2d069bbb4b2fa8985f'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
