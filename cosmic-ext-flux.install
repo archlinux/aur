@@ -1,8 +1,10 @@
 post_install() {
     echo "==========================================================="
     echo "Thank you for installing Flux!"
+    echo " "
     echo "Please run the following command to initialize the service:"
     echo "  systemctl --user enable --now cosmic-ext-flux-daemon"
+    echo " "
     echo "Next, add the Flux applet to your COSMIC panel via:"
     echo "  Settings > Desktop > Panel > Applets"
     echo "==========================================================="
