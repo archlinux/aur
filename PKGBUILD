@@ -1,7 +1,7 @@
 # Maintainer: Mike Cuche <mike@cuche.cc>
 
 pkgname=snowemu
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A friendly and accurate 68k Macintosh emulator"
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ depends=(alsa-lib)
 makedepends=(cargo)
 source=(https://github.com/twvd/snow/archive/refs/tags/v${pkgver}.tar.gz)
 
-sha256sums=('c980c9ac4d952ddc21da63fe28a411852ff49463a6e62c647502b541e3d0b229')
+sha256sums=('00ee7515a8ed5e977e46b5f87a02ce964049613a5b909203b77b2feb277193a0')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
