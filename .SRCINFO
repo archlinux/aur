@@ -10,7 +10,7 @@ pkgbase = python-click-extra
 	makedepends = uv
 	makedepends = python-pip
 	depends = python
-	depends = python-click>=8.4.1
+	depends = python-click>=8.3.1
 	depends = python-boltons
 	depends = python-pygments
 	depends = python-json5
