@@ -1,7 +1,7 @@
 pkgbase = environment-modules
 	pkgdesc = Provides for an easy dynamic modification of a user's environment via modulefile.
 	pkgver = 5.6.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://envmodules.io/
 	arch = i686
 	arch = x86_64
@@ -24,10 +24,12 @@ pkgbase = environment-modules
 	depends = bash
 	depends = glibc
 	depends = inetutils
+	depends = lsb-release
 	depends = tcl>=8.5
 	depends = procps-ng
 	depends = util-linux
 	depends = vi
+	depends = xorg-xrdb
 	optdepends = python: Support for environment modules in Python.
 	optdepends = cmake: Support for environment modules in CMake.
 	conflicts = lmod
