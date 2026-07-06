@@ -4,7 +4,7 @@
 
 pkgname=patool
 pkgver=4.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="portable command line archive file manager"
 arch=('any')
 url="https://wummel.github.io/patool/"
@@ -14,8 +14,7 @@ makedepends=(python-build python-installer python-wheel python-setuptools-reprod
 optdepends=("lz4: extracting LZ4 archives"
     "p7zip: extracting ZIP and 7z files"
     "unarchiver: extracting various formats"
-    "unrar: extracting RAR files"
-    "zstd: extracting ZSTANDARD files")
+    "unrar: extracting RAR files")
 source=(https://github.com/wummel/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz)
 sha256sums=('1c8bbbbe1f421181bf7055ada975befb024c1677449e9d36f42bb45ac69f8b4c')
 
