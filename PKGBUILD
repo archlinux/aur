@@ -1,6 +1,6 @@
 # Maintainer: Jiri Doubravsky (DoubyCz) <douby@douby.cz>
 #
-# KeeperFX (Dungeon Keeper remake) - native Linux build from the DoubyCz fork,
+# KeeperFX (Dungeon Keeper remake) - native Linux build from upstream (dkfans),
 # built via linux.mk. Uses the system SDL2 (Arch's is recent enough for Wayland),
 # so unlike the AppImage no library bundling is needed. The freely-redistributable
 # KeeperFX data is bundled; the 16 original Dungeon Keeper files (copyright
@@ -8,11 +8,11 @@
 # via `keeperfx-install` after installation.
 
 pkgname=keeperfx-git
-pkgver=1.3.2.r0.g0000000
-pkgrel=4
+pkgver=1.4.0.r0.g0000000
+pkgrel=1
 pkgdesc='Dungeon Keeper remake (KeeperFX), native Linux build. Requires you own the original Dungeon Keeper.'
 arch=('x86_64')
-url='https://github.com/DoubyCz/keeperfx'
+url='https://github.com/dkfans/keeperfx'
 license=('GPL-2.0-or-later')
 depends=('sdl2-compat' 'sdl2_mixer' 'sdl2_net' 'sdl2_image' 'ffmpeg' 'openal' 'luajit'
          'libspng' 'minizip' 'miniupnpc' 'libnatpmp' 'zlib' 'openssl' 'zstd'
@@ -24,19 +24,18 @@ conflicts=('keeperfx')
 options=('!debug' '!strip')
 install="${pkgname}.install"
 
-_branch=linux-build-modern-gcc
-_datever=1.3.2
+_branch=master
+_datever=1.4.0
 _data7z="keeperfx_${_datever//./_}_complete.7z"
-source=("${pkgname}::git+https://github.com/DoubyCz/keeperfx.git#branch=${_branch}"
+source=("${pkgname}::git+https://github.com/dkfans/keeperfx.git#branch=${_branch}"
         "${_data7z}::https://github.com/dkfans/keeperfx/releases/download/v${_datever}/${_data7z}")
 noextract=("${_data7z}")
 sha256sums=('SKIP'
-            '2a8b0dcce85b954c5328f4c6cc8dc7f6ecf6243a4df04a7145fdc48c9aa45b8a')
+            '82d9d5634e8ea6cabb8f62fbd4830b758919893863cd313517af256a3040a279')
 
 pkgver() {
-  # The fork branch carries `appimage.*` tags that make `git describe` ugly
-  # (appimage.v1.3.2.r0.g…). Derive a clean VCS version from the known data release
-  # + commit count + short hash instead: 1.3.2.rN.gHASH.
+  # Derive a clean VCS version from the bundled data release + commit count + short
+  # hash (<datever>.rN.gHASH), independent of upstream's own tag scheme.
   cd "$pkgname"
   printf '%s.r%s.g%s' "$_datever" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
