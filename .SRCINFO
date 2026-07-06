@@ -1,13 +1,13 @@
 pkgbase = lambda
-	pkgdesc = Lambda calculus beta-reduction playground with ncurses and CLI front ends
-	pkgver = 0.1.14
+	pkgdesc = Lambda calculus beta reduction playground with optional eta and ncurses/CLI front ends
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/drmenguin/lambda
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = glibc
 	depends = ncurses
-	source = lambda-0.1.14.tar.gz::https://github.com/drmenguin/lambda/archive/refs/tags/v0.1.14.tar.gz
-	sha256sums = 4969ef4efed287a560938f5954dc2cf671b94c38863978444d0ba242155a3d15
+	source = lambda-0.2.tar.gz::https://github.com/drmenguin/lambda/archive/refs/tags/v0.2.tar.gz
+	sha256sums = 27009053e5f6b65f503cc60eb4473ac2a924192ce4d8ca84940aee2a8f198ac3
 
 pkgname = lambda
