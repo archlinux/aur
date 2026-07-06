@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=beekeeper-studio-git
 _pkgname="Beekeeper Studio"
-pkgver=5.9.0.beta.3.r41.g106bde0
+pkgver=5.9.0.beta.4.r11.ga534386
 _electronversion=39
 _nodeversion=22
 pkgrel=1
@@ -13,6 +13,7 @@ license=('GPL-3.0-only')
 depends=(
     "electron${_electronversion}"
     'nodejs'
+    'unixodbc'
 )
 makedepends=(
     'npm'
@@ -43,7 +44,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _set_build_env() {
-    export electronDist="/usr/lib/electron${_electronversion}"
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
 	export HOME="${srcdir}/.electron-gyp"
@@ -106,7 +107,7 @@ build() {
     cd "${srcdir}/${pkgname%-git}.git/apps/studio"
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     NODE_ENV=production     yarn run build
-    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder-config.js
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}" --config electron-builder-config.js
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"

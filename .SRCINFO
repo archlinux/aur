@@ -1,6 +1,6 @@
 pkgbase = beekeeper-studio-git
 	pkgdesc = Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more.(Use system-wide electron)
-	pkgver = 5.9.0.beta.3.r41.g106bde0
+	pkgver = 5.9.0.beta.4.r11.ga534386
 	pkgrel = 1
 	url = https://www.beekeeperstudio.io/
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = beekeeper-studio-git
 	makedepends = ruby
 	depends = electron39
 	depends = nodejs
+	depends = unixodbc
 	source = beekeeper-studio.git::git+https://github.com/beekeeper-studio/beekeeper-studio.git
 	source = beekeeper-studio.sh
 	sha256sums = SKIP
