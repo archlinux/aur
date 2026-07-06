@@ -1,7 +1,7 @@
 pkgbase = docker-credential-helpers
-	pkgdesc = Linux credential helpers for Docker
+	pkgdesc = Credential helpers for Docker (pass and secretservice)
 	pkgver = 0.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/docker/docker-credential-helpers
 	arch = x86_64
 	license = MIT
