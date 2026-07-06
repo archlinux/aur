@@ -2,11 +2,11 @@
 # Contributor: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
 
 pkgname=perl-test2-tools-command
+pkgdesc='Test simple unix commands in Perl'
 pkgver=0.20
 pkgrel=2
-pkgdesc='Test simple unix commands in Perl'
-arch=('any')
 url='https://metacpan.org/dist/Test2-Tools-Command'
+arch=(any)
 license=('BSD-3-Clause')
 # See https://metacpan.org/dist/Test2-Tools-Command/source/Build.PL
 makedepends=(
@@ -31,7 +31,7 @@ source=("https://cpan.metacpan.org/authors/id/J/JM/JMATES/Test2-Tools-Command-${
 b2sums=('790d27943feaa1f521fa8168766ec5758606b882240bf87c9fc37da00b5158b88ac6eeac4d1228e9d1c5256d7b40ba81e0cff893fa46d7c5e6c2c857f4b25f64')
 
 build() {
-  cd "${srcdir}/Test2-Tools-Command-${pkgver}"
+  cd "Test2-Tools-Command-${pkgver}"
 
   unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
@@ -40,18 +40,18 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/Test2-Tools-Command-${pkgver}"
+  cd "Test2-Tools-Command-${pkgver}"
 
   unset PERL5LIB PERL_LOCAL_LIB_ROOT
   ./Build test
 }
 
 package() {
-  cd "${srcdir}/Test2-Tools-Command-${pkgver}"
+  cd "Test2-Tools-Command-${pkgver}"
 
   unset PERL5LIB PERL_LOCAL_LIB_ROOT
   ./Build install --installdirs=vendor --destdir="${pkgdir}"
 
   # BSD licenses require the full text
-  install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -vD -t "${pkgdir}/usr/share/licenses/${pkgname}/" -m644 LICENSE
 }
