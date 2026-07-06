@@ -1,6 +1,6 @@
 # Maintainer: tobocop <tobias.perelstein@gmail.com>
 pkgname=lilbee
-pkgver=0.6.66b506
+pkgver=0.6.66b507
 pkgrel=1
 pkgdesc="Run and manage local AI models and search your files, code, and crawled web pages, with cited answers"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 replaces=('lilbee-bin')
 options=('!strip' '!debug')
 source_x86_64=("lilbee-${pkgver}::${url}/releases/download/v${pkgver}/lilbee-linux-${CARCH}")
-sha256sums_x86_64=('8d7d0716423d9e49a23d0720227cd5cd1929b59ce810f79e007f018aae1d4f64')
+sha256sums_x86_64=('550c0375d8e983a86299632f6b15d97c1f4722a0f15b59da55942d8687dd7fc9')
 source=("lilbee.service::${url}/raw/v${pkgver}/packaging/systemd/lilbee.service")
 sha256sums=('8987137080f5b5353ca4a5bc82aa56c92c450c158e8558fa48fa8bff2cb1c69d')
 
