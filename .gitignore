@@ -1,9 +1,9 @@
 /*.pkg.tar.*
-/wayvr
-/wayvrctl
-/wayvr.png
-/wayvr.desktop
-/wayvr.svg
+/wayvr*
+/wayvrctl*
+/wayvr*.png
+/wayvr*.desktop
+/wayvr*.svg
 /pkg
 /src
 /*.part

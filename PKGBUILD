@@ -4,7 +4,7 @@ _pkgname=wayvr
 orgname=wayvr-org
 pkgname="$_pkgname-bin"
 pkgver=26.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenXR desktop overlay for Wayland compositors (binary release)"
 arch=('x86_64')
 url="https://github.com/$orgname/$_pkgname"
@@ -44,11 +44,11 @@ optdepends=(
 )
 
 source=(
-    "https://github.com/$orgname/$_pkgname/releases/download/v$pkgver/wayvr"
-    "https://github.com/$orgname/$_pkgname/releases/download/v$pkgver/wayvrctl"
-    "https://raw.githubusercontent.com/$orgname/$_pkgname/refs/tags/v$pkgver/$_pkgname/wayvr.desktop"
-    "https://raw.githubusercontent.com/$orgname/$_pkgname/refs/tags/v$pkgver/$_pkgname/wayvr.png"
-    "https://raw.githubusercontent.com/$orgname/$_pkgname/refs/tags/v$pkgver/$_pkgname/wayvr.svg"
+    "wayvr-$pkgver::https://github.com/$orgname/$_pkgname/releases/download/v$pkgver/wayvr"
+    "wayvrctl-$pkgver::https://github.com/$orgname/$_pkgname/releases/download/v$pkgver/wayvrctl"
+    "wayvr-$pkgver.desktop::https://raw.githubusercontent.com/$orgname/$_pkgname/refs/tags/v$pkgver/$_pkgname/wayvr.desktop"
+    "wayvr-$pkgver.png::https://raw.githubusercontent.com/$orgname/$_pkgname/refs/tags/v$pkgver/$_pkgname/wayvr.png"
+    "wayvr-$pkgver.svg::https://raw.githubusercontent.com/$orgname/$_pkgname/refs/tags/v$pkgver/$_pkgname/wayvr.svg"
 )
 
 sha256sums=('c334d8410e930a5ff92bf415d7d8583864a468932f4f9dfbd1a995cfa8a42be1'
@@ -61,19 +61,19 @@ package() {
   cd "$srcdir"
 
   # main binary
-  install -Dm0755 $_pkgname \
+  install -Dm0755 ${_pkgname}-${pkgver} \
     "$pkgdir/usr/bin/$_pkgname"
 
-  install -Dm0755 ${_pkgname}ctl \
+  install -Dm0755 ${_pkgname}ctl-${pkgver} \
     "$pkgdir/usr/bin/${_pkgname}ctl"
 
   # .desktop file
-  install -Dm0644 $_pkgname.desktop \
+  install -Dm0644 ${_pkgname}-${pkgver}.desktop \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # icons
-  install -Dm0644 "$_pkgname.png" \
+  install -Dm0644 "${_pkgname}-${pkgver}.png" \
     "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png"
-  install -Dm0644 "$_pkgname.svg" \
+  install -Dm0644 "${_pkgname}-${pkgver}.svg" \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 }
