@@ -15,9 +15,9 @@ arch=("x86_64")
 url="https://github.com/${pkgauthor}/${pkgname}"
 license=("MIT")
 
-depends=("nodejs")
+depends=("nodejs" "git")
 makedepends=("npm" "jq")
-provides=("${_npmname#git-}")
+provides=("${_npmname}")
 
 options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
@@ -52,6 +52,11 @@ package() {
 		mv "${tmppackage}" "${pkgjson}"
 		chmod 644 "${pkgjson}"
 	done
+
+	msg2 "Adjusting executable's name"
+	mv "${pkgdir}/usr/bin/${_npmname#git-}" "${pkgdir}/usr/bin/${_npmname}"
+	sed -e "s/^${_npmname#git-}/${_npmname}/" -i "${pkgdir}/usr/lib/node_modules/${_npmname}/README.md"
+	sed -E "s/([\"' ])${_npmname#git-}([\"' ])/\1${_npmname}\2/g" -i "${pkgdir}/usr/lib/node_modules/git-flex/package.json" "${pkgdir}/usr/lib/node_modules/git-flex/src/index.js"
 
 	msg2 "Install README file"
 	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
