@@ -1,0 +1,58 @@
+From 759287959883e0733a2f96b54f094766dfa25785 Mon Sep 17 00:00:00 2001
+From: graysky <therealgraysky AT proton DOT me>
+Date: Mon, 6 Jul 2026 16:56:08 -0400
+Subject: [PATCH] fix
+
+Rreadings table is created lazily — only by the two write paths (log_reading() and import_csv_files() in log.py:105 and log.py:274), both of which call _init_db() first. But every read path — query_readings(), query_readings_range() in log.py, and day_stats() in web/stats.py — queries the table directly with no such guard. On a fresh install, the setup wizard (setup.py:135) starts raspisump.service then redirects your browser to / after an 8-second countdown. If the sensor daemon hasn't logged its first reading yet in that window (or fails to — GPIO error, sensor not wired up, etc.), the table simply doesn't exist yet. home.py's index() view calls day_stats() with no exception handling, so Flask returns a hard 500 instead of "no data yet."
+
+The fix: make the read paths self-heal the schema the same way the write paths already do, since CREATE TABLE IF NOT EXISTS is cheap and idempotent.
+
+---
+ raspisump/log.py       | 2 ++
+ raspisump/web/stats.py | 3 ++-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/raspisump/log.py b/raspisump/log.py
+index 3de8d6fde6dc..06a63645e405 100644
+--- a/raspisump/log.py
++++ b/raspisump/log.py
+@@ -65,6 +65,7 @@ def query_readings(date: str = None, last: int = None) -> list:
+     """
+     conn = sqlite3.connect(DB_PATH)
+     try:
++        _init_db(conn)
+         if last is not None:
+             rows = conn.execute(
+                 "SELECT ts, water_depth, unit FROM readings"
+@@ -199,6 +200,7 @@ def query_readings_range(
+     end_ts = f"{end_date} {end_time}:59" if end_time else f"{end_date} 23:59:59"
+     conn = sqlite3.connect(DB_PATH)
+     try:
++        _init_db(conn)
+         return conn.execute(
+             "SELECT ts, water_depth, unit FROM readings"
+             " WHERE ts >= ? AND ts <= ? ORDER BY ts",
+diff --git a/raspisump/web/stats.py b/raspisump/web/stats.py
+index ac65d0235c27..717399f06a66 100644
+--- a/raspisump/web/stats.py
++++ b/raspisump/web/stats.py
+@@ -6,7 +6,7 @@ Does not modify log.py; CLI tools are unaffected.
+ import sqlite3
+ import time
+ 
+-from raspisump.log import DB_PATH
++from raspisump.log import DB_PATH, _init_db
+ 
+ 
+ def day_stats(date=None):
+@@ -20,6 +20,7 @@ def day_stats(date=None):
+ 
+     conn = sqlite3.connect(DB_PATH)
+     try:
++        _init_db(conn)
+         row = conn.execute(
+             """
+             SELECT
+-- 
+2.55.0
+

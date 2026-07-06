@@ -1,0 +1,61 @@
+post_install() {
+	# Flask secret key: must be unique per install (a value baked into the
+	# package would let anyone forge session cookies for every raspisump
+	# install), so it can only be generated at install time, not at build
+	# time. Ownership is fixed up afterwards by the systemd-tmpfiles hook.
+	if [ ! -f /etc/raspi-sump/secret_key ]; then
+		openssl rand -hex 32 > /etc/raspi-sump/secret_key
+	fi
+
+	# Self-signed TLS cert (10-year, LAN only) - likewise unique per install
+	# and can't be pre-baked at build time. The ssl/ directory is created
+	# here (not via tmpfiles.d) because it needs to exist synchronously,
+	# right now, for openssl to write into - the tmpfiles hook that would
+	# otherwise create it doesn't run until after this script returns.
+	SSL_DIR=/etc/raspi-sump/ssl
+	if [ ! -f "$SSL_DIR/raspi-sump.crt" ]; then
+		install -d -o root -g root -m 0755 "$SSL_DIR"
+		openssl req -x509 -noenc -days 3650 -newkey rsa:2048 \
+			-keyout "$SSL_DIR/raspi-sump.key" \
+			-out    "$SSL_DIR/raspi-sump.crt" \
+			-subj   "/CN=raspi-sump/O=raspi-sump/C=CA" 2>/dev/null \
+		|| echo " >>> Warning: TLS certificate generation failed. HTTPS will not work until a cert is in place." >&2
+	fi
+
+	cat <<-'EOF'
+	 >>> 1. Wire up the nginx vhost as Arch's nginx.conf doesn't read sites-enabled/ by default
+       so add this inside its http {} block:
+	         include /etc/nginx/sites-enabled/*;
+
+	     then enable the site and (re)start nginx:
+	         ln -s /etc/nginx/sites-available/raspi-sump /etc/nginx/sites-enabled/raspi-sump
+	         systemctl enable --now nginx
+	         systemctl reload nginx
+
+       (skip this if you're fronting raspisump with a different
+  	    reverse proxy or already manage nginx yourself - see
+ 	     /etc/nginx/sites-available/raspi-sump for the proxied paths.)
+	
+	  2. Start the web interface: systemctl enable --now rsumpweb.service
+	     The setup wizard starts raspisump.service (the sensor monitor)
+	     itself once you complete it.
+	
+	  3. If you want to run rsump/rsumplog/etc. manually without sudo,
+	     add yourself to the raspisump group and log out and back in:
+	         sudo usermod -aG raspisump "$USER"
+	
+  	 Then browse to https://<this-host>/ to complete setup. The TLS
+  	 certificate is self-signed - accept the browser warning.
+	EOF
+}
+
+post_remove() {
+	cat <<-'EOF'
+	>>> Safe to remove:
+      /etc/raspi-sump/secret_key
+      /etc/raspi-sump/ssl/
+	    /etc/raspi-sump/raspisump.conf
+	    /var/lib/raspi-sump
+	    /var/log/raspi-sump
+	EOF
+}
