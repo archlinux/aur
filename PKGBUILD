@@ -1,7 +1,7 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 
 _pkgname=cardx
-_pkgver=0.3.3
+_pkgver=0.3.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9b9f1245bffa81c7e289d26953c10351')
-b2sums=('7ceb9ce385592ca4a75fddcf3b0243523e3753635958e3a6dc14e2845c2c7e62f1c51bc9b3fefda9399acb6bd278e2cd5df971df2537d14521ccfc26f0274c44')
+md5sums=('ea53317978d7acd59f39280826e77c54')
+b2sums=('55d8e42c6e9c2a370b4fdd742eb9a7294c285c24e55eedea1fc2fc8095ec159caa8b14d316db414e359d8b2572f9e5610bc726af4dbcbcd1aa66d69d9f37be30')
 
 build() {
   mkdir build
