@@ -1,7 +1,7 @@
 pkgbase = llm-stats-git
-	pkgdesc = Anthropic-compatible proxy with Prometheus metrics, structured logging and SSE streaming
-	pkgver = r91.f4e2605
-	pkgrel = 1
+	pkgdesc = Anthropic/OpenAI passthrough proxy with Prometheus metrics, structured logging and SSE streaming (env-only config)
+	pkgver = r157.3d2753f
+	pkgrel = 2
 	url = https://gitlab.com/komex/llm-stats
 	install = llm-stats.install
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = llm-stats-git
 	optdepends = prometheus: metrics scraping
 	provides = llm-stats
 	conflicts = llm-stats
-	backup = etc/llm-stats/config.yaml
 	source = git+https://gitlab.com/komex/llm-stats.git#branch=master
 	sha256sums = SKIP
 
