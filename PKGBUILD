@@ -3,7 +3,7 @@
 # Maintainer: Stas Zhuk <stas.zhuk@ddev.com>
 
 pkgname='ddev-bin'
-pkgver=1.25.2
+pkgver=1.25.3
 pkgrel=1
 pkgdesc='DDEV: a local web development environment'
 url='https://github.com/ddev/ddev'
@@ -15,10 +15,10 @@ depends=('docker' 'docker-buildx' 'mkcert')
 optdepends=('bash-completion: subcommand completion support')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ddev/ddev/releases/download/v${pkgver}/ddev_linux-arm64.v${pkgver}.tar.gz")
-sha256sums_aarch64=('2971665cdc7ddbbdc4473d2bf9ce047832bba678000f178982c61a86ca4d9460')
+sha256sums_aarch64=('335e1e44d1e0a98eaac093a6af3cb35c8c4d93223891e32ca4bc7fd82ed860b0')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ddev/ddev/releases/download/v${pkgver}/ddev_linux-amd64.v${pkgver}.tar.gz")
-sha256sums_x86_64=('0f3edd0f63d79436e56837f29412b666d7654ac402a31d7ec74d6a21d540225f')
+sha256sums_x86_64=('418954ff1cbaf083ddc4679898870cafca4edcbd141aff1ac6480858e8b57aca')
 
 package() {
   # bin
