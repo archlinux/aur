@@ -1,37 +1,35 @@
-# Maintainer: hanchain <85230240+HanchaiN@users.noreply.github.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: hanchain <85230240+HanchaiN@users.noreply.github.com>
 
-_pkgname='lyrical'
-pkgname="${_pkgname}"
-pkgver=0.4.4
+pkgname=lyrical
+pkgver=0.5.0
 pkgrel=1
-pkgdesc='A rust tool to display synced lyrics in your waybar (or any other bar)!'
-arch=('x86_64')
+pkgdesc='Simple lyrics program for waybar and others'
+arch=(x86_64)
 url='https://github.com/tblelrd/lyrical'
-license=('GPL-3.0-or-later')
-depends=('openssl' 'glibc' 'playerctl')
-makedepends=('cargo')
-provides=('lyrical')
-conflicts=('lyrical')
-_pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('14aeaa11c094f315a8dd56212625ebdcf6e171eaa10c319e827cfa5e421ab3b4')
+license=(GPL-3.0-or-later)
+depends=(dbus libgcc openssl)
+makedepends=(cargo)
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+sha256sums=('df15cca026980fc5c88df290be8897a86432fdf33f2e0b27ab92dc7468feecee')
 
 prepare() {
-  cd "${_pkgsrc}"
+    cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target host-tuple
 }
 
 build() {
-  cd "${_pkgsrc}"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    export OPENSSL_NO_VENDOR=1
+    cargo build --frozen --release --all-features
 }
 
 package() {
-  cd "${_pkgsrc}"
-
-  install -Dm755 -t "${pkgdir}/usr/bin/" "target/release/${_pkgname}"
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" 'LICENSE' 
+    cd "$pkgname-$pkgver"
+    install -Dm755 target/release/lyrical -t "$pkgdir/usr/bin/"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
