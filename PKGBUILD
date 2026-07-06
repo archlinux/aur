@@ -9,7 +9,7 @@
 
 pkgname=ffmpeg-libfdk_aac
 pkgver=8.1.2
-pkgrel=8
+pkgrel=9
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -232,7 +232,7 @@ package() {
     libdav1d.so
     libfreetype.so
     libharfbuzz.so
-    libjxl.so
+#   libjxl.so
     libopenmpt.so
     libplacebo.so
     librav1e.so
