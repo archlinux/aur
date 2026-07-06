@@ -1,6 +1,6 @@
 pkgbase = zcode-desktop-bin
 	pkgdesc = ZCode desktop app repackaged from official Linux release
-	pkgver = 3.2.1
+	pkgver = 3.2.5
 	pkgrel = 1
 	url = https://zcode.z.ai/en
 	install = zcode-desktop-bin.install
@@ -22,13 +22,13 @@ pkgbase = zcode-desktop-bin
 	optdepends = libappindicator-gtk3: system tray indicator support
 	provides = zcode
 	conflicts = zcode
-	noextract = ZCode-3.2.1-linux-x64.deb
-	noextract = ZCode-3.2.1-linux-arm64.deb
+	noextract = ZCode-3.2.5-linux-x64.deb
+	noextract = ZCode-3.2.5-linux-arm64.deb
 	options = !strip
 	options = !lto
-	source_x86_64 = ZCode-3.2.1-linux-x64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.2.1/ZCode-3.2.1-linux-x64.deb
-	sha256sums_x86_64 = ac7796c4686e2a10c3263c27f169099a9c0931460b28739ae84d02060aade72e
-	source_aarch64 = ZCode-3.2.1-linux-arm64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.2.1/ZCode-3.2.1-linux-arm64.deb
-	sha256sums_aarch64 = 3b7aecddd75cbbc9da31385138d898f8604d689e57df065b31817a8fa93226f4
+	source_x86_64 = ZCode-3.2.5-linux-x64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.2.5/ZCode-3.2.5-linux-x64.deb
+	sha256sums_x86_64 = 3af9128c974ffbf8d59cb3c666bb5a16be56a25842c74b0533747e5b4f2306d4
+	source_aarch64 = ZCode-3.2.5-linux-arm64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.2.5/ZCode-3.2.5-linux-arm64.deb
+	sha256sums_aarch64 = ac247e26b6b372d5fb9a212b11e6061dd4fae987b468c13fd9ab4d290b7d4f71
 
 pkgname = zcode-desktop-bin
