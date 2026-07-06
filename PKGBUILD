@@ -2,7 +2,7 @@
 pkgname=python-mnelab
 _name=${pkgname#python-}
 pkgver=1.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical user interface (GUI) for MNE, a Python package for EEG/MEG analysis"
 arch=('any')
 url="https://github.com/cbrnr/mnelab"
@@ -12,15 +12,12 @@ depends=(
     'python'
     'python-autoreject'
     'python-black'
-    'python-edfio'
     'python-isort'
     'python-matplotlib'
     'python-mne'
     'python-mne-qt-browser'
     'python-numpy'
-    'python-onnx'
     'python-picard'
-    'python-pybv'
     'python-pybvrf'
     'python-pyxdf'
     'python-scikit-learn'
