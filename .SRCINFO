@@ -1,7 +1,7 @@
 pkgbase = ocaml-bin_prot
 	pkgdesc = A binary protocol generator
 	pkgver = 0.17.0.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/janestreet/bin_prot
 	arch = x86_64
