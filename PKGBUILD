@@ -4,7 +4,7 @@ _pkgname=wayvr
 orgname=wayvr-org
 pkgname="$_pkgname-bin"
 pkgver=26.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenXR desktop overlay for Wayland compositors (binary release)"
 arch=('x86_64')
 url="https://github.com/$orgname/$_pkgname"
@@ -51,8 +51,8 @@ source=(
     "https://raw.githubusercontent.com/$orgname/$_pkgname/refs/tags/v$pkgver/$_pkgname/wayvr.svg"
 )
 
-sha256sums=('2aa56f3fc5b00edd06628ec32be85a77f042bef65546d62f3ab908e4a47b59ab'
-            'dcaa148d588674b9cbe6535488ec780b4c50f828b3725ac445d069d4bde2b69f'
+sha256sums=('c334d8410e930a5ff92bf415d7d8583864a468932f4f9dfbd1a995cfa8a42be1'
+            '7486e459d8221aa6e806717787da26e1f72596a8bde83232f6cece9e67bee3c8'
             '7f94eac929a5139aef7b7a155c05d09626b07afdb5d9616c5aad6890b7e41297'
             '0deb4c457aaa310665ea19567875173103fc29b634a2b6169571e3a88be41399'
             'a2fb31022b6605d10dcb062f83bc3d1e71b221ed588e67c49cfb1b8e2a0db2e8')
