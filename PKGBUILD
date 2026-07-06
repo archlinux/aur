@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname=python-calamine
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Python binding for a library for reading excel and odf file: calamine"
 arch=(x86_64)
@@ -21,7 +21,7 @@ checkdepends=(
 )
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ee07f82ee2f23408faaeabf5706c72f186aca5811ce9955c1687d82e279fece8')
+sha256sums=('c317c9e1c5aa6da951f476b6d76b8cd527f4cf97b1fd7bd1b17dbda02420fedf')
 
 build() {
   cd "$pkgname-$pkgver"
