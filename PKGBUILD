@@ -25,7 +25,7 @@ conflicts=("$_pkgname")
 
 source=("${_pkgname}-${pkgver}.deb::https://github.com/Colzry/m3u8-downloader/releases/download/v${pkgver}/m3u8-downloader_${pkgver}_amd64.deb")
 
-sha256sums=('a68c4bdfdea7de36c38e29286b421744bc0f96de43ab809374d7950454d7ac02')
+sha256sums=('1e55cdf1d57b2e3b506823c47fed2667efb9d785bcb8016ddf0cf93ed2a6245d')
 
 package() {
     msg2 "Extracting deb package..."
