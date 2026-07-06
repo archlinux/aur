@@ -1,0 +1,18 @@
+pkgbase = idu-bin
+	pkgdesc = Instant du -sh and a bit more
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MkP369/idu
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = idu
+	conflicts = idu
+	options = !strip
+	source_x86_64 = idu-x86_64-0.1.0.tgz::https://github.com/MkP369/idu/releases/download/v0.1.0/idu-linux-x86_64-v3.tar.gz
+	sha256sums_x86_64 = 54ab3cac9cdba587d9d3acb7330161a555dcc8fdc317d32801c53419735151ca
+	source_aarch64 = idu-aarch64-0.1.0.tgz::https://github.com/MkP369/idu/releases/download/v0.1.0/idu-linux-arm64.tar.gz
+	sha256sums_aarch64 = 65822edd74992d2f76fee48f1f21829a0b12e010863e6e310bed64d8caee303a
+
+pkgname = idu-bin
