@@ -1,4 +1,5 @@
-# Maintainer: devome <evinedeng@hotmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: devome <evinedeng@hotmail.com>
 
 pkgname=python-langfuse
 pkgver=4.13.0
