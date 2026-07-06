@@ -1,10 +1,15 @@
 pkgbase = ocrodjvu
 	pkgdesc = OCR for DjVu (Python 3 fork)
 	pkgver = 0.14
-	pkgrel = 1.314
+	pkgrel = 2.314
 	url = https://github.com/FriedrichFroebel/ocrodjvu
 	arch = any
 	license = GPL-2.0-only
+	checkdepends = python-pillow
+	checkdepends = python-pyicu
+	checkdepends = python-html5lib
+	checkdepends = tesseract
+	checkdepends = tesseract-data-eng
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

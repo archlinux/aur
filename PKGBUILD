@@ -1,11 +1,12 @@
 # Maintainer: Ianis Vasilev: ianis@ivasilev.net
 pkgname=ocrodjvu
 pkgver=0.14
-pkgrel=1.314
+pkgrel=2.314
 pkgdesc="OCR for DjVu (Python 3 fork)"
 arch=('any')
 url='https://github.com/FriedrichFroebel/ocrodjvu'
 license=('GPL-2.0-only')
+checkdepends=(python-pillow python-pyicu python-html5lib tesseract tesseract-data-eng)
 makedepends=(python-build python-installer python-wheel coreutils make libxslt docbook-xml docbook-xsl python-setuptools)
 depends=(python python-lxml python-djvulibre-python)
 optdepends=('python-html5lib: HTML parser; required for the ``--html5`` option'
@@ -24,6 +25,11 @@ _fullsrcdir() {
 prepare() {
     cd "$(_fullsrcdir)"
     sed --in-place 's|http://www.docbook.org/xml|http://www.oasis-open.org/docbook/xml|' doc/*.xml
+}
+
+check() {
+    cd "$(_fullsrcdir)"
+    python -W ignore -m unittest
 }
 
 build() {
