@@ -7,13 +7,14 @@
 pkgname=xlibre-video-vmware
 _pkgname=xf86-video-vmware
 pkgver=25.0.0
-pkgrel=9
+pkgrel=10
 pkgdesc="XLibre vmware video driver"
 arch=(x86_64)
 url='https://github.com/X11Libre/xf86-video-vmware'
 license=('MIT AND X11')
 depends=('mesa' 'systemd-libs' 'libxext' 'libx11' 'libdrm' 'glibc' 'xlibre-xserver')
 makedepends=('xlibre-xserver-devel' 'X-ABI-VIDEODRV_VERSION=28.0') # 'git')
+provides=('xf86-video-vmware')
 conflicts=('xf86-video-vmware' 'X-ABI-VIDEODRV_VERSION<28' 'X-ABI-VIDEODRV_VERSION>=29')
 groups=('xlibre-drivers')
 options=('!emptydirs')
