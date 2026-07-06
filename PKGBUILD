@@ -1,7 +1,7 @@
 # Maintainer: Javier Orfo <javierorfo@protonmail.com>
 
 pkgname=undr
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="C library with multiple utilities"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('git' 'gcc' 'make')
 provides=('undr')
 conflicts=('undr')
 source=("$pkgname::git+$url.git#tag=$pkgver")
-sha512sums=('a6561970372778cb2ebf5cb5ce025e0f29308af7ff122ced7fb3051c67175cf070bc4dd838178c63d3d6b7e54f049d4e72d5157cb32b083935217e5b457e0a5a')
+sha512sums=('5c765ee97801618c402e6ab317f6d40bdbc1a879aedc63c46428800cf516f92ec39ab7adc702a15a17a41a3910400d3935c402fc414ef90c40caac86726a2681')
 
 build() {
   cd "${pkgname}"
