@@ -1,0 +1,18 @@
+pkgbase = python-lgpio
+	pkgdesc = Python bindings for liblgpio (GPIO access on Raspberry Pi and other SBCs)
+	pkgver = 0.2.2.0
+	pkgrel = 1
+	url = http://abyz.me.uk/lg/py_lgpio.html
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = custom:unknown
+	makedepends = swig
+	makedepends = python-setuptools
+	depends = python
+	depends = liblgpio
+	source = https://files.pythonhosted.org/packages/source/l/lgpio/lgpio-0.2.2.0.tar.gz
+	sha256sums = 11372e653b200f76a0b3ef8a23a0735c85ec678a9f8550b9893151ed0f863fff
+
+pkgname = python-lgpio
