@@ -8,7 +8,7 @@ pkgdesc="A GTA-like open world game in your terminal, made with bash scripting."
 arch=('any')
 url="https://github.com/stuffbymax/Bash-Theft-Auto"
 license=('MIT')
-depends=('bash' 'mpg123' 'bc')
+depends=('bash' 'mpg123' 'bc' 'zip' 'unzip')
 # Using the .tar.gz from the release tag you provided
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('477d4696f20602c6eae6b8aa7c225a3c30bb82220d7b154fa34c25f4e99aa835')
