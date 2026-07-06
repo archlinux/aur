@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/9router/-/9router-
 sha256sums=('d54d23e8a9cc4fe37650348efef2cfa6d37ed61fe57c7a92a40f1723c1b7364a'
             '912c4a6f0c3589a23dd4e015c28500643727086b89463ec79f62e6dc569a4804'
             'd3cf28a661868f9cab0ba942e5be2a57f3a9cff4a66c6b9e4a26f4f0881e6f36'
-            'be29534e45b564eca0a854fd06a06166a5ca0992a48bcedbc36b31e364521786'
+            'be29534e45b564eca0a854fd06a06166a5ca0992a48bcedbc36b31e364521786')
 
 build() {
   # npm extracts to a fixed package/ directory
