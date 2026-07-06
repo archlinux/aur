@@ -61,5 +61,5 @@ package() {
 
 	msg2 "Install LICENSE file"
 	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-	ln -sf "/usr/lib/node_modules/${_npmname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	ln -sf "/usr/lib/node_modules/${_npmauthor}/${_npmname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
