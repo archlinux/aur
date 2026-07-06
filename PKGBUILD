@@ -2,7 +2,7 @@
 
 pkgname=clashmi-bin
 _pkgname=${pkgname%-bin}
-pkgver="1.0.26.1203"
+pkgver="1.0.26.1204"
 pkgrel=1
 pkgdesc="Clash.Meta GUI for Android, iOS, macOS and Windows"
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('gcc-libs' 'gtk3' 'libayatana-appindicator' 'libkeybinder3' 'libsecret')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("clashmi-1.0.26.1203_linux_amd64.deb::https://github.com/KaringX/clashmi/releases/download/v1.0.26.1203/clashmi_1.0.26.1203_linux_amd64.deb")
-sha512sums=('bdab2f47ef82ba82bdaa25deddccf6a3dbf7ad9e5b01ce1da688e25806448068c12bad98c624b1f07d6b6d48be69fa0b8e76c0f357700c5b3fd3e546d1349c2e')
+source=("clashmi-1.0.26.1204_linux_amd64.deb::https://github.com/KaringX/clashmi/releases/download/v1.0.26.1204/clashmi_1.0.26.1204_linux_amd64.deb")
+sha512sums=('a8b457315b6fa476aa47ec93a5ef1fa6be8b8bc7d877178fa2d67d94c3a9d63fdb9dee93b9a6f3182f89a0f084cd3527a6ca1f0e6369ee4de05e58292e389b6a')
 
 package() {
     local _debdir="${srcdir}/deb-extract"
