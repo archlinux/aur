@@ -1,13 +1,13 @@
 # Maintainer: lightjunction
 pkgname=lab-safety-system-git
-pkgver=0.1.0.r27.g98cb8cb
+pkgver=0.1.0.r28.g656e954
 pkgrel=1
 pkgdesc="Laboratory safety management information system"
 arch=('x86_64' 'aarch64')
 url="https://github.com/LIghtJUNction/lab-safety-system"
 license=('AGPL-3.0-only')
 depends=('gcc-libs' 'glibc' 'ca-certificates')
-makedepends=('cargo' 'git' 'npm')
+makedepends=('git' 'npm' 'rustup')
 optdepends=(
   'postgresql: database server when running locally'
   'nginx: optional reverse proxy'
@@ -32,13 +32,13 @@ pkgver() {
 prepare() {
   cd lab-safety-system
   git submodule update --init frontend
-  cargo fetch --locked
+  cargo +1.96.0 fetch --locked
   npm --prefix frontend ci
 }
 
 build() {
   cd lab-safety-system
-  cargo build --release --locked
+  cargo +1.96.0 build --release --locked
   npm --prefix frontend run build
 }
 
