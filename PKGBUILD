@@ -2,7 +2,7 @@
 pkgname=luna-ai-reborn
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="Luna AI Reborn — Hacker-style voice AI desktop assistant for Linux. Voice, YouTube, brightness, live data."
+pkgdesc="Luna AI Reborn: Hacker-style AI assistant for Arch Linux. Maintained by Arunachalam (Active in the Chennai LUG scene)."
 arch=('any')
 url="https://github.com/Arunachalam-gojosaturo/luna-ai-reborn"
 license=('MIT')
