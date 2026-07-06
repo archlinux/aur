@@ -1,14 +1,14 @@
 gitname=fbpanel
 pkgname="$gitname-git"
 pkgver=102.bc8bcfe
-pkgrel=1
+pkgrel=2
 pkgdesc="NetWM compliant desktop panel (git)"
 license=(GPL)
 arch=(i686 x86_64)
 provides=('fbpanel' 'fbpanel-svn')
 conflicts=('fbpanel' 'fbpanel-svn')
-depends=('gtk2' 'python2')
-makedepends=('automake' 'autoconf' 'gdk-pixbuf-xlib')
+depends=('gtk2')
+makedepends=('cmake' 'gdk-pixbuf-xlib')
 url="https://github.com/akozlins/$gitname"
 source=("git+$url.git")
 sha512sums=('SKIP')
