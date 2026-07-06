@@ -2,7 +2,7 @@
 pkgname=bamboo-end-store-bin
 pkgver=1.1.4
 pkgrel=1
-pkgdesc="Modern community store for Bamboo OS, EndeavourOS and Arch Linux built with NativePHP"
+pkgdesc="Modern community store for EndeavourOS and Arch Linux built with NativePHP"
 arch=('x86_64')
 url="https://github.com/satodu/bamboo-end-store"
 license=('MIT')
