@@ -19,7 +19,7 @@ pkgbase = qaic-platform-sdk
 	source_x86_64 = PowerStress
 	source_x86_64 = 0001-fix-dkms.conf-kernel-source-fallback.patch
 	sha256sums_x86_64 = eaccd02e8911c6e16a179b8352a30b6d01c915a135945bb18cf22ad58e28669b
-	sha256sums_x86_64 = 9ecc5a1fc90a9adff190077ea2eebc23118be8ce64eccfa1a54c21b9a4ed3de0
+	sha256sums_x86_64 = b8c14d64079394cbdd4b61c14afda1bb4e0c90394f15aa54f06b789e22a3e000
 	sha256sums_x86_64 = c3a82d8530f3dbd24a7d447c638197f4b62c058a57728cc2f08758dcb6cd0c76
 
 pkgname = qaic-platform-sdk
