@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jm-desktop-bin
-pkgver=2.1.3
-_electronversion=41
+pkgver=2.2.0
+_electronversion=42
 pkgrel=1
 pkgdesc="A jm comic desktop app by react + electron.(Prebuilt version).一个禁漫的第三方客户端"
 arch=('x86_64')
@@ -17,14 +17,23 @@ makedepends=(
     'asar'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-Linux-${pkgver}.zip"
+    "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-Linux-x64-${pkgver}.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3b013eb61d8c1def2aa9b105e16d8bfa6da4496db1509877a951fd2551ebfab2'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-_get_electron_version() {
-    _elec_ver="$(strings "${srcdir}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+sha256sums=('6d84cbc67ffdfa0c0544586c8f4c6846e52ac642281d95994a5eee551c65b0b3'
+            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
+_check_electron_version() {
+    echo "Verifying Electron version..."
+    local _main_exe=$(find "$(_get_app_dir)" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)
+    [[ -z "${_main_exe}" ]] && echo -e "\033[1;33mNote: Could not find Electron binary.\033[0m" && return
+    local _elec_ver=$(strings "${_main_exe}" | grep -oP 'Electron/\K[0-9]+' | head -1)
+    [[ -z "${_elec_ver}" ]] && echo -e "\033[1;33mNote: Could not determine Electron version.\033[0m" && return
+    [[ "${_elec_ver}" != "${_electronversion}" ]] &&
+        echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m" ||
+        echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
@@ -32,35 +41,29 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    _get_electron_version
+    _check_electron_version
     gendesk -q -f -n \
         --pkgname="${pkgname%-bin}" \
         --pkgdesc="${pkgdesc}" \
         --categories="AudioVideo" \
         --name="${pkgname%-bin}" \
         --exec="${pkgname%-bin} %U"
-    asar e "${srcdir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    rm -rf "${srcdir}/resources/app.asar"
+    local _app_dir=$(_get_app_dir)
+    asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    rm -rf "${_app_dir}/resources/app.asar"
     sed -i -e "
         s/pi.getPath(\"exe\")/\'\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}\'/g
         s/ti.getPath(\"exe\")/\'\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}\'/g
         s/o.getPath(\"exe\")/\'\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}\'/g
     " "${srcdir}/app.asar.unpacked/dist-electron/main.js"
-    asar p  "${srcdir}/app.asar.unpacked"  "${srcdir}/resources/app.asar"
+    asar p  "${srcdir}/app.asar.unpacked"  "${_app_dir}/resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	find "${srcdir}/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
-    if find "${srcdir}/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for _subdir in "${srcdir}/resources/"*; do
-            if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
-            fi
-        done
-    fi
+	local _app_dir=$(_get_app_dir)
+	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/app.asar.unpacked/dist/png/${_icons}.png" \
