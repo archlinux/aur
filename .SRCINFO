@@ -1,7 +1,7 @@
 pkgbase = ente-auth
 	pkgdesc = Open source 2FA authenticator, with end-to-end encrypted backups
-	pkgver = 4.4.23
-	pkgrel = 2
+	pkgver = 4.4.24
+	pkgrel = 1
 	url = https://ente.com/auth
 	arch = x86_64
 	arch = aarch64
@@ -17,13 +17,15 @@ pkgbase = ente-auth
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = libsecret
+	depends = libsodium
+	depends = org.freedesktop.secrets
 	depends = polkit
 	depends = sqlite
 	depends = xdg-user-dirs
-	source = git+https://github.com/ente/ente.git#tag=auth-v4.4.23
+	source = git+https://github.com/ente/ente.git#tag=auth-v4.4.24
 	source = git+https://github.com/simple-icons/simple-icons.git
 	source = enteauth.desktop
-	sha256sums = 41d79ef4e7e402df42684b94fb09c91162550d9990cb9b752b1b6c5fbd806b2f
+	sha256sums = 5d8cd43064e8d7b3ad936552608ce21a85eea48d5434a270c062af68343d8f23
 	sha256sums = SKIP
 	sha256sums = c06f6e30813bd035245e1fb79a8c1b6c5284d98cd98a70e46b18c5a39e7b9aee
 
