@@ -1,4 +1,5 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Damglador <damglador@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: carstene1ns <arch.carsten@teibes.de>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 
