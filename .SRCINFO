@@ -1,6 +1,6 @@
 pkgbase = pulsar-music
 	pkgdesc = A local-first, cross-platform music player.
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://usepulsar.app
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = pulsar-music
 	depends = libssh2
 	provides = pulsar-music
 	conflicts = pulsar-music-bin
-	source = pulsar-music-0.0.3.tar.gz::https://lab.nordstud.io/nord/pulsar/-/archive/v0.0.3/pulsar-v0.0.3.tar.gz
+	source = pulsar-music-0.0.4.tar.gz::https://lab.nordstud.io/nord/pulsar/-/archive/v0.0.4/pulsar-v0.0.4.tar.gz
 	source = pulsar.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
