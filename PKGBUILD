@@ -3,7 +3,7 @@
 pkgname=python-sphinx-toolbox
 _name=${pkgname#python-}
 pkgver=4.2.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Box of handy tools for Sphinx 🧰 📔'
 arch=('any')
 url='https://github.com/sphinx-toolbox/sphinx-toolbox'
@@ -16,7 +16,7 @@ depends=(
   python-dict2css
   python-domdf-python-tools
   python-toctree-plus
-  python-typing-inspect
+  python-typing_inspect
 
   'python-attrs'
   'python-beautifulsoup4'

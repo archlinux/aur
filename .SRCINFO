@@ -1,7 +1,7 @@
 pkgbase = python-sphinx-toolbox
 	pkgdesc = Box of handy tools for Sphinx 🧰 📔
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/sphinx-toolbox/sphinx-toolbox
 	arch = any
 	license = MIT
@@ -19,7 +19,7 @@ pkgbase = python-sphinx-toolbox
 	depends = python-dict2css
 	depends = python-domdf-python-tools
 	depends = python-toctree-plus
-	depends = python-typing-inspect
+	depends = python-typing_inspect
 	depends = python-attrs
 	depends = python-beautifulsoup4
 	depends = python-docutils
