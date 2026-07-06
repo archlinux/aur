@@ -2,7 +2,7 @@
 
 pkgname=zcurl
 pkgauthor=12britz
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 
 _npmname=${pkgname}
@@ -24,7 +24,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('71bb5a5fda6c321ae2dd90f25b970618176a5e4c5a581f5a68c39aca36ed7df572b3bccd25d4747836d72276f8096290a0a8881bb7fd8f576a5e6c3294b72626')
+b2sums=('44c2778fcebe6944b3e6142bf5b15e58b24100666aa7549156b912825ef6f4c5bc349d8f2ed0447350ba51e085c230ed0afef417febe625546aad8251a01a70d')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
