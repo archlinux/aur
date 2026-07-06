@@ -52,7 +52,7 @@ build() {
 package() {
   cd "${pkgname}"
 
-  install -Dm755 "target/release/${pkgname}" "${pkgdir}/opt/${pkgname}/${pkgname}"
+  install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/lib/${pkgname}/${pkgname}"
   install -Dm755 ../onetalker.sh "${pkgdir}/usr/bin/${pkgname}"
 
   install -Dm644 LICENSE.GPL-3.0-only "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
