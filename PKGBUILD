@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onetcli-bin
 _pkgname=OnetCli
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="One Net Client — A cross-platform desktop client for databases, SSH/SFTP, terminals & AI, all in one place. (Prebuilt version)"
 arch=(
@@ -22,8 +22,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-aarch64-unknown-linux-gnu.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_aarch64=('6c52da07f5669eea76ec3ade01415d9ec0a9d51410a29e81b00c0f488fa6b8fb')
-sha256sums_x86_64=('db2557a4d492b5d84f9001f3853f3dde9ef3ea5a7def0c9428b2b322ac404226')
+sha256sums_aarch64=('f50cda94da3ab46a78a37fbed31e122236cc12a6884172ea30c18233fe9484c1')
+sha256sums_x86_64=('2dfecdf7a5fbe14faa3648c9a9e7df37fc739ab0d97240e907005d17beb095c1')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
