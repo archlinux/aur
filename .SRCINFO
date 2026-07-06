@@ -1,6 +1,6 @@
 pkgbase = mini-downloader-bin
 	pkgdesc = IDM/JDownloader-style download manager (aria2 + yt-dlp, browser capture) — binary release
-	pkgver = 0.2.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/RamazanBerk20/mini-downloader
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mini-downloader-bin
 	optdepends = yt-dlp: video/HLS/DASH grabbing
 	provides = mini-downloader
 	conflicts = mini-downloader
-	source = https://github.com/RamazanBerk20/mini-downloader/releases/download/v0.2.0/Mini.Downloader_0.2.0_amd64.deb
-	sha256sums = d040b43f3af88754b9b061bc4e2c7b24c2a09a12ea5b122e9688b5627c3c718d
+	source = https://github.com/RamazanBerk20/mini-downloader/releases/download/v1.0.0/Mini.Downloader_1.0.0_amd64.deb
+	sha256sums = bc7fb539f35a219b1fe5eb0e13a0dc30a0152994a032ea1739257146d2039058
 
 pkgname = mini-downloader-bin
