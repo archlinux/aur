@@ -6,7 +6,7 @@ _pyname=${_pname}
 #_pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
 # "python-${_pname}-doc")
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Statistical computation and diagnostics for ArviZ."
 arch=('any')
@@ -30,14 +30,14 @@ checkdepends=('python-pytest'
               'python-h5netcdf'
               'python-numba'
               'python-xarray-einstats'
-              'python-einops')
+              'python-einops') # tests/numba/test_diagnostic.py: numba & einops, need numpy<=2.4
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/arviz-devs/arviz-stats/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('9175f749ab4ae49aef5900dfaf3914fa')
+md5sums=('a5e11cd0cab46d18e76845bc0ffeadfc')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation --skip-dependency-check
 
 #   msg "Building Docs"
 #   mkdir -p dist/lib
@@ -55,7 +55,7 @@ package_python-arviz-stats() {
     depends=('python>=3.12'
              'python-numpy>=2'
              'python-scipy>=1.13')
-    optdepends=('python-arviz-base>=1.1'
+    optdepends=('python-arviz-base>=1.2'
                 'python-xarray-einstats'
                 'python-xarray>=2024.11.0')
 #               'python-arviz-stats-doc: Documentation for arviz-base')
