@@ -6,7 +6,7 @@
 
 pkgname=environment-modules
 pkgver=5.6.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
 arch=('i686' 'x86_64')
 url='https://envmodules.io/'
@@ -19,7 +19,7 @@ checkdepends=('dejagnu' 'bash' 'fish' 'zsh' 'dash' 'ksh' 'tcsh' 'ruby' 'cmake' '
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/envmodules/modules/releases/download/v${pkgver}/modules-${pkgver}.tar.gz"
   "domainname.patch")
 sha256sums=('b175e57860e62d87b6118a79cc2d76e857e5774a9ff78558d6726122760b0034'
-  '1079282dbdd304201754d3e5e4f7eeb1f0e5dbae9ca7cc06ff3420c640761864')
+            'e4983c68225d8d5bdf5b952a8cb7ee14941b38d1e544e99ab55b883b6552edbc')
 conflicts=('lmod')
 replaces=('env-modules')
 
@@ -68,14 +68,6 @@ build() {
 
 check() {
   cd "modules-${pkgver}"
-
-  sed -i -E "s/(auto_execok )domainname/\1hostname/" \
-    testsuite/modules.70-maint/220-config.exp \
-    testsuite/modules.00-init/005-init_ts.exp \
-    testsuite/modules.70-maint/390-state.exp
-  sed -i -E "s/(exec )domainname/\1 hostname -d/" \
-    testsuite/modules.50-cmds/090-uname-proc.exp \
-    testsuite/modules.50-cmds/350-allin.exp
 
   make test QUICKTEST=1
 }
