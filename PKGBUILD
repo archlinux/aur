@@ -1,7 +1,7 @@
 # Maintainer: Jeremy <jeremyhuang55555@gmail.com>
 
 pkgname=mmdr-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Fast Mermaid diagram renderer in pure Rust - 23 diagram types, 100-1400x faster than mermaid-cli"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/1jehuang/mermaid-rs-renderer/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  'a3f44bec7eefac178d6879966d4d067e0d17dbe5fae4ad2dba66651e5780e483'
+  'e1da47b758769bff21b82a480fad640a3b893a90fc0dc321551486f8b50c7200'
   '57ed7943c34463678a150769d4a4f6c95d2a190fe2c1977f74bc883492c94b86'
 )
 
