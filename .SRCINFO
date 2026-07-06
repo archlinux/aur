@@ -1,7 +1,7 @@
 pkgbase = xlibre-video-voodoo
 	pkgdesc = XLibre 3dfx Voodoo1/Voodoo2 2D video driver
 	pkgver = 25.0.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/X11Libre/xf86-video-voodoo
 	arch = x86_64
 	groups = xlibre-drivers

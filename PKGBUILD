@@ -7,13 +7,14 @@
 pkgname=xlibre-video-voodoo
 _pkgname=xf86-video-voodoo
 pkgver=25.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc="XLibre 3dfx Voodoo1/Voodoo2 2D video driver"
 arch=(x86_64)
 url='https://github.com/X11Libre/xf86-video-voodoo'
 license=('MIT')
 depends=('glibc' 'xlibre-xserver')
 makedepends=('xlibre-xserver-devel' 'X-ABI-VIDEODRV_VERSION=28.0' 'xorgproto')
+provides=('xf86-video-voodoo')
 conflicts=('xf86-video-voodoo' 'X-ABI-VIDEODRV_VERSION<28' 'X-ABI-VIDEODRV_VERSION>=29')
 groups=('xlibre-drivers')
 source=("${url}/archive/refs/tags/xlibre-${_pkgname}-${pkgver}.tar.gz")
