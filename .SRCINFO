@@ -9,5 +9,4 @@ pkgbase = mkbrr-bin
 	conflicts = mkbrr
 	source = mkbrr-bin-1.24.0.pkg.tar.zst::https://github.com/autobrr/mkbrr/releases/download/v1.24.0/mkbrr_1.24.0_linux_amd64.pkg.tar.zst
 	sha256sums = ba59b422c08460abfaeb5db941a15d05dcbc456f302b1f40c383de69be394afd
-
 pkgname = mkbrr-bin
