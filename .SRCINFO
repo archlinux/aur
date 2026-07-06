@@ -1,0 +1,17 @@
+pkgbase = python-pinsource
+	pkgdesc = HC-SR04 ultrasonic sensor driver for Raspberry Pi (used by raspisump)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/alaudet/pinsource
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-lgpio
+	source = pinsource-1.0.tar.gz::https://github.com/alaudet/pinsource/archive/refs/tags/1.0.tar.gz
+	sha256sums = 5e4e61b2b67972caae4779c96197133eb06de5f03923b1375d579ae3a3684ecf
+
+pkgname = python-pinsource
