@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ai-gate
 _pkgname='AI Gate'
-pkgver=4.6.0
+pkgver=4.7.0
 _electronversion=34
-_nodeversion=18
+_nodeversion=20
 pkgrel=1
 pkgdesc="A single gateway to ChatGPT, Gemini, Claude, Grok, Perplexity and more.(Use system-wide electron)"
 arch=('any')
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('4ead903d9ac756c1e3795140c8713d49119c93dc88d75cf7c68dd4ee2dfb397d'
+sha256sums=('6105634a2bfa1df5f6dc4188a1d53cf8a865da5689cd415a31466a8f044c3887'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
