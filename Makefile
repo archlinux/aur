@@ -32,6 +32,7 @@ update-checksums: PKGBUILD .buildenvid
 	makepkg --noconfirm -s -e -o -C -c
 	updpkgsums
 	EOF
+	$(MAKE) .SRCINFO
 
 .SRCINFO: PKGBUILD .buildenvid
 	$(BUILDENV) <<EOF
