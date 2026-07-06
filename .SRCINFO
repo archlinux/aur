@@ -1,0 +1,17 @@
+pkgbase = cyberkit-git
+	pkgdesc = All-in-One Cybersecurity Toolkit by Arunachalam - 22 Tools in One Script (Tamil Nadu)
+	pkgver = 1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/Arunachalam-gojosaturo/cyberkit
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = curl
+	depends = git
+	provides = cyberkit
+	conflicts = cyberkit
+	source = cyberkit-git::git+https://github.com/Arunachalam-gojosaturo/cyberkit.git
+	sha256sums = SKIP
+
+pkgname = cyberkit-git
