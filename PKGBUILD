@@ -6,7 +6,7 @@ _appname=oy
 pkgname=${_gitname}-bin
 pkgdesc="A diff viewer that works two ways: step through changes or review a classic scrollable diff"
 
-pkgver=0.1.37
+pkgver=0.1.39
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,22 +27,22 @@ options=(!strip)
 
 source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE.md"
 		"README-${pkgver}.md::${_ghurlraw}/README.md"
-		"PROFILING-${pkgver}.md::${_ghurlraw}/PROFILING.md"
 		"PERF-${pkgver}.md::${_ghurlraw}/docs/PERF.md"
 		"DEBUG-${pkgver}.md::${_ghurlraw}/docs/DEBUG.md"
 		"THEME-${pkgver}.md::${_ghurlraw}/docs/THEME.md"
+		"PROFILING-${pkgver}.md::${_ghurlraw}/docs/PROFILING.md"
 		"DIFF_VIEWER-${pkgver}.md::${_ghurlraw}/docs/DIFF_VIEWER.md"
 		"DIFF_PREVIEWS-${pkgver}.md::${_ghurlraw}/docs/DIFF_PREVIEWS.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 sha256sums=('ada39b6fcd5ff630d02ab5b802a0000cc688ef6c1f1e05778e363db63d1df4a3'
-            'e452814c97c6a2b4d1cfd0f6bb52633c1d84fc745fe37d8076b4ba566c961dea'
+            'dd74642053f6f4695a33f1925e9236fc6349f0d1916569ce0a3cb984d38e0275'
+            '8e8d39c61c686065347853063eee16a5969b78999f81507c2c8d644ac2cad4b6'
+            '6a3476fa886d241ec2a08b6739b2f927b7cc071b4a160797aa7b51622fdaf7c9'
+            '3343976c440e429946d389ef3dcdc3203b3e86a5f369f4723b6746ea71e75ae8'
             'a60bcb8c2d484ef140693a9292ed92da23e093abf5770d4cd1abe1f5cb267dc0'
-            '84e1c56bdc68ba9dde8804b20517d7adfad8ee596c7c4c187503db14d44b398c'
-            'c74de961bbf3c2e7c0a1b9daaf79b996c34d78b6c7526046bde7d23f2ae81bc2'
-            '21dfbe8da3741154e385193690f3b1cdf7c2736f9a975df05a20f412b9e21ee6'
-            'afe053de3ad3406d55c9d146168652177712abbe008d3420c695c9275cd221f7'
-            '8602e5cd9ae0f9f14947e4588bac221f510909df37db466a2f41633694b02911')
-sha256sums_x86_64=('38d0754bbea786ca78d6b51992fde703a9e259c5603c81780088c3cd7d9df29d')
+            '8157c5df5894f6b4893b786ebcceefbef63a4cfe6e3a9b0d1ef98cd4aa7b6452'
+            'd81308529db4f60ab7b16e2c913c346808dc31c84b8e57ac602069e32e720b94')
+sha256sums_x86_64=('8f34a914b134fd32f1eaf6289a1b9a3362757ccc8e9d3a3e1ebcbd70a60cbd6e')
 
 
 package() {
