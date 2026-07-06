@@ -1,6 +1,6 @@
 pkgbase = voe-dl-git
 	pkgdesc = A Python-based downloader for videos hosted on voe.sx.
-	pkgver = 1.8.0.r3.gbdd21d2
+	pkgver = 1.8.2.r0.gd81256f
 	pkgrel = 1
 	url = https://github.com/MPZ-00/voe-dl
 	arch = any
