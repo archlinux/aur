@@ -1,7 +1,7 @@
 pkgname=sek-git
-pkgver=0.1.0.212.ga4002f4
+pkgver=0.1.0.213.g0bd4557
 pkgrel=1
-pkgdesc="Rust unzip, support for parallel decompression, automatic detection encoding"
+pkgdesc="the sek shell"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/quininer/sek"
 license=('MIT')

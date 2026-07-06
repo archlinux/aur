@@ -1,6 +1,6 @@
 pkgbase = sek-git
-	pkgdesc = Rust unzip, support for parallel decompression, automatic detection encoding
-	pkgver = 0.1.0.212.ga4002f4
+	pkgdesc = the sek shell
+	pkgver = 0.1.0.213.g0bd4557
 	pkgrel = 1
 	url = https://github.com/quininer/sek
 	arch = x86_64
