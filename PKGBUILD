@@ -2,7 +2,7 @@
 # Contributor: Hugo Osvaldo Barrera <hugo at osvaldobarrera dot com dot ar>
 
 pkgname=hybrid-encoder
-pkgver=20251109
+pkgver=20260321
 pkgrel=1
 pkgdesc="A very complete gui for video encoding"
 arch=('x86_64')
@@ -46,7 +46,7 @@ package() {
   install -D -m644 Hybrid.png "${pkgdir}"/usr/share/pixmaps/Hybrid.png
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-sha256sums_x86_64=('37869b037444d66068690f177d4adb0d3b8e41c9b82aaf909fed02a855e9b025'
+sha256sums_x86_64=('a4691620e127a9da26a0968002ba5b4725e6b27b29f273c05b781ca7d8bfc6a8'
                    '5052a2a78a1d3dc5a2b20b352e9aa01bbc2d9afd0da28de604e970acc216384c'
                    '4b62792db9e95bb0e4c0969e72001b146b55e5e6af91df81c404d6ef61dd633f'
                    '9b56b57bb0cec33e3964c953f6340004476aad346d9a50dc93b8389ab083c015')
