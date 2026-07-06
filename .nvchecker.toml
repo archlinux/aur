@@ -1,0 +1,5 @@
+[dnsglobe]
+source = "github"
+github = "514-labs/dnsglobe"
+prefix = "v"
+use_latest_release = true
