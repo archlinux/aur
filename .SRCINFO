@@ -1,6 +1,6 @@
 pkgbase = speed-dreams-git
 	pkgdesc = Free and open source motorsport simulation video game.
-	pkgver = r5498.a5e0c5d
+	pkgver = r5933.52501e4
 	pkgrel = 1
 	url = https://www.speed-dreams.net
 	arch = x86_64
@@ -13,14 +13,13 @@ pkgbase = speed-dreams-git
 	depends = libxi
 	depends = libxmu
 	depends = libxrandr
-	depends = plib>=1.8.3
-	depends = libjpeg
+	depends = jre
+	depends = jdk
+	depends = libjpeg-turbo
 	depends = zlib
 	depends = enet
 	depends = openscenegraph
 	depends = sdl2_mixer
-	depends = jre
-	depends = jdk
 	depends = cjson
 	depends = minizip
 	depends = hicolor-icon-theme

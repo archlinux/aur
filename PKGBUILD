@@ -7,15 +7,15 @@
 
 _pkgname=speed-dreams
 pkgname=${_pkgname}-git
-pkgver=r5498.a5e0c5d
+pkgver=r5933.52501e4
 pkgrel=1
 pkgdesc="Free and open source motorsport simulation video game."
 arch=('x86_64')
 url="https://www.speed-dreams.net"
 license=('GPL-2.0-or-later')
-depends=('freealut' 'freeglut' 'libpng' 'libxi' 'libxmu' 'libxrandr'
-  'plib>=1.8.3' 'libjpeg' 'zlib' 'enet' 'openscenegraph' 'sdl2_mixer' 'jre'
-  'jdk' 'cjson' 'minizip' 'hicolor-icon-theme' )
+depends=('freealut' 'freeglut' 'libpng' 'libxi' 'libxmu' 'libxrandr' 'jre' 'jdk'
+  'libjpeg-turbo' 'zlib' 'enet' 'openscenegraph' 'sdl2_mixer' 'cjson' 'minizip'
+  'hicolor-icon-theme' )
 makedepends=('git' 'cmake')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
