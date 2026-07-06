@@ -2,7 +2,7 @@
 # Packaging repository: https://github.com/JasonLandbridge/Arch-Linux-AUR-Packages-Updater/tree/main/omniroute-bin
 
 pkgname=omniroute-bin
-pkgver=3.8.44 # renovate: datasource=github-tags depName=diegosouzapw/OmniRoute
+pkgver=3.8.45 # renovate: datasource=github-tags depName=diegosouzapw/OmniRoute
 pkgrel=1
 pkgdesc="OmniRoute desktop app (prebuilt AppImage)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!strip')
 source=(
   "OmniRoute-${pkgver}.AppImage::https://github.com/diegosouzapw/OmniRoute/releases/download/v${pkgver}/OmniRoute-${pkgver}.AppImage"
 )
-sha256sums=('6a58adb4420d7c58fca76910e596adfc861661997aa46e6f12aafb366070f375')
+sha256sums=('31151ab115f1ea8509c664111a1d1e5a0431b7632820fe3a661e80b0917ec52b')
 
 prepare() {
   chmod +x "${srcdir}/OmniRoute-${pkgver}.AppImage"
