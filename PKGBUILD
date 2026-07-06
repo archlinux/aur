@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=easyeditor-git
 _pkgname=Easyeditor
-pkgver=1.7.6.r0.g4471001
+pkgver=1.8.0.r0.g2f0b0fb
 _nodeversion=24
 pkgrel=1
 pkgdesc="An easy markdown editor that allows you to professionally write MarkDown (MD), Mermaid, PlantUML, KaTeX and preview it in real-time. Import only MD, Templates and Docx. You can save, load .md files and export to PDF, PNG, TXT & SSTP."
@@ -36,6 +36,21 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_set_build_env() {
+    export CARGO_HOME="${srcdir}/.cargo"
+	export HOME="${srcdir}/.electron-gyp"
+	export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
+	export NPM_CONFIG_MAXSOCKETS=32
+	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+		{
+			export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+			export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+            export RUSTUP_DIST_SERVER="https://rsproxy.cn"
+            export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
+		}
+		find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+	fi
+}
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
     gendesk -q -f -n \
@@ -44,19 +59,7 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    export CARGO_HOME="${srcdir}/.cargo"
-	local HOME="${srcdir}/.electron-gyp"
-	export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
-	export NPM_CONFIG_MAXSOCKETS=32
-	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-		{
-			export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-			export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-            export RUSTUP_DIST_SERVER="https://rsproxy.cn"
-	        export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
-		}
-		find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-	fi
+    _set_build_env
     _ensure_local_nvm
     sed -i "s/\"active\"\: true\,/\"active\"\: false\,/g" src-tauri/tauri.conf.json
     rustup default stable
@@ -64,6 +67,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
+    _set_build_env
     _ensure_local_nvm
     NODE_ENV=production     npm run tauri:build
 }
