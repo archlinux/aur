@@ -14,17 +14,17 @@ license=('GPL-2.0-or-later')
 depends=('bash' 'glibc' 'inetutils' 'tcl>=8.5' 'procps-ng' 'util-linux' 'vi')
 makedepends=('less' 'nagelfar' 'python-sphinx')
 optdepends=('python: Support for environment modules in Python.'
-  'cmake: Support for environment modules in CMake.')
+            'cmake: Support for environment modules in CMake.')
 checkdepends=('dejagnu' 'bash' 'fish' 'zsh' 'dash' 'ksh' 'tcsh' 'ruby' 'cmake' 'python' 'perl' 'r')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/envmodules/modules/releases/download/v${pkgver}/modules-${pkgver}.tar.gz"
-  "domainname.patch")
+        'domainname.patch')
 sha256sums=('b175e57860e62d87b6118a79cc2d76e857e5774a9ff78558d6726122760b0034'
             'e4983c68225d8d5bdf5b952a8cb7ee14941b38d1e544e99ab55b883b6552edbc')
 conflicts=('lmod')
 replaces=('env-modules')
 
-backup=("etc/environment-modules/siteconfig.tcl"
-  "etc/environment-modules/initrc")
+backup=('etc/environment-modules/siteconfig.tcl'
+        'etc/environment-modules/initrc')
 
 prepare() {
   cd "modules-${pkgver}"
