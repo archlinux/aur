@@ -1,7 +1,7 @@
 pkgbase = lamboot-bin
 	pkgdesc = Memory-safe Rust UEFI bootloader with native BLS, multiboot-aware menu, TPM measurements, and JSON-typed installer protocol (prebuilt signed)
 	pkgver = 0.16.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lamco.ai/products/lamboot/
 	arch = x86_64
 	license = MIT OR Apache-2.0

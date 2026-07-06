@@ -8,7 +8,7 @@
 # package; per AUR convention the prebuilt one carries the -bin suffix.
 pkgname=lamboot-bin
 pkgver=0.16.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Memory-safe Rust UEFI bootloader with native BLS, multiboot-aware menu, TPM measurements, and JSON-typed installer protocol (prebuilt signed)"
 # aarch64 to be added once the aarch64 -bin artifact ships (release.toml arches).
 arch=('x86_64')
@@ -138,7 +138,11 @@ package() {
     # 7. Documentation (the docs/ tree only; the top-level README/CHANGELOG/
     #    SECURITY are not staged into /usr/share/lamboot per the contract).
     install -d "$pkgdir/usr/share/doc/lamboot"
-    cp -a "$src/docs/." "$pkgdir/usr/share/doc/lamboot/"
+    # The -bin tarball is THINNED as of v0.16.5's three-track publish model
+    # (stub README, no bundled docs/ tree), so copy docs/ only if it is present.
+    # Without this guard, `cp -a "$src/docs/."` aborts package() on the thinned
+    # tarball — which broke the v0.16.5 AUR build (caught 2026-07-06).
+    [ -d "$src/docs" ] && cp -a "$src/docs/." "$pkgdir/usr/share/doc/lamboot/" || true
     install -Dm0644 "$src/README.md"    "$pkgdir/usr/share/doc/lamboot/README.md"
     install -Dm0644 "$src/CHANGELOG.md" "$pkgdir/usr/share/doc/lamboot/CHANGELOG.md"
     install -Dm0644 "$src/SECURITY.md"  "$pkgdir/usr/share/doc/lamboot/SECURITY.md"
