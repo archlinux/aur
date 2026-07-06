@@ -1,6 +1,6 @@
 pkgname=openssh-gui-git
 _pkgname=OpenSSH-GUI
-pkgver=3.2.3.20260705.d8dea13
+pkgver=3.2.3.20260706.e9ae6ba
 pkgrel=1
 pkgdesc="A GUI for OpenSSH configuration and management (Sourcepackage)"
 arch=('x86_64')
