@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 pkgname=magic
-pkgver=8.3.669
+pkgver=8.3.670
 pkgrel=1
 pkgdesc="A VLSI layout system"
 _git_url="https://github.com/RTimothyEdwards/magic"
@@ -34,7 +34,7 @@ optdepends=(
 
 source=("${pkgname}::git+${_git_url}#tag=${pkgver}")
 
-b2sums=('355ebcc310a541de50ed51c2e641c1859f33a189da2a332832767ada5aeeb4915e0f8d1918c1dca87373e0497e324878ab8b5415fd3069001fdce826a2fd9920')
+b2sums=('296a9d4be19e6be66cacbf7e7741db939cba420996694eb85d645e8b1e87c8ea032d2f7a51d4adfe0a504a7cd297f121d2e865b16f9075bc2ca7605a51d0fdf8')
 
 
 options=()
