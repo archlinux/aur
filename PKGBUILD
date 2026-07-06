@@ -1,7 +1,7 @@
 # Maintainer: OGrigorios <aur@giotas.io>
 pkgname=katana-mk2-fxfloorboard-bin
 pkgver=20260112
-pkgrel=1
+pkgrel=2
 pkgdesc="Editing software for the Boss Katana MK2 guitar modelling and effects amplifier."
 arch=('x86_64')
 url="https://sourceforge.net/projects/fxfloorboard/files/KatanaFxFloorBoard/Katana%20FxFloorboard%20for%20MK2%20Desktop/"
@@ -19,6 +19,10 @@ package() {
 	mkdir -p "${pkgdir}"/usr/bin/
 	mkdir -p "${pkgdir}"/usr/share/applications/
 	cp -r Katana_MK2_FxFloorBoard_linux "${pkgdir}"/opt/Katana_Mk2_FxFloorBoard
+	# The bundled glibc (Ubuntu 2.39) conflicts with the system dynamic loader;
+	# remove it so the system glibc is used instead.
+	rm "${pkgdir}"/opt/Katana_Mk2_FxFloorBoard/lib/libc.so.6 \
+	   "${pkgdir}"/opt/Katana_Mk2_FxFloorBoard/lib/libm.so.6
 	cp Katana-Mk2-FxFloorBoard "${pkgdir}"/usr/bin/Katana-Mk2-FxFloorBoard
 	cp Katana-Mk2-FxFloorBoard.desktop "${pkgdir}"/usr/share/applications/Katana-Mk2-FxFloorBoard.desktop
 }
