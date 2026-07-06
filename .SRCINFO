@@ -1,17 +1,17 @@
 pkgbase = fchat-horizon-appimage
 	pkgdesc = The Best F-Chat 3.0 Client, No exceptions! (Appimge release)
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/Fchat-Horizon/Horizon
 	arch = x86_64
 	license = GPL-3
 	provides = fchat
 	conflicts = fchat
-	noextract = fchat-horizon-appimage-2.3.0.AppImage
+	noextract = fchat-horizon-appimage-2.3.1.AppImage
 	options = !strip
-	source_x86_64 = fchat-horizon-appimage-2.3.0.AppImage::https://github.com/Fchat-Horizon/Horizon/releases/download/v2.3.0/F-Chat.Horizon-2.3.0-linux-x86_64.AppImage
-	source_x86_64 = https://raw.githubusercontent.com/Fchat-Horizon/Horizon/v2.3.0/LICENSE.md
-	sha256sums_x86_64 = c4fc9e3d179a6be1f7566b941d6e680d89be77f117a3b6e9dde8ae883b5a803c
+	source_x86_64 = fchat-horizon-appimage-2.3.1.AppImage::https://github.com/Fchat-Horizon/Horizon/releases/download/v2.3.1/F-Chat.Horizon-2.3.1-linux-x86_64.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/Fchat-Horizon/Horizon/v2.3.1/LICENSE.md
+	sha256sums_x86_64 = b53b0ed84f4728136ca82d64f031705f9cda25fa14d13e6b72cc5bd51f4b3152
 	sha256sums_x86_64 = SKIP
 
 pkgname = fchat-horizon-appimage
