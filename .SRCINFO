@@ -1,6 +1,6 @@
 pkgbase = wayvr-git
 	pkgdesc = Your way to enjoy VR on Linux! Access your Wayland/X11 desktop from SteamVR/Monado (OpenVR+OpenXR support)
-	pkgver = 26.2.1.r255.5dd7339
+	pkgver = 26.7.0.r0.afdf744
 	pkgrel = 1
 	url = https://github.com/wlx-team/wayvr
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = wayvr-git
 	makedepends = libxext
 	makedepends = libxrandr
 	makedepends = libxkbcommon-x11
+	makedepends = vulkan-headers
 	depends = gcc-libs
 	depends = fontconfig
 	depends = freetype2
