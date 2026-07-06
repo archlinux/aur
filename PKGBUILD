@@ -1,6 +1,6 @@
 # Maintainer: lightjunction
 pkgname=lab-safety-system-git
-pkgver=0.1.0.r26.g8296e6c
+pkgver=0.1.0.r27.g98cb8cb
 pkgrel=1
 pkgdesc="Laboratory safety management information system"
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ pkgver() {
 
 prepare() {
   cd lab-safety-system
-  git submodule update --init --recursive
+  git submodule update --init frontend
   cargo fetch --locked
   npm --prefix frontend ci
 }
