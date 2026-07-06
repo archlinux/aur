@@ -6,7 +6,7 @@ _pyname=${_pname}
 #_pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
 #"python-${_pname}-doc")
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="ArviZ-plots provides ready to use and composable plots for Bayesian Workflow."
 arch=('any')
@@ -37,7 +37,7 @@ checkdepends=('python-pytest'
               'python-xarray-einstats')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("https://github.com/arviz-devs/arviz-plots/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('bdd29be8ebd3ccde04af9ddd9ea84e6d')
+md5sums=('351882ee2cbb4e7a35065845d985c1f8')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -47,7 +47,7 @@ md5sums=('bdd29be8ebd3ccde04af9ddd9ea84e6d')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation --skip-dependency-check
 
 #   msg "Building Docs"
 #   mkdir -p dist/lib
@@ -63,8 +63,8 @@ check() {
 
 package_python-arviz-plots() {
     depends=('python>=3.12'
-             'python-arviz-base>=1.1'
-             'python-arviz-stats>=1.1'
+             'python-arviz-base>=1.2'
+             'python-arviz-stats>=1.2'
              'python-xarray-einstats')
     optdepends=('python-bokeh>=3.4: bokeh backend'
                 'python-matplotlib>=3.9: bokeh backend'
