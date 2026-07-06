@@ -1,14 +1,14 @@
 # Maintainer: Nelly <ffhhjsxu@gmail.com>
 pkgname=s3dns
-pkgver=0.2.17
-pkgrel=4
+pkgver=0.2.20
+pkgrel=5
 pkgdesc="Find S3 AWS/GCP/Azure buckets while surfing. S3DNS acts as DNS server."
 arch=('any')
 url="https://github.com/olizimmermann/s3dns"
 license=('MIT')
 depends=('python' 'python-dnspython' 'python-requests' 'python-yaml')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('47ceee667983765a32448b828fd5bf63ab38de2f40f5920a1ac9b616795b60cc')
+sha256sums=('f67508a7f12ffdc21cae1427b44bf7a635ed442296d65781dedde0eb1deeceb3')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
