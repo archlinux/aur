@@ -1,0 +1,5 @@
+version = 1
+
+[[files]]
+path = ["PKGBUILD", ".SRCINFO", "LICENSE", "REUSE.toml"]
+licenses = ["0BSD"]
