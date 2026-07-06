@@ -1,0 +1,21 @@
+pkgbase = zoho-writer-bin
+	pkgdesc = Create - Share - Collaborate
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = https://writer.zoho.com/documents
+	arch = x86_64
+	license = ISC
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	optdepends = libappindicator-gtk3: Icon status notifier support
+	source = ZohoWriter.deb::https://files-accl.zohopublic.com/public/zohowriter/download/linux
+	md5sums = SKIP
+
+pkgname = zoho-writer-bin
