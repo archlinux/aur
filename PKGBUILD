@@ -2,7 +2,7 @@
 
 pkgname=rkdeveloptool-gui
 pkgver=5.0.6
-pkgrel=1
+pkgrel=4
 pkgdesc="RKDevelopTool GUI is a graphical front-end for Rockchip's official rkdeveloptool"
 arch=(any)
 url="https://github.com/gahingwoo/RKDevelopTool-GUI"
@@ -18,7 +18,7 @@ depends=(
     rkdeveloptool
 )
 makedepends=(
-    git
+    'git'
     'python-build'
     'python-installer'
     'python-setuptools'
@@ -52,6 +52,7 @@ package() {
     cd "${srcdir}/${pkgname}/"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -vDm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
     install -vDm644 packaging/rkdeveloptool-gui.desktop -t "${pkgdir}/usr/share/applications/"
     install -vDm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
 }
