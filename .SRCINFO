@@ -1,0 +1,25 @@
+pkgbase = machctrl-bin
+	pkgdesc = Hardware monitor and optimizer for Linux — CPU, GPU, RAM, fans, temperature and system tuning (prebuilt)
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/araujo791/MachCtrl-GTK4
+	install = machctrl.install
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = librsvg
+	depends = lm_sensors
+	depends = dmidecode
+	depends = sudo
+	optdepends = nvidia-utils: NVIDIA GPU support (fan control, temperature)
+	optdepends = cpupower: finer CPU frequency control in the Tune screen
+	provides = machctrl
+	conflicts = machctrl
+	conflicts = machctrl-git
+	replaces = machctrl-electron
+	backup = etc/sudoers.d/machctrl
+	source = machctrl-3.0.0.tar.gz::https://github.com/araujo791/MachCtrl-GTK4/releases/download/v3.0.0/machctrl-3.0.0-x86_64.tar.gz
+	sha256sums = SKIP
+
+pkgname = machctrl-bin

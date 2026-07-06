@@ -1,0 +1,63 @@
+post_install() {
+    # Carrega o módulo nct6775 (fans da placa-mãe via Super I/O) e garante no boot.
+    modprobe nct6775 2>/dev/null || true
+    if [ ! -f /etc/modules-load.d/nct6775.conf ]; then
+        echo "nct6775" > /etc/modules-load.d/nct6775.conf
+    fi
+
+    # Habilita e inicia o daemon de controle de fans (roda desde o boot).
+    systemctl daemon-reload 2>/dev/null || true
+    systemctl enable --now machctrld.service 2>/dev/null || true
+
+    # Atualiza caches de ícone e desktop
+    gtk-update-icon-cache /usr/share/icons/hicolor 2>/dev/null || true
+    update-desktop-database /usr/share/applications 2>/dev/null || true
+
+    echo ""
+    echo "  ✅  MachCtrl 3.0 instalado!"
+    echo "  → Abrir pelo menu de apps ou pelo terminal: machctrl"
+    echo "  → O controle de fans roda em background (serviço machctrld),"
+    echo "    mantendo suas configurações mesmo com o app fechado e após reiniciar."
+    echo ""
+}
+
+post_upgrade() {
+    modprobe nct6775 2>/dev/null || true
+    if [ ! -f /etc/modules-load.d/nct6775.conf ]; then
+        echo "nct6775" > /etc/modules-load.d/nct6775.conf
+    fi
+
+    # Se veio da v2.0 (backend Python), desativa o serviço antigo.
+    if systemctl list-unit-files 2>/dev/null | grep -q machctrl-backend.service; then
+        systemctl stop machctrl-backend.service 2>/dev/null || true
+        systemctl disable machctrl-backend.service 2>/dev/null || true
+    fi
+
+    # (Re)inicia o daemon novo com a versão atualizada.
+    systemctl daemon-reload 2>/dev/null || true
+    systemctl enable --now machctrld.service 2>/dev/null || true
+    systemctl restart machctrld.service 2>/dev/null || true
+
+    gtk-update-icon-cache /usr/share/icons/hicolor 2>/dev/null || true
+    update-desktop-database /usr/share/applications 2>/dev/null || true
+
+    echo ""
+    echo "  ✅  MachCtrl atualizado para a versão 3.0 (Rust + Tauri)!"
+    echo "  → Controle de fans agora roda em background (serviço machctrld)."
+    echo ""
+}
+
+pre_remove() {
+    systemctl stop machctrld.service 2>/dev/null || true
+    systemctl disable machctrld.service 2>/dev/null || true
+}
+
+post_remove() {
+    systemctl daemon-reload 2>/dev/null || true
+    gtk-update-icon-cache /usr/share/icons/hicolor 2>/dev/null || true
+    update-desktop-database /usr/share/applications 2>/dev/null || true
+    echo ""
+    echo "  MachCtrl removido."
+    echo "  Configurações mantidas em /etc/machctrl/ (remova manualmente se quiser)."
+    echo ""
+}
