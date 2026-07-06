@@ -1,7 +1,7 @@
 # Maintainer: fossisawesome <fossisawesome AT github DOT com>
 pkgname=firmium-desktop-bin
-pkgver=7.0.0
-pkgrel=2
+pkgver=8.0.0
+pkgrel=1
 pkgdesc="Lightning fast OpenSubsonic player in Rust"
 arch=('x86_64')
 url="https://github.com/fossisawesome/firmium"
