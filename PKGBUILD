@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jm-desktop-bin
-pkgver=2.2.0
+pkgver=2.2.1
 _electronversion=42
 pkgrel=1
 pkgdesc="A jm comic desktop app by react + electron.(Prebuilt version).一个禁漫的第三方客户端"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-Linux-x64-${pkgver}.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6d84cbc67ffdfa0c0544586c8f4c6846e52ac642281d95994a5eee551c65b0b3'
+sha256sums=('d7071514332b98395df08c5792345981a45d8e146c7e2dd5eba378ffbe13b347'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
