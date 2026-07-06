@@ -1,6 +1,6 @@
 # Maintainer: Terrabade <terrabade@protonmail.com>
 pkgname=shelly-gnome
-pkgver=2.3.3.4.gnome1
+pkgver=2.4.1.2.gnome1
 pkgrel=1
 pkgdesc="Shelly for GNOME: Libadwaita port of the Shelly Arch Linux Package Manager."
 arch=('x86_64')
@@ -24,24 +24,32 @@ depends=(
     'dconf'
     'gnupg'
     'zstd'
+    'json-glib'
 )
 optdepends=(
     'flatpak: For supporting flatpak implementation.'
     'fish: Fish shell completions'
+    'zsh: Zsh shell completions'
+    'libstarfish: dependency viewer for arch packages'
 )
-makedepends=('dotnet-sdk-10.0' 'clang' 'gettext')
+makedepends=('dotnet-sdk-10.0' 'clang' 'gettext' 'vala' 'meson' 'ninja')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Terrabade/Shelly-ALPM-GNOME/archive/v${pkgver}.tar.gz")
 
-sha256sums=('31e71101a3c50cf065f0c8750fef068e31e4bdbe559b4421ff27655c2d18960b')
+sha256sums=('d9eacc8ba2725f417768bfd23cd582c62bbc5c793d5a67ab24744df4da95807a')
 
 build() {
   cd "$srcdir/Shelly-ALPM-GNOME-${pkgver}"
 
-  dotnet publish Shelly-CLI/Shelly-CLI.csproj -c Release -o out-cli --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
+  dotnet publish Shelly.Cli/Shelly.Cli.csproj -c Release -o out-cli --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
   dotnet publish Shelly.Gtk/Shelly.Gtk.csproj -c Release -r linux-x64 -o out --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
-  dotnet publish Shelly-Notifications/Shelly-Notifications.csproj -c Release -r linux-x64 -o out-notify --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
+  meson setup --prefix=/usr build-notify Shelly.Notifications
+  meson compile -C build-notify
   dotnet publish Shelly.Keys/Shelly.Keys.csproj -c Release -r linux-x64 -o out-keys --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
+
+  # Generate shell completions from the freshly built CLI binary
+  ./out-cli/shelly completions fish > shelly.fish
+  ./out-cli/shelly completions zsh  > _shelly
 
   # Compile translations
   for po_file in Shelly.Gtk/po/*.po; do
@@ -50,9 +58,9 @@ build() {
       msgfmt "$po_file" -o "shelly-ui-${lang}.mo"
     fi
   done
-  
+
   # Compile tray service translations
-    for po_file in Shelly-Notifications/po/*.po; do
+    for po_file in Shelly.Notifications/po/*.po; do
       if [ -f "$po_file" ]; then
         lang=$(basename "$po_file" .po)
         msgfmt "$po_file" -o "shelly-notifications-${lang}.mo"
@@ -67,9 +75,9 @@ package() {
   install -Dm755 out/shelly-ui "$pkgdir/usr/bin/shelly-ui"
 
   # Install Shelly-Notifications binary
-  install -Dm755 out-notify/Shelly-Notifications "$pkgdir/usr/bin/shelly-notifications"
+  install -Dm755 build-notify/shelly-notifications "$pkgdir/usr/bin/shelly-notifications"
 
-  # Install Shelly-CLI binary
+  # Install Shelly.Cli binary
   install -Dm755 out-cli/shelly "$pkgdir/usr/bin/shelly"
 
   # Install Shelly.Keys binary
@@ -80,11 +88,12 @@ package() {
 [Desktop Entry]
 Name=Shelly
 Comment=A Modern Arch Package Manager
-Exec=/usr/bin/shelly-ui
+Exec=/usr/bin/shelly-ui %u
 Icon=shelly
 Type=Application
 Categories=System;Utility;
 Keywords=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;flatpak;pacman;aur;appimage;
+MimeType=x-scheme-handler/appstream;x-scheme-handler/flatpak+https;
 Terminal=false
 Actions=FlatpakInstall;FlatpakUpdate;FlatpakRemove;
 
@@ -118,6 +127,31 @@ Terminal=false
 NoDisplay=true
 EOF
 
+  # Ensure the polkit directory exists
+  install -m0755 -d "${pkgdir}"/usr/share/polkit-1/actions
+
+  # Install Polkit policy for privileged Shelly CLI execution via pkexec
+  cat <<'EOF' | install -Dm644 /dev/stdin "$pkgdir/usr/share/polkit-1/actions/com.shellyorg.shelly.policy"
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
+<policyconfig>
+  <vendor>Shelly</vendor>
+  <vendor_url>https://github.com/Seafoam-Labs/Shelly-ALPM</vendor_url>
+  <action id="com.shellyorg.shelly.pkexec.cli">
+    <description>Run Shelly CLI as administrator</description>
+    <message>Run Shelly CLI with administrator privileges.</message>
+    <icon_name>shelly</icon_name>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/shelly</annotate>
+  </action>
+</policyconfig>
+EOF
+
   # Install icon
   install -Dm644 Shelly.Gtk/Assets/shellylogo.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly.png"
   install -Dm644 Shelly.Gtk/Assets/shellylogo-tray.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-tray.png"
@@ -130,6 +164,9 @@ EOF
   # Install fish shell completions
   install -Dm644 shelly.fish "$pkgdir/usr/share/fish/vendor_completions.d/shelly.fish"
 
+  # Install zsh shell completions
+  install -Dm644 _shelly "$pkgdir/usr/share/zsh/site-functions/_shelly"
+
   # Install translations
   for mo_file in shelly-ui-*.mo; do
     if [ -f "$mo_file" ]; then
@@ -137,7 +174,7 @@ EOF
       install -Dm644 "$mo_file" "$pkgdir/usr/share/locale/$lang/LC_MESSAGES/shelly-ui.mo"
     fi
   done
-  
+
   # Install tray service translations
     for mo_file in shelly-notifications-*.mo; do
       if [ -f "$mo_file" ]; then
