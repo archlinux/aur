@@ -1,6 +1,6 @@
 # Maintainer: Vladislav <your@email.com>
 pkgname=fluorine-manager-bin
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A native Linux mod manager for Bethesda and other games, built on MO2"
 arch=('x86_64')
@@ -11,14 +11,13 @@ provides=('fluorine-manager')
 conflicts=('fluorine-manager')
 options=(!strip)
 
-# The upstream tag appends '-A' to the version number
-_tag="${pkgver}"
-
-source=("fluorine-manager-${pkgver}.tar.gz::https://github.com/SulfurNitride/Fluorine-Manager/releases/download/v0.2.2/fluorine-manager-0.2.2.tar.gz")
-sha256sums=('6b7b0ed8e36dc026e298bc5bca4352a2dd0a2658830e0530275f714ec85c99be')
+source=("fluorine-manager-${pkgver}.tar.gz::https://github.com/SulfurNitride/Fluorine-Manager/releases/download/v${pkgver}/fluorine-manager-${pkgver}.tar.gz"
+        "fluorine-manager-license-${pkgver}.txt::https://raw.githubusercontent.com/SulfurNitride/Fluorine-Manager/v${pkgver}/LICENSE.txt")
+sha256sums=('7451a5b371704cad8dbb52734338f79caee70556c5669e2490da6ac0dfcd6d9d'
+            '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
 
 package() {
-    # The zip extracts to a 'Fluorine-Manager' directory
+    # The tarball extracts to a 'fluorine-manager' directory
     cd "$srcdir/fluorine-manager"
 
     # Install the entire app bundle to /opt
@@ -75,16 +74,14 @@ EOF
     install -Dm644 "icons/com.fluorine.manager.png" \
         "${pkgdir}/usr/share/icons/hicolor/256x256/apps/com.fluorine.manager.png"
 
-    # Install the .desktop file that ships inside the zip,
+    # Install the .desktop file that ships inside the tarball,
     # patching Exec= to point to our /usr/bin wrapper.
     install -dm755 "${pkgdir}/usr/share/applications"
     sed "s|^Exec=fluorine-manager|Exec=/usr/bin/fluorine-manager|" \
         "icons/com.fluorine.manager.desktop" \
         > "${pkgdir}/usr/share/applications/com.fluorine.manager.desktop"
 
-    # Install license if present
-    if [ -f "LICENSE" ]; then
-        install -Dm644 "LICENSE" \
-            "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    fi
+    # Install license (downloaded separately, pinned to the v$pkgver tag)
+    install -Dm644 "${srcdir}/fluorine-manager-license-${pkgver}.txt" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
