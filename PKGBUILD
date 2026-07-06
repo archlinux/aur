@@ -1,8 +1,8 @@
-# Maintainer: robertfoster
+# Maintainer: Tomoyo
 
 _pkgbase=whisper.cpp
 pkgname="${_pkgbase}-openvino"
-pkgver=1.8.3 # renovate: datasource=github-tags depName=ggerganov/whisper.cpp
+pkgver=1.9.1 # renovate: datasource=github-tags depName=ggerganov/whisper.cpp
 pkgrel=1
 pkgdesc="Port of OpenAI's Whisper model in C/C++ (with OpenVINO run-time)"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -47,5 +47,5 @@ package() {
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-sha256sums=('870ba21409cdf66697dc4db15ebdb13bc67037d76c7cc63756c81471d8f1731a'
-  '5f880edae417c7083a9403260e5c381285e4c52ccc39f127c6510fdfa249c1ad')
+sha256sums=('147267177eef7b22ec3d2476dd514d1b12e160e176230b740e3d1bd600118447'
+            '5f880edae417c7083a9403260e5c381285e4c52ccc39f127c6510fdfa249c1ad')
