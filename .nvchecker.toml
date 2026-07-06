@@ -1,0 +1,5 @@
+[casual-pre-loader]
+source = "github"
+github = "cueki/casual-pre-loader"
+prefix = "v"
+use_max_tag = true
