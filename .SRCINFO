@@ -1,6 +1,6 @@
 pkgbase = patool-git
 	pkgdesc = portable command line archive file manager (git checkout)
-	pkgver = 4.0.5.r0.g3a65953
+	pkgver = 4.0.5.r7.gce1248b
 	pkgrel = 1
 	url = https://wummel.github.io/patool/
 	arch = any
@@ -16,7 +16,6 @@ pkgbase = patool-git
 	optdepends = p7zip: extracting ZIP and 7z files
 	optdepends = unarchiver: extracting various formats
 	optdepends = unrar: extracting RAR files
-	optdepends = zstd: extracting ZSTANDARD files
 	provides = patool
 	conflicts = patool
 	source = git+https://github.com/wummel/patool.git
