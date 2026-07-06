@@ -1,7 +1,7 @@
 pkgbase = xlibre-video-amdgpu
 	pkgdesc = XLibre amdgpu video driver
 	pkgver = 25.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/X11Libre/xf86-video-amdgpu
 	arch = x86_64
 	groups = xlibre-drivers
