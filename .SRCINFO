@@ -20,7 +20,9 @@ pkgbase = ocaml-bin_prot
 	options = !strip
 	source = ocaml-bin_prot-0.17.0.1.tar.gz::https://github.com/janestreet/bin_prot/archive/v0.17.0.tar.gz
 	source = ocaml-bin_prot-0.17.0.1-remove-mirage-xen.patch::https://github.com/ocaml/opam-source-archives/raw/refs/heads/main/patches/bin_prot/remove-outdated-mirage-xen-cross-compilation-rules.patch
+	source = 0001-fix-test-paths.patch
 	b2sums = bad3203bc42f6f95550a29392fe419d3159614743736ee3bf5855765330c2549575d7af8d42f3534be37fb346d43aa56667d71af328c7ea8ba6c4a64006f695a
 	b2sums = 990499b43771f44c850711d923797364ec2dbffc80c31a8031a0c35a467b5ab093368e128233d671cffc099b05506c4ac07629dfdb965305fbcdb30ded65b920
+	b2sums = e272b6b22d1b863cccc052d9b603c29a9521f9420a130eb5009e9b803a14870186921d5636beceb9ec3c51897a7d0a68965bc048140f5fd99b3ee2c2df7d6d0d
 
 pkgname = ocaml-bin_prot

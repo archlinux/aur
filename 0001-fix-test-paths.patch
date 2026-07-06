@@ -1,0 +1,9 @@
+diff -ura bin_prot-0.17.0.orig/test/dune bin_prot-0.17.0/test/dune
+--- bin_prot-0.17.0.orig/test/dune	2024-05-07 20:46:09.000000000 +0200
++++ bin_prot-0.17.0/test/dune	2026-07-06 17:32:25.747135191 +0200
+@@ -10,4 +10,4 @@
+    integers_repr_tests_64bit.ml integers_repr_tests_js.ml)
+  (action
+   (bash
+-    "diff <(echo '869e6b3143f14201f406eac9c05c4cdb  blob_stability_tests.ml'\necho '714ea0b2dcb175b3f87a9aff0890c091  integers_repr_tests_32bit.ml'\necho '2db396dfced6ae8d095f308acb4c80eb  integers_repr_tests_64bit.ml'\necho 'f54ad24b4e4e601d16bef7d8c79358d8  integers_repr_tests_js.ml'\n  ) <(md5sum %{deps})")))
++    "diff <(echo '869e6b3143f14201f406eac9c05c4cdb  ./blob_stability_tests.ml'\necho '714ea0b2dcb175b3f87a9aff0890c091  ./integers_repr_tests_32bit.ml'\necho '2db396dfced6ae8d095f308acb4c80eb  ./integers_repr_tests_64bit.ml'\necho 'f54ad24b4e4e601d16bef7d8c79358d8  ./integers_repr_tests_js.ml'\n  ) <(md5sum %{deps})")))
