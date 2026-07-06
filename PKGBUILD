@@ -1,6 +1,6 @@
 pkgname=zournal-git
 pkgver=r59.a3e0713
-pkgrel=1
+pkgrel=2
 pkgdesc="A journal app for detective games"
 arch=('x86_64' 'aarch64')
 url="https://github.com/SimoneFelici/Zournal"
@@ -26,7 +26,6 @@ prepare() {
   mkdir -p lib
 
   cp "$srcdir/sqlite-amalgamation-3530300/sqlite3.c" lib/
-  cp "$srcdir/sqlite-amalgamation-3530300/sqlite3.h" lib/
 }
 
 build() {
