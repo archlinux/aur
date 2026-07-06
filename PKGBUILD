@@ -3,7 +3,7 @@
 # PKGBUILD for Cathode, a cross-platform IPTV player (Tauri + Dioxus + mpv).
 #
 pkgname=cathode
-pkgver=0.5.5 # x-release-please-version
+pkgver=0.5.6 # x-release-please-version
 pkgrel=1
 pkgdesc="Cross-platform IPTV player (Tauri + Dioxus + mpv)"
 arch=('x86_64')
