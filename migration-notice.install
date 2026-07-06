@@ -1,0 +1,15 @@
+_migration_notice() {
+    echo ""
+    echo ""
+    echo "If you are upgrading directly to v4, please review the migration guide"
+    echo "at https://langfuse.com/docs/observability/sdk/upgrade-path/python-v3-to-v4"
+    echo ""
+    echo ""
+}
+
+post_upgrade() {
+    if [[ vercmp "4.0.0" "$2" > 0 ]]; then
+        _migration_notice
+    fi
+}
+

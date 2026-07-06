@@ -1,0 +1,4 @@
+[python-langfuse]
+source = "git"
+git = "https://github.com/langfuse/langfuse-python.git"
+prefix = "v"
