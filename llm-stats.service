@@ -1,0 +1,99 @@
+# systemd unit для llm-stats на Arch Linux (AUR-maintained).
+#
+# Этот unit НЕ лежит в upstream: после passthrough-рефактора binary
+# читает конфиг только из env (config.MustLoadFromEnv), поэтому
+# /etc/llm-stats/config.yaml + --config больше не актуальны. Upstream
+# packaging/llm-stats.service до сих пор с --config — не используем.
+#
+# Установка:
+#   1. yay -S llm-stats-git (этот пакет).
+#   2. Опц. override значений по умолчанию: drop-in в
+#      /etc/systemd/system/llm-stats.service.d/override.conf с нужными
+#      Environment= (полный список см. `internal/config/config.go`):
+#          [Service]
+#          Environment=LISTEN_ADDR=:9090
+#          Environment=LOG_LEVEL=debug
+#          Environment=LLM_STATS_ALLOW_PRIVATE_HOSTS=true   # только для тестов
+#      Полный список: LISTEN_ADDR, SHUTDOWN_TIMEOUT, UPSTREAM_TIMEOUT,
+#      HEALTH_PATH, METRICS_PATH, METRICS_NAMESPACE, LOG_LEVEL,
+#      LOG_FORMAT, LOG_LABELS, MAX_BODY_BYTES, LLM_STATS_ALLOW_PRIVATE_HOSTS.
+#   3. sudo systemctl daemon-reload && systemctl enable --now llm-stats
+#   4. Статус: systemctl status llm-stats; логи: journalctl -u llm-stats -f.
+#
+# Запуск из-под root с максимальной sandbox-изоляцией (см. Hardening ниже).
+# Никакого отдельного пользователя не создаётся — бинарь не пишет в /var
+# или /etc, только читает /proc/self/* через prometheus client.
+#
+# Passthrough-контракт: клиент шлёт Authorization/x-api-key в upstream
+# через headers (бинарь не инжектит свои credentials). Поэтому secrets
+# на сервере не нужны — все credentials живут у клиента.
+
+[Unit]
+Description=llm-stats: Anthropic/OpenAI passthrough proxy + Prometheus metrics
+Documentation=https://gitlab.com/komex/llm-stats
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+
+# WorkingDirectory НЕ нужен — все пути абсолютные.
+ExecStart=/usr/bin/llm-stats
+
+# Default-значения (перебиваются drop-in'ом):
+#   LISTEN_ADDR=:8080
+#   SHUTDOWN_TIMEOUT=30s
+#   UPSTREAM_TIMEOUT=5m
+#   HEALTH_PATH=/healthz
+#   METRICS_PATH=/metrics
+#   METRICS_NAMESPACE=llm_stats
+#   LOG_LEVEL=info
+#   LOG_FORMAT=json
+#   LOG_LABELS=service=llm-stats
+#   MAX_BODY_BYTES=10485760   (10 MiB)
+#   LLM_STATS_ALLOW_PRIVATE_HOSTS=false
+#
+# Явно НЕ выставляем дефолты здесь, чтобы они приходили из Go-side
+# defaults — единая точка истины. Оператор меняет через drop-in.
+
+# Hardening (Arch-systemd-recommended):
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+RestrictRealtime=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+
+# Limit ресурсов (default-разумные для proxy):
+LimitNOFILE=65536
+LimitNPROC=4096
+
+# Graceful shutdown: systemd шлёт SIGTERM, llm-stats ждёт
+# SHUTDOWN_TIMEOUT (default 30s) перед SIGKILL:
+TimeoutStopSec=35s
+KillMode=mixed
+KillSignal=SIGTERM
+FinalKillSignal=SIGKILL
+
+# Restart policy:
+Restart=on-failure
+RestartSec=5s
+StartLimitInterval=60s
+StartLimitBurst=3
+
+# Logging:
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=llm-stats
+
+[Install]
+WantedBy=multi-user.target

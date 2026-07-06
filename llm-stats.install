@@ -1,24 +1,42 @@
 # arg 1:  the new package version
 # arg 2:  the old package version (empty on fresh install)
 post_install() {
-    chmod 0600 /etc/llm-stats/config.yaml
-
     echo ":: llm-stats installed successfully."
+    echo ":: Конфигурация — env-only (НЕТ /etc/llm-stats/config.yaml)."
+    echo ":: Чтобы перебить дефолты, создайте drop-in:"
+    echo "::   /etc/systemd/system/llm-stats.service.d/override.conf"
+    echo ":: со строками вида:"
+    echo "::     [Service]"
+    echo "::     Environment=LISTEN_ADDR=:9090"
+    echo "::     Environment=LOG_LEVEL=debug"
+    echo "::"
+    echo ":: Полный список переменных — в internal/config/config.go"
+    echo ":: (LISTEN_ADDR, SHUTDOWN_TIMEOUT, UPSTREAM_TIMEOUT,"
+    echo "::  HEALTH_PATH, METRICS_PATH, METRICS_NAMESPACE, LOG_LEVEL,"
+    echo "::  LOG_FORMAT, LOG_LABELS, MAX_BODY_BYTES,"
+    echo "::  LLM_STATS_ALLOW_PRIVATE_HOSTS)."
+    echo "::"
+    echo ":: Passthrough-модель: клиент шлёт свои credentials"
+    echo ":: (Authorization / x-api-key) на upstream через бинарь;"
+    echo ":: secrets на сервере не нужны."
+    echo "::"
     echo ":: Next steps:"
-    echo "::   1. Edit /etc/llm-stats/config.yaml (api_key, proxy.keys)."
-    echo "::   2. systemctl daemon-reload && systemctl enable --now llm-stats.service"
-    echo "::   3. journalctl -u llm-stats.service -f for live logs"
-    echo "::      (or query the Loki/Promtail pipeline if configured)."
+    echo "::   1. systemctl daemon-reload"
+    echo "::   2. (опц.) /etc/systemd/system/llm-stats.service.d/override.conf"
+    echo "::   3. systemctl enable --now llm-stats.service"
+    echo "::   4. journalctl -u llm-stats.service -f для live-логов"
+    echo "::      (или Promtail→Loki pipeline если настроен)."
 }
 
 post_upgrade() {
     post_install
     echo ":: Run 'systemctl daemon-reload && systemctl restart llm-stats.service'"
-    echo ":: to pick up the new systemd unit (if hardenings changed)."
+    echo ":: чтобы подхватить новый systemd unit (если изменились hardnings)."
 }
 
 post_remove() {
     echo ":: llm-stats package removed."
-    echo ":: /etc/llm-stats/config.yaml was preserved by pacman (operator-owned)."
-    echo ":: To fully uninstall: rm -rf /etc/llm-stats /var/log/journal (if desired)."
+    echo ":: Конфиг хранился в systemd drop-in (если создавали) —"
+    echo ":: удалите вручную: rm -rf /etc/systemd/system/llm-stats.service.d"
+    echo ":: Полная очистка: rm -rf /etc/systemd/system/llm-stats.service.d"
 }

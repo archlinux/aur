@@ -3,5 +3,6 @@
 !PKGBUILD
 !PKGBUILD.*
 !.SRCINFO
+!llm-stats.service
 !llm-stats.install
 !LICENSE
