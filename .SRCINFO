@@ -1,0 +1,17 @@
+pkgbase = dnsglobe
+	pkgdesc = Global DNS propagation checker TUI
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/514-labs/dnsglobe
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = dnsglobe-0.2.0.tar.gz::https://github.com/514-labs/dnsglobe/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = d2beefb160caf7a3296c151f0d1223fd661a260b42306bf7e337af605394a1aa
+
+pkgname = dnsglobe
