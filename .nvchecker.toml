@@ -1,0 +1,3 @@
+[exfetch]
+source = "git"
+git = "https://codeberg.org/Izder456/exfetch.git"
