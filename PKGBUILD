@@ -2,12 +2,12 @@
 pkgname=opennow
 _pkgname=OpenNOW
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="custom GeForce Now client"
 url="https://opennow.zortos.me/"
 license=('MIT')
 depends=('gtk3' 'cairo' 'pango' 'mesa' 'dbus' 'libx11' 'at-spi2-core' 'hicolor-icon-theme' 'nss' 'nspr' 'alsa-lib'
-	'electron42' 'gstreamer' 'gst-plugins-base-libs' 'gst-plugins-bad-libs' 'gst-libav' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
+	'electron42>=42.3.3' 'gstreamer' 'gst-plugins-base-libs' 'gst-plugins-bad-libs' 'gst-libav' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
 makedepends=('npm' 'imagemagick' 'libxcrypt-compat' 'cargo')
 # dependencies for rust opennow-streamer: cargo gstreamer gst-plugins-base-libs gst-plugins-bad-libs gst-libav gst-plugins-{good|bad|ugly}
 # we could have avoided building and installing opennow-streamer for now because it is not avaiable and used on linux
@@ -26,8 +26,6 @@ prepare() {
 	cd "$_pkgname-$pkgver"
 	cd opennow-stable
 	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	# downgrade electron version, we are waiting for electron42 to be upgraded...
-	npm pkg set devDependencies.electron=$(cat /usr/lib/electron42/version)
 	# fix: remove call to ensure-electron-installed.mjs
 	sed -i -e '/ensure-electron-installed.mjs/d' package.json
 	npm install --cache "${srcdir}/npm/cache"

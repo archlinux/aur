@@ -1,7 +1,7 @@
 pkgbase = opennow
 	pkgdesc = custom GeForce Now client
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opennow.zortos.me/
 	arch = x86_64
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = opennow
 	depends = nss
 	depends = nspr
 	depends = alsa-lib
-	depends = electron42
+	depends = electron42>=42.3.3
 	depends = gstreamer
 	depends = gst-plugins-base-libs
 	depends = gst-plugins-bad-libs
