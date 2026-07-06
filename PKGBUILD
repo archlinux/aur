@@ -7,12 +7,12 @@
 # at package-build time. The build-from-source recipe is the sibling `lamboot`
 # package; per AUR convention the prebuilt one carries the -bin suffix.
 pkgname=lamboot-bin
-pkgver=0.15.2
+pkgver=0.16.5
 pkgrel=1
 pkgdesc="Memory-safe Rust UEFI bootloader with native BLS, multiboot-aware menu, TPM measurements, and JSON-typed installer protocol (prebuilt signed)"
 # aarch64 to be added once the aarch64 -bin artifact ships (release.toml arches).
 arch=('x86_64')
-url="https://github.com/lamco-admin/lamboot"
+url="https://lamco.ai/products/lamboot/"
 license=('MIT OR Apache-2.0')
 # efibootmgr: lamboot-install registers the UEFI boot entry. python: lamboot-inspect
 # and lamboot-monitor.py are python3. Both are runtime needs of the staged tools.
@@ -42,14 +42,8 @@ source=(
 # time (render-at-publish); they are SKIP placeholders in the dev tree so a
 # packaging-only revision never has to carry a committed hash. The .hook is
 # local and version-stable, so it can keep a real sum.
-sha256sums=('b628146bf0b7f1f1f2ba5d1b0d2f73e3e0d2c0c6dc278f5635b01c8dfb22ad45'
-            '44f317ff0d9416c16e4a6d2983d0e826f83609f7a2367dea386f9ea2c996cf71'
-            'SKIP'
-            '28bd434088c8f2b68b35f6afec7ab1fedbb2278a9a06179ab952e27d49bccea7')
-b2sums=('f88c4fd269f8a88608597b936941fba71d78ddb387fd9dcc4a32aae14b266a6a6ef5b9dfd3a0aac78c00ef3433322790d3fbf756c93d25b84970a452a68bfb9c'
-        'd504304dad263eeedafad24de37ec165322742147f70316971cc2db46f630badb917391e20e0b50c81969f12931db4b57c4234d58b51e9b2484479ccaf964f5f'
-        'SKIP'
-        'e59bfd8d71b1a40d18998d8f92de015ba1f921eba167119668047f528fd585fd952c6f3e6001d17d870569023aba81f3b3ceae3591d8b912c389e2c13dddc494')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+b2sums=('59be1503f8c8636b7b81222ef3f5302518e5fc93a5e1b4a2a95a8d2a660b45f77d3d8771ca362c19b4649c399a4ac2751c6ebed639f7b29f5e1c2c6348746424' 'SKIP' 'SKIP' 'SKIP')
 
 # OpenPGP signing key for the detached .asc (Lamco release key). Uncomment and
 # fill the fingerprint when the key is published; until then the .asc is fetched
