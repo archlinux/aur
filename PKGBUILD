@@ -2,7 +2,7 @@
 _appname=qwerty
 pkgname="${_appname}-learner-pake"
 _pkgname=Qwerty
-pkgver=3.12.0
+pkgver=3.13.1
 pkgrel=1
 pkgdesc="Use Pake to package Qwerty-Learner.为键盘工作者设计的单词记忆与英语肌肉记忆锻炼软件/Words learning and English muscle memory training software designed for keyboard workers"
 arch=('x86_64')
@@ -18,14 +18,14 @@ source=(
     "${pkgname}-${pkgver}.deb::${_ghurl}/releases/download/V${pkgver}/${_pkgname}_${CARCH}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${pkgver}/LICENSE"
 )
-sha256sums=('e7f637f41f1e626b5055dc8555965e217eea39f5ec53e4f41796979a863847bf'
+sha256sums=('0b81447e4970438d463571151f689dbecb67a3b01523d210455156bc56119c4b'
             '462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
-    sed -e "
+    sed -i -e "
         s/pake-${_appname}/${pkgname%-pake}/g
         s/${_appname}_512/${pkgname%-pake}/g
-    " -i "${srcdir}/usr/share/applications/com.pake.${_appname}.desktop"
+    " "${srcdir}/usr/share/applications/com.pake.${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/usr/bin/pake-${_appname}" "${pkgdir}/usr/bin/${pkgname%-pake}"
