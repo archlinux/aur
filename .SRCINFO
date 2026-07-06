@@ -1,6 +1,6 @@
 pkgbase = ast-grep-bin
 	pkgdesc = A fast and easy tool for code searching, linting, rewriting at large scale
-	pkgver = 0.44.0
+	pkgver = 0.44.1
 	pkgrel = 1
 	url = https://github.com/ast-grep/ast-grep
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = ast-grep-bin
 	source = https://raw.githubusercontent.com/ast-grep/ast-grep/c9aff6ace291c5a02e48446aa9be1d471b763ca2/LICENSE
 	sha256sums = 81471889c77b2161a3e4dcdb1b2e6ca382e485766132d92d5fe1d7497e7dd2d9
 	b2sums = 84489d87909510ed8ec39fb743c9e0983ba6a4bce03dd299cc41404d5f9050d1b08c3e28dbca3c81a1e958c5aa08aaeb8638b25a92e30ae14df8936e6c949d9c
-	source_x86_64 = ast-grep-bin-0.44.0-x86_64.tar.gz::https://github.com/ast-grep/ast-grep/releases/download/0.44.0/app-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = a074982c59a749371d225e6129faf5815f731f460aa080c004af9b7e79c55632
-	b2sums_x86_64 = b809a142b738f9fde50b8568f7760db3a93ea51fd213b9972c152a908c3221678dc78d5d24e33b9a26f5410d551afa7383e7a62dddd1182926853de795bb3664
-	source_aarch64 = ast-grep-bin-0.44.0-aarch64.tar.gz::https://github.com/ast-grep/ast-grep/releases/download/0.44.0/app-aarch64-unknown-linux-gnu.zip
-	sha256sums_aarch64 = 86f4d5924b59fca4bbcb3fb2fb9a73b38a4f666c402886395c8bf18b6afc61f0
-	b2sums_aarch64 = 99e7eace7d9be25a26a63687d118fe62b75d60e854664649e6cc271159f6b74aefd3450448bf76f2264abbd580000c5054f9f08561effbbee2db236d605d77fb
+	source_x86_64 = ast-grep-bin-0.44.1-x86_64.tar.gz::https://github.com/ast-grep/ast-grep/releases/download/0.44.1/app-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 611f9e5e76f2611ecea1a35dd3468ceedf600641a11224b80341d79c6ee7b9dd
+	b2sums_x86_64 = a22a63164a7b444b38bddbd561849a26bb7dfce3188714cdcdd093da54e870d27154c7b9f65d60b1ec54fc92eceec717d41c1d5880fe468fcb00d6c9f4e67790
+	source_aarch64 = ast-grep-bin-0.44.1-aarch64.tar.gz::https://github.com/ast-grep/ast-grep/releases/download/0.44.1/app-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = 077a4ab0c628154ef3cb79fecaf11dabca7f8a41f2c7260c022f263a52c1b021
+	b2sums_aarch64 = 40c93d25b1da00edc67b5b8031ad0c445556e41fe3497f22633465dc06feaab400164373a644c9630fd0d7a552c4236d426c136cb514d7db00a558a04673fe52
 
 pkgname = ast-grep-bin
