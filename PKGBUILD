@@ -40,4 +40,9 @@ package() {
 
   install -dm755 "$pkgdir/etc/xdg/quickshell/atmosphera"
   cp -r ./* "$pkgdir/etc/xdg/quickshell/atmosphera/"
+
+  # Install CLI scripts to PATH
+  install -Dm755 Scripts/bash/atmosphera-session.sh "$pkgdir/usr/local/bin/atmosphera-session"
+  install -Dm755 Scripts/bash/atmosphera-settings   "$pkgdir/usr/local/bin/atmosphera-settings"
+  install -Dm755 Scripts/bash/atmosphera-lock       "$pkgdir/usr/local/bin/atmosphera-lock"
 }
