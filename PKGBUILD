@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.10.beta3.r0.gff37f5b0e59
+pkgver=10.10.beta5.r0.g80e56eaeb70
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -123,6 +123,7 @@ optdepends=('benzene: for generating fusenes and benzenoids'
             'sagemath-giac: giac integration backend'
             'shared_meataxe: faster matrix arithmetic over finite fields'
             'sirocco: for computing the fundamental group of the complement of a plane curve'
+            'snappy-manifolds: for some additional knot methods'
             'topcom: to compute triangulations of point configurations')
 makedepends=(bliss
              boost
