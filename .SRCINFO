@@ -1,0 +1,19 @@
+pkgbase = python-mastodon-py
+	pkgdesc = Python wrapper for the Mastodon API
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/halcy/Mastodon.py
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-dateutil
+	depends = python-decorator
+	source = https://files.pythonhosted.org/packages/source/m/mastodon_py/mastodon_py-2.2.1.tar.gz
+	sha256sums = b52c85850272b4ff7a666b87c62432c5059f25c29fb485ffa1f608938744d8a4
+
+pkgname = python-mastodon-py
