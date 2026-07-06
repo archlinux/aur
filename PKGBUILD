@@ -7,7 +7,7 @@
 pkgname=xlibre-video-intel
 _pkgname=xf86-video-intel
 pkgver=25.0.0
-pkgrel=8
+pkgrel=9
 arch=(x86_64)
 url='https://github.com/X11Libre/xf86-video-intel'
 license=('MIT')
@@ -26,7 +26,7 @@ optdepends=('libxrandr: for intel-virtual-output'
             'libxtst: for intel-virtual-output'
             'libxss: for intel-virtual-output')
 replaces=('xf86-video-intel-uxa' 'xf86-video-intel-sna')
-provides=('xf86-video-intel-uxa' 'xf86-video-intel-sna')
+provides=('xf86-video-intel' 'xf86-video-intel-uxa' 'xf86-video-intel-sna')
 conflicts=('xf86-video-intel' 'X-ABI-VIDEODRV_VERSION<28' 'X-ABI-VIDEODRV_VERSION>=29'
            'xf86-video-intel-sna' 'xf86-video-intel-uxa' 'xf86-video-i810' 'xf86-video-intel-legacy')
 groups=('xlibre-drivers')

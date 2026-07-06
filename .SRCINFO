@@ -1,7 +1,7 @@
 pkgbase = xlibre-video-intel
 	pkgdesc = XLibre Intel i810/i830/i915/945G/G965+ video drivers
 	pkgver = 25.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/X11Libre/xf86-video-intel
 	install = xlibre-video-intel.install
 	arch = x86_64
