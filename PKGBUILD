@@ -1,7 +1,7 @@
 # Maintainer: RAprogramm <andrey.rozanov.vl@gmail.com>
 pkgname=twc-rs-bin
 _pkgname=twc-rs
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Fast CLI and interactive TUI dashboard for managing Timeweb Cloud infrastructure"
 arch=('x86_64')
@@ -21,7 +21,7 @@ backup=('usr/share/bash-completion/completions/twc-rs'
         'usr/share/nushell/vendor/autoload/twc-rs.nu')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
         "${_pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/RAprogramm/${_pkgname}/v${pkgver}/LICENSE")
-sha256sums=('6231b8b510a9f697363b424336ee0b7de03a75d31ad4880f28595177331e3afb' '5c0c4235b69837927ece7047dd9711553aa9c41c519ddda6e3dcdab443ca12f0')
+sha256sums=('96d1ab7653a795727d492172a23b35c25615a80f92d3c323f692b486f0f51394' '5c0c4235b69837927ece7047dd9711553aa9c41c519ddda6e3dcdab443ca12f0')
 
 package() {
     install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
