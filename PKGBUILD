@@ -4,7 +4,7 @@
 
 pkgname=claude-desktop-bin
 pkgver=1.18286.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Claude Desktop - Linux (unofficial, repackaged from the official Linux .deb)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
@@ -35,18 +35,8 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
             'sqlite: Project detection (detectedProjects) — without it, periodic ENOENT errors spam logs/main.log'
             'claude-code: optional pinned Claude Code CLI. NOT required — the app auto-downloads a checksum-verified CLI matching its required version. To force a system binary set CLAUDE_CODE_LOCAL_BINARY=/path/to/claude (npm i -g @anthropic-ai/claude-code)'
             'virtiofsd: Cowork agent workspace VM — shares $HOME into the guest'
-            'xdotool: Computer Use input (X11), cursor reading + XWayland fallback (Wayland), Quick Entry positioning'
-            'scrot: Computer Use screenshots (X11)'
-            'imagemagick: Computer Use screenshot fallback and crop (import/convert)'
-            'wmctrl: Computer Use running app detection (X11)'
-            'ydotool: Computer Use input automation (Wayland — GNOME, Sway, Hyprland; requires ydotoold daemon, v1.0+)'
-            'grim: Computer Use screenshots (Wayland/wlroots — Sway, Hyprland)'
-            'jq: Computer Use window queries on Sway (used with swaymsg)'
-            'glib2: Computer Use screenshots on GNOME Wayland (gdbus for D-Bus)'
-            'python-gobject: Portal screenshots on GNOME Wayland 46+ — no repeated permission dialogs'
-            'gst-plugin-pipewire: Portal screenshot PipeWire frame capture on GNOME Wayland 46+'
-            'gnome-screenshot: Computer Use screenshot fallback (GNOME)'
-            'hyprland: Quick Entry cursor positioning on Hyprland Wayland (hyprctl)'
+            'imagemagick: Computer Use screenshot crop via convert - ONLY for the residual KDE-without-kwin-bridge spectacle tier (bundled bridges cover X11/wlroots/GNOME/KDE 6.6+)'
+            'ydotool: Computer Use input on exotic Wayland compositors ONLY (non-wlroots, non-GNOME, non-KDE; requires ydotoold daemon, v1.0+) - wlroots/GNOME/KDE use the bundled bridges'
             'socat: Faster Quick Entry toggle via socket (~2ms vs ~25ms python3 — not required)'
             'gnome-keyring: credential storage backend for libsecret (KDE users: kwallet works too — upstream Recommends gnome-keyring | kwalletd)'
             'xdg-desktop-portal-gtk: portal backend for DEs without their own (GNOME/KDE ship xdg-desktop-portal-gnome/-kde) — file dialogs, screen sharing')
@@ -59,10 +49,10 @@ conflicts=('claude-desktop')
 install="$pkgname.install"
 # The pre-patched tarball already contains the official Electron runtime (under
 # electron/) and the patched app (under app/). No separate Electron zip source.
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.18286.0-2/claude-desktop-1.18286.0-linux.tar.gz")
-sha256sums_x86_64=('8d440d65bd2a6f5382b0443afe963af9bb9e20267d5136a2418a4bd992681541')
-source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.18286.0-2/claude-desktop-1.18286.0-linux-aarch64.tar.gz")
-sha256sums_aarch64=('521521c520f92f8db5036eda42a2b6ec71e7d0c83daf0527e33da6d3840ee699')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.18286.0-3/claude-desktop-1.18286.0-linux.tar.gz")
+sha256sums_x86_64=('58da35f1092c54a240617f51f9dd069ea90b0f6e04bbe44da69b579da9ca894b')
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.18286.0-3/claude-desktop-1.18286.0-linux-aarch64.tar.gz")
+sha256sums_aarch64=('ae67e073dcf1b221498cba46c4c94a78c0ba04924972cb36f274e1cb80f86342')
 options=('!strip' '!emptydirs')
 
 package() {
