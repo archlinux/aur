@@ -1,7 +1,7 @@
 # Maintainer: Panda <satodu@github.com>
 pkgname=bamboo-end-store-bin
-pkgver=1.1.4
-pkgrel=3
+pkgver=1.1.5
+pkgrel=1
 pkgdesc="Modern community store for EndeavourOS and Arch Linux built with NativePHP"
 arch=('x86_64')
 url="https://github.com/satodu/bamboo-end-store"
