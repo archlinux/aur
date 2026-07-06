@@ -1,3 +1,4 @@
 post_install() {
   echo ":: Run 'patch-editor' to start Patch"
+  echo ":: (uses --appimage-extract mode automatically)"
 }
