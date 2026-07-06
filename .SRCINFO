@@ -1,7 +1,7 @@
 pkgbase = zournal-git
 	pkgdesc = A journal app for detective games
 	pkgver = r59.a3e0713
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SimoneFelici/Zournal
 	arch = x86_64
 	arch = aarch64
