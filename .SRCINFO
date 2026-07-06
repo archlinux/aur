@@ -1,6 +1,6 @@
 pkgbase = rustiferin
 	pkgdesc = Rust ambient-lighting agent for Glow Worm Luciferin (Plasma Wayland + MQTT)
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/dalsh/rustiferin
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = rustiferin
 	optdepends = mosquitto: local MQTT broker if you do not have one elsewhere on the LAN
 	optdepends = gpu-screen-recorder: low-overhead KMS capture (set capture.backend=kms) for gaming without an FPS hit
 	options = !lto
-	source = rustiferin-0.4.0.tar.gz::https://github.com/dalsh/rustiferin/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = b0f4a71578714e083fe04b32ec1f49d1fafdf737e0ed48c34a4b4fed0665dd90
+	source = rustiferin-0.4.1.tar.gz::https://github.com/dalsh/rustiferin/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 4af39feaa3469da2a1d6fef9fb80ff5636309e98d8752585f821df55f6a70586
 
 pkgname = rustiferin
