@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=4.3.2
+Name=PokeFinder
+Comment=Cross Platform RNG Tool
+Exec=pokefinder
+Icon=pokefinder
+Terminal=false
+Type=Application
+Categories=Game;Utility;
