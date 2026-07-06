@@ -43,10 +43,10 @@ pkgver() {
     _hash="$(git rev-parse --short HEAD)"
 
     if [ -z "${_ver}" ]; then
-        error "Version could not be determined."
+        echo -n 'Version could not be determined.' >/dev/stderr
         return 1
     else
-        printf '%s' "${_ver}.r${_rev}.${_hash}"
+        echo -n "${_ver}.r${_rev}.${_hash}"
     fi
 }
 
