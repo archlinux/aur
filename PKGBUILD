@@ -2,7 +2,7 @@
 
 pkgname=rusbmux-git
 pkgver=0.1.0.r143.gdfef992
-pkgrel=3
+pkgrel=4
 pkgdesc="A usbmuxd replacement in pure Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/abdullah-albanna/rusbmux"
