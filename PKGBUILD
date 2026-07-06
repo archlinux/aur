@@ -8,17 +8,8 @@ arch=('x86_64' 'i386' 'aarch64')
 makedepends=('go')
 url="https://github.com/jorgerojas26/$pkgname"
 license=('MIT')
-source=("https://github.com/jorgerojas26/lazysql/archive/refs/tags/v$pkgver.tar.gz")
-# prepare() {
-# 	cd "$pkgname-$pkgver"
-# 	mkdir -p build/
-# }
-# prepare() {
-# 	mkdir -p "$srcdir/$pkgname-$pkgver"
-# 	tar -xzf "$srcdir/$pkgname-$pkgver-${CARCH}.tar.gz" -C "$srcdir/$pkgname-$pkgver" --strip-components=1
-# 	cd "$srcdir/$pkgname-$pkgver"
-# 	mkdir -p build/
-# }
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jorgerojas26/lazysql/archive/refs/tags/v$pkgver.tar.gz")
+
 prepare() {
 	cd "$pkgname-$pkgver"
 	mkdir -p build/
