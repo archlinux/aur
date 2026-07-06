@@ -2,7 +2,7 @@
 
 pkgname=python-soc-consistency
 _name=${pkgname#python-}
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Intelligent KiCad Bill of Materials generator with inventory matching"
 provides=(${pkgname})
@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/gahingwoo/SoC-Consistency"
 _pydeps=(
     click
-    # dataclasses-json
+    dataclasses-json
     openpyxl
     rich
     yaml
@@ -39,7 +39,7 @@ optdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('997cf057520890d20759530ff97d937f1ddca1abdc60cb017727278061587173')
+sha256sums=('74b5332e72f9d3be3c3c5c3912e4683b57bbf8eda2b8882ebf210a7cc1581df5')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx

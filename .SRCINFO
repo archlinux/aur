@@ -1,6 +1,6 @@
 pkgbase = python-soc-consistency
 	pkgdesc = Intelligent KiCad Bill of Materials generator with inventory matching
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/gahingwoo/SoC-Consistency
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = python-soc-consistency
 	depends = ipython
 	depends = python
 	depends = python-click
+	depends = python-dataclasses-json
 	depends = python-openpyxl
 	depends = python-rich
 	depends = python-yaml
@@ -22,7 +23,7 @@ pkgbase = python-soc-consistency
 	optdepends = rkdeveloptool-gui: RKDevelopTool GUI is a graphical front-end for Rockchip's official rkdeveloptool
 	provides = python-soc-consistency
 	conflicts = python-soc-consistency
-	source = soc-consistency::git+https://github.com/gahingwoo/SoC-Consistency.git#tag=v1.5.0
-	sha256sums = 997cf057520890d20759530ff97d937f1ddca1abdc60cb017727278061587173
+	source = soc-consistency::git+https://github.com/gahingwoo/SoC-Consistency.git#tag=v1.6.0
+	sha256sums = 74b5332e72f9d3be3c3c5c3912e4683b57bbf8eda2b8882ebf210a7cc1581df5
 
 pkgname = python-soc-consistency
