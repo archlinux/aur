@@ -1,7 +1,7 @@
 pkgbase = recaf-bin
 	pkgdesc = The modern Java bytecode editor
 	pkgver = 4.0.0alpha
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Col-E/Recaf
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = recaf-bin
 	conflicts = recaf
 	conflicts = recaf-git
 	replaces = recaf
-	noextract = recaf-4x-alpha-linux-86x64.jar
+	noextract = recaf-4x-alpha-linux-86-x64.jar
 	noextract = recaf-4x-alpha-linux-aarch64.jar
 	source_x86_64 = https://github.com/Col-E/Recaf/releases/download/4.0.0-alpha/recaf-4x-alpha-linux-86-x64.jar
 	source_x86_64 = https://raw.githubusercontent.com/Col-E/Recaf/4.0.0-alpha/recaf-ui/src/main/resources/icons/logo-full.png

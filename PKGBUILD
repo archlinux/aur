@@ -5,7 +5,7 @@ pkgname="${_pkgname}-bin"
 _pkgver=4.0.0-alpha
 _ghassetver=4x-alpha
 pkgver="$(printf '%s' "$_pkgver" | sed 's/-//')"
-pkgrel=2
+pkgrel=3
 pkgdesc="The modern Java bytecode editor"
 arch=(x86_64 aarch64)
 url="https://github.com/Col-E/Recaf"
@@ -39,7 +39,7 @@ sha256sums_aarch64=(
 )
 
 noextract=(
-    "$_pkgname-$_ghassetver-linux-86x64.jar"
+    "$_pkgname-$_ghassetver-linux-86-x64.jar"
     "$_pkgname-$_ghassetver-linux-aarch64.jar"
 )
 
