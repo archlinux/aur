@@ -1,13 +1,12 @@
 pkgbase = tweeny
 	pkgdesc = A modern C++ tweening library
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = http://mobius3.github.io/tweeny
 	arch = any
 	license = MIT
 	makedepends = cmake
-	source = tweeny-3.2.0.tar.gz::https://github.com/mobius3/tweeny/archive/v3.2.0.tar.gz
-	sha256sums = 2be7db9e0354da31f020b77474e2d547dbbaa8999a6a4bea4b388e6d31e4ef07
+	source = tweeny-3.2.1.tar.gz::https://github.com/mobius3/tweeny/archive/v3.2.1.tar.gz
+	sha256sums = 76be17b39b234b4a7c12a5d9497ebb3d52b817eaf4c3748d1d21cf7df76835ed
 
 pkgname = tweeny
-
