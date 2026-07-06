@@ -1,6 +1,6 @@
 pkgbase = dhis2-downloader-git
-	pkgdesc = An application that allows users to connect to a DHIS2 instance, select dimensions, periods, organization units and levels, and download respective data from DHIS2 servers.(Use system-wide electron)
-	pkgver = 0.5.3.r0.g73d19f8
+	pkgdesc = Facilitates downloading data from DHIS2 servers.(Use system-wide electron)
+	pkgver = 0.6.3.r0.g346368e
 	pkgrel = 1
 	url = https://github.com/worldbank/DHIS2-Downloader
 	arch = any
@@ -10,12 +10,13 @@ pkgbase = dhis2-downloader-git
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
-	depends = electron28
-	provides = dhis2-downloader=0.5.3
+	makedepends = jq
+	depends = electron40
+	provides = dhis2-downloader=0.6.3
 	conflicts = dhis2-downloader
 	source = dhis2-downloader.git::git+https://github.com/worldbank/DHIS2-Downloader
 	source = dhis2-downloader.sh
 	sha256sums = SKIP
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = dhis2-downloader-git
