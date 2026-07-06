@@ -1,6 +1,6 @@
 # Maintainer: vMohammad <vmohammad@vmohammad.dev>
 pkgname=framr-bin
-pkgver=0.12.3
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="A Wayland screenshot tool written in Rust (pre-compiled binary)"
 arch=('x86_64')
@@ -9,11 +9,11 @@ license=('AGPL3')
 provides=('framr')
 conflicts=('framr')
 options=('!lto')
-depends=('wayland' 'libxkbcommon' 'dbus' 'cairo' 'libxcursor' 'gstreamer' 'gst-plugins-base-libs' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'gst-plugins-bad' 'gst-plugin-rav1e')
+depends=('wayland' 'libxkbcommon' 'dbus' 'cairo' 'libxcursor' 'gstreamer' 'gst-plugins-base-libs' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'gst-plugins-bad' 'gst-plugin-rav1e' 'gst-plugin-pipewire')
 source=("$pkgname-$pkgver-bin::$url/releases/download/v$pkgver/framr"
         "framr-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ac7bb34d3eec8f4035264a1549d498c9317ef8af4f6fa5d1ab52c09b0f9d1619'
-            'c9f3498acc5f00bfd5998c0e3e60d0b89aab64777a2372c0cdda23477a6365e7')
+sha256sums=('e89cabe3d17a4843864cb71d31f271d69c7587dc6721ecd1b13e4457881092aa'
+            'c878573ee542e2795b4e07772689d91768a1c956df4f724fa5ac8f134c69e7fa')
 
 package() {
     install -Dm755 "$srcdir/$pkgname-$pkgver-bin" "$pkgdir/usr/bin/framr"
