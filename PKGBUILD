@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=flyline-bin
 _pkgname=flyline
-pkgver=1.2.6
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Bash plugin to replace readline for a modern line editing experience: syntax highlighting, agent integration, rich prompts, tooltips, fuzzy history search, and more'
 arch=(
@@ -40,10 +40,10 @@ source_x86_64=("libflyline-${pkgver}.tar.gz::$url/releases/download/v${pkgver}/l
 source_aarch64=("libflyline-${pkgver}.tar.gz::$url/releases/download/v${pkgver}/libflyline-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 source_riscv64=("libflyline-${pkgver}.tar.gz::$url/releases/download/v${pkgver}/libflyline-v${pkgver}-riscv64gc-unknown-linux-gnu.tar.gz")
 source_armv7=("libflyline-${pkgver}.tar.gz::$url/releases/download/v${pkgver}/libflyline-v${pkgver}-armv7-unknown-linux-gnueabihf.tar.gz")
-sha256sums_x86_64=('df37dc9259172db7d7a1fea364073bfd4de0dab1f5ccb7ee32969f6952bf13a4')
-sha256sums_aarch64=('e216e23ac6e0e5b23fd8ce1ce5b0de35b13c13a84daf119ebd80c3a5908d5ac9')
-sha256sums_riscv64=('4fc129cad0c2f0cc6e2d10d7e025b1e7282791cccdbde513e152d56cd2a1cb54')
-sha256sums_armv7=('1d422151d8cf14bf8c240ef5803c5cb917a73dea88754efb23052b97b0dde6db')
+sha256sums_x86_64=('21bb0a7a0e417496ff68ef8379cadc05d35e42aee357fc64ad9a8d95f69320f8')
+sha256sums_aarch64=('a889bc16ee31e5a6b85728b9b9d9d23d67f3f0fbb21bf0cae7e27890bd43c4cd')
+sha256sums_riscv64=('556140f18f314fa651e5b0f8a0153180f93e04487664528d09abb078759223cc')
+sha256sums_armv7=('2198b29ef182402b2fcf58acabe45575c2afad00a113d762d68cf51c6c97c154')
 
 package() {
     install -Dm0755 libflyline.so."${pkgver}" "$pkgdir/usr/lib/libflyline.so.${pkgver}"
