@@ -1,6 +1,6 @@
 pkgbase = kittenspaceagency-bin
 	pkgdesc = Kitten Space Agency - EXPERIMENTAL
-	pkgver = 2026.6.9.4750
+	pkgver = 2026.7.3.4826
 	pkgrel = 1
 	url = https://files.ksa-archive.net
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = kittenspaceagency-bin
 	depends = gcc-libs
 	depends = dotnet-runtime-10.0
 	options = !strip
-	source = setup_ksa_v2026.6.9.4750.tar.gz::https://files.ksa-archive.net/builds/4750/setup_ksa_v2026.6.9.4750.tar.gz
+	source = setup_ksa_v2026.7.3.4826.tar.gz::https://files.ksa-archive.net/builds/4826/setup_ksa_v2026.7.3.4826.tar.gz
 	source = kittenspaceagency.png
-	sha256sums = f54c41ea837e5f0a53e60227f9a8e991fe1b67fa2910e0f8cab2ef1b406f4c9b
+	sha256sums = 9b20b1a93ecaab0f75bd29cb83d3a4556bb3e9412870d3ac114516f29c2deb9b
 	sha256sums = 4e10dedc70614419a5a2354642556d15fe331565d0d94a4fa41ab04dd8b24486
 
 pkgname = kittenspaceagency-bin
