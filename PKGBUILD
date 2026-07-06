@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gtk3' 'libhandy' 'xapp' 'gtksourceview4' 'libsoup3' 'libgee' 'libmpc' 'mpfr')
 makedepends=('vala' 'meson' 'ninja')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('76a41ec26d29f1120145eab304fed071de84e0be42c7b14ee3458fee1682513d')
 
 build() {
   arch-meson "valuate-$pkgver" build

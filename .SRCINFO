@@ -17,6 +17,6 @@ pkgbase = valuate
 	depends = libmpc
 	depends = mpfr
 	source = https://github.com/Twilight0/valuate/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 76a41ec26d29f1120145eab304fed071de84e0be42c7b14ee3458fee1682513d
 
 pkgname = valuate
