@@ -1,6 +1,6 @@
 pkgbase = envdiff
 	pkgdesc = A sleek CLI tool to compare and sync .env files with templates
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/nekef/envdiff
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = envdiff
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = envdiff-0.1.0.tar.gz::https://github.com/nekef/envdiff/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = b45f68167065e797f34f4400a7eb76fb059da65fc42b953081360d2d0482c3c1
+	source = envdiff-0.2.0.tar.gz::https://github.com/nekef/envdiff/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 06e0f528536043b76a54a1aec14b66cd49f9e1bb34b9d6e14287ab52b254dc8a
 
 pkgname = envdiff
