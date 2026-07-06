@@ -1,6 +1,6 @@
 pkgbase = positron-ide-bin
 	pkgdesc = A next-generation data science IDE from Posit
-	pkgver = 2026.06.1.6
+	pkgver = 2026.07.0.365
 	pkgrel = 1
 	url = https://github.com/posit-dev/positron
 	arch = x86_64
@@ -40,13 +40,13 @@ pkgbase = positron-ide-bin
 	optdepends = webkit2gtk-4.1: Microsoft account authentication
 	provides = positron-ide
 	conflicts = positron-ide-devel-bin
-	noextract = positron-ide-bin-2026.06.1.6-x86_64.deb
-	noextract = positron-ide-bin-2026.06.1.6-aarch64.deb
+	noextract = positron-ide-bin-2026.07.0.365-x86_64.deb
+	noextract = positron-ide-bin-2026.07.0.365-aarch64.deb
 	options = !strip
 	options = !debug
-	source_x86_64 = positron-ide-bin-2026.06.1.6-x86_64.deb::https://cdn.posit.co/positron/releases/deb/x86_64/Positron-2026.06.1-6-x64.deb
-	sha256sums_x86_64 = 91354730d45b3e82e0d946be168e9469489403a3aa3f03405d7a60b6a6818e5b
-	source_aarch64 = positron-ide-bin-2026.06.1.6-aarch64.deb::https://cdn.posit.co/positron/releases/deb/arm64/Positron-2026.06.1-6-arm64.deb
-	sha256sums_aarch64 = 5dcf999583ea2a4899813be97caa3bf4b5c6843d2fa1a9c48fdf1a24eb1f8e8d
+	source_x86_64 = positron-ide-bin-2026.07.0.365-x86_64.deb::https://cdn.posit.co/positron/releases/deb/x86_64/Positron-2026.07.0-365-x64.deb
+	sha256sums_x86_64 = 776f951750501b33f292af29d4a43d5d6a7c8f3efd421db5b6d426c3e12d5867
+	source_aarch64 = positron-ide-bin-2026.07.0.365-aarch64.deb::https://cdn.posit.co/positron/releases/deb/arm64/Positron-2026.07.0-365-arm64.deb
+	sha256sums_aarch64 = 5311090e951e6de380446c42fd0f88d72eca71c8b667d163abd0b9d6fe3e8b10
 
 pkgname = positron-ide-bin
