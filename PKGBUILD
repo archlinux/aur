@@ -2,7 +2,7 @@
 pkgname=dpsprep-git
 _pkgbasename="${pkgname%-git}"
 pkgver=2.8.1.r257.a51ece7
-pkgrel=1.314
+pkgrel=2.314
 pkgdesc='A DjVu to PDF converter'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
@@ -31,10 +31,10 @@ pkgver() {
     _hash="$(git rev-parse --short HEAD)"
 
     if [ -z "${_ver}" ]; then
-        error "Version could not be determined."
+        echo -n 'Version could not be determined.' >/dev/stderr
         return 1
     else
-        printf '%s' "${_ver}.r${_rev}.${_hash}"
+        echo -n "${_ver}.r${_rev}.${_hash}"
     fi
 }
 

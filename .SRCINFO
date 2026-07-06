@@ -1,7 +1,7 @@
 pkgbase = dpsprep-git
 	pkgdesc = A DjVu to PDF converter
 	pkgver = 2.8.1.r257.a51ece7
-	pkgrel = 1.314
+	pkgrel = 2.314
 	url = https://github.com/kcroker/dpsprep
 	install = dpsprep-git.install
 	arch = any
