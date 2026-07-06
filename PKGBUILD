@@ -2,7 +2,7 @@
 pkgname=flyline-bin
 _pkgname=flyline
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Bash plugin to replace readline for a modern line editing experience: syntax highlighting, agent integration, rich prompts, tooltips, fuzzy history search, and more'
 arch=(
     'x86_64'
@@ -27,12 +27,12 @@ options=(
 provides=("libflyline.so.${pkgver}")
 conflicts=('flyline' 'flyline-git')
 source=(
-    "README.md::https://raw.githubusercontent.com/HalFrgrd/flyline/refs/tags/v${pkgver}/README.md"
-    "LICENSE-MIT::https://raw.githubusercontent.com/HalFrgrd/flyline/refs/tags/v${pkgver}/LICENSE-MIT"
-    "LICENSE-GPLv3::https://raw.githubusercontent.com/HalFrgrd/flyline/refs/tags/v${pkgver}/LICENSE-GPLv3"
+    "README-${pkgver}.md::https://raw.githubusercontent.com/HalFrgrd/flyline/refs/tags/v${pkgver}/README.md"
+    "LICENSE-MIT-${pkgver}::https://raw.githubusercontent.com/HalFrgrd/flyline/refs/tags/v${pkgver}/LICENSE-MIT"
+    "LICENSE-GPLv3-${pkgver}::https://raw.githubusercontent.com/HalFrgrd/flyline/refs/tags/v${pkgver}/LICENSE-GPLv3"
 )
 sha256sums=(
-    '8acb271c74443c2c6835a40acd4bb05a61e796f2eba664ed2e98d55457aad55e'
+    'e56a239d0989e33f07270279036528b83082c806c00aeb35f631c6950c77a393'
     'bb423e9f9dd6e3331b822117e164b147ea1a8223b3046c4ab58af70c2e1f1fac'
     '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
 )
@@ -48,8 +48,9 @@ sha256sums_armv7=('2198b29ef182402b2fcf58acabe45575c2afad00a113d762d68cf51c6c97c
 package() {
     install -Dm0755 libflyline.so."${pkgver}" "$pkgdir/usr/lib/libflyline.so.${pkgver}"
     ln -sf "libflyline.so.${pkgver}" "$pkgdir/usr/lib/libflyline.so"
-    install -Dm 644 LICENSE-MIT LICENSE-GPLv3 -t "$pkgdir/usr/share/licenses/$pkgname"
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+    install -Dm644 LICENSE-MIT-"${pkgver}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
+    install -Dm644 LICENSE-GPLv3-"${pkgver}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-GPLv3"
+    install -Dm644 README-"${pkgver}".md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
 # vim: ts=4 sw=4 et:
