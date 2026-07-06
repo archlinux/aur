@@ -1,13 +1,13 @@
 # Maintainer: Parcoil <parcoil@parcoil.com>
 pkgname=dotline
-pkgver=0.3.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A modern crosshair overlay"
 arch=('x86_64')
 url="https://github.com/Parcoil/dotline"
 license=('MIT')
 depends=('nodejs')
-makedepends=('pnpm')
+makedepends=('npm')
 conflicts=('dotline-bin' 'dotline-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Parcoil/dotline/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.sh"
@@ -25,9 +25,9 @@ prepare() {
 
 build() {
     cd "$pkgname-$pkgver"
-    pnpm install --frozen-lockfile
-    pnpm run build
-    pnpm exec electron-builder --linux --dir
+    npm i
+    npm run build
+    npx electron-builder --linux --dir
 }
 
 package() {
