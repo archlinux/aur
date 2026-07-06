@@ -1,11 +1,25 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 5.8.1 ➙ 6.0.0
-              : 2026-06-11 ➙ 2026-07-04
+ Tags         : 5.9.0 ➙ 6.1.0
+              : 2026-06-21 ➙ 2026-07-05
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-07-04   : 6.0.0
+ 2026-07-05   : 6.1.0
+              - **6.1.0**
+            
+                * Bug fix installing efi tools: typo in destination directory name.
+                * Improve build options
+                  - Compiler flag *-march=* now set by a build option: -Dcpu_level=x86-64-v3 (default is -march=x86-64)
+                  - Additional compiler/linker hardening
+                  - Release build now defaults to -Dhardened_export=true which uses -fvisibility=hidden
+                    Also speeds up shared lib load times.
+                  - Confirm project builds without any warnings using *-fanalyzer*
+                * efi-tool (always uses bls layout) - simplify the bls initialization.
+            
+                  Assisted-by: Claude (Anthropic) <https://claude.ai>
+
+ 2026-07-04   : 6.0.0, origin/master
               - **6.0.0**
             
                 * Happy 250th USA!
@@ -30,7 +44,7 @@
                   git diff --stat:
                   75 files changed, 1919 insertions(+), 2146 deletions(-)
 
- 2026-06-29   : 5.11.0, origin/master
+ 2026-06-29   : 5.11.0
               - **5.11.0**
             
                 * Remove *sd-boot* as a trigger in hooks - it is not needed.
@@ -137,14 +151,4 @@
                 * Building in chroot
                   - With above changes the tests in PKGBUILD check() should work in a chroot.
  2026-06-11   ⋯
-              - update Changelog
-
- 2026-06-11   : 5.8.1
-              - **5.8.1**
-            
-                * Man page update.
-                  Update sd-boot-find-boot-mounts man page with additional information about
-                  multiple ESP partitions and possible mismatch of nvram with current ESP as observed
-                  on some machines.
- 2026-06-09   ⋯
               - update Changelog

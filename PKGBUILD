@@ -10,7 +10,7 @@ pkgname='sd-boot'
 pkgdesc='Tools to install linux kernels via kernel-install from systemd'
 _gitname='sd-boot'
 
-pkgver="6.0.0"
+pkgver="6.1.0"
 pkgrel=1
 url="https://github.com/gene-git/sd-boot"
 
@@ -89,13 +89,15 @@ build() {
     export LDFLAGS=""
 
     /usr/bin/meson setup \
+            --reconfigure build/release \
             --prefix=/usr \
             --sysconfdir=/etc \
             --localstatedir=/var \
-            --buildtype=plain \
-            --reconfigure build/release \
             --buildtype=release \
-            -Ddefault_library=shared
+            -Ddefault_library=shared \
+            -Db_lto=true \
+            -Dhardened_export=true \
+            -Dcpu_level=x86-64-v3
 
     /usr/bin/meson compile -C build/release
 }
