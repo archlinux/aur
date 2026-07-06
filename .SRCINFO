@@ -1,6 +1,6 @@
 pkgbase = codegraph-rs-bin
 	pkgdesc = Local-first code intelligence: tree-sitter knowledge graph + MCP server (prebuilt binary)
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Cleboost/codegraph-rs
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = codegraph-rs-bin
 	conflicts = codegraph-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = codegraph-rs-bin-1.1.0-x86_64.tar.gz::https://github.com/Cleboost/codegraph-rs/releases/download/v1.1.0/codegraph-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 261bfbe80823af6e215c445635f13b37e02d4502d68d9204600618867686acab
-	source_aarch64 = codegraph-rs-bin-1.1.0-aarch64.tar.gz::https://github.com/Cleboost/codegraph-rs/releases/download/v1.1.0/codegraph-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 84df78bb0797dfb16fbf357477d9f2012f4d8bea2ce00bfa08b707f5f0e78433
+	source_x86_64 = codegraph-rs-bin-1.2.0-x86_64.tar.gz::https://github.com/Cleboost/codegraph-rs/releases/download/v1.2.0/codegraph-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 67aadb46dd0f4a971b5b62c7168a4647bc814ad029bd424b3beaf9fd4b8f2580
+	source_aarch64 = codegraph-rs-bin-1.2.0-aarch64.tar.gz::https://github.com/Cleboost/codegraph-rs/releases/download/v1.2.0/codegraph-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ece5ff1b32c243832a3e694732dae88e604a621d6166a6e9e52f130fbdd79e19
 
 pkgname = codegraph-rs-bin
