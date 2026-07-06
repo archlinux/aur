@@ -1,7 +1,7 @@
 pkgbase = xlibre-input-void
 	pkgdesc = XLibre void input driver
 	pkgver = 25.0.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/X11Libre/xf86-input-void
 	arch = x86_64
 	groups = xlibre-drivers

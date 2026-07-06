@@ -7,13 +7,14 @@
 pkgname=xlibre-input-void
 _pkgname=xf86-input-void
 pkgver=25.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc="XLibre void input driver"
 arch=(x86_64)
 license=('custom')
 url='https://github.com/X11Libre/xf86-input-void'
 depends=('glibc' 'xlibre-xserver')
 makedepends=('xlibre-xserver-devel' 'X-ABI-XINPUT_VERSION=26.0' 'xorgproto')
+provides=('xf86-input-void')
 conflicts=('xf86-input-void' 'X-ABI-XINPUT_VERSION<26' 'X-ABI-XINPUT_VERSION>=27')
 groups=('xlibre-drivers')
 source=("${url}/archive/refs/tags/xlibre-${_pkgname}-${pkgver}.tar.gz")
