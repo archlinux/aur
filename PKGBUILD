@@ -2,8 +2,8 @@
 
 _pkgbase=librempeg
 pkgname=librempeg-git
-pkgver=r126015.9ab8a05
-pkgrel=2
+pkgver=r127976.8bb810b
+pkgrel=3
 pkgdesc='A complete, cross-platform solution to record, convert, filter and stream audio and video. '
 arch=('x86_64')
 url='https://github.com/librempeg/librempeg'
@@ -34,6 +34,7 @@ depends=(
   libdrm
   libdvdnav
   libdvdread
+  libgcc
   libgl
   libiec61883
   libjxl
@@ -204,7 +205,8 @@ build() {
     --enable-shared \
     --enable-vapoursynth \
     --enable-version3 \
-    --enable-vulkan
+    --enable-vulkan \
+    --disable-decoder=magicyuv # pixelsmash
   make
   make tools/qt-faststart
   make doc/ff{mpeg,play}.1
@@ -218,7 +220,7 @@ package() {
     libdav1d.so
     libfreetype.so
     libharfbuzz.so
-    libjxl.so
+#   libjxl.so
     libopenmpt.so
     libplacebo.so
     librav1e.so
