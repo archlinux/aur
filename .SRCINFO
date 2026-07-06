@@ -1,6 +1,6 @@
 pkgbase = textimg
 	pkgdesc = Command to convert from color text (ANSI or 256) to image.
-	pkgver = 3.1.9
+	pkgver = 3.1.10
 	pkgrel = 1
 	url = https://github.com/jiro4989/textimg
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = textimg
 	optdepends = noto-fonts-cjk: Default font used in linux
 	provides = textimg
 	options = !strip
-	source = https://github.com/jiro4989/textimg/archive/v3.1.9.tar.gz
-	sha256sums = 464d254e07dae8e639ba7c87441b2d66c38b2aae78e6b3788d273b3ad466118c
+	source = textimg-3.1.10.tar.gz::https://github.com/jiro4989/textimg/archive/v3.1.10.tar.gz
+	sha256sums = c5e652a79a6300014e00270e824e6592074179f4c39af0d855e6118326112ed8
 
 pkgname = textimg
