@@ -1,7 +1,7 @@
 # Maintainer: Twilight0 <twilight0@vivaldi.net>
 
 pkgname=dory-git
-pkgver=6.7.3.r2637.55d6e824
+pkgver=6.7.4.r0
 pkgrel=1
 pkgdesc="A standalone Nemo fork named Dory for file picking and portal integration (git)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd dory
-  printf "6.7.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "6.7.4.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -47,10 +47,4 @@ build() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-  mkdir -p "$pkgdir/usr/share/nemo"
-  mkdir -p "$pkgdir/usr/share/applications"
-  ln -sf /usr/share/dory/layout-editor "$pkgdir/usr/share/nemo/layout-editor"
-  ln -sf dory "$pkgdir/usr/bin/nemo"
-  ln -sf dory-desktop "$pkgdir/usr/bin/nemo-desktop"
-  ln -sf dory-autostart.desktop "$pkgdir/usr/share/applications/nemo-autostart.desktop"
 }
