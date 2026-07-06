@@ -2,13 +2,14 @@
 
 pkgname=lazysql
 pkgver=0.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform TUI database management tool written in Go"
 arch=('x86_64' 'i386' 'aarch64')
 makedepends=('go')
 url="https://github.com/jorgerojas26/$pkgname"
 license=('MIT')
 depends=('glibc')
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jorgerojas26/lazysql/archive/refs/tags/v$pkgver.tar.gz")
 
 prepare() {
@@ -22,8 +23,8 @@ build() {
 	export CGO_CFLAGS="$CFLAGS"
 	export CGO_CXXFLAGS="$CXXFLAGS"
 	export CGO_LDFLAGS="$LDFLAGS"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -o build
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	go build -ldflags "-linkmode=external -buildid=" -o build
 }
 
 check() {

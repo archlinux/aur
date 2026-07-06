@@ -1,0 +1,4 @@
+[lazysql]
+source = "git"
+git = "https://github.com/jorgerojas26/lazysql.git"
+prefix = "v"
