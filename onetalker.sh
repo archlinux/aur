@@ -14,4 +14,4 @@ if [ "$1" = "--sync-assets" ]; then
   exit
 fi
 
-exec /opt/onetalker/onetalker "$@"
+exec /usr/lib/onetalker/onetalker "$@"

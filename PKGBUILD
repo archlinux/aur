@@ -28,10 +28,10 @@ source=(
   "onetalker.sh"
 )
 sha256sums=('4772262e870088fa0c6b0431870b831fc0eee5c6264ae96158906c1b3e0025d0'
-            'b5e568db1798812001a8c495b8049a5bb23a9434df933548c0e6762c49f1c9b3')
+            '01e25123d26a68289424b1a5640c5d220f1aed8d94c41392f1a2610cac4011f5')
 
 package() {
-  install -Dm755 "${_pkgname}" "${pkgdir}/opt/${_pkgname}/${_pkgname}"
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}"
   install -Dm755 onetalker.sh "${pkgdir}/usr/bin/${_pkgname}"
 
   cp -dr share "${pkgdir}/usr"
