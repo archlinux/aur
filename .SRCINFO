@@ -1,0 +1,23 @@
+pkgbase = bamboo-end-store-bin
+	pkgdesc = Modern community store for Bamboo OS, EndeavourOS and Arch Linux built with NativePHP
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/satodu/bamboo-end-store
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = hicolor-icon-theme
+	depends = gtk3
+	depends = nss
+	depends = libxcrypt-compat
+	provides = bamboo-end-store
+	conflicts = bamboo-end-store
+	options = !strip
+	source = bamboo-end-store-bin-1.1.4.AppImage::https://github.com/satodu/bamboo-end-store/releases/download/v1.1.4/Bamboo-End-Store-1.1.4.AppImage
+	source = bamboo-end-store.desktop
+	source = icon.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = bamboo-end-store-bin

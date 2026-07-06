@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Bamboo End Store
+Exec=bamboo-end-store %U
+Terminal=false
+Type=Application
+Icon=bamboo-end-store
+StartupWMClass=bamboo-end-store
+Comment=Modern community store for Bamboo OS, EndeavourOS and Arch Linux
+Categories=System;Settings;
+MimeType=x-scheme-handler/bamboo-end-store;
