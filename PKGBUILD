@@ -2,7 +2,7 @@
 
 pkgname=cinnamon-no-nemo
 pkgver=6.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Cinnamon desktop environment repackaged without Nemo dependency (uses Dory)"
 arch=('x86_64')
 url="https://github.com/linuxmint/cinnamon"
@@ -73,4 +73,13 @@ package() {
   install -Dm644 /dev/stdin "$pkgdir/etc/profile.d/gtk-no-portal.sh" << 'EOF'
 export GTK_USE_PORTAL=0
 EOF
+
+  # Patch cs_actions.py to use Dory layout editor instead of Nemo
+  sed -i \
+    -e 's|nemo-action-layout-editor|dory-action-layout-editor|' \
+    -e 's|nemo/layout-editor|dory/layout-editor|' \
+    -e 's|nemo_action_layout_editor|dory_action_layout_editor|' \
+    -e 's|NemoActionsOrganizer|DoryActionsOrganizer|' \
+    -e 's|\.local/share/nemo/actions|.local/share/dory/actions|' \
+    "$pkgdir/usr/share/cinnamon/cinnamon-settings/modules/cs_actions.py"
 }

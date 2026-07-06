@@ -1,7 +1,7 @@
 pkgbase = cinnamon-no-nemo
 	pkgdesc = Cinnamon desktop environment repackaged without Nemo dependency (uses Dory)
-	pkgver = 6.6.8-1
-	pkgrel = 1
+	pkgver = 6.6.8
+	pkgrel = 2
 	url = https://github.com/linuxmint/cinnamon
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -74,11 +74,14 @@ pkgbase = cinnamon-no-nemo
 	optdepends = system-config-printer: printer settings
 	optdepends = touchegg: touch gestures
 	optdepends = wget: cover download support in audio applet
+	provides = cinnamon=6.6.8
 	conflicts = cinnamon
 	conflicts = nemo
-	provides = cinnamon=6.6.8
+	options = !strip
+	options = !debug
+	options = emptydirs
 	backup = etc/xdg/cinnamon-session/sessions/cinnamon.session
-	source = https://archlinux.org/packages/extra/x86_64/cinnamon/download/
+	source = cinnamon-6.6.8-2-x86_64.pkg.tar.zst::https://archlinux.org/packages/extra/x86_64/cinnamon/download
 	source = cinnamon.session
 	sha256sums = SKIP
 	sha256sums = SKIP
