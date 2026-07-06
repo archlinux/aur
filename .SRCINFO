@@ -1,6 +1,6 @@
 pkgbase = tmux-tad
 	pkgdesc = Tmux session and group manager with a native TUI dashboard
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/ttpears/tad
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = tmux-tad
 	conflicts = tmux-tad-git
 	options = !debug
 	options = !strip
-	source = tad-0.15.0.tar.gz::https://github.com/ttpears/tad/archive/v0.15.0.tar.gz
-	sha256sums = b23d3fb02e93f7a9810f5087af7b8793af1b670c2a52ebae09a834bdc686f19b
+	source = tad-0.16.0.tar.gz::https://github.com/ttpears/tad/archive/v0.16.0.tar.gz
+	sha256sums = cbeb88165116751827e59a76982fdcd8617a6e699ab975f59be5c54268334dee
 
 pkgname = tmux-tad
