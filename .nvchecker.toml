@@ -1,0 +1,4 @@
+[ytubic]
+source = "git"
+git = "https://github.com/NUber-dev/YTubic.git"
+prefix = "v"
