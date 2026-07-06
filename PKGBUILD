@@ -2,8 +2,8 @@
 
 _pipname=vttLib
 pkgname=python-${_pipname,,}
-pkgver=0.12.0
-pkgrel=5
+pkgver=0.12.1
+pkgrel=1
 pkgdesc='Dump, merge and compile Visual TrueType data in UFO3 with FontTools'
 arch=(any)
 url="https://github.com/daltonmaag/$_pipname"
@@ -16,9 +16,9 @@ depends=(python
          "${_pydeps[@]/#/python-}")
 makedepends=(python-{build,installer,wheel}
              python-setuptools-scm)
-_archive=$_pipname-$pkgver
+_archive="${_pipname,,}-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pipname::1}/$_pipname/$_archive.tar.gz")
-sha256sums=('76c1422de87473a81679f55161027b60afdca838666dcb20e0bc380b01c7c216')
+sha256sums=('5af62dd2f41c0dcab90e36059f19de3699d74dd4a411c73a48cb6b8cb2ce5b26')
 
 build() {
 	cd "$_archive"
