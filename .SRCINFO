@@ -1,6 +1,6 @@
 pkgbase = cpa-manager-plus-bin
 	pkgdesc = Management panel and analytics server for CLIProxyAPI
-	pkgver = 1.10.2
+	pkgver = 1.10.3
 	pkgrel = 1
 	url = https://github.com/seakee/CPA-Manager-Plus
 	install = cpa-manager-plus-bin.install
@@ -17,9 +17,9 @@ pkgbase = cpa-manager-plus-bin
 	source = cpa-manager-plus.service
 	sha256sums = d3a612277579023580d18391c54c529029d21d4d971a4fe34b39c2b90a90d196
 	sha256sums = 6d31dd15f87463d748b400dc0f00a07ec0f700de213dc4eaaaabdbe2e4135f35
-	source_x86_64 = cpa-manager-plus-bin-1.10.2-x86_64.tar.gz::https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.10.2/cpa-manager-plus_v1.10.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 1683bd10b01f193dc5d17421cc807421f3b8c71c8fec90d5990f35ff7819859e
-	source_aarch64 = cpa-manager-plus-bin-1.10.2-aarch64.tar.gz::https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.10.2/cpa-manager-plus_v1.10.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = bc7a8c61a5066df7ca8b66ae64793a042ac3a379f70ec6815981bfeac00843f0
+	source_x86_64 = cpa-manager-plus-bin-1.10.3-x86_64.tar.gz::https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.10.3/cpa-manager-plus_v1.10.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8cf833909d2f8e1101450c8b96f429cbeb10dc6e450f435b1f1876282397fb92
+	source_aarch64 = cpa-manager-plus-bin-1.10.3-aarch64.tar.gz::https://github.com/seakee/CPA-Manager-Plus/releases/download/v1.10.3/cpa-manager-plus_v1.10.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2992b750a40969bec429e541b11591ed9d018fe42db02178767fe1dab29de318
 
 pkgname = cpa-manager-plus-bin
