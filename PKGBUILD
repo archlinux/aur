@@ -1,44 +1,40 @@
-# Context from Git mirror
-# Maintainer: Philipp Gesang <phg@phi-gamma.net>
+#!/bin/sh
+# Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=context-git
-pkgver=e2902f3
+pkgver=0.1.0.r14.g20e5870
 pkgrel=1
-pkgdesc="The ConTeXt typesetting system; sources from Git"
-arch=(any)
-url="http://pragma-ade.nl"
-license=('GPL2')
-makedepends=('git' 'luatex-svn')
-conflicts=(context-minimals-git)
-sha256sums=('SKIP')
-
-_git_repo=bitbucket.org/phg/context-mirror.git
-_git_branch=beta
-_git_checkout=context-mirror-git
-source=("${_git_checkout}::git+https://${_git_repo}#branch=${_git_branch}")
+pkgdesc="Standalone CLI and MCP server for deterministic repository context (git version)"
+arch=('x86_64' 'aarch64')
+url="https://github.com/timmo001/context"
+license=('Apache-2.0')
+keywords=('mcp' 'cli' 'context' 'git' 'agent')
+makedepends=('git' 'bun')
+depends=('glibc')
+provides=('context')
+conflicts=('context')
+options=('!strip')
+source=("$pkgname::git+https://github.com/timmo001/context.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd "${_git_checkout}"
-  # no tags in mirror repo
-  git describe --always
+  cd "$pkgname"
+  git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || printf "0.1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-  cd "${srcdir}"
-  if [[ ! -d "${_git_checkout}" ]]; then
-    msg "expected repo checkout at ${srcdir}/${_git_checkout}"
-    exit -1
-  fi
+  cd "$pkgname"
+  bun install --frozen-lockfile
+  bun run build
+  ./dist/context completions zsh >context.zsh
+  ./dist/context completions bash >context.bash
+  ./dist/context completions fish >context.fish
 }
 
 package() {
-  local subdirs=( bibtex colors context doc fonts metapost scripts tex web2c )
-  local dst="${pkgdir}/usr/share/${pkgname}"
-  install -dm755 "${dst}"
-
-  cd "${srcdir}"
-  for dir in ${subdirs[@]} ; do
-    cp -ra "${_git_checkout}/${dir}" "${dst}/"
-  done
+  cd "$srcdir/$pkgname"
+  install -Dm755 dist/context "$pkgdir/usr/bin/context"
+  install -Dm644 context.zsh "$pkgdir/usr/share/zsh/site-functions/_context"
+  install -Dm644 context.bash "$pkgdir/usr/share/bash-completion/completions/context"
+  install -Dm644 context.fish "$pkgdir/usr/share/fish/vendor_completions.d/context.fish"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim:ft=sh:et:sw=2:ts=8
