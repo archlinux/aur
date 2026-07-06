@@ -34,23 +34,8 @@ package() {
   cd rusbmux
 
   install -Dm755 "target/release/rusbmux" "$pkgdir/usr/bin/rusbmux"
-  install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/system/rusbmux.service" <<'EOF'
-[Unit]
-Description=rusbmux usbmuxd-compatible daemon
-Documentation=https://github.com/abdullah-albanna/rusbmux
-After=network.target systemd-udev-trigger.service
-Conflicts=usbmuxd.service
+  install -Dm644 "systemd/rusbmux.service" "$pkgdir/usr/lib/systemd/system/rusbmux.service"
 
-[Service]
-Type=simple
-ExecStart=/usr/bin/rusbmux
-Restart=on-failure
-RestartSec=2s
-StateDirectory=lockdown
-
-[Install]
-WantedBy=multi-user.target
-EOF
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
   install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
