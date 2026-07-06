@@ -1,6 +1,6 @@
 pkgbase = opencloud-bin
 	pkgdesc = Open source platform for file management, sharing & collaboration - upstream built binary
-	pkgver = 7.2.0
+	pkgver = 7.2.1
 	pkgrel = 1
 	url = https://opencloud.eu
 	install = opencloud.install
@@ -19,9 +19,9 @@ pkgbase = opencloud-bin
 	sha512sums = 62e701e9630aae725ef978198cce706ffdaa6be02ce509ef5b0051cc6b01a9e8374431a9b6fc5189432d3ecfe25edcbb4cc934d8908b1c1ae773e2f6aa55b62d
 	sha512sums = bd4c449165e0b314cde60437b30214286a0605ccf8ae233fa587d904c16f9225cb822d8636d182b11f91224aa42969f28fc99400b692c2265c47b51b49e2d188
 	sha512sums = db82871e0f1e57cf852d4ad10116505c62b46d5dab5c87a15628847cdde16331e09cc7968ed7e1ad0bed266ba30e22b48a9673e2a334e6c7b1be709fe6fd986a
-	source_aarch64 = opencloud-7.2.0-aarch64::https://github.com/opencloud-eu/opencloud/releases/download/v7.2.0/opencloud-7.2.0-linux-arm64
-	sha512sums_aarch64 = 119652251e40c7fa27211d6d1dc5ab69c2616008dbf4427086476672ee5a30f9f7f1102e5700371f971ca553072b8a6e0af05666488ddeb8cd41fb4ba0241bab
-	source_x86_64 = opencloud-7.2.0-x86_64::https://github.com/opencloud-eu/opencloud/releases/download/v7.2.0/opencloud-7.2.0-linux-amd64
-	sha512sums_x86_64 = 1af8df35d11f71f1bd52e0a2ae2ec2982f62543f98046051c3e8b657e9187eb2e1c997ceeb6ec33a1c4d97999a82676883785b6f0b9a0ab75fa2e8354f27519f
+	source_aarch64 = opencloud-7.2.1-aarch64::https://github.com/opencloud-eu/opencloud/releases/download/v7.2.1/opencloud-7.2.1-linux-arm64
+	sha512sums_aarch64 = 6c6d378e6d1446b27577de6fd555eb0376deb95cc878492b0814535c14512f00f3d3154e87d864e7431cb731535711873ec46a621a16f8197e2b8993a5febd44
+	source_x86_64 = opencloud-7.2.1-x86_64::https://github.com/opencloud-eu/opencloud/releases/download/v7.2.1/opencloud-7.2.1-linux-amd64
+	sha512sums_x86_64 = 836acbfdc0b20b15dca17d21d751b623c904a39b21a89e85614612baa78be1c45fbe0c1ffb4b5d9d63092f218d65b41c4433f59e073d8fb5d2cffa08c262e855
 
 pkgname = opencloud-bin
