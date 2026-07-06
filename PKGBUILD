@@ -3,7 +3,7 @@
 pkgname=ccgui-bin
 _pkgname=ccgui
 _appname=ccgui
-pkgver=0.6.1
+pkgver=0.6.6
 pkgrel=1
 pkgdesc='Next-generation VibeCoding editor (prebuilt binary)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
 )
 noextract=("${_appname}_${pkgver}_amd64.AppImage")
 sha256sums=(
-  'ba82074eb6a9891682c797b3ff0f5175dc3b1fad7070af215f3039696635c4ca'
+  'c9f4fa7c26acd376e16084a19ccb5e72a034b9bc962ee6a1939d2a86f6d1df78'
   '7ee7adbd9c6ba3df8397de73285eeac6d21f9692482c0dc92d5c3f11884dae49'
 )
 
