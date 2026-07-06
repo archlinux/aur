@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=webgal-terre-bin
 _appname=WebGAL_Terre
-pkgver=4.6.1
+pkgver=4.6.2
 _electronversion=29
 pkgrel=1
 pkgdesc="Galgame Editing. Redefined(Prebuilt version) / 视觉小说编辑，再进化"
@@ -37,27 +37,20 @@ source=(
 )
 sha256sums=('1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5'
             'd51d809af628cc8292bd430a4847adb4adefa9d4b0aee00a55a84ff9630e167c')
-sha256sums_aarch64=('eda8daa474636a94a9c29dcc51aff866d5e95a89c24a6c2a5e2a5e97042945f3')
-sha256sums_x86_64=('bf65c070629b2c90f3ddb3cffbe63e706a3eb69169693473a3a1e24c6c45e6c8')
+sha256sums_aarch64=('23983afb4497e4369b9b4c9d52ce0e7f77fb4640db99d7ef9c05436a0e79e9d2')
+sha256sums_x86_64=('4bf60391e0083ba3a46d11f0ab489cb432781e3736510998ebfd7ca3bcea7190')
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
 _check_electron_version() {
     echo "Verifying Electron version..."
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
-    local _main_exe=""
-    if [[ -n "${_app_dir}" ]]; then
-        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
-    fi
-    if [[ -n "${_main_exe}" ]]; then
-        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
-        if [[ -n "${_elec_ver}" ]]; then
-            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
-                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
-            else
-                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
-            fi
-        fi
-    else
-        echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
-    fi
+    local _main_exe=$(find "$(_get_app_dir)" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)
+    [[ -z "${_main_exe}" ]] && echo -e "\033[1;33mNote: Could not find Electron binary.\033[0m" && return
+    local _elec_ver=$(strings "${_main_exe}" | grep -oP 'Electron/\K[0-9]+' | head -1)
+    [[ -z "${_elec_ver}" ]] && echo -e "\033[1;33mNote: Could not determine Electron version.\033[0m" && return
+    [[ "${_elec_ver}" != "${_electronversion}" ]] &&
+        echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m" ||
+        echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
