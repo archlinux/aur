@@ -1,6 +1,6 @@
 pkgbase = serverstatus-git
 	pkgdesc = 云探针、多服务器探针、云监控、多服务器云监控
-	pkgver = 1.1.8.r0.ge0aae47
+	pkgver = 1.1.8.r4.ge8e9027
 	pkgrel = 1
 	url = https://github.com/cppla/ServerStatus
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = serverstatus-git
 	depends = python-requests
 	depends = python-psutil
 	depends = python-queuelib
-	optdepends = python-psutil
 	provides = serverstatus
 	conflicts = serverstatus
 	source = serverstatus-git::git+https://github.com/cppla/ServerStatus.git

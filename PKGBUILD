@@ -7,7 +7,7 @@ pkgname=(
     serverstatus-clients-psutil-git
     serverstatus-server-git
 )
-pkgver=1.1.8.r0.ge0aae47
+pkgver=1.1.8.r4.ge8e9027
 pkgrel=1
 groups=()
 pkgdesc="云探针、多服务器探针、云监控、多服务器云监控"
@@ -27,7 +27,7 @@ depends=(
     python-queuelib
 )
 makedepends=(git)
-optdepends=(python-psutil)
+optdepends=()
 source=("${pkgbase}::git+${url}.git")
 sha256sums=('SKIP')
 
