@@ -1,6 +1,6 @@
 # Maintainer: RamazanBerk20 <ramazanberksirin@protonmail.com>
 pkgname=mini-downloader
-pkgver=0.2.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="IDM/JDownloader-style download manager (aria2 + yt-dlp, browser capture)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=('yt-dlp: video/HLS/DASH grabbing')
 makedepends=('rust' 'cargo' 'nodejs' 'pnpm' 'git')
 conflicts=('mini-downloader-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b8a3ea420c3694be355cfab35805773f83255891769e6a6c6a523fd5d60e3e65')
+sha256sums=('8a2651a26be2313894bb1472ce7f1821c2dc06cdcc88d7e8b48857fdc756ef8f')
 
 build() {
   cd "$pkgname-$pkgver"
