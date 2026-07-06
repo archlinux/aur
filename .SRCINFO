@@ -1,13 +1,13 @@
 pkgbase = koffan
 	pkgdesc = Free self-hosted groceries list for families and shared households
-	pkgver = 2.12.0
+	pkgver = 2.12.2
 	pkgrel = 1
 	url = https://github.com/PanSalut/Koffan
 	arch = x86_64
 	license = LicenseRef-MIT-with-commons-clause
 	makedepends = go
 	backup = etc/koffan/koffan.env
-	source = https://github.com/PanSalut/Koffan/archive/refs/tags/v2.12.0.zip
+	source = https://github.com/PanSalut/Koffan/archive/refs/tags/v2.12.2.zip
 	source = koffan.sysusers
 	source = koffan.service
 	source = koffan.tmpfiles

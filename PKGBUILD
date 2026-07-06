@@ -1,7 +1,7 @@
 # Maintainer: Biggs <biggs at sergeantbiggs dot net>
 pkgname=koffan
 _pkgname=Koffan
-pkgver=2.12.0
+pkgver=2.12.2
 pkgrel=1
 pkgdesc='Free self-hosted groceries list for families and shared households'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("https://github.com/PanSalut/Koffan/archive/refs/tags/v${pkgver}.zip"
         "${pkgname}.tmpfiles"
         "${pkgname}.env")
 
-b2sums=('8af79bdfdfb245da720f490dad7d058bdeb65b14ba41120a5bb313311e7e78cfbc51cf1ec456f89bd7af4f136b3c9e6ba9b5e8b9eb72c292b18ff6983eaf537d'
+b2sums=('e9c63c712117946e139569e287b4cf7ee7a2ddb0730c51a74d37692585cb52d824629a8c694a3ff8adb69f4bf4a002228328918e4043ae8ea94e88ae0c2559cc'
         'cd144b523bfdade1364db9680cd6df5a698dc170660c8554b6efc0abc6f70d8fc1a035f3a2a7e33b2693063edab4c4fcabfb3cea3c2d0790b3c3648bc757183d'
         'd13adfaf736616f69a18e2c65a7894319551f5a13ebc3686c45a69c06cfc822027840108f162ea0be44de9ba94f105c442fda4131ac1d33784ae154d92358ee7'
         'facb9f40c2084a2fa9a04647d1b2c87daecd7cde808cf164000b54af32a3b739ea91099489178eb02c34a4a02d21c0d2b3fb71a62e9cbcb979b8500876115e7f'
