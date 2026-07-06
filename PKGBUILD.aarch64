@@ -1,7 +1,7 @@
 pkgbase=gcc-snapshot
 pkgname=({gcc,gcc-ga68,gcc-gcobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,gcc-libs,libasan,libatomic,libga68,libgcc,libgccjit,libgcobol,libgfortran,libgm2,libgo,libgomp,libgphobos,libitm,liblsan,libobjc,libstdc++,libtsan,libubsan,libvtv,lto-dump}-snapshot)
-pkgver=17.0.0.snapshot20260628
-_pkgver=17-20260628
+pkgver=17.0.0.snapshot20260705
+_pkgver=17-20260705
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
@@ -30,7 +30,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # Niels Möller <nisse@lysator.liu.se>
               A534BE3F83E241D918280AEB5831D11A0D4DB02A  # vincent@vinc17.net
               AD17A21EF8AED8F1CC02DBD9F7D5C9BF765C61E3) # Andres Enge <andreas.enge@inria.fr>
-sha256sums=('5b0fd6528cea49ae193964709a6d47a0276ff1fcf9726755d4aa6a4e58318a74'
+sha256sums=('86253d2e3189cfffb1c9afb7779b67e792b980ce7cf072323b137473896dfcdc'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
