@@ -10,7 +10,7 @@
 
 pkgname=nono-ai-bin
 _pkgname=nono
-pkgver=0.67.0
+pkgver=0.67.1
 pkgrel=1
 pkgdesc='Secure, kernel-enforced sandbox for AI agents, MCP servers and LLM workloads using Landlock (pre-built binary)'
 arch=('x86_64' 'aarch64')
@@ -36,8 +36,8 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/always-f
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/always-further/nono/releases/download/v${pkgver}/nono-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('7310e9389f298b89bb2f90ac4b6081ed5b6a1c4a7b8547df5d52966a57cb0929'
             '6faf919f0970c9c44956bb4df1c5d4c0b5c98d482b5a36699098bf47695b9d2e')
-sha256sums_x86_64=('93884b31fc2362b2ffea23c81961c8888fab74095fb2089a68e2b67d8d66b961')
-sha256sums_aarch64=('767a4f2e00bfad63c365aa003231b83c8730148c95f085d8992f4438bba84bcd')
+sha256sums_x86_64=('09646e1b8d3dae06ee5f9eda18669eae9096656778b7f2a77ddf31e57a9fe12d')
+sha256sums_aarch64=('2ae957e34256180b61ac8ebd098b4dcee02c4a1878ad73e123f7e7f052d696de')
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
