@@ -20,7 +20,7 @@ conflicts=(
 depends=(
     "electron${_electronversion}"
 )
-source_i686=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-arm64.AppImage")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}-linux-x64.AppImage")
 source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/SabakiHQ/Sabaki/v${pkgver}/LICENSE.md"

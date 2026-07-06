@@ -14,6 +14,7 @@ pkgbase = sabaki-bin
 	source = sabaki.sh
 	sha256sums = a5c065dbac7a3076b8ac3437280ac8d721cb52c6c6ff8d0e5509fa9111c81349
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	source_aarch64 = sabaki-0.60.0-aarch64.AppImage::https://github.com/SabakiHQ/Sabaki/releases/download/v0.60.0/sabaki-v0.60.0-linux-arm64.AppImage
 	source_x86_64 = sabaki-0.60.0-x86_64.AppImage::https://github.com/SabakiHQ/Sabaki/releases/download/v0.60.0/sabaki-v0.60.0-linux-x64.AppImage
 	sha256sums_x86_64 = 51105f5308b4f563ffd9284e17508fe2a52a3662457ed8a0c3f23308d4a026ff
 
