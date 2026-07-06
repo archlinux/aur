@@ -1,7 +1,7 @@
 # Maintainer: yuhldr <yuhldr@qq.com>
 
 pkgname=('python-symfc')
-pkgver=1.7.0
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="Generate symmetrized force constants"
 arch=('any')
@@ -10,6 +10,7 @@ license=('BSD')
 depends=("python-numpy" "spglib" "python-scipy")
 makedepends=(python
              python-setuptools
+             python-setuptools-scm
              python-build
              python-pip)
 

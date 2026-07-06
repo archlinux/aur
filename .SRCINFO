@@ -1,18 +1,19 @@
 pkgbase = python-symfc
 	pkgdesc = Generate symmetrized force constants
-	pkgver = 1.7.0
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/symfc/symfc
 	arch = any
 	license = BSD
 	makedepends = python
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-build
 	makedepends = python-pip
 	depends = python-numpy
 	depends = spglib
 	depends = python-scipy
-	source = git+https://github.com/symfc/symfc.git#tag=v1.7.0
+	source = git+https://github.com/symfc/symfc.git#tag=v1.7.3
 	sha256sums = SKIP
 
 pkgname = python-symfc
