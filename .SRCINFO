@@ -1,13 +1,13 @@
 pkgbase = gaze-gui-bin
 	pkgdesc = Binary wrapper for gaze-gui from Gundu Labs
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://gaze.gundulabs.com
 	arch = x86_64
 	license = custom
 	depends = gtk4
 	depends = libadwaita
-	source = gaze-gui-0.2.1-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-gui-0.2.1-1-x86_64.pkg.tar.zst
-	sha256sums = b90815a9174c6929380b83d6e8a97ffb4926e73e5e0ba05811bb6245e974273f
+	source = gaze-gui-0.2.2-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-gui-0.2.2-1-x86_64.pkg.tar.zst
+	sha256sums = 5b3d68ad6459deee6914208965c2927cd645e388481fa26db91e1b9dfb8a0ed5
 
 pkgname = gaze-gui-bin
