@@ -1,7 +1,8 @@
-# Maintainer: Philipp Joram <mail at phijor dot me>
+# Maintainer: Rodney van den Velden <rodney@dfagaming.nl>
+# Contributor: Philipp Joram <mail at phijor dot me>
 
 pkgname=pokefinder
-pkgver=4.2.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc='Cross platform Pokémon RNG tool'
 arch=(x86_64)
@@ -20,13 +21,11 @@ makedepends=(
 source=(
     "$pkgname-$pkgver::git+https://github.com/Admiral-Fish/PokeFinder.git#tag=v$pkgver"
     # Git submodules:
-    "git+https://gitlab.com/bzip2/bzip2"
-    "git+https://github.com/ColinDuquesnoy/QDarkStyleSheet"
+    "git+https://github.com/facebook/zstd"
     "git+https://github.com/Admiral-Fish/EncounterTableGenerator"
 )
 
-sha256sums=('1189f0c76d4df177568c5bd6362aed6f75a9c68d99d0632f152cea96895d19a6'
-            'SKIP'
+sha256sums=('d5a8635250acae55793b3e71140e608f2c4d68c0fe86bb51844a0945427d9aea'
             'SKIP'
             'SKIP')
 
@@ -35,18 +34,21 @@ prepare() {
 
     # Initialize git submodules
     git submodule init
-    git config submodule."External/bzip2".url "$srcdir/bzip2"
-    git config submodule."External/QDarkStyleSheet".url "$srcdir/QDarkStyleSheet"
-    git config submodule."Source/Core/Resources/EncounterTables".url "$srcdir/EncounterTableGenerator"
+    git config submodule."Core/External/ztsd".url "$srcdir/bzip2"
+    git config submodule."Core/Resources/EncounterTables".url "$srcdir/EncounterTableGenerator"
     git -c protocol.file.allow=always submodule update
+
+    mkdir build
 }
 
 build() {
-    cmake -B build -S "$srcdir/$pkgname-$pkgver" -DCMAKE_BUILD_TYPE=RELEASE -DTEST=ON
-    cmake --build build
+	cd "$srcdir/$pkgname-$pkgver/build"
+
+    # cmake -B build -S "$srcdir/$pkgname-$pkgver" -DCMAKE_BUILD_TYPE=RELEASE -DTEST=ON
+    cmake -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=RELEASE ../
+    cmake --build .
 }
 
 package() {
-    install -v -m755 -d "$pkgdir/usr/bin/"
-    install -v -m755 "build/Source/PokeFinder" "$pkgdir/usr/bin/pokefinder"
+    install -Dm755 "$srcdir/$pkgname-$pkgver/build/PokeFinder" "$pkgdir/usr/bin/pokefinder"
 }

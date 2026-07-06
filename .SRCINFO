@@ -1,6 +1,6 @@
 pkgbase = pokefinder
 	pkgdesc = Cross platform Pokémon RNG tool
-	pkgver = 4.2.1
+	pkgver = 4.3.2
 	pkgrel = 1
 	url = https://github.com/Admiral-Fish/PokeFinder
 	arch = x86_64
@@ -10,12 +10,10 @@ pkgbase = pokefinder
 	makedepends = python
 	makedepends = qt6-tools
 	depends = qt6-base
-	source = pokefinder-4.2.1::git+https://github.com/Admiral-Fish/PokeFinder.git#tag=v4.2.1
-	source = git+https://gitlab.com/bzip2/bzip2
-	source = git+https://github.com/ColinDuquesnoy/QDarkStyleSheet
+	source = pokefinder-4.3.2::git+https://github.com/Admiral-Fish/PokeFinder.git#tag=v4.3.2
+	source = git+https://github.com/facebook/zstd
 	source = git+https://github.com/Admiral-Fish/EncounterTableGenerator
-	sha256sums = 1189f0c76d4df177568c5bd6362aed6f75a9c68d99d0632f152cea96895d19a6
-	sha256sums = SKIP
+	sha256sums = d5a8635250acae55793b3e71140e608f2c4d68c0fe86bb51844a0945427d9aea
 	sha256sums = SKIP
 	sha256sums = SKIP
 
