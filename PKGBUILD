@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.16.0.r83.g9c03109
+pkgver=0.16.0.r109.gdb43acc
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (CLI)"
 arch=('aarch64' 'x86_64')
@@ -105,7 +105,7 @@ prepare() {
 
 build() {
 	local options=(
-		-B build
+		-B ../build
 		-D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
 		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
@@ -116,8 +116,9 @@ build() {
 		-D SIRIT_USE_SYSTEM_SPIRV_HEADERS=ON
 		-W no-dev
 	)
-	cmake "${options[@]}" $_pkgname
-	cmake --build build
+	cd $_pkgname
+	cmake "${options[@]}"
+	cmake --build ../build
 }
 
 package() {
@@ -128,6 +129,7 @@ package() {
 		'libfmt.so'
 		'libfreetype.so'
 		'libgcc_s.so'
+		'libminiupnpc.so'
 		'libopenal.so'
 		'libpng16.so'
 		'libstdc++.so'
