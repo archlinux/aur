@@ -1,17 +1,17 @@
 pkgbase = lyrs-bin
 	pkgdesc = Shows the lyrics of the track, playing on Spotify / YouTube Music.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.26.3
+	pkgver = 0.26.4
 	pkgrel = 1
 	url = https://github.com/organization/lyrs
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = asar
-	depends = electron37
-	provides = lyrs=0.26.3
+	depends = electron43
+	provides = lyrs=0.26.4
 	conflicts = lyrs
-	source = lyrs-0.26.3.rpm::https://github.com/organization/lyrs/releases/download/v0.26.3/lyrs-0.26.3.x86_64.rpm
+	source = lyrs-0.26.4.rpm::https://github.com/organization/lyrs/releases/download/v0.26.4/lyrs-0.26.4.x86_64.rpm
 	source = lyrs.sh
-	sha256sums = 8728f8d23a40b646d6139fd9b7ac3f4d605dd0881055b55c9a698d5ed0113bad
-	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
+	sha256sums = d19332ec8ad1981832716dfa58779a2dd06166bb146c8770343c117b7bc6c833
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = lyrs-bin
