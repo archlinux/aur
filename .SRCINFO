@@ -1,7 +1,7 @@
 pkgbase = librtmp0
 	pkgdesc = Toolkit for RTMP streams
-	pkgver = 2.4
-	pkgrel = 7
+	pkgver = 2.6
+	pkgrel = 1
 	url = https://rtmpdump.mplayerhq.hu/
 	arch = x86_64
 	license = GPL2

@@ -1,4 +1,5 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Damglador <damglador@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: xduugu <xduugu@gmx.com>
 # Contributor: Elis Hughes <elishughes@googlemail.com>
@@ -6,8 +7,8 @@
 # Contributor: Arthur Skowronek <eisensheng@mailbox.org>
 
 pkgname=librtmp0
-pkgver=2.4
-pkgrel=7
+pkgver=2.6
+pkgrel=1
 pkgdesc='Toolkit for RTMP streams'
 arch=('x86_64')
 url='https://rtmpdump.mplayerhq.hu/'
