@@ -3,7 +3,7 @@
 
 _pyname=corner
 pkgname=python-${_pyname}
-pkgver=2.2.3
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Make some beautiful corner plots of samples'
 url="https://corner.readthedocs.io"
@@ -16,13 +16,14 @@ makedepends=('python-hatchling'
 checkdepends=('python-pytest'
 #             'python-pytest-xdist'
               'python-arviz'
+              'python-arviz-base'
               'python-pandas'
               'python-scipy')
-optdepends=('python-scipy' 'python-arviz>=0.9')
+optdepends=('python-scipy' 'python-arviz>=0.9' 'python-arviz-base')
 license=('BSD-2-Clause')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('642a8e7df2365a93fa223428ab88f3d6')
+md5sums=('4e1968c36db2a6cd2005e3f564687434')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -33,9 +34,10 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    mkdir -p dist/lib
-    bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+#   mkdir -p dist/lib
+#   bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
+#   PYTHONPATH="dist/lib" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 # || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
+    PYTHONPATH="src" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package() {
