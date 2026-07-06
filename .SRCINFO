@@ -1,10 +1,10 @@
 pkgbase = patool-git
 	pkgdesc = portable command line archive file manager (git checkout)
-	pkgver = 4.0.1.r0.g1cdb692
+	pkgver = 4.0.5.r0.g3a65953
 	pkgrel = 1
 	url = https://wummel.github.io/patool/
 	arch = any
-	license = GPL-3-only
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
