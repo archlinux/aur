@@ -1,22 +1,27 @@
 pre_install() {
-    echo '[CAUTION] Before enabling PAM integration, keep a root shell open: sudo -i'
-    echo '[CAUTION] Use it to repair /etc/pam.d/* or /etc/howdy/config.ini if authentication breaks.'
+	echo '[CAUTION] Before enabling PAM integration, keep a root shell open: sudo -i'
+	echo '[CAUTION] Use it to repair /etc/pam.d/* or /etc/howdy/config.ini if authentication breaks.'
 }
 
 pre_upgrade() {
-    echo '[CAUTION] Keep a root shell open with sudo -i until sudo/login/lock-screen auth is tested.'
+	echo '[CAUTION] Keep a root shell open with sudo -i until sudo/login/lock-screen auth is tested.'
 }
 
 post_install() {
-    echo '[SETUP] 1. Download models: sudo howdy download-models'
-    echo '[SETUP] 2. Configure camera: sudo howdy config'
-    echo '[SETUP] 3. Test camera/auth: sudo howdy test'
-    echo '[SETUP] 4. Add a face model: sudo howdy add'
-    echo '[SETUP] 5. Add pam_howdy.so to the relevant service in /etc/pam.d/'
-    echo '[SETUP]    Example: auth sufficient pam_howdy.so workaround=native'
-    echo '[INFO] List video devices: v4l2-ctl --list-devices'
+	echo '[SETUP] 1. Download models: sudo howdy download-models'
+	echo '[SETUP] 2. Configure camera: sudo howdy config'
+	echo '[SETUP] 3. Test camera/auth: sudo howdy test'
+	echo '[SETUP] 4. Add a face model: sudo howdy add'
+	echo '[SETUP] 5. Add pam_howdy.so to the relevant service in /etc/pam.d/'
+	echo '[SETUP]    Example: auth sufficient pam_howdy.so workaround=native'
+	echo '[INFO] List video devices: v4l2-ctl --list-devices'
 }
 
 post_upgrade() {
-    echo '[POST-UPGRADE] If pacman created /etc/howdy/config.ini.pacnew, merge it into your current config.'
+	echo '[POST-UPGRADE] Remove obsolete bundled models:'
+	echo '[POST-UPGRADE]   sudo rm -f /usr/share/howdy/face_detection_yunet_2023mar_int8bq.onnx'
+	echo '[POST-UPGRADE]   sudo rm -f /usr/share/howdy/face_recognition_sface_2021dec_int8bq.onnx'
+	echo '[POST-UPGRADE] Download OpenCV 5-compatible models: sudo howdy download-models'
+	echo '[POST-UPGRADE] Re-enroll is recommended: sudo howdy clear && sudo howdy add'
+	echo '[POST-UPGRADE] If pacman created /etc/howdy/config.ini.pacnew, merge it into your current config.'
 }
