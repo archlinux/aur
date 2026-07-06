@@ -1,0 +1,21 @@
+pkgbase = ue4ss-zdev
+	pkgdesc = Lua/C++ mod loader DLLs for Win64 Unreal Engine 4/5 games (stable, with debug symbols and dev assets)
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://docs.ue4ss.com/
+	arch = any
+	license = MIT
+	depends = bash
+	optdepends = wine: run Windows Unreal Engine games under Wine/Proton to mod them
+	provides = ue4ss
+	conflicts = ue4ss
+	options = !strip
+	options = !debug
+	source = ue4ss-zdev-3.0.1.zip::https://github.com/UE4SS-RE/RE-UE4SS/releases/download/v3.0.1/zDEV-UE4SS_v3.0.1.zip
+	source = LICENSE::https://raw.githubusercontent.com/UE4SS-RE/RE-UE4SS/v3.0.1/LICENSE
+	source = ue4ss-install
+	sha256sums = af777d2af33fce4d520de35a8665e417376bcc530fec647778012ce6cdf51b2b
+	sha256sums = ddc030e25d0ea87aca4ae84c0ed3f868d69273c00c0c12ea1e26f1c6130f5d2e
+	sha256sums = d5ae8372ecdc7171c7a6179511bf9dd8fe1905a83eac03abf7ae1292fe780cb0
+
+pkgname = ue4ss-zdev

@@ -1,0 +1,15 @@
+# Ignore everything by default
+*
+
+# Whitelist the essentials
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+
+# Whitelist the deploy helper shipped in source=()
+!ue4ss-install
+
+# Whitelist auxiliary files
+!*.install
+!*.patch
+!*.diff
