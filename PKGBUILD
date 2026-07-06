@@ -38,7 +38,6 @@ makedepends=(
   'libwireplumber'
   'meson'
   'ninja'
-  'nlohmann-json'
   'pkgconf'
   'tomlplusplus'
   'wayland-protocols'
@@ -53,8 +52,7 @@ build() {
     -Db_ndebug=true \
     -Dtests=disabled \
     -Dsystem_md4c=true \
-    -Dsystem_tomlplusplus=true \
-    -Dsystem_nlohmann_json=true
+    -Dsystem_tomlplusplus=true
   meson compile -C build-release
 }
 

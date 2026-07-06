@@ -8,7 +8,6 @@ pkgbase = noctalia
 	makedepends = libwireplumber
 	makedepends = meson
 	makedepends = ninja
-	makedepends = nlohmann-json
 	makedepends = pkgconf
 	makedepends = tomlplusplus
 	makedepends = wayland-protocols
