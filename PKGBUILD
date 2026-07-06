@@ -1,10 +1,11 @@
 pkgname=nm-sidebar
-pkgver=0.5.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='GTK4/libadwaita NetworkManager sidebar for Wayland desktops'
 arch=('x86_64')
 url='https://github.com/Relz/network-manager-sidebar'
 license=('GPL-3.0-or-later')
+keywords=('gtk4' 'layer-shell' 'libadwaita' 'network-manager' 'networkmanager' 'sidebar' 'vpn' 'wayland' 'wifi')
 depends=(
   'glib2'
   'gtk4'
@@ -19,7 +20,7 @@ makedepends=(
   'pkgconf'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e01b62485fb3006ce469f11c9e107fbc53abd33b777ff78d20247fe235c240ff')
+sha256sums=('7eee2809171bf5213d5f7fc2b85d047bd7de2aef3243832a55eba82c040bbf9c')
 
 _github_repo='Relz/network-manager-sidebar'
 _source_name="${_github_repo##*/}-$pkgver"
