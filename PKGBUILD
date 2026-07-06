@@ -3,22 +3,24 @@
 
 pkgname=vscode-xdg-patch-hook
 pkgdesc='Pacman hooks that patch VSCode files for improved XDG experience (#15741, #214741)'
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 # https://github.com/microsoft/vscode/issues/15741
 # https://github.com/microsoft/vscode/issues/214741
 url='https://aur.archlinux.org/packages/vscode-xdg-patch-hook'
 arch=('any')
-license=('LicenseRef-None')
+license=('0BSD')
 install=${pkgname}.install
 depends=('sed' 'grep' 'pacman')
 optdepends=('code' 'vscode')
 options=(!strip !debug)
-source=('vscode-xdg-patch.hook' 'apply-xdg-patch.sh')
+source=('vscode-xdg-patch.hook' 'apply-xdg-patch.sh' 'LICENSE')
 b2sums=('0b88468f8a9fbf730f5b853c78651610c7c88875be2755b46b83012a497d5d48029ca746bcffbe460006401e9bb24c16ebd72c3776f2b5c9777dab7c6df10505'
-        '7b76279f6f35e69be0977e9fe803764b86e8a733bbe489c19a5e9d005dbfe6c25bd8a7d42126dcac3a61826ac9b91035bf9d41e5323e2e789ed7654b4ba61ab9')
+        '7b76279f6f35e69be0977e9fe803764b86e8a733bbe489c19a5e9d005dbfe6c25bd8a7d42126dcac3a61826ac9b91035bf9d41e5323e2e789ed7654b4ba61ab9'
+        'a29664104e1ee73ca0aee1d633e9095d92a57c92787f8d8740bdb7211ba3205782ed8677f539bdb8cae3dd75a3694be3132e185fa3fc4b3f401e1f88eb776101')
 
 package() {
   install -D -m644 -t "${pkgdir}/usr/share/libalpm/hooks" "${srcdir}/vscode-xdg-patch.hook"
+  install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${srcdir}/LICENSE"
   install -D -m755 -t "${pkgdir}/usr/lib/${pkgname}" "${srcdir}/apply-xdg-patch.sh"
 }

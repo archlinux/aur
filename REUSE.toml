@@ -1,0 +1,13 @@
+version = 1
+
+[[annotations]]
+path = [
+  "PKGBUILD",
+  "apply-xdg-patch.sh",
+  "vscode-xdg-patch.hook",
+  "vscode-xdg-patch-hook.install",
+  ".SRCINFO",
+  ".gitignore",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
