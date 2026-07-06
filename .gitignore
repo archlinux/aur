@@ -1,0 +1,6 @@
+*
+!hplip-pserror-gcc14.patch
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!Makefile
