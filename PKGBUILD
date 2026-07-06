@@ -16,7 +16,7 @@
 
 pkgname=fs2_open
 pkgver=26.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An enhancement of the FreeSpace 2 engine, need game data"
 url="https://scp.indiegames.us/"
 arch=(i686 x86_64)
