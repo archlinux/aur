@@ -1,6 +1,6 @@
 # Maintainer: Michal Walenciak <kicer86@gmail.com>
 pkgname=wacki
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc='Faithful SDL2 port of Wacki: Kosmiczna rozgrywka'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
     'wacki-data-notice.txt'
 )
 noextract=("${_data_archive}")
-sha256sums=('54c34d508fb0fb64b6548562023294b9b8e78985a3bf1005bdf91d78ba74aa13'
+sha256sums=('9b79a32b7559030f8f10538b9a670c9af85310628ae88429ec13e2e3cc88c054'
             'f023a91dd385226844e7336cc17cae9d5f931518357701892b20422d76cb7d0e'
             '1af86f9ae352bcb84359a412d95d30bb8da28ad207e6bfcdd20e164bfe8e07bb'
             '8a1afc87fa6d0aea08178c31dc416d04ed6f3baa02cbfd3f060685b002cd7485'
