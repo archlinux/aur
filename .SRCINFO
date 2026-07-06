@@ -8,6 +8,8 @@ pkgbase = bash-theft-auto
 	depends = bash
 	depends = mpg123
 	depends = bc
+	depends = zip
+	depends = unzip
 	source = bash-theft-auto-2.5.1.tar.gz::https://github.com/stuffbymax/Bash-Theft-Auto/archive/refs/tags/2.5.1.tar.gz
 	sha256sums = 477d4696f20602c6eae6b8aa7c225a3c30bb82220d7b154fa34c25f4e99aa835
 
