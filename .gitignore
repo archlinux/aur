@@ -1,4 +1,3 @@
-src/
-pkg/
-*.gz
-*.zst
+*
+!PKGBUILD
+!.SRCINFO

@@ -3,7 +3,7 @@
 # Contributor: Alex Forencich <alex@alexforencich.com>
 
 pkgname=python-pyvisa
-pkgver=1.16.1
+pkgver=1.16.2
 pkgrel=1
 pkgdesc="A Python package with bindings to the 'Virtual Instrument Software Architecture' VISA library"
 url="https://github.com/pyvisa/pyvisa"
@@ -13,7 +13,7 @@ depends=('python-legacy-cgi' 'python-typing_extensions' 'python-numpy' 'python-p
 optdepends=('python-pyvisa-py: Pure Python backend')
 makedepends=('python-build' 'python-installer' 'python-setuptools-scm')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('0f39c6c6d6d6d4f17ced4314075bc32bbadc0a8ddae431079f59ecd00f263850')
+sha256sums=('3e12abe3c7fdd9d26f81a5bc1cb489be2dfd8cf3f767008566b7fea555de4696')
 
 build() {
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
