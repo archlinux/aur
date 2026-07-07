@@ -1,6 +1,6 @@
 pkgbase = blackarch-xfce-theme-git
 	pkgdesc = BlackArch GTK, Xfwm4, and Plank themes for XFCE
-	pkgver = 0
+	pkgver = r15.996cb2d
 	pkgrel = 1
 	url = https://github.com/BlackArch/blackarch-config-xfce
 	arch = any

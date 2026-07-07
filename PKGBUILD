@@ -1,6 +1,6 @@
 # Maintainer: atvknox <atvknox@gmail.com>
 pkgname=blackarch-xfce-theme-git
-pkgver=0
+pkgver=r15.996cb2d
 pkgrel=1
 pkgdesc="BlackArch GTK, Xfwm4, and Plank themes for XFCE"
 license=('custom:unknown')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/blackarch-config-xfce"
-    printf "r%s.%s" \
+    printf "r%s.%s\n" \
         "$(git rev-list --count HEAD)" \
         "$(git rev-parse --short HEAD)"
 }
