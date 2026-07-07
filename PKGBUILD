@@ -4,7 +4,7 @@
 pkgname=ladybug-bin
 _gitname=ladybug
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="In-process property graph database management system (GDBMS) built for query speed and scalability"
 arch=('x86_64')
