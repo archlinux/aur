@@ -1,3 +1,13 @@
+v1.065:
+新增 Unicode 18.0 将引入的货币符号：⃂ (U+20C2)、⃃ (U+20C3)、⃄ (U+20C4)；
+新增汉字：𰹲𤟠𤟥𰛴𩿺𬸁𠹳𠆩𠆾𢒼𢓁𢓉𢓌𪛗𪛘𪛙𪛚𪛛𪛜𪛝𱝫𱝬𪻕。
+
+v1.064:
+新增 Unicode 18.0 引入的针对 CJK 汉字笔画的标准变体序列（SVS）
+![image](https://github.com/lxgw/LxgwNeoZhiSong/raw/main/documentation/images/uvs-stroke-sc.png)。
+新增寒武纪符号 Ꞓ (U+A792) 及其小写 ꞓ (U+A793)。
+Plus 调整字形：㔯。
+
 v1.063:
 新增以下组合字形：Ŋ̄ŋ̄Ŋ́ŋ́Ŋ̌ŋ̌Ŋ̀ŋ̀（即汉语拼音 ng 简写的四声标调）。
 
