@@ -12,11 +12,11 @@ pkgbase = wireproxy-awg-bin
 	provides = wireproxy
 	conflicts = wireproxy-awg
 	conflicts = wireproxy
-	source_x86_64 = https://github.com/artem-russkikh/wireproxy-awg/releases/download/v1.0.16/wireproxy_linux_amd64.tar.gz
+	source_x86_64 = wireproxy_1.0.16_x86_64.tar.gz::https://github.com/artem-russkikh/wireproxy-awg/releases/download/v1.0.16/wireproxy_linux_amd64.tar.gz
 	sha256sums_x86_64 = 5badb6b566f7ade3b5f94cbd233ff4437b3f5888d5a40f615fa87a8dedb36534
-	source_aarch64 = https://github.com/artem-russkikh/wireproxy-awg/releases/download/v1.0.16/wireproxy_linux_arm64.tar.gz
+	source_aarch64 = wireproxy_1.0.16_aarch64.tar.gz::https://github.com/artem-russkikh/wireproxy-awg/releases/download/v1.0.16/wireproxy_linux_arm64.tar.gz
 	sha256sums_aarch64 = 251b8526a0fde931adaa2852afdea860d662bfdebfef6ddba61756851024bf8e
-	source_armv7h = https://github.com/artem-russkikh/wireproxy-awg/releases/download/v1.0.16/wireproxy_linux_arm.tar.gz
+	source_armv7h = wireproxy_1.0.16_armv7h.tar.gz::https://github.com/artem-russkikh/wireproxy-awg/releases/download/v1.0.16/wireproxy_linux_arm.tar.gz
 	sha256sums_armv7h = ef980f4244b226726b6e2f9bb8f35373df0e04bb2598bd90d8138e908861c2e4
 
 pkgname = wireproxy-awg-bin
