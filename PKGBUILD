@@ -56,6 +56,8 @@ package() {
     "$pkgdir/usr/lib/systemd/system/vegad.service"
   install -Dm644 packaging/vegad/org.lyraos.Vega1.conf \
     "$pkgdir/usr/share/dbus-1/system.d/org.lyraos.Vega1.conf"
+  install -Dm644 packaging/vegad/org.lyraos.Vega1.service \
+    "$pkgdir/usr/share/dbus-1/system-services/org.lyraos.Vega1.service"
   install -Dm644 packaging/vegad/org.lyraos.vega.policy \
     "$pkgdir/usr/share/polkit-1/actions/org.lyraos.vega.policy"
   install -Dm644 packaging/vegad/sysusers.d/vega-build.conf \

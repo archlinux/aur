@@ -1,0 +1,5 @@
+[D-BUS Service]
+Name=org.lyraos.Vega1
+Exec=/usr/lib/vega/vegad
+User=root
+SystemdService=vegad.service
