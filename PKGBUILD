@@ -4,7 +4,7 @@
 
 pkgname=ffmpeg-full-llvm
 pkgver=8.1.2
-pkgrel=3
+pkgrel=4
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _whispercpp_ver='1.9.1'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac) — built with Clang and LLVM lld'
@@ -92,7 +92,7 @@ depends=(
     'openapv-llvm'
     'opencolorio'
     'opencore-amr'
-    'opencv4'
+    'opencv4-llvm'
     'openh264'
     'openjpeg2'
     'openvino'
