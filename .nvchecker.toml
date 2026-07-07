@@ -1,0 +1,3 @@
+[python-httpx-auth]
+source = "pypi"
+pypi = "httpx-auth"

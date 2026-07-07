@@ -1,0 +1,17 @@
+pkgbase = python-httpx-auth
+	pkgdesc = Authentication classes to be used with HTTPX
+	pkgver = 0.23.1
+	pkgrel = 1
+	url = https://github.com/Colin-b/httpx_auth
+	arch = any
+	license = MIT
+	makedepends = python-distribute
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-httpx
+	source = https://files.pythonhosted.org/packages/source/h/httpx-auth/httpx_auth-0.23.1.tar.gz
+	sha384sums = caaed529b03b44aebb53abc801c01f0380463ca13f122be8c90211f372ad1e5d043cc7c24a81596c82c00289eaba2198
+
+pkgname = python-httpx-auth
