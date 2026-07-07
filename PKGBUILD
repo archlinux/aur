@@ -1,5 +1,5 @@
 pkgname=msvc-wine-git
-pkgver=18.5.1.a99ef92
+pkgver=18.7.3.514f8ea
 pkgrel=1
 pkgdesc='MSVC compiler with CMake toolchains. Compiler work in Wine64'
 arch=('x86_64')
@@ -9,6 +9,7 @@ depends=(libunwind wine cmake bash) # libunwind need to work wine64
 makedepends=(git sed python python-simplejson python-six msitools)
 optdepends=(
 	'samba: Need to generate debug symbols (Debug and RelWithDebInfo build types)'
+	'wine-mono: Required for Wine-hosted .NET tools such as MSBuild.exe/MSBuildTaskHost.exe'
 	'lld: Required by MSVC+LLD CMake toolchains/vcpkg triplets (lld-link); workaround for link.exe hangs under Wine'
 	'llvm: Required by clang-cl and MSVC+LLD CMake toolchains/vcpkg triplets (llvm-lib, llvm-mt, llvm-rc); supports the link.exe-hang workaround under Wine'
 )

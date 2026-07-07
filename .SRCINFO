@@ -1,6 +1,6 @@
 pkgbase = msvc-wine-git
 	pkgdesc = MSVC compiler with CMake toolchains. Compiler work in Wine64
-	pkgver = 18.5.1.a99ef92
+	pkgver = 18.7.3.514f8ea
 	pkgrel = 1
 	url = https://github.com/mstorsjo/msvc-wine
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = msvc-wine-git
 	depends = cmake
 	depends = bash
 	optdepends = samba: Need to generate debug symbols (Debug and RelWithDebInfo build types)
+	optdepends = wine-mono: Required for Wine-hosted .NET tools such as MSBuild.exe/MSBuildTaskHost.exe
 	optdepends = lld: Required by MSVC+LLD CMake toolchains/vcpkg triplets (lld-link); workaround for link.exe hangs under Wine
 	optdepends = llvm: Required by clang-cl and MSVC+LLD CMake toolchains/vcpkg triplets (llvm-lib, llvm-mt, llvm-rc); supports the link.exe-hang workaround under Wine
 	provides = msvc-x86-cmake
