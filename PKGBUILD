@@ -9,7 +9,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='2509.r528.gaeac5f1a58'
+pkgver='2606.r121.g774200dcf4'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -18,17 +18,16 @@ url="https://$_mainpkgname.org"
 license=('GPL-2.0-or-later')
 depends=(
 	# Based on the repo package
-	'bluez-libs' 'bzip2' 'enet' 'gcc-libs' 'glibc' 'hidapi' 'libavcodec.so'
-	'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so' 'libgl'
-	'libsfml-network.so' 'libsfml-system.so' 'libspng.so' 'libswscale.so'
-	'libusb-1.0.so' 'libx11' 'libxi' 'libxrandr' 'lz4' 'lzo' 'mbedtls2' 'pugixml'
-	'sdl3' 'sfml' 'speexdsp' 'xxhash' 'xz' 'zstd'
+	'bluez-libs' 'bzip2' 'curl' 'enet' 'ffmpeg' 'fmt' 'glibc' 'glslang'
+	'hidapi' 'libgcc' 'libgl' 'libspng' 'libstdc++' 'libusb' 'libx11' 'libxi'
+	'libxrandr' 'lz4' 'lzo' 'pugixml' 'sdl3' 'sfml' 'speexdsp' 'systemd-libs'
+	'xxhash' 'xz' 'zlib' 'zlib-ng' 'zstd'
 	# Additional dependencies to replace vendored deps
-	'cubeb' 'glslang' 'libiconv' 'llvm' 'minizip-ng' 'zlib-ng'
+	'cubeb' 'libiconv' 'llvm' 'minizip-ng'
 )
 makedepends=(
-	'alsa-lib' 'cmake' 'git' 'libevdev' 'libminiupnpc.so' 'libpulse'
-	'libudev.so' 'ninja' 'python' 'qt6-base' 'qt6-svg' 'vulkan-headers'
+	'alsa-lib' 'cmake' 'git' 'libevdev' 'libpulse' 'miniupnpc' 'ninja' 'python'
+	'qt6-base' 'qt6-svg' 'vulkan-headers'
 )
 checkdepends=('gtest')
 optdepends=('pulseaudio: PulseAudio backend')
@@ -99,6 +98,7 @@ build() {
 	# CMAKE_SKIP_RPATH - do not add run time path information (the package in the repos does it, presumably because of reproducible builds)
 	# USE_SYSTEM_LIBS - we want to use system libs where possible
 	# USE_SYSTEM_LIBMGBA - the current version of mgba in the repos is not compatible with Dolphin
+	# USE_SYSTEM_MBEDTLS - the current version of mbedtls in the repos is not compatible with Dolphin
 	cmake -S '.' -B 'build/' -G Ninja \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_SKIP_RPATH=ON \
@@ -107,6 +107,7 @@ build() {
 		-DENABLE_AUTOUPDATE=OFF \
 		-DUSE_SYSTEM_LIBS=ON \
 		-DUSE_SYSTEM_LIBMGBA=OFF \
+		-DUSE_SYSTEM_MBEDTLS=OFF \
 		-Wno-dev
 	cmake --build 'build/'
 }
@@ -129,8 +130,8 @@ check() {
 package_dolphin-emu-git() {
 	pkgdesc="$pkgdesc$_pkgdescappend"
 	depends+=(
-		'alsa-lib' 'hicolor-icon-theme' 'libevdev' 'libminiupnpc.so' 'libpulse'
-		'libudev.so' 'qt6-base' 'qt6-svg'
+		'alsa-lib' 'hicolor-icon-theme' 'libevdev' 'libpulse' 'miniupnpc'
+		'qt6-base' 'qt6-svg'
 	)
 	provides=("$_mainpkgname")
 	conflicts=("$_mainpkgname")
@@ -138,6 +139,7 @@ package_dolphin-emu-git() {
 	cd "$srcdir/$_sourcedirectory/"
 	DESTDIR="$pkgdir" cmake --install 'build/'
 	install -Dm644 'Data/51-usb-device.rules' "$pkgdir/usr/lib/udev/rules.d/51-usb-device.rules"
+	install -Dm644 'build/Flatpak/org.DolphinEmu.dolphin-emu.metainfo.xml' "$pkgdir/usr/share/metainfo/org.DolphinEmu.dolphin-emu.metainfo.xml"
 
 	rm -rf "$pkgdir/usr/bin/$_noguipkgname"
 	rm -rf "$pkgdir/usr/bin/$_projectname-tool"
@@ -152,7 +154,7 @@ package_dolphin-emu-nogui-git() {
 	conflicts=("$_noguipkgname" "$_mainpkgname-cli")
 
 	cd "$srcdir/$_sourcedirectory/"
-	install -Dm755 "$srcdir/$_sourcedirectory/build/Binaries/$_noguipkgname" "$pkgdir/usr/bin/$_noguipkgname"
+	install -Dm755 "build/Binaries/$_noguipkgname" "$pkgdir/usr/bin/$_noguipkgname"
 	ln -sf "/usr/bin/$_noguipkgname" "$pkgdir/usr/bin/$_mainpkgname-cli"
 	install -Dm644 "Data/$_noguipkgname.6" "$pkgdir/usr/share/man/man6/$_noguipkgname.6"
 }
@@ -160,11 +162,11 @@ package_dolphin-emu-nogui-git() {
 package_dolphin-emu-tool-git() {
 	pkgdesc="$pkgdesc - CLI-based utility for functions such as managing disc images$_pkgdescappend"
 	depends+=(
-		'alsa-lib' 'libevdev' 'libpulse' 'libudev.so' 'qt6-base'
+		'alsa-lib' 'libevdev' 'libpulse' 'qt6-base'
 	)
 	provides=("$_toolpkgname")
 	conflicts=("$_toolpkgname")
 
 	cd "$srcdir/$_sourcedirectory/"
-	install -Dm755 "$srcdir/$_sourcedirectory/build/Binaries/$_projectname-tool" "$pkgdir/usr/bin/$_projectname-tool"
+	install -Dm755 "build/Binaries/$_projectname-tool" "$pkgdir/usr/bin/$_projectname-tool"
 }
