@@ -1,6 +1,6 @@
 pkgbase = komai
 	pkgdesc = A fine Matrix chat app you can get to love
-	pkgver = 2026.07.02.2
+	pkgver = 2026.07.07.1
 	pkgrel = 1
 	url = https://github.com/etkecc/komai
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = komai
 	optdepends = gst-plugin-qml6: Video calls support
 	optdepends = gst-plugin-pipewire: Screen sharing on Wayland (xdg-desktop-portal)
 	options = !lto
-	source = git+https://github.com/etkecc/komai.git#tag=v2026.07.02.2
+	source = git+https://github.com/etkecc/komai.git#tag=v2026.07.07.1
 	sha256sums = SKIP
 
 pkgname = komai
