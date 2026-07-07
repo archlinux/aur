@@ -1,0 +1,13 @@
+Only in lwt_log-1.1.2: _build
+Only in lwt_log-1.1.2: lwt_log.install
+diff -ura lwt_log-1.1.2.orig/src/unix/lwt_daemon.ml lwt_log-1.1.2/src/unix/lwt_daemon.ml
+--- lwt_log-1.1.2.orig/src/unix/lwt_daemon.ml	2022-08-29 16:58:15.000000000 +0200
++++ lwt_log-1.1.2/src/unix/lwt_daemon.ml	2026-07-07 11:15:35.627194839 +0200
+@@ -61,7 +61,7 @@
+   (* Exit the parent, and continue in the child: *)
+   if Lwt_unix.fork () > 0 then begin
+     (* Do not run exit hooks in the parent. *)
+-    Lwt_sequence.iter_node_l Lwt_sequence.remove Lwt_main.exit_hooks [@ocaml.warning "-3"];
++    Lwt_main.Exit_hooks.remove_all ();
+     exit 0
+   end;
