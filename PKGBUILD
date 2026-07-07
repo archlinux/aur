@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='vsd'
 pkgver='0.5.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Download video streams served over HTTP from websites, HLS and DASH playlists'
 arch=('x86_64' 'aarch64')
 url="https://github.com/clitic/$pkgname"
@@ -12,11 +12,11 @@ optdepends=(
 	'chromium: required for capture and collect subcommands'
 )
 options=('!lto')
-source=("$pkgname-$pkgver::git+$url#tag=vsd-$pkgver?signed")
+source=("$pkgname::git+$url#tag=vsd-$pkgver?signed")
 b2sums=('9ded7eb402cd431364b21340f8c2cd0f6d219d9a0d8c310b080c952e5167292edae9c41649ba2fa2b81d1ff4b545ef80a468de91ed80bdaa62704d5288ade664')
 validpgpkeys=('F3F06E548985227BA295D65CE01A8B4D6029DDA6') # Apoorv Sachan <clitic21@gmail.com> (https://github.com/clitic.gpg)
 
-_sourcedirectory="$pkgname-$pkgver"
+_sourcedirectory="$pkgname"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"

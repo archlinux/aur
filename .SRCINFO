@@ -1,7 +1,7 @@
 pkgbase = vsd
 	pkgdesc = Download video streams served over HTTP from websites, HLS and DASH playlists
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clitic/vsd
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = vsd
 	optdepends = ffmpeg: required for transmuxing and transcoding streams
 	optdepends = chromium: required for capture and collect subcommands
 	options = !lto
-	source = vsd-0.5.0::git+https://github.com/clitic/vsd#tag=vsd-0.5.0?signed
+	source = vsd::git+https://github.com/clitic/vsd#tag=vsd-0.5.0?signed
 	validpgpkeys = F3F06E548985227BA295D65CE01A8B4D6029DDA6
 	b2sums = 9ded7eb402cd431364b21340f8c2cd0f6d219d9a0d8c310b080c952e5167292edae9c41649ba2fa2b81d1ff4b545ef80a468de91ed80bdaa62704d5288ade664
 
