@@ -2,12 +2,12 @@
 # Contributor: David Wu <xdavidwuph@gmail.com>
 pkgname='lightspark'
 pkgver='0.9.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='An open source flash player implementation'
 arch=('x86_64' 'i486' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/$pkgname/$pkgname"
 license=('LGPL-3.0-only')
-depends=('cairo' 'curl' 'ffmpeg' 'freetype2' 'glew' 'glib2' 'libgl' 'libjpeg' 'libpng' 'pango' 'rtmpdump' 'sdl2' 'xz' 'zlib')
+depends=('cairo' 'curl' 'ffmpeg' 'freetype2' 'glew' 'glib2' 'libgl' 'libjpeg.so' 'libpng' 'pango' 'rtmpdump' 'sdl2' 'xz' 'zlib')
 makedepends=('cmake' 'nasm' 'ninja')
 conflicts=('pepper-flash')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz")

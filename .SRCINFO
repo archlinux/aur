@@ -1,7 +1,7 @@
 pkgbase = lightspark
 	pkgdesc = An open source flash player implementation
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lightspark/lightspark
 	arch = x86_64
 	arch = i486
@@ -20,7 +20,7 @@ pkgbase = lightspark
 	depends = glew
 	depends = glib2
 	depends = libgl
-	depends = libjpeg
+	depends = libjpeg.so
 	depends = libpng
 	depends = pango
 	depends = rtmpdump
