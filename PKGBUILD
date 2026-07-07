@@ -6,14 +6,14 @@
 pkgname=ocrodjvu-python3-git
 _pkgbasename='ocrodjvu'
 pkgver=0.14+46.r1457.7954aaa
-pkgrel=3.314
+pkgrel=4.314
 pkgdesc="OCR for DjVu (Python 3 fork)"
 arch=('any')
 url='https://github.com/FriedrichFroebel/ocrodjvu'
 license=('GPL-2.0-only')
 provides=(ocrodjvu)
 conflicts=(ocrodjvu)
-makedepends=(python-build python-installer python-wheel git coreutils make libxslt docbook-xml docbook-xsl python-setuptools)
+makedepends=(git python-build python-installer make libxslt docbook-xml docbook-xsl python-setuptools)
 checkdepends=(python-pillow python-pyicu python-html5lib tesseract tesseract-data-eng)
 depends=(python python-lxml python-djvulibre-python)
 optdepends=('python-html5lib: HTML parser; required for the ``--html5`` option'
