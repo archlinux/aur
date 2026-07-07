@@ -1,0 +1,52 @@
+[Unit]
+Description=Server Manager Portal
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=exec
+User=server-manager-portal
+Group=media
+UMask=002
+EnvironmentFile=/etc/conf.d/server-manager-portal
+Environment=NODE_ENV=production
+Environment=CONFIG_DIR=/var/lib/server-manager-portal/config
+WorkingDirectory=/usr/lib/server-manager-portal
+ExecStart=/usr/bin/node index.js
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+SyslogIdentifier=server-manager-portal
+StateDirectory=server-manager-portal
+ConfigurationDirectory=server-manager-portal
+RuntimeDirectory=server-manager-portal
+
+# Hardening
+CapabilityBoundingSet=CAP_CHOWN CAP_FSETID CAP_SETGID
+LockPersonality=true
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateUsers=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=read-only
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=invisible
+ProtectSystem=full
+RemoveIPC=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX AF_NETLINK
+RestrictNamespaces=true
+RestrictRealtime=true
+SocketBindAllow=ipv4:tcp
+SocketBindAllow=ipv6:tcp
+SocketBindDeny=any
+SystemCallArchitectures=native
+SystemCallErrorNumber=EPERM
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,3 @@
+u server-manager-portal - "Server Manager Portal" /var/lib/server-manager-portal
+g media
+m server-manager-portal media

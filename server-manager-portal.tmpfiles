@@ -1,0 +1,4 @@
+d /var/lib/server-manager-portal        755 server-manager-portal media
+d /var/lib/server-manager-portal/config 755 server-manager-portal media
+d /var/lib/server-manager-portal/backup 755 server-manager-portal media
+Z /var/lib/server-manager-portal        -   server-manager-portal media
