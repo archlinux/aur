@@ -1,0 +1,34 @@
+post_install() {
+  ldconfig
+  cat << 'MSG'
+
+  Cangjie Nightly toolchain installed.
+
+  - SDK root:        /opt/cangjie-nightly
+  - Compiler:        /usr/bin/cjc
+  - Package manager: /usr/bin/cjpm
+  - Debugger:        /usr/bin/cjdb
+
+  To set CANGJIE_HOME and extend PATH for interactive shells,
+  log out and back in, or run:
+
+      source /etc/profile.d/cangjie-nightly.sh
+
+  If you use VSCode, set the SDK path in extension settings to:
+
+      /opt/cangjie-nightly
+
+MSG
+}
+
+post_upgrade() {
+  ldconfig
+}
+
+pre_remove() {
+  :
+}
+
+post_remove() {
+  ldconfig
+}

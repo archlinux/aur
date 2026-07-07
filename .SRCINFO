@@ -1,0 +1,24 @@
+pkgbase = cangjie-nightly-bin
+	pkgdesc = Cangjie programming language toolchain - Nightly channel (binary distribution)
+	pkgver = 1.2.0_alpha.20260707020028
+	pkgrel = 1
+	url = https://cangjie-lang.cn
+	install = cangjie-nightly-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = curl
+	depends = glibc>=2.22
+	depends = gcc-libs
+	depends = openssl>=3.0.7
+	depends = zlib
+	optdepends = clang: for Cangjie-C interop
+	optdepends = lldb: for cjdb debugger
+	provides = cangjie
+	conflicts = cangjie
+	source_x86_64 = cangjie-sdk-linux-x64-1.2.0_alpha.20260707020028.tar.gz::https://api.gitcode.com/Cangjie/nightly_build/releases/download/1.2.0-alpha.20260707020028/cangjie-sdk-linux-x64-1.2.0-alpha.20260707020028.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = cangjie-sdk-linux-aarch64-1.2.0_alpha.20260707020028.tar.gz::https://api.gitcode.com/Cangjie/nightly_build/releases/download/1.2.0-alpha.20260707020028/cangjie-sdk-linux-aarch64-1.2.0-alpha.20260707020028.tar.gz
+	sha256sums_aarch64 = SKIP
+
+pkgname = cangjie-nightly-bin
