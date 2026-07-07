@@ -3,7 +3,7 @@
 # Contributor: Felix Schindler <ftschindler at aur dot archlinux>
 
 pkgname=webmin
-pkgver=2.610
+pkgver=2.651
 pkgrel=1
 pkgdesc="A web-based administration interface for Unix systems"
 arch=(any)
@@ -41,10 +41,11 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' \
 'etc/webmin/fetchmail/config' \
 'etc/webmin/filemin/config' \
 'etc/webmin/filter/config' \
-'etc/webmin/firewall/config' \
 'etc/webmin/firewall6/config' \
+'etc/webmin/firewall/config' \
 'etc/webmin/firewalld/config' \
 'etc/webmin/fsdump/config' \
+'etc/webmin/grub2/config' \
 'etc/webmin/heartbeat/config' \
 'etc/webmin/htaccess-htpasswd/config' \
 'etc/webmin/idmapd/config' \
@@ -55,11 +56,13 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' \
 'etc/webmin/iscsi-server/config' \
 'etc/webmin/iscsi-target/config' \
 'etc/webmin/iscsi-tgtd/config' \
+'etc/webmin/kea-dhcp/config' \
 'etc/webmin/krb5/config' \
 'etc/webmin/ldap-client/config' \
 'etc/webmin/ldap-server/config' \
 'etc/webmin/ldap-useradmin/config' \
 'etc/webmin/logrotate/config' \
+'etc/webmin/logviewer/config' \
 'etc/webmin/lpadmin/config' \
 'etc/webmin/lvm/config' \
 'etc/webmin/mailboxes/config' \
@@ -68,6 +71,8 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' \
 'etc/webmin/mount/config' \
 'etc/webmin/mysql/config' \
 'etc/webmin/net/config' \
+'etc/webmin/nftables/config' \
+'etc/webmin/nginx/config' \
 'etc/webmin/nis/config' \
 'etc/webmin/openslp/config' \
 'etc/webmin/pam/config' \
@@ -90,8 +95,8 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' \
 'etc/webmin/sendmail/config' \
 'etc/webmin/servers/config' \
 'etc/webmin/shell/config' \
-'etc/webmin/shorewall/config' \
 'etc/webmin/shorewall6/config' \
+'etc/webmin/shorewall/config' \
 'etc/webmin/smart-status/config' \
 'etc/webmin/spam/config' \
 'etc/webmin/squid/config' \
@@ -99,6 +104,7 @@ backup=('etc/webmin/miniserv.conf' 'etc/webmin/miniserv.users' \
 'etc/webmin/status/config' \
 'etc/webmin/stunnel/config' \
 'etc/webmin/syslog/config' \
+'etc/webmin/systemd/config' \
 'etc/webmin/system-status/config' \
 'etc/webmin/tcpwrappers/config' \
 'etc/webmin/time/config' \
@@ -130,7 +136,7 @@ prepare() {
     # remove modules that we do not support and stuff that is not needed
     rm -r {bsdexports,bsdfdisk,cpan,dfsadmin,format,hpuxexports,inetd,ipfilter,ipfw,package-updates,rbac,sgiexports,smf,software,syslog-ng,zones}
     rm mount/freebsd-mounts* mount/netbsd-mounts* mount/openbsd-mounts* mount/macos-mounts*
-    rm webmin-gentoo-init webmin-init webmin-daemon
+    rm webmin-openrc-init webmin-init webmin-daemon
 
     # dont allow webmin to update itself, must update via pacman
     rm {webmin,usermin}/{update.cgi,upgrade.cgi,edit_upgrade.cgi,install_mod.cgi,delete_mod.cgi,install_theme.cgi}
@@ -192,7 +198,7 @@ package() {
 }
 
 
-sha256sums=('a6fab4652fc1703ba413a31f5bfd17e50b98dba86cd8d5908ca6360541cbcb8f'
+sha256sums=('bf4f1090ede46f415303718f56e5aa93b403e4a6c74807a579bd830b409dacab'
             '3c27a52679607c73cdaa00c0735bea04cf66cf92ca4af6a7ac906eaed537b910'
             'cb860a79ea652f7c4f3c5ac2093bcfad5d29e2f246f10ef408e7909adc143174'
             '4e8268aa038434aa520d93c84ea2c6c54cc76fe279e9496debf4acad93cedc31'
