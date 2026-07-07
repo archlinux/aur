@@ -23,8 +23,8 @@ provides=('cangjie')
 conflicts=('cangjie')
 install=cangjie-nightly-bin.install
 
-source_x86_64=("cangjie-sdk-linux-x64-${pkgver}.tar.gz::https://api.gitcode.com/Cangjie/nightly_build/releases/download/${pkgver//_/-}/cangjie-sdk-linux-x64-${pkgver//_/-}.tar.gz")
-source_aarch64=("cangjie-sdk-linux-aarch64-${pkgver}.tar.gz::https://api.gitcode.com/Cangjie/nightly_build/releases/download/${pkgver//_/-}/cangjie-sdk-linux-aarch64-${pkgver//_/-}.tar.gz")
+source_x86_64=("cangjie-sdk-linux-x64-${pkgver}.tar.gz::https://gitcode.com/Cangjie/nightly_build/releases/download/${pkgver//_/-}/cangjie-sdk-linux-x64-${pkgver//_/-}.tar.gz")
+source_aarch64=("cangjie-sdk-linux-aarch64-${pkgver}.tar.gz::https://gitcode.com/Cangjie/nightly_build/releases/download/${pkgver//_/-}/cangjie-sdk-linux-aarch64-${pkgver//_/-}.tar.gz")
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 
