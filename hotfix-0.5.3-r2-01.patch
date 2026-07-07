@@ -1,0 +1,113 @@
+diff --git a/crates/mineral-config/src/lua/default.lua b/crates/mineral-config/src/lua/default.lua
+index e98c85d..3a0ef8d 100644
+--- a/crates/mineral-config/src/lua/default.lua
++++ b/crates/mineral-config/src/lua/default.lua
+@@ -8,7 +8,8 @@ local GB = MB * 1024
+ -- 字段注解(---@class / ---@field)的真相源在 lua/meta/config.lua,本表只 ---@type 引用。
+ return {
+   tui = {
+-    -- 主题色板(默认 Catppuccin Mocha);色值一律 "#rrggbb"。
++    -- 主题色板(默认 Catppuccin Mocha)。色值还可写 { ansi = "blue" }(终端 ANSI 槽,
++    -- 跟随终端配色)/ { reset = true }(终端默认),写法详见 docs/configuration.md。
+     theme = {
+       base = "#1e1e2e",
+       mantle = "#181825",
+@@ -25,7 +26,7 @@ return {
+       green = "#a6e3a1",
+       peach = "#fab387",
+       search_hit = { -- 搜索命中字符的样式(列表高亮)
+-        color = "peach", -- token 名(随主题联动)或 "#rrggbb"(固定色)
++        color = "peach", -- token 名(随主题联动)或具体色值("#rrggbb" / { ansi = ... } 等)
+         modifiers = { "bold", "underline", "italic" }, -- 叠加效果,数组整体替换;可选 bold/italic/underline/dim/reversed/crossed_out
+       },
+     },
+diff --git a/crates/mineral-config/src/lua/meta/config.lua b/crates/mineral-config/src/lua/meta/config.lua
+index 9703c39..5ad38a4 100644
+--- a/crates/mineral-config/src/lua/meta/config.lua
++++ b/crates/mineral-config/src/lua/meta/config.lua
+@@ -45,28 +45,44 @@
+ ---@field copy? mineral.CopyConfig 复制菜单(y)的自定义模板
+ ---@field window_title? mineral.WindowTitleConfig 窗口标题(终端任务栏 / tab 标题)
+ 
+----主题色板。色值一律 "#rrggbb" 六位十六进制(必须带 `#`,如 "#cba6f7");
+----默认主题是 Catppuccin Mocha,想整体换主题就把 14 个 token 全写一遍。
++-- 终端 ANSI 槽:具名或编号(0-15,数字下标即槽号)。
++---@alias mineral.AnsiSlot "black"|"red"|"green"|"yellow"|"blue"|"magenta"|"cyan"|"white"|"bright_black"|"bright_red"|"bright_green"|"bright_yellow"|"bright_blue"|"bright_magenta"|"bright_cyan"|"bright_white"|integer
++
++-- 具体颜色值,三种写法:
++-- - "#rrggbb" 简写(六位十六进制,必须带 `#`,如 "#cba6f7"),或等价的 { hex = "#rrggbb" };
++-- - { ansi = "blue" } / { ansi = 4 }:终端 16 个 ANSI 槽之一,
++--   实际 RGB 由终端当前配色决定——引用即"跟随终端";
++-- - { reset = true }:终端默认前景 / 背景(不指定具体色)。
++---@alias mineral.ColorValue string|{ hex: string }|{ ansi: mineral.AnsiSlot }|{ reset: boolean }
++
++-- 颜色引用:具体色值(写法同 mineral.ColorValue),或指向 14 个主题 token 之一
++-- (裸 token 名如 "peach",或 { token = "peach" },随主题联动)。
++---@alias mineral.ColorRef mineral.ColorValue|{ token: string }
++
++---主题色板。每个 token 是一个具体色值(固定色 / ANSI 槽 / 终端默认);token 之间
++---不能互相引用。默认主题是 Catppuccin Mocha,想整体换主题就把 14 个 token 全写一遍。
++---渐变端点(accent / 频谱 / 歌词)建议留固定色——ANSI 槽的真实 RGB 只有终端知道,
++---应用算不出中间色,渐变会退成两段硬切。
+ ---@class mineral.ThemeConfig
+----@field base? string "#rrggbb" 主背景
+----@field mantle? string "#rrggbb" 次背景:嵌套面板 / 浮层底
+----@field crust? string "#rrggbb" 第三背景:底部 transport 条
+----@field surface0? string "#rrggbb" 行选中背景 / 进度条轨道
+----@field surface1? string "#rrggbb" 未聚焦边框 / 分隔线
+----@field overlay? string "#rrggbb" 暗淡文本 / 二级标签
+----@field subtext? string "#rrggbb" 三级文本 / metadata
+----@field text? string "#rrggbb" 主文本
+----@field accent? string "#rrggbb" 主强调色:选中 / 聚焦边框 / 在播标记
+----@field accent_2? string "#rrggbb" 副强调色:进度条填充 / 频谱顶段
+----@field red? string "#rrggbb" 错误 / 删除 / love 标记
+----@field yellow? string "#rrggbb" 暂停指示
+----@field green? string "#rrggbb" 播放指示
+----@field peach? string "#rrggbb" 命令 / 搜索前缀
++---@field base? mineral.ColorValue 主背景
++---@field mantle? mineral.ColorValue 次背景:嵌套面板 / 浮层底
++---@field crust? mineral.ColorValue 第三背景:底部 transport 条
++---@field surface0? mineral.ColorValue 行选中背景 / 进度条轨道
++---@field surface1? mineral.ColorValue 未聚焦边框 / 分隔线
++---@field overlay? mineral.ColorValue 暗淡文本 / 二级标签
++---@field subtext? mineral.ColorValue 三级文本 / metadata
++---@field text? mineral.ColorValue 主文本
++---@field accent? mineral.ColorValue 主强调色:选中 / 聚焦边框 / 在播标记
++---@field accent_2? mineral.ColorValue 副强调色:进度条填充 / 频谱顶段
++---@field red? mineral.ColorValue 错误 / 删除 / love 标记
++---@field yellow? mineral.ColorValue 暂停指示
++---@field green? mineral.ColorValue 播放指示
++---@field peach? mineral.ColorValue 命令 / 搜索前缀
+ ---@field search_hit? mineral.SearchHitConfig 搜索命中字符的样式(列表高亮)
+ 
+ ---搜索命中字符的样式,在所在列的基础样式上叠加。
+ ---@class mineral.SearchHitConfig
+----@field color? string 高亮色:14 个 token 名之一(如 "peach",随主题联动)或 "#rrggbb"(固定色)
++---@field color? mineral.ColorRef 高亮色:14 个 token 名之一(如 "peach",随主题联动)或具体色值
+ ---@field modifiers? ("bold"|"italic"|"underline"|"dim"|"reversed"|"crossed_out")[] 叠加的字体效果;数组整体替换,空数组 = 仅变色;实际效果取决于终端支持
+ 
+ -- 键绑定值:单键字符串(如 "<Space>")或键数组(如 { "n", "j" });数组**整体替换**默认绑定。
+@@ -368,7 +384,7 @@
+ ---@field timeout_secs? integer 单次 API 请求超时,秒
+ ---@field proxy? string|false 代理 URL(如 "socks5://127.0.0.1:1080" 或 "http://..."),或 false = 不走代理;不接受 true
+ ---@field max_connections? integer 到网易云的最大并发连接数,0 = 不限
+----@field color? string 来源徽标色:token 名(随主题联动)或 "#rrggbb"(固定色)
++---@field color? mineral.ColorRef 来源徽标色:token 名(随主题联动)或具体色值
+ ---@field curate_playlists? mineral.CuratePlaylistsFn 该源歌单列表的呈现策展(过滤/改名/重排)
+ 
+ ---哔哩哔哩源的网络参数。
+@@ -376,12 +392,12 @@
+ ---@field timeout_secs? integer 单次 API 请求超时,秒
+ ---@field proxy? string|false 代理 URL(如 "socks5://127.0.0.1:1080" 或 "http://..."),或 false = 不走代理;不接受 true
+ ---@field max_connections? integer 到 B站的最大并发连接数,0 = 不限
+----@field color? string 来源徽标色:token 名或 "#rrggbb"(默认 B站品牌粉)
++---@field color? mineral.ColorRef 来源徽标色:token 名或具体色值(默认 B站品牌粉)
+ ---@field curate_playlists? mineral.CuratePlaylistsFn 该源歌单(= 收藏夹)列表的呈现策展(过滤/改名/重排)
+ 
+ ---Mineral 聚合源(全源收藏投影)。非网络源,可配徽标色 + 后台补 meta 节流参数。
+ ---@class mineral.MineralSection
+----@field color? string 来源徽标色:token 名或 "#rrggbb"(默认 EndSerenading 封面绿)
++---@field color? mineral.ColorRef 来源徽标色:token 名或具体色值(默认 EndSerenading 封面绿)
+ ---@field backfill? mineral.BackfillSection 后台补 meta 节流(逐步补全 sync 导入的缺 meta 收藏)
+ ---@field curate_playlists? mineral.CuratePlaylistsFn 该源歌单列表的呈现策展(过滤/改名/重排)
+ 
