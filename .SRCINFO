@@ -1,0 +1,20 @@
+pkgbase = python-py-walk
+	pkgdesc = Python library to filter filesystem paths based on gitignore-like patterns
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/pacha/py-walk/
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-sly
+	source = https://files.pythonhosted.org/packages/source/p/py_walk/py_walk-0.3.3.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/pacha/py-walk/0.3.3/LICENSE
+	sha256sums = a1b28d6079f27203fa3098b69a98572675b3ff5bd02286c43e6dacd66615f879
+	sha256sums = ef90bb92cffa5edf683614d95ca7a7bc51f6d7ef1f8e6c70fdfba4d7fd031455
+
+pkgname = python-py-walk
