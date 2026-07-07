@@ -3,7 +3,7 @@
 pkgname=ggml-cuda-git
 _pkgname=ggml
 pkgver=v0.15.3.r0.eced84c8
-pkgrel=1
+pkgrel=2
 pkgdesc="Tensor library for machine learning (with NVIDIA CUDA optimizations)"
 arch=(x86_64 aarch64)
 url='https://github.com/ggml-org/ggml'
