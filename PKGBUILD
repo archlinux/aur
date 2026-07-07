@@ -25,5 +25,6 @@ build() {
 
 package() {
     cd "dbd-1v1-timer-linux-$pkgver"
+    cd "dbd-1v1-timer-linux-$pkgver"
   DESTDIR="$pkgdir" meson install -C build
 }
