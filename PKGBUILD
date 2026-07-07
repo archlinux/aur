@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flextable
-_pkgver=0.9.12
+_pkgver=0.10.0
 pkgname=r-${_pkgname,,}
-pkgver=0.9.12
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Functions for Tabular Reporting'
 arch=('any')
@@ -46,7 +46,7 @@ optdepends=(
   r-xtable
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('22616568f89cffd6f513435b98f2b7b09cbd07e387b3211260a6b3e4a26ca0be')
+sha256sums=('2a8f53bd9408d4585fe7843286cea3e4079ed14cee85556dde3f5e3c9f20efc6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

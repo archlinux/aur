@@ -1,6 +1,6 @@
 pkgbase = r-flextable
 	pkgdesc = Functions for Tabular Reporting
-	pkgver = 0.9.12
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=flextable
 	arch = any
@@ -37,7 +37,7 @@ pkgbase = r-flextable
 	optdepends = r-testthat
 	optdepends = r-webshot2
 	optdepends = r-xtable
-	source = https://cran.r-project.org/src/contrib/flextable_0.9.12.tar.gz
-	sha256sums = 22616568f89cffd6f513435b98f2b7b09cbd07e387b3211260a6b3e4a26ca0be
+	source = https://cran.r-project.org/src/contrib/flextable_0.10.0.tar.gz
+	sha256sums = 2a8f53bd9408d4585fe7843286cea3e4079ed14cee85556dde3f5e3c9f20efc6
 
 pkgname = r-flextable
