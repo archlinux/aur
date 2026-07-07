@@ -1,7 +1,7 @@
 # Maintainer: Bink
 pkgname=memerist
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern meme editor built with GTK 4 and Libadwaita"
 arch=('x86_64' 'aarch64')
 url="https://github.com/vani-tty1/memerist"
@@ -9,6 +9,7 @@ license=('GPL-3.0-or-later')
 depends=(
   'glib2'
   'gtk4'
+  'imagemagick'
   'libadwaita'
   'libepoxy'
   'libjpeg'

@@ -1,7 +1,7 @@
 pkgbase = memerist
 	pkgdesc = A modern meme editor built with GTK 4 and Libadwaita
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vani-tty1/memerist
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,7 @@ pkgbase = memerist
 	makedepends = ninja
 	depends = glib2
 	depends = gtk4
+	depends = imagemagick
 	depends = libadwaita
 	depends = libepoxy
 	depends = libjpeg
