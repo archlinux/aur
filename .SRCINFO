@@ -1,6 +1,6 @@
 pkgbase = lab-safety-system-git
 	pkgdesc = Laboratory safety management information system
-	pkgver = 0.1.0.r28.g656e954
+	pkgver = 0.1.0.r48.g29a5cef
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/lab-safety-system
 	arch = x86_64
@@ -25,6 +25,8 @@ pkgbase = lab-safety-system-git
 	source = lab-safety-system.env
 	source = lab-safety-system.tmpfiles
 	source = lab-safety-system.sysusers
+	source = lab-safety-system-setup
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

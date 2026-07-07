@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ENV_FILE=/etc/lab-safety-system/lab-safety-system.env
+DB_NAME=${LAB_SAFETY_DB_NAME:-lab_safety}
+DB_USER=${LAB_SAFETY_DB_USER:-lab_safety}
+APP_PORT=${LAB_SAFETY_APP_PORT:-8080}
+
+if [ "$(id -u)" -ne 0 ]; then
+  echo "Run as root: sudo lab-safety-system-setup" >&2
+  exit 1
+fi
+
+case "$DB_NAME:$DB_USER" in
+  *[!A-Za-z0-9_:]* | :* | *: )
+    echo "LAB_SAFETY_DB_NAME and LAB_SAFETY_DB_USER may only contain letters, numbers, and underscores." >&2
+    exit 1
+    ;;
+esac
+
+random_secret() {
+  if command -v openssl >/dev/null 2>&1; then
+    openssl rand -hex 32
+  else
+    od -An -N32 -tx1 /dev/urandom | tr -d ' \n'
+    printf '\n'
+  fi
+}
+
+run_postgres() {
+  if command -v runuser >/dev/null 2>&1; then
+    runuser -u postgres -- "$@"
+  else
+    su -s /bin/sh postgres -c "$(printf '%q ' "$@")"
+  fi
+}
+
+systemctl enable --now postgresql.service
+
+DB_PASSWORD=$(random_secret)
+SECRET_KEY=$(random_secret)
+
+if ! run_postgres psql -tAc "select 1 from pg_roles where rolname='${DB_USER}'" | grep -q 1; then
+  run_postgres createuser "$DB_USER"
+fi
+
+run_postgres psql -v ON_ERROR_STOP=1 -c "alter role \"${DB_USER}\" with login password '${DB_PASSWORD}';"
+
+if ! run_postgres psql -tAc "select 1 from pg_database where datname='${DB_NAME}'" | grep -q 1; then
+  run_postgres createdb -O "$DB_USER" "$DB_NAME"
+fi
+
+install -d -m 0750 -o root -g lab-safety-system /etc/lab-safety-system
+install -d -m 0750 -o lab-safety-system -g lab-safety-system /var/lib/lab-safety-system/uploads
+
+cat > "$ENV_FILE" <<EOF
+APP_ENV=production
+APP_HOST=0.0.0.0
+APP_PORT=${APP_PORT}
+DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@127.0.0.1:5432/${DB_NAME}
+SECRET_KEY=${SECRET_KEY}
+TOKEN_TTL_SECONDS=3600
+STATIC_DIR=/usr/share/lab-safety-system/public
+UPLOAD_DIR=/var/lib/lab-safety-system/uploads
+SSO_ENABLED=false
+OAUTH_ENABLED=false
+SSO_LOGIN_URL=
+OAUTH_LOGIN_URL=
+FEDERATED_LOGIN_SECRET=
+WEBAUTHN_RP_ID=localhost
+WEBAUTHN_ORIGIN=http://localhost:${APP_PORT}
+CORS_ALLOWED_ORIGINS=
+EOF
+chmod 0640 "$ENV_FILE"
+chgrp lab-safety-system "$ENV_FILE"
+
+systemctl enable --now lab-safety-system.service
+
+cat <<EOF
+Lab Safety System is configured and starting.
+
+Check status:
+  systemctl status lab-safety-system.service
+
+Create the first system administrator:
+  sudo -u lab-safety-system lab-safety-system users bootstrap-super-admin --generate-password true
+
+Open:
+  http://localhost:${APP_PORT}
+EOF

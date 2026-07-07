@@ -1,6 +1,6 @@
 # Maintainer: lightjunction
 pkgname=lab-safety-system-git
-pkgver=0.1.0.r28.g656e954
+pkgver=0.1.0.r48.g29a5cef
 pkgrel=1
 pkgdesc="Laboratory safety management information system"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,9 @@ source=(
   "lab-safety-system.env"
   "lab-safety-system.tmpfiles"
   "lab-safety-system.sysusers"
+  "lab-safety-system-setup"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 options=('!lto' '!buildflags')
 
 pkgver() {
@@ -74,5 +75,7 @@ package() {
     "$pkgdir/usr/lib/tmpfiles.d/lab-safety-system.conf"
   install -Dm644 "$srcdir/lab-safety-system.sysusers" \
     "$pkgdir/usr/lib/sysusers.d/lab-safety-system.conf"
+  install -Dm755 "$srcdir/lab-safety-system-setup" \
+    "$pkgdir/usr/bin/lab-safety-system-setup"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
