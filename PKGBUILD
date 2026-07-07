@@ -1,4 +1,5 @@
 # Maintainer: dydydd <admin@lidream.cn>
+# Co-Maintainer: NyaKang <CoderKang@hotmail.com>
 
 pkgname=nyaterm-bin
 pkgver=1.1.10
