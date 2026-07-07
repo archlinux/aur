@@ -12,7 +12,7 @@ makedepends=('cargo' 'clang' 'pkgconf')
 # debug-package split to avoid a broken/empty xm3-ama-bridge-debug package.
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sizeak/xm3-ama-bridge/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d1f19a807bd7332a03d9df93a2928a4d9756a9561e88f1d1fbef22239fad9bbd')
+sha256sums=('8d592d2e9bb7cafd28df5ff0c8ddd130e3cc5403bae9112faa61ea0129dfcfb3')
 
 prepare() {
   cd "$pkgname-$pkgver"
