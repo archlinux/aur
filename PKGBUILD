@@ -1,7 +1,7 @@
 # Maintainer: Hec <hec@heccraft.com>
 
 pkgbase=linux-ogc
-_ogcver=7.1.2-ogc2
+_ogcver=7.1.2-ogc1
 pkgver=${_ogcver/-/.}
 pkgrel=1
 pkgdesc='Linux'
@@ -35,15 +35,15 @@ options=(
 )
 _srcname=linux-${pkgver%.ogc*}
 source=(
-  https://github.com/gregkh/linux/archive/refs/tags/v${pkgver%.*}.tar.gz
+  https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz
   https://github.com/OpenGamingCollective/linux/releases/download/v${_ogcver}/monolithic.patch
   config
 )
-sha256sums=('658e485cfae76b4e2427ceeb582835929988037ae054c6a991dcb1f7cff968a9'
-            'be3a0db18291a51b7a2f2217d6bca61da50ec8d25bf5915a29d11cc6e9e4e5a6'
+sha256sums=('37198c93727be247c9fb5309bb86cd5e496c61e5322cd8c4eca9476bb0b5883f'
+            '1d94c875e194d190df5d342a1ce009321de961f7a461a2d363da8966d21401b6'
             '033737f1a28129c04e0bc124a8d3d01d7687a8ca2fdcc0e14ddbcaa9426c0150')
-b2sums=('b824d6764533495ad7dca2c20ce553ff8ca6e03bb568ee000b8a8c5851873c4af28e600575cc972d235873192570d7e0eda0042dfd501c3d4a2c181176347afd'
-        'd6a3b26ded8c1037edb78925f3926cfce8ada5cad8091d95bdfb9aa540794e8377065fe1c7810894c75c6c39bf5c6e377a6ca41c8680b539ec65592364004364'
+b2sums=('0d6e9ff535af085190da7df50887b20f395cd4d6befb7158c9993bf77fe92459a9982877ce944ca522192daa5a54c952c3d368def04b579796ba7109a972453b'
+        'ff942faa9e727ebb8eefbef623d0fdb161621b221d7b910c4b3529af7bf4730db6096485293eeb980f8b26a6e4ae7982ee10fb725191b014c9d7853cb4ac1bb0'
         '5ecd630b75bd04f66b0db99d9e0d0bc326b9644bc661b4283136dda11c4bb3420c9611c10b51960432e6f35869b906caae75bfe1bc9345d556bd58c9120712d4')
 
 export KBUILD_BUILD_HOST=archlinux
