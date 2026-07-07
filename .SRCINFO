@@ -1,6 +1,6 @@
 pkgbase = opencode-bin
 	pkgdesc = The AI coding agent built for the terminal.
-	pkgver = 1.17.14
+	pkgver = 1.17.15
 	pkgrel = 1
 	url = https://github.com/anomalyco/opencode
 	arch = aarch64
@@ -11,9 +11,9 @@ pkgbase = opencode-bin
 	conflicts = opencode
 	options = !debug
 	options = !strip
-	source_aarch64 = opencode-bin_1.17.14_aarch64.tar.gz::https://github.com/anomalyco/opencode/releases/download/v1.17.14/opencode-linux-arm64.tar.gz
-	sha256sums_aarch64 = 40b743178d7cf493a8c8ed43648b1a31aaeeaa0a53ebc39944523ec806694d5f
-	source_x86_64 = opencode-bin_1.17.14_x86_64.tar.gz::https://github.com/anomalyco/opencode/releases/download/v1.17.14/opencode-linux-x64.tar.gz
-	sha256sums_x86_64 = 38a870d0951a73f640eae7db1729364bc4e3a8405f7f3e1ded4994f7cd53ed2e
+	source_aarch64 = opencode-bin_1.17.15_aarch64.tar.gz::https://github.com/anomalyco/opencode/releases/download/v1.17.15/opencode-linux-arm64.tar.gz
+	sha256sums_aarch64 = 23aad358a8489cda9e9c46cde7ce87b2fc4847203ddb4d2179be34215ad6eeae
+	source_x86_64 = opencode-bin_1.17.15_x86_64.tar.gz::https://github.com/anomalyco/opencode/releases/download/v1.17.15/opencode-linux-x64.tar.gz
+	sha256sums_x86_64 = 0e1353771192c7d2dc0c610d61ff70668bb8a4420dc4d9e35cfd33d7245f3e67
 
 pkgname = opencode-bin
