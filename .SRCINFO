@@ -1,0 +1,19 @@
+pkgbase = mogui
+	pkgdesc = Python package for querying Source and GoldSource servers
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/cea-hpc/mogui
+	arch = any
+	license = GPL-2.0-or-later AND CC-BY-SA-3.0
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = environment-modules
+	depends = python
+	depends = python-pyqt5
+	source = https://files.pythonhosted.org/packages/source/m/modules-gui/modules-gui-0.2.2.tar.gz
+	sha256sums = 9b0b1a5aecff5db30e214d0e193cb2db6f35f89c672adf0267d00f9967512cc1
+
+pkgname = mogui

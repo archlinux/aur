@@ -1,0 +1,5 @@
+[mogui]
+source = "github"
+github = "cea-hpc/mogui"
+prefix = "v"
+use_max_tag = true
