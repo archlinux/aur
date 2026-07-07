@@ -1,6 +1,6 @@
 pkgbase = wxwidgets-gtk3-unstable
 	pkgdesc = GTK+3 implementation of wxWidgets API for GUI
-	pkgver = 3.3.2
+	pkgver = 3.3.3
 	pkgrel = 1
 	url = https://github.com/wxWidgets/wxWidgets
 	arch = x86_64
@@ -34,10 +34,11 @@ pkgbase = wxwidgets-gtk3-unstable
 	depends = libxtst
 	depends = libx11
 	depends = libxkbcommon
+	depends = libsm
 	depends = sdl2-compat
 	depends = curl
 	depends = bash
-	source = https://github.com/wxWidgets/wxWidgets/releases/download/v3.3.2/wxWidgets-3.3.2.tar.bz2
-	sha256sums = 50a28cb668de47b0e006cd6ebed8cf4f76c1cac6116fb3c978c44478219103f2
+	source = https://github.com/wxWidgets/wxWidgets/releases/download/v3.3.3/wxWidgets-3.3.3.tar.bz2
+	sha256sums = 0d55c1b9dadb31536c922b846194072aaf608641cd7e314a3b983996d1a30ccd
 
 pkgname = wxwidgets-gtk3-unstable
