@@ -1,13 +1,13 @@
 pkgbase = blender-lts-bin
 	pkgdesc = LTS blender version
-	pkgver = 4.5.10
+	pkgver = 4.5.11
 	pkgrel = 1
 	url = https://www.blender.org
 	arch = x86_64
 	license = GPL
-	source = https://download.blender.org/release/Blender4.5/blender-4.5.10-linux-x64.tar.xz
+	source = https://download.blender.org/release/Blender4.5/blender-4.5.11-linux-x64.tar.xz
 	source = blender.sh
-	b2sums = e9bf2a7f975ac515971349e27c4902b0df3c2eed63692c3017dc42eef4d8d0b97af76285651de1ba8ab80368fb9e3f65e2b9daea6d49916190755dc850c371ad
+	b2sums = a94c25b32cc233d49ef034ccb4518b7700d5998454478d1f1b40eb3c338a7033ac77f3def3143f5ca07a6a917271e5ec6f6822e7458a3c9acd2a2d33197c55ea
 	b2sums = 7009d16d3afe2c59d3b906b32fdb5540ad70b221e84f308959986d58e4a5391cdcc49f78651c5039ea94f1cf305e6cf39b01c105e05fb0e76f6c3cc068e06bf4
 
 pkgname = blender-lts-bin
