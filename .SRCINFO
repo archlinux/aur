@@ -1,6 +1,6 @@
 pkgbase = chimera
 	pkgdesc = Configure and manage games in Steam
-	pkgver = 0.24.10
+	pkgver = 0.24.11
 	pkgrel = 1
 	url = https://github.com/chimeraos/chimera
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = chimera
 	depends = python-inotify-simple
 	depends = python-requests
 	depends = python-beaker
-	depends = python-pyglet
+	depends = python-pygame
 	depends = python-bcrypt
 	depends = python-psutil
 	depends = python-pyudev
@@ -61,7 +61,7 @@ pkgbase = chimera
 	provides = steam-buddy
 	conflicts = steam-tweaks
 	conflicts = steam-buddy
-	source = chimera-0.24.10.tar.gz::https://github.com/chimeraos/chimera/archive/0.24.10.tar.gz
-	b2sums = 3adfd9002b0b476b216dfdd21a887659240b9a849997e346ae1806e1331b60f3614a750bb466d13c1a81e61db841137d23510e70159c75478690776bcbe959c3
+	source = chimera-0.24.11.tar.gz::https://github.com/chimeraos/chimera/archive/0.24.11.tar.gz
+	b2sums = 94d266cfa258dd918bf18b6c4c5ef6f8f3fe1b78ef05493792068656665073761b5727eead33aa764116c0ce50795ee2ef3d7fc5e691cb332f20c9bdeb43ebae
 
 pkgname = chimera
