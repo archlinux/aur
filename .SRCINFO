@@ -1,7 +1,7 @@
 pkgbase = binsec
 	pkgdesc = Open-source toolset to help improve software security at the binary level
-	pkgver = 0.11.1
-	pkgrel = 2
+	pkgver = 0.11.2
+	pkgrel = 1
 	url = https://binsec.github.io
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -26,7 +26,7 @@ pkgbase = binsec
 	optdepends = z3: Z3 SMT solver
 	optdepends = cvc4: CVC4 SMT solver
 	optdepends = yices: Yices 2 SMT Solver
-	source = binsec-0.11.1.tar.gz::https://github.com/binsec/binsec/archive/refs/tags/0.11.1.tar.gz
-	b2sums = e6687fa7fe6c6a508579cce041a7b0757e13dccc9790dad0c3d40b9d7d82111e1d30a9d67ed0bcff5450c919ccef58c46abb9b647a85f1a391a8fb740e76202e
+	source = binsec-0.11.2.tar.gz::https://github.com/binsec/binsec/archive/refs/tags/0.11.2.tar.gz
+	b2sums = efb57156d36eb7d33bf8f976a943d8df9f4f90d636fbc824a9a7410b2e790c41c7e99c22920222f85e2ed0fb12432e1da077d117c5f0e7f44a7a2aa824295611
 
 pkgname = binsec
