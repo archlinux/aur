@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Kill all the slop. Raise clean PR."
 
-pkgver=1.33.0
+pkgver=1.34.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums=('523487877a918333ff1aec6ef9dd9891cbd1c0b2e00a200731d2190ce8f2b582'
+sha256sums=('8d8817cb4235c965a24ff795eaa6e910592b803ec4a41d5e888fc206d5f1abdf'
             '945016bd37e1ba7211622ef60ee1d23ab727896ba7710edd21e8fbe983863969')
-sha256sums_x86_64=('a7a297421dbb59074cb79b247c4233f9b0fec39f459110f1923668ca77ef749e')
-sha256sums_aarch64=('a7a297421dbb59074cb79b247c4233f9b0fec39f459110f1923668ca77ef749e')
+sha256sums_x86_64=('449d0276e1b35369ea332dae0eddb5be326c2d4fc9643270af98858cf3906536')
+sha256sums_aarch64=('449d0276e1b35369ea332dae0eddb5be326c2d4fc9643270af98858cf3906536')
 
 
 build() {
