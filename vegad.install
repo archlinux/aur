@@ -1,0 +1,14 @@
+post_install() {
+  systemd-sysusers usr/lib/sysusers.d/vega-build.conf
+  systemctl daemon-reload
+  systemctl reload dbus.service 2>/dev/null || true
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  systemctl daemon-reload
+  systemctl reload dbus.service 2>/dev/null || true
+}

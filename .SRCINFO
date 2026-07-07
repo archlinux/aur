@@ -1,0 +1,25 @@
+pkgbase = vegad
+	pkgdesc = Daemon privilegiado do Vega, centro de controle do Lyra OS
+	pkgver = 0.0
+	pkgrel = 1
+	url = https://github.com/britors/Vega
+	install = vegad.install
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = go
+	depends = systemd
+	depends = dbus
+	depends = polkit
+	depends = pacman
+	optdepends = snapper: snapshots automáticos antes de operações do sistema
+	optdepends = flatpak: cache e atualizações do módulo Software
+	optdepends = restic: suporte ao módulo Backup
+	optdepends = firewalld: firewall do módulo Rede
+	optdepends = fwupd: status de firmware no módulo Hardware
+	optdepends = networkmanager: estado de rede no módulo Rede
+	provides = lyraed
+	conflicts = lyraed
+	source = Vega::git+https://github.com/britors/Vega.git#branch=main
+	sha256sums = SKIP
+
+pkgname = vegad

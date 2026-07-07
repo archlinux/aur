@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<!--
+  Granular polkit actions for vegad (PROMPT-VEGA.md §2.2). One action per
+  privileged D-Bus method — read-only methods (Search, ListX, Status, ...)
+  are intentionally not covered here, see dbus/org.lyraos.Vega1.*.xml.
+-->
+<policyconfig>
+  <vendor>Lyra OS</vendor>
+  <vendor_url>https://lyraos.org</vendor_url>
+  <icon_name>vega</icon_name>
+
+  <action id="org.lyraos.vega.software.install">
+    <description>Instalar pacotes de software</description>
+    <message>Autenticação é necessária para instalar software</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.lyraos.vega.software.remove">
+    <description>Remover pacotes de software</description>
+    <message>Autenticação é necessária para remover software</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.lyraos.vega.software.update">
+    <description>Atualizar todos os pacotes</description>
+    <message>Autenticação é necessária para atualizar o sistema</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.lyraos.vega.software.manage-repos">
+    <description>Gerenciar repositórios de pacotes</description>
+    <message>Autenticação é necessária para alterar repositórios</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.lyraos.vega.software.clear-cache">
+    <description>Limpar cache de pacotes</description>
+    <message>Autenticação é necessária para limpar o cache de pacotes</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.lyraos.vega.snapshots.create">
+    <description>Criar ponto de restauração</description>
+    <message>Autenticação é necessária para criar um ponto de restauração</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.lyraos.vega.snapshots.rollback">
+    <description>Restaurar o sistema a partir de um ponto de restauração</description>
+    <message>Autenticação é necessária para restaurar o sistema</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.lyraos.vega.snapshots.configure">
+    <description>Configurar política de retenção de pontos de restauração</description>
+    <message>Autenticação é necessária para alterar a política de retenção</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.lyraos.vega.backup.configure">
+    <description>Configurar backup</description>
+    <message>Autenticação é necessária para configurar um backup</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.lyraos.vega.backup.run">
+    <description>Executar backup</description>
+    <message>Autenticação é necessária para executar um backup</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.lyraos.vega.backup.restore">
+    <description>Restaurar arquivos a partir de um backup</description>
+    <message>Autenticação é necessária para restaurar arquivos</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.lyraos.vega.hardware.switch-driver">
+    <description>Trocar driver de hardware</description>
+    <message>Autenticação é necessária para trocar o driver de hardware</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.lyraos.vega.kernel.switch">
+    <description>Instalar, remover ou trocar o kernel</description>
+    <message>Autenticação é necessária para alterar o kernel</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.lyraos.vega.users.manage">
+    <description>Gerenciar contas de usuário</description>
+    <message>Autenticação é necessária para gerenciar contas de usuário</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.lyraos.vega.firewall.configure">
+    <description>Configurar o firewall</description>
+    <message>Autenticação é necessária para configurar o firewall</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.lyraos.vega.services.configure">
+    <description>Gerenciar serviços systemd</description>
+    <message>Autenticação é necessária para gerenciar serviços</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+</policyconfig>
