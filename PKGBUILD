@@ -1,6 +1,6 @@
 pkgname=openssh-gui-git
 _pkgname=OpenSSH-GUI
-pkgver=3.2.3.7e5cc8c0d9abe30ca3bac30378250e42c21aa630.20260707
+pkgver=3.2.3.852b291afb50a7a7235e4773a39dd4643d6e4b44.20260707
 pkgrel=1
 pkgdesc="A GUI for OpenSSH configuration and management (Sourcepackage)"
 arch=('x86_64')
@@ -17,6 +17,24 @@ conflicts=('openssh-gui' 'openssh-gui-bin' 'openssh-gui-nightly')
 source=("git+${url}.git#branch=development")
 sha256sums=('SKIP')
 
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+
+    local version
+
+    version=$(dotnet msbuild OpenSSH_GUI/OpenSSH_GUI.csproj \
+        -nologo \
+        -restore:false \
+        -getProperty:Version \
+        | tr -d '\r' \
+        | tr '-' '.')
+
+    printf "%s.%s.%s" \
+        "$version" \
+        "$(git rev-list --count HEAD)" \
+        "$(git rev-parse --short HEAD)"
+}
+
 build() {
   cd "${srcdir}/${_pkgname}"
 
@@ -28,7 +46,7 @@ build() {
       -p:PublishSingleFile=true \
       -p:PublishReadyToRun=false \
       -p:IncludeNativeLibrariesForSelfExtract=true \
-      -p:InformationalVersion="${pkgver}"
+      -p:Version="${pkgver}"
 
   rsvg-convert -w 256 -h 256 images/openssh-gui.svg -o appicon-256.png
 }
