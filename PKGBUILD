@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-zxing-cpp
 _name=${pkgname#python-}
-pkgver=3.0.0
-pkgrel=3
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Python bindings for zxing-cpp"
 arch=('x86_64')
 url="https://github.com/zxing-cpp/zxing-cpp"
@@ -13,23 +13,14 @@ depends=(
 )
 makedepends=(
   'cmake'
-  'pybind11'
+  'nanobind'
   'python-build'
   'python-installer'
-  'python-setuptools'
+  'python-scikit-build-core'
   'python-wheel'
 )
 source=("https://github.com/zxing-cpp/zxing-cpp/releases/download/v$pkgver/$_name-$pkgver.tar.gz")
-sha256sums=('bfea8f8ebc8e04e5c4a57e5cbdc302d05c72b916d142564b6d14f01050bb93d4')
-
-prepare() {
-  cd "$_name-$pkgver"
-
-  # We really do have the dependencies, however
-  # it can't find them...
-  sed -i '/cmake/d' wrappers/python/pyproject.toml
-  sed -i '/pybind11/d' wrappers/python/pyproject.toml
-}
+sha256sums=('a3eb825154f05242283e7d94d8ebdcf95beb3a534eba393cce504e91c9b215bd')
 
 build() {
   cd "$_name-$pkgver/wrappers/python"
