@@ -1,6 +1,6 @@
 # Maintainer: motorrin
 pkgname=arch-smart-update
-pkgver=3.17.0
+pkgver=3.18.0
 pkgrel=1
 pkgdesc="Not sure when to update Arch Linux or its derivative? This script will help you decide."
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
     'psmisc: for lock detection using fuser'
 )
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e2216efffae7fb9bf305abc82d5998ba664203c8c406428a8506f5de1db9e13b')
+sha256sums=('b19d993871194834011544fa0e47ca81f71deeb3f8d5d84352c1730ad0069d8a')
 
 package() {
     cd "arch-smart-update-${pkgver}"
