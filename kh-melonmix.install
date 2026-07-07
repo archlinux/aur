@@ -1,0 +1,7 @@
+post_install() {
+echo ">> Hello!"
+echo ">> to run one of the games, please place your roms inside of the ~/.config/khDaysMM/roms directory"
+echo ">> If you also want the the HD cutscenes or different BG music, please place those in the ~/.config/khDaysMM/assets directory"
+echo ">> If you want/need more info (for stuff like controls), go to the upstream GitHub repo" 
+echo ">> https://github.com/vitor251093/KHMelonMix/blob/master/HOW_TO_PLAY.md"
+}

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Kingdom Hearts: 358/2 Days Melon Mix
+GenericName=KH Melon Mix (DS Emulator)
+Exec=kh-melonmix days
+Terminal=false
+Path=/opt/Kingdom Hearts Melon Mix/
+Type=Application
+Icon=kh-melonmix-days
+Categories=Game;

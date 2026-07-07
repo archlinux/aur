@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Kingdom Hearts: Melon Mix
+GenericName=KH Melon Mix (DS Emulator)
+Exec=kh-melonmix
+Terminal=false
+Path=/opt/Kingdom Hearts Melon Mix/
+Type=Application
+Icon=kh-melonmix
+Categories=Game;

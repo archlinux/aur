@@ -1,0 +1,13 @@
+#!/usr/bin/sh
+"${XDG_CONFIG_HOME:=$HOME/.config}"
+cd "$XDG_CONFIG_HOME/khDaysMM"
+if [ "$1" = "recoded" ]; then
+	env QT_QPA_PLATFORM=xcb "/opt/Kingdom Hearts Melon Mix/MelonMix" -f "$XDG_CONFIG_HOME/khDaysMM/roms/recoded.nds"
+
+
+elif [ "$1" = "days" ]; then
+	env QT_QPA_PLATFORM=xcb "/opt/Kingdom Hearts Melon Mix/MelonMix" -f "$XDG_CONFIG_HOME/khDaysMM/roms/days.nds"
+
+else
+	env QT_QPA_PLATFORM=xcb "/opt/Kingdom Hearts Melon Mix/MelonMix" "$@"
+fi
