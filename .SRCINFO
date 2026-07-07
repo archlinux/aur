@@ -1,6 +1,6 @@
 pkgbase = graphify
 	pkgdesc = AI coding assistant skill - turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph
-	pkgver = 0.9.6
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://github.com/safishamsi/graphify
 	arch = any
@@ -60,7 +60,7 @@ pkgbase = graphify
 	optdepends = python-psycopg: PostgreSQL schema introspection backend
 	provides = graphifyy
 	conflicts = graphifyy
-	source = https://files.pythonhosted.org/packages/source/g/graphifyy/graphifyy-0.9.6.tar.gz
-	sha256sums = 3716d5abac6c18dd3e7cec4306c8b497892ebac36baefd86c40d25eced471a19
+	source = https://files.pythonhosted.org/packages/source/g/graphifyy/graphifyy-0.9.8.tar.gz
+	sha256sums = 5a76f25f4dfe630941a58fce6d9b5ec558055aa6098c722f7ffc38644eee4f69
 
 pkgname = graphify
