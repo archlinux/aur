@@ -1,6 +1,6 @@
 pkgbase = oryx-music-player-bin
 	pkgdesc = Native Rust music player built with gpui
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/behzade/oryx
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = oryx-music-player-bin
 	conflicts = oryx-music-player
 	options = !strip
 	options = !debug
-	source = LICENSE-0.1.11::https://github.com/behzade/oryx/raw/v0.1.11/LICENSE
+	source = LICENSE-0.1.12::https://github.com/behzade/oryx/raw/v0.1.12/LICENSE
 	source = oryx-music-player.desktop
 	sha256sums = c373c05e9d8d06d7aa53cc1d5fba2b9d3fa8776aae1b3720d104f594f9dd771f
 	sha256sums = 23563fd2c80b90aed3a708a54cb1d4f5f20ef014508f5cc4c330a7e3b24301d1
-	source_x86_64 = oryx-0.1.11-x86_64.tar.gz::https://github.com/behzade/oryx/releases/download/v0.1.11/oryx_0.1.11_x86_64.tar.gz
-	sha256sums_x86_64 = 44b7e49c237356d3de0f46b7f239337be4319bb63dcfccab77cd5da21e6b4107
+	source_x86_64 = oryx-0.1.12-x86_64.tar.gz::https://github.com/behzade/oryx/releases/download/v0.1.12/oryx_0.1.12_x86_64.tar.gz
+	sha256sums_x86_64 = 9547825996143131182cc7f681503e2d904f3a0fbcf1f56650f5a0486327ec64
 
 pkgname = oryx-music-player-bin
