@@ -10,8 +10,8 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="gyroflow"
 pkgname="$_pkgname-git"
-pkgver=1.6.3.r53.g7403b3c
-pkgrel=1
+pkgver=1.6.3.r79.g704744e
+pkgrel=2
 pkgdesc="Video stabilization using gyroscope data"
 url="https://github.com/gyroflow/gyroflow"
 license=("GPL-3.0-or-later")
@@ -21,7 +21,7 @@ depends=(
   'ffmpeg'
   'libc++'
   'ocl-icd'
-  'opencv'
+  'opencv4'
   'qt6-declarative'
 )
 makedepends=(
@@ -55,18 +55,18 @@ pkgver() {
 
 prepare() (
   cd "$_pkgsrc"
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target host-tuple
 )
 
 build() (
-  local _units=$(OMP_NUM_THREADS=16 nproc --all)
+  local _units=$(($(nproc) > 16 ? $(nproc) : 16))
   export RUSTFLAGS="-C opt-level=2 -C codegen-units=$_units -C lto=off"
 
   export QMAKE="/usr/bin/qmake6"
 
   # Use system libraries
   export FFMPEG_DIR="/usr"
-  export OPENCV_LINK_PATHS="/usr"
+  export OPENCV_LINK_PATHS="/usr/lib/opencv4"
   export OPENCV_LINK_LIBS="opencv_core,opencv_calib3d,opencv_features2d,opencv_imgproc,opencv_video,opencv_flann,opencv_dnn"
 
   cd "$_pkgsrc"
