@@ -4,7 +4,7 @@
 
 pkgname=libfprint-tod
 _pkgdirname=libfprint
-pkgver=1.95.0+tod1
+pkgver=1.95.2+tod1
 pkgrel=1
 pkgdesc="Library for fingerprint readers - TOD version"
 url="https://fprint.freedesktop.org/"
@@ -38,10 +38,11 @@ provides=(libfprint libfprint-tod libfprint-2.so libfprint-2-tod.so)
 conflicts=(libfprint)
 groups=(fprint)
 source=("git+https://gitlab.freedesktop.org/3v1n0/libfprint.git?signed#tag=v$pkgver")
-b2sums=('775269aa72360b6e5636080d548841b0a2488e35dfbba7e65b6cceba7d67f844f808cb34aa960cb55c651c0bd958fc55e12b1370c42eaec8aef88b7caf6b5348')
+b2sums=('7409a4fb2de8dc03c8829f2c6fecd14484ca880bf6860ac6948bc2186f989077ae4316bfd4e077d0f3b9127f98fbdac8915e034b4958fdb363c31e51897359d1')
 validpgpkeys=(
   D4C501DA48EB797A081750939449C2F50996635F # Marco Trevisan (Treviño) <mail@3v1n0.net>
 )
+options=('!lto')
 
 build() {
   local meson_options=(
