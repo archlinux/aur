@@ -30,6 +30,7 @@ package() {
   install -Dm755 target/release/modde-ui "$pkgdir/usr/bin/modde-ui"
   install -Dm644 dist/modde-ui.desktop "$pkgdir/usr/share/applications/com.tartanoglu.modde.desktop"
   install -Dm644 dist/com.tartanoglu.modde.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/com.tartanoglu.modde.png"
+  install -Dm644 dist/assets/logo/logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.tartanoglu.modde.svg"
   install -Dm644 dist/com.tartanoglu.modde.metainfo.xml "$pkgdir/usr/share/metainfo/com.tartanoglu.modde.metainfo.xml"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
