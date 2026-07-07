@@ -1,5 +1,4 @@
 post_install() {
-  ldconfig
   cat << 'MSG'
 
   Cangjie Nightly toolchain installed.
@@ -9,8 +8,10 @@ post_install() {
   - Package manager: /usr/bin/cjpm
   - Debugger:        /usr/bin/cjdb
 
-  To set CANGJIE_HOME and extend PATH for interactive shells,
-  log out and back in, or run:
+  /usr/bin/cjc auto-adds --set-runtime-rpath so compiled programs
+  find runtime libraries without ldconfig or LD_LIBRARY_PATH.
+
+  To set CANGJIE_HOME, log out and back in, or run:
 
       source /etc/profile.d/cangjie-nightly.sh
 
@@ -22,7 +23,7 @@ MSG
 }
 
 post_upgrade() {
-  ldconfig
+  :
 }
 
 pre_remove() {
@@ -30,5 +31,5 @@ pre_remove() {
 }
 
 post_remove() {
-  ldconfig
+  :
 }

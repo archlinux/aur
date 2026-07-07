@@ -15,7 +15,7 @@ depends=(
   'openssl>=3.0.7'
   'zlib'
 )
-makedepends=('curl')
+makedepends=('curl' 'patchelf')
 optdepends=(
   'clang: for Cangjie-C interop'
   'lldb: for cjdb debugger'
@@ -78,41 +78,49 @@ package() {
   # Fix permissions: SDK tarball ships 0750 (group-only), need world-read/exec
   chmod -R a+rX "$pkgdir/opt/cangjie-nightly"
 
-  # 2. Symlink all executables to /usr/bin/ for immediate PATH access
+  # 2. Fix broken/missing RPATH on bundled binaries via patchelf
+  #    cjpm: @loader_path (macOS token, invalid on Linux)
+  patchelf --set-rpath "\$ORIGIN/../../runtime/lib/linux_${CARCH}_cjnative" \
+    "$pkgdir/opt/cangjie-nightly/tools/bin/cjpm"
+  #    cjcov, cjtrace-recover, hle: no RPATH at all, need runtime libs
+  for _fixbin in cjcov cjtrace-recover hle; do
+    patchelf --add-rpath "\$ORIGIN/../../runtime/lib/linux_${CARCH}_cjnative" \
+      "$pkgdir/opt/cangjie-nightly/tools/bin/$_fixbin"
+  done
+
+  # 3. Install executables to /usr/bin/
+  #    - All tools now have correct RPATH/RUNPATH → direct symlinks
+  #    - cjc gets a wrapper that auto-adds --set-runtime-rpath to compilation
   install -d "$pkgdir/usr/bin"
   while IFS= read -r -d '' _bin; do
     _rel="${_bin#$pkgdir/}"
-    ln -s "/$_rel" "$pkgdir/usr/bin/${_bin##*/}"
-  done < <(find "$pkgdir/opt/cangjie-nightly/bin" "$pkgdir/opt/cangjie-nightly/tools/bin" -type f -executable -print0 2>/dev/null; :)
-
-  # 3. Register runtime libraries with ldconfig
-  install -d "$pkgdir/etc/ld.so.conf.d"
-  while IFS= read -r -d '' _libdir; do
-    _rel="${_libdir#$pkgdir/}"
-    echo "/$_rel" >> "$pkgdir/etc/ld.so.conf.d/cangjie-nightly.conf"
-  done < <(find "$pkgdir/opt/cangjie-nightly/runtime/lib" -maxdepth 1 -type d -name 'linux_*' -print0 2>/dev/null; :)
+    _name="${_bin##*/}"
+    if [[ "$_name" == "cjc" ]]; then
+      cat > "$pkgdir/usr/bin/cjc" << 'WRAPPER'
+#!/bin/sh
+exec /opt/cangjie-nightly/bin/cjc --set-runtime-rpath "$@"
+WRAPPER
+      chmod 755 "$pkgdir/usr/bin/cjc"
+      ln -sf cjc "$pkgdir/usr/bin/cjc-frontend"
+    elif [[ "$_name" == "cjc-frontend" ]]; then
+      :  # handled above by cjc's ln -sf
+    else
+      ln -s "/$_rel" "$pkgdir/usr/bin/$_name"
+    fi
+  done < <(find "$pkgdir/opt/cangjie-nightly/bin" "$pkgdir/opt/cangjie-nightly/tools/bin" \( -type f -o -type l \) -executable -print0 2>/dev/null; :)
 
   # 4. Profile.d script for interactive-shell environment variables
+  #    All /usr/bin/ entries have working RPATH/RUNPATH — no PATH/LD_LIBRARY_PATH needed.
   install -d "$pkgdir/etc/profile.d"
   cat > "$pkgdir/etc/profile.d/cangjie-nightly.sh" << 'PROFEOF'
 # /etc/profile.d/cangjie-nightly.sh — Cangjie Nightly environment
 
 CANGJIE_HOME=/opt/cangjie-nightly
 export CANGJIE_HOME
-
-case ":${PATH}:" in
-  *:"${CANGJIE_HOME}/bin":*)  ;;
-  *) PATH="${CANGJIE_HOME}/bin:${PATH}" ;;
-esac
-
-case ":${PATH}:" in
-  *:"${CANGJIE_HOME}/tools/bin":*)  ;;
-  *) PATH="${CANGJIE_HOME}/tools/bin:${PATH}" ;;
-esac
 PROFEOF
   chmod 644 "$pkgdir/etc/profile.d/cangjie-nightly.sh"
 
-  # 5. Install license
+  # 4. Install license
   if [[ -f LICENSE ]]; then
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   fi

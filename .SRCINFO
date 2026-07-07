@@ -8,6 +8,7 @@ pkgbase = cangjie-nightly-bin
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = curl
+	makedepends = patchelf
 	depends = glibc>=2.22
 	depends = gcc-libs
 	depends = openssl>=3.0.7
