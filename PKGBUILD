@@ -1,6 +1,6 @@
 # Maintainer: Jérôme Poulin <jeromepoulin@gmail.com>
 pkgname=fs_cli-rs
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Interactive FreeSWITCH ESL CLI client, standalone without the full FreeSWITCH suite"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo' 'git')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ticpu/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e23f098f0a8fb954fcbd119bb099ef1bc171c86321f50bc4315ce3f13304f262')
+sha256sums=('5fe836f381623afc0e8dab5a7710c5c287f648d236b5329f4009a98331bef02f')
 
 prepare() {
     cd "$pkgname-$pkgver"
