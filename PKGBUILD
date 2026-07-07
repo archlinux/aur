@@ -4,7 +4,7 @@
 pkgname=bgutil-ytdlp-pot-provider
 _pkgrepo=bgutil-ytdlp-pot-provider-rs
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc='High-performance YouTube POT token provider for yt-dlp (Rust implementation)'
 arch=('x86_64')
 url='https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs'
@@ -18,16 +18,26 @@ b2sums=('03ed7f1548ead39601f175437cd57bd041fc4840b9551904b56850e1783a2d5c4f3ea7a
 
 build() {
     cd "$srcdir/${_pkgrepo}-$pkgver"
-    # Clear CFLAGS: makepkg LTO flags (-flto=auto) leak through the cc crate
-    # into ring's assembly build, producing corrupted .o files with
-    # unresolvable symbols (https://github.com/briansmith/ring/issues/2422)
-    CFLAGS="" CXXFLAGS="" cargo build --release --locked
+    # Strip makepkg-injected LTO flags from C*FLAGS/LDFLAGS before cargo.
+    # The cc crate picks them up for ring's assembly build, producing
+    # .o files with unresolvable symbols
+    # (https://github.com/briansmith/ring/issues/2422).
+    # ${VAR%PAT} is a no-op if PAT absent, so user flags are preserved.
+    local cf="${CFLAGS% ${LTOFLAGS}}"
+    local cxf="${CXXFLAGS% ${LTOFLAGS}}"
+    local lf="${LDFLAGS% ${LTOFLAGS}}"
+    CFLAGS="$cf" CXXFLAGS="$cxf" LDFLAGS="$lf" \
+        cargo build --release --locked
 }
 
 check() {
     cd "$srcdir/${_pkgrepo}-$pkgver"
     # Tests use wiremock (local HTTP), no network needed
-    CFLAGS="" CXXFLAGS="" cargo test --release --locked || true
+    local cf="${CFLAGS% ${LTOFLAGS}}"
+    local cxf="${CXXFLAGS% ${LTOFLAGS}}"
+    local lf="${LDFLAGS% ${LTOFLAGS}}"
+    CFLAGS="$cf" CXXFLAGS="$cxf" LDFLAGS="$lf" \
+        cargo test --release --locked || true
 }
 
 package() {
