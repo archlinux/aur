@@ -1,14 +1,16 @@
 pkgbase = cmdflow
-	pkgdesc = A colorful Fish command tracker with rainbow top visualization
-	pkgver = 2.3.6
+	pkgdesc = A minimalist CLI tool written in Rust that parses shell history and renders graphs
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/voideez/cmdflow
+	install = cmdflow.install
 	arch = x86_64
+	arch = aarch64
 	license = MIT
-	makedepends = rust
 	makedepends = cargo
-	depends = bash
-	depends = fish
-	source = https://codeload.github.com/voideez/cmdflow/tar.gz/2.3.6
-	sha256sums = SKIP
+	depends = glibc
+	depends = gcc-libs
+	source = cmdflow-3.0.0.tar.gz::https://github.com/voideez/cmdflow/archive/v3.0.0.tar.gz
+	sha256sums = cdd1e0b24c01ecd6e52aba59a227c57fec6615c3218a0229fba1482b96c23406
+
 pkgname = cmdflow
