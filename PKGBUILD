@@ -5,7 +5,7 @@
 # PKGBUILD-Credit: https://aur.archlinux.org/account/teprrr
 
 pkgname=portfolio-performance-bin
-pkgver=0.84.2
+pkgver=0.85.0
 pkgrel=1
 pkgdesc="A simple tool to calculate the overall performance of an investment portfolio."
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     portfolio-performance-bin.svg::"https://raw.githubusercontent.com/portfolio-performance/portfolio/${pkgver}/portfolio-product/icons/logo.svg"
     portfolio-performance-bin.desktop)
 validpgpkeys=('E46E6F8FF02E4C83569084589239277F560C95AC')
-sha256sums=('6e87974d9d08d2e186b92494fea570c706f874db363432f88a9e01b198553a2b'
+sha256sums=('0d7451376902556f48485fc870b3e43c7197490eda1f29d08f7ce1edccd25a12'
             'SKIP'
             '61397bafed5a2954975294fdd04e69e0a2831fae22af88d32e854cd5837b93bf'
             'e3829c92603b3edd8039959af91cf957d0287bb59c395e30c28f661d5fd0403d')
