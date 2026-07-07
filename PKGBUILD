@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=pods
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
-pkgdesc="Manage your Podman/Docker containers"
+pkgdesc="Manage your containers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/marhkb/pods"
 license=('GPL-3.0-or-later')
@@ -24,7 +24,7 @@ optdepends=(
   'podman: Podman container support'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c98f922ce7822a524a447eb3ffbc02e74c27b1bd3c6e66b3f10ecddbee226eb3')
+sha256sums=('10902a08804ed03680e5e5f070937b7f0b5b296107a3441485858d79766c73b3')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -34,6 +34,7 @@ prepare() {
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
+  CFLAGS+=" -ffat-lto-objects"
   arch-meson "$pkgname-$pkgver" build
   meson compile -C build
 }
