@@ -2,7 +2,7 @@
 # Maintainer: Callum Andrew <contact@candrew.net>
 
 pkgname=shotman
-pkgver=0.4.7
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Uncompromising screenshot GUI for Wayland"
 arch=("x86_64" "aarch64")
@@ -15,7 +15,7 @@ optdepends=(
 )
 makedepends=("cargo" "scdoc")
 source=("shotman-v$pkgver.tar.gz::https://git.sr.ht/~whynothugo/shotman/archive/v$pkgver.tar.gz")
-sha512sums=('59865c367b6648fff56a0c04b6373f3fb403816a7997edd34b4109eff5a2fe463ff2494a82648dbf842108275cb462525b7ab87539729a4eba4f0e36b448b395')
+sha512sums=('aa0c69232a41b28398000202fb213e83f8fbc1c8b946e3b08f0dbfafd98388ed84023ea0c1fb557734084a73077aa245f2db4b83ba81ee3991549f4b67efb769')
 
 prepare() {
     cd "$srcdir/$pkgname-v$pkgver"
