@@ -1,6 +1,6 @@
 # Maintainer: James Hughes <james@pyrosoftsolutions.co.uk>
 pkgname=sudo-mcp
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="⚠️ INHERENTLY UNSAFE: MCP server allowing AI models to execute privileged commands via sudo/pkexec"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ depends=('polkit' 'sudo')
 options=('!strip')  # .NET single-file bundles are destroyed by strip
 source_x86_64=("${pkgname}-${pkgver}-x64.tar.gz::https://github.com/hughesjs/sudo-mcp/releases/download/v${pkgver}/sudo-mcp-x64-v${pkgver}.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-arm64.tar.gz::https://github.com/hughesjs/sudo-mcp/releases/download/v${pkgver}/sudo-mcp-arm64-v${pkgver}.tar.gz")
-sha256sums_x86_64=('ff901f851d564a43bec677a85406f265ca39c2a0fa819016152f1628d3208b95')
-sha256sums_aarch64=('7ddde0a120cd81b44d60ddc4d924ffedfe2d44bb9acd2c8e37477b492cff60da')
+sha256sums_x86_64=('fa19430442304e84e91fd6e1ff065bdf08c5779e21cc0b4595a39f0b1c46b57f')
+sha256sums_aarch64=('64544afee8e661015d032af7e2c06b34a24cd630cc28e6f1128c344e015f5f47')
 
 package() {
     case "$CARCH" in
