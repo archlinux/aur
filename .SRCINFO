@@ -1,0 +1,20 @@
+pkgbase = murmure-bin
+	pkgdesc = Privacy-first speech-to-text, running entirely on your machine (precompiled binary)
+	pkgver = 1.10.1
+	pkgrel = 1
+	url = https://github.com/Kieirra/murmure
+	arch = x86_64
+	license = AGPL3
+	makedepends = libarchive
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = webkit2gtk-4.1
+	optdepends = wl-clipboard: Wayland clipboard support
+	optdepends = gtk-layer-shell: Wayland overlay support
+	provides = murmure
+	conflicts = murmure
+	options = !strip
+	source_x86_64 = murmure-1.10.1-amd64.deb::https://github.com/Kieirra/murmure/releases/download/1.10.1/Murmure_amd64.deb
+	sha256sums_x86_64 = 049f21b5d30a79effdf43fd4f2f6b20b5a7a5f279c16db10bbafd9e37a489cf6
+
+pkgname = murmure-bin
