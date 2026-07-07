@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-full-llvm
 	pkgdesc = Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac) — built with Clang and LLVM lld
 	pkgver = 8.1.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://ffmpeg.org/
 	arch = x86_64
 	license = LicenseRef-nonfree-and-unredistributable
@@ -104,7 +104,7 @@ pkgbase = ffmpeg-full-llvm
 	depends = opencv4-llvm
 	depends = openh264
 	depends = openjpeg2
-	depends = openvino
+	depends = openvino-llvm
 	depends = opus
 	depends = qrencode
 	depends = quirc-llvm
