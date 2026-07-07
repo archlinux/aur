@@ -51,8 +51,11 @@ Type=Application
 Categories=AudioVideo;Video;TV;
 DESKTOP
 
-  # Icon
+  # Icon (pixmaps + hicolor theme)
   install -Dm644 assets/icon.png "$pkgdir/usr/share/pixmaps/animaple.png"
+  for size in 48 64 128 256 512; do
+    install -Dm644 assets/icon.png "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/animaple.png"
+  done
 
   # License (if exists)
   [ -f LICENSE ] && install -Dm644 LICENSE "$pkgdir/usr/share/licenses/animaple/LICENSE" || true

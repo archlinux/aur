@@ -1,6 +1,6 @@
 pkgbase = animaple-git
 	pkgdesc = Anime streaming app — Flutter cross-platform client
-	pkgver = 0.5.0
+	pkgver = r23.5d8c54f
 	pkgrel = 1
 	url = https://github.com/MapleProjects/AniMaple
 	arch = x86_64
