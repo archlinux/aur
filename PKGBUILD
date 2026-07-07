@@ -15,32 +15,26 @@ source=("unmined-gui-dev_amd64.deb::https://unmined.net/download/unmined-gui-lin
 sha256sums=('2af848691a21d79a384c2af5370cd07744856ed85170ed70be92aee945da8be1')
 
 latestver() {
-    local page tmstv tmp ver stamp
-
-    page=$(curl -fsSL 'https://unmined.net/downloads/') || return 1
-    tmstv=$(printf '%s\n' "$page" |
-        sed -nE 's#.*href="https://unmined.net/download/unmined-gui-linuxdeb-x64-dev/\?tmstv=([0-9]+)".*#\1#p' |
-        head -1)
-    [[ -n ${tmstv} ]] || return 1
+    local tmp ver ctrl_size
 
     tmp=$(mktemp) || return 1
     trap 'rm -f "$tmp"' RETURN
-    curl -fsSL 'https://unmined.net/download/unmined-gui-linuxdeb-x64-dev/' -o "$tmp" || return 1
 
-    # tmstv is a page cache-buster that can move without a new build (observed
-    # 2026-06: flipped forward then back over an identical artifact, causing a
-    # phantom bump to .20260610). Anchor to content: unchanged deb == packaged version.
-    if [[ $(sha256sum "$tmp" | cut -d' ' -f1) == "${sha256sums[0]}" ]]; then
-        printf '%s\n' "$pkgver"
-        return 0
-    fi
+    # ar(5) .deb: 8 magic + 60 hdr + 4 body (debian-binary) + 60 hdr (control.tar.zst).
+    # Parse member2 body size from its header, read exactly that many more bytes.
+    curl -fsSL 'https://unmined.net/download/unmined-gui-linuxdeb-x64-dev/' 2>/dev/null | {
+        dd bs=1 count=132 iflag=fullblock of="$tmp" 2>/dev/null
+        ctrl_size=$(dd if="$tmp" bs=1 skip=120 count=10 2>/dev/null | tr -d ' ')
+        [[ -n "$ctrl_size" && "$ctrl_size" -gt 0 ]] 2>/dev/null || exit 1
+        dd bs=1 count="$ctrl_size" iflag=fullblock >>"$tmp" 2>/dev/null
+    }
 
-    ver=$(bsdtar -xOf "$tmp" control.tar.zst | tar --zstd -xOf - ./control |
-        sed -nE 's/^Version: ([0-9.]+)-dev$/\1/p')
+    ver=$(bsdtar -xOf "$tmp" control.tar.zst 2>/dev/null |
+          tar --zstd -xOf - ./control 2>/dev/null |
+          sed -nE 's/^Version: ([0-9.]+)-dev$/\1/p')
     [[ -n ${ver} ]] || return 1
 
-    stamp=$(date -u -d "@${tmstv}" +%Y%m%d 2>/dev/null) || return 1
-    printf '%s\n' "${ver}.${stamp}"
+    printf '%s\n' "$ver"
 }
 
 prepare() {
