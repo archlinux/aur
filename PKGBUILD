@@ -13,7 +13,7 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=18.4.0.r1.g3ac65ceba
+pkgver=18.4.0.r85.g561e380e3
 pkgrel=1
 pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64' 'aarch64')
@@ -142,9 +142,8 @@ build()
   #WX_CONFIG="/usr/bin/wx-config-gtk3"
   #WX_CONFIG="/usr/bin/wx-config"
   #WX_CONFIG="wx-config"
-  #WX_CONFIG="wx-config-3.3.2"
-  WX_CONFIG=$(command -v wx-config-3.3.2 wx-config-3.3.1 wx-config-3.3.0 wx-config-3.3 wx-config-3.2 wx-config | head -1);
-  #WX_CONFIG="wx-config"
+  #WX_CONFIG="wx-config-3.3.3"
+  WX_CONFIG=$(command -v wx-config-3.3.3 wx-config-3.3.2 wx-config-3.3.1 wx-config-3.3.0 wx-config-3.3 wx-config-3.2 wx-config | head -1);
 
   echo;
   echo "WX_CONFIG: ${WX_CONFIG}";
