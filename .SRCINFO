@@ -1,0 +1,17 @@
+pkgbase = cl-clx-xembed-git
+	pkgdesc = An implementation of the XEMBED protocol that integrates with CLX
+	pkgver = 0.1.r10.ga5c4b84
+	pkgrel = 1
+	url = https://github.com/laynor/clx-xembed
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-clx
+	provides = cl-clx-xembed
+	conflicts = cl-clx-xembed
+	source = git+https://github.com/laynor/clx-xembed
+	sha256sums = SKIP
+
+pkgname = cl-clx-xembed-git
