@@ -1,0 +1,20 @@
+pkgbase = python-tomlrt
+	pkgdesc = A format-preserving TOML reader and writer for Python
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/dimbleby/tomlrt/
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-hypothesis
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/tomlrt/tomlrt-2.0.1.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/dimbleby/tomlrt/v2.0.1/LICENSE
+	sha256sums = 608efd28f06e3790958b3305bfd65b0efe8bddc1cda4195ce92b788606aed6e9
+	sha256sums = e225a9a6f9cbe6ec24d3ce4fed908c0ea58c0f0a988a95d82525ad643b2d58de
+
+pkgname = python-tomlrt
