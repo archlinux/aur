@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Catapult
-Comment=A cross-platform launcher for Cataclysm: DDA and BN
+Name=Catapult Dabdoob
+Comment=A cross-platform launcher for Cataclysm: DDA, BN and TLG
 GenericName=Game Launcher
-Exec=catapult
-Icon=catapult
+Exec=catapult-dabdoob
+Icon=catapult-dabdoob
 Type=Application
 Categories=Game;
 Path=/usr/bin

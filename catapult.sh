@@ -1,3 +1,3 @@
 #!/bin/sh
-cd /opt/catapult-bin
-./catapult
+cd /opt/catapult-dabdoob/
+./catapult-dabdoob
