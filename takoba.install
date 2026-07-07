@@ -1,12 +1,12 @@
-_src="/usr/share/vicinae-kotoba"
+_src="/usr/share/vicinae-takoba"
 
 _install_for_user() {
   local home="$1"
   local user="$2"
-  local dst="$home/.local/share/vicinae/extensions/kotoba"
+  local dst="$home/.local/share/vicinae/extensions/takoba"
   [ -d "$home" ] || return 0
   mkdir -p "$dst/assets"
-  cp "$_src/kotoba.js" "$dst/"
+  cp "$_src/takoba.js" "$dst/"
   cp "$_src/package.json" "$dst/"
   cp "$_src/icon.png" "$dst/"
   cp "$_src/icon.png" "$dst/assets/"
@@ -15,7 +15,7 @@ _install_for_user() {
 
 _remove_for_user() {
   local home="$1"
-  local dst="$home/.local/share/vicinae/extensions/kotoba"
+  local dst="$home/.local/share/vicinae/extensions/takoba"
   [ -d "$dst" ] && rm -rf "$dst"
 }
 

@@ -1,9 +1,9 @@
-pkgbase = vicinae-kotoba
-	pkgdesc = Japanese dictionary, translator, and Anki integration for Vicinae — search Jotoba, translate sentences, add cards to Anki
+pkgbase = vicinae-takoba
+	pkgdesc = Japanese dictionary, translator, TTS, and Anki integration for launchers — search Jotoba, translate on the fly, add cards to Anki
 	pkgver = 1.0.1
-	pkgrel = 1
-	url = https://github.com/kurojs/Kotoba
-	install = kotoba.install
+	pkgrel = 2
+	url = https://github.com/kurojs/Takoba
+	install = takoba.install
 	arch = any
 	license = MIT
 	makedepends = git
@@ -11,7 +11,7 @@ pkgbase = vicinae-kotoba
 	depends = vicinae-bin
 	depends = nodejs
 	depends = npm
-	source = vicinae-kotoba-1.0.1.tar.gz::https://github.com/kurojs/Kotoba/archive/v1.0.1.tar.gz
+	source = vicinae-takoba-1.0.1.tar.gz::https://github.com/kurojs/Takoba/archive/v1.0.1.tar.gz
 	sha256sums = SKIP
 
-pkgname = vicinae-kotoba
+pkgname = vicinae-takoba

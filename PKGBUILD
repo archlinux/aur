@@ -1,31 +1,31 @@
 # Maintainer: kuro <kuro@kuro.moe>
 # Contributor: kuro <kuro@kuro.moe>
 
-pkgname=vicinae-kotoba
+pkgname=vicinae-takoba
 pkgver=1.0.1
-pkgrel=1
-pkgdesc="Japanese dictionary, translator, and Anki integration for Vicinae — search Jotoba, translate sentences, add cards to Anki"
+pkgrel=2
+pkgdesc="Japanese dictionary, translator, TTS, and Anki integration for launchers — search Jotoba, translate on the fly, add cards to Anki"
 arch=('any')
-url="https://github.com/kurojs/Kotoba"
+url="https://github.com/kurojs/Takoba"
 license=('MIT')
 depends=('vicinae-bin' 'nodejs' 'npm')
 makedepends=('git' 'npm')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kurojs/Kotoba/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/kurojs/Takoba/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
-install=kotoba.install
+install=takoba.install
 
 build() {
-  cd "$srcdir/Kotoba-$pkgver"
+  cd "$srcdir/Takoba-$pkgver"
   npm install
-  npm run build -- -o dist
+  npm run build:vicinae -- -o "$srcdir/Takoba-$pkgver/dist"
 }
 
 package() {
-  cd "$srcdir/Kotoba-$pkgver"
-  install -dm755 "$pkgdir/usr/share/vicinae-kotoba"
-  install -Dm644 dist/kotoba.js "$pkgdir/usr/share/vicinae-kotoba/kotoba.js"
-  install -Dm644 package.json "$pkgdir/usr/share/vicinae-kotoba/package.json"
-  install -Dm644 assets/icon.png "$pkgdir/usr/share/vicinae-kotoba/icon.png"
-  install -dm755 "$pkgdir/usr/share/vicinae-kotoba/assets"
-  install -Dm644 assets/icon.png "$pkgdir/usr/share/vicinae-kotoba/assets/icon.png"
+  cd "$srcdir/Takoba-$pkgver"
+  install -dm755 "$pkgdir/usr/share/vicinae-takoba"
+  install -Dm644 dist/takoba.js "$pkgdir/usr/share/vicinae-takoba/takoba.js"
+  install -Dm644 package.json "$pkgdir/usr/share/vicinae-takoba/package.json"
+  install -Dm644 assets/icon.png "$pkgdir/usr/share/vicinae-takoba/icon.png"
+  install -dm755 "$pkgdir/usr/share/vicinae-takoba/assets"
+  install -Dm644 assets/icon.png "$pkgdir/usr/share/vicinae-takoba/assets/icon.png"
 }
