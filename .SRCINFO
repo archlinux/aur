@@ -1,6 +1,6 @@
 pkgbase = restate-server
 	pkgdesc = Building resilient applications made easy! (server)
-	pkgver = 1.6.2
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/restatedev/restate
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = restate-server
 	sha256sums = 5345cfcd6b9fc4a1957c279f500a02bd554c9449e122c7b8e91b74c6ae97c5ab
 	sha256sums = 88660438134c7e01d96919b33e215a83456c847bd317c17dc8c8d4a5faccb989
 	sha256sums = a602e5a6f17f5d424ab2a6c85b216846528d93db30eb9604631882921cbb3cdf
-	source_x86_64 = https://restate.gateway.scarf.sh/v1.6.2/restate-server-x86_64-unknown-linux-musl.tar.xz
-	sha256sums_x86_64 = 0d022e8beefe4e61dda735450848395ac60e581add37ead023d8f813d3712be1
-	source_aarch64 = https://restate.gateway.scarf.sh/v1.6.2/restate-server-aarch64-unknown-linux-musl.tar.xz
-	sha256sums_aarch64 = c35d548b3ebec13a3183c6acbbddc1c3656a1f26423d7d13af141773a09c6cf1
+	source_x86_64 = https://restate.gateway.scarf.sh/v1.7.2/restate-server-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = d702d2db5d47490dce0ef8cded509963d1a4d434ac5d645d61df216d6b5df19b
+	source_aarch64 = https://restate.gateway.scarf.sh/v1.7.2/restate-server-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = d818f5cfd2e0be7b9fe1af28b96b94b6d44daa93c641338d0405594e7664f555
 
 pkgname = restate-server
