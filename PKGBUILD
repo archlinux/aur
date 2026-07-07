@@ -1,5 +1,5 @@
 pkgname=weflow-bin
-pkgver=4.5.1
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Local WeChat database decryption and analysis tool"
 arch=('x86_64')
@@ -24,7 +24,7 @@ provides=('weflow')
 conflicts=('weflow')
 options=('!debug' '!strip')
 source=("WeFlow-${pkgver}-Setup.tar.gz::${url}/releases/download/v${pkgver}/WeFlow-${pkgver}-Setup.tar.gz")
-sha256sums=('eef12e315b0ee354640468b163ba02b8e603f881c6a2a00149b50db6d7984d73')
+sha256sums=('58e737896de2ad7f5010746a7190d21e5a87011be8e7383bac44ff79632135b5')
 
 package() {
   local src_app="$srcdir/WeFlow-${pkgver}-Setup"
