@@ -1,6 +1,6 @@
 pkgbase = jcodemunch-mcp
 	pkgdesc = Token-efficient MCP server for source code exploration via tree-sitter AST parsing
-	pkgver = 1.108.110
+	pkgver = 1.108.113
 	pkgrel = 1
 	url = https://github.com/jgravelle/jcodemunch-mcp
 	arch = any
@@ -30,9 +30,9 @@ pkgbase = jcodemunch-mcp
 	optdepends = python-pillow: image input for groq-explain extra
 	optdepends = python-numpy: voice features (groq-voice extra)
 	optdepends = python-sounddevice: voice features (groq-voice extra)
-	source = https://files.pythonhosted.org/packages/source/j/jcodemunch-mcp/jcodemunch_mcp-1.108.110.tar.gz
+	source = https://files.pythonhosted.org/packages/source/j/jcodemunch-mcp/jcodemunch_mcp-1.108.113.tar.gz
 	source = use-installed-binary.patch
-	sha256sums = 8f27467d77469661cfe72e0728b30bafa7d773bff08cbdd353847febf646408c
+	sha256sums = a42645557b70e755eebec6a8b6fce2734dcb67833d2513a0e90005c589d9034e
 	sha256sums = be3cfbcec8e4008d967ac9d5ebf7015c5eb7739381d5fe2976060961be6fbef0
 
 pkgname = jcodemunch-mcp
