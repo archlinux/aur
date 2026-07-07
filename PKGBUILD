@@ -2,7 +2,7 @@
 # Contributor: Bjoern Franke <bjo+aur@schafweide.org>
 # Contributor: Jérôme de Courval <decje9@gmail.com>
 pkgname=tandoor-recipes
-pkgver=2.6.1
+pkgver=2.6.9
 pkgrel=1
 pkgdesc="Application for managing recipes, planning meals, building shopping lists and much much more."
 arch=('any')
@@ -25,7 +25,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TandoorRecipes/recipes/
 	'tandoor-sysuser.conf'
 	'tandoor-directory.conf'
 )
-sha512sums=('75175ba1b73e3f8347eefde35a586cefa2824987fa121343198fc1789b9b5f9684c5f049d63bea3fa801afb39f280b752448b09153439e46b51d0fde822d4edc'
+sha512sums=('4001e79fe59525f527e425e20f8f6fd2447d64096ff6328acd81fec652665145c01de7426d647a4af0aacb681151cd2a1c806d085c5f11a7527cd9ebdfd3930a'
             '95dae7231412d20007f949536731dad9a95d82d208aa409698bf0ee81a5921fa893584747d2e0881eeb640198fb3c657447179707e27b0b0b6da1e15e06ceca0'
             '51e62f35632d709398bac39c11afcf452200a9ccfe55be5d0e6cf7f5f164a9bbd6bca0faebf3eb544017943e5d4597513ca0dfa0ee88de765b2f1b202341316c'
             '3c1314875b85244160ab7052258fdc4bb7637a1c43b85d62f4f2af2fa905c08ab76a7b2aca7c85e2fa02884f88bd6c7eb31796171cb38b3b77197c3d2ef8784e'
