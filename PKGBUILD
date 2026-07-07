@@ -3,12 +3,12 @@
 pkgname=qqmusic-electron
 _pkgname=qqmusic
 pkgver=1.1.8
-pkgrel=4
+pkgrel=5
 pkgdesc="Tencent QQMusic, Run with system Electron."
 arch=('any')
 url="https://y.qq.com/"
 license=('CC0-1.0')
-_electron=electron42
+_electron=electron43
 depends=(${_electron})
 makedepends=('asar')
 provides=("$_pkgname")
