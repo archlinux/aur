@@ -1,12 +1,13 @@
 pkgbase = python-tomlrt
 	pkgdesc = A format-preserving TOML reader and writer for Python
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dimbleby/tomlrt/
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-hypothesis
+	checkdepends = python-tomli
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
