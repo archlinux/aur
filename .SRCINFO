@@ -1,0 +1,20 @@
+pkgbase = mipsel-none-elf-binutils
+	pkgdesc = A collection of binary tools for baremetal MIPS.
+	pkgver = 2.46.0
+	pkgrel = 1
+	url = http://www.gnu.org/software/binutils/
+	arch = x86_64
+	license = GPL-3.0-or-later AND GFDL-1.3-no-invariants-or-later AND FSFAP
+	checkdepends = dejagnu
+	checkdepends = debuginfod
+	checkdepends = bc
+	depends = glibc
+	depends = zstd
+	depends = libelf
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.46.0.tar.xz
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.46.0.tar.xz.sig
+	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
+	sha256sums = d75a94f4d73e7a4086f7513e67e439e8fcdcbb726ffe63f4661744e6256b2cf2
+	sha256sums = 5456d1ef66a8fdf4261c9487ffe6de23c52b3ae73e2514b3c8a957faaf098272
+
+pkgname = mipsel-none-elf-binutils
