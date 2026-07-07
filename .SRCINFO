@@ -1,6 +1,6 @@
 pkgbase = ensoai
 	pkgdesc = Multiple AI Agents, Parallel Workflow - Git worktree manager with AI integration
-	pkgver = 0.2.42
+	pkgver = 0.2.43
 	pkgrel = 1
 	url = https://github.com/J3n5en/EnsoAI
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = ensoai
 	optdepends = claude-cli: Claude AI agent support
 	optdepends = codex: Codex AI agent support
 	optdepends = cursor: Cursor AI agent support
-	source = ensoai-0.2.42.tar.gz::https://github.com/J3n5en/EnsoAI/archive/v0.2.42.tar.gz
-	sha256sums = aba6b34c2852c65bac8367c5c0227f272c469fa8f470f8b335caa9d02897b919
+	source = ensoai-0.2.43.tar.gz::https://github.com/J3n5en/EnsoAI/archive/v0.2.43.tar.gz
+	sha256sums = bb60548347264068cc675c6dd6f1283512e57aff7903e3c51f1dd70373809976
 
 pkgname = ensoai
