@@ -1,0 +1,11 @@
+#!/bin/bash
+echo "Starting Luna-2.5B..."
+
+# Ensure ollama is active or start it via systemctl
+if ! systemctl is-active --quiet ollama; then
+    echo "Ollama is not running. Attempting to start it..."
+    sudo systemctl start ollama
+fi
+
+echo "Running Luna-2.5B model..."
+ollama run Arunachalam-arch/luna-2.5b "$@"
