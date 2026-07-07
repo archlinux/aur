@@ -1,6 +1,6 @@
 pkgbase = simutil-bin
 	pkgdesc = Cross platform utility TUI app for launching iOS simulators / Android emulators, discover physical devices, ADB tools and more...
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/dungngminh/simutil
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = simutil-bin
 	provides = simutil
 	conflicts = simutil
 	options = !strip
-	source = README-0.6.0.md::https://raw.githubusercontent.com/dungngminh/simutil/v0.6.0/README.md
-	source = LICENSE-0.6.0::https://raw.githubusercontent.com/dungngminh/simutil/v0.6.0/LICENSE
+	source = README-0.6.1.md::https://raw.githubusercontent.com/dungngminh/simutil/v0.6.1/README.md
+	source = LICENSE-0.6.1::https://raw.githubusercontent.com/dungngminh/simutil/v0.6.1/LICENSE
 	sha256sums = c8cdf2f1cd883d79ee7f12eafc8b6879e18257c6a504e3d92e0ddbcea0e1a7dc
 	sha256sums = 6089969c8808bfa2c3f41aee2385e56786454c40eb6088ab803210832d045c84
-	source_x86_64 = simutil-x86_64-0.6.0.tgz::https://github.com/dungngminh/simutil/releases/download/v0.6.0/simutil-linux-x64.tar.gz
-	sha256sums_x86_64 = 46192fe3508d40a4c5d3a525ab9277a4dd5b35c2d9b6b267b03b1a67d822b430
+	source_x86_64 = simutil-x86_64-0.6.1.tgz::https://github.com/dungngminh/simutil/releases/download/v0.6.1/simutil-linux-x64.tar.gz
+	sha256sums_x86_64 = 43e9a34d1e4d5a025f34cae4bd97f6fb0ddba2302026861e3c6a73205f25575a
 
 pkgname = simutil-bin
