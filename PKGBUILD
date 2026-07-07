@@ -15,13 +15,20 @@ source=("unmined-gui-dev_amd64.deb::https://unmined.net/download/unmined-gui-lin
 sha256sums=('2af848691a21d79a384c2af5370cd07744856ed85170ed70be92aee945da8be1')
 
 latestver() {
-    local tmp ver ctrl_size
+    local tmp ver ctrl_size tmstv stamp
+
+    # tmstv cache-buster on the downloads page encodes the build timestamp.
+    tmstv=$(curl -fsSL 'https://unmined.net/downloads/' 2>/dev/null |
+        sed -nE 's#.*href="https://unmined.net/download/unmined-gui-linuxdeb-x64-dev/\?tmstv=([0-9]+)".*#\1#p' |
+        head -1)
+    [[ -n ${tmstv} ]] || return 1
+    stamp=$(date -u -d "@${tmstv}" +%Y%m%d 2>/dev/null) || return 1
 
     tmp=$(mktemp) || return 1
     trap 'rm -f "$tmp"' RETURN
 
-    # ar(5) .deb: 8 magic + 60 hdr + 4 body (debian-binary) + 60 hdr (control.tar.zst).
-    # Parse member2 body size from its header, read exactly that many more bytes.
+    # ar(5) .deb partial read: 132-byte fixed prefix → parse control.tar.zst
+    # body size from ar header → read exactly that many more bytes (~500 B total).
     curl -fsSL 'https://unmined.net/download/unmined-gui-linuxdeb-x64-dev/' 2>/dev/null | {
         dd bs=1 count=132 iflag=fullblock of="$tmp" 2>/dev/null
         ctrl_size=$(dd if="$tmp" bs=1 skip=120 count=10 2>/dev/null | tr -d ' ')
@@ -34,7 +41,7 @@ latestver() {
           sed -nE 's/^Version: ([0-9.]+)-dev$/\1/p')
     [[ -n ${ver} ]] || return 1
 
-    printf '%s\n' "$ver"
+    printf '%s.%s\n' "$ver" "$stamp"
 }
 
 prepare() {
