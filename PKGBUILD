@@ -15,7 +15,7 @@ depends=(
   'wayland'
 )
 source=("https://github.com/tkmxqrdxddd/dbd-1v1-timer-linux/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('e59cafafcbebafa673cf1322f34efdb33a3d403a9a05d85d0410fdb5dd4b6aaa')
 
 build() {
   cd "dbd-1v1-timer-linux-$pkgver"
