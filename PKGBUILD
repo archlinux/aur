@@ -73,7 +73,6 @@ package() {
 
   # Remove file conflicting with host binutils and manpages for MS Windows tools
   rm "$pkgdir"/usr/share/man/man1/$_target-{dlltool,windres,windmc}*
-  rm "$pkgdir"/usr/lib/bfd-plugins/libdep.so
 
   # Remove info documents that conflict with host version
   rm -r "$pkgdir"/usr/share/info
