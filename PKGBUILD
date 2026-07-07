@@ -1,5 +1,5 @@
 pkgname=webtunnel-server-bin
-pkgver=0.0.3
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Pluggable Transport based on HTTP Upgrade(HTTPT) - Server"
 arch=('x86_64')
@@ -9,8 +9,8 @@ options=()
 
 source=("server::https://github.com/a15355447898a/webtunnel/releases/download/${pkgver}/server")
 
-sha256sums=('2b39773dd552289146ccbfba7942b8d00dc6565aafd420b0852a72be277bd672')
+sha256sums=('ed637512e1ed83fd770a9d15fe613cd6e00e9c00225dedd60411e57d8aa196fb')
 
 package() {
-    install -Dm755 "server" "${pkgdir}/usr/bin/webtunnel-server"
+  install -Dm755 "server" "${pkgdir}/usr/bin/webtunnel-server"
 }
