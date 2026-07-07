@@ -4,7 +4,7 @@
 
 pkgname=ffmpeg-full-llvm
 pkgver=8.1.2
-pkgrel=2
+pkgrel=3
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _whispercpp_ver='1.9.1'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac) — built with Clang and LLVM lld'
@@ -22,8 +22,8 @@ depends=(
     'chromaprint-fftw-llvm'
     'codec2'
     'dav1d'
-    'davs2'
-    'flite1'
+    'davs2-llvm'
+    'flite1-llvm'
     'fontconfig'
     'freetype2'
     'frei0r-plugins' # loaded on-demand by dlopen()
@@ -59,7 +59,7 @@ depends=(
     'libiec61883'
     'libilbc'
     'libjxl'
-    'libklvanc'
+    'libklvanc-llvm'
     'liblc3'
     'libmodplug'
     'libmysofa'
@@ -92,19 +92,19 @@ depends=(
     'openapv-llvm'
     'opencolorio'
     'opencore-amr'
-    'opencv'
+    'opencv4'
     'openh264'
     'openjpeg2'
     'openvino'
     'opus'
     'qrencode'
-    'quirc'
+    'quirc-llvm'
     'rav1e'
     'rockchip-mpp-llvm'
     'rtmpdump'
     'rubberband'
     'sdl2'
-    'shine'
+    'shine-llvm'
     'smbclient'
     'snappy'
     'sndio'
@@ -121,13 +121,13 @@ depends=(
     'vapoursynth' # loaded on-demand by dlopen()
     'vid.stab'
     'vmaf'
-    'vo-amrwbenc'
+    'vo-amrwbenc-llvm'
     'vulkan-icd-loader' # loaded on-demand by dlopen()
     'vvenc-llvm'
     'x264'
     'x265'
-    'xavs'
-    'xavs2'
+    'xavs-llvm'
+    'xavs2-llvm'
     'xevd-llvm'
     'xeve-llvm'
     'xvidcore'
