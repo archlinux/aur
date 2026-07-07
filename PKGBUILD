@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=fjira
-pkgver=1.5.3
+pkgver=1.5.5
 pkgrel=1
 pkgdesc='Audit Git repos for secrets and keys'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('AGPL-3.0-only')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("git+https://github.com/mk-5/fjira.git#tag=${pkgver}")
-b2sums=('0984d0e9a04346292c87d197c376c4e22065e5a4e4c1282ab869ba7418caf0db0596388c6478152318130956c82ba569826a0dad3f7006197f6e3906d5a971a9')
+b2sums=('347f6da04ba0a149ea253016fed63c05c85402ff4d3d75793e266fdc227f991343527edfd3ce6d53092525410aa42baca60acc85c7f4ef2a68ccc156fa52f84f')
 
 build() {
   cd ${pkgname}
