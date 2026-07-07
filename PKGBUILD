@@ -41,6 +41,7 @@ build() {
   cd "$_srcroot/vega"
   npm ci
   npm run build
+  npm prune --omit=dev
 }
 
 package() {
@@ -49,6 +50,7 @@ package() {
 
   install -dm755 "$pkgdir/usr/lib/lyra-vega"
   cp -r vega/out/* "$pkgdir/usr/lib/lyra-vega/"
+  cp -r vega/node_modules "$pkgdir/usr/lib/lyra-vega/node_modules"
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/vega" <<'WRAPPER'
 #!/bin/sh
