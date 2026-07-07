@@ -1,6 +1,6 @@
 pkgbase = ferrisscope-bin
 	pkgdesc = Rust-native, open-source desktop IDE for Kubernetes
-	pkgver = 1.0.30
+	pkgver = 1.0.31
 	pkgrel = 1
 	url = https://github.com/dzcorp/FerrisScope
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ferrisscope-bin
 	provides = ferrisscope
 	conflicts = ferrisscope
 	conflicts = ferrisscope-git
-	source = ferrisscope-bin-1.0.30.deb::https://github.com/dzcorp/FerrisScope/releases/download/v1.0.30/FerrisScope_1.0.30_amd64-linux-x64.deb
-	sha256sums = a16f25e36d22b944811bc735a0f964ae199b14dcda60f63501ac8c56d82bfdaf
+	source = ferrisscope-bin-1.0.31.deb::https://github.com/dzcorp/FerrisScope/releases/download/v1.0.31/FerrisScope_1.0.31_amd64-linux-x64.deb
+	sha256sums = f7322c12e0544c5fdad32fd5d0325430ad1fcc3ff0dcc6e1ec7e27db4e0ca139
 
 pkgname = ferrisscope-bin
