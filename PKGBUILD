@@ -88,7 +88,7 @@ urls=(
 i=-1; while [[ "$i" -lt "${#urls[@]}" ]]
   do
     ((i++)); echo "checking ${urls[$i]}..."
-    if [[ -f "$_pkgsrc.$_pkgext" ]] || curl --output /dev/null --silent --head --fail --max-time 5 "${urls[$i]}"; then
+    if [[ -f "$_pkgsrc.$_pkgext" ]] || curl --output /dev/null --location --silent --head --fail --max-time 5 "${urls[$i]}"; then
        _pkgsrc_final="${urls[$i]}"; break
     fi
 done
