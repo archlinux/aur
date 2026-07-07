@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/tkmxqrdxddd/EclipseLock"
 license=('MIT')
 depends=('openssl' 'gtkmm3' 'gtk3')
-makedepends=('cmake' 'gcc' 'make')
+makedepends=('cmake' 'gcc' 'make' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tkmxqrdxddd/EclipseLock/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 

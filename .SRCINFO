@@ -8,6 +8,7 @@ pkgbase = eclipselock
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = make
+	makedepends = pkg-config
 	depends = openssl
 	depends = gtkmm3
 	depends = gtk3
