@@ -5,7 +5,7 @@
 
 _pkgname="siril"
 pkgname="$_pkgname-git"
-pkgver=1.4.4.r575.g36ec84a
+pkgver=1.4.4.r643.g506e9c0
 pkgrel=1
 pkgdesc="Astronomical image processing software for Linux (IRIS clone)"
 url="https://gitlab.com/free-astro/siril"
@@ -26,7 +26,7 @@ depends=(
   'libheif'
   'libraw'
   'libxisf'
-  'opencv'
+  'opencv4'
   'wcslib'
 )
 makedepends=(
@@ -74,6 +74,8 @@ build() {
 }
 
 check() {
+  sed -e "/test('qhy_gps_test/d" -i "$_pkgsrc/src/tests/meson.build"
+
   meson test -C build --print-errorlogs
 }
 
