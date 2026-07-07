@@ -1,0 +1,19 @@
+pkgbase = orca-rs
+	pkgdesc = Orca live coding environment, ported to Rust (terminal UI with MIDI/OSC/UDP output)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://prosjekt.klingenbergbygg.no/bl/orca-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = alsa-lib
+	optdepends = pipewire-alsa: expose the MIDI port through PipeWire
+	provides = orca-rs
+	conflicts = orca-rs-git
+	conflicts = orca-rs-bin
+	source_x86_64 = orca-rs-v0.1.0-x86_64.tar.gz::https://prosjekt.klingenbergbygg.no/bl/orca-rs/releases/download/v0.1.0/orca-rs-v0.1.0-x86_64.tar.gz
+	sha256sums_x86_64 = b340783f196cf030d968e25765f41d982356960d1bae8b9c757391eb3e506065
+	source_aarch64 = orca-rs-v0.1.0-aarch64.tar.gz::https://prosjekt.klingenbergbygg.no/bl/orca-rs/releases/download/v0.1.0/orca-rs-v0.1.0-aarch64.tar.gz
+	sha256sums_aarch64 = cc8ac657c448744c52a365cdfa1473e5ae542a9cbeac3904ea6a1f0cdacdf282
+
+pkgname = orca-rs
