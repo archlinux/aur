@@ -3,7 +3,7 @@
 
 _pkgname=tls-client
 pkgname=tls-client-git
-pkgver=r371.1522d2e
+pkgver=1.15.1.r2.gb790a31
 pkgrel=1
 pkgdesc="net/http.Client-like HTTP client with selectable TLS fingerprints"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ url="https://github.com/bogdanfinn/tls-client"
 license=('BSD-4-Clause')
 depends=('glibc')
 makedepends=('go' 'git')
-provides=('tls-client' 'lib-tls-client' 'libtls-client.so' 'tls-client.so')
-conflicts=('tls-client' 'lib-tls-client' 'lib-tls-client-git')
+provides=('tls-client' 'lib-tls-client')
+conflicts=('tls-client' 'lib-tls-client')
 source=("git+${url}.git" "${_pkgname}.pc.in")
 sha256sums=('SKIP'
             '082b1fb28aa31320960d5f523dc2419f09958602577ed3f5184f5bb55896a2bc')
@@ -20,8 +20,7 @@ sha256sums=('SKIP'
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  # Get the version number.
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
