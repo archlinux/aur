@@ -1,0 +1,20 @@
+pkgbase = lyra-vega
+	pkgdesc = Centro de controle do Lyra OS
+	pkgver = 0.0
+	pkgrel = 1
+	url = https://github.com/britors/Vega
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = npm
+	depends = electron31
+	depends = vegad
+	optdepends = flatpak: origem Flathub para o módulo Software
+	optdepends = restic: motor do módulo Backup
+	provides = vega
+	provides = lyrae
+	conflicts = vega
+	conflicts = lyrae
+	source = Vega::git+https://github.com/britors/Vega.git#branch=main
+	sha256sums = SKIP
+
+pkgname = lyra-vega

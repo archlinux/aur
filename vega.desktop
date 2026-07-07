@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Vega
+Comment=Centro de controle do Lyra OS
+GenericName=Configurações do sistema
+Exec=/usr/bin/vega %U
+Icon=vega
+Terminal=false
+Categories=Settings;System;
+StartupWMClass=vega
