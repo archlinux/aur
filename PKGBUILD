@@ -1,7 +1,7 @@
 # Maintainer: Nekef Chk <nekef@duck.com>
 pkgname=hashfs
 pkgver=1.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A production-grade userspace file system featuring live cryptographic data integrity verification."
 arch=('x86_64')
 url="https://github.com/nekef/hashfs"

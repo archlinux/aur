@@ -1,7 +1,7 @@
 pkgbase = hashfs
 	pkgdesc = A production-grade userspace file system featuring live cryptographic data integrity verification.
 	pkgver = 1.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/nekef/hashfs
 	arch = x86_64
 	license = GPL3
