@@ -12,7 +12,7 @@ pkgbase = qdrant
 	makedepends = protobuf
 	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/qdrant/qdrant/archive/v1.17.0.tar.gz
-	sha256sums = 38acd9ad284c8446e82d1d00037d08afa9c347e674a1ed023d62206df6432cb4
+	source = qdrant-1.17.0.tar.gz::https://github.com/qdrant/qdrant/archive/v1.17.0.tar.gz
+	sha256sums = 6ee985c23a8290bfa1b3792723f599274e37cd8fefe615e669860689ed883c95
 
 pkgname = qdrant

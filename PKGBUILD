@@ -1,8 +1,8 @@
-# Contributor: haxibami <contact at haxibami dot net>
-# Contributor: tee < teeaur at duck dot com >
+# Maintainer: Jason Landbridge <JasonLandbridge at aur dot archlinux dot org>
+# Packaging repository: https://github.com/JasonLandbridge/Arch-Linux-AUR-Packages-Updater/tree/main/qdrant
 
 pkgname=qdrant
-pkgver=1.17.0
+pkgver=1.17.0 # renovate: datasource=github-tags depName=qdrant/qdrant
 pkgrel=1
 pkgdesc="Vector Database for the next generation of AI applications"
 arch=('x86_64')
@@ -11,9 +11,9 @@ license=('Apache-2.0')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'cmake' 'mold' 'clang' 'protobuf')
 source=(
-  "https://github.com/qdrant/qdrant/archive/v${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/qdrant/qdrant/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('38acd9ad284c8446e82d1d00037d08afa9c347e674a1ed023d62206df6432cb4')
+sha256sums=('6ee985c23a8290bfa1b3792723f599274e37cd8fefe615e669860689ed883c95')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
