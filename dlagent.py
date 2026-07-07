@@ -31,7 +31,7 @@ def show_progress(count, block_size, total_size):
         bar.start()
     bar.update(min(count * block_size, total_size))
 
-if "www.bricsys.com" in file_url:
+if "bricscad.octave.com" in file_url:
     if 'fr' in locale.getlocale()[0]:
         print("Veuillez entrer votre nom d'utilisateur/email Bricsys avec votre mot de passe pour télécharger le fichier source")
     else:
