@@ -11,7 +11,7 @@ pkgdesc="Centro de controle do Lyra OS"
 arch=('x86_64')
 url="https://github.com/britors/Vega"
 license=('GPL-3.0-only')
-depends=('electron31' 'vegad')
+depends=('electron31-bin' 'vegad')
 optdepends=(
   'flatpak: origem Flathub para o módulo Software'
   'restic: motor do módulo Backup'
