@@ -15,7 +15,7 @@ source=(
   "modde-${pkgver//_/-}-x86_64-linux.tar.gz::https://codeberg.org/caniko/rs-modde/releases/download/${pkgver//_/-}/modde-${pkgver//_/-}-x86_64-linux.tar.gz"
   "rs-modde-${pkgver//_/-}.tar.gz::https://codeberg.org/caniko/rs-modde/releases/download/${pkgver//_/-}/rs-modde-${pkgver//_/-}.tar.gz"
 )
-sha256sums=('cbd69f4602de15df6fdcb6d88c3d313b5f65c38780fd1f7a0293dff28333129a'
+sha256sums=('d0b9219f70a54143648ddc811ec0dff99f1c70b1bf417de62725c6d70b178b34'
             'a677aea5fe63b187c330e63c070259eb4b8f0fcba20df8e288d9edbb0cb95467')
 
 package() {

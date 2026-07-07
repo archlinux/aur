@@ -19,7 +19,7 @@ pkgbase = modde-bin
 	conflicts = modde-git
 	source = modde-0.6.0-x86_64-linux.tar.gz::https://codeberg.org/caniko/rs-modde/releases/download/0.6.0/modde-0.6.0-x86_64-linux.tar.gz
 	source = rs-modde-0.6.0.tar.gz::https://codeberg.org/caniko/rs-modde/releases/download/0.6.0/rs-modde-0.6.0.tar.gz
-	sha256sums = cbd69f4602de15df6fdcb6d88c3d313b5f65c38780fd1f7a0293dff28333129a
+	sha256sums = d0b9219f70a54143648ddc811ec0dff99f1c70b1bf417de62725c6d70b178b34
 	sha256sums = a677aea5fe63b187c330e63c070259eb4b8f0fcba20df8e288d9edbb0cb95467
 
 pkgname = modde-bin
