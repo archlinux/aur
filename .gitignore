@@ -1,5 +1,5 @@
 *~
-/*.tar.xz
+/v*.tar.gz
 /pkg
 /src
 /with-editor
