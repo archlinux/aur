@@ -1,6 +1,6 @@
 pkgbase = cleanuparr-bin
 	pkgdesc = Tool for automating the cleanup of unwanted or blocked files in Sonarr, Radarr, and supported download clients like qBittorrent, Deluge and Transmission.
-	pkgver = 2.9.15
+	pkgver = 2.9.16
 	pkgrel = 1
 	url = https://github.com/Cleanuparr/Cleanuparr
 	install = cleanuparr.install
@@ -22,9 +22,9 @@ pkgbase = cleanuparr-bin
 	sha256sums = 4606d163398bbfa37f8f6b8967c0bee7c950823f766983699194828f0f8b008e
 	sha256sums = 9a16872bfaeb80898641efc70a92a559c49f3893b792b2ce9be9a4cf7143dbe4
 	sha256sums = 19f295bd0b4d3bb046a4e1bef2808277cdf033297aace97b9e719eec4d2c045e
-	source_x86_64 = Cleanuparr-2.9.15-linux-adm64.zip::https://github.com/Cleanuparr/Cleanuparr/releases/download/v2.9.15/Cleanuparr-2.9.15-linux-amd64.zip
-	sha256sums_x86_64 = 16d8d7eb3f71e686967106f1a0500b06e34846bbfc2456c198dd56b603c66ebe
-	source_aarch64 = Cleanuparr-2.9.15-linux-arm64.zip::https://github.com/Cleanuparr/Cleanuparr/releases/download/v2.9.15/Cleanuparr-2.9.15-linux-arm64.zip
-	sha256sums_aarch64 = ede453618f052c1ee6e6ea03818fa3ffd9027cd91a697f2beb6d41d883b4f129
+	source_x86_64 = Cleanuparr-2.9.16-linux-adm64.zip::https://github.com/Cleanuparr/Cleanuparr/releases/download/v2.9.16/Cleanuparr-2.9.16-linux-amd64.zip
+	sha256sums_x86_64 = 8f1964add36f50465a0ff9134dc1908601b6afa4eb34b0f17cecb23e8a759d72
+	source_aarch64 = Cleanuparr-2.9.16-linux-arm64.zip::https://github.com/Cleanuparr/Cleanuparr/releases/download/v2.9.16/Cleanuparr-2.9.16-linux-arm64.zip
+	sha256sums_aarch64 = 910875a6070becaecb7455c58030e14df34f8f1ee4fca643d797931f77251c2e
 
 pkgname = cleanuparr-bin
