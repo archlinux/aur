@@ -1,6 +1,6 @@
 pkgbase = christ-cli
 	pkgdesc = TUI Bible reader
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/whoisyurii/christ-cli
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = christ-cli
 	depends = libgcc
 	depends = libgcc_s.so
 	depends = glibc
-	source = https://github.com/whoisyurii/christ-cli/archive/v0.6.0/christ-cli-0.6.0.tar.gz
-	sha256sums = cd92760fb5d92b4f667e461c6008a67ff731a32ab97f3639455f71b8fec74a12
+	source = https://github.com/whoisyurii/christ-cli/archive/v0.6.1/christ-cli-0.6.1.tar.gz
+	sha256sums = 9e53924e336a0488da0905f36685711132e0159e1a59f150d20445dc15519139
 
 pkgname = christ-cli
