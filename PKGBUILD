@@ -40,24 +40,24 @@ pkgver() {
   fi
 }
 
-_srcroot="${VEGA_SOURCE_DIR:-$srcdir/Vega}"
-
 build() {
+  local _srcroot="${VEGA_SOURCE_DIR:-$srcdir/Vega}"
   cd "$_srcroot/vegad"
   go build -trimpath -ldflags "-X github.com/lyraos/vegad/internal/version.Version=${pkgver}" \
     -o vegad ./cmd/vegad
 }
 
 package() {
+  local _srcroot="${VEGA_SOURCE_DIR:-$srcdir/Vega}"
   cd "$_srcroot"
 
   install -Dm755 vegad/vegad "$pkgdir/usr/lib/vega/vegad"
-  install -Dm644 vegad.service \
+  install -Dm644 packaging/vegad/vegad.service \
     "$pkgdir/usr/lib/systemd/system/vegad.service"
-  install -Dm644 org.lyraos.Vega1.conf \
+  install -Dm644 packaging/vegad/org.lyraos.Vega1.conf \
     "$pkgdir/usr/share/dbus-1/system.d/org.lyraos.Vega1.conf"
-  install -Dm644 org.lyraos.vega.policy \
+  install -Dm644 packaging/vegad/org.lyraos.vega.policy \
     "$pkgdir/usr/share/polkit-1/actions/org.lyraos.vega.policy"
-  install -Dm644 vega-build.conf \
+  install -Dm644 packaging/vegad/sysusers.d/vega-build.conf \
     "$pkgdir/usr/lib/sysusers.d/vega-build.conf"
 }
