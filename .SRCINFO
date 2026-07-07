@@ -1,6 +1,6 @@
 pkgbase = plasma-wayland-protocols-git
 	pkgdesc = Plasma Specific Protocols for Wayland (Git version)
-	pkgver = 1.21.0.r2.g39de705
+	pkgver = 1.21.0.r7.gc421474
 	pkgrel = 1
 	url = https://invent.kde.org/libraries/plasma-wayland-protocols
 	arch = any
