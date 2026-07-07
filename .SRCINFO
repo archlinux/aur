@@ -1,7 +1,7 @@
 pkgbase = opencv4
 	pkgdesc = Open Source Computer Vision Library (version 4.x)
 	pkgver = 4.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/opencv/opencv
 	arch = x86_64
 	license = Apache-2.0
