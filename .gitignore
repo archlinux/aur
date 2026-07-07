@@ -1,6 +1,7 @@
 /*.tar.xz
 /*.tar.gz
 /*.tar.zst
+/kaeru-mcp
 /pkg
 /src
 /cache

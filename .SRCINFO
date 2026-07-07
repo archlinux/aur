@@ -1,17 +1,18 @@
 pkgbase = kaeru-mcp
 	pkgdesc = Cross-agent cognitive engine for LLM agents
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LamantinAI/kaeru
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = clang
+	makedepends = git
 	depends = glibc
 	depends = gcc-libs
-	source = kaeru-mcp-0.4.1.tar.gz::https://github.com/LamantinAI/kaeru/archive/refs/tags/v0.4.1.tar.gz
+	source = kaeru-mcp::git+https://github.com/LamantinAI/kaeru.git#tag=v0.4.1
 	source = kaeru-mcp.service
-	sha256sums = cee2f048a0c1ab6eebab213bc3927c5face68ee82dbd852ee36779899f7b361f
-	sha256sums = 06dfc9aa8d89f28ac8b2517a9034fe70508c7afdce76d8fb944665a7e0b94492
+	sha256sums = 0368109ae17fc8bffc24d71dcd019274f38249588ea3f7e229a2ef618e16f32c
+	sha256sums = 7903bf86742dee200aaf362888a9446282aecd113dbbbb29768fd8ef5044c1ad
 
 pkgname = kaeru-mcp
