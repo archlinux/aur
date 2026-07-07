@@ -7,7 +7,6 @@ pkgbase = python-unicodeit
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/u/unicodeit/unicodeit-0.7.5.tar.gz
