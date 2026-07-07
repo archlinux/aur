@@ -1,7 +1,7 @@
 # Maintainer: Dmitriy Q krotesk <at> mail <dot> ru
 pkgname=meshapp-bin
 fullpkgname=meshapp-MeshApp
-pkgver=2.2.4
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="A full-featured desktop client for managing devices and communication in the Meshtastic mesh network."
 arch=('any')
@@ -15,7 +15,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 #source=("${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 source=("${url}/releases/download/v${pkgver}/MeshApp-v${pkgver}-x86_64.flatpak")
-sha256sums=('5628cf904e52a1c72de4834a089f73c3bd41654f550439a2fe4383a731358300')
+sha256sums=('ca5de4dbcf4d1be75c1bd2079cab4e2c660bdcb9b13f691d93c57c0b7108b76c')
 
 prepare(){
     bsdtar xzf data.tar.zst -C "${pkgdir}"
