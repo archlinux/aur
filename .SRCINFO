@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium-widevine-bin
 	pkgdesc = A lightweight approach to removing Google web service dependency (with Widevine)
-	pkgver = 149.0.7827.200
+	pkgver = 150.0.7871.46
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -40,15 +40,15 @@ pkgbase = ungoogled-chromium-widevine-bin
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
-	provides = chromium=149.0.7827.200
-	provides = chromedriver=149.0.7827.200
+	provides = chromium=150.0.7871.46
+	provides = chromedriver=150.0.7871.46
 	conflicts = chromium
 	conflicts = chromedriver
-	noextract = google-chrome-stable_149.0.7827.200-1_amd64.deb
+	noextract = google-chrome-stable_150.0.7871.46-1_amd64.deb
 	options = !strip
-	source = ungoogled-chromium-149.0.7827.200-1-x86_64.pkg.tar.zst::https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/149.0.7827.200-1/ungoogled-chromium-149.0.7827.200-1-x86_64.pkg.tar.zst
-	source = google-chrome-stable_149.0.7827.200-1_amd64.deb::https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_149.0.7827.200-1_amd64.deb
-	sha256sums = 338e594e19cb26e8a1f082583fd66ad1455c1c2408d915e100bd314e4d9a3bf8
-	sha256sums = 1c308fae11f8e27293afa1739bd4aa015fd5766b72c75ce72195ec3e41a612a8
+	source = ungoogled-chromium-150.0.7871.46-1-x86_64.pkg.tar.zst::https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/150.0.7871.46-1/ungoogled-chromium-150.0.7871.46-1-x86_64.pkg.tar.zst
+	source = google-chrome-stable_150.0.7871.46-1_amd64.deb::https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_150.0.7871.46-1_amd64.deb
+	sha256sums = 350e632f7ef9bade38bd90a7901e39862a3ae512e3203edf0c39759de153ff0a
+	sha256sums = 69b40139fb73a021a749f32fcde0853fb1781b6f3a8b3caf173ad8f6747faa7c
 
 pkgname = ungoogled-chromium-widevine-bin
