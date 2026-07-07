@@ -1,0 +1,21 @@
+pkgbase = nxist-wifi-login
+	pkgdesc = CLI tool for NXIST campus WiFi portal authentication and session management
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Neboer/NXIST-WiFi-Login
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-beautifulsoup4
+	depends = python-platformdirs
+	depends = python-tabulate
+	depends = python-wcwidth
+	source = nxist-wifi-login-0.1.0.tar.gz::https://github.com/Neboer/NXIST-WiFi-Login/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 227a193eeb499cfe2194f5621913c0bc559ba1fed846ea89d61450ad9c81ee99
+
+pkgname = nxist-wifi-login
