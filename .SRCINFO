@@ -1,7 +1,7 @@
 pkgbase = cashonize-appimage
 	pkgdesc = A Bitcoin Cash (BCH) Wallet which supports CashTokens, WalletConnect and CashConnect.
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cashonize.com/
 	arch = x86_64
 	depends = fuse2

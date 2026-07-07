@@ -2,7 +2,7 @@
 
 pkgname=cashonize-appimage
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Bitcoin Cash (BCH) Wallet which supports CashTokens, WalletConnect and CashConnect."
 provides=('cashonize')
 conflicts=('cashonize')
@@ -22,7 +22,8 @@ prepare() {
   rm -rf squashfs-root
   chmod +x ${_filename}
   ./${_filename} --appimage-extract
-  sed -i -e "s|Exec=.\+|Exec=env APPIMAGELAUNCHER_DISABLE=1 DESKTOPINTEGRATION=0 /usr/bin/Cashonize.AppImage --no-sandbox|" squashfs-root/${_desktop_name}
+  sed -i -e "s|Exec=.\+|Exec=env APPIMAGELAUNCHER_DISABLE=1 DESKTOPINTEGRATION=0 /usr/bin/Cashonize.AppImage --no-sandbox|" \
+         -e "s|StartupWMClass=.\+|StartupWMClass=cashonize|" squashfs-root/${_desktop_name}
 }
 
 package() {
