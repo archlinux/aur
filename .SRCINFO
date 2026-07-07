@@ -1,6 +1,6 @@
 pkgbase = hashfs
 	pkgdesc = A production-grade userspace file system featuring live cryptographic data integrity verification.
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 5
 	url = https://github.com/nekef/hashfs
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = hashfs
 	makedepends = gcc
 	makedepends = pkg-config
 	depends = fuse3
-	source = hashfs-1.0.1.tar.gz::https://github.com/nekef/hashfs/archive/refs/tags/v1.0.1.tar.gz
+	source = hashfs-1.0.2.tar.gz::https://github.com/nekef/hashfs/archive/refs/tags/v1.0.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = hashfs
