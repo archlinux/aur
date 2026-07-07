@@ -1,0 +1,16 @@
+pkgbase = ricoh-mp2014-gdi
+	pkgdesc = Ricoh MP 2014 series printer driver (GDI)
+	pkgver = 1.01
+	pkgrel = 1
+	url = https://support.ricoh.com/bb/html/dr_ut_e/apc/model/mp2014/mp2014.htm?lang=en
+	arch = x86_64
+	license = custom:proprietary
+	makedepends = 7zip
+	depends = cups
+	depends = lib32-libcups
+	provides = ricoh-mp2014-gdi
+	conflicts = ricoh-mp2014-gdi
+	source = https://support.ricoh.com/bb/pub_e/dr_ut_e/0001276/0001276935/V101/z71456en.exe
+	sha256sums = 3b827a2f9ced1d985b6f3928d951790fc54f509b425a8cdbdf383bb356c43562
+
+pkgname = ricoh-mp2014-gdi
