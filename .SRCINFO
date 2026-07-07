@@ -1,6 +1,6 @@
 pkgbase = prosa
 	pkgdesc = Editor de texto moderno, open source e em modo escuro — suíte Rodrigo Brito
-	pkgver = 4.0.5
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/britors/Prosa
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = prosa
 	depends = libsecret
 	depends = at-spi2-core
 	optdepends = xdg-utils: abrir links externos
-	noextract = prosa-4.0.5.deb
+	noextract = prosa-4.1.0.deb
 	options = !strip
 	options = !debug
-	source = prosa-4.0.5.deb::https://github.com/britors/Prosa/releases/download/v4.0.5/prosa_4.0.5_amd64.deb
-	sha256sums = 7bd1eda343d79e4855d25c8714ff39ab4cc9fbbbd308be003fd052a075bc0e0a
+	source = prosa-4.1.0.deb::https://github.com/britors/Prosa/releases/download/v4.1.0/prosa_4.1.0_amd64.deb
+	sha256sums = f805c945d9308f45ade37afa840a452f330ff66425e05e69ae8f5ce0bf9f7aae
 
 pkgname = prosa
