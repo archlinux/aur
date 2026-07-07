@@ -1,6 +1,6 @@
 pkgbase = gelly
 	pkgdesc = Music player for Jellyfin and Subsonic
-	pkgver = 1.8.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/Fingel/gelly
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = gelly
 	depends = gst-plugins-good
 	depends = org.freedesktop.secrets
 	options = !lto
-	source = gelly-1.8.0.tar.gz::https://github.com/Fingel/gelly/archive/refs/tags/v1.8.0.tar.gz
-	sha512sums = f2cf10a0e879abc3d57b33403d29fd8666cb32968ce52ad4246d10a84059fb52f7316ef0c468eb09081bfa3977247205631d14044c9fac2f90c6f215a9a10577
+	source = gelly-1.9.1.tar.gz::https://github.com/Fingel/gelly/archive/refs/tags/v1.9.1.tar.gz
+	sha512sums = 181ca22f5f15e43786f2f05d9a926a8bb3475569fdd0bed01c0f21358f171458afd5fe86d429d24d8b0856f87e6260d01d82be14af697a80e4c2678505a1cf63
 
 pkgname = gelly
