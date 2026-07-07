@@ -3,7 +3,7 @@
 
 pkgname=docker-mcp-git
 _pkgname=mcp-gateway
-pkgver=0.43.1.r3.ge8c9bab
+pkgver=0.43.1.r5.gdfadd36
 pkgrel=1
 pkgdesc='Docker CLI plugin for MCP Gateway - manage and run MCP servers in containers (git)'
 arch=('x86_64')
