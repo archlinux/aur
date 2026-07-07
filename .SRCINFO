@@ -1,16 +1,17 @@
 pkgbase = lise-app
 	pkgdesc = Lise++ Rare Isotope Beam Production Package
-	pkgver = 17.7
+	pkgver = 18.2.11
 	pkgrel = 1
 	url = https://lise.nscl.msu.edu/lise.html
 	arch = x86_64
-	source = https://lise.nscl.msu.edu/download/Linux/lise-app_v17.7.run
+	options = !strip
+	source = https://lise.nscl.msu.edu/download/Linux/lise-app_v18.2.11.run
 	source = https://lise.nscl.msu.edu/picture/emblem_little.gif
 	source = lise-app.desktop
 	source = lise-app.sh
-	sha256sums = b862b106c024987d0d01cf841c442453da2b7bd16df23224a46110773a3af397
+	sha256sums = 0a935a6d3e3663559ab30b2417b6ab6eef21405d59bf0467d51932111e98dce2
 	sha256sums = 1e3312bc55da1266b9870b2bcd133d2fc6c68117ffabfc814abce38cfa3ddc64
-	sha256sums = 7aa0046fbc68fdc28d4b59c68baf56f028de338edf408559fca336e3394b950e
+	sha256sums = b6c15ade3c761682614e3e2a62d95e70c94c74cafde26ede1e236ca62240c928
 	sha256sums = 9c39f463aa7da650e7017533a9c78e6f34d653b1d382cb5e05b037ea6b8a223e
 
 pkgname = lise-app
