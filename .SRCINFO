@@ -1,0 +1,21 @@
+pkgbase = cl-closure-common-git
+	pkgdesc = Shared code for Closure XML and Closure HTML
+	pkgver = r42.377f827
+	pkgrel = 1
+	url = https://cxml.common-lisp.dev/
+	arch = any
+	license = BSD
+	license = custom:LLGPL
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-trivial-gray-streams
+	depends = cl-babel
+	provides = cl-closure-common
+	conflicts = cl-closure-common
+	source = git+git://repo.or.cz/closure-common.git
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = a576d0daafc12603964073f349e188b49e18515e1fbd0c622014e5199759e0c5
+
+pkgname = cl-closure-common-git

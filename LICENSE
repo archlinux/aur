@@ -1,0 +1,89 @@
+Files: *
+Copyright:
+ Copyright (c) 1999 by Gilbert Baumann
+ Copyright (c) 2003 by Henrik Motakef
+ Copyright (c) 2004 knowledgeTools Int. GmbH
+ Copyright (c) 2004,2005 David Lichtebla
+License: LGPL
+ Preamble to the Gnu Lesser General Public License
+ .
+ The concept of the GNU Lesser General Public License version 2.1 ("LGPL")
+ has been adopted to govern the use and distribution of above-mentioned
+ application. However, the LGPL uses terminology that is more appropriate
+ for a program written in C than one written in Lisp. Nevertheless, the LGPL
+ can still be applied to a Lisp program if certain clarifications are made.
+ This document details those clarifications. Accordingly, the license for
+ the open-source Lisp applications consists of this document plus the LGPL.
+ Wherever there is a conflict between this document and the LGPL, this
+ document takes precedence over the LGPL.
+ .
+ A "Library" in Lisp is a collection of Lisp functions, data and foreign
+ modules. The form of the Library can be Lisp source code (for processing by
+ an interpreter) or object code (usually the result of compilation of source
+ code or built with some other mechanisms). Foreign modules are object code
+ in a form that can be linked into a Lisp executable. When we speak of
+ functions we do so in the most general way to include, in addition, methods
+ and unnamed functions. Lisp "data" is also a general term that includes the
+ data structures resulting from defining Lisp classes. A Lisp application
+ may include the same set of Lisp objects as does a Library, but this does
+ not mean that the application is necessarily a "work based on the Library"
+ it contains.
+ .
+ The Library consists of everything in the distribution file set before any
+ modifications are made to the files. If any of the functions or classes in
+ the Library are redefined in other files, then those redefinitions ARE
+ considered a work based on the Library. If additional methods are added to
+ generic functions in the Library, those additional methods are NOT
+ considered a work based on the Library. If Library classes are subclassed,
+ these subclasses are NOT considered a work based on the Library. If the
+ Library is modified to explicitly call other functions that are neither
+ part of Lisp itself nor an available add-on module to Lisp, then the
+ functions called by the modified Library ARE considered a work based on the
+ Library. The goal is to ensure that the Library will compile and run
+ without getting undefined function errors.
+ .
+ It is permitted to add proprietary source code to the Library, but it must
+ be done in a way such that the Library will still run without that
+ proprietary code present. Section 5 of the LGPL distinguishes between the
+ case of a library being dynamically linked at runtime and one being
+ statically linked at build time. Section 5 of the LGPL states that the
+ former results in an executable that is a "work that uses the Library."
+ Section 5 of the LGPL states that the latter results in one that is a
+ "derivative of the Library", which is therefore covered by the LGPL. Since
+ Lisp only offers one choice, which is to link the Library into an
+ executable at build time, we declare that, for the purpose applying the
+ LGPL to the Library, an executable that results from linking a "work that
+ uses the Library" with the Library is considered a "work that uses the
+ Library" and is therefore NOT covered by the LGPL.
+ .
+ Because of this declaration, section 6 of LGPL is not applicable to the
+ Library. However, in connection with each distribution of this executable,
+ you must also deliver, in accordance with the terms and conditions of the
+ LGPL, the source code of Library (or your derivative thereof) that is
+ incorporated into this executable.
+
+Files: hax.lisp
+Copyright: 2005,2007 David Lichteblau
+License: BSD
+ Redistribution and use  in source and binary   forms, with or  without
+ modification, are permitted provided that the following conditions are
+ met:
+ .
+ 1. Redistributions  of  source  code  must retain  the above copyright
+    notice, this list of conditions and the following disclaimer.
+ .
+ 2. Redistributions in  binary form must reproduce  the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution
+ .
+ THIS  SOFTWARE   IS PROVIDED ``AS  IS''   AND ANY  EXPRESS  OR IMPLIED
+ WARRANTIES, INCLUDING, BUT NOT LIMITED  TO, THE IMPLIED WARRANTIES  OF
+ MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE ARE DISCLAIMED.
+ IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+ INDIRECT,  INCIDENTAL,  SPECIAL, EXEMPLARY,  OR CONSEQUENTIAL  DAMAGES
+ (INCLUDING, BUT NOT LIMITED TO,   PROCUREMENT OF SUBSTITUTE GOODS   OR
+ SERVICES;  LOSS OF  USE,  DATA, OR  PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER  CAUSED AND ON ANY THEORY  OF LIABILITY,  WHETHER IN CONTRACT,
+ STRICT LIABILITY, OR  TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ IN ANY WAY  OUT OF THE  USE OF THIS SOFTWARE,  EVEN IF ADVISED OF  THE
+ POSSIBILITY OF SUCH DAMAGE.
