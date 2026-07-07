@@ -30,9 +30,9 @@ build() {
   local _date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
   
   go build -ldflags "
-    -X lota/shared.Version=${_pkgver}
-    -X lota/shared.Commit=${_commit}
-    -X lota/shared.BuildTime=${_date}
+    -X github.com/quonaro/lota/shared.Version=${_pkgver}
+    -X github.com/quonaro/lota/shared.Commit=${_commit}
+    -X github.com/quonaro/lota/shared.BuildTime=${_date}
     -extldflags '${LDFLAGS}'" \
     -o "$pkgname" .
 }
