@@ -1,12 +1,12 @@
 pkgbase = drawio-bin
 	pkgdesc = Diagram drawing application built on web technology
-	pkgver = 30.2.6
+	pkgver = 30.2.7
 	pkgrel = 1
 	url = https://github.com/jgraph/drawio
 	arch = any
 	license = Apache
 	options = !strip
-	source = drawio-30.2.6.war::https://github.com/jgraph/drawio/releases/download/v30.2.6/draw.war
-	sha512sums = 3b39079bdda0707d3a377a48e65fe7c38fd8cb0cbfa4d8337b35f91d35d68766c8b2cbc0b214753513567bc4c17b803486b345cd99ae94645e6f843a1ae42158
+	source = drawio-30.2.7.war::https://github.com/jgraph/drawio/releases/download/v30.2.7/draw.war
+	sha512sums = 23e0b4390ffc71fafc7df666fd62730366dc8c7be39e0e3626508ca694cdd69f42bdbd5c466648155c789c1e64477f19460f81af2e5a75cfab0900f4822ee6b4
 
 pkgname = drawio-bin
