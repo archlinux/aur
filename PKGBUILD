@@ -66,7 +66,6 @@ package() {
 	cd "${srcdir}/${_appname}-${pkgver}-${_CARCH}/" || exit
 
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
-	# install -Dm755 "${_appalias}" "${pkgdir}/usr/bin/${_appalias}"
 	rsync -l "${_appalias}" "${pkgdir}/usr/bin/${_appalias}"
 
 	install -Dm644 "completions/${_appname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_appname}"
@@ -78,7 +77,6 @@ package() {
 	install -Dm644 "completions/${_appalias}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_appalias}.fish"
 
 	install -Dm644 "${_appname}.1/${_appname}.1" "${pkgdir}/usr/share/man/man1/${_appname}.1"
-	# install -Dm644 "${_appname}.1/${_appalias}.1" "${pkgdir}/usr/share/man/man1/${_appalias}.1"
 	rsync -l "${_appname}.1/${_appalias}.1" "${pkgdir}/usr/share/man/man1/${_appalias}.1"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
