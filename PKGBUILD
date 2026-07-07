@@ -13,7 +13,7 @@ makedepends=('cargo' 'git')
 optdepends=(
   'gnupg: pinentry-cosmic is a pinentry program for gpg-agent'
   'openssh: cosmic-ssh-askpass is an SSH_ASKPASS helper for a plain ssh-agent'
-  'oo7-daemon: freedesktop Secret Service backend passphrases are cached in'
+  'oo7: freedesktop Secret Service backend passphrases are cached in'
   'gnome-keyring: alternative freedesktop Secret Service backend'
 )
 provides=("${_pkgname}")
