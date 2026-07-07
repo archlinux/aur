@@ -6,12 +6,9 @@ pkgdesc="Laboratory safety management information system"
 arch=('x86_64' 'aarch64')
 url="https://github.com/LIghtJUNction/lab-safety-system"
 license=('AGPL-3.0-only')
-depends=('gcc-libs' 'glibc' 'ca-certificates')
-makedepends=('git' 'npm' 'rustup')
-optdepends=(
-  'postgresql: database server when running locally'
-  'nginx: optional reverse proxy'
-)
+depends=('gcc-libs' 'glibc' 'ca-certificates' 'postgresql')
+makedepends=('clang' 'git' 'mold' 'npm' 'rustup')
+optdepends=('nginx: optional reverse proxy')
 provides=('lab-safety-system')
 conflicts=('lab-safety-system')
 source=(
@@ -22,7 +19,7 @@ source=(
   "lab-safety-system.sysusers"
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
-options=('!lto')
+options=('!lto' '!buildflags')
 
 pkgver() {
   cd lab-safety-system
@@ -31,6 +28,22 @@ pkgver() {
 
 prepare() {
   cd lab-safety-system
+  export CFLAGS=
+  export CXXFLAGS=
+  export CPPFLAGS=
+  export LDFLAGS=
+  export RUSTFLAGS="-C link-arg=-fuse-ld=mold"
+  unset CARGO_ENCODED_RUSTFLAGS
+  mkdir -p .cargo
+  cat > .cargo/config.toml <<'EOF'
+[target.x86_64-unknown-linux-gnu]
+linker = "clang"
+rustflags = ["-C", "link-arg=-fuse-ld=mold"]
+
+[target.aarch64-unknown-linux-gnu]
+linker = "clang"
+rustflags = ["-C", "link-arg=-fuse-ld=mold"]
+EOF
   git submodule update --init frontend
   cargo +1.96.0 fetch --locked
   npm --prefix frontend ci
@@ -38,8 +51,12 @@ prepare() {
 
 build() {
   cd lab-safety-system
-  cargo +1.96.0 build --release --locked
-  npm --prefix frontend run build
+  env -i \
+    HOME="$HOME" \
+    PATH="$PATH" \
+    RUSTFLAGS="-C link-arg=-fuse-ld=mold" \
+    cargo +1.96.0 build --release --locked
+  env -i HOME="$HOME" PATH="$PATH" npm --prefix frontend run build
 }
 
 package() {
