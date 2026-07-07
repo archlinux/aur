@@ -1,6 +1,6 @@
 pkgbase = modde
 	pkgdesc = Cross-platform game mod manager
-	pkgver = 0.4.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://codeberg.org/caniko/rs-modde
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = modde
 	depends = wayland
 	conflicts = modde-bin
 	conflicts = modde-git
-	source = rs-modde-0.4.0.tar.gz::https://codeberg.org/caniko/rs-modde/archive/0.4.0.tar.gz
-	sha256sums = b0fd3522892406d018a86cd82219e0356e82642c67fd4ba6525cb71dbc5d6e6c
+	source = rs-modde-0.6.0.tar.gz::https://codeberg.org/caniko/rs-modde/archive/0.6.0.tar.gz
+	sha256sums = dfdb5df7aff55447eee2b71c4fd535a1f389bbdef13b16837571255ef7329755
 
 pkgname = modde
