@@ -1,7 +1,7 @@
 pkgbase = gcl
 	pkgdesc = GNU Common Lisp
 	pkgver = 2.7.2pre34
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/gcl/
 	arch = i686
 	arch = x86_64
