@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=numara-bin
 _pkgname=Numara
-pkgver=7.2.0
+pkgver=7.2.1
 _electronversion=43
 pkgrel=1
 pkgdesc="Simple notepad calculator built on Electron, powered by Math.js.(Prebuilt version.Use system-wide electron)"
@@ -25,8 +25,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.rpm")
 sha256sums=('b944c7642b6a0ccf0c24e98d199d8bf4c8d556ebc7d87ddb9af98cab67b378b5'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('c15f6af040e034ded13c764cc893c0c1ab17cddd1771239cbc4f0b80a5b58e70')
-sha256sums_x86_64=('353593436b365cd03497c5af7536be0c060c50b4ea8538777ecd0c7c4cbe5184')
+sha256sums_aarch64=('c7285cdabbd29be42ee61781470bdfa32b78d6333945f81816538e04a982ab18')
+sha256sums_x86_64=('0c5e818d33e854eebb4ae78b892525c9c9df0a570eb92f004917a92edd93e9c8')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
