@@ -3,7 +3,7 @@
 _pkgname="opencv4"
 pkgname="$_pkgname"
 pkgver=4.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Computer Vision Library (version 4.x)"
 url="https://github.com/opencv/opencv"
 license=('Apache-2.0')
@@ -120,6 +120,7 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_LIBDIR="lib/$_pkgname"
     -DCMAKE_CXX_STANDARD=17
     -Wno-dev
 
@@ -164,7 +165,13 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 
-  rm "$pkgdir"/usr/lib/*.so
+  local _lib
+  for _lib in "$pkgdir/usr/lib/$_pkgname"/libopencv*.so.$pkgver; do
+    ln -sf "$_pkgname/${_lib##*/}" "$pkgdir/usr/lib/${_lib##*/}"
+  done
+
+  mv "$pkgdir/usr/lib/$_pkgname/pkgconfig" "$pkgdir/usr/lib/"
+
   rm -r "$pkgdir"/usr/bin/
   rm -r "$pkgdir"/usr/lib/python3*
 }
