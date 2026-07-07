@@ -5,7 +5,7 @@
 
 pkgname=openclaw
 pkgver=2026.6.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Multi-channel AI gateway with extensible messaging integrations'
 arch=(x86_64 aarch64)
 url=https://github.com/openclaw/openclaw
@@ -19,7 +19,7 @@ optdepends=(
     'ffmpeg: video-frames skill'
     'github-cli: github, gh-issues skills'
     'jq: session-logs, trello skills'
-    'openai-whisper: openai-whisper skill'
+    'python-openai-whisper: openai-whisper skill'
     'ripgrep: session-logs skill'
     'tmux: tmux skill'
     'uv: nano-pdf skill'

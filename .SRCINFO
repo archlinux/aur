@@ -1,7 +1,7 @@
 pkgbase = openclaw
 	pkgdesc = Multi-channel AI gateway with extensible messaging integrations
 	pkgver = 2026.6.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/openclaw/openclaw
 	install = openclaw.install
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = openclaw
 	optdepends = ffmpeg: video-frames skill
 	optdepends = github-cli: github, gh-issues skills
 	optdepends = jq: session-logs, trello skills
-	optdepends = openai-whisper: openai-whisper skill
+	optdepends = python-openai-whisper: openai-whisper skill
 	optdepends = ripgrep: session-logs skill
 	optdepends = tmux: tmux skill
 	optdepends = uv: nano-pdf skill
