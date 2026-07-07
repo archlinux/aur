@@ -1,6 +1,6 @@
 pkgbase = python-p115cipher
 	pkgdesc = 115 cipher module.
-	pkgver = 0.0.5.2
+	pkgver = 0.0.5.3
 	pkgrel = 1
 	url = https://pypi.org/project/p115cipher
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-p115cipher
 	conflicts = python-p115cipher
 	options = !strip
 	options = !debug
-	source = p115cipher-0.0.5.2.tar.gz::https://files.pythonhosted.org/packages/source/p/p115cipher/p115cipher-0.0.5.2.tar.gz
-	sha256sums = f1e5f163eeececa0e277b3c187e05d4b7b7643536f4c5184b13ed2cebc0513e5
+	source = p115cipher-0.0.5.3.tar.gz::https://files.pythonhosted.org/packages/source/p/p115cipher/p115cipher-0.0.5.3.tar.gz
+	sha256sums = d94354870932bfea659b3719b4773d702d565ea3d71498a9f8144bfcabb22eef
 
 pkgname = python-p115cipher
