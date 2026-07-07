@@ -7,18 +7,23 @@
 
 
 pkgname=kdenlive-release-git
-pkgver=24.08.1.r20587
+pkgver=26.04.3.r23784
 pkgrel=1
-pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (Latest Applications GIT Version)"
-arch=('i686' 'x86_64')
+pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF6 Frameworks (Latest Applications GIT Version)"
+arch=('x86_64')
 url="http://www.kdenlive.org/"
 license=('GPL-2.0-or-later')
-depends=( 'kfilemetadata' 'knewstuff' 'knotifyconfig' 'doxygen' 'ktextwidgets' 'qt6-multimedia'
-	  'mlt' 'hicolor-icon-theme' 'purpose' 'qt6-networkauth' 'python'
+depends=( 'karchive' 'kbookmarks' 'kcodecs' 'kcolorscheme' 'kcompletion'
+          'kconfig' 'kconfigwidgets' 'kcoreaddons' 'kcrash' 'kdbusaddons'
+          'kddockwidgets' 'kfilemetadata' 'kguiaddons' 'ki18n' 'kiconthemes'
+          'kio' 'kitemviews' 'knewstuff' 'knotifications' 'knotifyconfig'
+          'ktextwidgets' 'kwidgetsaddons' 'kxmlgui'
+          'ffmpeg' 'frei0r-plugins' 'mlt' 'opentimelineio' 'purpose'
+          'qt6-base' 'qt6-declarative' 'qt6-multimedia' 'qt6-networkauth' 'qt6-svg'
+          'solid' 'hicolor-icon-theme' 'python' 'qqc2-desktop-style'
 	)
-makedepends=('extra-cmake-modules' 'kdoctools5' 'git' 'v4l-utils' 'qt6-tools')
-optdepends=('ffmpeg: for FFmpeg plugin'
-            'cdrkit: for creation of DVD ISO images'
+makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'v4l-utils' 'qt6-tools')
+optdepends=('cdrkit: for creation of DVD ISO images'
             'dvdauthor: for creation of DVD'
             'dvgrab: for firewire capture'
             'libdv: for webcam capture (if FFmpeg is not installed)'
@@ -27,8 +32,7 @@ optdepends=('ffmpeg: for FFmpeg plugin'
 	    'perl-image-exiftool: for exif information'
 	    'mediainfo: for exif information'
 	    'oxygen-icons: optional for xfce'
-	    'breeze-icons: otional for default theme'
-	    'opentimelineio: interchange format for editorial timeline information'
+	    'breeze-icons: optional for default theme'
 	    'python-setuptools: for python modules'
 	    'python-vosk-bin: open source speech recognition')
 provides=('kdenlive')
@@ -39,7 +43,7 @@ conflicts=('kdenlive')
 #and save yourself from downloading the entire repo again, do:
 #git remote set-url https://invent.kde.org/multimedia/kdenlive
 #in the kdenlive git directory
-source=('git+https://invent.kde.org/multimedia/kdenlive#branch=release/24.08')
+source=('git+https://invent.kde.org/multimedia/kdenlive#branch=release/26.04')
 sha1sums=('SKIP')
 #install=$pkgname.install
 #options=(debug !strip)
