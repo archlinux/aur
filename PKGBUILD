@@ -10,7 +10,10 @@ license=('MIT')
 
 provides=('implot')
 depends=('imgui')
-makedepends=('cmake')
+makedepends=(
+'cmake'
+'git'
+)
 source=("git+https://github.com/epezent/implot.git"
 	'CMakeLists.txt'
 )

@@ -6,6 +6,7 @@ pkgbase = implot-git
 	arch = any
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	depends = imgui
 	provides = implot
 	source = git+https://github.com/epezent/implot.git
