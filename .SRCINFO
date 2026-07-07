@@ -1,0 +1,26 @@
+pkgbase = sysc-greet-cagebreak
+	pkgdesc = Graphical console greeter for greetd with ASCII art and themes (Cagebreak compositor)
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = https://github.com/Nomadcxx/sysc-greet
+	install = sysc-greet-cagebreak.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go>=1.25
+	depends = greetd
+	depends = kitty
+	depends = cagebreak
+	depends = socat
+	depends = gslapper
+	optdepends = swww: Legacy wallpaper support (fallback)
+	provides = sysc-greet
+	conflicts = sysc-greet
+	conflicts = sysc-greet-hyprland
+	conflicts = sysc-greet-sway
+	backup = etc/greetd/cagebreak-greeter-config
+	backup = etc/polkit-1/rules.d/85-greeter.rules
+	source = sysc-greet-1.1.8.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/refs/tags/v1.1.8.tar.gz
+	sha256sums = 9ae9d12b0bde987250df96dd60ebdfcc0bba104b7352ec1ed1fad44b6975e24b
+
+pkgname = sysc-greet-cagebreak

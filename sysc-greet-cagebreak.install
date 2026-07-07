@@ -1,0 +1,72 @@
+post_install() {
+    echo "==> Creating greeter user..."
+    if ! id greeter &>/dev/null; then
+        useradd -M -d /var/lib/greeter -G video,render,input -s /usr/bin/nologin greeter
+    else
+        usermod -d /var/lib/greeter -aG video,render,input greeter
+    fi
+
+    echo "==> Setting permissions..."
+    mkdir -p /var/cache/sysc-greet /var/lib/greeter/Pictures/wallpapers /var/lib/greeter/.cache /var/lib/greeter/.config /var/lib/greeter/.local/state
+    chown -R greeter:greeter /var/cache/sysc-greet
+    chown -R greeter:greeter /var/lib/greeter
+    chmod 755 /var/lib/greeter
+
+    echo "==> Configuring greetd for Cagebreak..."
+    if [ -f /etc/greetd/config.toml ]; then
+        cp /etc/greetd/config.toml /etc/greetd/config.toml.bak
+        echo "    Backed up existing config to /etc/greetd/config.toml.bak"
+    fi
+    cat > /etc/greetd/config.toml <<'EOF'
+[terminal]
+vt = 1
+
+[default_session]
+command = "cagebreak -e -c /etc/greetd/cagebreak-greeter-config"
+user = "greeter"
+EOF
+
+    echo "==> Enabling greetd service..."
+    systemctl enable greetd.service
+
+    echo ""
+    echo "                       ▄▀▀▀▀ █   █ ▄▀▀▀▀ ▄▀▀▀▀    ▄▀    ▄▀ "
+    echo "                        ▀▀▀▄ ▀▀▀▀█  ▀▀▀▄ █      ▄▀    ▄▀   "
+    echo "                       ▀▀▀▀  ▀▀▀▀▀ ▀▀▀▀   ▀▀▀▀ ▀     ▀     "
+    echo "                      //  SEE YOU SPACE COWBOY //          "
+    echo ""
+    echo "sysc-greet (Cagebreak) installed successfully!"
+    echo ""
+    echo "IMPORTANT: You must REBOOT to start using sysc-greet."
+    echo "           Logging out is NOT sufficient when switching compositors."
+    echo ""
+}
+
+post_upgrade() {
+    echo "==> Updating greeter groups..."
+    usermod -d /var/lib/greeter -aG video,render,input greeter 2>/dev/null || true
+
+    echo "==> Setting permissions..."
+    mkdir -p /var/cache/sysc-greet /var/lib/greeter/Pictures/wallpapers /var/lib/greeter/.cache /var/lib/greeter/.config /var/lib/greeter/.local/state
+    chown -R greeter:greeter /var/cache/sysc-greet 2>/dev/null || true
+    chown -R greeter:greeter /var/lib/greeter 2>/dev/null || true
+
+    echo ""
+    echo "                       ▄▀▀▀▀ █   █ ▄▀▀▀▀ ▄▀▀▀▀    ▄▀    ▄▀ "
+    echo "                        ▀▀▀▄ ▀▀▀▀█  ▀▀▀▄ █      ▄▀    ▄▀   "
+    echo "                       ▀▀▀▀  ▀▀▀▀▀ ▀▀▀▀   ▀▀▀▀ ▀     ▀     "
+    echo "                      //  SEE YOU SPACE COWBOY //          "
+    echo ""
+    echo "sysc-greet upgraded to v1.1.8"
+    echo ""
+    echo "What's new:"
+    echo "  v1.1.8: Cagebreak greeter compositor (replaces deprecated Hyprland), idle/effect CPU cuts"
+    echo ""
+    echo "IMPORTANT: You must REBOOT to apply changes."
+    echo "           Logging out is NOT sufficient when switching compositors."
+    echo ""
+}
+
+pre_remove() {
+    systemctl disable greetd.service 2>/dev/null || true
+}
