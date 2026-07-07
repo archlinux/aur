@@ -1,6 +1,6 @@
 pkgbase = tokscale
 	pkgdesc = CLI tool and TUI for tracking token usage and costs from AI coding agents
-	pkgver = 4.0.10
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/junhoyeo/tokscale
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = tokscale
 	conflicts = tokscale-bin
 	conflicts = tokscale-git
 	options = !lto
-	source = tokscale-4.0.10.tar.gz::https://github.com/junhoyeo/tokscale/archive/refs/tags/v4.0.10.tar.gz
-	b2sums = ce50479a2cf10ef14ae28e8e094305e794f6f40a213baed170dabf33012d938b95028fef6715087ac55403926065237ac9ed305b82087d423fbea7416cd1e687
+	source = tokscale-4.2.0.tar.gz::https://github.com/junhoyeo/tokscale/archive/refs/tags/v4.2.0.tar.gz
+	b2sums = 37e8ddc2fc48e88bbb0c2686dcedc054e1f71f55a05f6911b2b98ee7285f531f6b072ad80f1f5bba976106578c06eb723827ea377d399cf1bcbc41ceeb3a744d
 
 pkgname = tokscale
