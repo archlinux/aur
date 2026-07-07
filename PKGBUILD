@@ -2,7 +2,7 @@
 
 _name=napari-deeplabcut
 pkgname=python-${_name}
-pkgver=0.3.1.0
+pkgver=0.3.1.1
 pkgrel=1
 pkgdesc="Keypoint annotation tool for pose estimation"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 checkdepends=()
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('c4bc3a3643dd984f2045e59d5c06f299c7388fce1832ee7478ee0be7fddc5872')
+sha256sums=('dcc17cabdc8823a2f28dcf60820988f287f9565f367d85799a988bfbdd42433e')
 
 build() {
     cd "${srcdir}"/${_name//-/_}-${pkgver}
