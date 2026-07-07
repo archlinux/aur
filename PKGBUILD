@@ -430,9 +430,9 @@ export CXXFLAGS
 #WX_CONFIG="/usr/bin/wx-config-gtk3"
 #WX_CONFIG="wx-config-gtk3"
 #WX_CONFIG="wx-config-gtk2"
-#WX_CONFIG="wx-config-3.3.2"
+#WX_CONFIG="wx-config-3.3.3"
 #WX_CONFIG="wx-config"
-WX_CONFIG=$(command -v wx-config-3.3.2 wx-config-3.3.1 wx-config-3.3.0 wx-config-3.3 wx-config-3.2 wx-config | head -1);
+WX_CONFIG=$(command -v wx-config-3.3.3 wx-config-3.3.2 wx-config-3.3.1 wx-config-3.3.0 wx-config-3.3 wx-config-3.2 wx-config | head -1);
 
 echo;
 echo "WX_CONFIG: ${WX_CONFIG}";
