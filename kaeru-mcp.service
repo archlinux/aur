@@ -5,7 +5,7 @@ After=default.target
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/kaeru-mcp
+ExecStart=/usr/bin/kaeru-mcp
 Restart=always
 RestartSec=2
 
