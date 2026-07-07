@@ -2,7 +2,7 @@
 
 _srcname=PotreeConverter
 pkgname=potreeconverter
-pkgver=2.1.1
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Generator for octrees LOD structures for streaming and real-time rendering of massive point clouds"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/potree/PotreeConverter/archive/refs/tags/${pkgver}.tar.gz"
     '0001-cmake.patch'
 )
-b2sums=('193f57169b6e9acc49f2bf6666cac8e4c111f259558034f6d8e21c541bf8e8b4b5e911345d196e4d631b34300af0556a631206f6d8aba894eea356b87337aa2f'
+b2sums=('d1dda0d55da7575b7a63c223d1c1897b2fb4f3b200a7fb7baf20d570527d7fcb0d5513c6c42ca2e3a1a9e66c78aea4983a87e08893eae1420df1c7b12e57398c'
         'a1cbb7f16b781468d6a3b5854a01596643f8cf259eccb18c07b39e7949b3049d03acefbb34f034716462cf7646b5d98aec7f800118a08db51f30de446d81516b')
 
 prepare() {
