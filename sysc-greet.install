@@ -3,14 +3,15 @@ post_install() {
     # FIXED 2025-10-15 - Add render group for Intel/AMD iGPU support on laptops
     # Modern Linux uses 'render' group for /dev/dri/renderD* device access
     if ! id greeter &>/dev/null; then
-        useradd -M -G video,render,input -s /usr/bin/nologin greeter
+        useradd -M -d /var/lib/greeter -G video,render,input -s /usr/bin/nologin greeter
     else
         # User exists - ensure they have required groups for GPU access
         # CRITICAL: Fixes "greeter exited without creating session" on laptops
-        usermod -aG video,render,input greeter
+        usermod -d /var/lib/greeter -aG video,render,input greeter
     fi
 
     echo "==> Setting permissions..."
+    mkdir -p /var/cache/sysc-greet /var/lib/greeter/Pictures/wallpapers /var/lib/greeter/.cache /var/lib/greeter/.config /var/lib/greeter/.local/state
     chown -R greeter:greeter /var/cache/sysc-greet
     chown -R greeter:greeter /var/lib/greeter
     chmod 755 /var/lib/greeter
@@ -48,9 +49,10 @@ EOF
 post_upgrade() {
     echo "==> Updating greeter user groups..."
     # FIXED 2025-10-15 - Add render group for Intel/AMD iGPU support on laptops
-    usermod -aG video,render,input greeter 2>/dev/null || true
+    usermod -d /var/lib/greeter -aG video,render,input greeter 2>/dev/null || true
 
     echo "==> Setting permissions..."
+    mkdir -p /var/cache/sysc-greet /var/lib/greeter/Pictures/wallpapers /var/lib/greeter/.cache /var/lib/greeter/.config /var/lib/greeter/.local/state
     chown -R greeter:greeter /var/cache/sysc-greet 2>/dev/null || true
     chown -R greeter:greeter /var/lib/greeter 2>/dev/null || true
 
@@ -68,13 +70,13 @@ post_upgrade() {
     echo "                       ▀▀▀▀  ▀▀▀▀▀ ▀▀▀▀   ▀▀▀▀ ▀     ▀     "
     echo "                      //  SEE YOU SPACE COWBOY //          "
     echo ""
-    echo "sysc-greet upgraded to v1.1.7"
+    echo "sysc-greet upgraded to v1.1.8"
     echo ""
     echo "What's new:"
+    echo "  v1.1.8: Cagebreak compositor variant, idle/effect CPU cuts, greeter env fixes"
     echo "  v1.1.7: Fix startup wallpaper race and update Nix module compositor handling"
     echo "  v1.1.6: New backgrounds (Sonar, Cracktro, Plasma), condensed F3 notes"
     echo "  v1.1.5: Animation speed control (Slow/Normal/Fast), installer beam effect"
-    echo "  v1.1.4: Fix wallpaper startup race condition, remove source_profile global override"
     echo ""
     echo "IMPORTANT: You must REBOOT to apply changes."
     echo "           Logging out is NOT sufficient when switching compositors."
