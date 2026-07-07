@@ -4,7 +4,6 @@ version = 1
 path = [
     "PKGBUILD",
     ".SRCINFO",
-    ".nvchecker.toml",
     "*.install",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"

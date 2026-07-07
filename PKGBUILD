@@ -1,8 +1,8 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep-git
 _pkgbasename="${pkgname%-git}"
-pkgver=2.8.1.r257.a51ece7
-pkgrel=2.314
+pkgver=2.8.1+1.r258.29a545a
+pkgrel=1.314
 pkgdesc='A DjVu to PDF converter'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 provides=("$_pkgbasename")
 conflicts=("$_pkgbasename")
 checkdepends=(python-pytest)
-makedepends=(coreutils git python-uv-build python-build python-installer python-click-man)
+makedepends=(git python-uv-build python-build python-installer python-click-man)
 depends=(python python-djvulibre-python
          python-click python-rich python-pillow
          python-fpdf2 python-pdfrw)
