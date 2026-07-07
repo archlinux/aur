@@ -1,6 +1,6 @@
 # Maintainer: RamazanBerk20 <ramazanberksirin@protonmail.com>
 pkgname=mini-downloader-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="IDM/JDownloader-style download manager (aria2 + yt-dlp, browser capture) — binary release"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('mini-downloader')
 # NOTE: verify the exact asset filename against the GitHub release before
 # bumping pkgver — tauri derives it from the product name.
 source=("$url/releases/download/v$pkgver/Mini.Downloader_${pkgver}_amd64.deb")
-sha256sums=('bc7fb539f35a219b1fe5eb0e13a0dc30a0152994a032ea1739257146d2039058')
+sha256sums=('bae5bb53b04654e62c8dac504801c8dd4c1595abc39539d99331c2e2a04da97e')
 
 package() {
   # Repackage the Debian payload as-is.
