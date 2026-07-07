@@ -1,6 +1,6 @@
 pkgbase = awf-qt6
 	pkgdesc = Theme preview application for Qt 6
-	pkgver = 4.1.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/luigifab/awf-extended
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = awf-qt6
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	optdepends = qt6-style-globalqss: for theme support
-	source = https://github.com/luigifab/awf-extended/archive/v4.1.0/awf-extended-4.1.0.tar.gz
-	sha256sums = 2a7b103b383fcc54fd128e1b0fca972e2f23acab2532b9ed053fc40debea1514
+	source = https://github.com/luigifab/awf-extended/archive/v4.2.0/awf-extended-4.2.0.tar.gz
+	sha256sums = 17d8374e33e0c520177a87a06551a041d9b7fa926fe054a42e3e9abef694f80f
 
 pkgname = awf-qt6
