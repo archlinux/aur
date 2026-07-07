@@ -1,7 +1,7 @@
 # Maintainer: SHORiN <shorin@users.noreply.github.com>
 
 pkgname=miyu
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='活在终端里的二次元少女'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
   'zsh: zsh shell integration support'
 )
 source=("${pkgname}-${pkgver}-${pkgrel}-${CARCH}.release.pkg.tar.zst::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.zst")
-sha256sums=('ade3d8881b9224275ba7d44287d24e52f4686e373dab83bf73af172845b7735b')
+sha256sums=('26fe8aa17c7a92c27c34c305d9001cbfdc551da90907b3e7a826f2a21d522096')
 
 package() {
   install -Dm755 "${srcdir}/usr/bin/miyu" "${pkgdir}/usr/bin/miyu"
