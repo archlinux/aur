@@ -1,7 +1,7 @@
 pkgbase = bluetuith
 	pkgdesc = TUI-based bluetooth manager
-	pkgver = 0.2.6
-	pkgrel = 2
+	pkgver = 0.2.7
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/bluetuith-org/bluetuith
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = bluetuith
 	optdepends = networkmanager: PANU network tethering
 	optdepends = modemmanager: DUN network tethering
 	optdepends = pulse-native-provider: device audio profile management
-	source = bluetuith-0.2.6::git+https://github.com/bluetuith-org/bluetuith#tag=v0.2.6
-	b2sums = 639a2ee6b28cd9a08806644d5c97e54614757f912a5df3265dc5f36b3709b039b2e3ab26d31f023cf761de1c2a6321336978a4343a68435f3cfd1fc00e3ac21a
+	source = bluetuith::git+https://github.com/bluetuith-org/bluetuith#tag=v0.2.7
+	b2sums = dfe48a8ef8ee9b78b1b6a83082c9e7d0a1c7064dc492cdf8f295a5dfa6214a9f163f0d2a7c42fb8a2dd43ceaa329255d151ddc932506eac3ab88db1c1b90de6a
 
 pkgname = bluetuith

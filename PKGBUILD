@@ -4,8 +4,8 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: darkhz <kmachanwenw at gmail dot com>
 pkgname='bluetuith'
-pkgver='0.2.6'
-pkgrel='2'
+pkgver='0.2.7'
+pkgrel='1'
 epoch='1'
 pkgdesc='TUI-based bluetooth manager'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
@@ -19,10 +19,10 @@ optdepends=(
 	'modemmanager: DUN network tethering'
 	'pulse-native-provider: device audio profile management'
 )
-source=("$pkgname-$pkgver::git+$url#tag=v$pkgver")
-b2sums=('639a2ee6b28cd9a08806644d5c97e54614757f912a5df3265dc5f36b3709b039b2e3ab26d31f023cf761de1c2a6321336978a4343a68435f3cfd1fc00e3ac21a')
+source=("$pkgname::git+$url#tag=v$pkgver")
+b2sums=('dfe48a8ef8ee9b78b1b6a83082c9e7d0a1c7064dc492cdf8f295a5dfa6214a9f163f0d2a7c42fb8a2dd43ceaa329255d151ddc932506eac3ab88db1c1b90de6a')
 
-_sourcedirectory="$pkgname-$pkgver"
+_sourcedirectory="$pkgname"
 _bindir="$pkgname-$pkgver-bin"
 _gopath="$pkgname-$pkgver-gopath"
 
