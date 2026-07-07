@@ -10,7 +10,7 @@ _majorver=${pkgver%%.*}
 pkgrel=1
 pkgdesc='The GNU Compiler Collection with rust front-end'
 arch=(x86_64)
-license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
+license=('GPL-3.0-or-later WITH GCC-exception-3.1' GFDL-1.3-or-later)
 url='https://github.com/Rust-GCC/gccrs'
 makedepends=(
   binutils
@@ -32,13 +32,13 @@ checkdepends=(
   tcl
 )
 options=(!emptydirs !lto)
-_libdir=usr/lib/gcc/$CHOST/${pkgver%_*}
+_libdir=usr/lib/gcc/$CHOST/$_majorver
 source=("${pkgname%-git}::git+https://github.com/Rust-GCC/gccrs.git"
         c89 c99
 )
 sha256sums=('SKIP'
-            'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
-            '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a')
+            '7b09ec947f90b98315397af675369a1e3dfc527fa70013062e6e85c4be0275ab'
+            '44ea973558842f3f4bd666bdaf6e810fd7b7c7bd36b5cc4c69f93d2cd0124fc7')
 
 pkgver() {
   cd ${pkgbase%-git}
@@ -47,9 +47,6 @@ pkgver() {
 
 prepare() {
   cd gccrs
-
-  # Do not run fixincludes
-  sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
 
   # Arch Linux installs x86_64 libraries /lib
   sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
@@ -66,9 +63,9 @@ build() {
     --infodir=/usr/share/info
     --with-bugurl=https://cachyos.org/
     --with-build-config=bootstrap-lto
+    --with-gcc-major-version-only
     --with-linker-hash-style=gnu
     --with-system-zlib
-    --enable-__cxa_atexit
     --enable-cet=auto
     --enable-checking=release
     --enable-clocale=gnu
@@ -84,6 +81,7 @@ build() {
     --enable-plugin
     --enable-shared
     --enable-threads=posix
+    --disable-fixincludes
     --disable-libssp
     --disable-libstdcxx-pch
     --disable-werror
@@ -194,7 +192,6 @@ package_gccrs-git() {
     "$pkgdir/usr/share/gdb/auto-load/usr/lib/"
   rm "$pkgdir"/usr/lib{,32}/libstdc++.so*
 
-  make DESTDIR="$pkgdir" install-fixincludes
   make -C gcc DESTDIR="$pkgdir" install-mkheaders
 
   make -C lto-plugin DESTDIR="$pkgdir" install
@@ -222,6 +219,12 @@ package_gccrs-git() {
   # many packages expect this symlink
   ln -s gcc "$pkgdir"/usr/bin/cc
 
+  # create cc-rs compatible symlinks
+  # https://github.com/rust-lang/cc-rs/blob/1.0.73/src/lib.rs#L2578-L2581
+  for binary in {c++,g++,gcc,gcc-ar,gcc-nm,gcc-ranlib}; do
+    ln -s "/usr/bin/$binary" "$pkgdir/usr/bin/$CARCH-linux-gnu-$binary"
+  done
+
   # POSIX conformance launcher scripts for c89 and c99
   install -Dm755 "$srcdir/c89" "$pkgdir/usr/bin/c89"
   install -Dm755 "$srcdir/c99" "$pkgdir/usr/bin/c99"
@@ -233,8 +236,8 @@ package_gccrs-git() {
   rm -f "$pkgdir"/usr/lib32/lib{stdc++,gcc_s}.so
 
   # byte-compile python libraries
-  python -m compileall "$pkgdir/usr/share/gcc-${pkgver%_*}/"
-  python -O -m compileall "$pkgdir/usr/share/gcc-${pkgver%_*}/"
+  python -m compileall "$pkgdir/usr/share/gcc-$_majorver/"
+  python -O -m compileall "$pkgdir/usr/share/gcc-$_majorver/"
 
   # Install Runtime Library Exception
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
