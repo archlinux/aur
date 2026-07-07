@@ -8,10 +8,10 @@
 _pkgbase=transmission
 _pkgname=transmission-cli
 pkgname=transmission-cli-git
-pkgver=4.1.0.beta.5.r234.g7d3b22639
+pkgver=4.1.0.beta.5.r338.g7adb36c7a
 pkgrel=1
 arch=(x86_64 armv7h)
-url="https://www.transmissionbt.com/"
+url="https://github.com/${_pkgbase}/${_pkgbase}"
 license=(GPL-2.0-or-later)
 pkgdesc='Fast, easy, and free BitTorrent client (CLI tools and daemon and web client)'
 depends=(
@@ -34,7 +34,7 @@ makedepends=(
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 options=(!lto)
-source=("git+https://github.com/transmission/transmission.git"
+source=("git+$url.git"
 	transmission-cli.sysusers
 	transmission-cli.tmpfiles)
 sha256sums=('SKIP'
