@@ -264,6 +264,9 @@ END
       patch -d "$_pkgsrc_runtime" -Np1 -F100 -f -i "${srcdir:?}/$src"
     fi
   done
+
+  # workaround for missing EVENT__SIZEOF_TIME_T
+  sed -e '/CHECK_EVENT_SIZEOF(TIME_T/d' -i "$_pkgsrc_runtime"/ipc/chromium/src/base/message_pump_libevent.cc
 )
 
 build() (
