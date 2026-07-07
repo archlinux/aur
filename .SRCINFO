@@ -1,7 +1,7 @@
 pkgbase = python-djvulibre-python
 	pkgdesc = Python interface to DjVuLibre
 	pkgver = 0.9.3
-	pkgrel = 2.314
+	pkgrel = 3.314
 	url = https://github.com/FriedrichFroebel/python-djvulibre
 	arch = x86_64
 	license = GPL-2.0-only
@@ -9,7 +9,6 @@ pkgbase = python-djvulibre-python
 	checkdepends = ghostscript
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = djvulibre
 	makedepends = pkgconf
