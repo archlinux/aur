@@ -1,7 +1,7 @@
 # Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 
 pkgname=veesem-git
-pkgver=0.1.r25.gbabc3a2
+pkgver=0.2.r0.g42fb8f0
 pkgrel=1
 pkgdesc='V.Smile emulator'
 arch=('x86_64')
@@ -10,6 +10,7 @@ license=('ISC')
 depends=('dbus' 'glibc' 'hicolor-icon-theme' 'libgcc' 'libglvnd' 'libstdc++' 'sdl2' 'xdg-desktop-portal')
 makedepends=('cmake' 'git')
 provides=('veesem')
+conflicts=('veesem')
 source=("git+https://github.com/sp1187/veesem.git")
 sha256sums=('SKIP')
 

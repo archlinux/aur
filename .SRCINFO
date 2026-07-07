@@ -1,6 +1,6 @@
 pkgbase = veesem-git
 	pkgdesc = V.Smile emulator
-	pkgver = 0.1.r25.gbabc3a2
+	pkgver = 0.2.r0.g42fb8f0
 	pkgrel = 1
 	url = https://github.com/sp1187/veesem/
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = veesem-git
 	depends = sdl2
 	depends = xdg-desktop-portal
 	provides = veesem
+	conflicts = veesem
 	source = git+https://github.com/sp1187/veesem.git
 	sha256sums = SKIP
 
