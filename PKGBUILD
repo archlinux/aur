@@ -9,8 +9,8 @@ url="https://github.com/vitor251093/KHMelonMix"
 license=('GPL-3.0-or-later')
 depends=("libepoxy" "qt6-base" "qt6-multimedia" "qt6-svg" "sdl2" "sdl2-compat" "lua" "flac")
 makedepends=("git" "cmake" "extra-cmake-modules" "libpcap" "libarchive" "enet" "libslirp")
-provides=("${pkgname%-VCS}")
-conflicts=("${pkgname%-VCS}")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 install=$_pkgname.install
 source=("$_pkgname::git+$url.git"
 	kh-melonmix.png::https://raw.githubusercontent.com/vitor251093/KHMelonMix/refs/heads/master/res/icon/melon_256x256.png
