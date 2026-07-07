@@ -1,6 +1,6 @@
 # Maintainer: Raimo Geisel <raimog92@protonmail.com>
 pkgname=narsil-nvidia
-pkgver=0.3.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A terminal-based system resource monitor — GPU-aware (NVIDIA), Braille charts, per-char label inversion"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 provides=('narsil')
 conflicts=('narsil' 'narsil-bin' 'narsil-nvidia-bin')
 source=("narsil-$pkgver.tar.gz::https://static.crates.io/crates/narsil/narsil-$pkgver.crate")
-sha256sums=('596109ce4b404bd939658807656640d2349c51e26c9598e2067242223a9d0c7f')
+sha256sums=('c2afdec453af171b4161276df777033367634a8da31941ff6f277deab16429ef')
 
 prepare() {
     cd "narsil-$pkgver"
