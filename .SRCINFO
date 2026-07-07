@@ -1,7 +1,7 @@
 pkgbase = futo-notes-bin
 	pkgdesc = Fast, private, local-first notes
-	pkgver = 1.5.5
-	pkgrel = 4
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://notes.futo.tech
 	arch = x86_64
 	license = LicenseRef-SourceFirst-1.1
@@ -9,11 +9,11 @@ pkgbase = futo-notes-bin
 	depends = desktop-file-utils
 	provides = futo-notes
 	conflicts = futo-notes
-	noextract = futo-notes-bin-1.5.5-x86_64.AppImage
+	noextract = futo-notes-bin-1.6.0-x86_64.AppImage
 	options = !strip
 	source = LICENSE.md::https://gitlab.futo.org/futo-notes/futo-notes/-/raw/main/LICENSE.md
 	sha256sums = 4d8522558ced82190b4b7e2d86d0955e4dc910d0fbb8eb2f01eed7cacd4f94ef
-	source_x86_64 = futo-notes-bin-1.5.5-x86_64.AppImage::https://gitlab.futo.org/api/v4/projects/488/packages/generic/futo-notes/v1.5.5/FUTO-Notes-1.5.5-x86_64.AppImage
-	sha256sums_x86_64 = 0ff9b19a803f285f92c6752f48024d8378421ae98c680c12ea4a89e0fb17dd74
+	source_x86_64 = futo-notes-bin-1.6.0-x86_64.AppImage::https://gitlab.futo.org/api/v4/projects/488/packages/generic/futo-notes/v1.6.0/FUTO-Notes-1.6.0-x86_64.AppImage
+	sha256sums_x86_64 = 1ac975d9e467772777d311f5d671a507c796a886cd9abfd3656bef7917e2fdfd
 
 pkgname = futo-notes-bin
