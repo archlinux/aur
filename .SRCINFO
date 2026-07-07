@@ -1,0 +1,21 @@
+pkgbase = vacask-bin
+	pkgdesc = Verilog-A Circuit Analysis Kernel
+	pkgver = 0.3.4.rc1
+	pkgrel = 1
+	url = https://codeberg.org/arpadbuermen/VACASK
+	arch = x86_64
+	license = AGPL3
+	depends = gcc-libs
+	depends = glibc
+	depends = ncurses
+	depends = openvaf-reloaded
+	depends = suitesparse
+	depends = zlib
+	depends = zstd
+	provides = vacask=0.3.4.rc1
+	conflicts = vacask
+	options = !strip
+	source = vacask-bin-0.3.4.rc1.tar.gz::https://codeberg.org/arpadbuermen/VACASK/releases/download/_0.3.4.rc1/vacask_0.3.4.rc1_linux-x86_64.tar.gz
+	sha256sums = b7d490aab7654635bb74af95301cecdf9997023da02cd9ea4be1ced4ca624a26
+
+pkgname = vacask-bin
