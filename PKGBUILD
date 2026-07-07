@@ -8,6 +8,7 @@ pkgdesc='Cangjie programming language toolchain - Nightly channel (binary distri
 arch=('x86_64' 'aarch64')
 url='https://cangjie-lang.cn'
 license=('Apache-2.0')
+options=('!strip' '!debug' '!emptydirs')
 depends=(
   'glibc>=2.22'
   'gcc-libs'
