@@ -1,11 +1,11 @@
 pkgbase = webtunnel-client-bin
 	pkgdesc = Pluggable Transport based on HTTP Upgrade(HTTPT) - Client
-	pkgver = 0.0.3
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/webtunnel
 	arch = x86_64
 	license = custom:TorProject
-	source = client::https://github.com/a15355447898a/webtunnel/releases/download/0.0.3/client
-	sha256sums = 83cde75bc3e61db0e13f2b9ed60e789b054bcd91a812e3efcc79f038987cec38
+	source = client::https://github.com/a15355447898a/webtunnel/releases/download/0.0.5/client
+	sha256sums = c62979f415d5026d9dbd774170028f618d946362f4d2afeed845010cd9f8d6dd
 
 pkgname = webtunnel-client-bin
