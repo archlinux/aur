@@ -1,7 +1,7 @@
 # Maintainer: KUHTOXO https://aur.archlinux.org/account/kuhtoxo
 
 pkgname=pascalabcnet-gui
-pkgver=3.10.3.3608
+pkgver=3.11.1.3746
 pkgrel=1
 pkgdesc="PascalABC.NET with GUI interface."
 arch=('x86_64')
@@ -20,11 +20,9 @@ source=(
     pascalabcnet.desktop
     pascalabcnet.png
 )
-sha256sums=(
-    'SKIP'
-    'bb92749af748f600344ed3e77978ca09b356f5ac7c0a7773944e2f608a7f65c8'
-    'd41bf68034c2e4cd4c7d8a81624b176a9716f5507154c24a95aeeedd6eaa2942'
-)
+sha256sums=('e38a13052f7dbc0e75717e5659818a6ad277f23f2762e9d02204de076a2c954a'
+            'bb92749af748f600344ed3e77978ca09b356f5ac7c0a7773944e2f608a7f65c8'
+            'd41bf68034c2e4cd4c7d8a81624b176a9716f5507154c24a95aeeedd6eaa2942')
 
 package() {
     # create folders
