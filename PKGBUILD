@@ -2,7 +2,7 @@
 : ${aur_llamacpp_build_universal:=false}
 _pkgname="llama.cpp"
 pkgname=${_pkgname}-vulkan-git
-pkgver=b8799.r5.a6206958d2
+pkgver=b9902.r11.bec4772f6a
 pkgrel=1
 _build_number=0
 _commit_id=
