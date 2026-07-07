@@ -167,5 +167,4 @@ package() {
   rm "$pkgdir"/usr/lib/*.so
   rm -r "$pkgdir"/usr/bin/
   rm -r "$pkgdir"/usr/lib/python3*
-  rm -r "$pkgdir"/usr/share/opencv4/samples
 }
