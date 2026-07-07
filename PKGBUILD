@@ -1,14 +1,13 @@
 pkgname=human-theme-gtk
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
-pkgdesc="Human theme for GTK"
-arch=('any')
+pkgdesc='Human theme for GTK'
 url='https://github.com/luigifab/human-theme'
 license=('GPL3' 'LGPL2' 'CCBYSA')
-depends=()
+arch=('any')
 optdepends=('gtk-engine-murrine: for gtk2' 'qt5-style-globalqss: for qt5' 'qt6-style-globalqss: for qt6')
 source=("https://github.com/luigifab/human-theme/archive/v${pkgver}/human-theme-${pkgver}.tar.gz")
-sha256sums=("1a0695960316f35b05ea854acf90607b3034f8b800d9534b3aee6840b6a83ed9")
+sha256sums=('2b45568ac8fa95b69da65d8ec030436388227e6ea36ad3270e6144394f01d5e3')
 
 prepare() {
   mv "human-theme-$pkgver" "$pkgname-$pkgver"
@@ -28,5 +27,5 @@ package() {
   cp -a src/Human-orange/    "$pkgdir/usr/share/themes/"
 
   install -Dpm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  #install -Dpm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  #install -Dpm 644 LICENSE  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
