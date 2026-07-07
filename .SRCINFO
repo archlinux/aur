@@ -1,7 +1,7 @@
 pkgbase = parus
 	pkgdesc = A package search TUI for Paru, powered by Skim
 	pkgver = 1.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/salvoton/parus
 	arch = any
 	license = GPL
@@ -9,6 +9,6 @@ pkgbase = parus
 	depends = skim
 	depends = bash
 	source = parus-1.1.6.tar.gz::https://github.com/salvoton/parus/archive/refs/tags/v1.1.6.tar.gz
-	sha256sums = d5410d7aa1fecd54c344a7b27f5b88aa188f3830645db39d6f425ddff6f4b55d
+	sha256sums = 6b049f968031a0e1594e3699f7d5ae5073ab24051d62a7109a5398989ee1b207
 
 pkgname = parus
