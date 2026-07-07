@@ -4,10 +4,12 @@ pkgname=osp-tracker-bin
 _pkgname=osp-tracker
 pkgver=6.2.0
 arch=('x86_64')
-pkgrel=1
+pkgrel=2
 pkgdesc='Tracker video analysis and modeling tool'
 url='http://physlets.org/tracker/'
 license=('GPL3')
+conflicts=('osp-tracker')
+provides=('osp-tracker')
 depends=('gtk2'
          'gconf'
          'java-runtime')
@@ -32,11 +34,11 @@ package() {
   chmod +x ./${_runname}
   [ -f ~/.config/user-dirs.dirs ] || xdg-user-dirs-update
   ./${_runname} \
-	  --mode unattended \
-	  --tracker-home ${pkgdir}/opt/tracker \
-	  --experiments-home ${pkgdir}/opt/tracker/share \
-	  --enable-components Experiments \
-	  --unattendedmodeui none || true #ignore errors due to attempts to copy files to /usr/share/applications
+    --mode unattended \
+    --tracker-home ${pkgdir}/opt/tracker \
+    --experiments-home ${pkgdir}/opt/tracker/share \
+    --enable-components Experiments \
+    --unattendedmodeui none || true #ignore errors due to attempts to copy files to /usr/share/applications
 
   msg2 'Creating desktop file and symlinks'
   install -D -m755 tracker.sh ${pkgdir}/usr/bin/${_pkgname}
