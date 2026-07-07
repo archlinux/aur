@@ -1,6 +1,6 @@
 pkgbase = music-assistant-desktop
 	pkgdesc = Music Assistant Desktop Companion App
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/music-assistant/desktop-app
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = music-assistant-desktop
 	conflicts = music-assistant-app-git
 	conflicts = music-assistant-desktop-app-git
 	options = !lto
-	source = music-assistant-desktop-0.4.2.tar.gz::https://github.com/music-assistant/desktop-app/archive/refs/tags/0.4.2.tar.gz
-	sha256sums = 27962a94e9d5755daf4bc0c96b4d4762cc38aac46c13f2839b43e119f0c33e79
+	source = music-assistant-desktop-0.5.0.tar.gz::https://github.com/music-assistant/desktop-app/archive/refs/tags/0.5.0.tar.gz
+	sha256sums = d107031fc47401fe19d63ee0173611f8871dba0487d6c99bd3a071e6378618db
 
 pkgname = music-assistant-desktop
