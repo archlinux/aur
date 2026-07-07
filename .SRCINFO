@@ -1,14 +1,18 @@
 pkgbase = smhasher3
 	pkgdesc = A tool for testing the quality of hash functions in terms of their distribution, collision, and performance properties
-	pkgver = 0.0.0beta2
+	pkgver = 20251015.r2100.5035a92
 	pkgrel = 1
 	url = https://gitlab.com/fwojcik/smhasher3
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = cmake
-	depends = gcc-libs
-	source = smhasher3-0.0.0beta2.tar.gz::https://gitlab.com/fwojcik/smhasher3/-/archive/beta2/smhasher3-beta2.tar.gz
-	b2sums = a6f5a0e82aa066709795182874ee90f3f278c49b06994e11e6b86784d144ca1685654737ee6dea4eda3702a64f8fb21efa02a11d4a6740234988d1a31457654a
+	makedepends = git
+	depends = libgcc_s.so
+	depends = libstdc++.so
+	source = git+https://gitlab.com/fwojcik/smhasher3.git#tag=release
+	source = support_cmake4.patch::https://gitlab.com/fwojcik/smhasher3/-/commit/6ab4343396fbe0f7a1c7ac4f01d0eb9acffe4202.patch
+	b2sums = ae97ff6ec16c7e7081b29f7fefcb6c2670d4a1cb4fade97b254999c9e8551c52ae37b8574669f2d7bbc630b8418be81e58d8237036b55133fde3414efe9395df
+	b2sums = 8545d4555a704f2b61064bdbf90eea1d0709a24d31eb0ff0727a1c1cd6befcf1f1fa534b2fc3ce4ea2e543368c50ed6c90f73c740c8be4a4670bfe3c070df462
 
 pkgname = smhasher3
