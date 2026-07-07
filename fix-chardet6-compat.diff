@@ -1,0 +1,21 @@
+diff --git a/pySMART/smartctl.py b/pySMART/smartctl.py
+index a82abf4..b6757e5 100644
+--- a/pySMART/smartctl.py
++++ b/pySMART/smartctl.py
+@@ -1,6 +1,7 @@
+ # SPDX-FileCopyrightText: 2021 Rafael Leira, Naudit HPCN S.L.
+ # SPDX-License-Identifier: LGPL-2.1-or-later
+ 
++from chardet import EncodingEra
+ from subprocess import Popen, PIPE
+ from .utils import SMARTCTL_PATH, get_trace_logger
+ from typing import List, Tuple, Union, Optional
+@@ -152,7 +153,7 @@ class Smartctl:
+         # Detect the encoding
+         encoding: Optional[str] = None
+         try:
+-            encoding = chardet.detect(raw_output)['encoding']
++            encoding = chardet.detect(raw_output, encoding_era=EncodingEra.ALL)['encoding']
+         except:
+             pass
+ 

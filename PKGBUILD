@@ -2,8 +2,8 @@
 _projectname='pysmart'
 _reponame='py-SMART'
 pkgname="python-$_projectname"
-pkgver='1.4.2'
-_commit='d1db1071d9732d088fa64f3cff2f6223e1cdc830'
+pkgver='1.4.3'
+_commit='1d1c3617531f070573c5e9f925b8721d7e548e62'
 pkgrel='1'
 epoch='1'
 pkgdesc='Wrapper for smartctl (smartmontools) - FreeNAS fork'
@@ -13,11 +13,22 @@ license=('LGPL-2.1-or-later')
 depends=('python>=3.8.0' 'python-chardet' 'python-humanfriendly' 'smartmontools')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
 checkdepends=('python-pytest')
-source=("$pkgname-$pkgver::git+$url#commit=$_commit?signed")
-b2sums=('ef1515a26f86895d8ec026bf45eb85bf2abe913aee056791db1aacfe12fd8b5d48a68274f787db7b8c55b7a24d545ea7c2b426612fdd61fd8d80f43d1b11357f')
+source=(
+	"$pkgname-$pkgver::git+$url#commit=$_commit?signed"
+	'fix-chardet6-compat.diff'
+)
+b2sums=('9bdc2af7d760327c8263b8bb4a9a3357b50c368d7706dcf2b36a29b268be07b0bc14bacbd81d56a9c017610587f674cb2bb34b19e68fc90171436a0b5b20e827'
+        '202f307c022489138330a41a1390df5a8989e56d227853ebfe148291169c23f506e7d31e48d7a059602ac62f14e9e39088468591a0709a606f2b24b3fb085606')
 validpgpkeys=('5F6761715FB2876BF2355A72195598EC98A1C1DF') # Rafael Leira Osuna <rafael.leira@naudit.es> (https://github.com/ralequi.gpg) - expired
 
 _sourcedirectory="$pkgname-$pkgver"
+
+prepare() {
+	cd "$srcdir/$_sourcedirectory/"
+
+	# Fix python-chardet>=6.0.0 compatibility
+	patch --forward -p1 < "$srcdir/fix-chardet6-compat.diff"
+}
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
@@ -30,7 +41,9 @@ build() {
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
-	pytest
+
+	# Skip nvme_9_issue_72 test case (reported upstream in https://github.com/truenas/py-SMART/issues/102)
+	pytest -k 'not nvme_9_issue_72'
 }
 
 package() {
