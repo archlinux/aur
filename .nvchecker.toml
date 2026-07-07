@@ -1,0 +1,5 @@
+[mdcat-bin]
+source = "github"
+github = "BIRSAx2/mdcat"
+use_latest_release = true
+prefix = "mdcat-"

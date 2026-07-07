@@ -1,20 +1,19 @@
 pkgbase = mdcat-bin
-	pkgdesc = Sophisticated Markdown rendering for the terminal
-	pkgver = 0.21.1
+	pkgdesc = Fancy 'cat' for Markdown
+	pkgver = 2.10.1
 	pkgrel = 1
-	url = https://github.com/lunaryorn/mdcat
-	changelog = CHANGELOG.md
+	url = https://github.com/BIRSAx2/mdcat
 	arch = x86_64
-	license = MPL2
-	makedepends = curl
-	optdepends = curl: fetch images via http/https
-	optdepends = terminology: optional terminal emulator for image support
-	optdepends = kitty: optional terminal emulator for image support
-	optdepends = librsvg: render svg images in kitty
+	license = MPL-2.0
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	depends = zlib
 	provides = mdcat
+	provides = mdless
 	conflicts = mdcat
-	source = https://github.com/lunaryorn/mdcat/releases/download/mdcat-0.21.1/mdcat-0.21.1-x86_64-unknown-linux-musl.tar.gz
-	b2sums = 9558c55d310aeb2247c50d79da898ba711eb1147d50e0a53e18815efdaa89c19f5a41033349015800e45d9fec6fc42fb5a8e280f42e17a25fe844a934f7bfcf1
+	options = !strip
+	source_x86_64 = mdcat-x86_64-2.10.1.tgz::https://github.com/BIRSAx2/mdcat/releases/download/mdcat-2.10.1/mdcat-2.10.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ae235dd90df6bc37db8094d667b4bbad8ee5c7de59b6a1f27295ee51430f958a
 
 pkgname = mdcat-bin
-
