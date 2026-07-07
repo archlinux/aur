@@ -1,6 +1,6 @@
 pkgbase = implot-git
 	pkgdesc = Immediate Mode Plotting
-	pkgver = 1.0.524f9fc
+	pkgver = 1.0.r722.gd65a2be
 	pkgrel = 1
 	url = https://github.com/epezent/implot
 	arch = any

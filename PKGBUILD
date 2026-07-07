@@ -1,7 +1,7 @@
 #Maintainer: Rongbo Wu <wurongbo2012@hotmail.com>
 
 pkgname=implot-git
-pkgver=1.0.524f9fc
+pkgver=1.0.r722.gd65a2be
 pkgrel=1
 pkgdesc="Immediate Mode Plotting"
 arch=('any')
@@ -19,8 +19,9 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd implot
+	_rev=$(git rev-list --count HEAD)
 	_cmt=$(git rev-parse --short HEAD)
-	printf %s.%s 1.0 ${_cmt}
+	printf %s.r%s.g%s 1.0 ${_rev} ${_cmt}
 }
 
 prepare() {
