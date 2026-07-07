@@ -1,6 +1,6 @@
 pkgbase = claurst-bin
 	pkgdesc = Your Favorite Terminal Coding Agent, now in Rust
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/Kuberwastaken/claurst
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = claurst-bin
 	makedepends = curl
 	provides = claurst
 	conflicts = claurst
-	source = LICENSE-81cbae84a29ce7e770bf2bc7b178e50bda0ce8de6067aba661b0bc7b05b562f8::https://raw.githubusercontent.com/Kuberwastaken/claurst/v0.1.6/LICENSE.md
+	source = LICENSE-81cbae84a29ce7e770bf2bc7b178e50bda0ce8de6067aba661b0bc7b05b562f8::https://raw.githubusercontent.com/Kuberwastaken/claurst/v0.1.7/LICENSE.md
 	sha256sums = 81cbae84a29ce7e770bf2bc7b178e50bda0ce8de6067aba661b0bc7b05b562f8
-	source_x86_64 = claurst-linux-x86_64-6182bfd374cc37effb3e569b95755d885392adf4ef9a6ee813c5adc57258be0b.tar.gz::https://github.com/Kuberwastaken/claurst/releases/download/v0.1.6/claurst-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 6182bfd374cc37effb3e569b95755d885392adf4ef9a6ee813c5adc57258be0b
-	source_aarch64 = claurst-linux-aarch64-30fe334e7ebecffa4fceaf837dc6b9ec25a6db8a942f170fecf2d007e7cd0d61.tar.gz::https://github.com/Kuberwastaken/claurst/releases/download/v0.1.6/claurst-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 30fe334e7ebecffa4fceaf837dc6b9ec25a6db8a942f170fecf2d007e7cd0d61
+	source_x86_64 = claurst-linux-x86_64-0f7decc0e151ee4023c3bda26f14e564e1b3685fdbc892d623d01c508fa71f22.tar.gz::https://github.com/Kuberwastaken/claurst/releases/download/v0.1.7/claurst-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 0f7decc0e151ee4023c3bda26f14e564e1b3685fdbc892d623d01c508fa71f22
+	source_aarch64 = claurst-linux-aarch64-365205ab3e92758a97be291965732faa7c8f3b114b20d9bbc9be1769c338e86d.tar.gz::https://github.com/Kuberwastaken/claurst/releases/download/v0.1.7/claurst-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 365205ab3e92758a97be291965732faa7c8f3b114b20d9bbc9be1769c338e86d
 
 pkgname = claurst-bin
