@@ -5,7 +5,7 @@ _pkgexec=usc-game
 pkgname=unnamed-sdvx-clone
 _pkgnum='0.6.0'
 pkgver="v${_pkgnum}"
-pkgrel=2 # TODO: Reset to 1
+pkgrel=3 # TODO: Reset to 1
 
 pkgdesc='A game based on K-Shoot MANIA and Sound Voltex'
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=('freetype2>=2.6.5'
 	 'sdl2>=2.0.9'
 	 'zlib'
 	 'libpng>=1.6'
-	 'libjpeg'
+	 'libjpeg-turbo'
 	 'libarchive>=3.3.3'
 	 'mesa'
 	 'openssl')
