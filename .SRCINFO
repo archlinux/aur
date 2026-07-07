@@ -1,7 +1,7 @@
 pkgbase = phono3py
 	pkgdesc = A simulation package of phonon-phonon interaction related properties
 	pkgver = 4.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/phonopy/phono3py
 	arch = any
 	license = BSD
