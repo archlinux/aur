@@ -1,6 +1,6 @@
 pkgname=gitstats
 _name=gitstats-cli
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Lightweight GitHub statistics CLI using GraphQL"
 arch=('x86_64')

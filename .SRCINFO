@@ -1,6 +1,6 @@
 pkgbase = gitstats
 	pkgdesc = Lightweight GitHub statistics CLI using GraphQL
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/andregarcia0412/gitstats-cli
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gitstats
 	makedepends = make
 	makedepends = gcc
 	depends = curl
-	source = gitstats-1.0.1.tar.gz::https://github.com/andregarcia0412/gitstats-cli/archive/refs/tags/v1.0.1.tar.gz
+	source = gitstats-1.1.0.tar.gz::https://github.com/andregarcia0412/gitstats-cli/archive/refs/tags/v1.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = gitstats
