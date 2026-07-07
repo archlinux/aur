@@ -12,7 +12,7 @@ WorkingDirectory=/var/lib/hass
 Environment=HOME=/var/lib/hass
 Environment=PATH=/usr/bin:/var/lib/hass/.venv/bin
 
-ExecStartPre=/usr/bin/bash -c 'if [ -f /var/lib/hass/.venv/ha_version ]; then OLD=$(< /var/lib/hass/.venv/ha_version); NEW="@VERSION@"; if [ "${OLD%.*}" != "${NEW%.*}" ]; then rm -rf /var/lib/hass/.venv; fi; fi'
+ExecStartPre=/usr/bin/bash -c 'if [ -f /var/lib/hass/.venv/ha_version ]; then OLD=$$(< /var/lib/hass/.venv/ha_version); NEW="@VERSION@"; if [ "$${OLD%.*}" != "$${NEW%.*}" ]; then rm -rf /var/lib/hass/.venv; fi; fi'
 ExecStartPre=/usr/bin/python -m venv --upgrade /var/lib/hass/.venv
 ExecStartPre=/usr/bin/bash -c 'echo "@VERSION@" > /var/lib/hass/.venv/ha_version'
 ExecStartPre=/var/lib/hass/.venv/bin/python -m pip install wheel
