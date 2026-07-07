@@ -2,7 +2,7 @@
 
 pkgname=python-ctfbridge
 _name=${pkgname#python-}
-pkgver=0.8.9
+pkgver=0.8.10
 pkgrel=1
 pkgdesc="A Python library for interacting with multiple CTF platforms"
 provides=(${pkgname})
@@ -37,7 +37,7 @@ optdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('a265577a9dc9dad3d35973ebbe9586915e180dcf149868c639db1054595197df')
+sha256sums=('449d46124a83b338282e5b983c907559389aa8b868e53ffc2e5294fef458e8f0')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
