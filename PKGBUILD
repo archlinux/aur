@@ -5,8 +5,8 @@
 
 pkgname=mipsel-elf-gcc
 _pkgname=gcc
-_target="mipsel-elf"
-pkgver=15.1.0
+_target="mipsel-none-elf"
+pkgver=16.1.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection - C and C++ frontends (for baremetal MIPS)"
 url="https://www.gnu.org/software/gcc/"
@@ -17,36 +17,40 @@ makedepends=("gcc-ada>=${pkgver:0:2}")
 options=('!ccache' '!distcc' '!emptydirs' '!libtool' '!strip')
 source=(https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.xz{,.sig})
 sha256sums=(
-  'e2b09ec21660f01fecffb715e0120265216943f038d0e48a9868713e54f06cea'
-  '981a495a35fdc11e8f9762c2ebe93d250bbd6996618e8fe3d4ebb1f463df8ca9'
+  '50efb4d94c3397aff3b0d61a5abd748b4dd31d9d3f2ab7be05b171d36a510f79' # gcc-16.1.0.tar.xz
+  '33a851c045ea2ef6f580d82b2abfb1dc75d8b270727800028ca5f40c3b4a4246' # gcc-16.1.0.tar.xz.sig
 )
-
 validpgpkeys=(
-  F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
-  86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
-  13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
-  D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
+  'D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62' # Jakub Jelinek <jakub@redhat.com>
 )
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  # Hack - see native package for details
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+  echo $pkgver > gcc/BASE-VER
+
+  # Do not run fixincludes
+  sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
 }
 
 build() {
+
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  CXXFLAGS="-Wno-error=format-security" ./configure \
+  CFLAGS=${CFLAGS/-pipe/}
+  CXXFLAGS=${CXXFLAGS/-pipe/}
+  CFLAGS=${CFLAGS/-Werror=format-security/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
+  unset FFLAGS FCFLAGS
+
+  ./configure \
     --prefix=/usr \
+    --program-prefix=$_target- \
+    --libdir=/usr/lib \
     --libexecdir=/usr/lib \
-    --libdir=/usr/${_target}/lib \
-    --datadir=/usr/${_target}/share \
-    --datarootdir=/usr/${_target}/share \
+    --target=${_target} \
     --build=$CHOST \
     --host=$CHOST \
-    --target=${_target} \
     --with-newlib \
     --with-gnu-as \
     --with-gnu-ld \
@@ -61,21 +65,40 @@ build() {
     --disable-libstdcxx \
     --enable-languages=c,c++,fortran \
     --disable-multilib \
-    --disable-libgcj \
     --enable-lto \
     --disable-werror \
     --without-headers \
     --disable-shared \
-    --enable-initfini-array
+    --enable-initfini-array \
+    --without-included-gettext
+
   make all-gcc "inhibit_libc=true"
+
 }
 
 package() {
+
   cd "${srcdir}/${_pkgname}-${pkgver}"
+
+  # handle lib vs lib64; for regular gcc this is handled by filesystem package
+  mkdir -p "$pkgdir"/usr/$_target/lib
+  ln -s ./lib "$pkgdir"/usr/$_target/lib64
 
   make DESTDIR="${pkgdir}" install-gcc
 
-  find "$pkgdir" -name '*.la' -delete
-  find "$pkgdir" -type f -executable -exec strip --strip-unneeded {} + 2>/dev/null || true
-  rm -rf $pkgdir/usr/share/{man,info}
+  # strip target binaries
+  find "$pkgdir"/usr/lib/gcc/$_target/ "$pkgdir"/usr/$_target/lib \
+       -type f -and \( -name \*.a -or -name \*.o \) \
+       -exec $_target-objcopy -R .comment -R .note -R .debug_info -R .debug_aranges \
+           -R .debug_pubnames -R .debug_pubtypes -R .debug_abbrev -R .debug_line \
+           -R .debug_str -R .debug_ranges -R .debug_loc '{}' \;
+
+  # strip host binaries
+  find "$pkgdir"/usr/bin/ "$pkgdir"/usr/lib/gcc/$_target/ -type f -and \( -executable \) -exec strip '{}' \;
+
+  # Remove files that conflict with host gcc package
+  rm -r "$pkgdir"/usr/share/man/man7
+  rm -r "$pkgdir"/usr/share/info
+  rm -rf "$pkgdir"/usr/share/gcc-$pkgver
+
 }
