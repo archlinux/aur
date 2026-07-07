@@ -1,6 +1,6 @@
 pkgbase = ingress2gateway
 	pkgdesc = translate Ingress and provider-specific resources (CRDs) to Gateway API resources.
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/kubernetes-sigs/ingress2gateway
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = ingress2gateway
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = https://github.com/kubernetes-sigs/ingress2gateway/archive/v1.1.0/ingress2gateway-1.1.0.tar.gz
-	sha256sums = a3c74ca555df43e40b0acd89743cb0ade9b1ad72bcd61fad0d0bec0b233a9c7c
-	b2sums = f2cb2412208420a6b7b065aa81c0c3bf8fcbc4d90247cd2d71e269860e939bcc01a3b829eef3562750c67d954a9329862a43618f6fdd0b893c857bc2c7a3d598
+	source = https://github.com/kubernetes-sigs/ingress2gateway/archive/v1.2.0/ingress2gateway-1.2.0.tar.gz
+	sha256sums = 881f2599b39d29f14c07e1ae12c60ffbbe636ae07a7ca6e1491d70bb8ab37c5f
+	b2sums = ba575edb2499ad0bda454d0a5a8055c55473f2c7c66920ca8a67ffce11284288c6375dd94e3677502adc68be3b15f29c807983b3fbd3fde84b593242249bb819
 
 pkgname = ingress2gateway
