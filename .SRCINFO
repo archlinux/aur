@@ -1,13 +1,13 @@
 pkgbase = lutris-gamepad-ui-git
 	pkgdesc = A simple, TV-friendly, gamepad-navigable frontend for Lutris
-	pkgver = v0.1.34.r33.g081913a
+	pkgver = v0.2.0.r4.gfe81f43
 	pkgrel = 1
 	url = https://github.com/andrew-ld/lutris-gamepad-ui
 	arch = x86_64
 	license = GPL3
 	makedepends = npm
 	makedepends = git
-	depends = electron41
+	depends = electron43
 	depends = lutris
 	depends = pulse-native-provider
 	depends = bluez
@@ -17,7 +17,7 @@ pkgbase = lutris-gamepad-ui-git
 	source = lutris-gamepad-ui.sh
 	source = lutris-gamepad-ui.desktop
 	sha256sums = SKIP
-	sha256sums = 261245f9e2fc59b27617cc271813948bc32773f44ee659ee1df83610917bde1b
+	sha256sums = 20c542329910a4e26c5169855ba05a611fbae9822acfa1a514709a0e77e4597e
 	sha256sums = 7f21e37b1eb918ebd191b23de176e568e7b73e7ac82ddf89668e35908588238e
 
 pkgname = lutris-gamepad-ui-git
