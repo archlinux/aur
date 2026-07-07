@@ -1,12 +1,12 @@
 pkgbase = ark-cli
 	pkgdesc = Plain-text terminal organiser for notes, todos, and events
-	pkgver = 0.1.0_alpha.14
+	pkgver = 0.1.0_alpha.15
 	pkgrel = 1
 	url = https://github.com/benjaminingreens/ark
 	arch = any
 	license = AGPL3
 	depends = perl
-	source = ark-v0.1.0-alpha.14.tar.gz::https://github.com/benjaminingreens/ark/archive/refs/tags/v0.1.0-alpha.14.tar.gz
+	source = ark-v0.1.0-alpha.15.tar.gz::https://github.com/benjaminingreens/ark/archive/refs/tags/v0.1.0-alpha.15.tar.gz
 	sha256sums = SKIP
 
 pkgname = ark-cli
