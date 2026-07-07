@@ -1,0 +1,16 @@
+pkgbase = cl-puri-git
+	pkgdesc = Portable universal resource indentifier library for common lisp
+	pkgver = r57.4bbab89
+	pkgrel = 1
+	url = http://puri.kpe.io/
+	arch = any
+	license = custom:LLGPL
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	provides = cl-puri
+	conflicts = cl-puri
+	source = git+https://gitlab.common-lisp.net/clpm/puri
+	sha256sums = SKIP
+
+pkgname = cl-puri-git
