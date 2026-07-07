@@ -1,0 +1,19 @@
+pkgbase = cl-cxml-git
+	pkgdesc = Closure XML parser, written in Common Lisp
+	pkgver = r231.9365c4b
+	pkgrel = 1
+	url = https://cxml.common-lisp.dev
+	arch = any
+	license = custom:LLGPL
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-closure-common
+	depends = cl-puri
+	depends = cl-trivial-gray-streams
+	provides = cl-cxml
+	conflicts = cl-cxml
+	source = git+git://repo.or.cz/cxml.git
+	sha256sums = SKIP
+
+pkgname = cl-cxml-git
