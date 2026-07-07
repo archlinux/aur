@@ -3,11 +3,23 @@
 pkgname=python-repomatic
 _name=${pkgname#python-}
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Automate repository maintenance, releases, and CI/CD workflows'
 url='https://kdeldycke.github.io/repomatic/'
 makedepends=(python-build python-installer python-uv-build)
-depends=(python python-click python-yaml python-extra-platforms python-tomli python-boltons python-packaging python-click-extra python-typing_extensions python-wcmatch)
+depends=(python
+	python-arrow
+	python-backports
+	python-boltons
+	python-click-extra
+	python-extra-platforms
+	python-packaging
+	python-py-walk
+	python-pyproject-metadata
+	python-yaml
+	python-tomlrt
+	python-vt-py
+	python-wcmatch)
 license=('GPL-2.0-or-later')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kdeldycke/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
