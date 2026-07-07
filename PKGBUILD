@@ -28,8 +28,8 @@ source_aarch64=("mcpp-${pkgver}-linux-aarch64.tar.gz::${_relbase}/mcpp-${pkgver}
 source=("mcpp.sh")
 
 sha256sums=('SKIP')
-sha256sums_x86_64=('27b412cda2f385ab6c200ed5731398b973b34e434ce60800791c6de40cbfaf17')
-sha256sums_aarch64=('227a9f54a1b382fb34b0367d527fbdc5cc6d7a9b5af0467bb7c803c89ef212ce')
+sha256sums_x86_64=('1af427877ece7051f94904b740aa8720bfdfdf27f57f5d47012825520aac05e1')
+sha256sums_aarch64=('9c40025dfcdcb76b0b106d47403114d0f4444fde3d5f3b4e9b1849cc54eec6aa')
 
 package() {
     local _src="${srcdir}/mcpp-${pkgver}-linux-${CARCH}"
