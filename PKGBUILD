@@ -3,7 +3,7 @@
 _appname=cline
 pkgname=${_appname}-cli
 pkgdesc="Autonomous coding agent CLI - capable of creating/editing files, running commands, using the browser, and more."
-pkgver=3.0.37
+pkgver=3.0.38
 pkgrel=1
 
 arch=("x86_64")
@@ -20,7 +20,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_appname}/-/${_appname}-${pkgver}.tgz")
-b2sums=('bc2e9e452e460f93fdba104e2b609c9a5b860cd3b3326f5294e5b06395c883e04d689fc64dc0e0ed9e5733ad6e3e54e97f2d6393a759ea552130d16d495b41ff')
+b2sums=('9ed2455ccae36b59348a15f615c11fa2d63e45b684b672ba55f897cb5f60e17668d8ac349af7988ceeca01b379406a86a153af22809b734616a3047e10c3e327')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
