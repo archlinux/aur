@@ -1,6 +1,6 @@
 pkgbase = letos
-	pkgdesc = Database manager for SQLite formerly sqlitestudio
-	pkgver = 4.0.0
+	pkgdesc = Database manager for SQLite (formerly sqlitestudio)
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://letos.org
 	arch = x86_64
@@ -8,20 +8,20 @@ pkgbase = letos
 	makedepends = qt6-wayland
 	makedepends = python
 	makedepends = tcl
-	makedepends = ninja
+	depends = glibc
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-tools
 	depends = hicolor-icon-theme
 	depends = sqlite
-	source = letos-4.0.0.tar.gz::https://github.com/pawelsalawa/letos/archive/4.0.0.tar.gz
-	b2sums = 6d043b6edbd2371c188e02fbe61f153e6265eed8ca12a2e40c56daa0ec735be9cf6c54739f6b520f1d6a1aa015badbe24280f344ec55fe57d6cde854bf85324f
+	source = letos-4.0.1.tar.gz::https://github.com/pawelsalawa/letos/archive/4.0.1.tar.gz
+	b2sums = 247381c64d51622837b8e31aaf5547dc47e8021948a502230d71718bd7dd466140faf4f94ef749cf6a3dc99d0883bfe2c0e5f32367c9800dc6bbbc64df5e2ff5
 
 pkgname = letos
 	replaces = sqlitestudio
 
 pkgname = letos-plugins
-	pkgdesc = Official plugins for sqlitestudio
+	pkgdesc = Official plugins for letos (formerly sqlitestudio)
 	depends = letos
 	depends = python
 	depends = tcl
