@@ -2,7 +2,7 @@
 
 pkgname=('python-phonopy')
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Phonopy is an open source package for phonon calculations at harmonic and quasi-harmonic levels"
 arch=('any')
 url="https://github.com/phonopy/phonopy"
@@ -36,7 +36,7 @@ build() {
   _buildenv/bin/pip install --upgrade pip
   _buildenv/bin/pip install \
     numpy \
-    scikit-build-core \
+    "scikit-build-core<0.10" \
     "nanobind<2.10.0" \
     setuptools-scm \
     build
