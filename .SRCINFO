@@ -1,7 +1,7 @@
 pkgbase = python-soc-consistency
 	pkgdesc = Static analysis tool that catches hardware-level bugs in Linux Device Tree Source (DTS) files
 	pkgver = 1.6.0
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/gahingwoo/SoC-Consistency
 	arch = any
 	license = MIT
@@ -24,9 +24,18 @@ pkgbase = python-soc-consistency
 	optdepends = kicad: Electronic schematic and printed circuit board (PCB) design tools
 	optdepends = python-dt-schema: Tooling for devicetree validation using YAML and jsonschema
 	optdepends = rkdeveloptool-gui: RKDevelopTool GUI is a graphical front-end for Rockchip's official rkdeveloptool
-	provides = python-soc-consistency
-	conflicts = python-soc-consistency
 	source = soc-consistency::git+https://github.com/gahingwoo/SoC-Consistency.git#tag=v1.6.0
+	source = meta-socc.install
 	sha256sums = 74b5332e72f9d3be3c3c5c3912e4683b57bbf8eda2b8882ebf210a7cc1581df5
+	sha256sums = 3b8a4aafd0cd146ee522fa32ae2a4e6ecbd89f14384fe581dc465ced5e90e4a1
 
 pkgname = python-soc-consistency
+	provides = python-soc-consistency
+	conflicts = python-soc-consistency
+
+pkgname = meta-socc
+	install = meta-socc.install
+	depends = python-soc-consistency
+	depends = bitbake
+	provides = meta-socc
+	conflicts = meta-socc

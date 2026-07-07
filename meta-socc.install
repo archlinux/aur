@@ -1,0 +1,53 @@
+RED='\033[31m'
+GREEN='\033[32m'
+YELLOW='\033[33m'
+BLUE='\033[34m'
+MAGENTA='\033[35m'
+CYAN='\033[36m'
+WHITE='\033[37m'
+BOLD='\033[1m'
+UNDERLINE='\033[4m'
+NC='\033[0m'
+
+info() {
+    printf "\n${GREEN}✓ meta-socc 安装成功${NC}\n"
+    printf "${CYAN}路径: /usr/share/meta-socc/${NC}\n\n"
+    printf "${BOLD}使用步骤:${NC}\n"
+    printf "1. ${RED}bitbake-layers add-layer /usr/share/meta-socc${NC}\n"
+    printf "2. ${RED}添加到 conf/local.conf （或您机器上的 .conf ）：${NC}\n"
+    printf "    ${RED}# Path to the board DTS file (required)${NC}\n"
+    printf "    ${RED}SOCC_DTS_FILE = "${TOPDIR}/../sources/meta-bsp/files/my-board.dts"${NC}\n"
+    printf "    ${RED}# SoC name — "auto" detects from filename (optional)${NC}\n"
+    printf "    ${RED}SOCC_SOC = "rk3588"${NC}\n"
+    printf "    ${RED}# Minimum severity to fail the build: "warning" | "error" | "fatal"${NC}\n"
+    printf "    ${RED}SOCC_SEVERITY = "error"${NC}\n"
+    printf "    ${RED}# Inherit the class in your image or BSP recipe${NC}\n"
+    printf "    ${RED}inherit socc${NC}\n"
+    printf "3. ${RED}bitbake core-image-minimal${NC}\n\n"
+    printf "${YELLOW}查看文档:${NC}\n"
+    printf "xdgopen /usr/share/meta-socc/README.md\n\n"
+    
+    printf "\n${GREEN}✓ meta-socc installed${NC}\n"
+    printf "${CYAN}Path: /usr/share/meta-socc/${NC}\n\n"
+    printf "${BOLD}Quick steps:${NC}\n"
+    printf "1. ${RED}bitbake-layers add-layer /usr/share/meta-socc${NC}\n"
+    printf "2. ${RED}Add to conf/local.conf (or your machine .conf):${NC}\n"
+    printf "    ${RED}# Path to the board DTS file (required)${NC}\n"
+    printf "    ${RED}SOCC_DTS_FILE = "${TOPDIR}/../sources/meta-bsp/files/my-board.dts"${NC}\n"
+    printf "    ${RED}# SoC name — "auto" detects from filename (optional)${NC}\n"
+    printf "    ${RED}SOCC_SOC = "rk3588"${NC}\n"
+    printf "    ${RED}# Minimum severity to fail the build: "warning" | "error" | "fatal"${NC}\n"
+    printf "    ${RED}SOCC_SEVERITY = "error"${NC}\n"
+    printf "    ${RED}# Inherit the class in your image or BSP recipe${NC}\n"
+    printf "    ${RED}inherit socc${NC}\n"
+    printf "3. ${RED}bitbake core-image-minimal${NC}\n\n"
+    printf "${YELLOW}View documentation:${NC}\n"
+    printf "xdgopen /usr/share/meta-socc/README.md\n\n"
+}
+
+post_install() {
+    info
+}
+post_upgrade() {
+    info
+}
