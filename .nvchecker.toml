@@ -1,0 +1,3 @@
+[dpsprep]
+source = "pypi"
+git = "djvulibre-python"
