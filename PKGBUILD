@@ -3,8 +3,8 @@
 pkgname=python-soc-consistency
 _name=${pkgname#python-}
 pkgver=1.6.0
-pkgrel=1
-pkgdesc="Intelligent KiCad Bill of Materials generator with inventory matching"
+pkgrel=3
+pkgdesc="Static analysis tool that catches hardware-level bugs in Linux Device Tree Source (DTS) files"
 provides=(${pkgname})
 conflicts=(${pkgname})
 arch=('any')
@@ -34,7 +34,10 @@ checkdepends=(
     'python-pytest'
 )
 optdepends=(
+    "clang: C language family frontend for LLVM"
     "dtc: Device Tree Compiler"
+    "kicad: Electronic schematic and printed circuit board (PCB) design tools"
+    "python-dt-schema: Tooling for devicetree validation using YAML and jsonschema"
     "rkdeveloptool-gui: RKDevelopTool GUI is a graphical front-end for Rockchip's official rkdeveloptool"
 )
 license=('MIT')
