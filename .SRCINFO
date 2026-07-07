@@ -1,6 +1,6 @@
 pkgbase = python-concurrenttools
 	pkgdesc = Python concurrent tools.
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://pypi.org/project/python-concurrenttools
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-concurrenttools
 	conflicts = python-concurrenttools
 	options = !strip
 	options = !debug
-	source = python_concurrenttools-0.1.4.tar.gz::https://files.pythonhosted.org/packages/source/p/python_concurrenttools/python_concurrenttools-0.1.4.tar.gz
-	sha256sums = 2b301913c27f3410609fd6a2aa32c3fd0ce5d033fa3b0be152383c4653f0be8b
+	source = python_concurrenttools-0.1.5.tar.gz::https://files.pythonhosted.org/packages/source/p/python_concurrenttools/python_concurrenttools-0.1.5.tar.gz
+	sha256sums = 1d4c856dc8a342fa8f012290f91e81ae918c962978845fe47321da35cd329d51
 
 pkgname = python-concurrenttools
