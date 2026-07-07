@@ -1,8 +1,7 @@
 # Maintainer: Bink
-: ${aur_llamacpp_build_universal:=false}
 pkgname=llama.cpp-cuda-git
 _pkgname="${pkgname%-cuda-git}"
-pkgver=b9842.r1.86b94708f2
+pkgver=b9893.r0.6f8895feec
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)"
 arch=(x86_64 aarch64)
@@ -10,17 +9,15 @@ url='https://github.com/ggml-org/llama.cpp'
 license=('MIT')
 backup=('etc/conf.d/llama.cpp')
 depends=(
-  cuda
+  ggml-cuda-git
   curl
   gcc-libs
   glibc
-  nvidia-utils
   openssl
 )
 makedepends=(
   cmake
-  cudnn
-  gcc15   # (CUDA does not yet support GCC 16)
+  cuda
   git
   ninja
 )
@@ -34,20 +31,8 @@ optdepends=(
 'python-transformers: needed for convert_hf_to_gguf.py'
 'rdma-core: RDMA transport for RPC backend'
 )
-# Note: This package provides libggml (with CUDA) and libggml-cuda-git to support
-# downstream packages like whisper.cpp-cuda that require CUDA-enabled GGML backends.
-provides=(
-  "${_pkgname}"
-  libggml-cuda-git
-  libggml
-  libggml.so
-  ggml
-)
-conflicts=(
-  "${_pkgname}"
-  libggml
-  ggml
-)
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=(
 "git+https://github.com/ggml-org/llama.cpp.git"
 llama.cpp.conf
@@ -66,14 +51,6 @@ pkgver() {
 }
 
 build() {
-  if ! type -P nvcc &>/dev/null && [[ -d /opt/cuda/bin ]]; then
-    export PATH="/opt/cuda/bin:$PATH"
-  fi
-
-  # Use GCC 15 as host compiler for nvcc (CUDA does not yet support GCC 16)
-  # Override via: aur_llamacpp_cmakeopts="-DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-XX"
-  local _nvcc_host_cxx="${CUDAHOSTCXX:-/usr/bin/g++-15}"
-
   # Grab commit ID and build number.
   local _commit_id _build_number
   _commit_id=$(git -C "${_pkgname}" rev-parse HEAD)
@@ -85,44 +62,15 @@ build() {
     -S "${_pkgname}"
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DCMAKE_CUDA_HOST_COMPILER="${_nvcc_host_cxx}"
     -DBUILD_SHARED_LIBS=ON
     -DLLAMA_BUILD_TESTS=OFF
-    -DLLAMA_USE_SYSTEM_GGML=OFF
-    -DGGML_ALL_WARNINGS=OFF
-    -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
-    -DGGML_BUILD_EXAMPLES=OFF
-    -DGGML_BUILD_TESTS=OFF
-    -DGGML_OPENMP=ON
-    -DGGML_LTO=ON
-    -DGGML_RPC=ON
-    -DGGML_CUDA=ON
-    -DGGML_CUDA_FA_ALL_QUANTS=ON
-    -DGGML_CUDNN=ON    
-    -DGGML_CUDA_COMPRESSION_MODE=speed
+    -DLLAMA_USE_SYSTEM_GGML=ON
     -DLLAMA_BUILD_SERVER=ON
     -DLLAMA_BUILD_NUMBER="${_build_number}"
     -DLLAMA_BUILD_COMMIT="${_commit_id}"
     -DLLAMA_OPENSSL=ON
     -Wno-dev
   )
-
-  if [[ ${aur_llamacpp_build_universal} == true ]]; then
-    echo "Building universal binary [aur_llamacpp_build_universal == true]"
-    _cmake_options+=(
-      -DGGML_BACKEND_DL=ON
-      -DGGML_NATIVE=OFF
-      -DGGML_CPU_ALL_VARIANTS=ON
-      -DCMAKE_CUDA_ARCHITECTURES=all-major
-    )
-  else
-    # we lose GGML_NATIVE_DEFAULT due to how makepkg includes
-    # $SOURCE_DATE_EPOCH in ENV
-    _cmake_options+=(
-      -DGGML_NATIVE=ON
-      -DCMAKE_CUDA_ARCHITECTURES=native
-    )
-  fi
 
   # Allow user-specified additional flags
   if [[ -n "${aur_llamacpp_cmakeopts:-}" ]]; then
