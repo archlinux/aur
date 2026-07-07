@@ -1,0 +1,23 @@
+pkgbase = cosmic-passphrase-git
+	pkgdesc = GPG/SSH passphrase caching via the freedesktop Secret Service, for the COSMIC desktop
+	pkgver = r6.gb7bc282
+	pkgrel = 1
+	url = https://github.com/AuthenticSm1les/cosmic-passphrase
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = GPL-2.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	optdepends = gnupg: pinentry-cosmic is a pinentry program for gpg-agent
+	optdepends = openssh: cosmic-ssh-askpass is an SSH_ASKPASS helper for a plain ssh-agent
+	optdepends = oo7-daemon: freedesktop Secret Service backend passphrases are cached in
+	optdepends = gnome-keyring: alternative freedesktop Secret Service backend
+	provides = cosmic-passphrase
+	conflicts = cosmic-passphrase
+	source = cosmic-passphrase::git+https://github.com/AuthenticSm1les/cosmic-passphrase.git
+	sha256sums = SKIP
+
+pkgname = cosmic-passphrase-git
