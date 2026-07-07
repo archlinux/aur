@@ -1,0 +1,19 @@
+pkgbase = python-mcp-proxy
+	pkgdesc = A bridge between Streamable HTTP / SSE and stdio MCP transports
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/sparfenyuk/mcp-proxy
+	arch = any
+	license = MIT
+	makedepends = python-distribute
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-mcp
+	depends = python-httpx-auth
+	depends = uvicorn
+	source = https://files.pythonhosted.org/packages/source/m/mcp-proxy/mcp_proxy-0.12.0.tar.gz
+	sha384sums = 89f5f98b29aafd77f320f76a2f305d8788718e35f78ab29b73ee34a28ded1942a84c26c4969b15db83f0536daab17e40
+
+pkgname = python-mcp-proxy
