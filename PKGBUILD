@@ -2,7 +2,7 @@
 
 pkgname=(sable-web)
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Matrix client built to enhance user experience, forked from cinny.'
 url=https://github.com/SableClient/Sable
 license=(AGPL-3.0)
@@ -16,11 +16,12 @@ source=(sable-${pkgver}.tar.gz::"https://github.com/SableClient/Sable/archive/re
 sha512sums=('11ea0b57632d77bf1a8e3754ec0a4be6a014e039f303f6a8a00ab7e4b096b48184a8b487c13ffc2096af2c30942182fa35ff5acee3c6946cc8bd9d0be597bcc5')
 
 prepare() {
-	cd "Sable-${pkgver}"
-
         source /usr/share/nvm/init-nvm.sh
-        nvm install 24
-        nvm use 24
+
+        cd "${srcdir}"/"Sable-${pkgver}"
+
+        nvm install
+        nvm use
 
 	pnpm i
 }
