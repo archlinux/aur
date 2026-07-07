@@ -1,7 +1,7 @@
 pkgbase = luna-llm
-	pkgdesc = Arunachalam's Luna-2.5B: A specialized tool for the Arch Linux community. Developed by a 7-year veteran builder based in Tamil Nadu, India.
+	pkgdesc = Arunachalam's Luna-2.5B: A specialized tool for the Arch Linux community. Developed by a 7-year veteran builder based in (Tamil Nadu), India.
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Arunachalam-gojosaturo/Luna-2.5B-LLM
 	arch = any
 	license = Apache
