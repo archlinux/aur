@@ -27,7 +27,12 @@ install="${pkgname}.install"
 _branch=master
 _datever=1.4.0
 _data7z="keeperfx_${_datever//./_}_complete.7z"
-source=("${pkgname}::git+https://github.com/dkfans/keeperfx.git#branch=${_branch}"
+# Local checkout name kept separate from $pkgname on purpose: the source URL moved
+# from the old DoubyCz fork to upstream dkfans, and makepkg refuses to reuse a cached
+# VCS clone whose origin differs. Cloning into a fresh "$_srcname" dir sidesteps the
+# "not a clone of ..." abort every existing user would otherwise hit on upgrade.
+_srcname=keeperfx
+source=("${_srcname}::git+https://github.com/dkfans/keeperfx.git#branch=${_branch}"
         "${_data7z}::https://github.com/dkfans/keeperfx/releases/download/v${_datever}/${_data7z}")
 noextract=("${_data7z}")
 sha256sums=('SKIP'
@@ -36,25 +41,25 @@ sha256sums=('SKIP'
 pkgver() {
   # Derive a clean VCS version from the bundled data release + commit count + short
   # hash (<datever>.rN.gHASH), independent of upstream's own tag scheme.
-  cd "$pkgname"
+  cd "$_srcname"
   printf '%s.r%s.g%s' "$_datever" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$pkgname"
+  cd "$_srcname"
   # linux.mk downloads its own prebuilt static deps (astronomy/centijson/enet6/libcurl)
   # and links everything else against the system libraries.
   # -ffile-prefix-map strips the build path from debug info / __FILE__ log strings, so the
   # package does not embed a reference to $srcdir (reproducible, avoids the namcap warning),
   # while keeping symbols for crash backtraces (the build is intentionally not stripped).
   make -f linux.mk -j"$(nproc)" \
-    CC="cc -ffile-prefix-map=$srcdir/$pkgname=." \
-    CXX="g++ -ffile-prefix-map=$srcdir/$pkgname=." \
+    CC="cc -ffile-prefix-map=$srcdir/$_srcname=." \
+    CXX="g++ -ffile-prefix-map=$srcdir/$_srcname=." \
     all
 }
 
 package() {
-  cd "$pkgname"
+  cd "$_srcname"
 
   # --- engine binary ---
   install -Dm755 bin/keeperfx "$pkgdir/usr/lib/$pkgname/keeperfx"

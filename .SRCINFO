@@ -32,7 +32,7 @@ pkgbase = keeperfx-git
 	noextract = keeperfx_1_4_0_complete.7z
 	options = !debug
 	options = !strip
-	source = keeperfx-git::git+https://github.com/dkfans/keeperfx.git#branch=master
+	source = keeperfx::git+https://github.com/dkfans/keeperfx.git#branch=master
 	source = keeperfx_1_4_0_complete.7z::https://github.com/dkfans/keeperfx/releases/download/v1.4.0/keeperfx_1_4_0_complete.7z
 	sha256sums = SKIP
 	sha256sums = 82d9d5634e8ea6cabb8f62fbd4830b758919893863cd313517af256a3040a279
