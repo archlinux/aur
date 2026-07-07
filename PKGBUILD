@@ -28,6 +28,11 @@ makedepends=(
 source=("git+https://github.com/phonopy/phonopy.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
+prepare() {
+  cd "$srcdir"/phonopy
+  sed -i 's/cmake\.verbose/build.verbose/g' pyproject.toml
+}
+
 build() {
   cd "$srcdir"/phonopy
   rm -rf dist
@@ -36,7 +41,7 @@ build() {
   _buildenv/bin/pip install --upgrade pip
   _buildenv/bin/pip install \
     numpy \
-    "scikit-build-core<0.10" \
+    scikit-build-core \
     "nanobind<2.10.0" \
     setuptools-scm \
     build
