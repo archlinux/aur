@@ -9,7 +9,7 @@ pkgbase = qdrant-bin
 	depends = glibc
 	provides = qdrant
 	conflicts = qdrant
-	source_x86_64 = https://github.com/qdrant/qdrant/releases/download/v1.17.0/qdrant_1.17.0-1_amd64.deb
+	source_x86_64 = qdrant-bin-1.17.0.deb::https://github.com/qdrant/qdrant/releases/download/v1.17.0/qdrant_1.17.0-1_amd64.deb
 	sha256sums_x86_64 = a2a9cfe4bd2aa8e188d86404fa1f47ac92253a8b3704ac19b39a796bdd050453
 
 pkgname = qdrant-bin

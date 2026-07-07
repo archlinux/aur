@@ -1,9 +1,9 @@
-# Contributor: Charles Dong <chardon_cs@proton.me>
-# Contributor: tee < teeaur at duck dot com >
+# Maintainer: Jason Landbridge <JasonLandbridge at aur dot archlinux dot org>
+# Packaging repository: https://github.com/JasonLandbridge/Arch-Linux-AUR-Packages-Updater/tree/main/qdrant-bin
 
 _pkgname=qdrant
 pkgname="${_pkgname}-bin"
-pkgver=1.17.0
+pkgver=1.17.0 # renovate: datasource=github-releases depName=qdrant/qdrant
 pkgrel=1
 pkgdesc="Vector Database for the next generation of AI applications"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('Apache-2.0')
 depends=('gcc-libs' 'glibc')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source_x86_64=("https://github.com/qdrant/qdrant/releases/download/v${pkgver}/qdrant_${pkgver}-1_amd64.deb")
+source_x86_64=("${pkgname}-${pkgver}.deb::https://github.com/qdrant/qdrant/releases/download/v${pkgver}/qdrant_${pkgver}-1_amd64.deb")
 sha256sums_x86_64=('a2a9cfe4bd2aa8e188d86404fa1f47ac92253a8b3704ac19b39a796bdd050453')
 
 package() {
