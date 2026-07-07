@@ -56,10 +56,24 @@ _refresh_caches() {
     command -v gtk-update-icon-cache >/dev/null 2>&1 && gtk-update-icon-cache -q /usr/share/icons/hicolor 2>/dev/null || true
 }
 
+_cowork_note() {
+    # pacman does not install optdepends, so point users at the optional Cowork
+    # VM stack once at install time (fresh installs only - upgrades stay quiet).
+    local _qemu=qemu-system-x86 _fw=edk2-ovmf
+    if [ "$(uname -m)" = "aarch64" ]; then
+        _qemu=qemu-system-aarch64
+        _fw=edk2-aarch64
+    fi
+    echo "==> Optional - Cowork (agent workspace VM) needs:"
+    echo "==>   sudo pacman -S --needed $_qemu $_fw virtiofsd"
+    echo "==>   sudo usermod -aG kvm \$USER    (then log out and back in)"
+}
+
 post_install() {
     _fix_sandbox
     _install_apparmor
     _refresh_caches
+    _cowork_note
 }
 
 post_upgrade() {
