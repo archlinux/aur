@@ -4,6 +4,7 @@ _pkgname=io.github.msojocs.bilibili
 pkgver=1.17.9
 pkgrel=1
 pkgdesc='基于哔哩哔哩官方客户端移植的Linux版本支持漫游(DEB构建相较bilibili-bin更快) '
+options=('!strip' '!debug' '!emptydirs')
 arch=('x86_64' 'aarch64')
 url='https://github.com/msojocs/bilibili-linux/'
 license=('MIT License')
@@ -14,6 +15,4 @@ package() {
     cd "$srcdir"
     ar x "${_pkgname}_${pkgver}-1_amd64.deb"
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
-    install -d "${pkgdir}/opt/apps"
-    install -d "${pkgdir}/usr/share/"
 }
