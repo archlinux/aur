@@ -1,0 +1,15 @@
+pkgbase = jay-aur
+	pkgdesc = A lightweight, semantic AUR helper wrapper for Arch Linux
+	pkgver = 7.4.1
+	pkgrel = 1
+	url = https://github.com/xmlzitos154/jay
+	arch = any
+	license = MIT
+	depends = bash
+	optdepends = flatpak: hybrid AUR/Flatpak mode
+	optdepends = reflector: mirror optimization support
+	optdepends = expac: system statistics
+	source = jay-aur-7.4.1.tar.gz::https://github.com/xmlzitos154/jay/archive/v7.4.1.tar.gz
+	sha256sums = a7cddd243860626577b804855aa4d38c62013341dc2132799765db4c620378e3
+
+pkgname = jay-aur
