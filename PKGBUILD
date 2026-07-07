@@ -1,6 +1,6 @@
 # Maintainer: Luke Simpson <luke@s4solutions.ai>
 pkgname=nexis
-pkgver=2.8.2
+pkgver=2.8.3
 pkgrel=1
 pkgdesc="Linux system optimizer and monitoring tool"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,14 @@ makedepends=('cmake' 'gcc' 'make' 'qt6-tools')
 # real-object reference into an LTO object). Disabling LTO keeps the packaged
 # build using plain objects that any linker handles.
 options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/s4solutionsllc/Nexis/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f369bf584929443e0e9a869b8dc1e97a6347e381e92395271d10016c00137f4b')
+# Install tracking (Phase 2): source the uploaded release asset instead of the
+# auto-generated tag tarball — GitHub only counts downloads of uploaded assets,
+# so this makes AUR builds visible in per-asset download stats. Same content
+# and Nexis-$pkgver/ prefix as the old archive URL. Effective from the first
+# release that ships the asset (> 2.8.2); aur.yml's updpkgsums regenerates
+# sha256sums at publish time.
+source=("$pkgname-$pkgver.tar.gz::https://github.com/s4solutionsllc/Nexis/releases/download/v$pkgver/nexis-$pkgver-source.tar.gz")
+sha256sums=('3233938e9924a9a34bc8ff5320fef0c4082e898aede54a248d071b09105860b5')
 
 build() {
     # GH#82: in-tree LLD auto-selection is now OFF by default (see
