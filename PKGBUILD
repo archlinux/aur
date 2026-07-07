@@ -13,7 +13,7 @@ pkgname=(
     'lib32-nvidia-vulkan-utils'
     'lib32-opencl-nvidia-vulkan'
 )
-pkgver=595.44.10
+pkgver=595.44.11
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
     'systemd-homed-override.conf'
     'systemd-suspend-override.conf'
     'nvidia-sleep.conf'
-    "${_pkg}.run::https://developer.nvidia.com/downloads/vulkan-beta-${pkgver//./}-linux"
+    "${_pkg}.run::https://developer.nvidia.com/downloads/assets/gameworks/downloads/secure/Vulkan_Beta_Drivers/NVIDIA-Linux-x86_64-${pkgver}.run"
 )
 
 sha512sums=(
@@ -39,7 +39,7 @@ sha512sums=(
     'a0183adce78e40853edf7e6b73867e7a8ea5dabac8e8164e42781f64d5232fbe869f850ab0697c3718ebced5cde760d0e807c05da50a982071dfe1157c31d6b8'
     '55def6319f6abb1a4ccd28a89cd60f1933d155c10ba775b8dfa60a2dc5696b4b472c14b252dc0891f956e70264be87c3d5d4271e929a4fc4b1a68a6902814cee'
     'f51515f2f509a96175f7b32b0cfe74e253f0352b509782bbbd15663fce085448734c6d2730b5553254490cea2905285eee998dff55876c295a29b1b22813c4ef'
-    'ef88ee825f68a0d3fe6ddd3305d595daa619a30c0c5ed3f2dceafcbb0a75004bfb4bd3181088b6b922a351f9f694424e3d45275c3dcf10ace25bba458a96ea97'
+    '3b7533a4ba0a9744db1f0dea0900988c6874bd1e069b8a8d3f5bb748002b3cb77d8429973119a676d1c7fe679bc1e91c34caec5dc7d31f3eb57cd0db85d2933f'
 )
 
 create_links() {
