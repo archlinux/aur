@@ -1,6 +1,6 @@
 pkgbase = soredowe-bin
 	pkgdesc = Experimental GUI for pacman/AUR users who prefer it (Wayland/Vulkan)
-	pkgver = 0.3.4
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/mlm-games/soredowe
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = soredowe-bin
 	options = !strip
 	source = icon.svg::https://raw.githubusercontent.com/mlm-games/soredowe/refs/heads/main/packaging/icons/hicolor/scalable/apps/soredowe.svg
 	sha256sums = SKIP
-	source_x86_64 = soredowe-v0.3.4-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/soredowe/releases/download/v0.3.4/soredowe-v0.3.4-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 4f1290e567478b0f68fb631b9b03664ac0448496199bb2c576aa5d2351f4f4bd
-	source_aarch64 = soredowe-v0.3.4-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/soredowe/releases/download/v0.3.4/soredowe-v0.3.4-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 75746a4811fd8118b875205e0f19fb6a533d0ef2e2ff2de43e145b776bd252b6
+	source_x86_64 = soredowe-v0.4.4-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/soredowe/releases/download/v0.4.4/soredowe-v0.4.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 50228051b956a24424e4b095e51b89788b52aee29a20dddb337d6d14aa95594d
+	source_aarch64 = soredowe-v0.4.4-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/soredowe/releases/download/v0.4.4/soredowe-v0.4.4-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = df372cc836f46eb88ea9fc829249c94dbb99415223d032e63c978cf7d1813a0e
 
 pkgname = soredowe-bin
