@@ -1,25 +1,27 @@
 # Maintainer: Jan Fidra <tkmxqrd@gmail.com>
+# Contributor: Jan Fidra <tkmxqrd@gmail.com>
 pkgname=davinci-convert
-pkgver=1.0.1
-gitpkgname=davinci-video-converter
+pkgver=2.0.0
+_gitpkgname=davinci-video-converter
 pkgrel=1
 pkgdesc="A video converter for Davinci Resolve using FFmpeg"
 arch=('x86_64')
 url="https://github.com/tkmxqrdxddd/davinci-video-converter"
 license=('MIT')
 depends=('ffmpeg')
-makedepends=('gcc' 'make')
-source=("$gitpkgname-$pkgver.tar.gz::https://github.com/tkmxqrdxddd/davinci-video-converter/archive/refs/tags/$pkgver.tar.gz")  # Updated source URL
-sha256sums=('SKIP')  # Replace with the actual checksum after generating
+makedepends=('gcc' 'cmake' 'make')
+source=("$_gitpkgname-$pkgver.tar.gz::https://github.com/tkmxqrdxddd/davinci-video-converter/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/$gitpkgname-$pkgver"
-    make
-    echo "compilation succesfull"
+    cd "$srcdir/$_gitpkgname-$pkgver"
+    cmake -DCMAKE_BUILD_TYPE=Release -B build
+    cmake --build build
+    echo "compilation successful"
 }
 
 package() {
-    cd "$srcdir/$gitpkgname-$pkgver"
-    install -Dm755 output/davinci-convert "$pkgdir/usr/bin/davinci-convert"
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"  # Include documentation if available
+    cd "$srcdir/$_gitpkgname-$pkgver"
+    install -Dm755 build/davinci-video-converter "$pkgdir/usr/bin/davinci-video-converter"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
