@@ -3,7 +3,7 @@
 pkgbase=sherpa-onnx
 pkgname=("${pkgbase}" "python-${pkgbase}")
 pkgver=1.13.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Speech-to-text, text-to-speech, speaker diarization, speech enhancement, source separation, and VAD using next-gen Kaldi with onnxruntime without Internet connection."
 arch=("x86_64" "aarch64" "arm" "riscv64")
 url="https://github.com/k2-fsa/${pkgbase}"
@@ -18,9 +18,11 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "json-3.12.0.tar.gz::https://github.com/nlohmann/json/archive/refs/tags/v3.12.0.tar.gz"
         "kaldi-decoder-0.3.0.tar.gz::https://github.com/k2-fsa/kaldi-decoder/archive/refs/tags/v0.3.0.tar.gz"
         "kaldi-native-fbank-1.22.3.tar.gz::https://github.com/csukuangfj/kaldi-native-fbank/archive/refs/tags/v1.22.3.tar.gz"
+        "kaldifst-1.8.0.tar.gz::https://github.com/k2-fsa/kaldifst/archive/refs/tags/v1.8.0.tar.gz"
+        "kissfft-febd4caeed32e33ad8b2e0bb5ea77542c40f18ec.zip::https://github.com/mborgerding/kissfft/archive/febd4caeed32e33ad8b2e0bb5ea77542c40f18ec.zip"
         "openfst-1.8.5-2026-04-11.tar.gz::https://github.com/csukuangfj/openfst/archive/refs/tags/v1.8.5-2026-04-11.tar.gz"
-        "piper-phonemize-f3ff95afc03640bc1399e113e83361192a2fafb4.zip::https://github.com/csukuangfj/piper-phonemize/archive/f3ff95afc03640bc1399e113e83361192a2fafb4.zip"
         "pa_stable_v190700_20210406.tgz::http://files.portaudio.com/archives/pa_stable_v190700_20210406.tgz"
+        "piper-phonemize-f3ff95afc03640bc1399e113e83361192a2fafb4.zip::https://github.com/csukuangfj/piper-phonemize/archive/f3ff95afc03640bc1399e113e83361192a2fafb4.zip"
         "simple-sentencepiece-0.7.tar.gz::https://github.com/pkufool/simple-sentencepiece/archive/refs/tags/v0.7.tar.gz"
         "websocketpp-b9aeec6eaf3d5610503439b4fae3581d9aff08e8.zip::https://github.com/zaphoyd/websocketpp/archive/b9aeec6eaf3d5610503439b4fae3581d9aff08e8.zip")
 sha256sums=('3243cb386d3a4ac87596adf7d2c89fddf23e2948b154942b987b4d91c1fee295'
@@ -31,9 +33,11 @@ sha256sums=('3243cb386d3a4ac87596adf7d2c89fddf23e2948b154942b987b4d91c1fee295'
             '4b92eb0c06d10683f7447ce9406cb97cd4b453be18d7279320f7b2f025c10187'
             'b9f34cfb4fd3b1344100eead79ef4d37aa15962274b9e3056de345021f76a1b0'
             '9176cc66fc7ce1edf85cf355b06e320c57db6297df74277f575183468893cf61'
+            '3f247b7e5a2409071202f5e2bc6200060f66728c0a3443c03923ad2723e040b3'
+            '497103e664168ebe39580b757adbe616f6cf85a16572af581ca7bc42d0ab13fd'
             '57fbc4b950ae81b1a0e1e298af15652da968a6723a592b7874e9b4027a80a5b4'
-            'd9cca4e2bdc7d6dd8dffb96a4668283dbd3f77a9c194a3e530c1e8eba9406a5d'
             '47efbf42c77c19a05d22e627d42873e991ec0c1357219c0d74ce6a2948cb2def'
+            'd9cca4e2bdc7d6dd8dffb96a4668283dbd3f77a9c194a3e530c1e8eba9406a5d'
             '1748a822060a35baa9f6609f84efc8eb54dc0e74b9ece3d82367b7119fdc75af'
             '1385135ede8191a7fbef9ec8099e3c5a673d48df0c143958216cd1690567f583')
 noextract=( $(echo "${source[@]:1}" | sed -E 's|:\S+||g') )
@@ -76,8 +80,8 @@ package_sherpa-onnx() {
     cd "${pkgbase}-${pkgver}"
     DESTDIR="${pkgdir}" cmake --install build_bin
     install -Dm644 {README,CHANGELOG}.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-    rm -rf "${pkgdir}/usr/share/vim"        "${pkgdir}/usr/lib/pkgconfig/espeak-ng.pc"
-    mv "${pkgdir}/usr/sherpa-onnx.pc"       "${pkgdir}/usr/lib/pkgconfig"
+    install -dm755 "${pkgdir}/usr/lib/pkgconfig"
+    mv "${pkgdir}/usr/sherpa-onnx.pc"       "${pkgdir}/usr/lib/pkgconfig/sherpa-onnx.pc"
 }
 
 package_python-sherpa-onnx() {
