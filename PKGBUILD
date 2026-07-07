@@ -1,6 +1,7 @@
 # Maintainer: effeffe <filippo dot falezza at outlook dot it>
 
-pkgname=osp-tracker
+pkgname=osp-tracker-bin
+_pkgname=osp-tracker
 pkgver=6.2.0
 arch=('x86_64')
 pkgrel=1
@@ -38,8 +39,8 @@ package() {
 	  --unattendedmodeui none || true #ignore errors due to attempts to copy files to /usr/share/applications
 
   msg2 'Creating desktop file and symlinks'
-  install -D -m755 tracker.sh ${pkgdir}/usr/bin/${pkgname}
-  install -D -m755 tracker.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-  install -D -m644 ${pkgdir}/opt/tracker/tracker_icon48.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+  install -D -m755 tracker.sh ${pkgdir}/usr/bin/${_pkgname}
+  install -D -m755 tracker.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
+  install -D -m644 ${pkgdir}/opt/tracker/tracker_icon48.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
 
 }
