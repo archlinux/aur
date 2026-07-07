@@ -1,6 +1,6 @@
 pkgbase = lody-bin
 	pkgdesc = A development platform built for parallel AI Agent workflows
-	pkgver = 0.66.0
+	pkgver = 0.67.2
 	pkgrel = 1
 	url = https://lody.ai
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = lody-bin
 	optdepends = libappindicator: tray icon support
 	provides = lody
 	conflicts = lody
-	noextract = lody-bin-0.66.0-amd64.deb
+	noextract = lody-bin-0.67.2-amd64.deb
 	options = !strip
 	options = !debug
-	source = lody-bin-0.66.0-amd64.deb::https://updates.lody.ai/production/Lody-0.66.0-amd64.deb
-	sha256sums = 3c517ec5641038971b51b75e935621e0b8c4b5fe2d69775b30464edb54d376c2
+	source = lody-bin-0.67.2-amd64.deb::https://updates.lody.ai/production/Lody-0.67.2-amd64.deb
+	sha256sums = eb4f80ad2914951e883e39a85fb15a91897e15b548ad4be7712a63f223116e67
 
 pkgname = lody-bin
