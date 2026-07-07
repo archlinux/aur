@@ -1,13 +1,13 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep
 pkgver=2.8.1
-pkgrel=1.314
+pkgrel=2.314
 pkgdesc='A DjVu to PDF converter'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
 license=('GPL-3.0-only')
 checkdepends=(python-pytest)
-makedepends=(coreutils python-uv-build python-build python-installer python-wheel python-click-man)
+makedepends=(python-uv-build python-build python-installer python-click-man)
 depends=(python python-djvulibre-python
          python-click python-rich python-pillow
          python-fpdf2 python-pdfrw)
