@@ -1,19 +1,19 @@
 pkgbase = fjira-bin
 	pkgdesc = Fjira - Fuzzy finder and TUI application for Jira.
-	pkgver = 1.5.4
+	pkgver = 1.5.5
 	pkgrel = 1
 	url = https://github.com/mk-5/fjira
 	license = AGPL-3.0-only
 	conflicts = fjira
 	provides = fjira
 	arch = aarch64
-	source_aarch64 = https://github.com/mk-5/fjira/releases/download/1.5.4/fjira_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 85975fed3c2123027cdff93337e342df21eb9387cd912be12f661688331b4137
+	source_aarch64 = https://github.com/mk-5/fjira/releases/download/1.5.5/fjira_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 8db9421ed9b6b3f4f4ecfb93d99a0c9e3e3e2754bc05ff375a07238a7a0b8d14
 	arch = i686
-	source_i686 = https://github.com/mk-5/fjira/releases/download/1.5.4/fjira_Linux_i386.tar.gz
-	sha256sums_i686 = 2fb1b22b243710f9f10019f5e8f7ac8cf3b3f96e6e291eff5aaa4a7a501e437d
+	source_i686 = https://github.com/mk-5/fjira/releases/download/1.5.5/fjira_Linux_i386.tar.gz
+	sha256sums_i686 = 9195bd475f7544984aae4c88bc62615396207f6d102ae143ca6e077f971859b7
 	arch = x86_64
-	source_x86_64 = https://github.com/mk-5/fjira/releases/download/1.5.4/fjira_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = e8d8d0c662e34c06e18dca9197c7e340f4094334ca59bca5445492153d6b99ce
+	source_x86_64 = https://github.com/mk-5/fjira/releases/download/1.5.5/fjira_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 4da972b1a3ae01191e5b2638cdc894bc8e1e743d05053b89c064be6dd49d9a04
 	
 pkgname = fjira-bin
