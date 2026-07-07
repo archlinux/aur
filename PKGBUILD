@@ -1,6 +1,6 @@
 # Maintainer: Soumadip Das <soumadip@zohomail.in>
 pkgname=quikrun
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Run your code without hassle"
 arch=("any")
