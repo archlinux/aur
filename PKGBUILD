@@ -1,4 +1,4 @@
-# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
+# Maintainer: Tyrolyean <tyrolyean@escpe.net>
 pkgname=flexisip
 pkgver=2.5.3
 pkgrel=1
