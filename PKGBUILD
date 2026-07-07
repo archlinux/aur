@@ -1,7 +1,7 @@
 # Maintainer: hyperpuncher
 
 pkgname=pi-ui-bin
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Desktop GUI for pi"
 arch=('x86_64' 'aarch64')
@@ -19,10 +19,10 @@ sha256sums=(
 )
 
 source_x86_64=("$pkgname-$pkgver.AppImage::https://github.com/hyperpuncher/pi-ui/releases/download/v$pkgver/pi-ui-linux-x64.AppImage")
-sha256sums_x86_64=('41702dd64712bb35bfcea383433045f7f27c36383b0946a8ddad6bf0c8e9529c')
+sha256sums_x86_64=('79e488876e685ee9535186af10cbd61c8bfadff79f028afdff3969785e49069e')
 
 source_aarch64=("$pkgname-$pkgver.AppImage::https://github.com/hyperpuncher/pi-ui/releases/download/v$pkgver/pi-ui-linux-arm64.AppImage")
-sha256sums_aarch64=('5b0f3c3e8bb9a482adcd0993bd30c3268201026e97e0e741d6bcff4f1b813e24')
+sha256sums_aarch64=('0b661cc06ff85ac89d54c92bfbfb6cf93e8ec562c5851137c05d608f82a3d6d2')
 
 noextract=("$pkgname-$pkgver.AppImage")
 
@@ -33,8 +33,6 @@ package() {
 #!/bin/sh
 exec /opt/pi-ui/pi-ui.AppImage \
   --enable-blink-features=MiddleClickAutoscroll \
-  --disable-frame-rate-limit \
-  --disable-gpu-vsync \
   --disable-spell-checking \
   "$@"
 EOF
