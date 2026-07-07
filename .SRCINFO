@@ -1,0 +1,30 @@
+pkgbase = python-ctfbridge
+	pkgdesc = A Python library for interacting with multiple CTF platforms
+	pkgver = 0.8.9
+	pkgrel = 1
+	url = https://github.com/bjornmorten/ctfbridge
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	depends = python-asyncssh
+	depends = python-beautifulsoup4
+	depends = python-httpx
+	depends = python-markdownify
+	depends = python-pydantic
+	depends = python-rich
+	depends = python-typer
+	optdepends = python-ctf-dl: A CTF challenge bulk downloader
+	optdepends = python-ctf-sniper: An automated flag submission tool
+	optdepends = python-pwnv: A CTF workspace management tool
+	provides = python-ctfbridge
+	conflicts = python-ctfbridge
+	source = ctfbridge::git+https://github.com/bjornmorten/ctfbridge.git#tag=v0.8.9
+	sha256sums = a265577a9dc9dad3d35973ebbe9586915e180dcf149868c639db1054595197df
+
+pkgname = python-ctfbridge
