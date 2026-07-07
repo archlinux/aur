@@ -1,14 +1,14 @@
 pkgbase = ecspresso-bin
 	pkgdesc = ecspresso is a deployment tool for Amazon ECS
-	pkgver = 2.8.4
+	pkgver = 2.8.5
 	pkgrel = 1
 	url = https://github.com/kayac/ecspresso
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	source_aarch64 = https://github.com/kayac/ecspresso/releases/download/v2.8.4/ecspresso_2.8.4_linux_arm64.tar.gz
-	sha256sums_aarch64 = ad3dc90b3db2451ad46813809fd812bd66e221220e656412367badae3d8149fb
-	source_x86_64 = https://github.com/kayac/ecspresso/releases/download/v2.8.4/ecspresso_2.8.4_linux_amd64.tar.gz
-	sha256sums_x86_64 = 652953ab0439f7837542f80fa03938b676574e8c85f477eb90df8e5b6d95ff68
+	source_aarch64 = https://github.com/kayac/ecspresso/releases/download/v2.8.5/ecspresso_2.8.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = 71b88c6987acded2fce305865cf583667ece70ec4da1735b9827ae465ce61a8b
+	source_x86_64 = https://github.com/kayac/ecspresso/releases/download/v2.8.5/ecspresso_2.8.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7e2547a1126eae6d7f2381a7e576782e460b0e7e11eb91430a37def3bfa46b5c
 
 pkgname = ecspresso-bin
