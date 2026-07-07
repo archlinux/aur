@@ -5,7 +5,13 @@ set (CMAKE_SYSTEM_PROCESSOR @CMAKE_PROCESSOR@)
 set (CMAKE_C_COMPILER clang-cl)
 set (CMAKE_CXX_COMPILER clang-cl)
 
-add_compile_options (--target=@CMAKE_PROCESSOR@-windows-msvc -fuse-ld=lld)
+# Pin the target before compiler identification — clang-cl otherwise probes as the host
+# arch, so CMake records MSVC_*_ARCHITECTURE_ID=x64 and injects /machine:x64 into every
+# link line, clashing with our /machine:@PROCESSOR@.
+set (CMAKE_C_COMPILER_TARGET @CMAKE_PROCESSOR@-windows-msvc)
+set (CMAKE_CXX_COMPILER_TARGET @CMAKE_PROCESSOR@-windows-msvc)
+
+add_compile_options (-fuse-ld=lld)
 add_link_options (/machine:@PROCESSOR@)
 
 # where is the target environment
