@@ -1,7 +1,7 @@
 # Maintainer: Nicolás Celedón-Hernández <coriollis.nch at gmail dot com>
 
 pkgname=ford
-pkgver=7.0.10
+pkgver=7.0.13
 pkgrel=1
 pkgdesc='Automatically generates FORtran Documentation from comments within the code'
 arch=(any)
@@ -15,7 +15,7 @@ optdepends=('fortls: Fortran Language Server compatible with FORD documentation'
 'python-sphinx-autodoc-typehints' 'python-sphinx-inline-tabs' 'python-sphinx-book-theme' \
 'sphinx-argparse-cli')
 source=("https://pypi.io/packages/source/f/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('b1271adcd8a33af89aa65cd176ed25fe252b3e0a52aa9f1fd00b0e8c51fc4086')
+sha256sums=('482a75b34b9f2b1975cbae9aa1c533a62d63e0c1861b5b772d25aa52fb1ce809')
 
 build() {
 	cd "$pkgname-$pkgver"
