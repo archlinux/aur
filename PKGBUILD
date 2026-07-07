@@ -2,7 +2,7 @@
 # Contributor: devome <evinedeng@hotmail.com>
 
 pkgname="n8n"
-pkgver=2.28.7
+pkgver=2.29.7
 pkgrel=1
 pkgdesc="Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services."
 arch=('x86_64')
@@ -14,7 +14,7 @@ backup=("etc/default/${pkgname}")
 # Current upstream constraint: ">=22.16"
 depends=("nodejs>=22.16")
 makedepends=("npm" "curl")
-options=('!debug')
+options=('!debug' '!strip')
 source=("${pkgname}.env"
 "${pkgname}.service"
 "${pkgname}.sysusers"
@@ -47,38 +47,37 @@ package() {
   npm install --cache "${srcdir}/npm-cache" --prefix="${pkgdir}/usr" --global --ignore-scripts "${srcdir}/${pkgname}-${pkgver}.tgz"
   npm rebuild --cache "${srcdir}/npm-cache" --prefix="${pkgdir}/usr/lib/node_modules/${pkgname}" sqlite3
 
-  # Basic cleanup - remove some development files
-  find "${pkgdir}/usr/lib/node_modules/${pkgname}" -name "*.ts" -delete 2>/dev/null || true
-  find "${pkgdir}/usr/lib/node_modules/${pkgname}" -name "*.js.map" -delete 2>/dev/null || true
-
-  local stacktrace_dir="${pkgdir}/usr/lib/node_modules/${pkgname}/node_modules/@sentry-internal/node-native-stacktrace/lib"
-  if [[ -d "${stacktrace_dir}" ]]; then
-    # Remove platform builds we cannot strip on this architecture to avoid fakeroot/strip failures
-    find "${stacktrace_dir}" -type f -name 'stack-trace-*.node' \
-      \( -name '*darwin*' -o -name '*win32*' \) \
-      -delete
-
-    local keep_pattern=""
-    case "${CARCH}" in
-      x86_64)
-        keep_pattern="linux-x64"
-        ;;
-      aarch64)
-        keep_pattern="linux-arm64"
-        ;;
-    esac
-
-    if [[ -n "${keep_pattern}" ]]; then
-      find "${stacktrace_dir}" -type f -name 'stack-trace-*.node' ! -name "*${keep_pattern}*" -delete
-    fi
-  fi
-
   local node_root="${pkgdir}/usr/lib/node_modules/${pkgname}"
-  if [[ -d "${node_root}" ]]; then
-    find "${node_root}" -type f -name '*.node' \
-      \( -name '*darwin*' -o -name '*win32*' -o -name '*win64*' -o -name '*win-*' -o -name '*android*' -o -name '*freebsd*' -o -name '*arm64*' -o -name '*armv7*' -o -name '*armhf*' -o -name '*linux-arm*' -o -name '*-musl*' \) \
-      -delete
-  fi
+
+  # Development files
+  find "${node_root}" -name "*.ts" -delete 2>/dev/null || true
+  find "${node_root}" -name "*.js.map" -delete 2>/dev/null || true
+
+  # Directory-based prebuilds (isolated-vm puts .node under prebuilds/{platform}-{arch}/)
+  find "${node_root}" -type d -name 'prebuilds' | while IFS= read -r pb; do
+    find "$pb" -mindepth 1 -maxdepth 1 -type d ! -name 'linux-x64' -exec rm -rf {} +
+  done
+
+  # Multi-platform standalone executables (agent-browser ships all 7 platform binaries)
+  find "${node_root}" -path '*/agent-browser/bin/agent-browser-*' \
+    ! -name 'agent-browser-linux-x64' -delete
+
+  # Platform-specific driver directories
+  rm -rf "${node_root}/node_modules/selenium-webdriver/bin/"{macos,windows}
+
+  # Filename-pattern non-native .node files
+  find "${node_root}" -type f -name '*.node' \
+    \( -name '*darwin*' -o -name '*win32*' -o -name '*win64*' -o -name '*win-*' \
+       -o -name '*android*' -o -name '*freebsd*' \
+       -o -name '*arm64*' -o -name '*armv7*' -o -name '*armhf*' -o -name '*linux-arm*' \) \
+    -delete
+
+  # Musl .node binaries (Arch is glibc)
+  find "${node_root}" -type f -name '*.node' -name '*musl*' -delete
+
+  # Old Node.js ABI versions (depends requires nodejs>=22 = ABI 127+)
+  find "${node_root}" -type f -name '*.node' \
+    \( -name '*abi108*' -o -name '*abi115*' -o -name '*-108.node' -o -name '*-115.node' \) -delete
 
   install -dm755 "${pkgdir}/usr/share/"{licenses,doc}"/${pkgname}"
   ln -s "/usr/lib/node_modules/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

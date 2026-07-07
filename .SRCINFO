@@ -1,6 +1,6 @@
 pkgbase = n8n
 	pkgdesc = Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services.
-	pkgver = 2.28.7
+	pkgver = 2.29.7
 	pkgrel = 1
 	url = https://n8n.io
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = n8n
 	makedepends = curl
 	depends = nodejs>=22.16
 	options = !debug
+	options = !strip
 	backup = etc/default/n8n
 	source = n8n.env
 	source = n8n.service
