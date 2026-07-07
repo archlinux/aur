@@ -1,6 +1,6 @@
 pkgbase = openusage-cli
 	pkgdesc = Local daemon and CLI for AI provider usage/quota via OpenUsage plugins
-	pkgver = 0.0.10
+	pkgver = 0.0.11
 	pkgrel = 1
 	url = https://github.com/chpock/openusage-cli
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = openusage-cli
 	depends = glibc
 	depends = gcc-libs
 	optdepends = opencode: AI assistant integration
-	provides = openusage-cli=0.0.10
+	provides = openusage-cli=0.0.11
 	conflicts = openusage-cli-git
 	options = !lto
-	source = openusage-cli-0.0.10.tar.gz::https://github.com/chpock/openusage-cli/archive/refs/tags/v0.0.10.tar.gz
-	sha256sums = 6005d76002a41b6d6d70b075e81eb4a440a4cc2c1d1ea9797c1e68772c5e1078
+	source = openusage-cli-0.0.11.tar.gz::https://github.com/chpock/openusage-cli/archive/refs/tags/v0.0.11.tar.gz
+	sha256sums = 4594132b00425b0d4ece16b7eeca5aed0a35a8fdcbdaa1f9cf5975b0f6671d7a
 
 pkgname = openusage-cli
