@@ -3,7 +3,7 @@
 _pkgauthor=wcampbell0x2a
 _pkgname=zerus
 pkgname=${_pkgname}-bin
-pkgver=0.15.0
+pkgver=0.16.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Lightweight binary to download only project required crates for offline crates.io mirror"
@@ -23,7 +23,7 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/downloa
 sha256sums=('7bc116a8d9f28e1d60401e4d5117f918a8a81771c0fd746e147183038504491b'
             '23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3'
             'fd26644b0118c8ae84a8770bdbbe18f7db14387b5cc19d1de670ad2d98a7ad42')
-sha256sums_x86_64=('c9d2c94c43afcad736f9e98e19548f6cdfbfb06ff7a79ea2a6bbb2913089da4a')
+sha256sums_x86_64=('e26f0e6f15cb1ecd67722359fa3423a830d5c4749e815f237b3067f5dff88ca3')
 
 
 package() {
