@@ -1,7 +1,7 @@
 # Maintainer: Pavel Olizko <contact@nolight.dev>
 
 pkgname=nls
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Nushell-style ls for bash, zsh, and fish'
 arch=('x86_64' 'aarch64')
