@@ -1,14 +1,14 @@
 pkgbase = restate-cli
 	pkgdesc = Building resilient applications made easy! (CLI)
-	pkgver = 1.6.2
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/restatedev/restate
 	arch = x86_64
 	arch = aarch64
 	license = BUSL
-	source_x86_64 = https://restate.gateway.scarf.sh/v1.6.2/restate-cli-x86_64-unknown-linux-musl.tar.xz
-	sha256sums_x86_64 = d671bf2434b410ddf03cf73f73914ccecedd60bfc3d66e841a3d7f9258139e54
-	source_aarch64 = https://restate.gateway.scarf.sh/v1.6.2/restate-cli-aarch64-unknown-linux-musl.tar.xz
-	sha256sums_aarch64 = 16ad6a2964c398553ae8da910f76d36b3be8ad9a8ac301963918f06f8ad1869d
+	source_x86_64 = https://restate.gateway.scarf.sh/v1.7.2/restate-cli-x86_64-unknown-linux-musl.tar.xz
+	sha256sums_x86_64 = b659a82acecbd624736b54aeeb8a3a53623d3bd93c8510e93ef9eb09268903ab
+	source_aarch64 = https://restate.gateway.scarf.sh/v1.7.2/restate-cli-aarch64-unknown-linux-musl.tar.xz
+	sha256sums_aarch64 = 9abf2406f5f2271517ed4f2008355531774ef377fb9127a3bf8277479d3e7048
 
 pkgname = restate-cli
