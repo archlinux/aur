@@ -1,7 +1,7 @@
 pkgbase = whisper.cpp-cuda
 	pkgdesc = High-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model (with NVIDIA CUDA optimizations)
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggml-org/whisper.cpp
 	arch = aarch64
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = whisper.cpp-cuda
 	makedepends = cmake
 	makedepends = ninja
 	depends = ffmpeg
-	depends = libggml-cuda-git
+	depends = ggml-cuda-git
 	depends = nvidia-utils
 	depends = sdl2-compat
 	optdepends = openblas: CPU-accelerated matrix ops (only if system ggml was built with BLAS)

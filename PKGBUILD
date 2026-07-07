@@ -4,12 +4,12 @@
 _pkgbase=whisper.cpp
 pkgname="${_pkgbase}-cuda"
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model (with NVIDIA CUDA optimizations)"
 arch=('aarch64' 'x86_64')
 url="https://github.com/ggml-org/whisper.cpp"
 license=("MIT")
-depends=('ffmpeg' 'libggml-cuda-git' 'nvidia-utils' 'sdl2-compat')
+depends=('ffmpeg' 'ggml-cuda-git' 'nvidia-utils' 'sdl2-compat')
 optdepends=(
   'openblas: CPU-accelerated matrix ops (only if system ggml was built with BLAS)'
 )
@@ -40,7 +40,7 @@ build() {
     -S "${srcdir}/${_pkgbase}-${pkgver}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DWHISPER_FFMPEG=ON \
+    -DWHISPER_COMMON_FFMPEG=ON \
     -DWHISPER_SDL2=ON \
     -DWHISPER_BUILD_TESTS=OFF \
     -DWHISPER_USE_SYSTEM_GGML=ON \
