@@ -2,7 +2,7 @@
 
 _pkgname=log4cplus
 pkgname=mingw-w64-${_pkgname}
-pkgver=2.1.2
+pkgver=2.2.0.1
 pkgrel=1
 pkgdesc="A C++ logger very close to Java's log4j (mingw-w64)"
 url='http://log4cplus.sourceforge.net/'
@@ -14,7 +14,7 @@ arch=('any')
 options=(!strip !buildflags staticlibs)
 optdepends=()
 source=("https://downloads.sourceforge.net/${_pkgname}/${_pkgname}-${pkgver}.tar.xz")
-sha512sums=('d6285e4964e8eda072b61e0585d5fe08c1d942b688752baf75ba230d49691070156ab4da1803d82d0c09128bcb87e21910e38ee9441df13ff762d527fe431444')
+sha512sums=('f9b0654b179bfea9348b117f20ba9006166ed1d464c0e0d9ad3a1239cf3538c7c559b570bc31e3d217a0819bfe6e700b3a3beab38d0e27ff33f96eb7bd45e143')
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
