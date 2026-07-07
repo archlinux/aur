@@ -1,6 +1,6 @@
 # Maintainer: josca <aur.lalt1@quarkymailer.com>
 pkgname=rwx-cli-bin
-pkgver=3.13.3
+pkgver=3.19.1
 pkgrel=1
 pkgdesc='CLI for RWX, an agent-native cloud platform powered by a new container runtime'
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_x86_64=("${_base_url}/rwx-linux-x86_64")
 source_aarch64=("${_base_url}/rwx-linux-aarch64")
 
 sha256sums=('SKIP')
-sha256sums_x86_64=('69d3ac654b027a957df279abf95eada6f279feeb1545a4a10c176e2b18a89d18')
-sha256sums_aarch64=('8cff63ec49e097441e123cdc2be712e3f5955da89f4105eaf0cb5feee2fb1967')
+sha256sums_x86_64=('6abf53a35f58ded0b25ff563c56206b6e39082afc2ce71441cd0bf7891f7d619')
+sha256sums_aarch64=('02525622dc33702dabd9feb2b78d60276e193f3e5aad9b782aa836c1838de809')
 
 package() {
   case "$CARCH" in

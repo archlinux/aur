@@ -1,6 +1,6 @@
 pkgbase = rwx-cli-bin
 	pkgdesc = CLI for RWX, an agent-native cloud platform powered by a new container runtime
-	pkgver = 3.13.3
+	pkgver = 3.19.1
 	pkgrel = 1
 	url = https://github.com/rwx-cloud/rwx
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = rwx-cli-bin
 	depends = glibc
 	provides = rwx
 	conflicts = rwx
-	source = LICENSE-3.13.3::https://raw.githubusercontent.com/rwx-cloud/rwx/v3.13.3/LICENSE
+	source = LICENSE-3.19.1::https://raw.githubusercontent.com/rwx-cloud/rwx/v3.19.1/LICENSE
 	sha256sums = SKIP
-	source_x86_64 = https://github.com/rwx-cloud/rwx/releases/download/v3.13.3/rwx-linux-x86_64
-	sha256sums_x86_64 = 69d3ac654b027a957df279abf95eada6f279feeb1545a4a10c176e2b18a89d18
-	source_aarch64 = https://github.com/rwx-cloud/rwx/releases/download/v3.13.3/rwx-linux-aarch64
-	sha256sums_aarch64 = 8cff63ec49e097441e123cdc2be712e3f5955da89f4105eaf0cb5feee2fb1967
+	source_x86_64 = https://github.com/rwx-cloud/rwx/releases/download/v3.19.1/rwx-linux-x86_64
+	sha256sums_x86_64 = 6abf53a35f58ded0b25ff563c56206b6e39082afc2ce71441cd0bf7891f7d619
+	source_aarch64 = https://github.com/rwx-cloud/rwx/releases/download/v3.19.1/rwx-linux-aarch64
+	sha256sums_aarch64 = 02525622dc33702dabd9feb2b78d60276e193f3e5aad9b782aa836c1838de809
 
 pkgname = rwx-cli-bin
