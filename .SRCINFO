@@ -1,7 +1,7 @@
 pkgbase = bricscad-fr_fr
 	pkgdesc = Logiciel de CAO DWG
 	pkgver = 26.2.07
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bricscad.octave.com/fr
 	arch = x86_64
 	license = Custom:bricscad

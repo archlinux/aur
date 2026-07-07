@@ -1,6 +1,6 @@
 pkgname=bricscad-fr_fr
 pkgver=26.2.07
-pkgrel=1
+pkgrel=2
 pkgdesc="Logiciel de CAO DWG"
 arch=("x86_64")
 url="https://bricscad.octave.com/fr"
