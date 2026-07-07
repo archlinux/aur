@@ -11,7 +11,7 @@ depends=('dbus' 'gcc-libs' 'glibc' 'libxkbcommon' 'openssl' 'sqlite' 'vulkan-icd
 makedepends=('cargo' 'cmake' 'pkgconf' 'rust')
 conflicts=('modde-bin' 'modde-git')
 source=("rs-modde-${pkgver//_/-}.tar.gz::https://codeberg.org/caniko/rs-modde/archive/${pkgver//_/-}.tar.gz")
-sha256sums=('a677aea5fe63b187c330e63c070259eb4b8f0fcba20df8e288d9edbb0cb95467')
+sha256sums=('6a06cdeea8c33f719ae72eb84e289106be28a9ffe53398a9c0bf585d2d0fac6f')
 
 build() {
   cd rs-modde
