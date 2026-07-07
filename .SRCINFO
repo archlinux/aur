@@ -1,12 +1,12 @@
 pkgbase = immich-custom-memories-bin
 	pkgdesc = Get missing metadata for new releases in Jellyfin
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/SinTan1729/immich-custom-memories
 	arch = x86_64
 	license = GPL3
 	provides = immich-custom-memories
-	source = immich-custom-memories-0.1.1.tar.gz::https://github.com/SinTan1729/immich-custom-memories/releases/download/0.1.1/immich-custom-memories.tar.gz
-	sha256sums = b5a489660169d10f52c1ac805937e76a061c5b7243e2e3d1f7b00cdb6dacbc78
+	source = immich-custom-memories-0.1.2.tar.gz::https://github.com/SinTan1729/immich-custom-memories/releases/download/0.1.2/immich-custom-memories.tar.gz
+	sha256sums = 463c34ac9705d1a34c92fbee933e0dac79c5a8097c3226c70debe46ebf86d720
 
 pkgname = immich-custom-memories-bin
