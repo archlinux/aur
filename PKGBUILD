@@ -42,7 +42,7 @@ build() {
   _buildenv/bin/pip install --upgrade pip
   _buildenv/bin/pip install \
     numpy \
-    scikit-build-core \
+    "scikit-build-core<0.10" \
     "nanobind<2.10.0" \
     setuptools-scm \
     build
