@@ -1,6 +1,6 @@
 pkgbase = portfolio
 	pkgdesc = Track your portfolio performance (finance)
-	pkgver = 0.84.2
+	pkgver = 0.85.0
 	pkgrel = 1
 	url = https://github.com/portfolio-performance/portfolio
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = portfolio
 	depends = archlinux-java-run
 	depends = java-environment=21
 	optdepends = webkit2gtk-4.1: pie chart rendering without fallback to SWTChart
-	source = https://github.com/buchen/portfolio/archive/0.84.2.tar.gz
+	source = https://github.com/buchen/portfolio/archive/0.85.0.tar.gz
 	source = https://dlcdn.apache.org/maven/maven-3/3.9.16/binaries/apache-maven-3.9.16-bin.tar.gz
 	source = portfolio.sh
-	sha1sums = 785c631435112c67742ab67d36089f1af3da4256
+	sha1sums = e068a7cde9a0ad1801258cdc5869ab4de38c4dbf
 	sha1sums = a55820cac786c44c329462c7b5591d0a663d53bb
 	sha1sums = 044c48a939e20311b27a1bbbd98d4866ee3eff3c
 
