@@ -1,13 +1,13 @@
 # Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
 pkgname=nnote
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A plain, file-based note-taking CLI"
 arch=('any')
 url="https://github.com/stiermid/nnote"
 license=('GPL-3.0-or-later')
 depends=(python python-click python-pyyaml)
-makedepends=(python-build python-installer python-wheel python-uv-build)
+makedepends=(python-build python-installer python-wheel python-flit-core)
 provides=("python-$pkgname")
 conflicts=("python-$pkgname")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
