@@ -2,7 +2,7 @@
 
 pkgname=lininn-openflow
 _pkgname=@lininn/openflow
-pkgver=0.4.6
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="OpenSpec + Superpowers workflow orchestrator for agentic development"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs>=18.0.0')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_pkgname/-/openflow-$pkgver.tgz")
-sha256sums=('931896e47ba474e201b0021a6e5d91cfb6ff6911559bedc6522ea9bcf01500a9')
+sha256sums=('a3032793d5f43d5da2fae58d178b9a68c51b3a0cdc81b0c2a07d200f1532b597')
 
 package() {
     cd "$srcdir/package"
