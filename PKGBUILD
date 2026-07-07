@@ -2,8 +2,8 @@
 # Contributor: nightuser <nightuser.android@gmail.com>
 
 pkgname="stm32cubeide"
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
@@ -14,8 +14,8 @@ url="https://www.st.com/en/development-tools/stm32cubeide.html"
 license=('custom:SLA0048')
 options=(!strip)
 
-_pkgver_ext=2.1.1_28236_20260312_0043
-_pkg_file_name=st-stm32cubeide_2.1.1_28236_20260312_0043_amd64.sh.zip
+_pkgver_ext=2.2.0_29186_20260626_0934
+_pkg_file_name=stm32cubeide_2.2.0-Lin-x86_64.sh.zip
 _pkg_license_name="${pkgname}_SLA0048.pdf"
 _pkg_additional_terms="${pkgname}_v${pkgver}_additional_license_terms.html"
 
@@ -27,10 +27,7 @@ if [ ! -f ${PWD}/${_pkg_file_name} ]; then
 	echo ""
 fi
 
-DLAGENTS=("https::/usr/bin/curl \
-              -gqb '' --retry 3 --retry-delay 3 \
-              -H "@${srcdir}http_headers" \
-              -o %o -L --compressed %u")
+DLAGENTS=("https::/usr/bin/curl -gqb '' --retry 3 --retry-delay 3 -H "@${srcdir}http_headers" -o %o -L --compressed %u")
               
 source=("local://${_pkg_file_name}"
 	"99-jlink.rules.patch"
@@ -41,7 +38,7 @@ source=("local://${_pkg_file_name}"
 	"stm32cubeide"
 	"stm32cubeide_wayland"
 	)
-sha256sums=('3ea9ecfb5209fda648e045bea1320c873658f2a4e79599381a71bce5d76735fb'
+sha256sums=('6a3480814f718fd05dd43cd6c2f4ccb97556273029fab3a605b0dc34742911d0'
 	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
 	'SKIP'
 	#'SKIP'
@@ -53,7 +50,7 @@ sha256sums=('3ea9ecfb5209fda648e045bea1320c873658f2a4e79599381a71bce5d76735fb'
 
 prepare(){
 	mkdir -p build
-	sh "${srcdir}/"st-stm32cubeide_${_pkgver_ext}_amd64.sh --quiet --noexec --nox11 --target "${srcdir}/build"
+	sh "${srcdir}/"${pkgname}_${_pkgver_ext}-Lin-x86_64.sh --quiet --noexec --nox11 --target "${srcdir}/build"
 
 	mkdir -p "${srcdir}/build/stlink-server"
 	sh "${srcdir}/build/"st-stlink-server.*.install.sh --quiet --noexec --nox11 --target "${srcdir}/build/stlink-server"
@@ -70,7 +67,7 @@ package() {
 
 	echo "Installing ${pkgname}"
 	install -dm 755 "${pkgdir}/opt/${pkgname}"
-	tar zxf "./build/st-stm32cubeide_${_pkgver_ext}_amd64.tar.gz" -C "${pkgdir}/opt/${pkgname}"
+	tar zxf "./build/${pkgname}_${_pkgver_ext}-Lin.tar.gz" -C "${pkgdir}/opt/${pkgname}"
 
 	#echo 'Installing STlink server'
 	#install -dm 755 "${pkgdir}/usr/bin/"
