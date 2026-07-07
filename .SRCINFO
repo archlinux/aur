@@ -1,19 +1,19 @@
 pkgbase = qt-style-globalqss
 	pkgdesc = GlobalQSS style engine for Qt
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/luigifab/globalqss
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
-	makedepends = qt5-base>=5.15.0
+	makedepends = qt5-base>=5.10.0
 	makedepends = qt6-base
-	source = https://github.com/luigifab/globalqss/archive/v1.1.0/globalqss-1.1.0.tar.gz
-	sha256sums = 118563f5615b3d0133b1410462dab0b97194867fd5f3a10089b4db61c8f3391e
+	source = https://github.com/luigifab/globalqss/archive/v1.2.0/globalqss-1.2.0.tar.gz
+	sha256sums = 263c6bd1f86eac889492e26fa9212329c38d3d695d3b31dd5ea529ce2e214aaa
 
 pkgname = qt5-style-globalqss
 	pkgdesc = GlobalQSS style engine for Qt 5
-	depends = qt5-base>=5.15.0
+	depends = qt5-base>=5.10.0
 
 pkgname = qt6-style-globalqss
 	pkgdesc = GlobalQSS style engine for Qt 6

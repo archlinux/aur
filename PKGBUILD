@@ -1,14 +1,14 @@
 pkgbase=qt-style-globalqss
 pkgname=('qt5-style-globalqss' 'qt6-style-globalqss')
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="GlobalQSS style engine for Qt"
-arch=('x86_64')
+pkgdesc='GlobalQSS style engine for Qt'
 url='https://github.com/luigifab/globalqss'
 license=('GPL2')
-makedepends=('cmake' 'qt5-base>=5.15.0' 'qt6-base')
+arch=('x86_64')
+makedepends=('cmake' 'qt5-base>=5.10.0' 'qt6-base')
 source=("https://github.com/luigifab/globalqss/archive/v${pkgver}/globalqss-${pkgver}.tar.gz")
-sha256sums=("118563f5615b3d0133b1410462dab0b97194867fd5f3a10089b4db61c8f3391e")
+sha256sums=('263c6bd1f86eac889492e26fa9212329c38d3d695d3b31dd5ea529ce2e214aaa')
 
 prepare() {
   mv "globalqss-$pkgver" "$pkgbase-$pkgver"
@@ -18,18 +18,16 @@ build() {
   cd "$pkgbase-$pkgver"
   cmake -S src-5 -B build-qt5
   cmake -S src-6 -B build-qt6
-  make -s -C build-qt5
-  make -s -C build-qt6
+  cmake --build build-qt5
+  cmake --build build-qt6
 }
 
 package_qt5-style-globalqss() {
   pkgdesc+=" 5"
-  depends+=('qt5-base>=5.15.0')
-
+  depends+=('qt5-base>=5.10.0')
   cd "$pkgbase-$pkgver"
-
+  DESTDIR="$pkgdir" cmake --install build-qt5
   install -Dpm 644 data/profile.sh "$pkgdir/etc/profile.d/qt5-style-globalqss.sh"
-  install -Dpm 644 build-qt5/libglobalqssplugin.so "$pkgdir/usr/lib/qt5/plugins/styles/libglobalqssplugin.so"
   install -Dpm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   #install -Dpm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
@@ -37,11 +35,9 @@ package_qt5-style-globalqss() {
 package_qt6-style-globalqss() {
   pkgdesc+=" 6"
   depends+=('qt6-base')
-
   cd "$pkgbase-$pkgver"
-
+  DESTDIR="$pkgdir" cmake --install build-qt6
   install -Dpm 644 data/profile.sh "$pkgdir/etc/profile.d/qt6-style-globalqss.sh"
-  install -Dpm 644 build-qt6/libglobalqssplugin.so "$pkgdir/usr/lib/qt6/plugins/styles/libglobalqssplugin.so"
   install -Dpm 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   #install -Dpm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
