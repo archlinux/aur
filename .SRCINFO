@@ -1,0 +1,18 @@
+pkgbase = snib-git
+	pkgdesc = Thumbnail window/display picker for Wayland screen sharing (xdg-desktop-portal-wlr)
+	pkgver = r2.c1a6473
+	pkgrel = 1
+	url = https://github.com/zelane/snib
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = gtk4-layer-shell
+	provides = snib
+	conflicts = snib
+	source = snib-git::git+https://github.com/zelane/snib.git
+	b2sums = SKIP
+
+pkgname = snib-git
