@@ -4,22 +4,31 @@
 _ocamlname=stdcompat
 pkgname=ocaml-$_ocamlname
 pkgver=21.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Compatibility module for OCaml standard library"
 url="https://github.com/thierry-martinez/stdcompat"
 license=('LGPL-2.1-or-later')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/thierry-martinez/stdcompat/archive/refs/tags/${pkgver}.tar.gz"
-    "0000-fedora-ocaml-stdcompat-ocaml5.4.1.patch::https://src.fedoraproject.org/rpms/ocaml-stdcompat/raw/rawhide/f/ocaml-stdcompat-ocaml5.4.patch")
+    0000-ocaml5.5.patch
+)
 depends=('ocaml')
 makedepends=('dune')
 arch=('x86_64')
 b2sums=('b351696f0aed268cd067e20a7d0917a5580399b43e5de3e60fce0ab30a8093cd1808eda610d5a20eb721033f77c45f9b5c8dabc6d55862b023c363b212a505e8'
-        'cd9bfd478d466382fb16e2aeb629447baed1786284600ad3125fc80f501c9027be0700db49f6757425942b14ef909a3c012e20e9e62b06a4f066185103a70411')
+        'c5c554d6a019f70fc229031a3365852950ecaf0a144e023bcba51fe9a602d29c76d887df98db51c6233aea51b40798cbc35fbe4e946e6e2ec851340080344f0a')
 
 prepare() {
     cd "${srcdir}/${_ocamlname}-${pkgver}"
-    patch --forward --strip=1 --input=../0000-fedora-ocaml-stdcompat-ocaml5.4.1.patch
+
+	# Based on patches by
+	#  - Fedora
+	#     https://src.fedoraproject.org/rpms/ocaml-stdcompat
+	#  - Macports
+	#     https://github.com/macports/macports-ports/tree/master/ocaml/ocaml-stdcompat/files
+	#  - rageltman
+	#     https://aur.archlinux.org/packages/ocaml-stdcompat#comment-1077693
+    patch --forward --strip=1 --input=../0000-ocaml5.5.patch
 }
 
 build() {
