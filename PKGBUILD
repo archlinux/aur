@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.16.0.r109.gdb43acc
+pkgver=0.16.0.r113.g474fbe7
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (CLI)"
 arch=('aarch64' 'x86_64')
@@ -56,6 +56,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+https://github.com/shadps4-emu/shadPS4.git"
+	"$_pkgname-cpp-httplib::git+https://github.com/shadexternals/cpp-httplib.git"
 	"$_pkgname-discord-rpc::git+https://github.com/shadps4-emu/ext-discord-rpc.git"
 	"$_pkgname-hwinfo::git+https://github.com/shadps4-emu/ext-hwinfo.git"
 	"$_pkgname-imgui::git+https://github.com/shadps4-emu/ext-imgui.git"
@@ -70,7 +71,7 @@ source=(
 	"spdlog::git+https://github.com/gabime/spdlog.git"
 	"zydis::git+https://github.com/zyantific/zydis.git"
 )
-b2sums=('SKIP'{,,,,,,,,,,,,,})
+b2sums=('SKIP'{,,,,,,,,,,,,,,})
 
 pkgver() {
 	cd $_pkgname
@@ -80,6 +81,7 @@ pkgver() {
 prepare() {
 	cd $_pkgname
 	git config submodule.externals/aacdec/fdk-aac.url ../aac
+	git config submodule.externals/cpp-httplib.url ../$_pkgname-cpp-httplib
 	git config submodule.externals/dear_imgui.url ../$_pkgname-imgui
 	git config submodule.externals/discord-rpc.url ../$_pkgname-discord-rpc
 	git config submodule.externals/hwinfo.url ../$_pkgname-hwinfo
@@ -126,18 +128,21 @@ package() {
 		'libavcodec.so'
 		'libavformat.so'
 		'libavutil.so'
+		'libcrypto.so'
 		'libfmt.so'
 		'libfreetype.so'
 		'libgcc_s.so'
 		'libminiupnpc.so'
 		'libopenal.so'
 		'libpng16.so'
+		'libssl.so'
 		'libstdc++.so'
 		'libswresample.so'
 		'libswscale.so'
 		'libudev.so'
 		'libuuid.so'
 		'libxxhash.so'
+		'libz.so'
 	)
 
 	# shellcheck disable=SC2154

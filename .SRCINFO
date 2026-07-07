@@ -1,6 +1,6 @@
 pkgbase = shadps4-git
 	pkgdesc = Sony PlayStation 4 emulator (CLI)
-	pkgver = 0.16.0.r109.gdb43acc
+	pkgver = 0.16.0.r113.g474fbe7
 	pkgrel = 1
 	url = https://shadps4.net/
 	arch = aarch64
@@ -45,9 +45,10 @@ pkgbase = shadps4-git
 	optdepends = renderdoc: for graphics debugging
 	optdepends = shadps4-qtlauncher: for official Qt GUI
 	optdepends = vulkan-validation-layers: for vulkan debugging
-	provides = shadps4=0.16.0.r109.gdb43acc
+	provides = shadps4=0.16.0.r113.g474fbe7
 	conflicts = shadps4
 	source = shadps4::git+https://github.com/shadps4-emu/shadPS4.git
+	source = shadps4-cpp-httplib::git+https://github.com/shadexternals/cpp-httplib.git
 	source = shadps4-discord-rpc::git+https://github.com/shadps4-emu/ext-discord-rpc.git
 	source = shadps4-hwinfo::git+https://github.com/shadps4-emu/ext-hwinfo.git
 	source = shadps4-imgui::git+https://github.com/shadps4-emu/ext-imgui.git
@@ -75,6 +76,7 @@ pkgbase = shadps4-git
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = shadps4-git
 	depends = abseil-cpp
@@ -86,15 +88,18 @@ pkgname = shadps4-git
 	depends = libavcodec.so
 	depends = libavformat.so
 	depends = libavutil.so
+	depends = libcrypto.so
 	depends = libfmt.so
 	depends = libfreetype.so
 	depends = libgcc_s.so
 	depends = libminiupnpc.so
 	depends = libopenal.so
 	depends = libpng16.so
+	depends = libssl.so
 	depends = libstdc++.so
 	depends = libswresample.so
 	depends = libswscale.so
 	depends = libudev.so
 	depends = libuuid.so
 	depends = libxxhash.so
+	depends = libz.so
