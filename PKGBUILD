@@ -1,6 +1,6 @@
 # Maintainer: Simon Jackson <sizeak at gmail dot com>
 pkgname=xm3-ama-bridge
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Impersonates an Alexa Mobile Accessory gateway so a Sony WH-1000XM3 assistant button triggers local actions on Linux'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'clang' 'pkgconf')
 # debug-package split to avoid a broken/empty xm3-ama-bridge-debug package.
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sizeak/xm3-ama-bridge/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('d1f19a807bd7332a03d9df93a2928a4d9756a9561e88f1d1fbef22239fad9bbd')
 
 prepare() {
   cd "$pkgname-$pkgver"
