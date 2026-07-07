@@ -1,7 +1,7 @@
 # Maintainer: temidaradev <temidaradev@proton.me>
 pkgname=kopuz-bin
-pkgver=0.8.0
-pkgrel=3
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="A modern music player (pre-built binary)"
 arch=('x86_64')
 url="https://github.com/Kopuz-org/kopuz"
@@ -27,7 +27,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Kopuz-org/kopuz/releases/download/v${pkgver}/kopuz_v${pkgver}_x86_64-linux.tar.gz")
-sha256sums=('7a2c1abb7b0591b728818728887674dc4599d981dae36b1ad22ccc1d5c36c47f')
+sha256sums=('0df13ced80f00274b16c2135c82a91322bf136700a968f9d274e08809d9f716e')
 
 package() {
     cd "kopuz-linux-x86_64"
