@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-network-monitor-bin
 pkgdesc="🌊 See your network breathe"
 
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('eb8c95e6ebe4d9b4b09fb3de5d53360710dc9f858328c07fc89ec05a033eee3a')
-sha256sums_aarch64=('8362c5f11c15b1e435bb9ec343c859019bd04c15d14f9f1853a3d368c1fb63a8')
+sha256sums_x86_64=('2739046098f53a7846f636b9358ad4ec9aad64f538ac42a178e20351990a5fbd')
+sha256sums_aarch64=('94c2c51b95ff1d11511e85a62639436f07cc13f8cb2556e589d5d8a45ef5c668')
 
 
 package() {
