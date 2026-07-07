@@ -1,6 +1,6 @@
 pkgbase = chrony-git
 	pkgdesc = Lightweight NTP client and server (git version)
-	pkgver = 4.8.r64.g34c451b
+	pkgver = 4.8.r65.g0c57670
 	pkgrel = 1
 	url = https://gitlab.com/chrony/chrony.git
 	install = chrony-git.install
