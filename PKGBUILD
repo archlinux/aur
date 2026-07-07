@@ -15,8 +15,8 @@ source=(
   "modde-${pkgver//_/-}-x86_64-linux.tar.gz::https://codeberg.org/caniko/rs-modde/releases/download/${pkgver//_/-}/modde-${pkgver//_/-}-x86_64-linux.tar.gz"
   "rs-modde-${pkgver//_/-}.tar.gz::https://codeberg.org/caniko/rs-modde/releases/download/${pkgver//_/-}/rs-modde-${pkgver//_/-}.tar.gz"
 )
-sha256sums=('b69611810fbc6d53981a36dbcdeaec154b6f66e9118f4e6a0c7d8385e0265a3b'
-            '6a06cdeea8c33f719ae72eb84e289106be28a9ffe53398a9c0bf585d2d0fac6f')
+sha256sums=('d9c3f9e53addb5f04ac92178e9f96f27747c719ca86f9a5ef181703566191f31'
+            '63349e9260c3e2c32c22f957bc1dcf2bf531507c37c93f219eaf8efcef320d93')
 
 package() {
   install -Dm755 modde "$pkgdir/usr/bin/modde"
