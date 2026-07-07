@@ -1,7 +1,7 @@
 pkgbase = osp-tracker-bin
 	pkgdesc = Tracker video analysis and modeling tool
 	pkgver = 6.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://physlets.org/tracker/
 	arch = x86_64
 	license = GPL3
@@ -10,6 +10,8 @@ pkgbase = osp-tracker-bin
 	depends = gtk2
 	depends = gconf
 	depends = java-runtime
+	provides = osp-tracker
+	conflicts = osp-tracker
 	source = http://physlets.org/tracker//installers/Tracker-6.2.0-linux-x64-installer.run
 	source = tracker.sh
 	source = tracker.desktop
