@@ -1,4 +1,4 @@
-_engver=4.2.0
+_engver=2.7.0
 
 o3de_python_install() {
     # Try to get local user
