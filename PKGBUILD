@@ -14,7 +14,6 @@ depends=(
   'sdl2'
   'wayland'
 )
-makedepends=('meson' 'wayland-scanner')
 source=("https://github.com/tkmxqrdxddd/dbd-1v1-timer-linux/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
