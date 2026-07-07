@@ -1,0 +1,5 @@
+[lsq-bin]
+source = "github"
+github = "AlexDevFlow/lsq"
+use_latest_release = true
+prefix = "v"

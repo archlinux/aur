@@ -1,0 +1,23 @@
+pkgbase = lsq-bin
+	pkgdesc = Command-line client for LocalSend
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AlexDevFlow/lsq
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = lsq
+	conflicts = lsq
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/AlexDevFlow/lsq/v0.1.0/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/AlexDevFlow/lsq/v0.1.0/LICENSE
+	sha256sums = 7c6d50a34b2d8f8fad4029ee04fe943aa2fdca48f93ff9316237080bd03af091
+	sha256sums = ae824f4f9480cc622ad886babbd71ec9248aef4cb0d1ac37d9f0c66f09b366b3
+	source_x86_64 = lsq-x86_64-0.1.0.tgz::https://github.com/AlexDevFlow/lsq/releases/download/v0.1.0/lsq-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1f9e8dc0ffc38e310a6d8a9faedc6cfb9c228ea9c12b7f52cfcad6e0292628d9
+	source_aarch64 = lsq-aarch64-0.1.0.tgz::https://github.com/AlexDevFlow/lsq/releases/download/v0.1.0/lsq-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 8d581fd428ebdb7d2f977e5ed09d34fa18b616fc5092578a7888f5b1c9b2e143
+
+pkgname = lsq-bin
