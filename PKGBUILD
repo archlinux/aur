@@ -1,6 +1,6 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=langfuse-cli
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc="Interact with Langfuse API from the command line"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('b9ec40c230ec7352ff63f9e3e0647e1a110793e7b25cb0855a38561edd9e13ef')
+sha256sums=('c898da437fe13463607baf1faaa8273f10d53af0e8b3d9b6eeafb6bdc78cba43')
 options=('!strip')
 
 package() {
