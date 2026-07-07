@@ -7,15 +7,15 @@ url="https://github.com/Twilight0/MarkPad"
 license=('MIT')
 depends=('gtk3')
 makedepends=('gcc' 'make' 'pkgconf')
-source=("$url/archive/refs/tags/v1.0.0.tar.gz")
+source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('9a313eb23cae6ee2a0bdd1a1e38ab734dd3cfa7d0047ab30d365254356eeccbe')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/MarkPad-$pkgver"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/MarkPad-$pkgver"
   make install DESTDIR="$pkgdir" PREFIX=/usr
 }
