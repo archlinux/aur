@@ -1,6 +1,6 @@
 pkgbase = python-calcephpy
 	pkgdesc = Python interface for the CALCEPH Library
-	pkgver = 4.0.5
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://www.imcce.fr/inpop/calceph
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = python-calcephpy
 	makedepends = python-wheel
 	depends = glibc
 	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/c/calcephpy/calcephpy-4.0.5.tar.gz
-	sha256sums = 7412b394c92e6c2e2df2f218489f3cf46365f80dcc2c036d71054a2aa4c3c40c
+	source = https://files.pythonhosted.org/packages/source/c/calcephpy/calcephpy-5.0.0.tar.gz
+	sha256sums = abf52b8d2898299ff837f90ed9824cc40d70745700b440374d6f375a86a5e831
 
 pkgname = python-calcephpy
