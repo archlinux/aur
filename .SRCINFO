@@ -1,10 +1,11 @@
 pkgbase = bitbake
 	pkgdesc = Build tool executing tasks and managing metadata
 	pkgver = 6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.openembedded.org/wiki/Main_Page
 	arch = any
-	license = GPL2
+	license = GPL-2.0-only
+	makedepends = git
 	depends = python
 	depends = python-beautifulsoup4
 	depends = python-ply

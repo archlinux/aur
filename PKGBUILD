@@ -6,13 +6,14 @@
 pkgbase=bitbake
 pkgname=(bitbake bitbake-vim)
 pkgver=6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Build tool executing tasks and managing metadata"
 url="https://www.openembedded.org/wiki/Main_Page"
-license=(GPL2)
+license=(GPL-2.0-only)
 arch=(any)
 depends=(python python-beautifulsoup4 python-ply python-codegen
-         python-progressbar python-pyinotify python-simplediff chrpath diffstat inetutils rpcsvc-proto)
+  python-progressbar python-pyinotify python-simplediff chrpath diffstat inetutils rpcsvc-proto)
+makedepends=(git)
 source=("git+https://git.openembedded.org/bitbake.git#tag=yocto-$pkgver")
 sha256sums=('7db5c6e3ffe711e6c0cb2659509254579c2ed280d9cdcb734b3947e806a0f11a')
 
