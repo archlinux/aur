@@ -1,7 +1,7 @@
 pkgbase = soredowe
 	pkgdesc = Experimental GUI for pacman/AUR users who prefer it (Wayland/Vulkan)
-	pkgver = 0.4.2
-	pkgrel = 2
+	pkgver = 0.4.4
+	pkgrel = 1
 	url = https://github.com/mlm-games/soredowe
 	arch = x86_64
 	arch = aarch64
@@ -18,7 +18,7 @@ pkgbase = soredowe
 	provides = soredowe
 	conflicts = soredowe-bin
 	options = !lto
-	source = soredowe-0.4.2.tar.gz::https://github.com/mlm-games/soredowe/archive/refs/tags/v0.4.2.tar.gz
+	source = soredowe-0.4.4.tar.gz::https://github.com/mlm-games/soredowe/archive/refs/tags/v0.4.4.tar.gz
 	sha256sums = SKIP
 
 pkgname = soredowe

@@ -1,7 +1,7 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=soredowe
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.4.4
+pkgrel=1
 pkgdesc="Experimental GUI for pacman/AUR users who prefer it (Wayland/Vulkan)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mlm-games/soredowe"
