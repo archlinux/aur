@@ -2,7 +2,7 @@
 
 pkgname=claude
 _pkgname=claude-desktop
-pkgver=1.17377.1
+pkgver=1.18286.0
 pkgrel=1
 pkgdesc='Desktop application for Claude.ai, repackaged from the official Debian package'
 arch=('x86_64' 'aarch64')
@@ -61,8 +61,8 @@ noextract=(
 
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::https://downloads.claude.ai/claude-desktop/apt/stable/pool/main/c/claude-desktop/claude-desktop_${pkgver}_amd64.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::https://downloads.claude.ai/claude-desktop/apt/stable/pool/main/c/claude-desktop/claude-desktop_${pkgver}_arm64.deb")
-sha256sums_x86_64=('f4bd78545200877b591179838de7ad7a577df6ed2e845969dd25690efc5c85c7')
-sha256sums_aarch64=('658acbff14bd9c35d795ede46f097fca79d433ac4af792cdd6486acd3adc6f2e')
+sha256sums_x86_64=('8f314ad1a80aab52711a8eaabc06aae48fb341f0adea4a0d7264db5cab9d0536')
+sha256sums_aarch64=('4820b989a9e4333956b6cbeaee2732dd2b49904fba540b472963c8003c8086c7')
 
 package() {
   local deb="${srcdir}/${_pkgname}-${pkgver}-${CARCH}.deb"
