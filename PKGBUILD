@@ -1,7 +1,7 @@
 # Maintainer: Lin Evelynn <lin@sz.cn.eu.org>
 pkgname=incy-bin
 _pkgname=incy
-pkgver=3.2.6
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Cross-platform proxy client built on Xray-core"
 arch=('x86_64')
@@ -20,7 +20,7 @@ options=('!strip')
 
 source=("${_pkgname}-${pkgver}-linux-x64.pkg.tar.zst::https://github.com/INCY-DEV/incy-platforms/releases/download/desktop-v${pkgver}/incy-linux-x64.pkg.tar.zst")
 
-sha256sums=('12e49560efbdfeff337627f8a0e28a236c450bdb99aee2b8e71e660e8dae4b00')
+sha256sums=('8e5b099e9bd720910a5e0cc2f7f2c85438963280a78a91c881973f3241b64fa4')
 
 package() {
     install -dm755 "$pkgdir/opt"
