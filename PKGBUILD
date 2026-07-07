@@ -36,15 +36,15 @@ pkgver() {
   fi
 }
 
-_srcroot="${VEGA_SOURCE_DIR:-$srcdir/Vega}"
-
 build() {
+  local _srcroot="${VEGA_SOURCE_DIR:-$srcdir/Vega}"
   cd "$_srcroot/vega"
   npm ci
   npm run build
 }
 
 package() {
+  local _srcroot="${VEGA_SOURCE_DIR:-$srcdir/Vega}"
   cd "$_srcroot"
 
   install -dm755 "$pkgdir/usr/lib/lyra-vega"
