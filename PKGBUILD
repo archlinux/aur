@@ -7,8 +7,8 @@
 
 _pkgname=SMHasher3
 pkgname=smhasher3
-_pkgver=release # The initial release
-pkgver=20251015.r2100.5035a92
+_pkgver=6ab43433 # All commits to the main branch after the initial release are a new release.
+pkgver=20260326.r2118.6ab4343
 pkgrel=1
 pkgdesc="A tool for testing the quality of hash functions in terms of their distribution, collision, and performance properties"
 arch=('x86_64' 'aarch64')
@@ -18,18 +18,8 @@ depends=('libgcc_s.so' 'libstdc++.so')
 makedepends=('cmake' 'git')
 optdepends=()
 backup=()
-source=(
-	"git+${url}.git#tag=${_pkgver}"
-	"support_cmake4.patch::${url}/-/commit/6ab4343396fbe0f7a1c7ac4f01d0eb9acffe4202.patch"
-)
-b2sums=(
-	'ae97ff6ec16c7e7081b29f7fefcb6c2670d4a1cb4fade97b254999c9e8551c52ae37b8574669f2d7bbc630b8418be81e58d8237036b55133fde3414efe9395df'
-	'8545d4555a704f2b61064bdbf90eea1d0709a24d31eb0ff0727a1c1cd6befcf1f1fa534b2fc3ce4ea2e543368c50ed6c90f73c740c8be4a4670bfe3c070df462'
-)
-
-prepare() {
-	patch --verbose --directory "${pkgbase}" --strip 1 --ignore-whitespace --input "${srcdir}/support_cmake4.patch" --unified
-}
+source=("git+${url}.git#commit=${_pkgver}")
+b2sums=('310e7b08c97ad79fbc940aac9f76bd041cd192f7a85702569ba54b349df2f6e1c085e8e0d9c53dceacd117e5a8015019c6c36b226e3da601e1e375b1593bfccf')
 
 # https://gitlab.com/fwojcik/smhasher3#current-status
 # "There won't be explicit release versioning. Instead, the version string has been updated to include the commit date of the last commit."
