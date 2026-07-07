@@ -75,6 +75,9 @@ package() {
   install -d "$pkgdir/opt/cangjie-nightly"
   cp -ar . "$pkgdir/opt/cangjie-nightly/"
 
+  # Fix permissions: SDK tarball ships 0750 (group-only), need world-read/exec
+  chmod -R a+rX "$pkgdir/opt/cangjie-nightly"
+
   # 2. Symlink all executables to /usr/bin/ for immediate PATH access
   install -d "$pkgdir/usr/bin"
   while IFS= read -r -d '' _bin; do
