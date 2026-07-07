@@ -1,6 +1,6 @@
 pkgbase = lmod
 	pkgdesc = Environment modules system based on Lua that handles MODULEPATH hierarchical problem. Supports also legacy TCL modules
-	pkgver = 9.2.4
+	pkgver = 9.2.5
 	pkgrel = 1
 	url = https://github.com/TACC/Lmod
 	install = lmod.install
@@ -15,9 +15,9 @@ pkgbase = lmod
 	depends = bc
 	optdepends = tcsh: supported shell
 	optdepends = zsh: supported shell
-	provides = env-modules
-	conflicts = env-modules
-	source = lmod-9.2.4.tar.gz::https://github.com/TACC/Lmod/archive/9.2.4.tar.gz
-	sha256sums = c5df5c2c00ec44444123d97709c2c5bf5d7ebfa5488fec45f5255b803608645a
+	provides = environment-modules
+	conflicts = environment-modules
+	source = lmod-9.2.5.tar.gz::https://github.com/TACC/Lmod/archive/9.2.5.tar.gz
+	sha256sums = e913f9199a77104cc915a3c1a65e4c700ed048cef15857e93881d79887efc568
 
 pkgname = lmod
