@@ -1,27 +1,33 @@
 pkgbase = python-build123d
 	pkgdesc = A python CAD programming library
-	pkgver = 0.10.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/gumyr/build123d
 	arch = any
-	license = Apache
+	license = Apache-2.0
+	checkdepends = gnu-free-fonts
 	checkdepends = python-pytest
+	makedepends = git
 	makedepends = python-setuptools-scm
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python-ocp>=7.8
+	depends = python-ocp
 	depends = python-ocp_gordon
-	depends = python-lib3mf>=2.3.1
+	depends = python-lib3mf
 	depends = python-typing_extensions
 	depends = python-numpy
+	depends = python-scikit-learn
+	depends = python-scipy
 	depends = python-svgpathtools
+	depends = python-sympy
 	depends = python-anytree
 	depends = python-ezdxf
 	depends = ipython
 	depends = python-ocpsvg
 	depends = python-trianglesolver
-	source = https://files.pythonhosted.org/packages/source/b/build123d/build123d-0.10.0.tar.gz
-	sha256sums = 73ded38ddca8ebb95e7dd078ac3d7aacc8ca42fce8f1d176f1040e35fba4f608
+	depends = python-webcolors
+	source = git+https://github.com/gumyr/build123d#tag=v0.11.1
+	b2sums = 9c820374bcc69f9c25c4cffd310d5d8fa881c971fb6da3f163226e6a8fd97ec078deeb608aa4eb9cba4753600a7408cf3f047df68dc0dd421e108d4c8c47d50d
 
 pkgname = python-build123d
