@@ -1,6 +1,6 @@
 pkgbase = zelph
 	pkgdesc = A sophisticated semantic network system capable of encoding inference rules within the network itself. Built for powerful logical reasoning, it can process the entire Wikidata knowledge graph (1.7TB) to detect contradictions and make logical deductions.
-	pkgver = 0.9.6
+	pkgver = 0.9.7
 	pkgrel = 1
 	url = https://github.com/acrion/zelph
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = zelph
 	makedepends = meson
 	depends = gcc-libs
 	optdepends = lbzip2: Speedup import of Wikidata *.json.bz2 files
-	source = git+https://github.com/acrion/zelph.git#tag=v0.9.6
+	source = git+https://github.com/acrion/zelph.git#tag=v0.9.7
 	sha256sums = SKIP
 
 pkgname = zelph
