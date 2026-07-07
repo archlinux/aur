@@ -1,15 +1,15 @@
 pkgbase = xnviewmp
 	pkgdesc = An efficient multimedia viewer, browser and converter.
-	pkgver = 1.11.2
+	pkgver = 1.11.5
 	pkgrel = 1
 	url = https://www.xnview.com/en/xnviewmp/
 	arch = x86_64
 	license = custom
 	depends = qt5-multimedia
 	optdepends = glib2: support for moving files to trash
-	source = XnViewMP-linux-x64_1.11.2-rel1.tgz::https://download.xnview.com/old_versions/XnView_MP/XnView_MP-1.11.2-linux-x64.tgz
+	source = XnViewMP-linux-x64_1.11.5-rel1.tgz::https://download.xnview.com/old_versions/XnView_MP/XnView_MP-1.11.5-linux-x64.tgz
 	source = XnView.desktop
-	sha256sums = f940a7884d4e2f0050a3158902596dc038b91da613d821dea4b8af8cfdb7edd1
+	sha256sums = 736c272f3007a59d9247fb6786f7a4d34d442386c1ceb262fae090261e96a9b7
 	sha256sums = f6b3a4aaa0a55b5f21d9b91ab6f3da3d6ee077ba7fdd17e7c4ab1c69ad2a9e3a
 
 pkgname = xnviewmp
