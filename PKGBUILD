@@ -1,6 +1,6 @@
 # Maintainer: Raimo Geisel <raimog92@protonmail.com>
 pkgname=durthang
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A modern, terminal-based MUD client with TLS, GMCP, automap, aliases, triggers, and a sidebar panel system"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 provides=('durthang')
 conflicts=('durthang-bin')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('cef9f3afd704cd798e51e318c71b326c8d4fc866fe920833bff0d9f714f0998e')
+sha256sums=('4ed79ff7bdbd8725b50d885c5b98680e49b91b1878b6e2d1151b4f97f7ffe626')
 
 prepare() {
     cd "$pkgname-$pkgver"
