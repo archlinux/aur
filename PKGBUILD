@@ -1,7 +1,7 @@
 # Maintainer: ZauJulio <zaujulio.dev@gmail.com>
 pkgname=zerowhats-bin
 _appname=ZeroWhats
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A privacy-first WhatsApp Web desktop client"
 arch=('x86_64')
