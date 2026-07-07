@@ -1,7 +1,7 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=dokku
-pkgver=0.38.17
+pkgver=0.38.19
 pkgrel=1
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('x86_64')
@@ -42,7 +42,7 @@ source=("${url}/archive/v${pkgver}.zip"
         "${pkgname}.install"
         "fix_go_work_missing_builds.patch"
         "scheduler-docker-local.patch")
-sha256sums=('4a5eeb7f9489fbf2869379daf47561eba74ad0b9ec44d83458715cfc4b08a784'
+sha256sums=('4f61c95444456be576cfc856d97303ea1fc6755658c7f4eaa6fb75ce046a6716'
             'd614323822b83612688a1192daedb3f7bf69f0d1a0e1df08411f5c32e4adde05'
             '21edd6f85494f3ab15e0262bae7d2bf7add81875374c3420dbeb3ff1acebcde8'
             '88466a2d07d7ccbef6a32848dbe280e1be0636f8c4ed7977f1211f08f1258a3a')
