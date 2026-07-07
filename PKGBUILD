@@ -3,7 +3,7 @@ pkgbase=chargeguard
 pkgname=("chargeguard" "gnome-shell-extension-chargeguard")
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Native Linux battery charging mode manager"
+pkgdesc="One-click native battery charge modes for Linux laptops, from GNOME Quick Settings or CLI.Linux 笔记本原生充电模式，一键接入 GNOME 快捷设置和 CLI。"
 arch=("x86_64")
 url="https://github.com/Ca11back/ChargeGuard"
 license=("MIT")
@@ -26,7 +26,7 @@ check() {
 }
 
 package_chargeguard() {
-  pkgdesc="Native Linux battery charging mode backend and CLI"
+  pkgdesc="One-click native battery charge modes for Linux laptops, from GNOME Quick Settings or CLI.Linux 笔记本原生充电模式，一键接入 GNOME 快捷设置和 CLI。"
   depends=("dbus" "gcc-libs" "glibc" "polkit" "systemd")
   install="chargeguard.install"
 
@@ -59,7 +59,7 @@ package_chargeguard() {
 }
 
 package_gnome-shell-extension-chargeguard() {
-  pkgdesc="GNOME Quick Settings extension for ChargeGuard"
+  pkgdesc="One-click native battery charge modes for Linux laptops, from GNOME Quick Settings or CLI.Linux 笔记本原生充电模式，一键接入 GNOME 快捷设置和 CLI。"
   depends=("chargeguard=${pkgver}-${pkgrel}" "gnome-shell")
 
   cd "${srcdir}/${_srcdir}"
