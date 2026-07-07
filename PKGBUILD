@@ -1,9 +1,9 @@
 # Maintainer: Justin Kromlinger <hashworks@archlinux.org>
 
 pkgname=reitti
-pkgver=4.0.4
+pkgver=5.0.1
 pkgrel=1
-_jdkver=24 # https://github.com/dedicatedcode/reitti/blob/main/pom.xml#L17
+_jdkver=25 # https://github.com/dedicatedcode/reitti/blob/main/pom.xml#L17
 pkgdesc="Comprehensive personal location tracking and analysis"
 arch=(any)
 url="https://github.com/dedicatedcode/${pkgname}"
@@ -26,13 +26,13 @@ source=("git+${url}#tag=v${pkgver}"
         "reitti.conf"
         "reitti-nginx.conf"
         "application-systemd.properties")
-sha256sums=('8a8f3599a04148ac4417a3160ad7849d22f9feca16dbda83bbf66d8c62a11268'
-            '3d582f661224646b5f453ae0984af7d36233ce5ff531a526f622e07877f8d2df'
+sha256sums=('2a4c9d5daf309e4295ce83b48cf50aab726eb49714c5b788b385904672e4cbc9'
+            '3a36daca90c91af2a38c82aeed1d5309984c9eccc07e325f2c477843d1e83f69'
             'b2304c791f5d40c8427bdb329653edbbfedf871d1e2e1b7ef2bf96cf0367a3a0'
             '6d3fa7035e4f59b5b30a487d01358d8af24bc3d4d8f030e5d2d6512155ddb92e'
             'f7367d266964e57be18f0452c260a02811834989dce3a6696e0104b05d194465'
             '111aa410f60e33551c3729368536e53a690792aa1bedf99c5e833d5c51ef4fa7'
-            'e7966e8aa5d7f20a1a1982588d29b02b91f4f2807aeadd6c9837ba575cec69d2'
+            '86a51b3eea54a9e9d4a08584f3f0d632bee75761523db97002d7a1f27fcfc6f3'
             '6f05dc261ccccf6bdc5ddde476e3fa04f99a44aa1a5d2fd7979499a554224d3f')
 
 prepare() {

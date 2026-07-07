@@ -6,7 +6,20 @@ post_install() {
 }
 
 post_upgrade() {
-  if (( $(vercmp $2 4.0.0-1) < 0 )); then
+  if $(( $(vercmp $2 "5.0.1-1") < 0)); then
+    echo ""
+    echo "This release will perform a major database migration."
+    echo "Please see https://www.dedicatedcode.com/projects/reitti/5.0/upgrade/"
+    echo ""
+    echo "Remember to update the tile cache nginx config, see '/usr/share/doc/reitti/examples/nginx.conf'."
+    echo "Important changes:"
+    echo "- Single /custom location that needs a rewrite"
+    echo "- Proxy upstream is now set by \$http_x_reitti_upstream_url header"
+    echo "- nginx needs a configured resolver"
+    echo "- proxy_cache_key set to \$custom_upstream due to single cache folder"
+    echo ""
+  fi
+  if (( $(vercmp $2 "4.0.0-1") < 0 )); then
     echo ""
     echo "reitti no longer requires a rabbitmq instance since the dependency has been removed upstream."
     echo "The tile cache needs to be updated as well, please check:"
@@ -14,7 +27,7 @@ post_upgrade() {
     echo "https://github.com/dedicatedcode/reitti/blob/main/docker/tiles-cache/nginx.conf"
     echo ""
   fi
-  if (( $(vercmp $2 3.4.1-2) < 0 )); then
+  if (( $(vercmp $2 "3.4.1-2") < 0 )); then
     echo ""
     echo "reitti now expects users to provide a TILE_CACHE environment variable, see /usr/share/doc/reitti/examples/nginx.conf"
     echo ""
