@@ -1,6 +1,6 @@
 pkgbase = windsurf-next
 	pkgdesc = Devin Desktop (next channel) - formerly Windsurf Editor
-	pkgver = 3.4.1022_next.0c84d33328
+	pkgver = 3.4.1027_next.0d4bf12ed4
 	pkgrel = 1
 	url = https://docs.devin.ai
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = windsurf-next
 	conflicts = windsurf-next
 	options = !strip
 	options = !debug
-	source = windsurf-next-3.4.1022_next.0c84d33328.deb::https://windsurf-stable.codeiumdata.com/mQfcApCOdSLoWOSI/apt/pool/main/d/devin-desktop-next/Devin-linux-x64-3.4.1022+next.0c84d33328.deb
+	source = windsurf-next-3.4.1027_next.0d4bf12ed4.deb::https://windsurf-stable.codeiumdata.com/mQfcApCOdSLoWOSI/apt/pool/main/d/devin-desktop-next/Devin-linux-x64-3.4.1027+next.0d4bf12ed4.deb
 	source = windsurf-next.desktop
 	source = windsurf-next-url-handler.desktop
-	sha256sums = 85d2dd0ce1e1cbd99cc4b2beae08bf3d1952491783fc379f859480face7e487b
+	sha256sums = 06252f8ff4792a172bd0950f39bfbee6477cb6e0f625710a191d0efc35aa44ef
 	sha256sums = f15127ef9ff42b2eddf5e0b476a27a0f65e3813de911c9154a577746b47e8188
 	sha256sums = c2845c4efacb3eb7f0c5756ec9b2f68f3b24af11cc2db6965a4e5f4e744cf539
 
