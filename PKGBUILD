@@ -2,7 +2,7 @@
 # Contributor: SZanko szanko at protonmail dot com
 
 pkgname=python-benedict
-pkgver=0.37.0
+pkgver=0.38.0
 pkgrel=1
 pkgdesc="Dict subclass with keylist/keypath support, built-in I/O operations (base64, csv, html, ini, json, pickle, plist, query-string, toml, xls, xml, yaml), s3 support and many utilities."
 arch=('any')
@@ -50,7 +50,7 @@ makedepends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha512sums=(
-	'328e6aebe6652c8dad733071d3e1e002dce970d258a15e48864068eb939d58be37a8e073748b9d8dd241365762485f1bfd86c1ba0694ab206331125b73dc7ce3'
+	'12e3856dda572966e7d34b7067ac643b320d1483ec3b52a5e82087efd7c9e62c60ddc052f003dcf8deed70c712fcae09f96a01bd72a4b197949fa9d899981910'
 )
 
 build() {
