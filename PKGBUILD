@@ -1,7 +1,7 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=unicodeit-gtk
 pkgver=1.3.7
-pkgrel=1.314
+pkgrel=2.314
 pkgdesc="A GTK IME popup for entering symbols via (La)TeX"
 url='https://github.com/v--/unicodeit-gtk'
 arch=('any')
