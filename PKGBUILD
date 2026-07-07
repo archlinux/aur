@@ -1,3 +1,4 @@
+# Maintainer: Magrid0 <magrid0 at proton dot me>
 pkgname=fast-git
 pkgver=0.0.0
 pkgrel=1
