@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}
 pkgdesc="A fast, lightweight, command-line Steam launcher and library manager written in Rust"
 
-pkgver=0.1.13
+pkgver=0.1.15
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ depends=('glibc' 'libgcc' 'xz' 'bzip2' 'openssl')
 options=(!strip)
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${_gitversion}.tar.gz")
-sha256sums=('89c116bea8233456b5bf2dd19638c127e4271ad6d472d99e3665704cca079c66')
+sha256sums=('dbe144afa006d8970d1d07edbac67127593ed57de6ff28000869e5a16fb61cd4')
 
 
 prepare() {
