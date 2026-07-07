@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 
 pkgname=dnsglobe
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Global DNS propagation checker TUI"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=(glibc libgcc)
 makedepends=(cargo git)
 options=(!lto)
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('e5ff38e8ca48836ed39b7835e108756119af5a25a7a4002d73d959c5134d6ba9')
+sha256sums=('8a03fbf1dba9892cb898c3901b5e490b8045500e15af598edd8d24457f873fad')
 
 prepare() {
   cd "$pkgname-$pkgver"
