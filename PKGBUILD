@@ -10,7 +10,7 @@ license=('unkown')
 groups=()
 depends=(
 	'fzf'
-	'tldr'
+	'tealdeer'
 )
 makedepends=(
 	'rustup'
