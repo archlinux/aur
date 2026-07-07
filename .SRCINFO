@@ -12,7 +12,6 @@ pkgbase = dpsprep-git
 	makedepends = python-uv-build
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	makedepends = python-click-man
 	depends = python
 	depends = python-djvulibre-python

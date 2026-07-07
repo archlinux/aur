@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 provides=("$_pkgbasename")
 conflicts=("$_pkgbasename")
 checkdepends=(python-pytest)
-makedepends=(coreutils git python-uv-build python-build python-installer python-wheel python-click-man)
+makedepends=(coreutils git python-uv-build python-build python-installer python-click-man)
 depends=(python python-djvulibre-python
          python-click python-rich python-pillow
          python-fpdf2 python-pdfrw)
