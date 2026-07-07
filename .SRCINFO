@@ -1,17 +1,18 @@
 pkgbase = python-jdatetime
-	pkgdesc = Jalali calendar binding for Python based on Python`s datetime module
-	pkgver = 5.2.0
-	pkgrel = 2
+	pkgdesc = Jalali implementation of Python's datetime module
+	pkgver = 5.3.0
+	pkgrel = 1
 	url = https://github.com/slashmili/python-jalali
 	arch = any
-	license = Python
+	license = PSF-2.0
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
 	depends = python-jalali-core
-	source = https://files.pythonhosted.org/packages/source/j/jdatetime/jdatetime-5.2.0.tar.gz
-	sha256sums = c81d5898717b82b609a3ce2a73f8b8d3230b0c757e5c0de9d6b1acfdc224f551
+	source = python-jdatetime-5.3.0.tar.gz::https://github.com/slashmili/python-jalali/archive/v5.3.0.tar.gz
+	sha256sums = bc5f29fc0e586beb3141a5bb79225cf734ffdc9d0294cd2703006929b8536822
 
 pkgname = python-jdatetime
