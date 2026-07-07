@@ -1,0 +1,24 @@
+reload_chargeguard_integration() {
+  systemctl daemon-reload >/dev/null 2>&1 || true
+  busctl call org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus ReloadConfig >/dev/null 2>&1 || true
+}
+
+post_install() {
+  reload_chargeguard_integration
+
+  echo "ChargeGuard installed."
+  echo "D-Bus activation is provided by io.github.ChargeGuard1.service."
+  echo "Run 'chargeguard list' to activate and query the daemon."
+}
+
+post_upgrade() {
+  reload_chargeguard_integration
+  systemctl try-restart chargeguardd.service >/dev/null 2>&1 || true
+
+  echo "ChargeGuard upgraded."
+  echo "An active chargeguardd.service was restarted if it was running."
+}
+
+post_remove() {
+  reload_chargeguard_integration
+}
