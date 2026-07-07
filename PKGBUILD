@@ -10,7 +10,6 @@ license=('MIT')
 depends=(
   'cairo'
   'pango'
-  'pangocairo'
   'libevdev'
   'sdl2'
   'wayland'

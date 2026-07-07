@@ -9,7 +9,6 @@ pkgbase = dbd-timer
 	makedepends = wayland-scanner
 	depends = cairo
 	depends = pango
-	depends = pangocairo
 	depends = libevdev
 	depends = sdl2
 	depends = wayland
