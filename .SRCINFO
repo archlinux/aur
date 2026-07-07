@@ -1,6 +1,6 @@
 pkgbase = aurpick
 	pkgdesc = Easily install any version of AUR packages — current, historical, or newer.
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/willvar/aurpick
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = aurpick
 	depends = fzf
 	depends = base-devel
 	optdepends = downgrade: for official repository packages
-	source = aurpick-1.0.1.tar.gz::https://github.com/willvar/aurpick/archive/refs/tags/1.0.1.tar.gz
-	sha256sums = 3d214599d5465cfb8d703a7880907c2c9dcd0906812098b6bfb2fc5b175e146e
+	source = aurpick-1.1.0.tar.gz::https://github.com/willvar/aurpick/archive/refs/tags/1.1.0.tar.gz
+	sha256sums = ee8987ca8b9e6efc831eb7e932307126e0c8e65b0b5c318018ba11814032c90e
 
 pkgname = aurpick
