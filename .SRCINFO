@@ -1,0 +1,18 @@
+pkgbase = transcribe.cpp
+	pkgdesc = C/C++ speech-to-text inference library and CLI based on ggml
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/handy-computer/transcribe.cpp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	depends = gcc-libs
+	depends = glibc
+	optdepends = ffmpeg: convert audio to 16 kHz mono WAV
+	optdepends = sox: convert audio to 16 kHz mono WAV
+	source = transcribe.cpp-0.1.1.tar.gz::https://github.com/handy-computer/transcribe.cpp/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = d7013ba597385420cf7436282b166968998399d5f5a0d5b1ac738f24ff2c30ab
+
+pkgname = transcribe.cpp
