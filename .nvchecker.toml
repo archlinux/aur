@@ -1,0 +1,4 @@
+[terlang]
+source = "regex"
+url = "https://raw.githubusercontent.com/terroo/terlang/refs/heads/main/src/main.cpp"
+regex = "std::cerr << \"Ter/Terlang v([\\d\\.]*)\\\\n\\\\n\";"

@@ -7,9 +7,9 @@ _appname=ter
 pkgname=${_pkgname,,}
 pkgdesc="Programming language for scripting with syntax similar to C++"
 
-pkgver=0.1.6
-pkgrel=1
 _commit=3f5fd254b5fb3e915c8d3e62036baccd3e9da262
+pkgver=0.1.6
+pkgrel=2
 
 license=('GPL-3.0')
 
@@ -21,13 +21,16 @@ depends=('glibc' 'libgcc' 'libstdc++')
 makedepends=('gcc' 'make' 'cmake')
 provides=("${_appname}")
 
-source=("${_pkgname}-${pkgver}::git+${url}.git#commit=${_commit}")
-sha256sums=('c9dacf6607aed1dc12337642bc354ed889cf6935cdcfe082ec3bfcd1895fd04b')
+source=("${_pkgname}-${pkgver}::git+${url}.git#commit=${_commit}" "fix_comparision.patch")
+sha256sums=('c9dacf6607aed1dc12337642bc354ed889cf6935cdcfe082ec3bfcd1895fd04b'
+            'b478777a1977cae397ff22d0a12a54c0cc91b14becc0ab36db913be81e50a014')
 
 _builddir='build'
 
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}/" || exit 1
+
+	patch -p1 -N < "../fix_comparision.patch"
 
 	cmake -B ${_builddir} .
 }

@@ -1,0 +1,126 @@
+From cccb3fa7cf4139e6d1a4ae86cac46388a86be14f Mon Sep 17 00:00:00 2001
+From: deleterium <rui.santana@protonmail.com>
+Date: Tue, 29 Apr 2025 13:00:01 -0300
+Subject: [PATCH] Fix logic evaluation of numbers and strings. Added logic
+ tests.
+
+---
+ src/interpreter/Interpreter.cpp |  8 ++++++-
+ tests/comparision.ter           | 41 +++++++++++++++++++++++++++++++++
+ tests/comparision.ter.result    | 33 ++++++++++++++++++++++++++
+ 3 files changed, 81 insertions(+), 1 deletion(-)
+ create mode 100644 tests/comparision.ter
+ create mode 100644 tests/comparision.ter.result
+
+diff --git a/src/interpreter/Interpreter.cpp b/src/interpreter/Interpreter.cpp
+index 436c389..32e087a 100644
+--- a/src/interpreter/Interpreter.cpp
++++ b/src/interpreter/Interpreter.cpp
+@@ -77,6 +77,13 @@ bool Interpreter::isTruthy(const std::any& object){
+   if(object.type() == typeid(bool)){
+     return std::any_cast<bool>(object);
+   }
++  if(object.type() == typeid(double)){
++    return std::any_cast<double>(object) != 0.0;
++  }
++  if(object.type() == typeid(std::string)){
++    return !std::any_cast<std::string>(object).empty();
++  }
++  // never
+   return true;
+ }
+ 
+@@ -276,7 +283,6 @@ std::any Interpreter::visitBinaryExpr(std::shared_ptr<Binary> expr){
+       checkNumberOperands(expr->oper, left, right);
+       return std::any_cast<double>(left) / std::any_cast<double>(right);
+     case TokenType::BANG_EQUAL:
+-      checkNumberOperands(expr->oper, left, right);
+       return !isEqual(left, right);
+     case TokenType::EQUAL_EQUAL:
+       return isEqual(left, right);
+diff --git a/tests/comparision.ter b/tests/comparision.ter
+new file mode 100644
+index 0000000..1b92085
+--- /dev/null
++++ b/tests/comparision.ter
+@@ -0,0 +1,41 @@
++auto a = "str"
++auto b = "5"
++auto c = 5
++
++output("    #1")
++if (a == "str") {out("true ")}else{out("false")} output(" a == 'str'")
++if (a != "str") {out("true ")}else{out("false")} output(" a != 'str'")
++if (c == 5) {out("true ")}else{out("false")}output(" c == 5")
++if (c != 5) {out("true ")}else{out("false")}output(" c != 5")
++if (c > 5) {out("true ")}else{out("false")}output(" c > 5")
++if (c >= 5) {out("true ")}else{out("false")}output(" c >= 5")
++if (c < 5) {out("true ")}else{out("false")}output(" c < 5")
++if (c <= 5) {out("true ")}else{out("false")}output(" c <= 5")
++
++output("    #2")
++if (b == to_string(c)) {out("true ")}else{out("false")}output(" b == to_string(c)")
++if (nil == nil) {out("true ")}else{out("false")}output(" nil == nil")
++if (nil) {out("true ")}else{out("false")}output(" nil")
++if (5) {out("true ")}else{out("false")}output(" 5")
++if (0) {out("true ")}else{out("false")}output(" 0")
++if ("string") {out("true ")}else{out("false")}output(" 'string'")
++if ("") {out("true ")}else{out("false")}output(" ''")
++
++output("    #3")
++if (nil or 1) {out("true ")}else{out("false")}output(" nil or 1")
++if (1 and 1) {out("true ")}else{out("false")}output(" 1 and 1")
++if (nil or nil) {out("true ")}else{out("false")}output(" nil or nil")
++if (1 and nil) {out("true ")}else{out("false")}output(" 1 and nil")
++
++output("    #4")
++if (!nil) {out("true ")}else{out("false")}output(" !nil")
++if (!a) {out("true ")}else{out("false")}output(" !a")
++if (!c) {out("true ")}else{out("false")}output(" !c")
++if (!0) {out("true ")}else{out("false")}output(" !0")
++if (!"") {out("true ")}else{out("false")}output(" !''")
++
++output("    #5")
++if (!(nil or 1)) {out("true ")}else{out("false")}output(" !(nil or 1)")
++if (!(1 and 1)) {out("true ")}else{out("false")}output(" !(1 and 1)")
++if (!(nil or nil)) {out("true ")}else{out("false")}output(" !(nil or nil)")
++if (!(1 and nil)) {out("true ")}else{out("false")}output(" !(1 and nil)")
+diff --git a/tests/comparision.ter.result b/tests/comparision.ter.result
+new file mode 100644
+index 0000000..5f86717
+--- /dev/null
++++ b/tests/comparision.ter.result
+@@ -0,0 +1,33 @@
++    #1
++true  a == 'str'
++false a != 'str'
++true  c == 5
++false c != 5
++false c > 5
++true  c >= 5
++false c < 5
++true  c <= 5
++    #2
++true  b == to_string(c)
++true  nil == nil
++false nil
++true  5
++false 0
++true  'string'
++false ''
++    #3
++true  nil or 1
++true  1 and 1
++false nil or nil
++false 1 and nil
++    #4
++true  !nil
++false !a
++false !c
++true  !0
++true  !''
++    #5
++false !(nil or 1)
++false !(1 and 1)
++true  !(nil or nil)
++true  !(1 and nil)
