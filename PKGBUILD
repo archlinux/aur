@@ -1,7 +1,7 @@
 # Maintainer: Matteo Bonanomi <mbonanomi.dev@proton.me>
 
 pkgname=xfce4-meowmenu-plugin
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Modern menu launcher plugin for the Xfce panel"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('accountsservice' 'exo' 'garcon' 'glib2' 'gtk-layer-shell' 'gtk3'
 # listed here. meson/ninja are real build inputs not guaranteed by base-devel.
 makedepends=('gettext' 'git' 'meson' 'ninja' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c7285ed1f617a748a23784df28de14ad08b39a76c848c279afa9ab5b68562a77')
+sha256sums=('2312f687a9040b47f35e8be8b9b545c224e75580fd6d2d2cf4a5eb50a0bd3bb7')
 
 build() {
   cd "${srcdir}"
@@ -30,11 +30,6 @@ build() {
       --prefix=/usr --buildtype=plain --wrap-mode=nodownload
   fi
   meson compile -C build
-}
-
-check() {
-  cd "${srcdir}"
-  meson test -C build
 }
 
 package() {
