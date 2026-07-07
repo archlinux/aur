@@ -4,7 +4,7 @@ _pkgname=noctalia
 _tagver=5.0.0-beta1
 pkgname=noctalia
 pkgver=5.0.0_beta1
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight Wayland shell built directly on Wayland and OpenGL ES'
 arch=('x86_64')
 url='https://github.com/noctalia-dev/noctalia'
@@ -24,6 +24,7 @@ depends=(
   'libqalculate'
   'librsvg'
   'libwebp'
+  'libwireplumber'
   'libxkbcommon'
   'libxml2'
   'md4c'
@@ -31,15 +32,14 @@ depends=(
   'polkit'
   'pango'
   'sdbus-cpp'
+  'tomlplusplus'
   'wayland'
 )
 
 makedepends=(
-  'libwireplumber'
   'meson'
   'ninja'
   'pkgconf'
-  'tomlplusplus'
   'wayland-protocols'
 )
 conflicts=('noctalia-git' 'noctalia-bin')
