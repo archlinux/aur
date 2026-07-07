@@ -5,7 +5,7 @@
 
 pkgname=firefox-vaapi
 _pkgname=firefox
-pkgver=152.0.4
+pkgver=152.0.5
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (with VA-API patches for Nvidia hardware acceleration)"
 url="https://www.mozilla.org/firefox/"
@@ -94,14 +94,14 @@ validpgpkeys=(
   # https://blog.mozilla.org/security/2025/04/01/updated-gpg-key-for-signing-firefox-releases-2/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('fd89982202cda5353a27307d85d48902d46576d46d1c9e36d55740e63b5216bb'
+sha256sums=('0a0341b05ac68834c4071665fe11f1e6729084b4e4ffcd70241097b0ad2cb224'
             'SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             '5985c41a64dde6df3d31769ac57ddb59b94b1626aadb309fb488cdf6f3aa7015'
             '58d78ce57b3ee936bc966458d6b20ab142d02a897bbe924b3f26717af0c5bee1'
             '06e30b49678a48f4b6d5eb74de91f743734c7d21efd442777c77aee8cf5dad85'
             '547426473bba5ac36b2dc532cffd8485a1edae45e4a070a5a1cf0a9adf8abdc6')
-b2sums=('8840923ae6c464fd8f8c54676e994897de7a6e9229d1b70fc798df261cc878ab1cfccad162eb0aeb8632cbddb52b7a809c06cde9bffc7f9cc5b7c288a60bf45c'
+b2sums=('011cae8194c98ada33d47f468ce3e23c7c3056f09c9ee0c69cd8eb58007d88002436a374bcb8eb9cbffbbde27b083004c53b752a5a4b6d342af220193ab2e7f7'
         'SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         'c993d2c86c3ae7d63721f2df3cad64485e53cfc6b3f45cbd53e96765e4dab4bfaa9581cf4e8e458d61e749ba3adce6e11487cfb18227bfe7d193c4dd911e63c3'
@@ -211,7 +211,7 @@ END
 
   echo "Building optimized browser..."
   cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-lto=cross,full
+ac_add_options --enable-lto=cross
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
