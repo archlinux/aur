@@ -1,19 +1,26 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=c-icap-modules
 pkgver=0.5.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Modules for C-ICAP server'
 depends=('c-icap' 'clamav')
 arch=(i686 x86_64)
 url='http://c-icap.sourceforge.net/'
-license=('GPL' 'LGPL')
-source=("http://downloads.sourceforge.net/project/c-icap/c-icap-modules/0.5.x/c_icap_modules-${pkgver}.tar.gz")
-sha256sums=('80bc0af10be171c0c73cd5886533a397c4d55211756fb6279f245ee7e5dd3814')
+license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
+source=("http://downloads.sourceforge.net/project/c-icap/c-icap-modules/0.5.x/c_icap_modules-${pkgver}.tar.gz"
+	'btcompare.patch')
+sha256sums=('80bc0af10be171c0c73cd5886533a397c4d55211756fb6279f245ee7e5dd3814'
+            '1aaf90bdcd4f6fc9483717ca4152faede34310500b3402b5c9f67543833ab3df')
 backup=('etc/c-icap/clamav_mod.conf'
         'etc/c-icap/clamd_mod.conf'
         'etc/c-icap/virus_scan.conf'
         'etc/c-icap/vscan-local.conf'
         'etc/c-icap/srv_url_check.conf')
+
+prepare() {
+  cd "${srcdir}/c_icap_modules-${pkgver}"
+  patch -p1 -i ../btcompare.patch
+}
 
 build() {
   cd "${srcdir}/c_icap_modules-${pkgver}"
@@ -21,8 +28,7 @@ build() {
       --prefix=/usr \
       --localstatedir=/var \
       --sbindir=/usr/bin \
-      --sysconfdir=/etc/c-icap \
-
+      --sysconfdir=/etc/c-icap
   make
 }
 

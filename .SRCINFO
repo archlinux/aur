@@ -1,12 +1,12 @@
 pkgbase = c-icap-modules
 	pkgdesc = Modules for C-ICAP server
 	pkgver = 0.5.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://c-icap.sourceforge.net/
 	arch = i686
 	arch = x86_64
-	license = GPL
-	license = LGPL
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
 	depends = c-icap
 	depends = clamav
 	backup = etc/c-icap/clamav_mod.conf
@@ -15,6 +15,8 @@ pkgbase = c-icap-modules
 	backup = etc/c-icap/vscan-local.conf
 	backup = etc/c-icap/srv_url_check.conf
 	source = http://downloads.sourceforge.net/project/c-icap/c-icap-modules/0.5.x/c_icap_modules-0.5.7.tar.gz
+	source = btcompare.patch
 	sha256sums = 80bc0af10be171c0c73cd5886533a397c4d55211756fb6279f245ee7e5dd3814
+	sha256sums = 1aaf90bdcd4f6fc9483717ca4152faede34310500b3402b5c9f67543833ab3df
 
 pkgname = c-icap-modules

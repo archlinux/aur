@@ -1,0 +1,20 @@
+--- a/services/url_check/sguardDB.c	2018-11-09 15:19:16.000000000 +0530
++++ b/services/url_check/sguardDB.c	2026-07-07 18:05:53.187031777 +0530
+@@ -10,7 +10,7 @@
+ #define CREATE_FLAGS 0664
+ #define TABLE        NULL
+ 
+-int domainCompare (DB *dbp, const DBT *a, const DBT *b)
++int domainCompare (DB *dbp, const DBT *a, const DBT *b, size_t *locp)
+ {
+     const char *a1 , *b1;
+     char ac1 , bc1;
+@@ -88,7 +88,7 @@
+ }
+ 
+ DB *sg_open_db(DB_ENV *dbenv, char *filename, enum sgDBopen otype,
+-	       int (*bt_compare_fcn)(DB *, const DBT *, const DBT *) )
++	       int (*bt_compare_fcn)(DB *, const DBT *, const DBT *, size_t *) )
+ {
+     int ret;
+     uint32_t flags;
