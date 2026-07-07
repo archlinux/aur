@@ -1,0 +1,15 @@
+pkgbase = python-napari-deeplabcut
+	pkgdesc = Keypoint annotation tool for pose estimation
+	pkgver = 0.3.1.0
+	pkgrel = 1
+	url = https://deeplabcut.github.io/DeepLabCut/README.html
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/n/napari_deeplabcut/napari_deeplabcut-0.3.1.0.tar.gz
+	sha256sums = c4bc3a3643dd984f2045e59d5c06f299c7388fce1832ee7478ee0be7fddc5872
+
+pkgname = python-napari-deeplabcut
