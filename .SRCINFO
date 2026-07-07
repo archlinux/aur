@@ -1,6 +1,6 @@
 pkgbase = python-ctf-dl
 	pkgdesc = Command-line tool to download CTF challenges
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/bjornmorten/ctf-dl
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = python-ctf-dl
 	optdepends = python-pwnv: A CTF workspace management tool
 	provides = python-ctf-dl
 	conflicts = python-ctf-dl
-	source = ctf-dl::git+https://github.com/bjornmorten/ctf-dl.git#tag=v0.3.2
-	sha256sums = dc323131c020034044fca8f0f71fc7b39b484582e10ab66e16c75fd8238c8fd0
+	source = ctf-dl::git+https://github.com/bjornmorten/ctf-dl.git#tag=v0.3.3
+	sha256sums = 592da6e03f426e95d1448a9e6a87d4198b9c2913564c138c01d8e8589ae335ed
 
 pkgname = python-ctf-dl

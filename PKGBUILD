@@ -2,7 +2,7 @@
 
 pkgname=python-ctf-dl
 _name=${pkgname#python-}
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Command-line tool to download CTF challenges"
 provides=(${pkgname})
@@ -40,7 +40,7 @@ optdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('dc323131c020034044fca8f0f71fc7b39b484582e10ab66e16c75fd8238c8fd0')
+sha256sums=('592da6e03f426e95d1448a9e6a87d4198b9c2913564c138c01d8e8589ae335ed')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
