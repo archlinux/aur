@@ -1,8 +1,8 @@
 # Maintainer: duanluan <duanluan@outlook.com>
 
 pkgname=codex-plus-plus
-pkgver=1.2.12
-pkgrel=6
+pkgver=1.2.32
+pkgrel=1
 epoch=1
 pkgdesc='Codex++ auto-injector bridge for openai-codex-desktop'
 arch=('x86_64')
@@ -24,23 +24,20 @@ source=(
   'codex-desktop-app-wrapper.sh'
   'codex-plus-plus.sh'
   'plugin-auth-unlocked.js'
-  "${pkgname}-plugin-unlock.patch"
   "${pkgname}-linux-port-fallback.patch"
   '90-codex-plus-plus-reapply.hook'
 )
 sha256sums=(
-  '247a41f4d8c35d6e13bc86d298fedbd08ee1c8090d5b41bdf503a5fc25574a27'
+  '43eaba8081b4a58e6f4580e1a5134b7a2ff493cd202fb933c23bff7d43610de2'
   '0f45cd59ba6d0964d783cc37fc185aeaaa50cc5bdef8a027a6ca2e0e82c03619'
   '2669ce573262d96ea38f085280899e729bc8b542890c6bbdb01e23853e2cd661'
   '4097d1937593ca1e2e5dcf3bbed65f85a2cb066e4d336ad286061a822aacfd8e'
-  'f817b382ad3ca0c3a000d8d476ed27ebde13e7a2a027d5b376505bd6db778087'
   '619db99ea1e3117ec4d6db686ce3f981fffd1adccaa7a1d55d4d9ad2646a3513'
   '187f5bada32771e5197506208c362778e98fa63fd6e13151e7675047932172a9'
 )
 
 prepare() {
   cd "${srcdir}/CodexPlusPlus-${pkgver}"
-  patch -Np1 -i "${srcdir}/${pkgname}-plugin-unlock.patch"
   patch -Np1 -i "${srcdir}/${pkgname}-linux-port-fallback.patch"
 }
 
