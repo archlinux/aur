@@ -1,6 +1,6 @@
 pkgbase = python-pwnv
 	pkgdesc = CLI tool for CTF management
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/CarixoHD/pwnv
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = python-pwnv
 	optdepends = python-ctf-sniper: An automated flag submission tool
 	provides = python-pwnv
 	conflicts = python-pwnv
-	source = pwnv::git+https://github.com/CarixoHD/pwnv.git#tag=v0.4.4
-	sha256sums = 416a81819adcf5c61c4643ac5b9bb07c6c6acd6dfbeac84e42c8236b3e7ed66f
+	source = pwnv::git+https://github.com/CarixoHD/pwnv.git#tag=v0.4.5
+	sha256sums = 6026f4f0971ef051bc61b7a43863db68410197795b20842b3ee1b0d533c5439d
 
 pkgname = python-pwnv

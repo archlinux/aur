@@ -2,7 +2,7 @@
 
 pkgname=python-pwnv
 _name=${pkgname#python-}
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="CLI tool for CTF management"
 provides=(${pkgname})
@@ -38,7 +38,7 @@ optdepends=(
 )
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('416a81819adcf5c61c4643ac5b9bb07c6c6acd6dfbeac84e42c8236b3e7ed66f')
+sha256sums=('6026f4f0971ef051bc61b7a43863db68410197795b20842b3ee1b0d533c5439d')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
