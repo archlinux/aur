@@ -28,10 +28,10 @@ sha256sums=(
     # 'SKIP'
 )
 
-# prepare() {
-#     cd "$srcdir"/phono3py
-#     patch -Np1 -i "${srcdir}/lammps.patch"
-# }
+prepare() {
+  cd "$srcdir"/phono3py
+  sed -i 's/cmake\.verbose/build.verbose/g' pyproject.toml
+}
 
 
 build() {
@@ -42,7 +42,7 @@ build() {
   _buildenv/bin/pip install --upgrade pip
   _buildenv/bin/pip install \
     numpy \
-    "scikit-build-core<0.10" \
+    "scikit-build-core" \
     "nanobind<2.10.0" \
     setuptools-scm \
     build
