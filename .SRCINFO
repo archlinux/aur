@@ -1,7 +1,7 @@
 pkgbase = philips-hue-for-arch
 	pkgdesc = Desktop GUI for controlling Philips Hue lights on Linux
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/MechNoxer/philips-hue-for-arch
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = philips-hue-for-arch
 	depends = python
 	depends = pyside6
 	depends = python-requests
-	source = philips-hue-for-arch-0.1.2.tar.gz::https://github.com/MechNoxer/philips-hue-for-arch/archive/refs/tags/v0.1.2.tar.gz
+	source = philips-hue-for-arch-0.2.0.tar.gz::https://github.com/MechNoxer/philips-hue-for-arch/archive/refs/tags/v0.2.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = philips-hue-for-arch
