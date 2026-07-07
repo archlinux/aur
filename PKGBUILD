@@ -19,14 +19,14 @@ b2sums=('03ed7f1548ead39601f175437cd57bd041fc4840b9551904b56850e1783a2d5c4f3ea7a
 build() {
     cd "$srcdir/${_pkgrepo}-$pkgver"
     # Force GNU ld: ring crate assembly symbols are incompatible with LLD
-    export RUSTFLAGS="-C link-arg=-fuse-ld=bfd"
+    export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=bfd"
     cargo build --release --locked
 }
 
 check() {
     cd "$srcdir/${_pkgrepo}-$pkgver"
     # Tests use wiremock (local HTTP), no network needed
-    export RUSTFLAGS="-C link-arg=-fuse-ld=bfd"
+    export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=bfd"
     cargo test --release --locked || true
 }
 
