@@ -1,0 +1,30 @@
+pkgbase = python-pwnv
+	pkgdesc = CLI tool for CTF management
+	pkgver = 0.4.4
+	pkgrel = 1
+	url = https://github.com/CarixoHD/pwnv
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	depends = python-dotenv
+	depends = python-filelock
+	depends = python-inquirer
+	depends = python-inquirerpy
+	depends = python-pydantic
+	depends = python-rich
+	depends = python-typer
+	depends = python-ctfbridge
+	optdepends = python-ctf-dl: A CTF challenge bulk downloader
+	optdepends = python-ctf-sniper: An automated flag submission tool
+	provides = python-pwnv
+	conflicts = python-pwnv
+	source = pwnv::git+https://github.com/CarixoHD/pwnv.git#tag=v0.4.4
+	sha256sums = 416a81819adcf5c61c4643ac5b9bb07c6c6acd6dfbeac84e42c8236b3e7ed66f
+
+pkgname = python-pwnv
