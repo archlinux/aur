@@ -21,7 +21,6 @@ build() {
   for _arch in ${_architectures}; do
     $_arch-cmake -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_LIBDIR=lib \
-          -DCMAKE_POLICY_VERSION_MINIMUM=3.0 \
           -DDOCTEST_WITH_TESTS=off \
           -S "${srcdir}/doctest-${pkgver}" \
           -B "build-$_arch"
