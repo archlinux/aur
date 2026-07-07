@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Minecraft Bedrock (Proton)
+Comment=Launch Minecraft Bedrock through a Steam Proton prefix
+Exec=minecraft-bedrock launch
+Icon=minecraft
+Terminal=false
+Categories=Game;
+StartupNotify=false

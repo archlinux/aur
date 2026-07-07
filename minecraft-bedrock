@@ -1,0 +1,896 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+APP_ID="${MINECRAFT_BEDROCK_STEAM_APP_ID:-0}"
+APP_HOME="${MINECRAFT_BEDROCK_HOME:-${XDG_DATA_HOME:-${HOME}/.local/share}/minecraft-bedrock}"
+CACHE_DIR="${MINECRAFT_BEDROCK_CACHE_DIR:-${XDG_CACHE_HOME:-${HOME}/.cache}/minecraft-bedrock}"
+STATE_DIR="${MINECRAFT_BEDROCK_STATE_DIR:-${XDG_STATE_HOME:-${HOME}/.local/state}/minecraft-bedrock}"
+COMPAT_DATA_PATH="${MINECRAFT_BEDROCK_COMPAT_DATA_PATH:-${APP_HOME}/compatdata/${APP_ID}}"
+PREFIX_PATH="${COMPAT_DATA_PATH}/pfx"
+INSTALLER_URL="${MINECRAFT_BEDROCK_INSTALLER_URL:-https://aka.ms/minecraftClientWindows}"
+GDK_INSTALLER_URL="${MINECRAFT_BEDROCK_GDK_INSTALLER_URL:-https://aka.ms/minecraftClientGameCoreWindows}"
+INSTALLER_PATH="${MINECRAFT_BEDROCK_INSTALLER:-${CACHE_DIR}/MinecraftInstaller.msi}"
+GDK_PROTON_REPO="${MINECRAFT_BEDROCK_GDK_PROTON_REPO:-Weather-OS/GDK-Proton}"
+MSYS2_CURL_URL="${MINECRAFT_BEDROCK_MSYS2_CURL_URL:-https://mirror.msys2.org/mingw/mingw64/mingw-w64-x86_64-curl-8.17.0-1-any.pkg.tar.zst}"
+CA_BUNDLE_URL="${MINECRAFT_BEDROCK_CA_BUNDLE_URL:-https://curl.se/ca/cacert.pem}"
+STEAM_SHORTCUT_NAME="${MINECRAFT_BEDROCK_STEAM_NAME:-Minecraft Bedrock (Proton)}"
+INSTALLED_SHORTCUT_HELPER="/usr/lib/minecraft-bedrock/steam-shortcut.py"
+DEFAULT_LAUNCHER_ARGS=(
+  --disable-gpu
+  --disable-gpu-compositing
+  --disable-gpu-rasterization
+  --disable-accelerated-2d-canvas
+  --disable-accelerated-video-decode
+)
+DEFAULT_CEF_OPTIONS=(
+  disable-gpu
+  disable-gpu-compositing
+  disable-gpu-rasterization
+  disable-accelerated-2d-canvas
+  disable-accelerated-video-decode
+)
+
+info() {
+  printf '==> %s\n' "$*" >&2
+}
+
+warn() {
+  printf 'warning: %s\n' "$*" >&2
+}
+
+die() {
+  printf 'error: %s\n' "$*" >&2
+  exit 1
+}
+
+usage() {
+  cat <<'EOF'
+Usage: minecraft-bedrock [command]
+
+Commands:
+  setup                 Install GDK-Proton, create the prefix, run installer, add Steam shortcut
+  purge                 Remove prefix/cache/state, managed GDK-Proton, and Steam shortcut
+  install-proton        Install latest Weather-OS GDK-Proton into Steam compatibilitytools.d
+  download-installer    Download the Wine-friendly legacy Minecraft installer
+  init-prefix           Create/update the Proton compatdata prefix
+  install-prereqs       Install optional prefix prerequisites with winetricks
+  install-launcher      Run the downloaded Minecraft installer inside Proton
+  configure-launcher    Write launcher settings for Wine/Proton rendering
+  patch-online          Patch Minecraft.Windows.exe directory with XCurl.dll and CA certs
+  add-steam-shortcut    Add/update the Steam non-Steam shortcut
+  launch [launcher|game] Launch the launcher, game, or first available target
+  paths                 Print resolved paths
+  help                  Show this help
+
+Environment:
+  MINECRAFT_BEDROCK_PROTON_PATH       Proton directory or proton script to use
+  MINECRAFT_BEDROCK_PREFER_GDK_PROTON Set to 1 to prefer GDK-Proton over Steam Proton
+  MINECRAFT_BEDROCK_COMPAT_DATA_PATH  Proton compatdata directory
+  MINECRAFT_BEDROCK_INSTALLER         Pre-downloaded installer path
+  MINECRAFT_BEDROCK_DISABLE_GPU       Set to 0 to avoid writing disableGPU=true
+  MINECRAFT_BEDROCK_CEF_OPTIONS       Space-separated CEF switches without leading --
+  MINECRAFT_BEDROCK_LAUNCHER_ARGS     Override launcher Chromium/CEF flags
+  MINECRAFT_BEDROCK_NO_LAUNCHER_ARGS  Set to 1 to pass no extra launcher flags
+  MINECRAFT_BEDROCK_STEAM_USER_ID     Steam userdata id for shortcut writes
+  MINECRAFT_BEDROCK_SKIP_WINETRICKS   Set to 1 to skip winetricks prereqs
+
+Purge options:
+  -y, --yes             Do not prompt before deleting files
+      --keep-cache      Keep downloaded installers and patch assets
+      --keep-proton     Keep helper-managed GDK-Proton installs
+      --keep-shortcut   Keep the Steam non-Steam shortcut
+
+Installer options:
+      --legacy          Download the legacy MSI installer (default)
+      --windows-gdk     Download the Windows 10/11 GDK EXE bootstrapper
+EOF
+}
+
+require_command() {
+  command -v "$1" >/dev/null 2>&1 || die "required command not found: $1"
+}
+
+try_find_steam_root() {
+  local candidate
+  local candidates=()
+
+  [[ -n "${STEAM_COMPAT_CLIENT_INSTALL_PATH:-}" ]] && candidates+=("${STEAM_COMPAT_CLIENT_INSTALL_PATH}")
+  [[ -n "${STEAM_ROOT:-}" ]] && candidates+=("${STEAM_ROOT}")
+  candidates+=(
+    "${HOME}/.steam/root"
+    "${HOME}/.local/share/Steam"
+    "${HOME}/.var/app/com.valvesoftware.Steam/.local/share/Steam"
+  )
+
+  for candidate in "${candidates[@]}"; do
+    [[ -n "${candidate}" ]] || continue
+    if [[ -d "${candidate}/steamapps" || -d "${candidate}/userdata" || -d "${candidate}/compatibilitytools.d" ]]; then
+      (cd "${candidate}" && pwd -P)
+      return 0
+    fi
+  done
+
+  return 1
+}
+
+find_steam_root() {
+  try_find_steam_root || die "Steam root not found. Start Steam once or set STEAM_ROOT."
+}
+
+resolve_proton_path() {
+  local path="$1"
+  [[ -n "${path}" ]] || return 1
+
+  if [[ -x "${path}/proton" ]]; then
+    (cd "${path}" && pwd -P)
+    return 0
+  fi
+
+  if [[ -x "${path}" && "$(basename "${path}")" == "proton" ]]; then
+    (cd "$(dirname "${path}")" && pwd -P)
+    return 0
+  fi
+
+  return 1
+}
+
+find_installed_proton() {
+  local resolved steam_root
+  local gdk_candidates=()
+  local steam_candidates=()
+  local system_candidates=()
+  local dir
+
+  if [[ -n "${MINECRAFT_BEDROCK_PROTON_PATH:-}" ]]; then
+    resolved="$(resolve_proton_path "${MINECRAFT_BEDROCK_PROTON_PATH}")" || \
+      die "MINECRAFT_BEDROCK_PROTON_PATH does not contain an executable proton script"
+    printf '%s\n' "${resolved}"
+    return 0
+  fi
+
+  steam_root="$(try_find_steam_root || true)"
+  if [[ -n "${steam_root}" ]]; then
+    if [[ -d "${steam_root}/compatibilitytools.d" ]]; then
+      while IFS= read -r -d '' dir; do
+        gdk_candidates+=("${dir}")
+      done < <(find "${steam_root}/compatibilitytools.d" -maxdepth 1 -type d -name 'GDK-Proton*' -print0 | sort -zV)
+    fi
+
+    if [[ -d "${steam_root}/steamapps/common" ]]; then
+      while IFS= read -r -d '' dir; do
+        steam_candidates+=("${dir}")
+      done < <(find "${steam_root}/steamapps/common" -maxdepth 1 -type d \( -name 'Proton*' -o -name 'GE-Proton*' \) -print0 | sort -zV)
+    fi
+  fi
+
+  if [[ -d "/usr/share/steam/compatibilitytools.d" ]]; then
+    while IFS= read -r -d '' dir; do
+      system_candidates+=("${dir}")
+    done < <(find "/usr/share/steam/compatibilitytools.d" -maxdepth 1 -type d \( -name 'Proton*' -o -name 'GE-Proton*' -o -name 'proton-ge*' \) -print0 | sort -zV)
+  fi
+
+  if [[ "${MINECRAFT_BEDROCK_PREFER_GDK_PROTON:-0}" == "1" ]]; then
+    for ((idx=${#gdk_candidates[@]} - 1; idx >= 0; idx--)); do
+      resolved="$(resolve_proton_path "${gdk_candidates[$idx]}" || true)"
+      if [[ -n "${resolved}" ]]; then
+        printf '%s\n' "${resolved}"
+        return 0
+      fi
+    done
+  fi
+
+  for ((idx=${#steam_candidates[@]} - 1; idx >= 0; idx--)); do
+    resolved="$(resolve_proton_path "${steam_candidates[$idx]}" || true)"
+    if [[ -n "${resolved}" ]]; then
+      printf '%s\n' "${resolved}"
+      return 0
+    fi
+  done
+
+  for ((idx=${#system_candidates[@]} - 1; idx >= 0; idx--)); do
+    resolved="$(resolve_proton_path "${system_candidates[$idx]}" || true)"
+    if [[ -n "${resolved}" ]]; then
+      printf '%s\n' "${resolved}"
+      return 0
+    fi
+  done
+
+  for ((idx=${#gdk_candidates[@]} - 1; idx >= 0; idx--)); do
+    resolved="$(resolve_proton_path "${gdk_candidates[$idx]}" || true)"
+    if [[ -n "${resolved}" ]]; then
+      printf '%s\n' "${resolved}"
+      return 0
+    fi
+  done
+
+  return 1
+}
+
+require_proton() {
+  find_installed_proton || die "No Proton install found. Run \`minecraft-bedrock install-proton\` or set MINECRAFT_BEDROCK_PROTON_PATH."
+}
+
+record_managed_proton() {
+  local proton_path="$1"
+
+  mkdir -p "${STATE_DIR}"
+  printf '%s\n' "${proton_path}" > "${STATE_DIR}/gdk-proton-path"
+}
+
+download_file() {
+  local url="$1"
+  local dest="$2"
+  local tmp="${dest}.part"
+
+  require_command curl
+  mkdir -p "$(dirname "${dest}")"
+  info "Downloading ${url}"
+  curl --fail --location --retry 3 --retry-delay 2 \
+    --user-agent 'minecraft-bedrock-aur/0.1' \
+    --output "${tmp}" \
+    "${url}"
+  mv -f "${tmp}" "${dest}"
+}
+
+download_installer_to() {
+  local url="$1"
+  local dest="$2"
+  local format="${3:-exe}"
+  local magic
+
+  if [[ -f "${dest}" ]]; then
+    info "Using existing installer: ${dest}"
+  else
+    download_file "${url}" "${dest}"
+  fi
+
+  case "${format}" in
+    exe)
+      magic="$(LC_ALL=C dd if="${dest}" bs=2 count=1 2>/dev/null || true)"
+      [[ "${magic}" == "MZ" ]] || die "${dest} does not look like a Windows executable"
+      ;;
+    msi)
+      magic="$(od -An -tx1 -N8 "${dest}" | tr -d ' \n')"
+      [[ "${magic}" == "d0cf11e0a1b11ae1" ]] || die "${dest} does not look like a Windows Installer MSI"
+      ;;
+    *)
+      die "unknown installer format: ${format}"
+      ;;
+  esac
+}
+
+latest_gdk_release() {
+  require_command python
+  python - "${GDK_PROTON_REPO}" <<'PY'
+import json
+import sys
+import urllib.request
+
+repo = sys.argv[1]
+request = urllib.request.Request(
+    f"https://api.github.com/repos/{repo}/releases/latest",
+    headers={
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "minecraft-bedrock-aur/0.1",
+    },
+)
+with urllib.request.urlopen(request) as response:
+    release = json.load(response)
+
+assets = [
+    asset for asset in release.get("assets", [])
+    if asset.get("name", "").endswith(".tar.gz")
+]
+if not assets:
+    raise SystemExit("no .tar.gz release asset found")
+
+asset = assets[0]
+digest = asset.get("digest", "")
+sha256 = digest.split(":", 1)[1] if digest.startswith("sha256:") else ""
+print(
+    release.get("name") or release.get("tag_name") or "GDK-Proton",
+    asset["name"],
+    asset["browser_download_url"],
+    sha256,
+    sep="\t",
+)
+PY
+}
+
+cmd_install_proton() {
+  local steam_root tools_dir release_name asset_name asset_url asset_sha archive target tmp extracted existing
+
+  if [[ -n "${MINECRAFT_BEDROCK_PROTON_PATH:-}" ]]; then
+    info "MINECRAFT_BEDROCK_PROTON_PATH is set; skipping GDK-Proton install"
+    return 0
+  fi
+
+  existing="$(find_installed_proton || true)"
+  if [[ -n "${existing}" && "$(basename "${existing}")" == GDK-Proton* ]]; then
+    info "Using existing GDK-Proton: ${existing}"
+    return 0
+  fi
+
+  steam_root="$(find_steam_root)"
+  tools_dir="${steam_root}/compatibilitytools.d"
+  mkdir -p "${tools_dir}" "${CACHE_DIR}"
+
+  IFS=$'\t' read -r release_name asset_name asset_url asset_sha < <(latest_gdk_release)
+  archive="${CACHE_DIR}/${asset_name}"
+  target="${tools_dir}/${asset_name%.tar.gz}"
+
+  if [[ -x "${target}/proton" ]]; then
+    if [[ -f "${target}/.minecraft-bedrock-managed" ]]; then
+      record_managed_proton "${target}"
+    fi
+    info "Using existing ${release_name}: ${target}"
+    return 0
+  fi
+
+  if [[ ! -f "${archive}" ]]; then
+    download_file "${asset_url}" "${archive}"
+  else
+    info "Using cached GDK-Proton archive: ${archive}"
+  fi
+
+  if [[ -n "${asset_sha}" ]]; then
+    printf '%s  %s\n' "${asset_sha}" "${archive}" | sha256sum -c -
+  else
+    warn "No sha256 digest published for ${asset_name}; skipping checksum verification"
+  fi
+
+  tmp="$(mktemp -d "${tools_dir}/.gdk-proton.XXXXXX")"
+  tar -xzf "${archive}" -C "${tmp}"
+  extracted="$(find "${tmp}" -mindepth 1 -maxdepth 1 -type d -print -quit)"
+  [[ -n "${extracted}" && -x "${extracted}/proton" ]] || die "GDK-Proton archive did not contain a proton script"
+
+  rm -rf "${target}"
+  mv "${extracted}" "${target}"
+  printf 'Managed by minecraft-bedrock. Safe to remove with `minecraft-bedrock purge`.\n' \
+    > "${target}/.minecraft-bedrock-managed"
+  record_managed_proton "${target}"
+  rmdir "${tmp}"
+  info "Installed ${release_name}: ${target}"
+  warn "Restart Steam so it notices newly installed compatibility tools."
+}
+
+cmd_ensure_proton() {
+  local proton
+
+  proton="$(find_installed_proton || true)"
+  if [[ -n "${proton}" ]]; then
+    info "Using Proton: ${proton}"
+    return 0
+  fi
+
+  warn "No Steam Proton install found; installing GDK-Proton as a fallback."
+  cmd_install_proton
+}
+
+run_proton_wait() {
+  local proton_dir steam_root
+  proton_dir="$(require_proton)"
+  steam_root="$(find_steam_root)"
+
+  mkdir -p "${COMPAT_DATA_PATH}" "${STATE_DIR}"
+  env \
+    STEAM_COMPAT_CLIENT_INSTALL_PATH="${steam_root}" \
+    STEAM_COMPAT_DATA_PATH="${COMPAT_DATA_PATH}" \
+    STEAM_COMPAT_APP_ID="${APP_ID}" \
+    WINEDEBUG="${WINEDEBUG:--all}" \
+    "${proton_dir}/proton" waitforexitandrun "$@"
+}
+
+launcher_args() {
+  local arg
+  local override_args=()
+
+  if [[ "${MINECRAFT_BEDROCK_NO_LAUNCHER_ARGS:-0}" == "1" ]]; then
+    return 0
+  fi
+
+  if [[ -n "${MINECRAFT_BEDROCK_LAUNCHER_ARGS:-}" ]]; then
+    read -r -a override_args <<< "${MINECRAFT_BEDROCK_LAUNCHER_ARGS}"
+    for arg in "${override_args[@]}"; do
+      printf '%s\0' "${arg}"
+    done
+    return 0
+  fi
+
+  for arg in "${DEFAULT_LAUNCHER_ARGS[@]}"; do
+    printf '%s\0' "${arg}"
+  done
+}
+
+cmd_download_installer() {
+  local url="${INSTALLER_URL}"
+  local dest="${INSTALLER_PATH}"
+  local format="msi"
+
+  case "${1:---legacy}" in
+    --legacy)
+      ;;
+    --windows-gdk|--gamecore|--win10|--win11)
+      url="${GDK_INSTALLER_URL}"
+      dest="${MINECRAFT_BEDROCK_INSTALLER:-${CACHE_DIR}/MinecraftInstaller.exe}"
+      format="exe"
+      ;;
+    *)
+      die "unknown installer option: $1"
+      ;;
+  esac
+
+  if [[ -n "${MINECRAFT_BEDROCK_INSTALLER:-}" && -f "${MINECRAFT_BEDROCK_INSTALLER}" ]]; then
+    info "Using MINECRAFT_BEDROCK_INSTALLER=${MINECRAFT_BEDROCK_INSTALLER}"
+    return 0
+  fi
+
+  download_installer_to "${url}" "${dest}" "${format}"
+}
+
+cmd_init_prefix() {
+  info "Creating/updating Proton prefix at ${PREFIX_PATH}"
+  run_proton_wait cmd.exe /c exit
+}
+
+cmd_install_prereqs() {
+  local proton_dir wine wineserver
+
+  if [[ "${MINECRAFT_BEDROCK_SKIP_WINETRICKS:-0}" == "1" ]]; then
+    info "Skipping winetricks prerequisites"
+    return 0
+  fi
+
+  if ! command -v winetricks >/dev/null 2>&1; then
+    warn "winetricks is not installed; skipping optional vcrun2022 prerequisite"
+    return 0
+  fi
+
+  proton_dir="$(require_proton)"
+  wine="${proton_dir}/files/bin/wine"
+  wineserver="${proton_dir}/files/bin/wineserver"
+  if [[ ! -x "${wine}" || ! -x "${wineserver}" ]]; then
+    warn "Could not find Proton wine/wineserver binaries; skipping winetricks"
+    return 0
+  fi
+
+  mkdir -p "${PREFIX_PATH}"
+  info "Installing optional vcrun2022 prerequisite into ${PREFIX_PATH}"
+  WINEPREFIX="${PREFIX_PATH}" \
+    WINE="${wine}" \
+    WINESERVER="${wineserver}" \
+    WINEDEBUG="${WINEDEBUG:--all}" \
+    winetricks -q vcrun2022 || warn "winetricks vcrun2022 failed; continuing"
+}
+
+cmd_install_launcher() {
+  local installer="${INSTALLER_PATH}"
+  local lower
+
+  if [[ -n "${MINECRAFT_BEDROCK_INSTALLER:-}" ]]; then
+    installer="${MINECRAFT_BEDROCK_INSTALLER}"
+  elif [[ ! -f "${installer}" ]]; then
+    cmd_download_installer
+  fi
+
+  [[ -f "${installer}" ]] || die "installer not found: ${installer}"
+
+  lower="${installer,,}"
+  info "Running Minecraft installer in Proton: ${installer}"
+  if [[ "${lower}" == *.msi ]]; then
+    run_proton_wait msiexec.exe /i "${installer}"
+  else
+    run_proton_wait "${installer}"
+  fi
+}
+
+cmd_configure_launcher() {
+  local settings_path="${PREFIX_PATH}/drive_c/users/steamuser/AppData/Roaming/.minecraft/launcher_settings.json"
+  local options=()
+
+  if [[ "${MINECRAFT_BEDROCK_DISABLE_GPU:-1}" == "1" ]]; then
+    if [[ -n "${MINECRAFT_BEDROCK_CEF_OPTIONS:-}" ]]; then
+      read -r -a options <<< "${MINECRAFT_BEDROCK_CEF_OPTIONS}"
+    else
+      options=("${DEFAULT_CEF_OPTIONS[@]}")
+    fi
+  fi
+
+  mkdir -p "$(dirname "${settings_path}")"
+  info "Writing launcher Wine/Proton settings to ${settings_path}"
+  python - "${settings_path}" "${MINECRAFT_BEDROCK_DISABLE_GPU:-1}" "${options[@]}" <<'PY'
+import json
+import sys
+from pathlib import Path
+
+path = Path(sys.argv[1])
+disable_gpu = sys.argv[2] == "1"
+cef_options = sys.argv[3:]
+
+try:
+    settings = json.loads(path.read_text(encoding="utf-8"))
+except FileNotFoundError:
+    settings = {}
+except json.JSONDecodeError:
+    settings = {}
+
+settings.setdefault("channel", "release")
+settings.setdefault("customChannels", [])
+settings.setdefault("formatVersion", 0)
+settings.setdefault("locale", "en-US")
+settings.setdefault("quickPlayEnabled", True)
+settings.setdefault("useArm64JreIfSupported", False)
+settings.setdefault("useMagnifiedMode", False)
+settings.setdefault("version", 17)
+
+if disable_gpu:
+    settings["disableGPU"] = True
+    settings["additionalCEFOptions"] = list(dict.fromkeys(cef_options))
+else:
+    settings.pop("disableGPU", None)
+    settings.pop("additionalCEFOptions", None)
+
+path.write_text(json.dumps(settings, indent=2, sort_keys=False) + "\n", encoding="utf-8")
+PY
+}
+
+find_launcher_exe() {
+  local candidate
+  local candidates=(
+    "${PREFIX_PATH}/drive_c/Program Files (x86)/Minecraft Launcher/MinecraftLauncher.exe"
+    "${PREFIX_PATH}/drive_c/Program Files/Minecraft Launcher/MinecraftLauncher.exe"
+    "${PREFIX_PATH}/drive_c/Program Files (x86)/Minecraft Launcher/Minecraft.exe"
+    "${PREFIX_PATH}/drive_c/Program Files/Minecraft Launcher/Minecraft.exe"
+  )
+
+  for candidate in "${candidates[@]}"; do
+    if [[ -f "${candidate}" ]]; then
+      printf '%s\n' "${candidate}"
+      return 0
+    fi
+  done
+
+  [[ -d "${PREFIX_PATH}/drive_c" ]] || return 1
+  find "${PREFIX_PATH}/drive_c" -type f \( -iname 'MinecraftLauncher.exe' -o -iname 'Minecraft.exe' \) -print -quit
+}
+
+find_game_exe() {
+  [[ -d "${PREFIX_PATH}/drive_c" ]] || return 1
+  find "${PREFIX_PATH}/drive_c" -type f -iname 'Minecraft.Windows.exe' -print -quit
+}
+
+cmd_patch_online() {
+  local package_path ca_path tmp dll exe dir found=0
+
+  require_command curl
+  require_command bsdtar
+
+  package_path="${CACHE_DIR}/$(basename "${MSYS2_CURL_URL}")"
+  ca_path="${CACHE_DIR}/ca-bundle.crt"
+
+  [[ -f "${package_path}" ]] || download_file "${MSYS2_CURL_URL}" "${package_path}"
+  [[ -f "${ca_path}" ]] || download_file "${CA_BUNDLE_URL}" "${ca_path}"
+
+  tmp="$(mktemp -d "${CACHE_DIR}/msys2-curl.XXXXXX")"
+  bsdtar -xf "${package_path}" -C "${tmp}"
+  dll="${tmp}/mingw64/bin/libcurl-4.dll"
+  [[ -f "${dll}" ]] || die "MSYS2 curl package did not contain mingw64/bin/libcurl-4.dll"
+
+  while IFS= read -r -d '' exe; do
+    found=1
+    dir="$(dirname "${exe}")"
+    info "Patching online support files in ${dir}"
+
+    if [[ -e "${dir}/XCurl.dll" && ! -e "${dir}/XCurl.dll.minecraft-bedrock.bak" ]]; then
+      cp -a "${dir}/XCurl.dll" "${dir}/XCurl.dll.minecraft-bedrock.bak"
+    fi
+    install -Dm644 "${dll}" "${dir}/XCurl.dll"
+    install -Dm644 "${ca_path}" "${dir}/etc/ssl/certs/ca-bundle.crt"
+  done < <(find "${PREFIX_PATH}/drive_c" -type f -iname 'Minecraft.Windows.exe' -print0 2>/dev/null || true)
+
+  rm -rf "${tmp}"
+
+  if [[ "${found}" == "0" ]]; then
+    warn "Minecraft.Windows.exe was not found. Install Bedrock in the launcher, then rerun \`minecraft-bedrock patch-online\`."
+    return 0
+  fi
+}
+
+shortcut_helper() {
+  local script_dir
+  script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+
+  if [[ -x "${INSTALLED_SHORTCUT_HELPER}" ]]; then
+    printf '%s\n' "${INSTALLED_SHORTCUT_HELPER}"
+  elif [[ -x "${script_dir}/minecraft-bedrock-steam-shortcut.py" ]]; then
+    printf '%s\n' "${script_dir}/minecraft-bedrock-steam-shortcut.py"
+  elif [[ -f "${script_dir}/minecraft-bedrock-steam-shortcut.py" ]]; then
+    printf '%s\n' "${script_dir}/minecraft-bedrock-steam-shortcut.py"
+  else
+    die "Steam shortcut helper not found"
+  fi
+}
+
+cmd_add_steam_shortcut() {
+  local helper steam_root exe user_args=()
+
+  helper="$(shortcut_helper)"
+  steam_root="$(find_steam_root)"
+  exe="$(command -v minecraft-bedrock || true)"
+  [[ -n "${exe}" ]] || exe="/usr/bin/minecraft-bedrock"
+
+  if [[ -n "${MINECRAFT_BEDROCK_STEAM_USER_ID:-}" ]]; then
+    user_args+=(--user-id "${MINECRAFT_BEDROCK_STEAM_USER_ID}")
+  fi
+
+  python "${helper}" add \
+    --steam-root "${steam_root}" \
+    "${user_args[@]}" \
+    --name "${STEAM_SHORTCUT_NAME}" \
+    --exe "${exe}" \
+    --start-dir "$(dirname "${exe}")" \
+    --launch-options "launch" \
+    --tag Minecraft \
+    --tag Bedrock \
+    --tag Proton \
+    "$@"
+}
+
+cmd_remove_steam_shortcut() {
+  local helper steam_root exe user_args=()
+
+  helper="$(shortcut_helper)"
+  steam_root="$(find_steam_root)"
+  exe="$(command -v minecraft-bedrock || true)"
+  [[ -n "${exe}" ]] || exe="/usr/bin/minecraft-bedrock"
+
+  if [[ -n "${MINECRAFT_BEDROCK_STEAM_USER_ID:-}" ]]; then
+    user_args+=(--user-id "${MINECRAFT_BEDROCK_STEAM_USER_ID}")
+  fi
+
+  python "${helper}" remove \
+    --steam-root "${steam_root}" \
+    "${user_args[@]}" \
+    --name "${STEAM_SHORTCUT_NAME}" \
+    --exe "${exe}" \
+    "$@"
+}
+
+cmd_launch() {
+  local target="${1:-auto}"
+  local exe=""
+  local args=()
+  local arg
+
+  case "${target}" in
+    auto)
+      exe="$(find_game_exe || true)"
+      [[ -n "${exe}" ]] || exe="$(find_launcher_exe || true)"
+      ;;
+    launcher)
+      exe="$(find_launcher_exe || true)"
+      ;;
+    game)
+      exe="$(find_game_exe || true)"
+      ;;
+    *)
+      die "unknown launch target: ${target}"
+      ;;
+  esac
+
+  [[ -n "${exe}" ]] || die "launch target not found. Run \`minecraft-bedrock install-launcher\` first."
+  if [[ "${target}" == "launcher" || "${exe}" == *"MinecraftLauncher.exe" ]]; then
+    while IFS= read -r -d '' arg; do
+      args+=("${arg}")
+    done < <(launcher_args)
+  fi
+
+  if [[ "${#args[@]}" -gt 0 ]]; then
+    info "Launching ${exe} ${args[*]}"
+  else
+    info "Launching ${exe}"
+  fi
+  run_proton_wait "${exe}" "${args[@]}"
+}
+
+cmd_paths() {
+  local steam_root proton launcher game
+
+  steam_root="$(try_find_steam_root || true)"
+  proton="$(find_installed_proton || true)"
+  launcher="$(find_launcher_exe || true)"
+  game="$(find_game_exe || true)"
+
+  printf 'Steam root: %s\n' "${steam_root:-not found}"
+  printf 'Proton: %s\n' "${proton:-not found}"
+  printf 'Compatdata: %s\n' "${COMPAT_DATA_PATH}"
+  printf 'Prefix: %s\n' "${PREFIX_PATH}"
+  printf 'Installer: %s\n' "${INSTALLER_PATH}"
+  printf 'Launcher: %s\n' "${launcher:-not found}"
+  printf 'Game: %s\n' "${game:-not found}"
+}
+
+cmd_setup() {
+  cmd_ensure_proton
+  cmd_download_installer
+  cmd_init_prefix
+  cmd_install_prereqs
+  cmd_install_launcher
+  cmd_configure_launcher
+  cmd_patch_online
+  cmd_add_steam_shortcut
+  info "Setup complete. Restart Steam before using the new non-Steam shortcut."
+}
+
+append_unique_path() {
+  local path="$1"
+  local existing
+
+  [[ -n "${path}" ]] || return 0
+
+  for existing in "${PURGE_PATHS[@]}"; do
+    [[ "${existing}" == "${path}" ]] && return 0
+  done
+
+  PURGE_PATHS+=("${path}")
+}
+
+append_unique_proton_path() {
+  local path="$1"
+  local existing
+
+  [[ -n "${path}" ]] || return 0
+  [[ -f "${path}/.minecraft-bedrock-managed" ]] || return 0
+
+  for existing in "${PURGE_PROTON_PATHS[@]}"; do
+    [[ "${existing}" == "${path}" ]] && return 0
+  done
+
+  PURGE_PROTON_PATHS+=("${path}")
+}
+
+safe_rm_rf() {
+  local path="$1"
+  local resolved
+
+  [[ -n "${path}" ]] || return 0
+  [[ -e "${path}" || -L "${path}" ]] || return 0
+
+  resolved="$(realpath -m -- "${path}")"
+  case "${resolved}" in
+    "/"|"${HOME}"|"${HOME}/."|"${HOME}/.."|"/usr"|"/usr/"*|"/etc"|"/etc/"*)
+      die "refusing to remove unsafe path: ${resolved}"
+      ;;
+  esac
+
+  info "Removing ${resolved}"
+  rm -rf -- "${resolved}"
+}
+
+collect_purge_targets() {
+  local keep_cache="$1"
+  local keep_proton="$2"
+  local steam_root recorded path
+
+  PURGE_PATHS=()
+  PURGE_PROTON_PATHS=()
+
+  append_unique_path "${COMPAT_DATA_PATH}"
+  append_unique_path "${APP_HOME}"
+  append_unique_path "${STATE_DIR}"
+  if [[ "${keep_cache}" != "1" ]]; then
+    append_unique_path "${CACHE_DIR}"
+  fi
+
+  if [[ "${keep_proton}" == "1" ]]; then
+    return 0
+  fi
+
+  if [[ -f "${STATE_DIR}/gdk-proton-path" ]]; then
+    recorded="$(<"${STATE_DIR}/gdk-proton-path")"
+    append_unique_proton_path "${recorded}"
+  fi
+
+  steam_root="$(try_find_steam_root || true)"
+  if [[ -n "${steam_root}" && -d "${steam_root}/compatibilitytools.d" ]]; then
+    while IFS= read -r -d '' path; do
+      append_unique_proton_path "${path}"
+    done < <(find "${steam_root}/compatibilitytools.d" -maxdepth 2 -type f -name '.minecraft-bedrock-managed' -print0 | while IFS= read -r -d '' path; do
+      printf '%s\0' "$(dirname "${path}")"
+    done)
+  fi
+}
+
+confirm_purge() {
+  local keep_shortcut="$1"
+  local path
+  local reply
+
+  printf 'minecraft-bedrock purge will remove:\n' >&2
+  if [[ "${keep_shortcut}" != "1" ]]; then
+    printf '  Steam shortcut: %s\n' "${STEAM_SHORTCUT_NAME}" >&2
+  fi
+  for path in "${PURGE_PROTON_PATHS[@]}"; do
+    printf '  Managed Proton: %s\n' "${path}" >&2
+  done
+  for path in "${PURGE_PATHS[@]}"; do
+    printf '  Path: %s\n' "${path}" >&2
+  done
+  printf 'Type "purge" to continue: ' >&2
+  read -r reply
+  [[ "${reply}" == "purge" ]] || die "purge aborted"
+}
+
+cmd_purge() {
+  local assume_yes=0 keep_cache=0 keep_proton=0 keep_shortcut=0
+  local path
+
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      -y|--yes)
+        assume_yes=1
+        ;;
+      --keep-cache)
+        keep_cache=1
+        ;;
+      --keep-proton)
+        keep_proton=1
+        ;;
+      --keep-shortcut)
+        keep_shortcut=1
+        ;;
+      -h|--help)
+        usage
+        return 0
+        ;;
+      *)
+        die "unknown purge option: $1"
+        ;;
+    esac
+    shift
+  done
+
+  collect_purge_targets "${keep_cache}" "${keep_proton}"
+
+  if [[ "${assume_yes}" != "1" ]]; then
+    confirm_purge "${keep_shortcut}"
+  fi
+
+  if [[ "${keep_shortcut}" != "1" ]]; then
+    cmd_remove_steam_shortcut || warn "could not remove Steam shortcut"
+  fi
+
+  for path in "${PURGE_PROTON_PATHS[@]}"; do
+    safe_rm_rf "${path}"
+  done
+
+  for path in "${PURGE_PATHS[@]}"; do
+    safe_rm_rf "${path}"
+  done
+
+  info "Purge complete."
+}
+
+main() {
+  local command="${1:-launch}"
+  [[ $# -gt 0 ]] && shift || true
+
+  case "${command}" in
+    setup) cmd_setup "$@" ;;
+    purge) cmd_purge "$@" ;;
+    install-proton) cmd_install_proton "$@" ;;
+    download-installer) cmd_download_installer "$@" ;;
+    init-prefix) cmd_init_prefix "$@" ;;
+    install-prereqs) cmd_install_prereqs "$@" ;;
+    install-launcher) cmd_install_launcher "$@" ;;
+    configure-launcher) cmd_configure_launcher "$@" ;;
+    patch-online) cmd_patch_online "$@" ;;
+    add-steam-shortcut) cmd_add_steam_shortcut "$@" ;;
+    launch) cmd_launch "$@" ;;
+    paths) cmd_paths "$@" ;;
+    help|-h|--help) usage ;;
+    *) usage >&2; die "unknown command: ${command}" ;;
+  esac
+}
+
+main "$@"

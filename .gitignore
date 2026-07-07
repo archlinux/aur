@@ -1,0 +1,10 @@
+pkg/
+src/
+*.pkg.tar.*
+*.pkg.tar.*.sig
+*.log
+*.exe
+*.msi
+PKGBASE
+__pycache__/
+*.pyc
