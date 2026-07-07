@@ -1,8 +1,9 @@
 pkgbase = llm-thalamus
 	pkgdesc = Qt desktop GUI for the pi coding agent — rich chat interface using pi --mode rpc
-	pkgver = 1.3
-	pkgrel = 1
+	pkgver = 1.4
+	pkgrel = 2
 	url = https://github.com/evertvorster/llm_thalamus
+	install = pi-ext.install
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = python
@@ -15,7 +16,7 @@ pkgbase = llm-thalamus
 	depends = katex
 	depends = highlightjs
 	depends = llm-thalamus-theme
-	source = llm-thalamus-1.3.tar.gz::https://github.com/evertvorster/llm_thalamus/archive/refs/tags/v1.3.tar.gz
-	sha256sums = 0c2d248d79624e66db8552b0728759cf59407ba62f9a9ba3b0aec52c6f7e3a87
+	source = llm-thalamus-1.4.tar.gz::https://github.com/evertvorster/llm_thalamus/archive/refs/tags/v1.4.tar.gz
+	sha256sums = efba5e4778c5ae928e4247895547f51a0a94cbf8d07ba89475bc24da11e28686
 
 pkgname = llm-thalamus

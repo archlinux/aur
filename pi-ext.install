@@ -1,0 +1,17 @@
+post_install() {
+  cat <<EOF
+==> llm-thalamus media tools installed to /usr/share/pi/extensions/llm-thalamus-tools/
+
+To make them available to pi, add /usr/share/pi/extensions to your
+~/.pi/agent/settings.json "extensions" list, or create a symlink:
+
+    ln -s /usr/share/pi/extensions/llm-thalamus-tools ~/.pi/agent/extensions-ordered/03-llm-thalamus-tools
+
+Provides: gen_image_sdxl, gen_image_sd15, tts-direct, tts-clone
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}

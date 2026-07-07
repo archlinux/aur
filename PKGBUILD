@@ -2,12 +2,13 @@
 
 pkgname=llm-thalamus
 _pkgname=llm_thalamus
-pkgver=1.3
-pkgrel=1
+pkgver=1.4
+pkgrel=2
 pkgdesc="Qt desktop GUI for the pi coding agent — rich chat interface using pi --mode rpc"
 arch=('any')
 url="https://github.com/evertvorster/llm_thalamus"
 license=('GPL-3.0-or-later')
+install=pi-ext.install
 depends=(
   'pi-coding-agent'
   'python'
@@ -23,7 +24,7 @@ makedepends=('python')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/evertvorster/llm_thalamus/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('0c2d248d79624e66db8552b0728759cf59407ba62f9a9ba3b0aec52c6f7e3a87')
+sha256sums=('efba5e4778c5ae928e4247895547f51a0a94cbf8d07ba89475bc24da11e28686')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -42,6 +43,10 @@ package() {
   # Install pi-config for local-only mode
   install -dm0755 "${pkgdir}/usr/share/llm-thalamus/pi-config"
   cp -a resources/pi-config/. "${pkgdir}/usr/share/llm-thalamus/pi-config/"
+
+  # Install media tools as a pi extension (pi auto-discovers via symlink)
+  install -dm0755 "${pkgdir}/usr/share/pi/extensions/llm-thalamus-tools"
+  cp -a resources/pi-config/extensions/llm-thalamus-tools/. "${pkgdir}/usr/share/pi/extensions/llm-thalamus-tools/"
 
   # Install desktop file
   install -Dm0644 llm_thalamus.desktop "${pkgdir}/usr/share/applications/llm_thalamus.desktop"
