@@ -16,8 +16,13 @@ post_install() {
                          command line for the Super I/O chip to bind.
      * AMD RDNA3+ GPU:   PMFW fan curves need 'amdgpu.ppfeaturemask=0xffffffff'
                          on the kernel command line.
-   The GUI's Diagnostics -> Hardware Readiness card detects each of these and
-   shows the exact fix for your machine.
+   The GUI's Diagnostics -> Hardware Readiness and Super-I/O panels detect each
+   of these and show the exact driver + fix for your machine.
+
+   Advanced (optional): an OPT-IN active Super-I/O port probe can identify an
+   unbound chip whose driver you don't yet know. It is OFF by default and needs
+   CAP_SYS_RAWIO (~root-equivalent) — do not enable it unless you need it. See
+   /usr/share/doc/control-ofc-daemon/superio-port-probe.conf.example.
 EOF
 }
 
@@ -40,4 +45,9 @@ post_remove() {
     echo "   Remove manually if no longer needed."
     echo ":: State data preserved in /var/lib/control-ofc/"
     echo "   Remove manually if no longer needed."
+    if [[ -f /etc/systemd/system/control-ofc-daemon.service.d/superio-port-probe.conf ]]; then
+        echo ":: Opt-in Super-I/O port-probe drop-in left in place:"
+        echo "   /etc/systemd/system/control-ofc-daemon.service.d/superio-port-probe.conf"
+        echo "   Remove it manually (it was installed by hand, not by the package)."
+    fi
 }
