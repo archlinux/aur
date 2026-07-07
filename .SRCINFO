@@ -1,6 +1,6 @@
 pkgbase = mpvpaper-rs
 	pkgdesc = Video wallpaper player using mpv for wlroots-based Wayland compositors
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/bityoungjae/mpvpaper-rs
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = mpvpaper-rs
 	provides = mpvpaper-rs
 	provides = mpvpaper-rs-holder
 	conflicts = mpvpaper
-	source = mpvpaper-rs-0.1.1.tar.gz::https://github.com/bityoungjae/mpvpaper-rs/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 5a772ab614d00157038c7c1c4c7d749d1ef18ccf49baa3642378b0017c968ed9
+	source = mpvpaper-rs-0.1.2.tar.gz::https://github.com/bityoungjae/mpvpaper-rs/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 29cfd5b0ff4d6a3bb19d9483b3ac41b7705c1a925f3d9bd0f31e275d1c484ae3
 
 pkgname = mpvpaper-rs
