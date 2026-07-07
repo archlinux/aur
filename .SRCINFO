@@ -1,6 +1,6 @@
 pkgbase = o3de-bin
 	pkgdesc = Open 3D Engine - An open-source, real-time 3D development engine
-	pkgver = 2605.0_20260703
+	pkgver = 2605.0_20260524
 	pkgrel = 1
 	url = https://o3de.org/
 	install = o3de.install
@@ -21,6 +21,7 @@ pkgbase = o3de-bin
 	depends = libxcb
 	depends = libxkbcommon
 	depends = libxkbcommon-x11
+	depends = libunwind
 	depends = mesa
 	depends = openexr
 	depends = openssl
