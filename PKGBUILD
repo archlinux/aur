@@ -4,7 +4,7 @@
 pkgname=bgutil-ytdlp-pot-provider
 _pkgrepo=bgutil-ytdlp-pot-provider-rs
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='High-performance YouTube POT token provider for yt-dlp (Rust implementation)'
 arch=('x86_64')
 url='https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs'
@@ -18,16 +18,16 @@ b2sums=('03ed7f1548ead39601f175437cd57bd041fc4840b9551904b56850e1783a2d5c4f3ea7a
 
 build() {
     cd "$srcdir/${_pkgrepo}-$pkgver"
-    # Force GNU ld: ring crate assembly symbols are incompatible with LLD
-    export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=bfd"
-    cargo build --release --locked
+    # Clear CFLAGS: makepkg LTO flags (-flto=auto) leak through the cc crate
+    # into ring's assembly build, producing corrupted .o files with
+    # unresolvable symbols (https://github.com/briansmith/ring/issues/2422)
+    CFLAGS="" CXXFLAGS="" cargo build --release --locked
 }
 
 check() {
     cd "$srcdir/${_pkgrepo}-$pkgver"
     # Tests use wiremock (local HTTP), no network needed
-    export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=bfd"
-    cargo test --release --locked || true
+    CFLAGS="" CXXFLAGS="" cargo test --release --locked || true
 }
 
 package() {
