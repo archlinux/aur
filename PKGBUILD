@@ -3,7 +3,7 @@
 pkgname=emacs-with-editor-git
 _github_org="magit"
 _github_repo="with-editor"
-pkgver=3.5.1.r0.cdf2ac2
+pkgver=3.5.2.r0.45bfc60
 pkgrel=1
 pkgdesc="Use the Emacsclient as the $EDITOR of child processes"
 arch=('any')
@@ -14,6 +14,7 @@ depends=(
     'emacs'
     'emacs-async>=1.9'
     'emacs-cond-let'
+    'emacs-llama'
 )
 provides=('emacs-with-editor')
 conflicts=('emacs-with-editor')
