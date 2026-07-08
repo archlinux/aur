@@ -1,7 +1,7 @@
 # Maintainer: Dani Rodríguez <dani@danirod.es>
 # Contributor: c0repwn3r <core@coredoes.dev>
 pkgname=i386-elf-gcc
-pkgver=15.2.0
+pkgver=16.1.0
 pkgrel=1
 epoch=
 pkgdesc="GNU gcc for the i386- toolchain"
@@ -14,7 +14,7 @@ depends=(xz libmpc i386-elf-binutils)
 source=(
     "http://ftpmirror.gnu.org/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
 )
-sha512sums=('89047a2e07bd9da265b507b516ed3635adb17491c7f4f67cf090f0bd5b3fc7f2ee6e4cc4008beef7ca884b6b71dffe2bb652b21f01a702e17b468cca2d10b2de')
+sha512sums=('b3454958891ab47e1e5b6cb9396c0ad3b04f32fe2a7bf1153a143f21013fdb6b295ca94c98964698a688e4c1d7555ffd8ffbc20187507cce6b1c32cbcc09897a')
 
 build() {
     # GCC build fails with format-security.
