@@ -1,7 +1,7 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-bg-git
-pkgver=1.0.16.r1.g8dd97b6
+pkgver=1.2.0.r2.ged65f7d
 pkgrel=1
 pkgdesc="COSMIC session service which applies backgrounds to displays."
 arch=('x86_64' 'aarch64')
@@ -9,6 +9,7 @@ url="https://github.com/pop-os/cosmic-bg"
 license=('MPL-2.0')
 depends=(
   'cosmic-icons-git'
+  'dav1d'
   'libxkbcommon'
 )
 makedepends=(
