@@ -4,7 +4,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-libunistring
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Library for manipulating Unicode strings and C strings (mingw-w64)"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('mingw-w64-crt'
 makedepends=('mingw-w64-configure')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://ftp.gnu.org/gnu/libunistring/libunistring-${pkgver}.tar.xz"{,.sig})
-sha256sums=('67d88430892527861903788868c77802a217b0959990f7449f2976126a307763'
+sha256sums=('5b46e74377ed7409c5b75e7a96f95377b095623b689d8522620927964a41499c'
             'SKIP')
 validpgpkeys=('E0FFBD975397F77A32AB76ECB6301D9E1BBEAC08') # Bruno Haible (Free Software Development) <bruno@clisp.org>
 
