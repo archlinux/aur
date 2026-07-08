@@ -4,7 +4,7 @@
 # Contributor: Tom Richards <tom@tomrichards.net>
 pkgname=highscore-git
 pkgver=r3349.98b51e3
-pkgrel=1
+pkgrel=2
 pkgdesc="A rewrite of Highscore, formerly gnome-games"
 arch=('x86_64')
 url="https://gitlab.gnome.org/World/highscore"
@@ -19,6 +19,7 @@ depends=(
   'json-glib'
   'libadwaita'
   'libarchive'
+  'libchdr'
   'libepoxy'
   'libgee'
   'libhighscore-git'
