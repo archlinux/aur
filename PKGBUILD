@@ -1,8 +1,8 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 
 _pkgname="intel-xed"
 pkgname="$_pkgname"
-pkgver=2026.03.18
+pkgver=2026.06.29
 pkgrel=1
 pkgdesc="A library for encoding and decoding x86 instructions"
 url="https://github.com/intelxed/xed"
@@ -28,7 +28,7 @@ source=(
   "$_pkgsrc_mbuild"::"git+https://github.com/intelxed/mbuild"
 )
 sha256sums=(
-  '33bec0ba95fd2f1d617494975f7638d74f78b8d85f8dbab9ee5fe171efe62d80'
+  'aecad6a89211a1fd984ebbde47bb76f3622349a0254dfdf0ddc6074f319f581a'
   'SKIP'
 )
 
