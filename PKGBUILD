@@ -1,8 +1,9 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: sanlun <miwa at nc hyphen toyama dot ac dot jp>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=cl-ieee-floats
 _pkgname="${pkgname#cl-}"
-pkgver=1
+pkgver=r27.9566ce8
 pkgrel=1
 pkgdesc='IEEE-754 implementation for Common Lisp'
 arch=('any')
@@ -16,13 +17,13 @@ source=(
   "$pkgname::git+https://github.com/marijnh/ieee-floats#commit=$_commit"
   'run-tests.lisp'
 )
-b2sums=('SKIP'
-        '378cac3f5ff6fee4981f5d16ef105a258aa6ea53b4e442bd8288bb12aec0c329d3d70b21113298ba9539f9d54e3d5b55a89ab10058ee6bf49081c0b4425f1885')
+sha256sums=('56ae89ef399d8f0ab21d9bd405d70184da08a7f711aed47939056b8a09362312'
+            '264f74758ac3ca9f5b7539b0d3ecbd9a71b2dadea05d1b18ca6a0675d70b2620')
 
 pkgver() {
   cd "$pkgname"
 
-  printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 check() {
@@ -36,14 +37,10 @@ package() {
 
   # create directories
   install -vd \
-    "$pkgdir/usr/share/common-lisp/source/$_pkgname" \
-    "$pkgdir/usr/share/common-lisp/systems"
+    "$pkgdir/usr/share/common-lisp/source/$_pkgname"
 
   # library
   install -vDm644 -t "$pkgdir/usr/share/common-lisp/source/$_pkgname" ./*.{lisp,asd}
-  pushd "$pkgdir/usr/share/common-lisp/systems"
-  ln -s "../source/$_pkgname/$_pkgname.asd" .
-  popd
 
   # documentation
   install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" doc/*
