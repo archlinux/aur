@@ -1,6 +1,6 @@
 pkgbase = ironplc
 	pkgdesc = Prototype Rust-based SoftPLC
-	pkgver = 0.227.0
+	pkgver = 0.228.0
 	pkgrel = 1
 	url = https://github.com/ironplc/ironplc
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = ironplc
 	conflicts = ironplc
 	options = !lto
 	options = !debug
-	source = ironplc::git+https://github.com/ironplc/ironplc.git#tag=v0.227.0
-	sha256sums = 486c7e82862d52faffce6063657c13cc5f85781730d0966719ad6812c1efe9b2
+	source = ironplc::git+https://github.com/ironplc/ironplc.git#tag=v0.228.0
+	sha256sums = cc2d60d468d0be40c7a8b279c008cb97d2f5358ee69fcd8b60d2740271e70ca5
 
 pkgname = ironplc
