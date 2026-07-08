@@ -1,9 +1,8 @@
 pkgbase = cutechess-git
 	pkgdesc = Tools for working with chess engines
-	pkgver = 1.4.0.r6.g5e132dbb
+	pkgver = 1.5.1.r2.ge471973
 	pkgrel = 1
 	url = https://github.com/cutechess/cutechess
-	arch = i686
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cmake
@@ -12,11 +11,10 @@ pkgbase = cutechess-git
 	makedepends = ninja
 	depends = hicolor-icon-theme
 	depends = qt6-5compat
+	depends = qt6-base
 	depends = qt6-svg
-	provides = cutechess=1.4.0
-	provides = cutechess-cli=1.4.0
+	provides = cutechess
 	conflicts = cutechess
-	conflicts = cutechess-cli
 	source = cutechess::git+https://github.com/cutechess/cutechess.git
 	sha256sums = SKIP
 
