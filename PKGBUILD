@@ -2,13 +2,13 @@
 # Contributor: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=libva-headless
-pkgver=2.24.0
+pkgver=2.24.1
 pkgrel=1
 pkgdesc='Video Acceleration (VA) API for Linux headless systems'
 arch=(i686 x86_64 armv7h aarch64)
-url=https://01.org/linuxmedia/vaapi
+url=https://intel.github.io/libva/
 license=(MIT)
-depends=(libdrm)
+depends=(glibc libdrm)
 makedepends=(meson git)
 conflicts=("${pkgname%-headless}")
 provides=("${pkgname%-headless}" libva.so libva-drm.so)
@@ -19,7 +19,7 @@ optdepends=(
 )
 backup=(etc/libva.conf)
 source=(git+https://github.com/intel/libva.git#tag="$pkgver")
-sha256sums=('b5028543a5c186f0e0dc3970cd6fe757859836c1cde372adbc60bf231792a15c')
+sha256sums=('ac469cf452b8654c879217f4fd59de3fec6dbebeea47b05791f66ed033c197ee')
 
 build() {
     CFLAGS+=" -DENABLE_VA_MESSAGING" # Option missing
