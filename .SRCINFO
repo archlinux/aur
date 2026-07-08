@@ -1,0 +1,20 @@
+pkgbase = autoremesher-bin
+	pkgdesc = Cross-platform automatic quad remeshing tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/huxingyi/autoremesher
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libx11
+	provides = autoremesher
+	conflicts = autoremesher
+	options = !strip
+	source = autoremesher-bin-1.0.0.AppImage::https://github.com/huxingyi/autoremesher/releases/download/1.0.0/autoremesher-1.0.0.AppImage
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/huxingyi/autoremesher/refs/tags/1.0.0/LICENSE
+	sha256sums = 835b5558ec71b44f0b040586534fcdfd334fab60043869fbbbd60e48c34f21e2
+	sha256sums = 1c334f5c8b5bf833d0be8c15566ac9180c12750b836d8e2fac88e9cb38c0e51e
+
+pkgname = autoremesher-bin
