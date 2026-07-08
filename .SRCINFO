@@ -8,6 +8,7 @@ pkgbase = notion-app-electron
 	license = custom
 	makedepends = p7zip
 	makedepends = asar
+	makedepends = ast-grep
 	depends = bash
 	depends = gcc-libs
 	depends = glibc

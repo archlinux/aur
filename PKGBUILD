@@ -23,6 +23,7 @@ depends=(
 makedepends=(
 	p7zip
 	asar
+	ast-grep
 )
 install=.install
 
@@ -60,19 +61,47 @@ prepare() {
 	# rm "$srcdir/asar_patched/node_modules/better-sqlite3/build/Release/test_extension.node"
 	# adding tray icon to the unpacked resources
 	install -vDm644 "$srcdir/notion.png" "$srcdir/asar_patched/.webpack/main/trayIcon.png"
-	# fixing tray icon and right click menu
-	sed -i 's|this.tray.on("click",(()=>{this.onClick()}))|this.tray.setContextMenu(this.trayMenu),this.tray.on("click",(()=>{this.onClick()}))|g' "$srcdir/asar_patched/.webpack/main/index.js"
-	sed -i 's|getIcon(){[^}]*}|getIcon(){return require("path").resolve(__dirname, "trayIcon.png");}|g' "$srcdir/asar_patched/.webpack/main/index.js"
-	# fake the useragent as windows to fix the spellchecker languages selector and other issues
-	sed -i 's|e.setUserAgent(`${e.getUserAgent()} WantsServiceWorker`),|e.setUserAgent(`${e.getUserAgent().replace("Linux", "Windows")} WantsServiceWorker`),|g' "$srcdir/asar_patched/.webpack/main/index.js"
-	# fully disabling auto updates
-	sed -i 's|if("darwin"===process.platform){const e=l.systemPreferences?.getUserDefault(C,"boolean"),t=M.Store.getState().app.preferences?.isAutoUpdaterDisabled,r=M.Store.getState().app.preferences?.isAutoUpdaterOSSupportBypass,n=(0,y.isOsUnsupportedForAutoUpdates)();return Boolean(e\|\|t\|\|!r&&n)}return!1|return!0|g' "$srcdir/asar_patched/.webpack/main/index.js"
-	# avoid running duplicated instances, fixes url opening
-	sed -i 's|handleOpenUrl);else if("win32"===process.platform)|handleOpenUrl);else if("linux"===process.platform)|g' "$srcdir/asar_patched/.webpack/main/index.js"
-	sed -i 's|async function(){(0,E.setupCrashReporter)(),|o.app.requestSingleInstanceLock() ? async function(){(0,E.setupCrashReporter)(),|g' "$srcdir/asar_patched/.webpack/main/index.js"
-	sed -i 's|setupCleanup)()}()}()|setupCleanup)()}()}() : o.app.quit();|g' "$srcdir/asar_patched/.webpack/main/index.js"
-	# use the windows version of the tray menu
-	sed -i 's|r="win32"===process.platform?function(e,t)|r="linux"===process.platform?function(e,t)|g' "$srcdir/asar_patched/.webpack/main/index.js"
+	local index_js="$srcdir/asar_patched/.webpack/main/index.js"
+	local sg_flags=(--lang javascript -U)
+	sg_patch() {
+		ast-grep run "${sg_flags[@]}" -p "$1" -r "$2" "$index_js" >/dev/null 2>&1
+	}
+	sg_patch_select() {
+		ast-grep run "${sg_flags[@]}" --selector "$1" -p "$2" -r "$3" "$index_js" >/dev/null 2>&1
+	}
+	# Linux desktop patches. Match on behavior anchors instead of exact minified variable names.
+	sg_patch \
+		'this.tray.on("click",()=>{this.onClick()})' \
+		'this.tray.setContextMenu(this.trayMenu),this.tray.on("click",()=>{this.onClick()})'
+	sg_patch_select method_definition \
+		'class X { getIcon(){ $$$BODY } }' \
+		'getIcon(){return require("path").resolve(__dirname,"trayIcon.png");}'
+	sg_patch \
+		'$S.setUserAgent(`${$S.getUserAgent()} WantsServiceWorker`)' \
+		'$S.setUserAgent(`${$S.getUserAgent().replace("Linux", "Windows")} WantsServiceWorker`)'
+	sg_patch \
+		'function $F(){const $$$P;if("darwin"===process.platform){$$$A}if("win32"===process.platform){$$$B}return!1}' \
+		'function $F(){return!0}'
+	sg_patch \
+		'if("darwin"===process.platform)$MAC;else if("win32"===process.platform){const $UNINSTALL=$ARGS=>$ARGS.find($ARG=>"--uninstall"===$ARG);$$$B}' \
+		'if("darwin"===process.platform)$MAC;else if("linux"===process.platform){const $UNINSTALL=$ARGS=>$ARGS.find($ARG=>"--uninstall"===$ARG);$$$B}'
+	sg_patch \
+		'if($COND){$$$A}else $APP.app.quit()' \
+		'if($COND){$$$A}else return $APP.app.quit(),1;'
+	sg_patch \
+		'($$$PRE,function(){$$$INIT}(),0)' \
+		'($$$PRE,function(){$$$INIT}())'
+	sg_patch_select ternary_expression \
+		'"win32"===process.platform?function($E,$T){$$$A}($E,$T):$ALT' \
+		'"linux"===process.platform?function($E,$T){$$$A}($E,$T):$ALT'
+	grep -q 'this.tray.setContextMenu(this.trayMenu),this.tray.on("click"' "$index_js"
+	grep -q 'getIcon(){return require("path").resolve(__dirname,"trayIcon.png");}' "$index_js"
+	grep -q 'getUserAgent().replace("Linux", "Windows")' "$index_js"
+	grep -q 'return!0}.*autoDownload' "$index_js"
+	grep -q 'else if("linux"===process.platform){const .*requestSingleInstanceLock' "$index_js"
+	grep -q 'else return .*\.app\.quit(),1;.*\.launchController\.url=' "$index_js"
+	grep -q '}()))||async function(){' "$index_js"
+	grep -q '="linux"===process.platform?function(e,t)' "$index_js"
 	# this can disable app menu when the options won't work. disbled in the current version because it's working now, but it's here for future reference
 	# sed -i 's|Menu.setApplicationMenu(p(e))|Menu.setApplicationMenu(null)|g' "$srcdir/asar_patched/.webpack/main/index.js"
 	# repacking asar with all the patches
