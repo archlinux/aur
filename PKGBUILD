@@ -1,7 +1,7 @@
 # Maintainer: wackbyte <im@purring.fyi>
 
 pkgname=asphalt
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Upload and reference Roblox assets in code'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -11,8 +11,8 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         'bump.patch')
-b2sums=('719b68ac3712c84fab8e7330545241ac9f4c4d9b340c9f16200e88e8dd9f07691ddc020d37285c115fff542edb88a84766030eb4018bbc4f2f114fa4ae2b30b3'
-        '5781546ddc78109d88af3dbadc32efcc067b38727691c7520098525c8f3acc50607f37c8237dfe415c082fa70480d94d5dced8c03605a17db99f5407cfcea4ee')
+b2sums=('b03b5d7a747f4dc64bd80438aa3f8d2872039eea9349a5298390e46d240edc5aaa3bab2a96568688f97052de36c8107ca86140234453c51c3f40a80326ee5de8'
+        'c19fb35197984931ad89b838683d25fe475bdab3c68f3730000866d1765229f6db711cf343dd9d1a2b3963312dce1d972cd08e0efa98fbd4759771e4b6b1abfa')
 options=(!lto)
 
 prepare() {
