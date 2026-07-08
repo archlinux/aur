@@ -2,7 +2,7 @@
 
 pkgname=lenza-bin
 pkgver=1.0.52
-pkgrel=2
+pkgrel=3
 pkgdesc="Lenza is a corporate messenger for team communication"
 arch=('x86_64')
 url="https://lenzaos.com/"
@@ -34,7 +34,7 @@ depends=(
     'pango'
 )
 noextract=("${_appimage}")
-source=("https://software.lenzaos.com/app-chats/Lenza-${pkgver}.AppImage")
+source=("https://storage.lenzaos.com/other/app/linux/Lenza-${pkgver}.AppImage")
 sha256sums=('8741a8c819104fe96c375bd5f835df214e4504e264710b0c5e3ba1ead0509fa5')
 
 prepare() {
@@ -55,7 +55,6 @@ package() {
     
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a+rX "${pkgdir}/opt/${pkgname}"
-    chmod 4711 "${pkgdir}/opt/${pkgname}/chrome-sandbox"
 
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/lenza" "${pkgdir}/usr/bin/lenza"

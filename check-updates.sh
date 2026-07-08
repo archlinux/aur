@@ -3,7 +3,7 @@
 set -euo pipefail
 
 readonly PKGBUILD_FILE="${1:-PKGBUILD}"
-readonly UPDATE_YML_URL="https://software.lenzaos.com/app-chats/latest-linux.yml"
+readonly UPDATE_YML_URL="https://storage.lenzaos.com/other/app/linux/latest-linux.yml"
 
 if [[ ! -f "${PKGBUILD_FILE}" ]]; then
   echo "error: file not found: ${PKGBUILD_FILE}" >&2
