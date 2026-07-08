@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=353.260630.0
+pkgver=354.260707.0
 pkgrel=1
 _nodeversion=22
 pkgdesc="The desktop client for Tutanota, the secure e-mail service."
@@ -28,7 +28,7 @@ source=("git+https://github.com/tutao/tutanota.git#tag=$pkgname-release-$pkgver"
         'git+https://github.com/open-quantum-safe/liboqs.git'
         'git+https://github.com/tutao/Signal-FTS5-Extension.git'
         "$pkgname.desktop")
-sha256sums=('5feff63f92c37998ce9c14d6bde4e7d56156d4629c73d347ca58ebd94b1f3515'
+sha256sums=('1ade101ed9f7ec1e15ad87b1c3f2f65e1f9e70b1a27addecaa33f273b7ed4432'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -71,7 +71,7 @@ build() {
 
   # Manually build sqlcipher extension to avoid build failure
   pushd node_modules/@signalapp/sqlcipher/deps/extension
-  cargo build --release --target ${CARCH}-unknown-linux-gnu
+  cargo build --release --target host-tuple
   popd
 
   node desktop --custom-desktop-release --unpacked
