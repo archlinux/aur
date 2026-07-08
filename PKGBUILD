@@ -28,6 +28,10 @@ depends=(
     'breeze'
     'kscreen'
     'xdg-desktop-portal-kde'
+    # Runtime dependency: the zoom plugin conditionally links against this
+    # library when found at build time; without it the compositor session
+    # will fail to start.
+    'libqaccessibilityclient-qt6'
 )
 
 makedepends=(
