@@ -3,17 +3,18 @@
 
 pkgname=rolisteam
 _pkgname=rolisteam
-pkgver=1.9.3
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
 pkgdesc="Virtual tabletop software. It helps you to manage tabletop role playing games with remote friends/players."
 arch=('i686' 'x86_64' 'aarch64')
 url="http://www.rolisteam.org"
 license=(GPL)
 depends=('qt5-svg' 'qt5-base' 'qt5-multimedia' 'zlib' 'qt5-webengine')
 makedepends=('qt5-tools' 'git')
-source=("git+https://github.com/Rolisteam/rolisteam.git#tag=v${pkgver}"
+source=("https://invent.kde.org/rolisteam/rolisteam/-/archive/v${pkgver}/rolisteam-v${pkgver}.tar.gz"
         "rolisteam.desktop")
-sha256sums=('SKIP' 'ec7a7cf3b02899f3a4f6af80010d369a54faf8b03c24726bebc370bc3d36e660')
+sha256sums=('b39015e8ac1d65bafa3ea7ced05eb0dcf3347ad30552a13a002f894567d6f2dd'
+            'ec7a7cf3b02899f3a4f6af80010d369a54faf8b03c24726bebc370bc3d36e660')
 
 build()
 {
