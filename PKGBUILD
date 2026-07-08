@@ -85,7 +85,7 @@ optdepends=(
   'python-pymupdf4llm: PyMuPDF4LLM document parser — lightest image-capable engine (Settings → Document Parsing)'
   # --- Math Animator (Manim) ---
   'manim: Math Animator addon — renders math animations to video'
-  'texlive-core: LaTeX renderer required by Manim'
+  'texlive-basic: LaTeX renderer required by Manim'
   'ffmpeg: video encoder required by Manim'
   'cairo: 2D graphics library required by Manim'
   'pkgconf: build tool required by Manim native deps'
