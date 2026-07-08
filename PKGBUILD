@@ -1,11 +1,11 @@
 # Maintainer: Lyra OS <team@lyraos.org>
 #
-# AUR-oriented PKGBUILD for the `lyra-vega` package base. It defaults to the
-# tagged Vega source, but can be pointed at another checkout/source via
-# VEGA_SOURCE_URL and VEGA_SOURCE_DIR.
+# AUR-oriented PKGBUILD for the `lyra-vega` package base. It builds the
+# tagged Vega release, but can be pointed at another checkout/source via
+# VEGA_SOURCE_URL and VEGA_SOURCE_DIR for local builds.
 
 pkgname=lyra-vega
-pkgver=0.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Centro de controle do Lyra OS"
 arch=('x86_64')
@@ -19,22 +19,9 @@ optdepends=(
 provides=('vega' 'lyrae')
 conflicts=('vega' 'lyrae')
 makedepends=('npm')
-_source_url_default="git+https://github.com/britors/Vega.git#branch=main"
+_source_url_default="git+https://github.com/britors/Vega.git#tag=v${pkgver}"
 source=("Vega::${VEGA_SOURCE_URL:-${_source_url_default}}")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/Vega"
-  local count hash tag
-  count="$(git rev-list --count HEAD)"
-  hash="$(git rev-parse --short HEAD)"
-  tag="$(git describe --tags --abbrev=0 2>/dev/null || true)"
-  if [[ -n "$tag" ]]; then
-    printf '%s.r%s.g%s' "${tag#v}" "$count" "$hash"
-  else
-    printf '0.0.r%s.g%s' "$count" "$hash"
-  fi
-}
 
 build() {
   local _srcroot="${VEGA_SOURCE_DIR:-$srcdir/Vega}"
