@@ -3,11 +3,11 @@
 pkgname=('llvm-mos-git')
 _pkgname=${pkgname%-git}
 pkgver=r452222.b05db96bef68
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://llvm-mos.org/wiki/Welcome"
 license=('custom:Apache 2.0 with LLVM Exception')
-makedepends=('cmake' 'ninja')
+makedepends=('cmake' 'ninja' 'git')
 options=('staticlibs' '!lto') # Getting thousands of test failures with LTO
 source=(git+https://github.com/llvm-mos/llvm-mos.git)
 sha256sums=('SKIP')
