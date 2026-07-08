@@ -1,3 +1,10 @@
+_compile_extension_schemas() {
+    local ext_dir="/usr/share/gnome-shell/extensions/willow@saim"
+    if [[ -d "$ext_dir/schemas" ]] && command -v glib-compile-schemas >/dev/null; then
+        glib-compile-schemas "$ext_dir/schemas/"
+    fi
+}
+
 _setup_user_config() {
     local target_user="${SUDO_USER:-${USER}}"
     if [[ -z "$target_user" || "$target_user" == "root" ]]; then
@@ -37,10 +44,7 @@ post_install() {
     local NC='\033[0m' # No Color
 
     _setup_user_config
-    
-    echo ""
-    echo -e "${BOLD}===================================================================${NC}"
-    echo -e "${BOLD}Willow Installation Complete${NC}"
+    _compile_extension_schemas
     echo -e "${BOLD}===================================================================${NC}"
     echo ""
     
@@ -101,6 +105,7 @@ post_upgrade() {
     local NC='\033[0m'
 
     _setup_user_config
+    _compile_extension_schemas
     
     echo ""
     echo -e "${BOLD}===================================================================${NC}"

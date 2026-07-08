@@ -1,7 +1,7 @@
 pkgbase = willow
 	pkgdesc = Simple offline configurable voice assistant for gnome
 	pkgver = 3.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Saim20/willow
 	install = willow.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = willow
 	makedepends = cmake
 	makedepends = git
 	makedepends = gcc
+	makedepends = glib2
 	depends = gnome-shell>=45
 	depends = sdbus-cpp
 	depends = jsoncpp

@@ -1,7 +1,7 @@
 # Maintainer: Saim <saim20 at github dot com>
 pkgname=willow
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple offline configurable voice assistant for gnome"
 arch=('x86_64')
 url="https://github.com/Saim20/willow"
@@ -18,6 +18,7 @@ makedepends=(
     'cmake'
     'git'
     'gcc'
+    'glib2'
 )
 optdepends=(
     'speech-dispatcher: TTS feedback via spd-say'
@@ -65,7 +66,12 @@ package() {
     mkdir -p "$ext_dir"
     cp -r gnome-extension/willow@saim/* "$ext_dir/"
 
-    glib-compile-schemas "$ext_dir/schemas/" || true
+    glib-compile-schemas "$ext_dir/schemas/"
+
+    if [[ ! -f "$ext_dir/schemas/gschemas.compiled" ]]; then
+        printf "ERROR: gschemas.compiled was not generated\n"
+        return 1
+    fi
 
     install -Dm644 config.json \
         "$pkgdir/usr/share/willow/config.json"
