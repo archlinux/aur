@@ -1,50 +1,38 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: sanlun <miwa at nc-toyama dot ac dot jp>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=cl-split-sequence
 _pkgname="${pkgname#cl-}"
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Splits a sequence into a list of subsequences'
 arch=('any')
 url='https://github.com/sharplispers/split-sequence'
 license=('MIT')
 depends=('common-lisp' 'cl-asdf')
-makedepends=('git')
 checkdepends=('sbcl' 'cl-fiveam')
-_commit='e1b91281e13e7e1490fdcaf7e8aeda04759ec3b7'
 source=(
-  "$pkgname::git+$url#commit=$_commit"
+  "$url/archive/refs/tags/v$pkgver.tar.gz"
   'run-tests.lisp'
 )
-b2sums=('SKIP'
-        '93e14dac945dfd1331f3ec12a8489c2361544f59e0fc76157ce0223955dc53e722655fee9e606197251251ba499bc602d6492691477a8bbe3dd78d42418e3cc9')
-
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
-}
+sha256sums=('e5d0efe5bebc9566ad9f84f2c247fc5f6e5bd06e05ac0127b04654da8a7da59b'
+            '9e703c879f1ae47524ad791dbd8c1dfc01cc5d8cc0cf257195c9f30bcc638e1f')
 
 check() {
-  cd "$pkgname"
+  cd "$_pkgname-$pkgver"
 
-  sbcl --script ../run-tests.lisp 
+  sbcl --script ../run-tests.lisp
 }
 
 package() {
-  cd "$pkgname"
+  cd "$_pkgname-$pkgver"
 
   # create directories
-  install -vd \
-    "$pkgdir/usr/share/common-lisp/source/$_pkgname" \
-    "$pkgdir/usr/share/common-lisp/systems"
+  install -vd "$pkgdir/usr/share/common-lisp/source/$_pkgname"
 
   # library
-  install -vDm644 -t "$pkgdir/usr/share/common-lisp/source/$_pkgname" ./*.{lisp,asd}
+  install -vDm644 -t "$pkgdir/usr/share/common-lisp/source/$_pkgname" ./*.{lisp,asd,sexp}
 
-  pushd "$pkgdir/usr/share/common-lisp/systems"
-  ln -s "../source/$_pkgname/$_pkgname.asd" .
-  popd
   # documentation
   install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md original-message.txt
 
