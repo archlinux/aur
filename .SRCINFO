@@ -7,6 +7,7 @@ pkgbase = fan2go-tui-git
 	license = AGPL3
 	makedepends = go
 	makedepends = git
+	makedepends = just
 	depends = glibc
 	provides = fan2go-tui
 	conflicts = fan2go-tui
