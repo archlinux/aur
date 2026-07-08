@@ -1,6 +1,6 @@
 # Maintainer: pyndys
 pkgname=ggf
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Great Go Fetch (ggf) - fast system info fetch utility for Linux"
 arch=('x86_64' 'aarch64')
