@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mgba-highscore-git
-pkgver=r9068.a6d684f
+pkgver=r9259.3b350f9
 pkgrel=1
 pkgdesc="Highscore port of mGBA"
 arch=('x86_64')
@@ -50,6 +50,7 @@ build() {
     -D BUILD_SDL='OFF'
     -D BUILD_HIGHSCORE='ON'
     -D SKIP_LIBRARY='ON'
+    -D M_CORE_GB='OFF'
   )
   cmake "${cmake_options[@]}"
   cmake --build build
