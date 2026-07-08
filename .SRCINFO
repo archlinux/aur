@@ -1,0 +1,25 @@
+pkgbase = python-microsoft-kiota-abstractions
+	pkgdesc = Microsoft Kiota Abstractions Library for Python
+	pkgver = 1.11.7
+	pkgrel = 1
+	url = https://github.com/microsoft/kiota-python
+	arch = any
+	license = MIT
+	checkdepends = python-pytest>=9.1.1
+	checkdepends = python-pytest-asyncio>=1.4.0
+	makedepends = python-build
+	makedepends = python-flit-core>=3.2.0
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.10.0
+	depends = python-opentelemetry-api>=1.27.0
+	depends = python-opentelemetry-sdk>=1.27.0
+	depends = python-std-uritemplate>=2.0.0
+	source = python-microsoft-kiota-abstractions-1.11.7.tar.gz::https://github.com/microsoft/kiota-python/archive/refs/tags/microsoft-kiota-abstractions-v1.11.7.tar.gz
+	source = change-flit-upper-bound.diff
+	source = hardcode-version.diff
+	b2sums = a74f966c7b77dd775d0b0ab2424ba7a695d83565da422bd5573951b06e7b32186ba824f6044a35d388d4947fc23ae131b88670c682d64ea16de936be3abefd40
+	b2sums = 5a4b40bfb5ed4359ac9c22a2c87346dccfb66b7c8233e1d27785d1770ad03e54bbb14b034ba00bd38126679aa4fe20d440cae576215e5e41834cad2d206a5461
+	b2sums = ac5084e3f4fc4359850ae2ab2384d87c2110cde1acceb8fdc5b45e9f231bab534601e020c0d5615a3133330d7a10bdd64ef3b8294a7dc2504afab003494beb6f
+
+pkgname = python-microsoft-kiota-abstractions
