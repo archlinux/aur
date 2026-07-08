@@ -1,0 +1,15 @@
+pkgbase = python-napari-feature-classifier
+	pkgdesc = An interactive classifier plugin to use with label images and feature measurements
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/fractal-napari-plugins-collection/napari-feature-classifier
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/n/napari_feature_classifier/napari_feature_classifier-0.4.3.tar.gz
+	sha256sums = 10c9a40ed19c00d081d67cdd61aea3071eec62da40c88463827ce1cf8aaf097e
+
+pkgname = python-napari-feature-classifier
