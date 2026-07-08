@@ -3,16 +3,17 @@ _prgname=redumper
 pkgname=redumper-bin
 url="https://github.com/superg/redumper"
 arch=('x86_64')
+conflicts=('redumper')
 pkgdesc="Low level CD dumper utility"
 provides=('redumper')
-pkgver=b683
+pkgver=b726
 pkgrel=1
-_pkgfilename="redumper-b683-linux-x64" # deviation from release tag, inclusion of date makes archive name nondeterministic :(
+_pkgfilename="redumper-b726-linux-x64" # deviation from release tag, inclusion of date makes archive name nondeterministic :(
 license=('GPL3')
-source=('https://github.com/superg/redumper/releases/download/b683/redumper-b683-linux-x64.zip'
+source=('https://github.com/superg/redumper/releases/download/b726/redumper-b726-linux-x64.zip'
 'https://raw.githubusercontent.com/superg/redumper/main/README.md'
 'https://raw.githubusercontent.com/superg/redumper/main/LICENSE')
-sha256sums=('13bfb9475424b54b2ffb1dfc2f8d738911912815282d9d93ea07926eb12c36bb'
+sha256sums=('081186e3ff72dc01ce4a2ae38429a949dd379f5bd107d038ab8150420ca76087'
 'SKIP'
 'SKIP')
 
