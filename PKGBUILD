@@ -1,6 +1,6 @@
 pkgname='kyanite-git'
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A lightweight, graphical text editor'
 arch=(any)
 url='https://codeberg.org/pastthepixels/kyanite'
@@ -34,15 +34,11 @@ package() {
 	# Install app
 	install -Dm 0755 kyanite/target/release/ky "$pkgdir/usr/bin/ky"
 	
-	# Copy Application Icons
-	install -Dm 0644 kyanite/resources/icons/ca.potatoe.Kyanite.svg "$pkgdir/usr/share/pixmaps/ca.potatoe.Kyanite.svg"
-	install -Dm 0644 kyanite/resources/icons/ca.potatoe.Kyanite-symbolic.svg "$pkgdir/usr/share/pixmaps/ca.potatoe.Kyanite-symbolic.svg"
-	
 	# Copy Desktop Entry
 	install -Dm 0644 kyanite/resources/metadata/ca.potatoe.Kyanite.desktop "$pkgdir/usr/share/applications/ca.potatoe.Kyanite.desktop"
-	
-	# Copy MIME Type Icons
-	cd kyanite/resources/icons/builder-mimetypes
-	find . ! -name "README.md" -type f -exec install -Dm 0644 "{}" "$pkgdir/usr/share/icons/hicolor/scalable/mimetypes/{}" \;
+
+	# Copy Icons (thanks Spike!)
+	cd kyanite/resources/icons/hicolor
+	find . -type f -exec install -Dm 0644 "{}" "$pkgdir/usr/share/icons/hicolor/{}" \;
 }
 

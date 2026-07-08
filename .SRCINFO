@@ -1,7 +1,7 @@
 pkgbase = kyanite-git
 	pkgdesc = A lightweight, graphical text editor
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/pastthepixels/kyanite
 	arch = any
 	license = GPL-3.0-only
