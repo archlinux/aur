@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=('meson')
 source=("https://github.com/tkmxqrdxddd/dbd-1v1-timer-linux/archive/v$pkgver.tar.gz")
-sha256sums=('04c324a537267cd54b5f63b2642e1293d52d8d4f34b74757f71f72d381531a9c')
+sha256sums=('4773682e81cafddca2f926bbe8591464fa3b62cc88c1357e23fa61504c869f4d')
 
 build() {
   cd "$srcdir/dbd-1v1-timer-linux-$pkgver"
