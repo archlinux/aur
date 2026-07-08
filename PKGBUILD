@@ -1,7 +1,7 @@
 # Maintainer: padctl maintainers
 # pkgver/pkgrel/sha256sums: sed-overwritten by .github/workflows/release.yml — local edits have no effect.
 pkgname=padctl-bin
-pkgver=0.1.20
+pkgver=0.1.21
 pkgrel=1
 pkgdesc="HID gamepad daemon — declarative TOML device config, uinput output (prebuilt musl binary)"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ _baseurl="${url}/releases/download/v${pkgver}"
 
 source_x86_64=("padctl-v${pkgver}-x86_64-linux-musl.tar.gz::${_baseurl}/padctl-v${pkgver}-x86_64-linux-musl.tar.gz")
 source_aarch64=("padctl-v${pkgver}-aarch64-linux-musl.tar.gz::${_baseurl}/padctl-v${pkgver}-aarch64-linux-musl.tar.gz")
-sha256sums_x86_64=('1a381c979bdb8d14784663fd362b9e4cb193b5e6b0e410d7d451654979c81307')
-sha256sums_aarch64=('bd18eadbd23d042f05fbf6e2a4930eeece8e0dd48d688c8a773e39e119898cfd')
+sha256sums_x86_64=('0cfa8f5349bf81ba5b771d390c06d1bf6022b055cd1d724466bb769b6a7ffba1')
+sha256sums_aarch64=('e597a5e9055726edb8500991b4fb367eed059a9ebc0ee12b0f4ddce2e4b0b67a')
 
 package() {
     local _arch
