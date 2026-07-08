@@ -2,14 +2,14 @@
 pkgname=diskm8-git
 _pkgname=diskm8
 pkgver=r36.4bb682e
-pkgrel=1
+pkgrel=2
 pkgdesc="DiskM8 Apple II disk image manipulation, cataloging and analysis tool"
 arch=('x86_64')
 url="https://github.com/paleotronic/diskm8"
 license=('GPL3')
 depends=()
 optdepends=()
-makedepends=('go')
+makedepends=('go' 'git')
 source=("${_pkgname}::git+"https://github.com/paleotronic/diskm8.git)
 sha256sums=('SKIP')
 
