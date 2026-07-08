@@ -1,0 +1,18 @@
+pkgbase = logitech-trueforce-dkms
+	pkgdesc = DKMS kernel driver for Logitech TrueForce direct-drive wheels (RS50, G PRO): force feedback, TrueForce texture routing, and wheel settings via sysfs
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/mescon/logitech-trueforce-linux-driver
+	install = logitech-trueforce-dkms.install
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = dkms
+	optdepends = oversteer: GUI to configure wheel settings
+	optdepends = wine: run Logitech SDK DLLs for TrueForce in Proton sims
+	optdepends = python: required by the TrueForce Proton shim installer
+	provides = logitech-trueforce
+	conflicts = logitech-trueforce
+	source = logitech-trueforce-dkms-0.12.0.tar.gz::https://github.com/mescon/logitech-trueforce-linux-driver/archive/refs/tags/v0.12.0.tar.gz
+	sha256sums = 1efa005c4f6e6e77889e698cb8045b6526d63002c34cb4b21906cadb4d3a4ea6
+
+pkgname = logitech-trueforce-dkms

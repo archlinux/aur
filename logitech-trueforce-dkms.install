@@ -1,0 +1,43 @@
+post_install() {
+	cat <<'MSG'
+==> logitech-trueforce-dkms installed.
+    DKMS builds the module automatically (see the dkms hook output above).
+
+    Load it now without a reboot (free the wheel first - close games,
+    Oversteer, browser tabs using the Gamepad API):
+
+      sudo modprobe -r hid-logitech-dd 2>/dev/null || true
+      sudo modprobe hid-logitech-dd
+
+    or simply reboot. Standard force feedback then works out of the box;
+    the wheel settings appear under /sys/.../wheel_* and are writable by
+    members of the "input" group via the bundled udev rule.
+
+    ---- TrueForce in Proton sims (ACC, AC EVO, ...) ----
+    This needs Logitech's own signed SDK DLLs, which are proprietary and
+    NOT shipped by this package. Supply them once from a Logitech G HUB
+    installation, then wire them into your Steam prefixes:
+
+      1. Copy the four DLLs into (Logitech's own layout):
+           ~/.local/share/logitech-trueforce/sdk/Logi/Trueforce/1_3_11/trueforce_sdk_x64.dll
+           ~/.local/share/logitech-trueforce/sdk/Logi/Trueforce/1_3_11/trueforce_sdk_x86.dll
+           ~/.local/share/logitech-trueforce/sdk/Logi/wheel_sdk/9_1_0/logi_steering_wheel_x64.dll
+           ~/.local/share/logitech-trueforce/sdk/Logi/wheel_sdk/9_1_0/logi_steering_wheel_x86.dll
+         (or point --sdk-dir / $LOGITECH_TRUEFORCE_SDK_DIR elsewhere)
+      2. Run as your normal user (NOT root):
+           logitech-trueforce-install-shim --all-steam
+      3. Per SDK sim in Steam: set launch option PROTON_ENABLE_HIDRAW=1
+         and disable Steam Input for the wheel.
+
+    Full guide: /usr/share/doc/logitech-trueforce-dkms/GETTING_STARTED.md
+MSG
+}
+
+post_upgrade() {
+	cat <<'MSG'
+==> logitech-trueforce-dkms upgraded.
+    DKMS rebuilt the module. Reload it (or reboot) to run the new build:
+      sudo modprobe -r hid-logitech-dd 2>/dev/null || true
+      sudo modprobe hid-logitech-dd
+MSG
+}
