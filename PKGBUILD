@@ -17,12 +17,11 @@ makedepends=('scons' 'git' 'gcc' 'doxygen' 'cython' 'eigen' 'boost' 'python-pip'
 checkdepends=('gtest' 'gmock' 'python-ruamel-yaml' 'python-pytest')
 conflicts=('cantera-git')
 provides=('libcantera_shared.so=2-64')
-source=(git+https://github.com/Cantera/cantera.git)
+source=("git+https://github.com/Cantera/cantera.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
 prepare() {
     cd "$_pkgname"
-    git checkout tags/v$pkgver
     git submodule update
     sed -i 's/self._selected_species.resize(len(species))/self._selected_species = np.empty(len(species), dtype=np.uint64)/' \
         interfaces/cython/cantera/solutionbase.pyx
