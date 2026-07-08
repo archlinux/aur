@@ -1,6 +1,6 @@
 # Maintainer: bipin kumar <kbipinkumar@pm.me>
 pkgname=alevin-fry
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='A suite of tools for the rapid, accurate and memory-frugal processing single-cell and single-nucleus sequencing data'
 arch=(x86_64)
@@ -10,7 +10,7 @@ url='https://alevin-fry.readthedocs.io/en/latest/'
 license=('BSD-3-Clause')
 options=(!lto)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/COMBINE-lab/alevin-fry/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('62ba4c02b4b86dd56ccc8c8c0ec8728f0f159f1107cea37e27a02ee4b54de7bb')
+sha256sums=('0186c76859abd164bfa9cd3f6b13d2b31d572aff83d11bfb7f536d74810089ef')
 
 prepare() {
     cd ${pkgname}-${pkgver}
