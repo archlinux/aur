@@ -1,6 +1,6 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 pkgname=dbx
-pkgver=0.5.49
+pkgver=0.5.50
 pkgrel=1
 pkgdesc="Open-source database management tool (Tauri-based)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ conflicts=("$pkgname-bin")
 # empty and gdb-add-index errors out. Skip the debug subpackage entirely.
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('70d69271982e65affd25919ae2c630fc7605b27f940ddff2be8f9b54f8d2fed2')
+sha256sums=('7535cf1ea2d0dc29dca72f80112016616e5897c9a7bc5f385e29747d4b101f99')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -67,14 +67,12 @@ build() {
     export CARGO_HOME="$srcdir/.cargo"
     export RUSTUP_TOOLCHAIN=stable
 
-    # Force libsqlite3-sys to use system sqlite via pkg-config rather than
-    # bundling. sqlx 0.8 unconditionally enables sqlx-sqlite/bundled when
-    # the `sqlite` feature is on, but cargo fails to link the resulting
-    # static libsqlite3.a into both the proc-macro cdylib (sqlx_macros.so)
-    # and the final binary, leaving sqlite3_* symbols undefined. The env
-    # var is checked first in libsqlite3-sys's build.rs and overrides the
-    # bundled code path.
-    export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+    # ponytail: upstream's default `sqlite-sqlcipher` feature builds rusqlite
+    # with `bundled-sqlcipher-vendored-openssl` — sqlcipher + openssl compiled
+    # statically in-tree, no system lib needed. The old
+    # LIBSQLITE3_SYS_USE_PKG_CONFIG=1 (added for the since-removed sqlx dep)
+    # forced pkg-config mode, making the linker look for a system -lsqlcipher
+    # that isn't there. Dropped so the bundled build runs as upstream intends.
 
     # Disable LTO. With lto="thin" (set in workspace Cargo.toml) plus rust-lld,
     # native static libs from build scripts (aws-lc-sys, ring, etc.) end up
