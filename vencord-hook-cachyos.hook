@@ -1,0 +1,13 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=discord
+Target=discord-ptb
+Target=discord-canary
+
+[Action]
+When=PostTransaction
+NetworkAccess = allowed
+Exec=/etc/pacman.d/hooks.bin/vencord-hook.sh
+NeedsTargets
