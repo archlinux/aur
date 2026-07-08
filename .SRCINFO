@@ -1,17 +1,20 @@
 pkgbase = javinizer-bin
 	pkgdesc = A metadata scraper and file organizer for Japanese Adult Videos (JAV), with CLI, TUI, REST API, and a web UI
-	pkgver = 1.0.0.rc3
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/javinizer/javinizer-go
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	optdepends = bash-completion: for bash shell completion
 	provides = javinizer
 	conflicts = javinizer
-	source_x86_64 = javinizer-bin-1.0.0.rc3::https://github.com/javinizer/javinizer-go/releases/download/v1.0.0-rc3/javinizer-linux-amd64
-	sha256sums_x86_64 = ee69461d57e8f2b206597b4d94e5398ba2838a05bb572a90c09b2d6415383100
-	source_aarch64 = javinizer-bin-1.0.0.rc3::https://github.com/javinizer/javinizer-go/releases/download/v1.0.0-rc3/javinizer-linux-arm64
-	sha256sums_aarch64 = 3b1329172119f1f97af6d64c82079123d7d51cb461e20bbc4f616b5a939014dc
+	source_x86_64 = javinizer-bin-1.1.1-x86_64::https://github.com/javinizer/javinizer-go/releases/download/v1.1.1/javinizer-linux-amd64
+	source_x86_64 = LICENSE::https://raw.githubusercontent.com/javinizer/javinizer-go/v1.1.1/LICENSE
+	sha256sums_x86_64 = 53d0321e0489ee546e5e93dadaa01e333795efa8bd6856d27c0a7183220e7549
+	sha256sums_x86_64 = bc81733f13dea3d54a631b130ef44b513669de176868f26431d923921480a4f3
+	source_aarch64 = javinizer-bin-1.1.1-aarch64::https://github.com/javinizer/javinizer-go/releases/download/v1.1.1/javinizer-linux-arm64
+	source_aarch64 = LICENSE::https://raw.githubusercontent.com/javinizer/javinizer-go/v1.1.1/LICENSE
+	sha256sums_aarch64 = e596392b80ff8a9054046412c975f2561073f21f1ebe307a6a8b086a298608b2
+	sha256sums_aarch64 = bc81733f13dea3d54a631b130ef44b513669de176868f26431d923921480a4f3
 
 pkgname = javinizer-bin
