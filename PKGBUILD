@@ -1,6 +1,6 @@
 # Maintainer: Your Name <you@example.com>
 pkgname=herdr
-pkgver=0.7.1
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='Terminal workspace manager for AI coding agents'
 arch=('x86_64' 'aarch64')
@@ -9,14 +9,15 @@ license=('AGPL-3.0-or-later')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'git' 'zig0.15')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ogulcancelik/herdr/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0a9b4ba7fe5cccec0abddd3b0ff140ccbb722a3f9a09a6a0c22e35dea4c8ba06')
+sha256sums=('86f4ade98e4fa048b99ad59d1453da00b691dcdf559bbd18441f495b448c02fc')
+_zig=/opt/zig0.15/zig
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
   export CARGO_HOME="${srcdir}/cargo-home"
   export ZIG_GLOBAL_CACHE_DIR="${srcdir}/zig-cache"
-  export PATH="/opt/zig0.15:${PATH}"
+  export PATH="${_zig%/*}:${PATH}"
 
   cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 
@@ -35,7 +36,7 @@ prepare() {
       fi
       local zig_ok=0
       for _ in 1 2 3; do
-        if zig fetch --global-cache-dir "${ZIG_GLOBAL_CACHE_DIR}" "${zig_url}"; then
+        if "${_zig}" fetch --global-cache-dir "${ZIG_GLOBAL_CACHE_DIR}" "${zig_url}"; then
           zig_ok=1
           break
         fi
@@ -55,7 +56,8 @@ build() {
 
   export CARGO_HOME="${srcdir}/cargo-home"
   export ZIG_GLOBAL_CACHE_DIR="${srcdir}/zig-cache"
-  export PATH="/opt/zig0.15:${PATH}"
+  export PATH="${_zig%/*}:${PATH}"
+  export ZIG="${_zig}"
   export HERDR_BUILD_CHANNEL=stable
   export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=${srcdir}=/usr/src/debug/${pkgname}"
 
@@ -68,4 +70,11 @@ package() {
   install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+  install -d "${pkgdir}/usr/share/bash-completion/completions"
+  install -d "${pkgdir}/usr/share/fish/vendor_completions.d"
+  install -d "${pkgdir}/usr/share/zsh/site-functions"
+  "target/release/${pkgname}" completion bash > "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  "target/release/${pkgname}" completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  "target/release/${pkgname}" completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }
