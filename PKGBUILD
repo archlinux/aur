@@ -5,12 +5,12 @@
 
 # Maintainer: Gno <noreply@gno.com>
 pkgname=caelestia-gif
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.1.0
+pkgrel=0
 epoch=
 pkgdesc="A script to manage and change GIFs in Caelestia shell"
 arch=('x86_64')
-url="https://gitlab.com/gnoooo/caelestia-gif"
+url="https://github.com/gnoooo/caelestia-gif"
 license=('GPL-3.0-or-later')
 groups=()
 depends=('imagemagick' 'cjson' 'xdg-utils' 'ncurses' 'bash')
@@ -24,7 +24,7 @@ backup=()
 options=()
 install=caelestia-gif.install
 changelog=
-source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
 sha256sums=('SKIP')
 validpgpkeys=()
