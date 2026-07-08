@@ -1,6 +1,6 @@
 pkgbase = wifi-manager-git
 	pkgdesc = A lightweight WiFi and Bluetooth manager for Wayland compositors
-	pkgver = r52.837a05f
+	pkgver = r54.ccc7620
 	pkgrel = 1
 	url = https://github.com/Vijay-papanaboina/wifi-manager
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Vijay Papanaboina <https://github.com/Vijay-papanaboina>
 
 pkgname=wifi-manager-git
-pkgver=r52.837a05f
+pkgver=r54.ccc7620
 pkgrel=1
 pkgdesc="A lightweight WiFi and Bluetooth manager for Wayland compositors"
 arch=('x86_64')
