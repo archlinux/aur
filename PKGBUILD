@@ -2,104 +2,51 @@
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=redasm-beta
-_pkgver=3.0.0-beta5
+_pkgver=4.0.0-beta1
 pkgver=${_pkgver//-/.}
-pkgrel=2
-url="https://github.com/REDasmOrg/REDasm"
-arch=(i686 x86_64)
+pkgrel=1
+url="https://github.com/redasm-dev/redasm"
+arch=(x86_64)
 pkgdesc="The OpenSource Disassembler"
-license=(GPL3)
-depends=(qt5-base qt5-x11extras)
-makedepends=(git cmake patchelf)
+license=(GPL-3.0-or-later)
+depends=(
+    glibc
+    hicolor-icon-theme
+    libgcc
+    libstdc++
+    qt6-base
+    sqlite
+    )
+makedepends=(
+    cmake
+    git
+    #patchelf
+    qt6-tools
+    vulkan-headers
+    )
 conflicts=(redasm)
 provides=(redasm)
-source=("git+https://github.com/REDasmOrg/REDasm.git#tag=v${_pkgver}"
-        "git+https://github.com/REDasmOrg/REDasm-Library.git"
-        "git+https://github.com/REDasmOrg/REDasm-Plugins.git"
-        "git+https://github.com/REDasmOrg/REDasm-Loaders.git"
-        "git+https://github.com/REDasmOrg/REDasm-Assemblers.git"
-        "git+https://github.com/REDasmOrg/REDasm-Database.git"
-        "git+https://github.com/Dax89/QHexView.git"
-        "git+https://github.com/KDAB/KDDockWidgets"
-        #"git+https://github.com/aquynh/capstone.git"
-        "git+https://github.com/capstone-engine/capstone.git"
-        "git+https://github.com/taocpp/json.git"
-        "git+https://github.com/taocpp/PEGTL.git"
-        "git+https://github.com/zyantific/zydis.git"
-        "git+https://github.com/zyantific/zycore-c.git"
-)
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+source=("redasm-workspace::git+https://github.com/redasm-dev/workspace.git#tag=v${_pkgver}")
+sha256sums=('28ae34bb4845e35c5a05eb4a7ff6db665c034c94db052a2f25ac039d21163273')
 
 prepare() {
-  cd REDasm
-  git submodule init
-  git config submodule.LibREDasm.url "${srcdir}/REDasm-Library"
-  git config submodule.submodules/plugins.url "${srcdir}/REDasm-Plugins"
-  git config submodule.submodules/loaders.url "${srcdir}/REDasm-Loaders"
-  git config submodule.submodules/assemblers.url "${srcdir}/REDasm-Assemblers"
-  git config submodule.submodules/database.url "${srcdir}/REDasm-Database"
-  git config submodule.libs/qhexview.url "${srcdir}/QHexView"
-  git config submodule.libs/KDDockWidgets.url "${srcdir}/KDDockWidgets"
-  git -c protocol.file.allow=always submodule update
-
-  cd LibREDasm
-  git submodule init
-  git config submodule.rdcore/libs/taojson.url "${srcdir}/json"
-  git -c protocol.file.allow=always submodule update
-
-  cd rdcore/libs/taojson
-  git submodule init
-  git config submodule.external/PEGTL.url "${srcdir}/PEGTL"
-  git -c protocol.file.allow=always submodule update
-
-  cd "${srcdir}"/REDasm/submodules/assemblers
-  git submodule init
-  git config submodule.x86/zydis.url "${srcdir}/zydis"
-  git config submodule.capstonebundle/capstone.url "${srcdir}/capstone"
-  git -c protocol.file.allow=always submodule update
-
-  cd x86/zydis
-  git submodule init
-  git config submodule.dependencies/zycore.url "${srcdir}/zycore-c"
-  git -c protocol.file.allow=always submodule update
+  cd redasm-workspace
+  cmake -P Setup.cmake
 }
 
 build() {
-  cmake -B build -S "REDasm" -Wno-dev \
+  local _flags=(
+
+  )
+
+  cmake -B build -S "redasm-workspace" -Wno-dev \
     -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
 
   cmake --build build
 }
 
 package() {
-  cd build
-  patchelf --set-rpath /usr/lib REDasm
-  install -D -m755 REDasm ${pkgdir}/usr/bin/REDasm
-  install -D -m755 LibREDasm/LibREDasm.so ${pkgdir}/usr/lib/LibREDasm.so
-  install -d -m755 ${pkgdir}/usr/lib/redasm/
-
-  install -m755 ./plugins/loaders/esp/esp.so ${pkgdir}/usr/lib/redasm/
-  install -m755 ./plugins/loaders/chip8/chip8.so ${pkgdir}/usr/lib/redasm/
-  install -m755 ./plugins/loaders/psx/psx.so ${pkgdir}/usr/lib/redasm/
-  install -m755 ./plugins/loaders/elf/elf.so ${pkgdir}/usr/lib/redasm/
-  install -m755 ./plugins/loaders/pe/pe.so ${pkgdir}/usr/lib/redasm/
-  install -m755 ./plugins/assemblers/x86/x86.so ${pkgdir}/usr/lib/redasm/
-  install -m755 ./plugins/assemblers/mips/mips.so ${pkgdir}/usr/lib/redasm/
-  install -m755 ./plugins/plugins/compiler/compiler.so ${pkgdir}/usr/lib/redasm/
-
-  install -D -m644 "${srcdir}"/REDasm/README.md ${pkgdir}/usr/share/doc/${pkgname}/README
-  install -D -m644 "${srcdir}"/REDasm/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  DESTDIR="${pkgdir}" cmake --install build
 }
