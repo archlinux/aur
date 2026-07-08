@@ -26,7 +26,7 @@ depends=(
     'python-packaging'
     'python-pandas'
     'python-pydantic'
-    'python-pyyaml'
+    'python-yaml'
     'python-tenacity'
     'python-tiktoken'
     'python-xlsxwriter'
