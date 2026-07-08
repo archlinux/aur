@@ -1,3 +1,32 @@
+_setup_user_config() {
+    local target_user="${SUDO_USER:-${USER}}"
+    if [[ -z "$target_user" || "$target_user" == "root" ]]; then
+        return
+    fi
+
+    local user_home
+    user_home=$(getent passwd "$target_user" | cut -d: -f6)
+    if [[ -z "$user_home" || ! -d "$user_home" ]]; then
+        return
+    fi
+
+    local config_dir="$user_home/.config/willow"
+    local models_dir="$user_home/.local/share/willow/models"
+
+    install -d -o "$target_user" -g "$target_user" -m 0755 "$config_dir"
+    install -d -o "$target_user" -g "$target_user" -m 0755 "$models_dir"
+
+    if [[ ! -f "$config_dir/config.json" ]]; then
+        install -o "$target_user" -g "$target_user" -m 0644 \
+            /usr/share/willow/config.json "$config_dir/config.json"
+    fi
+
+    if [[ ! -f "$config_dir/context.json" ]]; then
+        install -o "$target_user" -g "$target_user" -m 0644 \
+            /usr/share/willow/context.json "$config_dir/context.json"
+    fi
+}
+
 post_install() {
     # Color codes
     local RED='\033[0;31m'
@@ -6,6 +35,8 @@ post_install() {
     local BLUE='\033[0;34m'
     local BOLD='\033[1m'
     local NC='\033[0m' # No Color
+
+    _setup_user_config
     
     echo ""
     echo -e "${BOLD}===================================================================${NC}"
@@ -15,19 +46,21 @@ post_install() {
     
     echo -e "${GREEN}✓${NC} Service binary installed to /usr/bin/willow-service"
     echo -e "${GREEN}✓${NC} GNOME extension installed"
-    echo -e "${GREEN}✓${NC} Default configs available in /usr/share/willow/"
+    echo -e "${GREEN}✓${NC} Default configs installed to ~/.config/willow/"
     echo ""
-    echo -e "${YELLOW}Note:${NC} Config files will be auto-created in ~/.config/willow/ on first run"
     
     # Check for whisper model (this part is per-user, so won't work during pacman install)
     echo ""
     echo -e "${BOLD}-------------------------------------------------------------------${NC}"
-    echo -e "${YELLOW}Download Whisper Model${NC}"
+    echo -e "${YELLOW}Download Speech Models${NC}"
     echo -e "${BOLD}-------------------------------------------------------------------${NC}"
     echo ""
-    echo "The voice assistant requires a whisper model (~75MB)."
-    echo "Download it with:"
+    echo "Willow uses sherpa-onnx models for keyword spotting, streaming ASR,"
+    echo "and speaker verification (~160 MB total)."
+    echo "Download them with:"
     echo "  willow-download-model"
+    echo ""
+    echo "Then enroll your voice in extension preferences (Voice tab)."
     echo ""
     echo -e "${BOLD}-------------------------------------------------------------------${NC}"
     echo -e "${YELLOW}IMPORTANT: Manual Steps Required${NC}"
@@ -66,6 +99,8 @@ post_upgrade() {
     local YELLOW='\033[1;33m'
     local BOLD='\033[1m'
     local NC='\033[0m'
+
+    _setup_user_config
     
     echo ""
     echo -e "${BOLD}===================================================================${NC}"
@@ -113,7 +148,7 @@ post_remove() {
         echo "Configuration kept at: ~/.config/willow"
     fi
     
-    printf "Remove whisper models (~75MB)? [y/N] "
+    printf "Remove speech models (~160MB)? [y/N] "
     read -r response
     if [[ "$response" =~ ^[Yy]$ ]]; then
         rm -rf "$HOME/.local/share/willow" 2>/dev/null && echo -e "${GREEN}✓${NC} Models removed" || true
