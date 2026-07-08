@@ -1,0 +1,5 @@
+[lazycurl-bin]
+source = "github"
+github = "kbrdn1/LazyCurl"
+use_latest_release = true
+prefix = "v"
