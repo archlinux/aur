@@ -4,7 +4,7 @@
 # Contributor: Xuanwo <xuanwo@archlinucn.org>
 pkgname=clickup
 pkgver=3.5.230
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop app for clickup.com"
 arch=('x86_64')
 url="https://clickup.com"
@@ -42,24 +42,27 @@ prepare() {
 package() {
     cd "${srcdir}/squashfs-root"
 
-    # Symlink to /usr/bin
+    # Symlink to /usr/bin (binary renamed to ClickUp below; see rename note)
     install -dm0755 "${pkgdir}/usr/bin"
-    ln -s /opt/clickup/desktop "${pkgdir}/usr/bin/clickup"
+    ln -s /opt/clickup/ClickUp "${pkgdir}/usr/bin/clickup"
 
     # Desktop entry and icons
     install -Dm0644 desktop.desktop -T "${pkgdir}/usr/share/applications/ClickUp.desktop"
-    sed -i -e "s|Exec=.\+|Exec=/usr/bin/${pkgname} %U|" "${pkgdir}/usr/share/applications/ClickUp.desktop"
+    sed -i \
+        -e "s|^Exec=.\+|Exec=/usr/bin/clickup %U|" \
+        -e "s|^Icon=.\+|Icon=ClickUp|" \
+        "${pkgdir}/usr/share/applications/ClickUp.desktop"
 
     # Terms and licenses
     install -Dm0644 "${srcdir}/terms.html" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm0644 LICENSE.electron.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm0644 LICENSES.chromium.html -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
-    # Icons
-    icons=(1024x1024 512x512 256x256 128x128 64x64 48x48 32x32 16x16)
-
-    for size in "${icons[@]}"; do
-        install -Dm0644 usr/share/icons/hicolor/${size}/apps/desktop.png -T "${pkgdir}/usr/share/icons/hicolor/${size}/apps/ClickUp.png"
+    # Icons (list sizes dynamically since upstream may drop some sizes)
+    for dir in usr/share/icons/hicolor/*/; do
+        size="$(basename "${dir}")"
+        [ -f "usr/share/icons/hicolor/${size}/apps/desktop.png" ] || continue
+        install -Dm0644 "usr/share/icons/hicolor/${size}/apps/desktop.png" -T "${pkgdir}/usr/share/icons/hicolor/${size}/apps/ClickUp.png"
     done
 
     # AppDir contents
@@ -68,6 +71,9 @@ package() {
     mv squashfs-root "${pkgdir}/opt/clickup"
     chmod 755 "${pkgdir}/opt/clickup"
     chmod a+rX "${pkgdir}/opt/clickup/"
+
+    # Rename binary so the Wayland app_id is "ClickUp", not the generic "desktop"
+    mv "${pkgdir}/opt/clickup/desktop" "${pkgdir}/opt/clickup/ClickUp"
 
     # Clean up files
     rm -r "${pkgdir}/opt/clickup/usr/share/"
