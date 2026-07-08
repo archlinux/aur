@@ -1,6 +1,6 @@
 pkgbase = python-hermes-agent
 	pkgdesc = The self-improving AI agent — creates skills from experience, improves them during use, and runs anywhere
-	pkgver = 0.18.0
+	pkgver = 0.18.2
 	pkgrel = 1
 	url = https://github.com/NousResearch/hermes-agent
 	arch = any
@@ -63,7 +63,7 @@ pkgbase = python-hermes-agent
 	optdepends = python-defusedxml: XML hardening for WeCom
 	options = !strip
 	options = !debug
-	source = https://github.com/NousResearch/hermes-agent/archive/refs/tags/v2026.7.1.tar.gz
-	sha256sums = ec8a380629cc2f3f2102dd92cad50c4ded706fe59c0e359a05681166a0ae2991
+	source = https://github.com/NousResearch/hermes-agent/archive/refs/tags/v2026.7.7.2.tar.gz
+	sha256sums = f5d1022eed3763a768cf7b0f0844831f0170a35f54eb8d18223f2e93f503025e
 
 pkgname = python-hermes-agent
