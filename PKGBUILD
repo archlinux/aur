@@ -1,9 +1,10 @@
 # Maintainer: Bink
 : "${aur_ggml_build_universal:=false}"
 pkgname=ggml-cuda-git
-_pkgname=ggml
-pkgver=v0.15.3.r0.eced84c8
-pkgrel=2
+_pkgname="${pkgname%-cuda-git}"
+_srcname=llama.cpp
+pkgver=b9905.r8.bec4772f6a
+pkgrel=1
 pkgdesc="Tensor library for machine learning (with NVIDIA CUDA optimizations)"
 arch=(x86_64 aarch64)
 url='https://github.com/ggml-org/ggml'
@@ -35,12 +36,14 @@ conflicts=(
   libggml
   ggml
 )
-source=("git+https://github.com/ggml-org/ggml.git")
+# Builds from the ggml/ subdirectory of the llama.cpp repo, to remain aligned with
+# llama.cpp GGML code changes.
+source=("git+https://github.com/ggml-org/llama.cpp.git")
 sha256sums=('SKIP')
 b2sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}" || exit
+  cd "${_srcname}" || exit
   printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
@@ -49,6 +52,24 @@ build() {
     export PATH="/opt/cuda/bin:$PATH"
   fi
 
+  # Build only the ggml/ subfolder from llama.cpp, so ggml stays in sync with
+  # what the current llama.cpp code expects.
+  #
+  # Building ggml/ directly makes its CMakeLists.txt think it's a standalone
+  # build, which requires a ggml.pc.in file that llama.cpp doesn't ship,
+  # causing a CMake error.
+  #
+  # This fix will wrap it in a tiny generated CMakeLists.txt that just does
+  # add_subdirectory() on ggml/, like llama.cpp's own build uses normally,
+  # so the standalone-build detection never triggers.
+  local _wrapper="${srcdir}/_ggml_wrapper"
+  mkdir -p "${_wrapper}"
+  cat > "${_wrapper}/CMakeLists.txt" <<EOF
+cmake_minimum_required(VERSION 3.14)
+project(ggml-cuda-git C CXX)
+add_subdirectory("${srcdir}/${_srcname}/ggml" ggml)
+EOF
+
   # Use GCC 15 as host compiler for nvcc (CUDA does not yet support GCC 16)
   # Override via: aur_ggml_cmakeopts="-DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-XX"
   local _nvcc_host_cxx="${CUDAHOSTCXX:-/usr/bin/g++-15}"
@@ -56,7 +77,7 @@ build() {
   local _cmake_options=(
     -G Ninja
     -B build
-    -S "${_pkgname}"
+    -S "${_wrapper}"
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_CUDA_HOST_COMPILER="${_nvcc_host_cxx}"
@@ -109,5 +130,5 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
-  install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${_srcname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
