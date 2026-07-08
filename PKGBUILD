@@ -3,6 +3,21 @@
 pkgname=clickup-desktop
 pkgver=3.5.230
 pkgrel=1
+
+pkgver() {
+    local response=$(curl -s -L -D - \
+        -m 5 \
+        --max-filesize 1M \
+        --range 0-1024 \
+        "https://desktop.clickup.com/linux" \
+        -o /dev/null)
+
+    if [[ $response =~ filename=\"desktop-([0-9]+\.[0-9]+\.[0-9]+) ]]; then
+        echo "${BASH_REMATCH[1]}"
+    else
+        echo "$pkgver"
+    fi
+}
 pkgdesc="Desktop app for clickup.com"
 arch=('x86_64')
 url="https://clickup.com"
@@ -22,7 +37,7 @@ depends=(
 makedepends=('sed')
 options=('!strip')
 
-_filename="clickup-desktop-$pkgver-x86_64.AppImage"
+_filename="clickup-desktop.AppImage"
 
 source=("${_filename}::https://desktop.clickup.com/linux")
 
