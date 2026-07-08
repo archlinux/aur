@@ -15,9 +15,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 pkgname=aquacontrol
-pkgver=3.3.2
+pkgver=4.0.0
 pkgrel=1
-pkgdesc="Suite di controllo per Aquaero 6 LT"
+pkgdesc="Suite di controllo per Aquaero 6 LT e Farbwerk 360"
 arch=('any')
 url="https://github.com/raffaele-90/aquacontrol"
 license=('GPL3')
@@ -28,7 +28,7 @@ conflicts=('openaquaero')
 replaces=('openaquaero')
 install="aquacontrol.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/raffaele-90/aquacontrol/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('6866cd9c779885a414a7f48da82c9e4743c8ea791c38459ca335f5e2097cdd04')
 
 package() {
     cd "$pkgname-$pkgver"
@@ -40,8 +40,11 @@ package() {
     install -dm755 "$pkgdir/usr/share/icons/hicolor/512x512/apps"
     install -dm755 "$pkgdir/etc/udev/rules.d"
 
-    # Codice Python
+    # Codice Python e Assets
     install -m644 *.py "$pkgdir/usr/lib/$pkgname/"
+    cp -r assets "$pkgdir/usr/lib/$pkgname/"
+    find "$pkgdir/usr/lib/$pkgname/assets" -type d -exec chmod 755 {} +
+    find "$pkgdir/usr/lib/$pkgname/assets" -type f -exec chmod 644 {} +
 
     # Wrapper Eseguibile
     echo '#!/bin/bash' > "$pkgdir/usr/bin/$pkgname"
@@ -51,7 +54,7 @@ package() {
     # File .desktop per i DE (Wayland/X11)
     echo '[Desktop Entry]' > "$pkgdir/usr/share/applications/$pkgname.desktop"
     echo 'Name=AquaControl' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
-    echo 'Comment=Suite di controllo per Aquaero 6 LT' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
+    echo 'Comment=Suite di controllo per Aquaero 6 LT e Farbwerk 360' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
     echo "Exec=/usr/bin/$pkgname" >> "$pkgdir/usr/share/applications/$pkgname.desktop"
     echo "Icon=$pkgname" >> "$pkgdir/usr/share/applications/$pkgname.desktop"
     echo 'Terminal=false' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
@@ -63,9 +66,11 @@ package() {
     install -m644 "$pkgname.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
 
     # Regole UDEV
-    echo '# AquaControl - Permessi hardware per Aquaero' > "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
+    echo '# AquaControl - Permessi hardware per Aquaero 6 LT e Farbwerk 360' > "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
     echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="0c70", ATTRS{idProduct}=="f001", MODE="0666"' >> "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
     echo 'SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0c70", ATTRS{idProduct}=="f001", MODE="0666"' >> "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
+    echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="0c70", ATTRS{idProduct}=="f010", MODE="0666"' >> "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
+    echo 'SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0c70", ATTRS{idProduct}=="f010", MODE="0666"' >> "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
     echo 'ACTION=="add", SUBSYSTEM=="hwmon", ATTRS{name}=="aquaero", RUN+="/bin/sh -c '\''chmod a+w /sys$devpath/pwm*'\''"' >> "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
     chmod 644 "$pkgdir/etc/udev/rules.d/99-aquaero.rules"
 

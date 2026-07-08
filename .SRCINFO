@@ -1,6 +1,6 @@
 pkgbase = aquacontrol
-	pkgdesc = Suite di controllo per Aquaero 6 LT
-	pkgver = 3.3.2
+	pkgdesc = Suite di controllo per Aquaero 6 LT e Farbwerk 360
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/raffaele-90/aquacontrol
 	install = aquacontrol.install
@@ -13,7 +13,7 @@ pkgbase = aquacontrol
 	provides = aquacontrol
 	conflicts = openaquaero
 	replaces = openaquaero
-	source = aquacontrol-3.3.2.tar.gz::https://github.com/raffaele-90/aquacontrol/archive/refs/tags/v3.3.2.tar.gz
-	sha256sums = SKIP
+	source = aquacontrol-4.0.0.tar.gz::https://github.com/raffaele-90/aquacontrol/archive/refs/tags/v4.0.0.tar.gz
+	sha256sums = 6866cd9c779885a414a7f48da82c9e4743c8ea791c38459ca335f5e2097cdd04
 
 pkgname = aquacontrol
