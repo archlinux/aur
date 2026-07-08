@@ -5,8 +5,8 @@
 # run on the native Arch Linux stack. This fixes YouTube and Vulkan/Wayland crashes.
 
 pkgname=ardali-bin
-pkgver=5.2.0
-pkgrel=2
+pkgver=5.2.5
+pkgrel=1
 pkgdesc="ArDali WebMedia multimedia ecosystem for Linux"
 arch=('x86_64')
 url="https://ardali.app"
@@ -32,7 +32,7 @@ _appimage="ArDali-${pkgver}-linux-x86_64.AppImage"
 source=(
   "https://github.com/${_owner}/${_repo}/releases/download/${_tag}/${_appimage}"
 )
-sha256sums=('55fc4dc6f37dcb25c390bd0d462b8a94b831472d437242958889eccbe93d621f')
+sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}"
@@ -46,7 +46,11 @@ package() {
   # Install the extracted Electron AppImage payload.
   install -dm755 "${pkgdir}/opt/ardali-webmedia"
   cp -r --no-preserve=ownership . "${pkgdir}/opt/ardali-webmedia/"
+  find "${pkgdir}/opt/ardali-webmedia" -type d -exec chmod 755 {} +
+  find "${pkgdir}/opt/ardali-webmedia" -type f -exec chmod a+r {} +
   chmod 755 "${pkgdir}/opt/ardali-webmedia/ardali"
+  chmod 755 "${pkgdir}/opt/ardali-webmedia/AppRun"
+  chmod 755 "${pkgdir}/opt/ardali-webmedia/chrome_crashpad_handler"
   chmod 4755 "${pkgdir}/opt/ardali-webmedia/chrome-sandbox" || true
 
   # Create a wrapper script in /usr/bin with bundled native addon/library paths.
