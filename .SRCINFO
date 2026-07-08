@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-o-tiling
 	pkgdesc = Auto-tiling extension for GNOME Shell with active hint border, customizable workspace overview and theme consistency.
-	pkgver = 2.9.5
+	pkgver = 2.9.9
 	pkgrel = 1
 	url = https://github.com/oliwebd/o-tiling
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-o-tiling
 	makedepends = pnpm
 	makedepends = zip
 	depends = gnome-shell
-	source = gnome-shell-extension-o-tiling-2.9.5.tar.gz::https://github.com/oliwebd/o-tiling/archive/refs/tags/v2.9.5.tar.gz
-	sha256sums = ba985b174c71079da86565095381f089d7433913d4cabc6e195684bf57971211
+	source = gnome-shell-extension-o-tiling-2.9.9.tar.gz::https://github.com/oliwebd/o-tiling/archive/refs/tags/v2.9.9.tar.gz
+	sha256sums = fef8bb554af02eabbb55a166074265266e837ff304a551f0bd5cc78e2c011a66
 
 pkgname = gnome-shell-extension-o-tiling
