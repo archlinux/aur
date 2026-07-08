@@ -94,14 +94,6 @@ prepare() {
 	sg_patch_select ternary_expression \
 		'"win32"===process.platform?function($E,$T){$$$A}($E,$T):$ALT' \
 		'"linux"===process.platform?function($E,$T){$$$A}($E,$T):$ALT'
-	grep -q 'this.tray.setContextMenu(this.trayMenu),this.tray.on("click"' "$index_js"
-	grep -q 'getIcon(){return require("path").resolve(__dirname,"trayIcon.png");}' "$index_js"
-	grep -q 'getUserAgent().replace("Linux", "Windows")' "$index_js"
-	grep -q 'return!0}.*autoDownload' "$index_js"
-	grep -q 'else if("linux"===process.platform){const .*requestSingleInstanceLock' "$index_js"
-	grep -q 'else return .*\.app\.quit(),1;.*\.launchController\.url=' "$index_js"
-	grep -q '}()))||async function(){' "$index_js"
-	grep -q '="linux"===process.platform?function(e,t)' "$index_js"
 	# this can disable app menu when the options won't work. disbled in the current version because it's working now, but it's here for future reference
 	# sed -i 's|Menu.setApplicationMenu(p(e))|Menu.setApplicationMenu(null)|g' "$srcdir/asar_patched/.webpack/main/index.js"
 	# repacking asar with all the patches
