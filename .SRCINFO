@@ -1,0 +1,15 @@
+pkgbase = dms-shell-plugin-hass-git
+	pkgdesc = Home Assistant entity monitoring and management plugin for DankMaterialShell.
+	pkgver = r41.0d3cd45
+	pkgrel = 1
+	url = https://github.com/xxyangyoulin/dms-plugin-hass
+	install = dms-shell-plugins.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = dms-shell
+	provides = dms-shell-plugin-hass
+	source = dms-plugin-hass::git+https://github.com/xxyangyoulin/dms-plugin-hass.git
+	sha256sums = SKIP
+
+pkgname = dms-shell-plugin-hass-git
