@@ -118,6 +118,7 @@ pkgbase = kineticwe
 	depends = procps-ng
 	depends = psmisc
 	depends = upower
+\tdepends = powerdevil
 	optdepends = bluedevil: Bluetooth device integration
 	optdepends = plasma-nm: Network management applet
 	optdepends = plasma-pa: Audio volume management

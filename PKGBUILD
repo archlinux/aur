@@ -38,6 +38,7 @@ depends=(
     'procps-ng'
     'psmisc'
     'upower'
+    'powerdevil'
 )
 
 makedepends=(
@@ -331,12 +332,14 @@ fi
 # 3. Start power management
 # upowerd provides battery and power device monitoring via D-Bus
 if [[ -x "$UPOWERD" ]]; then
-    nohup "$UPOWERD" &>/dev/null &
+    nohup "$UPOWERD" >"$HOME/.local/share/upowerd.log" 2>&1 &
+    # Give upowerd time to register on D-Bus before starting powerdevil
+    sleep 2
 fi
 
 # org_kde_powerdevil provides idle timeouts, DPMS, suspend, brightness, and power profile management
 if [[ -x "$POWERDEVIL" ]]; then
-    nohup "$POWERDEVIL" &>/dev/null &
+    nohup "$POWERDEVIL" >"$HOME/.local/share/powerdevil.log" 2>&1 &
 fi
 
 # 4. Start user applications
@@ -345,14 +348,58 @@ PAYLOADEOF
 
 chmod +x "$STARTUP_PAYLOAD"
 
-# Stop any competing global-shortcuts daemon
-systemctl --user stop plasma-kglobalaccel.service 2>/dev/null || true
-pkill -x kglobalacceld 2>/dev/null || true
+# ---------------------------------------------------------------------------
+# 5. Stop any competing global-shortcuts daemon and verify D-Bus name is free
+# ---------------------------------------------------------------------------
+# kwin-we embeds kglobalacceld and registers the org.kde.kglobalaccel D-Bus
+# service at startup (KGlobalAccelD::init).  If a Plasma session was
+# previously active, the standalone plasma-kglobalaccel.service (which runs
+# /usr/libexec/kglobalacceld) may still own that D-Bus name.  When that
+# happens kwin-we's init() fails to register the service, m_kglobalAccel is
+# reset, and ALL keyboard shortcuts stop working with the error
+# "error communicating with global shortcuts service".
+#
+# Stop any competing daemon so kwin-we can claim the name cleanly, then
+# verify the D-Bus name is actually free before proceeding.
+
+_kglobalaccel_cleared=false
+for _attempt in 1 2 3 4 5; do
+    # Try stopping via systemd and pkill
+    systemctl --user stop plasma-kglobalaccel.service 2>/dev/null || true
+    pkill -x kglobalacceld 2>/dev/null || true
+    sleep 1
+
+    # Check if the D-Bus service name is free.
+    if command -v busctl >/dev/null 2>&1; then
+        if ! busctl get-proxy org.kde.kglobalaccel /kglobalaccel >/dev/null 2>&1; then
+            _kglobalaccel_cleared=true
+            break
+        fi
+        # Service still owns the name — try harder
+        pkill -9 -x kglobalacceld 2>/dev/null || true
+    else
+        # No busctl available, assume stop was enough
+        _kglobalaccel_cleared=true
+        break
+    fi
+done
+
+if [[ "$_kglobalaccel_cleared" != "true" ]]; then
+    echo "Warning: Could not clear kglobalacceld D-Bus name. Shortcuts may not work." >&2
+fi
 
 export XDG_CURRENT_DESKTOP=KineticWE:KDE
 exec kinetic-we --xwayland "$STARTUP_PAYLOAD"
 STARTEOF
     chmod 0755 "$pkgdir/usr/bin/start-kineticwe"
+# 2.5. Start kded6 for shortcut component discovery
+# ---------------------------------------------------------------------------
+if command -v kded6 >/dev/null 2>&1; then
+    kded6 &>/dev/null &
+    sleep 2
+fi
+# ---------------------------------------------------------------------------
+KDEDEOF
 
 
     # Install Wayland session desktop entry (for SDDM, greetd, etc.)
@@ -377,7 +424,41 @@ ConditionPathExists=/nonexistent
 ExecStart=
 MASKEOF
     chmod 0644 "$pkgdir/etc/systemd/user/plasma-kglobalaccel.service.d/kineticwe-mask.conf"
+
+    # Install D-Bus service activation file for org.kde.kglobalaccel
+    # The original kglobalacceld package provides this file, but since kineticwe
+    # replaces/conflicts with kglobalacceld, the file is missing. Without it,
+    # D-Bus activation fails and shortcuts KCM shows
+    # "Error while communicating with the global shortcuts service".
+    echo "==> Installing D-Bus activation for org.kde.kglobalaccel..."
+    mkdir -p "$pkgdir/usr/share/dbus-1/services"
+    cat > "$pkgdir/usr/share/dbus-1/services/org.kde.kglobalaccel.service" << DBUSEOF
+[D-BUS Service]
+Name=org.kde.kglobalaccel
+Exec=/usr/libexec/kineticwe-kglobalacceld-bridge
+DBUSEOF
+    chmod 0644 "$pkgdir/usr/share/dbus-1/services/org.kde.kglobalaccel.service"
+
+    # Install the bridge script for D-Bus activation
+    echo "==> Installing kineticwe-kglobalacceld-bridge..."
+    mkdir -p "$pkgdir/usr/libexec"
+    cat > "$pkgdir/usr/libexec/kineticwe-kglobalacceld-bridge" << 'BRIDGEEOF'
+#!/bin/bash
+# KineticWE kglobalacceld bridge for D-Bus activation.
+# The real kglobalacceld is embedded in-process in kinetic-we.
+# This script handles D-Bus activation requests gracefully.
+for i in 1 2 3 4 5; do
+    if busctl get-property org.kde.kglobalaccel /kglobalaccel org.kde.KGlobalAccel 2>/dev/null >/dev/null; then
+        exit 0
+    fi
+    sleep 1
+done
+echo "kineticwe-kglobalacceld-bridge: kinetic-we not running or kglobalaccel service not registered." >&2
+exit 1
+BRIDGEEOF
+    chmod 0755 "$pkgdir/usr/libexec/kineticwe-kglobalacceld-bridge"
 }
+
 # ---------------------------------------------------------------------------
 # Post-install hooks (like COPR %%post / %%postun)
 # Reload user daemon so the kglobalacceld mask takes effect immediately.
@@ -385,6 +466,8 @@ MASKEOF
 post_install() {
     # Reload user daemon so the kglobalacceld mask takes effect
     systemctl --user daemon-reload 2>/dev/null || true
+    # Explicitly mask the standalone kglobalacceld service to prevent D-Bus activation
+    systemctl --user mask plasma-kglobalaccel.service 2>/dev/null || true
 }
 
 post_upgrade() {
@@ -392,6 +475,7 @@ post_upgrade() {
 }
 
 post_remove() {
-    # Clean up: reload daemon after removing the mask
+    # Clean up: unmask and reload daemon after removing the mask
+    systemctl --user unmask plasma-kglobalaccel.service 2>/dev/null || true
     systemctl --user daemon-reload 2>/dev/null || true
 }
