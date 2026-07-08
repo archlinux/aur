@@ -392,14 +392,6 @@ export XDG_CURRENT_DESKTOP=KineticWE:KDE
 exec kinetic-we --xwayland "$STARTUP_PAYLOAD"
 STARTEOF
     chmod 0755 "$pkgdir/usr/bin/start-kineticwe"
-# 2.5. Start kded6 for shortcut component discovery
-# ---------------------------------------------------------------------------
-if command -v kded6 >/dev/null 2>&1; then
-    kded6 &>/dev/null &
-    sleep 2
-fi
-# ---------------------------------------------------------------------------
-KDEDEOF
 
 
     # Install Wayland session desktop entry (for SDDM, greetd, etc.)
