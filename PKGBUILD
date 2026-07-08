@@ -2,7 +2,7 @@
 
 pkgname=dbd-timer
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Overlay stopwatch with two independent timers, Wayland overlay, and gamepad support"
 arch=('x86_64')
 url="https://github.com/tkmxqrdxddd/dbd-1v1-timer-linux"

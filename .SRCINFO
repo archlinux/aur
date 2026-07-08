@@ -1,7 +1,7 @@
 pkgbase = dbd-timer
 	pkgdesc = Overlay stopwatch with two independent timers, Wayland overlay, and gamepad support
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tkmxqrdxddd/dbd-1v1-timer-linux
 	arch = x86_64
 	license = MIT
