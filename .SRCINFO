@@ -1,6 +1,6 @@
 pkgbase = citron-neo-nightly-bin
 	pkgdesc = Nightly build of Citron Neo Nintendo Switch emulator (AppImage)
-	pkgver = 2026.07.07
+	pkgver = 2026.07.08
 	pkgrel = 1
 	url = https://github.com/citron-neo/CI
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = citron-neo-nightly-bin
 	conflicts = citron-neo-git
 	conflicts = citron-neo-bin
 	options = !strip
-	source = citron_nightly-9d930f9e2-linux-x86_64.AppImage::https://github.com/citron-neo/CI/releases/download/nightly-linux/citron_nightly-9d930f9e2-linux-x86_64.AppImage
-	sha256sums = c9bf03d9cac33335986e50d218b91043fc4383cc64e6d92e1f1f2d602534ce5e
+	source = citron_nightly-bf54828f1-linux-x86_64.AppImage::https://github.com/citron-neo/CI/releases/download/nightly-linux/citron_nightly-bf54828f1-linux-x86_64.AppImage
+	sha256sums = e12895523052c52fa53b31ee02aa6085242d6db0f52cee9f1d1c83a8adec5c00
 
 pkgname = citron-neo-nightly-bin
