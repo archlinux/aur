@@ -1,8 +1,8 @@
 pkgbase = vmaware-git
 	pkgdesc = Advanced VM detection library and tool
-	pkgver = 2.7.0.r58.g37c98e6
+	pkgver = 2.8.0.r8.g3ddef56
 	pkgrel = 1
-	url = https://github.com/kernelwernel/VMAware
+	url = https://github.com/NotRequiem/VMAware
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -12,10 +12,7 @@ pkgbase = vmaware-git
 	depends = libstdc++
 	provides = vmaware
 	conflicts = vmaware
-	options = !debug
-	source = git+https://github.com/kernelwernel/VMAware
-	source = cmake-target-none.patch
+	source = git+https://github.com/NotRequiem/VMAware
 	b2sums = SKIP
-	b2sums = 6c34166362dc9fe11bdbde6252e0e1e1c4baef33a29f93735115af75691cc6c0ee1574101d1be05391b769ae0bfce5819097cf94fb8a39660cb68c4f14c9bbd0
 
 pkgname = vmaware-git
