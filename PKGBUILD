@@ -3,10 +3,10 @@
 pkgname=python-geohexgrid
 _name=${pkgname#python-}
 pkgdesc="A Python library for making geographic flat-top hexagon grids"
-url="https://github.com/mrcagney/geohexgrid"
+url="https://codeberg.org/araichev/geohexgrid"
 
-pkgver=3.0.0
-pkgrel=2
+pkgver=3.0.3
+pkgrel=1
 
 arch=("any")
 license=("MIT")
@@ -30,7 +30,7 @@ checkdepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=("d79f1740b0c11e025c5eeb3a7c7cbe01334cb7db1f39fc1cc795eccca6522d503e1d67106a9ed91cd16c811cba71f7c9f64239aff6134b49049fbab583bb32e8")
+b2sums=("8dfa8a07f467e67cfa9071c6ea4f577bf1ed5a31b89a87af5907f73b1253d8f38f8faede064781061a81189699c6d7b1c8c69051b2e4af08b3aa8bd61cc7e7f2")
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
