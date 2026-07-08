@@ -1,0 +1,18 @@
+pkgbase = python-std-uritemplate
+	pkgdesc = A complete and maintained Python implementation of the Uri Template specification RFC 6570 Level 4
+	pkgver = 2.0.11
+	pkgrel = 1
+	url = https://github.com/std-uritemplate/std-uritemplate
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-poetry
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.8.0
+	source = python-std-uritemplate::git+https://github.com/std-uritemplate/std-uritemplate#tag=2.0.11?signed
+	validpgpkeys = 6BE4A32F948F8FE9F91A49EFCA87FC208F4CB4C8
+	b2sums = 6f9afa61dbc54a1d0f563f1c7d018a44a95e6ce3a6ceed4919e3873c82acc2f0363044dad615d6d22f6b5fce6379fcff288a3a46455440a9975f981d99e0090f
+
+pkgname = python-std-uritemplate
