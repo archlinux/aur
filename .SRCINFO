@@ -1,6 +1,6 @@
 pkgbase = zotero-git
 	pkgdesc = A free, easy-to-use tool to help you collect, organize, cite, and share your research sources, git version
-	pkgver = 9.0.4.r16333.70c4cad
+	pkgver = 9.0.6.r16479.1c9bf88
 	pkgrel = 1
 	url = https://www.zotero.org
 	arch = x86_64

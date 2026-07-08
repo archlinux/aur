@@ -4,7 +4,7 @@
 
 pkgname=zotero-git
 _pkgname="${pkgname%-git}"
-pkgver=9.0.4.r16333.70c4cad
+pkgver=9.0.6.r16479.1c9bf88
 pkgrel=1
 pkgdesc="A free, easy-to-use tool to help you collect, organize, cite, and share your research sources, git version"
 arch=('x86_64' 'i686')
@@ -125,7 +125,7 @@ build() {
     _NODE_OPTIONS="$_NODE_OPTIONS --no-experimental-webstorage"
   fi
   NODE_OPTIONS="$_NODE_OPTIONS" npm run build
-  app/scripts/dir_build -q
+  app/scripts/dir_build
 }
 
 package() {
