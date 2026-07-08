@@ -15,9 +15,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 pkgname=aquacontrol
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
-pkgdesc="Suite di controllo per Aquaero 6 LT e Farbwerk 360"
+pkgdesc="Control suite for Aquaero 6 LT and Farbwerk 360"
 arch=('any')
 url="https://github.com/raffaele-90/aquacontrol"
 license=('GPL3')
@@ -28,7 +28,7 @@ conflicts=('openaquaero')
 replaces=('openaquaero')
 install="aquacontrol.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/raffaele-90/aquacontrol/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('553a9aba53ac4d96561908a651d7852225d6a4bf3c7e6f1086638cccb4fc72d6')
+sha256sums=('21057a4675f1cea5e6587634339c4805d49d85067dcf1ce2b085f2054b75f6ea')
 
 package() {
     cd "$pkgname-$pkgver"
@@ -54,7 +54,13 @@ package() {
     # File .desktop per i DE (Wayland/X11)
     echo '[Desktop Entry]' > "$pkgdir/usr/share/applications/$pkgname.desktop"
     echo 'Name=AquaControl' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
-    echo 'Comment=Suite di controllo per Aquaero 6 LT e Farbwerk 360' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
+    echo 'Comment=Control suite for Aquaero 6 LT and Farbwerk 360' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
+    echo 'Comment[it]=Suite di controllo per Aquaero 6 LT e Farbwerk 360' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
+    echo 'Comment[fr]=Suite de contrôle pour Aquaero 6 LT et Farbwerk 360' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
+    echo 'Comment[es]=Suite de control para Aquaero 6 LT y Farbwerk 360' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
+    echo 'Comment[de]=Steuerungssuite für Aquaero 6 LT und Farbwerk 360' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
+    echo 'Comment[ru]=Пакет управления для Aquaero 6 LT и Farbwerk 360' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
+    echo 'Comment[zh_CN]=Aquaero 6 LT 和 Farbwerk 360 控制套件' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
     echo "Exec=/usr/bin/$pkgname" >> "$pkgdir/usr/share/applications/$pkgname.desktop"
     echo "Icon=$pkgname" >> "$pkgdir/usr/share/applications/$pkgname.desktop"
     echo 'Terminal=false' >> "$pkgdir/usr/share/applications/$pkgname.desktop"
