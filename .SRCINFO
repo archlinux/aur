@@ -1,6 +1,6 @@
 pkgbase = zerodds
 	pkgdesc = Pure-Rust OMG Data Distribution Service implementation (built from source)
-	pkgver = 1.0.0_rc.4
+	pkgver = 1.0.0_rc.5
 	pkgrel = 1
 	url = https://zerodds.org
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = zerodds
 	depends = glibc
 	depends = gcc-libs
 	options = !lto
-	source = zerodds-1.0.0_rc.4.tar.gz::https://github.com/zero-objects/zero-dds/archive/refs/tags/v1.0.0-rc.4.tar.gz
+	source = zerodds-1.0.0_rc.5.tar.gz::https://github.com/zero-objects/zero-dds/archive/refs/tags/v1.0.0-rc.5.tar.gz
 	sha256sums = SKIP
 
 pkgname = zerodds
