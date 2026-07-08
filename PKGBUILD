@@ -1,8 +1,8 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=cashonize-appimage
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc="A Bitcoin Cash (BCH) Wallet which supports CashTokens, WalletConnect and CashConnect."
 provides=('cashonize')
 conflicts=('cashonize')
@@ -15,7 +15,7 @@ _filename=Cashonize-${pkgver}.AppImage
 source=(
   https://github.com/cashonize/cashonize-wallet/releases/download/v${pkgver}/${_filename}
 )
-sha512sums=('ed83155cafd2c7966306c9b48187d71da8056c4e491157fab604afa49e7e602112a18b87ace575285d3d2ccb6323d2b8527fc4f802dc5494ef40018e4a73b13b')
+sha512sums=('e9e92fa2373cc05199baee812b05f2247cf896d371703951bab6d2bf0fe8e6aba23a86a153428c08b77fc9bc89518dde6c723d6595c5a92116e013677af57b7e')
 
 prepare() {
   cd "${srcdir}"
@@ -23,7 +23,7 @@ prepare() {
   chmod +x ${_filename}
   ./${_filename} --appimage-extract
   sed -i -e "s|Exec=.\+|Exec=env APPIMAGELAUNCHER_DISABLE=1 DESKTOPINTEGRATION=0 /usr/bin/Cashonize.AppImage --no-sandbox|" \
-         -e "s|StartupWMClass=.\+|StartupWMClass=cashonize|" squashfs-root/${_desktop_name}
+          squashfs-root/${_desktop_name}
 }
 
 package() {
