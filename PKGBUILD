@@ -21,7 +21,7 @@ source=(
 	"${_pkgname}::git+https://gitlab.steamos.cloud/holo/steamos-manager.git#tag=v${pkgver}"
 	"hhd.patch")
 sha256sums=('aa1fdab11b18515d4bfabc7a0b18dece17c51ad32da85111d97c881222f5da3a'
-            'a2852c3ca75108d39d44a5826be550b9b0c5fd479cb90145c19d5204a0582252')
+            '0b5fead0ae641a08510464bdd528d3ab5e16a0245d2764a7935fdcffa9d5884a')
 provides=('steamos-manager')
 conflicts=('steamos-manager')
 
