@@ -4,7 +4,7 @@ pkgname=openmodelica-bin
 _omver=1.27.0
 _debver=1
 pkgver=${_omver}
-pkgrel=3
+pkgrel=4
 pkgdesc="A complete Modelica modeling and simulation environment (from pre-built .deb binaries)"
 arch=('x86_64')
 url="https://openmodelica.org/"
@@ -12,7 +12,7 @@ license=('OSMC-PL')
 provides=('openmodelica' 'openmodelica-omc')
 conflicts=('openmodelica' 'openmodelica-omc' 'openmodelica-git')
 
-depends=('bash' 'blas' 'boost' 'clang' 'cmake' 'curl' 'expat' 'glibc' 'gcc-libs' 'hdf5' 'hwloc' 'icu' 'lapack' 'libglvnd' 'mesa' 'ncurses' 'omniorb' 'openmp' 'openscenegraph' 'python' 'python-numpy' 'python-simplejson' 'python-svgwrite' 'python-pyzmq' 'qt6-5compat' 'qt6-base' 'qt6-declarative' 'qt6-positioning' 'qt6-svg' 'qt6-tools' 'qt6-webchannel' 'qt6-webengine' 'readline' 'sundials' 'suitesparse' 'util-linux-libs')
+depends=('bash' 'blas' 'boost' 'clang' 'cmake' 'curl' 'expat' 'glibc' 'gcc-libs' 'hdf5' 'hwloc' 'icu' 'lapack' 'libcurl-gnutls' 'libglvnd' 'mesa' 'ncurses' 'omniorb' 'openmp' 'openscenegraph' 'python' 'python-numpy' 'python-simplejson' 'python-svgwrite' 'python-pyzmq' 'qt6-5compat' 'qt6-base' 'qt6-declarative' 'qt6-positioning' 'qt6-svg' 'qt6-tools' 'qt6-webchannel' 'qt6-webengine' 'readline' 'sundials' 'suitesparse' 'util-linux-libs')
 
 optdepends=(
     'java-runtime: For Java CORBA interface'
@@ -48,6 +48,8 @@ source=(
     "${_baseurl}/openmodelica_${_omver}-${_debver}_amd64.deb"
 )
 
+noextract=("${source[@]##*/}")
+
 sha256sums=('dcce3ee85f8f4a59b1171f8e500b9512365f88285ada23309c968d44c988853a'
             '48cf5f1e85be521a4e76836cc0ac311e7f2d21dc186a5651e7c64e33ed21fb5f'
             'cceca8e0e3d2c780c082e4798f43bcf46598954a36c95b125caf454883cd3b4d'
@@ -70,7 +72,7 @@ sha256sums=('dcce3ee85f8f4a59b1171f8e500b9512365f88285ada23309c968d44c988853a'
 package() {
     for deb in "${source[@]}"; do
         msg2 "Extracting $(basename "$deb")..."
-        ar p "$srcdir/$(basename "$deb")" data.tar.xz | tar -xJ -C "$pkgdir/" --no-same-owner
+        ar p "$srcdir/$(basename "$deb")" data.tar.zst | tar -x --zstd -C "$pkgdir/" --no-same-owner
     done
 
     install -d "$pkgdir/usr/share/applications"
