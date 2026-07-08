@@ -2,14 +2,14 @@
 pkgname=dsk2nib-git
 _pkgname=dsk2nib
 pkgver=r7.ce7a4b8
-pkgrel=2
+pkgrel=3
 pkgdesc="Apple II DSK-to-NIB and NIB-to-DSK image file conversion utilities."
 arch=('x86_64')
 url="https://github.com/slotek/dsk2nib"
 license=('MIT')
 depends=()
 optdepends=()
-makedepends=()
+makedepends=('git')
 source=("${_pkgname}::git+https://github.com/slotek/dsk2nib.git")
 sha256sums=('SKIP')
 
