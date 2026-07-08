@@ -2,7 +2,7 @@
 # Maintainer: Igor de Beijer <71566757+idebeijer@users.noreply.github.com>
 
 pkgname='kubert-bin'
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='A kubectx and kubens alternative with context isolation, multi-cluster execution and more.'
 url='https://github.com/idebeijer/kubert'
@@ -12,10 +12,10 @@ provides=('kubert')
 conflicts=('kubert')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/idebeijer/kubert/releases/download/v${pkgver}/kubert_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('fc15d889d6ab7b782f2da5d106d924817dbb9ae18d4c02e83a1159ab3b90faac')
+sha256sums_aarch64=('736b2bda9b718941ae4335b0c4d4f08ab6586e1dac422fca7174bc4f81018c1b')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/idebeijer/kubert/releases/download/v${pkgver}/kubert_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('9fe2022b2a77cbdb5e0bb047721aa403f0c0e61094d4fb075ed637039541e536')
+sha256sums_x86_64=('36678f956230e25eabb660544ce8b0f2d1db1b830eb1a551e71697137eaf7b2e')
 
 package() {
   # bin
