@@ -35,7 +35,7 @@ pkgver() {
         | tr -d '\r' \
         | tr '-' '.')
 
-    printf "%s.%s.%s" \
+    printf "%s.%s+%s" \
         "$version" \
         "$(git rev-list --count HEAD)" \
         "$(git rev-parse --short HEAD)"
