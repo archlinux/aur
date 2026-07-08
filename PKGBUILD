@@ -12,7 +12,7 @@
 # =============================================================================
 
 pkgname=cosmostrix-bin
-pkgver=12.0.0
+pkgver=13.0.0
 _tag=
 pkgrel=1
 
@@ -203,9 +203,10 @@ print(hashlib.shake_256(data).hexdigest(64))
 #   /LICENSE
 #   /README.md
 # ---------------------------------------------------------------------------
-# Also installs a default config.toml to /etc/cosmostrix/config.toml so
-# users have a ready template. Individual users can copy it to
-# ~/.config/cosmostrix/config.toml and customize.
+# Clean install: only binary + license + docs. No config files are
+# installed — cosmostrix ships sensible built-in defaults and generates
+# a config on demand via `cosmostrix --dump-config`. Users who want a
+# persistent config run: cosmostrix --dump-config > ~/.config/cosmostrix/config.toml
 # ---------------------------------------------------------------------------
 package() {
     install -Dm755 \
@@ -223,57 +224,4 @@ package() {
             "${srcdir}/README.md" \
             "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     fi
-
-    # Install default config template to /etc/cosmostrix/config.toml
-    # Users copy to ~/.config/cosmostrix/config.toml to customize.
-    # Generate from the binary's --dump-config output for exact match.
-    install -Dm644 /dev/stdin \
-        "${pkgdir}/etc/cosmostrix/config.toml" <<'CONFIGEOF'
-# Cosmostrix config
-# Location:
-#   $XDG_CONFIG_HOME/cosmostrix/config.toml
-#   or ~/.config/cosmostrix/config.toml
-#
-# Format:
-#   key = value
-# Invalid values warn cleanly and are ignored.
-#
-# Precedence:
-#   built-in defaults < config values < config preset < config scene
-#   < config profile < CLI preset < CLI scene < CLI profile
-#   < low-power < explicit CLI flags
-
-# Scene atmosphere. See: cosmostrix --list-scenes
-scene = monolith
-
-# Curated preset. See: cosmostrix --list-presets
-preset = cinematic
-
-# Appearance
-color = cosmos
-charset = binary
-color-bg = black
-
-# Motion
-fps = 60
-speed = 20
-density = 0.75
-monolith-size = normal
-
-# Behavior
-glitch-level = subtle
-low-power = false
-mouse = false
-fullwidth = false
-auto-color-drift = false
-
-# Advanced style
-bold = 1
-shadingmode = 1
-
-# User-defined profiles (see: cosmostrix --list-profiles)
-# profile.nightcore.base = monolith
-# profile.nightcore.color = purple
-# profile.nightcore.speed = 24
-CONFIGEOF
 }
