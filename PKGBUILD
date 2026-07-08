@@ -1,7 +1,7 @@
 # Maintainer: Herald Yu <yuhr123@gmail.com>
 _pkgname=juicefs
 pkgname=${_pkgname}-git
-pkgver=1.3.0dev
+pkgver=dev
 pkgrel=1
 pkgdesc="A distributed POSIX file system built on top of Redis and S3 (Community Edition)."
 arch=('x86_64' 'aarch64')
