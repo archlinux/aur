@@ -1,7 +1,7 @@
 pkgbase = qtkeychain-qt5
 	pkgdesc = Provides support for secure credentials storage (Qt5 version)
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frankosterfeld/qtkeychain
 	arch = x86_64
 	arch = aarch64

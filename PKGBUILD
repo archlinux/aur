@@ -6,7 +6,7 @@
 pkgname=qtkeychain-qt5
 _pkgname=qtkeychain
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides support for secure credentials storage (Qt5 version)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/frankosterfeld/qtkeychain'
@@ -27,6 +27,7 @@ sha256sums=('1280e7c57c69cab2aec45a02702840c0ad387ffab3de306f1c12772af9fc83d4')
 
 build() {
   cmake -B build-qt5 -S $_pkgname \
+    -DBUILD_WITH_QT5=yes \
     -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build-qt5
 }
