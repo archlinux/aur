@@ -1,0 +1,22 @@
+pkgbase = steamos-manager-hhd
+	pkgdesc = Fork of Valve's steamos-manager with Handheld Daemon (HHD) TDP integration
+	pkgver = 26.3.0
+	pkgrel = 1
+	url = https://gitlab.steamos.cloud/holo/steamos-manager
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = clang
+	makedepends = speech-dispatcher
+	depends = hhd>=4.1
+	depends = dbus
+	depends = systemd-libs
+	provides = steamos-manager
+	conflicts = steamos-manager
+	source = steamos-manager::git+https://gitlab.steamos.cloud/holo/steamos-manager.git#tag=v26.3.0
+	source = hhd.patch
+	sha256sums = aa1fdab11b18515d4bfabc7a0b18dece17c51ad32da85111d97c881222f5da3a
+	sha256sums = a2852c3ca75108d39d44a5826be550b9b0c5fd479cb90145c19d5204a0582252
+
+pkgname = steamos-manager-hhd
