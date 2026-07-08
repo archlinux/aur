@@ -4,7 +4,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-lcms2
-pkgver=2.18
+pkgver=2.19.1
 pkgrel=1
 pkgdesc="Small-footprint color management engine, version 2 (mingw-w64)"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('mingw-w64-crt'
 makedepends=('mingw-w64-configure')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://downloads.sourceforge.net/sourceforge/lcms/lcms2-${pkgver}.tar.gz")
-sha256sums=('ee67be3566f459362c1ee094fde2c159d33fa0390aa4ed5f5af676f9e5004347')
+sha256sums=('bfc54f7bab59fbc921012014a8032e4cba4abd46db47d46b76416a8c0b2815c8')
 
 prepare() {
     cd lcms2-${pkgver}
