@@ -3,11 +3,11 @@
 # Contributor: Alexey Yakovenko <waker@users.sourceforge.net>
 
 pkgname=deadbeef
-pkgver=1.10.2
+pkgver=1.10.3
 pkgrel=1
 pkgdesc="Modular GTK audio player for GNU/Linux"
 arch=(x86_64 i686 pentium4 armv7h aarch64)
-url="https://deadbeef.sourceforge.io/"
+url="https://github.com/DeaDBeeF-Player/deadbeef"
 license=(GPL-2.0-or-later LGPL-2.1-or-later Zlib)
 depends=(gtk3 alsa-lib jansson libdispatch libFLAC.so)
 makedepends=(libvorbis libmad flac curl imlib2 wavpack libsndfile libcdio libcddb
@@ -42,7 +42,7 @@ optdepends=('alsa-oss: for OSS output plugin'
 conflicts=(deadbeef-pipewire-plugin-git)
 source=(#"https://sourceforge.net/projects/deadbeef/files/travis/linux/${pkgver}/deadbeef-${pkgver}.tar.bz2"
         "https://sourceforge.net/projects/deadbeef/files/Builds/${pkgver}/linux/deadbeef-${pkgver}.tar.bz2")
-sha512sums=('682cfee8839d55160c742f0bec2e870c8ad6ca0e119701766909017113d25d7c9d45f6e209861a35adcbc3c281209a9fc543d06da9d21808c26052141838afe8')
+sha512sums=('0d464c6586deb91fa5009b3b7cb70bd0814901946ebdb848156ee5e6828a4a6eb35ec33df6c851387eec55c3b269eddef6bbb8db45dcd05a209c8ca659008825')
 
 build () {
   cd "${pkgname}-${pkgver}"
