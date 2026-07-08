@@ -1,0 +1,15 @@
+pkgbase = olcbox-bin
+pkgdesc = olcrtc configurator — one-tap tunnel start/stop, saved connection profiles, multiple providers (Jazz, Telemost, WB Stream, Jitsi), VP8 tuning, connectivity checks, TUN/proxy modes (pre-compiled AppImage)
+pkgver = 1.0.111
+pkgrel = 1
+url = https://github.com/alananisimov/olcbox
+arch = x86_64
+license = MIT
+makedepends = squashfs-tools
+depends = iproute2
+provides = olcbox
+conflicts = olcbox
+source = https://github.com/alananisimov/olcbox/releases/download/nightly/Olcbox-1.0.111-linux-amd64.AppImage
+sha256sums = SKIP
+
+pkgname = olcbox-bin
