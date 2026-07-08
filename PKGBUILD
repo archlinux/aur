@@ -1,8 +1,8 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep-git
 _pkgbasename="${pkgname%-git}"
-pkgver=2.8.1+1.r258.29a545a
-pkgrel=1.314
+pkgver=2.8.2.r266.d7bbede
+pkgrel=1
 pkgdesc='A DjVu to PDF converter'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
@@ -55,5 +55,9 @@ build() {
 package() {
     cd "$(_fullsrcdir)"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgbasename/LICENSE"
+
+    mkdir --parents "$pkgdir/usr/share/licenses"
+    ln --symbolic \
+        "/$(realpath --relative-to "$pkgdir" "$pkgdir"/usr/lib/python*/site-packages/dpsprep-*.dist-info/licenses/LICENSES)" \
+        "$pkgdir/usr/share/licenses/$pkgname"
 }
