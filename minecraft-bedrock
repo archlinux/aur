@@ -7,14 +7,34 @@ CACHE_DIR="${MINECRAFT_BEDROCK_CACHE_DIR:-${XDG_CACHE_HOME:-${HOME}/.cache}/mine
 STATE_DIR="${MINECRAFT_BEDROCK_STATE_DIR:-${XDG_STATE_HOME:-${HOME}/.local/state}/minecraft-bedrock}"
 COMPAT_DATA_PATH="${MINECRAFT_BEDROCK_COMPAT_DATA_PATH:-${APP_HOME}/compatdata/${APP_ID}}"
 PREFIX_PATH="${COMPAT_DATA_PATH}/pfx"
-INSTALLER_URL="${MINECRAFT_BEDROCK_INSTALLER_URL:-https://aka.ms/minecraftClientWindows}"
-GDK_INSTALLER_URL="${MINECRAFT_BEDROCK_GDK_INSTALLER_URL:-https://aka.ms/minecraftClientGameCoreWindows}"
-INSTALLER_PATH="${MINECRAFT_BEDROCK_INSTALLER:-${CACHE_DIR}/MinecraftInstaller.msi}"
+LEGACY_INSTALLER_URL="${MINECRAFT_BEDROCK_LEGACY_INSTALLER_URL:-https://aka.ms/minecraftClientWindows}"
+GAMECORE_INSTALLER_URL="${MINECRAFT_BEDROCK_GAMECORE_INSTALLER_URL:-${MINECRAFT_BEDROCK_GDK_INSTALLER_URL:-https://aka.ms/minecraftClientGameCoreWindows}}"
+INSTALLER_URL="${MINECRAFT_BEDROCK_INSTALLER_URL:-${GAMECORE_INSTALLER_URL}}"
+INSTALLER_PATH="${MINECRAFT_BEDROCK_INSTALLER:-${CACHE_DIR}/MinecraftInstaller.exe}"
+LEGACY_INSTALLER_PATH="${CACHE_DIR}/MinecraftInstaller.msi"
+INSTALLER_RUNTIME_DIR="${CACHE_DIR}/installer-runtime"
 GDK_PROTON_REPO="${MINECRAFT_BEDROCK_GDK_PROTON_REPO:-Weather-OS/GDK-Proton}"
+DEFAULT_WINRT_CONTRACTS_VERSION="10.0.17763.1000"
+DEFAULT_WINRT_CONTRACTS_SHA256="78b0b15a13ec3ae90f8e1e0fd609fd10f6d20ef984c5a56b48b55ceffbf88a94"
+WINRT_CONTRACTS_VERSION="${MINECRAFT_BEDROCK_WINRT_CONTRACTS_VERSION:-${DEFAULT_WINRT_CONTRACTS_VERSION}}"
+WINRT_CONTRACTS_URL="${MINECRAFT_BEDROCK_WINRT_CONTRACTS_URL:-https://www.nuget.org/api/v2/package/Microsoft.Windows.SDK.Contracts/${WINRT_CONTRACTS_VERSION}}"
+WINRT_CONTRACTS_ARCHIVE="${CACHE_DIR}/Microsoft.Windows.SDK.Contracts.${WINRT_CONTRACTS_VERSION}.nupkg"
+WINRT_CONTRACTS_DIR="${MINECRAFT_BEDROCK_WINRT_CONTRACTS_DIR:-${CACHE_DIR}/winrt-contracts-${WINRT_CONTRACTS_VERSION}}"
+if [[ -n "${MINECRAFT_BEDROCK_WINRT_CONTRACTS_SHA256:-}" ]]; then
+  WINRT_CONTRACTS_SHA256="${MINECRAFT_BEDROCK_WINRT_CONTRACTS_SHA256}"
+elif [[ "${WINRT_CONTRACTS_VERSION}" == "${DEFAULT_WINRT_CONTRACTS_VERSION}" && -z "${MINECRAFT_BEDROCK_WINRT_CONTRACTS_URL:-}" ]]; then
+  WINRT_CONTRACTS_SHA256="${DEFAULT_WINRT_CONTRACTS_SHA256}"
+else
+  WINRT_CONTRACTS_SHA256=""
+fi
 MSYS2_CURL_URL="${MINECRAFT_BEDROCK_MSYS2_CURL_URL:-https://mirror.msys2.org/mingw/mingw64/mingw-w64-x86_64-curl-8.17.0-1-any.pkg.tar.zst}"
 CA_BUNDLE_URL="${MINECRAFT_BEDROCK_CA_BUNDLE_URL:-https://curl.se/ca/cacert.pem}"
 STEAM_SHORTCUT_NAME="${MINECRAFT_BEDROCK_STEAM_NAME:-Minecraft Bedrock (Proton)}"
 INSTALLED_SHORTCUT_HELPER="/usr/lib/minecraft-bedrock/steam-shortcut.py"
+WINRT_CONTRACT_FILES=(
+  Windows.Foundation.FoundationContract.winmd
+  Windows.Foundation.UniversalApiContract.winmd
+)
 DEFAULT_LAUNCHER_ARGS=(
   --disable-gpu
   --disable-gpu-compositing
@@ -48,13 +68,19 @@ usage() {
 Usage: minecraft-bedrock [command]
 
 Commands:
-  setup                 Install GDK-Proton, create the prefix, run installer, add Steam shortcut
+  setup [--gamecore|--legacy]
+                        Install Proton, create the prefix, run installer, add Steam shortcut
+  stop                  Stop Wine/Proton processes owned by this helper
   purge                 Remove prefix/cache/state, managed GDK-Proton, and Steam shortcut
   install-proton        Install latest Weather-OS GDK-Proton into Steam compatibilitytools.d
-  download-installer    Download the Wine-friendly legacy Minecraft installer
+  download-installer    Download the current GameCore Minecraft installer
+  install-winrt-contracts
+                        Download WinRT contract metadata needed by the GameCore installer
   init-prefix           Create/update the Proton compatdata prefix
-  install-prereqs       Install optional prefix prerequisites with winetricks
-  install-launcher      Run the downloaded Minecraft installer inside Proton
+  install-prereqs [--gamecore|--legacy]
+                        Install prefix prerequisites with winetricks
+  install-launcher [installer]
+                        Run the downloaded Minecraft installer inside Proton
   configure-launcher    Write launcher settings for Wine/Proton rendering
   patch-online          Patch Minecraft.Windows.exe directory with XCurl.dll and CA certs
   add-steam-shortcut    Add/update the Steam non-Steam shortcut
@@ -67,12 +93,16 @@ Environment:
   MINECRAFT_BEDROCK_PREFER_GDK_PROTON Set to 1 to prefer GDK-Proton over Steam Proton
   MINECRAFT_BEDROCK_COMPAT_DATA_PATH  Proton compatdata directory
   MINECRAFT_BEDROCK_INSTALLER         Pre-downloaded installer path
+  MINECRAFT_BEDROCK_WINRT_CONTRACTS_DIR
+                                      Directory containing installer WinRT .winmd files
+  MINECRAFT_BEDROCK_NO_IMPORT_GUI_ENV Set to 1 to disable importing GUI env from systemd
   MINECRAFT_BEDROCK_DISABLE_GPU       Set to 0 to avoid writing disableGPU=true
   MINECRAFT_BEDROCK_CEF_OPTIONS       Space-separated CEF switches without leading --
   MINECRAFT_BEDROCK_LAUNCHER_ARGS     Override launcher Chromium/CEF flags
   MINECRAFT_BEDROCK_NO_LAUNCHER_ARGS  Set to 1 to pass no extra launcher flags
   MINECRAFT_BEDROCK_STEAM_USER_ID     Steam userdata id for shortcut writes
   MINECRAFT_BEDROCK_SKIP_WINETRICKS   Set to 1 to skip winetricks prereqs
+  MINECRAFT_BEDROCK_SKIP_DOTNET       Set to 1 to skip native .NET for GameCore
 
 Purge options:
   -y, --yes             Do not prompt before deleting files
@@ -81,8 +111,8 @@ Purge options:
       --keep-shortcut   Keep the Steam non-Steam shortcut
 
 Installer options:
-      --legacy          Download the legacy MSI installer (default)
-      --windows-gdk     Download the Windows 10/11 GDK EXE bootstrapper
+      --gamecore        Download the current Windows 10/11 GameCore EXE (default)
+      --legacy          Download the legacy MSI launcher installer
 EOF
 }
 
@@ -210,6 +240,45 @@ require_proton() {
   find_installed_proton || die "No Proton install found. Run \`minecraft-bedrock install-proton\` or set MINECRAFT_BEDROCK_PROTON_PATH."
 }
 
+maybe_import_graphical_env() {
+  local line key value imported=0
+
+  if [[ -n "${DISPLAY:-}" || -n "${WAYLAND_DISPLAY:-}" || "${MINECRAFT_BEDROCK_NO_IMPORT_GUI_ENV:-0}" == "1" ]]; then
+    return 0
+  fi
+
+  if ! command -v systemctl >/dev/null 2>&1; then
+    return 0
+  fi
+
+  while IFS= read -r line; do
+    key="${line%%=*}"
+    value="${line#*=}"
+    [[ "${line}" == *=* && -n "${value}" ]] || continue
+
+    case "${key}" in
+      DISPLAY|WAYLAND_DISPLAY|XAUTHORITY|XDG_RUNTIME_DIR|DBUS_SESSION_BUS_ADDRESS|XDG_CURRENT_DESKTOP|XDG_SESSION_TYPE)
+        if [[ -z "${!key:-}" ]]; then
+          export "${key}=${value}"
+          imported=1
+        fi
+        ;;
+    esac
+  done < <(systemctl --user show-environment 2>/dev/null || true)
+
+  if [[ "${imported}" == "1" ]]; then
+    info "Imported graphical session environment from systemd user manager."
+  fi
+}
+
+require_graphical_env() {
+  maybe_import_graphical_env
+
+  if [[ -z "${DISPLAY:-}" && -z "${WAYLAND_DISPLAY:-}" ]]; then
+    die "no graphical session detected. Run from a graphical terminal, set DISPLAY/WAYLAND_DISPLAY, or run \`systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XAUTHORITY XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS XDG_CURRENT_DESKTOP XDG_SESSION_TYPE\` from your desktop session."
+  fi
+}
+
 record_managed_proton() {
   local proton_path="$1"
 
@@ -334,7 +403,7 @@ cmd_install_proton() {
   fi
 
   if [[ -n "${asset_sha}" ]]; then
-    printf '%s  %s\n' "${asset_sha}" "${archive}" | sha256sum -c -
+    printf '%s  %s\n' "${asset_sha}" "${archive}" | sha256sum -c - >&2
   else
     warn "No sha256 digest published for ${asset_name}; skipping checksum verification"
   fi
@@ -371,6 +440,7 @@ run_proton_wait() {
   local proton_dir steam_root
   proton_dir="$(require_proton)"
   steam_root="$(find_steam_root)"
+  maybe_import_graphical_env
 
   mkdir -p "${COMPAT_DATA_PATH}" "${STATE_DIR}"
   env \
@@ -405,15 +475,15 @@ launcher_args() {
 cmd_download_installer() {
   local url="${INSTALLER_URL}"
   local dest="${INSTALLER_PATH}"
-  local format="msi"
+  local format="exe"
 
-  case "${1:---legacy}" in
-    --legacy)
+  case "${1:---gamecore}" in
+    --gamecore|--windows-gdk|--gdk|--win10|--win11)
       ;;
-    --windows-gdk|--gamecore|--win10|--win11)
-      url="${GDK_INSTALLER_URL}"
-      dest="${MINECRAFT_BEDROCK_INSTALLER:-${CACHE_DIR}/MinecraftInstaller.exe}"
-      format="exe"
+    --legacy)
+      url="${LEGACY_INSTALLER_URL}"
+      dest="${MINECRAFT_BEDROCK_INSTALLER:-${LEGACY_INSTALLER_PATH}}"
+      format="msi"
       ;;
     *)
       die "unknown installer option: $1"
@@ -428,12 +498,71 @@ cmd_download_installer() {
   download_installer_to "${url}" "${dest}" "${format}"
 }
 
+cmd_install_winrt_contracts() {
+  local tmp contract src dest missing=0
+
+  for contract in "${WINRT_CONTRACT_FILES[@]}"; do
+    [[ -f "${WINRT_CONTRACTS_DIR}/${contract}" ]] || missing=1
+  done
+
+  if [[ "${missing}" == "0" ]]; then
+    info "Using existing WinRT installer contracts: ${WINRT_CONTRACTS_DIR}"
+    return 0
+  fi
+
+  require_command curl
+  require_command bsdtar
+
+  mkdir -p "${CACHE_DIR}" "${WINRT_CONTRACTS_DIR}"
+  if [[ -f "${WINRT_CONTRACTS_ARCHIVE}" ]]; then
+    info "Using cached Microsoft.Windows.SDK.Contracts archive: ${WINRT_CONTRACTS_ARCHIVE}"
+  else
+    download_file "${WINRT_CONTRACTS_URL}" "${WINRT_CONTRACTS_ARCHIVE}"
+  fi
+  if [[ -n "${WINRT_CONTRACTS_SHA256}" ]]; then
+    printf '%s  %s\n' "${WINRT_CONTRACTS_SHA256}" "${WINRT_CONTRACTS_ARCHIVE}" | sha256sum -c - >&2
+  else
+    warn "No sha256 configured for Microsoft.Windows.SDK.Contracts; skipping checksum verification"
+  fi
+
+  tmp="$(mktemp -d "${CACHE_DIR}/winrt-contracts.XXXXXX")"
+  bsdtar -xf "${WINRT_CONTRACTS_ARCHIVE}" -C "${tmp}"
+  for contract in "${WINRT_CONTRACT_FILES[@]}"; do
+    src="${tmp}/ref/netstandard2.0/${contract}"
+    dest="${WINRT_CONTRACTS_DIR}/${contract}"
+    [[ -f "${src}" ]] || die "Microsoft.Windows.SDK.Contracts did not contain ref/netstandard2.0/${contract}"
+    install -Dm644 "${src}" "${dest}"
+  done
+  rm -rf "${tmp}"
+
+  info "Installed WinRT installer contracts: ${WINRT_CONTRACTS_DIR}"
+}
+
+stage_exe_installer() {
+  local installer="$1"
+  local staged
+
+  cmd_install_winrt_contracts >&2
+  mkdir -p "${INSTALLER_RUNTIME_DIR}"
+
+  staged="${INSTALLER_RUNTIME_DIR}/$(basename "${installer}")"
+  install -Dm644 "${installer}" "${staged}"
+  for contract in "${WINRT_CONTRACT_FILES[@]}"; do
+    install -Dm644 "${WINRT_CONTRACTS_DIR}/${contract}" "${INSTALLER_RUNTIME_DIR}/${contract}"
+    install -Dm644 "${WINRT_CONTRACTS_DIR}/${contract}" "${INSTALLER_RUNTIME_DIR}/${contract%.winmd}.dll"
+  done
+
+  printf '%s\n' "${staged}"
+}
+
 cmd_init_prefix() {
   info "Creating/updating Proton prefix at ${PREFIX_PATH}"
   run_proton_wait cmd.exe /c exit
 }
 
 cmd_install_prereqs() {
+  local installer_option="${1:---gamecore}"
+  local needs_dotnet=1
   local proton_dir wine wineserver
 
   if [[ "${MINECRAFT_BEDROCK_SKIP_WINETRICKS:-0}" == "1" ]]; then
@@ -441,8 +570,23 @@ cmd_install_prereqs() {
     return 0
   fi
 
+  case "${installer_option}" in
+    --legacy)
+      needs_dotnet=0
+      ;;
+    --gamecore|--windows-gdk|--gdk|--win10|--win11)
+      needs_dotnet=1
+      ;;
+    *)
+      die "unknown installer option: ${installer_option}"
+      ;;
+  esac
+
   if ! command -v winetricks >/dev/null 2>&1; then
-    warn "winetricks is not installed; skipping optional vcrun2022 prerequisite"
+    if [[ "${needs_dotnet}" == "1" && "${MINECRAFT_BEDROCK_SKIP_DOTNET:-0}" != "1" ]]; then
+      die "winetricks is required to install native .NET Framework 4.8 for the GameCore installer"
+    fi
+    warn "winetricks is not installed; skipping optional prerequisites"
     return 0
   fi
 
@@ -455,6 +599,27 @@ cmd_install_prereqs() {
   fi
 
   mkdir -p "${PREFIX_PATH}"
+
+  if [[ "${needs_dotnet}" == "1" ]]; then
+    if [[ "${MINECRAFT_BEDROCK_SKIP_DOTNET:-0}" == "1" ]]; then
+      warn "Skipping native .NET Framework 4.8; the GameCore installer will likely fail under Wine Mono"
+    elif [[ -f "${PREFIX_PATH}/dosdevices/c:/windows/dotnet48.installed.workaround" ]]; then
+      info "Using existing native .NET Framework 4.8 install"
+    else
+      info "Installing native .NET Framework 4.8 for the GameCore installer. This can take several minutes."
+      WINEPREFIX="${PREFIX_PATH}" \
+        WINE="${wine}" \
+        WINESERVER="${wineserver}" \
+        WINEDEBUG="${WINEDEBUG:--all}" \
+        winetricks -q dotnet48 || die "winetricks dotnet48 failed"
+
+      info "Restoring prefix Windows version to win10"
+      WINEPREFIX="${PREFIX_PATH}" \
+        WINEDEBUG="${WINEDEBUG:--all}" \
+        "${wine}" winecfg -v win10 || warn "could not restore Windows version to win10"
+    fi
+  fi
+
   info "Installing optional vcrun2022 prerequisite into ${PREFIX_PATH}"
   WINEPREFIX="${PREFIX_PATH}" \
     WINE="${wine}" \
@@ -464,12 +629,23 @@ cmd_install_prereqs() {
 }
 
 cmd_install_launcher() {
-  local installer="${INSTALLER_PATH}"
+  local installer="${1:-}"
+  local explicit_installer=0
   local lower
 
-  if [[ -n "${MINECRAFT_BEDROCK_INSTALLER:-}" ]]; then
+  if [[ -n "${installer}" ]]; then
+    explicit_installer=1
+  elif [[ -n "${MINECRAFT_BEDROCK_INSTALLER:-}" ]]; then
     installer="${MINECRAFT_BEDROCK_INSTALLER}"
-  elif [[ ! -f "${installer}" ]]; then
+    explicit_installer=1
+  else
+    installer="${INSTALLER_PATH}"
+  fi
+
+  if [[ ! -f "${installer}" ]]; then
+    if [[ "${explicit_installer}" == "1" ]]; then
+      die "installer not found: ${installer}"
+    fi
     cmd_download_installer
   fi
 
@@ -478,8 +654,13 @@ cmd_install_launcher() {
   lower="${installer,,}"
   info "Running Minecraft installer in Proton: ${installer}"
   if [[ "${lower}" == *.msi ]]; then
+    require_graphical_env
     run_proton_wait msiexec.exe /i "${installer}"
   else
+    require_graphical_env
+    installer="$(stage_exe_installer "${installer}")"
+    info "Staged GameCore installer with WinRT contracts: ${installer}"
+    info "If the Minecraft installer window opens, complete or close it; setup continues after it exits."
     run_proton_wait "${installer}"
   fi
 }
@@ -690,6 +871,7 @@ cmd_launch() {
   else
     info "Launching ${exe}"
   fi
+  require_graphical_env
   run_proton_wait "${exe}" "${args[@]}"
 }
 
@@ -706,20 +888,116 @@ cmd_paths() {
   printf 'Compatdata: %s\n' "${COMPAT_DATA_PATH}"
   printf 'Prefix: %s\n' "${PREFIX_PATH}"
   printf 'Installer: %s\n' "${INSTALLER_PATH}"
+  printf 'Installer runtime: %s\n' "${INSTALLER_RUNTIME_DIR}"
+  printf 'WinRT contracts: %s\n' "${WINRT_CONTRACTS_DIR}"
   printf 'Launcher: %s\n' "${launcher:-not found}"
   printf 'Game: %s\n' "${game:-not found}"
 }
 
 cmd_setup() {
+  local installer_option="${1:---gamecore}"
+  local installer="${INSTALLER_PATH}"
+  local init_before_prereqs=1
+
+  case "${installer_option}" in
+    --legacy)
+      installer="${MINECRAFT_BEDROCK_INSTALLER:-${LEGACY_INSTALLER_PATH}}"
+      ;;
+    --gamecore|--windows-gdk|--gdk|--win10|--win11)
+      installer="${MINECRAFT_BEDROCK_INSTALLER:-${INSTALLER_PATH}}"
+      if [[ "${MINECRAFT_BEDROCK_SKIP_DOTNET:-0}" != "1" && "${MINECRAFT_BEDROCK_SKIP_WINETRICKS:-0}" != "1" ]]; then
+        init_before_prereqs=0
+      fi
+      ;;
+  esac
+
   cmd_ensure_proton
-  cmd_download_installer
-  cmd_init_prefix
-  cmd_install_prereqs
-  cmd_install_launcher
+  cmd_download_installer "${installer_option}"
+  if [[ "${init_before_prereqs}" == "1" ]]; then
+    cmd_init_prefix
+  else
+    info "Installing GameCore prerequisites before Proton initializes the prefix; native .NET is fragile in already-initialized Proton prefixes."
+  fi
+  cmd_install_prereqs "${installer_option}"
+  if [[ "${init_before_prereqs}" != "1" ]]; then
+    cmd_init_prefix
+  fi
+  cmd_install_launcher "${installer}"
   cmd_configure_launcher
   cmd_patch_online
   cmd_add_steam_shortcut
   info "Setup complete. Restart Steam before using the new non-Steam shortcut."
+}
+
+collect_managed_pids() {
+  local proc pid proc_uid cmdline environ haystack
+  local needle
+  local needles=(
+    "${APP_HOME}"
+    "${CACHE_DIR}"
+    "${COMPAT_DATA_PATH}"
+    "${PREFIX_PATH}"
+  )
+
+  for proc in /proc/[0-9]*; do
+    [[ -d "${proc}" ]] || continue
+    pid="${proc##*/}"
+    [[ "${pid}" != "$$" && "${pid}" != "${BASHPID}" ]] || continue
+
+    proc_uid="$(stat -c '%u' "${proc}" 2>/dev/null || true)"
+    [[ "${proc_uid}" == "${UID}" ]] || continue
+
+    cmdline="$({ tr '\0' ' ' < "${proc}/cmdline"; } 2>/dev/null || true)"
+    environ="$({ tr '\0' '\n' < "${proc}/environ"; } 2>/dev/null || true)"
+    haystack="${cmdline}"$'\n'"${environ}"
+
+    for needle in "${needles[@]}"; do
+      [[ -n "${needle}" ]] || continue
+      if [[ "${haystack}" == *"${needle}"* ]]; then
+        printf '%s\n' "${pid}"
+        break
+      fi
+    done
+  done | sort -n -u
+}
+
+cmd_stop() {
+  local proton_dir wineserver pid pids=() alive=()
+
+  if [[ -d "${PREFIX_PATH}" ]]; then
+    proton_dir="$(find_installed_proton || true)"
+    wineserver="${proton_dir}/files/bin/wineserver"
+    if [[ -n "${proton_dir}" && -x "${wineserver}" ]]; then
+      info "Stopping Wine processes for ${PREFIX_PATH}"
+      WINEPREFIX="${PREFIX_PATH}" \
+        WINEDEBUG="${WINEDEBUG:--all}" \
+        "${wineserver}" -k || warn "wineserver -k failed; continuing"
+    fi
+  fi
+
+  while IFS= read -r pid; do
+    pids+=("${pid}")
+  done < <(collect_managed_pids)
+
+  if [[ "${#pids[@]}" -eq 0 ]]; then
+    info "No managed Wine/Proton processes found."
+    return 0
+  fi
+
+  info "Stopping managed process(es): ${pids[*]}"
+  kill -TERM "${pids[@]}" 2>/dev/null || true
+  sleep 2
+
+  for pid in "${pids[@]}"; do
+    if kill -0 "${pid}" 2>/dev/null; then
+      alive+=("${pid}")
+    fi
+  done
+
+  if [[ "${#alive[@]}" -gt 0 ]]; then
+    warn "Force-stopping managed process(es): ${alive[*]}"
+    kill -KILL "${alive[@]}" 2>/dev/null || true
+  fi
 }
 
 append_unique_path() {
@@ -856,6 +1134,8 @@ cmd_purge() {
     confirm_purge "${keep_shortcut}"
   fi
 
+  cmd_stop || warn "could not stop managed Wine/Proton processes"
+
   if [[ "${keep_shortcut}" != "1" ]]; then
     cmd_remove_steam_shortcut || warn "could not remove Steam shortcut"
   fi
@@ -877,9 +1157,11 @@ main() {
 
   case "${command}" in
     setup) cmd_setup "$@" ;;
+    stop) cmd_stop "$@" ;;
     purge) cmd_purge "$@" ;;
     install-proton) cmd_install_proton "$@" ;;
     download-installer) cmd_download_installer "$@" ;;
+    install-winrt-contracts) cmd_install_winrt_contracts "$@" ;;
     init-prefix) cmd_init_prefix "$@" ;;
     install-prereqs) cmd_install_prereqs "$@" ;;
     install-launcher) cmd_install_launcher "$@" ;;
