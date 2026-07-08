@@ -1,7 +1,7 @@
 # Maintainer: @aardbol
 pkgname=picocrypt-ng-bin
-pkgver=2.14
-pkgrel=4
+pkgver=2.18
+pkgrel=1
 pkgdesc="A very small, very simple, yet very secure encryption tool. (GUI)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Picocrypt-NG/Picocrypt-NG"
@@ -9,28 +9,50 @@ license=('GPL3')
 provides=('picocrypt-ng')
 conflicts=('picocrypt-ng-git')
 depends=(gtk3)
+makedepends=(cosign)
 options=('!strip' '!debug')
+source=(
+    "picocrypt.desktop"
+)
 source_x86_64=(
-  "${url}/releases/download/${pkgver}/Picocrypt-NG"
-  "picocrypt.desktop"
+ "${url}/releases/download/${pkgver}/Picocrypt-NG"
+ "${url}/releases/download/${pkgver}/Picocrypt-NG.sigstore.json"
 )
 source_aarch64=(
-  "${url}/releases/download/${pkgver}/Picocrypt-NG-arm64"
-  "picocrypt.desktop"
+ "${url}/releases/download/${pkgver}/Picocrypt-NG-arm64"
+ "${url}/releases/download/${pkgver}/Picocrypt-NG-arm64.sigstore.json"
 )
+sha256sums=(
+ 'd06954953bafc0fd9bb5edf609dff65ec0f0d95d971d096df7d72abe6e830e99'
+)
+# Verified by cosign below instead
 sha256sums_x86_64=(
-  'a67519e14987ccd474c8f2cc9615860849feac8ff984565b9884681f5faad035'
-  'd06954953bafc0fd9bb5edf609dff65ec0f0d95d971d096df7d72abe6e830e99'
+ 'SKIP'
+ 'SKIP'
 )
+# Verified by cosign below instead
 sha256sums_aarch64=(
-  '6bd678bb2ebb57e6cd4985f56f57f623065b4397efe2b13bce57ee7f948f3620'
-  'd06954953bafc0fd9bb5edf609dff65ec0f0d95d971d096df7d72abe6e830e99'
+ 'SKIP'
+ 'SKIP'
 )
+
+prepare() {
+    local srcbin bundle
+    case "$CARCH" in
+        x86_64)  srcbin="Picocrypt-NG";       bundle="Picocrypt-NG.sigstore.json" ;;
+        aarch64) srcbin="Picocrypt-NG-arm64"; bundle="Picocrypt-NG-arm64.sigstore.json" ;;
+    esac
+
+    cosign verify-blob "$srcdir/$srcbin" \
+        --bundle "$srcdir/$bundle" \
+        --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+        --certificate-identity-regexp '^https://github.com/Picocrypt-NG/Picocrypt-NG/\.github/workflows/'
+}
 
 package() {
     local srcbin
     case "$CARCH" in
-        x86_64) srcbin="Picocrypt-NG" ;;
+        x86_64)  srcbin="Picocrypt-NG" ;;
         aarch64) srcbin="Picocrypt-NG-arm64" ;;
     esac
 
