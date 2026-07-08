@@ -1,6 +1,6 @@
 # Maintainer: iSorensen
 pkgname=wtcc
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="WorkTree Command Center — a TUI for running Claude Code agents across git worktrees"
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=('github-cli: per-worktree PR/CI status badges'
             'claude-code: the coding agent launched in each worktree')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('54b70f77ba56edaca24e30e67bfd768aef43505fa6fe45e39c03b8a855d4d02c')
+sha256sums=('998fcfe7f2f56cc6292a5957997702846bd460907b0e44dd9c5277656a1cbd19')
 
 prepare() {
     cd "$pkgname-$pkgver"
