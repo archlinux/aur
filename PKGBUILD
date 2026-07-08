@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Terminal-based Docker image layer inspector"
 
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('0d7564f8d5ca97e22f3b154003616f1828206f8cfa2ca585a49426bbb164bd6a')
-sha256sums_aarch64=('78664ab811e6e2a21fbbbc8dd26ff7d11b87ea0762271fc93900788276564386')
+sha256sums_x86_64=('f9aa08530a1d8e2cf840cc95ed2e2d43f5f7dba293723b2064087c26a03713fe')
+sha256sums_aarch64=('685bc15e17f1a399c0077dcda3cdb5f50192b0c3b573f6aaa81725e87b07f5bd')
 
 
 build() {
