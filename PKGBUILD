@@ -1,4 +1,4 @@
-# Maintainer: Niklas Schäffer <niklass.schaeffer@gmail.com>
+# Maintainer: NickeyGod <niklass.schaeffer@gmail.com>
 pkgname=dbpro-appimage
 pkgver=2.5.1
 pkgrel=1
