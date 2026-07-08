@@ -1,6 +1,6 @@
 pkgbase = lota
 	pkgdesc = A configurable task runner for rapid development
-	pkgver = 1.16.14
+	pkgver = 1.17.7
 	pkgrel = 1
 	url = https://github.com/quonaro/lota
 	arch = x86_64
