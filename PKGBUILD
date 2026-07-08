@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: archlinux.info:tdy
 
 _pkgname="cutechess"
