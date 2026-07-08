@@ -14,8 +14,8 @@
 
 _pkgname="waterfox"
 pkgname="$_pkgname"
-pkgver=6.6.15
-pkgrel=2
+pkgver="6.7.0-beta.1"
+pkgrel=1
 pkgdesc="A customizable, privacy‑focused web browser"
 url="https://github.com/BrowserWorks/waterfox"
 license=('MPL-2.0')
