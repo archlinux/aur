@@ -1,7 +1,7 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.0-rc.20
+_pkgver=13.0.0-rc.21
 _branding=catppuccin
 
 __pkgname=$_pkgname-catppuccin
@@ -45,6 +45,9 @@ depends=(
   pango
   ttf-font
 )
+makedepends=(
+  git
+)
 optdepends=(
   'hunspell-en_US: Spell checking, American English'
   'libnotify: Notification integration'
@@ -66,9 +69,9 @@ source_x86_64=(
 source_aarch64=(
   $__pkgname-v$_pkgver.linux-arm64.tar.xz::$url/-/releases/v$_pkgver/downloads/$__pkgname.linux-arm64.tar.xz
 )
-sha256sums=('565d2ed763f3dad6a95c66b50efc585ac5346c12b2feb83d3b65cc96ab3b2119')
-sha256sums_x86_64=('0926c776ade1d672d9c46d54d763989969618bd7a2e7a7b45cfe305563c0b245')
-sha256sums_aarch64=('8af08f1b15c447af059fed932ee832962f29dbacba65218e0732ffb0f5942e95')
+sha256sums=('c5c206a0713066f6e5810dd274c1a37bc6ad1ca7a9943b4285026d41b7582807')
+sha256sums_x86_64=('fdd178f88848a0c6d6e4202344908f5ce8287d0ee2232d955a11e766ce045ae7')
+sha256sums_aarch64=('b68e5f950e015f4c4a5ccedbd588500fbabceff80534125c3e2579b5e8a0f68c')
 noextract=(
   $__pkgname-v$_pkgver.linux-x64.tar.xz
   $__pkgname-v$_pkgver.linux-arm64.tar.xz
