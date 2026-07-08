@@ -2,9 +2,9 @@
 pkgname=hermes-agent-desktop
 _pkgname=hermes-desktop          # /usr/bin symlink name (AUR convention, lowercase)
 _upstream=Hermes                 # productName + executableName
-_pkgver_tag=v2026.7.1
-pkgver=0.18.0
-pkgrel=5
+_pkgver_tag=v2026.7.7
+pkgver=0.18.1
+pkgrel=1
 pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
 arch=('x86_64')
 url='https://github.com/NousResearch/hermes-agent'
@@ -23,7 +23,7 @@ makedepends=('base-devel' 'git' 'nodejs>=22' 'npm')
 conflicts=('hermes-agent-desktop-bin')
 options=('!strip' '!debug')
 source=("${url}/archive/refs/tags/${_pkgver_tag}.tar.gz")
-sha256sums=('ec8a380629cc2f3f2102dd92cad50c4ded706fe59c0e359a05681166a0ae2991')
+sha256sums=('505a1debcaf641423e872fb11440a771c0db9b79f765d0bff858ff4b68babbdf')
 
 # NOTE: ${srcdir} is empty at the top level of a PKGBUILD — makepkg only sets
 # it inside the function scope of prepare()/build()/package(). Computing the
