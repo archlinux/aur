@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=arity-bin
-pkgver=0.10.0 # renovate: datasource=github-tags depName=jolars/arity
+pkgver=0.11.0 # renovate: datasource=github-tags depName=jolars/arity
 pkgrel=1
 pkgdesc="Language server, formatter, and linter for R"
 arch=('x86_64')
@@ -23,5 +23,5 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha256sums_x86_64=('01217f391072da9f426a91840688c54507b05cc8b92178ab3d69e6977b1628cd'
+sha256sums_x86_64=('51abaff0be2c5aa462969f2b7c2f943fd9d5d631e08f6757e90fedeecf52bdeb'
                    'c350265d5a2d04f8ba0f19ada3936c9d1003be9ef55192e2a85f2580e3e45b41')
