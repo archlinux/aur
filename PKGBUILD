@@ -12,7 +12,7 @@ makedepends=('cargo')
 options=('!lto')
 conflicts=('colgrep-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lightonai/next-plaid/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4b6b750e03a79b165da2883155930ef76c503a5bb83ae13deabe36466c355158')
+sha256sums=('52a7dc626d68b42f26642774659f2fd3583026348b1be1dd1b84f5a0c52d93ca')
 
 prepare() {
 	cd "${srcdir}/next-plaid-${pkgver}"
