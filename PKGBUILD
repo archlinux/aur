@@ -1,7 +1,7 @@
 # Maintainer: Francois LaBerge fgcrclaberge@gmail.com
 pkgname="docs"
 pkgver="0.0.3"
-pkgrel=3
+pkgrel=4
 # epoch=
 pkgdesc="search your man pages with fzf"
 arch=("any")
