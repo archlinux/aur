@@ -1,96 +1,70 @@
-# Maintainer: Andre LECLERCQ <andre.leclercq.io@protonmail.com>
+# Maintainer: edoaurahman <edoaurahman@gmail.com>
 
-# -------------------- #
-# Package Informations #
-# -------------------- #
 pkgname=clickup-desktop
-pkgver=3.5.87
+pkgver=3.5.230
 pkgrel=1
-pkgdesc="All-in-one collaboration and project management tool"
+pkgdesc="Desktop app for clickup.com"
 arch=('x86_64')
-url="https://clickup.com/"
-license=('custom:proprietary')
-
-# Package Options
-options=(!strip)
-
-# Dependencies
+url="https://clickup.com"
+license=('CustomLicense')
+provides=('clickup')
+conflicts=('clickup')
 depends=(
-  'gtk3'
-  'nss'
-  'alsa-lib'
-  'xdg-utils'
-  'libxcb'
-  'libsecret'
-  'libxss'
-  'fuse2'
+	'alsa-lib'
+	'dbus-glib'
+	'gtk3'
+	'libdbusmenu-gtk3'
+	'libindicator-gtk3'
+	'libsecret'
+	'libxkbfile'
+	'nss'
 )
+makedepends=('sed')
+options=('!strip')
 
-optdepends=(
-  'libnotify'
-  'libappindicator-gtk3'
-)
+_filename="clickup-desktop-$pkgver-x86_64.AppImage"
 
-# Retrieve latest version from the downloaded AppImage filename
-pkgver() {
-  local response=$(curl -s -L -D - \
-    -m 5 \
-    --max-filesize 1M \
-    --range 0-1024 \
-    "https://desktop.clickup.com/linux" \
-    -o /dev/null)
+source=("${_filename}::https://desktop.clickup.com/linux")
 
-  if [[ $response =~ filename=\"desktop-([0-9]+\.[0-9]+\.[0-9]+) ]]; then
-    echo "${BASH_REMATCH[1]}"
-  else
-    echo "$pkgver"
-  fi
-}
+sha256sums=('SKIP')
 
-# ----------------- #
-# Download AppImage #
-# ----------------- #
-source=(
-  "clickup-desktop.AppImage::https://desktop.clickup.com/linux"
-  "clickup-wrapper"
-  "clickup.desktop"
-)
-noextract=("clickup-desktop.AppImage")
-sha256sums=(
-  'SKIP'
-  'SKIP'
-  'SKIP'
-)
-
-# Get Icon
 prepare() {
-  cd "$srcdir"
-  chmod +x clickup-desktop.AppImage
-  ./clickup-desktop.AppImage --appimage-extract usr/share/icons
+    rm -rf squashfs-root
+    chmod +x $_filename
+    ./$_filename --appimage-extract
+
+    find squashfs-root -type d -exec chmod a+rx {} \;
 }
 
-# -------------------- #
-# Package Installation #
-# -------------------- #
 package() {
-  # Create installation directory
-  install -dm755 "$pkgdir/opt/clickup"
-  install -dm755 "$pkgdir/usr/share/icons"
+    cd "${srcdir}/squashfs-root"
 
-  # Install AppImage with execute permissions
-  install -Dm755 "clickup-desktop.AppImage" "$pkgdir/opt/clickup/clickup-desktop.AppImage"
+    install -dm0755 "${pkgdir}/usr/bin"
+    ln -s /opt/clickup/desktop "${pkgdir}/usr/bin/clickup"
 
-  # Install Icon and clean
-  cp -r squashfs-root/usr/share/icons/* "$pkgdir/usr/share/icons/"
-  chmod -R 755 "$pkgdir/usr/share/icons"
-  rm -rf squashfs-root
-  
-  # Ensure AppImage is executable
-  chmod 755 "$pkgdir/opt/clickup/clickup-desktop.AppImage"
+    install -Dm0644 desktop.desktop -T "${pkgdir}/usr/share/applications/ClickUp.desktop"
+    sed -i \
+        -e "s|^Exec=.\+|Exec=/usr/bin/clickup %U|" \
+        -e "s|^Icon=.\+|Icon=ClickUp|" \
+        "${pkgdir}/usr/share/applications/ClickUp.desktop"
 
-  # Install wrapper script
-  install -Dm755 "$srcdir/clickup-wrapper" "$pkgdir/usr/bin/clickup"
+    install -Dm0644 LICENSE.electron.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm0644 LICENSES.chromium.html -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
-  # Install desktop file
-  install -Dm644 "$srcdir/clickup.desktop" "$pkgdir/usr/share/applications/clickup.desktop"  
+    icons=(512x512 256x256 128x128 64x64 48x48 32x32 16x16)
+
+    for size in "${icons[@]}"; do
+        install -Dm0644 usr/share/icons/hicolor/${size}/apps/desktop.png -T "${pkgdir}/usr/share/icons/hicolor/${size}/apps/ClickUp.png"
+    done
+
+    cd "${srcdir}"
+    install -dm0755 "${pkgdir}/opt"
+    mv squashfs-root "${pkgdir}/opt/clickup"
+    chmod 755 "${pkgdir}/opt/clickup"
+    chmod a+rX "${pkgdir}/opt/clickup/"
+
+    rm -r "${pkgdir}/opt/clickup/usr/share/"
+    rm "${pkgdir}/opt/clickup/AppRun" "${pkgdir}/opt/clickup/desktop.desktop"
+    rm "${pkgdir}/opt/clickup/desktop.png" "${pkgdir}/opt/clickup/.DirIcon"
+    rm "${pkgdir}/opt/clickup/LICENSE.electron.txt" "${pkgdir}/opt/clickup/LICENSES.chromium.html"
 }
