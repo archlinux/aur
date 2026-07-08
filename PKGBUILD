@@ -6,17 +6,17 @@
 pkgname='python-qh3-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=1.9.0.r0.ga79670c
+pkgver=1.9.3.r0.gcc63dc9
 pkgrel=1
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (development version)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/jawah/qh3'
-license=('BSD-3-Clause')  # SPDX-License-Identifier: BSD-3-Clause
+license=('BSD-3-Clause')
 depends=(
   'glibc'
   'libgcc'
   'python'
-  'python-brotli'  # or make it optional?
+  'python-brotli'
 )
 makedepends=(
   'cmake'
@@ -38,6 +38,13 @@ provides=("$_pkgname")
 conflicts=("${provides[@]}")
 source=("$_srcname::git+$url.git")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$_srcname"
+
+  # Relax maturin requirements
+  sed -i 's/,<1.14"/,<=1.14.1"/g' pyproject.toml
+}
 
 pkgver() {
   cd "$_srcname"
