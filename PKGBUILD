@@ -3,11 +3,12 @@
 
 pkgname=winbox
 pkgver=4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Mikrotik RouterOS GUI Configurator'
 url='https://mikrotik.com/download'
 arch=('x86_64')
 license=('custom')
+options=('!debug')
 depends=('fontconfig'
          'freetype2'
          'glibc'
