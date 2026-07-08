@@ -7,7 +7,7 @@
 
 pkgname=python-lightrag-hku
 _pkgname=lightrag-hku
-pkgver=1.5.4
+pkgver=1.5.5rc1
 pkgrel=1
 pkgdesc='LightRAG: Simple and Fast Retrieval-Augmented Generation'
 arch=('any')
@@ -51,7 +51,7 @@ optdepends=(
     'uvicorn: ASGI server'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/HKUDS/LightRAG/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('SKIP')
+b2sums=('9859a4d0d7ebfd10cd4dbcc1208707000c23b2262975dc956172c75a0a3e39247cd2078d60221debb7d024697aa5a094afb1a43bb66c0b0028b94ea3d913be03')
 
 build() {
     cd "LightRAG-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = python-lightrag-hku
 	pkgdesc = LightRAG: Simple and Fast Retrieval-Augmented Generation
-	pkgver = 1.5.4
+	pkgver = 1.5.5rc1
 	pkgrel = 1
 	url = https://github.com/HKUDS/LightRAG
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = python-lightrag-hku
 	optdepends = python-pptx: PPTX processing
 	optdepends = python-pytz: Timezone support
 	optdepends = uvicorn: ASGI server
-	source = python-lightrag-hku-1.5.4.tar.gz::https://github.com/HKUDS/LightRAG/archive/refs/tags/v1.5.4.tar.gz
-	b2sums = SKIP
+	source = python-lightrag-hku-1.5.5rc1.tar.gz::https://github.com/HKUDS/LightRAG/archive/refs/tags/v1.5.5rc1.tar.gz
+	b2sums = 9859a4d0d7ebfd10cd4dbcc1208707000c23b2262975dc956172c75a0a3e39247cd2078d60221debb7d024697aa5a094afb1a43bb66c0b0028b94ea3d913be03
 
 pkgname = python-lightrag-hku
