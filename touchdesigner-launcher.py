@@ -18,6 +18,7 @@ FIX_FILE = f"{PREFIX}/wine_ui_fixes.tox"
 BACKUP_DIR = f"{PREFIX}/backups"
 WINE_PREFIX = os.path.expanduser("~/.local/share/touchdesigner-linux/prefix")
 DOSDEVICES = os.path.join(WINE_PREFIX, "dosdevices")
+INIT_FLAG = os.path.join(WINE_PREFIX, ".td_initialized")
 
 os.environ["WINEDLLOVERRIDES"] = "mscoree="
 os.environ["WINEDEBUG"] = "fixme-all,warn-all"
@@ -26,35 +27,6 @@ os.environ["LD_LIBRARY_PATH"] = (
     f"{PREFIX}/wine/lib:{PREFIX}/wine/lib64:{os.environ.get('LD_LIBRARY_PATH', '')}"
 )
 os.environ["WINEPREFIX"] = WINE_PREFIX
-
-
-def ensure_drives():
-    """Ensure essential drive symlinks exist (c:, z:).
-
-    These are skipped during prefix copy because copytree with symlinks=True
-    can't safely recreate circular/device symlinks (z:/ -> /, com* -> /dev/ttyS*)
-    when the destination already exists. Wine will create additional symlinks
-    (d:, com*, etc.) on first wineboot.
-    """
-    os.makedirs(DOSDEVICES, exist_ok=True)
-
-    z_path = os.path.join(DOSDEVICES, "z:")
-    if not os.path.islink(z_path):
-        if os.path.isdir(z_path):
-            # Was copied as a regular directory — huge copy of root filesystem
-            print("  Repairing z: drive (was copied as directory instead of symlink)...")
-            shutil.rmtree(z_path)
-        os.symlink("/", z_path)
-
-    # c: -> ../drive_c (Wine needs this to find C:\windows, kernel32.dll, etc.)
-    c_path = os.path.join(DOSDEVICES, "c:")
-    if not os.path.islink(c_path):
-        drive_c = os.path.join(WINE_PREFIX, "drive_c")
-        if os.path.isdir(drive_c):
-            os.symlink("../drive_c", c_path)
-        else:
-            print("Warning: drive_c not found, wineboot may fail")
-
 
 LICENSE_DIR = f"{WINE_PREFIX}/drive_c/ProgramData/Derivative"
 
@@ -73,10 +45,29 @@ def restore_license():
     """Restore license files if wineboot cleared or overwrote them."""
     bak = f"{LICENSE_DIR}.bak"
     if os.path.isdir(bak):
-        # Always restore — wineboot may overwrite files without deleting the dir
         shutil.rmtree(LICENSE_DIR, True)
         shutil.copytree(bak, LICENSE_DIR, symlinks=True, dirs_exist_ok=True)
         shutil.rmtree(bak, True)
+
+
+def ensure_drives():
+    """Ensure essential drive symlinks exist (c:, z:)."""
+    os.makedirs(DOSDEVICES, exist_ok=True)
+
+    z_path = os.path.join(DOSDEVICES, "z:")
+    if not os.path.islink(z_path):
+        if os.path.isdir(z_path):
+            print("  Repairing z: drive (was copied as directory instead of symlink)...")
+            shutil.rmtree(z_path)
+        os.symlink("/", z_path)
+
+    c_path = os.path.join(DOSDEVICES, "c:")
+    if not os.path.islink(c_path):
+        drive_c = os.path.join(WINE_PREFIX, "drive_c")
+        if os.path.isdir(drive_c):
+            os.symlink("../drive_c", c_path)
+        else:
+            print("Warning: drive_c not found, wineboot may fail")
 
 
 def setup_prefix():
@@ -87,8 +78,6 @@ def setup_prefix():
         print("TouchDesigner - Setting up...")
         os.makedirs(WINE_PREFIX, exist_ok=True)
         for item in os.listdir(default_prefix):
-            # Skip dosdevices — Wine recreates them and symlinks (z:/ -> /, com* -> /dev/ttyS*)
-            # can't be safely copied with copytree when they already exist at destination.
             if item == "dosdevices":
                 continue
             src = os.path.join(default_prefix, item)
@@ -97,10 +86,8 @@ def setup_prefix():
                 shutil.copytree(src, dst, symlinks=True, dirs_exist_ok=True)
             else:
                 shutil.copy2(src, dst)
-        # Create essential drive symlinks (c:, z:) — Wine creates the rest
         ensure_drives()
     else:
-        # Prefix already exists — just ensure drives are correct
         ensure_drives()
 
 
@@ -129,9 +116,34 @@ def wine_run(args, timeout=120):
 
 
 def ensure_wine_ready():
-    """Ensure wineserver is running and prefix is initialized."""
-    if os.path.isfile(WINEBOOT):
+    """Initialize Wine prefix on first launch only.
+
+    Running wineboot on every start resets certain registry settings
+    (e.g. LogPixels font size). We only run it once and track
+    initialization with a flag file.
+    """
+    if not os.path.isfile(INIT_FLAG) and os.path.isfile(WINEBOOT):
         wine_run([WINEBOOT, "-u"], timeout=30)
+        open(INIT_FLAG, "w").close()
+
+
+def apply_font_dpi():
+    """Set LogPixels DPI for readable UI fonts in TouchDesigner.
+
+    Wine defaults to 96 DPI which makes TD UI fonts very small on
+    high-resolution displays. This sets 120 DPI (0x78) in the registry
+    after wineboot so the setting persists across launches.
+    """
+    tmp = tempfile.mkdtemp(prefix="td_dpi_")
+    reg_file = os.path.join(tmp, "dpi.reg")
+    with open(reg_file, "w") as f:
+        f.write(
+            "REGEDIT4\n\n"
+            "[HKEY_CURRENT_CONFIG\\Software\\Fonts]\n"
+            '"LogPixels"=dword:00000078\n'
+        )
+    wine_run([WINE, "regedit", f"z:{reg_file}"], timeout=10)
+    shutil.rmtree(tmp, True)
 
 
 def patch_toe(toe_path):
@@ -149,14 +161,12 @@ def patch_toe(toe_path):
     toe_dir = toe_path + ".dir"
     toe_toc = toe_path + ".toc"
 
-    # Clean previous expansions
     shutil.rmtree(toe_dir, True)
     shutil.rmtree(toe_toc, True)
     os.remove(toe_toc) if os.path.isfile(toe_toc) else None
 
     print(f"  Patching: {toe_path}")
 
-    # --- Step 1: Expand fix.tox to get its components and TOC entries ---
     tmp = tempfile.mkdtemp(prefix="td_patch_")
     fix_src = os.path.join(tmp, "fix.tox")
     shutil.copy2(FIX_FILE, fix_src)
@@ -167,7 +177,6 @@ def patch_toe(toe_path):
         shutil.rmtree(tmp, True)
         return
 
-    # Read fix TOC entries (skip .build, skip comments, skip blanks)
     fix_toc_path = fix_src + ".toc"
     fix_entries = []
     if os.path.isfile(fix_toc_path):
@@ -178,9 +187,7 @@ def patch_toe(toe_path):
                     fix_entries.append(line)
 
     fix_dir = fix_src + ".dir"
-    # Keep fix_dir around for later; clean up after we use it
 
-    # --- Step 2: Check if target .toe already has the fix ---
     rc, _, _ = wine_run([WINE, toe_expand, "z:" + toe_path])
     if rc == -1:
         print("  TIMEOUT expanding target .toe")
@@ -196,20 +203,17 @@ def patch_toe(toe_path):
         shutil.rmtree(tmp, True)
         return
 
-    # --- Step 3: Re-expand and inject fix ---
     rc, _, _ = wine_run([WINE, toe_expand, "z:" + toe_path])
     if rc == -1 or not os.path.isdir(toe_dir):
         print("  Failed to expand target .toe")
         shutil.rmtree(tmp, True)
         return
 
-    # Backup original
     os.makedirs(BACKUP_DIR, exist_ok=True)
     shutil.copy2(
         toe_path, os.path.join(BACKUP_DIR, os.path.basename(toe_path) + ".bak")
     )
 
-    # Copy fix files into toe .dir
     if os.path.isdir(fix_dir):
         for f in os.listdir(fix_dir):
             src = os.path.join(fix_dir, f)
@@ -219,18 +223,15 @@ def patch_toe(toe_path):
             else:
                 shutil.copy2(src, dst)
 
-    # Append fix entries to toe TOC (critical: without this, collapse drops the fix!)
     if fix_entries:
         with open(toe_toc, "a") as f:
             for entry in fix_entries:
                 f.write(entry + "\n")
 
-    # Collapse back into .toe
     rc, _, _ = wine_run([WINE, toe_collapse, "z:" + toe_path])
     if rc == -1:
         print("  TIMEOUT collapsing .toe (partial state may remain)")
 
-    # Clean up
     shutil.rmtree(toe_dir, True)
     shutil.rmtree(toe_toc, True)
     shutil.rmtree(tmp, True)
@@ -255,18 +256,15 @@ def resolve_path(path):
     """Resolve a path that may be a file:// URI or Wine path."""
     if not path:
         return None
-    # Strip file:// prefix and URL-decode
     if path.startswith("file://"):
         from urllib.parse import unquote
         path = unquote(path[7:])
-    # Strip z:/ or Z:/ Wine prefix if present
     if len(path) > 2 and path[1:3] in (":/", ":\\"):
         path = path[2:]
     return os.path.realpath(path) if os.path.isfile(path) else path
 
 
 def main():
-    # Handle --help / -h before anything that touches Wine
     if "--help" in sys.argv or "-h" in sys.argv or "--h" in sys.argv:
         print("Usage: touchdesigner [.toe file]")
         print()
@@ -284,13 +282,11 @@ def main():
     copy_programdata()
     had_license = backup_license()
     ensure_wine_ready()
+    apply_font_dpi()
     if had_license:
         restore_license()
 
-    # Resolve input path (handle file:// URIs from double-click)
     input_path = resolve_path(sys.argv[1] if len(sys.argv) > 1 else None)
-
-    # Patch .toe argument if provided
     if (
         input_path
         and os.path.isfile(input_path)
@@ -298,7 +294,6 @@ def main():
     ):
         patch_toe(input_path)
 
-    # Launch TD
     td_exe = find_td_exe()
     if not td_exe:
         print("Error: TouchDesigner not found")
