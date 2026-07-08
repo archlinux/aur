@@ -1,6 +1,6 @@
 # Maintainer: Adam Honse <calcprogrammer10@gmail.com>
 pkgname=openrgb-plugin-hardware-sync-next-git
-pkgver=0.9.26.g8dae2bd
+pkgver=0.9.26.g46189c4
 pkgrel=1
 pkgdesc="Hardware Sync plugin for OpenRGB (next branch)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('qt6-tools' 'openrgb' 'libgtop')
 makedepends=('git')
 provides=('openrgb-plugin-hardware-sync')
 conflicts=('openrgb-plugin-hardware-sync')
-source=("git+https://gitlab.com/OpenRGBDevelopers/OpenRGBHardwareSyncPlugin.git#branch=next")
+source=("git+https://gitlab.com/OpenRGBDevelopers/OpenRGBHardwareSyncPlugin.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {

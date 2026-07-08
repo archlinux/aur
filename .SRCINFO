@@ -1,6 +1,6 @@
 pkgbase = openrgb-plugin-hardware-sync-next-git
 	pkgdesc = Hardware Sync plugin for OpenRGB (next branch)
-	pkgver = 0.9.26.g8dae2bd
+	pkgver = 0.9.26.g46189c4
 	pkgrel = 1
 	url = https://gitlab.com/OpenRGBDevelopers/OpenRGBHardwareSyncPlugin
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = openrgb-plugin-hardware-sync-next-git
 	depends = libgtop
 	provides = openrgb-plugin-hardware-sync
 	conflicts = openrgb-plugin-hardware-sync
-	source = git+https://gitlab.com/OpenRGBDevelopers/OpenRGBHardwareSyncPlugin.git#branch=next
+	source = git+https://gitlab.com/OpenRGBDevelopers/OpenRGBHardwareSyncPlugin.git#branch=master
 	sha256sums = SKIP
 
 pkgname = openrgb-plugin-hardware-sync-next-git
