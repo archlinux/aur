@@ -18,7 +18,9 @@ CONTENT_PATH="${APP_HOME}/content"
 GAME_ARCHIVE_URL="${MINECRAFT_BEDROCK_GAME_ARCHIVE_URL:-}"
 GAME_ARCHIVE_REPO="${MINECRAFT_BEDROCK_GAME_ARCHIVE_REPO:-}"
 GAME_ARCHIVE_VERSION="${MINECRAFT_BEDROCK_GAME_VERSION:-}"
+GAME_ARCHIVE_SHA256="${MINECRAFT_BEDROCK_GAME_ARCHIVE_SHA256:-}"
 GAME_ARCHIVE_INCLUDE_PRERELEASE="${MINECRAFT_BEDROCK_INCLUDE_PRERELEASE:-0}"
+BUBBLES_GAME_ARCHIVE_REPO="bubbles-wow/mcbe-gdk-unpack-archive"
 GDK_PROTON_REPO="${MINECRAFT_BEDROCK_GDK_PROTON_REPO:-Weather-OS/GDK-Proton}"
 DEFAULT_WINRT_CONTRACTS_VERSION="10.0.17763.1000"
 DEFAULT_WINRT_CONTRACTS_SHA256="78b0b15a13ec3ae90f8e1e0fd609fd10f6d20ef984c5a56b48b55ceffbf88a94"
@@ -118,6 +120,8 @@ Environment:
   MINECRAFT_BEDROCK_GAME_ARCHIVE_URL  Zip/AppX/MSIX archive containing Minecraft.Windows.exe
   MINECRAFT_BEDROCK_GAME_ARCHIVE_REPO GitHub owner/repo for opt-in game archives
   MINECRAFT_BEDROCK_GAME_VERSION      Release tag to use with GAME_ARCHIVE_REPO
+  MINECRAFT_BEDROCK_GAME_ARCHIVE_SHA256
+                                      Expected sha256 for GAME_ARCHIVE_URL or repo asset
   MINECRAFT_BEDROCK_INCLUDE_PRERELEASE
                                       Set to 1 to allow prerelease game archives by default
   MINECRAFT_BEDROCK_WINRT_CONTRACTS_DIR
@@ -145,6 +149,15 @@ Installer options:
       --legacy          Download the legacy MSI launcher installer
       --game-archive    Use configured game archive source instead of the launcher installer
       --installed-game  Use an already installed/imported Minecraft.Windows.exe
+      --bubbles         Shorthand for --game-archive --repo bubbles-wow/mcbe-gdk-unpack-archive
+      --repo owner/repo Use a GitHub release repo as the game archive source
+      --url URL         Use a direct game archive URL
+      --version tag     Use a specific game archive release tag
+      --sha256 digest   Verify the selected game archive with this sha256
+      --include-prerelease
+                        Allow prerelease GitHub releases when auto-selecting a game archive
+      --reset           Purge before setup; accepts --keep-cache/--keep-proton/--keep-shortcut
+      --launch          Launch the game after setup succeeds
 EOF
 }
 
@@ -337,6 +350,15 @@ download_file() {
   mv -f "${tmp}" "${dest}"
 }
 
+verify_sha256() {
+  local file="$1"
+  local expected="$2"
+
+  [[ -n "${expected}" ]] || return 0
+  expected="${expected#sha256:}"
+  printf '%s  %s\n' "${expected}" "${file}" | sha256sum -c - >&2
+}
+
 download_installer_to() {
   local url="$1"
   local dest="$2"
@@ -390,7 +412,7 @@ if not assets:
     raise SystemExit("no .tar.gz release asset found")
 
 asset = assets[0]
-digest = asset.get("digest", "")
+digest = asset.get("digest") or ""
 sha256 = digest.split(":", 1)[1] if digest.startswith("sha256:") else ""
 print(
     release.get("name") or release.get("tag_name") or "GDK-Proton",
@@ -749,6 +771,7 @@ for release in releases:
                 name,
                 asset.get("browser_download_url", ""),
                 asset.get("size", 0),
+                asset.get("digest") or "",
                 sep="\t",
             )
             raise SystemExit(0)
@@ -908,7 +931,7 @@ cmd_install_game() {
 
 cmd_download_game() {
   local tag="${1:-${GAME_ARCHIVE_VERSION}}"
-  local archive name url size
+  local archive name url size digest
 
   if [[ -n "${GAME_ARCHIVE_URL}" ]]; then
     name="${GAME_ARCHIVE_URL%%\?*}"
@@ -920,11 +943,12 @@ cmd_download_game() {
     else
       download_file "${GAME_ARCHIVE_URL}" "${archive}"
     fi
+    verify_sha256 "${archive}" "${GAME_ARCHIVE_SHA256}"
     cmd_install_game "${archive}" "${tag:-${name}}"
     return 0
   fi
 
-  IFS=$'\t' read -r tag name url size < <(github_game_archive_info "${tag}")
+  IFS=$'\t' read -r tag name url size digest < <(github_game_archive_info "${tag}")
   [[ -n "${url}" && -n "${name}" ]] || die "configured game archive release did not include a downloadable asset"
   archive="${CACHE_DIR}/${name}"
   if [[ -f "${archive}" ]]; then
@@ -932,6 +956,13 @@ cmd_download_game() {
   else
     info "Downloading Minecraft game archive ${tag} (${size} bytes)"
     download_file "${url}" "${archive}"
+  fi
+  if [[ -n "${GAME_ARCHIVE_SHA256}" ]]; then
+    verify_sha256 "${archive}" "${GAME_ARCHIVE_SHA256}"
+  elif [[ -n "${digest}" ]]; then
+    verify_sha256 "${archive}" "${digest}"
+  else
+    warn "No sha256 digest published for ${name}; skipping archive checksum verification"
   fi
   cmd_install_game "${archive}" "${tag}"
 }
@@ -1925,11 +1956,99 @@ cmd_paths() {
 }
 
 cmd_setup() {
-  local installer_option="${1:---gamecore}"
-  local game_archive_tag="${2:-${GAME_ARCHIVE_VERSION}}"
+  local installer_option="--gamecore"
+  local game_archive_tag="${GAME_ARCHIVE_VERSION}"
   local installer="${INSTALLER_PATH}"
   local init_before_prereqs=1
+  local launch_after=0
+  local reset_before=0
+  local reset_args=()
   local game
+
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --game-archive|--archive|--direct-game)
+        installer_option="--game-archive"
+        ;;
+      --installed-game)
+        installer_option="--installed-game"
+        ;;
+      --legacy)
+        installer_option="--legacy"
+        ;;
+      --gamecore|--windows-gdk|--gdk|--win10|--win11)
+        installer_option="$1"
+        ;;
+      --bubbles)
+        GAME_ARCHIVE_REPO="${BUBBLES_GAME_ARCHIVE_REPO}"
+        installer_option="--game-archive"
+        ;;
+      --repo|--game-archive-repo)
+        shift
+        [[ $# -gt 0 && -n "$1" ]] || die "--repo requires a GitHub owner/repo value"
+        GAME_ARCHIVE_REPO="$1"
+        installer_option="--game-archive"
+        ;;
+      --url|--game-archive-url)
+        shift
+        [[ $# -gt 0 && -n "$1" ]] || die "--url requires a game archive URL"
+        GAME_ARCHIVE_URL="$1"
+        installer_option="--game-archive"
+        ;;
+      --version|--tag)
+        shift
+        [[ $# -gt 0 && -n "$1" ]] || die "--version requires a release tag"
+        game_archive_tag="$1"
+        GAME_ARCHIVE_VERSION="$1"
+        ;;
+      --sha256|--game-archive-sha256)
+        shift
+        [[ $# -gt 0 && -n "$1" ]] || die "--sha256 requires a digest"
+        GAME_ARCHIVE_SHA256="$1"
+        ;;
+      --include-prerelease)
+        GAME_ARCHIVE_INCLUDE_PRERELEASE=1
+        ;;
+      --reset|--purge)
+        reset_before=1
+        ;;
+      --launch)
+        launch_after=1
+        ;;
+      --no-launch)
+        launch_after=0
+        ;;
+      -h|--help)
+        usage
+        return 0
+        ;;
+      --keep-cache|--keep-proton|--keep-shortcut)
+        reset_args+=("$1")
+        ;;
+      --)
+        shift
+        break
+        ;;
+      -*)
+        die "unknown setup option: $1"
+        ;;
+      *)
+        if [[ "${installer_option}" == "--game-archive" ]]; then
+          game_archive_tag="$1"
+          GAME_ARCHIVE_VERSION="$1"
+        else
+          die "unexpected setup argument: $1"
+        fi
+        ;;
+    esac
+    shift
+  done
+
+  [[ $# -eq 0 ]] || die "unexpected setup argument: $1"
+
+  if [[ "${reset_before}" == "1" ]]; then
+    cmd_purge --yes "${reset_args[@]}"
+  fi
 
   case "${installer_option}" in
     --game-archive|--archive|--direct-game)
@@ -1945,6 +2064,9 @@ cmd_setup() {
       cmd_patch_online
       cmd_add_steam_shortcut
       info "Setup complete. Restart Steam before using the new non-Steam shortcut."
+      if [[ "${launch_after}" == "1" ]]; then
+        cmd_launch game
+      fi
       return 0
       ;;
     --installed-game)
@@ -1959,6 +2081,9 @@ cmd_setup() {
       cmd_patch_online
       cmd_add_steam_shortcut
       info "Setup complete. Restart Steam before using the new non-Steam shortcut."
+      if [[ "${launch_after}" == "1" ]]; then
+        cmd_launch game
+      fi
       return 0
       ;;
     --legacy)
@@ -1993,6 +2118,9 @@ cmd_setup() {
   cmd_patch_online
   cmd_add_steam_shortcut
   info "Setup complete. Restart Steam before using the new non-Steam shortcut."
+  if [[ "${launch_after}" == "1" ]]; then
+    cmd_launch
+  fi
 }
 
 collect_managed_pids() {

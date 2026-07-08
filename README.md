@@ -61,7 +61,25 @@ minecraft-bedrock setup --installed-game
 Or opt into a GitHub release source that publishes extracted game archives:
 
 ```sh
-MINECRAFT_BEDROCK_GAME_ARCHIVE_REPO=owner/repo minecraft-bedrock setup --game-archive
+minecraft-bedrock setup --bubbles
+```
+
+`--bubbles` is shorthand for:
+
+```sh
+minecraft-bedrock setup --game-archive --repo bubbles-wow/mcbe-gdk-unpack-archive
+```
+
+For a known-good release, pin the tag:
+
+```sh
+minecraft-bedrock setup --bubbles --version 1.26.32.2
+```
+
+For E2E testing from scratch:
+
+```sh
+minecraft-bedrock setup --reset --bubbles --launch
 ```
 
 The direct game path requires GDK-Proton by default, because regular Steam
@@ -76,7 +94,8 @@ component prompt on first launch.
 ```sh
 minecraft-bedrock setup
 minecraft-bedrock setup --legacy
-minecraft-bedrock setup --game-archive
+minecraft-bedrock setup --bubbles
+minecraft-bedrock setup --game-archive --repo owner/repo
 minecraft-bedrock setup --installed-game
 minecraft-bedrock stop
 minecraft-bedrock purge --yes
@@ -167,6 +186,10 @@ is opt-in and has no default.
 `MINECRAFT_BEDROCK_GAME_VERSION` selects a release tag from the configured game
 archive repo. By default, prereleases are skipped when choosing automatically;
 set `MINECRAFT_BEDROCK_INCLUDE_PRERELEASE=1` to allow them.
+
+`MINECRAFT_BEDROCK_GAME_ARCHIVE_SHA256` verifies a direct archive URL or
+overrides a GitHub release asset digest. The equivalent setup flag is
+`--sha256`.
 
 `MINECRAFT_BEDROCK_WINRT_CONTRACTS_DIR` points at a directory containing
 `Windows.Foundation.FoundationContract.winmd` and

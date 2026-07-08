@@ -2,7 +2,7 @@
 
 pkgname=minecraft-bedrock
 pkgver=0.1.0
-pkgrel=9
+pkgrel=11
 pkgdesc='User-level Steam Proton/GDK-Proton helper for Minecraft Bedrock'
 arch=('x86_64')
 url='https://www.minecraft.net/en-us/download'
@@ -21,11 +21,11 @@ source=(
   'README.md'
   'LICENSE'
 )
-sha256sums=('72a306cb1b0dbad1833acf46209740451cabe1ca1a8a2c27668996a2402228f4'
+sha256sums=('7363c4ee00532a4cd91c4e76cbb3b8775aa6f2a87714828478efb1772b86db8e'
             '7a2ee87d0d47deb537e1c171e61c0619fa1e962377e14355ef844d0f422bc3e4'
             'b03c8daf39b730be248a7866886f92e6943a2741e1e7d55b8f43b0f7b59bf8af'
             '48fa66703cd24f0e8b493894ebd44da6cdc2085887d3c2eaafc263c4dee3daaa'
-            '94c2ca3f1a0a37964f398656d6ad59100de84ff618eff7a3ae8556c71a4129c2'
+            '72286ed9c28e73c7a664476e6f6c193c4be4ea55c8983abe4427dc93ae49896c'
             '4cd7f427d9043afe507b948a634904701432dbfda987ec1cf8282a0c9934f5e8')
 
 package() {
