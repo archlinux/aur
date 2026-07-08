@@ -1,0 +1,14 @@
+pkgbase = cl-idna
+	pkgdesc = Common Lisp IDNA encding / decoding functions
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/antifuchs/idna
+	arch = any
+	license = MIT
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-split-sequence
+	source = https://github.com/antifuchs/idna/archive/refs/tags/0.2.2.tar.gz
+	sha256sums = b5efbdcf9d11ac4ccefe8f4eba24ae6cbedece2256a381d91cb2d104d3b73535
+
+pkgname = cl-idna
