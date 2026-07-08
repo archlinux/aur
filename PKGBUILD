@@ -3,7 +3,7 @@
 pkgname='deepin-wine10-stable'
 _pkgver=10.14deepin8
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=3
 pkgdesc="Deepin wine10 stable"
 arch=('x86_64')
 url="http://www.deepin.org"
@@ -20,7 +20,7 @@ DLAGENTS=("https::/usr/bin/curl -A 'Debian\ APT-HTTP/1.3' -fLC - --retry 3 --ret
 depends=(
     alsa-lib                    # libasound2 (>= 1.0.16)
     glibc                       # libc6 (>= 2.26)
-    libcapi                     # libcapi20-3
+    # libcapi                     # libcapi20-3
     dbus                        # libdbus-1-3 (>= 1.9.16)
     gcc-libs                    # libgcc1 (>= 1:3.0)
     glib2                       # libglib2.0-0 (>= 2.37.3)
