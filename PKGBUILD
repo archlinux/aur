@@ -3,9 +3,12 @@
 
 : ${_use_sodeps:=false}
 
+# separate submodule paths with :
+: ${_broken_modules=supportlibs/jni.hpp}
+
 _pkgname="retroshare"
 pkgname="$_pkgname-git"
-pkgver=0.6.7.2.r851.g5d2024c2a
+pkgver=0.6.7.3.r1028.gc11ae6b07
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail"
 url="https://github.com/retroshare/retroshare"
@@ -40,8 +43,13 @@ sha256sums=('SKIP')
 prepare() {
   cd "$_pkgsrc"
 
-  # fix submodule links
-  sed -E -e 's&url = \.\./&url = https://github.com/retroshare/&' -i .gitmodules
+  # fix submodules
+  local _module
+  for _module in ${_broken_modules//:/ }; do
+    local _url=$(git config -f .gitmodules "submodule.${_module}.url")
+    local _hash=$(git ls-remote "${_url}" master | awk '{print $1}')
+    git update-index --add --cacheinfo 160000 "$_hash" "$_module"
+  done
 
   # clone submodules
   git submodule update --init --recursive --depth=1
@@ -54,19 +62,8 @@ prepare() {
 
   sed -E -e 's&if\(.* EQUAL "3"\)&if(FALSE)&' \
     -e '/QUIET botan-2/d' \
-    -e 's&"(lib)botan-2"&&g' \
+    -e 's&"(lib)?botan-2"&&g' \
     -i supportlibs/librnp/cmake/Modules/FindBotan.cmake
-
-  # disable warning-error
-  sed -e '/inconsistent-missing-override/d' -i retroshare.pri
-
-  # disable plugins
-  sed -e '/VOIP \\/d' \
-    -e '/FeedReader/d' \
-    -i plugins/plugins.pro
-
-  # fix for strlen
-  sed -e '1i #include <cstring>' -i supportlibs/librnp/src/lib/crypto/mem.cpp
 }
 
 pkgver() {
@@ -76,7 +73,7 @@ pkgver() {
 }
 
 build() {
-  cd "$_pkgsrc"
+  export CXXFLAGS+=" -include cstring"
 
   local _qmake_options=(
     CONFIG+=release
@@ -88,6 +85,7 @@ build() {
     RetroShare.pro
   )
 
+  cd "$_pkgsrc"
   qmake6 "${_qmake_options[@]}"
   make
 }
