@@ -7,12 +7,13 @@ pkgrel=1
 pkgdesc='Optional Vulkan Layers for Monado.'
 arch=('i686' 'x86_64')
 url='https://gitlab.freedesktop.org/monado/utilities/vulkan-layers'
-depends=('gcc-libs')
-makedepends=('vulkan-headers' 'cmake' 'git' 'ninja')
+depends=('glibc' 'libgcc' 'libstdc++')
+makedepends=('vulkan-icd-loader' 'vulkan-headers' 'cmake' 'git' 'ninja')
 optdepends=()
 provides=("monado-vulkan-layers")
+conflicts=("monado-vulkan-layers")
 
-license=('boost')
+license=('BSL-1.0')
 source=("$_dirname::git+https://gitlab.freedesktop.org/monado/utilities/vulkan-layers.git#branch=main")
 md5sums=('SKIP')
 
