@@ -1,12 +1,12 @@
 pkgbase = openrgb-plugin-hardware-sync-git
 	pkgdesc = Hardware Sync plugin for OpenRGB
-	pkgver = 0.9.8.g0b543c4
+	pkgver = 0.9.26.g46189c4
 	pkgrel = 1
 	url = https://gitlab.com/OpenRGBDevelopers/OpenRGBHardwareSyncPlugin
 	arch = any
 	license = GPL-2.0-only
 	makedepends = git
-	depends = qt5-tools
+	depends = qt6-tools
 	depends = openrgb
 	depends = libgtop
 	provides = openrgb-plugin-hardware-sync
