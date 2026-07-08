@@ -1,7 +1,7 @@
 # Maintainer: Bernardo Pinto Gomes <bernardopgomes@hotmail.com>
 # shellcheck disable=all
 pkgname=full-upgrade
-pkgver=3.24.1
+pkgver=3.24.2
 pkgrel=1
 pkgdesc="Orquestrador Bash modular para atualizar, manter e auditar máquinas Arch Linux"
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
 )
 makedepends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('caa28df339f1f47a6572e4f8ebd66a67fcd1c7cfdfdf0d7c92381bd61e7b0e3c')
+sha256sums=('92f05b611bccbfd2c9e517cc25bd4d66a0e73466ba25bfdfaf5176e46bbbf77c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -55,6 +55,7 @@ package() {
   install -Dm644 assets/icons/*.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
   install -Dm644 res/full-upgrade-tray.desktop "${pkgdir}/usr/share/applications/full-upgrade-tray.desktop"
   install -Dm644 res/full-upgrade-tray.service "${pkgdir}/usr/lib/systemd/user/full-upgrade-tray.service"
+  sed -i 's|@FULL_UPGRADE_EXEC@|/usr/bin/full-upgrade|g' "${pkgdir}/usr/lib/systemd/user/full-upgrade-tray.service"
 
   # Documentação e licença.
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
