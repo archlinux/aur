@@ -1,6 +1,6 @@
 # Maintainer: markusressel <mail+archlinuxaur@markusressel.de>
 pkgname=fan2go-tui-git
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Terminal UI for fan2go."
 arch=('x86_64')
