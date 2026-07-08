@@ -62,13 +62,13 @@ pkgver() {
 prepare() {
   pkgver=$(pkgver "${_update_and_cache_flag}")  # pkgver() is usually only run after prepare()
   cd "${srcdir}"
-  local _rel_url="${url}/releases/download/v${pkgver}"
+  local _relative_url="${url}/releases/download/v${pkgver}"
   local _raw_url="https://raw.githubusercontent.com/${_repo}/v${pkgver}"
-  curl -fsSL "${_rel_url}/${_asset}"      -o "${_asset}"
-  curl -fsSL "${_rel_url}/SHA256SUMS"     -o SHA256SUMS
-  curl -fsSL "${_rel_url}/SHA256SUMS.asc" -o SHA256SUMS.asc
-  curl -fsSL "${_raw_url}/LICENSE"        -o LICENSE
-  curl -fsSL "${_raw_url}/README.md"      -o README.md
+  curl -fsSL "${_relative_url}/${_asset}"      -o "${_asset}"
+  curl -fsSL "${_relative_url}/SHA256SUMS"     -o SHA256SUMS
+  curl -fsSL "${_relative_url}/SHA256SUMS.asc" -o SHA256SUMS.asc
+  curl -fsSL "${_raw_url}/LICENSE"             -o LICENSE
+  curl -fsSL "${_raw_url}/README.md"           -o README.md
 }
 
 check() {
