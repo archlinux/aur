@@ -1,18 +1,18 @@
 pkgbase = goplaying-bin
 	pkgdesc = Now Playing TUI written in Go (binary release)
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/justinmdickey/goplaying
-	arch = x86_64
 	license = MIT
 	depends = playerctl
-	provides = goplaying
 	conflicts = goplaying
 	conflicts = goplaying-git
-	options = !debug
-	source = https://github.com/justinmdickey/goplaying/releases/download/v0.3.7/goplaying_0.3.7_Linux_x86_64.tar.gz
-	source = https://raw.githubusercontent.com/justinmdickey/goplaying/v0.3.7/LICENSE
-	sha256sums = 527cb4bc7b5158ef95b715ff96068af1b6e714c5b2b7ecd6b93e588955e18217
-	sha256sums = SKIP
-
+	provides = goplaying
+	arch = aarch64
+	source_aarch64 = https://github.com/justinmdickey/goplaying/releases/download/v0.3.8/goplaying_0.3.8_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 746a30cca7f54eaf105ba261f3a450b8f6d5b0adcbafc986d651dd2e7e908829
+	arch = x86_64
+	source_x86_64 = https://github.com/justinmdickey/goplaying/releases/download/v0.3.8/goplaying_0.3.8_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 714f39a7febbab4e8556bdbbefd39ed2b4282fa45739b64b3856b51108a1db2b
+	
 pkgname = goplaying-bin
