@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export SWIVELDIR=/usr/share/swivel
+
+[[ "$1" == "" ]] && wine $SWIVELDIR/Swivel.exe # no args
+[[ "$1" != "" ]] && wine $SWIVELDIR/Swivel.exe "$(winepath -w "$1")" # args

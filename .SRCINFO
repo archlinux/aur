@@ -1,0 +1,18 @@
+pkgbase = swivel-bin
+	pkgdesc = SWF to Video converter from Newgrounds
+	pkgver = v1.11
+	pkgrel = 1
+	url = https://www.newgrounds.com/wiki/creator-resources/animation-resources/swivel-flash-to-video
+	arch = x86_64
+	makedepends = p7zip
+	depends = wine
+	source = https://www.newgrounds.com/downloads/swivel/swivel-win64.exe
+	source = swivel
+	source = swivel.desktop
+	source = swivel.png
+	md5sums = 0df49fddf3587704918a9cd74db1f0c4
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = swivel-bin
