@@ -1,56 +1,64 @@
-# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
-# Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
+#
+# Maintainer: Antonio Davide Trogu <contact at redasm dot dev>
+# Prev. Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+#
 
 pkgname=redasm-git
-pkgver=4.0.0.beta1.r9.gb07f7b3
+pkgver=4.0.0
 pkgrel=1
-url="https://github.com/redasm-dev"
-arch=(x86_64)
-pkgdesc="The OpenSource Disassembler"
-license=(GPL-3.0-or-later)
-depends=(
-    glibc
-    hicolor-icon-theme
-    libgcc
-    libstdc++
-    qt6-base
-    sqlite
-    )
-makedepends=(
-    cmake
-    git
-    #patchelf
-    qt6-tools
-    vulkan-headers
-    )
-conflicts=(redasm)
-provides=(redasm)
-source=("redasm-workspace::git+https://github.com/redasm-dev/workspace.git")
-sha256sums=('SKIP')
+url="https://redasm.dev"
+arch=("x86_64")
+pkgdesc="The Open Source Disassembler (git version)"
+license=("GPL-3.0-or-later")
+makedepends=("git" "cmake")
+depends=("qt6-base" "sqlite")
+optdepends=("miniz" "zydis" "capstone>=6.0.0")
+conflicts=("redasm" "redasm-beta")
+provides=("redasm")
 
-prepare() {
-  cd redasm-workspace
-  cmake -P Setup.cmake
-}
+source=(
+    "git+https://github.com/redasm-dev/workspace.git"
+    "git+https://github.com/redasm-dev/core.git"
+    "git+https://github.com/redasm-dev/redasm.git"
+    "git+https://github.com/redasm-dev/loaders.git"
+    "git+https://github.com/redasm-dev/commands.git"
+    "git+https://github.com/redasm-dev/analyzers.git"
+    "git+https://github.com/redasm-dev/processors.git"
+    "git+https://github.com/redasm-dev/kb.git"
+)
+
+sha256sums=(
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+    "SKIP"
+)
 
 pkgver() {
-  cd redasm-workspace/redasm
-  git describe --long --tags --abbrev=7  --exclude nightly | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/redasm"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    for repo in core redasm loaders processors analyzers commands; do
+        ln -sfn "${srcdir}/${repo}" "${srcdir}/workspace/${repo}"
+    done
+
+    mkdir -p "${srcdir}/workspace/kb"
+    cp -r "${srcdir}/kb/." "${srcdir}/workspace/kb"
 }
 
 build() {
-  local _flags=(
-
-  )
-
-  cmake -B build -S "redasm-workspace" -Wno-dev \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    "${_flags[@]}"
-
-  cmake --build build
+    cd "${srcdir}/workspace"
+    cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+    cmake --build build
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build
+    cd "${srcdir}/workspace"
+    cmake --install build --prefix "${pkgdir}/usr"
 }
