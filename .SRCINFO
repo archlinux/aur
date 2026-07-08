@@ -1,0 +1,23 @@
+pkgbase = python-microsoft-kiota-serialization-form
+	pkgdesc = Microsoft Kiota URI Form Encoded Serialization Library for Python
+	pkgver = 1.11.7
+	pkgrel = 1
+	url = https://github.com/microsoft/kiota-python
+	arch = any
+	license = MIT
+	checkdepends = python-pytest>=9.1.1
+	checkdepends = python-pytest-asyncio>=1.4.0
+	makedepends = python-build
+	makedepends = python-flit-core>=3.2.0
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.10.0
+	depends = python-microsoft-kiota-abstractions>=1.11.1
+	source = python-microsoft-kiota-serialization-form-1.11.7.tar.gz::https://github.com/microsoft/kiota-python/archive/refs/tags/microsoft-kiota-serialization-form-v1.11.7.tar.gz
+	source = change-flit-upper-bound.diff
+	source = hardcode-version.diff
+	b2sums = b86d262f9e617d252e7d194af3f32bca0dc3fb159d0cbac1ff54ea00986a94e792d91ed495dcefec1c4c32850de20c06a7d9beb34aedb8f3fbcec2c94f046adf
+	b2sums = c0b20f675d9ad875c338d1f7d3987047a9543e2e6f04f0601e379091305d34e335b0815e5c1eb905f82610e11a01083e5194611ca60b9ede3d4fa35f53927f9e
+	b2sums = 23424e8b7497a494f14874b78f7ed21116cab7fbd922a5b94c229e6c282e01dc614166e803743770d6a7b7c0d8b0d6459e7a2d5d5b1a465a7cc4bb73c876b918
+
+pkgname = python-microsoft-kiota-serialization-form
