@@ -5,8 +5,8 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-libtiff
-pkgver=4.7.1
-pkgrel=3
+pkgver=4.7.2
+pkgrel=1
 pkgdesc="Library for manipulation of TIFF images (mingw-w64)"
 arch=('any')
 url="https://libtiff.gitlab.io/libtiff/"
@@ -23,7 +23,7 @@ makedepends=(
 )
 options=('!strip' 'staticlibs' '!buildflags')
 source=("git+https://gitlab.com/libtiff/libtiff.git?signed#tag=v${pkgver}")
-b2sums=('28fb783db36e184b578f19d1141c82df46fd60da323b592c73e6da97f3e2dddb5cb38bd2977eb4b93e361a65ee116cd249e980cebfd558d4d57182d1c8f8b3a9')
+b2sums=('1d5b034b62714984eabbc4fc503e06747884126bfd79cace67f29e0017c2b5067cd88f50e53a716f23f0e6d1244939b37a94e86d20118abe1af798a0692c57fa')
 validpgpkeys=(
   'EBDFDB21B020EE8FD151A88DE301047DE1198975' # Bob Friesenhahn <bfriesen@simple.dallas.tx.us>
   'B1FA7D81EEB8E66399178B9733EBBFC47B3DD87D' # Even Rouault <even.rouault@spatialys.com>
