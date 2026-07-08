@@ -2,7 +2,7 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
 : ${_pkgtype=-dev-bin}
-: ${_pkgnamefmt:=LibreOfficeDec}
+: ${_pkgnamefmt:=LibreOfficeDev}
 
 _pkgname="libreoffice"
 pkgname="${_pkgname}${_pkgtype:-}"
