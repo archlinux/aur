@@ -1,7 +1,7 @@
 # Maintainer: Stefan Kupych <stefan@kupy.ch>
 #
 pkgname=rapid
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Rapid API Dialogue - A REPL for APIs"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/kupych/rapid"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kupych/rapid/archive/v$pkgver.tar.gz")
-sha256sums=('2f9cbacc6567f42c5a5defb52f63e2996df0f79f4e87e903932d37aff097a9fb')
+sha256sums=('7eac8770e998c4dd9e9e73c6ae3fb036be2655d033ee7973fbd8c190eeba352c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
