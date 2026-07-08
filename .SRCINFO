@@ -1,0 +1,20 @@
+pkgbase = knit-bin
+	pkgdesc = A simple and flexible build too using Lua, similar to make/mk
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/zyedidia/knit
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = knit
+	conflicts = knit
+	options = !strip
+	source_x86_64 = knit-x86_64-1.1.1.tgz::https://github.com/zyedidia/knit/releases/download/v1.1.1/knit-1.1.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 0f329b87b65f44ebf405c9191daefadcbd1e60d7e25e45cc09326b93683bd573
+	source_i686 = knit-i686-1.1.1.tgz::https://github.com/zyedidia/knit/releases/download/v1.1.1/knit-1.1.1-linux-386.tar.gz
+	sha256sums_i686 = 8f00b8977de1179f024d2aa04035c2242d7e98a8d674da922bd52a99e5325f30
+	source_aarch64 = knit-aarch64-1.1.1.tgz::https://github.com/zyedidia/knit/releases/download/v1.1.1/knit-1.1.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 3977141ae9f9b37d9946e06ecc4ec7c63888661e976cf0118339465048c4b964
+
+pkgname = knit-bin

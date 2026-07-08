@@ -1,0 +1,5 @@
+[knit-bin]
+source = "github"
+github = "zyedidia/knit"
+use_latest_release = true
+prefix = "v"
