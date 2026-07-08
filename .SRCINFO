@@ -1,6 +1,6 @@
 pkgbase = equicord-openasar
 	pkgdesc = The other cutest Discord client mod (with OpenAsar)
-	pkgver = 1.0.137.r7558g0720b1f64.r862g82015ce
+	pkgver = 1.0.137.r7582g5acf0141b.r862g82015ce
 	pkgrel = 1
 	url = https://equicord.org/
 	arch = x86_64
