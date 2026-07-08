@@ -56,6 +56,7 @@ depends=(
   libxml2         lib32-libxml2
   libxi           lib32-libxi
   libxrandr       lib32-libxrandr
+  mpg123          lib32-mpg123
   pipewire        lib32-pipewire
   python
   python-six
@@ -87,10 +88,7 @@ depends=(
   nspr            lib32-nspr
   openal          lib32-openal
   pango           lib32-pango
-  sdl2            lib32-sdl2
-  sdl2_image      lib32-sdl2_image
-  sdl2_mixer      lib32-sdl2_mixer
-  sdl2_ttf        lib32-sdl2_ttf
+  sdl2-compat     lib32-sdl2-compat
   pipewire        lib32-pipewire
   librsvg
   libsm           lib32-libsm
