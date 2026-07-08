@@ -2,7 +2,7 @@
 
 pkgname=plasma6-applets-thermal-monitor
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A KDE Plasmoid for displaying system temperatures."
 arch=('any')
 url='https://invent.kde.org/olib/thermalmonitor'
@@ -11,6 +11,12 @@ depends=('plasma-workspace' 'ksystemstats' 'libksysguard' 'kitemmodels' 'kdeclar
 makedepends=('cmake' 'extra-cmake-modules')
 source=("$url/-/archive/v$pkgver/thermalmonitor-v$pkgver.tar.gz")
 sha256sums=('6442c696c204a0b218c847acf19951a9970528dd575904df736a559d566463d4')
+
+prepare() {
+  cd thermalmonitor-v$pkgver
+  # Fix this issue: https://invent.kde.org/olib/thermalmonitor/-/work_items/33
+  sed -i 's/display\.includes("\[")/display.startsWith("[")/' package/contents/ui/config/AvailableSensors.qml # Special thanks to  @danieljsv
+}
 
 build() {
   cd thermalmonitor-v$pkgver
