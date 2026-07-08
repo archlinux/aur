@@ -5,13 +5,17 @@ pkgbase = monado-vulkan-layers-git
 	url = https://gitlab.freedesktop.org/monado/utilities/vulkan-layers
 	arch = i686
 	arch = x86_64
-	license = boost
+	license = BSL-1.0
+	makedepends = vulkan-icd-loader
 	makedepends = vulkan-headers
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	provides = monado-vulkan-layers
+	conflicts = monado-vulkan-layers
 	source = vulkan-layers::git+https://gitlab.freedesktop.org/monado/utilities/vulkan-layers.git#branch=main
 	md5sums = SKIP
 
