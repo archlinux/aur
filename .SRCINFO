@@ -1,14 +1,11 @@
 pkgbase = priestess-arknights
 	pkgdesc = 桌面伴侣普瑞赛斯 (Priestess) — 基于 Claude Code / Codex CLI 后端的 Electron 托盘应用
-	pkgver = 0.7.6
-	pkgrel = 2
+	pkgver = 0.7.8
+	pkgrel = 1
 	url = https://github.com/aklnaaw/claude-code-but-priestess
 	install = priestess.install
 	arch = x86_64
 	license = custom:UNLICENSED
-	makedepends = git
-	makedepends = nodejs
-	makedepends = npm
 	depends = cairo
 	depends = dbus
 	depends = expat
@@ -37,7 +34,7 @@ pkgbase = priestess-arknights
 	depends = pango
 	depends = udev
 	depends = zlib
-	source = https://github.com/aklnaaw/claude-code-but-priestess.git
+	source = priestess-arknights-0.7.8.AppImage::https://github.com/aklnaaw/claude-code-but-priestess/releases/download/v0.7.8/priestess-arknights-0.7.8.AppImage
 	sha256sums = SKIP
 
 pkgname = priestess-arknights

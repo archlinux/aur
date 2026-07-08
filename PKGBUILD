@@ -6,9 +6,9 @@
 
 pkgname=priestess-arknights
 _pkgreal=priestess-arknights
-_upstream_url=https://github.com/SVAH-X/claude-code-but-priestess
-pkgver=0.7.6
-pkgrel=2
+_ghrepo=aklnaaw/claude-code-but-priestess
+pkgver=0.7.8
+pkgrel=1
 pkgdesc="桌面伴侣普瑞赛斯 (Priestess) — 基于 Claude Code / Codex CLI 后端的 Electron 托盘应用"
 arch=('x86_64')
 url="https://github.com/aklnaaw/claude-code-but-priestess"
@@ -43,62 +43,21 @@ depends=(
   'udev'
   'zlib'
 )
-makedepends=('git' 'nodejs' 'npm')
+provides=("${pkgname}")
 install=priestess.install
-source=("${url}.git")
+source=("${pkgname}-${pkgver}.AppImage::https://github.com/${_ghrepo}/releases/download/v${pkgver}/${pkgname}-${pkgver}.AppImage")
 sha256sums=('SKIP')
 
-prepare() {
-  mkdir -p "${srcdir}"
-  rm -rf "${srcdir:?}/${_pkgreal}"
-  git clone --depth 1 --branch main "${url}.git" "${srcdir}/${_pkgreal}"
-}
-
-build() {
-  cd "${srcdir}/${_pkgreal}"
-
-  npm install
-  npx electron-builder --linux dir
-}
-
 package() {
-  cd "${srcdir}/${_pkgreal}"
-
-  local build_dir
-  if [[ -d "dist/linux-unpacked" ]]; then
-    build_dir="dist/linux-unpacked"
-  elif [[ -d "dist/linux-x64" ]]; then
-    build_dir="dist/linux-x64"
-  else
-    build_dir="$(ls -d dist/linux-* 2>/dev/null | head -1)"
-  fi
-
-  if [[ -z "${build_dir}" ]]; then
-    error "electron-builder output not found in dist/"
-    exit 1
-  fi
-
-  # Install to /opt/priestess
-  install -d "${pkgdir}/opt/priestess"
-  cp -a "${build_dir}"/* "${pkgdir}/opt/priestess/"
-
-  # The binary is named after the "name" field in package.json
-  local _bin="${pkgdir}/opt/priestess/${_pkgreal}"
-  if [[ -f "${_bin}" ]]; then
-    chmod 755 "${_bin}"
-  fi
-
-  chmod 4755 "${pkgdir}/opt/priestess/chrome-sandbox" 2>/dev/null || true
+  install -d "${pkgdir}/opt/${pkgname}"
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
 
   # Wrapper script
   install -d "${pkgdir}/usr/bin"
   cat > "${pkgdir}/usr/bin/priestess" << WRAPPER
 #!/bin/bash
-export ELECTRON_OZONE_PLATFORM_HINT="\${ELECTRON_OZONE_PLATFORM_HINT:-auto}"
-export ELECTRON_ENABLE_WAYLAND_ACTIVATION_TOKEN_HACK="\${ELECTRON_ENABLE_WAYLAND_ACTIVATION_TOKEN_HACK:-1}"
-exec /opt/priestess/${_pkgreal} "\$@"
+exec /opt/${pkgname}/${pkgname}.AppImage "\$@"
 WRAPPER
-  chmod 755 "${pkgdir}/usr/bin/priestess"
   chmod 755 "${pkgdir}/usr/bin/priestess"
 
   # Desktop entry
@@ -117,8 +76,9 @@ Terminal=false
 StartupWMClass=PRTS
 DESKTOP
 
-  # Icon
-  install -Dm644 "assets/character/icon.png" "${pkgdir}/usr/share/pixmaps/priestess.png"
+  # Icon (extract from AppImage)
+  install -d "${pkgdir}/usr/share/pixmaps"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/usr/share/pixmaps/priestess.png" 2>/dev/null || true
 
   # AppData
   install -d "${pkgdir}/usr/share/metainfo"
@@ -137,8 +97,8 @@ DESKTOP
 APPDATA
 
   # License
-  install -d "${pkgdir}/usr/share/licenses/priestess"
-  cat > "${pkgdir}/usr/share/licenses/priestess/LICENSE" << 'LICENSE'
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  cat > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" << 'LICENSE'
 This project is UNLICENSED. All rights reserved.
 Source: https://github.com/SVAH-X/claude-code-but-priestess
 LICENSE
