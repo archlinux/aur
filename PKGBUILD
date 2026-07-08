@@ -1,7 +1,7 @@
 # Maintainer: tkmxqrdxddd <tkmxqrd@gmail.com>
 
 pkgname=dbd-timer
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Overlay stopwatch with two independent timers, Wayland overlay, and gamepad support"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=('meson')
 source=("https://github.com/tkmxqrdxddd/dbd-1v1-timer-linux/archive/v$pkgver.tar.gz")
-sha256sums=('4773682e81cafddca2f926bbe8591464fa3b62cc88c1357e23fa61504c869f4d')
+sha256sums=('5197432c4cf50d81428ae29b2be3f0c72f964f1936584dea0461ceb96731f41a')
 
 build() {
   cd "$srcdir/dbd-1v1-timer-linux-$pkgver"
