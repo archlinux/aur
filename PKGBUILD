@@ -3,7 +3,7 @@
 _pkgname=navicat17-premium-cs
 pkgname=navicat17-premium-zh-cn
 pkgver=17.3.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Navicat Premium is a multi-connection database development tool. (Chinese Simplified)"
 arch=('x86_64' 'aarch64')
 url='https://www.navicat.com.cn/products/navicat-premium'
@@ -16,8 +16,8 @@ source_x86_64=("${_pkgname}-x86_64-${pkgver}.AppImage::https://dn.navicat.com/do
 source_aarch64=("${_pkgname}-aarch64-${pkgver}.AppImage::https://dn.navicat.com/download/navicat17-premium-cs-aarch64.AppImage")
 
 b2sums=('7c5ff753c2800d2dc7b0194d7ee5b4ac0b2e9d056fb69205e52b0c3e3c50d2335caaeca6ff9a3f41bd22d89e9f3c320dbbbacf965608a4d3e94d7bded942cf85')
-b2sums_x86_64=('191480e2b3a21a6b807ff13077da18d6d2a5eb6cf7aab1247ceca850bc1bc4007b51255e95ffea11a4bbb30607e02fb6245e69495a4c1f5026ec7190b97eb201')
-b2sums_aarch64=('9bfd81f5e3c9a2657a5abb1e202445cd54ec0c045dc412d1b03f1cdae3345d2ce86acb128fbf55b3df9cd8caeb9beb8b0217f8292ee4edc7be9f719f089ac5a0')
+b2sums_x86_64=('c633020961f2fabe7a37f5998f41644ec425010d98ef75ae42bce0e3cbd7488691b93740f1123c12a4a28cd65022f596bc5fb3c0bd3dd1acdf040cb29d53489f')
+b2sums_aarch64=('a0891e62a0d9fa4613afc21e5fd2d91020a48723cc1993ca5fa8827abd362d601463e7eab446ed8ff5f56abe9c8a7276f7a63808f97b5a4171cdbf71bc3897c5')
 
 options=('!strip' '!debug')
 
