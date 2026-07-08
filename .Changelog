@@ -1,5 +1,17 @@
 # mpf-check-bin .Changelog
 
+## 2026-05-05, mpf-check-bin 3.8.3-1
+
+* Bump to 3.8.3
+
+## 2026-05-05, mpf-check-bin 3.7.1-1
+
+* Bump to 3.7.1
+
+## 2026-02-27, mpf-check-bin 3.6.0-2
+
+* Unreleased; PKGBUILD adopted some recommended changes
+
 ## 2025-11-28, mpf-check-bin 3.6.0-1
 
 * Bump to 3.6.0
@@ -142,5 +154,4 @@ expected to be deprecated in MPF 2.6.7.
 
 ## Why consume the release binary rather than compile from source?
 
-I can't be bothered at the moment.
-
+This package is intended to provide users with Redump-compatible tools.  Redump moderators have made known that they will reject submissions generated with user-compiled binaries, yes, even if the software is FOSS.
