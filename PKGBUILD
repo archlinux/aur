@@ -2,7 +2,7 @@
 
 pkgname=ntpd-rs-git
 _pkgname=ntpd-rs
-pkgver=r3036.g3c2e03e9
+pkgver=r3119.gcc4e20bf
 pkgrel=1
 pkgdesc='A full-featured implementation of the Network Time Protocol, including NTS support, written in Rust.'
 url='https://github.com/pendulum-project/ntpd-rs'
@@ -49,7 +49,7 @@ build() {
   export CFLAGS+=" -ffat-lto-objects"
 
   echo "::: ntpd-rs-git - starting to build"
-  cargo build --release --locked --target x86_64-unknown-linux-gnu
+  cargo build --release --target x86_64-unknown-linux-gnu
   echo "::: ntpd-rs-git - build done"
 }
 
