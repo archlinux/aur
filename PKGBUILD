@@ -1,7 +1,7 @@
 # Maintainer: c2h5oh
 
 pkgname="orca-slicer"
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 epoch=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
@@ -19,7 +19,7 @@ provides=("orca-slicer")
 conflicts=("orca-slicer")
 source=("OrcaSlicer-v${pkgver}.tar.gz::https://codeload.github.com/OrcaSlicer/OrcaSlicer/tar.gz/refs/tags/v${pkgver}"
         "orca-slicer.sh")
-sha256sums=('2bef4caa8e0329aae5d48acff311076e40839f8779ffabcae4045f249137bb90'
+sha256sums=('d97244baf15eb9377aa86714cb042d537ff3b1db13b7c2657cf865b820701cf0'
             'c1ca1fadba5f5c088af80f076f911c74fa594e8200cee7be65e4330f43909e7d')
 
 build() {
