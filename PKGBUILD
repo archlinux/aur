@@ -2,8 +2,8 @@
 pkgname=hermes-agent-desktop
 _pkgname=hermes-desktop          # /usr/bin symlink name (AUR convention, lowercase)
 _upstream=Hermes                 # productName + executableName
-_pkgver_tag=v2026.7.7
-pkgver=0.18.1
+_pkgver_tag=v2026.7.7.2
+pkgver=0.18.2
 pkgrel=1
 pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=('base-devel' 'git' 'nodejs>=22' 'npm')
 conflicts=('hermes-agent-desktop-bin')
 options=('!strip' '!debug')
 source=("${url}/archive/refs/tags/${_pkgver_tag}.tar.gz")
-sha256sums=('505a1debcaf641423e872fb11440a771c0db9b79f765d0bff858ff4b68babbdf')
+sha256sums=('f5d1022eed3763a768cf7b0f0844831f0170a35f54eb8d18223f2e93f503025e')
 
 # NOTE: ${srcdir} is empty at the top level of a PKGBUILD — makepkg only sets
 # it inside the function scope of prepare()/build()/package(). Computing the
@@ -44,9 +44,9 @@ _resolve_tag_sha() {
 
 prepare() {
   cd "$(_extract_dir)"
-  # The v2026.7.1 release commit message says "release v0.18.0" but
-  # apps/desktop/package.json was not bumped — it still says 0.17.0.
-  # Patch it here so pkgver matches the release.
+  # The release commit message bumps the Hermes Agent version (0.18.2) but
+  # apps/desktop/package.json is not bumped — it still says 0.17.0. Patch
+  # it here so pkgver matches the release.
   npm pkg set version=${pkgver} --prefix apps/desktop
   # write-build-stamp.cjs (run by apps/desktop's `build` script) needs a git
   # commit SHA to stamp the packaged installer. The release tarball has no
