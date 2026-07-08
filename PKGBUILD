@@ -1,7 +1,7 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
 pkgname=fastmail
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Email made better'
 license=('custom:fastmail')
@@ -13,7 +13,7 @@ makedepends=('desktop-file-utils')
 _appimg="com.fastmail.Fastmail-${pkgver}.AppImage"
 source=("${_appimg}::https://dl.fastmailcdn.com/desktop/production/linux/x64/${_appimg}"
         "LICENSE.md") # https://www.fastmail.com/policies/terms-of-service/
-sha512sums=('2a71409a31901977c0f37243ca74a2c5e728aaa65b9c2d1b60615055ff187cfdc84f0b291cd0e3dd320ca768ea5cab65f63e03947d70f1e2f049b283d049fd5a'
+sha512sums=('d213534453409e72cfab5f62b276a85655cd97acdae19e68eb287da2f539eb8241332023b0334793c87edb302b492a7275a524cbab4880052c3a1856ac846d72'
             'c544bd5496ec83a0b2475eb12070951ac92da66a6314357165ba517f986412f2c54b303186efc2c068562ac345108eeef56e7926a920cbbd820e700607d8b220')
 
 prepare() {
