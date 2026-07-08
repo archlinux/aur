@@ -1,23 +1,18 @@
-# Maintainer: Jason Mars <jason@jaseci.org>
+# Maintainer: Nitin Shankar Madhu <nitin@jaseci.org>
 # A binary package for the self-contained native `jac` tool from Jaseci.
 # This follows the same install path as the upstream installer:
 #   curl -fsSL https://raw.githubusercontent.com/jaseci-labs/jaseci/main/scripts/install.sh | bash
 # but installs the prebuilt binary to /usr/bin instead of ~/.local/bin.
-#
-# To update to a newer release: bump `pkgver`, then regenerate the two
-# sha256sums below from the release's .sha256 sidecar files, e.g.
-#   curl -fsSL https://github.com/jaseci-labs/jaseci/releases/download/v<pkgver>/jac-<pkgver>-linux-x86_64.sha256
-#   curl -fsSL https://github.com/jaseci-labs/jaseci/releases/download/v<pkgver>/jac-<pkgver>-linux-aarch64.sha256
 
-pkgname=jac-bin
+pkgname=jaclang
 pkgver=0.30.9
 pkgrel=1
-pkgdesc="Jac programming language — self-contained native jac binary (Jaseci)"
+pkgdesc="The Jac programming language"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jaseci-labs/jaseci"
 license=('MIT')
-provides=('jac')
-conflicts=('jac')
+provides=('jac' 'jac-bin')
+conflicts=('jac' 'jac-bin')
 options=('!strip')  # upstream binary may already be stripped; avoid unnecessary work
 
 # One source per architecture. The asset name carries the jaclang version,
