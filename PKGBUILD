@@ -1,6 +1,6 @@
 # Maintainer: Parcoil <parcoil@parcoil.com>
 pkgname=dotline
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A modern crosshair overlay"
 arch=('x86_64')
