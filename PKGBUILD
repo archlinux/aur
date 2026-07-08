@@ -4,8 +4,8 @@ pkgname=openmodelica-bin
 _omver=1.27.0
 _debver=1
 pkgver=${_omver}
-pkgrel=1
-pkgdesc="A complete Modelica modeling and simulation environment (from Debian binaries)"
+pkgrel=2
+pkgdesc="A complete Modelica modeling and simulation environment (from pre-built .deb binaries)"
 arch=('x86_64')
 url="https://openmodelica.org/"
 license=('OSMC-PL')
@@ -25,7 +25,7 @@ optdepends=(
     'texlive-latex: For LaTeX documentation generation in OMNotebook'
 )
 
-_baseurl="https://build.openmodelica.org/omc/builds/linux/releases/${_omver}/pool/contrib-trixie"
+_baseurl="https://build.openmodelica.org/omc/builds/linux/releases/${_omver}/pool/contrib-resolute"
 
 source=(
     "${_baseurl}/drcontrol_${_omver}-${_debver}_all.deb"
@@ -81,7 +81,7 @@ package() {
 
     install -Dm644 "$pkgdir/usr/share/doc/openmodelica/copyright" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    # Remove broken symlinks from Debian package
-    rm "$pkgdir/usr/include/omc/cpp/boost"
-    rm "$pkgdir/usr/include/omc/omsicpp/boost"
+    # Previously had these here to remove broken symlinks, no longer needed.
+    # rm "$pkgdir/usr/include/omc/cpp/boost"
+    # rm "$pkgdir/usr/include/omc/omsicpp/boost"
 }
