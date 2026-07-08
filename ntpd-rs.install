@@ -3,27 +3,28 @@
     case `ps --no-headers -o comm 1` in
         dinit)
             echo "::: Detected [dinit]"
-            echo " :: Stopping [dinit] service ntpd-rs"
+            echo " :: Stopping [ntpd-rs] service"
             dinitctl stop ntpd-rs
             #echo " :: creating [ntpd-rs] service user"
             #if ! getent passwd ntpd-rs >/dev/null; then
             #    useradd -r -U -d /nonexistent -s /usr/sbin/nologin -c "Package ntpd-rs user" ntpd-rs
             #fi
             # dinitctl unload ntpd-rs
-            echo " :: Showing status of [dinit] service ntpd-rs"
+            echo " :: Showing status of [ntpd-rs] service"
             dinitctl status ntpd-rs
         ;;
         init)
             echo "::: Detected [init]"
-            echo "::: Unsupported init system"
+            echo " :: Unsupported init system"
         ;;
         systemd)
             echo "::: Detected [systemd]"
-            echo " :: Stopping [systemd] service ntpd-rs"
+            echo " :: Stopping [ntpd-rs] service"
             systemctl stop ntpd-rs
         ;;
         *)
             echo "::: Unknown init system"
+            echo " :: Unsupported init system"
         ;;
     esac
 #}
@@ -33,47 +34,52 @@ post_install() {
     case `ps --no-headers -o comm 1` in
         dinit)
             echo "::: Detected [dinit]"
-            echo " :: checking [ntpd-rs] service user"
+            echo " :: Checking [ntpd-rs] service user"
             if ! getent passwd ntpd-rs >/dev/null; then
                 echo " :: creating [ntpd-rs] service user"
                 useradd -r -U -d /nonexistent -s /usr/sbin/nologin -c "Package ntpd-rs user" ntpd-rs
             else
                 echo " :: [ntpd-rs] service user already exists"
             fi
-            echo " :: Setting capability [CAP_SYS_TIME] to [dinit] process"
+            echo " :: Setting capability [CAP_SYS_TIME] to [ntp-daemon] process"
             setcap 'cap_sys_time+ep' /usr/sbin/ntp-daemon
-            echo " :: Installing [dinit] service description file"
+            echo " :: Installing [ntpd-rs-pre] service description file"
             ln -sf /usr/share/ntpd-rs/ntpd-rs-pre.dinit /etc/dinit.d/ntpd-rs-pre
+            echo " :: Installing [ntpd-rs] service description file"
             ln -sf /usr/share/ntpd-rs/ntpd-rs.dinit /etc/dinit.d/ntpd-rs
-            echo " :: Enabling [dinit] service ntpd-rs-pre"
+            echo " :: Enabling [ntpd-rs-pre] service"
             dinitctl enable ntpd-rs-pre
-            echo " :: Enabling [dinit] service ntpd-rs"
+            echo " :: Enabling [ntpd-rs] service"
             dinitctl enable ntpd-rs
-            echo " :: Starting [dinit] service ntpd-rs"
+            echo " :: Starting [ntpd-rs] service"
             dinitctl start ntpd-rs
-            echo " :: Showing status of [dinit] service ntpd-rs"
+            echo " :: Showing status of [ntpd-rs] service ntpd-rs"
             dinitctl status ntpd-rs
         ;;
         init)
             echo "::: Detected [init]"
-            echo "::: Unsupported init system"
+            echo " :: Unsupported init system"
         ;;
         systemd)
             echo "::: Detected [systemd]"
-            echo " :: Installing [systemd] service files"
+            echo " :: Installing [ntpd-rs] service file"
             ln -sf /usr/share/ntpd-rs/ntpd-rs.service /usr/lib/systemd/system/ntpd-rs.service
+            echo " :: Installing [ntpd-rs-metrics] service file"
             ln -sf /usr/share/ntpd-rs/ntpd-rs-metrics.service /usr/lib/systemd/system/ntpd-rs-metrics.service
+            echo " :: Installing [ntpd-rs] user configuration file"
             ln -sf /usr/share/ntpd-rs/ntpd-rs.sysuser /usr/lib/sysusers.d/ntpd-rs.conf
-            echo " :: Creating user and group"
+            echo " :: Creating [systemd] user and group"
             systemd-sysusers
-            echo " :: Reloading services definitions"
+            echo " :: Reloading [systemd] services definitions"
             systemctl daemon-reload
-            echo " :: Starting [systemd] service ntpd-rs"
+            echo " :: Starting [ntpd-rs] service"
             systemctl start ntpd-rs
+            echo " :: Starting [ntpd-rs-metrics] service"
             systemctl start ntpd-rs-metrics
         ;;
         *)
             echo "::: Unknown init system"
+            echo " :: Unsupported init system"
         ;;
     esac
 }
@@ -81,22 +87,27 @@ post_install() {
 #pre_upgrade() {
     case `ps --no-headers -o comm 1` in
         dinit)
-            echo "::: Detected [dinit]; stopping [dinit] service"
+            echo "::: Detected [dinit]"
+            echo " :: Stopping [ntpd-rs] service"
             dinitctl stop ntpd-rs
             # dinitctl unload ntpd-rs
-            echo " :: Showing status of [dinit] service ntpd-rs"
+            echo " :: Showing status of [ntpd-rs] service"
             dinitctl status ntpd-rs
         ;;
         init)
             echo "::: Detected [init]"
-            echo "::: Unsupported init system"
+            echo " :: Unsupported init system"
         ;;
         systemd)
-            echo "::: Detected [systemd]; stopping [systemd] service files"
+            echo "::: Detected [systemd]"
+            echo " :: Stopping [ntpd-rs] service"
             systemctl stop ntpd-rs
+            echo " :: Stopping [ntpd-rs-metrics] service"
+            systemctl stop ntpd-rs-metrics
         ;;
         *)
             echo "::: Unknown init system"
+            echo " :: Unsupported init system"
         ;;
     esac
 #}
@@ -109,34 +120,37 @@ post_upgrade() {
             # dinitctl unload ntpd-rs-pre
             echo " :: Unloading [ntpd-rs] service"
             dinitctl unload ntpd-rs
-            echo " :: Installing [dinit] service description file"
+            echo " :: Installing [ntpd-rs-pre] service description file"
             ln -sf /usr/share/ntpd-rs/ntpd-rs-pre.dinit /etc/dinit.d/ntpd-rs-pre
+            echo " :: Installing [ntpd-rs] service description file"
             ln -sf /usr/share/ntpd-rs/ntpd-rs.dinit /etc/dinit.d/ntpd-rs
-            echo " :: Setting capability [CAP_SYS_TIME] to [dinit] process"
+            echo " :: Setting capability [CAP_SYS_TIME] to [ntp-daemon] process"
             setcap 'cap_sys_time+ep' /usr/sbin/ntp-daemon
-            echo " :: Reloading [dinit] service description file"
+            echo " :: Reloading [ntpd-rs] service description file"
             # dinitctl reload ntpd-rs-pre
             dinitctl reload ntpd-rs
-            echo " :: Starting [dinit] service description file"
+            echo " :: Starting [ntpd-rs] service description file"
             dinitctl start ntpd-rs
-            echo " :: Showing status of [dinit] service ntpd-rs"
+            echo " :: Showing status of [ntpd-rs] service"
             dinitctl status ntpd-rs
         ;;
         init)
             echo "::: Detected [init]"
-            echo "::: Unsupported init system"
+            echo " :: Unsupported init system"
         ;;
         systemd)
             echo "::: Detected [systemd]"
-            echo " :: Installing [systemd] service files"
+            echo " :: Installing [ntpd-rs] service file"
             ln -sf /usr/share/ntpd-rs/ntpd-rs.service /usr/lib/systemd/system/ntpd-rs.service
+            echo " :: Installing [ntpd-rs-metrics] service file"
             ln -sf /usr/share/ntpd-rs/ntpd-rs-metrics.service /usr/lib/systemd/system/ntpd-rs-metrics.service
+            echo " :: Installing [ntpd-rs] service files"
             ln -sf /usr/share/ntpd-rs/ntpd-rs.sysuser /usr/lib/sysusers.d/ntpd-rs.conf
             echo " :: Creating user and group"
             systemd-sysusers
             echo " :: Reloading services definitions"
             systemctl daemon-reload
-            echo " :: Starting [systemd] service technitium-dns-server"
+            echo " :: Restarting [ntpd-rs] service"
             systemctl stop ntpd-rs
             systemctl start ntpd-rs
         ;;
