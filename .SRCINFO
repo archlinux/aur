@@ -1,0 +1,23 @@
+pkgbase = python-microsoft-kiota-serialization-json
+	pkgdesc = Microsoft Kiota Serialization library for JSON
+	pkgver = 1.11.7
+	pkgrel = 1
+	url = https://github.com/microsoft/kiota-python
+	arch = any
+	license = MIT
+	checkdepends = python-pytest>=9.1.1
+	checkdepends = python-pytest-asyncio>=1.4.0
+	makedepends = python-build
+	makedepends = python-flit-core>=3.2.0
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.10.0
+	depends = python-microsoft-kiota-abstractions>=1.11.1
+	source = python-microsoft-kiota-serialization-json-1.11.7.tar.gz::https://github.com/microsoft/kiota-python/archive/refs/tags/microsoft-kiota-serialization-json-v1.11.7.tar.gz
+	source = change-flit-upper-bound.diff
+	source = hardcode-version.diff
+	b2sums = ad058fdeb8f97d46607ccde9676b8895a15db1eceda8faf644f841a1f9a4cca78d640fc11a3d4b19ef7c4cf039f69055d02d1519296c7b7261ebc9a6320c2a85
+	b2sums = 96b1fa7b750e331a124328ab854606363709e2bca6b40177be6ec7ce6b071dbf1052023ef4340eed44162c85af227b9477d065afe721ded878b513731042d01f
+	b2sums = 30ac7b60a22dba9c322790124cfc90354351a827fc49140fbf4589ba2b4767819b0fc1a45f14dc40858ec1271ead3807d1c443ce64b9fca9690debaf15c39269
+
+pkgname = python-microsoft-kiota-serialization-json

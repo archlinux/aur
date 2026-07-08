@@ -1,0 +1,11 @@
+diff --git a/packages/serialization/json/pyproject.toml b/packages/serialization/json/pyproject.toml
+index 6020efc..579fc70 100644
+--- a/packages/serialization/json/pyproject.toml
++++ b/packages/serialization/json/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["flit_core>=3.2,<4"]
++requires = ["flit_core>=3.2,<5"]
+ build-backend = "flit_core.buildapi"
+ 
+ [project]
