@@ -4,7 +4,7 @@ pkgname=openmodelica-bin
 _omver=1.27.0
 _debver=1
 pkgver=${_omver}
-pkgrel=2
+pkgrel=3
 pkgdesc="A complete Modelica modeling and simulation environment (from pre-built .deb binaries)"
 arch=('x86_64')
 url="https://openmodelica.org/"
@@ -48,24 +48,24 @@ source=(
     "${_baseurl}/openmodelica_${_omver}-${_debver}_amd64.deb"
 )
 
-sha256sums=('d9ae17e30d06589314525bd2c60596e3f9efb3ce28c279c16e47943a511ffca6'
-            '6ccdb20eb570647a47cc4b23384508816919cc9b11400fa9360c630fb14e9a0b'
-            '67c131ba3cc84518fcb3a8dec3ab3457de6aeaa22682bf828af16b0644991e8d'
-            '7c1412a94259d0f7dc54d0b399c77a967f7fb0be0ddb103cdfc18ddac3c1a01b'
-            'bc60642480882b7fc9f7f86389665a72bd2fb0bf52a276e44af54772696d3758'
-            'eda1bb59ab711b38801bb8da074a7e99e26024341678f3d8e2ef3b75f6c0c6ee'
-            '9a43806a5e447566c7ab8446afedfd24d2b8eeead6cbc2f217b0bf65b72f5740'
-            'edfb26ac749b7b1bbe56681ffe989f007a03c2a6152695edfbdc082b14ec7454'
-            'b2ac5a5e1a2a6283e974a33d93989cbca6c49ddd9b470f05ddc339d377ccc881'
-            '8a26e0087e9334777c6f1d2440dd21d523ed7d35625b3410ae286c6305e8d4dc'
-            '6b08ef82a5d7d5d06fa6bd60cfd673a1e27747476edf6340cbf1a6c9011c0af1'
-            '08eb23cf08ddfa9b9684f5155e005d3e4dea6bd4ae050f81570c985740496222'
-            '43f07452e18de92fa30dfaaad1b5259f6cf3d51546e28832600fb069e8c9208b'
-            '4fa2925e57dd32307a484aa33527ae89e89fc5b31a96c40fdcbed4a01968eb79'
-            '36d9a60280bbc02a7ae7a95997e7d44db8f2df0c25d9f5390d09b6e2ae620ad4'
-            'dd0fe83f21058e8a09e6573c6f33cb7fb8c6d4b95548a2bcda05fade737e2885'
-            '9d9a271df4aa830b5b153489cdce234e731f48526b58d2308b5651fd55198a64'
-            'd293dca131fad3ea238967899480b447ea00be40b1548413e16c2874847a5ed8')
+sha256sums=('dcce3ee85f8f4a59b1171f8e500b9512365f88285ada23309c968d44c988853a'
+            '48cf5f1e85be521a4e76836cc0ac311e7f2d21dc186a5651e7c64e33ed21fb5f'
+            'cceca8e0e3d2c780c082e4798f43bcf46598954a36c95b125caf454883cd3b4d'
+            'c107cd44a9e4ec66571fa36612a5aa12c647a93a1b934a86fce787906ac908d2'
+            'daffafb70c1101383e7902052ede1697ed56789eb478eca2d05d04535863b89d'
+            '62042377ee26f9e58e661d1a4fbe00be2da74add1bc94413f62d5f3ddc23387f'
+            '8630b081b82bbdfb7c4e4f58c759b23db412df55155f0afd85e900143fbb3fb3'
+            '5c4608c9a2c8078e178e84f68e995d5266dbe90d2eb7ad91547db8d5e48fd996'
+            'a25afd9a659389714fad86941d601e5d1d6835afc4fc8f46af9038e340f731ff'
+            '7a2504be7f3e9f77443d0fa302fc95d7b177ecba12cad2a5accba74c5ff6a0a5'
+            'e0c278a084e6ebc2f6bc3e3c3b1a8bbd0ecd439bd56599002aaeab50554b7400'
+            'ef571e4347ac8d6c2f0c22f8687ba5e7f2e50b332bd7f0db605fae59aa7e371c'
+            '8e200cdbe5cdf7de09de0b47fb56efd1b0d2796db279fb311055a1bcfe5e6991'
+            '5e43b6cb6992a9bac6a5fa632be901f98cd8c4bdf79eeac59c90cc02846dc205'
+            '887898bb91b5e274efc5da39b6de3f58ce75bf6e0e6aedc1bbd6fd174bcc85c3'
+            'fa011e38fcb0aba9178c2f6739f6cddb3d9168949c99824e9fca6a1b38554675'
+            '1612998509e1bb5f9b1046d88c9cabf38a6591f059229df43e5757e8ebe3a407'
+            '11d2585a729b59f2a799c2039c7ddfd4b1927b92f8ac6480a93afe515f9af67c')
 
 package() {
     for deb in "${source[@]}"; do
