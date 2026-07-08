@@ -1,5 +1,5 @@
-# Maintainer: krnlsoft <krnlsoft 4t hotmail d0t it>
 # Maintainer: Yegor Pomortsev <yegor@pomortsev.com>
+# Contributors: krnlsoft
 # Contributors: theokonos
 # Contributors: Ted Sadler
 # Contributors: dekart811
