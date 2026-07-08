@@ -1,7 +1,7 @@
 # Maintainer: nizne <nizne@outlook.com>
 pkgname=pwdsafety-git
 _pkgname=pwdsafety
-pkgver=0.4.1.r8.g63b0fac
+pkgver=0.4.2.r6.g4b0571e
 pkgrel=1
 pkgdesc='Command line tool that checks how much a password is safe (Git version)'
 arch=('x86_64' 'aarch64' 'i686')
