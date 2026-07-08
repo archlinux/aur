@@ -10,7 +10,7 @@
 # - it would be possible to process the .exe to extract a version string but I don't see the point.
 
 pkgname=ltspice
-pkgver=26.0.1.0
+pkgver=26.0.2.1
 pkgrel=1
 pkgdesc="SPICE simulator, schematic capture and waveform viewer."
 arch=('x86_64')
@@ -29,10 +29,10 @@ source=("${pkgname}.sh"
         "${pkgname}-help.sh"
 	"conv.sh"
 	"ltspice.desktop"
-	"LTspice64-${pkgver}.msi::https://LTspice.analog.com/download/26.0.1/LTspice64.msi"
+	"LTspice64-${pkgver}.msi::https://LTspice.analog.com/download/26.0.2/LTspice64.msi"
 	)
 
-installer_sha256='EC35026697ED32D2AE57B17BE3A3C8877B631F642B66326491A9808C47EC0081'
+installer_sha256='485DABD2D7D8293DE733A399719F6538EFDA4A54B48B181A14E07271186984D3'
 
 sha256sums=('78f50fd44506093849421ec3c05516eba1d850160192175c4e7db4811df40f1c'
             '3a0fed134c263a7a0573f36c1f4e49d27bea2cca0c098e069e79e1411d3c302e'
