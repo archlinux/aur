@@ -1,7 +1,7 @@
 pkgbase = quirc-llvm
 	pkgdesc = QR decoder library — built with Clang and LLVM lld
 	pkgver = 1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dlbeer/quirc
 	arch = i686
 	arch = x86_64
