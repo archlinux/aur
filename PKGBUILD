@@ -2,7 +2,7 @@
 
 pkgname=antigravity-manager-bin
 _pkgname=antigravity-manager
-pkgver=0.18.1
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="A modern, unified desktop manager for LLM accounts, proxies, and AI quotas."
 arch=('x86_64')
