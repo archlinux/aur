@@ -1,0 +1,1 @@
+../../coding/typst-ide/PKGBUILD
