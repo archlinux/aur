@@ -3,7 +3,7 @@
 
 pkgname=kineticwe
 pkgver=6.7.80
-pkgrel=6
+pkgrel=7
 pkgdesc="KineticWE - A tiling KWin Wayland compositor with native window tiling"
 arch=('x86_64')
 url="https://gitlab.com/theblackdon/kineticwe"
