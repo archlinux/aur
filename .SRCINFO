@@ -1,6 +1,6 @@
 pkgbase = pypy3-scikit-build-core
 	pkgdesc = Build backend for CMake based projects
-	pkgver = 0.12.2
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/scikit-build/scikit-build-core
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = pypy3-scikit-build-core
 	depends = ninja
 	depends = pypy3-packaging
 	depends = pypy3-pathspec
-	source = scikit-build-core-0.12.2.tar.gz::https://github.com/scikit-build/scikit-build-core/archive/v0.12.2.tar.gz
-	sha512sums = 02e0f92684b5f3678f64565e09c896748cbb5b8e03e004abfd108a6c435731cd49b23952566f215ca77813dfb8429cdb5aea7a1fcf5b8edc40fc60a14e7ec31c
+	source = scikit-build-core-1.0.1.tar.gz::https://github.com/scikit-build/scikit-build-core/archive/v1.0.1.tar.gz
+	sha512sums = 37271b1caa33b99359207cc7f627e9296132c90ad8caa87c6544c8586d0457c81ad6f5b2c3e0cfd672e954b644b29ac110b209e05fcef01f082f92b1ca0f89bc
 
 pkgname = pypy3-scikit-build-core
