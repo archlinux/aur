@@ -1,10 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ytubic
-pkgver=0.1.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Fast, responsive YouTube Music desktop client"
 arch=('x86_64')
-url="https://github.com/NUber-dev/YTubic"
+#url="https://github.com/NUber-dev/YTubic
+url="https://github.com/ameenalasady/YTubic"
 license=('GPL-3.0-or-later')
 depends=(
   'gst-libav'
@@ -20,19 +21,13 @@ makedepends=(
   'cargo-tauri'
   'pnpm'
 )
-source=("YTubic-$pkgver.tar.gz::$url/archive/refs/tags/v0.1.0.tar.gz"
-        'https://github.com/NUber-dev/YTubic/pull/1.patch'
+source=("YTubic-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('d7db22e6f9c2c3b59acaaa7804d8b0fde9c43ec701253970c03b40bce64409b1'
-            'eb4e6a61d24803d9054a0d24f4092aa0c06aed00d4d8b647d19340d1f6c9aec6'
+sha256sums=('64d5e4d8dd683061db2671f1f70c56466a6ef492d2c281117977f077ee337d5a'
             '78dfec967328e728e85d89e7d5c810170712a893a88fa8a8792a1d202f663541')
 
 prepare() {
   cd "YTubic-$pkgver"
-
-  # Add Linux support
-  patch -Np1 -i ../1.patch
-
   export PNPM_HOME="$srcdir/pnpm-home"
   pnpm install --frozen-lockfile
 
@@ -41,11 +36,17 @@ prepare() {
 }
 
 build() {
-  cd "YTubic-$pkgver/src-tauri"
+  cd "YTubic-$pkgver"
   CFLAGS+=" -ffat-lto-objects"
   export PNPM_HOME="$srcdir/pnpm-home"
   export RUSTUP_TOOLCHAIN=stable
   cargo tauri build --no-bundle -- --frozen
+}
+
+check() {
+  cd "YTubic-$pkgver"
+  export PNPM_HOME="$srcdir/pnpm-home"
+  pnpm test
 }
 
 package() {
@@ -60,5 +61,5 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
 
   install -Dm644 "$srcdir/$pkgname.desktop" -t \
-      "$pkgdir/usr/share/applications/"
+    "$pkgdir/usr/share/applications/"
 }
