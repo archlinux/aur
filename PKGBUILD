@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=8.2.r125338.g97115451d0
+pkgver=8.2.r125498.g1d5550613b
 pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _whispercpp_ver='1.9.1'
@@ -89,7 +89,7 @@ depends=(
     'openapv'
     'opencolorio'
     'opencore-amr'
-    'opencv'
+    'opencv4'
     'openh264'
     'openjpeg2'
     'openvino'

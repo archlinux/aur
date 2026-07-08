@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-full-git
 	pkgdesc = Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)
-	pkgver = 8.2.r125338.g97115451d0
+	pkgver = 8.2.r125498.g1d5550613b
 	pkgrel = 1
 	url = https://ffmpeg.org/
 	arch = x86_64
@@ -98,7 +98,7 @@ pkgbase = ffmpeg-full-git
 	depends = openapv
 	depends = opencolorio
 	depends = opencore-amr
-	depends = opencv
+	depends = opencv4
 	depends = openh264
 	depends = openjpeg2
 	depends = openvino
