@@ -1,6 +1,6 @@
 pkgbase = nfs-ganesha
 	pkgdesc = NFS and 9P protocols in user mode.
-	pkgver = 9.16
+	pkgver = 11.1
 	pkgrel = 1
 	url = https://github.com/nfs-ganesha/nfs-ganesha
 	arch = x86_64
@@ -18,25 +18,26 @@ pkgbase = nfs-ganesha
 	depends = btrfs-progs
 	depends = dbus
 	depends = e2fsprogs
-	depends = gcc-libs
 	depends = glibc
 	depends = jemalloc
 	depends = krb5
 	depends = libcap
+	depends = libgcc
 	depends = libprocps
+	depends = libstdc++
 	depends = libunwind
 	depends = liburcu
 	depends = libwbclient
 	depends = nfsidmap
-	depends = rdma-core
+	depends = openssl
 	depends = util-linux-libs
 	depends = xfsprogs
 	options = !emptydirs
 	backup = etc/ganesha/ganesha.conf
-	source = git+https://github.com/nfs-ganesha/nfs-ganesha.git#tag=V9.16
+	source = git+https://github.com/nfs-ganesha/nfs-ganesha.git#tag=V11.1
 	source = git+https://github.com/nfs-ganesha/ntirpc.git
 	source = git+https://github.com/biaks/prometheus-cpp-lite.git
-	sha256sums = 8efb6179a37807211f9a2d5abd20117f50ac0b93abb511ea871da53d811e6505
+	sha256sums = b61a4516f25ebbabc6cc2b614aeb5905f144516b0976b0b449ca343fd3000f31
 	sha256sums = SKIP
 	sha256sums = SKIP
 

@@ -2,7 +2,7 @@
 # Contributor: Wes Jackson <icebal dot 7 at gmail dot com>
 
 pkgname=nfs-ganesha
-pkgver=9.16
+pkgver=11.1
 pkgrel=1
 pkgdesc="NFS and 9P protocols in user mode."
 arch=(x86_64 i686 armv7h aarch64)
@@ -13,17 +13,19 @@ depends=(
     btrfs-progs
     dbus
     e2fsprogs
-    gcc-libs
     glibc
     jemalloc
     krb5
     libcap
+    libgcc
     libprocps
+    libstdc++
     libunwind
     liburcu
     libwbclient
     nfsidmap
-    rdma-core
+    openssl
+    #rdma-core
     util-linux-libs
     xfsprogs
     )
@@ -40,7 +42,7 @@ source=("git+https://github.com/nfs-ganesha/nfs-ganesha.git#tag=V${pkgver}"
         "git+https://github.com/nfs-ganesha/ntirpc.git"
         "git+https://github.com/biaks/prometheus-cpp-lite.git"
         )
-sha256sums=('8efb6179a37807211f9a2d5abd20117f50ac0b93abb511ea871da53d811e6505'
+sha256sums=('b61a4516f25ebbabc6cc2b614aeb5905f144516b0976b0b449ca343fd3000f31'
             'SKIP'
             'SKIP')
 backup=(etc/ganesha/ganesha.conf) #etc/sysconfig/ganesha
