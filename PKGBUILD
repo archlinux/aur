@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=miracle-wm-git
-pkgver=0.9.1.r37.g0cb2340
+pkgver=0.10.1.r2.ge877210
 pkgrel=1
 pkgdesc="Wayland tiling window manager built on Mir"
 arch=(x86_64)
@@ -11,6 +11,8 @@ depends=(
     mir
     libnotify
     wasmedge
+    gtk4
+    gtk4-layer-shell
     )
 makedepends=(
     git
@@ -18,7 +20,6 @@ makedepends=(
     nlohmann-json
     glm
     boost
-    #mold # preferred linker
     )
 provides=(miracle-wm)
 conflicts=(miracle-wm)
