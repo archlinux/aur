@@ -1,0 +1,5 @@
+[usbtree-bin]
+source = "github"
+github = "gnomeria/usbtree"
+use_latest_release = true
+prefix = "v"

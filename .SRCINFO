@@ -1,0 +1,23 @@
+pkgbase = usbtree-bin
+	pkgdesc = Cross-platform TUI for inspecting the USB device tree
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/gnomeria/usbtree
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = usbtree
+	conflicts = usbtree
+	options = !strip
+	source = README-0.0.1.md::https://raw.githubusercontent.com/gnomeria/usbtree/v0.0.1/README.md
+	source = LICENSE-0.0.1::https://raw.githubusercontent.com/gnomeria/usbtree/v0.0.1/LICENSE
+	sha256sums = c6972b4edb2181df8972b3e41e7d3a65bcf2677ddd8b253ba973534df6910f89
+	sha256sums = 9be541594ab169eaf1bb278300d81a1fe2bf399980ca2505e978a225ba9d8e0e
+	source_x86_64 = usbtree-x86_64-0.0.1.tgz::https://github.com/gnomeria/usbtree/releases/download/v0.0.1/usbtree_0.0.1_linux-amd64.tar.gz
+	sha256sums_x86_64 = f65d1d647534fe37500e76842c5328f4ee046e90cc9dcd27a2b6db589222cb33
+	source_aarch64 = usbtree-aarch64-0.0.1.tgz::https://github.com/gnomeria/usbtree/releases/download/v0.0.1/usbtree_0.0.1_linux-arm64.tar.gz
+	sha256sums_aarch64 = b02167d5be87e3134dea6ac2cdb35f25c4e848134da5ce1912d7e4303a61d1ab
+
+pkgname = usbtree-bin
