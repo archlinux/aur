@@ -1,4 +1,7 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
 [vmaware]
 source = "git"
-git = "https://github.com/kernelwernel/VMAware.git"
+git = "https://github.com/NotRequiem/VMAware.git"
 prefix = "v"
