@@ -1,6 +1,6 @@
 # Maintainer: Mark Collins <tera_1225 hatt hotmail.com>
 pkgname=borgwarehouse
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="WebUI for a BorgBackup central repository server"
 arch=("x86_64")
@@ -33,22 +33,18 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}-cron.timer"
         "${pkgname}.service"
 	"${pkgname}.tmpfiles"
-        "fix-env-nodocker.patch"
-	"pnpm-allow-builds.patch")
-sha256sums=('55ac7712bedd57982a1ac15044a2d8d622781c12ec13670a5e5a6b37b5a95876'
+        "fix-env-nodocker.patch")
+sha256sums=('67de4dc5345a85192bf23a02273356753638525f88f26b7c60be30be4b26ac54'
             'ce1a55c203eef3c65f186efc3ffa2bcf416de67e5586cf542edf199b8a9ec47a'
             '15bc6db13bfa17402ee07bb2f91711a0d84d298b3fbd3f48722345d4c19bb917'
             '80f802b4068d2a4ca35c4def9952d6289233a0a7d145d8228ec52804e26884cd'
             '4baf4a805e37db88b95506cdbdb59e97a0c4e7b59205917a2e8eb77c804bdc3d'
-            'ab3e40452498b965180109b560d352646c6dcc048675b5fd2b371f6632f6a827'
-            '9fba633d0f681df0a45741b364d56edc16502d09c4d792c39f61edeb94a4e5c0')
+            'ab3e40452498b965180109b560d352646c6dcc048675b5fd2b371f6632f6a827')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   echo "Patching environment file"
   patch --forward --strip=1 --input=../fix-env-nodocker.patch
-  echo "Patching pnpm workspace file for allowBuilds"
-  patch --forward --strip=1 --input=../pnpm-allow-builds.patch
   echo "Fixing home directory in scripts"
   sed -i 's#/home/borgwarehouse#/var/lib/borgwarehouse#g' ./helpers/shells/*
 }

@@ -8,6 +8,5 @@
 !borgwarehouse-cron.service
 !borgwarehouse-cron.timer
 !borgwarehouse.service
-!pnpm-allow-builds.patch
 
 !.gitignore
