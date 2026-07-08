@@ -1,5 +1,5 @@
-# Maintainer: krnlsoft <krnlsoft 4t hotmail d0t it>
 # Maintainer: Yegor Pomortsev <yegor@pomortsev.com>
+# Contributors: krnlsoft <krnlsoft 4t hotmail d0t it>
 
 _pkgbase=blksnap
 _pkgname=veeam${_pkgbase}
