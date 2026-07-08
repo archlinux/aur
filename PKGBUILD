@@ -39,7 +39,7 @@ depends=(
     'python-pypdfium2'
     'python-docx'
     'python-python-multipart'
-    'python-pyyaml'
+    'python-yaml'
     'python-reportlab'
     'python-requests'
     'python-safetensors'
