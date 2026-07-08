@@ -15,7 +15,7 @@ depends=(
 )
 optdepends=(
   'git: bootstrap and self-update the Hermes Agent runtime on first launch'
-  'libappindicator-gtk3: tray indicator support'
+  'libayatana-appindicator: tray indicator support'
   'python: run the Hermes Agent runtime locally'
   'uv: bootstrap the Hermes Agent runtime on first launch'
 )
