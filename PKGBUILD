@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 
 pkgname=databow
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A command-line tool for querying databases"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=(glibc libgcc)
 makedepends=(cargo git)
 options=(!lto)
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('09e64f773c3f5399a8a645608b550e0d0679d693f1888901da9c508bcdef95dd')
+sha256sums=('97d437123a15cd3e23696780dd05cf74856a2acd4d18788b85cb6841bd63915d')
 
 prepare() {
   cd "$pkgname-$pkgver"
