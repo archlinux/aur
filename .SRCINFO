@@ -1,7 +1,7 @@
 pkgbase = telepresence2-bin
 	pkgdesc = Local development against a remote Kubernetes or OpenShift cluster
 	pkgver = 2.29.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/telepresenceio/telepresence
 	arch = x86_64
 	arch = aarch64
@@ -10,9 +10,9 @@ pkgbase = telepresence2-bin
 	provides = telepresence2
 	conflicts = telepresence2-git
 	conflicts = telepresence2
-	source_x86_64 = telepresence-x86_64::https://github.com/telepresenceio/telepresence/releases/download/v2.29.2/telepresence-linux-amd64
+	source_x86_64 = telepresence-2.29.2-x86_64::https://github.com/telepresenceio/telepresence/releases/download/v2.29.2/telepresence-linux-amd64
 	sha512sums_x86_64 = 58ef611192cd1c2d237fdbd11aa6b63305211f950fb093d59d9cbf3498a0120bc92c955db39e23deafa87a212a0eba6e542c5cd5dad959a8ea66d940a5a28481
-	source_aarch64 = telepresence-aarch64::https://github.com/telepresenceio/telepresence/releases/download/v2.29.2/telepresence-linux-arm64
+	source_aarch64 = telepresence-2.29.2-aarch64::https://github.com/telepresenceio/telepresence/releases/download/v2.29.2/telepresence-linux-arm64
 	sha512sums_aarch64 = 5c3f29616ec53ec5060ae3e77a5e621bd6e28f0034dd1e441f06ecae84ce591d9cf1035211bdefd6b074052011be3601268fe730597027b1029b125cba6aa5a5
 
 pkgname = telepresence2-bin
