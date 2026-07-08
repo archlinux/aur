@@ -34,6 +34,6 @@ pkgbase = wayvr
 	replaces = wlx-overlay-s
 	options = !lto
 	source = wayvr-26.7.0.tar.gz::https://github.com/wayvr-org/wayvr/archive/refs/tags/v26.7.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 4ca0d3c5cbd975a3c6938761cd595a9582465adf79681c7a003c40c131f8691d
 
 pkgname = wayvr

@@ -35,7 +35,7 @@ replaces=("wlx-overlay-s")
 conflicts=("$pkgname")
 provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=(SKIP)
+sha256sums=("4ca0d3c5cbd975a3c6938761cd595a9582465adf79681c7a003c40c131f8691d")
 options=(!lto)
 
 # Use debug
