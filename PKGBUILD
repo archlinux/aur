@@ -1,6 +1,6 @@
 # Maintainer: Zeus-Deus <github.commits@widow.cc>
 pkgname=voxtype-tui
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Textual-based TUI for managing Voxtype (Linux voice-to-text daemon)"
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
 )
 install=voxtype-tui.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Zeus-Deus/voxtype-tui/archive/v$pkgver.tar.gz")
-sha256sums=('9bb01132dfd0c27193a0a3794a76755279cf8c2932b3468dbcdadbd4854566fc')
+sha256sums=('012d2f69962b4f08b9cacd6ccca87dedbb1cbf0a50467f4e91383845d7df9e3f')
 
 build() {
     cd "$pkgname-$pkgver"
