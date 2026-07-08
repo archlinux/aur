@@ -1,0 +1,19 @@
+pkgbase = videocleaver
+	pkgdesc = Splits video files on chapter boundaries using ffmpeg, with an embedded mpv viewer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/dustinwidmann/videocleaver
+	arch = x86_64
+	license = CC0
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = pkgconf
+	makedepends = git
+	depends = ffmpeg
+	depends = mpv
+	depends = qt6-base
+	source = videocleaver::git+https://gitlab.com/dustinwidmann/videocleaver.git#tag=1.0.0
+	sha256sums = SKIP
+
+pkgname = videocleaver
