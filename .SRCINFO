@@ -1,21 +1,21 @@
 pkgbase = komai-bin
 	pkgdesc = A fine Matrix chat app you can get to love (prebuilt AppImage)
-	pkgver = 2026.07.02.2
+	pkgver = 2026.07.07.1
 	pkgrel = 1
 	url = https://github.com/etkecc/komai
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
 	depends = hicolor-icon-theme
-	provides = komai=2026.07.02.2
+	provides = komai=2026.07.07.1
 	conflicts = komai
-	noextract = komai-2026.07.02.2-x86_64.AppImage
-	noextract = komai-2026.07.02.2-aarch64.AppImage
+	noextract = komai-2026.07.07.1-x86_64.AppImage
+	noextract = komai-2026.07.07.1-aarch64.AppImage
 	options = !strip
 	options = !debug
-	source_x86_64 = komai-2026.07.02.2-x86_64.AppImage::https://github.com/etkecc/komai/releases/download/v2026.07.02.2/komai-2026.07.02.2-x86_64.AppImage
-	sha256sums_x86_64 = 36093e2dd8ce6b83543883c141045dbbadc86a08ca6dba10e93ed60751f05b03
-	source_aarch64 = komai-2026.07.02.2-aarch64.AppImage::https://github.com/etkecc/komai/releases/download/v2026.07.02.2/komai-2026.07.02.2-aarch64.AppImage
-	sha256sums_aarch64 = 51301a7a36c7cf028b6934372ce59bde591e90e27bfaf106e04be02a0c3d5425
+	source_x86_64 = komai-2026.07.07.1-x86_64.AppImage::https://github.com/etkecc/komai/releases/download/v2026.07.07.1/komai-2026.07.07.1-x86_64.AppImage
+	sha256sums_x86_64 = 6f9faf4187cdc2ad5a2c378324fc5939e1c01a6318b3fe0a414b6d5419a2a034
+	source_aarch64 = komai-2026.07.07.1-aarch64.AppImage::https://github.com/etkecc/komai/releases/download/v2026.07.07.1/komai-2026.07.07.1-aarch64.AppImage
+	sha256sums_aarch64 = 7cc5dd033c087b6b48b08f1a3c3d7b45c71c720975a69cd33d5ab20e4924d11c
 
 pkgname = komai-bin
