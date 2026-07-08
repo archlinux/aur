@@ -2,21 +2,23 @@
 # Contributor: oss@fastly.com
 
 ## GPG key: https://github.com/web-flow.gpg
+## GPG key: https://github.com/rcaril.gpg
 
 pkgname=fastly
-pkgver=15.3.1
+pkgver=15.4.0
 pkgrel=1
 pkgdesc='CLI for the Fastly platform'
 url='https://github.com/fastly/cli'
-arch=('aarch64' 'i686' 'x86_64')
-license=('Apache-2.0')
-depends=('glibc')
-makedepends=('git' 'go' 'tomlq')
+arch=(aarch64 i686 x86_64)
+license=(Apache-2.0)
+depends=(glibc)
+makedepends=(git go tomlq)
 changelog=CHANGELOG.md
 source=("$pkgname::git+$url#tag=v$pkgver?signed")
-sha256sums=('e25933065b519599b064284f7e0c41381bb9a1a04a44cd5fb8b4ed42d4a8951d')
+sha256sums=('bf9b3baf76a287cf2f4d6927aac942e183ef6a53b7112a15056cc9e8e191b8cb')
 validpgpkeys=('A4C2C78656BA5E3DD5F122E4BCE379A5D550C407' ## Mark McDonnell (Integralist)
               '91CDBA857A8A0DE3940FDD90870BC2D54402CD1D' ## Anthony Gomez
+              'ABB6449EDF2309D2E2922C695CB9C3D735851098' ## Richard Carillo
               '5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23') ## GitHub
 
 prepare() {

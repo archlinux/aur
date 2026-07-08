@@ -10,11 +10,45 @@
 
 ### Dependencies:
 
+## [v15.4.0](https://github.com/fastly/cli/releases/tag/v15.4.0) (2026-07-08)
+
+### Bug Fixes:
+
+- fix(auth): accept SSO JWT audiences with or without a trailing slash when validating the Fastly API endpoint. ([#1837](https://github.com/fastly/cli/pull/1837))
+- feat(compute): add `install-tools` command to pre-install the Viceroy binary ([#1833](https://github.com/fastly/cli/pull/1833))
+
+### Enhancements:
+- feat(ngwaf/timeseries): add support for account and workspace times series commands ([#1823](https://github.com/fastly/cli/pull/1823))
+
+### Dependencies:
+- build(deps): `github.com/fastly/go-fastly/v15` from 15.0.3 to 16 ([#1841](https://github.com/fastly/cli/pull/1841))
+- build(deps): `golang.org/x/sys` from 0.46.0 to 0.47.0 ([#1843](https://github.com/fastly/cli/pull/1843))
+- build(deps): `golang.org/x/term` from 0.44.0 to 0.45.0 ([#1843](https://github.com/fastly/cli/pull/1843))
+- build(deps): `golang.org/x/mod` from 0.37.0 to 0.38.0 ([#1843](https://github.com/fastly/cli/pull/1843))
+- build(deps): `golang.org/x/sync` from 0.21.0 to 0.22.0 ([#1843](https://github.com/fastly/cli/pull/1843))
+- build(deps): `golang.org/x/text` from 0.38.0 to 0.40.0 ([#1843](https://github.com/fastly/cli/pull/1843))
+- build(deps): `github.com/fastly/go-fastly/v16` from 16.0.0 to 16.0.1 ([#1843](https://github.com/fastly/cli/pull/1843))
+- build(deps): `github.com/fastly/go-fastly/v15` from 15.0.3 to 16 ([#1841](https://github.com/fastly/cli/pull/1841))
+
+## [v15.3.0](https://github.com/fastly/cli/releases/tag/v15.3.0) (2026-06-26)
+
+### Enhancements:
+
+- feat(kvstoreentry/delete): Add support for multiple-key deletion using a key prefix. ([#1822](https://github.com/fastly/cli/pull/1822))
+- build(dockerfile-go): add Go Dockerfile alongside the existing Node and Rust ones ([#1828](https://github.com/fastly/cli/pull/1828))
+- feat(compute/deploy): Support 'contentguard' configuration on 'bot_management' product under \[setup.products] ([#1827](https://github.com/fastly/cli/pull/1827))
+
+### Dependencies:
+
+- build(deps): `github.com/nwaples/rardecode/v2` from 2.2.3 to 2.2.5 ([#1825](https://github.com/fastly/cli/pull/1825))
+- build(deps): `golang.org/x/net` from 0.55.0 to 0.56.0 ([#1825](https://github.com/fastly/cli/pull/1825))
+- build(deps): `github.com/coreos/go-oidc/v3` from 3.18.0 to 3.19.0 ([#1829](https://github.com/fastly/cli/pull/1829))
+
 ## [v15.2.0](https://github.com/fastly/cli/releases/tag/v15.2.0) (2026-06-10)
 
 ### Bug Fixes:
 
-- fix(docs): corrected stale and missing API reference links in usage.json metadata([#1803](https://github.com/fastly/cli/pull/1803))
+- fix(docs): corrected stale and missing API reference links in usage.json metadata ([#1803](https://github.com/fastly/cli/pull/1803))
 - fix(compute): `serve --watch` no longer rebuilds on attribute-only (Chmod) filesystem events, preventing an endless rebuild loop when another process changes a watched file's metadata such as its access time ([#1808](https://github.com/fastly/cli/pull/1808))
 - fix(docs): expand and correct API reference links for `fastly service` subcommands in usage.json metadata ([#1810](https://github.com/fastly/cli/pull/1810))
 
