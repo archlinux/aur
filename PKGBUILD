@@ -2,8 +2,8 @@
 
 _name=joystickwake
 pkgname="${_name}-git"
-pkgver=v0.5.1.r0.gc410127
-pkgrel=2
+pkgver=v0.5.3.r0.gb88071c
+pkgrel=1
 pkgdesc='A joystick-aware screen waker'
 arch=('any')
 url='https://codeberg.org/forestix/joystickwake'
@@ -17,11 +17,9 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_name}"
-  _version=$(python3 -m setuptools_scm 2>&-)
   ( set -o pipefail
   git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     exit 1
-    #printf "%s.r%s.%s" "${_version}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
 
