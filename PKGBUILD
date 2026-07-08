@@ -1,7 +1,7 @@
 # Maintainer: Mikhail felixoid Shiryaev <mr dot felixoid on gmail>
 
 pkgname=joystickwake
-pkgver=0.5.1
+pkgver=0.5.3
 pkgrel=2
 pkgdesc='A joystick-aware screen waker'
 arch=('any')
@@ -14,7 +14,7 @@ source=(
   "${url}/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  dc92d814d6ecf604914855f08aed8fc4d53d181ac3b48c1c08374db298cb20e2
+  295aa926c2c5b82d0727650098e2915e0a4b30d79a4fbbbd9a51406b7a49231d
 )
 
 package() {
