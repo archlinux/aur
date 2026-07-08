@@ -1,7 +1,7 @@
 pkgbase = voxtype-tui
 	pkgdesc = Textual-based TUI for managing Voxtype (Linux voice-to-text daemon)
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zeus-Deus/voxtype-tui
 	install = voxtype-tui.install
 	arch = any

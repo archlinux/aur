@@ -1,7 +1,7 @@
 # Maintainer: Zeus-Deus <github.commits@widow.cc>
 pkgname=voxtype-tui
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Textual-based TUI for managing Voxtype (Linux voice-to-text daemon)"
 arch=('any')
 url="https://github.com/Zeus-Deus/voxtype-tui"
@@ -28,12 +28,14 @@ sha256sums=('012d2f69962b4f08b9cacd6ccca87dedbb1cbf0a50467f4e91383845d7df9e3f')
 
 build() {
     cd "$pkgname-$pkgver"
-    python -m build --wheel --no-isolation
+    # Absolute path: a conda/pyenv python shadowing /usr/bin/python on the
+    # builder's PATH lacks the system python-build/installer modules.
+    /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$pkgname-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
