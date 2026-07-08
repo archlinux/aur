@@ -1,7 +1,7 @@
 # Maintainer: nizne <nizne@outlook.com>
 pkgname=pwdsafety-bin
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.4.2
+pkgrel=1
 pkgdesc='Command line tool that checks how much a password is safe'
 arch=('x86_64' 'aarch64' 'i686') # I'm not sure if the 'arm' in the repository refers to 'armv7h.'
 url='https://github.com/edoardottt/pwdsafety'
@@ -11,9 +11,9 @@ conflicts=('pwdsafety-git' 'pwdsafety')
 source_x86_64=("pwdsafety_${pkgver}_linux_amd64.zip::https://github.com/edoardottt/pwdsafety/releases/download/v$pkgver/pwdsafety_${pkgver}_linux_amd64.zip")
 source_i686=("pwdsafety_${pkgver}_linux_386.zip::https://github.com/edoardottt/pwdsafety/releases/download/v$pkgver/pwdsafety_${pkgver}_linux_386.zip")
 source_aarch64=("pwdsafety_${pkgver}_linux_arm64.zip::https://github.com/edoardottt/pwdsafety/releases/download/v$pkgver/pwdsafety_${pkgver}_linux_arm64.zip")
-sha256sums_x86_64=('b52e024a874688ff8c062bdc83c16cb00fafdb57b11b7064f2725b35d869932a')
-sha256sums_aarch64=('ecfc5b2bb8eec6e193964cd01a2c6bb39e4c8cf9bbfce1c94a298cbf33458f4d')
-sha256sums_i686=('3f4c6bf50d0cfb5105a2570909c4e02a7da64db32fe37d60b16f9d6e6b02be96')
+sha256sums_x86_64=('a9e7b1fa9e3ca94af10418e935702732abcaf8be0b4fc29fda5566ea7d38fd86')
+sha256sums_aarch64=('1f53dd4e2a5cab9af18432fc9d7de5d06fab2cae1bbaeb6a797df0e79ed4d025')
+sha256sums_i686=('637482c7d540f938eb8021691ab0e1ffacf5d68fe481bdb32946e2a731f4651a')
 
 package() {
   install -Dm755 "${srcdir}/pwdsafety" "${pkgdir}/usr/bin/pwdsafety"
