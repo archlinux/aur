@@ -12,7 +12,6 @@ pkgbase = gwm-cli
 	depends = zlib
 	depends = git
 	provides = gwm
-	conflicts = gwm-cli
 	options = !strip
 	source = gwm-1.0.2.tgz::https://github.com/kbrdn1/gwm-cli/archive/v1.0.2.tar.gz
 	sha256sums = e3e35a6480742e51fcf7eb6e8147983acfa0db37b46f4a7bdbdd4dd45b1a75b1
