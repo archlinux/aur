@@ -3,7 +3,7 @@
 
 pkgname=zju-connect-bin
 _pkgname=zju-connect
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Go client for ZJU RVPN"
 arch=("i686" "x86_64" "armv7h" "aarch64" "riscv64")
