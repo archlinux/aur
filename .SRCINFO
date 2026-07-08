@@ -1,0 +1,28 @@
+pkgbase = python-microsoft-kiota-authentication-azure
+	pkgdesc = Microsoft Kiota Authentication Azure Library for Python
+	pkgver = 1.11.7
+	pkgrel = 1
+	url = https://github.com/microsoft/kiota-python
+	arch = any
+	license = MIT
+	checkdepends = python-pytest>=9.1.1
+	checkdepends = python-pytest-asyncio>=1.4.0
+	checkdepends = python-pytest-mock
+	makedepends = python-build
+	makedepends = python-flit-core>=3.2.0
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.10.0
+	depends = python-aiohttp>=3.8.0
+	depends = python-azure-core>=1.21.1
+	depends = python-microsoft-kiota-abstractions>=1.11.1
+	depends = python-opentelemetry-api>=1.27.0
+	depends = python-opentelemetry-sdk>=1.27.0
+	source = python-microsoft-kiota-authentication-azure-1.11.7.tar.gz::https://github.com/microsoft/kiota-python/archive/refs/tags/microsoft-kiota-authentication-azure-v1.11.7.tar.gz
+	source = change-flit-upper-bound.diff
+	source = hardcode-version.diff
+	b2sums = 58638e55dfc912e1dbc1a1f1965530bbbe931aba9ef9b8af3ab50c9d17e086e8ed34cf523addbe48f2cc447d6db1ba88d47ae265134bd636d796030b8d06fdd4
+	b2sums = 16ee61f51327765110e0406c944ad89fcb74879cfdccfff1776c2c89167ac4287e349ea7a66b4c5e1290871d2bf03a765819f0b7600312cdba9f2b6311af6a0e
+	b2sums = 6afb5c7062c12d3faa0e7f1819c456041910ee73a75a5e747f57732a24b713246bfce2577d60ddbc617540077d6bbdb856e5a907c90e43fc3519510902bc02eb
+
+pkgname = python-microsoft-kiota-authentication-azure

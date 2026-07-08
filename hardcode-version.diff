@@ -1,0 +1,9 @@
+diff --git a/packages/authentication/azure/kiota_authentication_azure/_version.py b/packages/authentication/azure/kiota_authentication_azure/_version.py
+index b6e70b8..09f52ab 100644
+--- a/packages/authentication/azure/kiota_authentication_azure/_version.py
++++ b/packages/authentication/azure/kiota_authentication_azure/_version.py
+@@ -1,3 +1 @@
+-import importlib.metadata
+-
+-VERSION: str = importlib.metadata.version('microsoft-kiota-authentication-azure')
++VERSION: str = '%%PKGVER%%'

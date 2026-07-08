@@ -1,0 +1,11 @@
+diff --git a/packages/authentication/azure/pyproject.toml b/packages/authentication/azure/pyproject.toml
+index 36b87db..c6978b0 100644
+--- a/packages/authentication/azure/pyproject.toml
++++ b/packages/authentication/azure/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["flit_core>=3.2,<4"]
++requires = ["flit_core>=3.2,<5"]
+ build-backend = "flit_core.buildapi"
+ 
+ [project]
