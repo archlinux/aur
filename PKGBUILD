@@ -1,15 +1,15 @@
 # Maintainer: ChargeGuard contributors
 pkgbase=chargeguard
 pkgname=("chargeguard" "gnome-shell-extension-chargeguard")
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
-pkgdesc="One-click native battery charge modes for Linux laptops, from GNOME Quick Settings or CLI.Linux 笔记本原生充电模式，一键接入 GNOME 快捷设置和 CLI。"
+pkgdesc="Native battery charge modes and battery diagnostics for GNOME Quick Settings and CLI"
 arch=("x86_64")
 url="https://github.com/Ca11back/ChargeGuard"
 license=("MIT")
 makedepends=("cargo" "gettext")
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b9697f9d9b2ba43684b359eef2be125bb6b07cf30e83ae94401bf2768d73c5bc')
+sha256sums=('bd504e94db6ab5bf5778ea8f5557c7f92fc69231bbf3b5d9788f6ef41be1fa1a')
 
 _srcdir="ChargeGuard-${pkgver}"
 
@@ -26,7 +26,7 @@ check() {
 }
 
 package_chargeguard() {
-  pkgdesc="One-click native battery charge modes for Linux laptops, from GNOME Quick Settings or CLI.Linux 笔记本原生充电模式，一键接入 GNOME 快捷设置和 CLI。"
+  pkgdesc="Native battery charge modes and battery diagnostics for GNOME Quick Settings and CLI"
   depends=("dbus" "gcc-libs" "glibc" "polkit" "systemd")
   install="chargeguard.install"
 
@@ -59,7 +59,7 @@ package_chargeguard() {
 }
 
 package_gnome-shell-extension-chargeguard() {
-  pkgdesc="One-click native battery charge modes for Linux laptops, from GNOME Quick Settings or CLI.Linux 笔记本原生充电模式，一键接入 GNOME 快捷设置和 CLI。"
+  pkgdesc="Native battery charge modes and battery diagnostics for GNOME Quick Settings and CLI"
   depends=("chargeguard=${pkgver}-${pkgrel}" "gnome-shell")
 
   cd "${srcdir}/${_srcdir}"
@@ -68,6 +68,8 @@ package_gnome-shell-extension-chargeguard() {
     "${pkgdir}/usr/share/gnome-shell/extensions/chargeguard@github.com/metadata.json"
   install -Dm644 "gnome-extension/extension.js" \
     "${pkgdir}/usr/share/gnome-shell/extensions/chargeguard@github.com/extension.js"
+  install -Dm644 "gnome-extension/prefs.js" \
+    "${pkgdir}/usr/share/gnome-shell/extensions/chargeguard@github.com/prefs.js"
   install -Dm644 "gnome-extension/README.md" \
     "${pkgdir}/usr/share/doc/gnome-shell-extension-chargeguard/README.md"
   install -d "${pkgdir}/usr/share/locale/zh_CN/LC_MESSAGES"

@@ -1,17 +1,17 @@
 pkgbase = chargeguard
-	pkgdesc = One-click native battery charge modes for Linux laptops, from GNOME Quick Settings or CLI.Linux 笔记本原生充电模式，一键接入 GNOME 快捷设置和 CLI。
-	pkgver = 0.1.0
+	pkgdesc = Native battery charge modes and battery diagnostics for GNOME Quick Settings and CLI
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Ca11back/ChargeGuard
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = gettext
-	source = chargeguard-0.1.0.tar.gz::https://github.com/Ca11back/ChargeGuard/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = b9697f9d9b2ba43684b359eef2be125bb6b07cf30e83ae94401bf2768d73c5bc
+	source = chargeguard-0.1.1.tar.gz::https://github.com/Ca11back/ChargeGuard/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = bd504e94db6ab5bf5778ea8f5557c7f92fc69231bbf3b5d9788f6ef41be1fa1a
 
 pkgname = chargeguard
-	pkgdesc = One-click native battery charge modes for Linux laptops, from GNOME Quick Settings or CLI.Linux 笔记本原生充电模式，一键接入 GNOME 快捷设置和 CLI。
+	pkgdesc = Native battery charge modes and battery diagnostics for GNOME Quick Settings and CLI
 	install = chargeguard.install
 	depends = dbus
 	depends = gcc-libs
@@ -20,6 +20,6 @@ pkgname = chargeguard
 	depends = systemd
 
 pkgname = gnome-shell-extension-chargeguard
-	pkgdesc = One-click native battery charge modes for Linux laptops, from GNOME Quick Settings or CLI.Linux 笔记本原生充电模式，一键接入 GNOME 快捷设置和 CLI。
-	depends = chargeguard=0.1.0-1
+	pkgdesc = Native battery charge modes and battery diagnostics for GNOME Quick Settings and CLI
+	depends = chargeguard=0.1.1-1
 	depends = gnome-shell
