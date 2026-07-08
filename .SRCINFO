@@ -1,0 +1,25 @@
+pkgbase = baken-bin
+	pkgdesc = Bake'n Deck - Rekordbox to CDJ prep toolkit: loudness gain, Key+BPM playlist sort, and CDJ-safe MP3 transcode (formerly headroom)
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/M-Igashi/baken
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = ffmpeg
+	provides = baken
+	conflicts = baken
+	conflicts = headroom-bin
+	replaces = headroom-bin
+	source = LICENSE-3.0.0::https://raw.githubusercontent.com/M-Igashi/baken/v3.0.0/LICENSE
+	source = README-3.0.0.md::https://raw.githubusercontent.com/M-Igashi/baken/v3.0.0/README.md
+	sha256sums = 6850b0e5d07bed32b3613d4c7da50e0fc36542239a5ff5188b524494e9edda75
+	sha256sums = e7dd0e0caf012dc4a78df2b690a92a404b547def3693564b6243033a3f724674
+	source_x86_64 = baken-x86_64-3.0.0.tgz::https://github.com/M-Igashi/baken/releases/download/v3.0.0/baken-v3.0.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = dd1e2b85b8b228399ef65fc45e4a643ef3c83c7b7db7f282669a559f25da989b
+	source_aarch64 = baken-aarch64-3.0.0.tgz::https://github.com/M-Igashi/baken/releases/download/v3.0.0/baken-v3.0.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 4c80b68dc72b8eb301d15dacd2289216afc92e7a8554441e57b24134185ec5e4
+
+pkgname = baken-bin
