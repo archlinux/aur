@@ -12,7 +12,7 @@ arch=('x86_64')
 url=https://repo.or.cz/llpp.git
 _commit=6f7680baea6f1b5d227674613be262d90c57636f
 license=('GPL3')
-depends=('freetype2' 'gumbo-parser' 'jbig2dec' 'libgl' 'libjpeg' 'openjpeg2' 'libmupdf')
+depends=('freetype2' 'gumbo-parser' 'jbig2dec' 'libgl' 'libjpeg-turbo' 'openjpeg2' 'libmupdf')
 makedepends=('asciidoc' 'git' 'ocaml' 'ocaml-lablgl')
 optdepends=('djvulibre: for llppac djvu conversion'
             'ghostscript: for llppac ps, dvi, and djvu conversion'
