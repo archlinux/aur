@@ -1,0 +1,17 @@
+pkgbase = 3dgenstudio-git
+	pkgdesc = AI image-to-3D model generation studio (Vite frontend + Python backend)
+	pkgver = r8d4b6a2
+	pkgrel = 1
+	url = https://github.com/visualbruno/3DGenStudio
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	depends = python
+	provides = 3dgenstudio
+	conflicts = 3dgenstudio
+	source = 3dgenstudio-git::git+https://github.com/visualbruno/3DGenStudio.git#branch=main
+	sha256sums = SKIP
+
+pkgname = 3dgenstudio-git
