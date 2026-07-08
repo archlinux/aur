@@ -257,11 +257,27 @@ package() {
     chmod 0755 "$pkgdir/usr/bin/start-kineticwe"
 
     # Fix powerdevil/upowerd paths for distros that do not use /usr/libexec (Arch, Debian, etc.)
+    # Use @ as sed delimiter to avoid conflicts with shell pipe characters (||) in the replacement
     sed -i \
-        -e 's|/usr/libexec/upowerd|"$(command -v upowerd 2>/dev/null || echo /usr/libexec/upowerd)"|' \
-        -e 's|/usr/libexec/org_kde_powerdevil|"$(command -v org_kde_powerdevil 2>/dev/null || echo /usr/libexec/org_kde_powerdevil)"|' \
-        -e '/^# 3\. Start power management/i\# 2.5. Start kded6 for shortcut component discovery\nif command -v kded6 >/dev/null 2>&1; then\n    kded6 &>/dev/null &\n    sleep 2\nfi\n# ---------------------------------------------------------------------------\n' \
+        -e 's@/usr/libexec/upowerd@"$(command -v upowerd 2>/dev/null || echo /usr/libexec/upowerd)"@' \
+        -e 's@/usr/libexec/org_kde_powerdevil@"$(command -v org_kde_powerdevil 2>/dev/null || echo /usr/libexec/org_kde_powerdevil)"@' \
         "$pkgdir/usr/bin/start-kineticwe"
+
+    # Insert kded6 startup block before the "Start power management" section
+    # Uses sed r (read from stdin) to insert, then d to delete the matched line
+    sed -i "/^# *3[.] *Start power management$/ {
+        r /dev/stdin
+        d
+    }" "$pkgdir/usr/bin/start-kineticwe" << 'KDEDEOF'
+# 2.5. Start kded6 for shortcut component discovery
+# ---------------------------------------------------------------------------
+if command -v kded6 >/dev/null 2>&1; then
+    kded6 &>/dev/null &
+    sleep 2
+fi
+# ---------------------------------------------------------------------------
+KDEDEOF
+
 
     # Install Wayland session desktop entry (for SDDM, greetd, etc.)
     echo "==> Installing wayland-sessions desktop entry..."
