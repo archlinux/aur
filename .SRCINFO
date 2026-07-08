@@ -1,6 +1,6 @@
 pkgbase = tokscale-git
 	pkgdesc = CLI tool and TUI for tracking token usage and costs from AI coding agents (development branch)
-	pkgver = 4.2.0.r1749.g415a1967
+	pkgver = 4.3.0.r1753.g6f62a4de
 	pkgrel = 1
 	url = https://github.com/junhoyeo/tokscale
 	arch = x86_64
