@@ -1,6 +1,6 @@
 # Maintainer: mapleafgo <mapleafgo at 163 dot com>
 pkgname=singcast-cli
-pkgver=1.1.14
+pkgver=1.1.15
 pkgrel=1
 pkgdesc="A clash core based on sing-box"
 arch=('x86_64' 'aarch64')
@@ -15,5 +15,5 @@ package() {
   install -Dm755 "${srcdir}/singcast-linux-"* "${pkgdir}/usr/bin/singcast-cli"
 }
 
-sha256sums_x86_64=('4111971749e4e9f52368ac6806e6b7440d30687f9479cccfb8d6825caada1c6b')
-sha256sums_aarch64=('65e457ec5557ff63b575990e79854ff25b80959a597d021936612ccef0d455a7')
+sha256sums_x86_64=('245a99adb4f4617237bbb31447c35130d05aa7586564a87978eb9e36f62e4b90')
+sha256sums_aarch64=('079cad0806515b0227189028668f578e7111acd49eb1dac5b8a0bfd9d1e32fed')
