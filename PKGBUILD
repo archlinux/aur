@@ -5,33 +5,34 @@
 # run on the native Arch Linux stack. This fixes YouTube and Vulkan/Wayland crashes.
 
 pkgname=ardali-bin
-pkgver=4.2.6
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="ArDali WebMedia multimedia ecosystem for Linux"
 arch=('x86_64')
 url="https://ardali.app"
 license=('MIT')
 depends=(
-  'webkit2gtk-4.1'
-  'glib-networking'
-  'gst-libav'
-  'gst-plugins-good'
-  'gst-plugins-bad'
-  'gst-plugins-ugly'
+  'alsa-lib'
+  'gtk3'
+  'libnotify'
+  'libxss'
+  'libxtst'
+  'nss'
+  'xdg-utils'
 )
 provides=('ardali' 'ardali-webmedia')
 conflicts=('ardali' 'aurivo-bin')
 options=(!strip !debug)
 
 _owner="Muhammed-Dali"
-_repo="ArDali"
+_repo="ArDali-WebMedia"
 _tag="v${pkgver}"
-_appimage="ArDali.WebMedia_${pkgver}_amd64.AppImage"
+_appimage="ArDali-${pkgver}-linux-x86_64.AppImage"
 
 source=(
   "https://github.com/${_owner}/${_repo}/releases/download/${_tag}/${_appimage}"
 )
-sha256sums=('399d59943ba33f746de22ef78e393a12e91649b6e47336bd726f2677dc457524')
+sha256sums=('55fc4dc6f37dcb25c390bd0d462b8a94b831472d437242958889eccbe93d621f')
 
 build() {
   cd "${srcdir}"
@@ -42,45 +43,31 @@ build() {
 package() {
   cd "${srcdir}/squashfs-root"
 
-  # We use /opt/ardali-webmedia to avoid conflicts with system libraries like libprojectM
-  install -dm755 "${pkgdir}/opt/ardali-webmedia/lib"
-  
-  # 1. Install real binary to /opt
-  install -Dm755 usr/bin/ardali-webmedia "${pkgdir}/opt/ardali-webmedia/ardali-webmedia"
+  # Install the extracted Electron AppImage payload.
+  install -dm755 "${pkgdir}/opt/ardali-webmedia"
+  cp -r --no-preserve=ownership . "${pkgdir}/opt/ardali-webmedia/"
+  chmod 755 "${pkgdir}/opt/ardali-webmedia/ardali"
+  chmod 4755 "${pkgdir}/opt/ardali-webmedia/chrome-sandbox" || true
 
-  # 2. Install custom application libraries to /opt/ardali-webmedia/lib
-  install -Dm755 usr/lib/libbass.so "${pkgdir}/opt/ardali-webmedia/lib/libbass.so"
-  cp -a usr/lib/libprojectM*.so* "${pkgdir}/opt/ardali-webmedia/lib/"
-
-  # 3. Copy visualizer resources and binary
-  if [ -d "usr/lib/ardali-webmedia" ]; then
-    cp -r usr/lib/ardali-webmedia/* "${pkgdir}/opt/ardali-webmedia/"
-  fi
-  if [ -d "usr/lib/ArDali WebMedia" ]; then
-    cp -r "usr/lib/ArDali WebMedia"/* "${pkgdir}/opt/ardali-webmedia/"
-  fi
-
-  # 4. Create a wrapper script in /usr/bin to set LD_LIBRARY_PATH
+  # Create a wrapper script in /usr/bin with bundled native addon/library paths.
   install -dm755 "${pkgdir}/usr/bin"
   cat > "${pkgdir}/usr/bin/ardali-webmedia" << 'EOF'
 #!/bin/sh
-export LD_LIBRARY_PATH="/opt/ardali-webmedia/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
-exec /opt/ardali-webmedia/ardali-webmedia "$@"
+export LD_LIBRARY_PATH="/opt/ardali-webmedia/resources/native/build/Release:/opt/ardali-webmedia/resources/native-dist/linux:/opt/ardali-webmedia${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+exec /opt/ardali-webmedia/ardali "$@"
 EOF
   chmod +x "${pkgdir}/usr/bin/ardali-webmedia"
   ln -s /usr/bin/ardali-webmedia "${pkgdir}/usr/bin/ardali"
 
-  # 5. Install Desktop file and fix Exec and Categories
+  # Install desktop entry and icons.
   install -dm755 "${pkgdir}/usr/share/applications"
-  install -Dm644 "usr/share/applications/ArDali WebMedia.desktop" "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
-  
-  # Change desktop category to Internet only
-  sed -i 's/Categories=.*/Categories=Network;WebBrowser;/' "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
-
-  # Replace Exec and Icon in desktop file
-  sed -i 's|^Exec=.*|Exec=/usr/bin/ardali-webmedia|' "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
+  install -Dm644 ardali.desktop "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
+  sed -i 's|^Exec=.*|Exec=/usr/bin/ardali-webmedia %U|' "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
   sed -i 's/^Icon=.*/Icon=ardali-webmedia/' "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
+  sed -i 's/^Categories=.*/Categories=AudioVideo;Player;Network;/' "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
 
-  # 6. Copy icons
-  cp -r usr/share/icons "${pkgdir}/usr/share/"
+  if [ -d usr/share/icons ]; then
+    cp -r --no-preserve=ownership usr/share/icons "${pkgdir}/usr/share/"
+  fi
+  install -Dm644 ardali.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/ardali-webmedia.png"
 }
