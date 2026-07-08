@@ -1,12 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=nestopia-highscore-git
-pkgver=r439.357f6bf
+pkgver=r530.c3f8b74
 pkgrel=1
 pkgdesc="Highscore port of Nestopia-JG"
 arch=('x86_64')
 url="https://gitlab.com/highscore-emu/nestopia"
 license=('GPL-2.0-or-later')
-depends=('libhighscore-git')
+depends=(
+  'glib2'
+  'libhighscore-git'
+)
 makedepends=(
   'git'
   'meson'
