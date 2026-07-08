@@ -1,0 +1,20 @@
+pkgbase = hushmark
+	pkgdesc = Calm, minimalist Markdown reader
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/SoleSoul/hushmark
+	arch = x86_64
+	license = GPL-3.0-or-later
+	checkdepends = desktop-file-utils
+	makedepends = rust
+	makedepends = npm
+	makedepends = pkgconf
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsoup3
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	source = hushmark-0.1.6.tar.gz::https://github.com/SoleSoul/hushmark/archive/refs/tags/v0.1.6.tar.gz
+	sha256sums = 6ec28084e88bca0689f91ed5a9b081e5274427ead3e6eda867179cf0531d18fb
+
+pkgname = hushmark
