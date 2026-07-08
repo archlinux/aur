@@ -1,11 +1,11 @@
 # Maintainer: Bastien 'neitsab' Traverse <neitsab@archlinux.org>
 
 pkgname=incus-compose-git
-pkgver=r116.d0f3988
+pkgver=r560.bc613a1
 pkgrel=1
 pkgdesc="Bring the familiar Docker Compose workflow to Incus containers"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/r3j0/incus-compose"
+url="https://github.com/lxc/incus-compose"
 license=('Apache-2.0')
 source=("git+$url.git")
 depends=('incus')

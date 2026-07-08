@@ -1,15 +1,15 @@
 pkgbase = incus-compose-git
 	pkgdesc = Bring the familiar Docker Compose workflow to Incus containers
-	pkgver = r116.d0f3988
+	pkgver = r560.bc613a1
 	pkgrel = 1
-	url = https://gitlab.com/r3j0/incus-compose
+	url = https://github.com/lxc/incus-compose
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = git
 	makedepends = go
 	depends = incus
-	source = git+https://gitlab.com/r3j0/incus-compose.git
+	source = git+https://github.com/lxc/incus-compose.git
 	b2sums = SKIP
 
 pkgname = incus-compose-git
