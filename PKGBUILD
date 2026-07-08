@@ -3,16 +3,17 @@
 
 _pkgname="cutechess"
 pkgname="$_pkgname"
-pkgver=1.4.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Tools for working with chess engines"
 url="https://github.com/cutechess/cutechess"
 license=('GPL-3.0-or-later')
-arch=(i686 x86_64)
+arch=('x86_64')
 
 depends=(
   'hicolor-icon-theme'
   'qt6-5compat'
+  'qt6-base'
   'qt6-svg'
 )
 makedepends=(
@@ -21,13 +22,10 @@ makedepends=(
   'ninja'
 )
 
-provides=("cutechess-cli=${pkgver%%.r*}")
-conflicts=("cutechess-cli")
-
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('7adf8e8d867c13acf5273b568a39bf9d0d722d3de0141cea953e624f8839b506')
+sha256sums=('063f94f8a421952487cc49acddd218962c3881bfdf0219ad8f159954678fb375')
 
 build() {
   local _cmake_options=(
