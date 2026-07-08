@@ -3,12 +3,15 @@
 
 : ${_use_sodeps:=false}
 
-: ${_commit:=fa91380765a79f297cba679b95d962200d44841d} # 0.6.7.2.r485
+# separate submodule paths with :
+: ${_broken_submodules=}
+
+: ${_commit:=50b8967eccbee2642b4d37c20c9a36b2e13e6f4f} # 0.6.7.3.r883
 
 _pkgname="retroshare"
 pkgname="$_pkgname"
-pkgver=0.6.7.2
-pkgrel=6
+pkgver=0.6.7.3
+pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail"
 url="https://github.com/retroshare/retroshare"
 license=('AGPL-3.0-only')
@@ -39,8 +42,13 @@ sha256sums=('SKIP')
 prepare() {
   cd "$_pkgsrc"
 
-  # fix submodule links
-  sed -E -e 's&url = \.\./&url = https://github.com/retroshare/&' -i .gitmodules
+  # fix submodules
+  local _module _url _hash
+  for _module in ${_broken_submodules//:/ }; do
+    _url=$(git config -f .gitmodules "submodule.${_module}.url")
+    _hash=$(git ls-remote "${_url}" master | awk '{print $1}')
+    git update-index --add --cacheinfo 160000 "$_hash" "$_module"
+  done
 
   # clone submodules
   git submodule update --init --recursive --depth=1
@@ -53,23 +61,12 @@ prepare() {
 
   sed -E -e 's&if\(.* EQUAL "3"\)&if(FALSE)&' \
     -e '/QUIET botan-2/d' \
-    -e 's&"(lib)botan-2"&&g' \
+    -e 's&"(lib)?botan-2"&&g' \
     -i supportlibs/librnp/cmake/Modules/FindBotan.cmake
-
-  # disable warning-error
-  sed -e '/inconsistent-missing-override/d' -i retroshare.pri
-
-  # disable plugins
-  sed -e '/VOIP \\/d' \
-    -e '/FeedReader/d' \
-    -i plugins/plugins.pro
-
-  # fix for strlen
-  sed -e '1i #include <cstring>' -i supportlibs/librnp/src/lib/crypto/mem.cpp
 }
 
 build() {
-  cd "$_pkgsrc"
+  export CXXFLAGS+=" -include cstring"
 
   local _qmake_options=(
     CONFIG+=release
@@ -81,6 +78,7 @@ build() {
     RetroShare.pro
   )
 
+  cd "$_pkgsrc"
   qmake6 "${_qmake_options[@]}"
   make
 }
