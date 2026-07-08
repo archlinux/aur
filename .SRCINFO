@@ -1,0 +1,17 @@
+pkgbase = jac-bin
+	pkgdesc = Jac programming language — self-contained native jac binary (Jaseci)
+	pkgver = 0.30.9
+	pkgrel = 1
+	url = https://github.com/jaseci-labs/jaseci
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = jac
+	conflicts = jac
+	options = !strip
+	source_x86_64 = jac-0.30.9-linux-x86_64::https://github.com/jaseci-labs/jaseci/releases/download/v0.30.9/jac-0.30.9-linux-x86_64
+	sha256sums_x86_64 = 278ab4c4ee1a0967cda61db4bc5271e9b5ef0ea1aa5bcd7aac72e0f796b839c3
+	source_aarch64 = jac-0.30.9-linux-aarch64::https://github.com/jaseci-labs/jaseci/releases/download/v0.30.9/jac-0.30.9-linux-aarch64
+	sha256sums_aarch64 = 892ee74fcbc7c99efe7b8030d9854ed409d832620477780c38b206c58a3e192b
+
+pkgname = jac-bin
