@@ -31,7 +31,7 @@ pkgbase = cantera
 	depends = hdf5
 	provides = libcantera_shared.so=2-64
 	conflicts = cantera-git
-	source = git+https://github.com/Cantera/cantera.git#tag=v3.2.0
-	md5sums = SKIP
+	source = cantera-3.2.0.tar.gz::https://github.com/Cantera/cantera/archive/v3.2.0.tar.gz
+	sha256sums = f01e25e33f9d5e37db7ababe5af36b60caabff52dba04bb221d53e44735f60ec
 
 pkgname = cantera
