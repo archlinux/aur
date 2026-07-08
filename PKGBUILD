@@ -27,11 +27,17 @@ depends=(
     'aurorae'
     'breeze'
     'kscreen'
+    'systemsettings'
+    'plasma-desktop'
+    'xdg-desktop-portal'
     'xdg-desktop-portal-kde'
-    # Runtime dependency: the zoom plugin conditionally links against this
-    # library when found at build time; without it the compositor session
-    # will fail to start.
     'libqaccessibilityclient-qt6'
+    'pipewire'
+    'libevdev'
+    'libcanberra'
+    'procps-ng'
+    'psmisc'
+    'upower'
 )
 
 makedepends=(
@@ -124,7 +130,13 @@ makedepends=(
     'jemalloc'
 )
 
-optdepends=()
+optdepends=(
+    'bluedevil: Bluetooth device integration'
+    'plasma-nm: Network management applet'
+    'plasma-pa: Audio volume management'
+    'kinfocenter: System information center'
+    'kde-gtk-config: GTK application styling'
+)
 # COPR-compatible package replacement metadata
 # Mimics the COPR spec's Provides + Obsoletes for kwin, kwin-common, kwin-libs,
 # kwin-wayland, kglobalacceld, and kglobalacceld-devel.
