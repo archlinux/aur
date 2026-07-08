@@ -1,14 +1,13 @@
 pkgbase = howdy-next
 	pkgdesc = C++ rewrite of Howdy facial-recognition authentication on Linux
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/nathawat/howdy-next
 	install = howdy-next.install
 	arch = x86_64
 	license = MIT
 	makedepends = meson>=1.11.0
 	makedepends = gettext
-	makedepends = yyjson>=0.12.0
 	depends = libinih
 	depends = libevdev
 	depends = pam
@@ -16,6 +15,7 @@ pkgbase = howdy-next
 	depends = curl
 	depends = openssl
 	depends = qt6-base
+	depends = yyjson>=0.12.0
 	optdepends = linux-enable-ir-emitter: Enables infrared cameras that are not directly enabled out-of-the box
 	provides = howdy
 	conflicts = howdy
