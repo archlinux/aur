@@ -39,6 +39,11 @@
 # # Default: true
 # update                 = true
 
+# # GitHub Personal Access Token for API requests.
+# # Leave empty to fall back to the GITHUB_TOKEN env variable if set.
+# # Default: ""
+# github_token           = ""
+
 # # ---------------------------------------------------------------------------
 # # Filesystem layout
 # # ---------------------------------------------------------------------------

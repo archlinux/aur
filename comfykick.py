@@ -41,6 +41,7 @@ DEFAULTS = {
     ],
     "enable_manager": True,
     "extra_model_paths_yaml": "",
+    "github_token": "",
     "extra_python_package": [],
     "listen": "localhost",
     "output_dir": XDG_DATA_HOME / PROJECT_NAME / "output",
@@ -126,6 +127,12 @@ def _load_config():
     for key in _PATH_KEYS:
         if config.get(key) == "":
             config[key] = DEFAULTS[key]
+
+    # `github_token` falls back to the GITHUB_TOKEN environment variable
+    # only when it is not explicitly set in the config files.
+    if not config.get("github_token"):
+        config["github_token"] = os.environ.get("GITHUB_TOKEN", "")
+
     return config
 
 
@@ -222,10 +229,12 @@ def create_directories(config, extra_dirs):
         d.mkdir(parents=True, exist_ok=True)
 
 
-def _api_request(url):
+def _api_request(url, token=None):
     timeout = 30
     req = urllib.request.Request(url)
     req.add_header("Accept", "application/vnd.github+json")
+    if token:
+        req.add_header("Authorization", f"Bearer {token}")
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             return json.load(resp)
@@ -247,7 +256,7 @@ def _resolve_version(config, version_cache_dir):
     # otherwise rely on the cached ``latest`` symlink.
     if version == "latest":
         if update:
-            data = _api_request(GITHUB_API_LATEST)
+            data = _api_request(GITHUB_API_LATEST, token=config["github_token"])
             return data["tag_name"], data["tarball_url"]
         latest_link = version_cache_dir / "latest"
         if not latest_link.is_symlink():
@@ -267,7 +276,7 @@ def _resolve_version(config, version_cache_dir):
     # branch archive URL when the API doesn't know about that release.
     if update:
         try:
-            data = _api_request(GITHUB_API_TAG.format(version))
+            data = _api_request(GITHUB_API_TAG.format(version), token=config["github_token"])
             return data["tag_name"], data["tarball_url"]
         except urllib.error.HTTPError as e:
             if e.code != 404:
@@ -451,6 +460,9 @@ def main():
     log("INFO", "Loaded configuration:")
     for key in sorted(config):
         print(f"  > {key} = {config[key]!r}", file=sys.stderr)
+
+    if not config["github_token"]:
+        log("INFO", "Running without GitHub token.")
 
     extra_dirs = _resolve_extra_model_paths(config)
 
