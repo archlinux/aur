@@ -1,6 +1,6 @@
 # Maintainer: vMohammad <vmohammad@vmohammad.dev>
 pkgname=framr-bin
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="Wayland screenshot, annotation and screen recording tool with ShareX-compatible uploads (pre-compiled binary)"
 arch=('x86_64')
@@ -12,11 +12,15 @@ options=('!lto')
 depends=('wayland' 'libxkbcommon' 'dbus' 'cairo' 'libxcursor' 'gstreamer' 'gst-plugins-base-libs' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'gst-plugins-bad' 'gst-plugin-rav1e' 'gst-plugin-pipewire')
 source=("$pkgname-$pkgver-bin::$url/releases/download/v$pkgver/framr"
         "framr-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6820c5e0460c61dc921bc02b9c8c49679f0da10af21cc08f208ff1099bb94f7f'
-            '8ab827a2b7fbb3789b7828e074d9f28cba1d33272b16dc4fa69aa9be812cadb0')
+sha256sums=('ad4a2c14077f1f07f555b91ad04cc242f3a77d8979c1099a8b7d978886a85c14'
+            'b750e92f844bf7016607042f5ac950d6c0fbce401ee55d52316a0de3ba3f8dad')
 
 package() {
     install -Dm755 "$srcdir/$pkgname-$pkgver-bin" "$pkgdir/usr/bin/framr"
+
+    "$pkgdir/usr/bin/framr" completions bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/framr"
+    "$pkgdir/usr/bin/framr" completions zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_framr"
+    "$pkgdir/usr/bin/framr" completions fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/framr.fish"
 
     cd "$srcdir/framr-$pkgver"
     install -Dm644 "assets/framr-handler.desktop" "$pkgdir/usr/share/applications/framr-handler.desktop"
