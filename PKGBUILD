@@ -40,17 +40,6 @@ sha256sums=('cabf2d514da8f6fc1846d202e22772b266d1e432069124d73f6e6623b3d8f28f'
 prepare() {
   mkdir -p vicinae
   tar -xzf "vicinae-${arch}-v${pkgver}-${pkgrel}.tgz" -C vicinae
-
-  mv vicinae/share/vicinae/native-host/*.in "$srcdir"
-  rm -rf vicinae/share/vicinae/native-host
-
-  mv com.vicinae.vicinae.chromium.json{.in,}
-  mv com.vicinae.vicinae.firefox.json{.in,}
-
-  sed -i \
-    -e 's|@NATIVE_HOST_BIN@|/usr/libexec/vicinae/vicinae-browser-link|' \
-    -e 's|@CHROME_EXTENSION_ID@|kcmipingpfbohfjckomimmahknoddnke|' \
-    ./*.json
 }
 
 package() {
@@ -58,10 +47,6 @@ package() {
   for item in ./vicinae/*; do
     cp -a "$item" "$pkgdir/usr/"
   done
-
-  # have to be installed manually due to non standard locations
-  install -Dm644 "$srcdir"/com.vicinae.vicinae.chromium.json "$pkgdir/etc/chromium/native-messaging-hosts/com.vicinae.vicinae.json"
-  install -Dm644 "$srcdir"/com.vicinae.vicinae.firefox.json "$pkgdir/usr/lib/mozilla/native-messaging-hosts/com.vicinae.vicinae.json"
 
   # Pacman hook
   install -Dm644 "$srcdir/${pkgname%-bin}.hook" "$pkgdir/usr/share/libalpm/hooks/${pkgname%-bin}.hook"
