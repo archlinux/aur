@@ -1,7 +1,7 @@
 pkgbase = python-repomatic
 	pkgdesc = Automate repository maintenance, releases, and CI/CD workflows
-	pkgver = 7.0.0
-	pkgrel = 2
+	pkgver = 7.1.0
+	pkgrel = 1
 	url = https://kdeldycke.github.io/repomatic/
 	arch = any
 	license = GPL-2.0-or-later
@@ -21,7 +21,7 @@ pkgbase = python-repomatic
 	depends = python-tomlrt
 	depends = python-vt-py
 	depends = python-wcmatch
-	source = python-repomatic-7.0.0.tar.gz::https://github.com/kdeldycke/repomatic/archive/refs/tags/v7.0.0.tar.gz
-	sha512sums = ee111bf6e92bb4184a76347121a96937e0530eaca3656875009db35135aee49b4ab286372e22565bf4d9b1b3d88012eb7b625205fb116fa7c224349642c37cd2
+	source = python-repomatic-7.1.0.tar.gz::https://github.com/kdeldycke/repomatic/archive/refs/tags/v7.1.0.tar.gz
+	sha512sums = 6741094e6a1969e53e5995c50001f0c19c0df15045fa8a9bdd6c4395f5bfc346dd04692bd2ccf61182665ab011d4f1069560105b35fc9618cc0f463dd1b960ad
 
 pkgname = python-repomatic
