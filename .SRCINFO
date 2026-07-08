@@ -1,11 +1,11 @@
 pkgbase = phoenix-flatpak
-	pkgdesc = Phoenix is a suite of configurations & advanced modifications for Mozilla Firefox, designed to put the user first - with a focus on privacy, security, freedom, & usability.
-	pkgver = 202606101
-	pkgrel = 1
-	url = https://phoenix.celenity.dev
-	arch = any
-	license = GPL-3.0-or-later
-	source = phoenix-flatpak-202606101-1.tar.xz::https://releases.celenity.dev/phoenix/releases/2026.06.10.1/linux-flatpak/phoenix-2026.06.10.1-linux-flatpak.tar.xz
-	sha512sums = d73a9e2f06a60d4295a400ee0358873d5f6d3572f75f6789fe3c79734e0c21b19ca4d3e56a3b23730ca1a56ab2d43b2338c6930534221eac180929bbab46f4ab
+  pkgdesc = Phoenix is a suite of configurations & advanced modifications for Mozilla Firefox, designed to put the user first - with a focus on privacy, security, freedom, & usability.
+  pkgver = 202607081
+  pkgrel = 1
+  url = https://phoenix.celenity.dev
+  arch = any
+  license = GPL-3.0-or-later
+  source = phoenix-flatpak-202607081-1.tar.xz::https://releases.celenity.dev/phoenix/releases/2026.07.08.1/linux-flatpak/phoenix-2026.07.08.1-linux-flatpak.tar.xz
+  sha512sums = 5bb01da1e0ac897f2de665e2290ffbd5fa4609bdd1eff02bccb5d0db7e32f47a13bf3fac091ef8ded3255d8706cd82312f4910bb7dae73942ee49a8cee17841b
 
 pkgname = phoenix-flatpak
