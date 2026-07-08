@@ -8,7 +8,7 @@ _appname=runex
 pkgname=${_cratename}
 pkgdesc="Cross-shell abbreviation engine that expands short tokens into full commands"
 
-pkgver=0.1.19
+pkgver=0.1.20
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -27,7 +27,7 @@ conflicts=('runex-bin')
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download"
 		"LICENSE")
-sha256sums=('74c25501bfa5506e068f6e2a50b222f91ba421b305fdb84eb703d7a9f98b5f5d'
+sha256sums=('fac03f4acdaa35fc1766cd92df8c7735d3f27250caa0c28e1dea9a7ac1d5a589'
             '735fa89d57bbf22a8c85d829aa1ed791cce81ffdb900467333025ab7b2feee1c')
 
 
