@@ -1,7 +1,7 @@
 # Maintainer: PenguinBurner contributors
 
 pkgname=penguin-burner
-pkgver=0.5.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='NVIDIA GPU automatic undervolting and fine tuning tool'
 arch=('x86_64')
@@ -17,6 +17,7 @@ depends=(
 )
 makedepends=(
   'cmake'
+  'mingw-w64-gcc'
   'python-build'
   'python-installer'
   'python-setuptools'
@@ -29,6 +30,9 @@ sha256sums=('SKIP')
 build() {
   cd "PenguinBurner-${pkgver}"
   export PENGUIN_BURNER_REQUIRE_NATIVE_LAYER=1
+  # MinGW cross-compiles the NVAPI latency shim into the wheel; fail loudly
+  # if the toolchain is missing instead of shipping the feature hollow.
+  export PENGUIN_BURNER_REQUIRE_NVAPI_SHIM=1
   python -m build --wheel --no-isolation --skip-dependency-check
 }
 
