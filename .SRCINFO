@@ -10,7 +10,7 @@ pkgbase = juicefs-git
 	makedepends = git
 	depends = glibc
 	conflicts = juicefs
-	source = juicefs::git+https://github.com/juicedata/juicefs.git
+	source = juicefs::git+https://github.com/juicedata/juicefs.git#branch=main
 	sha256sums = SKIP
 
 pkgname = juicefs-git

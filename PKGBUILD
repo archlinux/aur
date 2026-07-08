@@ -10,11 +10,11 @@ license=('Apache')
 conflicts=('juicefs')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("${_pkgname}::git+${url}.git")
+source=("${_pkgname}::git+${url}.git#branch=main")
 sha256sums=('SKIP')
 pkgver() {
     cd "$_pkgname"
-    printf "1.3.0dev" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 build() {
     cd "$_pkgname"
