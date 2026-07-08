@@ -1,6 +1,6 @@
 pkgbase = i386-elf-binutils
 	pkgdesc = GNU binutils for the i386- toolchain
-	pkgver = 2.45.1
+	pkgver = 2.46.1
 	pkgrel = 1
 	url = https://www.gnu.org/software/binutils
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = i386-elf-binutils
 	license = GPL
 	makedepends = gcc
 	depends = xz
-	source = http://ftpmirror.gnu.org/binutils/binutils-2.45.1.tar.xz
-	sha256sums = 5fe101e6fe9d18fdec95962d81ed670fdee5f37e3f48f0bef87bddf862513aa5
+	source = http://ftpmirror.gnu.org/binutils/binutils-2.46.1.tar.xz
+	sha512sums = a5c65e56e400ed3fb8906a995dbb93eb5bea54b16344244653d7f44ef29ceb60270da263b19d25302c37759784e14fcb4b9421b29e0e2c7f450bd99f6bb4595c
 
 pkgname = i386-elf-binutils
