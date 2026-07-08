@@ -2,7 +2,7 @@
 
 pkgname=mangowm-git
 pkgver=r1351.94380a3
-pkgrel=1.3
+pkgrel=1.4
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/mangowm/mango"
 arch=("x86_64")
@@ -18,8 +18,8 @@ depends=(
   cjson
   libxcb
   xorg-xwayland
-  'libwlroots-0.19.so'
-  'scenefx0.4'
+  'libwlroots-0.20.so'
+  'scenefx0.5'
 )
 
 makedepends=(
