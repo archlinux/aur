@@ -1,12 +1,13 @@
 pkgbase = picodrive-highscore-git
 	pkgdesc = Highscore port of PicoDrive
-	pkgver = r2166.ef6e75d
-	pkgrel = 2
+	pkgver = r2175.4e8809c
+	pkgrel = 1
 	url = https://github.com/highscore-emu/picodrive
 	arch = x86_64
 	license = LicenseRef-custom
 	makedepends = git
 	makedepends = meson
+	depends = glib2
 	depends = libchdr
 	depends = libhighscore-git
 	depends = libvorbis
