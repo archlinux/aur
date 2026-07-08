@@ -1,38 +1,31 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: sanlun <miwa at nc-toyama dot ac dot jp>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=cl-ironclad
 _pkgname="${pkgname#cl-}"
-pkgver=0.57
-pkgrel=2
+pkgver=0.61
+pkgrel=1
 pkgdesc='A cryptographic toolkit written in Common Lisp'
 arch=('any')
 url='https://github.com/sharplispers/ironclad'
 license=('BSD')
 depends=('common-lisp' 'cl-asdf' 'cl-bordeaux-threads' 'cl-flexi-streams')
-makedepends=('git')
 checkdepends=('sbcl' 'cl-rt')
-_commit='36663e5afb677890702a2e94386ef8fc8b05b5c1'
 source=(
-  "$pkgname::git+$url#commit=$_commit"
+  "$url/archive/refs/tags/v$pkgver.tar.gz"
   'run-tests.lisp'
 )
-b2sums=('SKIP'
-        '55cf92728fbeae1919290ef15c2d265e08b8beb9910845eaeeddb09213e9582e76264e39492648f6f4318b2d27eb16a822a53333a92bed73c7c16d1d2e2b604f')
-
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
-}
+sha256sums=('a16a3fb7a58a48843914ed8dcbcaeb3131548e4fa7c6c64f1ebbe858621869a6'
+            '3109b458d721bdcd42b79fc22fa53a9e968ecbeb5675296b85a639df40978599')
 
 check() {
-  cd "$pkgname"
+  cd "$_pkgname-$pkgver"
 
   sbcl --script ../run-tests.lisp
 }
 
 package() {
-  cd "$pkgname"
+  cd "$_pkgname-$pkgver"
 
   # library
   install -vd "$pkgdir/usr/share/common-lisp/source/$_pkgname"
