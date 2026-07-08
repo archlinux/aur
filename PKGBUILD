@@ -1,7 +1,7 @@
 pkgname=openssh-gui-git
 _pkgname=OpenSSH-GUI
 _pkgdirname=OpenSSH_GUI
-pkgver=3.2.0.417.a1b2c3d
+pkgver=3.2.3.274+ca203b0
 pkgrel=1
 pkgdesc="A GUI for OpenSSH configuration and management (Sourcepackage)"
 arch=('x86_64')
@@ -13,28 +13,30 @@ depends=('icu' 'openssl' 'zlib' 'krb5' 'libx11')
 makedepends=('git' 'dotnet-sdk-10.0' 'librsvg')
 
 provides=('openssh-gui')
-conflicts=('openssh-gui' 'openssh-gui-bin' 'openssh-gui-nightly')
+conflicts=('openssh-gui' 'openssh-gui-bin')
 
 source=("git+${url}.git#branch=development")
 sha256sums=('SKIP')
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
+  git fetch --all
+  git checkout development
+  git reset --hard origin/development
   dotnet restore ${_pkgdirname}/${_pkgdirname}.csproj
 }
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-
+    git fetch --all -q
+    git reset --hard origin/development -q
     local version
-
     version=$(dotnet msbuild ${_pkgdirname}/${_pkgdirname}.csproj \
         -nologo \
         -restore:false \
         -getProperty:Version \
         | tr -d '\r' \
         | tr '-' '.')
-
     printf "%s.%s+%s" \
         "$version" \
         "$(git rev-list --count HEAD)" \
@@ -52,6 +54,7 @@ build() {
       -p:PublishSingleFile=true \
       -p:PublishReadyToRun=false \
       -p:IncludeNativeLibrariesForSelfExtract=true \
+      -p:DebugType=none \
       -p:Version="${pkgver}"
 
   rsvg-convert -w 256 -h 256 images/openssh-gui.svg -o appicon-256.png
