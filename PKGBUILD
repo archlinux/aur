@@ -2,7 +2,7 @@
 pkgname=javinizer-bin
 pkgver=1.1.1
 pkgrel=1
-pkgdesc="A metadata scraper and file organizer for Japanese Adult Videos (JAV), with CLI, TUI, REST API, and a web UI"
+pkgdesc="A metadata scraper and file organizer for JAV, with CLI, TUI, REST API, and a web UI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/javinizer/javinizer-go"
 license=('MIT')
