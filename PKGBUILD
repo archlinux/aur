@@ -1,14 +1,14 @@
 # Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 pkgname=c2t-git
 _pkgname=c2t
-pkgver=r119.6c20c17
+pkgver=r121.76c7a64
 pkgrel=1
 pkgdesc="Apple II audio file cassette utility"
 arch=('x86_64')
 url="https://github.com/datajerk/c2t"
 license=('custom')
 depends=()
-makedepends=(tinyxxd)
+makedepends=(tinyxxd git)
 source=(
   git+https://github.com/datajerk/c2t.git
   c2t-use-system-cc65.patch
