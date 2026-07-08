@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-full
 pkgver=8.1.2
-pkgrel=1
+pkgrel=2
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _whispercpp_ver='1.9.1'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
@@ -91,7 +91,7 @@ depends=(
     'openapv'
     'opencolorio'
     'opencore-amr'
-    'opencv'
+    'opencv4'
     'openh264'
     'openjpeg2'
     'openvino'
