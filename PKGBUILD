@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=nourish-bin
-pkgver=1.4.1
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Modern Wayland desktop with an infinite zoomable canvas"
 arch=('x86_64')
@@ -44,7 +44,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/y5-snowies/nourish/releases/download/v${pkgver}/package.tar.gz"
   "LICENSE-MIT::https://raw.githubusercontent.com/y5-snowies/nourish/v${pkgver}/LICENSE-MIT"
 )
-sha256sums=('fee11d78c623c6fa7132ea97382b2eb45f2f8a08c2b62f03bdeeac40f349b20e'
+sha256sums=('09ddb6b454ad4aa4e7503c6752142d53de8656fe50174642087663186aaf0f31'
             '8f9eb88eafea695df265da06eda1ca4374862b2033ad8f6649829be81884c8ba')
 
 latestver() {
