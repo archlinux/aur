@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=genesis-plus-gx-highscore-git
-pkgver=r1794.c3be6c4
+pkgver=r1817.0066f3c
 pkgrel=1
 pkgdesc="Highscore port of Genesis Plus GX"
 arch=('x86_64')
@@ -8,6 +8,7 @@ url="https://github.com/highscore-emu/Genesis-Plus-GX"
 license=('LicenseRef-custom')
 depends=(
   'flac'
+  'glib2'
   'libhighscore-git'
   'libchdr'
   'libvorbis'
