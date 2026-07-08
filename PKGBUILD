@@ -1,15 +1,15 @@
 # Contributor: Andreas Baumann <mail@andreasbauman.cc>
 pkgname=dos33fsprogs-git
 _pkgname=dos33fsprogs
-pkgver=r6362.7848dbaf
-pkgrel=2
+pkgver=r7190.5de5f2a3
+pkgrel=1
 pkgdesc=""
 arch=('x86_64')
 url="http://www.deater.net/weave/vmwprod/apple/dos33fs.html"
 license=('GPL2')
 depends=()
 optdepends=()
-makedepends=()
+makedepends=('git')
 source=("${_pkgname}::git+https://github.com/deater/dos33fsprogs.git")
 sha256sums=('SKIP')
 
