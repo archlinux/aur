@@ -1,7 +1,7 @@
 # Maintainer: enihcam <enihcam@archlinux.us>
 
 pkgname=python-json-repair
-pkgver=0.61.1
+pkgver=0.61.2
 pkgrel=1
 pkgdesc="Repair invalid JSON documents"
 arch=('any')
@@ -10,8 +10,8 @@ license=('MIT')
 makedepends=('python-build' 'python-installer' 'python-wheel' )
 depends=()
 
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/j/json-repair/json_repair-0.61.1.tar.gz")
-sha256sums=('24a68de2891c696ad3bd9a94874e8d3ef2d309c56af2973094b8297c975b5b58')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/j/json-repair/json_repair-0.61.2.tar.gz")
+sha256sums=('b63ae5ad44c8720158e24bdd7e33506f7036174c287831b187a51619a6f58a34')
 
 build() {
     cd "$srcdir/${pkgname#python-}-$pkgver"
