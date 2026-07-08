@@ -1,25 +1,8 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
 version = 1
 
 [[annotations]]
-path = [
-    "PKGBUILD",
-    "README.md",
-    "keys/**",
-    ".SRCINFO",
-    ".gitignore",
-    ".nvchecker.toml",
-    "*.install",
-    "*.sysusers",
-    "*sysusers.conf",
-    "*.tmpfiles",
-    "*tmpfiles.conf",
-    "*.logrotate",
-    "*.pam",
-    "*.service",
-    "*.socket",
-    "*.timer",
-    "*.desktop",
-    "*.hook",
-]
+path = ".SRCINFO"
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"

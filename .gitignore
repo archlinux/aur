@@ -1,9 +1,19 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
 *
+
+# Package files
+!.gitignore
+!.nvchecker.toml
 !.SRCINFO
 !PKGBUILD
+
+# RFC11
+!keys/
+!keys/*
+
+# RFC52
 !LICENSE
 !LICENSES/
 !LICENSES/*
 !REUSE.toml
-!.nvchecker.toml
-!.gitignore
