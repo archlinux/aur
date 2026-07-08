@@ -3,7 +3,7 @@
 # Contributor: Andre Klitzing <andre () incubo () de>
 
 pkgname=pgrouting
-pkgver=3.8.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Adds routing functionality to PostGIS/PostgreSQL"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('postgis>=2.0' 'gcc-libs' 'cgal')
 makedepends=('cmake' 'boost' 'postgresql>=13')
 source=("$pkgname-$pkgver.tar.gz"::https://github.com/pgRouting/$pkgname/archive/v$pkgver.tar.gz)
-sha512sums=('d79bc879e3d95d04309c50de8b5abdadc29a54f47f777d0dc513e995ff9839595d4824326cc4d6997881b8f8a4d0b01c890f449edae4f5421a4cb2c217e8fd34')
+sha512sums=('a1608d37a6f9619fe831c936da5fda0148df677e667d41e1a257ba637f9337235b4eaa6a80209d4d6276ab2aaceb98ed4a7c9e4cb876974ffd507b75b03b92e6')
 prepare() {
    cd $pkgname-$pkgver
 
