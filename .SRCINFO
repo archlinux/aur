@@ -1,11 +1,12 @@
 pkgbase = prodos-utilities-git
 	pkgdesc = Tool and Go library to access ProDOS filesystems of the Apple ][ series of computers
-	pkgver = r82.6925946
+	pkgver = r98.3aed390
 	pkgrel = 1
 	url = https://github.com/tjboldt/ProDOS-Utilities
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	makedepends = git
 	source = ProDOS-Utilities::git+https://github.com/tjboldt/ProDOS-Utilities.git
 	sha256sums = SKIP
 

@@ -1,7 +1,7 @@
 # Contributor: Andreas Baumann <mail@andreasbauman.cc>
 pkgname=prodos-utilities-git
 _pkgname=ProDOS-Utilities
-pkgver=r82.6925946
+pkgver=r98.3aed390
 pkgrel=1
 pkgdesc="Tool and Go library to access ProDOS filesystems of the Apple ][ series of computers"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/tjboldt/ProDOS-Utilities"
 license=('MIT')
 depends=()
 optdepends=()
-makedepends=('go')
+makedepends=('go' 'git')
 source=("${_pkgname}::git+https://github.com/tjboldt/ProDOS-Utilities.git")
 sha256sums=('SKIP')
 
