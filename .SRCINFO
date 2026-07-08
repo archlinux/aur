@@ -1,7 +1,7 @@
 pkgbase = teamtype-git
 	pkgdesc = Peer-to-peer, editor-agnostic collaborative editing of local text files
 	pkgver = 0.9.2.r0.ge05a267
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/teamtype/teamtype
 	arch = x86_64
 	license = AGPL-3.0-only

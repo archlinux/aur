@@ -3,7 +3,7 @@
 pkgname=teamtype-git
 _pkgname=${pkgname%-git}
 pkgver=0.9.2.r0.ge05a267
-pkgrel=1
+pkgrel=2
 pkgdesc='Peer-to-peer, editor-agnostic collaborative editing of local text files'
 arch=(x86_64)
 url="https://github.com/$_pkgname/$_pkgname"
@@ -28,6 +28,8 @@ pkgver() {
 
 _srcenv() {
 	cd "$_pkgname"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
 	export CARGO_HOME="$srcdir"
 	export CARGO_PROFILE_RELEASE_DEBUG=2
 	export CARGO_PROFILE_RELEASE_STRIP=false
