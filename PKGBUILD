@@ -2,11 +2,11 @@
 pkgname=yubico-authenticator
 _app_id=com.yubico.yubioath
 pkgdesc="Yubico Authenticator for Desktop"
-pkgver=7.4.0
+pkgver=7.4.1
 pkgrel=1
-_flutter_ver=3.44.1  ## Check .github/workflows/env for version
+_flutter_ver=3.44.4  ## Check .github/workflows/env for version
 arch=('x86_64' 'aarch64')
-url="https://github.com/Yubico/yubioath-flutter"
+url="https://developers.yubico.com/yubioath-flutter"
 license=('Apache-2.0')
 depends=(
   'ccid'
@@ -37,9 +37,10 @@ makedepends=(
   'python-wheel'
 )
 source=("git+https://github.com/Yubico/yubioath-flutter.git#tag=$pkgver?signed")
-sha256sums=('47d18a75253664fd8828337c350da6bf4f09f0a060293085db135f79c5d5387f')
-validpgpkeys=('20EE325B86A81BCBD3E56798F04367096FBA95E8'   # Dain Nilsson <dain@yubico.com>
-              'C28ED3753F01B4B097A1B306948B29C5F1E063ED')  # Elias Bonnici <elias.bonnici@yubico.com>
+sha256sums=('c986b8f7147b6d61f895f2ed21f46078e201d33782df766c0a8382e710deae6f')
+validpgpkeys=('20EE325B86A81BCBD3E56798F04367096FBA95E8'  # Dain Nilsson <dain@yubico.com>
+              'C28ED3753F01B4B097A1B306948B29C5F1E063ED'  # Elias Bonnici <elias.bonnici@yubico.com>
+              'AF511D2CBC0F973E5D308054325C8E4AE2E6437D') # Adam Velebil <adam.velebil@yubico.com>
 
 prepare() {
   cd yubioath-flutter
