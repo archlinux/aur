@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=midori-bin
-pkgver=11.8.1
+pkgver=11.8.2
 pkgrel=1
 pkgdesc="Browser fork of Floorp fork of Firefox by Astian"
 arch=(x86_64)
@@ -21,7 +21,7 @@ source_x86_64=(
                #"https://github.com/goastian/midori-desktop/releases/download/v${pkgver}/midori-browser-${pkgver}-2.1.x86_64.rpm"
                #"https://github.com/goastian/midori-desktop/releases/download/v${pkgver}/midori-${pkgver}.linux-x86_64.tar.bz2"
 )
-sha256sums_x86_64=('1354e690ad1e12248bbcd7883d1e97471dd5ae474d9a9aa4c80f6225566bc929')
+sha256sums_x86_64=('8c2899830809ff5b516069ffc4bedfd79fbbaf87af888bc1790bbaf066d4e7b2')
 options=(!strip)
 
 package() {
