@@ -1,6 +1,6 @@
 pkgbase = openrgb-plugin-effects-next-git
 	pkgdesc = Effects plugin for OpenRGB (next branch)
-	pkgver = 0.9.110.g3acdb21
+	pkgver = 0.9.115.gf9dc731
 	pkgrel = 1
 	url = https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = openrgb-plugin-effects-next-git
 	depends = openal
 	provides = openrgb-plugin-effects
 	conflicts = openrgb-plugin-effects
-	source = git+https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin.git#branch=next
+	source = git+https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin.git#branch=master
 	sha256sums = SKIP
 
 pkgname = openrgb-plugin-effects-next-git
