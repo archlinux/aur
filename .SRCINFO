@@ -1,6 +1,6 @@
 pkgbase = openrgb-plugin-http-hook-next-git
 	pkgdesc = HTTP Hook plugin for OpenRGB (next branch)
-	pkgver = 0.9.22.g6b09a97
+	pkgver = 0.9.24.g5b6ac57
 	pkgrel = 1
 	url = https://gitlab.com/OpenRGBDevelopers/OpenRGBHttpHookPlugin
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = openrgb-plugin-http-hook-next-git
 	depends = openrgb
 	provides = openrgb-plugin-http-hook
 	conflicts = openrgb-plugin-http-hook
-	source = git+https://gitlab.com/OpenRGBDevelopers/OpenRGBHttpHookPlugin.git#branch=next
+	source = git+https://gitlab.com/OpenRGBDevelopers/OpenRGBHttpHookPlugin.git#branch=master
 	sha256sums = SKIP
 
 pkgname = openrgb-plugin-http-hook-next-git
