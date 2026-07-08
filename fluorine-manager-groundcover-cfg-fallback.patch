@@ -1,0 +1,67 @@
+From 98bb10b9347ab34f3465749a1ec90f7b4045e77b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Niccol=C3=B2=20Belli?= <niccolo.belli@linuxsystems.it>
+Date: Tue, 7 Jul 2026 16:52:11 +0200
+Subject: [PATCH] Fall back to openmw.cfg groundcover= when groundcover.txt is
+ absent
+
+---
+ libs/basic_games/games/game_openmw.py | 40 ++++++++++++++++++++++-----
+ 1 file changed, 33 insertions(+), 7 deletions(-)
+
+diff --git a/libs/basic_games/games/game_openmw.py b/libs/basic_games/games/game_openmw.py
+index 74c56b5..bcce3b3 100644
+--- a/libs/basic_games/games/game_openmw.py
++++ b/libs/basic_games/games/game_openmw.py
+@@ -156,19 +156,45 @@ def _is_openmw_binary(self, app_name: str) -> bool:
+         return base in {"openmw", "openmw-launcher", "flatpak"}
+ 
+     def _read_groundcover_txt(self) -> list[str]:
+-        """Plugins the user has flagged as groundcover, from <profile>/groundcover.txt."""
++        """Plugins flagged as groundcover, from <profile>/groundcover.txt,
++        falling back to groundcover= entries in <profile>/openmw.cfg (Kezyma's
++        OpenMW Player output) when groundcover.txt is absent."""
+         try:
+             profile_dir = Path(self._organizer.profile().absolutePath())
+         except Exception:
+             return []
++
++        # Primary source: Fluorine-native groundcover.txt (user-controlled).
++        # Takes precedence over Kezyma's list so a user who creates this file
++        # stays in control of what loads as groundcover.
+         gc_file = profile_dir / "groundcover.txt"
+-        if not gc_file.is_file():
++        if gc_file.is_file():
++            out: list[str] = []
++            for raw in gc_file.read_text(encoding="utf-8", errors="replace").splitlines():
++                line = raw.strip().lstrip("*").strip()
++                if line and not line.startswith("#"):
++                    out.append(line)
++            return out
++
++        # Fallback: groundcover= entries in the profile's openmw.cfg. Kezyma's
++        # OpenMW Player writes these directly (Wabbajack modlists like NEMAS
++        # ship them instead of a groundcover.txt), so parsing them here makes
++        # Fluorine route grass mods to groundcover= out-of-the-box. We split on
++        # the first '=' (not startswith) so 'groundcover = X' with spaces around
++        # '=' is handled the same as 'groundcover=X'.
++        profile_cfg = profile_dir / "openmw.cfg"
++        if not profile_cfg.is_file():
+             return []
+-        out: list[str] = []
+-        for raw in gc_file.read_text(encoding="utf-8", errors="replace").splitlines():
+-            line = raw.strip().lstrip("*").strip()
+-            if line and not line.startswith("#"):
+-                out.append(line)
++        out = []
++        for raw in profile_cfg.read_text(encoding="utf-8", errors="replace").splitlines():
++            line = raw.strip()
++            if not line or line.startswith("#") or "=" not in line:
++                continue
++            key, _, value = line.partition("=")
++            if key.strip().lower() == "groundcover":
++                value = value.strip()
++                if value:
++                    out.append(value)
+         return out
+ 
+     def _export_openmw_cfg(self, app_name: str) -> bool:
