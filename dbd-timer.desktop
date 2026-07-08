@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=DBD Timer
+Comment=Overlay stopwatch with two independent timers
+Exec=dbd-timer
+Icon=dbd-timer
+Type=Application
+Categories=Utility;
+Terminal=false
