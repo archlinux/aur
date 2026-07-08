@@ -53,7 +53,7 @@ package() {
 
 	install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/apps2samsung.desktop" <<-EOF
 	[Desktop Entry]
-	Version=1.0
+	Version=$pkgver
 	Type=Application
 	Name=Apps2Samsung
 	Comment=Install any app on Samsung TVs, projectors and smart monitors
