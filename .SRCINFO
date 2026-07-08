@@ -1,7 +1,7 @@
 pkgbase = python-paddleocr
 	pkgdesc = Awesome multilingual OCR and document parsing toolkits based on PaddlePaddle
 	pkgver = 3.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PaddlePaddle/PaddleOCR
 	arch = any
 	license = Apache-2.0
@@ -20,6 +20,6 @@ pkgbase = python-paddleocr
 	optdepends = python-pylatexenc: LaTeX encoding support (doc2md extra)
 	optdepends = python-pptx: PPTX export support (doc2md extra)
 	source = python-paddleocr-3.7.0.tar.gz::https://github.com/PaddlePaddle/PaddleOCR/archive/refs/tags/v3.7.0.tar.gz
-	b2sums = SKIP
+	sha256sums = 8e5f1f9ba18c29621d38394b4f72925960640b315281391c3b3c86804f079a73
 
 pkgname = python-paddleocr

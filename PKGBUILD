@@ -4,7 +4,7 @@
 pkgname=python-paddleocr
 _pkgname=paddleocr
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Awesome multilingual OCR and document parsing toolkits based on PaddlePaddle'
 arch=('any')
 url='https://github.com/PaddlePaddle/PaddleOCR'
@@ -30,7 +30,13 @@ optdepends=(
     'python-pptx: PPTX export support (doc2md extra)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/PaddlePaddle/PaddleOCR/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('SKIP')
+sha256sums=('8e5f1f9ba18c29621d38394b4f72925960640b315281391c3b3c86804f079a73')
+
+prepare() {
+    cd "PaddleOCR-$pkgver"
+    # Relax strict setuptools pin (==72.1.0 -> >=72.1.0) to work with Arch's newer python-setuptools
+    sed -i 's/"setuptools==72\.1\.0"/"setuptools>=72.1.0"/' pyproject.toml
+}
 
 build() {
     cd "PaddleOCR-$pkgver"
