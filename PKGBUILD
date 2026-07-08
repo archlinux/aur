@@ -3,7 +3,7 @@
 # Contributor: twa022 <twa022 at gmail dot com>
 
 pkgname=miracle-wm
-pkgver=0.9.1
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Wayland tiling window manager built on Mir"
 arch=(x86_64)
@@ -13,6 +13,8 @@ depends=(
     mir
     libnotify
     wasmedge
+    gtk4
+    gtk4-layer-shell
     )
 makedepends=(
     git
@@ -20,13 +22,12 @@ makedepends=(
     nlohmann-json
     glm
     boost
-    #mold # preferred linker
     )
 source=("git+https://github.com/miracle-wm-org/miracle-wm.git#tag=v${pkgver}"
         #0001-bugfix-only-install-libmirrenderer-dev-if-it-is-avai.patch
         #0002-task-remove-version-checks-in-order-to-assume-latest.patch
     )
-sha256sums=('62e6134bc05455998deced5d1cee63395d917ac379b37a1183fd7482fd5ecb93')
+sha256sums=('1f58059772a037adc1ce98b4c3c42a0eb1dd018bf8736d9c529fb9c57c352777')
 
 prepare() {
   cd miracle-wm
