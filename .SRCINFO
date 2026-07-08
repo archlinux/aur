@@ -1,0 +1,27 @@
+pkgbase = xnec2c-9m2pju-git
+	pkgdesc = GTK+ Antenna EM Modeling Client (9M2PJU fork)
+	pkgver = 4.4.18.r780.g4d9fbe4
+	pkgrel = 1
+	url = https://github.com/9M2PJU/xnec2c
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = gettext
+	makedepends = pkgconf
+	depends = gtk3
+	depends = gsl
+	depends = libepoxy
+	optdepends = gnuplot: to use plotted output/data files
+	optdepends = openblas: accelerated BLAS/LAPACK linear algebra
+	optdepends = lapacke: LAPACK+BLAS support
+	provides = xnec2c
+	conflicts = xnec2c
+	conflicts = xnec2c-git
+	source = xnec2c-9m2pju-git::git+https://github.com/9M2PJU/xnec2c.git
+	md5sums = SKIP
+
+pkgname = xnec2c-9m2pju-git
