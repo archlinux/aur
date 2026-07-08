@@ -15,7 +15,7 @@
 # Contributor: Ben <ben@benmazer.net>
 
 pkgname=mpd-git
-pkgver=0.24.6.r94.ga874566f9
+pkgver=0.24.12.r315.g1f7ffe1f7
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music"
 url="https://www.musicpd.org/"
@@ -42,7 +42,7 @@ makedepends=(alsa-lib audiofile avahi boost curl dbus faad2
 provides=(mpd)
 conflicts=(mpd)
 backup=("etc/mpd.conf")
-source=("mpd::git+https://github.com/MusicPlayerDaemon/MPD"
+source=("git+https://github.com/MusicPlayerDaemon/MPD.git"
         "mpd.conf"
         "mpd.sysusers"
         "mpd.tmpfiles")
@@ -56,18 +56,18 @@ b2sums=('SKIP'
         'd7b587c25dd5830c27af475a8fdd8102139d7c8fdd6f04fe23b36be030e4411582e289f575c299255ff8183096f7d47247327276f9a24641cbd032d9675b837a')
 
 pkgver() {
-  cd "mpd"
+  cd "MPD"
   git describe --long --tags | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 prepare() {
-  cd "mpd"
+  cd "MPD"
   sed -e '/\[Service\]/a User=mpd' \
       -i "systemd/system/mpd.service.in"
 }
 
 build() {
-  cd "mpd"
+  cd "MPD"
 
   # NOTE: sndio conflicts with alsa
   # TODO: package adplug
@@ -87,6 +87,7 @@ build() {
         -D tremor=disabled \
         -D openmpt=disabled \
         -D vgmstream=disabled \
+        -D psgplay=disabled \
         build
 
   ninja -C build
@@ -94,12 +95,12 @@ build() {
 
 # There aren't tests
 #check() {
-#  cd "mpd"
+#  cd "MPD"
 #  ninja -C build test
 #}
 
 package() {
-  cd "mpd"
+  cd "MPD"
 
   DESTDIR="${pkgdir}" ninja -C build install
 

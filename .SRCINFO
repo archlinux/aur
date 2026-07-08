@@ -1,6 +1,6 @@
 pkgbase = mpd-git
 	pkgdesc = Flexible, powerful, server-side application for playing music
-	pkgver = 0.24.6.r94.ga874566f9
+	pkgver = 0.24.12.r315.g1f7ffe1f7
 	pkgrel = 1
 	url = https://www.musicpd.org/
 	arch = x86_64
@@ -97,7 +97,7 @@ pkgbase = mpd-git
 	provides = mpd
 	conflicts = mpd
 	backup = etc/mpd.conf
-	source = mpd::git+https://github.com/MusicPlayerDaemon/MPD
+	source = git+https://github.com/MusicPlayerDaemon/MPD.git
 	source = mpd.conf
 	source = mpd.sysusers
 	source = mpd.tmpfiles
