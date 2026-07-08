@@ -13,6 +13,12 @@ INSTALLER_URL="${MINECRAFT_BEDROCK_INSTALLER_URL:-${GAMECORE_INSTALLER_URL}}"
 INSTALLER_PATH="${MINECRAFT_BEDROCK_INSTALLER:-${CACHE_DIR}/MinecraftInstaller.exe}"
 LEGACY_INSTALLER_PATH="${CACHE_DIR}/MinecraftInstaller.msi"
 INSTALLER_RUNTIME_DIR="${CACHE_DIR}/installer-runtime"
+GAMES_DIR="${APP_HOME}/games"
+CONTENT_PATH="${APP_HOME}/content"
+GAME_ARCHIVE_URL="${MINECRAFT_BEDROCK_GAME_ARCHIVE_URL:-}"
+GAME_ARCHIVE_REPO="${MINECRAFT_BEDROCK_GAME_ARCHIVE_REPO:-}"
+GAME_ARCHIVE_VERSION="${MINECRAFT_BEDROCK_GAME_VERSION:-}"
+GAME_ARCHIVE_INCLUDE_PRERELEASE="${MINECRAFT_BEDROCK_INCLUDE_PRERELEASE:-0}"
 GDK_PROTON_REPO="${MINECRAFT_BEDROCK_GDK_PROTON_REPO:-Weather-OS/GDK-Proton}"
 DEFAULT_WINRT_CONTRACTS_VERSION="10.0.17763.1000"
 DEFAULT_WINRT_CONTRACTS_SHA256="78b0b15a13ec3ae90f8e1e0fd609fd10f6d20ef984c5a56b48b55ceffbf88a94"
@@ -29,11 +35,15 @@ else
 fi
 MSYS2_CURL_URL="${MINECRAFT_BEDROCK_MSYS2_CURL_URL:-https://mirror.msys2.org/mingw/mingw64/mingw-w64-x86_64-curl-8.17.0-1-any.pkg.tar.zst}"
 CA_BUNDLE_URL="${MINECRAFT_BEDROCK_CA_BUNDLE_URL:-https://curl.se/ca/cacert.pem}"
+GDK_DEPS_URL="${MINECRAFT_BEDROCK_GDK_DEPS_URL:-https://github.com/minecraft-linux/mcpelauncher-gdk-dependencies/releases/download/v0.0.0}"
 STEAM_SHORTCUT_NAME="${MINECRAFT_BEDROCK_STEAM_NAME:-Minecraft Bedrock (Proton)}"
 INSTALLED_SHORTCUT_HELPER="/usr/lib/minecraft-bedrock/steam-shortcut.py"
 WINRT_CONTRACT_FILES=(
   Windows.Foundation.FoundationContract.winmd
   Windows.Foundation.UniversalApiContract.winmd
+)
+GDK_DEPS_DLLS=(
+  libHttpClient.GDK.dll
 )
 DEFAULT_LAUNCHER_ARGS=(
   --disable-gpu
@@ -68,7 +78,7 @@ usage() {
 Usage: minecraft-bedrock [command]
 
 Commands:
-  setup [--gamecore|--legacy]
+  setup [--gamecore|--legacy|--game-archive|--installed-game]
                         Install Proton, create the prefix, run installer, add Steam shortcut
   stop                  Stop Wine/Proton processes owned by this helper
   purge                 Remove prefix/cache/state, managed GDK-Proton, and Steam shortcut
@@ -76,33 +86,53 @@ Commands:
   download-installer    Download the current GameCore Minecraft installer
   install-winrt-contracts
                         Download WinRT contract metadata needed by the GameCore installer
+  patch-installer [installer]
+                        Patch a GameCore installer for Proton Mono compatibility
   init-prefix           Create/update the Proton compatdata prefix
   install-prereqs [--gamecore|--legacy]
                         Install prefix prerequisites with winetricks
+  patch-proton-runtime Patch selected GDK-Proton runtime DLLs for Bedrock GDK
+  install-gameinput [game-dir]
+                        Install Microsoft GameInput redist from the GDK game files
   install-launcher [installer]
                         Run the downloaded Minecraft installer inside Proton
+  list-game-versions   List configured GDK game archive releases
+  download-game [tag]  Download and install a configured GDK game archive
+  install-game <path>  Install an extracted GDK game directory or archive
   configure-launcher    Write launcher settings for Wine/Proton rendering
-  patch-online          Patch Minecraft.Windows.exe directory with XCurl.dll and CA certs
+  patch-online          Patch Minecraft.Windows.exe directory with GDK online support files
   add-steam-shortcut    Add/update the Steam non-Steam shortcut
-  launch [launcher|game] Launch the launcher, game, or first available target
+  launch [launcher|game|installer]
+                        Launch the launcher, game, installer, or first available target
   paths                 Print resolved paths
   help                  Show this help
 
 Environment:
   MINECRAFT_BEDROCK_PROTON_PATH       Proton directory or proton script to use
   MINECRAFT_BEDROCK_PREFER_GDK_PROTON Set to 1 to prefer GDK-Proton over Steam Proton
+  MINECRAFT_BEDROCK_PREFER_STEAM_PROTON
+                                      Set to 1 to prefer regular Steam Proton for game launch
+  MINECRAFT_BEDROCK_NO_PROTON_PATCH   Set to 1 to skip GDK-Proton runtime patches
   MINECRAFT_BEDROCK_COMPAT_DATA_PATH  Proton compatdata directory
   MINECRAFT_BEDROCK_INSTALLER         Pre-downloaded installer path
+  MINECRAFT_BEDROCK_GAME_ARCHIVE_URL  Zip/AppX/MSIX archive containing Minecraft.Windows.exe
+  MINECRAFT_BEDROCK_GAME_ARCHIVE_REPO GitHub owner/repo for opt-in game archives
+  MINECRAFT_BEDROCK_GAME_VERSION      Release tag to use with GAME_ARCHIVE_REPO
+  MINECRAFT_BEDROCK_INCLUDE_PRERELEASE
+                                      Set to 1 to allow prerelease game archives by default
   MINECRAFT_BEDROCK_WINRT_CONTRACTS_DIR
                                       Directory containing installer WinRT .winmd files
   MINECRAFT_BEDROCK_NO_IMPORT_GUI_ENV Set to 1 to disable importing GUI env from systemd
+  MINECRAFT_BEDROCK_NO_INSTALLER_PATCH
+                                      Set to 1 to skip patching the GameCore installer
   MINECRAFT_BEDROCK_DISABLE_GPU       Set to 0 to avoid writing disableGPU=true
   MINECRAFT_BEDROCK_CEF_OPTIONS       Space-separated CEF switches without leading --
   MINECRAFT_BEDROCK_LAUNCHER_ARGS     Override launcher Chromium/CEF flags
   MINECRAFT_BEDROCK_NO_LAUNCHER_ARGS  Set to 1 to pass no extra launcher flags
   MINECRAFT_BEDROCK_STEAM_USER_ID     Steam userdata id for shortcut writes
   MINECRAFT_BEDROCK_SKIP_WINETRICKS   Set to 1 to skip winetricks prereqs
-  MINECRAFT_BEDROCK_SKIP_DOTNET       Set to 1 to skip native .NET for GameCore
+  MINECRAFT_BEDROCK_USE_NATIVE_DOTNET Set to 1 to try native .NET for GameCore diagnostics
+  MINECRAFT_BEDROCK_DIAGNOSTICS       Set to 1 to enable verbose game launch logs
 
 Purge options:
   -y, --yes             Do not prompt before deleting files
@@ -113,6 +143,8 @@ Purge options:
 Installer options:
       --gamecore        Download the current Windows 10/11 GameCore EXE (default)
       --legacy          Download the legacy MSI launcher installer
+      --game-archive    Use configured game archive source instead of the launcher installer
+      --installed-game  Use an already installed/imported Minecraft.Windows.exe
 EOF
 }
 
@@ -207,6 +239,10 @@ find_installed_proton() {
         return 0
       fi
     done
+
+    if [[ "${MINECRAFT_BEDROCK_REQUIRE_GDK_PROTON:-0}" == "1" ]]; then
+      return 1
+    fi
   fi
 
   for ((idx=${#steam_candidates[@]} - 1; idx >= 0; idx--)); do
@@ -436,6 +472,177 @@ cmd_ensure_proton() {
   cmd_install_proton
 }
 
+prefer_gdk_proton_for_game() {
+  if [[ "${MINECRAFT_BEDROCK_PREFER_STEAM_PROTON:-0}" == "1" || -n "${MINECRAFT_BEDROCK_PROTON_PATH:-}" ]]; then
+    return 0
+  fi
+
+  export MINECRAFT_BEDROCK_PREFER_GDK_PROTON=1
+  export MINECRAFT_BEDROCK_REQUIRE_GDK_PROTON=1
+}
+
+patch_gdk_proton_runtime() {
+  local proton_dir wine_dir base
+
+  if [[ "${MINECRAFT_BEDROCK_NO_PROTON_PATCH:-0}" == "1" ]]; then
+    warn "Skipping GDK-Proton runtime patches"
+    return 0
+  fi
+
+  proton_dir="$(require_proton)"
+  base="$(basename "${proton_dir}")"
+  case "${base}" in
+    GDK-Proton*|GDK_Proton*|gdk-proton*)
+      ;;
+    *)
+      if [[ "${MINECRAFT_BEDROCK_ALLOW_PROTON_PATCH:-0}" != "1" ]]; then
+        warn "Not patching non-GDK Proton runtime: ${proton_dir}"
+        warn "Set MINECRAFT_BEDROCK_ALLOW_PROTON_PATCH=1 to patch this runtime anyway."
+        return 0
+      fi
+      ;;
+  esac
+
+  wine_dir="${proton_dir}/files/lib/wine/x86_64-windows"
+  [[ -f "${wine_dir}/combase.dll" && -f "${wine_dir}/ntdll.dll" ]] || die "GDK-Proton Wine DLLs not found in ${wine_dir}"
+
+  require_command python
+  python - "${wine_dir}/combase.dll" "${wine_dir}/ntdll.dll" <<'PY'
+import shutil
+import struct
+import sys
+from pathlib import Path
+
+combase = Path(sys.argv[1])
+ntdll = Path(sys.argv[2])
+
+
+class PE:
+    def __init__(self, path):
+        self.path = path
+        self.data = path.read_bytes()
+        data = self.data
+        if data[:2] != b"MZ":
+            raise ValueError(f"{path} is not a PE file")
+        e_lfanew = struct.unpack_from("<I", data, 0x3C)[0]
+        if data[e_lfanew:e_lfanew + 4] != b"PE\0\0":
+            raise ValueError(f"{path} has no PE signature")
+        coff = e_lfanew + 4
+        section_count = struct.unpack_from("<H", data, coff + 2)[0]
+        optional = coff + 20
+        if struct.unpack_from("<H", data, optional)[0] != 0x20B:
+            raise ValueError(f"{path} is not PE32+")
+        optional_size = struct.unpack_from("<H", data, coff + 16)[0]
+        self.export_rva = struct.unpack_from("<I", data, optional + 112)[0]
+        section_table = optional + optional_size
+        self.sections = []
+        for index in range(section_count):
+            base = section_table + index * 40
+            virtual_size, virtual_address, raw_size, raw_pointer = struct.unpack_from("<IIII", data, base + 8)
+            self.sections.append((virtual_address, virtual_size, raw_pointer, raw_size))
+
+    def rva_to_offset(self, rva):
+        for virtual_address, virtual_size, raw_pointer, raw_size in self.sections:
+            span = max(virtual_size, raw_size)
+            if virtual_address <= rva < virtual_address + span:
+                return raw_pointer + (rva - virtual_address)
+        return None
+
+    def offset_to_rva(self, offset):
+        for virtual_address, _virtual_size, raw_pointer, raw_size in self.sections:
+            if raw_pointer <= offset < raw_pointer + raw_size:
+                return virtual_address + (offset - raw_pointer)
+        return None
+
+    def export_offset(self, name):
+        data = self.data
+        export_offset = self.rva_to_offset(self.export_rva)
+        if export_offset is None:
+            return None
+        name_count = struct.unpack_from("<I", data, export_offset + 24)[0]
+        function_table = self.rva_to_offset(struct.unpack_from("<I", data, export_offset + 28)[0])
+        name_table = self.rva_to_offset(struct.unpack_from("<I", data, export_offset + 32)[0])
+        ordinal_table = self.rva_to_offset(struct.unpack_from("<I", data, export_offset + 36)[0])
+        wanted = name.encode("ascii")
+        for index in range(name_count):
+            name_rva = struct.unpack_from("<I", data, name_table + 4 * index)[0]
+            name_offset = self.rva_to_offset(name_rva)
+            end = data.index(b"\0", name_offset)
+            if data[name_offset:end] != wanted:
+                continue
+            ordinal = struct.unpack_from("<H", data, ordinal_table + 2 * index)[0]
+            function_rva = struct.unpack_from("<I", data, function_table + 4 * ordinal)[0]
+            return self.rva_to_offset(function_rva)
+        return None
+
+    def export_rva_by_name(self, name):
+        offset = self.export_offset(name)
+        return self.offset_to_rva(offset) if offset is not None else None
+
+
+def backup_once(path):
+    backup = path.with_suffix(path.suffix + ".minecraft-bedrock.bak")
+    if not backup.exists():
+        shutil.copy2(path, backup)
+
+
+def patch_combase(path):
+    pe = PE(path)
+    offset = pe.export_offset("RoOriginateErrorW")
+    if offset is None:
+        raise SystemExit("RoOriginateErrorW not found in combase.dll")
+    raw = bytearray(pe.data)
+    replacement = bytes.fromhex("31c0c3") + b"\x90" * 21
+    if bytes(raw[offset:offset + len(replacement)]) == replacement:
+        print("combase.RoOriginateErrorW already patched", file=sys.stderr)
+        return
+    backup_once(path)
+    raw[offset:offset + len(replacement)] = replacement
+    path.write_bytes(raw)
+    print("patched combase.RoOriginateErrorW", file=sys.stderr)
+
+
+def patch_ntdll(path):
+    pe = PE(path)
+    rre = pe.export_rva_by_name("RtlRaiseException")
+    if rre is None:
+        raise SystemExit("RtlRaiseException not resolved in ntdll.dll")
+    data = pe.data
+    sig = bytes.fromhex("55534881ecc8000000488dac24c0000000")
+    replacement = bytes.fromhex("b8020000c0c3") + b"\x90\x90"
+    funnels = []
+    index = data.find(sig)
+    while index >= 0:
+        call = data.find(bytes.fromhex("4889d9e8"), index, index + 0x90)
+        if call >= 0:
+            call_function = call + 3
+            rel = struct.unpack_from("<i", data, call_function + 1)[0]
+            target = pe.offset_to_rva(call_function) + 5 + rel
+            if target == rre and data[call_function + 5:call_function + 7] == b"\xeb\xf6":
+                funnels.append(index)
+        index = data.find(sig, index + 1)
+
+    if funnels:
+        raw = bytearray(data)
+        for offset in funnels:
+            raw[offset:offset + len(replacement)] = replacement
+        backup_once(path)
+        path.write_bytes(raw)
+        print(f"patched ntdll unimplemented stub funnel(s): {len(funnels)}", file=sys.stderr)
+        return
+
+    if replacement in data:
+        print("ntdll unimplemented stub funnel already patched", file=sys.stderr)
+        return
+
+    raise SystemExit("ntdll unimplemented stub funnel not found")
+
+
+patch_combase(combase)
+patch_ntdll(ntdll)
+PY
+}
+
 run_proton_wait() {
   local proton_dir steam_root
   proton_dir="$(require_proton)"
@@ -498,6 +705,237 @@ cmd_download_installer() {
   download_installer_to "${url}" "${dest}" "${format}"
 }
 
+require_game_archive_repo() {
+  [[ -n "${GAME_ARCHIVE_REPO}" ]] || die "no game archive source configured. Set MINECRAFT_BEDROCK_GAME_ARCHIVE_URL to a zip/appx/msix archive you are allowed to use, or set MINECRAFT_BEDROCK_GAME_ARCHIVE_REPO=owner/repo for an explicit GitHub release source."
+}
+
+github_game_archive_info() {
+  local tag="${1:-}"
+
+  require_game_archive_repo
+  require_command python
+  python - "${GAME_ARCHIVE_REPO}" "${tag}" "${GAME_ARCHIVE_INCLUDE_PRERELEASE}" <<'PY'
+import json
+import sys
+import urllib.parse
+import urllib.request
+
+repo, tag, include_prerelease = sys.argv[1], sys.argv[2], sys.argv[3] == "1"
+headers = {
+    "Accept": "application/vnd.github+json",
+    "User-Agent": "minecraft-bedrock-aur/0.1",
+}
+
+def fetch(url):
+    request = urllib.request.Request(url, headers=headers)
+    with urllib.request.urlopen(request) as response:
+        return json.load(response)
+
+if tag:
+    releases = [fetch(f"https://api.github.com/repos/{repo}/releases/tags/{urllib.parse.quote(tag, safe='')}")]
+else:
+    releases = fetch(f"https://api.github.com/repos/{repo}/releases?per_page=30")
+
+for release in releases:
+    if not tag and release.get("prerelease") and not include_prerelease:
+        continue
+    assets = release.get("assets", [])
+    for asset in assets:
+        name = asset.get("name", "")
+        lower = name.lower()
+        if lower.endswith((".zip", ".appx", ".appxbundle", ".msix", ".msixbundle")) and "minecraft" in lower:
+            print(
+                release.get("tag_name", ""),
+                name,
+                asset.get("browser_download_url", ""),
+                asset.get("size", 0),
+                sep="\t",
+            )
+            raise SystemExit(0)
+
+raise SystemExit("no Minecraft archive asset found in configured release source")
+PY
+}
+
+cmd_list_game_versions() {
+  require_game_archive_repo
+  require_command python
+  python - "${GAME_ARCHIVE_REPO}" <<'PY'
+import json
+import sys
+import urllib.request
+
+repo = sys.argv[1]
+request = urllib.request.Request(
+    f"https://api.github.com/repos/{repo}/releases?per_page=60",
+    headers={
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "minecraft-bedrock-aur/0.1",
+    },
+)
+with urllib.request.urlopen(request) as response:
+    releases = json.load(response)
+
+for release in releases:
+    assets = release.get("assets", [])
+    archive = next(
+        (
+            asset
+            for asset in assets
+            if asset.get("name", "").lower().endswith(
+                (".zip", ".appx", ".appxbundle", ".msix", ".msixbundle")
+            )
+            and "minecraft" in asset.get("name", "").lower()
+        ),
+        None,
+    )
+    if not archive:
+        continue
+    print(
+        release.get("tag_name", ""),
+        "prerelease" if release.get("prerelease") else "stable",
+        archive.get("name", ""),
+        archive.get("size", 0),
+        sep="\t",
+    )
+PY
+}
+
+find_game_root_in() {
+  local base="$1"
+  local exe dir
+
+  [[ -d "${base}" ]] || return 1
+  while IFS= read -r -d '' exe; do
+    dir="$(dirname "${exe}")"
+    if [[ -f "${dir}/AppxManifest.xml" || -f "${dir}/appxmanifest.xml" ]]; then
+      printf '%s\n' "${dir}"
+      return 0
+    fi
+  done < <(find "${base}" -type f -iname 'Minecraft.Windows.exe' -print0 2>/dev/null || true)
+
+  return 1
+}
+
+game_version_from_dir() {
+  local game_dir="$1"
+
+  require_command python
+  python - "${game_dir}" <<'PY'
+import re
+import sys
+from pathlib import Path
+
+game_dir = Path(sys.argv[1])
+for name in ("AppxManifest.xml", "appxmanifest.xml"):
+    manifest = game_dir / name
+    if not manifest.exists():
+        continue
+    match = re.search(
+        r'Identity[^>]*Version="(\d+)\.(\d+)\.(\d+)\.\d+"',
+        manifest.read_text(encoding="utf-8", errors="ignore"),
+    )
+    if not match:
+        continue
+    patch = match.group(3)
+    if len(patch) >= 3:
+        print(f"{match.group(1)}.{match.group(2)}.{int(patch[:2])}.{int(patch[2:])}")
+    else:
+        print(f"{match.group(1)}.{match.group(2)}.{int(patch)}")
+    raise SystemExit(0)
+raise SystemExit(1)
+PY
+}
+
+safe_game_label() {
+  local label="$1"
+
+  label="${label//\//_}"
+  label="${label//\\/_}"
+  label="${label#"${label%%[![:space:]]*}"}"
+  label="${label%"${label##*[![:space:]]}"}"
+  if [[ -z "${label}" || "${label}" == "." || "${label}" == ".." ]]; then
+    label="minecraft"
+  fi
+  printf '%s\n' "${label}"
+}
+
+cmd_install_game() {
+  local source="${1:-}"
+  local label="${2:-}"
+  local tmp="" root version dest root_real dest_real
+
+  [[ -n "${source}" ]] || die "install-game requires an extracted game directory or archive path"
+  require_command bsdtar
+  mkdir -p "${CACHE_DIR}"
+
+  if [[ -d "${source}" ]]; then
+    root="$(find_game_root_in "${source}")" || die "Minecraft.Windows.exe with AppxManifest.xml was not found under ${source}"
+  elif [[ -f "${source}" ]]; then
+    tmp="$(mktemp -d "${CACHE_DIR}/game-extract.XXXXXX")"
+    info "Extracting Minecraft game archive: ${source}"
+    bsdtar -xf "${source}" -C "${tmp}"
+    root="$(find_game_root_in "${tmp}")" || {
+      rm -rf "${tmp}"
+      die "Minecraft.Windows.exe with AppxManifest.xml was not found in ${source}"
+    }
+  else
+    die "game source not found: ${source}"
+  fi
+
+  version="$(game_version_from_dir "${root}" || true)"
+  if [[ -z "${label}" ]]; then
+    label="${GAME_ARCHIVE_VERSION:-${version:-$(basename "${source}")}}"
+  fi
+  label="$(safe_game_label "${label}")"
+  dest="${GAMES_DIR}/${label}"
+  root_real="$(realpath -m -- "${root}")"
+  dest_real="$(realpath -m -- "${dest}")"
+
+  mkdir -p "${GAMES_DIR}"
+  if [[ "${root_real}" != "${dest_real}" ]]; then
+    rm -rf -- "${dest}"
+    mkdir -p "${dest}"
+    cp -a "${root}/." "${dest}/"
+  fi
+  rm -rf -- "${CONTENT_PATH}"
+  ln -s "${dest}" "${CONTENT_PATH}"
+  rm -rf "${tmp}"
+
+  info "Installed Minecraft game content: ${dest}"
+  cmd_patch_online
+}
+
+cmd_download_game() {
+  local tag="${1:-${GAME_ARCHIVE_VERSION}}"
+  local archive name url size
+
+  if [[ -n "${GAME_ARCHIVE_URL}" ]]; then
+    name="${GAME_ARCHIVE_URL%%\?*}"
+    name="${name##*/}"
+    [[ -n "${name}" ]] || name="MinecraftGame.zip"
+    archive="${CACHE_DIR}/${name}"
+    if [[ -f "${archive}" ]]; then
+      info "Using cached game archive: ${archive}"
+    else
+      download_file "${GAME_ARCHIVE_URL}" "${archive}"
+    fi
+    cmd_install_game "${archive}" "${tag:-${name}}"
+    return 0
+  fi
+
+  IFS=$'\t' read -r tag name url size < <(github_game_archive_info "${tag}")
+  [[ -n "${url}" && -n "${name}" ]] || die "configured game archive release did not include a downloadable asset"
+  archive="${CACHE_DIR}/${name}"
+  if [[ -f "${archive}" ]]; then
+    info "Using cached game archive: ${archive}"
+  else
+    info "Downloading Minecraft game archive ${tag} (${size} bytes)"
+    download_file "${url}" "${archive}"
+  fi
+  cmd_install_game "${archive}" "${tag}"
+}
+
 cmd_install_winrt_contracts() {
   local tmp contract src dest missing=0
 
@@ -538,6 +976,91 @@ cmd_install_winrt_contracts() {
   info "Installed WinRT installer contracts: ${WINRT_CONTRACTS_DIR}"
 }
 
+patch_gamecore_installer() {
+  local installer="$1"
+
+  if [[ "${MINECRAFT_BEDROCK_NO_INSTALLER_PATCH:-0}" == "1" ]]; then
+    warn "Skipping GameCore installer patch; Proton Mono may fail on WinRT high-contrast APIs"
+    return 0
+  fi
+
+  require_command python
+  python - "${installer}" <<'PY'
+import sys
+from pathlib import Path
+
+path = Path(sys.argv[1])
+data = bytearray(path.read_bytes())
+
+# MinecraftInstaller.App::.ctor only uses AccessibilitySettings to choose a
+# high-contrast ResourceDictionary. Proton Mono currently fails when invoking
+# that WinRT constructor, so force the branch false while preserving offsets.
+original = [
+    0x73, None, None, None, None,  # newobj AccessibilitySettings::.ctor()
+    0x06,                          # ldloc.0
+    0x72, None, None, None, None,  # ldstr ";component/Themes/AppStyleSheet.xaml"
+    0x16,                          # ldc.i4.0
+    0x73, None, None, None, None,  # newobj Uri::.ctor(string, UriKind)
+    0x6f, None, None, None, None,  # callvirt ResourceDictionary::set_Source
+    0x6f, None, None, None, None,  # callvirt AccessibilitySettings::get_HighContrast()
+    0x39, None, None, None, None,  # brfalse IL_00ea
+    0x73,                          # newobj ResourceDictionary::.ctor()
+]
+patched = [
+    0x16, 0x00, 0x00, 0x00, 0x00,  # ldc.i4.0; nop; nop; nop; nop
+    0x06,
+    0x72, None, None, None, None,
+    0x16,
+    0x73, None, None, None, None,
+    0x6f, None, None, None, None,
+    0x00, 0x00, 0x00, 0x00, 0x00,  # nop x5
+    0x39, None, None, None, None,
+    0x73,
+]
+
+
+def find(pattern):
+    matches = []
+    limit = len(data) - len(pattern) + 1
+    for offset in range(max(limit, 0)):
+        for idx, value in enumerate(pattern):
+            if value is not None and data[offset + idx] != value:
+                break
+        else:
+            matches.append(offset)
+    return matches
+
+
+matches = find(original)
+if len(matches) == 1:
+    offset = matches[0]
+    data[offset:offset + 5] = b"\x16\x00\x00\x00\x00"
+    data[offset + 22:offset + 27] = b"\x00\x00\x00\x00\x00"
+    tmp = path.with_suffix(path.suffix + ".patched")
+    tmp.write_bytes(data)
+    tmp.replace(path)
+    print("patched Proton Mono high-contrast WinRT call", file=sys.stderr)
+    raise SystemExit(0)
+
+if not matches and len(find(patched)) == 1:
+    print("installer already has Proton Mono high-contrast patch", file=sys.stderr)
+    raise SystemExit(0)
+
+if matches:
+    print(f"expected one installer patch target, found {len(matches)}", file=sys.stderr)
+else:
+    print("installer patch target not found; Microsoft may have changed the installer", file=sys.stderr)
+raise SystemExit(1)
+PY
+}
+
+cmd_patch_installer() {
+  local installer="${1:-${INSTALLER_PATH}}"
+
+  [[ -f "${installer}" ]] || die "installer not found: ${installer}"
+  patch_gamecore_installer "${installer}"
+}
+
 stage_exe_installer() {
   local installer="$1"
   local staged
@@ -547,6 +1070,7 @@ stage_exe_installer() {
 
   staged="${INSTALLER_RUNTIME_DIR}/$(basename "${installer}")"
   install -Dm644 "${installer}" "${staged}"
+  patch_gamecore_installer "${staged}" >&2
   for contract in "${WINRT_CONTRACT_FILES[@]}"; do
     install -Dm644 "${WINRT_CONTRACTS_DIR}/${contract}" "${INSTALLER_RUNTIME_DIR}/${contract}"
     install -Dm644 "${WINRT_CONTRACTS_DIR}/${contract}" "${INSTALLER_RUNTIME_DIR}/${contract%.winmd}.dll"
@@ -562,7 +1086,7 @@ cmd_init_prefix() {
 
 cmd_install_prereqs() {
   local installer_option="${1:---gamecore}"
-  local needs_dotnet=1
+  local use_dotnet=0
   local proton_dir wine wineserver
 
   if [[ "${MINECRAFT_BEDROCK_SKIP_WINETRICKS:-0}" == "1" ]]; then
@@ -572,10 +1096,11 @@ cmd_install_prereqs() {
 
   case "${installer_option}" in
     --legacy)
-      needs_dotnet=0
       ;;
     --gamecore|--windows-gdk|--gdk|--win10|--win11)
-      needs_dotnet=1
+      if [[ "${MINECRAFT_BEDROCK_USE_NATIVE_DOTNET:-0}" == "1" && "${MINECRAFT_BEDROCK_SKIP_DOTNET:-0}" != "1" ]]; then
+        use_dotnet=1
+      fi
       ;;
     *)
       die "unknown installer option: ${installer_option}"
@@ -583,8 +1108,8 @@ cmd_install_prereqs() {
   esac
 
   if ! command -v winetricks >/dev/null 2>&1; then
-    if [[ "${needs_dotnet}" == "1" && "${MINECRAFT_BEDROCK_SKIP_DOTNET:-0}" != "1" ]]; then
-      die "winetricks is required to install native .NET Framework 4.8 for the GameCore installer"
+    if [[ "${use_dotnet}" == "1" ]]; then
+      die "winetricks is required to install native .NET Framework 4.8"
     fi
     warn "winetricks is not installed; skipping optional prerequisites"
     return 0
@@ -600,13 +1125,11 @@ cmd_install_prereqs() {
 
   mkdir -p "${PREFIX_PATH}"
 
-  if [[ "${needs_dotnet}" == "1" ]]; then
-    if [[ "${MINECRAFT_BEDROCK_SKIP_DOTNET:-0}" == "1" ]]; then
-      warn "Skipping native .NET Framework 4.8; the GameCore installer will likely fail under Wine Mono"
-    elif [[ -f "${PREFIX_PATH}/dosdevices/c:/windows/dotnet48.installed.workaround" ]]; then
+  if [[ "${use_dotnet}" == "1" ]]; then
+    if [[ -f "${PREFIX_PATH}/dosdevices/c:/windows/dotnet48.installed.workaround" ]]; then
       info "Using existing native .NET Framework 4.8 install"
     else
-      info "Installing native .NET Framework 4.8 for the GameCore installer. This can take several minutes."
+      info "Installing native .NET Framework 4.8 for diagnostics. This can take several minutes."
       WINEPREFIX="${PREFIX_PATH}" \
         WINE="${wine}" \
         WINESERVER="${wineserver}" \
@@ -628,10 +1151,334 @@ cmd_install_prereqs() {
     winetricks -q vcrun2022 || warn "winetricks vcrun2022 failed; continuing"
 }
 
+windows_z_path() {
+  local path="$1"
+
+  printf 'Z:%s\n' "${path//\//\\}"
+}
+
+gameinput_redist_ok() {
+  [[ -f "${PREFIX_PATH}/drive_c/Program Files/Microsoft GameInput/x64/GameInputRedist.dll" &&
+     -f "${PREFIX_PATH}/drive_c/Program Files/Microsoft GameInput/x64/GameInputRedistService.exe" ]]
+}
+
+gameinput_registry_marker() {
+  printf '%s\n' "${PREFIX_PATH}/.minecraft-bedrock-gameinput-registry"
+}
+
+write_gameinput_registry_file() {
+  local reg_file="$1"
+
+  require_command python
+  mkdir -p "$(dirname "${reg_file}")"
+  python - "${reg_file}" <<'PY'
+import sys
+from pathlib import Path
+
+path = Path(sys.argv[1])
+reg = (
+    "Windows Registry Editor Version 5.00\r\n\r\n"
+    r"[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\GameInput]" "\r\n"
+    r'"RedistDir"="C:\\Program Files\\Microsoft GameInput\\x64"' "\r\n\r\n"
+    r"[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\GameInput]" "\r\n"
+    r'"RedistDir"="C:\\Program Files\\Microsoft GameInput\\x64"' "\r\n\r\n"
+    r"[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\GameInputRedistService]" "\r\n"
+    r'"DisplayName"="GameInput Redist Service"' "\r\n"
+    r'"Description"="GameInput Redist Service"' "\r\n"
+    r'"ImagePath"="C:\\Program Files\\Microsoft GameInput\\x64\\GameInputRedistService.exe"' "\r\n"
+    r'"ObjectName"="LocalSystem"' "\r\n"
+    r'"ErrorControl"=dword:00000000' "\r\n"
+    r'"Start"=dword:00000003' "\r\n"
+    r'"Type"=dword:00000010' "\r\n"
+)
+path.write_text(reg, encoding="utf-16")
+PY
+}
+
+import_gameinput_registry() {
+  local reg_file="${CACHE_DIR}/gameinput.reg"
+  local marker
+
+  [[ -d "${PREFIX_PATH}/drive_c/windows/system32" ]] || cmd_init_prefix
+  write_gameinput_registry_file "${reg_file}"
+  marker="$(gameinput_registry_marker)"
+  if ! run_proton_wait reg.exe import "$(windows_z_path "${reg_file}")" >/dev/null; then
+    return 1
+  fi
+  printf 'installed\n' > "${marker}"
+}
+
+extract_gameinput_redist() {
+  local msi="$1"
+
+  require_command python
+  python - "${msi}" "${PREFIX_PATH}" <<'PY'
+import struct
+import sys
+import zlib
+from pathlib import Path
+
+msi_path = Path(sys.argv[1])
+prefix = Path(sys.argv[2])
+
+
+def gameinput_redist_ok():
+    return (
+        prefix.joinpath(
+            "drive_c/Program Files/Microsoft GameInput/x64/GameInputRedist.dll"
+        ).exists()
+        and prefix.joinpath(
+            "drive_c/Program Files/Microsoft GameInput/x64/GameInputRedistService.exe"
+        ).exists()
+    )
+
+
+def msi_embedded_cab(msi):
+    if msi[:8] != bytes.fromhex("d0cf11e0a1b11ae1"):
+        return None
+    unpack = struct.unpack_from
+    sector_size = 1 << unpack("<H", msi, 0x1E)[0]
+    mini_sector_size = 1 << unpack("<H", msi, 0x20)[0]
+    dir0 = unpack("<I", msi, 0x30)[0]
+    mini_cutoff = unpack("<I", msi, 0x38)[0]
+    mini_fat0 = unpack("<I", msi, 0x3C)[0]
+    difat0 = unpack("<I", msi, 0x44)[0]
+    difat_count = unpack("<I", msi, 0x48)[0]
+    free = 0xFFFFFFFF
+    end_chain = 0xFFFFFFFE
+
+    def sector(number):
+        start = (number + 1) * sector_size
+        return msi[start:start + sector_size]
+
+    difat = list(unpack("<109I", msi, 0x4C))
+    next_sector = difat0
+    for _ in range(difat_count):
+        if next_sector in (free, end_chain):
+            break
+        values = list(unpack(f"<{sector_size // 4}I", sector(next_sector), 0))
+        difat += values[:-1]
+        next_sector = values[-1]
+
+    fat = []
+    for fat_sector in (entry for entry in difat if entry != free):
+        fat += list(unpack(f"<{sector_size // 4}I", sector(fat_sector), 0))
+
+    def chain(start):
+        out = []
+        number = start
+        seen = set()
+        while number not in (end_chain, free) and number < len(fat) and number not in seen:
+            seen.add(number)
+            out.append(number)
+            number = fat[number]
+        return out
+
+    def read_big(start, size):
+        return b"".join(sector(number) for number in chain(start))[:size]
+
+    directory_chain = chain(dir0)
+    directory = read_big(dir0, len(directory_chain) * sector_size)
+    entries = []
+    for index in range(0, len(directory), 128):
+        entry = directory[index:index + 128]
+        if len(entry) < 128:
+            break
+        if unpack("<H", entry, 64)[0]:
+            entries.append((entry[66], unpack("<I", entry, 116)[0], unpack("<Q", entry, 120)[0]))
+
+    root = next((entry for entry in entries if entry[0] == 5), None)
+    if not root:
+        return None
+
+    mini_stream = read_big(root[1], root[2])
+    mini_fat = []
+    for mini_sector in chain(mini_fat0):
+        mini_fat += list(unpack(f"<{sector_size // 4}I", sector(mini_sector), 0))
+
+    def read_mini(start, size):
+        out = b""
+        number = start
+        seen = set()
+        while number not in (end_chain, free) and number < len(mini_fat) and number not in seen:
+            seen.add(number)
+            out += mini_stream[number * mini_sector_size:(number + 1) * mini_sector_size]
+            number = mini_fat[number]
+        return out[:size]
+
+    for kind, start, size in entries:
+        if kind != 2 or size < 4:
+            continue
+        payload = read_big(start, size) if size >= mini_cutoff else read_mini(start, size)
+        if payload[:4] == b"MSCF":
+            return payload
+    return None
+
+
+def cab_payload(cab):
+    if not cab or cab[:4] != b"MSCF":
+        return []
+    unpack = struct.unpack_from
+    coff_files = unpack("<I", cab, 16)[0]
+    folder_count, file_count, flags = unpack("<HHH", cab, 26)
+    offset = 36
+    cb_folder = 0
+    cb_data = 0
+    if flags & 4:
+        cb_header, cb_folder, cb_data = unpack("<HBB", cab, offset)
+        offset += 4 + cb_header
+
+    folders = []
+    for _ in range(folder_count):
+        coff, data_count, _kind = unpack("<IHH", cab, offset)
+        offset += 8 + cb_folder
+        folders.append((coff, data_count))
+
+    files = []
+    pointer = coff_files
+    for _ in range(file_count):
+        cb, uncompressed_offset, folder_index = unpack("<IIH", cab, pointer)
+        pointer += 16
+        pointer = cab.index(b"\x00", pointer) + 1
+        files.append((cb, uncompressed_offset, folder_index))
+
+    folder_data = []
+    for coff, data_count in folders:
+        pointer = coff
+        out = b""
+        previous = b""
+        for _ in range(data_count):
+            compressed_size = unpack("<IHH", cab, pointer)[1]
+            pointer += 8 + cb_data
+            block = cab[pointer:pointer + compressed_size]
+            pointer += compressed_size
+            if block[:2] != b"CK":
+                return []
+            decompressor = zlib.decompressobj(-15, zdict=previous[-32768:] if previous else b"")
+            out += decompressor.decompress(block[2:]) + decompressor.flush()
+            previous = out
+        folder_data.append(out)
+
+    return [
+        (size, folder_data[folder_index][uncompressed_offset:uncompressed_offset + size])
+        for size, uncompressed_offset, folder_index in files
+    ]
+
+
+def pe_kind(data):
+    if data[:2] != b"MZ" or len(data) < 0x40:
+        return None
+    pe_offset = struct.unpack_from("<I", data, 0x3C)[0]
+    if pe_offset + 24 > len(data) or data[pe_offset:pe_offset + 4] != b"PE\0\0":
+        return None
+    characteristics = struct.unpack_from("<H", data, pe_offset + 22)[0]
+    return "dll" if characteristics & 0x2000 else "exe"
+
+
+cab = msi_embedded_cab(msi_path.read_bytes())
+payloads = [
+    (len(data), kind, data)
+    for _size, data in cab_payload(cab)
+    for kind in [pe_kind(data)]
+    if kind
+]
+dlls = sorted((data for _size, kind, data in payloads if kind == "dll"), key=len, reverse=True)
+exes = sorted((data for _size, kind, data in payloads if kind == "exe"), key=len, reverse=True)
+
+if not dlls or not exes:
+    raise SystemExit("could not identify GameInput payloads in GameInputRedist.msi")
+
+x64 = prefix / "drive_c/Program Files/Microsoft GameInput/x64"
+x86 = prefix / "drive_c/Program Files/Microsoft GameInput/x86"
+system32 = prefix / "drive_c/windows/system32"
+x64.mkdir(parents=True, exist_ok=True)
+system32.mkdir(parents=True, exist_ok=True)
+
+(x64 / "GameInputRedist.dll").write_bytes(dlls[0])
+(system32 / "GameInputRedist.dll").write_bytes(dlls[0])
+(x64 / "GameInputRedistService.exe").write_bytes(exes[0])
+if len(dlls) >= 2:
+    (x64 / "GameInputBridge.dll").write_bytes(dlls[1])
+if len(exes) >= 2:
+    (x64 / "GameInputRawInputProxy.exe").write_bytes(exes[1])
+if len(dlls) >= 3:
+    x86.mkdir(parents=True, exist_ok=True)
+    (x86 / "GameInputRedist.dll").write_bytes(dlls[2])
+
+if not gameinput_redist_ok():
+    raise SystemExit("GameInput extraction did not produce expected files")
+PY
+}
+
+game_dir_for_gameinput() {
+  local source="${1:-}"
+  local exe root
+
+  if [[ -n "${source}" ]]; then
+    if [[ -f "${source}" && "$(basename "${source}")" == "Minecraft.Windows.exe" ]]; then
+      dirname "${source}"
+      return 0
+    fi
+    if [[ -d "${source}" ]]; then
+      root="$(find_game_root_in "${source}")" || return 1
+      printf '%s\n' "${root}"
+      return 0
+    fi
+    return 1
+  fi
+
+  exe="$(find_game_exe || true)"
+  [[ -n "${exe}" ]] || return 1
+  dirname "${exe}"
+}
+
+cmd_install_gameinput() {
+  local source="${1:-}"
+  local game_dir msi marker
+
+  marker="$(gameinput_registry_marker)"
+  if gameinput_redist_ok; then
+    if [[ ! -f "${marker}" ]]; then
+      if ! import_gameinput_registry; then
+        warn "could not import GameInput registry entries"
+        return 1
+      fi
+    fi
+    info "Using existing Microsoft GameInput redist"
+    return 0
+  fi
+
+  game_dir="$(game_dir_for_gameinput "${source}")" || die "Minecraft.Windows.exe was not found; install or import a GDK game archive first"
+  msi="${game_dir}/Installers/GameInputRedist.msi"
+  if [[ ! -f "${msi}" ]]; then
+    warn "GameInputRedist.msi was not found in ${game_dir}/Installers"
+    warn "Minecraft may show a missing component prompt on first launch."
+    return 0
+  fi
+
+  [[ -d "${PREFIX_PATH}/drive_c/windows/system32" ]] || cmd_init_prefix
+  info "Installing Microsoft GameInput redist from ${msi}"
+  if ! extract_gameinput_redist "${msi}"; then
+    return 1
+  fi
+  if ! import_gameinput_registry; then
+    warn "could not import GameInput registry entries"
+    return 1
+  fi
+
+  if gameinput_redist_ok; then
+    info "Installed Microsoft GameInput redist"
+  else
+    warn "Microsoft GameInput redist install did not produce expected files"
+    return 1
+  fi
+}
+
 cmd_install_launcher() {
   local installer="${1:-}"
   local explicit_installer=0
   local lower
+  local launcher game
 
   if [[ -n "${installer}" ]]; then
     explicit_installer=1
@@ -662,6 +1509,14 @@ cmd_install_launcher() {
     info "Staged GameCore installer with WinRT contracts: ${installer}"
     info "If the Minecraft installer window opens, complete or close it; setup continues after it exits."
     run_proton_wait "${installer}"
+  fi
+
+  launcher="$(find_launcher_exe || true)"
+  game="$(find_game_exe || true)"
+  if [[ -z "${launcher}" && -z "${game}" ]]; then
+    warn "The Minecraft installer exited, but no installed launcher or game executable was found in ${PREFIX_PATH}."
+    warn "The current GameCore installer depends on Microsoft Store install APIs that may fail under Wine/Proton."
+    return 1
   fi
 }
 
@@ -715,6 +1570,123 @@ path.write_text(json.dumps(settings, indent=2, sort_keys=False) + "\n", encoding
 PY
 }
 
+patch_libhttpclient_xcurl_gate() {
+  local game_dir="$1"
+  local dll="${game_dir}/libHttpClient.GDK.dll"
+
+  [[ -f "${dll}" ]] || return 0
+  require_command python
+  python - "${dll}" <<'PY'
+import re
+import shutil
+import sys
+from pathlib import Path
+
+path = Path(sys.argv[1])
+data = bytearray(path.read_bytes())
+pattern = re.compile(
+    rb"\x83\xc0\xfe\xba\x04\x00\x00\x00\x48\x8d\x0d.{4}\x83\xf8\x06"
+    rb"\x0f\x87.{4}",
+    re.S,
+)
+match = pattern.search(data)
+if not match:
+    if b"\x83\xc0\xfe\xba\x04\x00\x00\x00" in data and b"\x90" * 6 in data:
+        print("libHttpClient XCurl provider gate already patched", file=sys.stderr)
+        raise SystemExit(0)
+    print("libHttpClient XCurl provider gate not found", file=sys.stderr)
+    raise SystemExit(1)
+
+offset = match.start() + 18
+if bytes(data[offset:offset + 6]) == b"\x90" * 6:
+    print("libHttpClient XCurl provider gate already patched", file=sys.stderr)
+    raise SystemExit(0)
+if bytes(data[offset:offset + 2]) != b"\x0f\x87":
+    print("libHttpClient XCurl provider gate anchor misaligned", file=sys.stderr)
+    raise SystemExit(1)
+
+backup = path.with_suffix(path.suffix + ".minecraft-bedrock.bak")
+if not backup.exists():
+    shutil.copy2(path, backup)
+data[offset:offset + 6] = b"\x90" * 6
+tmp = path.with_suffix(path.suffix + ".patched")
+tmp.write_bytes(data)
+tmp.replace(path)
+print("patched libHttpClient to force XCurl provider", file=sys.stderr)
+PY
+}
+
+bump_game_stack_reserve() {
+  local exe="$1"
+
+  [[ -f "${exe}" ]] || return 0
+  require_command python
+  python - "${exe}" <<'PY'
+import shutil
+import struct
+import sys
+from pathlib import Path
+
+path = Path(sys.argv[1])
+target = 0x1000000
+with path.open("r+b") as f:
+    head = f.read(0x400)
+    if head[:2] != b"MZ":
+        raise SystemExit(0)
+    pe = struct.unpack_from("<I", head, 0x3C)[0]
+    if head[pe:pe + 4] != b"PE\0\0":
+        raise SystemExit(0)
+    optional = pe + 4 + 20
+    if struct.unpack_from("<H", head, optional)[0] != 0x20B:
+        raise SystemExit(0)
+    field = optional + 72
+    current = struct.unpack_from("<Q", head, field)[0]
+    if current >= target:
+        raise SystemExit(0)
+    backup = path.with_suffix(path.suffix + ".stack.minecraft-bedrock.bak")
+    if not backup.exists():
+        shutil.copy2(path, backup)
+    f.seek(field)
+    f.write(struct.pack("<Q", target))
+print(f"raised Minecraft stack reserve from {current // 1024} KiB to {target // 1024} KiB", file=sys.stderr)
+PY
+}
+
+prepare_game_launch_env() {
+  local exe="$1"
+  local gnutls_config="${APP_HOME}/etc/gnutls-no-tls13.cfg"
+  local overrides=(
+    "vrclient="
+    "vrclient_x64="
+    "openvr_api="
+    "wineopenxr="
+    "amd_ags_x64="
+  )
+
+  bump_game_stack_reserve "${exe}" || warn "could not adjust Minecraft stack reserve; continuing"
+
+  export MICROSOFT_WINDOWSAPPRUNTIME_BOOTSTRAP_INITIALIZE_SHOWUI=0
+  export MICROSOFT_WINDOWSAPPRUNTIME_BOOTSTRAP_INITIALIZE_FAILFAST=0
+  export MICROSOFT_WINDOWSAPPRUNTIME_DEPLOYMENT_INITIALIZE_ONERRORSHOWUI=0
+  if [[ -n "${WINEDLLOVERRIDES:-}" ]]; then
+    overrides+=("${WINEDLLOVERRIDES}")
+  fi
+  export WINEDLLOVERRIDES
+  WINEDLLOVERRIDES="$(IFS=';'; printf '%s' "${overrides[*]}")"
+
+  mkdir -p "$(dirname "${gnutls_config}")" "${STATE_DIR}/logs"
+  if [[ ! -f "${gnutls_config}" ]]; then
+    printf '[priorities]\nSYSTEM = NORMAL:-VERS-TLS1.3:%%COMPAT\n' > "${gnutls_config}"
+  fi
+  export GNUTLS_SYSTEM_PRIORITY_FILE="${gnutls_config}"
+  export GNUTLS_SYSTEM_PRIORITY_FAIL_ON_INVALID=0
+  export PROTON_LOG="${PROTON_LOG:-1}"
+  export PROTON_LOG_DIR="${PROTON_LOG_DIR:-${STATE_DIR}/logs}"
+  if [[ "${MINECRAFT_BEDROCK_DIAGNOSTICS:-0}" == "1" && -z "${WINEDEBUG:-}" ]]; then
+    export WINEDEBUG="+seh,+loaddll,+module,+xgameruntime,+gdkc,+winhttp"
+  fi
+}
+
 find_launcher_exe() {
   local candidate
   local candidates=(
@@ -736,15 +1708,36 @@ find_launcher_exe() {
 }
 
 find_game_exe() {
-  [[ -d "${PREFIX_PATH}/drive_c" ]] || return 1
-  find "${PREFIX_PATH}/drive_c" -type f -iname 'Minecraft.Windows.exe' -print -quit
+  local exe
+
+  while IFS= read -r -d '' exe; do
+    printf '%s\n' "${exe}"
+    return 0
+  done < <(find_game_exes)
+
+  return 1
+}
+
+find_game_exes() {
+  local base exe
+  declare -A seen=()
+
+  for base in "${CONTENT_PATH}" "${GAMES_DIR}" "${PREFIX_PATH}/drive_c"; do
+    [[ -d "${base}" ]] || continue
+    while IFS= read -r -d '' exe; do
+      [[ -n "${seen[${exe}]:-}" ]] && continue
+      seen["${exe}"]=1
+      printf '%s\0' "${exe}"
+    done < <(find "${base}" -type f -iname 'Minecraft.Windows.exe' -print0 2>/dev/null || true)
+  done
 }
 
 cmd_patch_online() {
-  local package_path ca_path tmp dll exe dir found=0
+  local package_path ca_path tmp dll dep dep_path exe dir found=0
 
   require_command curl
   require_command bsdtar
+  mkdir -p "${CACHE_DIR}"
 
   package_path="${CACHE_DIR}/$(basename "${MSYS2_CURL_URL}")"
   ca_path="${CACHE_DIR}/ca-bundle.crt"
@@ -757,17 +1750,34 @@ cmd_patch_online() {
   dll="${tmp}/mingw64/bin/libcurl-4.dll"
   [[ -f "${dll}" ]] || die "MSYS2 curl package did not contain mingw64/bin/libcurl-4.dll"
 
+  for dep in "${GDK_DEPS_DLLS[@]}"; do
+    dep_path="${CACHE_DIR}/gdk-deps-${dep}"
+    [[ -f "${dep_path}" ]] || download_file "${GDK_DEPS_URL}/${dep}" "${dep_path}"
+  done
+
   while IFS= read -r -d '' exe; do
     found=1
     dir="$(dirname "${exe}")"
     info "Patching online support files in ${dir}"
 
-    if [[ -e "${dir}/XCurl.dll" && ! -e "${dir}/XCurl.dll.minecraft-bedrock.bak" ]]; then
-      cp -a "${dir}/XCurl.dll" "${dir}/XCurl.dll.minecraft-bedrock.bak"
-    fi
-    install -Dm644 "${dll}" "${dir}/XCurl.dll"
+    for dep in "${GDK_DEPS_DLLS[@]}"; do
+      dep_path="${CACHE_DIR}/gdk-deps-${dep}"
+      if [[ -e "${dir}/${dep}" && ! -e "${dir}/${dep}.minecraft-bedrock.bak" ]]; then
+        cp -a "${dir}/${dep}" "${dir}/${dep}.minecraft-bedrock.bak"
+      fi
+      install -Dm644 "${dep_path}" "${dir}/${dep}"
+    done
+    patch_libhttpclient_xcurl_gate "${dir}" || warn "could not patch libHttpClient.GDK.dll; continuing"
+
+    for dep in XCurl.dll Xcurl.dll; do
+      if [[ -e "${dir}/${dep}" && ! -e "${dir}/${dep}.minecraft-bedrock.bak" ]]; then
+        cp -a "${dir}/${dep}" "${dir}/${dep}.minecraft-bedrock.bak"
+      fi
+      install -Dm644 "${dll}" "${dir}/${dep}"
+    done
     install -Dm644 "${ca_path}" "${dir}/etc/ssl/certs/ca-bundle.crt"
-  done < <(find "${PREFIX_PATH}/drive_c" -type f -iname 'Minecraft.Windows.exe' -print0 2>/dev/null || true)
+    install -Dm644 "${ca_path}" "${dir}/../etc/ssl/certs/ca-bundle.crt"
+  done < <(find_game_exes)
 
   rm -rf "${tmp}"
 
@@ -854,10 +1864,20 @@ cmd_launch() {
     game)
       exe="$(find_game_exe || true)"
       ;;
+    installer)
+      cmd_install_launcher
+      return $?
+      ;;
     *)
       die "unknown launch target: ${target}"
       ;;
   esac
+
+  if [[ -z "${exe}" && "${target}" == "auto" ]]; then
+    warn "No installed launcher or game executable was found; running the Minecraft installer instead."
+    cmd_install_launcher
+    return $?
+  fi
 
   [[ -n "${exe}" ]] || die "launch target not found. Run \`minecraft-bedrock install-launcher\` first."
   if [[ "${target}" == "launcher" || "${exe}" == *"MinecraftLauncher.exe" ]]; then
@@ -872,6 +1892,14 @@ cmd_launch() {
     info "Launching ${exe}"
   fi
   require_graphical_env
+  if [[ "$(basename "${exe}")" == "Minecraft.Windows.exe" ]]; then
+    prefer_gdk_proton_for_game
+    patch_gdk_proton_runtime
+    cmd_install_gameinput "$(dirname "${exe}")" || warn "GameInput setup failed; continuing launch"
+    prepare_game_launch_env "${exe}"
+    (cd "$(dirname "${exe}")" && run_proton_wait "${exe}" "${args[@]}")
+    return $?
+  fi
   run_proton_wait "${exe}" "${args[@]}"
 }
 
@@ -890,24 +1918,60 @@ cmd_paths() {
   printf 'Installer: %s\n' "${INSTALLER_PATH}"
   printf 'Installer runtime: %s\n' "${INSTALLER_RUNTIME_DIR}"
   printf 'WinRT contracts: %s\n' "${WINRT_CONTRACTS_DIR}"
+  printf 'Games: %s\n' "${GAMES_DIR}"
+  printf 'Content: %s\n' "${CONTENT_PATH}"
   printf 'Launcher: %s\n' "${launcher:-not found}"
   printf 'Game: %s\n' "${game:-not found}"
 }
 
 cmd_setup() {
   local installer_option="${1:---gamecore}"
+  local game_archive_tag="${2:-${GAME_ARCHIVE_VERSION}}"
   local installer="${INSTALLER_PATH}"
   local init_before_prereqs=1
+  local game
 
   case "${installer_option}" in
+    --game-archive|--archive|--direct-game)
+      prefer_gdk_proton_for_game
+      cmd_ensure_proton
+      patch_gdk_proton_runtime
+      cmd_download_game "${game_archive_tag}"
+      cmd_init_prefix
+      cmd_install_prereqs --gamecore
+      game="$(find_game_exe || true)"
+      [[ -n "${game}" ]] || die "Minecraft.Windows.exe was not installed"
+      cmd_install_gameinput "$(dirname "${game}")"
+      cmd_patch_online
+      cmd_add_steam_shortcut
+      info "Setup complete. Restart Steam before using the new non-Steam shortcut."
+      return 0
+      ;;
+    --installed-game)
+      prefer_gdk_proton_for_game
+      cmd_ensure_proton
+      patch_gdk_proton_runtime
+      cmd_init_prefix
+      cmd_install_prereqs --gamecore
+      game="$(find_game_exe || true)"
+      [[ -n "${game}" ]] || die "Minecraft.Windows.exe was not found. Run \`minecraft-bedrock install-game <path>\` first."
+      cmd_install_gameinput "$(dirname "${game}")"
+      cmd_patch_online
+      cmd_add_steam_shortcut
+      info "Setup complete. Restart Steam before using the new non-Steam shortcut."
+      return 0
+      ;;
     --legacy)
       installer="${MINECRAFT_BEDROCK_INSTALLER:-${LEGACY_INSTALLER_PATH}}"
       ;;
     --gamecore|--windows-gdk|--gdk|--win10|--win11)
       installer="${MINECRAFT_BEDROCK_INSTALLER:-${INSTALLER_PATH}}"
-      if [[ "${MINECRAFT_BEDROCK_SKIP_DOTNET:-0}" != "1" && "${MINECRAFT_BEDROCK_SKIP_WINETRICKS:-0}" != "1" ]]; then
+      if [[ "${MINECRAFT_BEDROCK_USE_NATIVE_DOTNET:-0}" == "1" && "${MINECRAFT_BEDROCK_SKIP_DOTNET:-0}" != "1" && "${MINECRAFT_BEDROCK_SKIP_WINETRICKS:-0}" != "1" ]]; then
         init_before_prereqs=0
       fi
+      ;;
+    *)
+      die "unknown setup option: ${installer_option}"
       ;;
   esac
 
@@ -916,13 +1980,15 @@ cmd_setup() {
   if [[ "${init_before_prereqs}" == "1" ]]; then
     cmd_init_prefix
   else
-    info "Installing GameCore prerequisites before Proton initializes the prefix; native .NET is fragile in already-initialized Proton prefixes."
+    info "Installing native .NET before Proton initializes the prefix; native .NET is fragile in already-initialized Proton prefixes."
   fi
   cmd_install_prereqs "${installer_option}"
   if [[ "${init_before_prereqs}" != "1" ]]; then
     cmd_init_prefix
   fi
-  cmd_install_launcher "${installer}"
+  if ! cmd_install_launcher "${installer}"; then
+    die "Minecraft launcher was not installed; not adding a Steam shortcut yet."
+  fi
   cmd_configure_launcher
   cmd_patch_online
   cmd_add_steam_shortcut
@@ -1162,9 +2228,15 @@ main() {
     install-proton) cmd_install_proton "$@" ;;
     download-installer) cmd_download_installer "$@" ;;
     install-winrt-contracts) cmd_install_winrt_contracts "$@" ;;
+    patch-installer) cmd_patch_installer "$@" ;;
     init-prefix) cmd_init_prefix "$@" ;;
     install-prereqs) cmd_install_prereqs "$@" ;;
+    patch-proton-runtime) prefer_gdk_proton_for_game; patch_gdk_proton_runtime "$@" ;;
+    install-gameinput) prefer_gdk_proton_for_game; cmd_ensure_proton; patch_gdk_proton_runtime; cmd_install_gameinput "$@" ;;
     install-launcher) cmd_install_launcher "$@" ;;
+    list-game-versions) cmd_list_game_versions "$@" ;;
+    download-game) cmd_download_game "$@" ;;
+    install-game) cmd_install_game "$@" ;;
     configure-launcher) cmd_configure_launcher "$@" ;;
     patch-online) cmd_patch_online "$@" ;;
     add-steam-shortcut) cmd_add_steam_shortcut "$@" ;;
