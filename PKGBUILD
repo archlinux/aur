@@ -1,7 +1,7 @@
 # Contributor: Andreas Baumann <mail@andreasbauman.cc>
 pkgname=adtpro-git
 _pkgname=adtpro
-pkgver=2.1.0.r12.g2e18f43
+pkgver=2.1.0.r17.g3580637
 pkgrel=1
 pkgdesc="Apple Disk Transfer ProDOS for transfering disk images between Apple II-era computers and the modern world."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://adtpro.com/"
 license=('GPL2')
 depends=(java-runtime-common)
 optdepends=(java-environment)
-makedepends=('cc65')
+makedepends=('cc65' 'git')
 source=(
   "${_pkgname}::git+https://github.com/ADTPro/adtpro.git"
   "adtpro-system-property-propertyfile.patch"

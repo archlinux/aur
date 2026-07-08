@@ -1,11 +1,12 @@
 pkgbase = adtpro-git
 	pkgdesc = Apple Disk Transfer ProDOS for transfering disk images between Apple II-era computers and the modern world.
-	pkgver = 2.1.0.r12.g2e18f43
+	pkgver = 2.1.0.r17.g3580637
 	pkgrel = 1
 	url = https://adtpro.com/
 	arch = x86_64
 	license = GPL2
 	makedepends = cc65
+	makedepends = git
 	depends = java-runtime-common
 	optdepends = java-environment
 	source = adtpro::git+https://github.com/ADTPro/adtpro.git
