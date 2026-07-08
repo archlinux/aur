@@ -2,10 +2,10 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bar-lobby-git
 ### ↓↓↓ This needs to be set manually, the correct version will be displayed during build, update manually if needed!
-_electronver=37
+_electronver=39 # should work too and its in the repos because building electron 37 is a unneded pain
 ### ↑↑↑ This sadly cant be done automatically
-pkgver=VERSION
-pkgrel=4
+pkgver=0.15.2.r49.g4ae658d2
+pkgrel=2
 pkgdesc="The new - stil Work_In_Progres lobby, for the RTS game Beyond All Reason (Github version)."
 arch=('x86_64')
 url="https://beyond-all-reason.github.io/bar-lobby/"
