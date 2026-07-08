@@ -12,7 +12,7 @@ index 474d9dd84..12f0f8337 100644
  
  class BeekeeperWindow {
 diff --git a/apps/studio/src/common/bksConfig/mainBksConfig.ts b/apps/studio/src/common/bksConfig/mainBksConfig.ts
-index bfe770a7d..64dafe1e0 100644
+index a66266e9e..b1854dd70 100644
 --- a/apps/studio/src/common/bksConfig/mainBksConfig.ts
 +++ b/apps/studio/src/common/bksConfig/mainBksConfig.ts
 @@ -141,7 +141,7 @@ export function checkDeprecations(
@@ -25,10 +25,10 @@ index bfe770a7d..64dafe1e0 100644
  function copyBundledConfig(file: ConfigFileName, dest: string) {
    log.info(`Copying bundled config ${file} to ${dest}.`);
 diff --git a/apps/studio/src/common/platform_info/mainPlatformInfo.ts b/apps/studio/src/common/platform_info/mainPlatformInfo.ts
-index a5a690583..75401f5e4 100644
+index 41b5d3465..3d98a9996 100644
 --- a/apps/studio/src/common/platform_info/mainPlatformInfo.ts
 +++ b/apps/studio/src/common/platform_info/mainPlatformInfo.ts
-@@ -53,7 +53,7 @@ export function mainPlatformInfo(): IPlatformInfo {
+@@ -62,7 +62,7 @@ export function mainPlatformInfo(): IPlatformInfo {
    // as instant client not available there
    const oracleSupported = true
  
@@ -37,7 +37,7 @@ index a5a690583..75401f5e4 100644
    let userDirectory = testMode ? './tmp' : e.app.getPath("userData")
    const downloadsDirectory = testMode ? './tmp' : e.app.getPath('downloads')
    const homeDirectory = testMode ? './tmp' : e.app.getPath('home')
-@@ -64,7 +64,19 @@ export function mainPlatformInfo(): IPlatformInfo {
+@@ -74,7 +74,19 @@ export function mainPlatformInfo(): IPlatformInfo {
  
    const sessionType = p.env.XDG_SESSION_TYPE
  

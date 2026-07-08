@@ -1,5 +1,5 @@
 diff --git a/apps/studio/src/common/menus/MenuBuilder.ts b/apps/studio/src/common/menus/MenuBuilder.ts
-index a92cf0b16..e309e1432 100644
+index 63fcf7641..9b56882c7 100644
 --- a/apps/studio/src/common/menus/MenuBuilder.ts
 +++ b/apps/studio/src/common/menus/MenuBuilder.ts
 @@ -63,8 +63,6 @@ export default class extends DefaultMenu {

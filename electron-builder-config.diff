@@ -1,8 +1,8 @@
 diff --git a/apps/studio/electron-builder-config.js b/apps/studio/electron-builder-config.js
-index fd32175be..fb32f7f50 100644
+index db96f3ffe..3909ca091 100644
 --- a/apps/studio/electron-builder-config.js
 +++ b/apps/studio/electron-builder-config.js
-@@ -33,12 +33,15 @@ module.exports = {
+@@ -33,7 +33,8 @@ module.exports = {
      'dist/**/*',
      'package.json',
      'public/icons/**/*',
@@ -12,14 +12,16 @@ index fd32175be..fb32f7f50 100644
    ],
    afterPack: "./build/afterPack.js",
    asarUnpack: [
-     'package.json'
+@@ -43,6 +44,8 @@ module.exports = {
+     // and/or prebuilds depending on platform, so unpack both.
+     '**/msnodesqlv8/**/*.node'
    ],
 +  electronDist: "%%ELECTRON_DIST%%",
 +  electronVersion: "%%ELECTRON_VERSION%%",
    extraResources: [
      {
        from: bksAiShellPath,
-@@ -152,24 +155,11 @@ module.exports = {
+@@ -156,24 +159,11 @@ module.exports = {
        "role": "Editor"
      }
    ],
@@ -44,8 +46,8 @@ index fd32175be..fb32f7f50 100644
 +      'dir',
        'pacman'
      ],
-     desktop: {
-@@ -180,66 +170,9 @@ module.exports = {
+     // Align the installed .desktop filename with the WM_CLASS Electron reports at
+@@ -189,93 +179,9 @@ module.exports = {
      publish: ['github']
    },
    pacman: {
@@ -82,16 +84,43 @@ index fd32175be..fb32f7f50 100644
 -    publish: [ 'github' ],
 -    fpm: rpmFpmOptions,
 -  },
--  snap: {
--    base: 'core22',
+-  snapcraft: {
+-    base: 'core24',
 -    publish: [
 -      'github',
 -      'snapStore'
 -    ],
--    environment: {
--      "ELECTRON_SNAP": "true"
--    },
--    plugs: ["default", "ssh-keys", "removable-media", "mount-observe"]
+-    core24: {
+-      // Build the core24 snap in an isolated LXD container. CI provisions LXD
+-      // via canonical/setup-lxd on every Linux runner.
+-      useLXD: true,
+-      environment: {
+-        "ELECTRON_SNAP": "true"
+-      },
+-      // core24 drops browser-support from its default plug set. It must be
+-      // declared so Chromium can use /dev/shm under strict confinement.
+-      // Use the plain interface (not allow-sandbox: true) — the privileged
+-      // form is denied auto-connection by snapd, so it would stay disconnected
+-      // on both sideloaded and store installs. electron-builder appends
+-      // --no-sandbox automatically when allow-sandbox isn't set, matching the
+-      // previous core22 behaviour.
+-      plugs: [
+-        "default",
+-        "ssh-keys",
+-        "removable-media",
+-        "mount-observe",
+-        "browser-support"
+-      ],
+-      // Bundle fonts so non-Latin text and emoji render correctly. "default"
+-      // keeps electron-builder's standard stage packages.
+-      stagePackages: [
+-        "default",
+-        "fonts-noto",
+-        "fonts-noto-cjk",
+-        "fonts-noto-color-emoji",
+-        "fonts-liberation"
+-      ]
+-    }
 -  },
 -  win: {
 -    icon: './public/icons/png/512x512.png',

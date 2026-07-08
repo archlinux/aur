@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
-pkgver='5.7.3'
-pkgrel='2'
+pkgver='5.9.1'
+pkgrel='1'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -10,26 +10,33 @@ license=('GPL-3.0-only AND LicenseRef-BeekeeperStudioApplicationEULA')
 _electronpkg='electron39'
 depends=("$_electronpkg")
 makedepends=('git' 'libxcrypt-compat' 'nodejs' 'python' 'yarn')
+optdepends=(
+	'aws-cli-v2: AWS CLI Authentication support for Amazon Redshift'
+	'azure-cli: Azure CLI Authentication support for MySQL, PostgreSQL and SQL Server'
+	'krb5: Kerberos / Windows (via ODBC) support for SQL Server'
+	'libaio: Thick Mode support for Oracle'
+	'msodbcsql: Kerberos / Windows (via ODBC) support for SQL Server'
+	'oracle-instantclient-basic: Thick Mode support for Oracle'
+	'unixodbc: Kerberos / Windows (via ODBC) support for SQL Server'
+)
 provides=("$pkgname-ultimate=$pkgver")
 conflicts=("$pkgname-ultimate")
 source=(
-	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 	'electron-launcher.sh'
 	'electron-builder-config.diff'
 	'fix-argv.diff'
 	'disable-update-checking.diff'
 	'update-dependencies.diff'
-	'missing-log-app-name.diff'
 	'LICENSE.md'
 )
-b2sums=('102348512aa50ef0c42fc6df81dbe86cd85a776c2f1ee9d350560b63212a0d2387eea4f3cb110ebf0fde0ae7fb6600ad51e411fce49eecb9cf178a90395dcdf1'
+b2sums=('d65eed2bf6569baacb5940c7782f34214039c4575f86f5e187be7946f5b7b5f225245a5d7ee345be90c12107410b65cd3f469cc75922273c54f5797d3f2b77d2'
         '54b46275a83a6099b22bc511a6293178abccccad6d1cc36bf812166f93f75b1379a3201dac9ee85e05cf7c3b0de7e94829fd3fb619ccca513924ebf3101850f0'
-        'e27ce86d8c00f4809b51fcc580818acaddd6c5c753acbebfdfb69b270cf001ec7ec89d2e59a5dbfdbaf985b6ea4d0fbb95fc2c7ea76e130d0db00d6ec951ba51'
-        'c0a054bddc89f05c97ab7637b3fc9d3c787bf34db332e0b07d27d872af25677d5eb01382242e36f7884f09428bf2520bb78e951ebf321280097a55f7e3bd3f73'
-        'e301ba915d5642c55d082352c7e827a732bc27e851280c7b5044b70f899d21861c737042923ae61b6f1995a59259cd69dcf269a3d54df4d8196db02cdaad03a2'
-        'f5cf6e9fb90e8e9aaf52988c43fd4b472981721178584467d6a84608248e48862dff9cdbdef92aab764a9b1a34f4e3f6b6a5f901b2ff0569126b75ba066081e5'
-        '36e0dab7e6e489a19cb6709a39a0f38f2f9a34200c7af297b94b8aa5e24ecdc3ec9451a0791d79ba72b7c51ad156d9abdb2b52deee7c3b3da3a5faa637480ebc'
-        'e3c500691772f577a9f96b7672ba2f823eae58b9a22bd92bc1d9d0da73620d92a9c503b5d8850b59c6e8bf7126dfb0c23e6e2a738fb10865fc85a4a2a572fbdd')
+        '70d93e8fc4c61e43737fd7177480f1aa2eb5fa1aa1b2ed2882384e51d1060eb511454dc06cd7b8b3e60326270a3739b31107dea8abc5668051b4a8a0ac3f1031'
+        'ec02f85fc2b7f47e45a0ebd3c39c111606c90e8e4296247b9c1c0d5c354c2640696d9c1a230dfb707b959e2e2b6aa544c8e29eef953a7889d1a23796ff6bd196'
+        '21fdbaab298acb62e2676137e6bdea3dadb3a400ffa388451434e39c18e1f422b7d03fc182aebd1dbcda68f57535c8e6f941c95e8dd9865502b6088552c98c51'
+        '796b95769c3e1d60b5ae561ad4e2a3874a4940dd058fae325505c15fe290e42165fff7c9aee9ff42853474552dbe7a290c1e2881648cb7c852bc39221d79c1a9'
+        '360dd26e3fd4ed4801ca863325b1eeac0a026b9915f64a0260a146d5a8d125ba9a4342aa4b1afbc502509c74c4926f65d0ac0d6d1e2b5d399546e7cdc13c60fa')
 
 _sourcedirectory="$pkgname-$pkgver"
 
@@ -57,10 +64,6 @@ prepare() {
 
 	# Install dependencies
 	HUSKY=0 yarn install
-
-	# Apply electron-log patch
-	cd "$srcdir/$_sourcedirectory/node_modules/electron-log/"
-	patch --forward -p1 < "$srcdir/missing-log-app-name.diff"
 }
 
 build() {

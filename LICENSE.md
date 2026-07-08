@@ -1,11 +1,18 @@
-# Beekeeper Studio Application End-User License Agreement ("Agreement")
-Last updated: March 24th 2025
+# Application End-User License Agreement
+Last updated: July 2nd 2026
 
 ## What this covers
 
-This license covers usage of the Beekeeper Studio desktop application. For terms governing use of our cloud services, please see the [Beekeeper Studio website terms of service](https://www.beekeeperstudio.io/legal/terms).
+This end user license agreement (EULA) covers usage of the Beekeeper Studio desktop application. Other parts of Beekeeper Studio are covered by their own agreements:
+* [Terms of Service](https://www.beekeeperstudio.io/legal/terms) — use of the Beekeeper Studio website, cloud workspaces, and API
+* [Privacy Policy](https://www.beekeeperstudio.io/legal/privacy) — how we collect, use, and protect your personal data
+* [Trust & Security Center](https://www.beekeeperstudio.io/trust/) — our security practices, compliance posture, and all published policies
 
 Please read this End-User License Agreement carefully before downloading or using Beekeeper Studio.
+
+## Plain English Summary
+
+This agreement covers how you use the Beekeeper Studio desktop app. Our open-source components stay free and open. Our Community Edition is free, and intended for students, individuals, non-profits, and small businesses; larger organizations should buy a paid license (hint hint). You get a license to use the app for your own work, but not to redistribute or resell it. The app runs on your own machine — your database connections and their data stay with you. If you do use one of our optional cloud services, that’s govered by our [cloud service terms](https://www.beekeeperstudio.io/legal/terms), which are also very user and privacy friendly.
 
 ## End User License Agreement
 
