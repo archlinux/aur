@@ -1,6 +1,6 @@
 # Maintainer: markusressel <mail+archlinuxaur@markusressel.de>
 pkgname=zfs-file-history-git
-pkgver=0.2.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Terminal UI for inspecting and restoring file history on ZFS snapshots."
 arch=('x86_64')
