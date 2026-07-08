@@ -8,13 +8,3 @@
  
  Name: Graphite2
  Description: Font rendering engine for Complex Scripts
---- graphite2-1.2.1/CMakeLists.txt	2013-02-27 20:32:04.000000000 +0100
-+++ graphite2-1.2.1/CMakeLists.txt	2013-06-06 21:11:28.241391998 +0200
-@@ -64,6 +64,7 @@
- endif (NOT (GRAPHITE2_NSEGCACHE OR GRAPHITE2_NFILEFACE))
- 
- set(version 3.0.1)
-+set(prefix ${CMAKE_INSTALL_PREFIX})
- set(libdir ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX})
- set(includedir ${CMAKE_INSTALL_PREFIX}/include)
- 
