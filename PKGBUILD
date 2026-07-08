@@ -1,7 +1,4 @@
 # Maintainer: 9M2PJU <9m2pju@hamradio.my>
-# Contributor: eggix <eggix[at]protonmail.com>
-# Contributor: Kyle Keen <keenerd@gmail.com>
-# Contributor: Vitaliy Berdinskikh ur6lad[at]i.ua
 
 pkgname=xnec2c-9m2pju-git
 _basename=xnec2c
