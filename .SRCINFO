@@ -1,17 +1,19 @@
 pkgbase = nativefiledialog-extended
 	pkgdesc = Cross platform (Windows, Mac, Linux) native file dialog library
-	pkgver = 1.3.0
+	pkgver = 1.3.0+8+g3cd252a8
 	pkgrel = 1
 	url = https://github.com/btzy/nativefiledialog-extended
 	arch = x86_64
 	license = Zlib
 	makedepends = cmake
+	makedepends = wayland-protocols
 	depends = glibc
 	depends = glib2
 	depends = gtk3
 	depends = dbus
+	depends = wayland
 	conflicts = libnfd
-	source = nativefiledialog-extended-1.3.0.tar.gz::https://github.com/btzy/nativefiledialog-extended/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = 2fea19102cf4d5283a80fb87a784792166988e85bb92baa962d34f72b22dcc1a
+	source = nativefiledialog-extended-3cd252a8f7ca32419b1ca235c2990ba6a0ecba7c.tar.gz::https://github.com/btzy/nativefiledialog-extended/archive/3cd252a8f7ca32419b1ca235c2990ba6a0ecba7c.tar.gz
+	sha256sums = 3ea216a6f7cac2fefbd7dc1ce1deebf623a7f7d3022ee1d00277faccf2abd634
 
 pkgname = nativefiledialog-extended
