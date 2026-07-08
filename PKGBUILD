@@ -1,7 +1,7 @@
 # Maintainer: Frédéric Bogaerts <fred@netpack.pt>
 pkgname=xfb
 pkgver=3.14159
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/netpack/XFB"
@@ -90,8 +90,18 @@ package() {
     # Install desktop file
     install -Dm644 "XFB.desktop" "$pkgdir/usr/share/applications/XFB.desktop"
     
-    # Install icon
-    install -Dm644 "xfb_icon.png" "$pkgdir/usr/share/pixmaps/xfb_icon.png"
+    # Install icons. The hicolor set (preferred by modern desktops) and the
+    # pixmaps fallback both come from XFB.iconset / the SVG source, whose
+    # backgrounds are transparent — the root xfb_icon.png in the v3.14159 tag
+    # was flattened onto white, so it must not be used here.
+    install -Dm644 "XFB.iconset/icon_16x16.png"    "$pkgdir/usr/share/icons/hicolor/16x16/apps/xfb_icon.png"
+    install -Dm644 "XFB.iconset/icon_32x32.png"    "$pkgdir/usr/share/icons/hicolor/32x32/apps/xfb_icon.png"
+    install -Dm644 "XFB.iconset/icon_32x32@2x.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/xfb_icon.png"
+    install -Dm644 "XFB.iconset/icon_128x128.png"  "$pkgdir/usr/share/icons/hicolor/128x128/apps/xfb_icon.png"
+    install -Dm644 "XFB.iconset/icon_256x256.png"  "$pkgdir/usr/share/icons/hicolor/256x256/apps/xfb_icon.png"
+    install -Dm644 "XFB.iconset/icon_512x512.png"  "$pkgdir/usr/share/icons/hicolor/512x512/apps/xfb_icon.png"
+    install -Dm644 "xfb_icon.svg"                  "$pkgdir/usr/share/icons/hicolor/scalable/apps/xfb_icon.svg"
+    install -Dm644 "XFB.iconset/icon_128x128.png"  "$pkgdir/usr/share/pixmaps/xfb_icon.png"
     
     # Install config files
     if [ -d "config" ]; then

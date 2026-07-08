@@ -20,6 +20,7 @@ post_install() {
     
     # Update icon cache
     gtk-update-icon-cache -q /usr/share/pixmaps 2>/dev/null || true
+    gtk-update-icon-cache -q -f /usr/share/icons/hicolor 2>/dev/null || true
 }
 
 post_upgrade() {
@@ -38,6 +39,7 @@ post_remove() {
     
     # Update icon cache
     gtk-update-icon-cache -q /usr/share/pixmaps 2>/dev/null || true
+    gtk-update-icon-cache -q -f /usr/share/icons/hicolor 2>/dev/null || true
     
     echo ""
     echo "XFB has been removed."

@@ -1,7 +1,7 @@
 pkgbase = xfb
 	pkgdesc = Open-source Radio Automation with comprehensive accessibility support
 	pkgver = 3.14159
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/netpack/XFB
 	install = xfb.install
 	arch = x86_64
