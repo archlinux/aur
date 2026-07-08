@@ -1,14 +1,14 @@
 # Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 
 pkgname=libcurlpp-git
-pkgver=r304.d080e30
+pkgver=r309.ec1b66e
 pkgrel=1
 pkgdesc="cURLpp is a C++ wrapper for libcURL (git version)"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://curlpp.org"
 license=('MIT')
 depends=('curl>=7.10.0')
-makedepends=('cmake>=2.8.12')
+makedepends=('cmake>=2.8.12' 'git')
 source=($pkgname'::git+https://github.com/jpbarrette/curlpp.git')
 md5sums=('SKIP')
 
