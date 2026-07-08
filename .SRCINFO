@@ -1,7 +1,7 @@
 
 pkgbase = lockbook
 	pkgdesc = The private, polished note-taking platform.
-	pkgver = 26.6.22
+	pkgver = 26.7.4
 	pkgrel = 1
 	url = https://github.com/lockbook/lockbook
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = lockbook
 	depends = nfs-utils
 	provides = lockbook
 	conflicts = lockbook
-	source = git+https://github.com/lockbook/lockbook.git#tag=v26.6.22
+	source = git+https://github.com/lockbook/lockbook.git#tag=v26.7.4
 	sha256sums = SKIP
 
 pkgname = lockbook
