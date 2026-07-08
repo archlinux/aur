@@ -4,7 +4,7 @@ _gitauthor=zyedidia
 _gitname=knit
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="A simple and flexible build too using Lua, similar to make/mk"
+pkgdesc="A simple and flexible build tool using Lua, similar to make/mk"
 
 pkgver=1.1.1
 pkgrel=1

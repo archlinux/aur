@@ -1,5 +1,5 @@
 pkgbase = knit-bin
-	pkgdesc = A simple and flexible build too using Lua, similar to make/mk
+	pkgdesc = A simple and flexible build tool using Lua, similar to make/mk
 	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/zyedidia/knit
