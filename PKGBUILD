@@ -1,4 +1,4 @@
-# Maintainer: niklasschaeffer <niklass.schaeffer@gmail.com>
+# Maintainer: NickeyGod <niklass.schaeffer@gmail.com>
 pkgname=onyx-desktop
 pkgver=4.3.1
 pkgrel=1
