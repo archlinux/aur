@@ -1,26 +1,39 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
+_projectname='msgraph-sdk-python-core'
+pkgname='python-msgraph-core'
+pkgver='1.5.0'
+pkgrel='1'
+epoch='1'
+pkgdesc='Core component of the Microsoft Graph Python SDK consisting of HTTP/Graph Client and a configurable middleware pipeline'
+arch=('any')
+url="https://github.com/microsoftgraph/$_projectname"
+license=('MIT')
+depends=('python>=3.10.0' 'python-h2' 'python-httpx>=0.23.0' 'python-microsoft-kiota-abstractions>=1.11.6' 'python-microsoft-kiota-authentication-azure>=1.11.6' 'python-microsoft-kiota-http>=1.11.6')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('python-azure-identity' 'python-deprecated' 'python-dotenv' 'python-pytest' 'python-pytest-asyncio')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('a09718f71f4e6887669c0302f9c64d6d94cd90600f9b351909e3204f211680197973dec0ba688efbba9dab81f0edf3c6f521a8122b6d62e74daab50eee183e12')
 
-pkgname=python-msgraph-core
-epoch=1
-pkgver=0.2.2
-pkgrel=1
-pkgdesc='Core component of the Microsoft Graph Python SDK consisting of HTTP/Graph Client and a configurable middleware pipeline (Preview).'
-arch=(any)
-url=https://github.com/microsoftgraph/msgraph-sdk-python-core
-license=(MIT)
-depends=('python')
-makedepends=('python-build' 'python-flit-core' 'python-requests' 'python-installer')
-source=("https://pypi.io/packages/source/m/msgraph-core/msgraph-core-${pkgver}.tar.gz")
-sha512sums=('14beb6f4b19033fd9027704ea68c37b65a296e7e346ecc8051e1aea0ac7f8f9012539a406fb9205455a2d1a5059ce8969de2edc56d04df3e95ad1284f166c3ab')
+_sourcedirectory="$_projectname-$pkgver"
 
 build() {
-  cd msgraph-core-$pkgver
-  python -m build --wheel --no-isolation
+	cd "$srcdir/$_sourcedirectory/"
+	python -m build --wheel --no-isolation
+}
+
+check() {
+	cd "$srcdir/$_sourcedirectory/"
+	pytest
 }
 
 package() {
-  cd msgraph-core-$pkgver
-  python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
-  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+	cd "$srcdir/$_sourcedirectory/"
+	python -m installer --destdir="$pkgdir" 'dist/'*'.whl'
+
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 'README.md' "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/MIT"
 }
