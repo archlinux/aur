@@ -103,7 +103,6 @@ package() {
         sed -i -e "
             s/@appimgname@/${_appimgname}/g
             s/@electronversion@/${_electronver}/g
-            _electronver
             s/@appname@/${pkgname}/g
             s/@runname@/app.asar/g
             s/@cfgdirname@/${_pkgname}/g
