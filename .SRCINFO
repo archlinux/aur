@@ -1,6 +1,6 @@
 pkgbase = pipeweaver
 	pkgdesc = An audio management tool for Linux built on top of PipeWire, designed specifically with streaming and broadcasting in mind.
-	pkgver = 0.1.6
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/pipeweaver/pipeweaver
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = pipeweaver
 	depends = pipewire
 	optdepends = pipeweaver-app: An application wrapper for the Pipeweaver UI
 	options = !lto
-	source = pipeweaver-0.1.6.tar.gz::https://github.com/pipeweaver/pipeweaver/archive/refs/tags/v0.1.6.tar.gz
-	sha512sums = 206252b1adeb6be3e3dbfcedf2710074a1ebd8766bd32f4b34be120c93ac0724302a8493247f826f58d6ef142529f65c2e07775cf90c0ec235b56f586fa31b5e
+	source = pipeweaver-0.1.8.tar.gz::https://github.com/pipeweaver/pipeweaver/archive/refs/tags/v0.1.8.tar.gz
+	sha512sums = cd64ac191fd748af374c15b914a3896e022f24fca1e15366810f31f8f97d516c53b274c220e1df0f8b80836fe9c49bd7d2f6661caf9bf6a24910785214915a69
 
 pkgname = pipeweaver
