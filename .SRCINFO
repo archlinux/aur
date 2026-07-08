@@ -1,12 +1,12 @@
 pkgbase = openrgb-plugin-scheduler-git
 	pkgdesc = Scheduler plugin for OpenRGB
-	pkgver = 0.9.10.g358919d
+	pkgver = 0.9.28.g65087a3
 	pkgrel = 1
 	url = https://gitlab.com/OpenRGBDevelopers/OpenRGBSchedulerPlugin
 	arch = any
 	license = GPL-2.0-only
 	makedepends = git
-	depends = qt5-tools
+	depends = qt6-tools
 	depends = openrgb
 	provides = openrgb-plugin-scheduler
 	conflicts = openrgb-plugin-scheduler
