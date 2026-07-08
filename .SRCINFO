@@ -1,13 +1,12 @@
 pkgbase = yacreader-poppler
 	pkgdesc = Comic reader for cross-platform reading and managing your digital comic collection, using poppler for PDF
-	pkgver = 10.0.0
+	pkgver = 10.1.0
 	pkgrel = 1
 	url = https://github.com/YACReader/yacreader
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cmake
 	makedepends = git
-	makedepends = qt6-svg
 	makedepends = qt6-tools
 	makedepends = vulkan-headers
 	depends = glibc
@@ -20,11 +19,12 @@ pkgbase = yacreader-poppler
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-speech
+	depends = qt6-svg
 	optdepends = qt6-imageformats: Support for extra image formats
 	optdepends = qrencode: YACReaderLibrary server info qr codes
 	provides = yacreader
 	conflicts = yacreader
-	source = git+https://github.com/YACReader/yacreader.git#tag=10.0.0
-	sha256sums = dcb1dfeb0d4c51923bd2c11b07783190fd8fc3ccf17b08dbeae0d7379e7e000f
+	source = git+https://github.com/YACReader/yacreader.git#tag=10.1.0
+	sha256sums = 6cf1169fc01f4d850c5a9b505044ab06b21623f61daca3921c2d3f20b0d7bb06
 
 pkgname = yacreader-poppler
