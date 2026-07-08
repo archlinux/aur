@@ -246,29 +246,113 @@ package() {
             -t "$pkgdir/usr/share/licenses/$pkgname-kglobalacceld/" 2>/dev/null || true
     fi
 
-    # Install Wayland session launcher (start-kineticwe)
+    # Install Wayland session launcher (start-kineticwe) - written directly to avoid sed issues
     echo "==> Installing start-kineticwe session launcher..."
-    sed -e "s|@INSTALL_PREFIX@|/usr|g" \
-        -e 's|if \[\[ "$_INSTALL_PREFIX_" == "/usr" \]\]; then|if false; then # system-wide install, use /usr as prefix|' \
-        -e 's|export XDG_CURRENT_DESKTOP=KDE|export XDG_CURRENT_DESKTOP=KineticWE:KDE|g' \
-        -e 's|nohup "$PORTAL_KDE" >"\\\$HOME|XDG_CURRENT_DESKTOP=KDE nohup "$PORTAL_KDE" >"\\\$HOME|' \
-        "$srcdir/$_sourcebase/scripts/start-kineticwe.sh" \
-        > "$pkgdir/usr/bin/start-kineticwe"
+    cat > "$pkgdir/usr/bin/start-kineticwe" << 'STARTEOF'
+#!/bin/bash
+# KineticWE session launcher (system-wide install)
+
+_INSTALL_PREFIX_=/usr
+
+find_portal() {
+    local name="$1"
+    for path in "/usr/libexec/$name" "/usr/lib/$name" "$_INSTALL_PREFIX_/libexec/$name"
+    do
+        if [[ -x "$path" ]]; then
+            printf '%s\n' "$path"
+            return 0
+        fi
+    done
+    command -v "$name" 2>/dev/null || true
+}
+
+find_bin() {
+    local name="$1"
+    for path in "/usr/libexec/$name" "/usr/lib/$name" "/usr/bin/$name"
+    do
+        if [[ -x "$path" ]]; then
+            printf '%s\n' "$path"
+            return 0
+        fi
+    done
+    command -v "$name" 2>/dev/null || true
+}
+
+PORTAL_KDE="$(find_portal xdg-desktop-portal-kde)"
+PORTAL="$(find_portal xdg-desktop-portal)"
+POWERDEVIL="$(find_bin org_kde_powerdevil)"
+UPOWERD="$(find_bin upowerd)"
+
+STARTUP_PAYLOAD_DIR="${XDG_RUNTIME_DIR:-/tmp}/kineticwe-$USER"
+mkdir -p "$STARTUP_PAYLOAD_DIR"
+STARTUP_PAYLOAD="$STARTUP_PAYLOAD_DIR/startup.sh"
+
+cat > "$STARTUP_PAYLOAD" << 'PAYLOADEOF'
+#!/bin/bash
+# KineticWE startup payload — run by KWin as a detached child process.
+
+export PATH=/usr/bin:/usr/lib
+export XDG_CURRENT_DESKTOP=KDE
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=KDE
+export KDE_SESSION_VERSION=6
+
+# 1. Rebuild KDE service cache so System Settings finds installed KCMs
+if command -v kbuildsycoca6 >/dev/null 2>&1; then
+    kbuildsycoca6 --noincremental 2>/dev/null || true
+fi
+
+# 2. Start XDG Desktop Portals
+killall -q xdg-desktop-portal-kde xdg-desktop-portal xdg-desktop-portal-gtk xdg-document-portal 2>/dev/null || true
+sleep 1
+
+mkdir -p "$HOME/.local/share"
+
+if [[ -x "$PORTAL_KDE" ]]; then
+    XDG_CURRENT_DESKTOP=KDE nohup "$PORTAL_KDE" >"$HOME/.local/share/xdg-desktop-portal-kde.log" 2>&1 &
+else
+    echo "Warning: xdg-desktop-portal-kde not found" >&2
+fi
+
+sleep 2
+
+if [[ -x "$PORTAL" ]]; then
+    nohup "$PORTAL" >"$HOME/.local/share/xdg-desktop-portal.log" 2>&1 &
+else
+    echo "Warning: xdg-desktop-portal not found" >&2
+fi
+
+# 2.5. Start kded6 for shortcut component discovery
+if command -v kded6 >/dev/null 2>&1; then
+    kded6 &>/dev/null &
+    sleep 2
+fi
+
+# 3. Start power management
+# upowerd provides battery and power device monitoring via D-Bus
+if [[ -x "$UPOWERD" ]]; then
+    nohup "$UPOWERD" &>/dev/null &
+fi
+
+# org_kde_powerdevil provides idle timeouts, DPMS, suspend, brightness, and power profile management
+if [[ -x "$POWERDEVIL" ]]; then
+    nohup "$POWERDEVIL" &>/dev/null &
+fi
+
+# 4. Start user applications
+nohup noctalia >"$HOME/.local/share/noctalia.log" 2>&1 &
+PAYLOADEOF
+
+chmod +x "$STARTUP_PAYLOAD"
+
+# Stop any competing global-shortcuts daemon
+systemctl --user stop plasma-kglobalaccel.service 2>/dev/null || true
+pkill -x kglobalacceld 2>/dev/null || true
+
+export XDG_CURRENT_DESKTOP=KineticWE:KDE
+exec kinetic-we --xwayland "$STARTUP_PAYLOAD"
+STARTEOF
     chmod 0755 "$pkgdir/usr/bin/start-kineticwe"
-
-    # Fix powerdevil/upowerd paths for distros that do not use /usr/libexec (Arch, Debian, etc.)
-    # Use @ as sed delimiter to avoid conflicts with shell pipe characters (||) in the replacement
-    sed -i \
-        -e 's@/usr/libexec/upowerd@"$(command -v upowerd 2>/dev/null || echo /usr/libexec/upowerd)"@' \
-        -e 's@/usr/libexec/org_kde_powerdevil@"$(command -v org_kde_powerdevil 2>/dev/null || echo /usr/libexec/org_kde_powerdevil)"@' \
-        "$pkgdir/usr/bin/start-kineticwe"
-
-    # Insert kded6 startup block before the "Start power management" section
-    # Uses sed r (read from stdin) to insert, then d to delete the matched line
-    sed -i "/^# *3[.] *Start power management$/ {
-        r /dev/stdin
-        d
-    }" "$pkgdir/usr/bin/start-kineticwe" << 'KDEDEOF'
 # 2.5. Start kded6 for shortcut component discovery
 # ---------------------------------------------------------------------------
 if command -v kded6 >/dev/null 2>&1; then
