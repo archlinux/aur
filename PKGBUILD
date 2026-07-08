@@ -1,6 +1,6 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-daemon
-pkgver=2.7.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Hardware fan control daemon for Linux (OpenFan, hwmon, GPU)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ install=control-ofc-daemon.install
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 # sha256sums are CI-maintained (updpkgsums at tag time); a manual makepkg needs 'updpkgsums' first.
-sha256sums=('b3358ec04692a16170bec62bec2b1dacce335c7dfe540b14f5294d8ea1b3d11a')
+sha256sums=('a806d322b7dafca7177822e44a456c4bcbce11c39710f283cebedf0b913acdaf')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -90,6 +90,13 @@ package() {
     # so the operator must copy it deliberately AND set allow_port_probe=true.
     install -Dm644 packaging/superio-port-probe.conf.example \
         "$pkgdir/usr/share/doc/$pkgname/superio-port-probe.conf.example"
+
+    # Opt-in systemd drop-in for READ-ONLY NVIDIA NVML telemetry (DEC-204).
+    # Shipped as a doc example ONLY — NOT installed into the .service.d/ dir, so
+    # the default unit stays hardened. Grants access to the NVIDIA device nodes;
+    # the operator must copy it deliberately AND set enable_nvidia_telemetry=true.
+    install -Dm644 packaging/nvidia-telemetry.conf.example \
+        "$pkgdir/usr/share/doc/$pkgname/nvidia-telemetry.conf.example"
 
     # Kernel module loading — Super I/O chipset drivers that expose
     # motherboard fan headers and sensors. See packaging/modules-load.d/
