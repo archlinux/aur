@@ -1,10 +1,12 @@
 pkgbase = pass-audit
 	pkgdesc = A pass extension for auditing your password repository.
 	pkgver = 1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/roddhjav/pass-audit
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-pytest
 	makedepends = python-setuptools
 	depends = pass
 	depends = python
