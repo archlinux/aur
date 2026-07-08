@@ -1,0 +1,14 @@
+pkgbase = cl-swap-bytes
+	pkgdesc = Efficient endianness conversion for Common Lisp
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/sionescu/swap-bytes
+	arch = any
+	license = MIT
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-trivial-features
+	source = https://github.com/sionescu/swap-bytes/archive/refs/tags/v1.2.tar.gz
+	sha256sums = 3a2328798ec0f58956f8c08bfe3426f5acf329c66c0225803b18ee75a9b030aa
+
+pkgname = cl-swap-bytes
