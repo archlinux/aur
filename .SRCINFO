@@ -1,6 +1,6 @@
 pkgbase = paintfe-bin
 	pkgdesc = Fast, GPU-accelerated raster image editor (prebuilt binary)
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/kylejckson/PaintFE
 	arch = x86_64
@@ -14,12 +14,12 @@ pkgbase = paintfe-bin
 	optdepends = mesa: software/OpenGL fallback rendering
 	provides = paintfe
 	conflicts = paintfe
-	source = PaintFE-bin-1.3.1::https://github.com/kylejckson/PaintFE/releases/download/v1.3.1/PaintFE
-	source = PaintFE-1.3.1.desktop::https://raw.githubusercontent.com/kylejckson/PaintFE/v1.3.1/packaging/appimage/PaintFE.AppDir/PaintFE.desktop
-	source = PaintFE-1.3.1.png::https://raw.githubusercontent.com/kylejckson/PaintFE/v1.3.1/assets/icons/app_icon.png
-	source = LICENSE-1.3.1.md::https://raw.githubusercontent.com/kylejckson/PaintFE/v1.3.1/LICENSE.md
-	sha256sums = 0c35e03a7fd9d4d8842c35f6dc48d5e6ad9848a3931fde546a22687b5ef657fc
-	sha256sums = 5025ed2b4f8403fd502b50baebe50f16b8e8c5b2b20569ce29dc25287ba4c072
+	source = PaintFE-linux-x64-1.3.2.tar.gz::https://github.com/kylejckson/PaintFE/releases/download/v1.3.2/PaintFE-linux-x64.tar.gz
+	source = PaintFE-1.3.2.desktop::https://raw.githubusercontent.com/kylejckson/PaintFE/v1.3.2/packaging/appimage/PaintFE.AppDir/PaintFE.desktop
+	source = PaintFE-1.3.2.png::https://raw.githubusercontent.com/kylejckson/PaintFE/v1.3.2/assets/icons/app_icon.png
+	source = LICENSE-1.3.2.md::https://raw.githubusercontent.com/kylejckson/PaintFE/v1.3.2/LICENSE.md
+	sha256sums = ba73ebf4c2a09252a03966e169f33eebca85b12d82170c9945afaa8e0994a4b9
+	sha256sums = cc0764b5e156e1c7af4ca70d1cadec0c47368e51ae480324eee2f448db58e4d4
 	sha256sums = 01d846f2682ae7fb3a67542ef4e2b31212a6286b6da3964d18e0591c72e3fcc5
 	sha256sums = 93a341aa77d861fdf5fcf20243c40a13da5bf7ab1d2058e9d67b8777534a5c0e
 
