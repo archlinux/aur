@@ -1,4 +1,5 @@
 # Maintainer: freggel.doe <freggel.doe@gmx.net>
+# Contributor: Andrew Rodland
 
 pkgname=perl-crypt-pbkdf2
 _cpanname=Crypt-PBKDF2
