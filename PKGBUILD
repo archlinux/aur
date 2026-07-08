@@ -1,7 +1,7 @@
 # Maintainer: ZhangHua <zhanghuadedn at gmail dot com> 
 
 pkgname=("ariang-native-git" "ariang-native-electron-git")
-pkgver=1.3.7.r10.g1c60cd5
+pkgver=1.3.14.r1.g7c4e4b5
 pkgrel=1
 pkgdesc="A better aria2 desktop frontend than AriaNg."
 license=("MIT")
@@ -42,7 +42,7 @@ package_ariang-native-git(){
     depends+=(
         # Depends from aur/electron22
         "c-ares" "gcc-libs" "glibc" "gtk3" "libgtk-3.so" "libevent" "nss" "wayland"
-        "zlib" "fontconfig" "woff2" "aom" "brotli" "libjpeg" "icu" "dav1d" "flac"
+        "zlib" "fontconfig" "woff2" "aom" "brotli" "libjpeg-turbo" "icu" "dav1d" "flac"
         "snappy" "libdrm" "libxml2" "ffmpeg" "libwebp" "minizip" "opus" "harfbuzz"
         "jsoncpp" "libxslt" "libpng" "freetype2"
     )
