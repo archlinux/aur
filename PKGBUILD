@@ -8,14 +8,14 @@
 pkgname=pcmanfm-gtk3
 _pkgname=pcmanfm
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Extremely fast and lightweight file manager (GTK+ 3 version)'
 arch=('i686' 'x86_64')
 url='http://pcmanfm.sourceforge.net/'
 license=('GPL')
 groups=('lxde-gtk3')
 depends=('gtk3' 'desktop-file-utils' 'libfm-gtk3' 'lxmenu-data')
-makedepends=('intltool')
+makedepends=('intltool' 'git')
 optdepends=('gvfs: for trash support, mounting with udisks and remote filesystems'
             'udisks: alternative for mounting volumes'
             'xarchiver: archive management')

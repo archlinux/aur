@@ -1,7 +1,7 @@
 pkgbase = pcmanfm-gtk3
 	pkgdesc = Extremely fast and lightweight file manager (GTK+ 3 version)
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pcmanfm.sourceforge.net/
 	install = pcmanfm.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = pcmanfm-gtk3
 	groups = lxde-gtk3
 	license = GPL
 	makedepends = intltool
+	makedepends = git
 	depends = gtk3
 	depends = desktop-file-utils
 	depends = libfm-gtk3
