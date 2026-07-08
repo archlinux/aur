@@ -1,24 +1,39 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=grok-jpeg2000-git
-pkgver=20.0.4.r1.g3350326
-pkgrel=1
+pkgver=20.3.6.r8.g437cf24
+pkgrel=2
 pkgdesc="A high performance open source JPEG 2000 codec"
 arch=(x86_64)
 url="https://github.com/GrokImageCompression/grok"
 license=(AGPL-3.0-only)
-depends=(glibc gcc-libs libpng libtiff lcms2 libjpeg perl-image-exiftool
-		 'perl>=5.42' 'perl<5.43'
-		)
-makedepends=(git cmake cli11 doxygen python-sphinx patchelf)
+depends=(glibc gcc-libs libpng libtiff lcms2 libjpeg-turbo perl perl-image-exiftool fmt)
+makedepends=(git cmake cli11 doxygen python-sphinx valgrind)
 provides=(grok-jpeg2000)
 conflicts=(grok-jpeg2000)
-source=("grok-jpeg2000::git+https://github.com/GrokImageCompression/grok.git")
-sha256sums=('SKIP')
+source=("grok-jpeg2000::git+https://github.com/GrokImageCompression/grok.git"
+        "git+https://github.com/google/highway.git"
+        "git+https://github.com/gabime/spdlog.git"
+        "git+https://github.com/boxerab/taskflow.git"
+        )
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
+
+prepare() {
+  cd grok-jpeg2000
+  git submodule init
+  git config submodule.src/include/CLI11.update none
+  git config submodule.src/lib/core/highway.url "${srcdir}/highway"
+  git config submodule.src/include/spdlog.url "${srcdir}/spdlog"
+  git config submodule.src/include/taskflow.url "${srcdir}/taskflow"
+  git -c protocol.file.allow=always submodule update
+}
 
 pkgver() {
   cd grok-jpeg2000
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 --exclude=m* | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -30,6 +45,7 @@ build() {
     -DGRK_BUILD_LCMS2=OFF
     -DGRK_BUILD_LIBPNG=OFF
     -DGRK_BUILD_LIBTIFF=OFF
+    -DSPDLOG_FMT_EXTERNAL=ON
   )
 
   cmake -B build -S "grok-jpeg2000" -Wno-dev \
@@ -41,8 +57,5 @@ build() {
 }
 
 package() {
-  # patchelf --replace-needed liboriginal.so.1 libreplacement.so.1 my-program
-  patchelf --replace-needed libperl.so /usr/lib/perl5/5.42/core_perl/CORE/libperl.so build/bin/libgrokj2kcodec.so.20.0.4
-
   DESTDIR="${pkgdir}" cmake --install build
 }
