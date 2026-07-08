@@ -1,13 +1,13 @@
 pkgbase = freeclaw
 	pkgdesc = Community fork of OpenClaw with local inference improvements
-	pkgver = 6
+	pkgver = 7
 	pkgrel = 1
 	url = https://codeberg.org/LuminaNAO/freeclaw
 	arch = x86_64
 	license = MIT
 	depends = nodejs
 	depends = npm
-	source = git+https://codeberg.org/LuminaNAO/freeclaw.git#tag=v6
+	source = git+https://codeberg.org/LuminaNAO/freeclaw.git#tag=v7
 	sha256sums = SKIP
 
 pkgname = freeclaw
