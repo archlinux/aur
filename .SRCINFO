@@ -1,6 +1,6 @@
 pkgbase = lota-bin
 	pkgdesc = A configurable task runner for rapid development (binary release)
-	pkgver = 1.16.14
+	pkgver = 1.17.7
 	pkgrel = 1
 	url = https://github.com/quonaro/lota
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = lota-bin
 	depends = glibc
 	provides = lota
 	conflicts = lota
-	source_x86_64 = lota-bin-1.16.14::https://github.com/quonaro/Lota/releases/download/v1.16.14/lota-linux-amd64
-	sha256sums_x86_64 = 55111e6312f850b5e0e79357a1eac93f60b4f4a74ac24815a9c2f1151b8da7d7
-	source_aarch64 = lota-bin-1.16.14::https://github.com/quonaro/Lota/releases/download/v1.16.14/lota-linux-arm64
-	sha256sums_aarch64 = 74617f985a1cecf6c69c5b99e52d553bac4ef2d7b8ab604cd01a7ea0f0fe8d02
+	source_x86_64 = lota-bin-1.17.7::https://github.com/quonaro/Lota/releases/download/v1.17.7/lota-linux-amd64
+	sha256sums_x86_64 = 847574eb73a5c479edd5a4374e7dfced6c3fde7671eaf6c0da8e2821be552786
+	source_aarch64 = lota-bin-1.17.7::https://github.com/quonaro/Lota/releases/download/v1.17.7/lota-linux-arm64
+	sha256sums_aarch64 = d82dcf9eeea3d00082ca44a15edea5050e7375e9c6b416951555c2679024370c
 
 pkgname = lota-bin
