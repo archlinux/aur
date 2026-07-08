@@ -1,7 +1,7 @@
 pkgbase = weflow-bin
 	pkgdesc = Local WeChat database decryption and analysis tool
-	pkgver = 5.0.1
-	pkgrel = 1
+	pkgver = 5.1.0
+	pkgrel = 2
 	url = https://github.com/hicccc77/WeFlow
 	arch = x86_64
 	license = CC-BY-NC-SA-4.0
@@ -22,7 +22,7 @@ pkgbase = weflow-bin
 	conflicts = weflow
 	options = !debug
 	options = !strip
-	source = WeFlow-5.0.1-Setup.tar.gz::https://github.com/hicccc77/WeFlow/releases/download/v5.0.1/WeFlow-5.0.1-Setup.tar.gz
-	sha256sums = 58e737896de2ad7f5010746a7190d21e5a87011be8e7383bac44ff79632135b5
+	source = WeFlow-5.1.0-Setup.tar.gz::manual://WeFlow-5.1.0-Setup.tar.gz
+	sha256sums = 98ca7c301d383642a8c7c4cb0f40172be8d5c9d136848477b7402d52655ed5bf
 
 pkgname = weflow-bin

@@ -1,0 +1,12 @@
+#!/bin/sh
+cat >&2 <<'EOF'
+Manual source required.
+
+Upstream releases are currently unavailable. Obtain WeFlow-5.1.0-Setup.tar.gz
+from a lawful source, then place it next to this PKGBUILD or in makepkg's
+SRCDEST and rerun makepkg.
+
+Expected SHA256:
+98ca7c301d383642a8c7c4cb0f40172be8d5c9d136848477b7402d52655ed5bf
+EOF
+exit 1
