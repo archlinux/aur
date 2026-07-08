@@ -5,14 +5,14 @@
 # Contributor: Myrddin Wyllt <darknesseatsall at aim dot com>
 
 pkgname=openrgb-git
-pkgver=0.9.1658.g011d364
+pkgver=0.9.2126.g623fdfe
 pkgrel=1
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software"
 arch=('x86_64')
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
 license=('GPL-2.0-or-later')
-depends=('glibc' 'gcc-libs' 'qt5-base' 'libusb' 'hidapi' 'mbedtls' 'hicolor-icon-theme')
-makedepends=('qt5-tools' 'git')
+depends=('glibc' 'gcc-libs' 'qt6-base' 'libusb' 'hidapi-hotplug' 'mbedtls' 'hicolor-icon-theme')
+makedepends=('qt6-tools' 'git')
 optdepends=('i2c-nct6793-dkms: Nuvoton SMBus driver, needed for onboard RGB on certain ASUS Z270 and Z370 boards')
 provides=('openrgb')
 conflicts=('openrgb')
@@ -23,14 +23,14 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd OpenRGB
-    qmake OpenRGB.pro 2>&1 | grep VERSION_AUR | cut -d ':' -f 3 | tr -d ' '
+    qmake6 OpenRGB.pro 2>&1 | grep VERSION_AUR | cut -d ':' -f 3 | tr -d ' '
 }
 
 build() {
     export CXXFLAGS=${CXXFLAGS/-pipe}
 
     cd "$srcdir/OpenRGB"
-    qmake OpenRGB.pro PREFIX=/usr
+    qmake6 OpenRGB.pro PREFIX=/usr
     make
 }
 
