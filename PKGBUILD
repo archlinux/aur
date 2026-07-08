@@ -8,12 +8,12 @@
 
 pkgname=libpng12
 pkgver=1.2.59
-pkgrel=2
+pkgrel=3
 pkgdesc='A collection of routines used to create PNG format graphics files'
 arch=('x86_64')
 url='http://www.libpng.org/pub/png/libpng.html'
 license=('custom')
-depends=('glibc' 'zlib')
+depends=('glibc' 'zlib' 'gcc-libs')
 source=("https://sourceforge.net/projects/libpng/files/libpng-${pkgver}.tar.xz"{,.asc}
         "https://sourceforge.net/projects/libpng-apng/files/libpng12/${pkgver}/libpng-${pkgver}-apng.patch.gz")
 validpgpkeys=('8048643BA2C840F4F92A195FF54984BFA16C640F') # Glenn Randers-Pehrson
