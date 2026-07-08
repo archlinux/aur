@@ -1,6 +1,6 @@
 pkgbase = sysforge
 	pkgdesc = Arch Linux build and maintenance suite for system setup and package management with compiler-optimized builds
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/KeithRaghubar/sysforge
 	install = sysforge.install
@@ -30,10 +30,10 @@ pkgbase = sysforge
 	backup = etc/sysforge/packages.toml
 	backup = etc/sysforge/kernel.toml
 	backup = etc/sysforge/toolchain.toml
-	source = sysforge-2.1.0.tar.gz::https://github.com/KeithRaghubar/sysforge/archive/v2.1.0.tar.gz
-	source = sysforge-2.1.0.tar.gz.asc::https://github.com/KeithRaghubar/sysforge/releases/download/v2.1.0/sysforge-2.1.0.tar.gz.asc
+	source = sysforge-2.2.0.tar.gz::https://github.com/KeithRaghubar/sysforge/archive/v2.2.0.tar.gz
+	source = sysforge-2.2.0.tar.gz.asc::https://github.com/KeithRaghubar/sysforge/releases/download/v2.2.0/sysforge-2.2.0.tar.gz.asc
 	validpgpkeys = 23774499080F9288FEFB49CE7AAE22E6E1B4B22C
-	sha256sums = 053d3df8ca3c7866a9c1148c4e0912795091fa3a5bd0ff80738243990214992f
+	sha256sums = 1dbaa7c249b87d223294bd004932bd1e31dd8e10e70db92283f8c8694963c6e7
 	sha256sums = SKIP
 
 pkgname = sysforge
