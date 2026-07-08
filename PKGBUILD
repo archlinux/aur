@@ -1,8 +1,9 @@
 # Maintainer: whysooraj <whysooraj.official@gmail.com>
 pkgname=tide-island
-pkgver=1.0.17
+pkgver=1.0.18
 pkgrel=1
 _srcdir=Tide-island-$pkgver
+_builddir=build-$pkgver
 pkgdesc="A dynamic island for Hyprland using Quickshell"
 arch=('x86_64')
 url="https://github.com/enhaoswen/Tide-island"
@@ -45,14 +46,14 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/enhaoswen/Tide-island/archi
 sha256sums=('SKIP')
 
 build() {
-  cmake -S "$_srcdir" -B build \
+  cmake -S "$_srcdir" -B "$_builddir" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
-  cmake --build build
+  cmake --build "$_builddir"
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="$pkgdir" cmake --install "$_builddir"
   rm -f "$pkgdir/usr/lib/qt6/qml/TideIsland/tide-island-config-app_qml_module_dir_map.qrc"
   chmod +x "$pkgdir/usr/bin/tide-island"
   chmod +x "$pkgdir/usr/bin/tide-island-config-app"
