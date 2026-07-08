@@ -1,6 +1,6 @@
 pkgbase = concord
 	pkgdesc = A feature-rich TUI client for Discord, written in Rust
-	pkgver = 2.2.12
+	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/chojs23/concord
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = concord
 	depends = opus
 	optdepends = mpv: video playback support
 	options = !lto
-	source = concord-2.2.12.tar.gz::https://github.com/chojs23/concord/archive/refs/tags/v2.2.12.tar.gz
-	sha256sums = cad79d392c1b554c59546a1229de5df98c76c1fc56b157a5bbc691c385cc38a7
+	source = concord-2.3.2.tar.gz::https://github.com/chojs23/concord/archive/refs/tags/v2.3.2.tar.gz
+	sha256sums = 95588420f3a4d6ebd9cfb2def7257c52b89503f132f8af61330661cf0514cfba
 
 pkgname = concord
