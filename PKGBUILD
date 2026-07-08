@@ -6,7 +6,7 @@
 
 pkgname=vicinae-bin
 pkgver=0.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Raycast like FOSS app on Linux"
 arch=('x86_64')
 url="https://github.com/vicinaehq/vicinae"
