@@ -5,7 +5,7 @@
 _pkgname=cantera
 pkgname="${_pkgname}"
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='suite of tools for kinetics, thermodynamics, and transport processes'
 arch=('x86_64')
 url='https://cantera.org/'
