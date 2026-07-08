@@ -1,13 +1,13 @@
 # Maintainer: markusressel <mail+archlinuxaur@markusressel.de>
 pkgname=zfs-file-history-git
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Terminal UI for inspecting and restoring file history on ZFS snapshots."
 arch=('x86_64')
 url="https://github.com/markusressel/zfs-file-history"
 license=('AGPL3')
 depends=('glibc')
-makedepends=('go' 'git')
+makedepends=('go' 'git' 'just')
 provides=("zfs-file-history")
 conflicts=("zfs-file-history")
 source=('git+https://github.com/markusressel/zfs-file-history')
