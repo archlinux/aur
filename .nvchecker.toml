@@ -1,0 +1,5 @@
+[gwm-cli-bin]
+source = "github"
+github = "kbrdn1/gwm-cli"
+use_latest_release = true
+prefix = "v"

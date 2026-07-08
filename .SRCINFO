@@ -1,0 +1,21 @@
+pkgbase = gwm-cli-bin
+	pkgdesc = Git Worktree Manager
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/kbrdn1/gwm-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = zlib
+	depends = git
+	provides = gwm
+	conflicts = gwm-cli
+	options = !strip
+	source_x86_64 = gwm-x86_64-1.0.2.tgz::https://github.com/kbrdn1/gwm-cli/releases/download/v1.0.2/gwm-v1.0.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0cf82ef6a60cfed724743751ec9c381c735249f41182a71cfc573b48bffbb9a3
+	source_aarch64 = gwm-aarch64-1.0.2.tgz::https://github.com/kbrdn1/gwm-cli/releases/download/v1.0.2/gwm-v1.0.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0c69364fdd007a2f8486308b2d5939dbdf01a26de95c79938d26af7da5bb5199
+
+pkgname = gwm-cli-bin
