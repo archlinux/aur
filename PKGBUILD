@@ -71,10 +71,10 @@ build() {
   fvm flutter build linux
 
   # Generate icons
-    for i in 16 32 48 64 128 256 512; do
-      magick "resources/icons/${_app_id}-1000x1000.png" -resize "${i}x${i}" \
-        "resources/icons/${_app_id}_${i}x${i}.png"
-    done
+  for i in 16 32 48 64 128 256 512; do
+    magick "resources/icons/${_app_id}-1000x1000.png" -resize "${i}x${i}" \
+      "resources/icons/${_app_id}_${i}x${i}.png"
+  done
 }
 
 check() {
