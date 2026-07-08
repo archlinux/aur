@@ -3,7 +3,7 @@
 
 pkgname=kineticwe
 pkgver=6.7.80
-pkgrel=3
+pkgrel=5
 pkgdesc="KineticWE - A tiling KWin Wayland compositor with native window tiling"
 arch=('x86_64')
 url="https://gitlab.com/theblackdon/kineticwe"
@@ -255,6 +255,13 @@ package() {
         "$srcdir/$_sourcebase/scripts/start-kineticwe.sh" \
         > "$pkgdir/usr/bin/start-kineticwe"
     chmod 0755 "$pkgdir/usr/bin/start-kineticwe"
+
+    # Fix powerdevil/upowerd paths for distros that do not use /usr/libexec (Arch, Debian, etc.)
+    sed -i \
+        -e 's|/usr/libexec/upowerd|"$(command -v upowerd 2>/dev/null || echo /usr/libexec/upowerd)"|' \
+        -e 's|/usr/libexec/org_kde_powerdevil|"$(command -v org_kde_powerdevil 2>/dev/null || echo /usr/libexec/org_kde_powerdevil)"|' \
+        -e '/^# 3\. Start power management/i\# 2.5. Start kded6 for shortcut component discovery\nif command -v kded6 >/dev/null 2>&1; then\n    kded6 &>/dev/null &\n    sleep 2\nfi\n# ---------------------------------------------------------------------------\n' \
+        "$pkgdir/usr/bin/start-kineticwe"
 
     # Install Wayland session desktop entry (for SDDM, greetd, etc.)
     echo "==> Installing wayland-sessions desktop entry..."
