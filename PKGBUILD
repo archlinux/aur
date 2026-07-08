@@ -4,7 +4,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-librsvg
-pkgver=2.61.2
+pkgver=2.62.3
 pkgrel=1
 pkgdesc="SVG rendering library (mingw-w64)"
 arch=('any')
@@ -23,8 +23,10 @@ makedepends=('cargo-c'
              'gobject-introspection'
              'git')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("git+https://gitlab.gnome.org/GNOME/librsvg.git#tag=$pkgver")
-b2sums=('bb7f38bb6518d193dfabab07759ca2d6f56edd6cc49b68329e401ce907d64ae49bfc9a46c8927686e315c7ae1ef4c5babec0d1bfef59b172c3f5ce8f7c8b7f12')
+source=("git+https://gitlab.gnome.org/GNOME/librsvg.git#tag=$pkgver"
+  "0002-avoid-link-whole.patch")
+b2sums=('63d921e517bb95362259f477cacfbafcf788ed9f40fe15697f10b0dfdff32831c7963eb4fce65ab03ad94790555741f6450f275713a9ae9aca7ceb27af653e85'
+        'b9219e64e605b7d92bee720882496c5c03872a61c1f1bce6ff4673df75b282aec920c2befcd3a81a1bd401a7c33f8f29f8846a91e30ae2886d29c9b74b71650c')
 
 pkgver() {
   cd "${srcdir}/librsvg"
@@ -44,6 +46,9 @@ prepare() {
   cd "${srcdir}/librsvg"
   cargo fetch --locked --target "i686-pc-windows-gnu"
   cargo fetch --locked --target "x86_64-pc-windows-gnu"
+
+  # https://gitlab.gnome.org/GNOME/librsvg/-/issues/1210
+  patch -Np1 -i ../0002-avoid-link-whole.patch
 }
 
 build() {
@@ -59,7 +64,6 @@ build() {
   # get CHOST from gcc
   export CHOST=$(LANG=C gcc -v 2>&1 | grep "^Target" | grep -o '[^ ]*$')
 
-  cd "${srcdir}/librsvg"
   for _arch in ${_architectures}; do
     # configure can read RUST_TARGET now
     if [[ ${_arch} = i686-w64-mingw32 ]] ; then
@@ -69,23 +73,20 @@ build() {
       export RUST_TARGET=x86_64-pc-windows-gnu
     fi
 
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-meson \
-      --default-library both \
-      -Dintrospection=disabled \
-      -Dpixbuf-loader=disabled \
-      ..
-
-    mkdir inst
-    DESTDIR=inst ninja install
-    popd
+    ${_arch}-meson librsvg build-${_arch} \
+      --default-library=both \
+      -D docs=disabled \
+      -D tests=false \
+      -D introspection=disabled \
+      -D pixbuf-loader=disabled \
+      -D rsvg-convert=disabled
+    meson compile -C build-${_arch}
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/librsvg/build-${_arch}"
-    cp -r inst/* ${pkgdir}
+    meson install -C build-${_arch} --destdir "$pkgdir"
     find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip --strip-all {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.a' -exec ${_arch}-strip --strip-debug {} \;
