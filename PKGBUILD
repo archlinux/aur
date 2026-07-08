@@ -1,8 +1,8 @@
 # Maintainer: theorangeguo
 # Packaging Repo: https://github.com/theorangeguo/aur-packages/tree/main/packages/wlroots0.20-vmwgfx
 pkgname=wlroots0.20-vmwgfx
-pkgver=0.20.1
-pkgrel=2
+pkgver=0.20.2
+pkgrel=1
 pkgdesc=Modular\ Wayland\ compositor\ library\ with\ a\ vmwgfx\ compatibility\ patch
 arch=(x86_64 )
 url=https://gitlab.freedesktop.org/wlroots/wlroots
@@ -16,9 +16,9 @@ provides=(libwlroots-0.20.so wlroots0.20 )
 conflicts=(wlroots0.20 )
 validpgpkeys=(34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48 9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A 4100929B33EEB0FD1DB852797BC79407090047CA )
 
-source=(0001-vmwgfx-disable-dmabuf-import-check-after-close-failure.patch wlroots0.20-vmwgfx::git+https://gitlab.freedesktop.org/wlroots/wlroots.git#tag=0.20.1\?signed )
+source=(0001-vmwgfx-disable-dmabuf-import-check-after-close-failure.patch wlroots0.20-vmwgfx::git+https://gitlab.freedesktop.org/wlroots/wlroots.git#tag=0.20.2\?signed )
 sha256sums=('04e162eeef30b990a64b29e55fe1145d762d3621b3ed59ed4e9828fd142f3647'
-            'b15c189015a856a6eef7742ab46bc0f7b74428fb325fb6722f2f30b9e094f32e')
+            '6c8595da579a8df74bc307294c2485e90f5379b84390381f500da33ff3f276d2')
 
 _source_dir=wlroots0.20-vmwgfx
 _build_dir=build
