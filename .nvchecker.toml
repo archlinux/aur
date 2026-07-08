@@ -1,0 +1,4 @@
+[docspec]
+source = "git"
+git = "https://github.com/docspec/docspec.git"
+prefix = "v"

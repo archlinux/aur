@@ -1,0 +1,16 @@
+pkgbase = docspec
+	pkgdesc = Rust implementation of DocSpec, a streaming document conversion library
+	pkgver = 1.21.1
+	pkgrel = 1
+	url = https://github.com/docspec/docspec
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
+	source = git+https://github.com/docspec/docspec.git#tag=v1.21.1
+	sha256sums = 1780072388d74537b1a3a3c471bf57610c7ac5a4da371ecbc7bda43e2097c83b
+
+pkgname = docspec
