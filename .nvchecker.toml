@@ -1,4 +1,4 @@
-[tpack-bin]
+[tpack]
 source = "git"
 git = "https://github.com/tmuxpack/tpack.git"
 prefix = "v"
