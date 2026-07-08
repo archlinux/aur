@@ -1,12 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mednafen-highscore-git
-pkgver=1.32.1.r64.gfc1d233
+pkgver=1.32.1.r76.g6eeee4e
 pkgrel=1
 pkgdesc="Highscore port of Mednafen"
 arch=('x86_64')
 url="https://github.com/highscore-emu/mednafen-highscore"
 license=('GPL-2.0-or-later')
 depends=(
+  'glib2'
   'libchdr'
   'libhighscore-git'
   'libvorbis'

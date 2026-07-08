@@ -1,12 +1,13 @@
 pkgbase = mednafen-highscore-git
 	pkgdesc = Highscore port of Mednafen
-	pkgver = 1.32.1.r64.gfc1d233
+	pkgver = 1.32.1.r76.g6eeee4e
 	pkgrel = 1
 	url = https://github.com/highscore-emu/mednafen-highscore
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = meson
+	depends = glib2
 	depends = libchdr
 	depends = libhighscore-git
 	depends = libvorbis
