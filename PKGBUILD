@@ -1,8 +1,8 @@
 # Maintainer: Panda <sato.du@gmail.com>
 _pkgname=kde-webapp-manager
 pkgname=${_pkgname}-git
-pkgver=r10.g672b075
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="A native Qt6 utility to easily generate and manage custom browser webapps on KDE Plasma"
 arch=('any')
 url="https://github.com/satodu/kde-webapp-gen"
@@ -11,24 +11,22 @@ depends=('python' 'python-pyqt6')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/satodu/kde-webapp-gen.git")
+source=("${_pkgname}::git+https://github.com/satodu/kde-webapp-gen.git#tag=1.0.1")
 md5sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 package() {
   cd "${srcdir}/${_pkgname}"
   
-  # Install the executable script
+  # Install the executable script wrapper
   install -Dm755 main.py "${pkgdir}/usr/bin/${_pkgname}"
   
-  # Install Python modules package and assets
-  install -d "${pkgdir}/usr/share/${_pkgname}/webapp_manager"
-  install -Dm644 webapp_manager/*.py "${pkgdir}/usr/share/${_pkgname}/webapp_manager/"
-  install -Dm644 webapp_manager/*.png "${pkgdir}/usr/share/${_pkgname}/webapp_manager/"
+  # Install Python modules package and assets (recursive copy to include widgets subfolder)
+  install -d "${pkgdir}/usr/share/${_pkgname}"
+  cp -r webapp_manager "${pkgdir}/usr/share/${_pkgname}/"
+  
+  # Fix directory and file permissions in the share directory
+  find "${pkgdir}/usr/share/${_pkgname}/webapp_manager" -type d -exec chmod 755 {} +
+  find "${pkgdir}/usr/share/${_pkgname}/webapp_manager" -type f -exec chmod 644 {} +
   
   # Install custom logo icon to pixmaps (standard for standalone icons)
   install -Dm644 images/kde-webapp-gen-icon-logo.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
