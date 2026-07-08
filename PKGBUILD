@@ -6,7 +6,7 @@
 
 pkgname=ardali-bin
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ArDali WebMedia multimedia ecosystem for Linux"
 arch=('x86_64')
 url="https://ardali.app"
@@ -64,7 +64,8 @@ EOF
   install -Dm644 ardali.desktop "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
   sed -i 's|^Exec=.*|Exec=/usr/bin/ardali-webmedia %U|' "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
   sed -i 's/^Icon=.*/Icon=ardali-webmedia/' "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
-  sed -i 's/^Categories=.*/Categories=AudioVideo;Player;Network;/' "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
+  sed -i 's/^Categories=.*/Categories=Network;WebBrowser;/' "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
+  sed -i 's|^MimeType=.*|MimeType=x-scheme-handler/http;x-scheme-handler/https;text/html;x-scheme-handler/ardali;|' "${pkgdir}/usr/share/applications/ardali-webmedia.desktop"
 
   if [ -d usr/share/icons ]; then
     cp -r --no-preserve=ownership usr/share/icons "${pkgdir}/usr/share/"
