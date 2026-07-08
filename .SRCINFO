@@ -1,0 +1,20 @@
+pkgbase = yin-nvidia-git
+	pkgdesc = Lightweight, Hardware accelerated Wayland wallpaper daemon. With Nvidia Support
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/saverinonrails/yin
+	arch = x86_64
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols
+	makedepends = cuda
+	depends = ffmpeg
+	depends = wayland
+	depends = stb
+	conflicts = yin-git
+	options = !debug
+	source = git+https://github.com/saverinonrails/yin.git
+	sha256sums = SKIP
+
+pkgname = yin-nvidia-git
