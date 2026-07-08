@@ -1,21 +1,27 @@
+#shellcheck shell=bash
 # AUR Maintainer: Shadichy <shadichy@blisslabs.org>
 
 pkgbase=ntfsprogs-plus
 pkgname=${pkgbase}
 _repo=ntfsprogs-plus/$pkgname
 pkgver=1.0.0
-pkgrel=1
-pkgdesc='NTFS filesystem utilities'
+pkgrel=2
+pkgdesc='NTFS filesystem utilities.'
 arch=('x86_64')
-license=('0BSD')
+
+depends=('util-linux-libs' 'hwinfo' 'libx86emu')
+makedepends=('libgcrypt')
+
+conflicts=('ntfsprogs' 'ntfs-3g' "${pkgname}-git")
+provides=('ntfsprogs' 'ntfs-3g' "$pkgname")
+
 url="https://github.com/${_repo}"
-depends=('util-linux-libs')
-conflicts=('ntfsprogs' 'ntfs-3g' 'ntfsprogs-plus-git')
-provides=('ntfsprogs' "$pkgname" 'ntfs-3g')
+license=('GPL-2.0-or-later' 'LGPL-2.0-or-later')
 source=("${pkgname}.tar.gz::https://api.github.com/repos/ntfsprogs-plus/ntfsprogs-plus/tarball/refs/tags/1.0.0")
 sha256sums=('28f24aa673a81bf84d339cd0842dc7afd571bfa5345b6554fe3760ed6a71e343')
 
 prepare() {
+  # Clean up before building
   rm -rf ${srcdir}/${pkgname}.tar.gz ${srcdir}/${pkgname}
   mv ${srcdir}/${pkgname}-* ${srcdir}/${pkgname}
 
@@ -33,9 +39,8 @@ build() {
     --mandir=/usr/share/man \
     --disable-ldconfig \
     --enable-xattr-mappings \
-    --enable-posix-acls \
-    --enable-extras \
-    --enable-crypto
+    --enable-posix-acls
+
   make
 }
 
@@ -49,7 +54,14 @@ package() {
     rootlibdir=/usr/lib \
     install
 
-  # License
+  # ntfs-3g compat
+  ln -s /usr/bin/mount "${pkgdir}/usr/bin/mount.ntfs"
+  ln -s /usr/bin/mount "${pkgdir}/usr/bin/mount.ntfsplus"
+  ln -s /usr/bin/mount "${pkgdir}/usr/bin/mount.ntfs-3g"
+  ln -s /usr/bin/mount "${pkgdir}/usr/bin/mount.lowntfs-3g"
+  ln -s /usr/bin/fsck.ntfs "${pkgdir}/usr/bin/ntfsfix"
+
+  # Upstream License
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
