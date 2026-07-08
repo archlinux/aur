@@ -1,0 +1,18 @@
+pkgbase = cl-xmlspam-git
+	pkgdesc = Concise, regexp-like pattern matching on streaming XML with Common Lisp
+	pkgver = r2.ea06abc
+	pkgrel = 1
+	url = https://github.com/rogpeppe/cl-xmlspam
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-ppcre
+	depends = cl-cxml
+	provides = cl-xmlspam
+	conflicts = cl-xmlspam
+	source = git+https://github.com/rogpeppe/cl-xmlspam
+	sha256sums = SKIP
+
+pkgname = cl-xmlspam-git
