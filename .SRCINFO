@@ -1,6 +1,6 @@
 pkgbase = macros-git
 	pkgdesc = A libcosmic app to manage and run macros on Linux.
-	pkgver = 0.2.0.r94.477f0b7
+	pkgver = 0.3.1.r137.cfec47a
 	pkgrel = 1
 	url = https://github.com/EthanRStokes/macros
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = macros-git
 	depends = libxkbcommon
 	depends = freetype2
 	depends = hicolor-icon-theme
+	depends = cosmic-icon-theme
 	depends = libgcc
 	depends = glibc
 	depends = libx11
