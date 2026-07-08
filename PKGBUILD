@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-settings-daemon-git
-pkgver=1.0.16.r56.g75c0480
-pkgrel=2
+pkgver=1.2.0.r3.g8c54bbb
+pkgrel=1
 pkgdesc="Cosmic settings daemon"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-settings-daemon"
@@ -34,7 +34,7 @@ conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-settings-daemon.git'
         'lto.patch')
 sha256sums=('SKIP'
-            '50d1b84ced8bac76dbe9c796588220180031106418e8790234afec32fd5d2707')
+            '52fb9e1690580a21e8fdc4f5f016e45f01e08b16a29c09bfef59660a3ea9531a')
 
 pkgver() {
   cd "${pkgname%-git}"
