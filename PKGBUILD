@@ -1,12 +1,12 @@
 # Maintainer: Adam Honse <calcprogrammer10@gmail.com>
 pkgname=openrgb-plugin-effects-git
-pkgver=0.9.70.g4b11017
+pkgver=0.9.115.gf9dc731
 pkgrel=1
 pkgdesc="Effects plugin for OpenRGB"
 arch=('any')
 url="https://gitlab.com/OpenRGBDevelopers/OpenRGBEffectsPlugin"
 license=('GPL-2.0-only')
-depends=('qt5-tools' 'openrgb' 'openal' 'libpipewire')
+depends=('qt6-tools' 'openrgb' 'openal' 'libpipewire')
 makedepends=('git')
 provides=('openrgb-plugin-effects')
 conflicts=('openrgb-plugin-effects')
@@ -15,13 +15,13 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd OpenRGBEffectsPlugin
-    qmake OpenRGBEffectsPlugin.pro 2>&1 | grep VERSION_AUR | cut -d ':' -f 3 | tr -d ' '
+    qmake6 OpenRGBEffectsPlugin.pro 2>&1 | grep VERSION_AUR | cut -d ':' -f 3 | tr -d ' '
 }
 
 build() {
     cd "$srcdir/OpenRGBEffectsPlugin"
     git submodule update --init --recursive
-    qmake OpenRGBEffectsPlugin.pro PREFIX=/usr/
+    qmake6 OpenRGBEffectsPlugin.pro PREFIX=/usr/
     make
 }
 
