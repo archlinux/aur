@@ -1,0 +1,19 @@
+pkgbase = muse-sounds-manager
+	pkgdesc = MuseSounds Manager - download and manage MuseSounds sample libraries
+	pkgver = 2.2.1.953
+	pkgrel = 1
+	url = https://www.musehub.com
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = fontconfig
+	depends = gcc-libs
+	depends = icu
+	depends = libx11
+	depends = libice
+	depends = libsm
+	options = !strip
+	source = https://muse-cdn.com/Muse_Sounds_Manager_x64.tar.gz
+	sha256sums = cbb7ca1e1da91bcb93e29d2fab6d2bb16f1b480a7599ea64776b16ff4e8ddc42
+
+pkgname = muse-sounds-manager
