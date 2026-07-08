@@ -4,8 +4,8 @@ pkgname=bar-lobby-git
 ### ↓↓↓ This needs to be set manually, the correct version will be displayed during build, update manually if needed!
 _electronver=39 # should work too and its in the repos because building electron 37 is a unneded pain
 ### ↑↑↑ This sadly cant be done automatically
-pkgver=0.15.2.r49.g4ae658d2
-pkgrel=2
+pkgver=VERSION
+pkgrel=5
 pkgdesc="The new - stil Work_In_Progres lobby, for the RTS game Beyond All Reason (Github version)."
 arch=('x86_64')
 url="https://beyond-all-reason.github.io/bar-lobby/"
@@ -52,11 +52,12 @@ pkgver() {
 _get_electron_version() {
     _electronversion="$(strings "squashfs-root/${pkgname%-git}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     if [ "$_electronver" != "$_electronversion" ]; then
+	echo -e "\033[1;32mINFO: \033[0mCurrently intentionally set to 39 to avoid building electron from the AUR \033[0m"
         echo -e "\033[1;31mWARNING: \033[1;33mThe electron version this PKGBUILD depends on  \033[0m(\033[1;36m${_electronver}\033[0m)\033[1;33m does not match the one required by ${pkgname} \033[0m(\033[1;36m${_electronversion}\033[0m)"
         echo -e "\033[1;32mINFO: \033[0mPlease update the PKGBUILD to depend on the correct electron version! \033[0m"
         echo -e "\033[1;32mINFO: \033[0mPlease mark this package as out of date on the AUR web page, so that it can be fixed for everyone\033[0m"
         echo -e "\033[1;32mINFO: \033[0mPlease set\033[1;32m _electronver=\033[1;36m${_electronversion}\033[0m"
-        exit 1
+#        exit 1
     else
         echo -e "\033[1;32mINFO: \033[1;33mThe electron version is: \033[1;36m${_electronversion}\033[0m"
     fi
