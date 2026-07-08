@@ -4,8 +4,8 @@
 # Contributor: J!PRA
 
 pkgname=openlierox
-pkgver=20260628.1
-pkgrel=2
+pkgver=20260708.16
+pkgrel=1
 pkgdesc="An extremely addictive realtime worms shoot-em-up backed by an active gamers community"
 arch=(x86_64)
 license=("LGPL-2.0-only")
@@ -29,7 +29,7 @@ depends=(
 optdepends=("python: dedicated server scripts")
 makedepends=("cmake" "boost" "git")
 source=("git+https://github.com/openlierox/openlierox.git#tag=${pkgver}")
-sha256sums=('802e19619cdfb02051ff840950ee63d1ef2c95c86df57548c783599075ee54b9')
+sha256sums=('68cbdb40af08826f48abb3553669099554879ca71e3c83e4ae6d6425da356d28')
 
 prepare() {
   cd $srcdir/openlierox
