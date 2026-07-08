@@ -1,5 +1,5 @@
 pkgbase = wxwidgets-gtk2
-	pkgver = 3.2.10
+	pkgver = 3.2.11
 	pkgrel = 1
 	url = https://wxwidgets.org
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = wxwidgets-gtk2
 	makedepends = sdl2
 	makedepends = libmspack
 	makedepends = gtk2
-	source = https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.10/wxWidgets-3.2.10.tar.bz2
-	sha256sums = d66e929569947a4a5920699539089a9bda83a93e5f4917fb313a61f0c344b896
+	source = https://github.com/wxWidgets/wxWidgets/releases/download/v3.2.11/wxWidgets-3.2.11.tar.bz2
+	sha256sums = 6a129015bce2e914e4bf61ec4411854ad962801d47e92f2eb8340adb6a90af08
 
 pkgname = wxwidgets-gtk2
 	pkgdesc = GTK+2 implementation of wxWidgets API for GUI
