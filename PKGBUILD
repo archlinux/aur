@@ -2,7 +2,7 @@
 
 pkgname=nuclear-player-bin
 _pkgname=nuclear-player
-pkgver=1.42.0
+pkgver=1.42.1
 pkgrel=1
 pkgdesc='Nuclear is a free, open-source music player without ads or tracking.'
 arch=(x86_64)
@@ -18,11 +18,11 @@ optdepends=(
     'gst-libav: FFmpeg-based codec support'
 )
 source=(
-    "nuclear-player-1.42.0.deb::https://github.com/nukeop/nuclear/releases/download/player@1.42.0/Nuclear_1.42.0_amd64.deb"
-    "https://raw.githubusercontent.com/nukeop/nuclear/player@1.42.0/LICENSE"
+    "nuclear-player-1.42.1.deb::https://github.com/nukeop/nuclear/releases/download/player@1.42.1/Nuclear_1.42.1_amd64.deb"
+    "https://raw.githubusercontent.com/nukeop/nuclear/player@1.42.1/LICENSE"
 )
-noextract=("nuclear-player-1.42.0.deb")
-sha256sums=('6fea0b1d896eddb58adeaa1454216b38c7dad381ae5d830ad34af2b3ce9cd91a'
+noextract=("nuclear-player-1.42.1.deb")
+sha256sums=('f42eea6aaa3b19051174c0ed81f84c591b3342d4147217e8d5abb7bcb9ae654d'
             'SKIP')
 
 package() {
