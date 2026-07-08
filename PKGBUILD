@@ -1,9 +1,9 @@
 # Maintainer: Pavel Olizko <contact@nolight.dev>
 
 pkgname=nls
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
-pkgdesc='Nushell-style ls for bash, zsh, and fish'
+pkgdesc='A modern ls with useful tables'
 arch=('x86_64' 'aarch64')
 url='https://github.com/nolight132/nls'
 license=('MIT')
