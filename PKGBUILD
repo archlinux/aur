@@ -1,7 +1,7 @@
 # Maintainer: Ethan Stokes <erstokes10@gmail.com>
 
 pkgname=macros
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='A libcosmic app to manage and run macros on Linux.'
 url='https://github.com/EthanRStokes/macros'
@@ -16,7 +16,7 @@ depends=(
 conflicts=('macros')
 provides=('macros')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/EthanRStokes/macros/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('84c499a6e0c4e74484aeec0be1a2954e731abdd4a15572584c6f80a5c9d5daa3')
+sha256sums=('b47feb99937f01f6750ddb0630c4e4a5bd3041f7a3144a37fd54a01fe34d283b')
 options=('!lto')
 
 prepare() {
