@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=golem
-_pkgver=1.0.0
+_pkgver=1.0.1
 pkgname=r-${_pkgname,,}
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='A Framework for Robust Shiny Applications'
 arch=('any')
@@ -48,7 +48,7 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a4058ebc5c09859de616068ebd9dfbcb9447cec4effebc21b1fe301663de86ca')
+sha256sums=('ceee20e347b952477ddfcbd4f0502ce89f51c91dacd336c7fffa69df3d5135ba')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
