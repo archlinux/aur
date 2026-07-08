@@ -40,10 +40,9 @@ case "${CARCH:-}" in
 esac
 
 _update_and_cache_flag='update_and_cache'
-# Allow download of versioned files in prepare() -- build() must not download files
+# Allow download of versioned files in prepare().  build() must not download files
 # Usually, pkgver() is called after prepare() and before build()
-# Print the package version
-# Called from prepare() with arg: "update_and_cache" to write to file.
+# Called from prepare() with arg: "${_pkgver_cache_file}" to write to file.
 # With no argument (eg usual makepkg), print the version already cached.
 pkgver() {
   local _pkgver_cache_file="${srcdir}/.pkgver"
@@ -52,8 +51,8 @@ pkgver() {
     cat "$_pkgver_cache_file" && return 0
   fi
 
-  echo GENERATING >&2
-
+  # Get the latest release's version
+  # Nice side effect: tee removes the cache file if there's any error
   git ls-remote --tags "https://github.com/${_repo}.git" 'v[0-9]*' \
     | awk '{print $2}' | sed 's|^refs/tags/||; s/\^{}$//' \
     | sort -V -u | tail -1 | sed 's/^v//' | tee "${_pkgver_cache_file}"
@@ -61,9 +60,12 @@ pkgver() {
 
 prepare() {
   pkgver=$(pkgver "${_update_and_cache_flag}")  # pkgver() is usually only run after prepare()
-  cd "${srcdir}"
+  echo "Downloading files for version v${pkgver}..."
+
   local _relative_url="${url}/releases/download/v${pkgver}"
   local _raw_url="https://raw.githubusercontent.com/${_repo}/v${pkgver}"
+
+  cd "${srcdir}"
   curl -fsSL "${_relative_url}/${_asset}"      -o "${_asset}"
   curl -fsSL "${_relative_url}/SHA256SUMS"     -o SHA256SUMS
   curl -fsSL "${_relative_url}/SHA256SUMS.asc" -o SHA256SUMS.asc
