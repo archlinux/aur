@@ -15,7 +15,7 @@ sha256sums=('1921d70b92cc4612c374928d081552efb59b83d91b2b789d935c665fa01729a8')
 
 prepare() {
     cd "$srcdir/${pkgname#python-}-$pkgver"
-    sed -i 's/use_scm_version={.*}/version="${pkgver}"/' pyproject.toml || true
+    sed -i "s/use_scm_version={.*}/version=${pkgver}/" pyproject.toml || true
 }
 
 build() {
