@@ -1,6 +1,6 @@
 pkgbase = q2rtx-git
 	pkgdesc = NVIDIA’s implementation of RTX ray-tracing in Quake II
-	pkgver = 1.8.0.r0.gd65761f2
+	pkgver = 1.8.1.r1.gf2526e9a
 	pkgrel = 1
 	url = https://github.com/NVIDIA/Q2RTX
 	arch = x86_64

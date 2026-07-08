@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=q2rtx-git
-pkgver=1.8.0.r0.gd65761f2
+pkgver=1.8.1.r1.gf2526e9a
 _pkgver=1.8.0
 pkgrel=1
 pkgdesc="NVIDIA’s implementation of RTX ray-tracing in Quake II "
@@ -60,8 +60,6 @@ prepare() {
 }
 
 build() {
-  export CFLAGS+=" -Wno-incompatible-pointer-types"
-
   cd Q2RTX/build
   cmake .. -Wno-dev \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
