@@ -1,12 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=bsnes-highscore-git
-pkgver=r1742.e05ea25
+pkgver=r1815.e5969aa
 pkgrel=1
 pkgdesc="Highscore port of bsnes-JG"
 arch=('x86_64')
 url="https://gitlab.com/highscore-emu/bsnes"
 license=('GPL-3.0-or-later')
 depends=(
+  'glib2'
   'libhighscore-git'
   'libsamplerate'
 )
