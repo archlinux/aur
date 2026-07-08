@@ -1,6 +1,6 @@
 pkgbase = asphalt-bin
 	pkgdesc = Upload and reference Roblox assets in code
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/jackTabsCode/asphalt
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = asphalt-bin
 	makedepends = libarchive
 	depends = gcc-libs
 	depends = glibc
-	provides = asphalt=2.0.1
+	provides = asphalt=2.0.2
 	conflicts = asphalt
-	source_aarch64 = asphalt-2.0.1-aarch64.tar.xz::https://github.com/jackTabsCode/asphalt/releases/download/v2.0.1/asphalt-aarch64-unknown-linux-gnu.tar.xz
-	b2sums_aarch64 = b4c0833ae2fa422cffcdd2695ed325a21cc58784df9080c83204ce94697ec2042e8619959bc4343a1a1cbfc790dd1ffe362a3bc019d274dea7e21e62cc281141
-	source_x86_64 = asphalt-2.0.1-x86_64.tar.xz::https://github.com/jackTabsCode/asphalt/releases/download/v2.0.1/asphalt-x86_64-unknown-linux-gnu.tar.xz
-	b2sums_x86_64 = 59ab0ba91e085f1f3701a94a71c70c5f14f55d5f391168432c3a8e42d8438e0a3984c63c77ba86809a3d2116fcdec16e6743b40535ed4185df5ee37a21062a9e
+	source_aarch64 = asphalt-2.0.2-aarch64.tar.xz::https://github.com/jackTabsCode/asphalt/releases/download/v2.0.2/asphalt-aarch64-unknown-linux-gnu.tar.xz
+	b2sums_aarch64 = aa1cf4f4b3e2ad955f9a37882f3060c6e6c2d62134f4a2d11db291efddbdb6e0540f3d876aa26464a78c860becc927b60104f1e708b92cb47a301a1cd894c320
+	source_x86_64 = asphalt-2.0.2-x86_64.tar.xz::https://github.com/jackTabsCode/asphalt/releases/download/v2.0.2/asphalt-x86_64-unknown-linux-gnu.tar.xz
+	b2sums_x86_64 = 63f1fe2e1404d516ee0dd9e1d733ab34611f5cd7aee1fdf56519c4772a3b3b9df27a1d0f64a7677db26090a9a93a6d2a34f06d5ae2364cd16d16b7eb2fdf0c9e
 
 pkgname = asphalt-bin
