@@ -4,32 +4,33 @@
 pkgname=perl-crypt-pbkdf2
 _cpanname=Crypt-PBKDF2
 _module=Crypt::PBKDF2
-pkgver=0.161520
-pkgrel=3
+pkgver=0.261630
+pkgrel=1
 pkgdesc="The PBKDF2 password hashing algorithm"
 arch=('any')
 url="https://metacpan.org/release/$_cpanname"
 license=('GPL' 'PerlArtistic')
-depends=('perl' 'perl-strictures' 'perl-type-tiny')
+depends=('perl' 'perl-strictures' 'perl-type-tiny' 'perl-crypt-urandom')
+makedepends=('perl-module-build-tiny')
 checkdepends=('perl-test-fatal' 'perl-moo' 'perl-namespace-autoclean')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/A/AR/ARODLAND/${_cpanname}-${pkgver}.tar.gz")
-sha1sums=('250da24c7aa08de07422ee8668eba3135d00fe0a')
+sha1sums=('699cfaeb3ea8e679a514bf400703b31d68af4f42')
 
 build() {
     cd "$srcdir/$_cpanname-$pkgver"
-    PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor NO_PACKLIST=1 NO_PERLLOCAL=1
-    make
+    perl Build.PL
+    ./Build
 }
 
 check() {
     cd "$srcdir/$_cpanname-$pkgver"
-    make test
+    ./Build test
 }
 
 package() {
     cd "$srcdir/$_cpanname-$pkgver"
-    make install DESTDIR="$pkgdir"
+    ./Build install --destdir "$pkgdir"
 }
 
 # vim:set ts=4 sw=4 expandtab:
