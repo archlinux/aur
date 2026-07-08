@@ -1,6 +1,6 @@
 pkgbase = q2-bin
 	pkgdesc = Quarto 2 [experimental]
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/quarto-dev/q2
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = q2-bin
 	depends = libgcc
 	conflicts = q2
 	options = !debug
-	source_x86_64 = q2-bin-0.7.0.tar.gz::https://github.com/quarto-dev/q2/releases/download/v0.7.0/q2-0.7.0-linux_amd64.tar.gz
-	source_x86_64 = https://raw.githubusercontent.com/quarto-dev/q2/refs/tags/v0.7.0/LICENSE
-	provides_x86_64 = q2=0.7.0
-	sha256sums_x86_64 = fb3703fe3c0a8dd23007fe301838bea3ad1906571339b108f4bdbf61d231bff0
+	source_x86_64 = q2-bin-0.8.0.tar.gz::https://github.com/quarto-dev/q2/releases/download/v0.8.0/q2-0.8.0-linux_amd64.tar.gz
+	source_x86_64 = https://raw.githubusercontent.com/quarto-dev/q2/refs/tags/v0.8.0/LICENSE
+	provides_x86_64 = q2=0.8.0
+	sha256sums_x86_64 = b62d44f7dcede9a88a64830cf213c8be0397b51fba1766c208041d9710106bee
 	sha256sums_x86_64 = ea2890b709b444613cf7ae578b3ba6d4ca03a31899207ed5936ebbc532e433b9
 
 pkgname = q2-bin
