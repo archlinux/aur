@@ -1,6 +1,6 @@
 # ComfyKick
 
-The official ways to launch [ComfyUI](https://github.com/Comfy-Org/ComfyUI) **SUCK**, this is better.
+The official ways to launch [ComfyUI](https://github.com/Comfy-Org/ComfyUI) **SUCKs**, this is better.
 
 ## Why
 
@@ -22,11 +22,15 @@ The [ComfyUI](https://github.com/Comfy-Org/ComfyUI) is designed to be run from a
 
 #### Install
 
+##### AUR
+
+`yay -S comfykick`
+
+##### Manual
+
 1. `git clone https://github.com/KFERMercer/ComfyKick && cd ComfyKick`
 
 2. `makepkg -Cci`
-
-~~`yay -S comfykick`~~ TBD
 
 #### Uninstall
 
