@@ -1,6 +1,6 @@
 # Maintainer: Kaylin Aurora <kaylin@cmdly.dev>
 pkgname=aria-fm-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Native Spotify desktop client — Go + Electron (Chromium) + librespot, FFI-first transport"
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('aria.fm')
 # The app dir ships prebuilt Electron binaries + the stripped Go sidecar.
 options=('!strip')
 source=("aria-${pkgver}.tar.gz::https://gitlab.com/api/v4/projects/cmdly%2Faria.fm/packages/generic/aria/v${pkgver}/aria-v${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('ae84b4946df38bbc0a22b436b93e9c6688cd02e1b6f877c64ea2b16e20e84de4')
+sha256sums=('b6386255641479b85350d2fea52d0b2b75392e656da8dd350677f15d0e4bd0d7')
 
 package() {
   cd "${srcdir}/aria-v${pkgver}-linux-x86_64"
