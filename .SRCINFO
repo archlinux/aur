@@ -1,0 +1,18 @@
+pkgbase = cl-iolib
+	pkgdesc = Common Lisp I/O library
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://github.com/sionescu/iolib
+	arch = any
+	license = MIT
+	depends = common-lisp
+	depends = cl-asdf
+	depends = libfixposix
+	depends = cl-cffi
+	depends = cl-bordeaux-threads
+	depends = cl-idna
+	depends = cl-swap-bytes
+	source = https://github.com/sionescu/iolib/archive/refs/tags/v0.8.4.tar.gz
+	sha256sums = 41612f787153181cd8dd3781ab5207aad42ec4dbf369cd03847f5098155edb79
+
+pkgname = cl-iolib
