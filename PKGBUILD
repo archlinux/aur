@@ -1,8 +1,8 @@
 # Maintainer: MiguVT <contacto@miguvt.com>
 
 pkgname=marmalade-bin
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="MediaPipe tracking bridge for Linux with CLI, GTK3 and GTK4 binaries"
 arch=('x86_64')
 url="https://github.com/RanAwaySuccessfully/marmalade"
@@ -34,9 +34,8 @@ package() {
     install -Dm755 "${srcdir}/marmalade" "${pkgdir}/usr/lib/marmalade/marmalade"
     install -Dm755 "${srcdir}/marmalade-gtk3" "${pkgdir}/usr/lib/marmalade/marmalade-gtk3"
     install -Dm755 "${srcdir}/marmalade-gtk4" "${pkgdir}/usr/lib/marmalade/marmalade-gtk4"
-    cp -a "${srcdir}/python" "${pkgdir}/usr/lib/marmalade/"
+    cp -a "${srcdir}/lib" "${pkgdir}/usr/lib/marmalade/"
     install -Dm644 "${srcdir}/config.json" "${pkgdir}/usr/share/marmalade/config.json"
-    install -Dm644 "${srcdir}/face_landmarker.task" "${pkgdir}/usr/lib/marmalade/python/face_landmarker.task"
 
     cat > "${pkgdir}/usr/bin/marmalade" <<'EOF'
 #!/bin/sh
@@ -47,9 +46,9 @@ if [ ! -e "$state_dir/config.json" ]; then
     install -m 600 /usr/share/marmalade/config.json "$state_dir/config.json"
 fi
 
-if [ ! -L "$state_dir/python" ]; then
-    rm -rf "$state_dir/python"
-    ln -s /usr/lib/marmalade/python "$state_dir/python"
+if [ ! -L "$state_dir/lib" ]; then
+    rm -rf "$state_dir/lib"
+    ln -s /usr/lib/marmalade/lib "$state_dir/lib"
 fi
 
 cd "$state_dir" || exit 1
@@ -65,9 +64,9 @@ if [ ! -e "$state_dir/config.json" ]; then
     install -m 600 /usr/share/marmalade/config.json "$state_dir/config.json"
 fi
 
-if [ ! -L "$state_dir/python" ]; then
-    rm -rf "$state_dir/python"
-    ln -s /usr/lib/marmalade/python "$state_dir/python"
+if [ ! -L "$state_dir/lib" ]; then
+    rm -rf "$state_dir/lib"
+    ln -s /usr/lib/marmalade/lib "$state_dir/lib"
 fi
 
 cd "$state_dir" || exit 1
@@ -83,9 +82,9 @@ if [ ! -e "$state_dir/config.json" ]; then
     install -m 600 /usr/share/marmalade/config.json "$state_dir/config.json"
 fi
 
-if [ ! -L "$state_dir/python" ]; then
-    rm -rf "$state_dir/python"
-    ln -s /usr/lib/marmalade/python "$state_dir/python"
+if [ ! -L "$state_dir/lib" ]; then
+    rm -rf "$state_dir/lib"
+    ln -s /usr/lib/marmalade/lib "$state_dir/lib"
 fi
 
 cd "$state_dir" || exit 1
@@ -129,5 +128,4 @@ EOF
         "${pkgdir}/usr/share/pixmaps/xyz.randev.marmalade.png"
 
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "${srcdir}/python/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-python"
 }
