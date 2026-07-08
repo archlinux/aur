@@ -1,7 +1,7 @@
 # Maintainer: yobson <aur@yobson.xyz>
 pkgname=steam-screenshot-importer
 pkgdesc='Automates importing images to steam screenshots'
-pkgver=0.2.6
+pkgver=0.3.0
 pkgrel=1
 arch=('any')
 url='https://github.com/yobson1/steam-screenshot-importer'
@@ -10,7 +10,7 @@ makedepends=('git' 'cargo' 'cargo-tauri' 'pnpm')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'xdg-utils' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'pango' 'cef')
 source=("git+${url}.git?signed#tag=v${pkgver}")
 validpgpkeys=('A41EB2986F63F6C40FCF2D03ED26A71EB8EB7A34') # Bradley (github commit signing key) <contact@yobson.xyz>
-sha256sums=('109b829bb895bafe75f57e0b348b101d7a5ed8b3efdcdc41193ea86cff777931')
+sha256sums=('20eac6596d07f4be232f2a5aa5aa60a4576673f0b0dcc4593d8a1d2cbe60ec80')
 options=('!lto')
 
 prepare() {
