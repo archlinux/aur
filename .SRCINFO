@@ -1,0 +1,15 @@
+pkgbase = tpack
+	pkgdesc = Tmux Plugin Manager
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/tmuxpack/tpack
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = git
+	makedepends = go
+	source = tpack-1.2.1.tar.gz::https://github.com/tmuxpack/tpack/archive/v1.2.1.tar.gz
+	sha256sums = 390037134af0ce6861310ddecb912565228499efa49c2c1b352ea24786434e41
+
+pkgname = tpack
+	depends = tmux
