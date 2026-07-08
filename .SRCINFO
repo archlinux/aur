@@ -1,6 +1,6 @@
 pkgbase = lyra-vega
 	pkgdesc = Centro de controle do Lyra OS
-	pkgver = 0.0.r12.gf510434
+	pkgver = 0.0.r13.g7cd2771
 	pkgrel = 1
 	url = https://github.com/britors/Vega
 	arch = x86_64
