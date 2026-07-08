@@ -11,7 +11,7 @@ license=('ISC')
 arch=('i686' 'x86_64')
 
 depends=(
-  'libjpeg'
+  'libjpeg-turbo'
   'sdl_gfx'
   'sdl12-compat'
 )
