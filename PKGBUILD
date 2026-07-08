@@ -1,6 +1,6 @@
 # Maintainer: Xhelliom
 pkgname=aurveto
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Security gate for AUR updates: delay, whitelist, static scan and AI review of the PKGBUILD diff"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gtk4' 'libadwaita' 'gcc-libs' 'glibc')
 makedepends=('cargo' 'gettext')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Replaced by updpkgsums once the v$pkgver tag is published (CI does it automatically).
-sha256sums=('289a605e83259f3379c3974e3666e84fe2eb75072f7e03f6e80fc0d454fee0ab')
+sha256sums=('3375c70a69d7a19afb7d8ad18cb241d63468d94e9ac8eff92ea3ef9e8c028347')
 
 prepare() {
   cd "$pkgname-$pkgver"
