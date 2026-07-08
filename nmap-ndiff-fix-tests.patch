@@ -1,0 +1,44 @@
+diff --unified --recursive --text --new-file nmap-7.98.orig/ndiff/ndifftest.py nmap-7.98/ndiff/ndifftest.py
+--- nmap-7.98.orig/ndiff/ndifftest.py	2025-09-29 09:00:18.937634058 +0200
++++ nmap-7.98/ndiff/ndifftest.py	2025-09-29 09:06:20.227866545 +0200
+@@ -2,6 +2,8 @@
+ 
+ # Unit tests for Ndiff.
+ 
++import importlib.util
++import os
+ import subprocess
+ import sys
+ import unittest
+@@ -12,10 +14,21 @@
+ 
+ import xml.dom.minidom
+ 
+-import imp
+ dont_write_bytecode = sys.dont_write_bytecode
+ sys.dont_write_bytecode = True
+-ndiff = imp.load_source("ndiff", "ndiff.py")
++
++def _load_module_from_path(name, path):
++    spec = importlib.util.spec_from_file_location(name, path)
++    if spec is None or spec.loader is None:
++        raise ImportError(f"Cannot load {name!r} from {path!r}")
++    mod = importlib.util.module_from_spec(spec)
++    spec.loader.exec_module(mod)  # type: ignore[assignment]
++    return mod
++
++_HERE = os.path.dirname(os.path.abspath(__file__))
++_NDIFF_PATH = os.path.join(_HERE, "ndiff.py")
++ndiff = _load_module_from_path("ndiff", _NDIFF_PATH)
++
+ for x in dir(ndiff):
+     if not x.startswith("_"):
+         globals()[x] = getattr(ndiff, x)
+@@ -804,4 +817,6 @@
+         code = call_quiet([self.NDIFF, "--nothing"])
+         self.assertEqual(code, 2)
+ 
+-unittest.main()
++
++if __name__ == "__main__":
++    unittest.main()

@@ -1,5 +1,5 @@
 pkgbase = zenmap-git
-	pkgver = 7.98.r65.g30f85c0
+	pkgver = 7.99.r181.gb47e7f0
 	pkgrel = 1
 	url = https://github.com/nmap/nmap
 	arch = x86_64
@@ -12,33 +12,34 @@ pkgbase = zenmap-git
 	makedepends = python-wheel
 	makedepends = libpcap
 	makedepends = libssh2
-	makedepends = lua
+	makedepends = lua54
 	makedepends = openssl
 	makedepends = pcre2
 	makedepends = zlib
 	makedepends = gtk3
 	makedepends = python-cairo
 	makedepends = python-gobject
-	options = !debug
 	source = nmap::git+https://github.com/nmap/nmap.git
+	source = nmap-ndiff-fix-tests.patch
 	sha256sums = SKIP
+	sha256sums = 93653a3d7e16d02c8e9e0d2472449758186381d2210a42ca7fa367b4eb5913b8
 
 pkgname = nmap-git
 	pkgdesc = Utility for network discovery and security auditing
 	depends = libpcap
 	depends = libssh2.so
-	depends = lua
+	depends = lua54
 	depends = openssl
 	depends = pcre2
 	depends = zlib
-	provides = nmap=7.98.r65
+	provides = nmap
 	conflicts = nmap
 
 pkgname = ndiff-git
 	pkgdesc = Compare two Nmap XML files and display a list of their differences
 	arch = any
 	depends = python
-	provides = ndiff=7.98
+	provides = ndiff
 	conflicts = ndiff
 
 pkgname = zenmap-git
@@ -50,5 +51,5 @@ pkgname = zenmap-git
 	depends = python-cairo
 	depends = python-gobject
 	optdepends = polkit: start zenmap as root
-	provides = zenmap=7.98.r65
+	provides = zenmap
 	conflicts = zenmap

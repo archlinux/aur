@@ -6,7 +6,7 @@ pkgname=(
   'ndiff-git'
   'zenmap-git'
 )
-pkgver=7.98.r65.g30f85c0
+pkgver=7.99.r181.gb47e7f0
 pkgrel=1
 url="https://github.com/nmap/nmap"
 license=('LicenseRef-Nmap-Public-Source-License-Version-0.95')
@@ -23,7 +23,7 @@ makedepends=(
   # nmap
   'libpcap'
   'libssh2'
-  'lua'
+  'lua54'
   'openssl'
   'pcre2'
   'zlib'
@@ -34,61 +34,56 @@ makedepends=(
   'python-gobject'
 )
 
-options=('!debug')
-
 _pkgsrc="nmap"
-source=("$_pkgsrc"::"git+$url.git")
-sha256sums=('SKIP')
+source=(
+  "$_pkgsrc"::"git+$url.git"
+  'nmap-ndiff-fix-tests.patch'
+)
+sha256sums=(
+  'SKIP'
+  '93653a3d7e16d02c8e9e0d2472449758186381d2210a42ca7fa367b4eb5913b8'
+)
 
 pkgver() {
   cd "$_pkgsrc"
-  local _regex _file _line _line_num _version _commit _revision _hash
-  _regex='^Nmap ([0-9\.]+) .*$'
+  local _file _regex _hash _ver
   _file='CHANGELOG'
-  _line=$(grep -Esm1 "$_regex" "$_file")
-  _line_num=$(grep -Ensm1 "$_regex" "$_file" | cut -d':' -f1)
-  _version=$(sed -E "s@$_regex@\1@" <<< "$_line")
-  _commit=$(git blame -L $_line_num,+1 -- "$_file" | awk '{print $1;}')
-  _revision=$(git rev-list --count --cherry-pick "$_commit"...HEAD)
-  _hash=$(git rev-parse --short=7 HEAD)
-  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
+  _regex='Nmap ([0-9\.]+) .*'
+  read -r _hash _ver < <(
+    NL=$(awk '/^'"${_regex}"'.*$/ { print NR; exit }' "$_file")
+    git blame -L "$NL,+1" -- "$_file" \
+      | sed -E -e 's&^([0-9a-f]+).*'"${_regex}"'.*$&\1 \2&'
+  )
+
+  git tag -f "$_ver" "$_hash"
+  git describe --long --tags --abbrev=7 \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "$_pkgsrc"
 
-  # devendor
-  rm -r liblua libpcap libpcre libssh2 libz macosx mswin32
+  # Ensure we build de-vendored deps
+  rm -r liblua libpcap libpcre macosx mswin32 libssh2 libz
+
+  # Fix build
+  sed -e '/strlcat/d' -i libdnet-stripped/acconfig.h
+
+  # Keep zenmap from installing ndiff; Arch packages it separately
+  sed -e '/^ndiff = "ndiff:run_main"$/d' -e '/^py-modules = \["ndiff"\]$/d' -i zenmap/pyproject.toml
+
+  # Remove usage of Python module imp (removed in Python 3.13) &
+  # remove import-time unittest.main() invocation
+  patch -Np1 < ../nmap-ndiff-fix-tests.patch
 
   # use pkexec for root
   sed -E \
     -e 's@^(\s*)(if which gksu.*)$@\1if which pkexec >/dev/null 2>\&1; then\n\1  SU_TO_ROOT_X=pkexec\n\1el\2@' \
     -e '/gksu\)/i \      pkexec) pkexec "\$COMMAND";;' \
     -i "zenmap/install_scripts/unix/su-to-zenmap.sh"
-
-  # fix ndiff test for python 3.14
-  sed -e 's/^import imp$/import ndiff/' \
-    -e '/^ndiff = imp.load_source/d' \
-    -e '/^unittest.main/d' \
-    -i "ndiff/ndifftest.py"
-
-  # fix libdnet
-  sed -e '/strlcat/d' -i libdnet-stripped/acconfig.h
-
-  # fix liblinear
-  cat >> liblinear/Makefile << 'END'
-AR = ar
-RANLIB = ranlib
-liblinear.a: linear.o newton.o blas/blas.a
-	$(AR) rcv liblinear.a linear.o newton.o blas/*.o
-	$(RANLIB) liblinear.a
-END
 }
 
 build() {
-  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
-  export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
-
   cd "$_pkgsrc"
 
   echo "Building nmap..."
@@ -128,17 +123,17 @@ package_nmap-git() {
   depends=(
     'libpcap'
     'libssh2.so'
-    'lua'
+    'lua54'
     'openssl'
     'pcre2'
     'zlib'
   )
 
-  provides=("nmap=${pkgver%%.g*}")
+  provides=("nmap")
   conflicts=("nmap")
 
   cd "$_pkgsrc"
-  make -j1 DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install
   install -Dm644 README.md docs/nmap.usage.txt -t "$pkgdir/usr/share/doc/$pkgname/"
   install -Dm644 LICENSE docs/3rd-party-licenses.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
@@ -149,7 +144,7 @@ package_ndiff-git() {
 
   depends=('python')
 
-  provides=("ndiff=${pkgver%%.r*}")
+  provides=("ndiff")
   conflicts=("ndiff")
 
   cd "$_pkgsrc"
@@ -175,7 +170,7 @@ package_zenmap-git() {
     'polkit: start zenmap as root'
   )
 
-  provides=("zenmap=${pkgver%%.g*}")
+  provides=("zenmap")
   conflicts=("zenmap")
 
   cd "$_pkgsrc"
