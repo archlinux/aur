@@ -7,6 +7,12 @@ Certification Authorities (CA) certificates.
 The format is based on Keep a Changelog (see https://keepachangelog.com),
 and this project versioning is YYYYMMDD.
 
+## 20260706
+
+### Added
+
+- AC_Certisign_Tempo_G3.crt
+
 ## 20260625
 
 ### Added
