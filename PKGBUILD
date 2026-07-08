@@ -2,7 +2,7 @@
 # Contributor: Wes Jackson <icebal dot 7 at gmail dot com>
 
 pkgname=nfs-ganesha-git
-pkgver=9.15.r0.gadb062bb3
+pkgver=11.1.r0.gd337b14c4
 pkgrel=1
 pkgdesc="NFS and 9P protocols in user mode."
 arch=(x86_64 i686 armv7h aarch64)
@@ -13,17 +13,19 @@ depends=(
     btrfs-progs
     dbus
     e2fsprogs
-    gcc-libs
     glibc
     jemalloc
     krb5
     libcap
+    libgcc
     libprocps
+    libstdc++
     libunwind
     liburcu
     libwbclient
     nfsidmap
-    rdma-core
+    openssl
+    #rdma-core
     util-linux-libs
     xfsprogs
     )
