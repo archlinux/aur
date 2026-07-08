@@ -8,7 +8,7 @@
 
 _pack=dicom
 pkgname=octave-$_pack
-pkgver=0.7.1
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="File io for medical images and other data using Grassroots DICOM (GDCM) library."
 arch=(any)
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("https://github.com/gnu-octave/octave-$_pack/releases/download/release-$pkgver/$_archive")
 noextract=("$_archive")
-sha256sums=('8233ee41002ae427e5a8f36498fb8628a99834f314d70cedc56cc9f6686e0282')
+sha256sums=('90986497be4e883a41ec54f73a633988b0868a8643d23b8f9f23220e3c2a9593')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
