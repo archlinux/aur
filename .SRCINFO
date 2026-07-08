@@ -1,0 +1,19 @@
+pkgbase = openpnp-capture
+	pkgdesc = A cross platform video capture library with a focus on machine vision.
+	pkgver = 0.0.30
+	pkgrel = 1
+	url = https://github.com/openpnp/openpnp-capture
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = ninja
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = libjpeg-turbo
+	source = openpnp-capture-0.0.30.tar.gz::https://github.com/openpnp/openpnp-capture/archive/refs/tags/v0.0.30.tar.gz
+	sha512sums = 3a91e972ba7815ed2336a85a4f9f7b494ab02446dc907ab1f724ccded5bacdbef636ff929f880bd12c61470fb6237ecf1d06ea7700a2e086c4bd208ca76c1e52
+	b2sums = ae282843fcc1cf23652dd4d157f072463a19d9d776d28999ed6d6d27e58be08a530b4b39ae72809266c2369be46705f2b397f820216a8c484def13d16bca06b5
+
+pkgname = openpnp-capture

@@ -1,0 +1,5 @@
+[openpnp-capture]
+source = "github"
+github = "openpnp/openpnp-capture"
+prefix = "v"
+use_latest_release = true
