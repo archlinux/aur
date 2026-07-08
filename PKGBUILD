@@ -1,6 +1,6 @@
 # Maintainer: Roy <roymedina@me.com>
 pkgname=observer-ai
-pkgver=2.4.0
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="Observer - AI-powered application built with Tauri"
 arch=('x86_64')
@@ -9,24 +9,24 @@ license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
 makedepends=('git' 'openssl' 'libappindicator-gtk3' 'librsvg' 'cargo' 'pnpm' 'nodejs' 'cargo-tauri' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Roy3838/Observer/archive/v$pkgver.tar.gz")
-sha256sums=('a6efde9c84476d2550d5d7917b5856bdc063574af67c6c88e36baa43e03b1102')
+sha256sums=('baa9e5a0417624ff19cf64825003a9684015e850228a3002f5d80e767585aada')
 
 prepare() {
     cd "$srcdir/Observer-$pkgver/app"
     # Disable updater artifacts for AUR build to avoid signing errors
     sed -i 's/"createUpdaterArtifacts": true/"createUpdaterArtifacts": false/' desktop/tauri.conf.json
     # pnpm v11 requires allowBuilds in pnpm-workspace.yaml; create it since it's not in the tarball
-    cat > pnpm-workspace.yaml << 'EOF'
-allowBuilds:
-  browser-tabs-lock: true
-  esbuild: true
-  onnxruntime-node: true
-  protobufjs: true
-  sharp: true
-  tesseract.js: true
-onlyBuiltDependencies:
-  - onnxruntime-node
-EOF
+#     cat > pnpm-workspace.yaml << 'EOF'
+# allowBuilds:
+#   browser-tabs-lock: true
+#   esbuild: true
+#   onnxruntime-node: true
+#   protobufjs: true
+#   sharp: true
+#   tesseract.js: true
+# onlyBuiltDependencies:
+#   - onnxruntime-node
+# EOF
     pnpm install
 }
 
