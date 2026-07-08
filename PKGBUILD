@@ -6,7 +6,7 @@ _pkgname=libmodbus
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-libmodbus
-pkgver=3.1.12
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="A Modbus library for Linux, Mac OS X, FreeBSD, QNX and Win32 (mingw-w64)"
 arch=('any')
@@ -15,15 +15,11 @@ license=('LGPL-2.1-or-later')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure')
 options=(!strip !buildflags staticlibs)
-source=("https://github.com/stephane/libmodbus/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
-        "dde16d5.diff")
-sha256sums=('2f4d4191cd196c1fba131daec03b621db75129d8255c832fc66b259d9fc46e7b'
-            '527967d510ae84b222e950e0cb260c6f76447782beaaa8a2088ece64d46f4d72')
+source=("https://github.com/stephane/libmodbus/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('72239f319b9b8483e3d393c5a60865d734fcff18a8abbb2486e389834a2f6ef1')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  # revert commit which breaks windows api
-  patch -NRp1 -i ../dde16d5.diff
   autoreconf -fiv
 }
 
