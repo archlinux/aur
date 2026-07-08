@@ -99,9 +99,11 @@ package() {
 
         _appimgname=$( find *.AppImage)
         echo -e "AppImage_Name is:  \033[1;32m${_appimgname}\033[0m"
+        #s/@electronversion@/${_electronversion}/g
         sed -i -e "
             s/@appimgname@/${_appimgname}/g
-            s/@electronversion@/${_electronversion}/g
+            s/@electronversion@/${_electronver}/g
+            _electronver
             s/@appname@/${pkgname}/g
             s/@runname@/app.asar/g
             s/@cfgdirname@/${_pkgname}/g
