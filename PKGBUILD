@@ -6,7 +6,7 @@
 # Maintainer: Gno <noreply@gno.com>
 pkgname=caelestia-gif
 pkgver=1.1.0
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="A script to manage and change GIFs in Caelestia shell"
 arch=('x86_64')
@@ -34,7 +34,7 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/$pkgname-v$pkgver"
+    cd "$srcdir/$pkgname-${pkgver}"
     make
 }
 
@@ -43,7 +43,7 @@ check() {
 }
 
 package() {
-    cd "$srcdir/$pkgname-v$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
     install -Dm755 ./bin/caelestia-gif "$pkgdir/usr/bin/caelestia-gif"
     install -Dm644 ./README.md "$pkgdir/usr/share/doc/caelestia-gif/README.md"
     install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/caelestia-gif/LICENSE"
