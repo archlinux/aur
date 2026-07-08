@@ -1,6 +1,6 @@
 # Maintainer: @aardbol
 pkgname=mercurygram-desktop-bin
-pkgver=6.9.3.7
+pkgver=6.9.3.8
 pkgrel=1
 pkgdesc='Mercurygram Desktop messaging app'
 arch=('x86_64' 'aarch64')
