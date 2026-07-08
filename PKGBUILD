@@ -1,15 +1,15 @@
 # Maintainer: creations
 pkgname=equicord-installer-bin
 _pkgname=equilotlcli
-pkgver=2.2.3
+pkgver=2.2.6
 pkgrel=1
 pkgdesc='Equilotl is the CLI Installer for Equicord'
 license=('GPL3')
 arch=('x86_64')
 url="https://github.com/Equicord/Equilotl"
 install=equicord-installer-bin.install
-source=("Equilotl::https://github.com/Equicord/Equilotl/releases/download/v2.2.3/EquilotlCli-linux")
-sha256sums=('424ff2ff252628fe89bc736098af21f1ce5e9ce5666e4f1ae535a1906867bd53')
+source=("Equilotl::https://github.com/Equicord/Equilotl/releases/download/v2.2.6/EquilotlCli-linux")
+sha256sums=('5179bff47736c9d0e2df8367798d7c743d221c403f6c9262f8571f34d3383ed1')
 
 package() {
     install -Dm755 Equilotl "${pkgdir}/usr/bin/equicord-installer"
