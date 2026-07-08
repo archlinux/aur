@@ -4,13 +4,14 @@
 _repo_name=transcribe.cpp
 pkgname=transcribe-cpp-vulkan
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='C/C++ speech-to-text inference library and CLI based on ggml (Vulkan)'
 arch=('x86_64')
 url="https://github.com/handy-computer/${_repo_name}"
 license=('MIT')
 depends=(
 	gcc-libs
+	ggml-vulkan
 	glibc
 	vulkan-icd-loader
 )
@@ -25,10 +26,19 @@ optdepends=(
   'ffmpeg: convert audio to 16 kHz mono WAV'
   'sox: convert audio to 16 kHz mono WAV'
 )
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d7013ba597385420cf7436282b166968998399d5f5a0d5b1ac738f24ff2c30ab')
+source=(
+  "${url}/archive/refs/tags/v${pkgver}.tar.gz"
+  'system-ggml.patch'
+)
+sha256sums=('d7013ba597385420cf7436282b166968998399d5f5a0d5b1ac738f24ff2c30ab'
+            '4fcd78b8c84d3982eddfa32770d919fc961264dee319cca9a97e11fbaee89d32')
+
+prepare() {
+  patch -Np1 -d "${_repo_name}-${pkgver}" < system-ggml.patch
+}
 
 build() {
+  # Vulkan is enabled by the system ggml-vulkan
   cmake -S "${_repo_name}-${pkgver}" -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -36,7 +46,6 @@ build() {
     -DTRANSCRIBE_BUILD_TOOLS=ON \
     -DTRANSCRIBE_BUILD_SHARED=OFF \
     -DTRANSCRIBE_X86_CONSERVATIVE=ON \
-    -DTRANSCRIBE_VULKAN=ON \
     -Wno-dev
 
   cmake --build build

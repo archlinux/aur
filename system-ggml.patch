@@ -1,0 +1,38 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8b00746..e7a1da1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -397,7 +397,17 @@ endif()
+ endif()
+ 
+ # ggml's CMake declares its own warning flags; let it.
+-add_subdirectory(ggml)
++find_package(ggml REQUIRED CONFIG)
++
++# The project uses the unnamespaced target names provided by its vendored
++# ggml tree. Recreate those names as aliases to the system package's imported
++# targets so the remaining build files do not need provider-specific logic.
++add_library(ggml ALIAS ggml::ggml)
++foreach(_backend IN LISTS GGML_AVAILABLE_BACKENDS)
++    if(TARGET "ggml::${_backend}")
++        add_library("${_backend}" ALIAS "ggml::${_backend}")
++    endif()
++endforeach()
+ 
+ # -----------------------------------------------------------------------------
+ # Subdirs
+diff --git a/cmake/transcribe-install.cmake b/cmake/transcribe-install.cmake
+index 8933b80..530591e 100644
+--- a/cmake/transcribe-install.cmake
++++ b/cmake/transcribe-install.cmake
+@@ -53,7 +53,9 @@ install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/include/transcribe"
+ # its sibling libggml*, not just the consumer binary.
+ transcribe_backend_kinds(_kinds _backend_targets)
+ if(TRANSCRIBE_BUILD_SHARED)
+-    foreach(_tgt transcribe ggml ggml-base ${_backend_targets})
++    # System ggml targets are imported and are not installed by this project;
++    # only set the install RPATH on the library built here.
++    foreach(_tgt transcribe)
+         if(APPLE)
+             set_property(TARGET ${_tgt} PROPERTY INSTALL_RPATH "@loader_path")
+         else()
