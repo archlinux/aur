@@ -2,4 +2,5 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-
+!LICENSE
+!LICENSES/0BSD.txt
