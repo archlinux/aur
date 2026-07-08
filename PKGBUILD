@@ -4,7 +4,7 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-pango
-pkgver=1.57.0
+pkgver=1.58.0
 pkgrel=1
 pkgdesc="A library for layout and rendering of text (mingw-w64)"
 arch=('any')
@@ -25,7 +25,7 @@ makedepends=('glib2-devel'
              'git')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("git+https://gitlab.gnome.org/GNOME/pango.git#tag=${pkgver}")
-b2sums=('957e4b9999013065fdc3f175ee448fbc5a7580f0ffecfd4649234485b19e9911dd78ca28b728552b5a2577820ea1c6c9aefad5e016d236c379613ce0aaf77953')
+b2sums=('7dd0165514f32f1167c7960e3d92227570527732daf5f3fa4645e48f72657494df080d6e07f2f8bc0a3983a20888d1439d57a46d7feb406b18c7da000644ab69')
 
 build() {
   export NEED_WINE=1
