@@ -8,12 +8,12 @@
 
 pkgname=lib32-libpng12
 pkgver=1.2.59
-pkgrel=3
+pkgrel=4
 pkgdesc='A collection of routines used to create PNG format graphics files'
 arch=('x86_64')
 url='http://www.libpng.org/pub/png/libpng.html'
 license=('custom')
-depends=('lib32-glibc' 'lib32-zlib')
+depends=('lib32-glibc' 'lib32-zlib' 'lib32-gcc-libs')
 makedepends=('gcc-multilib')
 source=("https://sourceforge.net/projects/libpng/files/libpng-${pkgver}.tar.xz"{,.asc}
         "https://sourceforge.net/projects/libpng-apng/files/libpng12/${pkgver}/libpng-${pkgver}-apng.patch.gz")

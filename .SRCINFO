@@ -1,13 +1,14 @@
 pkgbase = lib32-libpng12
 	pkgdesc = A collection of routines used to create PNG format graphics files
 	pkgver = 1.2.59
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.libpng.org/pub/png/libpng.html
 	arch = x86_64
 	license = custom
 	makedepends = gcc-multilib
 	depends = lib32-glibc
 	depends = lib32-zlib
+	depends = lib32-gcc-libs
 	source = https://sourceforge.net/projects/libpng/files/libpng-1.2.59.tar.xz
 	source = https://sourceforge.net/projects/libpng/files/libpng-1.2.59.tar.xz.asc
 	source = https://sourceforge.net/projects/libpng-apng/files/libpng12/1.2.59/libpng-1.2.59-apng.patch.gz
