@@ -39,20 +39,28 @@ case "${CARCH:-}" in
   aarch64) _asset="aurscan-linux-arm64" ;;
 esac
 
+_update_and_cache_flag='update_and_cache'
+# Allow download of versioned files in prepare() -- build() must not download files
+# Usually, pkgver() is called after prepare() and before build()
+# Print the package version
+# Called from prepare() with arg: "update_and_cache" to write to file.
+# With no argument (eg usual makepkg), print the version already cached.
 pkgver() {
+  local _pkgver_cache_file="${srcdir}/.pkgver"
+
+  if [[ -e "${_pkgver_cache_file}" && $1 != "${_update_and_cache_flag}" ]]; then
+    cat "$_pkgver_cache_file" && return 0
+  fi
+
+  echo GENERATING >&2
+
   git ls-remote --tags "https://github.com/${_repo}.git" 'v[0-9]*' \
-    | awk '{print $2}' \
-    | sed 's|^refs/tags/||; s/\^{}$//' \
-    | sort -V -u \
-    | tail -1 \
-    | sed 's/^v//'
+    | awk '{print $2}' | sed 's|^refs/tags/||; s/\^{}$//' \
+    | sort -V -u | tail -1 | sed 's/^v//' | tee "${_pkgver_cache_file}"
 }
 
 prepare() {
-  true
-}
-
-build() {
+  pkgver=$(pkgver "${_update_and_cache_flag}")  # pkgver() is usually only run after prepare()
   cd "${srcdir}"
   local _rel_url="${url}/releases/download/v${pkgver}"
   local _raw_url="https://raw.githubusercontent.com/${_repo}/v${pkgver}"
