@@ -3,10 +3,10 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: Tom Richards <tom@tomrichards.net>
 pkgname=highscore-git
-pkgver=r3139.ee1bb3b
+pkgver=r3349.98b51e3
 pkgrel=1
 pkgdesc="A rewrite of Highscore, formerly gnome-games"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://gitlab.gnome.org/World/highscore"
 license=('GPL-3.0-or-later')
 depends=(
@@ -26,7 +26,7 @@ depends=(
   'libmirage'
   'libpulse'
   'librsvg'
-  'sdl2'
+  'sdl2-compat'
   'sqlite'
   'vulkan-icd-loader'
 )
@@ -39,7 +39,7 @@ makedepends=(
   'vulkan-headers'
 )
 optdepends=(
- # 'blastem-highscore-git: BlastEm core'
+#  'blastem-highscore-git: BlastEm core'
   'bsnes-highscore-git: bsnes JG core'
 #  'desmume-highscore-git: DeSmuME core'
 #  'gearsystem-highscore-git: Gearsystem core'
