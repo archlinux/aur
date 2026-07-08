@@ -1,7 +1,7 @@
 # Maintainer: Frédéric Bogaerts <fred@netpack.pt>
 pkgname=xfb
-pkgver=2.0.0
-pkgrel=7
+pkgver=3.14159
+pkgrel=1
 pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/netpack/XFB"
@@ -21,12 +21,14 @@ depends=(
     'gst-plugins-base'
     'gst-plugins-good'
     'perl-image-exiftool'
+    'ffmpeg'
 )
 makedepends=(
     'cmake'
     'git'
     'pkg-config'
 )
+install=xfb.install
 optdepends=(
     'orca: Screen reader support for visually impaired users'
     'brltty: Braille display support'
@@ -35,7 +37,6 @@ optdepends=(
     'mplayer: Media player'
     'soundconverter: Audio converter'
     'yt-dlp: Download media from online sources'
-    'ffmpeg: Audio format conversion'
     'lame: MP3 encoding'
     'sox: Audio processing'
     'flac: FLAC audio support'
@@ -46,7 +47,7 @@ optdepends=(
     'opus-tools: Opus audio support'
     'mediainfo: Media file information'
 )
-source=("git+https://github.com/netpack/XFB.git#tag=v2.0.0.5")
+source=("git+https://github.com/netpack/XFB.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
@@ -138,11 +139,11 @@ package() {
     echo "The shared folders are under: /usr/share/xfb"
     echo "You may want to install yt-dlp for downloading media"
     echo ""
-    echo "New in v2.0.0:"
-    echo "  - Full ORCA screen reader integration"
-    echo "  - Complete keyboard navigation"
-    echo "  - Audio feedback system"
-    echo "  - Braille display support"
+    echo "New in v3.14159:"
+    echo "  - Live audio FX engine: 10-band EQ, compressor, 432 Hz retune"
+    echo "  - DJ decks with scratchable jog wheels, brake/backspin"
+    echo "  - Streaming client for Icecast/Shoutcast stations"
+    echo "  - Full ORCA screen reader integration and keyboard navigation"
     echo ""
     echo "Can you share some ETH? 0x9700225FcD115230C9166BD68CEdc23e329D3CdF"
     echo "Thank you for installing XFB! Made with love & linux!"
