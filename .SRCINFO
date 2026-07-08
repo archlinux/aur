@@ -1,0 +1,25 @@
+pkgbase = cl-dbus-git
+	pkgdesc = A D-BUS client library for Common Lisp
+	pkgver = r110.8bba6a0
+	pkgrel = 1
+	url = https://github.com/death/dbus
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-alexandria
+	depends = cl-babel
+	depends = cl-xmlspam
+	depends = cl-flexi-streams
+	depends = cl-iolib
+	depends = cl-ironclad
+	depends = cl-split-sequence
+	depends = cl-trivial-garbage
+	depends = cl-ieee-floats
+	provides = cl-dbus
+	conflicts = cl-dbus
+	source = git+https://github.com/death/dbus
+	sha256sums = SKIP
+
+pkgname = cl-dbus-git
