@@ -1,6 +1,6 @@
 pkgbase = i386-elf-gdb
 	pkgdesc = GNU debugger crosscompiled for i386 development
-	pkgver = 16.3
+	pkgver = 17.2
 	pkgrel = 1
 	url = https://www.gnu.org/software/gdb
 	arch = x86_64
@@ -12,7 +12,8 @@ pkgbase = i386-elf-gdb
 	depends = libmpc
 	depends = i386-elf-gcc
 	depends = gdb
-	source = http://ftpmirror.gnu.org/gdb/gdb-16.3.tar.xz
-	sha256sums = bcfcd095528a987917acf9fff3f1672181694926cc18d609c99d0042c00224c5
+	options = !strip
+	source = http://ftpmirror.gnu.org/gdb/gdb-17.2.tar.xz
+	sha256sums = 1c036c0d72e4b3d1fb5c94c88632add6f9d76f4d7c4d2ea793c12a9f19a3228c
 
 pkgname = i386-elf-gdb
