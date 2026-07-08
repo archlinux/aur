@@ -1,6 +1,6 @@
 # Maintainer: markusressel <mail+archlinuxaur@markusressel.de>
 pkgname=zfs-file-history-git
-pkgver=1.0.0
+pkgver=1.0.0.r12.g0802b62
 pkgrel=1
 pkgdesc="Terminal UI for inspecting and restoring file history on ZFS snapshots."
 arch=('x86_64')
@@ -20,7 +20,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-	go mod tidy
+	go mod download
 	mkdir -p bin/
 }
 
@@ -31,7 +31,7 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	make build
+	just build
 }
 
 package() {
