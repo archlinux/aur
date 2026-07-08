@@ -1,6 +1,6 @@
 pkgbase = framr
-	pkgdesc = A Wayland screenshot tool written in Rust
-	pkgver = 0.13.0
+	pkgdesc = Wayland screenshot, annotation and screen recording tool with ShareX-compatible uploads
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/vMohammad24/framr
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = framr
 	depends = gst-plugin-pipewire
 	conflicts = framr-bin
 	options = !lto
-	source = framr-0.13.0.tar.gz::https://github.com/vMohammad24/framr/archive/refs/tags/v0.13.0.tar.gz
-	sha256sums = c878573ee542e2795b4e07772689d91768a1c956df4f724fa5ac8f134c69e7fa
+	source = framr-0.13.1.tar.gz::https://github.com/vMohammad24/framr/archive/refs/tags/v0.13.1.tar.gz
+	sha256sums = 8ab827a2b7fbb3789b7828e074d9f28cba1d33272b16dc4fa69aa9be812cadb0
 
 pkgname = framr
