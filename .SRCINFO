@@ -1,0 +1,28 @@
+pkgbase = python-microsoft-kiota-http
+	pkgdesc = Microsoft Kiota HTTP library
+	pkgver = 1.11.7
+	pkgrel = 1
+	url = https://github.com/microsoft/kiota-python
+	arch = any
+	license = MIT
+	checkdepends = python-pytest>=9.1.1
+	checkdepends = python-pytest-asyncio>=1.4.0
+	checkdepends = python-pytest-mock
+	makedepends = python-build
+	makedepends = python-flit-core>=3.2.0
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.10.0
+	depends = python-h2
+	depends = python-httpx>=0.25.0
+	depends = python-microsoft-kiota-abstractions>=1.11.1
+	depends = python-opentelemetry-api>=1.27.0
+	depends = python-opentelemetry-sdk>=1.27.0
+	source = python-microsoft-kiota-http-1.11.7.tar.gz::https://github.com/microsoft/kiota-python/archive/refs/tags/microsoft-kiota-http-v1.11.7.tar.gz
+	source = change-flit-upper-bound.diff
+	source = hardcode-version.diff
+	b2sums = 19552779d0efa7ed7621275a9fcf78baef837e5666859e6d8c57da670f8d445e9cb51980522c38f28f7ebd5303249f381e1f50ef5e6d6465503330fb146aba37
+	b2sums = 448cb419f23a69d708f6b7fd809ee368cc8e99533657e9dc0371d0ee608bf0d98158629f5db87a3d03b27ccd249597aad44a5c852ee0fd8e184158f0a9450542
+	b2sums = 08deb41334a3dcc512ed36ce5fa72f0343288158e235dca230c51a3463faf2c292504b86bc108a8c9bea92f68e069e8a71e8428831730be0a96e3e3615bb9919
+
+pkgname = python-microsoft-kiota-http
