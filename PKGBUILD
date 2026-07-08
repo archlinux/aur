@@ -1,10 +1,11 @@
 # Maintainer: Lyra OS <team@lyraos.org>
 #
-# AUR-oriented PKGBUILD. It defaults to the tagged Vega source, but can
-# be pointed at another checkout/source via VEGA_SOURCE_URL and VEGA_SOURCE_DIR.
+# AUR-oriented PKGBUILD. It builds the tagged Vega release, but can be
+# pointed at another checkout/source via VEGA_SOURCE_URL and VEGA_SOURCE_DIR
+# for local builds.
 
 pkgname=vegad
-pkgver=0.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Daemon privilegiado do Vega, centro de controle do Lyra OS"
 arch=('x86_64')
@@ -23,22 +24,9 @@ provides=('lyraed')
 conflicts=('lyraed')
 makedepends=('go')
 install=vegad.install
-_source_url_default="git+https://github.com/britors/Vega.git#branch=main"
+_source_url_default="git+https://github.com/britors/Vega.git#tag=v${pkgver}"
 source=("Vega::${VEGA_SOURCE_URL:-${_source_url_default}}")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/Vega"
-  local count hash tag
-  count="$(git rev-list --count HEAD)"
-  hash="$(git rev-parse --short HEAD)"
-  tag="$(git describe --tags --abbrev=0 2>/dev/null || true)"
-  if [[ -n "$tag" ]]; then
-    printf '%s.r%s.g%s' "${tag#v}" "$count" "$hash"
-  else
-    printf '0.0.r%s.g%s' "$count" "$hash"
-  fi
-}
 
 build() {
   local _srcroot="${VEGA_SOURCE_DIR:-$srcdir/Vega}"
@@ -54,6 +42,10 @@ package() {
   install -Dm755 vegad/vegad "$pkgdir/usr/lib/vega/vegad"
   install -Dm644 packaging/vegad/vegad.service \
     "$pkgdir/usr/lib/systemd/system/vegad.service"
+  install -Dm644 packaging/vegad/vegad-update-check.service \
+    "$pkgdir/usr/lib/systemd/system/vegad-update-check.service"
+  install -Dm644 packaging/vegad/vegad-update-check.timer \
+    "$pkgdir/usr/lib/systemd/system/vegad-update-check.timer"
   install -Dm644 packaging/vegad/org.lyraos.Vega1.conf \
     "$pkgdir/usr/share/dbus-1/system.d/org.lyraos.Vega1.conf"
   install -Dm644 packaging/vegad/org.lyraos.Vega1.service \
