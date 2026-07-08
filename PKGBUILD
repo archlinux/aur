@@ -1,6 +1,6 @@
 # Maintainer: Adam Honse <calcprogrammer10@gmail.com>
 pkgname=openrgb-plugin-e131-receiver-next-git
-pkgver=0.9.23.g6aa78b1
+pkgver=0.9.26.gbab06ec
 pkgrel=1
 pkgdesc="E1.31 Receiver plugin for OpenRGB (next build)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('qt5-tools' 'openrgb')
 makedepends=('git')
 provides=('openrgb-plugin-e131-receiver')
 conflicts=('openrgb-plugin-e131-receiver')
-source=("git+https://gitlab.com/OpenRGBDevelopers/OpenRGBE131ReceiverPlugin.git#branch=next")
+source=("git+https://gitlab.com/OpenRGBDevelopers/OpenRGBE131ReceiverPlugin.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
