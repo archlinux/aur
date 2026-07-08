@@ -5,6 +5,7 @@ _pkgname="${pkgname%-cuda-git}"
 _srcname=llama.cpp
 pkgver=b9905.r8.bec4772f6a
 pkgrel=1
+epoch=1
 pkgdesc="Tensor library for machine learning (with NVIDIA CUDA optimizations)"
 arch=(x86_64 aarch64)
 url='https://github.com/ggml-org/ggml'
