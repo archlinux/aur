@@ -3,7 +3,7 @@
 # shellcheck shell=bash
 pkgname=openpnp-capture
 pkgver=0.0.30
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross platform video capture library with a focus on machine vision."
 arch=('x86_64')
 url="https://github.com/openpnp/openpnp-capture"
@@ -34,5 +34,7 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install "${srcdir}/build"
+  mv "${pkgdir}/usr/lib/cmake/openpnp-capture/openpnp-capture.cmake" \
+    "${pkgdir}/usr/lib/cmake/openpnp-capture/openpnp-captureConfig.cmake"
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
