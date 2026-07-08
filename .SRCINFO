@@ -1,6 +1,6 @@
 pkgbase = wootility5-beta
 	pkgdesc = Utility for configuring Wooting keyboards (AppImage beta release)
-	pkgver = 5.4.0_beta.1
+	pkgver = 5.4.0_beta.2
 	pkgrel = 1
 	url = https://wooting.io/wootility
 	arch = any
@@ -10,11 +10,11 @@ pkgbase = wootility5-beta
 	depends = fuse2
 	provides = wootility
 	conflicts = wootility
-	noextract = Wootility-5.4.0-beta.1.AppImage
+	noextract = Wootility-5.4.0-beta.2.AppImage
 	options = !strip
-	source = Wootility-5.4.0-beta.1.AppImage::https://api.wooting.io/public/wootility/download?os=linux&version=5.4.0-beta.1
+	source = Wootility-5.4.0-beta.2.AppImage::https://api.wooting.io/public/wootility/download?os=linux&version=5.4.0-beta.2
 	source = 70-wooting.rules
-	b2sums = ec65a424c0829b0c80409642aceb49d57fe990a85c44774beb3501d7f9dcc33d4ddac32c8d299f515e1d72a07fb50491de05665391a81a375d090240a522e627
+	b2sums = e71afbc952353f95acadab83cb976d9c77371ed1c4a0fd1712318ab9480ddd6198fa00330b0e7cb685a7e6e37efb2edefe178c3c0bf1bb364c4a3aae52a08a28
 	b2sums = 80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1
 
 pkgname = wootility5-beta
