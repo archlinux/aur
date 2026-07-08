@@ -1,12 +1,14 @@
 pkgbase = melonds-highscore-git
 	pkgdesc = Highscore port of MelonDS
-	pkgver = r2792.14b3276
+	pkgver = r2894.b0f7cb1
 	pkgrel = 1
 	url = https://github.com/highscore-emu/melonDS
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = git
+	depends = enet
+	depends = glib2
 	depends = libhighscore-git
 	provides = melonds-highscore
 	conflicts = melonds-highscore

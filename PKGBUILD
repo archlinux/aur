@@ -1,12 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=melonds-highscore-git
-pkgver=r2792.14b3276
+pkgver=r2894.b0f7cb1
 pkgrel=1
 pkgdesc="Highscore port of MelonDS"
 arch=('x86_64')
 url="https://github.com/highscore-emu/melonDS"
 license=('GPL-3.0-or-later')
-depends=('libhighscore-git')
+depends=(
+  'enet'
+  'glib2'
+  'libhighscore-git'
+)
 makedepends=(
   'cmake'
   'git'
@@ -32,7 +36,6 @@ build() {
     -D BUILD_QT_SDL='OFF'
     -D ENABLE_GDBSTUB='OFF'
     -D BUILD_HIGHSCORE='ON'
-    -D ENABLE_JIT='ON'
   )
   cmake "${cmake_options[@]}"
   cmake --build build
