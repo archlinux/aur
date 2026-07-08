@@ -1,6 +1,6 @@
 pkgbase = octave-io
 	pkgdesc = Input/Output in external formats.
-	pkgver = 2.7.1
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = https://gnu-octave.github.io/packages/io/
 	install = octave-io.install
@@ -8,8 +8,8 @@ pkgbase = octave-io
 	groups = octave-forge
 	license = GPL-3.0-or-later AND BSD-2-Clause
 	depends = octave>=6.4.0
-	noextract = io-2.7.1.tar.gz
-	source = https://downloads.sourceforge.net/octave/io-2.7.1.tar.gz
-	sha256sums = 1b8f60019fe5ce2af56301003e3046463349dd533123e8979ec4b4c9ebfc7f6b
+	noextract = io-2.7.2.tar.gz
+	source = https://downloads.sourceforge.net/octave/io-2.7.2.tar.gz
+	sha256sums = bcaacaaea0c709afa74115f02e9d5f4b6cceddd812d5a8d843bfc5dbddee60a4
 
 pkgname = octave-io
