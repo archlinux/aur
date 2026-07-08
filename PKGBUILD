@@ -2,7 +2,7 @@
 
 pkgname='pass-update'
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A pass extension that provides an easy flow for updating passwords.'
 arch=('any')
 url='https://github.com/roddhjav/pass-update'
@@ -19,6 +19,10 @@ validpgpkeys=('06A26D531D56C42D66805049C5469996F0DF68EC')
 
 check() {
   cd "$pkgname-$pkgver"
+  export GIT_AUTHOR_NAME="Pass Automated Testing Suite"
+  export GIT_AUTHOR_EMAIL="Pass-Automated-Testing-Suite@zx2c4.com"
+  export GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
+  export GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
   make tests
 }
 
