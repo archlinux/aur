@@ -1,0 +1,17 @@
+pkgbase = plane-desktop-bin
+	pkgdesc = Desktop client for Plane project management
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://plane.so/download
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = fuse2
+	depends = hicolor-icon-theme
+	depends = xdg-utils
+	provides = plane-desktop=2.0.0
+	conflicts = plane-desktop
+	options = !strip
+	source = Plane-2.0.0-260325tah3zsnil-x86_64.AppImage::https://dl.todesktop.com/260130r75i625/builds/260325tah3zsnil/linux/appImage/x64
+	sha256sums = 69db8bca5d95ace38a0e78e956aa3c459b59abcd27f4c5728307dc3933cbf76c
+
+pkgname = plane-desktop-bin
