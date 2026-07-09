@@ -1,12 +1,12 @@
 pkgbase = wg-cmd
 	pkgdesc = TUI for managing WireGuard configuration files
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/AndrianBdn/wg-cmd
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = wg-cmd-0.1.9.tar.gz::https://github.com/AndrianBdn/wg-cmd/archive/refs/tags/v0.1.9.tar.gz
-	b2sums = 285777490365b758a529b4fe27155443842cf3bca739b4efb232bf9afbc41e37f97c8d424df9e02b5c94b5a95989f1c06a3f44c44a1cc83877af2ec4867aa74e
+	source = wg-cmd-0.1.10.tar.gz::https://github.com/AndrianBdn/wg-cmd/archive/refs/tags/v0.1.10.tar.gz
+	b2sums = 6aa1407626edf25d825d24fc354438b98aab8029d197ddfea86bc752030136bc9c5e13b29257f6f795aec96336df46240aef95d0880e3137c07c591fdd8958f6
 
 pkgname = wg-cmd
