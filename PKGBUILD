@@ -3,7 +3,7 @@
 
 
 pkgname=eddie-ui-git
-pkgver=2.26.0
+pkgver=2.26.2
 pkgrel=1
 pkgdesc='Eddie - VPN tunnel - UI'
 arch=('x86_64' 'aarch64' 'armv7l')
