@@ -1,6 +1,6 @@
 pkgname=awf-gtk3
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Theme preview application for GTK 3'
 url='https://github.com/luigifab/awf-extended'
 license=('GPL3')
@@ -18,7 +18,7 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
   autoreconf -fi
-  ./configure --enable-only-gtk3
+  ./configure --prefix=/usr --enable-only-gtk3
   make -s
 }
 
