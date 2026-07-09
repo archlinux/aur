@@ -2,12 +2,13 @@
 pkgname=plane-desktop-bin
 _pkgname=plane-desktop
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for Plane project management"
 arch=('x86_64')
 url="https://plane.so/download"
 license=('AGPL-3.0-only')
 depends=(
+    'desktop-file-utils'
     'fuse2'
     'hicolor-icon-theme'
     'xdg-utils'
@@ -30,7 +31,9 @@ prepare() {
 
     sed -e "s|^Exec=.*|Exec=/usr/bin/${_pkgname} --no-sandbox %U|" \
         -e "s|^Icon=.*|Icon=${_pkgname}|" \
+        -e '/^MimeType=/d' \
         -i "${srcdir}/squashfs-root/desktop.desktop"
+    printf 'MimeType=x-scheme-handler/plane;\n' >> "${srcdir}/squashfs-root/desktop.desktop"
 }
 
 package() {
