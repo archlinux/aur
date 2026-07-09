@@ -1,14 +1,14 @@
 pkgbase = snyk
 	pkgdesc = CLI and build-time tool to find & fix known vulnerabilities in open-source dependencies
-	pkgver = 1.1305.2
+	pkgver = 1.1306.0
 	pkgrel = 1
 	url = https://github.com/snyk/snyk
 	arch = i686
 	arch = x86_64
 	license = apache
-	noextract = snyk-1.1305.2
+	noextract = snyk-1.1306.0
 	options = !strip
-	source = snyk-1.1305.2::https://github.com/snyk/snyk/releases/download/v1.1305.2/snyk-linux
-	sha256sums = 60e7cb5538a8cf024344cde041a1aa2bf8bc0e54a59c041a4114ec84a7e966ed
+	source = snyk-1.1306.0::https://github.com/snyk/snyk/releases/download/v1.1306.0/snyk-linux
+	sha256sums = aad6d43f936e4357b3bda299c02d446c80602106484c36615bb4b654ef7de740
 
 pkgname = snyk
