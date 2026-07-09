@@ -9,7 +9,7 @@
 
 pkgbase=handbrake-semifull
 pkgname=(handbrake-semifull handbrake-semifull-cli)
-pkgver=1.11.1
+pkgver=1.11.2
 pkgrel=1
 pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, nvdec, qsv, vce, numa, hardened, libdovi"
 arch=(x86_64 i686)
@@ -26,7 +26,7 @@ optdepends=('intel-media-sdk: for enabling Intel QSV'
             'nvidia-utils: for enabling Nvidia nvenc and nvdec'
             'cuda: for enabling Nvidia nvenc and nvdec'
             'amf-amdgpu-pro: for enabling AMD AMF')
-sha256sums=('8db3234fa90a076f5139138379bc7b61fa65e363c868ab53ce231ab78fbc8541')
+sha256sums=('c300160d7a6062dbdecbfb82e38e11692edf371b9e766541b043b61d0cfc8610')
 options=(!lto)
 
 build() {
