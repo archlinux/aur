@@ -1,6 +1,6 @@
 pkgbase = colorshell-git
 	pkgdesc = A super "coolorful" shell for Hyprland! (latest-commit version)
-	pkgver = 2.1.2.r134.g950bd09
+	pkgver = 2.1.2.r140.g023698b
 	pkgrel = 1
 	url = https://github.com/retrozinndev/colorshell
 	arch = any
@@ -34,6 +34,7 @@ pkgbase = colorshell-git
 	depends = libastal-notifd
 	depends = libastal-tray
 	depends = libastal-wireplumber
+	depends = adwaita-fonts
 	optdepends = hyprlock: for the "colorshell lock" command
 	optdepends = hyprpicker: for the color picker in the control center
 	optdepends = hyprsunset: apply light filters from the control center
@@ -43,7 +44,7 @@ pkgbase = colorshell-git
 	optdepends = slurp: needed to select screenshot area
 	provides = colorshell
 	conflicts = colorshell
-	source = colorshell::git+https://github.com/retrozinndev/colorshell.git
+	source = colorshell::git+https://github.com/retrozinndev/colorshell.git#branch=main
 	sha256sums = SKIP
 
 pkgname = colorshell-git

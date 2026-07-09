@@ -10,13 +10,13 @@ pkgdesc="A super \"coolorful\" shell for Hyprland! (latest-commit version)"
 license=('BSD-3-Clause')
 url="https://github.com/retrozinndev/colorshell"
 pkgrel=1
-pkgver=2.1.2.r134.g950bd09
+pkgver=2.1.2.r140.g023698b
 arch=('any')
 sha256sums=('SKIP')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-    "$_pkgname::git+https://github.com/retrozinndev/$_pkgname.git"
+    "$_pkgname::git+https://github.com/retrozinndev/$_pkgname.git#branch=main"
 )
 makedepends=(
     'git'
@@ -50,6 +50,7 @@ depends=(
     'libastal-notifd'
     'libastal-tray'
     'libastal-wireplumber'
+    'adwaita-fonts'
 )
 optdepends=(
     'hyprlock: for the "colorshell lock" command'
