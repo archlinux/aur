@@ -5,7 +5,7 @@ index fd49549..5d0891a 100644
 @@ -527,6 +527,119 @@ draw:
  	drawmenu();
  }
- 
+
 +static void
 +buttonpress(XEvent *e)
 +{

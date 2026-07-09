@@ -11,7 +11,7 @@
 @@ -150,6 +151,20 @@
  	struct item *item;
  	int x = 0, y = 0, w;
- 
+
 +	/* dynamically resize window for vertical list */
 +	if (max_lines > 0) {
 +		struct item *item;
@@ -28,16 +28,16 @@
 +
  	drw_setscheme(drw, scheme[SchemeNorm]);
  	drw_rect(drw, 0, 0, mw, mh, 1, 1);
- 
+
 @@ -234,7 +249,7 @@
  	static int tokn = 0;
- 
+
  	char buf[sizeof text], *s;
 -	int i, tokc = 0;
 +	int i, tokc = 0, match_count = 0;
  	size_t len, textsize;
  	struct item *item, *lprefix, *lsubstr, *prefixend, *substrend;
- 
+
 @@ -260,6 +275,7 @@
  			appenditem(item, &lprefix, &prefixend);
  		else
@@ -58,7 +58,7 @@
 +	}
  	calcoffsets();
  }
- 
+
 @@ -711,7 +733,7 @@
  	free(line);
  	if (items)
@@ -66,7 +66,7 @@
 -	lines = MIN(lines, i);
 +	lines = MIN(max_lines, i);
  }
- 
+
  static void
 @@ -892,7 +914,7 @@
  			usage();

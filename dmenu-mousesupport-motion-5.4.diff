@@ -2,7 +2,7 @@
 +++ b/dmenu.c	2026-02-16 20:07:04.799525684 -0400
 @@ -641,6 +641,27 @@ buttonpress(XButtonEvent *ev)
  }
- 
+
  static void
 +motionevent(XEvent *ev)
 +{
@@ -44,6 +44,6 @@
  	swa.event_mask = ExposureMask | KeyPressMask | VisibilityChangeMask |
 -	                 ButtonPressMask;
 +	                 ButtonPressMask | PointerMotionMask;
- 
+
  	win = XCreateWindow(dpy, root, x, y, mw, mh, 0,
  	                    CopyFromParent, CopyFromParent, CopyFromParent,
