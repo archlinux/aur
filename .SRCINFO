@@ -1,0 +1,17 @@
+pkgbase = python-graphemeu
+	pkgdesc = Unicode grapheme helpers (updated fork of python-grapheme)
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/timendum/grapheme
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = python-setuptools
+	depends = python
+	provides = python-grapheme
+	conflicts = python-grapheme
+	source = grapheme-0.10.0.tar.gz::https://github.com/timendum/grapheme/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = 89fe9c2fb80210addeab7ea4db0a6270fc6d4d2c4387a95ed3fb89a1c317674a
+
+pkgname = python-graphemeu
