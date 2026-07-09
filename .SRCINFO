@@ -1,0 +1,19 @@
+pkgbase = ved-bin
+	pkgdesc = The verbose ed — a drop-in compatible ed clone with friendly errors, written in pure-stdlib Rust.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/excelano/ved
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = ved
+	conflicts = ved
+	options = !strip
+	source_x86_64 = ved-x86_64-0.2.0.txz::https://github.com/excelano/ved/releases/download/v0.2.0/ved-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 2d7dc6805c66498d0338a9bebed4d5e4e5c565006554463a17101a1961891dd7
+	source_aarch64 = ved-aarch64-0.2.0.txz::https://github.com/excelano/ved/releases/download/v0.2.0/ved-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 43882f798aedde04a143eecadda8afa93754b28798c9e93e8e2681e2a56f6b32
+
+pkgname = ved-bin

@@ -1,0 +1,5 @@
+[ved-bin]
+source = "github"
+github = "excelano/ved"
+use_latest_release = true
+prefix = "v"
