@@ -1,6 +1,6 @@
 pkgbase = see-bin
 	pkgdesc = A cute cat(1)
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/guilhermeprokisch/see
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = see-bin
 	depends = pcre2
 	provides = see
 	conflicts = see
-	source = README-0.9.1.md::https://raw.githubusercontent.com/guilhermeprokisch/see/v0.9.1/README.md
-	source = LICENSE-0.9.1::https://raw.githubusercontent.com/guilhermeprokisch/see/v0.9.1/LICENSE
+	source = README-0.9.2.md::https://raw.githubusercontent.com/guilhermeprokisch/see/v0.9.2/README.md
+	source = LICENSE-0.9.2::https://raw.githubusercontent.com/guilhermeprokisch/see/v0.9.2/LICENSE
 	sha256sums = 90dba77b43283023948b071c0dbf7f1abfea89f969a856074198cf73087e1176
 	sha256sums = 7ba414491c618779f37230964c48422c38ce4101b5e42fcfb5102515251021ed
-	source_x86_64 = see-x86_64-0.9.1.txz::https://github.com/guilhermeprokisch/see/releases/download/v0.9.1/see-cat-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 8c3e787b4075ca36441bece8133dfc22736b2d9a8f18a3b278b0223d17d4114e
+	source_x86_64 = see-x86_64-0.9.2.txz::https://github.com/guilhermeprokisch/see/releases/download/v0.9.2/see-cat-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = e701a7e4726e69a3ce5d22b772df3919326eae824eb93450989dbdb435d1fdb7
 
 pkgname = see-bin
