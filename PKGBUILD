@@ -12,14 +12,14 @@
 #
 # Dependency translation reference (see installer/opensuse/sysmanage.spec
 # and requirements.txt):
-#   FastAPI / Starlette / Uvicorn / SQLAlchemy / Alembic / psycopg2 /
+#   FastAPI / Starlette / Uvicorn / SQLAlchemy / Alembic / psycopg /
 #   aiohttp / cryptography / bcrypt / argon2-cffi / PyYAML / Pillow /
 #   defusedxml / Jinja2 / orjson / Mako / etc.
 #
 # PostgreSQL 15+ and nginx are runtime deps (matches the RPM spec which
 # pins postgresql-server >= 12 and Requires: nginx).
 pkgname=sysmanage
-pkgver=3.0.1.3
+pkgver=3.0.1.5
 pkgrel=1
 pkgdesc="Centralized system management server with web-based interface"
 arch=('any')
@@ -44,7 +44,7 @@ depends=(
     'python-orjson'
     'python-pillow'
     'python-psutil'
-    'python-psycopg2'
+    'python-psycopg'
     'python-pydantic'
     'python-pyyaml'
     'python-sqlalchemy'
@@ -55,7 +55,7 @@ depends=(
 makedepends=('python-setuptools' 'python-pip')
 backup=('etc/sysmanage.yaml' 'etc/nginx/conf.d/sysmanage-nginx.conf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bceverly/sysmanage/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3726039632fb29410f70651a971b701bdf0904d0607d2e3c5f48855fd045f369')
+sha256sums=('c94fdeaba78dd00711c08251dea3f6669ce9edf3bb8224246d33629e798d7b02')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
