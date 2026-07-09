@@ -1,0 +1,21 @@
+pkgbase = prism-harness-suite
+	pkgver = 1.0.0_rc1
+	pkgrel = 1
+	pkgdesc = Full fat standalone binaries for the PRISM Harness suite (harness, loop, proxy, route, sober)
+	url = https://git.sovereign-society.org/prism
+	arch = x86_64
+	license = custom:LSL-1.0
+	provides = prism-harness
+	provides = prism-loop
+	provides = prism-proxy
+	provides = prism-route
+	provides = prism-sober
+	conflicts = prism-harness
+	conflicts = prism-loop
+	conflicts = prism-proxy
+	conflicts = prism-route
+	conflicts = prism-sober
+	source = https://git.sovereign-society.org/prism/releases/download/v1.0.0-rc.1/prism-1.0.0-rc.1-full-fat.tar.gz
+	sha256sums = SKIP
+
+pkgname = prism-harness-suite
