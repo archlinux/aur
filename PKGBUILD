@@ -1,7 +1,7 @@
 # Maintainer: Trumpetrespas <email [at] trumpetrespas [dot] com>
 _name=zapp
 pkgname=zsa-$_name
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 epoch=
 pkgdesc="Flash ZSA keyboards from your terminal."
@@ -16,16 +16,12 @@ depends=(
 	'systemd-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zsa/$_name/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c4e03dba5d87295d565c6681b3b13956160c364be637bd6756d438fdb3959e4e')
+sha256sums=('bb11f5efcb240bbe9a97a2dde7121c548405527ffaf4a94d078b382268730bf6')
 
 prepare() {
 	cd "$_name-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
-	
-	# Unfortunetly needed for v1.0.1.
-	# Next update should be tried without "cargo update",
-	# as upstream may have fixed this issue.
-	cargo update
+
 	cargo fetch --locked --target host-tuple
 }
 # Both build and package functions were originally 
