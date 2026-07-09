@@ -1,6 +1,6 @@
 pkgbase = damascene-volume
 	pkgdesc = PipeWire volume control panel built with Damascene
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/computer-whisperer/damascene-volume
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = damascene-volume
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = damascene-volume-0.3.1.tar.gz::https://github.com/computer-whisperer/damascene-volume/archive/refs/tags/v0.3.1.tar.gz
+	source = damascene-volume-0.3.2.tar.gz::https://github.com/computer-whisperer/damascene-volume/archive/refs/tags/v0.3.2.tar.gz
 	source = LICENSE-MIT
-	sha256sums = f7fff4ebc2709106bd7ec0a5da2d2eb2721bfa86d87d1b8aa5c94a6be40840cf
+	sha256sums = 2f9b9f1f5d80276bba09b7e1d09e899013b89536bbba67a4502c7334fdbc28bb
 	sha256sums = 9f00c7ed7074fac147074cf3440eb30099ca20ffce962d9fda4188d84bcdface
 
 pkgname = damascene-volume
