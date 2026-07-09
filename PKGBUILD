@@ -5,7 +5,7 @@
 # for local builds.
 
 pkgname=vegad
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Daemon privilegiado do Vega, centro de controle do Lyra OS"
 arch=('x86_64')
@@ -19,6 +19,8 @@ optdepends=(
   'firewalld: firewall do módulo Rede'
   'fwupd: status de firmware no módulo Hardware'
   'networkmanager: estado de rede no módulo Rede'
+  'yay: instalação de pacotes AUR (origem Comunidade) no módulo Software'
+  'paru: alternativa a yay para pacotes AUR (origem Comunidade)'
 )
 provides=('lyraed')
 conflicts=('lyraed')
@@ -54,4 +56,8 @@ package() {
     "$pkgdir/usr/share/polkit-1/actions/org.lyraos.vega.policy"
   install -Dm644 packaging/vegad/sysusers.d/vega-build.conf \
     "$pkgdir/usr/lib/sysusers.d/vega-build.conf"
+  install -Dm644 packaging/vegad/tmpfiles.d/vega-build.conf \
+    "$pkgdir/usr/lib/tmpfiles.d/vega-build.conf"
+  install -Dm440 packaging/vegad/sudoers.d/vega-build \
+    "$pkgdir/etc/sudoers.d/vega-build"
 }

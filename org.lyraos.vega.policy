@@ -91,6 +91,16 @@
     </defaults>
   </action>
 
+  <action id="org.lyraos.vega.snapshots.delete">
+    <description>Excluir um ponto de restauração</description>
+    <message>Autenticação é necessária para excluir um ponto de restauração</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
   <action id="org.lyraos.vega.backup.configure">
     <description>Configurar backup</description>
     <message>Autenticação é necessária para configurar um backup</message>

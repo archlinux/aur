@@ -1,6 +1,6 @@
 pkgbase = vegad
 	pkgdesc = Daemon privilegiado do Vega, centro de controle do Lyra OS
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/britors/Vega
 	install = vegad.install
@@ -17,9 +17,11 @@ pkgbase = vegad
 	optdepends = firewalld: firewall do módulo Rede
 	optdepends = fwupd: status de firmware no módulo Hardware
 	optdepends = networkmanager: estado de rede no módulo Rede
+	optdepends = yay: instalação de pacotes AUR (origem Comunidade) no módulo Software
+	optdepends = paru: alternativa a yay para pacotes AUR (origem Comunidade)
 	provides = lyraed
 	conflicts = lyraed
-	source = Vega::git+https://github.com/britors/Vega.git#tag=v1.0.0
+	source = Vega::git+https://github.com/britors/Vega.git#tag=v1.1.0
 	sha256sums = SKIP
 
 pkgname = vegad

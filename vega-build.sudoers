@@ -1,0 +1,2 @@
+Defaults:vega-build !requiretty
+vega-build ALL=(root) NOPASSWD: /usr/bin/pacman
