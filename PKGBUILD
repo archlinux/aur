@@ -3,7 +3,7 @@
 
 pkgname=zed-preview
 _pkgname=${pkgname%-preview}
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
@@ -44,26 +44,19 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 _archive="zed-$pkgver-pre"
 source=("$_url/archive/v$pkgver-pre/$_archive.tar.gz")
-sha256sums=('6db33285409bf10263064c3a4a1745f4c0adc0d29612c2f3a32efa23648fd535')
+sha256sums=('28cf2b8a40fd20beee1d884c186d51772e894f88a20d2054df826c0b99aa5f25')
 
 _binname=zeditor
 _appid=dev.zed.Zed-Preview
 
-prepare() {
-	cd "$_archive"
-	cargo fetch --locked --target "$(rustc --print host-tuple)"
-	export DO_STARTUP_NOTIFY="true"
-	export APP_ICON="zed"
-	export APP_NAME="Zed"
-	export APP_CLI="$_binname"
-	export APP_ID="$_appid"
-	export APP_ARGS="%U"
-	envsubst < "crates/zed/resources/zed.desktop.in" > $_appid.desktop
-	./script/generate-licenses
-}
-
 _srcenv() {
 	cd "$_archive"
+	export CARGO_HOME="$srcdir"
+	export CARGO_PROFILE_RELEASE_DEBUG=2
+	export CARGO_PROFILE_RELEASE_STRIP=false
+	export CARGO_PROFILE_RELEASE_LTO=true
+	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	CFLAGS+=' -ffat-lto-objects'
@@ -71,6 +64,23 @@ _srcenv() {
 	RUSTFLAGS+=" --remap-path-prefix $PWD=/"
 	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	export ZSTD_SYS_USE_PKG_CONFIG=1
+}
+
+prepare() {
+	_srcenv
+	cargo fetch --locked --target host-tuple
+	export DO_STARTUP_NOTIFY="true"
+	export APP_ICON="zed"
+	export APP_NAME="Zed"
+	export APP_CLI="$_binname"
+	export APP_ID="$_appid"
+	export APP_ARGS="%U"
+	export BRANDING_LIGHT="#99c1f1"
+	export BRANDING_DARK="#1a5fb4"
+	envsubst < "crates/zed/resources/zed.desktop.in" > $_appid.desktop
+	envsubst < "crates/zed/resources/flatpak/zed.metainfo.xml.in" > $_appid.metainfo.xml
+	sed -i '/@release_info@/d' $_appid.metainfo.xml
+	./script/generate-licenses
 }
 
 build() {
@@ -93,7 +103,8 @@ check() {
 package() {
 	cd "$_archive"
 	install -Dm0755 target/release/cli "$pkgdir/usr/bin/$_binname"
-	install -Dm0755 target/release/zed "$pkgdir/usr/lib/zed/zed-editor"
+	install -Dm0755 target/release/zed "$pkgdir/usr/lib/$_pkgname/zed-editor"
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "$_appid.desktop"
-	install -Dm0644 crates/zed/resources/app-icon.png "$pkgdir/usr/share/icons/$_pkgname.png"
+	install -Dm0644 -t "$pkgdir/usr/share/metainfo/" "$_appid.metainfo.xml"
+	install -Dm0644 crates/$_pkgname/resources/app-icon.png "$pkgdir/usr/share/icons/$_pkgname.png"
 }
