@@ -1,0 +1,18 @@
+# SPDX-License-Identifier: 0BSD
+
+post_install() {
+  cat <<'EOF'
+arctern requires an operator-owned configuration before its service can start.
+An example is installed at /usr/share/doc/arctern/example-config.toml.
+
+After creating /etc/arctern/arctern.toml, enable the daemon with:
+  systemctl enable --now arctern.service
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+Restart arctern to run the upgraded binary:
+  systemctl restart arctern.service
+EOF
+}
