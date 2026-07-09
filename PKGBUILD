@@ -3,7 +3,7 @@
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
 pkgname=vnote-bin
 _pkgname=VNote
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="A Qt-based, free and open source note-taking application, focusing on Markdown now.(Prebuilt version)"
 arch=('x86_64')
@@ -38,7 +38,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.AppImage.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4673c619571de2afbf8dabdd6c74f611f4f783532328ac54e8df39882bd79e8c'
+sha256sums=('8db2c873ca6fb479c99d13f46d960760af92538add7ec2e28eacd3e8a0439801'
             '7feea40a0bd1a6668b2acf9adccf1678fb1f0c00f02fd688699cc51e92ca95da')
 prepare() {
     sed -i -e "
