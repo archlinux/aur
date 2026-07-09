@@ -1,0 +1,5 @@
+[nved-bin]
+source = "github"
+github = "excelano/nved"
+use_latest_release = true
+prefix = "v"
