@@ -4,8 +4,8 @@
 
 pkgname=xdg-desktop-portal-git
 _pkgname="${pkgname%-git}"
-pkgver=1.20.1.r29.g522236e4
-pkgrel=2
+pkgver=1.22.0.r82.gc2528f73
+pkgrel=1
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://github.com/flatpak/${_pkgname}"
 arch=(x86_64)
@@ -35,7 +35,9 @@ makedepends=(
   xmlto
   glib2-devel
   umockdev
+  libdex
 )
+checkdepends=('python-pytest-xdist')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("git+https://github.com/flatpak/${_pkgname}")
@@ -48,8 +50,8 @@ pkgver() {
 }
 
 build() {
-  arch-meson "${_pkgname}" build
-  meson compile -C build
+  arch-meson "${_pkgname}" build --wrap-mode=default
+  meson compile -C build 
 }
 
 check() {
