@@ -13,8 +13,8 @@ pkgbase = byedroid
 	depends = glibc
 	depends = gcc-libs
 	depends = libgit2
-	provides = bd
-	conflicts = bd
+	provides = byeee
+	conflicts = byeee
 	source = byedroid-0.9.1.crate::https://crates.io/api/v1/crates/byedroid/0.9.1/download
 	sha256sums = f32c55502777484ff32eeafc32dd85fd6310311d0ab233a7eb54c90e1abacb3b
 

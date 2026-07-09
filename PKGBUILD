@@ -7,7 +7,7 @@ DLAGENTS=('http::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 --user-a
 _pkgauthor=cesarferreira
 _pkgname=byedroid
 _cratename=${_pkgname}
-_appname=bd
+_appname=byeee
 pkgname=${_cratename}
 pkgdesc="Terminal UI for Android development"
 
