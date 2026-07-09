@@ -2,7 +2,7 @@
 # https://github.com/hekel/chatterino-stuffs
 
 pkgname="chatterino2-7tv-native-git"
-pkgver=7.5.5.r158.g26b39f3
+pkgver=7.5.5.r182.g26b39f3
 pkgrel=1
 pkgdesc='Chatterino2 fork with support for 7tv; Patched to use native system QT style'
 url="https://github.com/SevenTV/chatterino7"
@@ -72,7 +72,22 @@ sha256sums=(
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --abbrev=7 | sed 's/^[^0-9]*//;s/\([^-]*-g\)/r\1/;s/-/./g'
+
+  #### I know, I know, this is disgusting; It'll go away after the next version bump
+  # Old method I think we used when there was an issue getting version and/or revision numbers
+  local _tag=$(git tag | grep -E '([0-9]+)\.([0-9]+)\.([0-9]+)' | grep -v test | sort -rV | head -1)
+  local _version=$(git describe --abbrev=0 | sed 's/^[^0-9]*//')
+  local _revision=$(git rev-list --count --cherry-pick $_tag...HEAD)
+  local _commit=$(git rev-parse --short=7 HEAD)
+
+  # If we switch methods on v7.5.5 we'll have a revision number discrepancy
+  if [ "$(printf '%s\n' "7.5.5" "$_version" | sort -V | head -n1)" != "$_version" ]; then
+    # If version is greater than 7.5.5; use the traditional method
+    git describe --long --abbrev=7 | sed 's/^[^0-9]*//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  else
+    # If we're still building 7.5.5, use the rev-list count
+    printf "%s.r%s.g%s" "${_version:?}" "${_revision:?}" "${_commit:?}"
+  fi
 }
 
 prepare () {
