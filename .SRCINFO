@@ -1,6 +1,6 @@
 pkgbase = picopt
 	pkgdesc = A multi format lossless image optimizer that uses external tools
-	pkgver = 6.5.2
+	pkgver = 6.6.1
 	pkgrel = 1
 	url = https://github.com/ajslater/picopt
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = picopt
 	optdepends = gifsicle: for animated GIFs support
 	optdepends = pngout: for optimize PNG images
 	optdepends = mozjpeg: for optimize JPEG images
-	source = https://pypi.org/packages/source/p/picopt/picopt-6.5.2.tar.gz
-	sha512sums = f24d760f016a9f22400b9db6c63036248b207a3b2bfb46957c824e734ad323e7fb2627ecf7253b7e554e25e2302d0863ffead20bbef88883ca4cc745ba6bf209
+	source = https://pypi.org/packages/source/p/picopt/picopt-6.6.1.tar.gz
+	sha512sums = 8296355cdd7a93ae53720ac5bdcbd7c61cfa874ca9c72cccbceabaeb8fb568dd0d89b8498a514d83daee24fd292129addb6009d3933582379ad4fb499de32296
 
 pkgname = picopt
