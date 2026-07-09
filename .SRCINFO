@@ -11,6 +11,6 @@ pkgbase = cmdflow
 	depends = glibc
 	depends = gcc-libs
 	source = cmdflow-3.0.0.tar.gz::https://github.com/voideez/cmdflow/archive/v3.0.0.tar.gz
-	sha256sums = c87631efce7d85ad8af7ba06940f629cc4f02765b8e4d3e7c14674c4e0635321
+	sha256sums = 673753906dadb5d361aad87ef9147b1488092aea9a2347718fd58d9eb47cf6a3
 
 pkgname = cmdflow
