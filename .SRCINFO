@@ -1,11 +1,11 @@
 pkgbase = dove-flatpak
-	pkgdesc = Dove is a suite of configurations & advanced modifications for Mozilla Thunderbird, designed to put the user first - with a focus on privacy, security, freedom, & usability.
-	pkgver = 202606101
-	pkgrel = 1
-	url = https://dove.celenity.dev
-	arch = any
-	license = GPL-3.0-or-later
-	source = dove-flatpak-202606101-1.tar.xz::https://releases.celenity.dev/dove/releases/2026.06.10.1/linux-flatpak/dove-2026.06.10.1-linux-flatpak.tar.xz
-	sha512sums = f675e32bb9088b49c13c616bad6404082b0a9bf394feeffe2d523f5ab63a7639bace1b53fd2841afa72bf6d8b23d2e7b3e258816661a044857fc3e073f365dba
+  pkgdesc = Dove is a suite of configurations & advanced modifications for Mozilla Thunderbird, designed to put the user first - with a focus on privacy, security, freedom, & usability.
+  pkgver = 202607081
+  pkgrel = 1
+  url = https://dove.celenity.dev
+  arch = any
+  license = GPL-3.0-or-later
+  source = dove-flatpak-202607081-1.tar.xz::https://releases.celenity.dev/dove/releases/2026.07.08.1/linux-flatpak/dove-2026.07.08.1-linux-flatpak.tar.xz
+  sha512sums = d452eab6684a52946389618c0ade261566639ee276d5af78ebb55e8baaa1e315932ddaa758d18f59abe0d33ce8e69feab72368c494857720c6985d7c72a86128
 
 pkgname = dove-flatpak
