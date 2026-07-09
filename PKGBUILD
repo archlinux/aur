@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Fast, zero-dependency credential testing tool for 20+ protocols"
 
-pkgver=1.7.0
+pkgver=1.8.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('a29c4d97c06800a47a4ac445738fa103ee0e46ca60f31137e794a8173502617a')
-sha256sums_aarch64=('a23ca80746eb0333a9e091c4e6a7a69d3d495b32f6ecaa08b7478ba5592a6493')
+sha256sums_x86_64=('30fe27b60cbee9be6cb3493dc08361e0a1e4196beded9615405de4b02564f38a')
+sha256sums_aarch64=('0542f472e4b8731661530bb5db782dd4731bb90e8a366ade7ff2a6f9ef1c2924')
 
 
 package() {
