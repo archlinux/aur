@@ -1,0 +1,22 @@
+pkgbase = cnats
+	pkgdesc = Web chat over NATS subjects with Kanidm SSO (Leptos SSR)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://prosjekt.klingenbergbygg.no/bl/cnats
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	optdepends = nats-server: local message bus
+	optdepends = postgresql: local message history archive
+	provides = cnats
+	conflicts = cnats-git
+	conflicts = cnats-bin
+	backup = etc/cnats/env
+	source_x86_64 = cnats-v0.1.0-x86_64.tar.gz::https://prosjekt.klingenbergbygg.no/bl/cnats/releases/download/v0.1.0/cnats-v0.1.0-x86_64.tar.gz
+	sha256sums_x86_64 = b0af94e5b9d53d5769a98f42ede93557a22c20a95e9656d2380f17bc977169f2
+	source_aarch64 = cnats-v0.1.0-aarch64.tar.gz::https://prosjekt.klingenbergbygg.no/bl/cnats/releases/download/v0.1.0/cnats-v0.1.0-aarch64.tar.gz
+	sha256sums_aarch64 = 7515bf959b73b956ceb967351c7e299cbb3668a53d35f9c770eb72e00d93ced6
+
+pkgname = cnats
