@@ -1,7 +1,7 @@
 pkgbase = hq
 	pkgdesc = HTML processor inspired by jq
 	pkgver = 3.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/coderobe/hq
 	arch = x86_64
 	license = AGPL3
@@ -11,6 +11,8 @@ pkgbase = hq
 	depends = gcc-libs
 	depends = modest
 	source = git+https://github.com/coderobe/hq#tag=3.2
+	source = fmt-format.patch
 	md5sums = bc7723c7afba3a853dd0883a52105297
+	md5sums = be43ff71abad31b97434638b586d83b6
 
 pkgname = hq

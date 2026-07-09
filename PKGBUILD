@@ -3,15 +3,23 @@
 
 pkgname=hq
 pkgver=3.2
-pkgrel=3
+pkgrel=4
 pkgdesc='HTML processor inspired by jq'
 arch=('x86_64')
 url='https://github.com/coderobe/hq'
 license=('AGPL3')
 depends=('gcc-libs' 'modest')
 makedepends=('git' 'meson' 'fmt')
-source=("git+${url}#tag=${pkgver}")
-md5sums=('bc7723c7afba3a853dd0883a52105297')
+source=("git+${url}#tag=${pkgver}"
+        "fmt-format.patch")
+md5sums=('bc7723c7afba3a853dd0883a52105297'
+         'be43ff71abad31b97434638b586d83b6')
+
+prepare() {
+	cd "${pkgname}"
+
+	patch -Np1 < "${srcdir}/fmt-format.patch"
+}
 
 build() {
 	cd "${pkgname}"
