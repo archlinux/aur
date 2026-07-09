@@ -1,0 +1,17 @@
+pkgbase = yeet-launcher
+	pkgdesc = A fast, minimal, configurable app launcher for Wayland
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/1337hero/yeet
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = gtk4
+	depends = gtk4-layer-shell
+	provides = yeet
+	conflicts = yeet
+	conflicts = yeet-git
+	source = yeet-launcher-0.2.0.tar.gz::https://github.com/1337hero/yeet/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = a3d13ef0ea4840087563b1c3ec0f718c6ec7acbd5c36563ca2eb2f1ef2071628
+
+pkgname = yeet-launcher
