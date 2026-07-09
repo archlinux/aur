@@ -15,7 +15,7 @@ _update_icon_cache() {
 _show_completion_message() {
     echo ":: SeaLantern 安装完成！"
     echo ":: 你可以通过应用程序菜单启动 SeaLantern"
-    echo ":: 或直接在终端执行 'sealantern' 命令"
+    echo ":: 或直接在终端执行 'sea-lantern' 命令"
 }
 
 post_install() {
