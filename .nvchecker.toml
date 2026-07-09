@@ -1,0 +1,4 @@
+[python-librespot]
+source = "git"
+git = "https://github.com/kokarare1212/librespot-python.git"
+prefix = "v"

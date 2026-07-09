@@ -1,23 +1,25 @@
-# Maintainer: Malte Jürgens <maltejur@dismail.de>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Malte Jürgens <maltejur@dismail.de>
 
 pkgname=python-librespot
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="Open Source Spotify Client"
-arch=("x86_64")
+arch=(any)
 url="https://github.com/kokarare1212/librespot-python"
-license=("Apache")
+license=(Apache-2.0)
 depends=(python python-defusedxml python-protobuf python-pycryptodomex python-pyogg python-requests python-websocket-client python-zeroconf)
 makedepends=(python-build python-installer python-wheel python-setuptools)
-source=("librespot-python-${pkgver}::https://github.com/kokarare1212/librespot-python/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("9661ac975c2d83e0cd622b58aca2c6aba46e306cccf5315c8b4c3a2f684ed514")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('781f9d4d9b01e27d59a0794061a6f82cb34f0ec14b1225a8010b471ebdc9709f')
 
 build() {
-  cd librespot-python-$pkgver
-  python -m build --wheel --no-isolation
+    cd "librespot-python-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd librespot-python-$pkgver
-  python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "librespot-python-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 README.md SECURITY.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
