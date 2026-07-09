@@ -1,0 +1,74 @@
+
+# Maintainer: AntheaLaffy <anthealaffy@gmail.com>
+pkgname=mvsep-gui
+pkgver=1.2.0
+pkgrel=1
+pkgdesc="MVSEP GUI - Music separation desktop application"
+arch=('x86_64')
+url="https://github.com/AntheaLaffy/mvsep-rs"
+license=('Apache-2.0')
+depends=('webkit2gtk' 'libappindicator-gtk3' 'librsvg' 'libvips')
+makedepends=('cargo' 'npm' 'nodejs' 'git')
+optdepends=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
+
+prepare() {
+  cd "${srcdir}/mvsep-rs-${pkgver}"
+  
+  export CARGO_HOME="${srcdir}/cargo"
+  export PATH="$HOME/.cargo/bin:$PATH"
+  
+  cargo fetch --locked
+}
+
+build() {
+  cd "${srcdir}/mvsep-rs-${pkgver}"
+  
+  export CARGO_HOME="${srcdir}/cargo"
+  export PATH="$HOME/.cargo/bin:$PATH"
+  
+  npm install
+  npm run build
+  
+  cd src-tauri
+  cargo build --release
+}
+
+package() {
+  cd "${srcdir}/mvsep-rs-${pkgver}"
+  
+  install -Dm755 "src-tauri/target/release/mvsep-gui" "${pkgdir}/usr/bin/mvsep-gui"
+  
+  install -d "${pkgdir}/usr/share/applications"
+  cat > "${pkgdir}/usr/share/applications/com.mvsep.app.desktop" <<EOF
+[Desktop Entry]
+Name=MVSEP
+Comment=Music separation tool
+Exec=mvsep-gui
+Terminal=false
+Type=Application
+Icon=com.mvsep.app
+Categories=AudioVideo;Audio;Utility;
+Keywords=audio;separation;music;
+EOF
+  
+  install -d "${pkgdir}/usr/share/icons/hicolor/32x32/apps"
+  install -Dm644 "src-tauri/icons/32x32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/com.mvsep.app.png"
+  
+  install -d "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
+  install -Dm644 "src-tauri/icons/128x128.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/com.mvsep.app.png"
+  
+  install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+  install -Dm644 "src-tauri/icons/128x128@2x.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/com.mvsep.app.png"
+  
+  install -d "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
+}
