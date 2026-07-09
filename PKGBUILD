@@ -2,7 +2,7 @@
 
 pkgname=marmalade-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MediaPipe tracking bridge for Linux with CLI, GTK3 and GTK4 binaries"
 arch=('x86_64')
 url="https://github.com/RanAwaySuccessfully/marmalade"
@@ -16,11 +16,11 @@ conflicts=('marmalade')
 source=(
     "${pkgname}-${pkgver}.zip::https://github.com/RanAwaySuccessfully/marmalade/releases/download/v${pkgver}/marmalade.zip"
     "face_landmarker.task::https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/latest/face_landmarker.task"
-    "marmalade_logo.svg::https://raw.githubusercontent.com/RanAwaySuccessfully/marmalade/refs/heads/main/resources/icons/marmalade_logo.svg"
-    "marmalade_logo.png::https://raw.githubusercontent.com/RanAwaySuccessfully/marmalade/refs/heads/main/resources/icons/marmalade_logo.png"
-    "marmalade_logo_256.png::https://raw.githubusercontent.com/RanAwaySuccessfully/marmalade/refs/heads/main/resources/icons/marmalade_logo_256.png"
+    "marmalade_logo.svg::https://raw.githubusercontent.com/RanAwaySuccessfully/marmalade/refs/heads/main/internal/resources/icons/marmalade_logo.svg"
+    "marmalade_logo.png::https://raw.githubusercontent.com/RanAwaySuccessfully/marmalade/refs/heads/main/internal/resources/icons/marmalade_logo.png"
+    "marmalade_logo_256.png::https://raw.githubusercontent.com/RanAwaySuccessfully/marmalade/refs/heads/main/internal/resources/icons/marmalade_logo_256.png"
 )
-sha256sums=('3f79dd87f9c5353e9ab70af7b41d8048070f5ef6ef60ff0fe79ab16909f9d3c3'
+sha256sums=('bb0bee13eecb7c5cf8ec1d7b74f3e44611a8a20f903002c10ae535e520303b97'
             '64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff'
             '79bf9e5e2d08616e9e6977c08962ad9fcfde5589909d5eb95a11c00af4a6e447'
             'c719ba5b9c7592d6b709d22532ac784e9d98e706310d19e17740e1a749e71f7f'
