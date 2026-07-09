@@ -1,7 +1,7 @@
 pkgbase = github-copilot-bin
 	pkgdesc = GitHub Copilot desktop application
 	pkgver = 1.0.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/github/app
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,7 @@ pkgbase = github-copilot-bin
 	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = libayatana-appindicator
+	depends = libcurl-gnutls
 	depends = libpulse
 	depends = openssl
 	depends = webkit2gtk-4.1

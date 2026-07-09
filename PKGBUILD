@@ -2,7 +2,7 @@
 
 pkgname=github-copilot-bin
 pkgver=1.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="GitHub Copilot desktop application"
 arch=('x86_64' 'aarch64')
 url="https://github.com/github/app"
@@ -12,6 +12,7 @@ depends=(
     'gtk3'
     'hicolor-icon-theme'
     'libayatana-appindicator'
+    'libcurl-gnutls'
     'libpulse'
     'openssl'
     'webkit2gtk-4.1'
