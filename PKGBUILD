@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-seek
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A TUI for searching, adding and installing cargo crates"
 arch=('x86_64')
@@ -11,7 +11,8 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d2d9b63d2ef7fe56d3c9c5045350b991d443ed9ca56c28ed72168a88ba97009e')
+sha256sums=('19661d60ca105a0ebc65df35255f9a00aece58784f41d25fbe193f8c7e48a7ea')
+options=('!lto')
 
 prepare() {
   cd "$pkgname-$pkgver"
