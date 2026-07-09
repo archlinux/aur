@@ -12,7 +12,7 @@
 # =============================================================================
 
 pkgname=cosmostrix-bin
-pkgver=13.0.0
+pkgver=13.1.0
 _tag=
 pkgrel=1
 
@@ -223,5 +223,21 @@ package() {
         install -Dm644 \
             "${srcdir}/README.md" \
             "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    fi
+
+    # Shell completions (bash + zsh)
+    "${srcdir}/cosmostrix" --completions bash > "${srcdir}/cosmostrix.bash" 2>/dev/null || true
+    "${srcdir}/cosmostrix" --completions zsh > "${srcdir}/_cosmostrix" 2>/dev/null || true
+
+    if [[ -s "${srcdir}/cosmostrix.bash" ]]; then
+        install -Dm644 \
+            "${srcdir}/cosmostrix.bash" \
+            "${pkgdir}/usr/share/bash-completion/completions/cosmostrix"
+    fi
+
+    if [[ -s "${srcdir}/_cosmostrix" ]]; then
+        install -Dm644 \
+            "${srcdir}/_cosmostrix" \
+            "${pkgdir}/usr/share/zsh/site-functions/_cosmostrix"
     fi
 }
