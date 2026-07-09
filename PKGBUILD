@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=rsdkv4
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Complete decompilation of Sonic 1 & Sonic 2 (2013) & Retro Engine (v4)"
 arch=(x86_64)
@@ -13,7 +13,7 @@ source=("rsdkv4::git+https://github.com/Rubberduckycooly/Sonic-1-2-2013-Decompil
         "git+https://github.com/nothings/stb.git"
         "git+https://github.com/leethomason/tinyxml2.git"
         "git+https://github.com/chriskohlhoff/asio.git")
-sha256sums=('SKIP'
+sha256sums=('3f371c77799bab79e65ddc397753b7027193a55aa5e1927449114c88ae56d2ea'
             'SKIP'
             'SKIP'
             'SKIP')
