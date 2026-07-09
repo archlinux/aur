@@ -1,0 +1,4 @@
+[plainva]
+source = "git"
+git = "https://github.com/plainva/plainva.git"
+prefix = "v"
