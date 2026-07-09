@@ -1,6 +1,6 @@
 pkgbase = parsedmarc
 	pkgdesc = Python package and CLI for parsing aggregate and forensic DMARC reports
-	pkgver = 9.6.0
+	pkgver = 10.2.0
 	pkgrel = 1
 	url = https://github.com/domainaware/parsedmarc
 	arch = any
@@ -17,32 +17,29 @@ pkgbase = parsedmarc
 	depends = python-boto3>=1.16.63
 	depends = python-dateutil
 	depends = python-dnspython>=2.0.0
-	depends = python-elasticsearch7.13
 	depends = python-elasticsearch-dsl7>=7.4.0
+	depends = python-elasticsearch7.13
 	depends = python-expiringdict>=1.1.4
-	depends = python-geoip2>=3.0.0
-	depends = python-google-api-python-client>=2.35.0
-	depends = python-google-auth-oauthlib>=0.4.6
-	depends = python-google-auth>=2.3.3
-	depends = python-imapclient>=3.1.0
-	depends = python-kafka-ng>=2.2.2
+	depends = python-kafka>=2.3.2
 	depends = python-lxml>=4.4.0
-	depends = mailparser
-	depends = python-mailsuite>=1.11.2
-	depends = python-msgraph-core0.2>=0.2.2
+	depends = python-mailsuite>=2.2.2
+	depends = python-maxminddb>=2.0.0
 	depends = python-opensearch>=2.4.2
+	depends = python-psycopg>=3.1.0
 	depends = python-publicsuffixlist>=0.10.0
 	depends = python-pygelf>=0.4.2
 	depends = python-requests>=2.22.0
 	depends = python-tqdm>=4.31.1
 	depends = python-urllib3>=1.25.7
 	depends = python-xmltodict>=0.12.0
+	depends = python-yaml>=6.0.3
+	depends = mailparser
 	optdepends = perl-email-outlook-message: Microsoft Outlook email parsing
 	optdepends = perl-email-address: Microsoft Outlook email parsing
 	optdepends = geoipupdate: for using an up-to-date IP to Country database
-	source = parsedmarc-9.6.0.tar.gz::https://github.com/domainaware/parsedmarc/archive/9.6.0.tar.gz
+	source = parsedmarc-10.2.0.tar.gz::https://github.com/domainaware/parsedmarc/archive/refs/tags/10.2.0.tar.gz
 	source = remove-requires-python.diff
-	b2sums = 991cbdc8cdd714133bb735d8247bed7ba096f15d466dd07f1e1449cee4acce0c52e33d090042953636ee8d42e479d7cd002e992ba12dd2d419b340031bb13117
-	b2sums = 21af6499b5f3dd4c3d293d879fba3465270a4fc5d85918513e0b32c5b0e18e886f35773ab41ec9f89ab028408eb3fcd4d59ae1787794eea87285706fd2f70b67
+	b2sums = 4de1126b0d82ec5988742dbf92d4d0466d2783575c1f9ada64a86c5f22a8379cac29304d26b02dfac6ac53a879b14305d34c4f058c1293ebd572a2bf56ea7236
+	b2sums = 811ce80732a7f2c0f840bc0dea08cf849508068bbe1d5767a0685b1b656416e5b28fe180d34d52fef244939b55afd2500a0af1c8edcde4552671e32cfc0e6fff
 
 pkgname = parsedmarc
