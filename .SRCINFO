@@ -1,6 +1,6 @@
 pkgbase = qownnotes
 	pkgdesc = Plain-text file markdown note taking with Nextcloud/ownCloud integration
-	pkgver = 26.7.4
+	pkgver = 26.7.5
 	pkgrel = 1
 	url = https://www.qownnotes.org/
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = qownnotes
 	depends = botan
 	depends = libgit2
 	depends = libsecret
-	source = https://github.com/pbek/QOwnNotes/releases/download/v26.7.4/qownnotes-26.7.4.tar.xz
+	source = https://github.com/pbek/QOwnNotes/releases/download/v26.7.5/qownnotes-26.7.5.tar.xz
 	sha256sums = ARCHIVE-SHA256
 
 pkgname = qownnotes
