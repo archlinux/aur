@@ -2,7 +2,7 @@
 
 _basename=Guitar
 pkgname=${_basename,,}-bin
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Open source Git GUI Client"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=("${pkgname%%-bin}")
 provides=("${_basename^}")
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_basename}_${pkgver}_amd64.deb")
-sha256sums_x86_64=('f02c7c2e0886b3226f1801d55857e2f2ab4cd2a32fdf6210ccb3d855b42b6000')
+sha256sums_x86_64=('747a44d8738bb0630fef968d2c000627fe7e3f5c960fa91c41be1218f4d88247')
 
 package() {
     cd "${pkgdir}"

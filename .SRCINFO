@@ -1,6 +1,6 @@
 pkgbase = guitar-bin
 	pkgdesc = Open source Git GUI Client
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/soramimi/Guitar
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = guitar-bin
 	depends = qt6-svg
 	provides = Guitar
 	conflicts = guitar
-	source_x86_64 = https://github.com/soramimi/Guitar/releases/download/v1.4.0/Guitar_1.4.0_amd64.deb
-	sha256sums_x86_64 = f02c7c2e0886b3226f1801d55857e2f2ab4cd2a32fdf6210ccb3d855b42b6000
+	source_x86_64 = https://github.com/soramimi/Guitar/releases/download/v1.4.1/Guitar_1.4.1_amd64.deb
+	sha256sums_x86_64 = 747a44d8738bb0630fef968d2c000627fe7e3f5c960fa91c41be1218f4d88247
 
 pkgname = guitar-bin
