@@ -1,4 +1,4 @@
-# Maintainer: SmallClover <belitzlars at gmail dot com>
+# Maintainer: SmallClover <aur at clvr dot one>
 
 pkgname=bdcli-bin
 pkgver=0.3.1
