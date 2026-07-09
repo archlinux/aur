@@ -1,24 +1,50 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=strawberry-lite-git
-pkgver=1.2.9.r1.gaab988917
-pkgrel=2
-pkgdesc="A music player aimed at audio enthusiasts and music collectors, fewer fautures, Gstreamer and alsa only"
+pkgver=1.2.23.r0.g1e88a0451
+pkgrel=1
+pkgdesc="A music player aimed at audio enthusiasts and music collectors, fewer features, Gstreamer and alsa only"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://www.strawberrymusicplayer.org/"
 license=(GPL-3.0-or-later)
-depends=(chromaprint gst-plugins-base gst-plugins-good qt6-base
-         sqlite udisks2 dbus alsa-lib libcdio fftw libebur128 kdsingleapplication
-
-         libicuuc.so libicui18n.so
-
-         # namcap implicit depends
-         glibc gcc-libs glib2 icu hicolor-icon-theme libx11 gstreamer
-         taglib gst-plugins-base-libs)
-makedepends=(git cmake boost qt6-tools sparsehash vulkan-headers)
-optdepends=('gst-libav: additional codecs'
-            'gst-plugins-bad: additional codecs'
-            'gst-plugins-ugly: additional codecs')
+depends=(
+    alsa-lib
+    chromaprint
+    dbus
+    fftw
+    glib2
+    glibc
+    gst-plugins-base
+    gst-plugins-base-libs
+    gst-plugins-good
+    gstreamer
+    hicolor-icon-theme
+    icu libicuuc.so
+    kdsingleapplication
+    libcdio
+    libebur128
+    libgcc
+    libstdc++
+    libx11
+    qt6-base
+    sqlite
+    taglib
+    udisks2
+    )
+makedepends=(
+    boost
+    cmake
+    git
+    qt6-tools
+    #rapidjson
+    #sparsehash
+    vulkan-headers
+    )
+optdepends=(
+    'gst-libav: additional codecs'
+    'gst-plugins-bad: additional codecs'
+    'gst-plugins-ugly: additional codecs'
+    )
 provides=(strawberry)
 conflicts=(strawberry)
 source=("git+https://github.com/jonaski/strawberry.git")
@@ -30,18 +56,22 @@ pkgver() {
 }
 
 build() {
+  # Disable warning Detected locale "C" with character encoding "ANSI_X3.4-1968", which is not UTF-8.
+  export LANG=C.UTF-8
+  export LC_ALL=C.UTF-8
+
   local _flags=(
-    #-DCMAKE_CXX_FLAGS="$CXXFLAGS -DQT_NO_DEBUG_OUTPUT"
-    -DENABLE_TIDAL=OFF
-    -DENABLE_QOBUZ=OFF
-    -DENABLE_SPOTIFY=OFF
-    -DENABLE_SUBSONIC=OFF
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS -DQT_NO_DEBUG_OUTPUT"
+    -DENABLE_DEBUG_OUTPUT=OFF
+    -DENABLE_DISCORD_RPC=OFF
     -DENABLE_GPOD=OFF
     -DENABLE_MTP=OFF
     -DENABLE_PULSE=OFF
+    -DENABLE_QOBUZ=OFF
+    -DENABLE_SPOTIFY=OFF
     -DENABLE_STREAMTAGREADER=OFF
-    -DENABLE_DISCORD_RPC=OFF
-    -DENABLE_DEBUG_OUTPUT=OFF
+    -DENABLE_SUBSONIC=OFF
+    -DENABLE_TIDAL=OFF
   )
 
   cmake -B build -S "strawberry" -Wno-dev \
