@@ -44,9 +44,10 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
+    local _app_dir=$(_get_app_dir)
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     rm -rf \
-        "${srcdir}/opt/${_pkgname}/resources/resources/drivers/SokujiVirtualAudio.driver/Contents/MacOS"
+        "${srcdir}/resources/resources/drivers/SokujiVirtualAudio.driver/Contents/MacOS"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
