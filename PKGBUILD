@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=einsum
-_pkgver=0.1.2
+_pkgver=0.2.0
 pkgname=r-${_pkgname,,}
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Einstein Summation'
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0938297212a8fb532b59a5b1c47a5db90b88bcb381079be7a8fbcefe7e9d091b')
+sha256sums=('5c293b538d11a8a2437c0e2eb8745afcd55438edb146dafdf131a05c1e0ed8ac')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
