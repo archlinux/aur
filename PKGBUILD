@@ -5,7 +5,7 @@
 # Contributor: Adam Honse <calcprogrammer1@gmail.com>
 
 pkgname=hidapi-hotplug-git
-pkgver=r690.b460ad7
+pkgver=r714.bc0a241
 pkgrel=1
 pkgdesc='Simple library for communicating with USB and Bluetooth HID devices with hotplug support'
 arch=(x86_64)
@@ -13,7 +13,7 @@ url='https://gitlab.com/OpenRGBDevelopers/hidapi-hotplug'
 license=('GPL3' 'BSD' 'custom')
 depends=('systemd-libs')
 optdepends=('libusb: for hidapi-hotplug-libusb')
-makedepends=('cmake' 'libusb')
+makedepends=('cmake' 'libusb' 'git')
 provides=('hidapi-hotplug' 'libhidapi-hotplug-hidraw.so' 'libhidapi-hotplug-libusb.so')
 source=("git+https://gitlab.com/OpenRGBDevelopers/hidapi-hotplug.git")
 sha512sums=('SKIP')
