@@ -1,6 +1,6 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord-git
-pkgver=1.4.2
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Feature rich Discord TUI client."
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 provides=('endcord')
 conflicts=('endcord')
 depends=()
-makedepends=('python>=3.12' 'uv' 'git' 'clang' 'patchelf')
+makedepends=('python>=3.12' 'uv' 'git' 'clang' 'patchelf' 'wget')
 optdepends=('xclip: clipboard support on X11'
             'wl-clipboard: clipboard support on Wayland'
             'aspell: spellchecking'
@@ -28,12 +28,12 @@ prepare() {
 	cd endcord
 	export UV_NO_CACHE=1
 	
-	# setup python 3.13
-	if uv python list --only-installed | grep -q '3.13'; then
-        echo "Python 3.13 is already installed"
+	# setup python 3.14
+	if uv python list --only-installed | grep -q '3.14'; then
+        echo "Python 3.14 is already installed"
         PY_ALREADY_INSTALLED=true
     else
-        uv python install 3.13
+        uv python install 3.14
         PY_ALREADY_INSTALLED=false
     fi
     
@@ -42,11 +42,11 @@ prepare() {
 
 build() {
 	cd endcord
-	uv run build.py --nuitka --clang
+	uv run build.py --level=FULL --nuitka --custom-python
 	
-	# remove python 3.13
+	# remove python 3.14
 	if [ "$PY_ALREADY_INSTALLED" != "true" ]; then
-        uv python uninstall 3.13  # Or exact version from 'uv python list'
+        uv python uninstall 3.14  # Or exact version from 'uv python list'
     fi
 }
 
