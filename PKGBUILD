@@ -3,7 +3,7 @@
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 
 pkgname=sipvicious
-pkgver=0.3.4
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Set of security tools that can be used to audit SIP based VoIP systems"
 arch=('any')
@@ -11,10 +11,11 @@ url="https://github.com/EnableSecurity/sipvicious"
 license=('GPL3')
 depends=('python>=3.6')
 optdepends=('python-scapy: allow svcrash to crash SIPVicious toolset')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 changelog=$pkgname.changelog
 source=("$pkgname-$pkgver.tar.gz::https://github.com/EnableSecurity/sipvicious/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('75f3d190cb4224ada84cd7c714eb545e44a9759589890a559d3cb5243c5430c0aa81138e3cd294926901e961a5ec156c8d991b648c70e1d8fc2dc906473d507d')
+b2sums=('1c309a2aa996c5e34d2be85d459e4f47280467bc7178518767832bea9c55c85d9b22fff78f815cd7677eeaa882bf70955139e334ddf7a604bc62a37b6bfaaac6')
+
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -23,17 +24,11 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  python setup.py build
+    cd "$srcdir/$pkgname-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  python setup.py install -O2 --skip-build --root="$pkgdir"
-
-  for man in man1/*; do
-      install -Dvm644 $man "$pkgdir/usr/share/man/man1/$man"
-  done
+    cd "$srcdir/$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
