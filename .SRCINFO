@@ -1,0 +1,20 @@
+pkgbase = pass-fxa-git
+	pkgdesc = Upload a password-store to Firefox Accounts
+	pkgver = 0.4.1.r0.g73ee86c
+	pkgrel = 1
+	url = https://github.com/AuthenticSm1les/pass-fxa
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = pass
+	provides = pass-fxa
+	conflicts = pass-fxa
+	source = pass-fxa-git::git+https://github.com/AuthenticSm1les/pass-fxa.git
+	b2sums = SKIP
+
+pkgname = pass-fxa-git
