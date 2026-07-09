@@ -1,6 +1,6 @@
 pkgbase = tbs-dvb-drivers-git-dkms
 	pkgdesc = DKMS package for TBS DVB drivers, tracking tbsdtv/linux_media upstream
-	pkgver = r8.cff10ba
+	pkgver = r11.8e731cd
 	pkgrel = 1
 	url = https://github.com/JohnLBergqvist/tbs-dvb-drivers-git-dkms
 	arch = x86_64
