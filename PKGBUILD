@@ -1,6 +1,6 @@
 # Maintainer: Remco Stoeten <remcostoeten@hotmail.com>
 pkgname=skriuw-bin
-pkgver=0.16.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="A quiet writing workspace for notes, journaling, sharing, and planning"
 arch=('x86_64')
