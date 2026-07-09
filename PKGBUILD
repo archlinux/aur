@@ -1,5 +1,5 @@
 pkgname=ioruba-desktop
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Tactile audio mixer for Arduino-based Linux control"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('glibc' 'gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator')
 makedepends=('npm' 'rust' 'cargo' 'pkgconf' 'webkit2gtk-4.1' 'gtk3' 'librsvg' 'patchelf' 'libappindicator-gtk3')
 source=("ioruba-${pkgver}.tar.gz::https://github.com/bernardopg/ioruba/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cd3e964adf480fae86aad6cf10ecb8ed05ace20cb7a703972c12a48313a043a0')
+sha256sums=('d2d28463db836f19cc7af4d9b6341b01d03d8d22146a439ea67e82027b5596b7')
 
 prepare() {
   cd "ioruba-${pkgver}"
@@ -33,7 +33,7 @@ package() {
   install -Dm644 "${_icons}/app-icon.svg"     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/ioruba.svg"
 
   install -dm755 "${pkgdir}/usr/share/applications"
-  cat > "${pkgdir}/usr/share/applications/ioruba.desktop" <<'DESKTOP'
+  cat > "${pkgdir}/usr/share/applications/io.ioruba.desktop.desktop" <<'DESKTOP'
 [Desktop Entry]
 Type=Application
 Name=Ioruba
@@ -47,6 +47,6 @@ Terminal=false
 Categories=AudioVideo;Audio;Mixer;
 Keywords=audio;mixer;volume;arduino;serial;hardware;potentiometer;
 StartupNotify=true
-StartupWMClass=Ioruba
+StartupWMClass=io.ioruba.desktop
 DESKTOP
 }
