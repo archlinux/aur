@@ -1,7 +1,7 @@
 pkgbase = meshapp-bin
 	pkgdesc = A full-featured desktop client for managing devices and communication in the Meshtastic mesh network.
 	pkgver = 2.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.privatepractice.app/covox/meshapp
 	arch = any
 	license = GPL3
@@ -42,7 +42,7 @@ pkgbase = meshapp-bin
 	depends = zlib
 	provides = meshapp
 	conflicts = meshapp
-	source = https://git.privatepractice.app/covox/meshapp/releases/download/v2.3.3/MeshApp-v2.3.3-x86_64.flatpak
+	source = https://git.privatepractice.app/covox/meshapp/releases/download/v2.3.3/meshapp_2.3.3_amd64.deb
 	sha256sums = ca5de4dbcf4d1be75c1bd2079cab4e2c660bdcb9b13f691d93c57c0b7108b76c
 
 pkgname = meshapp-bin
