@@ -77,7 +77,7 @@ pkgbase = thorium-browser-updated
 	options = !lto
 	options = !strip
 	options = !debug
-	source = thorium::git+https://github.com/brauliobo/thorium.git#commit=eff5347b2c26cc06bc4d1a7dce1a3e86587af307
+	source = thorium::git+https://github.com/brauliobo/thorium.git#commit=db0187788a944292faab4c355ab5ac3877e70147
 	source = depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	sha256sums = SKIP
 	sha256sums = SKIP

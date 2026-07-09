@@ -82,7 +82,7 @@ conflicts=('thorium-browser' 'thorium-browser-bin' 'thorium-browser-updated-bin'
 options=('!lto' '!strip' '!debug')
 install="${pkgname}.install"
 source=(
-  "thorium::git+https://github.com/brauliobo/thorium.git#commit=eff5347b2c26cc06bc4d1a7dce1a3e86587af307"
+  "thorium::git+https://github.com/brauliobo/thorium.git#commit=db0187788a944292faab4c355ab5ac3877e70147"
   "depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
 )
 sha256sums=('SKIP' 'SKIP')
