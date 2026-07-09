@@ -1,6 +1,6 @@
 pkgbase = nls
-	pkgdesc = Nushell-style ls for bash, zsh, and fish
-	pkgver = 0.5.2
+	pkgdesc = A modern ls with useful tables
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/nolight132/nls
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = nls
 	license = MIT
 	makedepends = git
 	makedepends = go
-	source = git+https://github.com/nolight132/nls.git#tag=v0.5.2
+	source = git+https://github.com/nolight132/nls.git#tag=v0.6.0
 	sha256sums = SKIP
 
 pkgname = nls
