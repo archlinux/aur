@@ -7,7 +7,7 @@ epoch=
 pkgdesc="Flash ZSA keyboards from your terminal."
 arch=('x86_64' 'aarch64')
 url="https://github.com/zsa/zapp"
-license=('custom:MIT-Commons-Clause')
+license=('LicenseRef-MIT-Commons-Clause')
 groups=()
 depends=(
 	'glibc'
