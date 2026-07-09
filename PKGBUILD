@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=144.0.7559.256
+pkgver=144.0.7559.257
 pkgrel=1
 epoch=1
 _manual_clone=1
