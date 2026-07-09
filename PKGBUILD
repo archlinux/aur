@@ -14,7 +14,7 @@
 # network access to pull the ubuntu:25.10 image and its dependencies.
 pkgname=fluorine-manager-git
 pkgver=0.3.0.r34.gb56ab21
-pkgrel=2
+pkgrel=3
 pkgdesc="A native Linux mod manager for Bethesda and other games, built on MO2"
 arch=('x86_64')
 url="https://github.com/SulfurNitride/Fluorine-Manager"
@@ -27,11 +27,13 @@ options=(!strip)
 source=("git+https://github.com/SulfurNitride/Fluorine-Manager.git"
         "fluorine-manager-order-openmw-content-by-loadorder.patch"
         "fluorine-manager-groundcover-cfg-fallback.patch"
-        "fluorine-manager-fix-plugin-data-permissionerror-readonly-dirs.patch")
+        "fluorine-manager-fix-plugin-data-permissionerror-readonly-dirs.patch"
+        "fluorine-manager-fix-appversion-versioninfo-python-binding.patch")
 sha256sums=('SKIP'
             '6db3d4dbfeb54bb685febf8f89590b629f003f2bd58b4ce09c83852fd5bc96f6'
             '6a0ee0fc4a0e9c43e54908f3d94c8ec4ccb4e186002d9c91d658be0b94b5111a'
-            '8c531af71e4d56f804c5eb9153bc6aa0ff73ecefe0e1b8b2e988cd79c4a9ecd7')
+            '8c531af71e4d56f804c5eb9153bc6aa0ff73ecefe0e1b8b2e988cd79c4a9ecd7'
+            '4a5f0c6740b27c64383e1fb58a1782e743c66826dd9cc31920456da15ab20bd8')
 
 # Patches (still unmerged upstream):
 #   fluorine-manager-order-openmw-content-by-loadorder.patch
@@ -40,6 +42,8 @@ sha256sums=('SKIP'
 #       PR #118 — "Fall back to openmw.cfg groundcover= when groundcover.txt is absent"
 #   fluorine-manager-fix-plugin-data-permissionerror-readonly-dirs.patch
 #       PR #119 — "Fix plugin_data PermissionError on read-only base dirs"
+#   fluorine-manager-fix-appversion-versioninfo-python-binding.patch
+#       PR #120 — "Fix appVersion returning Version instead of VersionInfo in Python binding"
 
 pkgver() {
     cd "$srcdir/Fluorine-Manager"
@@ -60,6 +64,13 @@ prepare() {
     # #119 touches C++ source (src/src/organizercore.cpp) — independent of the
     # Python OpenMW patches above, so it can be applied in any order.
     patch -p1 --no-backup-if-mismatch -i "$srcdir/fluorine-manager-fix-plugin-data-permissionerror-readonly-dirs.patch"
+    # #120 targets libs/plugin_python/.../basic_classes.cpp, which upstream
+    # ships with CRLF line endings (the whole pybind11-qt subtree does), while
+    # the GitHub-generated .patch uses LF — GNU patch refuses with
+    # "different line endings". Normalize that one file to LF so the hunk
+    # matches; line endings are irrelevant to the compiled output.
+    sed -i 's/\r$//' "libs/plugin_python/src/mobase/wrappers/basic_classes.cpp"
+    patch -p1 --no-backup-if-mismatch -i "$srcdir/fluorine-manager-fix-appversion-versioninfo-python-binding.patch"
 }
 
 build() {

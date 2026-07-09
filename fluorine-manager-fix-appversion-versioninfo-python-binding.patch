@@ -1,0 +1,26 @@
+From 016bf531e641154092b71a5e0877b46de2748e78 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Niccol=C3=B2=20Belli?= <niccolo.belli@linuxsystems.it>
+Date: Thu, 9 Jul 2026 15:21:31 +0200
+Subject: [PATCH] Fix appVersion returning Version instead of VersionInfo in
+ Python binding
+
+---
+ libs/plugin_python/src/mobase/wrappers/basic_classes.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/libs/plugin_python/src/mobase/wrappers/basic_classes.cpp b/libs/plugin_python/src/mobase/wrappers/basic_classes.cpp
+index 7f06b771..88e0ec2d 100644
+--- a/libs/plugin_python/src/mobase/wrappers/basic_classes.cpp
++++ b/libs/plugin_python/src/mobase/wrappers/basic_classes.cpp
+@@ -583,7 +583,10 @@ namespace mo2::python {
+                      mo2::python::show_deprecation_warning(
+                          "appVersion", "IOrganizer::appVersion() is deprecated, use "
+                                        "IOrganizer::version() instead.");
+-                     return o.version();
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
++                     return o.appVersion();
++#pragma GCC diagnostic pop
+                  })
+             .def("version", &IOrganizer::version)
+             .def("createMod", &IOrganizer::createMod,
