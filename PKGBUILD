@@ -1,7 +1,7 @@
 # Maintainer: Myqfeng <viagrahuang@outlook.com>
 
 pkgname=easytier-connector
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="基于 Qt6 的系统托盘应用程序，用于连接 EasyTier Web 控制台（配置服务器）。EasyTier Web Connector based on Qt6."
 arch=('x86_64')
