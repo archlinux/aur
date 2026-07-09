@@ -1,40 +1,32 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=convco
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Conventional commits, changelog, versioning, validation'
 url='https://convco.github.io'
 license=('MIT')
 arch=('x86_64' 'i686' 'arm' 'aarch64')
-depends=('gcc-libs' 'libgit2')
+depends=('gcc-libs')
 makedepends=('cargo' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/convco/convco/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('907a7db94f0f49c2ee547c0aebfff50500a9d886a7e575bc0288d6937101972b')
-b2sums=('c66c0728a66915884b90cb341b5315ca71666d79b370270edffea13009686e12c8a06161e30c6198c845d651b17b796f2a2ee7d67e0118aea3063cd1ffd52dd7')
-
-case $CARCH in
-  x86_64|i686|aarch64)
-    _target="$CARCH-unknown-linux-gnu" ;;
-  arm)
-    _target="arm-unknown-linux-gnueabi" ;;
-esac
+sha256sums=('3a9b33e41561f80eaa9252673a1ee1b4857743e2ff7b33079d0b616c772fa981')
+b2sums=('e474bee2f6423fd857f44267733dbfc9e68cb40b434b3e871903fab20ffa47e45a48759a7d6c381b71b9f274887a8029928247e598c7418c518689a7386b9a17')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
 prepare() {
   cd "$pkgname-$pkgver"
 
-  cargo fetch --locked --target $_target
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
   cd "$pkgname-$pkgver"
 
-  export LIBGIT2_NO_VENDOR=1
-
   CARGO_TARGET_DIR='target' \
-    cargo build --frozen --release
+    cargo build --frozen --release \
+      --no-default-features --features 'gix'
 }
 
 package() {
