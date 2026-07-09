@@ -41,18 +41,18 @@ DEFAULTS = {
     ],
     "enable_manager": True,
     "extra_model_paths_yaml": "",
-    "github_token": "",
     "extra_python_package": [],
+    "github_token": "",
     "listen": "localhost",
     "output_dir": XDG_DATA_HOME / PROJECT_NAME / "output",
     "port": 8188,
     "prekick_exec": [],
-    "version_cache_dir": XDG_DATA_HOME / PROJECT_NAME / "version_cache",
     "runtime_dir": XDG_CACHE_HOME / PROJECT_NAME,
     "update": True,
+    "uv_extra_index_url": "",
     "venv_cache_dir": XDG_DATA_HOME / PROJECT_NAME / "venv_cache",
     "version": "latest",
-    "uv_extra_index_url": "",
+    "version_cache_dir": XDG_DATA_HOME / PROJECT_NAME / "version_cache",
 }
 
 
@@ -81,9 +81,9 @@ def log(level, msg, *args, _order=("DEBUG", "INFO", "WARNING", "ERROR")):
 _PATH_KEYS = (
     "base_dir",
     "output_dir",
-    "version_cache_dir",
     "runtime_dir",
     "venv_cache_dir",
+    "version_cache_dir",
 )
 
 
@@ -214,16 +214,16 @@ def _resolve_extra_model_paths(config):
 def create_directories(config, extra_dirs):
     base_dir = Path(config["base_dir"])
     output_dir = Path(config["output_dir"])
-    version_cache_dir = Path(config["version_cache_dir"])
     runtime_dir = Path(config["runtime_dir"])
     venv_cache_dir = Path(config["venv_cache_dir"])
+    version_cache_dir = Path(config["version_cache_dir"])
 
     base_dir.mkdir(parents=True, exist_ok=True)
     (base_dir / "custom_nodes").mkdir(parents=True, exist_ok=True)
     output_dir.mkdir(parents=True, exist_ok=True)
-    version_cache_dir.mkdir(parents=True, exist_ok=True)
     runtime_dir.mkdir(parents=True, exist_ok=True)
     venv_cache_dir.mkdir(parents=True, exist_ok=True)
+    version_cache_dir.mkdir(parents=True, exist_ok=True)
 
     for d in extra_dirs:
         d.mkdir(parents=True, exist_ok=True)
