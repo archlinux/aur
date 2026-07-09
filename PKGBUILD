@@ -1,6 +1,6 @@
 # Maintainer: Markus Maiwald <markus@maiwald.tk>
 pkgname=prism-harness-suite
-pkgver=1.0.0rc1
+pkgver=1.0.0_rc1
 pkgrel=1
 pkgdesc="PRISM Harness suite - small bundles sharing one Bun runtime (harness, loop, proxy, route, sober)"
 arch=('x86_64')
@@ -10,25 +10,21 @@ depends=('bun')
 makedepends=('git' 'bun')
 provides=('prism-harness' 'prism-loop' 'prism-proxy' 'prism-route' 'prism-sober')
 conflicts=('prism-harness' 'prism-loop' 'prism-proxy' 'prism-route' 'prism-sober')
-source=("git+https://git.sovereign-society.org/prism/prism-harness.git#tag=v${pkgver//rc/.}")
+source=("git+https://git.sovereign-society.org/prism/prism-harness.git#tag=v1.0.0-rc.1")
 sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/prism-harness"
 
-  # Build small bundles for all components (they share one Bun)
-  # Note: other repos are cloned by the build or we build only harness here
-  # For full suite, we clone the others too for their bundles
-  for repo in prism-loop prism-sober prism-proxy prism-route; do
-    if [ ! -d "../$repo" ]; then
-      git clone --depth 1 "https://git.sovereign-society.org/prism/$repo.git" "../$repo"
-    fi
+  # Clone other components for their small bundles (share one Bun)
+  for r in prism-loop prism-sober prism-proxy prism-route; do
+    git clone --depth=1 "https://git.sovereign-society.org/prism/$r.git" "../$r" || true
   done
 
-  # Build each
+  # Build small bundles in each
   for d in . ../prism-loop ../prism-sober ../prism-proxy ../prism-route; do
-    if [ -f "$d/package.json" ]; then
-      (cd "$d" && bun run --if-present build) || true
+    if [[ -f "$d/package.json" ]]; then
+      (cd "$d" && bun run --if-present build) || echo "build skipped for $d"
     fi
   done
 }
@@ -36,19 +32,19 @@ build() {
 package() {
   cd "$srcdir"
 
-  # Install small bundles as the CLI entrypoints
+  # Install the small .js bundles (with shebang) as /usr/bin commands
   for bin in prism-harness prism-loop prism-sober prism-proxy prism-route; do
-    for srcdir in prism-harness prism-loop prism-sober prism-proxy prism-route; do
-      if [ -f "$srcdir/dist/$bin.js" ]; then
-        install -Dm755 "$srcdir/$srcdir/dist/$bin.js" "$pkgdir/usr/bin/$bin"
+    found=false
+    for d in prism-harness prism-loop prism-sober prism-proxy prism-route; do
+      if [[ -f "$d/dist/$bin.js" ]]; then
+        install -Dm755 "$d/dist/$bin.js" "$pkgdir/usr/bin/$bin"
+        found=true
         break
       fi
     done
+    $found || echo "warning: $bin bundle not found"
   done
 
-  # Install the suite install script for reference
-  install -Dm755 "prism-harness/install.sh" "$pkgdir/usr/share/prism-harness/install.sh"
-
-  # Docs
+  install -Dm755 "prism-harness/install.sh" "$pkgdir/usr/share/doc/$pkgname/install.sh"
   install -Dm644 "prism-harness/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
