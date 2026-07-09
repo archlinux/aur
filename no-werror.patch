@@ -1,0 +1,12 @@
+diff -rauN a/Makefile.cfg b/Makefile.cfg
+--- a/Makefile.cfg	2026-07-09 07:31:02.526630582 +0200
++++ b/Makefile.cfg	2026-07-09 07:34:30.492836072 +0200
+@@ -12,7 +12,7 @@
+ #********************
+ # Flags
+ #***************
+-MODEST_CFLAGS ?= -Wall -Werror -pipe -pedantic
++MODEST_CFLAGS ?= -Wall -Wno-error -pipe -pedantic
+ MODEST_LFLAGS ?=
+ 
+ #********************
