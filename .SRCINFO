@@ -1,6 +1,6 @@
 pkgbase = mboxshell
 	pkgdesc = Fast terminal viewer for MBOX files of any size without loading them into memory
-	pkgver = 0.4.7
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/dcarrero/mboxshell
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = mboxshell
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
-	source = mboxshell-v0.4.7.tar.gz::https://github.com/dcarrero/mboxshell/archive/refs/tags/v0.4.7.tar.gz
-	sha256sums = 3cdfbd2f0fd3cf5252342e87260e6446730ccda813d8f95db91191ffbfabddd8
+	source = mboxshell-v0.6.1.tar.gz::https://github.com/dcarrero/mboxshell/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = 2477d862fb9dfc9c2fe26031b642a7c48fde43b578662010847a09708174d099
 
 pkgname = mboxshell
