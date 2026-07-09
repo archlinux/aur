@@ -8,7 +8,7 @@ url="https://github.com/SmoothCdoer9981/larp"
 license=('MIT')
 depends=('sh')
 source=("larp")
-md5sums=('98c7cec625c5f0ce7b8bfc9e7ee327f3902a9a5653d1d27f25902375efa05ee5')
+md5sums=('d3748d2546abbd1672d68a89b555021a')
 
 package() {
     install -Dm755 "${srcdir}/larp" "${pkgdir}/usr/bin/larp"
