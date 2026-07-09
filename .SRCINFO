@@ -1,0 +1,19 @@
+pkgbase = python-audio-hotplug
+	pkgdesc = Cross-platform audio device hotplug detection with debouncing
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/LedFx/audio-hotplug
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-uv-build
+	depends = python
+	depends = python-pyudev
+	source = python-audio-hotplug-0.1.0.tar.gz::https://github.com/LedFx/audio-hotplug/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 005f00f98162a59e7a9ac496da098cb2bfeeebe6e8175973385b5860470be2ab
+
+pkgname = python-audio-hotplug
