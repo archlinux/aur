@@ -1,0 +1,9 @@
+post_install() {
+  printf "\tTo specify the plugin you want to activate:\n \
+   \t$ mkdir -p ~/.config/DankMaterialShell/plugins\n \
+   \t$ ln -s /usr/share/quickshell/dms/PLUGINS/DankUpsMonitor ~/.config/DankMaterialShell/plugins \n"
+}
+
+post_upgrade() {
+  post_install
+}

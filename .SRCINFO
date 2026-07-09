@@ -1,0 +1,16 @@
+pkgbase = dms-shell-plugin-nut-git
+	pkgdesc = UPS monitoring via NUT for DankMaterialShell.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/acmagn/DMS-UPS-Monitor
+	install = dms-shell-plugins.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = dms-shell
+	depends = nut
+	provides = dms-shell-plugin-nut
+	source = dms-plugin-nut::git+https://github.com/acmagn/DMS-UPS-Monitor.git
+	sha256sums = SKIP
+
+pkgname = dms-shell-plugin-nut-git
