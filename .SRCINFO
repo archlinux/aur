@@ -1,0 +1,18 @@
+pkgbase = phonors
+	pkgdesc = A Python module implemented in Rust for Phonopy
+	pkgver = 0.3.0
+	pkgrel = 2
+	url = https://github.com/phonopy/phonors
+	arch = any
+	license = BSD
+	makedepends = maturin
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = rust
+	depends = python
+	provides = python-phonors
+	source = git+https://github.com/phonopy/phonors.git#tag=v0.3.0
+	sha256sums = SKIP
+
+pkgname = phonors
