@@ -1,0 +1,16 @@
+pkgbase = zivid-opencl
+	pkgdesc = Defining the Future of 3D Machine Vision
+	pkgver = 2.18.0+1b44dbef_1
+	pkgrel = 1
+	url = https://www.zivid.com
+	arch = x86_64
+	groups = zivid-all
+	license = custom
+	depends = opencl-driver
+	provides = zivid-backend
+	conflicts = zivid-cuda
+	options = !strip
+	source = https://downloads.zivid.com/sdk/releases/2.18.0+1b44dbef-1/u20/zivid-opencl_2.18.0+1b44dbef-1_amd64.deb
+	sha256sums = e9c9955ad861bfd0d92cb5bbb8aacc0b7c4e5fd14a104371cfd99bc117440d4a
+
+pkgname = zivid-opencl
