@@ -1,12 +1,12 @@
 ## Maintainer: khanhas <xuankhanh963@gmail.com>, itsmeow <itsmeow@itsmeow.dev>
 pkgname=spicetify-cli
 pkgver=2.44.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line tool to customize Spotify client'
 arch=('x86_64' 'i686')
 url='https://github.com/spicetify/cli'
 license=('LGPL-2.1-only')
-makedepends=('go')
+makedepends=('go' 'pnpm' 'nodejs')
 depends=('glibc' 'bash')
 optdepends=('xdg-utils: Allows for opening directories in default file manager')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
@@ -26,6 +26,7 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go build -ldflags="-X 'main.version=${pkgver}'" -o spicetify
+  pnpm run build:wrapper
 }
 
 check() {
