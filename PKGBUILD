@@ -7,14 +7,14 @@
 # tarball release artefact (chezmoi-managed root layout). The
 # v0.3.0 reorganisation (docs/operations/ROADMAP_V0_2_503.md)
 # produces a tarball this PKGBUILD can point at. Until then, the
-# `sha256sums` is SKIP and source uses the master branch as a
+# `sha256sums` is SKIP and source uses the main branch as a
 # placeholder.
 #
 # Publication target: aur.archlinux.org/packages/dot-cli-git
 # Validate via:  paru -S dot-cli-git
 
 pkgname=dot-cli-git
-pkgver=0.2.508
+pkgver=0.2.511
 pkgrel=1
 pkgdesc='Declarative dotfiles CLI for macOS, Linux, WSL, and PowerShell (git head)'
 arch=('any')
@@ -31,7 +31,7 @@ makedepends=('git')
 provides=('dot' 'dotfiles')
 conflicts=('dot' 'dotfiles')
 source=("git+${url}.git")
-sha256sums=('16f79a6e2cea00645a20fcf656eebf8c124dd0d15664bdcae85b9373ea4a4d07')
+sha256sums=('6b9f435ebeaca6ff5ec9e6c7458972cb1b8d43b80959a75ff990b629ff5af2cf')
 
 pkgver() {
   cd "${srcdir}/dotfiles" || return 1
