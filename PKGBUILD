@@ -2,8 +2,8 @@
 
 pkgname=dumpzilla-git
 _pkgname=${pkgname%-git}
-pkgver=r44.ec337da
-pkgrel=2
+pkgver=r45.01479f6
+pkgrel=1
 pkgdesc="Extract All Forensic Interesting Information Of Firefox, Iceweasel And Seamonkey"
 arch=('any')
 url="https://web.archive.org/web/20250201061909/http://www.dumpzilla.org/"
