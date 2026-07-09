@@ -1,6 +1,6 @@
 pkgbase = ospd-openvas
 	pkgdesc = OSP Server for openvas
-	pkgver = 22.10.1
+	pkgver = 22.10.2
 	pkgrel = 1
 	url = https://github.com/greenbone/ospd-openvas
 	arch = x86_64
@@ -22,11 +22,11 @@ pkgbase = ospd-openvas
 	provides = python-ospd-openvas
 	conflicts = python-ospd-openvas
 	backup = etc/gvm/ospd-openvas.conf
-	source = ospd-openvas-22.10.1.tar.gz::https://github.com/greenbone/ospd-openvas/archive/v22.10.1.tar.gz
-	source = ospd-openvas-22.10.1.tar.gz.asc::https://github.com/greenbone/ospd-openvas/releases/download/v22.10.1/ospd-openvas-v22.10.1.tar.gz.asc
+	source = ospd-openvas-22.10.2.tar.gz::https://github.com/greenbone/ospd-openvas/archive/v22.10.2.tar.gz
+	source = ospd-openvas-22.10.2.tar.gz.asc::https://github.com/greenbone/ospd-openvas/releases/download/v22.10.2/ospd-openvas-v22.10.2.tar.gz.asc
 	source = gvm.sysusers
 	validpgpkeys = 8AE4BE429B60A59B311C2E739823FAA60ED1E580
-	sha512sums = 4764b7939d85333250d44b5a7c93228866865281b73e6e3317486ea5d483c607428e28449e9d56f787a91e9b0bf331dd0520989c2c785c63f7afbfe6929876b3
+	sha512sums = 60275eb04e7aa016aee32423d914852589f381486533990dc786d94444af8c4e3561f5a25406dfa2dc47d0c3f03b65ee342cd4233564b3fe8f5dfa64e755c0cb
 	sha512sums = SKIP
 	sha512sums = 41cce63de96443788dd0209e164e0162c1a2116ba46ccf565672027778c60ce79ada6e7347edf0250a77d3e7959b3b76040da036fc59ce1cb7ba7b09ec4c93c9
 
