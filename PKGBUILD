@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 pkgname=magic
-pkgver=8.3.671
+pkgver=8.3.672
 pkgrel=1
 pkgdesc="A VLSI layout system"
 _git_url="https://github.com/RTimothyEdwards/magic"
@@ -34,10 +34,18 @@ optdepends=(
 
 source=("${pkgname}::git+${_git_url}#tag=${pkgver}")
 
-b2sums=('25f13c1d21757a323d664dc0192610185eeb5200469715c329cf1cb935f1ea9d2e0cb8fd430e3cb3ee66e09a2cfc6d7a5845e479c8d511a355d3a0910b16ee84')
-
+b2sums=('061fc5e779aeb91e02eec97dfd395c26bec9f1cc1b4236f61da44dfee67dd2885e5b99588a30497a943783d91e93e8d8c711bfc5866fd0ef1a429e647cc61618')
 
 options=()
+
+prepare() {
+   cd "${pkgname}"
+
+   # Disable the legacy malloc/free APIs that are not
+   # thread safe... This might introduce new bugs :)
+   # TODO: Consider setting this by default?
+   # sed -i 's/#FEATURE_FLAGS/FEATURE_FLAGS/g' scripts/defs.mak.in
+}
 
 build() {
    cd "${pkgname}"
