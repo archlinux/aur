@@ -1,0 +1,19 @@
+pkgbase = mvsep-gui
+	pkgdesc = MVSEP GUI - Music separation desktop application
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/AntheaLaffy/mvsep-rs
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = npm
+	makedepends = nodejs
+	depends = webkit2gtk
+	depends = libappindicator-gtk3
+	depends = librsvg
+	depends = libvips
+	conflicts = mvsep-gui-bin
+	source = mvsep-gui-1.2.0.tar.gz::https://github.com/AntheaLaffy/mvsep-rs/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = mvsep-gui
