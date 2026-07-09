@@ -1,6 +1,6 @@
 pkgbase = harbor-stremio-git
 	pkgdesc = A Stremio client built for adventure
-	pkgver = 0.9.12.r74.g964aa51
+	pkgver = 0.9.69.r280.g8a8ef36
 	pkgrel = 1
 	url = https://github.com/harborstremio/harbor
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgbase = harbor-stremio-git
 	provides = harbor
 	conflicts = harbor-stremio
 	conflicts = harbor
+	conflicts = harbor-stremio-bin
 	options = !lto
 	source = harbor::git+https://github.com/harborstremio/harbor.git
 	sha256sums = SKIP

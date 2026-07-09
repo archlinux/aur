@@ -2,15 +2,14 @@
 
 Testing AUR package for Harbor from upstream git.
 
-The package uses Tauri's existing `externalBin` setup and creates symlinks during
-`prepare()` so the build sees Arch's system binaries as Linux sidecars:
+The package builds Harbor with upstream's Linux system packaging config:
 
-- `/usr/bin/ffmpeg`
-- `/usr/bin/ffprobe`
-- `/usr/bin/yt-dlp`
+- `externalBin` is disabled for the Debian bundle used during packaging.
+- Runtime media tools come from Arch packages: `ffmpeg` and `yt-dlp`.
+- Bundled fonts are fetched during `prepare()` with `pnpm run setup:fonts`.
 
-This keeps the downstream patch surface small while upstream Linux support is
-still in testing.
+This keeps the downstream package aligned with upstream's source build while
+avoiding bundled Linux sidecars.
 
 ## Versioning
 

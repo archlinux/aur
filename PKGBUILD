@@ -2,7 +2,7 @@
 
 pkgname=harbor-stremio-git
 _pkgname=harbor
-pkgver=0.9.12.r74.g964aa51
+pkgver=0.9.69.r280.g8a8ef36
 pkgrel=1
 pkgdesc='A Stremio client built for adventure'
 arch=('x86_64')
@@ -33,7 +33,7 @@ makedepends=(
 )
 
 provides=('harbor-stremio' 'harbor')
-conflicts=('harbor-stremio' 'harbor')
+conflicts=('harbor-stremio' 'harbor' 'harbor-stremio-bin')
 
 source=("$_pkgname::git+https://github.com/harborstremio/harbor.git")
 sha256sums=('SKIP')
@@ -64,6 +64,7 @@ onlyBuiltDependencies:
 EOF
 
   pnpm install --frozen-lockfile
+  pnpm run setup:fonts
 }
 
 build() {
