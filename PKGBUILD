@@ -5,8 +5,8 @@
 
 _gem=cairo
 pkgname=ruby-${_gem}
-pkgver=1.18.4
-pkgrel=2
+pkgver=1.18.5
+pkgrel=1
 pkgdesc="Ruby bindings for cairo"
 arch=(x86_64)
 url="https://github.com/rcairo/rcairo"
@@ -15,7 +15,7 @@ depends=(ruby cairo ruby-pkg-config ruby-native-package-installer ruby-red-color
 #makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=("ruby-cairo-${pkgver}.tar.gz::https://github.com/rcairo/rcairo/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('edebb85be3c02538c768edb1255d42d781fd12fae1a3ed3c4588ddd256ed2bfcea3c60d9dbaacdefb6a64f34b3c3a7507868f3e3f3e7b69f6be0926424549a83')
+sha512sums=('456c20238fb88c377a582e247c2d569254182e49b43601df0ea4345b7f76ebf4e72a8effd0d73d8571a38dffd8ce2336eee1976c93754d94b9bd70d081738833')
 
 build() {
   cd "rcairo-${pkgver}"
