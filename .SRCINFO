@@ -1,6 +1,6 @@
 pkgbase = reqsh-bin
 	pkgdesc = Interactive, persistent shell for HTTP requests
-	pkgver = 0.1.5
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/hars-21/reqsh
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = reqsh-bin
 	provides = reqsh
 	conflicts = reqsh
 	options = !strip
-	source = README-0.1.5.md::https://raw.githubusercontent.com/hars-21/reqsh/v0.1.5/README.md
-	source = LICENSE-0.1.5::https://raw.githubusercontent.com/hars-21/reqsh/v0.1.5/LICENSE
+	source = README-0.2.0.md::https://raw.githubusercontent.com/hars-21/reqsh/v0.2.0/README.md
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/hars-21/reqsh/v0.2.0/LICENSE
 	sha256sums = c49529006e8fd51adae017e08bc912932cd16e10fb0ddb719a5c38f467db49d2
 	sha256sums = 2d7124e8942793e458a12398becb960d5cc152e04b4e7b6977a1696c5e428f3c
-	source_x86_64 = reqsh-x86_64-0.1.5.tgz::https://github.com/hars-21/reqsh/releases/download/v0.1.5/reqsh-v0.1.5-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 284f9864438dbfb2dcc9c46adbb51eb50cec8bed310f215a1a1c1aa318e4fd79
+	source_x86_64 = reqsh-x86_64-0.2.0.tgz::https://github.com/hars-21/reqsh/releases/download/v0.2.0/reqsh-v0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7ddeb18dd137ca7d3ec6990fc10b028e9d06ac29e45ab14ea51776ba0a37d7de
 
 pkgname = reqsh-bin
