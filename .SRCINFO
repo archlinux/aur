@@ -1,6 +1,6 @@
 pkgbase = mcpli-bin
 	pkgdesc = A command-line interface for interacting with MCP servers
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/juanibiapina/mcpli
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = mcpli-bin
 	provides = mcpli
 	conflicts = mcpli
 	options = !strip
-	source_x86_64 = mcpli-x86_64-1.3.0.tgz::https://github.com/juanibiapina/mcpli/releases/download/v1.3.0/mcpli_1.3.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 3291904f4475b28011ee0987de6f2ed3d3b4209b6d9e0dfdf6f3a1a8f435cdc2
-	source_aarch64 = mcpli-aarch64-1.3.0.tgz::https://github.com/juanibiapina/mcpli/releases/download/v1.3.0/mcpli_1.3.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 3a78208b8e95e1f4dfee9adfc2cb4e2158151557202aa46b6d0a2e8d5e2e14b8
+	source_x86_64 = mcpli-x86_64-1.3.1.tgz::https://github.com/juanibiapina/mcpli/releases/download/v1.3.1/mcpli_1.3.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 71a73bee681188bfd709ef5182b46df94c06f45d64c1fecd206c9c493c23224d
+	source_aarch64 = mcpli-aarch64-1.3.1.tgz::https://github.com/juanibiapina/mcpli/releases/download/v1.3.1/mcpli_1.3.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 79461b96b1e6ea8e62842b6d81bbc3dfd9031ad85a9623179c266f52b864715c
 
 pkgname = mcpli-bin
