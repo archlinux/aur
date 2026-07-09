@@ -1,7 +1,7 @@
 pkgbase = awf-qt5
 	pkgdesc = Theme preview application for Qt 5
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/luigifab/awf-extended
 	arch = x86_64
 	license = GPL3
