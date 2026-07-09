@@ -4,7 +4,7 @@
 # Contributor: Dan Vratil
 
 pkgname=nvidia-beta
-pkgver=610.43.02
+pkgver=610.43.03
 pkgrel=1
 pkgdesc="NVIDIA kernel module (beta version)"
 arch=('x86_64')
@@ -19,8 +19,8 @@ options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("http://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         '110-nvidia-change-dkms-conf.patch')
-sha256sums=('4d53abaa1e0e1d502b40ecf145c831c331304adb9bdcb83293a0b393fb6d00d0'
-            '8775aabec2a66ca98616048a757b54f32b821d58c7a3a39030efaf6f7182df15')
+sha256sums=('e084451db730a6df29d3d74f655749c4d236e3c945f7d94b5205e84318fe2f90'
+            '099b4953587079c6fe06cedcb8fade887a2a0bc3d38dbc39b0ca3a9778bbd2a7')
 
 prepare() {
     # extract the source file
