@@ -1,5 +1,5 @@
 pkgname=liber-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A browser-native email client"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'dbus')
 provides=('liber')
 conflicts=('liber')
 source=("https://github.com/nickheyer/liber-desktop/releases/download/v${pkgver}/liber_${pkgver}_amd64.deb")
-sha256sums=('e053463df6dcce5ca974333c6aace96bcc3ae6248cf27e8a256d4fae5fba2f37')
+sha256sums=('6ce9918a382b2662b7fa342b6cf37bbce878907fd0ac122db8acee4ae38c4f5b')
 
 package() {
   # tauri deb layout: usr/bin/liber + .desktop + hicolor icons
