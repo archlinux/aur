@@ -1,6 +1,6 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord-lite
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Feature rich Discord TUI client. Lite version without terminal media player."
 arch=('any')
