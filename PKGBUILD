@@ -1,6 +1,6 @@
 # Maintainer: Ilyas Turki <ilyasturki at gmail dot com>
 pkgname=phasionary-bin
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Terminal-first, single-user project planning tool"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/phasionary-linux-x64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/phasionary-linux-arm64")
 sha256sums=('SKIP')
-sha256sums_x86_64=('780d83b8dbad39ac11c44a794acf387f8869d04ccbfc0dadfe8b48b2d3d8d056')
-sha256sums_aarch64=('f04f5130d43e839ac12c7f04f78ac01c05ffd1f8521748d8689aa4c0df5798c1')
+sha256sums_x86_64=('6d2b57bac1c3f2e3ebe6f0c84766149bebdef4cbc49c8fdad9d140b8083bf39c')
+sha256sums_aarch64=('032d4e83455f405a18c884e34e773764475eced2c8ff899a0b5d60746b269926')
 
 package() {
     install -Dm755 "${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/phasionary"
