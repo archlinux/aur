@@ -14,7 +14,7 @@
 # network access to pull the ubuntu:25.10 image and its dependencies.
 pkgname=fluorine-manager-git
 pkgver=0.3.0.r34.gb56ab21
-pkgrel=3
+pkgrel=4
 pkgdesc="A native Linux mod manager for Bethesda and other games, built on MO2"
 arch=('x86_64')
 url="https://github.com/SulfurNitride/Fluorine-Manager"
@@ -30,7 +30,7 @@ source=("git+https://github.com/SulfurNitride/Fluorine-Manager.git"
         "fluorine-manager-fix-plugin-data-permissionerror-readonly-dirs.patch"
         "fluorine-manager-fix-appversion-versioninfo-python-binding.patch")
 sha256sums=('SKIP'
-            '6db3d4dbfeb54bb685febf8f89590b629f003f2bd58b4ce09c83852fd5bc96f6'
+            '23b44a869e2a90893c3fb0fb4a89a7e4f223e18c4bdd86b97b4b3a2140178865'
             '6a0ee0fc4a0e9c43e54908f3d94c8ec4ccb4e186002d9c91d658be0b94b5111a'
             '8c531af71e4d56f804c5eb9153bc6aa0ff73ecefe0e1b8b2e988cd79c4a9ecd7'
             '4a5f0c6740b27c64383e1fb58a1782e743c66826dd9cc31920456da15ab20bd8')
