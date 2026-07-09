@@ -29,6 +29,9 @@ prepare() {
 
     # Fix python package configuration when example_data is disabled
     sed -i '/cantera.data.example_data/d' interfaces/cython/setup.cfg.in
+
+    # Fix unit test when example_data is disabled
+    sed -i '/oxygen-plasma-itikawa.yaml/d' test/python/test_utils.py
 }
 
 build() {
