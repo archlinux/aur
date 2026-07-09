@@ -1,6 +1,6 @@
 pkgname=awf-qt6
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Theme preview application for Qt 6'
 url='https://github.com/luigifab/awf-extended'
 license=('GPL3')
@@ -18,7 +18,7 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
   autoreconf -fi
-  ./configure --enable-only-qt6
+  ./configure --prefix=/usr --enable-only-qt6
   make -s
 }
 
