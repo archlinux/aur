@@ -1,0 +1,16 @@
+pkgbase = placer
+	pkgdesc = Automatically place application windows on their assigned COSMIC workspace
+	pkgver = 0.1.0_beta.1
+	pkgrel = 1
+	url = https://gitlab.com/vintagetechie/placer
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = wayland
+	depends = libxkbcommon
+	options = !lto
+	source = placer-0.1.0_beta.1.tar.gz::https://gitlab.com/vintagetechie/placer/-/archive/v0.1.0-beta.1/placer-v0.1.0-beta.1.tar.gz
+	sha256sums = 20631f184c29c199bf08c0f47ebf3e45ea42dd8111ba58de49a663d28fc2eca4
+
+pkgname = placer
