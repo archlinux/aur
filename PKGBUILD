@@ -2,7 +2,7 @@
 # Maintainer: Vilsol <me at vil dot so>
 
 pkgname='ficsit-cli-bin'
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='A CLI for managing mods for the game Satisfactory'
 url='https://github.com/satisfactorymodding/ficsit-cli'
@@ -12,16 +12,16 @@ provides=('ficsit')
 conflicts=('ficsit')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://github.com/satisfactorymodding/ficsit-cli/releases/download/v${pkgver}/ficsit_linux_arm64")
-sha256sums_aarch64=('de713ce9c91d56247eba6fbed2ac72d1d0ce30eec29a9c946242a9b0f35f9696')
+sha256sums_aarch64=('a591eb87be517d9d03798184c210d7166141be19e37b9d4e5fe68c84f264c6bf')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.binary::https://github.com/satisfactorymodding/ficsit-cli/releases/download/v${pkgver}/ficsit_linux_armv7")
-sha256sums_armv7h=('13668274526b92905eee0deb1e5774d7d4284491c216009abcede8b24ba98830')
+sha256sums_armv7h=('c45c39c163d0074cc3fdaa33b4bcf9be7274f2901c6ddd2affa7515e3ada5814')
 
 source_i686=("${pkgname}_${pkgver}_i686.binary::https://github.com/satisfactorymodding/ficsit-cli/releases/download/v${pkgver}/ficsit_linux_386")
-sha256sums_i686=('645268c4416ddbda42da914e7d0ed56ef987a4a06f24f5715cf6ecc581577d85')
+sha256sums_i686=('20eae43e6a8e5d30462e0403fcb7c1a065d15e417b13f9d0ec6f238c740dbf4a')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://github.com/satisfactorymodding/ficsit-cli/releases/download/v${pkgver}/ficsit_linux_amd64")
-sha256sums_x86_64=('fac0f82cb9af3503cb358fe927bd762d9d471f9dece797e0fa4b43030153f3c8')
+sha256sums_x86_64=('2af0f8815af93b097c7a97968569575b21cf451b7c345fbb62fae29096ee4a31')
 
 package() {
   install -Dm755 "./${pkgname}_${pkgver}_${CARCH}.binary" "${pkgdir}/usr/bin/ficsit"
