@@ -1,6 +1,6 @@
 pkgbase = bakaxl-bunny
 	pkgdesc = Next Generation BakaXL Launcher. (none)
-	pkgver = 4.0.0.bunny_0760c4d
+	pkgver = 4.0.0.bunny_5e366a5
 	pkgrel = 1
 	url = https://bakaxl.com
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = bakaxl-bunny
 	depends = gcc-libs
 	depends = glibc
 	depends = openssl
-	source = https://github.com/BakaXL-Launcher/BakaXL/releases/download/4.0.0+bunny-0760c4d/bakaxl-4.0.0+bunny-0760c4d-linux-x86_64.deb
-	sha256sums = 4f2097c8274a73b3c43ef24dbafd9dd1f98a955a6b7605264f48aeed8344afba
+	source = https://github.com/BakaXL-Launcher/BakaXL/releases/download/4.0.0+bunny-5e366a5/bakaxl-4.0.0+bunny-5e366a5-linux-x86_64.deb
+	sha256sums = 9f1fcde49587052b0348c8ee8e9b9b25d8d90924384ae7dfdaf85ddc18231ac4
 
 pkgname = bakaxl-bunny
