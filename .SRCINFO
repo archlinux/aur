@@ -1,0 +1,21 @@
+pkgbase = rosec-uhid-git
+	pkgdesc = Privileged broker for rosec's FIDO2/WebAuthn virtual authenticator (git)
+	pkgver = 0.0.33
+	pkgrel = 1
+	url = https://github.com/jmylchreest/rosec
+	install = rosec-uhid.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	optdepends = rosec: the Secret Service daemon that drives the virtual authenticator
+	provides = rosec-uhid
+	conflicts = rosec-uhid
+	conflicts = rosec-uhid-bin
+	options = !lto
+	source = rosec-uhid-git::git+https://github.com/jmylchreest/rosec.git
+	sha256sums = SKIP
+
+pkgname = rosec-uhid-git

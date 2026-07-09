@@ -1,0 +1,33 @@
+post_install() {
+    echo ""
+    echo "==> rosec-uhid: FIDO2 / WebAuthn virtual authenticator"
+    echo ""
+    echo "  This installed the privileged broker, its systemd units, and a"
+    echo "  modules-load file for uhid. Nothing is enabled yet."
+    echo ""
+    echo "  To let browsers use rosec's passkeys as a security key:"
+    echo ""
+    echo "    1. Enable the broker socket (root):"
+    echo "         sudo systemctl enable --now rosec-uhid.socket"
+    echo ""
+    echo "    2. Turn on the frontend in your rosec config (~/.config/rosec/config.toml):"
+    echo "         [service]"
+    echo "         fido2 = true"
+    echo ""
+    echo "    3. Restart your daemon:"
+    echo "         systemctl --user restart rosecd"
+    echo ""
+    echo "  The uhid module loads at next boot; to use it now without rebooting:"
+    echo "         sudo modprobe uhid"
+    echo ""
+    echo "  This is a per-user, opt-in desktop feature. Each user's device is"
+    echo "  isolated (owned by that user at 0600), so concurrent local users are"
+    echo "  safe; there is no reason to enable it on a headless server."
+    echo ""
+    echo "  See: https://github.com/jmylchreest/rosec/blob/main/docs/docs/fido2-passkeys.md"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
