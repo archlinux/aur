@@ -1,19 +1,19 @@
 pkgbase = deeplx-git
-	pkgdesc = DeepL Free API (No TOKEN required)
-	pkgver = 1.2.2.r0.g432c0a2
+	pkgdesc = DLX - Self-hosted translation API server. Unofficial; not affiliated with DeepL SE
+	pkgver = 1.2.2.r8.g770f63b
 	pkgrel = 1
-	url = https://github.com/OwO-Network/DeepLX
+	url = https://github.com/OwO-Network/DLX
 	install = deeplx-git.install
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	provides = deeplx
-	conflicts = deeplx
-	source = deeplx-git::git+https://github.com/OwO-Network/DeepLX.git
+	provides = dlx
+	conflicts = dlx
+	source = deeplx-git::git+https://github.com/OwO-Network/DLX.git
 	source = deeplx-git.install
 	sha256sums = SKIP
-	sha256sums = 3962c9e75073e0dac0088a55d3574cc8cb104031837876422281081a32d332d3
+	sha256sums = e8544a1bf2c25684212a7f55cca88748636bacedadf7e2ac7bb0d55285f96f1f
 
 pkgname = deeplx-git

@@ -2,13 +2,14 @@ post_install() {
 cat << EOF
 ----------------------------------------------
 1. Set up start and enable on boot using systemd:
-  Root privileges: systemctl enable --now deeplx.service
+  Root privileges: systemctl enable --now dlx.service
 2. Check the status using systemd:
-  Root privileges: systemctl status deeplx.service
+  Root privileges: systemctl status dlx.service
 3. Listening at:
-  Recommended: http://localhost:1188
-  IPv4: http://127.0.0.1:1188
-  IPv6: http://[::]:1188
+  Recommended: 
+  curl -X POST http://localhost:1188/translate \
+    -H "Content-Type: application/json" \
+    -d '{"text": "Hello, world!", "source_lang": "EN", "target_lang": "ZH"}'
 -----------------------------------------------
 EOF
 

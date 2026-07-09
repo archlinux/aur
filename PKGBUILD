@@ -1,14 +1,14 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=deeplx-git
-pkgver=1.2.2.r0.g432c0a2
+pkgver=1.2.2.r8.g770f63b
 pkgrel=1
-pkgdesc="DeepL Free API (No TOKEN required)"
+pkgdesc="DLX - Self-hosted translation API server. Unofficial; not affiliated with DeepL SE"
 arch=($CARCH)
-url="https://github.com/OwO-Network/DeepLX"
+url="https://github.com/OwO-Network/DLX"
 license=('MIT')
-provides=(${pkgname%-git})
-conflicts=(${pkgname%-git})
+provides=(dlx)
+conflicts=(dlx)
 replaces=()
 depends=(glibc)
 optdepends=()
@@ -19,7 +19,7 @@ install=${pkgname}.install
 source=("${pkgname}::git+${url}.git"
     ${pkgname}.install)
 sha256sums=('SKIP'
-            '3962c9e75073e0dac0088a55d3574cc8cb104031837876422281081a32d332d3')
+            'e8544a1bf2c25684212a7f55cca88748636bacedadf7e2ac7bb0d55285f96f1f')
 
 export CGO_CPPFLAGS="${CPPFLAGS}"
 export CGO_CFLAGS="${CFLAGS}"
@@ -51,12 +51,14 @@ build() {
     export GOPROXY=https://goproxy.cn,direct
 
     mkdir -pv build/
-    go build -o build
+    go build -o build/dlx
 }
 
 package() {
     cd "${srcdir}/${pkgname}"
 
-    install -Dm755 build/DeepLX ${pkgdir}/usr/bin/${pkgname%-git}
-    install -Dm0644 deeplx.service -t "${pkgdir}/usr/lib/systemd/system/"
+    install -Dm755 build/dlx -t "${pkgdir}/usr/bin/"
+    install -Dm644 *.service -t "${pkgdir}/usr/lib/systemd/system/"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
