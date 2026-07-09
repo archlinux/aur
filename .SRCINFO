@@ -1,7 +1,7 @@
 pkgbase = jay-aur
 	pkgdesc = A lightweight, semantic AUR helper wrapper for Arch Linux
 	pkgver = 7.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xmlzitos154/jay
 	arch = any
 	license = MIT
