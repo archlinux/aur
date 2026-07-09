@@ -1,7 +1,7 @@
 # Maintainer: AntheaLaffy <anthealaffy@gmail.com>
 pkgname=mvsep-gui
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="MVSEP GUI - Music separation desktop application"
 arch=('x86_64')
 url="https://github.com/AntheaLaffy/mvsep-rs"
@@ -23,7 +23,7 @@ prepare() {
 
   export CARGO_HOME="${srcdir}/cargo"
 
-  cargo fetch --locked
+  cargo fetch
 }
 
 build() {

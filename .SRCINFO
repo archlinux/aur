@@ -1,7 +1,7 @@
 pkgbase = mvsep-gui
 	pkgdesc = MVSEP GUI - Music separation desktop application
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AntheaLaffy/mvsep-rs
 	arch = x86_64
 	license = Apache-2.0
