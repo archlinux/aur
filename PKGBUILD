@@ -2,7 +2,7 @@
 pkgname=youwee-bin
 _pkgname=Youwee
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautifull YouTube, TikTok, Instagram and 1800+ sites downloader (yt-dlp GUI) and AI summary video content for cross-platform."
 arch=('x86_64')
 url="https://github.com/vanloctech/youwee"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/vanloctech/youwee/v${pkgver}/LICENSE"
 )
 sha256sums=('8b1e8197bc1b0307759558d3fbcaddf57dcb0fde7433cb33d9ba7d0299602efb'
-            'be375f988f20aae5edbc8a986413f2fb132f45cf6bf2615e4446294094f4828c')
+            '1cea78a161f726406b7611610171f5ac0e42b620126334e1150084179faf5b7b')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/Categories=/Categories=AudioVideo;Utility/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
