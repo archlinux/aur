@@ -1,12 +1,12 @@
 pkgbase = briar-desktop-git
 	pkgdesc = Prototyping the next generation for Briar on desktop devices
-	pkgver = r597.cf74f07
+	pkgver = 0.6.5.beta.r1.g16ef1ae
 	pkgrel = 1
 	url = https://code.briarproject.org/briar/briar-desktop
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = GPL
+	license = AGPL-3.0-or-later
 	makedepends = git
 	makedepends = java-environment=17
 	depends = java-runtime=17
@@ -14,7 +14,8 @@ pkgbase = briar-desktop-git
 	provides = briar-desktop
 	conflicts = briar-desktop
 	source = briar-desktop::git+https://code.briarproject.org/briar/briar-desktop.git
-	source = briar::git+https://code.briarproject.org/briar/briar
+	source = briar::git+https://code.briarproject.org/briar/briar.git
+	source = briar-mailbox::git+https://code.briarproject.org/briar/briar-mailbox.git
 	source = briar16.png
 	source = briar32.png
 	source = briar48.png
@@ -22,6 +23,7 @@ pkgbase = briar-desktop-git
 	source = briar128.png
 	source = briar192.png
 	source = briar-desktop.desktop
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 965d7c617e345b809f84c8bf73d9cb0acaf763c16a4b367698218b90c1c92669
