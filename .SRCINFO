@@ -1,0 +1,24 @@
+pkgbase = cloudmusicplayer
+	pkgdesc = A Linux music player for NetEase Cloud Music, based on Rust + GTK4
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/b1ngggg/CloudMusicPlayer
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = meson
+	makedepends = curl
+	depends = gtk4
+	depends = libadwaita
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-libav
+	depends = json-glib
+	depends = libsoup3
+	depends = curl
+	source = https://github.com/b1ngggg/CloudMusicPlayer/archive/v1.0.3.tar.gz
+	sha256sums = cf69f8ea4e63ade127c8bc9676911de5a5d345e9aa9c72c55f829859b6be5c72
+
+pkgname = cloudmusicplayer
