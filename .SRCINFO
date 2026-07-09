@@ -1,6 +1,6 @@
 pkgbase = scrop-bin
 	pkgdesc = Precise Wayland region selector with resize and confirm controls
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/ferdinankurnian/scrop
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = scrop-bin
 	depends = pango
 	provides = scrop
 	conflicts = scrop
-	source = scrop-0.1.1-x86_64.tar.gz::https://github.com/ferdinankurnian/scrop/releases/download/v0.1.1/scrop-0.1.1-x86_64.tar.gz
-	sha256sums = a9a322b039ef388cbfaaea1e2573ac7af0ed421e9dd9795e6b409c6d64b79dcb
+	source = scrop-0.1.2-x86_64.tar.gz::https://github.com/ferdinankurnian/scrop/releases/download/v0.1.2/scrop-0.1.2-x86_64.tar.gz
+	sha256sums = 5b24fd4ceafc0137399d90da636192395561ae95a0a7e63a2f23d3cc797bd829
 
 pkgname = scrop-bin
