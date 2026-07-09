@@ -1,0 +1,14 @@
+pkgbase = tilekeeper
+	pkgdesc = Per-workspace tiling layout manager for Sway/Wayland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mschulkind-oss/tilekeeper
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	optdepends = sway: the Wayland compositor tilekeeper manages
+	source = tilekeeper-0.1.0.tar.gz::https://github.com/mschulkind-oss/tilekeeper/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 32dcefca670b5fbb27daf8044ee9ac96da71f0759f4347e3b3127f5b554aa53e
+
+pkgname = tilekeeper
