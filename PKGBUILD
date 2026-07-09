@@ -1,14 +1,14 @@
 # Maintainer: Kanehekili (mat dot wegmann at gmail dot com)
 pkgname=videomerge
-pkgver=2.0.0
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Simple and fast mp4/matroska/Av1/webm/mp2/mpts Video merger"
 url="https://github.com/kanehekili/VideoMerge"
 license=('GPL2')
 depends=('python-pyqt6' 'ffmpeg')
 arch=('any')
-source=(https://github.com/kanehekili/VideoMerge/releases/download/2.0.0/videomerge2.0.0.tar)
-md5sums=(0eb967f76c14259b3b6a29c12af84541)
+source=(https://github.com/kanehekili/VideoMerge/releases/download/2.1.0/videomerge2.1.0.tar)
+md5sums=(22a852fec0fe55dc6787a1494b304380)
 
 
 package(){	
