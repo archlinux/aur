@@ -19,7 +19,7 @@ pkgbase = c++utilities-git
 	depends = libarchive
 	optdepends = c++utilities-doc: API documentation
 	provides = libc++utilities-git.so
-	source = cpp-utilities::git+https://martchus.dyn.f3l.de/gitea/Martchus/cpp-utilities.git
+	source = cpp-utilities::git+https://github.com/Martchus/cpp-utilities.git
 	sha256sums = SKIP
 
 pkgname = c++utilities-git
