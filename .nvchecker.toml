@@ -1,0 +1,4 @@
+[lfk]
+source = "git"
+git = "https://github.com/janosmiko/lfk.git"
+prefix = "v"
