@@ -10,7 +10,7 @@
 
 pkgname=python-mineru
 _pkgname=mineru
-pkgver=3.4.2
+pkgver=3.4.3
 pkgrel=1
 pkgdesc='A practical document parsing tool for converting PDF, images, DOCX, PPTX, and XLSX into Markdown and JSON'
 arch=('any')
@@ -64,7 +64,7 @@ optdepends=(
     'python-boto3: S3 storage support'
 )
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/opendatalab/MinerU/archive/refs/tags/$_pkgname-$pkgver-released.tar.gz")
-b2sums=('SKIP')
+b2sums=('5df2f15e1201198cd41c667784d2ad3ed09e28762854e2414bf8046f13976d18')
 
 build() {
     cd "MinerU-$_pkgname-$pkgver-released"
