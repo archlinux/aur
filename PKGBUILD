@@ -1,7 +1,7 @@
 # Maintainer: Ayushmaan Padhi
 
 pkgname='hplip-minimal'
-pkgver=3.25.6
+pkgver=3.26.4
 pkgrel=1
 pkgdesc='Only printer drivers from HPLIP with proprietary binary plugin'
 arch=('x86_64')
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 options=(!makeflags)
 
 prepare() {
-  curl -A "Mozilla/0.0 (Linux x86_64) Chromium/0.0.0.0" -O https://developers.hp.com/sites/default/files/2025-08/hplip-$pkgver-plugin.run
+  curl -A "Mozilla/0.0 (Linux x86_64) Chromium/0.0.0.0" -O https://developers.hp.com/sites/default/files/2026-05/hplip-$pkgver-plugin.run
   sh "hplip-$pkgver-plugin.run" --target "$srcdir/hplip-$pkgver" --noexec
   
   cd "hplip-$pkgver"

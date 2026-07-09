@@ -1,6 +1,6 @@
 pkgbase = hplip-minimal
 	pkgdesc = Only printer drivers from HPLIP with proprietary binary plugin
-	pkgver = 3.25.6
+	pkgver = 3.26.4
 	pkgrel = 1
 	url = https://developers.hp.com/hp-linux-imaging-and-printing/
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = hplip-minimal
 	options = !makeflags
 	backup = etc/hp/hplip.conf
 	backup = var/lib/hp/hplip.state
-	source = https://downloads.sourceforge.net/hplip/hplip-3.25.6.tar.gz
+	source = https://downloads.sourceforge.net/hplip/hplip-3.26.4.tar.gz
 	source = hplip-pserror-c99.patch
 	source = hplip-missing-drivers.patch
 	sha256sums = SKIP
