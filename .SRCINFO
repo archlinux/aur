@@ -1,6 +1,6 @@
 pkgbase = python-zipremove
 	pkgdesc = Extends `zipfile` with `remove`-related functionalities
-	pkgver = 0.8.0
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/danny0838/zipremove
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-zipremove
 	makedepends = python-wheel
 	depends = python
 	options = !debug
-	source = python-zipremove-0.8.0.tar.gz::https://github.com/danny0838/zipremove/archive/refs/tags/0.8.0.tar.gz
-	sha256sums = ee894ece5feb4d796c798cb8b7ee73710974835b91459c56496159abe237522c
+	source = python-zipremove-0.8.2.tar.gz::https://github.com/danny0838/zipremove/archive/refs/tags/v0.8.2.tar.gz
+	sha256sums = 3368d767467310ab95ad7a047eff24cf59094632a75e3440786c4e417f87e443
 
 pkgname = python-zipremove

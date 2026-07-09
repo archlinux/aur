@@ -2,7 +2,7 @@
 
 pkgname=python-zipremove
 _pkgname="${pkgname/python-/}"
-pkgver=0.8.0
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='Extends `zipfile` with `remove`-related functionalities'
 arch=('any')
@@ -16,8 +16,8 @@ makedepends=(
   python-wheel
 )
 options=(!debug)
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('ee894ece5feb4d796c798cb8b7ee73710974835b91459c56496159abe237522c')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('3368d767467310ab95ad7a047eff24cf59094632a75e3440786c4e417f87e443')
 
 build() {
   cd "${_pkgname}-${pkgver}"
