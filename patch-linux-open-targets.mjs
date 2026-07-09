@@ -79,6 +79,9 @@ const codeArgsPattern =
 const codeArgsPatternAlternate =
   /(?:var |,)([A-Za-z_$][\w$]*)=\([A-Za-z_$][\w$]*,t,n,r,i\)=>n!=null&&(?:[A-Za-z_$][\w$]*\.)?[A-Za-z_$][\w$]*\(n\)&&\(r!=null\|\|i!=null\)\?[A-Za-z_$][\w$]*\(\{hostConfig:n,location:t,remotePath:i,remoteWorkspaceRoot:r\}\):[A-Za-z_$][\w$]*\([A-Za-z_$][\w$]*,t\)[,;]/;
 
+const codeArgsPatternGeneral =
+  /(?:var |,)([A-Za-z_$][\w$]*)=\(([A-Za-z_$][\w$]*),([A-Za-z_$][\w$]*),([A-Za-z_$][\w$]*),([A-Za-z_$][\w$]*),([A-Za-z_$][\w$]*)\)=>\4!=null&&(?:[A-Za-z_$][\w$]*\.)?[A-Za-z_$][\w$]*\(\4\)&&\(\5!=null\|\|\6!=null\)\?[A-Za-z_$][\w$]*\(\{hostConfig:\4,location:\3,remotePath:\6,remoteWorkspaceRoot:\5\}\):[A-Za-z_$][\w$]*\(\2,\3\)[,;]/;
+
 const openPathPattern =
   /async function ([A-Za-z_$][\w$]*)\(e\)\{let t=await [A-Za-z_$][\w$]*\.shell\.openPath\(e\);if\(t\)throw Error\(t\)\}/;
 const expectedTargets = ["vscode", "vscodeInsiders", "cursor", "windsurf", "zed", "fileManager"];
@@ -142,7 +145,7 @@ for (const targetFile of targetFiles) {
     }
   }
 
-  const codeArgsMatch = source.match(codeArgsPattern) ?? source.match(codeArgsPatternAlternate);
+  const codeArgsMatch = source.match(codeArgsPattern) ?? source.match(codeArgsPatternAlternate) ?? source.match(codeArgsPatternGeneral);
   if (!codeArgsMatch) {
     fail(`could not find VS Code-compatible open-target args helper in ${targetFile}`);
   }

@@ -29,7 +29,29 @@ fi
 export CODEX_CLI_PATH="${CODEX_CLI_PATH:-$(command -v codex || true)}"
 export BUILD_FLAVOR="${BUILD_FLAVOR:-prod}"
 export NODE_ENV="${NODE_ENV:-production}"
-export ELECTRON_RENDERER_URL="${ELECTRON_RENDERER_URL:-http://localhost:5175/}"
+webview_cache_version=""
+if [[ -f "${appdir}/resources/app.asar" ]]; then
+  webview_cache_version="$(stat -c '%Y-%s' "${appdir}/resources/app.asar" 2>/dev/null || true)"
+fi
+
+if [[ -n "${config_home}" && -n "${webview_cache_version}" ]]; then
+  state_dir="${config_home}/Codex"
+  version_file="${state_dir}/aur-webview-cache-version"
+  previous_version=""
+  [[ -f "${version_file}" ]] && previous_version="$(<"${version_file}")"
+
+  if [[ "${previous_version}" != "${webview_cache_version}" ]]; then
+    rm -rf "${state_dir}/Cache" "${state_dir}/Code Cache"
+    mkdir -p "${state_dir}"
+    printf '%s\n' "${webview_cache_version}" >"${version_file}"
+  fi
+fi
+
+renderer_url="http://localhost:5175/"
+if [[ -n "${webview_cache_version}" ]]; then
+  renderer_url="http://localhost:5175/?aurWebviewVersion=${webview_cache_version}"
+fi
+export ELECTRON_RENDERER_URL="${ELECTRON_RENDERER_URL:-${renderer_url}}"
 
 http_pid=""
 electron_pid=""
@@ -77,6 +99,12 @@ fail_file = sys.argv[4]
 os.chdir(root)
 
 class Handler(http.server.SimpleHTTPRequestHandler):
+    def end_headers(self):
+        self.send_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+        self.send_header("Pragma", "no-cache")
+        self.send_header("Expires", "0")
+        super().end_headers()
+
     def log_message(self, fmt, *args):
         pass
 

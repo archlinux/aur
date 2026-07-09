@@ -3,7 +3,7 @@
 # Releases: https://persistent.oaistatic.com/codex-app-prod/appcast.xml
 
 pkgname=openai-codex-desktop
-pkgver=26.623.141536
+pkgver=26.707.30751
 pkgrel=2
 pkgdesc="OpenAI Codex desktop app"
 arch=('x86_64')
@@ -28,9 +28,10 @@ makedepends=(
 _electron_major=39
 _better_sqlite3_ver=12.9.0
 _node_pty_ver=1.1.0
+_upstream_app=ChatGPT
 
 source=(
-  "Codex-${pkgver}.zip::https://persistent.oaistatic.com/codex-app-prod/Codex-darwin-arm64-${pkgver}.zip"
+  "${_upstream_app}-${pkgver}.zip::https://persistent.oaistatic.com/codex-app-prod/${_upstream_app}-darwin-arm64-${pkgver}.zip"
   "better-sqlite3.tgz::https://registry.npmjs.org/better-sqlite3/-/better-sqlite3-${_better_sqlite3_ver}.tgz"
   "node-pty.tgz::https://registry.npmjs.org/node-pty/-/node-pty-${_node_pty_ver}.tgz"
   "codex-desktop.sh"
@@ -39,29 +40,29 @@ source=(
 )
 
 noextract=(
-  "Codex-${pkgver}.zip"
+  "${_upstream_app}-${pkgver}.zip"
   'better-sqlite3.tgz'
   'node-pty.tgz'
 )
 
-sha256sums=('d948dc36b8358f5a2924b033fbf08398eea7860dc9e97cb5ab9b354490283a0a'
+sha256sums=('f81023845ae56ebb98b349e4bc81d7b490533564897cea0ea4fc4a17104f3892'
             'ad0e29650140c49d0335b1d356596aa8166f12b758f418a98446130e3278f250'
             'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
-            '2e075990f5419d66dd98c83e4ec938d5497d1a4ad2e8c766bf3664c35edadf51'
+            '41eaf5bd5e6bc7b3cb788559522a65af6da8774b3e95da977b6cdb2d4340a8a4'
             'd3a00f4a4ddf2709d4f018222866df67d155ca36c9dbfa0dd1867d4c9267808d'
-            '7f01504bc4db700a7eacc6dd763674bde4f50ea7145233595a5c6f8f39e8ab41')
+            'b9303b892b3e0b35333e2cb96052905439105049efc5a8a3706e22a16dc30018')
 
 prepare() {
   cd "${srcdir}"
   rm -rf dmg app-extracted app.asar app.asar.unpacked native-build
   mkdir dmg
 
-  bsdtar -xf "Codex-${pkgver}.zip" -C "${srcdir}/dmg"
+  bsdtar -xf "${_upstream_app}-${pkgver}.zip" -C "${srcdir}/dmg"
 
   local appdir
   appdir="$(find dmg -maxdepth 4 -type d -name '*.app' ! -path '*/__MACOSX/*' | head -n1)"
   [[ -n "${appdir}" ]] || {
-    echo "Could not find .app bundle in Codex archive"
+    echo "Could not find .app bundle in ${_upstream_app} archive"
     return 1
   }
 
