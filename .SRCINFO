@@ -1,6 +1,6 @@
 pkgbase = flyenv-bin
 	pkgdesc = All-In-One Full-Stack Environment Management Tool.Help developers quickly set up a local development environment.(Prebuilt version.Use system-wide electron)
-	pkgver = 4.15.4
+	pkgver = 4.16.1
 	pkgrel = 1
 	url = https://www.flyenv.com/
 	arch = aarch64
@@ -39,15 +39,15 @@ pkgbase = flyenv-bin
 	optdepends = bind
 	optdepends = pure-ftpd
 	optdepends = minio
-	provides = flyenv=4.15.4
+	provides = flyenv=4.16.1
 	conflicts = flyenv
-	source = LICENSE-4.15.4::https://raw.githubusercontent.com/xpf0000/PhpWebStudy/v4.15.4/LICENSE
+	source = LICENSE-4.16.1::https://raw.githubusercontent.com/xpf0000/PhpWebStudy/v4.16.1/LICENSE
 	source = flyenv.sh
 	sha256sums = 01d77fe9ffb39b0a9507ca8d1cae189f56efd625078c3b13b59ce7aae42a4f7d
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = flyenv-4.15.4-aarch64.rpm::https://github.com/xpf0000/FlyEnv/releases/download/v4.15.4/FlyEnv-4.15.4-arm64.rpm
-	sha256sums_aarch64 = bb72e6a347af7b39203aab6ddfdd23767da37d426a6e2655ae09dad8ba629285
-	source_x86_64 = flyenv-4.15.4-x86_64.rpm::https://github.com/xpf0000/FlyEnv/releases/download/v4.15.4/FlyEnv-4.15.4-x64.rpm
-	sha256sums_x86_64 = a920e74162d076eaa92e244eb7026f7b98473799870b8231fa669d4ba612aff2
+	source_aarch64 = flyenv-4.16.1-aarch64.rpm::https://github.com/xpf0000/FlyEnv/releases/download/v4.16.1/FlyEnv-4.16.1-arm64.rpm
+	sha256sums_aarch64 = 5ac4da3cc386a5928d4d159b492bb1dfd6cd71b4f7575340affaf6c88f639c83
+	source_x86_64 = flyenv-4.16.1-x86_64.rpm::https://github.com/xpf0000/FlyEnv/releases/download/v4.16.1/FlyEnv-4.16.1-x64.rpm
+	sha256sums_x86_64 = 3065bcd28a33f3e54c1485432d0fb74e7979af8e9e5b98a4686192e32879e22e
 
 pkgname = flyenv-bin
