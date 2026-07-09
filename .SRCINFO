@@ -1,0 +1,18 @@
+pkgbase = sunset-commander-bin
+	pkgdesc = A TUI file manager for linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/aranor01/sc
+	arch = x86_64
+	license = MIT
+	depends = bash
+	provides = sc
+	provides = sc-action
+	conflicts = sunset-commander
+	options = !strip
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/aranor01/sc/v0.1.0/LICENSE
+	sha256sums = 57af8852adedeaab5160dbbb4e9025fe9807691097deedcdfea84cd9c9a76e25
+	source_x86_64 = sc-x86_64-0.1.0.tgz::https://github.com/aranor01/sc/releases/download/v0.1.0/sc-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = ff4f6bfff6d4315bd7e3c02d7df8991c2032fb1d4a8b9fe1fde88b9ff0f6ad58
+
+pkgname = sunset-commander-bin

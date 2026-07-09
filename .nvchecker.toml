@@ -1,0 +1,5 @@
+[sunset-commander-bin]
+source = "github"
+github = "aranor01/sc"
+use_latest_release = true
+prefix = "v"
