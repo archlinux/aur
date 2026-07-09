@@ -5,16 +5,20 @@ _pkgauthor=Abdenasser
 _pkgname=neohtop
 pkgname=${_pkgname}-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="💪🏻 htop on steroids"
+
 arch=('x86_64')
+license=('MIT')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
-license=('MIT')
-depends=('gtk3' 'webkit2gtk')
+
 makedepends=('tar' 'sed' 'coreutils')
-conflicts=("${_pkgname}")
+depends=('glibc' 'libgcc' 'glib2' 'gtk3' 'cairo' 'gdk-pixbuf2' 'libsoup3' 'webkit2gtk-4.1' 'hicolor-icon-theme')
+
 provides=("${_appname}")
+conflicts=("${_pkgname}")
+
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_appname}_${pkgver}_${arch[0]}.deb")
@@ -34,6 +38,6 @@ package() {
     sed -e 's/Categories=/Categories=System;Utilites;/g' -i "${pkgdir}/usr/share/applications/NeoHtop.desktop"
 
     # install LICENSE and README.md
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "./usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/README-${pkgver}.md" "./usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "./usr/share/licenses/${pkgname}/LICENSE"
 } 
