@@ -10,7 +10,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 install=cmdflow.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c87631efce7d85ad8af7ba06940f629cc4f02765b8e4d3e7c14674c4e0635321')
+sha256sums=('cc87631efce7d85ad8af7ba06940f629cc4f02765b8e4d3e7c14674c4e0635321')
 
 prepare() {
   cd "$pkgname-$pkgver"
