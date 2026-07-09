@@ -20,7 +20,7 @@
 #     There is intentionally no .SRCINFO.template — a hand-maintained one
 #     drifted from this PKGBUILD in the past (tebako-era tarball refs).
 pkgname=hive-bin
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc='Folder-as-agent pipeline for autonomous software tasks'
 arch=('any')
@@ -37,7 +37,7 @@ provides=('hive')
 conflicts=('hive' 'apache-hive')
 install=hive.install
 source=("https://github.com/ivankuznetsov/hive/releases/download/v${pkgver}/hive-cli-${pkgver}.gem")
-sha256sums=('e890aac0def056a3e80ff39b24a7e6abcad81a09fa5ba129f8fcecb6e7aee19e')
+sha256sums=('fccd84e9e0fdaff73f5854f9ea07e7bffcbb52c936694536f01b0f430be164fd')
 noextract=("hive-cli-${pkgver}.gem")
 
 package() {
