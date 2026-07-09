@@ -3,7 +3,7 @@
 
 pkgname=icingaweb2-module-director
 pkgver=1.11.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage Icinga 2 configuration from Icinga Web 2"
 license=('GPL')
 arch=('any')
@@ -26,9 +26,7 @@ package() {
   chmod 2770 "$pkgdir/etc/icingaweb2"
   mkdir -p "$pkgdir/usr/share/webapps/icingaweb2/modules/director"
 
-  cp -r application contrib doc library public schema test \
-    configuration.php module.info run.php run-missingdeps.php register-hooks.php \
-    "$pkgdir/usr/share/webapps/icingaweb2/modules/director"
+  cp -r * "$pkgdir/usr/share/webapps/icingaweb2/modules/director"
 
   install -Dm644 "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
   install -Dm644 "contrib/systemd/icinga-director.service" "$pkgdir/usr/lib/systemd/system/icinga-director.service"
