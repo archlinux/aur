@@ -2,8 +2,8 @@
 # Packager: Peter Semiletov 
 
 pkgname=upsm
-pkgver=3.0.0
-pkgrel=1
+pkgver=3.5.0
+pkgrel=2
 pkgdesc="Qt-based ups monitor (front-end for upsc from Network UPS Tools)."
 arch=('x86_64')
 url="https://github.com/psemiletov/upsm"

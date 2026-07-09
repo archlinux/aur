@@ -1,14 +1,14 @@
 pkgbase = upsm
 	pkgdesc = Qt-based ups monitor (front-end for upsc from Network UPS Tools).
-	pkgver = 3.0.0
-	pkgrel = 1
+	pkgver = 3.5.0
+	pkgrel = 2
 	url = https://github.com/psemiletov/upsm
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	depends = qt6-base
 	depends = gcc-libs
-	source = https://github.com/psemiletov/upsm/archive/3.0.0.tar.gz
+	source = https://github.com/psemiletov/upsm/archive/3.5.0.tar.gz
 	md5sums = 4d5f48905a8e45981c6307c2409fb27a
 
 pkgname = upsm
