@@ -1,7 +1,7 @@
 pkgbase = vicinae-takoba
 	pkgdesc = Japanese dictionary, translator, TTS, and Anki integration for launchers — search Jotoba, translate on the fly, add cards to Anki
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kurojs/Takoba
 	install = takoba.install
 	arch = any

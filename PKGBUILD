@@ -3,7 +3,7 @@
 
 pkgname=vicinae-takoba
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Japanese dictionary, translator, TTS, and Anki integration for launchers — search Jotoba, translate on the fly, add cards to Anki"
 arch=('any')
 url="https://github.com/kurojs/Takoba"
@@ -17,7 +17,9 @@ install=takoba.install
 build() {
   cd "$srcdir/Takoba-$pkgver"
   npm install
-  npm run build:vicinae -- -o "$srcdir/Takoba-$pkgver/dist"
+  node scripts/copy-shim.js vicinae
+  npx vici build -o dist
+  node scripts/copy-dict.js dist
 }
 
 package() {
@@ -28,4 +30,6 @@ package() {
   install -Dm644 assets/icon.png "$pkgdir/usr/share/vicinae-takoba/icon.png"
   install -dm755 "$pkgdir/usr/share/vicinae-takoba/assets"
   install -Dm644 assets/icon.png "$pkgdir/usr/share/vicinae-takoba/assets/icon.png"
+  install -dm755 "$pkgdir/usr/share/vicinae-takoba/dict"
+  install -m644 dist/dict/*.dat.gz "$pkgdir/usr/share/vicinae-takoba/dict/"
 }

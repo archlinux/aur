@@ -6,10 +6,12 @@ _install_for_user() {
   local dst="$home/.local/share/vicinae/extensions/takoba"
   [ -d "$home" ] || return 0
   mkdir -p "$dst/assets"
+  mkdir -p "$dst/dict"
   cp "$_src/takoba.js" "$dst/"
   cp "$_src/package.json" "$dst/"
   cp "$_src/icon.png" "$dst/"
   cp "$_src/icon.png" "$dst/assets/"
+  cp -r "$_src/dict/"* "$dst/dict/"
   chown -R "$user:$user" "$dst"
 }
 
