@@ -2,7 +2,7 @@
 
 pkgname=geary-email-autocomplete-bin
 _pkgname=geary-email-autocomplete
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="GTK3 module that widens Geary recipient autocomplete and adds image copy (prebuilt binary)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=("$_pkgname")
 install="$_pkgname.install"
 options=('!strip' '!debug')
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz")
-sha256sums_x86_64=('a1aed5bfb048748aa7a81dd047c89780224a4299555589b7a1e5dc883a05fea5')
+sha256sums_x86_64=('ee3ecd0693b9f49ea2c3d1273c1d65063d476bfc034c52c5568f436689d14b1a')
 
 package() {
     install -Dm0755 "libgeary-email-autocomplete.so" \
