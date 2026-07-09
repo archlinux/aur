@@ -3,7 +3,7 @@
 
 pkgname=vicinae-takoba
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Japanese dictionary, translator, TTS, and Anki integration for launchers — search Jotoba, translate on the fly, add cards to Anki"
 arch=('any')
 url="https://github.com/kurojs/Takoba"
