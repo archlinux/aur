@@ -3,20 +3,21 @@
 # Contributor: Paulo Castro <p dot oliveira dot castro at gmail dot com>
 
 pkgname=nest
-pkgver=3.9
+pkgver=3.10
 pkgrel=1
 pkgdesc="Simulator for spiking neural network models"
 arch=('x86_64')
-url="https://www.nest-simulator.org/"
+url="https://www.nest-simulator.org"
 license=('GPL-2.0-or-later')
 depends=('bash'
          'cblas'
-         'gcc-libs'
          'glibc'
          'gsl'
          'hdf5'
          'ipython'
-         'libaec'
+         'libgcc'
+         'libgomp'
+         'libstdc++'
          'libtool'
          'ncurses'
          'openmpi'
@@ -31,29 +32,30 @@ depends=('bash'
          'python-pandas'
          'python-pydot'
          'python-scipy'
-         'python-werkzeug'
-         'readline'
-         'zlib')
+         'readline')
 makedepends=('boost' 'cmake' 'cython')
 options=('!docs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nest/nest-simulator/archive/v${pkgver}.tar.gz")
-sha256sums=('8e67b9dcb72b029f24f3d70ff6d3dd64776dc21bf3e458c822c862677d67d076')
+sha256sums=('fd4def89c109e19d50e4630ab56bb9ddd4f15bf0ef735070189f0a83e2416a55')
 
 build() {
-    cmake -B build -S "${pkgname}-simulator-${pkgver}" \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -Dwith-boost=ON \
-        -Dwith-gsl=ON \
-        -Dwith-hdf5=ON \
-        -Dwith-mpi=ON \
-        -Dwith-python=ON \
-        -Wno-dev
+    local cmake_options=(
+        -B build
+        -D CMAKE_BUILD_TYPE=Release
+        -D CMAKE_INSTALL_PREFIX=/usr
+        -D with-boost=ON
+        -D with-gsl=ON
+        -D with-hdf5=ON
+        -D with-mpi=ON
+        -D with-python=ON
+        -S "${pkgname}-simulator-${pkgver}"
+        -W no-dev
+    )
+    cmake "${cmake_options[@]}"
     cmake --build build
 }
 
 package() {
     DESTDIR="${pkgdir}" cmake --install build
-    rm -r "${pkgdir}/usr/bin/run_all_cpptests"
-    rm -r "${pkgdir}/usr/share/nest/testsuite"
+    rm -r "${pkgdir}/usr/bin/run_all_cpptests" "${pkgdir}/usr/share/nest/testsuite"
 }
