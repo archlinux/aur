@@ -2,7 +2,7 @@
 
 _pyname=huey
 pkgname=python-$_pyname
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='huey, a little task queue'
 arch=(any)
@@ -16,7 +16,7 @@ checkdepends=(python-pytest
               python-redis)
 _archive="$_pyname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('356dcb1c0c981e3f03b3382ff5d5fab84235bd06d3b92c8d8e519e014fe8f102')
+sha256sums=('4d021ec9900d372a011649d3a6d74adbf007afbc2afce0f12a815c78c2aff495')
 
 build() {
 	cd "$_archive"
