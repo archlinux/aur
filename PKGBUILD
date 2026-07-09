@@ -1,7 +1,7 @@
 # Maintainer: FranoGames
 
 pkgname=euro-office-desktopeditors-git
-pkgver=r226.966753f
+pkgver=r320.16d1a01
 pkgrel=1
 pkgdesc="Fork of OnlyOffice"
 arch=('x86_64')
@@ -28,8 +28,8 @@ prepare() {
 }
 
 build() {
-  cd "DesktopEditors/build"
-  BUILDX_BAKE_ENTITLEMENTS_FS=0 BUILDX_BUILDER=euro-office-desktopeditors-git docker buildx bake packages
+  cd "DesktopEditors/build/linux"
+  BUILDX_BAKE_ENTITLEMENTS_FS=0 BUILDX_BUILDER=euro-office-desktopeditors-git ./build.sh
   rm -rf /tmp/euro-office
 }
 
