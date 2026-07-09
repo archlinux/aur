@@ -1,0 +1,12 @@
+pkgbase = awiki
+	pkgdesc = A zero-dependency CLI tool to search and read the Arch Wiki directly in your terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = [https://github.com/SmoothCdoer9881/awiki](https://github.com/SmoothCdoer9981/awiki)
+	arch = any
+	license = MIT
+	depends = python
+	source = awiki-1.0.0.tar.gz::[https://github.com/yourusername/awiki/archive/refs/tags/v$](https://github.com/yourusername/awiki/archive/refs/tags/v$){pkgver}.tar.gz
+	sha256sums = ae3c5c8bc00cdc730bae73c9e69139436f3d6c95d760749410f9f0bda5a703b3
+
+pkgname = awiki
