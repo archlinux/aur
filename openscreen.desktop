@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=OpenScreen
-Comment=Create stunning screen recordings for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio.
-Exec=/usr/bin/openscreen
-Icon=/usr/share/icons/hicolor/1024x1024/apps/openscreen.png
-Terminal=false
-Categories=AudioVideo;Recorder;

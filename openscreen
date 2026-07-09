@@ -1,5 +1,0 @@
-#!/bin/sh
-
-DIRECTORY=/opt/openscreen
-
-[[ -f "$DIRECTORY/Openscreen.AppImage" ]] && "$DIRECTORY/Openscreen.AppImage" "$@"

@@ -1,5 +1,5 @@
 pkg/
 src/
 
-openscreen-bin-*.pkg.tar.zst
-openscreen-*.tar.gz
+openscreen-*.pkg.tar.zst
+openscreen-*.pacman

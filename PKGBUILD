@@ -1,87 +1,31 @@
-# Maintainer: AImixAE <AImixAE[at]outlook[dot]com>
+# Maintainer: psychosomat <hello@ddark.dev>
 
 pkgname=openscreen
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
-pkgdesc="Create stunning screen recordings for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio."
-arch=('any')
-url="https://github.com/siddharthvaddem/openscreen"
+pkgdesc="Create stunning demos for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio."
+arch=('x86_64')
+url="https://github.com/getopenscreen/openscreen"
 license=('MIT')
-groups=()
-depends=('fuse')
-makedepends=('nodejs' 'npm')
-optdepends=()
-provides=()
+depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3')
 conflicts=('openscreen-appimage')
 options=(!debug !strip)
+noextract=("openscreen-${pkgver}.pacman")
 source=(
-    "openscreen-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-    "$url/raw/refs/heads/main/LICENSE"
-    "openscreen.desktop"
-    "openscreen"
-    "Build_AppImage_Only.patch"
+    "openscreen-${pkgver}.pacman::https://github.com/getopenscreen/openscreen/releases/download/v${pkgver}/Openscreen-Linux-${pkgver}.pacman"
+    "LICENSE::https://github.com/getopenscreen/openscreen/raw/v${pkgver}/LICENSE"
 )
-sha256sums=('bcf638edc983a3b23c0c39ac422108348ea6efc24b7faa29912d62b6f86d0572' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
-
-_find_appimage() {
-    app="release/$pkgver/Openscreen-Linux-$pkgver.AppImage"
-    [[ ! -f "$app" ]] && app=$(find $srcdir/openscreen-$pkgver/release -regex ".*\.AppImage")
-
-    echo $app
-}
-
-prepare() {
-    patch -p0 < Build_AppImage_Only.patch
-
-    (
-        cd "openscreen-$pkgver"
-        npm i
-    )
-
-    # if [[ -d "openscreen-$pkgver/release" ]]; then
-    #     echo "==> Clearing release dir"
-    #     rm -r "openscreen-$pkgver/release"
-    # fi
-}
-
-build() {
-    (
-        cd "openscreen-$pkgver"
-        npm run build
-    )
-
-    app=$(_find_appimage)
-    appdir=$(dirname $app)
-
-    echo "==> Extracting AppImage..."
-    chmod +x "$app"
-    (
-        cd "$appdir"
-        "$app" --appimage-extract > /dev/null
-    )
-}
-
-check() {
-    app=$(_find_appimage)
-    appdir=$(dirname $app)
-
-    [[ -f "$app" ]]
-}
+sha256sums=('2e53b8372a053c67ad775746b6c4fe4b856e9a0f9441e03ac9a67a56281db603' 'd8824b8c038eba113227cc707ac22c7a497583ae6115b052729a1d104f692d82')
 
 package() {
-    app=$(_find_appimage)
-    appdir=$(dirname $app)
+    local extractdir="$srcdir/pacman-extract"
+    mkdir -p "$extractdir"
+    bsdtar -xf "$srcdir/openscreen-$pkgver.pacman" -C "$extractdir"
 
-    install -Dm755 "$srcdir/openscreen" "$pkgdir/usr/bin/openscreen"
-    install -Dm755 "$app" "$pkgdir/opt/openscreen/Openscreen.AppImage"
-    install -Dm755 "$srcdir/openscreen.desktop" "$pkgdir/usr/share/applications/openscreen.desktop"
+    cp -a "$extractdir/usr" "$extractdir/opt" "$pkgdir/"
 
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/openscreen/LICENSE"
+    install -d "$pkgdir/usr/bin"
+    ln -sf "/opt/Openscreen/openscreen" "$pkgdir/usr/bin/openscreen"
 
-    icon_types="16 24 32 48 64 128 256 512 1024"
-    for num in $icon_types; do
-        install -Dm644 \
-            "$appdir/squashfs-root/usr/share/icons/hicolor/${num}x${num}/apps/openscreen.png" \
-            "$pkgdir/usr/share/icons/hicolor/${num}x${num}/apps/openscreen.png"
-    done
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/openscreen/LICENSE"
 }
