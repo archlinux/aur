@@ -1,6 +1,6 @@
 # Maintainer: AntheaLaffy <anthealaffy@gmail.com>
 pkgname=mvsep-gui
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="MVSEP GUI - Music separation desktop application"
 arch=('x86_64')
@@ -19,10 +19,10 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 sha256sums=('SKIP')
 
 prepare() {
-  cd "${srcdir}/mvsep-rs-${pkgver}"
-  
+  cd "${srcdir}/mvsep-rs-${pkgver}/src-tauri"
+
   export CARGO_HOME="${srcdir}/cargo"
-  
+
   cargo fetch --locked
 }
 
