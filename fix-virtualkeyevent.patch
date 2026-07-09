@@ -1,0 +1,15 @@
+diff --git a/src/virtualkeygeneral.cpp b/src/virtualkeygeneral.cpp
+index 1fd93ea..45f8633 100644
+--- a/src/virtualkeygeneral.cpp
++++ b/src/virtualkeygeneral.cpp
+@@ -23,8 +23,9 @@ void NormalKey::click(VirtualKeyboard *keyboard, InputContext *inputContext, boo
+         keyboard->sendShiftModifierToIM(inputContext, false);
+     }
+ 
+-    auto event = KeyEvent(inputContext, convert(keyboard->isShiftOn()), isRelease);
+-    inputContext->virtualKeyEvent(event);
++    auto event = VirtualKeyboardEvent(inputContext, isRelease);
++    event.setKey(convert(keyboard->isShiftOn()));
++    inputContext->virtualKeyboardEvent(event);
+ 
+     if (keyboard->isShiftOn()) {

@@ -1,0 +1,31 @@
+pkgbase = fcitx5-virtualkeyboard-ui-git
+	pkgdesc = Wayland virtual keyboard UI module for Fcitx5
+	pkgver = 5.0.0.r38.gd451680
+	pkgrel = 1
+	url = https://github.com/clear-code/fcitx5-virtualkeyboard-ui
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = fmt
+	makedepends = git
+	makedepends = ninja
+	makedepends = wayland-protocols
+	depends = cairo
+	depends = fcitx5>=5.0.14
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = pango
+	depends = wayland
+	optdepends = fcitx5-anthy: Japanese virtual keyboard support
+	optdepends = fcitx5-chewing: Traditional Chinese virtual keyboard support
+	optdepends = fcitx5-chinese-addons: Simplified Chinese virtual keyboard support
+	optdepends = fcitx5-hangul: Korean virtual keyboard support
+	provides = fcitx5-virtualkeyboard-ui
+	conflicts = fcitx5-virtualkeyboard-ui
+	source = git+https://github.com/clear-code/fcitx5-virtualkeyboard-ui.git
+	source = fix-virtualkeyevent.patch
+	sha256sums = SKIP
+	sha256sums = a3ebeedfc5073ea7c353848458da4934023bac6f0563b072d1408a1eb2068feb
+
+pkgname = fcitx5-virtualkeyboard-ui-git
