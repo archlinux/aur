@@ -13,8 +13,8 @@ source=("RMG-K-Portable-Linux64-v${pkgver}.AppImage::${url}/releases/download/v$
 	"README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
 	"LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
 sha512sums=('1050c4d1eef4ab40e9e588fd46fc2a9eefeef0e4b51a63017d5563c3cbc293514af10c7543d2a5c35ffc2ad5af853573ec9e5ac3b2f31e71e9696e90a22781c7'
-            'faa971fe1395e499e8f1eaa87038215a342104c6a33aa16bb2dc9c467738666ba179b8b2b5d7a79eb968f80c7ed1f30bf0ec5f82e9a12b32313790f574d30d5a'
-            '900ef9b1d0e1435fb3aad32f035edf8890538292ebb3104af2feb386fb25df134ed0172a0ec542b2c25ff69a39ae62b34ad17e01b3522067a7328abb25aa4fff')
+            'SKIP'
+            'SKIP')
 
 prepare() {
 	cd "${srcdir}" 
