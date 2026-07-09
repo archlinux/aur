@@ -2,7 +2,7 @@
 _prams=(fr_FR 7884 'Logiciel de création CEWE' 8.0.4 "CEWE France")
 
 pkgname="cewe-france"
-pkgver=8.0.4
+pkgver=8.1.3
 pkgrel=1
 
 ## Begin shared code ##
@@ -29,7 +29,7 @@ conflicts=(${conflicts[@]/$pkgname/})
 
 url="http://www.cewe.de/"
 license=("custom:eula")
-depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy' 'libxcrypt-compat')
+depends=('libx11' 'libjpeg-turbo' 'curl' 'wget' 'snappy' 'libxcrypt-compat')
 makedepends=('p7zip' 'xdg-utils')
 arch=('i686' 'x86_64')
 source=($source)
