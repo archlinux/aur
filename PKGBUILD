@@ -22,6 +22,7 @@ prepare() {
 package() {
     cd squashfs-root
     install -D resources/app.asar ${pkgdir}/opt/oss-browser2/app.asar
+    install -D resources/assets/logo256.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/oss-browser2.png
     install -D usr/share/icons/hicolor/1024x1024/apps/oss-browser2.png \
 	${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/oss-browser2.png
     install -D oss-browser2.desktop ${pkgdir}/usr/share/applications/oss-browser2.desktop
