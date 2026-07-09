@@ -1,0 +1,20 @@
+pkgbase = flowtoys-updater-bin
+	pkgdesc = Firmware updater for flowtoys
+	pkgver = 1.1.9
+	pkgrel = 1
+	url = https://github.com/jon4hz/flowlix
+	license = GPL-3.0
+	depends = libx11
+	depends = libxext
+	depends = libxinerama
+	depends = freetype2
+	depends = curl
+	depends = libusb
+	depends = alsa-lib
+	conflicts = flowtoys-updater
+	provides = flowtoys-updater
+	arch = x86_64
+	source_x86_64 = https://github.com/jon4hz/flowlix/releases/download/v1.1.9/flowtoys-updater_1.1.9_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5bfa9f03a2b39e8bb8740e0a7f28535255c4bb75e2212d35d6003a53e74db838
+	
+pkgname = flowtoys-updater-bin
