@@ -1,6 +1,6 @@
 pkgbase = hpr
 	pkgdesc = Offline zero-account activity tracker
-	pkgver = 0.9.3
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://github.com/plexescor/HPR
 	install = hpr.install
@@ -13,7 +13,7 @@ pkgbase = hpr
 	depends = glibc
 	depends = dbus
 	depends = curl
-	source = hpr-0.9.3.tar.gz::https://github.com/plexescor/HPR/archive/refs/tags/v0.9.3.tar.gz
+	source = hpr-0.9.4.tar.gz::https://github.com/plexescor/HPR/archive/refs/tags/v0.9.4.tar.gz
 	source = Slint-cpp-1.16.1-Linux-x86_64.tar.gz::https://github.com/slint-ui/slint/releases/download/v1.16.1/Slint-cpp-1.16.1-Linux-x86_64.tar.gz
 	sha256sums = SKIP
 	sha256sums = SKIP
