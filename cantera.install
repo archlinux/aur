@@ -1,0 +1,12 @@
+post_install() {
+    echo ">>> NOTE: Optional tutorial and example mechanism files (from the"
+    echo ">>> cantera-example-data repository) are not installed by default."
+    echo ">>> If you need them for running examples/tutorials, you can clone them:"
+    echo ">>>   git clone https://github.com/Cantera/cantera-example-data"
+    echo ">>> and set the CANTERA_DATA environment variable to point to them:"
+    echo ">>>   export CANTERA_DATA=/path/to/cantera-example-data"
+}
+
+post_upgrade() {
+    post_install
+}

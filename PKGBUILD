@@ -5,7 +5,7 @@
 _pkgname=cantera
 pkgname="${_pkgname}"
 pkgver=3.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='suite of tools for kinetics, thermodynamics, and transport processes'
 arch=('x86_64')
 url='https://cantera.org/'
@@ -13,10 +13,11 @@ license=('custom:Cantera Developers'
          'custom:Sandia Corporation Contract AC04-94AL85000'
          'custom:California Institute of Technology')
 depends=('python-numpy' 'openmp' 'yaml-cpp' 'fmt' 'boost-libs' 'sundials-seq' 'python' 'hdf5')
-makedepends=('scons' 'git' 'gcc' 'doxygen' 'cython' 'eigen' 'boost' 'python-pip' 'python-setuptools' 'patch') 
+makedepends=('scons' 'git' 'gcc' 'doxygen' 'cython' 'eigen' 'boost' 'python-pip' 'python-setuptools' 'patch' 'highfive') 
 checkdepends=('gtest' 'gmock' 'python-ruamel-yaml' 'python-pytest')
 conflicts=('cantera-git')
 provides=('libcantera_shared.so=2-64')
+install=cantera.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Cantera/cantera/archive/v${pkgver}.tar.gz")
 sha256sums=('f01e25e33f9d5e37db7ababe5af36b60caabff52dba04bb221d53e44735f60ec')
 
@@ -25,6 +26,9 @@ prepare() {
     cd "$_pkgname"
     sed -i 's/self._selected_species.resize(len(species))/self._selected_species = np.empty(len(species), dtype=np.uint64)/' \
         interfaces/cython/cantera/solutionbase.pyx
+
+    # Fix python package configuration when example_data is disabled
+    sed -i '/cantera.data.example_data/d' interfaces/cython/setup.cfg.in
 }
 
 build() {
@@ -37,9 +41,11 @@ build() {
         system_fmt='y' \
         googletest='system' \
         hdf_support='y' \
+        system_highfive='y' \
         system_yamlcpp='y' \
         system_blas_lapack='y' \
-        python_package='y'
+        python_package='y' \
+        example_data='n'
     scons doxygen
     scons samples
 }
@@ -59,7 +65,7 @@ package() {
 
   # Fix pkg-config file, because of conflits with install in the /usr dir
   pcfile="$pkgdir/usr/lib/pkgconfig/cantera.pc"
-  cat > "$pcfile" <<'EOF'
+  cat > "$pcfile" <<EOF
 prefix=/usr
 exec_prefix=${prefix}
 libdir=${prefix}/lib
@@ -68,7 +74,7 @@ includedir=${prefix}/include
 Name: Cantera
 Description: Cantera library
 URL: https://cantera.org
-Version: 3.1.0
+Version: ${pkgver}
 
 Libs: -L${libdir} -lcantera_shared -lfmt -lpthread
 Cflags: -std=c++17 -pthread
