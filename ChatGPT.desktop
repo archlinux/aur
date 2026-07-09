@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=ChatGPT
+Comment=ChatGPT desktop app
+Exec=chatgpt-desktop %U
+Icon=chatgpt-desktop
+Terminal=false
+Type=Application
+Categories=Development;Utility;
+MimeType=x-scheme-handler/codex;
+StartupNotify=true
+StartupWMClass=ChatGPT
