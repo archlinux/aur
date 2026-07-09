@@ -1,0 +1,34 @@
+_waypin_hyprland_notice() {
+  cat <<'EOF'
+==> Waypin Hyprland setup
+    The global-shortcut daemon is disabled until you configure it.
+
+    1. Add this to ~/.config/hypr/hyprland.lua:
+         hl.bind("SUPER + V", hl.dsp.global("waypin:toggle"))
+
+    2. Reload Hyprland:
+         hyprctl reload
+
+    3. Enable the user service:
+         systemctl --user enable --now waypin.service
+
+    Verify the registered shortcut with:
+         hyprctl globalshortcuts
+
+    The service only starts in Hyprland sessions. To troubleshoot it:
+         journalctl --user -u waypin.service -e
+EOF
+}
+
+post_install() {
+  _waypin_hyprland_notice
+}
+
+post_upgrade() {
+  cat <<'EOF'
+==> Waypin was upgraded.
+    Restart an enabled background daemon to use the new version:
+         systemctl --user restart waypin.service
+EOF
+  _waypin_hyprland_notice
+}
