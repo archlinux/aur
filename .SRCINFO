@@ -1,6 +1,6 @@
 pkgbase = mariadb-git
 	pkgdesc = Fast SQL database server, derived from MySQL
-	pkgver = 12.3.2.r5.g8fd382a
+	pkgver = 12.3.2.r283.g8da3462
 	pkgrel = 1
 	url = https://mariadb.org/
 	arch = x86_64
@@ -69,17 +69,17 @@ pkgname = mariadb-libs-git
 
 pkgname = mariadb-clients-git
 	pkgdesc = MariaDB client tools
-	depends = mariadb-libs-git=12.3.2.r5.g8fd382a
+	depends = mariadb-libs-git=12.3.2.r283.g8da3462
 	depends = ncurses
 	depends = libncursesw.so
-	provides = mysql-clients=12.3.2.r5.g8fd382a
+	provides = mysql-clients=12.3.2.r283.g8da3462
 	conflicts = mariadb-clients
 	conflicts = mysql-clients
 
 pkgname = mariadb-git
 	pkgdesc = Fast SQL database server, derived from MySQL
 	install = mariadb.install
-	depends = mariadb-clients-git=12.3.2.r5.g8fd382a
+	depends = mariadb-clients-git=12.3.2.r283.g8da3462
 	depends = bzip2
 	depends = libbz2.so
 	depends = coreutils
@@ -100,8 +100,8 @@ pkgname = mariadb-git
 	optdepends = perl-dbd-mariadb: for mariadb-hotcopy, mariadb-convert-table-format and mariadb-setpermission
 	optdepends = python-mysqlclient: for myrocks_hotbackup
 	optdepends = xz: lzma provider
-	provides = mariadb-server=12.3.2.r5.g8fd382a
-	provides = mysql=12.3.2.r5.g8fd382a
+	provides = mariadb-server=12.3.2.r283.g8da3462
+	provides = mysql=12.3.2.r283.g8da3462
 	conflicts = mariadb
 	conflicts = mysql
 	options = emptydirs
@@ -116,19 +116,20 @@ pkgname = mariadb-git
 	backup = etc/my.cnf.d/server.cnf
 	backup = etc/my.cnf.d/spider.cnf
 
-pkgname = mytop-git
+pkgname = mariadb-mytop-git
 	pkgdesc = Top clone for MariaDB
 	depends = perl
 	depends = perl-dbd-mariadb
 	depends = perl-term-readkey
-	provides = mytop=12.3.2.r5.g8fd382a
+	provides = mariadb-mytop=12.3.2.r283.g8da3462
 	conflicts = mytop
+	conflicts = mariadb-mytop
 
 pkgname = mariadb-pam-git
 	pkgdesc = MariaDB PAM support
-	depends = mariadb=12.3.2.r5.g8fd382a
+	depends = mariadb=12.3.2.r283.g8da3462
 	depends = pam
 	depends = libpam.so
-	provides = mariadb-pam=12.3.2.r5.g8fd382a
+	provides = mariadb-pam=12.3.2.r283.g8da3462
 	conflicts = mariadb-pam
 	backup = etc/security/user_map.conf

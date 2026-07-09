@@ -10,11 +10,11 @@ pkgname=(
   'mariadb-libs-git'
   'mariadb-clients-git'
   'mariadb-git'
-  'mytop-git'
+  'mariadb-mytop-git'
   'mariadb-pam-git')
 pkgdesc='Fast SQL database server, derived from MySQL'
 _pkgver=12.3
-pkgver=12.3.2.r5.g8fd382a
+pkgver=12.3.2.r283.g8da3462
 pkgrel=1
 arch=('x86_64')
 license=('GPL-2.0-only')
@@ -104,8 +104,13 @@ build() {
     -DDEFAULT_CHARSET=utf8mb4
     -DDEFAULT_COLLATION=utf8mb4_unicode_ci
 
+    #    /\    WARNING: This option is kind of insane... One expects that AUTO does allow the
+    #   /\7\     build system to decide. Actually this is not true: Every value (ON / AUTO / OFF)
+    #  /_()_\    sets different default values for the build. Let's go with the most secure,
+    #            should be possible to enable at run time for all components.
+    -DENABLED_LOCAL_INFILE=OFF
+
     # features
-    -DENABLED_LOCAL_INFILE=ON
     -DPLUGIN_EXAMPLE=NO
     -DPLUGIN_FEDERATED=NO
     -DPLUGIN_FEEDBACK=NO
@@ -287,13 +292,13 @@ package_mariadb-git() {
   rm usr/share/man/man1/mysql-test-run.pl.1
 }
 
-package_mytop-git() {
+package_mariadb-mytop-git() {
   pkgdesc='Top clone for MariaDB'
   depends=('perl'
            'perl-dbd-mariadb'
            'perl-term-readkey')
-  conflicts=('mytop')
-  provides=("mytop=${pkgver}")
+  conflicts=('mytop' 'mariadb-mytop')
+  provides=("mariadb-mytop=${pkgver}")
 
   install -D -m0755 build/scripts/mytop "${pkgdir}"/usr/bin/mytop
   install -D -m0755 mariadb/man/mytop.1 "${pkgdir}"/usr/share/man/man1/mytop.1
