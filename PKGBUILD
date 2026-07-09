@@ -1,5 +1,5 @@
 pkgname=('mingw-w64-highs')
-pkgver=1.15.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc='Linear optimization software (mingw-w64)'
 url='https://github.com/ERGO-Code/HiGHS'
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
 depends=('mingw-w64-zlib')
 source=("https://github.com/ERGO-Code/HiGHS/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c3fc3e9ee43e6d562361f8647b4c69f958c95356a1af8bc5a3647f5882230d44')
+sha256sums=('a840d269dff2fafb371dd247df13ad5e026d7ce3b35ad3dc1eedd59bf0c2fb16')
 
 _architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
