@@ -1,10 +1,10 @@
 # Maintainer: Noctalia Team <team@noctalia.dev>
 
 _pkgname=noctalia
-_tagver=5.0.0-beta1
+_tagver=5.0.0-beta2
 pkgname=noctalia
-pkgver=5.0.0_beta1
-pkgrel=3
+pkgver=5.0.0_beta2
+pkgrel=1
 pkgdesc='Lightweight Wayland shell built directly on Wayland and OpenGL ES'
 arch=('x86_64')
 url='https://github.com/noctalia-dev/noctalia'
@@ -44,7 +44,7 @@ makedepends=(
 )
 conflicts=('noctalia-git' 'noctalia-bin')
 source=("${_pkgname}-${_tagver}.tar.gz::${url}/archive/refs/tags/v${_tagver}.tar.gz")
-sha256sums=('b3dbcc19f83e614b280f19ad4786365a6c17f979f47990ec9ef280ae076e9c79')
+sha256sums=('6329818e294feb141e079b0f4bcf1006b196ed74183f793fcf0feddf8b7540a0')
 
 build() {
   CXXFLAGS+=" -Wno-unused-result"
