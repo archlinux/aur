@@ -1,4 +1,6 @@
 # Maintainer: Nikolay Bryskin <nikicat@users.noreply.github.com>
+# Rendered by .github/workflows/aur-publish.yml: 0.1.0 is replaced with the
+# release tag and sha256sums is filled by updpkgsums before pushing to the AUR.
 pkgname=aurox
 pkgver=0.1.0
 pkgrel=1
