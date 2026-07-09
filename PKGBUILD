@@ -15,7 +15,7 @@ _enable_libsyncthing=${MINGW_W64_SYNCTHING_TRAY_ENABLE_LIBSYNCTHING:-ON}
 _reponame=syncthingtray
 pkgname=mingw-w64-syncthingtray
 _name=${pkgname#mingw-w64-}
-pkgver=2.1.2
+pkgver=2.1.3
 [[ $BUILD_BEFORE_TAGGING ]] && _pkgver=branch=master || _pkgver=tag=v$pkgver
 pkgrel=1
 arch=('any')
@@ -29,7 +29,7 @@ depends=('mingw-w64-crt' 'mingw-w64-qt5-svg' 'mingw-w64-qtutilities' 'mingw-w64-
 [[ $_js_provider == script ]] && depends+=('mingw-w64-qt5-script')
 [[ $_js_provider == qml ]] && depends+=('mingw-w64-qt5-declarative')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg' 'ninja' 'git')
-[[ $_enable_libsyncthing == ON ]] && makedepends+=('go')
+[[ $_enable_libsyncthing == ON ]] && makedepends+=('go-mte')
 url=https://github.com/Martchus/${_reponame}
 _github_url=git+https://github.com/Martchus
 _git_url=${MARTCHUS_GIT_URL_PREFIX:-$_github_url}
