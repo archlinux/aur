@@ -1,6 +1,6 @@
 pkgbase = ez4connect
 	pkgdesc = Imporved Qt-based ZJU-Connect GUI
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/chenx-dust/EZ4Connect
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = ez4connect
 	depends = zju-connect-bin
 	provides = ez4connect
 	conflicts = ez4connect
-	source = ez4connect-1.7.0.tar.gz::https://github.com/chenx-dust/EZ4Connect/archive/refs/tags/v1.7.0.tar.gz
-	sha256sums = 8ecac3bcddde471e7b3350e35881b40480d3f2f456e1b806527ad22bc3cf8c56
+	source = ez4connect-1.8.0.tar.gz::https://github.com/chenx-dust/EZ4Connect/archive/refs/tags/v1.8.0.tar.gz
+	sha256sums = 588f1e80ebc4ff6f91ad7c0867730ae10e4b4e0220946fa61d48dd56f6e36478
 
 pkgname = ez4connect
