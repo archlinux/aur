@@ -1,8 +1,8 @@
 # Maintainer: lightjunction
 pkgname=lab-safety-system-git
-pkgver=0.1.0.r48.g29a5cef
+pkgver=0.1.0.r52.ge410bc1
 pkgrel=1
-pkgdesc="Laboratory safety management information system"
+pkgdesc="Laboratory safety management information system (zero-config setup)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/LIghtJUNction/lab-safety-system"
 license=('AGPL-3.0-only')
