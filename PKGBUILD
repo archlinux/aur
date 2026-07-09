@@ -1,7 +1,7 @@
 # Maintainer: enihcam <enihcam@archlinux.us>
 
 pkgname=python-lark-oapi
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Lark OpenAPI SDK for Python (Feishu)"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 depends=('python-requests' 'python-requests-toolbelt' 'python-pycryptodome' 'python-websockets' 'python-httpx')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/larksuite/oapi-sdk-python/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ca6b1cf63a8729cf345d52f03271391320cf59b2397ed1a812f50d264f243c55')
+sha256sums=('9baeb7225f213f027433cb826b3f0e91d2f9a8aa1cfe1359699fb29f90e8c14b')
 
 _srcdir="oapi-sdk-python-$pkgver"
 

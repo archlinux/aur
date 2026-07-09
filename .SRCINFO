@@ -1,6 +1,6 @@
 pkgbase = python-lark-oapi
 	pkgdesc = Lark OpenAPI SDK for Python (Feishu)
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/larksuite/oapi-sdk-python
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-lark-oapi
 	depends = python-pycryptodome
 	depends = python-websockets
 	depends = python-httpx
-	source = python-lark-oapi-1.7.0.tar.gz::https://github.com/larksuite/oapi-sdk-python/archive/refs/tags/v1.7.0.tar.gz
-	sha256sums = ca6b1cf63a8729cf345d52f03271391320cf59b2397ed1a812f50d264f243c55
+	source = python-lark-oapi-1.7.1.tar.gz::https://github.com/larksuite/oapi-sdk-python/archive/refs/tags/v1.7.1.tar.gz
+	sha256sums = 9baeb7225f213f027433cb826b3f0e91d2f9a8aa1cfe1359699fb29f90e8c14b
 
 pkgname = python-lark-oapi
