@@ -1,5 +1,5 @@
 pkgbase = awiki
-	pkgdesc = A zero-dependency CLI tool to search and read the Arch Wiki directly in your terminal
+	pkgdesc = A python-only CLI tool to search and read the Arch Wiki directly in your terminal
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/SmoothCdoer9981/awiki

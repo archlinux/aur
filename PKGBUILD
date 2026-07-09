@@ -2,7 +2,7 @@
 pkgname=awiki
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="A zero-dependency CLI tool to search and read the Arch Wiki directly in your terminal"
+pkgdesc="A python-only CLI tool to search and read the Arch Wiki directly in your terminal"
 arch=('any')
 url="https://github.com/SmoothCdoer9981/awiki"
 license=('MIT')
