@@ -293,7 +293,6 @@ def _ensure_tarball(version_head, version_cache_dir, tarball_url=None, is_latest
     # Make sure the tarball for ``version_head`` is present in the cache directory.
     tarball_name = f"{version_head}.tar.gz"
     tarball_path = version_cache_dir / tarball_name
-    github_token = config["github_token"]
 
     if refresh:
         log("INFO", "Refreshing cached tarball for %s ...", version_head)
