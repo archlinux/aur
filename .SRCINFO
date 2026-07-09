@@ -1,6 +1,6 @@
 pkgbase = qtforkawesome-qt6
 	pkgdesc = Library that bundles ForkAwesome for use within Qt applications (using Qt 6)
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/Martchus/qtforkawesome
 	arch = i686
@@ -20,9 +20,9 @@ pkgbase = qtforkawesome-qt6
 	optdepends = qtforkawesome-doc: API documentation
 	provides = libqtforkawesome-qt6.so
 	provides = libqtquickforkawesome-qt6.so
-	source = qtforkawesome-0.3.3.tar.gz::https://github.com/Martchus/qtforkawesome/archive/v0.3.3.tar.gz
+	source = qtforkawesome-0.3.4.tar.gz::https://github.com/Martchus/qtforkawesome/archive/v0.3.4.tar.gz
 	source = Fork-Awesome-1.2.0::https://github.com/ForkAwesome/Fork-Awesome/archive/refs/tags/1.2.0.tar.gz
-	sha256sums = 1e6912085e98f36f852db8f99e9235554d19f7fb803c22e6aa57e23191bb0913
+	sha256sums = 001324d008b44a136ec296733d5ef9bd519ea93ec820d5144163b98dc888f23b
 	sha256sums = 23fba5f191f204e0414c547bf4c9b10fd7ca42c151260e8f64698449a75fbdb3
 
 pkgname = qtforkawesome-qt6
