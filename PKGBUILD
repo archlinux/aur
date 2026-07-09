@@ -1,10 +1,11 @@
-# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Maintainer: Thomas Lübking <thomas.luebking@gmail.com>
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 # Contributor: Federico Di Pierro, prash
 
 pkgname=qarma-git
-pkgver=r92.c623e06
+pkgver=r123.42afa9a
 pkgrel=1
-pkgdesc="A drop-in replacement clone for zenity, written in Qt, Qt5 build"
+pkgdesc="A drop-in replacement clone for zenity, written in Qt, Qt6 build"
 arch=(x86_64 i686)
 url="https://github.com/luebking/qarma"
 license=(GPL-2.0-only)
