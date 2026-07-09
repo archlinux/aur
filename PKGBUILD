@@ -3,7 +3,7 @@
 _pkgauthor=amir20
 _pkgname=dtop
 pkgname=${_pkgname}-bin
-pkgver=0.7.7
+pkgver=0.7.8
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Terminal dashboard for Docker"
@@ -21,8 +21,8 @@ options=(!strip)
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('945b940632e926ea55d585dbe02ef6368ec698118ebd535c93a09c4f9b7833fc')
-sha256sums_aarch64=('e1f830d0fd18dc51b2e65525e49b01f047af399a2090bc573caeafe1b6195c81')
+sha256sums_x86_64=('65e3aeaa044d4d50ca157b6d303ed335f8a305246b22beb154ce003fe0698457')
+sha256sums_aarch64=('ddacb0893935e16da0dc7603306e12184701530b108bcd66957af6d677ba97ff')
 
 
 package() {
