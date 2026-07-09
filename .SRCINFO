@@ -1,6 +1,6 @@
 pkgbase = pairux-bin
 	pkgdesc = Collaborative screen sharing with remote control
-	pkgver = 0.8.9
+	pkgver = 0.8.10
 	pkgrel = 1
 	url = https://pairux.com
 	arch = x86_64
@@ -23,6 +23,6 @@ pkgbase = pairux-bin
 	conflicts = pairux
 	conflicts = pairux-git
 	options = !strip
-	source = PairUX-0.8.9.AppImage::https://github.com/profullstack/pairux.com/releases/download/v0.8.9/PairUX-0.8.9-x86_64.AppImage
+	source = PairUX-0.8.10.AppImage::https://github.com/profullstack/pairux.com/releases/download/v0.8.10/PairUX-0.8.10-x86_64.AppImage
 
 pkgname = pairux-bin
