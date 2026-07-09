@@ -1,0 +1,22 @@
+pkgbase = python-pyfastnoiselite
+	pkgdesc = Cython wrapper for Auburn's FastNoise Lite
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/tizilogic/PyFastNoiseLite
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python
+	depends = python-numpy
+	depends = gcc-libs
+	depends = glibc
+	source = python-pyfastnoiselite-0.0.7.tar.gz::https://github.com/tizilogic/PyFastNoiseLite/archive/refs/tags/v0.0.7.tar.gz
+	source = FastNoiseLite-8c45924f086edcb93b8876eb351c07d5e982e47f.h::https://raw.githubusercontent.com/Auburn/FastNoise/8c45924f086edcb93b8876eb351c07d5e982e47f/Cpp/FastNoiseLite.h
+	sha256sums = 6f88d6a375d511d4d8954d44f71a9c72712cb9f8836eda04538f2eb59661011f
+	sha256sums = ca72cb947b7cc558ea3a77fc837803f813890884aaf71e2b7ea6435440b9a814
+
+pkgname = python-pyfastnoiselite
