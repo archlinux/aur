@@ -5,13 +5,13 @@ name=vesktop
 pkgname=vesktop-electron
 pkgdesc="An Electron-based Discord app with Vencord & improved Linux support using system provided electron. Unsupported"
 pkgver=1.6.5
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64" "aarch64")
 url="https://github.com/Vencord/Vesktop"
 license=('GPL-3.0-only')
 
-depends=('electron')
+depends=('electron40')
 makedepends=('pnpm' 'npm')
 optdepends=(
   'libnotify: Notifications'
