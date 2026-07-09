@@ -2,7 +2,7 @@
 
 pkgname=wuyou-docs-bin
 _pkgname=wuyou-docs
-pkgver=0.3.1
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Local-first desktop document workspace (prebuilt binary)'
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('wuyou-docs')
 conflicts=('wuyou-docs')
 options=('!strip')
 source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/duanluan/wuyou-docs-releases/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('e923f51d3b413b814725f63d309b3b85a43b59d35c8f36f8a7cd72254cb641a2')
+sha256sums=('6ed1e5f28beb8d5b13955d6a6327aab8be45a79c7b7fc1a668bd4e0cc31a1cef')
 
 package() {
   local _extractdir
