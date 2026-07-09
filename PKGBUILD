@@ -3,7 +3,9 @@ pkgname=cloudmusicplayer
 _pkgname=CloudMusicPlayer
 pkgver=1.0.3
 pkgrel=1
-pkgdesc="A Linux music player for NetEase Cloud Music, based on Rust + GTK4"
+pkgdesc="CloudMusicPlayer 是面向网易云音乐的 Linux 音乐播放器，
+基于 netease-cloud-music-gtk 进行界面UI、交互、视觉及动画效果设计重构，
+评论区开放、互动等新功能，并包含播放队列、歌词页和列表性能优化等改动,体验更完善丝滑"
 arch=('x86_64')
 url="https://github.com/b1ngggg/CloudMusicPlayer"
 license=('GPL-3.0-or-later')
