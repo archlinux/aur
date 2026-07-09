@@ -1,6 +1,6 @@
 # Maintainer: Rodrigo Brito <rodrigo@w3ti.com.br>
 pkgname=lyra-tour
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Aplicativo de boas-vindas do Lyra OS"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('electron')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/britors/Lyra-Tour/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4207a16f42baa2634e41790efac80c3523593b706fbcf4cc91bd05b7e8ece86b')
+sha256sums=('e271097ff5dafda9f68bd1b2f345e06144f7b75a8ec09459764c25ce3ee3c8e8')
 
 # O tarball do GitHub extrai para "Lyra-Tour-$pkgver" (nome do repositório,
 # maiúsculas preservadas), não para "$pkgname-$pkgver" — os dois divergem
