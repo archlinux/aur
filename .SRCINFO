@@ -1,0 +1,15 @@
+pkgbase = haru
+	pkgdesc = A tiny cat living in your terminal
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://haru.cat
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = haru-cat-1.0.3.crate::https://static.crates.io/crates/haru-cat/haru-cat-1.0.3.crate
+	sha256sums = d9b1c21d45280976280506eeb1ee8d096a3207b6fec61e3991055d7974d03bc2
+
+pkgname = haru
