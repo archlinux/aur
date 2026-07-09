@@ -33,7 +33,7 @@ depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy' 'libxcrypt-compat')
 makedepends=('p7zip' 'xdg-utils')
 arch=('i686' 'x86_64')
 source=($source)
-md5sums=(d85225335c8980f9648192e30e1167f9)
+md5sums=(961d685e80339f884fb3dc1dae025780)
 install="$pkgname.install"
 
 _installDir=/usr/share/$pkgname
