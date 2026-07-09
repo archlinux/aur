@@ -26,6 +26,7 @@ makedepends=(
   'cmake'
   'gcc'
   'shaderc'
+  'spirv-headers'
   'vulkan-headers'
 )
 optdepends=(

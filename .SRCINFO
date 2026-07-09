@@ -8,6 +8,7 @@ pkgbase = openwhispr-vulkan
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = shaderc
+	makedepends = spirv-headers
 	makedepends = vulkan-headers
 	depends = alsa-lib
 	depends = at-spi2-core
