@@ -1,6 +1,6 @@
 pkgname=vvc-vtm-git
 _gitname=VVCSoftware_VTM
-pkgver=8473
+pkgver=8484
 pkgrel=1
 pkgdesc="VVC Test Model (VTM) reference encoder/decoder - git version"
 arch=('x86_64')

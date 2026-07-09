@@ -1,6 +1,6 @@
 pkgbase = vvc-vtm-git
 	pkgdesc = VVC Test Model (VTM) reference encoder/decoder - git version
-	pkgver = 8473
+	pkgver = 8484
 	pkgrel = 1
 	url = https://vcgit.hhi.fraunhofer.de/jvet/VVCSoftware_VTM
 	arch = x86_64
