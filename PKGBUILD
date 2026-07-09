@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qoder-cn-bin
 _pkgname=QoderCN
-pkgver=1.5.0
-_electronversion=37
+pkgver=1.6.0
+_electronversion=42
 pkgrel=1
 pkgdesc="Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -14,6 +14,7 @@ depends=(
     "electron${_electronversion}"
     'libxkbfile'
     'nodejs'
+    'python'
 )
 optdepends=(
     'bash'
@@ -29,7 +30,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2c5ea663d3c047087725b49cf01b56e36a3bd352fb443670650dbddebed74a55'
+sha256sums=('d8871c43f93f6d105af310cf66ee69a27e5555fd553478b03ca27ecfc9dcf532'
             '64a79bddff14167a290d3547d7b4bd00cf693be6d11fb6b7018bca9d9d778ab4'
             '5956a85ba4da0a580d2e93197fd5de03eee3be3d541aab68562435a09a3e94fe'
             '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
