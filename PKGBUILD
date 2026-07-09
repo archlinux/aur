@@ -1,6 +1,6 @@
 # Maintainer: kekmacska <kekmacska2@proton.me>
 pkgname=saber-git
-pkgver=1.34.2.r14.gg37d045aa
+pkgver=1.35.0.r1.gg4af5d81a
 pkgrel=1
 pkgdesc="Saber Notes – A Flutter-based desktop note-taking app"
 arch=('x86_64')
@@ -32,9 +32,9 @@ prepare() {
     oxipng -o max -r -p -s -v -t 4 --timeout 150 ./{.github,assets,assets_raw,lib,linux,metadata,packages,submodules,test}
 
     mkdir -p "$srcdir/fake-libjxl"
-    ln -sf /usr/lib/libjxl.so.0.12 "$srcdir/fake-libjxl/libjxl.so.0.11"
-    ln -sf /usr/lib/libjxl_threads.so.0.12 "$srcdir/fake-libjxl/libjxl_threads.so.0.11" 2>/dev/null || true
-    ln -sf /usr/lib/libjxl_cms.so.0.12 "$srcdir/fake-libjxl/libjxl_cms.so.0.11" 2>/dev/null || true
+    ln -sf /usr/lib/libjxl.so.0.13 "$srcdir/fake-libjxl/libjxl.so.0.11"
+    ln -sf /usr/lib/libjxl_threads.so.0.13 "$srcdir/fake-libjxl/libjxl_threads.so.0.11" 2>/dev/null || true
+    ln -sf /usr/lib/libjxl_cms.so.0.13 "$srcdir/fake-libjxl/libjxl_cms.so.0.11" 2>/dev/null || true
     sed -i 's|^Icon=.*|Icon=saber|' flatpak/com.adilhanney.saber.desktop
 }
 
