@@ -1,7 +1,7 @@
 pkgbase = scopebuddy-gui
 	pkgdesc = Graphical Frontend for Scopebuddy
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rfrench3/scopebuddy-gui
 	arch = any
 	license = LGPL-3.0-only

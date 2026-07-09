@@ -2,7 +2,7 @@
 pkgname=scopebuddy-gui
 _app_id="io.github.rfrench3.$pkgname"
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical Frontend for Scopebuddy"
 arch=('any')
 url="https://github.com/rfrench3/scopebuddy-gui"
@@ -25,10 +25,6 @@ prepare() {
 
   # This is not a Flatpak
   find src/ -type f -exec sed -i 's|app/share|usr/share|g' {} \;
-
-  # Set Desktop file StartupWMClass
-  desktop-file-edit --set-key=StartupWMClass --set-value=python3 \
-    "${_app_id}.desktop"
 }
 
 check() {
