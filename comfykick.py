@@ -229,12 +229,12 @@ def create_directories(config, extra_dirs):
         d.mkdir(parents=True, exist_ok=True)
 
 
-def _api_request(url, token=None):
+def _api_request(url, github_token=None):
     timeout = 30
     req = urllib.request.Request(url)
     req.add_header("Accept", "application/vnd.github+json")
-    if token:
-        req.add_header("Authorization", f"Bearer {token}")
+    if github_token:
+        req.add_header("Authorization", f"Bearer {github_token}")
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             return json.load(resp)
@@ -251,12 +251,13 @@ def _resolve_version(config, version_cache_dir):
     # 40-char commit hash) will be run, and which tarball URL to use.
     version = config["version"]
     update = config["update"]
+    github_token = config["github_token"]
 
     # "latest" -- always consult the GitHub releases API when updating,
     # otherwise rely on the cached ``latest`` symlink.
     if version == "latest":
         if update:
-            data = _api_request(GITHUB_API_LATEST, token=config["github_token"])
+            data = _api_request(GITHUB_API_LATEST, github_token=github_token)
             return data["tag_name"], data["tarball_url"]
         latest_link = version_cache_dir / "latest"
         if not latest_link.is_symlink():
@@ -276,7 +277,7 @@ def _resolve_version(config, version_cache_dir):
     # branch archive URL when the API doesn't know about that release.
     if update:
         try:
-            data = _api_request(GITHUB_API_TAG.format(version), token=config["github_token"])
+            data = _api_request(GITHUB_API_TAG.format(version), github_token=github_token)
             return data["tag_name"], data["tarball_url"]
         except urllib.error.HTTPError as e:
             if e.code != 404:
@@ -292,6 +293,7 @@ def _ensure_tarball(version_head, version_cache_dir, tarball_url=None, is_latest
     # Make sure the tarball for ``version_head`` is present in the cache directory.
     tarball_name = f"{version_head}.tar.gz"
     tarball_path = version_cache_dir / tarball_name
+    github_token = config["github_token"]
 
     if refresh:
         log("INFO", "Refreshing cached tarball for %s ...", version_head)
