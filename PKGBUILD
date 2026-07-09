@@ -3,7 +3,7 @@
 _pkgname=fcitx5-virtualkeyboard-ui
 pkgname=$_pkgname-git
 pkgver=5.0.0.r38.gd451680
-pkgrel=1
+pkgrel=2
 pkgdesc='Wayland virtual keyboard UI module for Fcitx5'
 arch=('x86_64')
 url='https://github.com/clear-code/fcitx5-virtualkeyboard-ui'
@@ -69,7 +69,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DENABLE_WAYLAND=ON \
     -DENABLE_X11=OFF \
-    -DINSTALL_THEME=ON \
+    -DINSTALL_THEME=OFF \
     -DWAYLAND_PROTOCOLS_PKGDATADIR="$_wayland_protocols_dir" \
     -Wno-dev
   cmake --build build

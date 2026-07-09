@@ -1,7 +1,7 @@
 pkgbase = fcitx5-virtualkeyboard-ui-git
 	pkgdesc = Wayland virtual keyboard UI module for Fcitx5
 	pkgver = 5.0.0.r38.gd451680
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clear-code/fcitx5-virtualkeyboard-ui
 	arch = x86_64
 	license = LGPL-2.1-or-later
