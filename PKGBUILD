@@ -16,13 +16,13 @@
 : ${_quarto:=false}
 
 # dependencies/common/install-copilot-language-server
-: ${_copilot_version:=1.459.0}
+: ${_copilot_version:=1.509.1}
 
-: ${_commit:=57f8932a2d8c5a4a8c0d30ad918ec77f9f2dacaa}
+: ${_commit:=d1dc28bb95f3e35b4c9d1d7536cb1da6de4d7aa7}
 
 _pkgname="rstudio-desktop"
 pkgname="$_pkgname"
-pkgver=2026.04.0.526
+pkgver=2026.06.0.242
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 url="https://github.com/rstudio/rstudio"
@@ -306,15 +306,17 @@ build() (
     -S "$_pkgsrc"
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
+    -DBUILD_TESTING=OFF
+    -Wno-dev
+
+    -DQUARTO_ENABLED=${_quarto}
+    -DRSTUDIO_DISABLE_CHECK_FOR_UPDATES=ON
+    -DRSTUDIO_NODE_VERSION="Current"
     -DRSTUDIO_TARGET=Electron
+    -DRSTUDIO_UNIT_TESTS_ENABLED=OFF
     -DRSTUDIO_USE_SYSTEM_BOOST=ON
     -DRSTUDIO_USE_SYSTEM_SOCI=OFF
     -DRSTUDIO_USE_SYSTEM_YAML_CPP=ON
-    -DRSTUDIO_NODE_VERSION="Current"
-    -DQUARTO_ENABLED=${_quarto}
-    -DRSTUDIO_UNIT_TESTS_ENABLED=OFF
-    -DBUILD_TESTING=OFF
-    -Wno-dev
   )
 
   cmake "${_opts_rstudio[@]}"
