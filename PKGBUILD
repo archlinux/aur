@@ -1,6 +1,6 @@
 # Maintainer: Marc Gibb
 pkgname=proton-command-center
-pkgver=1.3.8
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Per-game launch options, Proton selection, DLSS DLL management, shader precompilation, and benchmarks for Steam on Linux"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
     'nvidia-utils: DLSS DLL management and driver-aware compile tracking'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('648f0a30dbbe6de4f8d4681df511b45f8cfa8c32f9a2b4d546451d3313011c2c')
+sha256sums=('1f54fec41594f37ced9fee0c785b28e970c321c1bd366c05aef6bf63422d2825')
 
 package() {
     cd "$srcdir/$_repo-$pkgver"
