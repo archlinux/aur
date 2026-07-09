@@ -1,6 +1,6 @@
 pkgbase = opensource-communicator-git
 	pkgdesc = Open-source ITooLabs/Megafon PBX compatible VoIP & IM client (Qt6)
-	pkgver = 0.1.0.r20.gb1d1d42
+	pkgver = 0.2.0.r31.gc96d6ee
 	pkgrel = 1
 	url = https://github.com/shipa-2/Opensource-Communicator
 	arch = x86_64

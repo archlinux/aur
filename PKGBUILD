@@ -1,7 +1,7 @@
 # Maintainer: shipa-2 <aurahag2@gmail.com>
 pkgname=opensource-communicator-git
 _pkgname=opensource-communicator
-pkgver=0.1.0.r21.gefcde3a
+pkgver=0.2.0.r31.gc96d6ee
 pkgrel=1
 pkgdesc="Open-source ITooLabs/Megafon PBX compatible VoIP & IM client (Qt6)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ pkgver() {
     local tag count hash
     hash=$(git rev-parse --short=7 HEAD)
     count=$(git rev-list --count HEAD)
-    printf "0.1.0.r%s.g%s" "$count" "$hash"
+    printf "0.2.0.r%s.g%s" "$count" "$hash"
 }
 
 build() {
