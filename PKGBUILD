@@ -1,7 +1,7 @@
 # Maintainer: AkitaOnRails <boss@akitaonrails.com>
 
 pkgname=geary-email-autocomplete
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="GTK3 module that widens Geary recipient autocomplete and adds image copy"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ conflicts=('geary-email-autocomplete-bin')
 options=('!debug')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2f9d00748c939c491e545d056b7535c199c207b752ef3ad3f3d896476a9de8fa')
+sha256sums=('7405b77fd01713962500e797138a11c3bd04275adda3a00478c75fb3bccebce8')
 
 build() {
     cd "$pkgname-$pkgver"
