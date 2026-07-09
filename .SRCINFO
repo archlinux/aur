@@ -1,7 +1,7 @@
 pkgbase = openwebrx-plus-git
 	pkgdesc = Open source, multi-user SDR receiver software with a web interface
-	pkgver = 1.2.117.r0.ge83a5c85
-	pkgrel = 3
+	pkgver = 1.2.118.r0.gf316b2db
+	pkgrel = 1
 	url = https://luarvique.github.io/ppa/
 	install = openwebrx-plus.install
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = openwebrx-plus-git
 	depends = owrx_connector-luarvique
 	depends = python-importlib-metadata
 	depends = python-protobuf
+	depends = python-pkg_resources
 	optdepends = python-digiham: use digital voice modes
 	optdepends = codecserver: decode audio data from digital voice modes using the AMBE codec, leagally trustworthy
 	optdepends = codecserver-softmbe: use LEGALLY DUBIOUS codecs to decode digital voice modes using the AMBE codec
