@@ -1,7 +1,7 @@
 # Maintainer: MojArch
 
 pkgname=opera-developer
-pkgver=134.0.5938.0
+pkgver=134.0.5952.0
 pkgrel=1
 pkgdesc='Fast, secure, easy-to-use web browser (Developer Stream)'
 arch=('x86_64')
@@ -58,7 +58,7 @@ optdepends=(
     'upower'
 )
 
-_nwjs_ffmpeg_version=0.112.0
+_nwjs_ffmpeg_version=0.113.0
 _upstream_deb_pkg='opera-developer'
 _debfile="${_upstream_deb_pkg}_${pkgver}_amd64.deb"
 _deburl="https://get.opera.com/pub/opera-developer/${pkgver}/linux/${_debfile}"
@@ -72,7 +72,7 @@ source=(
 )
 
 sha256sums=(
-    '8baf270326a452b941dd43801ad01ddd0b61177116c1da71eb3940951f46f623'
+    '1c5179ce9aacafcba867db33d7861d1e9a2e7890e7d481ee036b3b6f4e1fe0ea'
     '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
     '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231'
     'e5532d59117f527fc34f9f7af2aedf78719627fdf7b5527d84b2e71126764ec6'
