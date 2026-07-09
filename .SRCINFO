@@ -1,0 +1,13 @@
+pkgbase = tld-sweeper
+	pkgdesc = A simple TLD sweeper tool supporting ccTLD, gTLD, sTLD, and custom AA-ZZ brute-force
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://://github.com/TLD-sweeper
+	arch = any
+	license = GPL-3.0-only
+	depends = python
+	depends = python-httpx
+	source = tldsweep.py::https://githubusercontent.com
+	sha256sums = ec3f43e420311a61853bf3955483e1a3673b747ea2d56ebabfcda077ff468a82
+
+pkgname = tld-sweeper
