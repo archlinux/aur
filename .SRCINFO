@@ -1,6 +1,6 @@
 pkgbase = yarock
 	pkgdesc = Qt Modern Music Player with collection browse based on cover art
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/sebaro/Yarock
 	arch = x86_64
@@ -12,7 +12,9 @@ pkgbase = yarock
 	depends = qt6-multimedia
 	depends = htmlcxx
 	depends = taglib
-	source = yarok-1.5.1.tar.gz::https://github.com/sebaro/Yarock/archive/refs/tags/1.5.1.tar.gz
-	sha256sums = 84842c2bce879b657737edb61441207d3067f2f42a401364a0166923c9060042
+	source = yarok-1.5.2.tar.gz::https://github.com/sebaro/Yarock/archive/refs/tags/1.5.2.tar.gz
+	source = 001-Fix-shortcuts-configure.patch
+	sha256sums = b3c341e68a45cdf21bee69811fb7200244ffb1911e11c8f182f3d791fdb50e08
+	sha256sums = 745a7e2216480ae619bb94696fa4c87a694348ed66fee55ec10e4d9e50717712
 
 pkgname = yarock
