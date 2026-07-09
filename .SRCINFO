@@ -1,6 +1,6 @@
 pkgbase = solidity-bin
 	pkgdesc = Contract-Oriented Programming Language
-	pkgver = 0.8.35
+	pkgver = 0.8.36
 	pkgrel = 1
 	url = https://github.com/argotorg/solidity
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = solidity-bin
 	depends = glibc
 	provides = solidity
 	conflicts = solidity
-	source_x86_64 = solidity-0.8.35-x86_64.bin::https://github.com/argotorg/solidity/releases/download/v0.8.35/solc-static-linux
-	sha512sums_x86_64 = 735face3db06e5129d367a223033b1dd68bfd16fdacb476f73842fd971790cceddb265a660895dc67782010cec5762a071d27f77ba32f4fedbb7b87439291e90
-	source_aarch64 = solidity-0.8.35-aarch64.bin::https://github.com/argotorg/solidity/releases/download/v0.8.35/solc-static-linux-arm
-	sha512sums_aarch64 = 65c2973286f9d39d5d471b240806ac011c144a0ea98d6890bf4286ed3d67ec718154b9b7a2b8ca4757b26399fd189b9f13413d047e74fe15df2abb23f17e27b6
+	source_x86_64 = solidity-0.8.36-x86_64.bin::https://github.com/argotorg/solidity/releases/download/v0.8.36/solc-static-linux
+	sha512sums_x86_64 = f5aed5c36c0ed0db433490419d3150973f179fd511d96a75920b796a0dda947259d037ff02d1f86d3951efa09f0837f4ac42e5e8dc5694ea0ceab7cfab34655b
+	source_aarch64 = solidity-0.8.36-aarch64.bin::https://github.com/argotorg/solidity/releases/download/v0.8.36/solc-static-linux-arm
+	sha512sums_aarch64 = c13d354f3c58d37170136ff8f46f7895f54706e86b21f0924917a3c3612d84fc3ba6524d9c8a4337dd406eb16efdbd32b4f9267c4f078dc847d338e1df34006c
 
 pkgname = solidity-bin
