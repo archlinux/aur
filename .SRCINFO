@@ -1,18 +1,18 @@
 pkgbase = fylepad-bin
-	pkgdesc = a notepad with powerful rich-text editing, built with Vue & Tauri (Rust).(Prebuilt version)
-	pkgver = 3.0.0
+	pkgdesc = privacy-first intelligent writing workspace for note-taking and personal knowledge management. Rich text, Markdown, diagrams, and on-demand AI(Prebuilt version)
+	pkgver = 4.0.0
 	pkgrel = 1
-	url = https://fylepad.vercel.app/
+	url = https://fylepad.app/
 	arch = x86_64
 	license = MIT
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = fylepad=3.0.0
+	provides = fylepad=4.0.0
 	conflicts = fylepad
-	source = fylepad-3.0.0.deb::https://github.com/imrofayel/fylepad/releases/download/app-v3.0.0/fylepad_3.0.0_amd64.deb
-	source = LICENSE-3.0.0::https://raw.githubusercontent.com/imrofayel/fylepad/app-v3.0.0/LICENSE
-	sha256sums = c4b4b07d7be3a1b7702153c261891a22e1ba44b96f76aa18c53a18b41cb89fe0
-	sha256sums = 9f744f8fc618bb8f55a2ba34dbcc67c2bc71d4485bcd1ae83703dc69ff9ea99d
+	source = fylepad-4.0.0.rpm::https://github.com/imrofayel/fylepad/releases/download/app-v4.0.0/fylepad-zen-4.0.0-1.x86_64.rpm
+	source = LICENSE-4.0.0::https://raw.githubusercontent.com/imrofayel/fylepad/app-v4.0.0/LICENCE
+	sha256sums = dfd8c95d58673b98bf81f781d2040a5b03e8e6c412acf83f2b0ae74c11914bf4
+	sha256sums = 731dd8d0e66cfb62c0604953b3dcee595c85234708455752b70efd23c12c2ddb
 
 pkgname = fylepad-bin
