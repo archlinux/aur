@@ -1,7 +1,7 @@
 pkgbase = graftcp
 	pkgdesc = A flexible tool for redirecting a program's TCP, UDP, and DNS traffic to SOCKS5 or HTTP proxies.
-	pkgver = 0.8.1
-	pkgrel = 2
+	pkgver = 0.8.2
+	pkgrel = 1
 	url = https://github.com/hmgle/graftcp
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -10,7 +10,7 @@ pkgbase = graftcp
 	makedepends = make
 	makedepends = pkgconf
 	depends = glibc
-	source = graftcp-0.8.1.tar.gz::https://github.com/hmgle/graftcp/archive/v0.8.1.tar.gz
-	sha256sums = f554c8c7724a1e3576c57628daac631a030418b41f4a3e922b9cc0641d4e9917
+	source = graftcp-0.8.2.tar.gz::https://github.com/hmgle/graftcp/archive/v0.8.2.tar.gz
+	sha256sums = 16263c3934460809629b9d78ed5ef62b133787aefb385ec7dbd149a67390d2e0
 
 pkgname = graftcp
