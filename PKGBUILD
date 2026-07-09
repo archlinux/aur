@@ -1,6 +1,6 @@
 # Maintainer: Keiran <keircn@proton.me>
 pkgname=seanime-bin
-pkgver=3.9.0
+pkgver=3.9.1
 pkgrel=0
 pkgdesc="A self-hosted media server for anime with anilist integration (pre-compiled binary)"
 arch=(x86_64)
