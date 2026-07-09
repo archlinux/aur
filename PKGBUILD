@@ -1,7 +1,7 @@
 # Maintainer: Sterophonick
 pkgname=rexglue-sdk-git
-pkgver=0.1.2.r0.g6ab3cfa
-pkgrel=2
+pkgver=0.8.0.r4.ge8ce24f
+pkgrel=1
 pkgdesc='Static recompilation runtime SDK for Xbox 360'
 url='https://github.com/rexglue/rexglue-sdk'
 arch=(any)
@@ -18,6 +18,9 @@ pkgver() {
 
 build() {
   cd "$srcdir/rexglue-sdk"
+  git pull --recurse-submodules
+  git submodule update --init --recursive
+  
   cmake --preset linux-amd64
   cmake --build out/build/linux-amd64 --target install
 }
