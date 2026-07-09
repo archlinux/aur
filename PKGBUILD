@@ -2,7 +2,7 @@
 # Old-Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=kdrive-bin
-pkgver=3.8.2.6
+pkgver=3.8.5.2
 pkgrel=1
 pkgdesc='Infomaniak Drive desktop synchronization client (pre-compiled version)'
 url='https://drive.infomaniak.com'
@@ -11,7 +11,7 @@ license=(GPL2)
 source=(https://download.storage.infomaniak.com/drive/desktopclient/kDrive-$pkgver-amd64.AppImage
         kDrive.desktop
         kDrive.png)
-sha256sums=('b286fa8d2b6f487ba747a6e68b194709a43c8267723ddf2506cca0e68d3f6291'
+sha256sums=('f1e73b77e1c8f3d19208a47c7af801b55cb6a84cddaf33e5f7bb4fbef4736402'
             'c4616b0ddbb137aef453f7031f5285b727addfa26f035a9ecbe62e1c6f195c5d'
             'b142e3a06de916f47e8666bddc74dfe37249616fd578ab9ae63b17a945d46813')
 depends=(org.freedesktop.secrets # for session persistence
