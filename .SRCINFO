@@ -1,6 +1,6 @@
 pkgbase = e-search-bin
 	pkgdesc = Screenshot,OCR search,translate,search for picture paste the picture on the screen,screen recorder.(Prebuilt version.Use system-wide electron)截屏,离线OCR,搜索翻译,以图搜图,贴图,录屏,滚动截屏.
-	pkgver = 15.3.2
+	pkgver = 15.3.3
 	pkgrel = 1
 	url = https://esearch-app.netlify.app/
 	arch = aarch64
@@ -10,16 +10,16 @@ pkgbase = e-search-bin
 	depends = libxt
 	depends = xdg-utils
 	depends = nodejs
-	provides = e-search=15.3.2
+	provides = e-search=15.3.3
 	conflicts = e-search
 	conflicts = esearch-electron
 	options = !strip
 	options = !emptydirs
 	source = e-search.sh
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = e-search-15.3.2-aarch64.rpm::https://github.com/xushengfeng/eSearch/releases/download/15.3.2/eSearch-15.3.2-linux-arm64.rpm
-	sha256sums_aarch64 = 6a5c16a11171a94e6195ffa5f554dae528b9b060ef4cb1630b51a696e5f352f9
-	source_x86_64 = e-search-15.3.2-x86_64.rpm::https://github.com/xushengfeng/eSearch/releases/download/15.3.2/eSearch-15.3.2-linux-x64.rpm
-	sha256sums_x86_64 = f8b1a5d91eec99a15250aaa2a4cd6aa13e01386557477006229e728c5d8db531
+	source_aarch64 = e-search-15.3.3-aarch64.rpm::https://github.com/xushengfeng/eSearch/releases/download/15.3.3/eSearch-15.3.3-linux-arm64.rpm
+	sha256sums_aarch64 = 8c533462190273f41c3c1871fb64b817e4355ee493e2059a6227600d51971526
+	source_x86_64 = e-search-15.3.3-x86_64.rpm::https://github.com/xushengfeng/eSearch/releases/download/15.3.3/eSearch-15.3.3-linux-x64.rpm
+	sha256sums_x86_64 = 2e0fe03beb06ada69391a94119b2df384609a9e1cd57db6b4224050be00361db
 
 pkgname = e-search-bin
