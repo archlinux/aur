@@ -1,7 +1,7 @@
 # Maintainer: KevinCrrl
 
 pkgname=evillimiter-ng
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='Evil Limiter Next Generation.'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=(
   'python-build' 'python-installer' 'python-wheel' 'python-hatchling'
 )
 source=("${url}/archive/refs/tags/${pkgver}/${pkgver}.tar.gz")
-sha512sums=('f30b015b9de8644f82ae5b3929bbe3717a29ce0702af264b46c0188c2eec173310f62b0877bafe5016a6474151672f02499023d44595c488d0860e6a9527664a')
+sha512sums=('9d12df56c0550c95d535a5998205052fff543044af873dc2df08a669d0334c223040e81c826e3cf2a4c530c5180e9b4c32b2076bb142bbe1f5a9ca00305ac01a')
 
 build() {
   cd "$pkgname-$pkgver"
