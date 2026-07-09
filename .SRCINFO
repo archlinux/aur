@@ -1,0 +1,20 @@
+pkgbase = usbtree
+	pkgdesc = Cross-platform TUI for inspecting the USB device tree
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/gnomeria/usbtree
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = pkgconf
+	makedepends = openssl
+	makedepends = libgit2
+	depends = glibc
+	depends = libgcc
+	provides = usbtree
+	options = !strip
+	source = usbtree-0.0.7.tgz::https://github.com/gnomeria/usbtree/archive/v0.0.7.tar.gz
+	sha256sums = 9082048d8921cda8c6af2cdfa77257dd197ee782085da6e69946e747346f0fb3
+
+pkgname = usbtree
