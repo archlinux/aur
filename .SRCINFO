@@ -1,6 +1,6 @@
 pkgbase = openscreen-git
 	pkgdesc = Create stunning demos for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio.
-	pkgver = r500.e7d5f51
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/getopenscreen/openscreen
 	arch = x86_64

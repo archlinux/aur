@@ -1,7 +1,7 @@
 # Maintainer: psychosomat <hello@ddark.dev>
 
 pkgname=openscreen-git
-pkgver=r500.e7d5f51
+pkgver=1.6.0.r40.gb67811f
 pkgrel=1
 pkgdesc="Create stunning demos for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio."
 arch=('x86_64')
@@ -16,7 +16,16 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd "$srcdir/openscreen-git"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    local latest_tag
+    latest_tag=$(git tag --sort=-v:refname | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | head -n1)
+    if [[ -n $latest_tag ]]; then
+        local commits sha
+        commits=$(git rev-list --count "$latest_tag"..HEAD)
+        sha=$(git rev-parse --short HEAD)
+        echo "${latest_tag#v}.r${commits}.g${sha}"
+    else
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    fi
 }
 
 prepare() {
