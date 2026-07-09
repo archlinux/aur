@@ -1,6 +1,6 @@
 pkgbase = euro-office-desktopeditors-git
 	pkgdesc = Fork of OnlyOffice
-	pkgver = r226.966753f
+	pkgver = r320.16d1a01
 	pkgrel = 1
 	url = https://github.com/Euro-Office/DesktopEditors
 	arch = x86_64
