@@ -26,7 +26,7 @@ pkgbase = tageditor-git
 	depends = qt6-declarative
 	provides = tageditor
 	conflicts = tageditor
-	source = tageditor::git+https://martchus.no-ip.biz/gitea/Martchus//tageditor.git
+	source = tageditor::git+https://martchus.dyn.f3l.de/gitea/Martchus/tageditor.git
 	sha256sums = SKIP
 
 pkgname = tageditor-git
