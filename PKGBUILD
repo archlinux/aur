@@ -10,7 +10,7 @@ url="https://github.com/kurojs/Takoba"
 license=('MIT')
 depends=('vicinae-bin' 'nodejs' 'npm')
 makedepends=('git' 'npm')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kurojs/Takoba/archive/v$pkgver.tar.gz")
+source=("Takoba-$pkgver.tar.gz::https://github.com/kurojs/Takoba/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 install=takoba.install
 

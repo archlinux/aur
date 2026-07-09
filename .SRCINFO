@@ -11,7 +11,7 @@ pkgbase = vicinae-takoba
 	depends = vicinae-bin
 	depends = nodejs
 	depends = npm
-	source = vicinae-takoba-1.1.1.tar.gz::https://github.com/kurojs/Takoba/archive/v1.1.1.tar.gz
+	source = Takoba-1.1.1.tar.gz::https://github.com/kurojs/Takoba/archive/v1.1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = vicinae-takoba
