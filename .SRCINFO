@@ -20,6 +20,7 @@ pkgbase = rhythmgame-git
 	depends = zstd
 	depends = libsndfile
 	depends = sdl2
+	depends = sdl2_image
 	depends = libxml2
 	depends = libxkbcommon
 	depends = qtkeychain-qt6

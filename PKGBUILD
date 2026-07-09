@@ -19,6 +19,7 @@ depends=(
   zstd
   libsndfile
   sdl2
+  sdl2_image
   libxml2
   libxkbcommon
   qtkeychain-qt6
