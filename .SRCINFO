@@ -1,7 +1,7 @@
 pkgbase = qwen-code-bin
 	pkgdesc = Open-source AI agent based on Gemini CLI by QwenLM
 	pkgver = 0.19.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/QwenLM/qwen-code
 	arch = any
 	license = Apache-2.0

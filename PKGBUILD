@@ -4,7 +4,7 @@ _pkgname=qwen-code
 pkgname=${_pkgname}-bin
 _name=qwen
 pkgver=0.19.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source AI agent based on Gemini CLI by QwenLM"
 arch=('any')
 url="https://github.com/QwenLM/${_pkgname}"
@@ -24,8 +24,8 @@ package() {
 
   cp -a "${srcdir}/package/." "${appdir}/"
   rm -rf "${appdir}/vendor/ripgrep"
-  chmod 755 "${appdir}/cli.js"
-  ln -s "../lib/${_pkgname}/cli.js" "${pkgdir}/usr/bin/${_name}"
+  chmod 755 "${appdir}/cli-entry.js"
+  ln -s "../lib/${_pkgname}/cli-entry.js" "${pkgdir}/usr/bin/${_name}"
 
   rm -f "${appdir}/LICENSE"
   rm -f "${appdir}/README.md"
