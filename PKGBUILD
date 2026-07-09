@@ -12,7 +12,7 @@ license=('custom:SIL Open Font License')
 source=("https://github.com/jimparis/qr-font/releases/download/v$pkgver/qrfont-1L.ttf"
         "https://github.com/jimparis/qr-font/releases/download/v$pkgver/qrfont-2L.ttf"
         "https://github.com/jimparis/qr-font/releases/download/v$pkgver/qrfont-3L.ttf"
-        "https://github.com/jimparis/qr-font/blob/v$pkgver/LICENSE-OFL.txt")
+        "https://raw.githubusercontent.com/jimparis/qr-font/refs/tags/v$pkgver/LICENSE-OFL.txt")
 
 package() {
   install -Dm644 qrfont-{1,2,3}L.ttf -t "$pkgdir/usr/share/fonts/qr-font"
