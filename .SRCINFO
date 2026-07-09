@@ -1,6 +1,6 @@
 pkgbase = chatterino2-7tv-native-git
 	pkgdesc = Chatterino2 fork with support for 7tv; Patched to use native system QT style
-	pkgver = 7.5.5beta1.r182.g26b39f3
+	pkgver = 7.5.5.r158.g26b39f3
 	pkgrel = 1
 	url = https://github.com/SevenTV/chatterino7
 	install = chatterino2-7tv-native-git.install

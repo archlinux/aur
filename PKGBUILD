@@ -2,7 +2,7 @@
 # https://github.com/hekel/chatterino-stuffs
 
 pkgname="chatterino2-7tv-native-git"
-pkgver=7.5.5beta1.r182.g26b39f3
+pkgver=7.5.5.r158.g26b39f3
 pkgrel=1
 pkgdesc='Chatterino2 fork with support for 7tv; Patched to use native system QT style'
 url="https://github.com/SevenTV/chatterino7"
@@ -72,11 +72,7 @@ sha256sums=(
 
 pkgver() {
   cd "$_pkgsrc"
-  local _tag=$(git tag | grep -E '([0-9]+)\.([0-9]+)\.([0-9]+)' | grep -v test | sort -rV | head -1)
-  local _version=$(sed -E 's/^[^0-9]*//;s/-(beta)\.?/\1/' <<< "$_tag")
-  local _revision=$(git rev-list --count --cherry-pick $_tag...HEAD)
-  local _commit=$(git rev-parse --short=7 HEAD)
-  printf "%s.r%s.g%s" "${_version:?}" "${_revision:?}" "${_commit:?}"
+  git describe --long --abbrev=7 | sed 's/^[^0-9]*//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare () {
