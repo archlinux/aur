@@ -7,7 +7,7 @@ pkgname=(
   maturin-git
   python-maturin-git
 )
-pkgver=1.12.5.r15.ge9747a17
+pkgver=1.14.1.r11.g5d75a8c3
 pkgrel=1
 pkgdesc="Build and publish crates with pyo3, rust-cpython and cffi bindings"
 url="https://github.com/PyO3/maturin"
@@ -24,6 +24,7 @@ makedepends=(
   xz
 )
 checkdepends=(
+ llvm
  python-cffi
  python-pycparser
  python-virtualenv
