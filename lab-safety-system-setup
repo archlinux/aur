@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
+# Idempotent first-run / repair setup for AUR package lab-safety-system-git.
+# - Creates Postgres role/db if missing
+# - Writes /etc/lab-safety-system/lab-safety-system.env only when missing
+# - Starts systemd unit
+# - Bootstraps system admin and prints password when newly created
 set -euo pipefail
 
 ENV_FILE=/etc/lab-safety-system/lab-safety-system.env
 DB_NAME=${LAB_SAFETY_DB_NAME:-lab_safety}
 DB_USER=${LAB_SAFETY_DB_USER:-lab_safety}
 APP_PORT=${LAB_SAFETY_APP_PORT:-8080}
+APP_HOST=${LAB_SAFETY_APP_HOST:-0.0.0.0}
 
 if [ "$(id -u)" -ne 0 ]; then
   echo "Run as root: sudo lab-safety-system-setup" >&2
@@ -37,25 +43,25 @@ run_postgres() {
 
 systemctl enable --now postgresql.service
 
-DB_PASSWORD=$(random_secret)
-SECRET_KEY=$(random_secret)
+systemd-sysusers 2>/dev/null || true
+systemd-tmpfiles --create 2>/dev/null || true
+install -d -m 0750 -o lab-safety-system -g lab-safety-system /var/lib/lab-safety-system/uploads
+install -d -m 0750 -o root -g lab-safety-system /etc/lab-safety-system
 
 if ! run_postgres psql -tAc "select 1 from pg_roles where rolname='${DB_USER}'" | grep -q 1; then
-  run_postgres createuser "$DB_USER"
+  run_postgres createuser -l "$DB_USER"
 fi
-
-run_postgres psql -v ON_ERROR_STOP=1 -c "alter role \"${DB_USER}\" with login password '${DB_PASSWORD}';"
-
 if ! run_postgres psql -tAc "select 1 from pg_database where datname='${DB_NAME}'" | grep -q 1; then
   run_postgres createdb -O "$DB_USER" "$DB_NAME"
 fi
 
-install -d -m 0750 -o root -g lab-safety-system /etc/lab-safety-system
-install -d -m 0750 -o lab-safety-system -g lab-safety-system /var/lib/lab-safety-system/uploads
-
-cat > "$ENV_FILE" <<EOF
+if [ ! -f "$ENV_FILE" ]; then
+  DB_PASSWORD=$(random_secret)
+  SECRET_KEY=$(random_secret)
+  run_postgres psql -v ON_ERROR_STOP=1 -c "alter role \"${DB_USER}\" with login password '${DB_PASSWORD}';"
+  cat > "$ENV_FILE" <<EOF
 APP_ENV=production
-APP_HOST=0.0.0.0
+APP_HOST=${APP_HOST}
 APP_PORT=${APP_PORT}
 DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@127.0.0.1:5432/${DB_NAME}
 SECRET_KEY=${SECRET_KEY}
@@ -71,20 +77,46 @@ WEBAUTHN_RP_ID=localhost
 WEBAUTHN_ORIGIN=http://localhost:${APP_PORT}
 CORS_ALLOWED_ORIGINS=
 EOF
-chmod 0640 "$ENV_FILE"
-chgrp lab-safety-system "$ENV_FILE"
+  chmod 0640 "$ENV_FILE"
+  chgrp lab-safety-system "$ENV_FILE"
+  echo "Wrote new $ENV_FILE"
+else
+  echo "Keeping existing $ENV_FILE (not overwritten)"
+fi
 
+systemctl daemon-reload
 systemctl enable --now lab-safety-system.service
 
+# Port from live env for readiness + display
+DISP_PORT=$(grep -E '^APP_PORT=' "$ENV_FILE" | head -1 | cut -d= -f2- || echo "$APP_PORT")
+for _ in $(seq 1 30); do
+  if curl -fsS "http://127.0.0.1:${DISP_PORT}/api/v1/ready" >/dev/null 2>&1; then
+    break
+  fi
+  sleep 1
+done
+
+echo "Bootstrapping system administrator (if missing)..."
+# Load env as the service user so DATABASE_URL/SECRET_KEY match systemd.
+BOOTSTRAP_OUT=$(
+  runuser -u lab-safety-system -- bash -c "
+    set -a
+    # shellcheck disable=SC1090
+    source '$ENV_FILE'
+    set +a
+    lab-safety-system users bootstrap-super-admin \
+      --username admin --generate-password true --email admin@localhost
+  " 2>&1 || true
+)
+echo "$BOOTSTRAP_OUT"
+
 cat <<EOF
-Lab Safety System is configured and starting.
 
-Check status:
-  systemctl status lab-safety-system.service
+=== Lab Safety System ready ===
+Status:   systemctl status lab-safety-system
+Open:     http://127.0.0.1:${DISP_PORT}  (or your reverse-proxy domain)
+Username: admin
+Password: see Generated password above (only on first create)
 
-Create the first system administrator:
-  sudo -u lab-safety-system lab-safety-system users bootstrap-super-admin --generate-password true
-
-Open:
-  http://localhost:${APP_PORT}
+Re-run is safe: existing env and DB secrets are preserved.
 EOF
