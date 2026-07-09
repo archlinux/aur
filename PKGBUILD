@@ -1,6 +1,6 @@
 # Maintainer: codeztech <alex@dinofudge.co.uk>
 pkgname=awiki
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A python-only CLI tool to search and read the Arch Wiki directly in your terminal"
 arch=('any')
