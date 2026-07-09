@@ -2,14 +2,14 @@
 # Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 
 pkgname=plotbitrate-git
-pkgver=1.1.1.0.r1.g59a12ab
+pkgver=1.2.0.1.r0.g2357cb5
 pkgrel=1
 pkgdesc="a script for plotting the bitrate of an audio or video stream over time"
 arch=('any')
 url="https://github.com/zeroepoch/plotbitrate"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('python-matplotlib' 'python-pyqt6' 'ffmpeg')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools')
 source=("git+https://github.com/zeroepoch/plotbitrate.git")
 md5sums=('SKIP')
 provides=('python-plotbitrate-git')
@@ -20,7 +20,16 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  git -C "${srcdir}/plotbitrate" clean -dfx
+}
+
+build() {
+  cd "plotbitrate"
+  python -m build --wheel --no-isolation
+}
+
 package() {
-  cd "${srcdir}/plotbitrate"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  cd "plotbitrate"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
