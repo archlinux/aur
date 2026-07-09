@@ -4,7 +4,7 @@ _gitauthor=excelano
 _gitname=xql
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="Run real SQL — SELECT, UPDATE, INSERT, DELETE — against SharePoint Lists and CSV files from one command-line tool"
+pkgdesc="Run real SQL — SELECT, UPDATE, INSERT, DELETE — against SharePoint Lists and CSV files from one command-line tool."
 
 pkgver=1.6.0
 pkgrel=1
