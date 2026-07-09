@@ -1,6 +1,6 @@
 pkgbase = anicli-esp
 	pkgdesc = Ver anime subtitulado en Español desde el terminal
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/Asempere123123/anicli-esp
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = anicli-esp
 	depends = mpv
 	depends = yt-dlp
 	depends = openssl
-	source = anicli-esp-1.3.0.tar.gz::https://github.com/Asempere123123/anicli-esp/archive/v1.3.0.tar.gz
-	sha256sums = c41a63fed81e501c943e68def40dca50bb6fec54e99933c2408d218f2700ba57
+	source = anicli-esp-1.3.1.tar.gz::https://github.com/Asempere123123/anicli-esp/archive/v1.3.1.tar.gz
+	sha256sums = 40f2dc4789cf74f94d17bf6910f2d9ab0f90a49dc8e95214ab4bdce80e16d7ab
 
 pkgname = anicli-esp
