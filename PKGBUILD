@@ -3,7 +3,7 @@
 _pkgname=qwen-code
 pkgname=${_pkgname}-bin
 _name=qwen
-pkgver=0.19.7
+pkgver=0.19.8
 pkgrel=1
 pkgdesc="Open-source AI agent based on Gemini CLI by QwenLM"
 arch=('any')
@@ -15,7 +15,7 @@ provides=("$_pkgname" "${_name}")
 conflicts=("$_pkgname" "${_name}")
 source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/@qwen-code/${_pkgname}/-/${_pkgname}-${pkgver}.tgz"
         "system-defaults.json")
-b2sums=('c0cd0d5a3d87444f352381e26b1be4d85451b69866b5fc743f45457906aa81881c26fe4e0b671aa16b933e8a8f13eaf519fa5b938fdb563ee2edc3e9002fd565'
+b2sums=('50fa192263112e2dea2b1de9b5585427db15c6a33304f7de854b1b544239298e01b7d022cf722213a63bf4d9578e0161f7e3773477bb13bca253fca97dda346a'
         '30c86151e58bd11bd1d39238646aae2dd8bc743ca2a03b64371a9dc36eae81c3acade6f39fe0235b0e7f8b059c7181d04ae5d134a3a316e0f9b3815b8f197bee')
 
 package() {
