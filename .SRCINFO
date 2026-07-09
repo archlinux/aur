@@ -1,0 +1,15 @@
+pkgbase = python-graph-genus
+	pkgdesc = Python/SageMath interface for computing the genus of a graph
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/SanderGi/Genus
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/g/graph_genus/graph_genus-0.1.1.tar.gz
+	sha256sums = df0e4a164ca5b25f661c44e22c1ee88d950d63e405881e61c251b4c52d4d9cd0
+
+pkgname = python-graph-genus
