@@ -14,6 +14,7 @@ pkgbase = syncthingtray-git
 	checkdepends = iproute2
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = perl
 	makedepends = qt6-tools
 	makedepends = git
 	makedepends = boost
