@@ -1,0 +1,19 @@
+pkgbase = xled-bin
+	pkgdesc = sed and awk for tabular data — regex transforms over Excel-style ranges on CSV/DSV.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/excelano/xled
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = xled
+	conflicts = xled
+	options = !strip
+	source_x86_64 = xled-x86_64-0.4.0.txz::https://github.com/excelano/xled/releases/download/v0.4.0/xled-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 81765924682594685837869e3e1aaee01b9e86c417a243ada9a2450d1bfde500
+	source_aarch64 = xled-aarch64-0.4.0.txz::https://github.com/excelano/xled/releases/download/v0.4.0/xled-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = f5364d7f6dc56d80b6c67f0cf4924b3f19b99ce456a00262fdcfcfa26c844776
+
+pkgname = xled-bin

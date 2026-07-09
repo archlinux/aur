@@ -1,0 +1,5 @@
+[xled-bin]
+source = "github"
+github = "excelano/xled"
+use_latest_release = true
+prefix = "v"
