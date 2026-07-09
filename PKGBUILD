@@ -1,15 +1,18 @@
 # Maintainer: ZauJulio <zaujulio.dev@gmail.com>
 pkgname=zerowhats-bin
 _appname=ZeroWhats
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A privacy-first WhatsApp Web desktop client"
 arch=('x86_64')
 url="https://github.com/ZauJulio/ZeroWhats"
 license=('MIT')
-depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'noto-fonts-emoji'
-         'hunspell-en_us' 'hunspell-pt-br')
-optdepends=('hunspell-es_es: Spanish spell checking'
+depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'noto-fonts-emoji')
+optdepends=('hunspell-en_us: English (US) spell checking'
+            'hunspell-en_gb: English (UK) spell checking'
+            'hunspell-pt-br: Portuguese (Brazil) spell checking'
+            'hunspell-pt-pt: Portuguese (Portugal) spell checking'
+            'hunspell-es_es: Spanish spell checking'
             'hunspell-fr: French spell checking'
             'hunspell-de: German spell checking'
             'hunspell-it: Italian spell checking'
