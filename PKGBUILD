@@ -5,7 +5,7 @@
 _pkgname=cantera
 pkgname="${_pkgname}"
 pkgver=3.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc='suite of tools for kinetics, thermodynamics, and transport processes'
 arch=('x86_64')
 url='https://cantera.org/'
@@ -17,21 +17,19 @@ makedepends=('scons' 'git' 'gcc' 'doxygen' 'cython' 'eigen' 'boost' 'python-pip'
 checkdepends=('gtest' 'gmock' 'python-ruamel-yaml' 'python-pytest')
 conflicts=('cantera-git')
 provides=('libcantera_shared.so=2-64')
-install=cantera.install
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Cantera/cantera/archive/v${pkgver}.tar.gz")
-sha256sums=('f01e25e33f9d5e37db7ababe5af36b60caabff52dba04bb221d53e44735f60ec')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Cantera/cantera/archive/v${pkgver}.tar.gz"
+        "cantera-example-data-${pkgver}.tar.gz::https://github.com/Cantera/cantera-example-data/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('f01e25e33f9d5e37db7ababe5af36b60caabff52dba04bb221d53e44735f60ec'
+            '1b52e0d4e90c3b90213d71893167d13a27fec2790c9d79fbd6f3e71e0f778e4a')
 
 prepare() {
     mv "${_pkgname}-${pkgver}" "${_pkgname}"
+    rm -rf "${_pkgname}/data/example_data"
+    mv "cantera-example-data-${pkgver}" "${_pkgname}/data/example_data"
+
     cd "$_pkgname"
     sed -i 's/self._selected_species.resize(len(species))/self._selected_species = np.empty(len(species), dtype=np.uint64)/' \
         interfaces/cython/cantera/solutionbase.pyx
-
-    # Fix python package configuration when example_data is disabled
-    sed -i '/cantera.data.example_data/d' interfaces/cython/setup.cfg.in
-
-    # Fix unit test when example_data is disabled
-    sed -i '/oxygen-plasma-itikawa.yaml/d' test/python/test_utils.py
 }
 
 build() {
@@ -47,8 +45,7 @@ build() {
         system_highfive='y' \
         system_yamlcpp='y' \
         system_blas_lapack='y' \
-        python_package='y' \
-        example_data='n'
+        python_package='y'
     scons doxygen
     scons samples
 }
