@@ -1,6 +1,6 @@
 pkgbase = nano-agent
 	pkgdesc = Tiny shell agent for OpenAI-compatible APIs
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/skorotkiewicz/nano-agent
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = nano-agent
 	depends = bubblewrap
 	depends = gcc-libs
 	options = !strip
-	source_x86_64 = nano-agent-0.3.0-x86_64.tar.gz::https://github.com/skorotkiewicz/nano-agent/releases/download/v0.3.0/nano-agent-v0.3.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 793ff31c580b58e978264316f874eac0340a568fb77dacc999f693ea184763e7
-	source_aarch64 = nano-agent-0.3.0-aarch64.tar.gz::https://github.com/skorotkiewicz/nano-agent/releases/download/v0.3.0/nano-agent-v0.3.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 4ec844b083a10dd98c7f87f9a3e3cfa54883c3bada21062ee43887d2cca48026
+	source_x86_64 = nano-agent-0.4.0-x86_64.tar.gz::https://github.com/skorotkiewicz/nano-agent/releases/download/v0.4.0/nano-agent-v0.4.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = cb4fee8a407f9082e4dc61cb670f366243082c209f93116443ebf82cb71f722c
+	source_aarch64 = nano-agent-0.4.0-aarch64.tar.gz::https://github.com/skorotkiewicz/nano-agent/releases/download/v0.4.0/nano-agent-v0.4.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 5d0cd0ff0bc74397e739e53a8cb7ebd18e9e189dbf6a66a8565441f6f3793fd1
 
 pkgname = nano-agent
