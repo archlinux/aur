@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="A fast, lightweight, command-line Steam launcher and library manager written in Rust"
 
-pkgver=0.1.16
+pkgver=0.1.17
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,11 +30,11 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}")
-sha256sums=('6828c79842ab080784127e15b8093aa38a88343e475e155e4853227157e42f4e'
-            'fd95fd85a8b479bed0167903efd7bb44faa765b9cf1086871e5bb99efcb4b447'
+sha256sums=('f0ddbda1ea72a467450a0bbffdb07228db6713fe5ba41e3cddd51050cfaf5877'
+            '056f30e83438222f9198414b8a9bb89b90e86a2f15f76fdb259948fcd6a0c773'
             'f2be9195b5ecdd8f2b71db80d4794361f90a2bdb91894f3c811f025c6578db5b')
-sha256sums_x86_64=('1e1f8228cdf0e4b75896ed8ce42795de8b560673a7198e8aa3b4ed434fee32f6')
-sha256sums_aarch64=('92c249d614d3b12c935b9e4dc57dfd128041c8fd36ba5a798418242e1cdf32c2')
+sha256sums_x86_64=('fbdb5c0975af6a122d8a0a55d39d92da86f8ce33ebca43e7aebbf4c35c6f3e53')
+sha256sums_aarch64=('ff3c1239e44b0b75c52dd50893c145ebd407166978bf54341c7f3ce990b368ec')
 
 
 package() {
