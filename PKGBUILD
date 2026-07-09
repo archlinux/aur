@@ -1,12 +1,12 @@
 # Maintainer: jswysnemc <snemc@qq.com>
 pkgname=mark-shot
-pkgver=0.1.38
+pkgver=0.1.39
 pkgrel=1
 pkgdesc='Qt 6 Wayland screenshot selection and annotation tool'
 arch=('x86_64' 'aarch64')
 url='https://github.com/jswysnemc/mark-shot'
 license=('MIT')
-depends=('qt6-base' 'qt6-wayland' 'layer-shell-qt' 'pipewire' 'grim' 'wl-clipboard' 'hicolor-icon-theme' 'python')
+depends=('qt6-base' 'qt6-wayland' 'layer-shell-qt' 'pipewire' 'ffmpeg' 'grim' 'wl-clipboard' 'hicolor-icon-theme' 'python')
 makedepends=('cmake' 'ninja' 'pkgconf' 'git')
 optdepends=(
     'xdg-desktop-portal: portal-based screenshot and screencast backend'
@@ -22,7 +22,8 @@ sha256sums=('SKIP')
 build() {
     cmake -S "${pkgname}-${pkgver}" -B build -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DMARK_SHOT_REQUIRE_FFMPEG=ON
     cmake --build build
 }
 
