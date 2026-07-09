@@ -1,21 +1,21 @@
 pkgbase = moekoemusic-bin
 	pkgdesc = An open-source, concise, and aesthetically pleasing third-party client for KuGou.(Prebuilt version.Use system-wide electron)一款开源简洁高颜值的酷狗第三方客户端
-	pkgver = 1.6.7
+	pkgver = 1.6.8
 	pkgrel = 1
 	url = https://music.moekoe.cn/
 	arch = x86_64
 	license = MIT
 	makedepends = asar
 	depends = electron39
-	provides = moekoemusic=1.6.7
+	provides = moekoemusic=1.6.8
 	conflicts = moekoemusic
 	options = !strip
 	options = !emptydirs
-	source = LICENSE-1.6.7::https://raw.githubusercontent.com/MoeKoeMusic/MoeKoeMusic/v1.6.7/LICENSE
+	source = LICENSE-1.6.8::https://raw.githubusercontent.com/MoeKoeMusic/MoeKoeMusic/v1.6.8/LICENSE
 	source = moekoemusic.sh
-	sha256sums = f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505
+	sha256sums = 735c9721d8185f2842e1c8e471f2bf2741619ca0e30b00bf3938310868282f54
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_x86_64 = moekoemusic-1.6.7-x86_64.deb::https://github.com/MoeKoeMusic/MoeKoeMusic/releases/download/v1.6.7/MoeKoe_Music_v1.6.7-amd64.deb
-	sha256sums_x86_64 = 59c892a2975cf2559863d2dacbf1f70008c000e6b29c55f0910925dc3967cbc0
+	source_x86_64 = moekoemusic-1.6.8-x86_64.deb::https://github.com/MoeKoeMusic/MoeKoeMusic/releases/download/v1.6.8/MoeKoe_Music_v1.6.8-amd64.deb
+	sha256sums_x86_64 = 73624eecc1128e7b88fa81caafeb2068d0f9e3f601e5fb632254e515f319af07
 
 pkgname = moekoemusic-bin
