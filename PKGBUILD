@@ -1,7 +1,7 @@
 # Maintainer: AntheaLaffy <anthealaffy@gmail.com>
 pkgname=mvsep-gui
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="MVSEP GUI - Music separation desktop application"
 arch=('x86_64')
 url="https://github.com/AntheaLaffy/mvsep-rs"
@@ -28,12 +28,19 @@ prepare() {
 
 build() {
   cd "${srcdir}/mvsep-rs-${pkgver}"
-  
+
   export CARGO_HOME="${srcdir}/cargo"
-  
+
+  # Remove -flto from CFLAGS/CXXFLAGS: the cc crate compiles bundled SQLite
+  # with these flags, and LTO bytecode cannot be linked by rust-lld
+  export CFLAGS="${CFLAGS//-flto=auto/}"
+  export CFLAGS="${CFLAGS//-flto/}"
+  export CXXFLAGS="${CXXFLAGS//-flto=auto/}"
+  export CXXFLAGS="${CXXFLAGS//-flto/}"
+
   npm install
   npm run build
-  
+
   cd src-tauri
   cargo build --release
 }
