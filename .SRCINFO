@@ -1,0 +1,15 @@
+pkgbase = tempo-cli
+	pkgdesc = Command line tool for viewing and manipulating Grafana Tempo backend blocks
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/grafana/tempo
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = go
+	depends = glibc
+	options = !lto
+	source = tempo-v3.0.2.tar.gz::https://github.com/grafana/tempo/archive/refs/tags/v3.0.2.tar.gz
+	sha256sums = 9da6e1c411694d1010bb7641ab55e365095bc85fd76d02e142ede0fa2162cf71
+
+pkgname = tempo-cli
