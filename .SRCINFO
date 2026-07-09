@@ -1,6 +1,6 @@
 pkgbase = yeet-git
 	pkgdesc = A fast, minimal, configurable app launcher for Wayland
-	pkgver = 0.1.4.r1.g39e0e68
+	pkgver = 0.2.0.r0.g5a55f9d
 	pkgrel = 1
 	url = https://github.com/1337hero/yeet
 	arch = x86_64

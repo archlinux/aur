@@ -1,6 +1,6 @@
 # Maintainer: 1337hero
 pkgname=yeet-git
-pkgver=0.1.4.r1.g39e0e68
+pkgver=0.2.0.r0.g5a55f9d
 pkgrel=1
 pkgdesc="A fast, minimal, configurable app launcher for Wayland"
 arch=('x86_64')
