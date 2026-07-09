@@ -2,7 +2,7 @@
 # Created with assistance from Qwen 3.6 (Alibaba).
 
 pkgname=pake-cli
-pkgver=3.12.0
+pkgver=3.13.1
 pkgrel=1
 pkgdesc="Turn any webpage into a desktop app with one command (Tauri/Rust-based CLI)"
 arch=('any')
@@ -19,7 +19,7 @@ options=('!debug')
 _pkgname=pake-cli
 
 source=("https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
-b2sums=('d63125268469c16468d1e09b49f75088c7319932688ab049519f5291c6116e2b1381db122b792084caae2f0de2ef7eef75c85cbc9c75734c3608a2187dfad731')
+b2sums=('0a7e7ad8a104bfa63e3f9c76a4abf85ff83ee9c28c19004fab24faeb2e8d54e1b923e268fcb8c4f9ed494fc06beeb49dedfe5d611208cf1e69f30868d9ec90c5')
 
 prepare() {
     bsdtar -xf "${_pkgname}-${pkgver}.tgz"
