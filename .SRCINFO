@@ -1,6 +1,6 @@
 pkgbase = surfshark-client
 	pkgdesc = Official Surfshark VPN client
-	pkgver = 3.10.1
+	pkgver = 3.11.0
 	pkgrel = 1
 	url = https://surfshark.com
 	install = surfshark-client.install
@@ -15,7 +15,7 @@ pkgbase = surfshark-client
 	optdepends = emoji-font: emoji support
 	options = !strip
 	options = !emptydirs
-	source = https://ocean.surfshark.com/debian/pool/main/s/surfshark_3.10.1_amd64.deb
-	sha256sums = 004507e4d0c8cb25b6d4f663dfcabc506163e2002e4ae4ebd25320f0044b539a
+	source = https://ocean.surfshark.com/debian/pool/main/s/surfshark_3.11.0_amd64.deb
+	sha256sums = edb299eccb34c3f31251e4924d7955317af2c328b70334041c4a175a769f001b
 
 pkgname = surfshark-client
