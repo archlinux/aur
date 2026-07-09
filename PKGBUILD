@@ -1,5 +1,5 @@
 pkgname=intellij-idea-community-edition-bin
-pkgver=2026.1.3
+pkgver=2026.1.4
 pkgrel=1
 pkgdesc="IntelliJ IDEA Community Edition – JetBrains IDE for JVM development"
 arch=('x86_64')
