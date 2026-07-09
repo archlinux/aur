@@ -1,4 +1,4 @@
-From 4d1d369a39a0023af25ea637cf97cafcda374370 Mon Sep 17 00:00:00 2001
+From a428ba77843fe0535d0eb9024557ed0e0e65049f Mon Sep 17 00:00:00 2001
 From: Hans-Kristian Arntzen <post@arntzen-software.no>
 Date: Sat, 2 May 2026 15:34:15 +0200
 Subject: [PATCH] Add new analog video options.
@@ -771,10 +771,10 @@ index de10bb676..8546608c4 100644
  	list(APPEND pcsx2GSSources GS/Renderers/parallel-gs/GSRendererPGS.cpp)
  	list(APPEND pcsx2GSHeaders GS/Renderers/parallel-gs/GSRendererPGS.h)
 diff --git a/pcsx2/Config.h b/pcsx2/Config.h
-index 0a828ea4f..4db8cd1f8 100644
+index bd7acefc2..5912d4e57 100644
 --- a/pcsx2/Config.h
 +++ b/pcsx2/Config.h
-@@ -902,6 +902,7 @@ struct Pcsx2Config
+@@ -903,6 +903,7 @@ struct Pcsx2Config
  		u8 ShadeBoost_Saturation = DEFAULT_SHADEBOOST_SATURATION;
  		u8 ShadeBoost_Gamma = DEFAULT_SHADEBOOST_GAMMA;
  		u8 PNGCompressionLevel = 1;
@@ -782,7 +782,7 @@ index 0a828ea4f..4db8cd1f8 100644
  		u8 PGSSuperSampling = 0;
  		u8 PGSHighResScanout = 0;
  		u8 PGSDisableMipmaps = 0;
-@@ -909,6 +910,21 @@ struct Pcsx2Config
+@@ -910,6 +911,21 @@ struct Pcsx2Config
  		u8 PGSSuperSampleTextures = 0;
  		u8 PGSSharpBackbuffer = 0;
  		u8 PGSBlendDemotion = 0;
@@ -1487,10 +1487,10 @@ index 0a4eb3558..8fba63757 100644
 +	ParallelGS::CRTFilter crt_filter;
  };
 diff --git a/pcsx2/Pcsx2Config.cpp b/pcsx2/Pcsx2Config.cpp
-index f1430e310..9c354f75b 100644
+index bb4dff330..71cc590bd 100644
 --- a/pcsx2/Pcsx2Config.cpp
 +++ b/pcsx2/Pcsx2Config.cpp
-@@ -902,7 +902,22 @@ bool Pcsx2Config::GSOptions::OptionsAreEqual(const GSOptions& right) const
+@@ -903,7 +903,22 @@ bool Pcsx2Config::GSOptions::OptionsAreEqual(const GSOptions& right) const
  		OpEqu(PGSDisableMipmaps) &&
  		OpEqu(PGSDisableReadbackSync) &&
  		OpEqu(PGSSharpBackbuffer) &&
@@ -1514,7 +1514,7 @@ index f1430e310..9c354f75b 100644
  }
  
  bool Pcsx2Config::GSOptions::operator!=(const GSOptions& right) const
-@@ -992,6 +1007,7 @@ void Pcsx2Config::GSOptions::LoadSave(SettingsWrapper& wrap)
+@@ -994,6 +1009,7 @@ void Pcsx2Config::GSOptions::LoadSave(SettingsWrapper& wrap)
  	SettingsWrapBitBool(HWSpinCPUForReadbacks);
  	SettingsWrapBitBoolEx(GPUPaletteConversion, "paltex");
  	SettingsWrapBitBoolEx(AutoFlushSW, "autoflush_sw");
@@ -1522,7 +1522,7 @@ index f1430e310..9c354f75b 100644
  	SettingsWrapIntEnumEx(PGSSuperSampling, "pgsSuperSampling");
  	SettingsWrapBitBoolEx(PGSHighResScanout, "pgsHighResScanout");
  	SettingsWrapBitBoolEx(PGSSuperSampleTextures, "pgsSuperSampleTextures");
-@@ -999,6 +1015,22 @@ void Pcsx2Config::GSOptions::LoadSave(SettingsWrapper& wrap)
+@@ -1001,6 +1017,22 @@ void Pcsx2Config::GSOptions::LoadSave(SettingsWrapper& wrap)
  	SettingsWrapBitBoolEx(PGSDisableReadbackSync, "pgsDisableReadbackSync");
  	SettingsWrapBitBoolEx(PGSSharpBackbuffer, "pgsSharpBackbuffer");
  	SettingsWrapBitBoolEx(PGSBlendDemotion, "pgsBlendDemotion");
@@ -1546,5 +1546,5 @@ index f1430e310..9c354f75b 100644
  	SettingsWrapBitBoolEx(Mipmap, "mipmap");
  	SettingsWrapBitBoolEx(ManualUserHacks, "UserHacks");
 -- 
-2.54.0
+2.55.0
 

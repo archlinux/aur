@@ -1,4 +1,4 @@
-From 400a1ebb924fe40bea961943c273f2fc22391632 Mon Sep 17 00:00:00 2001
+From 989f69ad4fcc09ef9566a6d7ea2e5c05324d2a9b Mon Sep 17 00:00:00 2001
 From: Hans-Kristian Arntzen <post@arntzen-software.no>
 Date: Sun, 23 Jun 2024 14:54:43 +0200
 Subject: [PATCH] Early integration of parallel-GS.
@@ -64,7 +64,7 @@ index b0c394591..8b5beeabb 100644
  # Include specific module
  include(BuildParameters)
 diff --git a/pcsx2-gsrunner/Main.cpp b/pcsx2-gsrunner/Main.cpp
-index 17bf1c398..340a8f83e 100644
+index de624db4e..c83a287ab 100644
 --- a/pcsx2-gsrunner/Main.cpp
 +++ b/pcsx2-gsrunner/Main.cpp
 @@ -670,6 +670,10 @@ bool GSRunner::ParseCommandLineArgs(int argc, char* argv[], VMBootParameters& pa
@@ -79,10 +79,10 @@ index 17bf1c398..340a8f83e 100644
  				else if (StringUtil::Strcasecmp(rname, "gl") == 0)
  					type = GSRendererType::OGL;
 diff --git a/pcsx2-qt/MainWindow.cpp b/pcsx2-qt/MainWindow.cpp
-index 4ccb95ed0..4168c20e5 100644
+index 15ab29b9e..f32080762 100644
 --- a/pcsx2-qt/MainWindow.cpp
 +++ b/pcsx2-qt/MainWindow.cpp
-@@ -651,6 +651,9 @@ void MainWindow::createRendererSwitchMenu()
+@@ -656,6 +656,9 @@ void MainWindow::createRendererSwitchMenu()
  {
  	static constexpr const GSRendererType renderers[] = {
  		GSRendererType::Auto,
@@ -436,7 +436,7 @@ index 4652ff99f..de10bb676 100644
  	GS/Renderers/Metal/cas.metal
  	GS/Renderers/Metal/convert.metal
 diff --git a/pcsx2/Config.h b/pcsx2/Config.h
-index 615c7ce26..0a828ea4f 100644
+index 93bbb89e6..bd7acefc2 100644
 --- a/pcsx2/Config.h
 +++ b/pcsx2/Config.h
 @@ -278,6 +278,7 @@ enum class GSRendererType : s8
@@ -447,7 +447,7 @@ index 615c7ce26..0a828ea4f 100644
  };
  
  enum class GSVSyncMode : u8
-@@ -901,6 +902,13 @@ struct Pcsx2Config
+@@ -902,6 +903,13 @@ struct Pcsx2Config
  		u8 ShadeBoost_Saturation = DEFAULT_SHADEBOOST_SATURATION;
  		u8 ShadeBoost_Gamma = DEFAULT_SHADEBOOST_GAMMA;
  		u8 PNGCompressionLevel = 1;
@@ -462,7 +462,7 @@ index 615c7ce26..0a828ea4f 100644
  		u16 SWExtraThreads = 2;
  		u16 SWExtraThreadsHeight = 4;
 diff --git a/pcsx2/GS/GS.cpp b/pcsx2/GS/GS.cpp
-index 241d29f70..868c41745 100644
+index fec4df9f1..82236b771 100644
 --- a/pcsx2/GS/GS.cpp
 +++ b/pcsx2/GS/GS.cpp
 @@ -1,5 +1,10 @@
@@ -530,7 +530,7 @@ index 241d29f70..868c41745 100644
  		default:
  			Console.Error("Unsupported render API %s", GSDevice::RenderAPIToString(new_api));
  			return false;
-@@ -155,17 +179,21 @@ static bool OpenGSDevice(GSRendererType renderer, bool clear_state_on_fail, bool
+@@ -155,19 +179,23 @@ static bool OpenGSDevice(GSRendererType renderer, bool clear_state_on_fail, bool
  	if (!okay)
  	{
  		ImGuiManager::Shutdown(clear_state_on_fail);
@@ -548,6 +548,8 @@ index 241d29f70..868c41745 100644
 -	if (!g_gs_device->SetGPUTimingEnabled(true))
 +	if (!g_gs_device || !g_gs_device->SetGPUTimingEnabled(true))
  		GSConfig.OsdShowGPU = false;
+ 	if (!g_gs_device->SetGPUPipelineStatisticsEnabled(true))
+ 		GSConfig.OsdShowGPUStats = false;
  
  	Console.WriteLn(Color_StrongGreen, "%s Graphics Driver Info:", GSDevice::RenderAPIToString(new_api));
 -	Console.WriteLn(g_gs_device->GetDriverInfo());
@@ -556,7 +558,7 @@ index 241d29f70..868c41745 100644
  
  	return true;
  }
-@@ -209,6 +237,17 @@ static bool OpenGSRenderer(GSRendererType renderer, u8* basemem)
+@@ -211,6 +239,17 @@ static bool OpenGSRenderer(GSRendererType renderer, u8* basemem)
  	{
  		g_gs_renderer = std::make_unique<GSRendererNull>();
  	}
@@ -574,7 +576,7 @@ index 241d29f70..868c41745 100644
  	else if (renderer != GSRendererType::SW)
  	{
  		GSClampUpscaleMultiplier(GSConfig);
-@@ -219,10 +258,18 @@ static bool OpenGSRenderer(GSRendererType renderer, u8* basemem)
+@@ -221,10 +260,18 @@ static bool OpenGSRenderer(GSRendererType renderer, u8* basemem)
  		g_gs_renderer = std::unique_ptr<GSRenderer>(MULTI_ISA_SELECT(makeGSRendererSW)(GSConfig.SWExtraThreads));
  	}
  
@@ -596,7 +598,7 @@ index 241d29f70..868c41745 100644
  	return true;
  }
  
-@@ -230,11 +277,17 @@ static void CloseGSRenderer()
+@@ -232,11 +279,17 @@ static void CloseGSRenderer()
  {
  	GSTextureReplacements::Shutdown();
  
@@ -614,7 +616,7 @@ index 241d29f70..868c41745 100644
  }
  
  bool GSreopen(bool recreate_device, bool recreate_renderer, GSRendererType new_renderer,
-@@ -242,18 +295,21 @@ bool GSreopen(bool recreate_device, bool recreate_renderer, GSRendererType new_r
+@@ -244,18 +297,21 @@ bool GSreopen(bool recreate_device, bool recreate_renderer, GSRendererType new_r
  {
  	Console.WriteLn("Reopening GS with %s device", recreate_device ? "new" : "existing");
  
@@ -647,7 +649,7 @@ index 241d29f70..868c41745 100644
  	}
  
  	std::string capture_filename;
-@@ -263,27 +319,65 @@ bool GSreopen(bool recreate_device, bool recreate_renderer, GSRendererType new_r
+@@ -265,27 +321,65 @@ bool GSreopen(bool recreate_device, bool recreate_renderer, GSRendererType new_r
  		capture_filename = GSCapture::GetNextCaptureFileName();
  		capture_size = GSCapture::GetSize();
  		Console.Warning(fmt::format("Restarting video capture to {}.", capture_filename));
@@ -721,7 +723,7 @@ index 241d29f70..868c41745 100644
  		}
  
  		CloseGSRenderer();
-@@ -292,9 +386,10 @@ bool GSreopen(bool recreate_device, bool recreate_renderer, GSRendererType new_r
+@@ -294,9 +388,10 @@ bool GSreopen(bool recreate_device, bool recreate_renderer, GSRendererType new_r
  	if (recreate_device)
  	{
  		// We need a new render window when changing APIs.
@@ -735,7 +737,7 @@ index 241d29f70..868c41745 100644
  		CloseGSDevice(false);
  
  		if (!OpenGSDevice(new_renderer, false, recreate_window, vsync_mode, allow_present_throttle))
-@@ -325,14 +420,27 @@ bool GSreopen(bool recreate_device, bool recreate_renderer, GSRendererType new_r
+@@ -327,14 +422,27 @@ bool GSreopen(bool recreate_device, bool recreate_renderer, GSRendererType new_r
  			return false;
  		}
  
@@ -767,7 +769,7 @@ index 241d29f70..868c41745 100644
  		g_gs_renderer->BeginCapture(std::move(capture_filename), capture_size);
  
  	return true;
-@@ -378,6 +486,14 @@ void GSclose()
+@@ -380,6 +488,14 @@ void GSclose()
  
  void GSreset(bool hardware_reset)
  {
@@ -782,7 +784,7 @@ index 241d29f70..868c41745 100644
  	g_gs_renderer->Reset(hardware_reset);
  
  	// Restart video capture if it's been started.
-@@ -394,65 +510,150 @@ void GSreset(bool hardware_reset)
+@@ -396,65 +512,150 @@ void GSreset(bool hardware_reset)
  
  void GSgifSoftReset(u32 mask)
  {
@@ -953,7 +955,7 @@ index 241d29f70..868c41745 100644
  	if (mode == FreezeAction::Save)
  	{
  		return g_gs_renderer->Freeze(data, false);
-@@ -479,6 +680,10 @@ int GSfreeze(FreezeAction mode, freezeData* data)
+@@ -481,6 +682,10 @@ int GSfreeze(FreezeAction mode, freezeData* data)
  
  void GSQueueSnapshot(const std::string& path, u32 gsdump_frames)
  {
@@ -964,7 +966,7 @@ index 241d29f70..868c41745 100644
  	if (g_gs_renderer)
  		g_gs_renderer->QueueSnapshot(path, gsdump_frames);
  }
-@@ -505,11 +710,15 @@ void GSEndCapture()
+@@ -507,11 +712,15 @@ void GSEndCapture()
  
  void GSPresentCurrentFrame()
  {
@@ -981,7 +983,7 @@ index 241d29f70..868c41745 100644
  	if (g_gs_device->GetVSyncMode() == GSVSyncMode::FIFO)
  	{
  		// Let vsync take care of throttling.
-@@ -530,25 +739,49 @@ void GSGameChanged()
+@@ -532,25 +741,49 @@ void GSGameChanged()
  
  bool GSHasDisplayWindow()
  {
@@ -1036,7 +1038,7 @@ index 241d29f70..868c41745 100644
  }
  
  void GSSetVSyncMode(GSVSyncMode mode, bool allow_present_throttle)
-@@ -560,7 +793,12 @@ void GSSetVSyncMode(GSVSyncMode mode, bool allow_present_throttle)
+@@ -562,7 +795,12 @@ void GSSetVSyncMode(GSVSyncMode mode, bool allow_present_throttle)
  	}};
  	Console.WriteLnFmt(Color_StrongCyan, "Setting vsync mode: {}{}", modes[static_cast<size_t>(mode)],
  		allow_present_throttle ? " (throttle allowed)" : "");
@@ -1050,7 +1052,7 @@ index 241d29f70..868c41745 100644
  }
  
  bool GSWantsExclusiveFullscreen()
-@@ -617,6 +855,19 @@ std::vector<GSAdapterInfo> GSGetAdapterInfo(GSRendererType renderer)
+@@ -619,6 +857,19 @@ std::vector<GSAdapterInfo> GSGetAdapterInfo(GSRendererType renderer)
  		break;
  #endif
  
@@ -1070,7 +1072,7 @@ index 241d29f70..868c41745 100644
  #ifdef __APPLE__
  		case GSRendererType::Metal:
  		{
-@@ -640,13 +891,29 @@ u32 GSGetMaxUpscaleMultiplier(u32 max_texture_size)
+@@ -642,13 +893,29 @@ u32 GSGetMaxUpscaleMultiplier(u32 max_texture_size)
  
  GSVideoMode GSgetDisplayMode()
  {
@@ -1101,7 +1103,7 @@ index 241d29f70..868c41745 100644
  	GSRenderer* gs = g_gs_renderer.get();
  	if (!gs)
  	{
-@@ -785,7 +1052,13 @@ void GSgetTitleStats(std::string& info)
+@@ -787,7 +1054,13 @@ void GSgetTitleStats(std::string& info)
  	static constexpr const char* deinterlace_modes[] = {
  		"Automatic", "None", "Weave tff", "Weave bff", "Bob tff", "Bob bff", "Blend tff", "Blend bff", "Adaptive tff", "Adaptive bff"};
  
@@ -1116,7 +1118,7 @@ index 241d29f70..868c41745 100644
  	const char* hw_sw_name = (GSCurrentRenderer == GSRendererType::Null) ? " Null" : (GSIsHardwareRenderer() ? " HW" : " SW");
  	const char* deinterlace_mode = deinterlace_modes[static_cast<int>(GSConfig.InterlaceMode)];
  
-@@ -798,8 +1071,11 @@ void GSUpdateConfig(const Pcsx2Config::GSOptions& new_config)
+@@ -800,8 +1073,11 @@ void GSUpdateConfig(const Pcsx2Config::GSOptions& new_config)
  {
  	Pcsx2Config::GSOptions old_config(std::move(GSConfig));
  	GSConfig = new_config;
@@ -1130,7 +1132,7 @@ index 241d29f70..868c41745 100644
  
  	// Handle OSD scale changes by pushing a window resize through.
  	if (new_config.OsdScale != old_config.OsdScale)
-@@ -816,6 +1092,9 @@ void GSUpdateConfig(const Pcsx2Config::GSOptions& new_config)
+@@ -818,6 +1094,9 @@ void GSUpdateConfig(const Pcsx2Config::GSOptions& new_config)
  		return;
  	}
  
@@ -1203,7 +1205,7 @@ index ef080e628..6f13c4726 100644
  		preferred_renderer = GSRendererType::Metal;
  #elif defined(_WIN32) && defined(ARCH_ARM64)
 diff --git a/pcsx2/GS/Renderers/Common/GSRenderer.cpp b/pcsx2/GS/Renderers/Common/GSRenderer.cpp
-index 71708ade6..c420cc58b 100644
+index 1d7704096..ecd50b0e9 100644
 --- a/pcsx2/GS/Renderers/Common/GSRenderer.cpp
 +++ b/pcsx2/GS/Renderers/Common/GSRenderer.cpp
 @@ -288,7 +288,7 @@ float GSRenderer::GetModXYOffset()
@@ -2304,7 +2306,7 @@ index d9d40795e..93d62b5d7 100644
  	g.ActiveIdSource = (g.ActiveIdSource == ImGuiInputSource_Mouse) ? ImGuiInputSource_Keyboard : g.ActiveIdSource;
  	g.NavInputSource = (g.NavInputSource == ImGuiInputSource_Mouse) ? ImGuiInputSource_Keyboard : g.ActiveIdSource;
 diff --git a/pcsx2/Pcsx2Config.cpp b/pcsx2/Pcsx2Config.cpp
-index df57ca934..f1430e310 100644
+index 6dba18bbc..bb4dff330 100644
 --- a/pcsx2/Pcsx2Config.cpp
 +++ b/pcsx2/Pcsx2Config.cpp
 @@ -696,6 +696,7 @@ const char* Pcsx2Config::GSOptions::GetRendererName(GSRendererType type)
@@ -2315,7 +2317,7 @@ index df57ca934..f1430e310 100644
  		default:                    return "";
  			// clang-format on
  	}
-@@ -894,7 +895,14 @@ bool Pcsx2Config::GSOptions::OptionsAreEqual(const GSOptions& right) const
+@@ -895,7 +896,14 @@ bool Pcsx2Config::GSOptions::OptionsAreEqual(const GSOptions& right) const
  		OpEqu(Adapter) &&
  
  		OpEqu(HWDumpDirectory) &&
@@ -2331,7 +2333,7 @@ index df57ca934..f1430e310 100644
  }
  
  bool Pcsx2Config::GSOptions::operator!=(const GSOptions& right) const
-@@ -984,6 +992,13 @@ void Pcsx2Config::GSOptions::LoadSave(SettingsWrapper& wrap)
+@@ -986,6 +994,13 @@ void Pcsx2Config::GSOptions::LoadSave(SettingsWrapper& wrap)
  	SettingsWrapBitBool(HWSpinCPUForReadbacks);
  	SettingsWrapBitBoolEx(GPUPaletteConversion, "paltex");
  	SettingsWrapBitBoolEx(AutoFlushSW, "autoflush_sw");
@@ -2430,5 +2432,5 @@ index 5dcf68fcc..d60e23d1d 100644
      <ClCompile Include="GS\Renderers\DX12\GSDevice12.cpp" />
      <ClCompile Include="GS\Renderers\DX12\GSTexture12.cpp" />
 -- 
-2.54.0
+2.55.0
 
