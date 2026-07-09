@@ -13,11 +13,13 @@ pkgbase = c++utilities-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
-	depends = gcc-libs
+	depends = glibc
+	depends = libstdc++
+	depends = libgcc
 	depends = libarchive
 	optdepends = c++utilities-doc: API documentation
 	provides = libc++utilities-git.so
-	source = cpp-utilities::git+https://martchus.no-ip.biz/gitea/Martchus//cpp-utilities.git
+	source = cpp-utilities::git+https://martchus.dyn.f3l.de/gitea/Martchus/cpp-utilities.git
 	sha256sums = SKIP
 
 pkgname = c++utilities-git
