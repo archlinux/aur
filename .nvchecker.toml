@@ -1,0 +1,5 @@
+[apollo-rover]
+source = "git"
+git = "https://github.com/apollographql/rover.git"
+prefix = "v"
+include_regex = "v[\\d\\.]+\\d"
