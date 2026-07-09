@@ -1,0 +1,5 @@
+[rulc]
+source = "github"
+github = "imizgun/rulc"
+use_latest_release = true
+prefix = "v"
