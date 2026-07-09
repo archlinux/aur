@@ -1,6 +1,6 @@
 pkgbase = lfk
 	pkgdesc = Lightning Fast Kubernetes navigator - keyboard-focused TUI for managing K8s clusters
-	pkgver = 0.15.1
+	pkgver = 0.15.3
 	pkgrel = 1
 	url = https://github.com/janosmiko/lfk
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = lfk
 	optdepends = kubectl: Kubernetes CLI integration
 	optdepends = helm: Helm release management
 	optdepends = trivy: Container image vulnerability scanning
-	source = lfk-0.15.1.tar.gz::https://github.com/janosmiko/lfk/archive/v0.15.1.tar.gz
-	sha256sums = a7ee425c5e6a57b03bd3a1f09bc74f7e1bf53cad5a5245d8e68473948ab5d2cd
+	source = lfk-0.15.3.tar.gz::https://github.com/janosmiko/lfk/archive/v0.15.3.tar.gz
+	sha256sums = a84d017589ed6f84e1041f88b4e550d118ca8daf88f5fbe13cd415e85ae24b8e
 
 pkgname = lfk
