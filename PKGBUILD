@@ -1,6 +1,6 @@
 # Maintainer: Samuel Paredes <sam.paredes.g@gmail.com>
 pkgname=franki-os-git
-pkgver=r951.9c64b14
+pkgver=r953.a85e174
 pkgrel=1
 pkgdesc="Federated Recursive Artificial Neural Knowledge Interface - Neural OS"
 arch=('x86_64')
