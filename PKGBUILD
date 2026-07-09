@@ -4,7 +4,7 @@ _pkgname=noctalia
 _tagver=5.0.0-beta2
 pkgname=noctalia
 pkgver=5.0.0_beta2
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight Wayland shell built directly on Wayland and OpenGL ES'
 arch=('x86_64')
 url='https://github.com/noctalia-dev/noctalia'
@@ -39,7 +39,9 @@ depends=(
 makedepends=(
   'meson'
   'ninja'
+  'nlohmann-json'
   'pkgconf'
+  'stb'
   'wayland-protocols'
 )
 conflicts=('noctalia-git' 'noctalia-bin')
@@ -50,9 +52,7 @@ build() {
   CXXFLAGS+=" -Wno-unused-result"
   arch-meson "${_pkgname}-${_tagver}" build-release \
     -Db_ndebug=true \
-    -Dtests=disabled \
-    -Dsystem_md4c=true \
-    -Dsystem_tomlplusplus=true
+    -Dtests=disabled
   meson compile -C build-release
 }
 
