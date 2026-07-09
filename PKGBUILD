@@ -1,28 +1,48 @@
-# Maintainer: Matthias Baur <aur@matthiasbaur.me>
-pkgname=noson-app
-pkgver=5.6.27
-pkgrel=1
-pkgdesc="The essential to control music from your SONOS devices on Linux platforms"
-arch=('x86_64' 'armv7h' 'aarch64')
-url="https://janbar.github.io/noson-app"
-license=('GPL-3.0-only')
-depends=('qt5-base' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-svg' 'libpulse' 'flac')
-makedepends=('cmake' 'git')
-source=("git+https://github.com/janbar/noson-app.git#tag=${pkgver}")
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Matthias Baur <aur@matthiasbaur.me>
 
-sha256sums=('3ba2aa4a65d3548000645efc2b7fd88539deeea20373b8da449d735aef9d10e4')
+pkgname=noson-app
+pkgver=5.7.1
+pkgrel=1
+pkgdesc="SONOS controller for Linux platforms"
+arch=(x86_64 aarch64 armv7h)
+url="https://github.com/janbar/noson-app"
+license=(GPL-3.0-only)
+depends=(
+    qt6-5compat
+    qt6-base
+    qt6-declarative
+    qt6-svg
+    flac
+    glibc
+    hicolor-icon-theme
+    libgcc
+    libstdc++
+    openssl
+    sh
+    zlib
+    )
+makedepends=(
+    cmake
+    git
+    libpulse
+    vulkan-headers
+    )
+source=("git+https://github.com/janbar/noson-app.git#tag=${pkgver}")
+sha256sums=('14be259877431780b951079272cf13fc11a300bf5b5d3e0ba0446a8202e3f23c')
 
 build() {
-  mkdir -p "$srcdir/build"
-  cd "$srcdir/build"
-  cmake "$srcdir/${pkgname%-git}" \
-    -DCMAKE_BUILD_TYPE=Release \
+  local _flags=(
+  )
+
+  cmake -B build -S "noson-app" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib
-  cmake --build .
+    "${_flags[@]}"
+
+  cmake --build build
 }
 
 package() {
-  cd "$srcdir/build"
-  DESTDIR="$pkgdir/" cmake --install .
+  DESTDIR="${pkgdir}" cmake --install build
 }
