@@ -8,32 +8,40 @@
 # Contributor: Philipp Wolfer <ph.wolfer@gmail.com>
 # Contributor: Joel Pedraza <joel@joelpedraza.com>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
+# Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 _apilevel=28
 _sdkver='9.0.0'
 _rev='r04'
 _image_arch='x86_64'
 _sdkver_char='P'
-pkgname="android-${_image_arch/x86_/x86-}-system-image-${_apilevel}"
-pkgver="${_apilevel}_${_sdkver}_${_rev}" # I use this version labeling as an attempt to work with all notations
-# across `AUR`. Some use the `API` level, some use the `SDK` version. This way, all the numbers are visible and this
-# should be a "higher number" than other versioning schemes (except between `API` levels and some very old versions).
-pkgrel=1
-pkgdesc="Android ${_image_arch} system image, API ${_apilevel}"
-arch=('any') # I actually don't think it works on x86, or not in a fine way. That requires some testing I don't have
-# the time to do anyway.
+pkgname=android-${_image_arch/x86_/x86-}-system-image-$_apilevel
+pkgver=$_apilevel_$_sdkver_$_rev
+pkgrel=2
+pkgdesc="Android $_image_arch system image, API $_apilevel"
+arch=('x86_64' 'aarch64')
 url="https://developer.android.com/studio/index.html"
-license=('custom') # TODO: Link to the license.
-depends=("android-platform-${_apilevel}")
-provides=("android-${_image_arch/x86_/x86-}-system-image")
+license=('custom')
+optdepends=('android-emulator' 'qemu' 'libvirt')
 options=('!strip')
-source=("https://dl.google.com/android/repository/sys-img/android/${_image_arch}-${_apilevel}_${_rev}.zip")
-sha1sums=('d47a85c8f4e9fd57df97814ad8884eeb0f3a0ef0')
-sha256sums=('ff6ce81aa1424951a214da5f392f8e12382de46d33c08aeaa5d21caba6a39b62')
+source=("https://dl.google.com/android/repository/sys-img/android/${_image_arch}-${_apilevel}_${_rev}.zip"
+        "package.xml")
+sha256sums=('ff6ce81aa1424951a214da5f392f8e12382de46d33c08aeaa5d21caba6a39b62'
+            '74c3dc0610ba38c1986135c2dd42c16f3c46233e3fe413b9cf5c73beb1081dad')
+
+prepare() {
+  # Fix permissions
+  cd $_image_arch
+  find . -type f -print0 | xargs --null chmod -R u=rw,go=r
+  find . -type d -print0 | xargs --null chmod -R u=rwx,go=rx
+}
 
 package() {
-	_destdir="${pkgdir}/opt/android-sdk/system-images/android-${_apilevel}/default"
-	mkdir -p "${_destdir}"
-	mv "${srcdir}/${_image_arch}" "${_destdir}"
-	chmod -R ugo+rX "${pkgdir}/opt"
+  # Install files
+  install -d -m 755 "${pkgdir}/opt/android-sdk/system-images/android-$_apilevel/default"
+  cp -r $_image_arch "${pkgdir}/opt/android-sdk/system-images/android-$_apilevel/default/"
+  # Install license
+  install -D -m 644 "package.xml" "${pkgdir}/usr/share/licenses/$pkgname/package.xml"
+  ln -s "/usr/share/licenses/$pkgname/package.xml" \
+    "${pkgdir}/opt/android-sdk/system-images/android-$_apilevel/default/$_image_arch/"
 }
