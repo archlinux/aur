@@ -2,7 +2,7 @@
 
 pkgname=plainva
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 url="https://$pkgname.com"
 _url="https://github.com/$pkgname/$pkgname"
 pkgdesc='Obsidian-compatible, local-first editor for plain Markdown vaults'
@@ -38,7 +38,7 @@ _srcenv() {
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export CARGO_TARGET_DIR=target
 	export RUSTUP_TOOLCHAIN=stable
-	export OPENSSL_NO_VENDOR=true
+	RUSTFLAGS+=" --remap-path-prefix $PWD=/"
 }
 
 prepare() {

@@ -1,7 +1,7 @@
 pkgbase = plainva
 	pkgdesc = Obsidian-compatible, local-first editor for plain Markdown vaults
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://plainva.com
 	arch = x86_64
 	license = MIT
