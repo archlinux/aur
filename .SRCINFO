@@ -1,6 +1,6 @@
 pkgbase = ccusage
 	pkgdesc = Analyze coding agent CLI token usage and costs from local data
-	pkgver = 20.0.14
+	pkgver = 20.0.16
 	pkgrel = 1
 	url = https://github.com/ryoppippi/ccusage
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = ccusage
 	license = MIT
 	options = !strip
 	options = !debug
-	source_x86_64 = ccusage-20.0.14-x86_64.tgz::https://registry.npmjs.org/@ccusage/ccusage-linux-x64/-/ccusage-linux-x64-20.0.14.tgz
-	sha256sums_x86_64 = 6c32f48dabc9d21d2545d21e65df64b97591919f1fdbaafae9bac9109c043d44
-	source_aarch64 = ccusage-20.0.14-aarch64.tgz::https://registry.npmjs.org/@ccusage/ccusage-linux-arm64/-/ccusage-linux-arm64-20.0.14.tgz
-	sha256sums_aarch64 = df29a7862f6975586b4dfbdcf60f61748bd9387f309e4782da0a5342328f57e0
+	source_x86_64 = ccusage-20.0.16-x86_64.tgz::https://registry.npmjs.org/@ccusage/ccusage-linux-x64/-/ccusage-linux-x64-20.0.16.tgz
+	sha256sums_x86_64 = d9331013e05b3bfef9e3477c3209f86c40d323250b4c600a3e8d436ce5cf116f
+	source_aarch64 = ccusage-20.0.16-aarch64.tgz::https://registry.npmjs.org/@ccusage/ccusage-linux-arm64/-/ccusage-linux-arm64-20.0.16.tgz
+	sha256sums_aarch64 = fc0a96684bd597ef253af3ff7accf8aa00ee5681c3abfe2c95fe531486fff1bc
 
 pkgname = ccusage
