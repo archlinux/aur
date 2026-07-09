@@ -2,7 +2,7 @@
 # https://github.com/hekel/chatterino-stuffs
 
 pkgname="chatterino2-7tv-native-git"
-pkgver=7.5.5beta1.r85.gf97e67d
+pkgver=7.5.5beta1.r182.g26b39f3
 pkgrel=1
 pkgdesc='Chatterino2 fork with support for 7tv; Patched to use native system QT style'
 url="https://github.com/SevenTV/chatterino7"
@@ -65,9 +65,9 @@ sha256sums=(
   'SKIP'
   'SKIP'
   'SKIP'
-  '023a2cad4865675e4d0303eca60f11daaccb107b838343e3b5e5c1f6694bc8a6'
+  '9c3920cb63073331a6ee368bbb85f67a259cdb8cf602417750925531fbe45bcd'
   'f7694cfd67cdfdb7ef825052af4d0a09ea8043a747bbfe60692d0102b7cc42bb'
-  '06ea7c9fcb42965e9baecbdc3f864ad7049d148b27f152ceebc7bd8af58c2147'
+  '33bac9cf012dac641118146866294bcb79f91bd0d53000eef68c33bb5f905fcd'
 )
 
 pkgver() {
