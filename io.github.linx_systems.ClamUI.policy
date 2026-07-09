@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+  "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+  "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
+<policyconfig>
+  <vendor>ClamUI</vendor>
+  <vendor_url>https://github.com/linx-systems/clamui</vendor_url>
+  <icon_name>io.github.linx_systems.ClamUI</icon_name>
+
+  <action id="io.github.linx_systems.clamui.apply-preferences">
+    <description>Apply ClamUI system configuration changes</description>
+    <message>Authentication is required to save ClamAV system settings from ClamUI.</message>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/clamui-apply-preferences</annotate>
+    <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+  </action>
+</policyconfig>
