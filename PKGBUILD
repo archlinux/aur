@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('python' 'python-httpx')
 
 source=("tldsweep.py::https://githubusercontent.com")
-sha256sums=('ec3f43e420311a61853bf3955483e1a3673b747ea2d56ebabfcda077ff468a82')
+sha256sums=('a9a2075f66cb2347a50bb765c62dcaf1e5b1571badda7ecafe524d15c0084759')
 
 package() {
     install -Dm755 "${srcdir}/tldsweep.py" "${pkgdir}/usr/bin/tldsweep"
