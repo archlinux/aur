@@ -1,7 +1,7 @@
 
 # Maintainer: AntheaLaffy <anthealaffy@gmail.com>
 pkgname=mvsep-gui
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="MVSEP GUI - Music separation desktop application"
 arch=('x86_64')
