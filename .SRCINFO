@@ -19,7 +19,7 @@ pkgbase = tagparser-git
 	depends = zlib
 	optdepends = tagparser-doc: API documentation
 	provides = libtagparser-git.so
-	source = tagparser::git+https://martchus.dyn.f3l.de/gitea/Martchus/tagparser.git
+	source = tagparser::git+https://github.com/Martchus/tagparser.git
 	sha256sums = SKIP
 
 pkgname = tagparser-git
