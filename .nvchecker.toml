@@ -1,0 +1,5 @@
+[kal-lang]
+source = "github"
+github = "KILLinefficiency/Kal"
+use_max_tag = true
+prefix = "v"

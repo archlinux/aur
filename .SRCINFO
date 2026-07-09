@@ -1,0 +1,17 @@
+pkgbase = kal-lang
+	pkgdesc = Kal is an interpreted programming language.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/KILLinefficiency/Kal
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = gcc
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = kal
+	options = !strip
+	source = kal-lang-0.1.0.tgz::https://github.com/KILLinefficiency/Kal/archive/v0.1.0.tar.gz
+	sha256sums = 650a4037a98baafbe8553a208aace16a6ece62b174e5ed12346da37d2a38f0ca
+
+pkgname = kal-lang
