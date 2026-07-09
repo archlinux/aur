@@ -1,7 +1,7 @@
 # Maintainer: Kitty Dae Elliott <kdelliott@pm.me>
 pkgname=remanager-bin
 pkgdesc="Open-source mod manager for reMarkable tablets"
-pkgver=1.5.3
+pkgver=1.6.1
 pkgrel=1
 arch=('x86_64')
 url="https://remanager.io/"
@@ -13,11 +13,9 @@ source=(
 	"reManager.svg::https://raw.githubusercontent.com/rmitchellscott/reManager/refs/tags/v${pkgver}/assets/icon.svg"
 	"reManager.desktop"
 )
-sha256sums=(
-	'4d82a8de93f612e2dbd9139dfa5ff340fb9a93fba525ddd0e400d71fcc1ad2ab'
-	'ae00ec88e4ad4284755aeef6fbdc6c9af5abe32625bf1512e51ba56a0bed40ec'
-	'SKIP'
-)
+sha256sums=('dd5ee479b239aedfe589c38a04b9f8c06d2ed27eb06c9d1d6f59fa63abb5fa6a'
+            'ae00ec88e4ad4284755aeef6fbdc6c9af5abe32625bf1512e51ba56a0bed40ec'
+            'af71e3ee3c5c2f59f045a96ac4a8d4b609a2a66ed02ee05458a07536d022c94d')
 
 package() {
 	install -Dm0644 reManager.desktop -t "${pkgdir}"/usr/share/applications/
