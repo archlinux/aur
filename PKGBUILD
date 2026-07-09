@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=reflection
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc='Collaborative, local-first GTK text editor'
 arch=(x86_64)
@@ -28,7 +28,7 @@ makedepends=(blueprint-compiler
 options=(!lto)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('e54907f7395f879fb1eda268fd059517b2bc3688c5010a04bcec120aaf76bed2')
+sha256sums=('adae25852a7fbdf71f35715668369df64c374a26b2d8ee6b5c7669a2a349b133')
 
 prepare() {
 	cd "$_archive"
