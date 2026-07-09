@@ -1,0 +1,13 @@
+pkgbase = firefox-theme-materia-gray
+	pkgdesc = Firefox theme Materia Gray
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/firefox/addon/materia-gray/
+	arch = any
+	license = CC-BY-NC-SA-4.0
+	makedepends = jq
+	depends = firefox
+	source = https://addons.mozilla.org/firefox/downloads/file/4598227/materia_gray-1.0.xpi
+	sha256sums = 5c328355a15021d6977fe18c37b31937e27547da675644e1151bee978b324ab7
+
+pkgname = firefox-theme-materia-gray
