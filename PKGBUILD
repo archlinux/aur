@@ -7,17 +7,19 @@
 # Contributor: Rose Ames <rose at happyspork dot com>
 
 pkgname=zulip-desktop
-pkgver=5.12.3
+pkgver=5.12.4
 pkgrel=1
 pkgdesc='Zulip Desktop Client for Linux'
 arch=('x86_64')
 url='https://zulip.com'
 license=('Apache-2.0')
-_electron=electron39
+_electron=electron42
 depends=('bash' "${_electron}" 'glibc')
-makedepends=('gendesk' 'pnpm' 'python')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zulip/zulip-desktop/archive/v${pkgver}.tar.gz")
-sha512sums=('3fbcd2452ceb194b3ac6ca77e63ed09ee2287196e76f7bb4a1ed311cd15b3df151ff3649bd6d5f04b9361e8548dd8b7dbd1db618a3b7645af9b66d659f3ea9c6')
+makedepends=('gendesk' 'npm' 'pnpm' 'python')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zulip/zulip-desktop/archive/v${pkgver}.tar.gz"
+        "${pkgname}.sh")
+sha512sums=('b64d96908f0301d04826dab4afebf17c08cb7c561c04742e0023a90609063d63b5bfc4a58cc757273d22675b9261275fa25d93044e351bcf13e3ae413fd7bf73'
+            '32753894751dffd40781cd04435643573252494be4db3e542f7af90885d00317188bd65587287f5fbaa63b79fcfad33d98929e456e31e90b434e5cd59bbfbafb')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -27,11 +29,7 @@ prepare() {
         --name "Zulip" \
         --categories "Chat;GNOME;GTK;Network;InstantMessaging" \
         --custom "StartupWMClass=Zulip"
-
-    cat >"${pkgname}.sh" <<EOF
-#!/usr/bin/bash
-exec ${_electron} /usr/lib/${pkgname}/app.asar "\$@"
-EOF
+    sed -i "s/@ELECTRON@/${_electron}/" "${srcdir}/${pkgname}.sh"
 }
 
 build() {
@@ -39,15 +37,15 @@ build() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     pnpm install --frozen-lockfile
     node --run pack -- \
-        -c.electronDist="/usr/lib/${_electron}" \
-        -c.electronVersion="$(cat /usr/lib/${_electron}/version)"
+        --config.electronDist="/usr/lib/${_electron}" \
+        --config.electronVersion="$(cat /usr/lib/${_electron}/version)"
 }
 
 package() {
     cd "${pkgname}-${pkgver}"
     install -Dm644 dist/linux-unpacked/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     cp -r dist/linux-unpacked/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 build/zulip.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"

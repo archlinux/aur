@@ -1,17 +1,20 @@
 pkgbase = zulip-desktop
 	pkgdesc = Zulip Desktop Client for Linux
-	pkgver = 5.12.3
+	pkgver = 5.12.4
 	pkgrel = 1
 	url = https://zulip.com
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = gendesk
+	makedepends = npm
 	makedepends = pnpm
 	makedepends = python
 	depends = bash
-	depends = electron39
+	depends = electron42
 	depends = glibc
-	source = zulip-desktop-5.12.3.tar.gz::https://github.com/zulip/zulip-desktop/archive/v5.12.3.tar.gz
-	sha512sums = 3fbcd2452ceb194b3ac6ca77e63ed09ee2287196e76f7bb4a1ed311cd15b3df151ff3649bd6d5f04b9361e8548dd8b7dbd1db618a3b7645af9b66d659f3ea9c6
+	source = zulip-desktop-5.12.4.tar.gz::https://github.com/zulip/zulip-desktop/archive/v5.12.4.tar.gz
+	source = zulip-desktop.sh
+	sha512sums = b64d96908f0301d04826dab4afebf17c08cb7c561c04742e0023a90609063d63b5bfc4a58cc757273d22675b9261275fa25d93044e351bcf13e3ae413fd7bf73
+	sha512sums = 32753894751dffd40781cd04435643573252494be4db3e542f7af90885d00317188bd65587287f5fbaa63b79fcfad33d98929e456e31e90b434e5cd59bbfbafb
 
 pkgname = zulip-desktop
