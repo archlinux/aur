@@ -1,6 +1,6 @@
 pkgbase = python-cozempic
 	pkgdesc = Context cleaning for Claude Code — prune bloated sessions, protect Agent Teams from context loss, auto-guard with tiered pruning
-	pkgver = 1.8.34
+	pkgver = 1.8.39
 	pkgrel = 1
 	url = https://github.com/Ruya-AI/cozempic
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-cozempic
 	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python
-	source = cozempic-1.8.34.tar.gz::https://files.pythonhosted.org/packages/source/c/cozempic/cozempic-1.8.34.tar.gz
-	sha256sums = 5a1cc6239c9eef533fab0b65b6da9e2f88f63ba3f2f06c4d7d2c6cfded95a9cf
+	source = cozempic-1.8.39.tar.gz::https://files.pythonhosted.org/packages/source/c/cozempic/cozempic-1.8.39.tar.gz
+	sha256sums = 4c6a73279d3717f92aee1dec7088ecab5793d9d8ed5e447bb71f2defc5559199
 
 pkgname = python-cozempic
