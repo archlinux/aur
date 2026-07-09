@@ -1,6 +1,6 @@
 pkgbase = kari-bin
 	pkgdesc = Search, stream, and download anime, movies, TV shows & cartoons across 5+ providers with MPV/IINA/VLC/MX Player support, Trakt/AniList scrobbling, and auto-subtitles
-	pkgver = 1.3.5
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://github.com/Dhairya3391/kari
 	arch = x86_64
@@ -14,13 +14,13 @@ pkgbase = kari-bin
 	provides = kari
 	conflicts = kari
 	options = !strip
-	source = README-1.3.5.md::https://raw.githubusercontent.com/Dhairya3391/kari/v1.3.5/README.md
-	source = LICENSE-1.3.5::https://raw.githubusercontent.com/Dhairya3391/kari/v1.3.5/LICENSE
+	source = README-1.3.6.md::https://raw.githubusercontent.com/Dhairya3391/kari/v1.3.6/README.md
+	source = LICENSE-1.3.6::https://raw.githubusercontent.com/Dhairya3391/kari/v1.3.6/LICENSE
 	sha256sums = 9ad0d80a0f0d02e43a51a0f533a1e689eaf5369b1abac422a4b2963fe641feca
 	sha256sums = cfe49cf99a0612a353aa74cfe9b6dbaa4b545c499ddac88f0319e639a1cfac51
-	source_x86_64 = kari-x86_64-1.3.5::https://github.com/Dhairya3391/kari/releases/download/v1.3.5/kari-linux-amd64
-	sha256sums_x86_64 = 30dae0ee706934a1977edd74ade6cf134466fb0fcc477098337336fb7f4d84a4
-	source_aarch64 = kari-aarch64-1.3.5::https://github.com/Dhairya3391/kari/releases/download/v1.3.5/kari-linux-arm64
-	sha256sums_aarch64 = 90204b64f00c711225958cdd52d3d4a70198c11677b5678832df90b912f07a30
+	source_x86_64 = kari-x86_64-1.3.6::https://github.com/Dhairya3391/kari/releases/download/v1.3.6/kari-linux-amd64
+	sha256sums_x86_64 = 40a188337dde0e628f0384dc739e44837d81c81c44fab5b47fb747ddaeff778c
+	source_aarch64 = kari-aarch64-1.3.6::https://github.com/Dhairya3391/kari/releases/download/v1.3.6/kari-linux-arm64
+	sha256sums_aarch64 = 3f1ef3d66de8ec0ba26c862d98e16b1e15864211a74845cdf934ea8a4d90be5b
 
 pkgname = kari-bin
