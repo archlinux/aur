@@ -3,7 +3,7 @@
 pkgname=wheelwizard
 _name=WheelWizard
 _app_id=io.github.TeamWheelWizard.WheelWizard
-pkgver=2.4.10
+pkgver=2.4.11
 _pkgver="v$pkgver"
 pkgrel=1
 pkgdesc="${_name} – Mario Kart Mod Manager & Retro Rewind Auto Updater"
@@ -25,7 +25,7 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 
 source=("${_name}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
-b2sums=('0e5372d497d670004cdaa84e88591120c5d7886dbd79f2f6c3f744d00f3fb7333429648d55efdd93894c0fdc47b389cc1b555c615b9effda04c1eb9c9b12f812')
+b2sums=('548425ea02810696168a766390299c2c0f6f79db0828381ace06d316a3c1fa7f426cb4ce6f5084a8f85fbb49e8086f2a6e5c3dcdd223ddf4b24cc151727fa9fb')
 
 _arch() {
     if [ "${CARCH}" = 'aarch64' ]; then
@@ -42,6 +42,7 @@ _dotnet_runtime_identifier() {
 prepare() {
     pushd "${_name}-${pkgver}"
     sed -i "s/^Icon=.*$/Icon=${_name}/g" "Flatpak/${_app_id}.desktop"
+    sed -i "s/^Icon=.*$/Icon=${_name}/g" "Flatpak/${_app_id}-url-handler.desktop"
     popd
 }
 
@@ -66,6 +67,8 @@ package() {
         "${pkgdir}/usr/bin/${_name}"
     install -D -m0644 "Flatpak/${_app_id}.desktop" \
         "${pkgdir}/usr/share/applications/${_name}.desktop"
+    install -D -m0644 "Flatpak/${_app_id}-url-handler.desktop" \
+        "${pkgdir}/usr/share/applications/${_name}-url-handler.desktop"
     install -D -m0644 "Flatpak/${_app_id}.png" \
         "${pkgdir}/usr/share/icons/hicolor/${_default_res}x${_default_res}/apps/${_name}.png"
     popd
