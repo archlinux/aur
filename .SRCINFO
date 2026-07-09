@@ -1,6 +1,6 @@
 pkgbase = tram_btrfs
 	pkgdesc = A TUI Btrfs snapshot manager
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/Xiaomony/tram_btrfs
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = tram_btrfs
 	makedepends = cargo
 	makedepends = git
 	depends = btrfs-progs
-	source = tram_btrfs::git+https://github.com/Xiaomony/tram_btrfs.git#tag=v1.0.5
+	source = tram_btrfs::git+https://github.com/Xiaomony/tram_btrfs.git#tag=v1.0.6
 	sha256sums = SKIP
 
 pkgname = tram_btrfs
