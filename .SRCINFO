@@ -18,7 +18,7 @@ pkgbase = passwordfile-git
 	depends = zlib
 	optdepends = passwordfile-doc: API documentation
 	provides = libpasswordfile-git.so
-	source = passwordfile::git+https://martchus.dyn.f3l.de/gitea/Martchus/passwordfile.git
+	source = passwordfile::git+https://github.com/Martchus/passwordfile.git
 	sha256sums = SKIP
 
 pkgname = passwordfile-git
