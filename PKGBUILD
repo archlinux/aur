@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=oxiclean
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Fast Cross-Distribution Linux System Cleaner written in Rust"
 arch=('x86_64')
