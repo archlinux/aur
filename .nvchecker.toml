@@ -1,0 +1,4 @@
+[rxp]
+source = "regex"
+url = "https://www.inf.ed.ac.uk/research/isddarch/admin/package-view-200"
+regex = "RXP version ([\\d\\.]+\\d)"
