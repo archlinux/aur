@@ -1,6 +1,6 @@
 pkgbase = eddie-cli-git
 	pkgdesc = Eddie - VPN tunnel - CLI
-	pkgver = 2.26.0
+	pkgver = 2.26.2
 	pkgrel = 1
 	url = https://eddie.website
 	install = eddie-cli.install
