@@ -1,6 +1,6 @@
 # Maintainer: Nebu Pookins <nebupookins@gmail.com>
 pkgname=quire-git
-pkgver=r31.g13086dc
+pkgver=r33.gac92edc
 pkgrel=1
 pkgdesc="Desktop document scanning application — scan, crop, export JPEG"
 arch=('x86_64')

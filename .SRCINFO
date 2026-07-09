@@ -1,6 +1,6 @@
 pkgbase = quire-git
 	pkgdesc = Desktop document scanning application — scan, crop, export JPEG
-	pkgver = r31.g13086dc
+	pkgver = r33.gac92edc
 	pkgrel = 1
 	url = https://github.com/NebuPookins/quire
 	arch = x86_64
