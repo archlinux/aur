@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Terminal multiplexer with built-in remote access"
 
-pkgver=1.0.40
+pkgver=1.0.41
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,10 +28,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('fc7721bcd981d37f339f4aad9d16fbe9491b7b59c1a5c44adf1bc13b8883de24'
+sha256sums=('0c045728227b899634d71a3917b2651a207a998ac22d6189622f8b53e3c5b763'
             '293007430814de6eecc706aa9f929a727bd527f336ea480b656e545550d30c5b')
-sha256sums_x86_64=('07dd60c7d5324ccb994c8333518bf7e9a99f2ce4c944d7a57f7523907573a68e')
-sha256sums_aarch64=('0d0f2b56fd28dabc2cb4149af59888a3568828b0d658bdfb290b0f974830c29e')
+sha256sums_x86_64=('32a65332e979546a73ed327e15da1e0f065849a3add6939cf9cd8d9dc23220fc')
+sha256sums_aarch64=('528ef81de2ec3cc799b6088c9b46398d5583bf87ca7252ebf142bb7cb28680b9')
 
 
 package() {
