@@ -1,0 +1,20 @@
+pkgbase = python-autoregistry
+	pkgdesc = Automatic registry design-pattern library for mapping string names to code functionality.
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/BrianPugh/autoregistry
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	makedepends = python-hatchling
+	depends = python
+	depends = python-pydantic
+	depends = python-pydantic-core
+	source = https://files.pythonhosted.org/packages/source/a/autoregistry/autoregistry-1.3.1.tar.gz
+	sha256sums = 3110c5054fd6fb1f972c7adbfc9df8cfa49ab3ce6c90c0d465625db310a3cb6d
+
+pkgname = python-autoregistry

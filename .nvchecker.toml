@@ -1,0 +1,3 @@
+[python-autoregistry]
+source = "pypi"
+pypi = "autoregistry"
