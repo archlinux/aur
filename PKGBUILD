@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=nano-agent
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Tiny shell agent for OpenAI-compatible APIs"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ options=(!strip)
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('bf855f158bc13eea22411e6de4fac69794b2199015c62bb46702fb9700f7fe9a')
-sha256sums_aarch64=('1a3b98e1e88cc339f52072c078b0966a53b54a1cb65ae9211932d59afd570f02')
+sha256sums_x86_64=('793ff31c580b58e978264316f874eac0340a568fb77dacc999f693ea184763e7')
+sha256sums_aarch64=('4ec844b083a10dd98c7f87f9a3e3cfa54883c3bada21062ee43887d2cca48026')
 
 package() {
   install -Dm755 "nano-agent" "$pkgdir/usr/bin/nano-agent"
