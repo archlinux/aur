@@ -1,24 +1,23 @@
-# Maintainer: Mathias Nedrebø <mathias.nedrebo@zivid.com>
+# Maintainer: John Ingve Schjølberg <john.schjolberg@zivid.com>
+
+# Meta-package for the Zivid SDK. The GPU backend lives in the
+# `zivid-opencl` and `zivid-cuda` packages, both of which provide the virtual
+# `zivid-backend`. This package owns no files and depends on `zivid-backend`,
+# so installing or upgrading `zivid` requires the user to choose a backend
+# rather than silently defaulting to one.
 
 pkgname=zivid
-pkgver='2.17.2+440b2367_1'
+pkgver='2.18.0+1b44dbef_1'
 pkgrel=1
 pkgdesc='Defining the Future of 3D Machine Vision'
 arch=('x86_64')
 license=('custom')
 url=https://www.zivid.com
 
-depends=(opencl-driver)
-conflicts=()
-provides=()
+depends=(zivid-backend)
 
 groups=(zivid-all)
 
-source=(https://downloads.zivid.com/sdk/releases/2.17.2+440b2367-1/u20/zivid_2.17.2+440b2367-1_amd64.deb)
-sha256sums=(4b329d4c873d577d9ef08b7cab759c06ff2e98d29218d24c87e3e284344d393c)
-
-options=(!strip)
-
 package() {
-    bsdtar -xf data.tar.* -C "${pkgdir}"
+    :
 }
