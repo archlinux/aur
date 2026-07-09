@@ -1,16 +1,16 @@
 pkgbase = runjs-electron-bin
 	pkgdesc = A JavaScript playground. Write code with instant feedback and access to Node.js and browser APIs.(Prebuild version.Use system-wide electron)
-	pkgver = 4.0.6
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://runjs.app
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-custom
 	makedepends = asar
-	depends = electron41
+	depends = electron43
 	depends = python
 	depends = python-packaging
-	provides = runjs=4.0.6
+	provides = runjs=4.1.0
 	conflicts = runjs
 	conflicts = runjs-electron
 	options = !strip
@@ -18,9 +18,9 @@ pkgbase = runjs-electron-bin
 	source = runjs-electron.sh
 	sha256sums = f8d6f02b4a2fc7cc6ab547a72eb48fbe2cdcc4a70e99d48e554be3acda074d5d
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = runjs-electron-4.0.6-aarch64.AppImage::https://github.com/lukehaas/RunJS/releases/download/v4.0.6/RunJS-4.0.6-arm64.AppImage
-	sha256sums_aarch64 = 3cee7999ddfa75b47eb18234a02674f16cc6b6f17c8f329a945ce74a938ceec7
-	source_x86_64 = runjs-electron-4.0.6-x86_64.AppImage::https://github.com/lukehaas/RunJS/releases/download/v4.0.6/RunJS-4.0.6.AppImage
-	sha256sums_x86_64 = 0f4206a15b9a133363ca5401f79c7667e691447b68e614e01e69c21d77f225ad
+	source_aarch64 = runjs-electron-4.1.0-aarch64.AppImage::https://github.com/lukehaas/RunJS/releases/download/v4.1.0/RunJS-4.1.0-arm64.AppImage
+	sha256sums_aarch64 = b6ec5ed084345652aea6cab985e5d1bdadea6aefde834f2111d0d7a9acee4cec
+	source_x86_64 = runjs-electron-4.1.0-x86_64.AppImage::https://github.com/lukehaas/RunJS/releases/download/v4.1.0/RunJS-4.1.0.AppImage
+	sha256sums_x86_64 = ba32e4490eac245ce6852679240c7415f2f2fa6139e96c0fc90979110c94e655
 
 pkgname = runjs-electron-bin
