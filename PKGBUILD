@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="💾🧹 A lightweight, software cache cleanup tool for Windows & Linux."
 
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,10 +27,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-arm64")
-sha256sums=('b9376a9277e196f203217fc82a7b57d0428607dcfa640ee12278706c313ad446'
+sha256sums=('991c555e97eb217a4bd12f3e5c4469c4bf0171caba40dc19e7cfc700c7e64d8b'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('499bccaeed98d5c2e9ce90274f1b7e5b78816d93e7149244c348053f42ba4ce9')
-sha256sums_aarch64=('a4d0110ccdffc4c2602c27a0d49e94ccb8668197016fe65963a51ccff6055f21')
+sha256sums_x86_64=('49cb4e61401d2116a34ffc52b38300dd6d22a74f417b9f873d516fc549d0bba0')
+sha256sums_aarch64=('275b33914d027ca406f8c865fa2401b72d9f03fe2626484ae7aff500d0539d68')
 
 
 package() {
