@@ -2,13 +2,13 @@
 
 pkgname=rebased-zh-bin
 _pkgname=rebased
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc='Chinese language pack for Rebased'
 arch=('x86_64')
 url='https://github.com/DetachHead/rebased'
 license=('Apache-2.0')
-depends=('rebased-bin>=1.1.6-1')
+depends=('rebased-bin>=1.1.7-1')
 provides=('rebased-zh')
 options=('!strip')
 source=(
