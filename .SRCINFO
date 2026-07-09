@@ -1,0 +1,12 @@
+pkgbase = stumpwm-acpi-backlight
+	pkgdesc = ACPI backlight control module for StumpWM
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Junker/stumpwm-acpi-backlight
+	arch = any
+	license = GPL-3.0-only
+	depends = stumpwm
+	source = https://github.com/Junker/stumpwm-acpi-backlight/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = 0d60cd32046e3eb427ca9ab2c7891afb8b1853b73d7299e49e62eae038aad964
+
+pkgname = stumpwm-acpi-backlight
