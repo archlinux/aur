@@ -1,0 +1,66 @@
+diff --git a/src/fcitx-wayland/core/display.cpp b/src/fcitx-wayland/core/display.cpp
+index bba87e5..5607211 100644
+--- a/src/fcitx-wayland/core/display.cpp
++++ b/src/fcitx-wayland/core/display.cpp
+@@ -31,7 +31,6 @@ void Display::createGlobalHelper(
+ }
+ 
+ Display::Display(wl_display *display) : display_(display) {
+-    wl_display_set_user_data(display, this);
+     auto *reg = registry();
+     reg->global().connect(
+         [this](uint32_t name, const char *interface, uint32_t version) {
+diff --git a/src/fcitx-wayland/core/display.h b/src/fcitx-wayland/core/display.h
+index 5ef5bd7..480a753 100644
+--- a/src/fcitx-wayland/core/display.h
++++ b/src/fcitx-wayland/core/display.h
+@@ -55,9 +55,9 @@ public:
+     Display(wl_display *display);
+     ~Display();
+ 
+-    int fd() const { return wl_display_get_fd(display_.get()); }
++    int fd() const { return wl_display_get_fd(display_); }
+ 
+-    operator wl_display *() { return display_.get(); }
++    operator wl_display *() { return display_; }
+ 
+     void roundtrip();
+     void sync();
+@@ -143,7 +143,8 @@ private:
+         globalRemovedSignal_;
+     std::unordered_map<std::string, std::unique_ptr<GlobalsFactoryBase>>
+         requestedGlobals_;
+-    UniqueCPtr<wl_display, wl_display_disconnect> display_;
++    // NOTE: The fcitx Wayland module owns the connection.
++    wl_display *display_;
+     std::unique_ptr<WlRegistry> registry_;
+     std::unordered_map<uint32_t, std::tuple<std::string, uint32_t, uint32_t,
+                                             std::shared_ptr<void>>>
+diff --git a/src/waylandui.cpp b/src/waylandui.cpp
+index ea8ae30..ec13484 100644
+--- a/src/waylandui.cpp
++++ b/src/waylandui.cpp
+@@ -68,8 +68,9 @@ static inline EGLDisplay getEGLDisplay(EGLenum platform,
+ 
+ WaylandUI::WaylandUI(ClassicUI *parent, const std::string &name,
+                      wl_display *display)
+-    : parent_(parent), name_(name), display_(static_cast<wayland::Display *>(
+-                                        wl_display_get_user_data(display))) {
++    : parent_(parent), name_(name),
++      waylandDisplay_(std::make_unique<wayland::Display>(display)),
++      display_(waylandDisplay_.get()) {
+ #ifdef CAIRO_EGL_FOUND
+     hasEgl_ = initEGL();
+ #endif
+diff --git a/src/waylandui.h b/src/waylandui.h
+index f5a2dd6..cb87d14 100644
+--- a/src/waylandui.h
++++ b/src/waylandui.h
+@@ -61,6 +61,7 @@ private:
+ 
+     ClassicUI *parent_;
+     std::string name_;
++    std::unique_ptr<wayland::Display> waylandDisplay_;
+     wayland::Display *display_;
+     ScopedConnection panelConn_, panelRemovedConn_;
+     std::unique_ptr<WaylandPointer> pointer_;

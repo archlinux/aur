@@ -3,7 +3,7 @@
 _pkgname=fcitx5-virtualkeyboard-ui
 pkgname=$_pkgname-git
 pkgver=5.0.0.r38.gd451680
-pkgrel=2
+pkgrel=3
 pkgdesc='Wayland virtual keyboard UI module for Fcitx5'
 arch=('x86_64')
 url='https://github.com/clear-code/fcitx5-virtualkeyboard-ui'
@@ -35,9 +35,11 @@ conflicts=("$_pkgname")
 source=(
   "git+$url.git"
   'fix-virtualkeyevent.patch'
+  'fix-wayland-display-user-data.patch'
 )
 sha256sums=('SKIP'
-            'a3ebeedfc5073ea7c353848458da4934023bac6f0563b072d1408a1eb2068feb')
+            'a3ebeedfc5073ea7c353848458da4934023bac6f0563b072d1408a1eb2068feb'
+            '35dd048fdba856a731fb8243296bfe3d4137566e7c61a6d21471189a164b145e')
 
 pkgver() {
   cd "$_pkgname"
@@ -51,6 +53,7 @@ prepare() {
   cd "$_pkgname"
 
   patch -Np1 -i "$srcdir/fix-virtualkeyevent.patch"
+  patch -Np1 -i "$srcdir/fix-wayland-display-user-data.patch"
 }
 
 build() {
