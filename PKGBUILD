@@ -5,7 +5,7 @@
 
 pkgname=saur-bin
 _binname=saur
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A safer AUR helper with Claude security review baked in"
 arch=('x86_64' 'aarch64')
@@ -29,9 +29,9 @@ source_aarch64=("${_binname}-${pkgver}-aarch64::${_relbase}/saur-linux-arm64")
 
 # Hashes are rewritten from the actual built artifacts by packaging/ci-aur-publish.sh.
 # To bump by hand: run `updpkgsums` here after the release assets are live.
-sha256sums=('2c1933e87f06646fff53ead8554e5d3243a7e969fbeea777bcb8673e9a7904aa' '905a443a2bcaf514f29ec195fb407feed2885e91952e8e61d1e78bd34405bb74')
-sha256sums_x86_64=('642a43efbf88aab6d8812b2522b7c4c1689673008b11242991dd972d65d79bba')
-sha256sums_aarch64=('c72675a6a3db538971f33f083ae4510a4ca31a379d96a7d6aefa849e200dfae6')
+sha256sums=('2c1933e87f06646fff53ead8554e5d3243a7e969fbeea777bcb8673e9a7904aa' '72f88224a85713a38735586544a00c38e26bea80ce4d4d705777553a6ebd8697')
+sha256sums_x86_64=('57463a566721cacbf944f37327d9b79a00f6fd1440c54ef64d1d007cad36e94b')
+sha256sums_aarch64=('7e7599eb17ecd1429a6c54918d7a83b1d5bf1e96dfd109cb4ce05b912a437363')
 
 package() {
 	install -Dm755 "${_binname}-${pkgver}-${CARCH}" "$pkgdir/usr/bin/$_binname"
