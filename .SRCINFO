@@ -20,7 +20,7 @@ pkgbase = qtutilities-git
 	depends = libx11
 	optdepends = qtutilities-doc: API documentation
 	provides = libqtutilities-git.so
-	source = qtutilities::git+https://martchus.dyn.f3l.de/gitea/Martchus/qtutilities.git
+	source = qtutilities::git+https://github.com/Martchus/qtutilities.git
 	sha256sums = SKIP
 
 pkgname = qtutilities-git
