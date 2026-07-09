@@ -4,7 +4,7 @@ pkgver=1.1
 pkgrel=1
 pkgdesc="A simple TLD sweeper tool supporting ccTLD, gTLD, sTLD, and custom AA-ZZ brute-force"
 arch=('any')
-url="https://0xnhsec/github.com/TLD-sweeper"
+url="https://github.com/0xnhsec/TLD-sweeper/"
 license=('GPL-3.0-only')
 depends=('python' 'python-httpx')
 
