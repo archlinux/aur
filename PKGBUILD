@@ -49,16 +49,37 @@ sha256sums=('SKIP')
 _binname=zeditor
 _appid=dev.zed.Zed-Dev
 
+_srcenv() {
+	cd "$pkgname"
+	export CARGO_HOME="$srcdir"
+	export CARGO_PROFILE_RELEASE_DEBUG=2
+	export CARGO_PROFILE_RELEASE_STRIP=false
+	export CARGO_PROFILE_RELEASE_LTO=true
+	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	CFLAGS+=' -ffat-lto-objects'
+	CXXFLAGS+=' -ffat-lto-objects'
+	RUSTFLAGS+=" --remap-path-prefix $PWD=/"
+	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+	export ZSTD_SYS_USE_PKG_CONFIG=1
+}
+
 prepare() {
 	cd "$pkgname"
-	cargo fetch --locked --target "$(rustc --print host-tuple)"
+	cargo fetch --locked --target host-tuple
 	export DO_STARTUP_NOTIFY="true"
 	export APP_ICON="zed"
 	export APP_NAME="Zed"
 	export APP_CLI="$_binname"
 	export APP_ID="$_appid"
 	export APP_ARGS="%U"
+	export BRANDING_LIGHT="#99c1f1"
+	export BRANDING_DARK="#1a5fb4"
 	envsubst < "crates/zed/resources/zed.desktop.in" > $_appid.desktop
+	envsubst < "crates/zed/resources/flatpak/zed.metainfo.xml.in" > $_appid.metainfo.xml
+	sed -i '/@release_info@/d' $_appid.metainfo.xml
 	./script/generate-licenses
 }
 
@@ -68,17 +89,6 @@ pkgver() {
 	echo -n "$(sed 's/^v//;s/-pre$//' <<< "$lasttag")"
 	echo -n ".r$(git rev-list "$(git merge-base HEAD "$lasttag")..HEAD" --count)"
 	echo -n ".g$(git log --pretty=format:'%h' --abbrev=7 -n1 HEAD)"
-}
-
-_srcenv() {
-	cd "$pkgname"
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-	CFLAGS+=' -ffat-lto-objects'
-	CXXFLAGS+=' -ffat-lto-objects'
-	RUSTFLAGS+=" --remap-path-prefix $PWD=/"
-	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
-	export ZSTD_SYS_USE_PKG_CONFIG=1
 }
 
 build() {
@@ -101,7 +111,8 @@ check() {
 package() {
 	cd "$pkgname"
 	install -Dm0755 target/release/cli "$pkgdir/usr/bin/$_binname"
-	install -Dm0755 target/release/zed "$pkgdir/usr/lib/zed/zed-editor"
+	install -Dm0755 target/release/zed "$pkgdir/usr/lib/$_pkgname/zed-editor"
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "$_appid.desktop"
-	install -Dm0644 crates/zed/resources/app-icon.png "$pkgdir/usr/share/icons/$_pkgname.png"
+	install -Dm0644 -t "$pkgdir/usr/share/metainfo/" "$_appid.metainfo.xml"
+	install -Dm0644 crates/$_pkgname/resources/app-icon.png "$pkgdir/usr/share/icons/$_pkgname.png"
 }
