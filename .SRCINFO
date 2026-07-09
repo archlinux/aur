@@ -24,7 +24,7 @@ pkgbase = passwordmanager-git
 	depends = kirigami
 	provides = passwordmanager
 	conflicts = passwordmanager
-	source = passwordmanager::git+https://martchus.no-ip.biz/gitea/Martchus//passwordmanager.git
+	source = passwordmanager::git+https://martchus.dyn.f3l.de/gitea/Martchus/passwordmanager.git
 	sha256sums = SKIP
 
 pkgname = passwordmanager-git
