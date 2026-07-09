@@ -1,0 +1,19 @@
+pkgbase = frank-scanlation-bin
+	pkgdesc = Kindle-like desktop reader for ad-hoc scanlation websites, with new-chapter notifications
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/akitaonrails/frank_scanlation
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = hicolor-icon-theme
+	depends = fuse2
+	provides = frank-scanlation
+	conflicts = frank-scanlation
+	noextract = frank-scanlation-bin-0.1.0.AppImage
+	options = !strip
+	options = !debug
+	source = frank-scanlation-bin-0.1.0.AppImage::https://github.com/akitaonrails/frank_scanlation/releases/download/v0.1.0/FRANK.Scanlation_0.1.0_amd64.AppImage
+	sha256sums = 7db166b73269871191118df47216628bb50aab126bf90bca3be51678461f789e
+
+pkgname = frank-scanlation-bin
