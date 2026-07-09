@@ -1,5 +1,5 @@
 pkgbase = vicinae-kotoba
-	pkgdesc = Japanese dictionary, translator, and Anki integration for Vicinae — search Jotoba, translate sentences, add cards to Anki
+	pkgdesc = [DEPRECATED] Use vicinae-takoba instead — Japanese dictionary, translator, and Anki integration for Vicinae
 	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/kurojs/Takoba
