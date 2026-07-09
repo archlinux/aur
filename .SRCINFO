@@ -1,6 +1,6 @@
 pkgbase = weasis-bin
 	pkgdesc = Weasis is a free medical DICOM viewer used in healthcare by hospitals, health networks, multicenter research trials, and patients.
-	pkgver = 4.7.0
+	pkgver = 4.7.1
 	pkgrel = 1
 	url = https://nroduit.github.io/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = weasis-bin
 	license = EPL-2.0
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/nroduit/Weasis/releases/download/v4.7.0/weasis_4.7.0-1_amd64.deb
-	sha512sums_x86_64 = 29d0813e7856753bc413a014d82297d5a73cbdc19dd59165b27085878cbc52c76b4a013377d3ad05edab7a83b36bd2460a067077c2d1bfd40e2f8cc471561c46
-	source_aarch64 = https://github.com/nroduit/Weasis/releases/download/v4.7.0/weasis_4.7.0-1_arm64.deb
-	sha512sums_aarch64 = 700c5952d60debfc9c3efe1c5cc2b106c55cc3ba41de72eca0dbe7cf2405fb235bbbd0e8cc9772c270a4d082bbcd7db660d8e5537fddf85da71c3b7849d2f8d5
+	source_x86_64 = https://github.com/nroduit/Weasis/releases/download/v4.7.1/weasis_4.7.1-1_amd64.deb
+	sha512sums_x86_64 = 8e873114b252b7ceda8de68ece7583a7eb1fda2ef03548eeabb0a505214bd5cd6a68d63dd36dc967cf7dd7017031001ffde65f78714a2ba00ca326d665535921
+	source_aarch64 = https://github.com/nroduit/Weasis/releases/download/v4.7.1/weasis_4.7.1-1_arm64.deb
+	sha512sums_aarch64 = da06a7213906a0cd5efc26f3887c0c342078603b95fb92113dd2e595a35048b28ab903eef9b8308289bbe3ed9307156432b593183b14e0c19f6c88fdfabf292b
 
 pkgname = weasis-bin
