@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A quick simple editor for your needs. Aims to be smooth like butter when opening large files."
 
-pkgver=0.8.10
+pkgver=0.10.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ depends=('glibc' 'libgcc')
 options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('8980609d46d087dc63ff2f95210c0efb302d9a122d72b91079fce39fe5e11ad9')
+sha256sums_x86_64=('24e1528844e759424139ca9d359d5686c113e26fbf74801cd6d008ac34e4bb66')
 
 
 case ${CARCH} in
