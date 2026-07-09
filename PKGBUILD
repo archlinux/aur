@@ -2,8 +2,8 @@
 pkgname=imfile
 _pkgname=imFile
 _flathubname="io.github.${pkgname}_io.${pkgname}_desktop"
-pkgver=2.0.6
-_electronversion=41
+pkgver=2.1.0
+_electronversion=42
 _nodeversion=24
 pkgrel=1
 pkgdesc="A full-featured download manager.Forked from motrix.(Use system-wide electron)"
@@ -37,7 +37,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('c6309e6dbc7cbcd54fe54a856b33ec0d43b5705fd395cf100421cc034dd43353'
+sha256sums=('9af0e77385f333dc9c245cac90963a7b209db142c990e94357756c8efc9b7cc6'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
