@@ -6,7 +6,7 @@ _binname=dcal
 _shellname=dankcal
 _iconname=dankcalendar
 _desktopid=com.danklinux.dankcalendar
-pkgver=0.1.1.r0.g677116e
+pkgver=0.2.2.r0.gf715273
 pkgrel=2
 pkgdesc='Local, Google, Microsoft, and CalDAV calendars for the dank desktop (git)'
 arch=('x86_64' 'aarch64')
@@ -70,7 +70,7 @@ package() {
 	cp -r quickshell/. "$pkgdir/usr/share/quickshell/$_shellname/"
 	rm -rf "$pkgdir/usr/share/quickshell/$_shellname/.git"*
 
-	install -Dm644 "quickshell/assets/$_iconname.svg" \
+	install -Dm644 "assets/$_iconname.svg" \
 		"$pkgdir/usr/share/icons/hicolor/scalable/apps/$_iconname.svg"
 
 	install -Dm644 "assets/$_desktopid.desktop" \
