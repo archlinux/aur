@@ -1,7 +1,7 @@
 # Maintainer: AntheaLaffy <anthealaffy@gmail.com>
 pkgname=mvsep-gui
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="MVSEP GUI - Music separation desktop application"
 arch=('x86_64')
 url="https://github.com/AntheaLaffy/mvsep-rs"
@@ -42,7 +42,9 @@ build() {
   npm run build
 
   cd src-tauri
-  cargo build --release
+  # Enable custom-protocol feature so the binary uses embedded frontend assets
+  # instead of connecting to the dev server (http://localhost:1420)
+  cargo build --release --features tauri/custom-protocol
 }
 
 package() {
