@@ -1,25 +1,23 @@
 # Maintainer: Anton Afanasyev <aasoft+aur@pm.me>
 
 pkgname=ringboard
-pkgver=0.16.2
+pkgver=0.17.0
 pkgrel=1
 pkgdesc='Fast, efficient, and composable clipboard manager for Linux'
 arch=('x86_64')
 url='https://github.com/SUPERCILEX/clipboard-history'
 license=('Apache-2.0' 'AGPL-3.0-only')
 depends=('libglvnd' 'libx11' 'libxcursor' 'libxi' 'libxkbcommon' 'libxkbcommon-x11' 'libxrender' 'wayland')
-makedepends=('rustup')
+makedepends=('cargo')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SUPERCILEX/clipboard-history/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('35c801688728ff550316476a548907766ca9a38c7c66af4473525b033e43f87c')
+sha256sums=('16fcb76a4600e5d1f1b200be9d440f3614783286a6a9ef248149eeeb6b884d27')
 
 prepare() {
   cd "clipboard-history-${pkgver}"
 
-  export RUSTUP_HOME="${srcdir}/rustup-home"
-
-  # Ringboard uses nightly-only Rust features.
-  rustup toolchain install nightly --profile minimal --no-self-update
+  # Upstream still ships a nightly rust-toolchain file, but 0.17.0 builds on stable.
+  rm -f rust-toolchain
 }
 
 build() {
@@ -27,10 +25,9 @@ build() {
 
   export CARGO_HOME="${srcdir}/cargo-home"
   export CARGO_TARGET_DIR="${srcdir}/target"
-  export RUSTUP_HOME="${srcdir}/rustup-home"
   export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}=."
 
-  rustup run nightly cargo build --release --locked --workspace --bins
+  cargo build --release --locked --workspace --bins
 }
 
 package() {
