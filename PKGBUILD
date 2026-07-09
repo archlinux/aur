@@ -10,31 +10,58 @@
 # Based on community/clementine PKGBUILD
 
 pkgname=clementine-git
-pkgver=1.4.1.r78.gb55eca391.0.gb55eca391
+pkgver=1.4.1.r79.g841f3251d.0.g841f3251d
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 arch=(x86_64)
 url="https://github.com/clementine-player/Clementine"
 license=(GPL-3.0-or-later)
-depends=(chromaprint gst-plugins-base-libs libcdio libgpod liblastfm-qt5 libmtp
-         protobuf qt5-x11extras alsa-lib libpulse hicolor-icon-theme taglib
-         #projectm # now use bundled v4.x, Arch is at v3.x
-
-         # namcap implicit depends
-         zlib glib2 sqlite libx11 gstreamer glibc libstdc++ libgcc abseil-cpp qt5-base fftw
-
-         libprotobuf.so)
-makedepends=(boost cmake git qt5-tools sparsehash glu)
+depends=(
+    abseil-cpp
+    alsa-lib
+    chromaprint
+    fftw
+    glib2
+    glibc
+    gst-plugins-base-libs
+    gstreamer
+    hicolor-icon-theme
+    libcdio
+    libgcc
+    libglvnd
+    #libgpod
+    #liblastfm-qt5 # removed from Arch repo
+    #libmtp
+    libpulse
+    libstdc++
+    libx11
+    #projectm # now use bundled v4.x, Arch is at v3.x
+    protobuf libprotobuf.so
+    qt5-base
+    qt5-x11extras
+    sqlite
+    taglib
+    zlib
+    )
+makedepends=(
+    boost
+    cmake
+    git
+    glu
+    qt5-tools
+    #sparsehash
+    )
 optdepends=(
-  'gst-plugins-base: "Base" plugin libraries'
-  'gst-plugins-good: "Good" plugin libraries'
-  'gst-plugins-bad: "Bad" plugin libraries'
-  'gst-plugins-ugly: "Ugly" plugin libraries'
-  'gst-libav: Libav plugin'
-  'gvfs: Various devices support')
+    'gst-plugins-base: "Base" plugin libraries'
+    'gst-plugins-good: "Good" plugin libraries'
+    'gst-plugins-bad: "Bad" plugin libraries'
+    'gst-plugins-ugly: "Ugly" plugin libraries'
+    'gst-libav: FFmpeg plugin'
+    'gvfs: Various devices support'
+    )
 conflicts=(clementine)
 provides=(clementine)
-options=(!lto)
+#options=(!lto)
 source=("git+https://github.com/clementine-player/Clementine.git")
 sha256sums=('SKIP')
 
@@ -44,16 +71,30 @@ pkgver() {
 }
 
 prepare() {
-  sed -i 's/cmake_policy(SET CMP0053 OLD)/cmake_policy(SET CMP0026 NEW)/' Clementine/CMakeLists.txt
+  #sed -i 's/cmake_policy(SET CMP0053 OLD)/cmake_policy(SET CMP0026 NEW)/' Clementine/CMakeLists.txt
+  true
 }
 
 build() {
-  #export LDFLAGS="-Wl,--copy-dt-needed-entries"
-  export CXXFLAGS+=" -Wno-error=cpp  -Wno-unused-result -Wno-error=stringop-overflow"
+  # Disable all warnings
+  export CFLAGS+=" -w"
+  export CXXFLAGS+=" -w"
+
+  #export CXXFLAGS+=" -Wno-error=cpp"
+  export CXXFLAGS+=" -Wno-unused-result"
+  export CXXFLAGS+=" -Wno-error=stringop-overflow"
 
   local _flags=(
-    #-DCMAKE_CXX_FLAGS="-fpermissive"
-    #-DCMAKE_CXX_STANDARD=17
+    -DENABLE_BOX=OFF
+    -DENABLE_DROPBOX=OFF
+    -DENABLE_GOOGLE_DRIVE=OFF
+    -DENABLE_LIBGPOD=OFF
+    -DENABLE_LIBLASTFM=OFF
+    -DENABLE_LIBMTP=OFF
+    -DENABLE_SEAFILE=OFF
+    -DENABLE_SKYDRIVE=OFF
+    -DENABLE_SPARKLE=OFF
+    -DENABLE_WIIMOTEDEV=OFF
     #-DUSE_SYSTEM_PROJECTM=ON
     -DUSE_SYSTEM_TAGLIB=ON
   )
