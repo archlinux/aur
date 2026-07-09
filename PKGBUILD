@@ -1,5 +1,5 @@
 pkgname=beutl-git
-pkgver=v2.0.0.preview.3.rc2bbe99b3
+pkgver=v2.0.0.preview.5.rc17b6ca13
 pkgrel=1
 pkgdesc="Cross-platform video editing (compositing) software"
 arch=('x86_64')
@@ -22,20 +22,32 @@ pkgver() {
 
 build() {
     cd "$srcdir/beutl"
+    git submodule update --init --recursive
 
-    #NUKE build
+    # NUKE build
     bash build.sh
 
-    #Beutl build
+    # Common .NET optimization flags
+    COMMON_FLAGS=(
+        -p:PublishReadyToRun=true
+        -p:ReadyToRunUseCrossgen2=true
+        -p:TieredPGO=true
+        -p:TieredCompilation=true
+        -p:TieredCompilationQuickJit=true
+        -p:TieredCompilationQuickJitForLoops=true
+        -p:InstructionSet="${INSTRUCTIONS:=x86-64-v3}"
+    )
+
+    # Beutl dotnet build
     dotnet publish src/Beutl/Beutl.csproj \
         -c Release \
         -f net10.0 \
         -r linux-x64 \
-        --self-contained true
+        --self-contained true \
+        "${COMMON_FLAGS[@]}"
 }
 
 package() {
-    set -x
 
     publish_dir="$srcdir/beutl/src/Beutl/bin/Release/net10.0/linux-x64/publish"
 
@@ -110,7 +122,7 @@ package() {
 
     if command -v oxipng >/dev/null 2>&1; then
         printf "Optimizing icon with oxipng\n"
-        oxipng -o 4 "$icon_dst"
+        oxipng -o max -r -p -s -v -t 4 "$icon_dst"
     else
         printf "oxipng not found\n"
     fi

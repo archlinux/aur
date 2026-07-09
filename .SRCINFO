@@ -1,6 +1,6 @@
 pkgbase = beutl-git
 	pkgdesc = Cross-platform video editing (compositing) software
-	pkgver = v2.0.0.preview.3.rc2bbe99b3
+	pkgver = v2.0.0.preview.5.rc17b6ca13
 	pkgrel = 1
 	url = https://github.com/b-editor/beutl
 	arch = x86_64
