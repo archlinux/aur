@@ -1,6 +1,6 @@
 pkgbase = sealantern
 	pkgdesc = A lightweight Minecraft server management tool based on Tauri 2 + Rust + Vue 3
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/SeaLantern-Studio/SeaLantern
 	install = sealantern.install
@@ -20,7 +20,7 @@ pkgbase = sealantern
 	optdepends = noto-fonts-emoji: 表情符号支持
 	options = !strip
 	options = !emptydirs
-	source = sealantern-1.3.0-amd64.deb::https://github.com/SeaLantern-Studio/SeaLantern/releases/download/v1.3.0/Sea.Lantern_1.3.0_amd64.deb
+	source = sealantern-1.3.1-amd64.deb::https://github.com/SeaLantern-Studio/SeaLantern/releases/download/v1.3.1/Sea.Lantern_1.3.1_amd64.deb
 	source = sealantern.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
