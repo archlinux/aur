@@ -3,7 +3,7 @@ pkgname=imfile-git
 _pkgname=imFile
 _flathubname="io.github.${pkgname%-git}_io.${pkgname%-git}_desktop"
 pkgver=2.0.6.r0.gb399f51
-_electronversion=41
+_electronversion=42
 _nodeversion=24
 pkgrel=1
 pkgdesc="A full-featured download manager.Forked from motrix.(Use system-wide electron)"
@@ -96,7 +96,6 @@ prepare() {
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
     _set_build_env
     _ensure_local_nvm

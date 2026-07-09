@@ -13,7 +13,7 @@ pkgbase = imfile-git
 	makedepends = nvm
 	makedepends = curl
 	makedepends = jq
-	depends = electron41
+	depends = electron42
 	depends = aria2
 	provides = motrix
 	provides = imfile=2.0.6
