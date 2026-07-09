@@ -1,4 +1,4 @@
-# Maintainer: SmallClover <belitzlars at gmail dot com>
+# Maintainer: SmallClover <aur at clvr dot one>
 
 pkgname=plasma6-applets-kara
 pkgver=1.0.0
