@@ -1,8 +1,8 @@
 # Maintainer: LiamillionSS <liamillion-dev at protonmail dot com>
 pkgname=cosmic-monitor-git
-pkgver=r81.b377a20
+pkgver=epoch.1.2.0.r3.g012df01
 pkgrel=1
-pkgdesc="WIP COSMIC System Monitor"
+pkgdesc="COSMIC System Monitor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/cosmic-monitor"
 license=('GPL-3.0-only')
@@ -20,10 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  )
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
