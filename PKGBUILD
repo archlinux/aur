@@ -1,10 +1,10 @@
-# Maintainer: Marco Pompili <aur@mg.odd.red>
+# Maintainer: Marco Pompili <aur@odd.red>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 _npmname=ungit
-_npmver=1.5.28
+_npmver=1.5.30
 pkgname=nodejs-ungit
-pkgver=1.5.28
+pkgver=1.5.30
 pkgrel=1
 pkgdesc="Git made easy"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ provides=('nodejs-ungit' 'ungit')
 conflicts=('ungit')
 options=('!emptydirs' '!strip')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/ungit/-/ungit-${pkgver}.tgz")
-sha512sums=('a0edb3249a4ac120339f439842f7270f9e5552fb4f954b7f1c125e0773dfce7640e907cec62292dccf5fbd044c2b9b485dbbcae73b421563b9216b51090cf258')
+sha512sums=('ca5b03a17884eb80496bbd718cd140553418206a406999d6b0c6700e16719367eae4c2049bef7061953ce3e5468b51aabfe1382bd25c94debd6e79354a85c38d')
 
 package() {
   cd ${srcdir}
