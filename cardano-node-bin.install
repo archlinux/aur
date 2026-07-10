@@ -1,3 +1,17 @@
+post_install() {
+	cat <<-EOF
+
+To start Cardano node on mainnet, enable the service:
+  systemctl enable --now cardano-node@mainnet.service
+
+(Optional) To run a testnet, enable the testnet service instance:
+  systemctl enable --now cardano-node@preview.service
+
+Valid networks are 'mainnet', 'preview' and 'preprod'
+
+EOF
+}
+
 post_remove() {
 	cat <<-EOF
 
