@@ -4,8 +4,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=waterfox-beta-bin
-pkgver=6.6.15
-_relver=6.6.15
+pkgver=6.7.0.b1
+_relver=6.7.0-beta.1
 pkgrel=1
 pkgdesc="Beta/modern generation of customizable privacy-conscious web browser."
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
   'speech-dispatcher: Text-to-Speech'
   'hunspell-en_US: Spell checking, American English')
 provides=("waterfox=${pkgver}")
-source=("https://cdn1.waterfox.net/waterfox/releases/${_relver}/Linux_x86_64/waterfox-${_relver}.tar.bz2"
+source=("https://cdn.waterfox.com/waterfox/releases/${_relver}/Linux_x86_64/waterfox-${_relver}.tar.bz2"
   "waterfox.desktop")
 
 package() {
@@ -71,6 +71,6 @@ END
   ln -s /opt/waterfox/waterfox "${pkgdir}"/usr/bin/waterfox-g
 }
 
-sha512sums=('7f1b1075385e0ac9f59017a69731a0d6fee27054ea9f594251a58b3851f3fc27de5365194e35bc20cf262b6dab9be64c45d48513532fb838bfb004860f25913a'
+sha512sums=('cc6c973cf65784641b432b43311d6ad1bed48a0e8a551e3dad1a12c4ee589840258333a64cd10bf533ddc6e1a2f059cb62a8ea6ace45845a49e261c03b2677c6'
             'd0ff0445021b975d52eee7dac27dfdc0d170da07f8a8dc1676ba53387c2006f0598c163b36b07abdbb411cfb61bf52b8222fc5882bdfa8dfcd13d99cb44c92b6')
 # vim:set ts=2 sw=2 et:
