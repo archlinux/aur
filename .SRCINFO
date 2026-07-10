@@ -10,9 +10,9 @@ pkgbase = goplaying-bin
 	provides = goplaying
 	arch = aarch64
 	source_aarch64 = https://github.com/justinmdickey/goplaying/releases/download/v0.3.8/goplaying_0.3.8_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 746a30cca7f54eaf105ba261f3a450b8f6d5b0adcbafc986d651dd2e7e908829
+	sha256sums_aarch64 = 5a80648968a70db1133ad46e36e5bb4ef28da2b5d0ef45c701214b1fe25823ac
 	arch = x86_64
 	source_x86_64 = https://github.com/justinmdickey/goplaying/releases/download/v0.3.8/goplaying_0.3.8_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 714f39a7febbab4e8556bdbbefd39ed2b4282fa45739b64b3856b51108a1db2b
+	sha256sums_x86_64 = 5ab18677dbd061eb834ecc683bb525b6c44564a1e171891f4eb8f43cfa31767c
 	
 pkgname = goplaying-bin
