@@ -8,8 +8,8 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm" "${pkgbase}-xpu" "${pkgbase}-opt-xpu")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.12.1
-pkgrel=2
+pkgver=2.13.0
+pkgrel=1
 pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 arch=('x86_64')
 url="https://pytorch.org"
@@ -86,12 +86,13 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         # generated using parse-submodules
         "${pkgname}-FP16::git+https://github.com/Maratyszcza/FP16.git"
         "${pkgname}-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git"
+        "${pkgname}-MSLK::git+https://github.com/meta-pytorch/MSLK.git"
         "${pkgname}-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git"
         "${pkgname}-NVTX::git+https://github.com/NVIDIA/NVTX.git"
         "${pkgname}-PeachPy::git+https://github.com/malfet/PeachPy.git"
         "${pkgname}-VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
-        "${pkgname}-aiter::git+https://github.com/ROCm/aiter.git"
         "${pkgname}-XNNPACK::git+https://github.com/google/XNNPACK.git"
+        "${pkgname}-aiter::git+https://github.com/ROCm/aiter.git"
         "${pkgname}-benchmark::git+https://github.com/google/benchmark.git"
         "${pkgname}-composable_kernel::git+https://github.com/ROCm/composable_kernel.git"
         "${pkgname}-cpp-httplib::git+https://github.com/yhirose/cpp-httplib.git"
@@ -113,11 +114,10 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         "${pkgname}-kleidiai::git+https://github.com/ARM-software/kleidiai.git"
         "${pkgname}-mimalloc::git+https://github.com/microsoft/mimalloc.git"
         "${pkgname}-onnx::git+https://github.com/onnx/onnx.git"
-        "${pkgname}-opentelemetry-cpp::git+https://github.com/open-telemetry/opentelemetry-cpp.git"
         "${pkgname}-pocketfft::git+https://github.com/mreineck/pocketfft"
         "${pkgname}-protobuf::git+https://github.com/protocolbuffers/protobuf.git"
         "${pkgname}-psimd::git+https://github.com/Maratyszcza/psimd.git"
-        "${pkgname}-pthreadpool::git+https://github.com/Maratyszcza/pthreadpool.git"
+        "${pkgname}-pthreadpool::git+https://github.com/google/pthreadpool.git"
         "${pkgname}-pybind11::git+https://github.com/pybind/pybind11.git"
         "${pkgname}-sleef::git+https://github.com/shibatch/sleef"
         "${pkgname}-tensorpipe::git+https://github.com/pytorch/tensorpipe.git"
@@ -130,7 +130,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         aotriton_disable_install.patch
         pyproject.patch
         )
-b2sums=('98f5a0196764acd7b8595f43473a544f3b515f25546a526a58b0fa7f57854025990860efa4e3d765dadb94b308b40c5b0b5344a13dd23f62207d15f0956d6214'
+b2sums=('604cf0f3bdea2bcf9a88c84958526cf0795ec822e125c8785e6442f99c5c5336c0153f118c81a4ef6f7dc53ad375d67dbce7ab1a1c232073f667363eecbe7ff7'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -175,7 +175,7 @@ b2sums=('98f5a0196764acd7b8595f43473a544f3b515f25546a526a58b0fa7f57854025990860e
         'eb1a4305c9e753774ce27256f8e7f35ae52986c8dfefddb71062f7abc71eec04eaae80cd03b9cb362150465000728390b7bfd0e539f772761c0a8d5dd8dbe980'
         '007fc33064c55b1a080f8c3dcb0c03acc21629d7034426d0622b56ace3936ae07e0f4bca578327542fa3333cc127ef2e2379ebc8e1f97b561ee54de58ce84d3c'
         'ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0'
-        '21234592e20b5ff1bf43f926bdda72b089cc2b32b92d4287e5aa6b20dc8ebbb2e30135ba8b881d64c35d98be457366bcfd9982cf2e38fd3fc13901955fa571da')
+        '6182624d66fc4fb5f8e5234b2577fc39edfea9097924789b1ca1c5110a426821a4dfac4eccfea88522d7907dd87b8981bea4409862947332e10b1cbf4a78a4fc')
 options=('!lto' '!debug')
 
 get_pyver () {
@@ -216,9 +216,9 @@ prepare() {
   git config submodule."third_party/kineto".url "${srcdir}/${pkgname}"-kineto
   git config submodule."third_party/kleidiai".url "${srcdir}/${pkgname}"-kleidiai
   git config submodule."third_party/mimalloc".url "${srcdir}/${pkgname}"-mimalloc
+  git config submodule."third_party/mslk".url "${srcdir}/${pkgname}"-MSLK
   git config submodule."third_party/nlohmann".url "${srcdir}/${pkgname}"-json
   git config submodule."third_party/onnx".url "${srcdir}/${pkgname}"-onnx
-  git config submodule."third_party/opentelemetry-cpp".url "${srcdir}/${pkgname}"-opentelemetry-cpp
   git config submodule."third_party/pocketfft".url "${srcdir}/${pkgname}"-pocketfft
   git config submodule."third_party/protobuf".url "${srcdir}/${pkgname}"-protobuf
   git config submodule."third_party/pybind11".url "${srcdir}/${pkgname}"-pybind11
