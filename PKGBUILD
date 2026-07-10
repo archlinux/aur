@@ -1,5 +1,4 @@
 # Maintainer: Qingxu <me@linioi.com>
-# Contributor: czyt <czytcn@gmail.com>
 pkgname=nowledge-mem
 pkgver=0.10.23
 pkgrel=1
