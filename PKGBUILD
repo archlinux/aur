@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-workspaces-git
-pkgver=1.0.16.r0.g5e62de1
+pkgver=1.2.0.r9.g28a2bfe
 pkgrel=1
 pkgdesc="Cosmic workspaces"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ conflicts=("${pkgname%-git}")
 source=('git+https://github.com/pop-os/cosmic-workspaces-epoch.git'
         'lto.patch')
 sha256sums=('SKIP'
-            '10767b42a2663dac030cef95635896755bda22ed91c6f4e3ad705f99080ee47c')
+            '52d7bdcb68032b8d750a568fcbebf21a375bb68b0c46ea7b64494d93d6c4430a')
 
 pkgver() {
   cd "${pkgname%-git}-epoch"

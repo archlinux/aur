@@ -1,10 +1,13 @@
-diff --unified --recursive --text a/Cargo.toml b/Cargo.toml
---- a/Cargo.toml	2026-02-21 12:09:16.719499348 -0700
-+++ b/Cargo.toml	2026-02-21 12:12:16.273278519 -0700
-@@ -54,3 +54,6 @@
+diff -Npur a/Cargo.toml b/Cargo.toml
+--- a/Cargo.toml	2026-07-10 10:23:12.330665498 -0600
++++ b/Cargo.toml	2026-07-10 10:25:08.327224019 -0600
+@@ -52,6 +52,9 @@ force-shm-screencopy = []
+ no-subsurfaces = ["force-shm-screencopy"]
+ mock-backend = []
+ 
++[profile.release]
++lto = "thin"
++
  [profile.dev]
  # Not usable at opt-level 0, at least with software renderer
  opt-level = 1
-+
-+[profile.release]
-+lto = "thin"
