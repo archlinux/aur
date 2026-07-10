@@ -1,0 +1,20 @@
+pkgbase = asmc
+	pkgdesc = asmc - MASM compatible assembler
+	pkgver = 2.39
+	pkgrel = 1
+	url = https://github.com/nidud/asmc
+	arch = x86_64
+	license = GPL
+	makedepends = bison
+	makedepends = git
+	makedepends = make
+	provides = asmc
+	conflicts = asmc
+	source = LICENSE
+	source = makefile.x86_64
+	source = master.tar.gz::https://github.com/nidud/asmc/archive/refs/tags/v2.39.tar.gz
+	sha256sums = 6bae842f78c8eb13851884fe2dcb3460e18d3215bcc0e3ea2a11b934a0def01e
+	sha256sums = 97a21cb5fe5ba73c069fd8d9a467f7642b28cf2ab057ad799cb8bd73d6ba6127
+	sha256sums = a0bfef8b05d3bb1857aad940b96be07372d518ca0280515ad128f8039d548fad
+
+pkgname = asmc

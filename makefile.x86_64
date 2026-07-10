@@ -1,0 +1,39 @@
+#
+# Makefile for Asmc
+#
+ifneq (LD,)
+LD=
+endif
+LDFLAGS := -Wl,-O2 -Wl,--as-needed
+
+flags = -Cs -Iinc -I../../include
+flags += -DMASMCOMPAT
+
+link = -o $@
+
+acc = asmc64
+flags += -Zp8
+flags += -elf64
+
+CC = ../../bin/$(acc)
+
+default: all
+
+.PHONY:
+all: asmc asmc64 clean
+
+.PHONY:
+install:
+	@ install -vDm0777 asmc $(DESTDIR)usr/bin/asmc
+	@ install -vDm0777 asmc64 $(DESTDIR)usr/bin/asmc64
+
+asmc:
+	chmod a+x $(CC)
+	$(CC) $(flags) src/*.asm -link $(link)
+
+asmc64:
+	chmod a+x $(CC)
+	$(CC) -DASMC64 $(flags) src/*.asm -link $(link)
+
+clean:
+	@ rm *.o || true
