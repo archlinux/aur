@@ -1,7 +1,7 @@
 # Maintainer: EVAIT Security <info@evait-security.de>
 
 pkgname=email_validator-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Fast, statically linked email list validator in Rust"
 arch=('x86_64')

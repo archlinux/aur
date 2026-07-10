@@ -1,14 +1,14 @@
 pkgbase = email_validator-bin
 	pkgdesc = Fast, statically linked email list validator in Rust
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/evait-security/email_validator
 	arch = x86_64
 	license = MIT
 	provides = email_validator
 	conflicts = email_validator
-	noextract = email_validator-bin-0.1.0
-	source = email_validator-bin-0.1.0::https://github.com/evait-security/email_validator/releases/download/v0.1.0/email_validator
+	noextract = email_validator-bin-0.2.0
+	source = email_validator-bin-0.2.0::https://github.com/evait-security/email_validator/releases/download/v0.2.0/email_validator
 	source = LICENSE
 	sha256sums = 2b1d730d16944be9ec2c409e1d87f53e109faaab3280ae34ee77f85b5af04286
 	sha256sums = 26bf0f953738341dc78504377cc5753cc2c61495683b8f94c8d90d395a5b4f88
