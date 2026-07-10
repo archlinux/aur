@@ -1,6 +1,6 @@
 pkgbase = serverstatus-git
 	pkgdesc = 云探针、多服务器探针、云监控、多服务器云监控
-	pkgver = 1.1.9.r1.ge4ca055
+	pkgver = 1.1.9.r10.g1512d29
 	pkgrel = 1
 	url = https://github.com/cppla/ServerStatus
 	arch = x86_64
@@ -57,3 +57,4 @@ pkgname = serverstatus-server-git
 	depends = systemd
 	provides = serverstatus-server
 	conflicts = serverstatus-server
+	backup = usr/share/serverstatus/server/config.json

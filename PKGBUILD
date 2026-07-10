@@ -7,7 +7,7 @@ pkgname=(
     serverstatus-clients-psutil-git
     serverstatus-server-git
 )
-pkgver=1.1.9.r1.ge4ca055
+pkgver=1.1.9.r10.g1512d29
 pkgrel=1
 groups=()
 pkgdesc="云探针、多服务器探针、云监控、多服务器云监控"
@@ -140,13 +140,13 @@ package_serverstatus-server-git() {
     arch=($CARCH)
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
+    backup=(usr/share/serverstatus/server/config.json)
 
     cd "${srcdir}/${pkgbase}"
 
     install -Dm0755 "${srcdir}/${pkgbase}/server/build/serverstatus" -t ${pkgdir}/usr/bin
     install -Dm0755 "${srcdir}/${pkgbase}/server/config.json" -t ${pkgdir}/usr/share/${pkgbase%-git}/server
     cp -rva "${srcdir}/${pkgbase}"/web ${pkgdir}/usr/share/${pkgbase%-git}
-    cp -rva "${srcdir}/${pkgbase}"/plugin ${pkgdir}/usr/share/${pkgbase%-git}
     install -Dm0644 "${srcdir}/${pkgbase}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm0644 /dev/stdin ${pkgdir}/usr/lib/systemd/system/${pkgname%-git}.service <<EOF
 [Unit]
