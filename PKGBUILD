@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=omniget-bin
 _pkgname=OmniGet
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Media downloader. Paste a link. Get your file. Udemy, Hotmart, Telegram and 1000+ Downloader.(Prebuilt version)"
 arch=(
@@ -20,8 +20,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm")
-sha256sums_aarch64=('e01d04e95d4214768f7469af388ae4b6be3a30963251dfa4b9e9c93c7cc16160')
-sha256sums_x86_64=('f6d13f9dce8c708dad9bcd5bf706fde97a548647b2df30fdaccdd222d278eea5')
+sha256sums_aarch64=('749be179f0c9b44fa3faea5e3372bc4041a0ea9d473dacbfcbde57975b729e64')
+sha256sums_x86_64=('958aaaf14721031a1c408045442571347cafe10ed3730a897ea360b3e7c5590b')
 prepare() {
     sed -i -e "
         s/Comment=A Tauri App/Comment=${pkgdesc}/g
