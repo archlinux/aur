@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=telemt
-pkgver=3.4.22
+pkgver=3.4.23
 pkgrel=1
 pkgdesc='Telemt - MTProxy on Rust + Tokio'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ backup=('etc/telemt/telemt.toml')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/telemt/telemt/archive/refs/tags/${pkgver}.tar.gz")
 
-sha256sums=('035acac3245c6702463a6f57e65144bcd07a4d18bb0ec9e9d6ee05cec860e69e')
+sha256sums=('77ca6a265e68dd3da08cab3fc01009673c0cad494c489f7ed6f82500ea085ef7')
 
 build() {
 	cd "${pkgname}-${pkgver}"
