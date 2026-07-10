@@ -1,6 +1,6 @@
 pkgbase = zcode-appimage
 	pkgdesc = ZCode desktop app packaged from the upstream AppImage
-	pkgver = 3.3.3
+	pkgver = 3.3.4
 	pkgrel = 1
 	url = https://zcode.z.ai/en
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = zcode-appimage
 	conflicts = zcode-bin
 	conflicts = zcode-desktop-bin
 	conflicts = z-code-bin
-	noextract = ZCode-3.3.3-linux-x64.AppImage
-	noextract = ZCode-3.3.3-linux-arm64.AppImage
+	noextract = ZCode-3.3.4-linux-x64.AppImage
+	noextract = ZCode-3.3.4-linux-arm64.AppImage
 	options = !strip
 	options = !debug
-	source_x86_64 = ZCode-3.3.3-linux-x64.AppImage::https://cdn-zcode.z.ai/zcode/electron/releases/3.3.3/ZCode-3.3.3-linux-x64.AppImage
-	sha256sums_x86_64 = c713ee023b5bcf69879c8baba794a51918b352abe13b2dcd110a95ccb070f675
-	source_aarch64 = ZCode-3.3.3-linux-arm64.AppImage::https://cdn-zcode.z.ai/zcode/electron/releases/3.3.3/ZCode-3.3.3-linux-arm64.AppImage
-	sha256sums_aarch64 = 4298bbde74d7c114d9a7efb7dd349609f839e30fbbdae8bea15ba24d08571859
+	source_x86_64 = ZCode-3.3.4-linux-x64.AppImage::https://cdn-zcode.z.ai/zcode/electron/releases/3.3.4/ZCode-3.3.4-linux-x64.AppImage
+	sha256sums_x86_64 = d1052fb6bbc23340bb69440a1bf09dd06e177d2dddb392bba5d1431b23e941ea
+	source_aarch64 = ZCode-3.3.4-linux-arm64.AppImage::https://cdn-zcode.z.ai/zcode/electron/releases/3.3.4/ZCode-3.3.4-linux-arm64.AppImage
+	sha256sums_aarch64 = 3c88bae919f6cbffc4c1c4df3f5c7ceaadf56f14e1d8d23bf04bb031916cea56
 
 pkgname = zcode-appimage
