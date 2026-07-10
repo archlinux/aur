@@ -5,7 +5,7 @@
 pkgname=waylyrics-layer-shell-git
 _pkgname=waylyrics
 _appname="io.github.waylyrics.Waylyrics"
-pkgver=0.4.0_r14.g6c630a09
+pkgver=0.4.0.r14.g6c630a09
 pkgrel=1
 pkgdesc="the furry way to show desktop lyrics (git version, with layer-shell feature enabled)"
 url="https://github.com/waylyrics/waylyrics"
@@ -23,7 +23,7 @@ depends=('openssl' 'hicolor-icon-theme' 'gtk4-layer-shell'
     # i18n
     'gettext'
 )
-makedepends=('rust' 'git' 'jq')
+makedepends=('cargo' 'git' "sed")
 optdepends=(
     'breeze-icons: better tray-icon icons'
     'xdg-desktop-portal: file dialog to import LRC'
@@ -38,15 +38,13 @@ options=('!lto')
 prepare() {
     cd "${_pkgname}"
 
+	export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target ${CARCH}-unknown-linux-gnu
 }
 
 pkgver() {
-    cd "${_pkgname}"
-
-    semver=$( cargo metadata --no-deps --format-version=1 |
-        jq -r '.packages | .[0] | .version' )
-    echo "${semver}_r$(git rev-list --count v${semver}..HEAD).g$(git rev-parse --short HEAD)"
+	cd "${_pkgname}"
+	git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
@@ -57,7 +55,8 @@ build() {
     # template files
     export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/${_pkgname}/themes"
 
-    cargo build --release --all-targets --features layer-shell --ignore-rust-version
+	export RUSTUP_TOOLCHAIN=stable
+    cargo build --frozen --release --all-targets --features layer-shell
 }
 
 
@@ -67,7 +66,8 @@ check() {
     export CARGO_TARGET_DIR=target
     export WAYLYRICS_THEME_PRESETS_DIR="/usr/share/${_pkgname}/themes"
 
-    cargo test --release --features layer-shell --ignore-rust-version
+	export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --release --features layer-shell
 }
 
 package() {
