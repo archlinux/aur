@@ -1,10 +1,11 @@
 pkgbase = wozzle
 	pkgdesc = A woz disk image tool
-	pkgver = r71.96330ba
-	pkgrel = 2
+	pkgver = r96.1d797ba
+	pkgrel = 1
 	url = https://github.com/JorjBauer/wozzle
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	source = wozzle::git+https://github.com/JorjBauer/wozzle.git
 	source = wozzle-arpa-inet.patch
 	sha256sums = SKIP

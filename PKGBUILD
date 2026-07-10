@@ -1,14 +1,14 @@
 # Contributor: Andreas Baumann <mail at andreas baumann dot cc>
 
 pkgname=wozzle
-pkgver=r71.96330ba
-pkgrel=2
+pkgver=r96.1d797ba
+pkgrel=1
 pkgdesc="A woz disk image tool"
 arch=('x86_64')
 url="https://github.com/JorjBauer/wozzle"
 license=('MIT')
 depends=()
-makedepends=()
+makedepends=('git')
 source=(
   "${pkgname}::git+https://github.com/JorjBauer/wozzle.git"
   "wozzle-arpa-inet.patch"
