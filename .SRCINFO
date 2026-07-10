@@ -1,6 +1,6 @@
 pkgbase = mvmctl-bin
 	pkgdesc = MicroVM Manager - Container speed, VM isolation
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/AlanD20/mvmctl
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = mvmctl-bin
 	optdepends = libguestfs: alternative rootfs provisioning backend (slower, more capable)
 	provides = mvmctl
 	conflicts = mvmctl
-	source = mvm-0.1.0::https://github.com/AlanD20/mvmctl/releases/download/v0.1.0/mvm
-	source = mvm.1-0.1.0::https://raw.githubusercontent.com/AlanD20/mvmctl/v0.1.0/docs/mvm.1
-	sha256sums = b0e297a3e2e2e1400114b2d61ee70ddcf83786bb956dc5d2dd39c128def5ca99
-	sha256sums = d66c0d13998694d370e818c7c160e68e6196fc23ef391d38bb10100f3e0ae45b
+	source = mvm-0.2.0::https://github.com/AlanD20/mvmctl/releases/download/v0.2.0/mvm
+	source = mvm.1-0.2.0::https://raw.githubusercontent.com/AlanD20/mvmctl/v0.2.0/docs/mvm.1
+	sha256sums = dc2c1863d2bd6cd7e5dabcfcb39265fe430b36fae1eb2bf12ef38bc0b9b3ddca
+	sha256sums = 07f67bfad8a40379b603cf77001ecac12b0f74093116160485e556841329c239
 
 pkgname = mvmctl-bin

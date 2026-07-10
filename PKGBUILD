@@ -1,6 +1,6 @@
 # Maintainer: AlanD20 <aland20@pm.me>
 pkgname=mvmctl-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="MicroVM Manager - Container speed, VM isolation"
 arch=('x86_64' 'aarch64')
@@ -32,7 +32,7 @@ if [[ "$CARCH" == "aarch64" ]]; then
 fi
 source=("mvm-${pkgver}::https://github.com/AlanD20/mvmctl/releases/download/v${pkgver}/mvm${_arch_suffix}"
   "mvm.1-${pkgver}::https://raw.githubusercontent.com/AlanD20/mvmctl/v${pkgver}/docs/mvm.1")
-sha256sums=('b0e297a3e2e2e1400114b2d61ee70ddcf83786bb956dc5d2dd39c128def5ca99' 'd66c0d13998694d370e818c7c160e68e6196fc23ef391d38bb10100f3e0ae45b')
+sha256sums=('dc2c1863d2bd6cd7e5dabcfcb39265fe430b36fae1eb2bf12ef38bc0b9b3ddca' '07f67bfad8a40379b603cf77001ecac12b0f74093116160485e556841329c239')
 
 package() {
   # Install binary
