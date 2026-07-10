@@ -3,7 +3,7 @@ pkgname=atapi-customizations
 _pkgname='atapi-customizations'
 pkgbase=atapi-mimetypes
 pkgver=1
-pkgrel=16
+pkgrel=17
 pkgdesc='Various Arch Linux customizations that I do :3'
 arch=(any)
 makedepends=()
@@ -31,5 +31,5 @@ package() {
   install -Dm755 "$srcdir/rotate.sh" "$pkgdir/usr/share/atapi-customizations/rotate.sh"
   install -Dm755 "$srcdir/flip.sh" "$pkgdir/usr/share/atapi-customizations/flip.sh"
   
-  install -Dm644 "$srcdir/AtapiColors.colors" "$pkgdir/usr/share/colors-schemes/AtapiColors.colors"
+  install -Dm644 "$srcdir/AtapiColors.colors" "$pkgdir/usr/share/color-schemes/AtapiColors.colors"
 }
