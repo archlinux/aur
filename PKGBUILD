@@ -5,7 +5,7 @@
 pkgbase=xorg-server-tearfree
 pkgname="$pkgbase"
 
-pkgver=21.1.23
+pkgver=21.1.24
 pkgrel=1
 arch=('x86_64')
 license=('LicenseRef-Adobe-Display-PostScript'
@@ -41,7 +41,7 @@ validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF'  # Peter Hutterer (Who-
               '67DC86F2623FC5FD4BB5225D14706DBE1E4B4540'  # Olivier Fourdan <fourdan@xfce.org>
               'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # Povilas Kanapickas <povilas@radix.lt>
               '3BB639E56F861FA2E86505690FDD682D974CA72A') # Matt Turner <mattst88@gmail.com>
-sha512sums=('10892a63275d4aaacfefccf99a67e052761174e45ae49a50b95e18d2720fe3913b2511e6a31842314f9bee35ebeb1778160d493d308ed69d44f02a530f153e64'
+sha512sums=('7c3ffcd3c73e7f3efc18ad36807297d5ed84fb2d7aecbec877422e1619d03f8c27435ec42b9cea8a4b7699281ee10d54a1ada236f2ed15ae34978550eb40d4d1'
             '672375cb5028ba9cda286e317d17bd8c9a9039483e7f79c21f223fd08ba07655729e9f59a082f4b8f5d8de45a77a9e9affce1002fb8c6657e26ef1a490654e49'
             'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22'
             '16371960eae107543cc207e80991c842bc88f2f6fe95debb53f637986a8ac05e9c21a19ad7f6d6beb059ce6b2d8cae3b3fdea34bce560fa5fafd0087b980feb6')
