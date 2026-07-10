@@ -1,9 +1,9 @@
-pkgbase = maze
-	pkgdesc = Maze Network — public WiFi security monitor: MITM detection, MAC randomization, nftables firewall
-	pkgver = 2.0.0
+pkgbase = maze-guard
+	pkgdesc = Maze Guard — public WiFi security monitor: MITM detection, MAC randomization, nftables firewall
+	pkgver = 2.2.0
 	pkgrel = 1
-	url = https://github.com/berk-kucuk/Maze
-	install = maze.install
+	url = https://github.com/berk-kucuk/maze-guard
+	install = maze-guard.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -16,7 +16,9 @@ pkgbase = maze
 	depends = systemd
 	optdepends = wireless_tools: WiFi interface monitoring (iwgetid)
 	optdepends = imagemagick: resize app icon to multiple sizes during install
-	source = maze-2.0.0.tar.gz::https://github.com/berk-kucuk/Maze/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = bd1cc1a0fd87e6ab7f2469daa27550d541c144c587055c499f8cff3d8dc0f0e9
+	conflicts = maze
+	replaces = maze
+	source = maze-guard-2.2.0.tar.gz::https://github.com/berk-kucuk/maze-guard/archive/refs/tags/v2.2.0.tar.gz
+	sha256sums = 5f8cdc5f30ad87f5212bc5af4f6b7bb847585da468151e6d56ddfc7c484c9280
 
-pkgname = maze
+pkgname = maze-guard

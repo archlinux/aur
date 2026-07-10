@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# Maze Network post-install hooks
+# Maze Guard post-install hooks
 # Handles venv creation, Python package install/upgrade, and the helper daemon.
 
-_INSTALL_DIR="/opt/maze"
+_INSTALL_DIR="/opt/maze-guard"
 _VENV="$_INSTALL_DIR/venv"
 _PIP="$_VENV/bin/pip"
 
@@ -15,9 +15,9 @@ _PACKAGES=(
 
 # ── helpers ───────────────────────────────────────────────────────────────────
 
-_info()  { echo "  [maze] $*"; }
-_warn()  { echo "  [maze] WARNING: $*"; }
-_ok()    { echo "  [maze] ✓ $*"; }
+_info()  { echo "  [maze-guard] $*"; }
+_warn()  { echo "  [maze-guard] WARNING: $*"; }
+_ok()    { echo "  [maze-guard] ✓ $*"; }
 
 _setup_venv() {
     _info "Creating Python virtual environment at $_VENV ..."
@@ -85,31 +85,62 @@ _refresh_desktop() {
 }
 
 _setup_group() {
-    # systemd-sysusers normally creates 'maze' from /usr/lib/sysusers.d/maze.conf;
-    # fall back to groupadd in case the hook did not run.
+    # systemd-sysusers normally creates 'maze' from /usr/lib/sysusers.d/maze.conf.
+    # That hook runs as a PostTransaction hook, i.e. AFTER this post_install runs,
+    # so the group is NOT guaranteed to exist yet when we get here — create it
+    # ourselves (idempotent) so ordering never matters.
     getent group maze >/dev/null 2>&1 || groupadd -r maze 2>/dev/null || true
+}
+
+# Best-effort discovery of the unprivileged desktop user pacman/the AUR helper
+# was invoked for.
+_real_user() {
+    if [ -n "${SUDO_USER:-}" ] && [ "$SUDO_USER" != "root" ]; then
+        echo "$SUDO_USER"
+        return
+    fi
+    logname 2>/dev/null || true
+}
+
+# Actually add the user to the group instead of just printing instructions —
+# so the daemon socket works right after install/reboot with no manual step.
+_add_user_to_group() {
+    local real_user
+    real_user="$(_real_user)"
+    if [ -n "$real_user" ]; then
+        if usermod -aG maze "$real_user" 2>/dev/null; then
+            _ok "Added '$real_user' to the 'maze' group"
+        else
+            _warn "Could not add '$real_user' to 'maze' automatically — run: sudo usermod -aG maze $real_user"
+        fi
+    else
+        _warn "Could not determine the installing user — add yourself manually: sudo usermod -aG maze <your-user>"
+    fi
 }
 
 _enable_daemon() {
     systemctl daemon-reload 2>/dev/null || true
-    systemctl enable --now maze.service 2>/dev/null \
-        && _ok "maze.service enabled and started" \
-        || _warn "Could not enable maze.service automatically — run: sudo systemctl enable --now maze.service"
+    systemctl enable --now maze-guard.service 2>/dev/null \
+        && _ok "maze-guard.service enabled and started" \
+        || _warn "Could not enable maze-guard.service automatically — run: sudo systemctl enable --now maze-guard.service"
 }
 
 _print_summary() {
+    # Self-aligning box: content is ASCII-only so printf byte-width == columns.
+    local w=54
+    _boxline() { printf "  | %-*s |\n" "$w" "$1"; }
+    local bar; bar="$(printf '%*s' "$((w+2))" '' | tr ' ' '-')"
     echo ""
-    echo "  ┌──────────────────────────────────────────────────────────┐"
-    echo "  │  Maze Network installed — run: maze                       │"
-    echo "  │                                                          │"
-    echo "  │  The privileged helper now runs as a daemon — NO password │"
-    echo "  │  prompt. To use it, join the 'maze' group and re-login:    │"
-    echo "  │                                                          │"
-    echo "  │    sudo usermod -aG maze \$USER                            │"
-    echo "  │    # then log out and back in (or run: newgrp maze)       │"
-    echo "  │                                                          │"
-    echo "  │  Autostart launches Maze Network hidden in the tray.      │"
-    echo "  └──────────────────────────────────────────────────────────┘"
+    printf "  +%s+\n" "$bar"
+    _boxline "Maze Guard installed - run: maze-guard"
+    _boxline ""
+    _boxline "The privileged helper runs as a daemon - no"
+    _boxline "password prompt. Your user was added to the"
+    _boxline "'maze' group automatically - log out and back"
+    _boxline "in (or reboot) for it to take effect."
+    _boxline ""
+    _boxline "Autostart launches Maze Guard hidden in the tray."
+    printf "  +%s+\n" "$bar"
     echo ""
 }
 
@@ -122,6 +153,7 @@ post_install() {
     _fix_permissions
     _refresh_desktop
     _setup_group
+    _add_user_to_group
     _enable_daemon
     _print_summary
 }
@@ -140,15 +172,16 @@ post_upgrade() {
     _fix_permissions
     _refresh_desktop
     _setup_group
+    _add_user_to_group
     # Pick up unit changes and restart the running helper.
     systemctl daemon-reload 2>/dev/null || true
-    systemctl try-restart maze.service 2>/dev/null || true
-    _ok "Maze Network upgraded"
+    systemctl try-restart maze-guard.service 2>/dev/null || true
+    _ok "Maze Guard upgraded"
 }
 
 pre_remove() {
     # Stop and disable the daemon before its files disappear.
-    systemctl disable --now maze.service 2>/dev/null || true
+    systemctl disable --now maze-guard.service 2>/dev/null || true
 }
 
 post_remove() {
