@@ -1,6 +1,6 @@
 pkgbase = python-pytorch-cuda12.9
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (Maxwell/Pascal/Volta support)
-	pkgver = 2.12.0
+	pkgver = 2.12.1
 	pkgrel = 2
 	url = https://pytorch.org
 	arch = x86_64
@@ -52,7 +52,7 @@ pkgbase = python-pytorch-cuda12.9
 	optdepends = python-onnxscript: for the ONNX exporter
 	options = !lto
 	options = !debug
-	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.12.0
+	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.12.1
 	source = python-pytorch-cuda12.9-FP16::git+https://github.com/Maratyszcza/FP16.git
 	source = python-pytorch-cuda12.9-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git
 	source = python-pytorch-cuda12.9-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git
@@ -98,7 +98,7 @@ pkgbase = python-pytorch-cuda12.9
 	source = add_gpu_targets_rocm.patch
 	source = aotriton_disable_install.patch
 	source = pyproject.patch
-	b2sums = 607de4efeed0bfece53c010bc1493e83c0aff088faea14110b3f64d5e3f231a5bc2677c54a5df0d5069913d0e073356f882c95ef85902b624d51eebda2b985a2
+	b2sums = 98f5a0196764acd7b8595f43473a544f3b515f25546a526a58b0fa7f57854025990860efa4e3d765dadb94b308b40c5b0b5344a13dd23f62207d15f0956d6214
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -178,8 +178,8 @@ pkgname = python-pytorch-cuda12.9
 	depends = nccl-cuda12.9
 	depends = cudnn9.10-cuda12.9
 	depends = onednn
-	provides = python-pytorch=2.12.0
-	provides = python-pytorch-cuda=2.12.0
+	provides = python-pytorch=2.12.1
+	provides = python-pytorch-cuda=2.12.1
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-opt-cuda12.9
@@ -215,7 +215,7 @@ pkgname = python-pytorch-opt-cuda12.9
 	depends = nccl-cuda12.9
 	depends = cudnn9.10-cuda12.9
 	depends = onednn
-	provides = python-pytorch=2.12.0
-	provides = python-pytorch-cuda=2.12.0
-	provides = python-pytorch-cuda12.9=2.12.0
+	provides = python-pytorch=2.12.1
+	provides = python-pytorch-cuda=2.12.1
+	provides = python-pytorch-cuda12.9=2.12.1
 	conflicts = python-pytorch

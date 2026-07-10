@@ -9,7 +9,7 @@ pkgbase="python-${_pkgname}-cuda12.9"
 pkgname=("${pkgbase}" "python-${_pkgname}-opt-cuda12.9")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.12.0
+pkgver=2.12.1
 pkgrel=2
 pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration (Maxwell/Pascal/Volta support)'
 arch=('x86_64')
@@ -115,7 +115,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         aotriton_disable_install.patch
         pyproject.patch
         )
-b2sums=('607de4efeed0bfece53c010bc1493e83c0aff088faea14110b3f64d5e3f231a5bc2677c54a5df0d5069913d0e073356f882c95ef85902b624d51eebda2b985a2'
+b2sums=('98f5a0196764acd7b8595f43473a544f3b515f25546a526a58b0fa7f57854025990860efa4e3d765dadb94b308b40c5b0b5344a13dd23f62207d15f0956d6214'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -326,11 +326,11 @@ build() {
 
   cd "${srcdir}/${_pkgname}-opt-cuda"
   echo "Building with cuda and with non-x86-64 optimizations"
+  _prepare
   export USE_CUDA=1
   export USE_CUDNN=1
   export USE_ROCM=0
   export USE_XPU=0
-  _prepare
   echo "add_definitions(-march=x86-64-v3)" >> cmake/MiscCheck.cmake
   python -m build --wheel --no-isolation
 }
