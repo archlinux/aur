@@ -3,20 +3,21 @@
 
 _pkgname=swingmusic
 pkgname="$_pkgname-bin"
-pkgver=2.1.4
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Swing Music is a beautiful, self-hosted music player for your local audio files. Like a cooler Spotify ... but bring your own music."
 arch=('x86_64')
 url="https://swingmx.com"
-license=('MIT')
-depends=()
+license=(AGPL-3.0-or-later)
+depends=(glibc zlib)
 provides=('swingmusic')
-conflicts=('swingmusic-beta-bin' 'swingmusic')
+conflicts=('swingmusic' 'swingmusic-beta-bin')
 optdepends=('ffmpeg: audio silence skip feature')
-source=("https://raw.githubusercontent.com/swingmx/swingmusic/refs/tags/v$pkgver/LICENSE")
+source=("https://github.com/swingmx/swingmusic/raw/v$pkgver/LICENSE")
+#source_x86_64=("https://github.com/swingmx/swingmusic/releases/download/v$pkgver/swingmusic-v$pkgver-linux-$arch.tar.gz")
 source_x86_64=("$_pkgname-$pkgver::https://github.com/swingmx/swingmusic/releases/download/v$pkgver/swingmusic_linux_$arch")
-sha256sums=('30b0f446384bbda0c6d6b8ca0655e3fe76194828ec4065a9ffffe876c8944fda')
-sha256sums_x86_64=('c300a9b325a88f84827b954e496b6989f3f00b7ab39301c854926139859b8354')
+b2sums=('6fa2a6adf165a614637f4aae5b323c427b99c2d13f9ab55eefae012dc3dbeebe5957cd2e2497e4c38426088a41dac89f6ac6284af6cf6a4a67a6780f409e8237')
+b2sums_x86_64=('b9a295cee9ffd2ed75838a903ab4b55f1a6119183b71d14d42d7a560ce8e0ad9101ea970f9a310ca6b47a6593f9c38e0a6edd56dd8ddb12399192a1664fa95a9')
 
 package() {
     install -Dm755 "$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
