@@ -5,13 +5,13 @@
 
 pkgname=realvnc-vnc-viewer-7
 pkgver=7.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc='VNC remote desktop client viewer software by RealVNC'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.realvnc.com/'
 license=('custom')
 depends=('libsm' 'libxext')
-conflicts=('realvnc-viewer' 'realvnc-rvnc-connect')
+conflicts=('realvnc-vnc-viewer' 'realvnc-rvnc-connect')
 
 source_x86_64=("https://web.archive.org/web/20251201122208/https://downloads.realvnc.com/download/file/viewer.files/VNC-Viewer-${pkgver}-Linux-x64.deb")
 source_armv7h=("https://web.archive.org/web/https://downloads.realvnc.com/download/file/viewer.files/VNC-Viewer-${pkgver}-Linux-ARM.deb")
