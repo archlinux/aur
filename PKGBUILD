@@ -9,7 +9,7 @@ url="https://github.com/EvolveBeyond/bluez"
 license=('GPL-2.0')
 depends=('glib2' 'dbus' 'libudev.so' 'ell' 'json-c' 'alsa-lib')
 makedepends=('git' 'python' 'pkg-config' 'intltool' 'readline')
-provides=('bluez' 'bluez-libs' 'bluez-utils')
+provides=('bluez' 'bluez-libs' 'bluez-utils' 'bluez-deprecated-tools' 'bluez-hid2hci')
 conflicts=('bluez' 'bluez-libs' 'bluez-utils' 'bluez-deprecated-tools' 'bluez-hid2hci')
 backup=('etc/bluetooth/main.conf'
         'etc/bluetooth/input.conf'
