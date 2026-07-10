@@ -1,26 +1,20 @@
 pkgbase = cardano-node-bin
 	pkgdesc = The core component that is used to participate in a Cardano decentralised blockchain (binary package).
-	pkgver = 1.35.4
+	pkgver = 11.0.1
 	pkgrel = 1
 	url = https://github.com/input-output-hk/cardano-node
 	install = cardano-node-bin.install
 	arch = x86_64
-	license = Apache
-	provides = cardano-node=1.35.4
+	license = Apache-2.0
+	makedepends = git
+	depends = cardano-conf
+	provides = cardano-node=11.0.1
 	conflicts = cardano-node
-	source = https://update-cardano-mainnet.iohk.io/cardano-node-releases/cardano-node-1.35.4-linux.tar.gz
-	source = cardano-node.sysusers
-	source = cardano-node.tmpfiles
-	source = cardano-node.service
-	source = cardano-node.confd
-	source = cardano-node-testnet.service
-	source = cardano-node-testnet.confd
-	sha256sums = fab41bec9f1f924de9c351b855c78758fc576109f737f5978620f3ae95cde71d
-	sha256sums = 782696d794db3c41cc96e301ed76c8108ac01cbd3347233eb9c4d4f970071633
-	sha256sums = 3212902b0d2bb0e6bacba0feeafd261516b9f6ab5f37f876a8c37239a1947542
-	sha256sums = 6db0b3bb81063f410499a6688a1abbbc5d63af165310ef709924985e5c0d1c4d
-	sha256sums = d35f0e5e71ba476a4ee800898c892c22dedcc02eb4457f12ae68252740a8eeec
-	sha256sums = ec16edc07aa35dccd5fb6894b964ab304cd7a8c1cc65eed22aa569e9105c7982
-	sha256sums = 0a57c08cb631db16f2ca38f29d30229d45cab91176a1b376aaa629dab9d063d7
+	options = !debug
+	options = !strip
+	source = https://github.com/IntersectMBO/cardano-node/releases/download/11.0.1/cardano-node-11.0.1-linux-amd64.tar.gz
+	source = cardano-dist::git+https://github.com/sgillespie/cardano-db-sync-dist#commit=db6d3395102eeb02ebd3c54bf2e6c107a6b0ec36
+	sha256sums = 40e88a543564251338c4888ef79fde51d2306c18b48ac308c9eab3220e3a13f0
+	sha256sums = 0e6cfbd2a7dac91d04081868ad91feb89c80d90076b5f3129b2aa51bf00df1d6
 
 pkgname = cardano-node-bin
