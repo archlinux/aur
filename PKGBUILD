@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=plainva
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 url="https://$pkgname.com"
 _url="https://github.com/$pkgname/$pkgname"
 pkgdesc='Obsidian-compatible, local-first editor for plain Markdown vaults'
@@ -26,7 +26,7 @@ makedepends=(cargo
 options=(!lto)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('bf544328578c285c56b968ffbaf6732c2bd05b473345f50b36aac24f4d76c805')
+sha256sums=('ade555b1173e69ebae1b7ca41b16439ab8a59b39991b6c26421b7550b1d663ab')
 
 _srcenv() {
 	cd "$_archive"
