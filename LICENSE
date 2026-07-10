@@ -1,0 +1,9 @@
+Upstream application: Brightwing MCP Manager
+Project URL: https://github.com/Brightwing-Systems-LLC/mcp-manager
+
+Upstream licensing status, as stated by the upstream project README:
+"Proprietary. Copyright 2026 Brightwing Systems LLC."
+
+This package directory contains Arch Linux packaging metadata for repackaging the
+upstream binary release. The packaging files are maintained separately from the
+upstream application itself.

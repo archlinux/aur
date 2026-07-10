@@ -1,10 +1,10 @@
 pkgbase = mcp-manager-bin
-	pkgdesc = Universal MCP server installer and desktop manager
+	pkgdesc = MCP Manager desktop application with Claude Code integration
 	pkgver = 0.3.15
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/Brightwing-Systems-LLC/mcp-manager
 	arch = x86_64
-	license = MIT
+	license = Apache-2.0
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	optdepends = xdg-utils: open external URLs from the desktop environment
@@ -12,8 +12,10 @@ pkgbase = mcp-manager-bin
 	conflicts = mcp-manager
 	options = !strip
 	source = Brightwing.MCP.Manager_0.3.15_amd64.deb::https://github.com/Brightwing-Systems-LLC/mcp-manager/releases/download/v0.3.15/Brightwing.MCP.Manager_0.3.15_amd64.deb
-	source = LICENSE.upstream::https://raw.githubusercontent.com/Brightwing-Systems-LLC/mcp-manager/v0.3.15/LICENSE
+	source = mcp-manager-bin.desktop
+	source = LICENSE::https://raw.githubusercontent.com/Brightwing-Systems-LLC/mcp-manager/v0.3.15/LICENSE
 	sha256sums = 2452b7f957da68eeffbf82f6d64a2bafde7cfc2869dfd07d9624a1696203048a
-	sha256sums = SKIP
+	sha256sums = 7ae01cdfc0b6af9dc6284a6975f3243d2682d688122cb7cd6440faf232ff7d1f
+	sha256sums = 67dbbe39a64087c5a3d3db93b056389b113e5368818f425097811a9dacc467c8
 
 pkgname = mcp-manager-bin

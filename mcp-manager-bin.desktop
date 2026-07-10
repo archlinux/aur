@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=MCP Manager
+Comment=MCP Manager desktop application with Claude Code integration
+Exec=mcp-manager-bin
+Icon=mcp-manager-bin
+Categories=Development;
