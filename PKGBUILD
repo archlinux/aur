@@ -2,7 +2,7 @@
 
 pkgname=proton-authenticator
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='2FA app from Proton to securely sync and backup 2FA codes'
 arch=(x86_64)
 url='https://proton.me/authenticator'
@@ -28,6 +28,10 @@ prepare() {
 
     # Configure Yarn workspaces to build only authenticator instead of all applications
     sed -i 's/"applications\/\*",/"applications\/authenticator",/' package.json
+
+    # sharp is a transitive dep (favicons-webpack-plugin) unused by authenticator's webpack
+    # config, skip its build so it doesn't try to compile against a system libvips.
+    sed -i '1a\    "dependenciesMeta": { "sharp": { "built": false } },' package.json
 
     # Modify tauri build script to use --frozen flag for reproducible builds
     sed -i 's/tauri build -v --no-bundle/tauri build -v --no-bundle -- --frozen/g' \
