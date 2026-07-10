@@ -1,6 +1,6 @@
 pkgbase = python-comfyui-workflow-templates-media-video
 	pkgdesc = Media bundle containing video workflow assets
-	pkgver = 0.3.83
+	pkgver = 0.3.101
 	pkgrel = 1
 	url = https://github.com/Comfy-Org/workflow_templates/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-comfyui-workflow-templates-media-video
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/comfyui-workflow-templates-media-video/comfyui_workflow_templates_media_video-0.3.83.tar.gz
-	sha512sums = bff2b6cae0a2a08ceb6edf9a6442c6c4c45f34880e149d477951b0f4ff77ebde6481ff3634f09b545947994d1845edd8d383f155ea8cd30eadbc46c605d134c1
+	source = https://files.pythonhosted.org/packages/source/c/comfyui-workflow-templates-media-video/comfyui_workflow_templates_media_video-0.3.101.tar.gz
+	sha512sums = 80381bbdbf674f5a7d51f39ed9f1149de76350837d5eefb3d06d9f312e228acda24b0e8cd2ef8be44718e3e8b0daec7c4fc38741c63ed53a2947d5d8f7f7c1e4
 
 pkgname = python-comfyui-workflow-templates-media-video
