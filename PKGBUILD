@@ -2,7 +2,7 @@
 pkgname=virtual-surround-manager
 pkgver=1.3.0
 pkgrel=1
-pkgdesc="Enable virtual 7.1 surround sound for your headphones with just one click"
+pkgdesc="3D sound for headphones"
 arch=('x86_64')
 url="https://github.com/Berny23/virtual-surround-manager"
 license=('MIT')
