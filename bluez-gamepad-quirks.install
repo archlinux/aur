@@ -1,25 +1,77 @@
 post_install() {
+    _bluetoothd="/usr/lib/bluetooth/bluetoothd"
+    _patched="/usr/lib/bluez-gamepad-quirks/bluetoothd"
+    _backup="/usr/lib/bluetooth/bluetoothd.orig"
+
+    # Create directory if it doesn't exist
+    if [ ! -d "/usr/lib/bluetooth" ]; then
+        install -dm755 "/usr/lib/bluetooth"
+        echo "  Created /usr/lib/bluetooth/"
+    fi
+
+    # Backup original if not already backed up
+    if [ -f "$_bluetoothd" ] && [ ! -f "$_backup" ]; then
+        cp "$_bluetoothd" "$_backup"
+        echo "  Backed up original bluetoothd to $_backup"
+    fi
+
+    # Replace with patched version
+    if [ -f "$_patched" ]; then
+        cp "$_patched" "$_bluetoothd"
+        chmod 755 "$_bluetoothd"
+        echo "  Installed patched bluetoothd"
+    fi
+
+    # Restart bluetooth service
+    if systemctl is-active --quiet bluetooth.service; then
+        systemctl restart bluetooth.service
+        echo "  Restarted bluetooth service"
+    fi
+
     echo ""
-    echo "==> BlueZ Gamepad Quirks installed!"
-    echo ""
-    echo "  Built-in supported devices:"
-    echo "    - TG170W (TSCO/Taco) Wireless Gamepad"
-    echo "    - DualShock 4 v2 (Sony CUH-ZCT2x)"
-    echo ""
-    echo "  External quirk profiles:"
-    echo "    Place JSON files in ~/.config/bluez/quirks/"
-    echo "    Install with: sudo bluez-quirkctl install <file.json>"
-    echo "    List with:    bluez-quirkctl list"
-    echo ""
-    echo "  To enable Bluetooth service:"
-    echo "    sudo systemctl enable --now bluetooth"
-    echo ""
-    echo "  Note: You may need to reload udev rules:"
-    echo "    sudo udevadm control --reload-rules"
-    echo "    sudo udevadm trigger"
+    echo "  Patched bluetoothd with gamepad quirk support is now active."
+    echo "  Connect your gamepads via Bluetooth normally."
     echo ""
 }
 
 post_upgrade() {
-    post_install
+    _bluetoothd="/usr/lib/bluetooth/bluetoothd"
+    _patched="/usr/lib/bluez-gamepad-quirks/bluetoothd"
+
+    # Update patched version
+    if [ -f "$_patched" ]; then
+        cp "$_patched" "$_bluetoothd"
+        chmod 755 "$_bluetoothd"
+        echo "  Updated patched bluetoothd"
+    fi
+
+    # Restart bluetooth service
+    if systemctl is-active --quiet bluetooth.service; then
+        systemctl restart bluetooth.service
+        echo "  Restarted bluetooth service"
+    fi
+}
+
+post_remove() {
+    _bluetoothd="/usr/lib/bluetooth/bluetoothd"
+    _backup="/usr/lib/bluetooth/bluetoothd.orig"
+
+    # Restore original if backup exists
+    if [ -f "$_backup" ]; then
+        cp "$_backup" "$_bluetoothd"
+        rm "$_backup"
+        echo "  Restored original bluetoothd"
+    else
+        echo "  No backup found. Run 'pacman -S bluez' to restore original."
+    fi
+
+    # Restart bluetooth service
+    if systemctl is-active --quiet bluetooth.service; then
+        systemctl restart bluetooth.service
+        echo "  Restarted bluetooth service"
+    fi
+
+    echo ""
+    echo "  bluez-gamepad-quirks has been removed."
+    echo ""
 }

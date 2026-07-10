@@ -1,21 +1,19 @@
 # Maintainer: pakrohk <pakrohk@gmail.com>
 
 pkgname=bluez-gamepad-quirks
-pkgver=5.87
-pkgrel=5
-pkgdesc="BlueZ daemon with HID gamepad quirk support for controllers with broken SDP records"
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+pkgver=5.87.29175.9ad9435d4
+pkgrel=1
+pkgdesc="Patched BlueZ bluetoothd with HID gamepad quirk support for controllers with broken SDP records"
+arch=('x86_64')
 url="https://github.com/EvolveBeyond/bluez"
 license=('GPL-2.0')
-depends=('glib2' 'dbus' 'libudev.so' 'ell' 'json-c' 'alsa-lib')
+depends=('bluez' 'glib2' 'dbus' 'libudev.so' 'ell' 'json-c' 'alsa-lib')
 makedepends=('git' 'python' 'pkg-config' 'intltool' 'readline')
 options=(!emptydirs !strip)
 install=bluez-gamepad-quirks.install
 source=("$pkgname::git+https://github.com/EvolveBeyond/bluez.git#branch=gamepad-quirks"
-        'bluetooth.conf'
         'tmpfiles.conf')
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -49,24 +47,20 @@ build() {
         --disable-obex \
         --disable-manpages
 
-    make
+    make -j$(nproc)
 }
 
 package() {
     cd "$pkgname"
 
-    # Only install the daemon and quirkctl - NOT libs, utils, headers
-    install -Dm755 src/bluetoothd "$pkgdir/usr/lib/bluetooth/bluetoothd"
+    # Install patched binaries to separate location (safe, no conflicts)
+    install -Dm755 src/bluetoothd "$pkgdir/usr/lib/bluez-gamepad-quirks/bluetoothd"
     install -Dm755 tools/bluez-quirkctl "$pkgdir/usr/bin/bluez-quirkctl"
-
-    # D-Bus config
-    install -Dm644 "$srcdir/bluetooth.conf" \
-        "$pkgdir/etc/dbus-1/system.d/bluetooth.conf"
 
     # tmpfiles
     install -Dm644 "$srcdir/tmpfiles.conf" \
-        "$pkgdir/usr/lib/tmpfiles.d/bluez.conf"
+        "$pkgdir/usr/lib/tmpfiles.d/bluez-gamepad-quirks.conf"
 
     # Quirk profile directory
-    install -dm755 "$pkgdir/var/lib/bluez/quirks"
+    install -dm755 "$pkgdir/var/lib/bluez-gamepad-quirks/quirks"
 }

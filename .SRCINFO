@@ -1,19 +1,17 @@
 pkgbase = bluez-gamepad-quirks
-	pkgdesc = BlueZ daemon with HID gamepad quirk support for controllers with broken SDP records
-	pkgver = 5.87
-	pkgrel = 5
+	pkgdesc = Patched BlueZ bluetoothd with HID gamepad quirk support for controllers with broken SDP records
+	pkgver = 5.87.29175.9ad9435d4
+	pkgrel = 1
 	url = https://github.com/EvolveBeyond/bluez
 	install = bluez-gamepad-quirks.install
 	arch = x86_64
-	arch = i686
-	arch = armv7h
-	arch = aarch64
 	license = GPL-2.0
 	makedepends = git
 	makedepends = python
 	makedepends = pkg-config
 	makedepends = intltool
 	makedepends = readline
+	depends = bluez
 	depends = glib2
 	depends = dbus
 	depends = libudev.so
@@ -23,9 +21,7 @@ pkgbase = bluez-gamepad-quirks
 	options = !emptydirs
 	options = !strip
 	source = bluez-gamepad-quirks::git+https://github.com/EvolveBeyond/bluez.git#branch=gamepad-quirks
-	source = bluetooth.conf
 	source = tmpfiles.conf
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
