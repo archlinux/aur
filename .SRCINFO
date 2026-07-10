@@ -1,6 +1,6 @@
 pkgbase = electron44-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
-	pkgver = 44.0.0alpha.2
+	pkgver = 44.0.0alpha.3
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = aarch64
@@ -17,23 +17,23 @@ pkgbase = electron44-bin
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron44=44.0.0alpha.2
+	provides = electron44=44.0.0alpha.3
 	conflicts = electron44
-	noextract = electron44-chromedriver-44.0.0alpha.2-x86_64.zip
-	noextract = electron44-44.0.0alpha.2-x86_64.zip
+	noextract = electron44-chromedriver-44.0.0alpha.3-x86_64.zip
+	noextract = electron44-44.0.0alpha.3-x86_64.zip
 	source = electron44.sh
 	sha256sums = ac1e26684ffbfc7ac0993c55b9299003f6b9efea25b755b1d260bea4db440157
-	source_aarch64 = electron44-chromedriver-44.0.0alpha.2-aarch64.zip::https://github.com/electron/electron/releases/download/v44.0.0-alpha.2/chromedriver-v44.0.0-alpha.2-linux-arm64.zip
-	source_aarch64 = electron44-44.0.0alpha.2-aarch64.zip::https://github.com/electron/electron/releases/download/v44.0.0-alpha.2/electron-v44.0.0-alpha.2-linux-arm64.zip
-	sha256sums_aarch64 = d1085826da7ff438138bf6fc59374d1c932d5f66c7c049948cde5dcef40063b4
-	sha256sums_aarch64 = d7b6649f392f468f219391a9fcd208df58f833fa5c6972f9b5cb75ecb58350fe
-	source_armv7h = electron44-chromedriver-44.0.0alpha.2-armv7h.zip::https://github.com/electron/electron/releases/download/v44.0.0-alpha.2/chromedriver-v44.0.0-alpha.2-linux-armv7l.zip
-	source_armv7h = electron44-44.0.0alpha.2-armv7h.zip::https://github.com/electron/electron/releases/download/v44.0.0-alpha.2/electron-v44.0.0-alpha.2-linux-armv7l.zip
-	sha256sums_armv7h = 1481b79917fdd0dbae2e04326a1741a810f6f1d5607f18f16d867e8c5c5354bc
-	sha256sums_armv7h = 5eaf71b8a6edd65c523178dc31073b98844f85f4b0bec886e5c8a3c80232db6b
-	source_x86_64 = electron44-chromedriver-44.0.0alpha.2-x86_64.zip::https://github.com/electron/electron/releases/download/v44.0.0-alpha.2/chromedriver-v44.0.0-alpha.2-linux-x64.zip
-	source_x86_64 = electron44-44.0.0alpha.2-x86_64.zip::https://github.com/electron/electron/releases/download/v44.0.0-alpha.2/electron-v44.0.0-alpha.2-linux-x64.zip
-	sha256sums_x86_64 = 7587ee715be84f159ec03aeb9c34fc089c7f2c26a69eb2f8a5558f93d5ff25a0
-	sha256sums_x86_64 = 209db2fff560f8764fdda08e68edb10f54afcc5b914c63373342f267579ee82b
+	source_aarch64 = electron44-chromedriver-44.0.0alpha.3-aarch64.zip::https://github.com/electron/electron/releases/download/v44.0.0-alpha.3/chromedriver-v44.0.0-alpha.3-linux-arm64.zip
+	source_aarch64 = electron44-44.0.0alpha.3-aarch64.zip::https://github.com/electron/electron/releases/download/v44.0.0-alpha.3/electron-v44.0.0-alpha.3-linux-arm64.zip
+	sha256sums_aarch64 = 6958c03d6e6d8bdcb5ad485275b5b6db406fdbcf863afe96186d7157e384135b
+	sha256sums_aarch64 = 1066a944d17e01d271506b08b7989cea938e812368fce749df61f88c5f2ff2f0
+	source_armv7h = electron44-chromedriver-44.0.0alpha.3-armv7h.zip::https://github.com/electron/electron/releases/download/v44.0.0-alpha.3/chromedriver-v44.0.0-alpha.3-linux-armv7l.zip
+	source_armv7h = electron44-44.0.0alpha.3-armv7h.zip::https://github.com/electron/electron/releases/download/v44.0.0-alpha.3/electron-v44.0.0-alpha.3-linux-armv7l.zip
+	sha256sums_armv7h = fd9d96e300e3be8f1a355ec17a5b1b7db5d513a3f024c5e26abe1d7dd225d479
+	sha256sums_armv7h = 800f08ca58b4c95cc934ead97b91d807c666cda39fb489e9afd130d35156b9cc
+	source_x86_64 = electron44-chromedriver-44.0.0alpha.3-x86_64.zip::https://github.com/electron/electron/releases/download/v44.0.0-alpha.3/chromedriver-v44.0.0-alpha.3-linux-x64.zip
+	source_x86_64 = electron44-44.0.0alpha.3-x86_64.zip::https://github.com/electron/electron/releases/download/v44.0.0-alpha.3/electron-v44.0.0-alpha.3-linux-x64.zip
+	sha256sums_x86_64 = a2b791df8e5bcf7f2c74e4c76412261b36deb2a1d3e48df908138dc500139aa1
+	sha256sums_x86_64 = 683d8e624417324c57b660f07dc0ab35b24157aaabae11e2f35f9362c74afbb6
 
 pkgname = electron44-bin
