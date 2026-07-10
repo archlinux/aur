@@ -3,7 +3,7 @@
 # Contributor: Thomas Andrejak <thomas.andrejak@gmail.com>
 pkgname=python-croniter
 _name=${pkgname#python-}
-pkgver=6.2.3
+pkgver=6.2.4
 pkgrel=1
 pkgdesc="Parses cron schedules to iterate over datetime objects."
 arch=('any')
@@ -22,7 +22,7 @@ makedepends=(
 )
 checkdepends=('python-pytest')
 source=("https://github.com/pallets-eco/croniter/archive/refs/tags/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('47da8eb60338126f625156ff32335068e6f9e94d09443a59bc241253fca8ed3c')
+sha256sums=('38729b9c329f95cf3f6f25ba2b233a1412afd366f6e79f8c4a38b4c90fb99a23')
 
 prepare() {
   cd "$_name-$pkgver"
