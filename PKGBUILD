@@ -1,7 +1,7 @@
 # Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
 
 pkgname=openshift-install
-pkgver=4.21.8
+pkgver=4.22.3
 pkgrel=1
 pkgdesc="Install an OpenShift 4.x cluster"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=(
     'glibc'
 )
 source=("$pkgname-$pkgver.tar.gz::https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/$pkgver/openshift-install-linux-$pkgver.tar.gz")
-b2sums=('0a63f2a3f35da53fd52391d9a2fada06889de28fdb44cae1c1acb32582813922e3627ad148eff03bb1212b672a9d4a898b665695ef8e5786f188b1d252c5ce35')
+b2sums=('646ce8d82176499bf73ff3b0471f97121c806d1c787c1f4ffacfdd9c2e7fc2c231eb06ea4ab3ddc40ff97e8a8cd0c73ab29bb23227d5cbe6da8aa6743bbdbc89')
 
 package() {
     install -vDm755 -t "${pkgdir}/usr/bin/" openshift-install
