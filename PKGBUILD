@@ -84,10 +84,10 @@ package() {
   )
 
   for lib in "${libs_to_symlink[@]}"; do
-    if [ -f "$pkgdir/usr/lib/$lib" ]; then
+    if ! [ -h "$pkgdir/usr/lib/$lib" ]; then
       rm -f "$pkgdir/usr/lib/$lib"
     fi
-    if [ -f "$pkgdir/usr/lib/$lib.0" ]; then
+    if ! [ -h "$pkgdir/usr/lib/$lib.0" ]; then
       rm -f "$pkgdir/usr/lib/$lib.0"
     fi
 
