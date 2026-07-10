@@ -1,10 +1,11 @@
 pkgbase = aeroftp-bin
 	pkgdesc = Modern multi-protocol file client with AI, encryption and cloud storage (FTP, SFTP, WebDAV, S3, 26 protocols)
 	pkgver = 4.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://aeroftp.app
 	arch = x86_64
 	license = GPL-3.0-or-later
+	makedepends = cosign
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = openssl
@@ -24,6 +25,8 @@ pkgbase = aeroftp-bin
 	options = !strip
 	options = !debug
 	source = aeroftp-bin-4.1.2.deb::https://github.com/axpdev-lab/aeroftp/releases/download/v4.1.2/AeroFTP_4.1.2_amd64.deb
+	source = aeroftp-bin-4.1.2.deb.sigstore.json::https://github.com/axpdev-lab/aeroftp/releases/download/v4.1.2/AeroFTP_4.1.2_amd64.deb.sigstore.json
 	sha256sums = ba664a3d17d8278b41febf16ddd2a634136595eeb546a279433c9acc0cbed45e
+	sha256sums = SKIP
 
 pkgname = aeroftp-bin
