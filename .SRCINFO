@@ -1,6 +1,6 @@
 pkgbase = ggml-core
 	pkgdesc = Tensor library for machine learning (core runtime)
-	pkgver = 0.15.3
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/ggml-org/ggml
 	arch = x86_64
@@ -13,15 +13,15 @@ pkgbase = ggml-core
 	depends = glibc
 	depends = libstdc++
 	depends = libgcc
-	provides = libggml=0.15.3
-	provides = ggml=0.15.3
+	provides = libggml=0.16.0
+	provides = ggml=0.16.0
 	conflicts = libggml
 	conflicts = ggml
 	options = lto
 	options = !debug
-	source = ggml-0.15.3.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v0.15.3.tar.gz
+	source = ggml-0.16.0.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v0.16.0.tar.gz
 	source = ggml-h-ggml-max-name-128.patch
-	sha256sums = 86800455b5520fc86023979790703a9e2e1e4038b20039334be21df4d55bc868
+	sha256sums = 8e1741cd44c036468ee2b8531343bbe1205bc26bc63b866030679cc5f28ec0bf
 	sha256sums = b3be0f6368ca8344e52e044f60dc81efb98e646e93ce3fe690f8d8b4750eb27a
 
 pkgname = ggml-core
