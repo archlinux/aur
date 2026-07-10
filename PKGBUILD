@@ -129,6 +129,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         add_gpu_targets_rocm.patch
         aotriton_disable_install.patch
         pyproject.patch
+        codegen_sm_103f.patch
         )
 b2sums=('604cf0f3bdea2bcf9a88c84958526cf0795ec822e125c8785e6442f99c5c5336c0153f118c81a4ef6f7dc53ad375d67dbce7ab1a1c232073f667363eecbe7ff7'
         'SKIP'
@@ -170,12 +171,13 @@ b2sums=('604cf0f3bdea2bcf9a88c84958526cf0795ec822e125c8785e6442f99c5c5336c0153f1
         'SKIP'
         '8c91e931f34fcc1cc5d916572e9808435bbc4a853d80af92a5484b4bb1111ef3b2a1c58283b97c2c3071de3177a124669004855f7ebad0734b0941714e3baf4f'
         'af8c724ed80898ae3875a295ad6bd4d18d90f8a9124f6cff6d1b2f525bf7806fe61306e739c1f7362fbd8d0e4f8ba57d0e3bf925ea3f7a78a0a98f26722db147'
-        '0a8fc110a306e81beeb9ddfb3a1ddfd26aeda5e3f7adfb0f7c9bc3fd999c2dde62e0b407d3eca573097a53fd97329214e30e8767fb38d770197c7ec2b53daf18'
+        '4f38d592df7b9b6f4decda09de024a8a7a6b941626d39058edcc45976e52d9b493d78f3f58405f4777e679a1410d1ea60ac8a3535371ec76ca21e633ad08e8bd'
         '20d044c5c80354af5ed63847fa4332e96cbfc32a351788f6458fb92b322de7f64b10c188ff26e4f34e422cfe30e082c3ca23ee3e9094616c142aa53588dd451e'
         'eb1a4305c9e753774ce27256f8e7f35ae52986c8dfefddb71062f7abc71eec04eaae80cd03b9cb362150465000728390b7bfd0e539f772761c0a8d5dd8dbe980'
         '007fc33064c55b1a080f8c3dcb0c03acc21629d7034426d0622b56ace3936ae07e0f4bca578327542fa3333cc127ef2e2379ebc8e1f97b561ee54de58ce84d3c'
         'ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0'
-        '6182624d66fc4fb5f8e5234b2577fc39edfea9097924789b1ca1c5110a426821a4dfac4eccfea88522d7907dd87b8981bea4409862947332e10b1cbf4a78a4fc')
+        '6182624d66fc4fb5f8e5234b2577fc39edfea9097924789b1ca1c5110a426821a4dfac4eccfea88522d7907dd87b8981bea4409862947332e10b1cbf4a78a4fc'
+        'e733c6f7fd81ac78aa300a650dd8cf7162fbd54cb8e29b61ab4073bffb41309fabcc8c710c06c2bb0e5ab7c4d9499259d01c05e1d766b30dd1b26b24eace26d3')
 options=('!lto' '!debug')
 
 get_pyver () {
@@ -255,6 +257,10 @@ prepare() {
   # patch python dependencies in pyproject.toml
   patch -p1 -i "${srcdir}/pyproject.patch"
 
+  # Skip building RowwiseScaledMM.cu and GroupMM.cu for sm_103f, it results in this error:
+  # nvcc fatal   : The same GPU code (`sm_103f`) generated for non family-specific and family-specific GPU arch
+  patch -p1 -i "${srcdir}/codegen_sm_103f.patch"
+
   cd "${srcdir}"
 
   cp -r "${_pkgname}" "${_pkgname}-opt"
@@ -267,7 +273,7 @@ prepare() {
 
   # Handle glog 0.6 vs 0.7 mismatch
   local _suffix
-  for _suffix in xpu opt-xpu; do
+  for _suffix in rocm opt-rocm xpu opt-xpu; do
     sed -i '1s/^/#ifndef GLOG_USE_GLOG_EXPORT\n#define GLOG_USE_GLOG_EXPORT\n#endif\n\n/' ${_pkgname}-${_suffix}/c10/util/logging_is_google_glog.h
   done
 }

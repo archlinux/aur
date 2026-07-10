@@ -1,0 +1,33 @@
+diff --git a/aten/src/ATen/CMakeLists.txt b/aten/src/ATen/CMakeLists.txt
+index adf7b5ee1cef..dc220e9ca118 100644
+--- a/aten/src/ATen/CMakeLists.txt
++++ b/aten/src/ATen/CMakeLists.txt
+@@ -405,7 +405,7 @@ IF(USE_MSLK)
+     foreach(cu_file ${mslk_native_cuda_cu})
+       _BUILD_FOR_ADDITIONAL_ARCHS(
+         "${cu_file}"
+-        "100a;103f;110a")
++        "100a;110a")
+     endforeach()
+ 
+     file(GLOB_RECURSE mslk_native_cuda_cpp CONFIGURE_DEPENDS
+diff --git a/cmake/Codegen.cmake b/cmake/Codegen.cmake
+index 7d36538c7329..b0817686359a 100644
+--- a/cmake/Codegen.cmake
++++ b/cmake/Codegen.cmake
+@@ -143,13 +143,13 @@ if(INTERN_BUILD_ATEN_OPS)
+ 
+     _BUILD_FOR_ADDITIONAL_ARCHS(
+       "${CMAKE_CURRENT_LIST_DIR}/../aten/src/ATen/native/cuda/RowwiseScaledMM.cu"
+-      "89;90a;100a;103f;110a;120a;121a")
++      "89;90a;100a;110a;120a;121a")
+     _BUILD_FOR_ADDITIONAL_ARCHS(
+       "${CMAKE_CURRENT_LIST_DIR}/../aten/src/ATen/native/cuda/ScaledGroupMM.cu"
+       "90a")
+     _BUILD_FOR_ADDITIONAL_ARCHS(
+       "${CMAKE_CURRENT_LIST_DIR}/../aten/src/ATen/native/cuda/GroupMM.cu"
+-      "90a;100a;103f;110a")
++      "90a;100a;110a")
+ 
+   endif()
+ 
