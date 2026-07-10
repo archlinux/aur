@@ -11,7 +11,7 @@ makedepends=('gcc' 'make')
 provides=('corganizer')
 conflicts=('corganizer-git')
 source=("https://github.com/zedxihan/corganizer/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f8acdf04062c6883cbd1d7dc90929250bdb3c840c1f80df96782f51ec0e36b4c')
+sha256sums=('a70785de45394a4cf547fc45d4941644858146f2037cac4af278e8b95ca0ba95')
 
 build() {
   cd "${pkgname}-${pkgver}"
