@@ -1,7 +1,7 @@
 pkgname=7zip-zstd-bin
 pkgver=26.02
-_pkgver=1.5.7-R1
-pkgrel=1
+_pkgver=1.5.7-R2
+pkgrel=2
 pkgdesc="File archiver for extremely high compression (With Zstandard support)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mcmilk/7-Zip-zstd"
@@ -18,8 +18,8 @@ source=("License.txt::${url}/raw/v${pkgver}-v${_pkgver}/DOC/License.txt"
 
 sha256sums=('5b565f1591a5872cb163a17a06725c4ec010f60401c9068d1b5e1e8c89517f39'
             '17bd9fa4399092c777536fff045b41df76ec9d2ac4c9b8e7345d3b8b6ccc7976')
-sha256sums_x86_64=('20f541d934ec1ed82435b17ebe649cd588f389e84841a781624dd121a3bf561a')
-sha256sums_aarch64=('a52f0fb66fba56d52f0ed0f4dd4f69be28f37ac91e463c4da60df4f57c99ca17')
+sha256sums_x86_64=('be246e5a284d3b5e738bad5cbb24c2662996ddb9776e09575b5099ab53fa0ba3')
+sha256sums_aarch64=('64511f6ebc32d5257a535b33b21a5b6712c72aa91e28524f41e1ce92e803c909')
 
 
 package() {
