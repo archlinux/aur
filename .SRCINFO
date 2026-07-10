@@ -1,6 +1,6 @@
 pkgbase = miniter-bin
 	pkgdesc = Basic video editor (for simple tasks)
-	pkgver = 0.7.3
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/mlm-games/miniter
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = miniter-bin
 	provides = miniter
 	conflicts = miniter
 	options = !strip
-	source_x86_64 = miniter-0.7.3-x86_64.AppImage::https://github.com/mlm-games/miniter/releases/download/0.7.3/miniter-0.7.3-x86_64.AppImage
-	sha256sums_x86_64 = 29c3beb0ba2922fca6fccea47c7bf1f31c267a4a497b37914e58dc6d6f7bb1c4
-	source_aarch64 = miniter-0.7.3-aarch64.AppImage::https://github.com/mlm-games/miniter/releases/download/0.7.3/miniter-0.7.3-aarch64.AppImage
-	sha256sums_aarch64 = 82b9711d303f61f9e1cdfdc5e884e1c8a034601f61c49b2e982fde468b4d7229
+	source_x86_64 = miniter-0.7.4-x86_64.AppImage::https://github.com/mlm-games/miniter/releases/download/0.7.4/miniter-0.7.4-x86_64.AppImage
+	sha256sums_x86_64 = 1e34238748d2ca13f62a4076cbd9ed01b6fc2614a96b1614f77c6386a287f84b
+	source_aarch64 = miniter-0.7.4-aarch64.AppImage::https://github.com/mlm-games/miniter/releases/download/0.7.4/miniter-0.7.4-aarch64.AppImage
+	sha256sums_aarch64 = ff2d27de6dcf1f5ae10667cf663cf0c9f0b84347e58af6c99160088f90067d59
 
 pkgname = miniter-bin
