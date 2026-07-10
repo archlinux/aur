@@ -2,7 +2,7 @@ pkgbase = dotdotdot-git
 	pkgdesc = A variable-based dotfiles manager with a template engine for multi-machine deployments
 	pkgver = r11.2116ef3
 	pkgrel = 1
-	url = https://gitlab.com/greembow/dotdotdot
+	url = https://git.greembow.com/khamley/dotdotdot
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = dotdotdot-git
 	depends = gcc-libs
 	provides = dotdotdot
 	conflicts = dotdotdot
-	source = dotdotdot-git::git+https://gitlab.com/greembow/dotdotdot.git#branch=main
+	source = dotdotdot-git::git+https://git.greembow.com/khamley/dotdotdot.git#branch=main
 	sha256sums = SKIP
 
 pkgname = dotdotdot-git

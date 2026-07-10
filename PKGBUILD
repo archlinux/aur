@@ -4,13 +4,13 @@ pkgver=r11.2116ef3
 pkgrel=1
 pkgdesc="A variable-based dotfiles manager with a template engine for multi-machine deployments"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/greembow/dotdotdot"
+url="https://git.greembow.com/khamley/dotdotdot"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'rust' 'cargo')
 provides=('dotdotdot')
 conflicts=('dotdotdot')
-source=("$pkgname::git+https://gitlab.com/greembow/dotdotdot.git#branch=main")
+source=("$pkgname::git+https://git.greembow.com/khamley/dotdotdot.git#branch=main")
 sha256sums=('SKIP')
 
 pkgver() {
