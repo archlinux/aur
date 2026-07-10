@@ -2,27 +2,27 @@
 
 _pkgname=Amethyst-Mod-Manager
 pkgname=amethyst-mod-manager
-pkgver=1.3.13
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='A Linux native mod manager for a variety of games'
 arch=('any')
 url='https://github.com/ChrisDKN/Amethyst-Mod-Manager'
 license=('GPL-3.0-only')
 depends=(
-    ## UI
-    'python-gobject'
-    'python-customtkinter'
-    'python-cairo'
-    'gdk-pixbuf2'
+    # UI
     'gtk3'
+    'pyside6'
+    'python-gobject'
     'python-pillow'
 
     # Networking
-    'python-websocket-client'
+    'python-certifi'
     'python-requests'
+    'python-websocket-client'
 
     # Secret store
     'python-keyring'
+    'python-secretstorage'
 
     # Cryptography
     'python-cryptography'
@@ -34,7 +34,6 @@ depends=(
     'python-msgpack'
 
     # Archive
-    'python-rarfile'
     'python-lz4'
     'python-py7zr'
     'python-zstandard'
@@ -45,11 +44,11 @@ depends=(
     'python-bsdiff4'
 )
 optdepends=(
-    'zenity: native dialog'
-    'kdialog: native dialog'
+    # 'zenity: native dialog'
+    # 'kdialog: native dialog'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ChrisDKN/Amethyst-Mod-Manager/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f9374bef0e6e36decf579d187ca9e0e7fe8f4044cc743522396610e827451014')
+sha256sums=('cc38bf0a57b19656c315c608e92ca2a09f417cd968aee7152ec67fe9661da5ad')
 
 build() {
     cd "${_pkgname}-${pkgver}"
@@ -64,7 +63,7 @@ package() {
     find . -path "./appimage" -prune -o \
         -not -name "requirements*.txt" \
         -not -name "rebuild_libloot.sh" \
-        -not -name "run.sh" \
+        -not -name "run_qt.sh" \
         -not -name "loot.cpython*.so" \
         -type f \
         -exec install -Dm 644 '{}' "$pkgdir/usr/share/${pkgname}/{}" \;
@@ -73,7 +72,7 @@ package() {
     install -d "$pkgdir/usr/bin/"
 
     echo '#!/bin/sh' > "$pkgdir/usr/bin/${pkgname}"
-    echo 'exec /usr/bin/python3 /usr/share/'"${pkgname}"'/gui.py "$@"' >> "$pkgdir/usr/bin/${pkgname}"
+    echo 'exec /usr/bin/python3 /usr/share/'"${pkgname}"'/run_qt.py "$@"' >> "$pkgdir/usr/bin/${pkgname}"
     chmod +x "$pkgdir/usr/bin/${pkgname}"
 
     echo '#!/bin/sh' > "$pkgdir/usr/bin/${pkgname}-cli"
