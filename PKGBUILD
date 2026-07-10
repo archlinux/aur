@@ -1,8 +1,8 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgbase=wireview-hwmon
 pkgname=('wireview-hwmon' 'wireview-hwmon-dkms')
-pkgver=1.4.1
-pkgrel=3
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="WireView Pro II hwmon daemon, CLI and DKMS kernel module"
 arch=('x86_64')
 url="https://github.com/emaspa/wireview-hwmon"
@@ -10,7 +10,7 @@ license=('GPL-2.0-only')
 makedepends=('gcc')
 options=('!debug')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5065356d60c92649a9272b7875659853815eb557f18270a7d8c65cf895e57b13')
+sha256sums=('e9226455c4024f7b40f11387fb707344fa1bfbf09c0f038f06660c8de781bff9')
 
 build() {
   cd "$pkgbase-$pkgver"
@@ -22,12 +22,14 @@ build() {
 package_wireview-hwmon() {
   pkgdesc="WireView Pro II hwmon daemon and CLI (userspace)"
   depends=('glibc')
-  optdepends=('wireview-hwmon-dkms: kernel module exposing sensors via /sys/class/hwmon')
+  optdepends=('wireview-hwmon-dkms: kernel module exposing sensors via /sys/class/hwmon'
+              'dfu-util: device firmware updates via "wireviewctl flash"')
   cd "$pkgbase-$pkgver"
   install -Dm755 wireviewd "$pkgdir/usr/bin/wireviewd"
   install -Dm755 wireviewctl "$pkgdir/usr/bin/wireviewctl"
   install -Dm644 debian/wireviewd.service "$pkgdir/usr/lib/systemd/system/wireviewd.service"
   install -Dm644 99-wireview-hwmon.rules "$pkgdir/usr/lib/udev/rules.d/99-wireview-hwmon.rules"
+  install -Dm644 firmware/TG-WV-PRO2-FW.hex "$pkgdir/usr/share/wireview/TG-WV-PRO2-FW.hex"
   # The kernel module is a self-registering platform driver with no modalias,
   # so nothing autoloads it. Load it when the daemon starts (a no-op if the
   # dkms package isn't installed). Guarded so it stays a no-op should a future
