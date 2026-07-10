@@ -1,6 +1,6 @@
 # Maintainer: Qian Chen <qc@az.ht>
 pkgname=goweb
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc="Multi domain/host web server written in Golang"
 arch=('x86_64' 'aarch64')
