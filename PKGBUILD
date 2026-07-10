@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 makedepends=(python-build python-installer python-wheel python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
-sha512sums=('e73fad9bbb5df08330923ded30ecc73b39cb24702b30686cae86566a70d03e16e9763d9ed1f20f7175f4174c8da825edf72e639d59278137f5a4e39b70f6eb16')
+sha512sums=('963ab77591e30d2690195e7f1b810223f2ee4a5ec50c2bfac0d8e0a775596c78b102a136c0422e629a291ac6b4fafa3edf90e9746971e26abcc4f2f859e6d1c5')
 
 build() {
   cd ${_name//-/_}-${pkgver}

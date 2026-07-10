@@ -11,6 +11,6 @@ pkgbase = python-comfyui-workflow-templates-json
 	makedepends = python-setuptools
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/c/comfyui-workflow-templates-json/comfyui_workflow_templates_json-0.1.1.tar.gz
-	sha512sums = e73fad9bbb5df08330923ded30ecc73b39cb24702b30686cae86566a70d03e16e9763d9ed1f20f7175f4174c8da825edf72e639d59278137f5a4e39b70f6eb16
+	sha512sums = 963ab77591e30d2690195e7f1b810223f2ee4a5ec50c2bfac0d8e0a775596c78b102a136c0422e629a291ac6b4fafa3edf90e9746971e26abcc4f2f859e6d1c5
 
 pkgname = python-comfyui-workflow-templates-json
