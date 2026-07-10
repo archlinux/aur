@@ -22,6 +22,7 @@ prepare() {
 }
 
 build() {
+  mkdir -p "$srcdir/$pkgname/Build"
   cd $pkgname/Build
   cmake \
     -DCMAKE_INSTALL_PREFIX=/opt \
