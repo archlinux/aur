@@ -1,0 +1,18 @@
+pkgbase = tmenu-bin
+	pkgdesc = Universal test runner with auto-detection for 11 languages
+	pkgver = 1.0.11
+	pkgrel = 1
+	url = https://github.com/pmoracho/tmenu
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = tmenu
+	conflicts = tmenu
+	options = !strip
+	source = README-1.0.11.md::https://raw.githubusercontent.com/pmoracho/tmenu/v1.0.11/README.md
+	sha256sums = cf4ff55196b6ae1f1a017af32db55dbca4550facbdf94ff3baffa9d7058c9d92
+	source_x86_64 = tmenu-x86_64-1.0.11.txz::https://github.com/pmoracho/tmenu/releases/download/v1.0.11/tmenu-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 2ee405bd7635241feb484d17d8ac9f928ccfd02f46b158dbe731be9879a3e29b
+
+pkgname = tmenu-bin
