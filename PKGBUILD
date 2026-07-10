@@ -2,15 +2,16 @@
 
 pkgname=zivid-tools
 pkgver='2.18.0+1b44dbef_1'
-pkgrel=1
+pkgrel=2
 pkgdesc='Defining the Future of 3D Machine Vision'
 arch=('x86_64')
 license=('custom')
 url=https://www.zivid.com
 
 depends=(zivid)
-conflicts=()
 provides=()
+conflicts=()
+replaces=()
 
 groups=(zivid-all)
 
