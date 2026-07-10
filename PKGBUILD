@@ -1,5 +1,6 @@
 # Maintainer: Mikhail f. Shiryaev <mr dot felixoid at gmail dot com>
 # Maintainer: Luca Giugliardi <lukeemhigh plus dev at protonmail dot com>
+# Maintainer: Sebastian Steinbeißer <sebastian dot steinbeisser at googlemail dot com>
 
 pkgname='docker-scout'
 pkgver=1.23.1
