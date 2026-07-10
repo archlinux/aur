@@ -1,6 +1,6 @@
 pkgbase = reitti
 	pkgdesc = Comprehensive personal location tracking and analysis
-	pkgver = 5.0.1
+	pkgver = 5.0.2
 	pkgrel = 1
 	url = https://github.com/dedicatedcode/reitti
 	install = reitti.install
@@ -15,7 +15,7 @@ pkgbase = reitti
 	optdepends = nominatim: reverse geocoding
 	optdepends = immich-server: photo integration
 	backup = etc/conf.d/reitti
-	source = git+https://github.com/dedicatedcode/reitti#tag=v5.0.1
+	source = git+https://github.com/dedicatedcode/reitti#tag=v5.0.2
 	source = reitti.install
 	source = reitti.service
 	source = reitti.sysusers
@@ -23,7 +23,7 @@ pkgbase = reitti
 	source = reitti.conf
 	source = reitti-nginx.conf
 	source = application-systemd.properties
-	sha256sums = 2a4c9d5daf309e4295ce83b48cf50aab726eb49714c5b788b385904672e4cbc9
+	sha256sums = 1f1ea5c2ae8a9e49f995fe89996bc36fc35469fad2fc387555f297e44c9720cc
 	sha256sums = 3a36daca90c91af2a38c82aeed1d5309984c9eccc07e325f2c477843d1e83f69
 	sha256sums = b2304c791f5d40c8427bdb329653edbbfedf871d1e2e1b7ef2bf96cf0367a3a0
 	sha256sums = 6d3fa7035e4f59b5b30a487d01358d8af24bc3d4d8f030e5d2d6512155ddb92e
