@@ -1,6 +1,6 @@
 pkgbase = claude-desktop-hardened-bin
 	pkgdesc = Claude Desktop for Linux (hardened) — bubblewrap sandboxing, credential redaction
-	pkgver = 1.20186.0
+	pkgver = 1.20186.1
 	pkgrel = 1
 	url = https://github.com/techtoboggan/claude-desktop-hardened-linux
 	arch = x86_64
@@ -30,10 +30,10 @@ pkgbase = claude-desktop-hardened-bin
 	conflicts = claude-desktop
 	conflicts = claude-desktop-bin
 	conflicts = claude-desktop-hardened
-	noextract = claude-desktop-hardened-bin-1.20186.0-1-x86_64.pkg.tar.zst
+	noextract = claude-desktop-hardened-bin-1.20186.1-1-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = claude-desktop-hardened-bin-1.20186.0-1-x86_64.pkg.tar.zst::https://github.com/techtoboggan/claude-desktop-hardened-linux/releases/download/v1.20186.0-1/claude-desktop-hardened-bin-1.20186.0-1-x86_64.pkg.tar.zst
-	sha256sums = 3e8ab5295b00673d8b2b22f3543391fd0888726a297e7005750b2367d2d5be40
+	source = claude-desktop-hardened-bin-1.20186.1-1-x86_64.pkg.tar.zst::https://github.com/techtoboggan/claude-desktop-hardened-linux/releases/download/v1.20186.1-1/claude-desktop-hardened-bin-1.20186.1-1-x86_64.pkg.tar.zst
+	sha256sums = 330289555deffa2f0ad4c1ecf8e39df3380cb8dfa22f1e51c4bcdf6011a29cc9
 
 pkgname = claude-desktop-hardened-bin
