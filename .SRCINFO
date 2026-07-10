@@ -1,6 +1,6 @@
 pkgbase = lilbee
 	pkgdesc = Run and manage local AI models and search your files, code, and crawled web pages, with cited answers
-	pkgver = 0.6.90b420.dev712
+	pkgver = 0.6.90b420.dev713
 	pkgrel = 1
 	url = https://github.com/tobocop2/lilbee
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = lilbee
 	replaces = lilbee-bin
 	options = !strip
 	options = !debug
-	source = lilbee.service::https://github.com/tobocop2/lilbee/raw/v0.6.90b420.dev712/packaging/systemd/lilbee.service
+	source = lilbee.service::https://github.com/tobocop2/lilbee/raw/v0.6.90b420.dev713/packaging/systemd/lilbee.service
 	sha256sums = 8987137080f5b5353ca4a5bc82aa56c92c450c158e8558fa48fa8bff2cb1c69d
-	source_x86_64 = lilbee-0.6.90b420.dev712::https://github.com/tobocop2/lilbee/releases/download/v0.6.90b420.dev712/lilbee-linux-x86_64
-	sha256sums_x86_64 = 49c6fc7b991f7682ce89b358f9a1cb10fcddd3d0618482db4785870a6fa4eeef
+	source_x86_64 = lilbee-0.6.90b420.dev713::https://github.com/tobocop2/lilbee/releases/download/v0.6.90b420.dev713/lilbee-linux-x86_64
+	sha256sums_x86_64 = 940138cdd313bfe0489f83c8361413f7810f0aefadf64ef0632fbf726ce88757
 
 pkgname = lilbee
