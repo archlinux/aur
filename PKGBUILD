@@ -23,8 +23,8 @@ backup=(
   etc/cardano/preview/checkpoints.json
 )
 options=()
-source=("git+https://github.com/input-output-hk/cardano-playground?commit=e18bf6327fa9956c907739d049e9b3ec0c6a7dd6")
-sha256sums=('SKIP')
+source=("git+https://github.com/input-output-hk/cardano-playground#tag=node-11.0.1-config")
+sha256sums=('f71e60726bf632480a221fffb3f4c4ab86e08a862a583b6cc003df69a46c0e36')
 
 package() {
   cd "cardano-playground"
