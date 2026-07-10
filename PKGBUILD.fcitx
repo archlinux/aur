@@ -67,24 +67,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/mozc"
-  git submodule init
-  git config submodule.src/third_party/abseil-cpp.url "$srcdir/abseil-cpp"
-  git config submodule.src/third_party/breakpad.url "$srcdir/breakpad"
-  git config submodule.src/third_party/gtest.url "$srcdir/googletest"
-  git config submodule.src/third_party/gyp.url "$srcdir/gyp"
-  git config submodule.src/third_party/japanese_usage_dictionary.url "$srcdir/japanese-usage-dictionary"
-  git config submodule.src/third_party/protobuf.url "$srcdir/protobuf"
-  git config submodule.src/third_party/wil.url "$srcdir/wil"
-  git -c protocol.file.allow=always submodule update
-
   cd "$srcdir/mozc/src"
-
-  # use libstdc++ instead of libc++
-  sed '/stdlib=libc++/d;/-lc++/d' -i gyp/common.gypi
-
-  # nm -f posix (llvm-nm -f posix)
-  sed 's|nm \(.*\)\-f p |nm \1-f posix |' -i third_party/gyp/pylib/gyp/generator/ninja.py
 
   # disable warning of ANDROID_NDK_HOME.
   sed -e '/register_toolchains("@androidndk\/\/:all")/d' -i MODULE.bazel
