@@ -1,0 +1,25 @@
+pkgbase = python-comfy-kitchen-cuda
+	pkgdesc = Fast kernel library for Diffusion inference with multiple compute backends.
+	pkgver = 0.2.16
+	pkgrel = 1
+	url = https://github.com/Comfy-Org/comfy-kitchen
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = cuda
+	depends = python-pytorch-cuda
+	provides = python-comfy-kitchen
+	conflicts = python-comfy-kitchen
+	noextract = comfy_kitchen-0.2.16-cp312-abi3-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+	noextract = comfy_kitchen-0.2.16-cp312-abi3-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+	source_x86_64 = https://files.pythonhosted.org/packages/cp312/c/comfy-kitchen/comfy_kitchen-0.2.16-cp312-abi3-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+	sha512sums_x86_64 = 69c3e434bfbccb723ffb149efec7f2b91c5bc7085d056c0c7c8d5e2fd904b49877fe3d49c866b22a8d008ff27477358270d49d83113e5178bb179559c20e645d
+	source_aarch64 = https://files.pythonhosted.org/packages/cp312/c/comfy-kitchen/comfy_kitchen-0.2.16-cp312-abi3-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+	sha512sums_aarch64 = 98f0d803a1229a006bc3fbdd3ed7becd5df85cdbd4eb45ec15fef514e2b12a278726199af7f2c8af863d86b9f3ef42c07bdc04edad2ab08b8e3779d0470c6d9f
+
+pkgname = python-comfy-kitchen-cuda
