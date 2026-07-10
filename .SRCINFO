@@ -1,0 +1,26 @@
+pkgbase = open-chess-bin
+	pkgdesc = Open Chess with variants, AI, LAN multiplayer and puzzles (Flutter + Rust)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/RamazanBerk20/open-chess
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	provides = open-chess
+	provides = chess
+	conflicts = open-chess
+	conflicts = open-chess-git
+	conflicts = chess
+	conflicts = chess-bin
+	conflicts = chess-git
+	replaces = chess-bin
+	options = !strip
+	options = !debug
+	source = open-chess-1.1.0-linux-x86_64.tar.gz::https://github.com/RamazanBerk20/open-chess/releases/download/v1.1.0/open-chess-1.1.0-linux-x86_64.tar.gz
+	source = open-chess-1.1.0.png::https://github.com/RamazanBerk20/open-chess/raw/v1.1.0/assets/icon/open-chess.png
+	source = LICENSE-1.1.0::https://github.com/RamazanBerk20/open-chess/raw/v1.1.0/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = open-chess-bin
