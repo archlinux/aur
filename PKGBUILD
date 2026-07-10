@@ -1,8 +1,8 @@
 # Maintainer: Qi Meng <qi_meng0206@outlook.com>
 pkgname=7zip-zstd
 pkgver=26.02
-pkgrel=1
-_pkgver=1.5.7-R1
+pkgrel=2
+_pkgver=1.5.7-R2
 _srcname="7-Zip-zstd-${pkgver}-v${_pkgver}"
 pkgdesc="File archiver for extremely high compression (With Zstandard support)"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ provides=('p7zip' '7zip')
 conflicts=('p7zip' '7zip')
 replaces=('p7zip')
 source=("${url}/archive/refs/tags/v${pkgver}-v${_pkgver}.tar.gz")
-sha256sums=('bf226fe3ca98383bc085ff0215758625d488b02da229b4df0ac5962f05bc97b0')
+sha256sums=('02a684ff8fd7fae110d30dddd4c55648061d3dceeeaefb1c9c20baed3a51795a')
 
 prepare() {
   cd "$_srcname"
@@ -43,7 +43,7 @@ build() {
     make -C "CPP/7zip/$component" -f ../../cmpl_gcc.mak \
       "${_platform_flags[@]}" \
       LFLAGS_STRIP= \
-      CC="cc $CFLAGS $CPPFLAGS $LDFLAGS" \
+      CC="gcc $CFLAGS $CPPFLAGS $LDFLAGS" \
       CXX="g++ $CXXFLAGS $CPPFLAGS $LDFLAGS"
   done
 }
@@ -68,3 +68,5 @@ package() {
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" DOC/{,unRar}License.txt
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" DOC/{Methods,readme}.txt
 }
+
+# vim: set sw=2 ts=2 et:

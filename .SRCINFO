@@ -1,7 +1,7 @@
 pkgbase = 7zip-zstd
 	pkgdesc = File archiver for extremely high compression (With Zstandard support)
 	pkgver = 26.02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mcmilk/7-Zip-zstd
 	arch = x86_64
 	arch = aarch64
@@ -17,7 +17,7 @@ pkgbase = 7zip-zstd
 	conflicts = p7zip
 	conflicts = 7zip
 	replaces = p7zip
-	source = https://github.com/mcmilk/7-Zip-zstd/archive/refs/tags/v26.02-v1.5.7-R1.tar.gz
-	sha256sums = bf226fe3ca98383bc085ff0215758625d488b02da229b4df0ac5962f05bc97b0
+	source = https://github.com/mcmilk/7-Zip-zstd/archive/refs/tags/v26.02-v1.5.7-R2.tar.gz
+	sha256sums = 02a684ff8fd7fae110d30dddd4c55648061d3dceeeaefb1c9c20baed3a51795a
 
 pkgname = 7zip-zstd
