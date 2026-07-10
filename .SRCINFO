@@ -23,7 +23,7 @@ pkgbase = llama-hdd
 	conflicts = llama.cpp-cuda
 	conflicts = llama.cpp-vulkan
 	conflicts = llama.cpp-hip
-	source = llama-hdd::git+https://codeberg.org/LuminaNAO/llama-hdd.cpp.git#tag=3
+	source = llama-hdd::git+https://codeberg.org/LuminaNAO/llama-hdd.cpp.git#tag=v3
 	sha256sums = SKIP
 
 pkgname = llama-hdd

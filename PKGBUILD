@@ -17,21 +17,71 @@ optdepends=(
 )
 provides=('llama.cpp' "llama.cpp=${pkgver}")
 conflicts=('llama.cpp' 'llama.cpp-cuda' 'llama.cpp-vulkan' 'llama.cpp-hip')
-source=("${pkgname}::git+https://codeberg.org/LuminaNAO/llama-hdd.cpp.git#tag=${pkgver}")
+source=("${pkgname}::git+https://codeberg.org/LuminaNAO/llama-hdd.cpp.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
-# Backend selection: cpu (default), vulkan, cuda, rocm
-# Override with: LLAMA_HDD_BACKEND=vulkan makepkg
-_backend="${LLAMA_HDD_BACKEND:-cpu}"
+# Backend selection: cpu, vulkan, cuda, rocm
+# Non-interactive: LLAMA_HDD_BACKEND=vulkan makepkg
+_backend="${LLAMA_HDD_BACKEND:-}"
+
+_detect_backend() {
+    if command -v nvidia-smi >/dev/null 2>&1; then
+        echo cuda
+    elif command -v rocminfo >/dev/null 2>&1; then
+        echo rocm
+    elif command -v vulkaninfo >/dev/null 2>&1; then
+        echo vulkan
+    else
+        echo cpu
+    fi
+}
+
+_select_backend() {
+    [ -n "$_backend" ] && return 0
+    if ! { : </dev/tty; } 2>/dev/null; then
+        echo "ERROR: no backend selected and no terminal to ask on."
+        echo "Set LLAMA_HDD_BACKEND to one of: cpu, vulkan, cuda, rocm. Example:"
+        echo "  LLAMA_HDD_BACKEND=cuda paru -S llama-hdd"
+        return 1
+    fi
+    local suggested choice
+    suggested="$(_detect_backend)"
+    {
+        echo ""
+        echo "llama-hdd backend:"
+        echo "  1) cpu     - no GPU acceleration"
+        echo "  2) vulkan  - any modern GPU"
+        echo "  3) cuda    - NVIDIA (requires cuda)"
+        echo "  4) rocm    - AMD (requires rocm-hip-sdk)"
+        printf "Select backend [1-4 or name, Enter=%s (detected), auto-continues in 120s]: " "$suggested"
+    } >/dev/tty
+    # Timeout guards unattended runs (paru/yay build queues): fall back to
+    # the detected backend instead of hanging the install forever.
+    if ! read -r -t 120 choice </dev/tty; then
+        choice=""
+        echo "" >/dev/tty
+        echo "No input after 120s; using detected backend: $suggested" >/dev/tty
+    fi
+    case "$choice" in
+        1) _backend=cpu ;;
+        2) _backend=vulkan ;;
+        3) _backend=cuda ;;
+        4) _backend=rocm ;;
+        "") _backend="$suggested" ;;
+        cpu|vulkan|cuda|rocm) _backend="$choice" ;;
+        *) echo "Invalid choice: $choice" >/dev/tty; return 1 ;;
+    esac
+    echo "Building llama-hdd with backend: $_backend" >/dev/tty
+}
 
 pkgver() {
     cd "$pkgname"
-    # b<NNNN>.r<commits-since-tag>
-    git describe --tags --abbrev=0 | sed 's/^b/b/' \
-        | awk -v n="$(git rev-list --count HEAD ^"$(git describe --tags --abbrev=0)")" '{print $1 ".r" n}'
+    git describe --tags --abbrev=0 | sed 's/^v//'
 }
 
 build() {
+    _select_backend
+
     cd "$pkgname"
 
     local cmake_args=(
