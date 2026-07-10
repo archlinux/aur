@@ -2,7 +2,7 @@
 
 pkgname=python-cia-descrypter-git
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python script to decrypt Nintendo 3DS .cia files using pyctr"
 arch=('any')
 url="https://github.com/Emilia228x/cia-descrypter"
