@@ -1,6 +1,6 @@
 pkgbase = mediachips-bin
 	pkgdesc = Manage your videos, add any metadata to them and play them.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.0.5
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://mediachips.app/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = mediachips-bin
 	depends = electron42
 	depends = nodejs
 	depends = ffmpeg
-	provides = mediachips=1.0.5
+	provides = mediachips=1.0.7
 	conflicts = mediachips
-	source = mediachips-1.0.5-x86_64.AppImage::https://github.com/fupdec/mediaChips/releases/download/v1.0.5/MediaChips.v1.0.5.Linux.AppImage
+	source = mediachips-1.0.7-x86_64.AppImage::https://github.com/fupdec/mediaChips/releases/download/v1.0.7/MediaChips.v1.0.7.Linux.AppImage
 	source = mediachips.sh
-	sha256sums = 2537e0321eb739658c98d8142ab2c4f21fbf023e8506bdaa5327135900171d95
+	sha256sums = c08975a2c7713ffd231821d46473bd25eeef48df4acaffa42bfb99e09587307b
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = mediachips-bin
