@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver::$url/releases/download/$pkgver/Dabdoob-linux.x86_64"
         "catapult.svg")
 sha256sums=('bc2ab6506360076b7c46ab4618a688ff8cba404ab76d2583ac61556a2bc8d27b'
             'eac3be234765e0c314ec16d88f740492205f1802f88b0698847d7fea261e3bcd'
-            '034c9dd45dbaae5e56fb7be4470272b4aec128437c0a6ba12609a355f97aa37d'
+            'ed95a68541bcfaeb22f33031e97fa249565ec3e3bce17f820b565fb5a8bc772d'
             'e097f3147e96570e75e9e356114a42989784dfdc98388a3261517b481c850e39')
 
 options=('!strip')
