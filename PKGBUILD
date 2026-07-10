@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Git worktree router"
 
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,8 +31,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
 sha256sums=('c8f414b5b3a7296324c387644c0e0bac275dbd3fbbb59779affb2c550dde62fc'
             '26ef0a9d298ba973d0b9bd3956e1f76e9d3c520f442e95917212e44905b1df94')
-sha256sums_x86_64=('46b5897bd8f398d572a7ce139b1d2f27a2a86c186761e8a7dcd92d214c79946d')
-sha256sums_aarch64=('05ad96fb51de9b17064091b12bccf162b9d8c3a5d81a9cfd9070cfe7a996c111')
+sha256sums_x86_64=('a22e9174b7640753a414e74f7b5dd43a26e1144fe4a6b96a2f8d2859ef286b72')
+sha256sums_aarch64=('d231b423952ed60e49dccf21e07ae8a2c6252ab1df64183da886c4a9392b582c')
 
 
 package() {
