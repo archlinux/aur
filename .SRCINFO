@@ -1,6 +1,6 @@
 pkgbase = ggml-vulkan-backend
 	pkgdesc = Vulkan backend for ggml
-	pkgver = 0.15.3
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/ggml-org/ggml
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = ggml-vulkan-backend
 	makedepends = shaderc
 	makedepends = spirv-headers
 	makedepends = vulkan-headers
-	depends = ggml-core=0.15.3
+	depends = ggml-core=0.16.0
 	depends = glibc
 	depends = libstdc++
 	depends = libgcc
@@ -22,9 +22,9 @@ pkgbase = ggml-vulkan-backend
 	replaces = ggml-vulkan-engine
 	options = lto
 	options = !debug
-	source = ggml-0.15.3.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v0.15.3.tar.gz
+	source = ggml-0.16.0.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v0.16.0.tar.gz
 	source = ggml-use-system-base.patch
-	sha256sums = 86800455b5520fc86023979790703a9e2e1e4038b20039334be21df4d55bc868
+	sha256sums = 8e1741cd44c036468ee2b8531343bbe1205bc26bc63b866030679cc5f28ec0bf
 	sha256sums = 2389838195777ef00dce012ef63a52a25dd119880b35e8c811c35f66d3d5b940
 
 pkgname = ggml-vulkan-backend
