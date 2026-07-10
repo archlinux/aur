@@ -1,7 +1,7 @@
 # Maintainer: Berk Kucuk <berkkucukk@proton.me>
 pkgname=entropy-shield
-pkgver=4.1.0
-pkgrel=2
+pkgver=4.1.1
+pkgrel=1
 pkgdesc="Modern Linux desktop privacy stack — Tor, DNSCrypt, I2P, Onion Server"
 arch=('any')
 url="https://github.com/berk-kucuk/entropy-shield"
@@ -28,7 +28,7 @@ optdepends=(
     'chromium: isolated browser integration'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/berk-kucuk/entropy-shield/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('01c4e0068ba27a2db8e02df3530bb5e0fb3cba963be1ecc93018a5ac6cb4c577')
+sha256sums=('46107f266980a4a57d08285fe9aaa27b87a57ba2e35d3889622e784f7729c500')
 
 package() {
     cd "$pkgname-$pkgver"
