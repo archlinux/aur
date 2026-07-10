@@ -1,6 +1,6 @@
 pkgbase = claude-science
 	pkgdesc = Run Claude on your data locally, in your browser — Anthropic's research agent (beta)
-	pkgver = 0.1.15
+	pkgver = 0.1.18
 	pkgrel = 1
 	url = https://claude.com/product/claude-science
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = claude-science
 	options = !strip
 	source = cs-legal::https://code.claude.com/docs/en/legal-and-compliance.md
 	sha256sums = SKIP
-	source_x86_64 = claude-science-0.1.15::https://downloads.claude.ai/claude-science/0.1.15/linux-x64
-	sha256sums_x86_64 = a5c966b3d07fb3e4460522d30b962c43eff7b6e15746defe0f37473b9df0a3d3
+	source_x86_64 = claude-science-0.1.18::https://downloads.claude.ai/claude-science/0.1.18/linux-x64
+	sha256sums_x86_64 = d15bea06b9212eb5687e27107296a7c842204330a0c72a35aee9b29f65e9c15e
 
 pkgname = claude-science
