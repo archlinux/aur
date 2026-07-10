@@ -1,17 +1,17 @@
 # Maintainer: jakeb-grant
 pkgname=upkeep-git
-pkgver=0.1.6.r0.g8ca57be
+pkgver=0.1.7.r0.gcc8df2a
 pkgrel=1
 pkgdesc="TUI for managing Arch Linux updates, packages, and system maintenance"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jakeb-grant/upkeep"
 license=('MIT')
-depends=('pacman')
+depends=('pacman' 'curl')
 optdepends=(
     'yay: AUR support (default helper)'
     'paru: AUR support (alternative helper)'
-    'paccache: cache cleanup feature'
-    'wl-copy: clipboard support on Wayland'
+    'pacman-contrib: update checking (checkupdates) and cache cleanup (paccache)'
+    'wl-clipboard: clipboard support on Wayland'
     'xclip: clipboard support on X11'
 )
 makedepends=('cargo' 'git')
