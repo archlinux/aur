@@ -5,7 +5,7 @@
 # for local builds.
 
 pkgname=vegad
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Daemon privilegiado do Vega, centro de controle do Lyra OS"
 arch=('x86_64')
@@ -21,6 +21,7 @@ optdepends=(
   'networkmanager: estado de rede no módulo Rede'
   'yay: instalação de pacotes AUR (origem Comunidade) no módulo Software'
   'paru: alternativa a yay para pacotes AUR (origem Comunidade)'
+  'reflector: otimização de mirrors do Pacman no módulo Software'
 )
 provides=('lyraed')
 conflicts=('lyraed')
