@@ -19,7 +19,8 @@ backup=('usr/share/ddnet/data/autoexec_server.cfg')
 source=("https://github.com/ddnet/ddnet/archive/$_version/$pkgname-$_version.tar.gz"
         "ddnet-server.service" "ddnet-sysusers.conf" "ddnet-tmpfiles.conf"
         # Licenses extracted from license.txt
-        "Zlib.txt" "OFL-1.1.txt" "Bitstream-Vera.txt" "Arev.txt")
+        "Zlib.txt" "OFL-1.1.txt" "Bitstream-Vera.txt" "Arev.txt"
+        "fix-vulkan-shaders-installation.diff")
 sha256sums=('5d614e96658e89c3d3ede982bcf69cd2a5bc7ad22ab22c884f9487fe47c080db'
             '9377a9d7c87abae166c8fa98cd79a61c74482f80f80bc930ae043349e9a84965'
             '70034f237270b38bf312238a26cfd322e212ca5714bfea4ae91e80c639ce8738'
@@ -27,12 +28,14 @@ sha256sums=('5d614e96658e89c3d3ede982bcf69cd2a5bc7ad22ab22c884f9487fe47c080db'
             '7ad4796759efa0186f5a0600f30903ce9a63d3ee0353ab4e435b43b469683402'
             'cc97348511b4e9bf6e2f0ee6fbc329fb001e6f1049401026cf212d091390d900'
             'da8e7278deea5296b56374fd048f8bc975be069a526d0119c9d32aa555558b4c'
-            '8acb2a0b769d9e0b3ae9f35c12110189c82790af3254419f86c46105bca70075')
+            '8acb2a0b769d9e0b3ae9f35c12110189c82790af3254419f86c46105bca70075'
+            'e2906062120cc1c4fffe773139099d5a6c2c6cc7c31e62e5b6c501a59db4246a')
 
 
 prepare() {
     cd $pkgname-$_version
-    sed -i 's|list(APPEND VULKAN_SHADER_FILE_LIST "${OUTPUT_PATH_RELATIVE}")|list(APPEND VULKAN_SHADER_FILE_LIST "${OUTPUT_PATH}")|' cmake/BuildVulkanShaders.cmake
+    # https://github.com/ddnet/ddnet/issues/12361
+    patch -p1 -i "$srcdir/fix-vulkan-shaders-installation.diff"
 }
 
 build() {
