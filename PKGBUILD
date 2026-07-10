@@ -22,6 +22,7 @@ license=('MIT')
 provides=("${_appname}")
 conflicts=("${_appname}")
 
+makedepends=('git')
 optdepends=('git: Source Control Features' 'ripgrep: Workspace Search')
 
 options=(!strip)
@@ -36,10 +37,21 @@ sha256sums_x86_64=('db51203e5ef6278eaaf19e880757e2f718e1dacef88974306cb2f9f3e36b
 sha256sums_aarch64=('1f6c7ca1be84b1a8e03d0b807ca007f6c9fe07b855468fb1e504d4adf74f4bfd')
 
 
+prepare() {
+	cd "${srcdir}/" || exit
+
+	rm -rf git && git clone -n --depth=1 --filter=tree:0 --branch "${_gitversion}" "${_ghurl}" git && cd git
+
+	git sparse-checkout set --no-cone /config && git checkout
+}
+
 package() {
 	cd "${srcdir}/" || exit
 
 	install -Dm755 "${_appname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/${_appname}"
+
+	install -dm755 "${pkgdir}/usr/share/${_appname}/"
+	cp -rf "./git/config/" "${pkgdir}/usr/share/${_appname}/"
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 

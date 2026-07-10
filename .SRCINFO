@@ -6,6 +6,7 @@ pkgbase = ttt-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = git
 	optdepends = git: Source Control Features
 	optdepends = ripgrep: Workspace Search
 	provides = ttt
