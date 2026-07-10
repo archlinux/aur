@@ -4,7 +4,7 @@
 _pkgname="quirc"
 pkgname="$_pkgname-llvm"
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="QR decoder library — built with Clang and LLVM lld"
 url="https://github.com/dlbeer/quirc"
 license=('ISC')
