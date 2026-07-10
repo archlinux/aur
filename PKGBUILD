@@ -3,7 +3,7 @@
 
 pkgname=aeroftp-bin
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern multi-protocol file client with AI, encryption and cloud storage (FTP, SFTP, WebDAV, S3, 26 protocols)"
 arch=('x86_64')
 url="https://aeroftp.app"
@@ -40,21 +40,6 @@ package() {
     # Extract .deb package (contains native binaries, no AppImage wrapper)
     cd "${srcdir}"
     bsdtar -xf data.tar.* -C "${pkgdir}/"
-
-    # Create launcher script with WebKitGTK workarounds
-    install -dm755 "${pkgdir}/usr/bin"
-    # The .deb installs the binary directly to /usr/bin/aeroftp
-    # Wrap it with WebKitGTK environment variables
-    if [ -f "${pkgdir}/usr/bin/aeroftp" ]; then
-        mv "${pkgdir}/usr/bin/aeroftp" "${pkgdir}/usr/bin/aeroftp.bin"
-    fi
-    cat > "${pkgdir}/usr/bin/aeroftp" << 'EOF'
-#!/bin/bash
-# AeroFTP launcher — WebKitGTK workarounds
-export WEBKIT_DISABLE_DMABUF_RENDERER=1
-exec /usr/bin/aeroftp.bin "$@"
-EOF
-    chmod 755 "${pkgdir}/usr/bin/aeroftp"
 
     # Desktop entry (override deb's if present)
     install -Dm644 "${srcdir}/aeroftp.desktop" "${pkgdir}/usr/share/applications/com.aeroftp.AeroFTP.desktop"

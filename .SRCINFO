@@ -1,7 +1,7 @@
 pkgbase = aeroftp-bin
 	pkgdesc = Modern multi-protocol file client with AI, encryption and cloud storage (FTP, SFTP, WebDAV, S3, 26 protocols)
 	pkgver = 4.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aeroftp.app
 	arch = x86_64
 	license = GPL-3.0-or-later
