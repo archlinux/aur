@@ -1,6 +1,6 @@
 pkgbase = linux-amd-drm-next
 	pkgdesc = Linux kernel next with bleeding edge AMD DRM drivers
-	pkgver = 7.3.2026.07.02
+	pkgver = 7.3.2026.07.09
 	pkgrel = 1
 	url = https://kernel.org/
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = linux-amd-drm-next
 	makedepends = python-yaml
 	options = !strip
 	options = !debug
-	source = linux-amd-drm-next::git+https://gitlab.freedesktop.org/agd5f/linux#tag=amd-drm-next-7.3-2026-07-02
+	source = linux-amd-drm-next::git+https://gitlab.freedesktop.org/agd5f/linux#tag=amd-drm-next-7.3-2026-07-09
 	source = config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/main/config.x86_64
-	sha256sums = 0195c9f0cb8f24c6614e6792ba820c3832e65188a0617a4486fdf992ee67a896
+	sha256sums = 8c39745ac7f92d8fea6159f2314e4b15d5de006742018a4e07cae1f9843cd4c9
 	sha256sums = 438ae12de89f7d98e1b952b1e9cefa6d40fcdd4add34e0cd30ec246b72c39e9a
 
 pkgname = linux-amd-drm-next
