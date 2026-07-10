@@ -7,15 +7,15 @@ _pkgname=miktex
 
 pkgname=$_pkgname-git
 conflicts=("${_pkgname}")
-pkgver=26.2.2.g245424e08
-pkgrel=2
+pkgver=26.5
+pkgrel=1
 pkgdesc="A distribution of the TeX/LaTeX typesetting system."
 arch=('x86_64')
 url="https://miktex.org"
 license=('custom:MiKTeX License')
 depends=('apr' 'boost-libs' 'apr-util' 'bzip2' 'cairo' 'expat' 'fontconfig' 'freetype2'
          'fribidi' 'gd' 'gmp' 'graphite' 'hunspell' 'icu'
-         'libjpeg' 'log4cxx' 'xz' 'mpfr' 'libmspack' 'openssl' 'pixman' 'libpng'
+         'libjpeg-turbo' 'log4cxx' 'xz' 'mpfr' 'libmspack' 'openssl' 'pixman' 'libpng'
          'poppler' 'popt' 'potrace' 'uriparser' 'hicolor-icon-theme' 'zziplib' 'poppler-qt6'
          'qt6-declarative' 'qt6-5compat' 'mpfi')
 makedepends=('cmake' 'coreutils' 'fop' 'sed' 'libxslt' 'qt6-tools' 'boost')
