@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=gitpane-git
 _pkgname=gitpane
-pkgver=0.8.2.r0.g32331e3
+pkgver=0.9.0.r3.gb10be5f
 pkgrel=1
 pkgdesc='Multi-repo Git workspace dashboard for the terminal'
 arch=(
@@ -11,7 +11,13 @@ arch=(
 )
 url='https://github.com/affromero/gitpane'
 license=('MIT')
-depends=('git')
+depends=(
+    'git'
+    'xdg-utils'
+)
+optdepends=(
+    'github-cli: For improved github integration'
+)
 makedepends=(
     'cargo'
     'patch'
