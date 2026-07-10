@@ -1,0 +1,8 @@
+post_install() {
+	setcap cap_net_bind_service,cap_net_raw+ep usr/lib/monitoring-plugins/check_dhcp
+	setcap cap_net_raw+ep usr/lib/monitoring-plugins/check_icmp
+}
+
+post_upgrade() {
+	post_install "${1}"
+}
