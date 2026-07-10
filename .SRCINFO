@@ -1,0 +1,17 @@
+pkgbase = plotjuggler-appimage
+	pkgdesc = PlotJuggler is a tool to visualize time series that is fast, powerful and intuitive.
+	pkgver = 3.17.2
+	pkgrel = 1
+	url = https://github.com/PlotJuggler/PlotJuggler
+	arch = x86_64
+	license = MPL-2.0
+	depends = zlib
+	depends = fuse2
+	noextract = plotjuggler-appimage-3.17.2.AppImage
+	options = !strip
+	source_x86_64 = plotjuggler-appimage-3.17.2.AppImage::https://github.com/PlotJuggler/PlotJuggler/releases/download/3.17.2/PlotJuggler-3.17.2-x86_64.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/PlotJuggler/PlotJuggler/3.17.2/LICENSE.md
+	sha256sums_x86_64 = 6d427ca15f2d937699587eec668d1583e2468bc27bab8aaaee81276ad85941df
+	sha256sums_x86_64 = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
+
+pkgname = plotjuggler-appimage
