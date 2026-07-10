@@ -2,15 +2,16 @@
 
 pkgname=zivid-cuda
 pkgver='2.18.0+1b44dbef_1'
-pkgrel=1
+pkgrel=2
 pkgdesc='Defining the Future of 3D Machine Vision'
 arch=('x86_64')
 license=('custom')
 url=https://www.zivid.com
 
 depends=(nvidia-utils)
-conflicts=(zivid-opencl)
-provides=(zivid-backend)
+provides=(zivid)
+conflicts=(zivid zivid-opencl)
+replaces=(zivid)
 
 groups=(zivid-all)
 
