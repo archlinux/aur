@@ -1,16 +1,23 @@
 pkgbase = kulala-desktop-bin
 	pkgdesc = A fully-featured HTTP/GraphQL/gRPC/Websocket-client interface for Linux, Mac and Window.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/mistweaverco/kulala-desktop
 	arch = x86_64
 	license = MIT
+	depends = nss
+	depends = at-spi2-core
+	depends = libxss
+	depends = gtk3
+	depends = alsa-lib
+	depends = libxtst
 	provides = kulala-desktop
 	conflicts = kulala-desktop
+	noextract = kulala-desktop-bin-0.1.1
 	options = !strip
-	source = LICENSE::https://raw.githubusercontent.com/mistweaverco/kulala-desktop/v0.1.0/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/mistweaverco/kulala-desktop/v0.1.1/LICENSE
 	sha256sums = 9be55955a1292e7e0b31943c86edf8d173dce122219da900a48ee6cb9bc71491
-	source_x86_64 = kulala-desktop-bin-0.1.0::https://github.com/mistweaverco/kulala-desktop/releases/download/v0.1.0/kulala-desktop_amd64.deb
-	sha256sums_x86_64 = 2d6af7f36dae4f7a2c0014c6b0dbe41d261fa694aee9d41937ce0526e27c6481
+	source_x86_64 = kulala-desktop-bin-0.1.1::https://github.com/mistweaverco/kulala-desktop/releases/download/v0.1.1/kulala-desktop_amd64.deb
+	sha256sums_x86_64 = 1c79b525700de85266bcee472febfa64f07a4eb6a09f7d2e509934d2bdbf74e4
 
 pkgname = kulala-desktop-bin
