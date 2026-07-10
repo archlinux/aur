@@ -2,7 +2,7 @@
 # Contributor: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet
-pkgver=19.8.3
+pkgver=19.9
 pkgrel=1
 # allow testing locally a release candidate using pkgver like '19.3rc3'
 _version=${pkgver/rc/-rc}
@@ -20,7 +20,7 @@ source=("https://github.com/ddnet/ddnet/archive/$_version/$pkgname-$_version.tar
         "ddnet-server.service" "ddnet-sysusers.conf" "ddnet-tmpfiles.conf"
         # Licenses extracted from license.txt
         "Zlib.txt" "OFL-1.1.txt" "Bitstream-Vera.txt" "Arev.txt")
-sha256sums=('60ceff23400013842686f681401fb0390a2ffc376d867c723332d8ccdfd48d4f'
+sha256sums=('5d614e96658e89c3d3ede982bcf69cd2a5bc7ad22ab22c884f9487fe47c080db'
             '9377a9d7c87abae166c8fa98cd79a61c74482f80f80bc930ae043349e9a84965'
             '70034f237270b38bf312238a26cfd322e212ca5714bfea4ae91e80c639ce8738'
             '043452f4de3c86d903973009bb3e59b3492a6669b86d0b1410e59a1476a87369'
@@ -28,6 +28,12 @@ sha256sums=('60ceff23400013842686f681401fb0390a2ffc376d867c723332d8ccdfd48d4f'
             'cc97348511b4e9bf6e2f0ee6fbc329fb001e6f1049401026cf212d091390d900'
             'da8e7278deea5296b56374fd048f8bc975be069a526d0119c9d32aa555558b4c'
             '8acb2a0b769d9e0b3ae9f35c12110189c82790af3254419f86c46105bca70075')
+
+
+prepare() {
+    cd $pkgname-$_version
+    sed -i 's|list(APPEND VULKAN_SHADER_FILE_LIST "${OUTPUT_PATH_RELATIVE}")|list(APPEND VULKAN_SHADER_FILE_LIST "${OUTPUT_PATH}")|' cmake/BuildVulkanShaders.cmake
+}
 
 build() {
     mkdir -p build
