@@ -5,7 +5,7 @@ _pkgname=ssh-dashboard
 pkgname=${_pkgname}-bin
 pkgdesc="Monitor GPU/CPU Usage on SSH servers, with NVIDIA and AMD"
 
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,10 +24,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[1]}")
-sha256sums=('cbe91afb309c880b3c3bb9013fa2d75e19a1816ee05dd01cda10012be19223a1'
+sha256sums=('0befbe62af19711371db1afb1ee338606a437d2147ee36b2f012269c3babd53f'
             '562ddc22d91b96be9f67019b365a7f1e705a305c1749660f92b5502d75f72c2b')
-sha256sums_x86_64=('5464953b27c57b3ee9f23ab608bb3310876310a9d1608b6abe89378118c69ddd')
-sha256sums_aarch64=('56f9fa011c19deeb528bdf73bc5df836c68998e6f193157c585316826b20afb4')
+sha256sums_x86_64=('0082b5a0f8fd497f405320d3d77fb7496b45e3a02cff669e4db8b8f9495537d7')
+sha256sums_aarch64=('631675fab552a9534f22043e6e66f9b5340da914255e8719522641a87e7ff94e')
 
 
 package() {
