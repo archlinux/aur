@@ -3,15 +3,15 @@
 # Releases: https://persistent.oaistatic.com/codex-app-prod/appcast.xml
 
 pkgname=openai-codex-desktop
-pkgver=26.707.30751
-pkgrel=2
+pkgver=26.707.31428
+pkgrel=1
 pkgdesc="OpenAI Codex desktop app"
 arch=('x86_64')
 url="https://developers.openai.com/codex/app/"
 license=('custom')
 
 depends=(
-  'electron39'
+  'electron42'
   'openai-codex'
   'python'
   'hicolor-icon-theme'
@@ -25,7 +25,7 @@ makedepends=(
   'npm'
 )
 
-_electron_major=39
+_electron_major=42
 _better_sqlite3_ver=12.9.0
 _node_pty_ver=1.1.0
 _upstream_app=ChatGPT
@@ -37,6 +37,7 @@ source=(
   "codex-desktop.sh"
   "Codex.desktop"
   "patch-linux-open-targets.mjs"
+  "patch-linux-opaque-bg.mjs"
 )
 
 noextract=(
@@ -45,12 +46,13 @@ noextract=(
   'node-pty.tgz'
 )
 
-sha256sums=('f81023845ae56ebb98b349e4bc81d7b490533564897cea0ea4fc4a17104f3892'
+sha256sums=('ffdc351a507105d55d7464e3340302c758b8a54b926711c4b15bf373ccb47d64'
             'ad0e29650140c49d0335b1d356596aa8166f12b758f418a98446130e3278f250'
             'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
-            '41eaf5bd5e6bc7b3cb788559522a65af6da8774b3e95da977b6cdb2d4340a8a4'
-            'd3a00f4a4ddf2709d4f018222866df67d155ca36c9dbfa0dd1867d4c9267808d'
-            'b9303b892b3e0b35333e2cb96052905439105049efc5a8a3706e22a16dc30018')
+            '8f5d55f92df1d5a29c73fb97e73e35ca4de67cb0ce0ee8ffc8d0b99020a8ab41'
+            '568228ade14afa0afd43eea6887547b7541e45e8438042367f628c5dae3aa810'
+            'b9303b892b3e0b35333e2cb96052905439105049efc5a8a3706e22a16dc30018'
+            'a181ace049a057654acdd789df60ee0f2b0435a119f8a2c53046bfe6aa4c4cb9')
 
 prepare() {
   cd "${srcdir}"
@@ -86,6 +88,7 @@ prepare() {
   find app-extracted -type f \( -name '*.dylib' -o -name 'sparkle.node' \) -delete
 
   node "${srcdir}/patch-linux-open-targets.mjs" app-extracted
+  node "${srcdir}/patch-linux-opaque-bg.mjs" app-extracted
 
   local bs3_ver npty_ver
   bs3_ver="$(node -p "require('${srcdir}/app-extracted/node_modules/better-sqlite3/package.json').version")"
@@ -118,6 +121,17 @@ EOF
     --no-fund \
     "${srcdir}/better-sqlite3.tgz" \
     "${srcdir}/node-pty.tgz"
+
+  local bs3_src=node_modules/better-sqlite3/src
+  sed -i \
+    's/v8::External::New(isolate, addon)/v8::External::New(isolate, addon, v8::kExternalPointerTypeTagDefault)/' \
+    "${bs3_src}/better_sqlite3.cpp"
+  sed -i \
+    's/v8::External>()->Value()/v8::External>()->Value(v8::kExternalPointerTypeTagDefault)/' \
+    "${bs3_src}/util/macros.cpp"
+  sed -i \
+    '/SetNativeDataProperty/,/);/{s/\t\t0,/\t\tnullptr,/}' \
+    "${bs3_src}/util/helpers.cpp"
 
   export npm_config_runtime=electron
   export npm_config_target="${_electron_major}.0.0"
@@ -165,6 +179,9 @@ package() {
     cp -a app-extracted/webview \
       "${pkgdir}/usr/lib/${pkgname}/content/"
   fi
+
+  ln -s "/usr/lib/electron${_electron_major}/electron" \
+    "${pkgdir}/usr/lib/${pkgname}/codex"
 
   install -Dm755 codex-desktop.sh \
     "${pkgdir}/usr/bin/codex-desktop"

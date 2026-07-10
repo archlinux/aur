@@ -4,7 +4,7 @@
 set -euo pipefail
 
 appdir="/usr/lib/openai-codex-desktop"
-electron="/usr/lib/electron39/electron"
+electron="${appdir}/codex"
 webview_dir="${appdir}/content/webview"
 user_flags=()
 
@@ -146,7 +146,7 @@ fi
 "${electron}" \
   --enable-sandbox \
   --ozone-platform-hint=auto \
-  --class=Codex \
+  --class=codex \
   "${user_flags[@]}" \
   "${appdir}/resources/app.asar" \
   "$@" &
