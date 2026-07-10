@@ -1,7 +1,7 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=context-git
-pkgver=0.1.0.r23.gc0c4127
+pkgver=0.2.0.r28.gd81bc14
 pkgrel=1
 pkgdesc="Standalone CLI and MCP server for deterministic repository context (git version)"
 arch=('x86_64' 'aarch64')
@@ -18,13 +18,9 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  local version
-  version=$(git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
-  if [ -n "$version" ]; then
-    printf '%s' "$version"
-  else
-    printf "0.1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  fi
+  local base_version
+  base_version=$(bun -e 'const pkg = await Bun.file("package.json").json(); process.stdout.write(pkg.version)')
+  printf "%s.r%s.g%s" "$base_version" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
