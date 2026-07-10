@@ -2,10 +2,11 @@
 
 pkgname=cosmic-ext-applet-kdeconnect-git
 _pkgver=0.9.0
-pkgver=0.9.0.r353.g6c14414
+pkgver=0.9.0.r368.g26513c2
 pkgrel=1
 pkgdesc='Native KDE Connect applet for the COSMIC desktop'
 arch=('x86_64' 'aarch64')
+options=('!lto')
 url='https://github.com/cosmic-utils/kdeconnect'
 license=('GPL-3.0-only')
 depends=(
@@ -51,6 +52,7 @@ package() {
   install -Dm644 resources/io.github.hepp3n.kdeconnect.metainfo.xml \
     "$d/share/metainfo/io.github.hepp3n.kdeconnect.metainfo.xml"
 
+  install -d "$d/share/applications"
   sed 's|Exec=cosmic-ext-connect-applet|Exec=/usr/bin/cosmic-ext-connect-applet|' \
     resources/io.github.hepp3n.kdeconnect.desktop \
     > "$d/share/applications/io.github.hepp3n.kdeconnect.desktop"
