@@ -1,15 +1,15 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=searchtool-gtk
-pkgver=2.5.0
+pkgver=3.0.0
 pkgrel=1.314
 pkgdesc='A generic GTK search tool and launcher'
 url='https://github.com/v--/searchtool-gtk'
 arch=('any')
 license=('Unlicense')
-makedepends=(make gcc python-uv-build python-build python-installer)
+makedepends=(meson gcc python-uv-build python-build python-installer)
 depends=(gtk4 python python-gobject python-msgspec python-pyxdg python-pyicu python-wcmatch)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e1f2a833aa27947dd58c1c833b9c60dd68ac4b4ec2f8bd58523753b50ee03c5d')
+sha256sums=('4e3066b7464566ad49629ec96ba1e3cc7157e3e624ac2247b8089e904bc0db71')
 
 _fullsrcdir() {
     echo "$srcdir/$pkgname-$pkgver"
@@ -18,17 +18,18 @@ _fullsrcdir() {
 build() {
     cd "$(_fullsrcdir)"
     python -m build --wheel --no-isolation
-    make build-c
+    arch-meson builddir
+    meson compile -C builddir
 }
 
 package() {
     cd "$(_fullsrcdir)"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -D -m755 dist/searchtool-gtk-activate "$pkgdir/usr/bin/searchtool-gtk-activate"
-    install -D -m755 dist/searchtool-gtk-dmenu "$pkgdir/usr/bin/searchtool-gtk-dmenu"
-    install -D -m644 searchtool.toml "$pkgdir/etc/xdg/searchtool.toml"
+    install -D -m644 default_config.toml "$pkgdir/etc/xdg/searchtool/config.toml"
+    meson install -C builddir --destdir "$pkgdir"
 
-    doc_path="/$(realpath --relative-to "$pkgdir" "$pkgdir"/usr/lib/python*/site-packages/searchtool_gtk-*.dist-info/licenses/LICENSES)"
     mkdir --parents "$pkgdir/usr/share/licenses"
-    ln --symbolic $doc_path "$pkgdir/usr/share/licenses/$pkgname"
+    ln --symbolic \
+        "/$(realpath --relative-to "$pkgdir" "$pkgdir"/usr/lib/python*/site-packages/searchtool_gtk-*.dist-info/licenses/LICENSES)" \
+        "$pkgdir/usr/share/licenses/$pkgname"
 }
