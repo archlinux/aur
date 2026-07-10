@@ -1,6 +1,6 @@
 pkgbase = beeper-nightly-bin
 	pkgdesc = The ultimate messaging app (nightly channel)
-	pkgver = 4.2.976
+	pkgver = 4.2.977
 	pkgrel = 1
 	url = https://www.beeper.com/beta
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = beeper-nightly-bin
 	conflicts = beeper
 	options = !strip
 	options = !debug
-	source = Beeper-Nightly-4.2.976-x86_64.AppImage::https://api.beeper.com/desktop/download/linux/x64/nightly/com.automattic.beeper.desktop
+	source = Beeper-Nightly-4.2.977-x86_64.AppImage::https://api.beeper.com/desktop/download/linux/x64/nightly/com.automattic.beeper.desktop
 	sha256sums = SKIP
 
 pkgname = beeper-nightly-bin
