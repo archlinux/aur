@@ -1,6 +1,6 @@
 pkgbase = prism-harness-suite
 	pkgdesc = PRISM Harness suite - small bundles sharing one Bun runtime (harness, loop, proxy, route, sober)
-	pkgver = 1.0.0_rc1
+	pkgver = 1.0.0_rc2
 	pkgrel = 1
 	url = https://git.sovereign-society.org/prism
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = prism-harness-suite
 	conflicts = prism-proxy
 	conflicts = prism-route
 	conflicts = prism-sober
-	source = git+https://git.sovereign-society.org/prism/prism-harness.git#tag=v1.0.0-rc.1
+	source = git+https://git.sovereign-society.org/prism/prism-harness.git#tag=v1.0.0-rc.2
 	sha256sums = SKIP
 
 pkgname = prism-harness-suite

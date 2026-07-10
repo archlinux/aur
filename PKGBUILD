@@ -1,6 +1,6 @@
 # Maintainer: Markus Maiwald <markus@maiwald.tk>
 pkgname=prism-harness-suite
-pkgver=1.0.0_rc1
+pkgver=1.0.0_rc2
 pkgrel=1
 pkgdesc="PRISM Harness suite - small bundles sharing one Bun runtime (harness, loop, proxy, route, sober)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('bun')
 makedepends=('git' 'bun')
 provides=('prism-harness' 'prism-loop' 'prism-proxy' 'prism-route' 'prism-sober')
 conflicts=('prism-harness' 'prism-loop' 'prism-proxy' 'prism-route' 'prism-sober')
-source=("git+https://git.sovereign-society.org/prism/prism-harness.git#tag=v1.0.0-rc.1")
+source=("git+https://git.sovereign-society.org/prism/prism-harness.git#tag=v1.0.0-rc.2")
 sha256sums=('SKIP')
 
 build() {
