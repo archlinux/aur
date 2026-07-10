@@ -5,7 +5,7 @@
 # for local builds.
 
 pkgname=vegad
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Daemon privilegiado do Vega, centro de controle do Lyra OS"
 arch=('x86_64')
