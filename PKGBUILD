@@ -1,7 +1,7 @@
 # Maintainer: lalala <lalala_233@qq.com>
 pkgname=python-comfyui-workflow-templates-core
 _name=${pkgname#python-}
-pkgver=0.3.221
+pkgver=0.3.266
 pkgrel=1
 pkgdesc="Core helpers for ComfyUI workflow templates."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 makedepends=(python-build python-installer python-wheel python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
-sha512sums=('367cf8cad701185c1dc159bc0c62656c9b9189532c4ae750e2650e81850781669fa5dbf1236c2cdcd386444bfa0b8723066f2e38c8987ae5af47b61b145e2b5d')
+sha512sums=('e73fad9bbb5df08330923ded30ecc73b39cb24702b30686cae86566a70d03e16e9763d9ed1f20f7175f4174c8da825edf72e639d59278137f5a4e39b70f6eb16')
 
 build() {
   cd ${_name//-/_}-${pkgver}
