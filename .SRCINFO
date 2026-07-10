@@ -1,10 +1,11 @@
 pkgbase = woz2dsk
 	pkgdesc = woz2dsk is a utility for converting .woz files to .dsk, .po and .nib files.
 	pkgver = r18.b10c59f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leesaudan2/woz2dsk
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = perl
 	depends = perl-file-slurp
 	depends = perl-digest-crc

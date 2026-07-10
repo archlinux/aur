@@ -2,13 +2,13 @@
 
 pkgname=woz2dsk
 pkgver=r18.b10c59f
-pkgrel=1
+pkgrel=2
 pkgdesc="woz2dsk is a utility for converting .woz files to .dsk, .po and .nib files."
 arch=('x86_64')
 url="https://github.com/leesaudan2/woz2dsk"
 license=('GPL3')
 depends=('perl' 'perl-file-slurp' 'perl-digest-crc' 'perl-getopt-long-descriptive')
-makedepends=()
+makedepends=('git')
 source=("${pkgname}::git+https://github.com/leesaudan2/woz2dsk.git")
 sha256sums=('SKIP')
 
