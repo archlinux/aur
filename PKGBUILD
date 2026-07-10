@@ -8,7 +8,7 @@
 
 pkgname=stm32cubeprog
 _pkgname="STM32CubeProgrammer"
-pkgver=2.22.0
+pkgver=2.23.0
 pkgrel=1
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
@@ -25,9 +25,49 @@ license=('custom:SLA0048')
 # https://www.st.com/resource/en/user_manual/dm00403500-stm32cubeprogrammer-software-description-stmicroelectronics.pdf
 #
 # stlink provides stlink udev rules
-depends=('stlink'
+depends=(
+  'at-spi2-core'
+  'sh'
+  'brotli'
+  'cairo'
+  'dbus'
+  'fontconfig'
+  'freetype2'
+  'glib2'
+  'glibc'
+  'gdk-pixbuf2'
+  'gtk3'
+  'hicolor-icon-theme'
+  'java-runtime'
+  'libdrm'
+  'libgcc'
+  'libglvnd'
+  'libstdc++'
   'libusb'
-  'qt6-serialport')
+  'libx11'
+  'libxcb'
+  'libxext'
+  'libxi'
+  'libxkbcommon'
+  'libxkbcommon-x11'
+  'libxrender'
+  'libxtst'
+  'libxxf86vm'
+  'krb5'
+  'openssl'
+  'pango'
+  'qt6-base'
+  'qt6-serialport'
+  'stlink'
+  'wayland'
+  'xcb-util'
+  'xcb-util-keysyms'
+  'xcb-util-image'
+  'xcb-util-renderutil'
+  'xcb-util-wm'
+  'zlib'
+  'zstd'
+)
 
 makedepends=('icoutils'
   'gendesk'
@@ -36,36 +76,28 @@ makedepends=('icoutils'
   'java-environment=8')
 
 provides=("${pkgname}rammer")
-options=('!strip'
-  '!debug')
+options=('!strip' '!debug')
 
 # Big thanks to user "yjun" for direct download link advice.
 # cURL inspiration from davinci-resolve package maintained by "Alex S".
-_pkg_file_name="en.stm32cubeprg-lin-v${pkgver//./-}.zip"
-_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stm32cubeprog/_jcr_content/get-software/getsw-table-nli.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html"
-
-_curl_req="$(curl -s --compressed --cookie-jar "${srcdir}http_cookies" -H "@${srcdir}http_headers" "${_curl_req_url}")"
-_pkg_url="$(grep -m 1 "${_pkg_file_name}" <<<"${_curl_req}")"
-_pkg_url="$(awk -F'"' '{print $4}' <<<"${_pkg_url}")"
-_download_path="https://www.st.com""${_pkg_url}"
+# CloudFront 基础 URL 无需签名参数即可访问（已验证 HTTP 200）
+# https://www.st.com/cloudfront/publish/stm32cubeprg-lin-v2-23-0/2.23.0/en/SetupSTM32CubeProgrammer_linux_64.zip
+_pkg_file_name="SetupSTM32CubeProgrammer_linux_64.zip"
+_download_path="https://www.st.com/cloudfront/publish/stm32cubeprg-lin-v${pkgver//./-}/${pkgver}/en/${_pkg_file_name}"
+# 本地文件名带版本号，防止上游同名文件导致 makepkg 跳过新版本下载
+_source_filename="SetupSTM32CubeProgrammer_linux_64-${pkgver}.zip"
 DLAGENTS=("https::/usr/bin/curl \
               -gqb '' --retry 3 --retry-delay 3 \
-              --cookie "${srcdir}http_cookies" \
-              -H "@${srcdir}http_headers" \
               -o %o --compressed %u")
-# msg "_download_path = ${_download_path}"
-# msg "DLAGENTS = ${DLAGENTS}"
 
-source=("${_pkg_file_name}::$_download_path"
-  "http_headers"
+source=("${_source_filename}::$_download_path"
   "AnalyticsPanelsConsoleHelper.java"
   "CheckedHelloPorgrammerPanelConsoleHelper.java"
   "FinishProgrammerPanelConsoleHelper.java"
   "TargetProgrammerPanelConsoleHelper.java"
   "SLA0048_STM32CubeProg.pdf")
 
-sha256sums=('fffa017abb4da14582e129aa9a1e4f87e6d0719a3cb950c0184f4cb48ab60aa7'
-            '4fc6f177425adbd491cbb7326969a4e77a78588c30e674a1e3455981ad523c40'
+sha256sums=('6a9e60a5a048c45eb3241f9bb66bdc2e6cbd0119fb2e42568dc059fc6167442a'
             '12f3f8a3301d6f50c00195f9c852e25f8d841246768bf3bbfd4e91fd2052ce6e'
             '8775375cfd21848eafb92bc11712b2d797bbec4f0109e728c175c4abb014131c'
             'd67e0fe0e16cb6f8e1f01f324a348484f38805fdbb48780788607f53b2e46901'
