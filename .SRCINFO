@@ -1,6 +1,6 @@
 pkgbase = python-openai-agents
 	pkgdesc = OpenAI Agents SDK.
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/openai/openai-agents-python
 	arch = any
@@ -58,7 +58,7 @@ pkgbase = python-openai-agents
 	optdepends = python-boto3: s3
 	optdepends = python-temporalio: temporal
 	optdepends = python-textual: temporal
-	source = https://files.pythonhosted.org/packages/source/o/openai-agents/openai_agents-0.18.0.tar.gz
-	sha256sums = 7971c7d2c3f4a1e14f552b288d83c24cca33f45cafa5821b2aaa12b77dbe24d9
+	source = https://files.pythonhosted.org/packages/source/o/openai-agents/openai_agents-0.18.1.tar.gz
+	sha256sums = 689ad88c8f64435413dde707ca45fb42d55217ff6ef63aab3d638c33f78e04bf
 
 pkgname = python-openai-agents
