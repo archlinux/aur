@@ -1,0 +1,5 @@
+[paperling-bin]
+source = "github"
+github = "Razee4315/Paperling"
+use_latest_release = true
+prefix = "v"
