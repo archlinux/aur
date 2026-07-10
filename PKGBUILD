@@ -4,10 +4,10 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 pkgname=ffmpeg-amd-full
-pkgver=8.1
+pkgver=8.1.2
 pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
-_whispercpp_ver='1.8.3'
+_whispercpp_ver='1.9.1'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac for AMD)'
 arch=('x86_64')
 url='https://ffmpeg.org/'
@@ -92,7 +92,7 @@ depends=(
     'openapv'
     'opencolorio'
     'opencore-amr'
-    'opencv'
+    # 'opencv'
     'openh264'
     'openjpeg2'
     'opus'
@@ -166,10 +166,10 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '060-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
         'LICENSE')
-sha256sums=('b072aed6871998cce9b36e7774033105ca29e33632be5b6347f3206898e0756a'
+sha256sums=('464beb5e7bf0c311e68b45ae2f04e9cc2af88851abb4082231742a74d97b524c'
             'SKIP'
             'SKIP'
-            '870ba21409cdf66697dc4db15ebdb13bc67037d76c7cc63756c81471d8f1731a'
+            '147267177eef7b22ec3d2476dd514d1b12e160e176230b740e3d1bd600118447'
             'ff6dabc3cbef98d22cc8f081343d5c66b2564b3a898c2dbcc88baa5017d80232'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
             '73e516bd771024f100983d0b7a5d43b49fd1e992c83e6caec445b7338e79e8c2'
@@ -274,10 +274,10 @@ build() {
         --enable-libfontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
-        --enable-libharfbuzz \
         --enable-libglslang \
         --enable-libgme \
         --enable-libgsm \
+        --enable-libharfbuzz \
         --enable-libiec61883 \
         --enable-libilbc \
         --enable-libjack \
@@ -290,11 +290,12 @@ build() {
         --enable-libmodplug \
         --enable-libmp3lame \
         --enable-libmpeghdec \
+        --enable-libmysofa \
         --enable-liboapv \
         --enable-libopencolorio \
         --enable-libopencore-amrnb \
         --enable-libopencore-amrwb \
-        --enable-libopencv \
+        --disable-libopencv \
         --enable-libopenh264 \
         --enable-libopenjpeg \
         --enable-libopenmpt \
@@ -354,21 +355,18 @@ build() {
         --enable-libzvbi \
         --enable-lv2 \
         --enable-lzma \
-        --enable-decklink \
         --disable-mbedtls \
-        --enable-libmysofa \
-        --enable-openal \
-        --enable-opencl \
-        --enable-opengl \
         --disable-openssl \
         --disable-pocketsphinx \
-        --enable-sndio \
-        --enable-sdl2 \
         --enable-vapoursynth \
-        --enable-vulkan \
         --enable-whisper \
         --enable-xlib \
         --enable-zlib \
+        \
+        --enable-decklink \
+        --enable-openal \
+        --enable-sndio \
+        --enable-sdl2 \
         \
         --enable-amf \
         --disable-cuda-nvcc \
@@ -382,10 +380,13 @@ build() {
         --disable-nvenc \
         --disable-ohcodec \
         --disable-omx \
+        --enable-opencl \
+        --enable-opengl \
         --disable-rkmpp \
         --enable-v4l2-m2m \
+        --disable-vdpau \
         --enable-vaapi \
-        --disable-vdpau
+        --enable-vulkan
     make
     make tools/qt-faststart
 }
