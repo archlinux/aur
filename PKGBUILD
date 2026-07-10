@@ -1,8 +1,9 @@
 # Maintainer: Julian Pollinger <julian@pollinger.dev>
+# Contributor: Aaron Liu <aaronliu0130@Gm A il. C om>
 _pkgname=muse-sounds-manager
 pkgname="$_pkgname-bin"
-pkgver=2.1.1.912
-pkgrel=2
+pkgver=2.2.1.953
+pkgrel=1
 pkgdesc="Manage MuseScore Libraries"
 arch=('x86_64')
 url='https://www.musehub.com/'
@@ -13,8 +14,8 @@ depends=('fontconfig' 'zlib' 'hicolor-icon-theme')
 makedepends=()
 install="$_pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://muse-cdn.com/Muse_Sounds_Manager_x64.tar.gz" 'LICENSE')
-sha256sums=('7e376eac0a8e6a2c3ca94626ee83bcb711c22abac64afbe7980c4b53ce08812c'
-            'ed3c749e7391b70b11717469815ce8fe65a962cf40dd4df88e21bf240b2058b2')
+b2sums=('a9f0976eba9da07445bc3c301ec9645f08703f72af0589a43c9d01d27830f3f07f14b40850e928adce04159dd7338c3d31eec6f3f24f97e38014a7ac23e1b028'
+        'cfd9010e282a9fcab9b7366257ea2a7fffb6cfef8f1f7815d28923b79f491ec98bdee1b67284ced9e406e2f86a781136970e360e62ab71c7f4c99c777eeb7f8a')
 
 package(){
   # Extract package data
