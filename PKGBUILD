@@ -3,8 +3,8 @@
 # Contributor : tadly <me@tadly.de>
 
 pkgname=parsec-bin
-pkgver=150_97c
-pkgrel=2
+pkgver=150_104a
+pkgrel=1
 pkgdesc='Remotely connect to a gaming pc for a low latency remote computing experience'
 url='http://parsec.app'
 license=('custom')
@@ -14,10 +14,10 @@ depends=('gcc-libs' 'libglvnd' 'libxext' 'libxcb' 'ffmpeg4.4' 'openssl' 'libxi' 
 optdepends=('libva: For hardware accelerated decoding')
 
 source=("$pkgname-$pkgver.deb::https://builds.parsec.app/package/parsec-linux.deb")
-sha256sums=("f1691ba3a97534604f5f640c26cceafaef672ccf7ab6eed66114d0abafc2cccf")
+sha256sums=('c8a4407713d72dcb1c59f082977e81e1b9e8ffd679d0666882cde4c8a0821dd2')
 options=('!strip')
 
 package() {
-    tar xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+    tar xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
     chmod 755 "${pkgdir}/usr/"
 }
