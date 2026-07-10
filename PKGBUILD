@@ -1,15 +1,13 @@
 # Maintainer: Nym <ops@nymte.ch>
-# Maintainer: Pierre Dommerc <pierre@nymtech.net>
+# Maintainer: Andrej Mihajlov <andrej@nymtech.net>
 # Maintainer: Lawrence Stalder <lawrence.stalder@pm.me>
+# Contributor: Pierre Dommerc <pierre@nymtech.net>
 
 pkgname=nym-vpnd
-pkgver=2026.10.0
-# upstream version
-_pkgver=2026.10.0
-_release_tag=nym-vpn-core-v2026.10.0
-pkgrel=2
+pkgver=2026.11.0
+pkgrel=1
 pkgdesc='NymVPN daemon as a systemd service'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/nymtech/nym-vpn-client'
 license=('GPL-3.0-only')
 depends=('glibc' 'gcc-libs' 'dbus' 'libmnl' 'libnftnl' 'polkit')
@@ -17,20 +15,17 @@ makedepends=('rust' 'cargo' 'go' 'protobuf')
 provides=('nym-vpnd' 'nym-exclude' 'nym-socks5-proxy')
 conflicts=('nym-vpnd')
 options=(!debug)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_release_tag.tar.gz"
-    'nym-vpnd.service')
-sha256sums=(
-    '235c988821b6cc53bf9d9a0332cbc7e35dfc49ff4e8a5632abccdde9a13fc801' 
-    '66d5b043cbef2ae0ba19cc7685c7b42808515b8b520b0dd15a0c313ca039f6d6')
-_srcdir="nym-vpn-client-$_release_tag"
+source=("$url/archive/refs/tags/nym-vpn-v2026.11.0.tar.gz" 'nym-vpnd.service')
+sha256sums=(0dcdf51d01ef0139df6e8b32fca97e1dbaf4eb76380050de61aee374bb932d8f 66d5b043cbef2ae0ba19cc7685c7b42808515b8b520b0dd15a0c313ca039f6d6)
+_srcdir="nym-vpn-client-nym-vpn-v2026.11.0"
 
 prepare() {
   pushd "$_srcdir"
-
-  # rip off useless sources
+  # remove unused sources
   rm -rf nym-vpn-android
   rm -rf nym-vpn-apple
   rm -rf nym-vpn-app
+  rm -rf nym-vpn-windows
   popd
 }
 
@@ -49,18 +44,18 @@ build() {
   #
   # 2. aws-lc-sys v0.38: build issues related to optimizations (fixed in newer versions)
   # see: https://github.com/aws/aws-lc-rs/pull/1064
-  CFLAGS+=" -ffat-lto-objects" cargo build --release --locked
+  CFLAGS+=" -ffat-lto-objects -O0" cargo build --release --locked
   popd
 
   popd # _srcdir
 }
 
 package() {
-  pushd "$_srcdir/nym-vpn-core"
-  install -Dm755 "target/release/nym-vpnd" "$pkgdir/usr/bin/nym-vpnd"
-  install -Dm755 "target/release/nym-exclude" "$pkgdir/usr/bin/nym-exclude"
+  pushd "$_srcdir/nym-vpn-core/target/release"
+  install -Dm755 "nym-vpnd" "$pkgdir/usr/bin/nym-vpnd"
+  install -Dm755 "nym-exclude" "$pkgdir/usr/bin/nym-exclude"
   chmod u+s "$pkgdir/usr/bin/nym-exclude"
-  install -Dm755 "target/release/nym-socks5-proxy" "$pkgdir/usr/bin/nym-socks5-proxy"
+  install -Dm755 "nym-socks5-proxy" "$pkgdir/usr/bin/nym-socks5-proxy"
   popd
 
   install -Dm644 nym-vpnd.service "$pkgdir/usr/lib/systemd/system/nym-vpnd.service"
