@@ -27,7 +27,14 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$pkgname"
-    git describe --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/-/+/g' || echo "5.87"
+    # Try tags first, fallback to commit count
+    local tag=$(git describe --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/-/+/g')
+    if [ -n "$tag" ]; then
+        echo "$tag"
+    else
+        # 5.87.base_count hash
+        echo "5.87.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    fi
 }
 
 build() {
