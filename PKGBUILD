@@ -1,6 +1,6 @@
 # Maintainer: mapleafgo <mapleafgo at 163 dot com>
 pkgname=deepchat
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="DeepChat - 连接强大AI与个人世界的智能助手 | DeepChat - A smart assistant that connects powerful AI to your personal world"
 arch=('x86_64')
@@ -25,6 +25,6 @@ package() {
   install -Dm644 "deepchat.desktop" "${pkgdir}/usr/share/applications/deepchat.desktop"
 }
 
-sha256sums_x86_64=('25bca9dd0ad34ecd82f74022420e95bf0fd17f22fa0b32f9c881162be5c10b65'
+sha256sums_x86_64=('666d4d9d0d81356e7beb86078150f78d8a08d4707f1e044e2c434a8661477546'
                    '705b12f74b008451f1b0724f8e0540e2d99db594bea4ed1c35a3fa1faee626ae'
                    '68ebeeeaac56ed0b1c6d4e17d08fd59ef754c0bd395b53ee1d911bb7c8600a9d')
