@@ -1,6 +1,6 @@
 # Maintainer: Brightbites <brightbites667@gmail.com>
 pkgname=tagstudio-bin
-pkgver=9.6.0
+pkgver=9.6.1
 pkgrel=1
 pkgdesc="A User-Focused Photo & File Management System (pre-compiled)"
 arch=('x86_64')
@@ -23,8 +23,8 @@ optdepends=('ffmpeg: audio/video thumbnails and playback'
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TagStudioDev/TagStudio/releases/download/v${pkgver}/tagstudio_linux_x86_64.tar.gz"
         "tagstudio.desktop")
-sha256sums=('3d0e793321ca3063f4bd1c6836df2bf2177ac635f8177e38c135f4fd09243d3e'
-            '0beb85ce69aff8eb223c02622a0f947f10c48a4a11c937e82b58e97295601227')
+sha256sums=('30ec6843a0c12f848de1c2f1ecc12d012425f3409a7693e9454b4a8b80fca764'
+            '34a0e7ac51e1de54d0df1baac9e65e4fa04182c663fbc6c3451fe8f8a9b09a8a')
 
 package(){
     cd "$srcdir"
