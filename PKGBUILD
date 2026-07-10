@@ -2,7 +2,7 @@
 
 _basename=yesvgmap
 pkgname=${_basename}-bin
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="CLI app for generating SVG sprite maps from any number of standalone SVG images."
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('tar')
 depends=('glibc' 'gcc-libs')
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_basename}_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums_x86_64=('5f8aedfb23d4af466645595e153f9e35739067c68b8cbea9bc1b55f8496b7dc5')
+sha256sums_x86_64=('febfac9b2c1bcbaef62fb083677f1df3a21b89af4ba8a963a95ad5c900cf614a')
 
 package() {
     cd "${pkgdir}"
