@@ -1,8 +1,8 @@
 # Maintainer: enihcam <enihcam@aur.archlinux.org>
 pkgname=deeptutor
 _name=${pkgname}
-pkgver=1.5.0
-pkgrel=3
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="Agent-native intelligent learning companion with multi-agent collaboration and RAG"
 arch=('any')
 url="https://github.com/HKUDS/DeepTutor"
@@ -105,7 +105,7 @@ optdepends=(
   'python-nh3: Matrix HTML sanitization'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/HKUDS/DeepTutor/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2988022cb6ac8ca56afd59082b0a1f38c8ea017e83fa1e311d250f7baf8e9bc1')
+sha256sums=('fda1d64899b0576c8b1c2338518879dda5f5934a517fac2d80cc2d5dfe939054')
 
 prepare() {
   cd "${srcdir}/DeepTutor-${pkgver}"
