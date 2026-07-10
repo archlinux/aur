@@ -2,13 +2,14 @@
 // SPDX-FileCopyrightText: 2026 Arch Linux Contributors
 // SPDX-License-Identifier: 0BSD
 //
-// Patches the Codex desktop app to avoid native Linux window chrome.
+// Patches the Codex desktop app to integrate its window chrome on Linux.
 //
 // The packaged app is built for macOS and Windows-style custom chrome. On KDE,
 // Electron's default Linux frame adds a native title bar above the app chrome,
 // and the application menu appears as an Electron menu bar. This patch makes
 // the primary Linux window frameless and hides Electron's native menu
-// presentation on Linux.
+// presentation on Linux. It also keeps the Window Controls Overlay colors in
+// sync with the app's selected chrome theme.
 
 import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -178,6 +179,50 @@ let patchedAny = false;
   );
   source = result.source;
   patchedAny ||= result.patched;
+}
+
+// 5. Match the minimize, maximize, and close controls to the app chrome theme.
+// The upstream overlay uses a transparent background and derives only the
+// symbol color from nativeTheme. That leaves Linux compositors with controls
+// whose background does not match custom app themes. Read the active chrome
+// theme's surface/ink colors and refresh the overlay whenever those settings
+// or the native light/dark mode change.
+{
+  const overlayMarker = "linuxTitleBarOverlay(e=1)";
+  if (source.includes(overlayMarker)) {
+    console.log(`${TAG}: Linux titlebar overlay theme sync already patched`);
+  } else {
+    const setWindowZoomBefore =
+      "n.setTitleBarOverlay(j9(t))";
+    const setWindowZoomAfter =
+      "n.setTitleBarOverlay(process.platform===`linux`?this.linuxTitleBarOverlay(t):j9(t))";
+    const installOverlayBefore =
+      "installApplicationMenuTitleBarOverlaySync(e,t){if(process.platform!==`win32`&&process.platform!==`linux`||t!==`primary`&&t!==`quickChat`)return;let n=()=>{e.isDestroyed()||e.setTitleBarOverlay(j9(this.windowZooms.get(e.id)))};return c.nativeTheme.on(`updated`,n),n(),()=>{c.nativeTheme.off(`updated`,n)}}";
+    const overlayMethod =
+      "linuxTitleBarOverlay(e=1){let t=Pne(this.options.settingsStore.getEffective(n.Gi.theme.key)??`system`),r=t===`light`?this.options.settingsStore.getEffective(n.Gi.lightChromeTheme.key):this.options.settingsStore.getEffective(n.Gi.darkChromeTheme.key),i=r?.surface,a=r?.ink;return{...j9(e),color:typeof i===`string`?i:c.nativeTheme.shouldUseDarkColors?`#000000`:`#f9f9f9`,symbolColor:typeof a===`string`?a:c.nativeTheme.shouldUseDarkColors?`#ffffff`:`#1f1f1f`}}";
+    const installOverlayAfter =
+      `${overlayMethod}installApplicationMenuTitleBarOverlaySync(e,t){if(process.platform!==\`win32\`&&process.platform!==\`linux\`||t!==\`primary\`&&t!==\`quickChat\`)return;let r=()=>{e.isDestroyed()||e.setTitleBarOverlay(process.platform===\`linux\`?this.linuxTitleBarOverlay(this.windowZooms.get(e.id)):j9(this.windowZooms.get(e.id)))},i=process.platform===\`linux\`?[this.options.settingsStore.onDidChange(n.Gi.theme.key,r),this.options.settingsStore.onDidChange(n.Gi.lightChromeTheme.key,r),this.options.settingsStore.onDidChange(n.Gi.darkChromeTheme.key,r)]:[];return c.nativeTheme.on(\`updated\`,r),r(),()=>{c.nativeTheme.off(\`updated\`,r),i.forEach(e=>e())}}`;
+
+    let result = replaceExact(
+      source,
+      setWindowZoomBefore,
+      setWindowZoomAfter,
+      setWindowZoomAfter,
+      "Linux zoom-aware titlebar overlay theme sync",
+    );
+    source = result.source;
+    patchedAny ||= result.patched;
+
+    result = replaceExact(
+      source,
+      installOverlayBefore,
+      installOverlayAfter,
+      overlayMarker,
+      "Linux titlebar overlay theme listeners",
+    );
+    source = result.source;
+    patchedAny ||= result.patched;
+  }
 }
 
 if (patchedAny) {

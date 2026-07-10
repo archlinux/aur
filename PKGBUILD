@@ -3,7 +3,7 @@
 
 pkgname=chatgpt-desktop-bin
 pkgver=26.707.30751
-pkgrel=1
+pkgrel=3
 pkgdesc="ChatGPT desktop app repackaged from the upstream macOS release archive for Arch Linux"
 arch=('x86_64')
 url="https://chatgpt.com/download"
@@ -36,6 +36,7 @@ source=(
   'chatgpt-desktop.sh'
   'ChatGPT.desktop'
   'asar-tools.mjs'
+  'patch-linux-desktop-name.mjs'
   'patch-linux-open-targets.mjs'
   'patch-linux-opaque-bg.mjs'
   'patch-linux-window-chrome.mjs'
@@ -55,9 +56,10 @@ sha256sums=('f81023845ae56ebb98b349e4bc81d7b490533564897cea0ea4fc4a17104f3892'
             '2234d76c97f89ca1d70643ed893a9f6c4641269e2dbd2966743fbe9e62cf5096'
             '5657944f83faffcb6051a7f8de00f1a10ff11fcdee382fd7c7a921119124124d'
             '6b14d89c0a7907ce988bec8cb38a00d1df74833bec92961f585d41ac8e243c56'
+            'edb819fff34a05f0842f391c4cd72dbd8f2d58c18c2195eca856ca0463ef5d7c'
             '74b0c62a48ea4a8bf91f8851c7b3c8ce6845e9107af651f5ee40eb9e3161d8bf'
             '49ca13daf940980a03179d7d12d45f950df4f033da2089a39d8e3fc4aadc99c7'
-            '0a3508ae69d7c940e22b55fa3833a281bb3d4b4ff95b497e8dee11cb3b8c34b3')
+            '266e67d551b310e015fa06f11a2403506de97c0ba814b32c72737098bdb0d676')
 
 prepare() {
   cd "${srcdir}"
@@ -140,6 +142,7 @@ prepare() {
     -delete
   find app-extracted -path '*/prebuilds/*' -type f -name '*musl*.node' -delete
 
+  node "${srcdir}/patch-linux-desktop-name.mjs" app-extracted
   node "${srcdir}/patch-linux-open-targets.mjs" app-extracted
   node "${srcdir}/patch-linux-opaque-bg.mjs" app-extracted
   node "${srcdir}/patch-linux-window-chrome.mjs" app-extracted
