@@ -2,7 +2,7 @@
 
 pkgname=catapult-dabdoob
 pkgver=28.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform launcher for Cataclysm: DDA, BN and TLG"
 arch=("x86_64")
 url="https://github.com/Hihahahalol/Catapult_Dabdoob"
