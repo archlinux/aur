@@ -1,6 +1,6 @@
 pkgbase = cef-vaapi
 	pkgdesc = Chromium Embedded Framework (CEF), simple framework for embedding Chromium-based browsers in other applications (VAAPI-enabled variant)
-	pkgver = 149.0.6
+	pkgver = 150.0.10
 	pkgrel = 1
 	url = https://chromiumembedded.github.io/cef
 	arch = x86_64
@@ -56,11 +56,11 @@ pkgbase = cef-vaapi
 	optdepends = libva-mesa-driver: VAAPI driver for AMD GPUs
 	optdepends = intel-media-driver: VAAPI driver for modern Intel GPUs
 	optdepends = libva-utils: VAAPI diagnostics such as vainfo
-	provides = cef=149.0.6
+	provides = cef=150.0.10
 	conflicts = cef
 	options = !lto
-	source = chromium-149.0.7827.201-lite.tar.xz::https://commondatastorage.googleapis.com/chromium-browser-official/chromium-149.0.7827.201-lite.tar.xz
-	source = cef::git+https://github.com/chromiumembedded/cef.git#commit=0d0eeb61160536e447c79335c1ee963f57eb6d60
+	source = chromium-150.0.7871.101-lite.tar.xz::https://commondatastorage.googleapis.com/chromium-browser-official/chromium-150.0.7871.101-lite.tar.xz
+	source = cef::git+https://github.com/chromiumembedded/cef.git#commit=8042e43d20cca43f182c3fc72e762b000f6ee22f
 	source = chromium-138-nodejs-version-check.patch
 	source = chromium-145-fix-SYS_SECCOMP.patch
 	source = chromium-147-revert-clang-no-lifetime-dse-flag.patch
@@ -69,6 +69,9 @@ pkgbase = cef-vaapi
 	source = chromium-149-unbundle-minizip-undo-unicode.patch
 	source = chromium-149-use-of-undeclared-identifier-ERROR.patch
 	source = chromium-149-build-with-wasm-rollup.patch
+	source = chromium-150-fix-ar-unbundle.patch
+	source = chromium-150-fix-sysroot-path-error.patch
+	source = chromium-150-revert-avx-flag-change.patch
 	source = compiler-rt-adjust-paths.patch
 	source = increase-fortify-level.patch
 	source = glibc-2.42-baud-rate-fix.patch
@@ -76,8 +79,8 @@ pkgbase = cef-vaapi
 	source = cef-no-libxml-visibility-patch.patch
 	source = chromium-disable-font-tests.patch
 	source = FindCEF.cmake
-	sha256sums = 188e41921e1e2d4b5dd198509c0140e81a19cfa95f3426ed2b8bce28e445acf6
-	sha256sums = 923520ed985a5219effda413dbde66245fc65f771d798afe2548f8c4df45e8a0
+	sha256sums = f8549db02bf15730121f52e02279821c5fa2c13b39764eb9b25911f77d328a12
+	sha256sums = ff4521babf147c305c39021f4c42a655a0de8e7eda215f2393c034cc9c1715a8
 	sha256sums = 11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e
 	sha256sums = 4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e
 	sha256sums = c382830318c5b37826ecf44f3ba9def6be8affdad1bce819ecb83f3222ff4b3a
@@ -86,6 +89,9 @@ pkgbase = cef-vaapi
 	sha256sums = c22338d13f12772cdbcb5cfc1ace94438b9f9c72353cdb165a3ff3ef3d677c78
 	sha256sums = 951514535be65f0e2f84e82305d96292be1da353c1427ba1048ea24be70003c4
 	sha256sums = c4df27d25d298ac95d85e6f06b558b73bb67de5110a19a0228cb7f8519291ea5
+	sha256sums = f056d12571823d06c2a938158734fb4c7eeccb5c6f68228634d0c73d75feaa78
+	sha256sums = 5c42260b11b87dd01c4ef11598033e9687bdf384af2e45adab2fd00964e977e8
+	sha256sums = 5f6ccb7b945c8a13c690493723bad816b36f2f25792d47e677b56f8200907e60
 	sha256sums = ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863
 	sha256sums = d634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342
 	sha256sums = 1c1898f263eaacbc069a8e1a3e732852350350d1dad4cb1a6bba430e3b796cd0
