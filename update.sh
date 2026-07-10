@@ -87,7 +87,7 @@ function pkgrel() {
 if [[ "$UPDATED_FLAG" == "1" ]]; then
     ./partial-clone.sh
     echo "Change Detected."
-    ./update-submodule.sh
+    #./update-submodule.sh
     CURRENT_PKGVER=$(grep "pkgver=" PKGBUILD|cut -f2 -d"=")
     PKGVER=$(pkgver)
     if [[ "$CURRENT_PKGVER" == "$PKGVER" ]];then

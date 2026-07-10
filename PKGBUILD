@@ -9,28 +9,19 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=3ffa2455c42b03d4b7c74095632b3898765611be
-_bcr_commit=e0122f8e45eaf5410aa04ad656cd4c4e049826ee
+_mozc_commit=fa32b33d4cdd0443b05d9680f07fbd1a1ae21971
+_bcr_commit=40a2fb008014165bad78d0dd1363c757c2dbd81e
 _dict_to_mozc_commit=f6e4045f0f4eebd156c4397efef525aecf4657a6
 _dict_to_mozc=v0.6.30
 
 _branch=fcitx
 # Sudachi Dictionary
-_sudachidict_date=20260116
-
-## follow the submodule commits in https://github.com/fcitx/mozc/tree/fcitx/src/third_party
-_abseil_cpp_commit=987c57f3
-_breakpad_commit=216cea7b
-_gtest_commit=52eb8108
-_gyp_commit=9ecf45e3
-_japanese_usage_dictionary_commit=e5b3425
-_protobuf_commit=4fbd1111a
-_wil_commit=fc5dbf5
+_sudachidict_date=20260428
 
 pkgbase=mozc-with-jp-dict
 pkgname=("ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=3.33.6089.2
-pkgrel=3
+pkgver=3.34.6239.2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
@@ -38,13 +29,6 @@ makedepends=('qt6-base' 'fcitx5' 'fcitx5-qt' 'bazelisk' 'git' 'python' 'mold' 'p
 options=(!lto)
 source=("git+$url.git#commit=${_mozc_commit}"
         "bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=${_bcr_commit}"
-        "git+https://github.com/abseil/abseil-cpp.git#commit=${_abseil_cpp_commit}"
-        "git+https://github.com/google/breakpad.git#commit=${_breakpad_commit}"
-        "git+https://github.com/google/googletest.git#commit=${_gtest_commit}"
-        "git+https://github.com/chromium/gyp.git#commit=${_gyp_commit}"
-        "git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=${_japanese_usage_dictionary_commit}"
-        "git+https://github.com/protocolbuffers/protobuf.git#commit=${_protobuf_commit}"
-        "git+https://github.com/microsoft/wil.git#commit=${_wil_commit}"
         git+https://github.com/phoepsilonix/dict-to-mozc.git#tag=${_dict_to_mozc}
         # https://github.com/WorksApplications/SudachiDict
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/small_lex.zip"
@@ -60,19 +44,12 @@ source=("git+$url.git#commit=${_mozc_commit}"
         fcitx5-mozc-conf.patch
         )
 
-sha512sums=('2e7f2f5fbc8f3d97067ce700cf5a4ee56b8f09ba1b221b45a1c6060858b647ee8e22cae62174953ac99f15976042f0bf80d48636586d028c356d585154e34b60'
-            'a67119f289be2333fbf4d1a8bfd5fe4748e664be7954250041e9ea055f0480652a97b3ef8de3958f322f24dec6b5b943790bf9d37f24bf2aee12f0948ddaa76e'
-            'f471c70ee7ad3951bafd80540d07ba32622946095b1696c6bb44d8131944d88a4d75c1077a6a5ca2fe122ad284cf76303e3c3432e5f253558977997d42e5e05d'
-            'f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d'
-            '48cd60ccec0f9a5f262c8f8865bcc794c023fc8a421a071c179922e5176ecbe83e554430de30c70efee2d47c0b3defec687ba89d66124d372798d0394fe3c767'
-            'c8ce90c2493c05a78221befc4cbbcfcbe7a0bafb7bfa55403b085bf8c3fd069c4690d1ff59ef9e0e8a813bd3673588eb38e02ad81c42a6dd0be5246f27442169'
-            '91b878735e767ddf6f1fe3de61486c1e78936a0f683855e7c34a21c711f405899d3de369d2ff0a1910d65b1afc8c225d8d8b9398cf98d760f3afcfe42644fca2'
-            '0efcb80ec3a1f04f0f2e53ccd629eace4f6b9a2cbe5dae4c1b82140f11e174f8d023b8e35855def7e19c35da838c5b4fcfaa54748ee3534886caf1d35f55cccb'
-            '504066a457f77b510f492626c919b6fd7b61f77948bdddef0f7e43ae09bb4bf03cea7000fba91ae0123a94d3b39cac6dfac2010126849afe0a183727fe7b0fc1'
+sha512sums=('efa54487d199b54d76626e2352176851a625caf802ecd172d6d4d4791af5f1074c4069b9d380e8594a0b1c7cd0a9941880fd77e12f096837a39f0c1af29e7f8b'
+            '2ae1ca46c1ef1276bcb7ad30f120ac9f9fb269cc54d6e5abe8774957f01fbf2b21ac8f0434851de29acf2542a09dbe9e0adba82637d2a24e0d4b0eb36a2cd0b3'
             'e913bb48b6358eea4ca67397de03d48b8db073a634d078df48a0c13be31a0d52fa73c8390712bf2af28f5c2af4a540282d817658356e5fa996e592044574c3b3'
-            '9a7850416dc3f45df659e50a36b1b333d7e0458a3519a4138fd165987cfe250d44c7708da2b8e4bc27f2d5e52f9a5131076b283e0ad769e3b7b8514c3fe7b36e'
-            '2d5f835ca604a90c12ee3d1790ce953be95f8e615d3ebfb1416d54725b58563cea23017a384696d331366aa2f43eeb21dc3309d0c5e23dee3379796a1b7d6c5b'
-            '71a3da3569df8de816cea968e82a8f01fb2f48d96c83ac82daad853d1cb70942fd4695130c2d41f1d06e5c83bdf618e351e5a20f17d8e2941614901bb34e3300'
+            'bece72a09c37abd49d0f6963db656f2e4e1666059ec6d1082fb91126525e1b1c71438a7ee766d096bae7a7975bbe48371e57eb3b1ff03adbb872e72ac2edea90'
+            'efce91101e7736485e0f842f92029ddb3e802deab2c2f5310f92e2b00ca4d2dade859fc726692c5e09410376eb02d9ce1392041ed18629404c2843c24230376c'
+            'ef806b73acd6170f9a3f7d28c576b99ffed4866c1013918fdcc8792795e488242fad23c6dfb5a4cd3311c259b5d2eb9238e549fee8e0aab96ee266ab5812b08a'
             '1a5b62c83a08781b44bd73f978a4024d93667df47b1a3f4c179096cbc32f28e803c50dca6b5b7ad20fb788d46797551c36ec1efb7782f4361b695e2e0a6060ca'
             '3bdbda066130043e2e6403a8196a13b78a35313fc8797769eb8f76033349f420c68ac50a3e0604836c2cb577179f3e123af64a4e45aa05d14575f46707383d28'
             '44b228264547c4628599b5888bd177dc3ddb845094a0acebcd3d7d7665e2cda8861f7210f80f0f40531f46581f565aab3489a6a2ff3aa75c058d552b23ea8d6e'

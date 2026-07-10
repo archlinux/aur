@@ -1,6 +1,6 @@
 pkgbase = mozc-with-jp-dict
-	pkgver = 3.33.6089.2
-	pkgrel = 3
+	pkgver = 3.34.6239.2
+	pkgrel = 1
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
 	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary
@@ -16,38 +16,24 @@ pkgbase = mozc-with-jp-dict
 	makedepends = rustup
 	makedepends = unzip
 	options = !lto
-	source = git+https://github.com/fcitx/mozc.git#commit=3ffa2455c42b03d4b7c74095632b3898765611be
-	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=e0122f8e45eaf5410aa04ad656cd4c4e049826ee
-	source = git+https://github.com/abseil/abseil-cpp.git#commit=987c57f3
-	source = git+https://github.com/google/breakpad.git#commit=216cea7b
-	source = git+https://github.com/google/googletest.git#commit=52eb8108
-	source = git+https://github.com/chromium/gyp.git#commit=9ecf45e3
-	source = git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=e5b3425
-	source = git+https://github.com/protocolbuffers/protobuf.git#commit=4fbd1111a
-	source = git+https://github.com/microsoft/wil.git#commit=fc5dbf5
+	source = git+https://github.com/fcitx/mozc.git#commit=fa32b33d4cdd0443b05d9680f07fbd1a1ae21971
+	source = bcr::git+https://github.com/bazelbuild/bazel-central-registry.git#commit=40a2fb008014165bad78d0dd1363c757c2dbd81e
 	source = git+https://github.com/phoepsilonix/dict-to-mozc.git#tag=v0.6.30
-	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20260116/small_lex.zip
-	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20260116/core_lex.zip
-	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20260116/notcore_lex.zip
+	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20260428/small_lex.zip
+	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20260428/core_lex.zip
+	source = http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/20260428/notcore_lex.zip
 	source = LICENSE-SudachiDict::https://github.com/WorksApplications/SudachiDict/raw/develop/LEGAL
 	source = https://github.com/phoepsilonix/mecab-unidic-neologd/raw/refs/heads/master/seed/mecab-unidic-user-dict-seed.20200910.csv.xz
 	source = LICENSE-MeCab-unidic-Neologd::https://github.com/phoepsilonix/mecab-unidic-neologd/raw/refs/heads/master/COPYING
 	source = https://github.com/phoepsilonix/mecab-ipadic-neologd/raw/refs/heads/master/seed/mecab-user-dict-seed.20200910.csv.xz
 	source = LICENSE-MeCab-ipadic-Neologd::https://github.com/neologd/mecab-ipadic-neologd/raw/refs/heads/master/COPYING
 	source = fcitx5-mozc-conf.patch
-	sha512sums = 2e7f2f5fbc8f3d97067ce700cf5a4ee56b8f09ba1b221b45a1c6060858b647ee8e22cae62174953ac99f15976042f0bf80d48636586d028c356d585154e34b60
-	sha512sums = a67119f289be2333fbf4d1a8bfd5fe4748e664be7954250041e9ea055f0480652a97b3ef8de3958f322f24dec6b5b943790bf9d37f24bf2aee12f0948ddaa76e
-	sha512sums = f471c70ee7ad3951bafd80540d07ba32622946095b1696c6bb44d8131944d88a4d75c1077a6a5ca2fe122ad284cf76303e3c3432e5f253558977997d42e5e05d
-	sha512sums = f69046af8c37a2a8a441a258d5b8677016966cb43d8a3bb48badc78123a885d6179ff77d7885fd6c84130136a1b8931a98d35f9fcce3d03ed31a37a72ece0b9d
-	sha512sums = 48cd60ccec0f9a5f262c8f8865bcc794c023fc8a421a071c179922e5176ecbe83e554430de30c70efee2d47c0b3defec687ba89d66124d372798d0394fe3c767
-	sha512sums = c8ce90c2493c05a78221befc4cbbcfcbe7a0bafb7bfa55403b085bf8c3fd069c4690d1ff59ef9e0e8a813bd3673588eb38e02ad81c42a6dd0be5246f27442169
-	sha512sums = 91b878735e767ddf6f1fe3de61486c1e78936a0f683855e7c34a21c711f405899d3de369d2ff0a1910d65b1afc8c225d8d8b9398cf98d760f3afcfe42644fca2
-	sha512sums = 0efcb80ec3a1f04f0f2e53ccd629eace4f6b9a2cbe5dae4c1b82140f11e174f8d023b8e35855def7e19c35da838c5b4fcfaa54748ee3534886caf1d35f55cccb
-	sha512sums = 504066a457f77b510f492626c919b6fd7b61f77948bdddef0f7e43ae09bb4bf03cea7000fba91ae0123a94d3b39cac6dfac2010126849afe0a183727fe7b0fc1
+	sha512sums = efa54487d199b54d76626e2352176851a625caf802ecd172d6d4d4791af5f1074c4069b9d380e8594a0b1c7cd0a9941880fd77e12f096837a39f0c1af29e7f8b
+	sha512sums = 2ae1ca46c1ef1276bcb7ad30f120ac9f9fb269cc54d6e5abe8774957f01fbf2b21ac8f0434851de29acf2542a09dbe9e0adba82637d2a24e0d4b0eb36a2cd0b3
 	sha512sums = e913bb48b6358eea4ca67397de03d48b8db073a634d078df48a0c13be31a0d52fa73c8390712bf2af28f5c2af4a540282d817658356e5fa996e592044574c3b3
-	sha512sums = 9a7850416dc3f45df659e50a36b1b333d7e0458a3519a4138fd165987cfe250d44c7708da2b8e4bc27f2d5e52f9a5131076b283e0ad769e3b7b8514c3fe7b36e
-	sha512sums = 2d5f835ca604a90c12ee3d1790ce953be95f8e615d3ebfb1416d54725b58563cea23017a384696d331366aa2f43eeb21dc3309d0c5e23dee3379796a1b7d6c5b
-	sha512sums = 71a3da3569df8de816cea968e82a8f01fb2f48d96c83ac82daad853d1cb70942fd4695130c2d41f1d06e5c83bdf618e351e5a20f17d8e2941614901bb34e3300
+	sha512sums = bece72a09c37abd49d0f6963db656f2e4e1666059ec6d1082fb91126525e1b1c71438a7ee766d096bae7a7975bbe48371e57eb3b1ff03adbb872e72ac2edea90
+	sha512sums = efce91101e7736485e0f842f92029ddb3e802deab2c2f5310f92e2b00ca4d2dade859fc726692c5e09410376eb02d9ce1392041ed18629404c2843c24230376c
+	sha512sums = ef806b73acd6170f9a3f7d28c576b99ffed4866c1013918fdcc8792795e488242fad23c6dfb5a4cd3311c259b5d2eb9238e549fee8e0aab96ee266ab5812b08a
 	sha512sums = 1a5b62c83a08781b44bd73f978a4024d93667df47b1a3f4c179096cbc32f28e803c50dca6b5b7ad20fb788d46797551c36ec1efb7782f4361b695e2e0a6060ca
 	sha512sums = 3bdbda066130043e2e6403a8196a13b78a35313fc8797769eb8f76033349f420c68ac50a3e0604836c2cb577179f3e123af64a4e45aa05d14575f46707383d28
 	sha512sums = 44b228264547c4628599b5888bd177dc3ddb845094a0acebcd3d7d7665e2cda8861f7210f80f0f40531f46581f565aab3489a6a2ff3aa75c058d552b23ea8d6e
@@ -60,7 +46,7 @@ pkgname = ibus-mozc-with-jp-dict
 	depends = ibus>=1.4.1
 	depends = qt6-base
 	depends = libibus
-	provides = ibus-mozc=3.33.6089.2
+	provides = ibus-mozc=3.34.6239.2
 	conflicts = fcitx
 	conflicts = fcitx-configtool
 	conflicts = ibus-mozc
@@ -79,7 +65,7 @@ pkgname = fcitx5-mozc-with-jp-dict
 	depends = fcitx5-qt
 	depends = hicolor-icon-theme
 	optdepends = fcitx5-configtool
-	provides = fcitx5-mozc=3.33.6089.2
+	provides = fcitx5-mozc=3.34.6239.2
 	conflicts = fcitx-mozc
 	conflicts = fcitx5-mozc
 	conflicts = fcitx
@@ -93,5 +79,5 @@ pkgname = emacs-mozc-with-jp-dict
 	depends = emacs
 	depends = glibc
 	depends = gcc-libs
-	provides = emacs-mozc=3.33.6089.2
+	provides = emacs-mozc=3.34.6239.2
 	conflicts = emacs-mozc
