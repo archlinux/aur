@@ -29,23 +29,40 @@ provides=('aeroftp')
 conflicts=('aeroftp' 'aeroftp-git')
 options=('!strip' '!debug')
 # Use .deb instead of AppImage to avoid EGL_BAD_PARAMETER on some GPU drivers
-source=("${pkgname}-${pkgver}.deb::https://github.com/axpdev-lab/aeroftp/releases/download/v${pkgver}/AeroFTP_${pkgver}_amd64.deb"
-        "aeroftp.desktop"
-        "aeroftp.png::https://raw.githubusercontent.com/axpdev-lab/aeroftp/main/src-tauri/icons/128x128.png")
-sha256sums=('ba664a3d17d8278b41febf16ddd2a634136595eeb546a279433c9acc0cbed45e'
-            'cb8a1a0ad00c587fba5ab64e3c8d50ea8391b7a170ae83172a9dddcc6dd829a0'
-            '2ccf82e6bfdf22ec5a8d0735acf1e02bd00c44cb4ffab3895d46dc941c4a7cb6')
+source=("${pkgname}-${pkgver}.deb::https://github.com/axpdev-lab/aeroftp/releases/download/v${pkgver}/AeroFTP_${pkgver}_amd64.deb")
+sha256sums=('ba664a3d17d8278b41febf16ddd2a634136595eeb546a279433c9acc0cbed45e')
+
+# The MimeType line that the .deb's postinst appends at install time. pacman never
+# runs a Debian postinst, so package() has to apply it. Tauri 2 does not propagate
+# fileAssociations into the generated .desktop file, so the file inside data.tar
+# carries no MimeType at all. Keep this in sync with src-tauri/scripts/deb-postinst.sh.
+_mimetypes='application/x-aerovault;application/x-aeroftp;application/x-aeroftp-keystore;application/x-aerozip;application/x-aeroftp-script;x-scheme-handler/ftp;x-scheme-handler/ftps;x-scheme-handler/sftp;'
 
 package() {
-    # Extract .deb package (contains native binaries, no AppImage wrapper)
+    # Extract .deb package (contains native binaries, no AppImage wrapper).
+    # This already provides /usr/bin/aeroftp (the dispatcher), the aftp and
+    # aeroftp-cli symlinks, AeroFTP.desktop and the full hicolor icon set.
     cd "${srcdir}"
     bsdtar -xf data.tar.* -C "${pkgdir}/"
 
-    # Desktop entry (override deb's if present)
-    install -Dm644 "${srcdir}/aeroftp.desktop" "${pkgdir}/usr/share/applications/com.aeroftp.AeroFTP.desktop"
+    # Restore the file associations the postinst would have added. Without this
+    # no .aerovault/.aeroftp/.aerozip/.aeroftp-keystore/.aeroftp-script file
+    # opens with AeroFTP on Arch.
+    local _desktop
+    for _desktop in \
+        "${pkgdir}/usr/share/applications/AeroFTP.desktop" \
+        "${pkgdir}/usr/share/applications/com.aeroftp.AeroFTP.desktop" \
+        "${pkgdir}/usr/share/applications/aeroftp.desktop"
+    do
+        [ -f "${_desktop}" ] || continue
+        grep -q '^MimeType=' "${_desktop}" || printf 'MimeType=%s\n' "${_mimetypes}" >> "${_desktop}"
+    done
 
-    # Icon
-    install -Dm644 "${srcdir}/aeroftp.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/com.aeroftp.AeroFTP.png"
+    # The in-app updater downloads a .deb and installs it through pkexec, which
+    # cannot work on a pacman system. Remove the helper and its polkit action so
+    # the updater has nothing to invoke.
+    rm -f "${pkgdir}/usr/lib/aeroftp/aeroftp-update-helper"
+    rm -rf "${pkgdir}/usr/share/polkit-1"
 
     # License
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"

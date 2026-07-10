@@ -24,10 +24,6 @@ pkgbase = aeroftp-bin
 	options = !strip
 	options = !debug
 	source = aeroftp-bin-4.1.2.deb::https://github.com/axpdev-lab/aeroftp/releases/download/v4.1.2/AeroFTP_4.1.2_amd64.deb
-	source = aeroftp.desktop
-	source = aeroftp.png::https://raw.githubusercontent.com/axpdev-lab/aeroftp/main/src-tauri/icons/128x128.png
 	sha256sums = ba664a3d17d8278b41febf16ddd2a634136595eeb546a279433c9acc0cbed45e
-	sha256sums = cb8a1a0ad00c587fba5ab64e3c8d50ea8391b7a170ae83172a9dddcc6dd829a0
-	sha256sums = 2ccf82e6bfdf22ec5a8d0735acf1e02bd00c44cb4ffab3895d46dc941c4a7cb6
 
 pkgname = aeroftp-bin
