@@ -1,0 +1,16 @@
+pkgbase = trainer-bin
+	pkgdesc = Terminal app for browsing and managing installed agent skills
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/makesometh-ing/trainer
+	license = MIT
+	conflicts = trainer
+	provides = trainer
+	arch = aarch64
+	source_aarch64 = https://github.com/makesometh-ing/trainer/releases/download/v1.1.0/trainer_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 4ebeaa1179c2b541a933131a99ceb927ad8cfff1791c8d4366c8b80630dbb861
+	arch = x86_64
+	source_x86_64 = https://github.com/makesometh-ing/trainer/releases/download/v1.1.0/trainer_Linux_amd64.tar.gz
+	sha256sums_x86_64 = e6653964bbacb066d46bfdf572aae76fb30821451dbb07d81d6242564bbb7fa1
+	
+pkgname = trainer-bin
