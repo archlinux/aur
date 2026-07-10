@@ -1,7 +1,7 @@
 pkgbase = cardano-node-bin
 	pkgdesc = The core component that is used to participate in a Cardano decentralised blockchain (binary package).
 	pkgver = 11.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/input-output-hk/cardano-node
 	install = cardano-node-bin.install
 	arch = x86_64
