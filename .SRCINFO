@@ -1,0 +1,27 @@
+pkgbase = paperling
+	pkgdesc = A minimal, distraction-free markdown editor
+	pkgver = 1.0.48
+	pkgrel = 1
+	url = https://github.com/Razee4315/Paperling
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = bun
+	makedepends = cargo
+	makedepends = cargo-tauri
+	makedepends = nodejs
+	depends = glibc
+	depends = libgcc
+	depends = gtk3
+	depends = dbus
+	depends = libsoup3
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	depends = hicolor-icon-theme
+	options = !lto
+	source = paperling-1.0.48.tar.gz::https://github.com/Razee4315/Paperling/archive/v1.0.48.tar.gz
+	source = 001-fix-version.patch::https://github.com/Razee4315/Paperling/commit/af6d65df86d34a16fe2f1bdca9b33b83b05ef8e7.diff
+	sha256sums = 8b07290c0dbd4f41cc74fc68c107303d6ce656f21746ba24222465712214277a
+	sha256sums = bd58b930bed5f0cfdc6ad4f51a8c859f77f0f18504b0786196ac51e391198fc5
+
+pkgname = paperling

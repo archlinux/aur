@@ -1,0 +1,51 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 1a59647..f8b5323 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
+ 
+ ## [Unreleased]
+ 
++## [1.0.48] - 2026-07-04
++
+ ### Fixed
+ 
+ - **Tab "unsaved" indicator.** The mark showing a tab has unsaved edits rendered
+diff --git a/package.json b/package.json
+index 7b85e65..1e763a3 100644
+--- a/package.json
++++ b/package.json
+@@ -1,7 +1,7 @@
+ {
+   "name": "paperling",
+   "private": true,
+-  "version": "1.0.47",
++  "version": "1.0.48",
+   "type": "module",
+   "license": "Apache-2.0",
+   "scripts": {
+diff --git a/src-tauri/Cargo.toml b/src-tauri/Cargo.toml
+index 0fb6dec..e4ec6ce 100644
+--- a/src-tauri/Cargo.toml
++++ b/src-tauri/Cargo.toml
+@@ -1,6 +1,6 @@
+ [package]
+ name = "paperling"
+-version = "1.0.47"
++version = "1.0.48"
+ description = "A Tauri App"
+ authors = ["you"]
+ edition = "2021"
+diff --git a/src-tauri/tauri.conf.json b/src-tauri/tauri.conf.json
+index 0f6eaeb..4f1fc44 100644
+--- a/src-tauri/tauri.conf.json
++++ b/src-tauri/tauri.conf.json
+@@ -1,7 +1,7 @@
+ {
+   "$schema": "https://schema.tauri.app/config/2",
+   "productName": "Paperling",
+-  "version": "1.0.47",
++  "version": "1.0.48",
+   "identifier": "com.saqla.marklite",
+   "build": {
+     "beforeDevCommand": "bun run dev",
