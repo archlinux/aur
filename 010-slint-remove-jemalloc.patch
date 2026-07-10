@@ -1,12 +1,12 @@
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -195,7 +195,6 @@ unicode-segmentation = { version = "1.12.0" }
+@@ -195,7 +195,6 @@ unicode-segmentation = { version = "1.12
  icu_normalizer = { version = "2", default-features = false, features = ["compiled_data"] }
  
  glow = { version = "0.17" }
 -tikv-jemallocator = { version = "0.7" }
  wgpu-28 = { package = "wgpu", version = "28", default-features = false }
- wgpu-29 = { package = "wgpu", version = "29", default-features = false }
+ wgpu-29 = { package = "wgpu", version = "29.0.4", default-features = false }
  input = { version = "0.10.0", default-features = false }
 --- a/api/cpp/CMakeLists.txt
 +++ b/api/cpp/CMakeLists.txt

@@ -5,7 +5,7 @@ pkgname=(
     'python-slint'
     'slint-cpp'
     'slint-tools')
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc='Declarative GUI toolkit to build native user interfaces'
 license=('GPL-3.0-or-later OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0')
@@ -29,15 +29,18 @@ makedepends=(
     'python-wheel'
     'systemd-libs')
 source=("https://github.com/slint-ui/slint/archive/v${pkgver}/slint-${pkgver}.tar.gz"
-        '010-slint-remove-jemalloc.patch')
-sha256sums=('1cce5cc1e32a140e35366fe819fcf17a7b278338f67073d7bc97d4fa7a2a4d4e'
-            '2a7ff1dc07291a2917de05ebefc4fc970421be0c37f1cad05ffde7e5693fad42')
+        '010-slint-remove-jemalloc.patch'
+        '020-slint-allow-python-maturin-0.14.1.patch')
+sha256sums=('68222567f8c70ff677cd4a98cd94fb4765ac0f797eb8f8608a646911c908dc2a'
+            'dc2411d147835e4211ada3f316eae20bb095391ed2ff35723405a30a050c979a'
+            '784edbc91e7f5c6e9fcc650a652d30f7f1027a115e657a96b719b0e46f78f988')
 
 prepare () {
     cargo fetch --locked --target "$(rustc --print host-tuple)" --manifest-path="${pkgbase}-${pkgver}/Cargo.toml"
     cargo fetch --locked --target "$(rustc --print host-tuple)" --manifest-path="${pkgbase}-${pkgver}/api/python/slint/Cargo.toml"
     
     patch -d "${pkgbase}-${pkgver}" -Np1 -i "${srcdir}/010-slint-remove-jemalloc.patch"
+    patch -d "${pkgbase}-${pkgver}" -Np1 -i "${srcdir}/020-slint-allow-python-maturin-0.14.1.patch"
 }
 
 build() {
