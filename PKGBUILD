@@ -1,6 +1,6 @@
 # Maintainer: AkitaOnRails <fabio.akita@gmail.com>
 pkgname=frank-scanlation-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Kindle-like desktop reader for ad-hoc scanlation websites, with new-chapter notifications"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('frank-scanlation')
 conflicts=('frank-scanlation')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/FRANK.Scanlation_${pkgver}_amd64.AppImage")
-sha256sums=('7db166b73269871191118df47216628bb50aab126bf90bca3be51678461f789e')
+sha256sums=('222fb237612444050f5cca7abe9dec4e11284fa56a1ba69da8273639311ff910')
 noextract=("${pkgname}-${pkgver}.AppImage")
 
 prepare() {
