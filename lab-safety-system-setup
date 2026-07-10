@@ -12,6 +12,18 @@ DB_USER=${LAB_SAFETY_DB_USER:-lab_safety}
 APP_PORT=${LAB_SAFETY_APP_PORT:-8080}
 APP_HOST=${LAB_SAFETY_APP_HOST:-0.0.0.0}
 
+env_needs_initialization() {
+  local file=$1
+  [ ! -f "$file" ] \
+    || grep -Fqx 'DATABASE_URL=postgresql://lab_safety:change-me@127.0.0.1:5432/lab_safety' "$file" \
+    || grep -Fqx 'SECRET_KEY=change-me-generate-with-openssl-rand-hex-32' "$file"
+}
+
+if [ "${LAB_SAFETY_SETUP_TEST_ENV_CHECK:-}" = 1 ]; then
+  env_needs_initialization "${1:?missing env file}"
+  exit
+fi
+
 if [ "$(id -u)" -ne 0 ]; then
   echo "Run as root: sudo lab-safety-system-setup" >&2
   exit 1
@@ -55,11 +67,12 @@ if ! run_postgres psql -tAc "select 1 from pg_database where datname='${DB_NAME}
   run_postgres createdb -O "$DB_USER" "$DB_NAME"
 fi
 
-if [ ! -f "$ENV_FILE" ]; then
+if env_needs_initialization "$ENV_FILE"; then
   DB_PASSWORD=$(random_secret)
   SECRET_KEY=$(random_secret)
   run_postgres psql -v ON_ERROR_STOP=1 -c "alter role \"${DB_USER}\" with login password '${DB_PASSWORD}';"
-  cat > "$ENV_FILE" <<EOF
+  TEMP_ENV=$(mktemp "${ENV_FILE}.tmp.XXXXXX")
+  cat > "$TEMP_ENV" <<EOF
 APP_ENV=production
 APP_HOST=${APP_HOST}
 APP_PORT=${APP_PORT}
@@ -77,8 +90,9 @@ WEBAUTHN_RP_ID=localhost
 WEBAUTHN_ORIGIN=http://localhost:${APP_PORT}
 CORS_ALLOWED_ORIGINS=
 EOF
-  chmod 0640 "$ENV_FILE"
-  chgrp lab-safety-system "$ENV_FILE"
+  chmod 0640 "$TEMP_ENV"
+  chgrp lab-safety-system "$TEMP_ENV"
+  mv -f "$TEMP_ENV" "$ENV_FILE"
   echo "Wrote new $ENV_FILE"
 else
   echo "Keeping existing $ENV_FILE (not overwritten)"

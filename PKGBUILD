@@ -11,6 +11,7 @@ makedepends=('clang' 'git' 'mold' 'npm' 'rustup')
 optdepends=('nginx: optional reverse proxy')
 provides=('lab-safety-system')
 conflicts=('lab-safety-system')
+backup=('etc/lab-safety-system/lab-safety-system.env')
 source=(
   "git+https://github.com/LIghtJUNction/lab-safety-system.git"
   "lab-safety-system.service"

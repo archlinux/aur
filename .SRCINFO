@@ -20,6 +20,7 @@ pkgbase = lab-safety-system-git
 	conflicts = lab-safety-system
 	options = !lto
 	options = !buildflags
+	backup = etc/lab-safety-system/lab-safety-system.env
 	source = git+https://github.com/LIghtJUNction/lab-safety-system.git
 	source = lab-safety-system.service
 	source = lab-safety-system.env
