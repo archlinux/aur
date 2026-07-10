@@ -6,7 +6,7 @@ pkgdesc="Helper scripts for building llama.cpp and running llama-server with per
 arch=(any)
 url="https://codeberg.org/LuminaNAO/llama-launcher"
 license=(MIT)
-depends=('bash' 'cmake' 'curl' 'git' 'jq' 'bc' 'nodejs' 'openssh')
+depends=('bash' 'cmake' 'curl' 'git' 'jq' 'yq' 'bc' 'nodejs' 'openssh')
 optdepends=(
     'llama-hdd: llama-server binary (required to launch models)'
 )
@@ -29,6 +29,8 @@ package() {
     install -Dm755 "${pkgname}/utils/soak-test-v3b.sh" "${pkgdir}/usr/bin/llama-soak-test"
     install -Dm755 "${pkgname}/utils/vram-stress-test.sh" "${pkgdir}/usr/bin/llama-vram-stress-test"
     install -Dm755 "${pkgname}/llama-deep-proxy.mjs" "${pkgdir}/usr/lib/llama-launcher/llama-deep-proxy.mjs"
+    # Bundled tunes + chat templates, read from BUNDLED_MODEL_CONFIG_DIR
+    install -Dm644 "${pkgname}"/model-configs/* -t "${pkgdir}/usr/share/llama-launcher/model-configs"
     install -Dm644 "${pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${pkgname}/docs/CACHE-RAM.md" "${pkgdir}/usr/share/doc/${pkgname}/CACHE-RAM.md"

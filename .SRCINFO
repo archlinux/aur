@@ -10,6 +10,7 @@ pkgbase = llama-launcher
 	depends = curl
 	depends = git
 	depends = jq
+	depends = yq
 	depends = bc
 	depends = nodejs
 	depends = openssh
