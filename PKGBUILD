@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=gitpane
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Multi-repo Git workspace dashboard for the terminal'
 arch=(
@@ -10,7 +10,13 @@ arch=(
 )
 url='https://github.com/affromero/gitpane'
 license=('MIT')
-depends=('git')
+depends=(
+    'git'
+    'xdg-utils'
+)
+optdepends=(
+    'github-cli: For improved github integration'
+)
 makedepends=(
     'cargo'
     'patch'
@@ -26,7 +32,7 @@ source=(
     'disable-self-updates.patch'
 )
 sha256sums=(
-    '9315ce6fcb46145a82085f44e8c65e40069944b1f84d260d93e405edcd567539'
+    '5999d1cf93334938b6ff961ac04ae8f8a5fc42ece31b77da48c4067fca23ac6f'
     '5b6b6bd1ab83ddf83484106219ffdb06cd52e17a0803ed0d0c28493f74ecbca2'
 )
 
