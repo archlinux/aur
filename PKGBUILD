@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('python' 'python-gobject' 'python-cairo' 'rivalcfg' 'python-evdev' 'python-pynput' 'python-xlib')
 makedepends=('gcc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MrGodzilla38/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c4f87b1e61d31f3d3aaa6eb104ba95be58e895d5717c4d5b31f7c45f6a6a47b8')
+sha256sums=('f44d391e0a4ccb6808a473670f9c2fcc07cfd18b0972f95f47d14da6f35d2a31')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
