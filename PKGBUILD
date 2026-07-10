@@ -5,7 +5,7 @@
 _pkgname=fiddler-everywhere
 _pkgname2=fiddler
 pkgname=fiddler-appimage
-pkgver=7.5.0
+pkgver=7.8.0
 pkgrel=1
 pkgdesc="The free web debugging proxy by Telerik"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('zlib' 'fuse2')
 _appimage="${pkgname}-${pkgver}.AppImage"
 source=("${_appimage}::https://downloads.getfiddler.com/linux/${_pkgname}-${pkgver}.AppImage" "fiddler.sh")
 noextract=("${_appimage}")
-sha256sums=('23067626df6cda40e08c2337a66e68de22dbdb162da79f7ad74f7f9cb5c582fb'
+sha256sums=('e2855f4ac34a3560057754776150aae6c229a253ed1cc23d2ec4c0cbf8911629'
             '6cd281632814cba5d51c29e8a67d4920498c6e99b31709aa94cf5f83000db7c0')
 conflicts=('fiddler-everywhere')
 options=(!strip)
