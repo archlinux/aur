@@ -2,19 +2,20 @@
 
 pkgname=python-rns
 _name='rns'
-pkgver=1.3.5
+pkgver=1.3.8
 pkgrel=1
 pkgdesc="Self-configuring, encrypted and resilient mesh networking stack"
 arch=('any')
 depends=('python-cryptography' 'python-pyserial')
-optdepends=('python-adafruit-nrfutil: for flashing NRF52-based devices')
+optdepends=('python-adafruit-nrfutil: for flashing NRF52-based devices'
+            'python-bleak: for using the RNode interface over BLE')
 makedepends=('python-setuptools')
 provides=('rnodeconf' 'rnsh')
 conflicts=('rnodeconf' 'rnsh')
 url="https://reticulum.network/"
 license=('MIT')
 source=($pkgname-$pkgver::https://github.com/markqvist/Reticulum/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('18e94180b004e2b214ea7d1e3f0540175c538c82b423bc40f637a40ebe73821f')
+sha256sums=('0bba6478367e655e39e294e32cfd0babea0066d0fbc4dcab7ce4550e8ab7f3fc')
 
 build() {
   cd "$srcdir/Reticulum-$pkgver"
