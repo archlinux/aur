@@ -1,0 +1,20 @@
+pkgbase = keyecho-bin
+	pkgdesc = Instantly hear pleasant sounds when typing, no matter what keyboard you use
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ZacharyL2/KeyEcho
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = alsa-lib
+	provides = keyecho
+	conflicts = keyecho
+	source_x86_64 = KeyEcho-1.0.0-x86_64.rpm::https://github.com/ZacharyL2/KeyEcho/releases/download/v1.0.0/KeyEcho-1.0.0-1.x86_64.rpm
+	sha256sums_x86_64 = f7fd6a6dd63c8194023dec3b471081367b68b81f389da5faca0b825bd6ac3f4a
+	source_aarch64 = KeyEcho-1.0.0-aarch64.rpm::https://github.com/ZacharyL2/KeyEcho/releases/download/v1.0.0/KeyEcho-1.0.0-1.aarch64.rpm
+	sha256sums_aarch64 = 18ef74f36d7203165984d22aa6ec6b33172ef65be7c8a00143231010af5281fd
+
+pkgname = keyecho-bin
