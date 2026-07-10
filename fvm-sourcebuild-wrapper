@@ -292,7 +292,10 @@ EOF
 	fi
 
 	sed -i '/-Wno-deprecated-literal-operator/d' 'build/config/compiler/BUILD.gn'
-	sed -i '/G_DEFINE_AUTOPTR_CLEANUP_FUNC(PangoLayout, g_object_unref)/d' 'flutter/shell/platform/linux/fl_accessible_text_field.cc'
+	sed -i \
+		-e '/G_DEFINE_AUTOPTR_CLEANUP_FUNC(PangoLayout, g_object_unref)/d' \
+		-e '/G_DEFINE_AUTOPTR_CLEANUP_FUNC(PangoContext, g_object_unref)/d' \
+		'flutter/shell/platform/linux/fl_accessible_text_field.cc'
 
 	# Not our problem.
 	sed -i 's/"-Werror",/"-Wno-error=int-conversion", "-Wno-error=implicit-function-declaration"/' 'build/config/compiler/BUILD.gn'
