@@ -7,7 +7,7 @@ pkgname=(
     serverstatus-clients-psutil-git
     serverstatus-server-git
 )
-pkgver=1.1.8.r4.ge8e9027
+pkgver=1.1.9.r1.ge4ca055
 pkgrel=1
 groups=()
 pkgdesc="云探针、多服务器探针、云监控、多服务器云监控"
@@ -26,7 +26,10 @@ depends=(
     python-psutil
     python-queuelib
 )
-makedepends=(git)
+makedepends=(
+    git
+    go
+)
 optdepends=()
 source=("${pkgbase}::git+${url}.git")
 sha256sums=('SKIP')
@@ -46,7 +49,17 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgbase}"
-    make -C server PREFIX=/usr
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GO111MODULE=on
+    export GOPROXY=https://goproxy.cn,direct
+
+    cd server
+    mkdir -pv build/
+    go build -o build/serverstatus
 }
 
 package_serverstatus-git() {
@@ -69,6 +82,7 @@ package_serverstatus-clients-linux-git() {
     conflicts=(${pkgname%-git})
 
     install -Dm0755 "${srcdir}/${pkgbase}/clients/client-linux.py" -t ${pkgdir}/usr/share/${pkgbase%-git}/clients
+    install -Dm0644 "${srcdir}/${pkgbase}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm0644 /dev/stdin ${pkgdir}/usr/lib/systemd/system/${pkgname%-git}.service <<EOF
 [Unit]
 Description=ServerStatus-Client
@@ -95,6 +109,7 @@ package_serverstatus-clients-psutil-git() {
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
     install -Dm0755 "${srcdir}/${pkgbase}/clients/client-psutil.py" -t ${pkgdir}/usr/share/${pkgbase%-git}/clients
+    install -Dm0644 "${srcdir}/${pkgbase}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm0644 /dev/stdin ${pkgdir}/usr/lib/systemd/system/${pkgname%-git}.service <<EOF
 [Unit]
 Description=ServerStatus-Client psutil
@@ -128,17 +143,19 @@ package_serverstatus-server-git() {
 
     cd "${srcdir}/${pkgbase}"
 
-    install -Dm0755 "${srcdir}/${pkgbase}/server/sergate" -t ${pkgdir}/usr/bin
+    install -Dm0755 "${srcdir}/${pkgbase}/server/build/serverstatus" -t ${pkgdir}/usr/bin
     install -Dm0755 "${srcdir}/${pkgbase}/server/config.json" -t ${pkgdir}/usr/share/${pkgbase%-git}/server
     cp -rva "${srcdir}/${pkgbase}"/web ${pkgdir}/usr/share/${pkgbase%-git}
     cp -rva "${srcdir}/${pkgbase}"/plugin ${pkgdir}/usr/share/${pkgbase%-git}
+    install -Dm0644 "${srcdir}/${pkgbase}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm0644 /dev/stdin ${pkgdir}/usr/lib/systemd/system/${pkgname%-git}.service <<EOF
 [Unit]
-Description=ServerStatus-Server
-After=network.target
+Description=ServerStatus Go Server
+After=network-online.target
+Wants=network-online.target
 
 [Service]
-ExecStart=sergate --config=/usr/share/serverstatus/server/config.json --web-dir=/usr/share/serverstatus/web
+ExecStart=serverstatus --config=/usr/share/serverstatus/server/config.json --web-dir=/usr/share/serverstatus/web
 ExecReload=/bin/kill -HUP \$MAINPID
 Restart=on-failure
 
