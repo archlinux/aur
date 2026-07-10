@@ -1,7 +1,8 @@
 # Maintainer: justice-reaper <justice.reaper.io@gmail.com>
 pkgname=acp6x-victus-16e1-dkms
+_pkgbase=acp6x-victus-16e1
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Patched AMD ACP6x Audio Driver for HP Victus 16-e1xxx (fixes internal microphone)"
 arch=('x86_64')
 url="https://bugzilla.kernel.org/show_bug.cgi?id=218926"
@@ -16,7 +17,7 @@ source=("dkms.conf"
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
-    install -dm755 "${pkgdir}/usr/src/${pkgname}-${pkgver}"
-    cp dkms.conf "${pkgdir}/usr/src/${pkgname}-${pkgver}/"
-    cp acp6x-mach.c acp6x-pdm-dma.c acp6x.h Makefile "${pkgdir}/usr/src/${pkgname}-${pkgver}/"
+    install -dm755 "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
+    cp dkms.conf "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/"
+    cp acp6x-mach.c acp6x-pdm-dma.c acp6x.h Makefile "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/"
 }
