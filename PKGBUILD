@@ -2,8 +2,8 @@
 _appname=affine
 pkgname="${_appname}-canary-bin"
 _pkgname=AFFiNE-canary
-_pkgver=2026.6.20
-_subver=canary.1001
+_pkgver=2026.7.9
+_subver=canary.1019
 pkgver="${_pkgver}_${_subver}"
 _electronversion=39
 pkgrel=1
@@ -29,7 +29,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/toeverything/AFFiNE/v${_pkgver}-${_subver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4fc4363a62cdb5394aade84b5257c4d613588942712d3fea1eb0ae77209ebe75'
+sha256sums=('8a59d95611832969d6e6bed2c28461595e4fd0ac6e4c4f223163b99a5fa721b8'
             '1cdeca52d4f740361f103926144eb8b3f265975b2337d4e27b3313f72465897f'
             'c107c8088fe42bce6def95d313cfe7b5984d3bb2c1608b67f855327da45f497b'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
@@ -38,23 +38,13 @@ _get_app_dir() {
 }
 _check_electron_version() {
     echo "Verifying Electron version..."
-    local _app_dir=$(_get_app_dir)
-    local _main_exe=""
-    if [[ -n "${_app_dir}" ]]; then
-        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
-    fi
-    if [[ -n "${_main_exe}" ]]; then
-        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
-        if [[ -n "${_elec_ver}" ]]; then
-            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
-                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
-            else
-                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
-            fi
-        fi
-    else
-        echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
-    fi
+    local _main_exe=$(find "$(_get_app_dir)" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)
+    [[ -z "${_main_exe}" ]] && echo -e "\033[1;33mNote: Could not find Electron binary.\033[0m" && return
+    local _elec_ver=$(strings "${_main_exe}" | grep -oP 'Electron/\K[0-9]+' | head -1)
+    [[ -z "${_elec_ver}" ]] && echo -e "\033[1;33mNote: Could not determine Electron version.\033[0m" && return
+    [[ "${_elec_ver}" != "${_electronversion}" ]] &&
+        echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m" ||
+        echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
