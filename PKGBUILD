@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=dlss-updater
 _app_id="io.github.recol.$pkgname"
-pkgver=4.2.2
+pkgver=4.2.3
 pkgrel=1
 pkgdesc="DLSS, XeSS, DirectStorage, FSR, and Streamline DLL updater for games"
 arch=('any')
@@ -24,32 +24,30 @@ depends=(
   'python-uvloop'
 )
 makedepends=(
-  'desktop-file-utils'
   'git'
   'python-build'
   'python-hatchling'
   'python-installer'
   'python-wheel'
 )
-checkdepends=('appstream')
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 optdepends=('python-rapidfuzz: Fast fuzzy string matching for game search')
 
 # Use commit of what tag should be
 # until upstream fixes CI pipeline
-_commit=a83d5b5b7daeb49f83d4983daeed6efa6031e2b6
+_commit=ed52bd2a4f5106cb1ddd26137c64dbed70df3b87
 
 source=("git+https://github.com/Recol/DLSS-Updater.git#commit=${_commit}"
         "$pkgname.sh")
-sha256sums=('679c9cb96d19d531c7ca44d5152bf823d6c42a1028ccd2be2353940ad9e07e17'
+sha256sums=('6ed67094b79ae33dbef91f9e29604c91d1902a4b94731a6b4b30b13c9acc41ed'
             'd98bd361773dee09cc82fa02a185a9fdf21779676ed72b69d550323e9abe14f0')
 
 prepare() {
   cd DLSS-Updater
   git clean -dfx
-
-  # Set StartupWMClass
-  desktop-file-edit --set-key=StartupWMClass --set-value=flet_view \
-    "flatpak/${_app_id}.desktop"
 }
 
 build() {
