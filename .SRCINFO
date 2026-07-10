@@ -1,20 +1,17 @@
 pkgbase = astral-bin
 	pkgdesc = Astral is a modern cross-platform web application built on EasyTier, designed to simplify the creation and management of P2P network connections and virtual private networks.
-	pkgver = 2.8.0
+	pkgver = 2.8.8
 	pkgrel = 1
 	url = https://Astral.fan
 	arch = x86_64
 	license = CC-BY-NC-ND 4.0
 	makedepends = tar
-	depends = gcc-libs
-	depends = glibc
 	depends = polkit
-	depends = bash
 	depends = libayatana-appindicator
-	source = https://github.com/ldoubil/astral/releases/download/v2.8.0/astral-linux-x64.tar.gz
+	source = https://github.com/ldoubil/astral/releases/download/v2.8.8/astral-linux-x64.tar.gz
 	source = https://github.com/ldoubil/astral/raw/refs/heads/main/assets/icon.ico
 	source = Astral.desktop
-	sha256sums = 4964d50c01e011d555f4336b5a6d019567a5b204f0783c5934da31562580fff4
+	sha256sums = eb7adbf6ce7dca1d7f2d1c3c4fdeb5fb1707421af770613eb3e86ac9ec16b7e1
 	sha256sums = d0e0314aa2aafc676ad7d3ddab38b173ed70cede661840d82756aaf85d3f36ca
 	sha256sums = 41b3f3f0e5b6df838d8a670e4c64bd7fd4bb531147bb59f46a86d22e189d8c19
 
