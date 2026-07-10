@@ -2,7 +2,7 @@
 
 pkgname=bluez-gamepad-quirks
 pkgver=5.87
-pkgrel=1
+pkgrel=2
 pkgdesc="BlueZ with HID gamepad quirk support for controllers with broken SDP records"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/EvolveBeyond/bluez"
