@@ -1,7 +1,7 @@
 # Maintainer: berkkucukk <berkkucukk@proton.me>
 
 pkgname=maze-guard
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Maze Guard — public WiFi security monitor: MITM detection, MAC randomization, nftables firewall"
 arch=('x86_64' 'aarch64')
@@ -30,7 +30,7 @@ optdepends=(
 install=maze-guard.install
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/berk-kucuk/maze-guard/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5f8cdc5f30ad87f5212bc5af4f6b7bb847585da468151e6d56ddfc7c484c9280')
+sha256sums=('9af37662cf6078b748474005cc8d09336f5182829be2791df9d81fc33259f79c')
 
 package() {
     cd "$srcdir/maze-guard-${pkgver}"
