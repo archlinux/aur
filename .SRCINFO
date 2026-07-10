@@ -1,6 +1,6 @@
 pkgbase = hyprpier-git
 	pkgdesc = Hyprland monitor profile manager with Thunderbolt dock detection
-	pkgver = 0.2.4.r0.g2eba22b
+	pkgver = 0.2.4.r1.gcaf4a60
 	pkgrel = 1
 	url = https://github.com/jakeb-grant/hyprpier
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = hyprpier-git
 	makedepends = cargo
 	makedepends = git
 	depends = hyprland
+	optdepends = sudo: privilege escalation for setup actions from the TUI
+	optdepends = dunst: desktop notifications on profile switch (any notification daemon works)
 	provides = hyprpier
 	conflicts = hyprpier
 	source = git+https://github.com/jakeb-grant/hyprpier.git

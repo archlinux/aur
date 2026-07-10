@@ -1,12 +1,14 @@
 # Maintainer: jakeb-grant
 pkgname=hyprpier-git
-pkgver=0.2.4.r0.g2eba22b
+pkgver=0.2.4.r1.gcaf4a60
 pkgrel=1
 pkgdesc="Hyprland monitor profile manager with Thunderbolt dock detection"
 arch=('x86_64')
 url="https://github.com/jakeb-grant/hyprpier"
 license=('MIT')
 depends=('hyprland')
+optdepends=('sudo: privilege escalation for setup actions from the TUI'
+            'dunst: desktop notifications on profile switch (any notification daemon works)')
 makedepends=('cargo' 'git')
 provides=('hyprpier')
 conflicts=('hyprpier')
@@ -15,8 +17,12 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd hyprpier
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' \
-        || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    local ver
+    if ver=$(git describe --long --tags 2>/dev/null); then
+        sed 's/^v//;s/-/.r/;s/-/./' <<<"$ver"
+    else
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    fi
 }
 
 prepare() {
