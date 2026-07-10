@@ -1,6 +1,6 @@
 # Maintainer: marlonn <marlonn.dev@proton.me>
 pkgname=carafe
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='A KDE Plasma-native game launcher for Windows games via Proton/UMU'
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
   'ninja'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/SlowNicoFish/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dbce0d8aa4e95cf3c87d95fd94aa777d8a5b18ad73e09cc54a22bcec5a665e37')
+sha256sums=('0f163f33f3b9eb510a8b5860aba82c2b88ef0cdf866b226449bd42bd1e5ba3be')
 build() {
   cmake -S "$srcdir/${pkgname}-${pkgver}" -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
