@@ -1,0 +1,21 @@
+[Unit]
+Description=Ignis Server
+Documentation=https://github.com/Nystik-gh/ignis
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=ignis
+Restart=on-failure
+SyslogIdentifier=ignis
+EnvironmentFile=-/etc/conf.d/ignis
+Environment=NODE_ENV=production
+Environment=HOME=/var/lib/ignis
+Environment=OBSIDIAN_ASSETS_PATH=/usr/lib/ignis/obsidian
+Environment=VAULT_ROOT=/var/lib/ignis/vault
+Environment=DATA_ROOT=/var/lib/ignis/data
+WorkingDirectory=/var/lib/ignis
+ExecStart=/usr/bin/node /usr/lib/ignis/apps/ignis-server/server/index.js
+
+[Install]
+WantedBy=multi-user.target
