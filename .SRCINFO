@@ -1,6 +1,6 @@
 pkgbase = wasmcloud-bin
 	pkgdesc = Build, manage, and scale Wasm apps across any cloud, K8s, or edge
-	pkgver = 2.3.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://wasmcloud.com
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = wasmcloud-bin
 	provides = wasmcloud
 	conflicts = wasmcloud
 	conflicts = wash
-	source = https://github.com/wasmCloud/wasmCloud/raw/v2.3.0/LICENSE
+	source = https://github.com/wasmCloud/wasmCloud/raw/v2.5.1/LICENSE
 	sha256sums = 0d7e475818c32a6bad4c0715b1f23848d7e3544774e7d92d4797e076d80f3e04
-	source_x86_64 = wasmcloud-bin-x86_64-2.3.0::https://github.com/wasmCloud/wasmCloud/releases/download/v2.3.0/wash-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = 8b54c5516737e918aabc61ccc80992c06b1feeda6069d3405c23b09ddff5f6a8
+	source_x86_64 = wasmcloud-x86_64-2.5.1::https://github.com/wasmCloud/wasmCloud/releases/download/v2.5.1/wash-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = abb85540020d85959eda51e97ee4a55f4b14485f32b761e7d638ca2bd2752fd3
 
 pkgname = wasmcloud-bin
