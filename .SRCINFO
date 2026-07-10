@@ -1,4 +1,4 @@
-pkgbase = python-cia-descrypter
+pkgbase = python-cia-descrypter-git
 	pkgdesc = A Python script to decrypt Nintendo 3DS .cia files using pyctr
 	pkgver = 0.1
 	pkgrel = 1
@@ -7,7 +7,7 @@ pkgbase = python-cia-descrypter
 	license = LGPL-2.1-only
 	depends = python
 	depends = python-pyctr
-	source = python-cia-descrypter-0.1.tar.gz::https://github.com/Emilia228x/cia-descrypter/archive/refs/tags/0.1.tar.gz
+	source = python-cia-descrypter-git-0.1.tar.gz::https://github.com/Emilia228x/cia-descrypter/archive/refs/tags/0.1.tar.gz
 	sha256sums = b72784ff2bc8701172b30c96929d8e468a19cdf7dcfa8662f9ff359421be8145
 
-pkgname = python-cia-descrypter
+pkgname = python-cia-descrypter-git
