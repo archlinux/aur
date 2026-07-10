@@ -1,7 +1,7 @@
 pkgbase = steam-screenshot-importer
 	pkgdesc = Automatic importing of screenshots into Steam using the Steamworks SDK
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yobson1/steam-screenshot-importer
 	arch = x86_64
 	license = GPL-3.0-only

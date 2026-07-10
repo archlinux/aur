@@ -2,7 +2,7 @@
 pkgname=steam-screenshot-importer
 pkgdesc='Automatic importing of screenshots into Steam using the Steamworks SDK'
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 _steamworks_rs_ver=0.13.1
 arch=('x86_64')
 url="https://github.com/yobson1/${pkgname}"
@@ -43,9 +43,5 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname"
-
-    local basever
-    basever=$(echo "$pkgver" | cut -d. -f1-3)
-
-    cp -a src-tauri/target/release/bundle/deb/${pkgname}_${basever}_*/data/* "${pkgdir}"
+    cp -a src-tauri/target/release/bundle/deb/${pkgname}_${pkgver}_*/data/* "${pkgdir}"
 }
