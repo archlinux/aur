@@ -1,13 +1,13 @@
 # Maintainer: lightjunction
 pkgname=lab-safety-system-git
-pkgver=0.1.0.r58.g72e5113
+pkgver=0.1.0.r59.g448a8c1
 pkgrel=1
 pkgdesc="Laboratory safety management information system (zero-config setup)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/LIghtJUNction/lab-safety-system"
 license=('AGPL-3.0-only')
 depends=('gcc-libs' 'glibc' 'ca-certificates' 'postgresql')
-makedepends=('clang' 'git' 'mold' 'npm' 'rustup')
+makedepends=('clang' 'git' 'mold' 'npm' 'rust')
 optdepends=('nginx: optional reverse proxy')
 provides=('lab-safety-system')
 conflicts=('lab-safety-system')
@@ -47,7 +47,7 @@ linker = "clang"
 rustflags = ["-C", "link-arg=-fuse-ld=mold"]
 EOF
   git submodule update --init frontend
-  cargo +1.96.0 fetch --locked
+  cargo fetch --locked
   npm --prefix frontend ci
 }
 
@@ -57,7 +57,7 @@ build() {
     HOME="$HOME" \
     PATH="$PATH" \
     RUSTFLAGS="-C link-arg=-fuse-ld=mold" \
-    cargo +1.96.0 build --release --locked
+    cargo build --release --locked
   env -i HOME="$HOME" PATH="$PATH" npm --prefix frontend run build
 }
 

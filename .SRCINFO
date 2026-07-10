@@ -1,6 +1,6 @@
 pkgbase = lab-safety-system-git
 	pkgdesc = Laboratory safety management information system (zero-config setup)
-	pkgver = 0.1.0.r58.g72e5113
+	pkgver = 0.1.0.r59.g448a8c1
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/lab-safety-system
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = lab-safety-system-git
 	makedepends = git
 	makedepends = mold
 	makedepends = npm
-	makedepends = rustup
+	makedepends = rust
 	depends = gcc-libs
 	depends = glibc
 	depends = ca-certificates
