@@ -1,0 +1,23 @@
+pkgbase = nowledge-mem
+	pkgdesc = Local-first memory and context management system for AI-powered workflows
+	pkgver = 0.10.23
+	pkgrel = 1
+	url = https://mem.nowledge.co
+	arch = x86_64
+	license = LicenseRef-proprietary
+	makedepends = zstd
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	optdepends = gnome-keyring: for credential storage
+	optdepends = xdg-utils: for opening links and nowledgemem:// URLs
+	provides = nmem-cli
+	conflicts = nmem-cli
+	conflicts = nowledge-mem-bin
+	noextract = nowledge-mem-0.10.23.deb
+	options = !strip
+	options = !debug
+	source_x86_64 = nowledge-mem-0.10.23.deb::https://download-mem.nowledge.co/app/0.10.23/x86_64-unknown-linux-gnu.deb
+	sha256sums_x86_64 = 6663ec315b27d5ead6aeced5ffbf9a0886b8050b6511451f266123299dc6698c
+
+pkgname = nowledge-mem
