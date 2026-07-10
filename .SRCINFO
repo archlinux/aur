@@ -1,16 +1,16 @@
 pkgbase = otf-unifont
 	pkgdesc = OpenType version of the GNU Unifont
-	pkgver = 17.0.04
+	pkgver = 17.0.05
 	pkgrel = 1
 	url = https://unifoundry.com/unifont.html
 	arch = any
 	license = OFL-1.1 OR GPL-2.0-or-later WITH Font-exception-2.0
 	provides = emoji-font
 	options = !debug
-	source = https://unifoundry.com/pub/unifont/unifont-17.0.04/unifont-17.0.04.tar.gz
-	source = https://unifoundry.com/pub/unifont/unifont-17.0.04/unifont-17.0.04.tar.gz.sig
+	source = https://unifoundry.com/pub/unifont/unifont-17.0.05/unifont-17.0.05.tar.gz
+	source = https://unifoundry.com/pub/unifont/unifont-17.0.05/unifont-17.0.05.tar.gz.sig
 	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
-	sha256sums = 5c52c5d56ef98089ddbca62e68560ceccc57ea88940b9d38cc3c888fe3b59a34
+	sha256sums = f287cffb26e22723aa36e6684869b0f3ff3bfb822c4b01008bd847911ec1b631
 	sha256sums = SKIP
 
 pkgname = otf-unifont
