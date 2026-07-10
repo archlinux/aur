@@ -29,6 +29,7 @@ options=(!strip)
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_gitauthor}/${_gitname}/archive/${_gitversion}.tar.gz")
 sha256sums=('d07f0135643148aad700a177db3c48570b8032b10158a2d4c43c159d23069b63')
 
+
 prepare() {
 	cd ${srcdir}/${_appname}-${pkgver} || exit 1
 
@@ -51,6 +52,9 @@ package() {
 	cd ${srcdir}/${_appname}-${pkgver} || exit 1
 
 	install -Dm755 "bin/${_appname}" "${pkgdir}/usr/bin/${_appname}"
+
+	install -dm755 "${pkgdir}/usr/share/${_appname}/"
+	cp -rf "./config/" "${pkgdir}/usr/share/${_appname}/"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
