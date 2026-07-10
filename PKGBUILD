@@ -2,7 +2,7 @@
 
 pkgname=tile38-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.37.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='An in-memory geolocation data store, spatial index, and realtime geofencing server'
 arch=(x86_64 aarch64 armv7h)
@@ -15,9 +15,9 @@ options=(!debug)
 source_x86_64=("${_pkgname}-x86_64-${pkgver}::https://github.com/tidwall/tile38/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("${_pkgname}-aarch64-${pkgver}::https://github.com/tidwall/tile38/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-arm64.tar.gz")
 source_armv7h=("${_pkgname}-armv7h-${pkgver}::https://github.com/tidwall/tile38/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-arm.tar.gz")
-sha256sums_x86_64=('356044efef958aa14cc787e96e6add55ede6113e1bcda1c4a571a9f02c1994bb')
-sha256sums_aarch64=('7188b30c0128053f1e1e91556d681256682a17f1a1029fbec82921c0bd02eb8d')
-sha256sums_armv7h=('777451efe88fd3f9d8aca178dd22dd39b9f7f38edead7370a596ec316f9f701d')
+sha256sums_x86_64=('1cbca2c7c11adc045908e8b47f33731e268b08eb9a1b5af829d438743f1fad40')
+sha256sums_aarch64=('ccc76b04aad6fce3b121936b7c4f767724ee95ae6cfd70e6e0541cc65a391cdc')
+sha256sums_armv7h=('d412b1e69185cc6a388543eff7ea2fa63095248e47a21a7538280182ae0d94ec')
 
 package() {
   local dir
