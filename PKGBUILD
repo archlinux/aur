@@ -5,12 +5,12 @@ _name=MIDI2.0Workbench
 pkgname=midi2-workbench
 pkgver=1.5.6
 _ver=${pkgver}p
-pkgrel=1
+pkgrel=2
 pkgdesc='MIDI 2.0 debugging utility'
 arch=(x86_64)
 url='https://github.com/midi2-dev/MIDI2.0Workbench'
 license=(MIT)
-_electron=electron27
+_electron=electron43
 depends=($_electron gcc-libs glibc)
 makedepends=(alsa-lib node-gyp npm systemd-libs)
 groups=(pro-audio)
@@ -20,7 +20,7 @@ source=(
   'midi2-workbench.desktop'
 )
 sha256sums=('317fe57e371af684c557c167de0d5a824fe231b58af6a7baece8d565ddf76bf2'
-            '79191c43cc81a733e4f24f929f5b489bcc10e5c2256dec6507d04fdb34862e3d'
+            '874b315d24b7846f2a3b2cefba8d27085b45aaa355a6f26096ef5672db66d99b'
             'fe31fc81dfc72fbbb131c3a187b90cd924948c1bad5a0cbb6421771b92eb2c8c')
 case $CARCH in
  aarch64) _arch=arm64 ;;
@@ -29,14 +29,15 @@ case $CARCH in
 esac
 
 prepare() {
-  _npmargs=("--openssl-fips=''" --cache "$srcdir"/npm-cache --no-audit --no-fund)
+  _npmargs=(--cache "$srcdir"/npm-cache --no-audit --no-fund)
   _electron_ver="$(< /usr/lib/$_electron/version)"
   cd $_name-$_ver
   # remove unused dependencies
   sed -e /serialport/d -e /bonjour-service/d -e /cobs/d -e /sanitize-filename/d -i package.json
   HOME="$srcdir"/.electron-gyp npm "${_npmargs[@]}" install --os linux --cpu $_arch
-  # don't use prebuilt binaries
-  rm -r node_modules/usb/prebuilds
+  # don't use prebuilt binaries and fix build
+  rm -rf node_modules/usb/prebuilds
+  sed -e 's/-std=c++14/-std=c++17/' -i node_modules/usb/binding.gyp
   # use system node-gyp
   ln -sf /usr/bin/node-gyp node_modules/.bin/node-gyp
 }
