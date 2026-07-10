@@ -1,6 +1,6 @@
 pkgbase = kova
 	pkgdesc = Markdown presentation authoring tool with live preview, multiple layouts, theming, and PPTX export
-	pkgver = 0.6.7
+	pkgver = 0.6.16
 	pkgrel = 1
 	url = https://kova.md/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = kova
 	depends = libavif
 	depends = hicolor-icon-theme
 	optdepends = gst-plugins-bad: support for additional media formats
-	source = https://github.com/KovaMD/Kova/releases/download/v0.6.7/Kova_0.6.7_x86_64.tar.gz
-	sha256sums = 65f579531687a49e659f9fbcba5efe1e51f950d11e02515bc796f8da6b97b5e3
+	source = https://github.com/KovaMD/Kova/releases/download/v0.6.16/Kova_0.6.16_x86_64.tar.gz
+	sha256sums = 601fb77c7ae3cf8b5e42876c8aa83fdd3b937efe9af32eea1922b781978f3c51
 
 pkgname = kova

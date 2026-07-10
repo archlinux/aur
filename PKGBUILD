@@ -1,6 +1,6 @@
 # Maintainer: MicLeh <micleh at proton dot me>	
 pkgname=kova
-pkgver=0.6.7
+pkgver=0.6.16
 pkgrel=1
 pkgdesc="Markdown presentation authoring tool with live preview, multiple layouts, theming, and PPTX export"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
     'gst-plugins-bad: support for additional media formats'
 )
 source=("https://github.com/KovaMD/Kova/releases/download/v${pkgver}/Kova_${pkgver}_x86_64.tar.gz")
-sha256sums=('65f579531687a49e659f9fbcba5efe1e51f950d11e02515bc796f8da6b97b5e3')
+sha256sums=('601fb77c7ae3cf8b5e42876c8aa83fdd3b937efe9af32eea1922b781978f3c51')
 
 package() {
     cd "$srcdir/kova"
