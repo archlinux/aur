@@ -1,0 +1,5 @@
+src/
+pkg/
+nates-recipe-rs/
+*.pkg.tar.*
+*.log

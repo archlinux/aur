@@ -1,0 +1,22 @@
+pkgbase = recipe
+	pkgdesc = WIP DO NOT INSTALL - ML/DL/AI training+inference for AMD/NVIDIA GPUs (fp64)
+	pkgver = 0.0.r229.7b7ec65
+	pkgrel = 1
+	url = https://github.com/nm-z/nates-recipe-rs
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = perl
+	depends = rust
+	depends = hip-runtime-amd
+	depends = hipblas
+	depends = hipsolver
+	depends = gcc-libs
+	depends = xz
+	depends = bzip2
+	options = !debug
+	options = !lto
+	source = nates-recipe-rs::git+https://github.com/nm-z/nates-recipe-rs.git
+	sha256sums = SKIP
+
+pkgname = recipe
