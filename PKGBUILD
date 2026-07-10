@@ -1,6 +1,6 @@
 # Maintainer: Forest Ames <fox dot ames at smallfox dot io>
 pkgname=multiworld-gg-bin
-pkgver=0.7.255
+pkgver=0.7.259
 pkgrel=1
 pkgdesc="MultiworldGG Multi-Game Randomizer and Server - Fork of Archipelago"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('xdg-terminal-exec: Better terminal support')
 makedepends=()
 checkdepends=()
 source=("https://github.com/MultiworldGG/MultiworldGG/releases/download/${pkgver}/MultiworldGG_${pkgver}_linux-x86_64.tar.gz")
-sha256sums=('d57ba642970177e3d32c485bd20c0be86c0b093ad33d0d8d688f673e4b3ab2e9')
+sha256sums=('65ceb889d2303636ffc370684fdc05efeb0d67fe8a46b1b55aba8c00edf225c0')
 
 package() {
   install -d "$pkgdir/opt"
