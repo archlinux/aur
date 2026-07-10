@@ -1,6 +1,6 @@
 # Maintainer: Samuel Paredes <sam.paredes.g@gmail.com>
 pkgname=franki-os-git
-pkgver=r964.e8bc55c
+pkgver=r969.e5fc10a
 pkgrel=1
 pkgdesc="Federated Recursive Artificial Neural Knowledge Interface - Neural OS"
 arch=('x86_64')
@@ -50,6 +50,11 @@ optdepends=(
     'python-atspi: AT-SPI accessibility tree for native GUI interaction (hands_engine — Wayland click/fill)'
     'firejail: sandboxing for external process execution (envoltura_lisosomica)'
     'sentrux: architectural quality sensor (Huso Neuromuscular + Area de Broca)'
+    'gdal: raster/vector geoprocessing (tool_geo_raster_procesar, tool_geo_vector_convertir, tool_geo_raster_derivados)'
+    'python-gdal: Python bindings for GDAL/OGR (osgeo module)'
+    'pdal: LiDAR point cloud processing (tool_geo_lidar_info, tool_geo_lidar_dem)'
+    'python-pdal: Python bindings for PDAL'
+    'grass: real hydrology analysis via r.watershed (tool_geo_hidrologia)'
 )
 options=('!debug' '!strip' '!buildflags')
 source=('franki::git+https://gitlab.com/Umbra_HS/franki_os.git')
