@@ -2,7 +2,7 @@
 # Contributor: yxzl
 
 pkgname=ter-music-cn
-pkgver=v1.11.0
+pkgver=v1.20
 pkgrel=1
 pkgdesc="Terminal based music player"
 arch=('x86_64' 'i686')
