@@ -5,9 +5,10 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=dgraph-bin
-pkgver=25.3.7
+pkgver=25.3.8
 pkgrel=1
 #pkgdesc='Fast, transactional, distributed graph database'
+#pkgdesc='A high-performance graph database for real-time use cases'
 pkgdesc='Dgraph is a horizontally scalable and distributed GraphQL database with a graph backend'
 arch=(x86_64)
 url='https://dgraph.io'
@@ -24,8 +25,8 @@ source=("dgraph-$pkgver.tar.gz::$_git/releases/download/v$pkgver/dgraph-linux-am
         "$_experimental/raw/shiva/contrib/dgraph-contrib/systemd/centos/dgraph-alpha.service"
         "$_experimental/raw/shiva/contrib/dgraph-contrib/systemd/centos/dgraph-zero.service"
         "$_experimental/raw/shiva/contrib/dgraph-contrib/systemd/centos/dgraph-ui.service")
-sha256sums=('6879cd849af9f883218f72d27606f25916011b2121e636aa7a0c64e621103245'
-            'c598d0109cdf73d8aa46e6043d1b5f50509e329aae617e91974069b47be850da'
+sha256sums=('b4a7bb570b91e8979e6fd5b219d1200bb8be79d39abdc3fbb096548c76961425'
+            'c4a0b9ab245345405462620b1ca53a03dc7da2af2d36423c47d86ffd22596b8e'
             'c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08'
             '3ae6aa66dc54919f3183ef0abec35ed11122f2ea49fa30c328b376a3fac69afd'
             'b0436225ea1b65e47cea0e4bc039bcf5c795330f352b6333a99e84f5bd000d23'
@@ -35,10 +36,10 @@ sha256sums=('6879cd849af9f883218f72d27606f25916011b2121e636aa7a0c64e621103245'
 package() {
   install -Dm755 dgraph -t "$pkgdir/usr/bin/"
   install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 dgraph-alpha.service "$pkgdir/usr/lib/systemd/system/dgraph-alpha.service"
-  install -Dm644 dgraph-zero.service "$pkgdir/usr/lib/systemd/system/dgraph-zero.service"
-  install -Dm644 dgraph-ui.service "$pkgdir/usr/lib/systemd/system/dgraph-ui.service"
-  install -Dm755 add_dgraph_account.sh "$pkgdir/usr/share/dgraph/add_dgraph_account.sh"
+  install -Dm644 dgraph-alpha.service -t "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 dgraph-zero.service -t "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 dgraph-ui.service -t "$pkgdir/usr/lib/systemd/system/"
+  install -Dm755 add_dgraph_account.sh -t "$pkgdir/usr/share/dgraph/"
   install -Dm644 <(./dgraph completion bash 2>/dev/null) "$pkgdir/usr/share/bash-completion/completions/dgraph"
   install -Dm644 <(./dgraph completion zsh 2>/dev/null) "$pkgdir/usr/share/zsh/site-functions/_dgraph"
 }
