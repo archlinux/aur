@@ -19,7 +19,7 @@ license=("MIT")
 depends=("glibc" "nodejs" "bun")
 makedepends=("npm" "jq")
 
-provides=("${_npmname}")
+provides=("${pkgname}")
 
 options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
