@@ -1,0 +1,15 @@
+pkgbase = openbsd-comp-mans
+	pkgdesc = Man pages from OpenBSD's compXX.tgz file set
+	pkgver = 7.9
+	pkgrel = 1
+	url = https://www.openbsd.org/
+	install = openbsd-comp-mans.install
+	arch = any
+	license = unknown
+	options = !strip
+	options = !docs
+	options = !libtool
+	source = https://mirror.planetunix.net/pub/OpenBSD/7.9/amd64/comp79.tgz
+	sha256sums = 21a67af20aebcabf85b09f4206fc95b4cae0a35d42b154b976f0159f457724f9
+
+pkgname = openbsd-comp-mans

@@ -1,0 +1,3 @@
+post_install() {
+	echo 'All OpenBSD man-page names are prefixed with "o", like "ostrlen".'
+}
