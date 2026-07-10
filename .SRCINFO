@@ -1,0 +1,12 @@
+pkgbase = kdn-bin
+	pkgdesc = CLI for Kaiden
+	pkgver = 0.19.0
+	pkgrel = 1
+	url = https://github.com/openkaiden/kdn
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	source = https://github.com/openkaiden/kdn/releases/download/v0.19.0/kdn_0.19.0_linux_amd64.tar.gz
+	b2sums = 832a4b0b6673b946c92344d770f6e6115ecb559825014c1d3cd60d80f727341a1f6044274014818f4747f0e8403573b862ea4da916ff53804ea38f07b5ba5a3b
+
+pkgname = kdn-bin

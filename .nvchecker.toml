@@ -1,0 +1,4 @@
+[kdn-bin]
+source = "git"
+git = "https://github.com/openkaiden/kdn.git"
+prefix = "v"
