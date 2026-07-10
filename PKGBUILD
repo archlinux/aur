@@ -41,7 +41,7 @@ sha256sums_aarch64=('35162d5b078ccfa6f473016d5aca024fe26391a464fefa57e395d1734c5
 prepare() {
 	cd "${srcdir}/" || exit
 
-	rm -rf git && git clone -n --depth=1 --filter=tree:0 "${_ghurl}" git && cd git
+	rm -rf git && git clone -n --depth=1 --filter=tree:0 --branch "${_pkgvername}" "${_ghurl}" git && cd git
 
 	git sparse-checkout set --no-cone /tests/wasm && git checkout
 
