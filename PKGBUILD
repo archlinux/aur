@@ -1,6 +1,6 @@
 # Maintainer: Tandem maintainers <actions@github.com>
 pkgname=tandem-bin
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Local-first CLI/TUI for human and agent project coordination'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 provides=('tandem')
 conflicts=('tandem')
 source_x86_64=("tandem-${pkgver}-x86_64-unknown-linux-gnu.tar.xz::https://github.com/Algorant/tandem/releases/download/tandem-v${pkgver}/tandem-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('9037055f92537b01bd82c2ba6927c56ed491d4363e75818e3694234c64c7d279')
+sha256sums_x86_64=('e4e290a947425c6cf7c71da94d20988ce01ae731cfc91076154cc5297951fd7e')
 
 package() {
   local tandem_bin

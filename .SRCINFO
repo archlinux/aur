@@ -1,6 +1,6 @@
 pkgbase = tandem-bin
 	pkgdesc = Local-first CLI/TUI for human and agent project coordination
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/Algorant/tandem
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = tandem-bin
 	depends = gcc-libs
 	provides = tandem
 	conflicts = tandem
-	source_x86_64 = tandem-0.4.2-x86_64-unknown-linux-gnu.tar.xz::https://github.com/Algorant/tandem/releases/download/tandem-v0.4.2/tandem-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 9037055f92537b01bd82c2ba6927c56ed491d4363e75818e3694234c64c7d279
+	source_x86_64 = tandem-0.4.3-x86_64-unknown-linux-gnu.tar.xz::https://github.com/Algorant/tandem/releases/download/tandem-v0.4.3/tandem-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = e4e290a947425c6cf7c71da94d20988ce01ae731cfc91076154cc5297951fd7e
 
 pkgname = tandem-bin
