@@ -2,7 +2,7 @@
 # Binary package (prebuilt) for minitone
 
 pkgname=minitone-bin
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="TUI music player for YouTube, Radio Browser, Navidrome and local files (prebuilt)"
 arch=('x86_64' 'aarch64')
