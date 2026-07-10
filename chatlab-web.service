@@ -10,6 +10,7 @@ ExecStart=/usr/bin/chatlab start --no-open
 Restart=always
 RestartSec=5
 SyslogIdentifier=chatlab-web
+PrivateTmp=true
 
 [Install]
 WantedBy=default.target
