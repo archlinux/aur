@@ -2,7 +2,7 @@
 pkgname=kirastudio-bin
 pkgver=1.1.1
 zipver=$(echo $pkgver | sed 's/\.//g')
-pkgrel=2
+pkgrel=1
 pkgdesc="KiraStudio is a lightweight, cross-platform music studio built around clarity and automation."
 url='https://kirastudio.org/'
 install=kirastudio.install
