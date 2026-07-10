@@ -2,7 +2,7 @@
 # Contributor: goose (Block/Open Source)
 
 pkgname=rotki
-pkgver=1.42.1
+pkgver=1.43.2
 pkgrel=1
 pkgdesc='A portfolio tracking, analytics, accounting and management application that protects your privacy'
 arch=('x86_64' 'aarch64')
@@ -29,7 +29,7 @@ source=(
   "rotki.desktop"
 )
 sha512sums=(
-  '7384611a89eea2ec9c231028b345af7b98d0e02ccc93ddb17938534038c29fb0776bf4f5998b97cf9d0f27b16178dae6f093c4fb1ffe10096afa8fa589f9e225'
+  '7056697b15864f7fbed3d932b007453ec829a2ea4130c346f86a694f5215c43beaf7f3dd2d8ad33b7273db8ed65b8936ac8c4df668b8dfefdb45a829ebdbfe35'
   'eb0bda9312d9b7f09d758c7b13dc60acb32af5119b63e526c04b52bf15630cc80d0a69d867aa062253c332592e5e6490ea63f8f765023032d4994a6a2fe05cca'
   'ecaa5f356d0fabe9b6baa1432c6f047f9acfc75d5dc0e859dab06e182b34c9442cefcff1efac8cec826dc943c7f0f85e5809aea60dea21c99b41927f17e5117a'
 )
