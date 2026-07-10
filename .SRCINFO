@@ -1,6 +1,6 @@
 pkgbase = corganizer
 	pkgdesc = A blazing fast, memory-safe CLI tool to automatically organize your cluttered files
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/zedxihan/corganizer
 	arch = x86_64

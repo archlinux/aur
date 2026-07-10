@@ -1,6 +1,6 @@
 # Maintainer: zedxihan <dev@gaffarmahmud.com>
 pkgname=corganizer
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A blazing fast, memory-safe CLI tool to automatically organize your cluttered files"
 arch=('x86_64' 'aarch64')
