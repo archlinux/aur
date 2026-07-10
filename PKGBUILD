@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=arctern-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='ZFS snapshot and replication daemon with an embedded web console'
 arch=('x86_64' 'aarch64')
@@ -25,17 +25,11 @@ source_x86_64=(
 source_aarch64=(
   "arctern-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/arctern-aarch64-linux-musl.tar.gz"
 )
-sha256sums=(
-  'aed86ae5981f103299b3968f94c16ec915e8678f14a14ce8585d04b6ec46a767'
-  '82ec35300e5f169a0f8070ab1045fc0663aab70eaf722ffdde5913391ca94285'
-  'dab21a15eee1c4f6651312e755c6d1fb9e128c68d384dfda0d2ac29dad5c3ed9'
-)
-sha256sums_x86_64=(
-  '6c772a55a166b09c5eb2b4fe00b1d6b79e66a1a5656d43f56fd96e6eaa89184d'
-)
-sha256sums_aarch64=(
-  '664211633ca1ba72841ee4356cd8423d0f045e7a1f0349bdf1876609ddd87678'
-)
+sha256sums=('bb6a12ed2f3cba05f7d6827529bc34011f4c84d92718561d6f2520c8c7f9c1af'
+            '82ec35300e5f169a0f8070ab1045fc0663aab70eaf722ffdde5913391ca94285'
+            'dab21a15eee1c4f6651312e755c6d1fb9e128c68d384dfda0d2ac29dad5c3ed9')
+sha256sums_x86_64=('e7ca9dd3fa1e5351c956e8b396604f257921ef54a5f302e5e32376e92e5bea66')
+sha256sums_aarch64=('614b5ad85054d8358be105abecb7a55c05e667fb6e116d7e6b223a85c9d1b14f')
 
 package() {
   install -Dm755 arctern "${pkgdir}/usr/bin/arctern"
