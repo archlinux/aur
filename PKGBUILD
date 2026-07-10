@@ -2,7 +2,7 @@
 
 pkgname=harbor-stremio-git
 _pkgname=harbor
-pkgver=0.9.69.r280.g8a8ef36
+pkgver=0.9.87.r280.g8a8ef36
 pkgrel=1
 pkgdesc='A Stremio client built for adventure'
 arch=('x86_64')
@@ -78,8 +78,9 @@ package() {
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  local deb data_archive
-  deb="$(find src-tauri/target -path '*/release/bundle/deb/*.deb' -type f | head -n 1)"
+  local deb data_archive version
+  version="$(node -p "require('./package.json').version")"
+  deb="$(find src-tauri/target -path "*/release/bundle/deb/Harbor_${version}_*.deb" -type f -print -quit)"
 
   if [[ -z "$deb" ]]; then
     echo "Debian bundle not found" >&2

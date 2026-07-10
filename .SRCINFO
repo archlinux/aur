@@ -1,6 +1,6 @@
 pkgbase = harbor-stremio-git
 	pkgdesc = A Stremio client built for adventure
-	pkgver = 0.9.69.r280.g8a8ef36
+	pkgver = 0.9.87.r280.g8a8ef36
 	pkgrel = 1
 	url = https://github.com/harborstremio/harbor
 	arch = x86_64
