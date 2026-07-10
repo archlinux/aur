@@ -5,13 +5,13 @@
 # for local builds.
 
 pkgname=vegad
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Daemon privilegiado do Vega, centro de controle do Lyra OS"
 arch=('x86_64')
 url="https://github.com/britors/Vega"
 license=('GPL-3.0-only')
-depends=('systemd' 'dbus' 'polkit' 'pacman')
+depends=('systemd' 'dbus' 'polkit' 'pacman' 'bluez' 'bluez-obex')
 optdepends=(
   'snapper: snapshots automáticos antes de operações do sistema'
   'flatpak: cache e atualizações do módulo Software'

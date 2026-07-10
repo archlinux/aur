@@ -180,4 +180,64 @@
       <allow_active>auth_admin</allow_active>
     </defaults>
   </action>
+
+  <action id="org.lyraos.vega.system.configure">
+    <description>Configurar data, hora, idioma e teclado</description>
+    <message>Autenticação é necessária para alterar configurações regionais do sistema</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.lyraos.vega.network.configure">
+    <description>Configurar conexões de rede e proxy</description>
+    <message>Autenticação é necessária para alterar a configuração de rede</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.lyraos.vega.bluetooth.configure">
+    <description>Configurar conexões Bluetooth</description>
+    <message>Autenticação é necessária para alterar conexões Bluetooth</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.lyraos.vega.bluetooth.transfer">
+    <description>Transferir arquivos por Bluetooth</description>
+    <message>Autenticação é necessária para transferir arquivos por Bluetooth</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.lyraos.vega.storage.mount">
+    <description>Montar ou desmontar volumes</description>
+    <message>Autenticação é necessária para montar ou desmontar armazenamento</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
+
+  <action id="org.lyraos.vega.monitor.kill">
+    <description>Encerrar processos</description>
+    <message>Autenticação é necessária para encerrar processos do sistema</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+  </action>
 </policyconfig>
