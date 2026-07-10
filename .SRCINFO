@@ -1,7 +1,7 @@
 pkgbase = censor
 	pkgdesc = PDF document redaction for the GNOME desktop
 	pkgver = 0.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/censor/Censor
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -10,6 +10,7 @@ pkgbase = censor
 	makedepends = ninja
 	depends = gtk4
 	depends = libadwaita
+	depends = python-cairo
 	depends = python-gobject
 	depends = python-pymupdf>=1.27.2.3
 	source = censor-0.7.3.tar.gz::https://codeberg.org/censor/Censor/archive/v0.7.3.tar.gz
