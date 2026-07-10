@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Cross-platform TUI for inspecting the USB device tree"
 
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums=('0278c3aa9235ca49066a42beaa174532120b8f4f416bad921bb6cd5ebab1d764'
+sha256sums=('7733acd8a93098eb7f244c1c1b34efb9ff5fded45d1b7d3e3c65d7893c3b1d1b'
             '9be541594ab169eaf1bb278300d81a1fe2bf399980ca2505e978a225ba9d8e0e')
-sha256sums_x86_64=('d1e1781103574a06f8da57a0051e6ad050203b5544f56020b1a183a0c4df56d5')
-sha256sums_aarch64=('37bcfdf138f70e841dc0a21e8c1ddc3bd203f4ae199473b9b4c100f5ba84744e')
+sha256sums_x86_64=('7ada0444cbd40b2a3165bab2a4eba732821b2d45b897b25616d425f665f280c8')
+sha256sums_aarch64=('86a6e0a68ca0bbbbe283bf63f4528f8ff6eb4a1a6ed69481996959fb29c22e18')
 
 
 package() {
