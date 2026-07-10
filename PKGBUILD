@@ -1,6 +1,6 @@
 # Maintainer: LargeModGames <LargeModGames@gmail.com>
 pkgname=spotatui
-pkgver=0.40.1
+pkgver=0.40.2
 pkgrel=1
 pkgdesc="A Spotify client for the terminal written in Rust, powered by Ratatui"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('openssl' 'pipewire')
 makedepends=('cargo' 'clang')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('97c62a2f2075cecefac7112c4dd1d32691c5e8642da64876deeef02346455d54')
+sha256sums=('385742c6b1c192e2b2703d65fbfc84d16edc1426030f2d7a46374bff2c3586f1')
 
 prepare() {
   cd "$pkgname-$pkgver"
