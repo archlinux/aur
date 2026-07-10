@@ -1,6 +1,6 @@
 pkgbase = image-garden
 	pkgdesc = Tool for creating test virtual machines
-	pkgver = 0.6.0
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://gitlab.com/zygoon/image-garden
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = image-garden
 	optdepends = qemu-system-ppc
 	optdepends = qemu-system-riscv
 	optdepends = qemu-system-s390x
-	source = image-garden-0.6.0.tar.bz2::https://gitlab.com/zygoon/image-garden/-/archive/v0.6.0/image-garden-v0.6.0.tar.bz2
-	sha256sums = 2080e7bbe07105e2d679e72ad9b062ebd6c4314b485156087f107e852f74a384
+	source = image-garden-0.6.3.tar.bz2::https://gitlab.com/zygoon/image-garden/-/archive/v0.6.3/image-garden-v0.6.3.tar.bz2
+	sha256sums = 416b7090223a5c8c1429ae165778860581a5fc203237af175099ff649127ac7c
 
 pkgname = image-garden
 	depends = make

@@ -1,6 +1,6 @@
 # Maintainer: Maciej Borzecki <maciek.borzecki@gmail.com
 pkgname=image-garden
-pkgver=0.6.0
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Tool for creating test virtual machines"
 arch=(any)
@@ -20,7 +20,7 @@ source=(
 	"$pkgname-$pkgver.tar.bz2::https://gitlab.com/zygoon/${pkgname}/-/archive/v${pkgver}/image-garden-v${pkgver}.tar.bz2"
 )
 noextract=()
-sha256sums=('2080e7bbe07105e2d679e72ad9b062ebd6c4314b485156087f107e852f74a384')
+sha256sums=('416b7090223a5c8c1429ae165778860581a5fc203237af175099ff649127ac7c')
 
 prepare() {
 	cd "$pkgname-v$pkgver"
