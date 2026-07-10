@@ -1,16 +1,15 @@
-# Stub PKGBUILD to reserve package name
+# Maintainer: Empyrealm <realminc.depravity737@passinbox.com>
 pkgname=oa-sdk-bin
-pkgver=0.0.1
+pkgver=0.7.2
 pkgrel=1
-pkgdesc="OA SDK - Development headers and libraries for OA (pre-built binaries)"
-arch=(x86_64)
-url="https://github.com/empyrealm/oa"
-license=(MIT)
-depends=(oa-bin)
-source=("https://github.com/empyrealm/oa/releases/download/v${pkgver}/oa-sdk-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=()
+pkgdesc="OA SDK — Development headers, CMake configs, and shader sources (pre-built binaries)"
+arch=('x86_64')
+url="https://github.com/realminc/oa"
+license=('BUSL-1.1')
+depends=('oa-bin')
+source=("https://github.com/realminc/oa/releases/download/v${pkgver}/oa-sdk-${pkgver}-linux-x86_64.tar.gz")
+sha256sums=('4ccf412a520e50c322934ff88b2345efd1ba37263059bac6cc6af87da28e5ed8')
 
 package() {
-  mkdir -p "$pkgdir"/usr
-  cp -r usr/* "$pkgdir"/usr/
+  tar -xzf "$srcdir/oa-sdk-${pkgver}-linux-x86_64.tar.gz" -C "$pkgdir"
 }
