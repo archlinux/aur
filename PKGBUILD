@@ -4,7 +4,7 @@ _gitauthor=pmoracho
 _gitname=tmenu
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="Universal test runner with auto-detection for 11 languages"
+pkgdesc="A small, fast, keyboard-driven menu launcher for your terminal"
 
 pkgver=1.0.11
 pkgrel=1
