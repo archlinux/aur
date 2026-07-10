@@ -2,7 +2,7 @@
 
 _name=genai-prices
 pkgname=python-$_name
-pkgver=0.0.70
+pkgver=0.0.71
 pkgrel=1
 pkgdesc='Calculate prices for calling LLM inference APIs.'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-uv-build' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-anyio' 'python-dirty-equals' 'python-inline-snapshot' 'python-pytest' 'python-pytest-recording' 'python-pydantic-settings' 'python-rich' 'python-rich-argparse' 'python-boto3' 'python-ruamel-yaml')
 optdepends=('python-pydantic-settings: cli' 'python-rich: cli' 'python-rich-argparse: cli')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('46ecece7f8ed7fafd4e81cc729ad3b87b95d4978c78aaa2f17449006a9e4ca12')
+sha256sums=('0cbf15b27ef78931e94e64e0035f71f9c477ca60785b00bcd4fbea91bd19c01e')
 
 prepare() {
   # Fix ValidationError
