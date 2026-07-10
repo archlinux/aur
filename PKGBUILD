@@ -9,13 +9,19 @@ fi
 
 _pkgname="pcsx2"
 pkgname="$_pkgname-latest-bin"
-pkgver=2.7.340
+pkgver=2.7.461
 pkgrel=1
 pkgdesc="PlayStation 2 emulator"
 url="https://github.com/PCSX2/pcsx2"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 
+depends=(
+  'e2fsprogs'
+  'gmp'
+  'hicolor-icon-theme'
+  'libgpg-error'
+)
 makedepends=(
   'patchelf'
 )
@@ -68,7 +74,7 @@ package() {
   ln -sf "/$_install_path/$_pkgname/usr/bin/pcsx2-qt" "$pkgdir/usr/bin/$_pkgname-qt"
 
   # icon
-  install -Dm644 "$_pkgname.png" -t "$pkgdir/usr/share/pixmaps/"
+  install -Dm644 "$_pkgname.png" -t "$pkgdir/usr/share/icons/hicolor/512x512/apps/"
 
   # launcher
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
