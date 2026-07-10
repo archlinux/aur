@@ -2,7 +2,7 @@
 
 pkgname=opera-developer
 pkgver=134.0.5952.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, secure, easy-to-use web browser (Developer Stream)'
 arch=('x86_64')
 url='https://www.opera.com/computer'
@@ -75,7 +75,7 @@ sha256sums=(
     '1c5179ce9aacafcba867db33d7861d1e9a2e7890e7d481ee036b3b6f4e1fe0ea'
     '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
     '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231'
-    'e5532d59117f527fc34f9f7af2aedf78719627fdf7b5527d84b2e71126764ec6'
+    'eccac785a61f552d7ce75a1aba990486d977d74cd6ac78091c21b3c807cf1b01'
 )
 
 prepare() {
