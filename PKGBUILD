@@ -1,5 +1,5 @@
 pkgname=gitnexus
-pkgver=1.6.7
+pkgver=1.6.9
 pkgrel=1
 pkgdesc='Zero-server code intelligence engine for exploring repositories as a knowledge graph'
 arch=('x86_64' 'aarch64')
@@ -14,29 +14,12 @@ _upstream=GitNexus
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('21f8b2b21f74f36845a954236b3ddfc536317ae5406191982c16d476c6881c56')
-
-prepare() {
-  local _root="${srcdir}/${_upstream}-${pkgver}"
-  local _src="${_root}/gitnexus"
-
-  cd "$_src"
-
-  # Prevent npm ci from running the package build too early.
-  node -e '
-    const fs = require("node:fs");
-    const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
-    delete pkg.scripts.prepare;
-    fs.writeFileSync("package.json", JSON.stringify(pkg, null, 2) + "\n");
-  '
-
-  # Upstream build.js runs `npx tsc` from ../gitnexus-shared.
-  # Expose gitnexus/node_modules there as well so `npx` can find `tsc`.
-  ln -sfn ../gitnexus/node_modules "${_root}/gitnexus-shared/node_modules"
-}
+sha256sums=('468138d074bb1c3bf4c0094a813d426a2146510d13a5f747c51b950a1f877c90')
 
 build() {
-  local _src="${srcdir}/${_upstream}-${pkgver}/gitnexus"
+  local _root="${srcdir}/${_upstream}-${pkgver}"
+  local _shared="${_root}/gitnexus-shared"
+  local _src="${_root}/gitnexus"
 
   export HOME="${srcdir}/.home"
   export npm_config_cache="${srcdir}/npm-cache"
@@ -52,13 +35,27 @@ build() {
 
   mkdir -p "$HOME" "$npm_config_cache"
 
+  cd "$_shared"
+  npm install
+  npm run build
+
   cd "$_src"
 
   npm ci --include=dev --include=optional
   PATH="$PWD/node_modules/.bin:$PATH" npm run build
 
-  rm -rf node_modules
-  npm ci --omit=dev --include=optional
+  npm prune --omit=dev --include=optional
+
+  node node_modules/@ladybugdb/core/install.js
+
+  local _lbug
+  _lbug="$(find node_modules/@ladybugdb/core -type f -name 'lbugjs.node' -print -quit)"
+  if [[ -z "$_lbug" ]]; then
+    echo "error: LadybugDB native binary lbugjs.node was not installed" >&2
+    exit 1
+  fi
+
+  echo "Found LadybugDB native binary: $_lbug"
 }
 
 package() {
@@ -81,6 +78,8 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   cat >"${pkgdir}/usr/bin/${pkgname}" <<'EOF'
 #!/bin/sh
+
+export GITNEXUS_LBUG_EXTENSION_INSTALL="${GITNEXUS_LBUG_EXTENSION_INSTALL:-auto}"
 exec node /usr/lib/node_modules/gitnexus/dist/cli/index.js "$@"
 EOF
   chmod 755 "${pkgdir}/usr/bin/${pkgname}"
