@@ -3,7 +3,7 @@
 _pkgname=Amethyst-Mod-Manager
 pkgname=amethyst-mod-manager
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Linux native mod manager for a variety of games'
 arch=('any')
 url='https://github.com/ChrisDKN/Amethyst-Mod-Manager'
@@ -50,7 +50,7 @@ optdepends=(
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ChrisDKN/Amethyst-Mod-Manager/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('cc38bf0a57b19656c315c608e92ca2a09f417cd968aee7152ec67fe9661da5ad')
 
-build() {
+prepare() {
     cd "${_pkgname}-${pkgver}"
 
     sed -i 's/import LOOT.loot as loot/import loot/' 'src/LOOT/loot_sorter.py'
