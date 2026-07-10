@@ -1,6 +1,6 @@
 pkgname=warp-terminal-autoup-bin
 _pkgname=warp-terminal
-pkgver=0.2026.07.01.09.21.stable_01
+pkgver=0.2026.07.08.17.54.stable_01
 pkgrel=1
 pkgdesc='Warp, the Rust-based terminal for developers and teams'
 arch=('x86_64')
@@ -33,7 +33,7 @@ source=(
   "${_pkgname}-v${pkgver}-1-x86_64.pkg.tar.zst::https://releases.warp.dev/stable/v${pkgver}/${_pkgname}-v${pkgver}-1-x86_64.pkg.tar.zst"
 )
 noextract=("${_pkgname}-v${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('15e4406409dd404c28418da6557f3204f8e062d6341db54a7c3c1ea47b94e7dc')
+sha256sums=('eaea50457641e97fd98d583e73d6f4bb7b38e79f907108ce40abb63175682a74')
 
 package() {
   local _upstream_pkg="${_pkgname}-v${pkgver}-1-x86_64.pkg.tar.zst"
