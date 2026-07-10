@@ -13,7 +13,7 @@ replaces=( 'mangowc')
 makedepends=('meson' 'ninja' 'wayland-protocols>=1.41')
 
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/mangowm/mango/archive/refs/tags/$pkgver.tar.gz")
-md5sums=('c2c9fa71e0774ea90d98275a0bd5edad')
+sha256sums=('2ecc0400f8a1455262ce999ecbde41845786a091646481cf46dc384280aa90d1')
 
 build() {
   cd "$_pkgname-$pkgver"
