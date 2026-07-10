@@ -1,19 +1,19 @@
 pkgbase = jq.sh
 	pkgdesc = jq-in-shell integration library
-	pkgver = 1.0.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://gitlab.com/stefanwimmer128/jq.sh
 	arch = any
 	license = MPL2
-	makedepends = git
-	makedepends = shellcheck
-	makedepends = shellspec
+	checkdepends = shellcheck
+	checkdepends = shellspec
 	makedepends = getoptions
+	makedepends = yq
 	depends = sh
 	depends = jq
 	depends = moreutils
 	optdepends = yq: Adds support for yq, xq and tomlq
-	source = jq.sh::git+https://gitlab.com/stefanwimmer128/jq.sh.git#tag=v1.0.1
-	sha256sums = SKIP
+	source = https://gitlab.com/stefanwimmer128/jq.sh/-/releases/v2.0.0/downloads/jq.sh-v2.0.0.tar.gz
+	sha256sums = c5eb151bcc9e17753c3754519262023a3db096843785ecb6b6c6d87ed238cdf5
 
 pkgname = jq.sh
