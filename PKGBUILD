@@ -2,7 +2,7 @@
 # Contributor: kuro <kuro@kuro.moe>
 
 pkgname=vicinae-takoba
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Japanese dictionary, translator, TTS, and Anki integration for launchers — search Jotoba, translate on the fly, add cards to Anki"
 arch=('any')
@@ -28,9 +28,9 @@ package() {
   install -dm755 "$pkgdir/usr/share/vicinae-takoba"
   install -Dm644 dist/takoba.js "$pkgdir/usr/share/vicinae-takoba/takoba.js"
   install -Dm644 package.json "$pkgdir/usr/share/vicinae-takoba/package.json"
-  install -Dm644 assets/icon.png "$pkgdir/usr/share/vicinae-takoba/icon.png"
-  install -dm755 "$pkgdir/usr/share/vicinae-takoba/assets"
-  install -Dm644 assets/icon.png "$pkgdir/usr/share/vicinae-takoba/assets/icon.png"
+   install -Dm644 assets/icon.svg "$pkgdir/usr/share/vicinae-takoba/icon.svg"
+   install -dm755 "$pkgdir/usr/share/vicinae-takoba/assets"
+   install -Dm644 assets/icon.svg "$pkgdir/usr/share/vicinae-takoba/assets/icon.svg"
   install -dm755 "$pkgdir/usr/share/vicinae-takoba/dict"
   install -m644 dist/dict/*.dat.gz "$pkgdir/usr/share/vicinae-takoba/dict/"
   install -dm755 "$pkgdir/usr/share/vicinae-takoba/scripts"
