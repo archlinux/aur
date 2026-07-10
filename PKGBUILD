@@ -1,6 +1,6 @@
 # Maintainer: lightjunction
 pkgname=lab-safety-system-git
-pkgver=0.1.0.r52.ge410bc1
+pkgver=0.1.0.r58.g72e5113
 pkgrel=1
 pkgdesc="Laboratory safety management information system (zero-config setup)"
 arch=('x86_64' 'aarch64')
