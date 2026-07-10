@@ -1,6 +1,6 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=liboqs
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 epoch=1
 pkgdesc="C library for prototyping and experimenting with quantum-resistant cryptography"
@@ -22,10 +22,11 @@ makedepends=(
 checkdepends=(
     python-pytest
     python-pytest-xdist
+    python-requests
     python-yaml
 )
-source=($pkgname::git+https://github.com/open-quantum-safe/$pkgname.git#tag=$pkgver)
-b2sums=('919a66cd10b01fb4c87bbd601fa9d128303ebbbc6ca182e7b7e616c317ef2bf23e1a7e4e55282cee325eb5546ec7d76b6c6b4d20afe13e30879f630d849f2dfd')
+source=($pkgname::git+https://github.com/open-quantum-safe/$pkgname.git#tag=${pkgver//_/-})
+b2sums=('add5a688b6401f383cc955fa00a975e3aab0f1a5236a912a3a72c0aa9b9b6cc5f63cd17c09ab6f815a0fdd1047d89399d288f0eee73c3172fa2d575176d8eb46')
 
 build() {
     cmake -G Ninja -B build -S $pkgname\
@@ -36,6 +37,7 @@ build() {
         -DOQS_BUILD_ONLY_LIB=OFF \
         -DOQS_DIST_BUILD=ON \
         -DOQS_USE_OPENSSL=ON \
+        -DOQS_MEMOPT_BUILD=OFF \
         -DOQS_DLOPEN_OPENSSL=OFF \
         -DOQS_USE_AES_OPENSSL=ON \
         -DOQS_USE_SHA2_OPENSSL=ON \
