@@ -5,20 +5,21 @@ _name=WheelWizard
 _app_id=io.github.TeamWheelWizard.WheelWizard
 pkgver=2.4.11
 _pkgver="v$pkgver"
-pkgrel=4
-pkgdesc="${_name} – Mario Kart Mod Manager & Retro Rewind Auto Updater"
+pkgrel=5
+pkgdesc="Mario Kart Mod Manager & Retro Rewind Auto Updater"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Team${_name}/${_name}"
-license=('GPL-3.0')
+license=('GPL-3.0-only')
 _dotnet_ver=8.0
 _dotnet_configuration=Release
 _default_res=256
 options=(!strip)
-depends=('gcc-libs'
+depends=("dotnet-sdk-${_dotnet_ver}"
+         'fontconfig'
          'glibc'
          'hicolor-icon-theme'
-         'zlib'
-         "dotnet-sdk-${_dotnet_ver}")
+         'libgcc'
+         'libstdc++')
 optdepends=('dolphin-emu: native Dolphin support'
             'flatpak: Flatpak Dolphin support')
 provides=(${pkgname})
@@ -26,6 +27,14 @@ conflicts=(${pkgname})
 
 source=("${_name}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
 b2sums=('548425ea02810696168a766390299c2c0f6f79db0828381ace06d316a3c1fa7f426cb4ce6f5084a8f85fbb49e8086f2a6e5c3dcdd223ddf4b24cc151727fa9fb')
+
+_runtime_to_keep() {
+    if [ "${CARCH}" = 'aarch64' ]; then
+        echo 'linux-arm64'
+    elif [ "${CARCH}" = 'x86_64' ]; then
+        echo 'linux-x64'
+    fi
+}
 
 prepare() {
     pushd "${_name}-${pkgver}"
@@ -63,6 +72,9 @@ package() {
     install -d -m0755 "${pkgdir}/usr/lib/${pkgname}/"
     cp -r --remove-destination "${_name}/bin/${_dotnet_configuration}/net${_dotnet_ver}/publish/"* \
         "${pkgdir}/usr/lib/${pkgname}/"
+    find "${pkgdir}/usr/lib/${pkgname}/runtimes" \
+        -mindepth 1 -maxdepth 1 -not -name "$(_runtime_to_keep)" \
+        -exec rm -rf {} +
     install -d -m0755 "${pkgdir}/usr/bin/"
     ln -sf "../lib/${pkgname}/${_name}" "${pkgdir}/usr/bin/${_name}"
     install -D -m0644 "Flatpak/${_app_id}.desktop" \
