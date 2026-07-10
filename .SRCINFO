@@ -1,0 +1,17 @@
+pkgbase = aiven-client
+	pkgdesc = Official command-line client for Aiven
+	pkgver = 4.15.0
+	pkgrel = 1
+	url = https://github.com/aiven/aiven-client
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python>=3.10
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/a/aiven_client/aiven_client-4.15.0.tar.gz
+	sha256sums = 069a08c035ce05fb8afef5d94baa5b5f79caddb5189115ac2c6eb6d1a201045c
+
+pkgname = aiven-client
