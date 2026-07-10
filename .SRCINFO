@@ -1,6 +1,6 @@
 pkgbase = rampup
 	pkgdesc = systemd service for ec_su_axb35 fan ramp curves
-	pkgver = r0020.e2ba
+	pkgver = r21.e2ba
 	pkgrel = 1
 	url = https://codeberg.org/radupotop/rampup
 	arch = any

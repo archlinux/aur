@@ -1,7 +1,7 @@
 # Maintainer: Radu Potop <radu@wooptoo.com>
 
 pkgname=rampup
-pkgver=r0020.e2ba
+pkgver=r21.e2ba
 pkgrel=1
 pkgdesc='systemd service for ec_su_axb35 fan ramp curves'
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    printf 'r%04d.%s\n' \
+    printf 'r%d.%s\n' \
         "$(git rev-list --count HEAD)" \
         "$(git describe --abbrev=4 --always --tags | sed 's/-/./g')"
 }
