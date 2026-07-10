@@ -1,8 +1,8 @@
 # Maintainer: Vitaliy VVS Star <vitaliy <dot> star <at> Gmail-DOT-Com>
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=librechat
-pkgver=0.8.6
-pkgrel=2
+pkgver=0.8.7
+pkgrel=1
 pkgdesc="Open-source ChatGPT clone fully customizable and compatible with any AI provider"
 arch=('x86_64')
 url="https://github.com/danny-avila/LibreChat"
@@ -23,66 +23,21 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/danny-avila/LibreChat/archive/refs/tags/v$pkgver.tar.gz"
   librechat.install librechat.env librechat.service librechat.sysusers librechat-server.sh
 )
-sha256sums=('14d812ad0f36dd214db2a58df229fb5b8edd9609da4f459ecef59421ea737b03'
+sha256sums=('de94ba3ecc8053f0cf494071da19882e2fe509bfd9f32451f1f12cb715b8e7b6'
             '063927ce15c895c49252b1d0e12dbf7aa15c6a335630576db7cee0c4beaf964f'
             'c1996fb6baa3f6decfdf27cac916ab6a9eb49bd9ff28e5a350dc9396c96ff0e4'
             '6d8d9cbf687b9978ca33be6ae270fe2a6a65938ee945d3dca5435531ba5cadf8'
             '98e0aa0ac2e301a82d1d9cb567f361cb86af09a9b7b7bf65a526098fc4789339'
             '0dc9d536ad4740e19ac8346a7e8372b5e65cd0653755db339edc126d019ea955')
 
-prepare(){
-  cd "LibreChat-$pkgver"
-  # Fix rollup build: npm workspaces + filesystem symlinks cause preserveModules
-  # to produce relative paths in [name] placeholder. Replace preserveModules
-  # with explicit multi-input config matching package.json exports.
-  cat > packages/data-schemas/rollup.config.js << 'ROLLUP_EOF'
-import json from '@rollup/plugin-json';
-import typescript from '@rollup/plugin-typescript';
-import commonjs from '@rollup/plugin-commonjs';
-import nodeResolve from '@rollup/plugin-node-resolve';
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-
-const plugins = [
-  json(),
-  peerDepsExternal(),
-  nodeResolve(),
-  commonjs(),
-  typescript({
-    tsconfig: './tsconfig.build.json',
-    declaration: false,
-    declarationDir: undefined,
-  }),
-];
-
-const external = ['mongoose'];
-
-export default [
-  {
-    input: 'src/index.ts',
-    output: [
-      { file: 'dist/index.es.js', format: 'es', sourcemap: true },
-      { file: 'dist/index.cjs', format: 'cjs', sourcemap: true, exports: 'named' },
-    ],
-    plugins,
-    external,
-  },
-  {
-    input: 'src/admin/capabilities.ts',
-    output: [
-      { file: 'dist/admin/capabilities.es.js', format: 'es', sourcemap: true },
-      { file: 'dist/admin/capabilities.cjs', format: 'cjs', sourcemap: true, exports: 'named' },
-    ],
-    plugins,
-    external,
-  },
-];
-ROLLUP_EOF
-}
 build() {
   cd "LibreChat-$pkgver"
   # Install dependencies
   npm config set cache "$srcdir/.npm-cache"
   npm ci
+
+  # tsdown requires unrun module which isn't resolved by npm ci
+  npm install --no-save unrun
 
   # Build the frontend
   npm run frontend
