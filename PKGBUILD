@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=gitswitcher
-pkgver=1.7.3
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Secure Git identity and SSH/GPG key management tool for seamless account switching'
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,11 @@ build() {
 
 package() {
     cd "$srcdir/gitswitchC"
-    make install DESTDIR="$pkgdir"
-    
+    # PREFIX=/usr so the binary and shell completions land in Arch's real
+    # paths (/usr/bin, /usr/share/{bash-completion,zsh/site-functions,fish})
+    # rather than /usr/local, where zsh/fish completions wouldn't be found.
+    make install DESTDIR="$pkgdir" PREFIX=/usr
+
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
