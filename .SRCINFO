@@ -1,23 +1,20 @@
 pkgbase = key-echo-bin
 	pkgdesc = Listen to Mechanical Keyboard Sounds with Every Keystroke - It's Fast.(Prebuilt version)
-	pkgver = 0.0.5
-	pkgrel = 2
-	url = https://github.com/ZacharyL2/KeyEcho
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://keyecho.app/
 	arch = aarch64
-	arch = armv7h
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = gtk3
 	depends = gdk-pixbuf2
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = alsa-lib
-	provides = key-echo=0.0.5
+	provides = key-echo=1.0.0
 	conflicts = key-echo
-	source_aarch64 = key-echo-0.0.5-aarch64.rpm::https://github.com/ZacharyL2/KeyEcho/releases/download/v0.0.5/key-echo-0.0.5-1.aarch64.rpm
-	sha256sums_aarch64 = f982b140942383f3b2883ad199a645881aeeb7975ac2bcb611299d74d3a131e4
-	source_armv7h = key-echo-0.0.5-armv7h.rpm::https://github.com/ZacharyL2/KeyEcho/releases/download/v0.0.5/key-echo-0.0.5-1.armhfp.rpm
-	sha256sums_armv7h = 7475ce012575ac9b64774ea0d67eda6eca8839504e356a99752d965ffb7a0ddb
-	source_x86_64 = key-echo-0.0.5-x86_64.rpm::https://github.com/ZacharyL2/KeyEcho/releases/download/v0.0.5/key-echo-0.0.5-1.x86_64.rpm
-	sha256sums_x86_64 = daca03e49bb6a67537452dac3b81aa9f143ff31399735c93b310986ac8bfaee4
+	source_aarch64 = key-echo-1.0.0-aarch64.rpm::https://github.com/ZacharyL2/KeyEcho/releases/download/v1.0.0/KeyEcho-1.0.0-1.aarch64.rpm
+	sha256sums_aarch64 = 18ef74f36d7203165984d22aa6ec6b33172ef65be7c8a00143231010af5281fd
+	source_x86_64 = key-echo-1.0.0-x86_64.rpm::https://github.com/ZacharyL2/KeyEcho/releases/download/v1.0.0/KeyEcho-1.0.0-1.x86_64.rpm
+	sha256sums_x86_64 = f7fd6a6dd63c8194023dec3b471081367b68b81f389da5faca0b825bd6ac3f4a
 
 pkgname = key-echo-bin
