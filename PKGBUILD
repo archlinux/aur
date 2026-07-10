@@ -2,7 +2,7 @@
 # minitone — TUI music player (YouTube / Radio / Navidrome / local)
 
 pkgname=minitone
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="TUI music player for YouTube, Radio Browser, Navidrome and local files"
 arch=('x86_64' 'aarch64')
