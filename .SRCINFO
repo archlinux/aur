@@ -1,6 +1,6 @@
 pkgbase = python-comfyui-embedded-docs
 	pkgdesc = ComfyUI help pages
-	pkgver = 0.4.4
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://github.com/Comfy-Org/embedded-docs/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-comfyui-embedded-docs
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/comfyui-embedded-docs/comfyui_embedded_docs-0.4.4.tar.gz
-	sha512sums = d39554af6b9aefe1221a138825d938b16230b722febafe54090ae10919bc677c066ab3d810d7340823ebf0d3e25bc3424a76d4a1a2e9aff98546a5258307d8bd
+	source = https://files.pythonhosted.org/packages/source/c/comfyui-embedded-docs/comfyui_embedded_docs-0.5.6.tar.gz
+	sha512sums = d196a3c04101c40d2c3cb9deca4609e79ada55c577a72d0fb1dc3b814f2ed49f867a3768662cec1d60a52db60de843031c22b024c9f7cb301308712ff8ae25eb
 
 pkgname = python-comfyui-embedded-docs

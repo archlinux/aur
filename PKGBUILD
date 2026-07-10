@@ -1,7 +1,7 @@
 # Maintainer: lalala <lalala_233@qq.com>
 pkgname=python-comfyui-embedded-docs
 _name=${pkgname#python-}
-pkgver=0.4.4
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="ComfyUI help pages"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL-3.0')
 depends=('python')
 makedepends=(python-build python-installer python-wheel python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name//-/_}-${pkgver}.tar.gz")
-sha512sums=('d39554af6b9aefe1221a138825d938b16230b722febafe54090ae10919bc677c066ab3d810d7340823ebf0d3e25bc3424a76d4a1a2e9aff98546a5258307d8bd')
+sha512sums=('d196a3c04101c40d2c3cb9deca4609e79ada55c577a72d0fb1dc3b814f2ed49f867a3768662cec1d60a52db60de843031c22b024c9f7cb301308712ff8ae25eb')
 
 build() {
   cd ${_name//-/_}-${pkgver}
