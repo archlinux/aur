@@ -1,6 +1,6 @@
 # Maintainer: Emilia <gasd228337@gmail.com>
 
-pkgname=python-cia-descrypter-git
+pkgname=python-cia-descrypter
 pkgver=0.1
 pkgrel=2
 pkgdesc="A Python script to decrypt Nintendo 3DS .cia files using pyctr"
