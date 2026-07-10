@@ -7,8 +7,8 @@ pkgrel=16
 pkgdesc='Various Arch Linux customizations that I do :3'
 arch=(any)
 makedepends=()
-source=(x-atapi-mimetypes.xml 51-dolphinbar.rules 51-gamecube-adapter.rules killsteam steam-monitor unfuck_bt unfuck_wpe mod-preload.conf 10-atapi-envs.conf edit-in-imhex.desktop edit-in-kate.desktop gbafix.desktop imagemagick.desktop conv2png.sh conv2jpg.sh rotate.sh flip.sh)
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+source=(x-atapi-mimetypes.xml 51-dolphinbar.rules 51-gamecube-adapter.rules killsteam steam-monitor unfuck_bt unfuck_wpe mod-preload.conf 10-atapi-envs.conf edit-in-imhex.desktop edit-in-kate.desktop gbafix.desktop imagemagick.desktop conv2png.sh conv2jpg.sh rotate.sh flip.sh AtapiColors.colors)
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
   install -Dm644 "$srcdir/x-atapi-mimetypes.xml" "$pkgdir/usr/share/mime/packages/x-atapi-mimetypes.xml"
@@ -30,4 +30,6 @@ package() {
   install -Dm755 "$srcdir/conv2jpg.sh" "$pkgdir/usr/share/atapi-customizations/conv2jpg.sh"
   install -Dm755 "$srcdir/rotate.sh" "$pkgdir/usr/share/atapi-customizations/rotate.sh"
   install -Dm755 "$srcdir/flip.sh" "$pkgdir/usr/share/atapi-customizations/flip.sh"
+  
+  install -Dm644 "$srcdir/AtapiColors.colors" "$pkgdir/usr/share/colors-schemes/AtapiColors.colors"
 }
