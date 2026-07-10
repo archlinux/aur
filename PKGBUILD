@@ -1,19 +1,19 @@
 # Maintainer: Yoann Laissus <yoann.laissus@gmail.com>
 pkgname=wireview-linux
-pkgver=1.0.4.4
+pkgver=1.2.0.0
 pkgrel=1
 pkgdesc="Unofficial Linux port of the Thermal Grizzly WireView Pro II desktop application"
 arch=('x86_64')
 url="https://github.com/emaspa/wireview-linux"
 license=('custom')
-depends=('glibc' 'gcc-libs' 'zlib' 'fontconfig' 'freetype2' 'libx11')
+depends=('glibc' 'gcc-libs' 'zlib' 'fontconfig' 'freetype2' 'libx11' 'dfu-util')
 makedepends=('dotnet-sdk' 'git' 'imagemagick')
 options=('!strip')
 source=(
   "git+$url.git#tag=v$pkgver"
   "$pkgname.desktop"
 )
-sha256sums=('063c7412fb802288d4bae27ea4c18b463e6b5e26fb4e0a5bb2f7ac31c0fd2350'
+sha256sums=('2640115c766504f441ca2a3e28398f43ea9e8057908a8b8dd6d2fcd58924b555'
             'f9336a2a0dc5f6b959ef2ae83d228f68d269f4a84d9651b318d669888d73f646')
 
 build() {
