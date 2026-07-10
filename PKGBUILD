@@ -5,7 +5,7 @@
 # VEGA_SOURCE_URL and VEGA_SOURCE_DIR for local builds.
 
 pkgname=lyra-vega
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Centro de controle do Lyra OS"
 arch=('x86_64')
