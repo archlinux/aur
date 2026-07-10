@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = bettbox-compatible-bin
+
+[Action]
+Description = Restarting Bettbox...
+When = PostTransaction
+Exec = /bin/sh -c 'for d in /run/user/*/; do u=${d#/run/user/}; u=${u%/}; su "$(id -nu "$u" 2>/dev/null)" -c "/usr/bin/bettbox --restart" 2>/dev/null || true; done'

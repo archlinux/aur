@@ -3,8 +3,8 @@
 pkgname=bettbox-compatible-bin
 _pkgname=Bettbox
 pkgver=1.18.5
-_pkgver="${pkgver/.pre/-pre}"
-pkgrel=1
+_pkgver="${pkgver/pre/-pre}"
+pkgrel=2
 pkgdesc="A multi-platform proxy client powered by the Mihomo (Clash Meta) core, refactored based on early versions of FlClash. (Build with GOAMD64=v1)"
 arch=('x86_64')
 url="https://github.com/appshubcc/Bettbox"
@@ -16,9 +16,11 @@ depends=(
     'libkeybinder3'
 )
 options=('!debug')
+source=("restart-bettbox.hook")
 source_x86_64=(
     "${pkgname%-compatible-bin}-${pkgver}-${arch}.deb::${url}/releases/download/v${_pkgver}/${_pkgname}-${_pkgver%-pre*}-linux-amd64-compatible.deb"
 )
+sha256sums=('916a8fc03c89efbde16d8b0462df32c16b50d6bfbce2be3645183f6ce1cb55f7')
 sha256sums_x86_64=('eb2a3cfb6acc67c1edd4f69af7df72dde094dfe3bfa3ed194d89b0b38ca2e9d5')
 
 prepare() {
@@ -39,4 +41,6 @@ package() {
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-compatible-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname%-compatible-bin}.png"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-compatible-bin}.png"
+
+    install -Dm644 -t "${pkgdir}/usr/share/libalpm/hooks/" "${srcdir}/restart-bettbox.hook"
 }
