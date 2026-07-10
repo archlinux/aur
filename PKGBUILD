@@ -1,7 +1,7 @@
 # Maintainer: lostmason <lostmason@tutamail.com>
 # Contributor: blx32 <gmoura96@icloud.com>
 pkgname=xeres-bin
-pkgver=1.1.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='A decentralized and secure application designed for communication and sharing.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://xeres.io"
 license=('GPL-3.0-or-later')
 depends=('xdg-utils')
 source=("https://github.com/zapek/Xeres/releases/download/v${pkgver}/xeres_${pkgver}_ubuntu-24.04_amd64.deb")
-sha512sums=('adb11c17bdcf1aaa9a1b80aef610ce3411961646f7b74259e77d9dd59de27723bea186d0077035c5f167018c4a8a5486291424a91fc01f5bada23f50574f8e3d')
+sha512sums=('124108b7d116f16a45fb185225480e6abd5337fb3d062c7c0787c002074126051680f67c8ed3e06a0be2fc1389953dbf1f7d16e537a89d7f8679c52300ce1abf')
 provides=('xeres')
 conflicts=('xeres')
 options=('!strip')
