@@ -1,30 +1,36 @@
 pkgbase = mandrel-bin
-	pkgdesc = Downstream distribution of the GraalVM CE for the Quarkus web framework
-	pkgver = 23.1.4.0
+	pkgdesc = Downstream distribution of GraalVM CE serving as the native-image builder for Quarkus
+	pkgver = 25.0.3.0
 	pkgrel = 1
 	url = https://github.com/graalvm/mandrel
+	install = install_mandrel.sh
 	arch = x86_64
 	arch = aarch64
 	license = custom
-	depends = alsa-lib
-	depends = bash
+	depends = ca-certificates-java
+	depends = java-runtime-common
+	depends = java-environment-common
 	depends = freetype2
 	depends = glibc
-	depends = java-environment-common
-	depends = java-runtime-common
-	depends = libx11
-	depends = libxext
-	depends = libxi
-	depends = libxrender
-	depends = libxtst
-	depends = zlib
-	provides = java-runtime=21
-	provides = java-environment=21
+	depends = libgcc
+	depends = libstdc++
+	depends = libz.so
+	optdepends = alsa-lib: for basic sound support
+	optdepends = libx11: for AWT support
+	optdepends = libxext: for AWT support
+	optdepends = libxi: for AWT support
+	optdepends = libxrender: for AWT support
+	optdepends = libxtst: for AWT support
+	provides = java-runtime=25
+	provides = java-runtime-headless=25
+	provides = java-environment=25
 	provides = mandrel
 	options = staticlibs
-	source_x86_64 = https://github.com/graalvm/mandrel/releases/download/mandrel-23.1.4.0-Final/mandrel-java21-linux-amd64-23.1.4.0-Final.tar.gz
-	sha256sums_x86_64 = 2b992e8621d93af541353d857ceeffbab0e8ac38257d3ff2404ba6f6486bbea4
-	source_aarch64 = https://github.com/graalvm/mandrel/releases/download/mandrel-23.1.4.0-Final/mandrel-java21-linux-aarch64-23.1.4.0-Final.tar.gz
-	sha256sums_aarch64 = 2f80e4c9a0d1b908ece3b46b8296f815bc8563aeaed0fff7a66709e2801f485e
+	options = !debug
+	options = !strip
+	source_x86_64 = https://github.com/graalvm/mandrel/releases/download/mandrel-25.0.3.0-Final/mandrel-java25-linux-amd64-25.0.3.0-Final.tar.gz
+	sha256sums_x86_64 = 915f986dc71d0fac7e464e900803228d4be6e079d1e71b784e3ed154569e4270
+	source_aarch64 = https://github.com/graalvm/mandrel/releases/download/mandrel-25.0.3.0-Final/mandrel-java25-linux-aarch64-25.0.3.0-Final.tar.gz
+	sha256sums_aarch64 = 7ce2b1cc5bb37b3ab9fc646738405c09343bd25990c9354aa65461077579e469
 
 pkgname = mandrel-bin
