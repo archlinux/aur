@@ -1,13 +1,13 @@
 # Maintainer: shipa-2 <aurahag2@gmail.com>
 pkgname=opensource-communicator-git
 _pkgname=opensource-communicator
-pkgver=0.2.0.r31.gc96d6ee
-pkgrel=1
+pkgver=0.3.0.r0.gb2199ab
+pkgrel=2
 pkgdesc="Open-source ITooLabs/Megafon PBX compatible VoIP & IM client (Qt6)"
 arch=('x86_64')
 url="https://github.com/shipa-2/Opensource-Communicator"
 license=('custom')
-depends=('qt6-base' 'qt6-websockets' 'qt6-multimedia' 'libdatachannel' 'opus' 'openssl' 'hicolor-icon-theme')
+depends=('qt6-base' 'qt6-websockets' 'qt6-multimedia' 'qt6-dbus' 'libdatachannel' 'opus' 'openssl' 'hicolor-icon-theme' 'ffmpeg')
 makedepends=('cmake' 'git' 'pkgconf')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -19,7 +19,7 @@ pkgver() {
     local tag count hash
     hash=$(git rev-parse --short=7 HEAD)
     count=$(git rev-list --count HEAD)
-    printf "0.2.0.r%s.g%s" "$count" "$hash"
+    printf "0.3.0.r%s.g%s" "$count" "$hash"
 }
 
 build() {
