@@ -1,5 +1,5 @@
 pkgname=alt-sendme
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Peer-to-peer file and folder transfer app without cloud storage"
 arch=('x86_64' 'aarch64')
@@ -12,15 +12,18 @@ depends=(
   'glib2'
   'gtk3'
   'hicolor-icon-theme'
-  'libappindicator-gtk3'
+  'libayatana-appindicator'
   'pango'
   'webkit2gtk-4.1'
 )
 makedepends=(
   'cargo'
+  'clang'
   'librsvg'
   'nodejs>=20'
-  'npm'
+  'pnpm'
+  'rust-wasm'
+  'wasm-bindgen'
 )
 optdepends=(
   'xdg-utils'
@@ -33,7 +36,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '3f8bf78b62a0edad616b703f8cae355cd104e4c00d525c6013c97aa6a33c3159'
+  '648ba56d58ec19e0cf70c3b18baca78d6bb311c1e91bfeda9a404efd4cb6606b'
 )
 
 prepare() {
@@ -43,8 +46,10 @@ prepare() {
   export CARGO_HTTP_CAINFO=/etc/ssl/cert.pem
   export npm_config_cache="${srcdir}/npm-cache"
 
+  cargo fetch --manifest-path wasm-bridge/Cargo.toml --target wasm32-unknown-unknown
   cargo fetch --manifest-path src-tauri/Cargo.toml
-  npm ci --no-audit --no-fund
+
+  pnpm install --frozen-lockfile --store-dir "${srcdir}/pnpm-store"
 }
 
 build() {
@@ -54,8 +59,25 @@ build() {
   export CARGO_HTTP_CAINFO=/etc/ssl/cert.pem
   export npm_config_cache="${srcdir}/npm-cache"
   export CI=true
+  export TAURI_LINUX_AYATANA_APPINDICATOR=1
 
-  npm run tauri -- build --no-bundle
+  env \
+    CC=clang \
+    CXX=clang++ \
+    CC_wasm32_unknown_unknown=clang \
+    CXX_wasm32_unknown_unknown=clang++ \
+    CFLAGS= \
+    CXXFLAGS= \
+    CPPFLAGS= \
+    LDFLAGS= \
+    CFLAGS_wasm32_unknown_unknown="-O2" \
+    CXXFLAGS_wasm32_unknown_unknown="-O2" \
+    pnpm run build:wasm
+
+  pnpm run build
+
+  local _tauri_config='{"build":{"beforeBuildCommand":"true"}}'
+  pnpm run tauri build --no-bundle --config "${_tauri_config}"
 }
 
 package() {

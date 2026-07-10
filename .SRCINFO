@@ -1,28 +1,31 @@
 pkgbase = alt-sendme
 	pkgdesc = Peer-to-peer file and folder transfer app without cloud storage
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/tonyantony300/alt-sendme
 	arch = x86_64
 	arch = aarch64
 	license = AGPL3
 	makedepends = cargo
+	makedepends = clang
 	makedepends = librsvg
 	makedepends = nodejs>=20
-	makedepends = npm
+	makedepends = pnpm
+	makedepends = rust-wasm
+	makedepends = wasm-bindgen
 	depends = cairo
 	depends = gdk-pixbuf2
 	depends = glib2
 	depends = gtk3
 	depends = hicolor-icon-theme
-	depends = libappindicator-gtk3
+	depends = libayatana-appindicator
 	depends = pango
 	depends = webkit2gtk-4.1
 	optdepends = xdg-utils
 	conflicts = alt-sendme-bin
 	conflicts = alt-sendme-git
 	options = !lto
-	source = alt-sendme-0.4.2.tar.gz::https://github.com/tonyantony300/alt-sendme/archive/refs/tags/v0.4.2.tar.gz
-	sha256sums = 3f8bf78b62a0edad616b703f8cae355cd104e4c00d525c6013c97aa6a33c3159
+	source = alt-sendme-0.5.0.tar.gz::https://github.com/tonyantony300/alt-sendme/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 648ba56d58ec19e0cf70c3b18baca78d6bb311c1e91bfeda9a404efd4cb6606b
 
 pkgname = alt-sendme
