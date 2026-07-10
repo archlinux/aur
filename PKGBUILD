@@ -2,13 +2,9 @@
 # Contributor: Denis Kasak <dkasak|AT|termina.org.uk>
 # Contributor: xsmile <sascha_r gmx de>
 
-## links
-# http://ta-lib.org
-# https://github.com/TA-Lib/ta-lib
-
 _pkgname="ta-lib"
 pkgname="$_pkgname"
-pkgver=0.6.4
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A library providing common functions for the technical analysis of financial market data"
 url="https://github.com/TA-Lib/ta-lib"
@@ -20,7 +16,7 @@ depends=('glibc')
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('a2fac51f4f1d4804dd2edd1701d52bb9728a5c2ec936d0c5d9a222c49f57d77b')
+sha256sums=('40e7a6978052fe5245771e430e6a4c4553b40038f8ac5a985a1540c4c1fa6ace')
 
 build() {
   cd "$_pkgsrc"
