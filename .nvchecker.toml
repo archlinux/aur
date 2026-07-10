@@ -1,0 +1,3 @@
+[ingit]
+source = "npm"
+npm = "@ingit/cli"

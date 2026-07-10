@@ -1,0 +1,30 @@
+--- ./usr/bin/ingit	2026-07-09 23:33:51.000000000 -0300
+--- ./usr/bin/ingit	2026-07-09 23:33:51.000000000 -0300
+@@ -6,7 +6,7 @@
+ // resolves the binary that matches the current OS/arch and execs it.
+ 
+ const { spawnSync } = require('node:child_process')
+-const { chmodSync, existsSync } = require('node:fs')
++const { statSync, chmodSync, existsSync } = require('node:fs')
+ const { join } = require('node:path')
+ 
+ const platform = process.platform
+@@ -40,10 +40,15 @@
+ // case the platform package was published from a downloaded artifact.
+ if (platform !== 'win32') {
+   try {
+-    chmodSync(binPath, 0o755)
++    const stats = statSync(binPath);
++    const currentPermissions = stats.mode & 0o777;
++
++    if (currentPermissions !== 0o755) {
++      chmodSync(binPath, 0o755);
++    }
+   } catch (error) {
+-    console.error(`ingit: failed to make the binary executable: ${error.message}`)
+-    process.exit(1)
++    console.error(`ingit: failed to make the binary executable: ${error.message}`);
++    process.exit(1);
+   }
+ }
+ 

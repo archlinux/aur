@@ -1,0 +1,24 @@
+pkgbase = ingit
+	pkgdesc = A Modern Git UI - fresh take on ungit
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/capaj/ingit
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = glibc
+	depends = nodejs
+	depends = bun
+	provides = cli
+	noextract = ingit-0.1.5.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = ingit-0.1.5.tgz::https://registry.npmjs.org/@ingit/cli/-/cli-0.1.5.tgz
+	source = fix_cli.patch
+	b2sums = 6d7ba7d37b21ea60e02277aba55ea7676527e6f8f220ff2bdc04a8686da09dae2f4436f859e555085b31db71acd9b101001a16a4e4a4d7b48d93129f795ecf46
+	b2sums = 885684be2625c652f4344e50341cde0ac028904677b10be43a71d604e4b9627ed4afc46ddd15d9fabdb8d304419b062b5ba177ddbae3de62bc6df52122c5fd5e
+
+pkgname = ingit
