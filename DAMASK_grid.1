@@ -1,9 +1,9 @@
-.TH DAMASK_grid 1
+.TH damask_grid 1
 .SH NAME
-DAMASK_grid \- grid solver for DAMASK
+damask_grid \- grid solver for DAMASK
 
 .SH SYNOPSIS
-.B DAMASK_grid
+.B damask_grid
 \fB\-g\fR \fIGEOMFILE\fR
 \fB\-l\fR \fILOADFILE\fR
 \fB\-m\fR \fIMATERIALFILE\fR
@@ -15,7 +15,7 @@ DAMASK_grid \- grid solver for DAMASK
 
 .SH DESCRIPTION
 DAMASK is the Duesseldorf Advanced Material Simulation Kit.
-DAMASK_grid runs a DAMASK simulation on a regular grid.
+damask_grid runs a DAMASK simulation on a regular grid.
 MPI parallel runs are supported with mpiexec/mpirun.
 
 .SH OPTIONS
@@ -43,10 +43,10 @@ base directory of relative paths.
 .BR \-r ", " \-\-rs ", " \-\-restart=\fIN\fR
 Restart simulation from given increment.
 Read in increment N and, based on this, continue with calculating
-increments N+1, N+2, ...
+increments N+1, N+2, ... .
 Requires restart information for increment N to be present in
-JOBNAME_restart.hdf5 and will append subsequent results to
-existing file JOBNAME.hdf5.
+JOBNAME_restart.hdf5 and will write subsequent results to file
+JOBNAME.hdf5.
 .TP
 .BR \-h ", " \-\-help
 Display help and exit.
@@ -54,7 +54,13 @@ Display help and exit.
 
 .SH ENVIRONMENT VARIABLES
 .IP OMP_NUM_THREADS
-Number of openMP threads.
+Number of OpenMP threads.
+
+.IP DAMASK_LOGFILE
+Redirect output to file(s) if set to True.
+
+.IP NO_COLOR
+Disable ANSI escape sequences in output if defined.
 
 
 .SH AUTHOR
@@ -64,4 +70,4 @@ The DAMASK team
 DAMASK online documentation <https://damask-multiphysics.org>
 
 .SH LICENSING
-GNU AGPL version 3 or later <https://gnu.org/licenses/agpl.html>.
+GNU AGPL version 3 or later <https://gnu.org/licenses/agpl.html>

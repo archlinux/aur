@@ -1,13 +1,13 @@
 # Maintainer: Martin Diehl <martin.diehl@kuleuven.be>
 pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
-pkgver=3.0.2
-pkgrel=5
+pkgver=3.1.0
+pkgrel=1
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask-multiphysics.org'
 license=('AGPL-3.0-or-later')
-petsc_excluded='3.25' # next PETSc release (exclude because API changes are expected)
+petsc_excluded='3.26' # next PETSc release (exclude because API changes are expected)
 makedepends=('gcc-fortran' 'cmake'
              'python-build' 'python-installer' 'python-wheel' 'python-setuptools'
              "petsc<${petsc_excluded}" 'hdf5-openmpi' 'fftw-openmpi' 'zlib' 'libfyaml'
@@ -18,34 +18,32 @@ source=(https://damask-multiphysics.org/download/damask-${pkgver}.tar.xz
        'DAMASK_grid.1'
        'DAMASK_mesh.1')
 
-sha512sums=('b1e5970560e95f23766f8bfe660da5da401eb3f57123c53687153cf5e56d3c41be62729431b7f5f1e6a6a5f7269e9eafd317fb5f975e0efd4edf33b361665dd6'
-            'e492860add4f7b4b94f53e02f45ef059abacae0deb44c8946c583aedd77df8cc8ba4bd062449c979049b8e08d604c06601c871c5f5f09d8bf5b4fac4acb381ea'
-            'a361a5c2edeb9186ca1073c93feae5fa34d1a7b4106745be8568be658f86de466b1974ead6a67a88c84e8752421662116e20ea8e4ca89e36fdcb304f8cfb619c')
+sha512sums=('7e00d655601ab1c097505e4202713f0708bd6137b01fc5e47b162d788399fb95669c39f6df79bb699ede87fce502011f94cec37839cd774fb54a8b7dd1a5aeab'
+            'd41eaae25bfb428661cb121ff89b80c6f146c997df40e1bd8736381c1ae73c0535d0886d6586edf34bb55d47629efa27d23058a044363c33f383f9ab097b91a4'
+            '5ed3d30432a3999894f137da0eeed73985c3ba7155458b3c25dbda2b91b44c23a821da880881c71cd224945133ed8290da04ee1caa079533e746b6d0070e46be')
 
 prepare() {
-  sed -i 's/FYECF_MODE_FLOW_ONELINE/FYECF_MODE_FLOW_ONELINE | FYECF_WIDTH_INF | FYECF_DOC_START_MARK_OFF/g' ${pkgname}-${pkgver}/src/C_routines.c
-  sed -i '24s/23/24/g' ${pkgname}-${pkgver}/src/CLI.f90
-  sed -i '14s/24/25/g' ${pkgname}-${pkgver}/CMakeLists.txt
+  sed -i 's#fs_case_sensitive(${CMAKE_INSTALL_PREFIX}/bin fs_is_case_sensitive)#set(fs_is_case_sensitive BOOL TRUE)#g' ${pkgname}-${pkgver}/src/CMakeLists.txt
 }
 
 build() {
   cmake -S ${pkgbase}-${pkgver} \
         -B build-test \
-        -D DAMASK_SOLVER:STRING=test \
+        -D TEST=ON \
         -D CMAKE_INSTALL_PREFIX:PATH=/usr \
         -D CMAKE_BUILD_TYPE:STRING=Performance
   make -C build-test
 
   cmake -S ${pkgbase}-${pkgver} \
         -B build-grid \
-        -D DAMASK_SOLVER:STRING=grid \
+        -D GRID=ON \
         -D CMAKE_INSTALL_PREFIX:PATH=/usr \
         -D CMAKE_BUILD_TYPE:STRING=Performance
   make -C build-grid
 
   cmake -S ${pkgbase}-${pkgver} \
         -B build-mesh \
-        -D DAMASK_SOLVER:STRING=mesh \
+        -D MESH=ON \
         -D CMAKE_INSTALL_PREFIX:PATH=/usr \
         -D CMAKE_BUILD_TYPE:STRING=Performance
   make -C build-mesh
@@ -66,8 +64,8 @@ check() {
 
   example_dir="$(pwd)"/${pkgbase}-${pkgver}/examples/mesh
   ./build-mesh/src/DAMASK_mesh \
-         -l "${example_dir}"/tensionY_mono.yaml \
-         -g "${example_dir}"/monocrystal.msh \
+         -l "${example_dir}"/tensionZ_3g.yaml \
+         -g "${example_dir}"/cube_3grains.msh \
          -m "${example_dir}"/material.yaml \
          -w $(mktemp -d)
 
@@ -82,8 +80,12 @@ package_damask-grid() {
 
   install -m 644 -D ${pkgbase}-${pkgver}/examples/grid/* -t "${pkgdir}"/usr/share/doc/${pkgname}/
   install -m 644 -D DAMASK_grid.1 -t "${pkgdir}"/usr/share/man/man1/
+  install -m 644 -D DAMASK_grid.1 -T "${pkgdir}"/usr/share/man/man1/damask_grid.1
+  install -m 644 -D  ${pkgbase}-${pkgver}/env/damask_grid -t "${pkgdir}"/usr/share/bash-completion/completions/
+  install -m 644 -D  ${pkgbase}-${pkgver}/env/_damask_grid -t "${pkgdir}"/usr/share/zsh/site-functions/
 
   DESTDIR="${pkgdir}" cmake --install build-grid
+  ln -s DAMASK_grid "${pkgdir}"/usr/bin/damask_grid
 }
 
 package_damask-mesh() {
@@ -93,8 +95,12 @@ package_damask-mesh() {
 
   install -m 644 -D ${pkgbase}-${pkgver}/examples/mesh/* -t "${pkgdir}"/usr/share/doc/${pkgname}/
   install -m 644 -D DAMASK_mesh.1 -t "${pkgdir}"/usr/share/man/man1/
+  install -m 644 -D DAMASK_mesh.1 -T "${pkgdir}"/usr/share/man/man1/damask_mesh.1
+  install -m 644 -D  ${pkgbase}-${pkgver}/env/damask_mesh -t "${pkgdir}"/usr/share/bash-completion/completions/
+  install -m 644 -D  ${pkgbase}-${pkgver}/env/_damask_mesh -t "${pkgdir}"/usr/share/zsh/site-functions/
 
   DESTDIR="${pkgdir}" cmake --install build-mesh
+  ln -s DAMASK_mesh "${pkgdir}"/usr/bin/damask_mesh
 }
 
 package_python-damask() {

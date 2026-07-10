@@ -1,9 +1,9 @@
-.TH DAMASK_mesh 1
+.TH damask_mesh 1
 .SH NAME
-DAMASK_mesh \- mesh solver for DAMASK
+damask_mesh \- mesh solver for DAMASK
 
 .SH SYNOPSIS
-.B DAMASK_mesh
+.B damask_mesh
 \fB\-g\fR \fIGEOMFILE\fR
 \fB\-l\fR \fILOADFILE\fR
 \fB\-m\fR \fIMATERIALFILE\fR
@@ -14,7 +14,7 @@ DAMASK_mesh \- mesh solver for DAMASK
 
 .SH DESCRIPTION
 DAMASK is the Duesseldorf Advanced Material Simulation Kit.
-DAMASK_mesh runs a DAMASK simulation on an unstructured mesh.
+damask_mesh runs a DAMASK simulation on an unstructured mesh.
 MPI parallel runs are supported with mpiexec/mpirun.
 
 .SH OPTIONS
@@ -46,7 +46,13 @@ Display help and exit.
 
 .SH ENVIRONMENT VARIABLES
 .IP OMP_NUM_THREADS
-Number of openMP threads.
+Number of OpenMP threads.
+
+.IP DAMASK_LOGFILE
+Redirect output to file(s) if set to True.
+
+.IP NO_COLOR
+Disable ANSI escape sequences in output if defined.
 
 
 .SH AUTHOR
@@ -56,4 +62,4 @@ The DAMASK team
 DAMASK online documentation <https://damask-multiphysics.org>
 
 .SH LICENSING
-GNU AGPL version 3 or later <https://gnu.org/licenses/agpl.html>.
+GNU AGPL version 3 or later <https://gnu.org/licenses/agpl.html>
