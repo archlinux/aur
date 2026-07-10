@@ -3,7 +3,7 @@
 _prefix="/opt/comfyui"
 pkgname=comfyui-system
 pkgver=0.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface (use system dependencies)"
 arch=('x86_64')
 url="https://github.com/Comfy-Org/ComfyUI"
@@ -52,9 +52,9 @@ depends=(
     'python-glfw'
 )
 optdepends=(
-    'python-torch-cuda: NVIDIA GPU acceleration'
+    'python-pytorch-cuda: NVIDIA GPU acceleration'
     'python-torchvision-cuda: NVIDIA GPU acceleration'
-    'python-torch-rocm: AMD GPU acceleration'
+    'python-pytorch-rocm: AMD GPU acceleration'
 )
 makedepends=()
 
