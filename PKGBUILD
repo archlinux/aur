@@ -1,6 +1,6 @@
 # Maintainer: jao <jao@example.com>
 pkgname=cranky-bin
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A minimalist, performant, and modular bar for Hyprland (pre-built binary)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('cranky')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/cranky-v${pkgver}-x86_64.tar.gz"
         "cranky.service::${url}/raw/main/contrib/systemd/cranky.service"
         "cranky-uwsm.service::${url}/raw/main/contrib/systemd/cranky-uwsm.service")
-sha256sums=('3c6c0e32da8d8eccfedead0eb2898037d3f8751ff8fb84b19c597b729ec0cad6'
+sha256sums=('72484a5990f183da2f6a0fed3814d2a713d8cc342abfc38386ac995940a7e961'
             'c741f785ec0ec981755f59f33234c6ff6d350bfd9854755066625848a37a5407'
             'f5a71825ceef498bc0b9087a8f63ecfe6a383c927441babed21d3024a3d8bafe')
 
