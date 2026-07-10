@@ -1,6 +1,6 @@
 # Maintainer: jakeb-grant
 pkgname=pane-fm-git
-pkgver=0.1.9.r0.gcd5cda0
+pkgver=0.1.9.r1.g2ee733b
 pkgrel=1
 pkgdesc="A themeable file manager built with Tauri and Svelte"
 arch=('x86_64')
@@ -10,12 +10,14 @@ depends=(
     'webkit2gtk-4.1'
     'gtk3'
     'libsoup3'
+    'glib2'
+    'cairo'
+    'gdk-pixbuf2'
 )
 optdepends=(
     'zstd: .tar.zst archive support'
     'udisks2: drive mounting from sidebar'
-    'poppler: PDF preview (pdftoppm)'
-    'nerd-fonts: file/folder icons'
+    'ttf-jetbrains-mono-nerd: UI glyphs and monospace font'
     'inter-font: UI font'
 )
 makedepends=('cargo' 'bun' 'git')
@@ -41,7 +43,7 @@ build() {
 package() {
     cd pane-fm
     install -Dm755 "src-tauri/target/release/pane-fm" "$pkgdir/usr/bin/pane-fm"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 
     # App icon
