@@ -1,7 +1,6 @@
-# Maintainer: Your Name <your-email@example.com>
 pkgname=keyboard-chattering-fix-git
 _pkgname=KeyboardChatteringFix-Linux
-pkgver=r23.5bb686b # This will be updated automatically by the pkgver() function
+pkgver=r23.5bb686b
 pkgrel=1
 pkgdesc="A tool for blocking mechanical keyboard chattering on Linux using libevdev."
 arch=('any')
@@ -21,11 +20,9 @@ pkgver() {
 package() {
     cd "$_pkgname"
 
-    # 1. Programmcode installieren
     install -d "$pkgdir/usr/share/$_pkgname"
     cp -r src/ "$pkgdir/usr/share/$_pkgname/"
 
-    # 2. Den "Starter" (Wrapper-Skript) erstellen
     install -d "$pkgdir/usr/bin"
     cat <<EOF >"$pkgdir/usr/bin/keyboard-chattering-fix"
 #!/bin/sh
@@ -33,7 +30,6 @@ cd /usr/share/$_pkgname
 sudo python3 -m src "\$@"
 EOF
 
-    # 3. Rechte setzen und Lizenz kopieren
     chmod +x "$pkgdir/usr/bin/keyboard-chattering-fix"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-} # <--- Diese Klammer hat er vorhin vermisst!
+}
