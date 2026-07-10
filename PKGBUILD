@@ -3,7 +3,7 @@
 # Contributer: MartorSkull <livemartor@gmail.com>
 pkgname=cardano-node-bin
 pkgver=11.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The core component that is used to participate in a Cardano 
 decentralised blockchain (binary package)."
 arch=("x86_64")
@@ -34,9 +34,7 @@ package() {
     "${pkgdir}/usr/lib/systemd/system/cardano-node@.service"
 
   # install executable binaries
-  find . -executable -type f | while read f; do
-    install -D -m0755 "$f" "${pkgdir}/usr/bin/$f"
-  done
-
+  install -d "${pkgdir}/usr/bin"
+  install -D -m0755 "${srcdir}/bin/"* "${pkgdir}/usr/bin/"
 }
 
