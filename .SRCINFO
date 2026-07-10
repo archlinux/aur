@@ -1,19 +1,19 @@
 pkgbase = imagenormalizer-bin
 	pkgdesc = A cross-platform command-line batch-processing tool that resizes and compresses images.(Prebuilt version)
-	pkgver = 1.2026.07.05
+	pkgver = 1.2026.07.10
 	pkgrel = 1
 	url = https://github.com/mihnea-radulescu/imagenormalizer
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = dotnet-runtime>=10
-	provides = imagenormalizer=1.2026.07.05
+	provides = imagenormalizer=1.2026.07.10
 	conflicts = imagenormalizer
 	options = !strip
 	options = staticlibs
-	source_aarch64 = imagenormalizer-1.2026.07.05-aarch64.tar.gz::https://github.com/mihnea-radulescu/imagenormalizer/releases/download/1.2026.07.05/ImageNormalizer_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 61bc3eda3de87fd6d4bcbfeb86b299640f1ac68ae526e8d433fdb2a239720755
-	source_x86_64 = imagenormalizer-1.2026.07.05-x86_64.tar.gz::https://github.com/mihnea-radulescu/imagenormalizer/releases/download/1.2026.07.05/ImageNormalizer_Linux_x64.tar.gz
-	sha256sums_x86_64 = d4d2eb6e74024455cffceb5b3eefbfbe163b9d455c339ba71378f9c4f7b71b36
+	source_aarch64 = imagenormalizer-1.2026.07.10-aarch64.tar.gz::https://github.com/mihnea-radulescu/imagenormalizer/releases/download/1.2026.07.10/ImageNormalizer_Linux_arm64.tar.gz
+	sha256sums_aarch64 = bf1791e7ec54fcf1c4ffc843696f5d7106b9ac947233c42b3f54e1aff1d4da0a
+	source_x86_64 = imagenormalizer-1.2026.07.10-x86_64.tar.gz::https://github.com/mihnea-radulescu/imagenormalizer/releases/download/1.2026.07.10/ImageNormalizer_Linux_x64.tar.gz
+	sha256sums_x86_64 = eb16e5e6a357b08ba93c393ce8c62fb9655a2e987e6b0d46aa9123189bc13950
 
 pkgname = imagenormalizer-bin
