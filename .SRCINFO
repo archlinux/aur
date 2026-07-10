@@ -1,0 +1,30 @@
+pkgbase = hush-mic
+	pkgdesc = NVIDIA Maxine AI noise-suppression virtual microphone (built from source)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/UMCEKO/hush
+	arch = x86_64
+	license = MIT
+	makedepends = rust>=1.88
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = clang
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsoup3
+	depends = glib-networking
+	depends = pipewire
+	depends = libpulse
+	depends = dbus
+	depends = gcc-libs
+	optdepends = nvidia-utils: nvidia-smi GPU detection (required at runtime)
+	provides = hush-mic
+	conflicts = hush-mic-bin
+	conflicts = hush
+	conflicts = hush-bin
+	source = hush-1.0.0.tar.gz::https://github.com/UMCEKO/hush/archive/refs/tags/v1.0.0.tar.gz
+	source = afx-link-2.1.0.tar.zst::https://cdn.hush.umceko.com/sdk/2.1.0/afx-link-x86_64.tar.zst
+	sha256sums = SKIP
+	sha256sums = eb381134dcfae78a35b85f06c6d2c87103efbb7e736e0dcbcd3daa4fc359eba5
+
+pkgname = hush-mic
