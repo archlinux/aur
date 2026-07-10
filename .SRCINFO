@@ -1,7 +1,7 @@
 pkgbase = python-comfyui-frontend-package
 	pkgdesc = Official front-end implementation of ComfyUI
-	pkgver = 1.43.1
-	pkgrel = 2
+	pkgver = 1.45.20
+	pkgrel = 1
 	url = https://github.com/Comfy-Org/ComfyUI_frontend/
 	arch = any
 	license = GPL-3.0
@@ -9,7 +9,7 @@ pkgbase = python-comfyui-frontend-package
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/comfyui-frontend-package/comfyui_frontend_package-1.43.1.tar.gz
-	sha512sums = 2c69413e79aa2a2af8ec971a723f6d1dda590bac7e7b424e6c5645411c9a1da5221a681ad6cea0e2757d929f48e87442b051c84181b2b5bdb46a3699211f84e7
+	source = https://files.pythonhosted.org/packages/source/c/comfyui-frontend-package/comfyui_frontend_package-1.45.20.tar.gz
+	sha512sums = 7303fdd9e435dcdf10397c399231bdec2e143206ca0111822c6f479e9e6c6678d6b96ff8365559db9d6dfe76029bc019b539c93a5d1d99a4ea8edb9fb4bc3831
 
 pkgname = python-comfyui-frontend-package
