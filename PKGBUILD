@@ -1,5 +1,5 @@
 pkgname=creality-print-appimage
-pkgver=7.1.1.4472
+pkgver=7.2.0.5226
 pkgrel=1
 pkgdesc="Creality Print is a slicer dedicated to FDM printers."
 arch=('x86_64')
@@ -17,7 +17,7 @@ _install_path="/opt/appimages/${_appimage_name}"
 
 noextract=("${_filename}")
 sha512sums_x86_64=(
-  'f211988654a7393b90a759d2c5d58a2ccdb531e75145395a9332069af4da85cda8d212fcfa6f27753623050e574effe4d9b34f96a463689a9fa99d34f4e72b46'
+  'c2a054633a6c943c798da17693644c6e1a55fe7ed7510e991c13804981667acc3acb450c0b49c0978daae65f33b0ce7ee457b6a794f702aa3dc9b2a4b740e14f'
   '7e038ab385f767433de39e8686f29c096fe6d5967e74f185570d37786583554957e483f14489a512fa652048dfcffc10ccc1782d20645e04d2759d475f88b65a'
 )
 source_x86_64=(
