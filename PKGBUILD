@@ -1,8 +1,8 @@
 # Maintainer: Randall Winkhart <idgr at tutanota dot com>
 
 pkgname=lyricsfinder
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.7.2
+pkgrel=1
 pkgdesc="A cross-platform lyrics fetcher by Mediahuman"
 arch=('x86_64')
 options=('!emptydirs')
