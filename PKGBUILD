@@ -5,7 +5,7 @@
 
 pkgname=openssl-static
 _pkgname="${pkgname%-static}"
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (with static libs)'
 arch=(x86_64 aarch64 armv7h i686 pentium4 riscv64)
@@ -27,7 +27,7 @@ source=(
   "https://github.com/${_pkgname}/${_pkgname}/releases/download/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.gz"{,.asc}
   ca-dir.patch
 )
-sha256sums=('c32cf49a959c4f345f9606982dd36e7d28f7c58b19c2e25d75624d2b3d2f79ac'
+sha256sums=('2db3f3a0d6ea4b59e1f094ace2c8cd536dffb87cdc39084c5afa1e6f7f37dd09'
             'SKIP'
             '0a32d9ca68e8d985ce0bfef6a4c20b46675e06178cc2d0bf6d91bd6865d648b7')
 validpgpkeys=(
