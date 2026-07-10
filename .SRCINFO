@@ -1,11 +1,11 @@
 pkgbase = fancy-cat
 	pkgdesc = PDF reader for terminal emulators using the Kitty image protocol
-	pkgver = 0.4.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/freref/fancy-cat
 	arch = x86_64
 	license = MIT
-	makedepends = zig-bin
+	makedepends = zig
 	makedepends = freetype2
 	makedepends = harfbuzz
 	makedepends = jbig2dec
@@ -16,7 +16,7 @@ pkgbase = fancy-cat
 	makedepends = zlib
 	depends = glibc
 	depends = libmupdf
-	source = fancy-cat-0.4.0.tar.gz::https://github.com/freref/fancy-cat/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = bce101d5eb009ec9057f7b87f6ad767ee96238abcee8854a9db7febd0229a2bf
+	source = fancy-cat-0.6.0.tar.gz::https://github.com/freref/fancy-cat/archive/v0.6.0.tar.gz
+	b2sums = 6c2c300f92ee6dab31c61a9b6c16cbbac217d8d7bbdfaacbee394539a8355c1a03b59a2cbda4f076c8cb2a91c9532c28d83faf021d1c6a324aa71085a42be385
 
 pkgname = fancy-cat

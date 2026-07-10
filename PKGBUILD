@@ -1,18 +1,18 @@
-# Maintainer: redponike <proton (dot) me>
+# Contributor: redponike <proton (dot) me>
 # Contributor: Adam Perkowski <adas1per@protonmail.com>
+# Contributor: tee < teeaur at duck dot com >
 
 pkgname=fancy-cat
-pkgver=0.4.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='PDF reader for terminal emulators using the Kitty image protocol'
 arch=('x86_64')
 url="https://github.com/freref/$pkgname"
 license=('MIT')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bce101d5eb009ec9057f7b87f6ad767ee96238abcee8854a9db7febd0229a2bf')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+b2sums=('6c2c300f92ee6dab31c61a9b6c16cbbac217d8d7bbdfaacbee394539a8355c1a03b59a2cbda4f076c8cb2a91c9532c28d83faf021d1c6a324aa71085a42be385')
 depends=('glibc' 'libmupdf')
-makedepends=('zig-bin' 'freetype2' 'harfbuzz' 'jbig2dec' 'openjpeg2' 'libjpeg-turbo' 'gumbo-parser' 'mujs' 'zlib')
-# We're forcing zig-bin as we need Zig 0.14.0. This will be reverted to the zig dependency once 0.14.0 hits the repo
+makedepends=('zig' 'freetype2' 'harfbuzz' 'jbig2dec' 'openjpeg2' 'libjpeg-turbo' 'gumbo-parser' 'mujs' 'zlib')
 
 prepare() {
   cd "$pkgname-$pkgver"
