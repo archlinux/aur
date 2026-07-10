@@ -1,13 +1,18 @@
 pkgbase = oa-git
-	pkgdesc = OA - High-performance C++ library for ML, audio, and compute (git version)
-	pkgver = 0.0.1
+	pkgdesc = OA — High-performance C++ compute engine for ML, audio, and graphics (git version)
+	pkgver = 0.7.1
 	pkgrel = 1
-	url = https://github.com/empyrealm/oa
+	url = https://github.com/realminc/oa
 	arch = x86_64
-	license = MIT
+	license = BUSL-1.1
 	makedepends = git
 	makedepends = cmake
-	source = git+https://github.com/empyrealm/oa.git
+	makedepends = ninja
+	makedepends = clang
+	depends = liburing
+	source = git+ssh://git@github.com/realminc/oa.git
+	source = slang-2026.4.2-linux-x86_64.tar.gz::https://github.com/shader-slang/slang/releases/download/v2026.4.2/slang-2026.4.2-linux-x86_64.tar.gz
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = oa-git
