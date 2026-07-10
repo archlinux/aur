@@ -20,11 +20,8 @@ pkgbase = bluez-gamepad-quirks
 	depends = ell
 	depends = json-c
 	depends = alsa-lib
-	provides = bluez
-	conflicts = bluez
 	options = !emptydirs
 	options = !strip
-	backup = etc/bluetooth/main.conf
 	source = bluez-gamepad-quirks::git+https://github.com/EvolveBeyond/bluez.git#branch=gamepad-quirks
 	source = bluetooth.conf
 	source = tmpfiles.conf
