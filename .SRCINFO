@@ -1,0 +1,17 @@
+pkgbase = rampup
+	pkgdesc = systemd service for ec_su_axb35 fan ramp curves
+	pkgver = r0020.e2ba
+	pkgrel = 1
+	url = https://codeberg.org/radupotop/rampup
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = kmod
+	depends = systemd
+	depends = ec-su_axb35-dkms-git
+	backup = etc/ec-su-axb35-fan.d/fan3.conf
+	source = rampup::git+https://codeberg.org/radupotop/rampup.git#branch=main
+	sha256sums = SKIP
+
+pkgname = rampup
