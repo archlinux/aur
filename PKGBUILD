@@ -1,7 +1,7 @@
 # Maintainer: tblFlip <root@tblflip.de>
 
 pkgname=tagstudio
-pkgver=alpha9.6.0
+pkgver=alpha9.6.1
 pkgrel=1
 pkgdesc="A User-Focused Photo & File Management System "
 _pkgver=${pkgver#alpha}
@@ -68,7 +68,7 @@ source=(
 )
 
 sha256sums=(
-	"73691eede773423d9453e7f2cbf8b5badc3820f421d6f1b943f176d76962ff5e"
+	"58b525246e0d8f7ff3aa2a2d68fdf55d5824386c543c90bb2e8d7c997c1c1061"
 	"75ef43dcb45445544daf48c002e5de8878c4e4a84408e607c817f582f7fa19d3"
 	"7a611755db416558c892b083ce7c802c115f68bca86facfdb66cca29cf0ff36f"
 	"ef8f9aa04aadb340d662197e74ba03c1bd0e1f14182c85653d537ee94babedeb"
