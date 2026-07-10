@@ -1,0 +1,4 @@
+[ltex-ls-plus]
+source = "github"
+github = "ltex-plus/ltex-ls-plus"
+use_latest_release = true
