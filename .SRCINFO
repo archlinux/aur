@@ -1,7 +1,7 @@
 pkgbase = opensource-communicator-git
 	pkgdesc = Open-source ITooLabs/Megafon PBX compatible VoIP & IM client (Qt6)
 	pkgver = 0.3.0.r0.gb2199ab
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/shipa-2/Opensource-Communicator
 	arch = x86_64
 	license = custom
@@ -11,7 +11,6 @@ pkgbase = opensource-communicator-git
 	depends = qt6-base
 	depends = qt6-websockets
 	depends = qt6-multimedia
-	depends = qt6-dbus
 	depends = libdatachannel
 	depends = opus
 	depends = openssl
