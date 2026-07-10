@@ -1,20 +1,20 @@
 pkgbase = v2rayn-bin
 	pkgdesc = A GUI client for Windows and Linux, support Xray core and others
 	pkgver = 7.23.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/2dust/v2rayN
 	arch = x86_64
-	arch = arm64
+	arch = aarch64
 	license = GPL-3.0-only
 	depends = fontconfig
 	options = !strip
 	source = v2rayN.png
 	source = v2rayN-bin.desktop
 	sha256sums = f762fd95d93c2287f55ebb742716a54aa6b507ff8c8d75aec7256fabc93192ee
-	sha256sums = 307cbfaf4aabf2a36f72d66963f04604f71bc068361e5d0eb8feaff8feeaf21a
+	sha256sums = 3ffdcee071758d3a46fe189e332299fc59ad92ecbdbab8fba8927d978e6f2912
 	source_x86_64 = v2rayN-linux-64-7.23.3.zip::https://github.com/2dust/v2rayN/releases/download/7.23.3/v2rayN-linux-64.zip
 	sha256sums_x86_64 = 38f4508514821fea5227a33290f9909421273fdc803a6c67658bd013c015f7a7
-	source_arm64 = v2rayN-linux-arm64-7.23.3.zip::https://github.com/2dust/v2rayN/releases/download/7.23.3/v2rayN-linux-arm64.zip
-	sha256sums_arm64 = 641189ff33e5a02006b8f4d4ff35b0384fa4fd236dcf6664d075a44cd314e18c
+	source_aarch64 = v2rayN-linux-arm64-7.23.3.zip::https://github.com/2dust/v2rayN/releases/download/7.23.3/v2rayN-linux-arm64.zip
+	sha256sums_aarch64 = 641189ff33e5a02006b8f4d4ff35b0384fa4fd236dcf6664d075a44cd314e18c
 
 pkgname = v2rayn-bin
