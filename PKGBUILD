@@ -29,7 +29,7 @@
 # simply not run `mshell`; the helper binaries are still useful.
 
 pkgname=margo-git
-pkgver=r2081.290c6d22
+pkgver=r2115.24455f9d
 pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)"
 url="https://github.com/kenanpelit/margo"
@@ -61,6 +61,15 @@ depends=(
   pango           # `mlock` + mshell text shaping
   dbus            # screencast / portal D-Bus shims
   uwsm            # the installed wayland-session entry launches margo via uwsm
+  # ── mlogind greeter host (native per-monitor login resolution) ──
+  # `[display] host = "cage"` (the default) runs the login greeter inside
+  # a cage+foot kiosk so every connected monitor lights up at its own
+  # native KMS mode — dynamic, EDID-derived, no hardcoded resolution.
+  # mlogind falls back to the classic single-framebuffer TTY greeter if
+  # either binary is missing, so these are functionally required only for
+  # the native-resolution path.
+  cage            # wlroots kiosk compositor that hosts the greeter
+  foot            # Wayland terminal the greeter renders into
   # ── Portals (gnome-free) ────────────────────────────────────────
   # Frontend daemon reads our margo.portal + margo-portals.conf and
   # activates margo-portal for ScreenCast/Screenshot; the gtk backend
@@ -156,6 +165,7 @@ backup=(
   "etc/mlogind/config.toml"
   "etc/mlogind/variables.toml"
   "etc/pam.d/mlogind"
+  "etc/pam.d/mlogind-greeter"
   "etc/mlogind/xsetup.sh"
 )
 # Cargo profile already enables thin LTO; the outer makepkg LTO
@@ -247,6 +257,9 @@ build() {
   # feature lives only in mshell's graph (mshell → mshell-core →
   # mshell-frame), so mpicker/mwizard/margo-portal are unaffected.
   #
+  # mvpn (Mullvad VPN CLI + GTK4 layer-shell panel) builds here too — it
+  # links gtk4/gtk4-layer-shell like the rest of the shell stack, so it
+  # shares that feature resolution rather than leaking GTK into margo's graph.
   # mgreet (native GTK4 + gtk4-layer-shell login greeter, launched by
   # mlogind's `[display] host = "gui"`) builds here too — it links the same
   # gtk4/gtk4-layer-shell stack as the shell, so it shares that resolution
@@ -270,6 +283,7 @@ check() {
     --package margo-layouts \
     --package mctl \
     --package mlayout \
+    --package mdots \
     --package mcal ||
     echo "::: margo: test suite reported failures (non-blocking)"
 }
@@ -626,6 +640,19 @@ package() {
     "$pkgdir/etc/mlogind/variables.toml"
   install -Dm644 "mlogind/extra/mlogind.pam" \
     "$pkgdir/etc/pam.d/mlogind"
+  # The greeter runs as an unprivileged system user and gets its logind
+  # session (and therefore its DRM node) from this PAM stack. It
+  # authenticates nothing — pam_permit — so installing it grants no
+  # login. pacman's systemd-sysusers hook creates the user for us.
+  install -Dm644 "mlogind/extra/mlogind-greeter.pam" \
+    "$pkgdir/etc/pam.d/mlogind-greeter"
+  install -Dm644 "mlogind/extra/mlogind.sysusers" \
+    "$pkgdir/usr/lib/sysusers.d/mlogind.conf"
+  # Not on the greeter's own path (its power keys go through the root
+  # session runner over the mlogind-proto socket) — this is for anything
+  # else running inside the greeter's session. GDM and SDDM ship the same.
+  install -Dm644 "mlogind/extra/60-mlogind-greeter.rules" \
+    "$pkgdir/usr/share/polkit-1/rules.d/60-mlogind-greeter.rules"
   install -Dm755 "mlogind/extra/xsetup.sh" \
     "$pkgdir/etc/mlogind/xsetup.sh"
   # Session-script dirs mlogind scans (config.toml: scripts_path);
