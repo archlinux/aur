@@ -1,0 +1,25 @@
+pkgbase = python-pypdfform
+	pkgdesc = create, inspect, style, fill PDF forms in Python or from the command line
+	pkgver = 5.3.0
+	pkgrel = 1
+	url = https://github.com/chinapandaman/PyPDFForm
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-coverage
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-typer
+	makedepends = python-jsonschema
+	makedepends = python-yaml
+	makedepends = bash
+	makedepends = zsh
+	depends = python-pikepdf
+	optdepends = python-typer: for CLI usage
+	optdepends = python-jsonschema: for CLI usage
+	optdepends = python-yaml: for CLI usage
+	source = https://github.com/chinapandaman/PyPDFForm/archive/refs/tags/v5.3.0.tar.gz
+	b2sums = 0c66bfd573713881ad192c78c14e1fbc9dcee9c2e1920210a4026399155eaf26ac7a0075bfd01ad6374dc86750531b56b576c3502a508db94dce79756a07291f
+
+pkgname = python-pypdfform
