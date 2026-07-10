@@ -2,7 +2,7 @@
 
 _pkgname='wireproxy-awg'
 pkgname="${_pkgname}-bin"
-pkgver=1.0.16
+pkgver=1.0.17
 pkgrel=1
 pkgdesc="AmneziaWG compatible wireguard client that exposes itself as a socks5 proxy"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -14,9 +14,9 @@ conflicts=(${_pkgname} wireproxy)
 source_x86_64=("wireproxy_${pkgver}_x86_64.tar.gz::${url}/releases/download/v${pkgver}/wireproxy_linux_amd64.tar.gz")
 source_aarch64=("wireproxy_${pkgver}_aarch64.tar.gz::${url}/releases/download/v${pkgver}/wireproxy_linux_arm64.tar.gz")
 source_armv7h=("wireproxy_${pkgver}_armv7h.tar.gz::${url}/releases/download/v${pkgver}/wireproxy_linux_arm.tar.gz")
-sha256sums_x86_64=('5badb6b566f7ade3b5f94cbd233ff4437b3f5888d5a40f615fa87a8dedb36534')
-sha256sums_aarch64=('251b8526a0fde931adaa2852afdea860d662bfdebfef6ddba61756851024bf8e')
-sha256sums_armv7h=('ef980f4244b226726b6e2f9bb8f35373df0e04bb2598bd90d8138e908861c2e4')
+sha256sums_x86_64=('5f7c62135142262dc0b63fb31de5758f4471e56c2c7994f473236d2a33a6c3f6')
+sha256sums_aarch64=('79ac8b2862914945264edd960fcf7189021b86fb64ab307553e9391f93f32c44')
+sha256sums_armv7h=('726095d050893227490d1bb80bfe2afead8d09ed7ff3e553d8863dd6059830e6')
 
 
 package() {
