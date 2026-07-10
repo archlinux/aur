@@ -15,9 +15,13 @@
 # for the no-updater pacman/AUR install path; updates come from pacman.
 
 pkgname=codex-desktop-linux
-# _appver MUST match flake.nix's codexVersion — same versioned zip.
-_appver=26.519.81530
-pkgver=26.519.81530
+# _appver / pkgver must match repo-root CODEX_VERSION (the single source of
+# truth that flake.nix and scripts/dev.sh also read). makepkg needs _appver
+# at source=() eval time, before the git source is cloned, so the file
+# cannot be read here — prepare() asserts equality and fails the build if
+# this PKGBUILD drifts away from CODEX_VERSION.
+_appver=26.707.31428
+pkgver=26.707.31428
 pkgrel=1
 pkgdesc="Codex Desktop for Linux — distsystem soft-fork (versioned-zip pinned, no auto-updater)"
 arch=('x86_64')
@@ -75,10 +79,10 @@ options=('!debug' '!strip')
 install="$pkgname.install"
 source=(
     "$pkgname::git+https://github.com/distsystem/codex-desktop-linux.git#branch=main"
-    "Codex-$_appver.zip::https://persistent.oaistatic.com/codex-app-prod/Codex-darwin-arm64-$_appver.zip"
+    "Codex-$_appver.zip::https://persistent.oaistatic.com/codex-app-prod/ChatGPT-darwin-arm64-$_appver.zip"
 )
 sha256sums=('SKIP'
-            '4c11416391b0d12f2739784db7c102481f7610888d34cf09140f2928b52952f4')
+            'ffdc351a507105d55d7464e3340302c758b8a54b926711c4b15bf373ccb47d64')
 # install.sh runs 7z on the payload itself; let it own the extraction.
 noextract=("Codex-$_appver.zip")
 
@@ -93,10 +97,19 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$pkgname"
+
+    local sot
+    sot=$(<CODEX_VERSION)
+    sot=${sot%$'\n'}
+    if [ "$sot" != "$_appver" ]; then
+        echo "error: PKGBUILD _appver=$_appver but repo CODEX_VERSION=$sot - update both" >&2
+        return 1
+    fi
+
     # Enable every Linux feature; the in-app Computer Use UI is opened via the
     # env flag in build().
     cat > linux-features/features.json <<'JSON'
-{"enabled":["open-target-discovery","zed-opener","copilot-reasoning-effort","read-aloud","read-aloud-mcp","conversation-mode","remote-control-ui","remote-mobile-control"]}
+{"enabled":["open-target-discovery","zed-opener","copilot-reasoning-effort","read-aloud","read-aloud-mcp","conversation-mode","remote-control-ui","remote-mobile-control","cli-model-visibility"]}
 JSON
 }
 
