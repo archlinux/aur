@@ -1,7 +1,7 @@
 pkgbase = bluez-gamepad-quirks
 	pkgdesc = BlueZ daemon with HID gamepad quirk support for controllers with broken SDP records
 	pkgver = 5.87
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/EvolveBeyond/bluez
 	install = bluez-gamepad-quirks.install
 	arch = x86_64
