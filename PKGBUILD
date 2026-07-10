@@ -2,7 +2,7 @@
 
 pkgname=lazylore
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal UI for Lore, inspired by lazygit."
 arch=('x86_64') # ?
 url="https://github.com/Peralysis/lazylore"

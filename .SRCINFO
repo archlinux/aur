@@ -1,11 +1,14 @@
 pkgbase = lazylore
 	pkgdesc = Terminal UI for Lore, inspired by lazygit.
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Peralysis/lazylore
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !debug
 	source = lazylore-0.1.3.tar.gz::https://github.com/Peralysis/lazylore/archive/refs/tags/v0.1.3.tar.gz
 	sha256sums = 2d46289a4ab3af06ce0282bd990470b21cf3a73ce33524e7583c04518f90cec1
 
