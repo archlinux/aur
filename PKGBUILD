@@ -3,7 +3,7 @@
 _pkgname=xfwl4
 pkgname=${_pkgname}-git
 epoch=1
-pkgver=4.21.0+2+gdc0fc42
+pkgver=4.21.0+148+g900b872
 pkgrel=1
 pkgdesc="Wayland compositor for xfce4 (git checkout)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -15,7 +15,10 @@ provides=("${_pkgname}=${pkgver%%+*}")
 depends=('gtk3' 'xfconf>=4.21.2' 'libxfce4ui>=4.21.8' 'libdisplay-info' 'libdrm' 'libinput' 'mesa' 'pixman'
          'seatd' 'libxkbcommon' 'xorg-xwayland')
 # Runtime only
-depends+=('xfwm4' 'xfce4-settings>=4.21.2' 'xfdesktop>=4.21.0')
+depends+=('xfwm4'
+          'xfce4-settings>=4.21.2'
+          'xfdesktop>=4.21.0'
+          'libxfce4windowing>=4.20.6+18+g38e4af2')
 makedepends=('cargo' 'rust' 'git' 'meson' 'gettext')
 source=("${_pkgname}::git+${url}")
 sha256sums=('SKIP')
