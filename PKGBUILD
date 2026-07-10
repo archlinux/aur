@@ -4,8 +4,8 @@
 
 pkgname=v2rayn
 _pkgname=v2rayN
-pkgver=7.22.7
-_bin_commit=bb3aa9a474311e859852d030ab67d9dac6de6fbe
+pkgver=7.23.3
+_bin_commit=17ad8b1fda32b702e4163527fd7e1a14ec3e43ce
 pkgrel=1
 pkgdesc="A GUI client for Windows, Linux and macOS, support Xray and sing-box and others"
 arch=('aarch64' 'x86_64')
@@ -19,9 +19,9 @@ source=("git+${url}#tag=${pkgver}"
         "git+https://github.com/2dust/GlobalHotKeys.git"
         "${pkgname}-bin-${_bin_commit}.zip::${url}-core-bin/raw/${_bin_commit}/v2rayN-linux-64.zip"
         "${pkgname}.sh")
-sha256sums=('ad8510c0a4661188c15a8ecbe1296ace2ff0633b290ad6779606d2619d17043a'
+sha256sums=('f9cea5e530b720a8b8cdd3d94f7782be48e9b33c5538aadabd5b9900a772e456'
             'SKIP'
-            '75bd29260157e9da0aa0db1ed8bba7ab20118a3702eb490cad579b0085b04c5b'
+            '4e385c8e416fa68b2e9e7471faf01ffa86585ef6ff3a2d1cbf77dba259127af2'
             '0fd5ed368fc6f51f6a8d2507c7cf598edbede076245d5661b06fe4394a6f1390')
 
 prepare() {
@@ -52,7 +52,7 @@ build() {
 
 package() {
     cd "${_pkgname}/${_pkgname}"
-    mkdir -p "${pkgdir}/usr/lib/${_pkgname}"
+    install -d "${pkgdir}/usr/lib/${_pkgname}"
     cp -r build/* "${pkgdir}/usr/lib/${_pkgname}"
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
@@ -60,7 +60,7 @@ package() {
     install -Dm644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
     # Create symlink
-    mkdir -p "${pkgdir}/usr/lib/${_pkgname}/bin/xray"
+    install -d "${pkgdir}/usr/lib/${_pkgname}/bin/xray"
     ln -s /usr/bin/xray -t "${pkgdir}/usr/lib/${_pkgname}/bin/xray"
 
     # Install geofiles
