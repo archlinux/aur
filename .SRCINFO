@@ -1,14 +1,13 @@
 pkgbase = borg2
 	pkgdesc = Deduplicating backup program with compression and authenticated encryption
-	pkgver = 2.0.0b18
+	pkgver = 2.0.0b21
 	pkgrel = 1
-	url = https://github.com/borgbackup/borg
+	url = https://borgbackup.org
 	arch = x86_64
 	license = BSD-3-Clause
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
 	checkdepends = python-pytest-benchmark
-	checkdepends = python-argon2-cffi
 	checkdepends = python-dateutil
 	makedepends = cython
 	makedepends = python-sphinx
@@ -28,18 +27,19 @@ pkgbase = borg2
 	depends = zstd
 	depends = xxhash
 	depends = libdeflate
-	depends = python-borgstore=0.3.0
+	depends = python-argon2-cffi
 	depends = python-borghash=0.1.0
+	depends = python-jsonargparse
 	provides = borg
 	provides = borgbackup
 	conflicts = borg
 	conflicts = borgbackup
-	source = https://github.com/borgbackup/borg/releases/download/2.0.0b18/borgbackup-2.0.0b18.tar.gz
-	source = https://github.com/borgbackup/borg/releases/download/2.0.0b18/borgbackup-2.0.0b18.tar.gz.asc
-	source = https://github.com/borgbackup/borgstore/releases/download/0.3.0/borgstore-0.3.0.tar.gz
+	source = https://github.com/borgbackup/borg/releases/download/2.0.0b21/borgbackup-2.0.0b21.tar.gz
+	source = https://github.com/borgbackup/borg/releases/download/2.0.0b21/borgbackup-2.0.0b21.tar.gz.asc
+	source = https://github.com/borgbackup/borgstore/releases/download/0.4.0/borgstore-0.4.0.tar.gz
 	validpgpkeys = 6D5BEF9ADD2075805747B70F9F88FB52FAF7B393
-	sha256sums = 51abe06a0220956a458e52db48ab6b680508200f694a897d7576d2f1345af15d
+	sha256sums = 08543d61dd937039f99e487c29d36e31cc726a61912f8ad814e3d5753f681cd0
 	sha256sums = SKIP
-	sha256sums = a9049f730c9e31ce9ccdfb4ff171542dbc818fd4c8484c4eb51e65addd76fe43
+	sha256sums = 2950209365ddf1a5e687add8fd64877a3050bf26af97655a798fa71ead6df4c4
 
 pkgname = borg2
