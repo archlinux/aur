@@ -1,7 +1,7 @@
 # Maintainer: vbmithr <vb@luminar.eu.org>
 
 pkgname=rustfs-cli-bin
-pkgver=0.1.9
+pkgver=0.1.25
 pkgrel=1
 pkgdesc="A S3-compatible command-line client written in Rust."
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('rustfs-cli')
 source_x86_64=("https://github.com/rustfs/cli/releases/download/v${pkgver}/rustfs-cli-linux-amd64-v${pkgver}.tar.gz")
 source_aarch64=("https://github.com/rustfs/cli/releases/download/v${pkgver}/rustfs-cli-linux-arm64-v${pkgver}.tar.gz")
 
-sha256sums_x86_64=('a4260ab56fb398749fc33fce7456bfd5e5b57c166f2ac59189a69095290c9db0')
-sha256sums_aarch64=('9f4d69f5a0bd7df3d2a16772dc9911bf2ada96dd59790c6c841e7ab774342f2a')
+sha256sums_x86_64=('a2d359f9c1c934886e236eb264318bbab326cb67cfae718e3a5186c8cfae82fe')
+sha256sums_aarch64=('e335fb5b71ee0fe473116e1ac313810b58c032a1a7f92c78ae77c3185a362022')
 
 package() {
 	cd "${srcdir}"
