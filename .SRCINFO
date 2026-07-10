@@ -1,6 +1,6 @@
 pkgbase = reterm-bin
 	pkgdesc = SSH, SFTP and RDP client with encrypted cloud sync
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://reterm.app
 	install = reterm-bin.install
@@ -19,7 +19,7 @@ pkgbase = reterm-bin
 	conflicts = reterm
 	options = !strip
 	options = !debug
-	source_x86_64 = Reterm_0.2.1_amd64.deb::https://github.com/reterm-app/reterm/releases/download/v0.2.1/Reterm_0.2.1_amd64.deb
-	sha256sums_x86_64 = 99200875aa93b6b6c237610f7d9783eb8418dfaf8e68df2c484b80dae1a463f3
+	source_x86_64 = Reterm_0.2.2_amd64.deb::https://github.com/reterm-app/reterm/releases/download/v0.2.2/Reterm_0.2.2_amd64.deb
+	sha256sums_x86_64 = b5f1557e04a7515b9e33fef1b4cf02e92a8be5db86588cb801ffac4b97f22dc7
 
 pkgname = reterm-bin

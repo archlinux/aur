@@ -1,6 +1,6 @@
 # Maintainer: Woro <woro@tanieddosy.pl>
 pkgname=reterm-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="SSH, SFTP and RDP client with encrypted cloud sync"
 arch=('x86_64')
@@ -17,7 +17,7 @@ install=reterm-bin.install
 # Tauri names the .deb as {productName}_{version}_amd64.deb.
 _dlbase="https://github.com/reterm-app/reterm/releases/download"
 source_x86_64=("Reterm_${pkgver}_amd64.deb::${_dlbase}/v${pkgver}/Reterm_${pkgver}_amd64.deb")
-sha256sums_x86_64=('99200875aa93b6b6c237610f7d9783eb8418dfaf8e68df2c484b80dae1a463f3')
+sha256sums_x86_64=('b5f1557e04a7515b9e33fef1b4cf02e92a8be5db86588cb801ffac4b97f22dc7')
 
 package() {
   tar -xf data.tar.gz -C "${pkgdir}/"
