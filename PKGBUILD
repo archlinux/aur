@@ -6,7 +6,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-libtiff
 pkgver=4.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for manipulation of TIFF images (mingw-w64)"
 arch=('any')
 url="https://libtiff.gitlab.io/libtiff/"
@@ -28,14 +28,6 @@ validpgpkeys=(
   'EBDFDB21B020EE8FD151A88DE301047DE1198975' # Bob Friesenhahn <bfriesen@simple.dallas.tx.us>
   'B1FA7D81EEB8E66399178B9733EBBFC47B3DD87D' # Even Rouault <even.rouault@spatialys.com>
 )
-
-prepare() {
-  cd "${srcdir}/libtiff"
-  # keep original libtiff-6.dll runtime name
-  echo 'set_target_properties(tiff PROPERTIES RUNTIME_OUTPUT_NAME tiff-6 PREFIX "lib")' >> CMakeLists.txt
-  # keep original libtiffxx-6.dll runtime name
-  echo 'set_target_properties(tiffxx PROPERTIES RUNTIME_OUTPUT_NAME tiffxx-6 PREFIX "lib")' >> CMakeLists.txt
-} 
 
 build() {
   export CFLAGS="-fno-strict-aliasing"
