@@ -1,8 +1,9 @@
 # Maintainer: Vasiliy Stelmachenok <ventureo@yandex.ru>
 # Maintainer: so5iso4ka <so5iso4ka@icloud.com>
+# Contributor: asyync1024 <asyync1024 at proton dot me>
 pkgname=freesmlauncher
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with offline accounts support"
 arch=(x86_64)
 url='https://freesmlauncher.org/'
@@ -26,7 +27,7 @@ depends=(
   zlib
 )
 options=(!lto)
-makedepends=(cmake extra-cmake-modules git jdk17-openjdk ninja scdoc gamemode)
+makedepends=(cmake extra-cmake-modules git jdk17-openjdk ninja scdoc gamemode vulkan-headers)
 optdepends=(
   'glfw-pure: Native Wayland support'
   'openal: to use system OpenAL libraries'
@@ -61,13 +62,13 @@ build() {
 }
 
 check() {
-  cd "$pkgname"
-  ctest .
+  ctest --test-dir "$pkgname/build" --output-on-failure
 }
 
 package() {
-  cd "$pkgname/build"
-  DESTDIR="$pkgdir" cmake --install .
+  DESTDIR="$pkgdir" cmake --install "$pkgname/build"
+  install -Dm644 "$pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "$pkgname/docs/COPYING.md" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
