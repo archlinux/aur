@@ -7,6 +7,7 @@
 pkgname=nccl-cuda12.9
 _pkgname=nccl
 pkgver=2.30.4
+pkgver=2.30.7
 _upstr_pkgrel=1
 pkgrel=1
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives (Maxwell/Pascal/Volta support)'
@@ -28,10 +29,10 @@ makedepends=(
 )
 source=(git+https://github.com/NVIDIA/nccl.git#tag=v$pkgver-$_upstr_pkgrel
         fix-cc5.2-for-pytorch.patch)
-sha256sums=('cb7e7e7b5c9837d0d3bd8724b9dfe576314710f039d66f8a3eb15d42518795d1'
-            '7fc5a7aa085340afbefb33594fea31717b403245e3046112b8603555a3117620')
-b2sums=('50040a09c7dd94507f4d5d5410d2076826349492e1f7dbfac8ac7b2eac8a7da1450f29e811e1fd93b8fd2e29058fde72cc0ce794d839dff19c0e58073d3d432c'
-        '61b6764eec5288448010d5114f22ef6e951aac721d690d8ec9d60c203ff1bded4a5f3d24acf2453c5e16c8abc8875c59d13443fb96820bc665480bc9e779dff9')
+sha256sums=('304b5450651ee0d8d7241645ae9fb98e3700086b3dad33e11ca6687a81667a9f'
+            '84c398c767fac725d242c53f9b1050c8cff33cc1855a1336dae63f72080b9cd3')
+b2sums=('129e880d2d584add18560d8f9c1e890072d6bea8ded1e93a47afc63b1ea5a2249144cac30d97e35bd38b137a8272989af01564f09f8abe181149c6249fc9c625'
+        'd310242b86df7224d6496758f47a206f6118a51ea341f03e04edd76b79642f393dcf1ffc7d5b8690d5a5eaa902b31929bffaf92a45ad7ba6547e411a95effba8')
 
 prepare() {
   cd $_pkgname
