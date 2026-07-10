@@ -1,6 +1,6 @@
 # Maintainer: Ireozar <ireo at ireo dot dev>
 pkgname="openspeedrun-bin"
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Modern and minimalistic open-source speedrun timer"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("openspeedrun")
 conflicts=("openspeedrun")
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/openspeedrun-linux-gnu-$arch.zip"
         "$pkgname-$pkgver::git+$url.git")
-sha256sums=('1176499914e8f827b554f59f5baffa16f637bcadeb70c158d324b4b88a1d4d6c'
+sha256sums=('4db99a673ccb09c8340de2f342c07e1791a7fb5742d063e2d47b289ee1a4f063'
             'SKIP')
 
 package() {

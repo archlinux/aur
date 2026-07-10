@@ -1,6 +1,6 @@
 pkgbase = openspeedrun-bin
 	pkgdesc = Modern and minimalistic open-source speedrun timer
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/SrWither/OpenSpeedRun
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = openspeedrun-bin
 	depends = wayland
 	provides = openspeedrun
 	conflicts = openspeedrun
-	source = openspeedrun-bin-0.4.1.tar.gz::https://github.com/SrWither/OpenSpeedRun/releases/download/v0.4.1/openspeedrun-linux-gnu-x86_64.zip
-	source = openspeedrun-bin-0.4.1::git+https://github.com/SrWither/OpenSpeedRun.git
-	sha256sums = 1176499914e8f827b554f59f5baffa16f637bcadeb70c158d324b4b88a1d4d6c
+	source = openspeedrun-bin-0.4.2.tar.gz::https://github.com/SrWither/OpenSpeedRun/releases/download/v0.4.2/openspeedrun-linux-gnu-x86_64.zip
+	source = openspeedrun-bin-0.4.2::git+https://github.com/SrWither/OpenSpeedRun.git
+	sha256sums = 4db99a673ccb09c8340de2f342c07e1791a7fb5742d063e2d47b289ee1a4f063
 	sha256sums = SKIP
 
 pkgname = openspeedrun-bin
