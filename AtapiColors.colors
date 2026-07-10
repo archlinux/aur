@@ -107,7 +107,7 @@ ForegroundVisited=240,240,240
 
 [General]
 ColorScheme=Harmony
-Name=Atapi2
+Name=AtapiColors
 TitlebarIsAccentColored=false
 shadeSortColumn=true
 
