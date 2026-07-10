@@ -1,6 +1,6 @@
 pkgbase = libz-rs-sys-git
 	pkgdesc = A zlib implementation in rust available as a C dynamic library
-	pkgver = 0.6.2.r0.g0d4329f
+	pkgver = 0.6.6.r0.g9909ff1
 	pkgrel = 1
 	url = https://trifectatech.org/projects/zlib-rs/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = libz-rs-sys-git
 	makedepends = cargo-c
 	depends = glibc
 	depends = libgcc
-	provides = libz-rs-sys=0.6.2.r0.g0d4329f
+	provides = libz-rs-sys=0.6.6.r0.g9909ff1
 	conflicts = libz-rs-sys
 	options = staticlibs
 	source = git+https://github.com/trifectatechfoundation/zlib-rs.git
