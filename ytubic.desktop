@@ -1,4 +1,6 @@
 [Desktop Entry]
+Categories=AudioVideo;Audio;Music;
+Comment=YTubic — fast, responsive YouTube Music desktop client
 Exec=ytubic
 Icon=ytubic
 Name=YTubic
