@@ -1,6 +1,6 @@
 pkgbase = jiratui-bin
 	pkgdesc = Fast, local-first Jira TUI for daily sprint workflows
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Ret2Hell/jiratui
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = jiratui-bin
 	options = !debug
 	source = LICENSE
 	sha256sums = 36cf4e83e979eab805898d24cf06ad161126286bce2c0203a4cd6ba610c11dc2
-	source_x86_64 = https://github.com/Ret2Hell/jiratui/releases/download/v0.1.1/jiratui-v0.1.1-linux-x64.tar.gz
-	sha256sums_x86_64 = baaef2271d0b8da9f7aaacbcbe47c92782f99595d7720543e3c7e4fc5dff0bb3
-	source_aarch64 = https://github.com/Ret2Hell/jiratui/releases/download/v0.1.1/jiratui-v0.1.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = 8115255e3bc088bede1eeb251d7a4a998053f03985330581e69d56a6d5c39b35
-	source_armv7h = https://github.com/Ret2Hell/jiratui/releases/download/v0.1.1/jiratui-v0.1.1-linux-armv7.tar.gz
-	sha256sums_armv7h = d453aabdc3a52cae98c35937b31a32b2baf37ff0534f760af930c0067cfc25af
+	source_x86_64 = https://github.com/Ret2Hell/jiratui/releases/download/v0.1.2/jiratui-v0.1.2-linux-x64.tar.gz
+	sha256sums_x86_64 = 87118a4cb84455a128663b2ea8b91706c2b85add1f77b5b31fa7faa99463abd9
+	source_aarch64 = https://github.com/Ret2Hell/jiratui/releases/download/v0.1.2/jiratui-v0.1.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = bdc15c0ed7af6ad0cc6e38addffe03cdc49f868e9f79dba38f97312d56745f2a
+	source_armv7h = https://github.com/Ret2Hell/jiratui/releases/download/v0.1.2/jiratui-v0.1.2-linux-armv7.tar.gz
+	sha256sums_armv7h = 0cc172f0f706e98ee3227113ac38c4f4e0c2f3aa1e943b59c09a3332723ff030
 
 pkgname = jiratui-bin
