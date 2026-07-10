@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=condformat
-_pkgver=0.10.1
+_pkgver=0.11.0
 pkgname=r-${_pkgname,,}
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Conditional Formatting in Data Frames'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e2b809c7288fefd7d216d47401693edf177eeffd4491b2c12b26ba9d1417d45b')
+sha256sums=('ced64ab017f3846b9655b46dfd2951aa52dbe2a2b96f544d811e6e181962de46')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

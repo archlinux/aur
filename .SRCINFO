@@ -1,6 +1,6 @@
 pkgbase = r-condformat
 	pkgdesc = Conditional Formatting in Data Frames
-	pkgver = 0.10.1
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=condformat
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-condformat
 	optdepends = r-shiny
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/condformat_0.10.1.tar.gz
-	sha256sums = e2b809c7288fefd7d216d47401693edf177eeffd4491b2c12b26ba9d1417d45b
+	source = https://cran.r-project.org/src/contrib/condformat_0.11.0.tar.gz
+	sha256sums = ced64ab017f3846b9655b46dfd2951aa52dbe2a2b96f544d811e6e181962de46
 
 pkgname = r-condformat
