@@ -6,7 +6,7 @@ pkgname="${_pkgname}-bin"
 
 pkgdesc="An app for managing ROMs in Steam (extracted from Debian package)"
 
-pkgver=2.5.34
+pkgver=2.5.41
 pkgrel=1
 
 arch=(x86_64)
@@ -20,17 +20,17 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}-git" "${_pkgname}-appimage")
 
 source=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-md5sums=(0f0dc149c903b6a16906a4c3e288a28d)
+md5sums=(fe638f378a0b15aa348148f11933fcca)
 
 options=(!strip)
 
 package() {
-	# extract the files from the Debian package
+	# extract files from Debian package
 	bsdtar -xf data.tar.xz -C "${pkgdir}"
 
-	# make the directory for the symlink
+	# create directory for symlink
 	mkdir -p "${pkgdir}/usr/bin"
 
-	# make a symlink to the executable
+	# create symbolic link to executable
 	ln -s "/opt/Steam ROM Manager/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
