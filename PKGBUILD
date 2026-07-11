@@ -3,7 +3,7 @@
 _gemname=sord
 pkgname=ruby-$_gemname
 pkgver=7.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert YARD docs to Sorbet RBI and Ruby 3/Steep RBS files'
 arch=(any)
 url='https://github.com/AaronC81/sord'
@@ -18,7 +18,6 @@ depends=(
   ruby-yard
 )
 makedepends=(
-  git
   ruby-rdoc
 )
 checkdepends=(
