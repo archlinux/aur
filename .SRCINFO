@@ -1,6 +1,6 @@
 pkgbase = mangofetch
 	pkgdesc = Tool for fetch everythin' in internet
-	pkgver = 0.7.7
+	pkgver = 0.7.8
 	pkgrel = 1
 	url = https://github.com/julesklord/mangofetch
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = mangofetch
 	depends = xz
 	provides = mangofetch
 	options = !strip
-	source = mangofetch-0.7.7.tgz::https://github.com/julesklord/mangofetch/archive/v0.7.7.tar.gz
-	sha256sums = ee7c5b5bc74cba00261cdcf5554ed54a2f75b290caeef4dfc64892e9aa94b7b4
+	source = mangofetch-0.7.8.tgz::https://github.com/julesklord/mangofetch/archive/v0.7.8.tar.gz
+	sha256sums = 9a84f9185f9edc8c10c035d0eccc6111048e2c235e2a14bfaa998b00a6fe485c
 
 pkgname = mangofetch
