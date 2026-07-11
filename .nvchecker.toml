@@ -1,0 +1,5 @@
+[checkexec-bin]
+source = "github"
+github = "kurtbuilds/checkexec"
+use_latest_release = true
+prefix = "v"
