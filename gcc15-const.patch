@@ -1,0 +1,106 @@
+Fix build with GCC 15 (default -std=gnu23), where glibc's strchr() is
+const-preserving: calling it on `const char *tapeprefix` returns
+`const char *`, which this code assigned to plain `char *`, failing
+under -Werror=discarded-qualifiers. In tape.c the code also wrote a
+'\0' through that pointer, so the volume-list splitting is rewritten
+to split without modifying the const string.
+
+--- a/dump/main.c
++++ b/dump/main.c
+@@ -498,7 +498,7 @@
+ 
+ 	{
+ 		int i;
+-		char *n;
++		const char *n;
+ 
+ 		if ((n = strchr(tapeprefix, ':'))) {
+ 			for (i = 0; i < (n - tapeprefix); i++) {
+--- a/dump/tape.c
++++ b/dump/tape.c
+@@ -82,7 +82,7 @@
+ static int	trecno = 0;		/* next record to write in current block */
+ static long	blocksperfiles_current;	/* current position in blocksperfiles */
+ static long long	blocksthisvol;		/* number of blocks on current output file */
+-static char	*nexttape;
++static const char	*nexttape;
+ static long long	tapea_bytes = 0;	/* bytes_written at start of current volume */
+ 
+ static	ssize_t dump_atomic_read (int, char *, size_t);
+@@ -716,7 +716,7 @@
+ 	int	childpid;
+ 	int	status;
+ 	int	waitpid;
+-	char	*p;
++	size_t	prefixlen;
+ 
+ 	sigset_t sigs;
+ 	sigemptyset(&sigs);
+@@ -801,13 +801,15 @@
+ 		else if (nexttape || strchr(tapeprefix, ',')) {
+ 			if (nexttape && *nexttape)
+ 				tapeprefix = nexttape;
+-			if ((p = strchr(tapeprefix, ',')) != NULL) {
+-				*p = '\0';
+-				nexttape = p + 1;
+-			} else
++			prefixlen = strcspn(tapeprefix, ",");
++			if (tapeprefix[prefixlen] == ',')
++				nexttape = tapeprefix + prefixlen + 1;
++			else
+ 				nexttape = NULL;
+-			strncpy(tape, tapeprefix, MAXPATHLEN);
+-			tape[MAXPATHLEN - 1] = '\0';
++			if (prefixlen > MAXPATHLEN - 1)
++				prefixlen = MAXPATHLEN - 1;
++			memcpy(tape, tapeprefix, prefixlen);
++			tape[prefixlen] = '\0';
+ 			msg("Dumping volume %d on %s\n", tapeno, tape);
+ 		}
+ 		if (blocksperfiles && blocksperfiles_current < *blocksperfiles)
+--- a/restore/interactive.c
++++ b/restore/interactive.c
+@@ -1065,7 +1065,7 @@
+ 	static int entries;
+ 	char pname[MAXPATHLEN*2+2];
+ 	char fname[MAXPATHLEN];
+-	char *slash;
++	const char *slash;
+ 	char ppname[MAXPATHLEN];
+ 
+ 	if (!state) {
+--- a/restore/symtab.c
++++ b/restore/symtab.c
+@@ -230,16 +230,18 @@
+ lookupparent(const char *name)
+ {
+ 	struct entry *ep;
++	char namebuf[MAXPATHLEN];
+ 	char *tailindex;
+ 
+-	tailindex = strrchr(name, '/');
++	strncpy(namebuf, name, sizeof(namebuf) - 1);
++	namebuf[sizeof(namebuf) - 1] = '\0';
++	tailindex = strrchr(namebuf, '/');
+ 	if (tailindex == NULL)
+ 		return (NULL);
+ 	*tailindex = '\0';
+-	ep = lookupname(name);
+-	*tailindex = '/';
++	ep = lookupname(namebuf);
+ 	if (ep == NULL)
+ 		return (NULL);
+ 	if (ep->e_type != NODE)
+ 		panic("%s is not a directory\n", name);
+ 	return (ep);
+--- a/restore/tape.c
++++ b/restore/tape.c
+@@ -195,7 +195,7 @@
+ setinput(const char *source)
+ {
+ 	int i;
+-	char *n;
++	const char *n;
+ 
+ 	FLUSHTAPEBUF();
+ 	if (bflag)
