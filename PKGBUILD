@@ -4,18 +4,18 @@
 # Maintainer: ilovemikael <itsmeguys2247 at gmail dot com>
 _pkgname=doas-sudo-shim
 pkgname=doas-sudo-shim
-pkgver=0.1.2v
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A shim for the sudo command that utilizes doas"
 arch=(any)
-url="https://github.com/Enovale/doas-sudo-shim"
+url="https://github.com/jirutka/doas-sudo-shim"
 license=(ISC)
 provides=(sudo)
 conflicts=(sudo doas-sudo-shim-v doas-sudo-shim-k)
 depends=(awk doas sh)
 optdepends=('asciidoctor: manpage generator')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/Enovale/doas-sudo-shim/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ef8af8e1992ec497763c2922b079c49cd64e3d0151b0d112010d8c57299ddc74')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/jirutka/doas-sudo-shim/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('ee65fc0ddce47300dafaed1206806e6d84b26434472c5a155e7e2ea727bb1902')
 
 if [ -n "`pacman -Qs asciidoctor`" ]; then
   build() {
