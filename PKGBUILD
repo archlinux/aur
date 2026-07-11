@@ -4,7 +4,7 @@ pkgname=muzaiten-bin
 # Bump this, _release_tag, and sha256sums for every published release.
 pkgver=2026.07.11.16.gda1c207
 _release_tag=2026.07.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Native music player for local libraries, with ratings and scrobbling (prebuilt, bundled Last.fm credentials)"
 arch=('x86_64')
 url="https://codeberg.org/11xx/muzaiten"
@@ -15,8 +15,7 @@ optdepends=('gst-plugins-good: extra audio decoders and sinks'
             'gst-plugins-bad: additional codecs and native DSF DSD playback'
             'gst-libav: DSD demux and DSD-to-PCM decode'
             'mpd: browse an MPD library alongside local sources'
-            'yt-dlp: enrich YouTube playlist imports with metadata'
-            'muzaiten-features-clap: optional semantic audio analysis and search provider')
+            'yt-dlp: enrich YouTube playlist imports with metadata')
 provides=('muzaiten')
 conflicts=('muzaiten' 'muzaiten-git')
 options=('!strip')  # build-release.sh already strips the native executables

@@ -1,7 +1,7 @@
 pkgbase = muzaiten-bin
 	pkgdesc = Native music player for local libraries, with ratings and scrobbling (prebuilt, bundled Last.fm credentials)
 	pkgver = 2026.07.11.16.gda1c207
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/11xx/muzaiten
 	arch = x86_64
 	license = Unlicense
@@ -20,7 +20,6 @@ pkgbase = muzaiten-bin
 	optdepends = gst-libav: DSD demux and DSD-to-PCM decode
 	optdepends = mpd: browse an MPD library alongside local sources
 	optdepends = yt-dlp: enrich YouTube playlist imports with metadata
-	optdepends = muzaiten-features-clap: optional semantic audio analysis and search provider
 	provides = muzaiten
 	conflicts = muzaiten
 	conflicts = muzaiten-git
