@@ -1,0 +1,16 @@
+pkgbase = getoptions-ng
+	pkgdesc = An elegant option/argument parser for shell scripts
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/stefanwimmer128/getoptions-ng
+	arch = any
+	license = CC0-1.0
+	checkdepends = shellcheck
+	checkdepends = shellspec
+	depends = sh
+	provides = getoptions
+	conflicts = getoptions
+	source = https://gitlab.com/stefanwimmer128/getoptions-ng/-/releases/v1.0.0/downloads/getoptions-ng-v1.0.0.tar.gz
+	sha256sums = 944681d1ead083da35b013522055d4aad28157e07ff1d6310f0c9365f35028d8
+
+pkgname = getoptions-ng
