@@ -1,7 +1,7 @@
 # Maintainer: hyperpuncher
 
 pkgname=pi-ui-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Desktop GUI for pi"
 arch=('x86_64' 'aarch64')
@@ -19,10 +19,10 @@ sha256sums=(
 )
 
 source_x86_64=("$pkgname-$pkgver.AppImage::https://github.com/hyperpuncher/pi-ui/releases/download/v$pkgver/pi-ui-linux-x64.AppImage")
-sha256sums_x86_64=('a5e0e29e294a444d224001fd09206c0c8bed062635f424f6075564991505e1f9')
+sha256sums_x86_64=('1f6356334d9fa0eabd64551e45977f90ccef0864c26c1a9eaf371116e8e2c488')
 
 source_aarch64=("$pkgname-$pkgver.AppImage::https://github.com/hyperpuncher/pi-ui/releases/download/v$pkgver/pi-ui-linux-arm64.AppImage")
-sha256sums_aarch64=('f938965294f197a511875b66ae09fe26b66d0b0d0860675a27c5544e52a943c2')
+sha256sums_aarch64=('60574a25b761dbc5d72d42a9a740cec454e1661f6a3e4fa0e5809c79939f68dc')
 
 noextract=("$pkgname-$pkgver.AppImage")
 
@@ -32,7 +32,6 @@ package() {
   cat > "$pkgdir/usr/bin/pi-ui" <<'EOF'
 #!/bin/sh
 exec /opt/pi-ui/pi-ui.AppImage \
-  --enable-blink-features=MiddleClickAutoscroll \
   --disable-spell-checking \
   "$@"
 EOF
