@@ -4,7 +4,7 @@
 pkgname=goose-desktop-bin
 pkgver=1.41.0
 pkgrel=2
-pkgdesc="Goose Desktop and CLI (prebuilt) — an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
+pkgdesc="Goose Desktop and CLI (prebuilt) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=('x86_64')
 url="https://github.com/aaif-goose/goose"
 license=('Apache-2.0')
@@ -26,12 +26,6 @@ package() {
   bsdtar -xf "${srcdir}/goose_${pkgver}_amd64-vulkan.deb" -C "${srcdir}"
   bsdtar -xf "${srcdir}"/data.tar.* -C "${pkgdir}"
 
-  # The .deb drops files here:
-  # - ${pkgdir}/usr/lib/goose/* (Electron bundle, main binary is "Goose")
-  # - ${pkgdir}/usr/bin/goose   (wrapper we must NOT install)
-  # - ${pkgdir}/usr/share/applications/goose.desktop
-  # - ${pkgdir}/usr/share/pixmaps/goose.png
-
   rm -f "${pkgdir}/usr/bin/goose"
 
   # 2) Relocate the Electron bundle to a desktop-specific dir to avoid name ambiguity
@@ -39,7 +33,6 @@ package() {
   install -d "${pkgdir}/opt/goose-desktop"
   mv "${pkgdir}/usr/lib/goose/"* "${pkgdir}/opt/goose-desktop/"
   rmdir "${pkgdir}/usr/lib/goose" || true
-  rmdir "${pkgdir}/usr/lib" 2>/dev/null || true
 
   # Optional: setuid sandbox (many Electron -bin packages do this; harmless if userns is enabled)
   if [[ -f "${pkgdir}/opt/goose-desktop/chrome-sandbox" ]]; then
@@ -85,7 +78,3 @@ EOF
   tar -xjf "${srcdir}/goose-cli-${pkgver}.tar.bz2" -C "${srcdir}"
   install -m755 "${srcdir}/goose" "${pkgdir}/usr/bin/goose"
 }
-
-# Smooth upgrade if you previously published a conflicting rev that installed /usr/bin/goose
-# pkgrel bumped to 2; uncomment if needed:
-# replaces=('goose-desktop-bin<1.8.0-2')
