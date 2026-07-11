@@ -1,6 +1,6 @@
 pkgbase = getoptions-ng-git
 	pkgdesc = An elegant option/argument parser for shell scripts
-	pkgver = 1.0.0.r0.gb5ede7c
+	pkgver = 1.1.0.r0.g14de716
 	pkgrel = 1
 	url = https://gitlab.com/stefanwimmer128/getoptions-ng
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = getoptions-ng-git
 	checkdepends = shellcheck
 	checkdepends = shellspec
 	makedepends = git
+	makedepends = pandoc
 	depends = sh
 	provides = getoptions
 	conflicts = getoptions
