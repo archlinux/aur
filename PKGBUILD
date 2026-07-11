@@ -153,10 +153,8 @@ build() {
       $(echo "${LDFLAGS}"|xargs -n1 echo "--linkopt") \
       --copt="-Wno-uninitialized" \
       --host_copt="-Wno-uninitialized" --verbose_failures \
-      package \
-      #--nostart_end_lib \
-
-  bazel shutdown
+      --nostart_end_lib \
+      package
 }
 
 install_mozc-with-jp-dict-common() {

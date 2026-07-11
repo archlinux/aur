@@ -140,11 +140,11 @@ build() {
       $(echo "${CFLAGS}"|xargs -n1 echo "--copt"|grep -v _FORTIFY_SOURCE) \
       $(echo "${CXXFLAGS}"|xargs -n1 echo "--cxxopt"|grep -v _FORTIFY_SOURCE) \
       $(echo "${LDFLAGS}"|xargs -n1 echo "--linkopt") \
+      --nostart_end_lib \
       --copt="-Wno-uninitialized" \
       --host_copt="-Wno-uninitialized" --verbose_failures \
-      #--nostart_end_lib \
+	  package
 
-  bazel shutdown
 }
 
 install_mozc-with-jp-dict-common() {
