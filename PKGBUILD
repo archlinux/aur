@@ -34,11 +34,11 @@ build() {
 }
 
 package() {
-  cd "$srcdir/DesktopEditors/build/deploy/packages"
+  cd "$srcdir/DesktopEditors/build/linux/deploy/packages"
   bsdtar xvf $(ls | grep "x86_64.tar.xz")
   chmod +x "usr/bin/euro-office-desktopeditors"
   bsdtar xvf $(ls | grep "any.tar.xz")
 
-  cp -r "$srcdir/DesktopEditors/build/deploy/packages/usr" "$pkgdir/"
-  cp -r "$srcdir/DesktopEditors/build/deploy/packages/opt" "$pkgdir/"
+  cp -r "$srcdir/DesktopEditors/build/linux/deploy/packages/usr" "$pkgdir/"
+  cp -r "$srcdir/DesktopEditors/build/linux/deploy/packages/opt" "$pkgdir/"
 }
