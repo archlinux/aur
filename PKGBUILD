@@ -1,7 +1,7 @@
 # Maintainer: fredrir
 pkgname=fredulator-git
 _pkgname=fredulator
-pkgver=r22.533e034
+pkgver=r23.03ef420
 pkgrel=1
 pkgdesc='A GTK calculator for Linux with vim motions, multi-tab support, smart math, and customizable themes.'
 arch=('x86_64' 'aarch64')
