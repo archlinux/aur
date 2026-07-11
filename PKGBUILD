@@ -1,7 +1,9 @@
-# Maintainer: René Jochum <rene@jochum.dev>
+# Maintainer: René Jochum <r3j0@jochum.dev>
+# Maintainer: Bastien 'neitsab' Traverse <neitsab@archlinux.org>
+
 pkgname=incus-compose-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bring the familiar Docker Compose workflow to Incus containers (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lxc/incus-compose"
