@@ -1,16 +1,16 @@
 pkgbase = hrdr-bin
 	pkgdesc = herder — fast, agentic coding harness for OpenAI-compatible models (binary release)
-	pkgver = 0.2.9
+	pkgver = 0.2.10
 	pkgrel = 1
 	url = https://github.com/kryptic-sh/hrdr
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = hrdr=0.2.9
+	provides = hrdr=0.2.10
 	conflicts = hrdr
-	source_x86_64 = hrdr-v0.2.9-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hrdr/releases/download/v0.2.9/hrdr-v0.2.9-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = b366f69c8e62fa2ff15ebaa6b527faa21fa3c1f117ccaece15a1e4910f3abb6a
-	source_aarch64 = hrdr-v0.2.9-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hrdr/releases/download/v0.2.9/hrdr-v0.2.9-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 266635199306fd37503cadb081879c2987bb06ba469d2ef6fd2765ccf1b17581
+	source_x86_64 = hrdr-v0.2.10-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hrdr/releases/download/v0.2.10/hrdr-v0.2.10-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 14bcf0ff99d14fba3c8a0058fe5e4df8dd7ec9281ad208566ed04dd287e1c2f9
+	source_aarch64 = hrdr-v0.2.10-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/hrdr/releases/download/v0.2.10/hrdr-v0.2.10-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ac1a06862e895d36de70f5d480e68b989deb2aaa8d819d6876fb0c40e888ad58
 
 pkgname = hrdr-bin
