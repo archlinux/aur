@@ -1,12 +1,11 @@
 pkgbase = serycade-git
 	pkgdesc = Some tui games i made because i was bored. Currently pong and a maze
-	pkgver = r41.284908c
+	pkgver = r42.1ab2c09
 	pkgrel = 1
 	url = https://serenit.ie/projects#serycade
 	arch = x86_64
 	arch = aarch64
 	license = CDDL-1.0
-	makedepends = gradle
 	makedepends = git
 	depends = libcrypt.so
 	source = git+https://codeberg.org/sery/serycade.git

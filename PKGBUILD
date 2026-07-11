@@ -2,14 +2,14 @@
 
 pkgname=serycade-git
 pkgdesc='Some tui games i made because i was bored. Currently pong and a maze'
-pkgver=r41.284908c
+pkgver=r42.1ab2c09
 pkgrel=1
 license=('CDDL-1.0')
 url='https://serenit.ie/projects#serycade'
 arch=('x86_64' 'aarch64')
 
 depends=('libcrypt.so')
-makedepends=(gradle git)
+makedepends=(git)
 source=('git+https://codeberg.org/sery/serycade.git')
 sha256sums=('SKIP')
 
@@ -29,22 +29,9 @@ pkgver() {
 }
 
 build() {
-
-    local target=$(_target caps)
-
-    # Figure out jvm >= 17 installation
-    for jvm in /usr/lib/jvm/*; do
-        if [ ! -f "$jvm/release" ]; then continue; fi
-        local java_major=$(sed -n -r 's/^JAVA_VERSION="(.*)"$/\1/p' < "$jvm/release" | cut -d. -f1)
-        if [ "$java_major" -ge 17 ]; then
-            export JAVA_HOME=$jvm
-            break
-        fi
-    done
-
-    # Also using local gradle directory to avoid weird conflicts
     cd "$srcName"
-    gradle --no-daemon -g "$srcdir/gradle" "linkReleaseExecutable$target"
+    chmod +x ./kotlin
+    ./kotlin build -v release -p "$(_target)"
 }
 
 package() {
@@ -52,7 +39,8 @@ package() {
 
     cd "$srcName"
 
-    install -v -Dm755 "build/bin/$target/releaseExecutable/$binaryName.kexe" "$pkgdir/usr/bin/$binaryName"
+    install -v -Dm755 build/tasks/*_link*/*.kexe "$pkgdir/usr/bin/$binaryName"
+    strip -v "$pkgdir/usr/bin/$binaryName"
     install -v -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
@@ -62,5 +50,5 @@ _target() {
         "x86_64") target='linuxX64'; ;;
         "aarch64") target='linuxArm64'; ;;
     esac
-    if [ "$1" == caps ]; then echo "${target^}"; else echo "$target"; fi
+    echo "$target"
 }
