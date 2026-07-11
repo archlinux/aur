@@ -1,14 +1,13 @@
 pkgbase = expresslrs-configurator
 	pkgdesc = Cross platform configuration & build tool for the ExpressLRS radio link
 	pkgver = 1.7.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ExpressLRS/ExpressLRS-Configurator
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = GPL-3.0-only
-	makedepends = nodejs>=16.0.0
-	makedepends = npm>=6.0.0
+	makedepends = nodejs-lts-krypton
 	makedepends = libxcrypt-compat
 	makedepends = yarn>=1.21.3
 	depends = electron27
