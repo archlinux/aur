@@ -8,7 +8,8 @@ arch=('any')
 url='https://gitlab.com/stefanwimmer128/zellij-selector'
 license=('MPL2')
 depends=('sh' 'libnewt' 'zellij' 'jq.sh' 'yq')
-makedepends=('shellcheck' 'getoptions-ng')
+makedepends=('getoptions-ng')
+checkdepends=('shellcheck')
 optdepends=('fish: Option to open fish shell'
             'zsh: Option to open zsh shell'
             'bash: Option to open bash shell')
