@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=cargo-packager
-pkgver=0.11.7
+pkgver=0.11.8
 pkgrel=1
 pkgdesc="A cli tool and library to generate installers or app bundles for your executables"
 arch=($CARCH)
@@ -20,10 +20,10 @@ makedepends=(
     pkgconf
 )
 backup=()
-options=('!lto' '!strip')
+options=('!lto')
 install=
 source=("${pkgname}::git+${url}.git#tag=cargo-packager-v${pkgver}")
-sha256sums=('1efac6ebc9c87450029430c391897cc5c6ec71e73511e01da4682f6862a80175')
+sha256sums=('cbfce8d7b808c90d8a1fde68b542bbb7048e2b306c6ee91d00a12c329b09f0e9')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
