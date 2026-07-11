@@ -12,6 +12,7 @@ pkgbase = wingpanel-indicator-namarupa
 	depends = glib2
 	depends = gtk3
 	depends = granite
+	depends = libgee
 	depends = wingpanel
 	depends = libayatana-indicator
 	optdepends = ayatana-indicator-application: bridge StatusNotifierItems to Ayatana indicators

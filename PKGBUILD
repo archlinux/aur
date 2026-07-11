@@ -11,6 +11,7 @@ depends=(
   'glib2'
   'gtk3'
   'granite'
+  'libgee'
   'wingpanel'
   'libayatana-indicator'
 )
