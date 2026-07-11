@@ -1,25 +1,21 @@
 # Maintainer: robertfoster
 # Contributor: Marek Kubica <marek@xivilization.net>
 # Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
+# Contributor: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=ocaml-camomile
-pkgver=1.0.2
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Comprehensive Unicode library for OCaml"
 arch=('i686' 'x86_64')
-url="https://github.com/yoriyuki/Camomile"
+url=https://github.com/ocaml-community/Camomile
 license=('LGPL')
-depends=('ocaml')
+depends=('ocaml-camlp-streams' 'ocaml-stdlib-random')
 makedepends=('dune' 'ocaml-findlib')
-source=(https://github.com/yoriyuki/Camomile/archive/$pkgver.tar.gz)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
 build() {
   cd "Camomile-${pkgver}"
-  find . -name "*.mli" -exec sed -i 's,Pervasives.in_channel,Stdlib.in_channel,g' {} +
-  find . -name "*.mli" -exec sed -i 's,Pervasives.out_channel,Stdlib.out_channel,g' {} +
-  find . -name "*.ml" -exec sed -i 's,Pervasives.in_channel,Stdlib.in_channel,g' {} +
-  find . -name "*.ml" -exec sed -i 's,Pervasives.out_channel,Stdlib.out_channel,g' {} +
-  find . -name "*.ml" -exec sed -i 's,Pervasives.compare,Stdlib.compare,g' {} +
   dune build
 }
 
@@ -30,8 +26,8 @@ package() {
     --destdir="${pkgdir}" \
     --prefix="/usr" \
     --libdir="$(ocamlfind printconf destdir)"
-  
+
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('2149ed1731141b29e0265e99493060eb552ac98938b031c4f496190ba97e85f6')
+sha256sums=('6bb421d0bb81594acb5dd902101a0609022d576fe373d956724fa60120bfd03d')
