@@ -6,14 +6,15 @@ pkgdesc="Native music player for local libraries, with ratings and scrobbling (V
 arch=('x86_64')
 url="https://codeberg.org/11xx/muzaiten"
 license=('Unlicense')
-depends=('qt6-base' 'qt6-multimedia' 'taglib' 'gstreamer' 'gst-plugins-base-libs' 'glib2' 'zstd' 'python')
+depends=('qt6-base' 'qt6-multimedia' 'taglib' 'chromaprint' 'gstreamer' 'gst-plugins-base-libs' 'glib2' 'zstd' 'python')
 makedepends=('git' 'cmake' 'ninja' 'pkgconf')
 optdepends=('gst-plugins-good: extra audio decoders and sinks'
             'gst-plugin-pipewire: PipeWire audio output'
             'gst-plugins-bad: additional codecs and native DSF DSD playback'
             'gst-libav: DSD demux and DSD-to-PCM decode'
             'mpd: browse an MPD library alongside local sources'
-            'yt-dlp: enrich YouTube playlist imports with metadata')
+            'yt-dlp: enrich YouTube playlist imports with metadata'
+            'muzaiten-features-clap: optional semantic audio analysis and search provider')
 provides=('muzaiten')
 conflicts=('muzaiten' 'muzaiten-bin')
 source=("$pkgname::git+https://codeberg.org/11xx/muzaiten.git")
