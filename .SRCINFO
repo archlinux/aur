@@ -1,7 +1,7 @@
 pkgbase = edex
 	pkgdesc = Minimal and easy-to-use GUI text editor written in C++ with raylib
 	pkgver = 0.1.1
-	pkgrel = 8
+	pkgrel = 1
 	url = https://github.com/Monjaris/Edex
 	arch = x86_64
 	license = custom:unlicensed
