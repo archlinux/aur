@@ -5,7 +5,7 @@ _Name="FsAutoComplete"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
 pkgver=0.83.0
-pkgrel=1
+pkgrel=2
 pkgdesc="F# language server using Language Server Protocol (LSP)"
 arch=('any')
 url="https://ionide.io/Tools/fsac.html"
@@ -31,20 +31,11 @@ sha256sums=('8569a77543f4db3ce10517dd1614bc1d7200f8e746370c59ceb8b58cff267f8f'
             '658e8b91e2d408a889cb835639f08d9212aace3bd175467d9a5749f0576223cc'
             '1ee6b06043c1f7eca730ecb0e4d2272c451077f6c96ff66fdd252d29843ba482')
 
-if   [ "${CARCH}" = 'aarch64' ]; then _msarch=arm64;
-elif [ "${CARCH}" = 'armv7h'  ]; then _msarch=arm;
-elif [ "${CARCH}" = 'i686'    ]; then _msarch=x86;
-elif [ "${CARCH}" = 'x86_64'  ]; then _msarch=x64; fi
-
 prepare() {
   cd "${srcdir}"
   sed -e "s/@@DOTNET_TOOL_NAME@@/${_pkgname}/g" \
       -e "s/@@DOTNET_TOOL_DLL@@/${_pkgname}/g" \
       -i "dotnet-tool-common.sh"
-
-  cd "tools/net${_sdk}/any/runtimes"
-  find . -mindepth 1 -maxdepth 1 -type d ! -name "linux-${_msarch}" -exec \
-    rm -rf "{}" +
 }
 
 package() {
