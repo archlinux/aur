@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Arch Linux contributors
+#
+# SPDX-License-Identifier: 0BSD
+
 /*.tar.xz
 /*.tar.gz
 /*.tar.zst
