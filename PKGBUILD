@@ -5,7 +5,7 @@
 _branch=main
 _pkgname=yaml-language-server
 pkgname=${_pkgname}-git
-pkgver=r1489.c22285fe
+pkgver=r1502.c1a439e3
 pkgrel=1
 pkgdesc='YAML Language Server, git main build'
 url="https://github.com/redhat-developer/${_pkgname}"
