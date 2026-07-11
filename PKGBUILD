@@ -1,7 +1,7 @@
 # Maintainer: Jan-Niklas Tomski <jan-niklas at tomski dot me>
 _pkgname='wootility'
 pkgname="${_pkgname}5-beta"
-pkgver='5.4.0_beta.3'
+pkgver='5.4.0_beta.4'
 _appimage="${_pkgname^}-${pkgver//_/-}.AppImage"
 pkgrel=1
 pkgdesc="Utility for configuring Wooting keyboards (AppImage beta release)"
@@ -16,7 +16,7 @@ options=(!strip)
 source=("${_appimage}::https://api.wooting.io/public/wootility/download?os=linux&version=${pkgver//_/-}"
         '70-wooting.rules')
 noextract=("${_appimage}")
-b2sums=('9c16479a6039d3cda67fbc5db429e956388d77323edaad8517d1a32f14aab82f465033f4013ec8c5b473795e13657a4e614848bfc9ee41600dbb452db3f26a13'
+b2sums=('056e1bbef10ac2342248f5f2a78791ed4fe01945fff36ec95bbc0aa5519f43e32affa51ab5eb80b4a697e8aeb6a9548b767c0d7b45e293ca7e18c5e93f08b2c1'
         '80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1')
 
 prepare() {
