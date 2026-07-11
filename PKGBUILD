@@ -2,14 +2,20 @@
 : ${aur_llamacpp_build_universal:=false}
 _pkgname="llama.cpp"
 pkgname=${_pkgname}-vulkan-git
-pkgver=b9902.r11.bec4772f6a
-pkgrel=1
+pkgver=b9967.r9.e3546c7948
+pkgrel=2
 _build_number=0
 _commit_id=
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan optimizations)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
 license=('MIT')
+depends=(
+  gcc-libs
+  openssl
+  rdma-core
+  vulkan-icd-loader
+)
 makedepends=(
   cmake
   git
