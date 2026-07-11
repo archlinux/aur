@@ -1,5 +1,5 @@
 pkgname=superset-bin
-pkgver=1.14.1
+pkgver=1.14.3
 pkgrel=1
 pkgdesc="Code Editor for the AI Agents Era - Run an army of Claude Code, Codex, etc. on your machine"
 arch=(x86_64)
@@ -12,8 +12,8 @@ conflicts=("superset-desktop-bin")
 provides=(superset-desktop)
 
 _appimage="superset-${pkgver}-${arch}.AppImage"
-source=("${_appimage}::https://github.com/superset-sh/superset/releases/download/desktop-v1.14.1/superset-1.14.1-x86_64.AppImage")
-sha256sums=('08416089ea5993f891112a15f2636ccadf3e86c4d6ab06f13106a0fea4657a27')
+source=("${_appimage}::https://github.com/superset-sh/superset/releases/download/desktop-v1.14.3/superset-1.14.3-x86_64.AppImage")
+sha256sums=('69f1516ec1279fb9b52c39a07784638b653f7eb9c07bcae5fb58c7163b121c37')
 noextract=("${_appimage}")
 
 prepare() {
