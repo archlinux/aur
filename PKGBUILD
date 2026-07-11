@@ -5,13 +5,25 @@ _commit=HEAD
 _pkgname=Retro68
 pkgname=${_pkgname,,}-git
 pkgver=r1182.335fa54f6d
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform classic Macintosh 68k and PowerPC toolchain"
 arch=('x86_64')
 url="https://github.com/autc04/${_pkgname}"
 makedepends=('cmake' 'gmp' 'mpfr' 'libmpc' 'boost' 'bison' 'flex' 'texinfo' 'ruby' 'unarchiver')
 provides=("${_pkgname}")
 license=('GPLv3')
+depends=(
+  'boost-libs'
+  'gcc-libs'
+  'gmp'
+  'libelf'
+  'libisl'
+  'libmpc'
+  'mpfr'
+  'python'
+  'zlib'
+  'zstd'
+)
 # You can get the MPW archive from https://macintoshgarden.org/apps/macintosh-programmers-workshop
 source=("git+$url#commit=$_commit"
         "local://MPW_fully_updated.sit"
