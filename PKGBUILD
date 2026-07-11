@@ -8,6 +8,7 @@ pkgver=1.0.0.r0.gb5ede7c
 pkgrel=1
 arch=(any)
 depends=(sh)
+makedepends=(git)
 checkdepends=(shellcheck shellspec)
 provides=($__pkgname)
 conflicts=($__pkgname)

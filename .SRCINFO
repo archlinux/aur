@@ -7,6 +7,7 @@ pkgbase = getoptions-ng-git
 	license = CC0-1.0
 	checkdepends = shellcheck
 	checkdepends = shellspec
+	makedepends = git
 	depends = sh
 	provides = getoptions
 	conflicts = getoptions
