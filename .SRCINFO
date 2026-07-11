@@ -1,0 +1,21 @@
+pkgbase = conflux-bin
+	pkgdesc = Background file-sync daemon syncing local directories to multiple remotes
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/SelfRef/conflux
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = zlib
+	provides = conflux
+	conflicts = conflux
+	backup = etc/conflux/config.toml
+	source_x86_64 = conflux-v1.0.0-x86_64-linux.tar.gz::https://github.com/SelfRef/conflux/releases/download/v1.0.0/conflux-v1.0.0-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 42c2814611ee0090c23778702352d95d2ac6dd6201af76063bb5875a37631084
+	source_aarch64 = conflux-v1.0.0-aarch64-linux.tar.gz::https://github.com/SelfRef/conflux/releases/download/v1.0.0/conflux-v1.0.0-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 6f6c5a5564fc062027cf6802704989a926f10c9d0a522c48de5974823ff29a59
+
+pkgname = conflux-bin
