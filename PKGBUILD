@@ -129,7 +129,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         add_gpu_targets_rocm.patch
         aotriton_disable_install.patch
         pyproject.patch
-        codegen_sm_103f.patch
+        $pkgname-187006.patch::https://github.com/pytorch/pytorch/pull/187006.patch
         )
 b2sums=('604cf0f3bdea2bcf9a88c84958526cf0795ec822e125c8785e6442f99c5c5336c0153f118c81a4ef6f7dc53ad375d67dbce7ab1a1c232073f667363eecbe7ff7'
         'SKIP'
@@ -177,7 +177,7 @@ b2sums=('604cf0f3bdea2bcf9a88c84958526cf0795ec822e125c8785e6442f99c5c5336c0153f1
         '007fc33064c55b1a080f8c3dcb0c03acc21629d7034426d0622b56ace3936ae07e0f4bca578327542fa3333cc127ef2e2379ebc8e1f97b561ee54de58ce84d3c'
         'ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0'
         '6182624d66fc4fb5f8e5234b2577fc39edfea9097924789b1ca1c5110a426821a4dfac4eccfea88522d7907dd87b8981bea4409862947332e10b1cbf4a78a4fc'
-        'e733c6f7fd81ac78aa300a650dd8cf7162fbd54cb8e29b61ab4073bffb41309fabcc8c710c06c2bb0e5ab7c4d9499259d01c05e1d766b30dd1b26b24eace26d3')
+        '8b7d8ee806613a5e3ce5ecf6be09b3f1bb31fed193b644dc17b1caad2212e2774e0f67452199bc00c5655fea6b6401ad00e4e99b4fd858fcb3749f1e1f4c9d04')
 options=('!lto' '!debug')
 
 get_pyver () {
@@ -259,7 +259,7 @@ prepare() {
 
   # Skip building RowwiseScaledMM.cu and GroupMM.cu for sm_103f, it results in this error:
   # nvcc fatal   : The same GPU code (`sm_103f`) generated for non family-specific and family-specific GPU arch
-  patch -p1 -i "${srcdir}/codegen_sm_103f.patch"
+  patch -p1 -i "${srcdir}/$pkgname-187006.patch"
 
   cd "${srcdir}"
 

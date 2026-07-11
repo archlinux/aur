@@ -24,15 +24,13 @@ SPDX-License-Identifier = "0BSD"
 
 [[annotations]]
 path = [
-    "0001-Add-cmake-variable-USE_ROCM_CK.patch",
-    "87773.patch",
     "fix_cmake_prefix_path.patch",
-    "fix_include_system.patch",
-    "glog-0.7.patch",
-    "pytorch-rocm-jit.patch",
     "use-system-libuv.patch",
+    "87773.patch",
+    "glog-0.7.patch",
     "add_gpu_targets_rocm.patch",
     "aotriton_disable_install.patch",
+    "fix_include_system.patch",
     "pyproject.patch",
 ]
 SPDX-FileCopyrightText = "python-pytorch contributors"

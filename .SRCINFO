@@ -1,7 +1,7 @@
 pkgbase = python-pytorch
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration
-	pkgver = 2.12.1
-	pkgrel = 2
+	pkgver = 2.13.0
+	pkgrel = 1
 	url = https://pytorch.org
 	arch = x86_64
 	license = BSD-3-Clause-Modification
@@ -68,15 +68,16 @@ pkgbase = python-pytorch
 	optdepends = python-onnxscript: for the ONNX exporter
 	options = !lto
 	options = !debug
-	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.12.1
+	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.13.0
 	source = python-pytorch-FP16::git+https://github.com/Maratyszcza/FP16.git
 	source = python-pytorch-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git
+	source = python-pytorch-MSLK::git+https://github.com/meta-pytorch/MSLK.git
 	source = python-pytorch-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git
 	source = python-pytorch-NVTX::git+https://github.com/NVIDIA/NVTX.git
 	source = python-pytorch-PeachPy::git+https://github.com/malfet/PeachPy.git
 	source = python-pytorch-VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
-	source = python-pytorch-aiter::git+https://github.com/ROCm/aiter.git
 	source = python-pytorch-XNNPACK::git+https://github.com/google/XNNPACK.git
+	source = python-pytorch-aiter::git+https://github.com/ROCm/aiter.git
 	source = python-pytorch-benchmark::git+https://github.com/google/benchmark.git
 	source = python-pytorch-composable_kernel::git+https://github.com/ROCm/composable_kernel.git
 	source = python-pytorch-cpp-httplib::git+https://github.com/yhirose/cpp-httplib.git
@@ -98,11 +99,10 @@ pkgbase = python-pytorch
 	source = python-pytorch-kleidiai::git+https://github.com/ARM-software/kleidiai.git
 	source = python-pytorch-mimalloc::git+https://github.com/microsoft/mimalloc.git
 	source = python-pytorch-onnx::git+https://github.com/onnx/onnx.git
-	source = python-pytorch-opentelemetry-cpp::git+https://github.com/open-telemetry/opentelemetry-cpp.git
 	source = python-pytorch-pocketfft::git+https://github.com/mreineck/pocketfft
 	source = python-pytorch-protobuf::git+https://github.com/protocolbuffers/protobuf.git
 	source = python-pytorch-psimd::git+https://github.com/Maratyszcza/psimd.git
-	source = python-pytorch-pthreadpool::git+https://github.com/Maratyszcza/pthreadpool.git
+	source = python-pytorch-pthreadpool::git+https://github.com/google/pthreadpool.git
 	source = python-pytorch-pybind11::git+https://github.com/pybind/pybind11.git
 	source = python-pytorch-sleef::git+https://github.com/shibatch/sleef
 	source = python-pytorch-tensorpipe::git+https://github.com/pytorch/tensorpipe.git
@@ -114,7 +114,8 @@ pkgbase = python-pytorch
 	source = add_gpu_targets_rocm.patch
 	source = aotriton_disable_install.patch
 	source = pyproject.patch
-	b2sums = 98f5a0196764acd7b8595f43473a544f3b515f25546a526a58b0fa7f57854025990860efa4e3d765dadb94b308b40c5b0b5344a13dd23f62207d15f0956d6214
+	source = python-pytorch-187006.patch::https://github.com/pytorch/pytorch/pull/187006.patch
+	b2sums = 604cf0f3bdea2bcf9a88c84958526cf0795ec822e125c8785e6442f99c5c5336c0153f118c81a4ef6f7dc53ad375d67dbce7ab1a1c232073f667363eecbe7ff7
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -154,18 +155,19 @@ pkgbase = python-pytorch
 	b2sums = SKIP
 	b2sums = 8c91e931f34fcc1cc5d916572e9808435bbc4a853d80af92a5484b4bb1111ef3b2a1c58283b97c2c3071de3177a124669004855f7ebad0734b0941714e3baf4f
 	b2sums = af8c724ed80898ae3875a295ad6bd4d18d90f8a9124f6cff6d1b2f525bf7806fe61306e739c1f7362fbd8d0e4f8ba57d0e3bf925ea3f7a78a0a98f26722db147
-	b2sums = 0a8fc110a306e81beeb9ddfb3a1ddfd26aeda5e3f7adfb0f7c9bc3fd999c2dde62e0b407d3eca573097a53fd97329214e30e8767fb38d770197c7ec2b53daf18
+	b2sums = 4f38d592df7b9b6f4decda09de024a8a7a6b941626d39058edcc45976e52d9b493d78f3f58405f4777e679a1410d1ea60ac8a3535371ec76ca21e633ad08e8bd
 	b2sums = 20d044c5c80354af5ed63847fa4332e96cbfc32a351788f6458fb92b322de7f64b10c188ff26e4f34e422cfe30e082c3ca23ee3e9094616c142aa53588dd451e
 	b2sums = eb1a4305c9e753774ce27256f8e7f35ae52986c8dfefddb71062f7abc71eec04eaae80cd03b9cb362150465000728390b7bfd0e539f772761c0a8d5dd8dbe980
 	b2sums = 007fc33064c55b1a080f8c3dcb0c03acc21629d7034426d0622b56ace3936ae07e0f4bca578327542fa3333cc127ef2e2379ebc8e1f97b561ee54de58ce84d3c
 	b2sums = ec9aea1481c6ae85288d7ab7c709af80ab919face22c17710cfadd80f07111fe53c3241f278fc76c43f28813581a4be0280a5590f8a8fd6dd6b46bc8d2ea25e0
-	b2sums = 21234592e20b5ff1bf43f926bdda72b089cc2b32b92d4287e5aa6b20dc8ebbb2e30135ba8b881d64c35d98be457366bcfd9982cf2e38fd3fc13901955fa571da
+	b2sums = 6182624d66fc4fb5f8e5234b2577fc39edfea9097924789b1ca1c5110a426821a4dfac4eccfea88522d7907dd87b8981bea4409862947332e10b1cbf4a78a4fc
+	b2sums = 8b7d8ee806613a5e3ce5ecf6be09b3f1bb31fed193b644dc17b1caad2212e2774e0f67452199bc00c5655fea6b6401ad00e4e99b4fd858fcb3749f1e1f4c9d04
 
 pkgname = python-pytorch
 
 pkgname = python-pytorch-opt
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (with AVX2 CPU optimizations)
-	provides = python-pytorch=2.12.1
+	provides = python-pytorch=2.13.0
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-cuda
@@ -200,7 +202,7 @@ pkgname = python-pytorch-cuda
 	depends = nccl
 	depends = cudnn
 	depends = onednn
-	provides = python-pytorch=2.12.1
+	provides = python-pytorch=2.13.0
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-opt-cuda
@@ -235,8 +237,8 @@ pkgname = python-pytorch-opt-cuda
 	depends = nccl
 	depends = cudnn
 	depends = onednn
-	provides = python-pytorch=2.12.1
-	provides = python-pytorch-cuda=2.12.1
+	provides = python-pytorch=2.13.0
+	provides = python-pytorch-cuda=2.13.0
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-rocm
@@ -276,7 +278,7 @@ pkgname = python-pytorch-rocm
 	depends = onednn
 	depends = python-triton
 	depends = python-aotriton
-	provides = python-pytorch=2.12.1
+	provides = python-pytorch=2.13.0
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-opt-rocm
@@ -316,8 +318,8 @@ pkgname = python-pytorch-opt-rocm
 	depends = onednn
 	depends = python-triton
 	depends = python-aotriton
-	provides = python-pytorch=2.12.1
-	provides = python-pytorch-rocm=2.12.1
+	provides = python-pytorch=2.13.0
+	provides = python-pytorch-rocm=2.13.0
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-xpu
@@ -355,7 +357,7 @@ pkgname = python-pytorch-xpu
 	depends = level-zero-loader
 	depends = onednn
 	depends = oneccl
-	provides = python-pytorch=2.12.1
+	provides = python-pytorch=2.13.0
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-opt-xpu
@@ -393,6 +395,6 @@ pkgname = python-pytorch-opt-xpu
 	depends = level-zero-loader
 	depends = onednn
 	depends = oneccl
-	provides = python-pytorch=2.12.1
-	provides = python-pytorch-xpu=2.12.1
+	provides = python-pytorch=2.13.0
+	provides = python-pytorch-xpu=2.13.0
 	conflicts = python-pytorch
