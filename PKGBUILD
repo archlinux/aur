@@ -1,7 +1,7 @@
 # Maintainer: Local package maintainer
 
 pkgname=github-copilot-bin
-pkgver=1.0.19
+pkgver=1.0.21
 pkgrel=1
 pkgdesc="GitHub Copilot desktop application"
 arch=('x86_64' 'aarch64')
@@ -42,8 +42,8 @@ noextract=(
     "github-copilot-${pkgver}-aarch64.deb"
 )
 sha256sums=('3d31debed26a6d19a50965aad60931cb83ef000bcc5340aa693d772e539a73f2')
-sha256sums_x86_64=('4b96ca3cb7cd9b8dacf76892469af66c64ed1f77a33fa22e675a0520abbabdf8')
-sha256sums_aarch64=('a48161cf32450f48411600297b38f687da5ca2fb5bf7de8debaf28dfc777943b')
+sha256sums_x86_64=('0b4b2c590feb63078b806af37af4e6321835238032338315a3da53daa813085a')
+sha256sums_aarch64=('6e9e90e1944be6ad7be5eeb454e736c64c7bb36772645df7482d3cf922675e03')
 
 package() {
     local deb="${srcdir}/github-copilot-${pkgver}-${CARCH}.deb"
