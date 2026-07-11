@@ -1,6 +1,6 @@
 pkgbase = lib-lazybios
 	pkgdesc = Lightweight SMBIOS/DMI parsing library
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/LazySeldi/lazybios
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lib-lazybios
 	license = MIT
 	makedepends = cmake
 	depends = glibc
-	source = https://github.com/LazySeldi/lazybios/releases/download/0.1.0/lazybios0.1.0.tar.gz
-	sha256sums = 1441aeb98dbb1c0e18335b01bf1ac75830a77be2302e6a88e396a750aba56314
+	source = https://github.com/LazySeldi/lazybios/releases/download/0.2.0/lazybios0.2.0.tar.gz
+	sha256sums = 1321ff047e79c5082f128b226d6ebc46d7ff0d1c32e0f9ba85977a5049722d3a
 
 pkgname = lib-lazybios
