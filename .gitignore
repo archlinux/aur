@@ -2,6 +2,7 @@
 config.yaml
 fetter.service
 
+!.nvchecker.toml
 !.gitignore
 !PKGBUILD
 !.SRCINFO

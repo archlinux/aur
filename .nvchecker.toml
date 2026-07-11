@@ -1,0 +1,5 @@
+[fetter-bin]
+source = "github"
+github = "juan-leon/fetter"
+use_latest_release = true
+prefix = "v"
