@@ -9,12 +9,23 @@ _jdksubpatch=0
 _jdkfullver=${_jdkmajor}.${_jdkminor}.${_jdkpatch}.${_jdksubpatch}
 _buildmajor=9
 pkgver=${_jdkfullver}
-pkgrel=1
+pkgrel=2
 pkgdesc="IBM Semeru OpenJ9 with openjdk${_jdkver}"
 arch=('x86_64')
 url="https://developer.ibm.com/languages/java/semeru-runtimes/downloads"
 license=('custom')
-depends=('java-environment-common' 'ca-certificates-utils' 'nss')
+depends=('alsa-lib'
+         'java-environment-common'
+         'ca-certificates-utils'
+         'freetype2'
+         'fontconfig'
+         'harfbuzz'
+         'libjpeg-turbo'
+         'libx11'
+         'libxext'
+         'libxrender'
+         'libxtst'
+         'nss')
 provides=(
   "java-environment=${_jdkver}"
   "java-environment-openjdk=${_jdkver}"

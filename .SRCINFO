@@ -1,12 +1,21 @@
 pkgbase = jdk25-openj9-bin
 	pkgdesc = IBM Semeru OpenJ9 with openjdk25
 	pkgver = 25.0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.ibm.com/languages/java/semeru-runtimes/downloads
 	arch = x86_64
 	license = custom
+	depends = alsa-lib
 	depends = java-environment-common
 	depends = ca-certificates-utils
+	depends = freetype2
+	depends = fontconfig
+	depends = harfbuzz
+	depends = libjpeg-turbo
+	depends = libx11
+	depends = libxext
+	depends = libxrender
+	depends = libxtst
 	depends = nss
 	provides = java-environment=25
 	provides = java-environment-openjdk=25
