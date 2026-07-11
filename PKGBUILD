@@ -3,17 +3,21 @@
 
 pkgname=goose-desktop-bin
 pkgver=1.41.0
-pkgrel=1
-pkgdesc="Goose Desktop (prebuilt .deb repack) — an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
+pkgrel=2
+pkgdesc="Goose Desktop and CLI (prebuilt) — an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=('x86_64')
 url="https://github.com/aaif-goose/goose"
 license=('Apache-2.0')
 provides=('goose-desktop')
-conflicts=('goose-desktop')     # conflict only with the source-built variant, not with codename-goose-bin
-depends=('glibc' 'vulkan-icd-loader')
+conflicts=('goose-desktop' 'codename-goose' 'codename-goose-bin')
+depends=('glibc' 'gcc-libs' 'vulkan-icd-loader')
 options=(!strip)
-source=("goose_${pkgver}_amd64-vulkan.deb::https://github.com/aaif-goose/goose/releases/download/v${pkgver}/goose_${pkgver}_amd64-vulkan.deb")
-sha256sums=('43786af7fbdf784d085603f2959dff4e3ccafa3fa8f51fc0686528651fc9562a')
+source=(
+    "goose_${pkgver}_amd64-vulkan.deb::https://github.com/aaif-goose/goose/releases/download/v${pkgver}/goose_${pkgver}_amd64-vulkan.deb"
+    "goose-cli-${pkgver}.tar.bz2::https://github.com/aaif-goose/goose/releases/download/v${pkgver}/goose-x86_64-unknown-linux-gnu.tar.bz2"
+)
+b2sums=('fc8135f37e1e03dba3aedb0328a6a59ee88157795847d554711517bb2f70f459eb6ad54c7cd3a641d53c0baf4e711a39c614dc26a8ec65aab4b3002f7461c10e'
+        'a1db353d25efd73dc26ad330cdba807e4983ee45cd816b160d39061591ad2336df7276071fb21dd0047dd09d0d59797d210950b7e6c0e55bd07bfb9506c254f2')
 
 build() { :; }
 
@@ -76,6 +80,10 @@ EOF
     install -Dm644 "${pkgdir}/usr/share/doc/goose/copyright" \
       "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   fi
+
+  # 6) Install the CLI binary from the second source (CLI tarball)
+  tar -xjf "${srcdir}/goose-cli-${pkgver}.tar.bz2" -C "${srcdir}"
+  install -m755 "${srcdir}/goose" "${pkgdir}/usr/bin/goose"
 }
 
 # Smooth upgrade if you previously published a conflicting rev that installed /usr/bin/goose

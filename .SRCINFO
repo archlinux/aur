@@ -1,16 +1,21 @@
 pkgbase = goose-desktop-bin
-	pkgdesc = Goose Desktop (prebuilt .deb repack) — an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM
+	pkgdesc = Goose Desktop and CLI (prebuilt) — an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM
 	pkgver = 1.41.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aaif-goose/goose
 	arch = x86_64
 	license = Apache-2.0
 	depends = glibc
+	depends = gcc-libs
 	depends = vulkan-icd-loader
 	provides = goose-desktop
 	conflicts = goose-desktop
+	conflicts = codename-goose
+	conflicts = codename-goose-bin
 	options = !strip
 	source = goose_1.41.0_amd64-vulkan.deb::https://github.com/aaif-goose/goose/releases/download/v1.41.0/goose_1.41.0_amd64-vulkan.deb
-	sha256sums = 43786af7fbdf784d085603f2959dff4e3ccafa3fa8f51fc0686528651fc9562a
+	source = goose-cli-1.41.0.tar.bz2::https://github.com/aaif-goose/goose/releases/download/v1.41.0/goose-x86_64-unknown-linux-gnu.tar.bz2
+	b2sums = fc8135f37e1e03dba3aedb0328a6a59ee88157795847d554711517bb2f70f459eb6ad54c7cd3a641d53c0baf4e711a39c614dc26a8ec65aab4b3002f7461c10e
+	b2sums = a1db353d25efd73dc26ad330cdba807e4983ee45cd816b160d39061591ad2336df7276071fb21dd0047dd09d0d59797d210950b7e6c0e55bd07bfb9506c254f2
 
 pkgname = goose-desktop-bin
