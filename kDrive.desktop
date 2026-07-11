@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=kDrive
 Comment=Infomaniak Drive desktop synchronization client
-Exec=kDrive
+Exec=kdrive
 Icon=kDrive
 Type=Application
 Categories=Network;FileTransfer;
