@@ -1,6 +1,6 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-daemon
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="Hardware fan control daemon for Linux (OpenFan, hwmon, GPU)"
 arch=('x86_64')
@@ -10,6 +10,7 @@ depends=('glibc' 'systemd-libs' 'libgcc')
 conflicts=('control-ofc-gui<2.0.0')
 optdepends=(
     'lm_sensors: sensors verification CLI; sensors-detect (last resort) for chips not covered by the built-in module list'
+    'nvidia-utils: NVML runtime (libnvidia-ml.so.1) for opt-in [detection] enable_nvidia_telemetry=true (DEC-204); the open nouveau driver does not need it'
     'it87-dkms-git: out-of-tree driver for ITE 8625E/8686E/8688E/8689E/8696E/87952E (most newer Gigabyte boards)'
     'nct6687d-dkms-git: out-of-tree driver for Nuvoton NCT6687-R (most newer MSI boards)'
     'nct6686d-dkms-git: out-of-tree driver for Nuvoton NCT6686D (some newer ASRock boards)'
@@ -25,7 +26,7 @@ install=control-ofc-daemon.install
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 # sha256sums are CI-maintained (updpkgsums at tag time); a manual makepkg needs 'updpkgsums' first.
-sha256sums=('a806d322b7dafca7177822e44a456c4bcbce11c39710f283cebedf0b913acdaf')
+sha256sums=('c9936d94145f88f4486a0aae8630a5902e4d4fe65efce0b6032c2a697ec6ffe5')
 
 prepare() {
     cd "$pkgname-$pkgver"

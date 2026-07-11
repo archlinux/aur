@@ -37,6 +37,16 @@ EOF
 post_upgrade() {
     echo ":: Restart to apply changes:"
     echo "   sudo systemctl restart control-ofc-daemon"
+    if [[ -f /etc/systemd/system/control-ofc-daemon.service.d/superio-port-probe.conf ]]; then
+        echo ":: Opt-in Super-I/O port-probe drop-in detected — review it against the"
+        echo "   updated example in case the required directives changed:"
+        echo "   /usr/share/doc/control-ofc-daemon/superio-port-probe.conf.example"
+    fi
+    if [[ -f /etc/systemd/system/control-ofc-daemon.service.d/nvidia-telemetry.conf ]]; then
+        echo ":: Opt-in NVIDIA telemetry drop-in detected — review it against the"
+        echo "   updated example in case the required directives changed:"
+        echo "   /usr/share/doc/control-ofc-daemon/nvidia-telemetry.conf.example"
+    fi
 }
 
 pre_remove() {
