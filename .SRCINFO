@@ -1,0 +1,19 @@
+pkgbase = vapoursynth-plugin-eedi3vk2-git
+	pkgdesc = Plugin for Vapoursynth: eedi3vk2 (GIT version)
+	pkgver = 1.3.g0683924
+	pkgrel = 1
+	url = https://github.com/HolyWu/VapourSynth-eedi3vk2
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = meson-python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = vapoursynth
+	provides = vapoursynth-plugin-eedi3vk2
+	conflicts = vapoursynth-plugin-eedi3vk2
+	source = eedi3vk2::git+https://github.com/HolyWu/VapourSynth-eedi3vk2.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-eedi3vk2-git
