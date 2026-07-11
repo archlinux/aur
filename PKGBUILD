@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A polished terminal internet speed test and realtime bandwidth monitor"
 
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('038d2359610e75df2cb09adcb5a874647740361edd5d01edee0337b862d67063')
-sha256sums_aarch64=('db904650b2b91b0348b691bd4dfdc3421881423137a4fc3c057dc38358b03b47')
+sha256sums_x86_64=('47d8216b135db737eebd744e996e9baf20ae65c9a3e856ea9a03a04ad3129a88')
+sha256sums_aarch64=('3955b0b13cd5834679684188f10dbbe0f195c3d030cb8bc2bf0e1a198d6a123d')
 
 
 case ${CARCH} in
