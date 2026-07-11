@@ -2,12 +2,13 @@
 
 pkgname=pupdate-bin
 pkgver=5.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc=" Pupdate, a thing for updating your Analogue Pocket, binary release"
 provides=("pupdate")
 arch=('x86_64')
 url="https://mattpannella.github.io/pupdate"
 license=("Apache")
+depends=('gcc-libs')
 
 source=(
     "${pkgname}-${pkgver}.zip::https://github.com/mattpannella/pupdate/releases/download/${pkgver}/pupdate_linux.zip"
