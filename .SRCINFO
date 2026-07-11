@@ -1,7 +1,7 @@
 pkgbase = dlss-updater
 	pkgdesc = DLSS, XeSS, DirectStorage, FSR, and Streamline DLL updater for games
 	pkgver = 4.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Recol/DLSS-Updater
 	arch = any
 	license = AGPL-3.0-only
@@ -24,7 +24,6 @@ pkgbase = dlss-updater
 	depends = python-pillow
 	depends = python-platformdirs
 	depends = python-psutil
-	depends = python-requests
 	depends = python-tomli-w
 	depends = python-uvloop
 	optdepends = python-niquests: Fallback for DLL downloads when aiohttp fails
