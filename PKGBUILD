@@ -1,4 +1,5 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 _pkgname='mongodb-compass-readonly-beta'
 _edition=' Readonly Beta'
 pkgname="$_pkgname-bin"
