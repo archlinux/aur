@@ -7,8 +7,8 @@
 
 _gitname=cdesktopenv
 pkgname="${_gitname}"-git
-pkgver=2.5.3.30.gdd3fd3ddf
-pkgrel=1
+pkgver=2.5.3.82.gf911fd095
+pkgrel=2
 pkgdesc="Common Desktop Environment"
 url="http://sourceforge.net/projects/cdesktopenv/"
 arch=('x86_64')
@@ -27,7 +27,7 @@ depends=(
     opensp
     rpcbind
     rpcsvc-proto
-    xbitmaps
+    tcl
     xbitmaps
     xorg-bdftopcf
     xorg-fonts-misc
@@ -36,7 +36,6 @@ depends=(
     xorg-xrdb
 )
 makedepends=(
-    tcl
     ncompress
     bison
 )
