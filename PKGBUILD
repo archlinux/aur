@@ -3,7 +3,7 @@
 
 pkgname=zathura-pdf-mupdf-git
 pkgrel=1
-pkgver=2026.02.03.r1.g6869e44
+pkgver=2026.05.10.r5.g9cd0156
 pkgdesc="PDF support for zathura (mupdf backend) (Supports PDF, ePub, and OpenXPS)"
 arch=('x86_64')
 url="https://pwmt.org/projects/zathura-pdf-mupdf"
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  arch-meson build -Dtests=disabled
+  arch-meson build
   ninja -C build
 }
 

@@ -1,6 +1,6 @@
 pkgbase = zathura-pdf-mupdf-git
 	pkgdesc = PDF support for zathura (mupdf backend) (Supports PDF, ePub, and OpenXPS)
-	pkgver = 2026.02.03.r1.g6869e44
+	pkgver = 2026.05.10.r5.g9cd0156
 	pkgrel = 1
 	url = https://pwmt.org/projects/zathura-pdf-mupdf
 	arch = x86_64
