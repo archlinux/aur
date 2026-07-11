@@ -1,0 +1,5 @@
+[envx-bin]
+source = "github"
+github = "mikeleppane/envx"
+use_latest_release = true
+prefix = "v"
