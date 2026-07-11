@@ -2,7 +2,7 @@
 
 pkgname=google-calendar-tui-bin
 _pkgname=google-calendar-tui
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Read-only terminal agenda for Google Calendar via GNOME Online Accounts (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ options=('!strip' '!debug')
 # Per-arch sources — pacman picks the matching one for the host arch.
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64.tar.gz")
-sha256sums_x86_64=('2655d855337b8bf808e5a7e4ee6ecc441e94dbe3cf8a1321fa278a52117a9258')
-sha256sums_aarch64=('1b51bbee6bfd7b960cbde6e3b6808ab2c3499e24b58c4dfa7009d3ed9e1e4191')
+sha256sums_x86_64=('bf4cd108b62dc01e2e2357572fe880cec23f337da8f896168ec2efe855d924ba')
+sha256sums_aarch64=('dbb3cc927ff5f3a67621f59371cd3851c897f46f53745265f026cf1781616b78')
 
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/"                    "google-calendar-tui"
