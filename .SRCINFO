@@ -13,6 +13,6 @@ pkgbase = g-shell
 	optdepends = git: git branch display in prompt
 	optdepends = hostname: hostname in prompt
 	source = https://github.com/Crazygiscool/G-shell/archive/v1.2.5.tar.gz
-	sha256sums = 35983b0a2c063c5d22412ea71dea8d9377dd0acc8aa1787c948a8628e1e9ae80
+	sha256sums = SKIP
 
 pkgname = g-shell

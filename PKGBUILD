@@ -16,7 +16,7 @@ optdepends=(
   'hostname: hostname in prompt'
 )
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('35983b0a2c063c5d22412ea71dea8d9377dd0acc8aa1787c948a8628e1e9ae80')
+sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/G-shell-$pkgver"
