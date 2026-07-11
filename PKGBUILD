@@ -2,10 +2,10 @@
 
 _prefix="/opt/comfyui"
 pkgname=comfyui-system
-pkgver=0.20.1
-pkgrel=2
+pkgver=0.27.0
+pkgrel=1
 pkgdesc="The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface (use system dependencies)"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/Comfy-Org/ComfyUI"
 license=('GPL-3.0')
 conflicts=('comfyui')
@@ -41,6 +41,7 @@ depends=(
     'python-comfyui-embedded-docs'
     'python-comfy-kitchen'
     'python-comfy-aimdo'
+    'python-comfy-angle'
 
     # non-essential, but can remove warings
     'python-kornia'
@@ -49,7 +50,6 @@ depends=(
     'python-pydantic'
     'python-pydantic-settings'
     'python-opengl'
-    'python-glfw'
 )
 optdepends=(
     'python-pytorch-cuda: NVIDIA GPU acceleration'
@@ -64,7 +64,7 @@ source=(
     'extra_model_paths.yaml'
 )
 
-sha256sums=('58b5336002b0b2350ac50f17997e8468562bfd4da61fc3361ec28993acfc0165'
+sha256sums=('6d1ff35963ce0259f8b645b3eef5e71d56c36d28c27df0b4057c65792c80efed'
             'edda27b534912b97049c38233488c7154c652485b41a9c49fe5b996fb72740d6'
             'd37f7739f9a927ec5aa73cf78ce8dd01cc4febb3a5b27ed458d9966710d1addf')
 
