@@ -1,11 +1,11 @@
 pkgbase = gaze-hyprlock-bin
 	pkgdesc = Binary wrapper for gaze-hyprlock from Gundu Labs
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://gaze.gundulabs.com
 	arch = x86_64
 	license = custom
-	source = gaze-hyprlock-0.2.2-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-hyprlock-0.2.2-1-x86_64.pkg.tar.zst
-	sha256sums = cc770cbbe01e65dbf107069f3a03b9429e7584f7d3d148f8f981e7c160c2781c
+	source = gaze-hyprlock-0.2.3-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-hyprlock-0.2.3-1-x86_64.pkg.tar.zst
+	sha256sums = d840a81520f6a713be95aff8d26abb4aff29dff82d119debf4d516940d881a60
 
 pkgname = gaze-hyprlock-bin
