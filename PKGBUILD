@@ -1,40 +1,35 @@
-# Maintainer: yuki-san <yuki.from.akita _at_ gmail.com>
+# Maintainer: sanlun <miwa at nc hyphen toyama dot ac dot jp>
+# Contributor: yuki-san <yuki.from.akita _at_ gmail.com>
 
 pkgname=emacs-navi2ch-git
-pkgver=1225.faebfd1
+__pkgname=${pkgname%-git}
+_pkgname=${__pkgname#emacs-}
+pkgver=r34.922dbd3
 pkgrel=1
-pkgdesc="A '2ch bbs' browser worked on Emacsen."
-arch=( 'any' )
-url="http://navi2ch.sourceforge.net/"
-license=('GPL2')
+pkgdesc="Navigator for 2ch for Emacsen (HTTPS enabled)"
+arch=('any')
+url='https://repo.or.cz/navi2ch.git'
+license=('GPL-2.0-or-later')
 depends=('emacs')
-makedepends=('git')
-provides=(emacs-navi2ch)
-conflicts=(emacs-navi2ch)
-install=navi2ch.install
-source=("${pkgname%-git}"::'git://github.com/naota/navi2ch.git')
-md5sums=('SKIP')
-
+makedepends=('git' 'meson' 'ninja')
+provides=("$__pkgname")
+conflicts=("$__pkgname")
+source=("git+$url#branch=current")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  # Use the tag of the last commit
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-  cd "$srcdir/${pkgname%-git}"
-
-  # ./autogen.sh
-  ./configure --prefix=/usr \
-              --with-lispdir=/usr/share/emacs/site-lisp/navi2ch \
-              --with-icondir=/usr/share/icons/navi2ch
-  make
+build(){
+  cd "$_pkgname"
+  meson setup builddir
+  meson compile -C builddir
 }
 
-package() {
-  cd "$srcdir/${pkgname%-git}"
-  make DESTDIR="$pkgdir/" install
-} 
-
-# vim:set ts=2 sw=2 et:
+package(){
+  cd "$_pkgname"/builddir
+  install -Dm644 -t "$pkgdir"/usr/share/emacs/site-lisp/navi2ch/ *.el{c,}
+  install -Dm644 -t "$pkgdir"/usr/share/info/ navi2ch.info
+}
