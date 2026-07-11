@@ -1,7 +1,7 @@
 # Maintainer: Lucas Gabriel <g at 11xx dot org>
 pkgname=muzaiten-git
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Native music player for local libraries, with ratings and scrobbling (VCS build)"
 arch=('x86_64')
 url="https://codeberg.org/11xx/muzaiten"
@@ -13,8 +13,7 @@ optdepends=('gst-plugins-good: extra audio decoders and sinks'
             'gst-plugins-bad: additional codecs and native DSF DSD playback'
             'gst-libav: DSD demux and DSD-to-PCM decode'
             'mpd: browse an MPD library alongside local sources'
-            'yt-dlp: enrich YouTube playlist imports with metadata'
-            'muzaiten-features-clap: optional semantic audio analysis and search provider')
+            'yt-dlp: enrich YouTube playlist imports with metadata')
 provides=('muzaiten')
 conflicts=('muzaiten' 'muzaiten-bin')
 source=("$pkgname::git+https://codeberg.org/11xx/muzaiten.git")
