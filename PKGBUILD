@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=aria2-next
-pkgver=2.4.9
+pkgver=2.4.10
 pkgrel=1
 pkgdesc="Maintained aria2 fork with extensive bug fixes and modernized architecture"
 arch=($CARCH)
@@ -42,7 +42,7 @@ backup=()
 options=()
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('6f82dfba6aa3630c5d570cfb1cc3fe323a52de9f0be241df6b812f88772053b6')
+sha256sums=('0c82230e77600261685e5ac20467f1d73021e9ef6d8a7c87040be8c0f87142dd')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
