@@ -3,7 +3,7 @@
 
 pkgname=vkdoom-git
 pkgver=v25.6.0+585+g20997f7a1
-pkgrel=1
+pkgrel=2
 pkgdesc='Feature centric port for all Doom engine games, with a focus on Vulkan and modern computers (git version)'
 arch=('x86_64' 'aarch64') #Ok so aarch64 works i guess
 url='https://git.sayachan.org/OrdinaryMagician/vkdoom_m'
