@@ -1,0 +1,17 @@
+post_install() {
+    echo ""
+    echo "HiFi Suite installed!"
+    echo ""
+    echo "Quick start:"
+    echo "  hifi-suite daemon start     # Start the daemon"
+    echo "  hifi-suite status           # Check headset"
+    echo "  hifi-suite vol 75           # Set volume"
+    echo "  hifi-suite setup            # Configure filters"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "HiFi Suite updated. Restart daemon: hifi-suite daemon restart"
+    echo ""
+}
