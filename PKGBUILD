@@ -5,7 +5,7 @@ pkgver=1.0.3
 pkgrel=1
 pkgdesc="Wingpanel indicator for managing system tray icons (Ayatana compatibility)"
 arch=('x86_64')
-url="https://github.com/lenemter/wingpanel-indicator-namarupa"
+url="https://github.com/GalileoNio/wingpanel-indicator-namarupa"
 license=('LGPL2.1')
 depends=(
   'glib2'
@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=('git' 'meson' 'vala' 'ninja')
 optdepends=('ayatana-indicator-application: bridge StatusNotifierItems to Ayatana indicators')
-source=("$pkgname::git+https://github.com/lenemter/$pkgname.git#commit=d9fc4e47d58c72e0cf08aa11246910ce84fcef50")
+source=("$pkgname::git+https://github.com/GalileoNio/$pkgname.git#commit=d9fc4e47d58c72e0cf08aa11246910ce84fcef50")
 sha256sums=('SKIP')
 
 prepare() {
