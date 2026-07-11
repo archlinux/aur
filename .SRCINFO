@@ -1,0 +1,21 @@
+pkgbase = rice-proto
+	pkgdesc = Sans-IO implementation of the ICE (RFC8445) protocol, with a C API
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/ystreet/librice
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo-c
+	makedepends = rust
+	depends = gcc-libs
+	depends = openssl
+	options = !lto
+	source = https://static.crates.io/crates/rice-proto/rice-proto-0.4.3.crate
+	source = LICENSE-MIT::https://raw.githubusercontent.com/ystreet/librice/v0.4.3/LICENSE-MIT
+	source = LICENSE-APACHE::https://raw.githubusercontent.com/ystreet/librice/v0.4.3/LICENSE-APACHE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rice-proto
