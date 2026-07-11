@@ -1,7 +1,7 @@
 pkgbase = wuffs
 	pkgdesc = A memory-safe programming language, and a standard library, for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives.
-	pkgver = 0.3.4
-	pkgrel = 3
+	pkgver = 0.3.5
+	pkgrel = 1
 	url = https://github.com/google/wuffs
 	arch = x86_64
 	license = MIT
@@ -20,8 +20,8 @@ pkgbase = wuffs
 	makedepends = zlib
 	makedepends = zstd
 	makedepends = clang
-	source = source::git+https://github.com/google/wuffs.git#tag=v0.3.4
-	sha256sums = e48660a9e1dec9c62091e6133d35981bfae6add3b8b05e81a9946a2808624d2a
+	source = source::git+https://github.com/google/wuffs.git#tag=v0.3.5
+	sha256sums = b9b5e80b0cd003da7fac2fa9cb4f7bf76806f9a88f867cc9a9eb2996514fce36
 
 pkgname = wuffs-lib
 	pkgdesc = A memory-safe standard library for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives.
@@ -46,11 +46,11 @@ pkgname = wuffs-lang
 	depends = libz.so
 	depends = libzstd.so
 	optdepends = wuffs-docs: Docs
-	provides = dumbindent=0.3.4
-	provides = ractool=0.3.4
-	provides = wuffs=0.3.4
-	provides = wuffs-c=0.3.4
-	provides = wuffsfmt=0.3.4
+	provides = dumbindent=0.3.5
+	provides = ractool=0.3.5
+	provides = wuffs=0.3.5
+	provides = wuffs-c=0.3.5
+	provides = wuffsfmt=0.3.5
 
 pkgname = wuffs-docs
 	pkgdesc = Documentation for "Wuffs the Library" and "Wuffs the Language", as well as the corresponding example binaries.

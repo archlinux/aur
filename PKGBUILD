@@ -11,8 +11,8 @@ pkgname=(
 
 pkgdesc="A memory-safe programming language, and a standard library, for Wrangling Untrusted File Formats Safely. Wrangling includes parsing, decoding and encoding. Example file formats include images, audio, video, fonts and compressed archives."
 
-pkgver=0.3.4
-pkgrel=3
+pkgver=0.3.5
+pkgrel=1
 
 arch=(
 	'x86_64'
@@ -44,7 +44,7 @@ checkdepends=()
 source=(
 	"source::git+${url}.git#tag=v${pkgver}"
 )
-sha256sums=('e48660a9e1dec9c62091e6133d35981bfae6add3b8b05e81a9946a2808624d2a')
+sha256sums=('b9b5e80b0cd003da7fac2fa9cb4f7bf76806f9a88f867cc9a9eb2996514fce36')
 
 build() {
 	cd source
