@@ -1,0 +1,5 @@
+[python-qprompt]
+source = "github"
+github = "jeffrimko/qprompt"
+use_max_tag = "true"
+prefix = "qprompt-"

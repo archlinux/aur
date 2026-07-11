@@ -1,13 +1,15 @@
 pkgbase = python-qprompt
 	pkgdesc = Library for quick CLI user menus
-	pkgver = 0.16.3
+	pkgver = 0.16.4
 	pkgrel = 1
 	url = https://github.com/jeffrimko/qprompt
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
 	depends = python-iterfzf
-	source = python-qprompt-0.16.3.tar.gz::https://github.com/jeffrimko/qprompt/archive/qprompt-0.16.3.tar.gz
-	sha256sums = faf89d49cedfe8663886cb99151eb2f185ca5fa6b1736c3ada09721b44918931
+	source = Qprompt-qprompt-0.16.4.tar.gz::https://github.com/jeffrimko/qprompt/archive/qprompt-0.16.4.tar.gz
+	sha512sums = 3b66f0ea2ea808ddd793af2c667281a06411851da10b4f0534bcf821162bee077f42a0cfad58da4e7adb9dffa83d7d12fb6f4f1c1627f81030be814b5077d4b0
 
 pkgname = python-qprompt
