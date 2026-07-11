@@ -1,13 +1,13 @@
 pkgbase = pi-ui-bin
 	pkgdesc = Desktop GUI for pi
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/hyperpuncher/pi-ui
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = fuse2
-	provides = pi-ui=0.9.1
+	provides = pi-ui=0.9.2
 	conflicts = pi-ui
 	source = pi-logo.svg
 	source = pi-ui.desktop
@@ -15,10 +15,10 @@ pkgbase = pi-ui-bin
 	sha256sums = a5624bc3b8cac94de75f6f13701eca2ad3ef67bbeba286c4af3f398806f0858a
 	sha256sums = e22214365f6c7f8537be9dcc2b50c1af97cc197e5d159677b0408e29f80bd182
 	sha256sums = 6b7faf66323093e92a63a7d6d0cd20ef3718b77a2192e06cb00466fe870f14cf
-	source_x86_64 = pi-ui-bin-0.9.1.AppImage::https://github.com/hyperpuncher/pi-ui/releases/download/v0.9.1/pi-ui-linux-x64.AppImage
-	sha256sums_x86_64 = 1f6356334d9fa0eabd64551e45977f90ccef0864c26c1a9eaf371116e8e2c488
-	source_aarch64 = pi-ui-bin-0.9.1.AppImage::https://github.com/hyperpuncher/pi-ui/releases/download/v0.9.1/pi-ui-linux-arm64.AppImage
-	sha256sums_aarch64 = 60574a25b761dbc5d72d42a9a740cec454e1661f6a3e4fa0e5809c79939f68dc
-	noextract = pi-ui-bin-0.9.1.AppImage
+	source_x86_64 = pi-ui-bin-0.9.2.AppImage::https://github.com/hyperpuncher/pi-ui/releases/download/v0.9.2/pi-ui-linux-x64.AppImage
+	sha256sums_x86_64 = 3a475cd4d65025173144124be3d35927230853bcd7d6cefc90ea5362b2ac76de
+	source_aarch64 = pi-ui-bin-0.9.2.AppImage::https://github.com/hyperpuncher/pi-ui/releases/download/v0.9.2/pi-ui-linux-arm64.AppImage
+	sha256sums_aarch64 = e3c20649881ae7fb91aed9629195d30f4275c75a245895fb1c811638ab4bd4d1
+	noextract = pi-ui-bin-0.9.2.AppImage
 
 pkgname = pi-ui-bin
