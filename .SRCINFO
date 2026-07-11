@@ -1,0 +1,18 @@
+pkgbase = python-config-parser-validator-bin
+	pkgdesc = A minimalist Python parser for validated, typed configuration files using a simplified INI format.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://codeberg.org/plxqt/config-parser-validator
+	arch = any
+	license = GPL-2.0-only
+	makedepends = python-installer
+	depends = python
+	provides = python-config-parser-validator
+	conflicts = python-config-parser-validator
+	source = https://codeberg.org/plxqt/config-parser-validator/releases/download/v1.0.1/config_parser_validator-1.0.1-py3-none-any.whl
+	source = https://codeberg.org/plxqt/config-parser-validator/releases/download/v1.0.1/config_parser_validator-1.0.1-py3-none-any.whl.asc
+	validpgpkeys = 869DE48CE0FA85C0EA29365998081E96DB2FD7C3
+	sha256sums = ee8cb3bc4c185c2e748bd361d49771d130bd87381ff42421d92cf5bd3cef3b9a
+	sha256sums = SKIP
+
+pkgname = python-config-parser-validator-bin
