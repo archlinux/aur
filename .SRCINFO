@@ -1,7 +1,7 @@
 pkgbase = mouse-hardware-fix-git
 	pkgdesc = A lightweight C++ daemon for Linux that fixes physical scroll wheel bouncing and click chatter
-	pkgver = r0.0
-	pkgrel = 1
+	pkgver = r7.c7af2fe
+	pkgrel = 2
 	url = https://github.com/Aleynikovich/mouse-hardware-fix
 	arch = x86_64
 	license = GPL
@@ -12,6 +12,7 @@ pkgbase = mouse-hardware-fix-git
 	depends = systemd
 	provides = mouse-hardware-fix
 	conflicts = mouse-hardware-fix
+	backup = etc/mouse-hardware-fix.conf
 	source = git+https://github.com/Aleynikovich/mouse-hardware-fix.git
 	sha256sums = SKIP
 

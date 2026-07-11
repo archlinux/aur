@@ -1,7 +1,7 @@
 # Maintainer: Alexander Sebastian Kalis
 pkgname=mouse-hardware-fix-git
-pkgver=r4.239ed97
-pkgrel=1
+pkgver=r7.c7af2fe
+pkgrel=2
 pkgdesc="A lightweight C++ daemon for Linux that fixes physical scroll wheel bouncing and click chatter"
 arch=('x86_64')
 url="https://github.com/Aleynikovich/mouse-hardware-fix"
@@ -10,6 +10,7 @@ depends=('glibc' 'gcc-libs' 'systemd')
 makedepends=('git' 'gcc')
 provides=('mouse-hardware-fix')
 conflicts=('mouse-hardware-fix')
+backup=('etc/mouse-hardware-fix.conf')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -28,4 +29,5 @@ package() {
   install -Dm755 mouse-hardware-fix "$pkgdir/usr/bin/mouse-hardware-fix"
   install -Dm644 mouse-hardware-fix@.service "$pkgdir/usr/lib/systemd/system/mouse-hardware-fix@.service"
   install -Dm644 99-mouse-fix.rules "$pkgdir/usr/lib/udev/rules.d/99-mouse-fix.rules"
+  install -Dm644 mouse-hardware-fix.conf "$pkgdir/etc/mouse-hardware-fix.conf"
 }
