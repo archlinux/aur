@@ -1,0 +1,14 @@
+# Salam Configuration File
+# Copy to: ~/.config/salam/config.toml
+
+window_width = 750
+window_height = 225
+
+[actions]
+cancel = { enabled = true, label = "Cancel" }
+logout = { enabled = true, command = "killall xmonad-x86_64-linux", label = "Logout" }
+reboot = { enabled = true, command = "reboot", label = "Reboot" }
+shutdown = { enabled = true, command = "shutdown -h now", label = "Shutdown" }
+suspend = { enabled = true, command = "systemctl suspend", label = "Suspend" }
+hibernate = { enabled = true, command = "systemctl hibernate", label = "Hibernate" }
+lock = { enabled = true, command = "slock", label = "Lock" }

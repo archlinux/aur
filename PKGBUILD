@@ -8,21 +8,26 @@ url="https://codeberg.org/samibr/salam"
 license=('MIT')
 depends=('gtk3')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/samibr/salam/archive/v$pkgver.tar.gz")
-sha256sums=('d6e174c3e6fd6126983d5185435817aafc54a490dda06ad64e0c581f74202ed3')
+source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/samibr/salam/archive/v$pkgver.tar.gz"
+        "config.toml.example")
+sha256sums=('SKIP'
+            'SKIP')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   cargo build --release --locked
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   
   # Install binary
-  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "target/release/salam" "$pkgdir/usr/bin/salam"
   
   # Install images
-  install -dm755 "$pkgdir/usr/share/$pkgname/img"
-  install -m644 img/*.png "$pkgdir/usr/share/$pkgname/img/"
+  install -dm755 "$pkgdir/usr/share/salam/img"
+  install -m644 img/*.png "$pkgdir/usr/share/salam/img/"
+  
+  # Install example config
+  install -Dm644 "$srcdir/config.toml.example" "$pkgdir/usr/share/doc/salam/config.toml.example"
 }

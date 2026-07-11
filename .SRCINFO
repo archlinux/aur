@@ -8,6 +8,8 @@ pkgbase = salam
 	makedepends = cargo
 	depends = gtk3
 	source = salam-0.1.0.tar.gz::https://codeberg.org/samibr/salam/archive/v0.1.0.tar.gz
-	sha256sums = d6e174c3e6fd6126983d5185435817aafc54a490dda06ad64e0c581f74202ed3
+	source = config.toml.example
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = salam
