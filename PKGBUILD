@@ -14,12 +14,19 @@ sha256sums=('SKIP'
             'SKIP')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir"
+  # Find the extracted directory
+  EXTRACTED_DIR=$(find . -maxdepth 1 -type d ! -name "." ! -name ".." | head -1 | sed 's/^\.\///')
+  echo "Building in: $EXTRACTED_DIR"
+  cd "$EXTRACTED_DIR"
   cargo build --release --locked
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir"
+  EXTRACTED_DIR=$(find . -maxdepth 1 -type d ! -name "." ! -name ".." | head -1 | sed 's/^\.\///')
+  echo "Packaging from: $EXTRACTED_DIR"
+  cd "$EXTRACTED_DIR"
   
   # Install binary
   install -Dm755 "target/release/salam" "$pkgdir/usr/bin/salam"
