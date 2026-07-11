@@ -3,7 +3,7 @@
 # git tag and recomputes `sha256sums` (via updpkgsums) before pushing to the AUR.
 pkgname=nsql-bin
 _pkgname=nsql
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Run SQL from your terminal, composed in your real Neovim — without taking over the screen (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ optdepends=('neovim: inline/embedded SQL editor (falls back to vim/vi/$EDITOR ot
 options=('!strip')  # dist already strips the release binary
 source_x86_64=("nsql-x86_64-unknown-linux-gnu-${pkgver}.tar.xz::https://github.com/fredrir/nsql/releases/download/v${pkgver}/nsql-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("nsql-aarch64-unknown-linux-gnu-${pkgver}.tar.xz::https://github.com/fredrir/nsql/releases/download/v${pkgver}/nsql-aarch64-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('e531c28638f09e305eb3d444289092f44e691adf6e3a8a2ca9deade1d20b357b')
-sha256sums_aarch64=('ba6dee12f1b705efb2bf97da912b4d037d0d6f9fffc0dc7c60e1bc15bbcaabb3')
+sha256sums_x86_64=('4ddcfaa0a4694034e98413fb8658a744af3e8c34e9915a1fc1595b8d9891ce90')
+sha256sums_aarch64=('64fb0047cfcaef97bc48a7c18d7d16e18d753aaf142a42d64dfb8c2f03e04767')
 
 package() {
     # dist tarballs wrap their contents in a top-level "<archive>/" directory.
