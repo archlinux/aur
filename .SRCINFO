@@ -1,7 +1,7 @@
 pkgbase = linuxqq-nt
 	pkgdesc = New Linux QQ based on Electron
 	pkgver = 3.2.31_260710
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 5
 	url = https://im.qq.com/linuxqq
 	install = linuxqq-nt.install
@@ -26,10 +26,10 @@ pkgbase = linuxqq-nt
 	b2sums = bc9b456b857447a011f0bfb1571e41b4cd6e804ce12019f812f65dbc8a6d4ffea6099a951386129eafd2d1451313c09c49222ffe7fa90d65e02260e3a4e0f6dd
 	b2sums = 502ee4db4a97bb6c08a153f1d04d79b609b0b90c2fda5b0bb93b839f84f0c9e57e2354a1dec5898038476f48bcd1d81160176f6dc1f9e5c849742eb4d2f7591a
 	source_x86_64 = https://qqdl.gtimg.cn/qqfile/QQNTV2/9.9.32/release/c390e792/QQ_3.2.31_260710_amd64_01.deb
-	b2sums_x86_64 = 23f43dc3540aea5f80dd003fcb68ec2cb0ccd0c22f160749221b0a66565ae0292480bc22b47101f243ec7676392482a9e698e7b7ef4c364859611a02188935f8
+	b2sums_x86_64 = 234a0f338d47e952995a1d4cf1dc782e5266623f878b92af264753b8c032fd31450169e1e25c8d10d37e26848c28dbb0302732874bbfce1566f8ad2b89e0337b
 	source_aarch64 = https://qqdl.gtimg.cn/qqfile/QQNTV2/9.9.32/release/c390e792/QQ_3.2.31_260710_arm64_01.deb
-	b2sums_aarch64 = b41f80c58eb38ba8087584a28b17f27dd68b1ee61ecde783a3e7ae905afff35f31426cfb8593a8e07820674df07a2ac28ddd56d8cacace7d6aea387d4dda059c
+	b2sums_aarch64 = e31096831099d3a9285443e62344d7ec451a9b991283f803e568ae61ab578b3de79ffd6d2bfbf69923a62715428a13cfcd33e2682d4d873d38add44e66ddf135
 	source_loong64 = https://qqdl.gtimg.cn/qqfile/QQNTV2/9.9.32/release/c390e792/QQ_3.2.31_260710_loongarch64_01.deb
-	b2sums_loong64 = b484cdbb559e342f5c0d4ef2a123bb13afdb6de28be3afa9f072e5bde906a2c66c6db0aea60d7ee1f5041f96c73b9dc72ca4b27c75ea5cd4b19c9b48bff82a3e
+	b2sums_loong64 = ef51070de26b8f33fedb1f70abe3d348aef90b47405ac74f181dd696ce4288fcf657e4c13014807a1069b56a547ca4be64673cd05f9e7ddf62df2d445af8bb9d
 
 pkgname = linuxqq-nt
