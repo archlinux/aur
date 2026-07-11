@@ -4,7 +4,7 @@
 _pkgauthor=ameshkov
 _pkgname=dnslookup
 pkgname=${_pkgname}-bin
-pkgver=1.11.2
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Simple command line utility to make DNS lookups to the specified server'
 
@@ -21,9 +21,9 @@ conflicts=("${_pkgname}" "${_pkgname}-git")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-v${pkgver}.tar.gz")
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-386-v${pkgver}.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64-v${pkgver}.tar.gz")
-sha256sums_x86_64=('65ef7fbd8b17fe6a1591a2df9408bf21f9ac60b6c213bc9131fdddb095c91932')
-sha256sums_i686=('c63dda98495b3e91dbf6a1bee6915bef0cd01d9482a016670d64b3a4bfae8c56')
-sha256sums_aarch64=('266362cb8340fc8a713f51a4ff38851579d6f58fc75e9a37c2b1ae074caf907d')
+sha256sums_x86_64=('bedcf2a10777cd51d1b07a470e8573c4468497ef765d894bef445e0af61d2f07')
+sha256sums_i686=('ff3db08e04bd60d5c941ada2e96ccb97d5a3233bb7d3afb8b73a59ac1dbf0c87')
+sha256sums_aarch64=('bba37c4a370d7d21234f430559e4987bc45f0a178d4b8b7c6b1809f763250702')
 
 
 package() {
