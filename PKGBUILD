@@ -1,7 +1,7 @@
 # Maintainer: ZorudaRinku <zorudarinku@gmail.com>
 
 pkgname=openchatbox
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="Desktop GUI for sending customized OSC chat messages to VRChat"
 arch=('any')
@@ -14,13 +14,21 @@ depends=(
     'python-websockets'
     'hicolor-icon-theme'
 )
+optdepends=(
+    'playerctl: <song>, <artist>, <nowplaying>, <song_progress> tokens'
+    'xdotool: <window> token on X11'
+    'kdotool: <window> token on KDE Wayland'
+    'wmctrl: <wm> token'
+    'wireless_tools: <network> token fallback (when NetworkManager is not in use)'
+    'libpulse: <volume> token (provides pactl; works against PulseAudio or PipeWire)'
+)
 makedepends=(
     'python-pip'
     'qt6-base'
     'imagemagick'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6ff4834c45bd5353219512daee5fcfe5a42301f4a04ccfabe9408aafc976c579')
+sha256sums=('7193287daf1882551dab40b61f14070496318fb9c97f0d0ecd78ce9a5900a88b')
 
 build() {
     cd "OpenChatbox-$pkgver"
