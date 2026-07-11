@@ -2,7 +2,7 @@
 
 pkgname=euro-office-desktopeditors-git
 pkgver=r320.16d1a01
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of OnlyOffice"
 arch=('x86_64')
 url="https://github.com/Euro-Office/DesktopEditors"

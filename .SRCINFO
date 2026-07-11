@@ -1,7 +1,7 @@
 pkgbase = euro-office-desktopeditors-git
 	pkgdesc = Fork of OnlyOffice
 	pkgver = r320.16d1a01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Euro-Office/DesktopEditors
 	arch = x86_64
 	license = AGPL-3.0-only
