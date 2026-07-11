@@ -1,6 +1,6 @@
 pkgbase = logana-bin
 	pkgdesc = A TUI log analyzer built for speed - handles files with millions of lines with instant filtering and navigation
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/pauloremoli/logana
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = logana-bin
 	depends = libgcc
 	provides = logana
 	conflicts = logana
-	source_x86_64 = logana-x86_64-0.6.0.txz::https://github.com/pauloremoli/logana/releases/download/v0.6.0/logana-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 8083993e2566b41b05f37659032a50e0654bbaf17bda4a42dcaaebfc5150fe19
-	source_aarch64 = logana-aarch64-0.6.0.txz::https://github.com/pauloremoli/logana/releases/download/v0.6.0/logana-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 87a99a8fb369620bf690d0e8e2206118fe3a2382dc74e965197a19f9a716346a
+	source_x86_64 = logana-x86_64-0.7.0.txz::https://github.com/pauloremoli/logana/releases/download/v0.7.0/logana-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = edc05c51d62909cf43f463f3a6d436b5b5e5a9a73d1cf7603a39d140dc5efd6d
+	source_aarch64 = logana-aarch64-0.7.0.txz::https://github.com/pauloremoli/logana/releases/download/v0.7.0/logana-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 7215506858eee036f85a68fa903333899eed8aabc4cb3b445a3cb334ec17b28c
 
 pkgname = logana-bin
