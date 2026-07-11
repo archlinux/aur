@@ -1,0 +1,5 @@
+[ktree-bin]
+source = "github"
+github = "alikazai/ktree"
+use_latest_release = true
+prefix = "v"

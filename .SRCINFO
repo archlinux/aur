@@ -1,0 +1,18 @@
+pkgbase = ktree-bin
+	pkgdesc = Universal test runner with auto-detection for 11 languages
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/alikazai/ktree
+	arch = x86_64
+	arch = aarch64
+	license = Unlincense
+	depends = git
+	provides = ktree
+	conflicts = ktree
+	options = !strip
+	source_x86_64 = ktree-x86_64-0.1.0.tgz::https://github.com/alikazai/ktree/releases/download/v0.1.0/ktree_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8a2bd2794f4576518d6f72b1986ddb223cf8c2974c04bea16ab6f7820c3c078f
+	source_aarch64 = ktree-aarch64-0.1.0.tgz::https://github.com/alikazai/ktree/releases/download/v0.1.0/ktree_linux_arm64.tar.gz
+	sha256sums_aarch64 = d49753e146b2bcc07c6bd489e8d344d8981734cff14d8ddd9de205c0af8a2bff
+
+pkgname = ktree-bin
