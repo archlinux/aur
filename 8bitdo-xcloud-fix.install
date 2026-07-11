@@ -1,0 +1,27 @@
+post_install() {
+	systemctl daemon-reload
+	udevadm control --reload-rules 2>/dev/null || true
+	udevadm trigger 2>/dev/null || true
+	cat <<'MSG'
+==> 8bitdo-xcloud-fix instalado.
+    Ative o serviço:   sudo systemctl enable --now 8bitdo-xcloud
+    Requer xboxdrv (AUR):   paru -S xboxdrv
+    Config:            /etc/8bitdo-xcloud.conf
+    Teste:             https://hardwaretester.com/gamepad  (deve aparecer como Xbox 360)
+MSG
+}
+
+post_upgrade() {
+	systemctl daemon-reload
+	udevadm control --reload-rules 2>/dev/null || true
+	systemctl try-restart 8bitdo-xcloud 2>/dev/null || true
+}
+
+pre_remove() {
+	systemctl disable --now 8bitdo-xcloud 2>/dev/null || true
+}
+
+post_remove() {
+	systemctl daemon-reload
+	udevadm control --reload-rules 2>/dev/null || true
+}
