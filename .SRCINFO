@@ -1,10 +1,10 @@
 pkgbase = dma
 	pkgdesc = DragonFly BSD mail transport agent
 	pkgver = 0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/corecode/dma
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = ed
 	makedepends = git
 	makedepends = systemd
@@ -16,6 +16,6 @@ pkgbase = dma
 	backup = etc/dma/auth.conf
 	backup = etc/dma/dma.conf
 	source = git+https://github.com/corecode/dma.git#tag=v0.14
-	sha256sums = 82789c2c161c3ba016f62008bfdfe2cd591f88dd4c2797d2684c1582bb3c085b
+	b2sums = 48e48b7a07725759467078ffb94452d395d55b27a6d6b2be187f6ca4e4df73612ad2b464b65555f4842574f4ff35007a8b94e9024fb2b173dc44bf1e2e86cfef
 
 pkgname = dma
