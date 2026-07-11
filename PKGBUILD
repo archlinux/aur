@@ -1,8 +1,9 @@
 # Maintainer: Nikolay Bryskin <nikicat@users.noreply.github.com>
-# Rendered by .github/workflows/release.yml: 0.1.1 is replaced with the
-# release tag and sha256sums is filled by updpkgsums before pushing to the AUR.
+# Rendered by .github/workflows/release.yml: 0.1.2 is replaced with the
+# release tag and sha256sums is filled by updpkgsums during the test build,
+# so the published PKGBUILD is exactly what was built and verified.
 pkgname=aurox
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='AUR helper backed by the github.com/archlinux/aur mirror'
 arch=('x86_64')
@@ -14,7 +15,7 @@ makedepends=('cargo')
 # rust-lld cannot read (undefined sqlite3_* symbols); Rust does its own LTO.
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fe7456052f773f2ffe5f72666919c620c4367a9fde9f6e73a7311842194b2668')
+sha256sums=('6bcd1d89a909a3a8ceef959b3e3bfee36d148e25fe156bb2e19d393bd933fcb6')
 
 prepare() {
   cd "$pkgname-$pkgver"
