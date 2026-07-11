@@ -1,7 +1,7 @@
 pkgbase = openspec
 	pkgdesc = AI-native system for spec-driven development
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Fission-AI/OpenSpec
 	arch = any
 	license = MIT

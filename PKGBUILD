@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 pkgname=openspec
 pkgver=1.6.0 # renovate: datasource=github-tags depName=Fission-AI/OpenSpec
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-native system for spec-driven development"
 arch=('any')
 url="https://github.com/Fission-AI/OpenSpec"
@@ -15,6 +15,8 @@ prepare() {
   cd "${srcdir}/OpenSpec-${pkgver}"
   # Allow esbuild's postinstall script to download platform binary
   cat > pnpm-workspace.yaml << 'EOF'
+packages:
+  - "."
 allowBuilds:
   esbuild: true
 EOF
