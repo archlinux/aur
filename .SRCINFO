@@ -1,6 +1,6 @@
 pkgbase = nsql
 	pkgdesc = Run SQL from your terminal, composed in your real Neovim — without taking over the screen
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/fredrir/nsql
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = nsql
 	depends = gcc-libs
 	optdepends = neovim: inline/embedded SQL editor (falls back to vim/vi/$EDITOR otherwise)
 	options = !lto
-	source = nsql-0.1.6.tar.gz::https://github.com/fredrir/nsql/archive/refs/tags/v0.1.6.tar.gz
-	sha256sums = 4147a4b23bb81b303cc4be1c11e72da4b12e6397b53da28723f607c9216ba920
+	source = nsql-0.1.7.tar.gz::https://github.com/fredrir/nsql/archive/refs/tags/v0.1.7.tar.gz
+	sha256sums = 45ce05e02ca7607c27d24aaed5211c609926c940ef256b52c00e8b132d630af4
 
 pkgname = nsql

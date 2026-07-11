@@ -3,7 +3,7 @@
 # not depend on crates.io publish timing). The CI release workflow injects
 # `pkgver` and recomputes `sha256sums` (via updpkgsums) before pushing.
 pkgname=nsql
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Run SQL from your terminal, composed in your real Neovim — without taking over the screen"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ depends=('dbus' 'gcc-libs')
 makedepends=('cargo')
 optdepends=('neovim: inline/embedded SQL editor (falls back to vim/vi/$EDITOR otherwise)')
 source=("nsql-${pkgver}.tar.gz::https://github.com/fredrir/nsql/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4147a4b23bb81b303cc4be1c11e72da4b12e6397b53da28723f607c9216ba920')
+sha256sums=('45ce05e02ca7607c27d24aaed5211c609926c940ef256b52c00e8b132d630af4')
 
 prepare() {
     cd "nsql-${pkgver}"
@@ -38,5 +38,6 @@ package() {
     cd "nsql-${pkgver}"
     install -Dm755 "target/release/nsql" "${pkgdir}/usr/bin/nsql"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "THIRD-PARTY-LICENSES.md" "${pkgdir}/usr/share/licenses/${pkgname}/THIRD-PARTY-LICENSES.md"
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
