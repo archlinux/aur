@@ -1,7 +1,7 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=linkwarden
 pkgver=2.15.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Self hosted bookmark manager"
 arch=('x86_64')
 url="https://github.com/linkwarden/linkwarden"

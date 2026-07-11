@@ -1,7 +1,7 @@
 pkgbase = linkwarden
 	pkgdesc = Self hosted bookmark manager
 	pkgver = 2.15.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/linkwarden/linkwarden
 	arch = x86_64
 	license = AGPL-3.0
