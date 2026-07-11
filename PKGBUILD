@@ -1,6 +1,6 @@
 # Maintainer: objz <me@objz.dev>
 pkgname=rmcl-bin
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Minecraft launcher TUI"
 arch=('x86_64' 'aarch64')
@@ -14,9 +14,9 @@ source=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE" "README-${pkgver}::${
 source_x86_64=("rmcl-${pkgver}-x86_64-unknown-linux-gnu.tar.xz::${url}/releases/download/v${pkgver}/rmcl-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("rmcl-${pkgver}-aarch64-unknown-linux-gnu.tar.xz::${url}/releases/download/v${pkgver}/rmcl-aarch64-unknown-linux-gnu.tar.xz")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'e88271d32a1a7754f97d8ec6ba65e41986f1f54c3bf9021f12e836ede0ab979e')
-sha256sums_x86_64=('e52f5eb4c7e486d0f9b794c4e3863b3766243c9284593ba47fd4e5df2af19ae7')
-sha256sums_aarch64=('1db8d7d9f3132469a82fb98eff1881df448df6498315c06a0d1b6f755fb35372')
+            '716a48f818f0f7a67703172cee46661948eec88063c6ac5bbdae6ce2cdafb577')
+sha256sums_x86_64=('b399c48564e1e40788a07e8feb5d0c8c906eb80e3a90e0aa8b7d50b8b2fa3d07')
+sha256sums_aarch64=('c40e54beb9d1d0622c0fb332f1f9d110334246e200d86a9b2df6e3d1f363b849')
 
 package() {
   local _dir="rmcl-${CARCH}-unknown-linux-gnu"
