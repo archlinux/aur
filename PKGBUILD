@@ -3,12 +3,13 @@
 _pkgname='es3crypt-oss'
 pkgname="${_pkgname}-git"
 pkgver=1.0+31.r33.20230211.bdacbfe
-pkgrel=1
+pkgrel=2
 pkgdesc='Easy Save 3 save file decryption/encryption library with CLI.'
 arch=(
   'x86_64'
   'i686'
   'aarch64'
+  'armv7h'
   'armv8h'
 )
 url="https://gitlab.com/niansa/es3crypt-oss"
@@ -25,10 +26,20 @@ makedepends=(
   'libgcc'
   'libstdc++'
 )
-provides=("${_pkgname}=${pkgver}")
-conflicts=("${_pkgname}")
-source=("${_pkgname}::git+${url}.git")
-sha256sums=('SKIP')
+provides=(
+  "${_pkgname}=${pkgver}"
+  "libes3crypt.so"
+)
+conflicts=(
+  "${_pkgname}"
+  "libes3crypt.so"
+)
+source=(
+  "${_pkgname}::git+${url}.git"
+)
+sha256sums=(
+  'SKIP'
+)
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
