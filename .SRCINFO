@@ -1,6 +1,6 @@
 pkgbase = ty-bin
 	pkgdesc = Extremely fast Python type checker and language server (prebuilt binary)
-	pkgver = 0.0.57
+	pkgver = 0.0.58
 	pkgrel = 1
 	url = https://github.com/astral-sh/ty
 	arch = x86_64
@@ -9,16 +9,16 @@ pkgbase = ty-bin
 	license = MIT
 	depends = glibc
 	depends = gcc-libs
-	provides = ty=0.0.57
+	provides = ty=0.0.58
 	conflicts = ty
 	options = !strip
-	source = LICENSE-0.0.57::https://raw.githubusercontent.com/astral-sh/ty/0.0.57/LICENSE
+	source = LICENSE-0.0.58::https://raw.githubusercontent.com/astral-sh/ty/0.0.58/LICENSE
 	sha256sums = 860e3d7a86b84e6a7012c7a635fc64df475cebc6cce34dfeb73a5982ec58176c
-	source_x86_64 = ty-bin-0.0.57-x86_64.tar.gz::https://github.com/astral-sh/ty/releases/download/0.0.57/ty-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = ada4b7cc9d823752a321a81405b065ee7d7aae228c3220d25699c72ebb13401c
-	source_aarch64 = ty-bin-0.0.57-aarch64.tar.gz::https://github.com/astral-sh/ty/releases/download/0.0.57/ty-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 0d9b411aeac41c7f5ca2c24538b62bef94f73e829c4ca876bb51c93392f85686
-	source_armv7h = ty-bin-0.0.57-armv7h.tar.gz::https://github.com/astral-sh/ty/releases/download/0.0.57/ty-armv7-unknown-linux-gnueabihf.tar.gz
-	sha256sums_armv7h = 533b5c1085287e2214d83d8e13f137b0bf534ae663333822ef115b96db5fa32a
+	source_x86_64 = ty-bin-0.0.58-x86_64.tar.gz::https://github.com/astral-sh/ty/releases/download/0.0.58/ty-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1e756543bc02420dbd63189ace4316fa7f3dbf7800b066d3b9db477b215894e0
+	source_aarch64 = ty-bin-0.0.58-aarch64.tar.gz::https://github.com/astral-sh/ty/releases/download/0.0.58/ty-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 62dcb82bfc10bc538eb7cd45dfa9a6f9d9f6eec9f05480bda63b26decbd948fd
+	source_armv7h = ty-bin-0.0.58-armv7h.tar.gz::https://github.com/astral-sh/ty/releases/download/0.0.58/ty-armv7-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv7h = f43909e1bf6c3e3ac4858c581323907ecb094bc6b29647d524a72d0e46ec1b9e
 
 pkgname = ty-bin
