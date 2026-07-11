@@ -5,7 +5,7 @@ _pkgname=FTB
 _appname=ftb
 
 pkgname=${_pkgname,,}
-pkgver=2.0.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A file browser built with FTXUI"
 
@@ -20,7 +20,7 @@ makedepends=('gcc' 'cmake')
 provides=("${_appname}")
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8eecdb29b0cafdcc9002a3d51d43ab30bebc094225e97d16215b8530e5d847fa')
+sha256sums=('212d56fa48b1c4992161cf61ef54708819e713290396e1308a021b789f400d42')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}/" || exit 1
