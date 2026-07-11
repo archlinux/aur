@@ -1,8 +1,9 @@
 # Maintainer: Bastien 'neitsab' Traverse <neitsab@archlinux.org>
+# Maintainer: René Jochum <r3j0@jochum.dev>
 
 pkgname=incus-compose-git
 pkgver=r577.f885e8b
-pkgrel=1
+pkgrel=2
 pkgdesc="Bring the familiar Docker Compose workflow to Incus containers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lxc/incus-compose"
@@ -14,8 +15,10 @@ optdepends=(
   'docker: build service images locally with `incus-compose build`'
 )
 makedepends=('git' 'go>=1.26.5')
-conflicts=('incus-compose-bin')
 b2sums=('SKIP')
+
+provides=('incus-compose')
+conflicts=('incus-compose' 'incus-compose-bin')
 
 pkgver() {
     cd "${pkgname%-git}"
