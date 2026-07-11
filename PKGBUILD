@@ -4,8 +4,9 @@
 
 pkgname=mermaid-cli-chrome
 _pkgrootname=mermaid-cli
-pkgver=11.15.0
+pkgver=11.16.0
 pkgrel=1
+options=(!strip !debug)
 pkgdesc='Generate images from Mermaid files'
 arch=(any)
 url="https://github.com/mermaid-js/$_pkgrootname"
@@ -16,7 +17,7 @@ makedepends=(npm)
 _archive="$_pkgrootname-$pkgver"
 source=("https://registry.npmjs.org/@mermaid-js/$_pkgrootname/-/$_archive.tgz")
 noextract=("$_archive.tgz")
-sha256sums=('f6fd0879dbf500e453784bbd9db92ae951097e0e9e8a90ec613f2bd3ca8fa06c')
+sha256sums=('65d795191bf9ca6ca90a40a1ea30354a6a491e206674cafd4d9de62fe9075439')
 
 package() {
   # https://github.com/mermaid-js/mermaid-cli/blob/master/docs/already-installed-chromium.md
