@@ -1,6 +1,6 @@
 pkgbase = uutils-coreutils-git
 	pkgdesc = Rust rewrite of coreutils
-	pkgver = 0.9.0.r269.g43ef8d0
+	pkgver = 0.9.0.r350.ge646122
 	pkgrel = 1
 	url = https://github.com/uutils/coreutils
 	arch = x86_64
