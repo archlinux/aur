@@ -2,7 +2,7 @@
 _base=py-pde
 pkgname=python-${_base}
 pkgdesc="Python package for solving partial differential equations"
-pkgver=0.57.0
+pkgver=0.58.0
 pkgrel=1
 arch=(any)
 url="https://github.com/zwicker-group/${_base}"
@@ -23,7 +23,7 @@ optdepends=('python-h5py: storing data in the hierarchical file format'
   'python-jax: using jax as a backend'
   'python-pytorch: Using torch as a backend')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('0938f1b1891907b193a85e03bbc42e17fcbbdbcf97797397c87b81b3a798140ad445c908edaba98a46c801e3ac4d3890cf42603c15c9ff0babe9f73ebfcd654d')
+sha512sums=('7c8069867c5ad69163df2e3d46a299b1bc9b1ab2963f74ac6529f21487bb004596e39f670738bc5a4cf987c2ac14af660dcc42990c161c35bc635fd2359634b6')
 
 build() {
   cd ${_base}-${pkgver}
