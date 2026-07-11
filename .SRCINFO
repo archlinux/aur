@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-vszipcl-git
 	pkgdesc = Plugin for VapourSynth: vszipcl (GIT version)
-	pkgver = 0.18.0.1.gaca6430
-	pkgrel = 2
+	pkgver = 1.2.0.0.g6c64f91
+	pkgrel = 1
 	url = https://github.com/dnjulek/vapoursynth-zipcl
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,6 @@ pkgbase = vapoursynth-plugin-vszipcl-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-vszipcl
 	conflicts = vapoursynth-plugin-vszipcl
-	options = debug
 	source = vszipcl::git+https://github.com/dnjulek/vapoursynth-zipcl.git
 	sha256sums = SKIP
 
