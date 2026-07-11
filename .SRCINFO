@@ -1,6 +1,6 @@
 pkgbase = nsql-bin
 	pkgdesc = Run SQL from your terminal, composed in your real Neovim — without taking over the screen (prebuilt binary)
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/fredrir/nsql
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = nsql-bin
 	provides = nsql
 	conflicts = nsql
 	options = !strip
-	source_x86_64 = nsql-x86_64-unknown-linux-gnu-0.1.6.tar.xz::https://github.com/fredrir/nsql/releases/download/v0.1.6/nsql-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 4ddcfaa0a4694034e98413fb8658a744af3e8c34e9915a1fc1595b8d9891ce90
-	source_aarch64 = nsql-aarch64-unknown-linux-gnu-0.1.6.tar.xz::https://github.com/fredrir/nsql/releases/download/v0.1.6/nsql-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 64fb0047cfcaef97bc48a7c18d7d16e18d753aaf142a42d64dfb8c2f03e04767
+	source_x86_64 = nsql-x86_64-unknown-linux-gnu-0.1.7.tar.xz::https://github.com/fredrir/nsql/releases/download/v0.1.7/nsql-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = ac9ce0c0f57700cea9040cfc3d0fa98ab859731991101812308dfb28bc5a1dde
+	source_aarch64 = nsql-aarch64-unknown-linux-gnu-0.1.7.tar.xz::https://github.com/fredrir/nsql/releases/download/v0.1.7/nsql-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = df8ba50b8b6987349f01508df6b0c7ab288cb687782bbfb873439a4c087b12ed
 
 pkgname = nsql-bin
