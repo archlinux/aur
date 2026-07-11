@@ -1,0 +1,20 @@
+--- a/ui/pnpm-workspace.yaml	2026-07-02 18:58:36.000000000 +0600
++++ b/ui/pnpm-workspace.yaml	2026-07-11 08:10:51.461558418 +0600
+@@ -3,3 +3,17 @@
+   - 'text'
+   - 'desktop'
+   - 'goose-binary/*'
++
++allowBuilds:
++  '@modelcontextprotocol/ext-apps': true
++  electron: true
++  electron-winstaller: true
++  esbuild: true
++overrides:
++  react: ^19.2.4
++  react-dom: ^19.2.4
++blockExoticSubdeps: false
++nodeLinker: hoisted
++supportedArchitectures:
++  os: [current, linux, darwin, win32]
++  cpu: [current, x64, arm64]

@@ -2,7 +2,7 @@
 
 pkgname=goose-desktop
 pkgver=1.41.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Goose Desktop (built from source) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=("x86_64")
 url="https://github.com/aaif-goose/goose"
@@ -24,8 +24,12 @@ makedepends=(
 options=("!lto" "!debug")
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/aaif-goose/goose/archive/refs/tags/v${pkgver}.tar.gz"
+  "pnpm-workspace-yaml.patch"
 )
-b2sums=('95b5d27137090c9f5254109e9d09f6928b423eac81411a5ca78aa73bff8d84476fc736930ad3e82be06d4b9de8fa8af3a688d049357e701298dad2b411c5e1a8')
+b2sums=(
+  '95b5d27137090c9f5254109e9d09f6928b423eac81411a5ca78aa73bff8d84476fc736930ad3e82be06d4b9de8fa8af3a688d049357e701298dad2b411c5e1a8'
+  '54f29a8b90e067066d21c7a25950b89cb3dbee10b1ba689f019f79adc4fce29d16c183af9e821305e934f6f00411b1ce72684ae0c3ff840c78e3fb031d501841'
+)
 conflicts=("goose-desktop-bin")
 provides=("goose-desktop")
 
@@ -35,6 +39,9 @@ prepare() {
   # Hide menu bar on Linux
   sed -i '/useContentSize: true/a\    autoHideMenuBar: process.platform === '\''linux'\'',' \
     ui/desktop/src/main.ts
+
+  # TODO: drop when upstream migrates pnpm config to pnpm-workspace.yaml
+  patch -p1 -i "$srcdir/pnpm-workspace-yaml.patch"
 }
 
 build() {
