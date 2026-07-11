@@ -12,12 +12,10 @@ url="https://github.com/dnasdw/$_reponame"
 license=('MIT')
 depends=('glibc' 'curl' 'openssl')
 makedepends=('cmake' 'git')
-source=(
-  "git+${url}.git"
-  "$_reponame-paths.patch"
-)
+source=("git+${url}.git"
+        "$_reponame-paths.patch")
 b2sums=('SKIP'
-  '226f75f5154d849aec1816064aa5d87db0e41c07d02edb85df5b2b397172a30b32603bccfdfa09a5431f9fbc12fcbbd9a5baccf6d82523d9253a430af0432108')
+        '226f75f5154d849aec1816064aa5d87db0e41c07d02edb85df5b2b397172a30b32603bccfdfa09a5431f9fbc12fcbbd9a5baccf6d82523d9253a430af0432108')
 provides=("$_reponame")
 conflicts=("$_reponame")
 
@@ -44,7 +42,6 @@ build() {
   )
 
   cmake "${cmake_options[@]}"
-
   cmake --build build
 }
 
