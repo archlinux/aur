@@ -1,6 +1,6 @@
 pkgname=amber-lang-git
 _pkgname=amber
-pkgver=r681.ef8ad43
+pkgver=r764.613adfe
 pkgrel=1
 pkgdesc="The programming language compiled to bash"
 url="https://amber-lang.com/"
