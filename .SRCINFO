@@ -1,0 +1,19 @@
+pkgbase = firemark-bin
+	pkgdesc = A fast, single-binary watermarking tool for images and PDFs
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/Vitruves/firemark
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = firemark
+	conflicts = firemark
+	options = !strip
+	source_x86_64 = firemark-bin-0.1.4-x86_64.tgz::https://github.com/Vitruves/firemark/releases/download/v0.1.4/firemark-v0.1.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = db22cb4c077221160765f924da29914639786df8c1a8d85051d31bbf05395ea2
+	source_aarch64 = firemark-bin-0.1.4-aarch64.tgz::https://github.com/Vitruves/firemark/releases/download/v0.1.4/firemark-v0.1.4-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 2cf0444dbba73d8c6c73d9a78054ef339f113582cdda54c5735b7535fc172931
+
+pkgname = firemark-bin
