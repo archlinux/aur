@@ -1,4 +1,5 @@
 post_install() {
+	modprobe uinput 2>/dev/null || true
 	systemctl daemon-reload
 	udevadm control --reload-rules 2>/dev/null || true
 	udevadm trigger 2>/dev/null || true
@@ -12,6 +13,7 @@ MSG
 }
 
 post_upgrade() {
+	modprobe uinput 2>/dev/null || true
 	systemctl daemon-reload
 	udevadm control --reload-rules 2>/dev/null || true
 	systemctl try-restart 8bitdo-xcloud 2>/dev/null || true
