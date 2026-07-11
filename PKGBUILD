@@ -3,12 +3,13 @@
 pkgname=mx-packageinstaller
 pkgver=26.07.1arch
 pkgrel=1
-pkgdesc="MX Package Installer - a tool for managing packages and Flatpak"
+pkgdesc="MX Package Installer - a tool for managing packages and Flatpaks"
 arch=("x86_64")
 url="https://github.com/MX-Linux/mx-packageinstaller"
-license=("GPL")
-depends=("qt6-base" "sudo")
+license=("GPL3")
+depends=("qt6-base" "polkit" "flatpak")
 makedepends=("cmake" "ninja" "qt6-tools")
+optdepends=("paru: AUR helper for AUR tab operations and Snap setup (snapd is built from the AUR)")
 source=("https://github.com/MX-Linux/mx-packageinstaller/archive/refs/tags/26.07.1arch.tar.gz")
 sha256sums=('6c97e8d61e2a6043a7b3cefe5924de208a7b0a54e2d82c3ff4375aef455b22ad')
 
@@ -37,8 +38,6 @@ package() {
   install -dm755 "${pkgdir}/usr/lib/mx-packageinstaller"
   install -Dm755 helper "${pkgdir}/usr/lib/mx-packageinstaller/helper"
   install -Dm755 ../scripts/mxpi-lib "${pkgdir}/usr/lib/mx-packageinstaller/mxpi-lib"
-  install -Dm755 ../scripts/mxpi-maintenance "${pkgdir}/usr/lib/mx-packageinstaller/mxpi-maintenance"
-
   install -Dm644 ../scripts/org.mxlinux.pkexec.mxpi-helper.policy \
     "${pkgdir}/usr/share/polkit-1/actions/org.mxlinux.pkexec.mxpi-helper.policy"
 
