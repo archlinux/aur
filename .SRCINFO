@@ -1,11 +1,12 @@
 pkgbase = dev-proxy-bin
 	pkgdesc = Simulate API failures, throttling, and chaos — all from your command line.
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dotnet/dev-proxy
 	arch = x86_64
 	license = MIT
 	makedepends = unzip
+	depends = gcc-libs
 	provides = dev-proxy
 	options = !strip
 	source = https://github.com/dotnet/dev-proxy/releases/download/v3.1.0/dev-proxy-linux-x64-v3.1.0.zip
