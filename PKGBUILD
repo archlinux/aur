@@ -1,7 +1,7 @@
 # Maintainer: Lumina Nao <luminanao@duck.com>
 
 pkgname=llama-hdd
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="LLM inference in C/C++ with disk-backed prompt-checkpoint persistence (llama.cpp soft-fork)"
 arch=('x86_64' 'aarch64')
@@ -14,14 +14,14 @@ optdepends=(
     'rocm-hip-sdk: AMD GPU acceleration (build with LLAMA_HDD_BACKEND=rocm)'
     'vulkan-icd-loader: Vulkan GPU acceleration (build with LLAMA_HDD_BACKEND=vulkan)'
     'llama-launcher: launcher with --hdd-cache mode that drives this fork'\''s sidecar feature'
-)
+ )
 provides=('llama.cpp' "llama.cpp=${pkgver}")
 conflicts=('llama.cpp' 'llama.cpp-cuda' 'llama.cpp-vulkan' 'llama.cpp-hip')
 source=("${pkgname}::git+https://codeberg.org/LuminaNAO/llama-hdd.cpp.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
-# Backend selection: cpu, vulkan, cuda, rocm
-# Non-interactive: LLAMA_HDD_BACKEND=vulkan makepkg
+# Backend selection: cpu, vulkan, cuda, rocm, metal
+# Non-interactive: LLAMA_HDD_BACKEND=metal makepkg
 _backend="${LLAMA_HDD_BACKEND:-}"
 
 _detect_backend() {
@@ -29,6 +29,8 @@ _detect_backend() {
         echo cuda
     elif command -v rocminfo >/dev/null 2>&1; then
         echo rocm
+    elif [[ "$(uname)" == "Darwin" ]]; then
+        echo metal
     elif command -v vulkaninfo >/dev/null 2>&1; then
         echo vulkan
     else
@@ -40,8 +42,8 @@ _select_backend() {
     [ -n "$_backend" ] && return 0
     if ! { : </dev/tty; } 2>/dev/null; then
         echo "ERROR: no backend selected and no terminal to ask on."
-        echo "Set LLAMA_HDD_BACKEND to one of: cpu, vulkan, cuda, rocm. Example:"
-        echo "  LLAMA_HDD_BACKEND=cuda paru -S llama-hdd"
+        echo "Set LLAMA_HDD_BACKEND to one of: cpu, vulkan, cuda, rocm, metal. Example:"
+        echo "  LLAMA_HDD_BACKEND=metal paru -S llama-hdd"
         return 1
     fi
     local suggested choice
@@ -53,7 +55,8 @@ _select_backend() {
         echo "  2) vulkan  - any modern GPU"
         echo "  3) cuda    - NVIDIA (requires cuda)"
         echo "  4) rocm    - AMD (requires rocm-hip-sdk)"
-        printf "Select backend [1-4 or name, Enter=%s (detected), auto-continues in 120s]: " "$suggested"
+        echo "  5) metal   - Apple Silicon / macOS (requires Metal)"
+        printf "Select backend [1-5 or name, Enter=%s (detected), auto-continues in 120s]: " "$suggested"
     } >/dev/tty
     # Timeout guards unattended runs (paru/yay build queues): fall back to
     # the detected backend instead of hanging the install forever.
@@ -67,8 +70,9 @@ _select_backend() {
         2) _backend=vulkan ;;
         3) _backend=cuda ;;
         4) _backend=rocm ;;
+        5) _backend=metal ;;
         "") _backend="$suggested" ;;
-        cpu|vulkan|cuda|rocm) _backend="$choice" ;;
+        cpu|vulkan|cuda|rocm|metal) _backend="$choice" ;;
         *) echo "Invalid choice: $choice" >/dev/tty; return 1 ;;
     esac
     echo "Building llama-hdd with backend: $_backend" >/dev/tty
@@ -100,7 +104,8 @@ build() {
         rocm)    cmake_args+=(-DGGML_HIP=ON -DAMDGPU_TARGETS="${AMDGPU_TARGETS:-gfx1100;gfx1151}") ;;
         vulkan)  cmake_args+=(-DGGML_VULKAN=ON) ;;
         cpu)     ;;
-        *) echo "Unknown LLAMA_HDD_BACKEND=$_backend (cpu|vulkan|cuda|rocm)"; return 1 ;;
+        metal)   cmake_args+=(-DGGML_METAL=ON) ;;
+        *) echo "Unknown LLAMA_HDD_BACKEND=$_backend (cpu|vulkan|cuda|rocm|metal)"; return 1 ;;
     esac
 
     cmake "${cmake_args[@]}"
