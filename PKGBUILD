@@ -1,6 +1,6 @@
 # Maintainer: Samuel Paredes <sam.paredes.g@gmail.com>
 pkgname=franki-os-git
-pkgver=r976.250ef57
+pkgver=r979.81e213f
 pkgrel=1
 pkgdesc="Federated Recursive Artificial Neural Knowledge Interface - Neural OS"
 arch=('x86_64')
@@ -133,6 +133,8 @@ package() {
     install -Dm755 bin/corti_nerve.sh  "$_lib/backend/bin/corti_nerve.sh"
     # franki-log: logs unificados de todos los servicios FRANKI (nexus + cerebelo)
     install -Dm755 bin/franki-log "$pkgdir/usr/bin/franki-log"
+    # franki-cli: puente CLI/voz/notificacion agnostico al Nucleo (/api/ui/input)
+    install -Dm755 bin/franki-cli "$pkgdir/usr/bin/franki-cli"
 
     # 4. Binarios Rust (f-cerebelo, f-vagus)
     install -Dm755 f-cerebelo/target/release/f-cerebelo "$pkgdir/usr/bin/f-cerebelo"
