@@ -1,7 +1,7 @@
 # Maintainer: TomRhodan <tomrhodan at gmail dot com>
 pkgname=penguin-citizen-bin
 _pkgname=penguin-citizen
-pkgver=0.5.11
+pkgver=0.5.12
 pkgrel=1
 # Upstream uses Debian-style release suffix in tags (e.g. v0.5.4-0). Independent of pkgrel.
 _releasetag=1
@@ -30,7 +30,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip' '!emptydirs')
 source=("$_pkgname-$pkgver-$_releasetag.deb::$url/releases/download/v${pkgver}-${_releasetag}/Penguin.Citizen_${pkgver}_amd64.deb")
-sha256sums=('e923fe6c0bac004b262bf69fa653b434e14215c5f6eb7d0826076a980d04fb9f')
+sha256sums=('f0ce0c5b13588029141dff67369dd0df0767b4f11077af354117e5262bb32eb4')
 
 package() {
     cd "$srcdir"
