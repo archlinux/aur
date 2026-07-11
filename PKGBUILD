@@ -39,7 +39,7 @@ package() {
 	# this extracts all into the pkgdir
 	tar -xf "${srcdir}/data.tar.gz"
 
-	sed -e 's|Categories=|Categories=Utility;|g' -i "${pkgdir}/usr/share/applications/${_appname^}.desktop"
+	sed -e "s|Categories=|Categories=Utility;|g" -e "s|Comment=.*|Comment=Intelligent file organizer|g" -i "${pkgdir}/usr/share/applications/${_appname^}.desktop"
 
 	install -Dm644 "${srcdir}/README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
