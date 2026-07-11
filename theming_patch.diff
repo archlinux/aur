@@ -1,7 +1,7 @@
 diff --git a/src/adw-style-manager.c b/src/adw-style-manager.c
 --- a/src/adw-style-manager.c
 +++ b/src/adw-style-manager.c
-@@ -446,6 +446,23 @@ notify_high_contrast_cb (AdwStyleManager *self)
+@@ -465,6 +465,23 @@ notify_high_contrast_cb (AdwStyleManager *self)
    g_object_notify_by_pspec (G_OBJECT (self), props[PROP_HIGH_CONTRAST]);
  }
  
@@ -25,7 +25,7 @@ diff --git a/src/adw-style-manager.c b/src/adw-style-manager.c
  static void
  adw_style_manager_constructed (GObject *object)
  {
-@@ -471,29 +471,6 @@ adw_style_manager_constructed (GObject *object)
+@@ -471,27 +471,6 @@ adw_style_manager_constructed (GObject *object)
                               self,
                               G_CONNECT_SWAPPED);
  
@@ -35,8 +35,6 @@ diff --git a/src/adw-style-manager.c b/src/adw-style-manager.c
 -                    NULL);
 -
 -      self->provider = gtk_css_provider_new ();
--      gtk_css_provider_load_from_resource (self->provider,
--                                           "/org/gnome/Adwaita/styles/gtk.css");
 -      gtk_style_context_add_provider_for_display (self->display,
 -                                                  GTK_STYLE_PROVIDER (self->provider),
 -                                                  GTK_STYLE_PROVIDER_PRIORITY_THEME);
@@ -55,7 +53,7 @@ diff --git a/src/adw-style-manager.c b/src/adw-style-manager.c
      self->animations_provider = gtk_css_provider_new ();
      gtk_css_provider_load_from_string (self->animations_provider,
                                         "* { transition: none; }");
-@@ -541,6 +541,17 @@ adw_style_manager_constructed (GObject *object)
+@@ -570,7 +566,18 @@ adw_style_manager_constructed (GObject *object)
    update_dark (self);
    update_fonts (self);
    update_stylesheet (self, UPDATE_ALL);
@@ -70,6 +68,7 @@ diff --git a/src/adw-style-manager.c b/src/adw-style-manager.c
 +    adw_style_manager_theme_changed(interface_settings, "gtk-theme", self->display);
 +    g_signal_connect (interface_settings, "changed", G_CALLBACK (adw_style_manager_theme_changed), self->display);
 +  }
- }
- 
- static void
+
+   if (self->provider) {
+     gtk_css_provider_load_from_resource (self->provider,
+                                          "/org/gnome/Adwaita/styles/gtk.css");
