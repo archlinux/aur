@@ -1,7 +1,7 @@
 pkgbase = fastcompmgr-git
 	pkgdesc = An early Compton-based compositor for X11 focused on performance. (git)
-	pkgver = 0.5.r20.ga449edb
-	pkgrel = 2
+	pkgver = 0.6.1.r1.ge712f94
+	pkgrel = 1
 	url = https://github.com/tycho-kirchner/fastcompmgr
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = fastcompmgr-git
 	depends = libxrender
 	provides = fastcompmgr
 	conflicts = fastcompmgr
-	source = git+https://github.com/tycho-kirchner/fastcompmgr.git
+	source = git+https://github.com/tycho-kirchner/fastcompmgr.git#branch=dev
 	b2sums = SKIP
 
 pkgname = fastcompmgr-git
