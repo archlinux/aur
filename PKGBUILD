@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=dlss-updater
 _app_id="io.github.recol.$pkgname"
-pkgver=4.3.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="DLSS, XeSS, DirectStorage, FSR, and Streamline DLL updater for games"
 arch=('any')
@@ -11,16 +11,17 @@ depends=(
   'python-aiofiles'
   'python-aiohttp'
   'python-aiosqlite'
-  'python-appdirs'
-  'python-darkdetect'
+  'python-anyio'
   'python-flet'
   'python-msgspec'
   'python-nvidia-ml-py'
   'python-packaging'
   'python-pefile'
   'python-pillow'
+  'python-platformdirs'
   'python-psutil'
   'python-requests'
+  'python-tomli-w'
   'python-uvloop'
 )
 makedepends=(
@@ -34,15 +35,13 @@ checkdepends=(
   'appstream'
   'desktop-file-utils'
 )
-optdepends=('python-rapidfuzz: Fast fuzzy string matching for game search')
-
-# Use commit of what tag should be
-# until upstream fixes CI pipeline
-_commit=9d528f143c0e0592b09d42ca098402a837729624
-
-source=("git+https://github.com/Recol/DLSS-Updater.git#commit=${_commit}"
+optdepends=(
+  'python-niquests: Fallback for DLL downloads when aiohttp fails'
+  'python-rapidfuzz: Fast fuzzy string matching for game search'
+)
+source=("git+https://github.com/Recol/DLSS-Updater.git#tag=V$pkgver"
         "$pkgname.sh")
-sha256sums=('1d2f4a7d839d99a3d25a6736f5268e4797036912e1a9a6e511e4b1c9ae0e8e9c'
+sha256sums=('4a74bb01c9e3ed9a28c445997371b64f020a9a1a80b9bd15965ed82d58865f88'
             'd98bd361773dee09cc82fa02a185a9fdf21779676ed72b69d550323e9abe14f0')
 
 prepare() {
