@@ -1,7 +1,7 @@
 # Maintainer: AkitaOnRails <boss@akitaonrails.com>
 
 pkgname=ghpending
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Watch GitHub repos for open issues and pull requests at a glance"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=('cargo')
 options=('!debug')
 conflicts=('ghpending-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('94262728d2871de15d48e07be0e7745dc8a1b4202018c6569b0349ef639119aa')
+sha256sums=('974ca8d5da68e24f20cff497b2eec9dea53aa09290ac99485b37bcdd2915e104')
 
 prepare() {
     cd "$pkgname-$pkgver"
