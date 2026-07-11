@@ -27,7 +27,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
   export   CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -fstack-clash-protection -fcf-protection"
-  export CXXFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -fstack-clash-protection -fcf-protection"
+  export CXXFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -fstack-clash-protection -fcf-protection -fno-char8_t"
   export  LDFLAGS="-static-libstdc++ -static-libgcc -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
   export MAKEFLAGS=--jobs=$(nproc)
   export MARS_INSTALL_DIR="${pkgdir}/opt/marsdev"
