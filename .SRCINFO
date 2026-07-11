@@ -1,7 +1,7 @@
 pkgbase = jellyfin-ffmpeg-bin
 	pkgdesc = Jellyfin fork of ffmpeg (portable static build)
 	pkgver = 7.1.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/jellyfin/jellyfin-ffmpeg
 	arch = x86_64
 	arch = aarch64
@@ -9,9 +9,9 @@ pkgbase = jellyfin-ffmpeg-bin
 	depends = glibc
 	provides = jellyfin-ffmpeg
 	conflicts = jellyfin-ffmpeg
-	source_x86_64 = https://repo.jellyfin.org/files/ffmpeg/linux/7.x/7.1.4-1/amd64/jellyfin-ffmpeg_7.1.4-1_portable_linux64-gpl.tar.xz
-	sha256sums_x86_64 = e195dd28272c2c6e9640f829561326e90a2bbbb04b322067ad6090215a5764c2
-	source_aarch64 = https://repo.jellyfin.org/files/ffmpeg/linux/7.x/7.1.4-1/arm64/jellyfin-ffmpeg_7.1.4-1_portable_linuxarm64-gpl.tar.xz
-	sha256sums_aarch64 = a8567bcace6bf11bfde5449b5cf5336cb9355a14032c68ca62487ecfeb118f8b
+	source_x86_64 = https://repo.jellyfin.org/files/ffmpeg/linux/7.x/7.1.4-3/amd64/jellyfin-ffmpeg_7.1.4-3_portable_linux64-gpl.tar.xz
+	sha256sums_x86_64 = cab9ff40a47e4232d231e4eb7e4e85fabfeec56c6905266bc94291fc0881f83f
+	source_aarch64 = https://repo.jellyfin.org/files/ffmpeg/linux/7.x/7.1.4-3/arm64/jellyfin-ffmpeg_7.1.4-3_portable_linuxarm64-gpl.tar.xz
+	sha256sums_aarch64 = 77e4b5d044ab73e1f26c9aadaa5d6014d1782500bf2c29afb3ab81f5bea98b1f
 
 pkgname = jellyfin-ffmpeg-bin
