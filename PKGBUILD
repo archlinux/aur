@@ -1,7 +1,7 @@
 # Maintainer: Lumina Nao <luminanao@duck.com>
 
 pkgname=llama-hdd
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc="LLM inference in C/C++ with disk-backed prompt-checkpoint persistence (llama.cpp soft-fork)"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ conflicts=('llama.cpp' 'llama.cpp-cuda' 'llama.cpp-vulkan' 'llama.cpp-hip')
 source=("${pkgname}::git+https://codeberg.org/LuminaNAO/llama-hdd.cpp.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
-# Backend selection: cpu, vulkan, cuda, rocm, metal
+# Backend selection: cpu, vulkan, cuda, rocm, metal (+ other for custom)
 # Non-interactive: LLAMA_HDD_BACKEND=metal makepkg
 _backend="${LLAMA_HDD_BACKEND:-}"
 
@@ -42,8 +42,8 @@ _select_backend() {
     [ -n "$_backend" ] && return 0
     if ! { : </dev/tty; } 2>/dev/null; then
         echo "ERROR: no backend selected and no terminal to ask on."
-        echo "Set LLAMA_HDD_BACKEND to one of: cpu, vulkan, cuda, rocm, metal. Example:"
-        echo "  LLAMA_HDD_BACKEND=metal paru -S llama-hdd"
+        echo "Set LLAMA_HDD_BACKEND to: cpu, vulkan, cuda, rocm, metal, or custom (e.g. sycl). Example:"
+        echo "  LLAMA_HDD_BACKEND=sycl paru -S llama-hdd"
         return 1
     fi
     local suggested choice
@@ -56,7 +56,8 @@ _select_backend() {
         echo "  3) cuda    - NVIDIA (requires cuda)"
         echo "  4) rocm    - AMD (requires rocm-hip-sdk)"
         echo "  5) metal   - Apple Silicon / macOS (requires Metal)"
-        printf "Select backend [1-5 or name, Enter=%s (detected), auto-continues in 120s]: " "$suggested"
+        echo "  6) other   - type custom backend (e.g. sycl, custom)"
+        printf "Select backend [1-6 or name, Enter=%s (detected), auto-continues in 120s]: " "$suggested"
     } >/dev/tty
     # Timeout guards unattended runs (paru/yay build queues): fall back to
     # the detected backend instead of hanging the install forever.
@@ -71,6 +72,14 @@ _select_backend() {
         3) _backend=cuda ;;
         4) _backend=rocm ;;
         5) _backend=metal ;;
+        6)
+            {
+                printf "Enter custom backend (e.g. sycl): " >/dev/tty
+                read -r custom_backend </dev/tty
+                [ -z "$custom_backend" ] && { echo "Empty backend; aborting." >/dev/tty; return 1; }
+                _backend="$custom_backend"
+            }
+            ;;
         "") _backend="$suggested" ;;
         cpu|vulkan|cuda|rocm|metal) _backend="$choice" ;;
         *) echo "Invalid choice: $choice" >/dev/tty; return 1 ;;
@@ -105,7 +114,12 @@ build() {
         vulkan)  cmake_args+=(-DGGML_VULKAN=ON) ;;
         cpu)     ;;
         metal)   cmake_args+=(-DGGML_METAL=ON) ;;
-        *) echo "Unknown LLAMA_HDD_BACKEND=$_backend (cpu|vulkan|cuda|rocm|metal)"; return 1 ;;
+        other|*)
+            # For unknown/custom backends: map to -DGGML_<BACKEND>=ON
+            # e.g. sycl → -DGGML_SYCL=ON (uppercase).
+            upper="$(echo "$_backend" | tr '[:lower:]' '[:upper:]')"
+            cmake_args+=("-DGGML_${upper}=ON")
+            ;;
     esac
 
     cmake "${cmake_args[@]}"
