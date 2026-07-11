@@ -6,7 +6,7 @@
 _gemname=commander
 pkgname=ruby-$_gemname
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The complete solution for Ruby command-line executables'
 arch=(any)
 url='https://github.com/commander-rb/commander'
@@ -16,7 +16,6 @@ depends=(
   ruby-highline
 )
 makedepends=(
-  git
   ruby-rdoc
 )
 checkdepends=(

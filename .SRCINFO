@@ -1,7 +1,7 @@
 pkgbase = ruby-commander
 	pkgdesc = The complete solution for Ruby command-line executables
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/commander-rb/commander
 	arch = any
 	license = MIT
@@ -9,7 +9,6 @@ pkgbase = ruby-commander
 	checkdepends = ruby-rake
 	checkdepends = ruby-rspec
 	checkdepends = ruby-simplecov
-	makedepends = git
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-highline
