@@ -4,7 +4,7 @@ _gitauthor=alikazai
 _gitname=ktree
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="Universal test runner with auto-detection for 11 languages"
+pkgdesc="A terminal UI for managing git worktrees"
 
 pkgver=0.1.0
 pkgrel=1
