@@ -1,0 +1,5 @@
+[dron-bin]
+source = "github"
+github = "DizoftTeam/dron"
+use_latest_release = true
+prefix = "v"
