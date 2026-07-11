@@ -1,19 +1,33 @@
 pkgbase = mameuix
-	pkgdesc = Modern GUI frontend for MAME arcade emulator with thread pool performance and enhanced UI
-	pkgver = 0.1.4
+	pkgdesc = Modern MAME frontend with enhanced features
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/firesand/MAMEUIx
 	arch = x86_64
 	license = MIT
-	makedepends = rust>=1.70
+	license = OFL-1.1
+	makedepends = cargo
 	makedepends = pkgconf
-	makedepends = zstd
-	makedepends = git
-	depends = mame>=0.200
 	depends = glibc
-	depends = gcc-libs
-	optdepends = mame-roms: Game ROMs for MAME
-	source = mameuix-0.1.4.tar.gz::https://github.com/firesand/MAMEUIx/archive/v0.1.4.tar.gz
-	sha256sums = SKIP
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libglvnd
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libxcb
+	depends = libxrender
+	depends = mame>=0.200
+	depends = sh
+	depends = wayland
+	depends = xz
+	optdepends = xdg-desktop-portal: Native file dialogs under Wayland
+	optdepends = xdg-utils: Open links in the default web browser
+	options = !debug
+	options = !lto
+	source = mameuix-0.1.6.tar.gz::https://github.com/firesand/MAMEUIx/archive/refs/tags/v0.1.6.tar.gz
+	sha256sums = 08d1d39d71cbfb0102df320729ea964fc484ba19912ff581fff1751120005311
 
 pkgname = mameuix

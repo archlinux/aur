@@ -1,91 +1,91 @@
 # Maintainer: edo hikmahtiar <edohikmahtiar@me.com>
 pkgname=mameuix
-pkgver=0.1.4
+pkgver=0.1.6
 pkgrel=1
-pkgdesc="Modern GUI frontend for MAME arcade emulator with thread pool performance and enhanced UI"
+pkgdesc="Modern MAME frontend with enhanced features"
 arch=('x86_64')
 url="https://github.com/firesand/MAMEUIx"
-license=('MIT')
-depends=('mame>=0.200' 'glibc' 'gcc-libs')
-makedepends=('rust>=1.70' 'pkgconf' 'zstd' 'git')
-optdepends=('mame-roms: Game ROMs for MAME')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/firesand/MAMEUIx/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+license=('MIT' 'OFL-1.1')
+depends=(
+    'glibc'
+    'hicolor-icon-theme'
+    'libgcc'
+    'libglvnd'
+    'libx11'
+    'libxcursor'
+    'libxi'
+    'libxkbcommon'
+    'libxkbcommon-x11'
+    'libxcb'
+    'libxrender'
+    'mame>=0.200'
+    'sh'
+    'wayland'
+    'xz'
+)
+makedepends=('cargo' 'pkgconf')
+optdepends=(
+    'xdg-desktop-portal: Native file dialogs under Wayland'
+    'xdg-utils: Open links in the default web browser'
+)
+options=('!debug' '!lto')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/firesand/MAMEUIx/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('08d1d39d71cbfb0102df320729ea964fc484ba19912ff581fff1751120005311')
+
+_cargo_env() {
+    local remap_flag="--remap-path-prefix=$srcdir=/usr/src/debug/$pkgname-$pkgver"
+
+    export CARGO_HOME="$srcdir/cargo-home"
+    export CARGO_TARGET_DIR="$srcdir/target"
+    export RUSTUP_TOOLCHAIN=stable
+    if [[ " ${RUSTFLAGS:-} " != *" $remap_flag "* ]]; then
+        export RUSTFLAGS="${RUSTFLAGS:+$RUSTFLAGS }$remap_flag"
+    fi
+
+    # Upstream enables full LTO and one codegen unit. Disabling LTO here keeps
+    # local AUR builds practical on machines with limited memory.
+    export CARGO_PROFILE_RELEASE_LTO=false
+}
 
 prepare() {
-    cd "$srcdir/MAMEUIx-$pkgver"
-    # Ensure we have the latest dependencies
-    cargo fetch
+    cd "MAMEUIx-$pkgver"
+    _cargo_env
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "$srcdir/MAMEUIx-$pkgver"
-    
-    # Set environment variables for optimal build
-    export ZSTD_LIB_DIR=/usr/lib
-    export ZSTD_STATIC=0
-    export RUSTFLAGS="-C link-arg=-lzstd -C target-cpu=native"
-    
-    # Build with release optimizations
-    cargo build --release --locked
-    
-    # Verify the binary was created
-    if [ ! -f "target/release/mameuix" ]; then
-        echo "Error: Binary not found after build"
-        exit 1
-    fi
+    cd "MAMEUIx-$pkgver"
+    _cargo_env
+    cargo build --frozen --release --bin mameuix
 }
 
 check() {
-    cd "$srcdir/MAMEUIx-$pkgver"
-    # Run tests if available
-    cargo test --release --locked || true
+    cd "MAMEUIx-$pkgver"
+    _cargo_env
+    cargo test --frozen --release --bin mameuix
 }
 
 package() {
-    cd "$srcdir/MAMEUIx-$pkgver"
-    
-    # Install binary
-    install -Dm755 target/release/mameuix "$pkgdir/usr/bin/mameuix"
-    
-    # Install desktop file
-    install -Dm644 mameuix.desktop "$pkgdir/usr/share/applications/mameuix.desktop"
-    
-    # Install icons (check if they exist first)
-    if [ -f "assets/icons/16x16/mameuix.png" ]; then
-        install -Dm644 assets/icons/16x16/mameuix.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/mameuix.png"
-    fi
-    if [ -f "assets/icons/32x32/mameuix.png" ]; then
-        install -Dm644 assets/icons/32x32/mameuix.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/mameuix.png"
-    fi
-    if [ -f "assets/icons/48x48/mameuix.png" ]; then
-        install -Dm644 assets/icons/48x48/mameuix.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/mameuix.png"
-    fi
-    if [ -f "assets/icons/64x64/mameuix.png" ]; then
-        install -Dm644 assets/icons/64x64/mameuix.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/mameuix.png"
-    fi
-    if [ -f "assets/icons/128x128/mameuix.png" ]; then
-        install -Dm644 assets/icons/128x128/mameuix.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/mameuix.png"
-    fi
-    if [ -f "assets/icons/256x256/mameuix.png" ]; then
-        install -Dm644 assets/icons/256x256/mameuix.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/mameuix.png"
-    fi
-    if [ -f "assets/icons/scalable/mameuix.svg" ]; then
-        install -Dm644 assets/icons/scalable/mameuix.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/mameuix.svg"
-    fi
-    
-    # Install man page if it exists
-    if [ -f "mameuix.1" ]; then
-        install -Dm644 mameuix.1 "$pkgdir/usr/share/man/man1/mameuix.1"
-    fi
-    
-    # Install documentation
+    cd "MAMEUIx-$pkgver"
+
+    install -Dm755 "$srcdir/target/release/mameuix" "$pkgdir/usr/bin/mameuix"
+    install -Dm644 mameuix.desktop \
+        "$pkgdir/usr/share/applications/mameuix.desktop"
+    install -Dm644 assets/icons/scalable/mameuix.svg \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/mameuix.svg"
+
+    local size
+    for size in 16 32 48 64 128 256; do
+        install -Dm644 "assets/icons/${size}x${size}/mameuix.png" \
+            "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/mameuix.png"
+    done
+
+    install -Dm644 debian/mameuix.1 "$pkgdir/usr/share/man/man1/mameuix.1"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
-    install -Dm644 LICENSE "$pkgdir/usr/share/doc/$pkgname/LICENSE"
-    
-    # Install performance documentation
-    if [ -f "ICON_LOADING_PERFORMANCE.md" ]; then
-        install -Dm644 ICON_LOADING_PERFORMANCE.md "$pkgdir/usr/share/doc/$pkgname/ICON_LOADING_PERFORMANCE.md"
-    fi
-} 
+    install -Dm644 docs/*.md -t "$pkgdir/usr/share/doc/$pkgname"
+
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 assets/fonts/public_sans/OFL.txt \
+        "$pkgdir/usr/share/licenses/$pkgname/OFL-Public-Sans.txt"
+}
