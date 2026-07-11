@@ -1,0 +1,5 @@
+[dye-bin]
+source = "github"
+github = "kurtbuilds/dye"
+use_latest_release = true
+prefix = "v"
