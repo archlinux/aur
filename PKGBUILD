@@ -4,7 +4,7 @@
 
 _pkgname='kreya'
 pkgname="${_pkgname}-bin"
-pkgver=1.20.1
+pkgver=1.20.3
 pkgrel=1
 pkgdesc='GUI client for gRPC and REST APIs'
 arch=('x86_64')
@@ -37,7 +37,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("https://stable-downloads.kreya.app/${pkgver}/Kreya-app-linux-x64.tar.gz")
-sha256sums=('fa22ac7e973a310915bf6d0faef6fd2fa60717827a09a470f81eade0276209fd')
+sha256sums=('0976ad2f8402e7068f556743a22dd5f9d7f2c78f0d2bb6f8dfd0116cbae962a2')
 
 options=("!strip")
 
