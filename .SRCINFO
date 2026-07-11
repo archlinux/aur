@@ -1,6 +1,6 @@
 pkgbase = emerald-legacy-launcher
 	pkgdesc = FOSS, cross-platform launcher for Minecraft Legacy Console Edition
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/LCE-Hub/LCE-Emerald-Launcher
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = emerald-legacy-launcher
 	depends = webkit2gtk-4.1
 	optdepends = discord: Discord RPC support
 	provides = emerald-legacy-launcher
-	source = emerald-legacy-launcher-1.4.1.tar.gz::https://github.com/LCE-Hub/LCE-Emerald-Launcher/archive/refs/tags/v1.4.1.tar.gz
+	source = emerald-legacy-launcher-1.5.0.tar.gz::https://github.com/LCE-Hub/LCE-Emerald-Launcher/archive/refs/tags/v1.5.0.tar.gz
 	source = no-updater.patch
-	sha256sums = 6e214416e69754e8ba81ab0fb667f560c00ed57d78561f31ab9a99df7f2ed6d8
+	sha256sums = cccb71c7401bdab8ea701481a5fe73e2f0bf0911fa1b3fcbf73ed72075d53efb
 	sha256sums = 8aee475faee5f51bb727fc947daa836fa2eb0f137c3313bf01cbf897ac45d7c3
 
 pkgname = emerald-legacy-launcher

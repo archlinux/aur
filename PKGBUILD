@@ -1,6 +1,6 @@
 # Maintainer: AntiApple4life <antiapple@antiapple.net>
 pkgname=emerald-legacy-launcher
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="FOSS, cross-platform launcher for Minecraft Legacy Console Edition"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'ca
 provides=('emerald-legacy-launcher')
 provides=('emerald-legacy-launcher')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LCE-Hub/LCE-Emerald-Launcher/archive/refs/tags/v${pkgver}.tar.gz" "no-updater.patch")
-sha256sums=('6e214416e69754e8ba81ab0fb667f560c00ed57d78561f31ab9a99df7f2ed6d8'
+sha256sums=('cccb71c7401bdab8ea701481a5fe73e2f0bf0911fa1b3fcbf73ed72075d53efb'
             '8aee475faee5f51bb727fc947daa836fa2eb0f137c3313bf01cbf897ac45d7c3')
 _reponame="LCE-Emerald-Launcher"
 
