@@ -25,7 +25,7 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'ffmpeg'
-    "electron${_electronversion}"
+    "electron${_electronversion}-bin"
     'libappindicator'
     'libinput'
 )

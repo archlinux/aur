@@ -8,7 +8,7 @@ pkgbase = bilibili-bin
 	arch = x86_64
 	license = MIT
 	depends = ffmpeg
-	depends = electron28
+	depends = electron28-bin
 	depends = libappindicator
 	depends = libinput
 	provides = bilibili=1.17.9_1
