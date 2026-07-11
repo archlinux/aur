@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=terax
-pkgver=0.8.2
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Lightweight AI-native terminal emulator (ADE) built with Tauri 2 and React"
 arch=('x86_64')
@@ -34,7 +34,7 @@ conflicts=('terax-bin')
 options=('!lto' '!debug' '!strip')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('54d39185c81724b4ceb2908dc5933e875a0e41ccb9fee9f0521cc5b0f412ee8c')
+sha256sums=('5aa5246a2ed298ed39c3b41a9fc116d6197b5b7fdaf9ade42013ab3846de1ed6')
 
 prepare() {
     cd "${srcdir}/terax-ai-${pkgver}"
