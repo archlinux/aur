@@ -1,6 +1,6 @@
 # Maintainer: Samuel Paredes <sam.paredes.g@gmail.com>
 pkgname=franki-os-git
-pkgver=r971.78c7a36
+pkgver=r973.99cf49c
 pkgrel=1
 pkgdesc="Federated Recursive Artificial Neural Knowledge Interface - Neural OS"
 arch=('x86_64')
@@ -55,6 +55,9 @@ optdepends=(
     'pdal: LiDAR point cloud processing (tool_geo_lidar_info, tool_geo_lidar_dem)'
     'python-pdal: Python bindings for PDAL'
     'grass: real hydrology analysis via r.watershed (tool_geo_hidrologia)'
+    'theharvester-git: subdomain/email recon for OSINT plexo (TransductorHarvester, osint/red.py)'
+    'maigret: username recon across sites for OSINT plexo (TransductorMaigret, osint/corporativo.py)'
+    'phoneinfoga-bin: phone number OSINT scan backup (LaboratorioOSINT.investigar_telefono)'
 )
 options=('!debug' '!strip' '!buildflags')
 source=('franki::git+https://gitlab.com/Umbra_HS/franki_os.git')
