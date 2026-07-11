@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Search and download torrents from The Pirate Bay"
 
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${_gitversion}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${_gitversion}_${_barch[1]}.tar.gz")
-sha256sums=('44126afafd49f7318c6f90a5baa905cf5122d5fa1cf1f8e0ae3699942529b365'
+sha256sums=('7018a78b135759be8de031f995a969f73a9d75f52df8dcb314e668c812cebdb6'
             '30ecb4ff4afd5dd70a51d7727c4f873db145b899fb9836627eacca05080515bf')
-sha256sums_x86_64=('81a0dda1c001317ac1dc31376fff6b3e8b661825e278cbfa6cbaac70e92ba9bb')
-sha256sums_aarch64=('d3a7a4b7fefc19181b94c6a2a03515944203413f499d5ad3d44fa9f2a9987378')
+sha256sums_x86_64=('7a7b7495f1d768328db7456211975c8c4e1075edd4667e3ad51e731ec44d4092')
+sha256sums_aarch64=('e85da7fb30368312220c5d28a10dcdbc51dde04147be0e523842d32d4dfdb459')
 
 
 package() {
