@@ -3,7 +3,7 @@
 
 pkgname=trae-us
 pkgver=2.3.50210
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-powered IDE by ByteDance (US CDN)"
 arch=('x86_64' 'aarch64')
 url="https://www.trae.cn/"
@@ -23,7 +23,7 @@ source_aarch64=("Trae-linux-arm64-${pkgver}-${pkgrel}.tar.gz::https://lf-cdn.tra
 b2sums=('2331b0d37fff8478ea37cbf9e5c2e70a59631aae6efb44741fc6c1a8dce65557098e9dffa8c30148ef27432802bec3d1eda279021421e5d3f979e80900662726'
             '656c5d6bea6ef15185e0d8ee0181276f6de3bfae8e66a2c65772a5f1354727952dd020dca057246139a2bab8f4805057fa2db367a6ba0a1b90d9ffd7fcab8412')
 b2sums_x86_64=('2c6675e29b0fe769c0eeafdfd92f2fdcb6f917fb0246983072f4ad50a1636e935bc0510529a2d516c64b1a1e7c774174db6ab5bb720dd6168dce0532c2d3773d')
-b2sums_aarch64=('e164069bed64abafd1cad9f2bb4ea024d21026b7e91b8b5c2fc03a98851167413e10414981f980ffd0ca22d8871bd1c779d989a48ccf08bceb176feeb960ac21')
+b2sums_aarch64=('099b86215674fe37bf5fa82d4d9f53be29ea988353b3971db32e6733b8c2183b3770f36e0fc4ef3e3210cc4f42faa5820a79d27e422335712b335046140d913e')
 
 package() {
     install -d "${pkgdir}/opt/trae"
