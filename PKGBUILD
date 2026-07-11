@@ -2,7 +2,7 @@
 
 pkgname=cargo-packager-git
 pkgver=0.11.8.r9.g37a538e
-pkgrel=1
+pkgrel=2
 pkgdesc="A cli tool and library to generate installers or app bundles for your executables"
 arch=($CARCH)
 url="https://github.com/crabnebula-dev/cargo-packager"
