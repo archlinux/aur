@@ -1,7 +1,7 @@
 # Maintainer: Bastien 'neitsab' Traverse <neitsab@archlinux.org>
 
 pkgname=incus-compose-git
-pkgver=r560.bc613a1
+pkgver=r577.f885e8b
 pkgrel=1
 pkgdesc="Bring the familiar Docker Compose workflow to Incus containers"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,12 @@ url="https://github.com/lxc/incus-compose"
 license=('Apache-2.0')
 source=("git+$url.git")
 depends=('incus')
-makedepends=('git' 'go')
+optdepends=(
+  'podman: build service images locally with `incus-compose build`'
+  'docker: build service images locally with `incus-compose build`'
+)
+makedepends=('git' 'go>=1.26.5')
+conflicts=('incus-compose-bin')
 b2sums=('SKIP')
 
 pkgver() {
@@ -19,6 +24,8 @@ pkgver() {
 
 prepare() {
     cd "${pkgname%-git}"
+    # docs/ is a git submodule; a plain clone leaves it empty.
+    git submodule update --init --recursive
     export GOPATH="${srcdir}"
     go mod download -modcacherw
 }
@@ -46,5 +53,6 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     # Documentation
     install -v -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -v -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
     cp -vr docs "${pkgdir}/usr/share/doc/${pkgname}/"
 }
