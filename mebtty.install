@@ -7,6 +7,7 @@ post_install() {
 post_upgrade() {
   _mebtty_prepare_system
   _mebtty_create_env
+  _mebtty_restart_running_service
   _mebtty_print_notes
 }
 
@@ -253,4 +254,13 @@ Web UI:
   http://localhost:18888
 
 EOF
+}
+
+_mebtty_restart_running_service() {
+  if ! command -v systemctl >/dev/null 2>&1; then
+    return
+  fi
+
+  systemctl daemon-reload >/dev/null 2>&1 || true
+  systemctl try-restart mebtty.service >/dev/null 2>&1 || true
 }
