@@ -2,49 +2,44 @@
 
 _pkgname=zellij-selector
 pkgname=$_pkgname-git
-pkgver=2.6.0.r1.g1f7f130
+pkgver=3.0.0.r1.gb52aa24
 pkgrel=1
 pkgdesc='Select zellij session'
 arch=('any')
 url='https://gitlab.com/stefanwimmer128/zellij-selector'
 license=('MPL2')
 depends=('sh' 'libnewt' 'zellij' 'jq.sh' 'yq')
-makedepends=('git' 'shellcheck' 'getoptions')
-optdepends=('fish: Option to option fish shell'
+makedepends=('git' 'shellcheck' 'getoptions-ng')
+optdepends=('fish: Option to open fish shell'
             'zsh: Option to open zsh shell'
             'bash: Option to open bash shell')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("$_pkgname::git+https://gitlab.com/stefanwimmer128/zellij-selector.git")
+source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
-
+    cd "$_pkgname" || return
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$_pkgname"
-
+    cd "$_pkgname" || return
     ./bootstrap
+    ./configure --prefix=/usr
 }
 
 build() {
-    cd "$_pkgname"
-
-    ./configure --prefix=/usr
+    cd "$_pkgname" || return
     make
 }
 
 check() {
-    cd "$_pkgname"
-
+    cd "$_pkgname" || return
     make check
 }
 
 package() {
-    cd "$_pkgname"
-
+    cd "$_pkgname" || return
     make DESTDIR="$pkgdir" install
 }
