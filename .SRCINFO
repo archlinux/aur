@@ -23,6 +23,6 @@ pkgbase = framr
 	conflicts = framr-bin
 	options = !lto
 	source = framr-0.14.0.tar.gz::https://github.com/vMohammad24/framr/archive/refs/tags/v0.14.0.tar.gz
-	sha256sums = d0fb7f8d142fb5a24bdd0d1577b6e1b8858a7b56c7cf641775c6984c956de1a7
+	sha256sums = 173567ac9f50a3823f389d9933c28b7d581274e081ac405102cb9d938faec651
 
 pkgname = framr
