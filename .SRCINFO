@@ -1,6 +1,6 @@
 pkgbase = lucarned-bin
 	pkgdesc = Stop babysitting local AI agents. Just notifications, approve, and resume your Codex, Pi, or Claude code sessions anywhere.
-	pkgver = 0.4.3
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/tuchg/Lucarne
 	install = lucarned-bin.install
@@ -9,9 +9,9 @@ pkgbase = lucarned-bin
 	license = MIT
 	provides = lucarned
 	conflicts = lucarned
-	source_x86_64 = lucarned-x86_64-0.4.3.tar.xz::https://github.com/tuchg/Lucarne/releases/download/v0.4.3/lucarned-v0.4.3-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = a5e8a86717fb0076969976f68ac8b8a9526e2784c1f21520f0406d8aea766506
-	source_aarch64 = lucarned-aarch64-0.4.3.tar.xz::https://github.com/tuchg/Lucarne/releases/download/v0.4.3/lucarned-v0.4.3-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = e724166261de8d0d05c942b80b5f6273095386adee5e7e1ac7f4117ec8da9c79
+	source_x86_64 = lucarned-x86_64-0.5.0.tar.xz::https://github.com/tuchg/Lucarne/releases/download/v0.5.0/lucarned-v0.5.0-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 418ed1d35babe57376c6acab07d5eb7bb8f3f8183612d00463689b5e98923652
+	source_aarch64 = lucarned-aarch64-0.5.0.tar.xz::https://github.com/tuchg/Lucarne/releases/download/v0.5.0/lucarned-v0.5.0-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 93b6c54ae2345b16169409c03a81082f9503fe776ed8706c6c26980480ad06f1
 
 pkgname = lucarned-bin
