@@ -1,7 +1,7 @@
 # Maintainer: yobson <aur@yobson.xyz>
 pkgname=steam-screenshot-importer
 pkgdesc='Automatic importing of screenshots into Steam using the Steamworks SDK'
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 _steamworks_rs_ver=0.13.1
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgn
     "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-src_${pkgver}.tar.gz.asc"
     "https://github.com/Noxime/steamworks-rs/raw/refs/tags/v${_steamworks_rs_ver}/steamworks-sys/lib/steam/redistributable_bin/linux64/libsteam_api.so")
 validpgpkeys=('A41EB2986F63F6C40FCF2D03ED26A71EB8EB7A34') # Bradley (github commit signing key) <contact@yobson.xyz>
-b2sums=('358d112889a15b09d1a80d7c49fefa1d52bf5f86e251da6c50364021156d11c779f179e804d88b251b816e11dfaa38e76e727d34b3e6f8c818f84bd96496ad5d'
+b2sums=('047a54520fa218587a378db624e0b610e233590b3dfbb6b9e9e618d2a702b275dbd437962278143875dfb1566289ef33181d07d907cc45d3b035fbec717801b1'
         'SKIP'
         '8e4502c07a034bcfbae2b57439d56c2bc3b48ef5f9d4737ee627bf2d0a82921c41a34df7611dd1f582e2782af2f4340e65e9f9b8409a563726d1bd7edcbeaf47')
 options=('!lto')
