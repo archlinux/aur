@@ -1,0 +1,24 @@
+pkgbase = fetchit-git
+	pkgdesc = A highly concurrent web crawler and markdown extractor
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/Aarav90-cpu/fetchIt
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = pybind11
+	depends = python-aiohttp
+	depends = python-beautifulsoup4
+	depends = python-markdownify
+	depends = python-tqdm
+	depends = python-lxml
+	provides = fetchit
+	conflicts = fetchit
+	source = fetchIt::git+https://github.com/Aarav90-cpu/fetchIt.git
+	md5sums = SKIP
+
+pkgname = fetchit-git
