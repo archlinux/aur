@@ -1,0 +1,5 @@
+[riptide-bin]
+source = "github"
+github = "Foxemsx/riptide"
+use_latest_release = true
+prefix = "v"
