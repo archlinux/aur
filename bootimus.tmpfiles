@@ -1,0 +1,3 @@
+d /var/lib/bootimus 0750 bootimus bootimus
+d /etc/bootimus 0755 bootimus bootimus
+f /etc/bootimus/bootimus.yaml 0644 bootimus bootimus

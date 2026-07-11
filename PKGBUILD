@@ -1,15 +1,24 @@
 # Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 pkgname=bootimus
 pkgver=0.1.70
-pkgrel=1
+pkgrel=2
 pkgdesc="A Complete enhanced version of the PXE server"
 arch=('x86_64' 'aarch64')
 url="https://github.com/garybowers/bootimus"
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ce5b17b3a83be38127d76579424e236ae0ba09aed713300898a18f2a6cc0b42d')
+backup=(etc/bootimus/bootimus.yaml)
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+  bootimus.service
+  bootimus.sysusers
+  bootimus.tmpfiles
+)
+sha256sums=('ce5b17b3a83be38127d76579424e236ae0ba09aed713300898a18f2a6cc0b42d'
+            '7c459b9b60f0ee7659ee0a319191aacf5f3bcfc7ac12bb4f59ce0eb9dfe20087'
+            '6a725ce5fa5b20e624f2694331cfd53f0696d0e5b5aa88ab2fc23ebf99e1bd9b'
+            '1a3d47f5480778994f3359de2a8b9d90665fba1d98e7557b8bf6a2118b61f1bb')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -37,12 +46,17 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  # Systemd
+  install -Dm644 bootimus.service "$pkgdir/usr/lib/systemd/system/bootimus.service"
+  install -Dm644 bootimus.sysusers "$pkgdir/usr/lib/sysusers.d/bootimus.conf"
+  install -Dm644 bootimus.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/bootimus.conf"
 
+  # App
+  cd "$pkgname-$pkgver"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-
+  install -Dm644 bootimus.example.yaml "$pkgdir/etc/$pkgname/bootimus.example.yaml"
 }
 
 # vim: sw=2 ts=2 et:
