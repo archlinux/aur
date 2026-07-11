@@ -3,7 +3,7 @@
 _gemname=solargraph
 pkgname=ruby-$_gemname
 pkgver=0.60.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Ruby language server"
 arch=(any)
 url="https://solargraph.org/"
@@ -21,6 +21,8 @@ depends=(
   ruby-kramdown-parser-gfm
   ruby-logger
   ruby-observer
+  ruby-open3
+  ruby-ostruct
   ruby-parser
   ruby-prism
   ruby-rbs
@@ -35,7 +37,6 @@ depends=(
   ruby-yard-solargraph
 )
 makedepends=(
-  git
   ruby-rdoc
 )
 checkdepends=(
