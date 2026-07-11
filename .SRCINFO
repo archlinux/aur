@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-dash-to-dock-multipos
 	pkgdesc = Dash to Dock fork with per-monitor dock position (GNOME Shell extension)
-	pkgver = 105.2
+	pkgver = 105.3
 	pkgrel = 1
 	url = https://github.com/unixman69/dash-to-dock-multipos
 	arch = any
 	license = GPL-2.0-only
 	makedepends = glib2
 	depends = gnome-shell>=45
-	source = gnome-shell-extension-dash-to-dock-multipos-105.2.tar.gz::https://github.com/unixman69/dash-to-dock-multipos/archive/refs/tags/v105.2.tar.gz
-	sha256sums = 252ddde21e813deb109cd886cb03190ab6d82612750c9e57a558a8b6bc941943
+	source = gnome-shell-extension-dash-to-dock-multipos-105.3.tar.gz::https://github.com/unixman69/dash-to-dock-multipos/archive/refs/tags/v105.3.tar.gz
+	sha256sums = 0ac294b371e9d66c51de9c3c9e2c6211e440dc603abaab820384e1ccd39cd072
 
 pkgname = gnome-shell-extension-dash-to-dock-multipos
