@@ -1,0 +1,19 @@
+pkgbase = aptarch-git
+	pkgdesc = 让 Debian/Ubuntu 用户能够在 Arch Linux 系统上无缝使用熟悉的 APT 命令
+	pkgver = r2.f810c84
+	pkgrel = 1
+	url = https://github.com/ZXCLF/aptarch
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = glibc
+	depends = libgcc
+	provides = aptarch
+	conflicts = aptarch
+	options = !lto
+	options = !debug
+	source = aptarch-git::git+https://github.com/ZXCLF/aptarch.git
+	sha256sums = SKIP
+
+pkgname = aptarch-git
