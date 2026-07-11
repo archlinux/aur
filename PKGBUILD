@@ -3,7 +3,7 @@
 
 pkgname=zathura-djvu-git
 pkgrel=1
-pkgver=2026.02.03.r1.g8a134d1
+pkgver=2026.05.10.r4.g98236af
 pkgdesc="DjVu support for zathura"
 arch=('x86_64')
 url="https://pwmt.org/projects/zathura-djvu"
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  arch-meson build -Dtests=disabled
+  arch-meson build
   ninja -C build
 }
 
