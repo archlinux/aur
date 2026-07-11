@@ -2,7 +2,7 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mingw-w64-libjxl
-pkgver=0.11.2
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (mingw-w64)'
 arch=('any')
@@ -34,10 +34,10 @@ optdepends=('mingw-w64-gdk-pixbuf2: for gdk-pixbuf loader')
 source=("git+https://github.com/libjxl/libjxl.git#tag=v${pkgver}"
         'git+https://github.com/mm2/Little-CMS.git'
         'git+https://github.com/webmproject/sjpeg.git'
-        'git+https://skia.googlesource.com/skcms.git'
+        'git+https://github.com/google/skcms.git'
         'libjxl-testdata'::'git+https://github.com/libjxl/testdata.git'
         'git+https://github.com/libjpeg-turbo/libjpeg-turbo.git')
-sha256sums=('0d1a459ef8390a8d991f8e6501c0292cc5f443a7663aeedf0922df855a61f9a2'
+sha256sums=('7fcec90284ed317d3649e6a5a586ebb384798e9fd217920a57cc6b34bf535f57'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -74,9 +74,7 @@ build() {
 
     CFLAGS="$CFLAGS $EXTRA_CFLAGS" CXXFLAGS="$CFLAGS $EXTRA_CFLAGS" ${_arch}-cmake -B build-${_arch} -S libjxl \
         -DCMAKE_BUILD_TYPE:STRING='None' \
-        -DCMAKE_POLICY_VERSION_MINIMUM:STRING='3.5.0' \
         -DJPEGXL_BUNDLE_LIBPNG:BOOL='false' \
-        -DJPEGXL_ENABLE_AVX512:BOOL='true' \
         -DJPEGXL_ENABLE_BENCHMARK:BOOL='false' \
         -DJPEGXL_ENABLE_EXAMPLES:BOOL='false' \
         -DJPEGXL_ENABLE_FUZZERS:BOOL='false' \
