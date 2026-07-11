@@ -1,0 +1,5 @@
+[fcd-bin]
+source = "github"
+github = "bugnano/fcd"
+use_latest_release = true
+prefix = "v"
