@@ -6,7 +6,7 @@ _appname=${_gitname%%-rs}
 pkgname=${_gitname}-bin
 pkgdesc="Encrypted terminal note-taking app"
 
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,7 +28,7 @@ optdepends=("graf")
 options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}.tar.xz")
-sha256sums_x86_64=('453781ec6f8ffab91277b4cfb3932dfd1b47a3bd6896d2d2dbc60c503f2acecf')
+sha256sums_x86_64=('62187b2debe2df05a38a966d3e4364a010f2e24426d34da5edc728c701890647')
 
 
 case ${CARCH} in
