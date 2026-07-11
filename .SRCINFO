@@ -1,13 +1,11 @@
 pkgbase = musicott
 	pkgdesc = A JavaFX desktop music player
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/octaviospain/Musicott
 	arch = x86_64
 	license = GPL3
-	makedepends = jdk-openjdk
-	makedepends = gradle
-	makedepends = git
+	makedepends = liberica-jdk-25-full-bin
 	depends = java-runtime>=24
 	depends = gstreamer
 	depends = gst-plugins-base

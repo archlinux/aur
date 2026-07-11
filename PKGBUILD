@@ -1,22 +1,27 @@
-# Maintainer: Octavio Calleya <ogarcia.extern@autofleetcontrol.de>
+# Maintainer: Octavio Calleya Garcia <octavio@transgressoft.net>
 pkgname=musicott
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A JavaFX desktop music player"
 arch=('x86_64')
 url="https://github.com/octaviospain/Musicott"
 license=('GPL3')
 depends=('java-runtime>=24' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-libav')
-makedepends=('jdk-openjdk' 'gradle' 'git')
+makedepends=('liberica-jdk-25-full-bin')
 source=("https://github.com/octaviospain/Musicott/archive/v${pkgver}.tar.gz")
 sha256sums=('9d611aa6f1e27e3534c16ea8d0259a8302f5db128b54bfa0d43e151a672018b9')
 
 build() {
     cd "Musicott-${pkgver}"
-    # Use the system Gradle installed via makedepends; do NOT use ./gradlew per CLAUDE.md global rules.
-    # Beryx's jpackage with installerType=app-image produces build/jpackage/Musicott/ — a self-contained
-    # directory we relocate under /usr/lib/musicott/ in package().
-    gradle --no-daemon jpackage
+    # Beryx jlinks the javafx.* jmods into a trimmed runtime, so the build needs a JDK that bundles
+    # JavaFX (plain jdk-openjdk has none). Pin JAVA_HOME to the liberica full JDK rather than relying
+    # on whatever archlinux-java default is configured.
+    export JAVA_HOME=/usr/lib/jvm/liberica-jdk-25-full
+    # jpackageImage produces the self-contained app-image at build/jpackage/Musicott/, which package()
+    # relocates under /usr/lib/musicott/. The plain `jpackage` task is broken for installerType=app-image
+    # on Linux: Beryx forwards --app-image to a `--type app-image` invocation that jpackage rejects with
+    # "Option [--app-image] is not valid with type [app-image]".
+    ./gradlew --no-daemon jpackageImage -PreleaseVersion="${pkgver}"
 }
 
 package() {
