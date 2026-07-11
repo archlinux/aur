@@ -3,7 +3,7 @@
 
 _pkgname="material-kwin-decoration"
 pkgname="${_pkgname}-git"
-pkgver=r664.833e281
+pkgver=r713.3d27f39
 pkgrel=1
 pkgdesc="Material-ish window decoration for KWin, with LIM (Locally Integrated Menu) support"
 url="https://github.com/guiodic/material-decoration"
@@ -43,8 +43,6 @@ build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
-    -DQT_MAJOR_VERSION=6
-    -DQT_VERSION_MAJOR=6
     -Wno-dev
   )
 

@@ -1,6 +1,6 @@
 pkgbase = material-kwin-decoration-git
 	pkgdesc = Material-ish window decoration for KWin, with LIM (Locally Integrated Menu) support
-	pkgver = r664.833e281
+	pkgver = r713.3d27f39
 	pkgrel = 1
 	url = https://github.com/guiodic/material-decoration
 	arch = x86_64
