@@ -2,7 +2,7 @@
 # Originally maintained by Anatol Pomozov <anatol.pomozov@gmail.com>
 # Contributions by Thomas Sowell <tom@fancydriving.org>
 pkgname=vboot-utils
-pkgver=149.16667
+pkgver=150.16700
 _tag=release-R${pkgver/\./-}.B
 pkgrel=1
 pkgdesc='Chromium OS verified boot utilities'
