@@ -1,0 +1,5 @@
+[datacmd-bin]
+source = "github"
+github = "VincenzoManto/Datacmd"
+use_latest_release = true
+prefix = "v"
