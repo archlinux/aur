@@ -1,0 +1,5 @@
+[csync-bin]
+source = "github"
+github = "fioncat/csync"
+use_latest_release = true
+prefix = "v"
