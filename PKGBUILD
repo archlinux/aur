@@ -2,7 +2,7 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-pdf-poppler-git
-pkgver=2026.02.03.r1.g971e0ca
+pkgver=2026.05.10.r4.gb2caaf9
 pkgrel=1
 pkgdesc="PDF support for zathura (poppler backend)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  arch-meson build -Dtests=disabled
+  arch-meson build
   ninja -C build
 }
 

@@ -1,6 +1,6 @@
 pkgbase = zathura-pdf-poppler-git
 	pkgdesc = PDF support for zathura (poppler backend)
-	pkgver = 2026.02.03.r1.g971e0ca
+	pkgver = 2026.05.10.r4.gb2caaf9
 	pkgrel = 1
 	url = https://pwmt.org/projects/zathura-pdf-poppler
 	arch = x86_64
