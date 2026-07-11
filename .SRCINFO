@@ -1,9 +1,9 @@
 pkgbase = searchtool-gtk
 	pkgdesc = A generic GTK search tool and launcher
 	pkgver = 3.0.0
-	pkgrel = 1.314
+	pkgrel = 2.314
 	url = https://github.com/v--/searchtool-gtk
-	arch = any
+	arch = x86_64
 	license = Unlicense
 	makedepends = meson
 	makedepends = gcc

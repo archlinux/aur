@@ -1,10 +1,10 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=searchtool-gtk
 pkgver=3.0.0
-pkgrel=1.314
+pkgrel=2.314
 pkgdesc='A generic GTK search tool and launcher'
 url='https://github.com/v--/searchtool-gtk'
-arch=('any')
+arch=('x86_64')
 license=('Unlicense')
 makedepends=(meson gcc python-uv-build python-build python-installer)
 depends=(gtk4 python python-gobject python-msgspec python-pyxdg python-pyicu python-wcmatch)
