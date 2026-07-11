@@ -1,5 +1,5 @@
 # Maintainer: jxc <ab790430@petalmail.com>
-pkgname=Dimension-Esports
+pkgname=dimension-esports
 _pkgname=dimension-esports-git
 pkgver=r6.537de6d
 pkgrel=1

@@ -1,4 +1,4 @@
-pkgbase = Dimension-Esports
+pkgbase = dimension-esports
 	pkgdesc = A DeepSeek AI chat desktop client built with Qt 6 and WebEngine
 	pkgver = r6.537de6d
 	pkgrel = 1
@@ -12,7 +12,7 @@ pkgbase = Dimension-Esports
 	depends = qt6-webengine
 	provides = deepseekqt
 	conflicts = deepseekqt
-	source = Dimension-Esports::git+https://gitee.com/jxc20120414/Dimension-Esports.git
+	source = dimension-esports::git+https://gitee.com/jxc20120414/Dimension-Esports.git
 	sha256sums = SKIP
 
-pkgname = Dimension-Esports
+pkgname = dimension-esports
