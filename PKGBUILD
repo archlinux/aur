@@ -1,10 +1,10 @@
 pkgname=sshtm
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="SSH Tunnel Manager"
 arch=('x86_64')
 url="https://github.com/besrabasant/ssh-tunnel-manager"
-license=('custom')
+license=('MIT')
 depends=("openssh")
 makedepends=('go' 'git' 'make')
 source=(
@@ -28,5 +28,6 @@ package() {
     install -Dm755 scripts/uninstall.sh "$pkgdir/usr/share/sshtm/uninstall.sh"
     install -Dm644 "${srcdir}/sshtm.path.sh" "$pkgdir/etc/profile.d/sshtm.sh"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "${srcdir}/sshtmd.service" "$pkgdir/usr/lib/systemd/user/sshtmd.service"
 }
