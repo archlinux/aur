@@ -1,0 +1,5 @@
+[dabadee]
+source = "github"
+github = "mirkobrombin/DaBaDee"
+use_latest_release = true
+prefix = "v"

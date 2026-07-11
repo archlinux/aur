@@ -1,7 +1,7 @@
-# Maintainer: Rafael Baboni Dominiquini <rafaeldominiquini@gmail.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-pkgname=dabadee
 _pkgname="DaBaDee"
+pkgname=${_pkgname,,}
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="DaBaDee is a simple deduplication tool/storage for files. It uses SHA256* to hash the files and store them in the storage, replacing the original path with a hardlink to the storage location."
