@@ -4,11 +4,11 @@
 
 pkgname=ted
 pkgver=2.23
-pkgrel=12
+pkgrel=13
 pkgdesc='Lightweight RTF text processor'
 arch=(x86_64)
 url=https://ftp.nluug.nl/pub/editors/ted
-depends=(freetype2 ghostscript gtk2 libjpeg6-turbo libpaper libpng libtiff libxpm pcre zlib) # libjpeg
+depends=(freetype2 ghostscript gtk2 libjpeg6 libpaper libpng libtiff libxpm pcre zlib)
 license=(GPL-3.0-or-later)
 makedepends=(inetutils lsb-release) # hostname and lsb_release commands
 options=(!makeflags)
@@ -38,31 +38,32 @@ source=(
   https://ftp.nluug.nl/pub/editors/ted/TedDocument-de_DE.rtf
   https://ftp.nluug.nl/pub/editors/ted/TedDocument-fr_FR.rtf
   https://ftp.nluug.nl/pub/editors/ted/TedDocument-mg_MG.rtf)
-sha256sums=('3fa992c2bc96af3ca788ef941cb5314f4a1d843202efd0201b8b4ee9adbf316c'
-            '34136d89dcbab50c5e56cec7b30c393a5271621664e791ff9d2faf7125b720d9'
-            'e7b1fb3458700d356afebc1a4c53dac9ea4770be88724d6d2392012903241948'
-            '31d0781c3f38a2c7c0c4447a0dcfc0916b292124a612dfe0cc55ccae4be53170'
-            '1e55f7b2744f869a8c644ff2238b4361be2d5b7833f4ed2ec5f181bf7d6aff21'
-            '2788779604d9464c97c53323f166f1488a1105ed7d12da5634ceaa584b597a3a'
-            '2623dd358c8b2be76da39972867e28ee43055fd1759f2bfc8bc1ce96b5c0cc37'
-            '65e9c769f3d0f44a46aca964ad3fba8942b93763930b9ea17d519748ac7cfde0'
-            'c133ab5ca21cc9ead413bb5634ccb8d0cf37b55b9031366b0876fde72c145459'
-            '86b7ff5c7310a6e265fe6a298f80499ad8470231bd7129a23f87459219eb1727'
-            '58af2d8d8518f725e64b5d8d727db5883b2914d55bdc2bd2fb42a05e7ebaba85'
-            '34d0ace77be0f25017b7c549810453526725290552bcbede732f08047684f4c6'
-            'ead41840d12dfd9dd7baaa82c510b6abf2c853e5c574b53e786992275025229b'
-            '4363f867d52219a18b8f6d38e55c5d4de83f0fb5e5ffded9ace1e0e9ee3dbad8'
-            '8df096d4dea6c6e13ca7adc023e4aa661f1b7e45b9c1360a1f2df165ceaa8738'
-            'e82f9fa10beb048580d46e86e97ababe7968ac9617761c8c802f0e3b5908702c'
-            '3b6cd6f8ef324e38e8968e7387bf331e7a15a0ab0f98da3a09c3efcf9f9b081f'
-            'ae95b8b8963eabc836caa8dc2ac2f39a12d683dc661dca887d4bc79b650eb964'
-            'ffe66defde4de0a7af2a4bbf418ca4059b463407551923e1c61e2adb3b666e50'
-            '4ee7fca5e0eadc6689b342198a961ff01230a96c869ce624f5f723d40a812f97'
-            'bca09ae7df0de1d6ae24d976e7427509ce9e6c3d96b04139d315d095a48bbc76'
-            'fbdbf4df09576a8d7f821e0f4d62d645f5c04be422c1b84839125c184a9ad299'
-            'eac0b449021b8a704b541c9a821d72d9a02b9e9d85e652c5439f6d8a9b82db93'
-            '0eb7e244772f5d3c4c4ec7a71a5675324a8c115fc2065c43d897ebc86428ca7c'
-            '0338de95b3e57b0ac59ac720d390316353094f0781b91f7d3272da677adb5aa3')
+sha256sums=(
+  '3fa992c2bc96af3ca788ef941cb5314f4a1d843202efd0201b8b4ee9adbf316c'
+  '34136d89dcbab50c5e56cec7b30c393a5271621664e791ff9d2faf7125b720d9'
+  'e7b1fb3458700d356afebc1a4c53dac9ea4770be88724d6d2392012903241948'
+  '31d0781c3f38a2c7c0c4447a0dcfc0916b292124a612dfe0cc55ccae4be53170'
+  '1e55f7b2744f869a8c644ff2238b4361be2d5b7833f4ed2ec5f181bf7d6aff21'
+  '2788779604d9464c97c53323f166f1488a1105ed7d12da5634ceaa584b597a3a'
+  '2623dd358c8b2be76da39972867e28ee43055fd1759f2bfc8bc1ce96b5c0cc37'
+  '65e9c769f3d0f44a46aca964ad3fba8942b93763930b9ea17d519748ac7cfde0'
+  'c133ab5ca21cc9ead413bb5634ccb8d0cf37b55b9031366b0876fde72c145459'
+  '86b7ff5c7310a6e265fe6a298f80499ad8470231bd7129a23f87459219eb1727'
+  '58af2d8d8518f725e64b5d8d727db5883b2914d55bdc2bd2fb42a05e7ebaba85'
+  '34d0ace77be0f25017b7c549810453526725290552bcbede732f08047684f4c6'
+  'ead41840d12dfd9dd7baaa82c510b6abf2c853e5c574b53e786992275025229b'
+  '4363f867d52219a18b8f6d38e55c5d4de83f0fb5e5ffded9ace1e0e9ee3dbad8'
+  '8df096d4dea6c6e13ca7adc023e4aa661f1b7e45b9c1360a1f2df165ceaa8738'
+  'e82f9fa10beb048580d46e86e97ababe7968ac9617761c8c802f0e3b5908702c'
+  '3b6cd6f8ef324e38e8968e7387bf331e7a15a0ab0f98da3a09c3efcf9f9b081f'
+  'ae95b8b8963eabc836caa8dc2ac2f39a12d683dc661dca887d4bc79b650eb964'
+  'ffe66defde4de0a7af2a4bbf418ca4059b463407551923e1c61e2adb3b666e50'
+  '4ee7fca5e0eadc6689b342198a961ff01230a96c869ce624f5f723d40a812f97'
+  'bca09ae7df0de1d6ae24d976e7427509ce9e6c3d96b04139d315d095a48bbc76'
+  'fbdbf4df09576a8d7f821e0f4d62d645f5c04be422c1b84839125c184a9ad299'
+  'eac0b449021b8a704b541c9a821d72d9a02b9e9d85e652c5439f6d8a9b82db93'
+  '0eb7e244772f5d3c4c4ec7a71a5675324a8c115fc2065c43d897ebc86428ca7c'
+  '0338de95b3e57b0ac59ac720d390316353094f0781b91f7d3272da677adb5aa3')
 
 build() {
   cd Ted-$pkgver

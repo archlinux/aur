@@ -1,7 +1,7 @@
 pkgbase = ted
 	pkgdesc = Lightweight RTF text processor
 	pkgver = 2.23
-	pkgrel = 12
+	pkgrel = 13
 	url = https://ftp.nluug.nl/pub/editors/ted
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -10,7 +10,7 @@ pkgbase = ted
 	depends = freetype2
 	depends = ghostscript
 	depends = gtk2
-	depends = libjpeg6-turbo
+	depends = libjpeg6
 	depends = libpaper
 	depends = libpng
 	depends = libtiff
