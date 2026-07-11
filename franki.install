@@ -137,6 +137,7 @@ _enable_user_services() {
         systemctl --user disable franki_os.socket 2>/dev/null || true
         systemctl --user disable franki_cerebelo.service 2>/dev/null || true
         systemctl --user disable franki_cerebelo.socket 2>/dev/null || true
+        systemctl --user disable franki_sinapsis_externa.service 2>/dev/null || true
     " 2>/dev/null && echo " >> [FRANKI] Auto-arranque deshabilitado. Activa desde Ajustes > Sistema si lo deseas." || \
         echo " >> [WARN] No se pudo configurar systemd."
 }
@@ -173,6 +174,8 @@ pre_remove() {
     runuser -l "$_user" -c "
         export XDG_RUNTIME_DIR=$_xdg
         export DBUS_SESSION_BUS_ADDRESS=unix:path=$_xdg/bus
+        systemctl --user stop franki_sinapsis_externa.service 2>/dev/null || true
+        systemctl --user disable franki_sinapsis_externa.service 2>/dev/null || true
         systemctl --user stop franki_cerebelo.service 2>/dev/null || true
         systemctl --user disable franki_cerebelo.service 2>/dev/null || true
         systemctl --user stop franki_os.service 2>/dev/null || true

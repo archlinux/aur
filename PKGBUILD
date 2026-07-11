@@ -1,6 +1,6 @@
 # Maintainer: Samuel Paredes <sam.paredes.g@gmail.com>
 pkgname=franki-os-git
-pkgver=r979.81e213f
+pkgver=r982.5accebe
 pkgrel=1
 pkgdesc="Federated Recursive Artificial Neural Knowledge Interface - Neural OS"
 arch=('x86_64')
@@ -177,6 +177,9 @@ package() {
     # franki_cerebelo.socket: escucha :54321 y despierta franki_cerebelo.service bajo demanda
     install -Dm644 "$srcdir/franki/packaging/systemd/franki-cerebelo.socket" \
         "$pkgdir/usr/lib/systemd/user/franki_cerebelo.socket"
+    # franki_sinapsis_externa.service: WhatsApp+Telegram, always-on (sin socket activation)
+    install -Dm644 "$srcdir/franki/packaging/systemd/franki-sinapsis-externa.service" \
+        "$pkgdir/usr/lib/systemd/user/franki_sinapsis_externa.service"
 
     # 9. Regla udev para uinput (Manos — captura de teclado/raton en Wayland)
     echo 'KERNEL=="uinput", GROUP="uinput", MODE="0660", OPTIONS+="static_node=uinput"' \
