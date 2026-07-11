@@ -1,6 +1,6 @@
 # Maintainer: Shaun Lastra <shaun@lastra.us>
 pkgname=tabctl-git
-pkgver=1.2.1.r100.g601e553
+pkgver=2.0.0.r111.g53bd1c5
 pkgrel=1
 pkgdesc="Command-line browser tab controller with rofi integration for multiple window managers (git version)"
 arch=('x86_64')
@@ -12,9 +12,10 @@ optdepends=(
     'rofi: rofi tab-switcher scripts'
     'wmctrl: X11 window focusing (rofi-tabctl-wmctrl.sh)'
     'niri: Wayland window focusing (rofi-tabctl-niri.sh)'
-    'jq: JSON parsing in rofi-tabctl-niri.sh'
-    'curl: favicon fetching in rofi-tabctl-niri.sh'
-    'imagemagick: favicon processing in rofi-tabctl-niri.sh'
+    'hyprland: Wayland window focusing (rofi-tabctl-hyprland.sh)'
+    'jq: JSON parsing in the niri/hyprland rofi scripts'
+    'curl: favicon fetching in the niri/hyprland rofi scripts'
+    'imagemagick: favicon processing in the niri/hyprland rofi scripts'
     'firefox: Firefox browser support'
     'brave-bin: Brave browser support'
     'chromium: Chromium browser support'
@@ -29,7 +30,7 @@ install=tabctl.install
 
 pkgver() {
     cd "tabctl"
-    printf "1.2.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "2.0.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -39,10 +40,11 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-    go build -o tabctl ./cmd/tabctl
-    go build -o tabctl-mediator ./cmd/tabctl-mediator
+    local ldflags="-linkmode=external -X github.com/tabctl/tabctl/internal/config.Version=$pkgver"
+    go build -ldflags "$ldflags" -o tabctl ./cmd/tabctl
+    go build -ldflags "$ldflags" -o tabctl-mediator ./cmd/tabctl-mediator
 
     if [[ -x scripts/build-extensions.sh ]]; then
         ./scripts/build-extensions.sh
@@ -59,6 +61,7 @@ package() {
     # Install rofi scripts
     install -Dm755 scripts/rofi-tabctl-wmctrl.sh "$pkgdir/usr/share/tabctl/scripts/rofi-tabctl-wmctrl.sh"
     install -Dm755 scripts/rofi-tabctl-niri.sh "$pkgdir/usr/share/tabctl/scripts/rofi-tabctl-niri.sh"
+    install -Dm755 scripts/rofi-tabctl-hyprland.sh "$pkgdir/usr/share/tabctl/scripts/rofi-tabctl-hyprland.sh"
 
     # Install browser extensions
     install -dm755 "$pkgdir/usr/share/tabctl/extensions"
