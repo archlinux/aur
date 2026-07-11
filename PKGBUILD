@@ -6,7 +6,7 @@
 
 pkgname=firefox-pure
 pkgver=152.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast, Private & Safe Web Browser"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64)
@@ -80,6 +80,7 @@ source=(
   "firefox.desktop"
   "org.mozilla.firefox.metainfo.xml"
   "0001-Install-under-remoting-name.patch"
+  "https://dev.gentoo.org/~juippis/mozilla/patchsets/firefox-152-patches-03.tar.xz"
 )
 sha256sums=(
   '0a0341b05ac68834c4071665fe11f1e6729084b4e4ffcd70241097b0ad2cb224'
@@ -87,6 +88,7 @@ sha256sums=(
   '71fe797430198ac8c00b538dce537284cf526e48be0496698cf5a980d70c16da'
   '23f557fa7989adcae03cc9458d94716981dbcf0e9d6d52a289a2426e50b4b785'
   'a7364ddb3b6eab922873f35731ed5cfb61e8022a35d54edd2f80b95a4f5625ed'
+  'dea4da8519403f9538f8c5095adb7c1a098397bbe4efefb8277e36b44d35f148'
 )
 
 prepare() {
@@ -95,6 +97,13 @@ prepare() {
 
   # Make different channels installable in parallel
   patch -Np1 -i "${srcdir}"/0001-Install-under-remoting-name.patch
+
+  # Gentoo patches
+  for patch in "${srcdir}/firefox-patches"/*.patch; do
+    echo "Applying patch $patch..."
+    [[ "$patch" == */0015-bgo-940031-wasm-support.patch ]] && continue
+    patch -Np1 -i "${patch}"
+  done
 
   # Unset variables to prevent issues with PGO profiling
   unset \
