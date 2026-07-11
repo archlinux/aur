@@ -14,8 +14,8 @@ depends=(
   'libdrm'
   'pixman'
   'libxkbcommon'
-  'wlroots0.19'
-  'scenefx0.4'
+  'wlroots0.20'
+  'scenefx0.5'
 )
 makedepends=(
   'git'
