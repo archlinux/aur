@@ -2,17 +2,16 @@
 # Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=vkdoom-git
-pkgver=v25.6.0+581+gca2db6204
+pkgver=v25.6.0+585+g20997f7a1
 pkgrel=1
 pkgdesc='Feature centric port for all Doom engine games, with a focus on Vulkan and modern computers (git version)'
 arch=('x86_64' 'aarch64') #Ok so aarch64 works i guess
-url='https://vkdoom.org/'
+url='https://git.sayachan.org/OrdinaryMagician/vkdoom_m'
 license=('BSD' 'GPL3' 'LGPL3')
 depends=('bzip2'
          'gtk3'
          'hicolor-icon-theme'
          'libgl'
-         'libjpeg'
          'libvpx>=1.14'
          'openal'
          'sdl2'
@@ -41,14 +40,14 @@ provides=('vkdoom' 'vkdoom-bin-nightly')
 conflicts=('vkdoom' 'vkdoom-bin-nightly')
 #disable LTO due to instability
 options=(!debug !lto)
-source=('vkdoom::git+https://github.com/OrdinaryMagician/VkDoom_m/'
+source=('vkdoom::git+https://git.sayachan.org/OrdinaryMagician/vkdoom_m.git'
         'org.vkdoom.vkdoom.desktop'
         '0001-Enforce-file-paths.patch')
         
-b2sums=('SKIP'
-        '25d72c4147bd27c415ae8dc7e21549e40a1c562ab3df77ca82bd299aef895125a2106ef92f3b699a605157919b57e3971d907f3f256d9e05b3caedad11949101'
-        'b61b7fd292db0632e3ea155dccbe38d80589d07c1d37c19963ac5e39103f57c489c3c08ab5a3f6a07f7f1d8ae6f7ddf3fdfc0006313312754d7b91f35d6780f4')
-        
+sha256sums=('SKIP'
+            'e1ff11673e11df9b752a30f16d573bf7b555f12048dbb5ec364cf8f81ef47daf'
+            'f9b5de60b4636b7de6a4c5434e4a320e145de9fb18e4d5d41334d575cf375811')
+
 _enforce_clang=${_enforce_clang-}
 
 if [ -n "$_enforce_clang" ]; then
