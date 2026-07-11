@@ -1,7 +1,7 @@
 # Maintainer: Sami Ben Romdhane <beromdhane@gmail.com>
 pkgname=salam
 pkgver=0.1.0
-pkgrel=19
+pkgrel=20
 pkgdesc="Simple logout/shutdown dialog for Linux (Rust version)"
 arch=('x86_64')
 url="https://codeberg.org/samibr/salam"
@@ -29,4 +29,25 @@ package() {
   
   install -Dm755 "target/release/salam" "$pkgdir/usr/bin/salam"
   install -Dm644 "$srcdir/config.toml.example" "$pkgdir/usr/share/doc/salam/config.toml.example"
+}
+
+post_install() {
+  echo ""
+  echo "========================================="
+  echo " Salam installed successfully!"
+  echo "========================================="
+  echo ""
+  echo "📝 Configuration:"
+  echo "  Example config: /usr/share/doc/salam/config.toml.example"
+  echo "  Copy to: ~/.config/salam/config.toml"
+  echo ""
+  echo "  mkdir -p ~/.config/salam"
+  echo "  cp /usr/share/doc/salam/config.toml.example ~/.config/salam/config.toml"
+  echo ""
+  echo "🚀 Run: salam"
+  echo "========================================="
+}
+
+post_upgrade() {
+  post_install
 }
