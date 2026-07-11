@@ -1,54 +1,14 @@
 # Salam Configuration File
-# 
-# Copy this file to: ~/.config/salam/config.toml
-# Then edit it to customize your Salam logout dialog
-#
-# Available actions:
-#   cancel, logout, reboot, shutdown, suspend, hibernate, lock
-#
-# For each action you can set:
-#   enabled = true/false     - Show or hide the button
-#   command = "command"      - Custom command to run
-#   label = "Label"          - Custom display text
-#   icon = "icon-name"       - Custom GTK icon name
+# Copy to: ~/.config/salam/config.toml
 
-# Window dimensions
 window_width = 750
 window_height = 225
 
 [actions]
-# Cancel button - always useful
 cancel = { enabled = true, label = "Cancel" }
-
-# Logout - Change this if you don't use XMonad
-# Common alternatives:
-#   - i3:           "i3-msg exit"
-#   - awesome:      "awesome-client 'awesome.quit()'"
-#   - GNOME:        "gnome-session-quit --logout"
-#   - KDE:          "qdbus org.kde.ksmserver /KSMServer logout 0 0 0"
-#   - Sway:         "swaymsg exit"
-#   - Hyprland:     "hyprctl dispatch exit"
 logout = { enabled = true, command = "killall xmonad-x86_64-linux", label = "Logout" }
-
-# Reboot
 reboot = { enabled = true, command = "reboot", label = "Reboot" }
-
-# Shutdown
 shutdown = { enabled = true, command = "shutdown -h now", label = "Shutdown" }
-
-# Suspend - Disable if you don't use suspend
 suspend = { enabled = true, command = "systemctl suspend", label = "Suspend" }
-
-# Hibernate - Disable if you don't use hibernation
 hibernate = { enabled = true, command = "systemctl hibernate", label = "Hibernate" }
-
-# Lock screen - Change this to your preferred lock screen
-# Common alternatives:
-#   - i3lock:       "i3lock -c 000000"
-#   - betterlockscreen: "betterlockscreen -l"
-#   - i3lock-fancy: "i3lock-fancy"
-#   - physlock:     "physlock"
-#   - xtrlock:      "xtrlock"
-#   - xsecurelock:  "xsecurelock"
-#   - swaylock:     "swaylock"
 lock = { enabled = true, command = "slock", label = "Lock" }
