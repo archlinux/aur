@@ -2,7 +2,7 @@
 
 pkgname=mistral-vibe
 pkgver=2.19.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
 url='https://github.com/mistralai/mistral-vibe'
@@ -16,6 +16,7 @@ depends=(
     "python-httpx"
     "python-humanize"
     "python-jsonpatch"
+    "python-keyring"
     "python-linkify-it-py"
     "python-mcp"
     "python-mistralai"
@@ -35,15 +36,18 @@ depends=(
     "python-truststore"
     "python-watchfiles"
     "python-yaml"
+    "python-zstandard"
     "python-sounddevice"
 )
 makedepends=(
-    "pre-commit"
-    "pyright"
     "python-build"
     "python-hatchling"
     "python-hatch-vcs"
-    "python-installer"    
+    "python-installer"
+)
+checkdepends=(
+    "pre-commit"
+    "pyright"
     "python-pytest"
     "python-pytest-asyncio"
     "python-pytest-textual-snapshot"
