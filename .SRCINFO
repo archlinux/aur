@@ -11,6 +11,7 @@ pkgbase = debtap-git
 	depends = pkgfile
 	depends = fakeroot
 	depends = namcap
+	depends = pacman-contrib
 	provides = debtap
 	conflicts = debtap
 	source = git+https://github.com/helixarch/debtap.git
