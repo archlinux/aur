@@ -1,0 +1,5 @@
+[fastgron-bin]
+source = "github"
+github = "adamritter/fastgron"
+use_latest_release = true
+prefix = "v"
