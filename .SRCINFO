@@ -1,7 +1,7 @@
 pkgbase = intel-ai-playground
 	pkgdesc = AI PC starter app for doing AI image creation, image stylizing, and chatbot on a PC powered by an Intel® Arc™ GPU.
 	pkgver = v3.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/intel/AI-Playground
 	arch = x86_64
 	license = MIT

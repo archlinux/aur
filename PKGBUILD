@@ -1,7 +1,7 @@
 # Maintainer: cantosun99 <privat at cantosun dot de>
 pkgname=intel-ai-playground
 pkgver=v3.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="AI PC starter app for doing AI image creation, image stylizing, and chatbot on a PC powered by an Intel® Arc™ GPU."
 arch=(x86_64)
 url="https://github.com/intel/AI-Playground"
@@ -32,7 +32,7 @@ source=("https://github.com/intel/AI-Playground/archive/refs/tags/${pkgver}-beta
 sha256sums=('2c16b7ded03ce0a02e2e82fbea53906ebaa698149ca0135eaeac8f0a8b9eeed6')
 
 prepare() {
-    mv "AI-Playground-${pkgver#v}-beta" "${srcdir}/AI-Playground"
+    mv "AI-Playground-${pkgver#v}-beta_hf" "${srcdir}/AI-Playground"
 }
 
 build() {
