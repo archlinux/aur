@@ -1,0 +1,21 @@
+pkgbase = sshtm
+	pkgdesc = SSH Tunnel Manager
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/besrabasant/ssh-tunnel-manager
+	install = sshtm.install
+	arch = x86_64
+	license = custom
+	makedepends = go
+	makedepends = git
+	makedepends = make
+	source = sshtm-1.1.0.tar.gz::https://github.com/besrabasant/ssh-tunnel-manager/archive/refs/tags/v1.1.0.tar.gz
+	source = sshtm.path.sh
+	source = sshtmd.service
+	source = sshtm.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = sshtm

@@ -1,0 +1,9 @@
+[Unit]
+Description=SSH Tunnel Manager Daemon
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/sshtmd
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,33 @@
+post_install() {
+    _sshtm_install_user
+}
+
+post_upgrade() {
+    _sshtm_install_user
+}
+
+_sshtm_install_user() {
+    user="${SUDO_USER:-}"
+    if [ -z "$user" ]; then
+        return 0
+    fi
+
+    user_home="$(getent passwd "$user" | cut -d: -f6)"
+    if [ -z "$user_home" ]; then
+        return 0
+    fi
+
+    install -Dm755 /usr/share/sshtm/bin/sshtm "$user_home/.local/bin/sshtm"
+    install -Dm755 /usr/share/sshtm/bin/sshtmd "$user_home/.local/bin/sshtmd"
+    install -Dm755 /usr/share/sshtm/uninstall.sh "$user_home/.local/share/sshtm/scripts/uninstall.sh"
+
+    su - "$user" -c "systemctl --user daemon-reload" 2>/dev/null || true
+    su - "$user" -c "systemctl --user enable sshtmd" 2>/dev/null || true
+    su - "$user" -c "systemctl --user restart sshtmd" 2>/dev/null || true
+}
+
+post_remove() {
+    systemctl --user stop sshtmd.service 2>/dev/null || true
+    systemctl --user disable sshtmd.service 2>/dev/null || true
+    systemctl --user daemon-reload 2>/dev/null || true
+}
