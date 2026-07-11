@@ -4,12 +4,14 @@ pkgbase = firemark
 	pkgrel = 1
 	url = https://github.com/Vitruves/firemark
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
 	provides = firemark
-	source = firemark-0.1.4.tgz::https://github.com/Vitruves/firemark/archive/refs/tags/v0.1.4.tar.gz
+	options = !strip
+	source = firemark-0.1.4.tgz::https://github.com/Vitruves/firemark/archive/v0.1.4.tar.gz
 	sha256sums = a0058a118664fd1348b4ab7c12e8cfb55802a8f142e1abfab925f6bcf0eb2a87
 
 pkgname = firemark
