@@ -1,0 +1,5 @@
+[bootimus-bin]
+source = "github"
+github = "garybowers/bootimus"
+prefix = "v"
+use_latest_release = true
