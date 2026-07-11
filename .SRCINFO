@@ -1,0 +1,25 @@
+pkgbase = dotty-bin
+	pkgdesc = Simple, Modern dotfile manager for Linux/BSD/MacOS
+	pkgver = 0.4.9
+	pkgrel = 1
+	url = https://github.com/monjaris/dotty
+	arch = x86_64
+	license = GPL-3.0
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = readline
+	depends = ncurses
+	depends = github-cli
+	optdepends = bat: For file logging
+	provides = dotty
+	conflicts = dotty
+	options = !strip
+	source = README-0.4.9.md::https://raw.githubusercontent.com/monjaris/dotty/v0.4.9/README.md
+	source = LICENSE-0.4.9::https://raw.githubusercontent.com/monjaris/dotty/v0.4.9/LICENSE
+	sha256sums = 5cb7782b1f47f4122dd767dcadd0e8434b94fe3cd55f90db82b927a63940b934
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = dotty-x86_64-0.4.9::https://github.com/monjaris/dotty/releases/download/v0.4.9/dotty
+	sha256sums_x86_64 = 13fdac23d4dc366769b9198978c60f3beedceed3ee8b534f414dd55c83e9d7f3
+
+pkgname = dotty-bin

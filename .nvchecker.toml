@@ -1,0 +1,5 @@
+[dotty-bin]
+source = "github"
+github = "monjaris/dotty"
+use_latest_release = true
+prefix = "v"
