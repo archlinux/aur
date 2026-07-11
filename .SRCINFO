@@ -1,6 +1,6 @@
 pkgbase = awob-listeners-all
-	pkgdesc = awob listeners — meta-package pulling every official listener.
-	pkgver = 0.1.6
+	pkgdesc = awob listeners: all official listeners (meta-package)
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/jmylchreest/awob
 	arch = any

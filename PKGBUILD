@@ -11,9 +11,9 @@
 # listeners follow.
 
 pkgname=awob-listeners-all
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
-pkgdesc="awob listeners — meta-package pulling every official listener."
+pkgdesc="awob listeners: all official listeners (meta-package)"
 arch=('any')
 url="https://github.com/jmylchreest/awob"
 license=('MIT')
