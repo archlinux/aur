@@ -1,40 +1,59 @@
-# Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
-
-pkgname=mongodb-compass-bin
-pkgver=1.49.11
-pkgrel=1
-pkgdesc="The MongoDB GUI"
+# Maintainer: Daniel Peukert <daniel@peukert.cc>
+_pkgname='mongodb-compass'
+_edition=''
+pkgname="$_pkgname-bin"
+_pkgver='1.49.11'
+pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
+pkgrel='2'
+pkgdesc='The official GUI for MongoDB - binary version'
 arch=('x86_64')
-url="https://www.mongodb.com/products/compass"
+url='https://www.mongodb.com/products/compass'
 license=('SSPL-1.0')
-depends=('alsa-lib' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss')
+depends=(
+	# electron
+	'c-ares' 'dav1d' 'flac' 'fontconfig' 'freetype2' 'gcc-libs' 'glibc' 'gtk3'
+	'harfbuzz' 'icu' 'libdrm' 'libevent' 'libffi' 'libjpeg-turbo' 'libpng' 'libpulse'
+	'libwebp' 'libxml2' 'libxslt' 'minizip' 'nss' 'opus' 'zlib'
+	# compass
+	'krb5' 'libsecret'
+)
 optdepends=('org.freedesktop.secrets')
 options=('!debug')
-source=("https://downloads.mongodb.com/compass/${pkgname%-bin}_${pkgver}_amd64.deb"
-        "https://github.com/mongodb-js/compass/raw/main/LICENSE")
-noextract=("${pkgname%-bin}_${pkgver}_amd64.deb")
-b2sums=('5e18603b168b7648136431baab093ac0f496369c0343d695c95084bee3c11a2f390b1b468e86481a45aeb1d1a8b9831cf53ef5e9ef98f42894a3e0f5d4430453'
-        '3db19ea220a8fec79eb55aa2657a3d9c920cf9eaa4ed6737e4a4688e1ba573c36d7de1b52a165340f61c740dfda98f656596b0d8b9f3492cffa0f4e418bf7ef3')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+_betaprefix="$([[ "$_pkgname" =~ -beta$ ]] && printf 'beta/' || printf '')"
+source=(
+	"$pkgname-$pkgver.rpm::https://downloads.mongodb.com/compass/$_betaprefix$_pkgname-$_pkgver.x86_64.rpm"
+)
+b2sums=('8a7d329f73d7629eaca1b61a3c447e320e4af8117baf609830b318ab1a33bd0b5eef30462a521f6499bc4672de8d3878e2fafa6fb8e4d0d02ef19bd9b9ed77eb')
+
+check() {
+	_checkoutput="$(ELECTRON_OZONE_PLATFORM_HINT='auto' "$srcdir/usr/lib/$_pkgname/MongoDB Compass$_edition" --no-sandbox --version)"
+	printf '%s\n' "$_checkoutput"
+	printf '%s\n' "$_checkoutput" | grep -q "^MongoDB Compass$_edition $pkgver$"
+}
 
 package() {
-    bsdtar -O -xf "${pkgname%-bin}_${pkgver}"*.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
+	cd "$srcdir/"
 
-    # Permission fix
-    find "${pkgdir}" -type d -exec chmod 755 {} +
-    find "${pkgdir}" -type f -exec chmod 644 {} +
-    chmod +x "${pkgdir}"/usr/lib/mongodb-compass/chrome_crashpad_handler
-    chmod +x "${pkgdir}"/usr/lib/mongodb-compass/chrome-sandbox
-    chmod +x "${pkgdir}"/usr/lib/mongodb-compass/"MongoDB Compass"
+	install -dm755 "$pkgdir/usr/lib/"
+	cp -r "usr/lib/$_pkgname/" "$pkgdir/usr/lib/$_pkgname/"
 
-    # Remove all unnecessary stuff
-    rm -rf "${pkgdir}/usr/share/lintian"
-    rm -rf "${pkgdir}/usr/share/doc"
+	# Fix permissions
+	find "$pkgdir" -type d -exec chmod 755 {} +
+	find "$pkgdir" -type f -exec chmod 644 {} +
+	chmod +x "$pkgdir/usr/lib/$_pkgname/chrome_crashpad_handler"
+	chmod +x "$pkgdir/usr/lib/$_pkgname/chrome-sandbox"
+	chmod +x "$pkgdir/usr/lib/$_pkgname/MongoDB Compass$_edition"
 
-    # Prevent creation of unnecessary logs in `${HOME}/.mongodb`
-    # --gtk-version=3 --ignore-additional-command-line-flags
-    sed -i 's/Exec=mongodb-compass/Exec=env MONGODB_COMPASS_TEST_LOG_DIR=\/dev\/null mongodb-compass --gtk-version=3 --ignore-additional-command-line-flags/' \
-      "${pkgdir}"/usr/share/applications/mongodb-compass.desktop
+	install -dm755 "$pkgdir/usr/bin/"
+	ln -sf "/usr/lib/$_pkgname/MongoDB Compass$_edition" "$pkgdir/usr/bin/$_pkgname"
 
-    # Install license
-    install -Dm 644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+	install -Dm644 "usr/share/applications/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+	install -Dm644 "usr/share/pixmaps/$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
+
+	ln -sf "/usr/lib/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/SSPL-1.0"
+	ln -sf "/usr/lib/$_pkgname/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
 }
