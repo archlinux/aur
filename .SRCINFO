@@ -1,0 +1,17 @@
+pkgbase = lumen-lang-git
+	pkgdesc = A lightweight, stack-based scripting language with a custom compiler, bytecode format, and virtual machine written in C++20
+	pkgver = 1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/spikest3r/LumenLang
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	depends = gcc-libs
+	provides = lumen
+	conflicts = lumen-lang
+	source = lumen-lang-git::git+https://github.com/spikest3r/LumenLang.git
+	sha256sums = SKIP
+
+pkgname = lumen-lang-git
