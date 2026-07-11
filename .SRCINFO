@@ -1,0 +1,27 @@
+pkgbase = neru-bin
+	pkgdesc = tool to navigate your entire screen without touching the mouse
+	pkgver = 1.46.1
+	pkgrel = 1
+	url = https://github.com/y3owk1n/neru
+	arch = x86_64
+	license = MIT
+	makedepends = curl
+	makedepends = unzip
+	depends = cairo
+	depends = libx11
+	depends = fontconfig
+	depends = libxtst
+	depends = libxrandr
+	depends = libei
+	depends = libxkbcommon
+	depends = wayland
+	depends = libxfixes
+	provides = neru
+	conflicts = neru
+	options = !debug
+	source = neru-1.46.1.zip::https://github.com/y3owk1n/neru/releases/download/v1.46.1/neru-linux-amd64.zip
+	source = neru_license::https://raw.githubusercontent.com/y3owk1n/neru/main/LICENSE
+	sha256sums = 979b6e39b4f531d1028d00045ee11bc899e7b045035a8923461d3b53735f0b77
+	sha256sums = SKIP
+
+pkgname = neru-bin
