@@ -6,13 +6,13 @@
 _pkgname=prusa-slicer
 pkgname=$_pkgname-no-webkit
 pkgver=2.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r, without webkit support)"
 arch=('x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"
 license=('AGPL-3.0-only')
 depends=('gtk3' 'mpfr' 'gmp' 'blosc' 'boost-libs' 'curl'
-         'expat' 'libjpeg' 'nanosvg' 'nlopt' 'opencascade' 'opencsg'
+         'expat' 'libjpeg-turbo' 'nanosvg' 'nlopt' 'opencascade' 'opencsg'
          'openexr' 'openssl' 'openvdb' 'libpng' 'qhull' 'tbb' 'libtiff'
          'wxwidgets-gtk3' 'z3' 'zlib' 'libstdc++' 'libgcc' 'glibc' 'dbus' 'imath'
          'glib2' 'pango' 'hicolor-icon-theme' 'imath')
