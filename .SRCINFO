@@ -1,14 +1,11 @@
 pkgbase = ruby-yard-activesupport-concern
 	pkgdesc = A YARD plugin to handle modules using ActiveSupport::Concern
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/digitalcuisine/yard-activesupport-concern
 	arch = any
 	license = MIT
-	makedepends = rubygems
 	makedepends = ruby-rake
-	makedepends = ruby-simplecov
-	makedepends = ruby-rspec
 	depends = ruby
 	depends = ruby-yard
 	options = !emptydirs

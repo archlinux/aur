@@ -4,13 +4,13 @@ _gemname=yard-activesupport-concern
 
 pkgname="ruby-${_gemname}"
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A YARD plugin to handle modules using ActiveSupport::Concern"
 arch=("any")
 url="https://github.com/digitalcuisine/${_gemname}"
 license=("MIT")
 depends=("ruby" "ruby-yard")
-makedepends=("rubygems" "ruby-rake" "ruby-simplecov" "ruby-rspec")
+makedepends=("ruby-rake")
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 options=(!emptydirs)
 sha256sums=("SKIP")
