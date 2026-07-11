@@ -1,7 +1,7 @@
 # Maintainer: Markus Maiwald <markus@maiwald.work>
 pkgname=sober-bin
-_upstream_version=0.5.4
-pkgver=0.5.4
+_upstream_version=0.6.1
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Local-first repository governance assistant with deterministic review readiness'
 arch=('x86_64')
@@ -12,8 +12,8 @@ provides=('sober')
 conflicts=('sober')
 source=("https://git.sovereign-society.org/Sober/sober/releases/download/v${_upstream_version}/sober_v${_upstream_version}_linux_amd64"
         "https://git.sovereign-society.org/Sober/sober/releases/download/v${_upstream_version}/SHA256SUMS")
-sha256sums=('468a0ca41717bcdf06643058363526bd27ebacb29b27bc3ac7e0a085386a97f6'
-            '2d7479fa4e140e28c88d86c3cb8199e8851445171a201363231bc01ee38bdb10')
+sha256sums=('ae645a778c862f1ce0214618e3962ee1941267d927350c1484462ae93a4b929b'
+            '304f1647f2e11114927f819dbc2cf503f3f4b0b4d49851015e546a233d7e6dd4')
 
 package() {
     install -Dm755 "${srcdir}/sober_v${_upstream_version}_linux_amd64" "${pkgdir}/usr/bin/sober"
