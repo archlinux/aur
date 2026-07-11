@@ -1,6 +1,6 @@
 pkgbase = nymphalis-bin
 	pkgdesc = It makes it easy to download media, manga, and other content from Patreon, desu.uno, gelboru, and so on
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/BlucherSKK/nymphalis
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = nymphalis-bin
 	depends = sqlite
 	provides = nymphalis
 	conflicts = nymphalis
-	source_x86_64 = nymphalis-0.0.3::https://github.com/BlucherSKK/nymphalis/releases/download/0.0.3/nymphalis-linux-amd64
+	source_x86_64 = nymphalis-0.0.4::https://github.com/BlucherSKK/nymphalis/releases/download/0.0.4/nymphalis-linux-amd64
 	sha256sums_x86_64 = SKIP
 
 pkgname = nymphalis-bin
