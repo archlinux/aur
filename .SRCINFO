@@ -1,6 +1,6 @@
 pkgbase = shears
 	pkgdesc = Simple GNOME utility for working with local PDF files
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://codeberg.org/FVtronics/Shears
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = shears
 	depends = gtk4
 	depends = libadwaita
 	depends = poppler-glib
-	source = shears-0.4.1.tar.gz::https://codeberg.org/FVtronics/Shears/archive/v0.4.1.tar.gz
-	sha256sums = 9248d726d6c60746e19051ed4aa2cf26bb63df0e57ad7f96c306f59e7ebb372f
+	source = shears-0.4.2.tar.gz::https://codeberg.org/FVtronics/Shears/archive/v0.4.2.tar.gz
+	sha256sums = fd3d2ba11f5724d0fe1f828a48514d8b2ba9103965b09395e2432c6943aecd3f
 
 pkgname = shears

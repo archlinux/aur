@@ -1,6 +1,6 @@
 # Maintainer: Francisco V. <fvasquez dot public at fvtronics dot com>
 pkgname=shears
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Simple GNOME utility for working with local PDF files"
 arch=('x86_64')
@@ -25,7 +25,7 @@ makedepends=(
     'pkgconf'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9248d726d6c60746e19051ed4aa2cf26bb63df0e57ad7f96c306f59e7ebb372f')
+sha256sums=('fd3d2ba11f5724d0fe1f828a48514d8b2ba9103965b09395e2432c6943aecd3f')
 
 prepare() {
     cd "$pkgname"
