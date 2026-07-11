@@ -1,16 +1,26 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-snapshot
 pkgver=26.07.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for creating live ISO images from running systems"
 arch=('x86_64' 'i686')
 url="https://mxlinux.org"
 license=('GPL3')
-depends=('qt6-base' 'polkit' 'squashfs-tools' 'xorriso' 'mx-iso-template-arch' 'lsb-release')
+# openssl: installed-to-live-arch hashes the demo/root passwords with
+# `openssl passwd -6` in reset-accounts mode (python3 is the fallback).
+# syslinux: provides isohdpfx.bin, needed for make_isohybrid=yes (the
+# shipped default) to actually produce a BIOS/USB-hybrid ISO.
+depends=('qt6-base' 'polkit' 'squashfs-tools' 'xorriso' 'mx-iso-template-arch' 'lsb-release' 'openssl'
+         'syslinux')
+optdepends=('paru: install gazelle-installer from the AUR when missing'
+            'xdg-user-dirs: resolve localized Documents/Downloads/etc. paths for exclusions')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 conflicts=('mx-remaster-live-files')
 replaces=('mx-remaster-live-files')
 provides=('mx-remaster-live-files=1.0.0')
+# /etc/mx-snapshot.conf and the exclude list are meant to be user-edited;
+# without this, pacman would overwrite local changes on every upgrade.
+backup=('etc/mx-snapshot.conf' 'etc/mx-snapshot-exclude.list')
 source=("https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.07.1.tar.gz")
 sha256sums=('be6256db5b18b9e27d25ecd0f5fcc1a1e2dd449340f4bcf7408e80daa20d32cc')
 
@@ -40,22 +50,21 @@ package() {
     install -dm755 "${pkgdir}/usr/share/mx-snapshot/locale"
     install -Dm644 build/*.qm "${pkgdir}/usr/share/mx-snapshot/locale/" 2>/dev/null || true
 
+    # Arch packaging is GUI-only (BUILD_CLI=OFF above); install scripts only
+    # under /usr/share/mx-snapshot/, not /usr/share/iso-snapshot-cli/.
     install -dm755 "${pkgdir}/usr/share/mx-snapshot/scripts"
-    install -dm755 "${pkgdir}/usr/share/iso-snapshot-cli/scripts"
     cp -a scripts-arch/* "${pkgdir}/usr/share/mx-snapshot/scripts/"
-    cp -a scripts-arch/* "${pkgdir}/usr/share/iso-snapshot-cli/scripts/"
 
     install -dm755 "${pkgdir}/usr/lib/mx-snapshot"
     install -Dm755 build/helper "${pkgdir}/usr/lib/mx-snapshot/helper"
     install -Dm755 polkit/snapshot-lib "${pkgdir}/usr/lib/mx-snapshot/snapshot-lib"
 
     install -dm755 "${pkgdir}/usr/share/polkit-1/actions"
-    for policy in polkit/*.policy; do
+    # GUI-only: install only the mx-snapshot policies. The iso-snapshot-cli
+    # policies would be inert without the CLI binary on this distro.
+    for policy in polkit/*mx-snapshot*.policy; do
         install -Dm644 "$policy" "${pkgdir}/usr/share/polkit-1/actions/$(basename "$policy")"
     done
-
-    install -dm755 "${pkgdir}/usr/share/polkit-1/rules.d"
-    install -Dm644 polkit/10-mx-snapshot-restrict.rules "${pkgdir}/usr/share/polkit-1/rules.d/10-mx-snapshot-restrict.rules"
 
     install -Dm644 mx-snapshot.desktop "${pkgdir}/usr/share/applications/mx-snapshot.desktop"
     install -Dm644 icons/mx-snapshot.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/mx-snapshot.png"
