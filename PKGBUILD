@@ -1,34 +1,37 @@
-# Maintainer: Que Quotion <quequotion@gmail.com>
-# Contributor: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: kelon
+
+# Maintainer: kelon
 
 pkgname=pantheon-monitor
-pkgver=r91.b143db4
+pkgver=8.0.1.r0.g989d694
 pkgrel=1
-pkgdesc='Manage processes, monitor of system resources and drives.'
+pkgdesc="Manage processes and monitor system resources (GTK4/Granite7)"
 arch=('x86_64')
-url='https://github.com/Dirli/pantheon-monitor'
-license=('GPL2')
-groups=('pantheon-unstable')
-depends=('cairo' 'glib2' 'glibc' 'gtk3' lib{{granite,wingpanel}.so,gee,gtop,wnck} 'udisks2')
-makedepends=('git' 'meson' 'vala' 'wingpanel')
-provides=("${pkgname%-git}" wingpanel-indicator-{sensors,monitor})
-conflicts=("${pkgname%-git}" wingpanel-indicator-{sensors,monitor})
-source=("git+https://github.com/Dirli/${pkgname%-git}.git")
+url="https://github.com/elementary/monitor"
+license=('GPL3')
+depends=(
+  'flatpak'
+  'glib2'
+  'granite7'
+  'gtk4'
+  'json-glib'
+  'libadwaita'
+  'libgee'
+  'libgtop'
+  'pciutils'
+  'udisks2'
+)
+makedepends=('git' 'meson' 'sassc' 'vala' 'ninja')
+source=("$pkgname::git+https://github.com/elementary/monitor.git")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "${pkgname%-git}"
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
 build() {
-  cd "${pkgname%-git}"
-  [ -d build ] && rm -rf build
-  arch-meson build
+  cd "$srcdir/$pkgname"
+  meson setup build --prefix=/usr --wrap-mode default
   ninja -C build
 }
 
 package() {
-  cd "${pkgname%-git}"
-  DESTDIR="${pkgdir}" ninja -C build install
+  cd "$srcdir/$pkgname"
+  DESTDIR="$pkgdir" ninja -C build install
 }
