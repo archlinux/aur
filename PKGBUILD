@@ -3,17 +3,17 @@
 # not depend on crates.io publish timing). The CI release workflow injects
 # `pkgver` and recomputes `sha256sums` (via updpkgsums) before pushing.
 pkgname=nsql
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Run SQL from your terminal, composed in your real Neovim — without taking over the screen"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/fredrir/nsql"
 license=('0BSD')
 depends=('dbus' 'gcc-libs')
 makedepends=('cargo')
 optdepends=('neovim: inline/embedded SQL editor (falls back to vim/vi/$EDITOR otherwise)')
 source=("nsql-${pkgver}.tar.gz::https://github.com/fredrir/nsql/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fdb890b3a37e02658ce4d193137e49806e97394421af20a9a27a76fddbcd5d23')
+sha256sums=('f9ab11cf6042ba4b7f1474e62850a88d27be4ff4f339613ed620cf44a637b38d')
 
 prepare() {
     cd "nsql-${pkgver}"
