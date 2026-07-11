@@ -1,7 +1,7 @@
 # Maintainer: Sujal Vijayaraghavan
 
 pkgname=matlock
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=0
 pkgdesc='Screen lock program for X and Wayland like in The Matrix (1999)'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('libx11' 'libxext' 'libxrandr' 'libxcrypt' 'wayland' 'libxkbcommon'
 makedepends=('make' 'git' 'wayland-protocols')
 backup=('etc/matlock.yaml')
 source=("https://github.com/sujaltv/matlock/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('82460b67a3519fe623137a63a064a70eca75d7b096ad49fdfbfe38c6ba67d928')
+sha256sums=('4d6a1793b7df459596b4d876a7aac0171209949abcd93a562f8cb3b3d425f5d1')
 
 package() {
     cd $pkgname-${pkgver}
