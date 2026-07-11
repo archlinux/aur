@@ -1,6 +1,6 @@
 pkgbase = emerald-legacy-launcher-bin
 	pkgdesc = FOSS, cross-platform launcher for Minecraft Legacy Console Edition
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/LCE-Hub/LCE-Emerald-Launcher
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = emerald-legacy-launcher-bin
 	conflicts = emerald-legacy-launcher
 	options = !strip
 	options = !debug
-	source = https://github.com/LCE-Hub/LCE-Emerald-Launcher/releases/download/v1.4.1/LCE.Emerald.Launcher_1.4.1_amd64.deb
-	sha256sums = 63caf7365de1a6bf4a782f4a20e0aa363256ec627ed38831ff56790cdd7da615
+	source = https://github.com/LCE-Hub/LCE-Emerald-Launcher/releases/download/v1.5.0/LCE.Emerald.Launcher_1.5.0_amd64.deb
+	sha256sums = ffc53c3ee0db6fd9ccdecaf4c7c5981f6b5605700a9592ee46b6dd9dd84f0cef
 
 pkgname = emerald-legacy-launcher-bin
