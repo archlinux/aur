@@ -1,6 +1,6 @@
 pkgbase = awob-listener-power-profile-bin
-	pkgdesc = awob listener — ACPI platform_profile → OSD.
-	pkgver = 0.1.6
+	pkgdesc = awob listener: power profile
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/jmylchreest/awob
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = awob-listener-power-profile-bin
 	provides = awob-listener-power-profile
 	conflicts = awob-listener-power-profile
 	conflicts = awob-git
-	source = awob-0.1.6-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jmylchreest/awob/releases/download/v0.1.6/awob-0.1.6-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 14bce4bc40bebfa61c8151b06716350686b38762a135c9b05c41a4d809572f50
+	source = awob-0.1.7-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jmylchreest/awob/releases/download/v0.1.7/awob-0.1.7-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = e23b2b772c8c3ff7fe6680be1245fa6af2c74ad22227c95cdcfa90b950c36ee2
 
 pkgname = awob-listener-power-profile-bin
