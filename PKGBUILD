@@ -1,7 +1,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='histui'
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 pkgdesc='Notification history browser and daemon for Linux desktops'
 url='https://github.com/jmylchreest/histui'
@@ -13,7 +13,7 @@ provides=('histui' 'histuid')
 conflicts=('histui-bin')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jmylchreest/histui/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('150af7481876494f9fdc498a90519aac835dbf0ac7db995e558cad81ae762d1e')
+sha256sums=('0d755b590c733d96cf092e6bbe87d88b84ffd4fabb856fc5bad6138eea818f21')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -24,7 +24,7 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
 
     # Build metadata
-    local _commit="d101a2eb8c2096d524882480736d924ab553fd84"
+    local _commit="174011c8747873b8637948cdc4701e0fd7dbec5b"
     local _buildtime="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
     local _ldflags="-s -w -X main.version=${pkgver} -X main.commit=${_commit} -X main.buildTime=${_buildtime}"
 
@@ -37,6 +37,13 @@ build() {
     CGO_ENABLED=1 go build \
         -ldflags "${_ldflags}" \
         -o histuid ./cmd/histuid
+
+    # Shell completions - generated from the freshly built native binary
+    # so they always match the code being packaged.
+    mkdir -p completions
+    ./histui completion bash > completions/histui.bash
+    ./histui completion zsh  > completions/_histui
+    ./histui completion fish > completions/histui.fish
 }
 
 package() {
@@ -48,4 +55,9 @@ package() {
     install -Dm644 contrib/histuid-monitor.service "${pkgdir}/usr/lib/systemd/user/histuid-monitor.service"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 docs/static/examples/histuid.toml "${pkgdir}/usr/share/doc/${pkgname}/histuid.toml.example"
+
+    # Shell completions
+    install -Dm644 completions/histui.bash "${pkgdir}/usr/share/bash-completion/completions/histui"
+    install -Dm644 completions/_histui "${pkgdir}/usr/share/zsh/site-functions/_histui"
+    install -Dm644 completions/histui.fish "${pkgdir}/usr/share/fish/vendor_completions.d/histui.fish"
 }
