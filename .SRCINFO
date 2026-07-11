@@ -9,6 +9,7 @@ pkgbase = jq.sh-git
 	checkdepends = shellspec
 	makedepends = git
 	makedepends = getoptions-ng
+	makedepends = yq
 	depends = sh
 	depends = jq
 	depends = moreutils
