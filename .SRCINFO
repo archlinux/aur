@@ -1,0 +1,24 @@
+pkgbase = es3crypt-oss-git
+	pkgdesc = Easy Save 3 save file decryption/encryption library with CLI.
+	pkgver = 1.0+31.r33.20230211.bdacbfe
+	pkgrel = 1
+	url = https://gitlab.com/niansa/es3crypt-oss
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv8h
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	makedepends = libgcc
+	makedepends = libstdc++
+	depends = crypto++
+	depends = glibc
+	depends = libgcc_s.so
+	depends = libstdc++.so
+	provides = es3crypt-oss=1.0+31.r33.20230211.bdacbfe
+	conflicts = es3crypt-oss
+	source = es3crypt-oss::git+https://gitlab.com/niansa/es3crypt-oss.git
+	sha256sums = SKIP
+
+pkgname = es3crypt-oss-git
