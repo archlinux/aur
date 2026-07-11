@@ -1,6 +1,6 @@
 pkgbase = speed-dreams-git
 	pkgdesc = Free and open source motorsport simulation video game.
-	pkgver = r5933.52501e4
+	pkgver = r5955.ef22934
 	pkgrel = 1
 	url = https://www.speed-dreams.net
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = speed-dreams-git
 	depends = cjson
 	depends = minizip
 	depends = hicolor-icon-theme
+	depends = plib
 	provides = speed-dreams
 	conflicts = speed-dreams
 	source = speed-dreams-code::git+https://forge.a-lec.org/speed-dreams/speed-dreams-code.git
