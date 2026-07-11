@@ -2,15 +2,19 @@
 
 pkgname=infer-bin
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Infer is a static analysis tool for Java, C++, Objective-C, and C. Infer is written in OCaml."
 arch=('x86_64')
 url="https://github.com/facebook/infer"
 options=("!strip")
 license=('MIT')
-depends=('libc++abi'
+depends=('gcc-libs'
          'java-environment'
-         'ncurses5-compat-libs')
+         'libc++abi'
+         'libffi'
+         'zlib'
+         'zstd')
+checkdepends=('clang')
 source=("https://github.com/facebook/infer/releases/download/v${pkgver}/infer-linux-x86_64-v${pkgver}.tar.xz"
         'FailingTest.c'
         'PassingTest.c'
