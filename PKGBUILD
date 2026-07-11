@@ -1,40 +1,47 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail ðot com>
 # Partially adapted from https://github.com/wasta-linux/lameta-snap
+
 pkgname=lameta
-pkgver=3.0.19_beta
+pkgver=3.0.20_beta
 _upstream_pkgver="${pkgver//_/-}"
-_electron=electron37
-pkgrel=1
+_electron=electron39 # this is not what is used by upstream, but rather the nearest one in extra repo
+pkgrel=2
 pkgdesc="The Metadata Editor for Transparent Archiving of language document materials"
 arch=('x86_64')
 url="https://github.com/onset/lameta"
 license=('MIT')
+options=(!debug !strip) # save time
 depends=(
     bash
     "$_electron"
+    ffmpeg
     glibc
     libgcc
     nodejs
 )
 makedepends=(
     asar
-    npm
+#    npm
     yarn
 )
 source=(
   "${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${_upstream_pkgver}.tar.gz"
     "${pkgname}.desktop"
   'no_node_pin.patch'
+  'use_native_ffprobe.patch'
 )
-sha256sums=('50482d8e2f208c904a97d19069220027541c9e130188cac33cec0839e74eeef8'
+sha256sums=('e0b75760f218f5b670ac5be70128d079fbb4f52f86f66926549bc21ed5509632'
             '874e1acc986076e9c876c6ccd2efc7ee0dcda322733c018fb8e3d0bf010b8791'
-            '013659645d17441f98ed7a8bfcf3a1ef4385aeeb84ddc76e2a59afea42a2da44')
+            '013659645d17441f98ed7a8bfcf3a1ef4385aeeb84ddc76e2a59afea42a2da44'
+            '5eef4e9a817cb48edcadbb29d07e1158f1164ce1d043ca1836c2e9ad370f3584')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${_upstream_pkgver}"
     echo -e 'logFilters:\n  - code: "YN0013"\n    level: "discard"' >> .yarnrc.yml
     echo "Applying patch to unpin node and yarn versions"
     patch --forward --strip=1 --input="${srcdir}/no_node_pin.patch"
+    echo "Applying patch to use system ffprobe"
+    patch --strip=1 --input="${srcdir}/use_native_ffprobe.patch"
 }
 
 build() {
@@ -66,6 +73,10 @@ package() {
 #! /usr/bin/sh
 exec $_electron /usr/lib/$pkgname "\$@"
 EOD
+    echo "Removing some unnecessary files"
+    rm -R "${pkgdir}/usr/lib/lameta/node_modules/flatted/python"
+    rm -R "${pkgdir}/usr/lib/lameta/node_modules/flatted/php"
+
     echo "This build dir is rather large:"
     du -h -d0 "$(dirname "$srcdir/../")"
     echo "Maybe you should consider deleting it"

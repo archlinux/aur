@@ -6,5 +6,6 @@
 !.SRCINFO
 !lameta.desktop
 !no_node_pin.patch
+!use_native_ffprobe.patch
 
 !.gitignore

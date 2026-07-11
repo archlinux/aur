@@ -1,0 +1,56 @@
+diff -ura lameta-3.0.20-beta.orig/electron-builder.json5 lameta-3.0.20-beta.new/electron-builder.json5
+--- lameta-3.0.20-beta.orig/electron-builder.json5	2026-07-11 12:27:19.000000000 +0200
++++ lameta-3.0.20-beta.new/electron-builder.json5	2026-07-11 12:50:18.664558091 +0200
+@@ -27,12 +27,6 @@
+     "node_modules/conf",
+     */
+ 
+-    // Note, I have so far not been able to prevent two copies of all 5 ffprobe.exe's from being
+-    // included, despite much effort. One copy of each goes into app.asar,
+-    // one goes into app.asar.unpacked (this is the default electron-builder for all exe files,
+-    // I haven't figured out how to override that.)
+-    // electron-builder just doesn't seem to honor the filter rules.
+-
+     // some of the bigger packages that we don't need. Drops installer by about 9 meg
+     "!node_modules/@mui",
+     "!node_modules/@reduxjs",
+@@ -50,10 +44,7 @@
+     "locale/",
+     "archive-configurations/",
+     "schemas/",
+-    "sample data/",
+-    // we only want ffprobe, not ffmpeg
+-    "!node_modules/ffmpeg-ffprobe-static/ffmpeg*",
+-    "!node_modules/ffmpeg-ffprobe-static/bin/*/ffmpeg*"
++    "sample data/"
+   ],
+   extraFiles: [],
+   directories: {
+diff -ura lameta-3.0.20-beta.orig/package.json lameta-3.0.20-beta.new/package.json
+--- lameta-3.0.20-beta.orig/package.json	2026-07-11 12:27:19.000000000 +0200
++++ lameta-3.0.20-beta.new/package.json	2026-07-11 12:47:37.761991710 +0200
+@@ -189,7 +189,6 @@
+     "eslint-plugin-react": "^7.37.2",
+     "excel-date-to-js": "^1.1.5",
+     "exifreader": "^3.11.2",
+-    "ffmpeg-ffprobe-static": "^6.1.2-rc.1",
+     "filesize": "^6.1.0",
+     "flatted": "^3.1.0",
+     "fluent-ffmpeg": "^2.1.3",
+diff -ura lameta-3.0.20-beta.orig/src/components/MediaStats.tsx lameta-3.0.20-beta.new/src/components/MediaStats.tsx
+--- lameta-3.0.20-beta.orig/src/components/MediaStats.tsx	2026-07-11 12:27:19.000000000 +0200
++++ lameta-3.0.20-beta.new/src/components/MediaStats.tsx	2026-07-11 12:52:00.808760540 +0200
+@@ -14,11 +14,8 @@
+ 
+ type Stats = object;
+ 
+-let ffprobePath = require("ffmpeg-ffprobe-static").ffprobePath;
+-//console.log("raw ffprobePath: " + ffprobePath);
+-// for mac & windows when installed
+-ffprobePath = ffprobePath.replace("app.asar", "app.asar.unpacked");
+-//console.log(`final ffprobePath: ${ffprobePath}`);
++// This is where ffprobe will be found in arch, no need to search for it
++let ffprobePath = "/usr/bin/ffprobe";
+ ffmpeg.setFfprobePath(ffprobePath);
+ 
+ export const MediaStats: React.FunctionComponent<{ file: File }> = (props) => {
