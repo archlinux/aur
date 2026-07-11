@@ -1,6 +1,6 @@
 # Maintainer: Rizakulov Temur <riakulovtemur0@gmail.com>
 pkgname=cmdflow
-pkgver=3.0.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="A minimalist CLI tool written in Rust that parses shell history and renders graphs"
 arch=('x86_64' 'aarch64')
@@ -10,17 +10,19 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 install=cmdflow.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('673753906dadb5d361aad87ef9147b1488092aea9a2347718fd58d9eb47cf6a3')
+sha256sums=('dd5899f485b82dea3d389a72ac039e001fab623ff0f0d3d81487ae0c93595365')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  # Убрали --target "$CARCH", чтобы Cargo сам взял дефолтный системный таргет
+  # Define a local cargo home directory inside the build sandbox to avoid losing fetched crates
+  export CARGO_HOME="$srcdir/cargo-home"
   cargo fetch --locked
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  # Убрали лишние флаги компилятора, оставив чистый вызов
+  # Use the same local cargo home directory
+  export CARGO_HOME="$srcdir/cargo-home"
   cargo build --frozen --release --all-features
 }
 
