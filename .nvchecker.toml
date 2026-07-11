@@ -1,0 +1,5 @@
+[plmux]
+source = "github"
+github = "Cyxuan0311/Plmux"
+use_latest_release = true
+prefix = "v"
