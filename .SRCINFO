@@ -1,7 +1,7 @@
 pkgbase = viddy
 	pkgdesc = A modern watch command
-	pkgver = 1.3.0
-	pkgrel = 2
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = https://github.com/sachaos/viddy
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = viddy
 	makedepends = cargo
 	options = !debug
 	options = !lto
-	source = viddy-1.3.0.tar.gz::https://github.com/sachaos/viddy/archive/v1.3.0.tar.gz
-	sha256sums = 59d5be862cf6b522ed069e276c28f927e5d2cea13525513959e1577a5ad6afd5
+	source = viddy-1.3.1.tar.gz::https://github.com/sachaos/viddy/archive/v1.3.1.tar.gz
+	sha256sums = c5de99390846029aacb23789ce20267142dc89f647c519a0a0bb4821334cc6e5
 
 pkgname = viddy
