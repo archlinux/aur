@@ -6,7 +6,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}-bin
 pkgdesc="A portable terminal AI interface"
 
-pkgver=0.8.3
+pkgver=0.8.5
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,9 +24,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}_${pkgver}_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('c6630e7da1a79f93f5037e0eb0e268ae3010a3631dd9b85aae4726b2956bdaa0')
-sha256sums_i686=('fe66bc955f1e2dc3299593af235925875219261a248aabb01d2c5f6082ac9302')
-sha256sums_aarch64=('5b1a8f015bb201842c5d573b5f975b9192f269760a8fd1490e15f27faac19731')
+sha256sums_x86_64=('fdf24a2a1ef107e23d4f0feeefb46b3ba5c9c8879b7991c747d275a0ebd476e8')
+sha256sums_i686=('907c7424d657e449c54ed34833c45069c0c974af6a0769e40e8a628f899100b1')
+sha256sums_aarch64=('def10c59987cd4ddfccb63173f8dfeb794df40f3a834947350e737253290ad9c')
 
 
 package() {

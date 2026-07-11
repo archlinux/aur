@@ -1,6 +1,6 @@
 pkgbase = nekot-bin
 	pkgdesc = A portable terminal AI interface
-	pkgver = 0.8.3
+	pkgver = 0.8.5
 	pkgrel = 1
 	url = https://github.com/BalanceBalls/nekot
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = nekot-bin
 	license = MIT
 	provides = nekot
 	conflicts = nekot
-	source_x86_64 = nekot-x86_64-0.8.3.tgz::https://github.com/BalanceBalls/nekot/releases/download/v0.8.3/nekot_0.8.3_linux_amd64.tar.gz
-	sha256sums_x86_64 = c6630e7da1a79f93f5037e0eb0e268ae3010a3631dd9b85aae4726b2956bdaa0
-	source_i686 = nekot-i686-0.8.3.tgz::https://github.com/BalanceBalls/nekot/releases/download/v0.8.3/nekot_0.8.3_linux_386.tar.gz
-	sha256sums_i686 = fe66bc955f1e2dc3299593af235925875219261a248aabb01d2c5f6082ac9302
-	source_aarch64 = nekot-aarch64-0.8.3.tgz::https://github.com/BalanceBalls/nekot/releases/download/v0.8.3/nekot_0.8.3_linux_arm64.tar.gz
-	sha256sums_aarch64 = 5b1a8f015bb201842c5d573b5f975b9192f269760a8fd1490e15f27faac19731
+	source_x86_64 = nekot-x86_64-0.8.5.tgz::https://github.com/BalanceBalls/nekot/releases/download/v0.8.5/nekot_0.8.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = fdf24a2a1ef107e23d4f0feeefb46b3ba5c9c8879b7991c747d275a0ebd476e8
+	source_i686 = nekot-i686-0.8.5.tgz::https://github.com/BalanceBalls/nekot/releases/download/v0.8.5/nekot_0.8.5_linux_386.tar.gz
+	sha256sums_i686 = 907c7424d657e449c54ed34833c45069c0c974af6a0769e40e8a628f899100b1
+	source_aarch64 = nekot-aarch64-0.8.5.tgz::https://github.com/BalanceBalls/nekot/releases/download/v0.8.5/nekot_0.8.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = def10c59987cd4ddfccb63173f8dfeb794df40f3a834947350e737253290ad9c
 
 pkgname = nekot-bin
