@@ -1,0 +1,15 @@
+pkgbase = txm-git
+	pkgdesc = Terminal math rendering engine.
+	pkgver = 0.1.3.26.gcc5ade3
+	pkgrel = 1
+	url = https://github.com/thatmagicalcat/txm
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	makedepends = rustup
+	makedepends = git
+	options = !debug
+	options = !strip
+	source = txm::git+https://github.com/thatmagicalcat/txm.git
+	sha256sums = SKIP
+
+pkgname = txm-git
