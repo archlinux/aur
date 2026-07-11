@@ -1,0 +1,23 @@
+pkgbase = marxist-quote
+	pkgdesc = Graphical settings UI for Marxist Quote
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/efebaykaraa/marxist-quote
+	install = marxist-quote.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gtk3
+	depends = gtk4
+	depends = libadwaita
+	depends = pango
+	depends = cairo
+	depends = glib2
+	depends = hicolor-icon-theme
+	optdepends = desktop-file-utils: update desktop entry cache during install hooks
+	source = marxist-quote-0.2.0.tar.gz::https://github.com/efebaykaraa/marxist-quote/archive/refs/tags/v0.2.0.tar.gz
+	source = wikiquote-fetcher-1.0.1.tar.gz::https://github.com/efebaykaraa/wikiquote-fetcher/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 559dfa938b741b23b47fbf73d160b5768e36498a770f2714f0e3ec87101815c4
+	sha256sums = 7c8453d95595ebe7264386457992d6931090fd3e8c5938bfbe6f1ffdda869400
+
+pkgname = marxist-quote
