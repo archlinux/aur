@@ -3,13 +3,14 @@
 _pkgname=sbom-tool
 pkgname=${_pkgname}-bin
 pkgver=4.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A highly scalable and enterprise ready tool to create SPDX 2.2 compatible SBOMs"
 provides=("${_pkgname}")
 conflicts=("sbom-tool" "sbom-tool-git")
 arch=('x86_64')
 url="https://github.com/microsoft/sbom-tool"
 license=("MIT")
+depends=('gcc-libs' 'zlib')
 
 source=(
     "${_pkgname}-${pkgver}::https://github.com/microsoft/sbom-tool/releases/download/v${pkgver}/sbom-tool-linux-x64"
