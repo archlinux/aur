@@ -4,13 +4,14 @@ _gemname=yard-solargraph
 
 pkgname="ruby-${_gemname}"
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A YARD extension for documenting Solargraph tags"
 arch=("any")
 url="https://github.com/castwide/${_gemname}"
 license=("MIT")
 depends=("ruby" "ruby-yard")
-makedepends=("rubygems" "ruby-rake" "ruby-simplecov" "ruby-rspec")
+makedepends=("ruby-rake")
+checkdepends=("ruby-rspec" "ruby-simplecov")
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 options=(!emptydirs)
 sha256sums=("SKIP")
