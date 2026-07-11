@@ -1,0 +1,27 @@
+pkgbase = vanilla-wiiu-bin
+	pkgdesc = A work-in-progress Wii U GamePad software clone for Linux (prebuilt binary)
+	pkgver = 2026.07.10
+	pkgrel = 1
+	url = https://github.com/vanilla-wiiu/vanilla
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	depends = glibc
+	depends = glib2
+	depends = polkit
+	depends = libva
+	depends = libnm
+	depends = libx11
+	depends = libdrm
+	depends = libglvnd
+	depends = zlib
+	provides = vanilla-wiiu
+	conflicts = vanilla-wiiu
+	conflicts = vanilla-wiiu-git
+	options = !debug
+	source_x86_64 = vanilla-wiiu-bin-2026.07.10-x86_64.tar.gz::https://github.com/vanilla-wiiu/vanilla/releases/download/continuous/vanilla-linux-x86_64.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = vanilla-wiiu-bin-2026.07.10-aarch64.tar.gz::https://github.com/vanilla-wiiu/vanilla/releases/download/continuous/vanilla-linux-aarch64.tar.gz
+	sha256sums_aarch64 = SKIP
+
+pkgname = vanilla-wiiu-bin
