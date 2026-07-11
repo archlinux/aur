@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=glmx
-_pkgver=0.2-2
+_pkgver=0.2-3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=(
   r-pscl
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('622b9a46463796ee3532426dad3f31d1')
-b2sums=('49e59bcf11499b8659411c4d828b7f62053ab79a68be8d2cee9b9386913e2c42fde4e3db80920c5d03c18de51029acabd54f1d119628b6525cc7b750670e9ee8')
+md5sums=('2586a1e4458ea5537856af7b0f057416')
+b2sums=('692fc2b525f285cf2efbd6ee0d76027295d3f911025489ccb4079943b24d38501e5118fed8ddb310d017abe952a895d763cc2e4c277f543f9d0eba9103e69330')
 
 build() {
   mkdir build
