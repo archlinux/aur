@@ -7,18 +7,30 @@
 pkgname=dma
 pkgver=0.14
 pkgrel=2
-pkgdesc="DragonFly BSD mail transport agent"
-url="https://github.com/corecode/dma"
+pkgdesc='DragonFly BSD mail transport agent'
+url='https://github.com/corecode/dma'
 arch=('x86_64')
-license=('BSD-3-Clause')
-makedepends=('ed' 'git' 'systemd')
-depends=('glibc' 'openssl')
+depends=(
+	glibc
+	openssl
+)
+makedepends=(
+	bison
+	flex
+	git
+)
 provides=('smtp-forwarder')
 conflicts=('smtp-forwarder')
+license=('BSD-3-Clause')
+
+source=(
+	"git+https://github.com/corecode/dma.git#tag=v${pkgver}"
+	$pkgname.tmpfiles
+)
+b2sums=('48e48b7a07725759467078ffb94452d395d55b27a6d6b2be187f6ca4e4df73612ad2b464b65555f4842574f4ff35007a8b94e9024fb2b173dc44bf1e2e86cfef'
+        '8d1abbfd68ff3d33ff1148207ecbb1461de298f1ccdb407b4ee174d8704ba534169476639e158964a7401892f4862d51905358cf76c4af88911dee4c5c991913')
 backup=('etc/dma/auth.conf' 'etc/dma/dma.conf')
 options=('emptydirs')
-source=("git+https://github.com/corecode/dma.git#tag=v${pkgver}")
-b2sums=('48e48b7a07725759467078ffb94452d395d55b27a6d6b2be187f6ca4e4df73612ad2b464b65555f4842574f4ff35007a8b94e9024fb2b173dc44bf1e2e86cfef')
 
 build() {
 	cd dma
@@ -27,10 +39,15 @@ build() {
 
 package() {
 	cd dma
-	make install sendmail-link mailq-link install-etc DESTDIR="$pkgdir" \
-	PREFIX=/usr LIBEXEC=/usr/lib/dma SBIN=/usr/bin
+	make install install-etc sendmail-link mailq-link \
+		DESTDIR="$pkgdir" PREFIX=/usr LIBEXEC=/usr/lib/dma SBIN=/usr/bin
 
-	install -d -o root -g mail -m 2775 "$pkgdir/var/spool/dma"
+	# dma's Makefile chowns the files, which isn't the Arch way
+	chown -R root:root "$pkgdir/etc/dma"
+	chown -R root:root "$pkgdir/usr/lib/dma"
+	chown -R root:root "$pkgdir/usr/bin/dma"
+
+	install -Dm644 ../$pkgname.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }

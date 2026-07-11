@@ -17,3 +17,6 @@
 !LICENSES/
 !LICENSES/*
 !REUSE.toml
+
+# systemd
+!dma.tmpfiles

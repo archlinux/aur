@@ -5,9 +5,9 @@ pkgbase = dma
 	url = https://github.com/corecode/dma
 	arch = x86_64
 	license = BSD-3-Clause
-	makedepends = ed
+	makedepends = bison
+	makedepends = flex
 	makedepends = git
-	makedepends = systemd
 	depends = glibc
 	depends = openssl
 	provides = smtp-forwarder
@@ -16,6 +16,8 @@ pkgbase = dma
 	backup = etc/dma/auth.conf
 	backup = etc/dma/dma.conf
 	source = git+https://github.com/corecode/dma.git#tag=v0.14
+	source = dma.tmpfiles
 	b2sums = 48e48b7a07725759467078ffb94452d395d55b27a6d6b2be187f6ca4e4df73612ad2b464b65555f4842574f4ff35007a8b94e9024fb2b173dc44bf1e2e86cfef
+	b2sums = 4cfa13345c86f75fc68cb412533b2a59ec3a86f5bd207eea8b6cf628e36de3b0b462d0464cb4abc93f81db86875f8b64eb5b3c88f62e55512c148a5ef07b68bd
 
 pkgname = dma

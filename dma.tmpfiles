@@ -1,0 +1,4 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
+d /var/spool/dma 2775 mail root - -
