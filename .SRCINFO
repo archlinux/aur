@@ -1,7 +1,7 @@
 pkgbase = terax-ai-bin
 	pkgdesc = Modern AI terminal powered by Tauri
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crynta/terax-ai
 	arch = x86_64
 	license = Apache-2.0
