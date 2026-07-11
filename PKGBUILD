@@ -2,8 +2,8 @@
 # https://github.com/axpdev-lab/aeroftp
 
 pkgname=aeroftp-bin
-pkgver=4.1.2
-pkgrel=3
+pkgver=4.1.3
+pkgrel=1
 pkgdesc="Modern multi-protocol file client with AI, encryption and cloud storage (FTP, SFTP, WebDAV, S3, 26 protocols)"
 arch=('x86_64')
 url="https://aeroftp.app"
@@ -43,7 +43,7 @@ source=(
     "${pkgname}-${pkgver}.deb.sigstore.json::https://github.com/axpdev-lab/aeroftp/releases/download/v${pkgver}/AeroFTP_${pkgver}_amd64.deb.sigstore.json"
 )
 sha256sums=(
-    'ba664a3d17d8278b41febf16ddd2a634136595eeb546a279433c9acc0cbed45e'
+    'b8b2f5b641b667bcdef30f85b9b0325e83aa0d039a23c6938b28f7a36b71e15e'
     'SKIP'
 )
 
