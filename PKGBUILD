@@ -4,8 +4,8 @@
 _commit=HEAD
 _pkgname=marsdev
 pkgname=${_pkgname}-git
-pkgver=r160.908caa4
-pkgrel=1
+pkgver=r161.3318d3f
+pkgrel=2
 pkgdesc="Cross-platform Sega Mega Drive / Super 32X / Sharp X68000 toolchain"
 arch=('x86_64')
 url="https://github.com/andwn/${_pkgname}"
@@ -13,6 +13,7 @@ makedepends=('boost' 'texinfo' 'wget' 'java-environment>=11')
 depends=('java-environment>=11')
 provides=('marsdev' 'x68k-tools' 'sik-tools' 'flamewing-tools' 'sgdk')
 license=('MIT')
+optdepends=('python-pyelftools: for elf2x.py')
 source=("git+$url#commit=$_commit")
 
 sha256sums=('SKIP')

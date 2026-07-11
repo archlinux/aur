@@ -1,7 +1,7 @@
 pkgbase = marsdev-git
 	pkgdesc = Cross-platform Sega Mega Drive / Super 32X / Sharp X68000 toolchain
-	pkgver = r160.908caa4
-	pkgrel = 1
+	pkgver = r161.3318d3f
+	pkgrel = 2
 	url = https://github.com/andwn/marsdev
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = marsdev-git
 	makedepends = wget
 	makedepends = java-environment>=11
 	depends = java-environment>=11
+	optdepends = python-pyelftools: for elf2x.py
 	provides = marsdev
 	provides = x68k-tools
 	provides = sik-tools
