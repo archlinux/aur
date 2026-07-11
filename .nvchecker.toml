@@ -1,0 +1,5 @@
+[zlist-bin]
+source = "github"
+github = "here-Leslie-Lau/zlist"
+use_latest_release = true
+prefix = "v"
