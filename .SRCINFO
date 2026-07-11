@@ -1,0 +1,29 @@
+pkgbase = srb2-git
+	pkgdesc = A 3D Sonic fan game based off of Doom Legacy (aka "Sonic Robo Blast 2") (git version)
+	pkgver = 2.2.15.r688.geb16ca3
+	pkgrel = 1
+	url = https://www.srb2.org
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = mesa
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = curl
+	depends = libpng
+	depends = libgme
+	depends = libopenmpt
+	depends = miniupnpc
+	depends = srb2-data>=2.2.15
+	provides = srb2
+	conflicts = srb2
+	options = !strip
+	options = !debug
+	source = git+https://github.com/STJr/SRB2.git#branch=next
+	source = srb2.desktop
+	sha256sums = SKIP
+	sha256sums = 9f0b31f9d91f31077b55e70301ea1c07609a7eea44aeb5cf370a4ff78e0e5215
+
+pkgname = srb2-git
