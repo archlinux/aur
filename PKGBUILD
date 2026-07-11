@@ -1,7 +1,7 @@
 # Maintainer: nicknb <nicknb at posteo dot com>
 _name=motus
 pkgname=$_name-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A dead simple password generator"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("AGPL-3.0-only")
 provides=($_name)
 conflicts=($_name)
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${_name}_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('9c18be6b36f3a160329e6f6e0228f48fb4301c575dfee6ad26aacf99ea0c35dd')
+sha256sums=('186044ed15fce10d6210f33ebfa99487f22b61c3c3e8040427cd82b9e9caf042')
 
 package() {
     install -Dm 0755 motus "$pkgdir/usr/bin/motus"
