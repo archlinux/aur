@@ -1,7 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _projectname='msgraph-sdk-python'
 pkgname="python-msgraph-sdk"
-pkgver='1.58.0'
+pkgver='1.59.0'
 pkgrel='1'
 pkgdesc='Microsoft Graph SDK for Python'
 arch=('any')
@@ -13,7 +13,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 	'change-flit-upper-bound.diff'
 )
-b2sums=('1f8a1d1cbc57f604eb2216469413217d4b03ab6509105fe2ff38f6660bb39f7fe20d514fb8a8c30467a732c08fa801cc91beed1e790812aec9e9842d6e9b0ecc'
+b2sums=('b1f5af2c03914918966c274aa04984aa0342a5996d9fd30e4a4984a736ef137d3599be1721c4b518fb0bfc3c8e1ee497a35a014c7cae5ac8dd44a4bf709eb160'
         '3f4d78627dbed959fee712fad349da2c2e41bb3b37c3c8fb564b65ada5892758dc607d0028392131fa33d29385bc107f9be5e6ed0ce5484c685d1d109e4d01c7')
 
 _sourcedirectory="$_projectname-$pkgver"
