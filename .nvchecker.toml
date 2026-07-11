@@ -1,0 +1,5 @@
+[dtach-ng-bin]
+source = "github"
+github = "xPMo/dtach"
+use_latest_release = true
+prefix = "v"
