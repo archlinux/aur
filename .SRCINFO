@@ -1,12 +1,12 @@
 pkgbase = godot-double
 	pkgdesc = Advanced cross-platform 2D and 3D game engine (double-precision build)
 	pkgver = 4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://godotengine.org/
 	arch = x86_64
 	license = MIT
 	makedepends = alsa-lib
-	makedepends = dotnet-sdk-8.0
+	makedepends = dotnet-sdk
 	makedepends = git
 	makedepends = nuget
 	makedepends = pulse-native-provider
