@@ -24,7 +24,7 @@ build() {
 	export CUDAHOSTCXX=$CXX
 	# Follow architectures used by pytorch
 	# https://github.com/archlinux/svntogit-community/blob/packages/python-pytorch/trunk/PKGBUILD
-	export TORCH_CUDA_ARCH_LIST="7.5;8.0;8.6;8.9;9.0;9.0a;12.0"
+	export TORCH_CUDA_ARCH_LIST="7.5 8.0 8.6 8.7 8.9 9.0 10.0 10.3 11.0 12.0 12.1"
 
 	CUDA_HOME=/opt/cuda/ python setup.py build
 }
