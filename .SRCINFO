@@ -1,0 +1,15 @@
+pkgbase = bootimus
+	pkgdesc = A Complete enhanced version of the PXE server
+	pkgver = 0.1.70
+	pkgrel = 1
+	url = https://github.com/garybowers/bootimus
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	source = bootimus-0.1.70.tar.gz::https://github.com/garybowers/bootimus/archive/v0.1.70.tar.gz
+	sha256sums = ce5b17b3a83be38127d76579424e236ae0ba09aed713300898a18f2a6cc0b42d
+
+pkgname = bootimus
