@@ -1,6 +1,6 @@
 pkgbase = coil-cli
 	pkgdesc = See your NVIDIA GPU in real time — a beautiful, live-updating TUI replacement for nvidia-smi
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Jettsondev/coil-cli
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = coil-cli
 	depends = nodejs
 	depends = python
 	provides = coil
-	noextract = coil-cli-0.2.0.tgz
+	noextract = coil-cli-0.3.0.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = coil-cli-0.2.0.tgz::https://registry.npmjs.org/coil-cli/-/coil-cli-0.2.0.tgz
-	b2sums = f54062efde92271c657663afdd00035108b22792e3e24e72b65a8dd1c10914fe5635b0335442d6df87d6066e1f88c8adc1ce175b25c67b0d269f6cebc145f220
+	source = coil-cli-0.3.0.tgz::https://registry.npmjs.org/coil-cli/-/coil-cli-0.3.0.tgz
+	b2sums = e66c610dda8c40c3c959e673e343bdf56821bdf16108d3dd7e36e0020d0b728eadcfc65b39bc1d92e68af25d6a3980f2bcf24da2dc0d1dd2fb024e41546c185f
 
 pkgname = coil-cli

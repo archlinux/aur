@@ -2,7 +2,7 @@
 
 pkgname="coil-cli"
 pkgdesc="See your NVIDIA GPU in real time — a beautiful, live-updating TUI replacement for nvidia-smi"
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 
 arch=("x86_64")
@@ -23,7 +23,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('f54062efde92271c657663afdd00035108b22792e3e24e72b65a8dd1c10914fe5635b0335442d6df87d6066e1f88c8adc1ce175b25c67b0d269f6cebc145f220')
+b2sums=('e66c610dda8c40c3c959e673e343bdf56821bdf16108d3dd7e36e0020d0b728eadcfc65b39bc1d92e68af25d6a3980f2bcf24da2dc0d1dd2fb024e41546c185f')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
