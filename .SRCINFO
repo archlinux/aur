@@ -1,6 +1,6 @@
 pkgbase = gscreenshot-git
 	pkgdesc = A simple screenshot tool supporting multiple backends. Git version, with wayland support
-	pkgver = 2.16.2.255.g9509509
+	pkgver = 3.11.1.r9509509.g
 	pkgrel = 1
 	url = https://github.com/thenaterhood/gscreenshot
 	arch = any

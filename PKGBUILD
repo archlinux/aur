@@ -1,7 +1,6 @@
 pkgname=gscreenshot-git
-pkgver=2.16.2.255.g9509509
+pkgver=3.11.1.r9509509.g
 pkgrel=1
-epoch=
 pkgdesc="A simple screenshot tool supporting multiple backends. Git version, with wayland support"
 arch=('any')
 url="https://github.com/thenaterhood/gscreenshot"
@@ -35,8 +34,13 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/gscreenshot"
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/./g' || \
-    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+    # Extract upstream version from SPEC file
+    base_ver=$(grep -Po '(?<=^%define version )[^ ]+' specs/gscreenshot.spec)
+
+    commit_hash=$(git rev-parse --short HEAD)
+
+    printf "%s.r%s.g%s" "$base_ver" "$commit_hash"
 }
 
 build() {
