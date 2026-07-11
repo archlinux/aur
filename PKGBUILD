@@ -28,9 +28,7 @@ build() {
 
 package() {
   cd "$_reponame"
-
-  install -Dm755 "$_reponame" -t "$pkgdir/usr/bin"
-  install -Dm644 "$_reponame.1" -t "$pkgdir/usr/share/man/man1"
+  make PREFIX="$pkgdir/usr" install
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 # vim:set ts=2 sw=2 et:
