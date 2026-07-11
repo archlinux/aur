@@ -2,8 +2,8 @@
 
 pkgname=chrome-pak-customizer-git
 _pkgname=chrome-pak-customizer
-pkgver=2.0.r12.g20cc7c1
-pkgrel=5
+pkgver=2.0.r13.gbfabc03
+pkgrel=1
 pkgdesc="a simple command-line tool to pack and unpack pak files in chrome or chromium-based browser"
 arch=(any)
 url="https://github.com/myfreeer/chrome-pak-customizer"
@@ -19,6 +19,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
+  sed -i 's/cmake_minimum_required(VERSION 2.8)/cmake_minimum_required(VERSION 3.5)/g' CMakeLists.txt
   cmake -S . -B build -GNinja -DLGPL=OFF
   cmake --build build
 }
