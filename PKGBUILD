@@ -6,7 +6,7 @@ pkgname="${_pkgname}-bin"
 
 pkgdesc="An app for managing ROMs in Steam (extracted from Debian package)"
 
-pkgver=2.5.41
+pkgver=2.5.42
 pkgrel=1
 
 arch=(x86_64)
@@ -20,7 +20,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}-git" "${_pkgname}-appimage")
 
 source=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-md5sums=(fe638f378a0b15aa348148f11933fcca)
+md5sums=(be4f37b4a2a30de9fda37ac36e6a49f6)
 
 options=(!strip)
 
