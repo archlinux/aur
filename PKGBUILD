@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-ext-tweaks-git
-pkgver=0.1.3.r68.g3d212df
+pkgver=0.2.2.r14.g4d97e1d
 pkgrel=1
 pkgdesc="A tweaking tool for the COSMIC desktop."
 arch=('x86_64')
-url="https://github.com/cosmic-utils/tweaks"
+url="https://tweaks.edfloreshz.dev"
 license=('GPL-3.0-or-later')
 depends=(
   'hicolor-icon-theme'
@@ -12,7 +12,7 @@ depends=(
 )
 makedepends=(
   'cargo'
-  'clang'
+#  'clang'
   'git'
   'just'
   'mold'
@@ -36,7 +36,7 @@ prepare() {
 build() {
   cd tweaks
   export RUSTUP_TOOLCHAIN=stable
-  export CC=clang
+#  export CC=clang
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
   just build-release --frozen
 }

@@ -1,12 +1,11 @@
 pkgbase = cosmic-ext-tweaks-git
 	pkgdesc = A tweaking tool for the COSMIC desktop.
-	pkgver = 0.1.3.r68.g3d212df
+	pkgver = 0.2.2.r14.g4d97e1d
 	pkgrel = 1
-	url = https://github.com/cosmic-utils/tweaks
+	url = https://tweaks.edfloreshz.dev
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
-	makedepends = clang
 	makedepends = git
 	makedepends = just
 	makedepends = mold
