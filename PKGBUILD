@@ -3,17 +3,18 @@
 _pkgname=getoptions
 pkgname=$_pkgname-ng
 pkgdesc="An elegant option/argument parser for shell scripts"
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 arch=(any)
 depends=(sh)
+makedepends=(pandoc)
 checkdepends=(shellcheck shellspec)
 provides=($_pkgname)
 conflicts=($_pkgname)
 url="https://gitlab.com/stefanwimmer128/$pkgname"
 license=(CC0-1.0)
 source=("$url/-/releases/v$pkgver/downloads/$pkgname-v$pkgver.tar.gz")
-sha256sums=('944681d1ead083da35b013522055d4aad28157e07ff1d6310f0c9365f35028d8')
+sha256sums=('8da08c1e39ff8977d019c5eb2b3fbc4ba76a933b50cc63fd32d9f90829aa81bd')
 
 prepare() {
     cd "$pkgname-v$pkgver" || return
