@@ -1,12 +1,15 @@
+# Contributor: ISSOtm <arch@eldred.fr>
+
 pkgname=linux-id
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="FIDO token implementation for Linux that protects the token keys using your system's TPM."
 arch=(x86_64)
 url=https://github.com/matejsmycka/linux-id
 license=(MIT)
 depends=(glibc)
 makedepends=(go)
+optdepends=('fprintd: Use fingerprint for authentication')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/matejsmycka/linux-id/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname.rules")
