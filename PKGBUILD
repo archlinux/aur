@@ -1,6 +1,6 @@
 # Maintainer: jxc <ab790430@petalmail.com>
-pkgname=pimension-esports-git
-_pkgname=Dimension-Esports
+pkgname=Dimension-Esports
+_pkgname=dimension-esports-git
 pkgver=r6.537de6d
 pkgrel=1
 pkgdesc="A DeepSeek AI chat desktop client built with Qt 6 and WebEngine"
