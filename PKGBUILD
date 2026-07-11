@@ -1,13 +1,13 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=gnofract4d-git
-pkgver=4.4.r0.gf6208cd
+pkgver=4.4.r1.gf63418b
 pkgrel=1
 pkgdesc='Create beautiful fractal images'
 arch=(any)
 url=https://fract4d.github.io/gnofract4d
 license=(BSD)
-depends=(gtk4 libjpeg libpng libxml2 python-cairo python-gobject)
+depends=(gtk4 libjpeg6 libpng libxml2 python-cairo python-gobject)
 makedepends=(git meson)
 optdepends=('ffmpeg: to create videos')
 checkdepends=(python-pytest)
