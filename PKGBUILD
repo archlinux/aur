@@ -3,7 +3,7 @@
 _gemname=rubocop-yard
 pkgname=ruby-$_gemname
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A RuboCop plugin to check YARDoc format"
 arch=(any)
 url="https://github.com/ksss/rubocop-yard"
@@ -15,7 +15,6 @@ depends=(
   ruby-yard
 )
 makedepends=(
-  git
   ruby-rdoc
 )
 checkdepends=(
