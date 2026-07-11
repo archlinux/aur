@@ -1,7 +1,7 @@
 pkgbase = monitoring-plugins-git
 	pkgdesc = Plugins for Icinga, Naemon, Nagios, Shinken, Sensu and other monitoring applications
 	pkgver = 3.0.1.r3.gb6021e5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/monitoring-plugins/monitoring-plugins/
 	install = monitoring-plugins.install
 	arch = x86_64

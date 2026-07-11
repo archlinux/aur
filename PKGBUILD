@@ -6,7 +6,7 @@
 _pkgname=monitoring-plugins
 pkgname=${_pkgname}-git
 pkgver=3.0.1.r3.gb6021e5
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugins for Icinga, Naemon, Nagios, Shinken, Sensu and other monitoring applications"
 arch=('x86_64')
 url="https://github.com/monitoring-plugins/monitoring-plugins/"
@@ -66,6 +66,7 @@ build() {
 	./configure \
 		--prefix=/usr \
 		--libexecdir=/usr/lib/monitoring-plugins \
+		--enable-libtap \
 		--with-ping-command='/usr/bin/ping -4 -n -U -w %d -c %d %s' \
 		--with-ping6-command='/usr/bin/ping -6 -n -U -w %d -c %d %s'
 
@@ -73,10 +74,20 @@ build() {
 	make ChangeLog THANKS
 }
 
+check() {
+	cd "$_pkgname"
+
+	make -C lib test
+}
+
 package() {
 	cd "$_pkgname"
 
 	make DESTDIR="${pkgdir}" install
+
+	# Do not package the bundled test framework's development header.
+	rm "${pkgdir}"/usr/include/tap.h
+	rmdir "${pkgdir}"/usr/include
 
 	# Upstream heavily discourages against setuid, which their current build system
 	# currently uses, as it is apparently nontrivial to replace it for all
