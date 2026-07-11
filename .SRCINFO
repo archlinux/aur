@@ -1,7 +1,7 @@
 pkgbase = coolercontrol-bin
-	pkgdesc = A program to monitor and control your cooling devices (binary release)
+	pkgdesc = A program to monitor and control your cooling devices (official, binary package)
 	pkgver = 4.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/coolercontrol/coolercontrol
 	arch = x86_64
 	groups = coolercontrol-bin
