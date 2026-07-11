@@ -1,0 +1,5 @@
+[erg-bin]
+source = "github"
+github = "erg-lang/erg"
+use_latest_release = true
+prefix = "v"
