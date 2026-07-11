@@ -1,0 +1,5 @@
+[cinf-bin]
+source = "github"
+github = "mhausenblas/cinf"
+use_latest_release = true
+prefix = "v"
