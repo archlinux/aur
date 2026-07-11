@@ -1,7 +1,7 @@
 # Maintainer: kekmacska <kekmacska2@proton.me>
 pkgname=linwood-butterfly-git
 pkgbase=linwood-butterfly-git
-pkgver=2.6.0_beta.2_188_gitd7af30e5d7
+pkgver=2.6.0_beta.2_188_git55c7d2d23b
 pkgrel=1
 pkgdesc="Development build of Linwood Butterfly, a Flutter-based endless canvas note-taking app"
 arch=('x86_64')
@@ -37,6 +37,11 @@ pkgver() {
   version="${version//+/_}"
 
   printf "${version}_git$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+  cd "$srcdir/Butterfly/app"
+  sed -i 's/flutter: 3.44.5/flutter: ">=3.44.5 <3.45.0"/' pubspec.yaml  #while upstream is still stuck at 3.44.5, the old version. Since Arch uses 3.44.6
 }
 
 build() {
