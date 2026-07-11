@@ -1,0 +1,23 @@
+pkgbase = wall-it-git
+	pkgdesc = Professional modular wallpaper manager for Wayland desktops
+	pkgver = 2.1.0.r0.gcf46d85
+	pkgrel = 1
+	url = https://github.com/DiscoCevapi/Wall-IT
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = python-pillow
+	depends = python-numpy
+	optdepends = awww: wallpaper daemon backend used by start-wall-it
+	optdepends = matugen: Material You color generation
+	optdepends = python-cairo: enhanced icon drawing support in GUI
+	optdepends = keyd: global keybind helper integration
+	provides = wall-it
+	conflicts = wall-it
+	source = git+https://github.com/DiscoCevapi/Wall-IT.git
+	sha256sums = SKIP
+
+pkgname = wall-it-git
