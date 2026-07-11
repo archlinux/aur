@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-snapshot
-pkgver=26.07.2
+pkgver=26.07.3
 pkgrel=1
 pkgdesc="A tool for creating live ISO images from running systems"
 arch=('x86_64' 'i686')
@@ -21,8 +21,8 @@ provides=('mx-remaster-live-files=1.0.0')
 # /etc/mx-snapshot.conf and the exclude list are meant to be user-edited;
 # without this, pacman would overwrite local changes on every upgrade.
 backup=('etc/mx-snapshot.conf' 'etc/mx-snapshot-exclude.list')
-source=("https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.07.2.tar.gz")
-sha256sums=('cbbbe7fe7a3adb651caa0be0b69576cc1f05b88b5d0da8b9507b77d6c644db1c')
+source=("https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.07.3.tar.gz")
+sha256sums=('ebaafe12842a6ce4014c96eee66c4d7752dc45cb6719464dbd054ce0a6358818')
 
 build() {
     cd "${srcdir}"/mx-snapshot*-"${pkgver}"
