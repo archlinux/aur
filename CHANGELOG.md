@@ -14,11 +14,97 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## 🐛 Fixes
 
-## 🛠 Maintenance
-
-## 📚 Documentation -->
+## 🛠 Maintenance  -->
 
 # [Unreleased]
+
+> Important: 0 potentially breaking changes below, indicated by **❗ BREAKING ❗**
+
+## ❗ BREAKING ❗
+
+## 🚀 Features
+
+## 🐛 Fixes
+
+## 🛠 Maintenance
+
+# [0.41.0] - 2026-07-09
+
+> Important: 1 potentially breaking change below, indicated by **❗ BREAKING ❗**
+
+## ❗ BREAKING ❗
+
+- **`graph introspect --format json` now returns GraphQL introspection JSON - @smyrick PR #3440**
+
+  `rover graph introspect` with `--format json` now puts the schema as a GraphQL introspection object (`{ "__schema": ... }`) under `data.introspection_response` instead of an SDL string. Default plain output remains SDL. This is a behavior change for existing `--format json` consumers: traverse `data.introspection_response` to get the introspection object (for example, `jq '.data.introspection_response'`). No field or value transformation is needed beyond envelope traversal.
+
+## 🚀 Features
+
+- **Add `rover supergraph config expand` to preview an expanded supergraph config - @SharkBaitDLS PR #3447 fixes #1579**
+
+  `rover supergraph config expand --config ./supergraph.yaml` prints your supergraph configuration file with all variable references (e.g. `${env.PRODUCTS_URL}` and `${file.path}`) expanded. This makes it easy to confirm what Rover actually resolves your config to before a composition run. Use `--format json` to get the expanded config under an `expanded_config` field.
+
+- **Add `--changelog-message` to `graph publish` and `subgraph publish` - @SharkBaitDLS PR #3398 fixes #1884 #292**
+
+  `rover graph publish` and `rover subgraph publish` now accept `--changelog-message <MESSAGE>` to attach a note to the publish in the Studio schema changelog. The publish output has also been enriched: `graph publish` now reports the schema hash and total named type count and `subgraph publish` now includes the resulting supergraph composition hash when one is available.
+
+- **Add `rover dev --supergraph-output` to control the output of the composed supergraph - @SharkBaitDLS PR #3383 fixes #1864**
+
+  `rover dev` can now write the supergraph schema it composes to a path of your choosing and keep it updated on every recomposition, e.g. `rover dev --supergraph-output build/supergraph.graphql`. Previously the composed supergraph only lived in a temp file, and the global `--output`/`-o` flag (which controls a command's own CLI output, not its artifacts) appeared to be silently ignored by `dev`. The global `--output` help text now clarifies that distinction.
+
+- **Add `rover graph-artifact tag` command - @zw428 PR #3282**
+
+  Adds the `rover graph-artifact tag` command for [Graph Artifact](https://www.apollographql.com/docs/graphos/platform/schema-management/delivery/graph-artifacts) tagging.
+
+- **Add `rover persisted-queries generate` command - @dotdat PR #3481**
+
+  Scans GraphQL operation files and generates a persisted query manifest, written to a file (`--manifest-path`) or stdout. Supports `--include`/`--exclude` glob filtering and a configurable `--root-dir`.
+
+- **Add `--check` flag to the `subgraph-publish` GitHub Action - @SharkBaitDLS PR #3375**
+
+- **Add `APOLLO_ROVER_SKIP_UPDATE` to disable all auto-updating at once - @SharkBaitDLS PR #3378 fixes #1892**
+
+  Setting the `APOLLO_ROVER_SKIP_UPDATE` environment variable (to `1` or `true`) opts out of all of Rover's auto-updating in a single switch: it skips both the rover self-update check (the `--skip-update-check` flag) and the `supergraph`/`router` plugin auto-updates (the `--skip-update` flag), so on-the-fly plugin resolution uses an already-installed plugin instead of contacting the registry. This is aimed at tightly-controlled monorepo/CI setups that want plugin versions lockstep with CI and prod. The explicit `rover install` command still installs as requested.
+
+## 🐛 Fixes
+
+- **Include error cause detail in `--format json` output - @SharkBaitDLS PR#3408 fixes #1320**
+
+  When a command fails, its JSON output now includes a `causes` array carrying the same `Caused by:` detail that plain-text output already shows, outermost cause first.
+
+- **Install plugins without relying on a writable system temp directory - @SharkBaitDLS PR #3385 fixes #1422**
+
+  Rover now extracts downloaded `supergraph`/`router` plugin tarballs inside its own install directory rather than the system temp dir (`TMPDIR`/`/tmp`), so installations can succeed on read-only filesystems.
+
+- **Return a clear error when composition produces no output - @SharkBaitDLS PR #3384 fixes #1904**
+
+- **Fall back to an installed plugin when the registry is unreachable - @SharkBaitDLS PR #3362 fixes #1791 #1808**
+
+  When Rover needs the latest `supergraph` or `router` plugin but can't reach the plugin registry (an outage, a network blip, or simply being offline), it now falls back to the newest compatible plugin already installed in `~/.rover/bin` with a warning instead of failing outright. Exact version pins still return an error.
+
+- **Extend the timeout for plugin downloads - @SharkBaitDLS PR #3358 #3386 fixes #1583 #1867**
+
+  Plugin downloads no longer inherit the 30s default that bounds API requests. With `--client-timeout` unset, downloads get a 300s default timeout (plus a 30s connection timeout so a genuinely-offline run still fails fast). When `--client-timeout` *is* provided, it still applies to downloads as before.
+
+- **Read UTF-16 (and BOM-prefixed) schema files - @SharkBaitDLS PR #3351 fixes #653**
+
+  `Fs::read_file` now detects a leading byte-order mark and transcodes the file to UTF-8, so schemas saved as UTF-16 — most commonly produced by Windows PowerShell `>` redirects, e.g. `rover graph introspect ... > schema.gql` — are read instead of failing with "stream did not contain valid UTF-8". A UTF-8 BOM is stripped; files with no recognized BOM are still read as UTF-8 (preserving prior behavior), and malformed input surfaces an error rather than being silently replaced. Decoding is handled by `encoding_rs`.
+
+- **Restore the "pin your federation version" warning on `supergraph compose` - @SharkBaitDLS PR #3347**
+
+  `rover supergraph compose` again warns when `federation_version` is not pinned to an exact version, reinstating the documented notice that future versions will require one. This nudge was added in #1524 and inadvertently dropped in v0.27.2 (#2411) during the supergraph-config resolution rewrite; composing against a floating `1`/`2` (or omitting the key) now once again warns and recommends pinning, to avoid pulling in breaking changes when a new federation release ships. `rover dev` and the language server remain silent. Fixes #1510.
+
+- **Report a clearer error when schema-check polling fails on large schemas - @SharkBaitDLS PR #3349**
+
+  Centralizes the poll loop between `graph`/`subgraph check`, and surfaces a more helpful error when a check likely failed because the schema was too large to download in time. Relates to #1383.
+
+## 🛠 Maintenance
+
+- **Migrate npm packaging to `cargo-npm`, removing the `postinstall` script - @dotdat PR #3430**
+- **Fix `cargo npm generate` invocation in the release workflow - @dotdat PR #3492**
+- **Migrate to `keyring-core` (keyring 4.0) - @SharkBaitDLS PR #3370**
+- **Remove unused Pandas npm package from test tooling - @SharkBaitDLS PR #3335**
+- **Upgrade default Federation version to 2.15 - @SharkBaitDLS PR #3472**
 
 # [0.40.0] - 2026-05-28
 
