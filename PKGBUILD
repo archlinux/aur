@@ -115,8 +115,8 @@ package() {
 
   # Define compilers for CUDA to use.
   # This allows us to use older versions of GCC if we have to.
-  ln -s /usr/bin/gcc "${pkgdir}/opt/cuda/bin/gcc"
-  ln -s /usr/bin/g++ "${pkgdir}/opt/cuda/bin/g++"
+  ln -s /usr/bin/gcc-14 "${pkgdir}/opt/cuda/bin/gcc"
+  ln -s /usr/bin/g++-14 "${pkgdir}/opt/cuda/bin/g++"
 
   # Install profile and ld.so.config files
   install -Dm755 "${srcdir}/cuda.sh" "${pkgdir}/etc/profile.d/cuda.sh"
