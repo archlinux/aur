@@ -1,6 +1,6 @@
 pkgbase = zelynic-bin
 	pkgdesc = Easy userspace bandwidth manager for Linux
-	pkgver = 9.0.0
+	pkgver = 10.0.0
 	pkgrel = 1
 	url = https://github.com/oxyzenQ/zelynic
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = zelynic-bin
 	provides = zelynic
 	conflicts = zelynic
 	options = !strip
-	source_x86_64 = zelynic-x86_64-9.0.0.tgz::https://github.com/oxyzenQ/zelynic/releases/download/v9.0.0/zelynic-v9.0.0-linux-amd64-gnu.tar.gz
-	sha256sums_x86_64 = 80692711513a3f871d2c1bb80de51b05c1ce734359d5c9dafb34d5ef4e45c692
+	source_x86_64 = zelynic-x86_64-10.0.0.tgz::https://github.com/oxyzenQ/zelynic/releases/download/v10.0.0/zelynic-v10.0.0-linux-amd64-gnu.tar.gz
+	sha256sums_x86_64 = b6b0525912459003778da773d7fcde2b04d3f1bdda3108bcdd94eef427ad7798
 
 pkgname = zelynic-bin
