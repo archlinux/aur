@@ -1,6 +1,6 @@
 pkgbase = zathura-git
 	pkgdesc = Minimalistic document viewer
-	pkgver = 2026.05.20.r28.g00f1b203
+	pkgver = 2026.07.08.r6.gedc0ca7e
 	pkgrel = 1
 	url = https://pwmt.org/projects/zathura
 	arch = x86_64

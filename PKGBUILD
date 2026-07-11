@@ -2,7 +2,7 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-git
-pkgver=2026.05.20.r28.g00f1b203
+pkgver=2026.07.08.r6.gedc0ca7e
 pkgrel=1
 pkgdesc="Minimalistic document viewer"
 arch=('x86_64')
@@ -30,7 +30,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  arch-meson build -Dtests=disabled
+  arch-meson build -Dtests-x11=disabled -Dtests-wayland=disabled
   ninja -C build
 }
 
