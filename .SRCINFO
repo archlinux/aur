@@ -1,7 +1,7 @@
 pkgbase = incus-compose-git
 	pkgdesc = Bring the familiar Docker Compose workflow to Incus containers
 	pkgver = r576.ad18fca
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lxc/incus-compose
 	arch = x86_64
 	arch = aarch64
