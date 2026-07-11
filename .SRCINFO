@@ -1,0 +1,18 @@
+pkgbase = deepseekqt-git
+	pkgdesc = A DeepSeek AI chat desktop client built with Qt 6 and WebEngine
+	pkgver = r6.537de6d
+	pkgrel = 1
+	url = https://gitee.com/jxc20120414/deep-seek-qt-githubmirror
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-webengine
+	provides = deepseekqt
+	conflicts = deepseekqt
+	source = deepseekqt-git::git+https://gitee.com/jxc20120414/deep-seek-qt-githubmirror.git
+	sha256sums = SKIP
+
+pkgname = deepseekqt-git
