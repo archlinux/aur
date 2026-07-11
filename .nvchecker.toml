@@ -1,0 +1,5 @@
+[coursier-bin]
+source = "github"
+github = "coursier/coursier"
+use_latest_release = true
+prefix = "v"
