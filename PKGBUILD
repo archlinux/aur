@@ -5,11 +5,12 @@
 # to the PKGBUILD file.
 pkgname=rcu-bin
 pkgver=4.0.34
-pkgrel=1
+pkgrel=2
 pkgdesc="reMarkable Connection Utility (RCU)"
 arch=('x86_64')
 url="http://www.davisr.me/projects/rcu/"
 license=('AGPL3')
+depends=('gcc-libs' 'zlib')
 source=(
     "local://rcu-${pkgver}-archlinux.tar.gz"
     "rcu.desktop"
