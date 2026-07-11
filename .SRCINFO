@@ -1,0 +1,15 @@
+pkgbase = brainflop
+	pkgdesc = Optimized Brainfuck compiler and runner that can also transpile to C with customizable code-generation options
+	pkgver = 1.1.4
+	pkgrel = 2
+	url = https://github.com/Monjaris/brainflop
+	arch = x86_64
+	license = MIT
+	makedepends = xmake
+	makedepends = git
+	depends = gcc
+	options = !debug
+	source = brainflop-1.1.4.tar.gz::https://github.com/Monjaris/brainflop/archive/refs/tags/v1.1.4.tar.gz
+	sha256sums = 41394cd0d21f14e4f5b3ef0937468d90a4abb3831e42259e7c4bc52cbf33cc25
+
+pkgname = brainflop
