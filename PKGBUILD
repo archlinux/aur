@@ -6,7 +6,7 @@
 
 pkgname=firefox-pure
 pkgver=152.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, Private & Safe Web Browser"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64)
@@ -20,7 +20,6 @@ depends=(
   ffmpeg
   fontconfig
   freetype2
-  gcc-libs
   gdk-pixbuf2
   glib2
   glibc
@@ -28,8 +27,10 @@ depends=(
   hicolor-icon-theme
   icu
   libevent
+  libgcc
   libjpeg-turbo
   libpulse
+  libstdc++
   libvpx
   libwebp
   mime-types
