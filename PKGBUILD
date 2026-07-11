@@ -2,7 +2,7 @@
 
 pkgname=raspisump
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Sump pit water level monitoring system for the Raspberry Pi"
 arch=('any')
 url="https://www.linuxnorth.org/raspi-sump/"
@@ -32,16 +32,19 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/alaudet/raspi-sump/archive/
         'raspisump.tmpfiles'
         60-gpiochips.rules
         0001-fix.patch
+        0002-Add-12h-24h-time-format-setting-for-chart-x-axis.patch
       )
 sha256sums=('7593bb0cc9da93276245b39df1a4e2ac938e074b2059eaabdc3cb5e80ecdf9b8'
             'bcf6c728795e696d5d8834de0c27580bd4eedcb86cb0a67eda5fd5fd5f8ef08a'
             'a33537303aed0080411c0a5860b1782c88372dbda9b06dfc9c7a5ca14d5e83b7'
             '6ceae2aa160f8f591935a17dd4b33f3dfc4b5d8defa15a1d89595a880046030a'
-            '0ec94b0e98411f723d40737742da5044411cf4382b7ddac949b13b46af603abb')
+            '0ec94b0e98411f723d40737742da5044411cf4382b7ddac949b13b46af603abb'
+            'a166a2c8ef227f594019418a7e926ab383da842dd3341934d9a50292aef47f76')
 
 prepare() {
   cd "raspi-sump-$pkgver"
   patch -p1 -i ../0001-fix.patch
+  patch -p1 -i ../0002-Add-12h-24h-time-format-setting-for-chart-x-axis.patch
 }
 
 build() {
@@ -83,7 +86,7 @@ package() {
 
   # udev rule
   install -d "$pkgdir/usr/lib/udev/rules.d"
-  install -Dm0644 60-gpiochips.rules "$pkgdir/usr/lib/udev/rules.d/60-gpiochips.rules"
+  install -Dm0644 "$srcdir"/60-gpiochips.rules "$pkgdir/usr/lib/udev/rules.d/60-gpiochips.rules"
 
   # Version footer string. $pkgver is already known at build time, so this
   # is written once here instead of shelling out to `pacman -Q` at

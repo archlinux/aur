@@ -1,0 +1,193 @@
+From 2dc8473f8c1a917a7271094463ca7d73a4a837b8 Mon Sep 17 00:00:00 2001
+From: graysky <therealgraysky AT proton DOT me>
+Date: Sat, 11 Jul 2026 14:48:23 -0400
+Subject: [PATCH] Add 12h/24h time format setting for chart x-axis
+
+Adds a "Display" section to the admin Configuration page (and a
+matching [display] time_format key in raspisump.conf) so the
+water-level chart's x-axis can be shown in 12-hour or 24-hour time.
+The value is rendered server-side into a data-timeformat attribute
+on <html>, which sumpChart.js reads to format tick labels.
+---
+ conf/raspisump.conf             | 11 +++++++++++
+ raspisump/config_values.py      |  5 +++++
+ raspisump/static/sumpChart.js   | 25 +++++++++++++++++++------
+ raspisump/templates/base.html   |  2 +-
+ raspisump/web/__init__.py       |  3 ++-
+ raspisump/web/config_helpers.py |  5 +++++
+ tests/test_web_config.py        |  2 ++
+ tests/test_web_setup.py         |  1 +
+ 8 files changed, 46 insertions(+), 8 deletions(-)
+
+diff --git a/conf/raspisump.conf b/conf/raspisump.conf
+index c79e072dd4f8..b18599e19c87 100644
+--- a/conf/raspisump.conf
++++ b/conf/raspisump.conf
+@@ -2,6 +2,17 @@
+ # All configurations should be done in this file.
+ # This file should be located in /etc/raspi-sump/
+ 
++[display]
++
++# Time format for the water-level chart x-axis.
++# This controls how the time of day is displayed along the bottom of the
++# charts on the web interface.
++# 24h = 24-hour clock  (e.g. 14:30)
++# 12h = 12-hour clock with AM/PM  (e.g. 2:30 PM)
++# The default is 24h if this value is not present.
++time_format = 24h
++
++
+ [gpio_pins]
+ 
+ # Raspi-Sump uses the actual GPIO numbers and not the Pi numerical pin 
+diff --git a/raspisump/config_values.py b/raspisump/config_values.py
+index b1d787d1da29..3b1f426aec30 100644
+--- a/raspisump/config_values.py
++++ b/raspisump/config_values.py
+@@ -23,6 +23,11 @@ def cycle_detection_enabled() -> bool:
+     return config.get("experimental", "cycle_detection", fallback="no").lower() == "yes"
+ 
+ 
++def time_format() -> str:
++    """Return '12h' or '24h' from [display] time_format; defaults to 24h."""
++    return config.get("display", "time_format", fallback="24h")
++
++
+ def configuration():
+     """Return a dict of the configuration file"""
+     return {
+diff --git a/raspisump/static/sumpChart.js b/raspisump/static/sumpChart.js
+index 008f867463ad..df44d5c1de89 100644
+--- a/raspisump/static/sumpChart.js
++++ b/raspisump/static/sumpChart.js
+@@ -38,6 +38,19 @@ function initRangeChart(containerId, start, end) {
+     _fetchAndRender(url, containerId, true);
+ }
+ 
++/* ── time formatting ────────────────────────────────────────────────── */
++
++function _formatTime(d) {
++    if (document.documentElement.getAttribute('data-timeformat') === '12h') {
++        var h = d.getHours() % 12;
++        if (h === 0) h = 12;
++        var ampm = d.getHours() < 12 ? 'AM' : 'PM';
++        return h + ':' + String(d.getMinutes()).padStart(2, '0') + ' ' + ampm;
++    }
++    return String(d.getHours()).padStart(2, '0') + ':' +
++           String(d.getMinutes()).padStart(2, '0');
++}
++
+ /* ── shared fetch + render ─────────────────────────────────────────── */
+ 
+ function _fetchAndRender(url, containerId, multiDay) {
+@@ -102,16 +115,14 @@ function _renderChart(container, json, containerId, multiDay) {
+                 if (v === null) return '';
+                 var d = new Date(v * 1000);
+                 return _MONTHS[d.getMonth()] + ' ' + String(d.getDate()).padStart(2, '0') +
+-                       ' ' + String(d.getHours()).padStart(2, '0') + ':' +
+-                       String(d.getMinutes()).padStart(2, '0');
++                       ' ' + _formatTime(d);
+             });
+           }
+         : function(u, vals) {
+             return vals.map(function(v) {
+                 if (v === null) return '';
+                 var d = new Date(v * 1000);
+-                return String(d.getHours()).padStart(2, '0') + ':' +
+-                       String(d.getMinutes()).padStart(2, '0');
++                return _formatTime(d);
+             });
+           };
+ 
+@@ -178,10 +189,12 @@ function downloadChart(containerId, filename) {
+ 
+ /* ── theme change ────────────────────────────────────────────────────── */
+ 
+-document.addEventListener('themechange', function() {
++function _rerenderAll() {
+     Object.keys(_registry).forEach(function(id) {
+         var reg = _registry[id];
+         if (reg.type === 'day')   initChart(id, reg.date);
+         if (reg.type === 'range') initRangeChart(id, reg.start, reg.end);
+     });
+-});
++}
++
++document.addEventListener('themechange', _rerenderAll);
+diff --git a/raspisump/templates/base.html b/raspisump/templates/base.html
+index d81d39235c3e..ce8374d06315 100644
+--- a/raspisump/templates/base.html
++++ b/raspisump/templates/base.html
+@@ -1,5 +1,5 @@
+ <!DOCTYPE html>
+-<html lang="en">
++<html lang="en"{% if time_format == '12h' %} data-timeformat="12h"{% endif %}>
+ <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+diff --git a/raspisump/web/__init__.py b/raspisump/web/__init__.py
+index 94e801a04282..3090f2a2d927 100644
+--- a/raspisump/web/__init__.py
++++ b/raspisump/web/__init__.py
+@@ -50,7 +50,8 @@ def create_app():
+ 
+     @app.context_processor
+     def inject_globals():
+-        return {"version": app.config["VERSION"]}
++        from raspisump.config_values import time_format
++        return {"version": app.config["VERSION"], "time_format": time_format()}
+ 
+     from raspisump.web.views.home import bp as home_bp
+     from raspisump.web.views.history import bp as history_bp
+diff --git a/raspisump/web/config_helpers.py b/raspisump/web/config_helpers.py
+index f5c3f021fc4e..34345c3d702a 100644
+--- a/raspisump/web/config_helpers.py
++++ b/raspisump/web/config_helpers.py
+@@ -13,6 +13,11 @@ _CONF_PATH = "/etc/raspi-sump/raspisump.conf"
+ # options: [(value, display), ...] for select, else None
+ # ---------------------------------------------------------------------------
+ FIELD_SCHEMA = [
++    ("display", "Display", [
++        ("time_format", "Chart Time Format", "select",
++         [("24h", "24-hour (14:30)"), ("12h", "12-hour (2:30 PM)")],
++         "Time format for the water-level chart x-axis"),
++    ]),
+     ("gpio_pins", "GPIO Pins", [
+         ("trig_pin", "Trig Pin", "integer", None,
+          "GPIO pin number that sends the trigger signal"),
+diff --git a/tests/test_web_config.py b/tests/test_web_config.py
+index 1a2da12f1ba0..4c6d7fe6eb13 100644
+--- a/tests/test_web_config.py
++++ b/tests/test_web_config.py
+@@ -87,6 +87,7 @@ class TestValidateConfigForm(unittest.TestCase):
+     def _make_form(self, overrides=None):
+         """Build a valid form dict, apply any overrides."""
+         data = {
++            "display__time_format": "24h",
+             "gpio_pins__trig_pin": "17",
+             "gpio_pins__echo_pin": "27",
+             "pit__unit": "metric",
+@@ -286,6 +287,7 @@ class TestConfigView(unittest.TestCase):
+     def test_config_post_valid_saves_and_shows_success(self):
+         self._auth()
+         form = {
++            "display__time_format": "24h",
+             "gpio_pins__trig_pin": "18",
+             "gpio_pins__echo_pin": "27",
+             "pit__unit": "metric",
+diff --git a/tests/test_web_setup.py b/tests/test_web_setup.py
+index 3e8a2fcd5d08..a3dce5282cf1 100644
+--- a/tests/test_web_setup.py
++++ b/tests/test_web_setup.py
+@@ -13,6 +13,7 @@ except ImportError:
+ 
+ # Minimal valid wizard form data (all raspisump.conf fields + admin password)
+ _VALID_FORM = {
++    "display__time_format": "24h",
+     "gpio_pins__trig_pin": "17",
+     "gpio_pins__echo_pin": "27",
+     "pit__unit": "metric",
+-- 
+2.55.0
+
