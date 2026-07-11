@@ -8,6 +8,7 @@ license=('custom')
 depends=(
   'python'
   'python-gobject'
+  'python-cairo'
   'gtk4'
   'python-pillow'
   'python-numpy'
@@ -15,7 +16,6 @@ depends=(
 optdepends=(
   'awww: wallpaper daemon backend used by start-wall-it'
   'matugen: Material You color generation'
-  'python-cairo: enhanced icon drawing support in GUI'
   'keyd: global keybind helper integration'
 )
 makedepends=('git')
