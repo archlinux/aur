@@ -2,7 +2,7 @@
 
 pkgname=mebtty
 _pkgname=mebtty
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Self-hosted web terminal that brings server shells to the browser'
 arch=('x86_64')
@@ -23,7 +23,7 @@ sha256sums=(
   'SKIP'
 )
 sha256sums_x86_64=(
-  '38e511396acb02144a48e1f12ebcb4fa69982abe424821b394ac07ebc641d90f'
+  '9841e1c3a3baddd59c7168b266ae849f73b4e3257ca5832ad1ceafc45409fb77'
   'c9b2bdd5a5654e6443265ee3d395087cd8d8e81c1adabe3fe0887316fecbb1bc'
   'aeeb73fc1446b76daaf4b9735e56dec39185df9cc944bf38b9ab3b80a116fc1f')
 
