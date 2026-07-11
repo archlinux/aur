@@ -1,10 +1,11 @@
-# Maintainer: Antonio Rojas <arojas@archlinux,org>
+# Maintainer: Umar Alfarouk <medrivia@gmail.com>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kseexpr-qt6-git
-pkgver=6.0.0.0.r20.g871d4a3
+pkgver=6.0.0.0.r67.g713c79f
 pkgrel=1
 pkgdesc='An embeddable expression evaluation engine (Krita fork)'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url='https://krita.org'
 license=(GPL-3.0-or-later)
 provides=(kseexpr-qt6)
