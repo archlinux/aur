@@ -8,7 +8,7 @@
 
 libname=libpng
 pkgname=$libname-apng
-pkgver=1.6.56
+pkgver=1.6.58
 _apngver=$pkgver
 pkgrel=1
 pkgdesc="A collection of routines used to create PNG format graphics files"
@@ -58,3 +58,5 @@ package() {
   make PNGLIB_SHARED="-L$pkgdir/usr/lib -lpng" CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" png2pnm pnm2png
   install -m0755 png2pnm pnm2png "$pkgdir/usr/bin/"
 }
+sha256sums=('28eb403f51f0f7405249132cecfe82ea5c0ef97f1b32c5a65828814ae0d34775'
+            'eee7dea22ed502868017971c86c63c4ed1e6085de0baebfdcc3d3322f00f3eb0')
