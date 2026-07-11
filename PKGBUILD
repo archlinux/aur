@@ -1,5 +1,5 @@
 pkgname=v2ray-rs
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Linux desktop GUI for v2ray/xray/sing-box proxy management"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 options=(!lto)
 install=v2ray-rs.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('957f543a28e4020242f0369e7dcb0bf6441188d8baf9bc0c8a07170279b34b63')
+sha256sums=('261e10fb26465d04fe04f49ab93bdffd37bf7c0fb20c620b6fdc0b40f24cec4a')
 
 prepare() {
     cd "$pkgname-$pkgver"
