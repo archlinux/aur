@@ -1,0 +1,4 @@
+[vapoursynth-plugin-mvutensils]
+source = "git"
+git = "https://github.com/myrsloik/mvutensils.git"
+prefix = "v"
