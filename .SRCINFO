@@ -1,15 +1,14 @@
 pkgbase = teleport-client
 	pkgdesc = Modern SSH server for teams managing distributed infrastructure - Client-only (tsh, tctl)
 	pkgver = 18.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gravitational/teleport
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = AGPL-3.0-only
-	makedepends = go>=1.16.0,
+	makedepends = go
 	makedepends = git
-	makedepends = cargo
 	depends = glibc
 	depends = libfido2
 	provides = teleport-client

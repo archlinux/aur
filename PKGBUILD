@@ -1,16 +1,16 @@
-# Maintainer: Julien Virey <julien.virey@gmail.com>
+# Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 
 pkgname=teleport-client
 pkgver=18.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern SSH server for teams managing distributed infrastructure - Client-only (tsh, tctl)"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/gravitational/teleport"
-license=('AGPL-3.0-only')
-depends=('glibc' 'libfido2')
-makedepends=('go>=1.16.0', 'git' 'cargo')
-provides=('teleport-client' 'tctl' 'tsh')
-conflicts=('teleport' 'teleport-client-bin' 'tctl' 'tsh')
+license=(AGPL-3.0-only)
+depends=(glibc libfido2)
+makedepends=(go git)
+provides=(teleport-client tctl tsh)
+conflicts=(teleport teleport-client-bin tctl tsh)
 source=("${pkgname%-*}-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('75a6018ebb6e7e5ffc9f74ee6a5352dc1d5a3390f5617945cbef4f1a45f614e5')
 
