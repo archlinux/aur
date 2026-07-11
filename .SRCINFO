@@ -1,6 +1,6 @@
 pkgbase = mcpsnoop-bin
 	pkgdesc = Wireshark for MCP. A transparent proxy that shows every real tool call between your AI client and your MCP servers, live in your terminal.
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/kerlenton/mcpsnoop
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = mcpsnoop-bin
 	provides = mcpsnoop
 	conflicts = mcpsnoop
 	options = !strip
-	source_x86_64 = mcpsnoop-x86_64-0.5.0.tgz::https://github.com/kerlenton/mcpsnoop/releases/download/v0.5.0/mcpsnoop_0.5.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 4b0760b002f63de6b45fa9649ace487cf989fc1c7e82530a9bc5e7fa74d2ed7a
-	source_aarch64 = mcpsnoop-aarch64-0.5.0.tgz::https://github.com/kerlenton/mcpsnoop/releases/download/v0.5.0/mcpsnoop_0.5.0_linux_amd64.tar.gz
-	sha256sums_aarch64 = 4b0760b002f63de6b45fa9649ace487cf989fc1c7e82530a9bc5e7fa74d2ed7a
+	source_x86_64 = mcpsnoop-x86_64-0.6.0.tgz::https://github.com/kerlenton/mcpsnoop/releases/download/v0.6.0/mcpsnoop_0.6.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d1e934216d1018ebb82461f4d302c8fc64254fc84467c517fc305f89cfa17bbb
+	source_aarch64 = mcpsnoop-aarch64-0.6.0.tgz::https://github.com/kerlenton/mcpsnoop/releases/download/v0.6.0/mcpsnoop_0.6.0_linux_amd64.tar.gz
+	sha256sums_aarch64 = d1e934216d1018ebb82461f4d302c8fc64254fc84467c517fc305f89cfa17bbb
 
 pkgname = mcpsnoop-bin
