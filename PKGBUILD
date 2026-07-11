@@ -5,8 +5,8 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-pure
-pkgver=152.0.4
-pkgrel=2
+pkgver=152.0.5
+pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64)
@@ -81,7 +81,7 @@ source=(
   "0001-Install-under-remoting-name.patch"
 )
 sha256sums=(
-  'fd89982202cda5353a27307d85d48902d46576d46d1c9e36d55740e63b5216bb'
+  '0a0341b05ac68834c4071665fe11f1e6729084b4e4ffcd70241097b0ad2cb224'
   'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
   '71fe797430198ac8c00b538dce537284cf526e48be0496698cf5a980d70c16da'
   '23f557fa7989adcae03cc9458d94716981dbcf0e9d6d52a289a2426e50b4b785'
