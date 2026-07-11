@@ -13,6 +13,7 @@ pkgbase = pantheon-monitor
 	depends = flatpak
 	depends = glib2
 	depends = granite7
+	depends = gtk3
 	depends = gtk4
 	depends = json-glib
 	depends = libadwaita
@@ -20,6 +21,7 @@ pkgbase = pantheon-monitor
 	depends = libgtop
 	depends = pciutils
 	depends = udisks2
+	depends = wingpanel
 	source = pantheon-monitor::git+https://github.com/elementary/monitor.git
 	sha256sums = SKIP
 
