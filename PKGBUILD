@@ -1,9 +1,10 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
+# Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 # Contributer: Jose Riha <jose1711 gmail com>
 
 pkgname=python-torchaudio
 _pkgname=audio
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch"
 arch=('x86_64' 'i686')
@@ -13,17 +14,8 @@ depends=('python' 'python-pytorch' 'bzip2' 'xz' 'opencore-amr' 'lame' 'libogg' '
 optdepends=('cuda')
 makedepends=('git' 'python-setuptools' 'cmake' 'ninja' 'boost')
 conflicts=('python-torchaudio-git')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        https://github.com/pytorch/audio/commit/e1232690308a6b5297fcd06e925899a9b64f7280.patch)
-sha256sums=('d0d0d9575025eb85150356a0b0de75b553484838006af17a62470b52d59845d1'
-            '8e59f46f0ef5392ed5c2e13909854f4cfffbac910206b024a7f7a60fc79a1f0e')
-prepare() {
-	cd "$srcdir/${_pkgname}-${pkgver}"
-
-	# Fix build with GCC 14.2
-	# https://github.com/pytorch/audio/commit/e1232690308a6b5297fcd06e925899a9b64f7280
-	patch -p1 < "$srcdir/e1232690308a6b5297fcd06e925899a9b64f7280.patch"
-}
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('599ec24e7e1eef476ef21f0178e33da00e2434f930ba42e9cc20bf4002220486')
 
 build() {
 	cd "$srcdir/${_pkgname}-${pkgver}"
