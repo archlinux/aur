@@ -1,0 +1,5 @@
+[envfetch-bin]
+source = "github"
+github = "ankddev/envfetch"
+use_latest_release = true
+prefix = "v"
