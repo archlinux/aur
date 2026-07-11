@@ -3,7 +3,7 @@
 _pkgauthor=dhth
 _pkgname=dfft
 pkgname=${_pkgname}-bin
-pkgver=0.1.1
+pkgver=0.1.2
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Monitor changes as AI agents modify your codebase"
@@ -18,7 +18,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}-unknown-linux-gnu.tar.xz")
-sha256sums_x86_64=('87c278b234d2d0a3db6e6d122d2a1f1b36197073d80ab55e460458dd114823f6')
+sha256sums_x86_64=('a595f35ee0d5c9afe1a2d83f46d07a072bcbeceb49aceb4417d1da193911d674')
 
 
 package() {

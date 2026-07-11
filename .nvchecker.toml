@@ -1,0 +1,5 @@
+[dfft-bin]
+source = "github"
+github = "dhth/dfft"
+use_latest_release = true
+prefix = "v"

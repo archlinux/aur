@@ -1,6 +1,6 @@
 pkgbase = dfft-bin
 	pkgdesc = Monitor changes as AI agents modify your codebase
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/dhth/dfft
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = dfft-bin
 	depends = alsa-lib
 	provides = dfft
 	conflicts = dfft
-	source_x86_64 = dfft-x86_64-0.1.1.tar.gz::https://github.com/dhth/dfft/releases/download/v0.1.1/dfft-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 87c278b234d2d0a3db6e6d122d2a1f1b36197073d80ab55e460458dd114823f6
+	source_x86_64 = dfft-x86_64-0.1.2.tar.gz::https://github.com/dhth/dfft/releases/download/v0.1.2/dfft-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = a595f35ee0d5c9afe1a2d83f46d07a072bcbeceb49aceb4417d1da193911d674
 
 pkgname = dfft-bin
