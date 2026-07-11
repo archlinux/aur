@@ -1,4 +1,4 @@
-pkgname=fetchit-git
+pkgname=fetchit-aur
 pkgver=v0.0.2.r1.gce3ad82
 pkgrel=1
 pkgdesc="A highly concurrent web crawler and markdown extractor"

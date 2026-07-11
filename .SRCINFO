@@ -1,6 +1,6 @@
-pkgbase = fetchit-git
+pkgbase = fetchit-aur
 	pkgdesc = A highly concurrent web crawler and markdown extractor
-	pkgver = 0.0.2
+	pkgver = v0.0.2.r1.gce3ad82
 	pkgrel = 1
 	url = https://github.com/Aarav90-cpu/fetchIt
 	arch = x86_64
@@ -21,4 +21,4 @@ pkgbase = fetchit-git
 	source = fetchIt::git+https://github.com/Aarav90-cpu/fetchIt.git
 	md5sums = SKIP
 
-pkgname = fetchit-git
+pkgname = fetchit-aur
