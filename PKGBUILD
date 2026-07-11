@@ -7,12 +7,19 @@ pkgdesc="A unified frontend for Linux package managers (Advanced Linux Package S
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/adrianpriza-ai/alps"
 license=('MIT')
-depends=('pacman' 'curl')
+depends=('pacman')
 makedepends=('go')
 optdepends=(
     'git: required for AUR makepkg fallback'
     'base-devel: required for AUR makepkg fallback'
     'yay: preferred AUR helper'
+    'coreutils: alps-more entries (mkdir, cp, chmod, gzip, ln)'
+    'tar: alps-more entries using .tar.gz/.tar.xz/.tar.bz2 archives'
+    'unzip: alps-more entries using .zip archives'
+    'bash: running alps-more entry scripts'
+    'fakeroot: alps-more entries requiring fakeroot'
+    'systemd: alps-more entries managing systemd services'
+    'shadow: alps-more entries using useradd/userdel'
 )
 conflicts=('alps')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
