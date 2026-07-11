@@ -1,0 +1,5 @@
+[mouzi-bin]
+source = "github"
+github = "hsr88/mouzi"
+use_latest_release = true
+prefix = "v"
