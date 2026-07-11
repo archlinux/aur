@@ -1,6 +1,6 @@
 pkgbase = sshtm
 	pkgdesc = SSH Tunnel Manager
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/besrabasant/ssh-tunnel-manager
 	install = sshtm.install
@@ -10,7 +10,7 @@ pkgbase = sshtm
 	makedepends = git
 	makedepends = make
 	depends = openssh
-	source = sshtm-1.1.4.tar.gz::https://github.com/besrabasant/ssh-tunnel-manager/archive/refs/tags/v1.1.4.tar.gz
+	source = sshtm-1.1.5.tar.gz::https://github.com/besrabasant/ssh-tunnel-manager/archive/refs/tags/v1.1.5.tar.gz
 	source = sshtm.path.sh
 	source = sshtmd.service
 	source = sshtm.install
