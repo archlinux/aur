@@ -1,8 +1,8 @@
-# Maintainer: Leonid Kuzin <dg.inc.lcf@gmail.com>
+# Maintainer: etoq <olhnts12@proton.me>
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=tailwindcss
-pkgver=4.0.14
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="A utility-first CSS framework for rapidly building custom user interfaces."
 arch=("any")
@@ -10,9 +10,9 @@ url="https://tailwindcss.com"
 license=("MIT")
 depends=('nodejs>=16.0.0' 'npm')
 optdepends=()
-source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
+source=("https://github.com/tailwindlabs/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tgz")
-sha1sums=("531548524EB422FB8B89A24EBDF267C6726A09C6")
+sha256sums=('608268447ff0c939da732245e0dbd77d24edfe22fa6b705b402626992361b741')
 
 package() {
   cd $srcdir
