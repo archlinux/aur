@@ -1,6 +1,6 @@
 pkgbase = bsdsed
 	pkgdesc = BSD variant of sed
-	pkgver = 15.0.0
+	pkgver = 15.1.0
 	pkgrel = 1
 	url = https://github.com/freebsd/freebsd-src/tree/main/usr.bin/sed
 	arch = x86_64

@@ -1,6 +1,6 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess DOT mn>
 pkgname="bsdsed"
-_freebsd_ver="15.0.0"
+_freebsd_ver="15.1.0"
 pkgver="$_freebsd_ver"
 pkgrel=1
 pkgdesc="BSD variant of sed"
