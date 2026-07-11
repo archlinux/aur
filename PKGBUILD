@@ -1,11 +1,11 @@
 # Maintainer: Maxr1998 <aur@maxr1998.de>
 _pkgname=finamp
 pkgname=finamp-git
-pkgver=4633.b8e2f89b
+pkgver=5030.903b0cfe
 pkgrel=1
 pkgdesc="An open source Jellyfin music player"
 arch=("x86_64" "aarch64")
-url="https://github.com/UnicornsOnLSD/finamp"
+url="https://github.com/finamp-app/finamp"
 license=('MPL-2.0')
 depends=('gtk3' 'pango')
 makedepends=('git' 'clang' 'cmake' 'ninja' 'xz')
