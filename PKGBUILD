@@ -3,7 +3,7 @@
 # Contributor: hyknn <hyknn@protonmail.com>
 pkgname=hayase-desktop-bin
 _pkgname=Hayase
-pkgver=6.4.81
+pkgver=6.4.82
 pkgrel=1
 pkgdesc="Torrent streaming made simple. Watch anime torrents, real-time with no waiting for downloads (prebuilt binary), successor to miru-bin"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/hayase-app/electron/main/LICENSE"
     "${pkgname}.install"
 )
-sha512sums=('ed2c35e54ddd18b17d3499f9ccd20c117d6bab874cfe203a9cd4fd9d4187bd99b7b205d2a4c828fff644502f5b051e486ece89ace961ce43cb05d4c8dfabde0f'
+sha512sums=('5b9279366d36c84cc2db70f991c58da6ecd0a28b2936387aa98eefc8684749db4971ab6b665ea650dec21ee35ee47894fe1998ac418f5b905264f2b1684689be'
             '28eb0f95d44512e9b901dbcf6c75d9d1fd21d60728d0958f3936f7071a16d62b4999470462b637fc5ba4a35b5fe99838510289f8ba017255e0f13a8dad2e9f29'
             '67b9bf7da2fc891442b8bfd441a12203717c1f9e96ef94eae62c53138b4e4442b26da9ad4a41a40f79de5f5c93383e092db3629e249c9a04e3f24c415a6a1ba1')
 
