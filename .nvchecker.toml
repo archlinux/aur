@@ -1,0 +1,5 @@
+[dwatch-bin]
+source = "github"
+github = "IngoMeyer441/dwatch"
+use_latest_release = true
+prefix = "v"
