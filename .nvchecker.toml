@@ -1,0 +1,4 @@
+[ndstrim-rs]
+source = "git"
+git = "https://github.com/Nemris/ndstrim-rs.git"
+prefix = "v"
