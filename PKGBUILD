@@ -5,7 +5,7 @@ _pkgname=roborev
 pkgname=${_pkgname}-bin
 pkgdesc="Continuous background code review database for agents, work faster and smarter with accountability for every line of generated code."
 
-pkgver=0.61.3
+pkgver=0.62.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('c6f06d1c150dcbf97f82ecb2b5c6a6ce8ef16b022267940b87da3806fd30c2a5')
-sha256sums_aarch64=('2dff068ebf4c346afc7ae79c64431ebaf044acab5283185b44130a6da8b69573')
+sha256sums_x86_64=('247684d81a5ccb35faae651427a9afba496644be9ff10007f871bc43e164cf4f')
+sha256sums_aarch64=('13edbc352a6f62a5cd6b85b3e9b96ab3c6605e392ef71ab8495ac885a62c9c50')
 
 
 package() {
