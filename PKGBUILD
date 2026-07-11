@@ -2,7 +2,7 @@
 
 _pkgname=obsidian-headless
 pkgname=${_pkgname}-bin
-pkgver=0.0.8
+pkgver=0.0.13
 pkgrel=1
 pkgdesc="Headless client for Obsidian services"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('node-gyp' 'python')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-_better_sqlite3_ver=12.6.2
+_better_sqlite3_ver=12.11.1
 _commander_ver=14.0.3
 _bindings_ver=1.5.0
 _file_uri_to_path_ver=1.0.0
@@ -32,8 +32,8 @@ noextract=(
   "bindings-${_bindings_ver}.tgz"
   "file-uri-to-path-${_file_uri_to_path_ver}.tgz"
 )
-sha256sums=('f9f83ab6bebdffb9fbdca86527101be2e8cc3af1fae212f022dffa31e02236d5'
-            'ac3bfaa50b31d1fc878f84b64b3fa7ec1b5b6603b9be089b0501f8f5900ac7e7'
+sha256sums=('9b8e1ad3917a65d53c5ab74d06acf5ec8d941e3b02bd9bd5d035d6800e533198'
+            'ebf0ed75a7a59dbcb3b24bbd014ef49d9f15bc328e4adcbf516f2a8fadfa2835'
             '5849703c500e0f324eb01340d8bda1f9ec48fc37bb7be9712eb0dd52aad92f6c'
             'd77781178c5bd89a91b1f6c5556acd511b1b5927eb13e2ad8189cac29eeb0907'
             '5440cdf67e75ab96f36a6be63c1d4c3d54255b1d0970273710fecfebfab06fb3')
