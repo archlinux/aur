@@ -7,7 +7,7 @@ pkgname=(
     'openvino-intel-npu-plugin'
     'python-openvino')
 pkgver=2026.2.1
-pkgrel=1
+pkgrel=2
 _commit=ede283a88e35465f0d680dabbf1f44080f8fc387
 pkgdesc='A toolkit for optimizing and deploying deep learning models'
 arch=('x86_64')
@@ -57,7 +57,8 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#commit=${_commit}?s
         'git+https://github.com/herumi/xbyak_riscv.git'
         '010-openvino-change-install-paths.patch'
         '020-openvino-disable-werror.patch'
-        '030-openvino-ignore-system-onnx.patch')
+        '030-openvino-ignore-system-onnx.patch'
+        '040-openvino-opencv5-fix.patch')
 sha256sums=('e5ef4309dc42382fbd70779e3db3f39dc18bab83cb42c061e9674dc9351a882c'
             'SKIP'
             'SKIP'
@@ -84,7 +85,8 @@ sha256sums=('e5ef4309dc42382fbd70779e3db3f39dc18bab83cb42c061e9674dc9351a882c'
             'SKIP'
             'fa1d3bc0b89fb36ef254b572958b806f76b37dac2faab53a148ba9db9cbffd0d'
             '07814fc576c6bced01c2d37e1f0d5c13f90ebb3c0e4fa404b3c5d367d83dc48c'
-            '30835fc8bc6cfcb5c140fe66f473865e56fec6e2842da542d69cf03f4b34f904')
+            '30835fc8bc6cfcb5c140fe66f473865e56fec6e2842da542d69cf03f4b34f904'
+            'e9ca24f135bf85606be18d0fb52f8a0702dc4ed82c10dd5de122e18be47df3c0')
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')
 
 export GIT_LFS_SKIP_SMUDGE='1'
@@ -126,6 +128,7 @@ prepare() {
     patch -d openvino -Np1 -i "${srcdir}/010-openvino-change-install-paths.patch"
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-disable-werror.patch"
     patch -d openvino -Np1 -i "${srcdir}/030-openvino-ignore-system-onnx.patch"
+    patch -d openvino -Np1 -i "${srcdir}/040-openvino-opencv5-fix.patch"
     
     install -d -m755 {benchmark_app,licenses}
     install -d -m755 intel-gpu-plugin/usr/lib/openvino
@@ -179,7 +182,6 @@ package_openvino() {
     depends=(
         'glibc'
         'libgcc'
-        'libstdc++'
         'onetbb'
         'pugixml'
         'snappy')
@@ -215,7 +217,6 @@ package_openvino-intel-gpu-plugin() {
         'glibc'
         'intel-compute-runtime'
         'libgcc'
-        'libstdc++'
         'ocl-icd'
         'onetbb'
         "openvino=${pkgver}"
@@ -232,7 +233,6 @@ package_openvino-intel-npu-plugin() {
         'intel-npu-compiler'
         'intel-npu-driver'
         'libgcc'
-        'libstdc++'
         'onetbb'
         'opencv'
         "openvino=${pkgver}"
@@ -247,7 +247,6 @@ package_python-openvino() {
     depends=(
         'glibc'
         'libgcc'
-        'libstdc++'
         "openvino=${pkgver}"
         'python'
         'python-numpy'
