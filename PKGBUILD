@@ -3,7 +3,7 @@
 _pkgname='es3crypt-oss'
 pkgname="${_pkgname}-git"
 pkgver=1.0+31.r33.20230211.bdacbfe
-pkgrel=2
+pkgrel=3
 pkgdesc='Easy Save 3 save file decryption/encryption library with CLI.'
 arch=(
   'x86_64'
@@ -28,10 +28,12 @@ makedepends=(
 )
 provides=(
   "${_pkgname}=${pkgver}"
+  "es3crypt-cli=${pkgver}"
   "libes3crypt.so"
 )
 conflicts=(
   "${_pkgname}"
+  "es3crypt-cli"
   "libes3crypt.so"
 )
 source=(
