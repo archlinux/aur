@@ -2,7 +2,7 @@
 
 pkgname=wayvibes-git
 _pkgname=wayvibes
-pkgver=r74.afbde2a
+pkgver=r98.0c94f0c
 pkgrel=1
 pkgdesc="Play mechanical keyboard sounds as you type - wayland alternative for mechvibes/rustyvibes"
 arch=("x86_64")
