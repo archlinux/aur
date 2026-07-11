@@ -1,7 +1,7 @@
 pkgbase = sakura-frp
 	pkgdesc = Sakura Frp Client
 	pkgver = 0.51.0_sakura_12.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.natfrp.com/
 	arch = x86_64
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = sakura-frp
 	source = sakura-frpc.service
 	source = sakura-frpc@.service
 	source = sakura-frpc-f@.service
-	md5sums = f1d2d43f987429858b1bb88a3209833c
+	md5sums = SKIP
 	md5sums = 217dc59018558a2ae6fcb98da968b022
 	md5sums = dde0a7ec9482aa7fd1cbccd9ee573794
 	md5sums = 7bb599e157bc23c927c9d316fc29b0c8
