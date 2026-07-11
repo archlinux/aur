@@ -1,0 +1,5 @@
+[reviu-bin]
+source = "github"
+github = "reviu-dev/reviu"
+use_latest_release = true
+prefix = "v"
