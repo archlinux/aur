@@ -2,7 +2,7 @@
 
 _name=runloop-api-client
 pkgname=python-${_name//-/_}
-pkgver=1.23.2
+pkgver=1.23.3
 pkgrel=1
 pkgdesc='The official Python library for the runloop API.'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-hatchling' 'python-hatch-fancy-pypi-readme' 'python-build' 
 checkdepends=('python-respx' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-timeout' 'python-time-machine' 'python-dirty-equals' 'python-rich' 'python-pytest-xdist' 'python-aiohttp' 'python-httpx-aiohttp' 'npm' 'nodejs')
 optdepends=('python-aiohttp: aiohttp' 'python-httpx-aiohttp: aiohttp')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5d14e10745f8384599cf32fb6b874b3d531fbbc595aff2bbf8fc599914e1d637')
+sha256sums=('5b2dcba9920332432defeabc670d30015165de9d54f659be1c74459b0fc64e3a')
 
 build() {
   cd "$srcdir"/${_name//runloop-/}-python-$pkgver
