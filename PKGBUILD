@@ -1,5 +1,5 @@
 pkgname=earth-game
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Private local-first quest and reflection companion with CLI and web UI'
 arch=('any')
@@ -7,7 +7,7 @@ url='https://github.com/skorotkiewicz/earth-game'
 license=('MIT')
 depends=('python')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('9a457216520f01bcf3fb440096f96d4bca57f30bc1cb0a758032040dca9f5d63')
+sha256sums=('9416194d64e69af77a8e97a554032200c0e95633af22d02ce626c2932a03f33b')
 
 check() {
   cd "${pkgname}-${pkgver}"
