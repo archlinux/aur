@@ -5,13 +5,13 @@
 
 # Maintainer: PragmaTwice <twice.mliu@gmail.com>
 pkgname=kvrocks
-pkgver=2.13.0
+pkgver=2.16.0
 pkgrel=1
 epoch=
 pkgdesc="A distributed key value NoSQL database that uses RocksDB as storage engine and compatible with Redis protocol"
 arch=(any)
 url="https://kvrocks.apache.org/"
-license=('Apache')
+license=('Apache-2.0')
 groups=()
 depends=(libunwind openssl)
 makedepends=(python git gcc make cmake autoconf automake libtool which)
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/apache/kvrocks/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('6153af397deeb56af98e78cdbe093727dc6c62040467381c92eb7d1b694d1177')
+sha256sums=('066284fcaae2d1c60e8b75f1e94d9878fba6a75787f95b6b9c7b63be420dd2c3')
 validpgpkeys=()
 
 prepare() {
@@ -35,7 +35,8 @@ prepare() {
 
 build() {
 	cd $pkgname-$pkgver
-	./x.py build -j$(nproc) -DENABLE_OPENSSL=ON
+	# Refer to https://github.com/apache/kvrocks/issues/3482, we need to disable jemalloc for now.
+	./x.py build -j$(nproc) -DENABLE_OPENSSL=ON -DDISABLE_JEMALLOC=ON
 }
 
 check() {
