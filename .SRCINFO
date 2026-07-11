@@ -9,6 +9,7 @@ pkgbase = python-iterfzf
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-flit-core
 	depends = python
 	depends = fzf
 	source = https://files.pythonhosted.org/packages/source/i/iterfzf/iterfzf-1.9.0.67.0.tar.gz
