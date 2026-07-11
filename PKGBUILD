@@ -3,8 +3,8 @@
 
 _reponame=fastcompmgr
 pkgname=$_reponame-git
-pkgver=0.5.r20.ga449edb
-pkgrel=2
+pkgver=0.6.1.r1.ge712f94
+pkgrel=1
 pkgdesc="An early Compton-based compositor for X11 focused on performance. (git)"
 arch=('x86_64')
 url="https://github.com/tycho-kirchner/$_reponame"
@@ -13,7 +13,7 @@ depends=('glibc' 'libx11' 'libxcomposite' 'libxdamage' 'libxfixes' 'libxrender')
 makedepends=('git')
 provides=("$_reponame")
 conflicts=("$_reponame")
-source=("git+${url}.git")
+source=("git+${url}.git#branch=dev")
 b2sums=('SKIP')
 
 pkgver() {
