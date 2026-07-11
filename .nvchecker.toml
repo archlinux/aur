@@ -1,0 +1,5 @@
+[climan-bin]
+source = "github"
+github = "utilyre/climan"
+use_latest_release = true
+prefix = "v"

@@ -39,7 +39,6 @@ case ${CARCH} in
     ;;
 esac
 
-
 package() {
 	cd "$srcdir/${_gitname}-${_gitversion}-${_CARCH}/"
 
