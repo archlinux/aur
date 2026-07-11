@@ -10,7 +10,7 @@ pkgname=(
   python-brltty-git
   tcl-brltty-git
 )
-pkgver=6.9.r81.g83dbe770e
+pkgver=6.9.1.r137.gc3dcab3e3
 pkgrel=1
 pkgdesc="Braille display driver for Linux/Unix (development version)"
 arch=(x86_64)
@@ -89,7 +89,6 @@ build() {
 		--libexecdir=/usr/lib
 		--localstatedir=/var
 		--mandir=/usr/share/man
-		--with-scripts-directory=/usr/lib/brltty
 		--with-tables-directory=/usr/share/brltty
 		--with-writable-directory=/run/brltty
 		--enable-gpm
@@ -99,7 +98,9 @@ build() {
 	CFLAGS+=" -ffat-lto-objects"
 
 	cd "${pkgbase%-git}"
-	./configure "${configure_options[@]}"
+	# The clean chroot has no /usr/share/java, so brltty's configure otherwise
+	# skips installing brlapi.jar ("jar not installed"), breaking package().
+	./configure JAVA_JAR_DIR=/usr/share/java "${configure_options[@]}"
 	make
 	# make brlapi.jar deterministic
 	find . -type f -iname "*.jar" -exec strip-nondeterminism {} \;

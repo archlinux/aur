@@ -1,6 +1,6 @@
 pkgbase = brltty-git
 	pkgdesc = Braille display driver for Linux/Unix (development version)
-	pkgver = 6.9.r81.g83dbe770e
+	pkgver = 6.9.1.r137.gc3dcab3e3
 	pkgrel = 1
 	url = https://brltty.app
 	arch = x86_64
@@ -104,7 +104,7 @@ pkgname = brltty-git
 
 pkgname = brltty-udev-generic-git
 	pkgdesc = Generic udev rules for brltty (development version)
-	depends = brltty-git=6.9.r81.g83dbe770e
+	depends = brltty-git=6.9.1.r137.gc3dcab3e3
 	provides = brltty-udev-generic
 	conflicts = brltty-udev-generic
 
@@ -112,21 +112,21 @@ pkgname = dracut-brltty-git
 	pkgdesc = Braille display driver for Linux/Unix (development version) - dracut modules
 	groups = dracut-modules
 	depends = bash
-	depends = brltty-git=6.9.r81.g83dbe770e
+	depends = brltty-git=6.9.1.r137.gc3dcab3e3
 	depends = dracut
 	provides = dracut-brltty
 	conflicts = dracut-brltty
 
 pkgname = java-brltty-git
 	pkgdesc = Braille display driver for Linux/Unix (development version) - java bindings
-	depends = brltty-git=6.9.r81.g83dbe770e
+	depends = brltty-git=6.9.1.r137.gc3dcab3e3
 	depends = java-runtime
 	provides = java-brltty
 	conflicts = java-brltty
 
 pkgname = ocaml-brltty-git
 	pkgdesc = Braille display driver for Linux/Unix (development version) - OCaml bindings
-	depends = brltty-git=6.9.r81.g83dbe770e
+	depends = brltty-git=6.9.1.r137.gc3dcab3e3
 	depends = glibc
 	depends = ocaml
 	provides = ocaml-brltty
@@ -134,7 +134,7 @@ pkgname = ocaml-brltty-git
 
 pkgname = python-brltty-git
 	pkgdesc = Braille display driver for Linux/Unix (development version) - Python bindings
-	depends = brltty-git=6.9.r81.g83dbe770e
+	depends = brltty-git=6.9.1.r137.gc3dcab3e3
 	depends = glibc
 	depends = python
 	provides = python-brltty
@@ -142,7 +142,7 @@ pkgname = python-brltty-git
 
 pkgname = tcl-brltty-git
 	pkgdesc = Braille display driver for Linux/Unix (development version) - TCL integration
-	depends = brltty-git=6.9.r81.g83dbe770e
+	depends = brltty-git=6.9.1.r137.gc3dcab3e3
 	depends = glibc
 	depends = tcl
 	provides = tcl-brltty
