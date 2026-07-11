@@ -2,7 +2,7 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=girara-git
-pkgver=2026.02.04.r8.gd0207b1
+pkgver=2026.07.07.r3.g51b5f7d
 pkgrel=1
 pkgdesc="User interface library focused on simplicity and minimalism"
 arch=('x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  arch-meson build -Dtests=disabled
+  arch-meson build
   ninja -C build
 }
 
