@@ -6,9 +6,9 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A small, fast, keyboard-driven menu launcher for your terminal"
 
-pkgver=1.0.11
+pkgver=1.1.0
 pkgrel=1
-_gitversion=v${pkgver}
+_gitversion=${pkgver}
 
 arch=('x86_64')
 _barch=('x86_64-unknown-linux-gnu')
@@ -27,8 +27,8 @@ options=(!strip)
 
 source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}.tar.xz")
-sha256sums=('cf4ff55196b6ae1f1a017af32db55dbca4550facbdf94ff3baffa9d7058c9d92')
-sha256sums_x86_64=('2ee405bd7635241feb484d17d8ac9f928ccfd02f46b158dbe731be9879a3e29b')
+sha256sums=('2717228a4c12109a30b054a7387089f02030ecd84a4f3f56a7bbf684e96aa67f')
+sha256sums_x86_64=('78c4edcc9c91650b2c55bc1574e36fd546fa31fdd274aab2f47cff7a24a2d2ed')
 
 
 case ${CARCH} in

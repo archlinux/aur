@@ -2,4 +2,4 @@
 source = "github"
 github = "pmoracho/tmenu"
 use_latest_release = true
-prefix = "v"
+prefix = ""
