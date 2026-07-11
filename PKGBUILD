@@ -16,7 +16,7 @@ pkgname=("${pkgbase}" "${_pkgbase}-linux-headers-bin-${_arch}")
 pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (LTS) - Prebuilt version - ${_arch}"
 url="http://www.xanmod.org/"
 arch=(x86_64)
-license=(GPL2)
+license=(GPL-2.0-only)
 options=('!strip')
 makedepends=('curl' 'libxml2')
 
