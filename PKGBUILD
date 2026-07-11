@@ -6,12 +6,12 @@
 # edit the placeholders in-tree.
 
 pkgname=winpodx
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Windows app integration for Linux desktop (Podman/FreeRDP RemoteApp)"
 arch=('any')
 url="https://github.com/kernalix7/winpodx"
-license=('MIT')
+license=('MIT' 'Apache-2.0')  # Apache-2.0: bundled rdprrap zip ports stascorp/rdpwrap
 # Arch's `python` is rolling and already >= 3.13, so tomllib is stdlib and
 # the tomli fallback is a no-op here (marker-gated in pyproject.toml).
 depends=(
@@ -30,7 +30,7 @@ makedepends=(
   'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kernalix7/winpodx/archive/v$pkgver.tar.gz")
-sha256sums=('498115e45b45003a12295574f4c4e0c50521466c0ac56e9329d6e61339b286e8')
+sha256sums=('782abbe7813efb4da13e58066fd1a4245f1e25b8a2d63afd02fbc968ca8f3ccb')
 install=winpodx.install
 
 build() {
