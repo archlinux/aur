@@ -1,0 +1,10 @@
+post_install() {
+    echo "-------------------------------------------------------------"
+    echo "You can use sqlite-vector just as any other SQLite extension:"
+    echo "From SQLite shell, use: '.load /usr/lib/vector.so' "
+    echo "-------------------------------------------------------------"
+}
+
+post_upgrade() {
+    post_install
+}

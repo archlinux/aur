@@ -1,0 +1,20 @@
+pkgbase = sqlite-vector
+	pkgdesc = cross-platform, ultra-efficient SQLite extension that brings vector search capabilities to your embedded database.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/sqliteai/sqlite-vector
+	install = sqlite-vector.install
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = Elastic-2.0
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	depends = sqlite3
+	source = sqlite-vector-1.0.0.tar.gz::https://github.com/sqliteai/sqlite-vector/archive/refs/tags/1.0.0.tar.gz
+	source = sqlite-vector.install
+	sha256sums = dc93c5f2fac6e2d221f619cfa85ff5983ef1c4784664443f5511d0abc864707f
+	sha256sums = 2d3981176c07c67789ec4a8d60bddf7bfa21c300e3c2f17fb2320562a64bfda4
+
+pkgname = sqlite-vector
