@@ -1,6 +1,6 @@
 # Maintainer: Marcus Ziade <guitaripod@gmail.com>
 pkgname=flaccy-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Lossless music player with gapless playback and Last.fm scrobbling (GTK4/libadwaita)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('flaccy')
 conflicts=('flaccy')
 options=('!strip' '!debug')
 source=("https://github.com/guitaripod/flaccy/releases/download/linux-v${pkgver}/flaccy-linux-x86_64.tar.gz")
-sha256sums=('1bcf0db90554393d9a50457c66c5c33c5244cf2a2030dc1a2f6d64e0a5a8d94c')
+sha256sums=('d6129cb4c29f8ecddf191914df9d9dca41f46247a566bbc3d5fa6446c1786010')
 
 package() {
   cd "$srcdir/flaccy-linux-x86_64"
@@ -20,5 +20,10 @@ package() {
   for size in 16 32 48 64 128 256 512; do
     install -Dm644 "data/icons/hicolor/${size}x${size}/apps/cc.midgarcorp.Flaccy.png" \
       "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/cc.midgarcorp.Flaccy.png"
+  done
+  for svg in data/icons/hicolor/scalable/actions/*.svg; do
+    [[ -e "$svg" ]] || continue
+    install -Dm644 "$svg" \
+      "$pkgdir/usr/share/icons/hicolor/scalable/actions/$(basename "$svg")"
   done
 }
