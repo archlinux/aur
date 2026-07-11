@@ -1,7 +1,7 @@
 pkgbase = wayscriber-bin
 	pkgdesc = Screen annotation tool for Wayland compositors (prebuilt binaries)
 	pkgver = 0.9.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wayscriber.com
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,8 @@ pkgbase = wayscriber-bin
 	depends = libxkbcommon
 	depends = gcc-libs
 	depends = glibc
+	depends = gtk4
+	depends = gtk4-layer-shell
 	depends = wl-clipboard
 	depends = grim
 	depends = slurp
@@ -21,6 +23,6 @@ pkgbase = wayscriber-bin
 	replaces = wayscriber-debug
 	backup = usr/lib/systemd/user/wayscriber.service
 	source_x86_64 = wayscriber-v0.9.21-linux-x86_64.tar.gz::https://github.com/devmobasa/wayscriber/releases/download/v0.9.21/wayscriber-v0.9.21-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 869e38123cc134c84e1738d025130929283e68e3f8d853fce724b2014ff1dc16
+	sha256sums_x86_64 = 63419b3c24db6030e991804d1865070ff74bbb3a99406371a167ebd4928d35dc
 
 pkgname = wayscriber-bin
