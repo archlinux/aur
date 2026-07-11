@@ -8,6 +8,7 @@ pkgbase = tfm-git
 	makedepends = cmake
 	makedepends = git
 	depends = taglib
+	depends = libarchive
 	provides = tfm
 	conflicts = tfm
 	source = tfm-git::git+https://github.com/braniik/tfm.git
