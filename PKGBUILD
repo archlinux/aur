@@ -1,11 +1,11 @@
 pkgname=sshtm
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="SSH Tunnel Manager"
 arch=('x86_64')
 url="https://github.com/besrabasant/ssh-tunnel-manager"
 license=('custom')
-depend=("openssh")
+depends=("openssh")
 makedepends=('go' 'git' 'make')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/besrabasant/ssh-tunnel-manager/archive/refs/tags/v$pkgver.tar.gz"
