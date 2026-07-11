@@ -1,0 +1,5 @@
+[clyp-bin]
+source = "github"
+github = "murat-cileli/clyp"
+use_latest_release = true
+prefix = "v"
