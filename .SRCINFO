@@ -1,7 +1,7 @@
 pkgbase = mermaid-cli-chrome
 	pkgdesc = Generate images from Mermaid files
 	pkgver = 11.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mermaid-js/mermaid-cli
 	arch = any
 	license = MIT

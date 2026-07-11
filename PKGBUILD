@@ -5,7 +5,7 @@
 pkgname=mermaid-cli-chrome
 _pkgrootname=mermaid-cli
 pkgver=11.16.0
-pkgrel=1
+pkgrel=2
 options=(!strip !debug)
 pkgdesc='Generate images from Mermaid files'
 arch=(any)
@@ -22,7 +22,7 @@ sha256sums=('65d795191bf9ca6ca90a40a1ea30354a6a491e206674cafd4d9de62fe9075439')
 package() {
   # https://github.com/mermaid-js/mermaid-cli/blob/master/docs/already-installed-chromium.md
   PUPPETEER_SKIP_DOWNLOAD=1 npm install -g --prefix "$pkgdir/usr" "$_archive.tgz"
-  sed -i "s# headless: 'shell'# headless: 'shell', executablePath: '/usr/bin/google-chrome-stable'#" "${pkgdir}/usr/lib/node_modules/@mermaid-js/$_pkgrootname/src/index.js"
+  sed -i "s# headless: \"shell\"# headless: \"shell\", executablePath: '/usr/bin/google-chrome-stable'#" "${pkgdir}/usr/lib/node_modules/@mermaid-js/$_pkgrootname/src/index.js"
 
   find "$pkgdir" -name prebuilds -type d -exec rm --recursive {} +
 
