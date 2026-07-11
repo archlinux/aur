@@ -1,7 +1,7 @@
 # Maintainer: Aaron Coach <aur@awc.id.au>
 _pkgname=pocket-id
 pkgname="${_pkgname}-bin"
-pkgver=2.9.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="A simple and easy-to-use OIDC provider (Pre-compiled binary)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ backup=("etc/${_pkgname}/config.env")
 install="${_pkgname}.install"
 
 source=(
-  "${_pkgname}-v${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64"
+  "${_pkgname}-v${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}_linux_amd64"
   "config-v${pkgver}.env::https://raw.githubusercontent.com/pocket-id/pocket-id/v${pkgver}/.env.example"
   "LICENSE-v${pkgver}::https://raw.githubusercontent.com/pocket-id/pocket-id/v${pkgver}/LICENSE"
   "${_pkgname}.service"
@@ -21,7 +21,7 @@ source=(
   "${_pkgname}.tmpfiles"
 )
 
-sha256sums=('cc8e44458decc2d2f581f9d7657a593c7597e4d8d099f8f5bf6dd9d0396f2ffc'
+sha256sums=('622740178aeaacf0428880ba667b7ca245bcd01b7e07bd9b024de6b7fcf4c5ed'
             'a16d41415d11c4cf586cb67147190678181abef880306aca6f5267bd496a1a67'
             'c4822dc23fddabd9aef6cd1b1e5dfe307cbc36dc0f1d662e82d58ebc886d9d0f'
             'b3eecd75778be96a757fadb11366d7cc5e166deb7d06c2c75fc6e4d63545d90b'
