@@ -21,19 +21,14 @@ pkgver() {
     git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
 }
 
-prepare() {
-    cd "$_reponame"
-    cargo fetch --locked
-}
-
 build() {
     cd "$_reponame"
-    cargo build --release --frozen
+    cargo build --release --locked
 }
 
 check() {
     cd "$_reponame"
-    cargo test --release --frozen
+    cargo test --release --locked
 }
 
 package() {
