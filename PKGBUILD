@@ -2,7 +2,7 @@
 
 pkgname=mistral-vibe
 pkgver=2.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
 url='https://github.com/mistralai/mistral-vibe'
@@ -28,6 +28,7 @@ depends=(
     "python-pydantic-settings"
     "python-pyperclip"
     "python-rich"
+    "python-sentry_sdk"
     "python-textual"
     "python-tomli-w"
     "python-tree-sitter-bash"
