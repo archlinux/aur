@@ -1,6 +1,6 @@
 pkgbase = zathura-ps-git
 	pkgdesc = PostScript support for zathura
-	pkgver = 2026.02.03.r1.g78a58e4
+	pkgver = 2026.02.03.r7.ge5cef26
 	pkgrel = 1
 	url = https://pwmt.org/projects/zathura-ps
 	arch = x86_64

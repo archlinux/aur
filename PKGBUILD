@@ -3,7 +3,7 @@
 
 pkgname=zathura-ps-git
 pkgrel=1
-pkgver=2026.02.03.r1.g78a58e4
+pkgver=2026.02.03.r7.ge5cef26
 pkgdesc="PostScript support for zathura"
 arch=('x86_64')
 url="https://pwmt.org/projects/zathura-ps"
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  arch-meson build -Dtests=disabled
+  arch-meson build
   ninja -C build
 }
 
