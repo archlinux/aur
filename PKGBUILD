@@ -3,7 +3,7 @@
 _pkgname=jsonpath-python
 pkgname="python-${_pkgname}"
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A more powerful JSONPath implementation in modern python"
 arch=("any")
 url="https://github.com/sean2077/${_pkgname}"
@@ -12,9 +12,11 @@ depends=("python")
 makedepends=(
     "python-build"
     "python-installer"
-    "python-pytest"
     "python-hatchling"
+)
+checkdepends=(
     "uv"
+    "python-pytest"
 )
 source=("git+${url}.git#tag=${pkgver}")
 sha256sums=('9e0ae4577526317249c34f7ed9ac27a710c4bdf927798e249bcba3e2ce6e9d04')
