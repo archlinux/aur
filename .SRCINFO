@@ -1,0 +1,12 @@
+pkgbase = r-srsbench
+	pkgdesc = Evaluation Metrics for Spaced Repetition Schedulers
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/chrislongros/srsbench
+	arch = any
+	license = MIT
+	depends = r
+	source = srsbench_0.1.tar.gz::https://chrislongros.r-universe.dev/src/contrib/srsbench_0.1.tar.gz
+	sha256sums = f235537d412229913b2c90d362ae390014dacd28c4ff2b2411e9b401efc3acda
+
+pkgname = r-srsbench
