@@ -75,7 +75,7 @@
          return plugin_path;
 --- a/src/plugins/intel_npu/tools/compile_tool/CMakeLists.txt
 +++ b/src/plugins/intel_npu/tools/compile_tool/CMakeLists.txt
-@@ -31,7 +31,7 @@ ov_add_target(TYPE EXECUTABLE
+@@ -32,7 +32,7 @@ ov_add_target(TYPE EXECUTABLE
                        npu_tools_utils)
  
  set_target_properties(${TARGET_NAME} PROPERTIES
@@ -84,7 +84,7 @@
                        CXX_STANDARD 17)
  
  # TODO: fix warnings and remove this exception
-@@ -44,13 +44,13 @@ endif()
+@@ -45,13 +45,13 @@ endif()
  #
  
  install(TARGETS ${TARGET_NAME}
