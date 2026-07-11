@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='A script to convert .deb packages to Arch Linux packages, focused on accuracy. git version. Do not use it to convert packages that already exist on official repositories or can be built from AUR!'
 arch=('any')
 license=('GPL2')
-depends=('bash' 'binutils' 'pkgfile' 'fakeroot' 'namcap')
+depends=('bash' 'binutils' 'pkgfile' 'fakeroot' 'namcap' 'pacman-contrib')
 url="https://github.com/helixarch/debtap"
 source=("git+https://github.com/helixarch/debtap.git"
         "debtap.install")
