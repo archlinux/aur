@@ -1,14 +1,14 @@
 # Maintainer: Sami Ben Romdhane <beromdhane@gmail.com>
 pkgname=salam
 pkgver=0.1.0
-pkgrel=12
+pkgrel=19
 pkgdesc="Simple logout/shutdown dialog for Linux (Rust version)"
 arch=('x86_64')
 url="https://codeberg.org/samibr/salam"
 license=('MIT')
 depends=('gtk3')
 makedepends=('cargo')
-source=("https://codeberg.org/samibr/salam/archive/v$pkgver.tar.gz"
+source=("https://codeberg.org/samibr/salam/archive/f9d06519dda3ff8a2b3d9efb08e21df4a0000999.tar.gz"
         "config.toml.example")
 sha256sums=('SKIP'
             'SKIP')
