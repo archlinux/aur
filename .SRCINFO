@@ -1,0 +1,13 @@
+pkgbase = vapoursynth-plugin-vszipcl
+	pkgdesc = Plugin for VapourSynth: vszipcl
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/dnjulek/vapoursynth-zipcl
+	arch = x86_64
+	license = MIT
+	makedepends = zig
+	depends = vapoursynth
+	source = https://github.com/dnjulek/vapoursynth-zipcl/archive/refs/tags/1.2.0.tar.gz
+	sha256sums = fe77340bcacc16cbe192bda1934072f0dde633864e5337071d4873aa1a87bea7
+
+pkgname = vapoursynth-plugin-vszipcl
