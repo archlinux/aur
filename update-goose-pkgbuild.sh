@@ -56,8 +56,16 @@ fi
 # Calculate b2sum
 B2SUM=$(b2sum "$TARBALL_FILE" | awk '{print $1}')
 
-# Update checksum in PKGBUILD
-sed -i "s/^b2sums=.*/b2sums=('${B2SUM}')/" "$PKGBUILD_FILE"
+# Update tarball b2sum (first entry); preserve any additional entries (e.g. patches)
+awk -v sum="$B2SUM" '
+  /^b2sums=\(/ { in_b2 = 1; print; next }
+  in_b2 && /^[[:space:]]/ && /\047/ && !done {
+    gsub(/\047[^\047]*\047/, "\047" sum "\047")
+    done = 1
+  }
+  in_b2 && /^\)/ { in_b2 = 0; print; next }
+  { print }
+' "$PKGBUILD_FILE" > "$PKGBUILD_FILE.tmp" && mv "$PKGBUILD_FILE.tmp" "$PKGBUILD_FILE"
 
 # Generate .SRCINFO
 echo -e "${GREEN}Generating .SRCINFO...${NC}"
