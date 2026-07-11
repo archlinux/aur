@@ -1,0 +1,12 @@
+pkgbase = earth-game
+	pkgdesc = Private local-first quest and reflection companion with CLI and web UI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/skorotkiewicz/earth-game
+	arch = any
+	license = MIT
+	depends = python
+	source = earth-game-0.1.0.tar.gz::https://github.com/skorotkiewicz/earth-game/releases/download/v0.1.0/earth-game-0.1.0.tar.gz
+	sha256sums = ba9ea21051ec66596b45570e094986d7c0c7242b3d6a2fc98173274752a56399
+
+pkgname = earth-game
