@@ -1,7 +1,7 @@
 # Maintainer: Radu Potop <radu@wooptoo.com>
 
 pkgname=rampup
-pkgver=r21.e2ba
+pkgver=r22.577b
 pkgrel=1
 pkgdesc='systemd service for ec_su_axb35 fan ramp curves'
 arch=('any')
