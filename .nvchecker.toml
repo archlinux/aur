@@ -1,0 +1,5 @@
+[protonux-bin]
+source = "github"
+github = "Foxemsx/Protonux"
+use_latest_release = true
+prefix = "v"

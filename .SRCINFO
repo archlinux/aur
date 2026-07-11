@@ -1,0 +1,21 @@
+pkgbase = protonux-bin
+	pkgdesc = A terminal UI that scans your Steam library and shows Linux compatibility info at a glance automatically
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Foxemsx/Protonux
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = protonux
+	conflicts = protonux
+	options = !strip
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/Foxemsx/Protonux/v1.0.0/LICENSE
+	source = README-1.0.0.md::https://raw.githubusercontent.com/Foxemsx/Protonux/v1.0.0/README.md
+	sha256sums = 7c3db2683c39ab3a51a52afa1dae64889df8c06d5b525e66dda75478b4c75c7e
+	sha256sums = 405e7961efe33373721610702605b94843371b5363d5785e9e3df90e928a393b
+	source_x86_64 = protonux-x86_64-1.0.0.tgz::https://github.com/Foxemsx/Protonux/releases/download/v1.0.0/protonux-v1.0.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = bf178a37b2bc8f7f118d648cebdf23f2fb5ea847fd701ef4b6d382f8975278a8
+	source_aarch64 = protonux-aarch64-1.0.0.tgz::https://github.com/Foxemsx/Protonux/releases/download/v1.0.0/protonux-v1.0.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = b37eaeef811f461419e02119b729ea7249be52f1c6ced88fe6bb6095b99f7261
+
+pkgname = protonux-bin
