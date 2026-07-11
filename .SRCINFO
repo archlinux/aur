@@ -1,7 +1,7 @@
 pkgbase = ruby-parlour
 	pkgdesc = A type information generator, merger and parser for Sorbet and Ruby 3/Steep
 	pkgver = 9.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AaronC81/parlour
 	arch = any
 	license = MIT
@@ -9,7 +9,6 @@ pkgbase = ruby-parlour
 	checkdepends = ruby-rake
 	checkdepends = ruby-rspec
 	checkdepends = ruby-simplecov
-	makedepends = git
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-commander

@@ -4,7 +4,7 @@
 _gemname=parlour
 pkgname=ruby-$_gemname
 pkgver=9.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A type information generator, merger and parser for Sorbet and Ruby 3/Steep'
 arch=(any)
 url='https://github.com/AaronC81/parlour'
@@ -17,7 +17,6 @@ depends=(
   ruby-sorbet-runtime
 )
 makedepends=(
-  git
   ruby-rdoc
 )
 checkdepends=(
