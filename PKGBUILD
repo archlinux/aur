@@ -94,5 +94,5 @@ package() {
     )
 
     # License
-    install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+    install -vDm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
