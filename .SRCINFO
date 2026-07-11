@@ -1,0 +1,18 @@
+pkgbase = pimension-esports-git
+	pkgdesc = A DeepSeek AI chat desktop client built with Qt 6 and WebEngine
+	pkgver = r6.537de6d
+	pkgrel = 1
+	url = https://gitee.com/jxc20120414/Dimension-Esports.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-webengine
+	provides = deepseekqt
+	conflicts = deepseekqt
+	source = pimension-esports-git::git+https://gitee.com/jxc20120414/Dimension-Esports.git
+	sha256sums = SKIP
+
+pkgname = pimension-esports-git
