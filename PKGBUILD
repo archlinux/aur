@@ -4,7 +4,7 @@ _pkgauthor=ozgurulukir
 _pkgname=fff.cr
 _appname=${_pkgname//\./-}
 pkgname=${_appname}-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 _pkgver=v${pkgver}
 pkgdesc="📁 A simple file manager written in Crystal."
@@ -19,7 +19,7 @@ conflicts=(${pkgname%%-bin})
 depends=('glibc' 'libgcc' 'pcre2' 'readline')
 
 source=("https://github.com/${_pkgauthor}/${_pkgname}/archive/${_pkgver}.tar.gz")
-sha256sums=('efc9937d2d148361a4e8ca25b6fda63ede9ad1da1c8f5cfb8510f088c1d855e9')
+sha256sums=('acae4633874ccc746971397975490f08810fbd1975d611f25d941780364610fa')
 
 
 package() {
