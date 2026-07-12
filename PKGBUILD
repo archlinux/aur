@@ -23,64 +23,12 @@ b2sums=('2b4250ea0f02a1aef9b6c7bfb8ab38745ff11387f0545e982f802c54afa07103d99d249
         'ab8364e68de0fbc8cfe82013f2a1313b477f05db03dcf0bbff3345aee2d9ce6e82205babf9b2cccb858728b209d0e0d3450d5ee027faead6776f2bdb0197bdd4'
         'e81319e87083d8785489a3c4c5621939c821f3e9d78d39b7272f739e791720ee02aadf6152c96bfb0c319b1770841a08e7c60617aa71d031827634d945d6e25f')
 
-_append_ini_section_line() {
-  local file=$1 section=$2 line=$3
-
-  awk -v section="[${section}]" -v line="${line}" '
-    function flush_blanks() {
-      if (pending_blanks != "") {
-        printf "%s", pending_blanks
-        pending_blanks = ""
-      }
-    }
-    $0 == section {
-      in_section = 1
-      saw_section = 1
-      print
-      next
-    }
-    in_section && $0 == line {
-      found = 1
-    }
-    in_section && /^[[:space:]]*$/ {
-      pending_blanks = pending_blanks $0 ORS
-      next
-    }
-    in_section && /^\[/ {
-      if (!found) {
-        print line
-      }
-      flush_blanks()
-      in_section = 0
-      print
-      next
-    }
-    in_section {
-      flush_blanks()
-      print
-      next
-    }
-    {
-      print
-    }
-    END {
-      if (!saw_section) {
-        exit 1
-      }
-      if (in_section && !found) {
-        print line
-      }
-      flush_blanks()
-    }
-  ' "${file}" > "${file}.new"
-  mv "${file}.new" "${file}"
-}
-
 prepare() {
   cd "${pkgname}-${pkgver}"
 
   patch -Np1 -i "${srcdir}/brscan-1.0.1-arch-fixes.patch"
-  _append_ini_section_line data/Brsane.ini 'Support Model' "${_mfc1810_model}"
+  grep -Fxq "${_mfc1810_model}" data/Brsane.ini ||
+    sed -i "/^\\[Support Model\\]$/a ${_mfc1810_model}" data/Brsane.ini
 }
 
 build() {
