@@ -9,11 +9,11 @@
 # kept in sync with the frank-geary source PKGBUILD.
 
 pkgname=frank-geary-bin
-pkgver=46.0_frank.1
+pkgver=46.0_frank.2
 pkgrel=1
 pkgdesc='GNOME Geary email client with FrankGeary workflow improvements, prebuilt binary'
 arch=('x86_64')
-url='https://github.com/akitaonrails/FrankGeary'
+url='https://github.com/akitaonrails/frank_geary'
 license=('LGPL-2.1-or-later')
 depends=(
   'at-spi2-core'
@@ -58,7 +58,7 @@ _tag="v${pkgver/_/-}"
 _asset="frank-geary-${pkgver}-x86_64.tar.zst"
 source=("${_asset}::${url}/releases/download/${_tag}/${_asset}")
 noextract=("${_asset}")
-sha256sums=('019e96b12f7554199c2d992df8d98b04cdc14117e453ac949b1d9477fd6fdc11')
+sha256sums=('251b97866309dbfe9b9dfa867c4a78114bf443e75657fd82a25d5107cd27ce6b')
 
 package() {
   bsdtar -xpf "${srcdir}/${_asset}" -C "${pkgdir}"
