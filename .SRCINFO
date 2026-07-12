@@ -1,10 +1,14 @@
 pkgbase = axmol-bin
-	pkgdesc = A multi-platform 2D/3D game engine, fork of Cocos2d-x (Precompiled standard SDK package)
+	pkgdesc = A multi-platform 2D/3D game engine, fork of Cocos2d-x (Stable release)
 	pkgver = 2.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/axmolengine/axmol
 	arch = x86_64
 	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = powershell
 	depends = glu
 	depends = glew
 	depends = glfw-x11
@@ -18,7 +22,7 @@ pkgbase = axmol-bin
 	provides = axmol
 	conflicts = axmol
 	conflicts = axmol-git
-	source = https://github.com/axmolengine/axmol/releases/download/v2.1.1/axmol-2.1.1-linux-x64.tar.gz
-	sha256sums = fb8a76d1a938be9a98e83b4b03657b29a65dbd6c7e3f9a74c76bde15d9b56f8a
+	source = axmol-2.1.1::git+https://github.com/axmolengine/axmol.git#tag=v2.1.1
+	sha256sums = SKIP
 
 pkgname = axmol-bin
