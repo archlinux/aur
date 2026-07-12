@@ -24,18 +24,16 @@ sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
 sha256sums_x86_64=('735bcfd866ad093a99fe7eeb38f82a3016f1b9d5bfca33432c8231a04075ef46')
 
 package() {
-  cd "$srcdir"
+  cd "${srcdir}"
 
   cp -R "${srcdir}/usr/" "${pkgdir}/usr/"
   cp -R "${srcdir}/opt/" "${pkgdir}/opt/"
 
-  chmod 4755 "${pkgdir}/opt/Garlmap/chrome-sandbox"
+  # Create a symlink to the binary in /opt
+  install -dm755 "${pkgdir}/usr/bin/"
+  ln -sf "/opt/Crossdirstat/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  # Create a symlink to the binary in /opt
-  install -dm755 "${pkgdir}/usr/bin/"
-  ln -sf "/opt/Garlmap/garlmap" "${pkgdir}/usr/bin/${_basename}"
 } 
