@@ -1,0 +1,64 @@
+From 235e4f5391a3dc65fb5eff1ddccf11b34217c75b Mon Sep 17 00:00:00 2001
+From: Zhang Hua <zhanghua.00@qq.com>
+Date: Sun, 12 Jul 2026 09:59:57 +0800
+Subject: [PATCH 2/7] cmake: Use system Eigen3
+
+---
+ CMakeLists.txt             |  1 +
+ deps.json                  | 13 -------------
+ third_party/CMakeLists.txt |  5 -----
+ 3 files changed, 1 insertion(+), 18 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c426d5f..123cbc3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -35,6 +35,7 @@ endif()
+ 
+ find_package(PkgConfig REQUIRED)
+ find_package(Threads REQUIRED)
++find_package(Eigen3 3.4.0 REQUIRED)
+ 
+ if(CMAKE_USE_PTHREADS_INIT)
+     # Clang records pthread support in C++ module BMIs; keep all module targets compatible.
+diff --git a/deps.json b/deps.json
+index d399794..4254dc4 100644
+--- a/deps.json
++++ b/deps.json
+@@ -1,17 +1,4 @@
+ [
+-  {
+-    "dest": "build/_flatpak_deps/eigen-src",
+-    "disable-shallow-clone": false,
+-    "tag": "3.4.0",
+-    "commit": "3147391d946bb4b6c68edd901f2add6ac1f31f8c",
+-    "type": "git",
+-    "url": "https://gitlab.com/libeigen/eigen.git",
+-    "x-cmake": {
+-      "name": "eigen",
+-      "exclude_from_all": true,
+-      "source_subdir": "cmake-noop"
+-    }
+-  },
+   {
+     "dest": "build/_flatpak_deps/nlohmann_json-src",
+     "type": "archive",
+diff --git a/third_party/CMakeLists.txt b/third_party/CMakeLists.txt
+index 777682c..c92bb24 100644
+--- a/third_party/CMakeLists.txt
++++ b/third_party/CMakeLists.txt
+@@ -48,11 +48,6 @@ set(BUILD_TESTING           OFF CACHE INTERNAL "")
+ 
+ fetchdeps(${CMAKE_SOURCE_DIR}/deps.json)
+ 
+-# Post-fetch setup for eigen (header-only, source_subdir=cmake-noop).
+-add_library(eigen INTERFACE)
+-add_library(Eigen3::Eigen ALIAS eigen)
+-target_include_directories(eigen SYSTEM INTERFACE ${eigen_SOURCE_DIR})
+-
+ # Audio output is handled by wavsen::audio (pulse/pipewire-backed,
+ # selectable via WAVSEN_AUDIO_BACKEND in the wavsen subtree).
+ 
+-- 
+2.55.0
+

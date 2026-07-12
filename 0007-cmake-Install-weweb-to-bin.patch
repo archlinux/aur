@@ -1,0 +1,27 @@
+From 51f489e2c560543717c543887fd7c9e30b360ed1 Mon Sep 17 00:00:00 2001
+From: Zhang Hua <zhanghua.00@qq.com>
+Date: Sun, 12 Jul 2026 10:14:03 +0800
+Subject: [PATCH 7/7] cmake: Install weweb to bin
+
+---
+ waywallen/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/waywallen/CMakeLists.txt b/waywallen/CMakeLists.txt
+index fae8535..14387af 100644
+--- a/waywallen/CMakeLists.txt
++++ b/waywallen/CMakeLists.txt
+@@ -12,8 +12,8 @@ if(OWE_WAYWALLEN_PLUGIN_BUNDLE_LAYOUT)
+ else()
+     set(_OWE_PLUGIN_DIR share/waywallen/plugins/${OWE_WAYWALLEN_PLUGIN_ID})
+     set(OWE_WESCENE_BIN ../../../../bin/waywallen-wescene-renderer)
+-    set(OWE_WEWEB_BIN ../../../../bin/weweb/waywallen-weweb-renderer)
+-    set(_OWE_WEWEB_FILES_PREFIX ../../../../bin/weweb)
++    set(OWE_WEWEB_BIN ../../../../bin/waywallen-weweb-renderer)
++    set(_OWE_WEWEB_FILES_PREFIX ../../../../bin)
+ endif()
+ set(_OWE_WESCENE_INSTALL_DIR bin)
+ set(_OWE_WEWEB_INSTALL_DIR bin/weweb)
+-- 
+2.55.0
+

@@ -1,6 +1,12 @@
 *
 !PKGBUILD
-!0001-use-system-deps.diff
+!0001-cmake-Use-system-cef.patch
+!0002-cmake-Use-system-Eigen3.patch
+!0003-cmake-Use-system-nlohmann-json.patch
+!0004-cmake-Use-system-argparse.patch
+!0005-cmake-Use-system-quickjs-ng.patch
+!0006-cmake-Use-system-glslang.patch
+!0007-cmake-Install-weweb-to-bin.patch
 !.SRCINFO
 !.nvchecker.toml
 !.gitignore

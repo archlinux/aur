@@ -1,0 +1,47 @@
+From 0c307ba66bf125284de5ad1e6082d737ac2b011a Mon Sep 17 00:00:00 2001
+From: Zhang Hua <zhanghua.00@qq.com>
+Date: Sun, 12 Jul 2026 10:07:41 +0800
+Subject: [PATCH 5/7] cmake: Use system quickjs-ng
+
+---
+ CMakeLists.txt |  1 +
+ deps.json      | 12 ------------
+ 2 files changed, 1 insertion(+), 12 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 33053c6..66fd94e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -38,6 +38,7 @@ find_package(Threads REQUIRED)
+ find_package(Eigen3 3.4.0 REQUIRED)
+ find_package(nlohmann_json 3.12.0 REQUIRED)
+ find_package(argparse REQUIRED)
++find_package(qjs REQUIRED) # >= 0.14.0 in deps.json, but version is not supported in extra/quickjs-ng
+ 
+ if(CMAKE_USE_PTHREADS_INIT)
+     # Clang records pthread support in C++ module BMIs; keep all module targets compatible.
+diff --git a/deps.json b/deps.json
+index c81cb64..2ba15bb 100644
+--- a/deps.json
++++ b/deps.json
+@@ -42,17 +42,5 @@
+       "name": "wavsen",
+       "exclude_from_all": true
+     }
+-  },
+-  {
+-    "dest": "build/_flatpak_deps/quickjs-src",
+-    "disable-shallow-clone": false,
+-    "tag": "v0.14.0",
+-    "commit": "3c051980ab7e783dfbfb1c70c014ce5e05ecf24c",
+-    "type": "git",
+-    "url": "https://github.com/quickjs-ng/quickjs.git",
+-    "x-cmake": {
+-      "name": "quickjs",
+-      "exclude_from_all": true
+-    }
+   }
+ ]
+-- 
+2.55.0
+
