@@ -18,8 +18,8 @@ provides=('thelounge')
 backup=('etc/thelounge/config.js')
 source=(
     "https://registry.npmjs.org/$_pkgname/-/$_pkgname-$_pkgver.tgz"
-    "https://raw.githubusercontent.com/thelounge/thelounge/v${_pkgver}/yarn.lock"
-    "https://raw.githubusercontent.com/thelounge/thelounge/v${_pkgver}/package.json"
+    "$_pkgname-$_pkgver.yarn.lock::https://raw.githubusercontent.com/thelounge/thelounge/v${_pkgver}/yarn.lock"
+    "$_pkgname-$_pkgver.package.json::https://raw.githubusercontent.com/thelounge/thelounge/v${_pkgver}/package.json"
     'system.service'
     'user.service'
     'sysusers.d'
@@ -35,6 +35,8 @@ sha256sums=('482fc732e71135211da876f1f5e819e6d24f8ea09286e939a847ca51b9d5e983'
             'c07fc7aaa91f6d2407d9ea2d15bfa780bfc06e3487efa138a9385307dcf9f41d')
 
 build() {
+    cp "$_pkgname-$_pkgver.package.json" package.json
+    cp "$_pkgname-$_pkgver.yarn.lock" yarn.lock
     yarn install --prod --frozen-lockfile --non-interactive --ignore-scripts --cache-folder "$srcdir/yarn-cache"
     mkdir -p _build
     cp package.json yarn.lock _build
