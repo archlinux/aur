@@ -1,6 +1,6 @@
 pkgbase = cosmic-monitor-git
 	pkgdesc = COSMIC System Monitor
-	pkgver = epoch.1.2.0.r3.g012df01
+	pkgver = 1.2.0.r15.ge1da533
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-monitor
 	arch = x86_64
