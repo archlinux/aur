@@ -30,7 +30,7 @@ build() {
 check() {
     cd $_name-$pkgver
     python tests/download_fonts.py
-    PYTHONPATH="$PWD" pytest
+    PYTHONPATH="$PWD/src" pytest -o addopts=""
 }
 
 package() {
