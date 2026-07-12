@@ -13,8 +13,9 @@ md5sums=('SKIP')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
+  cd "$srcdir/$pkgname"
   git submodule update --init
-  cd "$srcdir/$pkgname/cgrc-rust"
+  cd cgrc-rust
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
