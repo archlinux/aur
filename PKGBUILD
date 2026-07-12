@@ -1,7 +1,7 @@
 # Maintainer: Keon Cachia <keonfarrugia@gmail.com>
 pkgname=rill
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalist scrolling window manager for River"
 arch=('x86_64')
 _zigwlver=0.6.0
@@ -15,7 +15,7 @@ source=(https://codeberg.org/lzj15/rill/archive/"$pkgver".tar.gz
 	zig-wayland-$_zigwlver.tar.gz::https://github.com/ifreund/zig-wayland/archive/refs/tags/v$_zigwlver.tar.gz
 	zig-xkbcommon-$_xkbver.tar.gz::https://github.com/ifreund/zig-xkbcommon/archive/refs/tags/v$_xkbver.tar.gz
        )
-sha256sums=('3655b23863194c0d8340397e91e19420c2e9d9935c1e4796898c0d7cd9ae2f9f'
+sha256sums=('6477efbb83dfed2fe63682c95a68821096e650953175cc37fa516874e3b99f2e'
             'd9804e50f9fa549ad0aed751fbbb5fbc52110d57971b59ecab34ff11f08b0230'
             'bff568b83a19630dc7cb27950e03337925d0d71b4fb0676bc6ebe2d31d1db032')
 optdepends=('alacritty: Default terminal emulator'
@@ -35,6 +35,7 @@ build() {
     -Dtarget=native-linux.6.6-gnu.2.40 \
     -Dcpu=baseline \
     -Doptimize=ReleaseSafe \
+    -Dpie=true \
     --fork="$srcdir/zig-wayland-${_zigwlver}" \
     --fork="$srcdir/zig-xkbcommon-${_xkbver}"
 
