@@ -13,7 +13,7 @@
 
 pkgname=mesa-rk35xx-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=26.1.0_devel.221076.3be57aa4c3f.d41d8cd
+pkgver=26.2.0_devel.226079.9e6e6e5db7c.d41d8cd
 pkgrel=1
 arch=($CARCH)
 makedepends=(
@@ -132,7 +132,7 @@ declare -A _crates=(
 
 b2sums=('SKIP'
         'SKIP'
-        '431439d31632d177aeb15f910b4f546efa76d54fc74fc8e140399dc5e54eca33fd606f11dbfb48fa83067c8474ee512e62751895d5948367b65ab08b984284e5'
+        '431439d31632d177aeb15f910b4f546efa76d54fc74fc8e140399dc5e54eca33fd606f11dbfb48fa83067c8474ee512e62751895d5948367b65ab08b984284e5' #zerocopy
         'a6d47c903be6094423d89b8ec3ca899d0a84df6dbd6e76632bb6c9b9f40ad9c216f8fa400310753d392f85072756b43ac3892e0a2c4d55f87ab6463002554823'
         '9a73962e1e38b84131ab2350b69a1f5d611c549533eec73e898c394a9b9442f357bb5d5f59e1be12270dd29bdf237dc2d21786c0c2210736e224ef5d48300dcf'
         '2bfbb3146d63444632b924520bc3d8af4adc6bbc38f4a7c6e8a003365430372ac1c05246684b54f0a98c36c8a7f02c325e1a6dd7fec44adeff41767e427ea77f'
@@ -148,7 +148,7 @@ b2sums=('SKIP'
         '56322cafd4f761aa6192d4906ec7884f50f3fc20f0714381d5bba2e8355c03380aa65ea9e68188f75d00cd9014037e2eaac026113c5a57974a33ac46ed1b431c'
         '33be76d7ab098eaeeaefb2ea5ef20a73221ac51b491d6339e1fff66e24118854f3640de43241e233c68be17804b90d22d75f1d60f7df274acef4647c871e0e17'
         '4cede03c08758ccd6bf53a0d0057d7542dfdd0c93d342e89f3b90460be85518a9fd24958d8b1da2b5a09b5ddbee8a4263982194158e171c2bba3e394d88d6dac'
-        'b14ee41348336981ab86459417b9feab90879a11a6524a8b43f2b89c09c844b4441c31e315c471be00ad21fa88b5dcc7671b56567fdcd72bb0790ceeaa25813b'
+        'b14ee41348336981ab86459417b9feab90879a11a6524a8b43f2b89c09c844b4441c31e315c471be00ad21fa88b5dcc7671b56567fdcd72bb0790ceeaa25813b' #bitflags
         '208f858730f90834db4765c5645e9fbdfbf9a9aea939766c2ddcdea027901aca477e8274a9a91bcf7746bcd99ad9b77b96fbe94b778c91277007ec8afebdf58b'
         '81424245e1e2b94459df68bb3a9a866c6a364102b5e1d010ede9c5f8278f8406d7b651957d091c5914e936b494b0f6e9a6a1dd8b7d35cd7d7100f86dee4ec12e'
         '9605ca407af248c71e0d2bc24d213aa6ff08a14eb548b85de16de7e172a617cdf12c2e4c686f6dd1c80455448a313f6e7d760885f189ae726934efbe06fb5603'
@@ -181,7 +181,7 @@ sha256sums=('SKIP'
             'd725d9cfd79e87dccc9341a2ef39d1b6f6353d68c4b33c177febbe1a402c97c5'
             '26afc1baea8a989337eeb52b6e72a039780ce45c3edfcc9c5b9d112feeb173c2'
             '3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b'
-            '1b8e56985ec62d17e9c1001dc89c88ecd7dc08e47eba5ec7c29c7b5eeecde967'
+            '1b8e56985ec62d17e9c1001dc89c88ecd7dc08e47eba5ec7c29c7b5eeecde967' #bitflags
             '6f109e41dd4a3c848907eb83d5a42ea98b3769495597450cf6d153507b166f0f'
             '291ec9ab5efd934aaf503a6466c5d5251535d108ee747472c3977cc5acc868ef'
             '6c20b6793b5c2fa6553b250154b78d6d0db37e72700ae35fad9387a46f487c97'
@@ -205,7 +205,7 @@ _gencrates() {
 for _crate in "${!_crates[@]}"; do
   _ver="${_crates[$_crate]}"
   source+=(
-    "$_crate-$_ver.tar.gz::https://crates.io/api/v1/crates/$_crate/$_ver/download"
+    "$_crate-$_ver.tar.gz::https://static.crates.io/crates/$_crate/$_ver/download"
   )
 done
 
@@ -348,6 +348,7 @@ build () {
         -D gallium-drivers=panfrost,virgl,svga,softpipe,llvmpipe,lima,zink,rocket,d3d12
         -D gallium-extra-hud=true
         -D gallium-rusticl=${_rusticl}
+	#-D panfrost-rust=true
         -D gallium-va=enabled
         -D gbm=enabled
         -D gles1=enabled
@@ -361,7 +362,6 @@ build () {
         -D microsoft-clc=disabled
 	-D sysprof=true
         -D platforms=x11,wayland
-        -D legacy-x11=enabled
 	-D valgrind=disabled
         -D video-codecs=all
         -D vulkan-drivers=swrast,virtio,panfrost,gfxstream
