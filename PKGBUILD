@@ -33,26 +33,34 @@ prepare() {
 build() {
   cd "CLIProxyAPI-$pkgver"
 
+  local commit="v$pkgver"
+  local build_date
+  build_date="$(date -u -d "@$SOURCE_DATE_EPOCH" +%Y-%m-%dT%H:%M:%SZ)"
+
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
   export GOPATH="$srcdir/gopath"
 
-  go build \
+  CGO_ENABLED=1 go build \
+    -buildvcs=false \
     -buildmode=pie \
     -trimpath \
     -mod=readonly \
     -modcacherw \
-    -ldflags="-linkmode=external -X main.Version=$pkgver -X main.Commit=v$pkgver" \
-    -o cliproxyapi \
+    -ldflags="-s -w -linkmode=external \
+      -X main.Version=$pkgver \
+      -X main.Commit=$commit \
+      -X main.BuildDate=$build_date" \
+    -o cli-proxy-api \
     ./cmd/server
 }
 
 package() {
   cd "CLIProxyAPI-$pkgver"
 
-  install -Dm755 cliproxyapi "$pkgdir/usr/bin/cliproxyapi"
+  install -Dm755 cli-proxy-api "$pkgdir/usr/bin/cliproxyapi"
   install -Dm640 config.example.yaml "$pkgdir/etc/cli-proxy-api/config.yaml"
   sed -i \
     -e 's|auth-dir: "~/.cli-proxy-api"|auth-dir: "/var/lib/cli-proxy-api/auths"|' \
