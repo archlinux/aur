@@ -1,9 +1,6 @@
-# Maintainer: Pierpaolo Valerio <gondsman@techgeek.co.in>
-# PKGBUILD created from the original kvantum-qt5-git AUR entry
-
 pkgname=kvantum-qt4-git
 _gitname=Kvantum
-pkgver=0.10.5.r16.g45792f7
+pkgver=1.1.8.r3.gdc344a71
 pkgrel=1
 pkgdesc="SVG-based Qt4 theme engine plus a config tool and extra themes"
 arch=('x86_64')
@@ -33,7 +30,7 @@ build() {
 package() {
 	cd ${srcdir}/${_gitname}/${_gitname}
 	make DESTDIR=${pkgdir}/ install
-#	install -Dm644 ChangeLog ${pkgdir}/usr/share/doc/kvantum/ChangeLog
-#	install -Dm644 COPYING ${pkgdir}/usr/share/licenses/kvantum/COPYING
-#	cp -r doc ${pkgdir}/usr/share/doc/kvantum
+	install -Dm644 ChangeLog ${pkgdir}/usr/share/doc/kvantum/ChangeLog
+	install -Dm644 COPYING ${pkgdir}/usr/share/licenses/kvantum/COPYING
+	cp -r doc ${pkgdir}/usr/share/doc/kvantum
 }
