@@ -1,6 +1,6 @@
 pkgbase = ai-robots-txt-git
 	pkgdesc = List of AI crawler user agents. (git version)
-	pkgver = 1.45.r2.g86d582b
+	pkgver = 1.47.r5.ga0fed45
 	pkgrel = 1
 	url = https://github.com/ai-robots-txt/ai.robots.txt
 	arch = any

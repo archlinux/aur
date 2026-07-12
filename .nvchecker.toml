@@ -1,4 +1,0 @@
-[ai-robots-txt]
-source = "git"
-git = "https://github.com/ai-robots-txt/ai.robots.txt.git"
-prefix = "v"

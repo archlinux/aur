@@ -1,6 +1,6 @@
 # Maintainer: ltdk <usr@ltdk.xyz>
 pkgname=ai-robots-txt-git
-pkgver=1.45.r2.g86d582b
+pkgver=1.47.r5.ga0fed45
 pkgrel=1
 pkgdesc='List of AI crawler user agents. (git version)'
 arch=(any)
