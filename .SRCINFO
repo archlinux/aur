@@ -1,7 +1,7 @@
 pkgbase = frank-geary-bin
 	pkgdesc = FrankGeary email client, prebuilt stable release binary
 	pkgver = 0.11.2_frank.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/akitaonrails/FrankGeary
 	arch = x86_64
 	license = LGPL2.1
@@ -19,6 +19,8 @@ pkgbase = frank-geary-bin
 	conflicts = geary
 	conflicts = frank-geary
 	noextract = frank-geary-0.11.2_frank.1-x86_64.tar.zst
+	options = !strip
+	options = !debug
 	source = frank-geary-0.11.2_frank.1-x86_64.tar.zst::https://github.com/akitaonrails/FrankGeary/releases/download/v0.11.2-frank.1/frank-geary-0.11.2_frank.1-x86_64.tar.zst
 	sha256sums = fc913d5d575119acf509c9402430bc28557cfc605364144bef14f6814fc247ed
 

@@ -10,7 +10,7 @@
 
 pkgname=frank-geary-bin
 pkgver=0.11.2_frank.1
-pkgrel=1
+pkgrel=2
 pkgdesc='FrankGeary email client, prebuilt stable release binary'
 arch=('x86_64')
 url='https://github.com/akitaonrails/FrankGeary'
@@ -28,6 +28,10 @@ depends=(
 )
 provides=('geary' 'frank-geary')
 conflicts=('geary' 'frank-geary')
+# The release asset bundles a legacy shared-library closure that may already be
+# stripped and usually has no separate debuginfo. Avoid makepkg debug indexing
+# noise/failures such as "No debugging symbols" from gdb-add-index.
+options=('!strip' '!debug')
 _tag='v0.11.2-frank.1'
 _asset='frank-geary-0.11.2_frank.1-x86_64.tar.zst'
 source=("${_asset}::${url}/releases/download/${_tag}/${_asset}")
