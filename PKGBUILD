@@ -1,7 +1,7 @@
 # Maintainer: unixman69 <unixman@tuta.io>
 
 pkgname=gnome-shell-extension-dash-to-dock-multipos
-pkgver=105.3
+pkgver=105.4
 pkgrel=1
 pkgdesc="Dash to Dock fork with per-monitor dock position (GNOME Shell extension)"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL-2.0-only')
 depends=('gnome-shell>=45')
 makedepends=('glib2')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0ac294b371e9d66c51de9c3c9e2c6211e440dc603abaab820384e1ccd39cd072')
+sha256sums=('5fc5d1c10202d4dde9bb5aa4c0f9a268535a5ea3c54e2428ce8e559e43acb0fd')
 
 _uuid=dash-to-dock-multipos@unixman69
 
