@@ -1,10 +1,10 @@
 # Maintainer: whysooraj <whysooraj.official@gmail.com>
 pkgname=tide-island
-pkgver=1.0.20
+pkgver=1.0.21
 pkgrel=1
 _srcdir=Tide-island-$pkgver
 _builddir=build-$pkgver
-pkgdesc="A dynamic island for Hyprland using Quickshell"
+pkgdesc="A dynamic island for Hyprland and niri using Quickshell"
 arch=('x86_64')
 url="https://github.com/enhaoswen/Tide-island"
 license=('unknown')
@@ -14,14 +14,12 @@ depends=(
     'qt6-wayland'
     'qt6-connectivity'
     'qt6-svg'
-    'hyprland'
     'wireplumber'
     'pipewire'
     'dbus'
     'libpulse'
     'systemd-libs'
     'brightnessctl'
-    'hyprsunset'
     'upower'
     'bluez'
     'bluez-utils'
@@ -30,6 +28,10 @@ depends=(
 makedepends=('cmake')
 options=('!debug' '!strip')
 optdepends=(
+    'hyprland: for Hyprland compositor integration'
+    'niri: for niri compositor integration'
+    'hyprsunset: for Night Light on Hyprland'
+    'gammastep: for Night Light on niri or generic Wayland sessions'
     'cava: for audio visualizer'
     'imagemagick: for wallpaper thumbnails'
     'awww: for applying wallpapers from the wallpaper picker'
@@ -43,7 +45,7 @@ optdepends=(
 conflicts=('tide-island-git')
 install='tide-island.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/enhaoswen/Tide-island/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('c155c9cb929d27793f9cddd7de2a67116fd1df9d50ef1cbcdd14b4d856399fc6')
 
 build() {
   cmake -S "$_srcdir" -B "$_builddir" \
