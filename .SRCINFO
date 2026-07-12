@@ -1,6 +1,6 @@
 pkgbase = anodemcu
 	pkgdesc = A powerful interactive shell script to manage MCU projects (Arduino, ESP-IDF, PlatformIO)
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/abod8639/anodemcu
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = anodemcu
 	depends = fzf
 	depends = jq
 	depends = neovim
-	source = https://github.com/abod8639/anodemcu/archive/refs/tags/v3.0.0.tar.gz
-	sha256sums = a41e17a6a695d00706caaefdf227124c6c4f3c40cea3fb6c9cc752e483ead5e0
+	source = https://github.com/abod8639/anodemcu/archive/refs/tags/3.0.1.tar.gz
+	sha256sums = 8d0d8743a347d611ac62ab9eb38d00e3d24af070f229782d243c07d9f5d11941
 
 pkgname = anodemcu
