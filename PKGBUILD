@@ -2,7 +2,7 @@
 pkgname=hifi-suite-git
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Zero-config audio suite for wireless headsets: volume control, surround, noise cancellation, EQ"
+pkgdesc="Zero-config audio suite for wireless headsets: volume control, surround, NC, EQ, battery monitor"
 arch=('any')
 url="https://github.com/Pakrohk/linux-hifi-suite"
 license=('MIT')
