@@ -16,11 +16,11 @@ pkgver() {
 }
 
 package() {
-  install -Dm755 "$srcdir/nusgmon/nusgmon" "$pkgdir/usr/bin/nusgmon"
-  install -Dm644 "$srcdir/nusgmon/nusgmon.service" "$pkgdir/etc/systemd/user/nusgmon.service"
+  install -Dm755 "$srcdir/nusgmon/nusgmon" "$pkgdir/local/bin/nusgmon"
+  install -Dm644 "$srcdir/nusgmon/nusgmon.service" "$pkgdir/etc/systemd/system/nusgmon.service"
 
-  sed -i "s|^ExecStart=.*|ExecStart=/usr/bin/nusgmon record -w 3|" "$pkgdir/etc/systemd/user/nusgmon.service"
-  grep -v "Requires=network.target" "$srcdir/nusgmon/nusgmon.service" > "$pkgdir/etc/systemd/user/nusgmon.service"
+  sed -i "s|^ExecStart=.*|ExecStart=/usr/local/bin/nusgmon record -w 3|" "$pkgdir/etc/systemd/system/nusgmon.service"
+  grep -v "Requires=network.target" "$srcdir/nusgmon/nusgmon.service" > "$pkgdir/etc/systemd/system/nusgmon.service"
 }
 
 install=nusgmon.install
