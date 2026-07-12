@@ -5,7 +5,7 @@
 # for local builds.
 
 pkgname=vegad
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Daemon privilegiado do Vega, centro de controle para Linux"
 arch=('x86_64')
