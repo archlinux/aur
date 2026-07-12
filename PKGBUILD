@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=arity
-pkgver=0.11.0 # renovate: datasource=github-tags depName=jolars/arity
+pkgver=0.12.0 # renovate: datasource=github-tags depName=jolars/arity
 pkgrel=1
 pkgdesc="Language server, formatter, and linter for R"
 url="https://github.com/jolars/arity"
@@ -33,4 +33,4 @@ package() {
   install -Dm644 "${srcdir}/arity-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('d2db41448e6597e1c89865ac44ada0b0277f94d383fe335254687e2e22502556d621f2979f50a6cd8efd8433fe21710b4c7fc8f932175d2b73750c14fbefcbe0')
+sha512sums=('e4acf802191f6a030339c5ed9b852be196f397cf22c54b7852c835c40be9c002797c9869747aa6cbec19b6be56b317e436bfc9825c2148fca2a4f7ab9d44375f')
