@@ -1,6 +1,6 @@
 pkgbase = whichllm-git
 	pkgdesc = Auto-detect your hardware and rank local LLMs by what actually fits and performs best
-	pkgver = 0.5.12.r0.g5778034
+	pkgver = 0.5.15.r1.g0a49590
 	pkgrel = 1
 	url = https://github.com/Andyyyy64/whichllm
 	install = whichllm-git.install
@@ -19,7 +19,7 @@ pkgbase = whichllm-git
 	depends = python-dbgpu
 	depends = python-thefuzz
 	optdepends = python-nvidia-ml-py: NVIDIA GPU detection (pulls in nvidia-utils ~900MB)
-	provides = whichllm=0.5.12.r0.g5778034
+	provides = whichllm=0.5.15.r1.g0a49590
 	conflicts = whichllm
 	source = git+https://github.com/Andyyyy64/whichllm.git
 	sha256sums = SKIP
