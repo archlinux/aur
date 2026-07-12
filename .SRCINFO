@@ -1,6 +1,6 @@
-pkgbase = antimatter
+pkgbase = amctl
 	pkgdesc = CLI for controlling system options and helpful tools.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Hengtime787/Antimatter
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = antimatter
 	makedepends = python-wheel
 	depends = python
 	depends = python-typer
-	source = antimatter-1.0.0.tar.gz::https://github.com/Hengtime787/Antimatter/archive/refs/tags/v1.0.0.tar.gz
+	source = amctl-1.0.1.tar.gz::https://github.com/Hengtime787/Antimatter/archive/refs/tags/v1.0.1.tar.gz
 	sha256sums = SKIP
 
-pkgname = antimatter
+pkgname = amctl

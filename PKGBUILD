@@ -1,4 +1,4 @@
-pkgname=antimatter
+pkgname=amctl
 pkgver=1.0.1
 pkgrel=1
 pkgdesc="CLI for controlling system options and helpful tools."
