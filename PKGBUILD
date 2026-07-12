@@ -3,7 +3,7 @@
 # Co-Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 
 pkgname="nzbhydra2-bin"
-pkgver=8.8.5
+pkgver=8.9.0
 pkgrel=1
 pkgdesc="Search aggregator for newznab and torznab indexers."
 arch=('any')
@@ -20,7 +20,7 @@ source=("https://github.com/theotherp/nzbhydra2/releases/download/v${pkgver}/${p
         'nzbhydra2.sysusers'
         'nzbhydra2.sh')
 
-sha256sums=('9d24ccf08a4e5c980aecf80833853f72a4b63c6c332a67d6681eba5763119acb'
+sha256sums=('cc32f9934f0f7b6637d3d31824a1a64dbca0fd8f0ed843b1ada91361b8a58653'
             '2fae64a1c5979d9f7b508f1e15d0f013b7cca1f2bbbdae56f546f4c362146b68'
             'a9ceeed2b50d55c5e554c0d4c615e855fe4d3889eb118e37908fa04ffb7cb003'
             '8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a'
