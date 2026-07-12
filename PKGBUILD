@@ -7,7 +7,7 @@
 _base=Mastodon.py
 pkgname=python-mastodon
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper for the Mastodon API"
 arch=(any)
 url="https://github.com/halcy/${_base}"
@@ -16,7 +16,7 @@ depends=(python-requests python-dateutil python-decorator)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 optdepends=(
   'python-cryptography: webpush support'
-  'python-grapheme: support for the get_status_length function, if required'
+  'python-graphemeu: support for the get_status_length function, if required'
   'python-halcy-blurhash: support for blurring medias using blurhash'
   'python-http-ece: webpush support'
   'python-magic: use libmagic for file type identification'
@@ -31,7 +31,7 @@ checkdepends=(
     python-pytz
 
     python-cryptography
-    python-grapheme
+    python-graphemeu
     python-halcy-blurhash
     python-http-ece
     python-magic
