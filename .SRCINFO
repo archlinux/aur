@@ -1,10 +1,10 @@
 pkgbase = ov-git
 	pkgdesc = Feature-rich terminal-based text pager (development version)
-	pkgver = 0.50.2.r13.g884083b
+	pkgver = 0.54.0.r0.g0a791c8
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/noborus/ov
-	install = ov-git.install
+	install = ov.install
 	arch = aarch64
 	arch = arm
 	arch = armv6h

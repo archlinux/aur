@@ -5,37 +5,37 @@
 
 _pkgname='ov'
 pkgname="${_pkgname}-git"
-pkgver=0.50.2.r13.g884083b
+pkgdesc='Feature-rich terminal-based text pager (development version)'
+pkgver=0.54.0.r0.g0a791c8
 pkgrel=1
 epoch=1
-pkgdesc='Feature-rich terminal-based text pager (development version)'
-arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/noborus/ov'
-license=('MIT')  # SPDX-License-Identifier: MIT
-provides=('ov')
-conflicts=("${provides[@]}")
+install="$_pkgname.install"
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
+license=('MIT')
 makedepends=('git' 'go')
 depends=('glibc')
 optdepends=(
   'xclip: for clipboard use'
   'xsel: for clipboard use (alternative)'
 )
+provides=('ov')
+conflicts=("${provides[@]}")
 source=("git+$url.git")
-install="$pkgname.install"
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
 
   git describe --long --tags \
-  | sed 's/^v//;s/-rc\d*//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    | sed 's/^v//;s/-rc\d*//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "$_pkgname"
 
   git clean -dfx
-  mkdir -vp build
+  mkdir -p build
   go mod tidy
 }
 
@@ -82,22 +82,22 @@ check() {
 package() {
   cd "$_pkgname"
 
-  install -vDm0755 -t "$pkgdir/usr/bin" \
+  install -Dm0755 -t "$pkgdir/usr/bin" \
     build/ov
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     ./*.md ./*.yaml ov.plugin.zsh
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE
 
-  install -vDm0644 build/_completions.bash \
+  install -Dm0644 build/_completions.bash \
     "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
-  install -vDm0644 build/_completions.fish \
+  install -Dm0644 build/_completions.fish \
     "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
-  install -vDm0644 build/_completions.zsh \
+  install -Dm0644 build/_completions.zsh \
     "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 
   for _dir in doc licenses; do
-    cd "$pkgdir/usr/share/$_dir" && ln -vsrf "$pkgname" "$_pkgname"
+    cd "$pkgdir/usr/share/$_dir" && ln -srf "$pkgname" "$_pkgname"
   done
 }
 
