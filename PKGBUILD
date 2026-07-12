@@ -2,8 +2,8 @@
 # Contributor: gcmalloc <gcmalloc@gmail.com>
 
 pkgname=openrdap-client
-pkgver=0.9.1
-pkgrel=5
+pkgver=0.10.0
+pkgrel=1
 pkgdesc="OpenRDAP is an command line RDAP client implementation in Go."
 url="https://www.openrdap.org/"
 arch=("x86_64")
@@ -13,7 +13,7 @@ makedepends=("go")
 provides=("rdap")
 conflicts=("rdap")
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/openrdap/rdap/archive/v$pkgver.tar.gz")
-sha256sums=("06a330a9e7d87d89274a0bcedc5852b9f6a4df81baec438fdb6156f49068996d")
+sha256sums=('19a6b1fe6c3335fa8bb48fb4c33ce56082e0ffdd24dd649745793613ab6c85cb')
 
 prepare() {
 	cd rdap-${pkgver}/cmd/rdap
