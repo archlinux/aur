@@ -2,7 +2,7 @@
 _gitrepo=plasma-workspace
 _pkgcat=xembedsniproxy
 pkgname=${_pkgcat}
-pkgver=6.5.5
+pkgver=6.7.2
 pkgrel=0
 epoch=0
 pkgdesc='Make xembed based tray icons work inside Wayland sessions'
@@ -16,11 +16,11 @@ makedepends=(
     'appstream-qt' 'baloo' 'base-devel' 'extra-cmake-modules' 'git' 'kded'
     'kglobalacceld' 'knotifyconfig' 'kparts' 'krunner' 'kscreen'
     'kstatusnotifieritem' 'ktexteditor' 'ktextwidgets' 'kuserfeedback' 'kwayland'
-    'kwin' 'libqalculate' 'packagekit-qt6' 'phonon-qt6' 'plasma-activities'
-    'plasma-activities-stats' 'plasma-wayland-protocols' 'prison' 'qcoro'
-    'qt6-location' 'qt6-wayland' 'wayland-protocols' 'xdotool')
+    'kwin' 'libqalculate' 'networkmanager-qt' 'packagekit-qt6' 'phonon-qt6'
+    'plasma-activities' 'plasma-activities-stats' 'plasma-wayland-protocols'
+    'prison' 'qcoro' 'qt6-location' 'qt6-wayland' 'wayland-protocols' 'xdotool')
 source=("$_gitrepo::git+https://invent.kde.org/plasma/plasma-workspace.git#tag=v$pkgver")
-sha256sums=('6b3684159f4dd3176aea07242d0d25d31e66ad21a87a2da0f85c4b37330b94d6')
+sha256sums=('7bc459a6f0bd7090dd610f08b4860f743cc53a457c865b94d1bc32452ee4f3b2')
 
 build() {
     cd "$srcdir/$_gitrepo"
