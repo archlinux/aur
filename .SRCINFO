@@ -1,6 +1,6 @@
 pkgbase = nomacs
 	pkgdesc = A Qt image viewer
-	pkgver = 3.22.1
+	pkgver = 3.23.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/nomacs/nomacs
@@ -8,21 +8,25 @@ pkgbase = nomacs
 	license = GPL-3.0-only
 	makedepends = cmake
 	makedepends = git
-	makedepends = git-lfs
-	makedepends = qt6-tools
 	makedepends = python
+	makedepends = qt6-tools
+	makedepends = vulkan-headers
 	depends = exiv2
-	depends = gcc-libs
 	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libglvnd
 	depends = libraw
 	depends = libtiff
 	depends = opencv
 	depends = qt6-base
 	depends = qt6-svg
 	depends = quazip-qt6
-	optdepends = qt6-imageformats: support additional image formats
 	optdepends = kimageformats: support QOI (Quite OK Image Format)
-	source = git+https://github.com/nomacs/nomacs.git#tag=3.22.1
-	b2sums = 52eedf00a119aaa08ef6d79a506b6490cd858bbe336f4491db67fb5f4a701b3ef03d1f5a60f1ce8ae1974973203efc2125aa9ee649947e2535a20604a05f2cd2
+	optdepends = qt6-imageformats: support additional image formats
+	source = git+https://github.com/nomacs/nomacs.git#tag=3.23.1
+	source = nomacs-opencv5.patch::https://github.com/nomacs/nomacs/pull/1622.patch
+	b2sums = 1d6660001b029362282bac021950c6893d4ae8b7606518d5cb80385345a09cea3c5dbfa039f1432537760bd5cf06f541517de728c93772e3bdd9b9f763bd0345
+	b2sums = 0232c14becbdf31f321e67cedeae0e13edf051606bf68ecdde4aac96c2ec20258bd3ce0d5f6b765f609a35ae15a00e282a208d82d9e0e5a707c65960a6714ef3
 
 pkgname = nomacs
