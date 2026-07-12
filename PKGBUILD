@@ -1,7 +1,7 @@
 # Maintainer: Ret2Hell <ret2hell@users.noreply.github.com>
 
 pkgname=jiratui-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Fast, local-first Jira TUI for daily sprint workflows"
 arch=(x86_64 aarch64 armv7h)
@@ -17,9 +17,9 @@ source_aarch64=("${url}/releases/download/v${pkgver}/jiratui-v${pkgver}-linux-ar
 source_armv7h=("${url}/releases/download/v${pkgver}/jiratui-v${pkgver}-linux-armv7.tar.gz")
 
 sha256sums=('36cf4e83e979eab805898d24cf06ad161126286bce2c0203a4cd6ba610c11dc2')
-sha256sums_x86_64=('5c99fef2cbfd1d1eece8ed36ca6087501f3554395c91c496e278621a5e6b6a15')
-sha256sums_aarch64=('60823efa1a66a9c7c1de816a213dae9194a15e1d6540d1878d5eb6eaa97c63db')
-sha256sums_armv7h=('75ba2f21034e4ff828a4ec5cc4bc3d4770ec2ea9ea0b085d1d4312fca84389d3')
+sha256sums_x86_64=('e78b8daf8696871ba54cb8744c03a290783d7419583023b12d8c796aff78dbca')
+sha256sums_aarch64=('33e53d58fef728ff15e987e1be82894bf2892b11ce5c03e468359392bf6996e2')
+sha256sums_armv7h=('4099a2ab812b3d6a4e3fb9ba7a48439b2fe55e016032662f8cc13b04a23f951f')
 
 package() {
   install -Dm755 "${srcdir}/jiratui" "${pkgdir}/usr/bin/jiratui"
