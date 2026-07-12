@@ -5,6 +5,8 @@ pkgrel=1
 pkgdesc='AI context generator - codebase mapping, token optimization, and MCP server for Claude Code, Cursor, and Codex'
 arch=('any')
 url='https://github.com/Houseofmvps/codesight'
+# Upstream declares MIT in package.json but ships no LICENSE text (MIT is
+# copyright-bearing, so nothing can be installed until upstream adds one).
 license=('MIT')
 depends=('nodejs')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
