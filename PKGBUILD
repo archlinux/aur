@@ -1,29 +1,36 @@
 # Maintainer: Lasse Vestergaard <hello@lassejlv.dk>
 pkgname=termy-bin
-pkgver=0.2.12
+pkgver=0.2.15
 pkgrel=1
 pkgdesc="Minimal GPUI-powered terminal (pre-compiled binary)"
 arch=('x86_64')
 url="https://github.com/lassejlv/termy"
 license=('MIT')
-depends=('glibc' 'gcc-libs' 'freetype2' 'fontconfig' 'wayland' 'libxkbcommon' 'vulkan-icd-loader')
+depends=('bash' 'glibc' 'gcc-libs' 'glib2'
+         'freetype2' 'fontconfig' 'libxcb' 'wayland' 'libxkbcommon'
+         'libxkbcommon-x11' 'vulkan-icd-loader')
 provides=('termy')
 conflicts=('termy')
-source=("termy-${pkgver}.tar.gz::https://github.com/lassejlv/termy/releases/download/v${pkgver}/Termy-v${pkgver}-linux-x86_64.tar.gz"
-        "termy.desktop"
+source=("termy.desktop"
+        "LICENSE::https://raw.githubusercontent.com/lassejlv/termy/v${pkgver}/LICENSE"
         "termy_icon.png::https://raw.githubusercontent.com/lassejlv/termy/v${pkgver}/assets/termy_icon.png")
-b2sums=('37019ff874eab3bd34c5d50b0af1026e65c4aece1894f95a908442a3f8ffeb8022dac4e71710ebbc8c8172ffed02d8aa4a90bdb4cfd8e5e32f9a98505bfbd3c5'
-        '310d92f8a26968092eab7c5434701e6c2a8cbb40d0179f12031eb755f1bf743bb3d52e678000a30b247eb7a0c29d81ad38d8c4d042aef6d1beb18707aaefa4f8'
-        '80218e225990c0dbd7975f5d65d75bb607af915b1773fde40af216240a3ac08ddf293ce5a735b64bbae29d040b93153f4d36076a3df359b8a01c64c73582958b')
+b2sums=('310d92f8a26968092eab7c5434701e6c2a8cbb40d0179f12031eb755f1bf743bb3d52e678000a30b247eb7a0c29d81ad38d8c4d042aef6d1beb18707aaefa4f8'
+        '0128ba93a8dc10df25286bd85db9df93ef7ad68abd077d895ba29c2b1af7eca9530dc7146f0941ff128738416e2319ed3f906ac3525f26eff2589be9369149eb'
+        'eb0f91e8423717f959cfa0395b009687899f9f2083667d04cf18b27de35bfa9c53e68a9a4d2c4432da168a033db21c6505abdf78e603121c2f004c0366ab5b8b')
+source_x86_64=("termy-${pkgver}-${CARCH}.tar.gz::https://github.com/lassejlv/termy/releases/download/v${pkgver}/Termy-v${pkgver}-linux-${CARCH}.tar.gz")
+b2sums_x86_64=('3defb4ec8439073ff8b737db2221b154b9c335f96e6f5a6c3b416ddb32ccf0fba62c428ccc827718cab1208bad3910a1020928aca1b70ca60153b36fde4f73b5')
 
 package() {
-  # The tarball extracts to a directory named "termy", and inside that is the "termy" binary
   cd "$srcdir/termy"
 
-  # Install the binary
+  # The launcher execs the sibling termy-bin binary, and the CLI integration
+  # expects termy-cli to be installed alongside it.
   install -Dm755 "termy" "$pkgdir/usr/bin/termy"
+  install -Dm755 "termy-bin" "$pkgdir/usr/bin/termy-bin"
+  install -Dm755 "termy-cli" "$pkgdir/usr/bin/termy-cli"
 
   # Install desktop file and icon
   install -Dm644 "$srcdir/termy.desktop" "$pkgdir/usr/share/applications/termy.desktop"
   install -Dm644 "$srcdir/termy_icon.png" "$pkgdir/usr/share/pixmaps/termy.png"
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
