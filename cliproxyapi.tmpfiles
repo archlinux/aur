@@ -1,0 +1,4 @@
+d /var/lib/cliproxyapi/auths 0700 cliproxyapi cliproxyapi -
+d /var/lib/cliproxyapi/plugins 0700 cliproxyapi cliproxyapi -
+d /var/lib/cliproxyapi/static 0700 cliproxyapi cliproxyapi -
+z /etc/cliproxyapi/config.yaml 0660 root cliproxyapi -

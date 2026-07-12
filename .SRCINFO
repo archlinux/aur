@@ -1,0 +1,21 @@
+pkgbase = cli-proxy-api
+	pkgdesc = Proxy server providing OpenAI, Gemini, Claude, and Codex compatible APIs
+	pkgver = 7.2.67
+	pkgrel = 2
+	url = https://github.com/router-for-me/CLIProxyAPI
+	install = cliproxyapi.install
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.26
+	depends = glibc
+	backup = etc/cliproxyapi/config.yaml
+	source = cli-proxy-api-7.2.67.tar.gz::https://github.com/router-for-me/CLIProxyAPI/archive/refs/tags/v7.2.67.tar.gz
+	source = cliproxyapi.service
+	source = cliproxyapi.sysusers
+	source = cliproxyapi.tmpfiles
+	sha256sums = a0830bca9d363a2f9ccda34e3fd18fa7df0f895ccca8e2bcffc1c4ea5c5a1860
+	sha256sums = 57a58c2a750e354b8db46bc572ccc68d2dbca0b65180d8150ea1109f17625fc9
+	sha256sums = 23a8d6ed2449fec2a28a50d63e76b84cb9db33c5840a8fc9ecf6c015a5a689f8
+	sha256sums = 56b83923a262d3a1a35a278a64e5927b7c30a8a0f1f5fadcfffe77045b082eb1
+
+pkgname = cli-proxy-api
