@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=clutch
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A highly customizable TUI RPC interface for the Transmission bittorrent client"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=('bash-completion: tab completion for bash'
             'zsh: tab completion for zsh (requires compinit in ~/.zshrc)')
 options=('!debug' '!lto')
 source=("$pkgname::git+$url.git#tag=v$pkgver")
-sha256sums=('c85012731b37867c7ba8fdd559dbc4d97c3ce53a740251d23238bbf49bae187d')
+sha256sums=('4e835edfe36a5b7d6d60f30006801084ab7a5640b18da0c4593dbfc334a83945')
 
 prepare() {
     cd "$pkgname"
