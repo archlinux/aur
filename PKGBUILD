@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=protonup-rs
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Automate the installation and update of Linux Gaming Compatibility tools"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=(
 )
 makedepends=('cargo')
 source=("Protonup-rs-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d8a4a152c4db961f07a938143b64f7dc205c038a7e26e6784b141a050e43967e')
+sha256sums=('08314f72e071475680de0ee90e82a5b94b5333849f02c741a9208e18bdcdff75')
 
 prepare() {
   cd "Protonup-rs-$pkgver"
@@ -31,4 +31,11 @@ build() {
 package() {
   cd "Protonup-rs-$pkgver"
   install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm644 "$pkgname/man/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
+  install -Dm644 "$pkgname/completions/$pkgname.bash" \
+    "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  install -Dm644 "$pkgname/completions/$pkgname.fish" -t  \
+    "$pkgdir/usr/share/fish/vendor_completions.d/"
+  install -Dm644 "$pkgname/completions/_${pkgname}" -t  \
+    "$pkgdir/usr/share/zsh/site-functions/"
 }
