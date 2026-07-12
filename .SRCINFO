@@ -1,7 +1,7 @@
 pkgbase = mautrix-telegram
 	pkgdesc = Matrix-Telegram hybrid puppeting/relaybot bridge
 	pkgver = 0.2606.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mautrix/telegram
 	arch = x86_64
 	arch = aarch64
