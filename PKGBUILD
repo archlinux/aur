@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=noutube-bin
 _app_id="jp.nonbili.${pkgname%-bin}"
-pkgver=0.2.11
+pkgver=0.2.12
 pkgrel=1
 pkgdesc="YouTube and YouTube Music in a single app. No ads."
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-linux-unpacked-$pkgver.zip::$url/releases/download/v$pkgver/linux-unpacked.zip"
         'NouTube.desktop')
 noextract=("${pkgname%-bin}-linux-unpacked-$pkgver.zip")
-sha256sums=('fea77210bdb181c16a7e6bf0d371559da3554b41749a87916a20ac2f7375afcc'
+sha256sums=('4c9d70bce4af1dcd8b7c2c775aa6e3845dd3083391e952be00992eb09ab98787'
             'cad129d2c27f89ddc6af0a63cb2e8257dda4185ccf5c9cfa083e8ebca073aed8')
 
 prepare() {
