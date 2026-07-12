@@ -1,0 +1,17 @@
+pkgbase = tapgres
+	pkgdesc = Passively tap a local PostgreSQL port and decode its wire traffic to stdout
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/sunng87/tapgres
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = libpcap
+	provides = tapgres
+	conflicts = tapgres-bin
+	source = tapgres-0.2.0.tar.gz::https://github.com/sunng87/tapgres/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = c3f1a42888e96c4ddf98621211613b48f71edcac750d38b8ae03a4ffba9025bb
+
+pkgname = tapgres
