@@ -1,6 +1,6 @@
 pkgbase = whisper-desktop-bin
 	pkgdesc = A gorgeous, premium Rust & Tauri GUI to manage and execute whisper.cpp transcriber tasks (precompiled binary version)
-	pkgver = 1.0.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/AtomicError/whisper-desktop
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = whisper-desktop-bin
 	conflicts = whisper-desktop
 	options = !strip
 	options = !zipman
-	source_x86_64 = https://github.com/AtomicError/whisper-desktop/releases/download/v1.0.1/Whisper.Desktop_1.0.1_amd64.deb
-	sha256sums_x86_64 = 2c1f8eb702056c60e8ddda1201bc01dcdeee82e571fc30efc471c2bdf77107d8
+	source_x86_64 = https://github.com/AtomicError/whisper-desktop/releases/download/v2.0.0/Whisper.Desktop_2.0.0_amd64.deb
+	sha256sums_x86_64 = 7c4697d575d83cec90be1e4546c51dd0d5d05a771c4d8acb3543be6a2685dac2
 
 pkgname = whisper-desktop-bin

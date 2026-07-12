@@ -1,6 +1,6 @@
 # Maintainer: TheMrAhmad <https://github.com/AtomicError>
 pkgname=whisper-desktop-bin
-pkgver=1.0.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A gorgeous, premium Rust & Tauri GUI to manage and execute whisper.cpp transcriber tasks (precompiled binary version)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('whisper-desktop')
 options=('!strip' '!zipman')
 
 source_x86_64=("https://github.com/AtomicError/whisper-desktop/releases/download/v${pkgver}/Whisper.Desktop_${pkgver}_amd64.deb")
-sha256sums_x86_64=('2c1f8eb702056c60e8ddda1201bc01dcdeee82e571fc30efc471c2bdf77107d8')
+sha256sums_x86_64=('7c4697d575d83cec90be1e4546c51dd0d5d05a771c4d8acb3543be6a2685dac2')
 
 package() {
   cd "$srcdir"
