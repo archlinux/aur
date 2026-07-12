@@ -1,7 +1,7 @@
 pkgbase = jdk25-openj9-bin
 	pkgdesc = IBM Semeru OpenJ9 with openjdk25
 	pkgver = 25.0.3.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://developer.ibm.com/languages/java/semeru-runtimes/downloads
 	arch = x86_64
 	license = custom

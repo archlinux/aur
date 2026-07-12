@@ -9,7 +9,7 @@ _jdksubpatch=0
 _jdkfullver=${_jdkmajor}.${_jdkminor}.${_jdkpatch}.${_jdksubpatch}
 _buildmajor=9
 pkgver=${_jdkfullver}
-pkgrel=2
+pkgrel=4
 pkgdesc="IBM Semeru OpenJ9 with openjdk${_jdkver}"
 arch=('x86_64')
 url="https://developer.ibm.com/languages/java/semeru-runtimes/downloads"
@@ -39,7 +39,7 @@ options=(!strip)
 source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}.tar.gz")
 sha256sums=('1f844894d0b48dabbded9f93112752bd31ee0e76544c87742b641a389584fc81')
 
-_jvmdir=usr/lib/jvm/java-${_jdkver}-j9
+_jvmdir=usr/lib/jvm/java-${_jdkver}-openj9
 
 package() {
   # Install
@@ -52,18 +52,18 @@ package() {
   ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}/${_jvmdir}/lib/security/cacerts"
   
   # Legal
-  install -d "${pkgdir}/usr/share/licenses/java${_jdkver}-j9"
-  cp -a legal "${pkgdir}/usr/share/licenses/java${_jdkver}-j9/"
-  ln -s /usr/share/licenses/java${_jdkver}-j9 "${pkgdir}/${_jvmdir}/legal"
+  install -d "${pkgdir}/usr/share/licenses/java${_jdkver}-openj9"
+  cp -a legal "${pkgdir}/usr/share/licenses/java${_jdkver}-openj9/"
+  ln -s /usr/share/licenses/java${_jdkver}-openj9 "${pkgdir}/${_jvmdir}/legal"
   
   # Conf
   install -d "${pkgdir}/etc"
-  cp -r conf "${pkgdir}/etc/java${_jdkver}-j9"
-  ln -s /etc/java${_jdkver}-j9 "${pkgdir}/${_jvmdir}/conf"
+  cp -r conf "${pkgdir}/etc/java${_jdkver}-openj9"
+  ln -s /etc/java${_jdkver}-openj9 "${pkgdir}/${_jvmdir}/conf"
   
-  # Man pages (note: there seem to be no manpages in this release? recheck later)
-  #for f in man/man1/*; do
-  #  install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-openjdk${_jdkver}-j9.1}"
-  #done
-  #ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
+  # Man pages
+  for f in man/man1/*; do
+    install -Dm 644 "${f}" "${pkgdir}/usr/share/${f/\.1/-openj9${_jdkver}.1}"
+  done
+  ln -s /usr/share/man "${pkgdir}/${_jvmdir}/man"
 }
