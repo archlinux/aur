@@ -9,7 +9,7 @@ pkgbase = axmol-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = python
+	makedepends = powershell
 	depends = glu
 	depends = glew
 	depends = glfw-x11
@@ -23,7 +23,7 @@ pkgbase = axmol-git
 	provides = axmol
 	conflicts = axmol
 	conflicts = axmol-bin
-	source = axmol::git+https://github.com/axmolengine/axmol.git#branch=main
+	source = axmol::git+https://github.com/axmolengine/axmol.git#branch=master
 	sha256sums = SKIP
 
 pkgname = axmol-git

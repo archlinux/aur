@@ -7,10 +7,10 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/axmolengine/axmol"
 license=('MIT')
 depends=('glu' 'glew' 'glfw-x11' 'libx11' 'libxrandr' 'libxinerama' 'libxcursor' 'libxi' 'fontconfig' 'sqlite')
-makedepends=('git' 'cmake' 'ninja' 'python')
+makedepends=('git' 'cmake' 'ninja' 'powershell')
 provides=('axmol')
 conflicts=('axmol' 'axmol-bin')
-source=('axmol::git+https://github.com/axmolengine/axmol.git#branch=main')
+source=('axmol::git+https://github.com/axmolengine/axmol.git#branch=master')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,7 +21,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/axmol"
   git submodule update --init --recursive
-  python setup.py
+  pwsh setup.ps1
 }
 
 build() {
