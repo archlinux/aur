@@ -1,6 +1,6 @@
 # Maintainer: LiamillionSS <liamillion-dev at protonmail dot com>
 pkgname=cosmic-monitor-git
-pkgver=epoch.1.2.0.r3.g012df01
+pkgver=1.2.0.r15.ge1da533
 pkgrel=1
 pkgdesc="COSMIC System Monitor"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^epoch-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
