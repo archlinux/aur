@@ -1,11 +1,11 @@
 # Maintainer: AkitaOnRails <akitaonrails@users.noreply.github.com>
 
 pkgname=frank-geary
-pkgver=46.0_frank.1
+pkgver=46.0_frank.2
 pkgrel=1
 pkgdesc='GNOME Geary email client with FrankGeary workflow improvements'
 arch=('x86_64')
-url='https://github.com/akitaonrails/FrankGeary'
+url='https://github.com/akitaonrails/frank_geary'
 license=('LGPL-2.1-or-later')
 depends=(
   'at-spi2-core'
