@@ -1,0 +1,17 @@
+pkgbase = diskonaut-kfkonrad-bin
+	pkgdesc = Terminal disk space navigator 🔭 (kfknrad fork) (binary release)
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/kfkonrad/diskonaut
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = diskonaut
+	conflicts = diskonaut
+	options = !debug
+	source_x86_64 = diskonaut-1.0.2-x86_64.tar.gz::https://github.com/kfkonrad/diskonaut/releases/download/v1.0.2/diskonaut_1.0.2_x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 0fb059502bc63b0ca8486c67ee954132ad5e2742eab800c582853db4193e754a
+	source_aarch64 = diskonaut-1.0.2-aarch64.tar.gz::https://github.com/kfkonrad/diskonaut/releases/download/v1.0.2/diskonaut_1.0.2_aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = a86858f2c9fc7fe66f9335670449ee2a9bbd99b1a86ae36053233c40f9980a3c
+
+pkgname = diskonaut-kfkonrad-bin
