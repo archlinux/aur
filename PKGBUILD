@@ -1,6 +1,6 @@
 # Maintainer: Luke Hsiao <luke@hsiao.dev>
 pkgname=pyproject-udeps-bin
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='Find unused dependencies in pyproject.toml (prebuilt binary)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -19,10 +19,10 @@ source_x86_64=("$_relurl/pyproject-udeps-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_relurl/pyproject-udeps-aarch64-unknown-linux-gnu.tar.gz")
 source_armv7h=("$_relurl/pyproject-udeps-armv7-unknown-linux-gnueabihf.tar.gz")
 
-sha256sums=('2781151911ac663b519b0938c16527d56cc920b40d9f82075c67043ba23edf60')
-sha256sums_x86_64=('21fac3bb6d38f7b2c374cd3f20b9acf622ed95f7160eda23bcb7d983d110582a')
-sha256sums_aarch64=('f84f10f036949e3c61ac12c5040cee74ce5e1cb238964623a18d28d92a711943')
-sha256sums_armv7h=('07ad519ee1bd57f171f287898251a03e6c0b641a9b54ad10d9de453cfd6057d2')
+sha256sums=('2a01d9c6b41eb1c0166812ddd3d842b8cc55aea463209147e6089255e32b99e1')
+sha256sums_x86_64=('93fb8897dea4c95b8521d92488bdc47909afd5f5a7677e9be3fc756046b9fd3a')
+sha256sums_aarch64=('4965d21a595b6d3ce0aa542a7bcb12a6f0b83a0e21b1b1f533226c051ad4361e')
+sha256sums_armv7h=('742199bf1dbe345b9b60cf715f6e0ec1a87a88f525179da892cd773d8fcc9d63')
 
 package() {
     install -Dm755 "$srcdir/pyproject-udeps" "$pkgdir/usr/bin/pyproject-udeps"
