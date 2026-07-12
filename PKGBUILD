@@ -16,14 +16,14 @@ depends=(
 options=('!strip')
 install="${pkgname}.install"
 
-pkgver=0.4.1375
+pkgver=0.4.2004
 pkgrel=1
 
 # NOTE: aarch64 releases use "arm64" in the asset filename, not "aarch64".
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/pnn64/deadsync/releases/download/v${pkgver}/deadsync-v${pkgver}-x86_64-linux.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/pnn64/deadsync/releases/download/v${pkgver}/deadsync-v${pkgver}-arm64-linux.tar.gz")
-sha256sums_x86_64=('09807bcd501badc61d48f887810ec6136d7d6def150f4de88d4709de11713eb7')
-sha256sums_aarch64=('5348548f58d7a7baaf64524051f8ad78b0e9986b3620fecafb83bdc97316358c')
+sha256sums_x86_64=('85a0fd0c6ddf42caec3bf61a52166d00d2187791860932802fe79c94e5837384')
+sha256sums_aarch64=('bb14196192f39326b8ee8be864990a1376126e8fd330439375b7663de309a4df')
 
 package() {
     # The release tarball always extracts to a single "deadsync/" subdirectory.
@@ -60,10 +60,12 @@ Actions=OpenConfigDir;OpenSongsDir;
 
 [Desktop Action OpenConfigDir]
 Name=Open Config Directory
+Icon=folder-build
 Exec=sh -c 'DS="${XDG_DATA_HOME:-$HOME/.local/share}/deadsync"; mkdir -p "$DS" && xdg-open "$DS"'
 
 [Desktop Action OpenSongsDir]
 Name=Open Songs Directory
+Icon=folder-music
 Exec=sh -c 'DS="${XDG_DATA_HOME:-$HOME/.local/share}/deadsync/songs"; mkdir -p "$DS" && xdg-open "$DS"'
 EOF
 
