@@ -1,20 +1,20 @@
 pkgbase = bread-of-life-bin
 	pkgdesc = A warm, offline-first Bible homebase — reading, journalling, and an answered-prayer log you can look back on
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/matt-shearing/bread-of-life
 	arch = x86_64
 	license = MIT
 	depends = webkit2gtk-4.1
 	depends = gtk3
-	provides = bread-of-life=0.3.1
+	provides = bread-of-life=0.3.2
 	conflicts = bread-of-life
-	noextract = bread-of-life-0.3.1.deb
+	noextract = bread-of-life-0.3.2.deb
 	options = !strip
 	options = !debug
-	source = bread-of-life-0.3.1.deb::https://github.com/matt-shearing/bread-of-life/releases/download/v0.3.1/Bread.of.Life_0.3.1_amd64.deb
-	source = LICENSE-0.3.1::https://raw.githubusercontent.com/matt-shearing/bread-of-life/v0.3.1/LICENSE
-	sha256sums = b4414bb60b526913d29987599ee103fb2d921be96c31f97e74053818a7f77e4b
+	source = bread-of-life-0.3.2.deb::https://github.com/matt-shearing/bread-of-life/releases/download/v0.3.2/Bread.of.Life_0.3.2_amd64.deb
+	source = LICENSE-0.3.2::https://raw.githubusercontent.com/matt-shearing/bread-of-life/v0.3.2/LICENSE
+	sha256sums = 1f0059e59817edd5b08d3cbfde23ac38eb0e3906898bb4b1a17154cffc04e935
 	sha256sums = c2f7088783011edc2e0e390ca43e79f894fef1bb3ad356b79665b2dd227f82c9
 
 pkgname = bread-of-life-bin
