@@ -19,7 +19,6 @@ package() {
   install -d "$pkgdir/usr/lib"
   install -d "$pkgdir/usr/share/axmol"
 
-  # Mapear el SDK precompilado al sistema
   cp -r bin/* "$pkgdir/usr/bin/" 2>/dev/null || true
   cp -r lib/* "$pkgdir/usr/lib/" 2>/dev/null || true
   cp -r * "$pkgdir/usr/share/axmol/"
