@@ -31,6 +31,8 @@ prepare() {
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target host-tuple
 	git apply "$srcdir/Identifier.patch"
+	# Fixes the IPC after breaking changes.
+	git pull origin pull/702/head
 }
 
 build() {
