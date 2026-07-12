@@ -1,7 +1,7 @@
 # Maintainer: Octavio Calleya Garcia <octavio@transgressoft.net>
 pkgname=musicott
 pkgver=1.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="A JavaFX desktop music player"
 arch=('x86_64')
 url="https://github.com/octaviospain/Musicott"
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('java-runtime>=24' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-libav')
 makedepends=('liberica-jdk-25-full-bin')
 source=("https://github.com/octaviospain/Musicott/archive/v${pkgver}.tar.gz")
-sha256sums=('9d611aa6f1e27e3534c16ea8d0259a8302f5db128b54bfa0d43e151a672018b9')
+sha256sums=('7ce7152f3ae8f9aa67b92cddf5b2667424f82fe5c18a35ba314053932c3ce985')
 
 build() {
     cd "Musicott-${pkgver}"

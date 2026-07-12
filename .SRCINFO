@@ -1,7 +1,7 @@
 pkgbase = musicott
 	pkgdesc = A JavaFX desktop music player
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/octaviospain/Musicott
 	arch = x86_64
 	license = GPL3
@@ -13,6 +13,6 @@ pkgbase = musicott
 	depends = gst-plugins-bad
 	depends = gst-libav
 	source = https://github.com/octaviospain/Musicott/archive/v1.0.0.tar.gz
-	sha256sums = 9d611aa6f1e27e3534c16ea8d0259a8302f5db128b54bfa0d43e151a672018b9
+	sha256sums = 7ce7152f3ae8f9aa67b92cddf5b2667424f82fe5c18a35ba314053932c3ce985
 
 pkgname = musicott
