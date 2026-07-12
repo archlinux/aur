@@ -1,0 +1,19 @@
+pkgbase = muzaiten-features-clap
+	pkgdesc = Optional CLAP semantic-analysis provider for muzaiten (ONNX Runtime)
+	pkgver = 2026.7.12
+	pkgrel = 1
+	url = https://codeberg.org/11xx/muzaiten
+	arch = any
+	license = Unlicense
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	depends = python
+	depends = python-numpy
+	depends = python-onnxruntime
+	depends = python-tokenizers
+	depends = ffmpeg
+	source = https://files.pythonhosted.org/packages/source/m/muzaiten-features-clap/muzaiten_features_clap-2026.7.12.tar.gz
+	sha256sums = 4a918c89a4ba174f4b9e9a6bbbd008f598b7bfa7284af45f3def6458c82f8389
+
+pkgname = muzaiten-features-clap
