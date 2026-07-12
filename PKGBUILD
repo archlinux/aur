@@ -1,6 +1,6 @@
 # Maintainer: ABOhiccups <info@abohiccups.com>
 pkgname=project-plus-netplay
-pkgver='v3.1.5.2601'
+pkgver='v3.2.0'
 pkgrel='1'
 pkgdesc="A Mod of Super Smash Bros. Brawl with Netplay."
 arch=('x86_64')
@@ -11,12 +11,12 @@ makedepends=('cmake' 'git' 'qt5-base')
 optdepends=('pulseaudio: PulseAudio backend')
 options=('!strip')
 _url="https://github.com/Project-Plus-Development-Team/Project-Plus-Dolphin/releases"
-_tag='v3.1.5-2601'
+_tag='v3.2.0'
 _package="Project+.$_tag.Netplay.Linux.AppImage.zip"
 source=(
 	"$_package::$_url/download/$_tag/Project+.$_tag.Netplay.Linux.AppImage.zip"
 )
-sha256sums=('345a9236cd1397e65d3d119dd11acb7423f8a335f21f47503d991a8cb3050f00')
+sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
 
 prepare() {
     cd "$srcdir"
