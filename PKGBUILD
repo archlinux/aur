@@ -2,20 +2,20 @@
 
 _pkgname=openskyscraper
 pkgname=${_pkgname}-git
-epoch=5
-pkgver=r353+64766c8
-pkgrel=3
+epoch=6
+pkgver=r465+aefdef4
+pkgrel=1
 pkgdesc="Simtower clone"
 arch=('i686' 'x86_64')
 #url="https://github.com/fabianschuiki/OpenSkyscraper"
-url="https://github.com/imvuong/OpenSkyscraper"
-license=('GPL')
-depends=('libgl' 'sfml2' 'libmspack' 'librocket')
+url="https://github.com/uaktags/OpenSkyscraper"
+license=('GPL-2.0-only')
+depends=('libgl' 'sfml' 'libmspack' 'librocket' 'tgui')
 makedepends=('cmake' 'git' 'unzip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/imvuong/OpenSkyscraper"
-        'SimTower_-_The_Vertical_Empire.zip::https://d2.myabandonware.com/t/141c0245-82f4-42dc-acf9-3793672c5342/SimTower-The-Vertical-Empire_Win-3x_EN_Floppy-version.zip'
+source=(${_pkgname}::git+https://github.com/uaktags/OpenSkyscraper.git#branch="feature/simtower-gap-impl"
+        'SimTower_-_The_Vertical_Empire.zip::https://d2.xp.myabandonware.com/t/6b541647-d5bf-4d20-8569-0df1b2682842/SimTower-The-Vertical-Empire_Win-3x_EN_Floppy-version.zip'
         'openskyscraper.png' #::http://www.abandonia.com/files/games/341/Sim%20Tower_thumb.png'
         'openskyscraper.desktop')
 sha256sums=('SKIP'
@@ -40,9 +40,7 @@ build() {
   mkdir build
   cd build
 
-  cmake .. -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_PREFIX_PATH='/opt/sfml2/' \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+  cmake .. -DCMAKE_BUILD_TYPE=Release
   make
 }
 
