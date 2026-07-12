@@ -1,0 +1,20 @@
+pkgbase = vidmetric-git
+	pkgdesc = A high-performance Qt-based GUI for visual comparison and technical metric analysis of video files, powered by FFmpeg and ab-av1
+	pkgver = r1.0.0
+	pkgrel = 1
+	url = https://github.com/j-convey/VidMetric
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = qt6-base
+	makedepends = qt6-tools
+	depends = ffmpeg
+	depends = ab-av1
+	optdepends = oxipng: optimizing the icons
+	provides = vidmetric
+	source = git+https://github.com/j-convey/VidMetric.git
+	sha256sums = SKIP
+
+pkgname = vidmetric-git
