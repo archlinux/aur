@@ -2,7 +2,7 @@
 
 pkgname=eso-addons-manager-bin
 pkgdesc='Cross platform addon manager for the Elder Scrolls Online'
-pkgver=0.4.20 # renovate: datasource=github-tags depName=arviceblot/eso-addons
+pkgver=0.4.21 # renovate: datasource=github-tags depName=arviceblot/eso-addons
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/arviceblot/eso-addons"
@@ -14,13 +14,14 @@ depends=(
   gcc-libs
 )
 
+# we can use the musl binary since its statically linked and should work on glibc systems as well.
 source=(
-  "eso-addon-manager-$pkgver::https://github.com/arviceblot/eso-addons/releases/download/v${pkgver}/eso-addon-manager-x86_64-unknown-linux-gnu"
+  "eso-addon-manager-$pkgver::https://github.com/arviceblot/eso-addons/releases/download/v${pkgver}/eso-addon-manager-x86_64-unknown-linux-musl"
   "com.arviceblot.eso-addon-manager.png::https://raw.githubusercontent.com/arviceblot/eso-addons/refs/tags/v${pkgver}/data/icon.png"
   "LICENSE-$pkgver::https://raw.githubusercontent.com/arviceblot/eso-addons/refs/tags/v${pkgver}/LICENSE"
   "com.arviceblot.eso-addon-manager.desktop"
 )
-sha256sums=('b1234707e3fbe8d89e1fec2c707b9567b6e5c2a1300c8122abaa9ee8a1067b55'
+sha256sums=('bf7dbae349eecf26df393228f0a663246f90c173dbe7e1704766a871ce5bb6ae'
             '0a085ba27dc72ae85eaf2033c8099ce01e737b680f6313e28253d6eb49e0e284'
             '8e53babd1d2c750bcee57c8489cbb58602541f7bc1f4077cec919234246f6ea9'
             '4fc6d1df6ca640527e1f7a2e7718d487cd1d5677785724b0803c76ef8e466e5e')
