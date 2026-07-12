@@ -4,7 +4,7 @@ pkgname=alcom
 pkgver=1.1.7
 pkgrel=1
 pkgdesc="A fast open-source alternative of VRChat Creator Companion (VCC)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/vrc-get/vrc-get'
 license=('MIT')
 depends=(gtk3 openssl webkit2gtk-4.1)
@@ -32,11 +32,11 @@ build() {
 
     # npm run tauri build
     # npm run -- tauri build --config '{"bundle":{"targets":["deb"]}}'
-    cargo xtask build-alcom --release --no-self-updater --target 'x86_64-unknown-linux-gnu'
-
+    cargo xtask build-alcom --release --no-self-updater --target "${CARCH}-unknown-linux-gnu"
+    
     cd "$srcdir/$_pkgname-gui-v$pkgver"
 
-    cargo xtask bundle-alcom --release --target 'x86_64-unknown-linux-gnu' --bundles buildroot --buildroot 'target/x86_64-unknown-linux-gnu/release/bundle/'
+    cargo xtask bundle-alcom --release --target "${CARCH}-unknown-linux-gnu" --bundles buildroot --buildroot "target/${CARCH}-unknown-linux-gnu/release/bundle/"
 }
 
 check() {
@@ -52,9 +52,9 @@ package() {
 
     install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    cp -ar "target/x86_64-unknown-linux-gnu/release/bundle/usr/share/icons" "$pkgdir/usr/share/"
+    cp -ar "target/${CARCH}-unknown-linux-gnu/release/bundle/usr/share/icons" "$pkgdir/usr/share/"
     
-    install -Dm644 -t "$pkgdir/usr/share/applications/" "target/x86_64-unknown-linux-gnu/release/bundle/usr/share/applications/alcom.desktop"
+    install -Dm644 -t "$pkgdir/usr/share/applications/" "target/${CARCH}-unknown-linux-gnu/release/bundle/usr/share/applications/alcom.desktop"
 
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/x86_64-unknown-linux-gnu/release/bundle/usr/bin/alcom"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/${CARCH}-unknown-linux-gnu/release/bundle/usr/bin/alcom"
 }
