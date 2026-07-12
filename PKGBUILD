@@ -3,7 +3,7 @@ pkgname=python-east-asian-spacing
 _name=${pkgname#python-}
 _name=${_name//-/_}
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="East Asian Contextual Spacing Build Tools"
 arch=('any')
 url="https://github.com/kojiishi/east_asian_spacing"
@@ -30,7 +30,7 @@ build() {
 check() {
     cd $_name-$pkgver
     python tests/download_fonts.py
-    PYTHONPATH="$PWD" pytest
+    PYTHONPATH="$PWD/src" pytest -o addopts=""
 }
 
 package() {

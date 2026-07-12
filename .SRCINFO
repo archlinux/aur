@@ -1,7 +1,7 @@
 pkgbase = python-east-asian-spacing
 	pkgdesc = East Asian Contextual Spacing Build Tools
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kojiishi/east_asian_spacing
 	arch = any
 	license = Apache-2.0
