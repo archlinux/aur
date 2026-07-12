@@ -5,9 +5,9 @@
 # VEGA_SOURCE_URL and VEGA_SOURCE_DIR for local builds.
 
 pkgname=lyra-vega
-pkgver=1.3.4
+pkgver=1.4.0
 pkgrel=1
-pkgdesc="Centro de controle do Lyra OS"
+pkgdesc="Centro de controle para Linux"
 arch=('x86_64')
 url="https://github.com/britors/Vega"
 license=('GPL-3.0-only')
