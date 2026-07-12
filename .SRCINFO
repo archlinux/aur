@@ -1,21 +1,19 @@
 pkgbase = draind
-	pkgdesc = Linux power management daemon inspired by Windows power profiles
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgdesc = Linux power management daemon inspired by Windows power options
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/vlukyanets/draind
 	install = draind.install
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = wayland
-	makedepends = wayland-protocols
 	depends = systemd-libs
-	optdepends = wayland: Wayland idle detection via ext-idle-notify-v1
+	depends = wayland
 	options = !debug
 	backup = etc/draind/draind.json
 	backup = etc/xdg/draind/draind-agent.json
-	source = draind-0.2.0.tar.gz::https://github.com/vlukyanets/draind/archive/v0.2.0.tar.gz
-	sha256sums = d1954b86178701d6fb04783b59083661beae6922aae0a7c7b0e7ad8cc1b005b1
+	source = draind-0.3.0.tar.gz::https://github.com/vlukyanets/draind/archive/v0.3.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = draind

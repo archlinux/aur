@@ -1,18 +1,17 @@
 # Maintainer: Valentin Lukyanets <valikluks95@gmail.com>
 pkgname=draind
-pkgver=0.2.0
-pkgrel=2
-pkgdesc="Linux power management daemon inspired by Windows power profiles"
+pkgver=0.3.0
+pkgrel=1
+pkgdesc="Linux power management daemon inspired by Windows power options"
 arch=('x86_64')
 url="https://github.com/vlukyanets/draind"
 license=('MIT')
-depends=('systemd-libs')
-makedepends=('cmake' 'ninja' 'wayland' 'wayland-protocols')
-optdepends=('wayland: Wayland idle detection via ext-idle-notify-v1')
+depends=('systemd-libs' 'wayland')
+makedepends=('cmake' 'ninja')
 backup=('etc/draind/draind.json' 'etc/xdg/draind/draind-agent.json')
 install=draind.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vlukyanets/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('d1954b86178701d6fb04783b59083661beae6922aae0a7c7b0e7ad8cc1b005b1')
+sha256sums=('43016e3a0e1744b984d8e54300a8cd59b6269abbb660c1341ad6094c4e99684f')
 options=('!debug')
 
 build() {
@@ -28,15 +27,9 @@ package() {
     cd "$srcdir/$pkgname-$pkgver"
     DESTDIR="$pkgdir" ninja -C build install
 
-    # Logind drop-in
     install -Dm644 config/logind-draind.conf \
         "$pkgdir/etc/systemd/logind.conf.d/draind.conf"
 
-    # sysusers — creates 'draind' group on install
     install -Dm644 config/draind-sysusers.conf \
         "$pkgdir/usr/lib/sysusers.d/draind.conf"
-
-    # License
-    install -Dm644 LICENSE \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
