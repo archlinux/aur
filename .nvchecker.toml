@@ -1,0 +1,5 @@
+[mstat-bin]
+source = "github"
+github = "bhavya-dang/mstat"
+use_latest_release = true
+prefix = "v"
