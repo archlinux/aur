@@ -1,7 +1,7 @@
 # Maintainer: Pavel Olizko <contact@nolight.dev>
 
 pkgname=nls
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='A modern ls with useful tables'
 arch=('x86_64' 'aarch64')
