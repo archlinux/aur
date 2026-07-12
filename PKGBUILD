@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=far2l-git
-pkgver=r7201.59d2e230d
+pkgver=r7530.bcfe026fe
 pkgrel=1
 pkgdesc='Linux port of FAR v2'
 url='https://github.com/elfmz/far2l'
@@ -11,6 +11,7 @@ source=('git+https://github.com/elfmz/far2l')
 sha256sums=('SKIP')
 conflicts=('far2l' 'far2l-ttyx' 'far2l-gui')
 provides=('far2l' 'far2l-ttyx' 'far2l-gui')
+options=('!lto')
 makedepends=('git' 'cmake')
 depends=('libxml2' 'uchardet' 'wxwidgets-gtk3')
 optdepends=(
