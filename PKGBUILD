@@ -12,7 +12,7 @@ license=('MIT')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('glibc' 'gcc-libs' 'glib2' 'systemd-libs' 'dbus' 'gtk3' 'mesa' 'nspr' 'libxkbcommon' 'libxdamage' 'libxfixes' 'libxrandr' 'libxext' 'libxcb' 'expat' 'libx11' 'libxcomposite' 'libcups' 'alsa-lib' 'pango' 'cairo' 'nss' 'at-spi2-core' 'hicolor-icon-theme')
+depends=('glibc' 'libgcc' 'glib2' 'systemd-libs' 'dbus' 'gtk3' 'mesa' 'nspr' 'libxkbcommon' 'libxdamage' 'libxfixes' 'libxrandr' 'libxext' 'libxcb' 'expat' 'libx11' 'libxcomposite' 'libcups' 'alsa-lib' 'pango' 'cairo' 'nss' 'at-spi2-core' 'hicolor-icon-theme')
 
 options=(!strip)
 
@@ -29,13 +29,12 @@ package() {
   cp -R "${srcdir}/usr/" "${pkgdir}/usr/"
   cp -R "${srcdir}/opt/" "${pkgdir}/opt/"
 
-  chmod 4755 "${pkgdir}/opt/Crossdirstat/chrome-sandbox"
+  # Create a symlink to the binary in /opt
+  install -dm755 "${pkgdir}/usr/bin/"
+
+  ln -sf "/opt/Crossdirstat/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  # Create a symlink to the binary in /opt
-  install -dm755 "${pkgdir}/usr/bin/"
-  ln -sf "/opt/Crossdirstat/crossdirstat" "${pkgdir}/usr/bin/${_basename}"
 } 
