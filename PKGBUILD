@@ -3,7 +3,7 @@
 
 pkgauthor=StaszeKrk
 pkgname=plaza
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Cross-distro TUI package-manager browser (Arch: pacman + AUR)"
 
@@ -21,7 +21,7 @@ optdepends=('yay: AUR search and per-source upgrades'
 options=('!lto')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ff4987aa949064343618c35d3a349f2a48e2a8d28bb0848dce19d4698e0d67ff')
+sha256sums=('462ffb9891687e49c7e1cbb2557ccc7980944d08b2d57e5c0bba0edc1c6edc06')
 
 prepare() {
 	cd "${pkgname}-${pkgver}" || exit
