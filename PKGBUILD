@@ -3,11 +3,12 @@
 pkgname=wooting-bg-service
 pkgdesc='Wooting Background Service for Wootility'
 pkgver=0.4.8
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://wooting.io/wootility"
 license=(unknown)
 provides=('wooting-bg-service')
+conflicts=('wooting-bg-service')
 depends=(glibc fuse2 hicolor-icon-theme zlib)
 options=(!strip)
 
