@@ -11,7 +11,7 @@ provides=("tuack-ng")
 conflicts=("tuack-ng")
 depends=("gcc-libs" "glibc")
 source=("https://github.com/tuack-ng/tuack-ng/releases/download/$pkgver/tuack-ng-linux-x86_64.zip")
-sha256sums=('234f1a764de164021c6a2942f5ec6528a079ba55534de2909d0694cb6f7a996c')
+sha256sums=('cc03df8eac5e36e4e0ce592764c554eba8c756e4a090bf29022b3ee67b0417b7')
 optdepends=(
     'typst: Needed for rendering PDF'
     'git: Needed for lfs management'
