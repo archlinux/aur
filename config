@@ -1,3 +1,5 @@
+CONFIG_FONT_CJK_16x16=y
+CONFIG_FONT_CJK_32x32=y
 #
 # Automatically generated file; DO NOT EDIT.
 # Linux/x86 7.1.0-rc6 Kernel Configuration
