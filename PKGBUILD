@@ -3,15 +3,15 @@
 
 pkgname=dhewm3
 pkgver=1.5.5 # renovate: datasource=github-tags depName=dhewm/dhewm3
-pkgrel=2
+pkgrel=3
 pkgdesc="Doom 3 engine with native 64-bit support, SDL, and OpenAL"
 arch=('i686' 'x86_64')
 url="https://github.com/dhewm/dhewm3"
-license=('GPL3')
-depends=('curl' 'libjpeg' 'libvorbis' 'openal' 'sdl2-compat')
+license=('GPL-3.0-or-later')
+depends=('curl' 'libbacktrace' 'openal' 'sdl3')
 optdepends=('doom3-data')
-makedepends=('cmake')
-source=("${url}/archive/${pkgver}.tar.gz"
+makedepends=('cmake' 'libbacktrace')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
   "${pkgname}.desktop"
   "${pkgname}.png"
 )
@@ -24,7 +24,8 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DREPRODUCIBLE_BUILD=1 \
     -DD3XP=1 \
-    -DDEDICATED=1 .
+    -DDEDICATED=1 \
+    -DSDL3=1 .
   cmake --build .
 }
 
@@ -43,5 +44,5 @@ package() {
 }
 
 sha256sums=('7e12a41cbf837eb2b7543b623f6d2a28a8a108a9ce55a221233e50a71d781c36'
-            '642b56fe68ec0906abb11d3a27a7543bb23d76da50cffcec3f841fe3fa6ba069'
-            '4f17fd5c3b7ada4c6d2445d760d9d83bf782398d40ad6369cd58f2c373b93b86')
+  '642b56fe68ec0906abb11d3a27a7543bb23d76da50cffcec3f841fe3fa6ba069'
+  '4f17fd5c3b7ada4c6d2445d760d9d83bf782398d40ad6369cd58f2c373b93b86')
