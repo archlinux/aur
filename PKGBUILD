@@ -19,13 +19,12 @@ pkgver() {
 }
 
 build() {
-    cd "aurindexer-git/src/AurIndexer"
+    cd "$srcdir/AurIndexer"
 
-    dotnet publish -c Release -r linux-x64 --self-contained true /p:PublishAot=true
+    dotnet publish -c Release -r linux-x64 --self-contained true /p:PublishAot=true /p:PublishDir="$srcdir/publish/"
 }
 
 package() {
-    cd "aurindexer-git/src/AurIndexer"
-    install -Dm755 "bin/Release/net10.0/linux-x64/publish/AurIndexer" "${pkgdir}/usr/bin/aurindexer"
+    install -Dm755 "$srcdir/publish/AurIndexer" "${pkgdir}/usr/bin/aurindexer"
 }
 
