@@ -1,5 +1,7 @@
 *.log
 *.pkg.tar.*
 *.tgz
+.npm-cache/
+.update.lock
 pkg/
 src/
