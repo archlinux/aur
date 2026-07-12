@@ -1,6 +1,6 @@
-diff '--color=auto' --unified --recursive --text --color vrc-get-gui-v1.1.7/vrc-get-gui/bundle/alcom.desktop vrc-get-gui-v1.1.7-patched/vrc-get-gui/bundle/alcom.desktop
---- vrc-get-gui-v1.1.7/vrc-get-gui/bundle/alcom.desktop	2026-07-10 18:32:04.000000000 +0900
-+++ vrc-get-gui-v1.1.7-patched/vrc-get-gui/bundle/alcom.desktop	2026-07-10 20:22:44.874734481 +0900
+diff '--color=auto' --unified --recursive --text --color vrc-get-gui-v1.1.8/vrc-get-gui/bundle/alcom.desktop vrc-get-gui-v1.1.8-patched/vrc-get-gui/bundle/alcom.desktop
+--- vrc-get-gui-v1.1.8/vrc-get-gui/bundle/alcom.desktop	2026-07-12 04:35:28.000000000 +0900
++++ vrc-get-gui-v1.1.8-patched/vrc-get-gui/bundle/alcom.desktop	2026-07-12 12:58:12.862672607 +0900
 @@ -1,7 +1,7 @@
  [Desktop Entry]
  Categories=Development
@@ -10,9 +10,9 @@ diff '--color=auto' --unified --recursive --text --color vrc-get-gui-v1.1.7/vrc-
  Icon=alcom
  Name=ALCOM
  Terminal=false
-diff '--color=auto' --unified --recursive --text --color vrc-get-gui-v1.1.7/vrc-get-gui/components/providers.tsx vrc-get-gui-v1.1.7-patched/vrc-get-gui/components/providers.tsx
---- vrc-get-gui-v1.1.7/vrc-get-gui/components/providers.tsx	2026-07-10 18:32:04.000000000 +0900
-+++ vrc-get-gui-v1.1.7-patched/vrc-get-gui/components/providers.tsx	2026-07-10 20:23:06.229692269 +0900
+diff '--color=auto' --unified --recursive --text --color vrc-get-gui-v1.1.8/vrc-get-gui/components/providers.tsx vrc-get-gui-v1.1.8-patched/vrc-get-gui/components/providers.tsx
+--- vrc-get-gui-v1.1.8/vrc-get-gui/components/providers.tsx	2026-07-12 04:35:28.000000000 +0900
++++ vrc-get-gui-v1.1.8-patched/vrc-get-gui/components/providers.tsx	2026-07-12 12:58:38.554719469 +0900
 @@ -100,11 +100,6 @@
  				if (import.meta.env.DEV) return;
  				const checkVersion = await commands.utilCheckForUpdate();
