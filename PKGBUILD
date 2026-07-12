@@ -18,8 +18,8 @@ source_aarch64=("${_pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgv
 
 # Placeholders — release.sh runs `updpkgsums` and rewrites these from the
 # published SHA256SUMS before tagging the AUR commit.
-sha256sums_x86_64=('2fdeb233efd5df02dd4c27a93b02b15ef17fb3a3622967ce155a62479e626462')
-sha256sums_aarch64=('71892ad662a18677dd73d71feacadc6f6b8ffa92a7176db2ba873a8bb2f52db2')
+sha256sums_x86_64=('e4fe99ba5bb238954ae95cd3cd1bae649c8802e327b0c42057b91b6e460cc2e0')
+sha256sums_aarch64=('af9a2718c0583c5fac2bae8a1ae3aefac40c703f00a0c8c9c34cc4fab9ca747c')
 
 package() {
     install -Dm755 "${srcdir}/${_pkgname}-${pkgver}-${CARCH}" \
