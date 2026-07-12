@@ -1,4 +1,5 @@
-# Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
+# Maintainer: Yakov Till <yakov.till@gmail.com>
+# Contributor: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 # Contributor: Utsob Roy <uroybd(at)gmail(dot)com>
 
 pkgname=franz-bin
