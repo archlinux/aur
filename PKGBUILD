@@ -3,11 +3,11 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=licensecheck
+pkgdesc='Simple license checker for source files'
 pkgver=3.3.10
 pkgrel=1
-pkgdesc='Simple license checker for source files'
-arch=('any')
-url="https://metacpan.org/dist/App-Licensecheck"
+url='https://metacpan.org/dist/App-Licensecheck'
+arch=(any)
 license=('AGPL-3.0-or-later')
 # See "prereqs" in https://metacpan.org/dist/App-Licensecheck/source/Makefile.PL
 makedepends=(
@@ -53,7 +53,7 @@ source=("https://cpan.metacpan.org/authors/id/J/JO/JONASS/App-Licensecheck-v${pk
 b2sums=('114f192f2c01e50b235df32fce33647d39765d4bc7f9f3993715a0f9a29112efc1cb3d190351f73c388a3069f4e9d06b82ef5306dde547890776c67e4309dd0c')
 
 build() {
-  cd "${srcdir}/App-Licensecheck-v${pkgver}"
+  cd "App-Licensecheck-v${pkgver}"
 
   unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
@@ -62,14 +62,14 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/App-Licensecheck-v${pkgver}"
+  cd "App-Licensecheck-v${pkgver}"
 
   unset PERL5LIB PERL_LOCAL_LIB_ROOT
   LC_ALL=C.UTF-8 make test
 }
 
 package() {
-  cd "${srcdir}/App-Licensecheck-v${pkgver}"
+  cd "App-Licensecheck-v${pkgver}"
 
   unset PERL5LIB PERL_LOCAL_LIB_ROOT
   make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
