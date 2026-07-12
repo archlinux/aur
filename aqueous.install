@@ -1,6 +1,6 @@
 post_install() {
     cat <<'EOF'
-==> Aqueous installed (NativeAOT build -- no .NET runtime required).
+==> Aqueous installed (single-process Zig build).
 
     Select 'Aqueous' from your display manager's session list. 'ly' is the
     recommended greeter (enable it with 'systemctl enable ly.service'); sddm
@@ -13,20 +13,14 @@ post_install() {
     environment on every start, activates graphical-session.target, and tears
     the whole session down cleanly on exit. This fixes the stale-WAYLAND_DISPLAY
     reconnect loop that could leave the bar chasing a dead socket across a
-    compositor restart. Aqueous now also exits when its compositor connection
-    drops, so uwsm brings the session down (and back up) cleanly. Static
+    compositor restart. Static
     toolkit/backend hints live in /etc/uwsm/env-aqueous.
 
-    The output daemon (aqueous-outputd) drives wlr-randr from inside
-    River's control context. It is started automatically by
-    /usr/bin/aqueous-init at session start, which also applies the
-    persisted display configuration before Aqueous draws its first
-    frame (this is what makes the screen come up at the right
-    resolution under greetd). To run it as a systemd user service
-    instead:
-        systemctl --user daemon-reload
-        systemctl --user enable --now aqueous-outputd.service
-    Requires the 'wlr-randr' package.
+    Output modes, scale, transform, position, adaptive sync, profiles,
+    persistence, and hotplug are handled directly by the compositor. The
+    outputd protocol remains available at
+    $XDG_RUNTIME_DIR/aqueous/outputd.sock for display-panel compatibility;
+    no output daemon or wlr-randr package is required.
 
     The graphical session is brought up by uwsm (it activates the static
     graphical-session.target itself), so that xdg-desktop-portal.service --
@@ -63,7 +57,6 @@ post_install() {
     login by systemd-tmpfiles --user.
 
     Logs:
-        journalctl --user -u aqueous-outputd -f
         tail -f ~/.local/state/river/river.log
 EOF
     systemd-tmpfiles --create /usr/lib/tmpfiles.d/aqueous.conf >/dev/null 2>&1 || true
@@ -74,23 +67,10 @@ post_upgrade() {
     echo "==> Aqueous upgraded from ${old_ver:-unknown}."
     echo "    The session is now launched via uwsm (uwsm start -- aqueous-wm)"
     echo "    and exits cleanly on compositor disconnect. Reload user units"
-    echo "    and restart the output daemon:"
+    echo "    and restart the graphical session:"
     echo "        systemctl --user daemon-reload"
-    echo "        systemctl --user try-restart aqueous-outputd.service"
     echo "    The session target takes effect on your next login."
     systemd-tmpfiles --create /usr/lib/tmpfiles.d/aqueous.conf >/dev/null 2>&1 || true
-}
-
-pre_remove() {
-    # Best-effort stop of running per-user instances.
-    if command -v loginctl >/dev/null 2>&1; then
-        for u in $(loginctl list-users --no-legend 2>/dev/null | awk '{print $2}'); do
-            local uid
-            uid=$(id -u "$u" 2>/dev/null) || continue
-            sudo -u "$u" XDG_RUNTIME_DIR="/run/user/$uid" \
-                systemctl --user stop aqueous-outputd.service 2>/dev/null || true
-        done
-    fi
 }
 
 post_remove() {

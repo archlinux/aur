@@ -2,23 +2,22 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous-git
 pkgbase=aqueous
-pkgver=0.2.0.r21.g713206d # Will be updated by pkgver()
-pkgrel=4
-pkgdesc="Aqueous Wayland window manager bundled with RiverDelta"
+pkgver=0.3.0.r0.gaac324f # Will be updated by pkgver()
+pkgrel=1
+pkgdesc="Aqueous single-process Wayland compositor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Aqueous"
 license=('GPL3')
 depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
-         'pixman' 'libdrm' 'libevdev' 'wlr-randr'
-         'noctalia-git' 'libdecor' 'grim' 'slurp' 'xwayland-satellite'
+         'pixman' 'libdrm' 'libevdev'
+         'noctalia-git' 'libdecor' 'grim' 'slurp' 'xorg-xwayland'
          'xdg-desktop-portal-wlr' 'wlroots0.20' 'wl-clipboard'
          'xdg-desktop-portal-gtk' 'libnotify'
          # uwsm manages the session lifecycle (env export, graphical-session.target,
          # clean teardown). The aqueous.desktop session entry execs `uwsm start`.
          'uwsm'
-         # NativeAOT runtime link targets (BCL dlopens/dynlinks against these).
-         'zlib' 'krb5' 'openssl' 'scenefx')
-makedepends=('dotnet-sdk-10.0' 'clang' 'lld' 'llvm' 'zlib' 'krb5' 'openssl'
+         'scenefx')
+makedepends=('clang' 'lld' 'llvm'
              'git' 'wayland-protocols' 'scenefx')
 optdepends=('ly: recommended display manager / login greeter'
             'greetd: alternative minimal login manager for tuigreet'
@@ -26,21 +25,13 @@ optdepends=('ly: recommended display manager / login greeter'
             'nemo: recommended file manager'
             'firefox: web browser'
             'wireplumber: volume/media key bindings (wpctl)')
-provides=('aqueous' 'riverdelta')
-conflicts=('aqueous' 'riverdelta')
+provides=('aqueous')
+conflicts=('aqueous')
 install=aqueous.install
 source=(
     "aqueous::git+${url}.git"
 )
 sha256sums=('SKIP')
-
-_rid_map() {
-    case "$CARCH" in
-        x86_64)  echo "linux-x64" ;;
-        aarch64) echo "linux-arm64" ;;
-        *) return 1 ;;
-    esac
-}
 
 pkgver() {
     cd "$srcdir/aqueous"
@@ -53,7 +44,7 @@ pkgver() {
 }
 
 build() {
-    # Verify zig is new enough (RiverDelta requires >= 0.16.0).
+    # Verify zig is new enough (the Aqueous compositor requires >= 0.16.0).
     # We enforce this here instead of via a pacman version constraint because
     # the repo `zig` package is currently 0.15.x and Zig 0.16 is only available
     # via `zig-master-bin` (AUR), which provides unversioned `zig`.
@@ -72,84 +63,25 @@ build() {
     fi
     msg2 "Using zig $zig_ver"
 
-    # Build Aqueous components (NativeAOT).
-    #
-    # Notes on the publish flags:
-    #   * PublishAot=true is also set in each csproj; we pass it on the
-    #     command line so an accidental csproj edit can't silently fall
-    #     back to JIT in CI.
-    #   * --self-contained true is redundant under AOT (AOT is implicitly
-    #     self-contained) but harmless; kept to make the publish profile
-    #     explicit.
-    #   * PublishSingleFile is deliberately NOT passed -- it is
-    #     incompatible with PublishAot.
-    #   * StripSymbols + DebugType=none keep the shipped ELF small;
-    #     pacman's check-strip hook is happy.
-    #   * Per-binary IlcOptimizationPreference: WM = Speed (latency in
-    #     the input/render path), OutputDaemon = Size (cold-start
-    #     sidecar).
-    local rid; rid=$(_rid_map)
     cd "$srcdir/aqueous"
 
-    local common_args=(
-        -c Release
-        -r "$rid"
-        --self-contained true
-        -p:PublishAot=true
-        -p:InvariantGlobalization=true
-        -p:StripSymbols=true
-        -p:DebugType=none
-        -p:DebugSymbols=false
-        --nologo
-    )
-
-    msg2 "AOT-publishing Aqueous WM"
-    dotnet publish Aqueous/Aqueous.csproj \
-        "${common_args[@]}" \
-        -p:IlcOptimizationPreference=Speed \
-        -o "$srcdir/publish/Aqueous"
-
-    msg2 "AOT-publishing Aqueous OutputDaemon"
-    dotnet publish Aqueous.OutputDaemon/Aqueous.OutputDaemon.csproj \
-        "${common_args[@]}" \
-        -p:IlcOptimizationPreference=Size \
-        -o "$srcdir/publish/Aqueous.OutputDaemon"
-
-    # Post-publish guard: fail fast if AOT silently fell back to a
-    # managed launcher (which would produce a tiny ELF stub that loads
-    # libcoreclr.so instead of a real native binary).
-    local bin
-    for bin in "$srcdir/publish/Aqueous/aqueous" \
-               "$srcdir/publish/Aqueous.OutputDaemon/aqueous-outputd"; do
-        [[ -x "$bin" ]] || { error "Missing AOT output: $bin"; return 1; }
-        if ! file "$bin" | grep -q 'ELF .* executable'; then
-            error "Not a native AOT binary: $bin"
-            file "$bin"
-            return 1
-        fi
-    done
-
-    # Build RiverDelta (in-tree at compositor/)
-    msg2 "Building RiverDelta..."
+    # Build the single Aqueous compositor/policy executable.
+    msg2 "Building Aqueous compositor..."
     cd "$srcdir/aqueous/compositor"
     # -Dllvm forces the LLVM backend + LLD linker. Zig 0.16.0's self-hosted
     # ELF linker can't handle R_X86_64_PC64 in .sframe emitted by gcc >= 16.
     zig build -Doptimize=ReleaseSafe -Dxwayland -Dllvm -Dscenefx=true \
-        --prefix "$srcdir/river-dist" install
+        --prefix "$srcdir/aqueous-dist" install
 }
 
 package() {
-    # Install Aqueous binaries
-    install -Dm755 "$srcdir/publish/Aqueous/aqueous" "$pkgdir/usr/bin/aqueous"
-    install -Dm755 "$srcdir/publish/Aqueous.OutputDaemon/aqueous-outputd" "$pkgdir/usr/bin/aqueous-outputd"
+    # Install the single compositor/window-manager executable.
+    install -Dm755 "$srcdir/aqueous-dist/bin/aqueous" "$pkgdir/usr/bin/aqueous"
 
-    # Install RiverDelta binary as 'riverdelta' instead of 'river'
-    install -Dm755 "$srcdir/river-dist/bin/riverdelta" "$pkgdir/usr/bin/riverdelta"
-
-    # Install RiverDelta share data (man pages, etc.)
-    if [ -d "$srcdir/river-dist/share" ]; then
+    # Install compositor share data (man pages and protocol ABI metadata).
+    if [ -d "$srcdir/aqueous-dist/share" ]; then
         install -d "$pkgdir/usr/share"
-        cp -dr --no-preserve=ownership "$srcdir/river-dist/share/"* "$pkgdir/usr/share/"
+        cp -dr --no-preserve=ownership "$srcdir/aqueous-dist/share/"* "$pkgdir/usr/share/"
     fi
 
     # Install Aqueous packaging scripts and config
@@ -174,13 +106,6 @@ package() {
     install -Dm644 "$srcdir/aqueous/wm.toml" "$pkgdir/etc/xdg/aqueous/wm.toml"
     install -Dm644 "$srcdir/aqueous/wm.toml" "$pkgdir/usr/share/aqueous/wm.toml"
 
-    # systemd user unit for the output daemon. Input config no longer
-    # needs a sidecar: the Aqueous WM applies [input.*] from wm.toml
-    # directly to the compositor via the river_libinput_config_v1
-    # protocol.
-    install -Dm644 "$srcdir/aqueous/packaging/aqueous-outputd.service" \
-        "$pkgdir/usr/lib/systemd/user/aqueous-outputd.service"
-
     # Session wrapper target. graphical-session.target is static
     # (RefuseManualStart) and xdg-desktop-portal.service has
     # Requisite=graphical-session.target, so the portal cannot start until the
@@ -201,21 +126,17 @@ package() {
     # started, post xdg-desktop-autostart.target).
     install -Dm644 "$srcdir/aqueous/packaging/noctalia.service" \
         "$pkgdir/usr/lib/systemd/user/noctalia.service"
-    # xwayland-satellite (rootless XWayland bridge) user unit.
-    # Installed alongside noctalia in graphical-session.target.wants so
-    # the XWayland bridge starts with the session and is torn down on logout.
-    install -Dm644 "$srcdir/aqueous/packaging/xwayland-satellite.service" \
-        "$pkgdir/usr/lib/systemd/user/xwayland-satellite.service"
     install -d "$pkgdir/usr/lib/systemd/user/graphical-session.target.wants"
     ln -s ../noctalia.service \
         "$pkgdir/usr/lib/systemd/user/graphical-session.target.wants/noctalia.service"
-    ln -s ../xwayland-satellite.service \
-        "$pkgdir/usr/lib/systemd/user/graphical-session.target.wants/xwayland-satellite.service"
 
     # tmpfiles snippet: materialises per-user state/cache/config dirs at
     # login via systemd-tmpfiles --user.
     install -Dm644 "$srcdir/aqueous/packaging/aqueous.tmpfiles" \
         "$pkgdir/usr/lib/tmpfiles.d/aqueous.conf"
+
+    install -Dm644 "$srcdir/aqueous/packaging/udev/70-aqueous-uaccess.rules" \
+        "$pkgdir/usr/lib/udev/rules.d/70-aqueous-uaccess.rules"
 
     # Default Noctalia (v5) config (seeded on first launch by aqueous-init when
     # the user has no ~/.config/noctalia/config.toml yet).
@@ -239,16 +160,13 @@ package() {
             "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     fi
 
-    # In-tree compositor licenses (RiverDelta is multi-licensed; ship the
+    # In-tree compositor licenses (the River-derived source is multi-licensed; ship the
     # license texts alongside Aqueous's own license for attribution).
     if [[ -d "$srcdir/aqueous/compositor/LICENSES" ]]; then
-        install -d "$pkgdir/usr/share/licenses/$pkgname/riverdelta"
+        install -d "$pkgdir/usr/share/licenses/$pkgname/compositor"
         cp -dr --no-preserve=ownership \
             "$srcdir/aqueous/compositor/LICENSES/." \
-            "$pkgdir/usr/share/licenses/$pkgname/riverdelta/"
+            "$pkgdir/usr/share/licenses/$pkgname/compositor/"
     fi
 
-    # Defense-in-depth: drop any stray AOT debug artefacts that
-    # StripSymbols may have left next to the binaries.
-    find "$pkgdir/usr/bin" -maxdepth 1 \( -name '*.dbg' -o -name '*.pdb' \) -delete 2>/dev/null || true
 }
