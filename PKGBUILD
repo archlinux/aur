@@ -1,5 +1,5 @@
 pkgname=aurindexer-git
-pkgver=r5.90d4ebd
+pkgver=r6.f63d502
 pkgrel=1
 pkgdesc="Searcher TUI with paralel support for AUR and officials repos"
 arch=('x86_64')
@@ -19,13 +19,13 @@ pkgver() {
 }
 
 build() {
-    cd "AurIndexer/AurIndexer"
+    cd "aurindexer-git/src/AurIndexer"
 
     dotnet publish -c Release -r linux-x64 --self-contained true /p:PublishAot=true
 }
 
 package() {
-    cd "AurIndexer/AurIndexer"
+    cd "aurindexer-git/src/AurIndexer"
     install -Dm755 "bin/Release/net10.0/linux-x64/publish/AurIndexer" "${pkgdir}/usr/bin/aurindexer"
 }
 
