@@ -1,0 +1,17 @@
+pkgbase = typeshi
+	pkgdesc = A typing application
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/RyuZinOh/typeShi
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-shadertools
+	source = typeshi-0.0.1.tar.gz::https://github.com/RyuZinOh/typeShi/archive/refs/tags/v0.0.1.tar.gz
+	sha256sums = 5e262b24d12188a28899ba71babc44ed4df6f1f1d6d27c5a3dd7d59a7e4392f6
+
+pkgname = typeshi
