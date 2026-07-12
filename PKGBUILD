@@ -3,7 +3,7 @@
 pkgname="pyfunceble-process-manager"
 upstreamName="${pkgname//-/_}"
 pkgver=1.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="The process manager library for and from the PyFunceble project."
 arch=('any')
 url="https://github.com/pyfunceble/process-manager"
@@ -15,7 +15,7 @@ depends=(
 )
 source=("https://files.pythonhosted.org/packages/source/${upstreamName::1}/${upstreamName}/${upstreamName}-$pkgver.tar.gz" 'https://raw.githubusercontent.com/pyfunceble/process-manager/refs/heads/master/LICENSE')
 sha256sums=('7b657b8e3dfa927f35e9d032225b9014dd462bd70f82b11f9eeefd0aa327a65e'
-            'ac4f1fa7ee565806d41b26bc9a0d9f313224730ddf3c0d4f346f3a511c47dd4e')
+            '2411ba51f3e77f7f78d00b70641eafc002ba607f36128ea7ccc5678c6aa8a45d')
 
 build() {
     cd ${srcdir}/${upstreamName}-${pkgver}
