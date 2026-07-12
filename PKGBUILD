@@ -1,4 +1,5 @@
 # Maintainer: AlieeLinux <bazartroy531@gmail.com>
+# Contributor: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=qt-sudo-git
 pkgver=r39.gf39b911
