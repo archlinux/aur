@@ -13,6 +13,7 @@ depends=(
 )
 makedepends=(
   python-build
+  python-installer
   python-setuptools
 )
 provides=("${pkgname}=${pkgver}")

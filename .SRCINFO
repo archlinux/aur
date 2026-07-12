@@ -6,6 +6,7 @@ pkgbase = systemdlint
 	arch = any
 	license = BSD 2-Clause
 	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python-anytree>=2.13
 	depends = python-systemdunitparser>=0.4
