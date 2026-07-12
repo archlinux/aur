@@ -1,11 +1,11 @@
 # Maintainer: Peter Mattern <pmattern at arcor dot de>
 
 _pkgname=nomacs
-pkgname=$_pkgname-git
-pkgver=3.22.0.r2.g88d9c67e
+pkgname="${_pkgname}-git"
+pkgver=3.23.1.r15.gd5ae2741
 pkgrel=1
 pkgdesc='Free, open source image viewer, which supports multiple platforms.'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url='https://nomacs.org'
 license=('GPL-3.0-only')
 depends=('quazip-qt6' 'qt6-5compat' 'qt6-svg' 'opencv' 'libraw' 'exiv2' 'desktop-file-utils')
