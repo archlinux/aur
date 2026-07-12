@@ -1,5 +1,5 @@
 /pkg
 /src
 *.pkg.tar*
-/cliproxyapi-*.tar.gz
+/cli-proxy-api-*.tar.gz
 LICENSE-*

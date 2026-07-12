@@ -1,7 +1,6 @@
 # Maintainer: Kcocoa <kamforzn2@proton.me>
 
 pkgname=cli-proxy-api
-_pkgname=cliproxyapi
 pkgver=7.2.67
 pkgrel=4
 pkgdesc="Proxy server providing OpenAI, Gemini, Claude, and Codex compatible APIs"
@@ -14,7 +13,7 @@ conflicts=('cli-proxy-api-bin')
 backup=('etc/cli-proxy-api/config.yaml')
 install='cli-proxy-api.install'
 source=(
-  "$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   'cli-proxy-api.service'
   'cli-proxy-api.sysusers'
   'cli-proxy-api.tmpfiles'
