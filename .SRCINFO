@@ -1,0 +1,18 @@
+pkgbase = python-escapism
+	pkgdesc = A library for escaping and unescaping strings
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/jupyterhub/escapism
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-codecov
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	source = escapism-1.1.0.tar.gz::https://github.com/jupyterhub/escapism/archive/1.1.0.tar.gz
+	b2sums = fddb900095aee1a26078cb80745151b3145f724e0858c86c61e808eee1fc6bd615d8cf76c3aef182d7f395c4d438c5307ad07153961e4c160ed63204035a2dfe
+
+pkgname = python-escapism
