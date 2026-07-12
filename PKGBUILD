@@ -1,8 +1,9 @@
 # Maintainer: RiverOnVenus <aur@zhui.dev>
 # Contributor: Asuka Minato <i at asukaminato dot eu dot org>
 _pkgname=delance-runtime
+_pylance_sha256=1658b9309a1baece010bac3eb5aaa3c5924d6a5f1eab65bd9f23bc0d99d04cef
 pkgname=delance-langserver
-pkgver=2026.2.104
+pkgver=2026.2.108
 pkgrel=1
 pkgdesc="A spear to the Python language server built with black magic"
 arch=('x86_64')
@@ -16,8 +17,7 @@ optdepends=(
 )
 makedepends=(deno npm)
 source=("${_pkgname}-v${pkgver}.tar.gz::https://git.sr.ht/~self/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('fb790283acd99f6df54fe0f24cc1752bae2cdb57767cac3bcb2e9e2137b9f60f')
-provides=("${pkgname}=${pkgver}")
+sha256sums=('2603946aa6b6c036326f3b58357af797f25b948db580d3ee4a802402cc1b55ac')
 
 build() {
 	cd "$_pkgname-v$pkgver"
@@ -30,7 +30,7 @@ build() {
 	npm install --omit=dev
 
 	# Download Pylance extension from VS Code Marketplace
-	node install.mjs
+	node --input-type=module -e "import { install } from './install.mjs'; await install(new URL('./dist/v${pkgver}-${_pylance_sha256}/', import.meta.url));"
 }
 
 package() {

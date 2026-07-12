@@ -1,6 +1,6 @@
 pkgbase = delance-langserver
 	pkgdesc = A spear to the Python language server built with black magic
-	pkgver = 2026.2.104
+	pkgver = 2026.2.108
 	pkgrel = 1
 	url = https://sr.ht/~self/delance/
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = delance-langserver
 	optdepends = python: Pylance Python language features
 	optdepends = python-pytest: pytest option discovery
 	optdepends = python-numpy: NumPy type stubs support
-	provides = delance-langserver=2026.2.104
-	source = delance-runtime-v2026.2.104.tar.gz::https://git.sr.ht/~self/delance-runtime/archive/v2026.2.104.tar.gz
-	sha256sums = fb790283acd99f6df54fe0f24cc1752bae2cdb57767cac3bcb2e9e2137b9f60f
+	source = delance-runtime-v2026.2.108.tar.gz::https://git.sr.ht/~self/delance-runtime/archive/v2026.2.108.tar.gz
+	sha256sums = 2603946aa6b6c036326f3b58357af797f25b948db580d3ee4a802402cc1b55ac
 
 pkgname = delance-langserver
