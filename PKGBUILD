@@ -1,12 +1,12 @@
 pkgname=aurindexer-git
-pkgver=r0.f5a3386
+pkgver=r5.90d4ebd
 pkgrel=1
-pkgdesc="Buscador TUI nativo y optimizado con soporte paralelo para AUR y repositorios oficiales"
+pkgdesc="Searcher TUI with paralel support for AUR and officials repos"
 arch=('x86_64')
 url="https://github.com/ReyzerMC/AurIndexer"
 license=("GPL3")
 depends=('glibc')
-optdepends=('yay: backend actualmente obligatorio para poder usar las funciones de install y uninstall para la gestion de paquetes')
+optdepends=('yay' 'paru')
 makedepends=('dotnet-sdk-10.0' 'git')
 provides=('aurindexer')
 conflicts=('aurindexer')
