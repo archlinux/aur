@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=lief-bin
-pkgver=0.17.6
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Library to instrument executable formats (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -25,10 +25,10 @@ source_aarch64=(
     "LIEF-${pkgver}-Linux-aarch64.tar.gz::${_gh}/LIEF-${pkgver}-Linux-aarch64.tar.gz"
     "lief-tools-${pkgver}-aarch64.zip::${_gh}/lief-tools-aarch64-unknown-linux-gnu.zip"
 )
-sha256sums_x86_64=('a29d91ab9b79506896ddd8ef23425b33d0f454a5e352bf86f328b79c9b3db4d8'
-                   '45d14310662b2a06c73410403c2350ec9fef39ad87f0e5f652015b3a3d76d4eb')
-sha256sums_aarch64=('369b251e1bbd2c68777f0c3c1c1d6ec52faf6cee747c2aaec9e96d1cef7ad73c'
-                    'acafcf82110847a6f9ce2e0c2f8019f2f9ddec96718506127c516e9771fb8044')
+sha256sums_x86_64=('81b86bcc69d311a01ec1914d26c31ebbb605ac761ec02f10bc5b588de74a8e91'
+                   'c9e1dd2facd82276074a9605f83ac9e1dec32cba4e3013b447d0a8223d9a21b9')
+sha256sums_aarch64=('42b638989ca35d778640f11deba4560f5e5ad9976fca4012aeeba9b7bacf997d'
+                    '0965da90228ec5acb388b6446c941d00c92825b41f99b0d00e39646bf6b5d35e')
 
 latestver() {
     gh api repos/lief-project/LIEF/releases/latest --jq '.tag_name'
