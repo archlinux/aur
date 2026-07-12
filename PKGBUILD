@@ -1,7 +1,7 @@
 # Maintainer: rbgameslinux <rbgameslinux@users.noreply.github.com>
 
 pkgname=rise-mode-temp6-archlinux
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Driver experimental para display USB do air cooler Rise Mode Temp 6 Pro (Arch Linux)"
 arch=('any')
