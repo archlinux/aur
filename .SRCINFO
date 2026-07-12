@@ -1,0 +1,19 @@
+pkgbase = autoremesher-git
+	pkgdesc = Cross-platform automatic quad remeshing tool
+	pkgver = rd3ec256
+	pkgrel = 1
+	url = https://github.com/huxingyi/autoremesher
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = qt5-base
+	depends = tbb
+	depends = zlib
+	provides = autoremesher
+	conflicts = autoremesher
+	source = autoremesher-git::git+https://github.com/huxingyi/autoremesher.git#branch=master
+	sha256sums = SKIP
+
+pkgname = autoremesher-git
