@@ -15,7 +15,7 @@ pkgver=2026.07.07.1
 pkgrel=1
 pkgdesc="A fine Matrix chat app you can get to love (prebuilt AppImage)"
 arch=('x86_64' 'aarch64')
-url="https://github.com/etkecc/komai"
+url="https://komai.chat"
 license=('GPL-3.0-or-later')
 # The AppImage bundles Qt6, QtWebEngine, GStreamer and ffmpeg, so the only
 # runtime dependency is the icon theme for menu integration. fuse2 is
