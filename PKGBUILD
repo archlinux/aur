@@ -11,6 +11,7 @@ depends=('sane' 'libusb-compat' 'libjpeg-turbo')
 makedepends=('cmake' 'libusb' 'ninja' 'patchelf' 'pkgconf')
 conflicts=('brscan-bin' 'brscan2' 'brscan3' 'brscan4' 'brscan5')
 backup=('etc/sane.d/dll.d/brscan.conf')
+_mfc1810_model='0x02d1,14,1,"MFC-1810"'
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   'brscan-1.0.1-arch-fixes.patch'
@@ -22,44 +23,39 @@ b2sums=('2b4250ea0f02a1aef9b6c7bfb8ab38745ff11387f0545e982f802c54afa07103d99d249
         'ab8364e68de0fbc8cfe82013f2a1313b477f05db03dcf0bbff3345aee2d9ce6e82205babf9b2cccb858728b209d0e0d3450d5ee027faead6776f2bdb0197bdd4'
         'e81319e87083d8785489a3c4c5621939c821f3e9d78d39b7272f739e791720ee02aadf6152c96bfb0c319b1770841a08e7c60617aa71d031827634d945d6e25f')
 
-prepare() {
-  cd "${pkgname}-${pkgver}"
+_append_ini_section_line() {
+  local file=$1 section=$2 line=$3
 
-  patch -Np1 -i "${srcdir}/brscan-1.0.1-arch-fixes.patch"
-
-  awk '
-    BEGIN {
-      model = "0x02d1,14,1,\"MFC-1810\""
-    }
-    /^\[Support Model\]$/ {
-      in_support = 1
-      saw_support = 1
-      print
-      next
-    }
+  awk -v section="[${section}]" -v line="${line}" '
     function flush_blanks() {
       if (pending_blanks != "") {
         printf "%s", pending_blanks
         pending_blanks = ""
       }
     }
-    in_support && $0 == model {
-      found = 1
-    }
-    in_support && /^[[:space:]]*$/ {
-      pending_blanks = pending_blanks $0 ORS
-      next
-    }
-    in_support && /^\[/ {
-      if (!found) {
-        print model
-      }
-      flush_blanks()
-      in_support = 0
+    $0 == section {
+      in_section = 1
+      saw_section = 1
       print
       next
     }
-    in_support {
+    in_section && $0 == line {
+      found = 1
+    }
+    in_section && /^[[:space:]]*$/ {
+      pending_blanks = pending_blanks $0 ORS
+      next
+    }
+    in_section && /^\[/ {
+      if (!found) {
+        print line
+      }
+      flush_blanks()
+      in_section = 0
+      print
+      next
+    }
+    in_section {
       flush_blanks()
       print
       next
@@ -68,16 +64,23 @@ prepare() {
       print
     }
     END {
-      if (!saw_support) {
+      if (!saw_section) {
         exit 1
       }
-      if (in_support && !found) {
-        print model
+      if (in_section && !found) {
+        print line
       }
       flush_blanks()
     }
-  ' data/Brsane.ini > data/Brsane.ini.new
-  mv data/Brsane.ini.new data/Brsane.ini
+  ' "${file}" > "${file}.new"
+  mv "${file}.new" "${file}"
+}
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+
+  patch -Np1 -i "${srcdir}/brscan-1.0.1-arch-fixes.patch"
+  _append_ini_section_line data/Brsane.ini 'Support Model' "${_mfc1810_model}"
 }
 
 build() {
