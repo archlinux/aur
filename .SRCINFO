@@ -1,0 +1,20 @@
+pkgbase = st-rs-git
+	pkgdesc = Minimal terminal emulator.
+	pkgver = 0.1.0.r86.g8051209
+	pkgrel = 1
+	url = https://codeberg.org/ideasman42/st-rs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = ncurses
+	depends = fontconfig
+	depends = wayland
+	depends = libxkbcommon
+	depends = libutf8proc
+	provides = st-rs=0.1.0.r86.g8051209
+	conflicts = st-rs
+	source = git+https://codeberg.org/ideasman42/st-rs.git
+	sha256sums = SKIP
+
+pkgname = st-rs-git
