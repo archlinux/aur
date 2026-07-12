@@ -1,5 +1,5 @@
 # Maintainer: ShinKouyo <i@0x0f.dev>
-# Co-Maintainer: Capricornus007 <sihaogang at gmail dot com>
+# Maintainer: Capricornus007 <sihaogang at gmail dot com>
 
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null or choose proper variable to enable them
@@ -60,7 +60,7 @@
 ### Full tickless can give higher performances in various cases but, depending on hardware, lower consistency.
 : "${_tickrate:=full}"
 
-## Choose between full or lazy
+## Choose between full, lazy or dynamic
 # Full: Makes all non-critical kernel code preemptible to reduce latency
 # Lazy: Same as full but instead of preempting immediately it waits for signals from the scheduler
 #       in an attempt to boost throughput.
@@ -173,7 +173,7 @@ pkgbase="linux-$_pkgsuffix"
 _major=7.1
 _minor=3
 #_minorc=$((_minor+1))
-#_rcver=rc1
+#_rcver=rc8
 pkgver=${_major}.${_minor}
 _tagrel=1
 pkgrel=1
@@ -209,14 +209,15 @@ makedepends=(
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
 _cjktty_source="https://raw.githubusercontent.com/bigshans/cjktty-patches/master"
-_nv_ver=610.43.02
+_nv_ver=610.43.03
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
     "https://github.com/CachyOS/linux/releases/download/${_srcname}/${_srcname}.tar.gz"
     "config"
     "${_cjktty_source}/v7.x/cjktty-7.1.patch"
-    "${_cjktty_source}/cjktty-add-cjk32x32-font-data.patch")
+    "${_cjktty_source}/cjktty-add-cjk32x32-font-data.patch"
+)
 
 # LLVM makedepends
 if _is_lto_kernel; then
@@ -238,12 +239,14 @@ fi
 # ZFS support
 if [ "$_build_zfs" = "yes" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=6330a45b06d20125de679aae5f63ba14082671ef")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=c681af76c5a6a15caada25eb13090e41218c7831")
 fi
 
 
 if [ "$_build_nvidia_open" = "yes" ]; then
-    source+=("https://download.nvidia.com/XFree86/${_nv_open_pkg%"-$_nv_ver"}/${_nv_open_pkg}.tar.xz")
+    source+=("https://download.nvidia.com/XFree86/${_nv_open_pkg%"-$_nv_ver"}/${_nv_open_pkg}.tar.xz"
+             "${_patchsource}/misc/nvidia/0002-fix-dsc-correct-RC-parameter-tables-to-match-VESA-DS.patch"
+             "${_patchsource}/misc/nvidia/0004-fix-dp-add-Bigscreen-Beyond-VR-headset-to-WAR-databa.patch")
 fi
 
 # Use generated AutoFDO Profile
