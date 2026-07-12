@@ -1,6 +1,6 @@
 pkgbase = lyra-vega
 	pkgdesc = Centro de controle para Linux
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/britors/Vega
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = lyra-vega
 	provides = lyrae
 	conflicts = vega
 	conflicts = lyrae
-	source = Vega::git+https://github.com/britors/Vega.git#tag=v1.4.1
+	source = Vega::git+https://github.com/britors/Vega.git#tag=v1.4.2
 	sha256sums = SKIP
 
 pkgname = lyra-vega

@@ -5,7 +5,7 @@
 # VEGA_SOURCE_URL and VEGA_SOURCE_DIR for local builds.
 
 pkgname=lyra-vega
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Centro de controle para Linux"
 arch=('x86_64')
