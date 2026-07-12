@@ -1,0 +1,17 @@
+pkgbase = dygmate-bin
+	pkgdesc = Dygma Defy wireless battery indicator
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dlnilsson/dygmate
+	install = dygmate-bin.install
+	arch = x86_64
+	license = GPL-2.0-only
+	provides = dygmate=0.1.0
+	conflicts = dygmate
+	conflicts = dygmate-git
+	replaces = dygmate-git
+	options = !strip
+	source = dygmate-0.1.0-x86_64.tar.gz::https://github.com/dlnilsson/dygmate/releases/download/v0.1.0/dygmate-0.1.0-x86_64.tar.gz
+	sha256sums = f546ad8d83e762a88b7414eb0667a25977ac216aa7108fa099a42f1fcb3d6ccc
+
+pkgname = dygmate-bin

@@ -1,0 +1,20 @@
+post_install() {
+    cat <<'EOF'
+
+  ==> To start the battery tray indicator for your user session:
+        systemctl --user enable --now dygmate-tray.service
+
+  ==> Replug the keyboard (or run the following) so the udev rule takes effect:
+        sudo udevadm control --reload && sudo udevadm trigger
+
+EOF
+}
+
+post_upgrade() {
+    cat <<'EOF'
+
+  ==> If the tray is running, restart it to use the new binary:
+        systemctl --user restart dygmate-tray.service
+
+EOF
+}
