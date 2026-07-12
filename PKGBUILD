@@ -2,8 +2,8 @@ pkgname=neuro-karaoke-app
 _pkgname=neuro-karaoke-app
 _execname=neuro-karaoke-player
 _reponame=neuro-karaoke-wrapper
-pkgver=1.6.0
-pkgrel=1
+pkgver=1.7.0
+pkgrel=0
 pkgdesc='Desktop wrapper for neurokaraoke.com with media controls and tray support.'
 arch=('x86_64' 'aarch64')
 url="https://github.com/AferilVT/$_reponame"
@@ -18,27 +18,20 @@ sha256sums=('SKIP')
 options=(!strip)
 
 build() {
-  cd "$_reponame"
-  
-  # delete inferior icon formats to save a little space
+  cd "$_reponame/Desktop"
   rm -f ./assets/*.ico
   rm -f ./assets/*.icns
-  
-  # install dependencies for building
   npm_config_platform=linux yarn install --frozen-lockfile
-  
-  # detect architecture
   case "$CARCH" in
     x86_64) _arch=x64 ;;
     aarch64) _arch=arm64 ;;
   esac
-  
-  # build application
-  yarn electron-builder --linux --dir --$_arch
+  yarn build:pre
+  yarn electron-builder --dir --linux --$_arch
 }
 
 package() {
-  cd "$_reponame"
+  cd "$_reponame/Desktop"
 
   # install .asar and wrapper script
   install -Dm644 dist/linux-unpacked/resources/app.asar "$pkgdir/usr/lib/$_pkgname/app.asar"
@@ -60,7 +53,7 @@ EOF
   cat <<EOF > "$pkgdir/usr/share/applications/$pkgname.desktop"
 [Desktop Entry]
 Name=Neuro Karaoke Player
-Exec=$_execname
+Exec=env DISABLE_AUTOUPDATE=1 $_execname
 Icon=$_pkgname
 Type=Application
 Categories=AudioVideo;Player;
@@ -69,5 +62,5 @@ Terminal=false
 EOF
 
   # install license (as required by MIT license)
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
