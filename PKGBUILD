@@ -1,6 +1,6 @@
 # Maintainer: kekmacska
 pkgname=svt-av1-tritium-git
-pkgver=4.1.0.r52.g1e33a0d12
+pkgver=4.1.0.r54.gd4d06e127
 pkgrel=1
 pkgdesc="SVT-AV1-Tritium is a fork of SVT-AV1-HDR with PSYEX + Essential features"
 arch=('x86_64')
@@ -34,8 +34,6 @@ prepare() {
   cd "$pkgname"
   git fetch --all
   git reset --hard origin/main
-
-  printf "\n>>> Tritium: preparing build...\n"
 }
 
 build() {
