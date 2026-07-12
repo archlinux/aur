@@ -15,8 +15,9 @@ sha256sums=('bf0e1279870d40152beb3e702cf3e4e01a6892031a1ace5bc4a9b858894b584e'
 prepare() {
     cd "${srcdir}/PhotoGIMP-linux"
 
-    # Upstream shipped 3.0 with the [ / ] brush-size keys explicitly
-    # unbound; fail loudly if the bindings ever regress again.
+    # Fail loudly if upstream ever ships the [ / ] brush-size keys
+    # explicitly unbound again (a bare `(action "name")` line in
+    # shortcutsrc unbinds GIMP's compiled-in default).
     grep -q '^(action "tools-size-decrease" "bracketleft")$' .config/GIMP/3.0/shortcutsrc
     grep -q '^(action "tools-size-increase" "bracketright")$' .config/GIMP/3.0/shortcutsrc
 }
