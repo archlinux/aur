@@ -1,6 +1,6 @@
 pkgbase = python-jetpytools
 	pkgdesc = Python package: jetpytools
-	pkgver = 2.2.6
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/jetpytools
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-jetpytools
 	depends = python-typing_extensions
 	provides = python-stgpytools
 	conflicts = python-stgpytools
-	source = https://files.pythonhosted.org/packages/5e/b6/312c3af823e95353e0c5192a36a86c5fe44edde46a1e8c9ed945d8f4bf7a/jetpytools-2.2.6-py3-none-any.whl
-	sha256sums = 12314ee3b016b172c72d007c3823265deb462021bfd41eaee332b4928c44a838
+	source = https://files.pythonhosted.org/packages/8b/ea/308c2e2e5d6ce99c1de66519458785b3c9546d3c3485ec63f9411d508ecb/jetpytools-3.1.0-py3-none-any.whl
+	sha256sums = 5fc673cee60c5483a858217972ef6590a570a6353f61de9c28358c14db2b6ebc
 
 pkgname = python-jetpytools
