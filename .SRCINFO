@@ -1,6 +1,6 @@
 pkgbase = miyu-git
 	pkgdesc = 活在终端里的二次元少女
-	pkgver = 0.1.12.r191.gc0e03e3
+	pkgver = 0.1.13.r214.g360738b
 	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/Miyu
 	arch = x86_64
