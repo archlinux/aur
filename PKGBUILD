@@ -22,9 +22,13 @@ build() {
 
 	cd "$srcdir/vcs-repository"
 
-	go build -v -o agru ./cmd/agru/main.go
+	# Build the package path (not main.go) with VCS stamping enabled,
+	# so `agru -version` can report the version from the embedded build info.
+	# The binary goes outside the checkout to keep the git tree clean,
+	# otherwise rebuilds get stamped as "+dirty".
+	go build -v -buildvcs=true -o "$srcdir/agru" ./cmd/agru
 }
 
 package() {
-	install -Dm 755 $srcdir/vcs-repository/agru $pkgdir/usr/bin/agru
+	install -Dm 755 "$srcdir/agru" "$pkgdir/usr/bin/agru"
 }
