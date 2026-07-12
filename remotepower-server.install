@@ -4,34 +4,34 @@ _setup_msg() {
       code → /var/www/remotepower      data → /var/lib/remotepower (owned by http)
 
     Finish setup (one-time):
-      1) Enable the CGI socket:
-           systemctl enable --now fcgiwrap.socket
+      1) Enable the app server (gunicorn + Flask — the only server):
+           cp /usr/share/doc/remotepower-server/remotepower-wsgi.service \
+              /etc/systemd/system/
+           systemctl daemon-reload
+           systemctl enable --now remotepower-wsgi
       2) Configure nginx — copy the sample vhost and set your server_name (+ TLS):
            cp /usr/share/doc/remotepower-server/remotepower.conf.sample \
               /etc/nginx/conf.d/remotepower.conf
            # edit server_name (and TLS); it includes the already-installed
-           # /etc/nginx/snippets/remotepower-locations.conf
+           # /etc/nginx/snippets/remotepower-locations.conf, which already
+           # proxy_passes /api/ to the app server on 127.0.0.1:8090
            nginx -t && systemctl reload nginx
       3) Create the first admin user:
            remotepower-passwd
       4) Browse to your server and log in.
 
     Optional features: install python-reportlab (PDF), python-webauthn (passkeys,
-    AUR), python-pysaml2 + xmlsec (SAML, AUR).
-    Faster backend (optional): the persistent SCGI worker —
-      /usr/share/doc/remotepower-server/remotepower-api.service
-    Large-fleet backend (optional, v5.5.0): the gunicorn WSGI tier +
-    out-of-band scheduler (install gunicorn first) —
-      /usr/share/doc/remotepower-server/remotepower-wsgi.service
+    AUR), python-pysaml2 + xmlsec (SAML, AUR), python-psycopg + postgresql
+    (Postgres backend for large / multi-node fleets).
+    Out-of-band maintenance scheduler (optional, v5.5.0) —
       /usr/share/doc/remotepower-server/remotepower-scheduler.service
     For TLS-from-scratch (self-signed CA) see the project's tls-selfsigned docs.
 MSG
 }
 
-# Precompile the backend so the CGI user loads cached bytecode. The CGI entry
-# point api_cgi.py imports api, and a CGI *main script* never uses the .pyc
-# cache — without a prebuilt __pycache__ the ~50k-line module is recompiled on
-# every request (the web root is root-owned, so the http user can't build it).
+# Precompile the backend so gunicorn loads cached bytecode on first request
+# instead of recompiling the ~50k-line module (the web root is root-owned, so
+# the http user can't build it itself).
 _compile_backend() {
   python3 -m compileall -q /var/www/remotepower/cgi-bin/ >/dev/null 2>&1 || true
 }
@@ -45,6 +45,21 @@ post_install() {
 post_upgrade() {
   systemd-tmpfiles --create remotepower.conf >/dev/null 2>&1 || true
   _compile_backend
-  echo '==> RemotePower server upgraded. Reload services if running:'
-  echo '      systemctl reload nginx   (and restart remotepower-api / remotepower-wsgi / remotepower-scheduler if you use them)'
+  # v6.1.1: WSGI (gunicorn + Flask) is now the ONLY server -- CGI/fcgiwrap
+  # are gone. A box coming from a pre-6.1.0 AUR install never had
+  # remotepower-wsgi enabled at all (that was the CGI era's optional/
+  # experimental tier), so "restart it if you use them" is meaningless --
+  # there is no CGI fallback left to fall back to. Detect that case and
+  # give it the SAME one-time finish-setup instructions a fresh install
+  # gets, since from this box's perspective that's exactly what it is.
+  if command -v systemctl >/dev/null 2>&1 && systemctl is-active --quiet remotepower-wsgi 2>/dev/null; then
+    echo '==> RemotePower server upgraded.'
+    echo '      systemctl reload nginx'
+    echo '      systemctl restart remotepower-wsgi remotepower-scheduler   (to load the new code)'
+  else
+    echo '==> RemotePower server upgraded, but remotepower-wsgi is not running yet.'
+    echo '    If this box was still on the pre-6.1.0 CGI/fcgiwrap transport, that transport'
+    echo '    is now gone -- WSGI (gunicorn + Flask) is the only server. Finish setup:'
+    _setup_msg
+  fi
 }

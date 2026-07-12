@@ -1,14 +1,15 @@
 # Maintainer: Jakob Munch Overgaard <jmo@tvipper.com>
 pkgname=remotepower-server
-pkgver=6.0.1
+pkgver=6.1.1
 pkgrel=1
-pkgdesc='Self-hosted fleet-management server for RemotePower (nginx + Python CGI): dashboards, CVE/drift/compliance, monitoring, AI'
+pkgdesc='Self-hosted fleet-management server for RemotePower (nginx + gunicorn/Flask): dashboards, CVE/drift/compliance, monitoring, AI'
 arch=('any')
 url='https://github.com/tyxak/remotepower'
 license=('MIT')
 # Hard deps are all in the official repos. The two AUR-only Python libs
 # (webauthn, pysaml2) are optdepends so they never block a plain install.
-depends=('nginx' 'fcgiwrap' 'python' 'python-bcrypt' 'python-cryptography' 'python-dnspython' 'iputils')
+depends=('nginx' 'python' 'python-bcrypt' 'python-cryptography' 'python-dnspython'
+         'python-flask' 'gunicorn' 'iputils')
 optdepends=(
   'python-reportlab: PDF report export'
   'python-webauthn: passkey / WebAuthn MFA (AUR)'
@@ -16,7 +17,7 @@ optdepends=(
   'xmlsec: SAML signature verification (pairs with python-pysaml2)'
   'wireguard-go: WG Access road-warrior VPN hub (Admin -> WG Access)'
   'wireguard-tools: WG Access — wg/wg-quick used by the VPN hub helper'
-  'gunicorn: persistent WSGI app tier (remotepower-wsgi.service, large fleets)'
+  'python-psycopg: PostgreSQL storage backend for large / multi-node fleets'
   'postgresql: PostgreSQL storage backend for large / multi-node fleets'
 )
 backup=('etc/nginx/snippets/remotepower-locations.conf')
@@ -28,7 +29,7 @@ source=(
   "remotepower-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/remotepower-$pkgver.tar.gz.asc"
 )
 sha256sums=(
-  'e0ac9c41640eb4cbb571976255c1357f636008768ce608a22cb3d67f00e106d8'
+  'a90937fba598b375b86dfc22b8ea3367948f0878a57fcbc45de09b581c3d621a'
   'SKIP'
 )
 validpgpkeys=('E7B5AD456728B8462A8B54BFD488AF115D2CCDBF')  # Jakob Munch Overgaard <jmo@tvipper.com>
@@ -38,15 +39,14 @@ package() {
   local web="$pkgdir/var/www/remotepower"
   install -dm755 "$web/cgi-bin" "$web/agent" "$web/static" "$web/docs"
 
-  # ── Backend: cgi-bin Python. The CGI entry point is api_cgi.py (executed via
-  #    fcgiwrap; SCRIPT_FILENAME=api_cgi.py) — a thin shim that runs api.py from
-  #    its cached bytecode instead of recompiling the ~50k-line module on every
-  #    request. api.py stays +x too (still directly runnable + imported by the
+  # ── Backend: cgi-bin Python. The app server entry point is wsgi.py, a real
+  #    Flask app served by gunicorn (the only server — CGI/fcgiwrap is retired).
+  #    api.py stays +x too (still directly runnable + imported by the
   #    siblings); the rest are imported modules. compileall runs in .install. ──
   local f n
   for f in server/cgi-bin/*.py; do
     n=$(basename "$f")
-    if [ "$n" = 'api.py' ] || [ "$n" = 'api_cgi.py' ]; then
+    if [ "$n" = 'api.py' ] || [ "$n" = 'wsgi.py' ]; then
       install -m755 "$f" "$web/cgi-bin/$n"
     else
       install -m644 "$f" "$web/cgi-bin/$n"
@@ -74,9 +74,9 @@ package() {
   # Agent binary, served read-only for agent self-update (/api/agent/download).
   install -m755 client/remotepower-agent "$web/agent/remotepower-agent"
 
-  # ── WG Access (v5.2.0): root-owned privileged helper + scoped sudoers. The CGI
-  #    runs unprivileged and shells out to this one script (argv-only JSON spec)
-  #    via a NOPASSWD rule for the nginx user (http). wireguard-go is an optdepend;
+  # ── WG Access (v5.2.0): root-owned privileged helper + scoped sudoers. The app
+  #    server runs unprivileged and shells out to this one script (argv-only JSON
+  #    spec) via a NOPASSWD rule for the nginx user (http). wireguard-go is an optdepend;
   #    until it's installed the WG Access page just shows an "unavailable" notice. ──
   install -Dm755 packaging/remotepower-wg-apply \
     "$pkgdir/usr/local/sbin/remotepower-wg-apply"
@@ -88,13 +88,11 @@ package() {
   # ── nginx: shared locations snippet (works as-is with /var/www/remotepower). ──
   install -Dm644 server/conf/remotepower-locations.conf \
     "$pkgdir/etc/nginx/snippets/remotepower-locations.conf"
-  # Sample vhost + optional backend units → docs (user sets server_name/TLS).
+  # Sample vhost + backend units → docs (user sets server_name/TLS, then copies
+  # remotepower-wsgi.service into place per the .install post_install message —
+  # the app server, not optional). See docs/wsgi.md, docs/scaling.md.
   install -Dm644 server/conf/remotepower.conf \
     "$pkgdir/usr/share/doc/$pkgname/remotepower.conf.sample"
-  install -Dm644 server/conf/remotepower-api.service \
-    "$pkgdir/usr/share/doc/$pkgname/remotepower-api.service"
-  # Optional v5.5.0 persistent WSGI tier + out-of-band scheduler (each unit
-  # carries its own install/rollback steps in the header). See docs/scaling.md.
   install -Dm644 server/conf/remotepower-wsgi.service \
     "$pkgdir/usr/share/doc/$pkgname/remotepower-wsgi.service"
   install -Dm644 server/conf/remotepower-scheduler.service \
