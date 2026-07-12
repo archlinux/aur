@@ -42,11 +42,19 @@ package() {
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
 	install -Dm644 "docs/PERF.md" "${pkgdir}/usr/share/doc/${pkgname}/PERF.md"
+	install -Dm644 "docs/AGENT.md" "${pkgdir}/usr/share/doc/${pkgname}/AGENT.md"
 	install -Dm644 "docs/THEME.md" "${pkgdir}/usr/share/doc/${pkgname}/THEME.md"
 	install -Dm644 "docs/DEBUG.md" "${pkgdir}/usr/share/doc/${pkgname}/DEBUG.md"
+	install -Dm644 "docs/REVIEW.md" "${pkgdir}/usr/share/doc/${pkgname}/REVIEW.md"
+	install -Dm644 "docs/CONFIG.md" "${pkgdir}/usr/share/doc/${pkgname}/CONFIG.md"
+	install -Dm644 "docs/CONTROL.md" "${pkgdir}/usr/share/doc/${pkgname}/CONTROL.md"
+	install -Dm644 "docs/MARKDOWN.md" "${pkgdir}/usr/share/doc/${pkgname}/MARKDOWN.md"
 	install -Dm644 "docs/PROFILING.md" "${pkgdir}/usr/share/doc/${pkgname}/PROFILING.md"
 	install -Dm644 "docs/DIFF_VIEWER.md" "${pkgdir}/usr/share/doc/${pkgname}/DIFF_VIEWER.md"
+	install -Dm644 "docs/KEYBINDINGS.md" "${pkgdir}/usr/share/doc/${pkgname}/KEYBINDINGS.md"
+	install -Dm644 "docs/REVIEW_HOOKS.md" "${pkgdir}/usr/share/doc/${pkgname}/REVIEW_HOOKS.md"
 	install -Dm644 "docs/DIFF_PREVIEWS.md" "${pkgdir}/usr/share/doc/${pkgname}/DIFF_PREVIEWS.md"
+	install -Dm644 "docs/DEMO_RECORDING.md" "${pkgdir}/usr/share/doc/${pkgname}/DEMO_RECORDING.md"
 
 	install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
