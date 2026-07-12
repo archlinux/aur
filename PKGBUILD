@@ -2,16 +2,15 @@
 # Contributor: John K Luebs <jkl at johnluebs com>
 # Contributor: Hugo Osvaldo Barrera <hugo@osvaldobarrera.com.ar>
 pkgname=ocamlfuse
-pkgver=2.7.2
+pkgver=3.10.0
 pkgrel=1
-_pkgcommit=841a90058f7d43c29f6abe779ff879ee4288685a
 pkgdesc="An ocaml binding for fuse."
 arch=('x86_64')
 url='https://github.com/astrada/ocamlfuse/'
 license=('GPL2')
 depends=(
-'fuse>=2.7'
-'ocaml>=4.02.3'
+'fuse3>=3.10.0'
+'ocaml>=4.08.0'
 'camlidl>=1.05'
 'ocaml-findlib'
 )
@@ -20,11 +19,11 @@ makedepends=(
 'fuse'
 )
 options=('staticlibs')
-source=("$pkgname-$pkgver.zip::https://github.com/astrada/$pkgname/archive/$_pkgcommit.zip")
-sha256sums=('ef0b0da3957a557a71c3dff7254653303136a8e118b40f2e7cdf494be050c8ea')
+source=("$pkgname-$pkgver.zip::https://github.com/astrada/$pkgname/archive/refs/tags/v$pkgver.zip")
+sha256sums=('3dfead93d1e5400cb0dc6b154addde9be6d2e69b4e688a8cf2f571d9ce84d88c')
 
 build() {
-	cd ${srcdir}/${pkgname}-${_pkgcommit}
+	cd ${srcdir}/${pkgname}-${pkgver}
 
 	# Old method
 	#cd lib
@@ -34,7 +33,7 @@ build() {
 }
 
 package() {
-	cd ${srcdir}/${pkgname}-${_pkgcommit}
+	cd ${srcdir}/${pkgname}-${pkgver}
 
 	# Old method
 	#export OCAMLFIND_DESTDIR="$pkgdir/$(ocamlfind printconf destdir)"
