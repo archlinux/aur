@@ -24,14 +24,13 @@ sha256sums=('09af59efad3c9931c83b1eba5045beb2d4de0693787b2dc59cd13686c06fcb2e'
 sha256sums_x86_64=('a2ac22ae8469a5eca1bd01ee73e0d848b314118816315d8026c56acc7a022386')
 
 package() {
-  cd "$srcdir"
+  cd "${srcdir}"
 
   cp -R "${srcdir}/usr/" "${pkgdir}/usr/"
   cp -R "${srcdir}/opt/" "${pkgdir}/opt/"
 
   # Create a symlink to the binary in /opt
   install -dm755 "${pkgdir}/usr/bin/"
-
   ln -sf "/opt/Crossdirstat/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
