@@ -1,13 +1,14 @@
 pkgbase = bookmark-plus
 	pkgdesc = A bookmark manager for your favorite shell
-	pkgver = 0.1.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://devan.gg/bookmark
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = go
-	source = bookmark-0.1.0.tar.gz::https://github.com/imdevan/bookmark/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = c12a5e74fae7ef4d0c18c9f4d0516d8b7bf065e94e1a9abee0fbfbe03ae047f7
+	source_x86_64 = bookmark-linux-amd64-1.1.0.tar.gz::https://github.com/imdevan/bookmark/releases/download/v1.1.0/bookmark-linux-amd64.tar.gz
+	sha256sums_x86_64 = 6aaf2e49ea7dceb0b90367f57c8ed17ccf200c7edc5a099c0388a0a51cded937
+	source_aarch64 = bookmark-linux-arm64-1.1.0.tar.gz::https://github.com/imdevan/bookmark/releases/download/v1.1.0/bookmark-linux-arm64.tar.gz
+	sha256sums_aarch64 = 382513aa1846259e09aa7d6355829aae32caea5d548703dd7df610e8b9cd1cc5
 
 pkgname = bookmark-plus
