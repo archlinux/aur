@@ -14,6 +14,6 @@ pkgbase = draind
 	backup = etc/draind/draind.json
 	backup = etc/xdg/draind/draind-agent.json
 	source = draind-0.3.0.tar.gz::https://github.com/vlukyanets/draind/archive/v0.3.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 43016e3a0e1744b984d8e54300a8cd59b6269abbb660c1341ad6094c4e99684f
 
 pkgname = draind

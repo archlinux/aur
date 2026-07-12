@@ -1,1 +1,5 @@
+pkg/
+src/
 PKGBUILD-dev
+*.tar.gz
+*.tar.zst
