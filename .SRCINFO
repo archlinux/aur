@@ -1,0 +1,20 @@
+pkgbase = rise-mode-temp6-archlinux
+	pkgdesc = Driver experimental para display USB do air cooler Rise Mode Temp 6 Pro (Arch Linux)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/rbgameslinux/rise-mode-temp6-Archlinux
+	install = rise-temp6.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-psutil
+	depends = systemd
+	optdepends = yay: para instalar zenpower automaticamente
+	optdepends = paru: para instalar zenpower automaticamente
+	optdepends = zenpower: sensor de temperatura AMD (recomendado para CPUs AMD)
+	backup = etc/systemd/system/rise-temp6.service
+	source = rise-mode-temp6-archlinux::git+https://github.com/rbgameslinux/rise-mode-temp6-Archlinux
+	sha256sums = SKIP
+
+pkgname = rise-mode-temp6-archlinux

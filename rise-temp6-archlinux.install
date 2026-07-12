@@ -1,0 +1,5 @@
+#!/bin/sh
+echo ""
+echo "rise-mode-temp6-archlinux atualizado!"
+echo "Reinicie o servico: sudo systemctl restart rise-temp6.service"
+echo ""
