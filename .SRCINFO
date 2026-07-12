@@ -1,0 +1,18 @@
+pkgbase = helion-acs-git
+	pkgdesc = Helion's implementation of ACS
+	pkgver = r49.ac660d3
+	pkgrel = 1
+	url = https://github.com/Helion-Engine/HelionACS
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = clang
+	makedepends = git
+	depends = libgcc
+	depends = glibc
+	provides = helion-acs
+	source = git+https://github.com/Helion-Engine/HelionACS
+	sha256sums = SKIP
+
+pkgname = helion-acs-git
