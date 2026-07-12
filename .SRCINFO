@@ -1,6 +1,6 @@
 pkgbase = vem-bin
 	pkgdesc = A next-generation Vim editor powered by VectoJS, running natively via Tauri
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://vem.run
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = vem-bin
 	conflicts = vem
 	conflicts = vem-bin
 	options = !strip
-	source_x86_64 = vem-0.1.1-x86_64.deb::https://github.com/vemjs/vem-desktop/releases/download/v0.1.1/Vem_0.1.1_amd64.deb
-	sha256sums_x86_64 = a0f9f2812620354b710facfcc3de68836cd650ff62d8c0bfdb7edbe6d334f0d9
-	source_aarch64 = vem-0.1.1-aarch64.deb::https://github.com/vemjs/vem-desktop/releases/download/v0.1.1/Vem_0.1.1_arm64.deb
-	sha256sums_aarch64 = 790dcef81583528694569d740820232deb434c9bd43d2d036399a04ffc7fd3d2
+	source_x86_64 = vem-0.1.2-x86_64.deb::https://github.com/vemjs/vem-desktop/releases/download/v0.1.2/Vem_0.1.2_amd64.deb
+	sha256sums_x86_64 = aa6b88a89828050d36c68217bd0efa2241c4ca4837775fd19c402e4fb34e20db
+	source_aarch64 = vem-0.1.2-aarch64.deb::https://github.com/vemjs/vem-desktop/releases/download/v0.1.2/Vem_0.1.2_arm64.deb
+	sha256sums_aarch64 = 60871c2032912c3191e8c99062a9a961a30cea0b06a201c8241db86d9a0c29e4
 
 pkgname = vem-bin
