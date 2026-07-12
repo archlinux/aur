@@ -1,0 +1,15 @@
+pkgbase = retoc
+	pkgdesc = Convert Unreal Engine IoStore (.utoc/.ucas) containers to/from legacy .pak format
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/trumank/retoc
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = zlib
+	source = retoc-0.1.5.tar.gz::https://github.com/trumank/retoc/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = 77db43389db898a5dbc0046fa266bcf1a318a45958a774a36060ea854f9141f3
+
+pkgname = retoc
