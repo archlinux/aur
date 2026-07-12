@@ -9,7 +9,7 @@ pkgver=2026.07.07.1
 pkgrel=1
 pkgdesc="A fine Matrix chat app you can get to love"
 arch=('x86_64')
-url="https://github.com/etkecc/komai"
+url="https://komai.chat"
 license=('GPL-3.0-or-later')
 # LTO interacts badly with the bundled sqlite3 inside libkomai_rust.a
 # (matrix-sdk's bundled-sqlite feature compiles sqlite3 into the Rust
