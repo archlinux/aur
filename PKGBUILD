@@ -1,42 +1,64 @@
-# Maintainer: FrankGeary contributors
+# Maintainer: AkitaOnRails <akitaonrails@users.noreply.github.com>
 #
 # Binary AUR package for stable GitHub Release assets only.
 # Do not point this package at GitHub Actions workflow artifacts; they expire,
 # are not stable distribution assets, and are unsuitable for AUR users.
 #
-# Legacy ABI libraries for WebKitGTK 2.4 / webkitgtk-3.0, GMime 2.6, and
-# Enchant 1.x are bundled in the release asset from a pinned Arch Linux Archive
-# snapshot. Keep depends limited to current desktop integration/system packages.
+# The asset is a meson release-profile install tree built against current
+# Arch packages by .github/workflows/binary-release.yml, so depends must be
+# kept in sync with the frank-geary source PKGBUILD.
 
 pkgname=frank-geary-bin
-pkgver=0.11.2_frank.1
-pkgrel=5
-pkgdesc='FrankGeary email client, prebuilt stable release binary'
+pkgver=46.0_frank.1
+pkgrel=1
+pkgdesc='GNOME Geary email client with FrankGeary workflow improvements, prebuilt binary'
 arch=('x86_64')
 url='https://github.com/akitaonrails/FrankGeary'
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=(
-  'desktop-file-utils'
+  'at-spi2-core'
+  'cairo'
+  'dconf'
+  'enchant'
+  'folks'
   'gcr'
+  'gdk-pixbuf2'
+  'glib2'
+  'glibc'
+  'gmime3'
+  'gnome-online-accounts'
+  'gsound'
+  'gspell'
   'gtk3'
-  'libcanberra'
-  'libnotify'
-  'libsecret'
-  'libxml2'
-  'sqlite'
   'hicolor-icon-theme'
+  'icu'
+  'iso-codes'
+  'json-glib'
+  'libgee'
+  'libgoa'
+  'libhandy'
+  'libpeas-2'
+  'libsecret'
+  'libsoup3'
+  'libstemmer'
+  'libunwind'
+  'libxml2'
+  'libytnef'
+  'org.freedesktop.secrets'
+  'pango'
+  'sqlite'
+  'webkit2gtk-4.1'
 )
 provides=('geary' 'frank-geary')
 conflicts=('geary' 'frank-geary')
-# The release asset bundles a legacy shared-library closure that may already be
-# stripped and usually has no separate debuginfo. Avoid makepkg debug indexing
-# noise/failures such as "No debugging symbols" from gdb-add-index.
+# The prebuilt asset ships no separate debuginfo; skip makepkg strip/debug
+# indexing of binaries that were already produced by the release build.
 options=('!strip' '!debug')
-_tag='v0.11.2-frank.1'
-_asset='frank-geary-0.11.2_frank.1-x86_64.tar.zst'
+_tag="v${pkgver/_/-}"
+_asset="frank-geary-${pkgver}-x86_64.tar.zst"
 source=("${_asset}::${url}/releases/download/${_tag}/${_asset}")
 noextract=("${_asset}")
-sha256sums=('cfdc2f186ce2b31dccb8eaced2180499e6f0675aeb63d1155d3bad95b494a354')
+sha256sums=('019e96b12f7554199c2d992df8d98b04cdc14117e453ac949b1d9477fd6fdc11')
 
 package() {
   bsdtar -xpf "${srcdir}/${_asset}" -C "${pkgdir}"
