@@ -1,6 +1,6 @@
 pkgbase = waypaper-engine
 	pkgdesc = A wallpaper setter GUI with playlist functionality for Wayland and X11
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/0bCdian/Waypaper-Engine
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = waypaper-engine
 	optdepends = xorg-xrandr: monitor detection on X11
 	provides = waypaper-engine
 	conflicts = waypaper-engine-git
-	source = https://github.com/0bCdian/Waypaper-Engine/archive/refs/tags/v3.0.0.tar.gz
-	sha256sums = a333fe9f6d9b9599db23587df96b2ba198c88a98ffcc69908bbb9e02f8e93725
+	source = https://github.com/0bCdian/Waypaper-Engine/archive/refs/tags/v3.1.0.tar.gz
+	sha256sums = 3133429babb48395d512af52c3b45b72a64d8408d7e0cd7b21c6bb133f67c3a0
 
 pkgname = waypaper-engine
