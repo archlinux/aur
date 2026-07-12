@@ -1,6 +1,6 @@
 pkgbase = fzf-git
 	pkgdesc = Command-line fuzzy finder
-	pkgver = v0.73.1.r19.g3c9965a6
+	pkgver = v0.74.0
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/junegunn/fzf
