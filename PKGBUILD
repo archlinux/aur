@@ -11,6 +11,7 @@ license=('GPL-3.0-or-later')
 makedepends=(
   python-build
   python-installer
+  python-setuptools
   python-wheel
 )
 provides=("${pkgname}=${pkgver}")

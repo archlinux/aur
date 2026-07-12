@@ -7,6 +7,7 @@ pkgbase = python-systemdunitparser
 	license = GPL-3.0-or-later
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	provides = python-systemdunitparser=0.4
 	source = https://github.com/sgallagher/systemdunitparser/archive/0.4.tar.gz
