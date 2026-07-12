@@ -3,7 +3,7 @@
 _pkgname=steamos-manager
 pkgname=${_pkgname}-hhd
 pkgver=26.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fork of Valve's steamos-manager with Handheld Daemon (HHD) TDP integration"
 arch=('x86_64')
 url='https://gitlab.steamos.cloud/holo/steamos-manager'
@@ -23,7 +23,7 @@ source=(
 	"hhd.rs")
 sha256sums=('aa1fdab11b18515d4bfabc7a0b18dece17c51ad32da85111d97c881222f5da3a'
             '07fe62dbf722e30b0e7330a18dea9093b123a9a409f2dd7ded806fd628f62d96'
-            '10f0562fe7ccb3353417e1ba3cec03e810d26aca998dc2ca96238e32c1d8738d')
+            '86a565ce0021eed15f8d4cfe2daa0908684945f8d5be589684a7c60df9f315e2')
 provides=('steamos-manager')
 conflicts=('steamos-manager')
 
