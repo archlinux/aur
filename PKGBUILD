@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lsr
-_pkgver=0.5.2
+_pkgver=1.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Companion to \"Learning Statistics with R\""
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,11 +13,15 @@ depends=(
   r
 )
 optdepends=(
+  r-knitr
+  r-rmarkdown
   r-testthat
+  r-tibble
+  r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2497120c44990369d8a5a0452288c08a')
-b2sums=('01c18ca1fd4f614b09b6e2b472e788dfb7276a71accf7d3302962accdbc6db84ae9d2a78b75ce414566d5e8e38427fedf2ad319cdf8ae3c5894ce41205c01e60')
+md5sums=('4c93a16b21fe97694d2d372a141cffd1')
+b2sums=('6ab2b2fba42edee92753df2a987bb44e212f997c83d6ac283d138cda1a92ccb756e41f8dbbb8acd6ede1a88a41dd7e82ae107aa2bc166ee3f6364fb479c7e938')
 
 build() {
   mkdir build
