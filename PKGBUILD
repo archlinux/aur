@@ -2,7 +2,7 @@
 pkgname=arcxos-files
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Arunachalam's Luna-2.5B: A specialized tool for the Arch Linux community. Developed by a 7-year veteran builder based in (Tamil Nadu), India."
+pkgdesc="Arunachalam's ArcXos: A specialized penetration testing and security auditing distribution built on Arch Linux. Developed by a 7-year veteran builder based in (Tamil Nadu), India."
 arch=('any')
 url="https://github.com/Arunachalam-gojosaturo/ArcXos"
 license=('GPL')
