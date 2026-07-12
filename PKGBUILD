@@ -2,7 +2,7 @@
 
 pkgname=whichllm
 _pkgname=whichllm
-pkgver=0.5.12
+pkgver=0.5.15
 pkgrel=1
 pkgdesc="Auto-detect your hardware and rank local LLMs by what actually fits and performs best"
 arch=('any')
@@ -25,14 +25,19 @@ makedepends=(
     'python-wheel'
     'python-hatchling'
 )
-provides=("${_pkgname}=${pkgver}")
+checkdepends=('python-pytest')
 conflicts=("${_pkgname}-git")
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0cf8bcb2d66f73ddbe116b0214bf03293ad4403e1ed289b9195be963a0c7d0ef')
+sha256sums=('84748a9720e4e2f4c82dc258d0e52eae39109c4377e9cbdec16b62fcefaf92a3')
 
 build() {
     cd "${_pkgname}-${pkgver}"
     python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "${_pkgname}-${pkgver}"
+    PYTHONPATH=src pytest
 }
 
 package() {
