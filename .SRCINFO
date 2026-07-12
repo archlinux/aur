@@ -1,0 +1,13 @@
+pkgbase = ccr-resume
+	pkgdesc = CLI Code Resume - TUI session picker across Claude Code, Codex, and Gemini CLI
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/brevity1swos/ccr
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = ccr-resume-0.2.6.tar.gz::https://github.com/brevity1swos/ccr/archive/refs/tags/v0.2.6.tar.gz
+	sha256sums = c4570eb9f976d2815c99669045eb75edfda8db4aa2c76cdbe4e36f6ab3ca67e1
+
+pkgname = ccr-resume
