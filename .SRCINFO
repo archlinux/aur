@@ -1,14 +1,14 @@
 pkgbase = go-cli-template
 	pkgdesc = A generic CLI tool template built with Go, Cobra, and Bubble Tea. This template provides a foundation for building interactive command-line applications with a clean architecture and modern UI components.
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://devan.gg/go-cli-template
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = go-cli-template-linux-amd64-0.2.2.tar.gz::https://github.com/imdevan/go-cli-template/releases/download/v0.2.2/go-cli-template-linux-amd64.tar.gz
-	sha256sums_x86_64 = baab5e1167b264e47aef7003344e4eab969fe473fdbabb9dc69e4652c60ddd54
-	source_aarch64 = go-cli-template-linux-arm64-0.2.2.tar.gz::https://github.com/imdevan/go-cli-template/releases/download/v0.2.2/go-cli-template-linux-arm64.tar.gz
-	sha256sums_aarch64 = 0b2004b4e53c3411672fd9a13fc28718e2d0820d0715199abdc56b55024d64a9
+	source_x86_64 = go-cli-template-linux-amd64-0.2.3.tar.gz::https://github.com/imdevan/go-cli-template/releases/download/v0.2.3/go-cli-template-linux-amd64.tar.gz
+	sha256sums_x86_64 = 9956d25479dc62b5b836559dc1321c7965fbbb2647657111d3843e1ff1016c4f
+	source_aarch64 = go-cli-template-linux-arm64-0.2.3.tar.gz::https://github.com/imdevan/go-cli-template/releases/download/v0.2.3/go-cli-template-linux-arm64.tar.gz
+	sha256sums_aarch64 = 79d8ef0d55456df2e1214d79de805495122becfaea12f207a694c9917b02b196
 
 pkgname = go-cli-template
