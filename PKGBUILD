@@ -1,12 +1,14 @@
-# Maintainer: Federico Di Pierro <nierro92@gmail.com>
-# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
+# Contributor: Federico Di Pierro <nierro92@gmail.com>
+# Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=systemd-boot-pacman-hook
 pkgver=3
-pkgrel=1
+pkgrel=2
 pkgdesc="Pacman hook to upgrade systemd-boot after systemd upgrade."
 arch=("any")
-license=("GPL")
+url="https://wiki.archlinux.org/title/Systemd-boot#Automatic_update"
+license=("GPL-1.0-or-later")
 depends=('systemd')
 source=(systemd-boot.hook)
 md5sums=('cd8b1e530ce6f239923362492fda3f4f')
