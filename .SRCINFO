@@ -1,6 +1,6 @@
 pkgbase = r-sandwich
 	pkgdesc = Robust Covariance Matrix Estimators
-	pkgver = 3.1.1
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=sandwich
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = r-sandwich
 	optdepends = r-pscl
 	optdepends = r-scatterplot3d
 	optdepends = r-strucchange
-	source = https://cran.r-project.org/src/contrib/sandwich_3.1-1.tar.gz
-	md5sums = fe33d8ee7c66fddae484817ca295f405
-	b2sums = 510fc6c4acae4abc6701bb0af782696cc91e9ffea98f571f3da96e6305d2e58e7bebde88dd2cb3a0a20b840812d7429dac704034834fe0f0915f513ea2e074e3
+	source = https://cran.r-project.org/src/contrib/sandwich_3.1-2.tar.gz
+	md5sums = 78726157af8e9936d1c2918158bf8530
+	b2sums = 55c3fcfc5cfceb8b1c7c0b44aed86d7405c1c32a089d04b1e1d236c0ffdacfd4346ee7b256b92a4031ad8c906276a0131241e8bc371d4df09c3fbe1f63ca870d
 
 pkgname = r-sandwich
