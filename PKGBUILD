@@ -1,7 +1,7 @@
-_electron='electron42'
+_electron='electron43'
 
 pkgname=webcord
-pkgver=4.13.2
+pkgver=4.14.0
 pkgrel=1
 pkgdesc='A Discord client implemented directly without Discord API'
 arch=('any')
@@ -22,7 +22,7 @@ source=(
 )
 
 sha256sums=(
-    '12fe6fcce2324f1c7341655bccc59bd39668f2eddab9e7b3040e3e55928333f4'
+    '0f64ccd749b2f40f25d09c62f1a4c62aaf8b97dd51787418910e55304e4b694a'
     'c803c7227982fad22390a8d6d11f3707171d5e9b1a394731a6a07773eab75b1f'
     'd64b06be4c431fdd41379e24461cecb4f93dbfac89a09ec727c9399e752b6bb9'
     'c41c46200b0dacf7d2ae3983e66bb9aad8314fdfc821f3ed559245ca205c087c'
@@ -41,7 +41,7 @@ build() {
         --outdir='app'
         --minify
         --platform=node
-        --target=es2022
+        --target=es2025
     )
 
     local cjs=(
