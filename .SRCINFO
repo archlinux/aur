@@ -1,7 +1,7 @@
 pkgbase = python-qiskit-nature
 	pkgdesc = Quantum Nature package for IBM qiskit framework
-	pkgver = 0.7.2
-	pkgrel = 5
+	pkgver = 0.8
+	pkgrel = 1
 	url = https://github.com/qiskit-community/qiskit-nature
 	arch = x86_64
 	license = Apache-2.0
@@ -17,9 +17,8 @@ pkgbase = python-qiskit-nature
 	depends = python-qiskit-algorithms
 	depends = python-rustworkx
 	depends = python-scipy
-	source = qiskit-nature-0.7.2.tar.gz::https://github.com/qiskit-community/qiskit-nature/archive/refs/tags/0.7.2.tar.gz
-	source = fix-test-numpy.patch::https://patch-diff.githubusercontent.com/raw/qiskit-community/qiskit-nature/pull/1371.patch
-	b2sums = 413df37a8fb9d76f4284b91675e3f52d6b2dd8c0b53b67264d903c7853fb87ff3eefd7bffedc309cc0623d365cd8b41fad80f5a398e6589d943978ea27142dba
-	b2sums = 349b7b36a627ca1e1c62322abcd76f636824e094cf9eac8a77a37886dac7dd911b4792d77e7fb1563c2faf6dd65b27b907b479d6099a5c490b47a26e3e40c23a
+	depends = python-sympy
+	source = qiskit-nature-0.8.tar.gz::https://github.com/qiskit-community/qiskit-nature/archive/refs/tags/0.8.tar.gz
+	b2sums = 50555125b2b6650955b192b33e941b9cba5bd9f2c7ccda3b68d088e094634c5464ac6cce447dcbf441ad77d731889e0b9e932a92e201051a6f4d5f5dc5a2a6d6
 
 pkgname = python-qiskit-nature
