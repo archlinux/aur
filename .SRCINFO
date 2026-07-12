@@ -1,6 +1,6 @@
 pkgbase = sshelf-bin
 	pkgdesc = Fast terminal UI for managing and connecting to SSH hosts
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/max-rh/sshelf
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = sshelf-bin
 	provides = sshelf
 	conflicts = sshelf
 	options = !strip
-	source_x86_64 = sshelf-x86_64-0.9.0.txz::https://github.com/max-rh/sshelf/releases/download/v0.9.0/sshelf-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 59d1a1cb1d4d583cc169fa0e073a1db66677c17a18a606b8ff9b0da0b050d72d
-	source_aarch64 = sshelf-aarch64-0.9.0.txz::https://github.com/max-rh/sshelf/releases/download/v0.9.0/sshelf-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = e524f81417b2326c1210a5bc107a031548b6728c2606c11d6669ff3d8d75dc84
+	source_x86_64 = sshelf-x86_64-0.10.0.txz::https://github.com/max-rh/sshelf/releases/download/v0.10.0/sshelf-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 94f8151857a120cde109ce184101674e561d7b4feb408ea2fb7bea612f26a82b
+	source_aarch64 = sshelf-aarch64-0.10.0.txz::https://github.com/max-rh/sshelf/releases/download/v0.10.0/sshelf-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 853961a50ac1eecfe6432e5d417b8a8118606dac4313cb7631d5573685e7d8dd
 
 pkgname = sshelf-bin
