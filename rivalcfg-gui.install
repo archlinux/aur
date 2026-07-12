@@ -1,0 +1,18 @@
+post_install() {
+    update-desktop-database -q 2>/dev/null || true
+
+    for user_home in /home/* /root; do
+        local_desktop="$user_home/.local/share/applications/rivalcfg-gui.desktop"
+        if [ -f "$local_desktop" ]; then
+            rm -f "$local_desktop"
+        fi
+    done
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    update-desktop-database -q 2>/dev/null || true
+}
