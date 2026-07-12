@@ -3,9 +3,9 @@
 
 # Maintainer: nyrda <nyrda@keymasq.tools>
 pkgname=keymasq
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
-pkgdesc="Keyboard and mouse remapper with GUI configuration, per-window profiles, and macros"
+pkgdesc="Input remapper for keyboards, mice, and game controllers, with layered profiles and macros"
 arch=(
     'any'
 )
@@ -36,8 +36,8 @@ makedepends=(
     'python-installer'
 )
 install="$pkgname.install"
-source=("$pkgname-$pkgver.tar.gz::https://repo.keymasq.tools/releases/keymasq-0.18.0.tar.gz")
-sha256sums=('78ea1d713836a1d37a0970358dcecbbb9cc565159d222dc0d6add7382d2545c0')
+source=("$pkgname-$pkgver.tar.gz::https://repo.keymasq.tools/releases/keymasq-0.19.0.tar.gz")
+sha256sums=('9376f36605bc73735e1df4d7ab1d4427e74da298ecc395b0deb3798da6284401')
 
 
 build() {
@@ -100,5 +100,4 @@ package() {
     cp -a "gnome-extension/gnome-bridge@keymasq.tools/." \
         "$pkgdir/usr/share/gnome-shell/extensions/gnome-bridge@keymasq.tools/"
 
-    rm -f "$pkgdir/usr/bin/keymasq-cli" "$pkgdir/usr/bin/keymasq-gui"
 }

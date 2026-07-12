@@ -26,14 +26,6 @@ exec_timeout_max_ms = 30000
 unlock_required = true
 # Tier 2 (optional): require unlock for macro inspection/edit commands.
 macro_edit_requires_unlock = false
-
-[session_command_acl]
-# Denylist syntax (optional): "!command", "-command", or "deny:command"
-gui = []
-cli = []
-
-[daemon_command_acl]
-session = []
 EOF
     chown root:root /etc/keymasq/security.toml 2>/dev/null || true
 }
@@ -58,7 +50,7 @@ post_install() {
     echo ""
     echo "A system user 'keymasq' has been created for the daemon."
     echo ""
-    echo "Security defaults use socket UID checks and command ACL policy."
+    echo "Security defaults use socket UID checks and recording guards."
     echo "Policy file: /etc/keymasq/security.toml"
     echo ""
     echo "To use Keymasq:"
@@ -96,7 +88,7 @@ post_upgrade() {
     echo ""
     echo "Keymasq has been upgraded!"
     echo ""
-    echo "Security policy uses UID/ACL controls; verify /etc/keymasq/security.toml"
+    echo "Security policy uses UID and recording guard controls; verify /etc/keymasq/security.toml"
     echo "If session cannot connect to daemon, verify runtime socket policy in /etc/keymasq/security.toml"
     echo "The package tried to restart keymasqd if it was already running."
     echo "If needed, restart services manually:"
