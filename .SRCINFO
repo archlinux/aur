@@ -1,0 +1,27 @@
+pkgbase = tmtv
+	pkgdesc = Instant terminal sharing
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/sa3lej/tmtv
+	arch = x86_64
+	arch = aarch64
+	groups = tmtv
+	license = ISC
+	makedepends = bison
+	makedepends = libutf8proc
+	makedepends = libutempter
+	depends = glibc
+	depends = openssl
+	depends = msgpack-c
+	depends = ncurses
+	depends = libbsd
+	depends = libssh
+	depends = libevent
+	source = tmtv-2.0.2.tar.gz::https://github.com/sa3lej/tmtv/archive/v2.0.2/v2.0.2.tar.gz
+	source = implicit-function-declaration.patch
+	sha256sums = e297a3790ac156c3923f2373e7ed0fb50f68e428bbfced5647889772e7e85304
+	sha256sums = b965e959b76d5b30e444531a556c6d693da7266fa99b0d361582acccbc356ff1
+
+pkgname = tmtv
+
+pkgname = tmtv-server
