@@ -2,8 +2,8 @@
 # Maintainer: jorge_barroso <jorge.barroso.11@gmail.com>
 
 pkgname=ccs-tools
-_timestamp=20210910
-pkgver=1.8.9
+_timestamp=20250707
+pkgver=1.8.14
 pkgrel=2
 pkgdesc='TOMOYO Linux 1.8.x userspace tools'
 arch=('any')
@@ -12,11 +12,11 @@ license=('GPL')
 depends=('ncurses')
 conflicts=('tomoyo-tools')
 install=ccs-tools.install
-source=("http://osdn.jp/frs/redir.php?f=/tomoyo/49693/${pkgname}-${pkgver}-${_timestamp}.tar.gz"
-        "http://osdn.jp/frs/redir.php?f=/tomoyo/49693/${pkgname}-${pkgver}-${_timestamp}.tar.gz.asc"
+source=("https://sourceforge.net/projects/tomoyo/files/ccs-tools/1.8/${pkgname}-${pkgver}-${_timestamp}.tar.gz"
+        "https://sourceforge.net/projects/tomoyo/files/ccs-tools/1.8/${pkgname}-${pkgver}-${_timestamp}.tar.gz.asc"
         "ccs-auditd.service"
         "tomoyo.logrotate")
-sha256sums=('7900126cf2dd8706c42c2c1ef7a37fd8b50f1505abd7d9c3d653dc390fb4d620'
+sha256sums=('b62e344cc357a982310a08760f2a2cebf4cf48b1341ea9bd3990ae55f45bab03'
             'SKIP'
             'fa56f61721def18cf035c5f42fe079e98a87914d165043ca4f706655368df69b'
             'd88cdc21bb68a7e2abf0512f10dc56e57db7ca172e179d0fb50998ccf3caf648')
