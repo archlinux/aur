@@ -44,7 +44,7 @@ build() {
     -S "$_reponame"
     -B build
     -G Ninja
-    -W no-dev
+    -W no-author
     -D CMAKE_BUILD_TYPE='None'
     -D CMAKE_INSTALL_PREFIX='/usr'
     -D CMAKE_INSTALL_LIBEXECDIR='lib'
