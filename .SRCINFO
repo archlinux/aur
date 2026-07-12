@@ -1,15 +1,15 @@
 pkgbase = openwatcom-v2
 	pkgdesc = The Open Watcom Fortran/C/C++ compiler, binary distribution -V2 fork
-	pkgver = 2.0_2025_11_03
+	pkgver = 2.0_2026_06_01
 	pkgrel = 2
 	url = https://github.com/open-watcom
 	arch = x86_64
 	license = custom:OWPL-1
-	noextract = ow-snapshot_2025_11_03.tar.xz
+	noextract = ow-snapshot_2026_06_01.tar.xz
 	options = !strip
-	source = ow-snapshot_2025_11_03.tar.xz::https://github.com/open-watcom/open-watcom-v2/releases/download/2025-11-03-Build/ow-snapshot.tar.xz
+	source = ow-snapshot_2026_06_01.tar.xz::https://github.com/open-watcom/open-watcom-v2/releases/download/2026-06-01-Build/ow-snapshot.tar.xz
 	source = owsetenv.sh
-	md5sums = 10104747b18a54495e8781ea850cba7d
+	md5sums = a994d98447b1924cdcd79117fd7ae207
 	md5sums = 2abd462742068d76a5cf1753b128ac94
 
 pkgname = openwatcom-v2

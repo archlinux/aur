@@ -2,7 +2,7 @@
 # Contributor: Jens Staal <staal1978@gmail.com>
 # Contributor : ackalker
 pkgname=openwatcom-v2
-_build=2025_11_03
+_build=2026_06_01
 pkgver=2.0_$_build
 pkgrel=2
 pkgdesc="The Open Watcom Fortran/C/C++ compiler, binary distribution -V2 fork"
@@ -15,7 +15,7 @@ source=(
 'owsetenv.sh'
 )
 noextract=("ow-snapshot_$_build.tar.xz")
-md5sums=('10104747b18a54495e8781ea850cba7d'
+md5sums=('a994d98447b1924cdcd79117fd7ae207'
          '2abd462742068d76a5cf1753b128ac94')
 options=(!strip)
 
