@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=min-bin
-pkgver=1.35.5
+pkgver=1.35.6
 pkgrel=1
 pkgdesc="Min is a fast, minimal browser that protects your privacy."
 arch=(
@@ -15,11 +15,13 @@ options=(!strip)
 source_aarch64=("min-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/min-${pkgver}-arm64.deb")
 source_armv7h=("min-${pkgver}-armv7h.deb::${url}/releases/download/v${pkgver}/min-${pkgver}-armv7l.deb")
 source_x86_64=("min-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/min-${pkgver}-amd64.deb")
-sha256sums_aarch64=('02cd4d50ea92034666b3ea2d70c90817f3b30a2f6bb2977988e4f836a90e9985')
-sha256sums_armv7h=('376471df853150a72471a65274574d995850bb1e86250fc36a86fe09396a17f4')
-sha256sums_x86_64=('f0c20ff68a313f1d8c82e4f5023bb3673ad65efc84ce827350ea48144008a9f9')
+sha256sums_aarch64=('1097065d5fe91d94718dcac7cb69d4f1c979b15b9ee82f383fc28a8581d43f10')
+sha256sums_armv7h=('b3f46f35837c9b5c52c6e1ee0699b452397524cc13b948cfb9b85fbac44d3590')
+sha256sums_x86_64=('6979ecb43cc996fa41de20ebf788741cb1562c3ffedb53620fee3081167f242d')
 
 package() {
+    cd "$srcdir"
+
     # Unpacking deb
     msg2 "Unpacking deb package..."
     ar x "${srcdir}/min-${pkgver}-"*".deb"

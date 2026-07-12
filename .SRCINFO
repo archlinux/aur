@@ -1,6 +1,6 @@
 pkgbase = min-bin
 	pkgdesc = Min is a fast, minimal browser that protects your privacy.
-	pkgver = 1.35.5
+	pkgver = 1.35.6
 	pkgrel = 1
 	url = https://github.com/minbrowser/min
 	arch = aarch64
@@ -11,11 +11,11 @@ pkgbase = min-bin
 	depends = nss
 	depends = libxss
 	options = !strip
-	source_aarch64 = min-1.35.5-aarch64.deb::https://github.com/minbrowser/min/releases/download/v1.35.5/min-1.35.5-arm64.deb
-	sha256sums_aarch64 = 02cd4d50ea92034666b3ea2d70c90817f3b30a2f6bb2977988e4f836a90e9985
-	source_armv7h = min-1.35.5-armv7h.deb::https://github.com/minbrowser/min/releases/download/v1.35.5/min-1.35.5-armv7l.deb
-	sha256sums_armv7h = 376471df853150a72471a65274574d995850bb1e86250fc36a86fe09396a17f4
-	source_x86_64 = min-1.35.5-x86_64.deb::https://github.com/minbrowser/min/releases/download/v1.35.5/min-1.35.5-amd64.deb
-	sha256sums_x86_64 = f0c20ff68a313f1d8c82e4f5023bb3673ad65efc84ce827350ea48144008a9f9
+	source_aarch64 = min-1.35.6-aarch64.deb::https://github.com/minbrowser/min/releases/download/v1.35.6/min-1.35.6-arm64.deb
+	sha256sums_aarch64 = 1097065d5fe91d94718dcac7cb69d4f1c979b15b9ee82f383fc28a8581d43f10
+	source_armv7h = min-1.35.6-armv7h.deb::https://github.com/minbrowser/min/releases/download/v1.35.6/min-1.35.6-armv7l.deb
+	sha256sums_armv7h = b3f46f35837c9b5c52c6e1ee0699b452397524cc13b948cfb9b85fbac44d3590
+	source_x86_64 = min-1.35.6-x86_64.deb::https://github.com/minbrowser/min/releases/download/v1.35.6/min-1.35.6-amd64.deb
+	sha256sums_x86_64 = 6979ecb43cc996fa41de20ebf788741cb1562c3ffedb53620fee3081167f242d
 
 pkgname = min-bin
