@@ -24,17 +24,14 @@ After=network-online.target
 [Service]
 User=profilarr
 Group=profilarr
-Environment="PYTHONPATH=/usr/share/webapps/profilarr"
-ExecStart=/bin/gunicorn --bind 0.0.0.0:6868 --timeout 600 app.main:create_app()
+ExecStart=/usr/share/webapps/profilarr/profilarr
 KillMode=process
+EnvironmentFile=/etc/profilarr/profilarr.env
 PIDFile=/run/profilarr/profilarr.pid
 SyslogIdentifier=profilarr
-ConfigurationDirectory=profilarr
-RuntimeDirectory=profilarr
-StateDirectory=profilarr
-WorkingDirectory=/var/lib/profilarr
-ReadWritePaths=/var/lib/profilarr/config
-Restart=always
+WorkingDirectory=/usr/share/webapps/profilarr
+ReadWritePaths=/var/lib/profilarr/
+Restart=on-failure
 RestartSec=5
 
 # Hardening
