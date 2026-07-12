@@ -1,6 +1,6 @@
 pkgbase = muffin-git
 	pkgdesc = Cinnamon window manager and compositor forked from Mutter (git version)
-	pkgver = 6.6.3.r42.g61eece4d
+	pkgver = 6.6.3.r57.g262554d3
 	pkgrel = 1
 	url = https://github.com/linuxmint/muffin
 	arch = x86_64
