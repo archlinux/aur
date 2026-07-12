@@ -1,0 +1,15 @@
+pkgbase = vlp
+	pkgdesc = A cli tool that parses /var/log/pacman.log and shows installed packages, sync commands, and upgrades
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/vani-tty1/vlp
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	depends = zlib
+	source = vlp-0.1.0.tar.gz::https://github.com/vani-tty1/vlp/archive/refs/tags/v0.1.0.tar.gz
+	b2sums = f2923744503de1e5d4999186b9dde506476152cbef5bbb9b453d66832c0e1b688c8d907aa065a4da7e99cecbba7cac720421d8c6f3ee383c1538a0c211c31646
+
+pkgname = vlp
