@@ -9,8 +9,8 @@ url="https://github.com/abod8639/${pkgname}"
 license=('MIT')
 depends=('arduino-cli' 'fzf' 'jq' 'neovim')
 optdepends=()
-source=("https://github.com/abod8639/${pkgname}/archive/refs/tags/v\${pkgver}.tar.gz")
-sha256sums=('SKIP')
+source=("https://github.com/abod8639/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('a41e17a6a695d00706caaefdf227124c6c4f3c40cea3fb6c9cc752e483ead5e0')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
