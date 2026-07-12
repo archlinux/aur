@@ -4,23 +4,17 @@
 # Contributor: Edoardo Brogiolo <edoardo@brogiolo.eu>
 # Contributor: Dimitris Kiziridis <ragouel@outlook.com>
 
-: ${_widgets:=GTK2}
-
-[[ "$_widgets" == "GTK2" ]] \
-  && : ${_cksum=86b7eb4d0c5e57f58ac82df45d5167d604b819ae6f1f5f7b623460a56773514a}
-
-: ${_pkgtype:=-${_widgets,,}-bin}
-
 _pkgname="peazip"
-pkgname="$_pkgname${_pkgtype:?}"
-pkgver=11.1.0
+pkgname="$_pkgname-gtk2-bin"
+pkgver=11.2.0
 pkgrel=1
-pkgdesc="Cross-platform file and archive manager (${_widgets})"
+pkgdesc="Cross-platform file and archive manager (GTK2)"
 url="https://github.com/peazip/PeaZip"
 license=('LGPL-3.0-or-later')
 arch=('x86_64')
 
 _depends=(
+  'gtk2'
   '7zip'
   'brotli'
   'glib2'
@@ -33,27 +27,18 @@ optdepends=(
   'arc: Arc file archiver and compressor'
 )
 
-case "${_widgets::1}" in
-  g | G)
-    _depends+=("${_widgets,,}")
-    ;;
-  q | Q)
-    _depends+=("${_widgets,,}-base")
-    ;;
-esac
-
 options=('!debug' '!emptydirs' '!strip')
 
 provides=("$_pkgname")
-conflicts=("$_pkgname" "$pkgname-debug")
+conflicts=("$_pkgname")
 
 _pkgsrc_plugins="peazip-additional-formats-plugin.7.LINUX"
 source=(
-  "$url/releases/download/$pkgver/peazip-$pkgver.LINUX.$_widgets-1.$CARCH.rpm"
+  "$url/releases/download/$pkgver/peazip-$pkgver.LINUX.GTK2-1.$CARCH.rpm"
   "https://gigenet.dl.sourceforge.net/project/peazip/Resources/PeaZip%20Additional%20Formats%20Plugin/peazip-additional-formats-plugin.7.LINUX.tar"
 )
 sha256sums=(
-  "${_cksum:-SKIP}"
+  '3bf1e787da66b2a3a7e4572d396feb1b6221d3db37c873176558390094eea304'
   'f74abf2c3d97a72c80457d6dff369929bcfd0df619b0235d81a9b82f888a3d4c'
 )
 
