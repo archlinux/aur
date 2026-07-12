@@ -1,0 +1,18 @@
+pkgbase = pik-bin
+	pkgdesc = 🙋 A minimal interactive line picker for the command line
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/programmersd21/pik
+	arch = x86_64
+	license = MIT
+	provides = pik
+	conflicts = pik
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/programmersd21/pik/v0.1.0/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/programmersd21/pik/v0.1.0/LICENSE
+	sha256sums = 276ddd214511c854d3450567200acd4e6034b3cd78983a68a972ff9eba6c1fba
+	sha256sums = 062c4c6c7c85f9b643afaff9c7ca087dd9acdc77813e3c9a90e362df8ce1ca39
+	source_x86_64 = pik-x86_64-0.1.0::https://github.com/programmersd21/pik/releases/download/v0.1.0/pik-linux-x86_64
+	sha256sums_x86_64 = 899061fcc2b441bf008a0fe8b002320e306f97db7cc6686c609fb7c76a2cb329
+
+pkgname = pik-bin

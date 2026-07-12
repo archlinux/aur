@@ -1,0 +1,5 @@
+[pik-bin]
+source = "github"
+github = "programmersd21/pik"
+use_latest_release = true
+prefix = "v"
