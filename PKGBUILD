@@ -1,5 +1,5 @@
-# Maintainer: Raidriar <aur.raidriar@pm.me>
-# Contributor: bredo <bredo@bredo.tech>
+# Maintainer: Raidriar <aur.raidriar at pm dot me>
+# Contributor: bredo <bredo at bredo dot tech>
 
 _pkgname=renderide
 pkgname=$_pkgname-git
