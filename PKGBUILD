@@ -1,6 +1,6 @@
 pkgname=python-dendropy
 _module='DendroPy'
-pkgver=5.0.8
+pkgver=5.0.10
 pkgrel=1
 pkgdesc="A Python library for phylogenetics and phylogenetic computing: reading, writing, simulation, processing and manipulation of phylogenetic trees (phylogenies) and characters."
 url="https://github.com/jeetsukumaran/DendroPy"
@@ -9,7 +9,7 @@ makedepends=('python-setuptools' 'python-pip')
 license=('BSD')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e1ff9e9634c786cb4482d72304d8554cdb89acaf93b26914a6db3c28f78bbd26')
+sha256sums=('f36a93d35d6f308bb82efc01dae5e5d56ffe8a7663a81d1a7a937f15ad05aa52')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
