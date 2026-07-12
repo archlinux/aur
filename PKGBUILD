@@ -1,4 +1,5 @@
-# Maintainer: Joel Noyce Barnham <joelnbarnham@gmail.com>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
+# Contributor: Joel Noyce Barnham <joelnbarnham@gmail.com>
 # Contributor: Alex Xu (Hello71) <alex_y_xu@yahoo.ca>
 # Contributor: Lev Lybin <aur@devtrue.net>
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
@@ -14,7 +15,7 @@ _TIANO_DIR_="edk2"
 _TIANOCORE_PKG="Shell"
 _UDK_TARGET="${_TIANOCORE_PKG}Pkg/${_TIANOCORE_PKG}Pkg.dsc"
 _TIANOCORE_TARGET="RELEASE"
-_COMPILER="GCC5"
+_COMPILER="GCC"
 _GUID="EA4BB293-2D7F-4456-A681-1F22F42CD0BC"
 ###############
 
@@ -29,12 +30,12 @@ _GUID="EA4BB293-2D7F-4456-A681-1F22F42CD0BC"
 _pkgname="uefi-shell"
 pkgname="${_pkgname}-git"
 
-pkgver=32718.edk2.stable202405.156.g3b2025969e
+pkgver=36307.edk2.stable202605.341.g6a6ec8a228
 pkgrel=1
 pkgdesc="UEFI Shell v2 - from Tianocore EDK2 - GIT Version"
 url="https://github.com/tianocore/edk2"
 arch=('x86_64' 'i686')
-license=('BSD')
+license=('BSD-2-Clause-Patent')
 
 makedepends=('git' 'python' 'nasm')
 
@@ -185,6 +186,8 @@ package() {
 	msg "Install the UEFI Shell v2 ${_TIANO_ARCH} binary"
 	install -d "${pkgdir}/usr/share/uefi-shell"
 	install -D -m0644 "${_UDK_DIR}/Build/${_TIANOCORE_PKG}/${_TIANOCORE_TARGET}_${_COMPILER}/${_TIANO_ARCH}/Shell_${_GUID}.efi" "${pkgdir}/usr/share/uefi-shell/shell${_TIANO_S_ARCH}_v2.efi"
+
+	install -D -m0644 "${_UDK_DIR}/License.txt" "${pkgdir}/usr/share/licenses/${pkgname}/License.txt"
 
 	if [[ "${CARCH}" == "x86_64" ]] && [[ "${_SHELL_IA32_ARCH_X64}" == "1" ]]; then
 		msg "Install the UEFI Shell v2 IA32 binary"
