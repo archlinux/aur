@@ -10,11 +10,11 @@ pkgdesc='Enlightened Sound Daemon'
 pkgver=0.2.41
 pkgrel=7
 url='https://gitlab.gnome.org/Archive/esound'
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 license=('GPL-2.0-or-later AND LGPL-2.0-or-later')
 makedepends=('autoconf' 'automake' 'libtool')
 depends=('audiofile' 'alsa-lib' 'glibc' 'sh')
-optdepends=('pipewire-alsa: User service for the PipeWire stack.')
+optdepends=('pipewire-alsa: User service for the PipeWire stack')
 provides=("esd=${pkgver}")
 conflicts=('esd')
 options=(!libtool)
@@ -43,20 +43,20 @@ b2sums=('39403985557f44b99a6615e42f6772a31b8555cc3bf252140e36f55c812b4728ca7af51
         '9c582773f7d754a54af4035c31edf504b78406048d2ef1cfea462f3e34dacbee9b67d10d2e028c58c5bd1765034534b7f61cc07d9e6692bbdfe0a3c7ed070f62')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "esound-${pkgver}"
 
-  patch -i "${srcdir}"/esound-0001-alsa-drain-hang.patch
-  patch -i "${srcdir}"/esound-0002-undeclared-variable.patch
-  patch -i "${srcdir}"/esound-0003-fix-audsp-crash.patch
-  patch -i "${srcdir}"/esound-0004-link-to-libm.patch
-  patch -i "${srcdir}"/esound-0005-missing-declaration-GCC-15.patch
-  patch -i "${srcdir}"/esound-0006-revert-close-file-descriptors.patch
-  patch -i "${srcdir}"/esound-0007-fix-wrong-micro-version.patch
-  patch -i "${srcdir}"/esound-0008-move-nobeeps-option.patch
+  patch -t -Np1 -i ../esound-0001-alsa-drain-hang.patch
+  patch -t -Np1 -i ../esound-0002-undeclared-variable.patch
+  patch -t -Np1 -i ../esound-0003-fix-audsp-crash.patch
+  patch -t -Np1 -i ../esound-0004-link-to-libm.patch
+  patch -t -Np1 -i ../esound-0005-missing-declaration-GCC-15.patch
+  patch -t -Np1 -i ../esound-0006-revert-close-file-descriptors.patch
+  patch -t -Np1 -i ../esound-0007-fix-wrong-micro-version.patch
+  patch -t -Np1 -i ../esound-0008-move-nobeeps-option.patch
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "esound-${pkgver}"
 
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
@@ -72,11 +72,11 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "esound-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
 
   # daemon
-  install -Dm644 "${srcdir}"/esound-system.service "${pkgdir}"/usr/lib/systemd/system/esound.service
-  install -Dm644 "${srcdir}"/esound-user.service "${pkgdir}"/usr/lib/systemd/user/esound.service
+  install -vD -m644 ../esound-system.service -T "${pkgdir}/usr/lib/systemd/system/esound.service"
+  install -vD -m644 ../esound-user.service -T "${pkgdir}/usr/lib/systemd/user/esound.service"
 }

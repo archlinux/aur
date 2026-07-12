@@ -8,6 +8,6 @@
 !REUSE.toml
 # actual package
 !PKGBUILD
-!esound-*.service
+!*.service
 !*.patch
 !.SRCINFO

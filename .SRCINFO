@@ -13,7 +13,7 @@ pkgbase = esound
 	depends = alsa-lib
 	depends = glibc
 	depends = sh
-	optdepends = pipewire-alsa: User service for the PipeWire stack.
+	optdepends = pipewire-alsa: User service for the PipeWire stack
 	provides = esd=0.2.41
 	conflicts = esd
 	options = !libtool
