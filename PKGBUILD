@@ -2,7 +2,7 @@
 
 pkgname=plasma6-applets-kara
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE Plasma Pager Applet"
 arch=('any')
 url="https://github.com/dhruv8sh/kara"
@@ -22,6 +22,7 @@ makedepends=(
   'libplasma'
   'plasma-activities'
   'plasma-workspace'
+  'vulkan-headers'
 )
 
 source=("git+${url}.git")
