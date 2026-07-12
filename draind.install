@@ -2,7 +2,6 @@ post_install() {
     systemd-sysusers draind.conf
     systemctl daemon-reload
     systemctl enable draind
-    systemctl --global enable draind-agent
     echo ""
     echo "draind installed. Next steps:"
     echo ""
@@ -15,9 +14,12 @@ post_install() {
     echo "   Set lock_cmd to your screen locker:"
     echo "     \"lock_cmd\": \"loginctl lock-session\""
     echo ""
-    echo "3. Start the services:"
+    echo "3. Start the daemon:"
     echo "     systemctl start draind"
-    echo "     systemctl --user start draind-agent"
+    echo ""
+    echo "4. draind-agent has no systemd unit — start it via your compositor's"
+    echo "   own autostart mechanism, e.g. niri's config.kdl:"
+    echo "     spawn-at-startup \"draind-agent\""
 }
 
 post_upgrade() {

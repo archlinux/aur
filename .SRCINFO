@@ -1,7 +1,7 @@
 pkgbase = draind
 	pkgdesc = Linux power management daemon inspired by Windows power options
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vlukyanets/draind
 	install = draind.install
 	arch = x86_64
