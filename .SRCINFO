@@ -1,0 +1,21 @@
+pkgbase = nm-wayland-git
+	pkgdesc = A lightweight NetworkManager GUI for Wayland compositors
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/finnconor/nm-wayland
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	depends = gtk4
+	depends = libadwaita
+	depends = networkmanager
+	depends = ttf-font-awesome
+	optdepends = networkmanager-openvpn: import OpenVPN (.ovpn) configurations
+	provides = nm-wayland
+	conflicts = nm-wayland
+	options = !debug
+	source = git+https://github.com/finnconor/nm-wayland.git
+	sha256sums = SKIP
+
+pkgname = nm-wayland-git
