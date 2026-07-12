@@ -1,7 +1,7 @@
 # Maintainer: pacmanics <pacman@altbox.de>
 
 pkgname=pentest-ghostwriter
-pkgver=7.1.1
+pkgver=7.2.1
 pkgrel=1
 pkgdesc='Local-first Arch Linux port of Ghostwriter for single-user offensive security workflows'
 arch=('x86_64')
@@ -46,9 +46,10 @@ source=(
   'stop-ghostwriter.desktop'
   '0066_alter_reporttemplate_document.py'
   '0068_merge_pacmanics_local_document_and_upstream_0067.py'
+  '0071_merge_pacmanics_local_document_and_upstream_0070.py'
   'README.native-port.md'
 )
-sha256sums=('f265b0c2200a262ff3319a1ffff3a9d02f2d38f942c95cea71dbcda297ef2814'
+sha256sums=('22b4ac90f9338a97c681020cfb6c37367eac1b8e99b8960e1573824a93688d21'
             '0dc916398fc88639481ec7156435b00864d2eb0d66154fe9a7a6fa63b8c452b0'
             '41e334ee463f79bab5bcff7a8aeb3239165b218f83077d6c1c962a8264f6abb6'
             'fae92ab2a78fabd39afe125f2ce348fa477a2b9900e66bd245bdf6850b38251e'
@@ -71,6 +72,7 @@ sha256sums=('f265b0c2200a262ff3319a1ffff3a9d02f2d38f942c95cea71dbcda297ef2814'
             '916d9c97509aad47e0e890c6c956329bd45dbadd324075b26c9b2f11f653aa23'
             '8afc13e41cf881eab51bec419ae7f5be97e9f66d421f0832543caebfa7bedadc'
             '796e89d970858a30946ede593f3fe35e5594fc59461f80932fae1ba3e99ae77e'
+            '083a9a14687352f229b0cc10e2aca7d32d423f4eec95c27aa14abdad7f4f95cf'
             '8c7c12e253b5ce6e4d829e2151f8b210c5599632ce2380542edf62b029646eaa')
 
 prepare() {
@@ -271,6 +273,7 @@ package() {
   rm -rf "${pkgdir}/opt/${pkgname}/app/ghostwriter/media"
   install -Dm644 "${srcdir}/0066_alter_reporttemplate_document.py" "${pkgdir}/opt/${pkgname}/app/ghostwriter/reporting/migrations/0066_alter_reporttemplate_document.py"
   install -Dm644 "${srcdir}/0068_merge_pacmanics_local_document_and_upstream_0067.py" "${pkgdir}/opt/${pkgname}/app/ghostwriter/reporting/migrations/0068_merge_pacmanics_local_document_and_upstream_0067.py"
+  install -Dm644 "${srcdir}/0071_merge_pacmanics_local_document_and_upstream_0070.py" "${pkgdir}/opt/${pkgname}/app/ghostwriter/reporting/migrations/0071_merge_pacmanics_local_document_and_upstream_0070.py"
   install -Dm644 "${srcdir}/README.native-port.md" "${pkgdir}/usr/share/doc/${pkgname}/README.native-port.md"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
