@@ -2,10 +2,10 @@
 pkgname=noutube-bin
 _app_id="jp.nonbili.${pkgname%-bin}"
 pkgver=0.2.12
-pkgrel=1
+pkgrel=2
 pkgdesc="YouTube and YouTube Music in a single app. No ads."
 arch=('x86_64')
-url="https://github.com/nonbili/NouTube-Desktop"
+url="https://oss.nonbili.jp/noutube"
 license=('AGPL-3.0-or-later')
 depends=(
   'alsa-lib'
@@ -14,7 +14,7 @@ depends=(
 )
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-source=("${pkgname%-bin}-linux-unpacked-$pkgver.zip::$url/releases/download/v$pkgver/linux-unpacked.zip"
+source=("${pkgname%-bin}-linux-unpacked-$pkgver.zip::https://github.com/nonbili/NouTube-Desktop/releases/download/v$pkgver/linux-unpacked.zip"
         'NouTube.desktop')
 noextract=("${pkgname%-bin}-linux-unpacked-$pkgver.zip")
 sha256sums=('4c9d70bce4af1dcd8b7c2c775aa6e3845dd3083391e952be00992eb09ab98787'
