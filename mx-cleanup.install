@@ -1,0 +1,12 @@
+# The cleanup schedules are generated at runtime by the privileged helper,
+# not shipped in the package, so pacman does not know about them. They are
+# self-contained shell scripts, so without this they would keep deleting
+# logs/caches/trash on schedule even after the package is removed.
+post_remove() {
+    rm -f /etc/cron.daily/mx-cleanup /etc/cron.daily/mx-cleanup.* \
+        /etc/cron.weekly/mx-cleanup /etc/cron.weekly/mx-cleanup.* \
+        /etc/cron.monthly/mx-cleanup /etc/cron.monthly/mx-cleanup.* \
+        /etc/cron.d/mx-cleanup /etc/cron.d/mx-cleanup.* \
+        /usr/bin/mx-cleanup-script /usr/bin/mx-cleanup-script.* \
+        /usr/bin/mx-cleanup-system-script
+}
