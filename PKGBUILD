@@ -1,7 +1,7 @@
 # Maintainer: t4k1t <t4k1t plus aur at protonmail dot com>
 
 pkgname=battered
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Regularly polls battery levels and reacts to crossing configurable thresholds."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/t4k1t/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('2ac831189bbaabba576ba40eee2495e5c6d55e9d89008b7f0f98d3a0dca8bcc3bd51680e06552b27dd161104200acec42ea9ca5a9c8fbc8d5e9aa2af60fbfd65')
+b2sums=('fb8a0472417c76656584389177e09b80c54745e8b2b875bee66c2b7668985e6ca4f7d9e05fc729d788ad42b10a7bae91ab93d3f87ef83f672da40fd44fc0d283')
 options=(!lto)
 
 build() {
