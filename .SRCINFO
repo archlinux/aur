@@ -25,10 +25,12 @@ pkgbase = brscan
 	backup = etc/sane.d/dll.d/brscan.conf
 	source = brscan-1.0.1.tar.gz::https://github.com/dmikushin/brscan/archive/refs/tags/v1.0.1.tar.gz
 	source = brscan-1.0.1-arch-fixes.patch
+	source = brscan-extra-models.txt
 	source = brscan.conf
 	source = 60-brscan.rules
 	b2sums = 2b4250ea0f02a1aef9b6c7bfb8ab38745ff11387f0545e982f802c54afa07103d99d249e06807bace81e1c510b2422bfae2b0b78df15a66a5ddeae14360db5b5
 	b2sums = 8a4e0009f141396040d24ee56c66e1f5bab7989c882924eb0e6ae4c51e0fc15045d1a4b40e18761d1423da6a2326e9c0197437771024762d7914469c2e020a05
+	b2sums = 05752fcd7e740684d85bcf7ceb48897008fa7b57fc2f93b50df30cdc8b0ba8ca89842eb82620fef2be1aa36d66b8a08aa4005c6074e736f501a257d2c616d1e1
 	b2sums = ab8364e68de0fbc8cfe82013f2a1313b477f05db03dcf0bbff3345aee2d9ce6e82205babf9b2cccb858728b209d0e0d3450d5ee027faead6776f2bdb0197bdd4
 	b2sums = e81319e87083d8785489a3c4c5621939c821f3e9d78d39b7272f739e791720ee02aadf6152c96bfb0c319b1770841a08e7c60617aa71d031827634d945d6e25f
 
