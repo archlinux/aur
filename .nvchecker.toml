@@ -1,0 +1,5 @@
+[pilotty-bin]
+source = "github"
+github = "msmps/pilotty"
+use_latest_release = true
+prefix = "v"
