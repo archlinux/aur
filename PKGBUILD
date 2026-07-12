@@ -1,7 +1,7 @@
 # Maintainer: hyak <hyakdev@gmail.com>
 pkgname=axmol-git
 pkgver=r1.0.deadbeef
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-platform 2D/3D game engine, fork of Cocos2d-x (Git version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/axmolengine/axmol"
@@ -10,7 +10,7 @@ depends=('glu' 'glew' 'glfw-x11' 'libx11' 'libxrandr' 'libxinerama' 'libxcursor'
 makedepends=('git' 'cmake' 'ninja' 'python')
 provides=('axmol')
 conflicts=('axmol' 'axmol-bin')
-source=('axmol::git+https://github.com/axmolengine/axmol.git#branch=master')
+source=('axmol::git+https://github.com/axmolengine/axmol.git#branch=main')
 sha256sums=('SKIP')
 
 pkgver() {

@@ -1,7 +1,7 @@
 pkgbase = axmol-git
 	pkgdesc = A multi-platform 2D/3D game engine, fork of Cocos2d-x (Git version)
 	pkgver = r1.0.deadbeef
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/axmolengine/axmol
 	arch = x86_64
 	arch = aarch64
@@ -23,7 +23,7 @@ pkgbase = axmol-git
 	provides = axmol
 	conflicts = axmol
 	conflicts = axmol-bin
-	source = axmol::git+https://github.com/axmolengine/axmol.git#branch=master
+	source = axmol::git+https://github.com/axmolengine/axmol.git#branch=main
 	sha256sums = SKIP
 
 pkgname = axmol-git
