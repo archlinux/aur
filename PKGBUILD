@@ -1,6 +1,6 @@
 # Maintainer: Ronak Mehta <ronakrm@gmail.com>
 pkgname=talkat
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Voice-to-text dictation system for Wayland Linux compositors"
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=(
 )
 install=talkat.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b14731726f71d6c9c5cc66318148ed18d1bdd9152ad535017c9966bd28cbeb91')
+sha256sums=('6602e608d76ffa569d612c86e616341a46db604f57a1444fdc4d639fe781f975')
 
 build() {
     cd "$pkgname-$pkgver"
