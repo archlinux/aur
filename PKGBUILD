@@ -1,27 +1,36 @@
-# Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz>
-pkgname=mangowm
-_pkgname=mango
-pkgver=0.15.2
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla .xyz
+# Contributor: Devin J. Pohly <djpohly+arch@gmail.com>
+pkgname=dwl
+pkgver=0.8
 pkgrel=1
-pkgdesc="A Wayland compositor with smooth animation"
-url="https://github.com/DreamMaoMao/mangowc"
-arch=("x86_64")
-license=("GPL-3.0")
-depends=('glibc' 'wayland>=1.23.1' 'libinput>=1.27.1' 'libdrm' 'pixman' 'libxkbcommon' 'pcre2' 'libwlroots-0.20.so' 'scenefx0.5' 'cjson')
-provides=('wayland-compositor' 'mangowc')
-replaces=( 'mangowc')
-makedepends=('meson' 'ninja' 'wayland-protocols>=1.41')
+pkgdesc="Simple, hackable dynamic tiling Wayland compositor (dwm for Wayland)"
+arch=('x86_64')
+url="https://codeberg.org/dwl/dwl"
+license=('GPL')
+depends=('wlroots0.18')
+makedepends=('wayland-protocols')
+optdepends=('xorg-xwayland: for XWayland support')
+source=("https://codeberg.org/dwl/dwl/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz"
+        config.h)
+sha256sums=('ccc8bbb3fb66a7e6f0392693533ac9c8bd4e6283dd1f66992e68ec4d4a9cdee7'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/mangowm/mango/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e3b3c6fec1b4dfc3cd6fcca629baa589323731f9755f2cc6233870203fbd6e89')
+prepare() {
+	cd "$srcdir/$pkgname-v$pkgver"
+	# Use a custom config.h if the file is not empty
+	if [ -s "$srcdir/config.h" ]; then
+		cp -f "$srcdir/config.h" config.h
+	fi
+	# Uncomment to compile with XWayland support
+	#sed -i -e '/-DXWAYLAND\|xcb/s/^#//' config.mk
+}
 
 build() {
-  cd "$_pkgname-$pkgver"
-  meson build --prefix /usr
+	cd "$srcdir/$pkgname-v$pkgver"
+	make
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
-  DESTDIR="$pkgdir/" ninja -C build install
+	cd "$srcdir/$pkgname-v$pkgver"
+	make PREFIX="$pkgdir/usr/" install
 }
-
