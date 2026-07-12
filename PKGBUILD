@@ -3,7 +3,7 @@
 _plug=vsjetpack
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-jetpack'
@@ -62,6 +62,10 @@ optdepends=(
 	'vapoursynth-plugin-vivtc'
 	'vapoursynth-plugin-wnnm'
 	'vapoursynth-plugin-znedi3'
+	'python-cyclopts: vsscale CLI for model downloads'
+	'python-humanize: vsscale CLI for model downloads'
+	'python-niquests: vsscale CLI for model downloads'
+	'python-questionary: vsscale CLI for model downloads'
 )
 provides=(
 	vapoursynth-plugin-vsaa
