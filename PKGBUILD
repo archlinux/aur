@@ -2,12 +2,12 @@
 # Contributor: Devin J. Pohly <djpohly+arch@gmail.com>
 pkgname=dwl
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple, hackable dynamic tiling Wayland compositor (dwm for Wayland)"
 arch=('x86_64')
 url="https://codeberg.org/dwl/dwl"
 license=('GPL')
-depends=('wlroots0.18')
+depends=('wlroots0.19')
 makedepends=('wayland-protocols')
 optdepends=('xorg-xwayland: for XWayland support')
 source=("https://codeberg.org/dwl/dwl/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz"
