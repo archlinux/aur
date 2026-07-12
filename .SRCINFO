@@ -1,0 +1,18 @@
+pkgbase = metadata
+	pkgdesc = Qt 6 application for viewing, adding, editing, and removing file metadata
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/yousefvand/metadata
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	depends = perl-image-exiftool
+	depends = qpdf
+	depends = hicolor-icon-theme
+	optdepends = dolphin: Show Metadata file-manager context-menu integration
+	source = metadata-0.1.0.tar.gz::https://github.com/yousefvand/metadata/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 730c34cb535eafe00713b5ed7509eccd218db825613c123167a2e03d446fac50
+
+pkgname = metadata
