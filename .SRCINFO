@@ -6,14 +6,11 @@ pkgbase = zeptofetch-git
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = gcc
-	makedepends = make
 	depends = glibc
 	provides = zeptofetch
 	conflicts = zeptofetch
 	conflicts = zeptofetch-bin
-	options = !strip
-	source = git+https://gitlab.archlinux.org/gurov/zeptofetch.git
+	source = zeptofetch-git::git+https://gitlab.archlinux.org/gurov/zeptofetch.git
 	sha256sums = SKIP
 
 pkgname = zeptofetch-git
