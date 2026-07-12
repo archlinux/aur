@@ -1,13 +1,8 @@
 _XDG_MIGRATION_VER="0.3.826"
 
-_data_dir() {
-    echo "${XDG_DATA_HOME:-${HOME}/.local/share}/deadsync"
-}
-
 _migrate_data_dir() {
     local _old_dir="${HOME}/.deadsync"
-    local _new_dir
-    _new_dir=$(_data_dir)
+    local _new_dir="${XDG_DATA_HOME:-${HOME}/.local/share}/deadsync"
 
     if [[ -d "${_old_dir}" && ! -d "${_new_dir}" ]]; then
         echo ">>> Migrating data directory to XDG path:"
@@ -24,9 +19,8 @@ _migrate_data_dir() {
 }
 
 _disable_updater() {
-    local _ini
-    _ini="$(_data_dir)/deadsync.ini"
-    mkdir -p "$(_data_dir)"
+    local _ini="${XDG_DATA_HOME:-${HOME}/.local/share}/deadsync/deadsync.ini"
+    mkdir -p "${XDG_DATA_HOME:-${HOME}/.local/share}/deadsync"
 
     if [[ ! -f "${_ini}" ]]; then
         printf '[Updater]\nupdater_install_enabled = false\n' > "${_ini}"
@@ -40,10 +34,6 @@ _disable_updater() {
     fi
 }
 
-_ver_lt() {
-    [[ $(vercmp "$1" "$2") -lt 0 ]]
-}
-
 post_install() {
     local _commit
     _commit=$(git -C /opt/deadsync rev-parse --short HEAD 2>/dev/null || true)
@@ -54,14 +44,14 @@ post_install() {
     echo " ╚═══════════════════════════════════════════════╝"
     echo
     echo "  Installed to  : /opt/deadsync"
-    echo "  User data     : $(_data_dir)"
-    echo "  Songs         : $(_data_dir)/songs/"
+    echo "  User data     : \$XDG_DATA_HOME (default: ~/.local/share/deadsync)"
+    echo "  Songs         : \$XDG_DATA_HOME/songs (default: ~/.local/share/deadsync/songs)"
     echo
     echo "  Launch from your application menu or run:"
     echo "    \$ deadsync"
     echo
     _disable_updater
-    echo "  Note: in-app updates have been disabled in $(_data_dir)/deadsync.ini"
+    echo "  Note: in-app updates have been disabled in \$XDG_DATA_HOME/deadsync.ini"
     echo "  Updates are managed by pacman / your AUR helper."
     echo
     echo "  Commit history:"
@@ -72,8 +62,8 @@ post_install() {
 }
 
 post_upgrade() {
-    local _old_ver _commit
-    _old_ver="$2"
+    local _old_ver="$2"
+    local _commit
     _commit=$(git -C /opt/deadsync rev-parse --short HEAD 2>/dev/null || true)
 
     echo
@@ -82,24 +72,23 @@ post_upgrade() {
     echo " ╚═══════════════════════════════════════════════╝"
     echo
     echo "  Installed to  : /opt/deadsync"
-    echo "  User data     : $(_data_dir)"
+    echo "  User data     : \$XDG_DATA_HOME (default: ~/.local/share/deadsync)"
     echo
 
     # XDG migration — the -git pkgver is a rolling r<count>.g<hash> string
-    # so vercmp against a release version tag is not reliable here. We check
-    # for the old directory's existence instead, which is unambiguous.
+    # so vercmp against a release version tag is not reliable. Check for the
+    # old directory's existence instead, which is unambiguous.
     if [[ -d "${HOME}/.deadsync" ]]; then
         _migrate_data_dir
         echo
     fi
 
-    # Updater flag — check for the key being absent rather than version
+    # Updater flag — check for the key being absent rather than a version
     # comparison, for the same reason as above.
-    local _ini
-    _ini="$(_data_dir)/deadsync.ini"
+    local _ini="${XDG_DATA_HOME:-${HOME}/.local/share}/deadsync/deadsync.ini"
     if [[ ! -f "${_ini}" ]] || ! grep -q '^updater_install_enabled' "${_ini}" 2>/dev/null; then
         _disable_updater
-        echo "  Note: in-app updates have been disabled in $(_data_dir)/deadsync.ini"
+        echo "  Note: in-app updates have been disabled in \$XDG_DATA_HOME/deadsync.ini"
         echo "  Updates are managed by pacman / your AUR helper."
         echo
     fi
