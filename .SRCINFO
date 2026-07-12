@@ -1,0 +1,16 @@
+pkgbase = antimatter
+	pkgdesc = CLI for controlling system options and helpful tools.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Hengtime787/Antimatter
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-typer
+	source = antimatter-1.0.0.tar.gz::https://github.com/Hengtime787/Antimatter/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = antimatter
