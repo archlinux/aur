@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=yosys-nightly
-pkgver=20260711_v0.67_24_g0e82bbefe
+pkgver=20260712_v0.67_24_g0e82bbefe
 pkgrel=1
 epoch=1
 pkgdesc="Yosys Open SYnthesis Suite, A framework for RTL synthesis"
