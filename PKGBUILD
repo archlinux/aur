@@ -3,7 +3,7 @@
 # Contributor: liberodark
 
 pkgname=guitar
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Open source Git GUI Client"
 arch=(x86_64 i686 armv7h aarch64)
@@ -25,7 +25,7 @@ makedepends=(
     ruby
     )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/soramimi/Guitar/archive/v${pkgver}.tar.gz")
-sha256sums=('baa1b098ce90f91b8862c6d266aa2c2db344e74785a29308f3379a6535123449')
+sha256sums=('892d4123337adda4e8fe27223bb953373c198a115a91acc6f08ea5fd9bd974f6')
 
 build() {
   cd "Guitar-${pkgver}/filetype"
