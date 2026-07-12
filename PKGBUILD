@@ -3,7 +3,7 @@
 # KNOSSOS saves its user preferences in $HOME/.config/MPIN/
 
 pkgname=knossos-git
-pkgver=5.1+951
+pkgver=5.1+960
 pkgrel=1
 arch=(x86_64)
 pkgdesc='A software tool for the visualization and annotation of 3D image data. It was developed for the rapid reconstruction of neural morphology and connectivity.'
@@ -11,7 +11,7 @@ url='https://knossos.app'
 license=(GPL2)
 depends=(glu pythonqt-knossos-git qt5-base qtkeychain-qt5 quazip-qt5 snappy)
 makedepends=(boost cmake git ninja toml11)
-checkdepends=(xorg-xauth xorg-xwayland xwayland-run weston)
+checkdepends=(libdisplay-info xorg-xauth xorg-xwayland xwayland-run weston)
 optdepends=(qt5-imageformats) # Jp2
 source=('git+https://github.com/knossos-project/knossos.git' 'knossos-git.desktop')
 md5sums=('SKIP'
@@ -34,9 +34,9 @@ build() {
 
 check() {
   # X11 client
-  xwfb-run "build-$CHOST-$pkgname/knossos" exit
+  xwfb-run -- "build-$CHOST-$pkgname/knossos" exit
   # wayland client
-  wlheadless-run -- "build-$CHOST-$pkgname/knossos" exit
+  env QT_QPA_PLATFORM=offscreen wlheadless-run -- "build-$CHOST-$pkgname/knossos" exit
 }
 
 package() {
