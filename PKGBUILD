@@ -7,7 +7,7 @@ _execname=al
 pkgname=${_appname}
 pkgdesc="The Modern TUI IDE. The intuitive experience in your terminal."
 
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,7 +30,7 @@ install="${_appname}.install"
 options=(!strip)
 
 source=("git+${_ghurl}.git#tag=${_gitversion}")
-sha256sums=('bcacc4b93059777d15e969195da9f961f6c9dc8bb3b1effef4c84a2c8bde9cf3')
+sha256sums=('a726cefd5bc97ad734750471c2347246b584f78f6b1bc6d832c0d63a6bbde433')
 
 
 prepare() {

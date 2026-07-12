@@ -1,6 +1,6 @@
 pkgbase = alwide
 	pkgdesc = The Modern TUI IDE. The intuitive experience in your terminal.
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/arnauda-gh/Alwide
 	install = alwide.install
@@ -19,7 +19,7 @@ pkgbase = alwide
 	depends = ncurses
 	provides = alwide
 	options = !strip
-	source = git+https://github.com/arnauda-gh/Alwide.git#tag=v1.0.8
-	sha256sums = bcacc4b93059777d15e969195da9f961f6c9dc8bb3b1effef4c84a2c8bde9cf3
+	source = git+https://github.com/arnauda-gh/Alwide.git#tag=v1.0.9
+	sha256sums = a726cefd5bc97ad734750471c2347246b584f78f6b1bc6d832c0d63a6bbde433
 
 pkgname = alwide
