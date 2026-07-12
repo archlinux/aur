@@ -4,7 +4,7 @@
 pkgname=zesarux-git
 pkgver=ZEsarUX.13.0.r98.g5949174
 _ver=13.1
-pkgrel=1
+pkgrel=2
 epoch=3
 pkgdesc="A Zx80/Zx81/Z88, Zx Spectrum 16/48/128/+2/+2A and ZX-Uno emulator with ULAPlus support. Development version."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('libxxf86vm' 'aalib' 'libcaca' 'alsa-lib' 'python')
 makedepends=('git')
 optdepends=('libpulse: for support Pulseaudio'
 	'openssl: for enable SSL functions'
-	'sdl: for support sdl video and audio output')
+	'sdl2-compat: for support sdl video and audio output')
 options=(!debug)
 source=('zesarux-code::git+https://github.com/chernandezba/zesarux.git'
 	zesarux.desktop
