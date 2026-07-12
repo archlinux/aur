@@ -1,0 +1,23 @@
+pkgbase = i8o8
+	pkgdesc = Convert Linux binary packages between distribution formats, unprivileged, with a grading verdict engine
+	pkgver = 0.1.0
+	pkgrel = 0
+	url = https://github.com/sujaltv/i8o8
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	makedepends = scdoc
+	depends = libarchive
+	depends = zstd
+	depends = xz
+	depends = zlib
+	depends = libelf
+	depends = expat
+	depends = squashfs-tools-ng
+	source = https://github.com/sujaltv/i8o8/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 9b2eae57427754467d7e84670aaac4d9858141445be0ffbace3d8b9e63dd62df
+
+pkgname = i8o8
