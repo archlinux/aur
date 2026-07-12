@@ -1,6 +1,6 @@
 # Maintainer: Paolo Mezzano Barahona <pmezzano@gmail.com>
 pkgname=jisocreator-bin
-pkgver=0.1.6
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="JIsoCreator is a ISO9660 CD Image creator, frontend of MKISOFS"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("https://github.com/Cavallinux/jisocreator/releases/download/v${pkgver}/
         "jisocreator.desktop"
         "jisocreator.sh"
         "jisocreator.png")
-sha256sums=('f8235dc874fe03b84b2616a1b3b8603689ad4ffc676af1c84f5146edb60d5e6c'
+sha256sums=('7e7835ecf1d35487ee2fdaf197c70f1f83164d724fa00d03dc299933c4b3f672'
             '5d2ab72c7d2c422ffadcb2e1f88f932a7943c89628781d653093d1efb4cc7a4e'
             '0879b9acff67b0f9113c8bb4b341678edcab8210e7155108708290c1163c1f20'
             'b662235eed256debee97df87331dd91abc359f05016b14ba562a78f1becca2b7')
