@@ -7,7 +7,7 @@
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
 pkgrel=1
-pkgver=3.0.1
+pkgver=3.0.2
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('AGPL-3.0-only')
@@ -74,7 +74,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
 	'https://download.geonames.org/export/dump/admin1CodesASCII.txt'
 	'https://download.geonames.org/export/dump/admin2Codes.txt'
 	'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson')
-b2sums=('2fb4f53b8a4c7b7b4978598365aecc73367b8a7c9c70f0e72051afed4bc2f624449ee5b5421aba1310203478aac8b4f05e898f5e2eb860689118bc5702877b0e'
+b2sums=('e860dbec052537590da25b696c11e243c1322a21efe01068b8d422734b1516c46fd183796daf8403f047beaa5bdaeb9b976da08cf2ebbc6a343b02f102b7c4ce'
         'cddeb3faa28e4ba9d8ddbc12d0b123c7bef6c5bfaa40e3c24abee2983868531c049afe4a2e3aea1c03b186c06f7b95f4d2708e8f28ac8f4ce9eb6e037b021637'
         '37d887f04462975ee280134604242b859bc8f921f82785e6b69f6a100150217b6aa22ba3446c34d7a83e5d88fcbf8cb5182e1e97c2b918bb63bc6583cfb17839'
         '5a92b4730cf9c93e1722e492ecf7dad343f0ac9330327a2351e37d996db326a926bed9808e43d99d3b46796be9cfc48dc01e0b8339c0e886aa182c2da136eb9b'
@@ -83,9 +83,9 @@ b2sums=('2fb4f53b8a4c7b7b4978598365aecc73367b8a7c9c70f0e72051afed4bc2f624449ee5b
         '8a66c540b5cea1e303602cf78ca173da226c6693ec455a060c3d8a6e9616c5bfbab590e8e8a3c8e395bce8e026107b03abfa862ff436d22db271c359a977219d'
         'e7a40359104cfd13c3563a5b988dcd9d2c132179a5e7e3eb5fe333a3667843e3c04e9eea8157b5f76a7dae18ac5736a487a2b97e2f8b30d6bdc7b2298f8b9e02'
         'c530746be9ec2e64ee4f6a7f7d52d0c204d05eff7f5c793aafce10431fc92edf8e1ba1e037ed3e498077f79e37f6fbc41d01b0b94287c0dba61fc2f24e1d1823'
-        'SKIP'
-        'SKIP'
-        'SKIP'
+        'aacd9beca1a20809dbf867744901e2c8af66c1897e4b89946ac1a6cbab892e68587d38305c7004267ba627b3c7127aac0d1a01d55256e3111069d32abf331202'
+        '2cd39b6a7c6ad16632a0a303535328bc11f59e5e85508996af46423c62acb4707cc1a04f1c2072f3cc7163e6d8260b3ede5956f475d614cb20d8afff72836a6e'
+        '16ca62f39fa812e8665d30f4ac40275146409f3e435afed5e09c8a3465565f024572de7c6f72a54318d8ce8432fadcaaef5f836ad84d278ac848655caa5ca791'
         'db7a138f7414d3c2c3ad9ee0e5d8ed6443b1f065fff14b899192ae9989455acf2bf7f609b6454bc8ac7680fab4299fde3f9ed655549923a9bede13f5b6fe1059')
 
 prepare() {
@@ -173,9 +173,9 @@ package_immich-server() {
 	cp -r web/build "${pkgdir}/usr/lib/immich/build/www"
 
 	# install plugins
-	install -dm755 "${pkgdir}/usr/lib/immich/build/plugins/immich-core-plugin"
-	cp -r packages/plugin-core/dist "${pkgdir}/usr/lib/immich/build/plugins/immich-core-plugin/dist"
-	install -Dm644 packages/plugin-core/manifest.json "${pkgdir}/usr/lib/immich/build/plugins/immich-core-plugin/manifest.json"
+	install -dm755 "${pkgdir}/usr/lib/immich/build/plugins/immich-plugin-core"
+	cp -r packages/plugin-core/dist "${pkgdir}/usr/lib/immich/build/plugins/immich-plugin-core/dist"
+	install -Dm644 packages/plugin-core/manifest.json "${pkgdir}/usr/lib/immich/build/plugins/immich-plugin-core/manifest.json"
 	)
 
 	# install reverse-geocoding data
