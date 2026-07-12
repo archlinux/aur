@@ -1,7 +1,7 @@
 pkgbase = openvox-agent-bin
 	pkgdesc = Agent of the OpenVox Automation Framework (non-modular)
 	pkgver = 8.28.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://voxpupuli.org/openvox/
 	arch = x86_64
 	license = Apache-2.0
