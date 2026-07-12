@@ -1,0 +1,5 @@
+[tmtv-bin]
+source = "github"
+github = "sa3lej/tmtv"
+prefix = "v"
+use_latest_release = true
