@@ -1,0 +1,18 @@
+pkgbase = git-stats
+	pkgdesc = A tool for getting aggregated commit stats
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/lukehsiao/git-stats
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = BlueOak-1.0.0
+	checkdepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	conflicts = git-stats-bin
+	options = !debug
+	source = git-stats-0.2.5.tar.gz::https://github.com/lukehsiao/git-stats/archive/v0.2.5.tar.gz
+	sha256sums = c96dd422845c0522a751570303ddbe8dbcc206fac5cb0387620f8418167028c2
+
+pkgname = git-stats
