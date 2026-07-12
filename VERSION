@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.7.4] - 2026-07-13
+### Major
+- **Cleanup** and rewrites of code for better maintainability and future feature additions.
+### Minor
+- **Updated** the "About" section in the UI to reflect the new version number.
+- **Disabled** GUI button for setting the mount script to run at startup, as this feature needs to be reworked. Use RCLONE's built-in `rclone config` to set up startup scripts for now.
+
+
 ## [1.7.3] - 2026-06-21
 ### Minor
 - **Added** kitty and ghostty to the list of supported terminal emulators for configuration fallback, enhancing compatibility across different Linux distributions and desktop environments.
