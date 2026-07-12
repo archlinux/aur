@@ -47,7 +47,6 @@ optdepends=('gunicorn: proxy'
             'python-polars: proxy'
             'python-soundfile: proxy'
             'python-pyroscope-io: proxy'
-
             'python-prisma: extra_proxy'
             'python-azure-identity: extra_proxy'
             'python-azure-keyvault-secrets: extra_proxy'
@@ -56,20 +55,13 @@ optdepends=('gunicorn: proxy'
             'python-resend: extra_proxy'
             'python-redisvl: extra_proxy'
             'python-a2a-sdk: extra_proxy'
-
             'python-numpydoc: utils'
-
             'python-diskcache: caching'
-
             'python-semantic-router: semantic-router'
             'python-aurelio-sdk: semantic-router'
-
             'python-mlflow: mlflow'
-
             'python-grpcio: grpc'
-
             'python-google-cloud-aiplatform: google'
-
             'python-google-cloud-aiplatform: proxy-runtime'
             'python-google-genai: proxy-runtime'
             'python-anthropic: proxy-runtime'
