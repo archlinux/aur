@@ -6,11 +6,11 @@
 # Contributor: Radiolin <anton.osi2011@gmail.com>
 
 pkgname=alpaca-ai
+pkgdesc='Chat with local AI models or connect to third party AI providers'
 pkgver=9.2.4
 pkgrel=1
-pkgdesc='An Ollama client. Chat with local AI models or connect to third party AI providers like ChatGPT, Gemini and more'
-arch=('any')
 url='https://github.com/Jeffser/Alpaca'
+arch=(any)
 license=('GPL-3.0-or-later')
 makedepends=(
   'appstream'
@@ -61,7 +61,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 b2sums=('0dee3cec699045cba285f1e637223a5b40e986ff5bca58d0fa7f02d39633e67e4c00ecdb73f521fdd35261a42a01050a4224d0d1d2b00471497d96b050ae8633')
 
 build() {
-  arch-meson "${srcdir}/Alpaca-${pkgver}" build
+  arch-meson "Alpaca-${pkgver}" build
   meson compile -C build
 }
 

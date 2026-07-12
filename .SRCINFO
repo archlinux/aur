@@ -1,5 +1,5 @@
 pkgbase = alpaca-ai
-	pkgdesc = An Ollama client. Chat with local AI models or connect to third party AI providers like ChatGPT, Gemini and more
+	pkgdesc = Chat with local AI models or connect to third party AI providers
 	pkgver = 9.2.4
 	pkgrel = 1
 	url = https://github.com/Jeffser/Alpaca
