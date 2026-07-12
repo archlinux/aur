@@ -3,7 +3,7 @@
 pkgname=geary-email-autocomplete
 pkgver=0.1.9
 pkgrel=1
-pkgdesc="GTK3 module that widens Geary recipient autocomplete and adds image copy"
+pkgdesc="[SUPERSEDED by frank-geary] GTK3 module that widens Geary recipient autocomplete and adds image copy"
 arch=('x86_64' 'aarch64')
 url="https://github.com/akitaonrails/geary-email-autocomplete"
 license=('MIT')
