@@ -2,7 +2,7 @@
 
 pkgname=python-sqlite3-to-mysql
 _pyname='sqlite3_to_mysql'
-pkgver=2.5.5
+pkgver=2.6.0
 pkgrel=2
 pkgdesc='A simple Python tool to transfer data from SQLite 3 to MySQL'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-click' 'python-mysql-connector' 'python-pytimeparse2' 
 makedepends=('python-setuptools' 'python-hatchling')
 _archive="$_pyname-$pkgver"
 source=("https://pypi.python.org/packages/source/s/sqlite3-to-mysql/sqlite3_to_mysql-${pkgver}.tar.gz")
-sha512sums=('22a4a0a19efabe497b98e9b8f9d68d7e49e402b800a6229d1d7b0291928c6e6ca2a590eb7f0243e00a8ae286866c3038ca2d22111c291c8c7d10f0f8b3de90d8')
+sha512sums=('f6122e8d78b34322d5cd7ddf64b5103aec0e941b3fd53fe6b6f3cd25fd28ff37ad9314f93cfbc5038075cc9102de3ad9a26ebbbce464c86eab2e29b02db71c48')
 
 build() {
   cd "$_archive"
