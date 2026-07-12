@@ -1,7 +1,7 @@
 pkgbase = musicott
 	pkgdesc = A JavaFX desktop music player
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/octaviospain/Musicott
 	arch = x86_64
 	license = GPL3

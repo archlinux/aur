@@ -1,7 +1,7 @@
 # Maintainer: Octavio Calleya Garcia <octavio@transgressoft.net>
 pkgname=musicott
 pkgver=1.0.0
-pkgrel=1
+pkgrel=3
 pkgdesc="A JavaFX desktop music player"
 arch=('x86_64')
 url="https://github.com/octaviospain/Musicott"
