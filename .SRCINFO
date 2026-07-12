@@ -1,7 +1,7 @@
 pkgbase = biopass-bin
 	pkgdesc = An alternative to Windows Hello/Howdy
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TickLabVN/biopass
 	install = biopass-bin.install
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = biopass-bin
 	depends = gst-plugins-good
 	depends = pam
 	depends = libjpeg-turbo
+	depends = libyaml
 	makedepends = patchelf
 	provides = biopass
 	conflicts = biopass
