@@ -1,5 +1,5 @@
 pkgname='mautrix-telegram'
-pkgver=0.2605.0
+pkgver=0.2606.0
 pkgrel=1
 pkgdesc="Matrix-Telegram hybrid puppeting/relaybot bridge"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -23,7 +23,7 @@ source=(
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"
 )
-sha256sums=('7826b531b9698f68ac74c518c13703517a6e05c85f040eeb252f44cef3d38f92'
+sha256sums=('781c3f1d70617893ab5bb4c428745cc899247563abbf6da50537435be98d0ca8'
             'afd12dd5194ca379cfb6db346d098f52d087703fcd6a0f0f89063867dc7cdb0f'
             '83dc721df0451c199d23ea74b60a065d92f98e9026dd779aca30d25195b88cf9'
             '71f12a1d39f9a08903e2046a02c39a9c21ac0bd2ac7ec38710afea90446fa9e9')
