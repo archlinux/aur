@@ -1,6 +1,6 @@
 # Maintainer: Omar Roth <roth@omar.yt>
 pkgname=doubletake
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='AirPlay 2 mirroring sender for Linux'
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
   "doubletake-${pkgver}.tar.gz::https://github.com/omarroth/doubletake/archive/refs/tags/v${pkgver}.tar.gz"
   'doubletake.service'
 )
-sha256sums=('de79eb4bb1e83a336d2cc5ac3b67c7dcefc59fa45a0ff4ea493601052021cc31'
+sha256sums=('da9ed0ae8f1e540c47f60ab9489b994fe66530bcda06602105d08f6c6e6b9f0a'
             'bb51bea22f4a5a6264a509eea126fce8b7dd0de8f5127e77e6bee13a96193c84')
 
 build() {
