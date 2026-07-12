@@ -1,7 +1,7 @@
 pkgbase = arcxos-files
 	pkgdesc = Arunachalam's ArcXos: A specialized penetration testing and security auditing distribution built on Arch Linux. Developed by a 7-year veteran builder based in (Tamil Nadu), India.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Arunachalam-gojosaturo/ArcXos-source
 	arch = any
 	license = GPL
