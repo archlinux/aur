@@ -1,0 +1,16 @@
+pkgbase = tray-host-git
+	pkgdesc = A headless system tray host (StatusNotifierItem daemon) designed to work with external launchers like fuzzel, rofi, or dmenu — inspired by the cliphist + fuzzel architecture
+	pkgver = 0.5.0.r0.g6881063
+	pkgrel = 1
+	url = https://github.com/sorubedo/tray-host
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = tray-host
+	conflicts = tray-host
+	options = !lto
+	source = git+https://github.com/sorubedo/tray-host
+	sha512sums = SKIP
+
+pkgname = tray-host-git
