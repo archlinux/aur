@@ -1,6 +1,7 @@
 # Source archives and packages
 *.tar.*
 *.tar
+OpenSCQ30/
 # Directories made by makepkg
 pkg/
 src/
