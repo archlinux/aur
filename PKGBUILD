@@ -2,7 +2,7 @@
 
 pkgname='zoi'
 _tag="Prod-Release-$pkgver"
-pkgver=1.21.1
+pkgver=1.22.1
 pkgrel=1
 pkgdesc="Advanced Package Manager & Environment Orchestrator"
 arch=('x86_64' 'aarch64')
@@ -10,29 +10,29 @@ url="https://gitlab.com/zillowe/zillwen/zusty/zoi"
 license=('Apache-2.0')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-makedepends=('cargo' 'make')
-depends=('git')
+makedepends=('cargo' 'just')
+depends=('git' 'gnupg')
 optdepends=(
   'bash-completion: for bash shell completion'
   'zsh: for zsh shell completion'
   'fish: for fish shell completion'
-  'less: for viewing files'
+  'bubblewrap: for running contained apps'
 )
 
 source=("$url/-/archive/$_tag/Zoi-Prod-Release-$pkgver.tar.gz"
   "LICENSE::$url/-/raw/main/LICENSE")
-sha512sums=('764a4dbe2128dc2b2632de3a8ea5e02359ab00a62c30f36b96a683428d60e98b873bc97806e0a9b2fd6acd842961348eec2253b3fb62f5364e668b629b9ed38b'
+sha512sums=('69ead9e1d62a580d58eb8ba865b1486699096e75ade7b86dfc3aee7c32f64a73e2303c250918fdf54ade313b27394e49ee03b0f7a83093a89b538d19e7ed2817'
   'e2cca3fc757382874694b00e85372aa114ef6f6196d767ba445b4499f170ef6589e3aab60d41615bdc1a74596a1f0f6b148a934b19b69e639de1fddf6dd2b2ea')
 
 build() {
   cd "$srcdir/$_pkgname_cap-$_tag"
   ./configure --prefix=/usr
-  make
+  just build
 }
 
 package() {
   cd "$srcdir/$_pkgname_cap-$_tag"
-  make DESTDIR="$pkgdir" install
+  just install
 
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
