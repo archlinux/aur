@@ -2,7 +2,7 @@
 
 pkgname=('far2l' 'far2l-ttyx' 'far2l-gui' 'far2l-python')
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux port of FAR v2'
 url='https://github.com/elfmz/far2l'
 arch=('x86_64' 'aarch64')
@@ -10,6 +10,7 @@ license=('GPL2')
 source=("far2l-${pkgver}.tar.gz::https://github.com/elfmz/far2l/archive/refs/tags/v_${pkgver}.tar.gz")
 sha256sums=('b0fddad2e3985f245f9e691e23b90fb97f7d29d9a0b131fe686aa3cbb2e4ea01')
 depends=('libxml2' 'uchardet')
+options=('!lto')
 makedepends=('cmake' 'wxwidgets-gtk3' 'python-cffi' 'python-markdown' 'libxi')
 optdepends=(
   'openssl: FTPS support in NetRocks'

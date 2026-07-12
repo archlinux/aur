@@ -1,7 +1,7 @@
 pkgbase = far2l
 	pkgdesc = Linux port of FAR v2
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elfmz/far2l
 	arch = x86_64
 	arch = aarch64
@@ -20,6 +20,7 @@ pkgbase = far2l
 	optdepends = neon: WebDAV support in NetRocks
 	optdepends = aws-sdk-cpp: AWS S3 support in NetRocks
 	optdepends = libarchive: more archive type support in multiarc
+	options = !lto
 	source = far2l-2.8.0.tar.gz::https://github.com/elfmz/far2l/archive/refs/tags/v_2.8.0.tar.gz
 	sha256sums = b0fddad2e3985f245f9e691e23b90fb97f7d29d9a0b131fe686aa3cbb2e4ea01
 
