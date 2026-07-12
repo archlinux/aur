@@ -18,7 +18,7 @@ pkgdesc="Calibrates display color"
 url="https://github.com/eoyilmaz/displaycal-py3"
 license=("GPL-3.0-or-later")
 
-pkgver=nightly.r174.gcc17894
+pkgver=nightly.r34.g12f9644
 pkgrel=1
 arch=("x86_64")
 
@@ -33,6 +33,7 @@ makedepends=(
 
 depends=(
 	argyllcms
+	colord
 	dbus
 	dbus-python
 	glib2

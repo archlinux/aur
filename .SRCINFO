@@ -1,6 +1,6 @@
 pkgbase = displaycal-git
 	pkgdesc = Calibrates display color
-	pkgver = nightly.r174.gcc17894
+	pkgver = nightly.r34.g12f9644
 	pkgrel = 1
 	url = https://github.com/eoyilmaz/displaycal-py3
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = displaycal-git
 	makedepends = libxxf86vm
 	makedepends = python-setuptools
 	depends = argyllcms
+	depends = colord
 	depends = dbus
 	depends = dbus-python
 	depends = glib2
