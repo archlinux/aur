@@ -7,12 +7,20 @@
 pkgname=litellm
 pkgver=1.92.0
 pkgrel=1
-pkgdesc='Library to easily interface with LLM API providers.'
+pkgdesc='Open Source AI Gateway for 100+ LLMs. Self-hosted. Enterprise-ready. Call any LLM in OpenAI format.'
+
 arch=(any)
-url='https://github.com/BerriAI/litellm'
 license=('MIT')
-depends=('python' 'python-fastuuid' 'python-httpx' 'python-openai' 'python-dotenv' 'python-tiktoken' 'python-importlib-metadata' 'python-tokenizers' 'python-click' 'python-jinja' 'python-aiohttp' 'python-pydantic' 'python-jsonschema')
-makedepends=('python-uv-build' 'python-build' 'python-installer' 'python-wheel')
+url='https://github.com/BerriAI/litellm'
+
+provides=("python-${pkgname}")
+
+makedepends=('python-uv-build'
+             'python-build'
+             'python-installer'
+             'python-wheel'
+             'python-maturin')
+
 optdepends=('gunicorn: proxy'
             'uvicorn: proxy'
             'python-uvloop: proxy'
@@ -81,25 +89,48 @@ optdepends=('gunicorn: proxy'
             'python-pypdf: proxy-runtime'
             'python-llm-sandbox: proxy-runtime'
             'python-detect-secrets: proxy-runtime')
-provides=("python-$pkgname")
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+
+depends=('python'
+         'python-fastuuid'
+         'python-httpx'
+         'python-openai'
+         'python-dotenv'
+         'python-tiktoken'
+         'python-importlib-metadata'
+         'python-tokenizers'
+         'python-click'
+         'python-jinja'
+         'python-aiohttp'
+         'python-pydantic'
+         'python-jsonschema')
+
+options=(!lto !strip)
+
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('773adf5503ee1793289689c899394a83df8122993760d9acd782e32aa798db9d')
 
 
 prepare() {
-  cd "${srcdir}"/$pkgname-$pkgver/
-  sed -i 's/uv_build==[0-9.]*/uv_build/g' pyproject.toml
+  cd "${srcdir}"/${pkgname}-${pkgver}/
+
+  sed -i 's/maturin==[0-9.]*/maturin/g' pyproject.toml
 }
 
-
 build() {
-  cd "${srcdir}"/$pkgname-$pkgver/
+  cd "${srcdir}"/${pkgname}-${pkgver}/
+
+  export PYO3_PYTHON=/usr/bin/python
+  export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
+
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}"/$pkgname-$pkgver/
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "${srcdir}"/${pkgname}-${pkgver}/
 
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
