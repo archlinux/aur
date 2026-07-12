@@ -1,7 +1,7 @@
 pkgbase = draind
 	pkgdesc = Linux power management daemon inspired by Windows power options
-	pkgver = 0.3.6
-	pkgrel = 2
+	pkgver = 0.3.7
+	pkgrel = 1
 	url = https://github.com/vlukyanets/draind
 	install = draind.install
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = draind
 	options = !debug
 	backup = etc/draind/draind.json
 	backup = etc/xdg/draind/draind-agent.json
-	source = draind-0.3.6.tar.gz::https://github.com/vlukyanets/draind/archive/v0.3.6.tar.gz
+	source = draind-0.3.7.tar.gz::https://github.com/vlukyanets/draind/archive/v0.3.7.tar.gz
 	sha256sums = 30397d70268118f865b7a39bb78a9e24ca53db33be88774e6a79511f570f5809
 
 pkgname = draind
