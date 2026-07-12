@@ -1,0 +1,17 @@
+pkgbase = pkgui-bin
+	pkgdesc = A terminal dashboard for everything you've installed
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/bhavya-dang/pkgui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = pkgui
+	conflicts = pkgui
+	options = !strip
+	source_x86_64 = pkgui-x86_64-0.1.0.tgz::https://github.com/bhavya-dang/pkgui/releases/download/v0.1.0/pkgui_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = cf255772a6b64dc57362bfbecfb3bc7663771070e314dce48f7dc08e6a00e16c
+	source_aarch64 = pkgui-aarch64-0.1.0.tgz::https://github.com/bhavya-dang/pkgui/releases/download/v0.1.0/pkgui_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = ede6afa198d6129789658b25690add343789b60750fef8bc8d35c2a5915d5a09
+
+pkgname = pkgui-bin

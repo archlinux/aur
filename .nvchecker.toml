@@ -1,0 +1,5 @@
+[pkgui-bin]
+source = "github"
+github = "bhavya-dang/pkgui"
+use_latest_release = true
+prefix = "v"
