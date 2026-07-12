@@ -2,7 +2,7 @@
 # Contributor : Daniel Chesters <archlinux@coin-coin.xyz>
 
 pkgname=kalker
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="A calculator program that supports user-defined variables, functions, derivation, and integration."
 url="https://github.com/PaddiM8/kalker"
@@ -12,18 +12,16 @@ arch=('i686' 'x86_64' 'aarch64')
 license=('MIT')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/PaddiM8/$pkgname/archive/v$pkgver.tar.gz"
-	"build.patch"
 )
 
 prepare() {
 	cd "$pkgname-$pkgver" || exit
-	patch -p1 <../build.patch
 	cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
 	cd "$pkgname-$pkgver" || exit
-	cargo build --release
+	cargo build --release --features use-system-libs
 }
 
 package() {
@@ -33,5 +31,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-b2sums=('dec72276ec4393ff310277c5589614558204a31a916df20048af05cfa48e891184f57c2348b6e2b069622946c9d9ac4fe1920a08de8476ea4eafef5e0740bce4'
-        '4d9f0e08c20fb074f68289397dff4a54add39ddc4cfa759a1f99709ffed416e3694d7285631130b30a4e66ac3dc916994c545fd384993ff433b429dd841634f9')
+b2sums=('809819116aa65cad991f3bb183a14d06ec7352989b20fed7a1273a5e601cf3a2841418515b775af02aa5e20306bd371326396efd9f8d5290466d36e95fdfcdf9')
