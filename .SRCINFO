@@ -1,6 +1,6 @@
 pkgbase = ghorg-bin
 	pkgdesc = Quickly clone or backup an entire org/users repositories into one directory
-	pkgver = 1.11.12
+	pkgver = 1.11.13
 	pkgrel = 1
 	url = https://github.com/gabrie30/ghorg
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = ghorg-bin
 	license = Apache-2.0
 	provides = ghorg
 	conflicts = ghorg
-	source_x86_64 = ghorg-x86_64-1.11.12.tar.gz::https://github.com/gabrie30/ghorg/releases/download/v1.11.12/ghorg_1.11.12_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = c0fcbe110aa28f7723f6e5bbd32a248258df10c962550fa4608ea57c14138652
-	source_i686 = ghorg-i686-1.11.12.tar.gz::https://github.com/gabrie30/ghorg/releases/download/v1.11.12/ghorg_1.11.12_Linux_i386.tar.gz
-	sha256sums_i686 = f2dbbe3cb137d40a4ae41529058aab38a695794acbecbec84b123126d3da4e50
-	source_aarch64 = ghorg-aarch64-1.11.12.tar.gz::https://github.com/gabrie30/ghorg/releases/download/v1.11.12/ghorg_1.11.12_Linux_arm64.tar.gz
-	sha256sums_aarch64 = f3313002a16ae3b6b9a24cc9f0073b78ed4676964da5bfa156dfab3dbef929f9
+	source_x86_64 = ghorg-x86_64-1.11.13.tar.gz::https://github.com/gabrie30/ghorg/releases/download/v1.11.13/ghorg_1.11.13_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 8d581ac1fd16392265abea4f3494a1a52fc561c6227ad935593deb052d647302
+	source_i686 = ghorg-i686-1.11.13.tar.gz::https://github.com/gabrie30/ghorg/releases/download/v1.11.13/ghorg_1.11.13_Linux_i386.tar.gz
+	sha256sums_i686 = 8e3ee01ce43c38fa24257a0759d6d44b1887040c47d15fd951410218337331e9
+	source_aarch64 = ghorg-aarch64-1.11.13.tar.gz::https://github.com/gabrie30/ghorg/releases/download/v1.11.13/ghorg_1.11.13_Linux_arm64.tar.gz
+	sha256sums_aarch64 = ef5229b8a8c39de8f8008f80212e10029cf858aaa4920b793b457963a409c242
 
 pkgname = ghorg-bin
