@@ -1,8 +1,8 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=steamguard-cli-bin
-pkgver=0.18.1
-pkgrel=2
+pkgver=0.18.2
+pkgrel=1
 pkgdesc="A linux utility for generating 2FA codes for Steam and managing Steam trade confirmations."
 arch=('x86_64' 'aarch64')
 url='https://github.com/dyc3/steamguard-cli'
@@ -20,8 +20,8 @@ provides=('steamguard-cli')
 conflicts=('steamguard-cli' 'steamguard-cli-git')
 
 source_x86_64=("steamguard-${pkgver}-x86_64::https://github.com/dyc3/steamguard-cli/releases/download/v${pkgver}/steamguard-linux-x86_64")
-sha256sums_x86_64=('ea675060e802b9df728be3291c4fd0e894fd22a0299f0a3ea775e48ddd2f4e98')
-sha256sums_aarch64=('521bea40147cfb42d48bae7a5398c342066c93143b9a4282f40604ce61ea73ce')
+sha256sums_x86_64=('3dc876c3fc59a9c21e6a595a1726fd9fd49d57a4004257a20d84adb2289d264a')
+sha256sums_aarch64=('a4f382d9b64a84a032eaa04d1514b0d46cc020af6a06d36be142192751e27429')
 
 source_aarch64=("steamguard-${pkgver}-aarch64::https://github.com/dyc3/steamguard-cli/releases/download/v${pkgver}/steamguard-linux-aarch64")
 
