@@ -22,11 +22,11 @@ makedepends=(
 options=('!lto' '!debug' '!strip')
 install="${pkgname}.install"
 
-pkgver=0.4.1375
+pkgver=0.4.2004
 pkgrel=1
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pnn64/deadsync/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e80dd65bd145f48cd94426667ffa2ae3bba884f8afe8098feaccba10eb2b7a35')
+sha256sums=('50c93a46a218362d5000a27b0f7473d0d63b76e46a5c04426f3eda46cd7da783')
 
 prepare() {
     cd "${srcdir}/deadsync-${pkgver}"
@@ -107,10 +107,12 @@ Actions=OpenConfigDir;OpenSongsDir;
 
 [Desktop Action OpenConfigDir]
 Name=Open Config Directory
+Icon=folder-build
 Exec=sh -c 'DS="${XDG_DATA_HOME:-$HOME/.local/share}/deadsync"; mkdir -p "$DS" && xdg-open "$DS"'
 
 [Desktop Action OpenSongsDir]
 Name=Open Songs Directory
+Icon=folder-music
 Exec=sh -c 'DS="${XDG_DATA_HOME:-$HOME/.local/share}/deadsync/songs"; mkdir -p "$DS" && xdg-open "$DS"'
 EOF
 
