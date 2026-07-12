@@ -7,7 +7,7 @@ _execname=al
 pkgname=${_appname}-bin
 pkgdesc="The Modern TUI IDE. The intuitive experience in your terminal."
 
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,6 +26,8 @@ conflicts=("${_appname}")
 makedepends=('perl')
 depends=('glibc' 'ncurses')
 
+install="${_appname}.install"
+
 options=(!strip)
 
 source=("ASSETS-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_appname}-assets.zip"
@@ -33,11 +35,11 @@ source=("ASSETS-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_app
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums=('154d3364362f361cd30814a31d549355bddde8347ea02a17a9255600774c0447'
+sha256sums=('c4cd2d728a3890b20eced436b9f9e9b44ee0c7f13c46abb89e3eb78211cc205f'
             'e643033bfd6fdc487531bb988f4aa0d44709a2c1ffdf4bec8676f6107addc664'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('5d8c233354211fd3d5084de94e1b6247b16101d39d333ced2ddaec04c538eed5')
-sha256sums_aarch64=('e34c9ee1bf49f252d7116bcb51608aa4f2f7ccf2d5184e820de16fa7fd4bcd24')
+sha256sums_x86_64=('39903e1e6e4ff24a900df8a2618ce137930e4fd5535c7fb8d7c2e25b55be893e')
+sha256sums_aarch64=('388e8079638f6c98bcc428e7c4af7a33f473d357d1fcfc1ba9aaf5ad87a8154d')
 
 
 prepare() {
