@@ -5,8 +5,8 @@
 
 pkgbase=jellyfin-git
 pkgname=(jellyfin-git jellyfin-web-git jellyfin-server-git)
-pkgver=10.12.0.r28174.738d475
-pkgrel=2
+pkgver=12.0.0.r29313.911044b
+pkgrel=1
 pkgdesc='The Free Software Media System'
 arch=('any')
 url='https://jellyfin.org'
@@ -51,7 +51,7 @@ prepare() {
 
   # download dependencies
   # FS#79713 - remove environment variable with 10.9.x release
-  SKIP_PREPARE=1 npm ci --no-audit --no-fund --no-update-notifier
+  SKIP_PREPARE=1 npm ci --no-audit --no-fund --no-update-notifier --allow-remote all
   popd
 }
 
