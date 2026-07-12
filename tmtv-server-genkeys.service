@@ -1,0 +1,14 @@
+[Unit]
+ConditionPathExists=|!/etc/tmtv/keys/ssh_host_ed25519_key
+ConditionPathExists=|!/etc/tmtv/keys/ssh_host_ed25519_key.pub
+ConditionPathExists=|!/etc/tmtv/keys/ssh_host_rsa_key
+ConditionPathExists=|!/etc/tmtv/keys/ssh_host_rsa_key.pub
+Description=Tmtv relay Key Generation
+
+[Service]
+ExecStartPre=/usr/bin/ssh-keygen -t ed25519 -f /etc/tmtv/keys/ssh_host_ed25519_key -N ''
+ExecStart=/usr/bin/ssh-keygen -t rsa -b 3072 -f /etc/tmtv/keys/ssh_host_rsa_key -N ''
+Type=oneshot
+
+[Install]
+WantedBy=multi-user.target

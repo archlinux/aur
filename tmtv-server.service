@@ -1,0 +1,22 @@
+[Unit]
+Description=tmtv relay server
+After=network.target tmtv-server-genkeys.service
+Wants=tmtv-server-genkeys.service
+
+[Service]
+EnvironmentFile=/etc/tmtv/tmtv-server.env
+PIDFile=/run/tmtv/tmtv-server.pid
+ExecStart=/usr/bin/tmtv-server \
+  -k /etc/tmtv/keys \
+  -p "$TMTV_PORT" \
+  -h "$TMTV_HOST" \
+  -v
+Restart=on-failure
+NoNewPrivileges=yes
+ProtectHome=true
+ProtectSystem=strict
+PrivateTmp=true
+ReadWritePaths=/tmp
+
+[Install]
+WantedBy=multi-user.target

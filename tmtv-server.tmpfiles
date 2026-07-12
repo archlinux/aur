@@ -1,0 +1,3 @@
+d /etc/tmtv 0755
+d /etc/tmtv/keys 0755
+f /etc/tmtv/tmtv-server.env 0644
