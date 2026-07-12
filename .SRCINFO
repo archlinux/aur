@@ -1,5 +1,5 @@
 pkgbase = st-rs-git
-	pkgdesc = Minimal terminal emulator.
+	pkgdesc = Minimal terminal emulator for Wayand in the spirit of ST, written in Rust.
 	pkgver = 0.1.0.r86.g8051209
 	pkgrel = 1
 	url = https://codeberg.org/ideasman42/st-rs
