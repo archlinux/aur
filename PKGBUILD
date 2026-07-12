@@ -1,11 +1,11 @@
-# Maintainer: Lyra OS <team@lyraos.org>
+# Maintainer: Rodrigo Brito <rodrigo@w3ti.com.br>
 #
 # AUR-oriented PKGBUILD for the `lyra-vega` package base. It builds the
 # tagged Vega release, but can be pointed at another checkout/source via
 # VEGA_SOURCE_URL and VEGA_SOURCE_DIR for local builds.
 
 pkgname=lyra-vega
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Centro de controle para Linux"
 arch=('x86_64')
