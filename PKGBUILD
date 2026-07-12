@@ -1,6 +1,6 @@
 # Maintainer: Jon Kristian <hello@jonkristian.no>
 pkgname=pulsar-x3-python
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Control Pulsar X3 gaming mouse on Linux - GUI and CLI"
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
 	'libadwaita'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6ba7259b0d7ae887b524615d83e4f153c51bf84fa7202728a267d0cd2c71091a')
+sha256sums=('5e89286418c4990044f0f60ee1712f81e326fc4d79622714be54594eb46de82d')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"

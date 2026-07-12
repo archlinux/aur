@@ -1,6 +1,6 @@
 pkgbase = pulsar-x3-python
 	pkgdesc = Control Pulsar X3 gaming mouse on Linux - GUI and CLI
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/jonkristian/pulsar-x3-python
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = pulsar-x3-python
 	depends = python-pyusb
 	depends = python-gobject
 	depends = libadwaita
-	source = pulsar-x3-python-0.1.1.tar.gz::https://github.com/jonkristian/pulsar-x3-python/archive/v0.1.1.tar.gz
-	sha256sums = 6ba7259b0d7ae887b524615d83e4f153c51bf84fa7202728a267d0cd2c71091a
+	source = pulsar-x3-python-0.1.2.tar.gz::https://github.com/jonkristian/pulsar-x3-python/archive/v0.1.2.tar.gz
+	sha256sums = 5e89286418c4990044f0f60ee1712f81e326fc4d79622714be54594eb46de82d
 
 pkgname = pulsar-x3-python
