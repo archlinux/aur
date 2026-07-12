@@ -12,10 +12,10 @@ provides=('toofan')
 conflicts=('toofan')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/vyrx-dev/toofan/releases/download/v2.4.1/toofan_2.4.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('8e15aa8415be05e7d96d9373dea1748d15a869f4cf2a46259e4777cca752f24b')
+sha256sums_aarch64=('0ad82def2062c3f99c96d708ce139b199d4ef253d6cf09dac8c1de776c980327')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/vyrx-dev/toofan/releases/download/v2.4.1/toofan_2.4.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('6755f2c1d0995376c8c462fad988c364496bd2297fb7d09a3d8d3d4d40374124')
+sha256sums_x86_64=('d6ed07c0ad0dd8cf1ca6560d1eaab474f3f65bc4efd2d4423a4d77aff55a8408')
 
 package() {
   # bin
