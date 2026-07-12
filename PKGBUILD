@@ -1,5 +1,5 @@
 pkgname=aurindexer-git
-pkgver=r5.90d4ebd
+pkgver=r6.f63d502
 pkgrel=1
 pkgdesc="Searcher TUI with paralel support for AUR and officials repos"
 arch=('x86_64')
