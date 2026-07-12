@@ -1,7 +1,7 @@
 pkgbase = rivalcfg-gui
 	pkgdesc = GTK3 GUI configuration tool for SteelSeries mice (via rivalcfg)
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MrGodzilla38/rivalcfg-gui
 	arch = any
 	license = GPL-3.0-or-later
@@ -13,7 +13,8 @@ pkgbase = rivalcfg-gui
 	depends = python-pynput
 	depends = python-xlib
 	makedepends = gcc
+	install = rivalcfg-gui.install
 	source = rivalcfg-gui-1.5.1.tar.gz::https://github.com/MrGodzilla38/rivalcfg-gui/archive/refs/tags/v1.5.1.tar.gz
-	sha256sums = ('c4f87b1e61d31f3d3aaa6eb104ba95be58e895d5717c4d5b31f7c45f6a6a47b8')
+	sha256sums = ('3edcf1ab14fee1987c087f1f26e1a3c7b5537b0b7561927e659c64e0bca396e1')
 
 pkgname = rivalcfg-gui
