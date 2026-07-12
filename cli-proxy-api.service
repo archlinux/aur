@@ -1,8 +1,8 @@
 [Unit]
 Description=CLIProxyAPI server
 Documentation=https://github.com/router-for-me/CLIProxyAPI
-Wants=network.target
-After=network.target
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 Type=simple
