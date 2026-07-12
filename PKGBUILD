@@ -1,19 +1,19 @@
 # Maintainer: Himalian <Himalian9227@proton.me>, phucvinh57 <npvinh0507@gmail.com>
 pkgname=biopass-bin
-pkgver=1.3.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="An alternative to Windows Hello/Howdy"
 arch=('x86_64' 'aarch64')
 url="https://github.com/TickLabVN/biopass"
 license=('MIT')
-depends=('curl' 'fprintd' 'webkit2gtk-4.1' 'gtk3' 'hicolor-icon-theme' 'gst-plugins-good' 'pam')
+depends=('curl' 'fprintd' 'webkit2gtk-4.1' 'gtk3' 'hicolor-icon-theme' 'gst-plugins-good' 'pam' 'libjpeg-turbo')
 makedepends=('patchelf')
 provides=('biopass')
 conflicts=('biopass')
 source_x86_64=("biopass_${pkgver}_amd64.deb::https://github.com/TickLabVN/biopass/releases/download/${pkgver}/biopass_${pkgver}_amd64.deb")
 source_aarch64=("biopass_${pkgver}_arm64.deb::https://github.com/TickLabVN/biopass/releases/download/${pkgver}/biopass_${pkgver}_arm64.deb")
-sha256sums_x86_64=('3b5cbba8bcfe0b841c1a5f18881b733667295618053377275ca458a8a469745e')
-sha256sums_aarch64=('d1e334cc7a99ab0dc8d92acbb7a65c853354391ef1953707c462d4d35a7a85c5')
+sha256sums_x86_64=('d3fa8bc12f38c6c9059bb6629116285dcba89cf75b144284f94dc1844e0b1168')
+sha256sums_aarch64=('3fa6a4e0cce4759e613844a474f043eeeb39332698ad02bfbdf7f23251aab1cb')
 options=(!strip !debug)
 backup=('etc/ld.so.conf.d/biopass.conf')
 install=biopass-bin.install
@@ -62,9 +62,10 @@ package() {
   fi
 
   # Published bundles may embed CI build paths in RUNPATH. Replace them with the
-  # packaged native lib location used by the helper and face libs.
+  # packaged native lib location used by the helper, face libs, and the bundled
+  # (pinned-version) libcamera.
   patchelf --set-rpath /usr/lib/biopass "${helper_path}"
-  for so_file in "${pkgdir}"/usr/lib/biopass/libbiopass_*.so; do
+  for so_file in "${pkgdir}"/usr/lib/biopass/libbiopass_*.so "${pkgdir}"/usr/lib/biopass/libcamera*.so*; do
     patchelf --set-rpath /usr/lib/biopass "${so_file}"
   done
 }
