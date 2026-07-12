@@ -1,0 +1,19 @@
+pkgbase = skvirt-git
+	pkgdesc = Touch-driven on-screen keyboard for fcitx5 on KWin (Wayland)
+	pkgver = r3.edb233b
+	pkgrel = 1
+	url = https://github.com/Vendetta1871/skvirt
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = layer-shell-qt
+	depends = fcitx5
+	provides = skvirt
+	conflicts = skvirt
+	source = skvirt::git+https://github.com/Vendetta1871/skvirt.git
+	sha256sums = SKIP
+
+pkgname = skvirt-git
