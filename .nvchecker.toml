@@ -1,0 +1,6 @@
+[makko-beta-bin]
+source = "gitea"
+gitea = "Team/Makko"
+host = "forge.starlightnet.work"
+use_max_tag = true
+
