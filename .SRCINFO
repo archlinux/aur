@@ -1,13 +1,16 @@
 pkgbase = lstr-bin
 	pkgdesc = A fast, minimalist directory tree viewer
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/bgreenwell/lstr
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	provides = lstr
 	conflicts = lstr
-	source_x86_64 = lstr-x86_64-0.2.1.tar.gz::https://github.com/bgreenwell/lstr/releases/download/v0.2.1/lstr-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 4408ed12f10fa596ae12a20108cfe5ead4a938a3a6a4b5ce5d1c7cdb696add3f
+	source_x86_64 = lstr-x86_64-0.3.0.tar.xz::https://github.com/bgreenwell/lstr/releases/download/v0.3.0/lstr-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = c4dcd4d43ee2af773ab2d52d96e99b1ee5a4ca6ce403dc14d1c8c8adf09f6ae6
+	source_aarch64 = lstr-aarch64-0.3.0.tar.xz::https://github.com/bgreenwell/lstr/releases/download/v0.3.0/lstr-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = c047c5cf09a99d88bbb550749e71096dbb35f244b2c8a83cc4aa5c157376c27c
 
 pkgname = lstr-bin
