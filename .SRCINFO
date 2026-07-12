@@ -1,6 +1,6 @@
 pkgbase = d9cker-bin
 	pkgdesc = A k9s-style terminal UI for Docker & Docker Swarm
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/loyalpartner/d9cker
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = d9cker-bin
 	optdepends = docker: manage a local engine
 	provides = d9cker
 	conflicts = d9cker
-	source_x86_64 = d9cker-0.1.0-x86_64.tar.gz::https://github.com/loyalpartner/d9cker/releases/download/v0.1.0/d9cker-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 5b60b4decd8c5104cdaeec0d9ccff45ee26c498f86a37c384dac37a9beb3fe9e
-	source_aarch64 = d9cker-0.1.0-aarch64.tar.gz::https://github.com/loyalpartner/d9cker/releases/download/v0.1.0/d9cker-v0.1.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = b83e2f3b750fbfe3d5fd979f3472f89aa9eeb094fb495949e32ef5b46a9ebd6d
+	source_x86_64 = d9cker-0.1.1-x86_64.tar.gz::https://github.com/loyalpartner/d9cker/releases/download/v0.1.1/d9cker-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b9ad25e1d304dca9e922e6b21ba6e5f39b2fb603f0fa02a9c027dd327f8de1ac
+	source_aarch64 = d9cker-0.1.1-aarch64.tar.gz::https://github.com/loyalpartner/d9cker/releases/download/v0.1.1/d9cker-v0.1.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 23eb24ac0ba94d4f7bc2fd5df5f9911161eb48a518d9b4ad8d8486c9c2bfb78f
 
 pkgname = d9cker-bin
