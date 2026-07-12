@@ -1,6 +1,6 @@
 # Maintainer: Ludovic Lerus <little.corn3620@fastmail.com>
 pkgname=hubble.md
-pkgver=0.1.18
+pkgver=0.1.19
 pkgrel=1
 pkgdesc="Local-first Markdown editor (Hubble desktop app)"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ provides=("hubble-md=$pkgver")
 conflicts=('hubble.md-bin')
 options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bholmesdev/hubble.md/archive/refs/tags/desktop-v$pkgver.tar.gz")
-sha256sums=('f67aa4a0cb69ecd96c651fa9ec18d144a45b8a79589391c7259137e3c7d70605')
+sha256sums=('ce4583c69b40f2ba3d5c432c6dd45e7278e0e14b2c77643202729610c299f891')
 
 _pkgsrc="hubble.md-desktop-v$pkgver"
 
