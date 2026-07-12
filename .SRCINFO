@@ -1,0 +1,21 @@
+pkgbase = cardano-db-sync-bin
+	pkgdesc = A Cardano chain indexer that stores block and transactions in a PostgreSQL database
+	pkgver = 13.7.2.1
+	pkgrel = 1
+	url = https://github.com/IntersectMBO/cardano-db-sync
+	install = cardano-db-sync-bin.install
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	depends = cardano-conf
+	depends = cardano-node-bin
+	provides = cardano-db-sync=13.7.2.1
+	conflicts = cardano-db-sync
+	options = !debug
+	options = !strip
+	source = https://github.com/IntersectMBO/cardano-db-sync/releases/download/13.7.2.1/cardano-db-sync-13.7.2.1-linux.tar.gz
+	source = cardano-dist::git+https://github.com/sgillespie/cardano-db-sync-dist#commit=db6d3395102eeb02ebd3c54bf2e6c107a6b0ec36
+	sha256sums = e1d94e868e7abcf26d506d921787add698e65ca7d90491d8d4fd7f1af6770bf1
+	sha256sums = 0e6cfbd2a7dac91d04081868ad91feb89c80d90076b5f3129b2aa51bf00df1d6
+
+pkgname = cardano-db-sync-bin

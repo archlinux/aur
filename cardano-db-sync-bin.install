@@ -1,0 +1,32 @@
+post_install() {
+	cat <<-EOF
+
+To start cardano-db-sync on mainnet, create the mainnet database and enable the
+service:
+
+  sudo -u postgres createuser cardano-node --no-superuser --createdb
+  sudo -u cardano-node createdb cardano-db-sync-mainnet
+  systemctl enable --now cardano-db-sync@mainnet
+
+(Optional) To run a testnet, enable the testnet service instance:
+  sudo -u cardano-node createdb cardano-db-sync-preview
+  systemctl enable --now cardano-node@preview.service
+
+NOTE: The network must match the cardano-node network!
+
+For more details on using PostgreSQL, see
+https://wiki.archlinux.org/title/PostgreSQL
+
+EOF
+}
+
+post_remove() {
+	cat <<-EOF
+
+NOTE: the cardano-db-sync database and role likely still remain on disk! If you
+wish to clean this up, run:
+  sudo -u postgres dropdb cardano-db-sync-mainnet
+  sudo -u postgres dropuser cardano-node
+
+EOF
+}
