@@ -1,0 +1,65 @@
+# Print the same half-block wordmark as the CLI banner (internal/clitheme/header.txt).
+_print_banner() {
+    cat <<'EOF'
+
+                                  ██                                  ██
+▄▄▄▄▄   ██    ▄▄▄▄ ▄▄  ▄▄ ████▄   ▄▄    ▄▄▄▄  ██   ██  ▄▄   ▄▄  ▄████ ▄▄ ▄▄▄▄▄
+██▀▀██▄ ██  ▄█████ ▀████▀ ▄▄▄███  ██  ▄█████  ██   ██  ██   ██ ██▀    ██ ██▀▀██▄
+██▄▄▄██ ██▄ ██▄▄▄▄ ▄████▄ ██▄▄▄▄  ██  ██▄▄▄▄  ██▄  ██▄ ▀██▄▄██ █████  ██ ██   ██
+██▀▀▀▀▀ ▀▀▀ ▀▀▀▀▀▀ ▀▀  ▀▀ ▀▀▀▀▀▀ ▄██  ▀▀▀▀▀▀  ▀▀▀  ▀▀▀   ▀▀▀██ ▀▀     ▀▀ ▀▀   ▀▀
+▀▀                               ▀▀                         ▀▀
+
+EOF
+}
+
+post_install() {
+    echo "==> Reloading systemd..."
+    systemctl daemon-reload || true
+
+    _print_banner
+    echo "==> plex2jellyfin v0.1.0 installed successfully!"
+    echo ""
+    echo "Units are installed but not enabled. Pick a setup path:"
+    echo ""
+    echo "  Web wizard (recommended for first run):"
+    echo "    1. sudo systemctl edit plex2jellyfin-web"
+    echo "       [Service]"
+    echo "       Environment=SUDO_USER=<your username>"
+    echo "    2. sudo systemctl enable --now plex2jellyfin-web"
+    echo "    3. open http://127.0.0.1:5522/ and complete setup"
+    echo "       (wizard enables the daemon and runs the initial library scan)"
+    echo ""
+    echo "  CLI wizard:"
+    echo "    1. sudo systemctl edit plex2jellyfin-daemon"
+    echo "       [Service]"
+    echo "       Environment=SUDO_USER=<your username>"
+    echo "    2. sudo plex2jellyfin setup"
+    echo ""
+    echo "  TUI installer (paths + services in one session):"
+    echo "    sudo plex2jellyfin-installer"
+    echo ""
+    echo "Docs: https://nomadcxx.github.io/plex2jellyfin/docs/"
+    echo ""
+}
+
+post_upgrade() {
+    echo "==> Reloading systemd..."
+    systemctl daemon-reload || true
+
+    _print_banner
+    echo "==> plex2jellyfin upgraded to v0.1.0!"
+    echo ""
+    echo "If services were already running:"
+    echo "  sudo systemctl restart plex2jellyfin-daemon plex2jellyfin-web"
+    echo ""
+    echo "Check: systemctl status plex2jellyfin-daemon plex2jellyfin-web"
+    echo "       plex2jellyfin version"
+    echo ""
+}
+
+pre_remove() {
+    echo "==> Stopping plex2jellyfin services..."
+    systemctl disable --now plex2jellyfin-web.service 2>/dev/null || true
+    systemctl disable --now plex2jellyfin-daemon.service 2>/dev/null || true
+    systemctl daemon-reload || true
+}

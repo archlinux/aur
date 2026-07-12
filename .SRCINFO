@@ -1,0 +1,19 @@
+pkgbase = plex2jellyfin
+	pkgdesc = Migrate a Plex library to Jellyfin and keep new downloads clean
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Nomadcxx/plex2jellyfin
+	install = plex2jellyfin.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = go>=1.25
+	depends = systemd
+	optdepends = jellyfin-server: companion plugin feedback loop
+	optdepends = ollama: optional AI rename assist
+	optdepends = sonarr: TV download integration
+	optdepends = radarr: movie download integration
+	source = plex2jellyfin-0.1.0.tar.gz::https://github.com/Nomadcxx/plex2jellyfin/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 12d554de15d9eb461fc77a9e6e0ed8dec70415142a7e54530d9df9bfba29bded
+
+pkgname = plex2jellyfin
