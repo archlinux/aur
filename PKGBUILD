@@ -1,6 +1,6 @@
 # Maintainer: Valentin Lukyanets <valikluks95@gmail.com>
 pkgname=draind
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Linux power management daemon inspired by Windows power options"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cmake' 'ninja')
 backup=('etc/draind/draind.json' 'etc/xdg/draind/draind-agent.json')
 install=draind.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vlukyanets/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('50201f04a06f3ea33de432ebc9b4fe65c7f62a9e6a7679cf72ced9ff2e668845')
+sha256sums=('4a749ae6789e2f72c398efee2077f9608189fb0ee6e6e5a011008539b1149cb6')
 options=('!debug')
 
 build() {
