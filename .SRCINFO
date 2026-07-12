@@ -1,7 +1,7 @@
 pkgbase = mercury
 	pkgdesc = The mercury language compiler.
 	pkgver = 22.01.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.mercurylang.org/
 	arch = i686
 	arch = x86_64
