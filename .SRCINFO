@@ -1,6 +1,6 @@
 pkgbase = vegad
-	pkgdesc = Daemon privilegiado do Vega, centro de controle do Lyra OS
-	pkgver = 1.3.3
+	pkgdesc = Daemon privilegiado do Vega, centro de controle para Linux
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/britors/Vega
 	install = vegad.install
@@ -24,7 +24,7 @@ pkgbase = vegad
 	optdepends = reflector: otimização de mirrors do Pacman no módulo Software
 	provides = lyraed
 	conflicts = lyraed
-	source = Vega::git+https://github.com/britors/Vega.git#tag=v1.3.3
+	source = Vega::git+https://github.com/britors/Vega.git#tag=v1.4.0
 	sha256sums = SKIP
 
 pkgname = vegad
