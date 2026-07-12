@@ -1,49 +1,47 @@
-# Maintainer: Christian Schendel <doppelhelix@gmail.com>
-# Heavily Inspired by: Mark Wagie <mark at manjaro dot org>
+# Maintainer: AlieeLinux <bazartroy531@gmail.com>
+
 pkgname=qt-sudo-git
-pkgdesc="A clone of LXQt sudo tool, without LXQt libs"
-pkgver=r9.4eaad52
+pkgver=r39.gf39b911
 pkgrel=1
-url="https://github.com/aarnt/qt-sudo"
+pkgdesc='A clone of LXQt sudo tool, without LXQt libs (Git version)'
 arch=('x86_64')
-license=(
-    'LGPL-2.1-or-later'
+url='https://github.com/aarnt/qt-sudo'
+license=('LGPL-2.1-only')
+depends=(
+  'gcc-libs'
+  'glibc'
+  'qt6-base'
+  'sudo'
 )
 makedepends=(
-    'git'
-    'qt6-tools'
+  'git'
+  'qt6-tools'
 )
-depends=(
-    'qt6-base'
-)
-optdepends=(
-    'opendoas: privilege elevation'
-    'sudo: privilege elevation'
-)
-source=("git+$url.git")
-sha256sums=('SKIP')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+source=("git+https://github.com/aarnt/qt-sudo.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${pkgname%-git}"
-    qmake6 \
-        PREFIX=/usr \
-        QMAKE_CFLAGS="${CFLAGS}" \
-        QMAKE_CXXFLAGS="${CXXFLAGS}" \
-        QMAKE_LFLAGS="${LDFLAGS}"
-    make
+  cd "${pkgname%-git}"
+
+  qmake6 \
+    PREFIX=/usr \
+    QMAKE_CFLAGS="${CFLAGS}" \
+    QMAKE_CXXFLAGS="${CXXFLAGS}" \
+    QMAKE_LFLAGS="${LDFLAGS}"
+
+  make
 }
 
 package() {
-    cd "${pkgname%-git}"
-    make INSTALL_ROOT="${pkgdir}" install
+  cd "${pkgname%-git}"
+
+  make INSTALL_ROOT="${pkgdir}" install  
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
