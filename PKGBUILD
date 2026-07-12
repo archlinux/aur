@@ -10,7 +10,7 @@
 
 pkgname=frank-geary-bin
 pkgver=0.11.2_frank.1
-pkgrel=3
+pkgrel=4
 pkgdesc='FrankGeary email client, prebuilt stable release binary'
 arch=('x86_64')
 url='https://github.com/akitaonrails/FrankGeary'
@@ -36,7 +36,7 @@ _tag='v0.11.2-frank.1'
 _asset='frank-geary-0.11.2_frank.1-x86_64.tar.zst'
 source=("${_asset}::${url}/releases/download/${_tag}/${_asset}")
 noextract=("${_asset}")
-sha256sums=('747843bbf2750e7cc738dbaf225afe809f88c8bdc35302661cde32fec49fa429')
+sha256sums=('1db5be1340f3bad1ea734be71cbb2adeca714eb6f19d068da85f8fe98bb94233')
 
 package() {
   bsdtar -xpf "${srcdir}/${_asset}" -C "${pkgdir}"
