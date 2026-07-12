@@ -15,14 +15,12 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/axmol"
-  # Genera la versión basada en el número de commits y el hash corto
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
   cd "$srcdir/axmol"
   git submodule update --init --recursive
-  # Descarga dependencias externas obligatorias del motor (ej. glslcc)
   pwsh setup.ps1
 }
 
@@ -39,7 +37,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  
-  # Instalación de la licencia obligatoria
   install -Dm644 axmol/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
