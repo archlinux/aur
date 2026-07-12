@@ -1,7 +1,7 @@
 # Maintainer: Til Kaiser <mail at tk154 dot de>
 pkgname=windscribe-v2-bin
 pkgver=2.23.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Windscribe GUI tool for Linux"
 arch=('x86_64')
 url="https://windscribe.com/guides/linux"
