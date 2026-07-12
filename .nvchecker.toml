@@ -1,0 +1,5 @@
+[git-wardrobe-bin]
+source = "github"
+github = "isinghsatyam/git-wardrobe"
+use_latest_release = true
+prefix = "v"
