@@ -1,0 +1,9 @@
+d /var/lib/etherpad 0750 etherpad etherpad -
+d /var/lib/etherpad/var 0750 etherpad etherpad -
+d /var/log/etherpad 0750 etherpad etherpad -
+z /etc/etherpad 0750 root etherpad -
+C /etc/etherpad/settings.json 0660 etherpad etherpad - /usr/share/etherpad/settings.json.arch
+C /var/lib/etherpad/var/installed_plugins.json 0640 etherpad etherpad - /usr/share/etherpad/installed_plugins.json
+d /opt/etherpad/src/plugin_packages 2775 root etherpad -
+d /opt/etherpad/src/plugin_packages/.versions 2775 root etherpad -
+z /opt/etherpad/src/node_modules 2775 root etherpad -

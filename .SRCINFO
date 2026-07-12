@@ -1,0 +1,27 @@
+pkgbase = etherpad-lite-bin
+	pkgdesc = Real-time collaborative editor for the web (upstream .deb build)
+	pkgver = 3.3.2
+	pkgrel = 1
+	url = https://etherpad.org
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = nodejs>=24
+	depends = ca-certificates
+	optdepends = libreoffice-fresh: import/export of doc/pdf/odf formats
+	optdepends = postgresql: PostgreSQL database backend
+	optdepends = mariadb: MySQL-compatible database backend
+	provides = etherpad-lite
+	conflicts = etherpad-lite
+	options = !debug
+	backup = etc/default/etherpad
+	source = etherpad.sysusers
+	source = etherpad.tmpfiles
+	sha256sums = ecb57e3ac038f09b9f593e920d73e13a9b2dd54659fdc68195e121c9da9fcf97
+	sha256sums = 4f5b24e9b4a1d73309d9b02ef52dd1417b26c2cda16249699280fa93453d5401
+	source_x86_64 = etherpad_3.3.2-1_amd64.deb::https://github.com/ether/etherpad-lite/releases/download/v3.3.2/etherpad_3.3.2-1_amd64.deb
+	sha256sums_x86_64 = 3bcee33d7a095e970cf8bc9e0276c9122696c5d26f19bbc26aaf29d6ea7708b6
+	source_aarch64 = etherpad_3.3.2-1_arm64.deb::https://github.com/ether/etherpad-lite/releases/download/v3.3.2/etherpad_3.3.2-1_arm64.deb
+	sha256sums_aarch64 = 4eac6080dfcedb12c525b6f3f9a955ca65f849582529653f38c7967630214fd9
+
+pkgname = etherpad-lite-bin
