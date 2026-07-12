@@ -2,15 +2,15 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 _pkgname=google-drive-ocamlfuse
 pkgname=google-drive-ocamlfuse-git
-pkgver=r819.6076cd8
+pkgver=r886.a8cb114
 pkgrel=1
 pkgdesc='FUSE-based file system backed by Google Drive, written in OCaml'
 arch=('x86_64')
 url='https://astrada.github.io/google-drive-ocamlfuse/'
 license=('MIT')
 depends=(
-'ocaml>=4.08.3'
-'ocamlfuse>=2.7.2'
+'ocaml>=4.08.0'
+'ocamlfuse>=3.10.0'
 'gapi-ocaml>=0.4.9'
 'ocaml-sqlite3>=1.6.1'
 'ocaml-extlib'
