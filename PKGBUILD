@@ -1,6 +1,6 @@
 # Maintainer: Omar Roth <roth@omar.yt>
 pkgname=doubletake-bin
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='AirPlay 2 mirroring sender for Linux (prebuilt release binary)'
 arch=('x86_64')
