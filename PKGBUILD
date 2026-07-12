@@ -3,8 +3,8 @@
 # Contributor: Josh Cass <archlinux.okyuf@passmail.net>
 
 pkgname=quarkuscli-bin
-pkgver=3.36.2
-checksum=ade6deef6e10bd0b031ca609ea7acad445c4425d3fb5a1b12b5cb109253e872b
+pkgver=3.37.2
+checksum=bb279814a87890a3bf3f7f13c34c0990794de11c2c60087093d5bc888a26c1c0
 pkgrel=1
 pkgdesc='Create projects, manage extensions and perform build and development tasks for Quarkus, the Kubernetes Native Java stack tailored for OpenJDK HotSpot and GraalVM.'
 url='https://github.com/quarkusio/quarkus'
