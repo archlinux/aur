@@ -1,0 +1,13 @@
+pkgbase = go-cli-simple
+	pkgdesc = A simple generic CLI tool template built with Go, Cobra, and Bubble Tea. This simple provides a foundation for building interactive command-line applications with a clean architecture and modern UI components.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://devan.gg/go-cli-simple
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = go-cli-simple-0.1.0.tar.gz::https://github.com/imdevan/go-cli-simple/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = REPLACE_WITH_ACTUAL_SHA256
+
+pkgname = go-cli-simple
