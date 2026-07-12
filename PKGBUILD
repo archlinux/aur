@@ -51,6 +51,10 @@ package() {
         install -Dm644 "$f" "$pkgdir/usr/share/hifi-suite/configs/$(basename "$f")"
     done
 
+    # Shell completions
+    install -Dm644 completions/hifi-suite.bash "$pkgdir/usr/share/bash-completion/completions/hifi-suite"
+    install -Dm644 completions/_hifi-suite "$pkgdir/usr/share/zsh/site-functions/_hifi-suite"
+
     # KDE Plasma widget
     if [ -d plasma-widget ]; then
         local wdir="$pkgdir/usr/share/plasma/plasmoids/hifi-suite"
