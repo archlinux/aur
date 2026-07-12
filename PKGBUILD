@@ -2,14 +2,14 @@
 # Contributor: Peter Mattern <pmattern at arcor dot de>
 
 pkgbase=wxgtk-git
-pkgname=(wxwidgets-gtk3-git wxwidgets-qt5-git wxwidgets-common-git)
-pkgver=3.3.1.r36.gd557e926b1
-pkgrel=2
+pkgname=(wxwidgets-gtk3-git wxwidgets-qt6-git wxwidgets-common-git)
+pkgver=3.3.3.1.r4.gfcdaa107fb
+pkgrel=1
 pkgdesc="GTK+3 implementation of wxWidgets API for GUI"
 arch=(x86_64)
 url="https://github.com/wxWidgets/wxWidgets"
 license=(LicenseRef-wxWindows_Library_Licence)
-makedepends=(git cmake gst-plugins-base glu webkit2gtk-4.1 libnotify qt5-base sdl2 libmspack gspell) #gnome-vfs
+makedepends=(git cmake gst-plugins-base glu webkit2gtk-4.1 libnotify qt6-base sdl2 libmspack gspell) #gnome-vfs
 source=("git+https://github.com/wxWidgets/wxWidgets.git"
         "git+https://github.com/wxWidgets/Catch.git"
         "git+https://github.com/wxWidgets/pcre.git"
@@ -76,7 +76,7 @@ build() {
 
   cmake --build build-gtk3
 
-  cmake -B build-qt5 -S wxWidgets -Wno-dev \
+  cmake -B build-qt6 -S wxWidgets -Wno-dev \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None \
     -DwxBUILD_TOOLKIT=qt \
@@ -91,7 +91,7 @@ build() {
     -DwxUSE_LIBMSPACK=ON \
     -DwxUSE_PRIVATE_FONTS=ON
 
-  cmake --build build-qt5
+  cmake --build build-qt6
 
 # Run configure to generate the Makefile, cmake doesn't install translations
   cd wxWidgets
@@ -100,7 +100,7 @@ build() {
 
 package_wxwidgets-common-git() {
   pkgdesc='Common libraries and headers for wxwidgets'
-  depends=(expat pcre2 libsecret)
+  depends=(expat pcre2 zlib curl glib2 xz)
   provides=(wxwidgets-common)
   conflicts=(wxwidgets-common)
 
@@ -115,7 +115,10 @@ package_wxwidgets-common-git() {
 
 package_wxwidgets-gtk3-git() {
   pkgdesc='GTK+3 implementation of wxWidgets API for GUI'
-  depends=(gtk3 gst-plugins-base-libs libsm wxwidgets-common-git libnotify libmspack sdl2)
+  depends=(gtk3 libsm wxwidgets-common-git libnotify libmspack sdl2 gspell glibc libwebp
+	   libjpeg-turbo libx11 gdk-pixbuf2 cairo gstreamer libxtst bash libglvnd libpng gst-plugins-bad-libs
+	   wayland glib2 fontconfig libtiff libxkbcommon
+	  )
   optdepends=('webkit2gtk-4.1: for webview support')
   provides=(wxwidgets-gtk3=${pkgver})
   conflicts=(wxwidgets-gtk3)
@@ -127,13 +130,13 @@ package_wxwidgets-gtk3-git() {
   install -Dm644 wxWidgets/docs/licence.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
-package_wxwidgets-qt5-git() {
-  pkgdesc='Qt5 implementation of wxWidgets API for GUI'
-  depends=(qt5-base wxwidgets-common-git libmspack sdl2 libtiff)
-  provides=(wxwidgets-qt5=${pkgver})
-  conflicts=(wxwidgets-qt5)
+package_wxwidgets-qt6-git() {
+  pkgdesc='Qt6 implementation of wxWidgets API for GUI'
+  depends=(wxwidgets-common-git libmspack sdl2 libtiff qt6-base bash libpng libglvnd glibc libjpeg-turbo)
+  #provides=(wxwidgets-qt5=${pkgver})
+  #conflicts=(wxwidgets-qt5)
 
-  DESTDIR="${pkgdir}" cmake --install build-qt5
+  DESTDIR="${pkgdir}" cmake --install build-qt6
   rm -r "${pkgdir}"/usr/{include,lib/libwx_base*,bin/wxrc*}
   rm -r "${pkgdir}"/usr/share/locale
 
