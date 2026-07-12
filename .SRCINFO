@@ -1,14 +1,14 @@
 pkgbase = fcitx5-pinyin-moegirl
 	pkgdesc = Fcitx 5 Pinyin Dictionary from moegirl.org wiki
-	pkgver = 20260511
+	pkgver = 20260712
 	pkgrel = 1
 	url = https://github.com/outloudvi/mw2fcitx
 	arch = any
 	license = MIT
 	license = CC-BY-NC-SA-3.0
-	source = moegirl-20260511.dict::https://github.com/outloudvi/mw2fcitx/releases/download/20260511/moegirl.dict
+	source = moegirl-20260712.dict::https://github.com/outloudvi/mw2fcitx/releases/download/20260712/moegirl.dict
 	source = LICENSE
-	sha256sums = 1fd499464c19259f4b3038b27d75d99bccc2ab71370a36d208178f8dfd693dde
+	sha256sums = 7c2ce1f699fe1d62fad08be93e279a699f898d06756db7d82322c41c32132b85
 	sha256sums = bd205072137049f94d14a2059a5635f41f29732f515c4b387d2f20c0b425ffd6
 
 pkgname = fcitx5-pinyin-moegirl
