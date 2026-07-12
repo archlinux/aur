@@ -1,7 +1,7 @@
 pkgbase = f3-qt
 	pkgdesc = A simple GUI for F3 - Fight Flash Fraud.
-	pkgver = 2.1.0
-	pkgrel = 6
+	pkgver = 2.2.1
+	pkgrel = 1
 	url = https://github.com/zwpwjwtz/f3-qt
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = f3-qt
 	depends = qt6-base
 	provides = f3-qt
 	conflicts = f3-qt-git
-	source = f3-qt-2.1.0::git+https://github.com/zwpwjwtz/f3-qt#commit=65d58d07e08a31753162df33eb9b517de66704e0
+	source = f3-qt-2.2.1::git+https://github.com/zwpwjwtz/f3-qt#commit=65d58d07e08a31753162df33eb9b517de66704e0
 	sha256sums = f7bdf322317d946e810648dd3acb662edaedddfa8fb76dab0f89f3ccdc2f8a72
 
 pkgname = f3-qt

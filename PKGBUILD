@@ -1,8 +1,8 @@
 # Maintainer: m8D2 <omui (at) proton mail (dot) com>
 
 pkgname=f3-qt
-pkgver=2.1.0
-pkgrel=6
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="A simple GUI for F3 - Fight Flash Fraud."
 arch=(i686 x86_64)
 url="https://github.com/zwpwjwtz/f3-qt"
