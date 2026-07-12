@@ -2,7 +2,7 @@
 # Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=python-puzpy
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Python library for reading and writing across lite crossword puzzle .puz files."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python-build' 'python-installer' 'python-setuptools')
 depends=('python')
 source=(https://files.pythonhosted.org/packages/source/p/${pkgname/python-/}/${pkgname/python-/}-${pkgver}.tar.gz)
-b2sums=('98ffe782975b1e51930bbc5fa19f3bd11c4dca49bff6fa751ec5acd4e6b09d6eefaab5dade25619591d0220bca7c3d3ab0ff5dc65e28fd0f40b96a05c5f000ad')
+b2sums=('3c7ba268d1059d27728dfec04feec48035945177b83b64b7f48e37850e36c3af17a47662265c577bacd3531bf090a9a1e2fdb0be23728dee7c5315e4fd27792c')
 
 build() {
   cd "${pkgname/python-/}-$pkgver"
