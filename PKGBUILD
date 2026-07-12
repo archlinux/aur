@@ -9,13 +9,14 @@ pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD-3-Clause-Modification')
 depends=(
   abseil-cpp
+  cpuinfo
   eigen
   gflags
   glibc
@@ -294,6 +295,7 @@ _prepare() {
   export USE_SYSTEM_NCCL=ON
   export USE_SYSTEM_PYBIND11=ON
   export USE_SYSTEM_EIGEN_INSTALL=ON
+  export USE_SYSTEM_CPUINFO=ON
   export USE_GOLD_LINKER=ON
   export NCCL_VERSION=$(pkg-config nccl --modversion)
   export NCCL_VER_CODE=$(sed -n 's/^#define NCCL_VERSION_CODE\s*\(.*\).*/\1/p' /usr/include/nccl.h)
