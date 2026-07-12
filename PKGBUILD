@@ -2,7 +2,7 @@
 
 pkgname=linux-soundboard-git
 _pkgname=linux-soundboard
-pkgver=2.0.2.r21.g6ec67bb
+pkgver=2.1.0.r37.g4ce7bce
 pkgrel=1
 pkgdesc="Native Linux soundboard with full Wayland/X11 support and virtual microphone support"
 arch=('x86_64')
@@ -73,6 +73,9 @@ package() {
 
   install -Dm755 "${srcdir}/target/release/linux-soundboard" "${pkgdir}/usr/bin/linux-soundboard"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  for legal_file in NOTICE.md THIRDPARTY_LICENSES.md THIRD_PARTY_NOTICES.html COMMERCIAL-LICENSE.md DONATIONS.md; do
+    install -Dm644 "$legal_file" "${pkgdir}/usr/share/doc/${pkgname}/$legal_file"
+  done
   install -Dm644 packaging/rpm/linux-soundboard.desktop \
     "${pkgdir}/usr/share/applications/com.linuxsoundboard.app.desktop"
 
