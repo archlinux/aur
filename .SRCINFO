@@ -1,11 +1,11 @@
 pkgbase = memo-bin
 	pkgdesc = 📓 Memo Life For You
-	pkgver = 0.0.20
+	pkgver = 0.0.22
 	pkgrel = 1
 	url = https://github.com/mattn/memo
 	arch = x86_64
 	license = MIT
-	source = https://github.com/mattn/memo/releases/download/v0.0.20/memo_v0.0.20_linux_amd64.tar.gz
-	b2sums = fa82d3b43b492e0a1007f9ac0a5bbee159096cba6e40955bd3066753ea4cb5391d7cc3e1eaa6b1a01b531bf04548d2c7f0c2fcaf4e0434c471028726365deddd
+	source = https://github.com/mattn/memo/releases/download/v0.0.22/memo_v0.0.22_linux_amd64.tar.gz
+	b2sums = fc0ebb41683c66d0a1b6cb7ed7c036ea676c09d91b2d37afcb346171af596bf487ddc7f129b5e160062d43af0eae6b84509887389f655af11361cb427f50434d
 
 pkgname = memo-bin
