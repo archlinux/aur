@@ -2,7 +2,7 @@
 
 pkgname='zoi-bin'
 _tag="Prod-Release-$pkgver"
-pkgver=1.21.1
+pkgver=1.22.1
 pkgrel=1
 pkgdesc="Advanced Package Manager & Environment Orchestrator (pre-compiled binary)"
 arch=('x86_64' 'aarch64')
@@ -10,12 +10,12 @@ url="https://gitlab.com/zillowe/zillwen/zusty/zoi"
 license=('Apache-2.0')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-depends=('git')
+depends=('git' 'gnupg')
 optdepends=(
   'bash-completion: for bash shell completion'
   'zsh: for zsh shell completion'
   'fish: for fish shell completion'
-  'less: for viewing files'
+  'bubblewrap: for running contained apps'
 )
 _license_url='https://gitlab.com/zillowe/zillwen/zusty/zoi/-/raw/main/LICENSE'
 
@@ -24,9 +24,9 @@ source_x86_64=("${pkgname%-bin}-linux-amd64.tar.zst::$url/-/releases/Prod-Releas
 source_aarch64=("${pkgname%-bin}-linux-arm64.tar.zst::$url/-/releases/Prod-Release-$pkgver/downloads/${pkgname%-bin}-linux-arm64.tar.zst"
   "LICENSE::$_license_url")
 
-sha512sums_x86_64=('de2eb196b898d308c97a431851abfac126ce78f7d121a5f939fe78e0b3423808ba280b0d2c2a3af840f7f77da5cb19bcccfcfabad96109a95bb436a2dab5262f'
+sha512sums_x86_64=('73eee48c7159cb498db22cf2bfc14d9fffef5f44e9f9b9cf8fc84db60ed732419f0113b34308bda4283a5cfec88a504331c691a8d342ff119889a7c3e98c6889'
   'e2cca3fc757382874694b00e85372aa114ef6f6196d767ba445b4499f170ef6589e3aab60d41615bdc1a74596a1f0f6b148a934b19b69e639de1fddf6dd2b2ea')
-sha512sums_aarch64=('8888d1bfe1be1cf64768765c8947e43eb7fa805d53985b9592e5dde7de95188e1b75ca5ba04d7bc57ebe79f1037aba44c31118e6291dcbdf7de40f75c6846db7'
+sha512sums_aarch64=('b08c2e506203cddb3a6cf24aa749835dfe70f41e3380e7bfaada51bbcd72d6aab750ecd1f79b39649093e22f872b64024f4a223c209b7b9b78891d4fc5cdb1e2'
   'e2cca3fc757382874694b00e85372aa114ef6f6196d767ba445b4499f170ef6589e3aab60d41615bdc1a74596a1f0f6b148a934b19b69e639de1fddf6dd2b2ea')
 
 package() {
