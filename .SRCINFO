@@ -1,6 +1,6 @@
 pkgbase = shiorii-bin
 	pkgdesc = Modern offline-first eBook library manager built with Tauri, React, and Rust
-	pkgver = 1.59.10
+	pkgver = 1.59.11
 	pkgrel = 1
 	url = https://github.com/vinayydv3695/Shiori
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = shiorii-bin
 	conflicts = shiori-rin-bin
 	conflicts = shiori-ebook
 	conflicts = shiori-ebook-bin
-	source = Shiori_1.59.10_linux_amd64.tar.gz::https://github.com/vinayydv3695/Shiori/releases/download/v1.59.10/Shiori_1.59.10_linux_amd64.tar.gz
-	sha256sums = ceff46a3d215700b0b261c020c0470654778711ce12b510c346678d0c06e24b8
+	source = Shiori_1.59.11_linux_amd64.tar.gz::https://github.com/vinayydv3695/Shiori/releases/download/v1.59.11/Shiori_1.59.11_linux_amd64.tar.gz
+	sha256sums = 9761a2b2acf91bfe693cb0560fc846ad71221c6df58a3027e369fc682b183a5a
 
 pkgname = shiorii-bin
