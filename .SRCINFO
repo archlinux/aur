@@ -1,0 +1,18 @@
+pkgbase = pilotty
+	pkgdesc = Daemon-managed PTY sessions for AI agents to interact with terminal applications
+	pkgver = 0.0.11
+	pkgrel = 1
+	url = https://github.com/msmps/pilotty
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	provides = pilotty
+	options = !strip
+	source = pilotty-0.0.11.tgz::https://github.com/msmps/pilotty/archive/refs/tags/v0.0.11.tar.gz
+	sha256sums = 2da7452ab31af7f06b41d483d5cb904b0455cdb2ce9751b9bc43edf11bce44fa
+
+pkgname = pilotty
