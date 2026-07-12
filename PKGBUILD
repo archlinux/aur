@@ -1,7 +1,7 @@
 # Maintainer: AndyHazz <andy.nmc@gmail.com>
 pkgname=libfprint-goodix53x5
 pkgver=1.94.10
-pkgrel=9
+pkgrel=10
 pkgdesc="libfprint with Goodix HTK32 (27c6:5335/5385/5395) driver - Dell XPS 13 9305 / XPS 13 7390 / XPS 15 9570"
 arch=('x86_64')
 url="https://github.com/AndyHazz/goodix53x5-libfprint"
@@ -16,7 +16,7 @@ conflicts=('libfprint' 'libfprint-2')
 options=(!debug)
 install="$pkgname.install"
 source=("git+https://gitlab.freedesktop.org/libfprint/libfprint.git#tag=v${pkgver}"
-        "git+https://github.com/AndyHazz/goodix53x5-libfprint.git#commit=59c3c783835b64adf6568c48eb24d697c7c4021f")
+        "git+https://github.com/AndyHazz/goodix53x5-libfprint.git#commit=d37cf8cb002db8030b97badd044ffef4f36ff347")
 sha256sums=('SKIP'
             'SKIP')
 
@@ -33,7 +33,11 @@ prepare() {
 
 build() {
   cd "$srcdir/libfprint"
-  meson setup builddir --prefix=/usr -Dinstalled-tests=false -Ddoc=false
+  # introspection is disabled: with OpenCV 5, g-ir-scanner links libfprint-2
+  # against the full OpenCV module set (opencv_viz/opencv_hdf ...), which pull
+  # unmet VTK/HDF5 deps and break the introspection link. The driver does not
+  # need the typelib, so skip it.
+  meson setup builddir --prefix=/usr -Dinstalled-tests=false -Ddoc=false -Dintrospection=false
   ninja -C builddir
 }
 
