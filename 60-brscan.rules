@@ -1,0 +1,6 @@
+# Mark Brother USB scanner interfaces for SANE/logind access.
+ACTION!="add|change", GOTO="brscan_rules_end"
+SUBSYSTEM!="usb", GOTO="brscan_rules_end"
+ENV{DEVTYPE}!="usb_device", GOTO="brscan_rules_end"
+ATTR{idVendor}=="04f9", ENV{libsane_matched}="yes", TAG+="uaccess"
+LABEL="brscan_rules_end"

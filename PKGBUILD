@@ -1,75 +1,104 @@
-# Maintainer: dawidd6 <dawidd0811@gmail.com>
-# Contributor: kimotori <kimotori@gmail.com>
-# Contributor: Hervé Cauwelier <herve ¤ oursours.net>
+# Maintainer: ihipop <ihipop@users.noreply.github.com>
+
 pkgname=brscan
-pkgver=0.2.4
-pkgrel=1
-pkgdesc="SANE drivers from Brother for USB scanners"
-arch=('i686' 'x86_64')
-url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
-license=('custom:brother commercial license')
-depends=('sane' 'libusb-compat')
-install="$pkgname.install"
-if [ "$CARCH" == "i686" ]; then
-   source=(
-		"http://www.brother.com/pub/bsc/linux/dlf/$pkgname-$pkgver-0.i386.rpm"
-		'scanner-license.txt'
-		)
-	md5sums=('cd93d6b435adca6bc07f321fe716faea' '1bd5f896f3e97fe6d53a85b4d5a4ea79')
-else
-     source=(
-		"http://www.brother.com/pub/bsc/linux/dlf/$pkgname-$pkgver-0.x86_64.rpm"
-		'scanner-license.txt'
-		)
-	md5sums=('f1b3e42fab7bf9ad157428edfd4aa589' '1bd5f896f3e97fe6d53a85b4d5a4ea79')
-fi
+pkgver=1.0.1
+pkgrel=6
+pkgdesc="Open-source SANE backend for Brother MFC/DCP scanners"
+arch=('x86_64' 'aarch64' 'armv7h')
+url="https://github.com/dmikushin/brscan"
+license=('GPL-2.0-only' 'LGPL-2.1-only' 'LicenseRef-Brother')
+depends=('sane' 'libusb-compat' 'libjpeg-turbo')
+makedepends=('cmake' 'libusb' 'ninja' 'patchelf' 'pkgconf')
+conflicts=('brscan-bin' 'brscan2' 'brscan3' 'brscan4' 'brscan5')
+backup=('etc/sane.d/dll.d/brscan.conf')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+  'brscan-1.0.1-arch-fixes.patch'
+  'brscan.conf'
+  '60-brscan.rules'
+)
+b2sums=('2b4250ea0f02a1aef9b6c7bfb8ab38745ff11387f0545e982f802c54afa07103d99d249e06807bace81e1c510b2422bfae2b0b78df15a66a5ddeae14360db5b5'
+        '8a4e0009f141396040d24ee56c66e1f5bab7989c882924eb0e6ae4c51e0fc15045d1a4b40e18761d1423da6a2326e9c0197437771024762d7914469c2e020a05'
+        'ab8364e68de0fbc8cfe82013f2a1313b477f05db03dcf0bbff3345aee2d9ce6e82205babf9b2cccb858728b209d0e0d3450d5ee027faead6776f2bdb0197bdd4'
+        'e81319e87083d8785489a3c4c5621939c821f3e9d78d39b7272f739e791720ee02aadf6152c96bfb0c319b1770841a08e7c60617aa71d031827634d945d6e25f')
+
 prepare() {
-#  do not install in '/usr/local'
-	if [ -d $srcdir/usr/local/Brother ]; then
-		install -d $srcdir/usr/share
-		mv $srcdir/usr/local/Brother/ $srcdir/usr/share/brother
-		rm -rf $srcdir/usr/local
-	    sed -i 's|/usr/local/Brother|/usr/share/brother|g' `grep -lr '/usr/local/Brother' ./`
-		ln -sf /usr/share/brother/sane/brsaneconfig $srcdir/usr/bin/brsaneconfig
-        fi
+  cd "${pkgname}-${pkgver}"
+
+  patch -Np1 -i "${srcdir}/brscan-1.0.1-arch-fixes.patch"
+
+  awk '
+    BEGIN {
+      model = "0x02d1,14,1,\"MFC-1810\""
+    }
+    /^\[Support Model\]$/ {
+      in_support = 1
+      saw_support = 1
+      print
+      next
+    }
+    function flush_blanks() {
+      if (pending_blanks != "") {
+        printf "%s", pending_blanks
+        pending_blanks = ""
+      }
+    }
+    in_support && $0 == model {
+      found = 1
+    }
+    in_support && /^[[:space:]]*$/ {
+      pending_blanks = pending_blanks $0 ORS
+      next
+    }
+    in_support && /^\[/ {
+      if (!found) {
+        print model
+      }
+      flush_blanks()
+      in_support = 0
+      print
+      next
+    }
+    in_support {
+      flush_blanks()
+      print
+      next
+    }
+    {
+      print
+    }
+    END {
+      if (!saw_support) {
+        exit 1
+      }
+      if (in_support && !found) {
+        print model
+      }
+      flush_blanks()
+    }
+  ' data/Brsane.ini > data/Brsane.ini.new
+  mv data/Brsane.ini.new data/Brsane.ini
 }
+
+build() {
+  cmake -S "${pkgname}-${pkgver}" -B build -G Ninja \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_C_FLAGS="${CFLAGS} ${CPPFLAGS} -ffile-prefix-map=${srcdir}=. -fmacro-prefix-map=${srcdir}=." \
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS} ${CPPFLAGS} -ffile-prefix-map=${srcdir}=. -fmacro-prefix-map=${srcdir}=." \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBRSCAN_BUILD_TESTS=OFF \
+    -Wno-dev
+  cmake --build build
+}
+
 package() {
-cp -R "$srcdir/usr" "$pkgdir"
-install -m 644 -D scanner-license.txt "${pkgdir}/usr/share/licenses/${pkgname}/scanner-licence.txt"
-# On x86_64, install in "/usr/lib" instead of "/usr/lib64"
-cd "$pkgdir/usr/"
-if	[ "$CARCH" == "x86_64" ]; then
-	mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
-# some links are wrong now - recreate them
-	for fn in 	lib/libbrcolm.so.1.0.1 \
-			lib/libbrscandec.so.1.0.0 \
-			lib/sane/libsane-brother.so.1.0.7
-	do
-# break, if file does not exist
-		if [ ! -f $fn ] ; then
-			echo "ERROR: $fn does not exist"
-			return 1
-		fi
-		base=`echo $fn | cut -d. -f1`.so
-		major=`echo $fn | cut -d. -f3`
-		ln -sf `basename $fn` $base
-		ln -sf `basename $fn` $base.$major
-	done
-else
-# some links are wrong now - recreate them
-	for fn in 	lib/libbrcolm.so.1.0.0 \
-			lib/libbrscandec.so.1.0.0 \
-			lib/sane/libsane-brother.so.1.0.7
-	do
-# break, if file does not exist
-		if [ ! -f $fn ] ; then
-			echo "ERROR: $fn does not exist"
-			return 1
-		fi
-		base=`echo $fn | cut -d. -f1`.so
-		major=`echo $fn | cut -d. -f3`
-		ln -sf `basename $fn` $base
-		ln -sf `basename $fn` $base.$major
-	done
-fi
+  DESTDIR="${pkgdir}" cmake --install build
+  patchelf --set-rpath '$ORIGIN/../lib/sane' "${pkgdir}/usr/bin/brsaneconfig"
+
+  install -Dm644 brscan.conf "${pkgdir}/etc/sane.d/dll.d/brscan.conf"
+  install -Dm644 60-brscan.rules "${pkgdir}/usr/lib/udev/rules.d/60-brscan.rules"
+
+  install -Dm644 "${pkgname}-${pkgver}/Copying" "${pkgdir}/usr/share/licenses/${pkgname}/Copying"
+  install -Dm644 "${pkgname}-${pkgver}/copying.lib" "${pkgdir}/usr/share/licenses/${pkgname}/copying.lib"
+  install -Dm644 "${pkgname}-${pkgver}/copying.brother" "${pkgdir}/usr/share/licenses/${pkgname}/copying.brother"
 }

@@ -1,0 +1,30 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a4a65e4..5fd842c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -62,8 +62,9 @@ target_link_libraries(sane-brother dl pthread usb ${LIBUSB_LIBRARIES} ${JPEG_LIB
+ set_target_properties(sane-brother PROPERTIES SOVERSION 1)
+ 
+ # BRSANESUFFIX=2 code loads libbrscandec2.so and libbrcolm2.so by name
+ install(CODE "
+-  execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink libbrscandec.so \${CMAKE_INSTALL_PREFIX}/lib/libbrscandec2.so)
+-  execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink libbrcolm.so \${CMAKE_INSTALL_PREFIX}/lib/libbrcolm2.so)
++  file(MAKE_DIRECTORY \$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/lib)
++  execute_process(COMMAND \${CMAKE_COMMAND} -E create_symlink libbrscandec.so \$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/lib/libbrscandec2.so)
++  execute_process(COMMAND \${CMAKE_COMMAND} -E create_symlink libbrcolm.so \$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/lib/libbrcolm2.so)
+ ")
+ 
+ add_executable(brsaneconfig
+diff --git a/libsane-brother/brother_brscan4.h b/libsane-brother/brother_brscan4.h
+index 3bdaed8..ce9b88a 100644
+--- a/libsane-brother/brother_brscan4.h
++++ b/libsane-brother/brother_brscan4.h
+@@ -7,7 +7,7 @@ extern "C" {
+ 
+ #define BRSCAN4_READ_CACHE_SIZE 0x20400
+ #define BRSCAN4_MAX_REQUEST_SIZE 0x20200
+-#define BRSCAN4_MAX_USB_READ_SIZE 0x7FFF
++#define BRSCAN4_MAX_USB_READ_SIZE 0x7E00
+ 
+ typedef int (*brscan4_read_fn)(void *ctx, unsigned char *dst, int size);
+ 

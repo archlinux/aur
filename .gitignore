@@ -1,0 +1,9 @@
+/src/
+/pkg/
+/*.log
+/*.pnm
+/*.pkg.tar*
+/*.tar.gz
+/*.tar.xz
+/*.tar.zst
+!/brscan-1.0.1-arch-fixes.patch
