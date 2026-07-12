@@ -1,6 +1,6 @@
 # Maintainer: Omar Roth <roth@omar.yt>
 pkgname=doubletake-git
-pkgver=0.3.2.r0.g5e071e0
+pkgver=0.4.0.r0.g364ea84
 pkgrel=1
 pkgdesc='AirPlay 2 mirroring sender for Linux (latest git commit)'
 arch=('x86_64')
