@@ -1,7 +1,7 @@
 # Maintainer: David Kantun <dkantun@gmail.com>
 
 pkgname=libria
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="Application for professional book creation and typesetting — book editor and layout tool with real-time preview, EPUB/DOCX/PDF export, and spell checking"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('electron>=32' 'ghostscript')
 makedepends=('bun' 'python')
 provides=("${pkgname}")
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2ac491eeb7087b7559475e58d4e953b44cccda2d96571c01a09f72e02f29fdf8')
+sha256sums=('4ff3ac1257359664f8e4c161494743bfb5a04ba81842352a89e0183f62e62f65')
 
 prepare() {
   cd "${srcdir}/libria-${pkgver}"
