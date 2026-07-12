@@ -1,13 +1,14 @@
 pkgbase = go-cli-template
 	pkgdesc = A generic CLI tool template built with Go, Cobra, and Bubble Tea. This template provides a foundation for building interactive command-line applications with a clean architecture and modern UI components.
-	pkgver = 0.2.0
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://devan.gg/go-cli-template
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = go
-	source = go-cli-template-0.2.0.tar.gz::https://github.com/imdevan/go-cli-template/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 57c819984cf93a6f536b6570069e906a41cd2c3c82c145bc432f9b77117bda04
+	source_x86_64 = go-cli-template-linux-amd64-0.2.2.tar.gz::https://github.com/imdevan/go-cli-template/releases/download/v0.2.2/go-cli-template-linux-amd64.tar.gz
+	sha256sums_x86_64 = baab5e1167b264e47aef7003344e4eab969fe473fdbabb9dc69e4652c60ddd54
+	source_aarch64 = go-cli-template-linux-arm64-0.2.2.tar.gz::https://github.com/imdevan/go-cli-template/releases/download/v0.2.2/go-cli-template-linux-arm64.tar.gz
+	sha256sums_aarch64 = 0b2004b4e53c3411672fd9a13fc28718e2d0820d0715199abdc56b55024d64a9
 
 pkgname = go-cli-template

@@ -1,28 +1,23 @@
 # Maintainer: hi@devan.gg
 pkgname=go-cli-template
 _binname=go-cli-template
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A generic CLI tool template built with Go, Cobra, and Bubble Tea. This template provides a foundation for building interactive command-line applications with a clean architecture and modern UI components."
 arch=('x86_64' 'aarch64')
 url="https://devan.gg/go-cli-template"
 license=('MIT')
 depends=()
-makedepends=('go')
-source=("${_binname}-${pkgver}.tar.gz::https://github.com/imdevan/go-cli-template/archive/refs/tags/v0.2.0.tar.gz")
-sha256sums=('57c819984cf93a6f536b6570069e906a41cd2c3c82c145bc432f9b77117bda04')
 
-build() {
-  cd "${_binname}-${pkgver}"
-  export CGO_ENABLED=0
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -ldflags="-s -w" -o ${_binname} ./cmd/${_binname}
-}
+source_x86_64=("${_binname}-linux-amd64-${pkgver}.tar.gz::https://github.com/imdevan/go-cli-template/releases/download/v${pkgver}/${_binname}-linux-amd64.tar.gz")
+source_aarch64=("${_binname}-linux-arm64-${pkgver}.tar.gz::https://github.com/imdevan/go-cli-template/releases/download/v${pkgver}/${_binname}-linux-arm64.tar.gz")
+sha256sums_x86_64=('baab5e1167b264e47aef7003344e4eab969fe473fdbabb9dc69e4652c60ddd54')
+sha256sums_aarch64=('0b2004b4e53c3411672fd9a13fc28718e2d0820d0715199abdc56b55024d64a9')
 
 package() {
-  cd "${_binname}-${pkgver}"
-  install -Dm755 ${_binname} "${pkgdir}/usr/bin/${_binname}"
-  if [ -f LICENSE ]; then
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  if [ "${CARCH}" = "x86_64" ]; then
+    install -Dm755 "${srcdir}/${_binname}-linux-amd64" "${pkgdir}/usr/bin/${_binname}"
+  elif [ "${CARCH}" = "aarch64" ]; then
+    install -Dm755 "${srcdir}/${_binname}-linux-arm64" "${pkgdir}/usr/bin/${_binname}"
   fi
 }
