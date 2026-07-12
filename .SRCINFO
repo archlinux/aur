@@ -1,13 +1,14 @@
 pkgbase = axmol-bin
 	pkgdesc = A multi-platform 2D/3D game engine, fork of Cocos2d-x (Stable release package)
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/axmolengine/axmol
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = python
 	depends = glu
 	depends = glew
 	depends = glfw-x11
