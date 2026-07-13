@@ -2,7 +2,7 @@
 
 pkgname=python-certbot-dns-aliyun-esa
 _name=${pkgname#python-}
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Aliyun ESA DNS Authenticator plugin for Certbot"
 provides=(${pkgname})
@@ -29,7 +29,7 @@ makedepends=(
 optdepends=()
 license=('Apache-2.0')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('8b8cde526c33b188807992f32a5f2ed757bf0cfa0b765c5bc0c2dfb425c00bb6')
+sha256sums=('6d73e5799f125d797203884f03c5aeae8a1b77012d2c3e4eda1bc134f2de4590')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
