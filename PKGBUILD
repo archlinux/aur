@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname='Yank Note'
-pkgver=3.90.0
-_electronversion=38
+pkgver=3.92.1
+_electronversion=41
 _nodeversion=22
 pkgrel=1
 pkgdesc="A highly extensible Markdown editor. Version control, AI completion, mind map, documents encryption, code snippet running, integrated terminal, chart embedding, HTML applets, Reveal.js, plug-in, and macro replacement.(Use system-wide electron)"
@@ -30,7 +30,7 @@ source=(
     "${pkgname}.git::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('388157814577df4ce1628fc7b76ca08629152ea03cd4d7a968d954b648d205c6'
+sha256sums=('71630b79410bbd1fdefe7381e4cb1e965aafe5ce314bd0cdc245e7211ad648c5'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -48,16 +48,17 @@ _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _set_build_env() {
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    local HOME="${srcdir}/.electron-gyp"
-    local electronDist="/usr/lib/electron${_electronversion}"
+    export HOME="${srcdir}/.electron-gyp"
     mkdir -p "${srcdir}/.electron-gyp"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
             export YARN_REGISTRY="https://registry.npmmirror.com"
             export ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
             export ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
             export YARN_CACHE_FOLDER="${srcdir}/.yarn/cache"
             export YARN_PLUGINS_FOLDER="${srcdir}/.yarn/plugins"
             export YARN_GLOBAL_FOLDER="${srcdir}/.yarn/global"
@@ -101,8 +102,9 @@ build() {
     NODE_ENV=development    yarn node scripts/download-pandoc.js
     NODE_ENV=development    yarn node scripts/download-plantuml.js
     NODE_ENV=production     yarn run build
-    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder.json
-    ln -sf "/usr/bin/rg" "${srcdir}/${pkgname}.git/out/linux-unpacked/resources/app.asar.unpacked/node_modules/@vscode/ripgrep/bin/rg"
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}" --config electron-builder.json
+    local _app_dir=$(_get_app_dir)
+    ln -sf "/usr/bin/rg" "${_app_dir}/resources/app.asar.unpacked/node_modules/@vscode/ripgrep/bin/rg"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
