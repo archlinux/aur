@@ -1,14 +1,14 @@
 pkgbase = truealter-cli
 	pkgdesc = ALTER identity CLI -- login once, authenticated everywhere
-	pkgver = 0.8.28
+	pkgver = 0.8.35
 	pkgrel = 1
 	url = https://truealter.com
 	arch = any
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs>=20
-	noextract = cli-0.8.28.tgz
-	source = https://registry.npmjs.org/@truealter/cli/-/cli-0.8.28.tgz
-	sha256sums = 6d02733958327e86771d881eff1d6814155141d5ee881411806c1ffb00fb0566
+	noextract = cli-0.8.35.tgz
+	source = https://registry.npmjs.org/@truealter/cli/-/cli-0.8.35.tgz
+	sha256sums = 73eb167a299fe2bbffc354479da07c2ae2a2f8a8ea333a084c5dab1ff84f8a4b
 
 pkgname = truealter-cli
