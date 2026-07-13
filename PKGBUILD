@@ -15,11 +15,13 @@ url="https://github.com/frappe/${_pkgname}/"
 license=("AGPL-3.0-only")
 # git is also a makedepend (VCS source); namcap flags the redundancy either way.
 makedepends=("git" "npm")
-depends=("git" "nginx" "nodejs" "python" "rsync" "uv" "valkey")
+depends=("git" "nodejs" "python" "rsync" "uv" "valkey")
 # One of the two database servers is required; there is no way to express
-# alternative dependencies in a PKGBUILD.
+# alternative dependencies in a PKGBUILD. nginx is only needed for production
+# deploys (bench setup production); development runs without it.
 optdepends=("mariadb: Site database (either MariaDB or PostgreSQL is required)"
-    "postgresql: Site database (either MariaDB or PostgreSQL is required)")
+    "postgresql: Site database (either MariaDB or PostgreSQL is required)"
+    "nginx: Reverse proxy for production deployments")
 provides=("frappe-pilot" "bench")
 conflicts=("frappe-pilot" "frappe-bench")
 install="${pkgname}.install"
