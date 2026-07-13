@@ -1,6 +1,6 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname=fluux-messenger
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="A fast, modern, cross-platform XMPP client for communities and organizations."
 arch=('x86_64' 'aarch64')
@@ -41,7 +41,7 @@ prepare() {
     cd "$pkgname-$pkgver"
 
     for resolution in "${_resolutions[@]}" ; do
-        rsvg-convert --width=$resolution --height=$resolution apps/fluux/src-tauri/icons/icon-source.svg > "$pkgname-$resolution.png"
+        rsvg-convert --width=$resolution --height=$resolution apps/fluux/src-tauri/icons/icon-variants/hollow/icon-source.svg > "$pkgname-$resolution.png"
     done
 
     npm ci --cache "${srcdir}/npm-cache"
@@ -76,12 +76,12 @@ package() {
     cd "$pkgname-$pkgver"
     install -Dm755 apps/fluux/src-tauri/target/release/fluux "$pkgdir"/usr/bin/fluux-messenger
     install -Dm644 packaging/debian/fluux-messenger.desktop -t "$pkgdir"/usr/share/applications/
-    install -vDm 644 apps/fluux/src-tauri/icons/icon-source.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
+    install -vDm 644 apps/fluux/src-tauri/icons/icon-variants/hollow/icon-source.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
     for resolution in "${_resolutions[@]}" ; do
         install -vDm 644 "$pkgname-$resolution.png" "$pkgdir/usr/share/icons/hicolor/${resolution}x${resolution}/apps/$pkgname.png"
     done
 }
 
 sha512sums=(
-'a7ba8b823474008aa5af8f0291e42ba75f99141fc3e73fa2789114d1f49f36c585b2fd6b7c14c31e7114c70581fe87ebf871276f78228f8efee1df27585fa191'
+'2666b971c9ad688c7f23768e01ac02e1ff1bc4f3652deb02a46dc78dbc70ae6e2ccd0c9fd87c696658e5748f99e365f1c372ff197ac1bee890dbf06bc12fa233'
 )
