@@ -6,7 +6,7 @@ _appname=oy
 pkgname=${_gitname}-bin
 pkgdesc="A diff viewer that works two ways: step through changes or review a classic scrollable diff"
 
-pkgver=0.1.46
+pkgver=0.1.47
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -48,7 +48,7 @@ sha256sums=('ada39b6fcd5ff630d02ab5b802a0000cc688ef6c1f1e05778e363db63d1df4a3'
             '4a54c15cbc1614dc129c36d1d98cb980550099e682692bd7ebc2a9b993c35771'
             'ec6ac087fa0b1328a204bf06cd45098f4ec1155898ef926986dc78ff737376c7'
             '6a3476fa886d241ec2a08b6739b2f927b7cc071b4a160797aa7b51622fdaf7c9'
-            '0e88d68c7cb71ebfa133ab8816ec0850a6bc65a0a27524dad15b6cab397cccd8'
+            '578d91618aa3afea47d6da6cf275c0645c26e94920f16a38af41fbfe31d3c5f0'
             'f587fb926f2622adcd842715dbd89155bbff5a4db4afbb378f7fe0521c7a95a9'
             'a5da4efcf1e2a6309240fbce7fd18a7ccc8d44f825c9b7406ead53ee9d997861'
             'd21b588b43d757e3d442de40f0d183aa7f6e94202973c5bd4d10c38154599866'
@@ -58,7 +58,7 @@ sha256sums=('ada39b6fcd5ff630d02ab5b802a0000cc688ef6c1f1e05778e363db63d1df4a3'
             'e87471d7c2944cfe49c9e1254ac14fe8fc1dda5826b079d3a488c53dd314918b'
             'd81308529db4f60ab7b16e2c913c346808dc31c84b8e57ac602069e32e720b94'
             '2f10208524d1fe121283259377cad67b846a4ddde30a513968a355e468dde978')
-sha256sums_x86_64=('aa3f53ed5464cb8dbba7d2821b6f24ef2d56eb1dbd6b6759b6f4135730460260')
+sha256sums_x86_64=('6a910d3252e67bbfabfe161b2bf3dc97c6b19577ec96073fc10f3356611f5c32')
 
 
 package() {
