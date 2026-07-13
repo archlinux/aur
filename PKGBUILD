@@ -2,7 +2,7 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=lldap
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Light LDAP implementation for authentication'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -11,8 +11,8 @@ license=('GPL3')
 depends=('glibc' 'gcc-libs')
 makedepends=('git' 'rust' 'wasm-pack' 'rust-wasm' 'wasm-bindgen')
 backup=('etc/lldap.toml')
-options=('!lto')
-_commit='5e83ed8eb0755af831ad36f114300299cc703615'
+options=('!lto' '!strip')
+_commit='48a0a8d961f32bd8e3263b202053ce49a6c94781'
 source=(
   "$pkgname::git+$url#commit=$_commit"
   'config-template.patch'
