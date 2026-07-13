@@ -2,7 +2,7 @@
 
 pkgname=desktopforge
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A small Qt6 GUI tool for creating and editing .desktop launcher files (the freedesktop.org Desktop Entry Specification), without hand-editing INI syntax in a text editor."
 arch=('x86_64' 'aarch64')
 url="https://github.com/user14923929/desktopfileforge"
