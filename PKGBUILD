@@ -26,7 +26,7 @@ source=("git+${url}#tag=v${pkgver}"
         "reitti.conf"
         "reitti-nginx.conf"
         "application-systemd.properties")
-sha256sums=('054b9aea1a145ea02181269a9db3b0b6061bc9eb2e8f64ad44368cf558086da8'
+sha256sums=('08a1215f8ec545b69e8393b3f93268f5eeb53c69e6bdc7a6f651f52456bf2cc9'
             '3a36daca90c91af2a38c82aeed1d5309984c9eccc07e325f2c477843d1e83f69'
             'b2304c791f5d40c8427bdb329653edbbfedf871d1e2e1b7ef2bf96cf0367a3a0'
             '6d3fa7035e4f59b5b30a487d01358d8af24bc3d4d8f030e5d2d6512155ddb92e'
