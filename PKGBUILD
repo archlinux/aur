@@ -6,7 +6,7 @@ pkgdesc="Zero-config audio suite for wireless headsets: volume control, surround
 arch=('any')
 url="https://github.com/Pakrohk/linux-hifi-suite"
 license=('MIT')
-depends=('python' 'typer' 'alsa-utils' 'pipewire' 'pipewire-alsa' 'pipewire-pulse')
+depends=('python' 'python-typer' 'alsa-utils' 'pipewire' 'pipewire-alsa' 'pipewire-pulse')
 makedepends=('git')
 optdepends=(
     'noise-suppression-for-voice: RNNoise LADSPA plugin (recommended for NC)'
