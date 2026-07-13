@@ -1,7 +1,7 @@
 pkgbase = spark-store-tui
 	pkgdesc = Native terminal UI for Spark Store software management
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Xynrin/spark-store-tui
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = spark-store-tui
 	depends = ca-certificates
 	optdepends = chafa: terminal image previews
 	optdepends = sudo: install and uninstall local packages as a non-root user
-	source = https://github.com/Xynrin/spark-store-tui/releases/download/v0.8.3/spark-store-tui-source-0.8.3.tar.gz
-	sha256sums = 1c9d99f4ba3916811801554f6a01b4afc6501acd4ab3a1ecc34d9a0cfdd452eb
+	source = spark-store-tui-2608421d1826c3897b165ff6b2e15629c140509e.tar.gz::https://codeload.github.com/Xynrin/spark-store-tui/tar.gz/2608421d1826c3897b165ff6b2e15629c140509e
+	sha256sums = 3106eb554728f60918f15757539c73813aa2c267c405d996157d4acb1a2f84c1
 
 pkgname = spark-store-tui

@@ -2,7 +2,8 @@
 
 pkgname=spark-store-tui
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
+_commit=2608421d1826c3897b165ff6b2e15629c140509e
 pkgdesc='Native terminal UI for Spark Store software management'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Xynrin/spark-store-tui'
@@ -13,16 +14,16 @@ optdepends=(
   'chafa: terminal image previews'
   'sudo: install and uninstall local packages as a non-root user'
 )
-source=("https://github.com/Xynrin/${pkgname}/releases/download/v${pkgver}/${pkgname}-source-${pkgver}.tar.gz")
-sha256sums=('1c9d99f4ba3916811801554f6a01b4afc6501acd4ab3a1ecc34d9a0cfdd452eb')
+source=("${pkgname}-${_commit}.tar.gz::https://codeload.github.com/Xynrin/${pkgname}/tar.gz/${_commit}")
+sha256sums=('3106eb554728f60918f15757539c73813aa2c267c405d996157d4acb1a2f84c1')
 
 build() {
-  cd "${pkgname}-source-${pkgver}"
-  CGO_ENABLED=0 go build -buildvcs=false -o sparkstore ./cmd/spark-store-tui
+  cd "${pkgname}-${_commit}"
+  CGO_ENABLED=0 go build -trimpath -buildvcs=false -o sparkstore ./cmd/spark-store-tui
 }
 
 package() {
-  cd "${pkgname}-source-${pkgver}"
+  cd "${pkgname}-${_commit}"
 
   install -Dm755 sparkstore "${pkgdir}/usr/lib/sparkstore/sparkstore"
   install -Dm755 package-root/usr/bin/sparkstore "${pkgdir}/usr/bin/sparkstore"
