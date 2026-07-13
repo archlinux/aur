@@ -1,0 +1,5 @@
+# Socket directory for the Venus vtest server (wd-venus user unit) — the
+# waydroid container bind-mounts this dir as /dev/venus. Sticky world-writable
+# (like /tmp) because the server runs as the desktop user, not root; the
+# server itself chmods the socket after bind.
+d /run/waydroid-venus 1777 root root -

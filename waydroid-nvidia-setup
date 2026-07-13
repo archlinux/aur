@@ -1,0 +1,104 @@
+#!/bin/bash
+# waydroid-nvidia-setup — provision an initialized waydroid install for the
+# NVIDIA/Venus stack. Run as root AFTER `waydroid init`. Safe to re-run.
+#
+#   waydroid-nvidia-setup [--refresh <hz>]
+#
+# What it does:
+#   1. copies the guest driver stack from /usr/lib/waydroid-nvidia/guest into
+#      /var/lib/waydroid/nv + the vendor overlay (the patched waydroid config
+#      generator bind-mounts them into the container),
+#   2. writes the stack's properties into waydroid.cfg [properties] and sets
+#      suspend_action=none (values merge into base.prop on upgrade),
+#   3. regenerates the container config via `waydroid upgrade -o`.
+#
+# --refresh <hz>: match your monitor's refresh rate (e.g. 144/240/500). Above
+# 240 Hz this also enables the vsync-snap window that needs the patched
+# surfaceflinger shipped with this package.
+set -euo pipefail
+
+die() { echo "waydroid-nvidia-setup: $*" >&2; exit 1; }
+[ "$(id -u)" = 0 ] || die "must run as root"
+
+REFRESH=""
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --refresh) REFRESH="${2:?--refresh needs a value}"; shift 2 ;;
+        *) die "unknown argument: $1" ;;
+    esac
+done
+
+CFG=/var/lib/waydroid/waydroid.cfg
+GUEST=/usr/lib/waydroid-nvidia/guest
+NV=/var/lib/waydroid/nv
+OVERLAY_HW=/var/lib/waydroid/overlay/vendor/lib64/hw
+[ -f "$CFG" ] || die "waydroid is not initialized — run 'waydroid init' first"
+[ -d "$GUEST" ] || die "$GUEST missing (broken package?)"
+
+echo "== installing guest driver stack into $NV"
+install -d "$NV" "$OVERLAY_HW"
+for lib in libgbm_mesa_wrapper.so hwcomposer.waydroid.so \
+           libEGL_angle.so libGLESv1_CM_angle.so libGLESv2_angle.so; do
+    [ -f "$GUEST/$lib" ] || die "$GUEST/$lib missing"
+    install -m 0644 "$GUEST/$lib" "$NV/$lib"
+done
+# guest Venus vulkan HAL goes through the vendor overlay path
+install -m 0644 "$GUEST/libvulkan_virtio.so" "$OVERLAY_HW/vulkan.virtio.so"
+# patched surfaceflinger (needed only >240 Hz; bind-mount is 'optional' —
+# absent file means the stock image binary is used)
+if [ -f "$GUEST/surfaceflinger" ]; then
+    install -m 0755 "$GUEST/surfaceflinger" "$NV/surfaceflinger"
+fi
+
+echo "== writing waydroid.cfg properties"
+REFRESH="$REFRESH" python3 - "$CFG" <<'EOF'
+import configparser, os, sys
+cfg_path = sys.argv[1]
+cp = configparser.ConfigParser()
+cp.optionxform = str  # waydroid props are case-sensitive
+cp.read(cfg_path)
+if not cp.has_section("properties"):
+    cp.add_section("properties")
+props = {
+    "ro.hardware.egl": "angle",
+    "ro.hardware.vulkan": "virtio",
+    "mesa.vn.debug": "vtest",
+    "mesa.vtest.socket.name": "/dev/venus/venus.sock",
+    "debug.hwui.renderer": "skiavk",
+    "debug.renderengine.backend": "skiaglthreaded",
+    "debug.sf.nobootanimation": "1",
+    "persist.waydroid.use_subsurface": "true",
+    "ro.surface_flinger.vsync_event_phase_offset_ns": "0",
+    "ro.surface_flinger.vsync_sf_event_phase_offset_ns": "0",
+    "ro.surface_flinger.max_frame_buffer_acquired_buffers": "3",
+}
+refresh = os.environ.get("REFRESH", "")
+if refresh:
+    props["persist.waydroid.refresh_rate"] = refresh
+    if int(refresh) > 240:
+        # SF's stock vsync snap window collapses timeslots above ~240 Hz;
+        # the patched surfaceflinger reads this override (1 ms).
+        props["debug.sf.snap_to_same_vsync_within_ns"] = "1000000"
+for k, v in props.items():
+    cp.set("properties", k, v)
+cp.set("waydroid", "suspend_action", "none")
+with open(cfg_path, "w") as f:
+    cp.write(f)
+print("   properties written")
+EOF
+
+echo "== regenerating container config (waydroid upgrade -o)"
+waydroid upgrade -o
+
+cat <<'EOF'
+
+Done. To start the stack:
+  systemctl enable --now waydroid-container.service         (as root)
+  systemctl --user enable --now wd-venus.service            (as your desktop user)
+  waydroid session start                                    (or launch from the app menu)
+
+The Venus render server (wd-venus) must be running before the session starts.
+Verify GPU acceleration inside the guest: the SurfaceFlinger GLES line in
+`waydroid shell dumpsys SurfaceFlinger | grep GLES` should name ANGLE/Venus
+on your NVIDIA GPU.
+EOF

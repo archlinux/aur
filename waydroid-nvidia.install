@@ -1,0 +1,19 @@
+post_install() {
+    cat <<'EOF'
+waydroid-nvidia: next steps
+  1. waydroid init                      (download an image, as usual)
+  2. waydroid-nvidia-setup              (as root; add --refresh <hz> to match
+                                         your monitor, e.g. --refresh 144)
+  3. systemctl enable --now waydroid-container.service
+  4. systemctl --user enable --now wd-venus.service   (as your desktop user)
+  5. waydroid session start / launch Waydroid from the app menu
+
+Requires the NVIDIA proprietary driver with nvidia-drm.modeset=1.
+Verify binary provenance of the shipped blobs:
+  gh attestation verify <asset> --repo Shiro836/waydroid-nvidia
+EOF
+}
+
+post_upgrade() {
+    echo "waydroid-nvidia: re-run 'waydroid-nvidia-setup' to refresh the guest stack in /var/lib/waydroid"
+}
