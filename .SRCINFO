@@ -1,6 +1,6 @@
 pkgbase = ruri-git
 	pkgdesc = A zipped Linux container runtime that zips (Lightweight User-friendly Linux-container Implementation)
-	pkgver = 3.9.4.rc1.r27.gde5463f
+	pkgver = 3.9.4.rc2.r92.g64546c3
 	pkgrel = 1
 	url = https://github.com/RuriOSS/ruri
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = ruri-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
-	depends = glibc
 	depends = libcap
 	depends = libseccomp
 	provides = ruri
