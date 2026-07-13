@@ -1,5 +1,5 @@
 pkgbase = videoduplicatefinder-git
-	pkgver = 4.0.x.r3.g9c53bca
+	pkgver = 4.1.x.r39.g7ef1beb
 	pkgrel = 1
 	url = https://github.com/0x90d/videoduplicatefinder
 	arch = x86_64
