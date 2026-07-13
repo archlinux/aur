@@ -23,7 +23,7 @@ Optional backends (install on demand; the base package does NOT pull them):
   [claude]    sudo pacman -S --asdeps python-claude-agent-sdk python-json-repair
   [qwen]      sudo pacman -S --asdeps python-vllm python-json-repair
   [searchqa]  sudo pacman -S --asdeps python-datasets
-  [docs]      sudo pacman -S --asdeps python-mkdocs-material python-mkdocstrings
+  [docs]      sudo pacman -S --asdeps mkdocs-material mkdocstrings
   [dev]       sudo pacman -S --asdeps ruff python-pytest
 
   [codex]     pip install --user openai-codex-sdk
@@ -46,7 +46,7 @@ If you also want to drop the optional backends:
   sudo pacman -Runs python-alfworld python-gymnasium python-omegaconf \
                     python-pytorch python-ray python-claude-agent-sdk \
                     python-json-repair python-vllm python-datasets \
-                    python-mkdocs-material python-mkdocstrings
+                    mkdocs-material mkdocstrings
 
   pip uninstall openai-codex-sdk   # if you installed it via pip
 
