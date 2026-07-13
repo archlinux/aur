@@ -16,9 +16,9 @@ depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
          # uwsm manages the session lifecycle (env export, graphical-session.target,
          # clean teardown). The aqueous.desktop session entry execs `uwsm start`.
          'uwsm'
-         'scenefx')
+         'libscenefx-0.5.so')
 makedepends=('clang' 'lld' 'llvm'
-             'git' 'scdoc' 'wayland-protocols' 'scenefx')
+             'git' 'scdoc' 'wayland-protocols' 'libscenefx-0.5.so')
 optdepends=('ly: recommended display manager / login greeter'
             'greetd: alternative minimal login manager for tuigreet'
             'tabby: recommended terminal emulator'
