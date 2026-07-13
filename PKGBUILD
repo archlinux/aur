@@ -2,11 +2,11 @@
 _pkgname=aliae
 _repo="JanDeDobbeleer/$_pkgname"
 pkgname="$_pkgname-bin"
-pkgver=0.26.6
+pkgver=1.0.0
 pkgrel=1
 _filename="$_pkgname-$pkgver-$pkgrel"
 _dlbase="$_filename::https://github.com/$_repo/releases/download/v$pkgver/$_pkgname-linux"
-_binsum="808bbe54b7464d252c27e92c301022fb188784d2f26fe5d238fabb475b162443"
+_binsum="7a5eed5309ebc2ab2ebe1cd398cb1e243487c63a83739463022b850b0c36d53d"
 pkgdesc="Cross shell and platform alias management"
 arch=(x86_64 armv7h aarch64)
 url="https://aliae.dev"
