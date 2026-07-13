@@ -5,6 +5,7 @@ pkgrel=1
 url=https://github.com/nm-z/nates-recipe-rs
 arch=(x86_64)
 license=(MIT)
+install=recipe.install
 depends=(
     rust
     hip-runtime-amd
@@ -48,5 +49,6 @@ package() {
     install -m644 "$t/libpantry.rlib" "$pkgdir/usr/lib/recipe/"
     install -m644 "$t/librecipe_infer.rlib" "$pkgdir/usr/lib/recipe/"
     xargs -a "$srcdir/deps.files" install -m644 -t "$pkgdir/usr/lib/recipe/deps/"
+    install -Dm644 "$srcdir/nates-recipe-rs/pkg/recipe.service" "$pkgdir/usr/lib/systemd/system/recipe.service"
     install -Dm644 "$srcdir/nates-recipe-rs/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

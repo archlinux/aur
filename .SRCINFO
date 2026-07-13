@@ -3,6 +3,7 @@ pkgbase = recipe
 	pkgver = 0.0.r261.0563fe3
 	pkgrel = 1
 	url = https://github.com/nm-z/nates-recipe-rs
+	install = recipe.install
 	arch = x86_64
 	license = MIT
 	makedepends = git

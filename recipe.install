@@ -1,0 +1,13 @@
+post_install() {
+	systemctl daemon-reload
+	systemctl enable --now recipe.service
+}
+
+post_upgrade() {
+	systemctl daemon-reload
+	systemctl try-restart recipe.service
+}
+
+pre_remove() {
+	systemctl disable --now recipe.service
+}
