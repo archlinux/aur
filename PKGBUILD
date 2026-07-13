@@ -30,8 +30,8 @@ source_aarch64=("${_binname}-${pkgver}-aarch64::${_relbase}/saur-linux-arm64")
 # Hashes are rewritten from the actual built artifacts by packaging/ci-aur-publish.sh.
 # To bump by hand: run `updpkgsums` here after the release assets are live.
 sha256sums=('2c1933e87f06646fff53ead8554e5d3243a7e969fbeea777bcb8673e9a7904aa' '289aeed941d46fbb453ab16b51290fb5530e763e90e910db98627a81f1a1c82f')
-sha256sums_x86_64=('806ce47d8a786c4c056087c69f2dbfee538e17dd27a75d0ad6f2cd6efed84c5c')
-sha256sums_aarch64=('87eb21807ae0d7c984a342c9630ff6abf2a368344506800bbc73abe6e5346e7c')
+sha256sums_x86_64=('f77add0b2feeb87920d5b5c734a18ff96c5f50da69d87a40f822dac6a56574f8')
+sha256sums_aarch64=('51a4127326c45e5389f8fbb8c9307fb39d8648ef04fd215850be1777d7f3a660')
 
 package() {
 	install -Dm755 "${_binname}-${pkgver}-${CARCH}" "$pkgdir/usr/bin/$_binname"
