@@ -1,6 +1,6 @@
 pkgbase = astrbot-git
 	pkgdesc = Agentic IM Chatbot infrastructure with systemd multi-instance support
-	pkgver = 4.26.5.r15.gd0e5e68c5
+	pkgver = 4.26.5.r16.gcc0ec5e5c
 	pkgrel = 1
 	url = https://github.com/AstrBotDevs/AstrBot
 	install = astrbot-git.install
