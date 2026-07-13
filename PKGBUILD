@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ai-gate-bin
 _pkgname=AI.Gate
-pkgver=4.7.0
+pkgver=4.7.1
 _electronversion=34
 pkgrel=1
 pkgdesc="All your AI tools.ChatGPT • Claude • Gemini • Perplexity • Qwen • Grok.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4c5c529192166d3d61837659ed9f8595a382190d09d6d9c9ecd7f84be8626c46'
+sha256sums=('4288237f002d6465fe8cc2d4323834051d86f3f43cfc90a0a6b95aa7a92c469a'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
