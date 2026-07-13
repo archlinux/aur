@@ -1,9 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=qucs-rflayout
-_name=Qucs-RFlayout
 pkgver=2.1.2
-pkgrel=1
+pkgrel=4
 epoch=
 pkgdesc="Export Qucs RF schematics to KiCad layouts & OpenEMS scripts"
 arch=($CARCH)
@@ -17,6 +16,7 @@ depends=(
     $_qt-base
 )
 makedepends=(
+    git
     cmake
     man-db
     mesa
@@ -44,13 +44,17 @@ backup=()
 options=()
 install=
 changelog=
-source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+source=("${pkgname}::git+${url}.git#tag=${pkgver}")
 noextract=()
-sha256sums=('752ee3e4e2d822174a0dbc49d6b5db55023f663e2d6e824905b1f64c44decc4b')
+sha256sums=('3e35e0a3bdf9a2513948cf9929fd805b30bc77185b3edf61c34bf33c3e1c5a98')
 validpgpkeys=()
 
+prepare() {
+    git -C "${srcdir}/${pkgname}" clean -dfx
+}
+
 build() {
-    cd "${srcdir}/${_name}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
 
     cmake -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -63,11 +67,11 @@ build() {
 }
 
 # check() {
-#     cd "${srcdir}/${_name}-${pkgver}"
+#     cd "${srcdir}/${pkgname}"
 #     ctest --test-dir build --output-on-failure
 # }
 
 package() {
-    cd "${srcdir}/${_name}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
     DESTDIR="$pkgdir" cmake --install build
 }

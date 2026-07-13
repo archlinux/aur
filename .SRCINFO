@@ -1,12 +1,13 @@
 pkgbase = qucs-rflayout
 	pkgdesc = Export Qucs RF schematics to KiCad layouts & OpenEMS scripts
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/thomaslepoix/Qucs-RFlayout
 	arch = x86_64
 	license = GPL-3.0-only
 	checkdepends = catch2
 	checkdepends = lcov
+	makedepends = git
 	makedepends = cmake
 	makedepends = man-db
 	makedepends = mesa
@@ -25,7 +26,7 @@ pkgbase = qucs-rflayout
 	optdepends = inkscape: Professional vector graphics editor
 	provides = qucs-rflayout
 	conflicts = qucs-rflayout
-	source = Qucs-RFlayout-2.1.2.tar.gz::https://github.com/thomaslepoix/Qucs-RFlayout/archive/refs/tags/2.1.2.tar.gz
-	sha256sums = 752ee3e4e2d822174a0dbc49d6b5db55023f663e2d6e824905b1f64c44decc4b
+	source = qucs-rflayout::git+https://github.com/thomaslepoix/Qucs-RFlayout.git#tag=2.1.2
+	sha256sums = 3e35e0a3bdf9a2513948cf9929fd805b30bc77185b3edf61c34bf33c3e1c5a98
 
 pkgname = qucs-rflayout
