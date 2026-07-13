@@ -54,8 +54,6 @@ echo -e "${GREEN}Updating PKGBUILD...${NC}"
 sed -i \
     -e "s/^pkgver=.*/pkgver=${LATEST_VERSION}/" \
     -e "s/^pkgrel=.*/pkgrel=1/" \
-    -E \
-    -e "s|^(sha(256|384|512)?sums|md5sums|b2sums)=.*|b2sums=()|" \
     "$PKGBUILD_FILE"
 
 echo -e "${GREEN}Downloading sources and computing b2sums via updpkgsums...${NC}"
@@ -66,10 +64,13 @@ rm -f .SRCINFO
 makepkg --printsrcinfo > .SRCINFO
 
 echo ""
-echo -e "${GREEN}✓ Updated: ${CURRENT_VERSION} → ${LATEST_VERSION}${NC}"
-
+if [[ "$LATEST_VERSION" != "$CURRENT_VERSION" ]]; then
+    echo -e "${YELLOW}Changes:${NC}"
+    echo -e "  Version: ${CURRENT_VERSION} → ${LATEST_VERSION}"
+fi
 echo ""
 echo -e "${YELLOW}Next steps:${NC}"
-echo "  git diff PKGBUILD .SRCINFO"
-echo "  makepkg -si"
-echo "  git add PKGBUILD .SRCINFO && git commit -m 'upgpkg: ${LATEST_VERSION}' && git push"
+echo "  1. Review changes: git diff PKGBUILD .SRCINFO"
+echo "  2. Test build: makepkg -si"
+echo "  3. Commit: git add PKGBUILD .SRCINFO && git commit -m 'upgpkg: ${LATEST_VERSION}'"
+echo "  4. Push: git push"
