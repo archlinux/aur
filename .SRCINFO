@@ -1,0 +1,17 @@
+pkgbase = usbunker-git
+	pkgdesc = Encrypt and decrypt USB drives with AES-256-GCM
+	pkgver = r15.892be56
+	pkgrel = 1
+	url = https://github.com/T9Tuco/USBunker
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-svg
+	depends = openssl
+	source = usbunker-git::git+https://github.com/T9Tuco/USBunker.git
+	sha256sums = SKIP
+
+pkgname = usbunker-git
