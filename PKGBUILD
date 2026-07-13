@@ -3,7 +3,7 @@
 pkgname=codelldb-bin
 _pkgname="${pkgname%-bin}"
 pkgver=1.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A native debugger extension for VSCode based on LLDB. Also known as vscode-lldb (NOT lldb-vscode)"
 arch=("x86_64" "armv7h" "aarch64")
 url="https://github.com/vadimcn/codelldb"
@@ -28,4 +28,5 @@ package() {
   cp      -a  -t    "$pkgdir/usr/lib/$_pkgname" "$srcdir"/extension/*
   install -dm755    "$pkgdir/usr/bin/"
   ln      -s  -t    "$pkgdir/usr/bin/" "/usr/lib/$_pkgname/adapter/$_pkgname"
+  ln      -s  -t    "$pkgdir/usr/bin/" "/usr/lib/$_pkgname/bin/$_pkgname-launch"
 }
