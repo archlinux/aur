@@ -1,0 +1,25 @@
+pkgbase = python-alibabacloud-tea
+	pkgdesc = The tea module of alibabaCloud Python SDK.
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://pypi.org/project/alibabacloud-tea
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-aiohttp
+	depends = python-certifi
+	depends = python-requests
+	provides = alibabacloud-tea
+	provides = python-alibabacloud-tea
+	conflicts = alibabacloud-tea
+	conflicts = python-alibabacloud-tea
+	options = !strip
+	options = !debug
+	source = alibabacloud-tea-0.4.2.tar.gz::https://files.pythonhosted.org/packages/source/a/alibabacloud-tea/alibabacloud-tea-0.4.2.tar.gz
+	sha256sums = 2a86eedc2aa3d24070593f61c1cfd40762b2cabce20336e72c690eb57f165520
+
+pkgname = python-alibabacloud-tea
