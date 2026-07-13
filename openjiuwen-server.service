@@ -1,0 +1,45 @@
+[Unit]
+Description=OpenJiuwen Studio backend (FastAPI + SQLAlchemy + Redis checkpointer)
+Documentation=https://gitcode.com/openJiuwen/agent-studio
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=openjiuwen
+Group=openjiuwen
+WorkingDirectory=/opt/openjiuwen-studio
+EnvironmentFile=/etc/openjiuwen-studio.env
+Environment=PYTHONPATH=/opt/openjiuwen-studio/lib
+ExecStart=/usr/bin/python -m uvicorn openjiuwen_studio.main:app \
+    --host ${RUNTIME_HOST:-127.0.0.1} \
+    --port ${RUNTIME_PORT:-8186} \
+    --app-dir /opt/openjiuwen-studio/lib \
+    --proxy-headers \
+    --forwarded-allow-ips='*'
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+
+# Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/openjiuwen-studio /var/log/openjiuwen-studio
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=openjiuwen-server
+
+[Install]
+WantedBy=multi-user.target

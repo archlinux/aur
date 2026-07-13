@@ -1,0 +1,2 @@
+d /var/lib/openjiuwen-studio 0750 openjiuwen openjiuwen -
+d /var/log/openjiuwen-studio 0755 openjiuwen openjiuwen -

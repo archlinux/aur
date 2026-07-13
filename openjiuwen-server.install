@@ -1,0 +1,40 @@
+post_install() {
+    # Create the data/log directories in case tmpfiles was not applied yet.
+    install -dm750 -o openjiuwen -g openjiuwen /var/lib/openjiuwen-studio
+    install -dm755 -o openjiuwen -g openjiuwen /var/log/openjiuwen-studio
+
+    cat <<'NOTE'
+
+==> OpenJiuwen Studio backend installed.
+
+    Before starting, prepare the environment file:
+
+        sudo cp /etc/openjiuwen-studio.env.example /etc/openjiuwen-studio.env
+        sudoedit /etc/openjiuwen-studio.env          # set JWT_SECRET_KEY at minimum
+
+    Then enable and start the service:
+
+        sudo systemctl daemon-reload
+        sudo systemctl enable --now openjiuwen-server
+
+    Database migrations (sqlite default): the service runs alembic on first
+    start via lifespan_func(). To run them manually beforehand, source the
+    venv from /opt/openjiuwen-studio/lib and execute alembic against the
+    trees in /opt/openjiuwen-studio/upgrade/{sqlite,mysql}/.
+
+    For MySQL deployments, set DB_TYPE=mysql in /etc/openjiuwen-studio.env
+    AND ensure the server is reachable BEFORE first start.
+
+NOTE
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_upgrade() {
+    # Stop service cleanly so the lifespan migration check doesn't race.
+    if systemctl is-active --quiet openjiuwen-server; then
+        systemctl stop openjiuwen-server
+    fi
+}
