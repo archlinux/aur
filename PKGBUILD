@@ -13,7 +13,7 @@ _image_sha256sums_aarch64=2c81d6aeb3c648b990220011ccc514f0f86fc5f66636b3e4724103
 
 pkgname="${_pkgname}"-appimage
 pkgver="${_version}_${_update_date//-/}"
-pkgrel=1
+pkgrel=2
 pkgdesc="New Linux QQ based on Electron"
 arch=('x86_64' 'aarch64')
 url="https://im.qq.com/linuxqq/"
@@ -32,13 +32,15 @@ _image_url="_image_url_${CARCH}"
 _sha256sums="_image_sha256sums_${CARCH}"
 
 prepare() {
-    [ -f ${_appimage} ] || ./download.sh ${!_image_url} -sS -o ${_appimage}
+    [ -f ${startdir}/${_appimage} ] || ./download.sh ${!_image_url} -sS -o ${startdir}/${_appimage}
+    [ -f ${_appimage} ] || ln -s ${startdir}/${_appimage} ${_appimage}
     echo "${!_sha256sums} ${_appimage}" | sha256sum --check
 
     chmod +x "${_appimage}"
     ./"${_appimage}" --appimage-extract ${_disname}.desktop
     ./"${_appimage}" --appimage-extract ${_disname}.png
     ./"${_appimage}" --appimage-extract LICENSE.electron.txt
+    ./"${_appimage}" --appimage-extract usr/share/icons/hicolor/512x512/apps/qq.png
 }
 
 build() {
