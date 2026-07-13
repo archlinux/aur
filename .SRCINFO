@@ -1,6 +1,6 @@
 pkgbase = rand-ms
 	pkgdesc = A small Rust CLI tool for randomly selecting items from a Bandcamp-style wishlist within a monthly budget
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://gitlab.com/kaizarzycki/rand-ms
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rand-ms
 	arch = riscv64
 	license = MIT
 	makedepends = cargo
-	source = https://gitlab.com/kaizarzycki/rand-ms/-/archive/v0.1.0/rand-ms-v0.1.0.tar.gz
-	sha256sums = db613c8923f438936823adcfc38ec35ed26638380c333d0d348bd672bd612ed4
+	source = https://gitlab.com/kaizarzycki/rand-ms/-/archive/v0.2.0/rand-ms-v0.2.0.tar.gz
+	sha256sums = 2f73530cbc8ad1ec8922d9c6eb7706865c47bb0599cf604ceafa44ac34f5c145
 
 pkgname = rand-ms
