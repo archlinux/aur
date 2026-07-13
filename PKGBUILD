@@ -26,7 +26,7 @@ _source_name="${pkgname}_${pkgver}_amd64"
 source=(
   "${_source_name}.deb::https://github.com/Andrew-AI-JR/Desktop-Releases/releases/download/v${pkgver}/${_source_name}.deb"
 )
-sha256sums=('45a1ada778769e39bffb4305292fe524fd9d3233b55b6eec8705a4f6fe63cce2')
+sha256sums=('fccee4f522fcd3153b0362f87aed470a8265012a3275e39a7840b222d2973684')
 
 prepare() {
   bsdtar -xf "${_source_name}.deb"
