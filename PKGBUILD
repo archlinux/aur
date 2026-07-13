@@ -4,7 +4,7 @@ pkgname=python-darabonba-core
 _name=${pkgname#python-}
 _name=${_name//-/_}
 pkgver=1.0.8
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="The darabonba module of alibabaCloud Python SDK."
 arch=('any')
@@ -17,6 +17,7 @@ _pydeps=(
     aiohttp
     certifi
     requests
+    websocket-client
 # AUR
     alibabacloud-tea
 )
