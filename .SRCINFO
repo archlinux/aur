@@ -28,7 +28,7 @@ pkgbase = hermes-agent-desktop
 	conflicts = hermes-agent-desktop-bin
 	options = !strip
 	options = !debug
-	source = https://github.com/NousResearch/hermes-agent/archive/refs/tags/v2026.7.7.2.tar.gz
+source = hermes-agent-v2026.7.7.2.tar.gz::https://github.com/NousResearch/hermes-agent/archive/refs/tags/v2026.7.7.2.tar.gz
 	sha256sums = f5d1022eed3763a768cf7b0f0844831f0170a35f54eb8d18223f2e93f503025e
 
 pkgname = hermes-agent-desktop

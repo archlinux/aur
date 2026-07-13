@@ -22,7 +22,7 @@ optdepends=(
 makedepends=('base-devel' 'git' 'nodejs>=22' 'npm')
 conflicts=('hermes-agent-desktop-bin')
 options=('!strip' '!debug')
-source=("${url}/archive/refs/tags/${_pkgver_tag}.tar.gz")
+source=("hermes-agent-${_pkgver_tag}.tar.gz::${url}/archive/refs/tags/${_pkgver_tag}.tar.gz")
 sha256sums=('f5d1022eed3763a768cf7b0f0844831f0170a35f54eb8d18223f2e93f503025e')
 
 # NOTE: ${srcdir} is empty at the top level of a PKGBUILD — makepkg only sets
@@ -55,7 +55,7 @@ prepare() {
   local GITHUB_SHA
   GITHUB_SHA=$(_resolve_tag_sha)
   if [ -z "${GITHUB_SHA:-}" ]; then
-    error "Could not resolve ${_pkgver_tag} to a commit SHA via git ls-remote."
+    printf 'ERROR: Could not resolve %s to a commit SHA via git ls-remote.\n' "${_pkgver_tag}"
     return 1
   fi
   export GITHUB_SHA GITHUB_REF_NAME="${_pkgver_tag}"
@@ -75,7 +75,7 @@ build() {
   local GITHUB_SHA
   GITHUB_SHA=$(_resolve_tag_sha)
   if [ -z "${GITHUB_SHA:-}" ]; then
-    error "Could not resolve ${_pkgver_tag} to a commit SHA via git ls-remote."
+    printf 'ERROR: Could not resolve %s to a commit SHA via git ls-remote.\n' "${_pkgver_tag}"
     return 1
   fi
   export GITHUB_SHA GITHUB_REF_NAME="${_pkgver_tag}"
@@ -106,7 +106,7 @@ package() {
   cd "$(_extract_dir)"
   local appdir="apps/desktop/release/linux-unpacked"
   if [ ! -d "${appdir}" ]; then
-    msg2 "ERROR: electron-builder did not produce ${appdir}"
+    printf 'ERROR: electron-builder did not produce %s\n' "${appdir}"
     ls -la apps/desktop/release/ 2>/dev/null || true
     return 1
   fi
