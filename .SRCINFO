@@ -1,6 +1,6 @@
 pkgbase = onetcli-bin
 	pkgdesc = One Net Client — A cross-platform desktop client for databases, SSH/SFTP, terminals & AI, all in one place. (Prebuilt version)
-	pkgver = 0.8.5
+	pkgver = 0.8.6
 	pkgrel = 1
 	url = https://feigecode.github.io/onetcli/
 	arch = aarch64
@@ -11,11 +11,11 @@ pkgbase = onetcli-bin
 	depends = systemd-libs
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	provides = onetcli=0.8.5
+	provides = onetcli=0.8.6
 	conflicts = onetcli
-	source_aarch64 = onetcli-0.8.5-aarch64.tar.gz::https://github.com/feigeCode/onetcli/releases/download/v0.8.5/onetcli-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = c0fbdc0e4fad928b0dce5718d61e8d8105b59d925e7e7c04d349ae943780776f
-	source_x86_64 = onetcli-0.8.5-x86_64.tar.gz::https://github.com/feigeCode/onetcli/releases/download/v0.8.5/onetcli-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 405220e03d7ec38694ab920cd53ae8b9d441a5cff8063dedf8f7b1d7b2fd7852
+	source_aarch64 = onetcli-0.8.6-aarch64.tar.gz::https://github.com/feigeCode/onetcli/releases/download/v0.8.6/onetcli-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b7f54fab13d685d7124a14dab53af183fb401e076b36f85d2fb1ee20bc42238c
+	source_x86_64 = onetcli-0.8.6-x86_64.tar.gz::https://github.com/feigeCode/onetcli/releases/download/v0.8.6/onetcli-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 4252aabaeadb3b8e5bea588670d3b4210ab6b3d3dd3efcbd52bae4de0ff3cd20
 
 pkgname = onetcli-bin
