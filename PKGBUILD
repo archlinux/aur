@@ -1,11 +1,19 @@
 pkgname=recipe
 pkgdesc="WIP DO NOT INSTALL - ML/DL/AI training+inference for AMD/NVIDIA GPUs (fp64)"
-pkgver=0.0.r243.d61b7a1
+pkgver=0.0.r256.f31e3d8
 pkgrel=1
 url=https://github.com/nm-z/nates-recipe-rs
 arch=(x86_64)
 license=(MIT)
-depends=(rust hip-runtime-amd hipblas hipsolver gcc-libs xz bzip2)
+depends=(
+    rust
+    hip-runtime-amd
+    hipblas
+    hipsolver
+    gcc-libs
+    xz
+    bzip2
+)
 makedepends=(git perl)
 options=(!debug !lto)
 source=("nates-recipe-rs::git+https://github.com/nm-z/nates-recipe-rs.git")
@@ -20,7 +28,7 @@ pkgver() {
 build() {
     set -o pipefail
     cd nates-recipe-rs
-    unset RUSTFLAGS DEBUG_RUSTFLAGS CFLAGS CXXFLAGS LDFLAGS
+    unset RUSTFLAGS DEBUG_RUSTFLAGS CFLAGS CXXFLAGS LDFLAGS RUSTC_WRAPPER
     export CARGO_TARGET_DIR="$srcdir/target-pkg"
     cargo build --release -p recipe -p gpu-core -p pantry -p recipe-infer -p ogdl \
         --message-format=json-render-diagnostics \
