@@ -3,7 +3,7 @@
 pkgname=python-alibabacloud-tea-util
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=0.3.13
+pkgver=0.3.14
 pkgrel=1
 epoch=
 pkgdesc="The tea-util module of alibabaCloud Python SDK."
@@ -14,7 +14,6 @@ groups=()
 provides=(${_name} ${pkgname})
 conflicts=(${_name} ${pkgname})
 _pydeps=(
-
 # AUR
     alibabacloud-tea
 )
@@ -29,7 +28,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('8cbdfd2a03fbbf622f901439fa08643898290dd40e1d928347f6346e43f63c90')
+sha256sums=('708e7c9f64641a3c9e0e566365d2f23675f8d7c2a3e2971d9402ceede0408cdb')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
