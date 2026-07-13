@@ -3,14 +3,20 @@ pkgbase = implay-bin
 	pkgver = 1.5.1
 	pkgrel = 4
 	url = https://tsl0922.github.io/ImPlay
+	install = implay.install
 	arch = x86_64
 	license = GPL-2.0-only
 	depends = gtk3
 	depends = freetype2
 	depends = mpv
+	depends = glfw
 	provides = implay=1.5.1
 	conflicts = implay
 	source = implay-1.5.1.deb::https://github.com/tsl0922/ImPlay/releases/download/1.5.1/ImPlay-1.5.1-Linux.deb
+	source = implay.install
+	source = implay-mpv.conf
 	sha256sums = ecd8137b7b4dcda7b59280728829131325bfb38762cce87db5c3bd43847f226a
+	sha256sums = b1992e565dc86dd61391e2698d02795ee3a82db6cb2c363a936de757e974a6a0
+	sha256sums = e5a5cb722dcdbba4e4b5424767907250855e5c689a2a25d2e076d96a196931b4
 
 pkgname = implay-bin

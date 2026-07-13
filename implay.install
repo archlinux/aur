@@ -1,0 +1,10 @@
+post_install() {
+    echo ">>> ImPlay uses libmpv as its rendering backend."
+    echo ">>> A default configuration with 'vo=libmpv' has been installed to /etc/implay/mpv.conf"
+    echo ">>> If you experience black screen issues, copy /etc/implay/mpv.conf to ~/.config/implay/mpv.conf"
+    echo ">>> or add 'vo=libmpv' to your existing ~/.config/implay/mpv.conf"
+}
+
+post_upgrade() {
+    post_install
+}
