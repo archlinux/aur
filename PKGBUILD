@@ -7,7 +7,7 @@ pkgname=${_appname}-bin
 pkgdesc="Fast terminal UI for managing and connecting to SSH hosts"
 
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 _gitversion=v${pkgver}
 
 arch=('x86_64' 'aarch64')
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.xz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('94f8151857a120cde109ce184101674e561d7b4feb408ea2fb7bea612f26a82b')
-sha256sums_aarch64=('853961a50ac1eecfe6432e5d417b8a8118606dac4313cb7631d5573685e7d8dd')
+sha256sums_x86_64=('0ccd64f8896bf89fe52a8362d51329c4a420749cf0fe6491d706265492ceff0b')
+sha256sums_aarch64=('6cf2deb947d37d643b4a8d914d4e76f6847849227146d902dc9186bddf4997af')
 
 
 case ${CARCH} in
