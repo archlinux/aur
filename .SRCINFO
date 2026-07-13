@@ -1,7 +1,7 @@
 pkgbase = codelldb-git
 	pkgdesc = A native debugger extension for VSCode based on LLDB. Also known as vscode-lldb (NOT lldb-vscode)
 	pkgver = v1.12.2.r1439.2e71e65
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vadimcn/codelldb
 	arch = x86_64
 	arch = arm7h

@@ -5,7 +5,7 @@
 pkgname=codelldb-git
 _pkgname="${pkgname%-git}"
 pkgver=v1.12.2.r1439.2e71e65
-pkgrel=2
+pkgrel=3
 pkgdesc="A native debugger extension for VSCode based on LLDB. Also known as vscode-lldb (NOT lldb-vscode)"
 arch=(x86_64 arm7h aarch64)
 url=https://github.com/vadimcn/codelldb
@@ -103,7 +103,7 @@ package() {
 
     install -Dm644 -t "$libdir" platform.ok
 
-    local file; for file in adapter/codelldb adapter/*.so; do
+    local file; for file in adapter/codelldb adapter/*.so bin/codelldb-launch; do
       install -Dm755 "$file" "$libdir/$file"
     done
 
@@ -116,7 +116,7 @@ package() {
   ln -s -t "$libdir"/lldb /usr/{bin,lib}
 
   install -d "$pkgdir"/usr/bin
-  ln -s -t "$pkgdir"/usr/bin /usr/lib/"$_pkgname"/adapter/codelldb
+  ln -s -t "$pkgdir"/usr/bin /usr/lib/"$_pkgname"/{adapter/codelldb,bin/codelldb-launch}
 
   install -Dm644 -t "$pkgdir"/usr/share/licenses/"$_pkgname" LICENSE
 }
