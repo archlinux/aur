@@ -1,7 +1,7 @@
 pkgbase = nordplayer-bin
 	pkgdesc = A highly customizable music player with extensive theming
-	pkgver = 0.1.20.alpha
-	pkgrel = 2
+	pkgver = 0.1.21.alpha
+	pkgrel = 1
 	url = https://github.com/jpangestu/nordplayer
 	arch = x86_64
 	license = MIT
@@ -12,10 +12,10 @@ pkgbase = nordplayer-bin
 	depends = chromaprint
 	provides = nordplayer
 	conflicts = nordplayer
-	source = nordplayer-0.1.20-alpha-linux.tar.gz::https://github.com/jpangestu/nordplayer/releases/download/v0.1.20-alpha/nordplayer-0.1.20-alpha-linux.tar.gz
+	source = nordplayer-0.1.21-alpha-linux-x86_64.tar.gz::https://github.com/jpangestu/nordplayer/releases/download/v0.1.21-alpha/nordplayer-v0.1.21-alpha-linux-x86_64.tar.gz
 	source = nordplayer.desktop
-	source = LICENSE-0.1.20-alpha::https://raw.githubusercontent.com/jpangestu/nordplayer/v0.1.20-alpha/LICENSE
-	sha256sums = e27dd9d66d05097f8ad2b80dfae19129e3bac6b920a218890e19f4f65aee5646
+	source = LICENSE-0.1.21-alpha::https://raw.githubusercontent.com/jpangestu/nordplayer/v0.1.21-alpha/LICENSE
+	sha256sums = 4db6c5fb97a06fd234941724f5854b1f057804897051f40c7ca9d0681b2a38e6
 	sha256sums = ecd8609d688e1289b771630d448ae2784d86f4ffaac6664c60f3bbe8c1dec99e
 	sha256sums = d2d008fce1bf600da89fa17ca86a1beb8abb3f3a54121494684035dbf275d9cb
 

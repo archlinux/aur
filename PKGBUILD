@@ -1,8 +1,8 @@
 # Maintainer: Tandang Pangestu <jpangestu111@gmail.com>
 pkgname=nordplayer-bin
-pkgver=0.1.20.alpha
-_realver=0.1.20-alpha # The actual upstream package version
-pkgrel=2
+pkgver=0.1.21.alpha
+_realver=0.1.21-alpha # The actual upstream package version
+pkgrel=1
 pkgdesc="A highly customizable music player with extensive theming"
 arch=('x86_64')
 url="https://github.com/jpangestu/nordplayer"
@@ -11,11 +11,11 @@ depends=('gtk3' 'glibc' 'mpv' 'ffmpeg' 'chromaprint')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 
-source=("${pkgname%-bin}-${_realver}-linux.tar.gz::${url}/releases/download/v${_realver}/nordplayer-${_realver}-linux.tar.gz"
+source=("${pkgname%-bin}-${_realver}-linux-x86_64.tar.gz::${url}/releases/download/v${_realver}/nordplayer-v${_realver}-linux-x86_64.tar.gz"
         "nordplayer.desktop"
         "LICENSE-${_realver}::https://raw.githubusercontent.com/jpangestu/nordplayer/v${_realver}/LICENSE")
 
-sha256sums=('e27dd9d66d05097f8ad2b80dfae19129e3bac6b920a218890e19f4f65aee5646'
+sha256sums=('4db6c5fb97a06fd234941724f5854b1f057804897051f40c7ca9d0681b2a38e6'
             'ecd8609d688e1289b771630d448ae2784d86f4ffaac6664c60f3bbe8c1dec99e'
             'd2d008fce1bf600da89fa17ca86a1beb8abb3f3a54121494684035dbf275d9cb')
 
