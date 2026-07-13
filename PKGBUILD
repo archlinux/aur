@@ -1,6 +1,6 @@
 pkgname=uzdoom-bin
 pkgver=4.14.3
-pkgrel=3
+pkgrel=4
 pkgdesc='A fork of GZDoom, a feature-centric fork of ZDoom'
 arch=('x86_64')
 url="https://github.com/UZDoom/UZDoom"
@@ -9,10 +9,8 @@ depends=('bzip2' 'gtk3' 'hicolor-icon-theme' 'libgl' 'libvpx>=1.14' 'libwebp' 'o
 conflicts=("uzdoom")
 provides=("uzdoom")
 makedepends=('unzip')
-sha256sums=('99a21d47dae420d62a9689d8e2dc90135c5cd36ef52191df2ac92a17823e6ad1')
 sha256sums_x86_64=('7a0918ab951da5ffe873b7d479f701c09c216e0a23d821eef4548283ba43a167')
 source_x86_64=("$url/releases/download/$pkgver/Linux-UZDoom-$pkgver.AppImage")
-source=("uzdoom")
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
@@ -58,7 +56,7 @@ package() {
     rm -rf "$srcdir/squashfs-root/usr/lib"
     
     cp -r "$srcdir/squashfs-root/usr" "$pkgdir"
-    cp -r "$srcdir/uzdoom" "$pkgdir/usr/bin"
+    install -Dm755 "$startdir/uzdoom" "$pkgdir/usr/bin/uzdoom"
    #Patch binary and lib fix
     patchelf --set-interpreter "/lib64/ld-linux-x86-64.so.2" "$pkgdir/usr/bin/uzdoom.bin"
     cp -a "$srcdir/squashfs-root/lib/x86_64-linux-gnu/." "$pkgdir/usr/lib/uzdoom/"
