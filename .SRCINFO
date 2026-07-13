@@ -1,6 +1,6 @@
 pkgbase = mold-ai-bin
 	pkgdesc = Local AI image generation CLI — FLUX, SD3.5, SD 1.5, SDXL, Z-Image, Flux.2, Qwen-Image, Wuerstchen, LTX Video, & LTX-2 diffusion models on your GPU (prebuilt binary, CUDA sm_89 / Ada Lovelace; pulls in extra/cuda ~5 GB)
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/utensils/mold
 	arch = x86_64
@@ -13,14 +13,14 @@ pkgbase = mold-ai-bin
 	optdepends = bash-completion: Bash tab completion
 	optdepends = zsh-completions: Zsh tab completion (also auto-found via /usr/share/zsh/site-functions)
 	optdepends = fish: Fish tab completion
-	provides = mold-ai=0.16.0
+	provides = mold-ai=0.17.0
 	conflicts = mold-ai
 	conflicts = mold-ai-git
 	conflicts = mold
 	options = !strip
-	source = LICENSE-0.16.0::https://github.com/utensils/mold/raw/v0.16.0/LICENSE
+	source = LICENSE-0.17.0::https://github.com/utensils/mold/raw/v0.17.0/LICENSE
 	sha256sums = cd904e73d29dc7d62178ebc6def9e500c6b176e8e4c40f58e4b0b5f008380311
-	source_x86_64 = https://github.com/utensils/mold/releases/download/v0.16.0/mold-x86_64-unknown-linux-gnu-cuda-sm89.tar.gz
-	sha256sums_x86_64 = c1fb56be5cc40d86c4a22b402efd143a42c70fb50d3f13721ecbf506c0e0ce28
+	source_x86_64 = https://github.com/utensils/mold/releases/download/v0.17.0/mold-x86_64-unknown-linux-gnu-cuda-sm89.tar.gz
+	sha256sums_x86_64 = dee297df65dfa0489306543e965b1981ea24f58d4583a05a92a5e2c095ff1ed3
 
 pkgname = mold-ai-bin
