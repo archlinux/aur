@@ -1,23 +1,24 @@
 # Maintainer: d0rfm4tr4tz3 <aur@standort.tk>
 #
 # AUR package: syna3602-bridge
-# =============================
+#
 # Fixes the broken SYNA3602 (Hantick HTIX5288) touchpad found in Chuwi AeroBook
-# and similar devices. The touchpad firmware sends 4 contacts per frame without
-# ABS_MT_SLOT switching → only the first X/Y pair is valid, the remaining 3 are
-# garbage (values >50000) and overwrite slot 0 → libinput discards everything.
+# and similar devices. The firmware sends 4 contacts per frame without
+# ABS_MT_SLOT switching – only the first X/Y pair is valid, the remaining 3
+# are garbage (>50000) and overwrite slot 0, which makes libinput discard
+# everything.
 #
-# This bridge grabs the original device, takes only the first valid X/Y pair,
+# This bridge grabs the original device, takes the first valid X/Y pair,
 # and creates a clean uinput device with MT Protocol B (2 slots). When the
-# device signals BTN_TOOL_DOUBLETAP a second slot is emulated with a fixed
-# positional offset, enabling native two-finger scrolling in libinput/GNOME.
+# device signals BTN_TOOL_DOUBLETAP a second slot is emulated, enabling
+# native two-finger scrolling in libinput/GNOME.
 #
-# No external sources needed – everything is built from this PKGBUILD.
+# Self-contained: no external sources needed, everything is embedded here.
 
 pkgname=syna3602-bridge
 pkgver=2.0.0
-pkgrel=1
-pkgdesc="SYNA3602 Touchpad Bridge – filters garbage contacts, emulates MT protocol for two-finger scrolling on Chuwi AeroBook (HTIX5288)"
+pkgrel=2
+pkgdesc="SYNA3602 Touchpad Bridge – filters garbage contacts, enables two-finger scrolling"
 arch=('any')
 url="https://github.com/torvalds/linux/blob/master/drivers/hid/hid-multitouch.c"
 license=('MIT')
@@ -26,8 +27,9 @@ source=()
 sha256sums=()
 
 package() {
-  # ---- Python bridge script ----
-  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/syna3602-bridge.py" << 'PYEOF'
+  # ---- bridge script ----
+  mkdir -p "${pkgdir}/usr/bin"
+  cat > "${pkgdir}/usr/bin/syna3602-bridge.py" << 'PYEOF'
 #!/usr/bin/env python3
 """
 SYNA3602 Touchpad Bridge v2 – filters garbage contacts and emulates correct
@@ -197,7 +199,7 @@ def run(src: InputDevice):
     src.ungrab()
     ui.close()
     src.close()
-    print("Bridge beendet.", flush=True)
+    print("Bridge stopped.", flush=True)
 
 
 def handle_signal(signum, frame):
@@ -210,18 +212,20 @@ if __name__ == "__main__":
     signal.signal(signal.SIGTERM, handle_signal)
     source = find_touchpad()
     if not source:
-        print(f"FEHLER: '{DEVICE_NAME}' nicht gefunden!", file=sys.stderr)
+        print(f"ERROR: '{DEVICE_NAME}' not found!", file=sys.stderr)
         sys.exit(1)
     try:
         src = InputDevice(source)
     except PermissionError:
-        print("FEHLER: Kein Zugriff – als root starten.", file=sys.stderr)
+        print("ERROR: Permission denied – run as root.", file=sys.stderr)
         sys.exit(1)
     run(src)
 PYEOF
+  chmod 755 "${pkgdir}/usr/bin/syna3602-bridge.py"
 
   # ---- systemd service ----
-  install -Dm644 /dev/stdin "${pkgdir}/usr/lib/systemd/system/syna3602-bridge.service" << 'SERVEOF'
+  mkdir -p "${pkgdir}/usr/lib/systemd/system"
+  cat > "${pkgdir}/usr/lib/systemd/system/syna3602-bridge.service" << 'SERVEOF'
 [Unit]
 Description=SYNA3602 Touchpad Bridge v2 – filters garbage contacts, emulates MT protocol for 2-finger scrolling
 Documentation=https://github.com/torvalds/linux/blob/master/drivers/hid/hid-multitouch.c
@@ -236,4 +240,12 @@ RestartSec=2
 [Install]
 WantedBy=multi-user.target
 SERVEOF
+
+  # ---- post-install hint (shown during makepkg / yay) ---- (shown during makepkg / yay) ----
+  echo ""
+  echo "============================================"
+  echo "  Enable the service on your machine:"
+  echo "    sudo systemctl enable --now syna3602-bridge.service"
+  echo "============================================"
+  echo ""
 }
