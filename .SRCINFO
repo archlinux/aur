@@ -1,6 +1,6 @@
 pkgbase = grexa
 	pkgdesc = Fast Linux file content search with tabs, replace, and AI assistance
-	pkgver = 1.9.1
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://github.com/visorcraft/Grexa
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = grexa
 	optdepends = gnome-keyring: API key storage (non-KDE)
 	provides = grexa-cli
 	options = !lto
-	source = grexa::git+https://github.com/visorcraft/Grexa#tag=v1.9.1?signed
+	source = grexa::git+https://github.com/visorcraft/Grexa#tag=v1.10.1?signed
 	validpgpkeys = 198BC500E85FE8B2C24227B90526453161165CE5
-	sha256sums = 098cf0f2fb869bf49728a2704df97861733361bf4cc3c160394fb03a5639f9f4
+	sha256sums = 7b7d6535c144f167db91d15136907c68ba2c9acb136d5a0b3d17562b04a74a37
 
 pkgname = grexa
