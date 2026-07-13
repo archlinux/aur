@@ -1,6 +1,6 @@
 # Maintainer: Mattes Rötschke <dev at mattes-roetschke dot de>
 pkgname=stuart-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A serial terminal TUI - precompiled binary"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
     "LICENSE::https://raw.githubusercontent.com/mroetsc/stuart/refs/tags/${pkgver}/LICENSE"
 )
 
-sha256sums=('46b96ecfe7ac2081158d99802349e67e7b197d28de3e67e4d0f9a8693b30cec5'
+sha256sums=('5259648ebcad8268fc807c16cdbfcc030beb46700ae6a2ad06c9723e14f20fdb'
             '7056c04df17a4e0f0bac9f787f347c9cd892cee6323d1c89528090afd0b934a3')
 
 options=('!debug')
