@@ -1,6 +1,6 @@
 pkgbase = ue4ss-experimental
 	pkgdesc = Lua/C++ mod loader DLLs for Win64 Unreal Engine 4/5 games (experimental)
-	pkgver = 3.0.1_1009_gc2ac2464
+	pkgver = 3.0.1_1011_gb50986bd
 	pkgrel = 1
 	url = https://docs.ue4ss.com/
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = ue4ss-experimental
 	conflicts = ue4ss
 	options = !strip
 	options = !debug
-	source = ue4ss-3.0.1_1009_gc2ac2464.zip::https://github.com/UE4SS-RE/RE-UE4SS/releases/download/experimental/UE4SS_v3.0.1-1009-gc2ac2464.zip
+	source = ue4ss-3.0.1_1011_gb50986bd.zip::https://github.com/UE4SS-RE/RE-UE4SS/releases/download/experimental/UE4SS_v3.0.1-1011-gb50986bd.zip
 	source = ue4ss-install
-	sha256sums = ba53bfe27b82895a6a4d0b98c3acd93e93e913c27134f82c09f619c7c1aaa4c6
+	sha256sums = aa181789dc7226bcec94f13f054ff10477d7383321ffb98dbc3666a159b182a8
 	sha256sums = d5ae8372ecdc7171c7a6179511bf9dd8fe1905a83eac03abf7ae1292fe780cb0
 
 pkgname = ue4ss-experimental
