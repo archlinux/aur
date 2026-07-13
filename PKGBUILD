@@ -1,7 +1,7 @@
 # Maintainer: adrianpriza-ai <coreygit1@gmail.com>
 
 pkgname=alps-pm
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A unified frontend for Linux package managers (Advanced Linux Package System)"
 arch=('x86_64' 'aarch64' 'armv7h')
