@@ -6,7 +6,7 @@
 # the upstream repo and let `.github/workflows/release.yml` republish.
 pkgname=sqeel-bin
 _pkgname=sqeel
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Vim-modal SQL client: TUI front-end for sqlx-backed connections with LSP-aware editing. (binary release)"
 arch=('x86_64' 'aarch64')
@@ -18,11 +18,23 @@ depends=('libxcb' 'gcc-libs')
 
 source_x86_64=("sqeel-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/sqeel/releases/download/v${pkgver}/sqeel-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("sqeel-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/kryptic-sh/sqeel/releases/download/v${pkgver}/sqeel-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('878084dd969ca075374669b2a37ea60fe61337c54859ad86bddea7bfa6ca6f6e')
-sha256sums_aarch64=('8ee99000130bad221abe1cde2aa10407ba778d84d64d8b525d5a1724d647672f')
+sha256sums_x86_64=('844397f265ac192b4c51abedab757b9d64ec394ff78ef4a890bcdf9b3e3629ac')
+sha256sums_aarch64=('89dd955243a0104be1c8ff6703f426a9b6c3003c8cd826ef1c1c02e66f8bc1f6')
 
 package() {
     install -Dm755 "$srcdir/sqeel" "$pkgdir/usr/bin/sqeel"
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+    # Completions + man page: the binary embeds its own generators
+    # (`--completions <shell>` / `--man`), so generate from the exact
+    # artifact being packaged.
+    "$srcdir/sqeel" --completions bash | install -Dm644 /dev/stdin \
+        "$pkgdir/usr/share/bash-completion/completions/sqeel"
+    "$srcdir/sqeel" --completions zsh | install -Dm644 /dev/stdin \
+        "$pkgdir/usr/share/zsh/site-functions/_sqeel"
+    "$srcdir/sqeel" --completions fish | install -Dm644 /dev/stdin \
+        "$pkgdir/usr/share/fish/vendor_completions.d/sqeel.fish"
+    "$srcdir/sqeel" --man | install -Dm644 /dev/stdin \
+        "$pkgdir/usr/share/man/man1/sqeel.1"
 }
