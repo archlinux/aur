@@ -1,13 +1,16 @@
 pkgbase = libcurl-impersonate-bin
 	pkgdesc = libcurl-impersonate prebuilt libraries
-	pkgver = 1.2.5
+	pkgver = 1.5.6
 	pkgrel = 1
 	url = https://github.com/lexiforest/curl-impersonate
 	arch = x86_64
 	license = MIT
+	depends = glibc
 	provides = libcurl-impersonate
 	conflicts = libcurl-impersonate
-	source = https://github.com/lexiforest/curl-impersonate/releases/download/v1.2.5/libcurl-impersonate-v1.2.5.x86_64-linux-gnu.tar.gz
-	sha256sums = e2f08198cd7a7cd873ff7138cd50e2fc5b96fe750d1504b66ccbfae49f46bf7c
+	source = https://github.com/lexiforest/curl-impersonate/releases/download/v1.5.6/libcurl-impersonate-v1.5.6.x86_64-linux-gnu.tar.gz
+	source = curl-impersonate-LICENSE-1.5.6::https://raw.githubusercontent.com/lexiforest/curl-impersonate/v1.5.6/LICENSE
+	sha256sums = f07e25084020c54d6fd5654c8d458e09b3a44c312f88e480c255399f00487b25
+	sha256sums = 7d0c5f4b5b4c27299ad6759798772b866b3559ac5edb23845f36328eb734376d
 
 pkgname = libcurl-impersonate-bin
