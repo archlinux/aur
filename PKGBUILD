@@ -3,7 +3,7 @@
 pkgname=python-alibabacloud-tea-openapi 
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 epoch=
 pkgdesc="Alibaba Cloud openapi SDK Library for Python"
@@ -32,7 +32,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('12aef036ed993637b6f141abbd1de9d6199d5516f4a901588bb65d6a3768d41b')
+sha256sums=('1b0917bc03cd49417da64945e92731716d53e2eb8707b235f54e45b7473221ce')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"

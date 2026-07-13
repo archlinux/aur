@@ -1,6 +1,6 @@
 pkgbase = python-alibabacloud-tea-openapi
 	pkgdesc = Alibaba Cloud openapi SDK Library for Python
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://pypi.org/project/alibabacloud_tea_openapi
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-alibabacloud-tea-openapi
 	conflicts = python-alibabacloud-tea-openapi
 	options = !strip
 	options = !debug
-	source = alibabacloud_tea_openapi-0.4.3.tar.gz::https://files.pythonhosted.org/packages/source/a/alibabacloud_tea_openapi/alibabacloud_tea_openapi-0.4.3.tar.gz
-	sha256sums = 12aef036ed993637b6f141abbd1de9d6199d5516f4a901588bb65d6a3768d41b
+	source = alibabacloud_tea_openapi-0.4.4.tar.gz::https://files.pythonhosted.org/packages/source/a/alibabacloud_tea_openapi/alibabacloud_tea_openapi-0.4.4.tar.gz
+	sha256sums = 1b0917bc03cd49417da64945e92731716d53e2eb8707b235f54e45b7473221ce
 
 pkgname = python-alibabacloud-tea-openapi
