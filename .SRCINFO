@@ -1,6 +1,6 @@
 pkgbase = hnefatafl-copenhagen
 	pkgdesc = Copenhagen Hnefatafl client, engine, server and artificial intelligence
-	pkgver = 6.1.0
+	pkgver = 6.1.1
 	pkgrel = 2
 	url = https://hnefatafl.org
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = hnefatafl-copenhagen
 	depends = openssl
 	provides = hnefatafl-copenhagen
 	conflicts = hnefatafl-copenhagen
-	source = https://codeberg.org/dcampbell/hnefatafl/archive/v6.1.0-1.tar.gz
-	sha256sums = b41e251ce0519c90e7e2d2999d08c4dcbeb652e6a3250a7a45a3c39c1cf6a45c
+	source = https://codeberg.org/dcampbell/hnefatafl/archive/v6.1.1-1.tar.gz
+	sha256sums = ef4acbadcb11a612642ad2e391ff7488b884f811e7c5222eef75f593be6e0433
 
 pkgname = hnefatafl-copenhagen
