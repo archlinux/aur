@@ -2,7 +2,7 @@
 
 pkgname=deepcode-cli-bin
 _pkgname=deepcode-cli
-pkgver=0.1.31
+pkgver=0.1.33
 pkgrel=1
 pkgdesc="Terminal AI coding assistant optimized for the deepseek-v4 model (deep thinking, agent skills, MCP)"
 arch=('any')
@@ -22,7 +22,7 @@ _scope='@vegamo'
 # a stale cached tarball across version bumps.
 source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_scope}/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('ca5b7d00d3576759f2dc899e80c50db01d75190908694b22c0411a0d244b99cd')
+sha256sums=('71875a68c51c15fd27b28af3be122cee30e1b0c0532906692bdc213ba03f7bed')
 
 package() {
     # npm resolves the dependency tree into the module's own node_modules and
