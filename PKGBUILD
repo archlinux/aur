@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=deepcode-cli
-pkgver=0.1.31
+pkgver=0.1.33
 pkgrel=1
 pkgdesc="Terminal AI coding assistant optimized for the deepseek-v4 model (deep thinking, agent skills, MCP)"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('npm')
 provides=('deepcode')
 conflicts=('deepcode-cli-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d146212a5a4fac15bc19252adfb5c7303fd7b81e93be7ea07875062bcd550a04')
+sha256sums=('bfeb3bfae7082f23db5a5b578f3cc642eb74dfd1e5b31b31a2a551caeb7518e6')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -27,30 +27,32 @@ build() {
     # non-git tarball checkout.
     npm ci --ignore-scripts --cache "${srcdir}/npm-cache" --no-audit --no-fund
 
-    # `bundle` is the real build (esbuild src/cli.tsx -> dist/cli.js + copy
-    # bundled skill assets); we skip the `build` wrapper because it also runs
-    # typecheck/eslint/prettier gates that aren't a packager's concern.
+    # `bundle` is the real build. Since 0.1.33 upstream is an npm workspace
+    # (workspaces=packages/*); the CLI lives in packages/cli and `bundle`
+    # esbuilds it into a self-contained packages/cli/dist (cli.js + chunks/ +
+    # templates/ + bundled/, every dep inlined — the published npm package has
+    # dependencies:{} for the same reason). We skip the `build` wrapper because
+    # it also runs typecheck/eslint/prettier gates that aren't a packager's
+    # concern.
     npm run bundle
-
-    # Re-pack the freshly built tree into the canonical release tarball
-    # (honours package.json "files"); --ignore-scripts avoids re-running the
-    # prepack build we just did.
-    npm pack --ignore-scripts --cache "${srcdir}/npm-cache"
 }
 
 package() {
     cd "${pkgname}-${pkgver}"
 
-    # Install our self-built tarball; npm resolves the production dependency
-    # tree (served from the shared cache, no re-download) into the module's
-    # node_modules and creates a relative usr/bin/deepcode symlink.
-    npm install -g \
-        --prefix "${pkgdir}/usr" \
-        --cache "${srcdir}/npm-cache" \
-        --no-audit --no-fund --omit=dev \
-        "vegamo-deepcode-cli-${pkgver}.tgz"
+    # dist/ is fully bundled (no runtime dependency tree to resolve), so install
+    # it verbatim instead of round-tripping through npm pack / npm install --
+    # mirrors the published tarball layout: dist contents at the module root,
+    # bin = cli.js. `npm pack` at the workspace root no longer works (root
+    # package.json has no name/version).
+    local _moddir="${pkgdir}/usr/lib/node_modules/@vegamo/${pkgname}"
+    install -Dm755 packages/cli/dist/cli.js "${_moddir}/cli.js"
+    cp -r packages/cli/dist/chunks packages/cli/dist/templates \
+        packages/cli/dist/bundled "${_moddir}/"
 
-    install -Dm644 \
-        "${pkgdir}/usr/lib/node_modules/@vegamo/${pkgname}/LICENSE" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -d "${pkgdir}/usr/bin"
+    ln -s "../lib/node_modules/@vegamo/${pkgname}/cli.js" \
+        "${pkgdir}/usr/bin/deepcode"
+
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
