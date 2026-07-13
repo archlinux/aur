@@ -1,8 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Aburady <accounts@aburady.com>
 pkgname=plezy
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
+_flutter_ver=3.44.0
 pkgdesc="A modern Plex and Jellyfin client"
 arch=('x86_64' 'aarch64')
 url="https://plezy.app"
@@ -12,7 +13,6 @@ depends=(
   'gtk3'
   'libepoxy'
   'libevdev'
-  'libkeybinder3'
   'mpv'
 )
 makedepends=(
@@ -21,19 +21,19 @@ makedepends=(
   'cmake'
   'fvm'
   'git'
-  'java-environment'
+  'java-environment=17'
   'imagemagick'
   'ninja'
   'unzip'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/edde746/plezy/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('f982136ca206f24d862e1fb521976245007ca1959024677013e1cfdaa0529219')
+sha256sums=('a9651fe436fcef249ac23c6949d291aa6074371fdadb15461107f88d13db955a')
 
 prepare() {
   cd "$pkgname-$pkgver"
   export FVM_CACHE_PATH="$srcdir/fvm"
-  fvm install stable
-  fvm global stable
+  fvm install "${_flutter_ver}"
+  fvm global "${_flutter_ver}"
 
   fvm flutter --disable-analytics
   fvm flutter pub get
@@ -57,10 +57,16 @@ package() {
     FLUTTER_ARCH=x64
   fi
 
+  # Not required at runtime as it's only used on Android
+  rm -fv "build/linux/${FLUTTER_ARCH}/release/bundle/lib/libdartjni.so"
+
   cd "$pkgname-$pkgver"
   install -Dm755 "build/linux/${FLUTTER_ARCH}/release/bundle/$pkgname" -t \
     "$pkgdir/opt/$pkgname/"
   cp -a build/linux/${FLUTTER_ARCH}/release/bundle/{data,lib} "$pkgdir/opt/$pkgname/"
+
+  # Ensure binaries are executable
+  chmod 0755 "$pkgdir/opt/$pkgname/$pkgname"
   chmod 0755 "$pkgdir/opt/$pkgname/lib/crashpad_handler"
 
   install -Dm755 "linux/packaging/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"

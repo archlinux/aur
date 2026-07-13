@@ -1,6 +1,6 @@
 pkgbase = plezy
 	pkgdesc = A modern Plex and Jellyfin client
-	pkgver = 2.8.0
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://plezy.app
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = plezy
 	makedepends = cmake
 	makedepends = fvm
 	makedepends = git
-	makedepends = java-environment
+	makedepends = java-environment=17
 	makedepends = imagemagick
 	makedepends = ninja
 	makedepends = unzip
@@ -19,9 +19,8 @@ pkgbase = plezy
 	depends = gtk3
 	depends = libepoxy
 	depends = libevdev
-	depends = libkeybinder3
 	depends = mpv
-	source = plezy-2.8.0.tar.gz::https://github.com/edde746/plezy/archive/refs/tags/2.8.0.tar.gz
-	sha256sums = f982136ca206f24d862e1fb521976245007ca1959024677013e1cfdaa0529219
+	source = plezy-2.9.0.tar.gz::https://github.com/edde746/plezy/archive/refs/tags/2.9.0.tar.gz
+	sha256sums = a9651fe436fcef249ac23c6949d291aa6074371fdadb15461107f88d13db955a
 
 pkgname = plezy
