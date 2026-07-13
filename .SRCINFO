@@ -1,21 +1,21 @@
 pkgbase = pixes-bin
 	pkgdesc = Unofficial pixiv app.(Prebuilt version)
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/wgh136/pixes
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = gtk3
-	provides = pixes=1.2.2
+	provides = pixes=1.2.3
 	conflicts = pixes
-	source = LICENSE-1.2.2::https://raw.githubusercontent.com/wgh136/pixes/v1.2.2/LICENSE
+	source = LICENSE-1.2.3::https://raw.githubusercontent.com/wgh136/pixes/v1.2.3/LICENSE
 	source = pixes.sh
 	sha256sums = 5aaabbeafa067d045963cfc2d8d0fed63c41d0e20267771b1b8501a350d3b3f5
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
-	source_aarch64 = pixes-1.2.2-aarch64.deb::https://github.com/wgh136/pixes/releases/download/v1.2.2/pixes_1.2.2_arm64.deb
-	sha256sums_aarch64 = 879663095976989ecff200da4b7d65c08b42340df3ed4293ff61192ef5111feb
-	source_x86_64 = pixes-1.2.2-x86_64.deb::https://github.com/wgh136/pixes/releases/download/v1.2.2/pixes_1.2.2_amd64.deb
-	sha256sums_x86_64 = e724a8d0fbd09899ebc42c4d0988ab9df5f4781641fb9545ed793186c7373d27
+	source_aarch64 = pixes-1.2.3-aarch64.deb::https://github.com/wgh136/pixes/releases/download/v1.2.3/pixes_1.2.3_arm64.deb
+	sha256sums_aarch64 = 0babf114548e15a76a01a6f263316737b79bf214c5f8d0c5db2b897fd1507216
+	source_x86_64 = pixes-1.2.3-x86_64.deb::https://github.com/wgh136/pixes/releases/download/v1.2.3/pixes_1.2.3_amd64.deb
+	sha256sums_x86_64 = 916b819a18c664fb4991b049b06c326876b8047fa528b5f5f0c27b9f932c1e5e
 
 pkgname = pixes-bin
