@@ -1,0 +1,140 @@
+From 1d2708562a06b143f4f698f2ceac18cf60b0dcfc Mon Sep 17 00:00:00 2001
+From: John Audia <therealgraysky@proton.me>
+Date: Sun, 12 Jul 2026 17:57:16 -0400
+Subject: [PATCH] Add web UI favicon
+
+Brighten up your bookmarks. Ship raspisump/static/favicon.svg, simple
+sump-pit water-level icon.
+
+Tests (tests/test_web_favicon.py): assert the asset exists and is valid
+SVG (runs anywhere) that it is served at /static/favicon.svg as image/svg+xml
+and linked from every rendered page.
+
+All tests pass.
+---
+ raspisump/static/favicon.svg  | 22 +++++++++++
+ raspisump/templates/base.html |  1 +
+ tests/test_web_favicon.py     | 70 +++++++++++++++++++++++++++++++++++
+ 3 files changed, 93 insertions(+)
+ create mode 100644 raspisump/static/favicon.svg
+ create mode 100644 tests/test_web_favicon.py
+
+diff --git a/raspisump/static/favicon.svg b/raspisump/static/favicon.svg
+new file mode 100644
+index 000000000000..a21956ccc0f6
+--- /dev/null
++++ b/raspisump/static/favicon.svg
+@@ -0,0 +1,22 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Raspi-Sump">
++  <defs>
++    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
++      <stop offset="0" stop-color="#2b9fe6"/>
++      <stop offset="1" stop-color="#1666b8"/>
++    </linearGradient>
++  </defs>
++  <!-- pit / tank interior (fills the canvas — no off-white border) -->
++  <rect x="5" y="3" width="54" height="58" rx="9" fill="#0a1f36"/>
++  <!-- water fill with a wavy top (about 55% full) -->
++  <path fill="url(#water)"
++        d="M5 28
++           q 6.75 -6 13.5 0 t 13.5 0 t 13.5 0 t 13.5 0
++           V52 a9 9 0 0 1 -9 9 H14 a9 9 0 0 1 -9 -9 Z"/>
++  <!-- level tick marks on the wall -->
++  <g fill="#eaf4ff">
++    <rect x="47" y="16" width="8" height="3" rx="1.5"/>
++    <rect x="49" y="26" width="6" height="3" rx="1.5"/>
++    <rect x="47" y="36" width="8" height="3" rx="1.5"/>
++    <rect x="49" y="46" width="6" height="3" rx="1.5"/>
++  </g>
++</svg>
+diff --git a/raspisump/templates/base.html b/raspisump/templates/base.html
+index d81d39235c3e..7b17018aa233 100644
+--- a/raspisump/templates/base.html
++++ b/raspisump/templates/base.html
+@@ -4,6 +4,7 @@
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <title>{% block title %}Raspi-Sump{% endblock %}</title>
++    <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+     <script>if(localStorage.getItem('theme')==='dark')document.documentElement.setAttribute('data-theme','dark');</script>
+     <link rel="stylesheet" href="/static/raspi.css">
+     <link rel="stylesheet" href="/static/uplot.min.css">
+diff --git a/tests/test_web_favicon.py b/tests/test_web_favicon.py
+new file mode 100644
+index 000000000000..75371f7ce11d
+--- /dev/null
++++ b/tests/test_web_favicon.py
+@@ -0,0 +1,70 @@
++"""Tests for the web UI favicon.
++
++The asset checks run anywhere; the serving/linking checks need Flask and
++are skipped automatically when it isn't installed (as on a dev machine).
++"""
++
++import os
++import unittest
++import xml.dom.minidom
++
++# raspisump/static/favicon.svg — resolved relative to the package, not cwd.
++_STATIC_DIR = os.path.join(
++    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
++    "raspisump", "static",
++)
++_FAVICON = os.path.join(_STATIC_DIR, "favicon.svg")
++
++
++class TestFaviconAsset(unittest.TestCase):
++    """The icon file ships in the package and is a valid SVG."""
++
++    def test_favicon_file_exists(self):
++        self.assertTrue(os.path.isfile(_FAVICON), f"missing {_FAVICON}")
++
++    def test_favicon_is_well_formed_svg(self):
++        with open(_FAVICON, "rb") as f:
++            dom = xml.dom.minidom.parseString(f.read())
++        self.assertEqual(dom.documentElement.tagName, "svg")
++
++
++# ---------------------------------------------------------------------------
++# Serving / linking (require Flask — run on Pi only)
++# ---------------------------------------------------------------------------
++
++try:
++    import importlib
++    importlib.import_module("flask")
++    from raspisump.web import create_app
++    FLASK_AVAILABLE = True
++except ImportError:
++    FLASK_AVAILABLE = False
++
++
++@unittest.skipUnless(FLASK_AVAILABLE, "Flask not installed")
++class TestFaviconServing(unittest.TestCase):
++    """Flask serves the icon and every page links it from <head>.
++
++    /admin/login is used because it extends base.html and needs no database.
++    """
++
++    def setUp(self):
++        app = create_app()
++        app.config["TESTING"] = True
++        self.client = app.test_client()
++
++    def test_favicon_served_with_svg_content_type(self):
++        response = self.client.get("/static/favicon.svg")
++        self.addCleanup(response.close)  # release the file handle send_file opened
++        self.assertEqual(response.status_code, 200)
++        self.assertIn("image/svg+xml", response.headers.get("Content-Type", ""))
++
++    def test_page_links_favicon(self):
++        response = self.client.get("/admin/login")
++        self.assertEqual(response.status_code, 200)
++        self.assertIn(b'rel="icon"', response.data)
++        self.assertIn(b"/static/favicon.svg", response.data)
++
++
++if __name__ == "__main__":
++    unittest.main()
+-- 
+2.55.0
+

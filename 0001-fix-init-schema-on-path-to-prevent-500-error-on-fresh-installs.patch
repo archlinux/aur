@@ -1,11 +1,16 @@
 From 759287959883e0733a2f96b54f094766dfa25785 Mon Sep 17 00:00:00 2001
 From: graysky <therealgraysky AT proton DOT me>
 Date: Mon, 6 Jul 2026 16:56:08 -0400
-Subject: [PATCH] fix
+Subject: [PATCH] fix: Init schema on paths to prevent 500 error on fresh installs
 
-Rreadings table is created lazily — only by the two write paths (log_reading() and import_csv_files() in log.py:105 and log.py:274), both of which call _init_db() first. But every read path — query_readings(), query_readings_range() in log.py, and day_stats() in web/stats.py — queries the table directly with no such guard. On a fresh install, the setup wizard (setup.py:135) starts raspisump.service then redirects your browser to / after an 8-second countdown. If the sensor daemon hasn't logged its first reading yet in that window (or fails to — GPIO error, sensor not wired up, etc.), the table simply doesn't exist yet. home.py's index() view calls day_stats() with no exception handling, so Flask returns a hard 500 instead of "no data yet."
+The 'readings' table is created lazily during write operations (`log_reading`,
+`import_csv_files`). On a fresh install, if the sensor daemon hasn't written
+data before a user visits the dashboard, the missing table causes a hard 500
+error in `day_stats()`.
 
-The fix: make the read paths self-heal the schema the same way the write paths already do, since CREATE TABLE IF NOT EXISTS is cheap and idempotent.
+Fix this by calling `_init_db()` on read paths (`query_readings`,
+`query_readings_range`, and `day_stats`) to ensure the schema is self-healed
+before querying.
 
 ---
  raspisump/log.py       | 2 ++
