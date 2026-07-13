@@ -5,18 +5,11 @@
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 
 ## options
-: ${_build_arch_patch:=true}
-
-: ${_build_vfio:=true}
-: ${_build_lts:=false}
-
 : ${_build_level:=1}
 
-: ${_cksum=de9999b784d2293f00d39c62d8f92a08ab8a54bc4e80ffd250a0c09cb07a0f98}
+: ${_cksum=be41c068e88f5242a19bccdbffbe077b18c47b45f627e2325504b4fab79dd1dc}
 
-unset _pkgtype
-[[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
-[[ ${_build_lts::1} == "t" ]] && _pkgtype+="-lts"
+_pkgtype="-vfio"
 [[ ${_build_level::1} == "2" ]] && _pkgtype+="-x64v2"
 [[ ${_build_level::1} == "3" ]] && _pkgtype+="-x64v3"
 [[ ${_build_level::1} == "4" ]] && _pkgtype+="-x64v4"
@@ -24,7 +17,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=7.0.14
+pkgver=7.1.3
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -55,6 +48,7 @@ makedepends=(
 
 options=('!debug' '!strip')
 
+# find _pkgver_tag for archlinux kernel config
 _dl_url_arch='https://gitlab.archlinux.org/archlinux/packaging/packages/linux'
 _pkgver_tag=$(
   curl -sfL --max-redirs 3 --no-progress-meter "$_dl_url_arch/-/tags?sort=updated_desc&search=${pkgver}&format=atom" \
@@ -63,54 +57,39 @@ _pkgver_tag=$(
 )
 : ${_pkgver_tag:=main}
 
+[[ ${pkgver} =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] && _pkgver=${pkgver%.*}
+
+# find _srctag for archlinux kernel patches
+_dl_url_arch='https://github.com/archlinux/linux'
+_tags=$(
+  curl -sfL --max-redirs 3 --no-progress-meter "$_dl_url_arch/tags.atom" \
+    | grep -Eo 'v[0-9.]\S*-arch[0-9]+' | sort -ruV
+)
+
+: ${_srctag:=$(grep -Eom1 "v${pkgver}-arch[0-9]+" <<< "$_tags")}
+: ${_srctag:=$(grep -Eom1 "v${_pkgver}\\S*-arch[0-9]+" <<< "$_tags")}
+: ${_srctag:=v${pkgver}-arch1}
+
 _srcname=linux-$pkgver
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar".{xz,sign}
+  "$_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst"{,.sig}
   "config-$pkgver"::"$_dl_url_arch/-/raw/$_pkgver_tag/config.x86_64"
+  1001-6.14.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
 )
 sha256sums=(
   "${_cksum:-SKIP}"
   'SKIP'
   'SKIP'
+  'SKIP'
+  'SKIP'
+  '6bca6264da6717402ec89ec5ed06b8997fe3df7a20a3a57eb5a85f64e12bc396'
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886 # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E # Greg Kroah-Hartman
   83BC8889351B5DEBBB68416EB8AC08600F108CDF # Jan Alexander Steffens (heftig)
 )
-
-if [[ "${_build_vfio::1}" == "t" ]]; then
-  source+=(
-    1001-6.14.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
-    1002-7.0.0-i915-vga-arbiter.patch   # updated from https://lkml.org/lkml/2014/5/9/517
-  )
-  sha256sums+=(
-    '6bca6264da6717402ec89ec5ed06b8997fe3df7a20a3a57eb5a85f64e12bc396'
-    'b13a692c492404c45cb56f1e27f05fcb2a620504a9cfc1b314f3f90f527d79c0'
-  )
-fi
-
-if [[ "${_build_arch_patch::1}" == "t" ]]; then
-  [[ ${pkgver} =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] && _pkgver=${pkgver%.*}
-
-  _dl_url_arch='https://github.com/archlinux/linux'
-  _tags=$(
-    curl -sfL --max-redirs 3 --no-progress-meter "$_dl_url_arch/tags.atom" \
-      | grep -Eo 'v[0-9.]\S*-arch[0-9]+' | sort -ruV
-  )
-
-  : ${_srctag:=$(grep -Eom1 "v${pkgver}-arch[0-9]+" <<< "$_tags")}
-  : ${_srctag:=$(grep -Eom1 "v${_pkgver}\\S*-arch[0-9]+" <<< "$_tags")}
-  : ${_srctag:=v${pkgver}-arch1}
-
-  source+=(
-    "$_dl_url_arch/releases/download/$_srctag/linux-$_srctag.patch.zst"{,.sig}
-  )
-  sha256sums+=(
-    'SKIP'
-    'SKIP'
-  )
-fi
 
 if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
   export KCFLAGS="-march=x86-64-v${_build_level::1} -O3"
