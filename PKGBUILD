@@ -14,7 +14,7 @@ depends=(
     xz
     bzip2
 )
-makedepends=(git perl)
+makedepends=(git perl hipcub rocprim)
 options=(!debug !lto)
 source=("nates-recipe-rs::git+https://github.com/nm-z/nates-recipe-rs.git")
 sha256sums=('SKIP')
