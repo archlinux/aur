@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A modern replacement for stat with bordered table output"
 
-pkgver=0.0.1
+pkgver=0.1.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('875f40b9da42f8288139e00a77183820484f4ffc08054a61626156243a2220fd')
-sha256sums_aarch64=('f3ce3e359df8329fe0de6cf0b1511ac97b64bbc33ed68e6547d7fee55d51ca48')
+sha256sums_x86_64=('30f80a920ca39aabe4244bc4ec1b61c51616597a2f0a6cccfee27f4577a5920d')
+sha256sums_aarch64=('a702a114711ef4817069e56eca91f44c8b0ca3ac966e91a0b319c78e8ff7575c')
 
 
 package() {
