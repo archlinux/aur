@@ -1,0 +1,15 @@
+pkgbase = desktopforge
+	pkgdesc = A small Qt6 GUI tool for creating and editing .desktop launcher files (the freedesktop.org Desktop Entry Specification), without hand-editing INI syntax in a text editor.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/user14923929/desktopfileforge
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = gcc
+	depends = gcc-libs
+	source = desktopforge-0.1.0.tar.gz::https://github.com/user14923929/DesktopFileForge/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = f227ae1463bd97f8dd7a5b03a66d2ed9d690e946993e1897cfd8becd10008eb7
+
+pkgname = desktopforge
