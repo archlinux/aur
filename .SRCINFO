@@ -1,6 +1,6 @@
 pkgbase = aqueous
 	pkgdesc = Aqueous single-process Wayland compositor
-	pkgver = 0.3.0.r0.gaac324f
+	pkgver = 0.3.0.r30.ga30e73f
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Aqueous
 	install = aqueous.install
@@ -11,6 +11,7 @@ pkgbase = aqueous
 	makedepends = lld
 	makedepends = llvm
 	makedepends = git
+	makedepends = scdoc
 	makedepends = wayland-protocols
 	makedepends = scenefx
 	depends = wayland
