@@ -1,6 +1,6 @@
 pkgbase = epiq
 	pkgdesc = CLI based issue tracker TUI - distributed and backed by git
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/ljtn/epiq
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = epiq
 	depends = nodejs
 	provides = epiq
 	replaces = nodejs-epiq
-	noextract = epiq-1.2.2.tgz
+	noextract = epiq-1.2.3.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = epiq-1.2.2.tgz::https://registry.npmjs.org/epiq/-/epiq-1.2.2.tgz
-	b2sums = 44a142bcd78ecfee1e56b431e25c48f1b8778d2bb789d689bd0bf01060c2ccdda0d860e16bf7ac4edb78bfac0bb936557fa0f9f87a2a28754d50846a136ccbeb
+	source = epiq-1.2.3.tgz::https://registry.npmjs.org/epiq/-/epiq-1.2.3.tgz
+	b2sums = bb406e9b69cd392ffb90ced1c23054da4e26b2998b030a59a295b1dc34dbde46f3826caabf46029ac07981daf7323dd683723be3c633ee314a3a6cb0741fce43
 
 pkgname = epiq
