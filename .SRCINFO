@@ -1,6 +1,6 @@
 pkgbase = moon-bin
 	pkgdesc = Task runner and repo management tool for the web ecosystem
-	pkgver = 2.4.2
+	pkgver = 2.4.3
 	pkgrel = 1
 	url = https://github.com/moonrepo/moon
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = moon-bin
 	depends = gcc-libs
 	provides = moon
 	conflicts = moon
-	source_x86_64 = moon-2.4.2-x86_64.tar.xz::https://github.com/moonrepo/moon/releases/download/v2.4.2/moon_cli-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 5603438fbf14be0515f27f0756d99e4a806097993e21467f9daf9b509cdf8a8d
-	source_aarch64 = moon-2.4.2-aarch64.tar.xz::https://github.com/moonrepo/moon/releases/download/v2.4.2/moon_cli-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 7f922174533817a553c8c0becb0fc1fcc45f400104824af42bc0da525c4d06af
+	source_x86_64 = moon-2.4.3-x86_64.tar.xz::https://github.com/moonrepo/moon/releases/download/v2.4.3/moon_cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 368fb8ca4307cab5a0bf55013e4a3fa92e58a35934d0bdd92413e7bb49facbb6
+	source_aarch64 = moon-2.4.3-aarch64.tar.xz::https://github.com/moonrepo/moon/releases/download/v2.4.3/moon_cli-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 94d8a30c31a127ceb471c295294b77b2565ce90eabb6b6728db782864451ab70
 
 pkgname = moon-bin
