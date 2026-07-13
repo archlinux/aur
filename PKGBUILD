@@ -1,6 +1,6 @@
 pkgname=recipe
 pkgdesc="WIP DO NOT INSTALL - ML/DL/AI training+inference for AMD/NVIDIA GPUs (fp64)"
-pkgver=0.0.r260.52cb359
+pkgver=0.0.r261.0563fe3
 pkgrel=1
 url=https://github.com/nm-z/nates-recipe-rs
 arch=(x86_64)
