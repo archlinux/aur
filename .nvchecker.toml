@@ -1,0 +1,4 @@
+[python-qutip]
+source = "git"
+git = "https://github.com/qutip/qutip.git"
+prefix = "v"
