@@ -1,6 +1,6 @@
 pkgbase = mages-bin
 	pkgdesc = Mages desktop (early testing)
-	pkgver = 4.9.1
+	pkgver = 4.9.2
 	pkgrel = 1
 	url = https://github.com/mlm-games/mages
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = mages-bin
 	provides = mages
 	conflicts = mages
 	options = !strip
-	source_x86_64 = mages-4.9.1-x86_64.AppImage::https://github.com/mlm-games/mages/releases/download/4.9.1/mages-4.9.1-x86_64.AppImage
-	sha256sums_x86_64 = 89a06b1fdae3b1ae33619d898099325b3b969b0baabe2ce62d129751bb7d3016
-	source_aarch64 = mages-4.9.1-aarch64.AppImage::https://github.com/mlm-games/mages/releases/download/4.9.1/mages-4.9.1-aarch64.AppImage
-	sha256sums_aarch64 = afc5f5159230bba222ae07ced85a74549cbd50f04a043381432dc0945547b467
+	source_x86_64 = mages-4.9.2-x86_64.AppImage::https://github.com/mlm-games/mages/releases/download/4.9.2/mages-4.9.2-x86_64.AppImage
+	sha256sums_x86_64 = bc4a058dc492dd7fceb2f39adc793669f1ab917b5ae9f3cf99166ea1d6c466b7
+	source_aarch64 = mages-4.9.2-aarch64.AppImage::https://github.com/mlm-games/mages/releases/download/4.9.2/mages-4.9.2-aarch64.AppImage
+	sha256sums_aarch64 = f788cabb2787a6e2d38a86481d5318868c8fda8a0cfea9292db40eb950ceb723
 
 pkgname = mages-bin
