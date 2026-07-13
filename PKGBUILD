@@ -2,7 +2,7 @@
 
 pkgname=dokku
 pkgver=0.38.22
-pkgrel=1
+pkgrel=2
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('x86_64')
 url='https://github.com/dokku/dokku'
@@ -40,11 +40,9 @@ depends=(
 )
 source=("${url}/archive/v${pkgver}.zip"
         "${pkgname}.install"
-        "fix_go_work_missing_builds.patch"
         "scheduler-docker-local.patch")
 sha256sums=('202affcfebf765f8912b88dc9cec2105fe1d68d0de7b0c8dddca6c75d882aee9'
             'd614323822b83612688a1192daedb3f7bf69f0d1a0e1df08411f5c32e4adde05'
-            '21edd6f85494f3ab15e0262bae7d2bf7add81875374c3420dbeb3ff1acebcde8'
             '88466a2d07d7ccbef6a32848dbe280e1be0636f8c4ed7977f1211f08f1258a3a')
 install="${pkgname}.install"
 
@@ -57,9 +55,6 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "${pkgname}-${pkgver}"
-
-  # Fix go.work missing builds issue
-  patch -p1 -i "$srcdir/fix_go_work_missing_builds.patch"
 
   # Fix scheduler-docker-local plugin
   patch -p1 -i "$srcdir/scheduler-docker-local.patch"
