@@ -64,7 +64,7 @@ optdepends=(
     'python-boto3: S3 storage support'
 )
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/opendatalab/MinerU/archive/refs/tags/$_pkgname-$pkgver-released.tar.gz")
-b2sums=('5df2f15e1201198cd41c667784d2ad3ed09e28762854e2414bf8046f13976d18')
+b2sums=('b3a8f735e3b2d327f53c2efcb759d4b48425542d2c301a688dd9ebcfe4ff4cd8606f68511f8791c382724871a2b3c7ab91929980614f7541d9330e7ddad052c4')
 
 build() {
     cd "MinerU-$_pkgname-$pkgver-released"
