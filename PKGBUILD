@@ -5,7 +5,7 @@ pkgver=2.4.2
 pkgrel=1
 pkgdesc="G-code generator for 3D printers"
 arch=('x86_64')
-url="https://github.com/SoftFever/OrcaSlicer"
+url="https://github.com/OrcaSlicer/OrcaSlicer"
 license=('AGPL-3.0-only')
 depends=('glu' 'cairo' 'gtk3' 'gstreamer' 'gst-plugins-good'
          'wayland' 'webkit2gtk-4.1' 'mesa-utils' 'libmspack'
