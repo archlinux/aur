@@ -1,0 +1,41 @@
+post_install() {
+  cat << EOF
+
+  Tildr installed!
+  -----------------
+  CLI tool for managing and resolving home directory paths (~)
+
+  Get started:
+    tildr init
+    tildr --help
+    man tildr
+
+  Configuration: ~/.config/tildr/config.toml
+
+EOF
+
+}
+
+post_upgrade() {
+  cat << EOF
+
+  Tildr updated!
+  ---------------
+  Check what changed:
+    https://github.com/orbitbits/tildr/releases
+
+EOF
+}
+
+post_remove() {
+  cat << EOF
+
+  Tildr removed.
+  ---------------
+  Your config and repository were kept at:
+    ~/.config/tildr/
+
+  To fully remove, delete them manually.
+
+EOF
+}
