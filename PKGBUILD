@@ -4,7 +4,7 @@
 
 pkgname=claude-desktop-bin
 pkgver=1.20186.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Claude Desktop - Linux (unofficial, repackaged from the official Linux .deb)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
@@ -13,7 +13,7 @@ license=('custom:Claude')
 # binary, chrome_crashpad_handler, bundled virtiofsd, node-pty pty.node) plus
 # the official .deb's control Depends. Notes:
 # - libcap-ng + libseccomp: linked by the BUNDLED virtiofsd the official .deb
-#   ships at resources/virtiofsd (we ship it under resources/locales/).
+#   ships at resources/virtiofsd (we ship it at the same upstream position).
 # - libsecret: dlopened by Chromium's os_crypt for keyring credential storage
 #   (not in NEEDED, but genuinely required — upstream declares libsecret-1-0).
 # - libnotify, libdrm, xdg-utils, xdg-desktop-portal: mirror upstream Depends.
@@ -47,50 +47,36 @@ optdepends_aarch64=('qemu-system-aarch64: Cowork agent workspace VM (needs /dev/
 provides=('claude-desktop')
 conflicts=('claude-desktop')
 install="$pkgname.install"
-# The pre-patched tarball already contains the official Electron runtime (under
-# electron/) and the patched app (under app/). No separate Electron zip source.
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.20186.1/claude-desktop-1.20186.1-linux.tar.gz")
-sha256sums_x86_64=('f8b9807b257231c53f8af780ef554d7b2d0dc237cb1c4558119f86675ca383be')
-source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.20186.1/claude-desktop-1.20186.1-linux-aarch64.tar.gz")
-sha256sums_aarch64=('253cba24e4c45d5619919b1e6ac73a194e9b6d2351cc545f00ff0bb1dc186a9f')
+# The pre-patched tarball ships the official Claude Desktop tree VERBATIM under
+# claude-desktop/ (Electron runtime + resources/app.asar already patched + our CU
+# bridges under resources/), plus launcher/, icons/, and copyright. No separate
+# Electron zip source.
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.20186.1-2/claude-desktop-1.20186.1-linux.tar.gz")
+sha256sums_x86_64=('51e9e69cfe029dc4ffec9b375838100953c6be4198af220039307a024fc7d667')
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.20186.1-2/claude-desktop-1.20186.1-linux-aarch64.tar.gz")
+sha256sums_aarch64=('ecd809a2125dfdd91c6df58bb21ce5521c90cb457657bd6ff23e1f1cc94daaec')
 options=('!strip' '!emptydirs')
 
 package() {
     cd "$srcdir"
 
-    # Install the bundled Electron runtime (from the official .deb, shipped in the
-    # tarball's electron/ dir): the Electron binary, chrome-sandbox, the .so files,
-    # paks, chromium locales, snapshots, etc.
+    # Install the official Claude Desktop tree VERBATIM (from the tarball's
+    # claude-desktop/ dir): the Electron runtime (binary, chrome-sandbox, .so
+    # files, paks, Chromium locales, snapshots), resources/ with our patched
+    # app.asar + app.asar.unpacked + upstream app resources (ion-dist, virtiofsd,
+    # locale JSONs, cowork-linux-helper) + our CU bridges. The tree is verbatim
+    # except: the Electron entrypoint is ALREADY renamed to "claude", app.asar is
+    # our patched build, and the CU bridges are added. Electron auto-loads the
+    # exe-adjacent resources/app.asar (OnlyLoadAppFromAsar fuse), so no resources/
+    # remapping is needed and the binary rename is done in the tarball.
     install -dm755 "$pkgdir/usr/lib/$pkgname"
-    cp -r electron/* "$pkgdir/usr/lib/$pkgname/"
-
-    # Rename the Electron binary to "claude". NOTE: this does NOT set the window
-    # identity. The live X11 WM_CLASS / Wayland app_id is "claude-desktop"
-    # (verified via xprop/wmctrl), because Chromium's GetXdgAppId() reads the
-    # app's desktopName ("claude-desktop.desktop" in app.asar package.json),
-    # strips ".desktop", and ignores the binary basename / --class. The rename
-    # is kept only as a cosmetic argv[0] / a systemd-scope identity hint that
-    # matches APP_ID="claude". StartupWMClass below must equal the real app_id.
-    # (The .deb names this binary "claude-desktop"; the old Electron zip named it
-    # "electron". Handle whichever is present.)
-    if [ -f "$pkgdir/usr/lib/$pkgname/claude-desktop" ]; then
-        mv "$pkgdir/usr/lib/$pkgname/claude-desktop" "$pkgdir/usr/lib/$pkgname/claude"
-    elif [ -f "$pkgdir/usr/lib/$pkgname/electron" ]; then
-        mv "$pkgdir/usr/lib/$pkgname/electron" "$pkgdir/usr/lib/$pkgname/claude"
-    fi
+    cp -r claude-desktop/* "$pkgdir/usr/lib/$pkgname/"
 
     # Set SUID on chrome-sandbox (required by Chromium's sandbox). The .install
     # hook re-asserts root ownership + 4755 at install time (cp loses it here).
     if [ -f "$pkgdir/usr/lib/$pkgname/chrome-sandbox" ]; then
         chmod 4755 "$pkgdir/usr/lib/$pkgname/chrome-sandbox"
     fi
-
-    # Install application files (pre-patched) into Electron's resources directory.
-    # The official .deb keeps app.asar at usr/lib/claude-desktop/resources/; our
-    # tarball ships it under app/ (app.asar + app.asar.unpacked + locales), so
-    # create resources/ first (electron/ has no resources/ subdir, only resources.pak).
-    install -dm755 "$pkgdir/usr/lib/$pkgname/resources"
-    cp -r app/* "$pkgdir/usr/lib/$pkgname/resources/"
 
     # Install launcher script (Wayland/X11 detection, env setup, lock cleanup)
     install -Dm755 "$srcdir/launcher/claude-desktop" "$pkgdir/usr/bin/claude-desktop"
