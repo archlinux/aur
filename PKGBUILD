@@ -6,7 +6,7 @@ pkgdesc="Zero-config audio suite for wireless headsets: volume control, surround
 arch=('any')
 url="https://github.com/Pakrohk/linux-hifi-suite"
 license=('MIT')
-depends=('python' 'alsa-utils' 'pipewire' 'pipewire-alsa' 'pipewire-pulse' 'socat')
+depends=('python' 'typer' 'alsa-utils' 'pipewire' 'pipewire-alsa' 'pipewire-pulse')
 makedepends=('git')
 optdepends=(
     'noise-suppression-for-voice: RNNoise LADSPA plugin (recommended for NC)'
@@ -35,21 +35,19 @@ pkgver() {
 package() {
     cd "$pkgname"
 
-    # Core binaries
-    install -Dm755 hifi-daemon.py "$pkgdir/usr/bin/hifi-daemon"
-    install -Dm755 hifi-suite "$pkgdir/usr/bin/hifi-suite"
+    # Python package
+    install -d "$pkgdir/usr/lib/hifi-suite"
+    cp -r hifi "$pkgdir/usr/lib/hifi-suite/"
 
-    # Python library
-    install -Dm644 hifi_pipewire.py "$pkgdir/usr/lib/hifi-suite/pipewire.py"
+    # Clean up __pycache__
+    find "$pkgdir" -name '__pycache__' -exec rm -rf {} + 2>/dev/null || true
+
+    # Entry points
+    install -Dm755 hifi-suite "$pkgdir/usr/bin/hifi-suite"
+    install -Dm755 hifi-daemon "$pkgdir/usr/bin/hifi-daemon"
 
     # Systemd service
     install -Dm644 hifi-daemon.service "$pkgdir/usr/lib/systemd/user/hifi-daemon.service"
-
-    # PipeWire configs (templates)
-    install -d "$pkgdir/usr/share/hifi-suite/configs"
-    for f in configs/*.conf; do
-        install -Dm644 "$f" "$pkgdir/usr/share/hifi-suite/configs/$(basename "$f")"
-    done
 
     # Shell completions
     install -Dm644 completions/hifi-suite.bash "$pkgdir/usr/share/bash-completion/completions/hifi-suite"
