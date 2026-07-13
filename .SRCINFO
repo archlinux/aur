@@ -1,0 +1,19 @@
+pkgbase = matcha-idle-inhibitor
+	pkgdesc = An Idle Inhibitor for Wayland
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://codeberg.org/QuincePie/matcha
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	makedepends = wayland-protocols
+	depends = wayland
+	provides = matcha
+	conflicts = matcha
+	source = matcha-2.1.0.tar.gz::https://codeberg.org/QuincePie/matcha/archive/2.1.0.tar.gz
+	sha256sums = 1debbc362e428ed4556e57ab0419e29d3531703bfc3d11bd6417a2f689cb39f3
+
+pkgname = matcha-idle-inhibitor
