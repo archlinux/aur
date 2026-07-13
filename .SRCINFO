@@ -1,6 +1,6 @@
 pkgbase = python-sqladmin
 	pkgdesc = SQLAlchemy Admin for FastAPI and Starlette
-	pkgver = 0.28.0
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = https://smithyhq.github.io/sqladmin/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-sqladmin
 	depends = python-wtforms
 	depends = python-python-multipart
 	depends = python-sqlalchemy
-	source = python-sqladmin-0.28.0.zip::https://github.com/smithyhq/sqladmin/archive/refs/tags/0.28.0.zip
-	sha256sums = 0e1eb86690b36623ed49552f510fc3e92f5e677a4174f9440f5e3dd9affb9c0c
+	source = python-sqladmin-0.29.0.zip::https://github.com/smithyhq/sqladmin/archive/refs/tags/0.29.0.zip
+	sha256sums = ff4126a7e0f10b7dfac89690b50dc7fc68e4d60f9ed5fbb38c03edf8f92b88bf
 
 pkgname = python-sqladmin
