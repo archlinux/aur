@@ -2,7 +2,7 @@
 
 _zig=anyzig
 pkgname="zine"
-pkgver=0.11.3
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Fast, Scalable, Flexible Static Site Generator (SSG)"
 arch=(
@@ -19,13 +19,14 @@ depends=(
 )
 makedepends=(
   'anyzig'
+  'git'
   # 'zig'
 )
-_pkgsrc="${_url##*/}-${pkgver}"
+_pkgsrc="${_url##*/}"
 source=(
-  "${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
+  "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}"
 )
-b2sums=('e8795272cdd0cca11b1fff2b4d73e6b41037632f01028cf2e0e73a2195d9b6de99ba9f3f926c8820652e18e8328ad5b4fcd7bdb555c140ce5bd4b119e278cc31')
+b2sums=('7564cade446b264e33fba4de00399e8abb060851d4d3f9902aa24cc3cf68d0a0de416a996dcd1de86b57eec3ba8110b566c66d41789d8ce4232f11f269753f7e')
 
 build() {
   local zig_options=(
