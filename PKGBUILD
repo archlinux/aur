@@ -1,8 +1,8 @@
 # Maintainer: bkbilly <bkbillybk@gmail.com>
 # Maintainer: AntoineGS <antoineg.simard 'at' gmail.com>
 pkgname=python-lnxlink
-pkgver=2026.6.0
-pkgrel=2
+pkgver=2026.7.0
+pkgrel=1
 pkgdesc="Linux system integration for Home Assistant via MQTT"
 arch=('any')
 url="https://github.com/bkbilly/lnxlink"
@@ -39,7 +39,7 @@ source=(
     "lnxlink.service"
     "config.yaml.example"
 )
-sha256sums=('db1ae4a8a87dcb3dc3c17a959d59c9b99e500180af380606ba4268eb4a22795a'
+sha256sums=('64d0b1c9d05ad91a8cb95cb2720b06ec49d69c52f25c956fb7b87bb51c392ed5'
             '05c444cfe4a9816a19211363ac0e91a70c714257ef7c6ef8c4a9faff93313621'
             '3a7ad444095681fc1439f6f969e396668680040b51339c1febdf420f4ef8251a')
 
