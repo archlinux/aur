@@ -1,6 +1,6 @@
 pkgbase = torlink
 	pkgdesc = A sleek, zero-setup torrent finder and downloader that lives right in your terminal
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/baairon/torlink
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = torlink
 	depends = nodejs
 	depends = webtorrent-cli
 	provides = torlnk
-	noextract = torlink-1.4.0.tgz
+	noextract = torlink-1.4.1.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = torlink-1.4.0.tgz::https://registry.npmjs.org/torlnk/-/torlnk-1.4.0.tgz
-	b2sums = ed58f6880b5db013f97ce51209cd1cebbd9939859fdb7304807188e685d12ddaf4007dd3f82cb985a04383eac6887e77a186ea93171ad55ad9a57fde84978945
+	source = torlink-1.4.1.tgz::https://registry.npmjs.org/torlnk/-/torlnk-1.4.1.tgz
+	b2sums = 340bf2a79f669ce4c692a3c9d7cb3d2597e8e800ffa0a6bdf0353d9e20e556737051d656bb20cbbfa4b10551d9efb847be6d944d54ac81571f8b9ec48cda625e
 
 pkgname = torlink
