@@ -1,5 +1,5 @@
 # Maintainer: Ashe Sterling <ashe.sterling@outlook.com>
-pkgname=clrblk
+pkgname=clrblk-rs
 pkgver=1.5.0
 pkgrel=1
 pkgdesc="A simple utility to show and test pretty (and not so pretty) colors in the terminal."
