@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miteiru
 _pkgname=Miteiru
-pkgver=6.3.0
-_electronversion=31
-_nodeversion=22
+pkgver=7.4.3
+_electronversion=41
+_nodeversion=24
 pkgrel=1
 pkgdesc="An open source Electron video player to learn Chinese,Cantonese,and Japanese.It can play all Youtube and HTML 5 supported format videos,and lots of supports on other subtitle formats.(Use system-wide electron)"
 arch=('any')
@@ -13,7 +13,7 @@ license=("CC-BY-NC-4.0")
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    'mecab'
+    #'mecab'
 )
 makedepends=(
     'npm'
@@ -32,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('7b22d34e3c77251a88d83445d79a216a0a5b91297fdb1905373ca8499f2cec27'
+sha256sums=('652553746ab60a0b3dd3fed45976d1a7cc5c34fc9a80eedffb431f047a15d741'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -41,7 +41,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _set_build_env() {
-    export electronDist="/usr/lib/electron${_electronversion}"
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export HOME="${srcdir}/.electron-gyp"
