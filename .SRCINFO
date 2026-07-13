@@ -1,6 +1,6 @@
 pkgbase = alfis
 	pkgdesc = Alternative Free Identity System using blockchain
-	pkgver = 0.8.11
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/Revertron/Alfis
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = alfis
 	depends = libayatana-appindicator
 	depends = libayatana-indicator
 	options = !lto
-	source = alfis-0.8.11.tar.gz::https://github.com/Revertron/Alfis/archive/v0.8.11/alfis-0.8.11.tar.gz
-	sha256sums = 13822043e8e5a6c1a41121e788ca7a1f80a747158327d087f59a52533b9ad85f
+	source = alfis-0.9.0.tar.gz::https://github.com/Revertron/Alfis/archive/v0.9.0/alfis-0.9.0.tar.gz
+	sha256sums = 8b83aadb5eecba69d8d2fe3caaaee678126f503c346ac7875b10cabb3d2dc8f6
 
 pkgname = alfis
