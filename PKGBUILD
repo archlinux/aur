@@ -31,16 +31,11 @@ prepare() {
     svgo . -r --multipass
     oxipng -o max -r -p -s -v -t 4 --timeout 150 ./{.github,assets,assets_raw,lib,linux,metadata,packages,submodules,test}
 
-    mkdir -p "$srcdir/fake-libjxl"
-    ln -sf /usr/lib/libjxl.so.0.13 "$srcdir/fake-libjxl/libjxl.so.0.11"
-    ln -sf /usr/lib/libjxl_threads.so.0.13 "$srcdir/fake-libjxl/libjxl_threads.so.0.11" 2>/dev/null || true
-    ln -sf /usr/lib/libjxl_cms.so.0.13 "$srcdir/fake-libjxl/libjxl_cms.so.0.11" 2>/dev/null || true
     sed -i 's|^Icon=.*|Icon=saber|' flatpak/com.adilhanney.saber.desktop
 }
 
 build() {
   cd "$srcdir/saber"
-  export LDFLAGS="$LDFLAGS -Wl,-rpath-link,$srcdir/fake-libjxl"
   sh patches/pre/remove_proprietary_dependencies.sh
 
   flutter build linux --release
