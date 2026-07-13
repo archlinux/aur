@@ -1,14 +1,14 @@
 # Maintainer: Kcocoa <kamforzn2@proton.me>
 
 pkgname=cli-proxy-api
-pkgver=7.2.67
-pkgrel=6
+pkgver=7.2.72
+pkgrel=1
 pkgdesc="Proxy server providing OpenAI, Gemini, Claude, and Codex compatible APIs"
 arch=('x86_64')
 url="https://github.com/router-for-me/CLIProxyAPI"
 license=('MIT')
 depends=('glibc')
-makedepends=('go>=1.26')
+makedepends=('go')
 conflicts=('cli-proxy-api-bin')
 backup=('etc/cli-proxy-api/config.yaml')
 install='cli-proxy-api.install'
@@ -18,7 +18,7 @@ source=(
   'cli-proxy-api.sysusers'
   'cli-proxy-api.tmpfiles'
 )
-sha256sums=('a0830bca9d363a2f9ccda34e3fd18fa7df0f895ccca8e2bcffc1c4ea5c5a1860'
+sha256sums=('6be59cf6e0821d6cc66d02682e6ed281976c6454e9f4bb2fae4f6e7a17022533'
             '789be86c8b7ce964a0b7c78b07bd561a2263f9ada2c927b2dd789c88fb07494e'
             '216ce81546d176c915838a42d555cd144b2b15fb8cd50dc17f14572a9e6e469a'
             '86cec862115e7d26bcc68668b7dfa181539aeb6ff32fb061cead8ed50627502e')
