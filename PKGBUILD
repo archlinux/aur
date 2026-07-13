@@ -11,7 +11,7 @@ depends=('python' 'gtk3' 'python-gobject' 'python-cairo' 'polkit' 'systemd')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+${url}.git#branch=dev")
+source=("git+${url}.git#branch=main")
 md5sums=('SKIP')
 
 pkgver() {

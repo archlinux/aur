@@ -14,7 +14,7 @@ pkgbase = pardus-boot-analyzer-git
 	depends = systemd
 	provides = pardus-boot-analyzer
 	conflicts = pardus-boot-analyzer
-	source = git+https://github.com/06ergin06/pardus-boot-analyzer.git#branch=dev
+	source = git+https://github.com/06ergin06/pardus-boot-analyzer.git#branch=main
 	md5sums = SKIP
 
 pkgname = pardus-boot-analyzer-git
