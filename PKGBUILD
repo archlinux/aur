@@ -2,7 +2,7 @@
 
 pkgname=python-myvaillant
 _name=myPyllant
-pkgver=0.9.15
+pkgver=0.9.16
 pkgrel=1
 pkgdesc='Python library for the myVaillant API'
 arch=(any)
@@ -19,7 +19,7 @@ makedepends=(
     python-hatch-vcs
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('760bff8128e731ccd85da974bea9073b44bdcabd4de35436d4abee36dbed98fe')
+sha256sums=('071a27ad05d9f16a37734b7ae58ffd480103471daf45fc050381a91918e3c71b')
 
 build() {
     cd "$_name-$pkgver"
