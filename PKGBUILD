@@ -1,8 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=serial-studio
-_pkgname=Serial-Studio
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=($CARCH)
@@ -26,6 +25,7 @@ depends=(
     $_qt-serialport
     $_qt-shadertools
     $_qt-svg
+    $_qt-webchannel
     $_qt-webengine
     zlib
 )
@@ -39,14 +39,14 @@ makedepends=(
     pkgconf
     vulkan-headers
 )
-provides=(${_pkgname} ${pkgname})
-conflicts=(${_pkgname} ${pkgname})
+provides=(${pkgname})
+conflicts=(${pkgname})
 replaces=()
 backup=()
 options=()
 install=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('881d39ac8112ee17d5eff4ca8e0f8e88455c9a90b9b54d4d3dde081da0d84b50')
+sha256sums=('7ab3376f9b7100398e2b29dd192437d7b736ac699cdc277d0549b4cec25bfdf2')
 noextract=()
 
 prepare() {

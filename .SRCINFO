@@ -1,6 +1,6 @@
 pkgbase = serial-studio
 	pkgdesc = Multi-purpose serial data visualization & processing program
-	pkgver = 4.0.2
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = https://github.com/Serial-Studio/Serial-Studio
 	arch = x86_64
@@ -28,13 +28,12 @@ pkgbase = serial-studio
 	depends = qt6-serialport
 	depends = qt6-shadertools
 	depends = qt6-svg
+	depends = qt6-webchannel
 	depends = qt6-webengine
 	depends = zlib
-	provides = Serial-Studio
 	provides = serial-studio
-	conflicts = Serial-Studio
 	conflicts = serial-studio
-	source = serial-studio::git+https://github.com/Serial-Studio/Serial-Studio.git#tag=v4.0.2
-	sha256sums = 881d39ac8112ee17d5eff4ca8e0f8e88455c9a90b9b54d4d3dde081da0d84b50
+	source = serial-studio::git+https://github.com/Serial-Studio/Serial-Studio.git#tag=v4.0.3
+	sha256sums = 7ab3376f9b7100398e2b29dd192437d7b736ac699cdc277d0549b4cec25bfdf2
 
 pkgname = serial-studio
