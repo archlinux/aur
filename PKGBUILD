@@ -1,8 +1,8 @@
 # Maintainer: Remisa Phillips <remisa.yousefvand@gmail.com>
 pkgname=metadata
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
-pkgdesc='Qt 6 application for viewing, adding, editing, and removing file metadata'
+pkgdesc='Qt 6 application for viewing, editing, copying, exporting, and removing file metadata'
 arch=('x86_64')
 url='https://github.com/yousefvand/metadata'
 license=('MIT')
@@ -10,7 +10,7 @@ depends=('qt6-base' 'perl-image-exiftool' 'qpdf' 'hicolor-icon-theme')
 optdepends=('dolphin: Show Metadata file-manager context-menu integration')
 makedepends=('cmake' 'ninja')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('730c34cb535eafe00713b5ed7509eccd218db825613c123167a2e03d446fac50')
+sha256sums=('4ba396a76dce6a40599af80abeb969aad7c5cc6b65a9e5d075c54d825dc4b4d7')
 
 build() {
     cmake -S "metadata-${pkgver}" -B build -G Ninja \
