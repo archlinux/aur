@@ -41,7 +41,6 @@ pkgver() {
 
 prepare(){
   cd "$srcdir/Butterfly/app"
-  sed -i 's/flutter: 3.44.5/flutter: ">=3.44.5 <3.45.0"/' pubspec.yaml  #while upstream is still stuck at 3.44.5, the old version. Since Arch uses 3.44.6
 }
 
 build() {
