@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous-git
 pkgbase=aqueous
-pkgver=0.3.0.r30.ga30e73f # Will be updated by pkgver()
+pkgver=0.4.0.r1.g7f3ab16 # Will be updated by pkgver()
 pkgrel=1
 pkgdesc="Aqueous single-process Wayland compositor"
 arch=('x86_64' 'aarch64')
