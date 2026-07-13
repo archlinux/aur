@@ -1,0 +1,16 @@
+pkgbase = starlette-context
+	pkgdesc = Middleware for Starlette that allows you to store and access the context data of a request. Can be used with logging so logs automatically use request headers such as x-request-id or x-correlation-id.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/maerteijn/starlette-context
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-starlette
+	source = starlette_context-0.5.1.tar.gz::https://files.pythonhosted.org/packages/source/s/starlette-context/starlette_context-0.5.1.tar.gz
+	sha256sums = f6025753f8ede041778b2f2c3823e2da9df3c2d94832575bcb59374216b7c2b2
+
+pkgname = starlette-context
