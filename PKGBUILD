@@ -4,10 +4,10 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=zip
-_pkgver=3.0.0
+_pkgver=3.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Cross-Platform 'zip' Compression"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -36,8 +36,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8a975bcb98d7efc62f6d5b5510873d18')
-b2sums=('094b746dcba04d73493888d3771ed5f30a2aeedd63dd7b35e9f0a7fc146d4218d687d18a25ecd0e9963bce1e9305850aeed37fb921dd88a1260ed3980e478657')
+md5sums=('9d10f1781a9bc86328c22d92426f4b59')
+b2sums=('c4c6d3b25c39cf3c6d8a5e8fe1af6d08406f3f43862666f28abf5e3097406bde6d8711b6e70942c531344ecb15b07638812ab260c240faa6e778db5a12025b4d')
 
 build() {
   mkdir -p build
