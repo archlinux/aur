@@ -1,0 +1,26 @@
+pkgbase = python-darabonba-core
+	pkgdesc = The darabonba module of alibabaCloud Python SDK.
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://pypi.org/project/darabonba_core
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-aiohttp
+	depends = python-certifi
+	depends = python-requests
+	depends = python-alibabacloud-tea
+	provides = darabonba_core
+	provides = python-darabonba-core
+	conflicts = darabonba_core
+	conflicts = python-darabonba-core
+	options = !strip
+	options = !debug
+	source = darabonba_core-1.0.7.tar.gz::https://files.pythonhosted.org/packages/source/d/darabonba_core/darabonba_core-1.0.7.tar.gz
+	sha256sums = c2de2ee260682b4c08c9ec67793de66a2bdf316363b9165f152b9acaa16b4dc3
+
+pkgname = python-darabonba-core
