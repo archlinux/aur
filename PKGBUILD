@@ -11,7 +11,7 @@ _CUDA_ARCH_LIST_CMAKE="75;80;86;87;89;90;100;103;110;120;121;121-virtual"
 _pkgname=vision
 pkgbase=torchvision
 pkgname=(torchvision torchvision-cuda python-torchvision python-torchvision-cuda)
-pkgver=0.27.1
+pkgver=0.28.0
 pkgrel=1
 pkgdesc='Datasets, transforms, and models specific to computer vision'
 arch=(x86_64)
@@ -39,7 +39,7 @@ makedepends=(
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/vision/archive/v${pkgver}.tar.gz"
         "fix-build.patch"
 )
-b2sums=('c9c126f163ec1ceb0113ce930034af3abc88c68aae1ffe37500bdfd05a6d9c137822a0431b96e63bd6cf833d4d4356195169d2e14a600bd455848dddcd0421a6'
+b2sums=('ce95297d9134d8926f28d3fc6bc7bf4abeb80f718896719ca67687ce73a5047a28ca7471217e332ac43e7fea0e28db92f80bf196489e99b3c56ca19baced7b6d'
         '30d09ff1511178e25c31c6ecee789c141179bb3cc34f37299d74891973a80a357a9f51a93cfa36834e29a0ba2a366b0974ee5cd88cb5f6a92f7553cd2cd80e98')
 
 prepare() {
