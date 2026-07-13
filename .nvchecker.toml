@@ -1,0 +1,5 @@
+[bulk-rename-plus-bin]
+source = "github"
+github = "siyia2/bulk-rename-plus"
+use_latest_release = true
+prefix = "v"
