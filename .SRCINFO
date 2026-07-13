@@ -1,6 +1,6 @@
 pkgbase = twc-rs-bin
 	pkgdesc = Fast CLI and interactive TUI dashboard for managing Timeweb Cloud infrastructure
-	pkgver = 2.0.5
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/RAprogramm/twc-rs
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = twc-rs-bin
 	backup = usr/share/zsh/site-functions/_twc-rs
 	backup = usr/share/fish/vendor_completions.d/twc-rs.fish
 	backup = usr/share/nushell/vendor/autoload/twc-rs.nu
-	source = twc-rs-2.0.5.tar.gz::https://github.com/RAprogramm/twc-rs/releases/download/v2.0.5/twc-rs-v2.0.5-x86_64-unknown-linux-gnu.tar.gz
-	source = twc-rs-2.0.5-LICENSE::https://raw.githubusercontent.com/RAprogramm/twc-rs/v2.0.5/LICENSE
-	sha256sums = e5f0d7cbab70d25e9651f57e69fd40ac70e7dd2adcfb58abcd3720323e3394ab
+	source = twc-rs-3.0.0.tar.gz::https://github.com/RAprogramm/twc-rs/releases/download/v3.0.0/twc-rs-v3.0.0-x86_64-unknown-linux-gnu.tar.gz
+	source = twc-rs-3.0.0-LICENSE::https://raw.githubusercontent.com/RAprogramm/twc-rs/v3.0.0/LICENSE
+	sha256sums = 2eb6d5524f40d7d46be0337b0a6f584a25690a0fb81ad7cd7ab40bd3a105207b
 	sha256sums = 5c0c4235b69837927ece7047dd9711553aa9c41c519ddda6e3dcdab443ca12f0
 
 pkgname = twc-rs-bin
