@@ -1,0 +1,54 @@
+# shellcheck shell=bash disable=SC2034,SC2154
+#
+# Post-install guidance for python-skillopt (AUR).
+#
+# SkillOpt exposes several backends via PyPI extras. Not all of them have
+# 1:1 Arch packages, so some install steps remain manual.
+
+post_install() {
+  cat <<'EOF'
+==> python-skillopt installed.
+
+Common next steps:
+
+  Train:     python -m skillopt.train --config /path/to/config.yaml
+  Eval:      python -m skillopt.eval_only --config /path/to/config.yaml
+  Sleep:     python -m skillopt_sleep --help
+  WebUI:     pacman -S python-skillopt-webui   # then: python -m skillopt_webui.app
+
+Optional backends (install on demand; the base package does NOT pull them):
+
+  [alfworld]  sudo pacman -S --asdeps python-alfworld python-gymnasium \
+                                   python-omegaconf python-pytorch python-ray
+  [claude]    sudo pacman -S --asdeps python-claude-agent-sdk python-json-repair
+  [qwen]      sudo pacman -S --asdeps python-vllm python-json-repair
+  [searchqa]  sudo pacman -S --asdeps python-datasets
+  [docs]      sudo pacman -S --asdeps python-mkdocs-material python-mkdocstrings
+  [dev]       sudo pacman -S --asdeps ruff python-pytest
+
+  [codex]     pip install --user openai-codex-sdk
+              (no Arch/AUR package yet — pip is the only option. Use a venv
+              if you prefer not to touch system Python.)
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  cat <<'EOF'
+==> python-skillopt removed.
+
+If you also want to drop the optional backends:
+
+  sudo pacman -Runs python-alfworld python-gymnasium python-omegaconf \
+                    python-pytorch python-ray python-claude-agent-sdk \
+                    python-json-repair python-vllm python-datasets \
+                    python-mkdocs-material python-mkdocstrings
+
+  pip uninstall openai-codex-sdk   # if you installed it via pip
+
+EOF
+}

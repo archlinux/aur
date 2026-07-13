@@ -7,6 +7,7 @@ pkgdesc="Agentic Skill Optimization via Reflective Training Loops"
 arch=('any')
 url="https://github.com/microsoft/SkillOpt"
 license=('MIT')
+install=python-skillopt.install
 makedepends=(
   'python-build'
   'python-installer'
@@ -23,6 +24,11 @@ makedepends=(
   'python-openpyxl'
   'python-yaml'
   'python-gradio'
+  # alfworld-extra runtime deps (lazy-imported by trainer / alfworld vendor code).
+  # Listed in makedepends so namcap's split-package check is satisfied.
+  'python-omegaconf'
+  'python-pytorch'
+  'python-ray'
 )
 # sdist tarball from PyPI (CDN path is content-addressed and stable per version)
 source=("https://files.pythonhosted.org/packages/ec/93/c896156981f56228e6a20ed1a95814aabb75d5e4a97a44534b216a269fdb/skillopt-${pkgver}.tar.gz")
@@ -52,6 +58,9 @@ package_python-skillopt() {
   optdepends=(
     'python-alfworld: ALFWorld benchmark environment (skillopt[alfworld] extra)'
     'python-gymnasium: ALFWorld backend gym env (skillopt[alfworld] extra)'
+    'python-omegaconf: ALFWorld config loader (skillopt[alfworld] extra)'
+    'python-pytorch: ALFWorld deep-learning backend (skillopt[alfworld] extra)'
+    'python-ray: Parallel rollout execution for ALFWorld (skillopt[alfworld] extra)'
     'python-claude-agent-sdk: Claude model backend (skillopt[claude] extra)'
     'python-vllm: Qwen local model backend via vLLM (skillopt[qwen] extra)'
     'python-json-repair: Robust JSON parsing for Claude/Qwen backends'
@@ -61,6 +70,10 @@ package_python-skillopt() {
     'python-skillopt-webui: Gradio dashboard meta-package (skillopt[webui] extra)'
     'ruff: Linter for development (skillopt[dev] extra)'
     'python-pytest: Test runner for development (skillopt[dev] extra)'
+    # NOTE: skillopt[codex] needs `openai-codex-sdk` from PyPI. It is not yet
+    # packaged on Arch/AUR, so it cannot be a proper optdepends. Users enabling
+    # the Codex backend must `pip install --user openai-codex-sdk` (or use a
+    # venv) — see the post_install() hook in python-skillopt.install.
   )
 
   cd "${srcdir}/skillopt-${pkgver}"
