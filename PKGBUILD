@@ -3,8 +3,8 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-server
-pkgver=3.1.0a3
-pkgrel=2
+pkgver=3.1.0a4
+pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=(x86_64 aarch64)
 url="https://github.com/GNS3/$pkgname"
@@ -24,6 +24,7 @@ depends=(
     python-greenlet
     python-jinja
     python-joserfc
+    python-magic
     python-mcp
     python-platformdirs
     python-py-cpuinfo
@@ -60,9 +61,9 @@ install="$pkgname".install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname@.service"
         fix_requirements_for_Arch.patch)
-sha256sums=('d42a2d0de7008ecb31f75b46dc8e20d2d711d01fbf44b88ef228467d95160ef5'
+sha256sums=('9aa1d059a008e77df56ffadaaa5765a41dc8bea27c57f8164ea4218cc472cd57'
             'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f'
-            '9d5d8c5aea9afc0af8e6620ed1fc804bc71d17ac4979395bf7547e2a4a96633c')
+            '123b7b6207fff90220fb337d1bbb377f807eccba0bbaee222b3d19f6b0220dbe')
 
 prepare() {
     cd "$pkgname-$pkgver"
