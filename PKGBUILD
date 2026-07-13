@@ -14,7 +14,7 @@ provides=("orca-slicer")
 conflicts=("orca-slicer")
 options=(!strip !zipman !debug)
 appimage="OrcaSlicer_Linux_AppImage_Ubuntu2404_V${pkgver}.AppImage"
-source=("https://github.com/SoftFever/OrcaSlicer/releases/download/v${pkgver}/${appimage}")
+source=("${url}/releases/download/v${pkgver}/${appimage}")
 sha512sums=('90e7b535c100e2bd6dd9b5d6b2e20abde68770dee0aa6e2012d43f4ae722e5213ad65bebcd982bb071ef478486e22bc8c49a15d7dfd6ee4b862a14f93d41eeea')
 
 prepare() {
