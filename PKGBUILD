@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous-git
 pkgbase=aqueous
-pkgver=0.3.0.r0.gaac324f # Will be updated by pkgver()
+pkgver=0.3.0.r30.ga30e73f # Will be updated by pkgver()
 pkgrel=1
 pkgdesc="Aqueous single-process Wayland compositor"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
          'uwsm'
          'scenefx')
 makedepends=('clang' 'lld' 'llvm'
-             'git' 'wayland-protocols' 'scenefx')
+             'git' 'scdoc' 'wayland-protocols' 'scenefx')
 optdepends=('ly: recommended display manager / login greeter'
             'greetd: alternative minimal login manager for tuigreet'
             'tabby: recommended terminal emulator'
@@ -65,18 +65,41 @@ build() {
 
     cd "$srcdir/aqueous"
 
-    # Build the single Aqueous compositor/policy executable.
+    # Build the Aqueous compositor/policy executable and inspection client.
     msg2 "Building Aqueous compositor..."
     cd "$srcdir/aqueous/compositor"
     # -Dllvm forces the LLVM backend + LLD linker. Zig 0.16.0's self-hosted
     # ELF linker can't handle R_X86_64_PC64 in .sframe emitted by gcc >= 16.
+    # Keep the manuals deterministic in clean chroots. In-tree builds make
+    # them optional when scdoc is absent, but packages must always document
+    # both installed executables, including aqueousctl.
     zig build -Doptimize=ReleaseSafe -Dxwayland -Dllvm -Dscenefx=true \
+        -Dman-pages=true \
         --prefix "$srcdir/aqueous-dist" install
 }
 
+check() {
+    # aqueousctl and its protocol/manual are one feature: reject a partial
+    # install tree before package() copies it into the package image.
+    local required=(
+        bin/aqueous
+        bin/aqueousctl
+        share/man/man1/aqueousctl.1
+        share/aqueous-protocols/stable/aqueous-window-info-v1.xml
+    )
+    local path
+    for path in "${required[@]}"; do
+        if [[ ! -e "$srcdir/aqueous-dist/$path" ]]; then
+            error "build output is missing required file: $path"
+            return 1
+        fi
+    done
+}
+
 package() {
-    # Install the single compositor/window-manager executable.
+    # Install the compositor/window-manager and read-only inspection client.
     install -Dm755 "$srcdir/aqueous-dist/bin/aqueous" "$pkgdir/usr/bin/aqueous"
+    install -Dm755 "$srcdir/aqueous-dist/bin/aqueousctl" "$pkgdir/usr/bin/aqueousctl"
 
     # Install compositor share data (man pages and protocol ABI metadata).
     if [ -d "$srcdir/aqueous-dist/share" ]; then
