@@ -1,0 +1,11 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: python-jiuwenswarm
+Upstream-Contact: see https://pypi.org/project/jiuwenswarm/
+Source: https://pypi.org/project/jiuwenswarm/
+
+# AUR packaging files (this PKGBUILD, .SRCINFO, LICENSE, REUSE.toml)
+# are released under the following license:
+License: 0BSD
+
+# The packaged software (jiuwenswarm) is released under:
+License: Apache-2.0
