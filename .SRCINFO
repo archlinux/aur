@@ -1,0 +1,22 @@
+pkgbase = unistack-bin
+	pkgdesc = Snowdream Tech AI IDE Template is an enterprise-grade, foundational template designed for multi-AI IDE collaboration.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/snowdreamtech/unistack
+	license = MIT
+	conflicts = unistack
+	provides = unistack
+	arch = aarch64
+	source_aarch64 = https://github.com/snowdreamtech/unistack/releases/download/v0.0.1/unistack_Linux_arm64.tar.gz
+	sha256sums_aarch64 = cf33593d6504331cc564d32d20dfeec9c90bb1830a07cadcbe5cb5a5012625aa
+	arch = armv7h
+	source_armv7h = https://github.com/snowdreamtech/unistack/releases/download/v0.0.1/unistack_Linux_armv7.tar.gz
+	sha256sums_armv7h = 039f297a93b8cfbdc69a59328967df26daf370e6b351ef1b9139d1538749d1bf
+	arch = i686
+	source_i686 = https://github.com/snowdreamtech/unistack/releases/download/v0.0.1/unistack_Linux_i386.tar.gz
+	sha256sums_i686 = 4cf3104b836c72a78842119943b21128cb7c30df2de21038f0391e3bf2d73fb8
+	arch = x86_64
+	source_x86_64 = https://github.com/snowdreamtech/unistack/releases/download/v0.0.1/unistack_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 27a812b221453370a958fa5ce08f9adefe452004d65a5bb0be45b8a17c88adb8
+	
+pkgname = unistack-bin
