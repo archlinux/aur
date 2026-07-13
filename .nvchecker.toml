@@ -1,0 +1,5 @@
+[tinhorn-bin]
+source = "github"
+github = "puradox/tinhorn"
+use_latest_release = true
+prefix = "v"
