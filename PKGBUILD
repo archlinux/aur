@@ -7,7 +7,7 @@ export ZVM_PATH
 
 _pkgname="river-classic"
 pkgname="$_pkgname-git"
-pkgver=0.3.15.r2.gea4774c
+pkgver=0.3.17.r2.gb1af960
 pkgrel=1
 pkgdesc="A dynamic tiling wayland compositor"
 url='https://codeberg.org/river/river-classic'
@@ -56,14 +56,13 @@ _zig_setup() {
   [ ! -e "$_zigpath" ] && zvm install "$_zigver"
   export PATH="$_zigpath:$PATH"
 
-  _target="$CARCH-linux.6.1-gnu.2.38"
+  _target="$CARCH-linux.6.6-gnu.2.40"
 
   _zig_options=(
     --summary all
     --prefix /usr
     --search-prefix /usr
-    --global-cache-dir ../zig-global-cache
-    --system ../zig-global-cache/p
+    --global-cache-dir "$srcdir"/zig-global-cache
     -Dtarget="${_target}"
     -Dcpu=baseline
     -Dpie
@@ -76,9 +75,11 @@ prepare() {
   _zig_setup
 
   # PACKAGING.md -> build.zig.zon
-  for i in $(grep '\.url' "$_pkgsrc"/build.zig.zon | sed -E 's&^.* = "(\S+)".*$&\1&'); do
+  cd "$_pkgsrc"
+  local i
+  for i in $(grep '\.url' build.zig.zon | sed -E 's&^.* = "(\S+)".*$&\1&'); do
     echo "zig fetch ... $i..."
-    zig fetch --global-cache-dir ./zig-global-cache "$i"
+    zig fetch --global-cache-dir "$srcdir"/zig-global-cache "$i"
   done
 }
 
