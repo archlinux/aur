@@ -3,7 +3,7 @@ udev_rules_msg() {
     echo "Due to the modularization of the control surfaces in companion udev rules are generated at runtime."
     echo "The generate udev rules can be found at ${XDG_CONFIG_HOME}/companion/udev-rules."
     echo "(By default XDG_CONFIG_HOME is .config inside of your home directory)"
-    echo "After installing or upgrading a controll surface module via the web ui, you must copy the appropiate udev rule file to /etc/udev/rules.d/ and then run 'sudo udevadm control --reload-rules'"
+    echo "After installing or upgrading a controll surface module via the web ui, you must either install them via the web ui if running in desktop mode, or copy the appropiate udev rule file to /etc/udev/rules.d/ and then run 'sudo udevadm control --reload-rules'"
 }
 
 post_install() {
