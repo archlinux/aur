@@ -44,4 +44,4 @@ pkgbase = aqueous
 	source = aqueous::git+https://github.com/Seafoam-Labs/Aqueous.git
 	sha256sums = SKIP
 
-pkgname = aqueous-git
+pkgname = aqueous

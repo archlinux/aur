@@ -1,6 +1,6 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
-pkgname=aqueous-git
+pkgname=aqueous
 pkgbase=aqueous
 pkgver=0.4.0.r1.g7f3ab16 # Will be updated by pkgver()
 pkgrel=1
