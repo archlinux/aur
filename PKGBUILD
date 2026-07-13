@@ -1,12 +1,13 @@
 # Maintainer: Twilight0 <twilight0@vivaldi.net>
 pkgname=llama-cpp-python-openblas
 pkgver=0.3.34
-pkgrel=3
+pkgrel=4
 pkgdesc="Python bindings for the llama.cpp library (OpenBLAS accelerated)"
 arch=('x86_64')
 url="https://github.com/abetlen/llama-cpp-python"
 license=('MIT')
-depends=('python' 'openblas' 'python-numpy' 'python-jinja' 'python-diskcache' 'python-uvicorn')
+depends=('python' 'openblas' 'python-numpy' 'python-jinja' 'python-diskcache' 'uvicorn' 'python-starlette' 'python-fastapi' 'starlette-context')
+optdepends=('python-sse-starlette')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-scikit-build-core' 'cmake' 'openblas')
 provides=('llama-cpp-python')
 conflicts=('llama-cpp-python')
