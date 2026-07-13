@@ -38,7 +38,7 @@ options=('!strip')
 provides=('hanako')
 conflicts=('hanako')
 source=("https://github.com/liliMozi/openhanako/releases/download/v${pkgver}/HanaAgent-${pkgver}-Linux-amd64.deb")
-sha512sums=('479043ae20d7d0de0c30c8df6a931ed7c5b450080bb7f9588c048a8df7d322b56ebc61e9a793cbac9ed6363fd829a99f55bf6dc1736b2e5f684e35717a2d4d30')
+sha512sums=('3faea8aefe833cc050dd67505cc679f8c485243963e13896b1477f59eefd09174432144c4b7361113c517e17a0c82bde19150ae7ad23a2279c0af0362e6c2861')
 
 prepare() {
   cd "${srcdir}"
