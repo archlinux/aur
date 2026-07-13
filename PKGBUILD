@@ -1,7 +1,7 @@
 # Maintainer: Xynrin <xynrin@163.com>
 
 pkgname=spark-store-tui
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='Native terminal UI for Spark Store software management'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=(
   'sudo: install and uninstall local packages as a non-root user'
 )
 source=("https://github.com/Xynrin/${pkgname}/releases/download/v${pkgver}/${pkgname}-source-${pkgver}.tar.gz")
-sha256sums=('cb4ff63b14d4b4e6a0232ff6392389faf212a903a877a68ef51ea00fa2038236')
+sha256sums=('59a3c9dca33b2ea9704861c0a52fac05a2126014b12cdd76c04ab11601523bc8')
 
 build() {
   cd "${pkgname}-source-${pkgver}"
