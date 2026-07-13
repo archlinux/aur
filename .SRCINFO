@@ -1,6 +1,6 @@
 pkgbase = miyu
 	pkgdesc = 活在终端里的二次元少女
-	pkgver = 0.1.16
+	pkgver = 0.1.17
 	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/Miyu
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = miyu
 	optdepends = zsh: zsh shell integration support
 	options = !strip
 	options = !debug
-	source = miyu-0.1.16-1-x86_64.release.pkg.tar.zst::https://github.com/SHORiN-KiWATA/Miyu/releases/download/v0.1.16/miyu-0.1.16-1-x86_64.pkg.tar.zst
-	sha256sums = fc63470a8c0e3b1a0a6a11346bd0ad4da040efed5b6f9f47cb2798fd8053680c
+	source = miyu-0.1.17-1-x86_64.release.pkg.tar.zst::https://github.com/SHORiN-KiWATA/Miyu/releases/download/v0.1.17/miyu-0.1.17-1-x86_64.pkg.tar.zst
+	sha256sums = 173d8446dcdb5c8f11099e280f32cd30ddc110522288b21544d362989515ed9b
 
 pkgname = miyu
