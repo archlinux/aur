@@ -1,6 +1,6 @@
 # Maintainer: Samuel Paredes <sam.paredes.g@gmail.com>
 pkgname=franki-os-git
-pkgver=r1003.eff3cf2
+pkgver=r1005.2e87b27
 pkgrel=1
 pkgdesc="Federated Recursive Artificial Neural Knowledge Interface - Neural OS"
 arch=('x86_64')
@@ -58,6 +58,7 @@ optdepends=(
     'theharvester-git: subdomain/email recon for OSINT plexo (TransductorHarvester, osint/red.py)'
     'maigret: username recon across sites for OSINT plexo (TransductorMaigret, osint/corporativo.py)'
     'phoneinfoga-bin: phone number OSINT scan backup (LaboratorioOSINT.investigar_telefono)'
+    'prusa-slicer: real G-code slicing for FAB domain (tool_fab_slice)'
 )
 options=('!debug' '!strip' '!buildflags')
 source=('franki::git+https://gitlab.com/Umbra_HS/franki_os.git')
