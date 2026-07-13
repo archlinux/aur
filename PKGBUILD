@@ -1,6 +1,6 @@
 # Maintainer: Twilight0 <twilight0@vivaldi.net>
 pkgname=respite
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A GTK3 media player (fork of Parole, Xfce deps removed)"
 arch=('x86_64')
@@ -33,7 +33,7 @@ optdepends=(
   'yt-dlp: streaming URL support (YouTube, Dailymotion, Rumble, Odysee, Vimeo, Reddit, BiliBili, Archive.org, Twitch)'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Twilight0/respite/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c07e4de86b7fa943d79d9e7293735ee9ccb14365636389ee55a340caf618545f')
+sha256sums=('92bae08ac68044c1e2fcc4e0ac8c3cc1024cd76948ca204882325601b9d198be')
 
 build() {
   cd "${pkgname}-${pkgver}"
