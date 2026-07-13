@@ -1,6 +1,6 @@
 pkgbase = socid-extractor
 	pkgdesc = Extract account identifiers and metadata from personal pages
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/soxoj/socid-extractor
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = socid-extractor
 	depends = python-beautifulsoup4
 	depends = python-dateutil
 	depends = python-requests
-	source = socid-extractor-0.1.0.tar.gz::https://files.pythonhosted.org/packages/source/s/socid-extractor/socid_extractor-0.1.0.tar.gz
-	sha256sums = 94e5e35be06fc3b281900122e12e8feb1a895b189417e311e07f219522d0789e
+	source = socid-extractor-0.1.1.tar.gz::https://files.pythonhosted.org/packages/source/s/socid-extractor/socid_extractor-0.1.1.tar.gz
+	sha256sums = a7013008ff4aeaedb24e0899318e2d5cbf1b395f9945db1495c720fa5823ded1
 
 pkgname = socid-extractor
