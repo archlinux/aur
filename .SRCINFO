@@ -1,0 +1,29 @@
+pkgbase = frappe-pilot-git
+	pkgdesc = CLI with built-in admin UI to manage Frappe deployments. Successor to Bench.
+	pkgver = 0.1.0.r979.g7f3d9af
+	pkgrel = 1
+	url = https://github.com/frappe/pilot/
+	install = frappe-pilot-git.install
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = npm
+	depends = git
+	depends = nginx
+	depends = nodejs
+	depends = python
+	depends = rsync
+	depends = uv
+	depends = valkey
+	optdepends = mariadb: Site database (either MariaDB or PostgreSQL is required)
+	optdepends = postgresql: Site database (either MariaDB or PostgreSQL is required)
+	provides = frappe-pilot
+	provides = bench
+	conflicts = frappe-pilot
+	conflicts = frappe-bench
+	source = pilot::git+https://github.com/frappe/pilot.git#branch=main
+	source = bench-wrapper.sh
+	sha512sums = SKIP
+	sha512sums = de3b13e36a5cfd41371e041a1cc9a2e507638ed65501a0d0159e3a4c8be5153d30ff4f11721a28765f94c3dc5c297c7cd43d225107b50d1c18c89b8c3cc00cac
+
+pkgname = frappe-pilot-git

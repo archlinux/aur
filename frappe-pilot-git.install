@@ -1,0 +1,22 @@
+post_install() {
+    cat << EOF
+
+:: frappe-pilot-git
+   - 'bench' maintains a writable per-user copy of pilot at
+     ~/.local/share/frappe-pilot (override with PILOT_HOME). Benches and
+     the admin UI venv live there and survive package upgrades.
+   - The admin UI venv is created with uv on first 'bench start'.
+   - Update with pacman. 'bench upgrade' (a git pull of the install
+     directory) does not apply to this package.
+   - Production setup and admin UI background tasks expect passwordless
+     sudo for the user running bench (upstream installs
+     '<user> ALL=(ALL) NOPASSWD: ALL' to /etc/sudoers.d/<user>). This
+     package does not touch sudoers; review the security implications
+     and configure it yourself if needed.
+
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
