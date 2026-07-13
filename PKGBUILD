@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 pkgname=floatlyrics
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Floating synchronized lyrics for Spotify on Linux Wayland'
 arch=('x86_64')
@@ -18,12 +18,13 @@ depends=(
     'libgcc'
     'openssl'
     'pango'
+    'sqlite'
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Replace SKIP with the v1.0.0 source archive checksum before publishing to AUR:
 #   updpkgsums && makepkg --printsrcinfo > .SRCINFO
-sha256sums=('d7aa22f3870f4b8a432f9b3ffe94cb1dac34b35333460e0e0bf96b664491406c')
+sha256sums=('26d58bbf50f68133449ce9d640493ddd8d8215ace7428e875c028bf7d12850cb')
 
 prepare() {
     cd "FloatLyrics-$pkgver"
@@ -34,7 +35,7 @@ prepare() {
 build() {
     cd "FloatLyrics-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    # Keep non-LTO code in bundled C libraries so Rust's linker can consume them.
+    export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
     CFLAGS+=" -ffat-lto-objects"
     export CFLAGS
     CARGO_TARGET_DIR=target cargo build --frozen --release
@@ -43,6 +44,7 @@ build() {
 check() {
     cd "FloatLyrics-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
+    export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
     CFLAGS+=" -ffat-lto-objects"
     export CFLAGS
     CARGO_TARGET_DIR=target cargo test --frozen --all-targets --all-features
