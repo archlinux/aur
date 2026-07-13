@@ -2,7 +2,7 @@
 # Contributor: wszqkzqk
 
 pkgname=wechat-bin
-pkgver=4.1.1.7
+pkgver=4.1.1.8
 pkgrel=1
 epoch=
 pkgdesc="微信是一种生活方式. This is a repackage of WeChat."
