@@ -12,4 +12,4 @@ StandardError=journal
 SyslogIdentifier=deadlock-api-ingest
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

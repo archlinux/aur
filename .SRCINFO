@@ -13,6 +13,6 @@ pkgbase = deadlock-api-ingest-git
 	source = git+https://github.com/deadlock-api/deadlock-api-ingest.git
 	source = deadlock-api-ingest.service
 	sha512sums = SKIP
-	sha512sums = 20caf1996b9bba661e084e75d5cf2b9e0eda5f99839fd5aa153e98a2fd254acc64b5226d5655147ae9e33109d009797442474cc29c5cdb8bbdf458f39ab472a6
+	sha512sums = e4d90ffab8efe2231033a8fa19ad29602059c395ba216dd9a209a0f732760c094f82d68e57da0ae75acec7cd0f8f9745002346f52c67c55be12da5008284ec7d
 
 pkgname = deadlock-api-ingest-git
