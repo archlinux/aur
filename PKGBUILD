@@ -1,7 +1,7 @@
 # Maintainer: massiveadam <51133980+massiveadam at users dot noreply dot github dot com>
 pkgname=roon-proton
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Roon desktop controller and native audio endpoint for Arch Linux'
 arch=('x86_64')
 url='https://github.com/massiveadam/roon-wine'
@@ -10,10 +10,12 @@ depends=(
   'alsa-lib'
   'bash'
   'curl'
+  '7zip'
   'libpulse'
   'pipewire-audio'
   'pipewire-pulse'
   'psmisc'
+  'python'
   'umu-launcher'
   'wireplumber'
   'xorg-xwayland'
@@ -29,6 +31,7 @@ optdepends=(
 source=(
   'roon-wine'
   'roon-wine.desktop'
+  'roon-umu-run'
   'roon-proton.niri.kdl'
   'roon-proton.hyprland.conf'
   'roon-proton.hyprland.lua'
@@ -38,8 +41,9 @@ source=(
   'roon-proton.modprobe.conf'
   'LICENSE'
 )
-sha256sums=('80d031234c3a385b3c8eabfd6f987bb2b1e07a85ee8921e242a7f7164463aa8b'
+sha256sums=('40fe58ecb00369274f1a5f4a52371c394172495401f0d86f54618df32600c261'
             '300b9418ac741675a91fda59670456738f4d6d5693a4cc7899138b94425acd26'
+            '8f73657a9bd436d6b52edcfb6948e4cb6eea8989bc18b365794b7e496538f13d'
             'aab5a24dff98029cbb17a40c27af62b14a114c58d1e398b02a02b4404b8af528'
             'fa0808ac99a1ecb1180c672cd634fd561e4c377029ca7cff0920bddc71e42778'
             'ffb8bd1b1c39ba5274f20b2ef564c50b68ae2c41ea501d96d2f407f9d89ea085'
@@ -52,6 +56,8 @@ sha256sums=('80d031234c3a385b3c8eabfd6f987bb2b1e07a85ee8921e242a7f7164463aa8b'
 package() {
   install -Dm755 "$srcdir/roon-wine" "$pkgdir/usr/bin/roon-proton"
   ln -s roon-proton "$pkgdir/usr/bin/roon-wine"
+  install -Dm755 "$srcdir/roon-umu-run" \
+    "$pkgdir/usr/lib/roon-proton/roon-umu-run"
   install -Dm644 "$srcdir/roon-wine.desktop" \
     "$pkgdir/usr/share/applications/roon-proton.desktop"
   sed -i 's/^Exec=roon-wine/Exec=roon-proton/' \

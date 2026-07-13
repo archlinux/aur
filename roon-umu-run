@@ -1,0 +1,15 @@
+#!/usr/bin/python3
+"""Run UMU 1.4.0 without its broken-by-default launcher service."""
+
+import sys
+
+from umu.umu_runtime import CompatLayer
+
+# UMU 1.4.0 always exports STEAM_COMPAT_LAUNCHER_SERVICE. For ordinary apps
+# this can report success before the requested executable has run. UMU 1.4.1
+# made the service opt-in; returning an empty value reproduces that behavior.
+CompatLayer.launcher_service = property(lambda self: "")  # type: ignore[assignment]
+
+from umu.__main__ import main  # noqa: E402
+
+sys.exit(main())

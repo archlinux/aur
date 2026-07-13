@@ -23,6 +23,7 @@ readonly BRIDGE_APP="$BRIDGE_HOME/RoonBridge"
 readonly BRIDGE_DATA="$BRIDGE_HOME/data"
 readonly BRIDGE_ARCHIVE="$CACHE_HOME/RoonBridge_linuxx64.tar.bz2"
 readonly BRIDGE_SERVICE="$HOME/.config/systemd/user/roonbridge-native.service"
+readonly UMU_140_RUNNER='/usr/lib/roon-proton/roon-umu-run'
 
 display=auto
 audio=pipewire
@@ -136,9 +137,14 @@ proton_cmd() {
   # Wine's wminet_utils implementation is incomplete and can abort current
   # Roon builds. Roon tolerates the optional WMI helper being unavailable.
   local overrides='wminet_utils=d'
+  local -a umu=(umu-run)
   [[ -n ${WINEDLLOVERRIDES:-} ]] && overrides="$WINEDLLOVERRIDES;$overrides"
+  if umu-run --version 2>&1 | head -n 1 | grep -q 'version 1[.]4[.]0 '; then
+    [[ -x $UMU_140_RUNNER ]] || die 'UMU 1.4.0 compatibility runner is missing; reinstall roon-proton'
+    umu=("$UMU_140_RUNNER")
+  fi
   env WINEPREFIX="$PREFIX" GAMEID=0 PROTONPATH="$PROTON_PATH" \
-    PROTON_ENABLE_WAYLAND="$wayland" WINEDLLOVERRIDES="$overrides" umu-run "$@"
+    PROTON_ENABLE_WAYLAND="$wayland" WINEDLLOVERRIDES="$overrides" "${umu[@]}" "$@"
 }
 
 runner_cmd() {
@@ -317,9 +323,43 @@ open_winecfg() {
 find_roon() {
   local candidate
   candidate=$(find "$PREFIX/drive_c/users" -type f \
-    -path '*/AppData/Local/Roon/Application/Roon.exe' -print -quit 2>/dev/null || true)
+    -path '*/AppData/Local/Roon/Application/*' -iname 'Roon.exe' \
+    -print 2>/dev/null | sort -V | tail -n 1 || true)
   [[ -n $candidate ]] || return 1
   printf '%s\n' "$candidate"
+}
+
+install_proton_payload() {
+  have 7z || die '7zip is required to extract the Roon payload'
+
+  # Roon's current 32-bit NSIS bootstrapper crashes in Wine/Proton before its
+  # bundled 64-bit controller is installed. Extract the verified upstream
+  # payload directly; this is the same $_19_ tree written by the installer.
+  local staging payload build destination
+  staging=$(mktemp -d "$CACHE_HOME/.roon-payload.XXXXXX") || \
+    die 'could not create a temporary payload directory'
+  if ! 7z x -y "-o$staging" "$INSTALLER" '$_19_/*' >/dev/null; then
+    rm -rf -- "$staging"
+    die 'failed to extract the Roon controller payload'
+  fi
+  payload="$staging/\$_19_"
+  [[ -f $payload/VERSION && -f $payload/Roon.exe ]] || {
+    rm -rf -- "$staging"
+    die 'verified Roon installer does not contain the expected controller payload'
+  }
+  build=$(head -n 1 "$payload/VERSION")
+  [[ $build =~ ^[0-9]+$ ]] || {
+    rm -rf -- "$staging"
+    die 'Roon payload has an invalid build identifier'
+  }
+  destination="$PREFIX/drive_c/users/steamuser/AppData/Local/Roon/Application/$build"
+  mkdir -p "$(dirname "$destination")"
+  rm -rf -- "$destination.new"
+  mv -- "$payload" "$destination.new"
+  rm -rf -- "$destination"
+  mv -- "$destination.new" "$destination"
+  rm -rf -- "$staging"
+  note "installed Roon controller build $build"
 }
 
 install_roon() {
@@ -336,6 +376,10 @@ install_roon() {
 
   if [[ $runner == proton ]]; then
     install_runtime
+    if [[ ! -x $PREFIX/drive_c/windows/system32/cmd.exe ]]; then
+      note 'initializing the Proton prefix'
+      proton_cmd "$PREFIX/drive_c/windows/system32/cmd.exe" /c exit
+    fi
   else
     have wine || die 'wine is required for the Wine fallback'
     have winetricks || die 'winetricks is required for the Wine fallback'
@@ -345,14 +389,20 @@ install_roon() {
   fi
 
   download_verified "$INSTALLER_URL" "$INSTALLER" "$INSTALLER_SHA512" 'Roon installer'
-  local selected
-  selected=$(selected_display)
-  require_display "$selected"
-  if [[ $selected == wayland ]]; then
-    (unset DISPLAY; runner_cmd "$INSTALLER")
+  if [[ $runner == proton ]]; then
+    install_proton_payload
   else
-    runner_cmd "$INSTALLER"
+    local selected
+    selected=$(selected_display)
+    require_display "$selected"
+    if [[ $selected == wayland ]]; then
+      (unset DISPLAY; runner_cmd "$INSTALLER")
+    else
+      runner_cmd "$INSTALLER"
+    fi
+    find_roon >/dev/null || die 'Roon installation was not detected after the installer closed'
   fi
+  note "Roon installation detected at $(find_roon)"
 }
 
 run_roon() {
@@ -390,6 +440,7 @@ doctor() {
   printf '%-20s %s\n' 'configured display' "$display -> $(selected_display 2>/dev/null || echo unavailable)"
   printf '%-20s %s\n' 'configured audio' "$audio"
   printf '%-20s %s\n' 'runner' "$runner"
+  printf '%-20s %s\n' 'UMU' "$(umu-run --version 2>/dev/null | head -n 1 || echo missing)"
   printf '%-20s %s\n' 'Proton runtime' "$([[ -x $PROTON_PATH/proton ]] && echo "$PROTON_VERSION present" || echo missing)"
   printf '%-20s %s\n' 'Wine' "$(wine --version 2>/dev/null || echo missing)"
   printf '%-20s %s\n' 'PipeWire' "$(user_service_state pipewire.service || true)"
