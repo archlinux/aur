@@ -1,6 +1,6 @@
 # Maintainer: lightjunction
 pkgname=lab-safety-system-bin
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Prebuilt laboratory safety management information system (zero-config setup)"
 arch=('x86_64')
@@ -39,7 +39,7 @@ sha256sums=(
   '304768226126ec5d377514979e00efe4c73158d343bf516251afc6ee8601fe8b'
 )
 sha256sums_x86_64=(
-  'dcb043df3eda9d67d99d877e46361fccc770fec65a96853d88853c3ca3b12ed7'
+  '03d29645cc694504f0cefc416d61c25e4a4ecccf91e6c3fca7923ccd10be582f'
 )
 
 package() {
