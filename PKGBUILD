@@ -5,6 +5,8 @@ pkgname="$_pkgname-bin"
 pkgver=0.26.6
 pkgrel=1
 _filename="$_pkgname-$pkgver-$pkgrel"
+_dlbase="$_filename::https://github.com/$_repo/releases/download/v$pkgver/$_pkgname-linux"
+_binsum="808bbe54b7464d252c27e92c301022fb188784d2f26fe5d238fabb475b162443"
 pkgdesc="Cross shell and platform alias management"
 arch=(x86_64 armv7h aarch64)
 url="https://aliae.dev"
@@ -23,14 +25,14 @@ conflicts=("$_pkgname")
 source=(
     "LICENSE::https://raw.githubusercontent.com/$_repo/v$pkgver/LICENSE"
 )
-source_x86_64=("$_filename::https://github.com/$_repo/releases/download/v$pkgver/$_pkgname-linux-amd64")
-source_armv7h=("$_filename::https://github.com/$_repo/releases/download/v$pkgver/$_pkgname-linux-arm")
-source_aarch64=("$_filename::https://github.com/$_repo/releases/download/v$pkgver/$_pkgname-linux-arm64")
+source_x86_64=("$_dlbase-amd64")
+source_armv7h=("$_dlbase-arm")
+source_aarch64=("$_dlbase-arm64")
 noextract=()
 sha256sums=('df419cb226a6174d115f4306653312cb924e47c8e87209243ecb76a4031355cf')
-sha256sums_x86_64=('808bbe54b7464d252c27e92c301022fb188784d2f26fe5d238fabb475b162443')
-sha256sums_armv7h=('808bbe54b7464d252c27e92c301022fb188784d2f26fe5d238fabb475b162443')
-sha256sums_aarch64=('808bbe54b7464d252c27e92c301022fb188784d2f26fe5d238fabb475b162443')
+sha256sums_x86_64=($_binsum)
+sha256sums_armv7h=($_binsum)
+sha256sums_aarch64=($_binsum)
 
 pkgver() {
     curl --silent -L "https://api.github.com/repos/$_repo/releases/latest" | # Get latest release from GitHub api
