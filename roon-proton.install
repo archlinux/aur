@@ -1,0 +1,12 @@
+post_install() {
+  cat <<'EOF'
+roon-proton is installed.
+
+Run "roon-proton install" as your desktop user to install Roon. For audio that
+follows the desktop's selected speakers, headphones, USB, or Bluetooth output,
+run "roon-proton endpoint install", followed by
+"roon-proton endpoint mode system". In Roon Settings > Audio, enable the first
+Loopback PCM and name it "System Output (PipeWire)". Leave the second Loopback
+PCM disabled.
+EOF
+}

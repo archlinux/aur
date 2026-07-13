@@ -1,0 +1,463 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+readonly APP_NAME=roon-wine
+readonly DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/$APP_NAME"
+readonly CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/$APP_NAME"
+readonly CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}/$APP_NAME"
+readonly PREFIX="$DATA_HOME/prefix"
+readonly CONFIG_FILE="$CONFIG_HOME/config"
+readonly INSTALLER_URL='https://download.roonlabs.com/builds/RoonInstaller64.exe'
+readonly INSTALLER="$CACHE_HOME/RoonInstaller64.exe"
+readonly INSTALLER_SHA512='885b4a11d037d330a17b3418b388c7a59dce1a2b976ceac3d3151cf0d0339b3f917d97490b5512e46aefdd78743632fb2ecbd1021c35a7a72ae6bf2e95394de0'
+readonly PROTON_VERSION='GE-Proton10-34'
+readonly PROTON_ARCHIVE="$CACHE_HOME/$PROTON_VERSION.tar.gz"
+readonly PROTON_HOME="$DATA_HOME/runtimes"
+readonly PROTON_PATH="$PROTON_HOME/$PROTON_VERSION"
+readonly PROTON_URL="https://github.com/GloriousEggroll/proton-ge-custom/releases/download/$PROTON_VERSION/$PROTON_VERSION.tar.gz"
+readonly PROTON_SHA512='9fd0b2cfbd501c0b5c892239c392c7283a029b5e5d5a77d3f85b0ce190d555456241a18eebca16b53f094b403499201c13550a3f0b9b365e1a5eb5737cbb7303'
+readonly BRIDGE_URL='https://download.roonlabs.net/builds/RoonBridge_linuxx64.tar.bz2'
+readonly BRIDGE_SHA512='7958ce2d07fb46e5e6b33296e564e2a5c2726acba756fb390144052cd3b13519f62b504db11be1a95b7c2b08354aeffe0aa42cdbc51c6b847e2ffacd9f1d5e70'
+readonly BRIDGE_HOME="$DATA_HOME/native-endpoint"
+readonly BRIDGE_APP="$BRIDGE_HOME/RoonBridge"
+readonly BRIDGE_DATA="$BRIDGE_HOME/data"
+readonly BRIDGE_ARCHIVE="$CACHE_HOME/RoonBridge_linuxx64.tar.bz2"
+readonly BRIDGE_SERVICE="$HOME/.config/systemd/user/roonbridge-native.service"
+
+display=auto
+audio=pipewire
+scale=1.0
+runner=proton
+
+die() { printf 'roon-wine: %s\n' "$*" >&2; exit 1; }
+note() { printf '==> %s\n' "$*"; }
+have() { command -v "$1" >/dev/null 2>&1; }
+valid_scale() {
+  [[ $1 =~ ^[0-9]+([.][0-9]+)?$ ]] || return 1
+  awk -v value="$1" 'BEGIN { exit !(value > 0) }'
+}
+
+usage() {
+  cat <<'EOF'
+Usage: roon-wine COMMAND [ARGUMENTS]
+
+Commands:
+  install                  Create/repair the prefix and install Roon
+  run                      Launch Roon
+  configure                Apply display and audio configuration
+  winecfg                  Open Wine configuration for the managed prefix
+  doctor                   Print compatibility diagnostics
+  set display MODE         MODE: auto, wayland, x11, xwayland
+  set audio MODE           MODE: pipewire, pulse, alsa
+  set scale FACTOR         Positive decimal UI scale
+  set runner RUNNER        RUNNER: proton (default), wine
+  runtime                  Install/verify the pinned Proton runtime
+  endpoint install         Install the optional direct Linux audio endpoint
+  endpoint start|stop      Control the native audio endpoint
+  endpoint status          Show native endpoint service status
+  endpoint release         Stop playback and release the ALSA device
+  endpoint mode desktop    Use Wine System Output through PipeWire
+  endpoint mode system     Use native Bridge through the PipeWire default
+  endpoint mode direct     Use native Bridge with exclusive/direct ALSA
+  kill                     Stop Wine processes in the managed prefix
+  help                     Show this help
+EOF
+}
+
+load_config() {
+  [[ -f $CONFIG_FILE ]] || return 0
+  while IFS='=' read -r key value; do
+    case $key in
+      display) [[ $value =~ ^(auto|wayland|x11|xwayland)$ ]] && display=$value ;;
+      audio) [[ $value =~ ^(pipewire|pulse|alsa)$ ]] && audio=$value ;;
+      scale) valid_scale "$value" && scale=$value ;;
+      runner) [[ $value =~ ^(proton|wine)$ ]] && runner=$value ;;
+    esac
+  done < "$CONFIG_FILE"
+}
+
+save_config() {
+  mkdir -p "$CONFIG_HOME"
+  umask 077
+  printf 'display=%s\naudio=%s\nscale=%s\nrunner=%s\n' "$display" "$audio" "$scale" "$runner" > "$CONFIG_FILE"
+}
+
+wine_cmd() {
+  local overrides='winemenubuilder.exe=d;wminet_utils=d'
+  [[ -n ${WINEDLLOVERRIDES:-} ]] && overrides="$WINEDLLOVERRIDES;$overrides"
+  env WINEPREFIX="$PREFIX" WINEDLLOVERRIDES="$overrides" "$@"
+}
+
+verify_sha512() {
+  local file=$1 expected=$2
+  [[ -f $file ]] && printf '%s  %s\n' "$expected" "$file" | sha512sum --check --status
+}
+
+download_verified() {
+  local url=$1 destination=$2 expected=$3 label=$4
+  local temporary="$destination.part"
+  have curl || die 'curl is required'
+  have sha512sum || die 'sha512sum is required'
+  if verify_sha512 "$destination" "$expected"; then
+    note "using verified cached $label"
+    return
+  fi
+  rm -f -- "$temporary"
+  note "downloading pinned $label"
+  curl --proto '=https' --proto-redir '=https' --fail --location --retry 3 \
+    --output "$temporary" "$url"
+  verify_sha512 "$temporary" "$expected" || {
+    rm -f -- "$temporary"
+    die "$label checksum verification failed; the upstream artifact may have changed"
+  }
+  mv -f -- "$temporary" "$destination"
+}
+
+install_runtime() {
+  have umu-run || die 'umu-launcher is required for the Proton runner'
+  [[ -x $PROTON_PATH/proton ]] && { note "using $PROTON_VERSION"; return; }
+  mkdir -p "$CACHE_HOME" "$PROTON_HOME"
+  download_verified "$PROTON_URL" "$PROTON_ARCHIVE" "$PROTON_SHA512" "runtime $PROTON_VERSION"
+  rm -rf "$PROTON_PATH"
+  tar -xzf "$PROTON_ARCHIVE" -C "$PROTON_HOME"
+  [[ -x $PROTON_PATH/proton ]] || die 'Proton runtime extraction failed'
+}
+
+proton_cmd() {
+  install_runtime
+  if [[ -f $PREFIX/version ]]; then
+    local prefix_version
+    prefix_version=$(<"$PREFIX/version")
+    [[ $prefix_version == "$PROTON_VERSION" ]] || die \
+      "prefix runtime is $prefix_version, expected $PROTON_VERSION; refusing an unsafe migration"
+  fi
+  local wayland=0
+  [[ $(selected_display) == wayland ]] && wayland=1
+  # Wine's wminet_utils implementation is incomplete and can abort current
+  # Roon builds. Roon tolerates the optional WMI helper being unavailable.
+  local overrides='wminet_utils=d'
+  [[ -n ${WINEDLLOVERRIDES:-} ]] && overrides="$WINEDLLOVERRIDES;$overrides"
+  env WINEPREFIX="$PREFIX" GAMEID=0 PROTONPATH="$PROTON_PATH" \
+    PROTON_ENABLE_WAYLAND="$wayland" WINEDLLOVERRIDES="$overrides" umu-run "$@"
+}
+
+runner_cmd() {
+  if [[ $runner == proton ]]; then proton_cmd "$@"; else wine_cmd wine "$@"; fi
+}
+
+wine_major() {
+  wine --version 2>/dev/null | sed -E 's/^[^0-9]*([0-9]+).*/\1/'
+}
+
+wayland_capable() {
+  [[ ${XDG_SESSION_TYPE:-} == wayland && -n ${WAYLAND_DISPLAY:-} ]] || return 1
+  [[ $runner == proton ]] && return 0
+  [[ $(wine_major) =~ ^[0-9]+$ ]] && (( $(wine_major) >= 9 ))
+}
+
+selected_display() {
+  if [[ $display == auto ]]; then
+    # Roon needs a second GL context. GE-Proton 10 renders it reliably through
+    # XWayland, while its native Wayland driver fails that context creation.
+    if [[ ${XDG_SESSION_TYPE:-} == wayland || -n ${WAYLAND_DISPLAY:-} ]]; then
+      if [[ $runner == proton ]]; then printf 'xwayland\n'
+      elif wayland_capable; then printf 'wayland\n'; else printf 'xwayland\n'; fi
+    else
+      printf 'x11\n'
+    fi
+  else
+    printf '%s\n' "$display"
+  fi
+}
+
+display_available() {
+  local selected=$1
+  if [[ $selected == wayland ]]; then
+    [[ -n ${WAYLAND_DISPLAY:-} ]]
+  else
+    [[ -n ${DISPLAY:-} ]]
+  fi
+}
+
+require_display() {
+  local selected=$1
+  display_available "$selected" && return
+  if [[ $selected == wayland ]]; then
+    die 'Wayland mode requires WAYLAND_DISPLAY; use display=auto or x11'
+  else
+    die "$selected mode requires DISPLAY; enable XWayland/X11 or select Wayland"
+  fi
+}
+
+endpoint_install() {
+  have systemctl || die 'systemd is required for the native endpoint'
+  have tar || die 'tar is required for the native endpoint'
+  mkdir -p "$CACHE_HOME" "$BRIDGE_HOME" "$BRIDGE_DATA" "$(dirname "$BRIDGE_SERVICE")"
+  download_verified "$BRIDGE_URL" "$BRIDGE_ARCHIVE" "$BRIDGE_SHA512" 'Roon Bridge archive'
+  rm -rf "$BRIDGE_HOME/.install"
+  mkdir "$BRIDGE_HOME/.install"
+  tar -xjf "$BRIDGE_ARCHIVE" -C "$BRIDGE_HOME/.install"
+  [[ -x $BRIDGE_HOME/.install/RoonBridge/start.sh ]] || die 'Roon Bridge extraction failed'
+  systemctl --user stop roonbridge-native.service 2>/dev/null || true
+  rm -rf "$BRIDGE_APP.old"
+  [[ ! -d $BRIDGE_APP ]] || mv "$BRIDGE_APP" "$BRIDGE_APP.old"
+  mv "$BRIDGE_HOME/.install/RoonBridge" "$BRIDGE_APP"
+  rmdir "$BRIDGE_HOME/.install"
+  cat > "$BRIDGE_SERVICE" <<EOF
+[Unit]
+Description=Roon Bridge native Linux endpoint
+After=network-online.target pipewire.service
+Wants=network-online.target
+
+[Service]
+Environment=ROON_DATAROOT=$BRIDGE_DATA
+Environment=ROON_ID_DIR=$BRIDGE_DATA
+ExecStart=$BRIDGE_APP/start.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
+EOF
+  systemctl --user daemon-reload
+  systemctl --user disable --now roonbridge-native.service
+  note 'native endpoint installed but left disabled'
+  note "use 'roon-proton endpoint mode system' for desktop-following audio"
+}
+
+endpoint_command() {
+  case ${1:-status} in
+    install) endpoint_install ;;
+    start|stop|restart) systemctl --user "$1" roonbridge-native.service ;;
+    mode)
+      case ${2:-} in
+        desktop)
+          systemctl --user disable --now roonbridge-native.service roon-system-output.service 2>/dev/null || true
+          note 'desktop mode active: relaunch Roon, then enable System Output in Settings > Audio'
+          note 'audio will follow the current PipeWire/WirePlumber output'
+          ;;
+        system)
+          [[ -f $BRIDGE_SERVICE ]] || die "native endpoint is not installed; run 'roon-proton endpoint install'"
+          [[ -d /sys/module/snd_aloop ]] || die 'snd-aloop is not loaded; run: sudo modprobe snd-aloop pcm_substreams=1'
+          systemctl --user enable --now roon-system-output.service roonbridge-native.service
+          note 'system-output mode active'
+          note 'in Roon, enable the first Loopback PCM and name it System Output (PipeWire)'
+          note 'leave the second Loopback PCM disabled; PipeWire chooses the physical output'
+          ;;
+        direct)
+          [[ -f $BRIDGE_SERVICE ]] || die "native endpoint is not installed; run 'roon-proton endpoint install'"
+          systemctl --user disable --now roon-system-output.service 2>/dev/null || true
+          systemctl --user enable --now roonbridge-native.service
+          note 'exclusive/direct ALSA mode active; relaunch Roon before selecting the direct endpoint'
+          ;;
+        *) die 'endpoint mode must be desktop, system, or direct' ;;
+      esac
+      ;;
+    release)
+      systemctl --user restart roonbridge-native.service
+      note 'stopped endpoint playback and released the ALSA device'
+      ;;
+    status) systemctl --user --no-pager status roonbridge-native.service ;;
+    *) die 'endpoint command must be install, start, stop, restart, release, status, or mode' ;;
+  esac
+}
+
+alsa_owner() {
+  local pcm=${ROON_ALSA_PCM:-/dev/snd/pcmC1D0p} owners
+  [[ -e $pcm ]] || { printf 'device not found\n'; return; }
+  owners=$(fuser "$pcm" 2>/dev/null || true)
+  if [[ -n $owners ]]; then printf 'in use (pid%s)\n' "$owners"
+  else printf 'released\n'
+  fi
+}
+
+user_service_state() {
+  local service state
+  for service in "$@"; do
+    state=$(systemctl --user is-active "$service" 2>/dev/null || true)
+    [[ $state == active ]] && { printf 'active (%s)\n' "$service"; return 0; }
+  done
+  printf 'inactive or unavailable\n'
+  return 1
+}
+
+configure_prefix() {
+  [[ -d $PREFIX ]] || die "prefix does not exist; run 'roon-proton install' first"
+  local selected
+  selected=$(selected_display)
+  if [[ $selected == wayland ]]; then
+    wine_cmd wine reg add 'HKEY_CURRENT_USER\Software\Wine\Drivers' \
+      /v Graphics /t REG_SZ /d wayland /f >/dev/null
+  else
+    wine_cmd wine reg delete 'HKEY_CURRENT_USER\Software\Wine\Drivers' \
+      /v Graphics /f >/dev/null 2>&1 || true
+  fi
+
+  local wine_audio=pulse
+  [[ $audio == alsa ]] && wine_audio=alsa
+  wine_cmd wine reg add 'HKEY_CURRENT_USER\Software\Wine\Drivers' \
+    /v Audio /t REG_SZ /d "$wine_audio" /f >/dev/null
+  note "configured display=$selected audio=$audio"
+}
+
+open_winecfg() {
+  [[ $runner == wine ]] || die "winecfg is only available with 'roon-proton set runner wine'"
+  have winecfg || die 'winecfg is required'
+  [[ -d $PREFIX ]] || die "prefix does not exist; run 'roon-proton install' first"
+  local selected
+  selected=$(selected_display)
+  note "opening Wine configuration with display=$selected"
+  if [[ $selected == wayland ]]; then
+    env -u DISPLAY WINEPREFIX="$PREFIX" winecfg
+  else
+    wine_cmd winecfg
+  fi
+}
+
+find_roon() {
+  local candidate
+  candidate=$(find "$PREFIX/drive_c/users" -type f \
+    -path '*/AppData/Local/Roon/Application/Roon.exe' -print -quit 2>/dev/null || true)
+  [[ -n $candidate ]] || return 1
+  printf '%s\n' "$candidate"
+}
+
+install_roon() {
+  have curl || die 'curl is required'
+  mkdir -p "$DATA_HOME" "$CACHE_HOME"
+  save_config
+
+  if [[ $runner == wine && ! -d $PREFIX ]]; then
+    note 'creating isolated 64-bit Wine prefix'
+    env WINEARCH=win64 WINEPREFIX="$PREFIX" wineboot --init
+  else
+    note 'reusing existing prefix (no user data will be deleted)'
+  fi
+
+  if [[ $runner == proton ]]; then
+    install_runtime
+  else
+    have wine || die 'wine is required for the Wine fallback'
+    have winetricks || die 'winetricks is required for the Wine fallback'
+    note 'installing required Windows runtime and prefix settings'
+    env WINEPREFIX="$PREFIX" winetricks -q win10 dotnet7 nocrashdialog
+    configure_prefix
+  fi
+
+  download_verified "$INSTALLER_URL" "$INSTALLER" "$INSTALLER_SHA512" 'Roon installer'
+  local selected
+  selected=$(selected_display)
+  require_display "$selected"
+  if [[ $selected == wayland ]]; then
+    (unset DISPLAY; runner_cmd "$INSTALLER")
+  else
+    runner_cmd "$INSTALLER"
+  fi
+}
+
+run_roon() {
+  local exe selected
+  exe=$(find_roon) || die "Roon is not installed; run 'roon-proton install'"
+  selected=$(selected_display)
+  require_display "$selected"
+  [[ $runner == wine ]] && configure_prefix
+  note "launching Roon with display=$selected audio=$audio scale=$scale"
+  if [[ $selected == wayland ]]; then
+    if [[ $runner == proton ]]; then
+      (
+        unset DISPLAY
+        export WINEDEBUG=-all WINEDLLOVERRIDES='windows.media.mediacontrol='
+        proton_cmd "$exe" "-scalefactor=$scale"
+      )
+    else
+      env -u DISPLAY WINEPREFIX="$PREFIX" WINEDEBUG=-all \
+        WINEDLLOVERRIDES='windows.media.mediacontrol=;winemenubuilder.exe=d;wminet_utils=d' \
+        wine "$exe" "-scalefactor=$scale"
+    fi
+  else
+    if [[ $runner == proton ]]; then WINEDEBUG=-all proton_cmd "$exe" "-scalefactor=$scale"
+    else wine_cmd env WINEDEBUG=-all wine "$exe" "-scalefactor=$scale"; fi
+  fi
+}
+
+doctor() {
+  load_config
+  local failures=0 major='unknown'
+  have wine && major=$(wine_major)
+  printf '%-20s %s\n' 'session type' "${XDG_SESSION_TYPE:-unknown}"
+  printf '%-20s %s\n' 'Wayland display' "${WAYLAND_DISPLAY:-not set}"
+  printf '%-20s %s\n' 'X11 display' "${DISPLAY:-not set}"
+  printf '%-20s %s\n' 'configured display' "$display -> $(selected_display 2>/dev/null || echo unavailable)"
+  printf '%-20s %s\n' 'configured audio' "$audio"
+  printf '%-20s %s\n' 'runner' "$runner"
+  printf '%-20s %s\n' 'Proton runtime' "$([[ -x $PROTON_PATH/proton ]] && echo "$PROTON_VERSION present" || echo missing)"
+  printf '%-20s %s\n' 'Wine' "$(wine --version 2>/dev/null || echo missing)"
+  printf '%-20s %s\n' 'PipeWire' "$(user_service_state pipewire.service || true)"
+  printf '%-20s %s\n' 'Pulse service' "$(user_service_state pipewire-pulse.service pulseaudio.service || true)"
+  printf '%-20s %s\n' 'prefix' "$([[ -d $PREFIX ]] && echo present || echo missing)"
+  printf '%-20s %s\n' 'Roon executable' "$(find_roon >/dev/null && echo present || echo missing)"
+  printf '%-20s %s\n' 'native endpoint' "$(systemctl --user is-active roonbridge-native.service 2>/dev/null || echo inactive)"
+  if systemctl --user is-active --quiet roon-system-output.service 2>/dev/null; then
+    printf '%-20s %s\n' 'endpoint mode' 'System Output (PipeWire) via first Loopback PCM'
+  elif systemctl --user is-active --quiet roonbridge-native.service 2>/dev/null; then
+    printf '%-20s %s\n' 'endpoint mode' 'exclusive/direct ALSA'
+  else
+    printf '%-20s %s\n' 'endpoint mode' 'desktop System Output -> PipeWire'
+  fi
+  printf '%-20s %s\n' 'ALSA device' "$(alsa_owner)"
+
+  if [[ $runner == proton ]]; then
+    have umu-run || { printf 'WARN: umu-launcher is not installed\n' >&2; failures=1; }
+  else
+    have wine || { printf 'WARN: wine is not installed\n' >&2; failures=1; }
+  fi
+  if ! display_available "$(selected_display)"; then
+    printf 'WARN: selected display backend is unavailable in this session\n' >&2
+    failures=1
+  fi
+  if [[ $runner == wine && $major == 11 ]]; then
+    printf 'WARN: Wine 11 has a reported washed-out color regression with Roon\n' >&2
+  fi
+  if [[ $audio == pipewire ]] && ! systemctl --user is-active --quiet pipewire-pulse 2>/dev/null; then
+    printf 'WARN: pipewire-pulse is not active; the local Roon output may be unavailable\n' >&2
+    failures=1
+  fi
+  return "$failures"
+}
+
+set_value() {
+  local key=${1:-} value=${2:-}
+  case $key in
+    display) [[ $value =~ ^(auto|wayland|x11|xwayland)$ ]] || die 'display must be auto, wayland, x11, or xwayland'; display=$value ;;
+    audio) [[ $value =~ ^(pipewire|pulse|alsa)$ ]] || die 'audio must be pipewire, pulse, or alsa'; audio=$value ;;
+    scale) valid_scale "$value" || die 'scale must be a positive decimal'; scale=$value ;;
+    runner) [[ $value =~ ^(proton|wine)$ ]] || die 'runner must be proton or wine'; runner=$value ;;
+    *) die 'setting must be display, audio, scale, or runner' ;;
+  esac
+  save_config
+  note "saved $key=$value"
+}
+
+main() {
+  load_config
+  case ${1:-help} in
+    install) install_roon ;;
+    run) run_roon ;;
+    configure) configure_prefix ;;
+    winecfg) open_winecfg ;;
+    runtime) install_runtime ;;
+    endpoint) endpoint_command "${2:-status}" "${3:-}" ;;
+    doctor) doctor ;;
+    set) shift; set_value "${1:-}" "${2:-}" ;;
+    kill)
+      if [[ $runner == proton && -x $PROTON_PATH/files/bin/wineserver ]]; then
+        WINEPREFIX="$PREFIX" "$PROTON_PATH/files/bin/wineserver" -k || true
+      elif [[ -d $PREFIX ]]; then wine_cmd wineserver -k || true
+      fi
+      ;;
+    help|-h|--help) usage ;;
+    *) usage >&2; exit 2 ;;
+  esac
+}
+
+main "$@"

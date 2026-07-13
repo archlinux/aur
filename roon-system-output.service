@@ -1,0 +1,14 @@
+[Unit]
+Description=Route Roon System Output to the current PipeWire default output
+After=pipewire.service pipewire-pulse.service wireplumber.service
+Wants=pipewire.service pipewire-pulse.service wireplumber.service
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/pactl set-card-profile alsa_card.platform-snd_aloop.0 off
+ExecStart=/usr/bin/pw-loopback --name roon-system-output --capture roon-loopback-capture --latency 200
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

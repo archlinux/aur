@@ -1,0 +1,7 @@
+// Roon controller: tile the main window at a comfortable library-browsing width.
+// Dialogs and transient popups have different titles and retain normal floating behavior.
+window-rule {
+    match app-id=r#"^steam_app_0$"# title=r#"^Roon$"#
+    open-floating false
+    default-column-width { proportion 0.80; }
+}
