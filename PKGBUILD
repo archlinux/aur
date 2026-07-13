@@ -1,5 +1,5 @@
 pkgname=openwork
-pkgver=0.17.23
+pkgver=0.17.24
 pkgrel=1 # pkgrel should change when PKGBUILD does. Standard is to change back to 1 next time. Any interger is valid.
 pkgdesc="An Open source alternative to Claude Cowork"
 arch=('x86_64' 'aarch64')
@@ -10,10 +10,10 @@ options=(!strip)
 
 # Architecture-specific sources and checksums
 source_x86_64=("${pkgname}-${pkgver}-x64.tar.gz::${url}/releases/download/v${pkgver}/openwork-linux-x64-${pkgver}.tar.gz")
-sha256sums_x86_64=('a8527ffffeb980cb8879a970c4a2de565284c0541b0326ba55284b762be55cf0')
+sha256sums_x86_64=('a05bb10ba3a0bd7d193eb3ba31e8c2c8f4711ab2daf556c895a5965333ee82c7')
 
 source_aarch64=("${pkgname}-${pkgver}-arm64.tar.gz::${url}/releases/download/v${pkgver}/openwork-linux-arm64-${pkgver}.tar.gz")
-sha256sums_aarch64=('17075dbd75b0065eb1d910962952b1fbdc0724401cc803261b6bff862f011f89')
+sha256sums_aarch64=('4da67b21847162a28f562b194419cbca63a3355871a7a3c6ea9c8114fb4da9b3')
 
 package() {
   cd "${srcdir}"
