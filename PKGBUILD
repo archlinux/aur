@@ -1,14 +1,10 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: Christian Boxdörfer <christian.boxdoerfer@posteo.de>
-
-## links
-# https://cboxdoerfer.github.io/fsearch
-# https://github.com/cboxdoerfer/fsearch
 
 _pkgname="fsearch"
 pkgname="$_pkgname"
-pkgver=0.2.3
-pkgrel=3
+pkgver=0.3
+pkgrel=1
 pkgdesc="A fast graphical file search utility"
 url="https://github.com/cboxdoerfer/fsearch"
 license=('GPL-2.0-or-later')
@@ -20,14 +16,15 @@ depends=(
   'pcre2'
 )
 makedepends=(
-  'git'
+  'glib2-devel'
+  'itstool'
   'meson'
 )
 
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/$pkgver.$_pkgext")
-sha256sums=('b3c576bf1230da7c374d00bb32d72686b940b4dee80d941495acfdd5437bf117')
+sha256sums=('17e9bb26f0c6077192dc1f40800c5c2e6074d93ef0e7f95b42180eb6b143b556')
 
 build() {
   local _meson_options=(
