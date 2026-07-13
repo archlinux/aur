@@ -1,25 +1,34 @@
 # Maintainer: Xynrin <xynrin@163.com>
 
 pkgname=spark-store-tui
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
-pkgdesc='Terminal UI for browsing Spark Store and APM Store'
-arch=('any')
+pkgdesc='Native terminal UI for Spark Store software management'
+arch=('x86_64' 'aarch64')
 url='https://github.com/Xynrin/spark-store-tui'
 license=('GPL-3.0-only')
-depends=('bash' 'curl' 'jq' 'fzf' 'aria2' 'ca-certificates')
+makedepends=('go')
+depends=('ca-certificates')
 optdepends=(
   'chafa: terminal image previews'
-  'sudo: install downloaded packages with ssinstall or apm'
+  'sudo: install and uninstall local packages as a non-root user'
 )
-source=("https://github.com/Xynrin/${pkgname}/releases/download/v${pkgver}/${pkgname}-deb-source-${pkgver}.tar.gz")
-sha256sums=('d1c3417896a2cd500326680b65f6c9ccee917207d59412c5a45dc95ddb7e864c')
+source=("https://github.com/Xynrin/${pkgname}/releases/download/v${pkgver}/${pkgname}-source-${pkgver}.tar.gz")
+sha256sums=('bf45e184eb566042d815ccb90280deeefb74ab6cfd4af53bcf675f7670b8b7d4')
 
-package() {
-  cd "${pkgname}-deb-source-${pkgver}"
-
-  install -Dm755 "package-root/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+build() {
+  cd "${pkgname}-source-${pkgver}"
+  CGO_ENABLED=0 go build -buildvcs=false -o sparkstore ./cmd/spark-store-tui
 }
 
+package() {
+  cd "${pkgname}-source-${pkgver}"
+
+  install -Dm755 sparkstore "${pkgdir}/usr/lib/sparkstore/sparkstore"
+  install -Dm755 package-root/usr/bin/sparkstore "${pkgdir}/usr/bin/sparkstore"
+  ln -s sparkstore "${pkgdir}/usr/bin/SparkStore"
+  ln -s sparkstore "${pkgdir}/usr/bin/SPARKSTORE"
+  ln -s sparkstore "${pkgdir}/usr/bin/spark-store-tui"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+}

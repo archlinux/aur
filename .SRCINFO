@@ -1,20 +1,16 @@
 pkgbase = spark-store-tui
-	pkgdesc = Terminal UI for browsing Spark Store and APM Store
-	pkgver = 0.7.2
+	pkgdesc = Native terminal UI for Spark Store software management
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/Xynrin/spark-store-tui
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-only
-	depends = bash
-	depends = curl
-	depends = jq
-	depends = fzf
-	depends = aria2
+	makedepends = go
 	depends = ca-certificates
 	optdepends = chafa: terminal image previews
-	optdepends = sudo: install downloaded packages with ssinstall or apm
-	source = https://github.com/Xynrin/spark-store-tui/releases/download/v0.7.2/spark-store-tui-deb-source-0.7.2.tar.gz
-	sha256sums = d1c3417896a2cd500326680b65f6c9ccee917207d59412c5a45dc95ddb7e864c
+	optdepends = sudo: install and uninstall local packages as a non-root user
+	source = https://github.com/Xynrin/spark-store-tui/releases/download/v0.8.0/spark-store-tui-source-0.8.0.tar.gz
+	sha256sums = bf45e184eb566042d815ccb90280deeefb74ab6cfd4af53bcf675f7670b8b7d4
 
 pkgname = spark-store-tui
-
