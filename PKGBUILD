@@ -1,0 +1,43 @@
+# Maintainer: Vita Yuzu <vita dot yuzupon at gamil dot com>
+# Contributor: PinkD <443657547@qq.com>
+
+pkgname=corplink-rs-git
+_pkgbase=corplink-rs
+pkgver=5.4.r8.g08106b0
+pkgrel=1
+pkgdesc='Corplink client written in Rust'
+arch=('i686' 'x86_64')
+url='https://github.com/PinkD/corplink-rs'
+license=('GPL-2.0-only')
+makedepends=('cargo' 'go' 'clang' 'git')
+conflicts=('corplink-rs')
+source=(
+  "$_pkgbase"::"git+https://github.com/PinkD/corplink-rs"
+  "wireguard-go"::"git+https://github.com/PinkD/wireguard-go"
+)
+sha256sums=('SKIP' 'SKIP')
+backup=(etc/corplink/config.json)
+
+pkgver() {
+  cd $_pkgbase
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  # build libwg
+  cd "$srcdir/wireguard-go"
+  make libwg
+  cp libwg.* "$srcdir/$_pkgbase/libwg/"
+
+  # build corplink-rs
+  cd "$srcdir/$_pkgbase"
+  cargo build --release
+}
+
+package() {
+  cd "$srcdir/$_pkgbase"
+  install -Dm 755 "target/release/$_pkgbase" "$pkgdir/usr/bin/$_pkgbase"
+  install -Dm 600 "config/config.json" "$pkgdir/etc/corplink/config.json"
+  install -Dm 644 "systemd/$_pkgbase.service" "$pkgdir/usr/lib/systemd/system/$_pkgbase.service"
+  install -Dm 644 "systemd/$_pkgbase@.service" "$pkgdir/usr/lib/systemd/system/$_pkgbase@.service"
+}
