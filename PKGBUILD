@@ -6,7 +6,7 @@
 # Do not push the template verbatim to AUR; push the rendered file.
 
 pkgname=hpd-handheld-power-daemon
-pkgver=2.13.0
+pkgver=2.14.0
 # pkgrel is static (not a placeholder): reset to 1 when bumping pkgver,
 # increment for packaging-only respins of the same version.
 pkgrel=1
@@ -21,7 +21,7 @@ backup=('etc/hpd/config.toml.example')
 install="hpd.install"
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ab8461e5b7497c28c26dcab59188368d53d8b2348cc04240077b6c64a447f936')
+sha256sums=('edd64b8487b2e5474abd5238bca32e073d45dada6ca2840999924f6185d44cd1')
 
 prepare() {
     cd "$pkgname-$pkgver"
