@@ -1,6 +1,6 @@
 pkgbase = materialious-bin
 	pkgdesc = Modern material design for Invidious
-	pkgver = 1.17.2
+	pkgver = 1.17.3
 	pkgrel = 1
 	url = https://github.com/Materialious/Materialious
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = materialious-bin
 	provides = materialious
 	conflicts = materialious-git
 	options = !debug
-	source_x86_64 = materialious-1.17.2-x86_64.deb::https://github.com/Materialious/Materialious/releases/download/1.17.2/Materialious-linux-amd64.deb
-	sha256sums_x86_64 = 7a6c8cc26c2095e77b0b480a4e981313bc82b9fe265d95c98af63fdb7adfb5f6
-	source_aarch64 = materialious-1.17.2-aarch64.deb::https://github.com/Materialious/Materialious/releases/download/1.17.2/Materialious-linux-arm64.deb
-	sha256sums_aarch64 = 7d6db5233589719211fb7ee8b075d2382b5c18765012d875ea54ae7dc3f69f17
+	source_x86_64 = materialious-1.17.3-x86_64.deb::https://github.com/Materialious/Materialious/releases/download/1.17.3/Materialious-linux-amd64.deb
+	sha256sums_x86_64 = 0b60ce5c95243dd5944ad4f9829cb520d56d0f78b8cc6c73b93edc825a78a224
+	source_aarch64 = materialious-1.17.3-aarch64.deb::https://github.com/Materialious/Materialious/releases/download/1.17.3/Materialious-linux-arm64.deb
+	sha256sums_aarch64 = 4ddd4772900c928960e79101bc78e25fbbd65fa5a5a4353d379e31aa644ebc82
 
 pkgname = materialious-bin
