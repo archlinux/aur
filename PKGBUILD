@@ -1,7 +1,7 @@
 # Maintainer: Max Martin <max at maxjmartin dot com>
 
 pkgname=circumflex-bin
-pkgver=4.4
+pkgver=4.5
 pkgrel=1
 pkgdesc="A command line tool for browsing Hacker News in your terminal. Pre-compiled."
 arch=('i686' 'pentium4' 'x86_64' 'aarch64')
@@ -15,10 +15,10 @@ source_pentium4=("$pkgname-$pkgver-pentium4.tar.gz::$url/releases/download/$pkgv
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/$pkgver/circumflex_${pkgver}_Linux_amd64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/$pkgver/circumflex_${pkgver}_Linux_arm64.tar.gz")
 
-sha256sums_i686=('50b73959cbdb6e2e49e06b341c2e2042bd33f3fed33ca0e3de8809b20ecc6f62')
-sha256sums_pentium4=('50b73959cbdb6e2e49e06b341c2e2042bd33f3fed33ca0e3de8809b20ecc6f62')
-sha256sums_x86_64=('102024185ae9c205c8941d1fbfff9ea52731ea2975d24c5b1b81c0cde8df9bc4')
-sha256sums_aarch64=('8cd2d7ce33a49fc3973cdba2b4276d4e889e552d673c59cbe7191244d0f1e32c')
+sha256sums_i686=('8a115919c9fe9cfd8858656920254830a67382470ec6880af8d26f63f52fb7ca')
+sha256sums_pentium4=('8a115919c9fe9cfd8858656920254830a67382470ec6880af8d26f63f52fb7ca')
+sha256sums_x86_64=('5c290966b5e4cbdb59d2ea7547695b5301da2e424408b76678acc8debaa106d5')
+sha256sums_aarch64=('56fb173ad650a3b89f4e47d055c50c3015eacb6c03d67b62df570757b5ce7bd9')
 
 package() {
     cd "$srcdir"
