@@ -1,7 +1,7 @@
-From ec784801f5154e610915114144ce82489c4ef4cc Mon Sep 17 00:00:00 2001
+From 0b7d68bcc879f2564d28eb642d66539c6d2c7418 Mon Sep 17 00:00:00 2001
 From: Zhang Hua <zhanghua.00@qq.com>
-Date: Sun, 12 Jul 2026 10:05:23 +0800
-Subject: [PATCH 4/7] cmake: Use system argparse
+Date: Sun, 12 Jul 2026 21:32:13 +0800
+Subject: [PATCH 3/6] cmake: Use system argparse
 
 ---
  CMakeLists.txt |  1 +
@@ -9,19 +9,19 @@ Subject: [PATCH 4/7] cmake: Use system argparse
  2 files changed, 1 insertion(+), 11 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 9613b1a..33053c6 100644
+index c7ee608..848fca3 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -37,6 +37,7 @@ find_package(PkgConfig REQUIRED)
+@@ -36,6 +36,7 @@ endif()
+ find_package(PkgConfig REQUIRED)
  find_package(Threads REQUIRED)
  find_package(Eigen3 3.4.0 REQUIRED)
- find_package(nlohmann_json 3.12.0 REQUIRED)
 +find_package(argparse REQUIRED)
  
  if(CMAKE_USE_PTHREADS_INIT)
      # Clang records pthread support in C++ module BMIs; keep all module targets compatible.
 diff --git a/deps.json b/deps.json
-index bb7230a..c81cb64 100644
+index 140fb73..115aa3c 100644
 --- a/deps.json
 +++ b/deps.json
 @@ -21,17 +21,6 @@

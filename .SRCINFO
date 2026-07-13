@@ -1,6 +1,6 @@
 pkgbase = open-wallpaper-engine
 	pkgdesc = Open source scene renderer, mostly for linux.
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/waywallen/open-wallpaper-engine
 	arch = x86_64
@@ -12,33 +12,42 @@ pkgbase = open-wallpaper-engine
 	makedepends = lld
 	makedepends = argparse
 	makedepends = eigen3
-	makedepends = glad
-	makedepends = glfw
 	makedepends = vulkan-headers
-	makedepends = nlohmann-json
 	makedepends = waywallen-display
 	depends = libgcc
-	depends = libstdc++
 	depends = glibc
 	depends = lz4
 	depends = freetype2
 	depends = libpulse
 	depends = ffmpeg
 	depends = vulkan-icd-loader
+	depends = libglvnd
 	depends = waywallen>=0.2.3
 	depends = cef
 	depends = glslang
 	depends = fontconfig
 	depends = quickjs-ng
-	source = git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v0.1.11
+	depends = glfw
+	depends = wayland
+	source = git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v0.1.12-fix
 	source = git+https://github.com/KhronosGroup/SPIRV-Reflect.git#tag=vulkan-sdk-1.4.321.0
-	source = git+https://github.com/hypengw/rstd.git#commit=ebdd90d1e770b63f89be24204b17038fe412db81
-	source = git+https://github.com/hypengw/wavsen.git#commit=aab112235e4da7e03c233793a9d612507f0e6355
-	source = 0001-use-system-deps.diff
-	sha256sums = 7cacd6ffb508d6df2824cca8cf358328d05956d520233d32c573ef69c10d1af6
+	source = git+https://github.com/hypengw/rstd.git#commit=be7dbc466e5f6623def638e18dac39f70d06ebe4
+	source = git+https://github.com/hypengw/wavsen.git#commit=72c43fab3dbe0df17b64f76e8e6198037bfd3c60
+	source = 0001-cmake-Use-system-cef.patch
+	source = 0002-cmake-Use-system-Eigen3.patch
+	source = 0003-cmake-Use-system-argparse.patch
+	source = 0004-cmake-Use-system-quickjs-ng.patch
+	source = 0005-cmake-Use-system-glslang.patch
+	source = 0006-cmake-Install-weweb-to-bin.patch
+	sha256sums = d0549b252ce3bd65bf42451f78ffebf55a09be227254fd787f51758d45f53ce0
 	sha256sums = 287e451ba68eb156cf9dc6c33825e9d58fc506ea58718725c8c0f772a40a83ca
-	sha256sums = 47938b261def2e043199960454f19d3f2d13069ec6dccd9b8aee3a96dac280b7
-	sha256sums = ac96147170def04ce0bcc6f675874579db89e905d58f99b073d5ca6022aac7ef
-	sha256sums = 45c3088c9ff70d59399d08031f7eea656e02598d45e0231f88f83de97d304dbe
+	sha256sums = af0c738eb5eb2a36ce43f4a26b00c3d5d591c22df153b72edefd2f4e7fc3c878
+	sha256sums = e395a8f8045fcdee0380e5a9db376129153071986d83f39d950d7f8527c009e9
+	sha256sums = 09e3a30b003188fd9f681841463953f4fef60a5e2c8e3745958ce97e8cbf9e9b
+	sha256sums = 8c8604b1e015a8b70e6cd9ffd571ecc3dfeb9d08b2d68709966d7d7896849b28
+	sha256sums = f7c2aa4fee1db23250f4a9a2df2e88e7778228044fcec4d2170fef333f3e5593
+	sha256sums = 6f6c460e5f19e4705180054a2993fc2ff0c7e247d5c81e0c3c0f3378f9a8b69e
+	sha256sums = a35b09dcb1db6ae887d18084baa326956ebcc060bfbcd4dedd399bbbe86a3892
+	sha256sums = 8b87dd4da98cb918114a4555e239173f5eef11c6c7ec6e12a47df88018e5f606
 
 pkgname = open-wallpaper-engine

@@ -1,7 +1,7 @@
-From 51f489e2c560543717c543887fd7c9e30b360ed1 Mon Sep 17 00:00:00 2001
+From 293e7070ae73cc5e2fe5fe9a0e9651a10371b05e Mon Sep 17 00:00:00 2001
 From: Zhang Hua <zhanghua.00@qq.com>
-Date: Sun, 12 Jul 2026 10:14:03 +0800
-Subject: [PATCH 7/7] cmake: Install weweb to bin
+Date: Sun, 12 Jul 2026 21:36:18 +0800
+Subject: [PATCH 6/6] cmake: Install weweb to bin
 
 ---
  waywallen/CMakeLists.txt | 4 ++--

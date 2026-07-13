@@ -1,7 +1,7 @@
-From 5142c901532d250b260de72a67cb9d6b8bc08b19 Mon Sep 17 00:00:00 2001
+From a3c555d20177ac89b21d92d33c9303e81842d4aa Mon Sep 17 00:00:00 2001
 From: Zhang Hua <zhanghua.00@qq.com>
-Date: Sun, 12 Jul 2026 10:11:33 +0800
-Subject: [PATCH 6/7] cmake: Use system glslang
+Date: Sun, 12 Jul 2026 21:35:22 +0800
+Subject: [PATCH 5/6] cmake: Use system glslang
 
 ---
  deps.json                 | 12 ------------
@@ -11,7 +11,7 @@ Subject: [PATCH 6/7] cmake: Use system glslang
  4 files changed, 3 insertions(+), 14 deletions(-)
 
 diff --git a/deps.json b/deps.json
-index 2ba15bb..bda7aab 100644
+index c7cae1c..2427123 100644
 --- a/deps.json
 +++ b/deps.json
 @@ -9,18 +9,6 @@
@@ -46,7 +46,7 @@ index 0c922de..04ad44c 100644
  pkg_check_modules(FONTCONFIG REQUIRED IMPORTED_TARGET fontconfig)
  
 diff --git a/src/Vulkan/CMakeLists.txt b/src/Vulkan/CMakeLists.txt
-index 2d3ef4e..aa21c6c 100644
+index 2d3ef4e..21143f3 100644
 --- a/src/Vulkan/CMakeLists.txt
 +++ b/src/Vulkan/CMakeLists.txt
 @@ -7,7 +7,7 @@ target_sources(owe-shader-compile
@@ -54,7 +54,7 @@ index 2d3ef4e..aa21c6c 100644
  target_link_libraries(owe-shader-compile
    PUBLIC rstd::rstd rstd.cppstd owe-types wavsen::ffi::vulkan
 -  PRIVATE glslang SPIRV glslang-default-resource-limits spirv-reflect-static)
-+  PRIVATE glslang::glslang SPIRV glslang::glslang-default-resource-limits spirv-reflect-static)
++  PRIVATE glslang::glslang glslang::SPIRV glslang::glslang-default-resource-limits spirv-reflect-static)
  target_include_directories(owe-shader-compile
    PUBLIC  .. ../Scene/Utils/include
    PRIVATE ../Scene/Utils ../Scene/Utils/include/Utils .)

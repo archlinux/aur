@@ -1,7 +1,7 @@
-From 235e4f5391a3dc65fb5eff1ddccf11b34217c75b Mon Sep 17 00:00:00 2001
+From fa22fceca0187445c38b716dabca2365e7c0dcfa Mon Sep 17 00:00:00 2001
 From: Zhang Hua <zhanghua.00@qq.com>
-Date: Sun, 12 Jul 2026 09:59:57 +0800
-Subject: [PATCH 2/7] cmake: Use system Eigen3
+Date: Sun, 12 Jul 2026 21:30:47 +0800
+Subject: [PATCH 2/6] cmake: Use system Eigen3
 
 ---
  CMakeLists.txt             |  1 +
@@ -10,7 +10,7 @@ Subject: [PATCH 2/7] cmake: Use system Eigen3
  3 files changed, 1 insertion(+), 18 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c426d5f..123cbc3 100644
+index 2d7cb32..c7ee608 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -35,6 +35,7 @@ endif()
@@ -22,7 +22,7 @@ index c426d5f..123cbc3 100644
  if(CMAKE_USE_PTHREADS_INIT)
      # Clang records pthread support in C++ module BMIs; keep all module targets compatible.
 diff --git a/deps.json b/deps.json
-index d399794..4254dc4 100644
+index 7d8ac11..140fb73 100644
 --- a/deps.json
 +++ b/deps.json
 @@ -1,17 +1,4 @@
@@ -41,13 +41,13 @@ index d399794..4254dc4 100644
 -    }
 -  },
    {
-     "dest": "build/_flatpak_deps/nlohmann_json-src",
+     "dest": "build/_flatpak_deps/spirv_reflect-src",
      "type": "archive",
 diff --git a/third_party/CMakeLists.txt b/third_party/CMakeLists.txt
-index 777682c..c92bb24 100644
+index 00adb23..c7324fb 100644
 --- a/third_party/CMakeLists.txt
 +++ b/third_party/CMakeLists.txt
-@@ -48,11 +48,6 @@ set(BUILD_TESTING           OFF CACHE INTERNAL "")
+@@ -46,10 +46,5 @@ set(BUILD_TESTING           OFF CACHE INTERNAL "")
  
  fetchdeps(${CMAKE_SOURCE_DIR}/deps.json)
  
@@ -58,7 +58,6 @@ index 777682c..c92bb24 100644
 -
  # Audio output is handled by wavsen::audio (pulse/pipewire-backed,
  # selectable via WAVSEN_AUDIO_BACKEND in the wavsen subtree).
- 
 -- 
 2.55.0
 
