@@ -1,0 +1,25 @@
+#Type  Path                                    Mode  User       Group      Age  Argument
+#
+# Top-level /var/lib/raspi-sump and /var/log/raspi-sump are also created at
+# service start via StateDirectory=/LogsDirectory= in raspisump.service, but
+# are declared here too so they (and their setgid bit, which the unit
+# directives don't set) exist before the web admin's first request.
+d      /var/lib/raspi-sump                     2771  raspisump  raspisump  -
+d      /var/lib/raspi-sump/csv                 2770  raspisump  raspisump  -
+d      /var/lib/raspi-sump/support             2770  raspisump  raspisump  -
+d      /var/log/raspi-sump                     2770  raspisump  raspisump  -
+#
+# Ownership fixups for files whose final owner is the raspisump user/group.
+# raspisump.conf and credentials.conf are shipped by the package itself
+# (owned by root:root at build time, since raspisump doesn't exist yet when
+# the package is built); secret_key and the TLS cert/key are generated at
+# install time by raspisump.install, also as root. 'z' only adjusts mode/
+# ownership on files that already exist - it never creates or touches
+# content, and runs after systemd-sysusers has created the raspisump user
+# (pacman's systemd-sysusers hook is numbered ahead of its systemd-tmpfiles
+# hook, so it always runs first within the same transaction).
+z      /etc/raspi-sump/raspisump.conf          0644  raspisump  raspisump  -
+z      /etc/raspi-sump/credentials.conf        0660  root       raspisump  -
+z      /etc/raspi-sump/secret_key              0640  root       raspisump  -
+z      /etc/raspi-sump/ssl/raspi-sump.key      0640  root       raspisump  -
+z      /etc/raspi-sump/ssl/raspi-sump.crt      0644  root       raspisump  -

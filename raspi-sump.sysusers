@@ -1,0 +1,23 @@
+#Type Name       ID  GECOS                         Home directory
+u     raspisump  -   "Raspi-Sump system user"      /var/lib/raspi-sump
+
+# Supplementary group (idempotent - systemd-sysusers does nothing if the
+# user is already a member). gpio is not guaranteed to exist on every
+# system; unlike a plain `usermod`, this line creates it if missing rather
+# than silently skipping - harmless if no udev rule assigns GPIO device
+# nodes to it, and correct if one does.
+m     raspisump  gpio
+
+# Deliberately NOT in systemd-journal: that grants read access to the
+# entire system journal (auth logs, other services, kernel messages, all
+# of it), not just raspisump's own two units. raspisump runs a network-
+# facing web app - too broad a grant for what it buys. web/system.py's
+# get_journal_log() and cli.py's rsumpsupport journalctl calls already
+# handle the no-access case gracefully (empty result / error string
+# embedded in the support bundle), so the admin "System Status" log tail
+# and support bundle just show nothing for those lines instead.
+
+# nginx on Arch runs as 'http' (Debian: 'www-data') - add it to
+# raspisump's group so it can reach the Flask unix socket at
+# /run/raspi-sump/flask.sock (mode 0750, owned by raspisump:raspisump).
+m     http       raspisump
