@@ -1,6 +1,8 @@
 #!/bin/bash
 
-source $(dirname $0)/update_pkgbuild.sh
+dir=$(dirname $0)
+source ${dir}/update_pkgbuild.sh
 
-updpkgsums
+# updpkgsums
+source  ${dir}/updpkgsums.sh
 makepkg --printsrcinfo > .SRCINFO

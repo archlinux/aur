@@ -30,7 +30,7 @@ update:
     - '[ -f "$mirrorlist" ] && cat "$mirrorlist" > /etc/pacman.d/mirrorlist'
     - pacman -Sy pacman-contrib --quiet --needed --noconfirm --noprogressbar
     - useradd deploy
-    - sudo -u deploy updpkgsums
+    - sudo -u deploy ./updpkgsums
     - sudo -u deploy makepkg --printsrcinfo > .SRCINFO
   artifacts:
     paths:

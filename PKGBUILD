@@ -4,10 +4,12 @@
 _pkgname=linuxqq
 _Pkgname=Linuxqq
 _disname=qq
-_version=3.2.29
-_update_date=2026-05-28
-_image_url_x86_64=https://qqdl.gtimg.cn/qqfile/QQNT/9.9.31/release/00e6a3e7/QQ_3.2.29_260528_x86_64_01.AppImage
-_image_url_aarch64=https://qqdl.gtimg.cn/qqfile/QQNT/9.9.31/release/00e6a3e7/QQ_3.2.29_260528_arm64_01.AppImage
+_version=3.2.31
+_update_date=2026-07-10
+_image_url_x86_64=https://qqdl.gtimg.cn/qqfile/QQNTV2/9.9.32/release/c390e792/QQ_3.2.31_260710_x86_64_01.AppImage
+_image_sha256sums_x86_64=de409de5beecac4e002569b94ba00cb0ab3630d19f1db58db16a6ecb7af05b51
+_image_url_aarch64=https://qqdl.gtimg.cn/qqfile/QQNTV2/9.9.32/release/c390e792/QQ_3.2.31_260710_arm64_01.AppImage
+_image_sha256sums_aarch64=2c81d6aeb3c648b990220011ccc514f0f86fc5f66636b3e4724103abcb6eb7d2
 
 pkgname="${_pkgname}"-appimage
 pkgver="${_version}_${_update_date//-/}"
@@ -18,20 +20,25 @@ url="https://im.qq.com/linuxqq/"
 license=('custom')
 options=(!strip !debug)
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
+makedepends=('curl' 'jq')
 provides=('qq' 'linuxqq')
 conflicts=('linuxqq' 'linuxqq-nt-bwrap')
 
-source_x86_64=("${_Pkgname}-${pkgver}-x86_64.AppImage::${_image_url_x86_64}")
-source_aarch64=("${_Pkgname}-${pkgver}-aarch64.AppImage::${_image_url_aarch64}")
-sha256sums_x86_64=('056ce0340f0276c6381428cb7d391d0f6ce3cecede0f3f8e7cc5ad58d4c7a4bb')
-sha256sums_aarch64=('de14bfdc63265fb6709722c156c7faf940c2698269d3004515f58b6547b3c1c9')
+source=('download.sh')
+sha256sums=('20b969d4f4fd4298ed8f4130f05a16084b29417d24f41a72e37d4237d7dc4b85')
 
 _appimage="${_Pkgname}-${pkgver}-${CARCH}.AppImage"
-noextract=("${_appimage}")
+_image_url="_image_url_${CARCH}"
+_sha256sums="_image_sha256sums_${CARCH}"
 
 prepare() {
+    [ -f ${_appimage} ] || ./download.sh ${!_image_url} -sS -o ${_appimage}
+    echo "${!_sha256sums} ${_appimage}" | sha256sum --check
+
     chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
+    ./"${_appimage}" --appimage-extract ${_disname}.desktop
+    ./"${_appimage}" --appimage-extract ${_disname}.png
+    ./"${_appimage}" --appimage-extract LICENSE.electron.txt
 }
 
 build() {
