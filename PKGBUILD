@@ -21,7 +21,7 @@ sha256sums=('4db6c5fb97a06fd234941724f5854b1f057804897051f40c7ca9d0681b2a38e6'
 
 package() {
     install -dm755 "$pkgdir/opt/nordplayer"
-    cp -a "$srcdir/bundle"/{data,lib,nordplayer} "$pkgdir/opt/nordplayer/"
+    cp -a "$srcdir/nordplayer-v${_realver}-linux-x86_64"/{data,lib,nordplayer} "$pkgdir/opt/nordplayer/"
 
     # Create symlink
     install -dm755 "${pkgdir}/usr/bin"
@@ -29,6 +29,6 @@ package() {
 
     # Install the .desktop, icon, and license
     install -Dm644 "${srcdir}/nordplayer.desktop" "${pkgdir}/usr/share/applications/nordplayer.desktop"
-    install -Dm644 "${srcdir}/bundle/data/flutter_assets/assets/icons/nordplayer_logo.svg" "${pkgdir}/usr/share/pixmaps/nordplayer.svg"
+    install -Dm644 "${srcdir}/nordplayer-v${_realver}-linux-x86_64/data/flutter_assets/assets/icons/nordplayer_logo.svg" "${pkgdir}/usr/share/pixmaps/nordplayer.svg"
     install -Dm644 "${srcdir}/LICENSE-${_realver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
