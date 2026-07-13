@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=gson
-_pkgver=0.1.0
+_pkgver=0.2.0
 pkgname=r-${_pkgname,,}
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Base Class and Methods for 'gson' Format"
 arch=('any')
@@ -14,9 +14,10 @@ depends=(
   r-jsonlite
   r-rlang
   r-tidyr
+  r-yulab.utils
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('14ddbee5be66d0b1dc178e41175a50ab6ed9ffed04d4361ecf5eef3548d9a381')
+sha256sums=('5cc9b12f49226f3ae0a355f305db277d04d9337bfaa4029e7f35dd5f64d88208')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
