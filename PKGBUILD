@@ -1,7 +1,7 @@
 # Maintainer: Frédéric Bogaerts <fred@netpack.pt>
 pkgname=xfb
-pkgver=3.14159
-pkgrel=2
+pkgver=3.141592
+pkgrel=1
 pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/netpack/XFB"
@@ -92,8 +92,8 @@ package() {
     
     # Install icons. The hicolor set (preferred by modern desktops) and the
     # pixmaps fallback both come from XFB.iconset / the SVG source, whose
-    # backgrounds are transparent — the root xfb_icon.png in the v3.14159 tag
-    # was flattened onto white, so it must not be used here.
+    # backgrounds are transparent (the root xfb_icon.png was flattened onto
+    # white in tags up to v3.14159; the iconset is also the crisper source).
     install -Dm644 "XFB.iconset/icon_16x16.png"    "$pkgdir/usr/share/icons/hicolor/16x16/apps/xfb_icon.png"
     install -Dm644 "XFB.iconset/icon_32x32.png"    "$pkgdir/usr/share/icons/hicolor/32x32/apps/xfb_icon.png"
     install -Dm644 "XFB.iconset/icon_32x32@2x.png" "$pkgdir/usr/share/icons/hicolor/64x64/apps/xfb_icon.png"
@@ -149,11 +149,10 @@ package() {
     echo "The shared folders are under: /usr/share/xfb"
     echo "You may want to install yt-dlp for downloading media"
     echo ""
-    echo "New in v3.14159:"
-    echo "  - Live audio FX engine: 10-band EQ, compressor, 432 Hz retune"
-    echo "  - DJ decks with scratchable jog wheels, brake/backspin"
-    echo "  - Streaming client for Icecast/Shoutcast stations"
-    echo "  - Full ORCA screen reader integration and keyboard navigation"
+    echo "New in v3.141592:"
+    echo "  - Download full SoundCloud sets in the external downloader"
+    echo "  - Options -> Install all dependencies (one-click tool setup)"
+    echo "  - Transparent application icon (no more white box on Linux)"
     echo ""
     echo "Can you share some ETH? 0x9700225FcD115230C9166BD68CEdc23e329D3CdF"
     echo "Thank you for installing XFB! Made with love & linux!"

@@ -1,7 +1,7 @@
 pkgbase = xfb
 	pkgdesc = Open-source Radio Automation with comprehensive accessibility support
-	pkgver = 3.14159
-	pkgrel = 2
+	pkgver = 3.141592
+	pkgrel = 1
 	url = https://github.com/netpack/XFB
 	install = xfb.install
 	arch = x86_64
@@ -41,7 +41,7 @@ pkgbase = xfb
 	optdepends = wavpack: WavPack audio support
 	optdepends = opus-tools: Opus audio support
 	optdepends = mediainfo: Media file information
-	source = git+https://github.com/netpack/XFB.git#tag=v3.14159
+	source = git+https://github.com/netpack/XFB.git#tag=v3.141592
 	sha256sums = SKIP
 
 pkgname = xfb
