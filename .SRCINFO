@@ -1,0 +1,33 @@
+pkgbase = openjiuwen-connect
+	pkgdesc = OpenJiuwen Connect: channel adapters (Telegram, Slack, etc.) + MCP server. Ships as a venv at /opt/openjiuwen-connect.
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://gitcode.com/openJiuwen/agent-studio
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-pip
+	depends = python>=3.11.4
+	depends = python-virtualenv
+	depends = python-pip
+	depends = python-click
+	depends = python-certifi
+	depends = python-charset-normalizer
+	depends = python-cryptography
+	depends = python-dotenv
+	depends = python-idna
+	depends = python-legacy-cgi
+	depends = python-numpy
+	depends = python-requests
+	depends = python-urllib3
+	depends = python-yaml
+	optdepends = openjiuwen-server: backend that the channel adapters and MCP server proxy to
+	source = git+https://gitcode.com/openJiuwen/agent-studio.git#tag=v0.1.8
+	source = openjiuwen-channel-runner
+	source = openjiuwen-mcp-server
+	source = openjiuwen-connect.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = openjiuwen-connect

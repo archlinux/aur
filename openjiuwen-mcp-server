@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+#
+# /usr/bin/openjiuwen-mcp-server
+#
+# Wrapper that activates the package venv and runs the OpenJiuwen MCP server.
+
+set -euo pipefail
+
+VENV=/usr/lib/openjiuwen-connect/venv
+SRC=/usr/share/openjiuwen-connect/src
+: "${OPENJIUWEN_CONNECT_CONFIG:=/etc/openjiuwen-connect}"
+export OPENJIUWEN_CONNECT_CONFIG
+
+if [ ! -d "${VENV}" ]; then
+    echo "openjiuwen-connect venv missing at ${VENV} — reinstall the package." >&2
+    exit 1
+fi
+
+# shellcheck disable=SC1091
+source "${VENV}/bin/activate"
+export PYTHONPATH="${SRC}:${PYTHONPATH:-}"
+
+cd "${SRC}"
+exec python -m uvicorn connect.adapters.mcp_server.server:app \
+    --host 127.0.0.1 --port 8192 \
+    --app-dir "${SRC}" \
+    "$@"

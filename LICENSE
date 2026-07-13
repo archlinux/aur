@@ -1,0 +1,8 @@
+# Arch AUR package metadata for openjiuwen-connect
+
+These PKGBUILD + wrapper-script + install-hook files are released under the
+[0BSD license](https://spdx.org/licenses/0BSD.html), matching the convention
+of the AUR repo itself.
+
+The packaged upstream software (OpenJiuwen Connect) is Apache-2.0 licensed;
+see `/usr/share/licenses/openjiuwen-connect/LICENSE` after install.

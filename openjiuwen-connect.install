@@ -1,0 +1,32 @@
+post_install() {
+    cat <<'NOTE'
+
+==> OpenJiuwen Connect installed (channels + MCP server).
+
+    The package installs:
+        /usr/lib/openjiuwen-connect/venv/   — bundled virtualenv with adapter deps
+        /usr/share/openjiuwen-connect/src/  — connect/ source tree
+        /usr/bin/openjiuwen-channel-runner
+        /usr/bin/openjiuwen-mcp-server
+        /etc/openjiuwen-connect/            — your config goes here
+
+    To enable the MCP server as a systemd unit (optional), create one like:
+
+        [Unit]
+        Description=OpenJiuwen MCP server
+        After=network-online.target
+
+        [Service]
+        Type=simple
+        ExecStart=/usr/bin/openjiuwen-mcp-server
+        Restart=on-failure
+        RestartSec=5
+
+        [Install]
+        WantedBy=multi-user.target
+
+    The channel adapters need per-platform credentials (Telegram bot token,
+    Slack app credentials, etc.). See connect/adapters/channels/README.md.
+
+NOTE
+}
