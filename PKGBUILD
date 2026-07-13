@@ -3,7 +3,7 @@
 
 _pkgname="clai"
 pkgname="${_pkgname}-bin"
-pkgver=1.10.13
+pkgver=1.10.14
 pkgrel=1
 pkgdesc="Command line artificial intelligence - Your local LLM context-feeder"
 arch=('aarch64' 'i686' 'x86_64')
@@ -27,9 +27,9 @@ sha256sums=('6c557d8924cc4d749b27f2d360730474d10a9c2a685267054ebc41536df76de4'
             '81abc6b6ae091984b5defa45e236462099a0f95afd211b5a39c7b70c8926decb'
             '824075343fe6b2f0bda7a627bec99f826e86571fee6c393812315f265d82a741'
             'bc5378230a80daace8ac9ea68f538fb33997fd2abf0fa5d91905365b6b8924dc')
-sha256sums_aarch64=('64d41faf5915d52003eb256870e7acd1c6e74188f9adc892945b3d9c26c068da')
-sha256sums_i686=('ef75fcd895730c4eb122e09ccb1f3fb4787536abc0d6d3a49976161d6c4fc506')
-sha256sums_x86_64=('a413eb4a8a5b1a6b95184d0652b90eb881d46cd3cda519483907a30d5dd28bc4')
+sha256sums_aarch64=('bdccc186a174247f917b3cf1d1232a74547bdbf86909afe990e8ac2c384690cb')
+sha256sums_i686=('21fb856327dfae5bb72e0c829591d1e1d936bee247743140862a1390472d8cc3')
+sha256sums_x86_64=('dd7a15eff3f06aa46e1daea97071f4dc341c7a6d47ef6e11b2bf648f91991401')
 
 package() {
   cd "${srcdir}"
