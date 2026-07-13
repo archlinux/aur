@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=intrigue-bin
 _pkgname=Intrigue
-pkgver=1.3.1
+pkgver=1.5.0
 _electronversion=41
 pkgrel=1
 pkgdesc="Organize literature into ideas, fast.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('cf4b93328cd3be18166076d28a2c8ef7c3945323c4f4409212713b4affbfe729'
+sha256sums=('e13242ff127236180e0d6d815a742ae556d419ad66fe8232ca5f926cdd7db180'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
