@@ -5,6 +5,15 @@
 # Contributor: Geraldo Augusto Vecchiato <geraldoav@gmail.com>
 # Maintainer: Adam Nielsen <malvineous@shikadi.net>
 
+# This package is also available as a Pacman repo, to simplify upgrades.
+# Add the following lines to the end of /etc/pacman.conf:
+#
+# [oracle]
+# SigLevel = Optional TrustAll
+# Server = http://linux.shikadi.net/arch/$repo/$arch/
+#
+# Then run `pacman -Sy` then `pacman -S oracle-instantclient-basic`
+
 _pkgname=instantclient-basic
 pkgname=oracle-${_pkgname}
 pkgver=23.26.2.0.0
