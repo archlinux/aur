@@ -7,21 +7,21 @@
 ## GPG key: https://github.com/jsirois.gpg
 
 pkgname=python-pex
-pkgver=2.97.1
-pkgrel=2
-arch=('any')
+pkgver=2.97.2
+pkgrel=1
+arch=(any)
 pkgdesc='Generates executable Python environments'
 url='https://docs.pex-tool.org/'
-license=('Apache-2.0')
-depends=('python')
-makedepends=('git' 'python-build' 'python-installer' 'python-uv' 'python-uv-build' 'python-setuptools')
-checkdepends=('python-pytest')
+license=(Apache-2.0)
+depends=(python)
+makedepends=(git python-build python-installer python-uv python-uv-build python-setuptools)
+# checkdepends=(python-pytest python-coloredlogs python-dateutil python-psutil python-yaml)
 changelog=CHANGES.md
-provides=('pex')
-replaces=('pex')
+provides=(pex)
+replaces=(pex)
 source=("$pkgname::git+https://github.com/pex-tool/pex#tag=v$pkgver?signed")
-validpgpkeys=('A1FE765B15233EAD18FA6ABB93E55CB567B5C626')
-sha256sums=('56966bd5afe78ca7e3624bb5b2a10220aec840fdb438c04ab0eb701140d65fc7')
+validpgpkeys=(A1FE765B15233EAD18FA6ABB93E55CB567B5C626)
+sha256sums=('6d52bdb46a0d05e4c9788d88341cae9333cd37e829bdce84ac7ebc223dda010c')
 
 build() {
     cd "$pkgname"
