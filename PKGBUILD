@@ -1,7 +1,7 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-bin
-pkgver=2.4.1.2
+pkgver=2.4.1.3
 pkgrel=1
 pkgdesc="Shelly: A Modern Arch Package Manager (prebuilt binary)"
 arch=('x86_64')
@@ -37,7 +37,7 @@ source=(
     "Shelly-ALPM-linux-x64-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v${pkgver}/Shelly-ALPM-linux-x64.tar.gz"
 )
 
-sha256sums=('728876633c0bb47f00cd0e1375deaebfa944cc6afad9d8cc773ec03c59c046a6')
+sha256sums=('5eb0dd25d2a6c388704ac90c4922ec17608d59a0cf3924bcc9bf0e3d975c0f43')
 
 package() {
   # Install Shelly.Gtk binary
