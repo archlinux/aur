@@ -34,6 +34,14 @@ prepare() {
   cd "${srcdir}/${pkgname}"
   git reset --hard "v${pkgver}"
 
+  # go writes: GOMODCACHE (${srcdir}/.go-mod-cache)
+  export GOMODCACHE="${srcdir}/.go-mod-cache"
+  go mod download
+}
+
+check() {
+  cd "${srcdir}/${pkgname}"
+
   # Verify the release tag's GPG signature against the bundled public key.
   # git cat-file tag emits the raw tag object: payload lines then a blank line
   # then the PGP signature block. Split with sed for gpgv.
@@ -50,9 +58,10 @@ prepare() {
   gpgv --keyring "${srcdir}/keyring.gpg" \
     "${srcdir}/tag-sig.gpg" "${srcdir}/tag-payload"
 
-  # go writes: GOMODCACHE (${srcdir}/.go-mod-cache)
   export GOMODCACHE="${srcdir}/.go-mod-cache"
-  go mod download
+  export GOCACHE="${srcdir}/.go-build-cache"
+  go list -f '{{if or .TestGoFiles .XTestGoFiles}}{{.ImportPath}}{{end}}' ./... \
+    | xargs -r go test
 }
 
 build() {
@@ -72,14 +81,6 @@ build() {
     -X ${_import}/internal/version.Commit=${pkgver} \
     -X ${_import}/internal/version.Date=${_date}" \
     -o aurscan "./cmd/aurscan"
-}
-
-check() {
-  cd "${srcdir}/${pkgname}"
-  export GOMODCACHE="${srcdir}/.go-mod-cache"
-  export GOCACHE="${srcdir}/.go-build-cache"
-  go list -f '{{if or .TestGoFiles .XTestGoFiles}}{{.ImportPath}}{{end}}' ./... \
-    | xargs -r go test
 }
 
 package() {
