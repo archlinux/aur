@@ -14,13 +14,19 @@ pkgname=(
   python-a2a-sdk-db-cli
 )
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/a2aproject/a2a-python'
 license=('Apache-2.0')
 
 # Runtime dependencies for the core package. Also inherited by every
 # split-package because they all depend on python-a2a-sdk.
+#
+# Notes on removed candidates:
+#   - culsans: upstream gates it to `python_full_version < '3.13'`; Arch
+#     ships python 3.14 (cachyos-v3) or 3.13 (extra), so on the supported
+#     Arch python versions a2a falls back to the stdlib queue and
+#     culsans is never imported. No Arch package exists.
 _common_deps=(
   'python'
   'python-httpx'
@@ -31,7 +37,6 @@ _common_deps=(
   'python-googleapis-common-protos'
   'python-json-rpc'
   'python-packaging'
-  'python-culsans'
   # The a2a-db console script imports alembic; ship it with core so the
   # binary works out-of-the-box. Tiny dep.
   'python-alembic'
@@ -58,7 +63,6 @@ optdepends=(
   'python-cryptography: Fernet-encrypted push notification config storage'
   'python-a2a-sdk-fastapi: FastAPI integration (HTTP+JSON server)'
   'python-a2a-sdk-grpc: gRPC transport'
-  'python-a2a-sdk-encryption: payload encryption'
   'python-a2a-sdk-telemetry: OpenTelemetry instrumentation'
   'python-a2a-sdk-signing: JWT-based request signing'
   'python-a2a-sdk-postgresql: PostgreSQL task store'
@@ -108,17 +112,23 @@ package_python-a2a-sdk-fastapi() {
     'python-sse-starlette'
     'python-starlette'
   )
-  optdepends=('python-uvicorn: ASGI server (recommended)')
+  optdepends=('uvicorn: ASGI server (recommended)')
 }
 
 package_python-a2a-sdk-grpc() {
   pkgdesc='gRPC transport for python-a2a-sdk'
+  # Notes on removed candidates:
+  #   - grpcio-reflection: listed in upstream's grpc extra but not
+  #     actually imported anywhere in src/a2a/. No Arch package exists;
+  #     users that want gRPC server reflection can install it from PyPI.
+  #   - grpcio-status: not in [core]/[extra]; available as
+  #     python-grpcio-status in the AUR. Listed as a depends (not
+  #     optdepends) so the grpc split pulls it in transitively.
   depends=(
     'python-a2a-sdk'
     'python-grpcio'
     'python-grpcio-tools'
     'python-grpcio-status'
-    'python-grpcio-reflection'
     'openssl'
     'c-ares'
     'zlib'
@@ -151,11 +161,13 @@ package_python-a2a-sdk-postgresql() {
 
 package_python-a2a-sdk-mysql() {
   pkgdesc='MySQL task store for python-a2a-sdk'
+  # Arch ships the MariaDB client library as `mariadb-libs` (not
+  # `libmariadb` — that name doesn't exist).
   depends=(
     'python-a2a-sdk'
     'python-sqlalchemy'
     'python-aiomysql'
-    'libmariadb'
+    'mariadb-libs'
   )
 }
 
