@@ -3,24 +3,23 @@ _pkgname=BinaryObjectScanner
 __pkgname=ProtectionScan
 pkgname=binaryobjectscanner-bin
 pkgdesc="Protection, packer, and archive scanning library"
-pkgver=3.7.1
+pkgver=3.8.0
 pkgrel=1
-repository="SabreTools/${_pkgname}"
-url="https://github.com/${repository}"
+repo="SabreTools/${_pkgname}"
+url="https://github.com/${repo}"
 license=('MIT')
 arch=('x86_64')
 options=('!strip' '!debug')
 provides=('binaryobjectscanner')
 conflicts=('binaryobjectscanner')
 source=("${url}/releases/download/${pkgver}/${__pkgname}_${pkgver}_net10.0_linux-x64_release.zip"
-"https://raw.githubusercontent.com/${repository}/master/README.md"
-"https://raw.githubusercontent.com/${repository}/master/LICENSE")
-sha256sums=('96ef35b920ac0d050571306d995f14873c817a3d6d6f397842e446fe5d9393aa'
+"https://raw.githubusercontent.com/${repo}/master/README.md"
+"https://raw.githubusercontent.com/${repo}/master/LICENSE")
+md5sums=('71705573f61ac9bb31eb2bb91c86b7d5'
 'SKIP'
 'SKIP')
 
 package() {
-
 	# Install BinaryObjectScanner distribution
 	install -Dm755 ${srcdir}/${__pkgname} ${pkgdir}/usr/bin/${__pkgname}
 
@@ -29,5 +28,4 @@ package() {
 
 	# Install LICENSE
 	install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${__pkgname}/LICENSE
-
 }
