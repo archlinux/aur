@@ -1,0 +1,27 @@
+pkgbase = slang-verilog-git
+	pkgdesc = SystemVerilog compiler and language services (MikePopoloski slang): the slang driver, hierarchy printer, linter, and reflection tools
+	pkgver = 11.0.414.g6001e362f
+	pkgrel = 1
+	url = https://github.com/MikePopoloski/slang
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = clang
+	makedepends = boost
+	makedepends = tomlplusplus
+	makedepends = python
+	depends = fmt
+	depends = mimalloc
+	depends = gcc-libs
+	depends = glibc
+	provides = slang-verilog
+	provides = slang-driver
+	conflicts = slang-verilog
+	options = staticlibs
+	options = !lto
+	source = slang::git+https://github.com/MikePopoloski/slang.git
+	sha256sums = SKIP
+
+pkgname = slang-verilog-git
