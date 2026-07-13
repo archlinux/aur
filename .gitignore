@@ -10,7 +10,7 @@
 *.log.*
 *.sig
 
-aliae
+aliae-*-[0-9]*
 LICENSE
 
 pkg/
