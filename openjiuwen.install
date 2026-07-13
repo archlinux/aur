@@ -1,0 +1,35 @@
+post_install() {
+  cat <<EOF
+==> openjiuwen ${pkgver} installed under /usr/lib/python3.13/site-packages.
+
+Three console scripts are now available under /usr/bin:
+
+    openjiuwen              # main harness CLI (REPL + agent commands)
+    team-member             # agent_teams member runner
+    openjiuwen-team-mcp     # MCP server entry point
+
+NOTE: The interactive REPL (\`openjiuwen\`) needs python-prompt-toolkit,
+which has no Arch package. To enable it:
+
+    python3.13 -m pip install --user prompt-toolkit
+
+Other upstream runtime deps not packaged for Arch (pip-install if needed):
+
+    python-pulsar       pip install pulsar
+    python-a2a-sdk      pip install 'a2a-sdk[http-server]==1.0.0'
+    python-gaussdb      pip install gaussdb
+    python-uiautomator2 pip install uiautomator2
+    python-pyoxigraph   pip install pyoxigraph
+    python-cacheout     pip install cacheout
+    python-mermaid-py   pip install mermaid-py
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  :
+}
