@@ -10,16 +10,16 @@ depends=('python' 'openblas' 'python-numpy' 'python-jinja')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-scikit-build-core' 'cmake' 'openblas')
 provides=('llama-cpp-python')
 conflicts=('llama-cpp-python')
-source=("llama-cpp-python-$pkgver.tar.gz::https://github.com/abetlen/llama-cpp-python/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d1ab8c0a3ae23c41552135606a3bf2056b28c0fd45d2322bdc11b1f9a7df9f94')
+source=("llama_cpp_python-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/l/llama-cpp-python/llama_cpp_python-$pkgver.tar.gz")
+sha256sums=('d849d286d808284f1d3ec1bd6875572430d29d1f9574a010232caa4e9cef0e35')
 
 build() {
-  cd "$srcdir/llama-cpp-python-$pkgver"
+  cd "$srcdir/llama_cpp_python-$pkgver"
   export CMAKE_ARGS="-DGGML_BLAS=ON -DGGML_BLAS_VENDOR=OpenBLAS"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/llama-cpp-python-$pkgver"
+  cd "$srcdir/llama_cpp_python-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }

@@ -17,7 +17,7 @@ pkgbase = llama-cpp-python-openblas
 	depends = python-jinja
 	provides = llama-cpp-python
 	conflicts = llama-cpp-python
-	source = llama-cpp-python-0.3.34.tar.gz::https://github.com/abetlen/llama-cpp-python/archive/refs/tags/v0.3.34.tar.gz
-	sha256sums = d1ab8c0a3ae23c41552135606a3bf2056b28c0fd45d2322bdc11b1f9a7df9f94
+	source = llama_cpp_python-0.3.34.tar.gz::https://files.pythonhosted.org/packages/source/l/llama-cpp-python/llama_cpp_python-0.3.34.tar.gz
+	sha256sums = d849d286d808284f1d3ec1bd6875572430d29d1f9574a010232caa4e9cef0e35
 
 pkgname = llama-cpp-python-openblas
