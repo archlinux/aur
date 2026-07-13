@@ -1,7 +1,7 @@
 # Maintainer: LIghtJUNction <lightjunction@users.noreply.github.com>
 
 pkgname=cortexfs-git
-pkgver=0.1.0.r576.g1997688
+pkgver=0.1.0.r577.gf117ea5
 pkgrel=1
 pkgdesc="Unix-style filesystem and CLI surface for AI agents"
 arch=('x86_64')
