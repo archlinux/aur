@@ -8,7 +8,7 @@ _image_url_aarch64="https://2vks4.upcloudobjects.com/capacities-desktop-app/Capa
 
 pkgname="${_pkgname}"-appimage
 pkgver=1.67.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Personal Knowledge Management app - A studio for your mind"
 arch=('x86_64' 'aarch64')
 url="https://capacities.io/"
