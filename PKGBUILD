@@ -2,7 +2,7 @@
 
 pkgname=mind-elixir-bin
 _pkgname=mind-elixir
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Lightweight privacy-focused mind mapping tool (prebuilt binary)'
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('mind-elixir')
 conflicts=('mind-elixir')
 options=('!strip')
 source=("Mind.Elixir_${pkgver}_amd64.deb::https://github.com/SSShooter/Mind-Elixir-Desktop-Release/releases/download/app-v${pkgver}/Mind.Elixir_${pkgver}_amd64.deb")
-sha256sums=('c29d750871e09a38b6613b2004779f378e32d3342a89d778ee3ecfbc188d6a6f')
+sha256sums=('00536b921fb821402fe90dc62493887c2608d344f4b8c57cdd7033b7524891a8')
 
 package() {
   local _extractdir
