@@ -1,5 +1,5 @@
 pkgbase = python-funk
-	pkgdesc = mocking framework influenced heavily by JMock
+	pkgdesc = A mocking framework for Python, influenced by JMock
 	pkgver = 0.5.0
 	pkgrel = 2
 	url = https://github.com/mwilliamson/funk
@@ -9,6 +9,6 @@ pkgbase = python-funk
 	depends = python
 	depends = python-precisely
 	source = python-funk-0.5.0.tar.gz::https://github.com/mwilliamson/funk/archive/refs/tags/0.5.0.tar.gz
-	sha256sums = fc33c7731bfbf84a8dff735c88b00de8ac02210f28f70f0e123396d5a23aa737
+	b2sums = 07f4089e1ed46f0c86a666a3c4b4254fd631f748e4c49efe473ac049088f4418f01ffa6443df476b9ba9aa915c10c393d672af192363ab461b115deb6c33918b
 
 pkgname = python-funk
