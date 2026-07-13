@@ -1,0 +1,16 @@
+pkgbase = forgezero-git
+	pkgdesc = Zero-overhead build tool for assembly, C, C++, Objective-C, and Gloria
+	pkgver = 5.3.0.r231.g9ddea99
+	pkgrel = 1
+	url = https://github.com/forgezero-cli/ForgeZero
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	license = GPL-3.0-only
+	makedepends = go
+	makedepends = git
+	source = forgezero-git::git+https://github.com/forgezero-cli/ForgeZero.git#branch=main
+	sha256sums = SKIP
+
+pkgname = forgezero-git
