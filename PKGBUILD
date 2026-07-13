@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=aws
-_pkgver=2.5-6
+_pkgver=2.5-7
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('14b395c784e466ca9f098e27aa276f6a')
-b2sums=('71160a571bb2b163f769370c54c8364ac626f9ae50835da482713573d0637cc9efde1caf9940b5fba4634bd6c5198e41c12b2bbaab5a564eee86f21f58beffda')
+md5sums=('6f422f58642bfe21fe004b38379fa455')
+b2sums=('63f88ee2d0eb5c7f57ad04b5b009b4e617cf4eb5d0f40bdab7c376b6a5e993703006a2395fc887d99eb721c2b37503b727587ad704553d3eb1824da3979f87b0')
 
 build() {
   mkdir build
