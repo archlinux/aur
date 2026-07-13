@@ -1,0 +1,29 @@
+post_install() {
+    printf '%s\n' \
+        '==> python-jiuwenswarm: first-run setup' \
+        '' \
+        'Initialize the runtime workspace with:  jiuwenswarm-init' \
+        'Manage instances with:                 jiuwenswarm-start --list' \
+        '' \
+        'NOTE — vendor SDKs not packaged in Arch repos:' \
+        '  a2ui-agent-sdk, openjiuwen, gitcode-api, skillnet-ai,' \
+        '  python-socks, wecom-aibot-sdk' \
+        '' \
+        'If you need IM integrations (Feishu/Telegram/Discord/DingTalk/WeCom)' \
+        'or the TUI client, install via pip into a virtualenv alongside this' \
+        'package. Most users do not need them; the core multi-agent runtime' \
+        'works without them.' \
+        ''
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    printf '%s\n' \
+        '==> python-jiuwenswarm: removing the package does NOT delete' \
+        '    ~/.jiuwenswarm (your runtime workspace, configs, agent data).' \
+        '    Remove it manually with:  rm -rf ~/.jiuwenswarm' \
+        ''
+}
