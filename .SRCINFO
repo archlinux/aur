@@ -1,6 +1,6 @@
 pkgbase = river-git
 	pkgdesc = A dynamic tiling wayland compositor
-	pkgver = 0.4.0.r30.g79e09c3
+	pkgver = 0.4.r75.gd4fef52
 	pkgrel = 1
 	url = https://codeberg.org/river/river
 	arch = x86_64
@@ -12,16 +12,14 @@ pkgbase = river-git
 	depends = libevdev
 	depends = libinput
 	depends = libxkbcommon
-	depends = mesa
 	depends = pixman
-	depends = sh
 	depends = wayland
 	depends = wlroots0.20
 	depends = xorg-xwayland
-	optdepends = polkit: access seat through systemd-logind
-	provides = river=0.4.0.r30
+	provides = river
 	provides = wayland-compositor
 	conflicts = river
+	conflicts = river-classic
 	source = codeberg.river::git+https://codeberg.org/river/river.git#branch=main
 	sha256sums = SKIP
 
