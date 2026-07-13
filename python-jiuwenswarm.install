@@ -9,10 +9,9 @@ post_install() {
         '  a2ui-agent-sdk, openjiuwen, gitcode-api, skillnet-ai,' \
         '  python-socks, wecom-aibot-sdk' \
         '' \
-        'If you need IM integrations (Feishu/Telegram/Discord/DingTalk/WeCom)' \
-        'or the TUI client, install via pip into a virtualenv alongside this' \
-        'package. Most users do not need them; the core multi-agent runtime' \
-        'works without them.' \
+        'If you need IM integrations (Feishu/Telegram/Discord/DingTalk/WeCom),' \
+        'install via pip into a virtualenv alongside this package. Most users' \
+        'do not need them; the core multi-agent runtime works without them.' \
         ''
 }
 
