@@ -1,0 +1,11 @@
+pkgbase = syna3602-bridge
+	pkgdesc = SYNA3602 Touchpad Bridge – filters garbage contacts, emulates MT protocol for two-finger scrolling on Chuwi AeroBook (HTIX5288)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/torvalds/linux/blob/master/drivers/hid/hid-multitouch.c
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-evdev
+
+pkgname = syna3602-bridge
