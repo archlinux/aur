@@ -1,7 +1,7 @@
 pkgbase = python-litellm
 	pkgdesc = Library to easily interface with LLM API providers.
 	pkgver = 1.92.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/BerriAI/litellm
 	arch = any
 	license = MIT
@@ -82,7 +82,7 @@ pkgbase = python-litellm
 	optdepends = python-google-auth: proxy-runtime
 	optdepends = python-requests: proxy-runtime
 	optdepends = python-grpcio: proxy-runtime
-	optdepends = python-prometheus-client: proxy-runtime
+	optdepends = python-prometheus_client: proxy-runtime
 	optdepends = python-langfuse: proxy-runtime
 	optdepends = python-opentelemetry-api: proxy-runtime
 	optdepends = python-opentelemetry-sdk: proxy-runtime

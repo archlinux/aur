@@ -3,11 +3,12 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Darius Niminenn <root at dnim dot dev>
 # Contributor: Sir-Photch <sir-photch@posteo.me>
+# Maintainer: enihcam <enihcam@archlinux.us>
 
 _name=litellm
 pkgname=python-$_name
 pkgver=1.92.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=('any')
 url='https://github.com/BerriAI/litellm'
@@ -24,7 +25,7 @@ optdepends=('gunicorn: proxy' 'uvicorn: proxy' 'python-granian: proxy' 'python-u
             'python-grpcio: grpc'
             'python-nvidia-riva-client: stt-nvidia-riva' 'python-soundfile: stt-nvidia-riva' 'python-audioread: stt-nvidia-riva' 'python-numpy: stt-nvidia-riva'
             'python-google-cloud-aiplatform: google'
-            'python-google-cloud-aiplatform: proxy-runtime' 'python-google-genai: proxy-runtime' 'python-anthropic: proxy-runtime' 'python-google-auth: proxy-runtime' 'python-requests: proxy-runtime' 'python-grpcio: proxy-runtime' 'python-prometheus-client: proxy-runtime' 'python-langfuse: proxy-runtime' 'python-opentelemetry-api: proxy-runtime' 'python-opentelemetry-sdk: proxy-runtime' 'python-opentelemetry-exporter-otlp: proxy-runtime' 'python-opentelemetry-instrumentation-fastapi: proxy-runtime' 'python-ddtrace: proxy-runtime' 'python-sentry_sdk: proxy-runtime' 'python-mangum: proxy-runtime' 'python-azure-ai-contentsafety: proxy-runtime' 'python-azure-storage-file-datalake: proxy-runtime' 'python-pypdf: proxy-runtime' 'python-llm-sandbox: proxy-runtime' 'python-detect-secrets: proxy-runtime')
+            'python-google-cloud-aiplatform: proxy-runtime' 'python-google-genai: proxy-runtime' 'python-anthropic: proxy-runtime' 'python-google-auth: proxy-runtime' 'python-requests: proxy-runtime' 'python-grpcio: proxy-runtime' 'python-prometheus_client: proxy-runtime' 'python-langfuse: proxy-runtime' 'python-opentelemetry-api: proxy-runtime' 'python-opentelemetry-sdk: proxy-runtime' 'python-opentelemetry-exporter-otlp: proxy-runtime' 'python-opentelemetry-instrumentation-fastapi: proxy-runtime' 'python-ddtrace: proxy-runtime' 'python-sentry_sdk: proxy-runtime' 'python-mangum: proxy-runtime' 'python-azure-ai-contentsafety: proxy-runtime' 'python-azure-storage-file-datalake: proxy-runtime' 'python-pypdf: proxy-runtime' 'python-llm-sandbox: proxy-runtime' 'python-detect-secrets: proxy-runtime')
 options=(!lto !strip)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('773adf5503ee1793289689c899394a83df8122993760d9acd782e32aa798db9d')
