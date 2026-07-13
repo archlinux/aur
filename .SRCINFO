@@ -18,9 +18,6 @@ pkgbase = python-skillopt
 	makedepends = python-openpyxl
 	makedepends = python-yaml
 	makedepends = python-gradio
-	makedepends = python-omegaconf
-	makedepends = python-pytorch
-	makedepends = python-ray
 	source = https://files.pythonhosted.org/packages/ec/93/c896156981f56228e6a20ed1a95814aabb75d5e4a97a44534b216a269fdb/skillopt-0.2.0.tar.gz
 	sha256sums = d9f047336d4d13936f26589677406db77df43897fa23dd7973f81aff7907c4e4
 

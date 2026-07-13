@@ -24,11 +24,10 @@ makedepends=(
   'python-openpyxl'
   'python-yaml'
   'python-gradio'
-  # alfworld-extra runtime deps (lazy-imported by trainer / alfworld vendor code).
-  # Listed in makedepends so namcap's split-package check is satisfied.
-  'python-omegaconf'
-  'python-pytorch'
-  'python-ray'
+  # Note: omegaconf, pytorch, ray are NOT in makedepends. They are lazy-imported
+  # only when the user activates the alfworld extra, so they live in optdepends
+  # only. Listing them here would force every `makepkg -s` user to install ~2GB
+  # of PyTorch + ~200MB of Ray for a build that doesn't need them.
 )
 # sdist tarball from PyPI (CDN path is content-addressed and stable per version)
 source=("https://files.pythonhosted.org/packages/ec/93/c896156981f56228e6a20ed1a95814aabb75d5e4a97a44534b216a269fdb/skillopt-${pkgver}.tar.gz")
