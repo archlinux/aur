@@ -1,7 +1,7 @@
 pkgbase = snippet-notes
 	pkgdesc = A local note-taking software with quick recording and enhanced search capabilities.Use system-wide electron.效能笔记,一款快速记录及搜索功能增强的本地笔记记录软件.
-	pkgver = 0.4.4
-	pkgrel = 4
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/xunxun10/snippet-notes
 	arch = any
 	license = MIT
@@ -10,12 +10,13 @@ pkgbase = snippet-notes
 	makedepends = npm
 	makedepends = git
 	makedepends = curl
+	makedepends = jq
 	depends = electron22
 	depends = python>=3
 	conflicts = snippet-notes
-	source = snippet-notes-0.4.4::git+https://github.com/xunxun10/snippet-notes#tag=0.4.4
+	source = snippet-notes-0.6.0::git+https://github.com/xunxun10/snippet-notes#tag=0.6.0
 	source = snippet-notes.sh
-	sha256sums = c92993c2bf2d098f254912352693c893f0e494518bf0d3476603b98621f5faa8
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 991ddf1b87b844d3fc6f5b73cc71a3933d60ffa544f967e28a2f89b913592ed8
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = snippet-notes
