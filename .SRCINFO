@@ -1,7 +1,7 @@
 pkgbase = openjiuwen-sandbox
 	pkgdesc = OpenJiuwen sandbox + gateway: code-execution sandbox server and gateway proxy
 	pkgver = 0.1.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitcode.com/openJiuwen/agent-studio
 	arch = x86_64
 	license = Apache-2.0

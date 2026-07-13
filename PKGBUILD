@@ -1,7 +1,7 @@
 # Maintainer: enihcam <enihcam@noreply.gitcode.com>
 pkgname=openjiuwen-sandbox
 pkgver=0.1.8
-pkgrel=3
+pkgrel=4
 pkgdesc="OpenJiuwen sandbox + gateway: code-execution sandbox server and gateway proxy"
 arch=('x86_64')
 url="https://gitcode.com/openJiuwen/agent-studio"
@@ -50,6 +50,19 @@ prepare() {
     local f="${srcdir_top}/sandbox_server/sandbox/openjiuwen_sandbox_server/server.py"
     if [ -f "${f}" ]; then
         sed -i 's/^from app\./from openjiuwen_sandbox_server.app./' "${f}"
+    fi
+
+    # bwrap.py does `import pyseccomp` and uses `pyseccomp.SyscallFilter`,
+    # `pyseccomp.KILL`, `pyseccomp.ALLOW`. Arch's python-libseccomp ships
+    # the SAME C extension under the module name `seccomp` (identical
+    # public API — both wrap libseccomp). There is no separate python-
+    # pyseccomp package, so rename the references to match the Arch module.
+    local bwrap="${srcdir_top}/sandbox_server/sandbox/openjiuwen_sandbox_server/app/bwrap.py"
+    if [ -f "${bwrap}" ]; then
+        sed -i \
+            -e 's/^import pyseccomp$/import seccomp/' \
+            -e 's/\bpyseccomp\./seccomp./g' \
+            "${bwrap}"
     fi
 }
 
