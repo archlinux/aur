@@ -2,7 +2,7 @@
 
 pkgname=mistral-vibe
 pkgver=2.19.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
 url='https://github.com/mistralai/mistral-vibe'
@@ -60,9 +60,11 @@ checkdepends=(
     "uv"
     "vulture"
 )
-source=("git+${url}.git#tag=v${pkgver}" "vibe_reduce_relayouts.patch")
+source=(
+  "git+${url}.git#tag=v${pkgver}" 
+  "vibe_reduce_relayouts.patch::https://github.com/mistralai/mistral-vibe/compare/main...ikicic:mistral-vibe:reduce_relayouts.patch")
 sha256sums=('aa7cde48b4543d50fa5f76ed56a326bb648fdd46fec68dc64f96a15e615d4b6c'
-            '15150f4ce02626a849541301e9de8e2ddc8a3f8e839cd570d0dd43fdc30e665f')
+            '126311122dfefdcf235f41a209d2606000741d1d1b7392e8264c74f55cd1d0d3')
 
 prepare() {
     cd "$pkgname"
