@@ -1,0 +1,11 @@
+pkgbase = tu58fs-git
+	pkgdesc = Filesharing between DEC PDP-11 and modern hardware over TU58 tape emulator
+	pkgver = 0.01
+	pkgrel = 1
+	url = https://github.com/j-hoppe/tu58fs
+	arch = any
+	license = BSD
+	source = git+https://github.com/j-hoppe/tu58fs
+	cksums = SKIP
+
+pkgname = tu58fs-git
