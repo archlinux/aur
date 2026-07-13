@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ognibuild
-pkgver=0.2.15
+pkgver=0.2.16
 pkgrel=1
 epoch=1
 pkgdesc="Detect and invoke build systems"
@@ -8,18 +8,14 @@ arch=('x86_64')
 url="https://github.com/jelmer/ognibuild"
 license=('GPL-2.0-or-later')
 depends=(
+  'breezy'
   'glibc'
   'libgcc'
   'python'
 )
 makedepends=('cargo')
-# checkdepends=('breezy')
-optdepends=(
-  'breezy'
-  'python-build'
-)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c6192344a7124d7c98a33feedb2286072ff5ff1692d172fb62c827d4205c480e')
+sha256sums=('492c7e6709fa54be3a0b65a052339277c4af24bb6910f364b7b8fffd948e2c3d')
 
 prepare() {
   cd "$pkgname-$pkgver"
