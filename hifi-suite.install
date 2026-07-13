@@ -1,17 +1,30 @@
 post_install() {
     echo ""
-    echo "HiFi Suite installed!"
+    echo "HiFi Suite v3 installed!"
+    echo ""
+
+    # Install shell completions
+    echo "Installing shell completions..."
+    if command -v hifi-suite &>/dev/null; then
+        hifi-suite --install-completion 2>/dev/null && \
+            echo "  Completions installed for $(basename $SHELL)" || \
+            echo "  Run 'hifi-suite --install-completion' manually"
+    else
+        echo "  Run 'hifi-suite --install-completion' to enable tab completion"
+    fi
+
     echo ""
     echo "Quick start:"
-    echo "  hifi-suite daemon start     # Start the daemon"
-    echo "  hifi-suite status           # Check headset"
-    echo "  hifi-suite vol 75           # Set volume"
-    echo "  hifi-suite setup            # Configure filters"
+    echo "  hifi-suite auto              # Auto-detect + configure everything"
+    echo "  hifi-suite noise input       # Filter noise from your mic"
+    echo "  hifi-suite effect latency on # Low-latency for gaming"
+    echo "  hifi-suite device manage     # View all PipeWire nodes"
+    echo "  hifi-suite reset             # Reset all filters to defaults"
     echo ""
 }
 
 post_upgrade() {
     echo ""
-    echo "HiFi Suite updated. Restart daemon: hifi-suite daemon restart"
+    echo "HiFi Suite updated. Run 'hifi-suite reset && hifi-suite auto' to reconfigure."
     echo ""
 }

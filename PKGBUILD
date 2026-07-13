@@ -49,25 +49,12 @@ package() {
     # Systemd service
     install -Dm644 hifi-daemon.service "$pkgdir/usr/lib/systemd/user/hifi-daemon.service"
 
-    # Shell completions (via Typer)
+    # Shell completions — generated via Typer at install time
     install -d "$pkgdir/usr/share/bash-completion/completions"
     install -d "$pkgdir/usr/share/zsh/site-functions"
-    # Generate zsh completion
-    python3 -c "
-import sys; sys.path.insert(0, '$pkgdir/usr/lib/hifi-suite')
-from hifi.cli import app
-from typer.completion import get_completion_script
-print(get_completion_script('zsh', 'hifi-suite'))
-" > "$pkgdir/usr/share/zsh/site-functions/_hifi-suite" 2>/dev/null || \
-    echo '#compdef hifi-suite' > "$pkgdir/usr/share/zsh/site-functions/_hifi-suite"
-    # Generate bash completion
-    python3 -c "
-import sys; sys.path.insert(0, '$pkgdir/usr/lib/hifi-suite')
-from hifi.cli import app
-from typer.completion import get_completion_script
-print(get_completion_script('bash', 'hifi-suite'))
-" > "$pkgdir/usr/share/bash-completion/completions/hifi-suite" 2>/dev/null || \
-    echo '# bash completion for hifi-suite' > "$pkgdir/usr/share/bash-completion/completions/hifi-suite"
+    install -d "$pkgdir/usr/share/fish/vendor_completions.d"
+    # Completions are installed by running: hifi-suite --install-completion
+    # The .install file handles this automatically
 
     # KDE Plasma widget
     if [ -d plasma-widget ]; then
