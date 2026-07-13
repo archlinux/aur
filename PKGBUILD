@@ -1,7 +1,7 @@
 # Maintainer: abod8639 <https://github.com/abod8639>
 
 pkgname=anodemcu
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="A powerful interactive shell script to manage MCU projects (Arduino, ESP-IDF, PlatformIO)"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('arduino-cli' 'fzf' 'jq' 'neovim')
 optdepends=()
 source=("https://github.com/abod8639/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('412325608deffc6247f1c0510003adcba1ba67a0857d25b7bd49eb999a869067')
+sha256sums=('98fdf92c9d55651a7db7b31e96744d7a31b3a16e9b194f27163104d7e1cc159e')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
