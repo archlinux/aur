@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="CLI tool to list directory content"
 
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -26,7 +26,7 @@ conflicts=("${_appname}")
 options=(!strip)
 
 source=("${_appname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('e208a8bf50ada26c625c72e02e90a35d25b0defe400fe6bfb3201e9fdd449d3c')
+sha256sums=('da23c6622ed46513e0b17d73163112c94a82ad59287cdc0b1d52dc8ed84a4e48')
 
 
 prepare() {
