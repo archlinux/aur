@@ -1,11 +1,11 @@
 # Maintainer: Omar Roth <roth@omar.yt>
 pkgname=doubletake
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='AirPlay 2 mirroring sender for Linux'
 arch=('x86_64')
 url='https://github.com/omarroth/doubletake'
-license=('GPL-3.0-only')
+license=('LGPL-3.0-or-later')
 makedepends=('go')
 depends=(
   'glibc'
