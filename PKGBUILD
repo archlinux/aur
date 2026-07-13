@@ -2,8 +2,8 @@
 
 pkgname=python-alibabacloud-credentials-api
 _name=${pkgname#python-}
-# _name=${_name//-/_}
-pkgver=1.0.0
+_name=${_name//-/_}
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="Alibaba Cloud Gateway SPI SDK Library for Python"
@@ -15,7 +15,6 @@ provides=(${_name} ${pkgname})
 conflicts=(${_name} ${pkgname})
 _pydeps=(
 # AUR
-    # alibabacloud-tea
 )
 depends=('python'
     "${_pydeps[@]/#/python-}")
@@ -28,7 +27,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('8c340038d904f0218d7214a8f4088c31912bfcf279af2cbc7d9be4897a97dd2f')
+sha256sums=('8ea0668a6558f6956b8d20b2e561d19a80ea29c22cf56a3004d434b24a981b36')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
