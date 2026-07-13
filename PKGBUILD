@@ -10,23 +10,17 @@
 pkgname=counter-strike-2d
 pkgver=1.0.1.6
 _ver=${pkgver//./}
-pkgrel=3
+pkgrel=4
 pkgdesc="More than just a freeware clone of the well known game Counter-Strike"
 arch=('i686' 'x86_64')
 url="https://www.unrealsoftware.de"
 license=('custom')
 install=cs2d.install
-if [ "$CARCH" == "x86_64" ]; then
-  depends=('lib32-libx11' 'lib32-libxxf86vm' 'lib32-libglvnd' 'lib32-freetype2' 'lib32-glibc' 'lib32-gcc-libs' 'lib32-libxcb' 'lib32-libxext' 'lib32-zlib' 'lib32-bzip2' 'lib32-libpng' 'lib32-harfbuzz' 'lib32-brotli' 'lib32-libxau' 'lib32-libxdmcp' 'lib32-glib2' 'lib32-pcre2')
-  optdepends=('lib32-nvidia-utils: video acceleration for NVIDIA GPUs'
-              'lib32-mesa: video acceleration'
-              'lib32-openal: audio output'
-              'lib32-pipewire: audio output')
-elif [ "$CARCH" == "i686" ]; then
-  optdepends=('ati-dri: video acceleration'
-              'intel-dri: video acceleration'
-              'nouveau-dri: video acceleration')
-fi
+depends=('freetype2' 'libx11' 'libxxf86vm' 'libglvnd' 'gcc-libs' 'glibc')
+optdepends=('openal: audio output'
+            'libpulse: audio output'
+            'alsa-lib: audio output'
+            'steam: Steam client integration')
 
 makedepends=('curl')
 backup=(opt/cs2d/sys/autobuy.cfg    opt/cs2d/sys/autoexec.cfg
@@ -39,9 +33,9 @@ backup=(opt/cs2d/sys/autobuy.cfg    opt/cs2d/sys/autoexec.cfg
         opt/cs2d/sys/serverinfo.txt opt/cs2d/sys/servertransfer.lst
         opt/cs2d/sys/usgn_upw       opt/cs2d/sys/core/dls.cache)
 sha512sums=('46a6210983ecca33cd0a406c7f5301a310f2d436601474e87e994f77ff7d16b0c4b1f5af0ee5cf903f79dbb52486f8894db984a13ab84096e3d92b3cd680c7ff'
-            '265251cd6ba0030ab7dfda738b5f80b83bf15ffa1781a580704e89a24e6f76aed88441cc05dbe380ebed6f60e0699f8ec4d968c391dab7380a16c550180b991f'
-            '0c7c91ad4050543635e56ce0ecd9b55e5dc917c87655c69e0dc7e4252655223b7346106f54f2a550e09952cb0ec8afaedfab8dd3b18324b545485ba4fd4b07a4'
-            '318e12d0be3a2cc48c70e34688d861a89db811c960a76439730c420b159d0a99718403806cfc546bf243627e91ad6f34a65c97ef77e3d9592b5baaaed24e34c2')
+            'b31b14cb97fcfef718dd2e15fe3d50cecbf875d1d71c794f0568491e497ddc7efad56749d5d4fc34ec1c645e670b9a6a72e4f893b50f0b5e01d5e3baeb0803db'
+            '0c7c91ad4050543635e56ce0ecd9b55e5dc917c87655c69e0dc7e4252655223b7346106f54f2a550e09952cb0ec8afaedfab8dd3b18324b545485ba4fd4b07a4')
+sha512sums_x86_64=('42b0e05c2fefad24b79dbfe4ff99e80278717d5351624650a9b10a859dd33b591e759f1ee813ba9aebb84449e29267f72c53ac75d78765541b2239f80c04dd95')
 _url="https://www.unrealsoftware.de/get.php?get"
 
 grabcid() {
@@ -52,9 +46,20 @@ grabcid() {
 _cid=$(grabcid) # this will hide the cmd line above from AUR interface
 source=(cs2d_${_ver}_linux.zip::"${_url}=cs2d_${_ver}_linux.zip&p=1&cid=${_cid}"
         "cs2d.desktop"
-        "cs2d.png"
-        ubuntu_libs.zip::"https://github.com/Lyrecoul/cs2d_aur_package_host/raw/refs/heads/master/ubuntu_libs.zip")
-options=(emptydirs)
+        "cs2d.png")
+# 64-bit build overlays the 32-bit release; both zips ship libsteam_api.so,
+# so keep it out of $srcdir and extract to its own directory
+source_x86_64=(cs2d_linux_64.zip::"https://stuff.unrealsoftware.de/cs2d_linux_64.zip")
+noextract=(cs2d_linux_64.zip)
+options=(emptydirs !debug)
+
+prepare() {
+  if [ "$CARCH" == "x86_64" ]; then
+    rm -rf cs2d64
+    mkdir cs2d64
+    bsdtar -xf cs2d_linux_64.zip -C cs2d64
+  fi
+}
 
 package() {
   # create folders
@@ -63,9 +68,25 @@ package() {
   # data
   cp -R bots gfx help logos maps mods screens sfx sys "$pkgdir"/opt/cs2d
 
-  # executable
-  install CS2D lib* "$pkgdir"/opt/cs2d
-  chmod +x "$pkgdir"/opt/cs2d/CS2D
+  # executables + Steam API runtime
+  if [ "$CARCH" == "x86_64" ]; then
+    install -m755 cs2d64/CS2D64 "$pkgdir"/opt/cs2d/CS2D
+    install -m755 cs2d64/cs2d_dedicated64 "$pkgdir"/opt/cs2d/cs2d_dedicated
+    install -m644 cs2d64/libsteam_api.so "$pkgdir"/opt/cs2d
+  else
+    install -m755 CS2D "$pkgdir"/opt/cs2d
+    install -m644 libsteam_api.so "$pkgdir"/opt/cs2d
+  fi
+
+  # launchers
+  printf '%s\n' '#!/bin/sh' 'exec env LD_LIBRARY_PATH=/opt/cs2d /opt/cs2d/CS2D "$@"' \
+    > "$pkgdir"/usr/bin/cs2d
+  chmod 755 "$pkgdir"/usr/bin/cs2d
+  if [ "$CARCH" == "x86_64" ]; then
+    printf '%s\n' '#!/bin/sh' 'exec env LD_LIBRARY_PATH=/opt/cs2d /opt/cs2d/cs2d_dedicated "$@"' \
+      > "$pkgdir"/usr/bin/cs2d-dedicated
+    chmod 755 "$pkgdir"/usr/bin/cs2d-dedicated
+  fi
 
 
   # desktop launcher
