@@ -7,9 +7,9 @@ _disname=qq
 _version=3.2.31
 _update_date=2026-07-10
 _image_url_x86_64=https://qqdl.gtimg.cn/qqfile/QQNTV2/9.9.32/release/c390e792/QQ_3.2.31_260710_x86_64_01.AppImage
-_image_sha256sums_x86_64=
+_image_sha256sums_x86_64=de409de5beecac4e002569b94ba00cb0ab3630d19f1db58db16a6ecb7af05b51
 _image_url_aarch64=https://qqdl.gtimg.cn/qqfile/QQNTV2/9.9.32/release/c390e792/QQ_3.2.31_260710_arm64_01.AppImage
-_image_sha256sums_aarch64=
+_image_sha256sums_aarch64=2c81d6aeb3c648b990220011ccc514f0f86fc5f66636b3e4724103abcb6eb7d2
 
 pkgname="${_pkgname}"-appimage
 pkgver="${_version}_${_update_date//-/}"
