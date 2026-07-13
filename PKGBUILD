@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=(
     'python>=3.11.4'
     'python-fastapi'
-    'python-uvicorn'
+    'uvicorn'
     'python-pydantic'
     'python-sqlalchemy'
     'python-alembic'
@@ -30,7 +30,7 @@ depends=(
     'python-numpy'
     'python-scipy'
     'python-greenlet'
-    'python-protobuf'
+    'protobuf'
     'python-apscheduler'
     'python-croniter'
     'python-click'
