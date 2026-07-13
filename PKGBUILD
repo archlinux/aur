@@ -3,15 +3,14 @@
 _pkgname="replay-sorcery"
 pkgname="$_pkgname"
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Open-source, instant-replay solution for Linux'
 url='https://github.com/matanui159/ReplaySorcery'
-license=(GPL-3.0-or-later)
+license=('GPL-3.0-or-later')
 arch=('x86_64' 'i686')
 
 depends=(
   'ffmpeg4.4'
-  'gcc-libs'
   'libdrm'
   'libpulse'
   'libx11'
@@ -21,6 +20,8 @@ makedepends=(
   'git'
 )
 
+backup=("etc/$_pkgname.conf")
+
 _pkgsrc="$_pkgname"
 source=(
   "$_pkgsrc"::"git+$url.git#tag=$pkgver"
@@ -28,26 +29,17 @@ source=(
   '0000-include-avutil-ch-layout.patch'
 )
 sha256sums=(
-  'SKIP'
+  '7b455b526c13eb515521278941e446674b3a5c33de4233eee4a144e34fdb912b'
   'SKIP'
   '5404e7d26db1eb8e051844d65c2182f9dfac813243d093ea8e4c4ae97bc548da'
 )
 
 prepare() {
   cd "$_pkgsrc"
+  git submodule init
+  git config submodule."dep/libbacktrace".url ../libbacktrace
+  git -c protocol.file.allow=always submodule update
 
-  # submodules for replay-sorcery
-  local _submodules=(
-    'libbacktrace'::'dep/libbacktrace'
-  )
-  local _module
-  for _module in "${_submodules[@]}"; do
-    git submodule init "${_module##*::}"
-    git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
-    git -c protocol.file.allow=always submodule update "${_module##*::}"
-  done
-
-  # apply patches
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
@@ -58,6 +50,10 @@ prepare() {
       patch -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
+
+  # move global config to /etc
+  sed -e '/RS_BUILD_GLOBAL_CONFIG/c #define RS_BUILD_GLOBAL_CONFIG "/etc/replay-sorcery.conf"' -i src/rsbuild.h.in
+  sed -E -e '/replay-sorcery.conf/s&(DESTINATION) etc&\1 /etc&' -i CMakeLists.txt
 }
 
 build() {
