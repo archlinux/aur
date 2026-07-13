@@ -1,7 +1,7 @@
 # Maintainer: brave-prerelease <aur-prerelease@brave.com>
 
 pkgname=brave-origin-nightly-bin
-pkgver=1.94.57
+pkgver=1.94.62
 pkgrel=1
 pkgdesc='The minimalist browser from the makers of Brave (nightly binary release).'
 arch=(x86_64 aarch64)
@@ -20,8 +20,8 @@ source_x86_64=("https://github.com/brave/brave-browser/releases/download/v${pkgv
 source_aarch64=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
 sha512sums=('a9366d90e0e23cb098cae6a86fdd2ef102677df96a6caff27af8f48e7ddb3175829c8dbf32ef55cf6a13383aad9d3d9302826062d7e5743a8ac83960ec175e69')
 
-sha512sums_x86_64=('be6fe59b916e4ea1e1daffa264842abdf41e009cc338d152ed07d887cf09097048bced08a580ce6c9a82d47c89f28cae7032d7e8e01b2de4b328822e7076c2d8')
-sha512sums_aarch64=('30aed6f7e24ae7271a7f24fa138f0d6a9e3ebc81c8ab33f3a2eed6bf2642f670e22cecdc02280bf93977a974e51e26a7994204c9497c4ba574cf6cb91569ce94')
+sha512sums_x86_64=('43a2608a12a42aedd37673f5a30684554422abf09e15b8069af6c98b5ad2468b49156ca02e30b2e0b98f35af227825d3657462e5d5bbd0f51cdff77200475709')
+sha512sums_aarch64=('25e9a3188e21e258e427d082245c12cca69a9f880a9b2ca977d5eee36caa8f1cee345247014bf6326190374dff90ee9ec6bfe65f57506c7d8d32a9becaa464b5')
 
 prepare() {
   mkdir -p brave
