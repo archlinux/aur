@@ -1,4 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Co-Maintainer: Dongda Li <dongdongbhbh at gmail dot com>
 pkgname=mindwtr
 pkgver=1.1.0
 pkgrel=1
@@ -68,7 +69,7 @@ build() {
 check() {
   cd "$srcdir/Mindwtr-$pkgver/apps/desktop"
   export BUN_INSTALL_CACHE_DIR="$srcdir/bun-cache"
-  
+
   # Run the desktop Vitest suite, but do not fail the package build on test failures.
   bun run test || :
 }
@@ -76,7 +77,7 @@ check() {
 package() {
   cd "$srcdir/Mindwtr-$pkgver/apps/desktop/src-tauri"
   install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
-  
+
   for i in 32x32 64x64 128x128 128x128@2x; do
     install -Dm644 "icons/${i}.png" \
       "$pkgdir/usr/share/icons/hicolor/${i}/apps/$pkgname.png"
