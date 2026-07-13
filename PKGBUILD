@@ -177,10 +177,10 @@ pkgbase="linux-$_pkgsuffix"
 _major=7.2
 _minor=0
 #_minorc=$((_minor+1))
-_rcver=rc2
+_rcver=rc3
 pkgver=${_major}.${_rcver}
-_tagrel=3
-pkgrel=2
+_tagrel=1
+pkgrel=1
 #_stable=${_major}.${_minor}
 #_stable=${_major}
 _stable=${_major}-${_rcver}
@@ -254,7 +254,9 @@ fi
 
 if [ "$_build_nvidia_open" = "yes" ]; then
     source+=("https://download.nvidia.com/XFree86/${_nv_open_pkg%"-$_nv_ver"}/${_nv_open_pkg}.tar.xz"
-             "${_patchsource}/misc/nvidia/0001-make-Add-support-for-7.2-Kernel.patch")
+             "${_patchsource}/misc/nvidia/0001-make-Add-support-for-7.2-Kernel.patch"
+             "${_patchsource}/misc/nvidia/0002-fix-dsc-correct-RC-parameter-tables-to-match-VESA-DS.patch"
+             "${_patchsource}/misc/nvidia/0003-fix-dp-add-Bigscreen-Beyond-VR-headset-to-WAR-databa.patch")
 fi
 
 # Use generated AutoFDO Profile
@@ -816,7 +818,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('918a0df4233a8da26b1ec092267bfe3425e433f20c5af8cf913306a22642b39a4851b595be7cd89de9904dfc75b67830fb07fc27280d503d847dac69c898c0fd'
+b2sums=('728dab98cb4d2523b71eec69017a5ca282331c8eae1345b167c68cdaa87aae41c9438e72564d3e10770e54a32237bcb1f3aaae8363fe2c4d8e4915f91d1de9f4'
         'SKIP'
         '9d4e9ae4379ea2ef7d1848917cbbfe2b10c633de8286009e08a1da4f5a08424de42ec546e0f8b98f30eb8aec61cf3c6ff400122faac54a5d0116459d6b3dd9a5'
         'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e')
