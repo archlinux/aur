@@ -1,0 +1,46 @@
+pkgbase = python-skillopt
+	pkgdesc = Agentic Skill Optimization via Reflective Training Loops
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/microsoft/SkillOpt
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-azure-core
+	makedepends = python-azure-identity
+	makedepends = python-httpx
+	makedepends = python-numpy
+	makedepends = python-openai
+	makedepends = python-openpyxl
+	makedepends = python-yaml
+	makedepends = python-gradio
+	source = https://files.pythonhosted.org/packages/ec/93/c896156981f56228e6a20ed1a95814aabb75d5e4a97a44534b216a269fdb/skillopt-0.2.0.tar.gz
+	sha256sums = d9f047336d4d13936f26589677406db77df43897fa23dd7973f81aff7907c4e4
+
+pkgname = python-skillopt
+	depends = python-openai>=1.30.0
+	depends = python-yaml>=6.0
+	depends = python-numpy>=1.24.0
+	depends = python-openpyxl>=3.1.0
+	depends = python-azure-identity>=1.15.0
+	depends = python-azure-core>=1.30.0
+	depends = python-httpx>=0.27.0
+	optdepends = python-alfworld: ALFWorld benchmark environment (skillopt[alfworld] extra)
+	optdepends = python-gymnasium: ALFWorld backend gym env (skillopt[alfworld] extra)
+	optdepends = python-claude-agent-sdk: Claude model backend (skillopt[claude] extra)
+	optdepends = python-vllm: Qwen local model backend via vLLM (skillopt[qwen] extra)
+	optdepends = python-json-repair: Robust JSON parsing for Claude/Qwen backends
+	optdepends = python-datasets: SearchQA data materialization (skillopt[searchqa] extra)
+	optdepends = python-mkdocs-material: Build the documentation site (skillopt[docs] extra)
+	optdepends = python-mkdocstrings: Build the documentation site (skillopt[docs] extra)
+	optdepends = python-skillopt-webui: Gradio dashboard meta-package (skillopt[webui] extra)
+	optdepends = ruff: Linter for development (skillopt[dev] extra)
+	optdepends = python-pytest: Test runner for development (skillopt[dev] extra)
+
+pkgname = python-skillopt-webui
+	pkgdesc = Gradio dashboard for python-skillopt (meta-package; pulls python-skillopt + python-gradio)
+	depends = python-skillopt
+	depends = python-gradio>=4.0.0

@@ -1,0 +1,18 @@
+version = 1
+
+[[annotations]]
+path = "**"
+SPDX-FileCopyrightText = "SkillOpt Team"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = "PKGBUILD"
+SPDX-FileCopyrightText = "SkillOpt Team"
+SPDX-License-Identifier = "0BSD"
+precedence = "aggregate"
+
+[[annotations]]
+path = "README.md"
+SPDX-FileCopyrightText = "SkillOpt Team"
+SPDX-License-Identifier = "0BSD"
+precedence = "aggregate"
