@@ -30,8 +30,8 @@ noextract=(
 
 prepare() {
     chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract ${_pkgname}.desktop
-    ./"${_appimage}" --appimage-extract usr/share/icons/hicolor/scalable/capacities.svg
+    ./"${_appimage}" --appimage-extract io.capacities.app.desktop
+    ./"${_appimage}" --appimage-extract usr/share/icons/hicolor/scalable/apps/capacities.svg
     ./"${_appimage}" --appimage-extract LICENSE.electron.txt
     ./"${_appimage}" --appimage-extract LICENSES.chromium.html
 }
@@ -41,7 +41,7 @@ build() {
     sed -i \
         -e "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" \
         -e "s|Icon=.*|Icon=${_pkgname}|" \
-        "squashfs-root/${_pkgname}.desktop"
+        "squashfs-root/io.capacities.app.desktop"
 }
 
 package() {
@@ -51,11 +51,11 @@ package() {
     install -Dm644 "${srcdir}/squashfs-root/LICENSES.chromium.html" "${pkgdir}/opt/${_pkgname}/LICENSES.chromium.html"
 
     # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop"\
+    install -Dm644 "${srcdir}/squashfs-root/io.capacities.app.desktop"\
             "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
     # Icon images
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/scalable/capacities.svg" \
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/scalable/apps/capacities.svg" \
             "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
 
     # Symlink executable
