@@ -34,8 +34,6 @@ depends=(
     'desktop-file-utils'
     'shared-mime-info'
 )
-source=("https://github.com/AstralSightStudios/AstroBox-NG/releases/download/v${pkgver}/astrobox-ng-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('7575615aea0149045f0290f7e3a80ff4c94d5c907d46efa0408ffafbfae6ea2b')
 makedepends=('curl')
 
 prepare() {
