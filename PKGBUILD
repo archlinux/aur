@@ -2,7 +2,7 @@
 pkgname=tpdf-bin
 _reponame=TermPDF
 _executable=termpdf
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A terminal PDF viewer written in Rust, with vim key-bindings and watch mode."
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=('tpdf')
 conflicts=('tpdf' 'tpdf-git')
 source_x86_64=("${url}/releases/download/v${pkgver}/termpdf-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/termpdf-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('535af90ba8b3bc400b8d0a13007ccf97094b27e66271ac06e5eb3682cc17e8a9')
-sha256sums_aarch64=('e1c1138d3b0d5c5fa13af8844b27dce1d8d3b298628aa817912e1052895d5c58')
+sha256sums_x86_64=('bd903055878b07ebd9c93be5d40f474e4432361f8f48395cbf2889594ea5f807')
+sha256sums_aarch64=('78e595b4f9fc1cb9bb8b240affacfcc858d267e1250a6de2d347df3fa3372cb3')
 
 package() {
     cd "${srcdir}/termpdf-${pkgver}-${CARCH}-unknown-linux-gnu"
