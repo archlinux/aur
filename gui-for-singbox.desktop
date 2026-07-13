@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=GUI.for.SingBox
+Comment=GUI client application for sing-box
+Exec=gui-for-singbox
+Icon=gui-for-singbox
+Terminal=false
+Type=Application
+Categories=Network;

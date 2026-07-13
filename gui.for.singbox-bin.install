@@ -1,0 +1,23 @@
+post_install() {
+    if [ -f /usr/bin/sing-box ]; then
+        setcap cap_net_admin=+ep /usr/bin/sing-box 2>/dev/null || true
+        echo "==> Note: Network admin capability granted to /usr/bin/sing-box for TUN mode."
+    fi
+    echo "==> GUI.for.SingBox installed successfully."
+    echo "==> Application data is cleanly isolated in ~/.local/share/GUI.for.SingBox/"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo "==> Note: The system files for GUI.for.SingBox have been removed."
+    echo "==> However, per Linux FHS guidelines, user data in ~/.local/share is kept intact."
+    echo ""
+    echo "==> To ONLY remove the app caches & binary copy but KEEP your data/configs, run:"
+    echo "    find ~/.local/share/GUI.for.SingBox -mindepth 1 -maxdepth 1 ! -name 'data' -exec rm -rf {} +"
+    echo ""
+    echo "==> To COMPLETELY wipe all configs, profiles, and data, run:"
+    echo "    rm -rf ~/.local/share/GUI.for.SingBox"
+}
