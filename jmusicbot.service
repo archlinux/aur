@@ -1,0 +1,59 @@
+# JMusicBot minimally-privileged systemd user service
+#
+#  - Working directory: "~/jmusicbot"
+#  - Configuration:     "~/jmusicbot/config.txt"
+#  - State:             "~/jmusicbot/serversettings.json"
+#  - Playlists dir:     "~/jmusicbot/Playlists"
+#
+# Setup steps, in bash:
+#  - Create directory "jmusicbot" in your home directory:
+#    $ mkdir ~/jmusicbot
+#  - Go to the new "jmusicbot" directory:
+#    $ cd ~/jmusicbot
+#  - Copy the reference configuration file to the new directory:
+#    $ cp /usr/share/jmusicbot/reference.conf config.txt
+#  - Edit configuration file to your liking:
+#    $ nano config.txt
+#  - Start service instance:
+#    $ systemctl --user start jmusicbot.service
+
+[Unit]
+Description=JMusicBot at %h/jmusicbot
+
+[Install]
+WantedBy=default.target
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/java -Dnogui=true -jar /usr/bin/JMusicBot.jar
+WorkingDirectory=%h/jmusicbot
+Restart=always
+RestartSec=5
+
+# Security and hardening options copied from
+# https://gist.github.com/ageis/f5595e59b1cddb1513d1b425a323db04
+NoNewPrivileges=yes
+SystemCallArchitectures=native
+PrivateTmp=yes
+# PrivateDevices is not supported in --user services
+#PrivateDevices=yes
+DevicePolicy=closed
+# Deny write access to the entire file system
+ProtectSystem=strict
+# Selectively allow write access for required paths
+ReadWritePaths=%h/jmusicbot
+# Do not allow any access whatsoever to /home, /root and /run/user
+ProtectHome=yes
+ProtectControlGroups=yes
+# ProtectKernelModules is not supported in --user services
+#ProtectKernelModules=yes
+ProtectKernelTunables=yes
+## Only AF_INET and AF_INET6
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+# This service uses Java, which uses a virtual machine, and this option
+# is not compatible with virtual machines
+#MemoryDenyWriteExecute=yes
+LockPersonality=yes
