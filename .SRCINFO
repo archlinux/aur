@@ -1,6 +1,6 @@
 pkgbase = gitpulsar-appimage
 	pkgdesc = A lightweight, GNOME-native Git GUI built with Rust, GTK4, and libadwaita
-	pkgver = 0.7.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://gitlab.com/ilshat-apps/gitpulsar
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gitpulsar-appimage
 	provides = gitpulsar
 	conflicts = gitpulsar
 	options = !strip
-	source = Gitpulsar-v0.7.1-x86_64.AppImage::https://gitlab.com/ilshat-apps/gitpulsar/-/jobs/artifacts/v0.7.1/raw/Gitpulsar-v0.7.1-x86_64.AppImage?job=appimage
-	sha256sums = c6c3c8b1940673169bbce35e581106318b16cb604c7f827fd5382a050fe8dedb
+	source = Gitpulsar-v1.1.0-x86_64.AppImage::https://gitlab.com/ilshat-apps/gitpulsar/-/jobs/artifacts/v1.1.0/raw/Gitpulsar-v1.1.0-x86_64.AppImage?job=appimage
+	sha256sums = b1b6890ab4b9ac6e64b8d7501c03122d1f289a145befe0792a7c6b666319f036
 
 pkgname = gitpulsar-appimage
