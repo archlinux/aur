@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=radsecproxy
-pkgver=1.11.2
-pkgrel=3
+pkgver=1.11.3
+pkgrel=1
 pkgdesc='a generic RADIUS proxy that in addition to to usual RADIUS UDP transport, also supports TLS (RadSec), as well as RADIUS over TCP and DTLS'
 arch=('i686' 'x86_64')
 url='https://radsecproxy.github.io/'
@@ -12,17 +12,13 @@ license=('GPL')
 backup=('etc/radsecproxy/radsecproxy.conf')
 validpgpkeys=('210FA7FB28E45779777BAA1C5963D59C3D68633B') # Fabian Mauchle <fabian.mauchle@switch.ch>
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc}
-        '0001-nettle-4.patch'
         'radsecproxy.service')
-sha256sums=('1fe3f25a392b74db1fe62868e19e883acd1dc0e1f318715299920fcc5e166f97'
+sha256sums=('386b8f56950098e33f4c0aa9f2b65dde3db7b46ee4362466e64643463f554ada'
             'SKIP'
-            'dee585871112ea6a1a1a8ddd5b160d3bfad65bbbdb39a9b806883bfc9903f2d2'
             '3cc1e1a5746e4bd543d2646c6a3b444de05f38d29ca7408a1f5382ab34366cf8')
 
 prepare() {
   cd ${pkgname}-${pkgver}/
-
-  patch -Np1 < ../0001-nettle-4.patch
 
   autoreconf -fi
 }
