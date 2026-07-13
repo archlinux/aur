@@ -14,7 +14,7 @@ pkgname=(
   python-a2a-sdk-db-cli
 )
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='https://github.com/a2aproject/a2a-python'
 license=('Apache-2.0')
@@ -51,6 +51,21 @@ makedepends=(
   'python-uv-dynamic-versioning'
 )
 
+# Extra runtime deps that check() needs to import a2a. These are NOT
+# build-time; makepkg installs them into the host before running check().
+# All eight are already in _common_deps — duplicating only the ones the
+# check actually exercises.
+checkdepends=(
+  'python-httpx'
+  'python-httpx-sse'
+  'python-pydantic'
+  'python-protobuf'
+  'python-google-api-core'
+  'python-googleapis-common-protos'
+  'python-json-rpc'
+  'python-packaging'
+)
+
 source=(
   "https://files.pythonhosted.org/packages/c7/7e/8ac10bbf8b15b16574355f39b17dbdf617a282c27b41c7ff2116e30336df/a2a_sdk-${pkgver}.tar.gz"
 )
@@ -85,9 +100,40 @@ build() {
 
 check() {
   cd "$srcdir/a2a_sdk-$pkgver"
-  # Smoke check: importable, console script registered. Skip the full test
-  # suite; CI on Arch does not run upstream's pytest matrix.
-  python -c 'import a2a; print(a2a.__name__, "importable")'
+
+  # 1. build() must have produced the wheel.
+  test -f dist/*.whl || { echo 'no wheel at dist/'; return 1; }
+
+  # 2. Extract the wheel into a throwaway prefix and validate that the
+  #    a2a core imports + the a2a-db console-script entry point are both
+  #    present. checkdepends gave us the runtime deps at /usr; setting
+  #    PYTHONPATH lets us pull a2a/ off the extracted tree without
+  #    touching $HOME/.local or /usr.
+  local _tmp
+  _tmp=$(mktemp -d)
+  python -m zipfile -e dist/*.whl "$_tmp"
+
+  local _wheel
+  _wheel=$(printf '%s' dist/*.whl)
+  PYTHONPATH="$_tmp" _CHECK_WHEEL="$_wheel" python <<'PY'
+import os, sys, zipfile
+import a2a, a2a.types, a2a.server, a2a.client, a2a.utils
+print(f'a2a importable: {a2a.__file__}')
+
+# Confirm a2a-db is declared as a console-script entry point by inspecting
+# the wheel's entry_points.txt directly (no install needed).
+wheel = os.environ['_CHECK_WHEEL']
+expected = 'a2a-db = a2a.a2a_db_cli:run_migrations'
+with zipfile.ZipFile(wheel) as z:
+    hits = [n for n in z.namelist() if n.endswith('entry_points.txt')]
+    assert hits, 'wheel has no entry_points.txt'
+    body = z.read(hits[0]).decode()
+    assert expected in body, f'expected {expected!r} in entry_points.txt, got:\n{body}'
+print(f'a2a-db entry point registered: {expected}')
+PY
+  local _rc=$?
+  rm -rf "$_tmp"
+  return "$_rc"
 }
 
 package_python-a2a-sdk() {
