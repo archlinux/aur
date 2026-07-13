@@ -1,31 +1,37 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=comrak
-pkgver=0.53.0
+pkgver=0.54.0
 pkgrel=1
 pkgdesc='CommonMark + GFM compatible Markdown parser and renderer'
 arch=(x86_64 i686)
 url="https://github.com/kivikakk/$pkgname"
 license=(BSD-2-Clause)
-depends=(gcc-libs
-         glibc
-         oniguruma)
+depends=(glibc # libc.so libm.so 
+         libgcc libgcc_s.so
+	 oniguruma) # libonig.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('bf14ae3d07b620f0d5186831e62021161a2de7f112295cf107259ec9ebc2ecd8')
-
-prepare() {
-	cd "$_archive"
-	cargo fetch --locked --target "$(rustc --print host-tuple)"
-}
+sha256sums=('af8d045d68a237f6733d05e998e7e5ad9125c93fa101edca75d8065271e5ac2c')
 
 _srcenv() {
 	cd "$_archive"
+	export CARGO_HOME="$srcdir"
+	export CARGO_PROFILE_RELEASE_DEBUG=2
+	export CARGO_PROFILE_RELEASE_STRIP=false
+	export CARGO_PROFILE_RELEASE_LTO=true
+	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
+	export CFLAGS+=' -ffat-lto-objects'
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	export RUSTONIG_DYNAMIC_LIBONIG=1
-	export CFLAGS+=' -ffat-lto-objects'
+}
+
+prepare() {
+	_srcenv
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -35,10 +41,8 @@ build() {
 
 check() {
 	_srcenv
-	# Test suite has syntax error (not failing test), so can't be run with all features
-	# https://github.com/kivikakk/comrak/pull/546
 	local skipped=()
-	# cargo test --frozen --all-features -- ${skipped[@]/#/--skip }
+	cargo test --frozen --all-features -- ${skipped[@]/#/--skip }
 }
 
 package () {
