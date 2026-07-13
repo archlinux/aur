@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=aqueous
 pkgbase=aqueous
-pkgver=0.4.0.r1.g7f3ab16 # Will be updated by pkgver()
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Aqueous single-process Wayland compositor"
 arch=('x86_64' 'aarch64')
@@ -16,32 +16,21 @@ depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
          # uwsm manages the session lifecycle (env export, graphical-session.target,
          # clean teardown). The aqueous.desktop session entry execs `uwsm start`.
          'uwsm'
-         'scenefx')
+         'libscenefx-0.5.so')
 makedepends=('clang' 'lld' 'llvm'
-             'git' 'scdoc' 'wayland-protocols' 'scenefx')
-optdepends=('ly: recommended display manager / login greeter'
+             'git' 'scdoc' 'wayland-protocols' 'libscenefx-0.5.so')
+optdepends=('noctalia-greeter: recommended display manager / login greeter'
             'greetd: alternative minimal login manager for tuigreet'
             'tabby: recommended terminal emulator'
             'nemo: recommended file manager'
             'firefox: web browser'
             'wireplumber: volume/media key bindings (wpctl)')
-provides=('aqueous')
-conflicts=('aqueous')
+conflicts=('aqueous-git' 'aqueous-bin')
 install=aqueous.install
 source=(
-    "aqueous::git+${url}.git"
+    "aqueous::git+${url}.git#tag=v${pkgver}"
 )
-sha256sums=('SKIP')
-
-pkgver() {
-    cd "$srcdir/aqueous"
-    local ver
-    ver=$(git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
-    if [[ -z "$ver" ]]; then
-        ver="0.2.0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-    fi
-    echo "$ver"
-}
+sha256sums=('20188055317b7160d7d145e9747bf310b240ed67fc5d07817751884ab8b3342a')
 
 build() {
     # Verify zig is new enough (the Aqueous compositor requires >= 0.16.0).
