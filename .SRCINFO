@@ -1,7 +1,7 @@
 pkgbase = 3x-ui-mtg-core
 	pkgdesc = Highly opinionated MTPROTO proxy for Telegram (for *x-ui)
 	pkgver = 2.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/9seconds/mtg
 	arch = aarch64
 	arch = armv7h

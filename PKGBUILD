@@ -2,7 +2,7 @@
 
 pkgname=3x-ui-mtg-core
 pkgver=2.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Highly opinionated MTPROTO proxy for Telegram (for *x-ui)"
 arch=(aarch64 armv7h i686 x86_64)
 url="https://github.com/9seconds/mtg"
@@ -32,11 +32,11 @@ build() {
 package() {
   cd mtg-$pkgver
   case ${CARCH} in
-    aarch64) _xrayarch="arm64";;
-    armv7h)  _xrayarch="arm32";;
-    i686)    _xrayarch="i386";;
-    x86_64)  _xrayarch="amd64";;
+    aarch64) _mtgarch="arm64";;
+    armv7h)  _mtgarch="arm32";;
+    i686)    _mtgarch="i386";;
+    x86_64)  _mtgarch="amd64";;
   esac
-  install -vDm 755 build/$pkgname    "$pkgdir"/usr/lib/x-ui/bin/mtg-linux-${_xrayarch}
+  install -vDm 755 build/$pkgname    "$pkgdir"/usr/lib/x-ui/bin/mtg-linux-${_mtgarch}
   install -vDm 644 LICENSE        -t "$pkgdir"/usr/share/licenses/$pkgname
 }
