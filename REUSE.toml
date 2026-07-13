@@ -20,7 +20,7 @@ path = [
     "*.socket",
     "*.timer",
     "*.desktop",
-    "*.hook"
+    "*.hook",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"

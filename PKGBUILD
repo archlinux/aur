@@ -6,7 +6,7 @@
 
 pkgname=stm32cubeprog
 pkgver=2.23.0
-pkgrel=2
+pkgrel=3
 pkgdesc='An all-in-one multi-OS software tool for programming STM32 products.'
 arch=('x86_64')
 url='https://www.st.com/en/development-tools/stm32cubeprog.html'
