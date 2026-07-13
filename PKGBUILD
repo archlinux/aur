@@ -1,7 +1,7 @@
 # Maintainer: WaiJade <waijade@outlook.com>
 
 pkgname=astrobox-ng
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="AstroBox is a leading tool for managing and extending wearable devices"
 arch=('x86_64')
@@ -34,14 +34,14 @@ depends=(
     'desktop-file-utils'
     'shared-mime-info'
 )
-source=("https://github.com/AstralSightStudios/AstroBox-NG/releases/download/v${pkgver}/AstroBox_${pkgver}_x86_64.pkg.tar.zst")
-sha256sums=('0a7a9f9d81c6bd2ccf209690bbf03be4cc5c6b2530844b2615290a62cd9c90f2')
+source=("https://github.com/AstralSightStudios/AstroBox-NG/releases/download/v${pkgver}/astrobox-ng-${pkgver}-1-x86_64.pkg.tar.zst")
+sha256sums=('7575615aea0149045f0290f7e3a80ff4c94d5c907d46efa0408ffafbfae6ea2b')
 makedepends=('curl')
 
 prepare() {
-    local _base="AstralSightStudios/AstroBox-NG/releases/download/v${pkgver}/AstroBox_${pkgver}_x86_64.pkg.tar.zst"
-    local _file="AstroBox_${pkgver}_x86_64.pkg.tar.zst"
-    local _expected="0a7a9f9d81c6bd2ccf209690bbf03be4cc5c6b2530844b2615290a62cd9c90f2"
+    local _base="AstralSightStudios/AstroBox-NG/releases/download/v${pkgver}/astrobox-ng-${pkgver}-1-x86_64.pkg.tar.zst"
+    local _file="astrobox-ng-${pkgver}-1-x86_64.pkg.tar.zst"
+    local _expected="7575615aea0149045f0290f7e3a80ff4c94d5c907d46efa0408ffafbfae6ea2b"
     local _mirrors=(
         "https://github.com/${_base}|GitHub"
         "https://ghfast.top/https://github.com/${_base}|ghfast"

@@ -1,6 +1,6 @@
 pkgbase = astrobox-ng
 	pkgdesc = AstroBox is a leading tool for managing and extending wearable devices
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/AstralSightStudios/AstroBox-NG
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = astrobox-ng
 	depends = desktop-file-utils
 	depends = shared-mime-info
 	options = !debug
-	source = https://github.com/AstralSightStudios/AstroBox-NG/releases/download/v2.0.1/AstroBox_2.0.1_x86_64.pkg.tar.zst
-	sha256sums = 0a7a9f9d81c6bd2ccf209690bbf03be4cc5c6b2530844b2615290a62cd9c90f2
+	source = https://github.com/AstralSightStudios/AstroBox-NG/releases/download/v2.0.2/astrobox-ng-2.0.2-1-x86_64.pkg.tar.zst
+	sha256sums = 7575615aea0149045f0290f7e3a80ff4c94d5c907d46efa0408ffafbfae6ea2b
 
 pkgname = astrobox-ng
