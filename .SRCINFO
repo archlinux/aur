@@ -1,0 +1,17 @@
+pkgbase = glitchtip-cli
+	pkgdesc = Open source CLI for GlitchTip
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/glitchtip/glitchtip-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	provides = glitchtip-cli
+	conflicts = glitchtip-cli-bin
+	source = glitchtip-cli-1.0.0.tar.gz::https://gitlab.com/glitchtip/glitchtip-cli/-/archive/v1.0.0/glitchtip-cli-v1.0.0.tar.gz
+	sha256sums = 18a5a1cc0ac32e5a2c5cdca186a0a2443b0b2c8ecac580ffee66673b9ba42169
+
+pkgname = glitchtip-cli
