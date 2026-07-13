@@ -17,8 +17,8 @@ pkgname=(
     $_NS3_ENABLE_WIP
     #^e.g. _NS3_ENABLE_WIP="ns3-docs" makepkg ...
 )
-pkgver=3.47
-pkgrel=5
+pkgver=3.48
+pkgrel=1
 pkgdesc='Discrete-event network simulator for Internet systems'
 arch=('x86_64')
 url='https://www.nsnam.org/'
@@ -65,13 +65,13 @@ source=(
     0002-disable-python-tests.patch
 )
 
-sha256sums=('8b3adca956c834ea436b915986ab8fd053e90041acae7426895d595aaa3ccc39'
+sha256sums=('5700ceecef2c9bc862502914b2237fe798d4c7ae07652247050e300e49407c4d'
             '9f519502828ffb403948d2601eb36e807e92d21793e985f63c90150de62626e5'
             '24d9c5dad607c2334669374ab5242e11bef85bc0f90bd17868601c7f23c9f2be')
-sha512sums=('41a060b93e88bc389ef1f316b8e4568be2ca559f6a2e4b54bca29b6620e9fbb78e2ed0eec4c8b3b119f071aad43dfa09edbd2bf78ea125744a44f2366724d50c'
+sha512sums=('42c697671e7ff4bca3d809e6b12b1c14b8ab71611068bba5a91e00d45240e6b0d9fc48b96d17fe93fa4e3d047f9dbcadc9cfca545c547fd18eba9e27ac6adcc0'
             '91d0f73f65053384c23f3c59d38bd8a988ba5ada97b62919b50e74daccb89cbc32bb32b7b1f84bb5426158325353fac306a5edcdce0690359fdaa82b0421679a'
             '74158c80b159d1587d51dddffcc6f24689985d4afe5574e3edb7691e5bb892bb160a3b717ce2352293c92c0359c799a4e4da4e0bba6c227ffa9bc534a2199a2c')
-b2sums=('c03622d72afc5043aced4aa8ee39b477a15feb28e45142c6d4117a4ffd94c146d522200ac829831b1e9e89bb8bcd17f2f9e66306ba1a6bae9300b68025648f85'
+b2sums=('5bcce8090e09782c56351ee7b6a67014be774f1db43bfb08f642e3c8fdb0568d8c42ced6eae16d294cec842b9123113c029c3570d21ab7e75de05dc8879f74d2'
         '83fbc3bb43094ee08bee4741c8d343de8a3b84a1b3f151d311586b3d3adf3b35142ca6295c7d15901514cafc891a51432e1a5188bef6491465984f587d531edc'
         'd8a7efeff13bbf1884502ae5e469f47be3c72a7f22a13e70c381aa02ccc94d4f41961ede107bba87a68b9144ba5f20818a40d6a20908344fad818c296a034fd3')
 
@@ -173,7 +173,7 @@ build() {
         -DCMAKE_INSTALL_LIBEXECDIR="lib/$pkgname/"
         ### INTEGRATIONS INTO ARCHLINUX ###
         # Allows for linker overrides (via /etc/makepkg.conf)
-        # Otherwise, this enforces MOLD when installed.
+        # Otherwise (=ON), this enforces MOLD when installed.
         -DNS3_FAST_LINKERS=OFF
     )
     # OPTION 1: Python bindings build (FIXME!)
