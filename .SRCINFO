@@ -1,0 +1,15 @@
+pkgbase = vpnbook-cli
+	pkgdesc = CLI tool to automatically fetch VPNBook configs, credentials and connect via OpenVPN
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/lamerous/vpnbook-cli
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-httpx
+	depends = python-beautifulsoup4
+	depends = openvpn
+	source = vpnbook-cli-1.0.0.tar.gz::https://github.com/lamerous/vpnbook-cli/archive/v1.0.0.tar.gz
+	sha256sums = a4e6776f26d90791004d20f86aed9ed5f2f25ccc01b74eb9e722c83a800793a2
+
+pkgname = vpnbook-cli
