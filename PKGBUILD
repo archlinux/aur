@@ -5,7 +5,7 @@
 pkgname=codelldb
 _pkgname="$pkgname"
 pkgver=1.12.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A native debugger extension for VSCode based on LLDB. Also known as vscode-lldb (NOT lldb-vscode)"
 arch=(x86_64 arm7h aarch64)
 url="https://github.com/vadimcn/codelldb"
@@ -15,7 +15,7 @@ depends=(lldb)
 makedepends=(cmake cargo nodejs npm python libc++)
 options=(!lto)
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        "$_pkgname-update-yargs.patch")
+        "$pkgname-update-yargs.patch")
 sha256sums=('34e2aae22f5b5e4b03f854159d9a35f1c5527e0eb11b817e7d5e8bd513bb05e5'
             '8df7ea2bd651222ff0c47058e15202fe3366490d7ad3c380a54fd09a1c105dd7')
 
@@ -25,7 +25,7 @@ prepare() {
 
   # This patch is necessary to make it possible to run the tests with Node.js
   # v25.7.0 and newer (see https://github.com/yargs/yargs/issues/2509)
-  patch --forward --strip=1 --input="$srcdir/$_pkgname-update-yargs.patch"
+  patch --forward --strip=1 --input="$srcdir/$pkgname-update-yargs.patch"
 
   # The tests break if the flags `--remap-path-prefix=...` or `-ffile-prefix-map=...` are given to
   # C/C++/Rust compilers when building the debuggee. These flags are supplied by `makepkg` through
@@ -95,7 +95,7 @@ package() {
 
     install -Dm644 -t "$libdir" platform.ok
 
-    local file; for file in adapter/codelldb adapter/*.so; do
+    local file; for file in adapter/codelldb adapter/*.so bin/codelldb-launch; do
       install -Dm755 "$file" "$libdir/$file"
     done
 
@@ -108,7 +108,7 @@ package() {
   ln -s -t "$libdir"/lldb /usr/{bin,lib}
 
   install -d "$pkgdir"/usr/bin
-  ln -s -t "$pkgdir"/usr/bin /usr/lib/"$_pkgname"/adapter/codelldb
+  ln -s -t "$pkgdir"/usr/bin /usr/lib/"$_pkgname"/{adapter/codelldb,bin/codelldb-launch}
 
   install -Dm644 -t "$pkgdir"/usr/share/licenses/"$_pkgname" LICENSE
 }
