@@ -1,7 +1,7 @@
 # Maintainer: Florent Jardin <florent.jardin@dalibo.com>
 pkgname=pg-migrate-bin
 _pkgname=pg-migrate
-pkgver=1.0.0rc4
+pkgver=1.0.0rc5
 pkgrel=1
 _pkgtag="v${pkgver/rc/-rc.}"
 pkgdesc="Move your databases to PostgreSQL"
@@ -16,7 +16,7 @@ options=(!debug)
 source=("${pkgname}-${pkgver}.tar.zst::https://gitlab.com/dalibo/pg_migrate/-/releases/${_pkgtag}/downloads/pg-migrate_linux_amd64.pkg.tar.zst"
         "LICENSE-${pkgver}::https://gitlab.com/dalibo/pg_migrate/-/raw/${_pkgtag}/LICENSE")
 
-sha256sums=('c20321b0ab137c95c57c2db4007781336959dd9c66f345151ca184ecbcd2da81'
+sha256sums=('858748ceebb7f899752be364032787d3677d7bd0dc342fd7f2ac7e427ce274b8'
             '26fedda6745ec0fabac275f0934bb47def7b60e7f728f1c6da359794f7d1330c')
 
 package() {
