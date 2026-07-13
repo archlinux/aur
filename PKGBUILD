@@ -4,11 +4,11 @@
 _rstd_commit=629bda81eb98856ca023f0f87f57dde8d22b4823
 _ncrequest_commit=404868aa2aa4481e262f25d8f7d053f42b61b7b8
 _wavsen_commit=aab112235e4da7e03c233793a9d612507f0e6355
-_qml_material_commit=59a90bd6a625bd0fc9afac508d2d19d703245eb7
+_qml_material_commit=a2c77e3db1888f6b907e9b06bcb0c4aaf8a7a573
 _qextra_commit=d02d9a7bfed546dfb7f87a5627b1c9e8f6fcc95a
 
 pkgname=waywallen
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Wallpaper Manager for Linux."
 arch=(x86_64)
@@ -27,11 +27,11 @@ source=("git+https://github.com/waywallen/waywallen.git#tag=v$pkgver"
         "git+https://github.com/hypengw/QmlMaterial.git#commit=$_qml_material_commit"
         "git+https://github.com/hypengw/QExtra.git#commit=$_qextra_commit"
         "0001-use-system-deps.diff")
-sha256sums=('73228d9a8eacf647a7a6b3d34fcebf2976a612a10e1adf7870b387439ab78df4'
+sha256sums=('c563807ca8087f1ac670ff212c656617a77d8e9b495e7ce59eeb78f7be79b466'
             '80036965e852d207379f91bae11a9baf957a3751f6194a1d5c047bdbb451dc9d'
             '939c717802fc9e0ef13e54f547d6f7d1b2b99730eb31c6ef06211a3ffd5495e6'
             'ac96147170def04ce0bcc6f675874579db89e905d58f99b073d5ca6022aac7ef'
-            'f16022ef938cd0f25be8d98503eef31cc9175bcf7fe24b4235b3d81dcd4f2fc0'
+            'd935fc76c304c8fc445234d66d92bf6706dfc8c2d3c671385fdf1e53cc4c76a9'
             '012c6593ae9f980c033a18dea491675ad9d4af3247806e8477223f53109688d7'
             '31bd980073336fdb44dcdbddc193c7d4ada4a51d491ef201f9078e9ce2e51e4e')
 
