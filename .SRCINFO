@@ -1,0 +1,15 @@
+pkgbase = bmap-rs
+	pkgdesc = Bmap implementation in Rust
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/collabora/bmap-rs
+	arch = x86_64
+	license = Apache-2.0 OR MIT
+	makedepends = rust
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = https://github.com/collabora/bmap-rs/archive/refs/tags/bmap-rs-v0.2.2.tar.gz
+	sha512sums = 614055240ee3b813e69166b35662a986931557e88093d39e8137b2b784152d7c4dba45a1dcfcd23bae943c6d5523c7b32511b73261448195c90b2c523ea2ae1e
+
+pkgname = bmap-rs
