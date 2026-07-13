@@ -1,0 +1,16 @@
+pkgbase = irontick
+	pkgdesc = A lightweight, precise, and cross-platform metronome application
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/sunderme/qdia
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = glibc
+	depends = qt6-base
+	depends = qt6-multimedia
+	source = irontick-1.0.tar.gz::https://github.com/olegkapitonov/IronTick/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 354f0bbdc3aae94c1430d3822fe13167ccd6dd9699c41af9cad64e3327c266de
+
+pkgname = irontick
