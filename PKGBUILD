@@ -4,7 +4,7 @@ pkgbase=sunxi-livesuite-git
 pkgname=($pkgbase sunxi-livesuite-dkms-git)
 epoch=1
 pkgver=r5.20140913.1a0b52a
-pkgrel=10
+pkgrel=19
 arch=('x86_64' 'i686')
 url="https://github.com/linux-sunxi/sunxi-livesuite"
 license=('GPL-2.0-only')
@@ -15,10 +15,10 @@ options=()
 #install=${pkgname}.install
 groups=($pkgbase)
 source=("${pkgbase%-git}::git+${url}.git"
-        "git+https://github.com/M0Rf30/sunxi-awusb.git"
+    "git+https://github.com/M0Rf30/sunxi-awusb.git"
 )
 sha256sums=('SKIP'
-            'SKIP')
+    'SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgbase%-git}"
@@ -28,14 +28,13 @@ pkgver() {
 
     if [ -z "${_rev}" ]; then
         error "Could not determine commit count."
-    return 1
+        return 1
     else
         printf '%s' "r${_rev}.${_date}.${_hash}"
     fi
 }
 
-prepare()
-{
+prepare() {
     git -C "${srcdir}/${pkgbase%-git}" clean -dfx
 }
 
@@ -49,8 +48,9 @@ package_sunxi-livesuite-git() {
     cp -r "${srcdir}/${pkgbase%-git}/x86" "${pkgdir}/opt/sunxi/${pkgbase%-git}"
     cp -r "${srcdir}/${pkgbase%-git}/x86-64" "${pkgdir}/opt/sunxi/${pkgbase%-git}"
     cp -r "${srcdir}/${pkgbase%-git}/LiveSuit.sh" "${pkgdir}/opt/sunxi/${pkgbase%-git}"
+    chmod 777 "${pkgdir}/opt/sunxi/${pkgbase%-git}"/x86*
 
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgbase%-git}" << EOF
+    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgbase%-git}" <<EOF
 #!/bin/env bash
 
 cd /opt/sunxi/${pkgbase%-git}/
@@ -82,7 +82,7 @@ package_sunxi-livesuite-dkms-git() {
     replaces=('sunxi-livesuite-git-dkms' 'sunxi-awusb-dkms')
     cd "${srcdir}/sunxi-awusb/"
     install -Dt "${pkgdir}/usr/src/${pkgname}" -m644 awusb.c Makefile dkms.conf
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/99-aw_usb.rules" << EOF
+    install -Dm0644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/99-aw_usb.rules" <<EOF
 # Copy this file to /etc/udev/rules.d/
 # If rules fail to reload automatically, you can refresh udev rules
 # with the command "udevadm control --reload"
