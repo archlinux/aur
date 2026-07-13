@@ -1,6 +1,6 @@
 # Maintainer: Benny <zuiden@ilorentz.org>
 pkgname=foxguard
-pkgver=0.9.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Security scanner as fast as a linter. 170+ built-in rules, 10 languages, sub-second scans'
 arch=('x86_64')
