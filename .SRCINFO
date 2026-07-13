@@ -1,6 +1,6 @@
 pkgbase = openfpgaloader-git
 	pkgdesc = Universal utility for programming FPGA
-	pkgver = 1.1.1.r0.g85be4fa
+	pkgver = 1.1.1.r132.ga266aaf
 	pkgrel = 1
 	url = https://github.com/trabucayre/openFPGALoader
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = openfpgaloader-git
 	makedepends = python-sphinx
 	makedepends = python-yaml
 	makedepends = python-tabulate
-	depends = glibc
 	depends = libftdi
 	depends = libgcc
 	depends = libhidapi-libusb.so
