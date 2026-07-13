@@ -1,7 +1,7 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=3x-ui
-pkgver=3.4.2
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit"
 arch=(aarch64 armv7h i686 x86_64)
@@ -17,7 +17,7 @@ makedepends=(
   npm
 )
 optdepends=(
-  '3x-ui-mtg-core: MTproto support'
+  '3x-ui-mtg-multi-core: MTproto support'
   'acme.sh: Certificate Management'
   'fail2ban: IP Limit Management'
   'postgresql: recommended for high client counts or multi-node setups'
@@ -28,7 +28,7 @@ optdepends=(
 )
 options=(!debug)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('f36d673cf4865e59fe3f1f41b0b22c53ca08b7714ae6a8b0bcf59e5aeef35646e92e55d270d3a1a5c2f940f2c912907f998d4ae3e81c05160d6724810c540266')
+b2sums=('4e69a30d1fbe73f7e9bb1c51d5ce02e3f278cca1f894fe3773e742fdf94163f750d4a25056d69512bdf183125c4f71449b2fc025e519159cd9c36f0cea6ff514')
 
 prepare() {
   cd $pkgname-$pkgver

@@ -1,6 +1,6 @@
 pkgbase = 3x-ui
 	pkgdesc = Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit
-	pkgver = 3.4.2
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://github.com/MHSanaei/3x-ui
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = 3x-ui
 	depends = glibc
 	depends = sh
 	depends = x-ui-xray-core
-	optdepends = 3x-ui-mtg-core: MTproto support
+	optdepends = 3x-ui-mtg-multi-core: MTproto support
 	optdepends = acme.sh: Certificate Management
 	optdepends = fail2ban: IP Limit Management
 	optdepends = postgresql: recommended for high client counts or multi-node setups
@@ -22,7 +22,7 @@ pkgbase = 3x-ui
 	optdepends = speedtest-cli: Speedtest by Ookla
 	optdepends = ufw: Firewall Management
 	options = !debug
-	source = https://github.com/MHSanaei/3x-ui/archive/v3.4.2/3x-ui-3.4.2.tar.gz
-	b2sums = f36d673cf4865e59fe3f1f41b0b22c53ca08b7714ae6a8b0bcf59e5aeef35646e92e55d270d3a1a5c2f940f2c912907f998d4ae3e81c05160d6724810c540266
+	source = https://github.com/MHSanaei/3x-ui/archive/v3.5.0/3x-ui-3.5.0.tar.gz
+	b2sums = 4e69a30d1fbe73f7e9bb1c51d5ce02e3f278cca1f894fe3773e742fdf94163f750d4a25056d69512bdf183125c4f71449b2fc025e519159cd9c36f0cea6ff514
 
 pkgname = 3x-ui
