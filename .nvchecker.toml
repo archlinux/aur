@@ -1,0 +1,6 @@
+[libtickit]
+source = 'htmlparser'
+url = 'https://www.leonerd.org.uk/code/libtickit/'
+xpath = "/html/body//a[starts-with(@href, 'libtickit-') and contains(@href, '.tar.gz')]"
+from_pattern = 'libtickit-([\d.]+)\.tar\.gz'
+to_pattern = '\1'
