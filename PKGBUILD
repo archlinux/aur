@@ -1,15 +1,15 @@
-# Maintainer: Sandro Kalbermatter <info.kalsan [ät-symbol] valaiscom.ch>
 # Maintainer: m8D2 <omui (at) proton mail (dot) com>
+# Contributor: Sandro Kalbermatter <info.kalsan [ät-symbol] valaiscom.ch>
 
 pkgname=f3-qt-git
-pkgver=2.1.0.r16.g10ab886
-pkgrel=3
+pkgver=2.1.0.r24.g65d58d0
+pkgrel=1
 pkgdesc="A simple GUI for F3 - Fight Flash Fraud."
 arch=(i686 x86_64)
 url="https://github.com/zwpwjwtz/f3-qt"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 makedepends=(git)
-depends=(f3 qt5-base)
+depends=(f3 qt6-base)
 provides=(f3-qt)
 conflicts=(f3-qt)
 source=('git+https://github.com/zwpwjwtz/f3-qt.git')
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
   cd "$srcdir/f3-qt"
-  qmake -config release
+  qmake6 -config release
   make
 }
 
