@@ -1,6 +1,6 @@
 pkgbase = mdirecto
 	pkgdesc = A lightweight, fast, cross-platform Markdown editor with WYSIWYG editing
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://gitlab.com/cargabsj175/mdirecto
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = mdirecto
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = libappindicator-gtk3
-	source = git+https://gitlab.com/cargabsj175/mdirecto.git#tag=0.1.0
+	source = git+https://gitlab.com/cargabsj175/mdirecto.git#tag=0.2.0
 	sha256sums = SKIP
 
 pkgname = mdirecto
