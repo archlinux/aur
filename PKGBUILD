@@ -4,7 +4,7 @@
 # Contributor: Junker
 
 pkgname=python-jdatetime
-pkgver=5.3.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Jalali implementation of Python's datetime module"
 arch=(any)
@@ -14,7 +14,7 @@ depends=(python python-jalali-core)
 makedepends=(python-build python-installer python-wheel python-setuptools)
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bc5f29fc0e586beb3141a5bb79225cf734ffdc9d0294cd2703006929b8536822')
+sha256sums=('6ec6f858b0b58125509d8fd7480697125451a04c621b1e7144a5fef81fa69e72')
 
 build() {
     cd "jdatetime-$pkgver"
