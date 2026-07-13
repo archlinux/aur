@@ -46,7 +46,8 @@ depends=(
 makedepends=('python-installer' 'python-wheel')
 optdepends=(
     'python-pywebview: desktop application (jiuwenswarm-desktop)'
-    'python-a2a-sdk: Agent Communication Protocol server (jiuwenswarm-acp)'
+    'python-a2a-sdk: Agent Communication Protocol support (jiuwenswarm-acp)'
+    'python-a2a-sdk-fastapi: A2A HTTP server transport, required by jiuwenswarm-acp'
     'jiuwenswarm-tui: terminal UI client — no Linux wheel published upstream; build from source or skip'
     'openjiuwen: distributed deployment extras (postgres, zmq backends)'
 )
