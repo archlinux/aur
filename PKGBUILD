@@ -2,7 +2,7 @@
 # Contributor: Mysti
 
 pkgname=proton-pass-bin
-pkgver=1.37.0
+pkgver=1.38.1
 pkgrel=1
 pkgdesc="Open-source password manager for effortless protection. Securely store, share and auto-login your accounts with Proton Pass, using end-to-end encryption trusted by millions."
 arch=("x86_64")
@@ -10,13 +10,13 @@ url="https://proton.me/pass"
 license=('MIT') # Bundled Electron
 license+=('GPL-3.0-or-later') # The Proton Pass code itself (https://github.com/ProtonMail/WebClients#license)
 groups=("ProtonPass")
-depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'glibc' 'gtk3'
-		 'libcups' 'libudev.so' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext'
+depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'glib2' 'glibc' 'gtk3' 'libcups'
+		 'libgcc' 'libudev.so' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext'
 		 'libxfixes' 'libxrandr' 'libxkbcommon' 'mesa' 'nspr' 'nss' 'pango') # Bundled Electron dependencies
 provides=('proton-pass' 'protonpass')
 conflicts=('proton-pass' 'protonpass')
 source=("https://proton.me/download/PassDesktop/linux/x64/proton-pass_${pkgver}_amd64.deb")
-sha256sums=('30b26f1402abeb3d03479e20613830abdb1e6f91e4e616ce7fff52780571076d')
+sha256sums=('d03432f084ce951f3c689891e332c222e91de4a6765383d54a3341bd4fc0f4bf')
 
 package() {
 	tar -xvf data.tar.xz -C "$pkgdir/"
