@@ -52,14 +52,24 @@ prepare() {
 
     echo "==> Testing download mirrors..."
     local _best_url="" _best_time="999" _best_name=""
+    local _tmpdir
+    _tmpdir=$(mktemp -d)
 
-    for _entry in "${_mirrors[@]}"; do
+    for i in "${!_mirrors[@]}"; do
+        local _entry="${_mirrors[$i]}"
         local _url="${_entry%%|*}"
         local _name="${_entry##*|}"
-        local _time
-        _time=$(curl -sI --max-time 5 -o /dev/null -w "%{time_total}" "$_url" 2>/dev/null) || true
-        local _code
-        _code=$(curl -sI --max-time 5 -o /dev/null -w "%{http_code}" "$_url" 2>/dev/null) || true
+        (
+            local _result
+            _result=$(curl -sI --max-time 5 -o /dev/null -w "%{time_total} %{http_code}" "$_url" 2>/dev/null) || true
+            echo "${_result} ${_name} ${_url}" > "$_tmpdir/$i"
+        ) &
+    done
+    wait
+
+    for i in "${!_mirrors[@]}"; do
+        local _time _code _name _url
+        read _time _code _name _url < "$_tmpdir/$i" 2>/dev/null || continue
         if [[ "$_code" =~ ^(200|301|302) ]]; then
             printf "    %-12s % 6ss (%s)\n" "$_name" "$_time" "$_code"
             if awk "BEGIN{exit !($_time < $_best_time)}" 2>/dev/null; then
@@ -71,6 +81,7 @@ prepare() {
             printf "    %-12s failed (%s)\n" "$_name" "$_code"
         fi
     done
+    rm -rf "$_tmpdir"
 
     if [ -z "$_best_url" ]; then
         error "All mirrors failed"
