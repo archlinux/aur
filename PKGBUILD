@@ -9,7 +9,7 @@ pkgdesc="开源免费的 Wispr Flow 替代方案 - 为中文而生的桌面端�
 arch=(x86_64)
 options=(!strip)
 url="https://github.com/lxp731/ququ"
-license=(Apache License 2.0)
+license=('Apache-2.0')
 depends=(
   python
   fuse2
