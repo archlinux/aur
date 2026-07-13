@@ -3,14 +3,14 @@
 pkgname=aqueous
 pkgbase=aqueous
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Aqueous single-process Wayland compositor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Aqueous"
 license=('GPL3')
 depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
          'pixman' 'libdrm' 'libevdev'
-         'noctalia-git' 'libdecor' 'grim' 'slurp' 'xorg-xwayland'
+         'noctalia' 'libdecor' 'grim' 'slurp' 'xorg-xwayland'
          'xdg-desktop-portal-wlr' 'wlroots0.20' 'wl-clipboard'
          'xdg-desktop-portal-gtk' 'libnotify'
          # uwsm manages the session lifecycle (env export, graphical-session.target,
@@ -18,7 +18,7 @@ depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'libinput'
          'uwsm'
          'libscenefx-0.5.so')
 makedepends=('clang' 'lld' 'llvm'
-             'git' 'scdoc' 'wayland-protocols' 'libscenefx-0.5.so')
+             'git' 'scdoc' 'wayland-protocols' 'libscenefx-0.5.so' 'zig')
 optdepends=('noctalia-greeter: recommended display manager / login greeter'
             'greetd: alternative minimal login manager for tuigreet'
             'tabby: recommended terminal emulator'
