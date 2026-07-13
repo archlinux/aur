@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=MapsetVerifier
+Name=Mapset Verifier
 Comment=A modding tool for osu!
-Icon=mapsetverifier
-Exec=mapsetverifier
+Icon=mapset-verifier
+Exec=mapset-verifier
 Categories=Game;
