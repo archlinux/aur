@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=rclone-bisync-manager-git
-pkgver=0.4.0b3.r2.g3a584c3
+pkgver=0.4.0b3.r8.g4ebce4f
 pkgrel=1
 pkgdesc="A daemon-based solution for automated, bidirectional synchronization of files using RClone (includes system tray)"
 arch=('any')
