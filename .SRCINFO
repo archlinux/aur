@@ -1,14 +1,14 @@
 pkgbase = toast-bin
 	pkgdesc = A lightweight TUI IDE for making quick in-the-moment edits
 	pkgver = 0.1.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/paradise-runner/toast
 	arch = x86_64
 	license = MIT
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	provides = toast
+	provides = toast-editor
 	conflicts = toast
 	options = !strip
 	source = README-0.1.14.md::https://raw.githubusercontent.com/paradise-runner/toast/v0.1.14/README.md

@@ -3,11 +3,12 @@
 _gitauthor=paradise-runner
 _gitname=toast
 _appname=${_gitname}
+_appexec=${_appname}-editor
 pkgname=${_appname}-bin
 pkgdesc="A lightweight TUI IDE for making quick in-the-moment edits"
 
 pkgver=0.1.14
-pkgrel=1
+pkgrel=2
 _gitversion=v${pkgver}
 
 arch=('x86_64')
@@ -19,8 +20,8 @@ url=${_ghurl}
 
 license=('MIT')
 
-provides=("${_appname}")
-conflicts=("${_appname}")
+provides=("${_appexec}")
+conflicts=("${pkgname%-bin}")
 depends=('glibc' 'libgcc' 'libstdc++')
 
 options=(!strip)
@@ -42,7 +43,7 @@ esac
 package() {
 	cd "${srcdir}/" || exit
 
-	install -Dm755 "${_appname}-${_CARCH}" "${pkgdir}/usr/bin/${_appname}"
+	install -Dm755 "${_appname}-${_CARCH}" "${pkgdir}/usr/bin/${_appexec}"
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
