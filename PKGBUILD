@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/maerteijn/starlette-context"
 license=('MIT')
 depends=('python' 'python-starlette')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("starlette_context-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/s/starlette-context/starlette_context-$pkgver.tar.gz")
 sha256sums=('f6025753f8ede041778b2f2c3823e2da9df3c2d94832575bcb59374216b7c2b2')
 
