@@ -1,0 +1,17 @@
+pkgbase = kyrc-bin
+	pkgdesc = A fast, offline, keyboard-only typing test that lives in your terminal
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://kyrc.vercel.app/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = kyrc
+	conflicts = kyrc
+	options = !strip
+	source_x86_64 = kyrc-x86_64-0.2.1.tgz::https://github.com/abh1nav9/kyrc/releases/download/v0.2.1/kyrc_0.2.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8ba06045b5f2bf8f2d8980ef72a7e7798f44a9313d50d3e3323921876aa5fd41
+	source_aarch64 = kyrc-aarch64-0.2.1.tgz::https://github.com/abh1nav9/kyrc/releases/download/v0.2.1/kyrc_0.2.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = e08ef17cbafe5a56911db29bd696609684cb7ea45bb7ec9b5968ff308a33adc5
+
+pkgname = kyrc-bin

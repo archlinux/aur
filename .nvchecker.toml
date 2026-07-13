@@ -1,0 +1,5 @@
+[kyrc-bin]
+source = "github"
+github = "abh1nav9/kyrc"
+use_latest_release = true
+prefix = "v"
