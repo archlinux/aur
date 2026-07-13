@@ -2,7 +2,7 @@
 
 pkgname=raspi-sump
 pkgver=2.0.4
-pkgrel=5
+pkgrel=6
 pkgdesc="Sump pit water level monitoring system for the Raspberry Pi"
 arch=(any)
 url="https://www.linuxnorth.org/raspi-sump/"
@@ -40,8 +40,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/alaudet/raspi-sump/archive/
         0006-Add-web-UI-favicon.patch
       )
 sha256sums=('7593bb0cc9da93276245b39df1a4e2ac938e074b2059eaabdc3cb5e80ecdf9b8'
-            'af7e3e103a5677139b560aad5a15854e160d333b267f7a4416bb6de9e1eec424'
-            'a33537303aed0080411c0a5860b1782c88372dbda9b06dfc9c7a5ca14d5e83b7'
+            '2a1c98aa86db079d4f8d36a32d7577f8aea0e5e24c1676e8f7a1fdc500ea645f'
+            '8fbf8f9725d42928e4fd9626426da5338324cd87d6a9b2a967193f6a47790f01'
             '6ceae2aa160f8f591935a17dd4b33f3dfc4b5d8defa15a1d89595a880046030a'
             '11913d44482a95e5b7b25ab7f97537897f36e44fd2bb3fe347939fad53986efc'
             'a166a2c8ef227f594019418a7e926ab383da842dd3341934d9a50292aef47f76'
