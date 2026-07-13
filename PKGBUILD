@@ -1,5 +1,5 @@
 pkgname=beutl-git
-pkgver=v2.0.0.preview.5.rc17b6ca13
+pkgver=v2.0.0.preview.5.r7fe5862fa
 pkgrel=1
 pkgdesc="Cross-platform video editing (compositing) software"
 arch=('x86_64')
