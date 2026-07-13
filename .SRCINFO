@@ -1,0 +1,20 @@
+pkgbase = irsim-git
+	pkgdesc = IRSIM switch-level simulator for digital circuits
+	pkgver = 9.7.121.r131.g037a1b9
+	pkgrel = 1
+	url = http://opencircuitdesign.com/irsim/
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = tcl
+	depends = tk
+	depends = libx11
+	provides = irsim
+	conflicts = irsim
+	options = !emptydirs
+	options = !debug
+	source = git+https://github.com/RTimothyEdwards/irsim.git
+	sha256sums = SKIP
+
+pkgname = irsim-git
