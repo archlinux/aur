@@ -1,6 +1,6 @@
 # Maintainer: Kai <me@kaizarzycki.com>
 pkgname=rand-ms
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A small Rust CLI tool for randomly selecting items from a Bandcamp-style wishlist within a monthly budget"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -20,4 +20,4 @@ package() {
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
-sha256sums=('98804a5164d03ce9af0bf03684a535ff2abd26adc36f79b1e967212dae8a298e')
+sha256sums=('e86ac66b1a71aa3e7548b87cd358c92d1e226871f25b6984cd3925405e22fa43')
