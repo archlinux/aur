@@ -1,6 +1,6 @@
 # Maintainer: Berny23 <webmaster@berny23.de>
 pkgname=virtual-surround-manager
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="3D sound for headphones"
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=('git'
 conflicts=("$pkgname")
 provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a119c2aab6e1db4e3e48a7d34dfaeb2bf13dc673883f871a57c7829fb066d904')
+sha256sums=('d3d55bc418d19d29bbd3e46d50d684642536800896e30a7621e21a5ad7186422')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" -G Ninja
