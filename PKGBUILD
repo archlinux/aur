@@ -1,6 +1,6 @@
 # Maintainer: Plan-B-Development <https://github.com/Plan-B-Development>
 pkgname=control-ofc-gui
-pkgver=2.11.1
+pkgver=2.12.0
 pkgrel=1
 pkgdesc="PySide6 desktop GUI for the Control-OFC fan control daemon"
 arch=('any')
@@ -11,14 +11,17 @@ license=('MIT')
 # (the platform check happens after the import). Arch's
 # `python-pyqtgraph` package omits the dep upstream; declaring it here
 # is load-bearing on clean systems. See DEC-103. Do not remove.
-depends=('control-ofc-daemon>=2.2.0' 'python' 'pyside6' 'python-httpx'
+# control-ofc-daemon floor tracks the README pairing (≥ v2.8.1 — the daemon
+# that shipped the NVIDIA duty_pct wire field + W1 audit hardening the current
+# GUI consumes). Bump in lockstep when the documented pairing floor moves.
+depends=('control-ofc-daemon>=2.8.1' 'python' 'pyside6' 'python-httpx'
          'python-pyqtgraph' 'python-numpy' 'python-colorama'
          'hicolor-icon-theme')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'scdoc')
 install=control-ofc-gui.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 # sha256sums are CI-maintained (updpkgsums runs at tag time); a manual makepkg needs 'updpkgsums' first.
-sha256sums=('869146fd6a7ac489eb4317a0bda2f6cc29399ce4dfc87d3b90c94915c36edb19')
+sha256sums=('20c997dddb8837995205c86b56b61ec8245a8fa4cf47068e101374b8e1c0234c')
 
 build() {
     cd "$pkgname-$pkgver"
