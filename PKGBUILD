@@ -2,7 +2,7 @@
 
 pkgname=command-code
 pkgver=0.44.1
-pkgrel=2
+pkgrel=3
 pkgdesc='AI coding agent that continuously learns your coding taste'
 arch=('x86_64')
 url='https://commandcode.ai'
