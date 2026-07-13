@@ -3,7 +3,7 @@
 pkgname=python-alibabacloud-gateway-spi
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 epoch=
 pkgdesc="Alibaba Cloud Gateway SPI SDK Library for Python"
@@ -29,7 +29,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('10d1c53a3fc5f87915fbd6b4985b98338a776e9b44a0263f56643c5048223b8b')
+sha256sums=('73d6e20d65b54eed26d89c19640d3a7572e18c45ecada627f806f5dbe8ed2130')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
