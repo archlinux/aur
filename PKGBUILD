@@ -27,6 +27,8 @@ provides=("${_pkgname}" "${_pkgalias}")
 makedepends=('rust')
 depends=('glibc' 'libgcc')
 
+options=('!lto')
+
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
 sha256sums=('faa03c41f28e68bab010ec2561028cb50be97bd0d262aeb4799d8c2835cd5d9c')
 
@@ -39,6 +41,9 @@ prepare() {
 
 build() {
 	cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
+
+	export CC="clang"
+	export CXX="clang++"
 
 	RUSTFLAGS="--remap-path-prefix=$(pwd)=/build/" cargo build --release --locked
 }

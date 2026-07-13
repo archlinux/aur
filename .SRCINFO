@@ -11,6 +11,7 @@ pkgbase = microsandbox
 	depends = libgcc
 	provides = microsandbox
 	provides = msb
+	options = !lto
 	source = microsandbox-0.6.6.crate::https://crates.io/api/v1/crates/microsandbox/0.6.6/download
 	sha256sums = faa03c41f28e68bab010ec2561028cb50be97bd0d262aeb4799d8c2835cd5d9c
 
