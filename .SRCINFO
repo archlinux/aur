@@ -1,6 +1,6 @@
 pkgbase = python-alibabacloud-tea
 	pkgdesc = The tea module of alibabaCloud Python SDK.
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://pypi.org/project/alibabacloud-tea
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-alibabacloud-tea
 	conflicts = python-alibabacloud-tea
 	options = !strip
 	options = !debug
-	source = alibabacloud-tea-0.4.2.tar.gz::https://files.pythonhosted.org/packages/source/a/alibabacloud-tea/alibabacloud-tea-0.4.2.tar.gz
-	sha256sums = 2a86eedc2aa3d24070593f61c1cfd40762b2cabce20336e72c690eb57f165520
+	source = alibabacloud-tea-0.4.3.tar.gz::https://files.pythonhosted.org/packages/source/a/alibabacloud-tea/alibabacloud-tea-0.4.3.tar.gz
+	sha256sums = ec8053d0aa8d43ebe1deb632d5c5404339b39ec9a18a0707d57765838418504a
 
 pkgname = python-alibabacloud-tea
