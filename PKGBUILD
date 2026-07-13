@@ -2,8 +2,8 @@
 # Releases: https://persistent.oaistatic.com/codex-app-prod/appcast.xml
 
 pkgname=chatgpt-desktop-bin
-pkgver=26.707.41301
-pkgrel=2
+pkgver=26.707.62119
+pkgrel=1
 pkgdesc="ChatGPT desktop app repackaged from the upstream macOS release archive for Arch Linux"
 arch=('x86_64')
 url="https://chatgpt.com/download"
@@ -49,7 +49,7 @@ noextract=(
   'electron-v39.8.10-headers.tar.gz'
 )
 
-sha256sums=('4b917af14bdde8b3ddbb00a7bedbb6a12ed5d03f1a56fc107fa0a249b447b27c'
+sha256sums=('a4461f8ec62443d452ec93cfb5ba6f8610e952907657b43c31d26d569abb5846'
             'ad0e29650140c49d0335b1d356596aa8166f12b758f418a98446130e3278f250'
             'c7517f19083ddcb05f276904680eb2b11a6b5ecab778b8e4e5685a6d645b3f60'
             '61069dec76ed8d1c10ab6825b194bdf5a19b653286a7c2684b09c62681427446'
