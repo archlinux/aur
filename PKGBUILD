@@ -4,7 +4,7 @@
 # Contributor: Pierre Dommerc <pierre@nymtech.net>
 
 pkgname=nym-vpnd
-pkgver=2026.11.1
+pkgver=2026.11.2
 pkgrel=1
 pkgdesc='NymVPN daemon as a systemd service'
 arch=('x86_64' 'aarch64')
@@ -15,9 +15,9 @@ makedepends=('rust' 'cargo' 'go' 'protobuf')
 provides=('nym-vpnd' 'nym-exclude' 'nym-socks5-proxy')
 conflicts=('nym-vpnd')
 options=(!debug)
-source=("$url/archive/refs/tags/nym-vpn-v2026.11.1.tar.gz" 'nym-vpnd.service')
-sha256sums=(0bdf8117e471aa814b2d34549edbc9c846ee13baaa95a8d8f03767f829207cf0 66d5b043cbef2ae0ba19cc7685c7b42808515b8b520b0dd15a0c313ca039f6d6)
-_srcdir="nym-vpn-client-nym-vpn-v2026.11.1"
+source=("$url/archive/refs/tags/nym-vpn-v2026.11.2.tar.gz" 'nym-vpnd.service')
+sha256sums=(6d999fce5a83027aaccc71880f12a61ed2b74be6a38d70f0c0258d317c608463 66d5b043cbef2ae0ba19cc7685c7b42808515b8b520b0dd15a0c313ca039f6d6)
+_srcdir="nym-vpn-client-nym-vpn-v2026.11.2"
 
 prepare() {
   pushd "$_srcdir"
