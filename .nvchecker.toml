@@ -1,0 +1,5 @@
+[lazyrsync-bin]
+source = "github"
+github = "westpoint-io/lazyrsync"
+use_latest_release = true
+prefix = "v"
