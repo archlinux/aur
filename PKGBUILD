@@ -2,7 +2,7 @@
 
 _pkgname=pocket-id
 pkgname="${_pkgname}"
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="A simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys to your services."
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${_pkgname}")
 source=(
 	"${_pkgname}::git+${url}.git#tag=v${pkgver}"
 )
-sha256sums=('acb128b3e089fe096d25162097ed1d68c3fc36a7a5f76071f2672189718db7d2')
+sha256sums=('f97895b3614648bf9cc3706a3e5b0e850c7805ff43eef3eae6f010530421bdd7')
 
 function prepare() {
 	cd "${srcdir}/${_pkgname}"
