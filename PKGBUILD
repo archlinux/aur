@@ -1,8 +1,8 @@
 # Maintainer: Sheikh Limon <sheikhlimon404@gmail.com>
 
 pkgname=goose-desktop
-pkgver=1.41.0
-pkgrel=2
+pkgver=1.42.0
+pkgrel=1
 pkgdesc="Goose Desktop (built from source) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=("x86_64")
 url="https://github.com/aaif-goose/goose"
@@ -27,7 +27,7 @@ source=(
   "pnpm-workspace-yaml.patch"
 )
 b2sums=(
-  '95b5d27137090c9f5254109e9d09f6928b423eac81411a5ca78aa73bff8d84476fc736930ad3e82be06d4b9de8fa8af3a688d049357e701298dad2b411c5e1a8'
+  '165df8fdf20b26719b2c38a03d97507b9bea8927847a6aa525101a6cdbe858bed606c41124d5d379aaa118e19abf00b1bfb0fd9a0481dd3dec5a4a8c13e95292'
   '54f29a8b90e067066d21c7a25950b89cb3dbee10b1ba689f019f79adc4fce29d16c183af9e821305e934f6f00411b1ce72684ae0c3ff840c78e3fb031d501841'
 )
 conflicts=("goose-desktop-bin")
