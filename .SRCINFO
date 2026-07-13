@@ -1,7 +1,7 @@
 pkgbase = modiva-launcher-bin
 	pkgdesc = The official Modiva Minecraft launcher
-	pkgver = 1.5.0
-	pkgrel = 3
+	pkgver = 1.5.4
+	pkgrel = 1
 	url = https://modiva-launcher.xyz
 	arch = x86_64
 	license = proprietary
@@ -12,9 +12,9 @@ pkgbase = modiva-launcher-bin
 	provides = modiva-launcher
 	conflicts = modiva-launcher
 	options = !strip
-	source = modiva-launcher-1.5.0.AppImage::https://github.com/modiva-launchers/modiva-releases/releases/download/v1.5.0/Modiva.Launcher_1.5.0_amd64.AppImage
+	source = modiva-launcher-1.5.4.AppImage::https://github.com/modiva-launchers/modiva-releases/releases/download/v1.5.4/Modiva.Launcher_1.5.4_amd64.AppImage
 	source = icon.png
-	sha256sums = f3532e024d335ac31e9f2079e91ac96ce9cc21851101b5531e4b97ad872de68f
+	sha256sums = dcc56e354af0a01b809d1bfd27467893675ba09cecf01682b26f9fee5693d64b
 	sha256sums = 295812bdd6e56cdd816a1e4c7db8f3803be5da302569b397d662d4c92c81874b
 
 pkgname = modiva-launcher-bin
