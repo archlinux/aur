@@ -3,31 +3,32 @@
 
 pkgname=python-funk
 pkgdesc='A mocking framework for Python, influenced by JMock'
-pkgver=0.5.0
-pkgrel=3
+_commit=c9415c25c2f70310550d7db65f3f563481d0cdc5
+pkgver=0.5.0.r12.g${_commit:0:7}
+pkgrel=1
 url='https://github.com/mwilliamson/funk'
 arch=(any)
 license=('BSD-2-Clause')
-checkdepends=('python-nose')
+checkdepends=('python-pytest')
 makedepends=('python-build' 'python-installer' 'python-setuptools')
 depends=('python' 'python-precisely')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('07f4089e1ed46f0c86a666a3c4b4254fd631f748e4c49efe473ac049088f4418f01ffa6443df476b9ba9aa915c10c393d672af192363ab461b115deb6c33918b')
+source=("${pkgname}-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz")
+b2sums=('5ac9925b53eb6f0701359f1c057eff7bd0dbd5f668062bed7545028734414568a2471793a87a5214a25f8c6373d3b6a01af6bb5c2553d0fa2689c3b8ff744176')
 
 build() {
-  cd "funk-${pkgver}"
+  cd "funk-${_commit}"
 
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "funk-${pkgver}"
+  cd "funk-${_commit}"
 
-  : python -m nose test/
+  python -m pytest test/
 }
 
 package() {
-  cd "funk-${pkgver}"
+  cd "funk-${_commit}"
 
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
