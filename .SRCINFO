@@ -1,7 +1,7 @@
 pkgbase = probe-rs-git
 	pkgdesc = A debugging toolset and library for debugging embedded ARM and RISC-V targets on a separate host
-	pkgver = 0.31.0.r117.g7115a8b
-	pkgrel = 2
+	pkgver = 0.31.0.r216.g93fb362
+	pkgrel = 1
 	url = https://github.com/probe-rs/probe-rs
 	arch = x86_64
 	license = Apache-2.0 AND MIT
@@ -10,7 +10,6 @@ pkgbase = probe-rs-git
 	makedepends = cmake
 	makedepends = openssl
 	makedepends = pkgconf
-	depends = glibc
 	depends = libgcc
 	depends = libusb
 	depends = libftdi
