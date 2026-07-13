@@ -1,46 +1,42 @@
 # Maintainer: Martin Etchebarne <martin@etchebarne.net>
 pkgname=kosmos-bin
-pkgver=0.4.9
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="A modern code editor."
+pkgdesc="A code editor where every view is a tab you can place anywhere."
 arch=('x86_64')
 url="https://github.com/etchebarne/kosmos"
 license=('MIT')
-depends=(
-    'fontconfig'
-    'hicolor-icon-theme'
-    'libxcb'
-    'libxkbcommon'
-    'libxkbcommon-x11'
-    'vulkan-driver'
-    'vulkan-icd-loader'
-    'ttf-dejavu'
-    'wayland'
-)
+depends=('fuse2' 'hicolor-icon-theme')
 provides=('kosmos')
 conflicts=('kosmos')
-source=("kosmos-linux-${arch}-${pkgver}.tar.gz::https://github.com/etchebarne/kosmos/releases/download/v${pkgver}/kosmos-linux-${arch}.tar.gz")
-sha256sums=('b5def23889df43b158cf114760e1acb4852a1d8698673a4a28e8121876aca175')
+options=('!strip')
+source=(
+    "${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Kosmos-${pkgver}-x86_64.AppImage"
+    "kosmos-512.png::${url}/raw/v${pkgver}/desktop/assets/icon/icon-512.png"
+    "LICENSE::${url}/raw/v${pkgver}/LICENSE"
+)
+noextract=("${pkgname}-${pkgver}.AppImage")
+sha256sums=('3c509aaa682abf9045bf278a919ebb68b9e370e75d01e1b2a17d66f34581b12e' '2f43bcbd97904721ca9e63eea313f9e9de0ac3981929f3f868fc390796340704' '7abf5af0868286f95c0a3e42d820deead6cc0ae9a3f0a65f72e319ab730c146e')
 
 package() {
-    local appdir="$pkgdir/opt/kosmos"
-    install -d "$appdir"
-    cp -r "$srcdir/Kosmos.app/." "$appdir/"
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/kosmos/Kosmos.AppImage"
+    install -Dm644 "${srcdir}/kosmos-512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/kosmos.png"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    install -d "$pkgdir/usr/bin"
-    ln -s /opt/kosmos/bin/kosmos "$pkgdir/usr/bin/kosmos"
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/kosmos" <<'SH'
+#!/usr/bin/env sh
+exec /opt/kosmos/Kosmos.AppImage "$@"
+SH
 
-    install -Dm644 "$appdir/share/applications/net.etchebarne.Kosmos.desktop" \
-        "$pkgdir/usr/share/applications/net.etchebarne.Kosmos.desktop"
-
-    for size in 16 32 48 64 128 256 512; do
-        install -Dm644 "$appdir/share/icons/hicolor/${size}x${size}/apps/kosmos.png" \
-            "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/kosmos.png"
-    done
-    install -Dm644 "$appdir/share/icons/hicolor/scalable/apps/kosmos.svg" \
-        "$pkgdir/usr/share/icons/hicolor/scalable/apps/kosmos.svg"
-
-    install -Dm644 "$appdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    rm -rf "$appdir/share/applications" "$appdir/share/icons" "$appdir/LICENSE"
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/kosmos.desktop" <<'DESKTOP'
+[Desktop Entry]
+Type=Application
+Name=Kosmos
+Comment=A code editor where every view is a tab you can place anywhere.
+Exec=kosmos
+Icon=kosmos
+Terminal=false
+Categories=Development;IDE;TextEditor;
+StartupWMClass=kosmos
+DESKTOP
 }
