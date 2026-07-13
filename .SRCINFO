@@ -11,11 +11,11 @@ pkgbase = openjiuwen-sandbox
 	makedepends = python-setuptools
 	depends = python>=3.11.4
 	depends = python-fastapi>=0.124.0
-	depends = python-uvicorn>=0.38.0
+	depends = uvicorn>=0.38.0
 	depends = python-httpx>=0.28.0
 	depends = python-yaml
 	depends = python-dotenv
-	depends = python-pyseccomp
+	depends = python-libseccomp-git
 	optdepends = openjiuwen-server: backend that consumes this sandbox via CODE_SANDBOX_URL
 	source = git+https://gitcode.com/openJiuwen/agent-studio.git#tag=v0.1.8
 	source = openjiuwen-sandbox.service

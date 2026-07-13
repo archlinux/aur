@@ -9,11 +9,11 @@ license=('Apache-2.0')
 depends=(
     'python>=3.11.4'
     'python-fastapi>=0.124.0'
-    'python-uvicorn>=0.38.0'
+    'uvicorn>=0.38.0'
     'python-httpx>=0.28.0'
     'python-yaml'
     'python-dotenv'
-    'python-pyseccomp'
+    'python-libseccomp-git'
 )
 makedepends=(
     'python-build'
