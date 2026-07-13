@@ -3,8 +3,8 @@
 
 _pkgname=sigtop
 pkgname=$_pkgname-git
-pkgver=0.23.0.r0.g83df039
-pkgrel=2
+pkgver=0.23.0.r5.g12f3a3c
+pkgrel=1
 pkgdesc='Export messages from Signal Desktop'
 arch=('i686' 'x86_64')
 url="https://github.com/tbvdm/$_pkgname"
@@ -31,10 +31,10 @@ prepare() {
 
 build() {
   cd $_pkgname
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS//-flto*}"
+  export CGO_CFLAGS="${CFLAGS//-flto*} -ftls-model=initial-exec"
+  export CGO_CXXFLAGS="${CXXFLAGS//-flto*}"
+  export CGO_LDFLAGS="${LDFLAGS//-flto*}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go build -o $_pkgname .
 }
