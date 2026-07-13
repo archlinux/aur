@@ -1,0 +1,42 @@
+#!/bin/bash
+# Install gvm2 into ~/.gvm from the packaged tree (CLI remains `gvm`).
+set -euo pipefail
+
+DEST="${1:-$HOME/.gvm}"
+SRC="/usr/share/gvm2"
+
+if [[ ! -d "$SRC" ]]; then
+  echo "ERROR: packaged tree missing at $SRC" >&2
+  exit 1
+fi
+
+if [[ -e "$DEST" ]]; then
+  echo "ERROR: Already installed at $DEST — remove it first (rm -rf $DEST)" >&2
+  exit 1
+fi
+
+mkdir -p "$(dirname "$DEST")"
+cp -a "$SRC" "$DEST"
+
+cat >"$DEST/scripts/gvm" <<EOF
+export GVM_ROOT="$DEST"
+. \$GVM_ROOT/scripts/gvm-default
+EOF
+
+# Create writable state dirs
+mkdir -p "$DEST"/{logs,gos,archive,archive/package,environments,pkgsets}
+
+source_line="[[ -s \"$DEST/scripts/gvm\" ]] && source \"$DEST/scripts/gvm\""
+if [[ -z "${GVM_NO_UPDATE_PROFILE:-}" ]]; then
+  for profile in "$HOME/.zshrc" "$HOME/.bashrc" "$HOME/.bash_profile" "$HOME/.profile"; do
+    if [[ -f "$profile" ]] && ! grep -Fq "$source_line" "$profile"; then
+      printf '\n%s\n' "$source_line" >>"$profile"
+      echo "Updated $profile"
+      break
+    fi
+  done
+fi
+
+echo "Installed gvm2 at $DEST"
+echo "Run: source $DEST/scripts/gvm"
+echo "Then: gvm install go1.22.12"
