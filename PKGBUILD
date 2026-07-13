@@ -3,8 +3,8 @@
 
 _pkgname=pano-scrobbler
 pkgname=pano-scrobbler-bin
-_pkgver=441
-pkgver=4.41
+_pkgver=442
+pkgver=4.42
 pkgrel=1
 pkgdesc="Feature rich scrobbler. Supports Last.fm, ListenBrainz, Libre.fm & Pleroma. With regex edits, charts & Discord Rich Presence on PC."
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ conflicts=("${_pkgname}")
 options=(!strip)
 source_x86_64=("pano-scrobbler-${_pkgver}-linux-x64.tar.gz::${url}/releases/download/${_pkgver}/pano-scrobbler-linux-x64.tar.gz")
 source_aarch64=("pano-scrobbler-${_pkgver}-linux-arm64.tar.gz::${url}/releases/download/${_pkgver}/pano-scrobbler-linux-arm64.tar.gz")
-sha256sums_x86_64=('814f1a39cbb2aec621f9f44b3d8d2b6b5242d5b20543a70d506bc847a23dde21')
-sha256sums_aarch64=('1c46313a76d7c8b3e029106052c90719a48b6a05c9b63e12e8f2d44cf5064e6e')
+sha256sums_x86_64=('eb359ec01e571241c658a61ba63e281c767c3a624fd7e0cfec2dbaf2c7615ff3')
+sha256sums_aarch64=('4af1b62393514707e9e405a220e1f5085e6491cbadc91c135aa99ca1bed871c8')
 
 prepare() {
     # Patch desktop entry
