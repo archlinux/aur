@@ -2,7 +2,7 @@
 
 _reponame="Solian"
 pkgname=solian-git
-pkgver=r2618.21ce6b8b
+pkgver=r2920.a9b15408
 pkgrel=1
 pkgdesc="Next Generation Network Center (unstable)"
 arch=('x86_64')
@@ -29,6 +29,7 @@ makedepends=(
   'clang'
   'cmake'
   'ninja'
+  'patchelf'
 )
 
 provides=('solian')
@@ -80,8 +81,22 @@ build() {
 
   flutter precache --linux
   flutter pub get
+
+  # patch libwebrtc
+  echo 'set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -include stdint.h")' >> linux/flutter/ephemeral/.plugin_symlinks/flutter_webrtc/linux/CMakeLists.txt
+
+  # patch quickjs bridge
+  _qjs_so="linux/flutter/ephemeral/.plugin_symlinks/flutter_js/linux/shared/libquickjs_c_bridge_plugin.so"
+  patchelf --rename-dynamic-symbols /dev/stdin "$_qjs_so" << 'EOF'
+js_malloc qjs_malloc
+js_realloc qjs_realloc
+js_free qjs_free
+EOF
+
   dart run build_runner build --delete-conflicting-outputs
   flutter build linux --no-pub --release
+
+  cp "$_qjs_so" build/linux/x64/release/bundle/lib/
 }
 
 package() {
