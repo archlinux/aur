@@ -5,12 +5,12 @@
 # run on the native Arch Linux stack. This fixes YouTube and Vulkan/Wayland crashes.
 
 pkgname=ardali-bin
-pkgver=5.2.13
+pkgver=5.2.17
 pkgrel=1
 pkgdesc="ArDali WebMedia multimedia ecosystem for Linux"
 arch=('x86_64')
 url="https://ardali.app"
-license=('MIT')
+license=('GPL-3.0-only')
 depends=(
   'alsa-lib'
   'gtk3'
@@ -32,7 +32,7 @@ _appimage="ArDali-${pkgver}-linux-x86_64.AppImage"
 source=(
   "https://github.com/${_owner}/${_repo}/releases/download/${_tag}/${_appimage}"
 )
-sha256sums=('SKIP')
+sha256sums=('32e8942c05a7a7a42185d4ea93072c528a72081005d36e6de5061734ce79e53e')
 
 build() {
   cd "${srcdir}"
