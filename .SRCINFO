@@ -1,14 +1,13 @@
 pkgbase = tuc
 	pkgdesc = A more powerful alternative to cut
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/riquito/tuc
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = cargo
-	depends = gcc-libs
-	depends = glibc
+	depends = libgcc
 	source = tuc-1.3.0.tar.gz::https://github.com/riquito/tuc/archive/refs/tags/v1.3.0.tar.gz
 	sha256sums = 81dc5f4a0355ecdf9515c88c34c365d20f339d316df7dbe72667cd2b18445c61
 

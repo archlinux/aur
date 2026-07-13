@@ -1,4 +1,5 @@
 [tuc]
 source = "git"
 git = "https://github.com/riquito/tuc.git"
+include_regex = 'v[0-9.]+'
 prefix = "v"
