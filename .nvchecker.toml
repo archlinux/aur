@@ -1,0 +1,4 @@
+[rmlui]
+source = "github"
+github = "mikke89/RmlUi"
+use_max_tag = true
