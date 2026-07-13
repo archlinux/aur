@@ -2,16 +2,16 @@
 
 pkgname=f3-qt
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple GUI for F3 - Fight Flash Fraud."
 arch=(i686 x86_64)
 url="https://github.com/zwpwjwtz/f3-qt"
-license=(GPL3)
+license=('GPL-3.0-or-later')
 depends=(f3 qt6-base)
 makedepends=(git)
 provides=(f3-qt)
 conflicts=(f3-qt-git)
-source=($pkgname-$pkgver::git+$url#commit=65d58d07e08a31753162df33eb9b517de66704e0)
+source=("$pkgname-$pkgver::git+$url#commit=65d58d07e08a31753162df33eb9b517de66704e0")
 sha256sums=('f7bdf322317d946e810648dd3acb662edaedddfa8fb76dab0f89f3ccdc2f8a72')
 
 prepare() {
@@ -20,7 +20,7 @@ prepare() {
 
 build() {
     cd "$srcdir"/$pkgname-$pkgver
-    qmake
+    qmake6 -config release
     make
 }
 
