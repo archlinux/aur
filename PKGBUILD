@@ -1,6 +1,6 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgname=richmond-council-rss
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Scrapes the Richmond upon Thames council news pages and serves them as an RSS feed"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/dcelasun/richmond-council-rss"
 license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dcelasun/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a5d762b2115a3dbad45e70c0bb606689a8a5cd8210087d4772f00b0869fdb6e3')
+sha256sums=('fbb32d3f700e03d778d0eb480170ba90ad99e51cba7397378018f90380f6eead')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
