@@ -2,7 +2,7 @@
 
 pkgname=python-alibabacloud-credentials
 _name=${pkgname#python-}
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="The alibabacloud credentials module of alibabaCloud Python SDK."
 provides=(${pkgname})
@@ -31,7 +31,7 @@ makedepends=(
 optdepends=()
 license=('Apache-2.0')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('db4d7b915019c89b6e20083322d62edae06f4dcb182ccec60679d26d3de48ad5')
+sha256sums=('f3a786bb7459580e254ca299406112eb1e18b9925fae291aa57b73d09cb01d04')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx

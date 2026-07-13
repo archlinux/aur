@@ -1,6 +1,6 @@
 pkgbase = python-alibabacloud-credentials
 	pkgdesc = The alibabacloud credentials module of alibabaCloud Python SDK.
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/aliyun/credentials-python
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-alibabacloud-credentials
 	depends = python-alibabacloud-credentials-api
 	provides = python-alibabacloud-credentials
 	conflicts = python-alibabacloud-credentials
-	source = alibabacloud-credentials::git+https://github.com/aliyun/credentials-python.git#tag=v1.0.8
-	sha256sums = db4d7b915019c89b6e20083322d62edae06f4dcb182ccec60679d26d3de48ad5
+	source = alibabacloud-credentials::git+https://github.com/aliyun/credentials-python.git#tag=v1.0.9
+	sha256sums = f3a786bb7459580e254ca299406112eb1e18b9925fae291aa57b73d09cb01d04
 
 pkgname = python-alibabacloud-credentials
