@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=rust-i18n-cli
-pkgver=4.0.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="cargo-i18n tool for the rust-i18n crate"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a6ffd47787049fadf8fef5233cfc2886fba0e2e37cc7b9dbe7fe8e21b7790f67')
+sha256sums=('d8fc3c31ae00638094a064de93c265a5e8502d85992d7642f8a58edc9b9ec870')
 
 prepare() {
   cd "${pkgname%-cli}-$pkgver/crates/cli"
