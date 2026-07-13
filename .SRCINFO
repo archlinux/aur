@@ -1,6 +1,6 @@
 pkgbase = python-json-repair
 	pkgdesc = Repair invalid JSON documents
-	pkgver = 0.61.2
+	pkgver = 0.61.4
 	pkgrel = 1
 	url = https://github.com/joseph-bing/json-repair
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-json-repair
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	source = python-json-repair-0.61.2.tar.gz::https://files.pythonhosted.org/packages/source/j/json-repair/json_repair-0.61.2.tar.gz
-	sha256sums = b63ae5ad44c8720158e24bdd7e33506f7036174c287831b187a51619a6f58a34
+	source = python-json-repair-0.61.4.tar.gz::https://files.pythonhosted.org/packages/source/j/json-repair/json_repair-0.61.4.tar.gz
+	sha256sums = d78c212c1d72606bee30a7886820c9d6f7dbd659883dc2397304735a59f7bf86
 
 pkgname = python-json-repair
