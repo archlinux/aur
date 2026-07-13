@@ -3,7 +3,7 @@
 
 pkgname=openrdap-client
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenRDAP is an command line RDAP client implementation in Go."
 url="https://www.openrdap.org/"
 arch=("x86_64")
@@ -34,4 +34,5 @@ package() {
 	cd rdap-${pkgver}
 	install -Dm755 cmd/rdap/rdap "$pkgdir/usr/bin/rdap"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 rdap.1 "${pkgdir}/usr/share/man/man1/rdap.1"
 }
