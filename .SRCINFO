@@ -1,15 +1,15 @@
 pkgbase = oracle-instantclient-jdbc
 	pkgdesc = Additional support for XA, Internationalization, and RowSet operations under JDBC
-	pkgver = 23.7.0.25.01
+	pkgver = 23.26.2.0.0
 	pkgrel = 1
 	url = https://www.oracle.com/at/database/technologies/instant-client/downloads.html
 	arch = x86_64
 	license = custom:OTN
-	depends = oracle-instantclient-basic=23.7.0.25.01
+	depends = oracle-instantclient-basic=23.26.2.0.0
 	replaces = instantclient-jdbc
 	options = !strip
-	source = https://download.oracle.com/otn_software/linux/instantclient/2370000/instantclient-jdbc-linux.x64-23.7.0.25.01.zip
-	md5sums = 5497ca90dfad38fc755ff524484717af
-	sha256sums = 140481218144a5ccf506cd75a062c86edd47df9c148b3fa3bcb12ca49295b832
+	source = https://download.oracle.com/otn_software/linux/instantclient/2326200v2/instantclient-jdbc-linux.x64-23.26.2.0.0.zip
+	md5sums = 793f2a28f992077e756b16d2ea235bf6
+	sha256sums = 91913fd78fe5445ae491217d92b4ae99a376a9e955e44184b902fa04a5e3bc50
 
 pkgname = oracle-instantclient-jdbc
