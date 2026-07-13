@@ -1,0 +1,17 @@
+# https://reuse.software/spec/
+# SPDX-License-Identifier: 0BSD
+version = 1
+SPDX-Package-Download-URL = "https://files.pythonhosted.org/packages/source/s/slack-bolt/"
+
+[[annotations]]
+path = ["PKGBUILD", ".SRCINFO"]
+SPDX-FileCopyrightText = "Copyright Arch Linux Contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = ["LICENSE"]
+SPDX-FileCopyrightText = "Copyright Arch Linux Contributors"
+SPDX-License-Identifier = "0BSD"
+
+# The upstream package (slack_bolt) is MIT-licensed; the upstream LICENSE file
+# is installed at /usr/share/licenses/python-slack-bolt/LICENSE by the package.
