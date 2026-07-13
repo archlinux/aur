@@ -1,0 +1,65 @@
+_dkms_name=greenboost
+_version_file=/usr/share/greenboost/dkms-version
+
+_dkms_ver() {
+    cat "$_version_file" 2>/dev/null
+}
+
+post_install() {
+    local ver; ver=$(_dkms_ver)
+    if [[ -z "$ver" ]]; then
+        echo ":: ERROR: cannot determine DKMS version — $_version_file is missing"
+        return 1
+    fi
+
+    echo ":: Building and installing GreenBoost kernel module via DKMS..."
+    echo "   (compiling against your running kernel — this may take a minute)"
+
+    if dkms install "$_dkms_name/$ver"; then
+        echo ":: DKMS module installed successfully."
+        echo ""
+        echo "   ── Quick start ──────────────────────────────────────────"
+        echo "   1. Load the module:   sudo modprobe greenboost"
+        echo "   2. Check status:      cat /sys/class/greenboost/greenboost/status"
+        echo "   3. Wrap any command:  greenboost-run <your-app>"
+        echo ""
+        echo "   Module parameters are auto-detected from your hardware."
+        echo ""
+        echo "   ── Full system tuning (optional) ──────────────────────"
+        echo "   For sysctl tuning, GRUB params, systemd services, and"
+        echo "   AI/compute package setup, run the upstream setup script:"
+        echo ""
+        echo "     git clone https://gitlab.com/IsolatedOctopi/greenboost"
+        echo "     cd greenboost && sudo ./greenboost_setup_arch.sh"
+        echo ""
+        echo "   Choose mode [2] Full system setup in the wizard."
+    else
+        echo ":: WARNING: DKMS build failed."
+        echo "   Ensure kernel headers are installed for your running kernel:"
+        echo "     pacman -S linux-headers"
+        echo "   (or linux-zen-headers, linux-lts-headers, etc.)"
+        echo "   Then retry:  sudo dkms install $_dkms_name/$ver"
+    fi
+}
+
+pre_upgrade() {
+    if lsmod | grep -q '^greenboost '; then
+        echo ":: Unloading greenboost module before upgrade..."
+        rmmod greenboost 2>/dev/null || true
+    fi
+}
+
+pre_remove() {
+    local ver; ver=$(_dkms_ver)
+    if [[ -n "$ver" ]]; then
+        echo ":: Removing GreenBoost DKMS module from all kernels..."
+        rmmod greenboost 2>/dev/null || true
+        dkms remove "$_dkms_name/$ver" --all 2>/dev/null || true
+    fi
+}
+
+post_remove() {
+    echo ":: GreenBoost removed."
+    echo "   Remaining files you may want to clean manually:"
+    echo "   - /var/lib/greenboost/    (runtime state, if any)"
+}
