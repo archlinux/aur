@@ -1,6 +1,6 @@
 pkgbase = cortexfs-git
 	pkgdesc = Unix-style filesystem and CLI surface for AI agents
-	pkgver = 0.1.0.r569.gdea3f71
+	pkgver = 0.1.0.r570.gedbff53
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/cortexfs
 	arch = x86_64
