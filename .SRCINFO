@@ -1,6 +1,6 @@
 pkgbase = dblab-bin
 	pkgdesc = Interactive client for PostgreSQL, MySQL, SQLite3, Oracle and SQL Server
-	pkgver = 0.43.0
+	pkgver = 0.43.1
 	pkgrel = 1
 	url = https://github.com/danvergara/dblab
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = dblab-bin
 	license = MIT
 	provides = dblab
 	conflicts = dblab
-	source_x86_64 = dblab_0.43.0_x86_64.tgz::https://github.com/danvergara/dblab/releases/download/v0.43.0/dblab_0.43.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = bfdb98d6482d76fdda87192883cbe5965d401e09ef4face4b5b85930c6d5234f
-	source_aarch64 = dblab_0.43.0_aarch64.tgz::https://github.com/danvergara/dblab/releases/download/v0.43.0/dblab_0.43.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 7d1c84d6df3fbd0ae87954ebbbf7dec80822756553c997c1614944889bb20da4
+	source_x86_64 = dblab_0.43.1_x86_64.tgz::https://github.com/danvergara/dblab/releases/download/v0.43.1/dblab_0.43.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 89ce00fd66a3f0fdddd8200d5ad8f99a71b711bc0284210577f7512daa7c44cc
+	source_aarch64 = dblab_0.43.1_aarch64.tgz::https://github.com/danvergara/dblab/releases/download/v0.43.1/dblab_0.43.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1a5494b696a056c27b779c68c54d1edcf4b67a750da32a40bfc919a3a38c0cf9
 
 pkgname = dblab-bin
