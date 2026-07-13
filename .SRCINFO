@@ -1,0 +1,24 @@
+pkgbase = python-alibabacloud-esa20240910
+	pkgdesc = Alibaba Cloud ESA (20240910) SDK Library for Python
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://pypi.org/project/alibabacloud_esa20240910
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-alibabacloud-tea-openapi
+	depends = python-darabonba-core
+	provides = alibabacloud_esa20240910
+	provides = python-alibabacloud-esa20240910
+	conflicts = alibabacloud_esa20240910
+	conflicts = python-alibabacloud-esa20240910
+	options = !strip
+	options = !debug
+	source = alibabacloud_esa20240910-3.5.0.tar.gz::https://files.pythonhosted.org/packages/source/a/alibabacloud_esa20240910/alibabacloud_esa20240910-3.5.0.tar.gz
+	sha256sums = 8624617ff51a21037269c32ebece51608ebb3bf27274cba07663b26cfb553dae
+
+pkgname = python-alibabacloud-esa20240910
