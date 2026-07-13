@@ -1,0 +1,5 @@
+[toast]
+source = "github"
+github = "paradise-runner/toast"
+use_latest_release = true
+prefix = "v"
