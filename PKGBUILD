@@ -2,7 +2,7 @@
 
 pkgname=python-jiuwenswarm
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source multi-agent orchestration framework (Python backend + bundled React frontend)"
 arch=('any')
 url="https://pypi.org/project/jiuwenswarm/"
@@ -54,7 +54,10 @@ optdepends=(
 # PyPI wheel is pure-Python (`py3-none-any`) and bundles the built React frontend `dist/`,
 # so no Node.js build step is required at install time.
 source=(
-    "${pkgname}-${pkgver}-py3-none-any.whl::https://files.pythonhosted.org/packages/83/0f/d8368cccd39019ffb7fa3610151fa5f2b129385b163b4f09c9451e1a1eb4/jiuwenswarm-${pkgver}-py3-none-any.whl"
+    # Local filename must match the wheel's internal .dist-info directory name
+    # (jiuwenswarm-${pkgver}.dist-info). Using ${pkgname}- prefix breaks
+    # python -m installer's filename-to-dist-info check.
+    "jiuwenswarm-${pkgver}-py3-none-any.whl::https://files.pythonhosted.org/packages/83/0f/d8368cccd39019ffb7fa3610151fa5f2b129385b163b4f09c9451e1a1eb4/jiuwenswarm-${pkgver}-py3-none-any.whl"
 )
 sha256sums=('2a5814b6865dd5932497c4d61ca2374483a174c905652937d671c1f4f99ce817')
 
@@ -62,16 +65,16 @@ prepare() {
     # Extract wheel metadata so we can install LICENSE to the canonical path
     # without polluting $pkgdir with a second copy of the dist-info tree.
     python -m zipfile -e \
-        "$srcdir/${pkgname}-${pkgver}-py3-none-any.whl" \
+        "$srcdir/jiuwenswarm-${pkgver}-py3-none-any.whl" \
         "$srcdir/wheel-extract"
 }
 
 package() {
     cd "$srcdir"
     python -m installer --destdir="$pkgdir" \
-        "${pkgname}-${pkgver}-py3-none-any.whl"
+        "jiuwenswarm-${pkgver}-py3-none-any.whl"
 
     install -Dm644 \
-        "$srcdir/wheel-extract/${pkgname}-${pkgver}.dist-info/licenses/LICENSE" \
+        "$srcdir/wheel-extract/jiuwenswarm-${pkgver}.dist-info/licenses/LICENSE" \
         "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }

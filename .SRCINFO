@@ -1,7 +1,7 @@
 pkgbase = python-jiuwenswarm
 	pkgdesc = Open-source multi-agent orchestration framework (Python backend + bundled React frontend)
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/jiuwenswarm/
 	arch = any
 	license = Apache-2.0
@@ -44,7 +44,7 @@ pkgbase = python-jiuwenswarm
 	optdepends = python-pywebview: desktop application GUI (jiuwenswarm-desktop)
 	optdepends = jiuwenswarm-tui: terminal UI client — no Linux wheel published upstream; build from source or skip
 	optdepends = openjiuwen: distributed deployment extras (postgres, zmq backends)
-	source = python-jiuwenswarm-0.2.2-py3-none-any.whl::https://files.pythonhosted.org/packages/83/0f/d8368cccd39019ffb7fa3610151fa5f2b129385b163b4f09c9451e1a1eb4/jiuwenswarm-0.2.2-py3-none-any.whl
+	source = jiuwenswarm-0.2.2-py3-none-any.whl::https://files.pythonhosted.org/packages/83/0f/d8368cccd39019ffb7fa3610151fa5f2b129385b163b4f09c9451e1a1eb4/jiuwenswarm-0.2.2-py3-none-any.whl
 	sha256sums = 2a5814b6865dd5932497c4d61ca2374483a174c905652937d671c1f4f99ce817
 
 pkgname = python-jiuwenswarm
