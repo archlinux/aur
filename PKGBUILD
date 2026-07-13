@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Git-native cross-forge collaboration: posts, issues, PRs, releases, all in your repo"
 
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('07b4a765c716b9379c2379b200dd4cccab28740cab9bf7126f4e921c5bca9f61')
-sha256sums_aarch64=('a37fb30b18c20784f312f0aca118e518aa9f9fdcad06f75ab161eda60fb3cc57')
+sha256sums_x86_64=('57bf40772f65abda512be56c760063aa97672526fc5e677505e57a5b52a85bed')
+sha256sums_aarch64=('9e0e3de20e6757aed6b2d27fadf8fc05c22d7354584e41e85d10df5f3cbdbc43')
 
 
 package() {
