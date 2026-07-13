@@ -8,7 +8,7 @@
 _pkgname="jitsi-meet-desktop"
 pkgname="$_pkgname"
 pkgver="2026.7.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet desktop application"
 url="https://github.com/jitsi/jitsi-meet-electron"
 license=('Apache-2.0')
@@ -106,7 +106,7 @@ Exec=$_pkgname %U
 Icon=$_pkgname
 Terminal=false
 MimeType=x-scheme-handler/jitsi-meet;
-StartupWMClass=jitsi-meet
+StartupWMClass=org.jitsi.jitsi-meet
 Categories=VideoConference;AudioVideo;Audio;Video;Network;
 END
 
