@@ -1,6 +1,6 @@
 # Maintainer: T9Tuco <tucot9@tuta.io>
 pkgname=usbunker
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Encrypt and decrypt USB drives with AES-256-GCM"
 arch=('x86_64')
