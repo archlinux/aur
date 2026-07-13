@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=opengnb-git
-pkgver=1.6.3.2.g4ea7ab4
-pkgrel=2
+pkgver=1.6.6
+pkgrel=1
 pkgdesc="GNB is open source de-centralized VPN to achieve layer3 network via p2p with the ultimate capability of NAT Traversal."
 arch=($CARCH)
 url="https://github.com/gnbdev/opengnb"
@@ -11,8 +11,8 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 depends=(
-    bash
-    glibc)
+    sh
+)
 makedepends=(git
     sed
     # libnatpmp
@@ -21,14 +21,14 @@ makedepends=(git
 )
 optdepends=()
 backup=()
-options=('!makeflags')
+options=('!makeflags' '!debug')
 install=
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    git describe --tags --always | sed 's/^v\{0,1\}ver\{0,1\}//' | sed 's|-|.|g'
+    git describe --tags --always | sed 's/^v\{0,1\}ver\{0,1\}//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
