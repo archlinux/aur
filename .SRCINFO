@@ -1,20 +1,18 @@
 pkgbase = greenboost-git
-	pkgdesc = CUDA memory orchestrator for NVIDIA GPUs — unified VRAM + System RAM + SSD pool (dev fork, fix/arch-compat branch)
-	pkgver = 2.8.2.r13.1bb976e
+	pkgdesc = CUDA memory orchestrator for NVIDIA GPUs — unified VRAM + System RAM + SSD pool
+	pkgver = 3.2.r45.157ee71
 	pkgrel = 1
-	url = https://gitlab.com/evorster/greenboost
+	url = https://gitlab.com/IsolatedOctopi/greenboost
 	install = greenboost-git.install
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = git
-	makedepends = vulkan-headers
 	depends = dkms
 	optdepends = cuda: for TurboQuant KV cache compression
-	optdepends = vulkan-icd-loader: for Vulkan implicit layer (gaming support)
 	optdepends = lib32-glibc: needed if 32-bit audit library is shipped (built automatically when multilib is present)
 	provides = greenboost
 	conflicts = greenboost
-	source = git+https://gitlab.com/evorster/greenboost.git#branch=fix/arch-compat
+	source = git+https://gitlab.com/IsolatedOctopi/greenboost.git
 	sha256sums = SKIP
 
 pkgname = greenboost-git
