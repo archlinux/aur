@@ -1,6 +1,6 @@
 pkgbase = clang-static-git
 	pkgdesc = LLVM compiler and tools for C-family languages (git, statically linked LLVM libs)
-	pkgver = 23.0.0_r586042.adfcabc5d0d2
+	pkgver = 23.0.0_r540.6733bc302640
 	pkgrel = 1
 	url = https://clang.llvm.org/
 	arch = x86_64

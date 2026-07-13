@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=clang-static-git
-pkgver=23.0.0_r586042.adfcabc5d0d2
+pkgver=23.0.0_r540.6733bc302640
 pkgrel=1
 pkgdesc='LLVM compiler and tools for C-family languages (git, statically linked LLVM libs)'
 arch=(x86_64)
@@ -88,7 +88,9 @@ build() {
     -D CMAKE_INSTALL_PREFIX=/usr
     -D CMAKE_INSTALL_DOCDIR=share/doc
     -D LLVM_ENABLE_PROJECTS='clang;clang-tools-extra'
-    -D LLVM_ENABLE_RUNTIMES='compiler-rt'
+    -D LLVM_ENABLE_RUNTIMES='compiler-rt;libcxx;libcxxabi;libunwind'
+    -D CLANG_DEFAULT_CXX_STDLIB=libstdc++
+    -D CLANG_DEFAULT_RTLIB=libgcc
     -D LLVM_BUILD_LLVM_DYLIB=OFF
     -D LLVM_LINK_LLVM_DYLIB=OFF
     -D LLVM_INCLUDE_TESTS=ON
@@ -121,6 +123,10 @@ package() {
   # Remove files that conflict with the llvm package
   rm -f "$pkgdir"/usr/bin/clang-offload-packager
   rm -f "$pkgdir"/usr/bin/llvm-offload-binary
+
+  # Remove files that conflict with the libunwind package
+  rm -f "$pkgdir"/usr/include/libunwind.h
+  rm -f "$pkgdir"/usr/include/unwind.h
 
   install -Dm644 llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
