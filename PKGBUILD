@@ -2,10 +2,12 @@
 
 pkgname=raspi-sump
 pkgver=2.0.4
-pkgrel=6
+pkgrel=7
+_commit=cdcac05b58a1d8820bd87271fdf7977f45e32c28
+_srcname=$pkgname-$_commit
 pkgdesc="Sump pit water level monitoring system for the Raspberry Pi"
 arch=(any)
-url="https://www.linuxnorth.org/raspi-sump/"
+url="https://github.com/graysky2/raspi-sump"
 license=(Apache-2.0)
 conflicts=("${pkgname/-}")
 depends=(
@@ -28,45 +30,21 @@ backup=(etc/nginx/sites-available/raspi-sump
         etc/raspi-sump/raspisump.conf
         etc/raspi-sump/credentials.conf)
 install=raspi-sump.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/alaudet/raspi-sump/archive/refs/tags/v$pkgver.tar.gz"
+source=("$pkgname-${_commit:0:10}.tar.gz::https://github.com/graysky2/raspi-sump/archive/$_commit.tar.gz"
         $pkgname.sysusers
         $pkgname.tmpfiles
-        60-gpiochips.rules
-        0001-fix-init-schema-on-path-to-prevent-500-error-on-fresh-installs.patch
-        0002-Add-12h-24h-time-format-setting-for-chart-x-axis.patch
-        0003-Isolate-service-logs-in-a-dedicated-journal-namespac.patch
-        0004-Replace-sudo-with-a-scoped-polkit-rule-for-service-c.patch
-        0005-Log-unit-start-stop-markers-into-the-raspisump-journ.patch
-        0006-Add-web-UI-favicon.patch
       )
-sha256sums=('7593bb0cc9da93276245b39df1a4e2ac938e074b2059eaabdc3cb5e80ecdf9b8'
+sha256sums=('d5a097881b23087fb108949224565bd803079a8e67668660b83ecaefd4c58d54'
             '2a1c98aa86db079d4f8d36a32d7577f8aea0e5e24c1676e8f7a1fdc500ea645f'
-            '8fbf8f9725d42928e4fd9626426da5338324cd87d6a9b2a967193f6a47790f01'
-            '6ceae2aa160f8f591935a17dd4b33f3dfc4b5d8defa15a1d89595a880046030a'
-            '11913d44482a95e5b7b25ab7f97537897f36e44fd2bb3fe347939fad53986efc'
-            'a166a2c8ef227f594019418a7e926ab383da842dd3341934d9a50292aef47f76'
-            'd9536876b4a630f3359032aae7ad32da314f1a2aa07d096c52148f070d6d6139'
-            '6fdbd032e145fdef1b2cb517e3f8e988b7937ac7b561fb6db714150bd227a21b'
-            '255abfa5342188190e9a4a2b3307001b87436093167548354e6511d3b3fb8ae4'
-            '9a36931e22e980f3313058cd9c9d4663c365abb2a246870c08d3dae934d5a67d')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  patch -p1 -i ../0001-fix-init-schema-on-path-to-prevent-500-error-on-fresh-installs.patch
-  patch -p1 -i ../0002-Add-12h-24h-time-format-setting-for-chart-x-axis.patch
-  patch -p1 -i ../0003-Isolate-service-logs-in-a-dedicated-journal-namespac.patch
-  patch -p1 -i ../0004-Replace-sudo-with-a-scoped-polkit-rule-for-service-c.patch
-  patch -p1 -i ../0005-Log-unit-start-stop-markers-into-the-raspisump-journ.patch
-  patch -p1 -i ../0006-Add-web-UI-favicon.patch
-}
+            '8fbf8f9725d42928e4fd9626426da5338324cd87d6a9b2a967193f6a47790f01')
 
 build() {
-  cd "raspi-sump-$pkgver"
+  cd "$pkgname-$_commit"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "raspi-sump-$pkgver"
+  cd "$pkgname-$_commit"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
@@ -84,7 +62,7 @@ package() {
     "$pkgdir/usr/share/polkit-1/rules.d/49-raspisump.rules"
 
   install -d "$pkgdir/usr/lib/udev/rules.d"
-  install -Dm0644 "$srcdir"/60-gpiochips.rules "$pkgdir/usr/lib/udev/rules.d/60-gpiochips.rules"
+  install -Dm0644 conf/udev/60-gpiochips.rules "$pkgdir/usr/lib/udev/rules.d/60-gpiochips.rules"
 
   install -Dm644 conf/raspisump.conf "$pkgdir/etc/raspi-sump/raspisump.conf"
   install -Dm640 conf/credentials.conf "$pkgdir/etc/raspi-sump/credentials.conf"
