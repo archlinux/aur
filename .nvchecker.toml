@@ -1,0 +1,4 @@
+[gambit]
+source = "git"
+git = "https://github.com/gambitproject/gambit.git"
+prefix = "v"

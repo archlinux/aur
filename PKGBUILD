@@ -2,25 +2,25 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=(gambit python-pygambit)
-pkgver=16.6.0
+pkgver=16.7.0
 pkgrel=1
 pkgdesc="Tools for doing computation in game theory"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url='https://github.com/gambitproject/gambit'
-license=('GPL-2.0-or-later')
-depends=('gcc-libs')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'cython')
+license=(GPL-2.0-or-later)
+depends=(libgcc libgcc_s.so)
+makedepends=(python-build python-installer python-setuptools python-wheel cython)
 checkdepends=(
-    'python-numpy'
-    'python-scipy'
-    'jupyter-nbclient'
-    'jupyter-nbformat'
-    'python-ipykernel'
-    'python-pytest'
-    'python-pandas'
-    'python-pytest-subtests')
+    python-numpy
+    python-scipy
+    jupyter-nbclient
+    jupyter-nbformat
+    python-ipykernel
+    python-pytest
+    python-pandas
+    python-pytest-subtests)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5d0ac6809841b02347b31accfb6ee31d6ae0593f33dcf58b71b9ca543b465fd9')
+sha256sums=('0d7c807b40cdc0d52c23e1585a4472da2c87ca63e306c4c00b55bf21841f9ce0')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -29,7 +29,7 @@ build() {
     libtoolize
     automake --add-missing
     autoconf
-    ./configure --prefix=/usr --disable-enumpoly
+    ./configure --prefix=/usr
     make
 
     python -m build --wheel --no-isolation
@@ -39,7 +39,7 @@ check() {
     cd "$pkgname-$pkgver"
     python -m venv --system-site-packages test-env
     test-env/bin/python -m installer dist/*.whl
-    test-env/bin/python -P -m pytest
+    test-env/bin/python -P -m pytest -x
 }
 
 package_gambit() {

@@ -1,6 +1,6 @@
 pkgbase = gambit
 	pkgdesc = Tools for doing computation in game theory
-	pkgver = 16.6.0
+	pkgver = 16.7.0
 	pkgrel = 1
 	url = https://github.com/gambitproject/gambit
 	arch = i686
@@ -17,15 +17,18 @@ pkgbase = gambit
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	makedepends = cython
-	depends = gcc-libs
-	source = gambit-16.6.0.tar.gz::https://github.com/gambitproject/gambit/archive/v16.6.0.tar.gz
-	sha256sums = 5d0ac6809841b02347b31accfb6ee31d6ae0593f33dcf58b71b9ca543b465fd9
+	depends = libgcc
+	depends = libgcc_s.so
+	source = gambit-16.7.0.tar.gz::https://github.com/gambitproject/gambit/archive/v16.7.0.tar.gz
+	sha256sums = 0d7c807b40cdc0d52c23e1585a4472da2c87ca63e306c4c00b55bf21841f9ce0
 
 pkgname = gambit
 
 pkgname = python-pygambit
-	depends = gcc-libs
+	depends = libgcc
+	depends = libgcc_s.so
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-pandas
