@@ -1,6 +1,6 @@
 # Maintainer: Martin Etchebarne <martin@etchebarne.net>
 pkgname=kosmos-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A code editor where every view is a tab you can place anywhere."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "LICENSE::${url}/raw/v${pkgver}/LICENSE"
 )
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha256sums=('3c509aaa682abf9045bf278a919ebb68b9e370e75d01e1b2a17d66f34581b12e' '2f43bcbd97904721ca9e63eea313f9e9de0ac3981929f3f868fc390796340704' '7abf5af0868286f95c0a3e42d820deead6cc0ae9a3f0a65f72e319ab730c146e')
+sha256sums=('abc906b37331b61ed357e92ad5a2a4301528f8364323b43d6c021fadaa86f881' '2f43bcbd97904721ca9e63eea313f9e9de0ac3981929f3f868fc390796340704' '7abf5af0868286f95c0a3e42d820deead6cc0ae9a3f0a65f72e319ab730c146e')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/kosmos/Kosmos.AppImage"

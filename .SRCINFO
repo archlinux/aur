@@ -1,6 +1,6 @@
 pkgbase = kosmos-bin
 	pkgdesc = A code editor where every view is a tab you can place anywhere.
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/etchebarne/kosmos
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = kosmos-bin
 	depends = hicolor-icon-theme
 	provides = kosmos
 	conflicts = kosmos
-	noextract = kosmos-bin-0.5.0.AppImage
+	noextract = kosmos-bin-0.5.1.AppImage
 	options = !strip
-	source = kosmos-bin-0.5.0.AppImage::https://github.com/etchebarne/kosmos/releases/download/v0.5.0/Kosmos-0.5.0-x86_64.AppImage
-	source = kosmos-512.png::https://github.com/etchebarne/kosmos/raw/v0.5.0/desktop/assets/icon/icon-512.png
-	source = LICENSE::https://github.com/etchebarne/kosmos/raw/v0.5.0/LICENSE
-	sha256sums = 3c509aaa682abf9045bf278a919ebb68b9e370e75d01e1b2a17d66f34581b12e
+	source = kosmos-bin-0.5.1.AppImage::https://github.com/etchebarne/kosmos/releases/download/v0.5.1/Kosmos-0.5.1-x86_64.AppImage
+	source = kosmos-512.png::https://github.com/etchebarne/kosmos/raw/v0.5.1/desktop/assets/icon/icon-512.png
+	source = LICENSE::https://github.com/etchebarne/kosmos/raw/v0.5.1/LICENSE
+	sha256sums = abc906b37331b61ed357e92ad5a2a4301528f8364323b43d6c021fadaa86f881
 	sha256sums = 2f43bcbd97904721ca9e63eea313f9e9de0ac3981929f3f868fc390796340704
 	sha256sums = 7abf5af0868286f95c0a3e42d820deead6cc0ae9a3f0a65f72e319ab730c146e
 
