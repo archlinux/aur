@@ -1,7 +1,7 @@
 # Maintainer: MingxuanGame <MingxuanGame@outlook.com>
 
 pkgname=osu-gu
-pkgver=2026.710.0
+pkgver=2026.713.0
 pkgrel=1
 pkgdesc="A free-to-win rhythm game. GooGuTeam fork of osu!lazer."
 arch=(x86_64)
@@ -25,7 +25,7 @@ source=(
   "osu-gu-uri-handler.desktop"
   "osu-gu"
 )
-sha256sums=('6d6223ffca1377d8703319d86354a0fa9cb2b7b21c5f599ae532085c0efbcf3d'
+sha256sums=('905a4330e5352e2f2de51083c4042642dfcc8215734f70d5cc8202dfee1048c7'
             '30cf4df3fd76006b08a0bcb6a325fb2fdcf6a4371f77001da3c38cbce871bd51'
             '30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244'
             '719733029ec5eddd3bfd9c7fdfcdcb5b4fbbc52a021d284448443d165191e34c'
