@@ -1,0 +1,16 @@
+pkgbase = maple-saturation-hyprland-git
+	pkgdesc = Screen color saturation and contrast control for Hyprland via GLSL shaders
+	pkgver = 1.0.0.r4
+	pkgrel = 1
+	url = https://github.com/MapleProjects/maple-saturation-hyprland
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = hyprland
+	depends = python-pyqt6
+	provides = maple-saturation-hyprland
+	conflicts = maple-saturation-hyprland
+	source = git+https://github.com/MapleProjects/maple-saturation-hyprland.git
+	sha256sums = SKIP
+
+pkgname = maple-saturation-hyprland-git
