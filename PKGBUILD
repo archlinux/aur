@@ -2,7 +2,7 @@
 
 pkgname=qteasytier
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="基于 EasyTier, 一款美观实用的远程联机工具!"
 arch=('x86_64')
 options=('!debug')
@@ -10,7 +10,7 @@ url="https://gitee.com/qteasytier/qt-easy-tier"
 license=('LGPL3')
 depends=('qt6-base' 'qt6-svg')
 makedepends=('cmake' 'git')
-install=easytier-connector.install
+install=qteasytier.install
 source=("${pkgname}::git+https://gitee.com/qteasytier/qt-easy-tier.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
