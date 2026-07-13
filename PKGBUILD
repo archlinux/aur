@@ -3,8 +3,8 @@
 
 _pkgname=libjxl
 pkgname=$_pkgname-metrics
-pkgver=0.11.1
-pkgrel=14
+pkgver=0.12.0
+pkgrel=1
 pkgdesc='JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 metrics'
 arch=(x86_64)
 url=https://jpeg.org/jpegxl/
@@ -32,9 +32,9 @@ makedepends=(
 )
 provides=(
   $_pkgname
-  libjxl.so=0.11
-  libjxl_cms.so=0.11
-  libjxl_threads.so=0.11
+  libjxl.so=0.12
+  libjxl_cms.so=0.12
+  libjxl_threads.so=0.12
   butteraugli
   ssimulacra
   ssimulacra2
@@ -52,8 +52,8 @@ optdepends=(
 )
 source=(
   git+https://github.com/libjxl/$_pkgname.git#tag=v$pkgver
-  git+https://skia.googlesource.com/skcms.git#commit=42030a771244ba67f86b1c1c76a6493f873c5f91
-  git+https://github.com/webmproject/sjpeg.git#commit=e5ab13008bb214deb66d5f3e17ca2f8dbff150bf
+  git+https://skia.googlesource.com/skcms.git#commit=96d9171c94b937a1b5f0293de7309ac16311b722
+  git+https://github.com/webmproject/sjpeg.git#commit=94e0df6d0f8b44228de5be0ff35efb9f946a13c9
   git+https://github.com/libjpeg-turbo/libjpeg-turbo.git#tag=2.1.5.1
 )
 sha256sums=(
@@ -82,8 +82,7 @@ build() {
     -DJPEGXL_ENABLE_EXAMPLES=OFF \
     -DJPEGXL_ENABLE_PLUGINS=OFF \
     -DJPEGXL_FORCE_SYSTEM_BROTLI=ON \
-    -DJPEGXL_FORCE_SYSTEM_HWY=ON \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DJPEGXL_FORCE_SYSTEM_HWY=ON
   make -C build
 }
 
