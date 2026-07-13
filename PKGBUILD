@@ -47,10 +47,10 @@ makedepends=(
     'python-setuptools'
 )
 optdepends=(
-    'redis: production session checkpointer (default uses in-memory)'
-    'chromadb: in-process vector index (default; alternative to milvus)'
-    'pymilvus: server-side vector index (requires MILVUS_HOST env var)'
-    'mysql-server: production SQL backend (default uses sqlite)'
+    'valkey: production session checkpointer (drop-in Redis replacement; default uses in-memory)'
+    'python-chromadb: in-process vector index (default; alternative to milvus)'
+    'python-milvus-lite-bin: embedded Milvus vector index (alternative to chroma; no separate server)'
+    'mariadb: production SQL backend (default uses sqlite)'
 )
 _srcdir_repo=agent-studio
 source=("git+https://gitcode.com/openJiuwen/agent-studio.git#tag=v${pkgver}")
