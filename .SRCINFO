@@ -1,0 +1,23 @@
+pkgbase = llama-cpp-python-openblas
+	pkgdesc = Python bindings for the llama.cpp library (OpenBLAS accelerated)
+	pkgver = 0.3.34
+	pkgrel = 1
+	url = https://github.com/abetlen/llama-cpp-python
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-scikit-build-core
+	makedepends = cmake
+	makedepends = openblas
+	depends = python
+	depends = openblas
+	depends = python-numpy
+	depends = python-jinja
+	provides = llama-cpp-python
+	conflicts = llama-cpp-python
+	source = llama-cpp-python-0.3.34.tar.gz::https://github.com/abetlen/llama-cpp-python/archive/refs/tags/v0.3.34.tar.gz
+	sha256sums = d1ab8c0a3ae23c41552135606a3bf2056b28c0fd45d2322bdc11b1f9a7df9f94
+
+pkgname = llama-cpp-python-openblas
