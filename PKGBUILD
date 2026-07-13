@@ -1,7 +1,7 @@
 # Maintainer: enihcam <enihcam@noreply.gitcode.com>
 pkgname=openjiuwen-sandbox
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenJiuwen sandbox + gateway: code-execution sandbox server and gateway proxy"
 arch=('x86_64')
 url="https://gitcode.com/openJiuwen/agent-studio"
@@ -13,7 +13,7 @@ depends=(
     'python-httpx>=0.28.0'
     'python-yaml'
     'python-dotenv'
-    'python-libseccomp-git'
+    'python-libseccomp'
 )
 makedepends=(
     'python-build'
