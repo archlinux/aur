@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-cleanup
-pkgver=26.07
+pkgver=26.07.1
 pkgrel=1
 pkgdesc="GUI for system cleanup and maintenance"
 arch=('x86_64' 'i686')
@@ -9,8 +9,8 @@ license=('GPL3')
 depends=('qt6-base' 'polkit')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 install=mx-cleanup.install
-source=("https://github.com/MX-Linux/mx-cleanup/archive/refs/tags/26.07.tar.gz")
-sha256sums=('fd3805edfd40808b7d84ab399a76793831c677316a4bd3229dcf29fc5ce68a10')
+source=("https://github.com/MX-Linux/mx-cleanup/archive/refs/tags/26.07.1.tar.gz")
+sha256sums=('efd10be25c7c2c6ecd223d4defba65efa3371ca196cfbf55b27313325ea20a02')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
