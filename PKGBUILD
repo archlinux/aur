@@ -1,7 +1,7 @@
 # Maintainer: enihcam <enihcam@noreply.gitcode.com>
 pkgname=openjiuwen-sandbox
 pkgver=0.1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenJiuwen sandbox + gateway: code-execution sandbox server and gateway proxy"
 arch=('x86_64')
 url="https://gitcode.com/openJiuwen/agent-studio"
@@ -35,6 +35,23 @@ sha256sums+=('SKIP')
 sha256sums+=('SKIP')
 sha256sums+=('SKIP')
 sha256sums+=('SKIP')
+
+prepare() {
+    local srcdir_top="${srcdir}/${_srcdir_repo:-agent-studio}"
+    # Upstream sandbox server.py imports the sibling `app` subpackage as a
+    # top-level module:
+    #   from app.sandbox import get_sandbox_class
+    # but the wheel installs it nested as openjiuwen_sandbox_server.app.*,
+    # so the import raises ModuleNotFoundError. Add the proper prefix so
+    # the wheel imports cleanly without runtime PYTHONPATH hacks.
+    #
+    # gateway already uses the correct absolute import path; only the
+    # sandbox worker needs this fix.
+    local f="${srcdir_top}/sandbox_server/sandbox/openjiuwen_sandbox_server/server.py"
+    if [ -f "${f}" ]; then
+        sed -i 's/^from app\./from openjiuwen_sandbox_server.app./' "${f}"
+    fi
+}
 
 build() {
     local srcdir_top="${srcdir}/${_srcdir_repo:-agent-studio}"
