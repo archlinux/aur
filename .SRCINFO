@@ -1,0 +1,19 @@
+pkgbase = roblox-account-manager
+	pkgdesc = Linux Qt port of Roblox Account Manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/7pxvr/Roblox-Account-Manager-linux
+	arch = any
+	license = GPL-3.0-only
+	depends = python
+	depends = python-pyqt6
+	depends = python-requests
+	depends = python-cryptography
+	depends = python-certifi
+	depends = xdg-utils
+	optdepends = chromium: add accounts through browser login and open account profiles
+	optdepends = flatpak: use Sober from Flathub as the roblox-player URL handler
+	source = roblox-account-manager-0.1.0.tar.gz::https://github.com/7pxvr/Roblox-Account-Manager-linux/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 01fe1bfe0d209c09319a267e3e50bb051dce8827c7a1ae38b75ba287032e405f
+
+pkgname = roblox-account-manager
