@@ -1,0 +1,9 @@
+# Arch AUR package metadata for openjiuwen-sandbox
+
+These PKGBUILD + systemd unit + sysusers + tmpfiles files are released
+under the [0BSD license](https://spdx.org/licenses/0BSD.html), matching
+the convention of the AUR repo itself.
+
+The packaged upstream software (openJiuwen sandbox + gateway) is
+Apache-2.0 licensed; see `/usr/share/licenses/openjiuwen-sandbox/LICENSE`
+after install.

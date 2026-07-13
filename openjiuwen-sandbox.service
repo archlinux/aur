@@ -1,0 +1,37 @@
+[Unit]
+Description=OpenJiuwen sandbox server (code execution, port 5001)
+Documentation=https://gitcode.com/openJiuwen/agent-studio
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=openjiuwen
+Group=openjiuwen
+WorkingDirectory=/opt/openjiuwen-sandbox
+Environment=PYTHONPATH=/opt/openjiuwen-sandbox/lib
+Environment=HOST=127.0.0.1
+Environment=PORT=5001
+ExecStart=/usr/bin/python -m uvicorn openjiuwen_sandbox_server.server:app \
+    --host ${HOST} --port ${PORT} \
+    --app-dir /opt/openjiuwen-sandbox/lib
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/openjiuwen-sandbox /var/log/openjiuwen-sandbox
+PrivateDevices=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+MemoryDenyWriteExecute=true
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=openjiuwen-sandbox
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,2 @@
+d /var/lib/openjiuwen-sandbox 0750 openjiuwen openjiuwen -
+d /var/log/openjiuwen-sandbox 0755 openjiuwen openjiuwen -

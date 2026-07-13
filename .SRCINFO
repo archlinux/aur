@@ -1,0 +1,31 @@
+pkgbase = openjiuwen-sandbox
+	pkgdesc = OpenJiuwen sandbox + gateway: code-execution sandbox server and gateway proxy
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://gitcode.com/openJiuwen/agent-studio
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.11.4
+	depends = python-fastapi>=0.124.0
+	depends = python-uvicorn>=0.38.0
+	depends = python-httpx>=0.28.0
+	depends = python-yaml
+	depends = python-dotenv
+	depends = python-pyseccomp
+	optdepends = openjiuwen-server: backend that consumes this sandbox via CODE_SANDBOX_URL
+	source = git+https://gitcode.com/openJiuwen/agent-studio.git#tag=v0.1.8
+	source = openjiuwen-sandbox.service
+	source = openjiuwen-sandbox-gateway.service
+	source = openjiuwen-sandbox.sysusers
+	source = openjiuwen-sandbox.tmpfiles
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = openjiuwen-sandbox
