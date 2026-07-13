@@ -1,0 +1,22 @@
+pkgbase = es40
+	pkgdesc = AlphaServer ES40 emulator
+	pkgver = 0.75.4
+	pkgrel = 1
+	url = https://github.com/ES40-Emu/es40
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = cmake>=3.24
+	makedepends = git
+	makedepends = libxt
+	depends = libpcap
+	depends = sdl3
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = es40
+	conflicts = es40
+	source = es40-0.75.4.tar.gz::https://github.com/ES40-Emu/es40/archive/refs/tags/v0.75.4.tar.gz
+	sha512sums = 2b0716d2508b1aae1e60c9585639be14aff8af97aedf8167a3ead06289ebacdc463130eb6d3b873a62a2f2c7d30741a7585efc1a98342bbd315b9227c206449e
+
+pkgname = es40
