@@ -4,7 +4,7 @@
 _base=PyLaTeX
 pkgname=python-${_base,,}
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for creating LaTeX files and snippets"
 arch=(any)
 url="https://jeltef.github.io/${_base}"
@@ -16,7 +16,7 @@ optdepends=('python-numpy: for matrices support'
   'python-matplotlib: for plot support'
   'python-quantities: for quantities support')
 source=(${_base}-${pkgver}.tar.gz::https://github.com/JelteF/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('dcbe58de0ab715d6fbb571a7ad3981c875eacd08d06244b8715fa240df6f8f072417ae076a5caee204e000bf7eb55097b9ba49eddb5ce666470e494c15aa88ed')
+sha512sums=('c46661c3be63592bcdb575931ebf9bf53855385753cfc6d5f02a004e38924478e3437416717f0499c705f9bab7b75d8fcc2583e153f74c3de07161fb5020e5c5')
 
 build() {
   cd ${_base}-${pkgver}
@@ -34,4 +34,5 @@ package() {
   cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
