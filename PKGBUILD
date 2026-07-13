@@ -1,7 +1,7 @@
 # Maintainer: windx-foobar <bezalkogolnycoder at gmail dot com>
 
 pkgname='mts-linkchats'
-pkgver=0.87.1
+pkgver=0.87.2
 pkgrel=1
 pkgdesc='MTS Linkchats desktop application based on Electron and React'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('custom:proprietary')
 url='https://mts-link.ru'
 source=("https://apps.webinar.ru/weteams/linkchats-desktop.tar.gz"
   "${pkgname}.desktop")
-b2sums=('49ec59f081ef2b1a4054326efbc0e5986ae313d614826e21d97e051cd1c97e9142a7d3761bafc119d6757a879f238c9daea8aef989d8d4cdb591c43256632a0b'
+b2sums=('609382cee21bc24938110d3d71744030795918f782cf26e6b3b01f63bd552dfb99eb0b079edc1bc28421be4526579eaad4d17212d0e8b0e88889d380e2eb6773'
   'SKIP')
 provides=("${pkgname}")
 
