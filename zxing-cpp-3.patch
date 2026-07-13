@@ -1,0 +1,41 @@
+Fix build against system zxing-cpp 3.x.
+
+Upstream jami-client-qt includes zxing headers with unqualified paths
+(e.g. `#include <BitMatrix.h>`); zxing-cpp 3.x ships its headers under the
+`ZXing/` subdirectory. Repoint the affected includes.
+
+Borrowed verbatim from Arch's official jami-qt PKGBUILD:
+https://gitlab.archlinux.org/archlinux/packaging/packages/jami-qt/-/blob/main/zxing-cpp-3.patch
+Authors: Bruno Pagani, Antonio Rojas (Arch Linux jami-qt maintainers).
+
+diff --git a/src/app/qrcodescannermodel.cpp b/src/app/qrcodescannermodel.cpp
+index cea49eab..aac3ea35 100644
+--- a/src/app/qrcodescannermodel.cpp
++++ b/src/app/qrcodescannermodel.cpp
+@@ -17,9 +17,8 @@
+ 
+ #include "qrcodescannermodel.h"
+ 
+-#include <Barcode.h>
+-#include <MultiFormatReader.h>
+-#include <ReadBarcode.h>
++#include <ZXing/Barcode.h>
++#include <ZXing/ReadBarcode.h>
+ 
+ #include <QDebug>
+ 
+diff --git a/src/app/utils.cpp b/src/app/utils.cpp
+index b02a21e5..c2ddb383 100644
+--- a/src/app/utils.cpp
++++ b/src/app/utils.cpp
+@@ -47,8 +47,8 @@
+ #include <windows.h>
+ #endif
+ 
+-#include <BitMatrix.h>
+-#include <MultiFormatWriter.h>
++#include <ZXing/BitMatrix.h>
++#include <ZXing/MultiFormatWriter.h>
+ 
+ // Removes the given argument from the command line arguments, and invokes the callback
+ // function with the removed argument if it was found.

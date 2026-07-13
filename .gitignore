@@ -1,0 +1,10 @@
+# makepkg build artifacts
+src/
+pkg/
+
+# git+ cloned sources cached by makepkg
+jami-client-qt/
+
+# built packages
+*.pkg.tar.zst
+*.pkg.tar.zst.sig

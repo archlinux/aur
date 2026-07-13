@@ -1,0 +1,26 @@
+Add explicit avutil to jami's target_link_libraries.
+
+With modern binutils --as-needed, transitively-used libraries (libavutil,
+pulled in via libjami) are not linked unless named explicitly on the link
+command. Fixes:
+    undefined reference to symbol 'av_frame_free@@LIBAVUTIL_60'
+    DSO missing from command line
+
+Borrowed verbatim from Arch's official jami-qt PKGBUILD:
+https://gitlab.archlinux.org/archlinux/packaging/packages/jami-qt/-/blob/main/fix-link.patch
+Authors: Bruno Pagani, Antonio Rojas (Arch Linux jami-qt maintainers).
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 29bfde9a..ba6b5c45 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -805,7 +805,8 @@ elseif (NOT APPLE)
+     ${LIBNOTIFY_LIBRARIES}
+     ${LIBGDKPIXBUF_LIBRARIES}
+     ${GLIB_LIBRARIES}
+-    ${GIO_LIBRARIES})
++    ${GIO_LIBRARIES}
++    avutil)
+ 
+   install(
+     TARGETS ${PROJECT_NAME}

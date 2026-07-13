@@ -1,0 +1,74 @@
+Fix ValueFilter property typo: `invert` -> `inverted`
+
+Qt 6.10+ ships a native SortFilterProxyModel / ValueFilter in QtQml.Models.
+The invertible boolean on the base class QQmlFilterBase is named `inverted`,
+NOT `invert`. jami-client-qt migrated to Qt-native SortFilterProxyModel for
+Qt 6.10+ (see INSTALL.md) but missed renaming this property in 5 places.
+
+Effect on affected systems (Arch with Qt 6.10+): QML load-time error
+`Cannot assign to non-existent property "invert"` at AccountComboBox.qml:101
+cascades into SidePanel.qml failing to load, and the main window opens
+without its sidebar. Settings > Devices and Settings > Video have the same
+problem.
+
+Reference: `/usr/lib/qt6/qml/QtQml/Models/plugins.qmltypes` — QQmlFilterBase
+declares `Property { name: "inverted"; type: "bool"; ... }` (index 1),
+not "invert".
+
+Only fixes ValueFilter usages. The `invert:` on OpacityMask (SpinningAnimation
+and RecordBox) is a legitimate property on Qt5Compat.GraphicalEffects.
+
+diff --git a/src/app/mainview/components/AccountComboBox.qml b/src/app/mainview/components/AccountComboBox.qml
+--- a/src/app/mainview/components/AccountComboBox.qml
++++ b/src/app/mainview/components/AccountComboBox.qml
+@@ -98,7 +98,7 @@
+                     filters: ValueFilter {
+                         roleName: "ID"
+                         value: LRCInstance.currentAccountId
+-                        invert: true
++                        inverted: true
+                     }
+                 }
+ 
+diff --git a/src/app/settingsview/components/LinkedDevicesBase.qml b/src/app/settingsview/components/LinkedDevicesBase.qml
+--- a/src/app/settingsview/components/LinkedDevicesBase.qml
++++ b/src/app/settingsview/components/LinkedDevicesBase.qml
+@@ -97,7 +97,7 @@
+             filters: ValueFilter {
+                 roleName: "DeviceID"
+                 value: CurrentAccount.deviceId
+-                invert: root.inverted
++                inverted: root.inverted
+             }
+         }
+ 
+diff --git a/src/app/settingsview/components/VideoSettingsPage.qml b/src/app/settingsview/components/VideoSettingsPage.qml
+--- a/src/app/settingsview/components/VideoSettingsPage.qml
++++ b/src/app/settingsview/components/VideoSettingsPage.qml
+@@ -158,7 +158,7 @@
+                 filters: ValueFilter {
+                     roleName: "DeviceName"
+                     value: VideoDevices.defaultName
+-                    invert: true
++                    inverted: true
+                     enabled: deviceSourceModel.rowCount() > 1
+                 }
+             }
+@@ -195,7 +195,7 @@
+                 filters: ValueFilter {
+                     roleName: "Resolution"
+                     value: VideoDevices.defaultRes
+-                    invert: true
++                    inverted: true
+                     enabled: resSourceModel.rowCount() > 1
+                 }
+             }
+@@ -226,7 +226,7 @@
+                 filters: ValueFilter {
+                     roleName: "FPS"
+                     value: VideoDevices.defaultFps
+-                    invert: true
++                    inverted: true
+                     enabled: fpsSourceModel.rowCount() > 1
+                 }
+             }
