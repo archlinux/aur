@@ -1,6 +1,6 @@
 # Maintainer: Frédéric Bogaerts <fred@netpack.pt>
 pkgname=xfb
-pkgver=3.141592
+pkgver=3.1415926
 pkgrel=1
 pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
 arch=('x86_64' 'aarch64')
@@ -149,10 +149,11 @@ package() {
     echo "The shared folders are under: /usr/share/xfb"
     echo "You may want to install yt-dlp for downloading media"
     echo ""
-    echo "New in v3.141592:"
-    echo "  - Download full SoundCloud sets in the external downloader"
-    echo "  - Options -> Install all dependencies (one-click tool setup)"
-    echo "  - Transparent application icon (no more white box on Linux)"
+    echo "New in v3.1415926:"
+    echo "  - Playlist wave view: see every track's waveform in the playlist"
+    echo "  - Crossfade prep: drag a track's wave to start it over the previous one"
+    echo "  - Volume lines: draw volume automation over each track (Sonar-style)"
+    echo "  - Transition preview, now-playing wave strip, all saved in playlists"
     echo ""
     echo "Can you share some ETH? 0x9700225FcD115230C9166BD68CEdc23e329D3CdF"
     echo "Thank you for installing XFB! Made with love & linux!"
