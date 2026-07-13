@@ -4,7 +4,7 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="A lightweight, precise, and cross-platform metronome application"
 arch=(x86_64)
-url="https://github.com/sunderme/qdia"
+url="https://github.com/olegkapitonov/IronTick"
 license=(GPL-3.0-or-later)
 depends=(glibc
          qt6-base
