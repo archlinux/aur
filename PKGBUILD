@@ -5,7 +5,7 @@
 
 pkgname=ulauncher
 pkgver=5.15.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Application launcher for Linux'
 arch=('any')
 url="https://ulauncher.io"
