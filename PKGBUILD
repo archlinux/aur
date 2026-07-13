@@ -3,17 +3,17 @@
 pkgname=python-sli-ui-toolkit
 _pyname=sli-ui-toolkit
 _distname=sli_ui_toolkit
-pkgver=0.2.14
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Reusable PyQt UI toolkit primitives for SLI desktop tools"
 arch=('any')
 url="https://github.com/Loganavter/sli-ui-toolkit"
 license=('MIT')
-depends=('python' 'python-pyqt6' 'python-markdown')
+depends=('python' 'pyside6' 'python-markdown')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-qt')
 source=("https://files.pythonhosted.org/packages/source/s/${_pyname}/${_distname}-${pkgver}.tar.gz")
-sha256sums=('f63a755a55925f0b38a94683a9d145865026929a907d05002739a0e4bbb157af')
+sha256sums=('6ae166e3af5de675d6141d7d242e8b19e955b7af0ce7fdfba4c8b0878a380f38')
 
 build() {
   cd "${_distname}-${pkgver}"
