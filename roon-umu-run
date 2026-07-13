@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 """Run UMU 1.4.0 without its broken-by-default launcher service."""
 
 import sys

@@ -43,6 +43,7 @@ usage() {
 Usage: roon-wine COMMAND [ARGUMENTS]
 
 Commands:
+  setup [MODE]             Install, configure, and launch; MODE: system (default), desktop, direct
   install                  Create/repair the prefix and install Roon
   run                      Launch Roon
   configure                Apply display and audio configuration
@@ -196,7 +197,7 @@ require_display() {
 }
 
 endpoint_install() {
-  have systemctl || die 'systemd is required for the native endpoint'
+  require_systemd_user
   have tar || die 'tar is required for the native endpoint'
   mkdir -p "$CACHE_HOME" "$BRIDGE_HOME" "$BRIDGE_DATA" "$(dirname "$BRIDGE_SERVICE")"
   download_verified "$BRIDGE_URL" "$BRIDGE_ARCHIVE" "$BRIDGE_SHA512" 'Roon Bridge archive'
@@ -216,9 +217,9 @@ After=network-online.target pipewire.service
 Wants=network-online.target
 
 [Service]
-Environment=ROON_DATAROOT=$BRIDGE_DATA
-Environment=ROON_ID_DIR=$BRIDGE_DATA
-ExecStart=$BRIDGE_APP/start.sh
+Environment="ROON_DATAROOT=$BRIDGE_DATA"
+Environment="ROON_ID_DIR=$BRIDGE_DATA"
+ExecStart="$BRIDGE_APP/start.sh"
 Restart=on-failure
 RestartSec=5
 
@@ -231,7 +232,48 @@ EOF
   note "use 'roon-proton endpoint mode system' for desktop-following audio"
 }
 
+require_systemd_user() {
+  have systemctl || die 'native endpoint automation requires systemd user services'
+  systemctl --user show-environment >/dev/null 2>&1 || \
+    die 'no systemd user manager is available; the controller can still run with setup desktop'
+}
+
+require_system_output() {
+  have pw-loopback || die 'System Output requires pipewire-audio; install it and try again'
+  have pw-cli || die 'System Output requires PipeWire command-line tools'
+  have pactl || die 'System Output requires pactl from libpulse'
+  systemctl --user start pipewire.socket pipewire-pulse.socket wireplumber.service \
+    >/dev/null 2>&1 || true
+  if ! systemctl --user is-active --quiet pipewire.service && \
+      ! systemctl --user is-active --quiet pipewire.socket; then
+    die 'System Output requires an active PipeWire user service or socket'
+  fi
+  if ! systemctl --user is-active --quiet pipewire-pulse.service && \
+      ! systemctl --user is-active --quiet pipewire-pulse.socket; then
+    die 'System Output requires an active pipewire-pulse user service or socket'
+  fi
+  if ! systemctl --user is-active --quiet wireplumber.service && \
+      ! systemctl --user is-active --quiet pipewire-session-manager.service; then
+    die 'System Output requires an active WirePlumber user service'
+  fi
+  [[ -d /sys/module/snd_aloop ]] || \
+    die 'snd-aloop is not loaded; reboot or run: sudo modprobe snd-aloop pcm_substreams=1'
+}
+
+ensure_loopback_capture() {
+  local attempt
+  pw-cli info roon-loopback-capture >/dev/null 2>&1 && return
+  note 'restarting user audio services once to load the Roon loopback configuration'
+  systemctl --user restart pipewire.service wireplumber.service pipewire-pulse.service
+  for ((attempt = 0; attempt < 20; attempt++)); do
+    sleep 0.25
+    pw-cli info roon-loopback-capture >/dev/null 2>&1 && return
+  done
+  die 'PipeWire did not create roon-loopback-capture; inspect the PipeWire user logs'
+}
+
 endpoint_command() {
+  require_systemd_user
   case ${1:-status} in
     install) endpoint_install ;;
     start|stop|restart) systemctl --user "$1" roonbridge-native.service ;;
@@ -244,7 +286,8 @@ endpoint_command() {
           ;;
         system)
           [[ -f $BRIDGE_SERVICE ]] || die "native endpoint is not installed; run 'roon-proton endpoint install'"
-          [[ -d /sys/module/snd_aloop ]] || die 'snd-aloop is not loaded; run: sudo modprobe snd-aloop pcm_substreams=1'
+          require_system_output
+          ensure_loopback_capture
           systemctl --user enable --now roon-system-output.service roonbridge-native.service
           note 'system-output mode active'
           note 'in Roon, enable the first Loopback PCM and name it System Output (PipeWire)'
@@ -268,8 +311,46 @@ endpoint_command() {
   esac
 }
 
+ensure_roon() {
+  find_roon >/dev/null || install_roon
+}
+
+setup_roon() {
+  local mode=${1:-system}
+  case $mode in
+    desktop)
+      ensure_roon
+      if have systemctl && systemctl --user show-environment >/dev/null 2>&1; then
+        systemctl --user disable --now roonbridge-native.service roon-system-output.service \
+          >/dev/null 2>&1 || true
+      fi
+      note 'desktop controller mode configured'
+      ;;
+    system)
+      require_systemd_user
+      ensure_roon
+      require_system_output
+      [[ -f $BRIDGE_SERVICE ]] || endpoint_install
+      endpoint_command mode system
+      ;;
+    direct)
+      require_systemd_user
+      ensure_roon
+      [[ -f $BRIDGE_SERVICE ]] || endpoint_install
+      endpoint_command mode direct
+      ;;
+    *) die 'setup mode must be system, desktop, or direct' ;;
+  esac
+  run_roon
+}
+
 alsa_owner() {
-  local pcm=${ROON_ALSA_PCM:-/dev/snd/pcmC1D0p} owners
+  local pcm=${ROON_ALSA_PCM:-} owners card
+  if [[ -z $pcm ]]; then
+    card=$(awk '$0 ~ /\[Loopback *\]/ { print $1; exit }' /proc/asound/cards 2>/dev/null || true)
+    [[ $card =~ ^[0-9]+$ ]] || { printf 'Loopback device not found\n'; return; }
+    pcm="/dev/snd/pcmC${card}D0p"
+  fi
   [[ -e $pcm ]] || { printf 'device not found\n'; return; }
   owners=$(fuser "$pcm" 2>/dev/null || true)
   if [[ -n $owners ]]; then printf 'in use (pid%s)\n' "$owners"
@@ -285,6 +366,11 @@ user_service_state() {
   done
   printf 'inactive or unavailable\n'
   return 1
+}
+
+pulse_protocol_state() {
+  if have pactl && pactl info >/dev/null 2>&1; then printf 'available\n'
+  else printf 'unavailable\n'; return 1; fi
 }
 
 configure_prefix() {
@@ -338,6 +424,8 @@ install_proton_payload() {
   local staging payload build destination
   staging=$(mktemp -d "$CACHE_HOME/.roon-payload.XXXXXX") || \
     die 'could not create a temporary payload directory'
+  # The dollar sign is the literal NSIS payload directory name.
+  # shellcheck disable=SC2016
   if ! 7z x -y "-o$staging" "$INSTALLER" '$_19_/*' >/dev/null; then
     rm -rf -- "$staging"
     die 'failed to extract the Roon controller payload'
@@ -445,6 +533,7 @@ doctor() {
   printf '%-20s %s\n' 'Wine' "$(wine --version 2>/dev/null || echo missing)"
   printf '%-20s %s\n' 'PipeWire' "$(user_service_state pipewire.service || true)"
   printf '%-20s %s\n' 'Pulse service' "$(user_service_state pipewire-pulse.service pulseaudio.service || true)"
+  printf '%-20s %s\n' 'Pulse protocol' "$(pulse_protocol_state || true)"
   printf '%-20s %s\n' 'prefix' "$([[ -d $PREFIX ]] && echo present || echo missing)"
   printf '%-20s %s\n' 'Roon executable' "$(find_roon >/dev/null && echo present || echo missing)"
   printf '%-20s %s\n' 'native endpoint' "$(systemctl --user is-active roonbridge-native.service 2>/dev/null || echo inactive)"
@@ -469,8 +558,8 @@ doctor() {
   if [[ $runner == wine && $major == 11 ]]; then
     printf 'WARN: Wine 11 has a reported washed-out color regression with Roon\n' >&2
   fi
-  if [[ $audio == pipewire ]] && ! systemctl --user is-active --quiet pipewire-pulse 2>/dev/null; then
-    printf 'WARN: pipewire-pulse is not active; the local Roon output may be unavailable\n' >&2
+  if [[ $audio != alsa ]] && ! pulse_protocol_state >/dev/null; then
+    printf 'WARN: no Pulse-compatible audio server is reachable; the local Roon output may be unavailable\n' >&2
     failures=1
   fi
   return "$failures"
@@ -492,6 +581,7 @@ set_value() {
 main() {
   load_config
   case ${1:-help} in
+    setup) setup_roon "${2:-system}" ;;
     install) install_roon ;;
     run) run_roon ;;
     configure) configure_prefix ;;

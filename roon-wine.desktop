@@ -6,7 +6,7 @@ Terminal=false
 Type=Application
 Categories=AudioVideo;Audio;Player;
 StartupNotify=true
-StartupWMClass=roon.exe
+StartupWMClass=steam_app_0
 Actions=WineConfig;Doctor;
 
 [Desktop Action WineConfig]
