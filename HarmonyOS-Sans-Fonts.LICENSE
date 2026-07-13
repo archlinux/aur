@@ -1,0 +1,17 @@
+HarmonyOS Sans Fonts License
+
+Copyright (c) Huawei Device Co., Ltd. 2021. All rights reserved.
+
+You may use the HarmonyOS Sans fonts for personal or commercial purposes,
+including embedding them in distributed software, provided that the
+following attribution notice is retained with the fonts:
+
+    HarmonyOS Sans fonts are licensed from Huawei Device Co., Ltd.
+    https://developer.huawei.com/consumer/cn/harmonyos/
+
+The fonts are bundled in /usr/share/webapps/openjiuwen/ (originally shipped
+in frontend/public/fonts/) and distributed as part of the openjiuwen-web
+Arch package under the same conditions.
+
+See https://developer.huawei.com/consumer/cn/harmonyos/ for the canonical
+text of this license.

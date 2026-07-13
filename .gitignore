@@ -1,0 +1,9 @@
+# Makepkg build artifacts
+*.pkg.tar.zst
+*.pkg.tar
+*.pkg.tar.xz
+*.src.tar.gz
+pkg/
+src/
+# Cached source clone (used for git+https sources)
+agent-studio/

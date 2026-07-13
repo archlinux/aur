@@ -1,0 +1,22 @@
+pkgbase = openjiuwen-web
+	pkgdesc = OpenJiuwen Studio frontend: React + Vite SPA, served as static files via nginx
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://gitcode.com/openJiuwen/agent-studio
+	arch = x86_64
+	license = Apache-2.0
+	license = LicenseRef-HarmonyOS-Sans-Fonts-1.0
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = git
+	depends = nginx
+	optdepends = openjiuwen-server: backend API at /api
+	optdepends = nginx-mainline: server with HTTP/2 + Brotli; the stock nginx is also fine
+	source = git+https://gitcode.com/openJiuwen/agent-studio.git#tag=v0.1.8
+	source = openjiuwen-web.nginx.conf
+	source = HarmonyOS-Sans-Fonts.LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = openjiuwen-web
