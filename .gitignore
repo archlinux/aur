@@ -1,0 +1,4 @@
+/src/
+/pkg/
+/codelldb-*.pkg.tar.*
+/codelldb-*.tar.gz
