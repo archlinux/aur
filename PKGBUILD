@@ -4,8 +4,8 @@
 
 pkgname=codelldb-git
 _pkgname="${pkgname%-git}"
-pkgver=v1.12.2.r1438.5c21c43
-pkgrel=1
+pkgver=v1.12.2.r1439.2e71e65
+pkgrel=2
 pkgdesc="A native debugger extension for VSCode based on LLDB. Also known as vscode-lldb (NOT lldb-vscode)"
 arch=(x86_64 arm7h aarch64)
 url=https://github.com/vadimcn/codelldb
@@ -14,8 +14,10 @@ provides=("$_pkgname" "vscode-lldb")
 depends=(lldb)
 makedepends=(cmake cargo nodejs npm python libc++ git)
 options=(!lto)
-source=("git+$url.git")
-sha256sums=('SKIP')
+source=("git+$url.git"
+        "$pkgname-update-yargs.patch")
+sha256sums=('SKIP'
+            '8df7ea2bd651222ff0c47058e15202fe3366490d7ad3c380a54fd09a1c105dd7')
 
 pkgver() {
   cd "$_pkgname"
@@ -28,6 +30,10 @@ pkgver() {
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
   cd "$_pkgname"
+
+  # This patch is necessary to make it possible to run the tests with Node.js
+  # v25.7.0 and newer (see https://github.com/yargs/yargs/issues/2509)
+  patch --forward --strip=1 --input="$srcdir/$pkgname-update-yargs.patch"
 
   # The tests break if the flags `--remap-path-prefix=...` or `-ffile-prefix-map=...` are given to
   # C/C++/Rust compilers when building the debuggee. These flags are supplied by `makepkg` through

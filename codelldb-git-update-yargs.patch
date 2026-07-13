@@ -1,0 +1,32 @@
+diff --git a/package-lock.json b/package-lock.json
+index eca747f..7334662 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -2,3 +2,3 @@
+ 	"name": "vscode-lldb",
+-	"version": "1.12.0-dev.2511292358",
++	"version": "@VERSION@",
+ 	"lockfileVersion": 3,
+@@ -8,3 +8,3 @@
+ 			"name": "vscode-lldb",
+-			"version": "1.12.0-dev.2511292358",
++			"version": "@VERSION@",
+ 			"license": "MIT",
+@@ -4622,5 +4622,5 @@
+ 		"node_modules/mocha/node_modules/yargs": {
+-			"version": "16.2.0",
+-			"resolved": "https://registry.npmjs.org/yargs/-/yargs-16.2.0.tgz",
+-			"integrity": "sha512-D1mvvtDG0L5ft/jGWkLpG1+m0eQxOfaBvTNELraWj22wSVUMWxZUvYgJYcKh6jGGIkJFhH4IZPQhR4TKpc8mBw==",
++			"version": "16.2.2",
++			"resolved": "https://registry.npmjs.org/yargs/-/yargs-16.2.2.tgz",
++			"integrity": "sha512-Nt9ZJjXTv5R8MHbqby/wXQ6Gi0Bb3TcYZkR1bzuL4yB2OxWPkXknz513gEF0GoA6tn00UpbPvERW8rzCuWCA6w==",
+ 			"dev": true,
+@@ -7293,5 +7293,5 @@
+ 		"node_modules/yargs": {
+-			"version": "17.7.2",
+-			"resolved": "https://registry.npmjs.org/yargs/-/yargs-17.7.2.tgz",
+-			"integrity": "sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w==",
++			"version": "17.7.3",
++			"resolved": "https://registry.npmjs.org/yargs/-/yargs-17.7.3.tgz",
++			"integrity": "sha512-GZtjxm/J/4TSxuL3FNYjCmLktBTnIw/rVmKSIyKeYAZpmJB2ig9VauCC5xsa82GNKVKDAqpOn3KVzNt0zmrU0g==",
+ 			"dev": true,
