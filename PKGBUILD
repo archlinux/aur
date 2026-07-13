@@ -1,12 +1,8 @@
 # Contributor: katt <magunasu.b97@gmail.com>
 
-## options
-: ${i_swear_to_never_bother_the_developer_about_this_package:=false}
-: ${forbidden_versions_file_path:=/dev/null}
-
 pkgname=duckstation-git
 _pkgname=duckstation
-pkgver=0.1.r9727.g66bef3e3e
+pkgver=0.1.r11596.gad7519d72
 pkgdesc='A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)'
 pkgrel=1
 arch=(x86_64 aarch64)
@@ -21,21 +17,25 @@ depends=(
     libbacktrace.so
     libwebp.so
     libjpeg.so
-    libpng16.so
     libxcb
     libx11
     freetype2 libfreetype.so
+    harfbuzz
+    sqlite
     libzstd.so
     libz.so
     libzip.so
-    libdbus-1.so
     libcurl.so
     systemd-libs libudev.so
+    cpuinfo
+    spirv-cross
+    soundtouch
+    plutosvg
+    discord-rpc
     hicolor-icon-theme
 )
 makedepends=(
     git
-    yq
     cmake
     clang
     lld
@@ -52,6 +52,7 @@ makedepends=(
     python
     spirv-headers
     patchelf
+    ffmpeg
 )
 optdepends=(
     'qt6-wayland: Wayland support'
@@ -66,39 +67,26 @@ provides=(duckstation)
 conflicts=(duckstation)
 source=(
     git+"$url".git
-    stenzek.shaderc::git+https://github.com/stenzek/shaderc.git
-    spirv-cross::git+https://github.com/KhronosGroup/SPIRV-Cross.git
-    stenzek.cpuinfo::git+https://github.com/stenzek/cpuinfo.git
-    stenzek.discord-rpc::git+https://github.com/stenzek/discord-rpc.git
-    stenzek.soundtouch::git+https://github.com/stenzek/soundtouch.git
-    stenzek.plutosvg::git+https://github.com/stenzek/plutosvg.git
+    shaderc::git+https://github.com/stenzek/shaderc.git#commit=d72697bfc353b547efc58421ad54ac0345441bf4
+    https://downloads.sourceforge.net/project/libpng/libpng16/1.6.58/libpng-1.6.58.tar.gz
+    libpng-apng.patch::https://raw.githubusercontent.com/stenzek/duckstation/19b618d44b08f8b2239de060bd022de374795252/scripts/deps/libpng-1.6.54-apng.patch
     https://github.com/duckstation/chtdb/releases/download/latest/cheats.zip
     https://github.com/duckstation/chtdb/releases/download/latest/patches.zip
     duckstation-qt.desktop
-    duckstation-qt.sh)
+    duckstation-qt.sh
+    DuckStationSystemDependencies.cmake)
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
+            '580a5fffc1a8469361efecccf4d67a809426f4a739e70dc6780a25317bf91b4a'
+            '8c9b05b675ca7301a458df2c2e46f26e1d41ff36b8863f8c33530bc58c2e6225'
+            '6eb79c8b12b1c9961c9f05a11b66a5fd020d66d5f540f27c11f91b542a97a7ca'
+            'e51eec33f93fbdebc6b40bfe479752cd5bf31c11104781a459646a54cf78d551'
+            '1492eb48739963ac7aa74bccf64188004cb760d70bdd1bc238f18b81932a5dbb'
             'ec2d7358f81598390a8ceca2d1974be3e5f7c45602b550c89a1e9323ab45474b'
-            '221a8fc0d1f0cebdf281acc26484e98ebbb59f876e12fdef3f03cf91380e31f5')
+            '3541462e5988551f1a618fb167c50054184871cd0c7a583a7f2388d195e1cd7e'
+            'c8eb4a1d692b93a6ab283f8e03e842f1d02a191b5589c1812221a28c1250a6e3')
 noextract=(
     cheats.zip
     patches.zip
-)
-
-_source_var=(
-    "stenzek.shaderc:SHADERC"
-    "spirv-cross:SPIRV_CROSS:SPIRV-Cross"
-    "stenzek.cpuinfo:CPUINFO"
-    "stenzek.discord-rpc:DISCORD_RPC"
-    "stenzek.soundtouch:SOUNDTOUCH"
-    "stenzek.plutosvg:PLUTOSVG"
 )
 
 pkgver() {
@@ -107,83 +95,150 @@ pkgver() {
 }
 
 prepare() {
-    # checkout correct versions of deps
-    if [[ "$forbidden_versions_file_path" == "/dev/null" ]]; then
-        cat <<EOF
-Stenzek prohibits using the versions file in this build script.
-Set the path to the dependencies versions file (from scripts/)
-in the forbidden_versions_file_path variable, relative to the project root.
-EOF
-        exit 1
-    fi
-
-    deps_script=$srcdir/duckstation/$forbidden_versions_file_path
-
-    # unbreak the build
-    sed -i 's/3ebbfd45645650c4940bf0f3b4d25ab913466bb0/cdcd4afba44326d12206493620b3e0aa4935f311/g' "$deps_script"
-
-    for src in "${source[@]}"; do
-        local src_name=${src%%::*}
-        for dep in "${_source_var[@]}"; do
-            local dep_name dep_var
-            IFS=':' read dep_name dep_var _ <<< "$dep"
-            if [ "$src_name" = "$dep_name" ]; then
-                local dep_ver
-                dep_ver=$(grep -Po "(?<=^$dep_var=).+" "$deps_script" )
-                echo "Checking out $dep_ver for $src_name..."
-                git -C "$srcdir/$src_name" checkout -q "$dep_ver"
-            fi
-        done
-    done
+    patch -d "$srcdir/libpng-1.6.58" -Np1 -i "$srcdir/libpng-apng.patch"
 
     # bundle additional resources
     cp "$srcdir/cheats.zip" "$srcdir/patches.zip" "$srcdir/duckstation/data/resources"
 
-    # unbreak the build
-    if [ "$i_swear_to_never_bother_the_developer_about_this_package" = "true" ]; then
-        cd "$srcdir/duckstation"
-        sed -i 's/archlinux/marchlinux/g' CMakeModules/DuckStationBuildSummary.cmake
-        sed -i '/#ifdef __linux__/,/#endif/d' src/core/system.cpp
-        sed -i '/CMAKE_FIND_ROOT_PATH/d' CMakeModules/DuckStationDependencies.cmake
-        sed -i 's/NOT Qt6_DIR MATCHES/Qt6_DIR MATCHES/' CMakeModules/DuckStationDependencies.cmake
-    fi
+    # Use Arch libraries rather than upstream's prebuilt bundle, and let dlopen
+    # resolve system-owned runtime libraries through their SONAMEs.
+    cp "$srcdir/DuckStationSystemDependencies.cmake" \
+        "$srcdir/duckstation/CMakeModules/DuckStationDependencies.cmake"
 
+    # These libraries are loaded at runtime. Pass only their SONAME to dlopen()
+    # instead of forcing a lookup beside the DuckStation executable.
+    sed -i 's/bundle_libraries(${target} spirv-cross-c-shared Shaderc::shaderc_shared SQLite3::sqlite3-shared)/bundle_libraries(${target} Shaderc::shaderc_shared)/' \
+        "$srcdir/duckstation/src/util/CMakeLists.txt"
+    sed -i '/GetBundledLibraryPath("spirv-cross-c-shared", SPVC_C_API_VERSION_MAJOR)/s/GetBundledLibraryPath/GetVersionedFilename/' \
+        "$srcdir/duckstation/src/util/gpu_device.cpp"
+    sed -i '/GetBundledLibraryPath("sqlite3", lib_major_version)/s/GetBundledLibraryPath/GetVersionedFilename/' \
+        "$srcdir/duckstation/src/util/sqlite_helpers.cpp"
+
+    # DuckStation needs APNG support (animated memory-card icons), which Arch's
+    # libpng lacks. Build libpng (with the APNG patch) as a static library and
+    # link it into the executable; point util at the static target. build()
+    # localizes its symbols (--exclude-libs) so the APNG-patched png_struct
+    # can't clash with the stock system libpng pulled in by Qt/FreeType/plutosvg.
+    sed -i 's/PNG::png_shared/PNG::png_static/' \
+        "$srcdir/duckstation/src/util/CMakeLists.txt"
+
+    # discord-rpc is provided by the system package instead of upstream's fork.
+    # It's dlopen()'d at runtime: resolve it by SONAME (libdiscord-rpc.so) via
+    # the system loader rather than looking for a copy beside the executable,
+    # and drop the step that would bundle it into the package.
+    sed -i 's/GetBundledLibraryPath("discord-rpc")/GetVersionedFilename("discord-rpc")/' \
+        "$srcdir/duckstation/src/core/discord_presence.cpp"
+    sed -i '/bundle_libraries(${target} DiscordRPC::discord-rpc)/d' \
+        "$srcdir/duckstation/src/core/CMakeLists.txt"
+
+    # Arch's soundtouch package builds only the C++ SoundTouch library, not the
+    # SoundTouchDLL C wrapper DuckStation includes. Generate a header-only shim
+    # that maps the soundtouch_* C API onto the C++ class; the replacement
+    # dependency module above points SoundTouch::SoundTouchDLL at this directory.
+    install -d "$srcdir/duckstation/dep/soundtouchdll/soundtouch"
+    cat > "$srcdir/duckstation/dep/soundtouchdll/soundtouch/SoundTouchDLL.h" <<'EOF'
+// Compatibility shim mapping the SoundTouchDLL C API onto the C++ SoundTouch
+// class, so DuckStation can use the system soundtouch package (which does not
+// build the SoundTouchDLL wrapper).
+#pragma once
+
+#include "soundtouch/SoundTouch.h"
+
+static inline void* soundtouch_createInstance()
+{
+  return static_cast<void*>(new soundtouch::SoundTouch());
+}
+static inline void soundtouch_destroyInstance(void* h)
+{
+  delete static_cast<soundtouch::SoundTouch*>(h);
+}
+static inline void soundtouch_setSampleRate(void* h, unsigned int srate)
+{
+  static_cast<soundtouch::SoundTouch*>(h)->setSampleRate(srate);
+}
+static inline void soundtouch_setChannels(void* h, unsigned int numChannels)
+{
+  static_cast<soundtouch::SoundTouch*>(h)->setChannels(numChannels);
+}
+static inline void soundtouch_setTempo(void* h, float newTempo)
+{
+  static_cast<soundtouch::SoundTouch*>(h)->setTempo(newTempo);
+}
+static inline void soundtouch_setRate(void* h, float newRate)
+{
+  static_cast<soundtouch::SoundTouch*>(h)->setRate(newRate);
+}
+static inline void soundtouch_setSetting(void* h, int settingId, int value)
+{
+  static_cast<soundtouch::SoundTouch*>(h)->setSetting(settingId, value);
+}
+static inline void soundtouch_putSamples(void* h, const float* samples, unsigned int numSamples)
+{
+  static_cast<soundtouch::SoundTouch*>(h)->putSamples(samples, numSamples);
+}
+static inline unsigned int soundtouch_receiveSamples(void* h, float* outBuffer, unsigned int maxSamples)
+{
+  return static_cast<soundtouch::SoundTouch*>(h)->receiveSamples(outBuffer, maxSamples);
+}
+static inline void soundtouch_clear(void* h)
+{
+  static_cast<soundtouch::SoundTouch*>(h)->clear();
+}
+EOF
+
+    # Upstream explicitly refuses Arch Linux build environments.
+    sed -i 's/ID=arch/ID=unsupported-arch/g' \
+        "$srcdir/duckstation/CMakeModules/DuckStationBuildSummary.cmake"
+
+    # Don't force the xdg-desktop-portal Qt platform theme on KDE/GNOME: it
+    # fails to register over D-Bus (and pops an empty warning dialog) unless
+    # xdg-desktop-portal and a matching backend are installed and running,
+    # which isn't guaranteed on Arch.
+    sed -i '/setenv("QT_QPA_PLATFORMTHEME", "xdgdesktopportal", true);/d' \
+        "$srcdir/duckstation/src/duckstation-qt/qthost.cpp"
+
+    # Upstream aborts startup (returning false with no error message, which
+    # surfaces as an empty "Process Startup Failed" dialog) when the AppRoot is
+    # under /usr. That's exactly where a distro package belongs, so drop the
+    # guard and let it run from /usr/lib/duckstation.
+    sed -i 's#if (std::memcmp(EmuFolders::AppRoot.data(), "/usr/", 5) == 0)#if (false)#' \
+        "$srcdir/duckstation/src/core/core.cpp"
 }
 
 build() {
-    deps_script=$srcdir/duckstation/scripts/deps/build-dependencies-linux.sh
-    for src in "${source[@]}"; do
-        local src_name=${src%%::*}
-        for dep in "${_source_var[@]}"; do
-            local dep_name dep_var dep_dir
-            IFS=':' read dep_name dep_var dep_dir <<< "$dep"
-            if [ "$src_name" = "$dep_name" ]; then
-                [ -z "$dep_dir" ] && dep_dir=$dep_var
-                local dep_opts
-                dep_opts=$(
-                    awk -v dir="$dep_dir" -v var="$dep_var" '
-                      $0 ~ "^cd.+\\$" var {in_block=1; next}
-                      $0 ~ "^cd.+" dir {in_block=1; next}
-                      $0 ~ "^cd \\.\\." && in_block {in_block=0}
-                      in_block
-                    ' "$deps_script" | tr ' ' '\n' | grep '^-D' | grep -Ev '_COMPILER|_PREFIX_PATH|_INSTALL_PREFIX')
+    local common_cmake_options=(
+        -G Ninja
+        -DCMAKE_BUILD_TYPE=Release
+        -DCMAKE_C_COMPILER=clang
+        -DCMAKE_CXX_COMPILER=clang++
+        -DCMAKE_EXE_LINKER_FLAGS_INIT=-fuse-ld=lld
+        -DCMAKE_MODULE_LINKER_FLAGS_INIT=-fuse-ld=lld
+        -DCMAKE_SHARED_LINKER_FLAGS_INIT=-fuse-ld=lld
+        -DCMAKE_LINK_DEPENDS_USE_LINKER=OFF
+        -DCMAKE_INSTALL_PREFIX=/usr
+        -DBUILD_SHARED_LIBS=ON
+    )
 
-                echo "Building $dep_name..."
-                cmake -B "build-$dep_name" -S "$src_name" \
-                    -G Ninja \
-                    -DCMAKE_C_COMPILER=clang \
-                    -DCMAKE_CXX_COMPILER=clang++ \
-                    -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
-                    -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
-                    -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
-                    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-                    -DCMAKE_INSTALL_PREFIX=/usr \
-                    $dep_opts
-                ninja -C "build-$dep_name"
-                DESTDIR="$srcdir/deps" ninja -C "build-$dep_name" install
-            fi
-        done
-    done
+    cmake -B build-libpng -S libpng-1.6.58 \
+        "${common_cmake_options[@]}" \
+        -DPNG_TESTS=OFF \
+        -DPNG_STATIC=ON \
+        -DPNG_SHARED=OFF \
+        -DPNG_TOOLS=OFF \
+        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+    ninja -C build-libpng
+    DESTDIR="$srcdir/deps" ninja -C build-libpng install
+
+    cmake -B build-shaderc -S shaderc \
+        "${common_cmake_options[@]}" \
+        -DBUILD_SHARED_LIBS=OFF \
+        -DSPIRV_TOOLS_BUILD_SHARED=ON \
+        -DSHADERC_SKIP_TESTS=ON \
+        -DSHADERC_SKIP_EXAMPLES=ON \
+        -DSHADERC_SKIP_EXECUTABLES=ON \
+        -DSHADERC_SKIP_COPYRIGHT_CHECK=ON
+    ninja -C build-shaderc
+    DESTDIR="$srcdir/deps" ninja -C build-shaderc install
 
     echo "Building duckstation..."
 
@@ -194,12 +249,11 @@ build() {
         -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_C_FLAGS="$CFLAGS -Wno-error=format-security" \
         -DCMAKE_CXX_FLAGS="$CXXFLAGS -Wno-error=format-security" \
-        -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+        -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld -Wl,--exclude-libs,libpng16.a" \
         -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
         -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
         -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
         -DCMAKE_PREFIX_PATH="$srcdir/deps/usr" \
-        -Dzstd_INCLUDE_DIR="/usr/include/" \
         -Wno-dev
     ninja -C build
 }
@@ -221,4 +275,3 @@ package() {
     install -Dvm644 "${srcdir}/duckstation-qt.desktop" "${pkgdir}/usr/share/applications/duckstation-qt.desktop"
     install -Dvm644 "${pkgdir}/usr/lib/${_pkgname}/resources/images/duck.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/duckstation-qt.png"
 }
-
