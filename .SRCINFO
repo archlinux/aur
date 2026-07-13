@@ -1,0 +1,15 @@
+pkgbase = lazyrsync
+	pkgdesc = A terminal UI for rsync — profiles, dry-run diff preview, live progress
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/westpoint-io/lazyrsync
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = rsync
+	depends = gcc-libs
+	source = lazyrsync-0.1.1.tar.gz::https://github.com/westpoint-io/lazyrsync/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 57af447bbabf56105d4e966b87fd5dbd737b4a8ebc86deb017a2d774e28793af
+
+pkgname = lazyrsync
