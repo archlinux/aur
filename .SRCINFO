@@ -1,7 +1,7 @@
 pkgbase = gt2fork-git
 	pkgdesc = An experimental overhaul of GoatTracker 2.7x - originally by L. Öörni aka Cadaver / Covert Bitops.
 	pkgver = v0.6b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jansalleine/gt2fork
 	arch = x86_64
 	license = GPL-2.0-only
@@ -10,7 +10,7 @@ pkgbase = gt2fork-git
 	makedepends = sdl12-compat
 	depends = sdl2-compat
 	depends = alsa-lib
-	depends = pipewire-jack
+	depends = jack
 	source = git+https://github.com/jansalleine/gt2fork.git
 	sha512sums = SKIP
 
