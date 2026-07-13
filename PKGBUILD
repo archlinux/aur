@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ai-gate
 _pkgname='AI Gate'
-pkgver=4.7.0
+pkgver=4.7.1
 _electronversion=34
 _nodeversion=20
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('6105634a2bfa1df5f6dc4188a1d53cf8a865da5689cd415a31466a8f044c3887'
+sha256sums=('c34bd641a30d556250b16b798fea86c43eb378a78f0c3bad8718996ca40555db'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -44,22 +44,21 @@ _get_electron_version() {
     echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 _set_build_env() {
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-	local HOME="${srcdir}/.electron-gyp"
-	export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
-	export NPM_CONFIG_MAXSOCKETS=32
-	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-		{
-			export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-			export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-			export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-			export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-			export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
-			export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
-		}
-		find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-	fi
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export HOME="${srcdir}/.electron-gyp"
+    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
+    export NPM_CONFIG_MAXSOCKETS=32
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+            export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
+            export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
+        }
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+    fi
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -86,11 +85,10 @@ build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     _set_build_env
     _ensure_local_nvm
-    local electronDist="/usr/lib/electron${_electronversion}"
     npx tsc -p tsconfig.electron.json
     npx tsc -p tsconfig.preload.json
     NODE_ENV=production     npm run build
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
