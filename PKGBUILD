@@ -20,4 +20,4 @@ package() {
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
-sha256sums=('a563ab33f690d3ad2f6ae87c6e4bb12ff61325736b9ad10cb13464e65e5a9e84')
+sha256sums=('98804a5164d03ce9af0bf03684a535ff2abd26adc36f79b1e967212dae8a298e')
