@@ -1,0 +1,18 @@
+pkgbase = git-spice
+	pkgdesc = A tool for stacking Git branches.
+	pkgver = 0.31.0
+	pkgrel = 1
+	url = https://github.com/abhinav/git-spice
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = openssl
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = git-spice::git+https://github.com/abhinav/git-spice#commit=387c2ec?signed
+	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
+	sha256sums = a3cdc28aa2e93d150487d84db5bef2479ef2e6ef3f2ff7fa05ab3b75fa7b3077
+
+pkgname = git-spice

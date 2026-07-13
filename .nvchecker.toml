@@ -1,0 +1,4 @@
+[git-spice]
+source = "git"
+git = "https://github.com/abhinav/git-spice.git"
+prefix = "v"
