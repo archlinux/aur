@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=liveplay-bin
 _pkgname=LivePlay
-pkgver=2.3.0
+pkgver=2.3.3
 _electronversion=42
 pkgrel=1
 pkgdesc="A free, open-source audio playback system designed for live sound operators who need reliable, flexible cue management.(Prebuilt version.Use system-wide electron)"
@@ -26,7 +26,7 @@ source=(
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/tdoukinitsas/liveplay/v${pkgver}/LICENCE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('85fcf5b983a2af2740ef0198b416e7b19416e28913f30b75c64638ba397493aa'
+sha256sums=('21204509e205bd4f0a3179cd224504668f15449fe37c2789d1e1cd142b52a131'
             '20b067f86de375aae6db0f283ab2e65de24d537733b89bd58432c101259d84cf'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
