@@ -3,11 +3,10 @@
 pkgname=dankcalendar-git
 _pkgname=dankcalendar
 _binname=dcal
-_shellname=dankcal
 _iconname=dankcalendar
 _desktopid=com.danklinux.dankcalendar
-pkgver=0.2.2.r0.gf715273
-pkgrel=2
+pkgver=0.2.3.r0.g5be8557
+pkgrel=1
 pkgdesc='Local, Google, Microsoft, and CalDAV calendars for the dank desktop (git)'
 arch=('x86_64' 'aarch64')
 url="https://github.com/AvengeMedia/$_pkgname"
@@ -41,7 +40,10 @@ build() {
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 	export GOMODCACHE="$srcdir/gomodcache"
 
-	go build \
+	# Bake the quickshell UI into the binary (populates internal/shellembed/dist)
+	make sync-shell
+
+	go build -tags withshell \
 		-ldflags "-s -w -X main.Version=${VERSION} -X main.BuildTime=${BUILD_TIME} -X main.Commit=${COMMIT}" \
 		-o bin/$_binname ./cmd/$_binname
 
@@ -65,10 +67,6 @@ package() {
 	install -Dm644 "core/bin/completions/$_binname"      "$pkgdir/usr/share/bash-completion/completions/$_binname"
 	install -Dm644 "core/bin/completions/_$_binname"     "$pkgdir/usr/share/zsh/site-functions/_$_binname"
 	install -Dm644 "core/bin/completions/$_binname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$_binname.fish"
-
-	install -dm755 "$pkgdir/usr/share/quickshell/$_shellname"
-	cp -r quickshell/. "$pkgdir/usr/share/quickshell/$_shellname/"
-	rm -rf "$pkgdir/usr/share/quickshell/$_shellname/.git"*
 
 	install -Dm644 "assets/$_iconname.svg" \
 		"$pkgdir/usr/share/icons/hicolor/scalable/apps/$_iconname.svg"

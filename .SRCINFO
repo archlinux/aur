@@ -1,7 +1,7 @@
 pkgbase = dankcalendar-git
 	pkgdesc = Local, Google, Microsoft, and CalDAV calendars for the dank desktop (git)
-	pkgver = 0.2.2.r0.gf715273
-	pkgrel = 2
+	pkgver = 0.2.3.r0.g5be8557
+	pkgrel = 1
 	url = https://github.com/AvengeMedia/dankcalendar
 	arch = x86_64
 	arch = aarch64
@@ -11,8 +11,8 @@ pkgbase = dankcalendar-git
 	depends = quickshell
 	depends = qt6-declarative
 	optdepends = dms-shell: dynamic theming via DankMaterialShell colors
-	provides = dcal=0.2.2.r0.gf715273
-	provides = dankcalendar=0.2.2.r0.gf715273
+	provides = dcal=0.2.3.r0.g5be8557
+	provides = dankcalendar=0.2.3.r0.g5be8557
 	conflicts = dcal
 	conflicts = dankcalendar
 	conflicts = dankcalendar-bin
