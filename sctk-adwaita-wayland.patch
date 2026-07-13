@@ -1,0 +1,2622 @@
+diff --git a/Cargo.lock b/Cargo.lock
+index cca9dcb7a..7de355958 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -2,6 +2,22 @@
+ # It is not intended for manual editing.
+ version = 3
+ 
++[[package]]
++name = "ab_glyph"
++version = "0.2.29"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "ec3672c180e71eeaaac3a541fbbc5f5ad4def8b747c595ad30d674e43049f7b0"
++dependencies = [
++ "ab_glyph_rasterizer",
++ "owned_ttf_parser",
++]
++
++[[package]]
++name = "ab_glyph_rasterizer"
++version = "0.1.8"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "c71b1793ee61086797f5c80b6efa2b8ffa6d5dd703f118545808a7f2e27f7046"
++
+ [[package]]
+ name = "addr2line"
+ version = "0.25.1"
+@@ -931,7 +947,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "117725a109d387c937a1533ce01b450cbde6b88abceea8473c4d7a85853cda3c"
+ dependencies = [
+  "lazy_static",
+- "windows-sys 0.59.0",
++ "windows-sys 0.48.0",
+ ]
+ 
+ [[package]]
+@@ -4076,6 +4092,15 @@ dependencies = [
+  "pin-project-lite",
+ ]
+ 
++[[package]]
++name = "owned_ttf_parser"
++version = "0.25.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "22ec719bbf3b2a81c109a4e20b1f129b5566b7dce654bc3872f6a05abf82b2c4"
++dependencies = [
++ "ttf-parser",
++]
++
+ [[package]]
+ name = "parking"
+ version = "2.2.1"
+@@ -5047,7 +5072,7 @@ dependencies = [
+  "errno",
+  "libc",
+  "linux-raw-sys 0.4.15",
+- "windows-sys 0.59.0",
++ "windows-sys 0.52.0",
+ ]
+ 
+ [[package]]
+@@ -5138,6 +5163,18 @@ version = "1.2.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49"
+ 
++[[package]]
++name = "sctk-adwaita"
++version = "0.11.0"
++source = "git+https://github.com/PolyMeilex/sctk-adwaita?rev=a0bce432181d11d4b035fe4f64bd6dab6fcb4cbd#a0bce432181d11d4b035fe4f64bd6dab6fcb4cbd"
++dependencies = [
++ "ab_glyph",
++ "log",
++ "memmap2 0.9.10",
++ "smithay-client-toolkit",
++ "tiny-skia",
++]
++
+ [[package]]
+ name = "security-framework"
+ version = "3.7.0"
+@@ -5449,22 +5486,24 @@ checksum = "b7c388c1b5e93756d0c740965c41e8822f866621d41acbdf6336a6a168f8840c"
+ 
+ [[package]]
+ name = "smithay-client-toolkit"
+-version = "0.19.2"
++version = "0.20.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "3457dea1f0eb631b4034d61d4d8c32074caa6cd1ab2d59f2327bd8461e2c0016"
++checksum = "0512da38f5e2b31201a93524adb8d3136276fa4fe4aafab4e1f727a82b534cc0"
+ dependencies = [
+  "bitflags 2.11.1",
+  "cursor-icon",
+  "libc",
+  "log",
+  "memmap2 0.9.10",
+- "rustix 0.38.44",
+- "thiserror 1.0.69",
++ "rustix 1.1.4",
++ "thiserror 2.0.18",
+  "wayland-backend",
+  "wayland-client",
+  "wayland-csd-frame",
+  "wayland-cursor",
+  "wayland-protocols",
++ "wayland-protocols-experimental",
++ "wayland-protocols-misc",
+  "wayland-protocols-wlr",
+  "wayland-scanner",
+  "xkeysym",
+@@ -6294,6 +6333,12 @@ version = "0.2.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "e421abadd41a4225275504ea4d6566923418b7f05506fbc9c0fe86ba7396114b"
+ 
++[[package]]
++name = "ttf-parser"
++version = "0.25.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "d2df906b07856748fa3f6e0ad0cbaa047052d4a7dd609e231c4f72cee8c36f31"
++
+ [[package]]
+ name = "typeid"
+ version = "1.0.3"
+@@ -6719,6 +6764,32 @@ dependencies = [
+  "wayland-scanner",
+ ]
+ 
++[[package]]
++name = "wayland-protocols-experimental"
++version = "20250721.0.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "40a1f863128dcaaec790d7b4b396cc9b9a7a079e878e18c47e6c2d2c5a8dcbb1"
++dependencies = [
++ "bitflags 2.11.1",
++ "wayland-backend",
++ "wayland-client",
++ "wayland-protocols",
++ "wayland-scanner",
++]
++
++[[package]]
++name = "wayland-protocols-misc"
++version = "0.3.9"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "2dfe33d551eb8bffd03ff067a8b44bb963919157841a99957151299a6307d19c"
++dependencies = [
++ "bitflags 2.11.1",
++ "wayland-backend",
++ "wayland-client",
++ "wayland-protocols",
++ "wayland-scanner",
++]
++
+ [[package]]
+ name = "wayland-protocols-plasma"
+ version = "0.3.12"
+@@ -7555,6 +7626,7 @@ dependencies = [
+  "promise",
+  "raw-window-handle",
+  "resize",
++ "sctk-adwaita",
+  "serde",
+  "shared_library",
+  "shlex 1.3.0",
+diff --git a/Cargo.toml b/Cargo.toml
+index a9eb18083..9d91183e5 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -198,7 +198,8 @@ shell-words = "1.1"
+ shlex = "1.1"
+ signal-hook = "0.3"
+ siphasher = "1.0.1"
+-smithay-client-toolkit = {version = "0.19", default-features=false}
++smithay-client-toolkit = {version = "0.20", default-features=false}
++sctk-adwaita = { git = "https://github.com/PolyMeilex/sctk-adwaita", rev="a0bce432181d11d4b035fe4f64bd6dab6fcb4cbd" }
+ smol = "2.0"
+ socket2 = "0.5"
+ spa = "0.3.1"
+diff --git a/window/Cargo.toml b/window/Cargo.toml
+index e4723aa43..b0ecfc98a 100644
+--- a/window/Cargo.toml
++++ b/window/Cargo.toml
+@@ -15,7 +15,7 @@ k9.workspace = true
+ gl_generator.workspace = true
+ 
+ [features]
+-wayland = ["wayland-client", "smithay-client-toolkit", "wayland-egl", "wayland-protocols", "wayland-backend", "wayland-protocols-plasma"]
++wayland = ["wayland-client", "smithay-client-toolkit", "sctk-adwaita", "wayland-egl", "wayland-protocols", "wayland-backend", "wayland-protocols-plasma"]
+ 
+ [dependencies]
+ async-channel.workspace = true
+@@ -82,6 +82,7 @@ zbus.workspace = true
+ zvariant.workspace = true
+ 
+ smithay-client-toolkit = {workspace=true, default-features=false, optional=true}
++sctk-adwaita = {workspace=true, optional=true}
+ wayland-backend = {workspace=true, features=["client_system", "rwh_06"], optional=true}
+ wayland-protocols = {workspace=true, optional=true}
+ wayland-protocols-plasma = {workspace=true, optional=true}
+diff --git a/window/src/os/wayland/frame.rs b/window/src/os/wayland/frame.rs
+deleted file mode 100644
+index 614f24d17..000000000
+--- a/window/src/os/wayland/frame.rs
++++ /dev/null
+@@ -1,1453 +0,0 @@
+-//! This file is derived from the ConceptFrame implementation
+-//! in smithay_client_toolkit 0.11 which is Copyright (c) 2018 Victor Berger
+-//! and provided under the terms of the MIT license.
+-
+-use crate::os::wayland::pointer::make_theme_manager;
+-use config::{ConfigHandle, RgbaColor, WindowFrameConfig};
+-use smithay_client_toolkit::output::{add_output_listener, with_output_info, OutputListener};
+-use smithay_client_toolkit::seat::pointer::{ThemeManager, ThemedPointer};
+-use smithay_client_toolkit::shm::DoubleMemPool;
+-use smithay_client_toolkit::window::{ButtonState, Frame, FrameRequest, State, WindowState};
+-use std::cell::RefCell;
+-use std::cmp::max;
+-use std::rc::Rc;
+-use std::sync::Mutex;
+-use tiny_skia::{
+-    ColorU8, FillRule, Paint, PathBuilder, PixmapMut, PixmapPaint, PixmapRef, Rect, Stroke,
+-    Transform,
+-};
+-use wayland_client::protocol::{
+-    wl_compositor, wl_output, wl_pointer, wl_seat, wl_shm, wl_subcompositor, wl_subsurface,
+-    wl_surface,
+-};
+-use wayland_client::{Attached, DispatchData, Main};
+-use wezterm_color_types::SrgbaTuple;
+-use wezterm_font::{FontConfiguration, FontMetrics, GlyphInfo, RasterizedGlyph};
+-use wezterm_input_types::WindowDecorations;
+-
+-fn color_to_paint(c: RgbaColor) -> Paint<'static> {
+-    let mut paint = Paint::default();
+-    let (red, green, blue, alpha) = c.as_rgba_u8();
+-    paint.set_color_rgba8(blue, green, red, alpha);
+-    paint.anti_alias = true;
+-    paint
+-}
+-
+-/*
+- * Drawing theme definitions
+- */
+-
+-const BORDER_SIZE: u32 = 12;
+-const HEADER_SIZE: u32 = 30;
+-
+-/// Configuration for ConceptFrame
+-#[derive(Clone)]
+-pub struct ConceptConfig {
+-    pub font_config: Option<Rc<FontConfiguration>>,
+-    pub config: ConfigHandle,
+-}
+-
+-impl Default for ConceptConfig {
+-    fn default() -> Self {
+-        Self {
+-            font_config: None,
+-            config: config::configuration(),
+-        }
+-    }
+-}
+-
+-impl ConceptConfig {
+-    pub fn colors(&self) -> &WindowFrameConfig {
+-        &self.config.window_frame
+-    }
+-}
+-
+-/*
+- * Utilities
+- */
+-
+-const HEAD: usize = 0;
+-const TOP: usize = 1;
+-const BOTTOM: usize = 2;
+-const LEFT: usize = 3;
+-const RIGHT: usize = 4;
+-
+-#[derive(Debug, Copy, Clone, PartialEq, Eq)]
+-enum Location {
+-    None,
+-    Head,
+-    Top,
+-    TopRight,
+-    Right,
+-    BottomRight,
+-    Bottom,
+-    BottomLeft,
+-    Left,
+-    TopLeft,
+-    Button(UIButton),
+-}
+-
+-#[derive(Debug, Copy, Clone, PartialEq, Eq)]
+-enum UIButton {
+-    Minimize,
+-    Maximize,
+-    Close,
+-}
+-
+-struct Part {
+-    surface: wl_surface::WlSurface,
+-    subsurface: wl_subsurface::WlSubsurface,
+-}
+-
+-pub(crate) struct SurfaceUserData {
+-    scale_factor: i32,
+-    outputs: Vec<(wl_output::WlOutput, i32, OutputListener)>,
+-}
+-
+-impl SurfaceUserData {
+-    fn new() -> Self {
+-        SurfaceUserData {
+-            scale_factor: 1,
+-            outputs: Vec::new(),
+-        }
+-    }
+-
+-    pub(crate) fn enter<F>(
+-        &mut self,
+-        output: wl_output::WlOutput,
+-        surface: wl_surface::WlSurface,
+-        callback: &Option<Rc<RefCell<F>>>,
+-    ) where
+-        F: FnMut(i32, wl_surface::WlSurface, DispatchData) + 'static,
+-    {
+-        let output_scale = with_output_info(&output, |info| info.scale_factor).unwrap_or(1);
+-        let my_surface = surface.clone();
+-        // Use a UserData to safely share the callback with the other thread
+-        let my_callback = wayland_client::UserData::new();
+-        if let Some(ref cb) = callback {
+-            my_callback.set(|| cb.clone());
+-        }
+-        let listener = add_output_listener(&output, move |output, info, ddata| {
+-            let mut user_data = my_surface
+-                .as_ref()
+-                .user_data()
+-                .get::<Mutex<SurfaceUserData>>()
+-                .unwrap()
+-                .lock()
+-                .unwrap();
+-            // update the scale factor of the relevant output
+-            for (ref o, ref mut factor, _) in user_data.outputs.iter_mut() {
+-                if o.as_ref().equals(output.as_ref()) {
+-                    if info.obsolete {
+-                        // an output that no longer exists is marked by a scale factor of -1
+-                        *factor = -1;
+-                    } else {
+-                        *factor = info.scale_factor;
+-                    }
+-                    break;
+-                }
+-            }
+-            // recompute the scale factor with the new info
+-            let callback = my_callback.get::<Rc<RefCell<F>>>().cloned();
+-            let old_scale_factor = user_data.scale_factor;
+-            let new_scale_factor = user_data.recompute_scale_factor();
+-            drop(user_data);
+-            if let Some(ref cb) = callback {
+-                if old_scale_factor != new_scale_factor {
+-                    (&mut *cb.borrow_mut())(new_scale_factor, surface.clone(), ddata);
+-                }
+-            }
+-        });
+-        self.outputs.push((output, output_scale, listener));
+-    }
+-
+-    pub(crate) fn leave(&mut self, output: &wl_output::WlOutput) {
+-        self.outputs
+-            .retain(|(ref output2, _, _)| !output.as_ref().equals(output2.as_ref()));
+-    }
+-
+-    fn recompute_scale_factor(&mut self) -> i32 {
+-        let mut new_scale_factor = 1;
+-        self.outputs.retain(|&(_, output_scale, _)| {
+-            if output_scale > 0 {
+-                new_scale_factor = ::std::cmp::max(new_scale_factor, output_scale);
+-                true
+-            } else {
+-                // cleanup obsolete output
+-                false
+-            }
+-        });
+-        if self.outputs.is_empty() {
+-            // don't update the scale factor if we are not displayed on any output
+-            return self.scale_factor;
+-        }
+-        self.scale_factor = new_scale_factor;
+-        new_scale_factor
+-    }
+-}
+-
+-/// Returns the current suggested scale factor of a surface.
+-///
+-/// Panics if the surface was not created using `create_surface`
+-fn get_surface_scale_factor(surface: &wl_surface::WlSurface) -> i32 {
+-    surface
+-        .as_ref()
+-        .user_data()
+-        .get::<Mutex<SurfaceUserData>>()
+-        .expect("SCTK: Surface was not created by SCTK.")
+-        .lock()
+-        .unwrap()
+-        .scale_factor
+-}
+-
+-fn setup_surface<F>(
+-    surface: Main<wl_surface::WlSurface>,
+-    callback: Option<F>,
+-) -> Attached<wl_surface::WlSurface>
+-where
+-    F: FnMut(i32, wl_surface::WlSurface, DispatchData) + 'static,
+-{
+-    let callback = callback.map(|c| Rc::new(RefCell::new(c)));
+-    surface.quick_assign(move |surface, event, ddata| {
+-        let mut user_data = surface
+-            .as_ref()
+-            .user_data()
+-            .get::<Mutex<SurfaceUserData>>()
+-            .unwrap()
+-            .lock()
+-            .unwrap();
+-        match event {
+-            wl_surface::Event::Enter { output } => {
+-                // Passing the callback to be added to output listener
+-                user_data.enter(output, surface.detach(), &callback);
+-            }
+-            wl_surface::Event::Leave { output } => {
+-                user_data.leave(&output);
+-            }
+-            _ => unreachable!(),
+-        };
+-        let old_scale_factor = user_data.scale_factor;
+-        let new_scale_factor = user_data.recompute_scale_factor();
+-        drop(user_data);
+-        if let Some(ref cb) = callback {
+-            if old_scale_factor != new_scale_factor {
+-                (&mut *cb.borrow_mut())(new_scale_factor, surface.detach(), ddata);
+-            }
+-        }
+-    });
+-    surface
+-        .as_ref()
+-        .user_data()
+-        .set_threadsafe(|| Mutex::new(SurfaceUserData::new()));
+-    surface.into()
+-}
+-
+-impl Part {
+-    fn new(
+-        parent: &wl_surface::WlSurface,
+-        compositor: &Attached<wl_compositor::WlCompositor>,
+-        subcompositor: &Attached<wl_subcompositor::WlSubcompositor>,
+-        inner: Option<Rc<RefCell<Inner>>>,
+-    ) -> Part {
+-        let surface = if let Some(inner) = inner {
+-            setup_surface(
+-                compositor.create_surface(),
+-                Some(
+-                    move |dpi, surface: wl_surface::WlSurface, ddata: DispatchData| {
+-                        surface.set_buffer_scale(dpi);
+-                        surface.commit();
+-                        (&mut inner.borrow_mut().implem)(FrameRequest::Refresh, 0, ddata);
+-                    },
+-                ),
+-            )
+-        } else {
+-            setup_surface(
+-                compositor.create_surface(),
+-                Some(
+-                    move |dpi, surface: wl_surface::WlSurface, _ddata: DispatchData| {
+-                        surface.set_buffer_scale(dpi);
+-                        surface.commit();
+-                    },
+-                ),
+-            )
+-        };
+-
+-        let surface = surface.detach();
+-
+-        let subsurface = subcompositor.get_subsurface(&surface, parent);
+-
+-        Part {
+-            surface,
+-            subsurface: subsurface.detach(),
+-        }
+-    }
+-}
+-
+-impl Drop for Part {
+-    fn drop(&mut self) {
+-        self.subsurface.destroy();
+-        self.surface.destroy();
+-    }
+-}
+-
+-struct PointerUserData {
+-    location: Location,
+-    position: (f64, f64),
+-    seat: wl_seat::WlSeat,
+-}
+-
+-/*
+- * The core frame
+- */
+-
+-struct Inner {
+-    parts: Vec<Part>,
+-    size: (u32, u32),
+-    resizable: bool,
+-    theme_over_surface: bool,
+-    implem: Box<dyn FnMut(FrameRequest, u32, DispatchData)>,
+-    maximized: bool,
+-    fullscreened: bool,
+-}
+-
+-impl Inner {
+-    fn find_surface(&self, surface: &wl_surface::WlSurface) -> Location {
+-        if self.parts.is_empty() {
+-            return Location::None;
+-        }
+-
+-        if surface.as_ref().equals(self.parts[HEAD].surface.as_ref()) {
+-            Location::Head
+-        } else if surface.as_ref().equals(self.parts[TOP].surface.as_ref()) {
+-            Location::Top
+-        } else if surface.as_ref().equals(self.parts[BOTTOM].surface.as_ref()) {
+-            Location::Bottom
+-        } else if surface.as_ref().equals(self.parts[LEFT].surface.as_ref()) {
+-            Location::Left
+-        } else if surface.as_ref().equals(self.parts[RIGHT].surface.as_ref()) {
+-            Location::Right
+-        } else {
+-            Location::None
+-        }
+-    }
+-}
+-
+-fn precise_location(old: Location, width: u32, x: f64, y: f64) -> Location {
+-    match old {
+-        Location::Head | Location::Button(_) => find_button(x, y, width),
+-
+-        Location::Top | Location::TopLeft | Location::TopRight => {
+-            if x <= f64::from(BORDER_SIZE) {
+-                Location::TopLeft
+-            } else if x >= f64::from(width + BORDER_SIZE) {
+-                Location::TopRight
+-            } else {
+-                Location::Top
+-            }
+-        }
+-
+-        Location::Bottom | Location::BottomLeft | Location::BottomRight => {
+-            if x <= f64::from(BORDER_SIZE) {
+-                Location::BottomLeft
+-            } else if x >= f64::from(width + BORDER_SIZE) {
+-                Location::BottomRight
+-            } else {
+-                Location::Bottom
+-            }
+-        }
+-
+-        other => other,
+-    }
+-}
+-
+-fn find_button(x: f64, y: f64, w: u32) -> Location {
+-    if (w >= HEADER_SIZE)
+-        && (x >= f64::from(w - HEADER_SIZE))
+-        && (x <= f64::from(w))
+-        && (y <= f64::from(HEADER_SIZE))
+-        && (y >= f64::from(0))
+-    {
+-        // first button
+-        Location::Button(UIButton::Close)
+-    } else if (w >= 2 * HEADER_SIZE)
+-        && (x >= f64::from(w - 2 * HEADER_SIZE))
+-        && (x <= f64::from(w - HEADER_SIZE))
+-        && (y <= f64::from(HEADER_SIZE))
+-        && (y >= f64::from(0))
+-    {
+-        // second button
+-        Location::Button(UIButton::Maximize)
+-    } else if (w >= 3 * HEADER_SIZE)
+-        && (x >= f64::from(w - 3 * HEADER_SIZE))
+-        && (x <= f64::from(w - 2 * HEADER_SIZE))
+-        && (y <= f64::from(HEADER_SIZE))
+-        && (y >= f64::from(0))
+-    {
+-        // third button
+-        Location::Button(UIButton::Minimize)
+-    } else {
+-        Location::Head
+-    }
+-}
+-
+-/// A clean, modern and stylish set of decorations.
+-///
+-/// This class draws clean and modern decorations with
+-/// buttons inspired by breeze, material hover shade and
+-/// a white header background.
+-///
+-/// `ConceptFrame` is hiding its `ClientSide` decorations
+-/// in a `Fullscreen` state and brings them back if those are
+-/// visible when unsetting `Fullscreen` state.
+-pub struct ConceptFrame {
+-    base_surface: wl_surface::WlSurface,
+-    compositor: Attached<wl_compositor::WlCompositor>,
+-    subcompositor: Attached<wl_subcompositor::WlSubcompositor>,
+-    inner: Rc<RefCell<Inner>>,
+-    pools: DoubleMemPool,
+-    active: WindowState,
+-    hidden: bool,
+-    pointers: Vec<ThemedPointer>,
+-    themer: ThemeManager,
+-    surface_version: u32,
+-    config: ConceptConfig,
+-    title: Option<String>,
+-    shaped_title: Option<ShapedTitle>,
+-}
+-
+-struct ShapedTitle {
+-    title: String,
+-    glyphs: Vec<ShapedGlyph>,
+-    metrics: FontMetrics,
+-    state: WindowState,
+-    dpi: usize,
+-}
+-
+-struct ShapedGlyph {
+-    info: GlyphInfo,
+-    glyph: RasterizedGlyph,
+-}
+-
+-impl ConceptFrame {
+-    fn reshape_title(&mut self) -> Option<()> {
+-        let font_config = self.config.font_config.as_ref()?;
+-        let title = self.title.as_deref().unwrap_or("");
+-        if title.is_empty() {
+-            self.title.take();
+-            self.shaped_title.take();
+-            return Some(());
+-        }
+-
+-        if let Some(existing) = self.shaped_title.as_ref() {
+-            if existing.title == title
+-                && existing.state == self.active
+-                && existing.dpi == font_config.get_dpi()
+-            {
+-                return Some(());
+-            }
+-        }
+-
+-        let font = font_config.title_font().ok()?;
+-        let metrics = font.metrics();
+-        let infos = font
+-            .shape(
+-                title,
+-                || {
+-                    // TODO: font fallback completed, trigger title repaint!
+-                },
+-                |_| {
+-                    // We don't do synthesis here, so no need to filter
+-                },
+-                None,
+-                wezterm_bidi::Direction::LeftToRight,
+-                None,
+-                None,
+-            )
+-            .ok()?;
+-
+-        let mut glyphs = vec![];
+-        let colors = self.config.colors();
+-        let title_color = match self.active {
+-            WindowState::Active => colors.active_titlebar_fg,
+-            WindowState::Inactive => colors.inactive_titlebar_fg,
+-        };
+-
+-        for info in infos {
+-            if let Ok(mut glyph) = font.rasterize_glyph(info.glyph_pos, info.font_idx) {
+-                // fixup colors: they need to be switched to the appropriate
+-                // pixel format, and for monochrome font data we need to tint
+-                // it with their preferred title color
+-                if let Some(mut data) =
+-                    PixmapMut::from_bytes(&mut glyph.data, glyph.width as u32, glyph.height as u32)
+-                {
+-                    for p in data.pixels_mut() {
+-                        let c = p.demultiply();
+-                        let (r, g, b, a) = (c.red(), c.green(), c.blue(), c.alpha());
+-                        if glyph.has_color {
+-                            *p = ColorU8::from_rgba(b, g, r, a).premultiply();
+-                        } else {
+-                            // Apply the preferred title color
+-                            *p = ColorU8::from_rgba(
+-                                ((b as f32 / 255.) * (title_color.0 * 255.)) as u8,
+-                                ((g as f32 / 255.) * (title_color.1 * 255.)) as u8,
+-                                ((r as f32 / 255.) * (title_color.2 * 255.)) as u8,
+-                                a,
+-                            )
+-                            .premultiply();
+-                        }
+-                    }
+-                }
+-
+-                glyphs.push(ShapedGlyph { info, glyph });
+-            }
+-        }
+-
+-        self.shaped_title.replace(ShapedTitle {
+-            title: title.to_string(),
+-            glyphs,
+-            metrics,
+-            state: self.active,
+-            dpi: font_config.get_dpi(),
+-        });
+-
+-        Some(())
+-    }
+-
+-    fn showing_title_bar(&self, inner: &Inner) -> bool {
+-        if self.hidden || inner.fullscreened {
+-            false
+-        } else {
+-            self.config
+-                .config
+-                .window_decorations
+-                .contains(WindowDecorations::TITLE)
+-        }
+-    }
+-}
+-
+-impl Frame for ConceptFrame {
+-    type Error = ::std::io::Error;
+-    type Config = ConceptConfig;
+-    fn init(
+-        base_surface: &wl_surface::WlSurface,
+-        compositor: &Attached<wl_compositor::WlCompositor>,
+-        subcompositor: &Attached<wl_subcompositor::WlSubcompositor>,
+-        shm: &Attached<wl_shm::WlShm>,
+-        theme_manager: Option<ThemeManager>,
+-        implementation: Box<dyn FnMut(FrameRequest, u32, DispatchData)>,
+-    ) -> Result<ConceptFrame, ::std::io::Error> {
+-        let (themer, theme_over_surface) = if let Some(theme_manager) = theme_manager {
+-            (theme_manager, false)
+-        } else {
+-            (make_theme_manager(compositor.clone(), shm.clone()), true)
+-        };
+-
+-        let inner = Rc::new(RefCell::new(Inner {
+-            parts: vec![],
+-            size: (1, 1),
+-            resizable: true,
+-            implem: implementation,
+-            theme_over_surface,
+-            maximized: false,
+-            fullscreened: false,
+-        }));
+-
+-        let my_inner = inner.clone();
+-        // Send a Refresh request on callback from DoubleMemPool as it will be fired when
+-        // None was previously returned from `pool()` and the draw was postponed
+-        let pools = DoubleMemPool::new(shm.clone(), move |ddata| {
+-            (&mut my_inner.borrow_mut().implem)(FrameRequest::Refresh, 0, ddata);
+-        })?;
+-
+-        Ok(ConceptFrame {
+-            base_surface: base_surface.clone(),
+-            compositor: compositor.clone(),
+-            subcompositor: subcompositor.clone(),
+-            inner,
+-            pools,
+-            active: WindowState::Inactive,
+-            hidden: true,
+-            pointers: Vec::new(),
+-            themer,
+-            surface_version: compositor.as_ref().version(),
+-            config: ConceptConfig::default(),
+-            title: None,
+-            shaped_title: None,
+-        })
+-    }
+-
+-    fn new_seat(&mut self, seat: &Attached<wl_seat::WlSeat>) {
+-        use self::wl_pointer::Event;
+-        let inner = self.inner.clone();
+-        let pointer = self.themer.theme_pointer_with_impl(
+-            seat,
+-            move |event, pointer: ThemedPointer, ddata: DispatchData| {
+-                let data: &RefCell<PointerUserData> = pointer.as_ref().user_data().get().unwrap();
+-                let mut data = data.borrow_mut();
+-                let mut inner = inner.borrow_mut();
+-                match event {
+-                    Event::Enter {
+-                        serial,
+-                        surface,
+-                        surface_x,
+-                        surface_y,
+-                    } => {
+-                        data.location = precise_location(
+-                            inner.find_surface(&surface),
+-                            inner.size.0,
+-                            surface_x,
+-                            surface_y,
+-                        );
+-                        data.position = (surface_x, surface_y);
+-                        change_pointer(&pointer, &inner, data.location, Some(serial))
+-                    }
+-                    Event::Leave { serial, .. } => {
+-                        data.location = Location::None;
+-                        change_pointer(&pointer, &inner, data.location, Some(serial));
+-                        (&mut inner.implem)(FrameRequest::Refresh, 0, ddata);
+-                    }
+-                    Event::Motion {
+-                        surface_x,
+-                        surface_y,
+-                        ..
+-                    } => {
+-                        data.position = (surface_x, surface_y);
+-                        let newpos =
+-                            precise_location(data.location, inner.size.0, surface_x, surface_y);
+-                        if newpos != data.location {
+-                            match (newpos, data.location) {
+-                                (Location::Button(_), _) | (_, Location::Button(_)) => {
+-                                    // pointer movement involves a button, request refresh
+-                                    (&mut inner.implem)(FrameRequest::Refresh, 0, ddata);
+-                                }
+-                                _ => (),
+-                            }
+-                            // we changed of part of the decoration, pointer image
+-                            // may need to be changed
+-                            data.location = newpos;
+-                            change_pointer(&pointer, &inner, data.location, None)
+-                        }
+-                    }
+-                    Event::Button {
+-                        serial,
+-                        button,
+-                        state,
+-                        ..
+-                    } => {
+-                        if state == wl_pointer::ButtonState::Pressed {
+-                            let request = match button {
+-                                // Left mouse button.
+-                                0x110 => request_for_location_on_lmb(
+-                                    &data,
+-                                    inner.maximized,
+-                                    inner.resizable,
+-                                ),
+-                                // Right mouse button.
+-                                0x111 => request_for_location_on_rmb(&data),
+-                                _ => None,
+-                            };
+-
+-                            if let Some(request) = request {
+-                                (&mut inner.implem)(request, serial, ddata);
+-                            }
+-                        }
+-                    }
+-                    _ => {}
+-                }
+-            },
+-        );
+-        pointer.as_ref().user_data().set(|| {
+-            RefCell::new(PointerUserData {
+-                location: Location::None,
+-                position: (0.0, 0.0),
+-                seat: seat.detach(),
+-            })
+-        });
+-        self.pointers.push(pointer);
+-    }
+-
+-    fn remove_seat(&mut self, seat: &wl_seat::WlSeat) {
+-        self.pointers.retain(|pointer| {
+-            let user_data = pointer
+-                .as_ref()
+-                .user_data()
+-                .get::<RefCell<PointerUserData>>()
+-                .unwrap();
+-            let guard = user_data.borrow_mut();
+-            if &guard.seat == seat {
+-                pointer.release();
+-                false
+-            } else {
+-                true
+-            }
+-        });
+-    }
+-
+-    fn set_states(&mut self, states: &[State]) -> bool {
+-        let mut inner = self.inner.borrow_mut();
+-        let mut need_redraw = false;
+-
+-        // Process active.
+-        let new_active = if states.contains(&State::Activated) {
+-            WindowState::Active
+-        } else {
+-            WindowState::Inactive
+-        };
+-        need_redraw |= new_active != self.active;
+-        self.active = new_active;
+-
+-        // Process maximized.
+-        let new_maximized = states.contains(&State::Maximized);
+-        need_redraw |= new_maximized != inner.maximized;
+-        inner.maximized = new_maximized;
+-
+-        // Process fullscreened.
+-        let new_fullscreened = states.contains(&State::Fullscreen);
+-        need_redraw |= new_fullscreened != inner.fullscreened;
+-        inner.fullscreened = new_fullscreened;
+-
+-        need_redraw
+-    }
+-
+-    fn set_hidden(&mut self, hidden: bool) {
+-        self.hidden = hidden;
+-        let mut inner = self.inner.borrow_mut();
+-        if !self.hidden {
+-            if inner.parts.is_empty() {
+-                inner.parts = vec![
+-                    Part::new(
+-                        &self.base_surface,
+-                        &self.compositor,
+-                        &self.subcompositor,
+-                        Some(Rc::clone(&self.inner)),
+-                    ),
+-                    Part::new(
+-                        &self.base_surface,
+-                        &self.compositor,
+-                        &self.subcompositor,
+-                        None,
+-                    ),
+-                    Part::new(
+-                        &self.base_surface,
+-                        &self.compositor,
+-                        &self.subcompositor,
+-                        None,
+-                    ),
+-                    Part::new(
+-                        &self.base_surface,
+-                        &self.compositor,
+-                        &self.subcompositor,
+-                        None,
+-                    ),
+-                    Part::new(
+-                        &self.base_surface,
+-                        &self.compositor,
+-                        &self.subcompositor,
+-                        None,
+-                    ),
+-                ];
+-            }
+-        } else {
+-            inner.parts.clear();
+-        }
+-    }
+-
+-    fn set_resizable(&mut self, resizable: bool) {
+-        self.inner.borrow_mut().resizable = resizable;
+-    }
+-
+-    fn resize(&mut self, newsize: (u32, u32)) {
+-        self.inner.borrow_mut().size = newsize;
+-    }
+-
+-    fn redraw(&mut self) {
+-        let showing_title_bar = self.showing_title_bar(&*self.inner.borrow());
+-
+-        if showing_title_bar {
+-            self.reshape_title();
+-        }
+-
+-        let inner = self.inner.borrow_mut();
+-
+-        // Don't draw borders if the frame explicitly hidden or fullscreened.
+-        if self.hidden || inner.fullscreened {
+-            // Don't draw the borders.
+-            for p in inner.parts.iter() {
+-                p.surface.attach(None, 0, 0);
+-                p.surface.commit();
+-            }
+-            return;
+-        }
+-
+-        // `parts` can't be empty here, since the initial state for `self.hidden` is true, and
+-        // they will be created once `self.hidden` will become `false`.
+-        let parts = &inner.parts;
+-
+-        let scales: Vec<u32> = parts
+-            .iter()
+-            .map(|part| get_surface_scale_factor(&part.surface) as u32)
+-            .collect();
+-
+-        let (width, height) = inner.size;
+-
+-        // Use header scale for all the thing.
+-        let header_scale = scales[HEAD];
+-
+-        let scaled_header_height = HEADER_SIZE * header_scale;
+-        let scaled_header_width = width * header_scale;
+-
+-        {
+-            // grab the current pool
+-            let pool = match self.pools.pool() {
+-                Some(pool) => pool,
+-                None => return,
+-            };
+-            let lr_surfaces_scale = max(scales[LEFT], scales[RIGHT]);
+-            let tp_surfaces_scale = max(scales[TOP], scales[BOTTOM]);
+-
+-            // resize the pool as appropriate
+-            let pxcount = (scaled_header_height * scaled_header_width)
+-                + max(
+-                    (width + 2 * BORDER_SIZE) * BORDER_SIZE * tp_surfaces_scale * tp_surfaces_scale,
+-                    (height + HEADER_SIZE) * BORDER_SIZE * lr_surfaces_scale * lr_surfaces_scale,
+-                );
+-
+-            pool.resize(4 * pxcount as usize)
+-                .expect("I/O Error while redrawing the borders");
+-
+-            if showing_title_bar {
+-                // draw the header bar
+-                let mmap = pool.mmap();
+-                {
+-                    let colors = self.config.colors();
+-                    let color = match self.active {
+-                        WindowState::Active => colors.active_titlebar_bg,
+-                        WindowState::Inactive => colors.inactive_titlebar_bg,
+-                    };
+-
+-                    let mut pixmap = PixmapMut::from_bytes(
+-                        &mut mmap
+-                            [0..scaled_header_height as usize * scaled_header_width as usize * 4],
+-                        scaled_header_width,
+-                        scaled_header_height,
+-                    )
+-                    .expect("make pixmap from existing bitmap");
+-
+-                    pixmap.fill_path(
+-                        &PathBuilder::from_rect(
+-                            Rect::from_xywh(
+-                                0.,
+-                                0.,
+-                                scaled_header_width as f32,
+-                                scaled_header_height as f32,
+-                            )
+-                            .unwrap(),
+-                        ),
+-                        &color_to_paint(color),
+-                        FillRule::Winding,
+-                        Transform::identity(),
+-                        None,
+-                    );
+-
+-                    if let Some(shaped) = self.shaped_title.as_ref() {
+-                        let mut x = 8.;
+-                        let limit = scaled_header_width.saturating_sub(4 * HEADER_SIZE) as f64;
+-                        let identity = Transform::identity();
+-                        let paint = PixmapPaint::default();
+-                        for item in &shaped.glyphs {
+-                            if let Some(data) = PixmapRef::from_bytes(
+-                                &item.glyph.data,
+-                                item.glyph.width as u32,
+-                                item.glyph.height as u32,
+-                            ) {
+-                                // FIXME: scale emoji
+-
+-                                pixmap.draw_pixmap(
+-                                    (x + item.info.x_offset.get() + item.glyph.bearing_x.get())
+-                                        as i32,
+-                                    (scaled_header_height * 3 / 4) as i32
+-                                        + (shaped.metrics.descender
+-                                            - (item.info.y_offset + item.glyph.bearing_y))
+-                                            .get() as i32,
+-                                    data,
+-                                    &paint,
+-                                    identity,
+-                                    None,
+-                                );
+-                            }
+-
+-                            x += item.info.x_advance.get();
+-                            if x >= limit {
+-                                // Don't overflow the buttons
+-                                break;
+-                            }
+-                        }
+-                    }
+-
+-                    draw_buttons(
+-                        &mut pixmap,
+-                        width,
+-                        header_scale,
+-                        inner.resizable,
+-                        self.active,
+-                        &self
+-                            .pointers
+-                            .iter()
+-                            .flat_map(|p| {
+-                                if p.as_ref().is_alive() {
+-                                    let data: &RefCell<PointerUserData> =
+-                                        p.as_ref().user_data().get().unwrap();
+-                                    Some(data.borrow().location)
+-                                } else {
+-                                    None
+-                                }
+-                            })
+-                            .collect::<Vec<Location>>(),
+-                        &self.config,
+-                    );
+-                }
+-
+-                // For each pixel in borders
+-                {
+-                    for b in &mut mmap
+-                        [scaled_header_height as usize * scaled_header_width as usize * 4..]
+-                    {
+-                        *b = 0x00;
+-                    }
+-                }
+-                if let Err(err) = mmap.flush() {
+-                    log::error!("Failed to flush frame memory map: {}", err);
+-                }
+-
+-                // Create the buffers
+-                // -> head-subsurface
+-                let buffer = pool.buffer(
+-                    0,
+-                    scaled_header_width as i32,
+-                    scaled_header_height as i32,
+-                    4 * scaled_header_width as i32,
+-                    wl_shm::Format::Argb8888,
+-                );
+-                parts[HEAD]
+-                    .subsurface
+-                    .set_position(0, -(HEADER_SIZE as i32));
+-                parts[HEAD].surface.attach(Some(&buffer), 0, 0);
+-                if self.surface_version >= 4 {
+-                    parts[HEAD].surface.damage_buffer(
+-                        0,
+-                        0,
+-                        scaled_header_width as i32,
+-                        scaled_header_height as i32,
+-                    );
+-                } else {
+-                    // surface is old and does not support damage_buffer, so we damage
+-                    // in surface coordinates and hope it is not rescaled
+-                    parts[HEAD]
+-                        .surface
+-                        .damage(0, 0, width as i32, HEADER_SIZE as i32);
+-                }
+-                parts[HEAD].surface.commit();
+-            }
+-
+-            // -> top-subsurface
+-            let buffer = pool.buffer(
+-                4 * (scaled_header_width * scaled_header_height) as i32,
+-                ((width + 2 * BORDER_SIZE) * scales[TOP]) as i32,
+-                (BORDER_SIZE * scales[TOP]) as i32,
+-                (4 * scales[TOP] * (width + 2 * BORDER_SIZE)) as i32,
+-                wl_shm::Format::Argb8888,
+-            );
+-            parts[TOP].subsurface.set_position(
+-                -(BORDER_SIZE as i32),
+-                -(if showing_title_bar {
+-                    HEADER_SIZE as i32
+-                } else {
+-                    0
+-                } + BORDER_SIZE as i32),
+-            );
+-            parts[TOP].surface.attach(Some(&buffer), 0, 0);
+-            if self.surface_version >= 4 {
+-                parts[TOP].surface.damage_buffer(
+-                    0,
+-                    0,
+-                    ((width + 2 * BORDER_SIZE) * scales[TOP]) as i32,
+-                    (BORDER_SIZE * scales[TOP]) as i32,
+-                );
+-            } else {
+-                // surface is old and does not support damage_buffer, so we damage
+-                // in surface coordinates and hope it is not rescaled
+-                parts[TOP].surface.damage(
+-                    0,
+-                    0,
+-                    (width + 2 * BORDER_SIZE) as i32,
+-                    BORDER_SIZE as i32,
+-                );
+-            }
+-            parts[TOP].surface.commit();
+-
+-            // -> bottom-subsurface
+-            let buffer = pool.buffer(
+-                4 * (scaled_header_width * scaled_header_height) as i32,
+-                ((width + 2 * BORDER_SIZE) * scales[BOTTOM]) as i32,
+-                (BORDER_SIZE * scales[BOTTOM]) as i32,
+-                (4 * scales[BOTTOM] * (width + 2 * BORDER_SIZE)) as i32,
+-                wl_shm::Format::Argb8888,
+-            );
+-            parts[BOTTOM]
+-                .subsurface
+-                .set_position(-(BORDER_SIZE as i32), height as i32);
+-            parts[BOTTOM].surface.attach(Some(&buffer), 0, 0);
+-            if self.surface_version >= 4 {
+-                parts[BOTTOM].surface.damage_buffer(
+-                    0,
+-                    0,
+-                    ((width + 2 * BORDER_SIZE) * scales[BOTTOM]) as i32,
+-                    (BORDER_SIZE * scales[BOTTOM]) as i32,
+-                );
+-            } else {
+-                // surface is old and does not support damage_buffer, so we damage
+-                // in surface coordinates and hope it is not rescaled
+-                parts[BOTTOM].surface.damage(
+-                    0,
+-                    0,
+-                    (width + 2 * BORDER_SIZE) as i32,
+-                    BORDER_SIZE as i32,
+-                );
+-            }
+-            parts[BOTTOM].surface.commit();
+-
+-            // -> left-subsurface
+-            let buffer = pool.buffer(
+-                4 * (scaled_header_width * scaled_header_height) as i32,
+-                (BORDER_SIZE * scales[LEFT]) as i32,
+-                ((height + HEADER_SIZE) * scales[LEFT]) as i32,
+-                4 * (BORDER_SIZE * scales[LEFT]) as i32,
+-                wl_shm::Format::Argb8888,
+-            );
+-            parts[LEFT]
+-                .subsurface
+-                .set_position(-(BORDER_SIZE as i32), -(HEADER_SIZE as i32));
+-            parts[LEFT].surface.attach(Some(&buffer), 0, 0);
+-            if self.surface_version >= 4 {
+-                parts[LEFT].surface.damage_buffer(
+-                    0,
+-                    0,
+-                    (BORDER_SIZE * scales[LEFT]) as i32,
+-                    ((height + HEADER_SIZE) * scales[LEFT]) as i32,
+-                );
+-            } else {
+-                // surface is old and does not support damage_buffer, so we damage
+-                // in surface coordinates and hope it is not rescaled
+-                parts[LEFT]
+-                    .surface
+-                    .damage(0, 0, BORDER_SIZE as i32, (height + HEADER_SIZE) as i32);
+-            }
+-            parts[LEFT].surface.commit();
+-
+-            // -> right-subsurface
+-            let buffer = pool.buffer(
+-                4 * (scaled_header_width * scaled_header_height) as i32,
+-                (BORDER_SIZE * scales[RIGHT]) as i32,
+-                ((height + HEADER_SIZE) * scales[RIGHT]) as i32,
+-                4 * (BORDER_SIZE * scales[RIGHT]) as i32,
+-                wl_shm::Format::Argb8888,
+-            );
+-            parts[RIGHT]
+-                .subsurface
+-                .set_position(width as i32, -(HEADER_SIZE as i32));
+-            parts[RIGHT].surface.attach(Some(&buffer), 0, 0);
+-            if self.surface_version >= 4 {
+-                parts[RIGHT].surface.damage_buffer(
+-                    0,
+-                    0,
+-                    (BORDER_SIZE * scales[RIGHT]) as i32,
+-                    ((height + HEADER_SIZE) * scales[RIGHT]) as i32,
+-                );
+-            } else {
+-                // surface is old and does not support damage_buffer, so we damage
+-                // in surface coordinates and hope it is not rescaled
+-                parts[RIGHT].surface.damage(
+-                    0,
+-                    0,
+-                    BORDER_SIZE as i32,
+-                    (height + HEADER_SIZE) as i32,
+-                );
+-            }
+-            parts[RIGHT].surface.commit();
+-        }
+-    }
+-
+-    fn subtract_borders(&self, width: i32, height: i32) -> (i32, i32) {
+-        if !self.showing_title_bar(&*self.inner.borrow()) {
+-            (width, height)
+-        } else {
+-            (width, height - HEADER_SIZE as i32)
+-        }
+-    }
+-
+-    fn add_borders(&self, width: i32, height: i32) -> (i32, i32) {
+-        if !self.showing_title_bar(&*self.inner.borrow()) {
+-            (width, height)
+-        } else {
+-            (width, height + HEADER_SIZE as i32)
+-        }
+-    }
+-
+-    fn location(&self) -> (i32, i32) {
+-        if !self.showing_title_bar(&*self.inner.borrow()) {
+-            (0, 0)
+-        } else {
+-            (0, -(HEADER_SIZE as i32))
+-        }
+-    }
+-
+-    fn set_config(&mut self, config: ConceptConfig) {
+-        self.config = config;
+-        // Refresh parts to reflect window_decorations
+-        self.inner.borrow_mut().parts.clear();
+-        self.set_hidden(self.hidden);
+-        self.redraw();
+-    }
+-
+-    fn set_title(&mut self, title: String) {
+-        self.title = Some(title);
+-    }
+-}
+-
+-impl Drop for ConceptFrame {
+-    fn drop(&mut self) {
+-        for ptr in self.pointers.drain(..) {
+-            if ptr.as_ref().version() >= 3 {
+-                ptr.release();
+-            }
+-        }
+-    }
+-}
+-
+-fn change_pointer(pointer: &ThemedPointer, inner: &Inner, location: Location, serial: Option<u32>) {
+-    // Prevent theming of the surface if it was requested.
+-    if !inner.theme_over_surface && location == Location::None {
+-        return;
+-    }
+-
+-    let name = match location {
+-        // If we can't resize a frame we shouldn't show resize cursors.
+-        _ if !inner.resizable => "left_ptr",
+-        Location::Top => "top_side",
+-        Location::TopRight => "top_right_corner",
+-        Location::Right => "right_side",
+-        Location::BottomRight => "bottom_right_corner",
+-        Location::Bottom => "bottom_side",
+-        Location::BottomLeft => "bottom_left_corner",
+-        Location::Left => "left_side",
+-        Location::TopLeft => "top_left_corner",
+-        _ => "left_ptr",
+-    };
+-
+-    if let Err(err) = pointer.set_cursor(name, serial) {
+-        log::error!("Unable to set cursor to {}: {:#}", name, err);
+-    }
+-}
+-
+-fn request_for_location_on_lmb(
+-    pointer_data: &PointerUserData,
+-    maximized: bool,
+-    resizable: bool,
+-) -> Option<FrameRequest> {
+-    use wayland_protocols::xdg_shell::client::xdg_toplevel::ResizeEdge;
+-    match pointer_data.location {
+-        Location::Top if resizable => Some(FrameRequest::Resize(
+-            pointer_data.seat.clone(),
+-            ResizeEdge::Top,
+-        )),
+-        Location::TopLeft if resizable => Some(FrameRequest::Resize(
+-            pointer_data.seat.clone(),
+-            ResizeEdge::TopLeft,
+-        )),
+-        Location::Left if resizable => Some(FrameRequest::Resize(
+-            pointer_data.seat.clone(),
+-            ResizeEdge::Left,
+-        )),
+-        Location::BottomLeft if resizable => Some(FrameRequest::Resize(
+-            pointer_data.seat.clone(),
+-            ResizeEdge::BottomLeft,
+-        )),
+-        Location::Bottom if resizable => Some(FrameRequest::Resize(
+-            pointer_data.seat.clone(),
+-            ResizeEdge::Bottom,
+-        )),
+-        Location::BottomRight if resizable => Some(FrameRequest::Resize(
+-            pointer_data.seat.clone(),
+-            ResizeEdge::BottomRight,
+-        )),
+-        Location::Right if resizable => Some(FrameRequest::Resize(
+-            pointer_data.seat.clone(),
+-            ResizeEdge::Right,
+-        )),
+-        Location::TopRight if resizable => Some(FrameRequest::Resize(
+-            pointer_data.seat.clone(),
+-            ResizeEdge::TopRight,
+-        )),
+-        Location::Head => Some(FrameRequest::Move(pointer_data.seat.clone())),
+-        Location::Button(UIButton::Close) => Some(FrameRequest::Close),
+-        Location::Button(UIButton::Maximize) => {
+-            if maximized {
+-                Some(FrameRequest::UnMaximize)
+-            } else {
+-                Some(FrameRequest::Maximize)
+-            }
+-        }
+-        Location::Button(UIButton::Minimize) => Some(FrameRequest::Minimize),
+-        _ => None,
+-    }
+-}
+-
+-fn request_for_location_on_rmb(pointer_data: &PointerUserData) -> Option<FrameRequest> {
+-    match pointer_data.location {
+-        Location::Head | Location::Button(_) => Some(FrameRequest::ShowMenu(
+-            pointer_data.seat.clone(),
+-            pointer_data.position.0 as i32,
+-            // We must offset it by header size for precise position.
+-            pointer_data.position.1 as i32 - HEADER_SIZE as i32,
+-        )),
+-        _ => None,
+-    }
+-}
+-
+-// average of the two colors, approximately taking into account gamma correction
+-// result is as transparent as the most transparent color
+-fn mix_colors(x: RgbaColor, y: RgbaColor) -> RgbaColor {
+-    #[inline]
+-    fn gamma_mix(x: f32, y: f32) -> f32 {
+-        let z = ((x * x + y * y) / 2.0).sqrt();
+-        z
+-    }
+-
+-    let x = x.to_tuple_rgba();
+-    let y = y.to_tuple_rgba();
+-
+-    SrgbaTuple(
+-        gamma_mix(x.0, y.0),
+-        gamma_mix(x.1, y.1),
+-        gamma_mix(x.2, y.2),
+-        gamma_mix(x.3, y.3),
+-    )
+-    .into()
+-}
+-
+-fn draw_buttons(
+-    pixmap: &mut PixmapMut,
+-    width: u32,
+-    scale: u32,
+-    maximizable: bool,
+-    state: WindowState,
+-    mouses: &[Location],
+-    config: &ConceptConfig,
+-) {
+-    let scale = scale as f32;
+-
+-    let colors = config.colors();
+-
+-    // Draw seperator between header and window contents
+-    let line_color = match state {
+-        WindowState::Active => colors.active_titlebar_border_bottom,
+-        WindowState::Inactive => colors.inactive_titlebar_border_bottom,
+-    };
+-
+-    let mut sep_stroke = Stroke::default();
+-    sep_stroke.width = scale;
+-
+-    let mut path = PathBuilder::new();
+-    let y = HEADER_SIZE as f32 * scale - sep_stroke.width;
+-    path.move_to(0., y as f32);
+-    path.line_to(width as f32 * scale as f32, y);
+-    let path = path.finish().unwrap();
+-
+-    pixmap.stroke_path(
+-        &path,
+-        &color_to_paint(line_color),
+-        &Stroke::default(),
+-        Transform::identity(),
+-        None,
+-    );
+-
+-    let mut drawn_buttons = 0;
+-
+-    fn btn_colors(
+-        colors: &WindowFrameConfig,
+-        btn_state: ButtonState,
+-        state: WindowState,
+-    ) -> (RgbaColor, RgbaColor) {
+-        match (btn_state, state) {
+-            (ButtonState::Hovered, _) => (colors.button_hover_bg, colors.button_hover_fg),
+-            (_, WindowState::Inactive) => {
+-                (colors.inactive_titlebar_bg, colors.inactive_titlebar_fg)
+-            }
+-            _ => (colors.button_bg, colors.button_fg),
+-        }
+-    }
+-
+-    if width >= HEADER_SIZE {
+-        // Draw the close button
+-        let btn_state = if mouses
+-            .iter()
+-            .any(|&l| l == Location::Button(UIButton::Close))
+-        {
+-            ButtonState::Hovered
+-        } else {
+-            ButtonState::Idle
+-        };
+-
+-        let (button_color, icon_color) = btn_colors(colors, btn_state, state);
+-
+-        draw_button(
+-            pixmap,
+-            0,
+-            scale,
+-            color_to_paint(button_color),
+-            color_to_paint(mix_colors(button_color, line_color)),
+-        );
+-        draw_icon(pixmap, 0, scale, color_to_paint(icon_color), Icon::Close);
+-        drawn_buttons += 1;
+-    }
+-
+-    if width as usize >= (drawn_buttons + 1) * HEADER_SIZE as usize {
+-        let btn_state = if !maximizable {
+-            ButtonState::Disabled
+-        } else if mouses
+-            .iter()
+-            .any(|&l| l == Location::Button(UIButton::Maximize))
+-        {
+-            ButtonState::Hovered
+-        } else {
+-            ButtonState::Idle
+-        };
+-
+-        let (button_color, icon_color) = btn_colors(colors, btn_state, state);
+-        draw_button(
+-            pixmap,
+-            drawn_buttons * HEADER_SIZE as usize,
+-            scale,
+-            color_to_paint(button_color),
+-            color_to_paint(mix_colors(button_color, line_color)),
+-        );
+-        draw_icon(
+-            pixmap,
+-            drawn_buttons * HEADER_SIZE as usize,
+-            scale,
+-            color_to_paint(icon_color),
+-            Icon::Maximize,
+-        );
+-        drawn_buttons += 1;
+-    }
+-
+-    if width as usize >= (drawn_buttons + 1) * HEADER_SIZE as usize {
+-        let btn_state = if mouses
+-            .iter()
+-            .any(|&l| l == Location::Button(UIButton::Minimize))
+-        {
+-            ButtonState::Hovered
+-        } else {
+-            ButtonState::Idle
+-        };
+-
+-        let (button_color, icon_color) = btn_colors(colors, btn_state, state);
+-
+-        draw_button(
+-            pixmap,
+-            drawn_buttons * HEADER_SIZE as usize,
+-            scale,
+-            color_to_paint(button_color),
+-            color_to_paint(mix_colors(button_color, line_color)),
+-        );
+-        draw_icon(
+-            pixmap,
+-            drawn_buttons * HEADER_SIZE as usize,
+-            scale,
+-            color_to_paint(icon_color),
+-            Icon::Minimize,
+-        );
+-    }
+-}
+-
+-enum Icon {
+-    Close,
+-    Maximize,
+-    Minimize,
+-}
+-
+-fn draw_button(
+-    pixmap: &mut PixmapMut,
+-    x_offset: usize,
+-    scale: f32,
+-    btn_color: Paint,
+-    line_color: Paint,
+-) {
+-    let h = HEADER_SIZE as f32;
+-    let x_start = pixmap.width() as f32 / scale - h - x_offset as f32;
+-    // main square
+-
+-    pixmap.fill_path(
+-        &PathBuilder::from_rect(
+-            Rect::from_xywh(x_start * scale, 0., h * scale, (h - 1.) * scale).unwrap(),
+-        ),
+-        &btn_color,
+-        FillRule::Winding,
+-        Transform::identity(),
+-        None,
+-    );
+-
+-    // separation line
+-
+-    let mut path = PathBuilder::new();
+-    path.move_to(x_start * scale, (h - 1.) * scale);
+-    path.line_to(x_start * scale, h * scale);
+-    let path = path.finish().unwrap();
+-
+-    pixmap.stroke_path(
+-        &path,
+-        &line_color,
+-        &Stroke::default(),
+-        Transform::identity(),
+-        None,
+-    );
+-}
+-
+-fn draw_icon(pixmap: &mut PixmapMut, x_offset: usize, scale: f32, icon_color: Paint, icon: Icon) {
+-    let h = HEADER_SIZE as f32;
+-    let cx = pixmap.width() as f32 / scale as f32 - h / 2. - x_offset as f32;
+-    let cy = h / 2.;
+-    let s = scale;
+-
+-    let mut path = PathBuilder::new();
+-    let mut stroke = Stroke::default();
+-    stroke.width = 3.0;
+-
+-    match icon {
+-        Icon::Close => {
+-            // Draw cross to represent the close button
+-            path.move_to((cx - 4.) * s, (cy - 4.) * s);
+-            path.line_to((cx + 4.) * s, (cy + 4.) * s);
+-
+-            path.move_to((cx + 4.) * s, (cy - 4.) * s);
+-            path.line_to((cx - 4.) * s, (cy + 4.) * s);
+-        }
+-        Icon::Maximize => {
+-            path.move_to((cx - 4.) * s, (cy + 2.) * s);
+-            path.line_to(cx * s, (cy - 2.) * s);
+-            path.line_to((cx + 4.) * s, (cy + 2.) * s);
+-        }
+-        Icon::Minimize => {
+-            path.move_to((cx - 4.) * s, (cy - 3.) * s);
+-            path.line_to(cx * s, (cy + 1.) * s);
+-            path.line_to((cx + 4.) * s, (cy - 3.) * s);
+-        }
+-    }
+-    pixmap.stroke_path(
+-        &path.finish().unwrap(),
+-        &icon_color,
+-        &stroke,
+-        Transform::identity(),
+-        None,
+-    );
+-}
+diff --git a/window/src/os/wayland/mod.rs b/window/src/os/wayland/mod.rs
+index 0a88143c8..abb9018e4 100644
+--- a/window/src/os/wayland/mod.rs
++++ b/window/src/os/wayland/mod.rs
+@@ -9,7 +9,6 @@ pub use connection::*;
+ pub use output::*;
+ mod copy_and_paste;
+ mod drag_and_drop;
+-// mod frame;
+ mod data_device;
+ mod keyboard;
+ mod pointer;
+diff --git a/window/src/os/wayland/pointer.rs b/window/src/os/wayland/pointer.rs
+index 136f5f18b..d468d84db 100644
+--- a/window/src/os/wayland/pointer.rs
++++ b/window/src/os/wayland/pointer.rs
+@@ -1,9 +1,7 @@
+ use std::cell::RefCell;
+ use std::sync::{Arc, Mutex};
+-use std::time::Duration;
+ 
+ use smithay_client_toolkit::compositor::SurfaceData;
+-use smithay_client_toolkit::reexports::csd_frame::{DecorationsFrame, FrameClick};
+ use smithay_client_toolkit::seat::pointer::{
+     PointerData, PointerDataExt, PointerEvent, PointerEventKind, PointerHandler,
+ };
+@@ -13,8 +11,6 @@ use wayland_client::protocol::wl_seat::WlSeat;
+ use wayland_client::{Connection, Proxy, QueueHandle};
+ use wezterm_input_types::MousePress;
+ 
+-use crate::wayland::SurfaceUserData;
+-
+ use super::drag_and_drop::DragAndDropSession;
+ use super::state::WaylandState;
+ use super::WaylandConnection;
+@@ -36,9 +32,19 @@ impl PointerHandler for WaylandState {
+ 
+         for evt in events {
+             if let PointerEventKind::Enter { .. } = &evt.kind {
+-                let surface_id = evt.surface.id();
++                let (surface_id, subsurface_id) = if let Some(parent_surface) = evt
++                    .surface
++                    .data::<SurfaceData>()
++                    .and_then(|data| data.parent_surface())
++                {
++                    (parent_surface.id(), Some(evt.surface.id()))
++                } else {
++                    (evt.surface.id(), None)
++                };
++
+                 self.active_surface_id = RefCell::new(Some(surface_id.clone()));
+                 pstate.active_surface_id = Some(surface_id);
++                self.active_subsurface_id = RefCell::new(subsurface_id);
+             }
+             if let Some(serial) = event_serial(&evt) {
+                 *self.last_serial.borrow_mut() = serial;
+@@ -49,7 +55,11 @@ impl PointerHandler for WaylandState {
+                 .get(&self.active_surface_id.borrow().as_ref().unwrap())
+             {
+                 let mut pending = pending.lock().unwrap();
+-                if pending.queue(evt) {
++                if pending.queue(
++                    evt,
++                    *self.last_serial.borrow(),
++                    self.active_subsurface_id.borrow().as_ref().cloned(),
++                ) {
+                     WaylandConnection::with_window_inner(pending.window_id, move |inner| {
+                         inner.dispatch_pending_mouse();
+                         Ok(())
+@@ -57,7 +67,6 @@ impl PointerHandler for WaylandState {
+                 }
+             }
+         }
+-        self.pointer_window_frame(pointer, events);
+     }
+ }
+ 
+@@ -96,6 +105,8 @@ pub struct PendingMouse {
+     surface_coords: Option<(f64, f64)>,
+     button: Vec<(MousePress, ButtonState)>,
+     scroll: Option<(f64, f64)>,
++    active_subsurface: Option<ObjectId>,
++    last_serial: u32,
+     in_window: bool,
+ }
+ 
+@@ -106,11 +117,20 @@ impl PendingMouse {
+             button: vec![],
+             scroll: None,
+             surface_coords: None,
++            active_subsurface: None,
++            last_serial: 0,
+             in_window: false,
+         }))
+     }
+ 
+-    pub(super) fn queue(&mut self, evt: &PointerEvent) -> bool {
++    pub(super) fn queue(
++        &mut self,
++        evt: &PointerEvent,
++        last_serial: u32,
++        subsurface: Option<ObjectId>,
++    ) -> bool {
++        self.active_subsurface = subsurface;
++        self.last_serial = last_serial;
+         match evt.kind {
+             PointerEventKind::Enter { .. } => {
+                 self.in_window = true;
+@@ -181,6 +201,14 @@ impl PendingMouse {
+         pending.lock().unwrap().scroll.take()
+     }
+ 
++    pub(super) fn active_subsurface(pending: &Arc<Mutex<Self>>) -> Option<ObjectId> {
++        pending.lock().unwrap().active_subsurface.take()
++    }
++
++    pub(super) fn last_serial(pending: &Arc<Mutex<Self>>) -> u32 {
++        pending.lock().unwrap().last_serial
++    }
++
+     pub(super) fn in_window(pending: &Arc<Mutex<Self>>) -> bool {
+         pending.lock().unwrap().in_window
+     }
+@@ -195,67 +223,3 @@ fn event_serial(event: &PointerEvent) -> Option<u32> {
+         _ => return None,
+     })
+ }
+-
+-impl WaylandState {
+-    fn pointer_window_frame(&mut self, pointer: &WlPointer, events: &[PointerEvent]) {
+-        let windows = self.windows.borrow();
+-
+-        for evt in events {
+-            let surface = &evt.surface;
+-            if surface.id() == self.active_surface_id.borrow().as_ref().unwrap().clone() {
+-                let (x, y) = evt.position;
+-                let parent_surface = match evt.surface.data::<SurfaceData>() {
+-                    Some(data) => match data.parent_surface() {
+-                        Some(sd) => sd,
+-                        None => continue,
+-                    },
+-                    None => continue,
+-                };
+-
+-                let wid = SurfaceUserData::from_wl(parent_surface).window_id;
+-                let mut inner = windows.get(&wid).unwrap().borrow_mut();
+-
+-                match evt.kind {
+-                    PointerEventKind::Enter { .. } => {
+-                        inner.window_frame.click_point_moved(
+-                            Duration::ZERO,
+-                            &evt.surface.id(),
+-                            x,
+-                            y,
+-                        );
+-                    }
+-                    PointerEventKind::Leave { .. } => {
+-                        inner.window_frame.click_point_left();
+-                    }
+-                    PointerEventKind::Motion { .. } => {
+-                        inner.window_frame.click_point_moved(
+-                            Duration::ZERO,
+-                            &evt.surface.id(),
+-                            x,
+-                            y,
+-                        );
+-                    }
+-                    PointerEventKind::Press { button, serial, .. }
+-                    | PointerEventKind::Release { button, serial, .. } => {
+-                        let pressed = if matches!(evt.kind, PointerEventKind::Press { .. }) {
+-                            true
+-                        } else {
+-                            false
+-                        };
+-                        let click = match button {
+-                            0x110 => FrameClick::Normal,
+-                            0x111 => FrameClick::Alternate,
+-                            _ => continue,
+-                        };
+-                        if let Some(action) =
+-                            inner.window_frame.on_click(Duration::ZERO, click, pressed)
+-                        {
+-                            inner.frame_action(pointer, serial, action);
+-                        }
+-                    }
+-                    _ => {}
+-                }
+-            }
+-        }
+-    }
+-}
+diff --git a/window/src/os/wayland/state.rs b/window/src/os/wayland/state.rs
+index 31885b58d..b1379ed8b 100644
+--- a/window/src/os/wayland/state.rs
++++ b/window/src/os/wayland/state.rs
+@@ -55,6 +55,7 @@ pub(super) struct WaylandState {
+     pub(super) windows: RefCell<HashMap<usize, Rc<RefCell<WaylandWindowInner>>>>,
+ 
+     pub(super) active_surface_id: RefCell<Option<ObjectId>>,
++    pub(super) active_subsurface_id: RefCell<Option<ObjectId>>,
+     pub(super) last_serial: RefCell<u32>,
+     pub(super) keyboard: Option<WlKeyboard>,
+     pub(super) keyboard_mapper: Option<KeyboardWithFallback>,
+@@ -116,6 +117,7 @@ impl WaylandState {
+             seat: SeatState::new(globals, qh),
+             xdg: XdgShell::bind(globals, qh)?,
+             active_surface_id: RefCell::new(None),
++            active_subsurface_id: RefCell::new(None),
+             last_serial: RefCell::new(0),
+             keyboard: None,
+             keyboard_mapper: None,
+diff --git a/window/src/os/wayland/window.rs b/window/src/os/wayland/window.rs
+index 2fe2f284c..e74ea3318 100644
+--- a/window/src/os/wayland/window.rs
++++ b/window/src/os/wayland/window.rs
+@@ -20,15 +20,15 @@ use raw_window_handle::{
+     DisplayHandle, HandleError, HasDisplayHandle, HasWindowHandle, RawWindowHandle,
+     WaylandWindowHandle, WindowHandle,
+ };
++use sctk_adwaita::{AdwaitaFrame, FrameConfig};
+ use smithay_client_toolkit::compositor::{CompositorHandler, SurfaceData, SurfaceDataExt};
+ use smithay_client_toolkit::data_device_manager::ReadPipe;
+ use smithay_client_toolkit::globals::GlobalData;
+ use smithay_client_toolkit::reexports::csd_frame::{
+-    DecorationsFrame, FrameAction, ResizeEdge, WindowState as SCTKWindowState,
++    DecorationsFrame, FrameAction, FrameClick, ResizeEdge, WindowState as SCTKWindowState,
+ };
+ use smithay_client_toolkit::reexports::protocols::xdg::shell::client::xdg_toplevel::ResizeEdge as XdgResizeEdge;
+ use smithay_client_toolkit::seat::pointer::CursorIcon;
+-use smithay_client_toolkit::shell::xdg::fallback_frame::FallbackFrame;
+ use smithay_client_toolkit::shell::xdg::window::{
+     DecorationMode, Window as XdgWindow, WindowConfigure, WindowDecorations as Decorations,
+     WindowHandler,
+@@ -37,7 +37,7 @@ use smithay_client_toolkit::shell::xdg::XdgSurface;
+ use smithay_client_toolkit::shell::WaylandSurface;
+ use wayland_client::protocol::wl_callback::WlCallback;
+ use wayland_client::protocol::wl_keyboard::{Event as WlKeyboardEvent, KeyState};
+-use wayland_client::protocol::wl_pointer::{ButtonState, WlPointer};
++use wayland_client::protocol::wl_pointer::ButtonState;
+ use wayland_client::protocol::wl_region::WlRegion;
+ use wayland_client::protocol::wl_surface::WlSurface;
+ use wayland_client::{Connection as WConnection, Dispatch, Proxy, QueueHandle};
+@@ -246,43 +246,13 @@ impl WaylandWindow {
+         window.set_title(name.to_string());
+         let decorations = config.window_decorations;
+ 
++        // Ask for SSD vs CSD
+         let decor_mode = if decorations == WindowDecorations::NONE {
+-            None
+-        } else if decorations == WindowDecorations::default() {
+             Some(DecorationMode::Server)
+         } else {
+             Some(DecorationMode::Client)
+         };
+         window.request_decoration_mode(decor_mode);
+-
+-        let mut window_frame = {
+-            let wayland_state = &conn.wayland_state.borrow();
+-            let shm = &wayland_state.shm;
+-            let subcompositor = wayland_state.subcompositor.clone();
+-            FallbackFrame::new(&window, shm, subcompositor, qh.clone())
+-                .expect("failed to create csd frame")
+-        };
+-        let hidden = match decor_mode {
+-            Some(DecorationMode::Client) => false,
+-            _ => true,
+-        };
+-        window_frame.set_hidden(hidden);
+-        if !hidden {
+-            window_frame.resize(
+-                NonZeroU32::new(dimensions.pixel_width as u32)
+-                    .ok_or_else(|| anyhow!("dimensions {dimensions:?} are invalid"))?,
+-                NonZeroU32::new(dimensions.pixel_height as u32)
+-                    .ok_or_else(|| anyhow!("dimensions {dimensions:?} are invalid"))?,
+-            );
+-        }
+-
+-        window.set_min_size(Some((32, 32)));
+-        let (x, y) = window_frame.location();
+-        let surface_width = dimensions.pixels_to_surface(dimensions.pixel_width as i32);
+-        let surface_height = dimensions.pixels_to_surface(dimensions.pixel_height as i32);
+-        window
+-            .xdg_surface()
+-            .set_window_geometry(x, y, surface_width, surface_height);
+         window.commit();
+ 
+         let pending_mouse = PendingMouse::create(window_id);
+@@ -299,7 +269,7 @@ impl WaylandWindow {
+             surface_factor: 1.0,
+             invalidated: false,
+             window: Some(window),
+-            window_frame,
++            window_frame: None,
+             dimensions,
+             resize_increments: None,
+             window_state: WindowState::default(),
+@@ -327,6 +297,7 @@ impl WaylandWindow {
+ 
+             wegl_surface: None,
+             gl_state: None,
++            start_time: Instant::now(),
+         }));
+ 
+         let window_handle = Window::Wayland(WaylandWindow(window_id));
+@@ -345,6 +316,14 @@ impl WaylandWindow {
+ 
+         wait_configure.recv().await?;
+ 
++        // Apply the initial decoration state from the config (create/destroy CSD frame and switch
++        // to SSD as needed)
++        {
++            let decorations = { inner.borrow().config.window_decorations };
++            let mut inner_mut = inner.borrow_mut();
++            inner_mut.apply_window_decorations(decorations);
++        }
++
+         Ok(window_handle)
+     }
+ }
+@@ -397,9 +376,22 @@ impl WindowOps for WaylandWindow {
+         });
+     }
+ 
++    fn request_drag_move(&self) {
++        WaylandConnection::with_window_inner(self.0, |inner| {
++            inner.request_drag_move()?;
++            Ok(())
++        });
++    }
++
+     fn set_cursor(&self, cursor: Option<MouseCursor>) {
+         WaylandConnection::with_window_inner(self.0, move |inner| {
+-            inner.set_cursor(cursor);
++            inner.set_cursor_icon(cursor.map(|cursor| match cursor {
++                MouseCursor::Arrow => CursorIcon::Default,
++                MouseCursor::Hand => CursorIcon::Pointer,
++                MouseCursor::SizeUpDown => CursorIcon::NsResize,
++                MouseCursor::SizeLeftRight => CursorIcon::EwResize,
++                MouseCursor::Text => CursorIcon::Text,
++            }));
+             Ok(())
+         });
+     }
+@@ -577,7 +569,7 @@ pub struct WaylandWindowInner {
+     pub(crate) events: WindowEventSender,
+     surface_factor: f64,
+     window: Option<XdgWindow>,
+-    pub(super) window_frame: FallbackFrame<WaylandState>,
++    pub(super) window_frame: Option<AdwaitaFrame<WaylandState>>,
+     dimensions: Dimensions,
+     resize_increments: Option<ResizeIncrement>,
+     window_state: WindowState,
+@@ -605,6 +597,7 @@ pub struct WaylandWindowInner {
+     // libraries will segfault on shutdown
+     wegl_surface: Option<WlEglSurface>,
+     gl_state: Option<Rc<glium::backend::Context>>,
++    start_time: Instant,
+ }
+ 
+ impl WaylandWindowInner {
+@@ -633,11 +626,37 @@ impl WaylandWindowInner {
+     }
+ 
+     fn refresh_frame(&mut self) {
+-        if self.window_frame.is_dirty() && !self.window_frame.is_hidden() {
+-            self.window_frame.draw();
++        if let Some(frame) = &mut self.window_frame {
++            if frame.is_dirty() && !frame.is_hidden() {
++                frame.draw();
++            }
+         }
+     }
+ 
++    fn request_drag_move(&mut self) -> anyhow::Result<()> {
++        let xdg = match &self.window {
++            Some(w) => w,
++            None => return Err(anyhow!("cannot drag: window not initialized")),
++        };
++
++        let conn = Connection::get().unwrap().wayland();
++        let state = conn.wayland_state.borrow();
++        let pointer = state
++            .pointer
++            .as_ref()
++            .ok_or_else(|| anyhow!("no pointer available for drag-move"))?;
++        let wl_pointer = pointer.pointer();
++        let pdata = wl_pointer
++            .data::<PointerUserData>()
++            .expect("pointer data must be set");
++        let seat = pdata.pdata.seat();
++
++        let serial = PendingMouse::last_serial(&self.pending_mouse);
++
++        xdg.move_(seat, serial);
++        Ok(())
++    }
++
+     fn enable_opengl(&mut self) -> anyhow::Result<Rc<glium::backend::Context>> {
+         let wayland_conn = Connection::get().unwrap().wayland();
+         let mut wegl_surface = None;
+@@ -717,6 +736,31 @@ impl WaylandWindowInner {
+     pub(crate) fn dispatch_pending_mouse(&mut self) {
+         let pending_mouse = Arc::clone(&self.pending_mouse);
+ 
++        if let Some(subsurface_id) = PendingMouse::active_subsurface(&pending_mouse) {
++            if let Some((x, y)) = PendingMouse::coords(&pending_mouse) {
++                if let Some(frame) = &mut self.window_frame {
++                    if let Some(c) = frame.click_point_moved(Duration::ZERO, &subsurface_id, x, y) {
++                        self.set_cursor_icon(Some(c))
++                    };
++                }
++            }
++            while let Some((button, state)) = PendingMouse::next_button(&pending_mouse) {
++                let pressed = state == ButtonState::Pressed;
++                let click = match button {
++                    MousePress::Left => FrameClick::Normal,
++                    MousePress::Right => FrameClick::Alternate,
++                    MousePress::Middle => continue,
++                };
++
++                let timestamp = Instant::now().duration_since(self.start_time);
++                if let Some(frame) = &mut self.window_frame {
++                    if let Some(action) = frame.on_click(timestamp, click, pressed) {
++                        self.frame_action(PendingMouse::last_serial(&pending_mouse), action);
++                    }
++                }
++            }
++        }
++
+         if let Some((x, y)) = PendingMouse::coords(&pending_mouse) {
+             let coords = Point::new(
+                 self.surface_to_pixels(x as i32) as isize,
+@@ -851,9 +895,11 @@ impl WaylandWindowInner {
+         }
+ 
+         if let Some(ref window_config) = pending.window_configure {
+-            self.window_frame.update_state(window_config.state);
+-            self.window_frame
+-                .update_wm_capabilities(window_config.capabilities);
++            if let Some(frame) = &mut self.window_frame {
++                frame.update_state(window_config.state);
++                frame.update_wm_capabilities(window_config.capabilities);
++                frame.set_hidden(false);
++            }
+         }
+ 
+         if let Some((mut w, mut h)) = pending.configure.take() {
+@@ -872,8 +918,9 @@ impl WaylandWindowInner {
+                 let mut pixel_width = self.surface_to_pixels(w.try_into().unwrap());
+                 let mut pixel_height = self.surface_to_pixels(h.try_into().unwrap());
+ 
+-                if self.window_state.can_resize() {
+-                    self.window_frame.set_resizable(true);
++                if self.window_state.can_resize()
++                    && !self.window_state.contains(WindowState::FULL_SCREEN)
++                {
+                     if let Some(incr) = self.resize_increments {
+                         let min_width = incr.base_width + incr.x;
+                         let min_height = incr.base_height + incr.y;
+@@ -886,6 +933,9 @@ impl WaylandWindowInner {
+                         h = self.pixels_to_surface(desired_pixel_height) as u32;
+                         pixel_width = self.surface_to_pixels(w.try_into().unwrap());
+                         pixel_height = self.surface_to_pixels(h.try_into().unwrap());
++                        if let Some(window) = self.window.as_ref() {
++                            window.set_min_size(Some((min_width as u32, min_height as u32)));
++                        }
+                     }
+                 }
+ 
+@@ -897,22 +947,34 @@ impl WaylandWindowInner {
+                 pixel_height = (pixel_height / scale) * scale;
+ 
+                 log::trace!("Resizing frame");
+-                if !self.window_frame.is_hidden() {
+-                    // Clamp the size to at least one surface heigh/width.
+-                    let width = NonZeroU32::new(w).unwrap_or(NonZeroU32::new(1).unwrap());
+-                    let height = NonZeroU32::new(h).unwrap_or(NonZeroU32::new(1).unwrap());
+-                    self.window_frame.resize(width, height);
+-                    pending.refresh_decorations = true
++                if let Some(frame) = &mut self.window_frame {
++                    // Clamp the size to at least one surface height/width.
++                    let width = NonZeroU32::new(w).unwrap_or(NonZeroU32::MIN);
++                    let height = NonZeroU32::new(h).unwrap_or(NonZeroU32::MIN);
++                    frame.resize(width, height);
++                    let (x, y) = frame.location();
++                    let (full_w, full_h) = frame.add_borders(w as u32, h as u32);
++                    self.window
++                        .as_mut()
++                        .unwrap()
++                        .xdg_surface()
++                        .set_window_geometry(
++                            x,
++                            y,
++                            full_w.try_into().unwrap(),
++                            full_h.try_into().unwrap(),
++                        );
++                } else {
++                    // No frame (SSD)
++                    self.window
++                        .as_mut()
++                        .unwrap()
++                        .xdg_surface()
++                        .set_window_geometry(0, 0, w as i32, h as i32);
+                 }
+-                let (x, y) = self.window_frame.location();
+-                let surface_width = self.pixels_to_surface(pixel_width);
+-                let surface_height = self.pixels_to_surface(pixel_height);
+-                self.window
+-                    .as_mut()
+-                    .unwrap()
+-                    .xdg_surface()
+-                    .set_window_geometry(x, y, surface_width, surface_height);
+-                // Compute the new pixel dimensions
++
++                self.refresh_frame(); // NOW, not after do_paint(), otherwise desync on resize
++                                      // Compute the new pixel dimensions
+                 let new_dimensions = Dimensions {
+                     pixel_width: pixel_width.try_into().unwrap(),
+                     pixel_height: pixel_height.try_into().unwrap(),
+@@ -946,23 +1008,38 @@ impl WaylandWindowInner {
+                     if let Some(wegl_surface) = self.wegl_surface.as_mut() {
+                         wegl_surface.resize(pixel_width, pixel_height, 0, 0);
+                     }
++
+                     if self.surface_factor != factor {
+                         let wayland_conn = Connection::get().unwrap().wayland();
+                         let wayland_state = wayland_conn.wayland_state.borrow();
++
+                         let mut pool = wayland_state.mem_pool.borrow_mut();
+ 
+-                        // Make a "fake" buffer with the right dimensions, as
+-                        // simply detaching the buffer can cause wlroots-derived
+-                        // compositors consider the window to be unconfigured.
+-                        if let Ok((buffer, _bytes)) = pool.create_buffer(
+-                            factor as i32,
+-                            factor as i32,
+-                            (factor * 4.0) as i32,
+-                            wayland_client::protocol::wl_shm::Format::Argb8888,
+-                        ) {
+-                            self.surface().attach(Some(buffer.wl_buffer()), 0, 0);
+-                            self.surface().set_buffer_scale(factor as i32);
+-                            self.surface_factor = factor;
++                        // Compute the real buffer size in pixels
++                        let buf_w = (self.dimensions.pixel_width as f64 * factor).ceil() as i32;
++                        let buf_h = (self.dimensions.pixel_height as f64 * factor).ceil() as i32;
++                        let stride = buf_w.saturating_mul(4);
++
++                        log::debug!(
++                            "shm_pool: creating buffer w={} h={} stride={} scale_factor={}",
++                            buf_w,
++                            buf_h,
++                            stride,
++                            factor
++                        );
++
++                        // Only create if dimensions are valid
++                        if buf_w > 0 && buf_h > 0 && stride > 0 {
++                            if let Ok((buffer, _bytes)) = pool.create_buffer(
++                                buf_w,
++                                buf_h,
++                                stride,
++                                wayland_client::protocol::wl_shm::Format::Argb8888,
++                            ) {
++                                self.surface().attach(Some(buffer.wl_buffer()), 0, 0);
++                                self.surface().set_buffer_scale(factor as i32);
++                                self.surface_factor = factor;
++                            }
+                         }
+                     }
+                 }
+@@ -981,7 +1058,7 @@ impl WaylandWindowInner {
+         }
+     }
+ 
+-    fn set_cursor(&mut self, cursor: Option<MouseCursor>) {
++    fn set_cursor_icon(&mut self, cursor: Option<CursorIcon>) {
+         if !PendingMouse::in_window(&self.pending_mouse) {
+             return;
+         }
+@@ -995,16 +1072,7 @@ impl WaylandWindowInner {
+ 
+         match cursor {
+             Some(cursor) => {
+-                if let Err(err) = pointer.set_cursor(
+-                    &conn.connection,
+-                    match cursor {
+-                        MouseCursor::Arrow => CursorIcon::Default,
+-                        MouseCursor::Hand => CursorIcon::Pointer,
+-                        MouseCursor::SizeUpDown => CursorIcon::NsResize,
+-                        MouseCursor::SizeLeftRight => CursorIcon::EwResize,
+-                        MouseCursor::Text => CursorIcon::Text,
+-                    },
+-                ) {
++                if let Err(err) = pointer.set_cursor(&conn.connection, cursor) {
+                     log::error!("set_cursor: {}", err);
+                 }
+             }
+@@ -1063,6 +1131,9 @@ impl WaylandWindowInner {
+         }
+         if let Some(window) = self.window.as_ref() {
+             window.set_title(title.clone());
++            if let Some(frame) = &mut self.window_frame {
++                frame.set_title(title.clone());
++            }
+         }
+         self.refresh_frame();
+         self.title = Some(title);
+@@ -1131,6 +1202,124 @@ impl WaylandWindowInner {
+         Ok(())
+     }
+ 
++    fn apply_window_decorations(&mut self, decorations: WindowDecorations) {
++        self.request_decoration_mode(decorations);
++
++        let want_csd = decorations != WindowDecorations::NONE;
++        let have_csd = self.window_frame.is_some();
++        match (have_csd, want_csd) {
++            (false, true) => {
++                if let Err(err) = self.create_csd_frame() {
++                    log::error!("create_csd_frame failed: {err:#}");
++                } else {
++                    self.pending_event.lock().unwrap().refresh_decorations = true;
++                }
++            }
++            (true, false) => {
++                self.destroy_csd_frame();
++            }
++            (true, true) => {
++                self.reconfigure_existing_csd();
++            }
++            (false, false) => { /* stay SSD */ }
++        }
++    }
++
++    fn request_decoration_mode(&self, want: WindowDecorations) {
++        if let Some(win) = self.window.as_ref() {
++            let mode = if want == WindowDecorations::NONE {
++                Some(DecorationMode::Server)
++            } else {
++                Some(DecorationMode::Client)
++            };
++            win.request_decoration_mode(mode);
++            win.commit();
++        }
++    }
++
++    fn create_csd_frame(&mut self) -> anyhow::Result<()> {
++        if self.window_frame.is_some() {
++            return Ok(());
++        }
++        let conn = Connection::get().unwrap().wayland();
++        let wayland_state = conn.wayland_state.borrow();
++        let qh = conn.event_queue.borrow().handle();
++
++        let win = self.window.as_ref().ok_or_else(|| anyhow!("no window"))?;
++        let decorations = self.config.window_decorations;
++
++        let mut frame_config = FrameConfig::auto();
++        frame_config = frame_config.hide_titlebar(!decorations.contains(WindowDecorations::TITLE));
++        // Hide border by default
++        frame_config = frame_config.hide_border(true);
++
++        let mut frame = AdwaitaFrame::new(
++            win,
++            &wayland_state.shm,
++            wayland_state.compositor.clone().into(),
++            wayland_state.subcompositor.clone(),
++            qh.clone(),
++            frame_config,
++        )
++        .expect("failed to create csd frame");
++
++        frame.set_resizable(decorations.contains(WindowDecorations::RESIZE));
++        frame.set_hidden(false);
++
++        // Size to current content size
++        let w = NonZeroU32::new(self.pixels_to_surface(self.dimensions.pixel_width as i32) as u32)
++            .unwrap_or(NonZeroU32::MIN);
++        let h = NonZeroU32::new(self.pixels_to_surface(self.dimensions.pixel_height as i32) as u32)
++            .unwrap_or(NonZeroU32::MIN);
++        frame.resize(w, h);
++
++        // Account for borders in xdg_window geometry
++        let (x, y) = frame.location();
++        let (full_w, full_h) = frame.add_borders(w.get(), h.get());
++        win.xdg_surface()
++            .set_window_geometry(x, y, full_w as i32, full_h as i32);
++        win.set_min_size(Some((32, 32)));
++
++        if let Some(title) = self.title.as_ref() {
++            frame.set_title(title.clone());
++        }
++
++        self.window_frame = Some(frame);
++        Ok(())
++    }
++
++    fn destroy_csd_frame(&mut self) {
++        if let Some(mut frame) = self.window_frame.take() {
++            // Hide to stop input/paint
++            frame.set_hidden(true);
++            drop(frame);
++            if let Some(win) = self.window.as_ref() {
++                // Back to SSD
++                win.commit();
++            }
++        }
++        self.pending_event.lock().unwrap().refresh_decorations = true;
++    }
++
++    fn reconfigure_existing_csd(&mut self) {
++        if let Some(frame) = &mut self.window_frame {
++            let decorations = self.config.window_decorations;
++            frame.set_hidden(false);
++            frame.set_resizable(decorations.contains(WindowDecorations::RESIZE));
++            let mut frame_config = FrameConfig::auto();
++            frame_config =
++                frame_config.hide_titlebar(!decorations.contains(WindowDecorations::TITLE));
++            // Hide border by default
++            frame_config = frame_config.hide_border(true);
++            frame.set_config(frame_config);
++
++            if let Some(title) = self.title.as_ref() {
++                frame.set_title(title.clone());
++            }
++            self.refresh_frame();
++        }
++    }
++
+     fn surface(&self) -> &WlSurface {
+         self.window
+             .as_ref()
+@@ -1185,29 +1374,39 @@ impl WaylandWindowInner {
+                 self.emit_focus(mapper, false);
+             }
+             WlKeyboardEvent::Key { key, state, .. } => {
+-                if let Some(event) = mapper.process_wayland_key(
+-                    key,
+-                    state.into_result().unwrap() == KeyState::Pressed,
+-                    &mut self.events,
+-                ) {
+-                    let rep = Arc::new(Mutex::new(KeyRepeatState {
+-                        when: Instant::now(),
+-                        event,
+-                    }));
+-                    self.key_repeat.replace((key, Arc::clone(&rep)));
+-                    let window_id = SurfaceUserData::from_wl(
+-                        self.window
+-                            .as_ref()
+-                            .expect("window should exist")
+-                            .wl_surface(),
+-                    )
+-                    .window_id;
+-                    KeyRepeatState::schedule(rep, window_id);
+-                } else if let Some((cur_key, _)) = self.key_repeat.as_ref() {
+-                    // important to check that it's the same key, because the release of the previously
+-                    // repeated key can come right after the press of the newly held key
+-                    if *cur_key == key {
+-                        self.key_repeat.take();
++                let key_state = state.into_result().unwrap();
++                let is_pressed = matches!(key_state, KeyState::Pressed | KeyState::Repeated);
++
++                if let Some(event) = mapper.process_wayland_key(key, is_pressed, &mut self.events) {
++                    if key_state == KeyState::Pressed {
++                        // Keep repeat fallback for compositors that do not support wl_keyboard v10
++                        let rep = Arc::new(Mutex::new(KeyRepeatState {
++                            when: Instant::now(),
++                            event,
++                        }));
++                        self.key_repeat.replace((key, Arc::clone(&rep)));
++                        let window_id = SurfaceUserData::from_wl(
++                            self.window
++                                .as_ref()
++                                .expect("window should exist")
++                                .wl_surface(),
++                        )
++                        .window_id;
++                        KeyRepeatState::schedule(rep, window_id);
++                    } else if key_state == KeyState::Repeated {
++                        // Compositor is sending Repeated events, cancel our custom repeat
++                        // (wl_keyboard v10+)
++                        if let Some((cur_key, _)) = self.key_repeat.as_ref() {
++                            if *cur_key == key {
++                                self.key_repeat.take();
++                            }
++                        }
++                    }
++                } else if key_state == KeyState::Released {
++                    if let Some((cur_key, _)) = self.key_repeat.as_ref() {
++                        if *cur_key == key {
++                            self.key_repeat.take();
++                        }
+                     }
+                 }
+             }
+@@ -1237,9 +1436,16 @@ impl WaylandWindowInner {
+         }
+     }
+ 
+-    pub(super) fn frame_action(&mut self, pointer: &WlPointer, serial: u32, action: FrameAction) {
++    pub(super) fn frame_action(&mut self, serial: u32, action: FrameAction) {
++        let conn = Connection::get().unwrap().wayland();
++        let state = conn.wayland_state.borrow_mut();
++        let pointer = match &state.pointer {
++            Some(pointer) => pointer.pointer(),
++            None => return,
++        };
+         let pointer_data = pointer.data::<PointerUserData>().unwrap();
+         let seat = pointer_data.pdata.seat();
++
+         match action {
+             FrameAction::Close => self.events.dispatch(WindowEvent::CloseRequested),
+             FrameAction::Minimize => self.window.as_ref().unwrap().set_minimized(),
+@@ -1284,8 +1490,18 @@ impl WaylandWindowInner {
+     }
+ 
+     fn config_did_change(&mut self, config: ConfigHandle) {
++        let old_decor = self.config.window_decorations;
+         self.config = config;
+         self.update_window_background_blur();
++
++        let new_decor = self.config.window_decorations;
++        if new_decor != old_decor {
++            // SSD <-> CSD (or vice versa)
++            self.apply_window_decorations(new_decor);
++        } else if new_decor != WindowDecorations::NONE && self.window_frame.is_some() {
++            // Still CSD, just reconfigure the existing frame
++            self.reconfigure_existing_csd();
++        }
+     }
+ 
+     fn update_window_background_blur(&self) {
+@@ -1317,63 +1533,52 @@ impl WaylandState {
+             .window_by_id(window_id)
+             .expect("Inner Window should exist");
+ 
+-        let p = window_inner.borrow().pending_event.clone();
+-        let mut pending_event = p.lock().unwrap();
+-
+-        let changed = match event {
+-            WaylandWindowEvent::Close => {
+-                // TODO: This should the new queue function
+-                // p.queue_close()
+-                if !pending_event.close {
+-                    pending_event.close = true;
+-                    true
+-                } else {
+-                    false
+-                }
+-            }
+-            WaylandWindowEvent::Request(configure) => {
+-                pending_event.window_configure.replace(configure.clone());
+-                // TODO: This should the new queue function
+-                // p.queue_configure(&configure)
+-                //
+-                let mut changed;
+-                pending_event.had_configure_event = true;
+-                if let (Some(w), Some(h)) = configure.new_size {
+-                    changed = pending_event.configure.is_none();
+-                    pending_event.configure.replace((w.get(), h.get()));
+-                } else {
+-                    changed = true;
+-                }
++        {
++            let p = window_inner.borrow().pending_event.clone();
++            let mut pending = p.lock().unwrap();
+ 
+-                let mut state = WindowState::default();
+-                if configure.state.contains(SCTKWindowState::FULLSCREEN) {
+-                    state |= WindowState::FULL_SCREEN;
+-                }
+-                if configure.state.contains(SCTKWindowState::MAXIMIZED) {
+-                    state |= WindowState::MAXIMIZED;
++            match event {
++                WaylandWindowEvent::Close => {
++                    pending.close = true;
+                 }
++                WaylandWindowEvent::Request(configure) => {
++                    pending.window_configure = Some(configure.clone());
++                    pending.had_configure_event = true;
++
++                    let is_fullscreen = configure.state.contains(SCTKWindowState::FULLSCREEN);
++
++                    if let (Some(w), Some(h)) = configure.new_size {
++                        // In fullscreen, use compositor size without subtracting borders
++                        // In windowed mode with CSD, subtract borders
++                        if is_fullscreen {
++                            pending.configure = Some((w.get(), h.get()));
++                        } else if let Some(frame) = &mut window_inner.borrow_mut().window_frame {
++                            let (w2, h2) = frame.subtract_borders(w, h);
++                            pending.configure = Some((
++                                w2.unwrap_or(NonZeroU32::MIN).get(),
++                                h2.unwrap_or(NonZeroU32::MIN).get(),
++                            ));
++                        } else {
++                            pending.configure = Some((w.get(), h.get()));
++                        }
++                    }
+ 
+-                log::debug!(
+-                    "Config: self.window_state={:?}, states: {:?} {:?}",
+-                    pending_event.window_state,
+-                    state,
+-                    configure.state
+-                );
+-
+-                if pending_event.window_state.is_none() && state != WindowState::default() {
+-                    changed = true;
++                    let mut state = WindowState::default();
++                    if configure.state.contains(SCTKWindowState::FULLSCREEN) {
++                        state |= WindowState::FULL_SCREEN;
++                    }
++                    if configure.state.contains(SCTKWindowState::MAXIMIZED) {
++                        state |= WindowState::MAXIMIZED;
++                    }
++                    pending.window_state = Some(state);
+                 }
+-
+-                pending_event.window_state.replace(state);
+-                changed
+             }
+-        };
+-        if changed {
+-            WaylandConnection::with_window_inner(window_id, move |inner| {
+-                inner.dispatch_pending_event();
+-                Ok(())
+-            });
+-        }
++        } // drop lock before calling into inner
++
++        WaylandConnection::with_window_inner(window_id, |inner| {
++            inner.dispatch_pending_event();
++            Ok(())
++        });
+     }
+ }
+ 
+@@ -1382,10 +1587,24 @@ impl CompositorHandler for WaylandState {
+         &mut self,
+         _conn: &WConnection,
+         _qh: &wayland_client::QueueHandle<Self>,
+-        _surface: &wayland_client::protocol::wl_surface::WlSurface,
+-        _new_factor: i32,
++        surface: &wayland_client::protocol::wl_surface::WlSurface,
++        new_factor: i32,
+     ) {
+-        // We do nothing, we get the scale_factor from surface_data
++        log::trace!("scale_factor_changed: CompositorHandler");
++        // We get the scale_factor from surface_data, we only notify the frame here
++        let main_surface = surface
++            .data::<SurfaceData>()
++            .and_then(|data| data.parent_surface())
++            .unwrap_or(surface);
++        let surface_data = SurfaceUserData::from_wl(main_surface);
++        let window_id = surface_data.window_id;
++
++        WaylandConnection::with_window_inner(window_id, move |inner| {
++            if let Some(frame) = &mut inner.window_frame {
++                frame.set_scaling_factor(new_factor as f64);
++            }
++            Ok(())
++        });
+     }
+ 
+     fn frame(
