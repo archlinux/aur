@@ -1,8 +1,8 @@
 # Maintainer: asm0dey <pavel.finkelshtein@gmail.com>
 
 pkgname=atomdrift-scan
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc='ML-powered malware classification using cleave static analysis'
 arch=('x86_64')
 url='https://codeberg.org/atomdrift/scan'
@@ -16,7 +16,7 @@ provides=('ascan')
 # cannot consume, breaking the final link. Disable LTO for a portable build.
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b286a09c57ee0ccf49f3d56d155be595843ec165ed2b5a78ad9537b643e0b0bf')
+sha256sums=('f1605b7ad963a7ea64cf75172a622925c11ab794dbf4bfdba4dedd97487172ce')
 
 prepare() {
     cd scan
