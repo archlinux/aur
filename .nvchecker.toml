@@ -1,0 +1,5 @@
+[salsa-bin]
+source = "github"
+github = "TheKhanj/salsa"
+use_latest_release = true
+prefix = "v"
