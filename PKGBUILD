@@ -4,42 +4,40 @@
 
 _pkgname=sshpilot
 pkgname=sshpilot-bin
-pkgver=5.4.6
+pkgver=5.5.0
 pkgrel=1
 _pkgrel_deb=1
 pkgdesc="SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support."
-arch=('any')
+arch=(any)
 url="https://github.com/mfat/sshpilot"
-license=('GPL-3.0-only')
-provides=('sshpilot')
-conflicts=('sshpilot')
+license=(GPL-3.0-only)
+provides=(sshpilot)
+conflicts=(sshpilot)
 options=(!strip)
 
 source=(
     "sshpilot_${pkgver}.deb::${url}/releases/download/v${pkgver}/sshpilot_${pkgver}-${_pkgrel_deb}_all.deb"
-    "LICENSE::https://raw.githubusercontent.com/mfat/sshpilot/refs/tags/v${pkgver}/LICENSE"
 )
-sha512sums=('0809e78b876a0b9acfe96dfb3e79e9545ae7422508ca30344dc6aa4a316f4811a30ea5da0f11c0b1d6c2bd5a59f5df83f84c441c2edbdf1a6c4df3193ea65222'
-            'a33658d9271e5c537ccd41bf540b463ad2a5eca4a060c80486ff42a736f0aa042d10436e7177c34d792177cb11285243dee1f31c4df54fb0bfaabbc306406930')
+sha512sums=('a3d56389fb63b33a2afcf81c9c1a3f197f0a5348e2b55fa2b453a4be3bab72d9f7c0ab2adc27781d4a199d072b5cb178cecf642507317ea52e85bdf956c0a987')
 
 package() {
     depends=(
-        'gtk4'
-        'libadwaita'
-        'libsecret'
-        'python'
-        'python-cairo'
-        'python-cryptography'
-        'python-gobject'
-        'python-keyring'
-        'python-matplotlib'
-        'python-paramiko'
-        'python-psutil'
-        'sshpass'
-        'vte4'
-        'webkitgtk-6.0'
-        'python-flask'
-        'python-flask-socketio'
+        gtk4
+        libadwaita
+        libsecret
+        python
+        python-cairo
+        python-cryptography
+        python-gobject
+        python-keyring
+        python-matplotlib
+        python-paramiko
+        python-psutil
+        sshpass
+        vte4
+        webkitgtk-6.0
+        python-flask
+        python-flask-socketio
     )
     local site_packages="$(python -c "import site; print(site.getsitepackages()[0])")"
 
@@ -55,7 +53,4 @@ package() {
 
     # Clean up Debian-specific Python path
     rm -rf "${pkgdir}/usr/lib/python3"
-
-    # Install license
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/$pkgname/"
 }
