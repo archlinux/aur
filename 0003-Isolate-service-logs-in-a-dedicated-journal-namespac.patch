@@ -1,0 +1,442 @@
+From 1c941b15d32388107c6a9b668c8a24edc90ea45e Mon Sep 17 00:00:00 2001
+From: John Audia <therealgraysky@proton.me>
+Date: Mon, 13 Jul 2026 14:08:55 +0000
+Subject: [PATCH 1/3] Isolate service logs in a dedicated journal namespace
+
+Run raspisump.service and rsumpweb.service with LogNamespace=raspisump
+so their log output lands in its own journal store
+(/var/log/journal/<machine-id>.raspisump) instead of the system journal.
+
+get_journal_log() and rsumpsupport now query the unit's LogNamespace=
+property and pass --namespace to journalctl only when one is set, so
+installs that run the units without a namespace behave exactly as
+before.
+
+The new journald@raspisump.conf pins Storage=persistent and caps the
+namespace store (64M) to stay SD-card friendly. Debian packaging ships
+both new files, adds the acl dependency for setfacl, drops raspisump
+from systemd-journal on upgrade, and removes the namespace store on
+purge.
+---
+ conf/systemd/journald@raspisump.conf          | 18 +++++
+ conf/systemd/raspisump.service                |  1 +
+ conf/systemd/rsumpweb.service                 |  1 +
+ .../raspisump-acl.conf                        | 19 +++++
+ debian/control                                |  1 +
+ debian/postinst                               | 12 ++-
+ debian/postrm                                 |  2 +
+ debian/raspisump.install                      |  2 +
+ docs/security.md                              |  4 +-
+ raspisump/cli.py                              | 18 +++--
+ raspisump/web/system.py                       | 33 +++++++-
+ tests/test_rsumpsupport.py                    | 43 ++++++++++-
+ tests/test_web_system.py                      | 75 ++++++++++++++++++-
+ 13 files changed, 212 insertions(+), 17 deletions(-)
+ create mode 100644 conf/systemd/journald@raspisump.conf
+ create mode 100644 conf/systemd/systemd-journald@raspisump.service.d/raspisump-acl.conf
+
+diff --git a/conf/systemd/journald@raspisump.conf b/conf/systemd/journald@raspisump.conf
+new file mode 100644
+index 000000000000..01443693db7a
+--- /dev/null
++++ b/conf/systemd/journald@raspisump.conf
+@@ -0,0 +1,18 @@
++# Configuration for the "raspisump" journal namespace, read by the
++# systemd-journald@raspisump.service instance that collects log output of
++# raspisump.service and rsumpweb.service (see LogNamespace= in the units
++# and journald.conf(5)).
++#
++# Install to /etc/systemd/journald@raspisump.conf.
++#
++# Namespaced journal instances default to Storage=persistent; pinned here
++# so the log tail on the web System Status page survives reboots even if
++# the compiled-in default ever changes. The size caps keep the namespace
++# store small and SD-card friendly.
++[Journal]
++Storage=persistent
++Compress=yes
++SystemMaxUse=64M
++SystemMaxFileSize=8M
++SystemMaxFiles=10
++RuntimeMaxUse=16M
+diff --git a/conf/systemd/raspisump.service b/conf/systemd/raspisump.service
+index 6d43fa7eb43c..3e1cf37f09e8 100644
+--- a/conf/systemd/raspisump.service
++++ b/conf/systemd/raspisump.service
+@@ -6,6 +6,7 @@ After=network.target
+ ExecStart=/usr/bin/rsump
+ Restart=always
+ User=raspisump
++LogNamespace=raspisump
+ UMask=0002
+ WorkingDirectory=/var/lib/raspi-sump
+ StateDirectory=raspi-sump
+diff --git a/conf/systemd/rsumpweb.service b/conf/systemd/rsumpweb.service
+index cbd25dafa266..de6a159d228f 100644
+--- a/conf/systemd/rsumpweb.service
++++ b/conf/systemd/rsumpweb.service
+@@ -6,6 +6,7 @@ After=network.target
+ ExecStart=/usr/bin/rsumpweb
+ Restart=on-failure
+ User=raspisump
++LogNamespace=raspisump
+ UMask=0002
+ RuntimeDirectory=raspi-sump
+ RuntimeDirectoryMode=0750
+diff --git a/conf/systemd/systemd-journald@raspisump.service.d/raspisump-acl.conf b/conf/systemd/systemd-journald@raspisump.service.d/raspisump-acl.conf
+new file mode 100644
+index 000000000000..b48b89205f15
+--- /dev/null
++++ b/conf/systemd/systemd-journald@raspisump.service.d/raspisump-acl.conf
+@@ -0,0 +1,19 @@
++# Grant the raspisump user read access to its own journal namespace.
++#
++# Install to /usr/lib/systemd/system/systemd-journald@raspisump.service.d/
++# (Debian: /lib/systemd/system/...).
++#
++# journald creates /var/log/journal/<machine-id>.raspisump owned by
++# root:systemd-journal, so without this grant only systemd-journal members
++# could read it back -- and putting raspisump in systemd-journal would
++# expose the entire system journal to the network-facing web process.
++# The d: (default) ACL entries make journal files created later (e.g. on
++# rotation) inherit the grant, matching the recursive ACL recipe in
++# systemd-journald.service(8).
++#
++# "+" runs the command with full privileges (setfacl needs to touch files
++# owned by root); "-" tolerates failure, e.g. if an admin overrides the
++# namespace to Storage=volatile and the directory never appears.
++# %m expands to the machine id, %i to the instance name "raspisump".
++[Service]
++ExecStartPost=-+/usr/bin/setfacl -Rnm u:raspisump:rX,d:u:raspisump:rX /var/log/journal/%m.%i
+diff --git a/debian/control b/debian/control
+index 30c45eaacf4a..f0c8c35a9664 100644
+--- a/debian/control
++++ b/debian/control
+@@ -15,6 +15,7 @@ Depends: ${python3:Depends}, ${misc:Depends},
+  python3-flask,
+  python3-waitress,
+  python3-argon2,
++ acl,
+  adduser,
+  nginx,
+  openssl
+diff --git a/debian/postinst b/debian/postinst
+index e361dbf536af..5a7b8bc24ce3 100755
+--- a/debian/postinst
++++ b/debian/postinst
+@@ -16,9 +16,15 @@ case "$1" in
+             usermod -aG gpio raspisump
+         fi
+ 
+-        # Add raspisump to systemd-journal group so the web process can read the journal
+-        if getent group systemd-journal > /dev/null 2>&1; then
+-            usermod -aG systemd-journal raspisump
++        # raspisump.service and rsumpweb.service log to their own journal
++        # namespace (LogNamespace=raspisump), and raspisump is granted read
++        # access to just that namespace via an ACL applied by the packaged
++        # systemd-journald@raspisump.service drop-in. Membership in
++        # systemd-journal (granted by older versions) would additionally
++        # expose the entire system journal to the network-facing web
++        # process, so drop it on upgrade.
++        if id -nG raspisump 2>/dev/null | grep -qw systemd-journal; then
++            deluser raspisump systemd-journal > /dev/null 2>&1 || true
+         fi
+ 
+         # Add the user who invoked sudo/dpkg to the raspisump group so they
+diff --git a/debian/postrm b/debian/postrm
+index 0281169d38e1..4a6947ef582b 100755
+--- a/debian/postrm
++++ b/debian/postrm
+@@ -8,6 +8,8 @@ case "$1" in
+         systemctl reload nginx > /dev/null 2>&1 || true
+         systemctl daemon-reload || true
+         rm -rf /etc/raspi-sump
++        # Journal namespace store (dir is <machine-id>.raspisump)
++        rm -rf /var/log/journal/*.raspisump
+         if getent passwd raspisump > /dev/null 2>&1; then
+             deluser --system raspisump || true
+         fi
+diff --git a/debian/raspisump.install b/debian/raspisump.install
+index d13fcc866b80..3bd386c89065 100644
+--- a/debian/raspisump.install
++++ b/debian/raspisump.install
+@@ -3,6 +3,8 @@ conf/raspisump.conf usr/share/raspi-sump/examples/
+ conf/credentials.conf usr/share/raspi-sump/examples/
+ conf/systemd/raspisump.service lib/systemd/system/
+ conf/systemd/rsumpweb.service lib/systemd/system/
++conf/systemd/journald@raspisump.conf etc/systemd/
++conf/systemd/systemd-journald@raspisump.service.d lib/systemd/system/
+ conf/web usr/share/raspi-sump/
+ raspisump/static usr/share/raspi-sump/web/
+ conf/nginx/raspi-sump etc/nginx/sites-available/
+diff --git a/docs/security.md b/docs/security.md
+index 1bd26558f8ad..d064b1ebb578 100644
+--- a/docs/security.md
++++ b/docs/security.md
+@@ -38,4 +38,6 @@ Raspi-Sump does provide the following;
+ 
+ * Defense against brute force password attacks that tarpits multiple requests over a small time window.
+ 
+-* A dedicated `credentials.conf` file with tighter restrictions in `/etc/raspi-sump/`
+\ No newline at end of file
++* A dedicated `credentials.conf` file with tighter restrictions in `/etc/raspi-sump/`
++
++* Both services log to a dedicated systemd journal namespace (`LogNamespace=raspisump`). The unprivileged `raspisump` user is granted read access to that namespace only, so the web interface and `rsumpsupport` can show the service logs without being able to read the rest of the system journal (auth logs, kernel messages, other services).
+\ No newline at end of file
+diff --git a/raspisump/cli.py b/raspisump/cli.py
+index 58bd4b595f56..3f50d5595927 100644
+--- a/raspisump/cli.py
++++ b/raspisump/cli.py
+@@ -273,6 +273,16 @@ def rsumpsupport():
+         except Exception as e:
+             return f"An unexpected error occurred: {str(e)}"
+ 
++    def journal_command(unit):
++        """Build a journalctl command for *unit*, honouring its LogNamespace=."""
++        from raspisump.web.system import get_log_namespace
++
++        command = ["journalctl", "-u", unit, "-n", "50", "--no-pager"]
++        namespace = get_log_namespace(unit)
++        if namespace:
++            command.insert(1, "--namespace=" + namespace)
++        return command
++
+     support_folder = f"{STATE_DIR}/support"
+     support_file_path = (
+         f"{support_folder}/support-{time.strftime('%Y%m%d_%H%M%S')}.txt"
+@@ -297,12 +307,8 @@ def rsumpsupport():
+         ["tail", "-n", "10", f"{LOG_DIR}/heartbeat_log"]
+     )
+     logs_alert_log = run_command(["tail", "-n", "10", f"{LOG_DIR}/alert_log"])
+-    journal_raspisump = run_command([
+-        "journalctl", "-u", "raspisump.service", "-n", "50", "--no-pager",
+-    ])
+-    journal_rsumpweb = run_command([
+-        "journalctl", "-u", "rsumpweb.service", "-n", "50", "--no-pager",
+-    ])
++    journal_raspisump = run_command(journal_command("raspisump.service"))
++    journal_rsumpweb = run_command(journal_command("rsumpweb.service"))
+     rsump_service = run_command(["cat", f"{SYSTEMD_DIR}/raspisump.service"])
+     rsumpweb_service = run_command(["cat", f"{SYSTEMD_DIR}/rsumpweb.service"])
+ 
+diff --git a/raspisump/web/system.py b/raspisump/web/system.py
+index 625d991654cb..68d25c49a944 100644
+--- a/raspisump/web/system.py
++++ b/raspisump/web/system.py
+@@ -93,15 +93,42 @@ def control_service(unit: str, action: str) -> tuple:
+         return False, str(e)
+ 
+ 
++def get_log_namespace(unit: str) -> str:
++    """Return the journal namespace (LogNamespace=) *unit* runs in, or "".
++
++    Units running with systemd's LogNamespace= directive log to a dedicated
++    journal namespace instead of the default journal, and journalctl only
++    finds their entries when pointed at it with --namespace. An empty string
++    means the unit logs to the default journal (also the case on systemd
++    < 245, where the property does not exist).
++    """
++    try:
++        result = subprocess.run(
++            ["systemctl", "show", unit, "--property=LogNamespace", "--value"],
++            capture_output=True,
++            text=True,
++            timeout=5,
++        )
++    except (FileNotFoundError, subprocess.TimeoutExpired):
++        return ""
++    return result.stdout.strip()
++
++
+ def get_journal_log(unit: str = "raspisump.service", lines: int = 20) -> list:
+     """Return the last *lines* journal entries for *unit* as a list of strings.
+ 
+-    Returns an empty list if journalctl is unavailable.
++    Reads from the unit's journal namespace when it has one, so entries are
++    found whether or not the unit runs with LogNamespace=. Returns an empty
++    list if journalctl is unavailable.
+     """
++    cmd = ["journalctl", "-u", unit, "-n", str(lines),
++           "--no-pager", "--output=short"]
++    namespace = get_log_namespace(unit)
++    if namespace:
++        cmd.insert(1, "--namespace=" + namespace)
+     try:
+         result = subprocess.run(
+-            ["journalctl", "-u", unit, "-n", str(lines),
+-             "--no-pager", "--output=short"],
++            cmd,
+             capture_output=True,
+             text=True,
+             timeout=5,
+diff --git a/tests/test_rsumpsupport.py b/tests/test_rsumpsupport.py
+index d2d0c8ffb93f..56d0c204da33 100644
+--- a/tests/test_rsumpsupport.py
++++ b/tests/test_rsumpsupport.py
+@@ -36,8 +36,12 @@ _FAKE_CONFIGS = {
+ _TODAY_ROWS = [("2026-03-19 08:00:00", 22.5, "cm")]
+ 
+ 
+-def _run_and_capture(today_rows=None, db_error=None):
+-    """Run rsumpsupport with all external calls mocked; return written content."""
++def _run_and_capture(today_rows=None, db_error=None, log_namespace="", commands=None):
++    """Run rsumpsupport with all external calls mocked; return written content.
++
++    *log_namespace* is what get_log_namespace() reports for the units;
++    if *commands* is a list, every check_output command is appended to it.
++    """
+     from raspisump.cli import rsumpsupport
+ 
+     if today_rows is None:
+@@ -46,6 +50,11 @@ def _run_and_capture(today_rows=None, db_error=None):
+     captured = {}
+     real_open = open
+ 
++    def fake_check_output(command, *args, **kwargs):
++        if commands is not None:
++            commands.append(command)
++        return "mocked output"
++
+     def fake_open(path, mode="r", *args, **kwargs):
+         if "w" in str(mode):
+             class _F:
+@@ -65,7 +74,8 @@ def _run_and_capture(today_rows=None, db_error=None):
+ 
+     with (
+         patch("raspisump.config_values.configuration", return_value=_FAKE_CONFIGS),
+-        patch("subprocess.check_output", return_value="mocked output"),
++        patch("subprocess.check_output", side_effect=fake_check_output),
++        patch("raspisump.web.system.get_log_namespace", return_value=log_namespace),
+         patch("raspisump.log.query_readings", **qr_kwargs),
+         patch("builtins.open", side_effect=fake_open),
+         patch("os.makedirs"),
+@@ -76,6 +86,33 @@ def _run_and_capture(today_rows=None, db_error=None):
+     return captured.get("content", "")
+ 
+ 
++class TestRsumpsupportJournalNamespace(unittest.TestCase):
++    """journalctl must target the units' journal namespace when one is set."""
++
++    def _journal_commands(self, log_namespace):
++        commands = []
++        _run_and_capture(log_namespace=log_namespace, commands=commands)
++        return [c for c in commands if c[0] == "journalctl"]
++
++    def test_namespace_flag_present_when_units_use_one(self):
++        commands = self._journal_commands("raspisump")
++        self.assertTrue(commands)
++        for command in commands:
++            self.assertIn("--namespace=raspisump", command)
++
++    def test_no_namespace_flag_on_default_journal(self):
++        commands = self._journal_commands("")
++        self.assertTrue(commands)
++        for command in commands:
++            self.assertNotIn("--namespace=raspisump", command)
++
++    def test_both_units_queried(self):
++        commands = self._journal_commands("raspisump")
++        units = [c[c.index("-u") + 1] for c in commands]
++        self.assertIn("raspisump.service", units)
++        self.assertIn("rsumpweb.service", units)
++
++
+ class TestRsumpsupportContent(unittest.TestCase):
+ 
+     def setUp(self):
+diff --git a/tests/test_web_system.py b/tests/test_web_system.py
+index 6ffce19792fc..dc1338f7bc56 100644
+--- a/tests/test_web_system.py
++++ b/tests/test_web_system.py
+@@ -4,7 +4,14 @@ import unittest
+ from unittest.mock import patch, MagicMock
+ import subprocess
+ 
+-from raspisump.web.system import get_service_status, all_service_statuses, SERVICES, get_raspisump_config
++from raspisump.web.system import (
++    SERVICES,
++    all_service_statuses,
++    get_journal_log,
++    get_log_namespace,
++    get_raspisump_config,
++    get_service_status,
++)
+ 
+ 
+ SAMPLE_OUTPUT = (
+@@ -83,6 +90,72 @@ class TestAllServiceStatuses(unittest.TestCase):
+             self.assertEqual(props, fake_props)
+ 
+ 
++class TestGetLogNamespace(unittest.TestCase):
++
++    def test_returns_namespace_from_systemctl_show(self):
++        with patch("raspisump.web.system.subprocess.run",
++                   return_value=_mock_run("raspisump\n")) as mock_run:
++            self.assertEqual(get_log_namespace("raspisump.service"), "raspisump")
++        cmd = mock_run.call_args[0][0]
++        self.assertEqual(
++            cmd,
++            ["systemctl", "show", "raspisump.service",
++             "--property=LogNamespace", "--value"],
++        )
++
++    def test_returns_empty_when_unit_has_no_namespace(self):
++        with patch("raspisump.web.system.subprocess.run",
++                   return_value=_mock_run("\n")):
++            self.assertEqual(get_log_namespace("raspisump.service"), "")
++
++    def test_returns_empty_when_systemctl_missing(self):
++        with patch("raspisump.web.system.subprocess.run",
++                   side_effect=FileNotFoundError):
++            self.assertEqual(get_log_namespace("raspisump.service"), "")
++
++    def test_returns_empty_on_timeout(self):
++        with patch("raspisump.web.system.subprocess.run",
++                   side_effect=subprocess.TimeoutExpired("systemctl", 5)):
++            self.assertEqual(get_log_namespace("raspisump.service"), "")
++
++
++class TestGetJournalLog(unittest.TestCase):
++
++    def _run(self, namespace, stdout="line one\nline two\n"):
++        with patch("raspisump.web.system.get_log_namespace",
++                   return_value=namespace), \
++             patch("raspisump.web.system.subprocess.run",
++                   return_value=_mock_run(stdout)) as mock_run:
++            lines = get_journal_log("raspisump.service", lines=20)
++        return lines, mock_run.call_args[0][0]
++
++    def test_returns_journal_lines(self):
++        lines, _ = self._run(namespace="")
++        self.assertEqual(lines, ["line one", "line two"])
++
++    def test_no_namespace_flag_for_default_journal(self):
++        _, cmd = self._run(namespace="")
++        self.assertNotIn("--namespace=", " ".join(cmd))
++        self.assertEqual(cmd[:3], ["journalctl", "-u", "raspisump.service"])
++
++    def test_namespace_flag_added_when_unit_has_one(self):
++        _, cmd = self._run(namespace="raspisump")
++        self.assertIn("--namespace=raspisump", cmd)
++        self.assertIn("-u", cmd)
++        self.assertIn("raspisump.service", cmd)
++
++    def test_requested_line_count_passed_through(self):
++        _, cmd = self._run(namespace="raspisump")
++        n_index = cmd.index("-n")
++        self.assertEqual(cmd[n_index + 1], "20")
++
++    def test_returns_empty_list_when_journalctl_missing(self):
++        with patch("raspisump.web.system.get_log_namespace", return_value=""), \
++             patch("raspisump.web.system.subprocess.run",
++                   side_effect=FileNotFoundError):
++            self.assertEqual(get_journal_log("raspisump.service"), [])
++
++
+ _SAMPLE_CONF = """
+ [pit]
+ unit = metric
+-- 
+2.55.0
+

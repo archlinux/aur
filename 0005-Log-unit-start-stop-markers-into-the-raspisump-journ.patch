@@ -1,0 +1,79 @@
+From b27bb46336751d8dbb611a1c36d8b6805bdfbc46 Mon Sep 17 00:00:00 2001
+From: John Audia <therealgraysky@proton.me>
+Date: Mon, 13 Jul 2026 15:12:05 +0000
+Subject: [PATCH 3/3] Log unit start/stop markers into the raspisump journal
+ namespace
+
+systemd's own lifecycle messages about a unit -- "Started X.service",
+"Stopped X.service", "Consumed N CPU time...", OOM notices -- are
+logged by PID1, which runs in the host's default mount namespace and
+is never forked per-unit. LogNamespace=raspisump (added in the
+previous commit) only redirects logging for processes systemd forks
+for the unit itself, so those PID1-authored lines always stay in the
+default journal and are invisible to a reader confined to the
+raspisump namespace.
+
+Add an ExecStartPre=/ExecStopPost= logger call to each unit so it
+records its own start/stop markers. ExecStartPre=/ExecStopPost= share
+the unit's private mount namespace with ExecStart=, so their syslog()
+calls are redirected into the same journal namespace.
+---
+ conf/systemd/raspisump.service | 10 ++++++++++
+ conf/systemd/rsumpweb.service  |  5 +++++
+ docs/security.md               |  2 ++
+ 3 files changed, 17 insertions(+)
+
+diff --git a/conf/systemd/raspisump.service b/conf/systemd/raspisump.service
+index 3e1cf37f09e8..6bdb4cfafd6f 100644
+--- a/conf/systemd/raspisump.service
++++ b/conf/systemd/raspisump.service
+@@ -3,7 +3,17 @@ Description=RaspiSump Service
+ After=network.target
+ 
+ [Service]
++# systemd's own lifecycle messages about this unit (Started/Stopped/
++# Consumed CPU time, OOM notices) are logged by PID1, which is never
++# namespaced, so they always land in the default journal and are
++# invisible to a reader confined to LogNamespace=raspisump below. These
++# two lines are logged by the unit's own process (ExecStartPre=/
++# ExecStopPost= share the unit's private mount namespace, same as
++# ExecStart=), so they land in the raspisump namespace instead and give
++# the confined reader a start/stop/crash-reason signal.
++ExecStartPre=/usr/bin/logger -t raspisump --priority daemon.info "starting raspisump.service"
+ ExecStart=/usr/bin/rsump
++ExecStopPost=/bin/sh -c '/usr/bin/logger -t raspisump --priority daemon.info "stopped raspisump.service (result=$SERVICE_RESULT exit_code=$EXIT_CODE exit_status=$EXIT_STATUS)"'
+ Restart=always
+ User=raspisump
+ LogNamespace=raspisump
+diff --git a/conf/systemd/rsumpweb.service b/conf/systemd/rsumpweb.service
+index de6a159d228f..068c7acfa7d2 100644
+--- a/conf/systemd/rsumpweb.service
++++ b/conf/systemd/rsumpweb.service
+@@ -3,7 +3,12 @@ Description=Raspi-Sump Flask Web Interface
+ After=network.target
+ 
+ [Service]
++# See raspisump.service for why these lines exist: PID1's own
++# Started/Stopped/Consumed-CPU messages never enter LogNamespace=, so
++# the unit logs its own start/stop markers instead.
++ExecStartPre=/usr/bin/logger -t rsumpweb --priority daemon.info "starting rsumpweb.service"
+ ExecStart=/usr/bin/rsumpweb
++ExecStopPost=/bin/sh -c '/usr/bin/logger -t rsumpweb --priority daemon.info "stopped rsumpweb.service (result=$SERVICE_RESULT exit_code=$EXIT_CODE exit_status=$EXIT_STATUS)"'
+ Restart=on-failure
+ User=raspisump
+ LogNamespace=raspisump
+diff --git a/docs/security.md b/docs/security.md
+index b59c5850179d..031a4abadffd 100644
+--- a/docs/security.md
++++ b/docs/security.md
+@@ -42,4 +42,6 @@ Raspi-Sump does provide the following;
+ 
+ * Both services log to a dedicated systemd journal namespace (`LogNamespace=raspisump`). The unprivileged `raspisump` user is granted read access to that namespace only, so the web interface and `rsumpsupport` can show the service logs without being able to read the rest of the system journal (auth logs, kernel messages, other services).
+ 
++  Systemd's own lifecycle messages about a unit (`Started`/`Stopped`/`Consumed N CPU time`, OOM notices) are logged by PID1, which is never namespaced, so they always stay in the default journal and can't appear in `raspisump`'s confined view. Both units run a `logger` call in `ExecStartPre=`/`ExecStopPost=` to record their own start/stop/exit-status markers into the namespace instead. The `ExecStopPost=` marker relies on a systemd fix for [issue #32604](https://github.com/systemd/systemd/issues/32604) (namespaced logging lost right before unit teardown); it's reliable on systemd >= 256 (Arch, Debian 13) and can occasionally be dropped on systemd < 256 (Debian 12 ships 252) — the `ExecStartPre=` "starting" marker is unaffected either way. For full lifecycle diagnostics (e.g. confirming a crash loop) a root shell with `journalctl --namespace=+raspisump -u raspisump.service` remains authoritative.
++
+ * Service start/stop/restart from the web admin panel is authorized by a scoped polkit rule rather than sudo. The rule allows the `raspisump` user exactly three verbs (start, stop, restart) on exactly two units (`raspisump.service`, `rsumpweb.service`), and no setuid binary or shell is involved in the privileged path.
+\ No newline at end of file
+-- 
+2.55.0
+

@@ -1,0 +1,265 @@
+From 872c813f746961b9aa23db76e3713e33fe336a86 Mon Sep 17 00:00:00 2001
+From: John Audia <therealgraysky@proton.me>
+Date: Mon, 13 Jul 2026 14:17:38 +0000
+Subject: [PATCH 2/3] Replace sudo with a scoped polkit rule for service
+ control
+
+Drop sudo from the privileged path entirely: the web process now calls
+systemctl directly and systemd asks polkit to authorize the request.
+
+This removes sudo and the shell from the privileged path and keeps the
+same tight scoping the sudoers file had.
+
+Debian packaging ships the rule in /usr/share/polkit-1/rules.d/,
+depends on polkitd | policykit-1, and removes the sudoers file left
+behind by earlier versions on upgrade. JS polkit rules are supported on
+the whole v2 baseline (Debian 12 ships polkit 122).
+---
+ conf/polkit/49-raspisump.rules | 24 ++++++++++++++++++++++++
+ conf/sudoers/raspisump-web     |  8 --------
+ debian/control                 |  3 ++-
+ debian/postinst                |  8 ++++----
+ debian/raspisump.install       |  2 +-
+ docs/security.md               |  4 +++-
+ raspisump/web/system.py        | 19 ++++++++++++++++---
+ raspisump/web/views/admin.py   |  2 +-
+ raspisump/web/views/setup.py   |  4 ++--
+ tests/test_web_admin.py        | 31 ++++++++++++++++++++++++++++---
+ 10 files changed, 81 insertions(+), 24 deletions(-)
+ create mode 100644 conf/polkit/49-raspisump.rules
+ delete mode 100644 conf/sudoers/raspisump-web
+
+diff --git a/conf/polkit/49-raspisump.rules b/conf/polkit/49-raspisump.rules
+new file mode 100644
+index 000000000000..c3b9e2808552
+--- /dev/null
++++ b/conf/polkit/49-raspisump.rules
+@@ -0,0 +1,24 @@
++// Allow the raspisump service user to start/stop/restart its own two
++// units, and nothing else.
++//
++// Install to /usr/share/polkit-1/rules.d/ (package) or
++// /etc/polkit-1/rules.d/ (manual install). Replaces the earlier
++// sudoers-based approach: no setuid binary or shell in the path of the
++// network-facing web process, and authorization is scoped to the exact
++// user/unit/verb combination.
++//
++// The rule returns polkit.Result.YES only for that combination and
++// nothing (undefined) otherwise, so other rules still apply and file
++// ordering does not matter. subject.user needs no login session, which
++// is what a systemd service user has.
++polkit.addRule(function(action, subject) {
++    if (action.id == "org.freedesktop.systemd1.manage-units" &&
++        subject.user == "raspisump") {
++        var unit = action.lookup("unit");
++        var verb = action.lookup("verb");
++        if ((unit == "raspisump.service" || unit == "rsumpweb.service") &&
++            (verb == "start" || verb == "stop" || verb == "restart")) {
++            return polkit.Result.YES;
++        }
++    }
++});
+diff --git a/conf/sudoers/raspisump-web b/conf/sudoers/raspisump-web
+deleted file mode 100644
+index 2177100c12c6..000000000000
+--- a/conf/sudoers/raspisump-web
++++ /dev/null
+@@ -1,8 +0,0 @@
+-# Allow the raspisump web service to control raspisump services without a password.
+-raspisump ALL=(root) NOPASSWD: \
+-    /usr/bin/systemctl start raspisump.service, \
+-    /usr/bin/systemctl stop raspisump.service, \
+-    /usr/bin/systemctl restart raspisump.service, \
+-    /usr/bin/systemctl start rsumpweb.service, \
+-    /usr/bin/systemctl stop rsumpweb.service, \
+-    /usr/bin/systemctl restart rsumpweb.service
+diff --git a/debian/control b/debian/control
+index f0c8c35a9664..3bbfe9f577c6 100644
+--- a/debian/control
++++ b/debian/control
+@@ -18,7 +18,8 @@ Depends: ${python3:Depends}, ${misc:Depends},
+  acl,
+  adduser,
+  nginx,
+- openssl
++ openssl,
++ polkitd | policykit-1
+ Recommends: sqlite3
+ Description: Sump pit monitoring system for Raspberry Pi
+  Raspi-Sump monitors a sump pit water level using an HC-SR04 ultrasonic
+diff --git a/debian/postinst b/debian/postinst
+index 5a7b8bc24ce3..13571798f9eb 100755
+--- a/debian/postinst
++++ b/debian/postinst
+@@ -92,10 +92,10 @@ case "$1" in
+         chown root:raspisump /etc/raspi-sump/credentials.conf
+         chmod 0660 /etc/raspi-sump/credentials.conf
+ 
+-        # Install sudoers rule allowing the web process to control raspisump.service
+-        install -o root -g root -m 0440 \
+-            /usr/share/raspi-sump/sudoers/raspisump-web \
+-            /etc/sudoers.d/raspisump-web
++        # Service control from the web admin is authorized by the packaged
++        # polkit rule (/usr/share/polkit-1/rules.d/49-raspisump.rules)
++        # instead of sudo; remove the sudoers file older versions installed.
++        rm -f /etc/sudoers.d/raspisump-web
+ 
+         # Write version string into the web footer file
+         PKG_VERSION=$(dpkg-query --showformat='${Version}' --show raspisump 2>/dev/null || echo "unknown")
+diff --git a/debian/raspisump.install b/debian/raspisump.install
+index 3bd386c89065..417a4c84f90a 100644
+--- a/debian/raspisump.install
++++ b/debian/raspisump.install
+@@ -1,4 +1,4 @@
+-conf/sudoers/raspisump-web usr/share/raspi-sump/sudoers/
++conf/polkit/49-raspisump.rules usr/share/polkit-1/rules.d/
+ conf/raspisump.conf usr/share/raspi-sump/examples/
+ conf/credentials.conf usr/share/raspi-sump/examples/
+ conf/systemd/raspisump.service lib/systemd/system/
+diff --git a/docs/security.md b/docs/security.md
+index d064b1ebb578..b59c5850179d 100644
+--- a/docs/security.md
++++ b/docs/security.md
+@@ -40,4 +40,6 @@ Raspi-Sump does provide the following;
+ 
+ * A dedicated `credentials.conf` file with tighter restrictions in `/etc/raspi-sump/`
+ 
+-* Both services log to a dedicated systemd journal namespace (`LogNamespace=raspisump`). The unprivileged `raspisump` user is granted read access to that namespace only, so the web interface and `rsumpsupport` can show the service logs without being able to read the rest of the system journal (auth logs, kernel messages, other services).
+\ No newline at end of file
++* Both services log to a dedicated systemd journal namespace (`LogNamespace=raspisump`). The unprivileged `raspisump` user is granted read access to that namespace only, so the web interface and `rsumpsupport` can show the service logs without being able to read the rest of the system journal (auth logs, kernel messages, other services).
++
++* Service start/stop/restart from the web admin panel is authorized by a scoped polkit rule rather than sudo. The rule allows the `raspisump` user exactly three verbs (start, stop, restart) on exactly two units (`raspisump.service`, `rsumpweb.service`), and no setuid binary or shell is involved in the privileged path.
+\ No newline at end of file
+diff --git a/raspisump/web/system.py b/raspisump/web/system.py
+index 68d25c49a944..2015b15e4ad5 100644
+--- a/raspisump/web/system.py
++++ b/raspisump/web/system.py
+@@ -74,19 +74,32 @@ def all_service_statuses():
+ 
+ 
+ def control_service(unit: str, action: str) -> tuple:
+-    """Run sudo systemctl <action> <unit>. Returns (success: bool, message: str)."""
++    """Run systemctl <action> <unit>. Returns (success: bool, message: str).
++
++    The web process runs unprivileged; systemd asks polkit to authorize the
++    request, which the packaged rule grants for exactly these units and
++    actions (see conf/polkit/49-raspisump.rules).
++    """
+     if unit not in CONTROLLABLE_SERVICES:
+         return False, f"Unknown unit: {unit!r}"
+     if action not in _VALID_ACTIONS:
+         return False, f"Unknown action: {action!r}"
+     try:
+         result = subprocess.run(
+-            ["sudo", "/usr/bin/systemctl", action, unit],
++            ["systemctl", action, unit],
+             capture_output=True, text=True, timeout=15,
+         )
+         if result.returncode == 0:
+             return True, f"{unit} {action}ed successfully."
+-        return False, result.stderr.strip() or f"{action} failed (exit {result.returncode})"
++        stderr = result.stderr.strip()
++        # "Access denied" = polkitd absent; "Interactive authentication
++        # required" = polkitd running but no rule grants this request.
++        if "Access denied" in stderr or "Interactive authentication required" in stderr:
++            return False, (
++                f"Not authorized to {action} {unit} — is the raspisump "
++                f"polkit rule installed? ({stderr})"
++            )
++        return False, stderr or f"{action} failed (exit {result.returncode})"
+     except subprocess.TimeoutExpired:
+         return False, "systemctl timed out."
+     except OSError as e:
+diff --git a/raspisump/web/views/admin.py b/raspisump/web/views/admin.py
+index d259f8b206f9..010f67fe072f 100644
+--- a/raspisump/web/views/admin.py
++++ b/raspisump/web/views/admin.py
+@@ -70,7 +70,7 @@ def service_action():
+     # then show a reconnecting page that auto-reloads once the service is back.
+     if unit == "rsumpweb.service" and action == "restart":
+         subprocess.Popen(
+-            ["sh", "-c", "sleep 3 && sudo /usr/bin/systemctl restart rsumpweb.service"],
++            ["sh", "-c", "sleep 3 && systemctl restart rsumpweb.service"],
+             close_fds=True,
+             start_new_session=True,
+         )
+diff --git a/raspisump/web/views/setup.py b/raspisump/web/views/setup.py
+index 2977bdff7958..b178a2ca8dae 100644
+--- a/raspisump/web/views/setup.py
++++ b/raspisump/web/views/setup.py
+@@ -133,13 +133,13 @@ def setup_post():
+ 
+     # Start raspisump.service now that config is in place
+     subprocess.run(
+-        ["sudo", "systemctl", "start", "raspisump.service"],
++        ["systemctl", "start", "raspisump.service"],
+         capture_output=True,
+     )
+ 
+     # Delayed restart of rsumpweb so this HTTP response is delivered first
+     subprocess.Popen(
+-        ["bash", "-c", "sleep 2 && sudo systemctl restart rsumpweb.service"],
++        ["bash", "-c", "sleep 2 && systemctl restart rsumpweb.service"],
+     )
+ 
+     return render_template("admin/restarting.html", redirect_to="/")
+diff --git a/tests/test_web_admin.py b/tests/test_web_admin.py
+index d2f5bd2de376..5d4e445f3897 100644
+--- a/tests/test_web_admin.py
++++ b/tests/test_web_admin.py
+@@ -168,6 +168,31 @@ class TestControlService(unittest.TestCase):
+         self.assertIn("restart", msg)
+         mock_run.assert_called_once()
+ 
++    def test_runs_plain_systemctl_without_sudo(self):
++        """Authorization comes from polkit, not sudo — see conf/polkit/."""
++        with patch("raspisump.web.system.subprocess.run",
++                   return_value=self._mock_run(0)) as mock_run:
++            control_service("raspisump.service", "restart")
++        cmd = mock_run.call_args[0][0]
++        self.assertEqual(cmd, ["systemctl", "restart", "raspisump.service"])
++
++    def test_polkit_denial_explains_missing_rule(self):
++        stderr = ("Failed to restart raspisump.service: "
++                  "Interactive authentication required.")
++        with patch("raspisump.web.system.subprocess.run",
++                   return_value=self._mock_run(1, stderr)):
++            ok, msg = control_service("raspisump.service", "restart")
++        self.assertFalse(ok)
++        self.assertIn("polkit", msg)
++
++    def test_polkitd_absent_explains_missing_rule(self):
++        stderr = "Failed to restart raspisump.service: Access denied"
++        with patch("raspisump.web.system.subprocess.run",
++                   return_value=self._mock_run(1, stderr)):
++            ok, msg = control_service("raspisump.service", "restart")
++        self.assertFalse(ok)
++        self.assertIn("polkit", msg)
++
+     def test_valid_stop_returns_success(self):
+         with patch("raspisump.web.system.subprocess.run",
+                    return_value=self._mock_run(0)):
+@@ -193,17 +218,17 @@ class TestControlService(unittest.TestCase):
+ 
+     def test_timeout_returns_error(self):
+         with patch("raspisump.web.system.subprocess.run",
+-                   side_effect=subprocess.TimeoutExpired(["sudo"], 15)):
++                   side_effect=subprocess.TimeoutExpired(["systemctl"], 15)):
+             ok, msg = control_service("raspisump.service", "restart")
+         self.assertFalse(ok)
+         self.assertIn("timed out", msg)
+ 
+     def test_os_error_returns_error(self):
+         with patch("raspisump.web.system.subprocess.run",
+-                   side_effect=OSError("sudo not found")):
++                   side_effect=OSError("systemctl not found")):
+             ok, msg = control_service("raspisump.service", "restart")
+         self.assertFalse(ok)
+-        self.assertIn("sudo not found", msg)
++        self.assertIn("systemctl not found", msg)
+ 
+ 
+ @unittest.skipUnless(FLASK_AVAILABLE, "Flask not installed")
+-- 
+2.55.0
+

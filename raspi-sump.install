@@ -43,10 +43,25 @@ post_install() {
 	  3. If you want to run rsump/rsumplog/etc. manually without sudo,
 	     add yourself to the raspisump group and log out and back in:
 	         sudo usermod -aG raspisump "$USER"
+
+	  4. The services log to their own journal namespace. To read it
+	     from a shell (the web UI does this automatically):
+	         journalctl --namespace=raspisump -u raspisump.service
 	
   	 Then browse to https://<this-host>/ to complete setup. The TLS
   	 certificate is self-signed - accept the browser warning.
 	EOF
+}
+
+post_upgrade() {
+	# pkgrel <= 3 authorized web-admin service control through sudo; it is
+	# now a polkit rule (/usr/share/polkit-1/rules.d/49-raspisump.rules).
+	# The old sudoers file was in backup=, so pacman leaves a .pacsave
+	# behind if it was ever touched - flag it rather than deleting it.
+	if [ -e /etc/sudoers.d/raspisump-web ] || [ -e /etc/sudoers.d/raspisump-web.pacsave ]; then
+		echo " >>> Service control now uses polkit; the sudoers grant is obsolete. Safe to remove:"
+		ls /etc/sudoers.d/raspisump-web* 2>/dev/null | sed 's/^/       /'
+	fi
 }
 
 post_remove() {
@@ -57,5 +72,6 @@ post_remove() {
 	    /etc/raspi-sump/raspisump.conf
 	    /var/lib/raspi-sump
 	    /var/log/raspi-sump
+	    /var/log/journal/*.raspisump (the services' journal namespace)
 	EOF
 }

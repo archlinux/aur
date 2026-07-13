@@ -2,7 +2,7 @@
 
 pkgname=raspi-sump
 pkgver=2.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Sump pit water level monitoring system for the Raspberry Pi"
 arch=('any')
 url="https://www.linuxnorth.org/raspi-sump/"
@@ -14,16 +14,17 @@ depends=(
   'python-argon2-cffi'
   'python-mastodon-py'
   'python-pinsource'
-  'nginx'
   'openssl'
 )
 optdepends=(
-  'sqlite: inspect/repair the raspisump.db database from the command line'
+  'caddy: serve up https for raspi-pump'
+  'nginx: upstream default server works out-of-the-box'
   'polkit: control raspisump/rsumpweb services from the web admin panel'
+  'sqlite: inspect/repair the raspisump.db database from the command line'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 backup=('etc/nginx/sites-available/raspi-sump'
-        'etc/sudoers.d/raspisump-web'
+        'etc/systemd/journald@raspisump.conf'
         'etc/raspi-sump/raspisump.conf'
         'etc/raspi-sump/credentials.conf')
 install=raspi-sump.install
@@ -33,18 +34,27 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/alaudet/raspi-sump/archive/
         60-gpiochips.rules
         0001-fix.patch
         0002-Add-12h-24h-time-format-setting-for-chart-x-axis.patch
+        0003-Isolate-service-logs-in-a-dedicated-journal-namespac.patch
+        0004-Replace-sudo-with-a-scoped-polkit-rule-for-service-c.patch
+        0005-Log-unit-start-stop-markers-into-the-raspisump-journ.patch
       )
 sha256sums=('7593bb0cc9da93276245b39df1a4e2ac938e074b2059eaabdc3cb5e80ecdf9b8'
-            'bcf6c728795e696d5d8834de0c27580bd4eedcb86cb0a67eda5fd5fd5f8ef08a'
+            'af7e3e103a5677139b560aad5a15854e160d333b267f7a4416bb6de9e1eec424'
             'a33537303aed0080411c0a5860b1782c88372dbda9b06dfc9c7a5ca14d5e83b7'
             '6ceae2aa160f8f591935a17dd4b33f3dfc4b5d8defa15a1d89595a880046030a'
             '0ec94b0e98411f723d40737742da5044411cf4382b7ddac949b13b46af603abb'
-            'a166a2c8ef227f594019418a7e926ab383da842dd3341934d9a50292aef47f76')
+            'a166a2c8ef227f594019418a7e926ab383da842dd3341934d9a50292aef47f76'
+            'd9536876b4a630f3359032aae7ad32da314f1a2aa07d096c52148f070d6d6139'
+            '6fdbd032e145fdef1b2cb517e3f8e988b7937ac7b561fb6db714150bd227a21b'
+            '255abfa5342188190e9a4a2b3307001b87436093167548354e6511d3b3fb8ae4')
 
 prepare() {
   cd "$pkgname-$pkgver"
   patch -p1 -i ../0001-fix.patch
   patch -p1 -i ../0002-Add-12h-24h-time-format-setting-for-chart-x-axis.patch
+  patch -p1 -i ../0003-Isolate-service-logs-in-a-dedicated-journal-namespac.patch
+  patch -p1 -i ../0004-Replace-sudo-with-a-scoped-polkit-rule-for-service-c.patch
+  patch -p1 -i ../0005-Log-unit-start-stop-markers-into-the-raspisump-journ.patch
 }
 
 build() {
@@ -58,39 +68,29 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # sysusers.d / tmpfiles.d - Arch equivalents of the user creation and
-  # StateDirectory-adjacent mkdir/chown/chmod work Debian's postinst does
-  # by hand.
   install -Dm644 "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
   install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-
-  # systemd units
   install -Dm644 conf/systemd/raspisump.service "$pkgdir/usr/lib/systemd/system/raspisump.service"
   install -Dm644 conf/systemd/rsumpweb.service "$pkgdir/usr/lib/systemd/system/rsumpweb.service"
+  install -Dm644 conf/systemd/journald@raspisump.conf \
+    "$pkgdir/etc/systemd/journald@raspisump.conf"
+  install -Dm644 conf/systemd/systemd-journald@raspisump.service.d/raspisump-acl.conf \
+    "$pkgdir/usr/lib/systemd/system/systemd-journald@raspisump.service.d/raspisump-acl.conf"
 
-  install -Dm440 conf/sudoers/raspisump-web "$pkgdir/etc/sudoers.d/raspisump-web"
+  install -Dm644 conf/polkit/49-raspisump.rules \
+    "$pkgdir/usr/share/polkit-1/rules.d/49-raspisump.rules"
+
+  install -d "$pkgdir/usr/lib/udev/rules.d"
+  install -Dm0644 "$srcdir"/60-gpiochips.rules "$pkgdir/usr/lib/udev/rules.d/60-gpiochips.rules"
 
   install -Dm644 conf/raspisump.conf "$pkgdir/etc/raspi-sump/raspisump.conf"
   install -Dm640 conf/credentials.conf "$pkgdir/etc/raspi-sump/credentials.conf"
 
-  # nginx vhost - shipped for reference and to be symlinked from sites-enabled/ manually
   install -Dm644 conf/nginx/raspi-sump "$pkgdir/etc/nginx/sites-available/raspi-sump"
   install -dm755 "$pkgdir/etc/nginx/sites-enabled"
 
-  # Static web assets served directly by nginx (see the `location /static/`
-  # block in the vhost above) rather than proxied through Flask.
   install -d "$pkgdir/usr/share/raspi-sump"
-  cp -r conf/web "$pkgdir/usr/share/raspi-sump/web"
   install -d "$pkgdir/usr/share/raspi-sump/web/static"
+  cp -r conf/web "$pkgdir/usr/share/raspi-sump/web"
   cp -r raspisump/static/. "$pkgdir/usr/share/raspi-sump/web/static/"
-
-  # udev rule
-  install -d "$pkgdir/usr/lib/udev/rules.d"
-  install -Dm0644 "$srcdir"/60-gpiochips.rules "$pkgdir/usr/lib/udev/rules.d/60-gpiochips.rules"
-
-  # Version footer string. $pkgver is already known at build time, so this
-  # is written once here instead of shelling out to `pacman -Q` at
-  # post_install time.
-  echo "Raspisump Version $pkgver | Copyright 2026 Al Audet" \
-    > "$pkgdir/usr/share/raspi-sump/web/css/inc/VERSION"
 }
