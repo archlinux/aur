@@ -1,6 +1,6 @@
 pkgbase = firefox-browser-sponsorblock
 	pkgdesc = Skip YouTube video sponsors
-	pkgver = 6.1.6
+	pkgver = 6.1.7
 	pkgrel = 1
 	url = https://github.com/ajayyy/SponsorBlock
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = firefox-browser-sponsorblock
 	makedepends = zip
 	makedepends = git
 	makedepends = jq
-	source = source::git+https://github.com/ajayyy/SponsorBlock.git#tag=6.1.6
-	b2sums = 856fbfc2434e1507206e3cd132df784fb37337f1b1db967385477e498d51848501e423de3a662dd4c7ccd7fafe7df015b239229e1ed085634ec543ca7f765cf5
+	source = source::git+https://github.com/ajayyy/SponsorBlock.git#tag=6.1.7
+	b2sums = 2530276dac6fdb2d3e1e7a441828d88566395811ae05ab9c22dd75f2ef309702aff4a8244c488dc8209dd954795652dd72d14cedf68e84321c569b6d26e12123
 
 pkgname = zen-browser-sponsorblock
 
