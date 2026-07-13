@@ -1,6 +1,6 @@
 pkgbase = sjmcl-bin
 	pkgdesc = 🌟 A Minecraft launcher from @SJMC-Dev
-	pkgver = 1.1.3
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/UNIkeEN/SJMCL
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = sjmcl-bin
 	options = !emptydirs
 	source = LICENSE.EXTRA
 	sha256sums = a27ac3ee7cfc8a2956505d781d77695a179ffdbced5933779447b7022388ba6a
-	source_x86_64 = https://github.com/UNIkeEN/SJMCL/releases/download/v1.1.3/SJMCL_1.1.3_linux_x86_64.deb
-	sha256sums_x86_64 = 858cdbe6bc4de3d3597d40a99ee6e5402867f5e7a47de62c744e4bade79950b8
-	source_aarch64 = https://github.com/UNIkeEN/SJMCL/releases/download/v1.1.3/SJMCL_1.1.3_linux_x86_64.deb
-	sha256sums_aarch64 = 73f68e1fff30db09edc18a07207af934506a1dd6378d04c48329a97ff738356b
+	source_x86_64 = https://github.com/UNIkeEN/SJMCL/releases/download/v1.2.0/SJMCL_1.2.0_linux_x86_64.deb
+	sha256sums_x86_64 = d434fde4f2c8813044e50a020e71f622cfaec422247bd31ae3407fd11cbfbe2a
+	source_aarch64 = https://github.com/UNIkeEN/SJMCL/releases/download/v1.2.0/SJMCL_1.2.0_linux_x86_64.deb
+	sha256sums_aarch64 = b43f5f43d515b67810cd5cab00db81c5abf618ab763e2ca1d03b713971a4f671
 
 pkgname = sjmcl-bin
