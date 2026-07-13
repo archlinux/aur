@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folo-git
 _pkgname=Folo
-pkgver=1.7.0.r11.ga6639b6
-_electronversion=38
+pkgver=1.11.0.r12.g192a713
+_electronversion=43
 _nodeversion=22
 pkgrel=1
 pkgdesc="organizes content into one timeline, keeping you updated on what matters, noise-free. Share lists, explore collections, and enjoy distraction-free browsing.(Use system-wide electron)"
@@ -43,8 +43,37 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
+_set_build_env() {
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export HOME="${srcdir}/.electron-gyp"
+    {
+        export PNPM_LINK_WORKSPACE_PACKAGES=true
+        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_SHAMEFULLY_HOIST=true
+        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
+        export PNPM_NODE_LINKER=hoisted
+        export PNPM_NETWORK_CONCURRENCY=32
+    }
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            export pnpm_config_registry="https://registry.npmmirror.com"
+            export npm_config_registry="https://registry.npmmirror.com"
+            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+        }
+    fi
+}
 _get_electron_version() {
-    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -name "node_modules" \
+    _elec_ver=$(find "${srcdir}" -maxdepth 4 -name "package.json" ! -name "node_modules" \
         -exec jq -r '.devDependencies.electron // empty' {} + 2>/dev/null | grep -v "^$" | head -n 1)
     _elec_ver=$(echo "${_elec_ver}" | sed 's/[^0-9.]//g')
     _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
@@ -65,56 +94,29 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
-    {
-        export PNPM_LINK_WORKSPACE_PACKAGES=true
-        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_SHAMEFULLY_HOIST=true
-        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
-        export PNPM_NODE_LINKER=hoisted
-        export PNPM_NETWORK_CONCURRENCY=32
-    }
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-        }
-    fi
+    _set_build_env
     _ensure_local_nvm
-    NODE_ENV=development    pnpm install
-    cd "${srcdir}/${pkgname//-/.}/apps/desktop"
-    NODE_ENV=development    pnpm add -D @electron-forge/plugin-local-electron
-}
-build() {
-    cd "${srcdir}/${pkgname//-/.}/apps/desktop"
-    _ensure_local_nvm
-    local electronDist="/usr/lib/electron${_electronversion}"
-    cp .env.example .env
-    NODE_ENV=production     pnpm update:main-hash
     sed -i -e "
         s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g
         s/electron-forge make/electron-forge package/g
-    " package.json
-    sed -i -e "/^[[:space:]]*plugins:[[:space:]]*\[.*\$/a\\
-    {\\
-        name: \"@electron-forge/plugin-local-electron\",\\
-        config: {\\
-            electronPath: \"${electronDist}\"\\
-        }\\
-    }," forge.config.cts
-    NODE_ENV=production     pnpm run build:electron
+    " apps/desktop/package.json
+    NODE_ENV=development    npm install -g node-addon-api node-gyp
+    export NODE_PATH="$(npm root -g)"
+    NODE_ENV=development    pnpm install
+}
+build() {
+    cd "${srcdir}/${pkgname//-/.}/apps/desktop"
+    _set_build_env
+    _ensure_local_nvm
+    cp .env.example .env
+    NODE_ENV=production     pnpm update:main-hash   
+    NODE_ENV=production     pnpm build:electron-vite
+    NODE_ENV=production     pnpm build:electron-forge
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
+	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
     install -Dm644 "${srcdir}/${pkgname//-/.}/apps/desktop/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
