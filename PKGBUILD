@@ -1,7 +1,7 @@
 # Maintainer: Christopher Auer <christopher AT auer DOT team>
 
 pkgname=eilmeldung-bin
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="a TUI RSS reader based on the news-flash library"
 url="https://github.com/christo-auer/eilmeldung"
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=( )  
 conflicts=( 'eilmeldung' 'eilmeldung-git' )
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/eilmeldung-$arch-unknown-linux-musl-$pkgver.tar.gz")
-sha256sums=('f9e4bfb260c0e0660dc8ab5af89b01f55c52d752ced43317947ce4721b487eca')
+sha256sums=('90b8d78326028c8e4c55dbed337d4b39dd8178c051f956d93f60a1802bab03a5')
 
 
 package() {
