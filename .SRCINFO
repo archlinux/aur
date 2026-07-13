@@ -1,6 +1,6 @@
 pkgbase = python-sqlitetools
 	pkgdesc = Python sqlite3 tools.
-	pkgver = 0.1.1.1
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://pypi.org/project/sqlitetools
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-sqlitetools
 	conflicts = python-sqlitetools
 	options = !strip
 	options = !debug
-	source = sqlitetools-0.1.1.1.tar.gz::https://files.pythonhosted.org/packages/source/s/sqlitetools/sqlitetools-0.1.1.1.tar.gz
-	sha256sums = a553f5efda5aec0dd5542b55f9137ec5896a3321c3379d3deb453c7efd3cb25d
+	source = sqlitetools-0.1.3.tar.gz::https://files.pythonhosted.org/packages/source/s/sqlitetools/sqlitetools-0.1.3.tar.gz
+	sha256sums = 9265e62012a0b1131f74091c4dbcb79f2e7c27d9fc7b1692f737c047656d5ebc
 
 pkgname = python-sqlitetools
