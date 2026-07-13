@@ -1,9 +1,9 @@
 # Maintainer: w568w <w568w at outlook dot com>
 
-_corever=0.0.1
+_corever=0.1.0
 
 pkgname=fvs2
-pkgver=0.2.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Standalone CLI for FVS v2'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "core-${_corever}.tar.gz::https://github.com/fvs-lab/core/archive/refs/tags/v${_corever}.tar.gz"
 )
-sha256sums=('301d672a3f7c0633b6716d3160e455397475a80d600e0a8cf1a6ad1e33623e10'
-            'fa9220933cf7c41747b2817504001548c63b4319ebd890737aad168136a20c0a')
+sha256sums=('18e8a51e6df3068c05b95e4595f194bf095d760aa37a06a205a543154ffe7b1a'
+            'f9cbdc707a8c090b5c57e1ebd7283170586cf2dc910792daba01f4024496d8da')
 
 prepare() {
   local builddir="$srcdir/$pkgname-$pkgver"

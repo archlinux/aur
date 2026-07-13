@@ -1,6 +1,6 @@
 pkgbase = fvs2
 	pkgdesc = Standalone CLI for FVS v2
-	pkgver = 0.2.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/fvs-lab/fvs2
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = fvs2
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = fvs2-0.2.0.tar.gz::https://github.com/fvs-lab/fvs2/archive/refs/tags/v0.2.0.tar.gz
-	source = core-0.0.1.tar.gz::https://github.com/fvs-lab/core/archive/refs/tags/v0.0.1.tar.gz
-	sha256sums = 301d672a3f7c0633b6716d3160e455397475a80d600e0a8cf1a6ad1e33623e10
-	sha256sums = fa9220933cf7c41747b2817504001548c63b4319ebd890737aad168136a20c0a
+	source = fvs2-0.8.0.tar.gz::https://github.com/fvs-lab/fvs2/archive/refs/tags/v0.8.0.tar.gz
+	source = core-0.1.0.tar.gz::https://github.com/fvs-lab/core/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 18e8a51e6df3068c05b95e4595f194bf095d760aa37a06a205a543154ffe7b1a
+	sha256sums = f9cbdc707a8c090b5c57e1ebd7283170586cf2dc910792daba01f4024496d8da
 
 pkgname = fvs2
