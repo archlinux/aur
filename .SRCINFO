@@ -1,0 +1,24 @@
+pkgbase = python-alibabacloud-gateway-spi
+	pkgdesc = Alibaba Cloud Gateway SPI SDK Library for Python
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://pypi.org/project/alibabacloud_gateway_spi
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-alibabacloud-credentials
+	depends = python-alibabacloud-tea
+	provides = alibabacloud_gateway_spi
+	provides = python-alibabacloud-gateway-spi
+	conflicts = alibabacloud_gateway_spi
+	conflicts = python-alibabacloud-gateway-spi
+	options = !strip
+	options = !debug
+	source = alibabacloud_gateway_spi-0.0.3.tar.gz::https://files.pythonhosted.org/packages/source/a/alibabacloud_gateway_spi/alibabacloud_gateway_spi-0.0.3.tar.gz
+	sha256sums = 10d1c53a3fc5f87915fbd6b4985b98338a776e9b44a0263f56643c5048223b8b
+
+pkgname = python-alibabacloud-gateway-spi
