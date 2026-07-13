@@ -28,7 +28,7 @@ build() {
   # We rely on the project's own .cargo/config.toml and Cargo.toml
   # for all optimization flags (target-cpu, LTO, etc.)
   
-  cargo build --release
+  cargo build --release --bin genwallet
 }
 
 package() {
