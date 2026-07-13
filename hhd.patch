@@ -177,3 +177,65 @@
  	install -m644 "data/user/steamos-manager-session-cleanup.service" "$(DESTDIR)/usr/lib/systemd/user/"
  	install -m644 "data/user/steamos-manager-configure-cecd.service" "$(DESTDIR)/usr/lib/systemd/user/"
 -	install -m644 "data/user/orca.service" "$(DESTDIR)/usr/lib/systemd/user/"
+--- a/steamos-manager/src/manager/root.rs
++++ b/steamos-manager/src/manager/root.rs
+@@ -504,6 +504,19 @@
+             debug!("SetGpuPerformanceLevel: discarding out of order serial");
+             return Ok(());
+         }
++
++        // Same rationale as set_tdp_limit(): the driver picked in new() can
++        // be stale if it was resolved before an external provider (e.g.
++        // Handheld Daemon) was fully up. Unlike TDP there is no placeholder
++        // object here, resolution just fails outright and leaves this at
++        // None, so a plain re-try is enough.
++        if self.gpu_performance_level.is_none() {
++            match gpu_performance_level_driver().await {
++                Ok(driver) => self.gpu_performance_level = Some(driver),
++                Err(e) => debug!("Still no GPU performance level driver available: {e}"),
++            }
++        }
++
+         let Some(ref driver) = self.gpu_performance_level else {
+             return Err(fdo::Error::Failed(String::from(
+                 "GPU performance settings not configured",
+@@ -529,6 +542,14 @@
+             debug!("SetManualGpuClock: discarding out of order serial");
+             return Ok(());
+         }
++
++        if self.gpu_performance_level.is_none() {
++            match gpu_performance_level_driver().await {
++                Ok(driver) => self.gpu_performance_level = Some(driver),
++                Err(e) => debug!("Still no GPU performance level driver available: {e}"),
++            }
++        }
++
+         let Some(ref driver) = self.gpu_performance_level else {
+             return Err(fdo::Error::Failed(String::from(
+                 "GPU performance settings not configured",
+@@ -550,6 +571,24 @@
+             debug!("SetTdpLimit: discarding out of order serial");
+             return Ok(());
+         }
++
++        // The manager picked in new() can be stale: it may have been
++        // resolved before an external TDP provider (e.g. Handheld Daemon)
++        // was fully up, leaving us stuck on a RemoteInterfaceLimitManager
++        // with no proxy for the rest of the daemon's lifetime. Re-resolve
++        // once here whenever the cached manager reports itself inactive,
++        // instead of failing forever on a boot-time race.
++        let needs_refresh = match self.tdp_limit_manager.as_ref() {
++            Some(manager) => !manager.is_active().await.unwrap_or(false),
++            None => true,
++        };
++        if needs_refresh {
++            match tdp_limit_manager(&self.connection).await {
++                Ok(manager) => self.tdp_limit_manager = Some(manager),
++                Err(e) => debug!("Still no TDP limit manager available: {e}"),
++            }
++        }
++
+         let Some(ref manager) = self.tdp_limit_manager else {
+             return Err(fdo::Error::Failed(String::from(
+                 "TDP limiting not configured",

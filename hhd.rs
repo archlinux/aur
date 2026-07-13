@@ -17,8 +17,10 @@ use anyhow::{Result, anyhow, bail, ensure};
 use async_trait::async_trait;
 use std::ops::RangeInclusive;
 use std::str::FromStr;
+use std::time::Duration;
 use tokio::process::Command;
-use tracing::{debug, info};
+use tokio::time::sleep;
+use tracing::{debug, info, warn};
 
 use crate::gpu::{GpuPerformanceLevel, GpuPerformanceLevelDriver, IntelPerformanceLevel};
 use crate::power::TdpLimitManager;
@@ -32,21 +34,47 @@ enum HhdStatus {
 
 const HHD_CMD: &str = "hhd.steamos";
 
-async fn get_hhd_status(subcommand: &str) -> HhdStatus {
-    let Ok(output) = Command::new(HHD_CMD)
-        .arg(subcommand)
-        .arg("get")
-        .output()
-        .await
-    else {
-        return HhdStatus::Inactive;
-    };
+// Nombre max de tentatives avant d'abandonner et de considérer HHD comme
+// inactif. Ajouté suite à un cas observé où le tout premier appel, fait
+// très tôt au démarrage de TdpManagerService, échouait systématiquement
+// (probablement l'agent polkit de session pas encore enregistré à ce
+// stade), alors que les appels suivants (quelques centaines de ms plus
+// tard) réussissaient à chaque fois. Comme le manager choisi ici est figé
+// pour toute la durée de vie du daemon, un seul échec transitoire au
+// premier appel suffisait à retomber sur RemoteInterfaceLimitManager pour
+// toute la session.
+const HHD_STATUS_MAX_ATTEMPTS: u32 = 3;
+const HHD_STATUS_RETRY_DELAY: Duration = Duration::from_millis(250);
 
-    match output.status.code().unwrap_or(0) {
-        1 => HhdStatus::Inactive,
-        2 => HhdStatus::Conflicts,
-        _ => HhdStatus::Active,
+async fn get_hhd_status(subcommand: &str) -> HhdStatus {
+    for attempt in 1..=HHD_STATUS_MAX_ATTEMPTS {
+        match Command::new(HHD_CMD).arg(subcommand).arg("get").output().await {
+            Ok(output) => {
+                return match output.status.code().unwrap_or(0) {
+                    1 => HhdStatus::Inactive,
+                    2 => HhdStatus::Conflicts,
+                    _ => HhdStatus::Active,
+                };
+            }
+            Err(e) if attempt < HHD_STATUS_MAX_ATTEMPTS => {
+                warn!(
+                    "Attempt {attempt}/{HHD_STATUS_MAX_ATTEMPTS} to run {HHD_CMD} {subcommand} get failed: {e}, retrying in {HHD_STATUS_RETRY_DELAY:?}"
+                );
+                sleep(HHD_STATUS_RETRY_DELAY).await;
+            }
+            Err(e) => {
+                warn!(
+                    "Failed to run {HHD_CMD} {subcommand} get after {HHD_STATUS_MAX_ATTEMPTS} attempts: {e}, treating handheld daemon as inactive"
+                );
+                return HhdStatus::Inactive;
+            }
+        }
     }
+
+    // Inatteignable : la boucle retourne toujours depuis Ok(..) ou le
+    // dernier bras Err(..) ci-dessus, mais le compilateur ne peut pas le
+    // déduire seul.
+    HhdStatus::Inactive
 }
 
 async fn hhd_set_value(subcommand: &str, value: &str) -> Result<()> {
@@ -119,6 +147,19 @@ impl TdpLimitManager for HhdTdpManager {
 
     async fn get_tdp_limit_range(&self) -> Result<RangeInclusive<u32>> {
         hhd_query_range("steamos-tdp").await
+    }
+
+    // hhd.steamos writes go through HHD's own local socket, which has been
+    // unprivileged since HHD 4.1 (the socket is readable/writable by the
+    // invoking user). There is no need to round-trip through the root
+    // daemon for this, and doing so made TDP writes depend on the root
+    // daemon having resolved a working manager at its own startup, which
+    // races against Handheld Daemon's readiness. This mirrors the stock
+    // RemoteInterfaceLimitManager, which also reports needs_root() = false
+    // for the same reason: the privileged part of the operation, if any,
+    // is the external daemon's responsibility, not steamos-manager's.
+    fn needs_root(&self) -> bool {
+        false
     }
 }
 
