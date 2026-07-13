@@ -1,0 +1,2 @@
+d /var/lib/lab-safety-system 0750 lab-safety-system lab-safety-system -
+d /var/lib/lab-safety-system/uploads 0750 lab-safety-system lab-safety-system -

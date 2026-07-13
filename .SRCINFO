@@ -1,0 +1,34 @@
+pkgbase = lab-safety-system-bin
+	pkgdesc = Prebuilt laboratory safety management information system (zero-config setup)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/LIghtJUNction/lab-safety-system
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = gcc-libs
+	depends = glibc
+	depends = ca-certificates
+	depends = postgresql
+	depends = curl
+	depends = openssl
+	depends = zlib
+	depends = brotli
+	depends = zstd
+	optdepends = nginx: optional reverse proxy
+	provides = lab-safety-system=0.1.1
+	conflicts = lab-safety-system
+	backup = etc/lab-safety-system/lab-safety-system.env
+	source = lab-safety-system.service
+	source = lab-safety-system.env
+	source = lab-safety-system.tmpfiles
+	source = lab-safety-system.sysusers
+	source = lab-safety-system-setup
+	sha256sums = af49555edd75008438951219a13cbb4dcd7bd84768a0890e349af37cd8ab8205
+	sha256sums = 189b84283c9b2e4a05da3048d16ad8ab2407122842a35c89dbb4d59aae016bb2
+	sha256sums = 3d5b368aa9a7006b72d3ab05309d8b6cf0c9cc70e166307873b125e8f3f50f20
+	sha256sums = bc777a2cc2d67565bbcdb1f0241f570052d50372a5b979b4f7fb298aead1b140
+	sha256sums = 304768226126ec5d377514979e00efe4c73158d343bf516251afc6ee8601fe8b
+	source_x86_64 = https://github.com/LIghtJUNction/lab-safety-system/releases/download/v0.1.1/lab-safety-system-0.1.1-x86_64.tar.zst
+	sha256sums_x86_64 = 5dcad2510e84b0b88235bb0ab25cc426a977a1eb25661af6380803e9b48c4847
+
+pkgname = lab-safety-system-bin

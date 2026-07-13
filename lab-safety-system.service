@@ -1,0 +1,20 @@
+[Unit]
+Description=Lab Safety System
+Documentation=https://github.com/LIghtJUNction/lab-safety-system
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+User=lab-safety-system
+Group=lab-safety-system
+EnvironmentFile=/etc/lab-safety-system/lab-safety-system.env
+ExecStart=/usr/bin/lab-safety-system
+Restart=on-failure
+RestartSec=5s
+StateDirectory=lab-safety-system
+ReadWritePaths=/var/lib/lab-safety-system
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
