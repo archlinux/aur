@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Aburady <accounts@aburady.com>
 pkgname=plezy
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 _flutter_ver=3.44.0
 pkgdesc="A modern Plex and Jellyfin client"
@@ -27,7 +27,7 @@ makedepends=(
   'unzip'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/edde746/plezy/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a9651fe436fcef249ac23c6949d291aa6074371fdadb15461107f88d13db955a')
+sha256sums=('289854360090fe54c85e3f31337adfb5a4aff2c7c657449fd290602cd91756b6')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -51,6 +51,8 @@ build() {
 }
 
 package() {
+  cd "$pkgname-$pkgver"
+
   if [ $CARCH == "aarch64" ]; then
     FLUTTER_ARCH=arm64
   else
@@ -60,13 +62,9 @@ package() {
   # Not required at runtime as it's only used on Android
   rm -fv "build/linux/${FLUTTER_ARCH}/release/bundle/lib/libdartjni.so"
 
-  cd "$pkgname-$pkgver"
   install -Dm755 "build/linux/${FLUTTER_ARCH}/release/bundle/$pkgname" -t \
     "$pkgdir/opt/$pkgname/"
   cp -a build/linux/${FLUTTER_ARCH}/release/bundle/{data,lib} "$pkgdir/opt/$pkgname/"
-
-  # Ensure binaries are executable
-  chmod 0755 "$pkgdir/opt/$pkgname/$pkgname"
   chmod 0755 "$pkgdir/opt/$pkgname/lib/crashpad_handler"
 
   install -Dm755 "linux/packaging/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
