@@ -1,21 +1,50 @@
 pkgbase = python-cirq
-	pkgdesc = A framework for creating, editing, and invoking Noisy Intermediate Scale Quantum (NISQ) circuits
-	pkgver = 1.6.1
-	pkgrel = 2
+	pkgver = 1.7.0
+	pkgrel = 1
 	url = https://github.com/quantumlib/Cirq
 	arch = any
 	license = Apache-2.0
+	checkdepends = ipython
+	checkdepends = poppler
+	checkdepends = python-attrs
+	checkdepends = python-duet
+	checkdepends = python-google-api-core
+	checkdepends = python-grpcio
+	checkdepends = python-matplotlib
+	checkdepends = python-networkx
+	checkdepends = python-numpy
+	checkdepends = python-opt_einsum
+	checkdepends = python-pandas
+	checkdepends = python-ply
+	checkdepends = python-protobuf
+	checkdepends = python-proto-plus
+	checkdepends = python-pylatex
 	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-quimb
+	checkdepends = python-requests
+	checkdepends = python-scipy
+	checkdepends = python-sortedcontainers
+	checkdepends = python-sympy
+	checkdepends = python-typedunits
+	checkdepends = python-typing_extensions
+	checkdepends = python-tqdm
+	checkdepends = texlive-binextra
+	checkdepends = texlive-latex
+	checkdepends = texlive-latexextra
+	checkdepends = texlive-mathscience
+	checkdepends = texlive-pictures
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = Cirq::git+https://github.com/quantumlib/Cirq#tag=v1.6.1
-	b2sums = dc62bbf21a5347b3cfb71d779057e03cdbdad9cf10d9dfbaf585c93d5aab271be36492766a68ca12fb9ae6b54a4a11c5c6807a5709c11b558b83c25b21558bee
+	source = Cirq::git+https://github.com/quantumlib/Cirq#tag=v1.7.0
+	b2sums = a7c141cb9b528db5344311aba97054767def5710402e9a8e347246a953b8542f525878b4a82a3acb0429fd273a9b7284ba00a89ece286731b231735ea6b728b5
 
 pkgname = python-cirq
+	pkgdesc = A framework for creating, editing, and invoking Noisy Intermediate Scale Quantum (NISQ) circuits
 	depends = python-cirq-aqt
 	depends = python-cirq-core
 	depends = python-cirq-google
@@ -24,6 +53,7 @@ pkgname = python-cirq
 	depends = python-cirq-web
 
 pkgname = python-cirq-aqt
+	pkgdesc = Cirq module to support Alpine Quantum Technologies GmbH quantum computers
 	depends = python
 	depends = python-requests
 
@@ -35,13 +65,12 @@ pkgname = python-cirq-core
 	depends = python-networkx
 	depends = python-numpy
 	depends = python-pandas
-	depends = python-sortedcontainers
 	depends = python-scipy
 	depends = python-sympy
-	depends = python-typing_extensions
 	depends = python-tqdm
 
 pkgname = python-cirq-google
+	pkgdesc = Cirq module to support Google's quantum hardware
 	depends = python
 	depends = python-google-api-core
 	depends = python-grpcio
@@ -50,11 +79,14 @@ pkgname = python-cirq-google
 	depends = python-typedunits
 
 pkgname = python-cirq-ionq
+	pkgdesc = Cirq module to support IonQ Inc. quantum computers
 	depends = python
 	depends = python-requests
 
 pkgname = python-cirq-pasqal
+	pkgdesc = Cirq module to support Pasqal quantum computers
 	depends = python
 	depends = python-requests
 
 pkgname = python-cirq-web
+	pkgdesc = Cirq module to support browser-based 3D visualization tools
