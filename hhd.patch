@@ -146,26 +146,23 @@
      if let Ok(hdmi_cec) = hdmi_cec {
 --- a/data/system/steamos-manager.service
 +++ b/data/system/steamos-manager.service
-@@ -2,6 +2,10 @@
+@@ -2,6 +2,8 @@
  Description=SteamOS Manager Daemon
  Wants=steamos-log-submitter.service
  After=steamos-log-submitter.service
 +Wants=hhd.service
-+Wants=hhdl.service
 +After=hhd.service
-+After=hhdl.service
  StartLimitIntervalSec=120
  StartLimitBurst=5
  
 
 --- a/data/user/steamos-manager.service
 +++ b/data/user/steamos-manager.service
-@@ -1,5 +1,9 @@
+@@ -1,5 +1,8 @@
  [Unit]
  Description=SteamOS Manager Daemon
 +Before=graphical-session.target
-+After=hhd.service
-+After=hhdl.service
++Before=steam-launcher.service
 +Before=gamescope-session-plus@steam.service
  StartLimitIntervalSec=120
  StartLimitBurst=5
