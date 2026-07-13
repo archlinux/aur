@@ -12,16 +12,16 @@ provides=('unistack')
 conflicts=('unistack')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/snowdreamtech/unistack/releases/download/v${pkgver}/unistack_Linux_arm64.tar.gz")
-sha256sums_aarch64=('cf33593d6504331cc564d32d20dfeec9c90bb1830a07cadcbe5cb5a5012625aa')
+sha256sums_aarch64=('ab96c9eba8d3d249bce2f738a791251a3d7ad962f4fdcfaeaaea8504f5e195eb')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/snowdreamtech/unistack/releases/download/v${pkgver}/unistack_Linux_armv7.tar.gz")
-sha256sums_armv7h=('039f297a93b8cfbdc69a59328967df26daf370e6b351ef1b9139d1538749d1bf')
+sha256sums_armv7h=('c4e03f44dc77baf9a9cad1da361fbdd182d08cbd24e8efae3b05b45c5c5f9186')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/snowdreamtech/unistack/releases/download/v${pkgver}/unistack_Linux_i386.tar.gz")
-sha256sums_i686=('4cf3104b836c72a78842119943b21128cb7c30df2de21038f0391e3bf2d73fb8')
+sha256sums_i686=('e218837aae21ae0b450809bb25e5f956380d16a30d5b8d604747dc8e8ca90d50')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/snowdreamtech/unistack/releases/download/v${pkgver}/unistack_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('27a812b221453370a958fa5ce08f9adefe452004d65a5bb0be45b8a17c88adb8')
+sha256sums_x86_64=('a0d7e0d294c46534f89b7489afb55ba6b7edf3d4b4b0c8ed17e3b8a68d9b7696')
 
 package() {
   # bin
