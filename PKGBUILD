@@ -2,13 +2,13 @@
 # Contributor: Antony Ho <ntonyworkshop@gmail.com>
 
 pkgname=session-desktop
-pkgver=1.18.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc="A Decentralized, Onion Routed, Private Messenger"
 arch=('x86_64')
 url="https://getsession.org"
 license=('GPL-3.0-only')
-_electron=electron39
+_electron=electron40
 depends=('bash' "${_electron}" 'glib2' 'glibc' 'hicolor-icon-theme' 'libgcc' 'libstdc++' 'libvips' 'python')
 makedepends=('cmake' 'git' 'nvm' 'pnpm')
 source=("git+https://github.com/session-foundation/session-desktop.git#tag=v${pkgver}"
@@ -16,7 +16,7 @@ source=("git+https://github.com/session-foundation/session-desktop.git#tag=v${pk
         "git+https://github.com/session-foundation/session-desktop-dynamic-assets.git"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('9cc39a6164ae3886ca93fad4eebe14869619327ec06c28b439619c6023e1720a'
+sha256sums=('5ba6f339aa3a14b6b106d500a17b638e15588e2688d707d02d203a1235e1c878'
             'SKIP'
             'SKIP'
             '267d772a94ba49b19e799e7ecee25c0077ded4dd9c853c073ec386a8ab6a7e5c'
