@@ -1,11 +1,19 @@
 -------------------------------------------------------
  Changelog    : sd-boot
- Tags         : 5.10.0 ➙ 6.2.0
-              : 2026-06-22 ➙ 2026-07-09
+ Tags         : 5.11.0 ➙ 6.3.0
+              : 2026-06-29 ➙ 2026-07-13
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-07-09   : 6.2.0
+ 2026-07-13   : 6.3.0
+              - **6.3.0**
+            
+                * Copy file with kernel mediated copy_file_range:
+                  If copy_file_range() is not available for the pair of source and destination
+                  devices and filesystems, fallback to (slower) read source and write destination.
+                * Bug fix: file that tracks previous version can fail to be updated
+
+ 2026-07-09   : 6.2.0, origin/master
               - **6.2.0**
             
                 * Comment on building package:
@@ -20,7 +28,7 @@
                   - Fix (benign) double // in pathname.
                 * Drop all include <stdbool.h> (not needed with C23).
 
- 2026-07-05   : 6.1.0, origin/master
+ 2026-07-05   : 6.1.0
               - **6.1.0**
             
                 * Bug fix installing efi tools: typo in destination directory name.
@@ -84,9 +92,3 @@
                     tests in each suite are run sequentially.
                     Assists testing non-trivial "remove" by ensuring that an "add" is
                     completed before the remove.
-
- 2026-06-22   : 5.10.0
-              - **5.10.0**
-            
-                * Replace remaining strncpy() with strlcpy()
-                * Small man page makefile tweak.
