@@ -4,7 +4,7 @@
 _author=BKSalman
 _basename=ytdlp-gui
 pkgname=${_basename}-bin
-pkgver=3.4.1
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="a GUI for yt-dlp written in Rust"
 arch=('x86_64')
@@ -21,9 +21,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
     "CHANGELOG-${pkgver}.md::${_urlraw}/CHANGELOG.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_basename}_${pkgver}-${pkgrel}_amd64.deb")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'fc06ff461f6c1f5dcaa794254355b5d1009d51f88835a6b5f62f8a587e01c90c'
-            '55572893d05ab570938fbf8039f67e44b8d63b15e7fa86cac35a79dcb0738596')
-sha256sums_x86_64=('adabaea62b73b5c4eec9b5271f8e9bfc97fa0f6118ac778556046c4bf1c5c2cd')
+            'c02244cfa67f413274035beca19f8c1e2e50b87fa4bffff4f78622dc8f062a38'
+            '2db6630f01e2fa9b6772012224c95cefe8606aeeed1e51e2bbd408d2573d9314')
+sha256sums_x86_64=('39126ead80fe1b892af0edc13fa423914c587e95ab0c9d0b4c6fd43de54808e8')
 
 package() {
     cd "${srcdir}" || return 1
