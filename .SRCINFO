@@ -1,7 +1,7 @@
 pkgbase = datagrip-eap
 	pkgdesc = Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity (EAP)
 	pkgver = 262.8665.185
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/datagrip/nextversion/
 	arch = x86_64
 	arch = aarch64

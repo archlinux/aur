@@ -7,7 +7,7 @@ _pkgbase=${pkgbase/-eap/}
 pkgname=(datagrip-eap datagrip-eap-jre)
 pkgver=262.8665.185
 _pkgver=2026.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity (EAP)'
 arch=('x86_64' 'aarch64')
 url='https://www.jetbrains.com/datagrip/nextversion/'
@@ -32,8 +32,15 @@ package_datagrip-eap() {
   install -dm755 "${pkgdir}"/usr/bin/
   install -dm755 "${pkgdir}"/usr/share/applications/
   install -dm755 "${pkgdir}"/usr/share/pixmaps/
+  
+  datagrip_dir="${srcdir}/DataGrip-${pkgver}"
+  
+  if [[ -d "${datagrip_dir}" ]]; then
+    cp -a "${srcdir}"/DataGrip-${pkgver}/ "${pkgdir}"/opt/${pkgbase}
+  else
+    cp -a "${srcdir}"/DataGrip-${_pkgver}/ "${pkgdir}"/opt/${pkgbase}
+  fi
 
-  cp -a "${srcdir}"/DataGrip-${pkgver}/ "${pkgdir}"/opt/${pkgbase}
   rm -rf "${pkgdir}"/opt/${pkgbase}/jbr
 
   ln -s /opt/${pkgbase}/bin/${_pkgbase}.sh "${pkgdir}"/usr/bin/${pkgbase}
@@ -46,5 +53,12 @@ package_datagrip-eap-jre() {
   pkgdesc='JBR (JetBrains Runtime) for DataGrip - a patched JRE'
   url='https://github.com/JetBrains/JetBrainsRuntime'
   install -dm755 "${pkgdir}"/opt/${pkgbase}
-  cp -a "${srcdir}"/DataGrip-${pkgver}/jbr "${pkgdir}"/opt/${pkgbase}
+
+  datagrip_dir="${srcdir}/DataGrip-${pkgver}"
+
+  if [[ -d "${datagrip_dir}" ]]; then
+    cp -a "${srcdir}"/DataGrip-${pkgver}/jbr "${pkgdir}"/opt/${pkgbase}
+  else
+    cp -a "${srcdir}"/DataGrip-${_pkgver}/jbr "${pkgdir}"/opt/${pkgbase}
+  fi
 }
