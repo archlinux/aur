@@ -1,11 +1,11 @@
 pkgbase = doubletake-bin
 	pkgdesc = AirPlay 2 mirroring sender for Linux (prebuilt release binary)
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/omarroth/doubletake
 	install = doubletake-bin.install
 	arch = x86_64
-	license = GPL-3.0-only
+	license = LGPL-3.0-or-later
 	depends = glibc
 	depends = gstreamer
 	depends = gst-plugins-base
