@@ -5,7 +5,7 @@ _pkgname=dankcalendar
 _binname=dcal
 _iconname=dankcalendar
 _desktopid=com.danklinux.dankcalendar
-pkgver=0.2.3.r0.g5be8557
+pkgver=0.2.3.r3.g02a5de1
 pkgrel=1
 pkgdesc='Local, Google, Microsoft, and CalDAV calendars for the dank desktop (git)'
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,17 @@ optdepends=('dms-shell: dynamic theming via DankMaterialShell colors')
 makedepends=('git' 'go')
 provides=("$_binname=$pkgver" "$_pkgname=$pkgver")
 conflicts=("$_binname" "$_pkgname" 'dankcalendar-bin')
-source=("$pkgname::git+$url.git")
-sha256sums=('SKIP')
+source=("$pkgname::git+$url.git"
+        'dank-qml-common::git+https://github.com/AvengeMedia/dank-qml-common.git')
+sha256sums=('SKIP'
+            'SKIP')
+
+prepare() {
+	cd "$srcdir/$pkgname"
+	git submodule init
+	git config submodule.dank-qml-common.url "$srcdir/dank-qml-common"
+	git -c protocol.file.allow=always submodule update
+}
 
 pkgver() {
 	cd "$srcdir/$pkgname"

@@ -17,6 +17,8 @@ pkgbase = dankcalendar-git
 	conflicts = dankcalendar
 	conflicts = dankcalendar-bin
 	source = dankcalendar-git::git+https://github.com/AvengeMedia/dankcalendar.git
+	source = dank-qml-common::git+https://github.com/AvengeMedia/dank-qml-common.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = dankcalendar-git
