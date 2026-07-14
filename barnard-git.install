@@ -1,8 +1,12 @@
+# shellcheck shell=bash
 _alert() {
 cat << 'EOF'
-For alerts and sound options, install the sox package and add the following line to your ~/.barnard.yaml:
-notifycommand: /usr/share/barnard/barnard-sound.sh "%event" "%who" "%what"
-make sure to edit the sound script to use youre preferred settings.
+Barnard UI server list format changed. If you used barnard-ui before this update, remove the old server list before starting barnard-ui again:
+  rm -f ~/.config/barnard/servers.conf
+
+For alerts and sound options, install the sox package and add the following line to your ~/.barnard.toml:
+notifycommand = '/usr/share/barnard/barnard-sound.sh "%event" "%who" "%what"'
+Make sure to edit the sound script to use your preferred settings.
 EOF
 }
 
