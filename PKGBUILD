@@ -1,6 +1,6 @@
 # Maintainer: J. Rechsteiner <jrechsteiner@bluewin.ch>
 pkgname=bookmark-organisator
-pkgver=r10.e5327c7 # Wird beim Bauen automatisch aktualisiert
+pkgver=r11.f1cd9d9 # Wird beim Bauen automatisch aktualisiert
 pkgrel=1
 pkgdesc="Ein Tool zum Organisieren von Lesezeichen (Bookmarks)"
 arch=('any')
@@ -36,8 +36,14 @@ EOF
     chmod +x "${pkgdir}/usr/bin/bookmark-organisator"
 
     # =========================================================================
-    # 3. NEU: .desktop-Datei für den Anwendungsstarter erstellen
+    # 3. NEU/ANGEPASST: Bilddatei als System-Icon installieren
     # =========================================================================
+    install -d "${pkgdir}/usr/share/pixmaps"
+    # Hier wird dein Icon aus dem Git-Repo in den System-Icon-Ordner kopiert:
+    install -m644 "bookmark-organisator.png" "${pkgdir}/usr/share/pixmaps/bookmark-organisator.png"
+    # =========================================================================
+
+    # 4. .desktop-Datei für den Anwendungsstarter erstellen
     install -d "${pkgdir}/usr/share/applications"
     cat <<EOF > "${pkgdir}/usr/share/applications/bookmark-organisator.desktop"
 [Desktop Entry]
@@ -45,13 +51,12 @@ Type=Application
 Name=Bookmark Organisator
 Comment=Ein Tool zum Organisieren von Lesezeichen
 Exec=bookmark-organisator
-Icon=bookmark-new
+Icon=bookmark-organisator
 Terminal=false
 Categories=Utility;Office;
 EOF
-    # =========================================================================
 
-    # 4. Lizenzdatei ordnungsgemäß installieren (GPLv3)
+    # 5. Lizenzdatei ordnungsgemäß installieren (GPLv3)
     if [ -f LICENSE ]; then
         install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     elif [ -f COPYING ]; then
