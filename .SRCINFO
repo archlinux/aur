@@ -1,0 +1,19 @@
+pkgbase = python-chemparseplot
+	pkgdesc = Parsers and plotting tools for computational chemistry
+	pkgver = 1.9.8
+	pkgrel = 1
+	url = https://pypi.org/project/chemparseplot/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	depends = python
+	depends = python-numpy
+	depends = python-pint
+	source = https://files.pythonhosted.org/packages/source/c/chemparseplot/chemparseplot-1.9.8.tar.gz
+	sha256sums = 30ec8530500a792baec005a132ae12d6b384773ba878bbbaad1132485522b0fb
+
+pkgname = python-chemparseplot
