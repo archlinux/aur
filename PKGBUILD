@@ -1,8 +1,16 @@
-# Maintainer: Your Name <your@email.com>
+# Maintainer: Sthn
+#
+# This is a community-maintained Linux (AUR) port of Mineradio,
+# originally created by XxHuberrr for Windows.
+# Upstream: https://github.com/XxHuberrr/Mineradio
+# Licensed under GPL-3.0. The Linux packaging patches (platform-specific
+# GPU switches, icon format, cache paths) are maintained by the AUR submitter.
+# All visual design, branding, and core code belong to the original author.
+
 pkgname=mineradio
 pkgver=1.1.1
 pkgrel=1
-pkgdesc='Immersive music player with cinematic visuals, particle effects, and lyrics stage'
+pkgdesc='Immersive music player with cinematic visuals, particle effects, and lyrics stage (Linux port by Sthn)'
 arch=('x86_64')
 url='https://github.com/XxHuberrr/Mineradio'
 license=('GPL-3.0-only')
