@@ -1,6 +1,6 @@
 # Maintainer: Burkhard Pauli <burkhard at pauli dot tech>
 pkgname=gccli-bin
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="A command-line interface for Garmin Connect — activities, health, courses, workouts, devices, and more"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 provides=('gccli')
 conflicts=('gccli')
 source=("${url}/releases/download/v${pkgver}/gccli_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('6dbd081e3b89a58bd3e2cb217fd1dd71eb41040c9abd032f3795fdc62278ac66')
+sha256sums=('f63d072fed71caf3f9d3d2b7ea684e3b82ab4763608caf14c3c09149dea6af31')
 
 package() {
     install -Dm755 gccli "${pkgdir}/usr/bin/gccli"
