@@ -1,5 +1,5 @@
 pkgbase = perl-string-escape
-	pkgdesc = Backslash escapes, quoted phrase, word elision, etc.
+	pkgdesc = Backslash escapes, quoted phrase, word elision, etc
 	pkgver = 2010.002
 	pkgrel = 3
 	url = https://metacpan.org/dist/String-Escape
