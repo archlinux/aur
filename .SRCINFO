@@ -1,10 +1,12 @@
 pkgbase = cosmic-ext-extra-sessions-niri-git
 	pkgdesc = Alternative session for running the COSMIC desktop with Niri as the compositor
 	pkgver = r3.66e0657
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Drakulix/cosmic-ext-extra-sessions
 	arch = x86_64
+	makedepends = git
 	makedepends = just
+	makedepends = rust
 	depends = cosmic-session
 	depends = niri
 	source = git+https://github.com/Drakulix/cosmic-ext-extra-sessions.git
