@@ -20,7 +20,8 @@ install='package.install'
 package() 
 {
     # Install application code
-    cp -r "${srcdir}/unreal-engine-manager" "$pkgdir"/opt/unreal-engine-manager
+    mkdir -p "$pkgdir"/opt/unreal-engine-manager
+    cp -r "${srcdir}/unreal-engine-manager/"* "$pkgdir"/opt/unreal-engine-manager/
     
     # Create symlink for better compatibility
     ln -sf /opt/unreal-engine-manager/source/main.py "$pkgdir"/usr/bin/unreal-engine-manager

@@ -1,16 +1,8 @@
-pre_install() {
-    
-}
-
 post_install() {
-    mkdir -m 777 /opt/unreal-engine-bin
     update-desktop-database &>/dev/null
     update-mime-database /usr/share/mime &>/dev/null
     gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor &>/dev/null
-}
-
-pre_upgrade() {
-    
+    mkdir -m 777 /opt/unreal-engine-bin
 }
 
 post_upgrade() {
@@ -19,12 +11,7 @@ post_upgrade() {
     gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor &>/dev/null
 }
 
-pre_remove() {
-    
-}
-
 post_remove() {
-    rm -rf /opt/unreal-engine-bin
     update-desktop-database &>/dev/null
     update-mime-database /usr/share/mime &>/dev/null
     gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor &>/dev/null
