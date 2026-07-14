@@ -1,6 +1,6 @@
 pkgbase = greetd-tuigreety-git
 	pkgdesc = A minimal, configurable console greeter for greetd (development version)
-	pkgver = 0.10.0.r6.g45f4d0e
+	pkgver = 0.10.0.r9.g8fb727f
 	pkgrel = 1
 	url = https://github.com/Tobiichi-Origuchi/tuigreety
 	arch = x86_64
@@ -9,12 +9,8 @@ pkgbase = greetd-tuigreety-git
 	arch = i686
 	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = rustup
+	makedepends = rust
 	makedepends = scdoc
-	depends = glibc
-	depends = greetd
-	depends = libgcc
-	depends = systemd
 	provides = greetd-greeter
 	provides = greetd-tuigreety
 	provides = tuigreety
@@ -30,3 +26,5 @@ pkgbase = greetd-tuigreety-git
 	sha256sums = 8f83aee7874aab5d06981a1d1cd05df906368a79dbca90d157a33a2f023b67d3
 
 pkgname = greetd-tuigreety-git
+	depends = gcc-libs
+	depends = greetd
