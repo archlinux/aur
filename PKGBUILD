@@ -8,7 +8,7 @@
 # http://smath.info
 
 pkgname=smath
-pkgver=
+pkgver=1_5_9678
 pkgrel=1
 pkgdesc="A mathematical program with many features and paper-like interface, similar to Mathcad"
 _pkgcode=NKnL7
