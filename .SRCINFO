@@ -1,0 +1,26 @@
+pkgbase = bluebubbles-beta-bin
+	pkgdesc = A cross-platform app ecosystem, bringing iMessage to Linux, Android, and Windows (Beta Prebuilt Release)
+	pkgver = 2.0.0+87_desktop_b.3
+	pkgrel = 1
+	url = https://bluebubbles.app/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = gendesk
+	depends = webkit2gtk-4.1
+	depends = gdk-pixbuf2
+	depends = mpv
+	depends = libdbusmenu-glib
+	depends = libnotify
+	depends = libappindicator-gtk3
+	depends = gtk3
+	provides = bluebubbles-beta=2.0.0+87_desktop_b.3
+	provides = bluebubbles
+	conflicts = bluebubbles
+	conflicts = bluebubbles-bin
+	options = !emptydirs
+	source = bluebubbles-beta.sh
+	sha256sums = efe4503308a1e4e44b892065b6fb8f582bd2f7d01e3f0232e4d86539101ebbb5
+	source_x86_64 = bluebubbles-beta-2.0.0+87_desktop_b.3-x86_64.tar.gz::https://github.com/BlueBubblesApp/bluebubbles-app/releases/download/v2.0.0%2B87-desktop-b.3/bluebubbles-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 49f592658692d68b6447edb9cbdeb39d33ca74e4b12d351ad5d811e4b3b2ed4c
+
+pkgname = bluebubbles-beta-bin
