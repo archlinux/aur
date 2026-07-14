@@ -1,7 +1,7 @@
 # shellcheck shell=bash
 # -*- mode: sh -*-
 
-#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # Contributor: Marvin Gülker <quintus at quintilianus point eu>
 # Contributor: Pierre Chapuis <catwell at archlinux dot us>
 # Contributor: Uffe Jakobsen <uffe at uffe dot org>
@@ -10,7 +10,7 @@ pkgname='mlmmj'
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
 pkgver=2.1.0
 _pkgver=2_1_0
-pkgrel=1
+pkgrel=2
 _url='http://mlmmj.org/'
 url='https://codeberg.org/mlmmj/mlmmj'
 install="$pkgname.install"
