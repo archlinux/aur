@@ -1,0 +1,9 @@
+src/
+pkg/
+*.pkg.tar.zst
+*.pkg.tar.xz
+nodewipe-*[0-9]
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!README.md
