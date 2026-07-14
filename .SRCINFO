@@ -1,0 +1,15 @@
+pkgbase = bless-cli
+	pkgdesc = CLI logging helper for repeated runs with metadata tracking
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/HaoZeke/bless
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	conflicts = bless
+	options = !lto
+	source = bless-0.2.0.tar.gz::https://github.com/HaoZeke/bless/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = ecab0bd5d792b7e33612761809e61c75ca24fe67e3c97693196f24acc32aa71d
+
+pkgname = bless-cli
