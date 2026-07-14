@@ -1,0 +1,50 @@
+# Maintainer: yakuda <yakuda@outlook.de>
+pkgname=osc-dreamchatbox
+pkgver=1.0.5_alpha
+pkgrel=1
+pkgdesc="Simple, clean VRChat OSC chatbox companion for Linux (status, media, hardware, speech-to-text)"
+arch=('any')
+url="https://github.com/yakuda-stack/OSC-DreamChatbox"
+license=('GPL-3.0-or-later')
+depends=('python' 'python-pyqt6' 'python-zeroconf' 'python-osc' 'python-setproctitle')
+optdepends=('python-speechrecognition: Speech to Text'
+            'python-pyaudio: Speech to Text (microphone access)'
+            'python-deepl: DeepL translation backend'
+            'mesa-utils: exact GPU name detection (glxinfo)'
+            'nvidia-utils: NVIDIA GPU stats (nvidia-smi)')
+# Git-Tag enthaelt einen Bindestrich (v1.0.5-alpha), pkgver darf keinen haben
+_tag="v${pkgver/_/-}"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
+sha256sums=('ffcaa791884634b697493d8a95a2d96fd41ec6844b44c435b58541be6f0249be')
+
+package() {
+    cd "OSC-DreamChatbox-${_tag#v}"
+
+    # Programm nach /usr/share/osc-dreamchatbox (Struktur bleibt erhalten,
+    # der Entry-Point findet assets/icon.png relativ zu sich selbst)
+    local app="${pkgdir}/usr/share/${pkgname}"
+    install -Dm644 osc_dreamchatbox.py "${app}/osc_dreamchatbox.py"
+    cp -r core ui "${app}/"
+    install -Dm644 assets/icon.png "${app}/assets/icon.png"
+    # Python-Cache/Muell nicht paketieren
+    find "${app}" -name '__pycache__' -type d -exec rm -rf {} + 2>/dev/null || true
+
+    # Launcher
+    install -dm755 "${pkgdir}/usr/bin"
+    cat > "${pkgdir}/usr/bin/${pkgname}" << 'LAUNCH'
+#!/usr/bin/env bash
+exec python /usr/share/osc-dreamchatbox/osc_dreamchatbox.py "$@"
+LAUNCH
+    chmod 755 "${pkgdir}/usr/bin/${pkgname}"
+
+    # Desktop-Eintrag + Icon (hicolor)
+    install -Dm644 packaging/osc-dreamchatbox.desktop \
+        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 assets/icon.png \
+        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
+
+    # Lizenz + Doku
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
+}

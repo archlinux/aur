@@ -1,0 +1,21 @@
+pkgbase = osc-dreamchatbox
+	pkgdesc = Simple, clean VRChat OSC chatbox companion for Linux (status, media, hardware, speech-to-text)
+	pkgver = 1.0.5_alpha
+	pkgrel = 1
+	url = https://github.com/yakuda-stack/OSC-DreamChatbox
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = python-pyqt6
+	depends = python-zeroconf
+	depends = python-osc
+	depends = python-setproctitle
+	optdepends = python-speechrecognition: Speech to Text
+	optdepends = python-pyaudio: Speech to Text (microphone access)
+	optdepends = python-deepl: DeepL translation backend
+	optdepends = mesa-utils: exact GPU name detection (glxinfo)
+	optdepends = nvidia-utils: NVIDIA GPU stats (nvidia-smi)
+	source = osc-dreamchatbox-1.0.5_alpha.tar.gz::https://github.com/yakuda-stack/OSC-DreamChatbox/archive/refs/tags/v1.0.5-alpha.tar.gz
+	sha256sums = ffcaa791884634b697493d8a95a2d96fd41ec6844b44c435b58541be6f0249be
+
+pkgname = osc-dreamchatbox
