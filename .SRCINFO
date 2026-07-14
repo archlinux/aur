@@ -1,0 +1,8 @@
+pkgbase = dvb-usb-autoload
+	pkgdesc = Modprobe rule to autoload dvb_usb
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	source = dvb_usb.conf
+
+pkgname = dvb-usb-autoload
