@@ -1,17 +1,18 @@
-#Maintainer: Mikhail Rudenko <mike.rudenko@gmail.com>
+# Maintainer: Shinmen <shinmen@example.com>
+# Contributor: Mikhail Rudenko <mike.rudenko@gmail.com>
 
 pkgname=highfive
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Header-only C++ HDF5 interface"
 arch=('any')
-url='https://github.com/BlueBrain/HighFive'
+url='https://github.com/highfive-devs/HighFive'
 license=('Boost')
 depends=('boost' 'hdf5' 'eigen')
 makedepends=('cmake' 'catch2')
 source=(https://github.com/highfive-devs/$pkgname/archive/v$pkgver.tar.gz
         fix-tests-arch.patch)
-md5sums=('ebcf6589b3a768696505c5a981f69f58'
+md5sums=('feffc572dfa3de094cd04ddf25e57e16'
          'ca2b938810355b841114a3b765ff7953')
 
 prepare() {

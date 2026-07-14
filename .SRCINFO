@@ -1,8 +1,8 @@
 pkgbase = highfive
 	pkgdesc = Header-only C++ HDF5 interface
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
-	url = https://github.com/BlueBrain/HighFive
+	url = https://github.com/highfive-devs/HighFive
 	arch = any
 	license = Boost
 	makedepends = cmake
@@ -10,9 +10,9 @@ pkgbase = highfive
 	depends = boost
 	depends = hdf5
 	depends = eigen
-	source = https://github.com/highfive-devs/highfive/archive/v3.2.0.tar.gz
+	source = https://github.com/highfive-devs/highfive/archive/v3.3.0.tar.gz
 	source = fix-tests-arch.patch
-	md5sums = ebcf6589b3a768696505c5a981f69f58
+	md5sums = feffc572dfa3de094cd04ddf25e57e16
 	md5sums = ca2b938810355b841114a3b765ff7953
 
 pkgname = highfive
