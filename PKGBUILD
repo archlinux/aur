@@ -2,7 +2,7 @@
 
 _pkgname=MangoHud
 pkgname=mangohud-git
-pkgver=0.8.4.r11.g2c1dc52
+pkgver=0.8.4.r93.g4781042
 pkgrel=1
 pkgdesc="A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more"
 url='https://github.com/flightlessmango/MangoHud'
@@ -19,6 +19,7 @@ makedepends=(
     'meson'
     'python-mako'
     'vulkan-headers'
+    'wayland-protocols'
 )
 depends=(
     'glfw'
