@@ -18,8 +18,6 @@ makedepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-options=('!strip' '!debug')
-
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')

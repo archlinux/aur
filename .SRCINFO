@@ -8,8 +8,6 @@ pkgbase = qogir-icon-theme-git
 	makedepends = git
 	provides = qogir-icon-theme
 	conflicts = qogir-icon-theme
-	options = !strip
-	options = !debug
 	source = qogir-icon-theme::git+https://github.com/vinceliuice/Qogir-icon-theme.git
 	sha256sums = SKIP
 
