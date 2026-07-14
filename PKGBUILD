@@ -1,7 +1,7 @@
 # Maintainer: Tobias Boesch <tobias.boesch at googlemail dot com>
 # Maintainer: Pavan Rikhi <pavan.rikhi@gmail.co>
 pkgname=('fs2-knossos-dotnet')
-pkgver=v1.3.8
+pkgver=v1.3.9
 _extpkgname='Knossos.NET'
 pkgrel=1
 pkgdesc="A multi platform launcher for Freespace 2 Open using .NET 6.0 and AvaloniaUI"
@@ -30,7 +30,7 @@ source=(
   "git+$url.git#tag=${pkgver}"
   'Knossos.NET.desktop'
 )
-sha512sums=('ff064d0646dd09d5d26b884c1e634f0e4e1ff4ca425b23ee029c92c98f8e8daac69c89b0a31e5ca0843e8bf9782f92e2f62db4af4800f289a11b506dbb1aeca1'
+sha512sums=('46b8d5983dd6705c6afeac5142e68449679e662a920ae53ab3b6dca79e9ea6ef560796c5c791e3173e4e808bcbf6a5364948967cb2f51624647dc479c8dda1b2'
             '088987d8d0b9ee329c3602f56521e9322feb1dd53d84eccc501dfea25cc00b70f10d9cfc00971848fb41251cd124df45522fd6384fe4ad83748642a05e8a7bfa')
 options=(
   !strip # Stripping file Knossos.NET seems to destroy it
