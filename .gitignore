@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/wl-wordlens/
+/*.pkg.tar.*

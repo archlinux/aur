@@ -1,0 +1,23 @@
+pkgbase = wl-wordlens-git
+	pkgdesc = Wayland screenshot translation tool using vision language models
+	pkgver = r4.g351dcb7
+	pkgrel = 1
+	url = https://github.com/SHORiN-KiWATA/wl-wordlens
+	arch = any
+	license = custom
+	makedepends = git
+	depends = grim
+	depends = gtk4
+	depends = python
+	depends = python-gobject
+	depends = python-markdown-it-py
+	depends = python-requests
+	depends = slurp
+	optdepends = vim: edit multi-line prompts and API keys with the default editor
+	provides = wl-wordlens
+	conflicts = wl-wordlens
+	options = !debug
+	source = wl-wordlens::git+https://github.com/SHORiN-KiWATA/wl-wordlens.git
+	sha256sums = SKIP
+
+pkgname = wl-wordlens-git
