@@ -1,7 +1,7 @@
 # Maintainer: Yuuta Liang <yuuta@yuuta.moe>
 pkgname=sdrpp-mirisdr-source-git
 pkgver=r9.9d2f9dd
-pkgrel=1
+pkgrel=2
 pkgdesc="Libmirisdr source plugin for SDR++"
 arch=(x86_64)
 url=""

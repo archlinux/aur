@@ -1,11 +1,12 @@
 pkgbase = sdrpp-mirisdr-source-git
 	pkgdesc = Libmirisdr source plugin for SDR++
 	pkgver = r9.9d2f9dd
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = git
 	makedepends = sdrpp-headers-git
+	makedepends = cmake
 	depends = sdrpp
 	depends = libmirisdr5
 	provides = sdrpp-mirisdr-source
