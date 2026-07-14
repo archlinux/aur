@@ -1,13 +1,29 @@
 pkgbase = bluebubbles-desktop-app
-	pkgdesc = Open source cross-platform iMessage client
-	pkgver = 1.0.3
+	pkgdesc = A cross-platform app ecosystem, bringing iMessage to Linux, Android, and Windows (Beta Release, Compiled From Source)
+	pkgver = 2.0.0+87_desktop_b.3
 	pkgrel = 1
 	url = https://bluebubbles.app/
 	arch = x86_64
-	license = unknown
-	optdepends = noto-fonts-emoji
-	source = bluebubbles-desktop-app-1.0.3.deb::https://github.com/BlueBubblesApp/BlueBubbles-Desktop-App/releases/download/v1.0.3/bluebubbles-desktop-app-1.0.3.deb
-	sha256sums = 87848a927167d0235fe6b60bd4c327033f7784a197906ae94b59e431b7bf4032
+	license = Apache-2.0
+	makedepends = flutter
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkg-config
+	makedepends = clang
+	makedepends = gendesk
+	depends = webkit2gtk-4.1
+	depends = gdk-pixbuf2
+	depends = mpv
+	depends = libdbusmenu-glib
+	depends = libnotify
+	depends = libappindicator-gtk3
+	depends = gtk3
+	provides = bluebubbles-desktop-app=2.0.0+87_desktop_b.3
+	provides = bluebubbles
+	conflicts = bluebubbles
+	conflicts = bluebubbles-bin
+	options = !emptydirs
+	source = bluebubbles-desktop-app::git+https://github.com/BlueBubblesApp/bluebubbles-app.git#tag=v2.0.0+87-desktop-b.3
+	sha256sums = SKIP
 
 pkgname = bluebubbles-desktop-app
-
