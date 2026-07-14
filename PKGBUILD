@@ -6,13 +6,13 @@ pkgname="${_pkgname}-bin"
 _id=20260712T014126
 _ver=2.5.5
 pkgver=${_ver}.${_id}
-pkgrel=1
+pkgrel=2
 pkgdesc='A chat client for Twitch.tv. (Nightly build)'
 arch=('x86_64')
 url="https://github.com/chatterino/chatterino2"
 license=('MIT')
 depends=(gdk-pixbuf2 glib2 hicolor-icon-theme libglvnd libnotify openssl
-		qt6-{base,imageformats,svg} qtkeychain-qt6 hunspell)
+		qt6-{base,imageformats,svg} hunspell)
 optdepends=('streamlink: For piping streams to video players'
 'qt6-wayland: Wayland support')
 provides=(chatterino)

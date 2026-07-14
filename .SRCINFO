@@ -1,7 +1,7 @@
 pkgbase = chatterino2-nightly-bin
 	pkgdesc = A chat client for Twitch.tv. (Nightly build)
 	pkgver = 2.5.5.20260712T014126
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chatterino/chatterino2
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,6 @@ pkgbase = chatterino2-nightly-bin
 	depends = qt6-base
 	depends = qt6-imageformats
 	depends = qt6-svg
-	depends = qtkeychain-qt6
 	depends = hunspell
 	optdepends = streamlink: For piping streams to video players
 	optdepends = qt6-wayland: Wayland support
