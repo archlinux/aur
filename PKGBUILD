@@ -9,9 +9,9 @@
 # Tencent's proprietary CodeBuddy service license, NOT this MIT notice.
 
 pkgname=codebuddy-ide-cn
-_cb_ver=4.9.15
-_cb_build=31887257
-_cb_hash=cbd94294
+_cb_ver=4.10.1
+_cb_build=33158423
+_cb_hash=3ad58bcb
 pkgver="${_cb_ver}.${_cb_build}"
 pkgrel=1
 pkgdesc='腾讯云代码助手CodeBuddy IDE，是一款辅助编码工具。'
@@ -32,62 +32,45 @@ optdepends=(
 )
 
 makedepends=(
-    '7zip' 'curl' 'unzip' 'python' 'nodejs' 'npm'
-    'gcc' 'make' 'pkgconf' 'libicns' 'imagemagick'
+    'curl' 'python' 'nodejs' 'npm'
+    'gcc' 'make' 'pkgconf' 'imagemagick' 'binutils'
 )
 
 # Conflict with old package names
 conflicts=('codebuddy-cn-ide' 'codebuddycn-ide')
-
-# - !strip:  Electron native binaries break under strip.
-# - !debug:  prevent a -debug split package when global makepkg.conf
-#            has debug enabled (CachyOS turns it on by default).
 options=('!strip' '!debug')
 
 # Helper repository pinned to a specific commit so the conversion
 # logic is reproducible. Bump together with pkgver if needed.
-_helper_commit='81d343230d27680d3e1819be7ff5caaf5154ee06'
-_electron_version=35.6.0
+_helper_commit='6928c99f6389087861e6ce43ea6e1ebfc935f536'
 
 source=(
-    "CodeBuddy-darwin-x64-${pkgver}-${_cb_hash}-cn.dmg::https://download.codebuddy.cn/aiide/darwin-x64/CodeBuddy-darwin-x64-${pkgver}-${_cb_hash}-cn.dmg"
+    "codebuddy-cn_${pkgver}_amd64.deb::https://download.codebuddy.cn/aiide/linux-x64/CodeBuddy-linux-x64-${pkgver}-${_cb_hash}-cn.deb"
     "codebuddy-ide-cn-linux-${_helper_commit}.tar.gz::${url}/archive/${_helper_commit}.tar.gz"
-    "electron-v${_electron_version}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_version}/electron-v${_electron_version}-linux-x64.zip"
     'LICENSE.notice'
 )
 
-# DMG is not a format makepkg can extract; leave the Electron zip as-is
-# and let install.sh consume it from a pre-populated cache directory.
+# Leave the deb as-is and let install.sh consume it from the srcdir
 noextract=(
-    "CodeBuddy-darwin-x64-${pkgver}-${_cb_hash}-cn.dmg"
-    "electron-v${_electron_version}-linux-x64.zip"
+    "codebuddy-cn_${pkgver}_amd64.deb"
 )
 
-sha256sums=('259f9c6aaf9a8f7eb7989d87a7efce2ce0b8ed2d0f6eef15e40995b460555ec0'
-            'ce787e187e7808373e448f41d20b0083d3c76e50b2e3463fa16b250cc518a718'
-            '94f3987a46b7cc39f16dc3428e304dd0dee679f3266fbea85ccfeb3daabb2c45'
+sha256sums=('838fe89a19f2cac23c02aab67bf5cb34e613323cd47cb811588a3d90d4fe4398'
+            'e212427b8b0da1554328203bc0e5ec65e8ef81b3e710a9f20b755f9dec2ead6b'
             'b3260549a765c478dc33680c7b9a1a30e5a038456e340d6d25f7748390724241')
 
 prepare() {
     local helper_dir="${srcdir}/codebuddy-ide-cn-linux-${_helper_commit}"
 
-    # GitHub archive tarballs do not preserve the executable bit, so
-    # check for existence rather than -x.
     [ -f "${helper_dir}/install.sh" ] || {
         echo "ERROR: helper repo not extracted at ${helper_dir}" >&2
         return 1
     }
-
-    # Feed install.sh a pre-populated Electron cache so it skips the
-    # network download step inside build().
-    install -d "${srcdir}/electron-cache"
-    cp -a "${srcdir}/electron-v${_electron_version}-linux-x64.zip" \
-          "${srcdir}/electron-cache/"
 }
 
 build() {
     local helper_dir="${srcdir}/codebuddy-ide-cn-linux-${_helper_commit}"
-    local dmg_path="${srcdir}/CodeBuddy-darwin-x64-${pkgver}-${_cb_hash}-cn.dmg"
+    local deb_path="${srcdir}/codebuddy-cn_${pkgver}_amd64.deb"
     local out_dir="${srcdir}/build/${pkgname}"
 
     install -d "${out_dir}"
@@ -98,13 +81,9 @@ build() {
     CODEBUDDY_INSTALL_DIR="${out_dir}" \
     CODEBUDDY_APP_ID="${pkgname}" \
     CODEBUDDY_APP_DISPLAY_NAME='CodeBuddy CN' \
-    CODEBUDDY_ELECTRON_CACHE_DIR="${srcdir}/electron-cache" \
-    ELECTRON_VERSION="${_electron_version}" \
-        bash "${helper_dir}/install.sh" --fresh "${dmg_path}"
+        bash "${helper_dir}/install.sh" --fresh "${deb_path}"
 
-    # The desktop entry written by install.sh embeds absolute build-time
-    # paths from ${out_dir}.  We ship a clean system-wide entry from
-    # package(); discard the build-time copy so it never lands in /opt.
+    # Discard build-time desktop file
     rm -f "${out_dir}/.codebuddycn-linux/${pkgname}.desktop"
 }
 
@@ -116,27 +95,16 @@ package() {
     install -d "${pkgdir}/opt/${pkgname}"
     cp -a "${out_dir}/." "${pkgdir}/opt/${pkgname}/"
 
-    # 1b) Strip gyp / autotools intermediate build artifacts that the
-    # rebuilt native modules leave behind.  Only the final *.node files
-    # in build/Release/ are needed at runtime.  Removing these:
-    #   - drops ~50 MB of debug junk from the package
-    #   - eliminates many namcap warnings (unstripped .o files, missing
-    #     PIE/RELRO on intermediate objects)
-    #   - resolves cross-directory hardlink errors (gyp writes the
-    #     same .node twice and hardlinks them)
+    # Strip gyp/autotools build relics
     find "${pkgdir}/opt/${pkgname}/resources/app/node_modules" \
         \( -name 'obj.target' -o -name 'obj' -o -name '.deps' \) \
         -type d -prune -exec rm -rf {} + 2>/dev/null || true
 
-    # sqlite3 leaves an unused placeholder static archive that namcap
-    # flags as a cross-directory hardlink. Drop it; nothing links it.
     rm -f "${pkgdir}/opt/${pkgname}/resources/app/node_modules/@vscode/sqlite3/build/node-addon-api/nothing.a" \
           "${pkgdir}/opt/${pkgname}/resources/app/node_modules/@vscode/sqlite3/build/Release/nothing.a" \
           "${pkgdir}/opt/${pkgname}/resources/app/node_modules/@vscode/sqlite3/build/Release/node-addon-api/nothing.o" \
           2>/dev/null || true
 
-    # Clean up empty directories left by the prune above and by the
-    # earlier removal of macOS/Windows-only platform modules.
     find "${pkgdir}/opt/${pkgname}/resources/app/node_modules" \
         -type d -empty -delete 2>/dev/null || true
 
@@ -164,17 +132,13 @@ MimeType=x-scheme-handler/codebuddycn;
 EOF
     chmod 0644 "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-    # 4) Icon, by hicolor theme name '${pkgname}'.
+    # 4) Icon
     if [ -f "${out_dir}/.codebuddycn-linux/codebuddycn.png" ]; then
         install -Dm644 "${out_dir}/.codebuddycn-linux/codebuddycn.png" \
             "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
     fi
 
-    # 5) Licenses.  /usr/share/licenses/$pkgname/ must exist because
-    # license=('custom').  We ship:
-    #   - LICENSE.notice       : explanation of the layered licensing
-    #   - LICENSE.helper-MIT   : MIT text covering the recipe + scripts
-    #   - upstream/*           : any LICENSE/EULA/NOTICE found in .app
+    # 5) Licenses.
     install -Dm644 "${srcdir}/LICENSE.notice" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.notice"
 
@@ -183,18 +147,12 @@ EOF
             "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.helper-MIT"
     fi
 
-    # Only the official upstream LICENSE/EULA/NOTICE files at the root of
-    # the app payload are relevant.  Going deeper would scoop up MIT/BSD
-    # notices from third-party node_modules, which are NOT the license
-    # the user is agreeing to when they install this package.
+    # Copy upstream licenses
     local upstream_license
     while IFS= read -r upstream_license; do
-        [ -f "${upstream_license}" ] || continue
-        install -Dm644 "${upstream_license}" \
-            "${pkgdir}/usr/share/licenses/${pkgname}/upstream/\$(basename "${upstream_license}")"
-    done < <(find "${out_dir}/resources/app" \
-                -maxdepth 1 \
-                \( -iname 'LICENSE*' -o -iname 'EULA*' -o -iname 'NOTICE*' \
-                   -o -iname 'ThirdPartyNotices*' \) \
-                -type f 2>/dev/null || true)
+        install -Dm644 "${out_dir}/${upstream_license}" \
+            "${pkgdir}/usr/share/licenses/${pkgname}/upstream/${upstream_license}"
+    done < <(find "${out_dir}" -maxdepth 1 \
+        \( -name 'LICENSE*' -o -name 'EULA*' -o -name 'NOTICE*' \) \
+        -type f -exec basename {} \;)
 }
