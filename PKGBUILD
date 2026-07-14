@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=at32-openocd-bin
-pkgver=2.0.9
+pkgver=2.1.0
 pkgrel=1
 # epoch=1
 pkgdesc="AT32 OpenOCD 支持 AT32 MCU调试、编程及边界扫描"
@@ -33,7 +33,7 @@ options=(!strip !emptydirs !staticlibs)
 install=${pkgname}.install
 _pkg_file_name=OpenOCD_Linux_${arch//_/-}_V${pkgver}
 source=("${_pkg_file_name}.zip::https://www.arterytek.com/download/AT32%20IDE/${_pkg_file_name}.zip")
-sha256sums=('04e619230a57d5ab6683b1a5f5d9c6f8a2321317e89af06eea772e1a02235de5')
+sha256sums=('3707a4e2610a04f65964eba91c1da2d014b867d296532f343760f48e5f5d5726')
 noextract=(${_pkg_file_name}.zip)
 
 package() {
