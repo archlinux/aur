@@ -1,7 +1,7 @@
 # Maintainer: Amiad Bareli <amiad@hatul.info>
 
 pkgname=vibe-bin
-pkgver=3.0.21
+pkgver=3.0.22
 pkgrel=1
 pkgdesc="Transcribe audio / video offline using OpenAI Whisper"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     "https://github.com/thewh1teagle/vibe/releases/download/v${pkgver}/vibe_${pkgver}_amd64.deb"
     "LICENSE-MIT::https://raw.githubusercontent.com/thewh1teagle/vibe/main/LICENSE"
 )
-sha256sums=('b4a6bc5d142c3e04b2f7ef16a0a17eacf2cbdb846e114d5509da3ea0afbcca3a'
+sha256sums=('c012971cb061b98b8b6b31859d22bc3b390c1848ba18df1b79c7a45371aed34f'
             '30d26b5b70187611accccc4afddb8eb13ee32d85cdc85b4f77103b86a2dfc056')
 
 package() {
@@ -38,7 +38,7 @@ package() {
     install -Dm755 "${srcdir}/usr/bin/sona" \
         "${pkgdir}/usr/bin/sona"
 
-    patchelf --replace-needed libxdo.so.3 libxdo.so.4 \
+    patchelf --replace-needed libxdo.so.3 libxdo.so \
         "${pkgdir}/usr/bin/vibe"
 
     for lang_dir in "${srcdir}/usr/lib/vibe/locales/"*; do
