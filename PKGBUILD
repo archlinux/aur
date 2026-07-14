@@ -16,7 +16,7 @@ source=(
     "skip-native-embed-for-aur.patch"
 )
 sha256sums=('SKIP'
-            'dde09e30999046c4edef7283114055121b91438edc2b71dbb059b6e5c2676ecd'
+            '5b004b65890244524e47e8d9d4cb4e363e32b9fdab5a42f6f065473bf7bf6068'
             'a81209715174b5413d5743ec4b461ffd71b1a1fc37bd4a7dcde23c27e35bc62f')
 
 prepare() {
