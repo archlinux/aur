@@ -1,0 +1,5 @@
+[wlocks-bin]
+source = "github"
+github = "programmersd21/wlocks"
+use_latest_release = true
+prefix = "v"

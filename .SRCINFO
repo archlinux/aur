@@ -1,0 +1,14 @@
+pkgbase = wlocks-bin
+	pkgdesc = 📂 See which processes hold your files open: A smooth tui alternative to lsof/fuser with auto-refresh, fuzzy search, sort modes, and themes
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/programmersd21/wlocks
+	arch = x86_64
+	license = MIT
+	provides = wlocks
+	conflicts = wlocks
+	options = !strip
+	source_x86_64 = wlocks-x86_64-0.1.0.tgz::https://github.com/programmersd21/wlocks/releases/download/v0.1.0/wlocks_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = bbc3c0c930cd9920df7970444db9b368b704e80f7085b6f373feaeef1a9863a4
+
+pkgname = wlocks-bin
