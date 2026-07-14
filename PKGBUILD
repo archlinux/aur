@@ -2,7 +2,7 @@
 
 pkgname=vmod-redis
 pkgver=9.0.3
-pkgrel=2
+pkgrel=3
 _srcver=9.0-23.0
 pkgdesc="VMOD using hiredis to access Redis servers from VCL"
 arch=('x86_64')
