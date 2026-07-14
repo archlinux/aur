@@ -5,14 +5,15 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-speechrecognition
+pkgdesc='Speech recognition module for Python, supporting several engines and APIs'
 pkgver=3.17.0
 pkgrel=1
-pkgdesc='Speech recognition module for Python, supporting several engines and APIs'
-arch=('any')
 url='https://github.com/Uberi/speech_recognition'
+arch=(any)
 license=('BSD-3-Clause')
 depends=(
   'flac'
+  'python'
   'python-audioop-lts'
   'python-standard-aifc'
   'python-typing_extensions'
@@ -60,7 +61,7 @@ source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 b2sums=('ef71c2912045045ff2f84015359b137c668f1f30bd462dd149a3cc80363f0ab649e5a08d06f0e8dded5850243c38d30ced5cefb8f15e8759b9df88719fc4f995')
 
 build() {
-  cd "${srcdir}/speech_recognition-${pkgver}"
+  cd "speech_recognition-${pkgver}"
 
   # Remove packaged FLAC binaries in favor of the Arch Linux package.
   rm speech_recognition/flac-* LICENSE-FLAC.txt
@@ -69,7 +70,7 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/speech_recognition-${pkgver}"
+  cd "speech_recognition-${pkgver}"
 
   python -m pytest \
     --doctest-modules speech_recognition/recognizers/ \
@@ -78,9 +79,9 @@ check() {
 }
 
 package() {
-  cd "${srcdir}/speech_recognition-${pkgver}"
+  cd "speech_recognition-${pkgver}"
 
   python -m installer --destdir "${pkgdir}" dist/*.whl
 
-  install -Dm644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -vD -t "${pkgdir}/usr/share/licenses/${pkgname}/" -m644 LICENSE*
 }

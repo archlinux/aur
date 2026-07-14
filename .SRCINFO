@@ -21,6 +21,7 @@ pkgbase = python-speechrecognition
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = flac
+	depends = python
 	depends = python-audioop-lts
 	depends = python-standard-aifc
 	depends = python-typing_extensions
