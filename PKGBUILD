@@ -7,7 +7,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164  # var unused / var not assigned / cd without || exit
 
 pkgname=aurscan-manticore-bin-release-git
-pkgver=0.6.3
+pkgver=0.7.1
 _pkgname=aurscan
 pkgrel=1
 pkgdesc='LLM-powered pre-build malware scanner for AUR packages (with paru / yay hooks) -- git release binary'
@@ -29,7 +29,7 @@ optdepends=(
 # SHA256SUMS sidecar; binary, LICENSE, README, checksums and signature are
 # fetched in build() from GitHub release assets and raw content URLs. All
 # dynamic, so no static source entry for release assets.
-_gpgkey="andreas-manticore-projects.gpg"
+_gpgkey="andreas-manticore-projects.com.asc.gpg"
 source=("${_gpgkey}")
 b2sums=('e80ad8b775d2d503e066d0a8a55d365eb3c4a4caa0e1812afb66b81f7adb279cde7f9d561fe329650a9176aba2f83cd45aab3bf304af861e21c12df9230bfe38')
 
