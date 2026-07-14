@@ -1,6 +1,6 @@
 # Maintainer: Mehmet Can <admin@cachyos.org>
 pkgname=helium-sync
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Zero-resource cloud synchronization daemon and DRM fixer for Helium Browser"
 arch=('x86_64')
