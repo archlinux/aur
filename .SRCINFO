@@ -1,0 +1,16 @@
+pkgbase = cdev-launcher
+	pkgdesc = Claude Code devcontainer launcher (host tooling)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://git.kolosowscy.pl/cdev/launcher
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python>=3.10
+	depends = podman
+	depends = nodejs
+	depends = npm
+	optdepends = devcontainer: @devcontainers/cli, install via npm i -g @devcontainers/cli
+	source = cdev-launcher-0.1.1.tar.gz::https://git.kolosowscy.pl/cdev/launcher/-/archive/v0.1.1/launcher-v0.1.1.tar.gz
+	sha256sums = e0f5229bf881adbe7778464f1fab99162ffc8631537a825074bb360738e8cc54
+
+pkgname = cdev-launcher
