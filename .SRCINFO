@@ -1,0 +1,16 @@
+pkgbase = git-mr-git
+	pkgdesc = Checkout GitLab merge requests / GitHub pull requests locally
+	pkgver = r18.6db756d
+	pkgrel = 1
+	url = https://gitlab.com/glensc/git-mr
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = git
+	provides = git-mr
+	conflicts = git-mr
+	source = git-mr-git::git+https://gitlab.com/glensc/git-mr.git
+	sha256sums = SKIP
+
+pkgname = git-mr-git
