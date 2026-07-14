@@ -8,7 +8,7 @@ BusName=org.lyraos.Vega1
 ExecStart=/usr/lib/vega/vegad
 User=root
 
-# Bus-activated (PROMPT-VEGA.md §2.2, §5.2 errata #1): systemd starts this
+# Bus-activated: systemd starts this
 # unit on demand when a client calls org.lyraos.Vega1, and vegad exits on
 # its own idle timeout (see vegad/internal/dbusserver.IdleTimeout). There is
 # deliberately no [Install] section — this unit is not meant to be
