@@ -11,23 +11,28 @@ arch=('x86_64')
 url="https://github.com/BerkeOruc/biosaka"
 license=('custom:BioSaka-Research-License')
 depends=('gcc-libs' 'glibc')
-makedepends=('cargo' 'rust')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+makedepends=('cargo' 'rust' 'git')
+source=("git+https://github.com/BerkeOruc/biosaka.git")
 sha256sums=('SKIP')
 
+prepare() {
+    cd "$srcdir/biosaka"
+    cargo fetch --locked
+}
+
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/biosaka"
     export RUSTFLAGS="-C target-cpu=native"
-    cargo build --release --frozen
+    cargo build --release --locked
 }
 
 check() {
-    cd "$srcdir/$pkgname-$pkgver"
-    cargo test --release --frozen 2>/dev/null || true
+    cd "$srcdir/biosaka"
+    cargo test --release --locked 2>/dev/null || true
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/biosaka"
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "logo.txt" "$pkgdir/usr/share/$pkgname/logo.txt"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
