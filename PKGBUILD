@@ -1,7 +1,7 @@
 # Maintainer: Tobiichi Origuchi <Tobiichi-Origuchi@users.noreply.github.com>
 
 pkgname=tuigreety-git
-pkgver=0.10.0.r2.g2873260
+pkgver=0.10.0.r3.g040cf9a
 pkgrel=1
 pkgdesc='A minimal, configurable console greeter for greetd (development version)'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
