@@ -1,6 +1,6 @@
 pkgbase = kikitan-translator
 	pkgdesc = Kikitan Translator, a realtime VRChat Translator
-	pkgver = 2.0.0
+	pkgver = 2.0.0.alpha3
 	pkgrel = 1
 	url = https://github.com/YusufOzmen01/kikitan-translator
 	arch = x86_64
