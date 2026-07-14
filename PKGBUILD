@@ -2,7 +2,7 @@
 
 pkgname=hush3
 pkgver=3.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc='HUSH (Privacy Cryptocurrency and Messenger) full node that supports z-addresses'
 url='http://git.hush.is/hush/hush3'
 arch=('x86_64')
@@ -11,11 +11,10 @@ depends=('libsodium' 'lib32-zlib')
 makedepends=('unzip' 'wget' 'git' 'python' 'rust' 'curl' 'autoconf')
 provides=('hush3')
 conflicts=('hush3-bin')
-source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=('1d7e088b94b5d6b7fc7fb33e2edcf7f702afbceb58ab1a56540910268f31f8bef2ecb99abe7f34cc4cc78910df48572b0c57b1ea1b794b63bdf611d3281ed72d')
+source=(git+$url.git?#tag=v$pkgver)
+sha512sums=(SKIP)
 
 build() {
-  tar xzvf v$pkgver.tar.gz
   cd "$pkgname"
   ./build.sh -j$(nproc)
 }
