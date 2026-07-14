@@ -21,8 +21,8 @@ source_x86_64=("pelagos-x86_64::https://github.com/pelagos-containers/pelagos/re
 source_aarch64=("pelagos-aarch64::https://github.com/pelagos-containers/pelagos/releases/download/v$pkgver/pelagos-aarch64-linux"
                 "pelagos-aarch64.sha256::https://github.com/pelagos-containers/pelagos/releases/download/v$pkgver/pelagos-aarch64-linux.sha256"
                 "pelagos-$pkgver-src.tar.gz::https://github.com/pelagos-containers/pelagos/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums_x86_64=('24ba154ef9316889147526753099748e92de5f4e5f261e4e743c2fc802a34a63' 'SKIP' '98f3545376e33f86e8eb95ab287f3fda1180e5ef25f56af0277bc023869febe5')
-sha256sums_aarch64=('97cace7e4546945a63754df80579231f1c86ec79e8421f209d0a1de6af5eb096' 'SKIP' '98f3545376e33f86e8eb95ab287f3fda1180e5ef25f56af0277bc023869febe5')
+sha256sums_x86_64=('5d5ef52679940fb11d1bf04fc06705fd80b1b1591cb688fac11459b942c71a11' 'SKIP' '7e08fe38275d085b96e832a9409de2f01cdc1df9cee787d07b77bab145a1c536')
+sha256sums_aarch64=('fffdca7e48748fc536cfc6430f826107aa97212cb8122629242ec2044ebef121' 'SKIP' '7e08fe38275d085b96e832a9409de2f01cdc1df9cee787d07b77bab145a1c536')
 
 package() {
     # Install the pre-built binary.
