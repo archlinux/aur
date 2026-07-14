@@ -1,16 +1,16 @@
 # Maintainer: Simon Winther <simonwinther@users.noreply.github.com>
 pkgname=breakd
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Wayland-native break reminder with multi-monitor overlays'
 arch=('x86_64')
 url='https://github.com/simonwinther/breakd'
 license=('MIT' 'BSD-2-Clause')
-depends=('cairo' 'glib2' 'glibc' 'graphene' 'gtk4' 'gtk4-layer-shell')
+depends=('cairo' 'glib2' 'glibc' 'graphene' 'gtk4' 'gtk4-layer-shell' 'libcanberra')
 makedepends=('cargo' 'pkgconf')
 options=('!debug')
-source=("breakd-0.1.3.tar.gz::https://github.com/simonwinther/breakd/releases/download/v0.1.3/breakd-0.1.3.tar.gz")
-sha256sums=('460930e575f7a6d69b849b539c7683faa3abe57edde46f75d142637227bf30c3')
+source=("breakd-0.1.4.tar.gz::https://github.com/simonwinther/breakd/releases/download/v0.1.4/breakd-0.1.4.tar.gz")
+sha256sums=('2a3e03fbd91f25eb90e350426099280c1840ee8cf1096ee81d65f82731687ce0')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -40,6 +40,8 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "$srcdir/target/release/breakd" "$pkgdir/usr/bin/breakd"
+  install -dm755 "$pkgdir/usr/share/breakd"
+  install -m644 crates/platform-linux/assets/*.oga "$pkgdir/usr/share/breakd/"
   install -Dm644 packaging/systemd/breakd.service     "$pkgdir/usr/lib/systemd/user/breakd.service"
   install -Dm644 packaging/io.github.simonwinther.breakd.settings.desktop     "$pkgdir/usr/share/applications/io.github.simonwinther.breakd.settings.desktop"
   install -Dm644 config.example.toml     "$pkgdir/usr/share/doc/breakd/config.example.toml"
