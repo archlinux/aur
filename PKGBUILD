@@ -2,7 +2,7 @@
 # https://github.com/SimonSchubert/Braincup
 
 pkgname=braincup-bin
-pkgver=2.27.0
+pkgver=2.28.0
 pkgrel=1
 pkgdesc='Train your math skills, memory and focus'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('braincup')
 options=('!strip')
 
 source=("Braincup-${pkgver}-linux-x86_64.tar.gz::https://github.com/SimonSchubert/Braincup/releases/download/v${pkgver}/Braincup-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('aa1cd83f64ac15468993190d70f3125a7ef4202fcb13e50a9755f1d61c269c8c')
+sha256sums=('ea209736ea585e9611c3e0c1e71babc4d80645a6c78eb22c7152800809514c19')
 
 package() {
     # Install application files
