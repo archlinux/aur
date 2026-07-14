@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=mqtt-alive-daemon-git
-pkgver=r17.d69475c
+pkgver=r20.f324ed8
 pkgrel=1
 pkgdesc="Reports machine aliveness and custom command checks to Home Assistant via MQTT"
 arch=('x86_64' 'aarch64')
