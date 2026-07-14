@@ -1,0 +1,20 @@
+pkgbase = cc-pocket-bin
+	pkgdesc = Mobile client for Claude Code and Codex — Linux desktop app
+	pkgver = 1.104.1
+	pkgrel = 1
+	url = https://github.com/K9i-0/ccpocket
+	arch = x86_64
+	license = MIT
+	makedepends = patchelf
+	depends = gtk3
+	depends = libsecret
+	source = cc-pocket-bin-1.104.1.tar.gz::https://github.com/K9i-0/ccpocket/releases/download/linux%2Fv1.104.1%2B186/CC-Pocket-linux-x64-v1.104.1.tar.gz
+	source = cc-pocket.desktop
+	source = cc-pocket.png
+	source = LICENSE::https://raw.githubusercontent.com/K9i-0/ccpocket/main/LICENSE
+	sha256sums = f5c6b26033e088899b7a5e3eb9c8b07d40e813b28a6653f8c30a3ab7b8dab82e
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cc-pocket-bin

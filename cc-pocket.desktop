@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=CC Pocket
+Comment=Mobile client for Claude Code and Codex
+Exec=ccpocket
+Icon=cc-pocket
+Terminal=false
+Categories=Development;Utility;
+Keywords=claude;codex;ai;agent;
