@@ -1,7 +1,7 @@
 pkgbase = vmod-fileserver
 	pkgdesc = Varnish vmod for serving static files
 	pkgver = 9.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/varnish-rs/vmod-fileserver
 	arch = x86_64
 	license = BSD-3-Clause
@@ -11,8 +11,9 @@ pkgbase = vmod-fileserver
 	makedepends = pkg-config
 	makedepends = python-docutils
 	makedepends = jq
-	depends = varnish=9.0.3-2
-	source = vmod-fileserver-0.0.10.tar.gz::https://github.com/varnish-rs/vmod-fileserver/archive/refs/tags/v0.0.10.tar.gz
-	sha512sums = b504f6389d000211a0dd1087c158d6c6e4518fbea36406ad5b321ee32b09330cb8c28d52508263fcae04a328daa0d2fb9f63789310010691ab9812b1a10f8c64
+	depends = varnish=9.0.3-3
+	options = !lto
+	source = vmod-fileserver-0.0.12.tar.gz::https://github.com/varnish-rs/vmod-fileserver/archive/refs/tags/v0.0.12.tar.gz
+	sha512sums = b9a8d289beefcd4db7caeceb3ed6d7e93187ed85455ec8764c0eca4cc2dcabe325980e4ac37c63fd0b864e9861a8e6074c108fe9a3e647d2bd1eb778051c58a2
 
 pkgname = vmod-fileserver
