@@ -1,7 +1,7 @@
 pkgbase = vmod-cfg
 	pkgdesc = Config VMOD for Varnish
 	pkgver = 9.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/carlosabalde/libvmod-cfg
 	arch = x86_64
 	license = BSD-2-Clause
@@ -13,7 +13,7 @@ pkgbase = vmod-cfg
 	makedepends = python-docutils
 	makedepends = jemalloc
 	makedepends = xxd
-	depends = varnish=9.0.3-2
+	depends = varnish=9.0.3-3
 	depends = curl
 	depends = luajit
 	source = vmod-cfg-9.0-21.0.tar.gz::https://github.com/carlosabalde/libvmod-cfg/archive/refs/tags/9.0-21.0.tar.gz

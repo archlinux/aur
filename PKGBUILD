@@ -2,9 +2,8 @@
 
 pkgname=vmod-cfg
 pkgver=9.0.3
-pkgrel=2
-_srcver=9.0_21.0
-_srcver="${_srcver//_/-}"
+pkgrel=3
+_srcver=9.0-21.0
 pkgdesc="Config VMOD for Varnish"
 arch=('x86_64')
 url="https://github.com/carlosabalde/libvmod-cfg"
