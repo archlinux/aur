@@ -1,13 +1,16 @@
 pkgbase = tmetric-rpm
 	pkgdesc = TMetric is a simple and accurate work time-tracker that sets you free from tedious time reporting. Built from the rpm to prevent breakage.
 	pkgver = 20.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tmetric.com
 	arch = x86_64
-	license = GPL2
+	license = LicenseRef-custom
 	provides = tmetric
-	conflicts = tmetrictmetric-desktop
+	conflicts = tmetric
+	conflicts = tmetric-desktop
+	options = !strip
+	options = !emptydirs
 	source = tmetric-rpm-20.2.4.x86_64.rpm::https://static.tmetric.com/desktop/download/linux/rpm/x86_64
-	md5sums = 4736678e8d592394e0f66e33120709a2
+	sha256sums = 871a654c6e743a177b4fca6346571f8295e32b1122ea89bef876b6ef80a22848
 
 pkgname = tmetric-rpm
