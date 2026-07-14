@@ -3,11 +3,11 @@
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname=perl-tree-rb-xs
+pkgdesc='Red/Black Tree and LRU Cache implemented in C'
 pkgver=0.21
 pkgrel=1
-pkgdesc='Red/Black Tree and LRU Cache implemented in C'
-arch=('aarch64' 'armv7h' 'i486' 'i686' 'loong64' 'pentium4' 'riscv64' 'x86_64')
 url='https://metacpan.org/dist/Tree-RB-XS'
+arch=(aarch64 armv7h i486 i686 loong64 pentium4 riscv64 x86_64)
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 # See https://metacpan.org/dist/Tree-RB-XS/source/Makefile.PL
 makedepends=(
@@ -46,18 +46,18 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/Tree-RB-XS-${pkgver}"
+  cd "Tree-RB-XS-${pkgver}"
 
   unset PERL5LIB PERL_LOCAL_LIB_ROOT
   make test
 }
 
 package() {
-  cd "${srcdir}/Tree-RB-XS-${pkgver}"
+  cd "Tree-RB-XS-${pkgver}"
 
   unset PERL5LIB PERL_LOCAL_LIB_ROOT
   make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
 
   # makepkg won't strip binaries if they are not writable
-  chmod -R u+w "${pkgdir}"
+  chmod -c -R u+w "${pkgdir}"
 }
