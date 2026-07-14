@@ -15,7 +15,7 @@
   source=("https://github.com/Bitpainter75/FerrumPix/releases/download/${pkgver}/FerrumPix-${pkgver}-linux-x64.zip"
           "io.github.Bitpainter75.FerrumPix.desktop"
           "io.github.Bitpainter75.FerrumPix.png")
-sha256sums=('323e7a9c94eeb09e7d86c2b126fc7690c592a753c962e7dccac00872790b2bfa'
+sha256sums=('6ebc9b206a450961e0a93483a967018eb4dd4e5c26d05fa1f4e2a032929b9103'
             '02a23d27b0ea478bc951de3baebc4b30ec303f679fb137322fdf56b957104321'
             'c621a95fca97c22495bb05ae9753391c5523ac0fce8f16f64b3713515e664067')
 
