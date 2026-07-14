@@ -1,0 +1,17 @@
+pkgbase = caesiumclt-git
+	pkgdesc = High-performance image compressor CLI written in Rust
+	pkgver = 1.4.0.r4.g47e7085
+	pkgrel = 1
+	url = https://github.com/Lymphatus/caesium-clt
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	provides = caesiumclt
+	conflicts = caesiumclt
+	source = git+https://github.com/Lymphatus/caesium-clt.git
+	sha256sums = SKIP
+
+pkgname = caesiumclt-git
