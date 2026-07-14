@@ -18,6 +18,7 @@ depends=(
   'hunspell'
   'kcoreaddons'
   'libavif'
+  'libdispatch'
   'libgcc'
   'libheif'
   'libjxl'

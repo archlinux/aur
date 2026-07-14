@@ -29,6 +29,7 @@ pkgbase = yukigram-desktop
 	depends = hunspell
 	depends = kcoreaddons
 	depends = libavif
+	depends = libdispatch
 	depends = libgcc
 	depends = libheif
 	depends = libjxl
