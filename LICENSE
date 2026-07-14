@@ -1,0 +1,187 @@
+# Secria - Terms of Service
+
+## 1\. Acceptance of Terms
+
+Welcome to Secria. Secria, Inc., a Delaware corporation ("Secria," "we," "us," "our"), provides a platform for secure communication and online privacy. By accessing or utilizing our services (the "Services"), you explicitly agree to abide by these Terms of Service ("Terms"). If you do not accept these Terms, you are prohibited from accessing or using the platform. Continued use of Secria constitutes your ongoing agreement to these Terms.
+
+## 2\. Eligibility
+
+* You must be at least 16 years of age to use Secria.  
+* By registering or using the platform, you confirm that you meet this requirement and that your use complies with all applicable laws and regulations.  
+* We reserve the right to verify your eligibility and to restrict or revoke access if eligibility requirements are not met.
+
+## 3\. Purpose of Secria
+
+Secria provides secure communication and online-privacy products, including Secria Mail (encrypted email) and Secria VPN, prioritizing user privacy and data protection.  
+Our services use advanced encryption methods (including post-quantum where applicable) to protect your data from unauthorized access.  
+However, no security measure is 100% foolproof. You acknowledge that you are responsible for safeguarding your account and private keys.
+
+## 4\. User Responsibilities
+
+By engaging with Secria, you commit to:
+
+* Providing a valid username and display name during registration.  
+* Maintaining the confidentiality of your account credentials and promptly reporting any unauthorized use or security breaches to us.  
+* Using the platform solely for lawful purposes and in compliance with applicable laws and regulations.  
+* Refraining from activities that could compromise the integrity or security of the platform, such as hacking, phishing, distributing malware, or attempting to bypass security measures.
+
+Failure to adhere to these responsibilities may result in account suspension, termination, or further legal action.
+
+## 5\. Ownership of Content
+
+User Content: You retain full ownership of all content transmitted, created, or stored using Secria's platform ("User Content").  
+Encryption: Secria Mail encrypts your messages, including with post-quantum encryption where applicable, and stored message content is encrypted to your keys. We do not sell or mine the content of your communications. Some operations necessarily process content — for example, delivering a message to an external (non-Secria) recipient or scanning attachments for malware — and we may disclose information when required by valid legal process, as described in our [Privacy Policy](https://secria.me/privacy-policy).  
+User Backups: You are encouraged to maintain independent backups of important data, as Secria assumes no liability for data loss due to technical issues or account termination.
+
+## 6\. Prohibited Activities
+
+To maintain the integrity and security of Secria, you agree not to:
+
+* Impersonate other individuals, organizations, or entities.  
+* Harvest or collect data from the platform without explicit consent.  
+* Distribute harmful, defamatory, obscene, or otherwise unlawful content.  
+* Transmit, store, or distribute child sexual abuse material (CSAM) or any other content that is illegal under applicable law.  
+* Send unsolicited or bulk messages (spam), including but not limited to commercial advertising, chain letters, or repetitive messages to recipients who have not opted in.  
+* Use automated tools to register accounts in bulk, or register accounts on behalf of banned users.  
+* Attempt to bypass security measures, disrupt platform functionality, or interfere with other users' experiences.
+
+Engaging in prohibited activities may result in immediate suspension or termination of your account, as well as additional legal actions where appropriate.
+
+## 7\. Subscriptions and Payments
+
+Certain premium features of Secria require subscription fees or one-time payments. By subscribing, you agree to:
+
+* Pay all applicable fees detailed in the subscription or payment process.  
+* Adhere to the payment terms set by Secria and our third-party payment processors.  
+* Notify us promptly of any payment disputes or issues.
+
+We reserve the right to modify subscription fees or introduce additional charges with advance notice to users.
+
+### Automatic Renewal
+
+* Unless you cancel before the renewal date, subscriptions automatically renew at the end of each billing period (for example, monthly or annually, based on the plan you selected) at the then-current price, and your payment method is charged automatically.  
+* You can turn off automatic renewal at any time: for direct (web) subscriptions in your Secria account settings or by contacting us; for App Store or Google Play purchases, through your Apple or Google account subscription settings.  
+* We will provide advance notice of any price change before it takes effect, as required by applicable law and app-store rules.
+
+### Cancellation Policy
+
+* If you choose to cancel your subscription, the cancellation will take effect at the end of your current billing cycle, and you will retain access to the subscribed features until that time.  
+* After the current billing cycle concludes, your subscription will not renew, and you will lose access to any premium features.  
+* Failure to fulfill payment obligations may result in restricted access to premium features or account suspension.
+
+### Refunds and 30-Day Money-Back Guarantee
+
+* Direct purchases (Web & Android via Stripe): New subscribers may request a full refund within 30 days of their first subscription purchase by contacting us at hq@secria.me. This 30-day money-back guarantee applies once per customer, to your initial subscription purchase only, and does not apply to renewals or subsequent purchases.  
+* App Store (iOS) and Google Play: Purchases made through the Apple App Store or Google Play are controlled by, and subject to the refund policy of, that platform, and are not covered by Secria's money-back guarantee. To request a refund, contact Apple through their [Report a Problem](https://reportaproblem.apple.com/) page, or Google Play through your Google account; such refunds are granted at the platform's sole discretion.  
+* If you believe a charge was made in error, please contact us at hq@secria.me.
+
+## 8\. Privacy Policy
+
+We prioritize user privacy and data security.  
+For comprehensive details about how we collect, use, and protect your information, please refer to our [Privacy Policy](https://secria.me/privacy-policy).  
+By using Secria, you acknowledge that you have reviewed and consent to the Privacy Policy.
+
+## 9\. Limitation of Liability
+
+To the maximum extent permitted by law, Secria and its affiliates disclaim liability for:
+
+* Losses resulting from service interruptions, delays, or technical errors.  
+* Unauthorized access to accounts or data.  
+* Indirect, incidental, or consequential damages arising from your use of the platform.
+
+Total Liability: Secria's total liability will not exceed the total amount you have paid for services in the 12 months preceding the incident. This limitation applies regardless of the legal theory (contract, tort, etc.).  
+Exceptions: Nothing in these Terms excludes or limits any liability that cannot be excluded or limited under applicable law, including liability for death or personal injury caused by negligence, or for fraud or fraudulent misrepresentation.
+
+## 10\. Account Termination
+
+We reserve the right to suspend or terminate user accounts under circumstances including, but not limited to:
+
+* Breach of these Terms.  
+* Prolonged inactivity (e.g., 2+ years without login).  
+* Compliance with legal requirements.
+
+Upon account termination, all associated access and services will cease, and any stored data may be deleted. Users are encouraged to regularly back up important information.
+
+## 11\. Governing Law and Dispute Resolution
+
+These Terms are governed by the laws of the State of Delaware, United States, without regard to conflict of law principles.  
+Informal Resolution First: Before initiating any formal legal proceeding, you agree to first contact us at hq@secria.me and to attempt, in good faith, to resolve the dispute informally for at least 30 days from the date of that notice. Most concerns can be resolved this way.  
+If a dispute is not resolved within that period, any dispute arising out of or related to these Terms shall be resolved exclusively in the state or federal courts located in Delaware.  
+By using Secria, you waive any objections to the jurisdiction and venue of these courts.
+
+## 12\. Third-Party Services
+
+Secria may integrate with or rely on third-party services (e.g., payment processors, push notification delivery, email delivery).  
+While we strive to partner with reputable providers, Secria is not responsible for issues, errors, or disputes arising from these services.  
+Users are subject to the terms and policies of the respective third-party providers when using integrated features.
+
+## 13\. Changes to Terms
+
+We reserve the right to update or modify these Terms at our discretion.  
+Revisions will be posted with an updated Effective Date, and significant changes will be communicated to users (e.g., in-platform notices or email).  
+Continued use of the platform after such updates constitutes acceptance of the revised Terms.
+
+## 14\. Additional Provisions
+
+Severability: If any provision of these Terms is found invalid or unenforceable, the remaining provisions will remain in full force and effect.  
+No Waiver: Failure by Secria to enforce any right or provision of these Terms does not constitute a waiver of such right or provision.  
+Entire Agreement & Exceptions:
+
+* Except as noted below, these Terms (together with the Privacy Policy) represent the entire agreement between you and Secria regarding the Services and supersede any prior agreements or understandings.  
+* Enterprise or Separate Agreements: If you have entered into a separate written agreement with Secria (e.g., an Enterprise agreement) that expressly modifies or supersedes these Terms, the terms of that separate agreement will govern to the extent of any conflict with these Terms.
+
+Survival: Any provisions of these Terms that by their nature should survive termination or expiration (e.g., liability limitations, dispute resolution) will remain in effect.  
+Indemnification: You agree to indemnify, defend, and hold harmless Secria and its affiliates, officers, and employees from and against any claims, damages, losses, liabilities, and expenses (including reasonable legal fees) arising out of or related to your use of the Services, your content, or your violation of these Terms or applicable law.  
+Export Controls and Sanctions: The Services may be subject to export control and economic sanctions laws. You represent and warrant that you are not located in, and will not access or use the Services from, any country or territory subject to comprehensive U.S. sanctions, and that you are not identified on any government restricted-party or sanctions list. You agree not to use the Services in violation of any applicable export-control or sanctions laws.  
+Copyright and DMCA: Secria respects intellectual property rights. If you believe content transmitted or stored through the Services infringes your copyright, please send a notice containing the information required under the Digital Millennium Copyright Act (DMCA) to hq@secria.me. We will respond to valid notices and may remove allegedly infringing content or terminate the accounts of repeat infringers.  
+Assignment: You may not assign or transfer these Terms or your account without our prior written consent. Secria may assign these Terms, in whole or in part, to an affiliate or in connection with a merger, acquisition, reorganization, or sale of assets.  
+Force Majeure: Secria is not liable for any delay or failure to perform resulting from causes beyond its reasonable control, including acts of God, natural disasters, war, terrorism, civil unrest, labor disputes, governmental action, or power, network, or third-party service outages.  
+Apple App Store: If you obtain Secria through the Apple App Store, these Terms are between you and Secria only, not Apple, and Apple is not responsible for the Services or their content. Apple has no obligation to provide maintenance or support for the Services. To the maximum extent permitted by law, Apple has no warranty obligation with respect to the Services, and any claims, losses, liabilities, damages, costs, or expenses attributable to any failure to conform to a warranty are Secria's responsibility. Apple is not responsible for addressing any claims by you or a third party relating to the Services, including product-liability, legal or regulatory, or intellectual-property claims. Apple and its subsidiaries are third-party beneficiaries of these Terms and may enforce them against you.  
+Modification or Discontinuation of Services: We may modify, suspend, or discontinue any part of the Services, or add or remove features, at any time. Where a change materially reduces the functionality of a paid feature you are actively using, we will provide reasonable advance notice where practicable.  
+Notices: We may provide notices to you by email, through in-app or in-platform messages, or by posting on our website. You are responsible for keeping your account contact information current.
+
+## 15\. Secria VPN-Specific Terms
+
+In addition to the general Terms above, the following terms apply to your use of Secria VPN.
+
+### Service Availability
+
+Secria VPN is provided on an "as is" and "as available" basis. Features may change, break, or be removed without notice; service availability, speed, and reliability are not guaranteed; and connectivity issues may occur. You agree not to rely on the Service for critical or life-safety purposes.
+
+### Acceptable Use
+
+You agree not to use Secria VPN to:
+
+* Engage in illegal activity under applicable law.  
+* Send spam or malware, or conduct phishing attacks.  
+* Attack, scan, or probe other networks or systems.  
+* Infringe on intellectual property rights.  
+* Distribute child sexual abuse material.  
+* Conduct denial-of-service attacks.
+
+Violation may result in immediate account termination without notice.
+
+### No-Log Policy
+
+We do not log your browsing activity, DNS queries, traffic contents, or the source IP addresses you connect from. To operate the Service and protect your account, we retain limited connection metadata — the device and Secria account associated with a session, the VPN server used, the VPN-assigned internal IP address, and connection timestamps (such as when a device last connected). We never record the websites you visit or the contents of your traffic. See our [Privacy Policy](https://secria.me/privacy-policy) for full details.
+
+### Account & Devices
+
+Your Secria VPN access is linked to your Secria account and is subject to the device limit shown in the app. You are responsible for maintaining the security of your credentials.
+
+## 16\. Contact Information
+
+For any inquiries, feedback, or concerns about these Terms, please contact us at:
+
+hq@secria.me
+
+Secria, Inc.  
+8 The Green, Suite A  
+Dover, DE 19901  
+United States  
+Secria is committed to providing prompt and thorough assistance.
+
+## 17\. Disclaimer of Warranties
+
+No Guarantees: Secria provides the Services on an "as is" and "as available" basis. We make no warranties, express or implied, including but not limited to any implied warranties of merchantability, fitness for a particular purpose, or non-infringement.  
+Service Availability: While we strive for high availability, you acknowledge that the Services may occasionally experience downtime, errors, or interruptions. Secria is not liable for any losses arising from temporary unavailability of the Services.  

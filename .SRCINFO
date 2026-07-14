@@ -1,0 +1,22 @@
+pkgbase = secria-vpn-bin
+	pkgdesc = Native client with WireGuard and the post-quantum preshared key
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://secria.me
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-SecriaTerms
+	depends = wireguard-tools
+	depends = nftables
+	depends = iproute2
+	depends = hicolor-icon-theme
+	provides = secria-vpn=1.0.4
+	conflicts = secria-vpn
+	source = LICENSE
+	sha256sums = b082d2bb6f0da30ec8686931e15caa4e00dd2e642f4f033440680783465f5b14
+	source_x86_64 = https://secria.me/download/linux/secria-vpn-1.0.4-1.x86_64.rpm
+	sha256sums_x86_64 = 582a1ef2b38c22c32f2b60d75951a59a2e787cb9e60a1b946b0e2345c55fdf68
+	source_aarch64 = https://secria.me/download/linux/secria-vpn-1.0.4-1.x86_64.rpm
+	sha256sums_aarch64 = de4e4660829937f6184b981d2c4ff37f6f1d4747c24f55d89fb8e22ff90ec73f
+
+pkgname = secria-vpn-bin
