@@ -1,0 +1,19 @@
+pkgbase = hawkbit-cli
+	pkgdesc = Cross-platform CLI client for Eclipse hawkBit Management API
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/pffmachado/hawkbit-cli
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-httpx
+	depends = python-rich
+	depends = python-typer
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	source = hawkbit-cli-0.1.0.tar.gz::https://github.com/pffmachado/hawkbit-cli/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = hawkbit-cli
