@@ -1,0 +1,18 @@
+pkgbase = linuxtask-aur
+	pkgdesc = Minimalist macro recorder for Linux, optimized for Hyprland (Wayland) - Custom Fix
+	pkgver = r5229a74
+	pkgrel = 1
+	url = https://github.com/JADRT22/LinuxTask
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-evdev
+	depends = python-customtkinter
+	depends = xdotool
+	provides = linuxtask
+	conflicts = linuxtask
+	source = git+https://github.com/JADRT22/LinuxTask.git
+	md5sums = SKIP
+
+pkgname = linuxtask-aur
