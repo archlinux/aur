@@ -1,8 +1,8 @@
 # Maintainer: Johannes Seitz <aur-requests@seitz.email>
 
 pkgname=remote-utilities-viewer
-pkgver=1.0.26.b26
-pkgrel=2
+pkgver=1.0.27.b27
+pkgrel=1
 pkgdesc='Remote Utilities is highly configurable and secure remote desktop software for IT professionals'
 arch=('x86_64')
 url='https://www.remoteutilities.com/download/linux.php'
@@ -12,7 +12,7 @@ provides=('remote-utilities-viewer')
 conflicts=()
 depends=('glibc' 'libxcb' 'libx11')
 source_x86_64=("https://www.remoteutilities.com/download/viewer${pkgver}_amd64.deb")
-sha256sums_x86_64=('c3268e24d22b9a1711491d9d21875f31c04d0f84e553391b300a82e0e1db068d')
+sha256sums_x86_64=('3d2b625e2995da90ba087f73ccafce951e0548b542650d2ab23276c7e0eac500')
 
 
 prepare() {
