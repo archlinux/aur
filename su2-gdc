@@ -1,0 +1,4 @@
+#!/bin/sh
+export SU2_RUN=/opt/su2
+export PYTHONPATH=/opt/su2${PYTHONPATH:+:$PYTHONPATH}
+exec /opt/su2/SU2_GDC "$@"

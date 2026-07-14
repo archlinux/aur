@@ -1,0 +1,24 @@
+pkgbase = su2-mpi-bin
+	pkgdesc = An Open-Source Suite for Multiphysics Simulation and Design. Binary package with parallel processing enabled.
+	pkgver = 8.5.0
+	pkgrel = 1
+	url = https://su2code.github.io/
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	depends = python
+	depends = python-numpy
+	depends = openmpi
+	conflicts = su2
+	options = !debug
+	source = https://github.com/su2code/SU2/releases/download/v8.5.0/SU2-v8.5.0-linux64-mpi.zip
+	source = su2-cfd
+	source = su2-def
+	source = su2-sol
+	source = su2-dot
+	sha256sums = ff4381fd00e9984dd6fe2974ca4fdcd5c41a3d8edd4b710cb3964668c8069e60
+	sha256sums = 39dbd235ccd81186ddd77f1525496e6cba10b02992e2ac7b13c471744f222481
+	sha256sums = be74f42479762ec8c0245ee0ca8e4bf5c752a8629722be7986d4b15397d9dd68
+	sha256sums = 980bd5d6cf470894d4e95881e51621cf50d89afa6ef39e4629d3d370d9340099
+	sha256sums = efb1933ebfeecf28d22eefa6c297432b46f4f5603ec5c031df89392466bd9281
+
+pkgname = su2-mpi-bin
