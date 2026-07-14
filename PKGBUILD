@@ -15,7 +15,7 @@ optdepends=(
 makedepends=('rust' 'cargo')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pelagos-containers/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('98f3545376e33f86e8eb95ab287f3fda1180e5ef25f56af0277bc023869febe5')
+sha256sums=('7e08fe38275d085b96e832a9409de2f01cdc1df9cee787d07b77bab145a1c536')
 
 prepare() {
     cd "$pkgname-$pkgver"
