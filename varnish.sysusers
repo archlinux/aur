@@ -1,0 +1,4 @@
+u varnishlog -:varnish "Varnish Cache Proxy"
+u vcache -:varnish "Varnish Cache Proxy"
+u varnish -:varnish "Varnish Cache Proxy"
+g varnish -

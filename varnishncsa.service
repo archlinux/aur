@@ -1,0 +1,27 @@
+[Unit]
+Description=Varnish Cache HTTP accelerator NCSA logging daemon
+After=varnish.service
+
+[Service]
+RuntimeDirectory=varnishncsa
+Type=forking
+User=varnishlog
+Group=varnish
+
+# Beware of custom formats! If you wish to use a different format using the
+# -F option for varnishncsa, please note that systemd also uses percent '%'
+# expansion in unit files: you need to double the percent signs in your
+# format string.
+#
+# For example the default format would look like this:
+#
+#     -F '%%h %%l %%u %%t "%%r" %%s %%b "%%{Referer}i" "%%{User-agent}i"'
+#
+# Alternatively you can read the ncsa format from a file using the -f
+# option in your varnishncsa command line.
+
+ExecStart=/usr/bin/varnishncsa -a -w /var/log/varnish/varnishncsa.log -D
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

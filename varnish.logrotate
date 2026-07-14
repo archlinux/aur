@@ -1,0 +1,11 @@
+/var/log/varnish/varnishncsa.log {
+  daily
+  rotate 7
+  compress
+  delaycompress
+  missingok
+  postrotate
+    systemctl -q is-active varnishncsa.service || exit 0
+    systemctl reload varnishncsa.service
+  endscript
+}

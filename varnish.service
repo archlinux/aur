@@ -1,0 +1,38 @@
+[Unit]
+Description=Varnish Cache, a high-performance HTTP accelerator
+After=network-online.target nss-lookup.target
+
+[Service]
+Type=forking
+KillMode=mixed
+
+# Maximum number of open files (for ulimit -n)
+LimitNOFILE=131072
+
+# Shared memory (VSM) segments are tentatively locked in memory. The
+# default value for vsl_space (or shorthand varnishd -l option) is 80MB.
+# There are other types of segments that would benefit from allowing
+# more memory to be locked.
+LimitMEMLOCK=100M
+
+# Enable this to avoid "fork failed" on reload.
+TasksMax=infinity
+
+# Maximum size of the corefile.
+LimitCORE=infinity
+
+# A PID file makes the main process selection deterministic.
+RuntimeDirectory=%N
+PIDFile=%t/%N/varnishd.pid
+
+ExecStart=/usr/sbin/varnishd \
+	  -a :80 \
+	  -a localhost:8443,PROXY \
+	  -f /etc/varnish/default.vcl \
+	  -P %t/%N/varnishd.pid \
+	  -p feature=+http2 \
+	  -s malloc,256m
+ExecReload=/usr/sbin/varnishreload
+
+[Install]
+WantedBy=multi-user.target
