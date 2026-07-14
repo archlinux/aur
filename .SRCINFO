@@ -12,7 +12,7 @@ pkgbase = meguri-bin
 	options = !strip
 	source = Meguri-0.1.0-linux-x86_64.AppImage::https://github.com/zabuton-app/meguri/releases/download/v0.1.0/Meguri-0.1.0-linux-x86_64.AppImage
 	source = LICENSE-0.1.0::https://raw.githubusercontent.com/zabuton-app/meguri/v0.1.0/LICENSE
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 10da4597290b30b3af4034dd8943481ac7aae827e0841d7da1e7935930b2092a
+	sha256sums = 34899600608d60479abff088841cd9d60a8552ff3017965da268efc5cffc5178
 
 pkgname = meguri-bin

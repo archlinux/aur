@@ -15,8 +15,8 @@ _appimage="${_appname}-${pkgver}-linux-x86_64.AppImage"
 source=("${_appimage}::${url}/releases/download/v${pkgver}/${_appimage}"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/zabuton-app/meguri/v${pkgver}/LICENSE")
 noextract=("${_appimage}")
-sha256sums=('SKIP'
-            'SKIP')
+sha256sums=('10da4597290b30b3af4034dd8943481ac7aae827e0841d7da1e7935930b2092a'
+            '34899600608d60479abff088841cd9d60a8552ff3017965da268efc5cffc5178')
 
 prepare() {
   chmod +x "${_appimage}"
@@ -31,8 +31,10 @@ package() {
   ln -s "/opt/${pkgname}/${_appname}.AppImage" "${pkgdir}/usr/bin/meguri"
   install -Dm644 squashfs-root/meguri.desktop \
     "${pkgdir}/usr/share/applications/meguri.desktop"
-  install -Dm644 squashfs-root/usr/share/icons/hicolor/1024x1024/apps/meguri.png \
-    "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/meguri.png"
+  local icon
+  for icon in squashfs-root/usr/share/icons/hicolor/*/apps/meguri.png; do
+    install -Dm644 "${icon}" "${pkgdir}/usr/share/icons/${icon#squashfs-root/usr/share/icons/}"
+  done
   install -Dm644 "LICENSE-${pkgver}" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
