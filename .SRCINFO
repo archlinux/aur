@@ -1,13 +1,12 @@
 pkgbase = klfc
 	pkgdesc = Tool to create advanced keyboard layouts in various formats
 	pkgver = 1.5.7
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/39aldo39/klfc
 	arch = x86_64
-	license = GPL3
-	makedepends = cabal-install
-	makedepends = ghc
+	license = GPL-3.0-only
+	makedepends = nix
 	source = https://github.com/39aldo39/klfc/archive/refs/tags/v1.5.7.tar.gz
-	md5sums = a64f3b32030a2182c20c4d00e5d5f01d
+	sha256sums = 5a052c6f59917e99593e507e460e37b6633a388a43ef9ed0401b297c723c1eba
 
 pkgname = klfc
