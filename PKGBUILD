@@ -1,9 +1,9 @@
 # Maintainer: Swâmi Petaramesh <swami AT petaramesh DOT org>
 
 pkgname=rudder-agent
-pkgver="9.1.2"
-# pkgver="9.1.0~rc2~git202604100941"
-pkgrel=2
+pkgver="9.1.3"
+# pkgver="9.1.3~git202607090118"
+pkgrel=1
 pkgdesc='Configuration management and audit tool - agent for Rudder managed systems'
 arch=('x86_64' 'aarch64')
 url='https://www.rudder.io'
@@ -24,7 +24,7 @@ source=("rudder-packages-${pkgver}::git+https://github.com/Normation/rudder-pack
 
 noextract=("rudder-sources-${pkgver}.tar.bz2")
 sha256sums=('SKIP'
-            '5ed03617738c12621d60c4c05331a1862bd8f19781eae0b2e12c20cfc9fb61e8')
+            '01428736e436d9e46b31f96e86a9045b3a335a52eb1aa48a97bef8c410b6c979')
 
 prepare() {
   # Example using the souces tarball without further patching
@@ -32,7 +32,7 @@ prepare() {
   touch ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/rudder-sources.tar.bz2
   #
   # Example applying patch only to cfengine source code
-  cp ${srcdir}/../9901_cfengine_archarm-os.patch ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/patches/cfengine/
+  # cp ${srcdir}/../9901_cfengine_archarm-os.patch ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/patches/cfengine/
   #
   # Untarring source tarball for applying additional build patches
   # tar -jf ${srcdir}/../rudder-sources-${pkgver}.tar.bz2 -C ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/ -x
