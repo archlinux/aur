@@ -1,6 +1,6 @@
 # Maintainer: Simon Winther <simonwinther@users.noreply.github.com>
 pkgname=breakd
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='Wayland-native break reminder with multi-monitor overlays'
 arch=('x86_64')
@@ -9,8 +9,8 @@ license=('MIT' 'BSD-2-Clause')
 depends=('cairo' 'glib2' 'glibc' 'graphene' 'gtk4' 'gtk4-layer-shell' 'libcanberra')
 makedepends=('cargo' 'pkgconf')
 options=('!debug')
-source=("breakd-0.1.5.tar.gz::https://github.com/simonwinther/breakd/releases/download/v0.1.5/breakd-0.1.5.tar.gz")
-sha256sums=('4a503bd8b4bb82844200ba381c9661253f5f4fbf1b754fc11370532dd986c172')
+source=("breakd-0.1.6.tar.gz::https://github.com/simonwinther/breakd/releases/download/v0.1.6/breakd-0.1.6.tar.gz")
+sha256sums=('3bc4b82ecb2ba7610aafbc9fcf9c451a6a88d2f5a16cb425ab5b698d142d4f8f')
 
 prepare() {
   cd "$pkgname-$pkgver"
