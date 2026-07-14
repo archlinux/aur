@@ -1,7 +1,7 @@
 # Maintainer: TJ Smith <tj@jarvispro.io>
 
 pkgname='anodizer-bin'
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="A Rust-native release automation tool"
 arch=('aarch64' 'x86_64')
@@ -11,9 +11,9 @@ depends=('glibc')
 conflicts=('anodizer')
 provides=('anodizer')
 source_aarch64=("anodizer-bin_${pkgver}_aarch64.tar.xz::https://github.com/tj-smith47/anodizer/releases/download/v${pkgver}/anodizer-${pkgver}-linux-arm64-extra.tar.xz")
-sha256sums_aarch64=('809ff7f11264f9e6d506f6b49c82abe0cb65d29e1256975797055d25e469b9ad')
+sha256sums_aarch64=('9013355cbdfc1971646b9a9916c77187fedb6f80fcc0f20f26cbac81b70b2a95')
 source_x86_64=("anodizer-bin_${pkgver}_x86_64.tar.xz::https://github.com/tj-smith47/anodizer/releases/download/v${pkgver}/anodizer-${pkgver}-linux-amd64-extra.tar.xz")
-sha256sums_x86_64=('6f76a1ae6fd2bb4aaae595e163301d36c9542311d03d2b52693ce86a233d1d85')
+sha256sums_x86_64=('1f8e4711f128f969d0efa770250be525e1446c9908235596b339e65e95e4ecd6')
 
 package() {
     install -Dm755 "$srcdir/anodizer" "$pkgdir/usr/bin/anodizer"
