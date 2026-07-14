@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=mqtt-alive-daemon-git
-pkgver=r20.f324ed8
+pkgver=r23.47114fe
 pkgrel=1
 pkgdesc="Reports machine aliveness and custom command checks to Home Assistant via MQTT"
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,8 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname}"
 
-  CGO_ENABLED=0 go build -trimpath \
+  # cgo so .local (mDNS) broker names resolve through glibc NSS
+  CGO_ENABLED=1 go build -trimpath \
     -ldflags "-s -w -X github.com/crmne/mqtt-alive-daemon/pkg/mqttalive.Version=${pkgver}" \
     -o mqtt-alive-daemon .
 }
