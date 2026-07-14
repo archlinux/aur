@@ -1,0 +1,10 @@
+#!/bin/bash
+
+case "$1" in
+  --simple)
+    echo "I use Arch btw"
+    ;;
+  *)
+    figlet "I use Arch btw"
+    ;;
+esac

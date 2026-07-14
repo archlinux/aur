@@ -1,0 +1,11 @@
+pkgbase = iuab
+	pkgdesc = Prints 'I use Arch btw' in ASCII
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = figlet
+	source = iuab
+	sha256sums = SKIP
+
+pkgname = iuab
