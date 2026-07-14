@@ -6,14 +6,14 @@
 
 pkgname=libzrtpcpp
 pkgver=4.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A C++ implementation of Phil Zimmermann's ZRTP specification"
 arch=('i686' 'x86_64' 'aarch64')
-url='https://github.com/wernerd/zrtpcpp'
+url='https://github.com/wernerd/ZRTPCPP'
 license=('Apache-2.0')
 depends=('ccrtp')
 makedepends=('cmake')
-source=("$pkgname-$pkgver.tar.gz::${url}/ZRTPCPP/archive/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/$pkgver.tar.gz"
         type_fix.patch
         fix-emoji-handling.patch)
 b2sums=('ffa8bb3c4a18cacf5aa0da08dcbbef225564bece3f282308352d7c3dffc2265815fac287fe219d991acde2a4745fefb750bc634708f1fe26866dd2cb4f5ebc56'
