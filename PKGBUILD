@@ -3,7 +3,7 @@
 
 pkgname=ququ-bin
 _pkgname=ququ
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="开源免费的 Wispr Flow 替代方案 - 为中文而生的桌面端语音输入工具"
 arch=(x86_64)
@@ -29,8 +29,9 @@ source=(
   "${_pkgname}.png::https://raw.githubusercontent.com/lxp731/ququ/main/frontend/assets/icon.png"
 )
 
-sha256sums=('9516ccee6cf718659a7b33843b9da58302d02c67452391d2df7b76d5e0ed0c6d'
-            '490bb03b4a2a8255ebf6bcbdb3368dc911689d8e387ba705d11bd2421db066d3')        
+sha256sums=('bf9dd8a7f9316b112e97855a0d0ba75b6cc49a68ee74a29bdbc5c3c2c5883902'
+            '490bb03b4a2a8255ebf6bcbdb3368dc911689d8e387ba705d11bd2421db066d3')
+                       
 package() {
   install -d "${pkgdir}/opt/${_pkgname}"
 
