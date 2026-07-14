@@ -18,23 +18,29 @@
 
 pkgname=hnefatafl-copenhagen
 pkgver=6.2.0
-pkgrel=1
+pkgrel=2
 real_pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client, engine, server and artificial intelligence"
 url="https://hnefatafl.org"
 license=("AGPL-3.0-or-later")
 arch=("x86_64")
-provides=("hnefatafl-copenhagen")
-conflicts=("hnefatafl-copenhagen")
 depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib" "openssl")
-makedepends=("base-devel" "clang" "llvm" "mold" "rustup" "wget")
-source=("https://codeberg.org/dcampbell/hnefatafl/archive/v$pkgver-$real_pkgrel.tar.gz")
+makedepends=("clang" "llvm" "mold" "rustup" "wget")
+source=("https://codeberg.org/dcampbell/hnefatafl/archive/v$pkgver-$real_pkgrel.tar.gz" "https://codeberg.org/dcampbell/hnefatafl/media/branch/main/default_nn.onnx")
 sha256sums=("f336f668ab3851378eef21caeb447d03453ed92d67f1e70aa392defa50dd73a1")
-build() {
-    tar -xvzf v$pkgver-$real_pkgrel.tar.gz
+
+prepare() {
     cd "hnefatafl"
 
     sed -i 's/cargo-/arch-/' src/lib.rs;
+
+    sed -i 's/games/bin/' packages/hnefatafl-ai-attacker.service
+    sed -i 's/games/bin/' packages/hnefatafl-ai-defender.service
+    sed -i 's/games/bin/' packages/hnefatafl.service
+}
+
+build() {
+    cd "hnefatafl"
 
     cargo build --release --examples
     cargo build --release
@@ -44,22 +50,11 @@ build() {
     ./target/release/hnefatafl-server --man
     ./target/release/hnefatafl-server-full --man
     ./target/release/hnefatafl-text-protocol --man
-
-    gzip --no-name --best taflzero.1
-    gzip --no-name --best hnefatafl-server.1
-    gzip --no-name --best hnefatafl-server-full.1
-    gzip --no-name --best hnefatafl-text-protocol.1
-    gzip --no-name --best hnefatafl-client.1
-
-    sed -i 's/games/bin/' packages/hnefatafl-ai-attacker.service
-    sed -i 's/games/bin/' packages/hnefatafl-ai-defender.service
-    sed -i 's/games/bin/' packages/hnefatafl.service
-
-    wget https://codeberg.org/dcampbell/hnefatafl/media/branch/main/default_nn.onnx
 }
 
 package() {
     cd "hnefatafl"
+
     install -Dm755 "target/release/examples/taflzero" -t "$pkgdir/usr/bin"
     install -Dm755 "target/release/hnefatafl-client" -t "$pkgdir/usr/bin"
     install -Dm755 "target/release/hnefatafl-server" -t "$pkgdir/usr/bin"
