@@ -3,7 +3,7 @@
 
 pkgname="n8n"
 pkgver=2.29.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services."
 arch=('x86_64')
 url="https://n8n.io"
@@ -44,7 +44,7 @@ package() {
   install -Dm644 "${pkgname}.tmpfiles"     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
   install -Dm644 "${pkgname}.user.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
 
-  npm install --cache "${srcdir}/npm-cache" --prefix="${pkgdir}/usr" --global --ignore-scripts "${srcdir}/${pkgname}-${pkgver}.tgz"
+  npm install --cache "${srcdir}/npm-cache" --prefix="${pkgdir}/usr" --global --ignore-scripts --allow-remote=all "${srcdir}/${pkgname}-${pkgver}.tgz"
   npm rebuild --cache "${srcdir}/npm-cache" --prefix="${pkgdir}/usr/lib/node_modules/${pkgname}" sqlite3
 
   local node_root="${pkgdir}/usr/lib/node_modules/${pkgname}"
