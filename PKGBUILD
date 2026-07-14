@@ -1,5 +1,5 @@
-# Maintainer: viewerofall <gallia2717@yahoo.com>
-pkgname=velogin-bin
+# Maintainer: viewerofall <joemomanugget@gmail.com>
+pkgname=velogin
 pkgver=2.1
 pkgrel=1
 pkgdesc="Graphical TTY login manager for Veil/Void systems"
