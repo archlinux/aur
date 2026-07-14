@@ -1,0 +1,13 @@
+pkgbase = lightdm-webkit2-theme-plant
+	pkgdesc = Modern LightDM WebKit2 theme with 3D model and customizable interface
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/samay15jan/lightdm-webkit2-theme-plant
+	arch = any
+	license = MIT
+	depends = lightdm
+	depends = lightdm-webkit2-greeter
+	source = lightdm-webkit2-theme-plant-1.0.0.tar.gz::https://github.com/samay15jan/lightdm-webkit2-theme-plant/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = lightdm-webkit2-theme-plant
