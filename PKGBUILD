@@ -1,6 +1,6 @@
 # Maintainer: lucial <bordiyan20035@gmail.com>
 pkgname=imagefinish
-pkgver=1.4.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A PyQt6 image editor inspired by Photoshop"
 arch=('any')
