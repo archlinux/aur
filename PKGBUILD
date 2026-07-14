@@ -1,7 +1,7 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=kglobalacceld-git
 _pkgname=kglobalacceld
-pkgver=6.6.90.r22.g099b1e9
+pkgver=6.6.90.r23.g5cc8839
 pkgrel=1
 pkgdesc='Daemon providing Global Keyboard Shortcut (Accelerator) functionality'
 arch=(any)
