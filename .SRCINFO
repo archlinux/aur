@@ -1,6 +1,6 @@
 pkgbase = pupu-git
 	pkgdesc = A simple and easy to use UI for the Ollama.(Use system-wide electron)
-	pkgver = 0.1.6.r21.g14a031d
+	pkgver = 0.1.8.r0.g327097b
 	pkgrel = 1
 	url = https://github.com/haoxiang-xu/PuPu
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = pupu-git
 	makedepends = curl
 	makedepends = gendesk
 	makedepends = jq
+	makedepends = python312
 	depends = electron40
 	depends = ollama
 	depends = python
@@ -19,7 +20,7 @@ pkgbase = pupu-git
 	depends = python-httpx
 	depends = python-werkzeug
 	depends = python-openai
-	provides = pupu=0.1.6
+	provides = pupu=0.1.8
 	conflicts = pupu
 	source = pupu.git::git+https://github.com/haoxiang-xu/PuPu.git
 	source = unchain::git+https://github.com/haoxiang-xu/unchain.git
