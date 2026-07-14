@@ -12,7 +12,7 @@ makedepends=('scdoc')
 optdepends=('python: URL encoding/decoding fallback'
 	'fzf: fuzzy-find integration')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AceMinerOjal/ztrash/archive/v$pkgver.tar.gz")
-sha256sums=('99b667572658065cce3fe74e633a82a7d0ab014c8ddcabf8cd5d8b6087d77575')
+sha256sums=('ecd175fc1f528ce2445c3fd8c28d8451a67348058f32155bfa8a85b256c8d90a')
 install=ztrash.install
 
 package() {
