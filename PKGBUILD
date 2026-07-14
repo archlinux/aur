@@ -3,7 +3,7 @@
 
 pkgbase=zsh-git
 pkgname=('zsh-git' 'zsh-doc-git')
-pkgver=5.9.0.3.rtest.387.ga91f1671c
+pkgver=5.9.0.3.rtest.436.g0cd1b3881
 pkgrel=1
 arch=('x86_64')
 url='https://www.zsh.org/'
@@ -23,7 +23,7 @@ prepare() {
   cd zsh
 
   # Set correct keymap path
-  sed -i 's#/usr/share/keymaps#/usr/share/kbd/keymaps#g' Completion/Unix/Command/_loadkeys
+  sed -i 's#/usr/share/keymaps#/usr/share/kbd/keymaps#g' Completion/Linux/Command/_kbd
 
   # Remove unneeded and conflicting completion scripts
   for _fpath in AIX BSD Cygwin Darwin Debian Mandriva openSUSE Redhat Solaris; do
@@ -67,8 +67,6 @@ build() {
 
 check() {
   cd zsh
-  # remove failing test (see commit message)
-  rm Test/K01nameref.ztst
   HOME="${srcdir}" make check
 }
 
