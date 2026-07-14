@@ -2,7 +2,7 @@
 
 pkgname=python-odxtools
 _name=${pkgname#python-}
-pkgver=11.2.0
+pkgver=11.3.0
 pkgrel=1
 epoch=
 pkgdesc="Utilities to work with the ODX standard for automotive diagnostics"
@@ -21,7 +21,6 @@ _pydeps=(
     rich
     typing_extensions 
     # AUR
-    argparse-addons
     bincopy 
     bitstruct 
     inquirerpy
@@ -39,7 +38,7 @@ makedepends=(
 options=('!strip')
 source=("${_name}::git+${url}.git#tag=${pkgver}")
 noextract=()
-sha256sums=('ed81d6f8cf74849e3b7a0ddf9d4b90f7d6a33a5f8f04eac444d5344471247cab')
+sha256sums=('941eebb716e56b4ff8fb9ecae956b2c7e5d44162b746e1d92c6b398735be3e56')
 
 build() {
     cd "${srcdir}/${_name}"
