@@ -2,7 +2,7 @@
 
 pkgname=fcitx5-schnelle-umlaute-git
 _pkgname=fcitx5-schnelle-umlaute
-pkgver=1.4.1.r588.g01c3aea
+pkgver=1.5.0.r594.g047a296
 pkgrel=1
 pkgdesc="Quick Accent equivalent for Linux/Fcitx5, map any Unicode character"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,6 @@ depends=(
     'qt6-base'
     'qt6-declarative'
     'layer-shell-qt'
-    'libxkbcommon'
     'hicolor-icon-theme'
 )
 makedepends=(
