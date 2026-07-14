@@ -5,8 +5,8 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-pure
-pkgver=152.0.5
-pkgrel=3
+pkgver=152.0.6
+pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64)
@@ -26,7 +26,6 @@ depends=(
   gtk3
   hicolor-icon-theme
   icu
-  libevent
   libgcc
   libjpeg-turbo
   libpulse
@@ -52,7 +51,8 @@ makedepends=(
   nodejs
   python
   rust
-  tinywl
+  cage
+  xorg-xwayland
   unzip
   wasi-compiler-rt
   wasi-libc
@@ -83,7 +83,7 @@ source=(
   "https://dev.gentoo.org/~juippis/mozilla/patchsets/firefox-152-patches-03.tar.xz"
 )
 sha256sums=(
-  '0a0341b05ac68834c4071665fe11f1e6729084b4e4ffcd70241097b0ad2cb224'
+  'ea220c4f8d19d4edaa20e6dadfd3c4aeb07dbed017ade2828fd814d660660f0e'
   'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
   '71fe797430198ac8c00b538dce537284cf526e48be0496698cf5a980d70c16da'
   '23f557fa7989adcae03cc9458d94716981dbcf0e9d6d52a289a2426e50b4b785'
@@ -147,7 +147,6 @@ ac_add_options --allow-addon-sideload
 export MOZ_APP_REMOTINGNAME=firefox
 
 # System libraries
-ac_add_options --with-system-libevent
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 ac_add_options --with-system-libvpx
@@ -220,7 +219,7 @@ build() {
   echo "Building browser..."
   cat >.mozconfig ../mozconfig
 
-  # Export XDG_RUNTIME_DIR for tinywl
+  # Export XDG_RUNTIME_DIR for cage
   XDG_RUNTIME_DIR="/tmp/$(id -u)-runtime-dir"
   mkdir -pm 0700 "$XDG_RUNTIME_DIR"
   export XDG_RUNTIME_DIR
@@ -228,7 +227,7 @@ build() {
   # Run tinywl compositor for PGO profiling
   coproc VIRTWL {
     WLR_RENDERER=pixman WLR_BACKENDS=headless \
-      exec dbus-run-session -- tinywl -s 'echo $WAYLAND_DISPLAY; read _; kill $PPID'
+      exec dbus-run-session -- cage -- sh -c 'echo $WAYLAND_DISPLAY; read _; kill $PPID'
   }
   local -x WAYLAND_DISPLAY
   read WAYLAND_DISPLAY <&${VIRTWL[0]}
