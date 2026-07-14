@@ -1,0 +1,20 @@
+pkgbase = tund-bin
+	pkgdesc = Lightweight virtual LAN tool that creates a private IPv4 subnet over UDP. Hub-and-spoke architecture, TUN interface, SipHash-2-4 auth, pure C.
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/danterolle/tund
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = tund
+	conflicts = tund
+	options = !strip
+	source = README-1.5.md::https://raw.githubusercontent.com/danterolle/tund/v1.5/README.md
+	source = LICENSE-1.5::https://raw.githubusercontent.com/danterolle/tund/v1.5/LICENSE
+	sha256sums = 7bf43003d34e6caf65f0a954c7bc97844cc7d0f790d427fe652072aff6bfdd9b
+	sha256sums = c01a423b28a33749256456bc1a70597afc875614705f78dd5cc4face0f994933
+	source_x86_64 = tund-x86_64-1.5::https://github.com/danterolle/tund/releases/download/v1.5/tund-linux-x86_64
+	sha256sums_x86_64 = 2a747632f1fe4ed60eded626e0e107bad39e4767f5c990ff178ff95f186da7c2
+
+pkgname = tund-bin

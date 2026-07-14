@@ -1,0 +1,5 @@
+[tund-bin]
+source = "github"
+github = "danterolle/tund"
+use_latest_release = true
+prefix = "v"
