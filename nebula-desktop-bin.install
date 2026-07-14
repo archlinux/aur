@@ -1,0 +1,15 @@
+set_chrome_sandbox_mode() {
+  if [[ -L /proc/self/ns/user ]] && unshare --user true; then
+    chmod 0755 /opt/Nebula/chrome-sandbox || true
+  else
+    chmod 4755 /opt/Nebula/chrome-sandbox || true
+  fi
+}
+
+post_install() {
+  set_chrome_sandbox_mode
+}
+
+post_upgrade() {
+  set_chrome_sandbox_mode
+}
