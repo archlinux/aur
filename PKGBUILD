@@ -12,21 +12,24 @@ _repo="https://github.com/kappy7777/kappastream"
 
 pkgname=${_pkgname}-bin
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight, account-free Twitch viewer (live stream, chat, favorites) for Linux"
 arch=('x86_64')
 url="${_repo}"
 license=('GPL-3.0-only')
 # Same runtime deps as kappastream-git; the prebuilt binary links the same
 # webkit2gtk-4.1 / gtk3 / glib2 / libsoup3 libs. streamlink resolves HLS URLs.
-# gst-libav exposes avdec_h264 (Twitch is H.264) — Arch doesn't ship a
-# patent-stripped ffmpeg, but gst-libav isn't pulled by webkit2gtk-4.1, so
-# without it streams play audio + black video.
+# WebKitGTK plays media via GStreamer; webkit2gtk-4.1 pulls only
+# gst-plugins-base-libs (the libs), not the plugin packages, so the runtime
+# media pipeline must be declared explicitly (else "autoaudiosink not found"
+# → no audio and streams never start).
 depends=(
   'streamlink'
   'webkit2gtk-4.1'
   'gtk3'
-  'gst-libav'
+  'gst-libav'           # avdec_h264 / avdec_aac (Twitch H.264 + AAC)
+  'gst-plugins-base'    # autoaudiosink + audioconvert/resample + videoconvert
+  'gst-plugins-good'    # pulsesink → PulseAudio/PipeWire
   'hicolor-icon-theme'
 )
 provides=("${_pkgname}=${pkgver}")
