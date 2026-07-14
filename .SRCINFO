@@ -1,0 +1,15 @@
+pkgbase = readcon-core
+	pkgdesc = Oxidized CON file reader/writer with C ABI (readcon)
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/lode-org/readcon-core
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = gcc-libs
+	options = !lto
+	source = readcon-core-0.14.0.tar.gz::https://github.com/lode-org/readcon-core/archive/refs/tags/v0.14.0.tar.gz
+	sha256sums = c85475027c4b74a8cca83bd395bfb18670e250d6464db64768e0127c305661eb
+
+pkgname = readcon-core
