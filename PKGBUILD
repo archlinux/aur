@@ -2,7 +2,7 @@
 # Contributor: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
 
 pkgname=nnd
-pkgver=0.72
+pkgver=0.80
 pkgrel=1
 pkgdesc="A debugger for Linux"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('glibc' 'libgcc')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('5280cdd26c15cc166a071a70f4970aaaff02eea1c1b99db3cf7713535c9ab2ad')
+sha256sums=('034e06697f06a7507f22e0433d55a8e687c9028bb229efc2c32f3f36c5925eae')
 
 prepare() {
     cd "${pkgname}-${pkgver}"

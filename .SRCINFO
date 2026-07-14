@@ -1,6 +1,6 @@
 pkgbase = nnd
 	pkgdesc = A debugger for Linux
-	pkgver = 0.72
+	pkgver = 0.80
 	pkgrel = 1
 	url = https://github.com/al13n321/nnd
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = nnd
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
-	source = nnd-0.72.tar.gz::https://github.com/al13n321/nnd/archive/v0.72.tar.gz
-	sha256sums = 5280cdd26c15cc166a071a70f4970aaaff02eea1c1b99db3cf7713535c9ab2ad
+	source = nnd-0.80.tar.gz::https://github.com/al13n321/nnd/archive/v0.80.tar.gz
+	sha256sums = 034e06697f06a7507f22e0433d55a8e687c9028bb229efc2c32f3f36c5925eae
 
 pkgname = nnd
