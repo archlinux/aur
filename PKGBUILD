@@ -1,6 +1,6 @@
 # Maintainer: NEOAPPS <neo@obsidianos.xyz> <asd22.info@gmail.com>
 pkgname=mingw-w64-gtk3
-pkgver=3.24.51
+pkgver=3.24.52
 pkgrel=1
 pkgdesc='GObject-based multi-platform GUI toolkit (mingw-w64)'
 arch=('any')
@@ -27,13 +27,12 @@ depends=(
 options=('!strip' '!buildflags' 'staticlibs')
 source=(
   "https://gitlab.gnome.org/GNOME/gtk/-/archive/${pkgver}/gtk-${pkgver}.tar.gz")
-sha256sums=(
-  'f3c87a20b3380b69efa720f412a0fea6ab6edce021f8ffaf5c4531fe1321b24f')
+sha256sums=('e62514019679f831fcb37f3d294a761c3a6c14f1d346745ad11d70c2be17146e')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
 prepare() {
-  cd "${srcdir}/gtk+-${pkgver}"
+  cd "${srcdir}/gtk-${pkgver}"
   local source_file
   for source_file in "${source[@]}"; do
     case "${source_file}" in
@@ -45,7 +44,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/gtk+-${pkgver}"
+  cd "${srcdir}/gtk-${pkgver}"
   for _arch in "${_architectures[@]}"; do
     mkdir -p "build-${_arch}"
     cd "build-${_arch}"
@@ -63,7 +62,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/gtk+-${pkgver}"
+  cd "${srcdir}/gtk-${pkgver}"
   for _arch in "${_architectures[@]}"; do
     cd "build-${_arch}"
     DESTDIR="${pkgdir}" ninja install
