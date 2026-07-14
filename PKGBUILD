@@ -1,6 +1,6 @@
 # Maintainer: Crymfox <sameur.bh@gmail.com>
 pkgname=ytglean-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="YouTube transcript aggregation and digest system with MCP server (prebuilt binary)"
 arch=('x86_64' 'aarch64')
