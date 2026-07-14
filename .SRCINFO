@@ -1,0 +1,17 @@
+pkgbase = twc-rs
+	pkgdesc = Fast CLI and interactive TUI dashboard for managing Timeweb Cloud infrastructure
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = https://github.com/RAprogramm/twc-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
+	options = !lto
+	source = twc-rs-4.0.3.tar.gz::https://github.com/RAprogramm/twc-rs/archive/v4.0.3.tar.gz
+	sha256sums = a6e675b812363adde30559d17c47ae23536c5435e7f5403a9ce180f5f36b96a9
+
+pkgname = twc-rs

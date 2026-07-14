@@ -1,0 +1,4 @@
+[twc-rs]
+source = "git"
+git = "https://github.com/RAprogramm/twc-rs.git"
+prefix = "v"
