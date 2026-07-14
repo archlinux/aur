@@ -6,10 +6,10 @@
 # Arch package from the GitHub release and installs its payload. That makes
 # `makepkg`/`yay` work standalone for end users (see issue #5).
 #
-# 1.20186.9, pkgrel, and 936718f4d72b4107c56e580b2999da453d780b95775bf4ec395d80f202896d58 are substituted by the publish-aur
+# 1.21459.0, pkgrel, and e01b86ff48a2abc9b44c368ded38929f7befef189e7c4668966e516b74968df0 are substituted by the publish-aur
 # CI step before this is pushed to the AUR.
 pkgname=claude-desktop-hardened-bin
-pkgver=1.20186.9
+pkgver=1.21459.0
 pkgrel=1
 pkgdesc="Claude Desktop for Linux (hardened) — bubblewrap sandboxing, credential redaction"
 arch=('x86_64')
@@ -38,17 +38,17 @@ options=('!strip' '!debug')
 # its payload (usr/) in package(); noextract stops makepkg from auto-unpacking
 # it (which would also dump .PKGINFO/.MTREE into srcdir).
 #
-# claude-desktop-hardened-bin-1.20186.9-1-x86_64.pkg.tar.zst (the exact asset filename) and v1.20186.9-1 (the release tag) are
+# claude-desktop-hardened-bin-1.21459.0-1-x86_64.pkg.tar.zst (the exact asset filename) and v1.21459.0-1 (the release tag) are
 # substituted by publish-aur from the actual release — NOT reconstructed
 # from pkgver/pkgrel. They diverge: the AUR pkgrel tracks the release build
 # number (e.g. 4), but the artifact's own filename carries the CI-internal
 # pkgrel which is always 1 (claude-desktop-hardened-bin-<ver>-1-x86_64...),
 # and the download path uses the release tag (v<ver>-4). Discovering both
 # avoids guessing.
-_pkgfile="claude-desktop-hardened-bin-1.20186.9-1-x86_64.pkg.tar.zst"
-source=("${_pkgfile}::${url}/releases/download/v1.20186.9-1/${_pkgfile}")
+_pkgfile="claude-desktop-hardened-bin-1.21459.0-1-x86_64.pkg.tar.zst"
+source=("${_pkgfile}::${url}/releases/download/v1.21459.0-1/${_pkgfile}")
 noextract=("${_pkgfile}")
-sha256sums=('936718f4d72b4107c56e580b2999da453d780b95775bf4ec395d80f202896d58')
+sha256sums=('e01b86ff48a2abc9b44c368ded38929f7befef189e7c4668966e516b74968df0')
 
 package() {
     # Extract just the filesystem payload from the prebuilt package.
