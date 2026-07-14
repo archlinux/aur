@@ -9,11 +9,10 @@
 
 _pkgname=kappastream
 _repo="https://github.com/kappy7777/kappastream"
-_release="${_repo}/releases/download/v${pkgver}"
 
 pkgname=${_pkgname}-bin
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight, account-free Twitch viewer (live stream, chat, favorites) for Linux"
 arch=('x86_64')
 url="${_repo}"
@@ -36,7 +35,7 @@ conflicts=("${_pkgname}" "${_pkgname}-git")
 # metainfo + Wayland-workaround wrapper + icons (built by
 # packaging/aur/build-release-tarball.sh). No makedepends, no build() — this
 # is a pure -bin repackage.
-source=("${_release}/${_pkgname}-${pkgver}-x86_64.tar.gz")
+source=("${_repo}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.tar.gz")
 sha256sums=('269ed72112800da6555a7544dafca83932585635af5bb02d76b67c7754a77f00')   # kappastream-0.1.3-x86_64.tar.gz (v0.1.3 release asset)
 
 package() {
