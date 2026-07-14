@@ -2,7 +2,7 @@
 # Co-Maintainer: NyaKang <CoderKang@hotmail.com>
 
 pkgname=nyaterm-bin
-pkgver=1.1.14
+pkgver=1.1.15
 _pkgverfull=${pkgver}
 pkgrel=1
 pkgdesc="A modern, high-performance terminal workspace built with Tauri 2, React, and Rust"
@@ -27,8 +27,8 @@ source=("LICENSE-MIT::$url/raw/v$_pkgverfull/LICENSE"
         "nyaterm.sh")
 sha256sums=('baa8a0ccd4a43e998a0bd47172f03f548bcd0e8cb0f6689ca9ba8973b4d5ca49'
             'aa3c571e680b3023cb62778c9c15e80491abaf23bd794018be1801ef581b6d49')
-sha256sums_x86_64=('e0e5ed8471072b70b3c16e50e64435d7133c934553d387784cd79710e4767d65')
-sha256sums_aarch64=('c64e9e9c7d5f7fc7bf711fa565311c89392aaf317232e7e98dd9075423cf8d93')
+sha256sums_x86_64=('426b1a30bf63d381675180710202062131c797767b77b8ad058305f6df054505')
+sha256sums_aarch64=('06052c15853a69ef09ea59d398aec60b2ad9e3572309dfb6002c408f489ce7f8')
 source_x86_64=("$pkgname-$_pkgverfull-$CARCH.deb::$url/releases/download/v$_pkgverfull/NyaTerm_${_pkgverfull}_linux_x64.deb")
 source_aarch64=("$pkgname-$_pkgverfull-aarch64.deb::$url/releases/download/v$_pkgverfull/NyaTerm_${_pkgverfull}_linux_arm64.deb")
 
