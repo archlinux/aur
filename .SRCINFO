@@ -1,6 +1,6 @@
 pkgbase = chowdy
 	pkgdesc = Resident C++ face-auth daemon for Linux (IR-only, PAM)
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/q-artem/chowdy
 	install = chowdy.install
@@ -17,7 +17,7 @@ pkgbase = chowdy
 	depends = nlohmann-json
 	depends = tomlplusplus
 	backup = etc/chowdy/config.toml
-	source = chowdy-0.1.2.tar.gz::https://github.com/q-artem/chowdy/archive/v0.1.2.tar.gz
-	sha256sums = b56ca3a9d11bd582e41d863b3026e8a71790d3c20d26a175a846ac84b2d07ddb
+	source = chowdy-0.1.3.tar.gz::https://github.com/q-artem/chowdy/archive/v0.1.3.tar.gz
+	sha256sums = f992603103bad88f1d4f6b59ca8ed2d33fb577336dab069da1174eae72a1497b
 
 pkgname = chowdy

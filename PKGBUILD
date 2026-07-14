@@ -8,7 +8,7 @@
 # для быстрой итерации.
 
 pkgname=chowdy
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Resident C++ face-auth daemon for Linux (IR-only, PAM)'
 arch=('x86_64')
@@ -32,7 +32,7 @@ backup=('etc/chowdy/config.toml')
 install=chowdy.install
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/q-artem/chowdy/archive/v$pkgver.tar.gz")
-sha256sums=('b56ca3a9d11bd582e41d863b3026e8a71790d3c20d26a175a846ac84b2d07ddb')
+sha256sums=('f992603103bad88f1d4f6b59ca8ed2d33fb577336dab069da1174eae72a1497b')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
