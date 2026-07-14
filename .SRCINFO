@@ -1,0 +1,29 @@
+pkgbase = cdev-mcp
+	pkgdesc = Claude DevContainer MCP Gateway (desktop daemon)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://git.kolosowscy.pl/cdev/desktop
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = extra-cmake-modules
+	makedepends = qt6-tools
+	makedepends = pkgconf
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-websockets
+	depends = kirigami
+	depends = knotifications
+	depends = kstatusnotifieritem
+	depends = libslirp
+	depends = qrencode
+	depends = libsodium
+	source = git+https://git.kolosowscy.pl/cdev/desktop.git#tag=v0.1.1
+	source = git+https://git.kolosowscy.pl/cdev/protocol.git
+	sha256sums = 892613d6de7ae19d2b54dcd3bee9acaf348e6bff056d66a31900d1c630e8de6a
+	sha256sums = SKIP
+
+pkgname = cdev-mcp
