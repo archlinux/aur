@@ -2,7 +2,7 @@
 pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask-multiphysics.org'
@@ -23,7 +23,7 @@ sha512sums=('7e00d655601ab1c097505e4202713f0708bd6137b01fc5e47b162d788399fb95669
             '5ed3d30432a3999894f137da0eeed73985c3ba7155458b3c25dbda2b91b44c23a821da880881c71cd224945133ed8290da04ee1caa079533e746b6d0070e46be')
 
 prepare() {
-  sed -i 's#fs_case_sensitive(${CMAKE_INSTALL_PREFIX}/bin fs_is_case_sensitive)#set(fs_is_case_sensitive BOOL TRUE)#g' ${pkgname}-${pkgver}/src/CMakeLists.txt
+  sed -i 's#fs_case_sensitive(${CMAKE_INSTALL_PREFIX}/bin fs_is_case_sensitive)#set(fs_is_case_sensitive BOOL FALSE)#g' ${pkgname}-${pkgver}/src/CMakeLists.txt
 }
 
 build() {
