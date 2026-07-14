@@ -1,0 +1,21 @@
+pkgbase = unreal-engine-manager
+	pkgdesc = A Python-based Linux application for managing Unreal Engine installations.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/matheusvilano/unreal-engine-manager/
+	install = package.install
+	arch = any
+	license = Apache-2.0
+	depends = python
+	depends = tk
+	optdepends = android-ndk: Android build support
+	optdepends = jetbrains-toolbox: For CLion/Rider/PyCharm
+	optdepends = code: VS Code support
+	conflicts = unreal-engine
+	conflicts = unreal-engine-4
+	conflicts = unreal-engine-git
+	conflicts = unreal-engine-bin
+	source = git+https://github.com/matheusvilano/unreal-engine-manager.git#tag=e4cb1bfecc360d2aa56696a529f8bb7400bbe311
+	sha256sums = SKIP
+
+pkgname = unreal-engine-manager
