@@ -31,7 +31,7 @@ source_x86_64=(
 
 
 sha256sums=('debddc0c8728bcbc552d0826ef0b5a4cd33e20df01752baa85e54498ec8ec3d5')
-sha256sums_x86_64=('4655eb2e92cbb915668a628ba528f90419bd0af492d116043ed7a1e74d0f06c4')
+sha256sums_x86_64=('d361c18d65eee884d785331ac0a94ed0bd4a57beac6911e78fc5241d85e2acf8')
 
 prepare() {
     sed -i -e "
