@@ -8,7 +8,7 @@ license=('Unlicense')
 depends=('wayland')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Lecer69/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('bed0182ac859317ff5c2c8aa3e2b0a94774b5bc771814d32cef951aae52e8391')
 
 build() {
     cd "$pkgname-$pkgver"

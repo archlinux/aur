@@ -8,6 +8,6 @@ pkgbase = wl-gammactl-rust
 	makedepends = cargo
 	depends = wayland
 	source = wl-gammactl-rust-0.1.0.tar.gz::https://github.com/Lecer69/wl-gammactl-rust/archive/v0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = bed0182ac859317ff5c2c8aa3e2b0a94774b5bc771814d32cef951aae52e8391
 
 pkgname = wl-gammactl-rust
