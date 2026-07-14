@@ -1,6 +1,6 @@
 pkgbase = wayvr
 	pkgdesc = Your way to enjoy VR on Linux! Access your Wayland/X11 desktop from SteamVR/Monado (OpenVR+OpenXR support)
-	pkgver = 26.7.0
+	pkgver = 26.7.1
 	pkgrel = 2
 	url = https://github.com/wayvr-org/wayvr
 	arch = x86_64
@@ -29,11 +29,12 @@ pkgbase = wayvr
 	depends = openxr
 	depends = openvr
 	depends = dav1d
+	depends = xwayland-satellite
 	provides = wayvr
 	conflicts = wayvr
 	replaces = wlx-overlay-s
 	options = !lto
-	source = wayvr-26.7.0.tar.gz::https://github.com/wayvr-org/wayvr/archive/refs/tags/v26.7.0.tar.gz
-	sha256sums = 4ca0d3c5cbd975a3c6938761cd595a9582465adf79681c7a003c40c131f8691d
+	source = wayvr-26.7.1.tar.gz::https://github.com/wayvr-org/wayvr/archive/refs/tags/v26.7.1.tar.gz
+	sha256sums = f0bd28664ae06f76c29c985726885caf94164e5e503dd3dfb14d74cb046339d6
 
 pkgname = wayvr

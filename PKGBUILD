@@ -1,7 +1,7 @@
 # Maintainer: galister <galister-dev at pm dot me>
 
 pkgname=wayvr
-pkgver=26.7.0
+pkgver=26.7.1
 pkgrel=2
 pkgdesc="Your way to enjoy VR on Linux! Access your Wayland/X11 desktop from SteamVR/Monado (OpenVR+OpenXR support)"
 url="https://github.com/wayvr-org/wayvr"
@@ -23,7 +23,8 @@ depends=(glibc
          alsa-lib
          openxr
          openvr
-         dav1d)
+         dav1d
+         xwayland-satellite)
 makedepends=(git
              cargo
              python3
@@ -35,7 +36,7 @@ replaces=("wlx-overlay-s")
 conflicts=("$pkgname")
 provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("4ca0d3c5cbd975a3c6938761cd595a9582465adf79681c7a003c40c131f8691d")
+sha256sums=("f0bd28664ae06f76c29c985726885caf94164e5e503dd3dfb14d74cb046339d6")
 options=(!lto)
 
 # Use debug
