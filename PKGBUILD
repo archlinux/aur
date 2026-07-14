@@ -3,7 +3,7 @@
 _plug=mlrt
 pkgname=vapoursynth-plugin-${_plug}-migx-runtime-git
 pkgver=786.83b0180
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for VapourSynth: ${_plug} (MIGraphX runtime)"
 arch=('x86_64')
 url='https://github.com/AmusementClub/vs-mlrt'
@@ -56,20 +56,16 @@ build() {
 }
 
 package() {
-	# The cmake script puts the library inside a `lib` dir, which we don't want, so we have to install it manually
-	install -Dm755 "build/libvsmigx.so" "${pkgdir}/usr/lib/vapoursynth/libvsmigx.so"
-	# The plugin looks for this binary in this specific location, so make a symlink to it
-	mkdir "${pkgdir}/usr/lib/vapoursynth/vsmlrt-hip"
-	ln -s /opt/rocm/bin/migraphx-driver "${pkgdir}/usr/lib/vapoursynth/vsmlrt-hip/migraphx-driver"
-	for i in $(find models* -type f); do install -Dm644 "${i}" "${pkgdir}/usr/lib/vapoursynth/${i}"; done
+	PLUGINDIR=$(python -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")
 
-	_sitedir=$(python -c 'import site; print(site.getsitepackages())')
-	# remove first two and last two characters, which are array and string delimiters
-	_sitedir="${_sitedir#?}"
-	_sitedir="${_sitedir#?}"
-	_sitedir="${_sitedir%?}"
-	_sitedir="${_sitedir%?}"
-	install -Dm644 "${_plug}/scripts/vsmlrt.py" "${pkgdir}${_sitedir}/vsmlrt.py"
+	# The cmake script puts the library inside a `lib` dir, which we don't want, so we have to install it manually
+	install -Dm755 "build/libvsmigx.so" "${pkgdir}${PLUGINDIR}/libvsmigx.so"
+	# The plugin looks for this binary in this specific location, so make a symlink to it
+	mkdir "${pkgdir}${PLUGINDIR}/vsmlrt-hip"
+	ln -s /opt/rocm/bin/migraphx-driver "${pkgdir}${PLUGINDIR}/vsmlrt-hip/migraphx-driver"
+	for i in $(find models* -type f); do install -Dm644 "${i}" "${pkgdir}${PLUGINDIR}/${i}"; done
+
+	install -Dm644 "${_plug}/scripts/vsmlrt.py" "${pkgdir}${PLUGINDIR}/vsmlrt.py"
 
 	install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
 	install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

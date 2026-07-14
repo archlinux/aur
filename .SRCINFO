@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-mlrt-migx-runtime-git
 	pkgdesc = Plugin for VapourSynth: mlrt (MIGraphX runtime)
 	pkgver = 786.83b0180
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AmusementClub/vs-mlrt
 	arch = x86_64
 	license = GPL-3.0-only
