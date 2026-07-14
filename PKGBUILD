@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=kikitan-translator
-pkgver=2.0.0
+pkgver=2.0.0.alpha3
 pkgrel=1
 pkgdesc="Kikitan Translator, a realtime VRChat Translator"
 arch=('x86_64')
@@ -43,7 +43,7 @@ sha256sums=(
 )
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    grep -m1 '<Version>' KikitanTranslator.Photino/KikitanTranslator.Photino.csproj | sed 's/.*<Version>\(.*\)<\/Version>.*/\1/' | tr -d '[:space:]'
+    grep -m1 '<Version>' KikitanTranslator.Photino/KikitanTranslator.Photino.csproj | sed 's/.*<Version>\(.*\)<\/Version>.*/\1/' | tr -d '[:space:]' | sed "s/-/./g"
 }
 
 prepare() {
@@ -68,7 +68,7 @@ build() {
     dotnet tool install -g vpk
     export PATH="$PATH:${HOME}/.dotnet/tools"
 
-    dotnet build -c Release -r linux-x64 KikitanTranslator.Photino/
+    dotnet build -c Release -r linux-x64 /p:SkipFlatpak=true KikitanTranslator.Photino/
 }
 
 package() {
@@ -87,7 +87,7 @@ package() {
     install -dm755 "${pkgdir}/opt/${pkgname}"
     cp -r squashfs-root/. "${pkgdir}/opt/${pkgname}/"
 
-    install -Dm644 "KikitanTranslator.Photino/Resources/wwwroot/kikitan_logo.ico" "${pkgdir}/usr/share/pixmaps/${pkgname}.ico"
+    install -Dm644 "KikitanTranslator.Photino/Resources/wwwroot/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
     install -Dm644  "${srcdir}/kikitan-translator.desktop"  "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 

@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=Kikitan Translator
 Comment=Realtime VRChat Translator
-Exec=/usr/bin/kikitan
-Icon=/usr/share/pixmaps/kikitan-translator.ico
+Exec=/usr/bin/kikitan-translator
+Icon=/usr/share/pixmaps/kikitan-translator.png
 Terminal=false
 Type=Application
 StartupWMClass=KikitanTranslator.Photino
