@@ -1,0 +1,14 @@
+pkgbase = horde-bin
+	pkgdesc = Distributed multi-agent system built on the Google V2 ADK
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/geoffjay/horde
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = horde
+	conflicts = horde
+	source = https://github.com/geoffjay/horde/releases/download/v0.2.0/horde_0.2.0_linux_amd64.tar.gz
+	sha256sums = SKIP
+
+pkgname = horde-bin
