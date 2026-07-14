@@ -5,11 +5,11 @@
 # Contributor: Florian Pritz <bluewind@archlinux.org>
 
 pkgname=perl-log-any
+pkgdesc='Bringing loggers and listeners together'
 pkgver=1.720
 pkgrel=1
-pkgdesc='Bringing loggers and listeners together'
-arch=('any')
 url='https://metacpan.org/dist/Log-Any'
+arch=(any)
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 # See https://metacpan.org/dist/Log-Any/source/Makefile.PL
 makedepends=(
@@ -39,7 +39,7 @@ source=("https://cpan.metacpan.org/authors/id/P/PR/PREACTION/Log-Any-${pkgver}.t
 b2sums=('1b9a713e7c99ede7aeaa0d58ae4b6a5ed7bdbf8f8202d2924aa9f6200841dc6cc4e0bface283bcdd66caf55d07ad91143074f24387bd37afc1a8fde17ef39bb9')
 
 build() {
-  cd "${srcdir}/Log-Any-${pkgver}"
+  cd "Log-Any-${pkgver}"
 
   unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
@@ -48,14 +48,14 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/Log-Any-${pkgver}"
+  cd "Log-Any-${pkgver}"
 
   unset PERL5LIB PERL_LOCAL_LIB_ROOT
   make test
 }
 
 package() {
-  cd "${srcdir}/Log-Any-${pkgver}"
+  cd "Log-Any-${pkgver}"
 
   unset PERL5LIB PERL_LOCAL_LIB_ROOT
   make install INSTALLDIRS=vendor DESTDIR="${pkgdir}"
