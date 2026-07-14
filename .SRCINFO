@@ -1,6 +1,6 @@
 pkgbase = firefly-iii
 	pkgdesc = PHP personal finances manager
-	pkgver = 6.6.3
+	pkgver = 6.6.6
 	pkgrel = 1
 	url = https://github.com/firefly-iii/firefly-iii
 	install = firefly-iii.install
@@ -19,10 +19,10 @@ pkgbase = firefly-iii
 	options = !strip
 	options = !debug
 	backup = etc/webapps/firefly-iii/config.env
-	source = firefly-iii-6.6.3.tar.gz::https://github.com/firefly-iii/firefly-iii/releases/download/v6.6.3/FireflyIII-v6.6.3.tar.gz
+	source = firefly-iii-6.6.6.tar.gz::https://github.com/firefly-iii/firefly-iii/releases/download/v6.6.6/FireflyIII-v6.6.6.tar.gz
 	source = firefly-iii-cron.service
 	source = firefly-iii-cron.timer
-	sha256sums = b6405c4ad208141997992ac109b77768b0915de4b7021e104bf0fb072a3abe57
+	sha256sums = 49d51ca067fdf3ceec22e23a7a3f5b16d29cfee3ad708235b079723c48978b40
 	sha256sums = SKIP
 	sha256sums = SKIP
 
