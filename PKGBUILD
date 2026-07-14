@@ -9,10 +9,10 @@
   depends=('glibc' 'zlib' 'fontconfig' 'freetype2' 'libx11' 'libxcb' 'libxkbcommon' 'libice' 'libsm' 'vlc')
   provides=('ferrumpix')
   conflicts=('ferrumpix')
-  source=("https://github.com/Bitpainter75/FerrumPix/releases/download/v${pkgver}/FerrumPix-${pkgver}-linux-x64.zip"
-          "io.github.Bitpainter75.FerrumPix.desktop::https://raw.githubusercontent.com/Bitpainter75/FerrumPix/${pkgver}/packaging/io.github.Bitpainter75.FerrumPix.desktop"
-          "io.github.Bitpainter75.FerrumPix.png::https://raw.githubusercontent.com/Bitpainter75/FerrumPix/${pkgver}/Assets/FerrumPix_Icon.png"
-          "LICENSE::https://raw.githubusercontent.com/Bitpainter75/FerrumPix/v${pkgver}/LICENSE")
+  source=("https://github.com/Bitpainter75/FerrumPix/releases/download/${pkgver}/FerrumPix-${pkgver}-linux-x64.zip"
+  "https://raw.githubusercontent.com/Bitpainter75/FerrumPix/main/packaging/io.github.Bitpainter75.FerrumPix.desktop"
+  "https://raw.githubusercontent.com/Bitpainter75/FerrumPix/main/Assets/FerrumPix_Icon.png"
+  "https://raw.githubusercontent.com/Bitpainter75/FerrumPix/main/LICENSE")
   sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
   package() {
