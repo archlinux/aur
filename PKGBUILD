@@ -2,7 +2,7 @@
 
 pkgname=varnish-modules
 pkgver=9.0.3
-pkgrel=2
+pkgrel=3
 _srcver=0.28.0
 pkgdesc="A bundle of commonly useful Varnish vmods"
 depends=("varnish=$pkgver-$pkgrel")
