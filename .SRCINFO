@@ -13,8 +13,8 @@ pkgbase = mqtt-alive-daemon
 	options = !debug
 	options = !strip
 	source_x86_64 = https://github.com/crmne/mqtt-alive-daemon/releases/download/v0.4.0/mqtt-alive-daemon_0.4.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = ac596f085425ac707b249ac823f0bf68e6a87e85f9e23cf04e406d967a2d5133
 	source_aarch64 = https://github.com/crmne/mqtt-alive-daemon/releases/download/v0.4.0/mqtt-alive-daemon_0.4.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = 2d1e480acfd3222a08bc32bf058feeb784e71ab63339391c5cd6af8c6ed1a99b
 
 pkgname = mqtt-alive-daemon
