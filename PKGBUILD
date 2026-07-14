@@ -1,7 +1,7 @@
 # Maintainer: Kohei Wada <program3152019@gmail.com>
 pkgname=taskdog
 _pkgname=taskdog
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Task management system with CLI/TUI and a REST API server (GTD, time tracking, schedule optimization)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 makedepends=('uv')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/Kohei-Wada/taskdog/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('317eeed66b9029a6221aad026b1743a555074187067c1b44b13bc4092a02664d')
+sha256sums=('549d831d924179912ceb3197b116febe2f5e3ad116584c20fe2237dbf7ebba15')
 options=('!strip')
 
 _prefix=/usr/lib/taskdog
