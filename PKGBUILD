@@ -72,6 +72,7 @@ source=(
   "git+https://github.com/tdlib/td.git#tag=${_td_commit}"
   "https://github.com/yukigram/yukigram/archive/refs/tags/v${pkgver}.${pkgrel}.tar.gz"
   "0000-Fix-Pony-fix-lang-res-file-loc.patch"
+  "2ed2083b5509d848980379fb6ee7584a978d70e3.patch"
 )
 
 sha512sums=(
@@ -79,6 +80,7 @@ sha512sums=(
   SKIP
   '3a7a731d59abe13989a677228c524a72009a8a44cb05a7578c613f3c9f03a95c8dc7aea3ddc83b0edd0d30462752e7f42ac246cd1e9f9c37054a26adab352df7'
   '392c4ca2a7b6dc276a49f5281949ec4f96707c881113441c1c717e5fd6cc689a85634a49bbd6f55150d09340be298cb25bf2b5d54b1a2fe87b5baa87f1c0ea72'
+  '88deb317201af4c2aa274959b59e82385b2f63d845208525104cb0d158750ecd0ab8ce1cfc7848b13a16efdfa3859765683ef54e2aca1adab19229726abbd813'
 )
 
 
@@ -88,6 +90,7 @@ prepare() {
     patch -Np1 <"$p"
   done
   patch -Np1 < "$srcdir"/0000-Fix-Pony-fix-lang-res-file-loc.patch
+  patch -Np1< "$srcdir"/2ed2083b5509d848980379fb6ee7584a978d70e3.patch
 }
 
 build() {
