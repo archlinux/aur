@@ -1,0 +1,17 @@
+pkgbase = tristar-esports-git
+	pkgdesc = TriStar Esports client built with Qt6 WebEngine
+	pkgver = r1.542d131
+	pkgrel = 1
+	url = https://gitee.com/jxc20120414/tristar-esports
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = qt6-base
+	makedepends = git
+	depends = qt6-webengine
+	provides = tristar-esports
+	conflicts = tristar-esports
+	source = tristar-esports::git+https://gitee.com/jxc20120414/tristar-esports.git
+	sha256sums = SKIP
+
+pkgname = tristar-esports-git
