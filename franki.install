@@ -128,7 +128,16 @@ _enable_user_services() {
     local _uid; _uid=$(id -u "$_user" 2>/dev/null) || return 1
     local _xdg="/run/user/$_uid"
 
-    # Comandos que necesitan correr en el contexto del usuario
+    # Comandos que necesitan correr en el contexto del usuario.
+    # franki_os/franki_cerebelo quedan deshabilitados: Tauri los arranca bajo
+    # demanda (BackendGate.tsx) -- no tiene sentido correr el monolito Python +
+    # indexer Rust en cada boot si el operador ni abrio la app. Sinapsis Externa
+    # es la excepcion (2026-07-14, decision del operador): no tiene disparador
+    # de socket activation propio (WhatsApp/Telegram necesitan una conexion
+    # saliente ya viva para recibir algo, ver comentario en la unit), y su
+    # arranque sin credenciales configuradas degrada de forma segura
+    # (_autostart_wa/_autostart_corti chequean sesion/vault antes de hacer
+    # nada real) -- se habilita por defecto en vez de requerir un toggle manual.
     runuser -l "$_user" -c "
         export XDG_RUNTIME_DIR=$_xdg
         export DBUS_SESSION_BUS_ADDRESS=unix:path=$_xdg/bus
@@ -137,8 +146,8 @@ _enable_user_services() {
         systemctl --user disable franki_os.socket 2>/dev/null || true
         systemctl --user disable franki_cerebelo.service 2>/dev/null || true
         systemctl --user disable franki_cerebelo.socket 2>/dev/null || true
-        systemctl --user disable franki_sinapsis_externa.service 2>/dev/null || true
-    " 2>/dev/null && echo " >> [FRANKI] Auto-arranque deshabilitado. Activa desde Ajustes > Sistema si lo deseas." || \
+        systemctl --user enable --now franki_sinapsis_externa.service 2>/dev/null || true
+    " 2>/dev/null && echo " >> [FRANKI] NEXUS/Cerebelo: bajo demanda (Tauri los arranca). Sinapsis Externa (WA/TG): habilitado." || \
         echo " >> [WARN] No se pudo configurar systemd."
 }
 

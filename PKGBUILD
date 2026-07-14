@@ -1,6 +1,6 @@
 # Maintainer: Samuel Paredes <sam.paredes.g@gmail.com>
 pkgname=franki-os-git
-pkgver=r1017.aa80eaf
+pkgver=r1019.f92b68d
 pkgrel=1
 pkgdesc="Federated Recursive Artificial Neural Knowledge Interface - Neural OS"
 arch=('x86_64')
@@ -181,6 +181,14 @@ package() {
     # franki_sinapsis_externa.service: WhatsApp+Telegram, always-on (sin socket activation)
     install -Dm644 "$srcdir/franki/packaging/systemd/franki-sinapsis-externa.service" \
         "$pkgdir/usr/lib/systemd/user/franki_sinapsis_externa.service"
+    # franki.target: agrupacion pura (PartOf= en las 3 units de arriba) para
+    # reinicio conjunto opt-in -- ver backend/bin/franki-restart-all
+    install -Dm644 "$srcdir/franki/packaging/systemd/franki.target" \
+        "$pkgdir/usr/lib/systemd/user/franki.target"
+    # franki-restart-all: reinicia el grupo completo + relanza la GUI Tauri,
+    # pensado para usarse tras reinstalar el paquete (ver comentario en el script)
+    install -Dm755 "$srcdir/franki/backend/bin/franki-restart-all" \
+        "$pkgdir/usr/bin/franki-restart-all"
 
     # 9. Regla udev para uinput (Manos — captura de teclado/raton en Wayland)
     echo 'KERNEL=="uinput", GROUP="uinput", MODE="0660", OPTIONS+="static_node=uinput"' \
