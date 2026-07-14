@@ -1,0 +1,18 @@
+pkgbase = leafwiki-git
+	pkgdesc = Lightweight self-hosted wiki with Markdown files on disk
+	pkgver = r1034.f98ab206
+	pkgrel = 1
+	url = https://github.com/perber/leafwiki
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go>=1.26
+	makedepends = nodejs>=26
+	makedepends = npm
+	provides = leafwiki
+	conflicts = leafwiki-bin
+	source = git+https://github.com/perber/leafwiki.git
+	b2sums = SKIP
+
+pkgname = leafwiki-git
