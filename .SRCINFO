@@ -1,0 +1,22 @@
+pkgbase = krux-linkmapper-git
+	pkgdesc = Terminalcore link mapper — crawl the web as a force-directed 88x31 graph
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/numbpill3d/krux-linkmapper
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-fastapi
+	depends = python-aiohttp
+	depends = python-pywebview
+	depends = python-gobject
+	depends = webkit2gtk-4.1
+	depends = uvicorn
+	source = git+https://github.com/numbpill3d/krux-linkmapper.git
+	md5sums = SKIP
+
+pkgname = krux-linkmapper-git
