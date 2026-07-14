@@ -1,6 +1,6 @@
 # Maintainer: guitaripod <guitaripod@icloud.com>
 pkgname=emojipick
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='A fast, frecency-ranked emoji picker for KDE Plasma Wayland with a native global shortcut'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('gtk4' 'wl-clipboard' 'noto-fonts-emoji' 'ydotool')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/guitaripod/emojipick/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c18f8973730bc20c6dfc228b0fbba92f53b7ee5837de815c55979bee54f6c7dd')
+sha256sums=('bddb7c731406cb95ffcb5bef957604618298ff6e26cd01514dd3352cead9eb32')
 
 prepare() {
     cd "$pkgname-$pkgver"
