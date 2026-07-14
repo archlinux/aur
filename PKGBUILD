@@ -2,8 +2,8 @@
 
 _plugin=histogram
 pkgname=vsview-${_plugin}
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="A vsview plugin displaying video clips' histograms and other related visualizations"
 arch=("x86_64")
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
