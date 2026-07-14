@@ -14,7 +14,7 @@
 _pkgname='vision'
 pkgbase='python-torchvision-rocm'
 pkgname=('torchvision-rocm' 'python-torchvision-rocm')
-pkgver=0.27.1
+pkgver=0.28.0
 pkgrel=1
 pkgdesc='Datasets, transforms, and models specific to computer vision (with ROCm/HIP support)'
 arch=('x86_64')
@@ -27,8 +27,7 @@ depends=(
     python-requests
     python-scipy
     python-sympy
-    'python-pytorch-rocm>=2.12.0'
-    'python-pytorch-rocm<2.13.0'
+    python-pytorch-rocm
     ffmpeg
     libjpeg-turbo
     libpng
@@ -46,7 +45,7 @@ source=(
     "${_pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/vision/archive/v${pkgver}.tar.gz"
     "glog_use_glog_export_none.patch"
 )
-sha256sums=('705d5ab7d01af9ece3bfbb1486eed3c23a2f68414fcc9c9a88910fb3c018c3db'
+sha256sums=('ecc4451241c8eeadc0c88213bd65c7932c9622d1d0034254b938f25362283ee9'
             'a611dadf2e125a7b73a026bac05c8327e776c24d4876f1b0bdfc9249c6f4fe37')
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
