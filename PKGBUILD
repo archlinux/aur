@@ -25,8 +25,6 @@ package() {
 
     # 1. Programmverzeichnis erstellen und den Code dorthin kopieren
     install -d "${pkgdir}/usr/share/bookmark-organisator"
-
-    # Kopiert alle Python-Dateien und -Ordner (inkl. bookmark_organisator-Unterordner und main.py)
     cp -r * "${pkgdir}/usr/share/bookmark-organisator/"
 
     # 2. Ausführbaren Starter in /usr/bin erstellen
@@ -37,7 +35,23 @@ exec python3 /usr/share/bookmark-organisator/main.py "\$@"
 EOF
     chmod +x "${pkgdir}/usr/bin/bookmark-organisator"
 
-    # 3. Lizenzdatei ordnungsgemäß installieren (GPLv3)
+    # =========================================================================
+    # 3. NEU: .desktop-Datei für den Anwendungsstarter erstellen
+    # =========================================================================
+    install -d "${pkgdir}/usr/share/applications"
+    cat <<EOF > "${pkgdir}/usr/share/applications/bookmark-organisator.desktop"
+[Desktop Entry]
+Type=Application
+Name=Bookmark Organisator
+Comment=Ein Tool zum Organisieren von Lesezeichen
+Exec=bookmark-organisator
+Icon=bookmark-new
+Terminal=false
+Categories=Utility;Office;
+EOF
+    # =========================================================================
+
+    # 4. Lizenzdatei ordnungsgemäß installieren (GPLv3)
     if [ -f LICENSE ]; then
         install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     elif [ -f COPYING ]; then
