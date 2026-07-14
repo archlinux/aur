@@ -1,0 +1,20 @@
+pkgbase = tuc-console
+	pkgdesc = Console application for the TUC language, which generates PlantUML diagrams for use cases from a type-safe domain model.
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/TypedUseCase/tuc-console
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk>=10.0
+	makedepends = git
+	depends = dotnet-runtime>=10.0
+	depends = icu
+	depends = openssl
+	depends = krb5
+	provides = tuc
+	conflicts = tuc
+	conflicts = tuc-console-bin
+	options = !strip
+	options = !debug
+
+pkgname = tuc-console

@@ -1,0 +1,11 @@
+# makepkg build artifacts
+/pkg/
+/src/
+/*.pkg.tar*
+/*.src.tar*
+
+/tuc-console-*
+
+# makepkg logs
+/*.log
+/*.log.*
