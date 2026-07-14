@@ -1,0 +1,4 @@
+[revdiff-bin]
+source = "git"
+git = "https://github.com/umputun/revdiff.git"
+prefix = "v"
