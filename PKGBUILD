@@ -1,7 +1,7 @@
 # Maintainer: jemand <wertzlino@gmail.com>
 pkgname=cancept
 _pkgname=CANcept
-pkgver=1.2.6
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A CAN-Centric Environment for Automotive Bus Testing and Analysis"
 arch=('x86_64')
@@ -13,8 +13,10 @@ source=("git+https://github.com/CANcept/CANcept.git#tag=v$pkgver"
         "git+https://github.com/skypjack/entt.git"
         "git+https://github.com/gabime/spdlog.git"
         "git+https://github.com/SimonCahill/libsockcanpp.git"
-        "git+https://github.com/xantares/qwt-cmake.git")
+        "git+https://github.com/xantares/qwt-cmake.git"
+        "git+https://github.com/nlohmann/json.git")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -23,11 +25,12 @@ sha256sums=('SKIP'
 prepare() {
   cd "$_pkgname"
   git submodule init external/entt external/spdlog external/libsockcanpp \
-                      external/qwt
+                      external/qwt external/json
   git config submodule.external/entt.url "$srcdir/entt"
   git config submodule.external/spdlog.url "$srcdir/spdlog"
   git config submodule.external/libsockcanpp.url "$srcdir/libsockcanpp"
   git config submodule.external/qwt.url "$srcdir/qwt-cmake"
+  git config submodule.external/json.url "$srcdir/json"
   git -c protocol.file.allow=always submodule update
 }
 
