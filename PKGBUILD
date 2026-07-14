@@ -1,7 +1,7 @@
 # Maintainer: Nickid2018 <nickid2018@outlook.com>
 _pkgname='MC_Dissector'
 pkgname=wireshark-minecraft-dissector
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Wireshark dissector for Minecraft protocols."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('wireshark-cli>=4.6.0' 'cjson')
 makedepends=(cmake)
 source=("https://github.com/Nickid2018/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('ec35ddff46c98d5e9ae30147ea33bc0c4dd91f842b3bc00f10e7a89bff87d700')
+sha256sums=('60c47664d4cb65c2a6de839ed0f7b34bc625578c75acff60e22605fd247694ac')
 
 build() {
     cmake -B build -S "$_pkgname-$pkgver" \
