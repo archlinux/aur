@@ -2,7 +2,7 @@
 
 pkgname=vmod-digest
 pkgver=9.0.3
-pkgrel=2
+pkgrel=3
 _srcver=1.0.3
 pkgdesc="Varnish Module for computing HMAC, message digests and working with base64"
 arch=('x86_64')
