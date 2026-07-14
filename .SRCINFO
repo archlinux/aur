@@ -1,4 +1,4 @@
-pkgbase = twitchdrops_miner-git
+pkgbase = twitch_drops_miner
 	pkgdesc = A multi-account Rust TUI tool for automatic Twitch Drops farming
 	pkgver = dev.build.r0.gef22e41
 	pkgrel = 1
@@ -11,9 +11,9 @@ pkgbase = twitchdrops_miner-git
 	makedepends = cmake
 	depends = gcc-libs
 	depends = glibc
-	provides = twitchdrops_miner
-	conflicts = twitchdrops_miner
-	source = twitchdrops_miner::git+https://github.com/this-is-really/TwitchDropSentryMulti.git
+	provides = twitch_drops_miner
+	conflicts = twitch_drops_miner
+	source = twitch_drops_miner::git+https://github.com/this-is-really/TwitchDropSentryMulti.git
 	sha256sums = SKIP
 
-pkgname = twitchdrops_miner-git
+pkgname = twitch_drops_miner

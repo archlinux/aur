@@ -1,7 +1,7 @@
 # Maintainer: grootar nigredo1999@gmail.com
 
-_pkgname=twitchdrops_miner
-pkgname="${_pkgname}-git"
+_pkgname=twitch_drops_miner
+pkgname="${_pkgname}"
 pkgver=dev.build.r0.gef22e41
 pkgrel=1
 pkgdesc="A multi-account Rust TUI tool for automatic Twitch Drops farming"
