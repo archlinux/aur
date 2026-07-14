@@ -3,8 +3,8 @@
 # AUR Package Repository: https://github.com/patrickjaja/claude-desktop-bin
 
 pkgname=claude-desktop-bin
-pkgver=1.20186.1
-pkgrel=2
+pkgver=1.20186.9
+pkgrel=1
 pkgdesc="Claude Desktop - Linux (unofficial, repackaged from the official Linux .deb)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
@@ -51,10 +51,10 @@ install="$pkgname.install"
 # claude-desktop/ (Electron runtime + resources/app.asar already patched + our CU
 # bridges under resources/), plus launcher/, icons/, and copyright. No separate
 # Electron zip source.
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.20186.1-2/claude-desktop-1.20186.1-linux.tar.gz")
-sha256sums_x86_64=('51e9e69cfe029dc4ffec9b375838100953c6be4198af220039307a024fc7d667')
-source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.20186.1-2/claude-desktop-1.20186.1-linux-aarch64.tar.gz")
-sha256sums_aarch64=('ecd809a2125dfdd91c6df58bb21ce5521c90cb457657bd6ff23e1f1cc94daaec')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.20186.9/claude-desktop-1.20186.9-linux.tar.gz")
+sha256sums_x86_64=('35fe94fc0e0d890c45586f758fc337229a7a93cee86e4098f186c46e990c087c')
+source_aarch64=("claude-desktop-${pkgver}-${pkgrel}-linux-aarch64.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.20186.9/claude-desktop-1.20186.9-linux-aarch64.tar.gz")
+sha256sums_aarch64=('936b4ecbbcebdd7755676ee013e76d305ac5dcea9e69c33ca36a8374ad7c52e1')
 options=('!strip' '!emptydirs')
 
 package() {
