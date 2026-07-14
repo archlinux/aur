@@ -15,7 +15,7 @@
 : ${_sccache:=}
 
 pkgname=niri-spicy-git
-pkgver=26.04.r65.g8657cf7
+pkgver=26.04.r67.g808ca59
 pkgrel=1
 pkgdesc="Scrollable-tiling Wayland compositor, with some out of tree spice"
 arch=(x86_64 aarch64)
@@ -37,8 +37,8 @@ optdepends=('fuzzel: application launcher similar to rofi drun mode'
 provides=("${pkgname%-spicy-git}=${pkgver}")
 conflicts=("${pkgname%-spicy-git}-bin" "${pkgname%-spicy-git}")
 options=(!debug !lto !strip)
-source=("${pkgname%-spicy-git}::git+https://github.com/losnoco/niri.git#branch=color-pipeline-features"
-        "smithay::git+https://github.com/losnoco/smithay.git#branch=color-pipeline-features")
+source=("${pkgname%-spicy-git}::git+https://github.com/losnoco/niri.git#branch=spicy-main"
+        "smithay::git+https://github.com/losnoco/smithay.git#branch=spicy-master")
 b2sums=('SKIP'
         'SKIP')
 
