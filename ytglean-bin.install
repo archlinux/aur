@@ -1,0 +1,30 @@
+post_install() {
+  echo ""
+  echo "==> YTGlean has been installed!"
+  echo ""
+  echo "  Quick start:"
+  echo "    1. Edit the config:   ~/.config/ytglean/config.yaml"
+  echo "    2. Add a channel:     ytglean channel add @Fireship"
+  echo "    3. Fetch transcripts:  ytglean fetch"
+  echo "    4. Generate a digest:  ytglean summarize"
+  echo ""
+  echo "  MCP Server (for AI agents):"
+  echo "    Add to your MCP client config (e.g. Claude Desktop):"
+  echo "    {"
+  echo "      \"mcpServers\": {"
+  echo "        \"ytglean\": {"
+  echo "          \"command\": \"ytglean\","
+  echo "          \"args\": [\"serve\"]"
+  echo "        }"
+  echo "      }"
+  echo "    }"
+  echo ""
+  echo "  Docs: https://github.com/Crymfox/YTGlean"
+  echo ""
+}
+
+post_upgrade() {
+  echo ""
+  echo "==> YTGlean has been updated. Run 'ytglean fetch' to get new transcripts."
+  echo ""
+}
