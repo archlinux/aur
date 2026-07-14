@@ -7,7 +7,7 @@ url='https://git.imtheo.lol/theo/liveserver'
 license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('cmake')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('5ce7c43d49c97a149fa96a3ee97fd5c4422430a14df2690526b2b08fb7fa52fd')
 
 build() {
