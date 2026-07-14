@@ -24,9 +24,9 @@ if command -v git > /dev/null; then
     fi
 else
     # We are probably inside a clean chroot environment, use fixed version info instead
-    _git_branch="branch=zfs-2.4.2-staging"
-    _staging_ver="2.4.2"
-    _base_ver="2.4.1"
+    _git_branch="branch=zfs-2.4.4-staging"
+    _staging_ver="2.4.4"
+    _base_ver="2.4.3"
 fi
 
 pkgname=${_pkgname}-dkms-staging-git
