@@ -1,0 +1,36 @@
+post_install() {
+  local config=/etc/bluemap-telemetry/config.env
+
+  systemd-sysusers bluemap-telemetry.conf
+
+  if [[ ! -e "$config" ]]; then
+    install -dm750 /etc/bluemap-telemetry
+    install -Dm600 /etc/bluemap-telemetry/config.env.example "$config"
+    echo ">>> Created $config from the example template."
+    echo ">>> Edit RCON credentials and WEB_ROOT before enabling the service."
+  fi
+
+  echo ">>> Ensure the bluemap user can write to WEB_ROOT (group membership or ACLs)."
+  echo ">>> Enable and start with: systemctl enable --now bluemap-telemetry.service"
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+
+pre_remove() {
+  if [[ $1 -eq 0 ]]; then
+    if systemctl is-active --quiet bluemap-telemetry.service; then
+      systemctl stop bluemap-telemetry.service
+    fi
+    if systemctl is-enabled --quiet bluemap-telemetry.service 2>/dev/null; then
+      systemctl disable bluemap-telemetry.service
+    fi
+  fi
+}
+
+post_remove() {
+  if [[ $1 -eq 0 ]]; then
+    echo ">>> Removed bluemap-telemetry.service (config in /etc/bluemap-telemetry/ was kept)."
+  fi
+}
