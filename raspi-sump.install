@@ -14,18 +14,13 @@ post_install() {
 	fi
 
 	cat <<-'EOF'
-	  1. If using nginx add this inside your http {} block:   include /etc/nginx/sites-enabled/*;
-    
-    2. Create then symlink:
-       ln -s /etc/nginx/sites-available/raspi-sump /etc/nginx/sites-enabled/raspi-sump
-
-    3. Restart nginx
-	
-	  4. Start Raspi-Sump services
+	  1. If using nginx add this inside the http{} block:   include /etc/nginx/sites-enabled/*;
+    2. Restart nginx
+	  3. Start Raspi-Sump services
        systemctl enable --now rsumpweb.service
 	     systemctl enable --now raspisump.service
-	
-  	 Then browse to https://<this-host>/ to complete setup
+
+  	 Browse to https://<this-host>/ to complete setup
 	EOF
 }
 

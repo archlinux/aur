@@ -2,8 +2,8 @@
 
 pkgname=raspi-sump
 pkgver=2.0.4
-pkgrel=7
-_commit=cdcac05b58a1d8820bd87271fdf7977f45e32c28
+pkgrel=8
+_commit=8ce341f940e56e07308aafcfb9455a5dc30a94b7
 _srcname=$pkgname-$_commit
 pkgdesc="Sump pit water level monitoring system for the Raspberry Pi"
 arch=(any)
@@ -34,7 +34,7 @@ source=("$pkgname-${_commit:0:10}.tar.gz::https://github.com/graysky2/raspi-sump
         $pkgname.sysusers
         $pkgname.tmpfiles
       )
-sha256sums=('d5a097881b23087fb108949224565bd803079a8e67668660b83ecaefd4c58d54'
+sha256sums=('e1f6bec0e7d003ac4bbc4421ffdf063cec6c8f381f47623e03065dd346deed69'
             '2a1c98aa86db079d4f8d36a32d7577f8aea0e5e24c1676e8f7a1fdc500ea645f'
             '8fbf8f9725d42928e4fd9626426da5338324cd87d6a9b2a967193f6a47790f01')
 
@@ -69,6 +69,7 @@ package() {
 
   install -Dm644 conf/nginx/raspi-sump "$pkgdir/etc/nginx/sites-available/raspi-sump"
   install -dm755 "$pkgdir/etc/nginx/sites-enabled"
+  ln -s /etc/nginx/sites-available/raspi-sump "$pkgdir/etc/nginx/sites-enabled/raspi-sump"
 
   install -d "$pkgdir/usr/share/raspi-sump"
   install -d "$pkgdir/usr/share/raspi-sump/web/static"
