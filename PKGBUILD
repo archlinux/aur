@@ -1,4 +1,4 @@
-# Maintainer: coffee <coffee@arch>
+# Maintainer: coffee <coffee@coffeecat.top>
 # Contributor: coffee
 
 pkgname=camofox-browser-bin
@@ -11,7 +11,6 @@ license=('MIT')
 depends=('nodejs>=22')
 optdepends=(
   'yt-dlp: YouTube transcript extraction plugin'
-  'xvfb-run: virtual display for headless server environments'
 )
 makedepends=('nodejs>=22')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/@askjo/camofox-browser/-/camofox-browser-${pkgver}.tgz")
