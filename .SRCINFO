@@ -1,0 +1,22 @@
+pkgbase = python-pychum
+	pkgdesc = Input file generators for computational chemistry
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://pypi.org/project/pychum/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	depends = python
+	depends = python-ase
+	depends = python-jinja
+	depends = python-pint
+	depends = python-rgpycrumbs
+	depends = python-tomli
+	source = https://files.pythonhosted.org/packages/source/p/pychum/pychum-1.4.3.tar.gz
+	sha256sums = a632fc9b50542cff43bf3213108927943ddcd718430c91c61282b27fbcb78977
+
+pkgname = python-pychum
