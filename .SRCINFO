@@ -1,6 +1,6 @@
 pkgbase = imx471-dkms-git
 	pkgdesc = IMX471 sensor driver via DKMS
-	pkgver = r15.2df9d7c
+	pkgver = r28.a56bd1b
 	pkgrel = 1
 	url = https://github.com/BenBJD/imx471-dkms
 	arch = x86_64
