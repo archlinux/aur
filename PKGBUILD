@@ -7,8 +7,22 @@ pkgdesc="Goose Desktop (built from source) - an open source, extensible AI agent
 arch=("x86_64")
 url="https://github.com/aaif-goose/goose"
 license=("Apache-2.0")
-depends=("vulkan-icd-loader")
-optdepends=()
+depends=(
+  "glibc"
+  "gcc-libs"
+  "gtk3"
+  "libnotify"
+  "nss"
+  "xdg-utils"
+  "at-spi2-core"
+  "libdrm"
+  "mesa"
+  "libxcb"
+  "alsa-lib"
+  "trash-cli"
+  "vulkan-icd-loader"
+)
+optdepends=("libcups: printing support")
 makedepends=(
   "cargo"
   "clang"
