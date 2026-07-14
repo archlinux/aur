@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code-bin
 _pkgname=visual-studio-code
-pkgver=1.128.0
+pkgver=1.128.1
 pkgrel=1
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (official binary version)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -27,9 +27,9 @@ source_x86_64=(code_${pkgver}_amd64.deb::https://update.code.visualstudio.com/${
 source_aarch64=(code_${pkgver}_arm64.deb::https://update.code.visualstudio.com/${pkgver}/linux-deb-arm64/stable)
 source_armv7h=(code_${pkgver}_armhf.deb::https://update.code.visualstudio.com/${pkgver}/linux-deb-armhf/stable)
 sha256sums=('bd0d9edf69283ebdf4e73e0a7b168d2fcf50acbd01f63674cad93ed4fe42fdad')
-sha256sums_x86_64=('ee7ff012cf872e497d665486e56c5b1a12e36cca0c07c97887c997cbfdc797b1')
-sha256sums_aarch64=('eb394338250dc7f5371c8c8e6a26d632c7aa977843d6ee7a496132c301a8ea05')
-sha256sums_armv7h=('230d782d05d84ac82ed1a8b6c5b0d209714c0eb792d87838f1111d9120152091')
+sha256sums_x86_64=('dd9d9e0d6af318ac86252b4e4b47868d0dc2f2144171bc54b67842c0934af099')
+sha256sums_aarch64=('d4438dab2c9dab81c81ac7f0600eb64ffb90d6109ec352c5ef4408035ca294ec')
+sha256sums_armv7h=('7a63a81ac7d0e1c73f54a0c0536a74c67970d8a114467cb93e5d4673c63769de')
 
 package() {
   bsdtar -xf data.tar.xz -C "${pkgdir}/"
