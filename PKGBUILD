@@ -3,7 +3,7 @@
 
 pkgname=kineticwe
 pkgver=6.7.80
-pkgrel=7
+pkgrel=8
 pkgdesc="KineticWE - A tiling KWin Wayland compositor with native window tiling"
 arch=('x86_64')
 url="https://gitlab.com/theblackdon/kineticwe"
@@ -255,6 +255,8 @@ package() {
 
 _INSTALL_PREFIX_=/usr
 
+export XDG_MENU_PREFIX=plasma-
+
 find_portal() {
     local name="$1"
     for path in "/usr/libexec/$name" "/usr/lib/$name" "$_INSTALL_PREFIX_/libexec/$name"
@@ -297,6 +299,7 @@ export XDG_CURRENT_DESKTOP=KDE
 export XDG_SESSION_TYPE=wayland
 export XDG_SESSION_DESKTOP=KDE
 export KDE_SESSION_VERSION=6
+export XDG_MENU_PREFIX=plasma-
 
 # 1. Rebuild KDE service cache so System Settings finds installed KCMs
 if command -v kbuildsycoca6 >/dev/null 2>&1; then
