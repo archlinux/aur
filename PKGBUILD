@@ -2,7 +2,7 @@
 
 pkgname=vmod-jq
 pkgver=9.0.3
-pkgrel=2
+pkgrel=3
 _srcver=4051a7d08dc3a4ca90d9e8319d5a3a132793e1da
 pkgdesc="Use jq programs from Varnish VCL"
 arch=('x86_64')
