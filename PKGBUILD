@@ -1,4 +1,4 @@
-# Maintainer: loki5512344 <dev14dbq@gmail.com>
+# Maintainer: loki5512344 <mauhhhh7@gmail.com>
 
 pkgname=wherry
 pkgver=0.1.0
@@ -23,7 +23,7 @@ depends=(
 makedepends=('cargo' 'pkg-config')
 optdepends=('mold: faster linking')
 source=("https://github.com/loki5512344/Wherry/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ee2c72f25e8cde087cd1604eb0735c07e949ab2a613f6c207a395d5be9b82ef6')
+sha256sums=('7f0ad6e308cf20439820b19136cb9113cb9b76e7cc81275248d5dd8fed812ea8')
 
 _repodir="Wherry-$pkgver"
 

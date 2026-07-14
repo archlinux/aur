@@ -20,6 +20,6 @@ pkgbase = wherry
 	depends = dbus
 	optdepends = mold: faster linking
 	source = https://github.com/loki5512344/Wherry/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = ee2c72f25e8cde087cd1604eb0735c07e949ab2a613f6c207a395d5be9b82ef6
+	sha256sums = 7f0ad6e308cf20439820b19136cb9113cb9b76e7cc81275248d5dd8fed812ea8
 
 pkgname = wherry
