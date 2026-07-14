@@ -1,0 +1,18 @@
+pkgbase = helium-sync
+	pkgdesc = Zero-resource cloud synchronization daemon and DRM fixer for Helium Browser
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MehmetCanWT/Helium-Sync
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	depends = gcc-libs
+	depends = glibc
+	source = helium-sync-daemon::git+https://github.com/MehmetCanWT/Helium-Sync.git
+	source = helium-sync.service
+	sha256sums = SKIP
+	sha256sums = adcb74967abb9fd79101310c557a0524b47a9e99dde793afc059775ed8e5249b
+
+pkgname = helium-sync

@@ -1,0 +1,10 @@
+[Unit]
+Description=Helium Sync Daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/helium-sync-daemon
+Restart=always
+
+[Install]
+WantedBy=default.target
