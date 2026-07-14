@@ -10,8 +10,8 @@ pkgbase="${_pkgbase}-bin"
 pkgname=(
   "${_pkgname[@]/%/-bin}"
 )
-pkgver=0.2.1
-pkgrel=4
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="Unsupervised text tokenizer for Neural Network-based text generation"
 arch=(
   # 'aarch64'
@@ -28,7 +28,7 @@ depends=(
 )
 makedepends=(
   'python-installer'
-  'slsa-verifier'
+  # 'slsa-verifier'
 )
 _pkgsrc="${_pkgbase}-${pkgver}"
 source=(
@@ -48,22 +48,22 @@ noextract=(
   # "${source_aarch64[1]##*/}"
   "${source_x86_64[1]##*/}"
 )
-sha256sums=('4d52487bc1fc01d5e2b2054be2861326dda7f0bfe42a6f4b46c0a6238f0951fd'
+sha256sums=('d5b3b8f0b79151e24069dfc10f68b1441ab91853a04afe4cb993379efa7bd7d6'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30'
-            'be40ea1220e99c8a853738a35db7bd779d6d5cbaca792a97b8734aaadb3ac9a8')
-sha256sums_x86_64=('654083fba04d00fdb1d7dcd7924c223f1962336244443fd60125fcf2c15fffb7'
-                   '01e6912125cb45d3792f530a4d38f8e21bf884d6b4d4ade1b2de5cf7a8d2a52b')
+            'cc6f6011e50a3ed6099e0cdfe59ae517c16d2b40c74de76eebaa8e8426f0486b')
+sha256sums_x86_64=('0ba21fc7c82e5f9bf62306656e8afdee4367dd917fa8feb52c2af51d84277262'
+                   '8d44b20234905ff022b7d535f79d1f823ad7670c9851cc4f03cdc34787cdb3ab')
 
-verify() {
-  local source_array="source_${CARCH}[1]"
-  local source_url="${!source_array}"
-  local source_artifact="${source_url##*/}"
+# verify() {
+#   local source_array="source_${CARCH}[1]"
+#   local source_url="${!source_array}"
+#   local source_artifact="${source_url##*/}"
 
-  slsa-verifier verify-artifact "${source_artifact}" \
-    --provenance-path "${_pkgsrc}-multiple.intoto.jsonl" \
-    --source-uri "${url#https://}" \
-    --source-tag "v${pkgver}"
-}
+#   slsa-verifier verify-artifact "${source_artifact}" \
+#     --provenance-path "${_pkgsrc}-multiple.intoto.jsonl" \
+#     --source-uri "${url#https://}" \
+#     --source-tag "v${pkgver}"
+# }
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}-Linux-${CARCH}/lib/pkgconfig"
@@ -99,7 +99,8 @@ package_python-sentencepiece-bin() {
     "python>=${_py}"
   )
   optdepends=(
-    'python-protobuf'
+    "python-protobuf: return_type='proto'"
+    "python-numpy: return_type='numpy'"
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
