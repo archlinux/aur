@@ -3,7 +3,6 @@ pkgbase = biosaka
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/BerkeOruc/biosaka
-	install =
 	arch = x86_64
 	license = custom:BioSaka-Research-License
 	makedepends = cargo
