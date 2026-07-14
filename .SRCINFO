@@ -1,0 +1,13 @@
+pkgbase = php-xlswriter
+	pkgdesc = Efficient and fast PHP C extension for creating and reading XLSX (Excel 2007+) files
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/viest/php-ext-xlswriter
+	arch = x86_64
+	license = BSD-2-Clause
+	depends = php
+	depends = zlib
+	source = php-xlswriter-3.0.0.tgz::https://pecl.php.net/get/xlswriter-3.0.0.tgz
+	sha256sums = a17986ad5ac09529513fc59b2871ca2b53eaec1c2c55cf00be60a292e85ade73
+
+pkgname = php-xlswriter
