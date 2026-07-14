@@ -1,7 +1,7 @@
 pkgbase = ferrumpix-bin
 	pkgdesc = Desktop photo manager and image editor built with Avalonia UI
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Bitpainter75/FerrumPix
 	arch = x86_64
 	license = GPL-3.0-only
@@ -17,13 +17,12 @@ pkgbase = ferrumpix-bin
 	optdepends = vlc: video thumbnails and playback
 	provides = ferrumpix
 	conflicts = ferrumpix
+	options = !strip
 	source = https://github.com/Bitpainter75/FerrumPix/releases/download/0.9.1/FerrumPix-0.9.1-linux-x64.zip
 	source = io.github.Bitpainter75.FerrumPix.desktop
 	source = io.github.Bitpainter75.FerrumPix.png
-	source = LICENSE
 	sha256sums = 323e7a9c94eeb09e7d86c2b126fc7690c592a753c962e7dccac00872790b2bfa
 	sha256sums = 02a23d27b0ea478bc951de3baebc4b30ec303f679fb137322fdf56b957104321
 	sha256sums = c621a95fca97c22495bb05ae9753391c5523ac0fce8f16f64b3713515e664067
-	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = ferrumpix-bin
