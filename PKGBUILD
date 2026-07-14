@@ -1,6 +1,6 @@
 # Maintainer: Akrata
 pkgname=kune-icon-theme
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Custom Tela icon theme with Papirus apps and Sweet cursors"
 arch=("any")
@@ -8,7 +8,7 @@ url="https://github.com/Akr4ta/kune-icon-theme"
 license=("GPL3")
 makedepends=(git)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Akr4ta/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ed00be1fa0f2bb4a31fd4ba5ad977bc66671bdc4ec86c667c43acccca7176b36')
+sha256sums=('d8f99c7971bb7bbbdfd886aa8927e5e99fc4d6bf8ce2032bc4017f7e804445a9')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
