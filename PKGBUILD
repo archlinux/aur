@@ -6,6 +6,7 @@ pkgdesc="Persistent Soulseek client with bulk download support for Spotify, YouT
 arch=('x86_64' 'armv7h')
 url="https://github.com/fiso64/sockseek"
 license=('AGPL-3.0-only')
+depends=('glibc' 'gcc-libs')
 provides=('sockseek')
 conflicts=('sockseek')
 install=sockseek-bin.install
