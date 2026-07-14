@@ -4,16 +4,16 @@
 
 _extname=event
 pkgname=php-${_extname}
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
 pkgdesc='Provides interface to libevent library for PHP'
 arch=('x86_64')
 url="https://bitbucket.org/osmanov/pecl-${_extname}"
 license=('PHP-3.01')
 depends=('php>=5.4' 'libevent' 'openssl')
-source=("https://pecl.php.net/get/${_extname}-${pkgver}.tgz")
-noextract=("${_extname}-${pkgver}.tgz")
-sha256sums=('5c4caa73bc2dceee31092ff9192139df28e9a80f1147ade0dfe869db2e4ddfd3')
+source=("${pkgname}-${pkgver}.zip::https://bitbucket.org/osmanov/pecl-${_extname}/get/${pkgver}.zip")
+noextract=("${pkgname}-${pkgver}.zip")
+sha256sums=('6f35a1622893c3642eed656ec83935907c1673eefaad93b81590c8a4f25036b3')
 
 prepare() {
   if ! php -m | grep -q '^sockets$'; then
@@ -22,7 +22,8 @@ prepare() {
     echo "  extension=sockets"
     exit 1
   fi
-  bsdtar -xf "${srcdir}/${_extname}-${pkgver}.tgz" -C "${srcdir}"
+  mkdir -p "${srcdir}/${_extname}-${pkgver}"
+  bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.zip" -C "${srcdir}/${_extname}-${pkgver}" --strip-components=1
   cd "${srcdir}/${_extname}-${pkgver}"
   phpize --clean
   phpize
