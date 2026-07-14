@@ -1,0 +1,14 @@
+pkgbase = ilovevideoeditor
+	pkgdesc = Render videos from VideoJSON specs in your terminal or CI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://ilovevideoeditor.com
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=18
+	noextract = ilovevideoeditor-1.0.0.tgz
+	source = https://registry.npmjs.org/ilovevideoeditor/-/ilovevideoeditor-1.0.0.tgz
+	sha256sums = af5e0ef151771b8a72da5c170fd7db9573ce138973b7f39bf1ec4bec753190e9
+
+pkgname = ilovevideoeditor
