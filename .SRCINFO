@@ -1,0 +1,16 @@
+pkgbase = fixplay-diagnosetool-bin
+	pkgdesc = Cross-platform diagnostic tool for gaming consoles (AppImage release build)
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/fabioudev/fixplay-diagnoseTool
+	arch = x86_64
+	license = custom:unknown
+	optdepends = flashrom: use the system flashrom binary instead of the bundled one
+	provides = fixplay-diagnosetool
+	conflicts = fixplay-diagnosetool
+	source = fixplay-diagnoseTool_0.1.6_amd64.AppImage::https://github.com/fabioudev/fixplay-diagnoseTool/releases/download/v0.1.6/fixplay-diagnoseTool_0.1.6_amd64.AppImage
+	source = fixplay-diagnosetool.png::https://raw.githubusercontent.com/fabioudev/fixplay-diagnoseTool/v0.1.6/src-tauri/icons/icon_256x256.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = fixplay-diagnosetool-bin
