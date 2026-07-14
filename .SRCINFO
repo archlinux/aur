@@ -10,8 +10,8 @@ pkgbase = biosaka
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
-	maintainer = Berke Oruc <archberke@hotmail.com>
 	source = git+https://github.com/BerkeOruc/biosaka.git
 	sha256sums = SKIP
+	maintainer = Berke Oruc <archberke@hotmail.com>
 
 pkgname = biosaka
