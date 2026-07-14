@@ -9,6 +9,10 @@ depends=()
 optdepends=('flashrom: use the system flashrom binary instead of the bundled one')
 provides=('fixplay-diagnosetool')
 conflicts=('fixplay-diagnosetool')
+# The AppImage is an ELF runtime with a SquashFS filesystem appended. makepkg's
+# default strip would "clean up" the ELF and discard the appended SquashFS,
+# leaving only the ~900KB runtime → "This doesn't look like a squashfs image".
+options=('!strip')
 source=(
   "fixplay-diagnoseTool_${pkgver}_amd64.AppImage::https://github.com/fabioudev/fixplay-diagnoseTool/releases/download/v${pkgver}/fixplay-diagnoseTool_${pkgver}_amd64.AppImage"
   "fixplay-diagnosetool.png::https://raw.githubusercontent.com/fabioudev/fixplay-diagnoseTool/v${pkgver}/src-tauri/icons/icon_256x256.png"
