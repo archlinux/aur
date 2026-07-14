@@ -41,4 +41,5 @@ sha256sums=('SKIP')
 # bsdtar handles .tar.zst (zstd-compressed tar) which is what .pacman is.
 package() {
   bsdtar -xvf "$srcdir/$_pkgname-$pkgver.pacman" -C "$pkgdir"
+  rm -f "$pkgdir/.INSTALL" "$pkgdir/.MTREE" "$pkgdir/.PKGINFO"
 }
