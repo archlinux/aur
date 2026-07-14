@@ -1,0 +1,19 @@
+pkgbase = bloodstream-git
+	pkgdesc = Animated /proc/net/dev bandwidth vein monitor for the terminal
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/numbpill3d/bloodstream
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-rich
+	depends = python-typer
+	source = git+https://github.com/numbpill3d/bloodstream.git
+	md5sums = SKIP
+
+pkgname = bloodstream-git
