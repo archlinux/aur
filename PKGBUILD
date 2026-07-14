@@ -1,5 +1,5 @@
 pkgname=papagaia
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Voice-writing and text-rewriting tool for Linux Wayland desktops'
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ceifa/papagaia/archive/refs/tags/v$pkgver.tar.gz"
         'papagaia-daemon.service')
-sha256sums=('SKIP'
+sha256sums=('6c5b7acc2763cba2a2ab13b256f9ba5cf181551e3cce464b8b616e01695ce692'
             '2f2d18e22d6f2fa0b7ac1a7cede9cb2a913ab63894dfdd1d08cc695cce616304')
 install=papagaia.install
 

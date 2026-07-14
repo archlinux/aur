@@ -1,6 +1,6 @@
 pkgbase = papagaia
 	pkgdesc = Voice-writing and text-rewriting tool for Linux Wayland desktops
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ceifa/papagaia
 	install = papagaia.install
@@ -16,9 +16,9 @@ pkgbase = papagaia
 	optdepends = wtype: keyboard simulation on Wayland
 	optdepends = ydotool: keyboard simulation (alternative to wtype)
 	optdepends = whisper.cpp: local speech-to-text for dictation
-	source = papagaia-0.1.0.tar.gz::https://github.com/ceifa/papagaia/archive/refs/tags/v0.1.0.tar.gz
+	source = papagaia-0.2.0.tar.gz::https://github.com/ceifa/papagaia/archive/refs/tags/v0.2.0.tar.gz
 	source = papagaia-daemon.service
-	sha256sums = SKIP
+	sha256sums = 6c5b7acc2763cba2a2ab13b256f9ba5cf181551e3cce464b8b616e01695ce692
 	sha256sums = 2f2d18e22d6f2fa0b7ac1a7cede9cb2a913ab63894dfdd1d08cc695cce616304
 
 pkgname = papagaia
