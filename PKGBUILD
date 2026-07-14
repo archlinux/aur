@@ -2,7 +2,7 @@
 
 pkgname=wherry
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern dual-pane file manager with SFTP/FTP/FTPS support"
 arch=('x86_64')
 url='https://github.com/loki5512344/Wherry'
@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=('cargo' 'pkg-config')
 source=("https://github.com/loki5512344/Wherry/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2c9ee91948fdad352ba797ce8652bf626797769a74e2707504184f541eecf0ab')
+sha256sums=('9974b7477dc3c051a74812d4be721da360a1498a737ceebad7650014da2b6d20')
 
 _repodir="Wherry-$pkgver"
 
@@ -35,7 +35,6 @@ prepare() {
 build() {
   cd "$srcdir/$_repodir"
   export CARGO_TARGET_DIR="$srcdir/target"
-  export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER="/usr/bin/cc"
   cargo build --release --frozen
 }
 
