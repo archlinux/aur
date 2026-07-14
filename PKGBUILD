@@ -5,13 +5,13 @@
 # VEGA_SOURCE_URL and VEGA_SOURCE_DIR for local builds.
 
 pkgname=lyra-vega
-pkgver=1.4.2
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Centro de controle para Linux"
 arch=('x86_64')
 url="https://github.com/britors/Vega"
 license=('GPL-3.0-only')
-depends=('electron31-bin' 'vegad')
+depends=('electron43-bin' 'vegad')
 optdepends=(
   'flatpak: origem Flathub para o módulo Software'
   'restic: motor do módulo Backup'
@@ -41,7 +41,7 @@ package() {
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/vega" <<'WRAPPER'
 #!/bin/sh
-exec electron31 /usr/lib/lyra-vega/main/index.js "$@"
+exec electron43 /usr/lib/lyra-vega/main/index.js "$@"
 WRAPPER
 
   install -Dm644 packaging/vega/vega.desktop \
