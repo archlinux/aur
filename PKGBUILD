@@ -1,8 +1,8 @@
 # Maintainer: hitalin <https://github.com/hitalin>
 pkgname=misskey-notedeck-bin
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
-pkgdesc='Misskey deck client for desktop'
+pkgdesc='Misskey Pro — integrated deck environment (IDE) for Misskey power users'
 arch=('x86_64')
 url='https://github.com/hitalin/notedeck'
 license=('AGPL-3.0-or-later')
