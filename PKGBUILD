@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gale
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="A modern mod manager for Thunderstore"
 arch=('x86_64')
-url="https://kesomannen.com/gale"
+url="https://github.com/Kesomannen/gale"
 license=('GPL-3.0-only')
 depends=(
   'gtk3'
@@ -16,10 +16,10 @@ makedepends=(
   'cargo-tauri'
   'pnpm'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Kesomannen/gale/archive/refs/tags/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('f85a17f91685e534081586b33c7bb97418cdbcd7725aa0aedd8ee6bd57e424c5'
-            '4de7796da59ef55bf7bbcde65a53b051245f80b3284ab53be20c4728345c4ff1')
+sha256sums=('a46980216916accc33ba071cd8c6af6a7c67f2e9b4f3ef716250f237a2c49fa6'
+            '52abef25674537cd97783ae8dfa97e3569305856bea094c43862ec82d6e21360')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -50,6 +50,8 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "src-tauri/target/release/$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm644 "assets/$pkgname-mime.xml" \
+    "$pkgdir/usr/share/mime/packages/$pkgname.xml"
 
   for i in 32x32 128x128 128x128@2x; do
     install -Dm644 "src-tauri/icons/${i}.png" \
