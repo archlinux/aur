@@ -1,5 +1,5 @@
 pkgbase = vkbasalt-redemp-git
-	pkgdesc = A Vulkan post-processing layer. (Redemp fork)
+	pkgdesc = A Vulkan post-processing layer (Redemp fork)
 	pkgver = r470.d5c38ed
 	pkgrel = 2
 	url = https://github.com/Redemp/vkBasalt
@@ -18,7 +18,7 @@ pkgbase = vkbasalt-redemp-git
 	makedepends = lib32-gcc-libs
 	makedepends = lib32-libx11
 	optdepends = reshade-shaders-git: collection of shaders to use with vkBasalt
-	source = vkbasalt-redemp-git-r470.d5c38ed::git+https://github.com/Redemp/vkBasalt.git
+	source = Redemp-vkBasalt::git+https://github.com/Redemp/vkBasalt.git
 	b2sums = SKIP
 
 pkgname = vkbasalt-redemp-git
@@ -29,7 +29,7 @@ pkgname = vkbasalt-redemp-git
 	conflicts = vkbasalt
 
 pkgname = lib32-vkbasalt-redemp-git
-	pkgdesc = A Vulkan post-processing layer. (Redemp fork) (32-bit)
+	pkgdesc = A Vulkan post-processing layer (Redemp fork) (32-bit)
 	depends = lib32-glibc
 	depends = lib32-gcc-libs
 	depends = lib32-libx11
