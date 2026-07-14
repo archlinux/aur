@@ -1,0 +1,27 @@
+pkgbase = d-seams
+	pkgdesc = d-SEAMS: deferred structural elucidation analysis for molecular simulations (C++ core)
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://dseams.info
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = git
+	makedepends = eigen
+	makedepends = blas
+	makedepends = cblas
+	makedepends = lapack
+	depends = gcc-libs
+	depends = glibc
+	depends = blas
+	depends = cblas
+	depends = lapack
+	optdepends = highway: SIMD acceleration
+	optdepends = openblas: optimized BLAS provider
+	source = seams-core-2.0.1.tar.gz::https://github.com/d-SEAMS/seams-core/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = 88e1999c57d128ef6fb873a939214a85a6b71db74c7738074dcd7fd139388eeb
+
+pkgname = d-seams
