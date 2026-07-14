@@ -1,7 +1,7 @@
 # Maintainer: Sheikh Limon <sheikhlimon404@gmail.com>
 
 pkgname=goose-desktop
-pkgver=1.42.0
+pkgver=1.43.0
 pkgrel=1
 pkgdesc="Goose Desktop (built from source) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=("x86_64")
@@ -24,11 +24,9 @@ makedepends=(
 options=("!lto" "!debug")
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/aaif-goose/goose/archive/refs/tags/v${pkgver}.tar.gz"
-  "pnpm-workspace-yaml.patch"
 )
 b2sums=(
-  '165df8fdf20b26719b2c38a03d97507b9bea8927847a6aa525101a6cdbe858bed606c41124d5d379aaa118e19abf00b1bfb0fd9a0481dd3dec5a4a8c13e95292'
-  '54f29a8b90e067066d21c7a25950b89cb3dbee10b1ba689f019f79adc4fce29d16c183af9e821305e934f6f00411b1ce72684ae0c3ff840c78e3fb031d501841'
+  '46db9eb1fc9e29058b36e3a34f91739f035f856025e1ce2cd84697b25317af1c53d73ab840b36852ab87be99b45d11911658601116e4581af1f07e938411075b'
 )
 conflicts=("goose-desktop-bin")
 provides=("goose-desktop")
@@ -39,9 +37,6 @@ prepare() {
   # Hide menu bar on Linux
   sed -i '/useContentSize: true/a\    autoHideMenuBar: process.platform === '\''linux'\'',' \
     ui/desktop/src/main.ts
-
-  # TODO: drop when upstream migrates pnpm config to pnpm-workspace.yaml
-  patch -p1 -i "$srcdir/pnpm-workspace-yaml.patch"
 }
 
 build() {
