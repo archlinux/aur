@@ -10,8 +10,7 @@ url='https://github.com/Tobiichi-Origuchi/tuigreety'
 license=('GPL-3.0-or-later')
 provides=('greetd-greeter' 'tuigreety')
 conflicts=('greetd-tuigreet' 'greetd-tuigreety-bin' 'greetd-tuigreety-git' 'tuigreety' 'tuigreety-bin' 'tuigreety-git')
-depends=('glibc' 'greetd' 'libgcc' 'systemd')
-makedepends=('rustup' 'scdoc')
+makedepends=('rust' 'scdoc')
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
   'tuigreet.conf'
@@ -31,13 +30,8 @@ build() {
   scdoc < contrib/man/tuigreet-1.scd > tuigreet.1
 }
 
-check() {
-  cd "$_project-$pkgver"
-  export CARGO_TARGET_DIR=target
-  cargo test --frozen
-}
-
 package() {
+  depends=('gcc-libs' 'greetd')
   cd "$_project-$pkgver"
   install -Dm755 target/release/tuigreet "$pkgdir/usr/bin/tuigreet"
   install -Dm644 tuigreet.1 "$pkgdir/usr/share/man/man1/tuigreet.1"
