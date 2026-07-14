@@ -1,0 +1,18 @@
+pkgbase = bananadashboard-bin
+	pkgdesc = Desktop system dashboard by BananaBrother77
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/BananaBrother77/BananaDashboard
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = alsa-lib
+	provides = bananadashboard
+	conflicts = bananadashboard
+	source = https://github.com/BananaBrother77/BananaDashboard/releases/download/v0.1.4/bananadashboard-0.1.4.pacman
+	sha256sums = SKIP
+
+pkgname = bananadashboard-bin
