@@ -1,12 +1,13 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
+pkgauthor="cloudcmd"
 pkgname="gritty"
 pkgdesc="Web Terminal Emulator."
 pkgver=10.2.1
 pkgrel=1
 arch=("x86_64")
-url="https://github.com/cloudcmd/gritty"
-_urlraw="https://raw.githubusercontent.com/cloudcmd/gritty/v${pkgver}"
+url="https://github.com/${pkgauthor}/${pkgname}"
+_urlraw="https://raw.githubusercontent.com/${pkgauthor}/${pkgname}/v${pkgver}"
 license=("MIT")
 
 _npmname=${pkgname}
