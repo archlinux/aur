@@ -1,6 +1,6 @@
 pkgbase = frank-geary
 	pkgdesc = GNOME Geary email client with FrankGeary workflow improvements
-	pkgver = 46.0_frank.2
+	pkgver = 46.0_frank.3
 	pkgrel = 1
 	url = https://github.com/akitaonrails/frank_geary
 	arch = x86_64
@@ -54,7 +54,7 @@ pkgbase = frank-geary
 	depends = webkit2gtk-4.1
 	provides = geary
 	conflicts = geary
-	source = git+https://github.com/akitaonrails/frank_geary.git#tag=v46.0-frank.2
+	source = git+https://github.com/akitaonrails/frank_geary.git#tag=v46.0-frank.3
 	sha256sums = SKIP
 
 pkgname = frank-geary
