@@ -1,0 +1,92 @@
+From 19259b8ed17986dea787c6d3fd01fbdbc7a86afc Mon Sep 17 00:00:00 2001
+From: xiota <>
+Date: Tue, 14 Jul 2026 02:43:22 +0000
+Subject: [PATCH] Add CLI options
+
+---
+ ialauncher/__main__.py | 57 ++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 57 insertions(+)
+
+diff --git a/ialauncher/__main__.py b/ialauncher/__main__.py
+index ef9bca4..67da36b 100644
+--- a/ialauncher/__main__.py
++++ b/ialauncher/__main__.py
+@@ -1,18 +1,75 @@
+ import argparse
++import os
++import time
+ 
+ from .engine import Main
+ from .scenes import Loading
+ from . import options
+ 
++from .game import Game
++
++GAMES_DIR = "/usr/share/ialauncher"
++
++def cli_list():
++    for entry in os.listdir(GAMES_DIR):
++        meta = os.path.join(GAMES_DIR, entry, "metadata.ini")
++        if os.path.exists(meta):
++            print(entry)
++
++
++def cli_start(identifier):
++    path = os.path.join(GAMES_DIR, identifier)
++    if not os.path.exists(path):
++        print(f"Game not found: {identifier}")
++        return
++    g = Game(path)
++    g.configure()
++
++    if not g.is_ready():
++        g.download()
++        while g.download_in_progress():
++            time.sleep(0.1)
++
++    if g.is_ready():
++        g.start()
++
++def cli_download(identifier):
++    path = os.path.join(GAMES_DIR, identifier)
++    g = Game(path)
++    g.configure()
++    g.download()
++
++    while g.download_in_progress():
++        time.sleep(0.1)
++
++    print("Download complete.")
++
+ 
+ def main():
+     parser = argparse.ArgumentParser(description='DOSBox frontend for the Internet Archive MS-DOS games collection')
++
++    parser.add_argument('--list', action='store_true', help='List available games')
++    parser.add_argument('--download', metavar='GAME', help='Download a specific game')
++    parser.add_argument('--start', metavar='GAME', help='Launch a specific game')
++
+     parser.add_argument('--slideshow', type=int, metavar='X', help='Focus on a random title screen every X seconds')
+     parser.add_argument('--fullscreen', dest='fullscreen', action='store_true', help='Start in fullscreen mode (default)')
+     parser.add_argument('--no-fullscreen', dest='no_fullscreen', action='store_true', help='Don’t start in fullscreen mode')
+     parser.add_argument('--slurp-mode', dest='slurp_mode', action='store_true', help='Slurp mode: downloads ALL games from the Internet Archive, one by one. This will take days to finish. Please don’t do this for no reason; the Internet Archive has limited bandwith. Also, consider donating first.')
+     args = parser.parse_args()
+ 
++    if args.list:
++        cli_list()
++        return
++
++    if args.download:
++        cli_download(args.download)
++        return
++
++    if args.start:
++        cli_start(args.start)
++        return
++
+     if args.fullscreen ^ args.no_fullscreen:
+         options.fullscreen = args.fullscreen or not args.no_fullscreen
+     options.slideshow = args.slideshow or options.slideshow
+-- 
+2.55.0
+

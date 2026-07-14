@@ -1,0 +1,118 @@
+From 90088ea5e748a3f2050e5df199da211debb94da7 Mon Sep 17 00:00:00 2001
+From: xiota <>
+Date: Tue, 14 Jul 2026 01:49:29 +0000
+Subject: [PATCH] Use FHS and XDG paths
+
+---
+ games/__init__.py    |  0
+ ialauncher/game.py   | 23 +++++++++++++++++------
+ ialauncher/scenes.py |  3 +--
+ 3 files changed, 18 insertions(+), 8 deletions(-)
+ delete mode 100644 games/__init__.py
+
+diff --git a/games/__init__.py b/games/__init__.py
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/ialauncher/game.py b/ialauncher/game.py
+index 1cdc8ff..42d4710 100644
+--- a/ialauncher/game.py
++++ b/ialauncher/game.py
+@@ -1,6 +1,8 @@
+ import os, sys
++import platform
+ import shutil
+ import subprocess
++import xdg.BaseDirectory
+ from zipfile import ZipFile
+ from urllib import request
+ from urllib.parse import unquote
+@@ -13,15 +15,20 @@ DOSBOX = get_dosbox_path()
+ 
+ class Game:
+     def __init__(self, path):
+-        self.path = path
+-        self.gamedir = os.path.join(self.path, 'dosbox_drive_c')
+         self.identifier = os.path.basename(path)
++        self.system_path = path
++        self.user_path = os.path.join(
++            xdg.BaseDirectory.xdg_data_home,
++            "ialauncher",
++            self.identifier
++        )
++        self.gamedir = os.path.join(self.user_path, "dosbox_drive_c")
+         self.configured = False
+         self.download_thread = None
+ 
+     def configure(self):
+         self.config = c = RawConfigParser()
+-        c.read(os.path.join(self.path, 'metadata.ini'))
++        c.read(os.path.join(self.system_path, 'metadata.ini'))
+         self.title = c['metadata'].get('title')
+         self.year = c['metadata'].get('year')
+         self.emulator_start = c['metadata'].get('emulator_start')
+@@ -61,6 +68,8 @@ class Game:
+         is run normally.
+ 
+         """
++        os.makedirs(self.gamedir, exist_ok=True)
++
+         batfile = os.path.join(self.gamedir, 'dosbox.bat')
+         conffile = os.path.join(self.gamedir, 'dosbox.conf')
+         dosbox_args = [self.gamedir, '-fullscreen']
+@@ -119,12 +128,12 @@ class Game:
+             self.config['metadata']['emulator_start'] = self.emulator_start
+         if self.dosbox_conf:
+             self.config['metadata']['dosbox_conf'] = self.dosbox_conf
+-        inifile = os.path.join(self.path, 'metadata.ini')
++        inifile = os.path.join(self.system_path, 'metadata.ini')
+         with open(inifile, 'w') as f:
+             self.config.write(f)
+ 
+     def get_titlescreen(self):
+-        path = os.path.join(self.path, 'title.png')
++        path = os.path.join(self.system_path, 'title.png')
+         if os.path.isfile(path):
+             return path
+         else:
+@@ -139,7 +148,8 @@ class Game:
+         return os.path.isdir(self.gamedir)
+ 
+     def get_size(self):
+-        return sum(os.path.getsize(os.path.join(self.path, f)) for f in os.listdir(self.path) if os.path.isfile(os.path.join(self.path, f)))/1000000
++        os.makedirs(self.gamedir, exist_ok=True)
++        return sum(os.path.getsize(os.path.join(self.gamedir, f)) for f in os.listdir(self.gamedir) if os.path.isfile(os.path.join(self.gamedir, f)))/1000000
+ 
+     def reset(self):
+         try:
+@@ -148,6 +158,7 @@ class Game:
+             pass
+ 
+     def download(self):
++        os.makedirs(self.gamedir, exist_ok=True)
+         if not self.configured:
+             try:
+                 self.configure()
+diff --git a/ialauncher/scenes.py b/ialauncher/scenes.py
+index e99aa1d..c2ec8cb 100644
+--- a/ialauncher/scenes.py
++++ b/ialauncher/scenes.py
+@@ -1,7 +1,6 @@
+ import os
+ import random
+ import pygame as pg
+-import games as gd
+ 
+ from .gamelist import GameList
+ from .engine import Scene
+@@ -15,7 +14,7 @@ class Loading(Scene):
+ 
+     def __init__(self, slurp_mode=False):
+         self.slurp_mode = slurp_mode
+-        self.games_dir = os.path.dirname(gd.__file__)
++        self.games_dir = "/usr/share/ialauncher"
+         self.todo = [
+             os.path.join(self.games_dir, entry) for entry in os.listdir(self.games_dir)
+             if os.path.exists(os.path.join(self.games_dir, entry, 'metadata.ini'))
+-- 
+2.55.0
+
