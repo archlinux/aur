@@ -12,7 +12,7 @@ pkgbase = tela-circle-icon-theme-spl-git
 	provides = tela-circle-icon-theme
 	options = !strip
 	options = !debug
-	source = tela-circle-icon-theme::git+https://github.com/vinceliuice/Tela-circle-icon-theme.git
+	source = git+https://github.com/vinceliuice/Tela-circle-icon-theme.git
 	b2sums = SKIP
 
 pkgname = tela-circle-icon-theme-all-git
