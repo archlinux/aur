@@ -1,0 +1,14 @@
+pkgbase = msplayer-tui
+	pkgdesc = A TUI music player for Monster Siren Records
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/missercatos/monster-player
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = alsa-lib
+	depends = gcc-libs
+	source = msplayer-tui-0.1.0.tar.gz::https://github.com/missercatos/monster-player/archive/v0.1.0.tar.gz
+	sha256sums = 9a22935a174bb3642b9c02942aa942756ad4678d795d4a1d1b83fe2df8305c23
+
+pkgname = msplayer-tui
