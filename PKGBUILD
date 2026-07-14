@@ -1,7 +1,7 @@
 # Maintainer: en3 <ivanyalyshev@yandex.ru>
 
 pkgname=planner-app-bin
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Prebuilt Planner App desktop app with habit dashboard"
 arch=("x86_64")
@@ -12,8 +12,8 @@ provides=("planner-app")
 conflicts=("planner-app")
 options=("!debug")
 
-source=("https://gitflic.ru/project/en3/planner-app/release/011c2608-ce8f-4bc4-b05f-9a68a8e9a771/8e488bd7-c37b-453d-b8de-46178631c44c/download")
-sha256sums=("89e28a0bd56cb55c1c50648cbf29cd06bdb5932ff57fd82120ffe75ad097365b")
+source=("https://gitflic.ru/project/en3/planner-app/release/7b960493-bc1c-4ea0-9a51-39c792d6fe32/418b45eb-4857-49cd-b496-fa20bc69393e/download")
+sha256sums=("2dc7a82812f83d36bfde033d027f06f131cc286280cb2d7e2d011502a408df3f")
 
 package() {
   cd "$srcdir"
