@@ -2,7 +2,7 @@
 
 pkgname=bluejay
 pkgver=1.0.3
-pkgrel=19
+pkgrel=20
 pkgdesc="Bluetooth manager written in Qt"
 arch=(x86_64)
 url="https://codeberg.org/EbonJaeger/bluejay"
@@ -57,6 +57,8 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" cmake --install build
+    install -Dm0644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
+        "${pkgname}-${pkgver}/README.md"
 }
 
 # vim: set ts=4 sw=4 et:
