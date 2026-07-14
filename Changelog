@@ -1,11 +1,20 @@
 -------------------------------------------------------
  Changelog    : ssl-mgr
- Tags         : 7.2.0 ➙ 7.6.0
-              : 2026-01-06 ➙ 2026-07-13
+ Tags         : 7.3.0 ➙ 7.7.0
+              : 2026-04-04 ➙ 2026-07-14
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-07-13   : 7.6.0
+ 2026-07-14   : 7.7.0
+              - **7.7.0**
+            
+                * Improve the the time to renew decision days.
+                  We now use a piece-wise linear function instead of piece-wise constant.
+                  For example, given 45 certs renew with 10 days to expiry and 90 certs with 30 days,
+                  a cert with expiration in between 45 and 90 would use a renew days target that
+                  is linearly interpolated between 10 and 30 days.
+
+ 2026-07-13   : 7.6.0, origin/master
               - **version 7.6.0**
             
                 * Fixes an issue where a 45 day cert with original days to expiration less than 45, (e.g. 44.5)
@@ -58,17 +67,4 @@
  2026-01-09   ⋯
               - Update license sting in pyproject
  2026-01-06   ⋯
-              - update Docs/Changelog.rst Docs/ssl-mgr.pdf
-
- 2026-01-06   : 7.2.0
-              - **Version 7.2.0**
-            
-                * Code Reorg
-                * Switch packaging from hatch to uv
-                * Testing to confirm all working correctly on python 3.14.2
-                * New dependency: pyconcurrent is now required instead of optional (code simplification):
-            
-                  Available on `Github <https://github.com/gene-git/pyconcurrent>`_
-                  and `AUR <https://aur.archlinux.org/packages/pyconcurrent>`_
- 2025-12-22   ⋯
               - update Docs/Changelog.rst Docs/ssl-mgr.pdf
