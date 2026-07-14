@@ -1,12 +1,13 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
+pkgauthor="coderaiser"
 pkgname="cloudcmd"
 pkgdesc="Cloud Commander file manager for the web with console and editor."
 pkgver=19.19.1
 pkgrel=1
 arch=("x86_64")
-url="https://github.com/coderaiser/cloudcmd"
-_urlraw="https://raw.githubusercontent.com/coderaiser/cloudcmd/v${pkgver}"
+url="https://github.com/${pkgauthor}/${pkgname}"
+_urlraw="https://raw.githubusercontent.com/${pkgauthor}/${pkgname}/v${pkgver}"
 license=("MIT")
 
 _npmname=${pkgname}
