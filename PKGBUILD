@@ -19,7 +19,7 @@ depends=(
   'libxss'
   'nss'
   'alsa-lib'
-  'libmpg123'
+  'mpg123'
   'ffmpeg'
   'xdg-utils'
 )
