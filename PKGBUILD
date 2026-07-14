@@ -21,5 +21,6 @@ pkgver() {
 package() {
   cd maple-saturation-hyprland
   install -Dm755 maple-saturation "$pkgdir/usr/bin/maple-saturation"
+  install -Dm644 maple-saturation.desktop "$pkgdir/usr/share/applications/maple-saturation.desktop"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
