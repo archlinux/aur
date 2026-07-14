@@ -2,7 +2,7 @@
 
 pkgname=vmod-geoip2
 pkgver=9.0.3
-pkgrel=2
+pkgrel=3
 _srcver=976c551b5584034dde80ac30f8baa07f1bc92834
 pkgdesc="Varnish vmod to query MaxMind GeoIP2 DB files"
 arch=('x86_64')
