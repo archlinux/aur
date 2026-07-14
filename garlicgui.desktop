@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Garlic-GUI
+Comment="GUI for Garlic Decompiler (JAR, APK, DEX, CLASS, Android, Java)"
+Exec=GarlicGUI
+Icon=garlicgui
+Terminal=false
+Type=Application
+Categories=Development;Java;
+

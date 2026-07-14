@@ -1,0 +1,31 @@
+From 3a2e0de4d22e8eaa5a42362bed12ddb6edf1bb8b Mon Sep 17 00:00:00 2001
+From: severaltranscats <severaltranscats@aur.archlinux.org>
+Date: Tue, 14 Jul 2026 16:40:30 -0400
+Subject: [PATCH] remove -Wno-format from CXX options
+
+---
+ CMakeLists.txt | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2ad4664..5ec8e47 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -115,7 +115,6 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-function")
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-parameter")
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-implicit-function-declaration")
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-incompatible-pointer-types")
+-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-format")
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-sign-compare")
+ 
+ if(CMAKE_C_COMPILER_ID STREQUAL "GNU")
+@@ -460,4 +459,4 @@ if(APPLE AND NOT GARLIC_STATIC_QT)
+         message(WARNING "macdeployqt not found. Qt frameworks will not be bundled automatically. "
+                         "Run macdeployqt manually on the .app after install.")
+     endif()
+-endif()
+\ No newline at end of file
++endif()
+-- 
+2.55.0
+

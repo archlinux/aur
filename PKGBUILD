@@ -13,10 +13,14 @@ depends=('qt6-base')
 makedepends=('cmake' 'qt6-tools')
 source=("$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz"
 	"0001-remove-Wno-format-from-CXX-options.patch"
+	"garlicgui.png"
+	"garlicgui.desktop"
 )
 noextract=()
 sha256sums=('7e7477e8a04de57005ee5bed0b07385ead962abf896b1c04e3975002944891a1'
-            'a918bd102717e73803f47e704ac9e8eb806416fceea84b0cc965b7d6a5188a47')
+            'a918bd102717e73803f47e704ac9e8eb806416fceea84b0cc965b7d6a5188a47'
+            '1f47ee4986feabedcb046cec5a264de70363db20ebf373b9a638440500aa027f'
+            '9716989cc56c198ef60c55ced5ba2c8b25aeb93f60975f3ec6d82c06decff473')
 validpgpkeys=()
 prepare() {
     cd "$_pkgname-$pkgver"
@@ -38,5 +42,8 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
+	install -Dm644 ./garlicgui.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/garlicgui.png"
+	install -Dm644 "$_pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 ./garlicgui.desktop "$pkgdir/usr/share/applications/garlicgui.desktop"
 }
 
