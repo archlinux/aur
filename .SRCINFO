@@ -1,0 +1,24 @@
+pkgbase = velogin-bin
+	pkgdesc = Graphical TTY login manager for Veil/Void systems
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/viewerofall/veilTDC
+	install = velogin-bin.install
+	arch = x86_64
+	license = MIT
+	conflicts = velogin
+	provides = velogin
+	depends = seatd
+	depends = libxkbcommon
+	depends = libinput
+	depends = mesa
+	depends = fontconfig
+	depends = freetype2
+	depends = pam
+	depends = wayland
+	depends = systemd
+	backup = etc/pam.d/velogin
+	source = velogin.tar.gz::https://github.com/viewerofall/veilTDC/releases/download/v2.1/velogin.tar.gz
+	sha256sums = 7aefb5ce4b156c4a10c7bb7221ecc1ea3e65777075b07cfd019f8ae704e5234a
+
+pkgname = velogin-bin
