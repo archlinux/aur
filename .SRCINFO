@@ -1,7 +1,7 @@
 pkgbase = osc-dreamchatbox
-	pkgdesc = Simple, clean VRChat OSC chatbox companion for Linux (status, media, hardware, speech-to-text)
+	pkgdesc = Native Linux alternative to MagicChatbox (VRCOSC) - VRChat OSC chatbox companion (status, now-playing, hardware, speech-to-text, OSCQuery)
 	pkgver = 1.0.5_alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yakuda-stack/OSC-DreamChatbox
 	arch = any
 	license = GPL-3.0-or-later
