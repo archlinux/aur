@@ -2,14 +2,14 @@
 pkgname=stow-cm-bin
 conflicts=('stow-cm')
 provides=('stow-cm')
-pkgver=0.17.3
+pkgver=0.17.4
 pkgrel=1
 pkgdesc="Config manager (gnu-stow like)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/someoneonsmile/stow-cm"
 license=('GPL2')
 
-_source_base="${url}/releases/download/${pkgver}"
+_source_base="${url}/releases/download/v${pkgver}"
 
 source_x86_64=("${_source_base}/stow-cm-x86_64-linux-gnu.tar.gz")
 source_aarch64=("${_source_base}/stow-cm-aarch64-linux-gnu.tar.gz")
