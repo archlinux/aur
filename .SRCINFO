@@ -1,6 +1,6 @@
 pkgbase = dpibreak
 	pkgdesc = System-wide DPI circumvention with minimal configuration
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/dilluti0n/dpibreak
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = dpibreak
 	makedepends = rust
 	makedepends = cargo
 	depends = nftables
-	source = https://github.com/dilluti0n/dpibreak/archive/refs/tags/v0.6.1.tar.gz
+	source = https://github.com/dilluti0n/dpibreak/archive/refs/tags/v0.6.2.tar.gz
 	sha256sums = 3a61d445b6f25f895cb9d5c976079e0dc7fb8d9fac592e497f9fc703df82c905
 
 pkgname = dpibreak

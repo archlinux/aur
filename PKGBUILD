@@ -1,5 +1,5 @@
 pkgname=dpibreak
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="System-wide DPI circumvention with minimal configuration"
 arch=('x86_64')
