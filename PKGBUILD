@@ -1,15 +1,25 @@
 # Maintainer: Oskar Gerlicz Kowalczuk <oskar@gerlicz.space>
+# Maintainer: BlackFuffey <fluffistical@gmail.com>
 # Contributor: Aseem Athale <athaleaseem@gmail.com>
 
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
-pkgver=0.9.5
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
 license=('BSD-3-Clause')
 backup=("etc/conf.d/$_pkgname")
+
+# TODO: Likely some of these should be in optdepends or maybe even makedepends.
+#       I'm putting everything I find in requirements.txt here just to be safe
+#       As I cannot build and test it myself.
+#                       --- BlackFuffey
+#
+# TODO: Probably organize this so that it matches the ordering in
+#       requirements.txt?
+#                       --- BlackFuffey
 depends=(
   nltk-data
   python
@@ -25,20 +35,32 @@ depends=(
   python-azure-core
   python-azure-identity
   python-azure-storage-blob
+  python-async-timeout
+  python-anthropic
+  python-accelerate
+  python-av
   python-fastapi
   python-bcrypt
   python-beautifulsoup4
   python-black
+  python-brotlicffi
   python-boto3
   python-brotli
   python-chromadb
   python-cryptography
+  python-chardet
+  python-colbert-ai
   python-ddgs
   python-dotenv
+  python-docx2txt
+  python-einops
+  python-elasticsearch
+  python-fake-useragent
   python-faster-whisper
   python-fpdf2
   python-ftfy
   python-google-cloud-storage
+  python-google-genai
   python-httpx
   python-itsdangerous
   python-jose
@@ -57,11 +79,19 @@ depends=(
   python-onnxruntime
   python-openpyxl
   python-opencv
+  python-openai
+  python-oracledb
   python-pandas
+  python-pypandoc
   python-peewee
+  python-psycopg
+  python-psycopg2
   python-peewee-migrate
   python-pillow
+  python-pinecone
   python-psutil
+  python-pymongo
+  python-pymilvus
   python-pydantic
   python-pydub
   python-pyarrow
@@ -72,6 +102,8 @@ depends=(
   python-pptx
   python-pytube
   python-pytz
+  python-pyjwt
+  python-rank-bm25
   python-rapidocr-onnxruntime
   python-redis
   python-requests
@@ -87,6 +119,7 @@ depends=(
   python-tiktoken
   python-typer
   python-typing_extensions
+  python-transformers
   python-unstructured
   python-validators
   python-xlrd
