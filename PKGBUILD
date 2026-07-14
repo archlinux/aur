@@ -1,15 +1,17 @@
 # Maintainer: franlol
 pkgname=hyprscreen
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A first-class screenshot and screen-recording app built for Hyprland"
 arch=('x86_64')
 url="https://github.com/franlol/hyprscreen"
 license=('MIT')
-depends=('gtk4' 'grim' 'slurp' 'wf-recorder' 'wl-clipboard' 'hyprland' 'ffmpeg')
+depends=('gtk4' 'grim' 'slurp' 'wf-recorder' 'wl-clipboard' 'hyprland' 'ffmpeg'
+         # Webcam bubble (default feature): v4l2src ! videoconvert ! gtk4paintablesink
+         'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugin-gtk4')
 makedepends=('cargo' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b4e0f0836f5cd7aa06708e7bcdfa1abcec8cc6af3b71a1e7e705c2cdb9e43426')
+sha256sums=('262a4a7cf6fcf6cbeacf36dffe6ed305b0bb49ed90c1ba6d7c94a1913f88390f')
 
 prepare() {
     cd "$pkgname-$pkgver"
