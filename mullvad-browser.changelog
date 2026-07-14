@@ -1,3 +1,13 @@
+Mullvad Browser 15.0.18 - July 14 2026
+ * All Platforms
+   * Updated NoScript to 13.6.30.1984
+   * Updated uBlock Origin to 1.72.2
+   * Bug 45111: Cherry-pick latest firefox/esr140 commits on 140.12.0esr [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 41821: Update gpg subkeys for boklm [tor-browser-build]
+     * Bug 41827: Update morgan's keychain with renewed key [tor-browser-build]
+
 Mullvad Browser 15.0.16 - June 16 2026
  * All Platforms
    * Updated Firefox to 140.12.0esr
