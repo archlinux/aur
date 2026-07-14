@@ -70,6 +70,12 @@ build() {
         --with-lokit-path="$srcdir/include" \
         --with-lo-path=/usr/lib/collabora-office
 
+    # npm 12 dropped npm-shrinkwrap.json support for "npm ci" and now requires
+    # package-lock.json. configure generates browser/npm-shrinkwrap.json, so
+    # copy it to package-lock.json. This works on npm 12 and stays fine on
+    # older npm, which still reads either file.
+    cp browser/npm-shrinkwrap.json browser/package-lock.json
+
     make
 }
 
