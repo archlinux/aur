@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Mineradio
+Comment=Immersive music player with cinematic visuals, particle effects, and lyrics stage
+Exec=/opt/mineradio/mineradio %U
+Icon=mineradio
+Type=Application
+Categories=AudioVideo;Audio;Player;
+MimeType=x-scheme-handler/mineradio;
+StartupWMClass=mineradio

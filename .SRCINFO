@@ -1,0 +1,27 @@
+pkgbase = mineradio
+	pkgdesc = Immersive music player with cinematic visuals, particle effects, and lyrics stage
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/XxHuberrr/Mineradio
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	depends = alsa-lib
+	depends = ffmpeg
+	depends = gtk3
+	depends = libmpg123
+	depends = libxss
+	depends = nss
+	depends = xdg-utils
+	provides = mineradio
+	conflicts = mineradio-git
+	source = mineradio-1.1.1.tar.gz::https://github.com/XxHuberrr/Mineradio/archive/refs/tags/v1.1.1.tar.gz
+	source = mineradio.desktop
+	source = mineradio.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mineradio

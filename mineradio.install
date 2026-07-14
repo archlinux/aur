@@ -1,0 +1,8 @@
+post_install() {
+  echo "Mineradio installed to /opt/mineradio/"
+  echo "Run with: mineradio"
+}
+
+post_upgrade() {
+  echo "Mineradio updated. Restart any running instances."
+}
