@@ -1,7 +1,7 @@
 # Maintainer:  Jason Kercher <jkercher 43 at gmail dot com>
 
 pkgname=linuxcnc-git
-pkgver=2.9.8.r4815.gc6c009e90c
+pkgver=2.9.8.r4855.g127a69eac3
 pkgrel=1
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=($CARCH)
@@ -17,7 +17,6 @@ depends=(
   fontconfig
   gdk-pixbuf2
   glib2
-  glibc
   gstreamer
   gtk3
   harfbuzz
