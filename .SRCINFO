@@ -1,0 +1,15 @@
+pkgbase = hypr-relay
+	pkgdesc = Lightweight daemon for Hyprland that bridges system events to desktop notifications
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/Vega-0b1/hypr-relay
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = wireplumber
+	depends = brightnessctl
+	depends = bluez-utils
+	source = hypr-relay-0.3.0.tar.gz::https://github.com/Vega-0b1/hypr-relay/archive/v0.3.0.tar.gz
+	sha256sums = ad69785594bf3f55d7f72d2768be221d1e385650c01beb4c982f56f46f50f5c1
+
+pkgname = hypr-relay
