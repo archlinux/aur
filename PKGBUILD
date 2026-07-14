@@ -1,7 +1,7 @@
 # Maintainer: Tobiichi Origuchi <Tobiichi-Origuchi@users.noreply.github.com>
 
 pkgname=tuigreety-git
-pkgver=tip.r0.gc8ee20c
+pkgver=0.10.0.r2.g2873260
 pkgrel=1
 pkgdesc='A minimal, configurable console greeter for greetd (development version)'
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -17,7 +17,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd tuigreety
-  git describe --long --tags --always | sed 's/^v//;s/-/.r/;s/-/./'
+  git describe --long --tags --match '[0-9]*.[0-9]*.[0-9]*' --always | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 prepare() {
