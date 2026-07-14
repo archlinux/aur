@@ -1,19 +1,38 @@
-# Maintainer: argymeg <argymeg at gmail dot com>
-# Contributor Tondu < thomas.gastine at wanadoo dot fr >
-# Contributor: buddabrod < buddabrod at gmail dot com >
+# Maintainer: Sterophonick
 
 pkgname=kaffeine-git
-pkgver=r1243.f019c4f
+pkgver=r2134.f5e0f38
 pkgrel=1
 pkgdesc='KDE media player'
 license=(GPL)
 arch=(i686 x86_64)
 url="http://kaffeine.kde.org"
-depends=(kio hicolor-icon-theme libxss vlc)
-makedepends=(git extra-cmake-modules kidletime)
+
+depends=(hicolor-icon-theme
+         glibc
+         libstdc++
+         kconfig5
+         kconfigwidgets5
+         kcoreaddons5
+         kdbusaddons5
+         ki18n5
+         kio5
+         kwidgetsaddons5
+         kwindowsystem5
+         kxmlgui5
+         libvlc
+         qt5-base
+         solid5
+         v4l-utils
+         vlc-plugins-video-output)
+makedepends=(extra-cmake-modules
+             git
+             libxss)
+
+
 provides=('kaffeine')
 conflicts=('kaffeine')
-source=('git://anongit.kde.org/kaffeine.git')
+source=('git+https://invent.kde.org/multimedia/kaffeine')
 md5sums=('SKIP')
 
 pkgver() {
@@ -21,20 +40,18 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-}
 
 build() {
-  cd build
-  cmake ../kaffeine \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
+  cd kaffeine
+
+  cmake -B build -S . \
+    -DCMAKE_BUILD_TYPE=None \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  cd kaffeine
+
+  DESTDIR="$pkgdir" cmake --install build
 }
