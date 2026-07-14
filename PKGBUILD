@@ -1,16 +1,13 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=phosphor-dbus-interfaces-git
-pkgver=r934.a12cc29
-pkgrel=2
+pkgver=r978.e064419
+pkgrel=1
 pkgdesc="YAML descriptors of standard dbus interfaces (in OpenBMC)"
 url="https://github.com/openbmc/phosphor-dbus-interfaces"
 arch=($CARCH)
 license=('Apache-2.0')
 depends=(
-    glibc
-    libgcc
-    libstdc++
     systemd-libs
 # AUR
     sdbusplus-git
