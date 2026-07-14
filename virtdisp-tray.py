@@ -8,6 +8,7 @@ import logging
 import sys
 import locale
 import socket
+import shutil
 
 from PyQt6.QtWidgets import (
     QApplication,
@@ -62,10 +63,15 @@ RESOLUTIONS = [
 # кількість фізичних пікселів і навантаження на кодування/канал.
 SCALES = ["1", "1.25", "1.5", "2"]
 
+# VNC-порт, на якому krfb-virtualmonitor віддає екран
+# (і локально по мережі, і через USB-тунель adb reverse).
+PORT = "5900"
+
 DEFAULTS = {
     "password": "123456",
     "resolution": "1600x900",
     "scale": "1",
+    "mode": "network",  # "network" (Wi-Fi/LAN) або "usb" (adb reverse)
 }
 
 # =========================
@@ -100,6 +106,18 @@ TEXT = {
     "res_title": "Custom Resolution" if not is_ua else "Інша роздільність",
     "res_label": "Enter resolution (e.g. 1600x900):" if not is_ua else "Введіть роздільність (напр. 1600x900):",
     "res_invalid": "Invalid format. Use WIDTHxHEIGHT." if not is_ua else "Невірний формат. Використайте ШИРИНАxВИСОТА.",
+
+    "usb": "USB connection" if not is_ua else "USB-підключення",
+    "usb_ready": "USB tunnel is up. On the tablet, connect a VNC client to:" if not is_ua else "USB-тунель піднято. На планшеті підключи VNC-клієнт до:",
+    "usb_no_adb": "adb not found — install the 'android-tools' package." if not is_ua else "adb не знайдено — встанови пакет 'android-tools'.",
+    "usb_no_device": "Tablet not detected. Enable USB debugging (Developer options) and reconnect the cable." if not is_ua else "Планшет не виявлено. Увімкни USB-налагодження (Параметри розробника) і перепідключи кабель.",
+    "usb_unauthorized": "Tablet connected but not authorized. Confirm the prompt on the tablet." if not is_ua else "Планшет підключений, але не авторизований. Підтверди запит на планшеті.",
+    "usb_screen_off": "Enable the screen first — the VNC server must be running." if not is_ua else "Спершу увімкни екран — VNC-сервер має працювати.",
+
+    "mode": "Connection mode" if not is_ua else "Режим підключення",
+    "mode_network": "Network (Wi-Fi)" if not is_ua else "Мережа (Wi-Fi)",
+    "mode_usb": "USB (cable)" if not is_ua else "USB (кабель)",
+    "usb_reconnect": "Reconnect USB" if not is_ua else "Під'єднати USB заново",
 
     "info_title": "Connection Details" if not is_ua else "Дані для підключення",
 
@@ -145,9 +163,11 @@ class TabletTrayApp:
         self.password = config["password"]
         self.resolution = config["resolution"]
         self.scale = config["scale"]
+        self.mode = config["mode"]
 
         self.process = None
         self._stderr_fh = None
+        self.usb_active = False
 
         # =========================
         # ICONS
@@ -175,6 +195,7 @@ class TabletTrayApp:
         # =========================
 
         self.menu = QMenu()
+        self.menu.setMinimumWidth(240)
 
         self.toggle_action = QAction(TEXT["on"])
         self.toggle_action.triggered.connect(self.toggle)
@@ -182,10 +203,16 @@ class TabletTrayApp:
 
         self.menu.addSeparator()
 
+        self.build_mode_menu()
+
         self.build_resolution_menu()
         self.build_scale_menu()
 
         self.menu.addSeparator()
+
+        self.usb_action = QAction(TEXT["usb_reconnect"])
+        self.usb_action.triggered.connect(self.setup_usb)
+        self.menu.addAction(self.usb_action)
 
         self.info_action = QAction(TEXT["info"])
         self.info_action.triggered.connect(self.show_info_dialog)
@@ -216,6 +243,22 @@ class TabletTrayApp:
     # ==========================================================
     # MENU BUILDERS
     # ==========================================================
+
+    def build_mode_menu(self):
+
+        self.mode_menu = self.menu.addMenu(TEXT["mode"])
+
+        self.mode_group = QActionGroup(self.menu)
+        self.mode_group.setExclusive(True)
+
+        for key, label in (("network", TEXT["mode_network"]),
+                           ("usb", TEXT["mode_usb"])):
+            act = QAction(label)
+            act.setCheckable(True)
+            act.setChecked(key == self.mode)
+            act.triggered.connect(lambda _checked, m=key: self.set_mode(m))
+            self.mode_group.addAction(act)
+            self.mode_menu.addAction(act)
 
     def build_resolution_menu(self):
 
@@ -297,6 +340,7 @@ class TabletTrayApp:
                         "password": self.password,
                         "resolution": self.resolution,
                         "scale": self.scale,
+                        "mode": self.mode,
                     },
                     f,
                     indent=2,
@@ -357,6 +401,20 @@ class TabletTrayApp:
         logging.info(f"Scale set to {scale}")
         self.apply_change()
 
+    def set_mode(self, mode):
+
+        self.mode = mode
+        self.save_config()
+        logging.info(f"Connection mode: {mode}")
+
+        if mode == "usb":
+            # у USB-режимі одразу піднімаємо тунель, якщо екран уже працює
+            if self.is_monitor_running():
+                self.setup_usb()
+        else:
+            # мережевий режим — тунель більше не потрібен
+            self._remove_reverse()
+
     def set_password_dialog(self):
 
         new_pwd, ok = QInputDialog.getText(
@@ -400,14 +458,98 @@ class TabletTrayApp:
 
     def get_connection_text(self):
 
-        ip = self.get_ip()
+        if self.mode == "usb":
+            host = "127.0.0.1"
+            via = TEXT["mode_usb"]
+        else:
+            host = self.get_ip()
+            via = TEXT["mode_network"]
 
         return (
-            f"IP: {ip}\n"
-            f"Port: 5900\n"
+            f"{via}\n"
+            f"Address: {host}:{PORT}\n"
             f"Password: {self.password}\n"
             f"Resolution: {self.resolution} (scale {self.scale})"
         )
+
+    # ==========================================================
+    # USB (adb reverse)
+    # ==========================================================
+
+    def _establish_reverse(self):
+        """Підняти adb reverse без UI. Повертає (ok: bool, msg_key: str)."""
+        adb = shutil.which("adb")
+        if not adb:
+            return False, "usb_no_adb"
+
+        try:
+            subprocess.run(
+                [adb, "start-server"],
+                stderr=subprocess.DEVNULL, timeout=15
+            )
+
+            out = subprocess.run(
+                [adb, "devices"],
+                capture_output=True, text=True, timeout=15
+            ).stdout
+
+            rows = [ln.split() for ln in out.splitlines()[1:] if ln.strip()]
+            ready = [r for r in rows if len(r) >= 2 and r[1] == "device"]
+            unauth = [r for r in rows if len(r) >= 2 and r[1] == "unauthorized"]
+
+            if not rows:
+                return False, "usb_no_device"
+            if unauth and not ready:
+                return False, "usb_unauthorized"
+
+            result = subprocess.run(
+                [adb, "reverse", f"tcp:{PORT}", f"tcp:{PORT}"],
+                capture_output=True, text=True, timeout=15
+            )
+            if result.returncode != 0:
+                raise RuntimeError(result.stderr.strip() or "adb reverse failed")
+
+            self.usb_active = True
+            logging.info(f"USB reverse tcp:{PORT} established")
+            return True, "ok"
+
+        except Exception as e:
+            logging.error(f"USB setup error: {e}")
+            return False, "usb_no_device"
+
+    def _remove_reverse(self):
+        if not self.usb_active:
+            return
+        adb = shutil.which("adb")
+        if adb:
+            subprocess.run(
+                [adb, "reverse", "--remove", f"tcp:{PORT}"],
+                stderr=subprocess.DEVNULL
+            )
+        self.usb_active = False
+        logging.info("USB reverse removed")
+
+    def setup_usb(self):
+        """Ручне (пере)встановлення USB-тунелю з діалогами (кнопка меню)."""
+        if not shutil.which("adb"):
+            QMessageBox.warning(None, TEXT["error"], TEXT["usb_no_adb"])
+            return
+
+        if not self.is_monitor_running():
+            QMessageBox.warning(None, TEXT["error"], TEXT["usb_screen_off"])
+            return
+
+        ok, key = self._establish_reverse()
+
+        if ok:
+            QMessageBox.information(
+                None,
+                TEXT["usb"],
+                f"{TEXT['usb_ready']}\n\n127.0.0.1:{PORT}\n"
+                f"{TEXT['pwd_title']}: {self.password}"
+            )
+        else:
+            QMessageBox.warning(None, TEXT["error"], TEXT[key])
 
     # ==========================================================
     # UI
@@ -497,7 +639,7 @@ class TabletTrayApp:
                 "--name", "TabletDisplay",
                 "--resolution", self.resolution,
                 "--scale", str(self.scale),
-                "--port", "5900"
+                "--port", PORT
             ]
 
             if self.password:
@@ -532,6 +674,15 @@ class TabletTrayApp:
             self.toggle_action.setText(TEXT["off"])
 
             logging.info("Monitor started")
+
+            # У режимі USB одразу піднімаємо тунель adb reverse
+            if self.mode == "usb":
+                ok, key = self._establish_reverse()
+                if not ok:
+                    self.tray.showMessage(
+                        TEXT["usb"], TEXT[key],
+                        QSystemTrayIcon.MessageIcon.Warning, 6000
+                    )
 
             # Popup notification
             self.show_connection_notification()
@@ -570,6 +721,8 @@ class TabletTrayApp:
                 ["pkill", "-f", "krfb-virtualmonitor"],
                 stderr=subprocess.DEVNULL
             )
+
+            self._remove_reverse()
 
             if self._stderr_fh:
                 try:
