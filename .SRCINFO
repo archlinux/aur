@@ -1,4 +1,4 @@
-pkgbase = caesiumclt-git
+pkgbase = caesium-image-compressor-git
 	pkgdesc = High-performance image compressor CLI written in Rust
 	pkgver = 1.4.0.r4.g47e7085
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = caesiumclt-git
 	source = git+https://github.com/Lymphatus/caesium-clt.git
 	sha256sums = SKIP
 
-pkgname = caesiumclt-git
+pkgname = caesium-image-compressor-git
