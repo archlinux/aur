@@ -1,7 +1,7 @@
 pkgbase = tradingview
 	pkgdesc = Charting platform for traders and investors
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tradingview.com/desktop/
 	arch = x86_64
 	license = LicenseRef-TradingView
@@ -17,5 +17,3 @@ pkgbase = tradingview
 	sha256sums = SKIP
 
 pkgname = tradingview
-	depends = libsecret
-	depends = electron

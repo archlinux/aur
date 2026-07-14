@@ -5,10 +5,12 @@
 : ${_snap_id:=nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV}
 : ${_snap_rev:=72}
 
+: ${_use_system_electron:=false}
+
 _pkgname="tradingview"
 pkgname="$_pkgname"
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Charting platform for traders and investors'
 arch=('x86_64')
 url="https://www.tradingview.com/desktop/"
@@ -48,27 +50,13 @@ prepare() {
   unsquashfs -q -n -f -d "$_pkgsrc/" "$_pkgsrc.snap"
 }
 
-package() {
+_package_system() {
   local _electron_version=$(strings "$_pkgsrc/tradingview" | grep -Pom1 'Electron/\K[0-9]+')
   depends+=("electron${_electron_version}")
 
   # asar
   mkdir -pm755 "$pkgdir/usr/lib/$_pkgname"
   cp -r "$_pkgsrc/resources/"* "$pkgdir/usr/lib/$_pkgname/"
-
-  # launcher
-  sed -E -e '/^Comment=/d' \
-    -e 's&^(Icon)=.*$&\1='"$_pkgname&" \
-    -e 's&^(Categories)=(Finance;)$&\1=Office;\2&' \
-    -i "$_pkgsrc/meta/gui/$_pkgname.desktop"
-
-  install -Dm644 "$_pkgsrc/meta/gui/$_pkgname.desktop" -t "$pkgdir/usr/share/applications/"
-
-  # icon
-  install -Dm644 "$_pkgsrc/meta/gui/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
-
-  # license
-  install -Dm644 "$_terms_of_use.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
   # script
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
@@ -97,3 +85,39 @@ export ELECTRON_FORCE_IS_PACKAGED
 exec electron${_electron_version} "\${flags[@]}" "/usr/lib/$_pkgname/app.asar" "\$@"
 END
 }
+
+_package_vendored() {
+  mkdir -pm755 "$pkgdir/usr/lib/$_pkgname"
+  cp -r "$_pkgsrc/"* "$pkgdir/usr/lib/$_pkgname/"
+
+  mkdir -pm755 "$pkgdir/usr/bin"
+  ln -s "/usr/lib/$_pkgname/tradingview" "$pkgdir/usr/bin/"
+}
+
+_package_common() {
+  # launcher
+  sed -E -e '/^Comment=/d' \
+    -e 's&^(Icon)=.*$&\1='"$_pkgname&" \
+    -e 's&^(Categories)=(Finance;)$&\1=Office;\2&' \
+    -i "$_pkgsrc/meta/gui/$_pkgname.desktop"
+
+  install -Dm644 "$_pkgsrc/meta/gui/$_pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+
+  # icon
+  install -Dm644 "$_pkgsrc/meta/gui/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
+
+  # license
+  install -Dm644 "$_terms_of_use.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
+
+if [[ "${_use_system_electron::1}" == "t" ]]; then
+  eval "package() {
+    $(declare -f _package_system | tail +2)
+    $(declare -f _package_common | tail +2)
+  }"
+else
+  eval "package() {
+    $(declare -f _package_vendored | tail +2)
+    $(declare -f _package_common | tail +2)
+  }"
+fi
