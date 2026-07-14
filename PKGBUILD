@@ -3,12 +3,12 @@
 pkgname=gpupad-git
 _pkgname=gpupad
 pkgver=latest
-pkgrel=8
+pkgrel=1
 pkgdesc='A flexible GLSL/HLSL shader editor and IDE.'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://github.com/houmain/gpupad"
 license=(GPL3)
-depends=(qt6-declarative qt6-multimedia libdrm openimageio vulkan-headers glslang spdlog spirv-cross spirv-tools)
+depends=(qt6-declarative qt6-wayland qt6-multimedia libdrm openimageio vulkan-headers glslang spdlog spirv-cross spirv-tools)
 makedepends=(cmake git)
 conflicts=(${_pkgname})
 provides=(${_pkgname})
@@ -32,14 +32,8 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  if [ ! -d vcpkg ]; then
-    git clone --depth=1 https://github.com/microsoft/vcpkg.git
-    vcpkg/bootstrap-vcpkg.sh
-  fi
-  vcpkg/vcpkg --triplet="x64-linux-release" install "ktx[vulkan]" vulkan-memory-allocator
-
-  cmake -B _build -DVERSION="$pkgver" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_TOOLCHAIN_FILE=vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_TARGET_TRIPLET="x64-linux-release"
-  cmake --build _build -j 8
+  cmake -B _build -DVERSION="$pkgver" -DGPUPAD_UNITY_BUILD=ON -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build _build -j 4
 }
 
 package() {
