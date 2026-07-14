@@ -1,9 +1,11 @@
 # Maintainer: eeegoloauq <eeegoloauq@users.noreply.github.com>
-# Source PKGBUILD published to the AUR. CI uses packaging/PKGBUILD
-# instead (binary-only). Bump pkgver together with the workspace
-# Cargo.toml, update sha256sums, regenerate .SRCINFO.
+# Source PKGBUILD published to the AUR. The release workflow
+# (.github/workflows/aur.yml) stamps pkgver/sha256sums, regenerates
+# .SRCINFO and pushes on every v* tag — no manual bump needed.
+# packaging/PKGBUILD is a separate binary-only variant used by CI
+# to build the release .pkg.tar.zst.
 pkgname=stashee
-pkgver=0.1.13
+pkgver=main
 pkgrel=1
 pkgdesc="Glass-styled tiling terminal workspace over tmux"
 arch=('x86_64' 'aarch64')
@@ -14,7 +16,7 @@ makedepends=('cargo')
 optdepends=('wl-clipboard: mouse-selection copy on Wayland'
             'xclip: mouse-selection copy on X11')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b0625e996eaebb00de83096319942bb81f979afc6dc6bd2a19ddeee774c15d81')
+sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 
 prepare() {
   cd "stashee-terminal-$pkgver"
