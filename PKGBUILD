@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=clang-static-git
-pkgver=23.0.0_r588137.4d7e653b5230
+pkgver=23.0.0_r588171.4d5bc903c8a7
 pkgrel=1
 pkgdesc='LLVM compiler and tools for C-family languages (git, statically linked LLVM libs)'
 arch=(x86_64)
@@ -37,6 +37,7 @@ provides=(
   compiler-rt
   libc++
   libc++abi
+  llvm-libunwind
 )
 conflicts=(
   clang
@@ -47,6 +48,7 @@ conflicts=(
   compiler-rt
   libc++
   libc++abi
+  llvm-libunwind
 )
 options=(
   staticlibs
@@ -92,7 +94,7 @@ build() {
     -D CMAKE_INSTALL_PREFIX=/usr
     -D CMAKE_INSTALL_DOCDIR=share/doc
     -D LLVM_ENABLE_PROJECTS='clang;clang-tools-extra'
-    -D LLVM_ENABLE_RUNTIMES='compiler-rt;libcxx;libcxxabi'
+    -D LLVM_ENABLE_RUNTIMES='compiler-rt;libcxx;libcxxabi;libunwind'
     -D LLVM_ENABLE_PER_TARGET_RUNTIME_DIR=OFF
     -D CLANG_DEFAULT_CXX_STDLIB=libstdc++
     -D CLANG_DEFAULT_RTLIB=libgcc
@@ -114,7 +116,7 @@ build() {
   cmake "${cmake_args[@]}" -D LLVM_DISTRIBUTION_COMPONENTS="$_dist_components"
 
   # Build only the requested distribution
-  ninja -C _build distribution
+  ninja -C _build $NINJAFLAGS distribution
 }
 
 check() {
@@ -128,6 +130,11 @@ package() {
   # Remove files that conflict with the llvm package
   rm -f "$pkgdir"/usr/bin/clang-offload-packager
   rm -f "$pkgdir"/usr/bin/llvm-offload-binary
+
+  # Remove LLVM libunwind files that conflict with system (gcc) libunwind
+  rm -f "$pkgdir"/usr/lib/libunwind.so
+  rm -f "$pkgdir"/usr/include/libunwind.h
+  rm -f "$pkgdir"/usr/include/unwind.h
 
   install -Dm644 llvm-project/llvm/LICENSE.TXT "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
