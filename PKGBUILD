@@ -2,7 +2,7 @@
 
 pkgbase=modemu2k
 pkgname=('modemu2k' 'modemu2k-docs')
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Hayes-style AT-command modem emulator bridging serial-style I/O to TCP/Telnet"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=(
 )
 
 source=("https://github.com/theimpossibleastronaut/${pkgbase}/releases/download/v${pkgver}/${pkgbase}-${pkgver}.tar.xz")
-sha256sums=('45633882a8e290d130010193aa8b8237d1a84e2d45a1cbc52b2cec5c3d8df2ba')
+sha256sums=('7ea0fd0757a27a32144ed0b99afe4e0bf684e8d022e7a2d217bf19314f7641ba')
 
 build() {
   arch-meson "${pkgbase}-${pkgver}" build \
