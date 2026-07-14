@@ -14,7 +14,7 @@ makedepends=('npm' 'git')
 optdepends=('ollama: for running recommended models locally')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('cebbe2cd4f02bf870d424ac12aab21fb1dcd1f50169541fc94476593f6956081')
 
 prepare() {
   bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" \
