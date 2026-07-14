@@ -1,0 +1,20 @@
+print_mqtt_alive_daemon_post_install() {
+  cat <<'EOF'
+mqtt-alive-daemon setup:
+
+  1. Create your config:
+       install -m 600 /etc/mqtt-alive-daemon/config.yaml.example /etc/mqtt-alive-daemon/config.yaml
+     then edit it with your MQTT broker details.
+
+  2. Enable the service:
+       systemctl enable --now mqtt-alive-daemon
+EOF
+}
+
+post_install() {
+  print_mqtt_alive_daemon_post_install
+}
+
+post_upgrade() {
+  print_mqtt_alive_daemon_post_install
+}
