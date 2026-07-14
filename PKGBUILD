@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=morphe-cli
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Tool for patching Android apps using Morphe Patcher (CLI & GUI)"
 arch=('any')
@@ -11,9 +11,9 @@ optdepends=('android-tools: for installing patched APKs via ADB')
 source=("${pkgname}-${pkgver}.jar::https://github.com/MorpheApp/morphe-cli/releases/download/v${pkgver}/morphe-cli-${pkgver}-all.jar"
         "https://raw.githubusercontent.com/MorpheApp/morphe-cli/v${pkgver}/src/main/resources/morphe_logo.png"
         "https://raw.githubusercontent.com/MorpheApp/morphe-cli/v${pkgver}/NOTICE")
-sha256sums=('7cbcc206945b022e880828be0c28bfdd97d70706f1533751cd20300db25fc9a3'
+sha256sums=('a96da8d7a9283d56d8224a74f5c36d9ef25b2fdd03d554a2ef03271dfe419530'
             'cbfcb7b7a8274e8da1b9fbb4ac9655f4322a720ca9efbe02f42a9ea53ffdb30d'
-            '374c549a4e8dbe9bd1d76ef64ddbe10bb87ed3b0461b8d0e68ebad9afec41220')
+            'ee69378351ee380d2d2c4c22adf3d975325d9f6c4941bb632221815037b53fa8')
 noextract=("${pkgname}-${pkgver}.jar")
 options=('!debug')
 
