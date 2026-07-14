@@ -3,11 +3,11 @@
 # Contributor: Frank Vanderham <twelve_dot_eighty_at_gmail_dot_com>
 
 pkgname=pam_mount-git
+pkgdesc='A PAM module that can mount volumes for a user session'
 pkgver=2.22.r7.g78787d2
 pkgrel=1
-pkgdesc='A PAM module that can mount volumes for a user session'
-arch=('x86_64')
 url='https://inai.de/projects/pam_mount/'
+arch=(x86_64)
 license=('LGPL-2.1-or-later')
 depends=('cryptsetup' 'glibc' 'libhx' 'libxml2' 'openssl' 'pam' 'pcre2' 'util-linux-libs')
 makedepends=('git')
@@ -15,11 +15,11 @@ provides=('pam_mount')
 conflicts=('pam_mount')
 backup=('etc/security/pam_mount.conf.xml')
 options=(!emptydirs)
-source=("${pkgname}::git+https://codeberg.org/jengelh/pam_mount.git")
+source=('git+https://codeberg.org/jengelh/pam_mount.git')
 b2sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd pam_mount
 
   local GIT_TAG
   GIT_TAG="$(git describe --long --tags)"
@@ -27,7 +27,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  cd pam_mount
 
   aclocal
   libtoolize --no-warnings
@@ -37,7 +37,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd pam_mount
 
   ./configure \
     --prefix=/usr \
@@ -54,7 +54,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd pam_mount
 
   make DESTDIR="${pkgdir}" LIBTOOLFLAGS=--no-warnings install
 }

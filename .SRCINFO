@@ -18,7 +18,7 @@ pkgbase = pam_mount-git
 	conflicts = pam_mount
 	options = !emptydirs
 	backup = etc/security/pam_mount.conf.xml
-	source = pam_mount-git::git+https://codeberg.org/jengelh/pam_mount.git
+	source = git+https://codeberg.org/jengelh/pam_mount.git
 	b2sums = SKIP
 
 pkgname = pam_mount-git
