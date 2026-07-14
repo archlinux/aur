@@ -21,8 +21,9 @@ depends=(
   'dbus'
 )
 makedepends=('cargo' 'pkg-config')
+optdepends=('mold: faster linking')
 source=("https://github.com/loki5512344/Wherry/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9974b7477dc3c051a74812d4be721da360a1498a737ceebad7650014da2b6d20')
+sha256sums=('ee2c72f25e8cde087cd1604eb0735c07e949ab2a613f6c207a395d5be9b82ef6')
 
 _repodir="Wherry-$pkgver"
 
