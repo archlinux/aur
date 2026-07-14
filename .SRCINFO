@@ -1,0 +1,17 @@
+pkgbase = arc-lang
+	pkgdesc = A simple, interpreted programming language written in C.
+	pkgver = 0.4.0.alpha
+	pkgrel = 1
+	url = https://github.com/VxidDev/Arc
+	arch = x86_64
+	license = GPL3
+	makedepends = base-devel
+	depends = sdl3
+	depends = sdl3_image
+	depends = curl
+	depends = libffi
+	depends = libyyjson
+	source = git+https://github.com/VxidDev/Arc.git#tag=v0.4.0-alpha
+	sha256sums = 003a3cf89e7a68ccf87dd3ebd9940de6f0b3ccf8e4c2672a477ae4af300aefb6
+
+pkgname = arc-lang
