@@ -1,0 +1,22 @@
+pkgbase = adw-network-git
+	pkgdesc = Modern GTK4/Libadwaita network manager
+	pkgver = 1.0.2.r2.g6b2467a
+	pkgrel = 1
+	url = https://github.com/PlayRood32/adw-network
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	depends = gtk4
+	depends = libadwaita
+	depends = networkmanager
+	depends = gdk-pixbuf2
+	depends = openssl
+	provides = adw-network
+	provides = adwaita-network
+	conflicts = adw-network
+	conflicts = adwaita-network
+	source = git+https://github.com/PlayRood32/adw-network.git
+	sha256sums = SKIP
+
+pkgname = adw-network-git
