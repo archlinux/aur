@@ -1,6 +1,6 @@
 pkgbase = sockseek-bin
 	pkgdesc = Persistent Soulseek client with bulk download support for Spotify, YouTube, Bandcamp, and more
-	pkgver = 3.0.1
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://github.com/fiso64/sockseek
 	install = sockseek-bin.install
@@ -11,9 +11,9 @@ pkgbase = sockseek-bin
 	conflicts = sockseek
 	options = !strip
 	options = !debug
-	source_x86_64 = sockseek-bin-3.0.1-x86_64.tar.gz::https://github.com/fiso64/sockseek/releases/download/v3.0.1/sockseek_linux-x64.tar.gz
-	sha256sums_x86_64 = ab97203d56faf5a513a2a7efafc387e5a07148a9ecaf1d9b46bf61f83be5e44e
-	source_armv7h = sockseek-bin-3.0.1-armv7h.tar.gz::https://github.com/fiso64/sockseek/releases/download/v3.0.1/sockseek_linux-arm.tar.gz
-	sha256sums_armv7h = 01914bada0a194b08c21c6673affe5299435c22882fd17cd3e2fdac81f6b82d4
+	source_x86_64 = sockseek-bin-3.0.4-x86_64.tar.gz::https://github.com/fiso64/sockseek/releases/download/v3.0.4/sockseek_3.0.4_linux-x64.tar.gz
+	sha256sums_x86_64 = 22099a4f8030d94b4bf48bb9bd8cec5c81fa530228ade510abcb11a9530e2a48
+	source_armv7h = sockseek-bin-3.0.4-armv7h.tar.gz::https://github.com/fiso64/sockseek/releases/download/v3.0.4/sockseek_3.0.4_linux-arm.tar.gz
+	sha256sums_armv7h = 7937034f2c702f6548789f2f367bc83595914cfa368baff99203233bae2ae954
 
 pkgname = sockseek-bin
