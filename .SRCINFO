@@ -1,6 +1,6 @@
 pkgbase = pi-ext-awsdocs
 	pkgdesc = pi-coding-agent extension for AWS documentation
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/dougefresher/pi-ext-awsdocs
 	install = pi-ext.install
@@ -11,7 +11,7 @@ pkgbase = pi-ext-awsdocs
 	depends = python-markdownify
 	optdepends = pi-coding-agent
 	optdepends = pi-coding-agent-git
-	source = pi-ext-awsdocs-1.0.1.tar.gz::https://github.com/dougefresher/pi-ext-awsdocs/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 64e299287a439722948ab8e0cf49794ccbb6e6c65cbae953d5944469285c09f6
+	source = pi-ext-awsdocs-1.1.0.tar.gz::https://github.com/dougefresher/pi-ext-awsdocs/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = b4e16f4f867173674e6a30fbde0a1f42fc204876d6cbfc53e6ca3c409a795816
 
 pkgname = pi-ext-awsdocs
