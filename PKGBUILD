@@ -1,7 +1,7 @@
 ext_name=xdebug
 phpbase=74
 suffix=
-pkgname="php${phpbase}-${ext_name}${suffix}"
+pkgname="php${phpbase}-${ext_name}${suffix}-working"
 pkgver=3.1.5
 source=("http://pecl.php.net/get/$ext_name-$pkgver.tgz")
 pkgrel=1
@@ -40,6 +40,5 @@ package() {
     install -m0755 -D ".libs/${ext_name}.so" "${pkgdir}/${ext_dir}/${ext_name}.so"
 }
 
-sha256sums=('55f6ef381245da079b2fc5ce1cfbcb7961197d0c0e04f9d977613cf9aa969a79')
 sha256sums=('55f6ef381245da079b2fc5ce1cfbcb7961197d0c0e04f9d977613cf9aa969a79')
 sha256sums=('55f6ef381245da079b2fc5ce1cfbcb7961197d0c0e04f9d977613cf9aa969a79')

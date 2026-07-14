@@ -1,4 +1,4 @@
-pkgbase = php74-xdebug
+pkgbase = php74-xdebug-working
 	pkgdesc = php74 Xdebug extension
 	pkgver = 3.1.5
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = php74-xdebug
 	source = http://pecl.php.net/get/xdebug-3.1.5.tgz
 	sha256sums = 55f6ef381245da079b2fc5ce1cfbcb7961197d0c0e04f9d977613cf9aa969a79
 
-pkgname = php74-xdebug
+pkgname = php74-xdebug-working
