@@ -1,12 +1,12 @@
 pkgbase = ansible-collection-community-general
 	pkgdesc = Ansible Galaxy Community General Collection
-	pkgver = 13.1.0
+	pkgver = 13.2.0
 	pkgrel = 1
 	url = https://github.com/ansible-collections/community.general
 	arch = any
 	license = GPL3
 	depends = ansible-core
-	source = https://github.com/ansible-collections/community.general/archive/13.1.0/community.general-13.1.0.tar.gz
-	sha256sums = b96cc81852df8c5cce4b0998a18b501d46c98abb011563b663c22dea3382371d
+	source = https://github.com/ansible-collections/community.general/archive/13.2.0/community.general-13.2.0.tar.gz
+	sha256sums = ecaa13fb7457c833393dad6ade3310ddd652773ab36b111f6d19418e87acd9cd
 
 pkgname = ansible-collection-community-general
