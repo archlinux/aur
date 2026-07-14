@@ -1,0 +1,18 @@
+pkgbase = flamelang-git
+	pkgdesc = Flame language transpiler (git main branch)
+	pkgver = r167ded0
+	pkgrel = 1
+	url = https://github.com/TheFlameLang/Flame
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	depends = gcc-libs
+	provides = flamelang
+	conflicts = flamelang
+	source = flamelang::git+https://github.com/TheFlameLang/Flame.git
+	sha256sums = SKIP
+
+pkgname = flamelang-git
