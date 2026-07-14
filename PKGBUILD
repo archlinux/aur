@@ -1,7 +1,7 @@
 # Maintainer: hyperpuncher
 
 pkgname=pi-ui-bin
-pkgver=0.10.5
+pkgver=0.10.6
 pkgrel=1
 pkgdesc="Desktop GUI for pi"
 arch=('x86_64' 'aarch64')
@@ -19,10 +19,10 @@ sha256sums=(
 )
 
 source_x86_64=("$pkgname-$pkgver.AppImage::https://github.com/hyperpuncher/pi-ui/releases/download/v$pkgver/pi-ui-linux-x64.AppImage")
-sha256sums_x86_64=('5b632d0f627b9e60823efd86a113038d0a412ac5c92e21a4325f10b6836256c9')
+sha256sums_x86_64=('4cb55e104069d30361792dbe13d19755ae6c77938273013e436fd843af7af96f')
 
 source_aarch64=("$pkgname-$pkgver.AppImage::https://github.com/hyperpuncher/pi-ui/releases/download/v$pkgver/pi-ui-linux-arm64.AppImage")
-sha256sums_aarch64=('5d006a72a7fd00362d92f7c8482b28e29b5fb9b418e778e7814caf79b3186ccd')
+sha256sums_aarch64=('5def8ba002cfc9a0c240380263547adc93713f220f33b61bb9437199073f444e')
 
 noextract=("$pkgname-$pkgver.AppImage")
 
