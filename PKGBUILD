@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=quadrant-bin
 _pkgname=Quadrant
-pkgver=26.7.2
+pkgver=26.7.4
 pkgrel=1
 pkgdesc="An easy way to manage your Minecraft modpacks, written in React and Rust.(Prebuilt version)"
 arch=(
@@ -21,8 +21,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}-stable/${_pkgname}-${pkgver}-stable-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}-stable/${_pkgname}-${pkgver}-stable-1.x86_64.rpm")
-sha256sums_aarch64=('13ca3fb4ca6460d8eacd6a6522634f1572b84a6a241e5e6b425ce6b4f8f3994b')
-sha256sums_x86_64=('8db509b920b97750d3b228128adb6ea0497528541fe8e818be1c9d603389cb2f')
+sha256sums_aarch64=('2c3b23af9fcc4a15c092808318384114bd4ca4946ab28ffd511caea4e93bd8ef')
+sha256sums_x86_64=('b492ca0d16b9ffe592211003de127173ca3169403b46aef28ddb0a327347d677')
 prepare() {
     sed -i "s/${pkgname%-bin}_next/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
