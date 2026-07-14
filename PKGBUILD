@@ -1,5 +1,5 @@
 pkgname=python-iraqitext
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Translate Iraqi dialect to Modern Standard Arabic and back"
 arch=('any')
