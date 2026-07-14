@@ -1,0 +1,30 @@
+pkgbase = cyberia-git
+	pkgdesc = Desktop companion for Resonite - chat, presence, worlds and status, no backend server required (main branch, built from source)
+	pkgver = 0.2.8.r2.gdb64056
+	pkgrel = 1
+	url = https://git.gay/zutyosh/Cyberia
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = patchelf
+	makedepends = pkgconf
+	makedepends = file
+	makedepends = desktop-file-utils
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = librsvg
+	depends = libsecret
+	depends = openssl
+	depends = hicolor-icon-theme
+	provides = cyberia
+	conflicts = cyberia
+	conflicts = cyberia-bin
+	source = Cyberia::git+https://git.gay/zutyosh/Cyberia.git#branch=main
+	sha256sums = SKIP
+
+pkgname = cyberia-git
