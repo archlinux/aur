@@ -1,5 +1,5 @@
 pkgname=adw-network-bin
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Modern network management application for GNOME (prebuilt binary)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
 )
 
 sha256sums=(
-  '44cd4b8bfb4d8f09cd753126cdcc76bfa8fff5441f8182ea11aa728766cbe3b2'
+  'a506c23397f493fcc1f3d05f0dda9698bb029438f5b4cd1eeadc3658ddcf71ca' #tar.gz
   '87e22132167fdb6372cf4fbdf1a60a0449e8ef1e5889d1a156a8eb540c069038'
   '518a328abee19239ba5f20bcbfe3f15c474bc5c18b8adcb37c9793ecf7c640cc'
 )
