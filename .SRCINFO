@@ -1,6 +1,6 @@
 pkgbase = emojipick
 	pkgdesc = A fast, frecency-ranked emoji picker for KDE Plasma Wayland with a native global shortcut
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/guitaripod/emojipick
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = emojipick
 	makedepends = cargo
 	depends = gtk4
 	depends = wl-clipboard
-	optdepends = ydotool: auto-paste the picked emoji into the focused window
-	optdepends = noto-fonts-emoji: color emoji glyphs
-	source = emojipick-0.1.0.tar.gz::https://github.com/guitaripod/emojipick/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 8608bf706689dc6efa85d850209d77f1f0758ce95c2adb32f8bd0a68d4166de0
+	depends = noto-fonts-emoji
+	depends = ydotool
+	source = emojipick-0.1.1.tar.gz::https://github.com/guitaripod/emojipick/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 160fa8ab1a6227d128896815af57af7b4673f9086a8d7f74164a1e6ce9d0b34d
 
 pkgname = emojipick
