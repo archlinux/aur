@@ -2,7 +2,7 @@
 
 pkgname=vmod-querystring
 pkgver=9.0.3
-pkgrel=2
+pkgrel=3
 _srcver=2.0.4
 pkgdesc="QueryString module for Varnish Cache"
 arch=('x86_64')
