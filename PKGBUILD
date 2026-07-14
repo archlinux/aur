@@ -25,6 +25,6 @@ package() {
   mkdir "${pkgdir}"/boot
   cp RPI_EFI.fd "${pkgdir}"/boot/.
   install -vDm 644 edk2.license.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -vDm 644 atf.license.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -vDm 644 atf.license.rst -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
