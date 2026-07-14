@@ -1,17 +1,16 @@
 pkgbase = qogir-icon-theme-git
 	pkgdesc = A colorful design icon theme for linux desktops
-	pkgver = 2023.06.05.r5.g7edbf61f
-	pkgrel = 1
+	pkgver = 2025.02.15.r26.gc633057b
+	pkgrel = 2
 	url = https://github.com/vinceliuice/Qogir-icon-theme
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = git
-	makedepends = gtk-update-icon-cache
 	provides = qogir-icon-theme
 	conflicts = qogir-icon-theme
 	options = !strip
 	options = !debug
-	source = qogir-icon-theme::git+https://github.com/vinceliuice/Qogir-icon-theme
+	source = qogir-icon-theme::git+https://github.com/vinceliuice/Qogir-icon-theme.git
 	sha256sums = SKIP
 
 pkgname = qogir-icon-theme-git
