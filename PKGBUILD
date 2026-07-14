@@ -30,6 +30,8 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}"
+    export CARGO_HOME="${srcdir}/cargo-home"
+    export RUSTUP_HOME="${srcdir}/rustup-home"
 
     local _toolchain
 
@@ -44,7 +46,6 @@ build() {
         rustup toolchain install "${_toolchain}"
     fi
 
-    export PATH="${HOME}/.cargo/bin:${PATH}"
     export RUSTUP_TOOLCHAIN="${_toolchain}"
     unset CI CC CXX CFLAGS CXXFLAGS LDFLAGS RUSTFLAGS
 
