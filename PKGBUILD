@@ -1,6 +1,6 @@
 # Maintainer: loteran <https://github.com/loteran>
 pkgname=arctis-sound-manager
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Linux GUI for SteelSeries Arctis headsets — all GG/Sonar features: mixer, EQ, ANC, mic processing, surround"
 arch=('any')
@@ -20,6 +20,12 @@ depends=(
     'wireplumber'
     'libusb'
     'libpulse'
+    # D-Bus service backend (dbus_service.py) — in official Arch repos (extra/).
+    'python-dbus-next'
+    # PulseAudio/PipeWire control bindings — not in official Arch repos, but
+    # available in the AUR (same situation as noise-suppression-for-voice
+    # below: pacman prompts paru/yay to build it as part of the transaction).
+    'python-pulsectl'
     # Used by asm-setup to download HRIR (~/.local/share/pipewire/
     # hrir_hesuvi/EAC_Default.wav) on first run — Spatial Audio is
     # silent without it. asm-setup falls back to wget but a default
@@ -40,11 +46,19 @@ depends=(
 makedepends=('python-installer' 'uv')
 install=arctis-sound-manager.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('7c55a6991c3bd7750541651ab4d2115997723df827c2f238f676e0c6ebee363c')
+sha256sums=('d1d34fd2f542b52b9c1a4d5a87acf1255efa776587448cb966d54da0844eeee0')
 
 build() {
     cd "Arctis-Sound-Manager-$pkgver"
-    uv build --wheel
+
+    # Never let uv download or select a Python interpreter other than the
+    # system one — the produced wheel is pure-Python (py3-none-any) so the
+    # interpreter used to build it doesn't matter for content, but a
+    # mismatched interpreter here can still lead uv to create a venv keyed
+    # to a different Python version than what's actually installed.
+    export UV_PYTHON_DOWNLOADS=never
+    export UV_SYSTEM_PYTHON=1
+    uv build --wheel --python /usr/bin/python
 }
 
 package() {
@@ -53,11 +67,11 @@ package() {
     # Install Python package
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    # Bundle dbus-next and pulsectl (not in official Arch repos)
-    uv pip install --no-deps --python /usr/bin/python --prefix "$pkgdir/usr" dbus-next pulsectl
-
-    # udev rules (generated from device YAMLs — never hardcode PIDs here)
-    uv run python3 scripts/generate_udev_rules.py \
+    # udev rules (generated from device YAMLs — never hardcode PIDs here).
+    # Run with the system python3 directly (no uv/venv involved): the script
+    # only needs the stdlib plus the local arctis_sound_manager.udev_rules
+    # module and inserts src/ onto sys.path itself when run from the repo.
+    python3 scripts/generate_udev_rules.py \
         | install -Dm644 /dev/stdin "$pkgdir/usr/lib/udev/rules.d/91-steelseries-arctis.rules"
 
     # Desktop entry
@@ -104,8 +118,9 @@ package() {
     install -Dm644 src/arctis_sound_manager/devices/*.yaml \
         -t "$pkgdir/usr/share/$pkgname/devices/"
 
-    # AppStream metainfo (releases injected from CHANGELOG.md — never hardcode)
-    uv run python3 scripts/generate_metainfo_releases.py --in-place
+    # AppStream metainfo (releases injected from CHANGELOG.md — never hardcode).
+    # Stdlib-only script, no uv/venv needed.
+    python3 scripts/generate_metainfo_releases.py --in-place
     install -Dm644 src/arctis_sound_manager/desktop/com.github.loteran.arctis-sound-manager.metainfo.xml \
         "$pkgdir/usr/share/metainfo/com.github.loteran.arctis-sound-manager.metainfo.xml"
 
