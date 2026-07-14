@@ -1,2 +1,3 @@
 *.license.*
-*.fd
+RPI_EFI.fd
+config.txt
