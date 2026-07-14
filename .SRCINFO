@@ -7,7 +7,6 @@ pkgbase = perl-tree-rb-xs
 	arch = armv7h
 	arch = i486
 	arch = i686
-	arch = loong64
 	arch = pentium4
 	arch = riscv64
 	arch = x86_64

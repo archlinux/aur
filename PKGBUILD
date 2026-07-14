@@ -7,7 +7,7 @@ pkgdesc='Red/Black Tree and LRU Cache implemented in C'
 pkgver=0.21
 pkgrel=1
 url='https://metacpan.org/dist/Tree-RB-XS'
-arch=(aarch64 armv7h i486 i686 loong64 pentium4 riscv64 x86_64)
+arch=(aarch64 armv7h i486 i686 pentium4 riscv64 x86_64)
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 # See https://metacpan.org/dist/Tree-RB-XS/source/Makefile.PL
 makedepends=(
