@@ -1,7 +1,7 @@
 pkgbase = wiki-go
 	pkgdesc = A modern, feature-rich, databaseless flat-file wiki platform
 	pkgver = 1.8.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leomoon-studios/wiki-go
 	changelog = wiki-go.changelog
 	arch = aarch64

@@ -1,12 +1,12 @@
 # shellcheck shell=bash
 # -*- mode: sh -*-
 
-#  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='wiki-go'
 pkgdesc='A modern, feature-rich, databaseless flat-file wiki platform'
 pkgver=1.8.11
-pkgrel=1
+pkgrel=2
 url='https://github.com/leomoon-studios/wiki-go'
 changelog="$pkgname.changelog"
 arch=('aarch64' 'x86_64')
