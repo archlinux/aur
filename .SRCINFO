@@ -1,0 +1,23 @@
+pkgbase = ttf-lythmono-nerd-font
+	pkgdesc = Patched Nerd Font aiming square-ish technical look and legibility at small sizes
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/why-trv/LythMono
+	arch = any
+	license = OFL-1.1
+	source = https://github.com/why-trv/LythMono/releases/download/v0.10.0/LythMonoNerdFont.zip
+	source = https://github.com/why-trv/LythMono/releases/download/v0.10.0/LythMonoRoundNerdFont.zip
+	source = https://github.com/why-trv/LythMono/releases/download/v0.10.0/LythMonoSquareNerdFont.zip
+	source = https://github.com/why-trv/LythMono/releases/download/v0.10.0/LythMonoTermNerdFont.zip
+	source = https://github.com/why-trv/LythMono/releases/download/v0.10.0/LythMonoTermRoundNerdFont.zip
+	source = https://github.com/why-trv/LythMono/releases/download/v0.10.0/LythMonoTermSquareNerdFont.zip
+	source = LICENSE::https://raw.githubusercontent.com/why-trv/LythMono/refs/heads/main/LICENSE.md
+	sha256sums = 3500e7deefc4a36acda597655249ba95e2f660ec187131f26d10e3a966033573
+	sha256sums = 58e0c0bcde1b76b0dda9d7d91c7eb3b4ff7829797e29c7b6b7d1e911f5fec73b
+	sha256sums = 3b5d9f846b7e38e4f3efdfba38f4c4188aa40365ad73413827571004352f3e4d
+	sha256sums = 28c5e3657604141a5e10a1efd16f4c791163bb676998fb927a5445488448ff97
+	sha256sums = 46c3a84ca5fdd86a21888670bd2e56f208ff318d97c7945296c6b8620c087cdb
+	sha256sums = 74bb2a23e32312d7e4d6d0e3782bbc21c1e18eb36446e9b7351ec5c33934423a
+	sha256sums = 81b8afed5a258c059368f5df783ac2697d0d5062c6acefe2a8f70708a583f68e
+
+pkgname = ttf-lythmono-nerd-font
