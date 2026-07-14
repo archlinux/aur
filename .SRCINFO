@@ -1,0 +1,14 @@
+pkgbase = fuso
+	pkgdesc = A dead-simple terminal time tracker
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/AfonsoNeto/fuso-tui
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = fuso-0.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/fuso-0.1.2.gem
+	sha256sums = ceac27e5a192c50ced57c8227a85163b18863cf99e55eaed4ae9b6d9243007eb
+
+pkgname = fuso
