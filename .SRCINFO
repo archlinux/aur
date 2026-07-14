@@ -8,10 +8,6 @@ pkgbase = greetd-tuigreety-bin
 	arch = armv7h
 	arch = i686
 	license = GPL-3.0-or-later
-	depends = glibc
-	depends = greetd
-	depends = libgcc
-	depends = systemd
 	provides = greetd-greeter
 	provides = greetd-tuigreety=0.10.0
 	provides = tuigreety=0.10.0
@@ -33,3 +29,5 @@ pkgbase = greetd-tuigreety-bin
 	sha256sums_i686 = f1ad93b54fbb071e528e92c75f182d789d82c0ccb6739380ce505c6b1f6e302d
 
 pkgname = greetd-tuigreety-bin
+	depends = gcc-libs
+	depends = greetd

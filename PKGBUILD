@@ -9,7 +9,6 @@ url='https://github.com/Tobiichi-Origuchi/tuigreety'
 license=('GPL-3.0-or-later')
 provides=('greetd-greeter' "greetd-tuigreety=$pkgver" "tuigreety=$pkgver")
 conflicts=('greetd-tuigreet' 'greetd-tuigreety' 'greetd-tuigreety-git' 'tuigreety' 'tuigreety-bin' 'tuigreety-git')
-depends=('glibc' 'greetd' 'libgcc' 'systemd')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/$pkgver/tuigreety-$pkgver-x86_64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/$pkgver/tuigreety-$pkgver-aarch64.tar.gz")
 source_armv7h=("$pkgname-$pkgver-armv7.tar.gz::$url/releases/download/$pkgver/tuigreety-$pkgver-armv7.tar.gz")
@@ -22,6 +21,7 @@ sha256sums_armv7h=('a38330e4d77a1c5e7932f0472b3ec7bd3d2a644dd022e7c424463f883236
 sha256sums_i686=('f1ad93b54fbb071e528e92c75f182d789d82c0ccb6739380ce505c6b1f6e302d')
 
 package() {
+  depends=('gcc-libs' 'greetd')
   local release_arch="$CARCH"
   [[ $CARCH == armv7h ]] && release_arch=armv7
   cd "tuigreety-$pkgver-$release_arch"
