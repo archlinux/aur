@@ -1,6 +1,6 @@
 pkgbase = nmlinux
 	pkgdesc = A unified network toolkit for Linux and macOS — SSH, WinRM, topology, 29 modules
-	pkgver = 1.7.6
+	pkgver = 1.7.8
 	pkgrel = 1
 	url = https://github.com/thongor77/nmlinux
 	arch = any
@@ -28,7 +28,8 @@ pkgbase = nmlinux
 	optdepends = cifs-utils: SMB/NFS browser — mount SMB shares from the right-click menu
 	optdepends = openssl: TLS Inspector certificate chain
 	optdepends = avahi: Topology — mDNS device type detection (printers, phones, NAS…)
-	source = https://github.com/thongor77/nmlinux/archive/refs/tags/v1.7.6.tar.gz
-	sha256sums = 50ae0aeca72b1e42ee183a9e3bb1bdd50d8c0bba00a0df25b7dfd2d93d661da5
+	optdepends = iperf3: Speed Test — LAN tab
+	source = https://github.com/thongor77/nmlinux/archive/refs/tags/v1.7.8.tar.gz
+	sha256sums = c2a9107a8f92e5bf64e1467fcc7a1b795ecc8e9942662d740a1b301e0fe52ca6
 
 pkgname = nmlinux

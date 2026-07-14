@@ -1,6 +1,6 @@
 # Maintainer: thongor77 <magetriste@proton.me>
 pkgname=nmlinux
-pkgver=1.7.6
+pkgver=1.7.8
 pkgrel=1
 pkgdesc="A unified network toolkit for Linux and macOS — SSH, WinRM, topology, 29 modules"
 arch=('any')
@@ -29,10 +29,11 @@ optdepends=(
     'cifs-utils: SMB/NFS browser — mount SMB shares from the right-click menu'
     'openssl: TLS Inspector certificate chain'
     'avahi: Topology — mDNS device type detection (printers, phones, NAS…)'
+    'iperf3: Speed Test — LAN tab'
 )
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("https://github.com/thongor77/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('50ae0aeca72b1e42ee183a9e3bb1bdd50d8c0bba00a0df25b7dfd2d93d661da5')
+sha256sums=('c2a9107a8f92e5bf64e1467fcc7a1b795ecc8e9942662d740a1b301e0fe52ca6')
 
 build() {
     cd "${pkgname}-${pkgver}"
