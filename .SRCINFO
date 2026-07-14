@@ -1,5 +1,5 @@
 pkgbase = rpi5-uefi-bin
-	pkgdesc = EDK2 firmware images for Raspberry Pi 5
+	pkgdesc = EDK2 firmware images for Raspberry Pi 5 (prebuilt bin)
 	pkgver = 0.0.0+syntax_fix
 	pkgrel = 1
 	url = https://github.com/greyltc/rpi5-uefi

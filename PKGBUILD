@@ -1,6 +1,6 @@
 pkgname=rpi5-uefi-bin
 _release="syntax-fix"
-pkgdesc="EDK2 firmware images for Raspberry Pi 5"
+pkgdesc="EDK2 firmware images for Raspberry Pi 5 (prebuilt bin)"
 pkgver=0.0.0+${_release/-/_}
 pkgrel=1
 arch=('aarch64')
