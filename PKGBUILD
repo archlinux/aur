@@ -1,11 +1,10 @@
-# Maintainer: cafreo
+# Maintainer: 
 pkgname=wealthfolio-bin
 _pkgname=Wealthfolio
-pkgver=3.6.1
+pkgver=3.6.2
 pkgrel=1
-epoch=
 pkgdesc="A Beautiful and Boring Investment Tracker, with Local Data Storage. No Subscriptions, No Cloud."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://wealthfolio.app/"
 license=('AGPL-3.0')
 groups=()
@@ -20,15 +19,17 @@ backup=()
 options=()
 install=
 changelog=
-source=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/afadil/${pkgname%-bin}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-_deb="${_pkgname}_${pkgver}_amd64.deb"
+source_x86_64=("${_pkgname}_${pkgver}_x86_64.deb::https://github.com/wealthfolio/${pkgname%-bin}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
+source_aarch64=("${_pkgname}_${pkgver}_aarch64.deb::https://github.com/wealthfolio/${pkgname%-bin}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 noextract=()
-sha256sums=('SKIP')
+sha256sums_x86_64=('f3041062cdfea3bcc31af1e86bfa69b74286233ccbf6ee1fb0d4d208ec49cc3e')
+sha256sums_aarch64=('e10de2e24b6ebefab53213526a1f5d6b0d3e64aca388d712ea5679481402b350')
 validpgpkeys=()
 
 prepare() {
-    cd "${srcdir}"
-    tar -zxvf data.tar.gz
+    cd "${srcdir}" 
+    bsdtar -xf "${_pkgname}_${pkgver}_$CARCH.deb" data.tar.*
+    bsdtar -xf data.tar.* -C "${srcdir}"
     sed -i "s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     sed -i "s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
@@ -41,8 +42,8 @@ package() {
   install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 
   # icon images
-  _icon_sizes=(32x32 128x128 256x256@2)
-  for _icons in "${_icon_sizes[@]}";do
-      install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
+  local _icon_sizes=(32x32 128x128 256x256@2)
+  for size in "${_icon_sizes[@]}";do
+      install -Dm644 "${srcdir}/usr/share/icons/hicolor/${size}/apps/${_pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/${size}/apps/${pkgname%-bin}.png"
   done 
 }
