@@ -1,0 +1,17 @@
+pkgbase = python-tree-sitter-pascal
+	pkgdesc = Pascal grammar for tree-sitter
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/jimmckeeth/tree-sitter-pascal
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-tree-sitter
+	source = python-tree-sitter-pascal-0.11.0.tar.gz::https://files.pythonhosted.org/packages/source/t/tree_sitter_pascal/tree_sitter_pascal-0.11.0.tar.gz
+	sha256sums = 7d4da59b8c0b2ff9a32181562eed25c8ba13a6c8bbca2cb895e10f5344708dba
+
+pkgname = python-tree-sitter-pascal
