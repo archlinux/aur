@@ -1,0 +1,11 @@
+post_install() {
+	if command -v zsh >/dev/null 2>&1; then
+		# Auto-rehash if using zsh
+		if [[ -n "$ZSH_VERSION" ]]; then
+			rehash 2>/dev/null || true
+		fi
+	fi
+	echo "ztrash installed! Run 'ztrash -h' to get started."
+	echo "Tip: enable fzf integration with: ztrash --fzf"
+	echo "Tip: add completion with: ztrash --print-completion zsh >> ~/.zshrc"
+}
