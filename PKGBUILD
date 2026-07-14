@@ -1,7 +1,7 @@
 # Maintainer: J. Rechsteiner <jrechsteiner@bluewin.ch>
 pkgname=bookmark-organisator
 pkgver=r11.f1cd9d9 # Wird beim Bauen automatisch aktualisiert
-pkgrel=1
+pkgrel=2
 pkgdesc="Ein Tool zum Organisieren von Lesezeichen (Bookmarks)"
 arch=('any')
 url="https://github.com/wergosam/bookmark-organisator"
