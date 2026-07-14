@@ -1,0 +1,17 @@
+pkgbase = qrshare-bin
+	pkgdesc = One command to move files, folders, text, or URLs between your laptop and phone over the local network. No app, no account, no cloud.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/edaywalid/qrshare
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = qrshare
+	conflicts = qrshare
+	options = !strip
+	source_x86_64 = qrshare-x86_64-0.2.0.tgz::https://github.com/edaywalid/qrshare/releases/download/v0.2.0/qrshare_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 53547d7d3f038fa81420f70049725efc8f5e2cb29fdd274f3327f1bb4550e2bc
+	source_aarch64 = qrshare-aarch64-0.2.0.tgz::https://github.com/edaywalid/qrshare/releases/download/v0.2.0/qrshare_0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = cfbb06bb1ee0c93dea9f46c3476bdb33c7471e8e0279694f865e7c4a32e81ea6
+
+pkgname = qrshare-bin

@@ -1,0 +1,5 @@
+[qrshare-bin]
+source = "github"
+github = "edaywalid/qrshare"
+use_latest_release = true
+prefix = "v"
