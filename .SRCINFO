@@ -1,0 +1,12 @@
+pkgbase = hexhub-new
+	pkgdesc = database, docker, ssh, sftp. all in one
+	pkgver = 5.1.9
+	pkgrel = 1
+	url = https://hexhub.cn
+	arch = x86_64
+	license = GPL
+	provides = HexHub
+	source = HexHub-Client-linux-amd64-deb-5.1.9-202606072154.deb::https://oss.hexhub.cn/plugin/HexHub-Client-linux-amd64-deb-5.1.9-202606072154.deb
+	sha256sums = 2acb2b03817bbd66a7072f912c570546f19ab0472b9b7da4af5ffff17512857c
+
+pkgname = hexhub-new
