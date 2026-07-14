@@ -1,20 +1,18 @@
 pkgbase = mqtt-alive-daemon
 	pkgdesc = Reports machine aliveness and custom command checks to Home Assistant via MQTT
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/crmne/mqtt-alive-daemon
 	install = mqtt-alive-daemon.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = go
 	depends = bash
 	optdepends = systemd: run as a system service
 	conflicts = mqtt-alive-daemon-git
 	options = !debug
-	options = !strip
-	source_x86_64 = https://github.com/crmne/mqtt-alive-daemon/releases/download/v0.4.0/mqtt-alive-daemon_0.4.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = ac596f085425ac707b249ac823f0bf68e6a87e85f9e23cf04e406d967a2d5133
-	source_aarch64 = https://github.com/crmne/mqtt-alive-daemon/releases/download/v0.4.0/mqtt-alive-daemon_0.4.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 2d1e480acfd3222a08bc32bf058feeb784e71ab63339391c5cd6af8c6ed1a99b
+	source = mqtt-alive-daemon-0.4.1.tar.gz::https://github.com/crmne/mqtt-alive-daemon/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 468bc2ab301f5e132deb65d4d02090f232272af68507be7c0fdeb0cb6f707f69
 
 pkgname = mqtt-alive-daemon
