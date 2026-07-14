@@ -1,0 +1,15 @@
+pkgbase = metrocity
+	pkgdesc = Terminal screensaver with animated pixel-art scenes that activate on idle
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Itz-Agasta/metrocity
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	options = !debug
+	source = metrocity-0.1.1.tar.gz::https://github.com/Itz-Agasta/metrocity/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = metrocity
