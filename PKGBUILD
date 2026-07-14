@@ -24,6 +24,7 @@ package()
     cp -r "${srcdir}/unreal-engine-manager/"* "$pkgdir"/opt/unreal-engine-manager/
     
     # Create symlink for better compatibility
+    mkdir -p "$pkgdir"/usr/bin
     ln -sf /opt/unreal-engine-manager/source/main.py "$pkgdir"/usr/bin/unreal-engine-manager
     
     # Install icons
