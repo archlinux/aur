@@ -18,7 +18,7 @@ pkgbase = fcitx5-schnelle-umlaute-git
 	depends = hicolor-icon-theme
 	optdepends = fcitx5-configtool: GUI configuration via system settings
 	optdepends = rebuild-detector: detects SONAME breakage after fcitx5 updates
-	provides = fcitx5-schnelle-umlaute
+	provides = fcitx5-schnelle-umlaute=1.5.0.r594.g047a296
 	conflicts = fcitx5-schnelle-umlaute
 	source = fcitx5-schnelle-umlaute::git+https://github.com/Maik-0000FF/schnelle-umlaute.git#branch=main
 	sha256sums = SKIP

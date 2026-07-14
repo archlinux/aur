@@ -25,7 +25,7 @@ optdepends=(
     'fcitx5-configtool: GUI configuration via system settings'
     'rebuild-detector: detects SONAME breakage after fcitx5 updates'
 )
-provides=("$_pkgname")
+provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 install="$pkgname.install"
 source=("$_pkgname::git+$url.git#branch=main")
