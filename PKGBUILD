@@ -2,7 +2,7 @@ pkgdesc="This package provides Moomoo desktop client"
 url='https://www.moomoo.com/'
 
 pkgname='moomoo'
-pkgver='16.13.15808'
+pkgver='16.23.16808'
 arch=('x86_64')
 pkgrel=1
 license=("HTML Tidy")
@@ -13,7 +13,7 @@ depends=(
 provides=(moomoo)
 options=(!debug !strip)
 source=("${pkgname}-${pkgver}.deb::https://softwaredownload.futustatic.com/moomoo_desktop_${pkgver}_amd64.deb")
-sha256sums=('37984f3948a9c4bb2ab15b3260ae1cf2c232017a35927e7b7dbad0d6655512aa')
+sha256sums=('d476b71b33dae94f25eb0b631568718834cba1cf50b2753aadf5dc1159883c96')
 
 package() {
     # Extract data

@@ -1,6 +1,6 @@
 pkgbase = moomoo
 	pkgdesc = This package provides Moomoo desktop client
-	pkgver = 16.13.15808
+	pkgver = 16.23.16808
 	pkgrel = 1
 	url = https://www.moomoo.com/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = moomoo
 	provides = moomoo
 	options = !debug
 	options = !strip
-	source = moomoo-16.13.15808.deb::https://softwaredownload.futustatic.com/moomoo_desktop_16.13.15808_amd64.deb
-	sha256sums = 37984f3948a9c4bb2ab15b3260ae1cf2c232017a35927e7b7dbad0d6655512aa
+	source = moomoo-16.23.16808.deb::https://softwaredownload.futustatic.com/moomoo_desktop_16.23.16808_amd64.deb
+	sha256sums = d476b71b33dae94f25eb0b631568718834cba1cf50b2753aadf5dc1159883c96
 
 pkgname = moomoo
