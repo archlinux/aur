@@ -2,13 +2,11 @@
 
 pkgname=bluejay
 pkgver=1.0.3
-pkgrel=17
+pkgrel=19
 pkgdesc="Bluetooth manager written in Qt"
 arch=(x86_64)
-url="https://github.com/EbonJaeger/bluejay"
-license=(
-    'CC0-1.0 AND CC-BY-SA-4.0 AND MPL-2.0'
-)
+url="https://codeberg.org/EbonJaeger/bluejay"
+license=('CC0-1.0 AND CC-BY-SA-4.0 AND MPL-2.0')
 depends=(
     bluez-qt
     glibc
@@ -19,7 +17,7 @@ depends=(
     ki18n
     kirigami
     kirigami-addons
-    libstdc++
+    libgcc
     qqc2-desktop-style
     qt6-base
     qt6-declarative
@@ -33,19 +31,20 @@ makedepends=(
     vulkan-headers
 )
 source=(
-    "$pkgname-$pkgver::git+$url.git#tag=v$pkgver"
-    "CMakeLists.txt.patch"
+    "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
+    "CMakeLists.txt.patch::${url}/commit/4d6d4e661310f1692a5ec62300105149571c949d.patch"
 )
 b2sums=('8315db4f7c807a956d7b0c7849cc2ff874332c4506b07d234749a9000ad094e09ad6073037d6acfa440310c1344dd5c362ab5074a84640c39a51d24178e800a2'
-        '3791966f4b448c6ca4ea1b2c25179d9350fe8812efed160222f2a84a0617f62e167f0253958f6300f073dd59cbb8a996df6d45ff47e42c854b4344a0ee3c0130')
+        'f8cd43fee7d874a75ed6c0faa0e7b7ee44b57eb33740ceafe150f5770958df050b52cb89faf6d5c2cf5907f35f7e6a9598658b2fa2a97bfb59f9d8d82f612059')
 
 prepare() {
-    patch -d $pkgname-$pkgver -Np1 -i ../CMakeLists.txt.patch
+    # Don't include quiet packages in the feature summary
+    patch -d ${pkgname}-${pkgver} -Np1 -i ../CMakeLists.txt.patch
 }
 
 build() {
     local cmake_options=(
-        -S "$pkgname-$pkgver"
+        -S "${pkgname}-${pkgver}"
         -B build
         -D CMAKE_BUILD_TYPE=None
         -D CMAKE_INSTALL_PREFIX=/usr
@@ -57,7 +56,7 @@ build() {
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
+    DESTDIR="${pkgdir}" cmake --install build
 }
 
-# vim: set ft=sh ts=4 sw=4 et:
+# vim: set ts=4 sw=4 et:

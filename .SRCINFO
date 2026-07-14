@@ -1,8 +1,8 @@
 pkgbase = bluejay
 	pkgdesc = Bluetooth manager written in Qt
 	pkgver = 1.0.3
-	pkgrel = 17
-	url = https://github.com/EbonJaeger/bluejay
+	pkgrel = 19
+	url = https://codeberg.org/EbonJaeger/bluejay
 	arch = x86_64
 	license = CC0-1.0 AND CC-BY-SA-4.0 AND MPL-2.0
 	makedepends = appstream
@@ -19,14 +19,14 @@ pkgbase = bluejay
 	depends = ki18n
 	depends = kirigami
 	depends = kirigami-addons
-	depends = libstdc++
+	depends = libgcc
 	depends = qqc2-desktop-style
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-tools
-	source = bluejay-1.0.3::git+https://github.com/EbonJaeger/bluejay.git#tag=v1.0.3
-	source = CMakeLists.txt.patch
+	source = bluejay-1.0.3::git+https://codeberg.org/EbonJaeger/bluejay.git#tag=v1.0.3
+	source = CMakeLists.txt.patch::https://codeberg.org/EbonJaeger/bluejay/commit/4d6d4e661310f1692a5ec62300105149571c949d.patch
 	b2sums = 8315db4f7c807a956d7b0c7849cc2ff874332c4506b07d234749a9000ad094e09ad6073037d6acfa440310c1344dd5c362ab5074a84640c39a51d24178e800a2
-	b2sums = 3791966f4b448c6ca4ea1b2c25179d9350fe8812efed160222f2a84a0617f62e167f0253958f6300f073dd59cbb8a996df6d45ff47e42c854b4344a0ee3c0130
+	b2sums = f8cd43fee7d874a75ed6c0faa0e7b7ee44b57eb33740ceafe150f5770958df050b52cb89faf6d5c2cf5907f35f7e6a9598658b2fa2a97bfb59f9d8d82f612059
 
 pkgname = bluejay
