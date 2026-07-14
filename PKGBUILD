@@ -5,7 +5,7 @@
 pkgname=horde-bin
 pkgver=0.2.0
 pkgrel=1
-pkgdesc="Distributed multi-agent system built on the Google V2 ADK"
+pkgdesc="Distributed multi-agent system"
 arch=('x86_64' 'aarch64')
 url="https://github.com/geoffjay/horde"
 license=('MIT')
@@ -13,9 +13,18 @@ provides=('horde')
 conflicts=('horde')
 
 case "$CARCH" in
-  x86_64)   _arch='amd64';   _os='linux' ;;
-  aarch64)  _arch='arm64';   _os='linux' ;;
-  *)        echo "Unsupported arch: $CARCH"; exit 1 ;;
+x86_64)
+  _arch='amd64'
+  _os='linux'
+  ;;
+aarch64)
+  _arch='arm64'
+  _os='linux'
+  ;;
+*)
+  echo "Unsupported arch: $CARCH"
+  exit 1
+  ;;
 esac
 
 source=("${url}/releases/download/v${pkgver}/horde_${pkgver}_${_os}_${_arch}.tar.gz")
