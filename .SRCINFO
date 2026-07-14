@@ -9,19 +9,19 @@ pkgbase = github-desktop-git
 	license = MIT
 	makedepends = npm
 	makedepends = yarn
-	makedepends = git
 	makedepends = nvm
 	makedepends = gendesk
-	makedepends = gcc
+	makedepends = jq
 	depends = electron32
 	depends = perl
 	depends = curl
 	depends = libsecret
+	depends = git
 	provides = github-desktop=release.2.9.10
 	conflicts = github-desktop
 	source = github-desktop.git::git+https://github.com/shiftkey/desktop.git
 	source = github-desktop.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = github-desktop-git
