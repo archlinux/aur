@@ -1,8 +1,6 @@
 post_install() {
   local config=/etc/bluemap-telemetry/config.env
 
-  systemd-sysusers bluemap-telemetry.conf
-
   if [[ ! -e "$config" ]]; then
     install -dm750 /etc/bluemap-telemetry
     install -Dm600 /etc/bluemap-telemetry/config.env.example "$config"
@@ -10,6 +8,7 @@ post_install() {
     echo ">>> Edit RCON credentials and WEB_ROOT before enabling the service."
   fi
 
+  echo ">>> Requires a minecraft system user (for example from the minecraftd package)."
   echo ">>> Ensure the minecraft user can write to WEB_ROOT (group membership or ACLs)."
   echo ">>> Enable and start with: systemctl enable --now bluemap-telemetry.service"
 }
