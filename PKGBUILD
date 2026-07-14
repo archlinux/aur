@@ -2,11 +2,11 @@
 
 pkgname=graphify
 _name=graphifyy
-pkgver=0.9.12
+pkgver=0.9.15
 pkgrel=1
 pkgdesc="AI coding assistant skill - turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph"
 arch=('any')
-url="https://github.com/safishamsi/graphify"
+url="https://github.com/Graphify-Labs/graphify"
 license=('MIT')
 
 depends=(
@@ -45,7 +45,10 @@ depends=(
 
 optdepends=(
     'python-mcp: Model Context Protocol (MCP) server'
+    'python-starlette: Streamable HTTP MCP transport support'
+    'uvicorn: Streamable HTTP MCP server support'
     'python-neo4j: Neo4j export support'
+    'python-falkordb: FalkorDB export support'
     'python-pypdf: PDF extraction support'
     'python-markdownify: PDF/HTML extraction support'
     'python-watchdog: File watching support'
@@ -60,8 +63,11 @@ optdepends=(
     'python-anthropic: Claude direct extraction backend'
     'python-boto3: AWS Bedrock LLM backend'
     'python-tree-sitter-sql: SQL indexing support'
+    'python-tree-sitter-hcl: Terraform/HCL indexing support'
+    'python-tree-sitter-pascal: Pascal/Delphi indexing support'
     'python-jieba: Chinese text segmentation for the MCP search server'
     'python-psycopg: PostgreSQL schema introspection backend'
+    'python-yaml: APM manifest parsing support'
 )
 
 makedepends=(
@@ -75,7 +81,7 @@ provides=("${_name}")
 conflicts=("${_name}")
 
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('ed25f955a29e4a792395b087eceb55ffbcb53e75e68c1d2b045208e5a1a31c6a')
+sha256sums=('48741d332ca910b072e10b5e75d9281d69ac86dabed31b03f56bb94b60b0c368')
 
 build() {
     cd "${_name}-${pkgver}"
