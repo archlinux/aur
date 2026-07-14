@@ -1,4 +1,4 @@
-# Maintainer: Lazy Seldi <dex0aur@gmail.com>
+# Maintainer: LazySeldi <197385604+LazySeldi@users.noreply.github.com>
 pkgname=lib-lazybios
 pkgver=0.3.0
 pkgrel=1
