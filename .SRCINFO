@@ -1,0 +1,13 @@
+pkgbase = easy-quest-tui
+	pkgdesc = Interactive terminal dashboard for Discord Quest progress
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/NirussVn0/easy-quest-tui
+	arch = any
+	license = GPL-3.0-only
+	makedepends = npm
+	depends = nodejs
+	source = easy-quest-tui-2.0.1.tar.gz::https://github.com/NirussVn0/easy-quest-tui/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = 21768c9e8435036bb1d00a2296119b7d994e4e25309e31824bb446b01a49fa35
+
+pkgname = easy-quest-tui
