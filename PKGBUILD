@@ -1,4 +1,5 @@
-# Maintainer: bdinfo-rs CI <bdinfo-rs@users.noreply.github.com>
+# Maintainer: agentjp <agent at fastmail dot jp>
+# SPDX-License-Identifier: 0BSD (this PKGBUILD; the packaged software is LGPL-2.1-or-later)
 #
 # Template for the AUR `bdinfo-rs-bin` package. The `packages.yml` aur job seds
 # 1.2.0 to the release version, then KSXGitHub/github-actions-deploy-aur runs
