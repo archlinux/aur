@@ -1,6 +1,6 @@
 # Maintainer: Jakob Munch Overgaard <jmo@tvipper.com>
 pkgname=remotepower-server
-pkgver=6.1.1
+pkgver=6.2.0
 pkgrel=1
 pkgdesc='Self-hosted fleet-management server for RemotePower (nginx + gunicorn/Flask): dashboards, CVE/drift/compliance, monitoring, AI'
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 # Hard deps are all in the official repos. The two AUR-only Python libs
 # (webauthn, pysaml2) are optdepends so they never block a plain install.
 depends=('nginx' 'python' 'python-bcrypt' 'python-cryptography' 'python-dnspython'
-         'python-flask' 'gunicorn' 'iputils')
+         'python-flask' 'python-pydantic' 'gunicorn' 'iputils')
 optdepends=(
   'python-reportlab: PDF report export'
   'python-webauthn: passkey / WebAuthn MFA (AUR)'
@@ -29,7 +29,7 @@ source=(
   "remotepower-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/remotepower-$pkgver.tar.gz.asc"
 )
 sha256sums=(
-  'a90937fba598b375b86dfc22b8ea3367948f0878a57fcbc45de09b581c3d621a'
+  '1c2c79d0d0d611787ac7657ed6d9a11ee9c1a83c796e65d17ce731c858db8404'
   'SKIP'
 )
 validpgpkeys=('E7B5AD456728B8462A8B54BFD488AF115D2CCDBF')  # Jakob Munch Overgaard <jmo@tvipper.com>
@@ -73,6 +73,10 @@ package() {
 
   # Agent binary, served read-only for agent self-update (/api/agent/download).
   install -m755 client/remotepower-agent "$web/agent/remotepower-agent"
+  # v6.2.0: Windows + macOS agents, served at /api/agent/{win,mac}/download —
+  # the Windows /install.ps1 one-liner and cross-platform self-update need them.
+  install -m644 client/remotepower-agent-win.py "$web/agent/remotepower-agent-win.py"
+  install -m644 client/remotepower-agent-mac.py "$web/agent/remotepower-agent-mac.py"
 
   # ── WG Access (v5.2.0): root-owned privileged helper + scoped sudoers. The app
   #    server runs unprivileged and shells out to this one script (argv-only JSON
@@ -84,6 +88,15 @@ package() {
   printf 'http ALL=(root) NOPASSWD: /usr/local/sbin/remotepower-wg-apply\n' \
     > "$pkgdir/etc/sudoers.d/remotepower-wg"
   chmod 440 "$pkgdir/etc/sudoers.d/remotepower-wg"
+
+  # ── "Restart server" helper (v6.1.2): same single-script NOPASSWD model. The
+  #    app server runs this one root-owned script to `systemctl restart` itself;
+  #    it grants no privilege the admin doesn't already have via self-update. ──
+  install -Dm755 packaging/remotepower-server-restart.sh \
+    "$pkgdir/usr/local/sbin/remotepower-server-restart"
+  printf 'http ALL=(root) NOPASSWD: /usr/local/sbin/remotepower-server-restart\n' \
+    > "$pkgdir/etc/sudoers.d/remotepower-self-restart"
+  chmod 440 "$pkgdir/etc/sudoers.d/remotepower-self-restart"
 
   # ── nginx: shared locations snippet (works as-is with /var/www/remotepower). ──
   install -Dm644 server/conf/remotepower-locations.conf \
