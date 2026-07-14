@@ -1,0 +1,17 @@
+pkgbase = deadcolors-git
+	pkgdesc = Custom pokemon-colorscripts-style ASCII cycler for terminal rice
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/numbpill3d/deadcolors
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = git+https://github.com/numbpill3d/deadcolors.git
+	md5sums = SKIP
+
+pkgname = deadcolors-git
