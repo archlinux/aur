@@ -1,6 +1,6 @@
 pkgbase = breakd
 	pkgdesc = Wayland-native break reminder with multi-monitor overlays
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/simonwinther/breakd
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = breakd
 	depends = gtk4-layer-shell
 	depends = libcanberra
 	options = !debug
-	source = breakd-0.1.6.tar.gz::https://github.com/simonwinther/breakd/releases/download/v0.1.6/breakd-0.1.6.tar.gz
-	sha256sums = 3bc4b82ecb2ba7610aafbc9fcf9c451a6a88d2f5a16cb425ab5b698d142d4f8f
+	source = breakd-0.1.7.tar.gz::https://github.com/simonwinther/breakd/releases/download/v0.1.7/breakd-0.1.7.tar.gz
+	sha256sums = 9554450719c738012ab2a807b5b2ed189cf0831bdac6037cac371a2b67d68641
 
 pkgname = breakd
