@@ -1,0 +1,17 @@
+pkgbase = python-tree-sitter-hcl
+	pkgdesc = HCL and Terraform grammar for tree-sitter
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/tree-sitter-grammars/tree-sitter-hcl
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-tree-sitter
+	source = python-tree-sitter-hcl-1.2.0.tar.gz::https://files.pythonhosted.org/packages/source/t/tree_sitter_hcl/tree_sitter_hcl-1.2.0.tar.gz
+	sha256sums = f86cb7a9fd5cb93d83e2f788ae155544464c47755d09190505de562c0d6ad1dd
+
+pkgname = python-tree-sitter-hcl
