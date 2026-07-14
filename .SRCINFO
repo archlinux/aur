@@ -39,7 +39,7 @@ pkgbase = nekobox
 	depends = zlib
 	depends = libunistring
 	source = https://github.com/qr243vbi/nekobox/releases/download/5.11.28/nekobox-unified-source-5.11.28.tar.xz
-	sha256sums = 2850b8cffe2f87e25f6776e518f6186cb153b72de05f4cd26da4bf9b266e5be8
+	sha256sums = e90828d1a287f7ba8d4ba7ef0baa5725e8255128cd14dcf4797b3fabb2101bbd
 
 pkgname = nekobox
 
