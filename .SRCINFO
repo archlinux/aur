@@ -1,0 +1,20 @@
+pkgbase = python-rgpycrumbs
+	pkgdesc = Dispatcher-based analytical and computational suite for chemical physics
+	pkgver = 1.9.20
+	pkgrel = 1
+	url = https://pypi.org/project/rgpycrumbs/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	depends = python
+	depends = python-click
+	depends = python-numpy
+	depends = python-rich
+	source = https://files.pythonhosted.org/packages/source/r/rgpycrumbs/rgpycrumbs-1.9.20.tar.gz
+	sha256sums = 6339b1ae039f6cafc2e7e2ab8c9d41022e87c90609cc0a47fa20cdef2ed6df44
+
+pkgname = python-rgpycrumbs
