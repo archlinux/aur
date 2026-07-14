@@ -4,5 +4,6 @@ pkgbase = dvb-usb-autoload
 	pkgrel = 1
 	arch = any
 	source = dvb_usb.conf
+	sha256sums = 72b5011783c5f283902225c7676ad92e78822456470a213214c130d865ea433c
 
 pkgname = dvb-usb-autoload
