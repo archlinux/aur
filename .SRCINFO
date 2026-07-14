@@ -13,6 +13,6 @@ pkgbase = proton-command-center
 	optdepends = gamescope: compositor wrapper toggle in the launch builder
 	optdepends = nvidia-utils: DLSS DLL management and driver-aware compile tracking
 	source = proton-command-center-1.9.5.tar.gz::https://github.com/mrcgibb9876-hash/proton_command_center/archive/refs/tags/v1.9.5.tar.gz
-	sha256sums = 33cd85f93df60ff96ed068a468bfa6cb9046dd011086e0cc1ef3567f7a432aaf
+	sha256sums = 673e52b545f11a5e2b0a2e39c8bf794f389cb43f67e90358af7a8c8ffc7fcf79
 
 pkgname = proton-command-center
