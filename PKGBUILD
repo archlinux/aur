@@ -12,7 +12,7 @@ _repo="https://github.com/kappy7777/kappastream"
 
 pkgname=${_pkgname}-git
 pkgver=0.1.3.r0.ged2a3ca7
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight, account-free Twitch viewer (live stream, chat, favorites) for Linux"
 arch=('x86_64')
 url="${_repo}"
@@ -22,7 +22,13 @@ depends=(
   'streamlink'        # runtime: resolves HLS playlist URLs (host binary)
   'webkit2gtk-4.1'    # Tauri WebView (links webkit2gtk-4.1 API)
   'gtk3'
-  'gst-libav'         # avdec_h264 — Twitch is H.264; webkit2gtk-4.1 doesn't pull gst-libav, so without it streams play audio + black video
+  # WebKitGTK plays media via GStreamer. webkit2gtk-4.1 pulls only
+  # gst-plugins-base-libs (the libs), not the plugin packages — so the
+  # runtime media pipeline must be declared explicitly, else audio init
+  # fails with "autoaudiosink not found" and streams never start.
+  'gst-libav'           # avdec_h264 / avdec_aac — Twitch is H.264 + AAC
+  'gst-plugins-base'    # autoaudiosink/alsasink + audioconvert/resample + videoconvert
+  'gst-plugins-good'    # pulsesink — audio out to PulseAudio/PipeWire (KDE Wayland)
   'hicolor-icon-theme'
 )
 makedepends=(
