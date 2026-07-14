@@ -1,0 +1,21 @@
+pkgbase = xfce-theme-switch
+	pkgdesc = Automatic dark/light theme switcher for XFCE based on sun position, with system tray
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/slitte/xfce-theme-switch
+	arch = any
+	license = MPL-2.0
+	depends = python>=3.9
+	depends = python-gobject
+	depends = libappindicator3
+	depends = xfce4-settings
+	depends = glib2
+	depends = procps-ng
+	optdepends = matcha-gtk-theme: default theme (dark/light)
+	optdepends = papirus-icon-theme: default icon theme
+	optdepends = qt5ct: Qt5 theme support
+	optdepends = qt6ct: Qt6 theme support
+	source = xfce-theme-switch-1.0.3.tar.gz::https://github.com/slitte/xfce-theme-switch/archive/v1.0.3.tar.gz
+	sha256sums = 823c505243235c751ad8cae57e3db4d35390e932e9cbdfbb3d60d439d8956c42
+
+pkgname = xfce-theme-switch
