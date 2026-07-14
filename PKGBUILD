@@ -15,7 +15,7 @@ _sub1urlarchive=${_sub1url}/archive/${_sub1archive}
 
 pkgname=${_repoproj}
 pkgver=${_pkgtagname}
-pkgrel=1
+pkgrel=2
 pkgdesc='HP 50g hardware level emulator'
 arch=('any')
 url=${_repourl}
@@ -28,8 +28,8 @@ source=("${_repourlarchive}"
         "${_sub1urlarchive}"
         #"${_patch1}"
         )
-sha256sums=('6f4164b12679ff293a5cf40af96fa0d9b5ee804532aca8d27237849ade5a4d08'
-            '7606a332cc0cc1227fa7bd807ae40932762b51f9699f084bb73673ea13106975')
+sha256sums=('b30657efcffbbfed61c0538adc733aa0252fa2282057e4a3b2f747a85efc9e44'
+            'ef9966198c2ba4bde5323a743b3fc242adccfcce33a6f53874c84da26241e861')
 
 prepare() {
     #patch -d "${_repoproj}" -Np1 -i ../"${_patch1}"
