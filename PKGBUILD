@@ -1,13 +1,13 @@
 # Maintainer:  Paul van der Linden <mail@paultjuh.org>
 pkgname=scangearmp2-sane-git
-pkgver=4.60.2+2.r204.20230920.78ec743
+pkgver=4.91+1.r232.20260714.3d0d8ff
 pkgrel=1
 pkgdesc="Canon ScanGear MP v2 scanner utility and sane backend"
 arch=('x86_64')
 url="https://github.com/ThierryHFR/scangearmp2"
 license=('GPL' 'custom:canon')
 depends=('gtk3')
-makedepends=('cmake' 'libjpeg' 'sane' 'intltool' 'git' 'libusb')
+makedepends=('cmake' 'libjpeg-turbo' 'sane' 'intltool' 'git' 'libusb')
 provides=('scangearmp2')
 conflicts=('scangearmp2')
 source=("${pkgname}::git+https://github.com/ThierryHFR/scangearmp2")

@@ -1,13 +1,13 @@
 pkgbase = scangearmp2-sane-git
 	pkgdesc = Canon ScanGear MP v2 scanner utility and sane backend
-	pkgver = 4.60.2+2.r204.20230920.78ec743
+	pkgver = 4.91+1.r232.20260714.3d0d8ff
 	pkgrel = 1
 	url = https://github.com/ThierryHFR/scangearmp2
 	arch = x86_64
 	license = GPL
 	license = custom:canon
 	makedepends = cmake
-	makedepends = libjpeg
+	makedepends = libjpeg-turbo
 	makedepends = sane
 	makedepends = intltool
 	makedepends = git
