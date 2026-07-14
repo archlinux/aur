@@ -1,6 +1,6 @@
 pkgbase = libipuz
 	pkgdesc = Library for parsing .ipuz puzzle files
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://gitlab.gnome.org/jrb/libipuz
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = libipuz
 	makedepends = meson
 	makedepends = rust
 	depends = json-glib
-	source = https://gitlab.gnome.org/jrb/libipuz/-/archive/0.5.4/libipuz-0.5.4.tar.gz
-	sha256sums = e40a557458505feeb814cb82a6ec72243ed03ab3515de8c3ae69d78f946885a2
+	source = https://gitlab.gnome.org/jrb/libipuz/-/archive/0.5.5/libipuz-0.5.5.tar.gz
+	sha256sums = 305a83e76b7c683b5cdd71f60d5c232c6f8fa3015cd4269b8b246d702c83ea85
 
 pkgname = libipuz
