@@ -2,9 +2,9 @@
 
 _pkgname="azimuth"
 pkgname="${_pkgname}-bin"
-pkgver=1.0.3
-_commit="b1a6bf7bdd3f2c19b3f3293d43cca05d6ddf264c" # 1.0.3
-pkgrel=4
+pkgver=1.0.4
+_commit="32f98f1d0b49956e499cf73b6fdde8fd9f1110fc" # 1.0.4
+pkgrel=1
 pkgdesc="A metroidvania with vector graphics"
 arch=(
   'aarch64'
@@ -42,23 +42,23 @@ source=(
 )
 # https://askubuntu.com/a/1196449
 source_aarch64=(
-  "https://api.snapcraft.io/api/v1/snaps/download/0rVgBoeGw5Noxnc0XGWZiy0nfd3yKw2g_124.snap"
+  "https://api.snapcraft.io/api/v1/snaps/download/0rVgBoeGw5Noxnc0XGWZiy0nfd3yKw2g_136.snap"
 )
 source_armv7h=(
-  "https://api.snapcraft.io/api/v1/snaps/download/0rVgBoeGw5Noxnc0XGWZiy0nfd3yKw2g_127.snap"
+  "https://api.snapcraft.io/api/v1/snaps/download/0rVgBoeGw5Noxnc0XGWZiy0nfd3yKw2g_137.snap"
 )
 source_x86_64=(
-  "https://api.snapcraft.io/api/v1/snaps/download/0rVgBoeGw5Noxnc0XGWZiy0nfd3yKw2g_126.snap"
+  "https://api.snapcraft.io/api/v1/snaps/download/0rVgBoeGw5Noxnc0XGWZiy0nfd3yKw2g_135.snap"
 )
-b2sums=('4ababca862bd650e6a6354ef29d81c3af05b52dd4e291f430c0912cc2da52cf7bfe51d5cf0333746c3dc87aaecc1f7e62c8270ea9d31950185db24cc99b7d17e'
+b2sums=('6b32cc3f889eec20d189957e3fd9dfa9be6ee61a6318116b5c9822dbfa0c0ac73a7812d1973e59c784a966960248ba8bd9dbccda92bd89da1a8ed0359102359c'
         'ab7e38fc42fb6686add7393ecc3c7ec622cc0d72d0304ded3e56c2f96dc8433c584520896a30c037affa44461ecccfaf3ffa4a97a7e050e8ed0ec4c592caa45c'
         'cc5ff44a6be3e704fe8ed7c4449b195915a5ddebccfa034b2d9ed498b860c9a31785f702362419ffc7136e743089a743d92a68a4c96b50fc25f23ef47de54501'
         '9b198f7003d652fc6d32c945f8c7c45b2c760de5017c79eb25db3b8f79d83679e8988c98ff7e87bcc4c8c1325f702c940b0cb037a51c9d3edcb821cf9c870e1e'
         '4e20fcd941f4f07f05b7c15f645b1219860301f108b2c5a3d621a0841c42fe86b8bba8964cbf27d0175c94d4f343b82b54ca63d6a100299c573fa1ba0dc01e5c'
         '06ddb3297921db0779be520d2e033796fbacaf7955535b9ec652517255ae9a43689f0a1d124e561ad65bb341098f7a243de92ffa1bccb9fc5e34e05f50dbd31e')
-b2sums_aarch64=('220aaf78c6ecd4b246a16cc056363f4f01f00d93eced95726ce783a3fa216b509e3beb1804ba1629fd8b5c35b712d2ea44513e7e55a8632077ec648794acb65e')
-b2sums_armv7h=('c99707893e3223bf2c0b0fe26a0db98850e9622c2a4cd9d9ab52271a9ca9cf9402d184fd54efb953b8e563fe25f3e74dd39c18e0f435d7d812cafe1f6c589b69')
-b2sums_x86_64=('0f3fd54f91a553304a6b5c88d0741da68344f4c07f3416181113e57750f9b4cc6b0a95f244db2268fc75feacdf72fd2459dc85de607a0d5fcabaf6482c16848c')
+b2sums_aarch64=('632dd8c54ea8bcd64f3047a124868959972121f2faa5263801488140863e9ba560bd90e1cd4445a6452539228244df2fb24f88217d7011bddfce6b1c3d8ed45a')
+b2sums_armv7h=('26e9981e17388bc558422fe91dd2d1a8a187c75edf9809edfdf7a45dd8a425d6163601aff064b23a35bebf02a756094c11b751b55b4258b5f4bb4a773c27c70a')
+b2sums_x86_64=('9b37b375d246e776e4eafc2d4959b272a8ae8d531e31e0f2f1fd8e1065369c0a3028366806c0a791c5a07a71c81a0bf0dc8e45772ecc5c7767c315964445667d')
 
 prepare() {
   local source_array="source_${CARCH}[0]"
@@ -69,7 +69,6 @@ prepare() {
   unsquashfs -f -d "${srcdir}/${source_artifact%.snap}" "${source_artifact}"
 
   cd "${source_artifact%.snap}/meta/gui"
-  mv -f "syzygy.desktop" "${_pkgname}.desktop"
   sed -e "s|^Icon=.*|Icon=${_pkgname}|g" \
       -i "${_pkgname}.desktop"
 }
