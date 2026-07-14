@@ -3,14 +3,23 @@
 
 pkgname=goose-desktop-bin
 pkgver=1.43.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Goose Desktop and CLI (prebuilt) - an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=('x86_64')
 url="https://github.com/aaif-goose/goose"
 license=('Apache-2.0')
 provides=('goose-desktop')
 conflicts=('goose-desktop' 'codename-goose' 'codename-goose-bin')
-depends=('glibc' 'gcc-libs' 'vulkan-icd-loader')
+depends=(
+  'glibc' 'gcc-libs'
+  'gtk3' 'libnotify' 'nss' 'xdg-utils'
+  'at-spi2-core' 'libdrm' 'mesa' 'libxcb'
+  'alsa-lib' 'trash-cli'
+)
+optdepends=(
+  'vulkan-icd-loader: hardware GPU acceleration'
+  'libcups: printing support'
+)
 options=(!strip)
 source=(
     "goose_${pkgver}_amd64-vulkan.deb::https://github.com/aaif-goose/goose/releases/download/v${pkgver}/goose_${pkgver}_amd64-vulkan.deb"
