@@ -3,7 +3,7 @@
 
 pkgname=ququ-bin
 _pkgname=ququ
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="开源免费的 Wispr Flow 替代方案 - 为中文而生的桌面端语音输入工具"
 arch=(x86_64)
@@ -11,26 +11,25 @@ options=(!strip)
 url="https://github.com/lxp731/ququ"
 license=('Apache-2.0')
 depends=(
-  python
   fuse2
+  hicolor-icon-theme
 )
 optdepends=(
-  'python-funasr: 本地语音识别引擎 (FunASR)'
-  'python-torch: FunASR 所需的深度学习框架'
-  'python-torchaudio: 音频处理库'
-  'python-librosa: 音频分析库'
-  'python-numpy: 科学计算库'
-  'python-modelscope: ModelScope 模型管理'
+  'podman: 运行 FunASR 后端容器（推荐）'
+  'docker: 运行 FunASR 后端容器（替代方案）'
+  'ydotool: 键盘模拟，用于自动粘贴（推荐）'
+  'wtype: Wayland 原生键盘模拟，自动粘贴备选'
+  'xdotool: X11 键盘模拟，自动粘贴备选'
 )
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 
 source=(
   "${_pkgname}-${pkgver}.AppImage::https://github.com/lxp731/ququ/releases/download/v${pkgver}/QuQu-${pkgver}.AppImage"
-  "${_pkgname}.png::https://raw.githubusercontent.com/lxp731/ququ/main/assets/icon.png"
+  "${_pkgname}.png::https://raw.githubusercontent.com/lxp731/ququ/main/frontend/assets/icon.png"
 )
 
-sha256sums=('3dacd759191bc1dd8e8190fa7268963676552cd7ee5aa9ced88a69832eb634ee'
+sha256sums=('9516ccee6cf718659a7b33843b9da58302d02c67452391d2df7b76d5e0ed0c6d'
             '490bb03b4a2a8255ebf6bcbdb3368dc911689d8e387ba705d11bd2421db066d3')        
 package() {
   install -d "${pkgdir}/opt/${_pkgname}"
@@ -48,7 +47,6 @@ LAUNCHER
   chmod +x "${pkgdir}/usr/bin/${_pkgname}"
 
   # 图标
-  install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
   install -Dm644 "${srcdir}/${_pkgname}.png" \
     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
 

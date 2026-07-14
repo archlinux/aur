@@ -1,25 +1,24 @@
 pkgbase = ququ-bin
 	pkgdesc = 开源免费的 Wispr Flow 替代方案 - 为中文而生的桌面端语音输入工具
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/lxp731/ququ
 	arch = x86_64
 	license = Apache-2.0
-	depends = python
 	depends = fuse2
-	optdepends = python-funasr: 本地语音识别引擎 (FunASR)
-	optdepends = python-torch: FunASR 所需的深度学习框架
-	optdepends = python-torchaudio: 音频处理库
-	optdepends = python-librosa: 音频分析库
-	optdepends = python-numpy: 科学计算库
-	optdepends = python-modelscope: ModelScope 模型管理
-	provides = ququ=1.0.0
+	depends = hicolor-icon-theme
+	optdepends = podman: 运行 FunASR 后端容器（推荐）
+	optdepends = docker: 运行 FunASR 后端容器（替代方案）
+	optdepends = ydotool: 键盘模拟，用于自动粘贴（推荐）
+	optdepends = wtype: Wayland 原生键盘模拟，自动粘贴备选
+	optdepends = xdotool: X11 键盘模拟，自动粘贴备选
+	provides = ququ=1.1.0
 	conflicts = ququ
 	conflicts = ququ-git
 	options = !strip
-	source = ququ-1.0.0.AppImage::https://github.com/lxp731/ququ/releases/download/v1.0.0/QuQu-1.0.0.AppImage
-	source = ququ.png::https://raw.githubusercontent.com/lxp731/ququ/main/assets/icon.png
-	sha256sums = 3dacd759191bc1dd8e8190fa7268963676552cd7ee5aa9ced88a69832eb634ee
+	source = ququ-1.1.0.AppImage::https://github.com/lxp731/ququ/releases/download/v1.1.0/QuQu-1.1.0.AppImage
+	source = ququ.png::https://raw.githubusercontent.com/lxp731/ququ/main/frontend/assets/icon.png
+	sha256sums = 9516ccee6cf718659a7b33843b9da58302d02c67452391d2df7b76d5e0ed0c6d
 	sha256sums = 490bb03b4a2a8255ebf6bcbdb3368dc911689d8e387ba705d11bd2421db066d3
 
 pkgname = ququ-bin
