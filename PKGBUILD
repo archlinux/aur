@@ -1,7 +1,7 @@
 # Maintainer: PenguinBurner contributors
 
 pkgname=penguin-burner
-pkgver=0.6.3
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='NVIDIA GPU automatic undervolting and fine tuning tool'
 arch=('x86_64')
@@ -16,6 +16,7 @@ depends=(
   'python-pyqtgraph>=0.13'
 )
 makedepends=(
+  'cargo'
   'cmake'
   'mingw-w64-gcc'
   'python-build'
@@ -34,9 +35,17 @@ build() {
   # if the toolchain is missing instead of shipping the feature hollow.
   export PENGUIN_BURNER_REQUIRE_NVAPI_SHIM=1
   python -m build --wheel --no-isolation --skip-dependency-check
+
+  # Root daemon: compiled from the bundled Rust crate in burnerd/. --locked
+  # pins the committed Cargo.lock; crates.io is fetched during build() (makepkg
+  # allows network there by default).
+  cargo build --release --locked --manifest-path burnerd/Cargo.toml
 }
 
 package() {
   cd "PenguinBurner-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
+  # Installed where runtime_service.py discovers it first (0755, root-owned).
+  install -Dm755 burnerd/target/release/penguin-burnerd \
+    "${pkgdir}/usr/libexec/penguin-burnerd"
 }
