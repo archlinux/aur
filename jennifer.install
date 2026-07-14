@@ -1,0 +1,26 @@
+# SPDX-License-Identifier: LGPL-3.0-only
+# Copyright (C) 2026 <developer@mplx.eu>
+#
+# Arch install hook: refresh the system MIME cache so the .j
+# extension is recognised after install / upgrade and unregistered
+# after removal. The shared MIME definition itself lives in
+# /usr/share/mime/packages/jennifer.xml (installed by the package).
+#
+# update-mime-database failure is non-fatal: at worst the .j MIME
+# isn't picked up until the next manual refresh.
+
+post_install() {
+    if command -v update-mime-database >/dev/null 2>&1; then
+        update-mime-database /usr/share/mime || true
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    if command -v update-mime-database >/dev/null 2>&1; then
+        update-mime-database /usr/share/mime || true
+    fi
+}

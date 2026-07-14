@@ -1,0 +1,22 @@
+pkgbase = jennifer-git
+	pkgdesc = Jennifer programming language interpreter (built from source)
+	pkgver = 0.17.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/mplx/jennifer-lang
+	install = jennifer.install
+	arch = x86_64
+	arch = aarch64
+	license = LGPL3
+	makedepends = git
+	makedepends = go
+	makedepends = tinygo
+	optdepends = shared-mime-info: registers the .j file extension with file managers
+	optdepends = vim: syntax highlighting for .j files
+	optdepends = bat: syntax highlighting for .j files (run `bat cache --build` after install)
+	provides = jennifer
+	conflicts = jennifer
+	conflicts = jennifer-bin
+	source = jennifer::git+https://github.com/mplx/jennifer-lang.git
+	sha256sums = SKIP
+
+pkgname = jennifer-git
