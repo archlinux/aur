@@ -1,0 +1,15 @@
+pkgbase = pacfz
+	pkgdesc = Interactive fzf/CLI explorer for installed pacman packages, with a cached SQLite metadata store and per-package notes
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://codeberg.org/marco-l/pacfz
+	arch = any
+	license = MIT
+	depends = python
+	optdepends = fzf: for pacfz
+	optdepends = python-textual: for pactui
+	optdepends = python-pytest: for unit testing
+	source = pacfz-1.1.4.tar.gz::https://codeberg.org/attachments/ad2fcb06-a76f-47bf-8e66-639c330d46a6
+	sha256sums = 6bd57510b6f4f42336752f0dddaf5f2d08d441f85a5df43089f189deb099917c
+
+pkgname = pacfz
