@@ -1,6 +1,6 @@
 pkgbase = omp-bin
 	pkgdesc = oh-my-pi (omp): AI coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more (release binary)
-	pkgver = 16.4.8
+	pkgver = 16.5.0
 	pkgrel = 1
 	url = https://github.com/can1357/oh-my-pi
 	arch = x86_64
@@ -10,16 +10,16 @@ pkgbase = omp-bin
 	optdepends = bash-completion: bash tab-completion for omp
 	optdepends = chromium: browser tool (headless web automation)
 	optdepends = python: persistent Python eval cells
-	provides = oh-my-pi=16.4.8
+	provides = oh-my-pi=16.5.0
 	conflicts = oh-my-pi
 	conflicts = omp
 	options = !strip
 	options = !debug
-	source = LICENSE-16.4.8::https://raw.githubusercontent.com/can1357/oh-my-pi/v16.4.8/LICENSE
+	source = LICENSE-16.5.0::https://raw.githubusercontent.com/can1357/oh-my-pi/v16.5.0/LICENSE
 	sha256sums = 545636e19386d3d4e0ae6d77354527499999c3ebfbca61b9fa5aa4ead7c0b308
-	source_x86_64 = omp-16.4.8-x86_64::https://github.com/can1357/oh-my-pi/releases/download/v16.4.8/omp-linux-x64
-	sha256sums_x86_64 = cdf0775e05b88d63f9da606de542cc3fc0beedf0a864b4ac42f777961f86844c
-	source_aarch64 = omp-16.4.8-aarch64::https://github.com/can1357/oh-my-pi/releases/download/v16.4.8/omp-linux-arm64
-	sha256sums_aarch64 = 9ce557d688cb4d35baba222624eb7f460162e1ef010e4e4cf02f142312c669c5
+	source_x86_64 = omp-16.5.0-x86_64::https://github.com/can1357/oh-my-pi/releases/download/v16.5.0/omp-linux-x64
+	sha256sums_x86_64 = 07882a649efe0aa029ff10d47a717aaab180392caad992adb544ba687ac06a80
+	source_aarch64 = omp-16.5.0-aarch64::https://github.com/can1357/oh-my-pi/releases/download/v16.5.0/omp-linux-arm64
+	sha256sums_aarch64 = 868f79ae6222206071138454b1ad95e1f284a044fb60271ac091a64464eb26c7
 
 pkgname = omp-bin
