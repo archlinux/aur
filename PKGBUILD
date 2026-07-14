@@ -4,11 +4,11 @@
 # Contributor: Jakob Nixdorf <flocke at shadowice dot org>
 
 pkgname=perl-struct-dumb
+pkgdesc='Make simple lightweight record-like structures'
 pkgver=0.16
 pkgrel=1
-pkgdesc='Make simple lightweight record-like structures'
-arch=('any')
 url='https://metacpan.org/dist/Struct-Dumb'
+arch=(any)
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
 # See https://metacpan.org/dist/Struct-Dumb/source/Build.PL
 depends=(
@@ -35,7 +35,7 @@ source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Struct-Dumb-${pkgver}.
 b2sums=('267552362ec1f6e73404c2ca7e89962ae2bd3fb53187595ac17f91aec30a62b0a542c797e9c0249484fe7fad479112f5b620ad829f75a5dc1964e40fdfe36b56')
 
 build() {
-  cd "${srcdir}/Struct-Dumb-${pkgver}"
+  cd "Struct-Dumb-${pkgver}"
 
   unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
@@ -44,14 +44,14 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/Struct-Dumb-${pkgver}"
+  cd "Struct-Dumb-${pkgver}"
 
   unset PERL5LIB PERL_LOCAL_LIB_ROOT
   ./Build test
 }
 
 package() {
-  cd "${srcdir}/Struct-Dumb-${pkgver}"
+  cd "Struct-Dumb-${pkgver}"
 
   unset PERL5LIB PERL_LOCAL_LIB_ROOT
   ./Build install --installdirs=vendor --destdir="${pkgdir}"
