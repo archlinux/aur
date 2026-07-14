@@ -12,7 +12,7 @@ license=("Apache-2.0")
 depends=("python" "python-click" "python-openai" "python-click-default-group" "python-condense-json" "sqlite-utils" "python-sqlite-migrate" "python-pydantic" "python-pyyaml" "python-pluggy" "python-ulid" "python-puremagic" "python-httpx")
 makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/simonw/llm/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("SKIP")
+sha256sums=('c779e062b288e28d741297d16fc27a6fd7b1dbdd6659c4c83558a663c4aa11c9')
 
 build() {
 	cd "${_name}-${pkgver}"

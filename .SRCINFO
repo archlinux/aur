@@ -23,6 +23,6 @@ pkgbase = python-llm
 	depends = python-puremagic
 	depends = python-httpx
 	source = python-llm-0.31.1.tar.gz::https://github.com/simonw/llm/archive/refs/tags/0.31.1.tar.gz
-	sha256sums = SKIP
+	sha256sums = c779e062b288e28d741297d16fc27a6fd7b1dbdd6659c4c83558a663c4aa11c9
 
 pkgname = python-llm
