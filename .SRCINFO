@@ -1,0 +1,16 @@
+pkgbase = rpi5-uefi-bin
+	pkgdesc = EDK2 firmware images for Raspberry Pi 5
+	pkgver = 0.0.0.test1
+	pkgrel = 1
+	url = https://github.com/NumberOneGit/rpi5-uefi
+	arch = aarch64
+	license = BSD-2-Clause-Patent
+	license = BSD-3-Clause
+	source = https://github.com/NumberOneGit/rpi5-uefi/releases/download/test1/RPI_EFI.fd
+	source = edk2.license.txt::https://raw.githubusercontent.com/tianocore/edk2/refs/heads/master/License.txt
+	source = atf.license.rst::https://raw.githubusercontent.com/ARM-software/arm-trusted-firmware/refs/heads/master/docs/license.rst
+	b2sums = 15f944a488992060360bc1ac2fd2a6b41a2e5a9ca15a8da8f344e491852f37024a58fe458bd4e7f4b5b984b5a9c3c55397649d6753d12d4c09508137d6eaa0bc
+	b2sums = 554c83b831d3c1b30bc6eebb7724f3d7c3b33197ea6edbe506167f5bd965d783128efd1730f53849d1da6fb9227381bcb6427808dee4b51eb231e3737e67dd20
+	b2sums = aa42c0888cf777855e4fd83cca14d44be2b0b168c8438ce9d2c1e0e94587fa539ebd7f58ce938012ca9ee6993c9329b4d296a15553896b9dd1a5958b5bb6d0c6
+
+pkgname = rpi5-uefi-bin
