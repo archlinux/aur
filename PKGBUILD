@@ -10,8 +10,8 @@
   provides=('ferrumpix')
   conflicts=('ferrumpix')
   source=("https://github.com/Bitpainter75/FerrumPix/releases/download/v${pkgver}/FerrumPix-${pkgver}-linux-x64.zip"
-          "io.github.Bitpainter75.FerrumPix.desktop::https://raw.githubusercontent.com/Bitpainter75/FerrumPix/v${pkgver}/packaging/io.github.Bitpainter75.FerrumPix.desktop"
-          "io.github.Bitpainter75.FerrumPix.png::https://raw.githubusercontent.com/Bitpainter75/FerrumPix/v${pkgver}/Assets/FerrumPix_Icon.png"
+          "io.github.Bitpainter75.FerrumPix.desktop::https://raw.githubusercontent.com/Bitpainter75/FerrumPix/${pkgver}/packaging/io.github.Bitpainter75.FerrumPix.desktop"
+          "io.github.Bitpainter75.FerrumPix.png::https://raw.githubusercontent.com/Bitpainter75/FerrumPix/${pkgver}/Assets/FerrumPix_Icon.png"
           "LICENSE::https://raw.githubusercontent.com/Bitpainter75/FerrumPix/v${pkgver}/LICENSE")
   sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
