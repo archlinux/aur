@@ -3,7 +3,7 @@
 
 pkgname=expresslrs-configurator-bin
 _pkgname=expresslrs-configurator
-pkgver=1.7.11
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Cross platform configuration & build tool for the ExpressLRS radio link"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('expresslrs-configurator')
 source=(
     "https://github.com/ExpressLRS/ExpressLRS-Configurator/releases/download/v$pkgver/expresslrs-configurator-$pkgver.pacman"
 )
-sha512sums=('097c5d8fb3abef3464c12931f47e56639cd0f2e1d971f6b36793d206ec34a5ec808abbf4055823b820eadb9013fbd33645e1a974857b11de215818eed97e4274')
+sha512sums=('77529402a07c5bc1f6e97c7e51f5432c1d48cb4282db163a8728b708ede8a4f91607a133cd44385e3ea85b407a0a5cad8697402c8a04af65076312c3b96b9702')
 
 package() {
     # Install the application files in /opt
