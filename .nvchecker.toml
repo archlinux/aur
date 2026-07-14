@@ -1,0 +1,4 @@
+[pam_mount-git]
+source = "regex"
+url = "https://inai.de/files/pam_mount/"
+regex = 'pam_mount-([\d.]+)\.[a-z]'

@@ -13,17 +13,15 @@ depends=('cryptsetup' 'glibc' 'libhx' 'libxml2' 'openssl' 'pam' 'pcre2' 'util-li
 makedepends=('git')
 provides=('pam_mount')
 conflicts=('pam_mount')
-backup=('etc/security/pam_mount.conf.xml')
 options=(!emptydirs)
+backup=('etc/security/pam_mount.conf.xml')
 source=('git+https://codeberg.org/jengelh/pam_mount.git')
 b2sums=('SKIP')
 
 pkgver() {
   cd pam_mount
-
-  local GIT_TAG
-  GIT_TAG="$(git describe --long --tags)"
-  echo "${GIT_TAG}" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  # shellcheck disable=SC2312 # will render pkgver invalid on fail
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

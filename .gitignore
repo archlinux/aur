@@ -1,6 +1,7 @@
 *
 # dev tools
 !.gitignore
+!.nvchecker.toml
 !LICENSE
 !LICENSES
 !LICENSES/*
