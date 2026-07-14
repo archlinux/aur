@@ -1,5 +1,5 @@
 pkgname=adw-network
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Modern network management application for GNOME (build from source)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gtk4' 'libadwaita' 'gdk-pixbuf2' 'networkmanager')
 makedepends=('rust' 'cargo')
 
-provides=('adw-network-git')
+provides=('adw-network' 'adwaita-network')
 conflicts=('adw-network-bin')
 
 options=('!debug' 'strip')
