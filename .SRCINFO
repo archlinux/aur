@@ -1,0 +1,20 @@
+pkgbase = python-anneal
+	pkgdesc = Simulated annealing and quenching techniques for Python
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/HaoZeke/anneal
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-maturin
+	makedepends = rust
+	makedepends = cargo
+	depends = python
+	depends = python-numpy
+	depends = python-array-api-compat
+	source = https://files.pythonhosted.org/packages/source/a/anneal/anneal-0.5.0.tar.gz
+	sha256sums = e150070da669a4dc3438fb77c32b9ecbb5c6d6c631ffa3694020dc1cc25096a7
+
+pkgname = python-anneal
