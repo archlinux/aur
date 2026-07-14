@@ -2,25 +2,25 @@
 # Contributor: Brian Thompson <brianrobt@pm.me>
 
 pkgname=alist
-pkgver=3.61.0
+pkgver=3.62.0
 _web_pkgver="$pkgver"
 pkgrel=1
 pkgdesc="File list program that supports multiple storage"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64' 'riscv64' 'loong64')
+arch=(x86_64 i686 arm armv6h armv7h aarch64 riscv64 loong64)
 url="https://github.com/AlistGo/alist"
-license=('AGPL-3.0-only')
-depends=('glibc')
-makedepends=('go')
-backup=('etc/alist/config.json')
+license=(AGPL-3.0-only)
+depends=(glibc)
+makedepends=(go)
+backup=(etc/alist/config.json)
 install=alist.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
     "dist-$pkgver.tar.gz::${url}-web/releases/download/${_web_pkgver}/dist.tar.gz"
-    'alist.service'
-    'alist.tmpfiles'
-    'alist.sysusers'
-    'config.json')
-sha256sums=('74be80f7393ebf41d9e44826068fee5b9a7c1b4dfa4edcc05dc718ca5261071c'
-            'cc873ece600b44a141fb079a38ef7123f5f3976b606bb810a988a70141e8d033'
+    alist.service
+    alist.tmpfiles
+    alist.sysusers
+    config.json)
+sha256sums=('a6941ff526aec5d3abfb1e13261d307243450392c51141ce158e7230087cd7ea'
+            'f0e02e5d89e821198002c2aa62128d6d7b484af3f0c6e5deda80070c21ac64fb'
             '5712b21aebf669fe9fb5d47dd685809d4d9670b1bb1d5e6fef962b9d11ba9d72'
             'c6b62c4a750ab921c2e8f965e4baeee28855c9a969b00eddd346670f2fdf12de'
             '3658370660806f73c3d9bc5f1b6e2a013c9520d34ffc4462df99f7692473613d'
