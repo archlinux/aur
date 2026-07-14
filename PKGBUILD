@@ -1,7 +1,7 @@
 # Maintainer: Lucas Schwiderski <lucas@lschwiderski.de>
 _pkgname=sesh
 pkgname=${_pkgname}-bin
-pkgver=2.26.2
+pkgver=2.27.0
 pkgrel=1
 pkgdesc="Smart session manager for the terminal"
 arch=("x86_64" "aarch64" "i686")
@@ -13,9 +13,9 @@ conflicts=('sesh')
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_x86_64.tar.gz")
 source_i686=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_i386.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_arm64.tar.gz")
-sha256sums_x86_64=('4a5cdd75a38c6e3167ab80d419a9973097b2f7e1b63c8150c4e6db8e40c6d803')
-sha256sums_aarch64=('4a5cdd75a38c6e3167ab80d419a9973097b2f7e1b63c8150c4e6db8e40c6d803')
-sha256sums_i686=('4a5cdd75a38c6e3167ab80d419a9973097b2f7e1b63c8150c4e6db8e40c6d803')
+sha256sums_x86_64=('199e3352655d6300cce7d16b99bf9dbca944158b2f210c97cb418aff6ec4623c')
+sha256sums_aarch64=('199e3352655d6300cce7d16b99bf9dbca944158b2f210c97cb418aff6ec4623c')
+sha256sums_i686=('199e3352655d6300cce7d16b99bf9dbca944158b2f210c97cb418aff6ec4623c')
 
 package() {
     install -Dm755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
