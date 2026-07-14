@@ -1,6 +1,6 @@
 pkgbase = boxplayer-bin
 	pkgdesc = Unified cloud drive management, smart media library, media servers, and high-speed downloads.(Prebuilt version.Use system-wide electron)小白羊网盘 BoxPlayer - 多网盘统一管理 + 智能媒体库 + 媒体服务器 + 高速下载.
-	pkgver = 5.0.1
+	pkgver = 5.0.3
 	pkgrel = 1
 	url = https://xbyvideohub.com/
 	arch = aarch64
@@ -10,14 +10,14 @@ pkgbase = boxplayer-bin
 	depends = electron40
 	depends = aria2
 	depends = nodejs
-	provides = boxplayer=5.0.1
+	provides = boxplayer=5.0.3
 	conflicts = boxplayer
 	options = !emptydirs
 	source = boxplayer.sh
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = boxplayer-5.0.1-aarch64.AppImage::https://github.com/gaozhangmin/boxplayer/releases/download/v5.0.1/boxplayer-5.0.1-linux-arm64.AppImage
-	sha256sums_aarch64 = 96f3618e78cf68ec842d77aa0f91547aa3f28ba027fb565c62cf3bceba587e70
-	source_x86_64 = boxplayer-5.0.1-x86_64.AppImage::https://github.com/gaozhangmin/boxplayer/releases/download/v5.0.1/boxplayer-5.0.1-linux-x86_64.AppImage
-	sha256sums_x86_64 = d5fcff1912069a9e050a40473ee1afcdebcd8712a77a5f36aea2877a50500336
+	source_aarch64 = boxplayer-5.0.3-aarch64.AppImage::https://github.com/gaozhangmin/boxplayer/releases/download/v5.0.3/boxplayer-5.0.3-linux-arm64.AppImage
+	sha256sums_aarch64 = 9b0414ef1b4e524ac9c03ca0fad494348a53a07b40fa268b542645622cf07822
+	source_x86_64 = boxplayer-5.0.3-x86_64.AppImage::https://github.com/gaozhangmin/boxplayer/releases/download/v5.0.3/boxplayer-5.0.3-linux-x86_64.AppImage
+	sha256sums_x86_64 = ff0c2c7b45c15059003f8da82d7ec52aa395b501c25c2f71e2709dec5bd90094
 
 pkgname = boxplayer-bin
