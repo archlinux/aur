@@ -1,7 +1,7 @@
 # Maintainer: aarto <aarto@aur.archlinux.org>
 _pkgname=turso
 pkgname=$_pkgname-git
-pkgver=0.7.0.pre.2.r50.gc4981022f
+pkgver=0.7.0.r24.g3ff88060b
 pkgrel=1
 pkgdesc='An in-process SQL database, compatible with SQLite.'
 url='https://github.com/tursodatabase/turso'
