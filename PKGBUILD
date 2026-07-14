@@ -1,7 +1,7 @@
 # Maintainer: Goldbro233 bowensun_06@outlook.com
 _pkgname=aio-coding-hub
 pkgname=${_pkgname}-bin
-pkgver=0.60.12
+pkgver=0.60.13
 pkgrel=1
 pkgdesc="一个All In One的本地AI工具, 支持Win/Mac/Linux"
 arch=('x86_64')
@@ -33,7 +33,7 @@ noextract=(
     "${_pkgname}-${pkgver}-linux-amd64.deb"
 )
 
-sha256sums=('739ca727097c7062c46a16c5cfbf248c1fd4fff0147c857c6b55ed02c613ef89'
+sha256sums=('ec6f4ea862eec573ee13ebd804ed7f85f6ecce5711134bab77eb9bdf899c2c24'
             '90da602b3e6d5f01c42a2bf635376f3d874abc524d10651f27cb278d9a04aa73')
 
 package() {
