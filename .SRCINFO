@@ -1,0 +1,17 @@
+pkgbase = papyrus-wallpaper
+	pkgdesc = Animated wallpaper manager for COSMIC
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/PSGtatitos/papyrus
+	arch = any
+	license = GPL3
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = ffmpeg
+	depends = python-pillow
+	depends = mpvpaper
+	source = https://github.com/PSGtatitos/papyrus/archive/v1.2.2.tar.gz
+	sha256sums = abc6d2918664810fbc95953cd42fe1b8ea235e43a66d5f3ec849edfa9f08c850
+
+pkgname = papyrus-wallpaper
