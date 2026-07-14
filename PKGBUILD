@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=python-ouroboros-ai
 _name=${pkgname#python-}
-pkgver=0.50.3
+pkgver=0.50.4
 pkgrel=1
 pkgdesc="Specification-first workflow engine for AI coding agents"
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   'python-textual: TUI support'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('fb0a463a7b0e6c659bbad6f7975f051643e52a438393022f0195f46db23d5648')
+sha256sums=('6b4665680dae0842289f775da8adb5bc6e0461cbc542622af36fbd34698821be')
 install=${pkgname}.install
 
 build() {
