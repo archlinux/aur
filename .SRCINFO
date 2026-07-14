@@ -1,0 +1,18 @@
+pkgbase = bdinfo-rs-bin
+	pkgdesc = Memory-safe command-line Blu-ray disc analyzer — a drop-in replacement for BDInfo
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/agentjp/bdinfo-rs
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-2.1-or-later
+	provides = bdinfo-rs
+	conflicts = bdinfo-rs
+	options = !strip
+	options = !debug
+	source_x86_64 = bdinfo-rs-1.2.0-x86_64.tar.gz::https://github.com/agentjp/bdinfo-rs/releases/download/v1.2.0/bdinfo-rs-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = cdff0a3114a8658a1acd6541402047dcd88309f743d577bcc7b552333b48bb5a
+	source_aarch64 = bdinfo-rs-1.2.0-aarch64.tar.gz::https://github.com/agentjp/bdinfo-rs/releases/download/v1.2.0/bdinfo-rs-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 3191ebb7f9634baf17c317c89cc486474d5d5539d5258160fc60218c8c061453
+
+pkgname = bdinfo-rs-bin
