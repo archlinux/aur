@@ -1,7 +1,7 @@
 pkgbase = sonic-workspace
 	pkgdesc = SonicDE workspace components
 	pkgver = 6.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sonic-DE/sonic-workspace
 	arch = x86_64
 	groups = sonicde
