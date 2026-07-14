@@ -1,0 +1,17 @@
+pkgbase = asoiaf-terminal-banners-git
+	pkgdesc = A Song of Ice and Fire / Game of Thrones Terminal Banners - Random ANSI banners for your terminal
+	pkgver = r1.1a2b3c4
+	pkgrel = 1
+	url = https://github.com/vtajaros/asoiaf-terminal-banners
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = chafa
+	makedepends = jq
+	depends = bash
+	provides = asoiaf-terminal-banners
+	conflicts = asoiaf-terminal-banners
+	source = git+https://github.com/vtajaros/asoiaf-terminal-banners.git
+	sha256sums = SKIP
+
+pkgname = asoiaf-terminal-banners-git
