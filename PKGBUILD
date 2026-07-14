@@ -1,5 +1,4 @@
-# Maintainer: Your Name <your-email@example.com>
-pkgname=caesiumclt-git
+pkgname=caesium-image-compressor-git
 pkgver=1.4.0.r4.g47e7085
 pkgrel=1
 pkgdesc="High-performance image compressor CLI written in Rust"
