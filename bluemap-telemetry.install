@@ -10,7 +10,7 @@ post_install() {
     echo ">>> Edit RCON credentials and WEB_ROOT before enabling the service."
   fi
 
-  echo ">>> Ensure the bluemap user can write to WEB_ROOT (group membership or ACLs)."
+  echo ">>> Ensure the minecraft user can write to WEB_ROOT (group membership or ACLs)."
   echo ">>> Enable and start with: systemctl enable --now bluemap-telemetry.service"
 }
 
