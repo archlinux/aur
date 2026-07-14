@@ -1,14 +1,12 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=bluejay-git
-pkgver=1.0.3.r5.g4d6d4e6
-pkgrel=2
+pkgver=1.0.3.r6.g6c84125
+pkgrel=1
 pkgdesc="Bluetooth manager written in Qt"
 arch=(x86_64)
-url="https://github.com/EbonJaeger/bluejay"
-license=(
-    'CC0-1.0 AND CC-BY-SA-4.0 AND MPL-2.0'
-)
+url="https://codeberg.org/EbonJaeger/bluejay"
+license=('CC0-1.0 AND CC-BY-SA-4.0 AND MPL-2.0')
 depends=(
     bluez-qt
     glibc
@@ -19,11 +17,11 @@ depends=(
     ki18n
     kirigami
     kirigami-addons
-    libstdc++
+    libgcc
     qqc2-desktop-style
     qt6-base
-    qt6-tools
     qt6-declarative
+    qt6-tools
 )
 makedepends=(
     appstream
@@ -56,9 +54,10 @@ build() {
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
-    install -Dm0644 -t "$pkgdir/usr/share/doc/${pkgname%-git}" \
-        "$srcdir/${pkgname%-git}/README.md"
+    DESTDIR="${pkgdir}" cmake --install build
+    install -Dm0644 -t "${pkgdir}/usr/share/doc/${pkgname%-git}" \
+        "$srcdir/${pkgname%-git}/README.md" \
+        "$srcdir/${pkgname%-git}/CONTRIBUTING.md"
 }
 
-# vim: set ft=sh ts=4 sw=4 et:
+# vim: set ts=4 sw=4 et:
