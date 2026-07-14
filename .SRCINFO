@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-mlrt-ncnn-runtime
 	pkgdesc = Plugin for VapourSynth: mlrt (Vulkan ncnn runtime)
 	pkgver = v15.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AmusementClub/vs-mlrt
 	arch = x86_64
 	license = GPL-3.0
