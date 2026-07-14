@@ -1,7 +1,7 @@
 # Maintainer: dz-vadim <dziuba.vadym@gmail.com>
 
 pkgname=virtdisp
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Tray icon service to use Android tablet as a second monitor via Krfb"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-pyqt6' 'krfb')
 source=('virtdisp-tray.py'
         'virtdisp.desktop')
-sha256sums=('298b0d7ca6df9ac9a2dd00184255648168e29e8913429f3d2b342aec6357264c'
+sha256sums=('4f5b4937af841293a6246a2f7f7be575b9755da0c58300eb67ccbd3d15254d65'
             '083157fa09b685ca65c0000e67a2466907d7b601df84c072e1770981532b5f68')
 
 package() {

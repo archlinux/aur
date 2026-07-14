@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import os
+import re
+import json
 import subprocess
 import logging
 import sys
@@ -16,7 +18,7 @@ from PyQt6.QtWidgets import (
     QMessageBox
 )
 
-from PyQt6.QtGui import QIcon, QAction
+from PyQt6.QtGui import QIcon, QAction, QActionGroup
 from PyQt6.QtCore import Qt
 
 # =========================
@@ -40,6 +42,33 @@ logging.basicConfig(
 )
 
 # =========================
+# ПАРАМЕТРИ ЗА ЗАМОВЧУВАННЯМ
+# =========================
+
+# Пресети роздільності. Менша роздільність = менше даних по VNC = менша
+# затримка. Обери під реальний екран планшета, щоб клієнт не масштабував.
+RESOLUTIONS = [
+    "1024x768",   # 4:3, найлегша
+    "1280x720",   # 16:9
+    "1280x800",   # 16:10
+    "1366x768",   # 16:9
+    "1600x900",   # 16:9
+    "1920x1080",  # 16:9, FHD
+    "1920x1200",  # 16:10
+    "2560x1600",  # 16:10, важка
+]
+
+# device-pixel-ratio. Для швидкодії тримай 1 — більший масштаб множить
+# кількість фізичних пікселів і навантаження на кодування/канал.
+SCALES = ["1", "1.25", "1.5", "2"]
+
+DEFAULTS = {
+    "password": "123456",
+    "resolution": "1600x900",
+    "scale": "1",
+}
+
+# =========================
 # ЛОКАЛІЗАЦІЯ
 # =========================
 
@@ -55,6 +84,9 @@ TEXT = {
     "off": "Disable Screen" if not is_ua else "Вимкнути екран",
     "info": "Connection Info" if not is_ua else "Інфо для підключення",
     "set_pwd": "Set Password" if not is_ua else "Змінити пароль",
+    "resolution": "Resolution" if not is_ua else "Роздільність",
+    "scale": "Scale (HiDPI)" if not is_ua else "Масштаб (HiDPI)",
+    "custom": "Custom…" if not is_ua else "Інша…",
     "log": "Open Log" if not is_ua else "Відкрити лог",
     "stop": "Stop Service" if not is_ua else "Зупинити сервіс",
     "exit": "Exit" if not is_ua else "Вихід",
@@ -64,6 +96,10 @@ TEXT = {
 
     "pwd_title": "Password" if not is_ua else "Пароль",
     "pwd_label": "Enter VNC password:" if not is_ua else "Введіть пароль VNC:",
+
+    "res_title": "Custom Resolution" if not is_ua else "Інша роздільність",
+    "res_label": "Enter resolution (e.g. 1600x900):" if not is_ua else "Введіть роздільність (напр. 1600x900):",
+    "res_invalid": "Invalid format. Use WIDTHxHEIGHT." if not is_ua else "Невірний формат. Використайте ШИРИНАxВИСОТА.",
 
     "info_title": "Connection Details" if not is_ua else "Дані для підключення",
 
@@ -102,10 +138,16 @@ class TabletTrayApp:
         self.app.setQuitOnLastWindowClosed(False)
 
         # =========================
-        # PASSWORD
+        # CONFIG
         # =========================
 
-        self.password = self.load_password()
+        config = self.load_config()
+        self.password = config["password"]
+        self.resolution = config["resolution"]
+        self.scale = config["scale"]
+
+        self.process = None
+        self._stderr_fh = None
 
         # =========================
         # ICONS
@@ -128,8 +170,6 @@ class TabletTrayApp:
 
         self.tray.setToolTip(TEXT["status_off"])
 
-        self.process = None
-
         # =========================
         # MENU
         # =========================
@@ -139,6 +179,11 @@ class TabletTrayApp:
         self.toggle_action = QAction(TEXT["on"])
         self.toggle_action.triggered.connect(self.toggle)
         self.menu.addAction(self.toggle_action)
+
+        self.menu.addSeparator()
+
+        self.build_resolution_menu()
+        self.build_scale_menu()
 
         self.menu.addSeparator()
 
@@ -169,30 +214,148 @@ class TabletTrayApp:
         logging.info("Application started")
 
     # ==========================================================
-    # PASSWORD
+    # MENU BUILDERS
     # ==========================================================
 
-    def load_password(self):
+    def build_resolution_menu(self):
+
+        self.res_menu = self.menu.addMenu(TEXT["resolution"])
+
+        self.res_group = QActionGroup(self.menu)
+        self.res_group.setExclusive(True)
+
+        for res in RESOLUTIONS:
+            act = QAction(res)
+            act.setCheckable(True)
+            act.setChecked(res == self.resolution)
+            act.triggered.connect(lambda _checked, r=res: self.set_resolution(r))
+            self.res_group.addAction(act)
+            self.res_menu.addAction(act)
+
+        self.res_menu.addSeparator()
+
+        custom_act = QAction(TEXT["custom"])
+        custom_act.triggered.connect(self.set_custom_resolution)
+        self.res_menu.addAction(custom_act)
+
+    def build_scale_menu(self):
+
+        self.scale_menu = self.menu.addMenu(TEXT["scale"])
+
+        self.scale_group = QActionGroup(self.menu)
+        self.scale_group.setExclusive(True)
+
+        for s in SCALES:
+            act = QAction(s)
+            act.setCheckable(True)
+            act.setChecked(s == self.scale)
+            act.triggered.connect(lambda _checked, v=s: self.set_scale(v))
+            self.scale_group.addAction(act)
+            self.scale_menu.addAction(act)
+
+    def _sync_res_checks(self):
+        for act in self.res_group.actions():
+            act.setChecked(act.text() == self.resolution)
+
+    # ==========================================================
+    # CONFIG
+    # ==========================================================
+
+    def load_config(self):
+
+        config = dict(DEFAULTS)
+
         try:
             if os.path.exists(config_file):
                 with open(config_file, "r") as f:
-                    pwd = f.read().strip()
+                    raw = f.read().strip()
 
-                    if pwd:
-                        return pwd
+                if raw:
+                    try:
+                        data = json.loads(raw)
+                        if isinstance(data, dict):
+                            for key in DEFAULTS:
+                                if key in data and str(data[key]).strip():
+                                    config[key] = str(data[key]).strip()
+                        else:
+                            # legacy: file was just a password
+                            config["password"] = raw
+                    except json.JSONDecodeError:
+                        # legacy: plain-text password file
+                        config["password"] = raw
 
         except Exception as e:
-            logging.error(f"Password load error: {e}")
+            logging.error(f"Config load error: {e}")
 
-        return "123456"
+        return config
 
-    def save_password(self, pwd):
+    def save_config(self):
         try:
             with open(config_file, "w") as f:
-                f.write(pwd)
+                json.dump(
+                    {
+                        "password": self.password,
+                        "resolution": self.resolution,
+                        "scale": self.scale,
+                    },
+                    f,
+                    indent=2,
+                )
 
         except Exception as e:
-            logging.error(f"Password save error: {e}")
+            logging.error(f"Config save error: {e}")
+
+    def apply_change(self):
+        """Зберегти налаштування і перезапустити монітор, якщо він активний."""
+        self.save_config()
+
+        if self.is_monitor_running():
+            self.stop_monitor()
+            self.start_monitor()
+
+    # ==========================================================
+    # SETTINGS ACTIONS
+    # ==========================================================
+
+    def set_resolution(self, res):
+        if res == self.resolution:
+            return
+
+        self.resolution = res
+        logging.info(f"Resolution set to {res}")
+        self.apply_change()
+
+    def set_custom_resolution(self):
+
+        text, ok = QInputDialog.getText(
+            None,
+            TEXT["res_title"],
+            TEXT["res_label"],
+            QLineEdit.EchoMode.Normal,
+            self.resolution
+        )
+
+        if not ok:
+            return
+
+        text = text.strip().lower().replace(" ", "")
+
+        if not re.fullmatch(r"\d{3,5}x\d{3,5}", text):
+            QMessageBox.warning(None, TEXT["error"], TEXT["res_invalid"])
+            return
+
+        self.resolution = text
+        self._sync_res_checks()
+        logging.info(f"Resolution set to {text} (custom)")
+        self.apply_change()
+
+    def set_scale(self, scale):
+        if scale == self.scale:
+            return
+
+        self.scale = scale
+        logging.info(f"Scale set to {scale}")
+        self.apply_change()
 
     def set_password_dialog(self):
 
@@ -208,14 +371,9 @@ class TabletTrayApp:
 
             self.password = new_pwd.strip()
 
-            self.save_password(self.password)
-
             logging.info("Password updated")
 
-            # Перезапуск монітора якщо вже працює
-            if self.is_monitor_running():
-                self.stop_monitor()
-                self.start_monitor()
+            self.apply_change()
 
     # ==========================================================
     # NETWORK
@@ -247,7 +405,8 @@ class TabletTrayApp:
         return (
             f"IP: {ip}\n"
             f"Port: 5900\n"
-            f"Password: {self.password}"
+            f"Password: {self.password}\n"
+            f"Resolution: {self.resolution} (scale {self.scale})"
         )
 
     # ==========================================================
@@ -336,7 +495,8 @@ class TabletTrayApp:
             cmd = [
                 "krfb-virtualmonitor",
                 "--name", "TabletDisplay",
-                "--resolution", "1920x1080",
+                "--resolution", self.resolution,
+                "--scale", str(self.scale),
                 "--port", "5900"
             ]
 
@@ -345,21 +505,25 @@ class TabletTrayApp:
 
             logging.info(f"Starting command: {' '.join(cmd)}")
 
+            # stderr -> лог-файл, щоб буфер каналу не переповнювався і не
+            # блокував krfb під час довгої сесії.
+            self._stderr_fh = open(log_file, "a")
+
             self.process = subprocess.Popen(
                 cmd,
                 stdout=subprocess.DEVNULL,
-                stderr=subprocess.PIPE,
-                text=True
+                stderr=self._stderr_fh
             )
 
-            # Перевірка чи процес не впав одразу
-            self.process.poll()
-
-            if self.process.returncode is not None:
-
-                error_output = self.process.stderr.read()
-
-                raise RuntimeError(error_output)
+            # Якщо процес падає протягом ~1 с — це помилка старту.
+            try:
+                self.process.wait(timeout=1.0)
+                raise RuntimeError(
+                    f"krfb-virtualmonitor exited early "
+                    f"(code {self.process.returncode}). See {log_file}"
+                )
+            except subprocess.TimeoutExpired:
+                pass  # ще працює = успіх
 
             self.tray.setIcon(self.icon_on)
 
@@ -406,6 +570,13 @@ class TabletTrayApp:
                 ["pkill", "-f", "krfb-virtualmonitor"],
                 stderr=subprocess.DEVNULL
             )
+
+            if self._stderr_fh:
+                try:
+                    self._stderr_fh.close()
+                except Exception:
+                    pass
+                self._stderr_fh = None
 
             self.tray.setIcon(self.icon_off)
 
