@@ -1,4 +1,4 @@
-# Maintainer: loki5512344 <dev14dbq@gmail.com>
+# Maintainer: loki5512344 <mauhhhh7@gmail.com>
 
 pkgname=wherry-bin
 pkgver=0.1.0
@@ -21,7 +21,7 @@ depends=(
   'dbus'
 )
 source=("https://github.com/loki5512344/Wherry/releases/download/v$pkgver/wherry-v$pkgver-x86_64-linux.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('bbaa77db529594b94accfcea6374edc891b904bfae6a3ca895b028145dc9c77d')
 
 package() {
   cp -r "$srcdir"/* "$pkgdir"/
