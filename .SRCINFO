@@ -1,6 +1,6 @@
 pkgbase = aranet4
 	pkgdesc = Driver and utilities for the Aranet4 air quality monitor
-	pkgver = 0.14.0
+	pkgver = 0.15.1
 	pkgrel = 1
 	url = https://git.sr.ht/~sbinet/aranet4
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = aranet4
 	makedepends = go>=1.23
 	depends = bluez
 	options = !lto
-	source = aranet4-0.14.0.tar.gz::https://git.sr.ht/~sbinet/aranet4/archive/v0.14.0.tar.gz
-	sha256sums = c7e8743ea4632e88ef8df9730030be000dad1e105c520081de5f5252e88709f5
+	source = aranet4-0.15.1.tar.gz::https://git.sr.ht/~sbinet/aranet4/archive/v0.15.1.tar.gz
+	sha256sums = bf8159646cbb0a89133d2225436c65a74f6846c4cf1a9dad22ca42163f0d40a0
 
 pkgname = aranet4-ls
 	pkgdesc = Command line utility for the Aranet4 air quality monitor
