@@ -9,7 +9,7 @@ license=(
   BSD-2-Clause-Patent
   BSD-3-Clause
 )
-backup=('boot/boot.txt' 'boot/boot.scr' 'boot/config.txt')
+backup=('boot/config.txt')
 depends=()  # rpi5 device tree file, for example bcm2712-rpi-5-b.dtb
 makedepends=()
 checkdepends=()

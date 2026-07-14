@@ -1,3 +1,4 @@
 *.license.*
 RPI_EFI.fd
 config.txt
+pkg/
