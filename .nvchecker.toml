@@ -1,0 +1,4 @@
+[vscode-xdg-patch-hook]
+source = "aur"
+aur = "vscode-xdg-patch-hook"
+strip_release = true

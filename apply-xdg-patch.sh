@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/sh
 
 add_mime_type() {
   if ! grep -q -E "^MimeType=.*\b${1};" "$2"; then

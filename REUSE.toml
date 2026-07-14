@@ -8,6 +8,7 @@ path = [
   "vscode-xdg-patch-hook.install",
   ".SRCINFO",
   ".gitignore",
+  ".nvchecker.toml",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
