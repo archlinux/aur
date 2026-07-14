@@ -6,7 +6,7 @@ pkgbase=tela-circle-icon-theme-spl-git
 _pkgname=("${_variants[@]/#/tela-circle-icon-theme-}")
 pkgname=(tela-circle-icon-theme-all-git "${_pkgname[@]/%/-git}")
 pkgdesc='A flat, colorful design icon theme'
-pkgver=2025.02.10.r135.gc0adf1ab
+pkgver=2026.07.07.r0.gc0adf1ab
 pkgrel=1
 url='https://github.com/vinceliuice/Tela-circle-icon-theme'
 arch=(any)
@@ -22,10 +22,8 @@ b2sums=('SKIP')
 
 pkgver() {
   cd Tela-circle-icon-theme
-
-  local GIT_TAG
-  GIT_TAG="$(git describe --long --tags)"
-  echo "${GIT_TAG}" | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  # shellcheck disable=SC2312 # will render pkgver invalid on fail
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package_tela-circle-icon-theme-all-git() {
