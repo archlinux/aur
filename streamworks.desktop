@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=StreamWorks Hub
+GenericName=Streaming Hub
+Comment=Central de streaming, operações e distribuição StreamWorks
+Exec=streamworks-hub
+TryExec=streamworks-hub
+Icon=streamworks
+Terminal=false
+Categories=AudioVideo;Player;Video;TV;
+Keywords=streamworks;iptv;tv;streaming;hub;pwa;android;
+StartupNotify=true
+StartupWMClass=streamworks
+X-GNOME-UsesNotifications=true
