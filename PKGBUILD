@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 
 pkgname=bootimus-bin
-pkgver=0.1.70
+pkgver=0.1.73
 pkgrel=1
 pkgdesc='A Complete enhanced version of the PXE server'
 arch=('x86_64' 'aarch64')
@@ -21,9 +21,9 @@ source_aarch64=(
   ${pkgname%-bin}-arm64-$pkgver::$url/releases/download/v$pkgver/${pkgname%-bin}-linux-arm64
 )
 sha256sums=('8f25b2e99b634951e318c5f648e0fc36fa567e49e000f9bee6e2a7eb94a28c16'
-            'c8304a413a6babab68764f1b57545c4c4f528776fcda784da24ef8e8f86d359c')
-sha256sums_x86_64=('bd6bb20064a96e74fb21604372041b7d1ca6ece905677a5ca65db0deda60428b')
-sha256sums_aarch64=('9ae32dc6caa0800916c75cc46a646c88b38bdf0831b9529df2b725200640bc92')
+            '2c01ee1c463db989af322f8f7ec08c1f2f5c37215734cb9051abe97d44ac6256')
+sha256sums_x86_64=('59903df0d924f332e57d9d0f3e2d0fa037d989ebddec07714bd94bbaeae064c2')
+sha256sums_aarch64=('221e6026bac623f9f0ce1a5488dee816c6e4f28c624fcaa57a5eb03a60d969be')
 
 case ${CARCH} in
   x86_64) _CARCH='amd64' ;;
