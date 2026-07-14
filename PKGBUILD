@@ -9,7 +9,7 @@ pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.13.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 arch=('x86_64')
 url="https://pytorch.org"
@@ -457,7 +457,7 @@ _package() {
 
   # Clean up duplicates with Arch packages
   rm -vrf $(ls -d "${pkgdir}"/usr/include/* | grep -v "/ATen$\|/caffe2$\|/c10$\|/torch$\|/tensorpipe$")
-  rm -f "${pkgdir}"/usr/lib/libaotriton_v2.so
+  rm -f "${pkgdir}"/usr/lib/libaotriton_v2.so*
 
   # Python module is hardcoded so look there at runtime
   ln -s /usr/include "${pkgdir}/${pytorchpath}/include"
