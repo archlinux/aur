@@ -1,6 +1,6 @@
 pkgbase = biosaka
 	pkgdesc = C. elegans neural simulation in your terminal — 307 neurons, ~2800 synapses, LIF spiking network, ratatui TUI
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/BerkeOruc/biosaka
 	arch = x86_64
