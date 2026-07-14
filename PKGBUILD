@@ -10,13 +10,14 @@ arch=(any)
 license=('GPL-3.0-or-later')
 makedepends=('pandoc')
 depends=('shellcheck-bin')
-source=("https://raw.githubusercontent.com/koalaman/shellcheck/v${pkgver}/shellcheck.1.md"
-        "https://raw.githubusercontent.com/koalaman/shellcheck/v${pkgver}/manpage")
+source=("shellcheck-${pkgver}.1.md::https://raw.githubusercontent.com/koalaman/shellcheck/v${pkgver}/shellcheck.1.md"
+        "${pkgname}-${pkgver}::https://raw.githubusercontent.com/koalaman/shellcheck/v${pkgver}/manpage")
 b2sums=('90364c01d86f82c8dc8e967c28187aba0e65f2885ffac66adc0fe1e509f9ec49e0845bc07868c013898c1d2c0399cbda3873ad94a91add0e7cdaaee2b14962e3'
         'b52b528495a4be379cdfe226a3a1118e26f5faf71651464854d28ca1aee981a594e729acf9243f9de5574fa388778e4b180297f70349043453447f9fab383d70')
 
 build() {
-  sh manpage
+  ln -v -s "shellcheck-${pkgver}.1.md" -f shellcheck.1.md
+  sh "${pkgname}-${pkgver}"
 }
 
 package() {
