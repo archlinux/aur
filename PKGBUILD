@@ -6,7 +6,7 @@ provides=('signal-desktop')
 _parent_pkgname=signal-desktop
 _pkgname=Signal-Desktop
 pkgver=8.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Signal Private Messenger for Linux (uses system Electron)"
 license=('AGPL-3.0-only')
 arch=('x86_64')
@@ -38,6 +38,7 @@ makedepends=(
   'libxcrypt-compat'
   'node-gyp'
   'nodejs'
+  'npm'
   'pnpm'
   'python'
 )
