@@ -1,14 +1,10 @@
 # Maintainer:
 
-## links
-# https://docs.xfce.org/apps/gigolo/start
-# https://gitlab.xfce.org/apps/gigolo
-
-_pkgname=gigolo
+_pkgname="gigolo"
 pkgname="$_pkgname-git"
-pkgver=0.5.3.r127.g6869f25
+pkgver=0.6.0.r155.gf762a0d
 pkgrel=1
-pkgdesc="Frontend to manage connections to remote filesystems using GIO/GVFS"
+pkgdesc="Remote filesystem management frontend"
 url="https://gitlab.xfce.org/apps/gigolo"
 license=('GPL-2.0-or-later')
 arch=('x86_64')
@@ -19,10 +15,11 @@ depends=(
 )
 makedepends=(
   'git'
+  'meson'
   'xfce4-dev-tools'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
@@ -36,13 +33,10 @@ pkgver() {
 }
 
 build() {
-  cd "$_pkgsrc"
-  ./autogen.sh
-  ./configure --prefix=/usr --enable-maintainer-mode
-  make
+  arch-meson "$_pkgsrc" build
+  meson compile -C build
 }
 
 package() {
-  cd "$_pkgsrc"
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }

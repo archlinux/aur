@@ -1,5 +1,0 @@
-[gigolo-git]
-source = "git"
-git = "https://gitlab.xfce.org/apps/gigolo.git"
-prefix = "gigolo-"
-include_regex = 'gigolo-[0-9\.]+'
