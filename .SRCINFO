@@ -1,0 +1,18 @@
+pkgbase = python-falkordb
+	pkgdesc = Python client for interacting with FalkorDB database
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/FalkorDB/falkordb-py
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-dateutil
+	depends = python-redis
+	source = https://files.pythonhosted.org/packages/source/f/falkordb/falkordb-1.6.1.tar.gz
+	sha256sums = bbef448a0b43e00ff3062bd6201368618d7b36e969d16ba71e8b8e3fa90873d4
+
+pkgname = python-falkordb
