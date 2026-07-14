@@ -5,15 +5,15 @@
 _pkgname=cantera
 pkgname="${_pkgname}"
 pkgver=3.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc='suite of tools for kinetics, thermodynamics, and transport processes'
 arch=('x86_64')
 url='https://cantera.org/'
 license=('custom:Cantera Developers' 
          'custom:Sandia Corporation Contract AC04-94AL85000'
          'custom:California Institute of Technology')
-depends=('python-numpy' 'openmp' 'yaml-cpp' 'fmt' 'boost-libs' 'sundials-seq' 'python' 'hdf5')
-makedepends=('scons' 'git' 'gcc' 'doxygen' 'cython' 'eigen' 'boost' 'python-pip' 'python-setuptools' 'patch' 'highfive') 
+depends=('python-numpy' 'openmp' 'yaml-cpp' 'fmt' 'boost-libs' 'sundials-seq' 'python' 'hdf5' 'eigen')
+makedepends=('scons' 'git' 'gcc' 'doxygen' 'cython' 'boost' 'python-pip' 'python-setuptools' 'patch' 'highfive') 
 checkdepends=('gtest' 'gmock' 'python-ruamel-yaml' 'python-pytest')
 conflicts=('cantera-git')
 provides=('libcantera_shared.so=2-64')
