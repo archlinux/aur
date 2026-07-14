@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Voltius
+Comment=Local-first SSH/SFTP/Serial client with E2EE sync and plugins
+Exec=voltius
+Icon=voltius
+Terminal=false
+Type=Application
+Categories=Network;RemoteAccess;System;
+StartupWMClass=voltius
