@@ -1,4 +1,4 @@
-pkgbase = onus-bin
+pkgbase = onus
 	pkgdesc = A highly opinionated, Rust-based CLI tool for managing tasks based on a pull-based workflow
 	pkgver = 0.0.1
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = onus-bin
 	source = https://codeberg.org/jfoliveiraramos/onus/releases/download/v0.0.1/onus-0.0.1-x86_64.tar.gz
 	sha256sums = 8f47386b9baa9f58bf1bb72f28fd4442374a26286eb285002190ec25a4d6e703
 
-pkgname = onus-bin
+pkgname = onus
