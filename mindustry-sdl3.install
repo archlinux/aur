@@ -2,12 +2,10 @@ post_install() {
   echo ""
   echo "==> WARNING: mindustry-sdl3"
   echo ""
-  echo "This version brings back SDL3 backend to Mindustry,which is currently deprecated(?) by Anuke."
-  echo "This version is already known to be conflict with some mods,for example,MindustryX,which is built and designed to be compatible mainly with official version of Mindustry."
-  echo "If you noticed any error in this version,please install mindustry(aur) or mindustry-bin(aur) to make sure that these bugs may be not from the change of backend."
-  echo "The package maintainer don't know if anuke will check issues from sdl3 backend."
-  echo "EXPERIENCE ONLY."
-  echo "Note:at least for Arch+Hyprland+fcitx5 users,you may need to do export MINDUSTRY_FORCE_WAYLAND=1 to force mindustry to use wayland so that fcitx5 works."
+  echo "This package switches Mindustry's desktop backend from SDL2 to SDL3."
+  echo "It is intended for users affected by SDL2 input method issues, especially Fcitx5 users."
+  echo "If you notice rendering, input, or mod compatibility issues, compare with mindustry or mindustry-bin before reporting upstream."
+  echo "The SDL3 backend is not the official default backend. EXPERIENCE ONLY."
   echo ""
 }
 

@@ -1,0 +1,32 @@
+diff --git a/backends/backend-sdl3/src/arc/backend/sdl/SdlInput.java b/backends/backend-sdl3/src/arc/backend/sdl/SdlInput.java
+index d7db9e4c..7d3c967d 100644
+--- a/backends/backend-sdl3/src/arc/backend/sdl/SdlInput.java
++++ b/backends/backend-sdl3/src/arc/backend/sdl/SdlInput.java
+@@ -2,7 +2,6 @@ package arc.backend.sdl;
+ 
+ import arc.*;
+ import arc.input.*;
+-import arc.math.*;
+ import arc.scene.ui.*;
+ import arc.struct.*;
+ import org.lwjgl.sdl.*;
+@@ -80,7 +79,7 @@ public class SdlInput extends Input{
+             }
+ 
+         }else if(type == SDLEvents.SDL_EVENT_MOUSE_WHEEL){
+-            queue.scrolled(-fixSign(event.wheel().x()), -fixSign(event.wheel().y()));
++            queue.scrolled(-event.wheel().x(), -event.wheel().y());
+         }else if(type == SDLEvents.SDL_EVENT_TEXT_INPUT){
+             String text = event.text().textString();
+             if(text != null){
+@@ -99,10 +98,6 @@ public class SdlInput extends Input{
+         }
+     }
+ 
+-    static float fixSign(float scroll){
+-        return Mathf.equal(scroll, 0f) ? 0f : Mathf.sign(scroll);
+-    }
+-
+     //note: start and length parameters seem useless, ignore those
+     void handleFieldCandidate(EditEvent e){
+         class ImeData{

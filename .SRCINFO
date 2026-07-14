@@ -1,23 +1,21 @@
 pkgbase = mindustry-sdl3
 	pkgdesc = SDL3 backend version of Mindustry.
-	pkgver = 155.4
-	pkgrel = 2
+	pkgver = 159.5
+	pkgrel = 1
 	url = https://github.com/Anuken/Mindustry
 	arch = any
 	license = GPL-3.0-only
 	makedepends = java-environment=17
 	makedepends = libicns
 	depends = alsa-lib
-	source = mindustry-155.4.tar.gz::https://github.com/Anuken/Mindustry/archive/v155.4.tar.gz
-	source = mindustry-arc-155.4.tar.gz::https://github.com/Anuken/Arc/archive/refs/tags/v155.4.tar.gz
-	source = 0001-remove-borderless-fullscreen.patch::https://github.com/Anuken/Mindustry/commit/a6b29b854cd58957b5be1e8f2740073efbc9ac19.patch
-	source = 0002-revert-sdl2.patch::https://github.com/Anuken/Mindustry/commit/88e487303de535fc988f5efa54bcb16222963d5f.patch
-	source = 0003-proper-backend.patch::https://github.com/Anuken/Mindustry/commit/48d3fa1c11e97816084d77b0ba15322dbeab4432.patch
-	sha256sums = 013d2f06b03b762661ee800de2b9ffff0351932ddc55db64cdb718caf99f97c7
-	sha256sums = 28f4681e079307a32bf588041b61793953a54d674c2d640372f2a508b29fc62a
-	sha256sums = 779424366e69ec40a82cd6097f7ed756ecf741d2ef9ce413515e5ac461272bd4
-	sha256sums = cc7b3ccda6a05b0b459fae4794a60cfa2a66d4aa6b6cda876aa2595ac56eda1c
-	sha256sums = 715f7912d531679fcc046ddba3604d77f062a01dd99a4ad943ec1fc6a9d2fa1e
+	source = mindustry-159.5.tar.gz::https://github.com/Anuken/Mindustry/archive/v159.5.tar.gz
+	source = mindustry-arc-159.5.tar.gz::https://github.com/Anuken/Arc/archive/refs/tags/v159.5.tar.gz
+	source = 0001-mindustry-use-sdl3-backend.patch
+	source = 0002-arc-sdl3-preserve-wheel-delta.patch
+	sha256sums = 33606fd13dc559bdedd7336a90f73f4f4c2da56b33a950a61eab6160f8694c1d
+	sha256sums = df27cc878ee6defda1d9dcbd962f909fa6a3ac67c6ef20954e6b0f99ac4b524e
+	sha256sums = 61959e61bd689970d56ca34d67d44a045bb56a1586fcfafa5f143aed889fa013
+	sha256sums = bb05ef13b95043139864ee689daa1e3972dd780cde8c23525ba19fb73b0ec215
 
 pkgname = mindustry-sdl3
 	install = mindustry-sdl3.install

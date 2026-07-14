@@ -5,8 +5,8 @@
 
 _pkgname="mindustry"
 pkgbase="$_pkgname-sdl3"
-pkgver=155.4
-pkgrel=2
+pkgver=159.5
+pkgrel=1
 pkgdesc="SDL3 backend version of Mindustry."
 url="https://github.com/Anuken/Mindustry"
 license=('GPL-3.0-only')
@@ -27,15 +27,13 @@ _pkgext="tar.gz"
 source=(
   "$_pkgname-$_build.$_pkgext"::"https://github.com/Anuken/Mindustry/archive/v$_build.$_pkgext"
   "$_pkgname-arc-$_build.$_pkgext"::"https://github.com/Anuken/Arc/archive/refs/tags/v$_build.$_pkgext"
-  '0001-remove-borderless-fullscreen.patch'::'https://github.com/Anuken/Mindustry/commit/a6b29b854cd58957b5be1e8f2740073efbc9ac19.patch'
-  '0002-revert-sdl2.patch'::'https://github.com/Anuken/Mindustry/commit/88e487303de535fc988f5efa54bcb16222963d5f.patch'
-  '0003-proper-backend.patch'::'https://github.com/Anuken/Mindustry/commit/48d3fa1c11e97816084d77b0ba15322dbeab4432.patch'
+  '0001-mindustry-use-sdl3-backend.patch'
+  '0002-arc-sdl3-preserve-wheel-delta.patch'
 )
-sha256sums=('013d2f06b03b762661ee800de2b9ffff0351932ddc55db64cdb718caf99f97c7'
-            '28f4681e079307a32bf588041b61793953a54d674c2d640372f2a508b29fc62a'
-            '779424366e69ec40a82cd6097f7ed756ecf741d2ef9ce413515e5ac461272bd4'
-            'cc7b3ccda6a05b0b459fae4794a60cfa2a66d4aa6b6cda876aa2595ac56eda1c'
-            '715f7912d531679fcc046ddba3604d77f062a01dd99a4ad943ec1fc6a9d2fa1e')
+sha256sums=('33606fd13dc559bdedd7336a90f73f4f4c2da56b33a950a61eab6160f8694c1d'
+            'df27cc878ee6defda1d9dcbd962f909fa6a3ac67c6ef20954e6b0f99ac4b524e'
+            '61959e61bd689970d56ca34d67d44a045bb56a1586fcfafa5f143aed889fa013'
+            'bb05ef13b95043139864ee689daa1e3972dd780cde8c23525ba19fb73b0ec215')
 
 prepare() {
   ln -sf "$_pkgsrc_arc" Arc
@@ -43,9 +41,10 @@ prepare() {
   cd "$_pkgsrc"
   sed -E -e '/archash/s&archash=.*$&'"archash=v${_build}&" -i gradle.properties
 
-  patch -Np1 < ../0001-remove-borderless-fullscreen.patch
-  patch -Np1 < ../0002-revert-sdl2.patch
-  patch -Np1 < ../0003-proper-backend.patch
+  patch -Np1 < ../0001-mindustry-use-sdl3-backend.patch
+
+  cd "$srcdir/$_pkgsrc_arc"
+  patch -Np1 < ../0002-arc-sdl3-preserve-wheel-delta.patch
 }
 
 build() {
