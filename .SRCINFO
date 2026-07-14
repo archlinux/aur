@@ -1,0 +1,16 @@
+pkgbase = garlic-decompiler-gui
+	pkgdesc = Gui for the Garlic Decompiler, supporting APK, DEX, JAR, and CLASS decompilation
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/AgarwalKritik/garlic-gui
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = qt6-base
+	source = garlic-gui-1.1.0.tar.gz::https://github.com/AgarwalKritik/garlic-gui/archive/refs/tags/v1.1.0.tar.gz
+	source = 0001-remove-Wno-format-from-CXX-options.patch
+	sha256sums = 7e7477e8a04de57005ee5bed0b07385ead962abf896b1c04e3975002944891a1
+	sha256sums = a918bd102717e73803f47e704ac9e8eb806416fceea84b0cc965b7d6a5188a47
+
+pkgname = garlic-decompiler-gui
