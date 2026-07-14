@@ -12,8 +12,9 @@ post_install() {
   echo ">>> Ensure the minecraft user can write to WEB_ROOT (group membership or ACLs)."
   echo ">>> Enable and start with: systemctl enable --now bluemap-telemetry.service"
   echo ""
-  echo ">>> Optional: enable the marker datapack by symlinking it into a world (replace WORLD):"
-  echo ">>>   ln -s /usr/share/bluemap-telemetry/datapack WORLD/datapacks/bluemap-telemetry"
+  echo ">>> Optional: install the marker datapack into a world (replace WORLD, e.g. /srv/minecraft/world):"
+  echo ">>>   cp -a /usr/share/bluemap-telemetry/datapack WORLD/datapacks/bluemap-telemetry"
+  echo ">>> Re-copy after package upgrades. Symlinks require allowed_symlinks.txt — see datapack README."
   echo ">>> Then run /reload in-game or restart the Minecraft server."
   echo ">>> See /usr/share/bluemap-telemetry/datapack/README.md for details."
 }
