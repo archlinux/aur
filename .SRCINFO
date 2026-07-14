@@ -1,7 +1,7 @@
 pkgbase = sonic-desktop-interface
 	pkgdesc = Sonic Desktop Interface
 	pkgver = 6.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sonic-DE/sonic-desktop-interface
 	arch = x86_64
 	groups = sonicde

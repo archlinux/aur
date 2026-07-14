@@ -5,7 +5,7 @@
 
 pkgname=sonic-desktop-interface
 pkgver=6.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Sonic Desktop Interface'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-desktop-interface'
@@ -67,7 +67,7 @@ depends=(baloo
          sonic-frameworks-runner
          sonic-frameworks-windowsystem
          sonic-interface-libraries
-         sonic-sysguard-library
+         sonic-system-monitor-library
          sonic-win
          sonic-workspace
          sonnet
