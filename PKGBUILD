@@ -1,9 +1,9 @@
 pkgname=weflow-bin
-pkgver=5.1.0
-pkgrel=2
+pkgver=6.1.0
+pkgrel=1
 pkgdesc="Local WeChat database decryption and analysis tool"
 arch=('x86_64')
-url='https://github.com/hicccc77/WeFlow'
+url='https://github.com/hicccc77/weflow-releases'
 license=('CC-BY-NC-SA-4.0')
 depends=(
   'alsa-lib'
@@ -24,14 +24,8 @@ provides=('weflow')
 conflicts=('weflow')
 options=('!debug' '!strip')
 
-# Manual source:
-# Upstream releases are currently unavailable. Obtain
-# WeFlow-${pkgver}-Setup.tar.gz from a lawful source yourself, place it next to
-# this PKGBUILD (or in makepkg's SRCDEST), then run makepkg normally. The
-# checksum below verifies the expected upstream Linux setup tarball.
-DLAGENTS+=("manual::${startdir}/manual-download")
-source=("WeFlow-${pkgver}-Setup.tar.gz::manual://WeFlow-${pkgver}-Setup.tar.gz")
-sha256sums=('98ca7c301d383642a8c7c4cb0f40172be8d5c9d136848477b7402d52655ed5bf')
+source=("https://github.com/hicccc77/weflow-releases/releases/download/v${pkgver}/WeFlow-${pkgver}-Setup.tar.gz")
+sha256sums=('a92e77d8b1b2687adfba5c4f098444842a456d257267b1504dbc66445fb0adf9')
 
 package() {
   local src_app="$srcdir/WeFlow-${pkgver}-Setup"
