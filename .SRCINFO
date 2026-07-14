@@ -1,0 +1,19 @@
+pkgbase = vmod-k8s-endpoint
+	pkgdesc = Kubernetes endpoint discovery director VMOD for Varnish
+	pkgver = 9.0.3
+	pkgrel = 3
+	url = https://github.com/varnish/vmod-k8s_endpoint
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	makedepends = openssl
+	makedepends = pkg-config
+	makedepends = python-docutils
+	makedepends = jq
+	depends = varnish=9.0.3-3
+	options = !lto
+	source = vmod-k8s-endpoint-0.1.0.tar.gz::https://github.com/varnish/vmod-k8s_endpoint/archive/refs/tags/v0.1.0.tar.gz
+	sha512sums = f8242b1d8ddc7b9c32a88e4e22734018f2aaa9cb325dc118a36ccacda639d305e1cbc1d3a06a0540a6c572e8b347230c5f868cfefcb9cbc60617a6e94bfef83a
+
+pkgname = vmod-k8s-endpoint
