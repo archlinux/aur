@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=eigency
 pkgname=python-${_base}
-pkgver=3.4.0.7
+pkgver=5.0.1.0
 pkgrel=1
 pkgdesc="Cython interface between the numpy arrays and the Matrix/Array classes of the Eigen C++ library"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(eigen python-numpy)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel cython) # python-oldest-supported-numpy
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('1801e0a5152aeacb23bb1d752edeb9ff399cf50b53288d9b3dbb8f373566d63cf04e60d51e12848af1b97e399aac82663372119c59e3b60eab26210082e3e846')
+sha512sums=('0a20c6918c1a02b323cff8d24d52ef53d5f587b874ff6d6e4029a25c628a7c048914adb0b226f8570e60aac70da32c5f0a58569da15c2e1278c413a209113f20')
 
 prepare() {
   # https://github.com/wouterboomsma/eigency/pull/59
