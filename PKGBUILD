@@ -1,13 +1,13 @@
 # shellcheck shell=bash
 # -*- sh -*-
 
-# Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
+# Contributor: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 _pkgname='silverbullet'
 pkgname="$_pkgname-bin"
 pkgdesc='Programmable, private, browser-based, personal knowledge management platform / wiki (pre-compiled)'
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 url='https://github.com/silverbulletmd/silverbullet'
 install="$_pkgname.install"
 changelog="$_pkgname.changelog"
