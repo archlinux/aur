@@ -5,3 +5,7 @@
 *.tar.xz
 *.tar.zst
 *.part
+*.zip
+*.run
+*.license
+FFS_tx

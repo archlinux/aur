@@ -1,44 +1,105 @@
 # Maintainer: archibald869 <archibald869 at web dot de>
+# Maintainer: Tom Hale <tom at hale dot ee>
+#
+# Binary variant of freefilesync: tracks the latest Donation Edition
+# release from freefilesync.org and installs the pre-built binaries
+# with the donor license key activated.
+# shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=freefilesync-bin
 _pkgname=freefilesync
-pkgver=14.9
+pkgver=14.10
 pkgrel=1
-pkgdesc="Folder comparison and synchronization"
-arch=("i686" "x86_64")
+pkgdesc="Folder comparison and synchronization (Donation Edition)"
+arch=("x86_64")
 url="https://freefilesync.org"
-license=("custom")
+license=('LicenseRef-freefilesync.org')
 provides=("freefilesync")
 conflicts=("freefilesync")
-depends=(
-    gtk2
-    libxxf86vm
-)
-depends_i686=(
-    lib32-at-spi2-core
-    lib32-gdk-pixbuf2
-    lib32-libsm
-    lib32-pango
-)
-source=(
-    dlagent
-    "${pkgname}-${pkgver}.tar.gz::${url}/download/FreeFileSync_${pkgver}_Linux_${CARCH}.tar.gz"
-)
-sha256sums=(
-    "21ad62ebf8659bb49a27d1cb1ff29fb7073f206a0ebd4c44340a9afa2b7da218"
-    "0b571d85c6a672464b3d73fcde829725240c7121adb7e66f83919bc5f5c3b417"
-)
+depends=("gtk3")
+makedepends=("curl" "unzip")
 options=(!strip !debug)
-install=".install"
-DLAGENTS=("https::$PWD/dlagent $url %u %o")
+
+# Donation transaction ID: env var takes precedence, else read from ./FFS_tx
+_FFS_TX="${_FFS_TX:-$(cat "${startdir}/FFS_tx")}"
+
+_update_and_cache_flag='update_and_cache'
+
+# Called from prepare() with arg: "${_pkgver_cache_file}" to write to file.
+# With no argument (eg usual makepkg), print the version already cached.
+pkgver() {
+    local _pkgver_cache_file="${srcdir}/.pkgver"
+
+    if [[ -e "${_pkgver_cache_file}" && $1 != "${_update_and_cache_flag}" ]]; then
+        cat "$_pkgver_cache_file" && return 0
+    fi
+
+    # Fetch the thank-you page and extract the version from the Linux download URL
+    local _page
+    _page=$(curl -fsL -A Mozilla "${url}/thank-you.php?tx=${_FFS_TX}")
+
+    # Extract version from: FreeFileSync_14.10_%5BDonation_Edition%5D_Linux.zip
+    local _ver
+    _ver=$(printf '%s\n' "$_page" \
+        | grep -o 'FreeFileSync_[0-9.]*_%5BDonation_Edition%5D_Linux\.zip' \
+        | head -1 \
+        | grep -oE '[0-9]+\.[0-9]+([0-9]+)?(\.[0-9]+)?' \
+        | head -1)
+
+    if [[ -z "$_ver" ]]; then
+        echo "Error: could not determine version from thank-you page" >&2
+        return 1
+    fi
+
+    printf '%s\n' "$_ver" | tee "${_pkgver_cache_file}"
+}
+
+prepare() {
+    pkgver=$(pkgver "${_update_and_cache_flag}")
+    echo "Downloading FreeFileSync ${pkgver} Donation Edition..."
+
+    # Fetch the thank-you page to get the full download URL (with expire & hash)
+    local _page
+    _page=$(curl -fsL -A Mozilla "${url}/thank-you.php?tx=${_FFS_TX}")
+
+    # Extract the full Linux download URL from the HTML
+    local _dl_url
+    _dl_url=$(printf '%s\n' "$_page" \
+        | grep -o 'https://freefilesync.org/supporter-edition/FreeFileSync_[^"]*Linux\.zip[^"]*' \
+        | head -1)
+
+    if [[ -z "$_dl_url" ]]; then
+        echo "Error: could not find Linux download URL on thank-you page" >&2
+        return 1
+    fi
+
+    cd "${srcdir}"
+
+    # Download the Donation Edition zip
+    curl -fL -A Mozilla -o "FreeFileSync_${pkgver}_Donation_Edition_Linux.zip" "$_dl_url"
+
+    # Extract the .run installer and .license key
+    unzip -o "FreeFileSync_${pkgver}_Donation_Edition_Linux.zip" -d "${srcdir}"
+
+    # The .license file is the donor activation key; save it for package()
+    local _license_file
+    _license_file=$(find "${srcdir}" -name '*.license' | head -1)
+    if [[ -z "$_license_file" ]]; then
+        echo "Error: .license file not found in zip" >&2
+        return 1
+    fi
+    cp "$_license_file" "${srcdir}/Registered.dat"
+}
 
 package() {
     install -d "$pkgdir/opt/$_pkgname"
 
     # extract installer archive from installer binary
-    offset=$(grep -abo -m 1 -F "<FFS_TAR_START>" "$srcdir/FreeFileSync_${pkgver}_Install.run" | cut -d : -f 1)
+    local _run_file
+    _run_file=$(find "$srcdir" -name '*Install.run' | head -1)
+    offset=$(grep -abo -m 1 -F "<FFS_TAR_START>" "$_run_file" | cut -d : -f 1)
     offset=$((offset + 16))
-    tail -c +$offset "$srcdir/FreeFileSync_${pkgver}_Install.run" > "$srcdir/FreeFileSync_${pkgver}_Install.tar"
+    tail -c +$offset "$_run_file" > "$srcdir/FreeFileSync_${pkgver}_Install.tar"
 
     # extract inner archive, freefilesync-mime.xml and .desktop files from installer archive
     tar -xf "$srcdir/FreeFileSync_${pkgver}_Install.tar" -C "$srcdir" --wildcards \
@@ -47,16 +108,18 @@ package() {
         '*.desktop'
 
     # extract inner archive
-    tar -xzf "$srcdir/FreeFileSync.tar.gz" -C "$pkgdir/opt/$_pkgname"
-    chown -R root:root "$pkgdir/opt/$_pkgname"
+    tar -xzf "$srcdir/FreeFileSync.tar.gz" --no-same-owner -C "$pkgdir/opt/$_pkgname"
+
+    # install the donor license key as Registered.dat (activates Donation Edition)
+    install -Dm644 "$srcdir/Registered.dat" "$pkgdir/opt/$_pkgname/Resources/Registered.dat"
 
     # documentation
     install -d "$pkgdir/usr/share/doc/$_pkgname"
     ln -sf "/opt/$_pkgname/User Manual.pdf" "$pkgdir/usr/share/doc/$_pkgname/User_Manual.pdf"
 
     # license
-    install -d "$pkgdir/usr/share/licenses/$_pkgname"
-    ln -sf "/opt/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    install -d "$pkgdir/usr/share/licenses/${pkgname}"
+    cp "$pkgdir/opt/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 
     # MIME types
     install -Dm644 -t "$pkgdir/usr/share/mime/packages/" "$srcdir/freefilesync-mime.xml"
