@@ -1,6 +1,6 @@
 # Maintainer: Ron <thefangeddeity>
 pkgname=hls-livecam-server
-pkgver=5.2.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camdash monitor, and family presence features"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'python-flask' 'python-pillow
 install=hls-livecam-server.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/hls-livecam-server/archive/refs/tags/v$pkgver.tar.gz"
         "hls-livecam-server.install")
-sha256sums=('6fc9e84f0d3d319ec853ec2ad8dd8d30257c7178e69d5594c159e4207b11fdf5'
+sha256sums=('084a2c392cf85134f2833383b76f20f00ed30f1236bee108acc9b9033bb0cd4e'
             'SKIP')
 
 package() {
@@ -62,9 +62,8 @@ package() {
     install -Dm644 pkg/etc/nginx/conf.d/hls-livecam.conf                    "$pkgdir/etc/nginx/conf.d/hls-livecam.conf"
 
     # ── Sudoers ───────────────────────────────────────────────────────────────
-    # Ships http user for broadcast-api (Arch has no www-data).
-    # Per-user entries (hls-livecam-dark, hls-livecam-services, camdash-smart)
-    # are written dynamically by hls-livecam-setup at configure time.
-    install -Dm440 pkg/etc/sudoers.d/hls-livecam-dark \
-                   "$pkgdir/etc/sudoers.d/hls-livecam-dark"
+    # All sudoers.d entries (hls-livecam-dark, hls-livecam-services, camdash-smart)
+    # are written dynamically by hls-livecam-setup at configure time — setup owns
+    # sudoers, package() does not ship a static copy (v5.2.1: the shipped copy was
+    # a stale fossil that setup immediately overwrites on first run anyway).
 }
