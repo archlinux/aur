@@ -11,7 +11,7 @@ makedepends=('cargo' 'nodejs' 'npm')
 source=("helium-sync-daemon::git+https://github.com/MehmetCanWT/Helium-Sync.git"
         "helium-sync.service")
 sha256sums=('SKIP'
-            'adcb74967abb9fd79101310c557a0524b47a9e99dde793afc059775ed8e5249b') # Actual checksum of local helium-sync.service
+            '9ecacceabb426d38ea4df1312cf6ca7607ca00ad112d61c1b36254939673fc2e') # Actual checksum of local helium-sync.service
 
 prepare() {
   cd "$srcdir/helium-sync-daemon/frontend"
