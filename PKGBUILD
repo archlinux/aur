@@ -1,6 +1,6 @@
 # Maintainer: J. Rechsteiner <jrechsteiner@bluewin.ch>
 pkgname=bookmark-organisator
-pkgver=r13.aaf56a2 # Wird beim Bauen automatisch aktualisiert
+pkgver=r14.88f1c3d # Wird beim Bauen automatisch aktualisiert
 pkgrel=1
 pkgdesc="Ein Tool zum Organisieren von Lesezeichen (Bookmarks)"
 arch=('any')
@@ -10,6 +10,7 @@ depends=('python' 'python-pyqt6') # PyQt6 ist laut deiner main.py eine zwingende
 makedepends=('git')
 provides=('bookmark-organisator')
 conflicts=('bookmark-organisator')
+install=bookmark-organisator.install
 
 source=("${pkgname}::git+https://github.com/wergosam/bookmark-organisator.git")
 sha256sums=('SKIP')
@@ -36,11 +37,19 @@ EOF
     chmod +x "${pkgdir}/usr/bin/bookmark-organisator"
 
     # =========================================================================
-    # 3. NEU/ANGEPASST: Bilddatei als System-Icon installieren
+    # 3. Icon korrekt installieren
+    #    WICHTIG: KDE/Plasma sucht Taskleisten- und Fenster-Header-Icons primär
+    #    im hicolor-Icon-Theme (/usr/share/icons/hicolor/...), NICHT nur in
+    #    /usr/share/pixmaps. Deshalb wird die SVG zusätzlich dort installiert.
+    #    /usr/share/pixmaps bleibt als Fallback für ältere Anwendungen erhalten.
     # =========================================================================
-    install -d "${pkgdir}/usr/share/pixmaps"
-    # Hier wird dein Icon aus dem Git-Repo in den System-Icon-Ordner kopiert:
-    install -m644 "bookmark-organisator.png" "${pkgdir}/usr/share/pixmaps/bookmark-organisator.png"
+    if [ -f "bookmark-organisator.svg" ]; then
+        install -Dm644 "bookmark-organisator.svg" \
+            "${pkgdir}/usr/share/icons/hicolor/scalable/apps/bookmark-organisator.svg"
+    fi
+
+    install -Dm644 "bookmark-organisator.png" \
+        "${pkgdir}/usr/share/pixmaps/bookmark-organisator.png"
     # =========================================================================
 
     # 4. .desktop-Datei für den Anwendungsstarter erstellen

@@ -1,8 +1,9 @@
 pkgbase = bookmark-organisator
 	pkgdesc = Ein Tool zum Organisieren von Lesezeichen (Bookmarks)
-	pkgver = r13.aaf56a2
+	pkgver = r14.88f1c3d
 	pkgrel = 1
 	url = https://github.com/wergosam/bookmark-organisator
+	install = bookmark-organisator.install
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
