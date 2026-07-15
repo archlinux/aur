@@ -1,0 +1,24 @@
+pkgbase = easykiconverter
+	pkgdesc = Convert LCSC and EasyEDA components to KiCad libraries
+	pkgver = 3.1.12
+	pkgrel = 1
+	url = https://github.com/tangsangsimida/EasyKiConverter
+	install = easykiconverter.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = qt6-shadertools
+	depends = zlib
+	optdepends = qt6-5compat: for some legacy QML components
+	source = easykiconverter-3.1.12.tar.gz::https://github.com/tangsangsimida/EasyKiConverter/archive/refs/tags/v3.1.12.tar.gz
+	sha256sums = SKIP
+
+pkgname = easykiconverter
