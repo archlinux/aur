@@ -2,9 +2,9 @@
 
 _pkgname=thorium-browser
 pkgname=thorium-browser-updated-bin
-pkgver=150.0.7871.114
+pkgver=150.0.7871.124
 pkgrel=1
-_thorium_commit=db0187788a944292faab4c355ab5ac3877e70147
+_thorium_commit=1e989d9f4aa67070e40b10718062675e79e66f19
 pkgdesc="Chromium fork focused on high performance and security, packaged from updated binaries"
 arch=('x86_64')
 url="https://github.com/brauliobo/thorium"
@@ -35,7 +35,7 @@ conflicts=('thorium-browser' 'thorium-browser-bin' 'thorium-browser-updated')
 options=('!emptydirs' '!strip' '!debug')
 install="${pkgname}.install"
 source=("https://github.com/brauliobo/thorium/releases/download/M${pkgver}-updated/${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('0c80416bf2723c1575b386ec5501e54ffbe0203e09109f00092d6172a0602610')
+sha256sums=('77bc4afd0920d4ebbac387026e559ef37f29ec435291680701bf442cc3c3cf22')
 noextract=("${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 
 package() {
