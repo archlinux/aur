@@ -1,6 +1,6 @@
 pkgbase = remotepower-server
 	pkgdesc = Self-hosted fleet-management server for RemotePower (nginx + gunicorn/Flask): dashboards, CVE/drift/compliance, monitoring, AI
-	pkgver = 6.2.0
+	pkgver = 6.2.1
 	pkgrel = 1
 	url = https://github.com/tyxak/remotepower
 	install = remotepower-server.install
@@ -24,10 +24,10 @@ pkgbase = remotepower-server
 	optdepends = python-psycopg: PostgreSQL storage backend for large / multi-node fleets
 	optdepends = postgresql: PostgreSQL storage backend for large / multi-node fleets
 	backup = etc/nginx/snippets/remotepower-locations.conf
-	source = remotepower-6.2.0.tar.gz::https://github.com/tyxak/remotepower/releases/download/v6.2.0/remotepower-6.2.0.tar.gz
-	source = remotepower-6.2.0.tar.gz.asc::https://github.com/tyxak/remotepower/releases/download/v6.2.0/remotepower-6.2.0.tar.gz.asc
+	source = remotepower-6.2.1.tar.gz::https://github.com/tyxak/remotepower/releases/download/v6.2.1/remotepower-6.2.1.tar.gz
+	source = remotepower-6.2.1.tar.gz.asc::https://github.com/tyxak/remotepower/releases/download/v6.2.1/remotepower-6.2.1.tar.gz.asc
 	validpgpkeys = E7B5AD456728B8462A8B54BFD488AF115D2CCDBF
-	sha256sums = 1c2c79d0d0d611787ac7657ed6d9a11ee9c1a83c796e65d17ce731c858db8404
+	sha256sums = d787b1b57b1385a331fa87e1778f60a378f80db3ddd0d36f7c69d6dc3cda503c
 	sha256sums = SKIP
 
 pkgname = remotepower-server
