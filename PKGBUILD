@@ -6,6 +6,7 @@ pkgdesc="A companion CLI for managing and improving your Hyprland setup"
 arch=('any')
 url="https://github.com/Kolgrim33/hyprkit"
 license=('MIT')
+keywords=('hyprland' 'wayland' 'cli' 'config' 'lint' 'doctor')
 depends=('python' 'python-rich' 'hyprland')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools')
 provides=('hyprkit')
