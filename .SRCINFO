@@ -1,0 +1,19 @@
+pkgbase = qtautoclicker-git
+	pkgdesc = A simple auto-clicker application built with Qt and uinput.
+	pkgver = 0.1.r13.fb471ba
+	pkgrel = 1
+	url = https://github.com/MinecraftPEayer/QtAutoClicker
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = qt6-base
+	depends = qt6-wayland
+	depends = polkit
+	depends = hicolor-icon-theme
+	provides = qtautoclicker
+	conflicts = qtautoclicker
+	source = qtautoclicker-git::git+https://github.com/MinecraftPEayer/QtAutoClicker.git
+	md5sums = SKIP
+
+pkgname = qtautoclicker-git
