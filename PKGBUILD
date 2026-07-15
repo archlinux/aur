@@ -1,10 +1,10 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=ggvenn
-_pkgver=0.1.10
+_pkgver=0.1.19
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Draw Venn Diagram by 'ggplot2'"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -12,10 +12,16 @@ license=('MIT')
 depends=(
   r-dplyr
   r-ggplot2
+  r-rlang
+  r-scales
+)
+optdepends=(
+  r-rmarkdown
+  r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('eb81af74065bc4f88778e8f88b7bbd8e')
-b2sums=('ea06a3d2c90061a1327b43a5f83145fa98413eb6636ce0de941d4eaed30d9a18ff3f2d61bd34b317ff9d07313364c1831185fb2713be6b7169940c509f6d71d1')
+md5sums=('ce9ca8c8f3143e09e3c43601b07051ec')
+b2sums=('36ce5c417a1688d848fc706e041a11f9397efc05b696c49815a6f22e2185e22f5ff87a319a41151a62aaf2f55a0114283b68c53aaf22ddc4ae931ad7c72285b7')
 
 build() {
   mkdir build
