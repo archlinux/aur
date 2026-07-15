@@ -9,7 +9,7 @@ pkgdesc="Routing engine for OpenStreetMap."
 arch=('x86_64' 'aarch64')
 url="https://github.com/valhalla/valhalla"
 license=('custom:MIT')
-depends=('prime_server' 'boost-libs' 'protobuf' 'abseil-cpp' 'python' 'python-numpy' 'libspatialite' 'luajit' 'chrono-date' 'gdal' 'lz4')
+depends=('prime_server' 'boost-libs' 'protobuf' 'abseil-cpp' 'python' 'python-numpy' 'libspatialite' 'spatialite-tools' 'luajit' 'chrono-date' 'gdal' 'lz4')
 makedepends=('cmake' 'git' 'vim' 'jq' 'boost' 'cxxopts' 'libosmium' 'protozero' 'rapidjson')
 source=("$_pkgname-$pkgver::git+${url}#tag=$pkgver")
 sha256sums=('SKIP')
