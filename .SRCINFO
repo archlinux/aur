@@ -1,0 +1,16 @@
+pkgbase = romans-noise-gate-git
+	pkgdesc = Lookahead LADSPA noise gate plugin
+	pkgver = 0.1.b9fcacb
+	pkgrel = 1
+	url = https://ro-che.info/articles/2019-01-12-better-noise-gate
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = boost
+	depends = ladspa
+	provides = romans-noise-gate=0.1.b9fcacb
+	conflicts = romans-noise-gate
+	source = romans-noise-gate-git::git+https://github.com/UnkindPartition/noise-gate.git
+	md5sums = SKIP
+
+pkgname = romans-noise-gate-git
