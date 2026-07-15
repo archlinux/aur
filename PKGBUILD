@@ -2,7 +2,7 @@
 
 pkgname=timedated-shim
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Portable org.freedesktop.timedate1 service for non-systemd Linux'
 arch=('x86_64')
 url='https://github.com/NeuroMarshal/timedated-shim'
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('dbus' 'gcc-libs' 'glibc' 'polkit' 'procps-ng' 'tzdata' 'util-linux')
 makedepends=('cargo')
 provides=('timedated')
-conflicts=('openrc-settingsd' 'systemd')
+conflicts=('openrc-settingsd')
 install=timedated-shim.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('ef3269be6a1cef4d7e641b4ed3c01c696379cbc559c29fe69e23bdf334a85f82')
