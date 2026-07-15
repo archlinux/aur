@@ -1,6 +1,6 @@
 pkgbase = turso-cli-bin
 	pkgdesc = Command line interface to Turso.
-	pkgver = 1.0.29
+	pkgver = 1.0.30
 	pkgrel = 1
 	url = https://github.com/tursodatabase/turso-cli
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = turso-cli-bin
 	optdepends = libsql-server-bin: for turso dev (local development server) support
 	provides = turso
 	options = !debug
-	source_x86_64 = turso-cli_Linux_x86_64_1.0.29.tar.gz::https://github.com/tursodatabase/turso-cli/releases/download/v1.0.29/turso-cli_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 0eae140b030b11ad98540ed85ceb62575100135e51038009064e50675822c0f5
-	source_aarch64 = turso-cli_Linux_arm64_1.0.29.tar.gz::https://github.com/tursodatabase/turso-cli/releases/download/v1.0.29/turso-cli_Linux_arm64.tar.gz
-	sha256sums_aarch64 = f94fafc61a093f97a609e3ff65313734f2abf3659eed43e4872c52ba3fb82bc5
+	source_x86_64 = turso-cli_Linux_x86_64_1.0.30.tar.gz::https://github.com/tursodatabase/turso-cli/releases/download/v1.0.30/turso-cli_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 0ddecc55970fa9c7a237555095ca069fb9b0deec5ab82fe2ec5726f684e65e6d
+	source_aarch64 = turso-cli_Linux_arm64_1.0.30.tar.gz::https://github.com/tursodatabase/turso-cli/releases/download/v1.0.30/turso-cli_Linux_arm64.tar.gz
+	sha256sums_aarch64 = dc7a98857039f9f73e1a14f8803307528405f0b721360e107853edac70e1a364
 
 pkgname = turso-cli-bin
