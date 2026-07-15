@@ -1,4 +1,4 @@
-# Maintainer: Alex <koppe@posteo.de>
+# Maintainer: Alexander Koppe <koppe@posteo.de>
 pkgname=llvm-mos-bin
 pkgver=23.0.0git.8be05461
 pkgrel=1
