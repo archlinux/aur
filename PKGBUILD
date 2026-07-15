@@ -1,7 +1,7 @@
 # Maintainer: OldJobobo <aur at oldjobobo dot com>
 pkgname=thpm
-pkgver=1.0.0rc1
-pkgrel=2
+pkgver=1.0.0rc2
+pkgrel=1
 pkgdesc='Omarchy 4-native manager for external theme integrations'
 arch=('any')
 url='https://github.com/oldjobobo/thpm'
@@ -13,7 +13,7 @@ conflicts=('theme-hook-plugin-manager')
 replaces=('theme-hook-plugin-manager')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('3509d7f449f533d49ea40be18c56afcafcc52d62206d91ca17df370f7f4bbb73')
+sha256sums=('eb23b46e5e36fef17a26bcdf3b4d27a207a50d9d7ae5a4cd83201e97f3374673')
 
 build() {
     cd "$pkgname-$pkgver"
