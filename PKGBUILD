@@ -1,7 +1,7 @@
 # Maintainer: Ricky Morabito <codericcardo@gmail.com>
 
 pkgname=tokscale
-pkgver=4.5.2
+pkgver=4.5.3
 pkgrel=1
 pkgdesc='CLI tool and TUI for tracking token usage and costs from AI coding agents'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'rust' 'openssl' 'pkg-config')
 provides=('tokscale')
 conflicts=('tokscale-bin' 'tokscale-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/junhoyeo/tokscale/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('c8c9ae065980d8813d1f61643ba55a049f54c6c31d40a50bebdad8f51e17e481e2fc58b9895d345ef9c8fec610300c7ab13973be05d09647e21d839d0efab51f')
+b2sums=('2dd2ec517bcd79f843383d46f98c192d39e0059763210506c825131bc60d5e1029a96506fe699c0b638a14a310a7bf3644dc3cd795e7884563c657338806d2f3')
 options=(!lto)
 
 prepare() {
