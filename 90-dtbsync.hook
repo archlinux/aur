@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = linux-dtbs
+
+[Action]
+Description = Synchronizing Device Tree Blob to the EFI System Partition...
+When = PostTransaction
+Exec = /usr/bin/dtbsync

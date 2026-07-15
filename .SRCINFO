@@ -1,0 +1,19 @@
+pkgbase = dtbsync
+	pkgdesc = Synchronize the appropriate Device Tree Blob to the EFI System Partition
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/theironrobin/dtbsync
+	arch = any
+	license = MPL-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python
+	depends = python-colorama
+	source = dtbsync-0.2.0.tar.gz::https://github.com/theironrobin/dtbsync/archive/refs/tags/v0.2.0.tar.gz
+	source = 90-dtbsync.hook
+	sha256sums = db5a365bbfcd7906bf772381550450559c080299631e80942ef89bfe8d87e8f4
+	sha256sums = e4083b56ebf8d7fabb1e06aeb3bdc3f8cf81c551c6a72736135eb5f0805a0ea7
+
+pkgname = dtbsync
