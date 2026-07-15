@@ -1,7 +1,7 @@
 pkgbase = mineradio
 	pkgdesc = Immersive music player with cinematic visuals, particle effects, and lyrics stage (Linux port by Sthn)
 	pkgver = 1.1.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/XxHuberrr/Mineradio
 	arch = x86_64
 	license = GPL-3.0-only
@@ -20,6 +20,8 @@ pkgbase = mineradio
 	source = mineradio-1.1.1.tar.gz::https://github.com/XxHuberrr/Mineradio/archive/refs/tags/v1.1.1.tar.gz
 	source = mineradio.desktop
 	source = mineradio.sh
+	source = linux-compat.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

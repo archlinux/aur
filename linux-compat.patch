@@ -1,0 +1,26 @@
+diff --git a/desktop/main.js b/desktop/main.js
+index 1518835..b2c3d4e 100644
+--- a/desktop/main.js
++++ b/desktop/main.js
+@@ -31,7 +31,7 @@ const MIN_WINDOWED_WIDTH = 960;
+ const MIN_WINDOWED_HEIGHT = 540;
+ const APP_NAME = 'Mineradio';
+ const APP_USER_MODEL_ID = 'com.mineradio.desktop';
+-const APP_ICON_ICO = path.join(__dirname, '..', 'build', 'icon.ico');
++const APP_ICON_ICO = path.join(__dirname, '..', 'build', process.platform === 'win32' ? 'icon.ico' : 'icon.png');
+ const NETEASE_LOGIN_PARTITION = 'persist:mineradio-netease-login';
+ const NETEASE_LOGIN_URL = 'https://music.163.com/#/login';
+ const QQ_LOGIN_PARTITION = 'persist:mineradio-qqmusic-login';
+diff --git a/server.js b/server.js
+index 9dfd6b9..12a7351 100644
+--- a/server.js
++++ b/server.js
+@@ -62,7 +62,7 @@ const QQ_COOKIE_FILE = process.env.QQ_COOKIE_FILE || path.join(__dirname, '.qq-c
+ const UPDATE_WORK_DIR = process.env.MINERADIO_UPDATE_DIR || path.join(__dirname, 'updates');
+ const UPDATE_DOWNLOAD_DIR = process.env.MINERADIO_UPDATE_DOWNLOAD_DIR || path.join(UPDATE_WORK_DIR, 'downloads');
+ const UPDATE_PATCH_BACKUP_DIR = process.env.MINERADIO_PATCH_BACKUP_DIR || path.join(UPDATE_WORK_DIR, 'backups', 'patches');
+-const BEATMAP_CACHE_DIR = process.env.MINERADIO_BEAT_CACHE_DIR || 'D:\\MineradioCache\\beatmaps';
++const BEATMAP_CACHE_DIR = process.env.MINERADIO_BEAT_CACHE_DIR || (process.platform === 'win32' ? 'D:\\MineradioCache\\beatmaps' : path.join(require('os').homedir(), '.cache', 'Mineradio', 'beatmaps'));
+ const APP_PACKAGE = readPackageInfo();
+ const APP_VERSION = process.env.MINERADIO_VERSION || APP_PACKAGE.version || '0.9.11';
+ const UPDATE_CONFIG = readUpdateConfig(APP_PACKAGE);

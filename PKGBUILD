@@ -9,7 +9,7 @@
 
 pkgname=mineradio
 pkgver=1.1.1
-pkgrel=7
+pkgrel=8
 pkgdesc='Immersive music player with cinematic visuals, particle effects, and lyrics stage (Linux port by Sthn)'
 arch=('x86_64')
 url='https://github.com/XxHuberrr/Mineradio'
@@ -33,81 +33,18 @@ conflicts=('mineradio-git')
 install=mineradio.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/XxHuberrr/Mineradio/archive/refs/tags/v$pkgver.tar.gz"
         'mineradio.desktop'
-        'mineradio.sh')
+        'mineradio.sh'
+        'linux-compat.patch')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 
 build() {
   cd "$srcdir/Mineradio-$pkgver"
 
-  # Apply all Linux compatibility fixes via Python (avoid sed escaping issues)
-  python3 << 'PATCH_EOF'
-import re
-
-# Fix 1: desktop/main.js - icon path
-with open('desktop/main.js', 'r') as f:
-    content = f.read()
-
-content = content.replace(
-    "const APP_ICON_ICO = path.join(__dirname, '..', 'build', 'icon.ico');",
-    "const APP_ICON_ICO = path.join(__dirname, '..', 'build', process.platform === 'win32' ? 'icon.ico' : 'icon.png');"
-)
-
-# Fix 2: desktop/main.js - GPU switches
-old_switches = """const CHROMIUM_PERFORMANCE_SWITCHES = [
-  ['autoplay-policy', 'no-user-gesture-required'],
-  ['ignore-gpu-blocklist'],
-  ['enable-gpu-rasterization'],
-  ['enable-oop-rasterization'],
-  ['enable-zero-copy'],
-  ['enable-accelerated-2d-canvas'],
-  ['disable-background-timer-throttling'],
-  ['disable-renderer-backgrounding'],
-  ['disable-backgrounding-occluded-windows'],
-  ['force_high_performance_gpu'],
-  ['use-angle', 'd3d11'],
-];"""
-
-new_switches = """const CHROMIUM_PERFORMANCE_SWITCHES = [
-  ['autoplay-policy', 'no-user-gesture-required'],
-  ...(process.platform === 'win32' ? [
-    ['ignore-gpu-blocklist'],
-    ['enable-gpu-rasterization'],
-    ['enable-oop-rasterization'],
-    ['enable-zero-copy'],
-    ['enable-accelerated-2d-canvas'],
-    ['force_high_performance_gpu'],
-    ['use-angle', 'd3d11'],
-  ] : [
-    ['disable-gpu'],
-    ['disable-software-rasterizer'],
-    ['in-process-gpu'],
-  ]),
-  ['disable-background-timer-throttling'],
-  ['disable-renderer-backgrounding'],
-  ['disable-backgrounding-occluded-windows'],
-];"""
-
-content = content.replace(old_switches, new_switches)
-
-with open('desktop/main.js', 'w') as f:
-    f.write(content)
-
-# Fix 3: server.js - beatmap cache path
-with open('server.js', 'r') as f:
-    content = f.read()
-
-old_cache = "const BEATMAP_CACHE_DIR = process.env.MINERADIO_BEAT_CACHE_DIR || 'D:\\\\MineradioCache\\\\beatmaps';"
-new_cache = "const BEATMAP_CACHE_DIR = process.env.MINERADIO_BEAT_CACHE_DIR || (process.platform === 'win32' ? 'D:\\\\MineradioCache\\\\beatmaps' : path.join(require('os').homedir(), '.cache', 'Mineradio', 'beatmaps'));"
-
-content = content.replace(old_cache, new_cache)
-
-with open('server.js', 'w') as f:
-    f.write(content)
-
-print("All patches applied successfully")
-PATCH_EOF
+  # Apply Linux compatibility patches
+  patch -p1 < "$srcdir/linux-compat.patch"
 
   # Install npm dependencies (including devDependencies for electron-builder)
   npm install --prefer-offline
