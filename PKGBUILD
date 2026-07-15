@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seqPattern
-_pkgver=1.40.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='Visualising oligonucleotide patterns and motif occurrences across a set of sorted sequences'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fd78b403eb93064193573a8625f8c332e80aae766bf023e49f89827bd0dd52ea')
+sha256sums=('a8d33a2e144f42080334c362842697c3bdca617162f4769b5b9a55ebf8309d87')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
