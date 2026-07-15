@@ -1,8 +1,8 @@
 # Maintainer: Zorbatron <46525467+Zorbatron@users.noreply.github.com>
 
-pkgname=tdns-bin
 _pkgname=tdns
-pkgver=0.7.0
+pkgname="${_pkgname}-bin"
+pkgver=0.7.1
 pkgrel=1
 
 pkgdesc="A powerful, lightweight CLI to manage Technitium DNS server via HTTP API endpoint"
@@ -17,7 +17,7 @@ source=(
     "tdns-LICENSE::https://raw.githubusercontent.com/mbevc1/tdns/refs/tags/v${pkgver}/LICENSE"
 )
 sha256sums=(
-    '80960358de728b26f0315dd47b9062d69f48e37aaaa56d6242868810e8007d48'
+    '623c60d756167eee46431a360151b8b4ea503d3fd9dc27fea9c6740acf262fc3'
     '1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5'
 )
 
