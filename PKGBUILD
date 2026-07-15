@@ -1,7 +1,7 @@
 # Maintainer: padctl maintainers
 # pkgver/pkgrel/sha256sums: sed-overwritten by .github/workflows/release.yml — local edits have no effect.
 pkgname=padctl-bin
-pkgver=0.1.22
+pkgver=0.1.23
 pkgrel=1
 pkgdesc="HID gamepad daemon — declarative TOML device config, uinput output (prebuilt musl binary)"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ _baseurl="${url}/releases/download/v${pkgver}"
 
 source_x86_64=("padctl-v${pkgver}-x86_64-linux-musl.tar.gz::${_baseurl}/padctl-v${pkgver}-x86_64-linux-musl.tar.gz")
 source_aarch64=("padctl-v${pkgver}-aarch64-linux-musl.tar.gz::${_baseurl}/padctl-v${pkgver}-aarch64-linux-musl.tar.gz")
-sha256sums_x86_64=('2b5e6c3eeba032394b28799fe93e3ca85de2246d04a59243da6bab2712771658')
-sha256sums_aarch64=('b4d40b3c10970de9b9ecc945f09080700ffee084b5af565bc4b9fa9c925a7c9e')
+sha256sums_x86_64=('d556ce1061e536cb6347095f05ab707ebc45754127eb968f670211ec014e5369')
+sha256sums_aarch64=('94f8f6b914c22e813bf6f5343889385b63ffef2da311ba9b4f4dacaf2ba308a4')
 
 package() {
     local _arch
@@ -43,6 +43,8 @@ package() {
         "${pkgdir}/usr/lib/systemd/user/padctl-resume.service"
     [[ -f install/padctl-reconnect ]] && install -Dm755 install/padctl-reconnect \
         "${pkgdir}/usr/bin/padctl-reconnect"
+    [[ -f install/padctl-reconnect-launch ]] && install -Dm755 install/padctl-reconnect-launch \
+        "${pkgdir}/usr/bin/padctl-reconnect-launch"
 
     install -Dm644 install/60-padctl.rules \
         "${pkgdir}/usr/lib/udev/rules.d/60-padctl.rules"
