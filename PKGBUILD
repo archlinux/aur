@@ -2,25 +2,20 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=osquery-bin
-pkgver=5.18.1
+pkgver=5.23.1
 pkgrel=1
-pkgdesc='SQL powered operating system instrumentation, monitoring, and analytics. Without AWS.'
+pkgdesc='SQL powered operating system instrumentation, monitoring, and analytics(upstream binary)'
 arch=(x86_64)
 url='https://osquery.io'
-license=('Apache-2.0' 'GPL-2.0-only')
-depends=(bash)
-makedepends=()
-conflicts=(osquery)
+license=('Apache-2.0 OR GPL-2.0-or-later')
+depends=(bash glibc)
 provides=(osquery)
+conflicts=(osquery)
 #replaces=(osquery)
-source=("https://pkg.osquery.io/linux/osquery-${pkgver}_1.linux_$arch.tar.gz")
-sha256sums=('4617173d9df4459335fffcc9973496d55a410874b5509378add63afb9545bb00')
+#source=("https://pkg.osquery.io/linux/osquery-${pkgver}_1.linux_$arch.tar.gz")
+source=("https://pkg.osquery.io/deb/osquery_${pkgver}-1.linux_amd64.deb")
+b2sums=('5dacc8f70f00f1ca2f897472fb4c07c930afbf192982da4497aa3221a2a8c7af415687a174b3393710f8ad32d57e736e5824433a6ed9a5fc4edb27c81382492d')
 
 package() {
-  cp -r etc $pkgdir
-  mkdir -p $pkgdir/usr/bin
-  mv usr/bin/* $pkgdir/usr/bin/
-  #mv usr $pkgdir/
-  mv opt $pkgdir
-  cp -r var $pkgdir
+  tar -xf data.tar.gz -C "$pkgdir"
 }
