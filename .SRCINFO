@@ -1,0 +1,18 @@
+pkgbase = xgrep-search
+	pkgdesc = Ultra-fast indexed code search engine with MCP server for AI coding tools
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/momokun7/xgrep
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	optdepends = git: git-aware searches with --changed and --since
+	options = !lto
+	source = xgrep-search-0.7.0.tar.gz::https://github.com/momokun7/xgrep/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 53e51672b46f7058e9db6e44935fdb88611832422eaeb828e1a10b4ff69332b9
+
+pkgname = xgrep-search
