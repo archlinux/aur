@@ -1,0 +1,20 @@
+pkgbase = llvm-mos-bin
+	pkgdesc = LLVM/Clang fork targeting MOS 6502-family CPUs (prebuilt upstream release binaries)
+	pkgver = 23.0.0git.8be05461
+	pkgrel = 1
+	url = https://llvm-mos.org/wiki/Welcome
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	depends = glibc
+	depends = gcc-libs
+	provides = llvm-mos
+	conflicts = llvm-mos
+	conflicts = llvm-mos-git
+	options = !strip
+	options = !debug
+	source = llvm-mos-linux-main.tar.xz::https://github.com/llvm-mos/llvm-mos/releases/download/llvm-mos-linux-main/llvm-mos-linux-main.tar.xz
+	source = LICENSE.TXT::https://raw.githubusercontent.com/llvm-mos/llvm-mos/main/llvm/LICENSE.TXT
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = llvm-mos-bin
