@@ -1,0 +1,23 @@
+pkgbase = visagate
+	pkgdesc = Face unlock (RGB+IR) for Logitech webcams via PAM, Howdy-style
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/minerofthesoal/visagate
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-numpy
+	depends = opencv
+	depends = python-pam
+	depends = v4l-utils
+	options = !strip
+	options = !debug
+	source = git+https://github.com/minerofthesoal/visagate.git#tag=v0.2.4
+	sha256sums = SKIP
+
+pkgname = visagate
