@@ -1,7 +1,26 @@
 post_install() {
-  echo "==> Enabling CypherGate daemon..."
-  echo "Run the following command:"
-  echo "  sudo systemctl enable --now cyphergated.service"
+  if ! getent group cyphergate >/dev/null; then
+    echo "==> Creating 'cyphergate' group..."
+    groupadd --system cyphergate
+  fi
+
+  if ! id -nG "${SUDO_USER:-}" 2>/dev/null | grep -qw cyphergate; then
+    cat <<EOF
+
+CypherGate uses the 'cyphergate' group to communicate with the root daemon.
+
+Add yourself with:
+
+    sudo usermod -aG cyphergate $USER
+
+Then log out and back in.
+
+EOF
+  fi
+
+  echo
+  echo "==> Enable the CypherGate daemon:"
+  echo "    sudo systemctl enable --now cyphergated.service"
 }
 
 post_upgrade() {
