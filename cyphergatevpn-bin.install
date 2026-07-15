@@ -11,7 +11,7 @@ CypherGate uses the 'cyphergate' group to communicate with the root daemon.
 
 Add yourself with:
 
-    sudo usermod -aG cyphergate $USER
+    sudo usermod -aG cyphergate <username>
 
 Then log out and back in.
 
@@ -36,7 +36,7 @@ CypherGate uses the 'cyphergate' group to communicate with the root daemon.
 
 Add yourself with:
 
-    sudo usermod -aG cyphergate $USER
+    sudo usermod -aG cyphergate <username>
 
 Then log out and back in.
 
