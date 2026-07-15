@@ -1,6 +1,6 @@
 # Maintainer: dougefresh <dchimento@gmail.com>
 pkgname='pi-coding-agent-git'
-pkgver=0.79.0.r1.g734e08edf
+pkgver=0.80.7.r11.gc6d837152
 pkgrel=1
 pkgdesc="Coding agent CLI with read, bash, edit, write tools and session management"
 url="https://github.com/earendil-works/pi"
@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname"
-    npm ci --no-audit --no-fund
+    npm ci --no-audit --no-fund --dangerously-allow-all-scripts
     npm run build
     npm prune --omit=dev --no-audit --no-fund
 }
