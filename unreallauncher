@@ -1,0 +1,2 @@
+#!/bin/sh
+exec electron43 /usr/share/unreallauncher/ "$@"
