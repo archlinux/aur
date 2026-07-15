@@ -9,7 +9,7 @@ url="https://agentics.co.za"
 license=('custom')
 depends=()
 options=('!strip' '!debug')
-source=("gentics-0.1.66-x86_64.AppImage::https://software.agentics.co.za/agentics/x86_64/gentics-0.1.66-x86_64.AppImage")
+source=("gentics-0.1.66-x86_64.AppImage::https://repo.agentics.co.za/x86_64/gentics-0.1.66-x86_64.AppImage")
 sha512sums=('019ce49342cc553c1b2a0ee4a79a228340b2db48f809217238cee7713294abef955833525de68980ae152ef9d9421fffc47065986bc88d300b865b92a8340669')
 
 package() {
