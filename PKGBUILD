@@ -1,12 +1,12 @@
 pkgname=sql-workbench
-pkgver=132
+pkgver=133
 pkgrel=1
 epoch=
 pkgdesc="SQL Workbench/J is a free, DBMS-independent, cross-platform SQL query tool."
 arch=('any')
 url="https://www.sql-workbench.eu/"
 license=('custom')
-depends=('java-runtime>=11')
+depends=('java-runtime>=21')
 makedepends=(
     'unzip'
 )
@@ -15,7 +15,7 @@ replaces=('sqlworkbench')
 source=("https://www.sql-workbench.eu/Workbench-Build${pkgver}.zip"
          'sqlworkbench.desktop')
 noextract=("Workbench-Build${pkgver}.zip")
-sha512sums=('96d625b012aea1350fc95e407a3bea1a09444241b3f478b758e243ea90d20df91dfeae97380964a31d33c2b705fb8f0649b7679e68af8abca956b1ed1f1a76da'
+sha512sums=('e53fe394c62129a7cc055d93f9af214cd548c450b75bce1627cdb7946c593c733853c270caba3acd90e931287be05a2f09bc300e04f2509f4d6b939e70cc18eb'
             '75ae69830b1d8c492c232600b36cda84e13e96cbc235c971af501496dc4874ffd05c28e28d53460d2239517dcbb9b51518a75705a7a0ecf70a89f5beaf8d96da')
 
 build() {
