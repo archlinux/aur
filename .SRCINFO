@@ -1,0 +1,28 @@
+pkgbase = mega65-tools-git
+	pkgdesc = Tools and utilities for the MEGA65 retro computer (m65, mega65_ftp, etherload, bit2core, bit2mcs, romdiff, coretool)
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/MEGA65/mega65-tools
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = pkgconf
+	depends = libusb
+	depends = libpng
+	depends = zlib
+	depends = readline
+	depends = ncurses
+	depends = python
+	provides = mega65-tools
+	conflicts = mega65-tools
+	source = mega65-tools::git+https://github.com/MEGA65/mega65-tools.git#branch=development
+	source = ophis::git+https://github.com/gardners/Ophis.git
+	source = mega65-libc::git+https://github.com/MEGA65/mega65-libc.git
+	source = cc65::git+https://github.com/cc65/cc65.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mega65-tools-git
