@@ -1,6 +1,6 @@
-From fa22fceca0187445c38b716dabca2365e7c0dcfa Mon Sep 17 00:00:00 2001
+From d8070e8d65e16f71683d4e3ca51afc2c2b06e51e Mon Sep 17 00:00:00 2001
 From: Zhang Hua <zhanghua.00@qq.com>
-Date: Sun, 12 Jul 2026 21:30:47 +0800
+Date: Wed, 15 Jul 2026 08:40:02 +0800
 Subject: [PATCH 2/6] cmake: Use system Eigen3
 
 ---
@@ -10,7 +10,7 @@ Subject: [PATCH 2/6] cmake: Use system Eigen3
  3 files changed, 1 insertion(+), 18 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 2d7cb32..c7ee608 100644
+index cc7670d..a6ac663 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -35,6 +35,7 @@ endif()
@@ -19,10 +19,10 @@ index 2d7cb32..c7ee608 100644
  find_package(Threads REQUIRED)
 +find_package(Eigen3 3.4.0 REQUIRED)
  
- if(CMAKE_USE_PTHREADS_INIT)
-     # Clang records pthread support in C++ module BMIs; keep all module targets compatible.
+ 
+ set(OWE_CXX_COMPILE_OPTIONS
 diff --git a/deps.json b/deps.json
-index 7d8ac11..140fb73 100644
+index 9881b55..79494a5 100644
 --- a/deps.json
 +++ b/deps.json
 @@ -1,17 +1,4 @@

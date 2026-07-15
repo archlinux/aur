@@ -1,6 +1,6 @@
-From 55b3877e9c830b2cc931a2c50deda069086dfd3c Mon Sep 17 00:00:00 2001
+From 1de2bf028935c372d95d1aeaa231ed0ac7b5c7e2 Mon Sep 17 00:00:00 2001
 From: Zhang Hua <zhanghua.00@qq.com>
-Date: Sun, 12 Jul 2026 21:28:20 +0800
+Date: Wed, 15 Jul 2026 08:39:39 +0800
 Subject: [PATCH 1/6] cmake: Use system cef
 
 ---
@@ -15,10 +15,10 @@ Subject: [PATCH 1/6] cmake: Use system cef
  8 files changed, 11 insertions(+), 92 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 6efb1a5..2d7cb32 100644
+index ed28836..cc7670d 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -52,7 +52,7 @@ option(OWE_WAYWALLEN_PLUGIN_BUNDLE_LAYOUT
+@@ -62,7 +62,7 @@ option(OWE_WAYWALLEN_PLUGIN_BUNDLE_LAYOUT
      OFF)
  
  if(BUILD_WEWEB)
@@ -28,7 +28,7 @@ index 6efb1a5..2d7cb32 100644
  
  add_subdirectory(src)
 diff --git a/deps.json b/deps.json
-index 7fa94f7..7d8ac11 100644
+index 2bfc643..9881b55 100644
 --- a/deps.json
 +++ b/deps.json
 @@ -78,29 +78,5 @@
@@ -129,10 +129,10 @@ index 772ce1b..1edcf31 100644
          opts.enable_remote_debugging = true;
          opts.remote_debugging_port   = port;
 diff --git a/waywallen/CMakeLists.txt b/waywallen/CMakeLists.txt
-index ec03027..fae8535 100644
+index 343ba50..90c390e 100644
 --- a/waywallen/CMakeLists.txt
 +++ b/waywallen/CMakeLists.txt
-@@ -110,6 +110,7 @@ if(BUILD_WEWEB)
+@@ -105,6 +105,7 @@ if(BUILD_WEWEB)
      target_compile_features(waywallen-weweb-renderer PRIVATE cxx_std_20)
      set_target_properties(waywallen-weweb-renderer PROPERTIES
          CXX_SCAN_FOR_MODULES ON
@@ -140,9 +140,9 @@ index ec03027..fae8535 100644
      )
      target_include_directories(waywallen-weweb-renderer
          PRIVATE
-@@ -132,44 +133,11 @@ if(BUILD_WEWEB)
-     target_compile_options(waywallen-weweb-renderer PRIVATE
-         -Wall -Wextra -Wpedantic
+@@ -124,44 +125,11 @@ if(BUILD_WEWEB)
+             rstd::rstd
+             rstd.cppstd
      )
 -    weweb_stage_cef_runtime(waywallen-weweb-renderer)
  
@@ -185,7 +185,7 @@ index ec03027..fae8535 100644
  endif()
  
  # --- Generate the plugin manifest -----------------------------------------
-@@ -215,21 +183,6 @@ set(_OWE_FILES
+@@ -207,21 +175,6 @@ set(_OWE_FILES
  )
  if(BUILD_WEWEB)
      list(APPEND _OWE_FILES ${OWE_WEWEB_BIN})

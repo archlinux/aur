@@ -1,6 +1,6 @@
-From a3c555d20177ac89b21d92d33c9303e81842d4aa Mon Sep 17 00:00:00 2001
+From 555559c214c27b6334fff09cc1361c79cf564621 Mon Sep 17 00:00:00 2001
 From: Zhang Hua <zhanghua.00@qq.com>
-Date: Sun, 12 Jul 2026 21:35:22 +0800
+Date: Wed, 15 Jul 2026 08:40:54 +0800
 Subject: [PATCH 5/6] cmake: Use system glslang
 
 ---
@@ -11,7 +11,7 @@ Subject: [PATCH 5/6] cmake: Use system glslang
  4 files changed, 3 insertions(+), 14 deletions(-)
 
 diff --git a/deps.json b/deps.json
-index c7cae1c..2427123 100644
+index 88a15cb..8d0d019 100644
 --- a/deps.json
 +++ b/deps.json
 @@ -9,18 +9,6 @@
@@ -34,7 +34,7 @@ index c7cae1c..2427123 100644
      "dest": "build/_flatpak_deps/rstd-src",
      "disable-shallow-clone": true,
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 0c922de..04ad44c 100644
+index 3d58367..1513143 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -6,6 +6,7 @@ find_package(OpenGL REQUIRED)
@@ -46,7 +46,7 @@ index 0c922de..04ad44c 100644
  pkg_check_modules(FONTCONFIG REQUIRED IMPORTED_TARGET fontconfig)
  
 diff --git a/src/Vulkan/CMakeLists.txt b/src/Vulkan/CMakeLists.txt
-index 2d3ef4e..21143f3 100644
+index 594449a..c8e3385 100644
 --- a/src/Vulkan/CMakeLists.txt
 +++ b/src/Vulkan/CMakeLists.txt
 @@ -7,7 +7,7 @@ target_sources(owe-shader-compile

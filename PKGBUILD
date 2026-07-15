@@ -5,12 +5,12 @@ _wavsen_commit=72c43fab3dbe0df17b64f76e8e6198037bfd3c60
 
 pkgname=open-wallpaper-engine
 pkgver=0.1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source scene renderer, mostly for linux."
 arch=(x86_64)
 url=https://github.com/waywallen/open-wallpaper-engine
 license=(GPL-2.0-only)
-depends=(libgcc glibc lz4 freetype2 libpulse ffmpeg vulkan-icd-loader libglvnd
+depends=(libgcc libstdc++ glibc lz4 freetype2 libpulse ffmpeg vulkan-icd-loader libglvnd
          "waywallen>=0.2.3" cef glslang fontconfig quickjs-ng glfw wayland)
 makedepends=(cmake ninja git "clang>=21" lld argparse eigen3 vulkan-headers
              waywallen-display)
@@ -28,12 +28,12 @@ sha256sums=('d0549b252ce3bd65bf42451f78ffebf55a09be227254fd787f51758d45f53ce0'
             '287e451ba68eb156cf9dc6c33825e9d58fc506ea58718725c8c0f772a40a83ca'
             'af0c738eb5eb2a36ce43f4a26b00c3d5d591c22df153b72edefd2f4e7fc3c878'
             'e395a8f8045fcdee0380e5a9db376129153071986d83f39d950d7f8527c009e9'
-            '09e3a30b003188fd9f681841463953f4fef60a5e2c8e3745958ce97e8cbf9e9b'
-            '8c8604b1e015a8b70e6cd9ffd571ecc3dfeb9d08b2d68709966d7d7896849b28'
-            'f7c2aa4fee1db23250f4a9a2df2e88e7778228044fcec4d2170fef333f3e5593'
-            '6f6c460e5f19e4705180054a2993fc2ff0c7e247d5c81e0c3c0f3378f9a8b69e'
-            'a35b09dcb1db6ae887d18084baa326956ebcc060bfbcd4dedd399bbbe86a3892'
-            '8b87dd4da98cb918114a4555e239173f5eef11c6c7ec6e12a47df88018e5f606')
+            'a049ef7f0a5e036d142d92f40d4c289f9153a79a2a79fad4dee4fbc26f805922'
+            '77bb13be4a1cbacf4573988788789d20a0bc69c95e441538133af568fa4f7537'
+            'c49ab6b802e15611370b1c6756410aedd824a44f566e8844eb8bcf26b42c3bfb'
+            'eb7434aad96c007a2a9f15f998f140ab6b93f4da731fe36734c8f67a6fc9139f'
+            'e34eeeec404cb4221756cabdda9850d964a4544b116b80c827d89b9fa575465c'
+            '500222c6657a6a27c6b364cbbe9f812fd03660d7d8e798923201a686e33f8acc')
 
 prepare() {
     cd "$srcdir/$pkgname"

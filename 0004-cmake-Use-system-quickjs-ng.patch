@@ -1,6 +1,6 @@
-From 64f1338f6dbbdca71ccc16559eb6e6ab80f01f68 Mon Sep 17 00:00:00 2001
+From d99f2f0bf5c773b11c7b25d0fdb7c8b8bcd6faff Mon Sep 17 00:00:00 2001
 From: Zhang Hua <zhanghua.00@qq.com>
-Date: Sun, 12 Jul 2026 21:33:17 +0800
+Date: Wed, 15 Jul 2026 08:40:37 +0800
 Subject: [PATCH 4/6] cmake: Use system quickjs-ng
 
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH 4/6] cmake: Use system quickjs-ng
  2 files changed, 1 insertion(+), 12 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 848fca3..c60e711 100644
+index 5e98f9e..6d6b648 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -37,6 +37,7 @@ find_package(PkgConfig REQUIRED)
@@ -18,10 +18,10 @@ index 848fca3..c60e711 100644
  find_package(argparse REQUIRED)
 +find_package(qjs REQUIRED) # >= 0.14.0 in deps.json, but version is not supported in extra/quickjs-ng
  
- if(CMAKE_USE_PTHREADS_INIT)
-     # Clang records pthread support in C++ module BMIs; keep all module targets compatible.
+ 
+ set(OWE_CXX_COMPILE_OPTIONS
 diff --git a/deps.json b/deps.json
-index 115aa3c..c7cae1c 100644
+index 7a6582a..88a15cb 100644
 --- a/deps.json
 +++ b/deps.json
 @@ -42,17 +42,5 @@
