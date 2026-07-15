@@ -20,10 +20,11 @@ prepare() {
   cd "${srcdir}/astra"
 
   if [[ -v ASTRA_LASTFM_KEY ]] && [[ -v ASTRA_LASTFM_SECRET ]]; then
-    cat >.env.local <<EOF
+    cat >"${srcdir}/astra/.env.local" <<EOF
 LASTFM_API_KEY=${ASTRA_LASTFM_KEY}
 LASTFM_SHARED_SECRET=${ASTRA_LASTFM_SECRET}
 EOF
+    echo -e "\n[INFO] LastFM API Key and Secret Set\n\n"
   fi
 
   npm install
