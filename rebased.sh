@@ -11,4 +11,4 @@ if [ -r "${plugin_src}" ]; then
   fi
 fi
 
-exec /opt/rebased/bin/idea "$@"
+exec /opt/rebased/bin/rebased "$@"
