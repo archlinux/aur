@@ -1,0 +1,19 @@
+pkgbase = niform
+	pkgdesc = Shader-based audio visualizer for Wayland
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://gitlab.com/khailz04/niform
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = libxkbcommon
+	depends = gcc-libs
+	depends = glibc
+	depends = libpulse
+	depends = wayland
+	optdepends = libglvnd: OpenGL rendering backend
+	optdepends = vulkan-icd-loader: Vulkan rendering backend
+	source = niform-0.2.0.tar.gz::https://gitlab.com/khailz04/niform/-/archive/v0.2.0/niform-v0.2.0.tar.gz
+	b2sums = f65b9b112643ee3e694ab5bfb47bd9af367c9a63bdaa91caeacfc2d4ea1daf6eeb830f8295a5513ba069854b670c3b4852e0739cd5df3b2f428077aacf61c7d5
+
+pkgname = niform
