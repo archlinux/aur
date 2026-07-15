@@ -1,0 +1,14 @@
+pkgbase = ezc-bin
+	pkgdesc = A terminal clipboard for copying and moving files
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/mornhussakuyo-hub/ezc
+	arch = x86_64
+	license = MIT
+	provides = ezc=0.1.2
+	conflicts = ezc
+	options = !strip
+	source_x86_64 = ezc-0.1.2.tar.gz::https://github.com/mornhussakuyo-hub/ezc/releases/download/v0.1.2/ezc_0.1.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7b936b8fefde4ddde3bf897ce275034835726a5806c687f54f7f85383ff5cabd
+
+pkgname = ezc-bin
