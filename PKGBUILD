@@ -1,7 +1,7 @@
 # Maintainer: Zorbatron <46525467+Zorbatron@users.noreply.github.com>
 
-pkgname=tdns
 _pkgname=tdns
+pkgname="${_pkgname}"
 pkgver=0.7.1
 pkgrel=1
 
