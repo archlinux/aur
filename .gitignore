@@ -1,0 +1,5 @@
+# makepkg artifacts from regenerating .SRCINFO / test builds — never commit.
+/src/
+/pkg/
+/*.pkg.tar*
+/*.src.tar.gz
