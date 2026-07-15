@@ -1,6 +1,6 @@
 pkgbase = wuyou-docs-bin
 	pkgdesc = Local-first desktop document workspace (prebuilt binary)
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/duanluan/wuyou-docs-releases
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wuyou-docs-bin
 	provides = wuyou-docs
 	conflicts = wuyou-docs
 	options = !strip
-	source = wuyou-docs_0.5.1_amd64.deb::https://github.com/duanluan/wuyou-docs-releases/releases/download/v0.5.1/wuyou-docs_0.5.1_amd64.deb
-	sha256sums = 8c541d3b15281e1d42e2683b7a1bf736cd484289d56601252ba424c5b3464ff1
+	source = wuyou-docs_0.5.2_amd64.deb::https://github.com/duanluan/wuyou-docs-releases/releases/download/v0.5.2/wuyou-docs_0.5.2_amd64.deb
+	sha256sums = 1de09b190b058081e5b2040c93479a7a5a0d36f6dd3f526efcc9c4e229f4aa62
 
 pkgname = wuyou-docs-bin
