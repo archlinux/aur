@@ -43,6 +43,6 @@ pkgbase = plasma-login-manager-idle
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
 	sha256sums = 199cc04b1efcfcf4d4cefd027861902013d0c342bbc754d0231859fa17567fd9
 	sha256sums = SKIP
-	sha256sums = 5d35d506ee823a55648c1a747901ec50b79d3b77075cbcbd30444b1fbd8e0f5c
+	sha256sums = c9847e3eb299921258fda7319e03de773b6561c3b50c3d2afa9bcf10d76f401f
 
 pkgname = plasma-login-manager-idle
