@@ -1,7 +1,7 @@
 pkgbase = arch-rss-notify
 	pkgdesc = Arch Linux package RSS feed notifier - polls feeds and sends desktop notifications for installed package updates
-	pkgver = 0.1.9
-	pkgrel = 2
+	pkgver = 0.1.10
+	pkgrel = 1
 	url = https://github.com/Mohabdo21/arch-rss-notify
 	install = arch-rss-notify.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = arch-rss-notify
 	makedepends = go
 	makedepends = git
 	depends = libnotify
-	source = arch-rss-notify-0.1.9.tar.gz::https://github.com/Mohabdo21/arch-rss-notify/archive/v0.1.9.tar.gz
-	sha256sums = e0888c0908eba2d30c5ecb5d0f49a8096912c147e0e7da2ea73ae7aeddaadd2c
+	source = arch-rss-notify-0.1.10.tar.gz::https://github.com/Mohabdo21/arch-rss-notify/archive/v0.1.10.tar.gz
+	sha256sums = 6a3b472250f4c53ba6d3737f1d386260b33be20c3867e1f79ea9ad7a3fd3ca7c
 
 pkgname = arch-rss-notify
