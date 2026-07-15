@@ -1,0 +1,5 @@
+/libaaruformat
+*.pkg.tar*
+*.src.tar*
+src
+pkg

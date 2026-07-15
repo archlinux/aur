@@ -1,0 +1,15 @@
+pkgbase = libaaruformat
+	pkgdesc = Library for reading and writing AaruFormat disk images
+	pkgver = 1.0.0.beta.1
+	pkgrel = 1
+	url = https://github.com/aaru-dps/libaaruformat
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = argtable3
+	source = libaaruformat::git+https://github.com/aaru-dps/libaaruformat.git#tag=v1.0.0-beta.1
+	sha256sums = SKIP
+
+pkgname = libaaruformat
