@@ -1,6 +1,6 @@
 # Maintainer: massiveadam <massiveadam@users.noreply.github.com>
 pkgname=massiveeq-git
-pkgver=0.3.0.beta.1.r0.g00571ee
+pkgver=0.3.0.beta.2.r0.ge6eae2a
 pkgrel=1
 pkgdesc='Beta device-aware equalizer for PipeWire and Wayland desktops'
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || printf '0.3.0.beta.1.r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || printf '0.3.0.beta.2.r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
