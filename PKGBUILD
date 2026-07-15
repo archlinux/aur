@@ -1,9 +1,9 @@
-# Maintainer: Your Name <your-email@domain.com>
+# Maintainer: Monjaris <ziyanovruzlu750@gmail.com>
 pkgname=raylib-wayland-git
 _pkgname=raylib
-pkgver=6.0.r225.g4640c84 # This will be auto-updated by the pkgver() function below
-pkgrel=1
-pkgdesc="A simple and easy-to-use library to enjoy videogames programming (compiled natively for Wayland)"
+pkgver=6.0.r225.g4640c84
+pkgrel=3
+pkgdesc="Optimized Wayland build for simple and easy-to-use graphics library raylib"
 arch=('x86_64' 'aarch64')
 url="https://www.raylib.com/"
 license=('Zlib')
@@ -21,6 +21,9 @@ pkgver() {
 }
 
 build() {
+  export CFLAGS="${CFLAGS} -O3"
+  export CXXFLAGS="${CXXFLAGS} -O3"
+
   cmake -B build -S "${_pkgname}" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \

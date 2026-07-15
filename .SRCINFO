@@ -1,7 +1,7 @@
 pkgbase = raylib-wayland-git
-	pkgdesc = A simple and easy-to-use library to enjoy videogames programming (compiled natively for Wayland)
+	pkgdesc = Optimized Wayland build for simple and easy-to-use graphics library raylib
 	pkgver = 6.0.r225.g4640c84
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.raylib.com/
 	arch = x86_64
 	arch = aarch64
