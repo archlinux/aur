@@ -41,7 +41,10 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_realname"
-    make build
+    # -trimpath drops the local $srcdir path from the binary (makepkg flags a
+    # $srcdir reference otherwise); the plain dev `make build` keeps symbols,
+    # so the packaged build asks for the release flag explicitly.
+    make build GOBUILDFLAGS=-trimpath
 }
 
 check() {
@@ -88,6 +91,15 @@ package() {
     # `$(bat --config-dir)/syntaxes/` and runs `bat cache --build`.
     install -Dm644 editors/sublime/jennifer.sublime-syntax \
         "$pkgdir/usr/share/jennifer/syntaxes/jennifer.sublime-syntax"
+
+    # Jennifer-coded library modules: bare `import "name.j";` resolves under the
+    # system module directory. Ship the modules and their include-partials, not
+    # the *_test.j overlays (development-only).
+    install -dm755 "$pkgdir/usr/share/jennifer/modules"
+    for m in modules/*.j; do
+        [[ "$m" == *_test.j ]] && continue
+        install -m644 "$m" "$pkgdir/usr/share/jennifer/modules/"
+    done
 
     # Language reference for coding assistants (also a human quick-reference).
     install -Dm644 JENNIFER.md "$pkgdir/usr/share/doc/jennifer/JENNIFER.md"
