@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rtracklayer
-_pkgver=1.68.0
+_pkgver=1.72.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,13 +10,10 @@ arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('Artistic-2.0 AND LicenseRef-rtracklayer')
 depends=(
-  curl
-  openssl
   r-biocgenerics
   r-biocio
   r-biostrings
   r-curl
-  r-genomeinfodb
   r-genomicalignments
   r-genomicranges
   r-httr
@@ -24,14 +21,18 @@ depends=(
   r-restfulr
   r-rsamtools
   r-s4vectors
+  r-seqinfo
   r-xml
   r-xvector
+  curl
+  openssl
   zlib
 )
 optdepends=(
   r-bsgenome
   r-bsgenome.hsapiens.ucsc.hg19
   r-genefilter
+  r-genomeinfodb
   r-genomicfeatures
   r-hgu133plus2.db
   r-humanstemcell
@@ -42,8 +43,8 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5ab268c04d5423c6ad4c27ddc671c90d')
-b2sums=('216916bebefca6f83b64c5819e94da6425b53069063fcf048029e5a541c4de3bca2f4839fcb37f57cab82399ed845c50fd20efb438038703662a3b100b181e70')
+md5sums=('f5ec8a266f6b044f791b5783734b74af')
+b2sums=('ba03e31aa5afe8237e06ef3c28ecc67b02447b06a065f64aa83021795610954e6bbd46080d86fe74bcf973791f9673aab580e94d51eb196e58aacb2cd87304f9')
 
 build() {
   mkdir build
