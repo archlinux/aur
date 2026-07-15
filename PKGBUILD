@@ -2,7 +2,7 @@
 # Maintainer: Snowdream Tech <snowdreamtech@qq.com>
 
 pkgname='unistack-bin'
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='Snowdream Tech AI IDE Template is an enterprise-grade, foundational template designed for multi-AI IDE collaboration.'
 url='https://github.com/snowdreamtech/unistack'
@@ -12,16 +12,16 @@ provides=('unistack')
 conflicts=('unistack')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/snowdreamtech/unistack/releases/download/v${pkgver}/unistack_Linux_arm64.tar.gz")
-sha256sums_aarch64=('6a4a29296f4a3157ad4170d909b7bf6a3828da176017a15e48adb34c7c0264dc')
+sha256sums_aarch64=('d7ffdc56370e2e2041e75ffbb3c7f05ec1cdb4e02bc6abbd089fa865befa1b45')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/snowdreamtech/unistack/releases/download/v${pkgver}/unistack_Linux_armv7.tar.gz")
-sha256sums_armv7h=('74b2fd24ee6a623689fc2078acbfb634bfdf0313d5f0d8f8b7b8eee8c05eced3')
+sha256sums_armv7h=('ddcb7cae4ab0ac09c3efa214e85d763346e3602ca23d1d62602637f80556b4fd')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/snowdreamtech/unistack/releases/download/v${pkgver}/unistack_Linux_i386.tar.gz")
-sha256sums_i686=('954d451461d491a2034bef8896ef73117681a71d10b0d04b49e9b12ef06bd557')
+sha256sums_i686=('0973192bab0870c2f3cf5d614721a417dc18f206513ecff68948b6e5e85e6e21')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/snowdreamtech/unistack/releases/download/v${pkgver}/unistack_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('75e69f8743f463341136d56e7dbdff5b10361e40a56a5158b5304a95cb9d3b27')
+sha256sums_x86_64=('94ed923732787c35c957769a4159976a8d88eca3c72c7829b64d904fd1d2ceee')
 
 package() {
   # bin
