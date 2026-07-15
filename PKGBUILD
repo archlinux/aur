@@ -9,7 +9,7 @@ url="https://agentics.co.za"
 license=('custom')
 depends=('gentics')
 options=('!strip' '!debug')
-source=("agentics-terminal-0.1.4-x86_64.enc::https://software.agentics.co.za/agentics/x86_64/agentics-terminal-0.1.4-x86_64.enc")
+source=("agentics-terminal-0.1.4-x86_64.enc::https://repo.agentics.co.za/x86_64/agentics-terminal-0.1.4-x86_64.enc")
 sha512sums=('4cabcb6b14a57cb86c991763086334924e5672d7d4e0355b8f64891c5eb9a5b8aab2b9984833e063e4f5fbca22e34198ffb1a9f5e6dfd6ef11629e86780a4aa6')
 
 package() {
