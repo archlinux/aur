@@ -3,27 +3,20 @@
 
 _pkgname=valhalla
 pkgname=$_pkgname
-pkgver=3.7.0
-pkgrel=3
+pkgver=3.8.2
+pkgrel=1
 pkgdesc="Routing engine for OpenStreetMap."
 arch=('x86_64' 'aarch64')
 url="https://github.com/valhalla/valhalla"
 license=('custom:MIT')
 depends=('prime_server' 'boost-libs' 'protobuf' 'abseil-cpp' 'python' 'python-numpy' 'libspatialite' 'luajit' 'chrono-date' 'gdal' 'lz4')
 makedepends=('cmake' 'git' 'vim' 'jq' 'boost' 'cxxopts' 'libosmium' 'protozero' 'rapidjson')
-source=("$_pkgname-$pkgver::git+${url}#tag=$pkgver"
-        "fix-adminbuilder-empty-inner-rings.patch")
-sha256sums=('SKIP'
-            '8708ddd79807add40a974dd663d5310eea5037afe74b66cdbea1250bfd9cca42')
+source=("$_pkgname-$pkgver::git+${url}#tag=$pkgver")
+sha256sums=('SKIP')
 
 prepare() {
   cd "$_pkgname-$pkgver"
   git submodule update --init --recursive
-
-  # Fix crash when admin polygon has no inner rings (empty vector .front() call)
-  # Issue: https://github.com/valhalla/valhalla/issues/6075
-  # Fix PR: https://github.com/valhalla/valhalla/pull/6077 (auto-merge); drop this patch once it lands.
-  patch -Np1 --forward -i ../fix-adminbuilder-empty-inner-rings.patch
 
   # -mno-sse4.2 is APPENDED to user CFLAGS to subtract SSE4.2 codegen.
   # Why: any -march= that enables SSE4.2 (i.e. -march=native on any CPU >= Nehalem,
@@ -34,14 +27,26 @@ prepare() {
   # become inconsistent. On a thrown exception inside that function (any /route
   # request with costing=auto|truck|taxi), the unwinder lands at a trap-filler
   # address `mov 0x28, %eax; ud2` between two endbr64 landing pads, dereferencing
-  # null+0x28 → SIGSEGV. Bug confirmed in valhalla 3.6.3, 3.7.0, and master
-  # (commit 7c220b4, 2026-05-11). Upstream docker uses no -march so it never
-  # triggers. Full investigation: build/debug/INVESTIGATION.md in valhalla-pi repo.
+  # null+0x28 → SIGSEGV. Bug confirmed in valhalla 3.6.3 through master (still
+  # present in 3.8.2). Upstream docker uses no -march so it never triggers.
+  # Tracked upstream: https://github.com/valhalla/valhalla/issues/6079 (OPEN).
+  # Full investigation: build/debug/INVESTIGATION.md in valhalla-pi repo.
   #
   # Trade-off: -mno-sse4.2 removes SSE4.2 AND everything above it in gcc's flag
   # hierarchy (AVX, AVX2, FMA, AVX-512). Routing is memory-bound; perf impact
-  # is small. Remove this flag if/when upstream fixes the underlying UB.
+  # is small. Remove this flag if/when upstream fixes the underlying UB (#6079).
 
+  # ENABLE_GEOTIFF=OFF: 3.8.x added an optional libgeotiff feature (isochrone
+  # raster/isotile serialization) that is ON by default, but its CMake wiring is
+  # broken on the PREFER_EXTERNAL_DEPS path. With system libtiff+libgeotiff
+  # present, GTIFF_TARGETS is set to "TIFF::TIFF geotiff_library": the TIFF::TIFF
+  # imported target is not reliably created (config- vs module-mode find), and
+  # 'geotiff_library' is a phantom (cmake/FindGeoTIFF.cmake creates
+  # GeoTIFF::GeoTIFF instead). valhalla_module() then evaluates
+  # $<TARGET_PROPERTY:TIFF::TIFF,...> at generate time → "Target TIFF::TIFF not
+  # found", aborting configure. Feature is new in 3.8.x (absent from our 3.7.0
+  # pkg), so disabling it is zero regression. Drop this flag if upstream fixes
+  # the external-deps GeoTIFF wiring.
   cmake -S. -Bbuild \
     -DCMAKE_C_FLAGS:STRING="${CFLAGS} -mno-sse4.2" \
     -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS} -mno-sse4.2" \
@@ -50,6 +55,7 @@ prepare() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPREFER_EXTERNAL_DEPS=ON \
+    -DENABLE_GEOTIFF=OFF \
     -DENABLE_DATA_TOOLS=On \
     -DENABLE_PYTHON_BINDINGS=On \
     -DENABLE_SERVICES=On \
