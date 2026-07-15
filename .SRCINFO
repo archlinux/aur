@@ -1,14 +1,13 @@
 pkgbase = mingw-w64-cahute-git
 	pkgdesc = A toolkit to handle communication and file formats related to CASIO calculators (mingw-w64)
 	pkgver = 0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://next.cahuteproject.org
 	arch = any
 	license = custom:CeCILL
 	makedepends = git
 	makedepends = mingw-w64-cmake
 	makedepends = python
-	makedepends = python-toml
 	depends = mingw-w64-crt
 	provides = mingw-w64-cahute
 	conflicts = mingw-w64-cahute

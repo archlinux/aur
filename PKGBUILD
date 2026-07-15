@@ -2,13 +2,13 @@
 _pkgname=cahute
 pkgname=mingw-w64-$_pkgname-git
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A toolkit to handle communication and file formats related to CASIO calculators (mingw-w64)"
 url="https://next.cahuteproject.org"
 arch=('any')
 license=('custom:CeCILL')
 depends=('mingw-w64-crt')
-makedepends=('git' 'mingw-w64-cmake' 'python' 'python-toml')
+makedepends=('git' 'mingw-w64-cmake' 'python')
 provides=("mingw-w64-cahute")
 conflicts=("mingw-w64-cahute")
 options=('!buildflags' '!strip')
