@@ -2,17 +2,25 @@
 
 pkgname=mariadb-connector-odbc
 conflicts=('mariadb-connector-odbc-bin')
-pkgver=3.2.7
+pkgver=3.2.9
 
 pkgrel=1
 pkgdesc="A standardized, LGPL licensed ODBC database driver for MariaDB"
 arch=('x86_64' 'armv7h')
 url="https://mariadb.com/kb/en/mariadb/mariadb-connector-odbc/"
-license=('LGPL')
-depends=('unixodbc>=2.3' 'openssl' 'zlib' 'mariadb-libs')
+license=('LGPL-2.1-only')
+depends=(
+    'unixodbc>=2.3'
+    'openssl'
+    'zlib'
+    'mariadb-libs'
+    'glibc'
+    'libgcc_s.so'
+    'libstdc++.so'
+)
 makedepends=('git' 'cmake')
-source=("https://downloads.mariadb.com/Connectors/odbc/connector-odbc-${pkgver}/mariadb-connector-odbc-${pkgver}-src.tar.gz")
-sha256sums=('11ce94737004695eedaf66a72eeafcb43fb68ccac7dbb5baa16054dac539fdb3')
+source=("https://dlm.mariadb.com/4785756/Connectors/odbc/connector-odbc-${pkgver}/mariadb-connector-odbc-${pkgver}-src.tar.gz")
+sha256sums=('5062f491f7189ba32352a9834777886dfbc64a107bb0e2e50921dd6ae2bd18ad')
 install=mariadb-connector-odbc.install
 
 prepare() {
