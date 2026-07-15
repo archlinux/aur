@@ -1,26 +1,32 @@
 # Maintainer: motorrin
 pkgname=arch-smart-update
-pkgver=3.20.2
+pkgver=3.21.0
 pkgrel=1
 pkgdesc="This script helps you decide when to update Arch Linux or its derivatives."
 arch=('any')
 url="https://github.com/motorrin/arch-smart-update"
 license=('MIT')
-depends=('bash' 'python' 'pacman' 'tar' 'gawk' 'coreutils' 'curl' 'zstd')
+depends=('bash' 'python' 'pacman' 'tar' 'gawk' 'coreutils' 'curl' 'zstd' 'grep' 'sed')
 optdepends=(
     'reflector: for Arch Linux mirror updates'
     'cachyos-rate-mirrors: for CachyOS mirror updates'
     'eos-rankmirrors: for EndeavourOS mirror updates'
     'eos-update: for EndeavourOS core updates'
+    'cachy-update: for CachyOS core updates'
+    'arch-update: for general Arch core updates'
     'yay: AUR helper support'
     'paru: AUR helper support'
+    'pikaur: AUR helper support'
+    'rua: AUR helper support'
     'topgrade: for comprehensive system updates'
     'fakeroot: for running the background update checker without sudo'
     'libnotify: for desktop notifications in daemon mode'
     'psmisc: for lock detection using fuser'
+    'gamemode: to postpone background checks when gaming'
+    'snap-pac: for automatic Btrfs snapshots on update (if using snapper)'
 )
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('86f57d01256dca1b828652a9ee7fa3e88e4dc1fea667900cec73b146a6d240b2')
+sha256sums=('0cb951ca4c912641bfcd616e0842155e2b39ae5a4b37d4ac3a507e68da52bba9')
 
 package() {
     cd "arch-smart-update-${pkgver}"
