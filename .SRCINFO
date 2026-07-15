@@ -1,7 +1,7 @@
 pkgbase = gtkhash
 	pkgdesc = A GTK+ utility for computing message digests or checksums
 	pkgver = 1.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tristanheaven/gtkhash
 	arch = x86_64
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = gtkhash
 	depends = gtk3
 	depends = libb2
 	depends = libgcrypt
-	depends = nettle
+	depends = nettle3
 	provides = gtkhash
 	conflicts = gtkhash-caja
 	conflicts = gtkhash-nautilus
