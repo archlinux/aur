@@ -59,7 +59,7 @@ build() {
     -B "${_pkgsrc}/build"
     -S "${_pkgsrc}"
     -G 'Unix Makefiles'
-    -W no-dev
+    -W no-author
     -D CMAKE_BUILD_TYPE:STRING='Release' # None
     -D CMAKE_INSTALL_PREFIX:PATH='/usr'
     -D CMAKE_INSTALL_LIBDIR:PATH='lib32'
