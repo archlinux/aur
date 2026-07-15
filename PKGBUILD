@@ -1,7 +1,7 @@
 # Maintainer: Pierce Thompson <pierce at insprill dot net>
 
 pkgname=bs-manager-git
-pkgver=v1.5.2.r95.gcaf7989
+pkgver=v1.5.6.r35.gaf96bd2
 pkgrel=1
 pkgdesc="An all-in-one tool for managing Beat Saber versions, maps, mods, and more"
 arch=("x86_64")
@@ -36,7 +36,7 @@ prepare() {
     _ensure_local_nvm
     cd "${pkgname%-git}"
 
-    nvm install 22.11.0
+    nvm install
 }
 
 build() {
