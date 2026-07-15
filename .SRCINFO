@@ -1,0 +1,14 @@
+pkgbase = radpro-tool-git
+	pkgdesc = Tool for low-level access to dosimeters running the Rad Pro custom firmware (git version)
+	pkgver = r583.0275cb3
+	pkgrel = 1
+	url = https://github.com/Gissio/radpro
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-pyserial
+	depends = python-requests
+	source = git+https://github.com/Gissio/radpro.git
+	sha256sums = SKIP
+
+pkgname = radpro-tool-git
