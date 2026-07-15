@@ -1,6 +1,6 @@
 # Maintainer: Christopher McAdams <mca.christopher@gmail.com>
 pkgname="gnome-mode-shift-git"
-pkgver=r14.6d27b63
+pkgver=r19.399882b
 pkgrel=1
 pkgdesc="::Rolling release:: A Small utility to switch the selected preferred mode."
 arch=('any')

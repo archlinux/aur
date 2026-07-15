@@ -1,6 +1,6 @@
 pkgbase = gnome-mode-shift-git
 	pkgdesc = ::Rolling release:: A Small utility to switch the selected preferred mode.
-	pkgver = r14.6d27b63
+	pkgver = r19.399882b
 	pkgrel = 1
 	url = https://github.com/christophermca/gnome-mode-shift/
 	arch = any
