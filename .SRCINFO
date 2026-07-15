@@ -1,0 +1,18 @@
+pkgbase = batzconverter
+	pkgdesc = Batman Timezone Converter - show times in different timezones with bash
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/chmouel/batzconverter
+	arch = any
+	license = Apache-2.0
+	depends = bash
+	depends = coreutils
+	optdepends = fzf: interactive timezone selection
+	optdepends = gum: pretty table output
+	optdepends = wl-clipboard: clipboard/screenshot support on Wayland
+	optdepends = librsvg: PNG screenshot rendering (rsvg-convert)
+	optdepends = imagemagick: PNG screenshot rendering (alternative)
+	source = batzconverter-3.0.0.tar.gz::https://github.com/chmouel/batzconverter/archive/3.0.0.tar.gz
+	sha256sums = 6ebbb11dc8bf9b4a709aaf782a81acfd053ef742bbd503cce8bdd6def5171407
+
+pkgname = batzconverter
