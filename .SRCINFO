@@ -1,0 +1,11 @@
+pkgbase = localsend-nautilus-extension
+	pkgdesc = A simple Nautilus extension that adds a "Send with LocalSend" context menu item to easily share files using LocalSend.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/damiansan239/localsend-nautilus-extension
+	arch = x86_64
+	license = MIT
+	source = localsend-nautilus-extension_1.0.0.deb::https://github.com/damiansan239/localsend-nautilus-extension/releases/download/v1.0.0/nautilus-localsend-extension_1.0-1_all.deb
+	sha256sums = c648b3afd4943884b0a2aa5b1e32188d346a72df5fb430e584384886bbc20e4a
+
+pkgname = localsend-nautilus-extension

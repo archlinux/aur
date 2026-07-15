@@ -1,0 +1,8 @@
+post_install() {
+    echo ":: To apply the extension, please restart Nautilus by running:"
+    echo "   nautilus -q"
+}
+
+post_upgrade() {
+    post_install
+}
