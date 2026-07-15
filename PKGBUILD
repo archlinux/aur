@@ -11,7 +11,7 @@
 # Contributor: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-jax-rocm
-pkgver=0.10.0
+pkgver=0.10.2
 pkgrel=1
 pkgdesc='XLA library for JAX (jaxlib for ROCM)'
 _srcname="jax-jaxlib-v${pkgver}"
@@ -26,8 +26,8 @@ conflicts=(python-jaxlib)
 provides=("python-jaxlib=$pkgver")
 source=("${_srcname}.tar.gz::${url}/archive/jax-v${pkgver}.tar.gz"
   "${_xlaname}.tar.gz::https://github.com/ROCm/xla/archive/rocm-jaxlib-v${pkgver}.tar.gz")
-sha512sums=('c5edbfd8f81a68f659fec2727f11cdddf7db325b4e99037f27ce18e41fde5f5e82e727dee367e861241faa16ad44350a9ead97424149eb72d91db000f6e47d05'
-            '658f88061a03392a4b56c1d0bc8fb4a31a359c88a97bc1b0e4a495873a95088dd1650ac6926be3536b4c6b80aeed796cd31ff8715c7ae0eeb8109b3c7d567bda')
+sha512sums=('90f1111f8f93a3d1c4f8590cedf3b504a0f23133116621b3fe90197c7e48460acd8983f317498ed47e4a1525099507d09c03d5adbe80d1adf9b309afca385bdb'
+            'f9fc32db983e2cf2201224633624b47006fb6f7642bb042396de1a661a0efed6bc6c808565c46b3f02c5f9defcb215386045b96996e9e608c48358789fb24af3')
 # test
 # python -c "import jax; print(jax.devices(),jax.devices()[0].device_kind); x=jax.numpy.array([1.2,3.4,5.6]); y=jax.numpy.exp(x); print(y)"
 
