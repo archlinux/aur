@@ -38,6 +38,7 @@ build() {
     -G Ninja
     -S "llvm-project-$pkgver.src/llvm"
     -B build
+    -W no-author
     -D CMAKE_BUILD_TYPE='Release'
     -D CMAKE_INSTALL_PREFIX='/usr'
     -D LLVM_EXTERNAL_LIT='/usr/bin/lit'
