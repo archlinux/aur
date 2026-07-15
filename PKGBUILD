@@ -1,4 +1,3 @@
-# Maintainer: Your Name <you@example.com>
 pkgname=sysevents
 pkgver=1.0.0
 pkgrel=1
@@ -9,7 +8,7 @@ license=('MIT')
 depends=('systemd' 'gcc-libs')
 makedepends=('cargo')
 checkdepends=('systemd')
-options=('!lto') # LTO is already configured explicitly in Cargo.toml's release profile
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('183f64d4b7d981d26fb4f1847634890bd7baf940e305f4f16cda77c6281ed843')
 
