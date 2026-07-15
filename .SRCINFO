@@ -1,6 +1,6 @@
 pkgbase = beeper-v4-bin
 	pkgdesc = The ultimate messaging app
-	pkgver = 4.2.972
+	pkgver = 4.2.985
 	pkgrel = 1
 	url = https://www.beeper.com/beta
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = beeper-v4-bin
 	conflicts = beeper
 	options = !strip
 	options = !debug
-	source = Beeper-4.2.972-x86_64.AppImage::https://api.beeper.com/desktop/download/linux/x64/stable/com.automattic.beeper.desktop
+	source = Beeper-4.2.985-x86_64.AppImage::https://api.beeper.com/desktop/download/linux/x64/stable/com.automattic.beeper.desktop
 	sha256sums = SKIP
 
 pkgname = beeper-v4-bin
