@@ -38,14 +38,12 @@ provides=(
   butteraugli
   ssimulacra
   ssimulacra2
-  jpegli
 )
 conflicts=(
   $_pkgname
   butteraugli
   ssimulacra
   ssimulacra2
-  jpegli
 )
 optdepends=(
   'libjxl-doc: for documentation'
@@ -54,20 +52,17 @@ source=(
   git+https://github.com/libjxl/$_pkgname.git
   git+https://skia.googlesource.com/skcms.git
   git+https://github.com/webmproject/sjpeg.git
-  git+https://github.com/libjpeg-turbo/libjpeg-turbo.git
 )
 sha256sums=(
-  SKIP
   SKIP
   SKIP
   SKIP
 )
 
 prepare() {
-  git -C $_pkgname submodule init third_party/{skcms,sjpeg,libjpeg-turbo}
+  git -C $_pkgname submodule init third_party/{skcms,sjpeg}
   git -C $_pkgname config submodule.third_party/skcms.url "$srcdir"/skcms
   git -C $_pkgname config submodule.third_party/sjpeg.url "$srcdir"/sjpeg
-  git -C $_pkgname config submodule.third_party/libjpeg-turbo.url "$srcdir"/libjpeg-turbo
   git -C $_pkgname -c protocol.file.allow=always submodule update
 }
 
