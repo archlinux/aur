@@ -1,6 +1,6 @@
 pkgbase = stfed
 	pkgdesc = Synthing folder event daemon
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/desbma/stfed
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = stfed
 	makedepends = cargo
 	depends = gcc-libs
 	depends = syncthing
-	source = stfed-1.1.0.tar.gz::https://github.com/desbma/stfed/archive/1.1.0.tar.gz
-	sha512sums = 0c6fe0de45c465606ca0647b18750ec5ccb8b2cffda2e40ff80f8c1fe30413f59350f77f39d8c230bd3b7676d703263baabf38b177f99d24071e7884ab820ea5
+	source = stfed-1.1.1.tar.gz::https://github.com/desbma/stfed/archive/1.1.1.tar.gz
+	sha512sums = 86db1c87c165ca6f8f39c869b1ef0f4640d16fa2a542ee615976ea1d915e1a02a75219aae1d8045666355d0d6340095129c6bf554a07f5a5ee71f5966a66cc6d
 
 pkgname = stfed
