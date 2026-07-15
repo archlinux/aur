@@ -2,7 +2,7 @@
 # Created with assistance from DeepSeek V4 Flash.
 
 pkgname=zxc-full
-pkgver=0.12.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="Asymmetric lossless compression library for ultra-fast decode (development: CLI + C library + headers + CMake — source build)"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('cmake' 'gcc')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hellobertrand/zxc/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2de4e21a4ecb33a71ba04b052b94d4e4f9882c85851d2142863f8629a9e06623')
+sha256sums=('db8a1882bc1899a602d71b0b3f81995ef73162dbefe8c4b2a3f9f8b9f8b4b673')
 
 build() {
   cd "${srcdir}/zxc-${pkgver}"
